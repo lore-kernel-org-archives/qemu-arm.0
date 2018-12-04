@@ -1,85 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8107630wrt;
-        Tue, 4 Dec 2018 06:07:06 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VsY4Y2abapOLICkOxqAmJxqvdKKrvjBkhNGJ519Kw7J08pc60qVTJBKG/8YM4Ls7wyoqGZ
-X-Received: by 2002:aed:31c5:: with SMTP id 63mr19552000qth.385.1543932426782;
-        Tue, 04 Dec 2018 06:07:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543932426; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8127546wrt;
+        Tue, 4 Dec 2018 06:23:27 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XVNF9WAaCqscDA+nkbcNG1HYdM23ajjKNtNw7h0oC/FTcSGdzw+LhvolzzYNb/Q7cm+0iQ
+X-Received: by 2002:a0c:f805:: with SMTP id r5mr20228157qvn.130.1543933407450;
+        Tue, 04 Dec 2018 06:23:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543933407; cv=none;
         d=google.com; s=arc-20160816;
-        b=A37j2WlUc/Jxqf4a7N8wHzsn7x1umlujNb2eXzGeLS2szsGme8pjFWb/z2RbHbOBQb
-         lsIlrsWTepo9HYxSgRQvvtR788CQ7Wqf9C5HM45fyFoagdDDSklhCaklm/ORUYyjRdWS
-         4oWw4NUrl/GxLq2eHyCpi/bc8BddWHLmVZymdlajW9xoZD/1J1G+y41fbYyrx3Lo7mBS
-         PxaxFTmKicDzlLHWy6M5xdQKJ1sg4z0xMwjEiUZGImuCQfJn25fub/TEtqnjEx9sWaAy
-         RZHL0ToFLEDrDv8DR/D65AOBRr7lnYyiYrDCXEqpIY17lL/fRhVSMz2YELYl7IXPTUdu
-         vC7w==
+        b=hRAIac6SAoqNjec11QeU7/7rpoF5TR0NhrHiykXBea69Df3WnGzWw3Pci8mewOwW7A
+         MsW7L6V5igvBCt9fX0cRZtH8av49k4CihORUDkVGuOyvVFoFX5ATHbxO+tYLFpKgWtxi
+         VTjuJtWxGbG61tLl/sRinKCJtvUz4ac4jBSxcoUq8RfqXPhpvDU8TU3G0ElqlbA7Pz09
+         JpoAQIHl06WvIm6nLChXUGLtaNFlLi90O6sSpaPRiYQqtosNIBA1usniwUcYcaUFoZUU
+         VvwIk1ckpo04vFymad3rBjF1hwT0CMPvo+MSxq2zCJEQkTtpXYfjg1A80LljGGSip8TJ
+         q0Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=6Y6TAZN9AidRd3hwejsdteEkxAe3DXzogOiy1kWvBqU=;
-        b=iVQzaCn0i4lcHOKJWnAyTKGSM37G2wdWICKB3ZTHJIgtxiC8j/fXM2NMb8Z4yMUnQS
-         IhqmwNazXpsVh/xClzHcj7qqKVKPaNSPutkqqhRHraZq/IEW+LE/M+F/QVjwcEqddJPY
-         Dq89SzEcMxja6dOcu1K94cALbKXCxDmYsez/gX8scXQl0Pvth6tkbXLBNGvEIR8vawwp
-         Ma78/XTkBKJpBn2323zy+ghuvXRVyVcDIviQR3EgCvS91lCfQ6H63kdnThPu8kgAymyT
-         DZwO35tq3yWUk3fAMfsMbk0en9P1lLy3UE/nyVglW3N3A93ZoMdiFJo1w7tKRYpV+1E/
-         GcCQ==
+         :message-id:date:to:from;
+        bh=R8OjkkL208yPDtGzZzRDBRyZjuVENaqKT1mvfX0ZfJw=;
+        b=CwBpT1hkGZWPFrB6sD59GPDtgh7+zShHr+7CNtt+W3AfzRf2Ts5gBMTPEEcM7G/Bv9
+         kRXeghZMs8vjJgvp80cOtykEwNZrNjF1DnNwLjiPz1XVrp6rxQbbtjtD4AozCjpF5gfP
+         0CrlkblCWBSWd84YvV1YncntcJ3OvIYV+LRDfw2GXw/jD3mcc/QDkg2dg/1hxhtUxuir
+         SniCxtrL1NZEsGcmzY8U+NN1+L9GcUG8ch4WbDoAeIgsKoRBeExSTvI1wOkJ5jMLbjqR
+         OVNAtvMNr4lQdBnc3pO/boKxSuUtHZcgCzCe/pG24NgK9NRgHYL8ZG2zL80D50THGEYf
+         vEeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f70si6186621qke.10.2018.12.04.06.07.06
+        by mx.google.com with ESMTPS id c4si3685644qtj.64.2018.12.04.06.23.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 06:07:06 -0800 (PST)
+        Tue, 04 Dec 2018 06:23:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57008 helo=lists.gnu.org)
+Received: from localhost ([::1]:57061 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUBLu-0004Cs-AC
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 09:07:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42869)
+	id 1gUBbi-000635-I2
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 09:23:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUBLj-0004Bx-JX
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 09:06:56 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gUBa0-0004sx-E4
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 09:21:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUBLe-0006aD-Jn
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 09:06:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42652)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gUBZu-000777-7S
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 09:21:39 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34756)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gUBLe-0006Yg-B5; Tue, 04 Dec 2018 09:06:50 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1gUBZt-00076H-SN; Tue, 04 Dec 2018 09:21:34 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 89FCE58E42;
-	Tue,  4 Dec 2018 14:06:48 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E04475C23E;
-	Tue,  4 Dec 2018 14:06:43 +0000 (UTC)
-Date: Tue, 4 Dec 2018 15:06:42 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181204150642.7a569e40@redhat.com>
-In-Reply-To: <20181130130032.11835-9-sameo@linux.intel.com>
-References: <20181130130032.11835-1-sameo@linux.intel.com>
-	<20181130130032.11835-9-sameo@linux.intel.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id A0472A403B;
+	Tue,  4 Dec 2018 14:21:31 +0000 (UTC)
+Received: from localhost (ovpn-112-31.ams2.redhat.com [10.36.112.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7765D648BA;
+	Tue,  4 Dec 2018 14:21:28 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  4 Dec 2018 18:20:12 +0400
+Message-Id: <20181204142023.15982-9-marcandre.lureau@redhat.com>
+In-Reply-To: <20181204142023.15982-1-marcandre.lureau@redhat.com>
+References: <20181204142023.15982-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 04 Dec 2018 14:06:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 04 Dec 2018 14:21:31 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 8/8] hw: acpi: Remove AcpiRsdpDescriptor
- and fix tests
+Subject: [Qemu-arm] [PATCH for-3.2 v5 08/19] hw: apply machine compat
+ properties without touching globals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,204 +90,2117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+	ehabkost@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"open list:sPAPR" <qemu-ppc@nongnu.org>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	imammedo@redhat.com, David Gibson <david@gibson.dropbear.id.au>,
+	"open list:Virt" <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hBn3/LIspvdV
+X-TUID: 2xej+PdNwBuv
 
-On Fri, 30 Nov 2018 14:00:32 +0100
-Samuel Ortiz <sameo@linux.intel.com> wrote:
+Similarly to accel properties, move compat properties out of globals
+registration, and apply the machine compat properties during
+device_post_init().
 
-> The only remaining AcpiRsdpDescriptor users are the ACPI utils for the
-> BIOS table tests.
-> We remove that dependency and can thus remove the structure itself.
-> 
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+As suggested during review, populating the arrays can be done directly
+without resorting to using macros.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ include/hw/boards.h        |   3 +-
+ hw/arm/virt.c              |  48 ++-
+ hw/core/machine.c          |  19 +-
+ hw/core/qdev.c             |   2 +
+ hw/i386/pc_piix.c          | 588 +++++++++++++++++++++----------------
+ hw/i386/pc_q35.c           |  70 ++++-
+ hw/ppc/spapr.c             | 209 +++++++------
+ hw/s390x/s390-virtio-ccw.c | 220 +++++++-------
+ vl.c                       |   1 -
+ 9 files changed, 673 insertions(+), 487 deletions(-)
 
-> ---
->  include/hw/acpi/acpi-defs.h | 13 -----------
->  tests/acpi-utils.h          |  4 +++-
->  tests/acpi-utils.c          | 46 ++++++++++++++++++++++++++++++-------
->  tests/bios-tables-test.c    | 21 +++++++++++++----
->  tests/vmgenid-test.c        |  8 ++++---
->  5 files changed, 62 insertions(+), 30 deletions(-)
-> 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index 8425ecb8c6..5021cb9e79 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -40,19 +40,6 @@ enum {
->      ACPI_FADT_F_LOW_POWER_S0_IDLE_CAPABLE,
->  };
->  
-> -struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
-> -    uint64_t signature;              /* ACPI signature, contains "RSD PTR " */
-> -    uint8_t  checksum;               /* To make sum of struct == 0 */
-> -    uint8_t  oem_id [6];             /* OEM identification */
-> -    uint8_t  revision;               /* Must be 0 for 1.0, 2 for 2.0 */
-> -    uint32_t rsdt_physical_address;  /* 32-bit physical address of RSDT */
-> -    uint32_t length;                 /* XSDT Length in bytes including hdr */
-> -    uint64_t xsdt_physical_address;  /* 64-bit physical address of XSDT */
-> -    uint8_t  extended_checksum;      /* Checksum of entire table */
-> -    uint8_t  reserved [3];           /* Reserved field must be 0 */
-> -} QEMU_PACKED;
-> -typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
-> -
->  typedef struct AcpiRsdpData {
->      uint8_t oem_id[6]; /* OEM identification */
->      uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-> diff --git a/tests/acpi-utils.h b/tests/acpi-utils.h
-> index ac52abd0dd..4f4899deb5 100644
-> --- a/tests/acpi-utils.h
-> +++ b/tests/acpi-utils.h
-> @@ -82,6 +82,8 @@ typedef struct {
->  
->  uint8_t acpi_calc_checksum(const uint8_t *data, int len);
->  uint32_t acpi_find_rsdp_address(void);
-> -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table);
-> +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table);
-> +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table);
-> +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table);
->  
->  #endif  /* TEST_ACPI_UTILS_H */
-> diff --git a/tests/acpi-utils.c b/tests/acpi-utils.c
-> index 41dc1ea9b4..d07f7487e2 100644
-> --- a/tests/acpi-utils.c
-> +++ b/tests/acpi-utils.c
-> @@ -52,14 +52,44 @@ uint32_t acpi_find_rsdp_address(void)
->      return off;
->  }
->  
-> -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table)
-> +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table)
->  {
-> -    ACPI_READ_FIELD(rsdp_table->signature, addr);
-> -    ACPI_ASSERT_CMP64(rsdp_table->signature, "RSD PTR ");
-> +    uint32_t rsdt_physical_address;
->  
-> -    ACPI_READ_FIELD(rsdp_table->checksum, addr);
-> -    ACPI_READ_ARRAY(rsdp_table->oem_id, addr);
-> -    ACPI_READ_FIELD(rsdp_table->revision, addr);
-> -    ACPI_READ_FIELD(rsdp_table->rsdt_physical_address, addr);
-> -    ACPI_READ_FIELD(rsdp_table->length, addr);
-> +    memcpy(&rsdt_physical_address, &rsdp_table[16 /* RsdtAddress offset */], 4);
-> +    return le32_to_cpu(rsdt_physical_address);
-> +}
-> +
-> +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table)
-> +{
-> +    uint64_t xsdt_physical_address;
-> +    uint8_t revision = rsdp_table[15 /* Revision offset */];
-> +
-> +    /* We must have revision 2 if we're looking for an XSDT pointer */
-> +    g_assert(revision == 2);
-> +
-> +    memcpy(&xsdt_physical_address, &rsdp_table[24 /* XsdtAddress offset */], 8);
-> +    return le64_to_cpu(xsdt_physical_address);
-> +}
-> +
-> +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table)
-> +{
-> +    uint8_t revision;
-> +
-> +    /* Read mandatory revision 0 table data (20 bytes) first */
-> +    memread(addr, rsdp_table, 20);
-> +    revision = rsdp_table[15 /* Revision offset */];
-> +
-> +    switch (revision) {
-> +    case 0: /* ACPI 1.0 RSDP */
-> +        break;
-> +    case 2: /* ACPI 2.0+ RSDP */
-> +        /* Read the rest of the RSDP table */
-> +        memread(addr + 20, rsdp_table + 20, 16);
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +
-> +    ACPI_ASSERT_CMP64(*((uint64_t *)(rsdp_table)), "RSD PTR ");
->  }
-> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> index d661d9be62..8749b77b36 100644
-> --- a/tests/bios-tables-test.c
-> +++ b/tests/bios-tables-test.c
-> @@ -27,7 +27,7 @@ typedef struct {
->      const char *machine;
->      const char *variant;
->      uint32_t rsdp_addr;
-> -    AcpiRsdpDescriptor rsdp_table;
-> +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
->      AcpiRsdtDescriptorRev1 rsdt_table;
->      uint32_t dsdt_addr;
->      uint32_t facs_addr;
-> @@ -85,19 +85,30 @@ static void test_acpi_rsdp_address(test_data *data)
->  
->  static void test_acpi_rsdp_table(test_data *data)
->  {
-> -    AcpiRsdpDescriptor *rsdp_table = &data->rsdp_table;
-> +    uint8_t *rsdp_table = data->rsdp_table, revision;
->      uint32_t addr = data->rsdp_addr;
->  
->      acpi_parse_rsdp_table(addr, rsdp_table);
-> +    revision = rsdp_table[15 /* Revision offset */];
->  
-> -    /* rsdp checksum is not for the whole table, but for the first 20 bytes */
-> -    g_assert(!acpi_calc_checksum((uint8_t *)rsdp_table, 20));
-> +    switch (revision) {
-> +    case 0: /* ACPI 1.0 RSDP */
-> +        /* With rev 1, checksum is only for the first 20 bytes */
-> +        g_assert(!acpi_calc_checksum(rsdp_table,  20));
-> +        break;
-> +    case 2: /* ACPI 2.0+ RSDP */
-> +        /* With revision 2, we have 2 checksums */
-> +        g_assert(!acpi_calc_checksum(rsdp_table, 20));
-> +        g_assert(!acpi_calc_checksum(rsdp_table, 36));
-> +    default:
-> +        g_assert_not_reached();
-> +    }
->  }
->  
->  static void test_acpi_rsdt_table(test_data *data)
->  {
->      AcpiRsdtDescriptorRev1 *rsdt_table = &data->rsdt_table;
-> -    uint32_t addr = le32_to_cpu(data->rsdp_table.rsdt_physical_address);
-> +    uint32_t addr = acpi_get_rsdt_address(data->rsdp_table);
->      uint32_t *tables;
->      int tables_nr;
->      uint8_t checksum;
-> diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
-> index 0a6fb55f2e..97219ae86c 100644
-> --- a/tests/vmgenid-test.c
-> +++ b/tests/vmgenid-test.c
-> @@ -35,7 +35,7 @@ static uint32_t acpi_find_vgia(void)
->  {
->      uint32_t rsdp_offset;
->      uint32_t guid_offset = 0;
-> -    AcpiRsdpDescriptor rsdp_table;
-> +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
->      uint32_t rsdt, rsdt_table_length;
->      AcpiRsdtDescriptorRev1 rsdt_table;
->      size_t tables_nr;
-> @@ -52,9 +52,11 @@ static uint32_t acpi_find_vgia(void)
->  
->      g_assert_cmphex(rsdp_offset, <, RSDP_ADDR_INVALID);
->  
-> -    acpi_parse_rsdp_table(rsdp_offset, &rsdp_table);
-> +    acpi_parse_rsdp_table(rsdp_offset, rsdp_table);
-> +
-> +    rsdt = acpi_get_rsdt_address(rsdp_table);
-> +    g_assert(rsdt);
->  
-> -    rsdt = le32_to_cpu(rsdp_table.rsdt_physical_address);
->      /* read the header */
->      ACPI_READ_TABLE_HEADER(&rsdt_table, rsdt);
->      ACPI_ASSERT_CMP(rsdt_table.signature, "RSDT");
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index f82f28468b..28c2b0af41 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -69,7 +69,6 @@ int machine_kvm_shadow_mem(MachineState *machine);
+ int machine_phandle_start(MachineState *machine);
+ bool machine_dump_guest_core(MachineState *machine);
+ bool machine_mem_merge(MachineState *machine);
+-void machine_register_compat_props(MachineState *machine);
+ HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machi=
+ne);
+ void machine_set_cpu_numa_node(MachineState *machine,
+                                const CpuInstanceProperties *props,
+@@ -191,7 +190,7 @@ struct MachineClass {
+     const char *default_machine_opts;
+     const char *default_boot_order;
+     const char *default_display;
+-    GArray *compat_props;
++    GPtrArray *compat_props;
+     const char *hw_version;
+     ram_addr_t default_ram_size;
+     const char *default_cpu_type;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index f69e7eb399..530c8ca89d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1872,8 +1872,9 @@ static void virt_machine_3_1_options(MachineClass *=
+mc)
+ }
+ DEFINE_VIRT_MACHINE_AS_LATEST(3, 1)
+=20
+-#define VIRT_COMPAT_3_0 \
++static GlobalProperty virt_compat_3_0[] =3D {
+     HW_COMPAT_3_0
++};
+=20
+ static void virt_3_0_instance_init(Object *obj)
+ {
+@@ -1883,12 +1884,14 @@ static void virt_3_0_instance_init(Object *obj)
+ static void virt_machine_3_0_options(MachineClass *mc)
+ {
+     virt_machine_3_1_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_3_0);
++    compat_props_add(mc->compat_props,
++                     virt_compat_3_0, G_N_ELEMENTS(virt_compat_3_0));
+ }
+ DEFINE_VIRT_MACHINE(3, 0)
+=20
+-#define VIRT_COMPAT_2_12 \
++static GlobalProperty virt_compat_2_12[] =3D {
+     HW_COMPAT_2_12
++};
+=20
+ static void virt_2_12_instance_init(Object *obj)
+ {
+@@ -1900,14 +1903,16 @@ static void virt_machine_2_12_options(MachineClas=
+s *mc)
+     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+=20
+     virt_machine_3_0_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_12);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_12, G_N_ELEMENTS(virt_compat_2_12));
+     vmc->no_highmem_ecam =3D true;
+     mc->max_cpus =3D 255;
+ }
+ DEFINE_VIRT_MACHINE(2, 12)
+=20
+-#define VIRT_COMPAT_2_11 \
++static GlobalProperty virt_compat_2_11[] =3D {
+     HW_COMPAT_2_11
++};
+=20
+ static void virt_2_11_instance_init(Object *obj)
+ {
+@@ -1919,13 +1924,15 @@ static void virt_machine_2_11_options(MachineClas=
+s *mc)
+     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+=20
+     virt_machine_2_12_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_11);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_11, G_N_ELEMENTS(virt_compat_2_11));
+     vmc->smbios_old_sys_ver =3D true;
+ }
+ DEFINE_VIRT_MACHINE(2, 11)
+=20
+-#define VIRT_COMPAT_2_10 \
++static GlobalProperty virt_compat_2_10[] =3D {
+     HW_COMPAT_2_10
++};
+=20
+ static void virt_2_10_instance_init(Object *obj)
+ {
+@@ -1935,14 +1942,16 @@ static void virt_2_10_instance_init(Object *obj)
+ static void virt_machine_2_10_options(MachineClass *mc)
+ {
+     virt_machine_2_11_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_10);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_10, G_N_ELEMENTS(virt_compat_2_10));
+     /* before 2.11 we never faulted accesses to bad addresses */
+     mc->ignore_memory_transaction_failures =3D true;
+ }
+ DEFINE_VIRT_MACHINE(2, 10)
+=20
+-#define VIRT_COMPAT_2_9 \
++static GlobalProperty virt_compat_2_9[] =3D {
+     HW_COMPAT_2_9
++};
+=20
+ static void virt_2_9_instance_init(Object *obj)
+ {
+@@ -1952,12 +1961,14 @@ static void virt_2_9_instance_init(Object *obj)
+ static void virt_machine_2_9_options(MachineClass *mc)
+ {
+     virt_machine_2_10_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_9);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_9, G_N_ELEMENTS(virt_compat_2_9));
+ }
+ DEFINE_VIRT_MACHINE(2, 9)
+=20
+-#define VIRT_COMPAT_2_8 \
++static GlobalProperty virt_compat_2_8[] =3D {
+     HW_COMPAT_2_8
++};
+=20
+ static void virt_2_8_instance_init(Object *obj)
+ {
+@@ -1969,7 +1980,8 @@ static void virt_machine_2_8_options(MachineClass *=
+mc)
+     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+=20
+     virt_machine_2_9_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_8, G_N_ELEMENTS(virt_compat_2_8));
+     /* For 2.8 and earlier we falsely claimed in the DT that
+      * our timers were edge-triggered, not level-triggered.
+      */
+@@ -1977,8 +1989,9 @@ static void virt_machine_2_8_options(MachineClass *=
+mc)
+ }
+ DEFINE_VIRT_MACHINE(2, 8)
+=20
+-#define VIRT_COMPAT_2_7 \
++static GlobalProperty virt_compat_2_7[] =3D {
+     HW_COMPAT_2_7
++};
+=20
+ static void virt_2_7_instance_init(Object *obj)
+ {
+@@ -1990,7 +2003,8 @@ static void virt_machine_2_7_options(MachineClass *=
+mc)
+     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+=20
+     virt_machine_2_8_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_7);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_7, G_N_ELEMENTS(virt_compat_2_7));
+     /* ITS was introduced with 2.8 */
+     vmc->no_its =3D true;
+     /* Stick with 1K pages for migration compatibility */
+@@ -1998,8 +2012,9 @@ static void virt_machine_2_7_options(MachineClass *=
+mc)
+ }
+ DEFINE_VIRT_MACHINE(2, 7)
+=20
+-#define VIRT_COMPAT_2_6 \
++static GlobalProperty virt_compat_2_6[] =3D {
+     HW_COMPAT_2_6
++};
+=20
+ static void virt_2_6_instance_init(Object *obj)
+ {
+@@ -2011,7 +2026,8 @@ static void virt_machine_2_6_options(MachineClass *=
+mc)
+     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+=20
+     virt_machine_2_7_options(mc);
+-    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
++    compat_props_add(mc->compat_props,
++                     virt_compat_2_6, G_N_ELEMENTS(virt_compat_2_6));
+     vmc->disallow_affinity_adjustment =3D true;
+     /* Disable PMU for 2.6 as PMU support was first introduced in 2.7 */
+     vmc->no_pmu =3D true;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index c51423b647..6e24924aba 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -647,6 +647,7 @@ static void machine_class_base_init(ObjectClass *oc, =
+void *data)
+         assert(g_str_has_suffix(cname, TYPE_MACHINE_SUFFIX));
+         mc->name =3D g_strndup(cname,
+                             strlen(cname) - strlen(TYPE_MACHINE_SUFFIX))=
+;
++        mc->compat_props =3D g_ptr_array_new();
+     }
+ }
+=20
+@@ -834,24 +835,6 @@ void machine_run_board_init(MachineState *machine)
+     machine_class->init(machine);
+ }
+=20
+-void machine_register_compat_props(MachineState *machine)
+-{
+-    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+-    int i;
+-    GlobalProperty *p;
+-
+-    if (!mc->compat_props) {
+-        return;
+-    }
+-
+-    for (i =3D 0; i < mc->compat_props->len; i++) {
+-        p =3D g_array_index(mc->compat_props, GlobalProperty *, i);
+-        /* Machine compat_props must never cause errors: */
+-        p->errp =3D &error_abort;
+-        qdev_prop_register_global(p);
+-    }
+-}
+-
+ static const TypeInfo machine_info =3D {
+     .name =3D TYPE_MACHINE,
+     .parent =3D TYPE_OBJECT,
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 53b507164f..d510340bac 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -974,11 +974,13 @@ static void device_post_init(Object *obj)
+ {
+     if (object_dynamic_cast(qdev_get_machine(), TYPE_MACHINE)) {
+         MachineState *m =3D MACHINE(qdev_get_machine());
++        MachineClass *mc =3D MACHINE_GET_CLASS(m);
+         AccelClass *ac =3D ACCEL_GET_CLASS(m->accelerator);
+=20
+         if (ac->compat_props) {
+             object_apply_global_props(obj, ac->compat_props, &error_abor=
+t);
+         }
++        object_apply_global_props(obj, mc->compat_props, &error_abort);
+     }
+=20
+     qdev_prop_set_globals(DEVICE(obj));
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 7092d6d13f..575566e466 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -438,74 +438,112 @@ static void pc_i440fx_3_1_machine_options(MachineC=
+lass *m)
+ DEFINE_I440FX_MACHINE(v3_1, "pc-i440fx-3.1", NULL,
+                       pc_i440fx_3_1_machine_options);
+=20
++static GlobalProperty pc_compat_3_0[] =3D {
++    PC_COMPAT_3_0
++};
++
+ static void pc_i440fx_3_0_machine_options(MachineClass *m)
+ {
+     pc_i440fx_3_1_machine_options(m);
+     m->is_default =3D 0;
+     m->alias =3D NULL;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
++
++    compat_props_add(m->compat_props,
++                     pc_compat_3_0, G_N_ELEMENTS(pc_compat_3_0));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v3_0, "pc-i440fx-3.0", NULL,
+                       pc_i440fx_3_0_machine_options);
+=20
++static GlobalProperty pc_compat_2_12[] =3D {
++    PC_COMPAT_2_12
++};
++
+ static void pc_i440fx_2_12_machine_options(MachineClass *m)
+ {
+     pc_i440fx_3_0_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_12, G_N_ELEMENTS(pc_compat_2_12));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_12, "pc-i440fx-2.12", NULL,
+                       pc_i440fx_2_12_machine_options);
+=20
++static GlobalProperty pc_compat_2_11[] =3D {
++    PC_COMPAT_2_11
++};
++
+ static void pc_i440fx_2_11_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_12_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_11);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_11, G_N_ELEMENTS(pc_compat_2_11));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_11, "pc-i440fx-2.11", NULL,
+                       pc_i440fx_2_11_machine_options);
+=20
++static GlobalProperty pc_compat_2_10[] =3D {
++    PC_COMPAT_2_10
++};
++
+ static void pc_i440fx_2_10_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_11_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_10);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_10, G_N_ELEMENTS(pc_compat_2_10));
+     m->auto_enable_numa_with_memhp =3D false;
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_10, "pc-i440fx-2.10", NULL,
+                       pc_i440fx_2_10_machine_options);
+=20
++static GlobalProperty pc_compat_2_9[] =3D {
++    PC_COMPAT_2_9
++};
++
+ static void pc_i440fx_2_9_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_10_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_9);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_9, G_N_ELEMENTS(pc_compat_2_9));
+     m->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_9, "pc-i440fx-2.9", NULL,
+                       pc_i440fx_2_9_machine_options);
+=20
++static GlobalProperty pc_compat_2_8[] =3D {
++    PC_COMPAT_2_8
++};
++
+ static void pc_i440fx_2_8_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_9_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_8);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_8, G_N_ELEMENTS(pc_compat_2_8));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_8, "pc-i440fx-2.8", NULL,
+                       pc_i440fx_2_8_machine_options);
+=20
++static GlobalProperty pc_compat_2_7[] =3D {
++    PC_COMPAT_2_7
++};
+=20
+ static void pc_i440fx_2_7_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_8_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_7);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_7, G_N_ELEMENTS(pc_compat_2_7));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_7, "pc-i440fx-2.7", NULL,
+                       pc_i440fx_2_7_machine_options);
+=20
++static GlobalProperty pc_compat_2_6[] =3D {
++    PC_COMPAT_2_6
++};
+=20
+ static void pc_i440fx_2_6_machine_options(MachineClass *m)
+ {
+@@ -513,12 +551,16 @@ static void pc_i440fx_2_6_machine_options(MachineCl=
+ass *m)
+     pc_i440fx_2_7_machine_options(m);
+     pcmc->legacy_cpu_hotplug =3D true;
+     pcmc->linuxboot_dma_enabled =3D false;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_6);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_6, G_N_ELEMENTS(pc_compat_2_6));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_6, "pc-i440fx-2.6", NULL,
+                       pc_i440fx_2_6_machine_options);
+=20
++static GlobalProperty pc_compat_2_5[] =3D {
++    PC_COMPAT_2_5
++};
+=20
+ static void pc_i440fx_2_5_machine_options(MachineClass *m)
+ {
+@@ -526,12 +568,16 @@ static void pc_i440fx_2_5_machine_options(MachineCl=
+ass *m)
+     pc_i440fx_2_6_machine_options(m);
+     pcmc->save_tsc_khz =3D false;
+     m->legacy_fw_cfg_order =3D 1;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_5);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_5, G_N_ELEMENTS(pc_compat_2_5));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_5, "pc-i440fx-2.5", NULL,
+                       pc_i440fx_2_5_machine_options);
+=20
++static GlobalProperty pc_compat_2_4[] =3D {
++    PC_COMPAT_2_4
++};
+=20
+ static void pc_i440fx_2_4_machine_options(MachineClass *m)
+ {
+@@ -539,36 +585,48 @@ static void pc_i440fx_2_4_machine_options(MachineCl=
+ass *m)
+     pc_i440fx_2_5_machine_options(m);
+     m->hw_version =3D "2.4.0";
+     pcmc->broken_reserved_end =3D true;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_4);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_4, G_N_ELEMENTS(pc_compat_2_4));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_4, "pc-i440fx-2.4", NULL,
+-                      pc_i440fx_2_4_machine_options)
++                      pc_i440fx_2_4_machine_options);
+=20
++static GlobalProperty pc_compatp_2_3[] =3D {
++    PC_COMPAT_2_3
++};
+=20
+ static void pc_i440fx_2_3_machine_options(MachineClass *m)
+ {
+     pc_i440fx_2_4_machine_options(m);
+     m->hw_version =3D "2.3.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_3);
++    compat_props_add(m->compat_props,
++                     pc_compatp_2_3, G_N_ELEMENTS(pc_compatp_2_3));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_3, "pc-i440fx-2.3", pc_compat_2_3,
+                       pc_i440fx_2_3_machine_options);
+=20
++static GlobalProperty pc_compatp_2_2[] =3D {
++    PC_COMPAT_2_2
++};
+=20
+ static void pc_i440fx_2_2_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_2_3_machine_options(m);
+     m->hw_version =3D "2.2.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_2);
++    compat_props_add(m->compat_props,
++                     pc_compatp_2_2, G_N_ELEMENTS(pc_compatp_2_2));
+     pcmc->rsdp_in_ram =3D false;
+ }
+=20
+ DEFINE_I440FX_MACHINE(v2_2, "pc-i440fx-2.2", pc_compat_2_2,
+                       pc_i440fx_2_2_machine_options);
+=20
++static GlobalProperty pc_compatp_2_1[] =3D {
++    PC_COMPAT_2_1
++};
+=20
+ static void pc_i440fx_2_1_machine_options(MachineClass *m)
+ {
+@@ -576,7 +634,8 @@ static void pc_i440fx_2_1_machine_options(MachineClas=
+s *m)
+     pc_i440fx_2_2_machine_options(m);
+     m->hw_version =3D "2.1.0";
+     m->default_display =3D NULL;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_1);
++    compat_props_add(m->compat_props,
++                     pc_compatp_2_1, G_N_ELEMENTS(pc_compatp_2_1));
+     pcmc->smbios_uuid_encoded =3D false;
+     pcmc->enforce_aligned_dimm =3D false;
+ }
+@@ -584,14 +643,17 @@ static void pc_i440fx_2_1_machine_options(MachineCl=
+ass *m)
+ DEFINE_I440FX_MACHINE(v2_1, "pc-i440fx-2.1", pc_compat_2_1,
+                       pc_i440fx_2_1_machine_options);
+=20
+-
++static GlobalProperty pc_compatp_2_0[] =3D {
++    PC_COMPAT_2_0
++};
+=20
+ static void pc_i440fx_2_0_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_2_1_machine_options(m);
+     m->hw_version =3D "2.0.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_0);
++    compat_props_add(m->compat_props,
++                     pc_compatp_2_0, G_N_ELEMENTS(pc_compatp_2_0));
+     pcmc->smbios_legacy_mode =3D true;
+     pcmc->has_reserved_memory =3D false;
+     /* This value depends on the actual DSDT and SSDT compiled into
+@@ -617,6 +679,9 @@ static void pc_i440fx_2_0_machine_options(MachineClas=
+s *m)
+ DEFINE_I440FX_MACHINE(v2_0, "pc-i440fx-2.0", pc_compat_2_0,
+                       pc_i440fx_2_0_machine_options);
+=20
++static GlobalProperty pc_compatp_1_7[] =3D {
++    PC_COMPAT_1_7
++};
+=20
+ static void pc_i440fx_1_7_machine_options(MachineClass *m)
+ {
+@@ -625,7 +690,8 @@ static void pc_i440fx_1_7_machine_options(MachineClas=
+s *m)
+     m->hw_version =3D "1.7.0";
+     m->default_machine_opts =3D NULL;
+     m->option_rom_has_mr =3D true;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_7);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_7, G_N_ELEMENTS(pc_compatp_1_7));
+     pcmc->smbios_defaults =3D false;
+     pcmc->gigabyte_align =3D false;
+     pcmc->legacy_acpi_table_size =3D 6414;
+@@ -634,6 +700,9 @@ static void pc_i440fx_1_7_machine_options(MachineClas=
+s *m)
+ DEFINE_I440FX_MACHINE(v1_7, "pc-i440fx-1.7", pc_compat_1_7,
+                       pc_i440fx_1_7_machine_options);
+=20
++static GlobalProperty pc_compatp_1_6[] =3D {
++    PC_COMPAT_1_6
++};
+=20
+ static void pc_i440fx_1_6_machine_options(MachineClass *m)
+ {
+@@ -641,368 +710,391 @@ static void pc_i440fx_1_6_machine_options(Machine=
+Class *m)
+     pc_i440fx_1_7_machine_options(m);
+     m->hw_version =3D "1.6.0";
+     m->rom_file_has_mr =3D false;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_6);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_6, G_N_ELEMENTS(pc_compatp_1_6));
+     pcmc->has_acpi_build =3D false;
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_6, "pc-i440fx-1.6", pc_compat_1_6,
+                       pc_i440fx_1_6_machine_options);
+=20
++static GlobalProperty pc_compatp_1_5[] =3D {
++    PC_COMPAT_1_5
++};
+=20
+ static void pc_i440fx_1_5_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_6_machine_options(m);
+     m->hw_version =3D "1.5.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_5);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_5, G_N_ELEMENTS(pc_compatp_1_5));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_5, "pc-i440fx-1.5", pc_compat_1_5,
+                       pc_i440fx_1_5_machine_options);
+=20
++static GlobalProperty pc_compatp_1_4[] =3D {
++    PC_COMPAT_1_4
++};
+=20
+ static void pc_i440fx_1_4_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_5_machine_options(m);
+     m->hw_version =3D "1.4.0";
+     m->hot_add_cpu =3D NULL;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_4);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_4, G_N_ELEMENTS(pc_compatp_1_4));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_4, "pc-i440fx-1.4", pc_compat_1_4,
+                       pc_i440fx_1_4_machine_options);
+=20
+-
+-#define PC_COMPAT_1_3 \
+-        PC_CPU_MODEL_IDS("1.3.0") \
+-        {\
+-            .driver   =3D "usb-tablet",\
+-            .property =3D "usb_version",\
+-            .value    =3D stringify(1),\
+-        },{\
+-            .driver   =3D "virtio-net-pci",\
+-            .property =3D "ctrl_mac_addr",\
+-            .value    =3D "off",      \
+-        },{ \
+-            .driver   =3D "virtio-net-pci", \
+-            .property =3D "mq", \
+-            .value    =3D "off", \
+-        }, {\
+-            .driver   =3D "e1000",\
+-            .property =3D "autonegotiation",\
+-            .value    =3D "off",\
+-        },
+-
++static GlobalProperty pc_compatp_1_3[] =3D {
++    PC_CPU_MODEL_IDS("1.3.0")
++    {
++        .driver   =3D "usb-tablet",
++        .property =3D "usb_version",
++        .value    =3D stringify(1),
++    },{
++        .driver   =3D "virtio-net-pci",
++        .property =3D "ctrl_mac_addr",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-net-pci",
++        .property =3D "mq",
++        .value    =3D "off",
++    }, {
++        .driver   =3D "e1000",
++        .property =3D "autonegotiation",
++        .value    =3D "off",
++    },
++};
+=20
+ static void pc_i440fx_1_3_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_4_machine_options(m);
+     m->hw_version =3D "1.3.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_3);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_3, G_N_ELEMENTS(pc_compatp_1_3));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_3, "pc-1.3", pc_compat_1_3,
+                       pc_i440fx_1_3_machine_options);
+=20
+=20
+-#define PC_COMPAT_1_2 \
+-        PC_CPU_MODEL_IDS("1.2.0") \
+-        {\
+-            .driver   =3D "nec-usb-xhci",\
+-            .property =3D "msi",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "nec-usb-xhci",\
+-            .property =3D "msix",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "ivshmem",\
+-            .property =3D "use64",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "qxl",\
+-            .property =3D "revision",\
+-            .value    =3D stringify(3),\
+-        },{\
+-            .driver   =3D "qxl-vga",\
+-            .property =3D "revision",\
+-            .value    =3D stringify(3),\
+-        },{\
+-            .driver   =3D "VGA",\
+-            .property =3D "mmio",\
+-            .value    =3D "off",\
+-        },
++static GlobalProperty pc_compatp_1_2[] =3D {
++    PC_CPU_MODEL_IDS("1.2.0")
++    {
++        .driver   =3D "nec-usb-xhci",
++        .property =3D "msi",
++        .value    =3D "off",
++    },{
++        .driver   =3D "nec-usb-xhci",
++        .property =3D "msix",
++        .value    =3D "off",
++    },{
++        .driver   =3D "ivshmem",
++        .property =3D "use64",
++        .value    =3D "0",
++    },{
++        .driver   =3D "qxl",
++        .property =3D "revision",
++        .value    =3D stringify(3),
++    },{
++        .driver   =3D "qxl-vga",
++        .property =3D "revision",
++        .value    =3D stringify(3),
++    },{
++        .driver   =3D "VGA",
++        .property =3D "mmio",
++        .value    =3D "off",
++    },
++};
+=20
+ static void pc_i440fx_1_2_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_3_machine_options(m);
+     m->hw_version =3D "1.2.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_2);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_2, G_N_ELEMENTS(pc_compatp_1_2));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_2, "pc-1.2", pc_compat_1_2,
+                       pc_i440fx_1_2_machine_options);
+=20
+=20
+-#define PC_COMPAT_1_1 \
+-        PC_CPU_MODEL_IDS("1.1.0") \
+-        {\
+-            .driver   =3D "virtio-scsi-pci",\
+-            .property =3D "hotplug",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "virtio-scsi-pci",\
+-            .property =3D "param_change",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "VGA",\
+-            .property =3D "vgamem_mb",\
+-            .value    =3D stringify(8),\
+-        },{\
+-            .driver   =3D "vmware-svga",\
+-            .property =3D "vgamem_mb",\
+-            .value    =3D stringify(8),\
+-        },{\
+-            .driver   =3D "qxl-vga",\
+-            .property =3D "vgamem_mb",\
+-            .value    =3D stringify(8),\
+-        },{\
+-            .driver   =3D "qxl",\
+-            .property =3D "vgamem_mb",\
+-            .value    =3D stringify(8),\
+-        },{\
+-            .driver   =3D "virtio-blk-pci",\
+-            .property =3D "config-wce",\
+-            .value    =3D "off",\
+-        },
++static GlobalProperty pc_compatp_1_1[] =3D {
++    PC_CPU_MODEL_IDS("1.1.0")
++    {
++        .driver   =3D "virtio-scsi-pci",
++        .property =3D "hotplug",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-scsi-pci",
++        .property =3D "param_change",
++        .value    =3D "off",
++    },{
++        .driver   =3D "VGA",
++        .property =3D "vgamem_mb",
++        .value    =3D stringify(8),
++    },{
++        .driver   =3D "vmware-svga",
++        .property =3D "vgamem_mb",
++        .value    =3D stringify(8),
++    },{
++        .driver   =3D "qxl-vga",
++        .property =3D "vgamem_mb",
++        .value    =3D stringify(8),
++    },{
++        .driver   =3D "qxl",
++        .property =3D "vgamem_mb",
++        .value    =3D stringify(8),
++    },{
++        .driver   =3D "virtio-blk-pci",
++        .property =3D "config-wce",
++        .value    =3D "off",
++    },
++};
+=20
+ static void pc_i440fx_1_1_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_2_machine_options(m);
+     m->hw_version =3D "1.1.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_1);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_1, G_N_ELEMENTS(pc_compatp_1_1));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_1, "pc-1.1", pc_compat_1_2,
+                       pc_i440fx_1_1_machine_options);
+=20
+-
+-#define PC_COMPAT_1_0 \
+-        PC_CPU_MODEL_IDS("1.0") \
+-        {\
+-            .driver   =3D TYPE_ISA_FDC,\
+-            .property =3D "check_media_rate",\
+-            .value    =3D "off",\
+-        }, {\
+-            .driver   =3D "virtio-balloon-pci",\
+-            .property =3D "class",\
+-            .value    =3D stringify(PCI_CLASS_MEMORY_RAM),\
+-        },{\
+-            .driver   =3D "apic-common",\
+-            .property =3D "vapic",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D TYPE_USB_DEVICE,\
+-            .property =3D "full-path",\
+-            .value    =3D "no",\
+-        },
++static GlobalProperty pc_compatp_1_0[] =3D {
++    PC_CPU_MODEL_IDS("1.0")
++    {
++        .driver   =3D TYPE_ISA_FDC,
++        .property =3D "check_media_rate",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-balloon-pci",
++        .property =3D "class",
++        .value    =3D stringify(PCI_CLASS_MEMORY_RAM),
++    },{
++        .driver   =3D "apic-common",
++        .property =3D "vapic",
++        .value    =3D "off",
++    },{
++        .driver   =3D TYPE_USB_DEVICE,
++        .property =3D "full-path",
++        .value    =3D "no",
++    },
++};
+=20
+ static void pc_i440fx_1_0_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_1_machine_options(m);
+     m->hw_version =3D "1.0";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_1_0);
++    compat_props_add(m->compat_props,
++                     pc_compatp_1_0, G_N_ELEMENTS(pc_compatp_1_0));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v1_0, "pc-1.0", pc_compat_1_2,
+                       pc_i440fx_1_0_machine_options);
+=20
+=20
+-#define PC_COMPAT_0_15 \
+-        PC_CPU_MODEL_IDS("0.15")
++static GlobalProperty pc_compatp_0_15[] =3D {
++    PC_CPU_MODEL_IDS("0.15")
++};
+=20
+ static void pc_i440fx_0_15_machine_options(MachineClass *m)
+ {
+     pc_i440fx_1_0_machine_options(m);
+     m->hw_version =3D "0.15";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_15);
++    compat_props_add(m->compat_props,
++                     pc_compatp_0_15, G_N_ELEMENTS(pc_compatp_0_15));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_15, "pc-0.15", pc_compat_1_2,
+                       pc_i440fx_0_15_machine_options);
+=20
+=20
+-#define PC_COMPAT_0_14 \
+-        PC_CPU_MODEL_IDS("0.14") \
+-        {\
+-            .driver   =3D "virtio-blk-pci",\
+-            .property =3D "event_idx",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "virtio-serial-pci",\
+-            .property =3D "event_idx",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "virtio-net-pci",\
+-            .property =3D "event_idx",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "virtio-balloon-pci",\
+-            .property =3D "event_idx",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "qxl",\
+-            .property =3D "revision",\
+-            .value    =3D stringify(2),\
+-        },{\
+-            .driver   =3D "qxl-vga",\
+-            .property =3D "revision",\
+-            .value    =3D stringify(2),\
+-        },
++static GlobalProperty pc_compatp_0_14[] =3D {
++    PC_CPU_MODEL_IDS("0.14")
++    {
++        .driver   =3D "virtio-blk-pci",
++        .property =3D "event_idx",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-serial-pci",
++        .property =3D "event_idx",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-net-pci",
++        .property =3D "event_idx",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-balloon-pci",
++        .property =3D "event_idx",
++        .value    =3D "off",
++    },{
++        .driver   =3D "qxl",
++        .property =3D "revision",
++        .value    =3D stringify(2),
++    },{
++        .driver   =3D "qxl-vga",
++        .property =3D "revision",
++        .value    =3D stringify(2),
++    },
++};
+=20
+ static void pc_i440fx_0_14_machine_options(MachineClass *m)
+ {
+     pc_i440fx_0_15_machine_options(m);
+     m->hw_version =3D "0.14";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_14);
++    compat_props_add(m->compat_props,
++                     pc_compatp_0_14, G_N_ELEMENTS(pc_compatp_0_14));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_14, "pc-0.14", pc_compat_1_2,
+                       pc_i440fx_0_14_machine_options);
+=20
+-
+-#define PC_COMPAT_0_13 \
+-        PC_CPU_MODEL_IDS("0.13") \
+-        {\
+-            .driver   =3D TYPE_PCI_DEVICE,\
+-            .property =3D "command_serr_enable",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "AC97",\
+-            .property =3D "use_broken_id",\
+-            .value    =3D stringify(1),\
+-        },{\
+-            .driver   =3D "virtio-9p-pci",\
+-            .property =3D "vectors",\
+-            .value    =3D stringify(0),\
+-        },{\
+-            .driver   =3D "VGA",\
+-            .property =3D "rombar",\
+-            .value    =3D stringify(0),\
+-        },{\
+-            .driver   =3D "vmware-svga",\
+-            .property =3D "rombar",\
+-            .value    =3D stringify(0),\
+-        },
++static GlobalProperty pc_compatp_0_13[] =3D {
++    PC_CPU_MODEL_IDS("0.13")
++    {
++        .driver   =3D TYPE_PCI_DEVICE,
++        .property =3D "command_serr_enable",
++        .value    =3D "off",
++    },{
++        .driver   =3D "AC97",
++        .property =3D "use_broken_id",
++        .value    =3D stringify(1),
++    },{
++        .driver   =3D "virtio-9p-pci",
++        .property =3D "vectors",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D "VGA",
++        .property =3D "rombar",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D "vmware-svga",
++        .property =3D "rombar",
++        .value    =3D stringify(0),
++    },
++};
+=20
+ static void pc_i440fx_0_13_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_0_14_machine_options(m);
+     m->hw_version =3D "0.13";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_13);
++    compat_props_add(m->compat_props,
++                     pc_compatp_0_13, G_N_ELEMENTS(pc_compatp_0_13));
+     pcmc->kvmclock_enabled =3D false;
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_13, "pc-0.13", pc_compat_0_13,
+                       pc_i440fx_0_13_machine_options);
+=20
+-
+-#define PC_COMPAT_0_12 \
+-        PC_CPU_MODEL_IDS("0.12") \
+-        {\
+-            .driver   =3D "virtio-serial-pci",\
+-            .property =3D "max_ports",\
+-            .value    =3D stringify(1),\
+-        },{\
+-            .driver   =3D "virtio-serial-pci",\
+-            .property =3D "vectors",\
+-            .value    =3D stringify(0),\
+-        },{\
+-            .driver   =3D "usb-mouse",\
+-            .property =3D "serial",\
+-            .value    =3D "1",\
+-        },{\
+-            .driver   =3D "usb-tablet",\
+-            .property =3D "serial",\
+-            .value    =3D "1",\
+-        },{\
+-            .driver   =3D "usb-kbd",\
+-            .property =3D "serial",\
+-            .value    =3D "1",\
+-        },
++static GlobalProperty pc_compat_0_12[] =3D {
++    PC_CPU_MODEL_IDS("0.12")
++    {
++        .driver   =3D "virtio-serial-pci",
++        .property =3D "max_ports",
++        .value    =3D stringify(1),
++    },{
++        .driver   =3D "virtio-serial-pci",
++        .property =3D "vectors",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D "usb-mouse",
++        .property =3D "serial",
++        .value    =3D "1",
++    },{
++        .driver   =3D "usb-tablet",
++        .property =3D "serial",
++        .value    =3D "1",
++    },{
++        .driver   =3D "usb-kbd",
++        .property =3D "serial",
++        .value    =3D "1",
++    },
++};
+=20
+ static void pc_i440fx_0_12_machine_options(MachineClass *m)
+ {
+     pc_i440fx_0_13_machine_options(m);
+     m->hw_version =3D "0.12";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_12);
++    compat_props_add(m->compat_props,
++                     pc_compat_0_12, G_N_ELEMENTS(pc_compat_0_12));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_12, "pc-0.12", pc_compat_0_13,
+                       pc_i440fx_0_12_machine_options);
+=20
+=20
+-#define PC_COMPAT_0_11 \
+-        PC_CPU_MODEL_IDS("0.11") \
+-        {\
+-            .driver   =3D "virtio-blk-pci",\
+-            .property =3D "vectors",\
+-            .value    =3D stringify(0),\
+-        },{\
+-            .driver   =3D TYPE_PCI_DEVICE,\
+-            .property =3D "rombar",\
+-            .value    =3D stringify(0),\
+-        },{\
+-            .driver   =3D "ide-drive",\
+-            .property =3D "ver",\
+-            .value    =3D "0.11",\
+-        },{\
+-            .driver   =3D "scsi-disk",\
+-            .property =3D "ver",\
+-            .value    =3D "0.11",\
+-        },
++static GlobalProperty pc_compat_0_11[] =3D {
++    PC_CPU_MODEL_IDS("0.11")
++    {
++        .driver   =3D "virtio-blk-pci",
++        .property =3D "vectors",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D TYPE_PCI_DEVICE,
++        .property =3D "rombar",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D "ide-drive",
++        .property =3D "ver",
++        .value    =3D "0.11",
++    },{
++        .driver   =3D "scsi-disk",
++        .property =3D "ver",
++        .value    =3D "0.11",
++    },
++};
+=20
+ static void pc_i440fx_0_11_machine_options(MachineClass *m)
+ {
+     pc_i440fx_0_12_machine_options(m);
+     m->hw_version =3D "0.11";
+     m->deprecation_reason =3D "use a newer machine type instead";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_11);
++    compat_props_add(m->compat_props,
++                     pc_compat_0_11, G_N_ELEMENTS(pc_compat_0_11));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_11, "pc-0.11", pc_compat_0_13,
+                       pc_i440fx_0_11_machine_options);
+=20
+-
+-#define PC_COMPAT_0_10 \
+-    PC_CPU_MODEL_IDS("0.10") \
+-    {\
+-        .driver   =3D "virtio-blk-pci",\
+-        .property =3D "class",\
+-        .value    =3D stringify(PCI_CLASS_STORAGE_OTHER),\
+-    },{\
+-        .driver   =3D "virtio-serial-pci",\
+-        .property =3D "class",\
+-        .value    =3D stringify(PCI_CLASS_DISPLAY_OTHER),\
+-    },{\
+-        .driver   =3D "virtio-net-pci",\
+-        .property =3D "vectors",\
+-        .value    =3D stringify(0),\
+-    },{\
+-        .driver   =3D "ide-drive",\
+-        .property =3D "ver",\
+-        .value    =3D "0.10",\
+-    },{\
+-        .driver   =3D "scsi-disk",\
+-        .property =3D "ver",\
+-        .value    =3D "0.10",\
++static GlobalProperty pc_compat_0_10[] =3D {
++    PC_CPU_MODEL_IDS("0.10")
++    {
++        .driver   =3D "virtio-blk-pci",
++        .property =3D "class",
++        .value    =3D stringify(PCI_CLASS_STORAGE_OTHER),
++    },{
++        .driver   =3D "virtio-serial-pci",
++        .property =3D "class",
++        .value    =3D stringify(PCI_CLASS_DISPLAY_OTHER),
++    },{
++        .driver   =3D "virtio-net-pci",
++        .property =3D "vectors",
++        .value    =3D stringify(0),
++    },{
++        .driver   =3D "ide-drive",
++        .property =3D "ver",
++        .value    =3D "0.10",
++    },{
++        .driver   =3D "scsi-disk",
++        .property =3D "ver",
++        .value    =3D "0.10",
+     },
++};
+=20
+ static void pc_i440fx_0_10_machine_options(MachineClass *m)
+ {
+     pc_i440fx_0_11_machine_options(m);
+     m->hw_version =3D "0.10";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_0_10);
++    compat_props_add(m->compat_props,
++                     pc_compat_0_10, G_N_ELEMENTS(pc_compat_0_10));
+ }
+=20
+ DEFINE_I440FX_MACHINE(v0_10, "pc-0.10", pc_compat_0_13,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 4702bb13c4..701c09b43e 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -320,41 +320,61 @@ static void pc_q35_3_1_machine_options(MachineClass=
+ *m)
+ DEFINE_Q35_MACHINE(v3_1, "pc-q35-3.1", NULL,
+                    pc_q35_3_1_machine_options);
+=20
++static GlobalProperty pc_compat_3_0[] =3D {
++    PC_COMPAT_3_0
++};
++
+ static void pc_q35_3_0_machine_options(MachineClass *m)
+ {
+     pc_q35_3_1_machine_options(m);
+     m->alias =3D NULL;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
++    compat_props_add(m->compat_props,
++                     pc_compat_3_0, G_N_ELEMENTS(pc_compat_3_0));
+ }
+=20
+ DEFINE_Q35_MACHINE(v3_0, "pc-q35-3.0", NULL,
+                     pc_q35_3_0_machine_options);
+=20
++static GlobalProperty pc_compat_2_12[] =3D {
++    PC_COMPAT_2_12
++};
++
+ static void pc_q35_2_12_machine_options(MachineClass *m)
+ {
+     pc_q35_3_0_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_12, G_N_ELEMENTS(pc_compat_2_12));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_12, "pc-q35-2.12", NULL,
+                    pc_q35_2_12_machine_options);
+=20
++static GlobalProperty pc_compat_2_11[] =3D {
++    PC_COMPAT_2_11
++};
++
+ static void pc_q35_2_11_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+=20
+     pc_q35_2_12_machine_options(m);
+     pcmc->default_nic_model =3D "e1000";
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_11);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_11, G_N_ELEMENTS(pc_compat_2_11));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_11, "pc-q35-2.11", NULL,
+                    pc_q35_2_11_machine_options);
+=20
++static GlobalProperty pc_compat_2_10[] =3D {
++    PC_COMPAT_2_10
++};
++
+ static void pc_q35_2_10_machine_options(MachineClass *m)
+ {
+     pc_q35_2_11_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_10);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_10, G_N_ELEMENTS(pc_compat_2_10));
+     m->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
+     m->auto_enable_numa_with_memhp =3D false;
+ }
+@@ -362,65 +382,95 @@ static void pc_q35_2_10_machine_options(MachineClas=
+s *m)
+ DEFINE_Q35_MACHINE(v2_10, "pc-q35-2.10", NULL,
+                    pc_q35_2_10_machine_options);
+=20
++static GlobalProperty pc_compat_2_9[] =3D {
++    PC_COMPAT_2_9
++};
++
+ static void pc_q35_2_9_machine_options(MachineClass *m)
+ {
+     pc_q35_2_10_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_9);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_9, G_N_ELEMENTS(pc_compat_2_9));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_9, "pc-q35-2.9", NULL,
+                    pc_q35_2_9_machine_options);
+=20
++static GlobalProperty pc_compat_2_8[] =3D {
++    PC_COMPAT_2_8
++};
++
+ static void pc_q35_2_8_machine_options(MachineClass *m)
+ {
+     pc_q35_2_9_machine_options(m);
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_8);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_8, G_N_ELEMENTS(pc_compat_2_8));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_8, "pc-q35-2.8", NULL,
+                    pc_q35_2_8_machine_options);
+=20
++static GlobalProperty pc_compat_2_7[] =3D {
++    PC_COMPAT_2_7
++};
++
+ static void pc_q35_2_7_machine_options(MachineClass *m)
+ {
+     pc_q35_2_8_machine_options(m);
+     m->max_cpus =3D 255;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_7);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_7, G_N_ELEMENTS(pc_compat_2_7));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_7, "pc-q35-2.7", NULL,
+                    pc_q35_2_7_machine_options);
+=20
++static GlobalProperty pc_compat_2_6[] =3D {
++    PC_COMPAT_2_6
++};
++
+ static void pc_q35_2_6_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_2_7_machine_options(m);
+     pcmc->legacy_cpu_hotplug =3D true;
+     pcmc->linuxboot_dma_enabled =3D false;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_6);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_6, G_N_ELEMENTS(pc_compat_2_6));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_6, "pc-q35-2.6", NULL,
+                    pc_q35_2_6_machine_options);
+=20
++static GlobalProperty pc_compat_2_5[] =3D {
++    PC_COMPAT_2_5
++};
++
+ static void pc_q35_2_5_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_2_6_machine_options(m);
+     pcmc->save_tsc_khz =3D false;
+     m->legacy_fw_cfg_order =3D 1;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_5);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_5, G_N_ELEMENTS(pc_compat_2_5));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_5, "pc-q35-2.5", NULL,
+                    pc_q35_2_5_machine_options);
+=20
++static GlobalProperty pc_compat_2_4[] =3D {
++    PC_COMPAT_2_4
++};
++
+ static void pc_q35_2_4_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_2_5_machine_options(m);
+     m->hw_version =3D "2.4.0";
+     pcmc->broken_reserved_end =3D true;
+-    SET_MACHINE_COMPAT(m, PC_COMPAT_2_4);
++    compat_props_add(m->compat_props,
++                     pc_compat_2_4, G_N_ELEMENTS(pc_compat_2_4));
+ }
+=20
+ DEFINE_Q35_MACHINE(v2_4, "pc-q35-2.4", NULL,
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 7afd1a175b..d801ba71eb 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -3973,8 +3973,9 @@ DEFINE_SPAPR_MACHINE(3_1, "3.1", true);
+ /*
+  * pseries-3.0
+  */
+-#define SPAPR_COMPAT_3_0                                              \
++static GlobalProperty spapr_compat_3_0[] =3D {
+     HW_COMPAT_3_0
++};
+=20
+ static void spapr_machine_3_0_instance_options(MachineState *machine)
+ {
+@@ -3986,7 +3987,8 @@ static void spapr_machine_3_0_class_options(Machine=
+Class *mc)
+     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
+=20
+     spapr_machine_3_1_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_3_0);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_3_0, G_N_ELEMENTS(spapr_compat_3_0));
+=20
+     smc->legacy_irq_allocation =3D true;
+     smc->irq =3D &spapr_irq_xics_legacy;
+@@ -3997,18 +3999,19 @@ DEFINE_SPAPR_MACHINE(3_0, "3.0", false);
+ /*
+  * pseries-2.12
+  */
+-#define SPAPR_COMPAT_2_12                                              \
+-    HW_COMPAT_2_12                                                     \
+-    {                                                                  \
+-        .driver =3D TYPE_POWERPC_CPU,                                   =
+ \
+-        .property =3D "pre-3.0-migration",                              =
+ \
+-        .value    =3D "on",                                             =
+ \
+-    },                                                                 \
+-    {                                                                  \
+-        .driver =3D TYPE_SPAPR_CPU_CORE,                                =
+ \
+-        .property =3D "pre-3.0-migration",                              =
+ \
+-        .value    =3D "on",                                             =
+ \
++static GlobalProperty spapr_compat_2_12[] =3D {
++    HW_COMPAT_2_12
++    {
++        .driver =3D TYPE_POWERPC_CPU,
++        .property =3D "pre-3.0-migration",
++        .value    =3D "on",
++    },
++    {
++        .driver =3D TYPE_SPAPR_CPU_CORE,
++        .property =3D "pre-3.0-migration",
++        .value    =3D "on",
+     },
++};
+=20
+ static void spapr_machine_2_12_instance_options(MachineState *machine)
+ {
+@@ -4020,7 +4023,8 @@ static void spapr_machine_2_12_class_options(Machin=
+eClass *mc)
+     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
+=20
+     spapr_machine_3_0_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_12);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_12, G_N_ELEMENTS(spapr_compat_2_12))=
+;
+=20
+     /* We depend on kvm_enabled() to choose a default value for the
+      * hpt-max-page-size capability. Of course we can't do it here
+@@ -4052,8 +4056,9 @@ DEFINE_SPAPR_MACHINE(2_12_sxxm, "2.12-sxxm", false)=
+;
+ /*
+  * pseries-2.11
+  */
+-#define SPAPR_COMPAT_2_11                                              \
++static GlobalProperty spapr_compat_2_11[] =3D {
+     HW_COMPAT_2_11
++};
+=20
+ static void spapr_machine_2_11_instance_options(MachineState *machine)
+ {
+@@ -4066,7 +4071,8 @@ static void spapr_machine_2_11_class_options(Machin=
+eClass *mc)
+=20
+     spapr_machine_2_12_class_options(mc);
+     smc->default_caps.caps[SPAPR_CAP_HTM] =3D SPAPR_CAP_ON;
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_11);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_11, G_N_ELEMENTS(spapr_compat_2_11))=
+;
+ }
+=20
+ DEFINE_SPAPR_MACHINE(2_11, "2.11", false);
+@@ -4074,8 +4080,9 @@ DEFINE_SPAPR_MACHINE(2_11, "2.11", false);
+ /*
+  * pseries-2.10
+  */
+-#define SPAPR_COMPAT_2_10                                              \
++static GlobalProperty spapr_compat_2_10[] =3D {
+     HW_COMPAT_2_10
++};
+=20
+ static void spapr_machine_2_10_instance_options(MachineState *machine)
+ {
+@@ -4085,7 +4092,8 @@ static void spapr_machine_2_10_instance_options(Mac=
+hineState *machine)
+ static void spapr_machine_2_10_class_options(MachineClass *mc)
+ {
+     spapr_machine_2_11_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_10);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_10, G_N_ELEMENTS(spapr_compat_2_10))=
+;
+ }
+=20
+ DEFINE_SPAPR_MACHINE(2_10, "2.10", false);
+@@ -4093,13 +4101,14 @@ DEFINE_SPAPR_MACHINE(2_10, "2.10", false);
+ /*
+  * pseries-2.9
+  */
+-#define SPAPR_COMPAT_2_9                                               \
+-    HW_COMPAT_2_9                                                      \
+-    {                                                                  \
+-        .driver =3D TYPE_POWERPC_CPU,                                   =
+ \
+-        .property =3D "pre-2.10-migration",                             =
+ \
+-        .value    =3D "on",                                             =
+ \
+-    },                                                                 \
++static GlobalProperty spapr_compat_2_9[] =3D {
++    HW_COMPAT_2_9
++    {
++        .driver =3D TYPE_POWERPC_CPU,
++        .property =3D "pre-2.10-migration",
++        .value    =3D "on",
++    },
++};
+=20
+ static void spapr_machine_2_9_instance_options(MachineState *machine)
+ {
+@@ -4111,7 +4120,8 @@ static void spapr_machine_2_9_class_options(Machine=
+Class *mc)
+     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
+=20
+     spapr_machine_2_10_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_9);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_9, G_N_ELEMENTS(spapr_compat_2_9));
+     mc->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
+     smc->pre_2_10_has_unused_icps =3D true;
+     smc->resize_hpt_default =3D SPAPR_RESIZE_HPT_DISABLED;
+@@ -4122,13 +4132,14 @@ DEFINE_SPAPR_MACHINE(2_9, "2.9", false);
+ /*
+  * pseries-2.8
+  */
+-#define SPAPR_COMPAT_2_8                                        \
+-    HW_COMPAT_2_8                                               \
+-    {                                                           \
+-        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,                 \
+-        .property =3D "pcie-extended-configuration-space",        \
+-        .value    =3D "off",                                      \
++static GlobalProperty spapr_compat_2_8[] =3D {
++    HW_COMPAT_2_8
++    {
++        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "pcie-extended-configuration-space",
++        .value    =3D "off",
+     },
++};
+=20
+ static void spapr_machine_2_8_instance_options(MachineState *machine)
+ {
+@@ -4138,7 +4149,8 @@ static void spapr_machine_2_8_instance_options(Mach=
+ineState *machine)
+ static void spapr_machine_2_8_class_options(MachineClass *mc)
+ {
+     spapr_machine_2_9_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_8);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_8, G_N_ELEMENTS(spapr_compat_2_8));
+     mc->numa_mem_align_shift =3D 23;
+ }
+=20
+@@ -4147,28 +4159,29 @@ DEFINE_SPAPR_MACHINE(2_8, "2.8", false);
+ /*
+  * pseries-2.7
+  */
+-#define SPAPR_COMPAT_2_7                            \
+-    HW_COMPAT_2_7                                   \
+-    {                                               \
+-        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,     \
+-        .property =3D "mem_win_size",                 \
+-        .value    =3D stringify(SPAPR_PCI_2_7_MMIO_WIN_SIZE),\
+-    },                                              \
+-    {                                               \
+-        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,     \
+-        .property =3D "mem64_win_size",               \
+-        .value    =3D "0",                            \
+-    },                                              \
+-    {                                               \
+-        .driver =3D TYPE_POWERPC_CPU,                 \
+-        .property =3D "pre-2.8-migration",            \
+-        .value    =3D "on",                           \
+-    },                                              \
+-    {                                               \
+-        .driver =3D TYPE_SPAPR_PCI_HOST_BRIDGE,       \
+-        .property =3D "pre-2.8-migration",            \
+-        .value    =3D "on",                           \
++static GlobalProperty spapr_compat_2_7[] =3D {
++    HW_COMPAT_2_7
++    {
++        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "mem_win_size",
++        .value    =3D stringify(SPAPR_PCI_2_7_MMIO_WIN_SIZE),
++    },
++    {
++        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "mem64_win_size",
++        .value    =3D "0",
++    },
++    {
++        .driver =3D TYPE_POWERPC_CPU,
++        .property =3D "pre-2.8-migration",
++        .value    =3D "on",
++    },
++    {
++        .driver =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "pre-2.8-migration",
++        .value    =3D "on",
+     },
++};
+=20
+ static void phb_placement_2_7(sPAPRMachineState *spapr, uint32_t index,
+                               uint64_t *buid, hwaddr *pio,
+@@ -4233,7 +4246,8 @@ static void spapr_machine_2_7_class_options(Machine=
+Class *mc)
+=20
+     spapr_machine_2_8_class_options(mc);
+     mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("power7_v2.3");
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_7);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_7, G_N_ELEMENTS(spapr_compat_2_7));
+     smc->phb_placement =3D phb_placement_2_7;
+ }
+=20
+@@ -4242,13 +4256,14 @@ DEFINE_SPAPR_MACHINE(2_7, "2.7", false);
+ /*
+  * pseries-2.6
+  */
+-#define SPAPR_COMPAT_2_6 \
+-    HW_COMPAT_2_6 \
+-    { \
+-        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,\
+-        .property =3D "ddw",\
+-        .value    =3D stringify(off),\
++static GlobalProperty spapr_compat_2_6[] =3D {
++    HW_COMPAT_2_6
++    {
++        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "ddw",
++        .value    =3D stringify(off),
+     },
++};
+=20
+ static void spapr_machine_2_6_instance_options(MachineState *machine)
+ {
+@@ -4259,7 +4274,8 @@ static void spapr_machine_2_6_class_options(Machine=
+Class *mc)
+ {
+     spapr_machine_2_7_class_options(mc);
+     mc->has_hotpluggable_cpus =3D false;
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_6);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_6, G_N_ELEMENTS(spapr_compat_2_6));
+ }
+=20
+ DEFINE_SPAPR_MACHINE(2_6, "2.6", false);
+@@ -4267,13 +4283,14 @@ DEFINE_SPAPR_MACHINE(2_6, "2.6", false);
+ /*
+  * pseries-2.5
+  */
+-#define SPAPR_COMPAT_2_5 \
+-    HW_COMPAT_2_5 \
+-    { \
+-        .driver   =3D "spapr-vlan", \
+-        .property =3D "use-rx-buffer-pools", \
+-        .value    =3D "off", \
++static GlobalProperty spapr_compat_2_5[] =3D {
++    HW_COMPAT_2_5
++    {
++        .driver   =3D "spapr-vlan",
++        .property =3D "use-rx-buffer-pools",
++        .value    =3D "off",
+     },
++};
+=20
+ static void spapr_machine_2_5_instance_options(MachineState *machine)
+ {
+@@ -4286,7 +4303,8 @@ static void spapr_machine_2_5_class_options(Machine=
+Class *mc)
+=20
+     spapr_machine_2_6_class_options(mc);
+     smc->use_ohci_by_default =3D true;
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_5);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_5, G_N_ELEMENTS(spapr_compat_2_5));
+ }
+=20
+ DEFINE_SPAPR_MACHINE(2_5, "2.5", false);
+@@ -4294,8 +4312,9 @@ DEFINE_SPAPR_MACHINE(2_5, "2.5", false);
+ /*
+  * pseries-2.4
+  */
+-#define SPAPR_COMPAT_2_4 \
+-        HW_COMPAT_2_4
++static GlobalProperty spapr_compat_2_4[] =3D {
++    HW_COMPAT_2_4
++};
+=20
+ static void spapr_machine_2_4_instance_options(MachineState *machine)
+ {
+@@ -4308,7 +4327,8 @@ static void spapr_machine_2_4_class_options(Machine=
+Class *mc)
+=20
+     spapr_machine_2_5_class_options(mc);
+     smc->dr_lmb_enabled =3D false;
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_4);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_4, G_N_ELEMENTS(spapr_compat_2_4));
+ }
+=20
+ DEFINE_SPAPR_MACHINE(2_4, "2.4", false);
+@@ -4316,13 +4336,14 @@ DEFINE_SPAPR_MACHINE(2_4, "2.4", false);
+ /*
+  * pseries-2.3
+  */
+-#define SPAPR_COMPAT_2_3 \
+-        HW_COMPAT_2_3 \
+-        {\
+-            .driver   =3D "spapr-pci-host-bridge",\
+-            .property =3D "dynamic-reconfiguration",\
+-            .value    =3D "off",\
+-        },
++static GlobalProperty spapr_compat_2_3[] =3D {
++    HW_COMPAT_2_3
++    {
++        .driver   =3D "spapr-pci-host-bridge",
++        .property =3D "dynamic-reconfiguration",
++        .value    =3D "off",
++    },
++};
+=20
+ static void spapr_machine_2_3_instance_options(MachineState *machine)
+ {
+@@ -4332,21 +4353,22 @@ static void spapr_machine_2_3_instance_options(Ma=
+chineState *machine)
+ static void spapr_machine_2_3_class_options(MachineClass *mc)
+ {
+     spapr_machine_2_4_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_3);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_3, G_N_ELEMENTS(spapr_compat_2_3));
+ }
+ DEFINE_SPAPR_MACHINE(2_3, "2.3", false);
+=20
+ /*
+  * pseries-2.2
+  */
+-
+-#define SPAPR_COMPAT_2_2 \
+-        HW_COMPAT_2_2 \
+-        {\
+-            .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,\
+-            .property =3D "mem_win_size",\
+-            .value    =3D "0x20000000",\
+-        },
++static GlobalProperty spapr_compat_2_2[] =3D {
++    HW_COMPAT_2_2
++    {
++        .driver   =3D TYPE_SPAPR_PCI_HOST_BRIDGE,
++        .property =3D "mem_win_size",
++        .value    =3D "0x20000000",
++    },
++};
+=20
+ static void spapr_machine_2_2_instance_options(MachineState *machine)
+ {
+@@ -4357,15 +4379,17 @@ static void spapr_machine_2_2_instance_options(Ma=
+chineState *machine)
+ static void spapr_machine_2_2_class_options(MachineClass *mc)
+ {
+     spapr_machine_2_3_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_2);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_2, G_N_ELEMENTS(spapr_compat_2_2));
+ }
+ DEFINE_SPAPR_MACHINE(2_2, "2.2", false);
+=20
+ /*
+  * pseries-2.1
+  */
+-#define SPAPR_COMPAT_2_1 \
+-        HW_COMPAT_2_1
++static GlobalProperty spapr_compat_2_1[] =3D {
++    HW_COMPAT_2_1
++};
+=20
+ static void spapr_machine_2_1_instance_options(MachineState *machine)
+ {
+@@ -4375,7 +4399,8 @@ static void spapr_machine_2_1_instance_options(Mach=
+ineState *machine)
+ static void spapr_machine_2_1_class_options(MachineClass *mc)
+ {
+     spapr_machine_2_2_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_1);
++    compat_props_add(mc->compat_props,
++                     spapr_compat_2_1, G_N_ELEMENTS(spapr_compat_2_1));
+ }
+ DEFINE_SPAPR_MACHINE(2_1, "2.1", false);
+=20
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index a0615a8b35..275cbe5da4 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -651,96 +651,106 @@ bool css_migration_enabled(void)
+     }                                                                   =
+      \
+     type_init(ccw_machine_register_##suffix)
+=20
+-#define CCW_COMPAT_3_0 \
+-        HW_COMPAT_3_0
+-
+-#define CCW_COMPAT_2_12 \
+-        HW_COMPAT_2_12
+-
+-#define CCW_COMPAT_2_11 \
+-        HW_COMPAT_2_11 \
+-        {\
+-            .driver   =3D TYPE_SCLP_EVENT_FACILITY,\
+-            .property =3D "allow_all_mask_sizes",\
+-            .value    =3D "off",\
+-        },
+-
+-#define CCW_COMPAT_2_10 \
+-        HW_COMPAT_2_10
+-
+-#define CCW_COMPAT_2_9 \
+-        HW_COMPAT_2_9 \
+-        {\
+-            .driver   =3D TYPE_S390_STATTRIB,\
+-            .property =3D "migration-enabled",\
+-            .value    =3D "off",\
+-        },
+-
+-#define CCW_COMPAT_2_8 \
+-        HW_COMPAT_2_8 \
+-        {\
+-            .driver   =3D TYPE_S390_FLIC_COMMON,\
+-            .property =3D "adapter_routes_max_batch",\
+-            .value    =3D "64",\
+-        },
+-
+-#define CCW_COMPAT_2_7 \
+-        HW_COMPAT_2_7
+-
+-#define CCW_COMPAT_2_6 \
+-        HW_COMPAT_2_6 \
+-        {\
+-            .driver   =3D TYPE_S390_IPL,\
+-            .property =3D "iplbext_migration",\
+-            .value    =3D "off",\
+-        }, {\
+-            .driver   =3D TYPE_VIRTUAL_CSS_BRIDGE,\
+-            .property =3D "css_dev_path",\
+-            .value    =3D "off",\
+-        },
+-
+-#define CCW_COMPAT_2_5 \
+-        HW_COMPAT_2_5
+-
+-#define CCW_COMPAT_2_4 \
+-        HW_COMPAT_2_4 \
+-        {\
+-            .driver   =3D TYPE_S390_SKEYS,\
+-            .property =3D "migration-enabled",\
+-            .value    =3D "off",\
+-        },{\
+-            .driver   =3D "virtio-blk-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-balloon-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-serial-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-9p-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-rng-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-net-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "virtio-scsi-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },{\
+-            .driver   =3D "vhost-scsi-ccw",\
+-            .property =3D "max_revision",\
+-            .value    =3D "0",\
+-        },
++static GlobalProperty ccw_compat_3_0[] =3D {
++    HW_COMPAT_3_0
++};
++
++static GlobalProperty ccw_compat_2_12[] =3D {
++    HW_COMPAT_2_12
++};
++
++static GlobalProperty ccw_compat_2_11[] =3D {
++    HW_COMPAT_2_11
++    {
++        .driver   =3D TYPE_SCLP_EVENT_FACILITY,
++        .property =3D "allow_all_mask_sizes",
++        .value    =3D "off",
++    },
++};
++
++static GlobalProperty ccw_compat_2_10[] =3D {
++    HW_COMPAT_2_10
++};
++
++static GlobalProperty ccw_compat_2_9[] =3D {
++    HW_COMPAT_2_9
++    {
++        .driver   =3D TYPE_S390_STATTRIB,
++        .property =3D "migration-enabled",
++        .value    =3D "off",
++    },
++};
++
++static GlobalProperty ccw_compat_2_8[] =3D {
++    HW_COMPAT_2_8
++    {
++        .driver   =3D TYPE_S390_FLIC_COMMON,
++        .property =3D "adapter_routes_max_batch",
++        .value    =3D "64",
++    },
++};
++
++static GlobalProperty ccw_compat_2_7[] =3D {
++    HW_COMPAT_2_7
++};
++
++static GlobalProperty ccw_compat_2_6[] =3D {
++    HW_COMPAT_2_6
++    {
++        .driver   =3D TYPE_S390_IPL,
++        .property =3D "iplbext_migration",
++        .value    =3D "off",
++    }, {
++        .driver   =3D TYPE_VIRTUAL_CSS_BRIDGE,
++        .property =3D "css_dev_path",
++        .value    =3D "off",
++    },
++};
++
++static GlobalProperty ccw_compat_2_5[] =3D {
++    HW_COMPAT_2_5
++};
++
++static GlobalProperty ccw_compat_2_4[] =3D {
++    HW_COMPAT_2_4
++    {
++        .driver   =3D TYPE_S390_SKEYS,
++        .property =3D "migration-enabled",
++        .value    =3D "off",
++    },{
++        .driver   =3D "virtio-blk-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-balloon-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-serial-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-9p-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-rng-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-net-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "virtio-scsi-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },{
++        .driver   =3D "vhost-scsi-ccw",
++        .property =3D "max_revision",
++        .value    =3D "0",
++    },
++};
+=20
+ static void ccw_machine_3_1_instance_options(MachineState *machine)
+ {
+@@ -762,7 +772,8 @@ static void ccw_machine_3_0_class_options(MachineClas=
+s *mc)
+=20
+     s390mc->hpage_1m_allowed =3D false;
+     ccw_machine_3_1_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_3_0);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_3_0, G_N_ELEMENTS(ccw_compat_3_0));
+ }
+ DEFINE_CCW_MACHINE(3_0, "3.0", false);
+=20
+@@ -776,7 +787,8 @@ static void ccw_machine_2_12_instance_options(Machine=
+State *machine)
+ static void ccw_machine_2_12_class_options(MachineClass *mc)
+ {
+     ccw_machine_3_0_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_12);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_12, G_N_ELEMENTS(ccw_compat_2_12));
+ }
+ DEFINE_CCW_MACHINE(2_12, "2.12", false);
+=20
+@@ -792,7 +804,8 @@ static void ccw_machine_2_11_instance_options(Machine=
+State *machine)
+ static void ccw_machine_2_11_class_options(MachineClass *mc)
+ {
+     ccw_machine_2_12_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_11);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_11, G_N_ELEMENTS(ccw_compat_2_11));
+ }
+ DEFINE_CCW_MACHINE(2_11, "2.11", false);
+=20
+@@ -804,7 +817,8 @@ static void ccw_machine_2_10_instance_options(Machine=
+State *machine)
+ static void ccw_machine_2_10_class_options(MachineClass *mc)
+ {
+     ccw_machine_2_11_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_10);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_10, G_N_ELEMENTS(ccw_compat_2_10));
+ }
+ DEFINE_CCW_MACHINE(2_10, "2.10", false);
+=20
+@@ -823,7 +837,8 @@ static void ccw_machine_2_9_class_options(MachineClas=
+s *mc)
+     S390CcwMachineClass *s390mc =3D S390_MACHINE_CLASS(mc);
+=20
+     ccw_machine_2_10_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_9);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_9, G_N_ELEMENTS(ccw_compat_2_9));
+     s390mc->css_migration_enabled =3D false;
+ }
+ DEFINE_CCW_MACHINE(2_9, "2.9", false);
+@@ -836,7 +851,8 @@ static void ccw_machine_2_8_instance_options(MachineS=
+tate *machine)
+ static void ccw_machine_2_8_class_options(MachineClass *mc)
+ {
+     ccw_machine_2_9_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_8);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_8, G_N_ELEMENTS(ccw_compat_2_8));
+ }
+ DEFINE_CCW_MACHINE(2_8, "2.8", false);
+=20
+@@ -851,7 +867,8 @@ static void ccw_machine_2_7_class_options(MachineClas=
+s *mc)
+=20
+     s390mc->cpu_model_allowed =3D false;
+     ccw_machine_2_8_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_7);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_7, G_N_ELEMENTS(ccw_compat_2_7));
+ }
+ DEFINE_CCW_MACHINE(2_7, "2.7", false);
+=20
+@@ -866,7 +883,8 @@ static void ccw_machine_2_6_class_options(MachineClas=
+s *mc)
+=20
+     s390mc->ri_allowed =3D false;
+     ccw_machine_2_7_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_6);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_6, G_N_ELEMENTS(ccw_compat_2_6));
+ }
+ DEFINE_CCW_MACHINE(2_6, "2.6", false);
+=20
+@@ -878,7 +896,8 @@ static void ccw_machine_2_5_instance_options(MachineS=
+tate *machine)
+ static void ccw_machine_2_5_class_options(MachineClass *mc)
+ {
+     ccw_machine_2_6_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_5);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_5, G_N_ELEMENTS(ccw_compat_2_5));
+ }
+ DEFINE_CCW_MACHINE(2_5, "2.5", false);
+=20
+@@ -890,7 +909,8 @@ static void ccw_machine_2_4_instance_options(MachineS=
+tate *machine)
+ static void ccw_machine_2_4_class_options(MachineClass *mc)
+ {
+     ccw_machine_2_5_class_options(mc);
+-    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_4);
++    compat_props_add(mc->compat_props,
++                     ccw_compat_2_4, G_N_ELEMENTS(ccw_compat_2_4));
+ }
+ DEFINE_CCW_MACHINE(2_4, "2.4", false);
+=20
+diff --git a/vl.c b/vl.c
+index 88ba658572..65f0dddb74 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2968,7 +2968,6 @@ static void user_register_global_props(void)
+  */
+ static void register_global_properties(MachineState *ms)
+ {
+-    machine_register_compat_props(ms);
+     user_register_global_props();
+ }
+=20
+--=20
+2.20.0.rc1
 

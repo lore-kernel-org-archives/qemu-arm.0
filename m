@@ -1,94 +1,75 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8057070wrt;
-        Tue, 4 Dec 2018 05:17:46 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UVbCV72SRnM2cgJyS+Nn3Z9DAiX0RxKhv1Y0bbCqlYlYPz7cYm6/y6AY83NK4wHHGGUcLQ
-X-Received: by 2002:ac8:4454:: with SMTP id m20mr18770315qtn.381.1543929466140;
-        Tue, 04 Dec 2018 05:17:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543929466; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8069892wrt;
+        Tue, 4 Dec 2018 05:30:29 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VjBzM/naFzIv9tRD1PjVgke1O3cJxFIHilq8Dzk8+ts8RvfBRXWe3V/8E0j01ohndl52d7
+X-Received: by 2002:a0c:a1c6:: with SMTP id e64mr19713271qva.196.1543930229819;
+        Tue, 04 Dec 2018 05:30:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543930229; cv=none;
         d=google.com; s=arc-20160816;
-        b=DPngE3Zz9NSnpsbqNkb4+MdNJ/PnNJ9S41smSBbX6Cuw+H5OK5C/rGxdgXOsQitwPY
-         koN1rDA75+sJxWSx/UNovxgczPGkqyZYX3wCqDA7egSXGIooBghZdexSVnyG7978dUfb
-         ROz1B3Is3gxKmOTjNrRnEnriDlUy5OMO/FFCbi4FlEw41AQgEH/960FowSGObvqxsDVA
-         VrjC9/sWkhYF3mq4AnIY3Jz8gBHMR2C6JLGQ7Z6tXUo/7jsP+wYs97siuT8xVjdBdMiF
-         XlZqsy+kZCtWcmaqXLuKuTreERdFFdADkcjo6As2wZwgVGA07OI2/6Nm+X5WyoH6OL+o
-         Aa4w==
+        b=KzmilKoOjc6Ga0xBT6xGCistiE7zFqY9TurXx7+kJ0rkwPwEGex4FHrPAlazMM7lNc
+         DpQRnltcd6b06IdzViY0McROBPxhCz5cPklnq6F/Rti3MW9dedGEtoy8bu1KgtbGs6Ip
+         sfkTVfDGoDhjAQW3jBwKo1xxC0tzeSaDInDILOQIU07kypzHAdJ0VaWz5lwN1L4sXbLF
+         3p+Qr5f+lZwg0sOuoEqa6drMdG98MozWYwAnVN38dzvQUuRvrFoqBfGRDzWKDvvRdqjm
+         YAsd5j2SDQS7FFuU3q5dYL3R8XNcG1vOQWzdbcYH/gN4OUqk9Nnr06q8zcvbG6KPt8ny
+         11hA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=FDnjtXXIRlEkEyjYr+6ISUCrrCcht5gwFOBYfM2xXLI=;
-        b=dVbHQJScl3eh2d06rsaOXYmPxYExmT3gy+V3vc0I8HRPjVqpNPip37JgdeHMeW5pIw
-         /yFLBmddcr9RgEaCJTT2+aeqm6CPc4Qf5iIlXEdsk9UuwjAaSj+bclZ5CdL4Yqp52a7s
-         Ii0ezPChx47P6W/7W2mUvaF12u/1Os4vzU3ut3X7sVB5qpm9xFrObaY27vNi3VEkWe5z
-         bN/NSr2UU3taXztkzTHldgXjfq6SOkycDfntUSSVhR4D01TTd016UnhIjP9uCH38/c1V
-         pmejBkjq2CHHX5jHA7k6M1CYJlZiIHy+bhDlwKthqusxrCzQHBowrctvlsSbjlfy7W+y
-         mPUQ==
+         :message-id:date:to:from;
+        bh=5ODWp/MEZ7MIgMwbY8al9xKiOHBbFkpkw8heg21DcHc=;
+        b=a84BF6d5kztmJ0fzIeG7wXsUVpeUL18ssAacnCjH2zTTx4F6s+D0bqS6AviDWOWdTg
+         2f8BqqqAdJcqDyaqrnSGecSteJB9iRrEQs209P0ZwWnxxc8t9YyzG0yduRlx64L9KbpV
+         5+/d53U5U6FRM5kx0cyb9Y1/SnP1vcEV8rP2H+4OSwO83jNptbC2aQtUzxQmiPdnUyp4
+         AMp6HatEfHWTSwE1HbPPCstcBY3WM9ZRcOiKKWK8Tbqp9Q3aKdXXGpxaTly/FQtSht0D
+         BA75waWuNijyH+SFO0Lw+Cyxu1t/T/x6HXZO+P3KEAYJuDvFKZ29Fe/l3+uT2db/aA/F
+         oYKw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h8si5356218qta.340.2018.12.04.05.17.45
+        by mx.google.com with ESMTPS id g14si7521876qvj.193.2018.12.04.05.30.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 05:17:46 -0800 (PST)
+        Tue, 04 Dec 2018 05:30:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56679 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56753 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUAa9-0003nP-M9
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 08:17:45 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54056)
+	id 1gUAmS-0007q0-PI
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 08:30:28 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58106)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUAa2-0003nK-PX
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:17:40 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1gUAm9-0007jK-1E
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:30:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUAZz-00080S-Kx
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:17:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59858)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gUAZz-0007yy-Cm; Tue, 04 Dec 2018 08:17:35 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6C3EF307D91D;
-	Tue,  4 Dec 2018 13:17:34 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F2E1560923;
-	Tue,  4 Dec 2018 13:17:25 +0000 (UTC)
-Date: Tue, 4 Dec 2018 14:17:24 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181204141724.5f06bd1b@redhat.com>
-In-Reply-To: <20181130114142.GV18284@habkost.net>
-References: <20181127092801.21777-1-marcandre.lureau@redhat.com>
-	<20181127092801.21777-17-marcandre.lureau@redhat.com>
-	<20181127125644.GB18284@habkost.net>
-	<CAMxuvaySoJ2TokV8M81CVU3Hp4dC25c+PW_p2kk+V88-88U-CQ@mail.gmail.com>
-	<20181127133527.GI18284@habkost.net>
-	<20181128184027.7d584eaa@redhat.com>
-	<CAJ+F1CK5NkgsJWFGZ7kvR81KyeOPE_ytk=tOjKqTUGtbfywmJQ@mail.gmail.com>
-	<20181129175055.GQ18284@habkost.net>
-	<CAJ+F1CJBKVibRrgjiNKjSJ5ufK=CUodx26aHnKzeL3Cs7adbeA@mail.gmail.com>
-	<20181130115526.5974ca7a@redhat.com>
-	<20181130114142.GV18284@habkost.net>
+	(envelope-from <pm215@archaic.org.uk>) id 1gUAm3-0000yY-1P
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:30:08 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:53236)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1gUAm2-0000pO-Q1; Tue, 04 Dec 2018 08:30:02 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1gUAlv-0008Cn-QU; Tue, 04 Dec 2018 13:29:55 +0000
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue,  4 Dec 2018 13:29:52 +0000
+Message-Id: <20181204132952.2601-6-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181204132952.2601-1-peter.maydell@linaro.org>
+References: <20181204132952.2601-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Tue, 04 Dec 2018 13:17:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v4 16/28] hw: apply
- machine compat properties without touching globals
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 5/5] target/arm: Create timers in realize,
+ not init
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,169 +81,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, QEMU <qemu-devel@nongnu.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Qemu-s390x list <qemu-s390x@nongnu.org>, "open
-	list:ARM" <qemu-arm@nongnu.org>,
-	=?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f6JGRDfUqXWM
+X-TUID: L4fRhWhFILAr
 
-On Fri, 30 Nov 2018 09:41:42 -0200
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+The timer_new() function allocates memory; this means that
+if we call it in the CPU's init method we would need
+to provide an instance_finalize method to free it. Defer
+the timer creation to the realize function instead.
 
-> On Fri, Nov 30, 2018 at 11:55:26AM +0100, Igor Mammedov wrote:
-> > On Fri, 30 Nov 2018 01:36:03 +0400
-> > Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com> wrote:
-> >  =20
-> > > Hi
-> > >=20
-> > > On Thu, Nov 29, 2018 at 9:51 PM Eduardo Habkost <ehabkost@redhat.com>=
- wrote: =20
-> > > >
-> > > > On Thu, Nov 29, 2018 at 02:32:18PM +0400, Marc-Andr=C3=A9 Lureau wr=
-ote:   =20
-> > > > > Hi
-> > > > > On Wed, Nov 28, 2018 at 9:53 PM Igor Mammedov <imammedo@redhat.co=
-m> wrote:   =20
-> > > > > >
-> > > > > > On Tue, 27 Nov 2018 11:35:27 -0200
-> > > > > > Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > > > > >   =20
-> > > > > > > On Tue, Nov 27, 2018 at 05:10:05PM +0400, Marc-Andr=C3=A9 Lur=
-eau wrote:   =20
-> > > > > > > > On Tue, Nov 27, 2018 at 4:57 PM Eduardo Habkost <ehabkost@r=
-edhat.com> wrote:   =20
-> > > > > > > > >
-> > > > > > > > > On Tue, Nov 27, 2018 at 01:27:49PM +0400, Marc-Andr=C3=A9=
- Lureau wrote:   =20
-> > > > > > > > > > Similarly to accel properties, move compat properties o=
-ut of globals
-> > > > > > > > > > registration, and apply the machine compat properties d=
-uring
-> > > > > > > > > > device_post_init().
-> > > > > > > > > >
-> > > > > > > > > > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau=
-@redhat.com>   =20
-> > > > > > > > > [...]   =20
-> > > > > > > > > > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> > > > > > > > > > index 7066d28271..3b31b2c025 100644
-> > > > > > > > > > --- a/hw/core/qdev.c
-> > > > > > > > > > +++ b/hw/core/qdev.c
-> > > > > > > > > > @@ -971,17 +971,26 @@ static void device_initfn(Object =
-*obj)
-> > > > > > > > > >  }
-> > > > > > > > > >
-> > > > > > > > > >  static const GPtrArray *ac_compat_props;
-> > > > > > > > > > +static const GPtrArray *mc_compat_props;   =20
-> > > > > > why you didn't use just 'compat_props' for both?
-> > > > > > (it would be cleaner have single registry for compat
-> > > > > > properties, and the place that takes care of registration
-> > > > > > will take care of necessary ordering)   =20
-> > > > >
-> > > > > There are two arrays, one from the accelerator class, the other f=
-rom
-> > > > > the machine class. We can't make it a singleton (all compats prop=
-s for
-> > > > > the various machines would be mixed).
-> > > > >
-> > > > > We could create a third array that would be the set of both, but =
-that
-> > > > > would require more copy/allocation.   =20
-> > > >
-> > > > I am failing to see the advantage of replacing the `global_props`
-> > > > static variable from qdev-properties.c with a collection of
-> > > > separate static variables scattered around the code.  I thought
-> > > > the main point of the changes was to reduce the amount of
-> > > > duplicate data stored in static variables. =20
-> > Main point was to use compats for backends then on top of that=20
-> > we added split global from compat properties goal.
-> >  =20
-> > > > I was expecting something like this:
-> > > >
-> > > > accel.c:
-> > > >
-> > > >   void accel_apply_compat_props(AccelState *accel, Object *obj)
-> > > >   {
-> > > >       object_apply_global_props(obj, ACCEL_GET_CLASS(accel)->compat=
-_props, &error_abort);
-> > > >   }
-> > > >
-> > > > machine.c:
-> > > >
-> > > >   /* Apply compat properties and global properties to an object */
-> > > >   void machine_apply_compat_props(MachineState *ms, Object *obj)
-> > > >   {
-> > > >       accel_apply_compat_props(ms->accel, obj);
-> > > >       object_apply_global_props(obj, MACHINE_GET_CLASS(ms)->compat_=
-props, &error_abort);
-> > > >   }
-> > > >
-> > > > compat-props.c:
-> > > >
-> > > >   static void object_apply_compat_props(Object *obj)
-> > > >   {
-> > > >       MachineState *machine =3D MACHINE(qdev_get_machine());
-> > > >       machine_apply_compat_props(machine, obj);
-> > > >   }
-> > > >
-> > > > qdev.c:
-> > > >
-> > > >   static void device_post_init(Object *obj)
-> > > >   {
-> > > >       object_apply_compat_props(obj);
-> > > >       apply_user_provided_globals(obj);
-> > > >   }
-> > > >
-> > > > object_interface.c:
-> > > >
-> > > >   void user_creatable_complete(Object *obj, Error **errp)
-> > > >   {
-> > > >       object_apply_compat_props(obj);
-> > > >       ...
-> > > >       ucc->complete(...)
-> > > >   }
-> > > >   =20
-> > >=20
-> > > I like that solution too (which you also proposed in the other
-> > > thread). But we have to decide whether it's acceptable to reference
-> > > MachineState, or if the compat properties should be registered. =20
-> > I dislike pulling in machine into basic object code and
-> > I think a separate compats would be cleaner interface without
-> > layer violation. But to unstuck, lets go with qdev_get_machine()
-> > for now. =20
->=20
-> Which basic object code?  The only reference to machine above is
-> at compat-props.c.  I don't see any layering violation here.
-I see compat properties as just a set of arbitrary properties
-that's applied to objects depending on configuration.
-Which currently includes machine version and accel type
-but in no way inherently tied to them.
+This fixes a memory leak spotted by clang LeakSanitizer
+when a CPU object is created for introspection.
 
-As for layering violation, we do it in device model cases
-as it's machine related (ugly 'acceptable' but helps to cut corners)
-and with new interface it will be used wit backends which are not
-machine related at all.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-Doing like you suggest would make it usable with current machine
-initialization order (with some fixes) but if one would consider
-a bit earlier time (preconfig time) and creating machine step by
-step from there it might be less usable (as it needs machine instance,
-it still would be possible but probably more tricky (pure speculation)).
-
-So I'd vote for abstracted from machine compat props that could be
-called from any object that implements interface and explicit
-compats registration (like we do now) and explicit registration failure
-if compats happend to be applied to any object. But in case of this
-series I'm fine with any approach just to get compat properties work
-with backends for now.
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b84a6c0e678..0e7138c9bfb 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -679,14 +679,6 @@ static void arm_cpu_initfn(Object *obj)
+         qdev_init_gpio_in(DEVICE(cpu), arm_cpu_set_irq, 4);
+     }
+ 
+-    cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                                arm_gt_ptimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                                arm_gt_vtimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                                arm_gt_htimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                                arm_gt_stimer_cb, cpu);
+     qdev_init_gpio_out(DEVICE(cpu), cpu->gt_timer_outputs,
+                        ARRAY_SIZE(cpu->gt_timer_outputs));
+ 
+@@ -882,6 +874,15 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
++
++    cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
++                                           arm_gt_ptimer_cb, cpu);
++    cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
++                                           arm_gt_vtimer_cb, cpu);
++    cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
++                                          arm_gt_htimer_cb, cpu);
++    cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
++                                          arm_gt_stimer_cb, cpu);
+ #endif
+ 
+     cpu_exec_realizefn(cs, &local_err);
+-- 
+2.19.2
 

@@ -1,97 +1,135 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp373945wrt;
-        Tue, 20 Nov 2018 02:09:24 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UL525pX2dcMA0kWsUVZLlDagWhh6QPti5n+x68yfy3mEl4NVg7/k5H63kizP8jmcykoKiD
-X-Received: by 2002:a25:378d:: with SMTP id e135-v6mr1111953yba.94.1542708564716;
-        Tue, 20 Nov 2018 02:09:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542708564; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9394274wrt;
+        Wed, 5 Dec 2018 05:43:24 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/W2qBjqXSqM7gNGYM+lQ5kncYTXa9WXPvRBDH4RyctK+mh8iOIRYo4zj9mxDK5Hcguip9h3
+X-Received: by 2002:a0c:eb41:: with SMTP id c1mr24537890qvq.211.1544017404596;
+        Wed, 05 Dec 2018 05:43:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544017404; cv=none;
         d=google.com; s=arc-20160816;
-        b=WFWdLLdJSSMx/tu5B6T6AJvmX/onpBgavzX2tx2NpipIMDr7n1ELrOy35ZVzJnYCDz
-         9jO9Y/0DkJwpIqvMudvmzxJ6I0O1tgw6B7PjOK8Mm78eq7BSvi67X/Lsl7GgTPXuECoY
-         6pP4b9RbyBhDHFTM8vQ8Eh3c11GrIENroeV+kemGKC77jOWZltxy4WoABeg9EZpZMY3N
-         qrHVKE43U99LOeG51WrUZGc8V8ht4DUwhapwQrFZq32/vVr+nKlRlq8imGWBSflsV0p/
-         zJHJ2O5mnkMWuo/yzGio7dZIVd0/QEmM/OEkzop5C+TGby0mm8aZvzc+z9NONiw880+9
-         NBoQ==
+        b=I90evSGbj4zGmhrrtiNa1128FUfFKXrolMh1lnSAurzoiQZFfwcIF89W2Y4TFsxBT5
+         PiJcCzexMYQ3k4zDV1J4Bxtr1HrYle6/1VJIwelvvXhk6wKiAlRZlr9zcHY8BOLl8+L9
+         bkOotS9ZPcoT8sFhnZLBWTZXq+crg1NjdFnelzqC0fXKZVG4RPxG47hM/ikzdBz+vSyM
+         4hQFS2A91YfOsLPUn6epnYKTzV5PuU5kzyA/pdwMXdfRq4ArbmfknQQHEMS5tkmZRErZ
+         jv+OLwXmBMzRVYIp9IRYU6iO96JYU80oUZ4020eb4cjWXZvM2K0WWP9gnLSz122f4ONO
+         c3Fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=2iH2KWe/JDpvyzH1xkjjA5ll6kEQ+uEFVE2fyQUcCRk=;
-        b=piY/sIMnciyoG6fz9e7b9V2xCFWgiqqGAtJ8SfHy52Mv3snzQN6zhfnOl8Tq+bjAaF
-         FbJHSHA7A8acn8LIwFsWPIcl5NEAqDAQCFrrc1cEXYXEyggDHWf/O7lIcsZGM3T373GT
-         T+7D7HBZioY3WtsLmMO42l3Bv2gj1z45rpc+V6fszoCGjhk4soHkuHpjHEapXZ6EgBw2
-         liEgvanZAgj/widVrv0kdDZeMvGML8huySlPb8m2dbhE4JLCCOiHL+HFubpSSALT4dov
-         0tePzyH3Nu+pwg48m447lPil1orUBr8QWmSL4BlnkwQCJSHvc2tsPJ5f6IieXztMQQjl
-         fgrg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-language:accept-language:message-id
+         :date:thread-index:thread-topic:to:from:dkim-signature;
+        bh=IFtnHOPgCQZi6m35uK9PtxVFj12AuwN3qF4NFzvKbqk=;
+        b=m926fCsJFe3OlG1vXmrE0uU0wuQjZDzSDaWs4uJp/YTBAEui6cN9jmYcetSmjAKlCe
+         8WQ8xkWjygrOLxw6Hsy7vtVRZhiU21RmlW5ntpG6lnGlJmR5X/PoNWW8viF/8c1A67P+
+         r3knbp0QMLF2tcA+r6QwW4DrKL9Jd+P92ks8kfm9xgJ4nxtOGWQb0ABzDyjZIET5ssHz
+         XI6Ph1af5JpjPM+BP0KZS1EqstGkCDAKcLr1/ee9QGpc5oL2tsEjoewiUFhNmh/iFMDp
+         zXujzXCGOx/NSaJeJpoWzjHqCLm2wu2wleiNjl0OJu6PgDvVoS98HbAbpoF0Nv1kT/Y/
+         j8Pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LAQbkenR;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="j5p/iNFk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u8-v6si25297103ybm.356.2018.11.20.02.09.24
+        by mx.google.com with ESMTPS id d1si5900876qki.160.2018.12.05.05.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 02:09:24 -0800 (PST)
+        Wed, 05 Dec 2018 05:43:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LAQbkenR;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="j5p/iNFk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32851 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+Received: from localhost ([::1]:34572 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gP2yC-0000Pk-3m
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 05:09:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59035)
+	id 1gUXSW-0007PR-65
+	for alex.bennee@linaro.org; Wed, 05 Dec 2018 08:43:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51383)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gP2xz-0000My-Oe
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 05:09:12 -0500
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gUXSL-0007Lx-CT
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 08:43:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gP2xq-0006XL-EY
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 05:09:11 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46161)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gP2xm-0006T1-MB
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 05:09:00 -0500
-Received: by mail-oi1-x242.google.com with SMTP id x202so1008044oif.13
-	for <qemu-arm@nongnu.org>; Tue, 20 Nov 2018 02:08:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=2iH2KWe/JDpvyzH1xkjjA5ll6kEQ+uEFVE2fyQUcCRk=;
-	b=LAQbkenRSlk4MSJfISLWNGGiCsYlqIUC73aLwmLEWkhTRd3PfNbYY2Zn6MKslG2WI5
-	0ozzD8ZyjBOiyuXBm6JheS90G9p2kYeCu/TkcyKOKZx/e9t0wGIescR0/iUYQmil2EpY
-	FmmGeKQFUwSWQwPmqM75ggaAdBLZ48Vy/YPBY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=2iH2KWe/JDpvyzH1xkjjA5ll6kEQ+uEFVE2fyQUcCRk=;
-	b=KkwxI0f01fMMKdXeBOEBOSN5bXuk1OrPkuU/MYJCq4oRdVTJZcoNsU5EvHXO6OqIlm
-	4fpwArJgop4hhA4l2CKgFLhqaz40+IYflKP3BcBj4YBg0BHnB+7VrOsLMpw+QJ3okTi4
-	ettw16rsn90S0N6wz3+EAIVKKpkxdbt9OkqTSZa/mHiTQmP9Eow9s+JU4VgkeGHp3gwu
-	e6y0drZwFBkqNP3H3/JFdZxgHh8heGJJ9F16MuUHqfoXL05R3iPh4lwt/jTfjXvky0nu
-	S13a+9xEZX+Hs4IqjQQUoe2bwASXJgQXY1McFqPyP6Ozqm/A+jqO01ecz8kQxIR7L13E
-	pdug==
-X-Gm-Message-State: AGRZ1gKpS7ffKLlHa1m+/pVzpjyaEPs+o2QAPI8iekKf/cPj54mTvHfX
-	8nR/W7fZh01j2NJGB7e2NnzjUACG98dWXLZcPNKs0Q==
-X-Received: by 2002:aca:b68b:: with SMTP id
-	g133-v6mr756619oif.25.1542708534227; 
-	Tue, 20 Nov 2018 02:08:54 -0800 (PST)
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gUXSG-0004Nr-8m
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 08:43:13 -0500
+Received: from mail-eopbgr690133.outbound.protection.outlook.com
+	([40.107.69.133]:62640
+	helo=NAM04-CO1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
+	id 1gUXSF-0004L6-UE; Wed, 05 Dec 2018 08:43:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+	bh=IFtnHOPgCQZi6m35uK9PtxVFj12AuwN3qF4NFzvKbqk=;
+	b=j5p/iNFkMBfWHVExGYqU6pj5g8STQr3R3kbOSz8SUJHFMMJcP4qryrFapFwSqbivSZdV8qTcVwyXZozKG7CEElL6b9kwSuC3Qvgll/Qsx3hsnUBQOli2EqpIs5EhIB+Zc287ndqsvZcs2qnM3g5Wvsn9It+88H/gc1Lf+FYMpfQ=
+Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
+	DM6PR01MB5180.prod.exchangelabs.com (20.176.122.13) with Microsoft SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1382.19; Wed, 5 Dec 2018 13:43:04 +0000
+Received: from DM6PR01MB4825.prod.exchangelabs.com
+	([fe80::9c7c:27c7:4cb7:f820]) by DM6PR01MB4825.prod.exchangelabs.com
+	([fe80::9c7c:27c7:4cb7:f820%2]) with mapi id 15.20.1404.016;
+	Wed, 5 Dec 2018 13:43:04 +0000
+From: Aaron Lindsay <aaron@os.amperecomputing.com>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
+	<peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, 
+	Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Thread-Topic: [PATCH v9 00/14] More fully implement ARM PMUv3
+Thread-Index: AQHUjKByd/idnSlI+0yghkDC2UDzLQ==
+Date: Wed, 5 Dec 2018 13:43:04 +0000
+Message-ID: <20181205134243.4791-1-aaron@os.amperecomputing.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: BN6PR12CA0032.namprd12.prod.outlook.com
+	(2603:10b6:405:70::18) To DM6PR01MB4825.prod.exchangelabs.com
+	(2603:10b6:5:6b::30)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=aaron@os.amperecomputing.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [216.85.170.155]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; DM6PR01MB5180;
+	6:u2tE0xk+/E5cZjbig3XgcgZwJ0GJArw4YUyOSR/8rugSPbWxBbEjRLNOPPsCBGB0v44Y5mPAvyFuJ85upqooMzhx2MniT2QEn6YqCK6eJmiA0FHZ5GzDdNPv68/U21+HzXoMFxx7wZg8mwfrEvHuYJ79iW8ssrmKf31ZPcjuVeJC7poxzhs2ejMNptMYVEuOt7MUxpg14qvBdYVGwY6MBgnWIKyvwlieVZd5k2Rp79LMVU6V5tfhsvXxlICp+Tep6LgLhDV5kn4lPVWx8q5wsLqMlFMlTxzviirioCiToo2JRsc388WvUGRAUKOGkiKSGGfMqAMQUbUAkj36Q/n952hxewvfcIM7vH4ZK7y7B9BgG1nb0QTSvTHQpEHAui7u0lY/lfFAXGkJCuo4J2DNGF6Z+STxuMf6/p2rOtpEOV/AcWfp52nXKuafuDxq+Ac9hoYiFK/8d7qId1ei6Ufhpw==;
+	5:UR2JLYUf3z6Lb26yrLymMOPQdJReFCxtsmuRof5BbUb4wQmgecYJaX435Aqzz7hIraoQnaAJn6OVb+P2u5FmlyMvuBYrcKvbdr+8QnC9ezuUVLjPMXj9hO/4r0MjHHlC2XskN0vzaXWs0j4UHkncFSNVT1BoUXifqMxKg0rSC6E=;
+	7:yA5brLnRC/dNr87o1VmNZ6Xx1zHGynMaGAKgjIgCG50fbaqbUsDZ8nhXp+NhyBFfpIggma/uPhCZiuiz6SI8KGxf23Erk9Hfr8mXkeih8MYTipumwq5+woTakL22PwJDoGBdOFcqP44JFtOu2ePTzA==
+x-ms-office365-filtering-correlation-id: 835b54dc-22f8-43b3-cebf-08d65ab794c1
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
+	SRVR:DM6PR01MB5180; 
+x-ms-traffictypediagnostic: DM6PR01MB5180:
+x-microsoft-antispam-prvs: <DM6PR01MB51807CC63040253A6CD527E88AA80@DM6PR01MB5180.prod.exchangelabs.com>
+x-ms-exchange-senderadcheck: 1
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(10201501046)(3002001)(93006095)(93001095)(3231455)(999002)(944501520)(52105112)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123558120)(20161123562045)(20161123560045)(20161123564045)(201708071742011)(7699051)(76991095);
+	SRVR:DM6PR01MB5180; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5180; 
+x-forefront-prvs: 08770259B4
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(396003)(366004)(39840400004)(136003)(346002)(376002)(199004)(189003)(6486002)(86362001)(53936002)(39060400002)(66066001)(71200400001)(71190400001)(14444005)(106356001)(25786009)(6116002)(3846002)(26005)(4326008)(256004)(966005)(8936002)(105586002)(6436002)(2501003)(186003)(2906002)(110136005)(81166006)(81156014)(107886003)(54906003)(52116002)(1076002)(8676002)(478600001)(316002)(14454004)(102836004)(2616005)(486006)(6306002)(476003)(68736007)(305945005)(5660300001)(386003)(6506007)(7736002)(6512007)(99286004)(97736004);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5180;
+	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
+	PTR:InfoNoRecords; A:0; MX:1; 
+received-spf: None (protection.outlook.com: os.amperecomputing.com does not
+	designate permitted sender hosts)
+x-microsoft-antispam-message-info: bfERhw7RjlZMmdpZN55u4MrXZTknmuoYrq2OQ05QwwP/5dpNpUpU1ew3PAkHXFC8u4DUB872nTt535KobOiOds5GuN2niTw2ZFf0S6us21L6jIj2gtSvbaZINxQXznaOEA+KAvtlcixhtggnHnVea6njKd6zt1/UTiONC3DW2f/gqOGEnB7nxTjXXUi6Pct9WgRKfo63Rylt5u803IXqISKvbcAJEjglUHEkx76reY+CZK027RCTzNxikZNMNxbj5zpJ/FHGswGKj+RFNfxZkB8up5+thRAC3QLFzzhNYC1lml/9CU2qWN+IgK97Vu6yAqdoXRt97K2wRAXWXIj9Qbrvu3pe6Euxg6p9ogpbyCA=
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 20 Nov 2018 02:08:33
-	-0800 (PST)
-In-Reply-To: <CAHmME9qhe0ZemTkc2jkEO=_hu6PhvKUKGHC9QYTj2j+QHhNf8g@mail.gmail.com>
-References: <CAHmME9qhe0ZemTkc2jkEO=_hu6PhvKUKGHC9QYTj2j+QHhNf8g@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Nov 2018 10:08:33 +0000
-Message-ID: <CAFEAcA8fYaKTZkLR8Ja3P590bSWy1cu61-gSxyf6+wXCfCLoxA@mail.gmail.com>
-To: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] more serial ports on arm?
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 835b54dc-22f8-43b3-cebf-08d65ab794c1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2018 13:43:04.2623 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5180
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.69.133
+Subject: [Qemu-arm] [PATCH v9 00/14] More fully implement ARM PMUv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,24 +141,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h0dB1FPsQNEJ
+X-TUID: YwK0kanoPpfE
 
-On 19 November 2018 at 23:46, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
-> Hey guys,
->
-> I sort of lost track of the discussion, but what ever happened to
-> adding an extra serial port to the arm virt machine? I'm still
-> carrying around the attached patch to run build.wireguard.com and I'd
-> of course like to see a real solution upstream.
+The ARM PMU implementation currently contains a basic cycle counter, but
+it is often useful to gather counts of other events, filter them based
+on execution mode, and/or be notified on counter overflow. These patches
+flesh out the implementations of various PMU registers including
+PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to represent
+arbitrary counter types, implement mode filtering, send interrupts on
+counter overflow, and add instruction, cycle, and software increment
+events.
 
-It's still stuck, because unconditionally adding a second serial
-port to the virt board breaks some commonly used existing guest
-code (UEFI + Linux), and it's not clear to me what the best
-command line UI is for allowing the user to request the second
-serial port.
+Since v8 [1] I have made the following changes:
+* Simplified if statements and corrected overflow bit clearing logic in
+  counter overflow patch based on Richard's review
+* Added FIELDs for ARMv8.1 PMUv3 variant and guard the definition of
+  PMCEID2 and PMCEID3 based on ID_DFR0.PerfMon
+* Added/fixed up a couple comments
 
-thanks
--- PMM
+[1] - https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg04037.html
+
+Aaron Lindsay (14):
+  migration: Add post_save function to VMStateDescription
+  target/arm: Reorganize PMCCNTR accesses
+  target/arm: Swap PMU values before/after migrations
+  target/arm: Filter cycle counter based on PMCCFILTR_EL0
+  target/arm: Allow AArch32 access for PMCCFILTR
+  target/arm: Implement PMOVSSET
+  target/arm: Define FIELDs for ID_DFR0
+  target/arm: Make PMCEID[01]_EL0 64 bit registers, add PMCEID[23]
+  target/arm: Add array for supported PMU events, generate
+    PMCEID[01]_EL0
+  target/arm: Finish implementation of PM[X]EVCNTR and PM[X]EVTYPER
+  target/arm: PMU: Add instruction and cycle events
+  target/arm: PMU: Set PMCR.N to 4
+  target/arm: Implement PMSWINC
+  target/arm: Send interrupts on PMU counter overflow
+
+ docs/devel/migration.rst    |   9 +-
+ include/migration/vmstate.h |   1 +
+ migration/vmstate.c         |  13 +-
+ target/arm/cpu.c            |  28 +-
+ target/arm/cpu.h            |  79 +++-
+ target/arm/cpu64.c          |   4 -
+ target/arm/helper.c         | 807 ++++++++++++++++++++++++++++++++----
+ target/arm/machine.c        |  24 ++
+ 8 files changed, 860 insertions(+), 105 deletions(-)
+
+--=20
+2.19.1
+

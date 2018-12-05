@@ -1,96 +1,101 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9472365wrt;
-        Wed, 5 Dec 2018 06:55:16 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UbIkodN5LCp/geyChE2aTU27rk5ETrRf22djsE5TiZqXJPUJUN01eITOTD0ppl6BNlm9yr
-X-Received: by 2002:a37:2c02:: with SMTP id s2mr22886516qkh.59.1544021716665;
-        Wed, 05 Dec 2018 06:55:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544021716; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9496316wrt;
+        Wed, 5 Dec 2018 07:16:12 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UoH56ir9yg1m4l79kZXpqnDs316i3kLoDLauSIiFAUgyxm5qeXFO1/4zh1ovGo79ILNUtm
+X-Received: by 2002:a0c:f8c7:: with SMTP id h7mr24672256qvo.134.1544022972329;
+        Wed, 05 Dec 2018 07:16:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544022972; cv=none;
         d=google.com; s=arc-20160816;
-        b=NddslB0WicOy5SL3qY1FH5MUSrb9YuD6S/q5fpe1+TrV4Z2UKZ+/oezCxoWEQ41RtM
-         oOcYhzSnZ9xY8PQct7FwhTADrvKlL/k53Fx/jZ/QvbUuxwTftFH5aXYjhmrWrVQBZAXF
-         gvR+yHHuSNSXj70v0V5hEbZhkBLkkfM1ZQPVe4Jf1uq1/v0ycH3Jiqz8C5KCMI/0v/WL
-         7/UjL8aQUjSRTHPOfzrG/5qSMmHXRHEXtAmqYk2e6Vfmkze2Ctd3/SRLHbcUY2A6mjiz
-         jf58yEoBtFurK2AYKPqpYENWgyk+y05IqRlnQuTIY9/sJRZksvT1FjvlJT7LHMnlTM7Z
-         5gvA==
+        b=hsRGtLLZL5R2N0+QL3UfryK2D5oJdGjOUun7NoCTyec/WDGSq6r+XbKHYMPQRaH28p
+         0ezVOSpqa6ie/Su8kM78C4RnW1PuECsO4+q+HkUqWoLFOCqD9PwS2/bC0CE5AAwXkaTb
+         My1wAQc3NnMGL5PBOay+ZhHC3VCAet/u3nNa6l28y6u+JiCrwgQgge/HXYLfuaGOHdFP
+         NZW0iaohscQ4t5EqRLe5Q03xTTifbwLWGaSBa9k9tuu9HfpFEfCXz/O2WEeMYLv/K/Tl
+         NFQfeUciMeGExxC8Xr9lxkI0fJMZlfqOzNYPGs5bu3hO4oQAnREPHLUSBnL11/IqF75F
+         s/OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=posjfS9WXSzTGa7jp3xUHgGLhtGe5F0KyWMhfOuQmNQ=;
-        b=0gcEmT0Pw+Boxvfpm4nKLOrENkR4T9tNoNpjccFh4Gl55t54DSz9beL2qLUpr1xhUR
-         vPWO+cQOIXN8KZg1MQrSyWH9n7b/QjD9h+AWyUGJBUWKoMAtPubcX6UIfU2YXyJLNwyC
-         Ie86Zi0l0foYpVgChAS3fgdQlsqzWd71cvjEkogAoBcGW36+DZtdYzqp3MHU9W9wNOfL
-         qV82vnptPBn7Ksar0FuubdB0UilBjGXVd05p8OEkTjzKa1YXuO8FQXtZGZlBbHBjiimo
-         tSqsWKZrnjqckrBSwjqu6Qy9NyNLyCYxHaj2snW9fUyNAjxXYXLWYeIUi6AffSioeHAL
-         dVUg==
+        bh=gmaU0rrXihVd2hgFnNwY2WjnVGQA3s9e3S9F3DG2QQc=;
+        b=Y17823WewXOZmlFleXh5yx3+O6PB7ucUWgcm22knHcC3/6Ao8FpTsqcyexEtPWwEDE
+         hjBDiApgz0cE2k9myyoi8/iCX3otVlZ5CvqY6uRXJlFQvSp3RzzmsBZScoO5xjI9Oojz
+         DDiq+YdACpl71ZrXtT+IpcaFYM3Oles0IaoYZFnFfZC2PXfWCd597YnabptNTaSp3vRF
+         Vtb0RlGqkUFeTvgQ158cM095ggLOM0GLUm6AZrBD1KDjrYXd22Xy1+IbR3Sm0MG2gob7
+         hFecbiXLjC5cnN82I2DNqDRjz+akjLOVj75cGtSP3W5Kfng9MS4KWWtdCqMTGR89G8bQ
+         FWsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FM8YPnN5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Np6FKMyd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s135si10518658qke.231.2018.12.05.06.55.16
+        by mx.google.com with ESMTPS id e35si2677385qve.41.2018.12.05.07.16.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Dec 2018 06:55:16 -0800 (PST)
+        Wed, 05 Dec 2018 07:16:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FM8YPnN5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Np6FKMyd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34988 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35054 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUYa4-0002N7-32
-	for alex.bennee@linaro.org; Wed, 05 Dec 2018 09:55:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47375)
+	id 1gUYuJ-0003aC-Pl
+	for alex.bennee@linaro.org; Wed, 05 Dec 2018 10:16:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53229)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUYZS-00021D-Kn
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 09:54:39 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gUYtx-00035V-BX
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 10:15:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUYZR-0001tb-5g
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 09:54:38 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35020)
+	(envelope-from <peter.maydell@linaro.org>) id 1gUYfY-0000AV-LK
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 10:00:59 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:44594)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gUYZQ-0001r8-Ke
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 09:54:37 -0500
-Received: by mail-oi1-x242.google.com with SMTP id v6so17746637oif.2
-	for <qemu-arm@nongnu.org>; Wed, 05 Dec 2018 06:54:36 -0800 (PST)
+	id 1gUYfY-00009x-B0
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 10:00:56 -0500
+Received: by mail-oi1-x241.google.com with SMTP id m6so17736167oig.11
+	for <qemu-arm@nongnu.org>; Wed, 05 Dec 2018 07:00:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=posjfS9WXSzTGa7jp3xUHgGLhtGe5F0KyWMhfOuQmNQ=;
-	b=FM8YPnN5koS3oXCO0Tbix8CYGQLAvCGr2dRMj8mkcurlO8jY/8KkwjL37MhRsIHV/Y
-	QJ4kjbewAasEgFa/BWdrrT1WqheiM4CKq48uQfZO2mcz6+YxzRprZziDvJMpHEi3G+5n
-	S+U+VseDbyAFAtM87RRDmsT85AW9Yp2hbSmA8=
+	:cc; bh=gmaU0rrXihVd2hgFnNwY2WjnVGQA3s9e3S9F3DG2QQc=;
+	b=Np6FKMyddtFRJvtI4JPVk4k67JIdmjnbCJ4FMotK9gmI6M4hdD0V8qzLD3N4b7xaI3
+	RI7T9ZIu2j0NC9Sl7xSGXV/kmrqlv6rfqaxY/N1rJ01ilFV+kNmJMzJkq/3x6epgVUi8
+	v6mOnh/zLPkxGRSeR4+CKDj5kmcrCuqZounMQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=posjfS9WXSzTGa7jp3xUHgGLhtGe5F0KyWMhfOuQmNQ=;
-	b=NKk/iO+lP+RQ5oAWsmDI+L9bOOm967Y0u6t8OgYu4IKjtpPlM0OSjnnT1PB8nGxJV5
-	h9EICOUWoXtB0U8nvsjVjFRgE04Gxvxk2eDwqC3NbDjRmMykRCVaZgXU35b4Jw+VneaT
-	JBVnHuRHOQ0SB7rN8qY9X8hmNXfu+KMkTlpT7KGXu3leWwtciMo6ZwvzPilLdUujoESG
-	PQrmLkEPa/2vNhKHTNad0hi3GY6syu4hMwI8JEQPpHBqKSiKtk4yJ34Vq+ffnzA8NO2B
-	B7bklTLN4y/rVloqSN6fozNbf5z1yOLfy35CSVxtYCSI2K0cB6Qlf1V8NDPi+dfrw4HZ
-	4ZGg==
-X-Gm-Message-State: AA+aEWYgsBZ6cBhJCSDWwW7zEdV07VNNnQbCG6bDxhGoDNQb12PSPizz
-	Q4aOMqDqtIazlIk+/vIOmVqnrfEmCyP1kTFIgeEGMQ==
-X-Received: by 2002:aca:2dc9:: with SMTP id
-	t192mr15837009oit.325.1544021675782; 
-	Wed, 05 Dec 2018 06:54:35 -0800 (PST)
+	bh=gmaU0rrXihVd2hgFnNwY2WjnVGQA3s9e3S9F3DG2QQc=;
+	b=M4l4FvoY9bJa4Zdmdvb9SAoFYx2BuLzzLeT1lVCxv0AqRyNOnPXCzHBhNqpk0AERiO
+	EhBWX5N9BEZ07TE8ptajy9MnDH7u8FTyKjiCtPNqcNPY8HhyhkdFMhmPU28DUQbMLIb5
+	xGPZ70PBCHzydI8A3gq6Uj+ArfBaoe2qjlVhXlPYa4OwtxEcyBLHfmaaT7yYZo0Cf9I4
+	Yl+JqxIvw5hwQklhtmMqsXbmwDhHbsjLxUzX+QsQHUPc6/DDyFWIh4vnDAnbnfPdO0Jv
+	mWxlcx+d9dqJIkXhbF38oLccYqmIFLZ7mv1pwrc95KjaNL/MwJNwJv6kN1Ntepsi+dJ9
+	uX5g==
+X-Gm-Message-State: AA+aEWZovHu8YXx/QIK/GzBe9ehZEenQ//FWHMBpqj4ctn+YoWx/cgTY
+	5DBIaeJ2F+WI7Ih3AxPW7dvaarztIhZ+NQZYwEMkEg==
+X-Received: by 2002:aca:c501:: with SMTP id v1mr14260163oif.48.1544022055020; 
+	Wed, 05 Dec 2018 07:00:55 -0800 (PST)
 MIME-Version: 1.0
-References: <CAFEAcA8hw_PHrBTC+v9rr8VoeU5uiV3Z6nMRknDM7WWdG1Ti5g@mail.gmail.com>
-	<201812050827458661131@zte.com.cn>
-In-Reply-To: <201812050827458661131@zte.com.cn>
+References: <20181120212553.8480-1-aaron@os.amperecomputing.com>
+	<20181120212553.8480-8-aaron@os.amperecomputing.com>
+	<CAFEAcA92+6NdqpB+L42cu1Ba7qvvHoLkjSDgcEDLvR=iqpd4gg@mail.gmail.com>
+	<20181203204452.GB5549@quinoa.localdomain>
+	<CAFEAcA900U3amGOGRKGNu+-j9EDhdrZ1U1U5MtoW5BeTo74iOQ@mail.gmail.com>
+	<05205391-27bf-c6be-bc71-648eee127c47@linaro.org>
+	<20181205130047.GC5549@quinoa.localdomain>
+In-Reply-To: <20181205130047.GC5549@quinoa.localdomain>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 5 Dec 2018 14:54:24 +0000
-Message-ID: <CAFEAcA8s87tB4LGaVvJNpS0RN1gQ-ZjtzOBO0mWWQamBFiTzYw@mail.gmail.com>
-To: Peng Hao <peng.hao2@zte.com.cn>
+Date: Wed, 5 Dec 2018 15:00:43 +0000
+Message-ID: <CAFEAcA8bz20d4LrtEs=iRSJSZ_x5ERU0H0BiYvz4z=+c4v_WvA@mail.gmail.com>
+To: Aaron Lindsay <aaron@os.amperecomputing.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] [PATCH V11 0/8] add pvpanic mmio support
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PATCH v8 07/13] target-arm: Make PMCEID[01]_EL0 64
+ bit registers, add PMCEID[23]
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,74 +107,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6Py6axLZWot4
+X-TUID: YOcpAmDRAVXY
 
-On Wed, 5 Dec 2018 at 00:28, <peng.hao2@zte.com.cn> wrote:
+On Wed, 5 Dec 2018 at 13:00, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
 >
-> >I'm afraid I don't understand. If it's a PCI device then
-> >it does not need to be listed in the device tree or the
-> >ACPI tables at all, because it is probeable by the guest.
-> >This also significantly simplifies the changes needed in QEMU.
+> On Dec 03 16:57, Richard Henderson wrote:
+> > Yes.  It would appear that this feature should be controlled by
+> > ID_DFR0.PerfMon.  So,
 > >
->
-> It is precisely because PCI devices can not be controlled by FDT or ACPI tables,
-> I do not want to implement it as a pci device.
-> X86/pvpanic is implemented as ISA device in QEMU and ACPI device in kernel.
-> My implementation extends the implementation of x86/pvpanic, and a large of x86/pvpanic
-> codes are reused.If PCI devices are implemented in qemu, then ACPI devices and PCI
-> devices may appear simultaneously in the kernel. This would add both devices to the
-> crash notifier list, which is odd. I want to see only one device at any time.
-
-Yes, certainly we only need one pvpanic device. If it's implemented
-as a PCI device, then that's what appears. We don't need and
-would not implement the MMIO version. On x86 a user could
-in theory use the command line to request both ISA and PCI
-pvpanic devices. That would not be very sensible, but there
-are lots of QEMU command lines the user can request that
-don't make sense.
-
-> Of course, many
-> architectures can use PCI devices, but we are currently reusing x86/pvpanic code as much
-> as possible in qemu and kernel , rather than reimplementing it. At the same time,
-> backward compatibility also needs to be considered.
->
->                                      pvpanic in guest kernel
-> ARM:   ACPI table         acpi device
->             FDT                  mmio device  (start guest bypassing uefi)
-> x86      ACPI table         acpi device
-
-For Arm, there is no backward compatibility issue, as we have
-not yet implemented or shipped anything.
-
-> >> Secondly, I don't want it to be a pluggable device. If the user
-> >> deletes the device by mistake, it may lead to unpredictable results.
+> >   if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4)
 > >
-> >If the user deletes the PCI device they're using for their
-> >disk or networking this will also lead to unpredictable
-> >results. We expect users not to randomly unplug things from
-> >their system if they want it to continue to work. In any
-> >case your guest driver can easily handle the unplug: the
-> >guest would then just lose the ability to notify on panic,
-> >falling back to as if the pvpanic device had never been
-> >present.
+> > once the appropriate FIELDs are added to cpu.h.
+> >
+> > Since this test is not used within translate*.c, there is no need to move
+> > id_dfr* into ARMISARegisters.  Since these are only aliases, they do not affect
+> > migration, and so do not (yet) need to be filled in by kvm.
 >
-> If two devices can exist simultaneously by modifying the code,
->  then because ACPI devices rely on a PCI device, if PCI devices are dynamically
->  unplugged, ACPI device will not work when panic is triggered.
+> Sounds reasonable to me. One clarification - do we also need to guard
+> against the 0b1111 value for ID_DFR0.PerfMon, which implies an
+> implementation-defined, non-PMUv3 PMU, or is it safe to assume no one
+> will attempt that flavor in QEMU?
 
-If somebody modifies the code to QEMU or the guest kernel
-such that something breaks, that's their issue to deal with.
-My proposal is that we would ship:
- * a QEMU with a PCI pvpanic device (which you could plug in
-   if you wanted it)
- * no changes to the Arm virt board, so nothing in the ACPI
-   or device tree
- * no "mmio pvpanic" device
+We should check for 0xf, yes, following the recommended check
+logic described in the Arm ARM section "Alternative ID scheme used
+for the Performance Monitors Extension version". It doesn't
+seem likely that we'll end up with the 0xf case but we might
+as well avoid the question in advance...
 
 thanks
 -- PMM

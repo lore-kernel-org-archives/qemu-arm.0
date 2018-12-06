@@ -1,96 +1,97 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10787266wrt;
-        Thu, 6 Dec 2018 07:57:54 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XFHXBLU2SBr5D+/9TnlE6la9kgYiCjyz0DxOzj1CmE96QPIgrmJh+MbsbY1JWmxeQKWFB4
-X-Received: by 2002:aed:3a22:: with SMTP id n31mr28184397qte.29.1544111874249;
-        Thu, 06 Dec 2018 07:57:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544111874; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10791639wrt;
+        Thu, 6 Dec 2018 08:01:36 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UqSe59Q9GmhX8lZJtVFDAZWirarKobdneqxBuULKY9yWbHPBaOiP41NEPjwR7CI57tSZTI
+X-Received: by 2002:ac8:2a55:: with SMTP id l21mr26944723qtl.95.1544112096396;
+        Thu, 06 Dec 2018 08:01:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544112096; cv=none;
         d=google.com; s=arc-20160816;
-        b=hhYL7yU08pmGuu0pdrdfD2U78GN+ssBMOp5cuQZ27nkyjvdhrbu+O6/SeJO+D0fuyj
-         dqZoYa0jLOaF4O0Pc/i14IiY0AK0e0SX3zptJApRO0PMrhwU90FUd/PokvH4G27ao8Pn
-         HU772xRwgHXeG3Jr6JbpCo3GphnYGdA/n7FEwym6IsenzRfU0xM148XwR1lnxNkjjmN7
-         59g4pPqcN86oQLNOREE37O3OBXWXP60HzYkmwXEqEfrbyhjL9GvpKHOWLlqVe+1+aYQl
-         rYnfhzS8O85vMdaoCFNH6M/PDtbuoT75fLWbAND56/JmFZtV+VqgI4hkIAdz+zf9f3c+
-         dfCA==
+        b=DSjhCkVb8vi9wR+La3h7hm6SkQbdtuQM8PRx+8q5uIjf8cSBVV66zfR3RS8ajWFuZH
+         P7i3s3qpvNXsqDfOcID51SnSn6Fnc2aFDeM+U+l+RLU/Mu+6JTciDin5qSp/8rVo5ik0
+         1JCv97q49SsOhIIXpk/Fs+C01Kia5vAWksTbCC3QnDuBgIY4Px9YL+mkcKwOFh+ATSuJ
+         H7WPur4Hx3LC/68z7ogXLsJHJ/Vr0rTFnlmNc8HcteqYTspT2peOhp5zrNa3ceIQnhyB
+         4bAahQjg/NdrEu812faw0UJAW5Q9fZIBdVMEtajvCZw6yhdzzSYr6G/A0FUYcChej3nG
+         uThQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zydhDXwZex2ZGzmG4x/EcHEYNQpgSHZtHBCgs1ZJfR4=;
-        b=qOhSyl71n1zJK2JXHX2HnmB+8OhxI7L89pBe63SDaHbTUQCAP59lXuvo56SjUDzHst
-         zv4NbXW2RElOtNiwpdkzz7Uac7slAg4nX08CdAd6EnFpFhO9dDg4TYYqzMViSii+AWh3
-         FCXSWZP8Gs1Ix2tIz3gaqdrWDeK1dCHbdn7AHp3J0Hw0pGthxkqL7Z4If3/18MHBKXSi
-         zqUnmPsXT6a1JPu64wcm/GMUTRXxPi/d/RjG3PrDH4/GTKTgVpWlx/ao8Z2QCkvIJ2c8
-         ObrvUGxRdctIejNhbRdkNt+r4mPAcXUUXIjP6Bxi2z7KKSglWSYsK/tAFSmraNelbyUl
-         f2sg==
+        bh=AZk+5PXxH6CUPNq5HgKE1xuT1eN9pE95DfGWLHWz6ik=;
+        b=aEvBIZtfUlb1Lpq+nvjmhbcdqwY/0mdD0/WVbXKLfOdOd5l5YJOUxBJI73sqP5wpoH
+         oJ9fisFrjpA87wkXj+q/R1QlXVU875f6ZBN6kl86QNgColQQ33KqlXjTrSZ3qS9JmGs1
+         yJd//eM5M3A3yUwCMUf7fcZahE+ZJ7mcOZiDMLXozlFWs0SjvUbkIZ6KWNBwf7gP8l40
+         WnZzI8M9xe28lu0p8UWjCSf+hXU7ei5zDdUG9Rcy5Nx3aCw8t1AdvbgWj6X1WGjM40Hz
+         lCm5OLuET5gP8tUTDGgtas7u5NX2BdSIzedrWhaInli3fe//QG74o1tK0latKkRMOOJG
+         qP3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SfNQ2l78;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KvhWVtI3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c48si433207qtc.275.2018.12.06.07.57.54
+        by mx.google.com with ESMTPS id a123si416195qkd.182.2018.12.06.08.01.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Dec 2018 07:57:54 -0800 (PST)
+        Thu, 06 Dec 2018 08:01:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SfNQ2l78;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KvhWVtI3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41644 helo=lists.gnu.org)
+Received: from localhost ([::1]:41679 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUw2D-00018C-GG
-	for alex.bennee@linaro.org; Thu, 06 Dec 2018 10:57:53 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59296)
+	id 1gUw5n-0005xd-Tu
+	for alex.bennee@linaro.org; Thu, 06 Dec 2018 11:01:35 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUw1b-00014L-E4
-	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:57:19 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gUw3e-0002tz-13
+	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:59:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUw1W-0006RA-8S
-	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:57:15 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:34941)
+	(envelope-from <peter.maydell@linaro.org>) id 1gUw3Z-0000XI-Jv
+	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:59:21 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39334)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gUw1T-0006Lb-O1
-	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:57:09 -0500
-Received: by mail-ot1-x343.google.com with SMTP id 81so860675otj.2
-	for <qemu-devel@nongnu.org>; Thu, 06 Dec 2018 07:57:04 -0800 (PST)
+	id 1gUw3Z-0000Tr-Am
+	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 10:59:17 -0500
+Received: by mail-ot1-x342.google.com with SMTP id n8so852938otl.6
+	for <qemu-devel@nongnu.org>; Thu, 06 Dec 2018 07:59:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=zydhDXwZex2ZGzmG4x/EcHEYNQpgSHZtHBCgs1ZJfR4=;
-	b=SfNQ2l78IwbeaHnc7rSFVUMEWOpTJLy6jDMb1WUTrSARFp+6zuApjvvnTdhqksNH7B
-	bz4cT72/mwfiiS+h8GsXXtFm9j0hy2Gzp1IwR/E3R4mFAwCoP67Gk2SIcoJcmr0ePRTW
-	esrlIUmK+/n+PlRcw+l9vOLwJWnPhm9NELm/I=
+	:cc; bh=AZk+5PXxH6CUPNq5HgKE1xuT1eN9pE95DfGWLHWz6ik=;
+	b=KvhWVtI3S1y7GFq8McpSmCu86NNGp5ACCwP/FW4DzIlLtjblM20OPMD8lFRXLN5Mor
+	0/MsieA3AMWd9mErDJIio/Wpo0jiUJPuGfM+V/V+OVut1rTXXs1OxRCVMeYyZ/35Erai
+	LXZi/ZbzImjQ12Cxjnx0hMq24oFD2jKjLKjz8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=zydhDXwZex2ZGzmG4x/EcHEYNQpgSHZtHBCgs1ZJfR4=;
-	b=fTZazZ07aQfvw5rsle5aKkYdzfXs/eOp0eX3f5FDnxUmfes1Xs6XseWsQxAWtNYnDz
-	4Yc4wmFY8n69FuTaY5JzrxPAUVDXKAJEIQLpAWNWy9AAP8MWLi90ZO59ZOKaVdGt8P7n
-	DQYcf+K6ArQSY4JTEpsDzhtPmVjTEPwZG1Mxn6uw/8GaZsWYc9MvoFwAnpzqYk3LZyba
-	LwD6Xvc8nOzM8CSn945s/ae37Zn3tcFkqdCMEZXT39VGQD38ROxDc6ijTe+LsDN+KIxw
-	uteYEr5Kw010LKT94kIWHfy4y1idYTnJQWHcQ4Q76KhXxsnPiAiLg5dwSPcRPtuso4oE
-	1tCg==
-X-Gm-Message-State: AA+aEWaLjhf1KyOU+2YeoSHd5zwYCYH8CwYiKsGyqgQeOeSRN5lOmDnO
-	6SuFlKCRrCoR8s1WR1ZLF0sY50J9EiJ7zIQmKQ86Lw==
-X-Received: by 2002:a9d:3786:: with SMTP id x6mr15682704otb.238.1544111823369; 
-	Thu, 06 Dec 2018 07:57:03 -0800 (PST)
+	bh=AZk+5PXxH6CUPNq5HgKE1xuT1eN9pE95DfGWLHWz6ik=;
+	b=oKIdSC1iRpsBo29/ynGjmLCYzJJfR0YPR3GkFzY679hS8e+Sbt2FXfroAMQ0iNQ1xf
+	KQD+ai9u4Xw4YmgcTmRN/PiEKeh4W9ztmbwndlH1lw1JDzx1TCNKz9H88qF/FwFpd52y
+	VxZ2wlsY0/BsOd+M+aVxPAbOPjWcUVTbvxhplQx0Rt3FaKkzCVbtKyVG8GOK40F1DEJl
+	lF4ANUFw2V+0btPn2EKbndMLykoDDti2F2WSEnngf4mrbJFg35AArI0Vfd9RfNA2Svf7
+	Lvv9rvRYPYMVU7klqhVbadd6RXdLjiQuIKEOT4GRtR3R2EZZnBVF4zGoRNnCZ9+oNTSU
+	YtsA==
+X-Gm-Message-State: AA+aEWaxHIx+OsT8mo9yri+BZsJbntdm3w6h6zZHp5URJZOBJe1XTXKF
+	0ycRBJun1sKTjzafFbI1cbly9IZ76MDRnPdsbQHR6Q==
+X-Received: by 2002:a9d:12d:: with SMTP id 42mr17630576otu.352.1544111956583; 
+	Thu, 06 Dec 2018 07:59:16 -0800 (PST)
 MIME-Version: 1.0
 References: <20181205134243.4791-1-aaron@os.amperecomputing.com>
-	<20181205134243.4791-8-aaron@os.amperecomputing.com>
-In-Reply-To: <20181205134243.4791-8-aaron@os.amperecomputing.com>
+	<20181205134243.4791-9-aaron@os.amperecomputing.com>
+	<20181205153242.GE5549@quinoa.localdomain>
+In-Reply-To: <20181205153242.GE5549@quinoa.localdomain>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Dec 2018 15:56:52 +0000
-Message-ID: <CAFEAcA8EcYu6SWYzQzLL1136RZh1XQnhcFitSkd8koMgJJ3MgA@mail.gmail.com>
+Date: Thu, 6 Dec 2018 15:59:05 +0000
+Message-ID: <CAFEAcA8h7xXk7Vs6_pMThZ7bfkmBBfuJUhGRZvnAfGJQR3GVOg@mail.gmail.com>
 To: Aaron Lindsay <aaron@os.amperecomputing.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-devel] [PATCH v9 07/14] target/arm: Define FIELDs for
- ID_DFR0
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-devel] [PATCH v9 08/14] target/arm: Make PMCEID[01]_EL0
+ 64 bit registers, add PMCEID[23]
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,42 +112,51 @@ Cc: Wei Huang <wei@redhat.com>, Michael Spradling <mspradli@codeaurora.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WR9nb3Isby5h
+X-TUID: 3AWmVTXmbYOZ
 
-On Wed, 5 Dec 2018 at 13:43, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
+On Wed, 5 Dec 2018 at 15:32, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
 >
-> This is immediately necessary for the PMUv3 implementation to check
-> ID_DFR0.PerfMon to enable/disable specific features, but defines the
-> full complement of fields for possible future use elsewhere.
+> On Dec 05 08:43, Aaron Lindsay wrote:
+> > Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+> > ---
+> >  target/arm/cpu.h    |  4 ++--
+> >  target/arm/helper.c | 18 ++++++++++++++++--
+> >  2 files changed, 18 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 304e6e47b3..4216fe22db 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -837,8 +837,8 @@ struct ARMCPU {
+> >      uint32_t id_pfr0;
+> >      uint32_t id_pfr1;
+> >      uint32_t id_dfr0;
+> > -    uint32_t pmceid0;
+> > -    uint32_t pmceid1;
+> > +    uint64_t pmceid0;
+> > +    uint64_t pmceid1;
+> >      uint32_t id_afr0;
+> >      uint32_t id_mmfr0;
+> >      uint32_t id_mmfr1;
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index 71be6fb578..fb6939e99c 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -5256,6 +5256,20 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+> >      } else {
+> >          define_arm_cp_regs(cpu, not_v7_cp_reginfo);
+> >      }
+> > +    if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4) {
 >
-> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> ---
->  target/arm/cpu.h | 8 ++++++++
->  1 file changed, 8 insertions(+)
+> After further discussion on my last version, this should be
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 627e5c1995..304e6e47b3 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1586,6 +1586,14 @@ FIELD(ID_AA64PFR0, GIC, 24, 4)
->  FIELD(ID_AA64PFR0, RAS, 28, 4)
->  FIELD(ID_AA64PFR0, SVE, 32, 4)
+> if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4 &&
+>         FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) != 0xf) {
 >
-> +FIELD(ID_DFR0, COPDBG, 0, 4)
-> +FIELD(ID_DFR0, COPSDBG, 4, 4)
-> +FIELD(ID_DFR0, MMAPDBG, 8, 4)
-> +FIELD(ID_DFR0, COPTRC, 12, 4)
-> +FIELD(ID_DFR0, MMAPTRC, 16, 4)
-> +FIELD(ID_DFR0, MPROFDBG, 20, 4)
-> +FIELD(ID_DFR0, PERFMON, 24, 4)
+> to guard against defining these registers for implementation-defined
+> PMUs.
 
-Also
-FIELD(ID_DFR0, TRACEFILT, 28, 4)
-
-(this is a v8.4 field; we might as well add it since you
-have another minor tweak that needs a respin.)
-
-Otherwise
+With that change
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

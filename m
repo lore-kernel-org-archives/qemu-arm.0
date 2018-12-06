@@ -1,83 +1,82 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9917954wrt;
-        Wed, 5 Dec 2018 14:41:03 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WcCfvUWRZf7+i0aR2s6SBVhnmrkiSmOmwBhjPha4QwsiX9ZGGBYJJtlMdGAqPlWbeONdYa
-X-Received: by 2002:a37:4cd7:: with SMTP id z206mr24917627qka.233.1544049663676;
-        Wed, 05 Dec 2018 14:41:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544049663; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10085035wrt;
+        Wed, 5 Dec 2018 18:02:58 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/V/TGTQ9KCKnBBWyA3I1rdt40GRz4HvVqdE6rBtWCcfqeVwM/rprh0ABfT9FNLGG5ixxZ7j
+X-Received: by 2002:a0c:afd1:: with SMTP id t17mr25796532qvc.93.1544061778839;
+        Wed, 05 Dec 2018 18:02:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544061778; cv=none;
         d=google.com; s=arc-20160816;
-        b=r3ZZyEXyTc9x2kjKHzg/DrU/m3GPQOVfnIPcBX0oEoLZPsf+N4YRJtuKzMDq2KiibT
-         XWx7m1lZ8KMdbJASuirEC0SMLHbGohdnnk7JMD6VCdSUCEgBrTg0JXSl/1xVdwyECtmD
-         huWRTgtFYuGOG4Y/ycHX2sPSHwjN+s7aVSc5zHULcaIvsvLxV/3h4KTETt8XJPM8Za/n
-         eZGOAazcmRraB96P6q7gZph1mpw7Dx9QWN/5WIKmHnWG5o1VminlV6LCpa4MehLK0Wj+
-         icHyN15Bsfk5GT0q8rzwyg+P3gWSWwAk4D6CdtY4x9AmODqi1vUmuNAvPEDk90QM5/Zm
-         7q/A==
+        b=ImfY/Ot1btKYB7cfeGQ4bP33bl6q0obhGF0pSWuKOD7zX6rHFtq+HTMunx6r/2TEG+
+         D7LBjWL1ZXeaH2TgxS8M0gtJt0o7mdiPnoyH7eGID/Ay9gUpJQnZEl+1EYpcytmte+KY
+         IAutMEI8mvB36ghVrtxJn0IiJBWmgIrTzcJRqfK1Ozc8++7aXM4fvGzmUvlTLOx+IyUV
+         kRuhI8WQpNf5ox3wu9Ieep7h+LPPkrgvGdEyBmzNrve4zS844F5z413JKnPXqc8ydF08
+         o1CljIAHC1ylDZVm4eSDFG0opMNbDPqte7gut+6x1rhRg1oKpO+az9c003dj+sGhtSk2
+         aJKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=EzKyT1WUtLmoSnCzSAE7saoXUJb7xFMRBYFsBSB7oIs=;
-        b=xEgCHVt+XQZYuL/2oB54oUBFse+luNRvPQ77VzAgc3zJidiicEj2e8CUIc8vlUScX6
-         yyEerdPWyw0wAmsFmFFlkQF7CW6GEJyolsNGDi6B0DuGZdLX04/q8La0siWf0MkLP6hs
-         H0cQJ+PbY6kR8MA84J8uKvox41NdZqUmFTYOBc+1hdF42H6yGahnlzlyHdpktBUbD1sX
-         qaU1R/RZF3zRuKQw5e/FAYeJkLWkZBM4UXC2OqJUtxwaskuXtqIUTS1Ui6QA0cQzXn98
-         pVy3gzl932qhPjBrjE8NARhMavxpcKsKB9nIg8/cVFo9j6zOUfdc2/mZwndjEuxGBYlj
-         rfRA==
+         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
+         :references:in-reply-to:message-id:date;
+        bh=FpIXFVg3/4vKuHulx6CCkhI+76sDFvvLhRoqSYdfFA0=;
+        b=sHqUvxmUH/zOvUSpQbaIW2JCqyoj2d/04E4fWUu0FbMwqjpiwVQnwzI1OLu300o2Me
+         HxlB8i1Y7RCfGf8NZTov01fxsBhZCPVGBbqSKKTg42fjG/J8gerLNGguTpKcsDrci3/n
+         Z8i0ywNVd2GsDKo9Pf5Supt5WajzAcTFsYWmFXStSKa1/ClbILnYWER8YKnFY3lLg2+n
+         uuhrqf/IsoktQgxixowuPL7pSgnztLFaPLTIfcN9cIOLQlsGqrWuXL1wc/xtQEc4nzC6
+         29XGNWM+uNxNrahJGD5qiXr54ict4L2MZoHtkN3RD0bFvwRb3itiPn4idaZwudcHYrqs
+         OVzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="Z7tU/7cV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m13si2291184qtq.259.2018.12.05.14.41.03
+        by mx.google.com with ESMTPS id t23si8638360qtp.212.2018.12.05.18.02.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Dec 2018 14:41:03 -0800 (PST)
+        Wed, 05 Dec 2018 18:02:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="Z7tU/7cV";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37324 helo=lists.gnu.org)
+Received: from localhost ([::1]:38463 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUfqp-0001En-2H
-	for alex.bennee@linaro.org; Wed, 05 Dec 2018 17:41:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43875)
+	id 1gUj0E-0001PA-Be
+	for alex.bennee@linaro.org; Wed, 05 Dec 2018 21:02:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51182)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gUfoi-0007u0-Bo
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 17:38:53 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gUj01-0001AJ-NU
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 21:02:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gUfof-00052k-Hv
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 17:38:52 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:53281)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gUizx-0002aB-EX
+	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 21:02:45 -0500
+Received: from mxhk.zte.com.cn ([63.217.80.70]:56640)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gUfoe-0004Ao-Ru; Wed, 05 Dec 2018 17:38:49 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 439DCz6HnYz9s6w; Thu,  6 Dec 2018 09:38:39 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1544049519;
-	bh=Vwec+5Lb9Ch8zzuIgHRFM8G52ilv6BuKZUvi6aqgsPU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Z7tU/7cVQ9fhB6NfMwNBQu2FGuMC7IkL7JsQSlwRGimu4hom1MsUthKmt88DZaB4y
-	FwEBbl5LMf7dmFUEjkKTb7iJXbyRXOgYt33rEkviAdhbiMxLvOI8cjaVk6Fe4tUDKD
-	kFG3L5UvXMhN3aWQUgyucXXMllet7i8vXoRrIBHo=
-Date: Thu, 6 Dec 2018 09:29:48 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181205222948.GG768@umbus.fritz.box>
-References: <20181205205827.19387-1-ehabkost@redhat.com>
-	<20181205205827.19387-4-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="z9ECzHErBrwFF8sy"
-Content-Disposition: inline
-In-Reply-To: <20181205205827.19387-4-ehabkost@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH for-4.0 3/5] spapr: Use default_machine_opts
- to set suppress_vmdesc
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gUizw-0002Ra-Vg; Wed, 05 Dec 2018 21:02:41 -0500
+Received: from mse02.zte.com.cn (unknown [10.30.3.21])
+	by Forcepoint Email with ESMTPS id 0A646CAFD767F487121D;
+	Thu,  6 Dec 2018 10:02:32 +0800 (CST)
+Received: from kjyxapp04.zte.com.cn ([10.30.12.203])
+	by mse02.zte.com.cn with SMTP id wB622Olu032913;
+	Thu, 6 Dec 2018 10:02:24 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from mapi (kjyxapp01[null]) by mapi (Zmail) with MAPI id mid14;
+	Thu, 6 Dec 2018 10:02:31 +0800 (CST)
+Date: Thu, 6 Dec 2018 10:02:31 +0800 (CST)
+X-Zmail-TransId: 2b035c08833754bd99e5
+X-Mailer: Zmail v1.0
+Message-ID: <201812061002316241763@zte.com.cn>
+In-Reply-To: <CAFEAcA8s87tB4LGaVvJNpS0RN1gQ-ZjtzOBO0mWWQamBFiTzYw@mail.gmail.com>
+References: CAFEAcA8hw_PHrBTC+v9rr8VoeU5uiV3Z6nMRknDM7WWdG1Ti5g@mail.gmail.com,
+	CAFEAcA8s87tB4LGaVvJNpS0RN1gQ-ZjtzOBO0mWWQamBFiTzYw@mail.gmail.com
+Mime-Version: 1.0
+From: <peng.hao2@zte.com.cn>
+To: <peter.maydell@linaro.org>
+Content-Type: multipart/mixed;
+	boundary="=====_001_next====="
+X-MAIL: mse02.zte.com.cn wB622Olu032913
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 63.217.80.70
+Subject: Re: [Qemu-arm] 
+ =?utf-8?q?=5BPATCH_V11_0/8=5D_add_pvpanic_mmio_suppor?=
+ =?utf-8?q?t?=
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,83 +88,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: drjones@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2ybKHnhCUPyn
+X-TUID: /mzvmDF1TdSC
 
 
---z9ECzHErBrwFF8sy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Dec 05, 2018 at 06:58:25PM -0200, Eduardo Habkost wrote:
-> Instead of setting suppress_vmdesc at instance_init time, set
-> default_machine_opts on spapr_machine_2_2_class_options() to
-> implement equivalent behavior.
->=20
-> This will let us eliminate the need for separate instance_init
-> functions for each spapr machine-type.
->=20
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+--=====_001_next=====
+Content-Type: multipart/alternative;
+	boundary="=====_003_next====="
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-> ---
->  hw/ppc/spapr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index f6b60e6fbd..0c3b27a8cc 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -4368,13 +4368,13 @@ DEFINE_SPAPR_MACHINE(2_3, "2.3", false);
->  static void spapr_machine_2_2_instance_options(MachineState *machine)
->  {
->      spapr_machine_2_3_instance_options(machine);
-> -    machine->suppress_vmdesc =3D true;
->  }
-> =20
->  static void spapr_machine_2_2_class_options(MachineClass *mc)
->  {
->      spapr_machine_2_3_class_options(mc);
->      SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_2);
-> +    mc->default_machine_opts =3D "modern-hotplug-events=3Doff,suppress-v=
-mdesc=3Don";
->  }
->  DEFINE_SPAPR_MACHINE(2_2, "2.2", false);
-> =20
+--=====_003_next=====
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Pk9uIFdlZCwgNSBEZWMgMjAxOCBhdCAwMDoyOCwgPHBlbmcuaGFvMkB6dGUuY29tLmNuPiB3cm90
+ZToKPj4KPj4gPkknbSBhZnJhaWQgSSBkb24ndCB1bmRlcnN0YW5kLiBJZiBpdCdzIGEgUENJIGRl
+dmljZSB0aGVuCj4+ID5pdCBkb2VzIG5vdCBuZWVkIHRvIGJlIGxpc3RlZCBpbiB0aGUgZGV2aWNl
+IHRyZWUgb3IgdGhlCj4+ID5BQ1BJIHRhYmxlcyBhdCBhbGwsIGJlY2F1c2UgaXQgaXMgcHJvYmVh
+YmxlIGJ5IHRoZSBndWVzdC4KPj4gPlRoaXMgYWxzbyBzaWduaWZpY2FudGx5IHNpbXBsaWZpZXMg
+dGhlIGNoYW5nZXMgbmVlZGVkIGluIFFFTVUuCj4+ID4KPj4KPj4gSXQgaXMgcHJlY2lzZWx5IGJl
+Y2F1c2UgUENJIGRldmljZXMgY2FuIG5vdCBiZSBjb250cm9sbGVkIGJ5IEZEVCBvciBBQ1BJIHRh
+YmxlcywKPj4gSSBkbyBub3Qgd2FudCB0byBpbXBsZW1lbnQgaXQgYXMgYSBwY2kgZGV2aWNlLgo+
+PiBYODYvcHZwYW5pYyBpcyBpbXBsZW1lbnRlZCBhcyBJU0EgZGV2aWNlIGluIFFFTVUgYW5kIEFD
+UEkgZGV2aWNlIGluIGtlcm5lbC4KPj4gTXkgaW1wbGVtZW50YXRpb24gZXh0ZW5kcyB0aGUgaW1w
+bGVtZW50YXRpb24gb2YgeDg2L3B2cGFuaWMsIGFuZCBhIGxhcmdlIG9mIHg4Ni9wdnBhbmljCj4+
+IGNvZGVzIGFyZSByZXVzZWQuSWYgUENJIGRldmljZXMgYXJlIGltcGxlbWVudGVkIGluIHFlbXUs
+IHRoZW4gQUNQSSBkZXZpY2VzIGFuZCBQQ0kKPj4gZGV2aWNlcyBtYXkgYXBwZWFyIHNpbXVsdGFu
+ZW91c2x5IGluIHRoZSBrZXJuZWwuIFRoaXMgd291bGQgYWRkIGJvdGggZGV2aWNlcyB0byB0aGUK
+Pj4gY3Jhc2ggbm90aWZpZXIgbGlzdCwgd2hpY2ggaXMgb2RkLiBJIHdhbnQgdG8gc2VlIG9ubHkg
+b25lIGRldmljZSBhdCBhbnkgdGltZS4KPgo+WWVzLCBjZXJ0YWlubHkgd2Ugb25seSBuZWVkIG9u
+ZSBwdnBhbmljIGRldmljZS4gSWYgaXQncyBpbXBsZW1lbnRlZAo+YXMgYSBQQ0kgZGV2aWNlLCB0
+aGVuIHRoYXQncyB3aGF0IGFwcGVhcnMuIFdlIGRvbid0IG5lZWQgYW5kCj53b3VsZCBub3QgaW1w
+bGVtZW50IHRoZSBNTUlPIHZlcnNpb24uIE9uIHg4NiBhIHVzZXIgY291bGQKPmluIHRoZW9yeSB1
+c2UgdGhlIGNvbW1hbmQgbGluZSB0byByZXF1ZXN0IGJvdGggSVNBIGFuZCBQQ0kKPnB2cGFuaWMg
+ZGV2aWNlcy4gVGhhdCB3b3VsZCBub3QgYmUgdmVyeSBzZW5zaWJsZSwgYnV0IHRoZXJlCj5hcmUg
+bG90cyBvZiBRRU1VIGNvbW1hbmQgbGluZXMgdGhlIHVzZXIgY2FuIHJlcXVlc3QgdGhhdAo+ZG9u
+J3QgbWFrZSBzZW5zZS4KPgo+PiBPZiBjb3Vyc2UsIG1hbnkKPj4gYXJjaGl0ZWN0dXJlcyBjYW4g
+dXNlIFBDSSBkZXZpY2VzLCBidXQgd2UgYXJlIGN1cnJlbnRseSByZXVzaW5nIHg4Ni9wdnBhbmlj
+IGNvZGUgYXMgbXVjaAo+PiBhcyBwb3NzaWJsZSBpbiBxZW11IGFuZCBrZXJuZWwgLCByYXRoZXIg
+dGhhbiByZWltcGxlbWVudGluZyBpdC4gQXQgdGhlIHNhbWUgdGltZSwKPj4gYmFja3dhcmQgY29t
+cGF0aWJpbGl0eSBhbHNvIG5lZWRzIHRvIGJlIGNvbnNpZGVyZWQuCj4+Cj4+ICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBwdnBhbmljIGluIGd1ZXN0IGtlcm5lbAo+PiBBUk06
+ICAgQUNQSSB0YWJsZSAgICAgICAgIGFjcGkgZGV2aWNlCj4+ICAgICAgICAgICAgIEZEVCAgICAg
+ICAgICAgICAgICAgIG1taW8gZGV2aWNlICAoc3RhcnQgZ3Vlc3QgYnlwYXNzaW5nIHVlZmkpCj4+
+IHg4NiAgICAgIEFDUEkgdGFibGUgICAgICAgICBhY3BpIGRldmljZQo+Cj5Gb3IgQXJtLCB0aGVy
+ZSBpcyBubyBiYWNrd2FyZCBjb21wYXRpYmlsaXR5IGlzc3VlLCBhcyB3ZSBoYXZlCj5ub3QgeWV0
+IGltcGxlbWVudGVkIG9yIHNoaXBwZWQgYW55dGhpbmcuCj4KClNvcnJ5LCB0aGUgZXhwcmVzc2lv
+biBpcyBub3QgY2xlYXIgZW5vdWdoLiBJIHdhbnQgdG8gc2F5IHRoYXQgeDg2IG5lZWRzIGJhY2t3
+YXJkIApjb21wYXRpYmlsaXR5IGlmIHdlIGludGVuZCB0byByZXVzZSB0aGUgY29kZSBvZiB4ODYv
+cHZwYW5pYy4KCj4+ID4+IFNlY29uZGx5LCBJIGRvbid0IHdhbnQgaXQgdG8gYmUgYSBwbHVnZ2Fi
+bGUgZGV2aWNlLiBJZiB0aGUgdXNlcgo+PiA+PiBkZWxldGVzIHRoZSBkZXZpY2UgYnkgbWlzdGFr
+ZSwgaXQgbWF5IGxlYWQgdG8gdW5wcmVkaWN0YWJsZSByZXN1bHRzLgo+PiA+Cj4+ID5JZiB0aGUg
+dXNlciBkZWxldGVzIHRoZSBQQ0kgZGV2aWNlIHRoZXkncmUgdXNpbmcgZm9yIHRoZWlyCj4+ID5k
+aXNrIG9yIG5ldHdvcmtpbmcgdGhpcyB3aWxsIGFsc28gbGVhZCB0byB1bnByZWRpY3RhYmxlCj4+
+ID5yZXN1bHRzLiBXZSBleHBlY3QgdXNlcnMgbm90IHRvIHJhbmRvbWx5IHVucGx1ZyB0aGluZ3Mg
+ZnJvbQo+PiA+dGhlaXIgc3lzdGVtIGlmIHRoZXkgd2FudCBpdCB0byBjb250aW51ZSB0byB3b3Jr
+LiBJbiBhbnkKPj4gPmNhc2UgeW91ciBndWVzdCBkcml2ZXIgY2FuIGVhc2lseSBoYW5kbGUgdGhl
+IHVucGx1ZzogdGhlCj4+ID5ndWVzdCB3b3VsZCB0aGVuIGp1c3QgbG9zZSB0aGUgYWJpbGl0eSB0
+byBub3RpZnkgb24gcGFuaWMsCj4+ID5mYWxsaW5nIGJhY2sgdG8gYXMgaWYgdGhlIHB2cGFuaWMg
+ZGV2aWNlIGhhZCBuZXZlciBiZWVuCj4+ID5wcmVzZW50Lgo+Pgo+PiBJZiB0d28gZGV2aWNlcyBj
+YW4gZXhpc3Qgc2ltdWx0YW5lb3VzbHkgYnkgbW9kaWZ5aW5nIHRoZSBjb2RlLAo+PiAgdGhlbiBi
+ZWNhdXNlIEFDUEkgZGV2aWNlcyByZWx5IG9uIGEgUENJIGRldmljZSwgaWYgUENJIGRldmljZXMg
+YXJlIGR5bmFtaWNhbGx5Cj4+ICB1bnBsdWdnZWQsIEFDUEkgZGV2aWNlIHdpbGwgbm90IHdvcmsg
+d2hlbiBwYW5pYyBpcyB0cmlnZ2VyZWQuCj4KPklmIHNvbWVib2R5IG1vZGlmaWVzIHRoZSBjb2Rl
+IHRvIFFFTVUgb3IgdGhlIGd1ZXN0IGtlcm5lbAo+c3VjaCB0aGF0IHNvbWV0aGluZyBicmVha3Ms
+IHRoYXQncyB0aGVpciBpc3N1ZSB0byBkZWFsIHdpdGguCj5NeSBwcm9wb3NhbCBpcyB0aGF0IHdl
+IHdvdWxkIHNoaXA6Cj4qIGEgUUVNVSB3aXRoIGEgUENJIHB2cGFuaWMgZGV2aWNlICh3aGljaCB5
+b3UgY291bGQgcGx1ZyBpbgo+aWYgeW91IHdhbnRlZCBpdCkKPiogbm8gY2hhbmdlcyB0byB0aGUg
+QXJtIHZpcnQgYm9hcmQsIHNvIG5vdGhpbmcgaW4gdGhlIEFDUEkKPm9yIGRldmljZSB0cmVlCj4q
+IG5vICJtbWlvIHB2cGFuaWMiIGRldmljZQoKb2ssIEkgd2lsbCB0cnkgaXQuCnRoYW5rcy4KPgo+
+dGhhbmtzCj4tLSBQTU0=
 
---z9ECzHErBrwFF8sy
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+--=====_003_next=====--
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlwIUVwACgkQbDjKyiDZ
-s5Jh0RAAjEWhdwXw6e4q3OY47a6vraX1Ce5YZ/ZX4dD1yw1dORiI5j8aLqQpK8GJ
-t2ezZocEasi2GGiWbyfLxworJ5zE4hRhOXnGLXtPEFdvSX0fe5qfgb+8tdVcN9z4
-kPl1eEWtrnzuTvNilLwFHP7sbnLmhqRfv1eLh+64Bm6q0DqnTEoIxsub+JYnso+H
-6bb02rP9ynx58nj2DEp2PU7Ucdrbky1wuhbXyttDOKakfLgCObMlQblKGZ+k4Ynt
-BYYX9rkVByRZAjJemfAc6KnEnUVORPBOKkkJz71JGoF/kpn2XjiEOOXTe8/Jl1PE
-rik95eUSFCrvm/u2yat492ukZ6NoHIgNVm+2k1yVydPAOR31oPxjjJ2ksF1rS+pJ
-OxCoygBF+HTksypQCUfJZe0yyZe+VYdt4rd27PslhocvhoILw9fQjiFUI2+nc3nY
-yEYv6erDMuUuH6U7uFvgwANzdLTqSuUnuj4SXRHBt/O6htZPsfFq0JdFG3D1mX1z
-0WWOblK3ULPk8+AcocgK9lQ1U9o4kS4imL8Fm3pk5AnBtp2y1B8wyTVPryODsxd/
-CEO3P3kMLqU45OUpx3hvZYj8bo53GQqJoVtvVETCQz7dC72LQSV2P+DorzHgpoh1
-/WmQnaEZ85aX4C15ICkOjhrsWHwPhYfOqe+JgzqadWQvqDJmVs4=
-=/aQo
------END PGP SIGNATURE-----
+--=====_001_next=====--
 
---z9ECzHErBrwFF8sy--

@@ -1,82 +1,82 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10085035wrt;
-        Wed, 5 Dec 2018 18:02:58 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/V/TGTQ9KCKnBBWyA3I1rdt40GRz4HvVqdE6rBtWCcfqeVwM/rprh0ABfT9FNLGG5ixxZ7j
-X-Received: by 2002:a0c:afd1:: with SMTP id t17mr25796532qvc.93.1544061778839;
-        Wed, 05 Dec 2018 18:02:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544061778; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10478366wrt;
+        Thu, 6 Dec 2018 03:04:37 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/U71rxxImziBOBwTUEFy7DrNMazTUxxOVSPxJFWv/0Ver+wIZKLC1TcQVAmNpwXrU7F2esz
+X-Received: by 2002:a37:3c06:: with SMTP id j6mr25380282qka.298.1544094277355;
+        Thu, 06 Dec 2018 03:04:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544094277; cv=none;
         d=google.com; s=arc-20160816;
-        b=ImfY/Ot1btKYB7cfeGQ4bP33bl6q0obhGF0pSWuKOD7zX6rHFtq+HTMunx6r/2TEG+
-         D7LBjWL1ZXeaH2TgxS8M0gtJt0o7mdiPnoyH7eGID/Ay9gUpJQnZEl+1EYpcytmte+KY
-         IAutMEI8mvB36ghVrtxJn0IiJBWmgIrTzcJRqfK1Ozc8++7aXM4fvGzmUvlTLOx+IyUV
-         kRuhI8WQpNf5ox3wu9Ieep7h+LPPkrgvGdEyBmzNrve4zS844F5z413JKnPXqc8ydF08
-         o1CljIAHC1ylDZVm4eSDFG0opMNbDPqte7gut+6x1rhRg1oKpO+az9c003dj+sGhtSk2
-         aJKA==
+        b=huXrUz0T6r1+YxhkgbBoA0sItbz+7488Vj1NbiDWd10ylyoYZLYyHQN+tTFVBkqjvX
+         FX18M7mPUG6j0qIV1tScPlcoGphNdrWeS0vdNpnUSODfTmwjoQLxlpJmdkWSesYW61Tx
+         quTxb4ZGSj4OLmZES668UFy5Pbk4q3Fr58XyBHdBSwblJYdjFp2+3M8sou29yj8d98fD
+         DFNtO+v2yVXX+D2E0SgCekvxxaSpo849jWUP3UyPtJrWxiijBZT7JxvS/jXkxRMpz64v
+         YYg3rCKdSsSRvDzmxXy5J78HsQrTKCRsp4SMEuNY71zmbNkzP1pAXDaC2cH8F9AJLNR2
+         T2Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
-         :references:in-reply-to:message-id:date;
-        bh=FpIXFVg3/4vKuHulx6CCkhI+76sDFvvLhRoqSYdfFA0=;
-        b=sHqUvxmUH/zOvUSpQbaIW2JCqyoj2d/04E4fWUu0FbMwqjpiwVQnwzI1OLu300o2Me
-         HxlB8i1Y7RCfGf8NZTov01fxsBhZCPVGBbqSKKTg42fjG/J8gerLNGguTpKcsDrci3/n
-         Z8i0ywNVd2GsDKo9Pf5Supt5WajzAcTFsYWmFXStSKa1/ClbILnYWER8YKnFY3lLg2+n
-         uuhrqf/IsoktQgxixowuPL7pSgnztLFaPLTIfcN9cIOLQlsGqrWuXL1wc/xtQEc4nzC6
-         29XGNWM+uNxNrahJGD5qiXr54ict4L2MZoHtkN3RD0bFvwRb3itiPn4idaZwudcHYrqs
-         OVzQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=TyfUmFU6Ya7rplTnzKoKI6Kpw6zobyclUICuCeD8th8=;
+        b=yfaYH6Bmpr/RI4tpvRxeV4tkTc79c9tg053aCUi9Op4Y8zuAUAbhjw1oko/bxcqlDg
+         deY6getGeZPnGn5NTyz9V4pAe9oxxZuqB5+YGPid6BN0njGmis4FASFY3QXkPR+v6GhZ
+         vv6HBVAngdE58vW3eIrej8lf8BNcFO+3fJlrT4TGfcRE/PwrSc145awqtdqCjeynt+ts
+         K3KmudgClK8rqu6+71dfd7xIw/bo38QWl+S81byX8RWGTxiz0gjxKFzXF9mVCaeYlWlz
+         z9tJhWRSmu8omL3CnQzcpxiEka6rxf6YlGrLMKM2PXc9Z2RGID5HU7Ba0GBrxoZBbt8K
+         Kb+w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t23si8638360qtp.212.2018.12.05.18.02.58
+        by mx.google.com with ESMTPS id 36si20025qta.249.2018.12.06.03.04.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Dec 2018 18:02:58 -0800 (PST)
+        Thu, 06 Dec 2018 03:04:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38463 helo=lists.gnu.org)
+Received: from localhost ([::1]:40086 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUj0E-0001PA-Be
-	for alex.bennee@linaro.org; Wed, 05 Dec 2018 21:02:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51182)
+	id 1gUrSO-0002vx-Th
+	for alex.bennee@linaro.org; Thu, 06 Dec 2018 06:04:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gUj01-0001AJ-NU
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 21:02:49 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gUrSC-0002vo-Cv
+	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 06:04:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gUizx-0002aB-EX
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 21:02:45 -0500
-Received: from mxhk.zte.com.cn ([63.217.80.70]:56640)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gUrS1-00008O-9u
+	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 06:04:16 -0500
+Received: from out1.zte.com.cn ([202.103.147.172]:41028 helo=mxct.zte.com.cn)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gUizw-0002Ra-Vg; Wed, 05 Dec 2018 21:02:41 -0500
-Received: from mse02.zte.com.cn (unknown [10.30.3.21])
-	by Forcepoint Email with ESMTPS id 0A646CAFD767F487121D;
-	Thu,  6 Dec 2018 10:02:32 +0800 (CST)
-Received: from kjyxapp04.zte.com.cn ([10.30.12.203])
-	by mse02.zte.com.cn with SMTP id wB622Olu032913;
-	Thu, 6 Dec 2018 10:02:24 +0800 (GMT-8)
+	id 1gUrRu-0008Vp-CL; Thu, 06 Dec 2018 06:04:07 -0500
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id D271770258A149B120FD;
+	Thu,  6 Dec 2018 19:03:59 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id wB6B3qer072742;
+	Thu, 6 Dec 2018 19:03:52 +0800 (GMT-8)
 	(envelope-from peng.hao2@zte.com.cn)
-Received: from mapi (kjyxapp01[null]) by mapi (Zmail) with MAPI id mid14;
-	Thu, 6 Dec 2018 10:02:31 +0800 (CST)
-Date: Thu, 6 Dec 2018 10:02:31 +0800 (CST)
-X-Zmail-TransId: 2b035c08833754bd99e5
-X-Mailer: Zmail v1.0
-Message-ID: <201812061002316241763@zte.com.cn>
-In-Reply-To: <CAFEAcA8s87tB4LGaVvJNpS0RN1gQ-ZjtzOBO0mWWQamBFiTzYw@mail.gmail.com>
-References: CAFEAcA8hw_PHrBTC+v9rr8VoeU5uiV3Z6nMRknDM7WWdG1Ti5g@mail.gmail.com,
-	CAFEAcA8s87tB4LGaVvJNpS0RN1gQ-ZjtzOBO0mWWQamBFiTzYw@mail.gmail.com
-Mime-Version: 1.0
-From: <peng.hao2@zte.com.cn>
-To: <peter.maydell@linaro.org>
-Content-Type: multipart/mixed;
-	boundary="=====_001_next====="
-X-MAIL: mse02.zte.com.cn wB622Olu032913
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018120619042409-15124379 ;
+	Thu, 6 Dec 2018 19:04:24 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
+Date: Thu, 6 Dec 2018 19:25:55 +0800
+Message-Id: <1544095560-70807-1-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+MIME-Version: 1.0
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-12-06 19:04:24,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-12-06 19:03:40
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-MAIL: mse01.zte.com.cn wB6B3qer072742
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 63.217.80.70
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BPATCH_V11_0/8=5D_add_pvpanic_mmio_suppor?=
- =?utf-8?q?t?=
+X-Received-From: 202.103.147.172
+Subject: [Qemu-arm] [PATCH V12 0/5] add pvpanic mmio support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,84 +88,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com,
-	qemu-devel@nongnu.org
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /mzvmDF1TdSC
+X-TUID: SJsVNaABbhbY
 
+The first patches are simple cleanups:
+     - patch 1 move the pvpanic device with the 'ocmmon objects' so we comp=
+ile
+               it once for the x86/arm/aarch64 archs,
+     - patch 2 simply renames ISA fields/definitions to generic ones.
 
+     Then instead of add/use the MMIO pvpanic device in the virt machine in=
+ an
+     unique patch, I split it in two distinct patches:
+     - patch 3 uses Peng Hao's work, but add the MMIO interface to the exis=
+ting
+        device (no logical change).
+     - patch 4 is Peng Hao's work in the virt machine (no logical change).
+     - patch 5 add pvpanic device in acpi table in virt machine
+     v2 from Peng Hao is:
+     https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03433.html
 
---=====_001_next=====
-Content-Type: multipart/alternative;
-	boundary="=====_003_next====="
+v3 --> v4
+     patch 1,2 no modification.
+     patch 3, add TYPE=5FPANIC=5FMMIO for distinguishing different bus devi=
+ce,
+              virt + isa=5Fpvpanic will abnormally terminate virtual machin=
+e.
+     patch 4, "pvpanic,mmio" --> "qemu,pvpanic-mmio".
+     patch 5, newly added.
 
+v4 --> v5
+     patch 1,2 no modification.
+     patch 3 delete PvpanicCommonState structure.
+     patch 4 VIRT=5FPVPANIC=5FMMIO --> VIRT=5FPVPANIC
+             correct VIRT=5FPVPANIC's overlap start address
+     patch 5 no modification.
 
---=====_003_next=====
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
+v5 --> v6
+     add document.
 
-Pk9uIFdlZCwgNSBEZWMgMjAxOCBhdCAwMDoyOCwgPHBlbmcuaGFvMkB6dGUuY29tLmNuPiB3cm90
-ZToKPj4KPj4gPkknbSBhZnJhaWQgSSBkb24ndCB1bmRlcnN0YW5kLiBJZiBpdCdzIGEgUENJIGRl
-dmljZSB0aGVuCj4+ID5pdCBkb2VzIG5vdCBuZWVkIHRvIGJlIGxpc3RlZCBpbiB0aGUgZGV2aWNl
-IHRyZWUgb3IgdGhlCj4+ID5BQ1BJIHRhYmxlcyBhdCBhbGwsIGJlY2F1c2UgaXQgaXMgcHJvYmVh
-YmxlIGJ5IHRoZSBndWVzdC4KPj4gPlRoaXMgYWxzbyBzaWduaWZpY2FudGx5IHNpbXBsaWZpZXMg
-dGhlIGNoYW5nZXMgbmVlZGVkIGluIFFFTVUuCj4+ID4KPj4KPj4gSXQgaXMgcHJlY2lzZWx5IGJl
-Y2F1c2UgUENJIGRldmljZXMgY2FuIG5vdCBiZSBjb250cm9sbGVkIGJ5IEZEVCBvciBBQ1BJIHRh
-YmxlcywKPj4gSSBkbyBub3Qgd2FudCB0byBpbXBsZW1lbnQgaXQgYXMgYSBwY2kgZGV2aWNlLgo+
-PiBYODYvcHZwYW5pYyBpcyBpbXBsZW1lbnRlZCBhcyBJU0EgZGV2aWNlIGluIFFFTVUgYW5kIEFD
-UEkgZGV2aWNlIGluIGtlcm5lbC4KPj4gTXkgaW1wbGVtZW50YXRpb24gZXh0ZW5kcyB0aGUgaW1w
-bGVtZW50YXRpb24gb2YgeDg2L3B2cGFuaWMsIGFuZCBhIGxhcmdlIG9mIHg4Ni9wdnBhbmljCj4+
-IGNvZGVzIGFyZSByZXVzZWQuSWYgUENJIGRldmljZXMgYXJlIGltcGxlbWVudGVkIGluIHFlbXUs
-IHRoZW4gQUNQSSBkZXZpY2VzIGFuZCBQQ0kKPj4gZGV2aWNlcyBtYXkgYXBwZWFyIHNpbXVsdGFu
-ZW91c2x5IGluIHRoZSBrZXJuZWwuIFRoaXMgd291bGQgYWRkIGJvdGggZGV2aWNlcyB0byB0aGUK
-Pj4gY3Jhc2ggbm90aWZpZXIgbGlzdCwgd2hpY2ggaXMgb2RkLiBJIHdhbnQgdG8gc2VlIG9ubHkg
-b25lIGRldmljZSBhdCBhbnkgdGltZS4KPgo+WWVzLCBjZXJ0YWlubHkgd2Ugb25seSBuZWVkIG9u
-ZSBwdnBhbmljIGRldmljZS4gSWYgaXQncyBpbXBsZW1lbnRlZAo+YXMgYSBQQ0kgZGV2aWNlLCB0
-aGVuIHRoYXQncyB3aGF0IGFwcGVhcnMuIFdlIGRvbid0IG5lZWQgYW5kCj53b3VsZCBub3QgaW1w
-bGVtZW50IHRoZSBNTUlPIHZlcnNpb24uIE9uIHg4NiBhIHVzZXIgY291bGQKPmluIHRoZW9yeSB1
-c2UgdGhlIGNvbW1hbmQgbGluZSB0byByZXF1ZXN0IGJvdGggSVNBIGFuZCBQQ0kKPnB2cGFuaWMg
-ZGV2aWNlcy4gVGhhdCB3b3VsZCBub3QgYmUgdmVyeSBzZW5zaWJsZSwgYnV0IHRoZXJlCj5hcmUg
-bG90cyBvZiBRRU1VIGNvbW1hbmQgbGluZXMgdGhlIHVzZXIgY2FuIHJlcXVlc3QgdGhhdAo+ZG9u
-J3QgbWFrZSBzZW5zZS4KPgo+PiBPZiBjb3Vyc2UsIG1hbnkKPj4gYXJjaGl0ZWN0dXJlcyBjYW4g
-dXNlIFBDSSBkZXZpY2VzLCBidXQgd2UgYXJlIGN1cnJlbnRseSByZXVzaW5nIHg4Ni9wdnBhbmlj
-IGNvZGUgYXMgbXVjaAo+PiBhcyBwb3NzaWJsZSBpbiBxZW11IGFuZCBrZXJuZWwgLCByYXRoZXIg
-dGhhbiByZWltcGxlbWVudGluZyBpdC4gQXQgdGhlIHNhbWUgdGltZSwKPj4gYmFja3dhcmQgY29t
-cGF0aWJpbGl0eSBhbHNvIG5lZWRzIHRvIGJlIGNvbnNpZGVyZWQuCj4+Cj4+ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBwdnBhbmljIGluIGd1ZXN0IGtlcm5lbAo+PiBBUk06
-ICAgQUNQSSB0YWJsZSAgICAgICAgIGFjcGkgZGV2aWNlCj4+ICAgICAgICAgICAgIEZEVCAgICAg
-ICAgICAgICAgICAgIG1taW8gZGV2aWNlICAoc3RhcnQgZ3Vlc3QgYnlwYXNzaW5nIHVlZmkpCj4+
-IHg4NiAgICAgIEFDUEkgdGFibGUgICAgICAgICBhY3BpIGRldmljZQo+Cj5Gb3IgQXJtLCB0aGVy
-ZSBpcyBubyBiYWNrd2FyZCBjb21wYXRpYmlsaXR5IGlzc3VlLCBhcyB3ZSBoYXZlCj5ub3QgeWV0
-IGltcGxlbWVudGVkIG9yIHNoaXBwZWQgYW55dGhpbmcuCj4KClNvcnJ5LCB0aGUgZXhwcmVzc2lv
-biBpcyBub3QgY2xlYXIgZW5vdWdoLiBJIHdhbnQgdG8gc2F5IHRoYXQgeDg2IG5lZWRzIGJhY2t3
-YXJkIApjb21wYXRpYmlsaXR5IGlmIHdlIGludGVuZCB0byByZXVzZSB0aGUgY29kZSBvZiB4ODYv
-cHZwYW5pYy4KCj4+ID4+IFNlY29uZGx5LCBJIGRvbid0IHdhbnQgaXQgdG8gYmUgYSBwbHVnZ2Fi
-bGUgZGV2aWNlLiBJZiB0aGUgdXNlcgo+PiA+PiBkZWxldGVzIHRoZSBkZXZpY2UgYnkgbWlzdGFr
-ZSwgaXQgbWF5IGxlYWQgdG8gdW5wcmVkaWN0YWJsZSByZXN1bHRzLgo+PiA+Cj4+ID5JZiB0aGUg
-dXNlciBkZWxldGVzIHRoZSBQQ0kgZGV2aWNlIHRoZXkncmUgdXNpbmcgZm9yIHRoZWlyCj4+ID5k
-aXNrIG9yIG5ldHdvcmtpbmcgdGhpcyB3aWxsIGFsc28gbGVhZCB0byB1bnByZWRpY3RhYmxlCj4+
-ID5yZXN1bHRzLiBXZSBleHBlY3QgdXNlcnMgbm90IHRvIHJhbmRvbWx5IHVucGx1ZyB0aGluZ3Mg
-ZnJvbQo+PiA+dGhlaXIgc3lzdGVtIGlmIHRoZXkgd2FudCBpdCB0byBjb250aW51ZSB0byB3b3Jr
-LiBJbiBhbnkKPj4gPmNhc2UgeW91ciBndWVzdCBkcml2ZXIgY2FuIGVhc2lseSBoYW5kbGUgdGhl
-IHVucGx1ZzogdGhlCj4+ID5ndWVzdCB3b3VsZCB0aGVuIGp1c3QgbG9zZSB0aGUgYWJpbGl0eSB0
-byBub3RpZnkgb24gcGFuaWMsCj4+ID5mYWxsaW5nIGJhY2sgdG8gYXMgaWYgdGhlIHB2cGFuaWMg
-ZGV2aWNlIGhhZCBuZXZlciBiZWVuCj4+ID5wcmVzZW50Lgo+Pgo+PiBJZiB0d28gZGV2aWNlcyBj
-YW4gZXhpc3Qgc2ltdWx0YW5lb3VzbHkgYnkgbW9kaWZ5aW5nIHRoZSBjb2RlLAo+PiAgdGhlbiBi
-ZWNhdXNlIEFDUEkgZGV2aWNlcyByZWx5IG9uIGEgUENJIGRldmljZSwgaWYgUENJIGRldmljZXMg
-YXJlIGR5bmFtaWNhbGx5Cj4+ICB1bnBsdWdnZWQsIEFDUEkgZGV2aWNlIHdpbGwgbm90IHdvcmsg
-d2hlbiBwYW5pYyBpcyB0cmlnZ2VyZWQuCj4KPklmIHNvbWVib2R5IG1vZGlmaWVzIHRoZSBjb2Rl
-IHRvIFFFTVUgb3IgdGhlIGd1ZXN0IGtlcm5lbAo+c3VjaCB0aGF0IHNvbWV0aGluZyBicmVha3Ms
-IHRoYXQncyB0aGVpciBpc3N1ZSB0byBkZWFsIHdpdGguCj5NeSBwcm9wb3NhbCBpcyB0aGF0IHdl
-IHdvdWxkIHNoaXA6Cj4qIGEgUUVNVSB3aXRoIGEgUENJIHB2cGFuaWMgZGV2aWNlICh3aGljaCB5
-b3UgY291bGQgcGx1ZyBpbgo+aWYgeW91IHdhbnRlZCBpdCkKPiogbm8gY2hhbmdlcyB0byB0aGUg
-QXJtIHZpcnQgYm9hcmQsIHNvIG5vdGhpbmcgaW4gdGhlIEFDUEkKPm9yIGRldmljZSB0cmVlCj4q
-IG5vICJtbWlvIHB2cGFuaWMiIGRldmljZQoKb2ssIEkgd2lsbCB0cnkgaXQuCnRoYW5rcy4KPgo+
-dGhhbmtzCj4tLSBQTU0=
+v6 --> v7
+     patch 5 modify device name from "PANC" to "PEVT".
+     patch 6 modify document description.
 
+v7 --> v8
+     add configure interface for pvpanic-mmio
 
---=====_003_next=====--
+v8 --> v9
+     revert "moving structure definition to header file"
+     because of compile error in x86.
 
---=====_001_next=====--
+v9 --> v10
+     Modify document.
+     Repair missing header files.
+
+v10 --> v11
+     change configure interface in virt machine configure parameters.
+
+v11 --> v12
+     realize pvpanic as a pci device and use the mmio of pci device.
+
+Philippe Mathieu-Daud=C3=A9 (2):
+  hw/misc/pvpanic: Build the pvpanic device in $(common-obj)
+  hw/misc/pvpanic: Cosmetic renaming
+
+Peng Hao (3):
+  pvpanic : update pvpanic document
+  hw/arm/virt: Use the pvpanic device
+  pvpanic: add mmio interface as a pci device
+
+default-configs/arm-softmmu.mak |  1 +
+docs/specs/pvpanic.txt          | 13 +++++-
+hw/misc/Makefile.objs           |  2 +-
+hw/misc/pvpanic.c               | 91 +++++++++++++++++++++++++++++++++-----=
+---
+include/hw/misc/pvpanic.h       |  1 +
+include/hw/pci/pci.h            |  1 +
+6 files changed, 91 insertions(+), 18 deletions(-)
+
+--=20
+1.8.3.1
 

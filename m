@@ -1,163 +1,214 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9594689wrt;
-        Wed, 5 Dec 2018 08:47:51 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Uc6VWt4f2UVuPMvtz6kg56GJLdrG8frt7TH6vznwxILFTQyLPhGedTC7FYFZtVkchVfzKg
-X-Received: by 2002:ac8:7598:: with SMTP id s24mr16328630qtq.6.1544028471498;
-        Wed, 05 Dec 2018 08:47:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544028471; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp10391910wrt;
+        Thu, 6 Dec 2018 01:19:55 -0800 (PST)
+X-Received: by 2002:a19:2106:: with SMTP id h6mr15942321lfh.29.1544087995358;
+        Thu, 06 Dec 2018 01:19:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544087995; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8qLfCt1qRYKdtNaBfsEKR8PbdIL20mA/Qh+4vr0WP/CagHk5TbQsoI5mrtsdRJ0yE
-         RYirmeI1X/xuM90n7IeekUHCv3lM6nLmHfceDCsuLCauFFf9ifsutOhpCuuW4Eu7UYaK
-         OysSsgQJIcL6gHBb9nt3GPFTM2xswJaGnEA4dprV0E7sSwT7TzgRpOvVgs8MjQHRZuXp
-         xxLffhlj/vZ2FdosXWeaOWquL10cTBMwY1lP67PihKnT3Vid69OKNJUrWjfVtDSbI45E
-         XjaWBkmuJSWBUJI9ITSabUkoCY8E0fhtY3hoiM773Ia13tTBaTaz3attxvB+4qS00Ew0
-         sSYQ==
+        b=vhINAJirb1rdUquhRKa7gzSoke2kSl7n7O/z81AFkWd+z3uHh5Nkjrz4eYSVj6qLCC
+         2N1sJxOUIRM91eAApTzxUbb3t4tTkNPdGvVzJiWg/01btuIU36JcPQcWF9gSQ1L8kcvh
+         3qzuBo08vkBbZrvWMiYYZoHFRY+YZ9mW5kS9k+OUTcJJC1tYZUsFkROlwE4V+7jLQjXj
+         JmYtMH4YBsm1eDT+C6n69F2chnB3GNHH1/+KaYAKIt9M0VBIP4akCpz27MbX1k9xOy3V
+         XVRIMQgPNq9raeYqjciyUgJLGGOerz+h1wJ5ijBTXp9TQuVUQqW7l0ca7RxatkK1OXFk
+         TNjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=7kLeXWfHtLKDkT0MHhZnSorWcO620gh7qhdeZxpbZ4o=;
-        b=YPOp72gLAJeFRDbYW4paRHmpcZKb0UF7QVIV+WzAQ3AAR78NsnhY9J3I5frCY6zRvR
-         BQdcfqxELT1UoZyvYPdmmIxbga0mXa5rghmue4Qt1GiCCioqE+qcg7km9t8z0VM9YILX
-         MwYkOgSWJLDfhM1DQs5iPl8lVtJ4D/r2DE2UFK7yEYRhilH/2NBPqgSCRwBHStyXPNYe
-         iBg9aIt35mUXbTb5GI1Lffx6AuEa9FD+3vE0gx3Iyoz0gICq4dTgCEEsOxRBWuLaSlg1
-         6fgpSeG42KqXMdXPjqz3AQyjpK6jEwMpcGs/3Hgf7UdARMq4puVVVwLGqHDOcJQcpeuR
-         OCQQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Yy3eQ42RF732OdZ3faZJvgeQ1xeE5wfMXRThXRhoCQE=;
+        b=J242yTA5ScoxknAiY/gwDYJOcwP4bL9Z4lNBqAoEJ9Vr2kpiH++FknKJlEtAd79Mx4
+         t3ooKomGWASBJ14/LjKzstSYhQYTtNSsIahZUxTq1yEPOKlSU+07CSRmmvvQxIs7J1AI
+         fnwHqjvJrkLixFwZnFhKNFrYCJNbUkW/S/ieOrZzX4g17agXRXlXQFSZfG/67e/5X30e
+         4cAvK4KuBqfVGOA7gMO5dN+xne4yYdPYLZoUShS7MYkYSTMBH5qkhyMv2KKnBagrQkz7
+         LpTrIguWLu85QxYfzIuDijeHTzHlIyjG6WPJJ8cmLtc3wYZM50e/2lbXIXTZ7oCmx7C2
+         T8uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v30si13294456qtd.97.2018.12.05.08.47.51
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z1qCGC+K;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f18sor6116910lfa.66.2018.12.06.01.19.55
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Dec 2018 08:47:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Thu, 06 Dec 2018 01:19:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35564 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUaL0-0003lY-OF
-	for alex.bennee@linaro.org; Wed, 05 Dec 2018 11:47:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58270)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gUaKR-0003k1-8R
-	for qemu-devel@nongnu.org; Wed, 05 Dec 2018 11:47:16 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gUaKQ-000452-Ce
-	for qemu-devel@nongnu.org; Wed, 05 Dec 2018 11:47:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40564)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gUaKL-0003pu-QF; Wed, 05 Dec 2018 11:47:10 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6260A4D4DF;
-	Wed,  5 Dec 2018 16:47:08 +0000 (UTC)
-Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1B71917B9D;
-	Wed,  5 Dec 2018 16:47:03 +0000 (UTC)
-Date: Wed, 5 Dec 2018 14:47:02 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <20181205164702.GR18284@habkost.net>
-References: <CAFEAcA8D7ZjO059Sgrx-4i0iT+V3gxT4f=DvdmUAJS7KomtyOg@mail.gmail.com>
-	<b8e20686-e5d1-a844-48f7-a4ae471e3fd5@greensocs.com>
-	<CAFEAcA8j4xTiS3_ktiA0hm2N4cu5RvxAtYqUHgvY-bUXgcwbjQ@mail.gmail.com>
-	<50645862-a638-ad2a-bafe-1b46be42aec4@greensocs.com>
-	<20181204180607.GB18284@habkost.net>
-	<CAFEAcA9JXeRGfKzouYJQKxgXuw_Z-up0a1ijZX9hZvXbdkwiuA@mail.gmail.com>
-	<20181204190548.GH18284@habkost.net>
-	<CAFEAcA9M3akT7sF-kjCg41ucuUhv2PxKaCBmkN3eacvqvf_w9Q@mail.gmail.com>
-	<20181204194532.GJ18284@habkost.net>
-	<f0a7fe11-61ff-6a60-f320-438e4e38f2da@greensocs.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z1qCGC+K;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Yy3eQ42RF732OdZ3faZJvgeQ1xeE5wfMXRThXRhoCQE=;
+        b=Z1qCGC+KzIQsewzp9bXmm76qaqM4X/2vKnC0EOxMB1ZqUwq5JrOHHIId2sixqcTFF4
+         ufBXYwR17j3d2E0CGPfU/YGb/JV9GGVXhyYuaSF2Ksc3kvHPKXij11aaRLL90FOq21O5
+         xK04Pcat8/1X22mfTA0s2PRhc66Xu5zrnxyDA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Yy3eQ42RF732OdZ3faZJvgeQ1xeE5wfMXRThXRhoCQE=;
+        b=rWiqcO0MWdZo4jUl+1Rf0ezNwvsxsl4lx6AsRB4el8KE6BoflSCn279+KEuW+iVnGe
+         Pq/QvYGYFUjlPFRt3UDTDYah/udkNPuw5FRNgpIZY5oyB+EcX5rZ/ltn3rgTFUfA6XoH
+         7dYb7R8vJs/obDn5zt3Ynlz/P6GNypN4GnoQtTInv+IUJsTyqFXuqLPowCzn7YxcH7P5
+         4duXrp99UCcl6CZNOb5j5DZcYTuiV0mBIZTJFyNZuRL75VF+468pZcLGQoFTi+YrMEpX
+         t023SlYRHqecFdrtIJeO8/b7mnrDj9qlm26IRUOtr6hn/OYbV5GEcTwtM4/6H6BnFb1q
+         46bA==
+X-Gm-Message-State: AA+aEWZhqVnNCj7kxUdkeO4IY7WbhvXveHeCUQSPm4xzvvB7c5QLBDOB
+	HRxaeyrkDQV7mBfzLtzYPDuRKLxfz5RiKlUL6Bk4Fuec0EutTw==
+X-Google-Smtp-Source: AFSGD/UJa7iwy4cS0Wy+83mWrTUbEbgIrpG5urY8kEL0yuhhJmRgVO9LHEWBA57ynW5MMAA8/Yhc/PrvrFKf+h1L7ec=
+X-Received: by 2002:a19:aace:: with SMTP id t197mr15912920lfe.7.1544087994868;
+ Thu, 06 Dec 2018 01:19:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f0a7fe11-61ff-6a60-f320-438e4e38f2da@greensocs.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 05 Dec 2018 16:47:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v7 01/16] hw/cpu: introduce CPU clusters
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Mark Burton <mark.burton@greensocs.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lUTO6ray8oRb
+References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
+ <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
+ <CAHmQWvD1ocAfZo=9aJYeuVDWrBk=AF_D-AgHriYb3-7=n+rR6A@mail.gmail.com> <CAFEAcA_a-YMNaGtPPn+8DBFmx4xGYCkuybMck_Wquw6zmLTbCQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_a-YMNaGtPPn+8DBFmx4xGYCkuybMck_Wquw6zmLTbCQ@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Thu, 6 Dec 2018 17:19:42 +0800
+Message-ID: <CAHmQWvAy0kdhXd=atnzB6_ASoRmrxv3wB8AaJPf1eFpf8ex+Pg@mail.gmail.com>
+Subject: Re: [PATCH v4] hw/arm: Add arm SBSA reference machine
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: KKNHwflFktsv
 
-On Wed, Dec 05, 2018 at 03:02:45PM +0100, Luc Michel wrote:
-> On 12/4/18 8:45 PM, Eduardo Habkost wrote:
-> > On Tue, Dec 04, 2018 at 07:16:39PM +0000, Peter Maydell wrote:
-> >> On Tue, 4 Dec 2018 at 19:05, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> >>> On Tue, Dec 04, 2018 at 06:24:19PM +0000, Peter Maydell wrote:
-> >>>> A cluster is a group of CPUs which are all identical and have
-> >>>> the same view of the rest of the system.
+On Fri, 16 Nov 2018 at 19:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On 16 November 2018 at 10:46, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> > On Fri, 16 Nov 2018 at 00:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >> If after you've done that this patch is still more than
+> >> about 500 lines long, I would recommend that you split it
+> >> up into coherent pieces, to make it easier to review.
+>
+> > I think however I re-work this file, it is still more than 500 lines.
+> > If split it, then how? one for most basic skeleton, including memory
+> > map, class and instance init etc, and another adding peripheral
+> > devices, like pcie etc?
+>
+> Yes, that's a reasonable split.
+>
+> >> This is still generating a lot of device tree nodes.
+> >> I thought we had agreed that we were going to just have
+> >> a minimal device tree that says "here is the RAM" and nothing
+> >> else ?
 > >>
-> >>> With that definition in mind, why can't QEMU cluster CPUs
-> >>> automatically by looking at CPU models and address space objects?
+> > If I remember correct, it was not only the RAM, but also the CPUs
+> > because it depends on the command parameters dynamically, and also the
+> > GIC as well since it depends on the CPU number.
+> > And should NUMA info if used, be added to DT?
+> > And by the way, I didn't find the RAM size info in the DT.
+>
+> You should include the absolute minimum you need that you
+> cannot either say "we know what this value is because we
+> know the board" or probe for anyway. I think that is basically
+> ram inf and number of CPUs. (Ram size and numa configuration
+> is added to the dtb by the hw/arm/boot.c code, which sets up
+> the "/memory" nodes.)
+>
+> You shouldn't need to put the GIC info into the DT, because
+> you can just hard code into UEFI where it is in memory.
+>
+> >> > +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
+> >> > +{
+> >> > +    hwaddr base = vms->memmap[VIRT_EHCI].base;
+> >> > +    int irq = vms->irqmap[VIRT_EHCI];
+> >> > +    USBBus *usb_bus;
+> >> > +
+> >> > +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
 > >>
-> >> That sounds like it is in theory feasible and in practice
-> >> quite tricky. You would have to look not just at the CPU
-> >> model name but also introspect all its properties for
-> >> ones which change features of the CPU and are set differently
-> >> on different CPUs (and I don't think there's any way to
-> >> automatically tell which properties are ones which make
-> >> the CPU different for which-cluster purposes and which aren't).
-> >> And if we automatically checked whether address space objects
-> >> were the same it would rule out implementing devices with
-> >> per-cpu banked memory mapped registers by mapping different
-> >> things into the AS for each CPU (though that's a hypothetical
-> >> at the moment -- I've thought about implementing stuff that
-> >> way but we tend to implement that sort of thing by looking
-> >> at current_cpu->cpu_index at the moment).
-> > 
-> > I see.
-> > 
-> > Can't we at least do something to make sure the cluster objects
-> > make sense?  e.g. by ensuring at least QOM CPU type is the same,
-> > and that cpu->address_space somehow points to
-> > cpu->cluster->address_space?
-> Where such a check should be placed? Cluster realize function is not
-> good since children can still be added after device realization. A good
-> place would be when object_property_add_child() is called, but I'm not
-> aware of a way of hooking into that with the QOM API...
+> >> What is this using the exynos4210 USB device for? That
+> >> is definitely not correct for a generic board.
+> >>
+> > Checked the code:
+> > #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+> > #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+> > #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+> > #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+> > #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+> >
+> > The first one seems only a parent type, not a general instance, cannot
+> > be used directly.
+> > The other four are specific instances using the first as parent type,
+> > one of them can be chosen to use.
+> > That is my understanding, any comments, or do we need to implement one
+> > which seems generic?
+>
+> You need to work out what you want and implement that;
+> I don't really know enough about USB to advise.
+> You probably also need to consider how you want
+> the USB companion chip stuff to work -- I know that
+> we've had a bug report that the Exynos4210 USB setup
+> is not getting that right, so it may be a poor example
+> to copy from.
+>
+> >> > +
+> >> > +    usb_bus = usb_bus_find(-1);
+> >> > +    usb_create_simple(usb_bus, "usb-kbd");
+> >> > +    usb_create_simple(usb_bus, "usb-mouse");
+> >>
+> >> Don't create USB devices by default -- let the user do it on
+> >> the command line.
+> >>
+> > Some users hope that, I can remove it if not reasonable.
+>
+> Almost no other board models do it (only a few PPC ones
+> and an sh4 board). Generally for QEMU the approach we take
+> is that we don't provide defaults, we expect the user
+> (or the 'management layer' software like libvirt) to
+> specify what they want. This allows users to specify that
+> they *don't* want a usb keyboard, for instance.
+>
+One thing I forgot to mention that we have VGA on this machine, so it
+is convenient/better that we have mouse/keyboard.
+(Anyway my next iteration won't have them due to the xhci needs to be
+rebuild separately later)
 
-Not sure.  Maybe it can be a post-machine_init hook.  Maybe this
-can be done by a separate (avocado_qemu-based?) test script.
-
-It looks like address space info is available through HMP ("info
-mtree") and not QMP, so we'd need to fix that first.  CCing HMP
-and QMP maintainers.
-
-I don't think this should block the series, but it would be a
-welcome addition.
-
--- 
-Eduardo
+> >> > +    /* If we have an EL3 boot ROM then the assumption is that it will
+> >> > +     * implement PSCI itself, so disable QEMU's internal implementation
+> >> > +     * so it doesn't get in the way. Instead of starting secondary
+> >> > +     * CPUs in PSCI powerdown state we will start them all running and
+> >> > +     * let the boot ROM sort them out.
+> >> > +     * The usual case is that we do use QEMU's PSCI implementation;
+> >> > +     * if the guest has EL2 then we will use SMC as the conduit,
+> >> > +     * and otherwise we will use HVC (for backwards compatibility and
+> >> > +     * because if we're using KVM then we must use HVC).
+> >> > +     */
+> >> > +    if (vms->secure && firmware_loaded) {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
+> >> > +    } else if (vms->virt) {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+> >> > +    } else {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
+> >> > +    }
+> >>
+> >> Do you actually intend this to work in all these cases? I
+> >> thought the intention was "always start the boot rom in EL3"
+> >> for this board, like the real hardware would. In that case, most
+> >> of these if clauses are dead code.
+> >>
+> > Well, I myself prefer "always enable EL3" too.
+> > But during this work, I found that if EL2/EL3 enabled, QEMU runs much
+> > slower than without EL2/3, so I guess if there would be some user of
+> > this platform, for the reason of speed they choose to disable EL2/3,
+> > should we give them such a chance?
+> > If get confirmation that we always enable EL2/3, that is fine for me,
+> > this will make codes cleaner.
+> >
+> > (By the way, I wonder why QEMU becomes much slower with EL2/3 enabled,
+> > because when OS is running, most of the time, we don't call into
+> > EL2/3, does this mean there is a big space for us to optimize it?)
+>
+> I think users who don't care about the EL2/EL3 parts of the software
+> stack should just use the "virt" machine instead -- that is the
+> board we have for "run as fast as possible and just boot a kernel".
+>
+> It would be interesting at some point to find out why EL2 and EL3
+> are causing slowdowns, yes.
+>
+> thanks
+> -- PMM

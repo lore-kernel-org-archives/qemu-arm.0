@@ -1,66 +1,68 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp242430wrt;
-        Fri, 7 Dec 2018 01:08:05 -0800 (PST)
-X-Received: by 2002:a65:448a:: with SMTP id l10mr1207487pgq.387.1544173685240;
-        Fri, 07 Dec 2018 01:08:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544173685; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp242506wrt;
+        Fri, 7 Dec 2018 01:08:10 -0800 (PST)
+X-Received: by 2002:a63:504d:: with SMTP id q13mr1234672pgl.319.1544173689474;
+        Fri, 07 Dec 2018 01:08:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544173689; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ml0bAkWSBz008bWsegTc/uvpdgdsQB49nFNkimXdip0egPTdAQDekl+XsRP1hQ8Tcz
-         ACgJa/gIn++zU+xg+1q9zvQL/T4m5CHaTZfcSJq4S6vnII5hI43cEW9z0qkjmTzRM1oz
-         XsdlVOl2mD8HVJxa2+z4nxpkgZqKsBjhl3KIytlxt7yAemgINEDFVR2i0a5zEwIhDbsD
-         87BJF0WmcloyytFwD2WpXSefVspKpcd1LOoaf4yd1Sb2SAAyPw4vGkeIyb8RsOPNi9fy
-         g80UrGUJgpOLI8ORKF8zulUD1cVTRu04hWWgYtguh4PiNpuL/Q0wNQA+ML7t4v81DDCH
-         CRHQ==
+        b=P9WjpT1GQxlo3wG2eutixMkM6Ria+bogApSJL7NvLWDqTTe8AMro0qIBP04MbVBbxK
+         IzbPHcgsaARuDhcH770zWgUwmiLAJvn+UCBEVDGZNfb35iSkcAKsKChiwA0yMeEvVDdt
+         3pWlQLlNzjemy43QAZh+6i/iw0CJ6V0Mb+m9zF/pU5EidRy8//4q3Mu1ySo15uafDi7q
+         M+8nqtZWKec8sf8pqRQiGHco73bftRh5xoTy9b+PgYhwTk8sD5uVcK0pgBymdKYwG+ox
+         DnyL6TwTQ/0AFLeq6H20YggGjuNr1FsVUjHrSEHWXb9zqDx2PSDDYvsEGkfIHgWK0+Fy
+         jbJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JRopU4J8VRu3UC7V4fJLRxQW4QXYNmOy8Bc1wmIb1ME=;
-        b=KYi+iL4p5jrVXLcSkAUeLn0cAGiS0LHYJcLL+cu3K56Mo6Ntw0sW/zeaO41cA4yycn
-         LtcGbDln1csOI/4eTwr8E+EKpEhD64wVRc8u1biIZ2xDhxuHHJ7hfakL/VFCoNclXuzd
-         mTWSMbf18kLNW5OAHy2/NtVpThVYiHU6foCjDGznpAnaYcec+wtzVCGG7oiJqFh64Aq1
-         HGp2xZxNCI8/kEZHARQXrTZvHovkTsp7pczPZoi+dSc6nPEUO7sxEtfeDZsjHHr9P9QL
-         rZ+eQboXPNL1b4Xm2DR/McfTyV3QUnD0J8gfkePtSC+O7E+y7sX82uWSRIMswESt9gFZ
-         tT4Q==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=+tl3ilYm7C+KQEmQIc/4EiG+n1/4vE27aO6jvS+mD74=;
+        b=01pwh5/3kFgBZEEgpACGWenK4a0ra8TtN2urYR1/sWaN7hmv1PUa6kkIYlE3+rXuic
+         SfqckPp+r9PImFdvqaBUm2a4BkbhYP6Q3liJpH9B7FwrD72j7GFPNzhNMxShFr++PYlj
+         vVrHFKJyAg/5C1G2+MTGpnGNd1VjMaERXfNUp+YxVXwfjs0mcoL6PneHvWcf4ISrdGRm
+         TO+mhTkNV4ERg3bY5H6MVUmsktnB8MJTcu7TQKtgXnfsjIqwzr7AUoPi11m/HX/mieWt
+         7jHUmE4Awz2lhi3vpOj2SrwkHmuXYS3szGSpV+vJ09aqJQhiObsnBlJ952ZOekQAuLii
+         mxrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=krgT9rRm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aiKF+b+g;
        spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <hongbo.zhang@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g61sor4281307plb.5.2018.12.07.01.08.05
+        by mx.google.com with SMTPS id m5sor4409719pls.2.2018.12.07.01.08.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 07 Dec 2018 01:08:05 -0800 (PST)
+        Fri, 07 Dec 2018 01:08:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=krgT9rRm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aiKF+b+g;
        spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=JRopU4J8VRu3UC7V4fJLRxQW4QXYNmOy8Bc1wmIb1ME=;
-        b=krgT9rRmdBAyQefB7HN8hJX+lfEKEjQWJeJWbL0Yfg1RCNWLbNAI6diAYJYymToqWc
-         iQHJrnFp3908PRLKAUnyAY/h8eJqSfXeQA1Cl36xtrhLDLKJ4uJWefxUEJViCPaqMTwf
-         ka7GpfxuHLgnXzq/H18mTgq+tH58bo0h36cOQ=
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=+tl3ilYm7C+KQEmQIc/4EiG+n1/4vE27aO6jvS+mD74=;
+        b=aiKF+b+gWPSkjLAuquc27eGeEirgIHxlmHOuTrt47o7NSZZtxLM6i1BLxqNRDgkRGx
+         qrXDPEOuALZU9hd+sVhpxbY759mx0W2bv77jsi+GipXmCUox65pK+D6Jrlm2y14PekFA
+         Ajc/tmkC+ABAR8BQBISpWW+nyveYY/3fUxL88=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=JRopU4J8VRu3UC7V4fJLRxQW4QXYNmOy8Bc1wmIb1ME=;
-        b=JdSwOYaEB2P0HN7qsvDioGdC9FI9l9Q/CTKcscjExrb4IXK71qyQjWNBPN8VsbKtDG
-         rp+aYRgFOlzHDCv8ZAtZnm5b+dV3pvYp04gL1rPIJZHr1HpQZWi/GmhrbgkCFkBDFnnp
-         IOIMrZs1x6GDo8idpqaYvobfu37ZR/lxetoiRj4RE1oaFowu5wb/pX3VDCk81rzt9yvX
-         lGvGeO8KOm0mzYC4+J/LUNLDvWlSIe+D7LSMhFtjbqdVw2N/CEBFV05u1iYfPQ0XsqJV
-         M+kU73O+21UWpJBSK4ZByligOo6MnjXR0tJs3Mzep3b/ABclu5g8KhttB9sBtR1O2INY
-         CQkQ==
-X-Gm-Message-State: AA+aEWZpnmSH8WtjMxXZbq/2EEEgSHR14mBlnaVS3sUXzRErSbQrPkkD
-	ldDLpnG0CJDMteh2bLMZ/iaFjo50
-X-Google-Smtp-Source: AFSGD/VR6MISZq6f1axMhdFrfDGQAST5OXR5hj5qPr1YDRxoOaGRJ0PieEROQa8w4fMzx4Qu5Lhv4g==
-X-Received: by 2002:a17:902:2c03:: with SMTP id m3mr1325357plb.6.1544173684764;
-        Fri, 07 Dec 2018 01:08:04 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=+tl3ilYm7C+KQEmQIc/4EiG+n1/4vE27aO6jvS+mD74=;
+        b=Zf55JBhI2diSO2wcJGbCHmN+puLZoL9NyTUOS1TPttg4/OVbIbBxpZkMHUHbk5yk99
+         VoyYLnKAGHCRyzh5nwncf1VCQ6qTffDZ6i6vI4TVQal7pYG9oKhrDx3zqu66T8Vo7Hep
+         WCQd9C8miQJUZBc2ORTLapbdBhXmQIt1lSghsUWfBaBZiN/Yq0DZ+f4qRSp9EIYNwu3G
+         XPgTmtlf/SRHZ8qjPqoDQNk93dloD4fwtAD8iDb+pX/ihpZf7CLW2zsKUviBLrF4g1H6
+         VR9BeRKfENEyjLUzHNgp1bYSKAntLSaDM9QSC7UwE6U5g2ubeBtRNCZEPizLKiTXITZr
+         ekog==
+X-Gm-Message-State: AA+aEWb98MvpHQxUZ96ak6YMiYddVe7gkc55Thb2xOlkJqFP1mC4leab
+	YYYtdTbtooS9ZectQTUELj55KSoo
+X-Google-Smtp-Source: AFSGD/WIEJ6zTSA8WcwW1rUqYefU0Y2EmVoBKWPb7dAtBcKLiREdVBSuJk+RGZzPwrgMjy1/+spfZA==
+X-Received: by 2002:a17:902:aa0a:: with SMTP id be10mr1359265plb.266.1544173688875;
+        Fri, 07 Dec 2018 01:08:08 -0800 (PST)
 Return-Path: <hongbo.zhang@linaro.org>
 Received: from localhost.localdomain ([45.56.155.222])
-        by smtp.gmail.com with ESMTPSA id k38sm3058432pgb.33.2018.12.07.01.08.01
+        by smtp.gmail.com with ESMTPSA id k38sm3058432pgb.33.2018.12.07.01.08.05
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 07 Dec 2018 01:08:03 -0800 (PST)
+        Fri, 07 Dec 2018 01:08:08 -0800 (PST)
 From: Hongbo Zhang <hongbo.zhang@linaro.org>
 To: peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
@@ -70,83 +72,356 @@ Cc: ard.biesheuvel@linaro.org,
 	leif.lindholm@linaro.org,
 	radoslaw.biernacki@linaro.org,
 	Hongbo Zhang <hongbo.zhang@linaro.org>
-Subject: [PATCH v5 0/2] [PATCH v4] Add arm SBSA reference machine
-Date: Fri,  7 Dec 2018 17:07:53 +0800
-Message-Id: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
+Subject: [PATCH v5 1/2] hw/arm: Add arm SBSA reference machine, skeleton part
+Date: Fri,  7 Dec 2018 17:07:54 +0800
+Message-Id: <1544173675-14217-2-git-send-email-hongbo.zhang@linaro.org>
 X-Mailer: git-send-email 2.7.4
-X-TUID: 0xufs+J7zOrV
+In-Reply-To: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
+References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
+X-TUID: i/Xp2Nf0kDrs
 
 For the Aarch64, there is one machine 'virt', it is primarily meant to
 run on KVM and execute virtualization workloads, but we need an
-environment as faithful as possible to physical hardware,  to support
+environment as faithful as possible to physical hardware, for supporting
 firmware and OS development for pysical Aarch64 machines.
 
-This machine comes with:
+This patch introduces new machine type 'sbsa-ref' with main features:
+ - Based on 'virt' machine type.
  - Re-designed memory map.
- - CPU cortex-a57.
- - EL2 and EL3 enabled.
+ - CPU type cortex-a57.
+ - EL2 and EL3 are enabled.
  - GIC version 3.
  - System bus AHCI controller.
  - System bus XHCI controller(TBD).
  - CDROM and hard disc on AHCI bus.
  - E1000E ethernet card on PCIE bus.
  - VGA display adaptor on PCIE bus.
+ - No virtio deivces.
+ - No fw_cfg device.
+ - No ACPI table supplied.
  - Only minimal device tree nodes.
-And without:
- - virtio deivces.
- - fw_cfg device.
- - ACPI tables.
 
 Arm Trusted Firmware and UEFI porting to this are done accordingly, and
 it should supply ACPI tables to load OS, the minimal device tree nodes
 supplied from this platform are only to pass the dynamic info reflecting
 command line input to firmware, not for loading OS.
 
-v5 changes:
- - removed more lines derived from virt.c
- - designed a new memory map
- - splitted former one patch into two for easier review
- - cancled previous EHCI and new HXCI coming later separately
+To make the review easier, this task is split into two patches, the
+fundamental sceleton part and the peripheral devices part, this patch is
+the first part.
 
-V4 changes:
- - rebased to v3.0.0
- - removed timer, uart, rtc, *hci device tree nodes
-   (others were removerd in v3)
- - other minore codes clean up, mainly unsed header files, comments etc.
-
-V3 changes:
- - rename the platform 'sbsa-ref'
- - move all the codes to a separate file sbsa-ref.c
- - remove paravirtualized fw_cfg device
- - do not supply ACPI tables, since firmware will do it
- - supply only necessary DT nodes
- - and other minor code clean up
-
-In the previous v4 cover letter,
-https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg04282.html
-I mentioned I had to revert two commits temperarily to run:
- Revert "target/arm: Implement new do_transaction_failed hook"
- Revert "device_tree: Increase FDT_MAX_SIZE to 1 MiB"
-
-Now the 1st one is fixed by Ard Biesheuvel in the edk2 side, and for
-the 2nd one, a simple change in firmware side can fix it, so I won't
-mention these issues in details in the cover letter any more.
-
-I also put a branch here:
-http://git.linaro.org/people/hongbo.zhang/qemu-enterprise.git/log/?h=sbsa-upstream-v5
-with the last 3 workaroud we can test using legacy firmware
-but gicv3 needs to be enabled in ATF:
-http://git.linaro.org/people/hongbo.zhang/atf-sbsa.git/log/?h=sbsa_gicv3
-
-Hongbo Zhang (2):
-  hw/arm: Add arm SBSA reference machine, skeleton part
-  hw/arm: add Arm SBSA reference machine, devices part
-
+Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+---
  hw/arm/Makefile.objs  |   2 +-
- hw/arm/sbsa-ref.c     | 698 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/sbsa-ref.c     | 277 ++++++++++++++++++++++++++++++++++++++++++++++++++
  include/hw/arm/virt.h |   1 +
- 3 files changed, 700 insertions(+), 1 deletion(-)
+ 3 files changed, 279 insertions(+), 1 deletion(-)
  create mode 100644 hw/arm/sbsa-ref.c
 
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index d51fcec..a8895eb 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -1,4 +1,4 @@
+-obj-y += boot.o virt.o sysbus-fdt.o
++obj-y += boot.o virt.o sbsa-ref.o sysbus-fdt.o
+ obj-$(CONFIG_ACPI) += virt-acpi-build.o
+ obj-$(CONFIG_DIGIC) += digic_boards.o
+ obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+new file mode 100644
+index 0000000..1d6252b
+--- /dev/null
++++ b/hw/arm/sbsa-ref.c
+@@ -0,0 +1,277 @@
++/*
++ * ARM SBSA Reference Platform emulation
++ *
++ * Copyright (c) 2018 Linaro Limited
++ * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
++ *
++ * Based on hw/arm/virt.c
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/arm.h"
++#include "hw/arm/virt.h"
++#include "hw/devices.h"
++#include "net/net.h"
++#include "sysemu/device_tree.h"
++#include "sysemu/numa.h"
++#include "sysemu/sysemu.h"
++#include "hw/loader.h"
++#include "exec/address-spaces.h"
++#include "qemu/error-report.h"
++#include "hw/pci-host/gpex.h"
++#include "hw/arm/sysbus-fdt.h"
++#include "hw/arm/fdt.h"
++#include "hw/intc/arm_gic.h"
++#include "hw/intc/arm_gicv3_common.h"
++#include "kvm_arm.h"
++#include "hw/ide/internal.h"
++#include "hw/ide/ahci_internal.h"
++#include "qemu/units.h"
++
++#define NUM_IRQS 256
++
++#define RAMLIMIT_GB 8192
++#define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
++
++static const MemMapEntry sbsa_ref_memmap[] = {
++    /* 512M boot ROM */
++    [VIRT_FLASH] =              {          0, 0x20000000 },
++    /* 512M secure memery */
++    [VIRT_SECURE_MEM] =         { 0x20000000, 0x20000000 },
++    [VIRT_CPUPERIPHS] =         { 0x40000000, 0x00080000 },
++    /* GIC distributor and CPU interface expansion spaces reserved */
++    [VIRT_GIC_DIST] =           { 0x40000000, 0x00010000 },
++    [VIRT_GIC_CPU] =            { 0x40040000, 0x00010000 },
++    /* 64M redistributor space allows up to 512 CPUs */
++    [VIRT_GIC_REDIST] =         { 0x40080000, 0x04000000 },
++    /* Space here reserved for redistributor and vCPU/HYP expansion */
++    [VIRT_UART] =               { 0x60000000, 0x00001000 },
++    [VIRT_RTC] =                { 0x60010000, 0x00001000 },
++    [VIRT_GPIO] =               { 0x60020000, 0x00001000 },
++    [VIRT_SECURE_UART] =        { 0x60030000, 0x00001000 },
++    [VIRT_SMMU] =               { 0x60040000, 0x00020000 },
++    /* Space here reserved for more SMMUs */
++    [VIRT_AHCI] =               { 0x60100000, 0x00010000 },
++    /* Space here reserved for other devices */
++    [VIRT_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
++    /* 256M PCIE ECAM space */
++    [VIRT_PCIE_ECAM] =          { 0x80000000, 0x10000000 },
++    /* ~1TB for PCIE MMIO (4GB to 1024GB boundary) */
++    [VIRT_PCIE_MMIO] =          { 0x100000000ULL, 0xFF00000000ULL },
++    [VIRT_MEM] =                { 0x10000000000ULL, RAMLIMIT_BYTES },
++};
++
++static const int sbsa_ref_irqmap[] = {
++    [VIRT_UART] = 1,
++    [VIRT_RTC] = 2,
++    [VIRT_PCIE] = 3, /* ... to 6 */
++    [VIRT_GPIO] = 7,
++    [VIRT_SECURE_UART] = 8,
++    [VIRT_AHCI] = 9,
++};
++
++static void sbsa_ref_init(MachineState *machine)
++{
++    VirtMachineState *vms = VIRT_MACHINE(machine);
++    MachineClass *mc = MACHINE_GET_CLASS(machine);
++    MemoryRegion *sysmem = get_system_memory();
++    MemoryRegion *secure_sysmem = NULL;
++    MemoryRegion *ram = g_new(MemoryRegion, 1);
++    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
++    const CPUArchIdList *possible_cpus;
++    int n, sbsa_max_cpus;
++
++    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
++        error_report("sbsa-ref: CPU type other than the built-in "
++                     "cortex-a57 not supported");
++        exit(1);
++    }
++
++    if (kvm_enabled()) {
++        error_report("sbsa-ref: KVM is not supported at this machine");
++        exit(1);
++    }
++
++    if (machine->kernel_filename && firmware_loaded) {
++        error_report("sbsa-ref: No fw_cfg device on this machine, "
++                     "so -kernel option is not supported when firmware loaded, "
++                     "please load OS from hard disk instead");
++        exit(1);
++    }
++
++    /* This machine has EL3 enabled, external firmware should supply PSCI
++     * implementation, so the QEMU's internal PSCI is disabled.
++     */
++    vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
++
++    sbsa_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
++
++    if (max_cpus > sbsa_max_cpus) {
++        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
++                     "supported by machine 'sbsa-ref' (%d)",
++                     max_cpus, sbsa_max_cpus);
++        exit(1);
++    }
++
++    vms->smp_cpus = smp_cpus;
++
++    if (machine->ram_size > vms->memmap[VIRT_MEM].size) {
++        error_report("sbsa-ref: cannot model more than %dGB RAM", RAMLIMIT_GB);
++        exit(1);
++    }
++
++    secure_sysmem = g_new(MemoryRegion, 1);
++    memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
++                       UINT64_MAX);
++    memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
++
++    possible_cpus = mc->possible_cpu_arch_ids(machine);
++    for (n = 0; n < possible_cpus->len; n++) {
++        Object *cpuobj;
++        CPUState *cs;
++
++        if (n >= smp_cpus) {
++            break;
++        }
++
++        cpuobj = object_new(possible_cpus->cpus[n].type);
++        object_property_set_int(cpuobj, possible_cpus->cpus[n].arch_id,
++                                "mp-affinity", NULL);
++
++        cs = CPU(cpuobj);
++        cs->cpu_index = n;
++
++        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
++                          &error_fatal);
++
++        if (object_property_find(cpuobj, "reset-cbar", NULL)) {
++            object_property_set_int(cpuobj, vms->memmap[VIRT_CPUPERIPHS].base,
++                                    "reset-cbar", &error_abort);
++        }
++
++        object_property_set_link(cpuobj, OBJECT(sysmem), "memory",
++                                 &error_abort);
++
++        object_property_set_link(cpuobj, OBJECT(secure_sysmem),
++                                 "secure-memory", &error_abort);
++
++        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
++        object_unref(cpuobj);
++    }
++
++    memory_region_allocate_system_memory(ram, NULL, "sbsa-ref.ram",
++                                         machine->ram_size);
++    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
++
++    vms->bootinfo.ram_size = machine->ram_size;
++    vms->bootinfo.kernel_filename = machine->kernel_filename;
++    vms->bootinfo.nb_cpus = smp_cpus;
++    vms->bootinfo.board_id = -1;
++    vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
++    vms->bootinfo.firmware_loaded = firmware_loaded;
++    arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
++}
++
++static uint64_t sbsa_ref_cpu_mp_affinity(VirtMachineState *vms, int idx)
++{
++    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
++
++    if (!vmc->disallow_affinity_adjustment) {
++        clustersz = GICV3_TARGETLIST_BITS;
++    }
++    return arm_cpu_mp_affinity(idx, clustersz);
++}
++
++static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineState *ms)
++{
++    VirtMachineState *vms = VIRT_MACHINE(ms);
++    int n;
++
++    if (ms->possible_cpus) {
++        assert(ms->possible_cpus->len == max_cpus);
++        return ms->possible_cpus;
++    }
++
++    ms->possible_cpus = g_malloc0(sizeof(CPUArchIdList) +
++                                  sizeof(CPUArchId) * max_cpus);
++    ms->possible_cpus->len = max_cpus;
++    for (n = 0; n < ms->possible_cpus->len; n++) {
++        ms->possible_cpus->cpus[n].type = ms->cpu_type;
++        ms->possible_cpus->cpus[n].arch_id =
++            sbsa_ref_cpu_mp_affinity(vms, n);
++        ms->possible_cpus->cpus[n].props.has_thread_id = true;
++        ms->possible_cpus->cpus[n].props.thread_id = n;
++    }
++    return ms->possible_cpus;
++}
++
++static CpuInstanceProperties
++sbsa_ref_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
++{
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
++    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
++
++    assert(cpu_index < possible_cpus->len);
++    return possible_cpus->cpus[cpu_index].props;
++}
++
++static int64_t
++sbsa_ref_get_default_cpu_node_id(const MachineState *ms, int idx)
++{
++    return idx % nb_numa_nodes;
++}
++
++static void sbsa_ref_instance_init(Object *obj)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->memmap = sbsa_ref_memmap;
++    vms->irqmap = sbsa_ref_irqmap;
++}
++
++static void sbsa_ref_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    mc->init = sbsa_ref_init;
++    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
++    mc->max_cpus = 512;
++    mc->pci_allow_0_address = true;
++    mc->minimum_page_bits = 12;
++    mc->block_default_type = IF_IDE;
++    mc->no_cdrom = 1;
++    mc->default_ram_size = 1 * GiB;
++    mc->default_cpus = 4;
++    mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
++    mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
++    mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
++}
++
++static const TypeInfo sbsa_ref_info = {
++    .name          = MACHINE_TYPE_NAME("sbsa-ref"),
++    .parent        = TYPE_VIRT_MACHINE,
++    .instance_init = sbsa_ref_instance_init,
++    .class_init    = sbsa_ref_class_init,
++};
++
++static void sbsa_ref_machine_init(void)
++{
++    type_register_static(&sbsa_ref_info);
++}
++
++type_init(sbsa_ref_machine_init);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9a870cc..c73c46b 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -78,6 +78,7 @@ enum {
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_AHCI,
+ };
+ 
+ typedef enum VirtIOMMUType {
 -- 
 2.7.4

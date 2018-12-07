@@ -1,85 +1,81 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp11297421wrt;
-        Thu, 6 Dec 2018 16:47:38 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/V/zJ6sX5i+cyBu3pR/qESm7Yn4I9EYBsmTs4fdxtKi74rOnEh1e1Tl7m1e6JuXYD/kcMGg
-X-Received: by 2002:aed:2b64:: with SMTP id p91mr126881qtd.94.1544143658217;
-        Thu, 06 Dec 2018 16:47:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544143658; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp206372wrt;
+        Fri, 7 Dec 2018 00:20:22 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XXJBt36z+VxxBXLh442J5wrytJxfb8UMM07ipBiBQ5u8JTGfLlJZU9ORE1YWhIkNQp5SPr
+X-Received: by 2002:ac8:21ce:: with SMTP id 14mr1100416qtz.306.1544170822477;
+        Fri, 07 Dec 2018 00:20:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544170822; cv=none;
         d=google.com; s=arc-20160816;
-        b=bCqpFxU5QVzREQa4aJjrECFaUnYJKfxHLh+75TB9bOR4p0EZnt4GJFfKuJdDBM0BRa
-         +9VVwBe6ozrlrqbDUt651C0KfZQ7ffOaasf1f3vnNupllvtdMQa79m/Sbi4kVLIeCDu2
-         E/fCVU3Yv/CNw2/jjW+5j1acrXh7S33SKVHN9lbbGJmlNQTLk94bPs9Ov4sfpDN4BIBG
-         ErRejP9osF+b6+D/nd9YmmJY9ySiFgiyWA3TWu2dD2rq4kFQD5YIM8Ku6esBXrKeVG1G
-         fH+D4hAKwdcpV0BBZ+F8V6WfhvC0f+NBTez9NhO7jf7Y17voFEaGa0CplkQWfCPtZNmu
-         PZUA==
+        b=xNyMC9uZki3PCs4jvWdcpKNgJbXNQPkkX3SJkbD002saEtc3LY/aHrU8ad1E7w0aem
+         uH6Gqz9n6JEhyN6On6RYdrhlw0/eaU4+37PH94Peq6Ts6K+hJGl1kh02kZNqaJR+teE3
+         2/I3wteP3ZcRLP1t4o4ToTRB7eVIZIRBGHTexz4G1zQ79nerJ0MO1JFa40QHWhp7i0Rh
+         btxb7qF3Z4boitZzgniGMbT2YIeeHGblXsDogOwE0b8GRAMtkWo9MEptCJLbimESNkCn
+         V23+e06P9TfcKZI7DXa79Ty/Y3Vj+5eZ6CZnDTxh6Pn1892CaoX9ujMU2XOICUT2SLhA
+         H99Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=ZeBIOq0WQ0A/0GRLXQyKK74YKZ2F85SRF7fOP7eAti4=;
-        b=QdrtF/KwIN9CTx6MnjTJg9AdCro8RoQ8xMusCQTP57eOlHGq1vuSJtpiFwB4HbWiRl
-         zawrzOEIfQv9Znv3Acf5sFFuLbWbmpjBhDUixMbbEqdxYmSbyHdCcOK089WhPaKB+9Fw
-         8ZU/KrQ/AGJgDl6Tx9KvBYEbs249y8vfYbjh6k6ySdWr9rJRoS83q6m7AkJsVq+mC252
-         HQLBSk05mB9rYPtAyjY+RSKKLQGWsFxuOXzSBgOblTl5iMTtKoeEbX6wktCUtzcriPgS
-         m5rCyvONNfMmbAkzBgGo+aMH/vSloutZJ31I9L9pGQoZC87TW2Y2/4SzStHWDvyIpr3Q
-         4t4g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=739q9E5W1FEhp/q4YCs9lIecJ0eD0QKYQ2Pwn/+MfgI=;
+        b=heHRZ9oTkg+If9EUWzyiv5+uaa/wm6U3e+nME7OUwONyf0a5Ff9y7G79+G9NtWXVp4
+         AISkT+LW/y9T1DpuaqADDxCLwrYIIqvd+GnqwjVe65IP5DMiPC1MvC8zVtL16HdGkoIW
+         jOX/s0WnMK8bPsMWj6e/my5oGxNRJeY6s+t/KGOtIzHHJwnU2j8QcEljCgQkrqgfx/Xm
+         CdJj4Z/48AkrecsiAqKPKL8kOboQhpa79xFC3+6JOwpo2UQVm8X0QGUsJgNBj8o79m7E
+         fGxF/J2XCFtYyPZUI+THVq5507jKWhOfzWd6EXlHwtNUZqVTiT2R4OewDDh5nAvQ34CQ
+         KD8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JhpCXq2q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k9si1146998qvd.103.2018.12.06.16.47.38
+        by mx.google.com with ESMTPS id a76si1941621qka.92.2018.12.07.00.20.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Dec 2018 16:47:38 -0800 (PST)
+        Fri, 07 Dec 2018 00:20:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JhpCXq2q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43608 helo=lists.gnu.org)
+Received: from localhost ([::1]:44713 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gV4Ir-0001XU-OU
-	for alex.bennee@linaro.org; Thu, 06 Dec 2018 19:47:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52625)
+	id 1gVBN0-00085z-0S
+	for alex.bennee@linaro.org; Fri, 07 Dec 2018 03:20:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46136)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gV4Id-0001X7-PC
-	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 19:47:28 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gVBMl-00085s-HN
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 03:20:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gV4IY-0005yc-OJ
-	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 19:47:23 -0500
-Received: from ozlabs.org ([203.11.71.1]:49123)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gVBMi-00082B-07
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 03:20:07 -0500
+Received: from out1.zte.com.cn ([202.103.147.172]:44756 helo=mxct.zte.com.cn)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gV4IY-0005wo-0H; Thu, 06 Dec 2018 19:47:18 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 439v1s5MpHz9s47; Fri,  7 Dec 2018 11:47:13 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1544143633;
-	bh=N7obwgUbmkbVIpJxJXPKyQpd9XyKgVx/eiGaRvqyUtc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JhpCXq2qcngVGprUU52UliaVx4IiIvKvWt23N4EnWAvzBES/d4T7Jehq4nNmQQEab
-	i1sf2USIGjlrevzV+tzyidZxy83XLMFNwYtDxV0nsbnaAst4TbT7EB4tZesynb2RDQ
-	2uZmreRlhqQmcOfZDdp1s1TdXHwozPLNrerTvUzQ=
-Date: Fri, 7 Dec 2018 11:22:21 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181207002221.GR768@umbus.fritz.box>
-References: <20181205205827.19387-1-ehabkost@redhat.com>
-	<20181205205827.19387-5-ehabkost@redhat.com>
-	<20181205223035.GH768@umbus.fritz.box>
-	<20181206124851.GV18284@habkost.net>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="9lPOKfY2vCV97ybw"
-Content-Disposition: inline
-In-Reply-To: <20181206124851.GV18284@habkost.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gVBMh-0007xb-HP
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 03:20:03 -0500
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id 6BE154AEB0D965C67274;
+	Fri,  7 Dec 2018 16:19:55 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id wB78Jmw4073564;
+	Fri, 7 Dec 2018 16:19:48 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018120716202695-15320534 ;
+	Fri, 7 Dec 2018 16:20:26 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org
+Date: Fri, 7 Dec 2018 16:41:50 +0800
+Message-Id: <1544172110-76526-1-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-12-07 16:20:27,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-12-07 16:19:33,
+	Serialize complete at 2018-12-07 16:19:33
+X-MAIL: mse01.zte.com.cn wB78Jmw4073564
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-arm] [PATCH for-4.0 4/5] spapr: Delete instance_options
- functions
+X-Received-From: 202.103.147.172
+Subject: [Qemu-arm] [PATCH] hw/watchdog/wdt_i6300esb : remove a unnecessary
+ comment
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,68 +87,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OmvWfyHIrpCz
+X-TUID: nGNc1G5rpxuC
 
+The registered memory region of i6300esb is not suitable for coalesced
+mmio, because a write for the region may trigger an immediate action
+and can't be delayed.
 
---9lPOKfY2vCV97ybw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+---
+ hw/watchdog/wdt_i6300esb.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-On Thu, Dec 06, 2018 at 10:48:51AM -0200, Eduardo Habkost wrote:
-> On Thu, Dec 06, 2018 at 09:30:35AM +1100, David Gibson wrote:
-> > On Wed, Dec 05, 2018 at 06:58:26PM -0200, Eduardo Habkost wrote:
-> > > Now that all instance_options functions for spapr are empty,
-> > > delete them.
-> > >=20
-> > > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> >=20
-> > Acked-by: David Gibson <david@gibson.dropbear.id.au>
->=20
-> Thanks!
->=20
-> >=20
-> > Do you want me to stage the ppc patches in my ppc-for-4.0 tree, or
-> > would you prefer to keep your series together to go in via your tree?
->=20
-> I wouldn't mind to get this queued through the ppc tree, but
-> maybe it will be easier to get them through the machine tree
-> because of the dependency on the 4.0 machine-type patch.
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index 7b59469..1c6eddf 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -449,7 +449,6 @@ static void i6300esb_realize(PCIDevice *dev, Error **errp)
+     memory_region_init_io(&d->io_mem, OBJECT(d), &i6300esb_ops, d,
+                           "i6300esb", 0x10);
+     pci_register_bar(&d->dev, 0, 0, &d->io_mem);
+-    /* qemu_register_coalesced_mmio (addr, 0x10); ? */
+ }
+ 
+ static void i6300esb_exit(PCIDevice *dev)
+-- 
+1.8.3.1
 
-Sure.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---9lPOKfY2vCV97ybw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlwJvTkACgkQbDjKyiDZ
-s5JaghAAhKcGrt7aBXNqx4UXLbb0LMsZpUMoCradgpxn4ODRk5bJ0pIS/gL+PVPK
-zKBLmax+rjBe6qsZF2PykW4EEuC1alUdndLgu5hyRleB0LfSz+0U6NlQes3tggF8
-GfrPser7BL5vTE3sBBgLbmePx7A+Ua6m0UFzULxLV9P9MbAsqTmIEb9RlWKWbDV/
-xC83qWdcTJjV4VFDscRMBp11opjzh1FOU5gkUdF49oTViIrcgJQSOc8pKH4vkFvM
-S5sqWKGl5DXA7g7p/VLSpNvqgvgG4S3OM3RfB5Z/FDcw3bEEqTSuKSDqMXaKq7+R
-CeiNJGU5BE7rPFRZXLfdMGx9EQoYzudSYDosgW9RcKBe/DWt4XtpAjb++bgMdi5Y
-sErPcgWy1Tebh8xBTEN0JaFEyGZM7OVjdiOSds7jjc3DNM4usJMsSY0UyI/QeJpT
-IrusUuEyescCemAXJnNVrwsaAwrerRWEEAC6ZGtZWZfM3++83VLgd26W0vaTOup+
-3DrPCIJUvm8oJaT55NDmiOLVeJ6PSa3nZ7KcAqNjrbniRag1C/c71yRvJmBgvCws
-XdJADz57QawUAu4HSpAT3pkq85kXCDUOg7G0rLiKqrmHZBqBbkQr2AlVVYKUjQZR
-2w7ReZVIJAceWZ1CHovBdxGO9zfXgNpvAoraaTbj6NA8TXknNbE=
-=/+Pl
------END PGP SIGNATURE-----
-
---9lPOKfY2vCV97ybw--

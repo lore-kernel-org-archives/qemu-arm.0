@@ -1,133 +1,116 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3266968wrt;
-        Mon, 7 Jan 2019 01:57:28 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6UB0J/uUXPR8zp5kvlg48PYeD7VCfJYNTFhNpt8Cxoy0EGRLPAQilJ4fugU64zCSanLEr4
-X-Received: by 2002:a7b:c1d7:: with SMTP id a23mr7737368wmj.48.1546855048435;
-        Mon, 07 Jan 2019 01:57:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546855048; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp236878wrt;
+        Fri, 7 Dec 2018 01:02:17 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XbXLyUcpEVKUYpGWUNyoJqmfSjAr4aXFMvBYOVtbMiJ9H0GcgkNBYI45BzAQjq8YPX9EgQ
+X-Received: by 2002:a37:3753:: with SMTP id e80mr1028879qka.207.1544173337829;
+        Fri, 07 Dec 2018 01:02:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544173337; cv=none;
         d=google.com; s=arc-20160816;
-        b=ohX9O5sy+o7GyZ0a31hK0P8IiqiOvBA1hcxfnYTwpiBywgx2zxhyCpEK8mXAEJzACw
-         v0YzyHYDe1dSglZpBOuxy10fCixxEPE1PSTbnIes+iXXW4jbtPZKlTIa7njzRGVqlyHp
-         42+6pjJW5xJ5oUIfjQiDV/Ml7iC6rXgTTVk+MeCKV/zG27gvrXtUGe49kA23HeTz3FqX
-         b/7QaT3eABF0oOKaEZ6XtPo+CbYZtqvmKugFy5JYdCJq5hfbBbp/ixA5vjW4JoK18z7E
-         1LDKVOnHGgIHNqTvSB8DO+oeU3iiBErVeShdsXXYZrSqIZxQPhy0JSRWOWkS7z9cwZcc
-         W/8A==
+        b=tan3csHnpLNpi9XhpFhsCfabMpuvVeTWkgxQvFM5V4HHkTlbl0HJ9ywbmCwdYO8pLz
+         P4BZSwxG/7v2AqxGdpn6cCRz5DCE6kjoIao+sCuvM489YAbS3sfEC4nec2jIsrhrysCq
+         qc7rO/A9uN+tBIGEsIB845n7qeOzFipTMpoDxIzH8Ee/9caHA6iBx+k/a4PCBdJlyP6y
+         KLw54/SND3rH2L78i/KBBYpPjzq2zL1U6aHlWYnqsgUzJDvEIoZGTA3C4QEJXYyqPXwk
+         j5ElqDemB6po6uCIzeOq9CAksnTur5DsGzNklGO1Tb5KRni/9DE5xa7z40Gy6lOAkrtU
+         DUSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=tXAt8u3QR9AKYrPIkVJGWoT1N0Yqs1pThqPuIvc65EY=;
-        b=ZFRiLjZQPCM4SqETNTaGO4N1JAvUGpSiicFZDBiCzN3dsLZT0Eu8lipvPTF22FCd9n
-         lhRy8PGpPLlUlRCfiCgdKtLhAaBlymTXMiRKI2XCeUlFyxXjm83UZ0xinxiohdwZ4SPA
-         DyP+QRW6iu3iaz3Rny9gJETPQw1O3RON018apnOxgBJCL6PYgRD7DWb/UD9n4zqoP5f1
-         xQq1sspqcFQIdEsKVtRZxYJLmO7tzEADfRCxSeFkGC8/PFIsj7ceLPnsIV4MltR1vMHX
-         rET9o3ebS9or5gXyrc1OfXs+oK+2T2SRGV1VFc0eg9evs8G5v0RCfxEJXnn6F/o5RwTI
-         Lj8Q==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=rl6KXFhUd1l4Ltw+4ALTjIi/Ri8lQd4xr002bFirThs=;
+        b=rcO4zsqnhMHwOJsrkh9581PMSPGgyTPvNwi9c1annENqfV4gmTWSUkFCmKQ8kkTOg9
+         Nmkxf4sFUAdp6FdipuUu775L3vzcrNqo+8jwOzEqC/vXcwzlSCH5z8ClgC2rTNq6UDy+
+         beiX/Jk97KdU6Ic5v4XZ8O+/g57ZOFCI2qfDcCfJTcuiE5DGn0tEsc7U5Q5D180xgNdN
+         07KGE6ecsDdFOKBaXR1/BOflq3Kchwwo8aATxCpz0YCj9whAZLogXGq1pBJ1dyOYdfb2
+         73N+GEjS1019nRNgThiJ9LzMR71EzR+jm2tKZsdGgzSER9eND5/Gcpa4g71YmXYqIyXn
+         uU5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=a6bjMqJO;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Rp0oTYW1;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=V7qNrk6b;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si35839980wri.156.2019.01.07.01.57.28
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t62si1713045qkc.212.2018.12.07.01.02.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Jan 2019 01:57:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 07 Dec 2018 01:02:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46346 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=a6bjMqJO;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Rp0oTYW1;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=V7qNrk6b;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44832 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggRex-0007PO-G6
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 04:57:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52192)
+	id 1gVC1Z-0007tj-5F
+	for alex.bennee@linaro.org; Fri, 07 Dec 2018 04:02:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57263)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggReg-0007IX-IE
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 04:57:11 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gVC1E-0007rz-B0
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggRef-0005Ss-TX
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 04:57:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:28227)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggRef-0005SX-M3; Mon, 07 Jan 2019 04:57:09 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <luc.michel@greensocs.com>) id 1gVC1B-0005SO-OW
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:56 -0500
+Received: from greensocs.com ([193.104.36.180]:52245)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1gVC1B-0005Rq-7p; Fri, 07 Dec 2018 04:01:53 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id CF85B480032;
+	Fri,  7 Dec 2018 10:01:50 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1544173310;
+	bh=p6jKllSk1N89qZ5kxsijOyj3jCEF8rBu8QqbfZyaa78=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=a6bjMqJOACVUFsSzdXAkKsw/i3TzFSkrEylKojjkLN7wDl18XDTX1t5bNkTMqIQyc
+	KTNKBKKLw4olG7i+dVJvAv5xpXSXrmPf9fp0hTMcf1NsdpDsPt2kQKEZMsvFFo2UMY
+	QUzmw/yUuDf2IxIL1+ZmQ3zeEfKuOKSAYqG+QUxs=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Rp0oTYW1;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V7qNrk6b
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ioCa8pdvdKO2; Fri,  7 Dec 2018 10:01:50 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id F3C3C480036; Fri,  7 Dec 2018 10:01:44 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1544173305;
+	bh=p6jKllSk1N89qZ5kxsijOyj3jCEF8rBu8QqbfZyaa78=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Rp0oTYW1YokZ8Upw3B1yzdrsqEWaj+baCSPWjwc3+ppLfkLt5huKBzT5JhlvQ/ab4
+	/K/OeUxkC6NO7Q2K6miujJt0JMGTtFh12wLokfERtP5qKroZ87P26GjcX2f3nfJ1pR
+	kDNgRQuixxzepx3wkb0HzIQniarV4VQTDw/09twI=
+Received: from michell-laptop.home.lmichel.fr
+	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1AFBF804FA;
-	Mon,  7 Jan 2019 09:57:08 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 59EF819741;
-	Mon,  7 Jan 2019 09:56:57 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-3-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <58b91746-5462-c4b4-226b-c0063d69c988@redhat.com>
-Date: Mon, 7 Jan 2019 10:56:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 90EAC480011;
+	Fri,  7 Dec 2018 10:01:44 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1544173304;
+	bh=p6jKllSk1N89qZ5kxsijOyj3jCEF8rBu8QqbfZyaa78=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=V7qNrk6bhJmpuqeFLnMygVGYg74RMKYmesP6exDjwaKCP8EfYpUSf69zd9jioPZEC
+	1wqsX+d1YgyPWlTW2upx4wFlpTmAlTIfwfgABV6dYSqB8IgL0fpcSHp1ckvJucbwT/
+	5ujCXTBihaYqQWhK5gMNvB1waH4nA4EnbPhwatvA=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  7 Dec 2018 10:01:27 +0100
+Message-Id: <20181207090135.7651-10-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181207090135.7651-1-luc.michel@greensocs.com>
+References: <20181207090135.7651-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-3-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 07 Jan 2019 09:57:08 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/16] hw: Remove unused
- 'hw/devices.h' include
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v8 09/16] gdbstub: add multiprocess support to
+ gdb_vm_state_change()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,52 +122,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Michael Walle <michael@walle.cc>,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Jason Wang <jasowang@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Beniamino Galvani <b.galvani@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
-	Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K6fJSThsj5Wq
+X-TUID: 7pn6b4ItDCRo
 
-On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/alpha/typhoon.c                       | 1 -
->  hw/arm/allwinner-a10.c                   | 1 -
->  hw/arm/collie.c                          | 1 -
->  hw/arm/cubieboard.c                      | 1 -
->  hw/arm/highbank.c                        | 1 -
->  hw/arm/mps2-tz.c                         | 1 -
->  hw/arm/musicpal.c                        | 1 -
->  hw/arm/nrf51_soc.c                       | 1 -
->  hw/arm/spitz.c                           | 1 -
->  hw/arm/virt.c                            | 1 -
->  hw/arm/z2.c                              | 1 -
->  hw/display/sm501.c                       | 1 -
->  hw/hppa/dino.c                           | 1 -
->  hw/intc/allwinner-a10-pic.c              | 1 -
->  hw/lm32/lm32_boards.c                    | 1 -
->  hw/lm32/milkymist.c                      | 1 -
->  hw/microblaze/petalogix_ml605_mmu.c      | 1 -
->  hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
->  hw/net/dp8393x.c                         | 1 -
->  hw/ppc/virtex_ml507.c                    | 1 -
->  hw/sh4/r2d.c                             | 1 -
->  hw/tricore/tricore_testboard.c           | 1 -
->  hw/usb/tusb6010.c                        | 1 -
->  23 files changed, 23 deletions(-)
+Add support for multiprocess extension in gdb_vm_state_change()
+function.
 
-Works for me.
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
+---
+ gdbstub.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+diff --git a/gdbstub.c b/gdbstub.c
+index c66bf37b49..4645d59d8c 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1722,10 +1722,11 @@ void gdb_set_stop_cpu(CPUState *cpu)
+ static void gdb_vm_state_change(void *opaque, int running, RunState stat=
+e)
+ {
+     GDBState *s =3D gdbserver_state;
+     CPUState *cpu =3D s->c_cpu;
+     char buf[256];
++    char thread_id[16];
+     const char *type;
+     int ret;
+=20
+     if (running || s->state =3D=3D RS_INACTIVE) {
+         return;
+@@ -1733,10 +1734,18 @@ static void gdb_vm_state_change(void *opaque, int=
+ running, RunState state)
+     /* Is there a GDB syscall waiting to be sent?  */
+     if (s->current_syscall_cb) {
+         put_packet(s, s->syscall_buf);
+         return;
+     }
++
++    if (cpu =3D=3D NULL) {
++        /* No process attached */
++        return;
++    }
++
++    gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_id));
++
+     switch (state) {
+     case RUN_STATE_DEBUG:
+         if (cpu->watchpoint_hit) {
+             switch (cpu->watchpoint_hit->flags & BP_MEM_ACCESS) {
+             case BP_MEM_READ:
+@@ -1750,12 +1759,12 @@ static void gdb_vm_state_change(void *opaque, int=
+ running, RunState state)
+                 break;
+             }
+             trace_gdbstub_hit_watchpoint(type, cpu_gdb_index(cpu),
+                     (target_ulong)cpu->watchpoint_hit->vaddr);
+             snprintf(buf, sizeof(buf),
+-                     "T%02xthread:%02x;%swatch:" TARGET_FMT_lx ";",
+-                     GDB_SIGNAL_TRAP, cpu_gdb_index(cpu), type,
++                     "T%02xthread:%s;%swatch:" TARGET_FMT_lx ";",
++                     GDB_SIGNAL_TRAP, thread_id, type,
+                      (target_ulong)cpu->watchpoint_hit->vaddr);
+             cpu->watchpoint_hit =3D NULL;
+             goto send_packet;
+         } else {
+             trace_gdbstub_hit_break();
+@@ -1793,11 +1802,11 @@ static void gdb_vm_state_change(void *opaque, int=
+ running, RunState state)
+         trace_gdbstub_hit_unknown(state);
+         ret =3D GDB_SIGNAL_UNKNOWN;
+         break;
+     }
+     gdb_set_stop_cpu(cpu);
+-    snprintf(buf, sizeof(buf), "T%02xthread:%02x;", ret, cpu_gdb_index(c=
+pu));
++    snprintf(buf, sizeof(buf), "T%02xthread:%s;", ret, thread_id);
+=20
+ send_packet:
+     put_packet(s, buf);
+=20
+     /* disable single step if it was enabled */
+--=20
+2.19.2
+

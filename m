@@ -1,116 +1,115 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp236890wrt;
-        Fri, 7 Dec 2018 01:02:18 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VozFSLq5CbmOcP3Xf3VpiUtpRdnCz7gMDDE9mJG/9QwllETe4gYoGl71oLOVTG/bmoKem5
-X-Received: by 2002:a37:4892:: with SMTP id v140mr1062605qka.71.1544173338375;
-        Fri, 07 Dec 2018 01:02:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544173338; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp237212wrt;
+        Fri, 7 Dec 2018 01:02:38 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UTbihYXSMKM88EmFnVZaqX+zOcspmi671Jpj9x9tBLBdm0QAMAx1cQm2Dvlrv7YOGWUozX
+X-Received: by 2002:a37:c946:: with SMTP id q67mr1090975qki.145.1544173357987;
+        Fri, 07 Dec 2018 01:02:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544173357; cv=none;
         d=google.com; s=arc-20160816;
-        b=RSoSF/5+qzfbONIStDor7jtfm2fMkN3Wt2XSwS6rCX1wG6RuX2c8Tk3KvipBtn9vpg
-         eHp9vjz/pTOBMalXqIhOefkQELBQUNriuTIlQTWaHIY4He+AUPFSyIBluvgk5V3VUDwP
-         s46SUxu7iP7oBh0Op6jLf/2rJM/wh8qGh/J1cOe6M8Pv0+zrcjQNMv8nPg5qA3eNj72E
-         gneqsNJl6EweWuon3Mfo/uQgYdrQL2JNplLERi0qbPAjwEKPBfTFRwh+v0wd5K0iNwP7
-         MN6KCs1Sx5I0DHjEN//UX9/LBlCVRqUbU9jBLp3yu7sZRmS/Fw8NRz7qVpy+ilwj8rlM
-         /xxA==
+        b=tyDLEGnluZ1S+JZsQ/eZPNjN8rERQbXQ3/La8N1pGQuDYcnGgFnBL8ttMGECPV+WeZ
+         tqpiuVnfIn2NWecnHoejYUJMlsYvShkhGyRHj1iLSo3UOQHdftwHAUMo95GyeAG937W8
+         OthFJyLaQg7C1hmxC0ziawWg4VupWOMnXkhWD7PgQ6RTXGoEKX0uV3OoTwJl6EN0eH/E
+         2JAWs0mAr6Zmw83WcM9KKQBMqXAOMcPiJSq4H9MOezGx5XY/Er9Jj5qVcTYcjbSFDPpS
+         zRQ+BjOUUy1OvGV2vK346AQ0zPQQ0FIFI79WwHETKVV1o8TfmDKMPRKsaX5I+dYFG9Q2
+         XdnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=7DRxqu5apMSzSvCrj8p5ZH3cS7q1dyq8rgiFMVEYw3I=;
-        b=UiDkSWZ7qkYNJkkRN6/0AjM/ilAI7YJ7aBNaUsbaO6Ft2NCYaxroZkl7qq4bgGiZrC
-         uL1kVDF5Km6Jcn7/JHV0FlkK3xIW0XgK56m9CcXIEU7nEai7Bq9YB8+kk3zgfNQeRFZt
-         fQyQP47IffRgY8cEs2fiVAWLGCGk8qdc/eaaFucKw8E+xpr8iV+1wcXdHPzRmGE2zWcF
-         cl9WL8135JQFaZxl5mzpcxAiFkm9W4cp4y/RoGplsM0C+kd7IrpYT6o5QTfdhYJZsrH1
-         cfNZCb7D8t042Hy8emWlJ3q/3W4tCgJtj3axXD6vDDRM4z8dt6dPtTmsR/dPHnWie2Ur
-         MG/Q==
+        bh=Y0vBJ5McamQXRqMdS/R1JGzoUjfTwvxkWzowzyue8wc=;
+        b=0zc8BgiHH5RP2V4G1cpntBqa9/GkmUnhhm5RRtnz4dkfCO7REPVZKwcdTDiNRw5Y3p
+         kK53Oh21uZfv6hMYjFFqer7xAMfpfzDVCsp6rv6GbzYrFsSO5wSNZhjMx6xNUqUtyjea
+         /E0SyQnRIJxUyCwfkk3JA9afKWul3f/fsBB4AFM9Wlub5zUNonBF68PiExzExRHsylur
+         3SwX997TsoEDJSko2qB2jDyKivCdePw16Vw6pgvzmr03weOJAJu9jAYhvfBYSsVX9oTV
+         KH2ruwjsXnrUfrV5TfjB7/+k2DrYaGnxtGR6OJKjITsOtTT2N3Ynoe+j7qSbJ9vZM+Ul
+         lu7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="l5Hk/Qit";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=XerEnLX9;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=XerEnLX9;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ZfIkn23C;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=hYiWYwh8;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=hYiWYwh8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m41si1824272qvh.168.2018.12.07.01.02.18
+        by mx.google.com with ESMTPS id u2si1691934qvd.172.2018.12.07.01.02.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Dec 2018 01:02:18 -0800 (PST)
+        Fri, 07 Dec 2018 01:02:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="l5Hk/Qit";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=XerEnLX9;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=XerEnLX9;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ZfIkn23C;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=hYiWYwh8;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=hYiWYwh8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44833 helo=lists.gnu.org)
+Received: from localhost ([::1]:44834 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gVC1Z-0007uv-R5
-	for alex.bennee@linaro.org; Fri, 07 Dec 2018 04:02:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57271)
+	id 1gVC1t-0008DP-Dr
+	for alex.bennee@linaro.org; Fri, 07 Dec 2018 04:02:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57310)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gVC1E-0007sA-FP
-	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:57 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gVC1F-0007t5-H7
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gVC1B-0005SC-IO
-	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:56 -0500
-Received: from greensocs.com ([193.104.36.180]:52242)
+	(envelope-from <luc.michel@greensocs.com>) id 1gVC1B-0005SN-O0
+	for qemu-arm@nongnu.org; Fri, 07 Dec 2018 04:01:57 -0500
+Received: from greensocs.com ([193.104.36.180]:52241)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1gVC1B-0005Ri-5W; Fri, 07 Dec 2018 04:01:53 -0500
+	id 1gVC1B-0005Rk-86; Fri, 07 Dec 2018 04:01:53 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 6F966480024;
-	Fri,  7 Dec 2018 10:01:49 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id 99C7E48002B;
+	Fri,  7 Dec 2018 10:01:48 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1544173309;
-	bh=mzcICz8Hy5oCiIfDs9UxgEljkNS5zKRwZKUGqfLZU4U=;
+	s=mail; t=1544173308;
+	bh=9VpM4fQSLmCFWhF4lXiU5yzJeMmL84qECiIHELh1Dvs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=l5Hk/Qit4GRxQCrPDtxP81t/RCNAsue9jfCDe+DUTMKPvIhkH03KVlMn5FwTVBh19
-	lfTJphROJsojUZVdgDVbh2DTDT0qeeUlj6mN7sS0Ab3hmdj4a+Z4r4WKQBh31cc62Z
-	/nYDKIEBxctmiJ0qq/lROTGNJSUZWHv3MCwOFIi8=
+	b=ZfIkn23CoITZ7z4C7ozY6oRH7agnksuA+mBdxScy76aJJV19EgKJQ2xDg9zKaIupU
+	alRiqyJPr1lo2e2sex5cTcY/cp2wrpLzWzCkMtsZ7a0GfBOYkXpuQawxWpg7YpIkyX
+	4p6T/YVp6+FZH4ZsUqTqrTVJT4HToo4WIyOlGWCc=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=XerEnLX9;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=XerEnLX9
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=hYiWYwh8;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=hYiWYwh8
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XPwl7OEk6fcp; Fri,  7 Dec 2018 10:01:48 +0100 (CET)
+	with ESMTP id SJt4PgcpJFfG; Fri,  7 Dec 2018 10:01:43 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 23FA6480031; Fri,  7 Dec 2018 10:01:44 +0100 (CET)
+	id 70953480024; Fri,  7 Dec 2018 10:01:42 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1544173304;
-	bh=mzcICz8Hy5oCiIfDs9UxgEljkNS5zKRwZKUGqfLZU4U=;
+	s=mail; t=1544173302;
+	bh=9VpM4fQSLmCFWhF4lXiU5yzJeMmL84qECiIHELh1Dvs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=XerEnLX9y1un8Z3/GokSGJl7A9Ot4m0rUaxmDM8A46miHubzOPTNGyvPr+ehP8Wzs
-	3pBEyG6obVNh2cZ8ViE3mTO/ggsTQhEnccT9Nsuvha4sl+bgcO8S3sePvL/PUlfIVc
-	fvPp7kfXpJ4fgFZD99apVFHBifZjriHZThU42F3E=
+	b=hYiWYwh8HzrjOVZjrOWBgvaezKo9jEVbGzuDz7a6iWzfSRxwQBzTvosu08Rc7vwPm
+	tDWsh2Bb2JwW+zbGHwXTMUPcotiD99DIOPd8hhC7ptZDm9zfl5xILgUoSxvprzoRCI
+	syu+zCBKmlz5tofO5R7GDSHs3qS9Jycm8caTtpEw=
 Received: from michell-laptop.home.lmichel.fr
 	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id B5632480011;
-	Fri,  7 Dec 2018 10:01:43 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id F312A441B53;
+	Fri,  7 Dec 2018 10:01:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1544173304;
-	bh=mzcICz8Hy5oCiIfDs9UxgEljkNS5zKRwZKUGqfLZU4U=;
+	s=mail; t=1544173302;
+	bh=9VpM4fQSLmCFWhF4lXiU5yzJeMmL84qECiIHELh1Dvs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=XerEnLX9y1un8Z3/GokSGJl7A9Ot4m0rUaxmDM8A46miHubzOPTNGyvPr+ehP8Wzs
-	3pBEyG6obVNh2cZ8ViE3mTO/ggsTQhEnccT9Nsuvha4sl+bgcO8S3sePvL/PUlfIVc
-	fvPp7kfXpJ4fgFZD99apVFHBifZjriHZThU42F3E=
+	b=hYiWYwh8HzrjOVZjrOWBgvaezKo9jEVbGzuDz7a6iWzfSRxwQBzTvosu08Rc7vwPm
+	tDWsh2Bb2JwW+zbGHwXTMUPcotiD99DIOPd8hhC7ptZDm9zfl5xILgUoSxvprzoRCI
+	syu+zCBKmlz5tofO5R7GDSHs3qS9Jycm8caTtpEw=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Fri,  7 Dec 2018 10:01:25 +0100
-Message-Id: <20181207090135.7651-8-luc.michel@greensocs.com>
+Date: Fri,  7 Dec 2018 10:01:21 +0100
+Message-Id: <20181207090135.7651-4-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20181207090135.7651-1-luc.michel@greensocs.com>
 References: <20181207090135.7651-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v8 07/16] gdbstub: add multiprocess support to
- (f|s)ThreadInfo and ThreadExtraInfo
+Subject: [Qemu-arm] [PATCH v8 03/16] gdbstub: add multiprocess support to
+ '?' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -130,101 +129,146 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9JZb2+liLagk
+X-TUID: HlJSaWMbIXoq
 
-Change the thread info related packets handling to support multiprocess
-extension.
+The gdb_get_cpu_pid() function does the PID lookup for the given CPU. It
+checks if the CPU is a direct child of a CPU cluster. If it is, the
+returned PID is the cluster ID plus one (cluster IDs start at 0, GDB
+PIDs at 1). When the CPU is not a child of such a container, the PID of
+the default process is returned.
 
-Add the CPUs class name in the extra info to help differentiate
-them in multiprocess mode.
+The gdb_fmt_thread_id() function generates the string to be used to ident=
+ify
+a given thread, in a response packet for the peer. This function
+supports generating thread IDs when multiprocess mode is enabled (in the
+form `p<pid>.<tid>').
+
+Use them in the reply to a '?' request.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- gdbstub.c | 37 +++++++++++++++++++++++++++----------
- 1 file changed, 27 insertions(+), 10 deletions(-)
+ gdbstub.c | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 63 insertions(+), 2 deletions(-)
 
 diff --git a/gdbstub.c b/gdbstub.c
-index bea0215f30..770915446a 100644
+index 2a3aa0f07e..07508c2e6b 100644
 --- a/gdbstub.c
 +++ b/gdbstub.c
-@@ -1267,11 +1267,10 @@ out:
- static int gdb_handle_packet(GDBState *s, const char *line_buf)
+@@ -638,10 +638,57 @@ static int memtox(char *buf, const char *mem, int l=
+en)
+         }
+     }
+     return p - buf;
+ }
+=20
++static uint32_t gdb_get_cpu_pid(const GDBState *s, CPUState *cpu)
++{
++#ifndef CONFIG_USER_ONLY
++    gchar *path, *name =3D NULL;
++    Object *obj;
++    CPUClusterState *cluster;
++    uint32_t ret;
++
++    path =3D object_get_canonical_path(OBJECT(cpu));
++
++    if (path =3D=3D NULL) {
++        /* Return the default process' PID */
++        ret =3D s->processes[s->process_num - 1].pid;
++        goto out;
++    }
++
++    name =3D object_get_canonical_path_component(OBJECT(cpu));
++    assert(name !=3D NULL);
++
++    /*
++     * Retrieve the CPU parent path by removing the last '/' and the CPU=
+ name
++     * from the CPU canonical path. */
++    path[strlen(path) - strlen(name) - 1] =3D '\0';
++
++    obj =3D object_resolve_path_type(path, TYPE_CPU_CLUSTER, NULL);
++
++    if (obj =3D=3D NULL) {
++        /* Return the default process' PID */
++        ret =3D s->processes[s->process_num - 1].pid;
++        goto out;
++    }
++
++    cluster =3D CPU_CLUSTER(obj);
++    ret =3D cluster->cluster_id + 1;
++
++out:
++    g_free(name);
++    g_free(path);
++
++    return ret;
++
++#else
++    /* TODO: In user mode, we should use the task state PID */
++    return s->processes[s->process_num - 1].pid;
++#endif
++}
++
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    CPUClass *cc)
  {
-     CPUState *cpu;
-     CPUClass *cc;
+     size_t len;
+     int i;
+@@ -907,10 +954,23 @@ static CPUState *find_cpu(uint32_t thread_id)
+     }
+=20
+     return NULL;
+ }
+=20
++static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
++                           char *buf, size_t buf_size)
++{
++    if (s->multiprocess) {
++        snprintf(buf, buf_size, "p%02x.%02x",
++                 gdb_get_cpu_pid(s, cpu), cpu_gdb_index(cpu));
++    } else {
++        snprintf(buf, buf_size, "%02x", cpu_gdb_index(cpu));
++    }
++
++    return buf;
++}
++
+ static int is_query_packet(const char *p, const char *query, char separa=
+tor)
+ {
+     unsigned int query_len =3D strlen(query);
+=20
+     return strncmp(p, query, query_len) =3D=3D 0 &&
+@@ -1018,22 +1078,23 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
      const char *p;
--    uint32_t thread;
-     uint32_t pid, tid;
+     uint32_t thread;
      int ch, reg_size, type, res;
      uint8_t mem_buf[MAX_PACKET_LENGTH];
      char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
-     char thread_id[16];
-@@ -1563,30 +1562,48 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
-             snprintf(buf, sizeof(buf), "QC%s",
-                      gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_=
-id)));
-             put_packet(s, buf);
-             break;
-         } else if (strcmp(p,"fThreadInfo") =3D=3D 0) {
--            s->query_cpu =3D first_cpu;
-+            s->query_cpu =3D gdb_first_attached_cpu(s);
-             goto report_cpuinfo;
-         } else if (strcmp(p,"sThreadInfo") =3D=3D 0) {
-         report_cpuinfo:
-             if (s->query_cpu) {
--                snprintf(buf, sizeof(buf), "m%x", cpu_gdb_index(s->query=
-_cpu));
-+                snprintf(buf, sizeof(buf), "m%s",
-+                         gdb_fmt_thread_id(s, s->query_cpu,
-+                                       thread_id, sizeof(thread_id)));
-                 put_packet(s, buf);
--                s->query_cpu =3D CPU_NEXT(s->query_cpu);
-+                s->query_cpu =3D gdb_next_attached_cpu(s, s->query_cpu);
-             } else
-                 put_packet(s, "l");
-             break;
-         } else if (strncmp(p,"ThreadExtraInfo,", 16) =3D=3D 0) {
--            thread =3D strtoull(p+16, (char **)&p, 16);
--            cpu =3D find_cpu(thread);
-+            if (read_thread_id(p + 16, &p, &pid, &tid) =3D=3D GDB_READ_T=
-HREAD_ERR) {
-+                put_packet(s, "E22");
-+                break;
-+            }
-+            cpu =3D gdb_get_cpu(s, pid, tid);
-             if (cpu !=3D NULL) {
-                 cpu_synchronize_state(cpu);
--                /* memtohex() doubles the required space */
--                len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
--                               "CPU#%d [%s]", cpu->cpu_index,
--                               cpu->halted ? "halted " : "running");
-+
-+                if (s->multiprocess && (s->process_num > 1)) {
-+                    /* Print the CPU model and name in multiprocess mode=
- */
-+                    ObjectClass *oc =3D object_get_class(OBJECT(cpu));
-+                    const char *cpu_model =3D object_class_get_name(oc);
-+                    char *cpu_name =3D
-+                        object_get_canonical_path_component(OBJECT(cpu))=
-;
-+                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
-+                                   "%s %s [%s]", cpu_model, cpu_name,
-+                                   cpu->halted ? "halted " : "running");
-+                    g_free(cpu_name);
-+                } else {
-+                    /* memtohex() doubles the required space */
-+                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
-+                                   "CPU#%d [%s]", cpu->cpu_index,
-+                                   cpu->halted ? "halted " : "running");
-+                }
-                 trace_gdbstub_op_extra_info((char *)mem_buf);
-                 memtohex(buf, mem_buf, len);
-                 put_packet(s, buf);
-             }
-             break;
++    char thread_id[16];
+     uint8_t *registers;
+     target_ulong addr, len;
+=20
+     trace_gdbstub_io_command(line_buf);
+=20
+     p =3D line_buf;
+     ch =3D *p++;
+     switch(ch) {
+     case '?':
+         /* TODO: Make this return the correct value for user-mode.  */
+-        snprintf(buf, sizeof(buf), "T%02xthread:%02x;", GDB_SIGNAL_TRAP,
+-                 cpu_gdb_index(s->c_cpu));
++        snprintf(buf, sizeof(buf), "T%02xthread:%s;", GDB_SIGNAL_TRAP,
++                 gdb_fmt_thread_id(s, s->c_cpu, thread_id, sizeof(thread=
+_id)));
+         put_packet(s, buf);
+         /* Remove all the breakpoints when this query is issued,
+          * because gdb is doing and initial connect and the state
+          * should be cleaned up.
+          */
 --=20
 2.19.2
 

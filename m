@@ -1,135 +1,92 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp9394274wrt;
-        Wed, 5 Dec 2018 05:43:24 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/W2qBjqXSqM7gNGYM+lQ5kncYTXa9WXPvRBDH4RyctK+mh8iOIRYo4zj9mxDK5Hcguip9h3
-X-Received: by 2002:a0c:eb41:: with SMTP id c1mr24537890qvq.211.1544017404596;
-        Wed, 05 Dec 2018 05:43:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544017404; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp50074wrt;
+        Thu, 6 Dec 2018 20:43:37 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/X7XjlgZyWffMMA6sr7AHHLs7Ru+1Ph9J+26jy+QiPU5CD1ESg8jMWEs6DDURLyw/gGDzln
+X-Received: by 2002:ac8:478f:: with SMTP id k15mr614631qtq.281.1544157817199;
+        Thu, 06 Dec 2018 20:43:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544157817; cv=none;
         d=google.com; s=arc-20160816;
-        b=I90evSGbj4zGmhrrtiNa1128FUfFKXrolMh1lnSAurzoiQZFfwcIF89W2Y4TFsxBT5
-         PiJcCzexMYQ3k4zDV1J4Bxtr1HrYle6/1VJIwelvvXhk6wKiAlRZlr9zcHY8BOLl8+L9
-         bkOotS9ZPcoT8sFhnZLBWTZXq+crg1NjdFnelzqC0fXKZVG4RPxG47hM/ikzdBz+vSyM
-         4hQFS2A91YfOsLPUn6epnYKTzV5PuU5kzyA/pdwMXdfRq4ArbmfknQQHEMS5tkmZRErZ
-         jv+OLwXmBMzRVYIp9IRYU6iO96JYU80oUZ4020eb4cjWXZvM2K0WWP9gnLSz122f4ONO
-         c3Fg==
+        b=A/Do+a/c7SGMCXnyvEjosD84UwJ9LJk64kXAwWhWvKc34xAsgHWY9ZxSelz3ebqJSC
+         QyZJndBDgyl5oy4ZK4Gi/GtRuy3wuVDNi1StJ/DcniDbMPYObmHpNQJurwRGTRYkBJX5
+         fdWEhJuojnnJs95CEc2teB3gLxYpXj9Z/W+JOoNuuPAVoj6HekoFzOPEjk0yIJQNls4D
+         27ODUCDzwUSSsofEkfMzoXt2lDowXEoN/JUzTpB69LH77M4ed1WTEX63sYn1P+8s5ODP
+         mTqkH8vZif0J/Fqt2WC8p+a2qZqb3C4jrptO8QnL7ib/PCXd2tQtsa+I+F0r3bX1X6Lu
+         hIEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:message-id
-         :date:thread-index:thread-topic:to:from:dkim-signature;
-        bh=IFtnHOPgCQZi6m35uK9PtxVFj12AuwN3qF4NFzvKbqk=;
-        b=m926fCsJFe3OlG1vXmrE0uU0wuQjZDzSDaWs4uJp/YTBAEui6cN9jmYcetSmjAKlCe
-         8WQ8xkWjygrOLxw6Hsy7vtVRZhiU21RmlW5ntpG6lnGlJmR5X/PoNWW8viF/8c1A67P+
-         r3knbp0QMLF2tcA+r6QwW4DrKL9Jd+P92ks8kfm9xgJ4nxtOGWQb0ABzDyjZIET5ssHz
-         XI6Ph1af5JpjPM+BP0KZS1EqstGkCDAKcLr1/ee9QGpc5oL2tsEjoewiUFhNmh/iFMDp
-         zXujzXCGOx/NSaJeJpoWzjHqCLm2wu2wleiNjl0OJu6PgDvVoS98HbAbpoF0Nv1kT/Y/
-         j8Pw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=rOvU8HxXubgeW9wERvLCTppoiQiOn3U83M6i6QizKvw=;
+        b=eRu968x5QD3r2Wso6mopRYZMBcrzfFXfP/Z2K7tOJWSexDj4TwDzBPe0uP8TTWEfWH
+         ufMMzBAGAW47t2TwWM9xE3ojuivRXggqmDd717K00PXkghafLg9NpFWsREApbPiZSKq8
+         3IuR83buwRDcUdx/0B0xzXfU6yBwAZ7pyQUntIT/14nSHNTglaJnOeN/+EuUmvBbkD3g
+         wWYGyAOgj5j6iB3lGU4yjeZwkjFZhnTV5CizoUHRojvfEuaDhcKZs3ZCP8lDdR0sDw5w
+         IK7SXpiJA5u3jkN9zOeYP8wNVdTI2eyi432TCBcYWHHJ/NV+Rlp0rtHTZOPYYjOUcNLI
+         PvsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="j5p/iNFk";
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b="x8+Gv/x1";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d1si5900876qki.160.2018.12.05.05.43.24
+        by mx.google.com with ESMTPS id m36si1046133qvc.170.2018.12.06.20.43.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Dec 2018 05:43:24 -0800 (PST)
+        Thu, 06 Dec 2018 20:43:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="j5p/iNFk";
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b="x8+Gv/x1";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:34572 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+Received: from localhost ([::1]:44172 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUXSW-0007PR-65
-	for alex.bennee@linaro.org; Wed, 05 Dec 2018 08:43:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51383)
+	id 1gV7zE-0003QG-O6
+	for alex.bennee@linaro.org; Thu, 06 Dec 2018 23:43:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47081)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gUXSL-0007Lx-CT
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 08:43:14 -0500
+	(envelope-from <Jason@zx2c4.com>) id 1gV7z2-0003Nd-Cq
+	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 23:43:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gUXSG-0004Nr-8m
-	for qemu-arm@nongnu.org; Wed, 05 Dec 2018 08:43:13 -0500
-Received: from mail-eopbgr690133.outbound.protection.outlook.com
-	([40.107.69.133]:62640
-	helo=NAM04-CO1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gUXSF-0004L6-UE; Wed, 05 Dec 2018 08:43:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=IFtnHOPgCQZi6m35uK9PtxVFj12AuwN3qF4NFzvKbqk=;
-	b=j5p/iNFkMBfWHVExGYqU6pj5g8STQr3R3kbOSz8SUJHFMMJcP4qryrFapFwSqbivSZdV8qTcVwyXZozKG7CEElL6b9kwSuC3Qvgll/Qsx3hsnUBQOli2EqpIs5EhIB+Zc287ndqsvZcs2qnM3g5Wvsn9It+88H/gc1Lf+FYMpfQ=
-Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
-	DM6PR01MB5180.prod.exchangelabs.com (20.176.122.13) with Microsoft SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1382.19; Wed, 5 Dec 2018 13:43:04 +0000
-Received: from DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::9c7c:27c7:4cb7:f820]) by DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::9c7c:27c7:4cb7:f820%2]) with mapi id 15.20.1404.016;
-	Wed, 5 Dec 2018 13:43:04 +0000
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
-	<peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>, 
-	Wei Huang <wei@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>
-Thread-Topic: [PATCH v9 00/14] More fully implement ARM PMUv3
-Thread-Index: AQHUjKByd/idnSlI+0yghkDC2UDzLQ==
-Date: Wed, 5 Dec 2018 13:43:04 +0000
-Message-ID: <20181205134243.4791-1-aaron@os.amperecomputing.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: BN6PR12CA0032.namprd12.prod.outlook.com
-	(2603:10b6:405:70::18) To DM6PR01MB4825.prod.exchangelabs.com
-	(2603:10b6:5:6b::30)
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=aaron@os.amperecomputing.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [216.85.170.155]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; DM6PR01MB5180;
-	6:u2tE0xk+/E5cZjbig3XgcgZwJ0GJArw4YUyOSR/8rugSPbWxBbEjRLNOPPsCBGB0v44Y5mPAvyFuJ85upqooMzhx2MniT2QEn6YqCK6eJmiA0FHZ5GzDdNPv68/U21+HzXoMFxx7wZg8mwfrEvHuYJ79iW8ssrmKf31ZPcjuVeJC7poxzhs2ejMNptMYVEuOt7MUxpg14qvBdYVGwY6MBgnWIKyvwlieVZd5k2Rp79LMVU6V5tfhsvXxlICp+Tep6LgLhDV5kn4lPVWx8q5wsLqMlFMlTxzviirioCiToo2JRsc388WvUGRAUKOGkiKSGGfMqAMQUbUAkj36Q/n952hxewvfcIM7vH4ZK7y7B9BgG1nb0QTSvTHQpEHAui7u0lY/lfFAXGkJCuo4J2DNGF6Z+STxuMf6/p2rOtpEOV/AcWfp52nXKuafuDxq+Ac9hoYiFK/8d7qId1ei6Ufhpw==;
-	5:UR2JLYUf3z6Lb26yrLymMOPQdJReFCxtsmuRof5BbUb4wQmgecYJaX435Aqzz7hIraoQnaAJn6OVb+P2u5FmlyMvuBYrcKvbdr+8QnC9ezuUVLjPMXj9hO/4r0MjHHlC2XskN0vzaXWs0j4UHkncFSNVT1BoUXifqMxKg0rSC6E=;
-	7:yA5brLnRC/dNr87o1VmNZ6Xx1zHGynMaGAKgjIgCG50fbaqbUsDZ8nhXp+NhyBFfpIggma/uPhCZiuiz6SI8KGxf23Erk9Hfr8mXkeih8MYTipumwq5+woTakL22PwJDoGBdOFcqP44JFtOu2ePTzA==
-x-ms-office365-filtering-correlation-id: 835b54dc-22f8-43b3-cebf-08d65ab794c1
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
-	SRVR:DM6PR01MB5180; 
-x-ms-traffictypediagnostic: DM6PR01MB5180:
-x-microsoft-antispam-prvs: <DM6PR01MB51807CC63040253A6CD527E88AA80@DM6PR01MB5180.prod.exchangelabs.com>
-x-ms-exchange-senderadcheck: 1
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(10201501046)(3002001)(93006095)(93001095)(3231455)(999002)(944501520)(52105112)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123558120)(20161123562045)(20161123560045)(20161123564045)(201708071742011)(7699051)(76991095);
-	SRVR:DM6PR01MB5180; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5180; 
-x-forefront-prvs: 08770259B4
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(396003)(366004)(39840400004)(136003)(346002)(376002)(199004)(189003)(6486002)(86362001)(53936002)(39060400002)(66066001)(71200400001)(71190400001)(14444005)(106356001)(25786009)(6116002)(3846002)(26005)(4326008)(256004)(966005)(8936002)(105586002)(6436002)(2501003)(186003)(2906002)(110136005)(81166006)(81156014)(107886003)(54906003)(52116002)(1076002)(8676002)(478600001)(316002)(14454004)(102836004)(2616005)(486006)(6306002)(476003)(68736007)(305945005)(5660300001)(386003)(6506007)(7736002)(6512007)(99286004)(97736004);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5180;
-	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
-	PTR:InfoNoRecords; A:0; MX:1; 
-received-spf: None (protection.outlook.com: os.amperecomputing.com does not
-	designate permitted sender hosts)
-x-microsoft-antispam-message-info: bfERhw7RjlZMmdpZN55u4MrXZTknmuoYrq2OQ05QwwP/5dpNpUpU1ew3PAkHXFC8u4DUB872nTt535KobOiOds5GuN2niTw2ZFf0S6us21L6jIj2gtSvbaZINxQXznaOEA+KAvtlcixhtggnHnVea6njKd6zt1/UTiONC3DW2f/gqOGEnB7nxTjXXUi6Pct9WgRKfo63Rylt5u803IXqISKvbcAJEjglUHEkx76reY+CZK027RCTzNxikZNMNxbj5zpJ/FHGswGKj+RFNfxZkB8up5+thRAC3QLFzzhNYC1lml/9CU2qWN+IgK97Vu6yAqdoXRt97K2wRAXWXIj9Qbrvu3pe6Euxg6p9ogpbyCA=
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <Jason@zx2c4.com>) id 1gV7yx-0002Ft-Ti
+	for qemu-arm@nongnu.org; Thu, 06 Dec 2018 23:43:24 -0500
+Received: from frisell.zx2c4.com ([192.95.5.64]:39977)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
+	id 1gV7ym-0002AA-JE; Thu, 06 Dec 2018 23:43:09 -0500
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id b2b20f79;
+	Fri, 7 Dec 2018 04:34:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
+	:references:in-reply-to:from:date:message-id:subject:to:cc
+	:content-type; s=mail; bh=HzHI8sTdgQqsOQ9i5/NIcsWC3Yg=; b=x8+Gv/
+	x1SlPsmK8CpsXGIkAfSA1u+nXEzQjbw3SQQkwtSCRgJDUEk0rWN/FPhWYc0zpBuy
+	MYVYAIz4LGiw6NXaWf9akUq/8437ghFtquMhngwd8uS9CnKyw9/XxmjGNqiPnlJ/
+	ye6E72wVckg0yYxD02rzfXJjnyiJGluPQuazp9AWcxWlzVO5Qes9cRSgisUX9FmY
+	GpOPqZcBEqVFh93hthMrbg9NtPNPldgtqoG6235+jDQ/YYSKYm7KRHQES57nm286
+	pOPZeTeUbpPDgCZmkK7zlF8PcmPdp+WE3zt7fhTjO5rCVHBduOmS7hG9SD4aWp5h
+	3as40I4Qqjc/WGoA==
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 945b667c
+	(TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256:NO); 
+	Fri, 7 Dec 2018 04:34:50 +0000 (UTC)
+Received: by mail-ot1-f49.google.com with SMTP id v23so2659914otk.9;
+	Thu, 06 Dec 2018 20:43:05 -0800 (PST)
+X-Gm-Message-State: AA+aEWbwT619kP0PCAtT1FWbFPIbIS30vSHTd/JZWrYhF8Qz2iGZzJvp
+	pTCGGSG4YcLmX+LoEge3SW/5DnQHwD1D01h0daE=
+X-Received: by 2002:a9d:12e3:: with SMTP id g90mr502753otg.223.1544157784769; 
+	Thu, 06 Dec 2018 20:43:04 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 835b54dc-22f8-43b3-cebf-08d65ab794c1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2018 13:43:04.2623 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5180
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.69.133
-Subject: [Qemu-arm] [PATCH v9 00/14] More fully implement ARM PMUv3
+References: <CAHmME9qhe0ZemTkc2jkEO=_hu6PhvKUKGHC9QYTj2j+QHhNf8g@mail.gmail.com>
+	<CAFEAcA8fYaKTZkLR8Ja3P590bSWy1cu61-gSxyf6+wXCfCLoxA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8fYaKTZkLR8Ja3P590bSWy1cu61-gSxyf6+wXCfCLoxA@mail.gmail.com>
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Fri, 7 Dec 2018 05:42:53 +0100
+X-Gmail-Original-Message-ID: <CAHmME9qQo4XfRgZUZDt3xbx=5KmRoYbO3N0+3m9gdKi9hvnZQA@mail.gmail.com>
+Message-ID: <CAHmME9qQo4XfRgZUZDt3xbx=5KmRoYbO3N0+3m9gdKi9hvnZQA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 192.95.5.64
+Subject: Re: [Qemu-arm] more serial ports on arm?
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,59 +98,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aaron Lindsay <aaron@os.amperecomputing.com>,
-	Michael Spradling <mspradli@codeaurora.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Digant Desai <digantd@codeaurora.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YwK0kanoPpfE
+X-TUID: PoJa611Bl7yB
 
-The ARM PMU implementation currently contains a basic cycle counter, but
-it is often useful to gather counts of other events, filter them based
-on execution mode, and/or be notified on counter overflow. These patches
-flesh out the implementations of various PMU registers including
-PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to represent
-arbitrary counter types, implement mode filtering, send interrupts on
-counter overflow, and add instruction, cycle, and software increment
-events.
+On Tue, Nov 20, 2018 at 11:08 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+> It's still stuck, because unconditionally adding a second serial
+> port to the virt board breaks some commonly used existing guest
+> code (UEFI + Linux), and it's not clear to me what the best
+> command line UI is for allowing the user to request the second
+> serial port.
 
-Since v8 [1] I have made the following changes:
-* Simplified if statements and corrected overflow bit clearing logic in
-  counter overflow patch based on Richard's review
-* Added FIELDs for ARMv8.1 PMUv3 variant and guard the definition of
-  PMCEID2 and PMCEID3 based on ID_DFR0.PerfMon
-* Added/fixed up a couple comments
-
-[1] - https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg04037.html
-
-Aaron Lindsay (14):
-  migration: Add post_save function to VMStateDescription
-  target/arm: Reorganize PMCCNTR accesses
-  target/arm: Swap PMU values before/after migrations
-  target/arm: Filter cycle counter based on PMCCFILTR_EL0
-  target/arm: Allow AArch32 access for PMCCFILTR
-  target/arm: Implement PMOVSSET
-  target/arm: Define FIELDs for ID_DFR0
-  target/arm: Make PMCEID[01]_EL0 64 bit registers, add PMCEID[23]
-  target/arm: Add array for supported PMU events, generate
-    PMCEID[01]_EL0
-  target/arm: Finish implementation of PM[X]EVCNTR and PM[X]EVTYPER
-  target/arm: PMU: Add instruction and cycle events
-  target/arm: PMU: Set PMCR.N to 4
-  target/arm: Implement PMSWINC
-  target/arm: Send interrupts on PMU counter overflow
-
- docs/devel/migration.rst    |   9 +-
- include/migration/vmstate.h |   1 +
- migration/vmstate.c         |  13 +-
- target/arm/cpu.c            |  28 +-
- target/arm/cpu.h            |  79 +++-
- target/arm/cpu64.c          |   4 -
- target/arm/helper.c         | 807 ++++++++++++++++++++++++++++++++----
- target/arm/machine.c        |  24 ++
- 8 files changed, 860 insertions(+), 105 deletions(-)
-
---=20
-2.19.1
-
+Can the UI be the same more or less as for x86? Specify a second
+-serial, and then the machine gets one added? If it's in secure mode,
+then it's added as serial 3 instead of 2, to remain backwards
+compatible.

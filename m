@@ -1,81 +1,106 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1426208wrt;
-        Sat, 8 Dec 2018 00:42:56 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WnT3sbozgm7edRzFcT1nWB9lKyepCV4tH+OSi2DUpaqb5p9EjFVjhKpEdkCSRB7Pj953PI
-X-Received: by 2002:ad4:40c9:: with SMTP id x9mr4817172qvp.165.1544258576319;
-        Sat, 08 Dec 2018 00:42:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544258576; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2850077wrt;
+        Sun, 9 Dec 2018 11:38:13 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/U9k5ZdlW1Rz1jwI0rDEXB+AgJeaEWjw7F63V9F7aFQcjyw4nSfMqqTrSlHjKieAABJsmdt
+X-Received: by 2002:ac8:164a:: with SMTP id x10mr9691085qtk.67.1544384292997;
+        Sun, 09 Dec 2018 11:38:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544384292; cv=none;
         d=google.com; s=arc-20160816;
-        b=yn89bs+cUtp++h+Us3z3E91QuyWLKjyx+Tl+im3N6MvD9RyqwNBy1AQQksOfQ29weJ
-         gjYHYvMK91At6IcPm6Xrv/9x09AfTWhnrU8rVuoaF8cAnErlZCglSQz6A+nsJfFV4ahh
-         2qZn0ik38QXwn0KA8s1KoG6qC78OXIakkwgbzONjTku2GJEabj78W/EgER4bkb/QppRJ
-         /KMZMqxKAT1q/MUIN89xhFVdk5Y9YohA4ENC1dZNzFInBI6muIeyLK6fBD3A3P+kkCVT
-         SYileKSrwzD+7URvgSd00E7pS7puujoqMfjtNA3jETeizqBuPUMkXM/6gnSEA60ONXKa
-         uhEg==
+        b=dl53dv7LQQ6HcSzd7mKyxOm+1qQJ3Tq0gjOvEbr7aKoJs9+askHq45ghSC7Q9L89se
+         aXTUJ46itbgHXHA6CcZ4c+LzPc+SSp3Mqy5JvE6spYQZTQj00RkP+qVFJzpLiX14eZ/h
+         lcfMLBYnBnGBU14QwUA+0dmz4fmaaDyu5QjUd4X/eys5CIORmPKi1LjrvjlE/v9q6C/k
+         0W5Ftlc5fPvhX7byH/V+gRzG0umPm14eGUzrK6NF1Eat7ut3iY5iYKhbKgAMNhwgV2i5
+         FIcSZUpsK5vKy5/NEpfp8ff/ZtYbHtfGD97U+wqccos5GI6G3JS0jTJuyjK6GX5zliyn
+         PzLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
-         :references:in-reply-to:message-id:date;
-        bh=VXvmMW3009j6Zpp0WffEn1e9RWJxfVpV4dKixviKpro=;
-        b=MDoxx/98I3j6t3NwvDYlejNQq1ENhXi1QInQyY/paQv14MG6p87ZbepiIqwW5il9B6
-         aPtPkqKMOHZAJg4FL+bOQDj3TY1zGK6OUFkDiIPknbd0t+Uw+hq05UjlKqggBxfqqVg9
-         t0QIfTh61A54wrBttOwvqwb8svGu3fraxQIu1G96KIXY8OX3DgRZN4hcLnVPNnujeoyW
-         s9NBQjfLkWnT2eU+3ShiSoizXkaO9fkr0WPddtuGH1TonzzPoo3i0oFvwXF+j+gN4CjU
-         /5YzHSiE/e6crOlMg5gCj37l+zKoDksSBc/Y9NBEIleWAbWhFfnLI757b4FxGleOa3Ga
-         nVqg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=n3VUfFZCypUWEo5ApDoz2AmNCqEt2SRisr211rzgw6Y=;
+        b=E/FClFHpJUrf7jTChOLnwo5Ux6wkKBEs2wSMgm+Vk85AwumS2qB6G/YvysIdjCfkn6
+         r4xOMsGlObAeRj3iuYiWebUw5ta1cTlWB1kuJ8inflNG87pw2gLVyANEWgETPnpZhwJ2
+         Z8R8783KIeQwgysJ1MWmizuP3xxGbVaoYoVDtoHfrvvqs6mYQwn5dTCpbTmE5A3LtQXq
+         p6hubrx/l0zBjuXmdz74h8n6qxrNMzGIgTGuEqhvoaQQ/814gfG2ZaLNwqhX65Y6GidH
+         J2ES9fVCKMxFuES0mwxcGVH0c0AlZcF0NIacktPPt0A16my1JhEmRVX8f5YqTxkSu5RU
+         zLSA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkwGNBrq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 45si623010qtr.28.2018.12.08.00.42.56
+        by mx.google.com with ESMTPS id x1si1788357qvk.102.2018.12.09.11.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 08 Dec 2018 00:42:56 -0800 (PST)
+        Sun, 09 Dec 2018 11:38:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kkwGNBrq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49990 helo=lists.gnu.org)
+Received: from localhost ([::1]:56393 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gVYCN-00033N-S3
-	for alex.bennee@linaro.org; Sat, 08 Dec 2018 03:42:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53888)
+	id 1gW4u4-00009G-GK
+	for alex.bennee@linaro.org; Sun, 09 Dec 2018 14:38:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gVYCC-00032C-RX
-	for qemu-arm@nongnu.org; Sat, 08 Dec 2018 03:42:45 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gW4tt-0008PR-Oc
+	for qemu-arm@nongnu.org; Sun, 09 Dec 2018 14:38:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gVYC8-0008Fg-Sw
-	for qemu-arm@nongnu.org; Sat, 08 Dec 2018 03:42:44 -0500
-Received: from out1.zte.com.cn ([202.103.147.172]:40744 helo=mxct.zte.com.cn)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gVYC8-0008Bq-Hg; Sat, 08 Dec 2018 03:42:40 -0500
-Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 93DBF559EF37E46D2707;
-	Sat,  8 Dec 2018 16:42:32 +0800 (CST)
-Received: from kjyxapp03.zte.com.cn ([10.30.12.202])
-	by mse01.zte.com.cn with SMTP id wB88gTb7025077;
-	Sat, 8 Dec 2018 16:42:29 +0800 (GMT-8)
-	(envelope-from peng.hao2@zte.com.cn)
-Received: from mapi (kjyxapp03[null]) by mapi (Zmail) with MAPI id mid14;
-	Sat, 8 Dec 2018 16:42:31 +0800 (CST)
-Date: Sat, 8 Dec 2018 16:42:31 +0800 (CST)
-X-Zmail-TransId: 2b055c0b83f7129a7d84
-X-Mailer: Zmail v1.0
-Message-ID: <201812081642314652084@zte.com.cn>
-In-Reply-To: <1544095560-70807-1-git-send-email-peng.hao2@zte.com.cn>
-References: 1544095560-70807-1-git-send-email-peng.hao2@zte.com.cn
-Mime-Version: 1.0
-From: <peng.hao2@zte.com.cn>
-To: <peter.maydell@linaro.org>
-Content-Type: multipart/mixed;
-	boundary="=====_001_next====="
-X-MAIL: mse01.zte.com.cn wB88gTb7025077
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 202.103.147.172
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BPATCH_V12_0/5=5D_add_pvpanic_mmio_suppor?=
- =?utf-8?q?t?=
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gW4ts-0004dF-QA
+	for qemu-arm@nongnu.org; Sun, 09 Dec 2018 14:38:01 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38605)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gW4tm-0004GY-EI; Sun, 09 Dec 2018 14:37:54 -0500
+Received: by mail-wm1-x342.google.com with SMTP id m22so9140639wml.3;
+	Sun, 09 Dec 2018 11:37:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=n3VUfFZCypUWEo5ApDoz2AmNCqEt2SRisr211rzgw6Y=;
+	b=kkwGNBrqSa8m48rPo5pXsGt2l2fuy4XUZm7P0AtvoaB3ngES+sV1reVqG7GCR8n4ca
+	AKgffgQKVy3gpI3zFhRixz76qH+j30jJIQxyYh7LXghjIK8YVFGlZFj/d7ZIrJlzEQH6
+	HDl7ILBkdU028i2d05mZ/hYMhHeKyXXesBaMy+rAAPLwT9niGNmuhHK4ttmqJEz69yyE
+	I92YuHUDEuiOH8PgbpcblTBWyhipvduUBBNe3oN7wMgrUT0pBLRCdphOnr1zYuA/OaeF
+	leLGq4MvJ4Wok4NY+7jQGfTZHp2BZ7k9SVaPTx61UBsFJb/TWVrBdV9FqvN3nwGssZLz
+	225w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=n3VUfFZCypUWEo5ApDoz2AmNCqEt2SRisr211rzgw6Y=;
+	b=Piu2GNpJ8LHqTwdaebmyqfo2elpjTz1AFaGkpchMxEXM7XezG6LRBsmiz07+r0bsJa
+	T4l2mc3gi1OlcVTPl6ZTCy+iD31vCAFbj04T8bcUTrEiTsXAjOGWyXYeF2I5hgTbVrOV
+	PtLqASucuRsgETVjH9us7P4hikWiQVpX+Sio6CIpdaAlyIO0Isva3PvefOD2NjuyYp+A
+	4ksebs55r26+16nuyjc2MI1gu2NzOswCzuR/FclQlRqOxrPbKwtL34qZfwszKTOO4VS+
+	oU05c9h22yJqYsne581NZYSKTUu+gJg8jU616R+NDe0aHiUdB91KQAARdGL1697pA3cP
+	mdOg==
+X-Gm-Message-State: AA+aEWZyAiM6fRtd2mjeg78Sk2g0vx9oLTFX+fwBpkJCsaNcDrDH4qI+
+	nCS1cCX7oQ6wP0a+PEwelhY=
+X-Received: by 2002:a1c:68d7:: with SMTP id d206mr7968464wmc.43.1544384273193; 
+	Sun, 09 Dec 2018 11:37:53 -0800 (PST)
+Received: from x1.local (172.red-88-21-202.staticip.rima-tde.net.
+	[88.21.202.172]) by smtp.gmail.com with ESMTPSA id
+	r76-v6sm10574641wmb.21.2018.12.09.11.37.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 09 Dec 2018 11:37:52 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Beniamino Galvani <b.galvani@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Charlie Smurthwaite <charlie@atech.media>
+Date: Sun,  9 Dec 2018 20:37:42 +0100
+Message-Id: <20181209193742.7582-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.19.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH] hw/arm/allwinner-a10: Add the 'A' SRAM and the
+ SRAM controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,43 +112,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com,
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uO7UHHo28K/f
+X-TUID: JBay+k4wEPYE
 
+From the "A10 User Manual V1.20" p.29: "3.2. Memory Mapping" and:
 
+ 7. System Control
+  7.1. Overview
 
---=====_001_next=====
-Content-Type: multipart/alternative;
-	boundary="=====_003_next====="
+  A10 embeds a high-speed SRAM which has been split into five segments.
+  See detailed memory mapping in following table:
 
+  Area          Address        Size (Bytes)
+   A1    0x00000000-0x00003FFF 16K
+   A2    0x00004000-0x00007FFF 16K
+   A3    0x00008000-0x0000B3FF 13K
+   A4    0x0000B400-0x0000BFFF  3K
 
---=====_003_next=====
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
+Since for emulation purpose we don't need the segmentations, we simply define
+the 'A' area as a single 48KB SRAM.
 
-PnYxMCAtLT4gdjExCj5jaGFuZ2UgY29uZmlndXJlIGludGVyZmFjZSBpbiB2aXJ0IG1hY2hpbmUg
-Y29uZmlndXJlIHBhcmFtZXRlcnMuCj4KPnYxMSAtLT4gdjEyCj5yZWFsaXplIHB2cGFuaWMgYXMg
-YSBwY2kgZGV2aWNlIGFuZCB1c2UgdGhlIG1taW8gb2YgcGNpIGRldmljZS4KPgo+UGhpbGlwcGUg
-TWF0aGlldS1EYXVkw6kgKDIpOgo+aHcvbWlzYy9wdnBhbmljOiBCdWlsZCB0aGUgcHZwYW5pYyBk
-ZXZpY2UgaW4gJChjb21tb24tb2JqKQo+aHcvbWlzYy9wdnBhbmljOiBDb3NtZXRpYyByZW5hbWlu
-Zwo+Cj5QZW5nIEhhbyAoMyk6Cj5wdnBhbmljIDogdXBkYXRlIHB2cGFuaWMgZG9jdW1lbnQKPmh3
-L2FybS92aXJ0OiBVc2UgdGhlIHB2cGFuaWMgZGV2aWNlCj5wdnBhbmljOiBhZGQgbW1pbyBpbnRl
-cmZhY2UgYXMgYSBwY2kgZGV2aWNlCkhpICwgSSByZXN1Ym1pdCBhIHNlcmllcyBwYXRjaGVzIGZv
-ciByZWFsaXplaW5nIHB2cGFuaWMgYXMgYSBwY2kgZGV2aWNlLgphbmQgSSB3YW50IHRvIGNvbmZp
-cm0gaWYgdGhlc2UgcGF0Y2hlcyBtZWV0IHRoZSByZXF1aXJlbWVudHMuIApJIGtub3cgdGhlcmUg
-YXJlIHN0aWxsIHNvbWUgaW1wZXJmZWN0aW9ucyBpbiB0aGlzIHNlcmllcyBvZiBwYXRjaGVzLCAK
-c3VjaCBhcyBob3cgdG8gYXZvaWQgeDg2L3B2cGFuaWMgdXNpbmcgSVNBL3B2cGFuaWMgYW5kIFBD
-SS9wdnBhbmljIGF0IHRoZSBzYW1lIHRpbWUuCiBCdXQgSSB3YW50IHRvIGNvbmZpcm0gaWYgdGhl
-cmUgaXMgYSBwcm9ibGVtIHdpdGggdGhlIG92ZXJhbGwgZGlyZWN0aW9uIG9mIGltcGxlbWVudGF0
-aW9uIAphcyBhIFBDSSBkZXZpY2UuVGhlbiBJIGNhbiByZXN1Ym1pdCBwYXRjaGVzIHRvIGtlcm5l
-bCBmb3IgcmVwbGFjaW5nIHRoZSBwcmV2aW91cyBvbmVzLgoKVGhhbmtzLg==
+We don't implement the following others areas:
+- 'B': 'Secure RAM' (64K),
+- 'C': Debug/ISP SRAM
+- 'D': USB SRAM
 
+(qemu) info mtree
+address-space: memory
+  0000000000000000-ffffffffffffffff (prio 0, i/o): system
+    0000000000000000-000000000000bfff (prio 0, ram): sram A
+    0000000001c00000-0000000001c00fff (prio -1000, i/o): a10-sram-ctrl
+    0000000001c0b000-0000000001c0bfff (prio 0, i/o): aw_emac
+    0000000001c18000-0000000001c18fff (prio 0, i/o): ahci
+      0000000001c18080-0000000001c180ff (prio 0, i/o): allwinner-ahci
+    0000000001c20400-0000000001c207ff (prio 0, i/o): allwinner-a10-pic
+    0000000001c20c00-0000000001c20fff (prio 0, i/o): allwinner-A10-timer
+    0000000001c28000-0000000001c2801f (prio 0, i/o): serial
+    0000000040000000-0000000047ffffff (prio 0, ram): cubieboard.ram
 
---=====_003_next=====--
+Reported-by: Charlie Smurthwaite <charlie@atech.media>
+Tested-by: Charlie Smurthwaite <charlie@atech.media>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+There is an unmerged Linux patch where this SRAM seems used by the EMAC:
+https://patchwork.kernel.org/patch/6515451/
 
---=====_001_next=====--
+ hw/arm/allwinner-a10.c         | 5 +++++
+ include/hw/arm/allwinner-a10.h | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 9fe875cdb5..0bb0aa3b64 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -22,6 +22,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/devices.h"
+ #include "hw/arm/allwinner-a10.h"
++#include "hw/misc/unimp.h"
+ 
+ static void aw_a10_init(Object *obj)
+ {
+@@ -85,6 +86,10 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(sysbusdev, 4, s->irq[67]);
+     sysbus_connect_irq(sysbusdev, 5, s->irq[68]);
+ 
++    memory_region_init_ram(&s->sram_a, NULL, "sram A", 48 * KiB, &error_fatal);
++    memory_region_add_subregion(get_system_memory(), 0x00000000, &s->sram_a);
++    create_unimplemented_device("a10-sram-ctrl", 0x01c00000, 4 * KiB);
++
+     /* FIXME use qdev NIC properties instead of nd_table[] */
+     if (nd_table[0].used) {
+         qemu_check_nic_model(&nd_table[0], TYPE_AW_EMAC);
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index efb8fc8123..389e128d0f 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -35,6 +35,7 @@ typedef struct AwA10State {
+     AwA10PICState intc;
+     AwEmacState emac;
+     AllwinnerAHCIState sata;
++    MemoryRegion sram_a;
+ } AwA10State;
+ 
+ #define ALLWINNER_H_
+-- 
+2.17.2
 

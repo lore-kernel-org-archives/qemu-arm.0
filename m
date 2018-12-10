@@ -1,155 +1,167 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3771428wrt;
-        Mon, 10 Dec 2018 08:04:46 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VyUy9v9wxZFx1IuSgOfRCk+7n2R1M2lq9T09d+KB0D0qg+o+tLbMqZ7vsBO44ox4sIvDMK
-X-Received: by 2002:a0c:88e6:: with SMTP id 35mr12035664qvo.61.1544457886623;
-        Mon, 10 Dec 2018 08:04:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544457886; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3790191wrt;
+        Mon, 10 Dec 2018 08:20:17 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Ut/vbAMf0P31l8Wg3d4Z1wJURXw4y6rr6tXMJkjOaw/WF0VTAE6+Q/3tz7E917NlV8XRt+
+X-Received: by 2002:a0c:8aa8:: with SMTP id 37mr12155032qvv.23.1544458817114;
+        Mon, 10 Dec 2018 08:20:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544458817; cv=none;
         d=google.com; s=arc-20160816;
-        b=IzVK8hovq0cjiRYLsPUlv4jJakKG8fDwYZOKKYlisHhPyRA4Q9hOGBM6X5qc2muuqq
-         gnm0VUKuKQCWYRo8GtDoLCbcxPjwPykyB1a8xav6SVANDQFpGXX6rCU0jZOfp4CHc7od
-         pLeAAZB5lD1Z68gWbht6pIc6z5UGdMJhjzHp3i0J9eqOfsAt6mxZXGIiuQGWyULaIaTF
-         OVBGPVDOGmw/aa6QT5XfSHnaZBzAmgqmVuxtHHJvp17jY7X0KED9cB4lpTEGFNjLh3ax
-         4ZVgM+lDE3xxDrsrytadbQeBrMCAj/KaNtIkY4BlQbyjlZhFyKeN5iXj3/ODa6N5gQnl
-         WUFw==
+        b=Law3nT92YHbzzZabxec2RP5Wi3stMl/YwIST/+ZVrqB0aD98NM8mmEtxLHZ2ZT/HoD
+         S8WTEmST2YGOD/v7WAl/9r+niuNzq5wdGt4GT4fMuM4kkMfE8jmGApwuZ7YKvWr7AB8J
+         uncNKNArZ/ZqcJzW9IJun1JGeUizlyWXxCh+qhIalA3I/CgpQCFNL2RCl+YE+mWVFkOG
+         jq+gIzovsz4C/krYIzK1LxXHbLN+/XX8VRUXR1yzZ4ztODFZoT6gbGR3lxALuqX5nAjg
+         IF3Tu5aQdDap0ZbtC6Alwk2SoLEGVvft5gAnJrqEPghthgUknMokfSZhQh5PXCdFYkNH
+         6uWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=V2N76l2f/JVfJOHsZ0Uq7l/iQKTPz4V0bPyhadivYFw=;
-        b=nzl3YnQupd7ZFZ3lvQ7m4Ok3NAh0BZoqmUaLPeKq0+XLvPSoD3XwbSJ2dG4H8sFWgW
-         QVetkxNM8XujALMPrMNw7O/DeKw/EICaE5sbLTAqN8y9sKvDKbm40TDaAL8tHiubwgvh
-         JEBRGsONZuGdx1K0ytWUIEnym7IbKRYqKwun3jD7gIZ4ovY017DYSCYa8pxyMjqhDSxD
-         02UkX/amoYtDBKhUWu547oXTSrjH2VPviJfN72nZotry9A3cR/2qfRZ6yQN0qz6sVvMS
-         txJfXy7FdodxflpqqvWiGEj0ugALk5LaqGJnW98L86lTSydubBIQPy9vDSSpSHvrDjxi
-         FwyQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=ZlULeoe4E8dEpsVUT1U0Nq0ZF+ugWQqaGE4iH4fEdnU=;
+        b=Cio11kxqENChcDgfXbgHvlFyypCShy6ujfnvNGMrAIkp2UuoAkgfqE9FgET40HoJPU
+         k0j7cQGxg3OmNcIHhpuYk4c6m6LodxuVsbZf7Sha/iwVa80YjK2IpgWzSIqKl0eWF8+f
+         9Mn3q9A2Vvh+ZXBWx9ktlkHhkV7MGauxq+3gEC5xwiRe9KQIT7DKONaF80zXGLIkTtcf
+         PbiNq+YiNMs8zE0iQsHSBawebv5OA5RYC3VgfyTitHUzQ5u29nN5vJF7px58Wh53seJw
+         kf4+2JkhWLMlBpPrLKBBZutKPnQwpR7zpa0vFN1EpCdbAaFBfOmNaAplhhZmWeFFuROU
+         o4IQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a41si3758937qtb.19.2018.12.10.08.04.46
+        by mx.google.com with ESMTPS id m93si815209qtd.270.2018.12.10.08.20.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Dec 2018 08:04:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Dec 2018 08:20:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33468 helo=lists.gnu.org)
+Received: from localhost ([::1]:33559 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWO34-0000g6-0T
-	for alex.bennee@linaro.org; Mon, 10 Dec 2018 11:04:46 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51408)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gWOI4-00040I-I5
+	for alex.bennee@linaro.org; Mon, 10 Dec 2018 11:20:16 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gWO2V-0000LW-KN
-	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 11:04:14 -0500
+	(envelope-from <drjones@redhat.com>) id 1gWOHf-0003km-7K
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 11:19:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gWNvq-0000QB-1Z
-	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 10:57:21 -0500
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:35576)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gWNvp-0000PR-6X
-	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 10:57:17 -0500
-Received: by mail-wm1-f68.google.com with SMTP id c126so11774540wmh.0
-	for <qemu-devel@nongnu.org>; Mon, 10 Dec 2018 07:57:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=V2N76l2f/JVfJOHsZ0Uq7l/iQKTPz4V0bPyhadivYFw=;
-	b=sMfPZKaB1f6uMBVV9KcXl+quFiu2pGP/UqeTpWvfvo9BOtfeL8NNj+Tf4tEF60Rqow
-	tfHcV8ZiAeUQxu/TSP1irrzHSxWomxOA57cxqn81vE2i9z/HULlSPWYmSWcVElDJo5bk
-	hpbDkVG5Mv6RL1DXCrKPjN82+QbcoD8q6z8MNtr+CtK5/ikgQ3eZVgGc7uNBdADLGGDO
-	RzC1M/nD3uu+2Kh7FZ5CSwpgsTwSyFBVnhG8J2LpsEYSR+5tLUv7XeZG99YiO7WU83CC
-	Q6P36+3yNP21FA3HjyskkcGK7gx8BwxGsf6qUnUeiuPvxe5teDcKS5DrKriXQoK3AhtO
-	p+Dw==
-X-Gm-Message-State: AA+aEWaUzazqXqGqxS80mo6zHvFEhW2oZOzbGBjbLBhjx03trYDTQPn1
-	s05AhqeOeorz8ztoYMxHXeAK3Q==
-X-Received: by 2002:a1c:b515:: with SMTP id e21mr11326377wmf.82.1544457436181; 
-	Mon, 10 Dec 2018 07:57:16 -0800 (PST)
-Received: from [10.201.33.118] ([195.166.127.210])
-	by smtp.gmail.com with ESMTPSA id
-	c7sm15388618wre.64.2018.12.10.07.57.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 10 Dec 2018 07:57:15 -0800 (PST)
-To: Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Corey Minyard <minyard@acm.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20181207165103.3992-1-philmd@redhat.com>
-	<20181207165103.3992-5-philmd@redhat.com>
-	<59daee09-d797-3340-3fd3-c6d521d2cf68@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <bfa8379c-03e1-9e40-f588-edf402d93716@redhat.com>
-Date: Mon, 10 Dec 2018 16:57:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+	(envelope-from <drjones@redhat.com>) id 1gWOHc-0004GS-1B
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 11:19:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44686)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1gWOHb-0004Eu-Gq; Mon, 10 Dec 2018 11:19:47 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 37767368E7;
+	Mon, 10 Dec 2018 16:19:41 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7795D5C1B4;
+	Mon, 10 Dec 2018 16:19:37 +0000 (UTC)
+Date: Mon, 10 Dec 2018 17:19:34 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peng Hao <peng.hao2@zte.com.cn>
+Message-ID: <20181210161934.5zmat6tjtx4utmzh@kamzik.brq.redhat.com>
+References: <1544095560-70807-1-git-send-email-peng.hao2@zte.com.cn>
+	<1544095560-70807-6-git-send-email-peng.hao2@zte.com.cn>
 MIME-Version: 1.0
-In-Reply-To: <59daee09-d797-3340-3fd3-c6d521d2cf68@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1544095560-70807-6-git-send-email-peng.hao2@zte.com.cn>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 10 Dec 2018 16:19:41 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-devel] [PATCH 4/4] hw/smbios: Move to the hw/firmware/
- namespace
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] pvpanic : update pvpanic
+ document
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jZKEq115SS4o
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3ATHU/r9OanH
 
-On 12/10/18 4:10 PM, Laszlo Ersek wrote:
-> On 12/07/18 17:51, Philippe Mathieu-Daudé wrote:
->> SMBIOS is just another firmware used by some QEMU models.
->> We will later introduce more firmwares in this namespace.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  MAINTAINERS                              | 2 +-
->>  hw/arm/virt.c                            | 2 +-
->>  hw/i386/pc.c                             | 2 +-
->>  hw/i386/pc_piix.c                        | 2 +-
->>  hw/i386/pc_q35.c                         | 2 +-
->>  hw/smbios/smbios-stub.c                  | 2 +-
->>  hw/smbios/smbios.c                       | 2 +-
->>  hw/smbios/smbios_type_38.c               | 2 +-
->>  include/hw/{smbios => firmware}/smbios.h | 0
->>  tests/bios-tables-test.c                 | 2 +-
->>  vl.c                                     | 2 +-
->>  11 files changed, 10 insertions(+), 10 deletions(-)
->>  rename include/hw/{smbios => firmware}/smbios.h (100%)
+On Thu, Dec 06, 2018 at 07:26:00PM +0800, Peng Hao wrote:
+> Add mmio mode as a pci device support info in docs/specs/pvpanic.txt.
 > 
-> (1) Please replace the word "namespace" in the subject, and in the
-> commit message too, with "subdirectory".
+> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+> ---
+>  docs/specs/pvpanic.txt | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
 > 
-> (2) Please replace "firmware" -- both instances -- in the commit message
-> with "firmware interface", or perhaps "firmware specification".
+> diff --git a/docs/specs/pvpanic.txt b/docs/specs/pvpanic.txt
+> index c7bbacc..6d62d72 100644
+> --- a/docs/specs/pvpanic.txt
+> +++ b/docs/specs/pvpanic.txt
+> @@ -1,7 +1,7 @@
+>  PVPANIC DEVICE
+>  ==============
+>  
+> -pvpanic device is a simulated ISA device, through which a guest panic
+> +pvpanic device is a simulated device, through which a guest panic
+>  event is sent to qemu, and a QMP event is generated. This allows
+>  management apps (e.g. libvirt) to be notified and respond to the event.
+>  
+> @@ -9,6 +9,10 @@ The management app has the option of waiting for GUEST_PANICKED events,
+>  and/or polling for guest-panicked RunState, to learn when the pvpanic
+>  device has fired a panic event.
+>  
+> +The pvpanic device can be implemented as an ISA device (using IOPORT),
+> +or, since qemu 4.0, as a PCI device (using MMIO address space of pci
+> +device).
 
-I'll go with "firmware interface", because I'd like to eventually put
-here helpers for firmwares with no public specification.
+I'd drop the part in (). Just end with 'as a PCI device.' The MMIO stuff
+is described below in the "PCI Interface" section.
 
-> With the updates:
+> +
+>  ISA Interface
+>  -------------
+>  
+> @@ -19,6 +23,13 @@ Software should set only bits both itself and the device recognize.
+>  Currently, only bit 0 is recognized, setting it indicates a guest panic
+>  has happened.
+>  
+> +PCI Interface
+> +-------------
+> +
+> +The PCI interface is similar to the ISA interface except that it uses
+> +MMIO.
+
+uses an MMIO address space provided by its BAR0.
+
+Should describe that the MMIO address is two bytes in size here as well.
+
+
+> For example, the arm virt machine could enable pvpanic-pci device 
+> +according to adding "-device pvpanic-pci" in qemu command.
+
+For example, the arm virt machine may enable a pvpanic device by
+adding '-device pvpanic-pci' to the command line.
+
+> +
+>  ACPI Interface
+>  --------------
+>  
+> -- 
+> 1.8.3.1
 > 
-> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-> 
-> Thanks,
-> Laszlo
+>
+
+Thanks,
+drew 

@@ -1,98 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3964450wrt;
-        Mon, 10 Dec 2018 11:16:00 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UWjAUrHwu95RPHwGPfkbIfs8ssAruxgUYedQfWRgkZ0qED46tpVaklxBWQMjeFZhKObSRa
-X-Received: by 2002:a0c:f584:: with SMTP id k4mr12874286qvm.22.1544469360450;
-        Mon, 10 Dec 2018 11:16:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544469360; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4041766wrt;
+        Mon, 10 Dec 2018 12:42:04 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XMLzm10kWEND3zdlusMsvhXZ4fBUe9djNzsyfWB9T88JX30hOm9qW4kLKvMNBdWvU5QhKZ
+X-Received: by 2002:a37:b084:: with SMTP id z126mr11929419qke.154.1544474524326;
+        Mon, 10 Dec 2018 12:42:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544474524; cv=none;
         d=google.com; s=arc-20160816;
-        b=VbrN4kh5sC5dKUU4m1J6j6Oc9GqtntoxF+aq3FMF49oBrX6biWMxYH7I9llTx4E4XC
-         o2PxBgwkGvuMxgUMMqejqKVxSy9C5KZY4JBr61IYt5pGIGx1OwPDMiR1mbr1hbrs/Nqn
-         8yGa4P557AlCfkSZYUqWD8Eh1mYvJ6uqdVfxELAK7wTu3os7tPWsmMhCHv2Math/Rwy9
-         Jn3Yt0f1+XykXXjORz6Sh20SG5e7RV7IXhjsJI9yN5Rj443MoCB7KYPAdfQtqCo/9cL1
-         CXWpbqh264B76eJMAUN2eoZRZLo1XfkUJFMKhfF8Cw/XvynVFDpYONxqTRuWy2b0tlsL
-         SMIw==
+        b=T4kxu4Iu8BEl1MSZj/SPH1DN/inISAoCbZvEECSe9OSw1QoUefPVzRhJAHX2BmlvKK
+         5E0kSiwaKcNxrEWQzGIxlLnLLV5z4bqoHwy5DzjGa4MSMbh4UtOajDvdmM4rPNK9Xb5F
+         h2G3/0WhpuJfGEB7JcBD0PGZAR0QiQS3u+ZlQUJBV4RoulVLtzJ2NL64Pzh8h3GPdt8P
+         ch0VM309IPj29kWukzVYXOgoLDFUdTXBHz3C6O/r0oV8FoXtK1OsTsZurxwzd3p0ZFxl
+         2DOBMVohapPvrqjD/oDUgaiOtuc3kJC/vlyFlFfYPRuF1Q95qKEyywCJSD9fGZH7/g36
+         dWaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :to:mime-version:message-id:date:dkim-signature;
-        bh=lp/KENKFFCC/rqnoR8Xaly4s8R3sc0KgvNOEMya9J8c=;
-        b=tcNyc4qNqoCtgIRM7omCIwKJ5tqRBpuPCZbLWJtJEH2KocPzaBOO9QFRpZF6p/Aqar
-         LTk+814y12/JusjYZ0sf2JMYC02BnBnNezZkKWBAEmjWLjbwhLGlSLztBCW7kKZW2lhC
-         5Qi4jfKU84GKz1TgCXNmrz+pXaiVXZFq7oH05MoguWMTjzrn4z+j0fG/2fbe9F8X0uqX
-         czI6uvKAUOY7udr7krK7eUXkDCm6I/DOv64su1rn3jMHo1yGn2wB7iEHdKB1b0bToMv4
-         zgOtJ1pIe3t+tMCLH7Hooo//uUafviftNAk69NfAzUydh+o9RIniJEoEXfRxtOWSPevy
-         Of3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=OeXDjEtNYwcO6MkEEYQUYaiC4hT5Henhwn0M15F7zYo=;
+        b=RZKbbFFMxp+BBioLLudd8A9p1UZTy3ZdTfsgwR4HUAK91zxnatmw9XwETEo77agJaX
+         hGAF3KxnHl4YMa2R3wbDlZlZJWZPO2zYkqy63yGp58MX01SW8UDI7tLjZUkd/2hUmW/E
+         1sUowaQBMG48FZwuD8O1tM37D591cUnL8QLexFKA5qdPEyW0hqea/bW2oU/tFz8ver0W
+         G4/Kys13uP1S/zLFHXX3KiIheneBI82rKVkNUTxmM5N9F/Y6I1p9z9K7A2F+5M+Zu9TQ
+         utn4j566TJtzbdPJ0C7aDUbfhorRk/hrJhFsHtyqWoThEM0HB0jUi3XzBfI1DtIKQUL6
+         aiqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=E6fpyJG1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=SnGc85et;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 1si7103838qvo.44.2018.12.10.11.16.00
+        by mx.google.com with ESMTPS id n33si1634505qta.256.2018.12.10.12.42.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Dec 2018 11:16:00 -0800 (PST)
+        Mon, 10 Dec 2018 12:42:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=E6fpyJG1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34422 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=SnGc85et;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34690 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWR27-0001Ra-VT
-	for alex.bennee@linaro.org; Mon, 10 Dec 2018 14:16:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37321)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from
-	<3uLIOXAcKCD8rxboepshpphmf.dpnrfnv-bsnopohov.psh@flex--qwandor.bounces.google.com>)
-	id 1gWQcP-0002cn-Bm
-	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 13:49:27 -0500
+	id 1gWSNP-0005Lw-KC
+	for alex.bennee@linaro.org; Mon, 10 Dec 2018 15:42:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37955)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gWSNC-0005Ig-5K
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 15:41:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from
-	<3uLIOXAcKCD8rxboepshpphmf.dpnrfnv-bsnopohov.psh@flex--qwandor.bounces.google.com>)
-	id 1gWQSF-0002Tj-FZ
-	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 13:38:57 -0500
-Received: from mail-yw1-xc4a.google.com ([2607:f8b0:4864:20::c4a]:33895)
+	(envelope-from <peter.maydell@linaro.org>) id 1gWSNB-0005xz-Gg
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 15:41:50 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:43516)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from
-	<3uLIOXAcKCD8rxboepshpphmf.dpnrfnv-bsnopohov.psh@flex--qwandor.bounces.google.com>)
-	id 1gWQSD-0002Rf-P1
-	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 13:38:54 -0500
-Received: by mail-yw1-xc4a.google.com with SMTP id v7so7277903ywv.1
-	for <qemu-arm@nongnu.org>; Mon, 10 Dec 2018 10:38:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
-	h=date:message-id:mime-version:subject:from:to:cc;
-	bh=lp/KENKFFCC/rqnoR8Xaly4s8R3sc0KgvNOEMya9J8c=;
-	b=E6fpyJG1eje67eJQxisqk3avld5gNDEGTIG9EvYIVL+teo9TYaaHBVip+hVpBUliwn
-	VHobyiWwV9UMfZuLzjAnUiZV8Je2RMdzURU/QF1/iovYcfeWi+cO0a9asrkyiNcvpUld
-	kYqKb7QTSHoGK9OMsQQdnx+ykL41GqQ3XEZXFqfpBnuO0Cg4SIo39Gh7phPSMbK+N8tc
-	SesgykbEPfxcy9hINrBg409sm5AB8wbiWZRjGVxrT8+AK700Hfr4sbzw0e5hxrTdRG4S
-	i7LMiD3pZS41S9n0SpXlgLD/YATyM1orVF/I+O1LnBjjfKQJ1/r2hLMy6BsB1LtI/NKy
-	S+dA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gWSNB-0005vb-8k
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 15:41:49 -0500
+Received: by mail-ot1-x342.google.com with SMTP id a11so11785719otr.10
+	for <qemu-arm@nongnu.org>; Mon, 10 Dec 2018 12:41:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=OeXDjEtNYwcO6MkEEYQUYaiC4hT5Henhwn0M15F7zYo=;
+	b=SnGc85etrssrRmRNt9WIx5vLEqugT7LTaOnymAV3KXDo1+h+9mR6ZMoa/TACdhe1q+
+	i8M5u8swJAPW1FMsj0AGGGlp1U+xqEvPMzwFqZT+BSPxstAHgsrK0O1wHEwzBMBbwsZx
+	RwGXlQypmKC1RGoVpTrc3qEi8ovWErhEnRZkA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
-	bh=lp/KENKFFCC/rqnoR8Xaly4s8R3sc0KgvNOEMya9J8c=;
-	b=lQKoT+E8Q3j0wTixO4fcJN0iw0YCS5QE0iqR7Mk7M9o58CqoXXyhNg7JVD/GI/P80H
-	pwjm2D0E1euK/+Bl3nr8buf0BfEPIhuR/tpPx3cHmWAY0e8c3EhZY2Lgn7xVU1huxPm5
-	yRupHD3SeQfphpupzUzINBASQUA8sUdxNg5jCFntUS5JOwEUpz5DHVmH1ejmRxNBwy2X
-	8+on4LChp3jyvW4e6eqPr9/hmyMxZASV7UOWhN6A4l4mbeSWjSPCOTZxDxNNBLEprcPJ
-	HOKGvdz0Z+CQFD8/KlzsvRQwjJj1qQPa8w9rIdf0Mj41lW8YTyG1Q82e4W7XLhKRUDaQ
-	vY2g==
-X-Gm-Message-State: AA+aEWY0vdtXT3H9MFv76Al+r19XjHBYBtKtPyzhu3ik6SC5ioQP+5Ic
-	9QuZBzJ5oe6p9UBEzLSKdGLjYBAPgZWggG+2d2wIq030/gTcZSnXjZajznoKEXkMyD/3/uZzYoe
-	qpMsH4kz1wS0VCRQfWMBIXwumJ9yIomrDYsDcrose744Oa1oad2CWscIi539x
-X-Received: by 2002:a81:4901:: with SMTP id w1mr8100323ywa.4.1544467128266;
-	Mon, 10 Dec 2018 10:38:48 -0800 (PST)
-Date: Mon, 10 Dec 2018 18:38:36 +0000
-Message-Id: <20181210183836.20074-1-qwandor@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.20.0.rc2.403.gdbc3b29805-goog
-To: qemu-arm@nongnu.org
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=OeXDjEtNYwcO6MkEEYQUYaiC4hT5Henhwn0M15F7zYo=;
+	b=YC6SKVJ2827DCXfwDcqn0aZXHkxIYtzclXaJpajAI1CTSlVhXBgVp5/GocxDo8J9jT
+	Lorf6VWNGhanOQ+j1nBZHASNo0c6JHsbStbhUkBgMaDfyYRUJ+Nmq2CBKKY0dnSCHc+D
+	EJVPznki94+9aYaEhXoNWLW2dVNhFxDh9kODTsAlNBiSxyr9qzoImdtvkXUV/+CSEU/7
+	UqH30HlJcKHf9xFT9SHNkVEpQXavqNiQTAmQjVYSWFTDbihxyVbFvJifQNE0bCtSAaeU
+	HoMdS4rD/FdiNKKQe/bCaFzXs/ndyQIdtXhvW7zIrzfNQQzaFa5H60LdeNj3eTlDmdWj
+	qtSg==
+X-Gm-Message-State: AA+aEWZ2Ufiqjc/G4OA3y6lGk1MKrNI+KXrGuQxIzgZBWzBwpj+hdk3d
+	RCNMilQ5ccv+7pwDsgS2YWRTHz/TZttvJRxrZXKEeA==
+X-Received: by 2002:a9d:3786:: with SMTP id x6mr9797216otb.238.1544474503994; 
+	Mon, 10 Dec 2018 12:41:43 -0800 (PST)
+MIME-Version: 1.0
+References: <20181210183836.20074-1-qwandor@google.com>
+In-Reply-To: <20181210183836.20074-1-qwandor@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Dec 2018 20:41:32 +0000
+Message-ID: <CAFEAcA9kXXeRkFamN73XREDp4QaokMs3E9TRLThKf4zYufapSQ@mail.gmail.com>
+To: qwandor@google.com
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::c4a
-X-Mailman-Approved-At: Mon, 10 Dec 2018 14:15:46 -0500
-Subject: [Qemu-arm] [PATCH] target/arm: Implement VI/VF bits
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-arm] [PATCH] target/arm: Implement VI/VF bits
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,78 +100,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-From: Andrew Walbran via Qemu-arm <qemu-arm@nongnu.org>
-Reply-To: Andrew Walbran <qwandor@google.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Wedson Almeida Filho <wedsonaf@google.com>,
-	"open list:All patches CC here" <qemu-devel@nongnu.org>,
-	Andrew Walbran <qwandor@google.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, wedsonaf@google.com,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 70UfgW0OQPBb
+X-TUID: BrUY2UxyPsFZ
 
-From: Wedson Almeida Filho <wedsonaf@google.com>
+On Mon, 10 Dec 2018 at 18:38, Andrew Walbran <qwandor@google.com> wrote:
+>
+> From: Wedson Almeida Filho <wedsonaf@google.com>
+>
+> This lets hypervisors running at EL2 inject virtual interrupts into guest VMs.
+>
+> Signed-off-by: Wedson Almeida Filho <wedsonaf@google.com>
+> Signed-off-by: Andrew Walbran <qwandor@google.com>
 
-This lets hypervisors running at EL2 inject virtual interrupts into guest VMs.
+Hi; thanks for this patch. I'm a bit confused -- can you
+explain what the patch provides that isn't already
+implemented by commit 89430fc6f80a5aef1d4cb ?
 
-Signed-off-by: Wedson Almeida Filho <wedsonaf@google.com>
-Signed-off-by: Andrew Walbran <qwandor@google.com>
----
- target/arm/op_helper.c | 41 ++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 38 insertions(+), 3 deletions(-)
-
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 0d6e89e474..abd29b22c1 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -1098,9 +1098,44 @@ void HELPER(exception_return)(CPUARMState *env)
-         goto illegal_return;
-     }
- 
--    if (new_el == 1 && (env->cp15.hcr_el2 & HCR_TGE)
--        && !arm_is_secure_below_el3(env)) {
--        goto illegal_return;
-+    if (new_el == 1) {
-+        uint64_t hcr = env->cp15.hcr_el2;
-+        bool is_secure = arm_is_secure_below_el3(env);
-+        bool irq = false, fiq = false;
-+        CPUState *cpu = CPU(arm_env_get_cpu(env));
-+
-+        if ((hcr & HCR_TGE) && !is_secure) {
-+            goto illegal_return;
-+        }
-+
-+        /* The VI and VF fields of HCR_EL2 include the following note: In an
-+         * implementation that includes EL3, when the value of SCR_EL3.NS
-+         * is 0 the PE behaves as if this field is 0 for all purposes other
-+         * than a direct read or write access of HCR_EL2.
-+         *
-+         * So we only check them if not in secure mode. Additionally, both also
-+         * have the following note: The virtual IRQ/FIQ is enabled only when
-+         * the value of HCR_EL2.{TGE, IMO/FMO} is {0, 1}.
-+         */
-+        if (!is_secure) {
-+            if ((hcr & (HCR_VI | HCR_TGE | HCR_IMO)) == (HCR_VI | HCR_IMO))
-+                irq = true;
-+
-+            if ((hcr & (HCR_VF | HCR_TGE | HCR_FMO)) == (HCR_VF | HCR_FMO))
-+                fiq = true;
-+        }
-+
-+        qemu_mutex_lock_iothread();
-+        if (irq)
-+            cpu_interrupt(cpu, CPU_INTERRUPT_VIRQ);
-+        else
-+            cpu_reset_interrupt(cpu, CPU_INTERRUPT_VIRQ);
-+
-+        if (fiq)
-+            cpu_interrupt(cpu, CPU_INTERRUPT_VFIQ);
-+        else
-+            cpu_reset_interrupt(cpu, CPU_INTERRUPT_VFIQ);
-+        qemu_mutex_unlock_iothread();
-     }
- 
-     qemu_mutex_lock_iothread();
--- 
-2.20.0.rc2.403.gdbc3b29805-goog
-
+thanks
+-- PMM

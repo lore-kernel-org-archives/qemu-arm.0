@@ -1,144 +1,159 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2938488wrt;
-        Sun, 9 Dec 2018 13:59:08 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UB0aTWuokahuh0oVxSYaZiCKu7/tp36iPqk0txRt5jYvK9XENepKLco3XoA4UQALWwH91x
-X-Received: by 2002:aed:39e8:: with SMTP id m95mr9710571qte.317.1544392748797;
-        Sun, 09 Dec 2018 13:59:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544392748; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3373800wrt;
+        Mon, 10 Dec 2018 01:15:23 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/V93GToudVmpND21JAgMl4/v+0NMjI+I9DkPkklshDA8Bra823cPaxYfG4GRAKEe2j06nh5
+X-Received: by 2002:a37:3692:: with SMTP id d140mr9958262qka.108.1544433323363;
+        Mon, 10 Dec 2018 01:15:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544433323; cv=none;
         d=google.com; s=arc-20160816;
-        b=lS7uLqm/slE0tx5rRXqPkpAh1xHRK6jKvRtbYiHLV0S+irDbBtK3tOJKuoKPk9ylXY
-         1YDiDpWlkb5qJtSW4MT9YWHj4lT1utS6coFHP8MnZOkHkvhqRlFXTlzVcihCM7iEXQp+
-         V9yxvBdT55MO2521iKwxxEUb2UmInFhv7RImhVmuq4Scd3hoAoXlnd/NE8LTqtNjLfDf
-         BwLN/uUoJGjMRDYg51gMH26bwg5LuyDvyHL+BmTfYIs410deugMvDIvjO8sgXrCRJ4/d
-         RRzQuzScPTHw4T8Nb4BZ4iK5mareYsbfNAe3aZVZNXkdNaWHdlcGRPDsUWRiSx9BrimO
-         oWcg==
+        b=eDsQhdyFtF00jeB319A/Kmq58d3i4mh7By2/r3AMauQiqwNDsXV5CqKaCBN+A9k9Ob
+         mQe5669sCeZvAZH2YcAo6I4mhvIuk7HtZohxrm3AjbXDK2r3lRG5crZ9wOaBbOx/pg6Y
+         rqOlBFUXXi/wcR/K9MvVsKsQQ9DnFr6jHXA3mBUZ2Z5ClLKz7+2WUVmrLBV5z7WQ+OvY
+         mmNcrWlqmJT9+dJMx+WXEwDcqWDJhR/l5tKcloLESamh8daGvyAjJaelWMCa2eSkk4uT
+         9A6rQTwNcX7BUB73egcnAJXtMFwmrF+qKQhWUAEky5rWXs9K3DPA85n1XhlN1F68p8Fo
+         ZnuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3/VL+D3rbcnw8ao7JCQRE/o8i6thNM6sGIf5B1zmHBM=;
-        b=jJh5+ggK8TY9IdRaUf2lW8VaeaEWKkpolm22VNsDdtMm8Rz3btYa4HYToHC1CL5kKX
-         pZDfJuUm4EIDxQxBsI6mGT8f3kfgHtWXQiH/4SuJqLZj0tLCcw7cJSiPQUu4NX1pSm+2
-         Z+qBnKZHAgRbh3rm/Ub0DEfjYf8hV/XrEaPe3sGkVf8ifYUjdRmH/A91dg7Wh27kTAS7
-         RaFRHSt+EIPdVd1ws7GSCPSnJra/PLc6s3BJvqUVfW0WF07XD18r9TY1GcCaK5f/zfQT
-         HspN8aJAPWyE3GaMMx0yvGzP4oMtXHhtGNWHlLoGtOSJpB6lepoSgfwQUU15q4dzoNW4
-         TgTQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=nOPGsPuATkJMceNTW+9LX4hWQmJvEuYJBKx5Vzp8pBU=;
+        b=pib68SGEQchmA1n0OcbGvRycqJ+oJt9zT2zkh7h1mMCa3YqTu6pl/GX+hBlhXjuprm
+         aUEbWxbIWFtqBSgSMz2DhBGuEqZ5QDrhGZtP52igKcyWii5yyrZ1Voc5SSMl5XdElmRT
+         9nhmc5FkCR0cE7nivj7p4UK+A8Wbiw9MXJx5f28Z/9yBdFdbfWM3jrimeGNDvP89BeUa
+         Vop8JiveKZ0dnC7Q63JOKn8CRkwBsp9x8sruQPwF5Qw8jPwPapgwSfw900Z1vyaVRPjL
+         W6u6DvZzyJolguP3UaOJ+BQPTo+M59WyW+vqz35Tp9cjlUVWg7zohyJvNu2vumDQSufb
+         evYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TGPezSlb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j13si817151qvl.174.2018.12.09.13.59.08
+        by mx.google.com with ESMTPS id y78si6302005qkb.169.2018.12.10.01.15.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 09 Dec 2018 13:59:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 10 Dec 2018 01:15:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TGPezSlb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56923 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59833 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gW76S-0002Hn-Au
-	for alex.bennee@linaro.org; Sun, 09 Dec 2018 16:59:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39167)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gWHes-0000b0-3J
+	for alex.bennee@linaro.org; Mon, 10 Dec 2018 04:15:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gW76J-0002Ha-E6
-	for qemu-arm@nongnu.org; Sun, 09 Dec 2018 16:59:00 -0500
+	(envelope-from <philmd@redhat.com>) id 1gWHdh-0000Gd-Kq
+	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 04:14:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gW76I-0002Td-Nd
-	for qemu-arm@nongnu.org; Sun, 09 Dec 2018 16:58:59 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38056)
+	(envelope-from <philmd@redhat.com>) id 1gWHde-0008LX-Tt
+	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 04:14:09 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:42189)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gW76I-0002TA-Gt
-	for qemu-arm@nongnu.org; Sun, 09 Dec 2018 16:58:58 -0500
-Received: by mail-ot1-x343.google.com with SMTP id e12so8643880otl.5
-	for <qemu-arm@nongnu.org>; Sun, 09 Dec 2018 13:58:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=3/VL+D3rbcnw8ao7JCQRE/o8i6thNM6sGIf5B1zmHBM=;
-	b=TGPezSlblolpmc6frtjxvQIYYvVJPCqW5TvK7iTXSqv0RQMXOYs+DCaqQ1sjidBtp+
-	fX7sI3jmzEpgD/QCk5nqd1scWSv2UbXP29aU8OO/zKwG8Cs+RrBre70Nk0okfA/RnU0y
-	cZGnoY0UnD+N22RSGe7dEDZdG/PstAuegDFIw=
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gWHde-0008Ja-JR
+	for qemu-devel@nongnu.org; Mon, 10 Dec 2018 04:14:06 -0500
+Received: by mail-wr1-f66.google.com with SMTP id q18so9611339wrx.9
+	for <qemu-devel@nongnu.org>; Mon, 10 Dec 2018 01:14:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=3/VL+D3rbcnw8ao7JCQRE/o8i6thNM6sGIf5B1zmHBM=;
-	b=p4+1fiYeNGyBHtJiFw5aeCkuo0YKWcHzE5U7slICmspEWbzuNXDJ9uiqFxcjqSwQJn
-	m7aTuL8V+wSVhG0hYL1wAGt8k4EE7058HVLE3zH9c/7+WItVif4n9sdHXWFpoDVjJzAQ
-	kpTctoqY0gymMH1hPsuu182pLu2eNn4pozISg89JqWgh5KuoyI5Ywo0yGaRXi21EFiJM
-	zep6KrGRYRnHjwevw1z6QzxytuWshu+hyZKUPp3Sw3ZJruar5F0oRLS9hkAUNJAHZj6+
-	lMU50wSo2f/MRJeHNR5YjHS54YVBBed/EhVzZbIKXYkNBGybZjWcrGKIaPT4/f5LbJD+
-	BaTw==
-X-Gm-Message-State: AA+aEWbxjTaVF0vPrDazsjClMKrtxyFjnXvq8EFo8Zp0XtK9IcCuGOHn
-	lW6HX0b42udWHNQDENiueRpwMWvDeBXImc7WI/b6Ww==
-X-Received: by 2002:a05:6830:1115:: with SMTP id
-	w21mr6858796otq.316.1544392737558; 
-	Sun, 09 Dec 2018 13:58:57 -0800 (PST)
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=nOPGsPuATkJMceNTW+9LX4hWQmJvEuYJBKx5Vzp8pBU=;
+	b=kZadcVB2zHlIitl+9+VmQ1WLSUD4eG/Gc34WsusabAnCigwKCi6gGiSQALYYOo36wk
+	iiyYx99F4bABgc3FRuxod7jg7gwbrZ8vgjp6t5q+SOzfyEWbT/Op7sHZd+uwBzoqrX6P
+	64dsYE9s3v+KoqT68x9fvPJqkx3ew1lQyAj/MHrIpvC+dL5otTYvfTnATNVUbyJkFE4b
+	d08nM695dfbzXbP08ce9wER7bev2oEXI/aChC5SU7Fm5VzS6IrRbR1MyEb74p+0cXJZH
+	LVQmKggO9MdTP+CnNWWvGctVNaJI1rXzElPFh2k6X+fWQxc468Qu+9lGgqBOiqk6yh3+
+	I8QQ==
+X-Gm-Message-State: AA+aEWakiOlwuvBfLvB7Wq61Q3xRdkTmNmkysjiEYpEbMMbfjw4yy01M
+	3RVkDH+qvuHlUUvrS0whvMGczg==
+X-Received: by 2002:adf:e34b:: with SMTP id n11mr8510412wrj.91.1544433243258; 
+	Mon, 10 Dec 2018 01:14:03 -0800 (PST)
+Received: from [192.168.1.34] (172.red-88-21-202.staticip.rima-tde.net.
+	[88.21.202.172]) by smtp.gmail.com with ESMTPSA id
+	o82sm18196652wmo.29.2018.12.10.01.14.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 10 Dec 2018 01:14:02 -0800 (PST)
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <20181207170400.5129-1-philmd@redhat.com>
+	<20181207170400.5129-3-philmd@redhat.com>
+	<20181207125716-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <5137aa75-6ca3-8779-1320-8e46bacefb7d@redhat.com>
+Date: Mon, 10 Dec 2018 10:14:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-References: <20181205134243.4791-1-aaron@os.amperecomputing.com>
-	<20181205134243.4791-9-aaron@os.amperecomputing.com>
-	<20181205153242.GE5549@quinoa.localdomain>
-	<75ec3369-0f1c-0ea7-1fc5-9e2263f6f86e@linaro.org>
-In-Reply-To: <75ec3369-0f1c-0ea7-1fc5-9e2263f6f86e@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 9 Dec 2018 21:58:46 +0000
-Message-ID: <CAFEAcA9O3BtCSDuiHFEEbX2dbWWvV-oUtmPAhbG-on14oOtfJw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH v9 08/14] target/arm: Make PMCEID[01]_EL0 64
- bit registers, add PMCEID[23]
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20181207125716-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-devel] [PATCH 2/6] hw/arm: Remove unused include
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Aaron Lindsay <aaron@os.amperecomputing.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /jwyF9n6DRrv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S4JWUuO2F1Uo
 
-On Fri, 7 Dec 2018 at 18:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 12/5/18 9:32 AM, Aaron Lindsay wrote:
-> > On Dec 05 08:43, Aaron Lindsay wrote:
-> >> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> >> +    if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4) {
-> >
-> > After further discussion on my last version, this should be
-> >
-> > if (FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) >= 4 &&
-> >       FIELD_EX32(cpu->id_dfr0, ID_DFR0, PERFMON) != 0xf) {
-> >
-> > to guard against defining these registers for implementation-defined
-> > PMUs.
->
-> When id fields define values like 0b1111, that is a hint that the field should
-> be interpreted as signed, and you should still use a >= comparison.  (See
-> D12.1.4, Principles of the ID scheme for fields in ID registers.)
+Hi Michael, Peter.
 
-That section calls out these PMU ID registers as exceptions
-which do not follow the scheme and specifically notes that
-the "not 0xf and greater than or equal to 4" is the kind of
-comparison required here...
+On 12/7/18 6:57 PM, Michael S. Tsirkin wrote:
+> On Fri, Dec 07, 2018 at 06:03:56PM +0100, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/arm/virt-acpi-build.c | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 5785fb697c..98d7f7cf20 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -35,7 +35,6 @@
+>>  #include "target/arm/cpu.h"
+>>  #include "hw/acpi/acpi-defs.h"
+>>  #include "hw/acpi/acpi.h"
+>> -#include "hw/nvram/fw_cfg.h"
+>>  #include "hw/acpi/bios-linker-loader.h"
+>>  #include "hw/loader.h"
+>>  #include "hw/hw.h"
+> 
+> 
+> This file uses fw_cfg_add_file, looks wrong.
 
-thanks
--- PMM
+Previously I thought if another include (here hw/loader.h) already pulls
+this header, we can drop it, but Peter Maydell explained me this not
+safe for refactors:
+
+  Generally I think that if a .c file directly uses function X declared
+  in header Y it should #include Y, even if it happens that it already
+  includes other header Z that includes Y. Otherwise if we refactor Z
+  later such that it no longer needs to include Y, it will break
+  compilation of the .c file. (That is, Z including Y is a detail of
+  the implementation of Z, not a guarantee made by Z to its users.)
+
+https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02460.html
+
+I'm sorry I forgot to update this in the series :/
+
+Regards,
+
+Phil.

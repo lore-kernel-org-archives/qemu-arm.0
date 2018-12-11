@@ -1,230 +1,320 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp503893wrt;
-        Tue, 11 Dec 2018 04:07:57 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XnTMVUYGsvVdE/7yzJQQ7XZNo0f3Ce9aK68jIgXs9nsSJxjpsi60DbKq9A6OVLbR85RB6G
-X-Received: by 2002:aed:31a3:: with SMTP id 32mr15956683qth.234.1544530077869;
-        Tue, 11 Dec 2018 04:07:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544530077; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp523146wrt;
+        Tue, 11 Dec 2018 04:27:41 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Wd2vDMdNOiGS0skxfbYCSrmSs0p5Cd8b8afVxCt5s26Nd1UGZFX6qz9JUbPgch0SRr3GSn
+X-Received: by 2002:ac8:748:: with SMTP id k8mr15661691qth.235.1544531261885;
+        Tue, 11 Dec 2018 04:27:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544531261; cv=none;
         d=google.com; s=arc-20160816;
-        b=kgoc2Hy+P1QkjJdQy0xaa90erNw2TqgS6pXxPsdLBnLjGMlWl3JUArvn65kTq3IxXL
-         tIfhJ07FrP/Eja3x7Pk93SNP2LIUAuqptlj+c1SSj7wtif2E8A9FovfQUsi0AV7w5g3B
-         PzOu8dydgLCOjDFBTLG25AzFdiFRUTS/LvZIbr1CaukztaMk4BLWtKhYljYX85rpbO1B
-         tEjZCKdp0bMjZ9Uaj9DbzTSLAGUBEO0NQkE1v2Miwn3PYphrVZEySJ010lCjgJjSJQnr
-         vDahpoCSELXkoBZHAaQFBPRvczMO+B+ZdwuJY/BKMTIgLsUw8ymUeC5NjuS/wtm7ky8o
-         Dq5Q==
+        b=wFvqLkrBl27Ov2HFOqfDcdjfvHno1fWokxY3u6/zGEB/TkIT15YD2bJcgmfbRyS6O7
+         VBFv5thYoYr+QVWfyfyG/tP2Db2+fB50OPjct0hfowGSBXytjLPMxhfrwS8KswogqF1r
+         GBCFv2ejGu1cBinTHiZRTRxb/rwl0J3728b8YsxMMHbbLBVrDjOsFJXpETOr5x61skRp
+         KVPHoSOOpe/rPSSMdbjlJkqeNfeyJ/hyWgerSct0H6oi9Vo3eYJ/IN6vjIDpgn0hg6AI
+         Mn5KFLMOvCGaIsmKMBcAqDT1NE1siqlSJTFdf6T9N1BwG42IeoNGJlAwyo6FBg0yjxqS
+         EaQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=UtLjTnfeqiC4QrleR+jh7G5b5Mwj6iUNW8fYMQ6UOvE=;
-        b=N128x5SHubsfKYvLKV9dZBW4vxCA20Jgq4TbaEgqgCwI2rUaDLbC1ok06/1Vu2BHL1
-         eNtKHpUJZZ3jjp4eZU0cJGNpfjwzqafW7ZaygqVaEIaLPTE4e3FwTcb55m9Z5yvgu0n8
-         sjZhnOI6Iil9+MY5eL4THs/9bnPYWmKxyVcCwVLquMM0h3BKwYJo3GdZ+BGgrY6YZP8v
-         33/elNV7IW2CWwLig8YKKom2AGsK67cZMU7rjPS7e52OZgs/hNp4key/7ojgxKBmczIK
-         WbDz/IjadZrJ/VchcHytpogiuknHq2vfrneIfiRcDpsbY7EROukUyVSeJ2h5nXjxRNkr
-         h5fQ==
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :content-transfer-encoding:mime-version:user-agent:date:message-id
+         :to:from:dkim-signature;
+        bh=d3J125H17xpWctfhnZswfebtNELQOmfbKciDFJ9YTk4=;
+        b=hmy/bFJCrnPY9oc9MZHpW0qyKlO4bVLKwnpycO2mCgfRZbqiOnJBKKjcqyAKO/Ntv3
+         HfcKFIIKl9bWyuN07o9BDJ3uktQxeeX4Wx9hV/hEOihq2hwPHZXyChZnbNzt5xw9PNc0
+         2KfBO9dpEOSVbCyQEIC+SxWjwz7bo9aIXYtQ6a2EhYy3r9WMqgJYmI4R51vO+rQJxRjb
+         g5tsEyteKlheco4/GQHwLn4ZlgG8I7LIBcTG4zmUFtu3MuSgyEe1TUSfjezTZQqU91/N
+         keKam1ZpsMOrjXdlZ23ESf1GaS0zr34x0OqNA9t3MPqRMmq7V7XstxMc1WcYJFxcQP6N
+         qRgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mb1p3X11;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=th9vsMIv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g1si4318845qtr.315.2018.12.11.04.07.57
+        by mx.google.com with ESMTPS id j35si2122152qtc.137.2018.12.11.04.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Dec 2018 04:07:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 11 Dec 2018 04:27:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mb1p3X11;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=th9vsMIv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37679 helo=lists.gnu.org)
+Received: from localhost ([::1]:37754 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWgpR-0005dX-DN
-	for alex.bennee@linaro.org; Tue, 11 Dec 2018 07:07:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52565)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gWh8X-0005Bv-Ci
+	for alex.bennee@linaro.org; Tue, 11 Dec 2018 07:27:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1gWgp7-0005ad-AT
-	for qemu-devel@nongnu.org; Tue, 11 Dec 2018 07:07:43 -0500
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gWh8O-0005BA-7C
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 07:27:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1gWgp6-0006mT-Bq
-	for qemu-devel@nongnu.org; Tue, 11 Dec 2018 07:07:37 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38620)
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gWh8M-00059S-2q
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 07:27:31 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35821)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1gWgp4-0006jN-74; Tue, 11 Dec 2018 07:07:34 -0500
-Received: by mail-wm1-x344.google.com with SMTP id m22so1996337wml.3;
-	Tue, 11 Dec 2018 04:07:32 -0800 (PST)
+	(Exim 4.71) (envelope-from <nicholas.a.hudson@gmail.com>)
+	id 1gWh8L-00055j-M0; Tue, 11 Dec 2018 07:27:30 -0500
+Received: by mail-wm1-x341.google.com with SMTP id c126so2055980wmh.0;
+	Tue, 11 Dec 2018 04:27:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=UtLjTnfeqiC4QrleR+jh7G5b5Mwj6iUNW8fYMQ6UOvE=;
-	b=mb1p3X11lFfU/ShAordGg0VsDHxoTfmmtdNZqNUKYGLll+QdBGoU4oNhEm6ygLD173
-	MPi2whu23Q1Bxr5Oaz4Zx0NaG/j8qTNjkVjhf2Frp5bwH8Au3xuc4zSQ/dTFfJai/tvZ
-	ez0GFVkbtSIJBImxbSWqPxGSmx1IPNN40aM4tBVyTa77IwxatJ48vjUYY/b+OLzgRjuU
-	r6qiGMP9kH7J1pYiwEozUhCFct7608UPYn89CiUqw3GLwXYLuRqmuWc3WWbx0pRYa1Ws
-	d/jMJ/NOEBAnTX+4+HweerSCh/25kY74NeQt/VgbSqpwEJOyG7pGg1LBN74bc1UOYsKe
-	erQg==
+	h=from:subject:to:cc:message-id:date:user-agent:mime-version
+	:content-transfer-encoding:content-language;
+	bh=d3J125H17xpWctfhnZswfebtNELQOmfbKciDFJ9YTk4=;
+	b=th9vsMIvLKIzgfQuCU1ZejoXeJioROWwTgjKG3uRESvE5xIwmijA7cc1EBXc/ZO4Xg
+	Io9MgmiTuXE7WBGZ99vH18OImauOLFiOwuNj/uqyfX7RZvVN8ElUTsWGwVhXAjU5kW9x
+	+ygoDo2xTcF+nsFePuIRoMpe2FB+fxWcUAMhwL8/Tx21QzkiEikt9qXqp3nDjGpY4Kkw
+	9WCAfYtnnAdsFZDnsKA8AiJAi9kaJwaa/fIdnfMczmqUq15Djzibe/Uc/VErUQKIdwOY
+	XC0OKVBIyys3wOxvRQ0YHffKbtGwLpINvF9j3cXACcwwqBv/3AJnO37gHm3of3N/ifA5
+	yGEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=UtLjTnfeqiC4QrleR+jh7G5b5Mwj6iUNW8fYMQ6UOvE=;
-	b=j4K1OklRYiNCB07rbsQTmjSqKD4TDMJBocGb6nPy9ItO7Sp822QZn+rhwvlD9CUQmD
-	CEbXfIY88ABZyeHmYZIxRad0MATfqdh/IGxiVaEEu+jJs/3SFlu/CITIVVjQPp03NldJ
-	wcaQ9rT7cKEdBVY2+klUV2KL88dssG5QTDMdK+VyYpZIOKjc+t/m1d1ppPuuga3grGOV
-	iM5mfRYtM5y6VkqU5j0r0WMez/htL19QkArlf32lBqueH09S9ogyHbAdFboKXWX1pT0F
-	DdPwAUdKsOQgpoItuz9cnRIxKKN3kWjhiuepd8AV+b5Gy5rSB/LOVmb9mnjiXarqX9qI
-	36oA==
-X-Gm-Message-State: AA+aEWZUMo3dEgUjvLiYWgMc0ZeVQ9fZvWnmTb7IPkjyaJc1AfVZEAk/
-	mvBB4XTFroUsfkv9eokXAkTp8sjNw2AvYx51H0U=
-X-Received: by 2002:a1c:2902:: with SMTP id p2mr2020713wmp.19.1544530051630;
-	Tue, 11 Dec 2018 04:07:31 -0800 (PST)
+	h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
+	:mime-version:content-transfer-encoding:content-language;
+	bh=d3J125H17xpWctfhnZswfebtNELQOmfbKciDFJ9YTk4=;
+	b=IdVzNy/PcVVuq7nRt5rpqPxU8hAMHaorPhIxZbBV1ES2F99zkNctdQ49ncwfaWconT
+	pm98aelcyTLCja4oSeF1eJcO/C6WSPw3qaCD/Q+745poKOFPjjtMzZJ9yXDu2X02Ffzw
+	RzVbuUXPccKKl3REKgE/wfEWG9efRImdDRHB6qIO4J4o6ji3rxJoDhv5uFTzCYdrmsz3
+	X+yTYrotm6jlWO3eCmji/3bK2coH/3bTwgo8Zsf5+6CO/itRqeKwIceatcvRmWmVH7Yv
+	Zi3FgIqjEuNqOExRbMj0v+KHRqXpJ/xvnSM0P302IqCtfsJ/DX3Ec5ooApIV8rk0ZgEy
+	r7yQ==
+X-Gm-Message-State: AA+aEWaxaMXcTGaGaFEU+ZvjgXK9jyxHMEUBdQuxQMOsbtQi4bUAxC3T
+	MeCkw96A/1LZpOIBtZVn9Qw=
+X-Received: by 2002:a1c:384:: with SMTP id 126mr2179339wmd.26.1544531247033;
+	Tue, 11 Dec 2018 04:27:27 -0800 (PST)
+Received: from ?IPv6:2a02:c7d:860e:5301:c996:71c2:4b1a:1870?
+	([2a02:c7d:860e:5301:c996:71c2:4b1a:1870])
+	by smtp.gmail.com with ESMTPSA id
+	v132sm1651130wme.20.2018.12.11.04.27.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 11 Dec 2018 04:27:26 -0800 (PST)
+From: Nick Hudson <nicholas.a.hudson@gmail.com>
+X-Google-Original-From: Nick Hudson <skrll@netbsd.org>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <975b9131-9937-cfea-3b5d-ef36d0c2b761@gmail.com>
+Date: Tue, 11 Dec 2018 12:27:25 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-References: <20181204142023.15982-1-marcandre.lureau@redhat.com>
-	<20181204142023.15982-9-marcandre.lureau@redhat.com>
-	<20181210173118.GF4669@habkost.net>
-In-Reply-To: <20181210173118.GF4669@habkost.net>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Tue, 11 Dec 2018 16:07:19 +0400
-Message-ID: <CAJ+F1CKcNhLsu=b5ZJbA_6Kyb3_EUt3nzsZ0q+OWpvZS6JyytA@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: Re: [Qemu-devel] [PATCH for-3.2 v5 08/19] hw: apply machine compat
- properties without touching globals
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-arm] [PATCH v3] Support u-boot noload images for arm as used
+ by, NetBSD/evbarm GENERIC kernel.
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, QEMU <qemu-devel@nongnu.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Qemu-s390x list <qemu-s390x@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XBIWG2nM/Q3S
-
-Hi
-
-On Mon, Dec 10, 2018 at 9:31 PM Eduardo Habkost <ehabkost@redhat.com> wrote=
-:
->
-> On Tue, Dec 04, 2018 at 06:20:12PM +0400, Marc-Andr=C3=A9 Lureau wrote:
-> > Similarly to accel properties, move compat properties out of globals
-> > registration, and apply the machine compat properties during
-> > device_post_init().
-> >
-> > As suggested during review, populating the arrays can be done directly
-> > without resorting to using macros.
-> >
-> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> > ---
-> >  include/hw/boards.h        |   3 +-
-> >  hw/arm/virt.c              |  48 ++-
-> >  hw/core/machine.c          |  19 +-
-> >  hw/core/qdev.c             |   2 +
-> >  hw/i386/pc_piix.c          | 588 +++++++++++++++++++++----------------
-> >  hw/i386/pc_q35.c           |  70 ++++-
-> >  hw/ppc/spapr.c             | 209 +++++++------
-> >  hw/s390x/s390-virtio-ccw.c | 220 +++++++-------
-> >  vl.c                       |   1 -
-> >  9 files changed, 673 insertions(+), 487 deletions(-)
-> >
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index f82f28468b..28c2b0af41 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -69,7 +69,6 @@ int machine_kvm_shadow_mem(MachineState *machine);
-> >  int machine_phandle_start(MachineState *machine);
-> >  bool machine_dump_guest_core(MachineState *machine);
-> >  bool machine_mem_merge(MachineState *machine);
-> > -void machine_register_compat_props(MachineState *machine);
-> >  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *mac=
-hine);
-> >  void machine_set_cpu_numa_node(MachineState *machine,
-> >                                 const CpuInstanceProperties *props,
-> > @@ -191,7 +190,7 @@ struct MachineClass {
-> >      const char *default_machine_opts;
-> >      const char *default_boot_order;
-> >      const char *default_display;
-> > -    GArray *compat_props;
-> > +    GPtrArray *compat_props;
-> >      const char *hw_version;
-> >      ram_addr_t default_ram_size;
-> >      const char *default_cpu_type;
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index f69e7eb399..530c8ca89d 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -1872,8 +1872,9 @@ static void virt_machine_3_1_options(MachineClass=
- *mc)
-> >  }
-> >  DEFINE_VIRT_MACHINE_AS_LATEST(3, 1)
-> >
-> > -#define VIRT_COMPAT_3_0 \
-> > +static GlobalProperty virt_compat_3_0[] =3D {
-> >      HW_COMPAT_3_0
-> > +};
-> [...]
->
-> All the changes to compat macros are independent from the change
-> you describe in the patch subject, and makes review more
-> difficult.  What about doing that in a separate patch?
->
-> We can replace all the virt.c, pc_piix.c, pc_q35.c, and spapr.c
-> hunks in this patch with the following:
->
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index f82f28468b..622bbaf939 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -290,18 +289,10 @@ struct MachineState {
->
->  #define SET_MACHINE_COMPAT(m, COMPAT) \
->      do {                              \
-> -        int i;                        \
->          static GlobalProperty props[] =3D {       \
->              COMPAT                              \
-> -            { /* end of list */ }               \
->          };                                      \
-> -        if (!m->compat_props) { \
-> -            m->compat_props =3D g_array_new(false, false, sizeof(void *)=
-); \
-> -        } \
-> -        for (i =3D 0; props[i].driver !=3D NULL; i++) {    \
-> -            GlobalProperty *prop =3D &props[i];          \
-> -            g_array_append_val(m->compat_props, prop); \
-> -        }                                              \
-> +        compat_props_add(m->compat_props, props, G_N_ELEMENTS(props)); \
->      } while (0)
->
->  #endif
->
-
-Didn't you ask in a previous iteration to remove the macros?
-"I like us to be able to
-register compat properties without macro magic.  The existence of
-SET_MACHINE_COMPAT is a bug and not a feature.
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: J6xNt3KNBkEP
 
 
---=20
-Marc-Andr=C3=A9 Lureau
+noload kernels are loaded with the u-boot image header and as a result
+the header size needs adding to the entry point.  Fake up a hdr so the
+kernel image is loaded at the right address and the entry point is
+adjusted appropriately.
+
+The bootloader fits in the space that the uboot header would have occupied.
+
+Clarify the load_uimage API to state the passing of a load address when an
+image doesn't specify one, or when loading a ramdisk is expected.
+
+Adjust callers of load_uimage, etc.
+
+Signed-off-by: Nick Hudson<skrll@netbsd.org>
+
+---
+  hw/arm/boot.c          |  8 +++++---
+  hw/core/loader.c       | 19 ++++++++++++++++---
+  hw/core/uboot_image.h  |  1 +
+  hw/microblaze/boot.c   |  2 +-
+  hw/nios2/boot.c        |  2 +-
+  hw/ppc/e500.c          |  1 +
+  hw/ppc/ppc440_bamboo.c |  2 +-
+  hw/ppc/sam460ex.c      |  2 +-
+  include/hw/loader.h    |  7 ++++++-
+  9 files changed, 33 insertions(+), 11 deletions(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 586baa9b64..450267566a 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -30,8 +30,9 @@
+   * Documentation/arm/Booting and Documentation/arm64/booting.txt
+   * They have different preferred image load offsets from system RAM base.
+   */
+-#define KERNEL_ARGS_ADDR 0x100
+-#define KERNEL_LOAD_ADDR 0x00010000
++#define KERNEL_ARGS_ADDR   0x100
++#define KERNEL_NOLOAD_ADDR 0x00000000
++#define KERNEL_LOAD_ADDR   0x00010000
+  #define KERNEL64_LOAD_ADDR 0x00080000
+
+  #define ARM64_TEXT_OFFSET_OFFSET    8
+@@ -1078,7 +1079,8 @@ void arm_load_kernel(ARMCPU *cpu, struct 
+arm_boot_info *info)
+      }
+      entry = elf_entry;
+      if (kernel_size < 0) {
+-        kernel_size = load_uimage_as(info->kernel_filename, &entry, NULL,
++        uint64_t loadaddr = info->loader_start + KERNEL_NOLOAD_ADDR;
++        kernel_size = load_uimage_as(info->kernel_filename, &entry, 
+&loadaddr,
+                                       &is_linux, NULL, NULL, as);
+      }
+      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && kernel_size < 0) {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index aa0b3fc867..7362197162 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -638,13 +638,26 @@ static int load_uboot_image(const char *filename, 
+hwaddr *ep, hwaddr *loadaddr,
+          goto out;
+
+      if (hdr->ih_type != image_type) {
+-        fprintf(stderr, "Wrong image type %d, expected %d\n", hdr->ih_type,
+-                image_type);
+-        goto out;
++        if (image_type != IH_TYPE_KERNEL &&
++            hdr->ih_type != IH_TYPE_KERNEL_NOLOAD) {
++            fprintf(stderr, "Wrong image type %d, expected %d\n", 
+hdr->ih_type,
++                    image_type);
++            goto out;
++        }
+      }
+
+      /* TODO: Implement other image types.  */
+      switch (hdr->ih_type) {
++    case IH_TYPE_KERNEL_NOLOAD:
++        if (!loadaddr || *loadaddr == LOAD_UIMAGE_LOADADDR_INVALID) {
++            fprintf(stderr, "this image format (kernel_noload) cannot be "
++                    "loaded on this machine type");
++            goto out;
++        }
++
++        hdr->ih_load = *loadaddr + sizeof(*hdr);
++        hdr->ih_ep += hdr->ih_load;
++        /* fall through */
+      case IH_TYPE_KERNEL:
+          address = hdr->ih_load;
+          if (translate_fn) {
+diff --git a/hw/core/uboot_image.h b/hw/core/uboot_image.h
+index 34c11a70a6..608022de6e 100644
+--- a/hw/core/uboot_image.h
++++ b/hw/core/uboot_image.h
+@@ -124,6 +124,7 @@
+  #define IH_TYPE_SCRIPT        6    /* Script file     */
+  #define IH_TYPE_FILESYSTEM    7    /* Filesystem Image (any type)    */
+  #define IH_TYPE_FLATDT        8    /* Binary Flat Device Tree Blob    */
++#define IH_TYPE_KERNEL_NOLOAD  14    /* OS Kernel Image (noload)    */
+
+  /*
+   * Compression Types
+diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+index 35bfeda7aa..489ab839b7 100644
+--- a/hw/microblaze/boot.c
++++ b/hw/microblaze/boot.c
+@@ -156,7 +156,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, 
+hwaddr ddr_base,
+
+          /* If it wasn't an ELF image, try an u-boot image.  */
+          if (kernel_size < 0) {
+-            hwaddr uentry, loadaddr;
++            hwaddr uentry, loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+
+              kernel_size = load_uimage(kernel_filename, &uentry, 
+&loadaddr, 0,
+                                        NULL, NULL);
+diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
+index 4bb5b601d3..ed5cb28e94 100644
+--- a/hw/nios2/boot.c
++++ b/hw/nios2/boot.c
+@@ -161,7 +161,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
+
+          /* If it wasn't an ELF image, try an u-boot image. */
+          if (kernel_size < 0) {
+-            hwaddr uentry, loadaddr;
++            hwaddr uentry, loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+
+              kernel_size = load_uimage(kernel_filename, &uentry, 
+&loadaddr, 0,
+                                        NULL, NULL);
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index e6747fce28..e275178951 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -997,6 +997,7 @@ void ppce500_init(MachineState *machine)
+           * Hrm. No ELF image? Try a uImage, maybe someone is giving us an
+           * ePAPR compliant kernel
+           */
++        loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+          payload_size = load_uimage(filename, &bios_entry, &loadaddr, NULL,
+                                     NULL, NULL);
+          if (payload_size < 0) {
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index f5720f979e..70428b1865 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -180,7 +180,7 @@ static void bamboo_init(MachineState *machine)
+      CPUPPCState *env;
+      uint64_t elf_entry;
+      uint64_t elf_lowaddr;
+-    hwaddr loadaddr = 0;
++    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+      target_long initrd_size = 0;
+      DeviceState *dev;
+      int success;
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index 5aac58f36e..2d6d5c4402 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -402,7 +402,7 @@ static void sam460ex_init(MachineState *machine)
+      CPUPPCState *env;
+      PPC4xxI2CState *i2c[2];
+      hwaddr entry = UBOOT_ENTRY;
+-    hwaddr loadaddr = 0;
++    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+      target_long initrd_size = 0;
+      DeviceState *dev;
+      SysBusDevice *sbdev;
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 67a0af84ac..a7254bc5c4 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -160,10 +160,15 @@ void load_elf_hdr(const char *filename, void *hdr, 
+bool *is64, Error **errp);
+  int load_aout(const char *filename, hwaddr addr, int max_sz,
+                int bswap_needed, hwaddr target_page_size);
+
++#define LOAD_UIMAGE_LOADADDR_INVALID (-1)
++
+  /** load_uimage_as:
+   * @filename: Path of uimage file
+   * @ep: Populated with program entry point. Ignored if NULL.
+- * @loadaddr: Populated with the load address. Ignored if NULL.
++ * @loadaddr: load address if none specified in the image or when 
+loading a ramdisk.
++ *            Populated with the the load address. Ignored if NULL or
++ *            LOAD_UIMAGE_LOADADDR_INVALID (images which do not specify 
+a load address
++ *            will not be loadable).
+   * @is_linux: Is set to true if the image loaded is Linux. Ignored if 
+NULL.
+   * @translate_fn: optional function to translate load addresses
+   * @translate_opaque: opaque data passed to @translate_fn
+-- 
+2.17.1
+
+

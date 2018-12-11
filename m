@@ -1,179 +1,144 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp368270wrt;
-        Wed, 2 Jan 2019 23:56:40 -0800 (PST)
-X-Received: by 2002:a1c:43:: with SMTP id 64mr39619844wma.72.1546502200724;
-        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546502200; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp113238wrt;
+        Mon, 10 Dec 2018 19:11:21 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Vezvm7GhW+LYL8qkhECr4vHKCr3B7Q/O/iNQXJ5bdL38jXIeuzKuWejk52AUxosd1NBQdp
+X-Received: by 2002:ae9:dc43:: with SMTP id q64mr12904445qkf.223.1544497881446;
+        Mon, 10 Dec 2018 19:11:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544497881; cv=none;
         d=google.com; s=arc-20160816;
-        b=H9oU8HfjY977OjG6vrPARbokn3E00/7yamOGXbgsFIGkHj+CGnqdb0RLQWTM7EjpU3
-         kM0CiI4rUvg1J8pXhieP86tp2ZEaZrvKXChhjA1IoKIwC/EhvSM68xWgJ3SJCb/9iaJQ
-         wTiOAA1764ZKt1anTHAwwp7GHZLMT/vFfM462HBpBcHL0G1+ny+8HzTikJA59fKHBoUF
-         U91PFfQdA5Jrb7dBenl0Rqv/bntgDzkg2v4eZhy5kO7ku02CHJG2UpWY1RacWJ2N5jqY
-         EFKDKvcPYESjDcn7eG1FJBAt9yjzoIJEzRTejJS5u7Emw2KSxjREE8PT92MFrIa9uPBJ
-         B0oA==
+        b=E5YAyr7rpDyYQIspdS4mMvl2l+C5XBAx/YmHMzpN21BpRaAzWx4zz3GczcUcX6G2aS
+         deWP3/sTr6LDL8IdUimBJ9KqGlq73bmxuyH+RrUbRpEivTeEuNnb0641FQPVBm3XJ/VD
+         xfHNmvUzCdcjLNNygk/p4tkZ6noX1DofjYEas93v9wyUQBdUjT/UqPo4RWdsEtVr1otn
+         nlpRMn9P6wM1sza9P9zmSk4/yC6WliSZvnTqTpPEDpro3DyHjz+nna72Vh0Y9fsk4aG9
+         P5QDiXO6rwPCpperR/6OTsasx0z+b02LxCSKuQ1JwsDhzaXNSCS007RE0YbuoR/8SHWp
+         uksA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
-        b=SaHwp4wlM8ZxMxPjEgqeM4Wn+xbUPpCiAa7rSc+1J2qAAi/iwmkDtKrA53XWJt2K6F
-         +nx7baQn+YpPoWPRS7jrSuBldMyZahFO2rL3gFHGBb8/wAfkTs/SO9Nqkb2Gn32TxgF6
-         ntI7IgpHqnA92sYQOcx0GrQ9UZVUzKW8gSzA8h53HWYZ0CEoxXSblNqNO3H/1KErTMcF
-         zgPAEC+V8w3+A4Dpd3GBzhKxQ9B3Rs9w1yVpuJ8Aqmdz5ONVPr7EkZ+nFZ4ITuLf4Hef
-         CJOgDqmgJtZOk0oJNJxPwa0DKBpJ4ioeUTQ3lsl0pieNNuM+y+WIM4hJcFm4kCoKWfKA
-         8gqA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=M7YlWbKS2Ws/iXaWS29PWzogSvXy2fCaDYzbGVsIWL8=;
+        b=g9jBLsSd5F6+e8BuP2tvmc/bBEs4Lr5uyimIU3rQA4pubUtzPEvfn/09Irf3W/aZPt
+         fuqwBiViVo4v9jLp1yoirJhW3aamO2FDF5FHIQ4z/tOvCCPDCOLmy0DGOL2V/4vCIo7e
+         KqV+G3Dp+ddZYyQ5W2uinFEKjL6iON7wW8vDQAc4Q7d+VVpwq8cA1AWfFCehNh4QUEfX
+         Vf3/g4h3zpvyg/7bShCWFDxgYP52pbJZO4Wa0pNdsBEo10XJgTF8469cMSFXst+eodou
+         9x4PGVFINNuTUb44V43vMVdQYFdgdEZnkObrNzH+IsOeJwms6t3J4aDyW1Zpv49SpqEM
+         ZxJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1Z1E8w+;
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <stefanha@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j10sor27713653wrx.15.2019.01.02.23.56.40
-        (Google Transport Security);
-        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4qR/iwT";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q8si2753996qvr.202.2018.12.10.19.11.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 10 Dec 2018 19:11:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1Z1E8w+;
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
-        b=H1Z1E8w+WgcAi/Uo6EZS02Kj+cbg17bdTrpBW5cQTqkDr5G3d0AwTNtnDYZZipBBzD
-         PFhhuAm3BPPDEGt6kjcBVZCztye9IGxtKDDvB9EU9RprIuZpHk/klnUNRc8dzCN90B+h
-         th7tQqsx5WHO8TbDLWvHsEWxrjh+O8c2YY2sQpAzFQMZ18CtxzsNZOCJ0qWMsdWCxuVN
-         +YRsxYTqSyoBq4Ph6cyaFKyN0+Ua8Lwcb/t0Wg6fH2h/3nbE1QfewaXxJeRnG7i37XTv
-         5VVP0JzDiyBQ++xFI3tqdwt43VqPkFoJQCtGXBi+UwnO8Ojczdc3ChwBU67l3sCtkPgV
-         infw==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="M4qR/iwT";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35731 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gWYS8-0003Ny-Sy
+	for alex.bennee@linaro.org; Mon, 10 Dec 2018 22:11:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41055)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <joel.stan@gmail.com>) id 1gWYRu-0003NU-Jt
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 22:11:07 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <joel.stan@gmail.com>) id 1gWYRp-0005Cw-EI
+	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 22:11:06 -0500
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:40506)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1gWYRp-0005Bv-57; Mon, 10 Dec 2018 22:11:01 -0500
+Received: by mail-pg1-x544.google.com with SMTP id z10so5949774pgp.7;
+	Mon, 10 Dec 2018 19:11:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=M7YlWbKS2Ws/iXaWS29PWzogSvXy2fCaDYzbGVsIWL8=;
+	b=M4qR/iwTZVzOW7mzGQ3ZQBak+oXHV7wZldm/F5FJ4+0v6FknS4Gedt3y3+AcM0/mnt
+	98PwcVUxB3vSQohYAHk8POX4LGDUwdhIi951OXObKqpU0aIShMiYktYYHRolnWdtCesL
+	TXMxlYiZ6gCBznDljVkDioAXi1iPRdmXf5kn5VW8WpVBo3SjBlNHU1s0jW8bvIzK2qg4
+	fr4KUJEKZISTYz1rnmukcqeV7C4MziZBzXfq8MNkGgyb/jXNFl70dJQD1xk/k5ZOGckw
+	f73QFVs90qz2HQ1xvxvpxV1MG00zf9pio1kaqeZPEuh/uOGIBW6kZRQCyude0v3vEab9
+	e80w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
-        b=OnLFBATtju3wBnsstRSJu+gbDoBiSExFDieBS62Qn8DNI6ScRm1s4LPi7oNy8YDkZK
-         aH5pqM2yztVhuLVTHJ4MxPDhw+XQPuP5vgYUqJw5uH+GA9KO3y+rXkwEZ/sNXngXvOd6
-         Zn0Q1S4ZTHbvR58FAuVADVvpQTOyFv7D8kqOfL7LWFtRkIqOE4T/V3ZKoM5tq3bXG0pP
-         XgZnl7e+tzi/mXXgofB0YVAuHjHoBGw9y7ffpxR4Z+k/e/C7Xb709wyNeiJfYhs2v496
-         YQs5mb0kR1durLH48XC0sZfUfKjz8Wn/HTvYumDRKQkznOQE69OqNsYHPEjWbXqWwFQM
-         1ezQ==
-X-Gm-Message-State: AJcUukdGkJAcAr5jHp3rq8dA/AUchw1j0lIsDGGUVU58ONsOI93OwR7/
-	VuxnXEl1/TOpY6oU4Mahumt/MoZiZWI=
-X-Google-Smtp-Source: ALg8bN4orEYyCiTDc7mIQEl0t7ioW1hbLy5czSOdS8TdpnUlUOT3FYeEZ5TVUG6AzNP7iEGN3xJ7nA==
-X-Received: by 2002:a5d:43d0:: with SMTP id v16mr43029280wrr.67.1546502200012;
-        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
-Return-Path: <stefanha@gmail.com>
-Received: from localhost ([51.15.41.238])
-        by smtp.gmail.com with ESMTPSA id y34sm125192223wrd.68.2019.01.02.23.56.38
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Jan 2019 23:56:38 -0800 (PST)
-Date: Thu, 3 Jan 2019 07:56:38 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, jim@groklearning.com,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>, jusual@mail.ru
-Subject: Re: [Qemu-devel] [PATCH] microbit: make -kernel optional
-Message-ID: <20190103075638.GA5724@stefanha-x1.localdomain>
-References: <20181214145152.27250-1-stefanha@redhat.com>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=M7YlWbKS2Ws/iXaWS29PWzogSvXy2fCaDYzbGVsIWL8=;
+	b=jBNgOkNYP9UAw4ezFg/3CZGxSv6EgMsfrsD070egm3tser5cxFBud7sTnIwxJt8XtM
+	4L6l1i85/fUvM6pTgCb6PB40i23QTpuSn/MN2Gp+sqZSjK2VTW+85vo+diTiOXVB1RfI
+	Zbt2RLch+IJ9DHhrkfyZutgQTB6JZhxXZApTKZzTE/RDMH89wu3NZR13ZH+409SwJUtF
+	pwLwfbzQ9oZ2w7E5mM/DlloHDwUYzrIdMvh9UtFD7QbdHXcXILAZShkD5dRXz5oM8Gxs
+	fSpK/yZVXc+y09d49OnXVEN31ng6YFYiWijLStRdBiqZtJvbjWfSm1yQ2dPNKhuKw9SW
+	jT9w==
+X-Gm-Message-State: AA+aEWYlvaLXhTHdpev6KJBfCEx0cmD74Q1dTChpPmOIbb9lBo7J4h+M
+	EpqvIevz9yJx91jFn/lkgyQ=
+X-Received: by 2002:a63:790e:: with SMTP id u14mr13069741pgc.452.1544497859983;
+	Mon, 10 Dec 2018 19:10:59 -0800 (PST)
+Received: from aurora.jms.id.au ([45.124.203.15])
+	by smtp.gmail.com with ESMTPSA id
+	12sm12835482pgd.35.2018.12.10.19.10.56
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 10 Dec 2018 19:10:59 -0800 (PST)
+Received: by aurora.jms.id.au (sSMTP sendmail emulation);
+	Tue, 11 Dec 2018 13:40:53 +1030
+From: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Date: Tue, 11 Dec 2018 13:40:42 +1030
+Message-Id: <20181211031044.27628-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="uAKRQypu60I7Lcqm"
-Content-Disposition: inline
-In-Reply-To: <20181214145152.27250-1-stefanha@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-TUID: YPDA8Rs+6MkL
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: [Qemu-arm] [PATCH 0/2] arm: aspeed: Allow the guest to exit
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EiZ58bw1u/36
 
+This series adds a feature to the ASPEED machine that allows the guest
+to cause itself to exit. It was tested with romulus-bmc and palmetto-bmc
+with a Linux kernel as the guest.
 
---uAKRQypu60I7Lcqm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+To test:
 
-On Fri, Dec 14, 2018 at 02:51:52PM +0000, Stefan Hajnoczi wrote:
-> ARMv7M machine types support -kernel for ELF and raw image files.
-> Microbit programs are typically in Intel HEX (.hex) format.  The generic
-> loader supports .hex files but it doesn't work as expected:
->=20
->   $ qemu-system-arm -M microbit -device loader,file=3Dmicrobit.hex
->   Guest image must be specified (using -kernel)
->=20
-> This error comes from armv7m_load_kernel() but we don't have -kernel in
-> this case.
->=20
-> This patch makes -kernel optional since most of the time we'll want to
-> use -device loader instead.
->=20
-> Note that we need to register the reset handler that
-> armv7m_load_kernel() used to register for us.
->=20
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  hw/arm/microbit.c | 17 +++++++++++++++--
->  1 file changed, 15 insertions(+), 2 deletions(-)
+ cd linux
+ $ export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
+ $ make aspeed_g4_defconfig
+ $ ./scripts/config -e CONFIG_POWER_RESET_SYSCON_POWEROFF -e CONFIG_POWER_RESET
+ $ make -j$(nproc)
+ $ qemu-system-arm -M palmetto-bmc -nographic \
+    -kernel arch/arm/boot/zImage \
+    -dtb arch/arm/boot/dts/aspeed-bmc-opp-palmetto.dtb \
+    -initrd ~/buildroot-arm.cpio.xz
 
-Ping
+Joel Stanley (2):
+  aspeed: Add syscon-poweroff to guest device tree
+  aspeed/scu: Implement power off register
 
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> index a734e7f650..638f638792 100644
-> --- a/hw/arm/microbit.c
-> +++ b/hw/arm/microbit.c
-> @@ -14,6 +14,7 @@
->  #include "hw/arm/arm.h"
->  #include "sysemu/sysemu.h"
->  #include "exec/address-spaces.h"
-> +#include "qemu/error-report.h"
-> =20
->  #include "hw/arm/nrf51_soc.h"
-> =20
-> @@ -28,6 +29,13 @@ typedef struct {
->  #define MICROBIT_MACHINE(obj) \
->      OBJECT_CHECK(MicrobitMachineState, obj, TYPE_MICROBIT_MACHINE)
-> =20
-> +static void microbit_cpu_reset(void *opaque)
-> +{
-> +    ARMCPU *cpu =3D opaque;
-> +
-> +    cpu_reset(CPU(cpu));
-> +}
-> +
->  static void microbit_init(MachineState *machine)
->  {
->      MicrobitMachineState *s =3D MICROBIT_MACHINE(machine);
-> @@ -41,8 +49,13 @@ static void microbit_init(MachineState *machine)
->                               &error_fatal);
->      object_property_set_bool(soc, true, "realized", &error_fatal);
-> =20
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       NRF51_SOC(soc)->flash_size);
-> +    if (machine->kernel_filename) {
-> +        armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                           NRF51_SOC(soc)->flash_size);
-> +    } else {
-> +        /* armv7m_load_kernel() does this, we need to do it manually her=
-e */
-> +        qemu_register_reset(microbit_cpu_reset, ARM_CPU(first_cpu));
-> +    }
->  }
-> =20
->  static void microbit_machine_class_init(ObjectClass *oc, void *data)
-> --=20
-> 2.19.2
->=20
->=20
+ hw/arm/aspeed.c      | 33 +++++++++++++++++++++++++++++++++
+ hw/misc/aspeed_scu.c |  5 +++++
+ 2 files changed, 38 insertions(+)
 
---uAKRQypu60I7Lcqm
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+2.19.1
 
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcLcA1AAoJEJykq7OBq3PIoTEH/2xOAU0P4RebFVcOUsh7+uPc
-Czfr0L5zoXelNYWU26F8xg7NeQpMGLISAfvVGfL68ptTdYLlVmCj07JUX1qcw0UL
-oU/KW2ZYh8ugCGmklCjj8LIpCfiMrBlBh6p8Tgd99g4f4VG4FSaRpXhlpVd5mRQN
-tPla/NqMZ/21G6b5vzCEqLFlHN/fCVNcGYQhH+HaP3CmRU8xoMdtwLnnQntWpmXn
-z9sZRTIg0Yn1sefCmcdATZwWNlsMbzzsP/FPa3vZaECmNVMJzcXJ9xx3/2qb+xYt
-nvGG3a/bbk4EUdeuJ3ROU9nTmKhUHZ3SksQQIO/dYL8mn78fnHpzP+IXGMNlPoE=
-=H6T4
------END PGP SIGNATURE-----
-
---uAKRQypu60I7Lcqm--

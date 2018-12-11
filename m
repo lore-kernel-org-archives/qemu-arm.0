@@ -1,138 +1,141 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp668655wrt;
-        Tue, 11 Dec 2018 06:47:20 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UWGoTHG4Tj52ozm3tnD2t7yiPhm0zQig4hGMGxTKbJqcK8CEdWC+Uplvcd054p3rB9FK9n
-X-Received: by 2002:a37:c12:: with SMTP id 18mr14382265qkm.317.1544539640013;
-        Tue, 11 Dec 2018 06:47:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544539640; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp708280wrt;
+        Tue, 11 Dec 2018 07:20:45 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VV6MNxZCSA/d4AiDqcbVBb7LUqLmANnUQtG8BJ9iPH0pN5DSoBlqqj3yxraRBa2x0Boa10
+X-Received: by 2002:a37:e84:: with SMTP id 126mr14380592qko.177.1544541645660;
+        Tue, 11 Dec 2018 07:20:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544541645; cv=none;
         d=google.com; s=arc-20160816;
-        b=hvHdBwuNfjX23U5GHorQnZZC6rMohY+OkYxQ1NEhVTwAWCxQ7INmCoEQb2IyHzsJFk
-         pgfJ6Zmww5eDEj5+71p/wx/8VzWI36oVQRNpqPGI9Jzg1XNPDIoLmSs7+Qn+QR3hI0fF
-         dwKmtAV5xClhT25K1u4Jibj0CEIJ8z9LCjsldTX8h7rfCkO6ZlPV5Rmh+lZOqfTtx9TO
-         lFPvWiB2hxZb2acROYZO9Oj9PpUzOIM7cFo88T3e4twPw+vlu5JyoRtn5u6c9FNpOMk1
-         sJzxCYs1qHwKHX774xEXAwazaV9fiv87vqW/Hq1ZehqLz9NawTXbXQ+H7DcJmvxBK4gR
-         agSg==
+        b=ZE2Ps180ORfWOv5JhvmRZctum/1D9njqO2pzktW+wPngy58IV8suQ6q7TK0CYsYgvk
+         5mA1jZg68N60Hf8G8qUYgOqrdyoeEVnkJgzkZE6K2KXtdQVjQx5pc+6GoaRPTlvJQYrk
+         rBwtHKhe+q8EEpqSWRye/BKglg+HnikXNAhgtUmWhalJJxiMh/e4kHbukPGdTetDBDsf
+         2z9VdaFGv3qIVmsmcDH+k5dBLzzCQecWwbD7KXxW7RcC/mkLKne4fQ1jIYzxGg6Qn/EL
+         rkQdoqCvs/Vocl1NPTRUKvD0sxTOn7IU3YAOVcMOER75hJpjTaXoKTi7QqosTonbl3x7
+         fPaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:spamdiagnosticmetadata
+         :content-transfer-encoding:spamdiagnosticmetadata
          :spamdiagnosticoutput:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:to:from
          :dkim-signature;
-        bh=jfNFL54LX/+aqFNSbBXPwDDIaKroibQxR71+2lHWVo4=;
-        b=XnN/bQHILMC3ksVbYvy6cwtRemBMndBQX/pJpEKAfNB+oVn5/0sDJo/wG1QkmSDTNj
-         FufwZIdu9B/izGLvaXRUIheseKbIgskQZ50I7fO6Pl6afmFgT3uvIFL+tod8N4xpd3cd
-         3Z5vBY6Qrg85mIvpoMMaM6IF9znyNas5l8/XVphMSTFoVOaAeYnqZjYawXbfELsBlSTP
-         yo6hcSbRCJzvGInd3kxE2hh8nVqZFlKQrIIXTy/cp6YDbDPjZ8HBlKHSXt/CUx6dbJTl
-         pUbyaHwJrciDRVBhZeGmf59nPMWBLtGzA2oRgO2F2TufKUzQXZouQ4qk7mED9HhmbMFV
-         /j1Q==
+        bh=JLZoWPhYZt6bafKK4UWlY/29b3vxexsevN6NLPyIGWI=;
+        b=ylrLwiMwWGeM779y0u/ZTYDZu4SkD8VOoUjK/aW6UGQncGxAWVdDyaB24KeFyknfs4
+         9oioAfeVAUQNBmzj3jxjI1uaPg2yEzSTupgcEODf548eVvn1TfuLq1fq9MZK2HSVntEc
+         07mP2iyACEhBXSdWODIlcFoBJTkGklYPxmGqzCk+bECdgxGtSKfJz2lRaJ2u3jXYB+vU
+         cLFmua50Z5ST1Sfs8xLYKLBNEaVXhV57BuQrEquW2bJ9GHV7SdiV+8ch/Q7sljbXRnkX
+         Aj6d5w61Cy5IFyT7y0lyL5RsAMPoeZL9l78bfdGaPaY4J1Oh+ForEc/hBMJKh00KPSsC
+         7qEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=O9TweudI;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=Jwmvl1QM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n27si1514708qtl.90.2018.12.11.06.47.19
+        by mx.google.com with ESMTPS id j35si6381860qte.348.2018.12.11.07.20.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Dec 2018 06:47:19 -0800 (PST)
+        Tue, 11 Dec 2018 07:20:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=O9TweudI;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=Jwmvl1QM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:38490 helo=lists.gnu.org)
+Received: from localhost ([::1]:38617 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWjJf-0001MS-Gb
-	for alex.bennee@linaro.org; Tue, 11 Dec 2018 09:47:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45022)
+	id 1gWjq1-0003tG-34
+	for alex.bennee@linaro.org; Tue, 11 Dec 2018 10:20:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gWjJQ-0001LA-Te
-	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 09:47:06 -0500
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gWjpj-0003pc-U9
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 10:20:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gWjJL-0002HX-Tx
-	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 09:47:04 -0500
-Received: from mail-eopbgr740118.outbound.protection.outlook.com
-	([40.107.74.118]:7712
-	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gWjpi-0001NG-Ts
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 10:20:27 -0500
+Received: from mail-eopbgr710107.outbound.protection.outlook.com
+	([40.107.71.107]:42240
+	helo=NAM05-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gWjJL-0002GJ-KZ; Tue, 11 Dec 2018 09:46:59 -0500
+	id 1gWjpi-00018w-Ii; Tue, 11 Dec 2018 10:20:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=jfNFL54LX/+aqFNSbBXPwDDIaKroibQxR71+2lHWVo4=;
-	b=O9TweudII9az4BAb/vCVVg2RoxoFcm4nbLgWpwv+3ctSoglglyKpyiDZHGs4/Yu3acR9Rmkgr5hkHJIJkt9OvvUg0Gf1EBoiRRg/2TjjTkjrpksxjMXCMCZOrMybJcaPJwsQ1CEvcoGl/SlwG4keHDxCLz+RhbAVVc5GUpZj1mA=
+	bh=JLZoWPhYZt6bafKK4UWlY/29b3vxexsevN6NLPyIGWI=;
+	b=Jwmvl1QMZpc/kKA/5Zk5droqAFFaRWDMb5nZ3IxSaGv7a7DBJKJtmoP9SloAlhtdWQZaINdOnNT0akG+IyGIDJ2Eyz5pqV2nG1OAiDzrI25GHEkoco3DfAraa4g53JYk7P4Gbz7O4KYChX6fSgQpq4mCUyAabuYpBewN23lBph0=
 Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
-	DM6PR01MB4778.prod.exchangelabs.com (20.177.218.83) with Microsoft SMTP
+	DM6PR01MB4379.prod.exchangelabs.com (20.177.221.214) with Microsoft
+	SMTP
 	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1404.22; Tue, 11 Dec 2018 14:46:55 +0000
+	15.20.1425.18; Tue, 11 Dec 2018 15:20:11 +0000
 Received: from DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::9c7c:27c7:4cb7:f820]) by DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::9c7c:27c7:4cb7:f820%2]) with mapi id 15.20.1404.026;
-	Tue, 11 Dec 2018 14:46:55 +0000
+	Tue, 11 Dec 2018 15:20:11 +0000
 From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [PATCH v9 14/14] target/arm: Send interrupts on PMU counter
-	overflow
-Thread-Index: AQHUjKCBH4+nEctsG0urLUKE2jCLcaVx4U2AgAfGIgA=
-Date: Tue, 11 Dec 2018 14:46:55 +0000
-Message-ID: <20181211144648.GJ5549@quinoa.localdomain>
-References: <20181205134243.4791-1-aaron@os.amperecomputing.com>
-	<20181205134243.4791-15-aaron@os.amperecomputing.com>
-	<CAFEAcA8Tt3ygYCZO7ZYkZPwmPQniBu6fLnr+RjNUAmgZdTT0kA@mail.gmail.com>
-In-Reply-To: <CAFEAcA8Tt3ygYCZO7ZYkZPwmPQniBu6fLnr+RjNUAmgZdTT0kA@mail.gmail.com>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
+	<peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, 
+	Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Thread-Topic: [PATCH v10 01/14] migration: Add post_save function to
+	VMStateDescription
+Thread-Index: AQHUkWUCpkFUgS7AC0C976Pm0s6K0w==
+Date: Tue, 11 Dec 2018 15:20:11 +0000
+Message-ID: <20181211151945.29137-2-aaron@os.amperecomputing.com>
+References: <20181211151945.29137-1-aaron@os.amperecomputing.com>
+In-Reply-To: <20181211151945.29137-1-aaron@os.amperecomputing.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-clientproxiedby: BYAPR03CA0024.namprd03.prod.outlook.com
-	(2603:10b6:a02:a8::37) To DM6PR01MB4825.prod.exchangelabs.com
+x-clientproxiedby: BYAPR11CA0041.namprd11.prod.outlook.com
+	(2603:10b6:a03:80::18) To DM6PR01MB4825.prod.exchangelabs.com
 	(2603:10b6:5:6b::30)
 authentication-results: spf=none (sender IP is )
 	smtp.mailfrom=aaron@os.amperecomputing.com; 
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [65.190.6.212]
 x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; DM6PR01MB4778;
-	6:0AAmUjN9GYSP5yYG98xr6nQkeUlW6+FsNKfMb4VHkAa4tAXARb92GGk1XiO8lymecpSu3c3H9mMoB/8QvuKGezvTsQ6c9SNjG0GZv1qAty/WvYGB8fl8rHIYWHOAEVyuBdYr1NMeEueNvPdC0Y/wCYoeLhUuoAQbvX0rQtr67N5YiqFDax9K77OZIniSY7ZXdEG7sEM6+L+lBSrlb+IhrPRaheZYyjmPOPyLjlYutLJaubZ4CeOj+bw/o4KzYti9fWfVamFuZ/kFrQ59nkux1ZEWY50pFv/boiUar8i2E8SERsLs7SLTPRg39oxbYhzbnXq6Da1NGPTRvvJPqsLERADhhqCpad5I4PVFtrTY+ZD2WwVbKKAC1YWJ1IpyJCgOEeGJsaDsmDY5lYBx+WUxVbspEiLVVPq2zGnWkVjFguhc5+pLVrDlD/XysRgl9lsUXOB96FA2n/z7GKvD1Kxdsw==;
-	5:r0t+kKb2DkXkfPxoFyvQa/zgmOHkulo3KqeVTtxcKFsv4dJLBKZz+HvHwFfyTL/k5robL+exKTH7nUWWMc8TgYZCGtt1Zc6EMc0rV/i5FAC2kSXOavOVuNENVt5guzHRe8UHe4u2sOCYy92ITHMp5FHkRs0h5P5BzOLXT5OE0Y8=;
-	7:o9K6FmRiUzQB67eLEftKzH6j7/GzMVgfsRO2OhXHqQZ1bSWfRfLUwX1EhPUfXhTsLTol7ikXIvkVi8dU+ivUxUrznA7SiC1H08wXX0CRnmK2vsDcdgA3aGgeXQ1OD88W4k94ArsjBYcnOQL81Xb/fg==
-x-ms-office365-filtering-correlation-id: 1c17e56b-af17-423e-2672-08d65f777eb5
+x-microsoft-exchange-diagnostics: 1; DM6PR01MB4379;
+	6:iCSgPu0WHgilQ4G13xIYj5kHoigIM8P/AnsyyMxEFD5igEwAIyZXCvIKleJEVvuz303OFQhAiU+KqKMQddv8iI+1AGqjg+W56n1XFBR9DAjZPY3Ysh5wRN32YI496tb1igweWnxgyflQiDyYXHTB6A691wAt3l8YFjSK1oQckN8BgyVXODuOdNEKj5bjyDpOvc858Tb/A8QbzVgjQgffEfbqH/dVi2yLAfLBEJwoEGWeOxTaFJqXQyiRGbocVADt6r7XYFSnMeHY9a2gX6f+8JpBkKpdqYtyNBuSDcmjV3G4mIjjFf1F4qVx2hwqt0yljKrGeqhwuady3MyPTlcXbHZSVBOo4hjk3s4N/ydTt6M47eIXWTaexv33P8z7B0NdtvACluHeYDv9V0nYQa0sVI7ln/d0WCIo/wanvR/xclXDD24acMrJ9yzexjMGsVPHPpfc4uwPwIZ2Y6tAyqhN6Q==;
+	5:oE0rB4EmjmXsC5BC8cQq2MCPnGeJPKjCk80icB+fEUt9ARbkcbkEuJzcKXAEhnNgpI22XvXDv+W4Jzsk9KNRFCaoe6ts7HTvXvTK4tPRGN8TrR6DiykkPQDx6SeVIdusz5lAamffAIcTbxIY8Uo7I7gyZD+6D/iGgQytg1Po9Lc=;
+	7:Da1IJiNt9u/83wjqcRTcoc3wBanlOzkRnXvDZGZ4T2/g5Vtmic4UWXgu4CVlILUcda6FTLA6zzIUHJ3sS8To3E8PIzKspEqU66dCi/9wCGqaNkxEJ0FC+YeER2+jfzEAFtBeKhMKofokMKrQNzT35w==
+x-ms-office365-filtering-correlation-id: 9d4e33fc-837d-48dc-da88-08d65f7c2478
 x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(2017052603328)(7153060)(7193020);
-	SRVR:DM6PR01MB4778; 
-x-ms-traffictypediagnostic: DM6PR01MB4778:
-x-microsoft-antispam-prvs: <DM6PR01MB47781E65EF59ACAF130088238AA60@DM6PR01MB4778.prod.exchangelabs.com>
+	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
+	SRVR:DM6PR01MB4379; 
+x-ms-traffictypediagnostic: DM6PR01MB4379:
+x-microsoft-antispam-prvs: <DM6PR01MB437955457EFE21A2EAF642918AA60@DM6PR01MB4379.prod.exchangelabs.com>
 x-ms-exchange-senderadcheck: 1
 x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(93006095)(93001095)(3231455)(999002)(944501520)(52105112)(3002001)(10201501046)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123564045)(20161123558120)(20161123562045)(20161123560045)(201708071742011)(7699051)(76991095);
-	SRVR:DM6PR01MB4778; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB4778; 
+	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(3231455)(999002)(944501520)(52105112)(93006095)(93001095)(10201501046)(3002001)(148016)(149066)(150057)(6041310)(20161123558120)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123564045)(20161123562045)(201708071742011)(7699051)(76991095);
+	SRVR:DM6PR01MB4379; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB4379; 
 x-forefront-prvs: 08831F51DC
 x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(39840400004)(346002)(366004)(376002)(396003)(136003)(199004)(189003)(5660300001)(6916009)(8676002)(81156014)(97736004)(305945005)(71190400001)(33656002)(6436002)(81166006)(8936002)(39060400002)(1076002)(3846002)(6116002)(2906002)(6246003)(25786009)(6512007)(4326008)(229853002)(53936002)(6486002)(478600001)(256004)(105586002)(9686003)(102836004)(26005)(186003)(316002)(54906003)(99286004)(52116002)(386003)(106356001)(33896004)(6506007)(476003)(486006)(11346002)(76176011)(446003)(86362001)(71200400001)(7736002)(14454004)(68736007)(7416002)(66066001);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB4778;
+	SFS:(10019020)(366004)(136003)(39850400004)(396003)(346002)(376002)(189003)(199004)(4326008)(26005)(81166006)(81156014)(71200400001)(71190400001)(106356001)(6436002)(66066001)(14454004)(68736007)(3846002)(2501003)(102836004)(8936002)(6486002)(8676002)(97736004)(6116002)(186003)(446003)(99286004)(476003)(11346002)(2616005)(25786009)(7416002)(486006)(7736002)(54906003)(305945005)(39060400002)(478600001)(14444005)(256004)(52116002)(2906002)(386003)(1076002)(6506007)(105586002)(76176011)(6512007)(86362001)(53936002)(5660300001)(316002)(110136005);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB4379;
 	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
-	PTR:InfoNoRecords; A:0; MX:1; 
+	PTR:InfoNoRecords; MX:1; A:0; 
 received-spf: None (protection.outlook.com: os.amperecomputing.com does not
 	designate permitted sender hosts)
-x-microsoft-antispam-message-info: Uuc0qjfdzH76ukZp88PgUCY14dQ5uyVmwpPmDncZOHaka/2Jb/Uvqn6KcSd1z2eCYchqsyebNVyo+XPWD5rOGuddHVrfIbWNjvdbP9Uhw+9qP4+f5+X0eY8MnQLTvpwPHAef6iifR7csi6NGu/TdwYB3riHCP/3rCXOwludW1woE50MzilTOo+4uymlNGJjFJ3yPbWufrctUL/N8/Mt5AbXAvCtuiXcPd27kw0njHBb4Zm0jX+Yp7FHcN91yNOGEsnrx79eE/ynwciGAwqetuD7epqrNk30oYJFvYmB2JjC3+tVLEXwp5WSUPGK4i0Px
+x-microsoft-antispam-message-info: Ki8OuDFqViMBtyFviIN8D2ghmRRwjmIot9EkuWgZ7DBguS1jJu7b875pYxHR3GE7jpnp62WEggwtrIaaTXcdgMwe6uFepOQ/yamixFE7TsNCRUIy/+JWVAoMLvyyxRUxeCKarU6WxYdoG3vd+jlsAOD9xhuKAOytf2TDlxF8AgumJuD2XtPBE5cAl065RC6TySVRq0NMvO3ahx+zEOmldgsltrKpHCFCIMkew82pgh1xXIIeyuTcyzrCvb8baIXyTQ/e3erpqplvtJbT1Wi0vOh3jF/v8D7jvIrnvK74Q1GBxMrMr4qBaiDLf4wJpf14
 spamdiagnosticoutput: 1:99
 spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <3D4C75ADAC02D0448280294E5599843C@prod.exchangelabs.com>
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1c17e56b-af17-423e-2672-08d65f777eb5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Dec 2018 14:46:55.6051 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9d4e33fc-837d-48dc-da88-08d65f7c2478
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Dec 2018 15:20:11.4799 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB4778
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB4379
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.74.118
-Subject: Re: [Qemu-arm] [PATCH v9 14/14] target/arm: Send interrupts on PMU
- counter overflow
+X-Received-From: 40.107.71.107
+Subject: [Qemu-arm] [PATCH v10 01/14] migration: Add post_save function to
+ VMStateDescription
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,47 +147,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>,
+	Aaron Lindsay <aclindsa@gmail.com>,
 	Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tTWm26B7ELB1
+X-TUID: agxJF6E7sSq4
 
-On Dec 06 16:03, Peter Maydell wrote:
-> On Wed, 5 Dec 2018 at 13:44, Aaron Lindsay <aaron@os.amperecomputing.com>=
- wrote:
-> >
-> > Setup a QEMUTimer to get a callback when we expect counters to next
-> > overflow and trigger an interrupt at that time.
-> >
-> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> > Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> > ---
-> >  target/arm/cpu.c    |  12 +++++
-> >  target/arm/cpu.h    |   7 +++
-> >  target/arm/helper.c | 126 +++++++++++++++++++++++++++++++++++++++++---
-> >  3 files changed, 139 insertions(+), 6 deletions(-)
-> >
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -733,6 +733,8 @@ struct ARMCPU {
-> >
-> >      /* Timers used by the generic (architected) timer */
-> >      QEMUTimer *gt_timer[NUM_GTIMERS];
-> > +    /* Timer used by the PMU */
-> > +    QEMUTimer *pmu_timer;
->=20
-> We don't seem to migrate this timer state. Is that OK? If so,
-> a brief comment somewhere with the rationale would be helpful.
+In some cases it may be helpful to modify state before saving it for
+migration, and then modify the state back after it has been saved. The
+existing pre_save function provides half of this functionality. This
+patch adds a post_save function to provide the second half.
 
-cpu_post_load() calls pmccntr_op_finish() and pmevcntr_op_finish() for
-each counter via pmu_op_finish(). They handle setting the timer
-according to the restored counters' state. I'll add a comment here at
-the definition unless you prefer somewhere else.
+Signed-off-by: Aaron Lindsay <aclindsa@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ docs/devel/migration.rst    |  9 +++++++--
+ include/migration/vmstate.h |  1 +
+ migration/vmstate.c         | 13 ++++++++++++-
+ 3 files changed, 20 insertions(+), 3 deletions(-)
 
--Aaron
+diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+index e7658ab050..220059679a 100644
+--- a/docs/devel/migration.rst
++++ b/docs/devel/migration.rst
+@@ -419,8 +419,13 @@ The functions to do that are inside a vmstate definiti=
+on, and are called:
+=20
+   This function is called before we save the state of one device.
+=20
+-Example: You can look at hpet.c, that uses the three function to
+-massage the state that is transferred.
++- ``int (*post_save)(void *opaque);``
++
++  This function is called after we save the state of one device
++  (even upon failure, unless the call to pre_save returned an error).
++
++Example: You can look at hpet.c, that uses the first three functions
++to massage the state that is transferred.
+=20
+ The ``VMSTATE_WITH_TMP`` macro may be useful when the migration
+ data doesn't match the stored device data well; it allows an
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 61bef3ef5c..067b126cf1 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -185,6 +185,7 @@ struct VMStateDescription {
+     int (*pre_load)(void *opaque);
+     int (*post_load)(void *opaque, int version_id);
+     int (*pre_save)(void *opaque);
++    int (*post_save)(void *opaque);
+     bool (*needed)(void *opaque);
+     const VMStateField *fields;
+     const VMStateDescription **subsections;
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index 80b59009aa..e2bbb7b5f7 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -390,6 +390,9 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDesc=
+ription *vmsd,
+                 if (ret) {
+                     error_report("Save of field %s/%s failed",
+                                  vmsd->name, field->name);
++                    if (vmsd->post_save) {
++                        vmsd->post_save(opaque);
++                    }
+                     return ret;
+                 }
+=20
+@@ -415,7 +418,15 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDes=
+cription *vmsd,
+         json_end_array(vmdesc);
+     }
+=20
+-    return vmstate_subsection_save(f, vmsd, opaque, vmdesc);
++    ret =3D vmstate_subsection_save(f, vmsd, opaque, vmdesc);
++
++    if (vmsd->post_save) {
++        int ps_ret =3D vmsd->post_save(opaque);
++        if (!ret) {
++            ret =3D ps_ret;
++        }
++    }
++    return ret;
+ }
+=20
+ static const VMStateDescription *
+--=20
+2.19.2
+

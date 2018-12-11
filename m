@@ -1,106 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp113442wrt;
-        Mon, 10 Dec 2018 19:11:40 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/U6Ndw3bjjkLHQ9AmUrCqVNgkH+iXqSv8jgHFEmqhpSSvQKCbeNm3hdJLqex6vzTpmkuS3f
-X-Received: by 2002:aed:30c4:: with SMTP id 62mr13863717qtf.290.1544497900606;
-        Mon, 10 Dec 2018 19:11:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544497900; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp285401wrt;
+        Mon, 10 Dec 2018 23:33:17 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Xm9eV9NUXSUUbyrMwc2o9uzj+V7Lb1ObnuoekQiuUZlBgD2R13ppIxScaTeChusd0OJFH0
+X-Received: by 2002:aed:39e8:: with SMTP id m95mr14861704qte.317.1544513597627;
+        Mon, 10 Dec 2018 23:33:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544513597; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqU/k3yYSXYmWbI6SrWRRreiYKqZUYCIO9RWxRNVEibaJV50IzE5dlDVtlY3Vz2fyZ
-         ukf9dgRjXAHWKu/ginqWTWZvOG6fXYFjFRhWtYgRswHAiSFcDKbXzzTNjLW9/p5Tilov
-         0pUWT0Zk7Dsv2Uj3o9e5lkCAO4mbJ7CiKZcVZF2/HobACpV1Pbo64Jv1aovgHgrJ2jRT
-         //zMAh7c6KDjLRC1wPi+h+9iHPdthWLswOTQX6CwmR6g1vpQWCbRi85UCqYAFWa4M9/X
-         WjClYCze7MLUX2OrAFS04caVo104su2Zyu+AD4YWnBFlFgUDhF7G1MizTDlbEwDaZOp8
-         eCNQ==
+        b=KD9Bn47xSHBaq046RClo+dkBBjz03sJYdcBOs8hyt216bTU+R/+gb7c2a4PfcOOgSz
+         ciHXC3IryX2+agYNXunoC1fBv/0u4V2OdPx65vndBPMPhiXN8/PdVNnhcsX0BvF9LruW
+         7PimoP0DPVzfoZTE4pIWvqyK2wqObSu4BqViBVrZ+3GlsQdcAwX63RowfcDMv1iS1Sa0
+         Z1AnBrblKYGem8YUiYrpQQu8G7Eiy+vFPsSFCNm5odYTQO2W1znBJ5aMkUapo8kYbecR
+         QJQI4kglGsDSo79JmMDLlpSzOoD6Vufa8Fjc+Rvi2CvPrxRcAdfQcmBNx7smdXeQ0uYb
+         xt5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=pb5+jVVNJsNI3JA0nV5CinYknhkN874Qxbuuj6Kuexk=;
-        b=uSQeAKRlmz4sB+cu7//pQN2P5aZb1sIGCh8sjmgHG8CffJFotPwujmTogn1hdiutRK
-         DnzpRm+ioF5PQmE8LtqvBqYworpstYKQOp+158nERbYKC8Wnlsn7rPjMDPOrS4cYUhHw
-         +n2lsyZaSewW3lwM3FDBDNGHJLnoj4+CsMYyK/dLv/q1mVgVVNn4aUq0+aQn46jDtkpn
-         jMcd74xt7n2D9i9tS5WkgKPqTS3CFRsR6PLtFerJJfMrXGsJ60conNAT0OYpo6fijrPS
-         8G0qwZhqvv8hFYEN/PPIerzh69E+2O3AxGbJG4DEuEmeoTM2vTF6EWX93ro3RWO6NSW2
-         I4KA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=SmMsmLSAGHXhTBy+ZENUJXZBRpzbmJ1wdR1uOi7iEs4=;
+        b=fxlZSsV3VOfG5z3qjSWoU0R9Qhi0xUeU3sR/u2qh3krcTIoRqEAZTIM6kol9oXZfP5
+         mt4m91bLli9GV/RfrEp7vRE7ht9q+MRI76bxSgZWfYKg6sBYmYaf3NsvLngcwiree3mQ
+         sdwjaVNKyiqHnf/C3Qf4cJhAPg82H76AQt25QEwIRfbSJgLB6USnMm8nRJGqRZI0Bi6Q
+         YPsfeZIfnAyEDtUGT6SzUtqh+r/kpOGTX+z3b7V5PajvQOkpcnmaoXkmy8NLgDO5nnvQ
+         injBzpaxdaaMz8d260yZZt3LBfV+VILu2GEszCSmziVeJ8XhYS/zwXdhObc3XsG7icxU
+         pB8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B+uOiSpY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z34si2233281qvg.50.2018.12.10.19.11.40
+        by mx.google.com with ESMTPS id l11si1465963qke.87.2018.12.10.23.33.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 10 Dec 2018 19:11:40 -0800 (PST)
+        Mon, 10 Dec 2018 23:33:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B+uOiSpY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35734 helo=lists.gnu.org)
+Received: from localhost ([::1]:36374 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWYSS-0003Xu-1s
-	for alex.bennee@linaro.org; Mon, 10 Dec 2018 22:11:40 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41103)
+	id 1gWcXd-0002Gv-5C
+	for alex.bennee@linaro.org; Tue, 11 Dec 2018 02:33:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1gWYRx-0003O9-2b
-	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 22:11:09 -0500
+	(envelope-from <clg@kaod.org>) id 1gWcXQ-0002GN-Ct
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 02:33:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1gWYRv-0005WL-Ur
-	for qemu-arm@nongnu.org; Mon, 10 Dec 2018 22:11:09 -0500
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:33198)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1gWYRv-0005Vf-Nv; Mon, 10 Dec 2018 22:11:07 -0500
-Received: by mail-pg1-x542.google.com with SMTP id z11so5960987pgu.0;
-	Mon, 10 Dec 2018 19:11:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=pb5+jVVNJsNI3JA0nV5CinYknhkN874Qxbuuj6Kuexk=;
-	b=B+uOiSpY5V1/jTweNByp6jphnQVIechY8sCrPJ1TPLNrc1q6x9Ij2pfHiUOgBB7vSJ
-	NQ2ssFyPRilOz3JhM+m/JTZw7zETzZWz8YT7Dfg6kQGbko15F4LbJxu3ip7+OaZFeE4y
-	cC9sLbMDHU+frfOuVSo39fzDt9Exs7IdqKSI1xONhw7tHOPdhCNpGqITrbU3/FpNKg5/
-	19ExQQcr36ef1g0rHHEA8If7P+TeP3e9gXtLw8MY1d9QOO2Tu8CJE4GAdX2PHM9Kgld4
-	EpaR7IxEVQElhhRgwJJU7h0ZvxTWO3/9lxr8UY6bQN1uX6XgHcJ829bIznt4f1qxfCpW
-	uG2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=pb5+jVVNJsNI3JA0nV5CinYknhkN874Qxbuuj6Kuexk=;
-	b=TiLA1Nr6WOy99fsdgu/r1QXD2O5jSW3LC1GQH1vxUD+TLRZVdhL4SIpgFiRvemvpK5
-	exWVOzjCTZS5HsiZyiwrm6x9JD8aPpFQy/46t98xH9+4yi2XilodF8rqBviTva/BSx2u
-	m/1Ff9jg7Zhc4Tr/CVeLXA9rOiX/ssmapKg0eH0oja/SU5u1Poraj0z9PJBBL3UHM6TB
-	w/z14+kveAT8wis9Ffwwuwoz8Gous3EohG7aBvc/gX0RP6LS1Ltc+7oqtq/adAbht7dF
-	nJqVEOPgvsvxBgTnqdXgszL9lR1I9AxnSJ7kngKE/w92YoCq5v8aTC9n3CZVbp+Piwya
-	It6w==
-X-Gm-Message-State: AA+aEWaaZwSZLOgfz0NQhTNLnCbqvJu3pVDgQ34AWdeSAi/d69jp2ugY
-	HxkEoM4hnfM/X2C8XN8P4M0=
-X-Received: by 2002:a63:ac46:: with SMTP id z6mr13091538pgn.162.1544497866766; 
-	Mon, 10 Dec 2018 19:11:06 -0800 (PST)
-Received: from aurora.jms.id.au ([45.124.203.15])
-	by smtp.gmail.com with ESMTPSA id
-	r80sm18142826pfa.111.2018.12.10.19.11.03
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 10 Dec 2018 19:11:06 -0800 (PST)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Tue, 11 Dec 2018 13:41:00 +1030
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Tue, 11 Dec 2018 13:40:43 +1030
-Message-Id: <20181211031044.27628-2-joel@jms.id.au>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181211031044.27628-1-joel@jms.id.au>
+	(envelope-from <clg@kaod.org>) id 1gWcXN-0001pd-3e
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 02:33:04 -0500
+Received: from 1.mo2.mail-out.ovh.net ([46.105.63.121]:39794)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1gWcXM-0001nu-RW
+	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 02:33:01 -0500
+Received: from player688.ha.ovh.net (unknown [10.109.160.12])
+	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 4AA4F1757B3
+	for <qemu-arm@nongnu.org>; Tue, 11 Dec 2018 08:32:58 +0100 (CET)
+Received: from kaod.org (lfbn-1-10605-110.w90-89.abo.wanadoo.fr
+	[90.89.196.110]) (Authenticated sender: postmaster@kaod.org)
+	by player688.ha.ovh.net (Postfix) with ESMTPSA id 0C3999C831F;
+	Tue, 11 Dec 2018 07:32:53 +0000 (UTC)
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
 References: <20181211031044.27628-1-joel@jms.id.au>
+	<20181211031044.27628-2-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6b36b24b-9cef-c741-9cfa-cda118d187f5@kaod.org>
+Date: Tue, 11 Dec 2018 08:32:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: [Qemu-arm] [PATCH 1/2] aspeed: Add syscon-poweroff to guest device
- tree
+In-Reply-To: <20181211031044.27628-2-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 7505811730701323072
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtkedrudegiedguddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.63.121
+Subject: Re: [Qemu-arm] [PATCH 1/2] aspeed: Add syscon-poweroff to guest
+ device tree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,76 +94,97 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KGaKMIzXrp+N
+X-TUID: LM4TPs/H2s6+
 
-This adds a node to the guest's device tree that allows it to cause Qemu
-to exit when the guest shuts down.
+On 12/11/18 4:10 AM, Joel Stanley wrote:
+> This adds a node to the guest's device tree that allows it to cause Qem=
+u
+> to exit when the guest shuts down.
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/arm/aspeed.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+Do you think we could find a way to add the same node under U-Boot for=20
+tests using flash images ? or could we just add the node in DT ? Would
+that be a problem on real system ?     =20
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 515898548284..00060d44ad51 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -21,8 +21,10 @@
- #include "hw/i2c/smbus.h"
- #include "qemu/log.h"
- #include "sysemu/block-backend.h"
-+#include "sysemu/device_tree.h"
- #include "hw/loader.h"
- #include "qemu/error-report.h"
-+#include <libfdt.h>
- 
- static struct arm_boot_info aspeed_board_binfo = {
-     .board_id = -1, /* device-tree-only board */
-@@ -126,6 +128,36 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr addr, size_t rom_size,
-     g_free(storage);
- }
- 
-+static void fdt_add_shutdown_node(void *fdt)
-+{
-+    const char *nodename = "/syscon-poweroff";
-+    uint32_t phandle;
-+    int offset;
-+
-+    /* Find the scu phandle */
-+    offset = fdt_path_offset(fdt, "/ahb/apb/syscon@1e6e2000");
-+    if (offset < 0) {
-+        error_report("%s couldn't find syscon, guest shutdown unavailable: %s",
-+                     __func__, fdt_strerror(offset));
-+        return;
-+    }
-+    phandle = fdt_get_phandle(fdt, offset);
-+
-+    /* Add syscon-poweroff node and use 0x1A0, an un-used SCU register */
-+    qemu_fdt_add_subnode(fdt, nodename);
-+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "syscon-poweroff");
-+    qemu_fdt_setprop_cells(fdt, nodename, "regmap", phandle);
-+    qemu_fdt_setprop_cells(fdt, nodename, "offset", 0x1A0);
-+    qemu_fdt_setprop_cells(fdt, nodename, "value", 1);
-+}
-+
-+static void aspeed_board_modify_dtb(const struct arm_boot_info *binfo,
-+                                    void *fdt)
-+{
-+    fdt_add_shutdown_node(fdt);
-+}
-+
-+
- static void aspeed_board_init_flashes(AspeedSMCState *s, const char *flashtype,
-                                       Error **errp)
- {
-@@ -228,6 +260,7 @@ static void aspeed_board_init(MachineState *machine,
-     aspeed_board_binfo.kernel_cmdline = machine->kernel_cmdline;
-     aspeed_board_binfo.ram_size = ram_size;
-     aspeed_board_binfo.loader_start = sc->info->sdram_base;
-+    aspeed_board_binfo.modify_dtb = aspeed_board_modify_dtb;
- 
-     if (cfg->i2c_init) {
-         cfg->i2c_init(bmc);
--- 
-2.19.1
+
+Nevertheless, this is fine.
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  hw/arm/aspeed.c | 33 +++++++++++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
+>=20
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 515898548284..00060d44ad51 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -21,8 +21,10 @@
+>  #include "hw/i2c/smbus.h"
+>  #include "qemu/log.h"
+>  #include "sysemu/block-backend.h"
+> +#include "sysemu/device_tree.h"
+>  #include "hw/loader.h"
+>  #include "qemu/error-report.h"
+> +#include <libfdt.h>
+> =20
+>  static struct arm_boot_info aspeed_board_binfo =3D {
+>      .board_id =3D -1, /* device-tree-only board */
+> @@ -126,6 +128,36 @@ static void write_boot_rom(DriveInfo *dinfo, hwadd=
+r addr, size_t rom_size,
+>      g_free(storage);
+>  }
+> =20
+> +static void fdt_add_shutdown_node(void *fdt)
+> +{
+> +    const char *nodename =3D "/syscon-poweroff";
+> +    uint32_t phandle;
+> +    int offset;
+> +
+> +    /* Find the scu phandle */
+> +    offset =3D fdt_path_offset(fdt, "/ahb/apb/syscon@1e6e2000");
+> +    if (offset < 0) {
+> +        error_report("%s couldn't find syscon, guest shutdown unavaila=
+ble: %s",
+> +                     __func__, fdt_strerror(offset));
+> +        return;
+> +    }
+> +    phandle =3D fdt_get_phandle(fdt, offset);
+> +
+> +    /* Add syscon-poweroff node and use 0x1A0, an un-used SCU register=
+ */
+> +    qemu_fdt_add_subnode(fdt, nodename);
+> +    qemu_fdt_setprop_string(fdt, nodename, "compatible", "syscon-power=
+off");
+> +    qemu_fdt_setprop_cells(fdt, nodename, "regmap", phandle);
+> +    qemu_fdt_setprop_cells(fdt, nodename, "offset", 0x1A0);
+> +    qemu_fdt_setprop_cells(fdt, nodename, "value", 1);
+> +}
+> +
+> +static void aspeed_board_modify_dtb(const struct arm_boot_info *binfo,
+> +                                    void *fdt)
+> +{
+> +    fdt_add_shutdown_node(fdt);
+> +}
+> +
+> +
+>  static void aspeed_board_init_flashes(AspeedSMCState *s, const char *f=
+lashtype,
+>                                        Error **errp)
+>  {
+> @@ -228,6 +260,7 @@ static void aspeed_board_init(MachineState *machine=
+,
+>      aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
+>      aspeed_board_binfo.ram_size =3D ram_size;
+>      aspeed_board_binfo.loader_start =3D sc->info->sdram_base;
+> +    aspeed_board_binfo.modify_dtb =3D aspeed_board_modify_dtb;
+> =20
+>      if (cfg->i2c_init) {
+>          cfg->i2c_init(bmc);
+>=20
 

@@ -1,90 +1,131 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp870892wrt;
-        Tue, 11 Dec 2018 09:45:32 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UgbH/UKXYsTBV51X4sTJL2661ergotCx1I5ElI+oOy/Jjbl17GYAj2FllRPcO0R1v/4ggU
-X-Received: by 2002:a37:7885:: with SMTP id t127mr15834151qkc.323.1544550332351;
-        Tue, 11 Dec 2018 09:45:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544550332; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1615746wrt;
+        Wed, 12 Dec 2018 01:35:13 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Vjn3161Rym63oWENiT9y4kKffdCqnlLR2DZMe6TT7zdNrg7So4L5USHTSxgk1EOLnHfH5y
+X-Received: by 2002:a0c:aa84:: with SMTP id f4mr18262948qvb.243.1544607313428;
+        Wed, 12 Dec 2018 01:35:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544607313; cv=none;
         d=google.com; s=arc-20160816;
-        b=TER3zTGyyvBGxCgu/9gtKjnmI7tuffPbdB+/wjCQ/3fdwenuo7/SEbu/Lcymcm+e3U
-         yANzV2rHHcQB0pxbTxZSlEM0naFCEdEldFtbalOCJn0p2vKDGVFzAlAjSOFtA6xgP6ft
-         dVXTOhddF5UMAwHqAvIQthg9wDcqf3GZlWQU9PeFULsjIgRUsqEaZiWrWYroBL52lzAx
-         DwBdqLkQAOqnUohq68N8+KfuNMch+yP4EMzXgUS/7UKXpXk6rIjQHdzsQOEb/DCDT1dh
-         99qtgNV6gSc1RX30bSh/eXsJcmFk4avWRn+ENhtjvUHXuBbflwJ0GTGLIQUkM6aqpCHD
-         hSQw==
+        b=QqGPYiYe7GsmcdfJLen0VBhj71/7pjXtknZeLwXeARCredtGsajksUXDxUCsZBYmDj
+         bEAZbbQn9YEFkTN+5qmamSVMURmNDXr56RfXP99N11l9UmprM1cwwsOyb13bONA+xGcr
+         Bw1V8hS4QPzvCVtia0fQb3gFfZU/v9VMzNbMmkMOtFBZxWHCNeofOVhuJMS5Sxvcodug
+         2U/fSkbxXBNZmw8vXkpa+CyJ4mTw5G6Y1fm6zROTvuNsp7HjUxysMm7xNF4SBxhwiurW
+         /XEdbJhN0t61Fzm+Vn0xX+hpvnLw4kd9ZqxquOtT2UKJpr/s+WkaCHuOJ6W4YEISmCuy
+         BqoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=AZmwXBDrgEG4hEtSq2bHAq695WzsZcAf6iN3ao5Tcg8=;
-        b=DeJAIZPTDsdzXLHjxxHkxGONSeTTEMjnwng1h/ZrSR4nVsp3u7ke/P6eq+MiIsavux
-         CvPW9OFOjWd2wFLKevwoy+zoFjB6ZvrEcVnhapIbgcO4M3ERL4Iwo1yM8AV9VPvRvUZJ
-         0/rumObdGtNzWb6rtksqTRaGlNWjEPFGWIlh2txvhDnr/YF4dnQGjdMqW5+4MSW4U2IN
-         Cr+xrvd9v7kbdDAn4jCNc5wGRTnjbEkspP2TSsJbIOdF1uCBJ8vQsdOxYczsbHw/9N0o
-         Ojt/phacJJH0q/hllbPGpHB5Eq/wgpFZ81K6kis4nHXFH6QXYxjNsRTx4NePigQzCYMy
-         TIXw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=Ad7W7ezsrkvADhW+CNDgQ/g4KtJELtguDBhZBUI5I8k=;
+        b=pJqmgWCJFlL5JRJC/ev2W8zgEfARK2QOOZysto+jm3cOMgKNi6GB19a+8Oy0fCURCZ
+         JHew5nFLrJ0hAG12D7V6yGskiOxuhnfTgUBbGCocTKU0fzPufI46kziTSBrgSY/q+IxV
+         oDTIznKmX9iQ09BRSDAFmjHTenYAzDduZTFogE2AYPtiO81CO9EfnkAx51OYcMT72/tt
+         3Erw3lZNbrbSbpo1iG0JWH8WmZ3nnqcRtP+y4JXJl/Z2WItjmPRlZS6u0lX7VGsXJy6f
+         l/LVEd3jnAcA0PENr4WhU59UI1fS8EeCHoFMlUCUbDw6MLhJtxwrSWMepwlnHr6x0sbX
+         M/JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n10si8969136qtb.25.2018.12.11.09.45.32
+        by mx.google.com with ESMTPS id v40si7099996qta.42.2018.12.12.01.35.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Dec 2018 09:45:32 -0800 (PST)
+        Wed, 12 Dec 2018 01:35:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40476 helo=lists.gnu.org)
+Received: from localhost ([::1]:43456 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gWm67-0007eK-7d
-	for alex.bennee@linaro.org; Tue, 11 Dec 2018 12:45:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35877)
+	id 1gX0vA-00012f-Tb
+	for alex.bennee@linaro.org; Wed, 12 Dec 2018 04:35:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37799)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gWm49-0004ix-HC
-	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 12:43:30 -0500
+	(envelope-from <thuth@redhat.com>) id 1gX0uy-00010i-4W
+	for qemu-arm@nongnu.org; Wed, 12 Dec 2018 04:35:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gWm44-0005S9-Oi
-	for qemu-arm@nongnu.org; Tue, 11 Dec 2018 12:43:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57824)
+	(envelope-from <thuth@redhat.com>) id 1gX0uu-0001SL-Rl
+	for qemu-arm@nongnu.org; Wed, 12 Dec 2018 04:35:00 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54515)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gWm43-0005L8-1M; Tue, 11 Dec 2018 12:43:24 -0500
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gX0uu-0001Rj-J9; Wed, 12 Dec 2018 04:34:56 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F04D87633;
-	Tue, 11 Dec 2018 17:43:10 +0000 (UTC)
-Received: from localhost (ovpn-116-63.gru2.redhat.com [10.97.116.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 436BD60C61;
-	Tue, 11 Dec 2018 17:43:05 +0000 (UTC)
-Date: Tue, 11 Dec 2018 15:43:03 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181211174303.GG7141@habkost.net>
-References: <20181204142023.15982-1-marcandre.lureau@redhat.com>
-	<20181204142023.15982-9-marcandre.lureau@redhat.com>
-	<20181211142310.GB20015@habkost.net>
-	<CAJ+F1CKF7_MEtZNY2FEot9dG-RZQwGeZZ7+3+q1QgD98koF2SA@mail.gmail.com>
-	<20181211165229.744f0c07@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B97E3001AB8;
+	Wed, 12 Dec 2018 09:34:55 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-57.ams2.redhat.com [10.36.116.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 81CEF60C44;
+	Wed, 12 Dec 2018 09:34:52 +0000 (UTC)
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+References: <20181212003147.29604-1-ehabkost@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <b1fbe55c-6deb-5401-b4ed-9c4d6484ac55@redhat.com>
+Date: Wed, 12 Dec 2018 10:34:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20181211165229.744f0c07@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20181212003147.29604-1-ehabkost@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 11 Dec 2018 17:43:10 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.42]);
+	Wed, 12 Dec 2018 09:34:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v5 08/19] hw: apply
- machine compat properties without touching globals
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] virt: Fix broken indentation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,83 +137,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, QEMU <qemu-devel@nongnu.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Qemu-s390x list <qemu-s390x@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IF4y0nFXgj4H
+X-TUID: 5SGLEROGJTP+
 
-On Tue, Dec 11, 2018 at 04:52:29PM +0100, Igor Mammedov wrote:
-> On Tue, 11 Dec 2018 18:30:32 +0400
-> Marc-Andr=E9 Lureau <marcandre.lureau@gmail.com> wrote:
->=20
-> > Hi
-> >=20
-> > On Tue, Dec 11, 2018 at 6:24 PM Eduardo Habkost <ehabkost@redhat.com>=
- wrote:
-> > >
-> > > I have specific questions about the approach we are using to
-> > > eliminate the macros.
-> > >
-> > > My main goal when asking this to be moved to a separate patch is
-> > > to not make this discussion block the register_global_properties() =
-&
-> > > device_post_init() changes (which look good to me).
-> > >
-> > >
-> > > On Tue, Dec 04, 2018 at 06:20:12PM +0400, Marc-Andr=E9 Lureau wrote=
-:
-> > > [...] =20
-> > > > -#define VIRT_COMPAT_3_0 \
-> > > > +static GlobalProperty virt_compat_3_0[] =3D {
-> > > >      HW_COMPAT_3_0
-> > > > +}; =20
-> > >
-> > > What about moving the array inside virt_machine_3_0_options()? =20
-> >=20
-> > Sure
-> >=20
-> > > =20
-> > > >
-> > > >  static void virt_3_0_instance_init(Object *obj)
-> > > >  {
-> > > > @@ -1883,12 +1884,14 @@ static void virt_3_0_instance_init(Object=
- *obj)
-> > > >  static void virt_machine_3_0_options(MachineClass *mc)
-> > > >  {
-> > > >      virt_machine_3_1_options(mc);
-> > > > -    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_3_0);
-> > > > +    compat_props_add(mc->compat_props,
-> > > > +                     virt_compat_3_0, G_N_ELEMENTS(virt_compat_3=
-_0));
-> > > >  }
-> > > >  DEFINE_VIRT_MACHINE(3, 0) =20
-> > >
-> > > This is nice, because it's basically the same amount of
-> > > boilerplate code, but I would find a NULL-terminated array much
-> > > easier to use than having to use G_N_ELEMENTS(). =20
-> >=20
-> > But easier to get wrong too. I prefer the explicit N arguments. (it
-> > also gives some flexibility, since you can point to inner pointer +
-> > size, although we don't care at this point)
-> +1 to explicit array size,
-> it also allows to drop terminating NULL entry in compat declarations
+On 2018-12-12 01:31, Eduardo Habkost wrote:
+> I introduced indentation using tabs instead of spaces in another
+> commit.  Peter reported the problem, and I failed to fix that
+> before sending my pull request.
+> 
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: 951597607696 ("virt: Eliminate separate instance_init functions")
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+>  hw/arm/virt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 17f1b49d11..5b678237b7 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1854,7 +1854,7 @@ static const TypeInfo virt_machine_info = {
+>      .instance_size = sizeof(VirtMachineState),
+>      .class_size    = sizeof(VirtMachineClass),
+>      .class_init    = virt_machine_class_init,
+> -	.instance_init = virt_instance_init,
+> +    .instance_init = virt_instance_init,
+>      .interfaces = (InterfaceInfo[]) {
+>           { TYPE_HOTPLUG_HANDLER },
+>           { }
+> 
 
-I don't mind using G_N_ELEMENTS if you really think it's better,
-but I wonder if it will be an obstacle for making
-  compat_props_add(compat_props, hw_compat_3_0, ...)
-work, because the size of hw_compat_3_0 won't be known by
-compat.h or spapr.c.
-
---=20
-Eduardo
+Reviewed-by: Thomas Huth <thuth@redhat.com>

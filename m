@@ -1,114 +1,101 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id g201sm1255645wme.43.2018.12.13.03.55.03
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Dec 2018 03:55:04 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 9997A3E0363;
-	Thu, 13 Dec 2018 11:55:03 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	mark.rutland@arm.com,
-	ard.biesheuvel@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Omair Javaid <omair.javaid@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v1 2/2] target/arm: defer setting up of aarch64 gdb until arm_cpu_realize
-Date: Thu, 13 Dec 2018 11:55:03 +0000
-Message-Id: <20181213115503.24188-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20181213115503.24188-1-alex.bennee@linaro.org>
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1353110wrt;
+        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
+X-Received: by 2002:a9d:3b83:: with SMTP id k3mr474226otc.318.1544739694267;
+        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544739694; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uni0/7Hl5mnuEnVAkQ4EShYPF+s911nijlTQ1RPAtiXtWYTfDamVsM31AGnc8qN5DF
+         wvTFbLj9wKA9y/LfnqTKpG9wVj89qay7vmeMlzR/Mp59HuXrNIu16duClS5iFK2hhbyQ
+         35z+M2VCph1c+OLG7XOI2OPRFVGGBzJIBRfM80i7x6pLOs6e5JTmi61AOmJjvnPwc/BH
+         clFBrVc5TFg+9Jm2XOufb06cAT1iyuFlnZLUBZBfn6JnGk8N0hrDUXEYu+SSGHS+UhIt
+         BqtsJC0nGZL2oYelHPAX33O+z536toSdnaYeC+klS4aATjbZE212S4JHdR2Wz5J3TT3E
+         Qvqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
+        b=YW0kvVZ77xEAnxEjYyNDf/ntwbqGZ6Kz16KGh95/Moeatxl7SWz8ZjrzG7Jfd9TQTn
+         /3UaFlJpPK8jiFFXpF239J07z7X2pS3Zeso6qNpzT3VWWjLc0AHBK4UZHA1GUh+kQuBl
+         cKKwl1y8qUz9SGi7mXRrM4VylGpVa9tHSwE1h+QdZ68ypccgaFjARK7eFye+NDdKa4Sx
+         q9TwO6dpQGgmuMl6btojWm9lzZjpuuGtyGdMtpQMIjLxumNUSIuIe1SqrpT/DpAqM6NF
+         uOf25VVlFnEJxG0J10ZeghO7s6REv0m/k5O76Lob4+W0tPwN9jxyCxXIsQZX0bVEwqiv
+         x2XA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GwepLRji;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b24sor1908805otl.83.2018.12.13.14.21.34
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GwepLRji;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
+        b=GwepLRjiQneil+a8FXeXYR1+JYDxt4rBjKM9L6LHaukDT2UvnR7G1Pg1FFDjtQpRIA
+         duMV1IzVbSnnkk/go+EaZ4kyn1YCnGNNhweRcRAiX/rOY7UwHPCC68hfTRRvR7LkpQS1
+         Ivx3ckaKnlBFLvyuGvkLA6qqK/cgGpHKA+vsY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
+        b=YIUbtWuQFvCMNBaOBNJ30jgf5GGMIx0Vy2dAo8w1Sqg5u9v9OQvicNoebEnRviUYwA
+         ODkBi7BWy3wgLI2nmwPr+5F2Rmztz5r84bqP1TRj9wZA2MMJ4FwS0Keu5+CrI5wEsGg1
+         I9C7CoFirhjs1bF8FzQLNCEbsK2fnA77c6xZv4zmzIBndBlKHidudeYOvRXDaa8vD8mf
+         4A2HwG7Uu7C9PmkwOr1zlsfYSzVK7E4KU45wK6aG0nP/mVfQUhWMW5NAwJJb/FYG5I1a
+         niZLx9INEGxD6cGqQkW2wQyyYrbhLZ33ysy+P22XL4VknclE0JX9EzyhKK3EYveYPaLx
+         w9/A==
+X-Gm-Message-State: AA+aEWYOxnqnZy0K0otZVtFlY0512ACONCt1Wqi5cK8DKHYghr07fYAR
+	+bmNu40oWFhinRpYRLj+vF/4r3r+
+X-Google-Smtp-Source: AFSGD/VKV0AqP2VaqvswEPlwh6716alK53CVRdZoxSlTfQjPzwaCsMKNxcpZNj1IAR4aMow/0pdHPw==
+X-Received: by 2002:a05:6830:1004:: with SMTP id a4mr449084otp.254.1544739693819;
+        Thu, 13 Dec 2018 14:21:33 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net ([187.217.227.243])
+        by smtp.gmail.com with ESMTPSA id y25sm1368747otq.60.2018.12.13.14.21.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 13 Dec 2018 14:21:33 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v1 1/2] target/arm: kvm64 make guest debug
+ AA32 break point aware
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: mark.rutland@arm.com, Peter Maydell <peter.maydell@linaro.org>,
+ Omair Javaid <omair.javaid@linaro.org>, ard.biesheuvel@linaro.org,
+ qemu-arm@nongnu.org
 References: <20181213115503.24188-1-alex.bennee@linaro.org>
+ <20181213115503.24188-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <035046cb-7a0d-8049-a102-103e0a8758ed@linaro.org>
+Date: Thu, 13 Dec 2018 16:21:30 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20181213115503.24188-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: VAfkCHC2Dfge
+X-TUID: RIjkb0p8oEYa
 
-If we setup earlier we miss the parsing of the aarch64 state of the
-CPU. If the user has booted up with:
+On 12/13/18 5:55 AM, Alex Bennée wrote:
+>  int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+>  {
+> +    CPUARMState *env = &ARM_CPU(cs)->env;
+> +    int el = arm_current_el(env);
+> +    bool is_aa64 = arm_el_is_aa64(env, el);
 
-  qemu-system-aarch64 -cpu host,aarch64=off -enable-kvm
+This will assert for el == 0; for that you need is_a64(env).
 
-we end up presenting an aarch64 view of the world via the gdbstub and
-hilarity ensues.
 
-Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Omair Javaid <omair.javaid@linaro.org>
----
- include/hw/arm/arm.h |  2 ++
- target/arm/cpu.c     |  4 ++++
- target/arm/cpu64.c   | 20 +++++++++++++++-----
- 3 files changed, 21 insertions(+), 5 deletions(-)
-
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index ffed39252d..f9a7a6e2fb 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -171,4 +171,6 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-    ticks.  */
- extern int system_clock_scale;
- 
-+void arm_cpu_enable_aarch64_gdbstub(CPUClass *cc);
-+
- #endif /* HW_ARM_H */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 60411f6bfe..100a72ff81 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -890,9 +890,13 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * queries ID_ISAR0_EL1 on such a host, the value is UNKNOWN.
-      * Similarly, we cannot check ID_AA64PFR0 without AArch64 support.
-      */
-+#ifdef TARGET_AARCH64
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        CPUClass *cc = CPU_GET_CLASS(cs);
-         no_aa32 = !cpu_isar_feature(aa64_aa32, cpu);
-+        arm_cpu_enable_aarch64_gdbstub(cc);
-     }
-+#endif
- 
-     if (arm_feature(env, ARM_FEATURE_V7VE)) {
-         /* v7 Virtualization Extensions. In real hardware this implies
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 873f059bf2..53cde60557 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -434,12 +434,14 @@ static gchar *aarch64_gdb_arch_name(CPUState *cs)
-     return g_strdup("aarch64");
- }
- 
--static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
--{
--    CPUClass *cc = CPU_CLASS(oc);
-+/*
-+ * We can only setup aarch64 gdb support once we realize the CPU
-+ * object and know what mode it has been booted in. This is called
-+ * from arm_cpu_realize.
-+ */
- 
--    cc->cpu_exec_interrupt = arm_cpu_exec_interrupt;
--    cc->set_pc = aarch64_cpu_set_pc;
-+void arm_cpu_enable_aarch64_gdbstub(CPUClass *cc)
-+{
-     cc->gdb_read_register = aarch64_cpu_gdb_read_register;
-     cc->gdb_write_register = aarch64_cpu_gdb_write_register;
-     cc->gdb_num_core_regs = 34;
-@@ -447,6 +449,14 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
-     cc->gdb_arch_name = aarch64_gdb_arch_name;
- }
- 
-+static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
-+{
-+    CPUClass *cc = CPU_CLASS(oc);
-+
-+    cc->cpu_exec_interrupt = arm_cpu_exec_interrupt;
-+    cc->set_pc = aarch64_cpu_set_pc;
-+}
-+
- static void aarch64_cpu_register(const ARMCPUInfo *info)
- {
-     TypeInfo type_info = {
--- 
-2.17.1
+r~

@@ -1,101 +1,112 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1353110wrt;
-        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
-X-Received: by 2002:a9d:3b83:: with SMTP id k3mr474226otc.318.1544739694267;
-        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544739694; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1390842wrt;
+        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
+X-Received: by 2002:a9d:1d29:: with SMTP id m38mr538839otm.264.1544742614233;
+        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544742614; cv=none;
         d=google.com; s=arc-20160816;
-        b=uni0/7Hl5mnuEnVAkQ4EShYPF+s911nijlTQ1RPAtiXtWYTfDamVsM31AGnc8qN5DF
-         wvTFbLj9wKA9y/LfnqTKpG9wVj89qay7vmeMlzR/Mp59HuXrNIu16duClS5iFK2hhbyQ
-         35z+M2VCph1c+OLG7XOI2OPRFVGGBzJIBRfM80i7x6pLOs6e5JTmi61AOmJjvnPwc/BH
-         clFBrVc5TFg+9Jm2XOufb06cAT1iyuFlnZLUBZBfn6JnGk8N0hrDUXEYu+SSGHS+UhIt
-         BqtsJC0nGZL2oYelHPAX33O+z536toSdnaYeC+klS4aATjbZE212S4JHdR2Wz5J3TT3E
-         Qvqg==
+        b=uO4JwIw4Eiwa1Otptn3AxCFG4qY+JLcE40g8JTGN6aYBTlXeqGHJdtT9BN2crrZeXE
+         1dXS/BOnoeZWM+18UD4MeyE45I+KeQf4qEjqRMGhdFdTyASe0NhX7xrdP8jr3gCA+ev+
+         GNlJLnGO95A3y8XJdpvL7XndzKrsMtCK8lc/YfcWpN3fDA3ZlWvOBUezB/OLqy0xUpp6
+         vKmBBB6ydriSuSEKmUTNLZW8QrxVeepOlKdHLOA+Koe99TiAfU5rdd0DQ5jx75Nu4PMR
+         K0AlKfIjLFh8immHXg8dbYUvm4LiyG4zkoD3e6OVMvPbW4haa2Mor8kNz5V/4jDXcBoh
+         q1AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
-        b=YW0kvVZ77xEAnxEjYyNDf/ntwbqGZ6Kz16KGh95/Moeatxl7SWz8ZjrzG7Jfd9TQTn
-         /3UaFlJpPK8jiFFXpF239J07z7X2pS3Zeso6qNpzT3VWWjLc0AHBK4UZHA1GUh+kQuBl
-         cKKwl1y8qUz9SGi7mXRrM4VylGpVa9tHSwE1h+QdZ68ypccgaFjARK7eFye+NDdKa4Sx
-         q9TwO6dpQGgmuMl6btojWm9lzZjpuuGtyGdMtpQMIjLxumNUSIuIe1SqrpT/DpAqM6NF
-         uOf25VVlFnEJxG0J10ZeghO7s6REv0m/k5O76Lob4+W0tPwN9jxyCxXIsQZX0bVEwqiv
-         x2XA==
+        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
+        b=DtwE3BrFN9gyqcTj7Y9BJ+rP669KSjejcBaqS7kPInj+9usP6jqHnjCrYCYqQPhoEl
+         uXGFlHa3aNBaks59y8ba4tpe2L+KLNZ2XrEl4fcMRgxg42arEUaDEiB7GgfHw80D87Vy
+         jcDsQ7nkCSGRgJ43PJawzX8K+QKJqX7NH2FoVoxy3mdtqjR3zqTnrHEjSgSajYPAaZzW
+         oCKfjcq9yIPdFryOiUMw5DYM6w3DxNvipkmDp2qtgRoZZkCFjdbLOwAh26Ey7fLJZGwc
+         /wwGCv1ZLXhv5gVppU4QUIa0VJASqHHGJG8hfQ3Hs2wRaDUbJxgM6QO6u2z9huR492CN
+         ZA/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwepLRji;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HViTM7EU;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b24sor1908805otl.83.2018.12.13.14.21.34
+        by mx.google.com with SMTPS id a74sor1753771oib.74.2018.12.13.15.10.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 13 Dec 2018 14:21:34 -0800 (PST)
+        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GwepLRji;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HViTM7EU;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
-        b=GwepLRjiQneil+a8FXeXYR1+JYDxt4rBjKM9L6LHaukDT2UvnR7G1Pg1FFDjtQpRIA
-         duMV1IzVbSnnkk/go+EaZ4kyn1YCnGNNhweRcRAiX/rOY7UwHPCC68hfTRRvR7LkpQS1
-         Ivx3ckaKnlBFLvyuGvkLA6qqK/cgGpHKA+vsY=
+        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
+        b=HViTM7EU4R0lhdg3ZE8ZakI//g0NJErOlvtoqX3isp9pAHkxc9h8kPDzVMyKAwx5nq
+         XnnDBEz0CqLQXMZ1CxNl26y6oaL06phV8KWZQvDuNTxl49kBm4BhwM7GNYd77dVUbvmQ
+         qUmOX4PytA+mBftfuNwqgE3e5QurQt8Yh+GOE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=wKVZt0uV16vG2mzJCHryCoj7eV/YQu5KMGwbKSzFcX8=;
-        b=YIUbtWuQFvCMNBaOBNJ30jgf5GGMIx0Vy2dAo8w1Sqg5u9v9OQvicNoebEnRviUYwA
-         ODkBi7BWy3wgLI2nmwPr+5F2Rmztz5r84bqP1TRj9wZA2MMJ4FwS0Keu5+CrI5wEsGg1
-         I9C7CoFirhjs1bF8FzQLNCEbsK2fnA77c6xZv4zmzIBndBlKHidudeYOvRXDaa8vD8mf
-         4A2HwG7Uu7C9PmkwOr1zlsfYSzVK7E4KU45wK6aG0nP/mVfQUhWMW5NAwJJb/FYG5I1a
-         niZLx9INEGxD6cGqQkW2wQyyYrbhLZ33ysy+P22XL4VknclE0JX9EzyhKK3EYveYPaLx
-         w9/A==
-X-Gm-Message-State: AA+aEWYOxnqnZy0K0otZVtFlY0512ACONCt1Wqi5cK8DKHYghr07fYAR
-	+bmNu40oWFhinRpYRLj+vF/4r3r+
-X-Google-Smtp-Source: AFSGD/VKV0AqP2VaqvswEPlwh6716alK53CVRdZoxSlTfQjPzwaCsMKNxcpZNj1IAR4aMow/0pdHPw==
-X-Received: by 2002:a05:6830:1004:: with SMTP id a4mr449084otp.254.1544739693819;
-        Thu, 13 Dec 2018 14:21:33 -0800 (PST)
+        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
+        b=EOjHq3nh9VUXij/Cx1d0Gepur2cq/f+McKPwGc/vpEnmp8qFYWQIHCGCh5b86ptV9U
+         hg8wJp/pgjzTVwxELOwkuXqaTY+HY+nvf4vXiS5TDDxIRzmaMSUovBhaOKP90FCWggeP
+         v3CAL+K7n992jqkat9inK+d4tLuNPxBWBlQs9jWm/uWykcHmbA3h0adURmeHTOTpgCIy
+         oSRJuUFIpCn8S6GmTlYSeWvTw1aIoaduSJSpWVW/nhMpDlJRPHAvzrT64UpDLel16Hvu
+         PoNCL96xA5IzqYndQOFTeFtkscqkdP4mohtXLm0wqrJ7DoyjQ7/NEnj05GzrdBaCYp4t
+         q5ig==
+X-Gm-Message-State: AA+aEWbEpbDBcv3CONEAM+ILAJO9HbSkbCBwjnROVBPrldpQaoJcrYzP
+	r2abZAv2+i05xTaDErIWviDmTQlamwdKIw==
+X-Google-Smtp-Source: AFSGD/W4/y6dqtDG8XXiL1RtKOIC1gh0d7ROR9JlGFstPz6En8ym4YCQ53L9/9K8ZNni8b2jvhwU0A==
+X-Received: by 2002:aca:af53:: with SMTP id y80mr476294oie.170.1544742613731;
+        Thu, 13 Dec 2018 15:10:13 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net ([187.217.227.243])
-        by smtp.gmail.com with ESMTPSA id y25sm1368747otq.60.2018.12.13.14.21.32
+        by smtp.gmail.com with ESMTPSA id s66sm2627410oia.55.2018.12.13.15.10.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Dec 2018 14:21:33 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v1 1/2] target/arm: kvm64 make guest debug
- AA32 break point aware
+        Thu, 13 Dec 2018 15:10:13 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v1 2/2] target/arm: defer setting up of
+ aarch64 gdb until arm_cpu_realize
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: mark.rutland@arm.com, Peter Maydell <peter.maydell@linaro.org>,
  Omair Javaid <omair.javaid@linaro.org>, ard.biesheuvel@linaro.org,
  qemu-arm@nongnu.org
 References: <20181213115503.24188-1-alex.bennee@linaro.org>
- <20181213115503.24188-2-alex.bennee@linaro.org>
+ <20181213115503.24188-3-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <035046cb-7a0d-8049-a102-103e0a8758ed@linaro.org>
-Date: Thu, 13 Dec 2018 16:21:30 -0600
+Message-ID: <46dd9943-1d30-ed87-d68b-8f501b7ac8fd@linaro.org>
+Date: Thu, 13 Dec 2018 17:10:05 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20181213115503.24188-2-alex.bennee@linaro.org>
+In-Reply-To: <20181213115503.24188-3-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: RIjkb0p8oEYa
+X-TUID: 9lN/khC0/cFe
 
 On 12/13/18 5:55 AM, Alex Bennée wrote:
->  int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
->  {
-> +    CPUARMState *env = &ARM_CPU(cs)->env;
-> +    int el = arm_current_el(env);
-> +    bool is_aa64 = arm_el_is_aa64(env, el);
+> If we setup earlier we miss the parsing of the aarch64 state of the
+> CPU. If the user has booted up with:
+> 
+>   qemu-system-aarch64 -cpu host,aarch64=off -enable-kvm
+> 
+> we end up presenting an aarch64 view of the world via the gdbstub and
+> hilarity ensues.
+> 
+> Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Omair Javaid <omair.javaid@linaro.org>
+> ---
+>  include/hw/arm/arm.h |  2 ++
+>  target/arm/cpu.c     |  4 ++++
+>  target/arm/cpu64.c   | 20 +++++++++++++++-----
+>  3 files changed, 21 insertions(+), 5 deletions(-)
 
-This will assert for el == 0; for that you need is_a64(env).
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

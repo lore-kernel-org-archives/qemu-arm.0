@@ -1,112 +1,168 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1390842wrt;
-        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
-X-Received: by 2002:a9d:1d29:: with SMTP id m38mr538839otm.264.1544742614233;
-        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544742614; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1786705wrt;
+        Fri, 14 Dec 2018 00:38:18 -0800 (PST)
+X-Received: by 2002:ac8:839:: with SMTP id u54mr1819649qth.313.1544776698210;
+        Fri, 14 Dec 2018 00:38:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544776698; cv=none;
         d=google.com; s=arc-20160816;
-        b=uO4JwIw4Eiwa1Otptn3AxCFG4qY+JLcE40g8JTGN6aYBTlXeqGHJdtT9BN2crrZeXE
-         1dXS/BOnoeZWM+18UD4MeyE45I+KeQf4qEjqRMGhdFdTyASe0NhX7xrdP8jr3gCA+ev+
-         GNlJLnGO95A3y8XJdpvL7XndzKrsMtCK8lc/YfcWpN3fDA3ZlWvOBUezB/OLqy0xUpp6
-         vKmBBB6ydriSuSEKmUTNLZW8QrxVeepOlKdHLOA+Koe99TiAfU5rdd0DQ5jx75Nu4PMR
-         K0AlKfIjLFh8immHXg8dbYUvm4LiyG4zkoD3e6OVMvPbW4haa2Mor8kNz5V/4jDXcBoh
-         q1AA==
+        b=v3glKX0MqqwFGu0eckhyynvfsdS/KrW+vWNRF8IugvfzC4DF0vE+6lC8WEpn6MMRgc
+         S+0z6Jz4ar6DV8/uePbGoStDA2rTXuePj+G97C+oXxykEgReXRGr2VYIKCskESsgbJAU
+         X6hS7rNYjFEu0YNNIP5K3WC132hDZCPTpFgcS4AB1TWoCMcQsumWd2r1HHA5WqsgzBJ/
+         WfxAUp9bbpYqdnVlffTD7x8ze646ouIkmgOy8Nkt32AFwdL7th07mfeW3O++Mrxrq3jL
+         jUIjxe2ogMHtzFpy3jGjD0SRrwgVM5DjK+cK2ClBKvR2/JCgitU23puNhgviiqRNW68o
+         wMsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
-        b=DtwE3BrFN9gyqcTj7Y9BJ+rP669KSjejcBaqS7kPInj+9usP6jqHnjCrYCYqQPhoEl
-         uXGFlHa3aNBaks59y8ba4tpe2L+KLNZ2XrEl4fcMRgxg42arEUaDEiB7GgfHw80D87Vy
-         jcDsQ7nkCSGRgJ43PJawzX8K+QKJqX7NH2FoVoxy3mdtqjR3zqTnrHEjSgSajYPAaZzW
-         oCKfjcq9yIPdFryOiUMw5DYM6w3DxNvipkmDp2qtgRoZZkCFjdbLOwAh26Ey7fLJZGwc
-         /wwGCv1ZLXhv5gVppU4QUIa0VJASqHHGJG8hfQ3Hs2wRaDUbJxgM6QO6u2z9huR492CN
-         ZA/g==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=hBDWlxEM4yb82ps77Mp79E5EWOKIqH1F2/vQIxi/QnY=;
+        b=WxQULo73aZa99Nb9AHg8iwzjyT5k7v6Xoa4mIpoPFGB767MwLbi9vLnODLbXKncwSS
+         w4CT+rA6sBntswS1MBpru0HDT2cPg+hZS5DxGlkWCeN6GRXvuKu/tHdEJ6pl8i/iK3xz
+         wd4lZHlzlsTli5PHAfS502nzGfuBxCsj+A/Uvqb61DD0RRhXWN7hVJB1l2Hfb8f+Y+9I
+         zAKwqQyebN61D5SKc1Z8szMAF4fO8nLC1Vyypo8lImTjmg1pbk478WahC7jBZHK5VGCA
+         LYvG3nsHWKUMBFUoBNXR8OEjakThe0F+vzPrNOujahKAUMT1BW/1wpLpoZbsk50ImcAZ
+         LLHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HViTM7EU;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fLjF8PNV;
+       spf=pass (google.com: domain of omair.javaid@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=omair.javaid@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <omair.javaid@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a74sor1753771oib.74.2018.12.13.15.10.14
+        by mx.google.com with SMTPS id k184sor2573432qke.141.2018.12.14.00.38.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 13 Dec 2018 15:10:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 14 Dec 2018 00:38:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of omair.javaid@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HViTM7EU;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fLjF8PNV;
+       spf=pass (google.com: domain of omair.javaid@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=omair.javaid@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
-        b=HViTM7EU4R0lhdg3ZE8ZakI//g0NJErOlvtoqX3isp9pAHkxc9h8kPDzVMyKAwx5nq
-         XnnDBEz0CqLQXMZ1CxNl26y6oaL06phV8KWZQvDuNTxl49kBm4BhwM7GNYd77dVUbvmQ
-         qUmOX4PytA+mBftfuNwqgE3e5QurQt8Yh+GOE=
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=hBDWlxEM4yb82ps77Mp79E5EWOKIqH1F2/vQIxi/QnY=;
+        b=fLjF8PNVQdEkCo9Cd4wHBYsy2YkEwbyZLIXi/FfotUGzIMVpuEGF66fYIxkXKqCCDK
+         KJqsuahX5A5lqKwqiny3t3M0NjlPo5IeC8gOfwDrDJKpGwNn1iiSIXoQxzz5vVLQNIOh
+         i4UNMQXSdODPsiPFPe+X1erIP/jFujMhS9Kao=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=7tpX34cSXtDT36Hp0d+pucZq1wxX4M8veV+/ZUJLGaE=;
-        b=EOjHq3nh9VUXij/Cx1d0Gepur2cq/f+McKPwGc/vpEnmp8qFYWQIHCGCh5b86ptV9U
-         hg8wJp/pgjzTVwxELOwkuXqaTY+HY+nvf4vXiS5TDDxIRzmaMSUovBhaOKP90FCWggeP
-         v3CAL+K7n992jqkat9inK+d4tLuNPxBWBlQs9jWm/uWykcHmbA3h0adURmeHTOTpgCIy
-         oSRJuUFIpCn8S6GmTlYSeWvTw1aIoaduSJSpWVW/nhMpDlJRPHAvzrT64UpDLel16Hvu
-         PoNCL96xA5IzqYndQOFTeFtkscqkdP4mohtXLm0wqrJ7DoyjQ7/NEnj05GzrdBaCYp4t
-         q5ig==
-X-Gm-Message-State: AA+aEWbEpbDBcv3CONEAM+ILAJO9HbSkbCBwjnROVBPrldpQaoJcrYzP
-	r2abZAv2+i05xTaDErIWviDmTQlamwdKIw==
-X-Google-Smtp-Source: AFSGD/W4/y6dqtDG8XXiL1RtKOIC1gh0d7ROR9JlGFstPz6En8ym4YCQ53L9/9K8ZNni8b2jvhwU0A==
-X-Received: by 2002:aca:af53:: with SMTP id y80mr476294oie.170.1544742613731;
-        Thu, 13 Dec 2018 15:10:13 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net ([187.217.227.243])
-        by smtp.gmail.com with ESMTPSA id s66sm2627410oia.55.2018.12.13.15.10.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Dec 2018 15:10:13 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v1 2/2] target/arm: defer setting up of
- aarch64 gdb until arm_cpu_realize
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: mark.rutland@arm.com, Peter Maydell <peter.maydell@linaro.org>,
- Omair Javaid <omair.javaid@linaro.org>, ard.biesheuvel@linaro.org,
- qemu-arm@nongnu.org
-References: <20181213115503.24188-1-alex.bennee@linaro.org>
- <20181213115503.24188-3-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <46dd9943-1d30-ed87-d68b-8f501b7ac8fd@linaro.org>
-Date: Thu, 13 Dec 2018 17:10:05 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.3.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=hBDWlxEM4yb82ps77Mp79E5EWOKIqH1F2/vQIxi/QnY=;
+        b=XXGzQMv85xijm4gZRO8TacFej+8IxGe1/fxql/xwSqXJBm/6E+IMPP561hGZ89krt5
+         ITl9wmh7moM93TFDN1sFzqmNNwWz9leBiTddU9V5gy4zYlCG3Df7s+8E8M3QNAGzZciM
+         ddkFvuvwpQhOtf76S04C6/yMPVFZ/vXbVsUx50xGbvUAYT0iSr+NqxlRBcXkpDgaLNZT
+         Ng9/madSyAExnOhCGBdOVaci7/NHLUPVPffYrRO+x2zR+DFuFf2WYPzP9PJt7zljdCHj
+         mw3cgzfLSjhB4u0utJrd0laZPRSk9cuhCosIPmXbaLeU37/qKKJhPCbrxhOxeIv63dj1
+         zfHQ==
+X-Gm-Message-State: AA+aEWZAu6/5sS/ozlRGyAFsa8Ewfp34Rm01Uq6hryWy61jAqVWGxuE3
+	fhVznLWAIyoNmbqPNsAkc3bBhKxCn/T7JJStSZbphWNvq1N4DA==
+X-Google-Smtp-Source: AFSGD/XasrWexB06BfnpampyEqLJtCCA4YTFrUXxAeMwCPdAPmTLwkug0D0e0t4qnN5kyIN9g4b55Bm98WmHwHCBP7o=
+X-Received: by 2002:a37:455:: with SMTP id 82mr1785460qke.60.1544776697660;
+ Fri, 14 Dec 2018 00:38:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20181213115503.24188-3-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 9lN/khC0/cFe
+References: <20181213115503.24188-1-alex.bennee@linaro.org> <20181213115503.24188-2-alex.bennee@linaro.org>
+In-Reply-To: <20181213115503.24188-2-alex.bennee@linaro.org>
+From: Omair Javaid <omair.javaid@linaro.org>
+Date: Fri, 14 Dec 2018 13:37:51 +0500
+Message-ID: <CANW4E-1UmZOGHya4jHxj10O2Ki7MPGMqme7wT0jaCO8Ufrii6g@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] target/arm: kvm64 make guest debug AA32 break
+ point aware
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mark.rutland@arm.com, 
+	ard.biesheuvel@linaro.org, Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 0j2yUIHNTGaS
 
-On 12/13/18 5:55 AM, Alex Bennée wrote:
-> If we setup earlier we miss the parsing of the aarch64 state of the
-> CPU. If the user has booted up with:
-> 
->   qemu-system-aarch64 -cpu host,aarch64=off -enable-kvm
-> 
-> we end up presenting an aarch64 view of the world via the gdbstub and
-> hilarity ensues.
-> 
+On Thu, 13 Dec 2018 at 16:55, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> When supported by the hardware we can run AA32 guests or even AA64 EL1
+> code with AA32 EL0 mode code. Inserting a AA64 break point into AA32
+> code tends to break things. This is especially acute with gdb as it
+> inserts temporary breakpoints when stepping through code.
+
+Hi Alex,
+
+Are you expecting GDB to switch targets (from AArch64 to AArch32 or
+vice versa) when there is mode switch for example a AArch64 binary
+calling a AArch32 library function.
+I think GDB will behave nicely when doing 1 type of debug but seamless
+switching between modes is still tricky for GDB. There has been some
+work in last few months on this but not sure where it has reached.
+
+>
+> The heuristic of checking the current mode works but it's not perfect.
+> A user could be placing a break point in code after a mode switch and
+> that will still fail. However there doesn't seem to be a way to force
+> a hbreak by default. According to "set breakpoint auto-hw on":
+
+On mode switch we ll have to switch target architecture on GDB side
+and GDB may not be able to do that seamlessly. Have you tried
+debugging such an example?
+
+>
+>   This is the default behavior. When GDB sets a breakpoint, it will try
+>   to use the target memory map to decide if software or hardware
+>   breakpoint must be used.
+>
 > Reported-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > Cc: Omair Javaid <omair.javaid@linaro.org>
 > ---
->  include/hw/arm/arm.h |  2 ++
->  target/arm/cpu.c     |  4 ++++
->  target/arm/cpu64.c   | 20 +++++++++++++++-----
->  3 files changed, 21 insertions(+), 5 deletions(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+>  target/arm/kvm64.c | 13 ++++++++++---
+>  1 file changed, 10 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 0a502091e7..dd564a59b7 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -989,14 +989,20 @@ int kvm_arch_get_registers(CPUState *cs)
+>      return ret;
+>  }
+>
+> -/* C6.6.29 BRK instruction */
+> +/* BRK (A64) and BKPT (A32) instructions */
+>  static const uint32_t brk_insn =3D 0xd4200000;
+> +static const uint32_t bkpt_insn =3D 0xe1200070;
+>
+>  int kvm_arch_insert_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint=
+ *bp)
+>  {
+> +    CPUARMState *env =3D &ARM_CPU(cs)->env;
+> +    int el =3D arm_current_el(env);
+> +    bool is_aa64 =3D arm_el_is_aa64(env, el);
+> +    const uint32_t *bpi =3D is_aa64 ? &brk_insn : &bkpt_insn;
+> +
+>      if (have_guest_debug) {
+>          if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, =
+4, 0) ||
+> -            cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk_insn, 4, 1))=
+ {
+> +            cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)bpi, 4, 1)) {
+>              return -EINVAL;
+>          }
+>          return 0;
+> @@ -1012,7 +1018,7 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, str=
+uct kvm_sw_breakpoint *bp)
+>
+>      if (have_guest_debug) {
+>          if (cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&brk, 4, 0) ||
+> -            brk !=3D brk_insn ||
+> +            !(brk =3D=3D brk_insn || brk =3D=3D bkpt_insn) ||
+>              cpu_memory_rw_debug(cs, bp->pc, (uint8_t *)&bp->saved_insn, =
+4, 1)) {
+>              return -EINVAL;
+>          }
+> @@ -1055,6 +1061,7 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_=
+debug_exit_arch *debug_exit)
+>              return false;
+>          }
+>          break;
+> +    case EC_AA32_BKPT:
+>      case EC_AA64_BKPT:
+>          if (kvm_find_sw_breakpoint(cs, env->pc)) {
+>              return true;
+> --
+> 2.17.1
+>

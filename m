@@ -1,117 +1,149 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1678754wrt;
-        Thu, 13 Dec 2018 22:09:13 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XYWdQvU0CEiCYZIUa1B04H0DgsLrnWZkb8KglKELuq3T5GyMqPQ/AwK185ilChHFtv0h1J
-X-Received: by 2002:a0c:d0a8:: with SMTP id z37mr1637154qvg.86.1544767753702;
-        Thu, 13 Dec 2018 22:09:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544767753; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1868596wrt;
+        Fri, 14 Dec 2018 02:23:00 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Wf+oetGj4sEp7cIuw6NtuCem2D+X5fWIC+OpTRvAZEZKHRdKqxU1p2PGFW4uy4MKnud4JG
+X-Received: by 2002:a0c:ad9a:: with SMTP id w26mr2086859qvc.39.1544782980348;
+        Fri, 14 Dec 2018 02:23:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1544782980; cv=none;
         d=google.com; s=arc-20160816;
-        b=NQmXBlnHtsUAQYOeFvgyTSpUk3WOg2ax/AxdfIYxbpILWD0MS9pPuNAxdrC43P3eIv
-         3YohBAVblmLOa6h9frr6fmMZvEa1VT+km7VP7Hy0RUsMbvlqggtcbG6qtESwgr7CUwTJ
-         TvXGmHuVfc4uQVmmLvf+GeWqziJR+CvnnM/xp+odvpGFlxX+18zDPy1mOKJrp7dPob5X
-         ANcIlGruIfvX27rKXjLhuWLSufS8++u4yn34dBqtDjvzWtT4JFf277IBRkJ9nqk29z7W
-         VEcYKdPz+MzgzsvIp8OEayOLXL7Td0DcaLaB1GGs1BAkqvKX9aN95/pkZEjI8r8MvYnJ
-         OupA==
+        b=B/FA6NxwjY5I7LsS2jfe6x6d+LRUq+j6SDlevMifqvwAEgL0EX1QqnexVU5jc/FucW
+         aJLNn0TJUnuDCHKZUhwh9w6+QZulSagsbChKFi12cFZ94tX35jx12HbkWqwS6gGvWwx1
+         ApHhLChMmuHdbHc8L10gyoSR2M5dJt2hTwSNzEOUKDBSqklIYZ3/MRdlzL1SuELrYXM4
+         j4tq0XZAK69EKoIp6s7dOR7Y5ST04c4IMMn5PTqSiXuKSAUBU4itUSle4OdpFSGJ0Prp
+         QchfNjGOF55RShRDkKy9OccrkBh6EW5350Xqj/5Uf2Rt3V/CdVX4+vOqRu+Q/BAye/nT
+         xRiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from;
-        bh=wNrMn8+DzgcZS8P5VUAUh6LVGpqENfjSHRrg2HlfKt8=;
-        b=MBW3Ubro7dzzwzOhpLIFqkcrHlZrQGSJ4CLezsWBsYOPkpXhchAixpapf5akVHNePO
-         se4jPcUnjXM9qCq7u1JFx8OVsvn7UTKbW95/aPBn8dCsDv3/6dlCeQOt2N/Ug4EMu6J5
-         GZfMBwDEayXTz3YKskotwjeMOkTGgBIfClUvohl6A+5gF5Q47YzzsVd/5kIN3SRVd56i
-         dvYxK9COLGkD4Gd8D+43LgyN14mqKZfPEg2WbP8Ly+wnVg6lIkDAOZlpxCrLVFucaCJP
-         IbAkulaAqdPzwHUfov0rl0tl9xOMfvIj/iO3884sXMaj4rmuRNi6PrNAXDAxQUPCgU6x
-         0ABA==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=BeYQZzmSJEQzdyJtuysmcO0Bd5ptTm1bw+Mc8EkzSGs=;
+        b=DvVj+Yv0ddYfjjONQuFrb5Zdsn/1jP/I9auQcD1NctAlM0rZCE1rJKicAqY4ylrVg/
+         vzlqy6RuauE7yDv9vraVjAt3deETKQKpvv58rsrysHnQHuJRvL7D1bW87KVXqF2JmCBd
+         VMzkRkC8Yz5gN+8VVf/KBu3Cbd8bPys59MTo1E8DRyyimKGZx3LPMhRPwi0XVp48phb+
+         VWhxgrNUfUiJdboFOUrYKfdDK+xcH0cfAYU83fBIp/tMQ9TRuahQtVu4qnSK3WKtwe5A
+         urTDaE39GGWf4Z6OHkksdW/JTDk86dMBJQbLVS9mQMi9Xx/yrwvi2S3cPaKi1gy5WCud
+         zlKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d32si2363005qtd.307.2018.12.13.22.09.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Dec 2018 22:09:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id g24si509064qvb.43.2018.12.14.02.23.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 14 Dec 2018 02:23:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59615 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gXgev-0007RE-5V
-	for alex.bennee@linaro.org; Fri, 14 Dec 2018 01:09:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38537)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gXgeg-0007NS-EW
-	for qemu-arm@nongnu.org; Fri, 14 Dec 2018 01:08:59 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gXged-0004DX-Am
-	for qemu-arm@nongnu.org; Fri, 14 Dec 2018 01:08:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52414)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1gXged-0004DM-4v; Fri, 14 Dec 2018 01:08:55 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3F6117F6A7;
-	Fri, 14 Dec 2018 06:08:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-56.ams2.redhat.com
-	[10.36.116.56])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2DEAA26577;
-	Fri, 14 Dec 2018 06:08:51 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id C646A113860E; Fri, 14 Dec 2018 07:08:49 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id C32FB80F7B;
+	Fri, 14 Dec 2018 10:22:57 +0000 (UTC)
+Received: from redhat.com (ovpn-112-19.ams2.redhat.com [10.36.112.19])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1CF6F5C257;
+	Fri, 14 Dec 2018 10:22:14 +0000 (UTC)
+Date: Fri, 14 Dec 2018 10:22:11 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>
-References: <20181213223737.11793-1-pbonzini@redhat.com>
-	<20181213223737.11793-2-pbonzini@redhat.com>
-Date: Fri, 14 Dec 2018 07:08:49 +0100
-In-Reply-To: <20181213223737.11793-2-pbonzini@redhat.com> (Paolo Bonzini's
-	message of "Thu, 13 Dec 2018 23:37:36 +0100")
-Message-ID: <87bm5ofxn2.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 14 Dec 2018 06:08:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] remove space-tab sequences
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org,
-	"open list:ARM target" <qemu-arm@nongnu.org>,
+Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+	Richard Henderson <rth@twiddle.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	Amit Shah <amit@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j7pW4fM408I5
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Stefan Markovic <smarkovic@wavecomp.com>,
+	Jason Wang <jasowang@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	=?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+	Fam Zheng <famz@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"open list:bochs" <qemu-block@nongnu.org>,
+	"open list:Stellaris" <qemu-arm@nongnu.org>,
+	"open list:X86" <xen-devel@lists.xenproject.org>,
+	"open list:ppc4xx" <qemu-ppc@nongnu.org>
+Subject: Re: [PATCH 2/2] avoid TABs in files that only contain a few
+Message-ID: <20181214102211.GF4265@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20181213223737.11793-1-pbonzini@redhat.com>
+ <20181213223737.11793-3-pbonzini@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20181213223737.11793-3-pbonzini@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Fri, 14 Dec 2018 10:22:59 +0000 (UTC)
+X-TUID: 8935Dt0fi8Mp
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+On Thu, Dec 13, 2018 at 11:37:37PM +0100, Paolo Bonzini wrote:
+> Most files that have TABs only contain a handful of them.  Change
+> them to spaces so that we don't confuse people.
+> 
+> disas, standard-headers, linux-headers and libdecnumber are imported
+> from other projects and probably should be exempted from the check.
+> Outside those, after this patch the following files still contain both
+> 8-space and TAB sequences at the beginning of the line.  Many of them
+> have a majority of TABs, or were initially committed with all tabs.
 
-> There are not many, and they are all simple mistakes that ended up
-> being committed.  Remove them.
->
+>     crypto/aes.c
+
+Since you already cleaned some tabs in the previous patch, and the
+rest of crypto/ except desrfb.c is tab-clean, I'd like this to be
+fully cleaned too.
+
+
+>     ui/vnc-enc-hextile-template.h
+>     ui/vnc-enc-zywrle.h
+
+The VNC code was historically heavily tab-damaged and we've
+progressively cleaned it up when making changes. 
+
+> The following have only TABs:
+
+>     crypto/desrfb.c
+
+I'd rather like this to be cleaned to finish the job for
+crypto/.
+
+
+
 > Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
 
-The cover letter states "I am not touching space-tab in the middle of
-the line, many of which are in #define lines."  I think the actual
-commit should, too.
+
+>  ui/vnc-enc-zywrle-template.c               |  4 +-
+>  ui/vnc.c                                   |  4 +-
+
+That you've finished tab-cleaning of these files, reinforces to
+me that we should clean those other vnc files listed above.
+
+None the less
+
+  Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+since those ones mentioned above can still be done as a separate
+commit to this.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

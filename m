@@ -1,82 +1,86 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3145270wrt;
-        Mon, 17 Dec 2018 17:11:10 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/U0Sq8gkT9S1HoMW3LBnJomo22G+WkyTOMtpBgmWYjR29skRNkeNauIXAUzTvZSRXiSgEXn
-X-Received: by 2002:a37:a06:: with SMTP id 6mr13015675qkk.52.1545095470852;
-        Mon, 17 Dec 2018 17:11:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1545095470; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3282422wrt;
+        Mon, 17 Dec 2018 20:29:42 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WC3DWLFmzz79YjOOADnbV3kbVozlrAmnG5zXJpKvqsP2pBbSxNFPu9X/NOA4MYc2GKiUi9
+X-Received: by 2002:a0c:8382:: with SMTP id k2mr16250529qva.0.1545107382503;
+        Mon, 17 Dec 2018 20:29:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545107382; cv=none;
         d=google.com; s=arc-20160816;
-        b=tSQLNn36vzkanG2cNU6cRPNTqml+YzXmDwGOuZYg72+W9BHSKicVyYdpaffqJo+w7P
-         EBpE37PhTF93tx3t9PSUpvdT60CJ+5wSyNFKZiYfoEQSOau/H9ea0Fm9npRlvzCGTej/
-         bwis/4e5LZbkGsnnVDFtj1kkFr+vFtBkNUjzf4URnfG/pYxggB7hJoHsOw3iJtw/Cwxe
-         WsHFfXMLC+wtH6y3umLR9e4sTkshgrEU7SeaKcah5R8SA17T0aFfYDRjLcT9mB3TW108
-         qm9cjJEGYkk6gLce8yHmdeQjDn02BuIXCUnhu3RhN2Da35mZQObwRXk4fhcr9SkjMA2v
-         So2Q==
+        b=U3kHxuP9lmgxItI6XbWVUJOx8dAz24Mn2fvGphhacptEJpII9c6SkiJdiGO2YHpJG+
+         oZUvvM5uaYJ0sL1gjF3MWdBTIiUpz0jRbrUq/TF/kq6VKHpWGuRT0xoTNnDIxBAxIexP
+         wK6GIKrxvjMrMcKhToGNOrqmvydSiZ1vdSZIjSLSCgS3bwh4h34fXE68mKPIrEFYhRwv
+         slTOnjW6i8Ur2rSZdcEbV+dP8zgMBCYuEkaP7mEktswhbc2VFzOu/vQAvjeBinoV/VkT
+         z1grDZ5o4MOb49we7flaigdqBe+1Q/xKUvEuVJDtIP8xRfJiz17/W+b+DomR5TsDVt7Q
+         SbEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=cAsSt6KU18CjxqdhBkcvCDZxbflRxv8P1WStwcXbQug=;
-        b=cdCDKZxNVKCRY9qMFiaP8vm7qZ915RgGPD4duqHOhfl/6SFhG/ARgMOgGb1IuUdspU
-         18AvywSlulLvJIWwIUhKBAa62CiHM5p5ULJVSaYhjA+aJJ01+lE67jzWQN8yKKTqZbS9
-         64FsBp7bCCber5InsAn7SQ/vxZRyz+Rzx2VWx7dsonCIr2nnYMozOoccLnm2CY6WH2Sa
-         Rn3o00AVATecA1Rsmn6WhNY73xI1wYkKbro8itIJCgxLHNWPoQdkFZGmAn7iGWgNPs7V
-         I4mKO2cgC1jzz1p/QMY/sM5WFHYlvUUBdl8J/2VfvIgVlq6J3kZjBr5RpAloGLn6zi1s
-         FWSA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date;
+        bh=aco0LsDNjSQkxmSBFceKazeElfVMlfeqrENpWiA2Z98=;
+        b=Lbl5VuBSV7XRSfVS7vKcDxieonkklfdTJ/ZKXfOzBAtWcDnmHZMhLUVWyBMCDbrZ9D
+         ALHrWGIEoLguyrSS61OgazcYiJHQt0VaHHHADDmPs3L+9uFYNFDtJZd+Bw0CHQJvcO5v
+         sShYArMhYhOccZAGqDFF6fZ38sNUlQMWIFsBayR0o+++I7sxQQus9WuIlnmJzjTFHanT
+         rfKfJapEzWnqu2J0K8QTI2YeyuYAUCIB//UFgDv0AT2GG6mxt+FEOT2a3aMOXTpxm5TQ
+         nxwpX2044Swtzd0kMd5SGLSDpchSeZ72l0qH7Wgla9T+fR/dhl5Sr0anTtJxDYIjs7uK
+         zn7A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s11si4365469qvc.143.2018.12.17.17.11.10
+        by mx.google.com with ESMTPS id w10si1740122qvb.199.2018.12.17.20.29.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Dec 2018 17:11:10 -0800 (PST)
+        Mon, 17 Dec 2018 20:29:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50871 helo=lists.gnu.org)
+Received: from localhost ([::1]:51636 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gZ3ug-0005Xq-BH
-	for alex.bennee@linaro.org; Mon, 17 Dec 2018 20:11:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37469)
+	id 1gZ70n-0007I8-SA
+	for alex.bennee@linaro.org; Mon, 17 Dec 2018 23:29:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gZ3ua-0005Xl-0X
-	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 20:11:04 -0500
+	(envelope-from <mst@redhat.com>) id 1gZ6ol-0004g5-OI
+	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 23:17:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gZ3uW-0006FF-SC
-	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 20:11:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55106)
+	(envelope-from <mst@redhat.com>) id 1gZ6ok-0006bZ-6N
+	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 23:17:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42472)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1gZ3uW-0006EH-J4; Mon, 17 Dec 2018 20:11:00 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1gZ6oj-0006ai-Tk; Mon, 17 Dec 2018 23:17:14 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7798D432BF;
-	Tue, 18 Dec 2018 01:10:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2F8D9C71B2;
+	Tue, 18 Dec 2018 04:17:13 +0000 (UTC)
 Received: from redhat.com (ovpn-120-67.rdu2.redhat.com [10.10.120.67])
-	by smtp.corp.redhat.com (Postfix) with SMTP id C242960BEC;
-	Tue, 18 Dec 2018 01:10:57 +0000 (UTC)
-Date: Mon, 17 Dec 2018 20:10:57 -0500
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 89A0E6871A;
+	Tue, 18 Dec 2018 04:17:11 +0000 (UTC)
+Date: Mon, 17 Dec 2018 23:17:11 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181217201034-mutt-send-email-mst@kernel.org>
-References: <20181217104838.18957-1-sameo@linux.intel.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20181218041625.24969-9-mst@redhat.com>
+References: <20181218041625.24969-1-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20181217104838.18957-1-sameo@linux.intel.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20181218041625.24969-1-mst@redhat.com>
+X-Mutt-Fcc: =sent
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Tue, 18 Dec 2018 01:10:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 18 Dec 2018 04:17:13 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v4 0/8] hw: acpi: RSDP fixes and refactoring
+Subject: [Qemu-arm] [PULL 08/31] hw/smbios: Move to the hw/firmware/
+ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,84 +94,174 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Ben Warren <ben@skyportsystems.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+	Laszlo Ersek <lersek@redhat.com>, qemu-arm@nongnu.org,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JRqVXTQ7KK6R
+X-TUID: v5zdPq5EMpcp
 
-On Mon, Dec 17, 2018 at 11:48:30AM +0100, Samuel Ortiz wrote:
-> This patch serie fixes a couple of RSDP checksum related issues:
-> 
-> - On RSDP rev2, we are not adding the extended checksum and computing
->   the checksum on the full table instead of the first 20 bytes.
-> - On RSDP rev1, we are computing the checksum on 36 bytes instead of 20.
->   We're lucky enough that this is only adding zeroes to the checksum.
-> 
-> A guest Linux kernel does not seem to care about RSDP checksums, so
-> those 2 fixes are mostly for correctness sake.
-> Any machine type that generates rev2 RSDP will see its RSDP table
-> modified but since x86 builds RSDP v1 and all ACPI tests only run on
-> either pc or q35, the ACPI tests tables are not affected by this fix.
-> 
-> The serie also extends the ARM virt ACPI RSDP build routine to support
-> both RSDP v1 and v2, in order to share this code between x86 and
-> aarch64. While extending, we also convert the routine to the latest
-> build_append_foo() API. The new implementation is a closer reflection of
-> the ACPI spec itself, is endian agnostic and allows for getting rid of the
-> AcpiRsdpDescriptor structure.
+From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
+SMBIOS is just another firmware interface used by some QEMU models.
+We will later introduce more firmware interfaces in this subdirectory.
 
-OK I queued this, so we can proceed to do incremental patches on top.
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ include/hw/{smbios =3D> firmware}/smbios.h | 0
+ hw/arm/virt.c                            | 2 +-
+ hw/i386/pc.c                             | 2 +-
+ hw/i386/pc_piix.c                        | 2 +-
+ hw/i386/pc_q35.c                         | 2 +-
+ hw/smbios/smbios-stub.c                  | 2 +-
+ hw/smbios/smbios.c                       | 2 +-
+ hw/smbios/smbios_type_38.c               | 2 +-
+ tests/bios-tables-test.c                 | 2 +-
+ vl.c                                     | 2 +-
+ MAINTAINERS                              | 2 +-
+ 11 files changed, 10 insertions(+), 10 deletions(-)
+ rename include/hw/{smbios =3D> firmware}/smbios.h (100%)
 
-> V3 -> V4:
->   * Add missing Reviewed-Bys from Igor and Andrew.
->   * Removed unneeded white space addition.
->   * Added 16 bytes padding to revision 0 RSDP structures for legacy (2.2
->     and older) machine types.
->   * Fixed a missing break in an ACPI RSDP test switch.
-> 
-> V2 -> V3:
->   * Add Reviewed-Bys from Igor and Andrew.
->   * Check for valid RSDP and XSDT pointers depending on the revision.
->   * Use RSDP initial table len as offset for checksum and pointer
->     insertion.
->   * Do not explictly pass RSDP revision as the RSDP table parsing test
->     utility.
-> 
-> v1 -> v2:
->   * Add missing SOBs.
->   * Rephrase some commit messages according to the maintainer's input.
->   * Replace ACPI spec definitions with hard coded constants.
->   * Replace init_rsdp_data() helper with open coded rsdp variable init.
->   * Rename acpi_find_[rx]sdt_address to acpi_get_[rx]sdt_address.
-> 
-> Igor Mammedov (2):
->   hw: arm: acpi: Fix incorrect checksums in RSDP
->   hw: i386: Use correct RSDT length for checksum
-> 
-> Samuel Ortiz (6):
->   hw: acpi: The RSDP build API can return void
->   hw: arm: Carry RSDP specific data through AcpiRsdpData
->   hw: arm: Convert the RSDP build to the buid_append_foo() API
->   hw: arm: Support both legacy and current RSDP build
->   hw: acpi: Export and share the ARM RSDP build
->   hw: acpi: Remove AcpiRsdpDescriptor and fix tests
-> 
->  include/hw/acpi/acpi-defs.h | 19 ++++-------
->  include/hw/acpi/aml-build.h |  2 ++
->  tests/acpi-utils.h          |  4 ++-
->  hw/acpi/aml-build.c         | 68 +++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c    | 40 +++++-----------------
->  hw/i386/acpi-build.c        | 46 +++++++++++--------------
->  tests/acpi-utils.c          | 46 ++++++++++++++++++++-----
->  tests/bios-tables-test.c    | 22 +++++++++---
->  tests/vmgenid-test.c        |  8 +++--
->  9 files changed, 168 insertions(+), 87 deletions(-)
-> 
-> -- 
-> 2.19.2
+diff --git a/include/hw/smbios/smbios.h b/include/hw/firmware/smbios.h
+similarity index 100%
+rename from include/hw/smbios/smbios.h
+rename to include/hw/firmware/smbios.h
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 5b678237b7..c2641e56ea 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -55,7 +55,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "kvm_arm.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "qapi/visitor.h"
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 115bc2825c..470cc5daf9 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -37,7 +37,7 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "hw/timer/hpet.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "multiboot.h"
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 6981cfa740..e000c7511a 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -30,7 +30,7 @@
+ #include "hw/i386/pc.h"
+ #include "hw/i386/apic.h"
+ #include "hw/display/ramfb.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_ids.h"
+ #include "hw/usb.h"
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 58459bdab5..8836d21485 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -47,7 +47,7 @@
+ #include "hw/i386/amd_iommu.h"
+ #include "hw/i386/intel_iommu.h"
+ #include "hw/display/ramfb.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "hw/ide/pci.h"
+ #include "hw/ide/ahci.h"
+ #include "hw/usb.h"
+diff --git a/hw/smbios/smbios-stub.c b/hw/smbios/smbios-stub.c
+index d3a385441a..64e5ba93ec 100644
+--- a/hw/smbios/smbios-stub.c
++++ b/hw/smbios/smbios-stub.c
+@@ -23,7 +23,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qapi/qmp/qerror.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+=20
+ void smbios_entry_add(QemuOpts *opts, Error **errp)
+ {
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 4bff9b5ea4..818be8a838 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -24,7 +24,7 @@
+ #include "sysemu/sysemu.h"
+ #include "qemu/uuid.h"
+ #include "sysemu/cpus.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "hw/loader.h"
+ #include "exec/cpu-common.h"
+ #include "smbios_build.h"
+diff --git a/hw/smbios/smbios_type_38.c b/hw/smbios/smbios_type_38.c
+index a1ad28d059..0c08f282de 100644
+--- a/hw/smbios/smbios_type_38.c
++++ b/hw/smbios/smbios_type_38.c
+@@ -9,7 +9,7 @@
+=20
+ #include "qemu/osdep.h"
+ #include "hw/ipmi/ipmi.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "qemu/error-report.h"
+ #include "smbios_build.h"
+=20
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index d661d9be62..dfa74a5bec 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -13,7 +13,7 @@
+ #include "qemu/osdep.h"
+ #include <glib/gstdio.h>
+ #include "qemu-common.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "qemu/bitmap.h"
+ #include "acpi-utils.h"
+ #include "boot-sector.h"
+diff --git a/vl.c b/vl.c
+index 2a8b2ee16d..522f0131f4 100644
+--- a/vl.c
++++ b/vl.c
+@@ -61,7 +61,7 @@ int main(int argc, char **argv)
+ #include "hw/display/vga.h"
+ #include "hw/bt.h"
+ #include "sysemu/watchdog.h"
+-#include "hw/smbios/smbios.h"
++#include "hw/firmware/smbios.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/xen/xen.h"
+ #include "hw/qdev.h"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 83c127f0d6..5d83b59542 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1260,7 +1260,7 @@ M: Michael S. Tsirkin <mst@redhat.com>
+ M: Igor Mammedov <imammedo@redhat.com>
+ S: Supported
+ F: include/hw/acpi/*
+-F: include/hw/smbios/*
++F: include/hw/firmware/smbios.h
+ F: hw/mem/*
+ F: hw/acpi/*
+ F: hw/smbios/*
+--=20
+MST
+

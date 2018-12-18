@@ -1,89 +1,118 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3838891wrt;
-        Tue, 18 Dec 2018 07:08:13 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WeehY4iCR8wda0C7puoX71toWUgQgOrfgkwv88E8OrDWn+F7oM/pMHLT6u3/p6VKv9NCC4
-X-Received: by 2002:a0c:872a:: with SMTP id 39mr17434274qvh.1.1545145692984;
-        Tue, 18 Dec 2018 07:08:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1545145692; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3875992wrt;
+        Tue, 18 Dec 2018 07:41:56 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WwJj0NEjjRGkAmiOA0vhM0N8qjflPyta/b+IpJLUjYoDx2ReKPbsmeFVcEYPJ3vmj0N66n
+X-Received: by 2002:a37:4a87:: with SMTP id x129mr16257393qka.142.1545147716416;
+        Tue, 18 Dec 2018 07:41:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545147716; cv=none;
         d=google.com; s=arc-20160816;
-        b=vpFaL8vFpcUJemMPtHEtvCLiyW6OGrGQjusgg8eszF0eDlHgJmInrCzJhLOwxZZSOl
-         YknzN+iQeFeMUjyJwu0KIsKlblX1qNNhYso5ONEF6IAFsqX9cS77MWEQpnU0LcmbcWG5
-         nohNG10VkI6ERM4JPcjkxiSBI1MVcsZ+bertCfNH8JjCJ2NCFx6oSqXJpUZiC4gbt6L/
-         k84IcDprmtq5P3/WcU5vWTu7/XYOnUFfqiNo67xlowN1TcyH8JL8cimH+VnZy/n1YW5m
-         7pQjpfRHjbxYVTdFo+N9oZ5yalrA2XdNtZ6FkaIs991giGpSDCD5bhAZzuF5GNSrFWgq
-         OpYQ==
+        b=P/ynb5MSUgxB/51PMJbwsofZ+0i7YqRD0E6gYaMl40VD2t2qx+aL6CB8KnGa7bySgS
+         FBU3OyxGEMl/4DqJV6aJhDUeQg0XBQ9tBd0I6TljJCCPgrVkp3GSS0JusCAtts7z+rPC
+         Jm4bv3ob0ToNWqhE56nSyefX+H8hRVtKCLh8+NHQZY6gWX0TX29tDMIR1vcxyTIvFn10
+         Z8gGpvxvteOsa378AWROjxQh+P0klUQBcO3IQo/v1QTPkglUX5TCDKJl85nIvb3iHsn3
+         f0Ni2JP6+KkMIMLGTmDH88WJz1ZlRqv1QTXwTpu/Q3m1k61DcUYJjUcc3VSZ1gv913LL
+         hW9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=jl+SAkjE/dT8/eHifV28RV1NVw4O4W/9YSrZPWHDQ5A=;
-        b=sDjNlfWcsReK6U2L9eA7fZWfGPxq7+3hB3XbcCWgKcmX7oqF1cNcTEKFFC+u612V5f
-         1zQA8CI3ECG6uuBjPBiNtZY9B2REBv0V/RB5lpTg/wqlCPPNQ/RDOemGPOIdfpKH+vjv
-         lWS/9GLVsQSPdJWcTUGcYB+2iHw6rAaii7PlAuz/faFjbnPlI0DZw9Q14SIf0rLJyZvM
-         fKJihcctiH7yq80BCAT5LdEHl6TaXQF5AgRFhn1CCnUND4jbd5cMNqMwMJ8PZblGSI73
-         vH4inmzIiX9ivWMKqW+Sf8/v6SxCC6TLyEwP9bjU8jrd+cnZ5/ojBE5veKxldVRJ9+yo
-         qvbg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=DfqpDRkOhibvrUr7+tzgwtd31vlDN/bJZVy49zB0ano=;
+        b=MtUvbvwRLrgbzJF4FwBCyUcEwDVXMUoN2KyFQ9V7tAEeBplIVGEES8Ak9CVFb+l1xQ
+         Hi8o+e+uQHLR67rpchDjYw6DlZ6zbnI+mIjST4pRzC1w3/rSxpjkFKEjrKsALWjX//iq
+         ww6ANE2jdLUZSlrsBWyXq/7FscmF4wfXbjzPQmpHQvUPaq8TmcmUjCgDrIiB0/u7bsja
+         6LWWB/vSKzC8fsmJ+9p1zDNSQgBUKRhvu/xiBqyDPYtGAur9Fh5XECmxmUEPLDwwaLvZ
+         CCqdldc46qCTy9qB3+oqP2kp7iBn4xV1HHbfITJM7L6HrxvAn3iGK1iPsGpNRlIxGpCu
+         wbFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=GFNzdP+v;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=jO6nGONG;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=D0Iuyj9P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o5si4011qta.399.2018.12.18.07.08.12
+        by mx.google.com with ESMTPS id m96si143133qkh.158.2018.12.18.07.41.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 18 Dec 2018 07:08:12 -0800 (PST)
+        Tue, 18 Dec 2018 07:41:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54253 helo=lists.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=GFNzdP+v;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=jO6nGONG;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=D0Iuyj9P;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54574 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gZGyi-0000W7-Di
-	for alex.bennee@linaro.org; Tue, 18 Dec 2018 10:08:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36798)
+	id 1gZHVL-00038v-VF
+	for alex.bennee@linaro.org; Tue, 18 Dec 2018 10:41:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gZGPS-0002qX-2K
-	for qemu-arm@nongnu.org; Tue, 18 Dec 2018 09:31:48 -0500
+	(envelope-from <damien.hedde@greensocs.com>) id 1gZHFD-0006qn-5M
+	for qemu-arm@nongnu.org; Tue, 18 Dec 2018 10:25:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gZGPQ-0002Ux-Kw
-	for qemu-arm@nongnu.org; Tue, 18 Dec 2018 09:31:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48410)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1gZGPQ-0002UR-C8; Tue, 18 Dec 2018 09:31:44 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <damien.hedde@greensocs.com>) id 1gZHF7-0004jY-3S
+	for qemu-arm@nongnu.org; Tue, 18 Dec 2018 10:25:15 -0500
+Received: from greensocs.com ([193.104.36.180]:36089)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>)
+	id 1gZHF6-0004ig-4l; Tue, 18 Dec 2018 10:25:09 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 0566B5DB9F2;
+	Tue, 18 Dec 2018 16:24:57 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1545146697;
+	bh=I/GeEisdZ5yeUfFK3V5+LeNmaolyKhAyt5HGXuHEZ2w=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=GFNzdP+vtT5X36DYcTH5JMeg8KBMbFlJ+w2Gs2uiJS7V6c3/DDG0Ou+xAhz27Jmye
+	hOBEwBKDz8lmnOW5EyUDsyK2Y/swwJ/S7dBxqZpgrO5oQltxw85+kHZ+dkyrOPxhcQ
+	Y8sKBRVJyrZ6+j8074BZFV/lBJaz/KGA6iCBbwRA=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=jO6nGONG;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=D0Iuyj9P
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3DwhDFob11ki; Tue, 18 Dec 2018 16:24:56 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 05CF55DB9E7; Tue, 18 Dec 2018 16:24:55 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1545146696;
+	bh=I/GeEisdZ5yeUfFK3V5+LeNmaolyKhAyt5HGXuHEZ2w=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=jO6nGONGLd3blMdEOVrKwAG34VOxhI3Qm7YYmSL1IwcA0OCRQM4mtoRqvMaWI07aN
+	Oi7JbF4RbZNJ3apjw735Tln1d3KMCR5igP4WPDZP/UqL2MZcuwgUWgyZsMaHto3ySr
+	z69CHXATwVmEr0U0wEaOP8zZNlm5kZoDYgBPbncE=
+Received: from [172.16.10.145] (antfield.tima.u-ga.fr [147.171.129.253])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B18788E4A;
-	Tue, 18 Dec 2018 14:31:43 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 21021600C9;
-	Tue, 18 Dec 2018 14:31:41 +0000 (UTC)
-Date: Tue, 18 Dec 2018 15:31:39 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20181218143139.525cd76jeiblvgxg@kamzik.brq.redhat.com>
-References: <20181206170733.7469-1-eric.auger@redhat.com>
-	<20181206170733.7469-3-eric.auger@redhat.com>
-	<20181217162701.nzdqhccpnhypj2z7@kamzik.brq.redhat.com>
-	<f253b6f6-2d2c-1e75-75ee-0dd0072924d1@redhat.com>
-	<20181217182546.zym4jhmambkzyigi@kamzik.brq.redhat.com>
-	<efbeed1b-2941-dce1-f8e9-14c05733e01e@redhat.com>
+	(Authenticated sender: damien.hedde@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 6E54E5DB9E7;
+	Tue, 18 Dec 2018 16:24:55 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1545146695;
+	bh=I/GeEisdZ5yeUfFK3V5+LeNmaolyKhAyt5HGXuHEZ2w=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=D0Iuyj9PBpOb0Lu1ZF7n2W9YaiXjBtXeciBqzWvusCtossn26u0BtLdv10QluPLfD
+	o7Ny4A8TVModuxo7G1/E3uzp21MRFdpYLRZcRUHtXo+kTe9sAH9IQhkH1QH/x47PiZ
+	eAK9A6c3/mN6VaFmML8fp9OAYb/395Un+qUuWaJc=
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20181002142443.30976-1-damien.hedde@greensocs.com>
+	<09e1483c-298e-d41a-f9c9-4f186f530dcb@greensocs.com>
+	<CAFEAcA9cNMiB01hSerawnfZsyXbJsrJYs_vFfWMi294XYeV8Zw@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <bb9c73c9-68e8-42f4-1e5f-f476b447db06@greensocs.com>
+Date: Tue, 18 Dec 2018 16:24:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <efbeed1b-2941-dce1-f8e9-14c05733e01e@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 18 Dec 2018 14:31:43 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.0 v2 2/2]
- hw/arm/virt-acpi-build: IORT Update for revision D
+In-Reply-To: <CAFEAcA9cNMiB01hSerawnfZsyXbJsrJYs_vFfWMi294XYeV8Zw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 193.104.36.180
+Subject: Re: [Qemu-arm] [PATCH v5 0/9] Clock framework API.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,165 +124,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	shameerali.kolothum.thodi@huawei.com, shannon.zhaosl@gmail.com,
-	qemu-arm@nongnu.org, eric.auger.pro@gmail.com
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uGB4RuDWHsMZ
+X-TUID: y1I4MtWCxS0o
 
-On Tue, Dec 18, 2018 at 11:54:32AM +0100, Auger Eric wrote:
-> Hi Drew,
+
+
+On 10/16/18 5:48 PM, Peter Maydell wrote:
+> On 12 October 2018 at 16:26, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>> Hi Peter,
+>>
+>> Sorry to bother you with this, but you said some time ago you would
+>> write something about reset.
 > 
-> On 12/17/18 7:25 PM, Andrew Jones wrote:
-> > On Mon, Dec 17, 2018 at 05:49:02PM +0100, Auger Eric wrote:
-> >> Hi Drew,
-> >>
-> >> On 12/17/18 5:27 PM, Andrew Jones wrote:
-> >>> On Thu, Dec 06, 2018 at 06:07:33PM +0100, Eric Auger wrote:
-> >>>> Let's update the structs according to revision D of the IORT
-> >>>> specification and set the IORT node revision fields.
-> >>>>
-> >>>> In IORT smmuv3 node: the new proximity field is not used as
-> >>>> the proximity domain valid flag is not set. The new DeviceId
-> >>>> mapping index is not used either as all the SMMU control
-> >>>> interrupts are GSIV based.
-> >>>>
-> >>>> In IORT RC node: the new memory address size limit field is
-> >>>> set to 64 bits.
-> >>>>
-> >>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>>>
-> >>>> ---
-> >>>>
-> >>>> v1 -> v2:
-> >>>> - separate patches for SMMUv3 DMA coherency issue and struct
-> >>>>   update to revision D.
-> >>>> - revision fields set
-> >>>> ---
-> >>>>  hw/arm/virt-acpi-build.c    |  4 ++++
-> >>>>  include/hw/acpi/acpi-defs.h | 10 +++++++++-
-> >>>>  2 files changed, 13 insertions(+), 1 deletion(-)
-> >>>>
-> >>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> >>>> index aa177ba64d..a34a0958a5 100644
-> >>>> --- a/hw/arm/virt-acpi-build.c
-> >>>> +++ b/hw/arm/virt-acpi-build.c
-> >>>> @@ -423,6 +423,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>>>       */
-> >>>>      iort_node_offset = sizeof(*iort);
-> >>>>      iort->node_offset = cpu_to_le32(iort_node_offset);
-> >>>> +    iort->revision = 0;
-> >>>>  
-> >>>>      /* ITS group node */
-> >>>>      node_size =  sizeof(*its) + sizeof(uint32_t);
-> >>>> @@ -445,6 +446,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>>>  
-> >>>>          smmu->type = ACPI_IORT_NODE_SMMU_V3;
-> >>>>          smmu->length = cpu_to_le16(node_size);
-> >>>> +        smmu->revision = cpu_to_le32(2);
-> >>>>          smmu->mapping_count = cpu_to_le32(1);
-> >>>>          smmu->mapping_offset = cpu_to_le32(sizeof(*smmu));
-> >>>>          smmu->base_address = cpu_to_le64(vms->memmap[VIRT_SMMU].base);
-> >>>> @@ -470,6 +472,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>>>  
-> >>>>      rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
-> >>>>      rc->length = cpu_to_le16(node_size);
-> >>>> +    rc->revision = cpu_to_le32(1);
-> >>>>      rc->mapping_count = cpu_to_le32(1);
-> >>>>      rc->mapping_offset = cpu_to_le32(sizeof(*rc));
-> >>>>  
-> >>>> @@ -477,6 +480,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> >>>>      rc->memory_properties.cache_coherency = cpu_to_le32(1);
-> >>>>      rc->memory_properties.memory_flags = 0x3; /* CCA = CPM = DCAS = 1 */
-> >>>>      rc->pci_segment_number = 0; /* MCFG pci_segment */
-> >>>> +    rc->memory_address_limit = 64;
-> >>>
-> >>> Hmmm... IIUC this provides the size of the IOVA space. When it's 64 the
-> >>> size of the space is U64_MAX, which gets added to the DMA base (also 64
-> >>> bits) when calculating things like the last PFN. It seems strange to use
-> >>> a value that will surely overflow those calculations. Is it common to
-> >>> put 64 here? Can you elaborate on this?
-> >>
-> >> I looked at drivers/acpi/arm64/iort.c nc_dma_get_range.
-> >> There you can find
-> >>
-> >>         *size = ncomp->memory_address_limit >= 64 ? U64_MAX :
-> >>                         1ULL<<ncomp->memory_address_limit;
-> >>
-> >> So I was expecting the value "64" to be properly handled by the kernel.
-> > 
-> > I traced the code further and see that the size gets added to the u64
-> > dma base without any special checks in both iort_dma_setup() and
-> > iommu_dma_init_domain(). Also iommu_dma_init_domain() function has this
-> > comment
-> > 
-> >  * @base and @size should be exact multiples of IOMMU page granularity to
-> >  * avoid rounding surprises. If necessary, we reserve the page at address 0
-> >  * to ensure it is an invalid IOVA. It is safe to reinitialise a domain, but
-> >  * any change which could make prior IOVAs invalid will fail.
-> > 
-> > U64_MAX is not a multiple of any page size. Maybe that U64_MAX assignment
-> > is a kernel bug?
-> Yes most probably the kernel should check address wraps and alignment.
-> Do you want to send a kernel patch yourself or shall I do?
-
-I could write a patch, but I'm not equipped to test it. I'm also not that
-familiar with it's purpose, or even with IOVA ranges in general...
-
-FWIW, I'd probably leave the U64_MAX assignment as is, but then check the
-addition everywhere it's used. E.g. in iommu_dma_init_domain() we could
-replace all occurrences of 'base + size' with 'max_addr', where 'max_addr'
-is defined as
-
-  dma_addr_t max_addr;
-
-  if (base != ALIGN(base, iommu_page_size)) {
-     pr_warn("specified DMA base is not on a %d boundary\n", iommu_page_size);
-     return -EINVAL;
-  }
-
-  max_addr = base + size;
-
-  if (max_addr < base)
-     max_addr = U64_MAX;
-
-And I'd remove the '@size' from the 'should be exact multiples of IOMMU
-page granularity' comment.
-
-And at least iort_dma_setup() also needs an overflow check.
-
-If you agree, then I can send that myself, otherwise feel free to send
-what you think is best.
-
-> > 
-> > 
-> >> If one decides to select something less than the whole range, which
-> >> value would you suggest?
-> > 
-> > I don't know. Isn't it host/guest/device specific? Should we ask KVM what
-> > the supported IPA is first? What kind of values are showing up in the
-> > IORTs of real hardware?
-> Digging into https://lkml.org/lkml/2017/7/31/472, the field is motivated
-> for cases where the bus connecting devices to the IOMMU is smaller in
-> size than the IOMMU input address bits. Architecturally the SMMU input
-> address space is 64 bits. As the vSMMUv3 only implements stage 1, the
-> input address is treated as a VA and when bypassed as intermediate
-> physical address.
+> Yeah, sorry about that. I haven't found (made) the time to think
+> the issues through yet. Let me just dump to email the notes I had.
+> This is a very "raw" set of notes, so it's not very organised and
+> has a lot of 'todo' bits in it...
 > 
-> My understanding is the VAS (VA size) is max 2x52bits=53 bits for
-> ARMv8.2. IPA is max 52 bits for 8.2.
 > 
-> But there are cases where the 64b upper byte is used (when TBI is set)
-> in the translation. I still feel difficult to understand SMMU spec 3.4.1
-> chapter (Input address size and Virtual Address size).
+> Overall question -- does anybody know of other device modelling
+> systems that do a good job of modelling reset, and how they do it?
+> If we can borrow a proven design that might be better tha
+> thrashing one out ourseles...
 > 
-> But anyway I think the kernel should support setting the value to 64bits.
 > 
-> The machines I have access to have Rev 0 IORT table so this field is not
-> used :-(
+> My idea was roughly that we need a multi-phase reset, something like:
+> 
+>  PHASE 1:
+>    Devices reset internal state. No calls out to other devices
+>    (ie no setting IRQ line state, etc)
+>    Some common bit of code (dev base class?) marks the device
+>    reset as being in-progress by setting dev->resetting = true.
+> 
+>  PHASE 2:
+>    Devices update their output lines (calls to irq line setting
+>    functions, clock setting, etc)
+>    In this phase devices may be the recipients of callbacks for
+>    IRQ line level changes, etc, and must cope with this. A
+>    callback can tell it's being called for a level change during
+>    reset because dev->resetting will be true.
+>    (They can update their own outputs in response to input changes.)
+> 
+>  PHASE 3:
+>    Common code (dev base class) sets dev->resetting = false.
+>    (Individual devices don't get to do anything here, unless
+>    there's some painful case that requires it.)
+> 
+> The theory is that by decoupling reset into multiple phases
+> we can avoid most of the reset order issues, by having the
+> two ends do things in the right phase and/or by having
+> the destination end be able to identify when a change is
+> happening in the middle of reset.
 
-I'll take your word for it :-)
+This strategy seems fine to me.
 
-Thanks,
-drew
+> 
+> Compatibility with existing device reset methods:
+> essentially the current rules are the same as the "phase 1"
+> rules, so we can just say that the current reset code in
+> all devices is phase 1 reset. Then we can adjust anything
+> that needs a phase 2 (which is probably not all that many
+> devices).
+> 
+> Places where reset order currently matters:
+> (this is just a list of things we should make sure our design
+> copes with)
+>  * wired-high IRQ lines, and device outputs that are asserted
+>    as the device comes out of reset
+>  * setting PC in the generic-loader device vs CPU reset
+>  * image load (rom image reset) vs Arm M-profile reset wanting
+>    to read the reset PC/SP from memory
+>  * Arm M-profile CPUs should have INITVTOR as a config signal input
+>  * x86 CPU vs APIC reset order ??
+>  * anything else?
+> 
+> We should have some sort of "reset domain" object which can
+> contain devices and also other reset domains. A reset domain's
+> reset is simple: its phase 1 reset is "for each child, do
+> phase 1 reset for that child", similarly for phases 2 and 3.
+> A reset domain has an overall "reset" method that says
+> "do phase 1 for all children, then phase 2, then phase 3".
+> This allows things like "this SoC has a reset line which
+> resets all its internal devices". (Do we want to give
+> reset domains input gpio lines to trigger reset, or is
+> being able to call a method on it sufficient?)
+
+Consider the following use case: a platform with a controller that holds
+a reset line on another device (starting with reset held).
+At the beginning, the main (cold) reset will be triggered to start the
+platform. During phase 2, the controller will set the reset line of the
+other device (a gpio). Then we have phase 3. How do we handle this ?
+Do we need to "delay" the phase 3 of the device until the controller
+releases its reset line or do we consider the internal gpio reset line
+to be outside of this reset scope ?
+
+If we do that, we have 2 reset "sources": the main reset and the
+internal gpio and there is some kind of OR operation to do between these
+2 sources.
+
+> 
+> At the moment we have reset methods on devices:
+>  * each bus handles reset for the things on the bus
+>  * the (one and only) sysbus resets all the sysbus devices
+>  * devices on no bus don't get reset at all unless something
+>    takes special measures! (notably the CPUs are reset in
+>    a very ad-hoc way at the moment)
+> I guess this should be cleaned up by making each bus be
+> a 'reset domain', and having a "system" reset domain which gets
+> anything which doesn't have a parent reset domain (and which
+> we then use for whole-board power-on reset). Calling the
+> system reset domain's overall reset method will then do
+> the 3-phase reset for everything>
+> How would direct qemu_register_reset() calls fit into this
+> scheme? (Some of them are devices that could get QOM reset
+> methods instead. Perhaps we could get away with dumping the
+> rest into the 'master reset' domain, or leaving them as-is?
+> Some are for CPU reset which we definitely should clean up.)
+> 
+> We need to handle different types of reset somehow, in
+> particular "cold/power on reset" versus "warm reset".
+> Can we do this just with reset domain objects, or do we
+> need/want to pass each device's reset method a "type" argument?
+
+Maybe phase 1 only needs the type, phase 2 and 3 can only depends on the
+device state.
+
+Anyway, this reset problem seems outside of the scope of this patch set.
+I think I'll do a reroll with the remark I've got so far, but it will
+still miss the reset part to be well integrated. I can also propose
+something in another rfc about the 3-phase reset to advance on that part.
+
+--
+Damien

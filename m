@@ -1,96 +1,98 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3891252wrt;
-        Mon, 24 Dec 2018 06:17:20 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Upz9C2F5bbGObRf3jdsDU3o2zyDj8FUDswViXIvxHDgNSolUcP9WHjB4W542iFt7twCOtr
-X-Received: by 2002:aed:3aa7:: with SMTP id o36mr12196521qte.240.1545661040726;
-        Mon, 24 Dec 2018 06:17:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1545661040; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3919508wrt;
+        Mon, 24 Dec 2018 06:48:48 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7j3JBjOgKVT9D7jy0y5Ya//Z7bFSHPzcvENSM1n4oWC01JVQav3X5ty5c8tOW4ZytvRYq3
+X-Received: by 2002:aed:32a5:: with SMTP id z34mr9717179qtd.311.1545662928343;
+        Mon, 24 Dec 2018 06:48:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545662928; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ugk8oYxBhYinUCwXkKOKrsj8R5+sh5P4rOPMhFbMn6zkfWSmvjbVnPtqqr4NlCUxfI
-         DIK9LR9J01YU5UHWw36D9f75ejkVSJmw7BjPvXPAnsengDK5qGiDiSk+o/C8UMuPx658
-         2wXOUqfcUo2+8mqfI8VaXaG+o8hU/9XGvUigVe5ILYzB7iHmclkUlivP9TeEguvy0mU8
-         4qL8z9+4XhdAmGPNcCY0O7X3iumQHmUKmE4siImvzQDAdsZinv2sSvMyNIQgWgD1hW5S
-         /h79ldWjuZqxbVjQkeRNaVywM0cFNKodgBg0UEGT7acJoQvQ+PTwCHg5oexE4IjylY/B
-         BRCw==
+        b=OPRuE0fSu3aNvXomeLQOpLf3TZJqCnnq7Oavt+Zt0duFvlL3xWu5Og+BTU1qp1PTyq
+         NNzcYwHU6ajPAZkATVzNZWdL1ydvv8/1r+VOxQohZj5fDU8nbuKBgNtSNbNnv214AwWx
+         hMLRj7frX5dfoOiUwNb8NUyWJL1lOlSc64yhq/MHZMmO+TJ454lzUGnuRq1ttByTzTd1
+         bU8bI69SMFw8uuOkX8jxb8Uoa+pw7WfjzeCQ9eh1m/vcqZYWnVlh9B4SGsacQB/slRe7
+         YmswFO76YQCeQdgooKplxRdqQ9IVBj1ORPebz/X1eWcdrTX9AkJYSYPctiOCzA2CkMou
+         jPfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=og3BB0xe/l5Spferu7oMjcMNOLn2ajCFjA+EM20k3nw=;
-        b=k2mzOc747JRKDdOr68c5Cr0hzdrvQfsD1DMnPvxHX1Tb3xdk4RDsr0im4XB3QRjZXA
-         g2km9N9WXo7prvg8NilyGPhOn+y1L+G5PKn2jsJrMH+oemw0dc9FZ6WW++8+H/ZiliNF
-         0BHAZbheMDyC5tcreHsel1kT/faLkhAXhdORCKBtqssfaqypVJ5SFikm8E972U0BiCtQ
-         OuYaX11bzzZrg92N3I9CeBc0EoSbtXwDbc94QWlsEVYMuht1kworJG2GLTofPdQnOKbd
-         9ZyEK2l/K1QUj70MeVRBvdfM9dmcbcvsOSTM/vcmO8g6YDpu5TIaFlVCZvwiECL7WFpS
-         KXCg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=C6XEM44f2Y5kD5nTMeYD9JBGcbaOjEiXg7HEuPzrdLM=;
+        b=Ajv/gna9P57m8oubnbLC8OZ+PQT1i2plXXGFUIm0Trm9NC6FJDNpsglvJCWzCSqVZr
+         +jqdqQu983t97/ZOo9asoI2rA7eVAwXjOvLcQKpPWy3HekEZz48/b9oS/+3Nu+fJKkSj
+         ed/MDp7USXIMB+64GHeiDGO0Eckm7qF0BdVyZhY+zeWN3qOGYOanUjK3YRNaY8KyyWCd
+         K71e2unDnKUIWxnFavrmhy/rJKXxPattu1BCQsiiJeFKzkwJ5VWA9+JVu/PgyXTVynjd
+         ZYHPMZhlETv51DPR/AVC2YCXuODP7jj6snXGYeI+rJMU1eBHG4BKqMlWD84dDU6hk5oK
+         i6ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l1ETReQu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NdZna0Vq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id k17si6051816qkh.130.2018.12.24.06.17.20
+        by mx.google.com with ESMTPS id k3si4206837qvh.178.2018.12.24.06.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Dec 2018 06:17:20 -0800 (PST)
+        Mon, 24 Dec 2018 06:48:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l1ETReQu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NdZna0Vq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:37407 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:37487 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gbR2m-0001Y3-87
-	for alex.bennee@linaro.org; Mon, 24 Dec 2018 09:17:20 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:35383)
+	id 1gbRXD-00021M-TG
+	for alex.bennee@linaro.org; Mon, 24 Dec 2018 09:48:47 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:48200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stast.3vium@gmail.com>) id 1gbLsY-0002Xt-UD
-	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 03:46:27 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gbRX6-000213-Ny
+	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 09:48:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stast.3vium@gmail.com>) id 1gbLsY-0004WP-27
-	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 03:46:26 -0500
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d]:36952)
+	(envelope-from <peter.maydell@linaro.org>) id 1gbRX5-0006Jv-SK
+	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 09:48:40 -0500
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d]:32810)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stast.3vium@gmail.com>)
-	id 1gbLsX-0004W1-TD
-	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 03:46:26 -0500
-Received: by mail-oi1-x22d.google.com with SMTP id y23so9538328oia.4
-	for <qemu-arm@nongnu.org>; Mon, 24 Dec 2018 00:46:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=og3BB0xe/l5Spferu7oMjcMNOLn2ajCFjA+EM20k3nw=;
-	b=l1ETReQuxjJGTD7mx0zXfRJLywLGQzG0O6COerir/Ay5LsgMqgEAudMk6MJwT2YAI2
-	jKMn/Qn46qK3d2B8I5SloV0hUw2cnTtyMuRneKKlqFRA9ZbYDycXyJBWY0KwKDxDs/fQ
-	NUqx2RKJlxg1axG+p6nJimNcevTZw0ezqSTCXOjxQSupkS+2LvkKMmld8uzzmXOEPPK1
-	+6XFWXQeY9O+K/LPeXW4AZ6AF5P6VCPC3s6idKkh05o+p3BBVL9UsC/8FVSw7pF8zggP
-	O7kUaNbYdvHmlWsdruRWnrdl6ZvZaj2es/GGeikyNgZVcMUL8OjPRhlq9gvjoUKSjnn2
-	I0tA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gbRX5-0006IV-NQ
+	for qemu-arm@nongnu.org; Mon, 24 Dec 2018 09:48:39 -0500
+Received: by mail-oi1-x22d.google.com with SMTP id c206so10087517oib.0
+	for <qemu-arm@nongnu.org>; Mon, 24 Dec 2018 06:48:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=C6XEM44f2Y5kD5nTMeYD9JBGcbaOjEiXg7HEuPzrdLM=;
+	b=NdZna0VqJ4H+yo0cHmCJkjlWViNV2HPy5VXd9jwBzhWDGToBEbCi0jZsTqn8Ammi7z
+	q2aquggP8p2IO3u8B3wCWJTDqY3hwjQKdGcY3oFnVy3PkQTGwiHgc7eOGOQryb+oLF1x
+	3QbA5YlGN8Wo1xW1inikHS50yyTt5QfD8gUPU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=og3BB0xe/l5Spferu7oMjcMNOLn2ajCFjA+EM20k3nw=;
-	b=PNLMt6sHkTiAbjzWXsLeqgfibXSBxWvRn44gUMR6AMCZaxT28k/oixVe9PVccwnp9x
-	VMJd9GNJRfBkbuV97fJc7kaIn1J1tFV8XYwOBRiuMwOt7TT5lS1zNTJ6SnfcBzyEGgK4
-	7Buqsy3LHU6eOMOuaimZhf82QoKpTBaczRbOyQNp9IUiNsE3K66WZgdg1B5goyVgjIsY
-	SjPLvV89kInxQZ/aXRE0/OYcONzBh4eUg85Zc38Ff7YhvXqgZTrPJHic1KSy6/H7wqpy
-	QW/Kn2YyAfXqnppjSY9Zwb3/MN/4UpzGXmB5ogvQZjDP1LRnVsX/x9ltnbkYS3k/9cyi
-	ou1g==
-X-Gm-Message-State: AA+aEWbjLED4hR9x0G3YoDYXwazW5Ewio1i9wyEyiBj2XWAeDwdc8XNi
-	/FoAqm+jpP7nYPOYSNeV6qs8W/oR0XQOryTSt2jHyH69
-X-Received: by 2002:aca:4489:: with SMTP id r131mr7908674oia.296.1545641184715;
-	Mon, 24 Dec 2018 00:46:24 -0800 (PST)
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=C6XEM44f2Y5kD5nTMeYD9JBGcbaOjEiXg7HEuPzrdLM=;
+	b=q69WzpOfEsMEExHhBzZUchr63Ay+G9XvZYJtrpWLPfQYou2J5FBZzUCpMTqLn3/Jxt
+	OFGDQPSBapI/OQ0cx2igOMku+F9q9dgfaUxsCvmb4js2mo2J4y0PgQdg0MR4w56vI0LU
+	gtl1j1c6FxJrtTn9S7m/KxuccKBxVNGAS60DF/4A+Dpc9EXdiDk+0U0FW6a8pYTEp8tP
+	VML0H4OwwPE3fypBrrw4bMAjSpk6XRZeWE8rEx8aXn0P2b7C9F2JtcxZdrXebIoHdkSR
+	k+pKd9dt6ALSgO9uJLh3TWBOLhai6n/Cw2MeOVJ0UoKaMMRyreLWg/I9BCfGL+B1pQru
+	G7Sg==
+X-Gm-Message-State: AA+aEWZ8iYGRGQEoKCHq979iDeP6Nf2BAiVPD0+3gMuMKXHBT78FkZL1
+	abwvvMJVZzWuMhGTWbHozm5WGap5vYPxLpsV8Nql5Q==
+X-Received: by 2002:aca:5c05:: with SMTP id q5mr7852184oib.146.1545662919034; 
+	Mon, 24 Dec 2018 06:48:39 -0800 (PST)
 MIME-Version: 1.0
-From: =?UTF-8?B?0KHRgtCw0L3QuNGB0LvQsNCyINCi0YPQvNCw0YHQvtCy?=
+References: <CAC-7+Cg5EX1qb11kwRprSE8_E2SMtEm1Cgh0OzFMCuiBhh+3BQ@mail.gmail.com>
+In-Reply-To: <CAC-7+Cg5EX1qb11kwRprSE8_E2SMtEm1Cgh0OzFMCuiBhh+3BQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Dec 2018 14:48:27 +0000
+Message-ID: <CAFEAcA8qqzPxwYmjGG1Y940RFyuf0AccNy+N51HODnoKEuYSfQ@mail.gmail.com>
+To: =?UTF-8?B?0KHRgtCw0L3QuNGB0LvQsNCyINCi0YPQvNCw0YHQvtCy?=
 	<stast.3vium@gmail.com>
-Date: Mon, 24 Dec 2018 11:46:14 +0300
-Message-ID: <CAC-7+Cg5EX1qb11kwRprSE8_E2SMtEm1Cgh0OzFMCuiBhh+3BQ@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000c3e6a5057dc0a18d"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4864:20::22d
-X-Mailman-Approved-At: Mon, 24 Dec 2018 09:17:07 -0500
-Subject: [Qemu-arm] Run Kernel+rootfs for ARM Cortex-A72 on QEMU
+Subject: Re: [Qemu-arm] Run Kernel+rootfs for ARM Cortex-A72 on QEMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,53 +104,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZjnYuv96oVOi
+X-TUID: 0+MQYhs0rmtS
 
---000000000000c3e6a5057dc0a18d
-Content-Type: text/plain; charset="UTF-8"
-
-Hello, dear developers. I use Yocto to build Kernel and rootfs for ARM
-Cortex-A72. Kernel and rootfs are in separate files The kernel has an Image
-type (extension .bin). Rootfs has ext4 type(extension .ext4). I did not
-find this processor in the support list in QEMU *3.1.0
-<https://download.qemu.org/qemu-3.1.0.tar.xz>* Dec 11th 2018. But this
-processor is on the support list in QEMU 3.1.0-rc3, but I could not run the
+On Mon, 24 Dec 2018 at 14:17, =D0=A1=D1=82=D0=B0=D0=BD=D0=B8=D1=81=D0=BB=D0=
+=B0=D0=B2 =D0=A2=D1=83=D0=BC=D0=B0=D1=81=D0=BE=D0=B2 <stast.3vium@gmail.com=
+> wrote:
+>
+> Hello, dear developers. I use Yocto to build Kernel and rootfs for ARM Co=
+rtex-A72. Kernel and rootfs are in separate files The kernel has an Image t=
+ype (extension .bin). Rootfs has ext4 type(extension .ext4). I did not find=
+ this processor in the support list in QEMU 3.1.0 Dec 11th 2018. But this p=
+rocessor is on the support list in QEMU 3.1.0-rc3, but I could not run the =
 kernel and rootfs.
-Is there any possibility to run QUEMU for this processor?
-Thanks a lot in advance.
+> Is there any possibility to run QUEMU for this processor?
 
-With best regards, Stanislav.
+cortex-a72 is supported in 3.1.0. What are you doing that
+makes you think that it is not ?
 
---000000000000c3e6a5057dc0a18d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+More important than the CPU type, you should make sure
+that the kernel and rootfs that you have built are for
+the correct board model (you probably want to be using
+the "virt" board). The differences between board
+models are much more important than the differences
+between different 64-bit Arm CPU types.
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Hello, dear developers. =
-I use Yocto to build Kernel and rootfs for ARM Cortex-A72. <span class=3D"g=
-mail-tlid-translation gmail-translation"><span title=3D"" class=3D"gmail-">=
-Kernel and rootfs are in separate files</span></span> <span class=3D"gmail-=
-tlid-translation gmail-translation"><span title=3D"" class=3D"gmail-">The k=
-ernel has an Image type (<span class=3D"gmail-gt-baf-term-text"><span class=
-=3D"gmail-gt-baf-cell gmail-gt-baf-word-clickable">extension .bin</span></s=
-pan>). Rootfs has ext4 type<span class=3D"gmail-tlid-translation gmail-tran=
-slation"><span title=3D"" class=3D"gmail-">(<span class=3D"gmail-gt-baf-ter=
-m-text"><span class=3D"gmail-gt-baf-cell gmail-gt-baf-word-clickable">exten=
-sion .ext4</span></span>)</span></span>. I did not find this processor <spa=
-n class=3D"gmail-tlid-translation gmail-translation"><span title=3D"" class=
-=3D"gmail-">in the support list in QEMU</span></span> <strong><a href=3D"ht=
-tps://download.qemu.org/qemu-3.1.0.tar.xz">3.1.0</a></strong>
-  Dec 11th 2018. But <span class=3D"gmail-tlid-translation gmail-translatio=
-n"><span title=3D"" class=3D"gmail-">this processor is on the support list =
-in QEMU 3.1.0-rc3, <span class=3D"gmail-tlid-translation gmail-translation"=
-><span title=3D"" class=3D"gmail-">but I could not run the kernel and rootf=
-s</span></span>.<br><span class=3D"gmail-tlid-translation gmail-translation=
-"><span title=3D"" class=3D"gmail-">Is there any possibility to run QUEMU f=
-or this processor?<br><span class=3D"gmail-tlid-translation gmail-translati=
-on"><span title=3D"" class=3D"gmail-">Thanks a lot in advance.</span></span=
-><br><br><span class=3D"gmail-tlid-translation gmail-translation"><span tit=
-le=3D"" class=3D"gmail-">With best regards, Stanislav.<br></span></span></s=
-pan></span></span></span></span></span></div></div></div>
-
---000000000000c3e6a5057dc0a18d--
+thanks
+-- PMM

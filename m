@@ -1,126 +1,438 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2441058wrt;
-        Mon, 17 Dec 2018 04:45:00 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UOZeaNHeC0SmwJ5sV2D/ogsnfF4Ksz9e8rkcxc8xjhHScolqrMux8bTAq2L/VGRRgLghXS
-X-Received: by 2002:ac8:6b50:: with SMTP id x16mr13431485qts.368.1545050700638;
-        Mon, 17 Dec 2018 04:45:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1545050700; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6094606wrt;
+        Wed, 26 Dec 2018 11:09:46 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5gjBBhkDRfAadYoj7afqYuW2gg+XRnVL5R8X+Al8tQKw1REybq22JbqcVwhuRvO1AIWovY
+X-Received: by 2002:ae9:df02:: with SMTP id t2mr19064381qkf.230.1545851386219;
+        Wed, 26 Dec 2018 11:09:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545851386; cv=none;
         d=google.com; s=arc-20160816;
-        b=q+tsZv9wW+ONME+h5uao6AsvjPiLyfC8OWXOvE787Oe5oTMMsdamcpPkO7EeP+dBVM
-         A9queQpCKmerYNRvwwleRTW72kMZ+C4TEQLy2hqz8YhHQlLMntjpshKO+XSdjXWOJDbE
-         LTB9HFm62Uc15etXtF+Lzhhl2+uU82Vrf5p46bJtAxuTRHfuWTZ/X7fIudQfMw/qmBsy
-         2rMP7zEBAo1A5Jm8FxPTHUGFGr2JJq2l0lMUpqG2Jl2GWIf1Zymi5DUlPlsN4xztLov+
-         t+4LN6WXSq0SrMou1PM+CJctbzSrffWn3b4JXq5yNzw7+Zj2eVaFR4Zbe0uT0XuiFMPR
-         K9nw==
+        b=m2A4rbWqxbeGmduF6tWTdMHsMpmAZEhcglOREkqav1JIhgw/kwASXBKqIYpV9vUhNE
+         xjtLop414tre60Y2h3Iqcbd8HGSxr6lkbiTPVfOONe4vLFsYCa4oaiuGEja6grOPo/30
+         3wsr9RT71K2o/8m1fx8q2tfUHzUsCkAdZnFiblGICtUpEEeNL5eVPBrsI3xmdwK8apvn
+         Iz6QfWVyDaoZ+Yf3R7oxA7J84FFnGOAZTS8x7qd0OppAzqs5NtN1RZNP3OWlEI9nbUB3
+         gg/XqH4aJrNzy+T2J9LxOSXA8NDmJ06oi6dzEHogPGEpZYJAn89lHCt6lVBtvINovAMO
+         yyeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7qnNvyra26AHYgjrlVjpVa35pbfrc1iT+UCy43Fcd4w=;
-        b=zHhGP2iucch6/OA70iRYO+JSJPDiPXTw0EZV1k57Xthh1P1sg3jvkzQ91jhRBZ+8cy
-         YP+Y2AcLqEmaKMUJvS6PAWPomb4swJjiBdBcL3JOpph4vijHqgrUPVEnMwQrAb6fanTQ
-         QkJIGg5C22FCLER0KSQ5OqAYSLy5KPddFdJhIUptZk6q7270qZ70dmUwrh9GMIIferUW
-         jbZb2SiK2+nLHwHnZysmyDmsFHc7VLaSZKbPx83GkpobmrDY8vKIyTp2S13+EUEzcFTo
-         Untfh9gbM5QiHo3gnBQfvlGnJQaP2TsgbH7wzx5kiE/5tuYzsAwenDI11+YXypxik40j
-         R2Eg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=T8YeaZNQhDlu/NEFEMKBDuOyRl1oC1ixBQb9XGudXYA=;
+        b=nypkJw6ouBQb9GdHiFEDxOjKRispMkr6Xi2wGpaTR6uaNjpcABfAyAUEE+kBESwu/0
+         0Ki/86ye7ti/FUuiIH0Npqqk+VODPkk7A78DGIjDM097QNZ+jd0dt1ft6PMfn2L5p4Ca
+         cDMRq2asxXxZXElPIKwzM40VhvHbeRKEackxyCczCVEWydsXAgNdP1DprSFNWbwAto/Y
+         nzvGwI0KqdXlBhylkfTR6FCUi4dgNhIAlhfbAOTp5Q4pfCIvOtjQdQ1V2az+MDfxOLcd
+         nECCb4s1wCIPj0q79xeYtOdG1wx8H/ltBtdVh2yMI1IeXbSQk/nsrfaOJWkYP7n6oMR5
+         byRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SFxRKvm3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p8si2999735qki.221.2018.12.17.04.45.00
+       dkim=neutral (body hash did not verify) header.i=@plaes.org header.s=mail header.b=gC5POIK9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id v11si1552118qvj.128.2018.12.26.11.09.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Dec 2018 04:45:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 26 Dec 2018 11:09:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SFxRKvm3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46454 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@plaes.org header.s=mail header.b=gC5POIK9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:47906 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gYsGa-0006QT-78
-	for alex.bennee@linaro.org; Mon, 17 Dec 2018 07:45:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43585)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gcEYr-0004wS-Ko
+	for alex.bennee@linaro.org; Wed, 26 Dec 2018 14:09:45 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:41050)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gYsFX-0005vS-19
-	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 07:43:55 -0500
+	(envelope-from <plaes@plaes.org>) id 1gcEXm-0004VN-Nh
+	for qemu-devel@nongnu.org; Wed, 26 Dec 2018 14:08:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gYsFV-0003Nu-1s
-	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 07:43:54 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:39420)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gYsFU-0003NY-OO
-	for qemu-arm@nongnu.org; Mon, 17 Dec 2018 07:43:52 -0500
-Received: by mail-oi1-x244.google.com with SMTP id i6so10014185oia.6
-	for <qemu-arm@nongnu.org>; Mon, 17 Dec 2018 04:43:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=7qnNvyra26AHYgjrlVjpVa35pbfrc1iT+UCy43Fcd4w=;
-	b=SFxRKvm32o0l3T0GAOmo+Rxfm24QyCyvmNh4kJxDqHXgNwjfWjxpT43zDZ4jff+Z9L
-	DhwuEqGVQlG1qc6ILQdAnjw/d85LwMjKcuqMD3fOMfNDWsj6uhPRfJ725KcP7lel4Ubs
-	RSDcRuTsKT55co4sqIMQVp4Ph402QRNnsc7s0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=7qnNvyra26AHYgjrlVjpVa35pbfrc1iT+UCy43Fcd4w=;
-	b=XdcOEar0khwDF87LB8H4aMWbejUz1l0VJbeHcMmd2TVeqhcIP/9SlW1q3cUYs1tmRU
-	UCG9zOppQjiQgYEReeFsHl5QqCYKKrt6/uLynK8QnDkGpi2ZrWDCRyt+TzyhKjicKNIN
-	0IqC0kbHu1eSafAOf9ASUSQUkFPW1qibX7uDU6tZgXZkodByA9wJjGgGlDfErmDrbUGP
-	C9Eva80tcxr+2O/TwvJ1cc48/tPDmhzoeROAuGjIhDMPiRWGViYUE5KI3t4VWFuqdc1p
-	YwW/8FLwR9RsAbLx4nmkCBOzC9Vcz1RS6O4GydIVE2xEhpzQyDAe9GFIsALD0iW3g+Zl
-	y06A==
-X-Gm-Message-State: AA+aEWbAV+JQ9rqI3ds8GR6va4Vg4w+uLD6hG37CPkJg0SBR2rvyMzng
-	rqYiDuJfUO7A02wL1/kG2/yOr+cD47ExsKIah6vyRg==
-X-Received: by 2002:aca:c501:: with SMTP id v1mr4995176oif.48.1545050632077;
-	Mon, 17 Dec 2018 04:43:52 -0800 (PST)
+	(envelope-from <plaes@plaes.org>) id 1gcEXl-0000Et-An
+	for qemu-devel@nongnu.org; Wed, 26 Dec 2018 14:08:38 -0500
+Received: from plaes.org ([188.166.43.21]:42928)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <plaes@plaes.org>)
+	id 1gcEXe-0000Ac-AP; Wed, 26 Dec 2018 14:08:30 -0500
+Received: from localhost (85.253.152.156.cable.starman.ee [85.253.152.156])
+	by plaes.org (Postfix) with ESMTPSA id ECC7440DE5;
+	Wed, 26 Dec 2018 19:07:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=plaes.org; s=mail;
+	t=1545851279; bh=UNoARyk9WUusxA3pVnd9f5PYCwojbra5kRBnkYFVHgI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=gC5POIK9XJApSGxZeU7OocIZ1EsRrbdcXlye7EeEbIzXmrD+8u11GqEdRFsG8ZQoU
+	94XkSlSgbXsPmZnDk+4a5+Rzu+DrCVidKjNzuF/Y0Zveuq/W3VTO4pWPdu+bINI8yR
+	AydM0vlpbVfOmiHx/E4soocWXMfNvKcp8YCs1o9pRj9MASd6namT+AiybXpAZ4TyiX
+	Vrbbh69k9Bph3LLrei5oewK+VAHS/9eiq4skfqG0oOgh+LdYuz+8vXJnnLzOGJVW93
+	PwhIds9FHAqJctrZBrHyjk2VihjJPPgpzGTud1d+S7C35Js5MwD6BT3tOGmhVtxbxq
+	DuAFOnVaFVsBw==
+From: Priit Laes <plaes@plaes.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Wed, 26 Dec 2018 21:07:02 +0200
+Message-Id: <20181226190702.403-1-plaes@plaes.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20181207090135.7651-1-luc.michel@greensocs.com>
-	<07b4fcad-0b6f-a69a-bbfe-41d4fa895480@greensocs.com>
-In-Reply-To: <07b4fcad-0b6f-a69a-bbfe-41d4fa895480@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Dec 2018 12:43:40 +0000
-Message-ID: <CAFEAcA_x4+60U0Q-5q3fArWxQ58jfd4K4vhPSGZepd+-9E7UVA@mail.gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH v8 00/16] gdbstub: support for the
- multiprocess extension
-X-BeenThere: qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 188.166.43.21
+Subject: [Qemu-devel] [RFC PATCH] stm32f103: Add initial skeleton of STM32
+ F103 SoC
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aODuVc1dpxs9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Priit Laes <plaes@plaes.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aoG61cpK2mbK
 
-On Mon, 17 Dec 2018 at 08:23, Luc Michel <luc.michel@greensocs.com> wrote:
->
-> Hi all,
->
-> What do you think of this re-roll? Is it in good shape for upstreaming?
+Initial barebone SoC implementation for STM32F103
+with "Blue Pill" board source for testing.
 
-It's on my list to look at still, but I'm off work til
-January now, I'm afraid.
+Code is based on both nrf51/microbit and stm32f205.
 
-thanks
--- PMM
+Although code loads and seems to be at the right
+addresses it does not yet run:
+
+./arm-softmmu/qemu-system-arm -nographic \
+	-machine stm32bluepill \
+	-kernel \
+	libopencm3-miniblink/bin/stm32/bluepill.bin
+QEMU 3.1.50 monitor - type 'help' for more information
+(qemu) QEMU 3.1.50 monitor - type 'help' for more information
+(qemu) gdbserver
+Waiting for gdb connection on device 'tcp::1234'
+
+$ arm-none-eabi-gdb \
+	libopencm3-miniblink/bin/stm32/bluepill.elf
+(gdb) target remote tcp::1234
+Remote debugging using tcp::1234
+blocking_handler () at ../../cm3/vector.c:103
+103	{
+(gdb) bt
+Backtrace stopped: previous frame identical to this frame (corrupt stack?=
+)
+(gdb) info line
+Line 103 of "../../cm3/vector.c" starts at address 0x8000380 \
+	<blocking_handler> and ends at 0x8000382 <null_handler>.
+
+Any ideas?
+
+Signed-off-by: Priit Laes <plaes@plaes.org>
+---
+ default-configs/arm-softmmu.mak |  1 +
+ hw/arm/Makefile.objs            |  1 +
+ hw/arm/stm32f103_blue_pill.c    | 78 ++++++++++++++++++++++++++++
+ hw/arm/stm32f103_soc.c          | 92 +++++++++++++++++++++++++++++++++
+ include/hw/arm/stm32f103_soc.h  | 54 +++++++++++++++++++
+ 5 files changed, 226 insertions(+)
+ create mode 100644 hw/arm/stm32f103_blue_pill.c
+ create mode 100644 hw/arm/stm32f103_soc.c
+ create mode 100644 include/hw/arm/stm32f103_soc.h
+
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
+u.mak
+index 2420491aac..7a55e523e1 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -95,6 +95,7 @@ CONFIG_RASPI=3Dy
+ CONFIG_REALVIEW=3Dy
+ CONFIG_ZAURUS=3Dy
+ CONFIG_ZYNQ=3Dy
++CONFIG_STM32F103_SOC=3Dy
+ CONFIG_STM32F2XX_TIMER=3Dy
+ CONFIG_STM32F2XX_USART=3Dy
+ CONFIG_STM32F2XX_SYSCFG=3Dy
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 50c7b4a927..7f59a9349d 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -24,6 +24,7 @@ obj-$(CONFIG_OMAP) +=3D omap1.o omap2.o
+ obj-$(CONFIG_STRONGARM) +=3D strongarm.o
+ obj-$(CONFIG_ALLWINNER_A10) +=3D allwinner-a10.o cubieboard.o
+ obj-$(CONFIG_RASPI) +=3D bcm2835_peripherals.o bcm2836.o raspi.o
++obj-$(CONFIG_STM32F103_SOC) +=3D stm32f103_soc.o stm32f103_blue_pill.o
+ obj-$(CONFIG_STM32F205_SOC) +=3D stm32f205_soc.o
+ obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zynqmp.o xlnx-zcu102.o
+ obj-$(CONFIG_XLNX_VERSAL) +=3D xlnx-versal.o xlnx-versal-virt.o
+diff --git a/hw/arm/stm32f103_blue_pill.c b/hw/arm/stm32f103_blue_pill.c
+new file mode 100644
+index 0000000000..09dd69aa71
+--- /dev/null
++++ b/hw/arm/stm32f103_blue_pill.c
+@@ -0,0 +1,78 @@
++/*
++ * STM32F103C8 Blue Pill development board Machine Model
++ *
++ * Copyright (c) 2018 Priit Laes <plaes@plaes.org>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/arm/arm.h"
++#include "exec/address-spaces.h"
++
++#include "hw/arm/stm32f103_soc.h"
++
++typedef struct {
++    MachineState parent;
++
++    STM32F103State stm32f103;
++} STM32BluePillMachineState;
++
++#define TYPE_STM32BLUEPILL_MACHINE MACHINE_TYPE_NAME("stm32bluepill")
++
++#define STM32BLUEPILL_MACHINE(obj) \
++    OBJECT_CHECK(STM32BluePillMachineState, obj, TYPE_STM32BLUEPILL_MACH=
+INE)
++
++static void stm32bluepill_init(MachineState *machine)
++{
++    STM32BluePillMachineState *s =3D STM32BLUEPILL_MACHINE(machine);
++    Object *soc =3D OBJECT(&s->stm32f103);
++
++    sysbus_init_child_obj(OBJECT(machine), "stm32f103-soc", soc,
++                          sizeof(s->stm32f103), TYPE_STM32F103_SOC);
++    object_property_set_bool(soc, true, "realized", &error_fatal);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++                       FLASH_SIZE);
++}
++
++static void stm32bluepill_machine_class_init(ObjectClass *oc, void *data=
+)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++
++    mc->desc =3D "STM32F103 Blue Pill development board";
++    mc->init =3D stm32bluepill_init;
++    mc->max_cpus =3D 1;
++}
++
++static const TypeInfo stm32bluepill_info =3D {
++    .name =3D TYPE_STM32BLUEPILL_MACHINE,
++    .parent =3D TYPE_MACHINE,
++    .instance_size =3D sizeof(STM32BluePillMachineState),
++    .class_init =3D stm32bluepill_machine_class_init,
++};
++
++static void stm32bluepill_machine_init(void)
++{
++    type_register_static(&stm32bluepill_info);
++}
++
++type_init(stm32bluepill_machine_init);
+diff --git a/hw/arm/stm32f103_soc.c b/hw/arm/stm32f103_soc.c
+new file mode 100644
+index 0000000000..3093bce4ea
+--- /dev/null
++++ b/hw/arm/stm32f103_soc.c
+@@ -0,0 +1,92 @@
++/*
++ * STM32 F103 SoC (or MCU)
++ *
++ * Copyright 2018 Priit Laes <plaes@plaes.org>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/sysbus.h"
++#include "exec/address-spaces.h"
++
++#include "hw/arm/stm32f103_soc.h"
++
++#define FLASH_BASE      0x08000000
++#define SRAM_BASE       0x20000000
++
++static void stm32f103_soc_init(Object *obj)
++{
++    STM32F103State *s =3D STM32F103_SOC(obj);
++
++    sysbus_init_child_obj(obj, "armv7m", &s->cpu, sizeof(s->cpu),
++                      TYPE_ARMV7M);
++}
++
++static void stm32f103_soc_realize(DeviceState *dev_soc, Error **errp)
++{
++    STM32F103State *s =3D STM32F103_SOC(dev_soc);
++    Error *err =3D NULL;
++
++    /*
++     * XXX: Region 0x1FFF F000 - 0x1FFF F7FF is called "System Memory"
++     * containing boot loader used to reprogram flash by using USART1.
++     */
++    MemoryRegion *system_memory =3D get_system_memory();
++
++    memory_region_init_rom(&s->flash, NULL, "stm32.flash", FLASH_SIZE,
++                           &error_fatal);
++    memory_region_add_subregion(system_memory, FLASH_BASE, &s->flash);
++    /*
++     * TODO: based on BOOT pin, 0x00000000 - 0x0007FFFF is aliased to
++     * either Flash or system memory. We currently hardcode it to flash.
++     */
++    memory_region_init_alias(&s->flash_alias, NULL, "stm32.flash_alias",
++                             &s->flash, 0, FLASH_SIZE);
++    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
++
++    memory_region_init_ram(&s->sram, NULL, "stm32.sram", SRAM_SIZE,
++                           &error_fatal);
++    memory_region_add_subregion(system_memory, SRAM_BASE, &s->sram);
++
++    qdev_prop_set_bit(DEVICE(&s->cpu), "enable-bitband", true);
++    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 80);
++    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type", ARM_CPU_TYPE_NAME(=
+"cortex-m3"));
++
++    object_property_set_link(OBJECT(&s->cpu), OBJECT(system_memory),
++                                    "memory", &error_abort);
++    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
++    if (err !=3D NULL) {
++        error_propagate(errp, err);
++        return;
++    }
++}
++
++static Property stm32f103_soc_properties[] =3D {
++    DEFINE_PROP_UINT32("flash-size", STM32F103State, flash_size, FLASH_S=
+IZE),
++    DEFINE_PROP_UINT32("sram-size", STM32F103State, sram_size, SRAM_SIZE=
+),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void stm32f103_soc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->props   =3D stm32f103_soc_properties;
++    dc->realize =3D stm32f103_soc_realize;
++}
++
++static const TypeInfo stm32f103_soc_info =3D {
++    .name          =3D TYPE_STM32F103_SOC,
++    .parent        =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(STM32F103State),
++    .instance_init =3D stm32f103_soc_init,
++    .class_init    =3D stm32f103_soc_class_init,
++};
++
++static void stm32f103_soc_types(void)
++{
++    type_register_static(&stm32f103_soc_info);
++}
++type_init(stm32f103_soc_types)
+diff --git a/include/hw/arm/stm32f103_soc.h b/include/hw/arm/stm32f103_so=
+c.h
+new file mode 100644
+index 0000000000..d6b2eb9c57
+--- /dev/null
++++ b/include/hw/arm/stm32f103_soc.h
+@@ -0,0 +1,54 @@
++/*
++ * STM32 F103 SoC (or MCU)
++ *
++ * Copyright (c) 2018 Priit Laes <plaes@plaes.org>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
++ * of this software and associated documentation files (the "Software"),=
+ to deal
++ * in the Software without restriction, including without limitation the=
+ rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be includ=
+ed in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_ARM_STM32F103_SOC_H
++#define HW_ARM_STM32F103_SOC_H
++
++#include "hw/arm/armv7m.h"
++
++#define TYPE_STM32F103_SOC "stm32f103-soc"
++#define STM32F103_SOC(obj) \
++    OBJECT_CHECK(STM32F103State, (obj), TYPE_STM32F103_SOC)
++
++/* TODO: flash/sram sizes are for STM32F103C8 part. */
++#define FLASH_SIZE     (64 * 1024)
++#define SRAM_SIZE      (20 * 1024)
++
++typedef struct STM32F103State {
++    SysBusDevice parent_obj;
++
++    ARMv7MState cpu;
++
++    uint32_t sram_size;
++    uint32_t flash_size;
++    MemoryRegion sram;
++    MemoryRegion flash;
++    /* XXX: find better name */
++    MemoryRegion flash_alias;
++
++    /* TODO: Peripherals */
++
++} STM32F103State;
++
++#endif /* HW_ARM_STM32F103_SOC_H */
+--=20
+2.20.1
+

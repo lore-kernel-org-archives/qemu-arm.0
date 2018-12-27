@@ -1,168 +1,138 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3733358wrt;
-        Mon, 10 Dec 2018 07:28:52 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Xm7FrwCVYV4eDfhDAGyvFigJHgQ8Q1VE1gsuEj8DKj/hBN8D/dsEZC/u55qtAGC8dADkXg
-X-Received: by 2002:adf:f848:: with SMTP id d8mr11119232wrq.178.1544455732716;
-        Mon, 10 Dec 2018 07:28:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544455732; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7109122wrt;
+        Thu, 27 Dec 2018 09:26:41 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7TgfFb6n4Amm0gGWKe4U5FPK1BmaVDzeZFWnTUAWB7YqHlao4Mc0YC/DVPcYiylmMU1HBu
+X-Received: by 2002:a37:a1c1:: with SMTP id k184mr22602583qke.155.1545931601868;
+        Thu, 27 Dec 2018 09:26:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545931601; cv=none;
         d=google.com; s=arc-20160816;
-        b=pzSFIvwfJK9/bf/IRWYoHEpe7Fz3B/GlkEZoUWuBz58Wsv1zT1JeOeOzuENoTKM3w5
-         FQZ0Nni8J8sPSYYiUHPWNTrD74gLzcT/XdM+Li9JG4zQh3OP/mGkNCwOIF4v32mjExvw
-         iqcbs4uSoAoN8RwHAIARdOGALdLsy8td5tchrM9rtWi2XWBjhz3fQ6bZaoyCGrUKMPOR
-         kt7WLf1CUgwxx4aFDjMtLvSw7+LD8tAuOiRJckHm80phALq6noTqU4cQu2f3pIoJQA3j
-         q5yh/yFGUmEWaa4pOWnnnXw9vkeuOHOBZ8aaPiGowYCR2G45b+5vNeQpiwfuR4IIoxP2
-         VRVw==
+        b=EWaidoVRX5uiliVaKq/M70ywacEgF581KGYz2phgqh++Evo1UzI0KS6JDezOeDseyO
+         yA6hj9dAWl4eba8jMnP4Q4cmePgnSuu55A2bSoB60rptaNhOlms0Io5BRVR6hXPmAoJ5
+         fz+PmJyjDVMfRbxQpfRCi+oYJ3JzpfL2/BsnMyE0y0QiM4f8MMhUCOj/TjZs/Q79XxO1
+         CStSLmwIZghAynDFaF6V4ABGKKF/UJv8wg9MSt56zgF3LzuP+ydpRZMnJZsVaW6+axlF
+         yxlE3gC3szua09ud2JPUGgcFEEHOPT3JCvckzTfMLRIBfNj6eIMITRsHuphTe5vB1fYo
+         Dt5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=ro3nkYlbYtcN/Qzsup18/bjuJTeVmZOQ1xw16hjybt4=;
-        b=VyFcrRx+nUXe1R/kR9+cwi6OMeji6sbd2QfkJ6MKqCz5k7f6KQeF8fBY0PKT5huCZ6
-         8U4mrXZG2tix1q6LVtentwfkOvuNBPYpKWUtkCFqIhgy/rEkamhmGErIlQzikCUDdIoG
-         bSrH+Azzum5lHA6kJMTyLx/cphsuGlIpBiiboNTvo0a0UyY6LhbGv0kHbKSnxLAqrcCp
-         tvkxLG2gfWdWHoC9dIrWAz3VK25q6pBfOxr/Zn9KzQR7cVBKg9ZhEit6YIlPIYjvdGXQ
-         URCy7MDr0ovGtdIjh8kdi8mh1VA7/BcikUK3Sv2AMgyXhsHFoQcy45b1Te9FWLxMRNqp
-         YvmQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=d05vNy3/CUVQ5bvkweIK1loz/adjVNc7XAJvXvdZ+us=;
+        b=uptV8fbU5uMbKluqtDt/aj7/9mHyR0GWWignjEEtbO3pcooK7eT23XrGjZClXLE3Jo
+         RzBs8+Kco5CVvBRSr1Eyq2uCWzLkThO9e64sd4wyt8CQqHSK4vPy8yxv5/j9e5ZhzDDJ
+         A7oWETMz5nRIlz0OZ1zFFl7qGG05XArYY1BjhRMck2e4I3OEvSgUTV0+ImEkOgi/Q5Hl
+         tL8uoERPrOgDTigeuEjiAW55mVMcZz8kn3WQCXEozXsWJ6N0DM/qDH0CudNLhyVh1HuW
+         0Q6hhewBXMY+K96jjd/OTYOKMo6fJNBcyVYChmZ/gx0AotVkPvrQy3AT98o/SjL/o1ph
+         IQMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id a10si8085783wrh.180.2018.12.10.07.28.52
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Dec 2018 07:28:52 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NqnChSmm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id s30si6704241qtj.60.2018.12.27.09.26.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 27 Dec 2018 09:26:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1gWNUJ-00009o-Kw; Mon, 10 Dec 2018 15:28:51 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH] target/arm: Emit barriers for A32/T32 load-acquire/store-release insns
-Date: Mon, 10 Dec 2018 15:28:50 +0000
-Message-Id: <20181210152850.435-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.19.2
+       dkim=pass header.i=@linaro.org header.s=google header.b=NqnChSmm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:54439 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gcZQf-000140-EL
+	for alex.bennee@linaro.org; Thu, 27 Dec 2018 12:26:41 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58512)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gcZQV-00013v-0X
+	for qemu-arm@nongnu.org; Thu, 27 Dec 2018 12:26:31 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gcZQT-0006uJ-AD
+	for qemu-arm@nongnu.org; Thu, 27 Dec 2018 12:26:30 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:46714)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gcZQS-0006tS-Tc
+	for qemu-arm@nongnu.org; Thu, 27 Dec 2018 12:26:29 -0500
+Received: by mail-ot1-x343.google.com with SMTP id w25so16755572otm.13
+	for <qemu-arm@nongnu.org>; Thu, 27 Dec 2018 09:26:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=d05vNy3/CUVQ5bvkweIK1loz/adjVNc7XAJvXvdZ+us=;
+	b=NqnChSmmvxoep2Qak51I8JJ2fm5qRKNGNTLxsO/XzZloBSos5wJr9hkpUft2W5NU+5
+	4jpJ6Hier1bHl3bMEIt2h+LwDr8LHpPKSBa3UImk1ldZd8guDCXevcWdYgevKzPK5iHF
+	voMkRfyF2cZtVNBR4layfKWH4Q5qYFkuSHm3E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=d05vNy3/CUVQ5bvkweIK1loz/adjVNc7XAJvXvdZ+us=;
+	b=oxbprrjZAohM6YEuOjzH/S8cYwicl5FFnPJ7FS7DEulGoY7nRWydC5+eAIH5zDnhNH
+	WGJDZnrYdHTmMQmOtPPE4Vn0a2Dg40+kueea2iGn9hh3F1zDVRtimhfiI3H+xlk7e+5v
+	ZcdUwAFaBmtjba7f4A+2dTUXn70NFaaPVxZnxM8VxEgUb2iE3qtXjv/lUCRchLyHwwf1
+	179KP2SE83CPV5aHGwgu/Lqo8jSKk8UETZe8AgCeetZn4sBs2IpPlqsRVhazX40kRlp9
+	j4kHODJNGtaDWxVWwfIxwvAKP7PuSzJMm/VhSkd1PxAxkYTMrjkjhtasTvzfusaxicxH
+	A/WA==
+X-Gm-Message-State: AJcUukenFprmZXZ+8fFWz8xFkDutad3exqhRyuUSG0N6c2QgnPy7UcPu
+	gTxtoB2dDxh3nbDQfCBG3A9IYfGwkkq32hY0OFKDNQ==
+X-Received: by 2002:a9d:5a81:: with SMTP id w1mr17473404oth.317.1545931587170; 
+	Thu, 27 Dec 2018 09:26:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: /DkKRgA+T+9N
+References: <CAC-7+Cg5EX1qb11kwRprSE8_E2SMtEm1Cgh0OzFMCuiBhh+3BQ@mail.gmail.com>
+	<CAFEAcA8qqzPxwYmjGG1Y940RFyuf0AccNy+N51HODnoKEuYSfQ@mail.gmail.com>
+	<CAC-7+Cix_s3xdzqre8r4c8f2djDBi42k4oOvyG6C4VCC29Ww6g@mail.gmail.com>
+	<CAC-7+CidVH8KGBaCKxeEricWKhago1w+-j7fDB88gnN1bXVy1A@mail.gmail.com>
+	<CAC-7+Cg-VJ9wivBYM+15mUs6cPUZ-Zu1Q818KieyjEVz02eLig@mail.gmail.com>
+	<CAC-7+Cg2muWTajKd-nSEz37oHPug6AD-WGyXJ8E7yASGc9p-dA@mail.gmail.com>
+In-Reply-To: <CAC-7+Cg2muWTajKd-nSEz37oHPug6AD-WGyXJ8E7yASGc9p-dA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Dec 2018 17:26:15 +0000
+Message-ID: <CAFEAcA-a4zhmhkzT8OqCkEwwJH89G+u3FL=CZGnUp9Mw4_WNLw@mail.gmail.com>
+To: =?UTF-8?B?0KHRgtCw0L3QuNGB0LvQsNCyINCi0YPQvNCw0YHQvtCy?=
+	<stast.3vium@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] Run Kernel+rootfs for ARM Cortex-A72 on QEMU
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0imugIYMBc93
 
-Now that MTTCG is here, the comment in the 32-bit Arm decoder that
-"Since the emulation does not have barriers, the acquire/release
-semantics need no special handling" is no longer true. Emit the
-correct barriers for the load-acquire/store-release insns, as
-we already do in the A64 decoder.
+On Tue, 25 Dec 2018 at 07:30, =D0=A1=D1=82=D0=B0=D0=BD=D0=B8=D1=81=D0=BB=D0=
+=B0=D0=B2 =D0=A2=D1=83=D0=BC=D0=B0=D1=81=D0=BE=D0=B2 <stast.3vium@gmail.com=
+> wrote:
+> Although there is no big difference now. I really want to see the logs.
+> If the board is not suitable for the kernel, the logs will not be display=
+ed?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I've not run into this in practice, and there's very little
-aarch32 code out there that is built to use the new-in-v8
-instructions as far as I'm aware, but since it would be very
-painful to track down this bug if we ran into it in the
-wild it seems worth fixing...
----
- target/arm/translate.c | 33 ++++++++++++++++++++++++++-------
- 1 file changed, 26 insertions(+), 7 deletions(-)
+If the kernel is not suitable for the board, then typically the
+kernel will just crash very early in bootup, before it has
+been able to output logs. (In particular, because the serial
+port location depends on the board, the kernel needs to be
+able to work with the board to be able to output anything at all.)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 7c4675ffd8a..e8fd824f3f5 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -9733,6 +9733,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                     rd = (insn >> 12) & 0xf;
-                     if (insn & (1 << 23)) {
-                         /* load/store exclusive */
-+                        bool is_ld = extract32(insn, 20, 1);
-+                        bool is_lasr = !extract32(insn, 8, 1);
-                         int op2 = (insn >> 8) & 3;
-                         op1 = (insn >> 21) & 0x3;
- 
-@@ -9760,11 +9762,12 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                         addr = tcg_temp_local_new_i32();
-                         load_reg_var(s, addr, rn);
- 
--                        /* Since the emulation does not have barriers,
--                           the acquire/release semantics need no special
--                           handling */
-+                        if (is_lasr && !is_ld) {
-+                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+                        }
-+
-                         if (op2 == 0) {
--                            if (insn & (1 << 20)) {
-+                            if (is_ld) {
-                                 tmp = tcg_temp_new_i32();
-                                 switch (op1) {
-                                 case 0: /* lda */
-@@ -9810,7 +9813,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                                 }
-                                 tcg_temp_free_i32(tmp);
-                             }
--                        } else if (insn & (1 << 20)) {
-+                        } else if (is_ld) {
-                             switch (op1) {
-                             case 0: /* ldrex */
-                                 gen_load_exclusive(s, rd, 15, addr, 2);
-@@ -9847,6 +9850,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                             }
-                         }
-                         tcg_temp_free_i32(addr);
-+
-+                        if (is_lasr && is_ld) {
-+                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+                        }
-                     } else if ((insn & 0x00300f00) == 0) {
-                         /* 0bcccc_0001_0x00_xxxx_xxxx_0000_1001_xxxx
-                         *  - SWP, SWPB
-@@ -10862,6 +10869,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                 tcg_gen_addi_i32(tmp, tmp, s->pc);
-                 store_reg(s, 15, tmp);
-             } else {
-+                bool is_lasr = false;
-+                bool is_ld = extract32(insn, 20, 1);
-                 int op2 = (insn >> 6) & 0x3;
-                 op = (insn >> 4) & 0x3;
-                 switch (op2) {
-@@ -10883,12 +10892,18 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                 case 3:
-                     /* Load-acquire/store-release exclusive */
-                     ARCH(8);
-+                    is_lasr = true;
-                     break;
-                 }
-+
-+                if (is_lasr && !is_ld) {
-+                    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-+                }
-+
-                 addr = tcg_temp_local_new_i32();
-                 load_reg_var(s, addr, rn);
-                 if (!(op2 & 1)) {
--                    if (insn & (1 << 20)) {
-+                    if (is_ld) {
-                         tmp = tcg_temp_new_i32();
-                         switch (op) {
-                         case 0: /* ldab */
-@@ -10927,12 +10942,16 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                         }
-                         tcg_temp_free_i32(tmp);
-                     }
--                } else if (insn & (1 << 20)) {
-+                } else if (is_ld) {
-                     gen_load_exclusive(s, rs, rd, addr, op);
-                 } else {
-                     gen_store_exclusive(s, rm, rs, rd, addr, op);
-                 }
-                 tcg_temp_free_i32(addr);
-+
-+                if (is_lasr && is_ld) {
-+                    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-+                }
-             }
-         } else {
-             /* Load/store multiple, RFE, SRS.  */
--- 
-2.19.2
+This is the same as with real hardware -- if you boot the wrong
+kernel or a badly configured kernel or a kernel with the wrong
+device tree on a real hardware board, it will generally crash with
+no output. The process for debugging this in QEMU is the same as
+for real hardware (ie use a known-good config, trial and error,
+if all else fails use a debugger to see what's happening).
+
+thanks
+-- PMM

@@ -1,175 +1,565 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp422296wrt;
-        Thu, 3 Jan 2019 01:13:11 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6lveL3DrJz5k6ivvMd4i4InoN71RiP+ltBTzkawbXi5Y2XykD4h1CXBOenmf3PH6S5XN7c
-X-Received: by 2002:a0c:f9c3:: with SMTP id j3mr46397712qvo.107.1546506791864;
-        Thu, 03 Jan 2019 01:13:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546506791; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp422600wrt;
+        Thu, 3 Jan 2019 01:13:36 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN46yYEO6ZyHHhNi1SSD910fknJpgBGxDhRo6ZsOHc1okKL10NkXArwHnfVbC5RoYXXXAIW3
+X-Received: by 2002:a0c:dc0f:: with SMTP id s15mr45236428qvk.40.1546506816755;
+        Thu, 03 Jan 2019 01:13:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546506816; cv=none;
         d=google.com; s=arc-20160816;
-        b=0x9p4PBZf9XYgvCseIDsum3tf/JiiDXHMDchgWMz+AHSX2D9AeYqhUQ7v6BrkGMNaR
-         Nzg28fGFR9OvfMV4u9UBLerquQpIK4eL87NmjP9axu1kVH6dD7Ub9L6xqds2b/3y4uiA
-         4tduR/04MliZN3hf5cW4pKHNn3GVFg7JJZLbgIdpI7TCYC2Co4Zy0TW4bjV7f9ARgg91
-         3J8z4qPa4lBeWO30e27bbOMfHRSlZzty5KjDWjmzVNMjYqU+zfg81581iG1W4pdOpkmv
-         HW6RkP9eXIxi03F3s+SEBeTvNKX0QBEt5UVLAMRkG7wgjLe8jAdOVN1+9UWRX40GXPJ8
-         JLWg==
+        b=JGx3ZEYjyy4xaQiPEE4m7iy5zrDCvfF3I8QFXdD7CL34BItNeoFDqkti+gV4mYpXPN
+         V7Cru9fB+NYEQfBDNCeKB0bfI61dEmkikJyx5GsI38Rdx1HAw6X8a90VDGkHRN3mKy32
+         mk/ZY53lTnbdge0CSdaXeQ/bWRhUqmSj6boieD/IcU/nhnptaFkBti1cEl0dWfHaCSCm
+         SJqPYk86FbAoYPRL/Jm+iYqLW6kXT3urRjSyjzpOxJ3yuNuiDelR795I7XOhAbwF5Xf3
+         ThU/7x3ba598YPJlwHclHNZ5gzC+jl2N/2BZ9I/kOcns4s9NpYEDGT8H2DvwWhBY02aC
+         81Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=FAtab2tQIU1VX9cbQTM3/hIy9Ni4rWwy2s1xvis8tTo=;
-        b=wZ7y+xQbRkrdUscB4wGb/lKIOTYCBW99tc1I+QPKUpKsDun09y7Yw7U2B5Jgl0eaLH
-         fWP2TODwmMA+NT8gjywrvVJapVtSYcgENj8w5Sv2LYY1q0EfXGktqJcpdjj2xPS+tXCU
-         klEPWRWR/z8OL1vc3r0Bd6LEXx8Gn7IqSvE8T/dLdBnrl1T8h0qMvyfHVQ36h2fEHvb8
-         JGPyzzg4kUS017EMxVGEwG5BJiRuDnssqfNRWNDbisl+Z6jpwYU2V5GaKfY63FtWLj21
-         nskTNQwvuE8vQAqENUpwlHrFjLtXbUHu6RHLmeTS6IPmzj04oOgHyst5ApVNuebOdmwt
-         kXTQ==
+        bh=Xn1NPRYJPUM8MDHJ5rCKjAPlGbDAI8L9uKDvYXq/fj4=;
+        b=HQKS0lXtpfOvX8TCFOhPKO37r+FkfvphGz61rGaAbiVtsAZhjYZo7j3MwzMQieixh4
+         Bl9PPKoZZ+w0JW0PaYcBXTl7Pkza2+N4BYle0X9Yru3uM4nPvan3aBCYLzutycg6Sqki
+         EsGkg57UBl2vzUnkkOz38C82oM2KtmwjHLuOMtcRB+6PzCWdc1wNPzsDoYkwXjTbJCa/
+         F205mTe6cO5Z6gitui8+90x02ZAGZSRpWXJSeHsGe5HRfohznSS09PSAXVpo5c1GRWg9
+         Go63RA++fXyeOe2LpiHTYdEczN9wZFbG2gCjds0lm27Qf83I24hagE7SoOiWcgB1S31I
+         XDlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id x1si2952654qkc.167.2019.01.03.01.13.11
+        by mx.google.com with ESMTPS id j6si7132080qkk.237.2019.01.03.01.13.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Jan 2019 01:13:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Thu, 03 Jan 2019 01:13:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49907 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49911 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gez3v-0003TD-76
-	for alex.bennee@linaro.org; Thu, 03 Jan 2019 04:13:11 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:51821)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gez4K-0003i1-6Q
+	for alex.bennee@linaro.org; Thu, 03 Jan 2019 04:13:36 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51889)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gez3e-0003Qb-7g
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 04:12:54 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gez3k-0003bu-Pr
+	for qemu-devel@nongnu.org; Thu, 03 Jan 2019 04:13:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gez3d-0006am-9X
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 04:12:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37208)
+	(envelope-from <stefanha@redhat.com>) id 1gez3j-0006e6-6k
+	for qemu-devel@nongnu.org; Thu, 03 Jan 2019 04:13:00 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55114)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gez3d-0006aV-4P; Thu, 03 Jan 2019 04:12:53 -0500
+	id 1gez3f-0006bq-CV; Thu, 03 Jan 2019 04:12:55 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F25E7970E;
-	Thu,  3 Jan 2019 09:12:52 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9D64912039;
+	Thu,  3 Jan 2019 09:12:54 +0000 (UTC)
 Received: from localhost (ovpn-117-118.ams2.redhat.com [10.36.117.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E37E25D738;
-	Thu,  3 Jan 2019 09:12:51 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A6DF25D738;
+	Thu,  3 Jan 2019 09:12:53 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu,  3 Jan 2019 09:11:12 +0000
-Message-Id: <20190103091119.9367-5-stefanha@redhat.com>
+Date: Thu,  3 Jan 2019 09:11:13 +0000
+Message-Id: <20190103091119.9367-6-stefanha@redhat.com>
 In-Reply-To: <20190103091119.9367-1-stefanha@redhat.com>
 References: <20190103091119.9367-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 03 Jan 2019 09:12:52 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 03 Jan 2019 09:12:54 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 04/11] arm: Instantiate NRF51 random number
- generator
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 05/11] hw/gpio/nrf51_gpio: Add nRF51 GPIO
+ peripheral
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
 	Jim Mussared <jim@groklearning.com>, qemu-arm@nongnu.org,
 	Joel Stanley <joel@jms.id.au>, Stefan Hajnoczi <stefanha@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P+l5p16iztD3
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yazpe6xyHW63
 
 From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 
-Use RNG in SOC.
+This adds a model of the nRF51 GPIO peripheral.
+
+Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.pdf
+
+The nRF51 series microcontrollers support up to 32 GPIO pins in various c=
+onfigurations.
+The pins can be used as input pins with pull-ups or pull-down.
+Furthermore, three different output driver modes per level are
+available (disconnected, standard, high-current).
+
+The GPIO-Peripheral has a mechanism for detecting level changes which is
+not featured in this model.
 
 Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- include/hw/arm/nrf51_soc.h |  2 ++
- hw/arm/nrf51_soc.c         | 16 ++++++++++++++++
- 2 files changed, 18 insertions(+)
+ Makefile.objs                |   1 +
+ hw/gpio/Makefile.objs        |   1 +
+ include/hw/gpio/nrf51_gpio.h |  69 ++++++++
+ hw/gpio/nrf51_gpio.c         | 300 +++++++++++++++++++++++++++++++++++
+ hw/gpio/trace-events         |   7 +
+ 5 files changed, 378 insertions(+)
+ create mode 100644 include/hw/gpio/nrf51_gpio.h
+ create mode 100644 hw/gpio/nrf51_gpio.c
+ create mode 100644 hw/gpio/trace-events
 
-diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-index 73fc92e9a8..9e3ba916bd 100644
---- a/include/hw/arm/nrf51_soc.h
-+++ b/include/hw/arm/nrf51_soc.h
-@@ -13,6 +13,7 @@
- #include "hw/sysbus.h"
- #include "hw/arm/armv7m.h"
- #include "hw/char/nrf51_uart.h"
-+#include "hw/misc/nrf51_rng.h"
-=20
- #define TYPE_NRF51_SOC "nrf51-soc"
- #define NRF51_SOC(obj) \
-@@ -26,6 +27,7 @@ typedef struct NRF51State {
-     ARMv7MState cpu;
-=20
-     NRF51UARTState uart;
-+    NRF51RNGState rng;
-=20
-     MemoryRegion iomem;
-     MemoryRegion sram;
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 55f8eaafcb..d2a19b8ead 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -86,6 +86,19 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Er=
-ror **errp)
-                        qdev_get_gpio_in(DEVICE(&s->cpu),
-                        BASE_TO_IRQ(NRF51_UART_BASE)));
-=20
-+    /* RNG */
-+    object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
+diff --git a/Makefile.objs b/Makefile.objs
+index bc5b8a8442..456115992a 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -184,6 +184,7 @@ trace-events-subdirs +=3D hw/vfio
+ trace-events-subdirs +=3D hw/virtio
+ trace-events-subdirs +=3D hw/watchdog
+ trace-events-subdirs +=3D hw/xen
++trace-events-subdirs +=3D hw/gpio
+ trace-events-subdirs +=3D io
+ trace-events-subdirs +=3D linux-user
+ trace-events-subdirs +=3D migration
+diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
+index fa0a72e6d0..e5da0cb54f 100644
+--- a/hw/gpio/Makefile.objs
++++ b/hw/gpio/Makefile.objs
+@@ -8,3 +8,4 @@ common-obj-$(CONFIG_GPIO_KEY) +=3D gpio_key.o
+ obj-$(CONFIG_OMAP) +=3D omap_gpio.o
+ obj-$(CONFIG_IMX) +=3D imx_gpio.o
+ obj-$(CONFIG_RASPI) +=3D bcm2835_gpio.o
++obj-$(CONFIG_NRF51_SOC) +=3D nrf51_gpio.o
+diff --git a/include/hw/gpio/nrf51_gpio.h b/include/hw/gpio/nrf51_gpio.h
+new file mode 100644
+index 0000000000..337ee534bb
+--- /dev/null
++++ b/include/hw/gpio/nrf51_gpio.h
+@@ -0,0 +1,69 @@
++/*
++ * nRF51 System-on-Chip general purpose input/output register definition
++ *
++ * QEMU interface:
++ * + sysbus MMIO regions 0: GPIO registers
++ * + Unnamed GPIO inputs 0-31: Set tri-state input level for GPIO pin.
++ *   Level -1: Externally Disconnected/Floating; Pull-up/down will be re=
+garded
++ *   Level 0: Input externally driven LOW
++ *   Level 1: Input externally driven HIGH
++ * + Unnamed GPIO outputs 0-31:
++ *   Level -1: Disconnected/Floating
++ *   Level 0: Driven LOW
++ *   Level 1: Driven HIGH
++ *
++ * Accuracy of the peripheral model:
++ * + The nRF51 GPIO output driver supports two modes, standard and high-=
+current
++ *   mode. These different drive modes are not modeled and handled the s=
+ame.
++ * + Pin SENSEing is not modeled/implemented.
++ *
++ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ *
++ */
++#ifndef NRF51_GPIO_H
++#define NRF51_GPIO_H
++
++#include "hw/sysbus.h"
++#define TYPE_NRF51_GPIO "nrf51_soc.gpio"
++#define NRF51_GPIO(obj) OBJECT_CHECK(NRF51GPIOState, (obj), TYPE_NRF51_G=
+PIO)
++
++#define NRF51_GPIO_PINS 32
++
++#define NRF51_GPIO_SIZE 0x1000
++
++#define NRF51_GPIO_REG_OUT          0x504
++#define NRF51_GPIO_REG_OUTSET       0x508
++#define NRF51_GPIO_REG_OUTCLR       0x50C
++#define NRF51_GPIO_REG_IN           0x510
++#define NRF51_GPIO_REG_DIR          0x514
++#define NRF51_GPIO_REG_DIRSET       0x518
++#define NRF51_GPIO_REG_DIRCLR       0x51C
++#define NRF51_GPIO_REG_CNF_START    0x700
++#define NRF51_GPIO_REG_CNF_END      0x77F
++
++#define NRF51_GPIO_PULLDOWN 1
++#define NRF51_GPIO_PULLUP 3
++
++typedef struct NRF51GPIOState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion mmio;
++    qemu_irq irq;
++
++    uint32_t out;
++    uint32_t in;
++    uint32_t in_mask;
++    uint32_t dir;
++    uint32_t cnf[NRF51_GPIO_PINS];
++
++    uint32_t old_out;
++    uint32_t old_out_connected;
++
++    qemu_irq output[NRF51_GPIO_PINS];
++} NRF51GPIOState;
++
++
++#endif
+diff --git a/hw/gpio/nrf51_gpio.c b/hw/gpio/nrf51_gpio.c
+new file mode 100644
+index 0000000000..86e047d649
+--- /dev/null
++++ b/hw/gpio/nrf51_gpio.c
+@@ -0,0 +1,300 @@
++/*
++ * nRF51 System-on-Chip general purpose input/output register definition
++ *
++ * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.=
+pdf
++ * Product Spec: http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1.p=
+df
++ *
++ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/gpio/nrf51_gpio.h"
++#include "trace.h"
++
++/*
++ * Check if the output driver is connected to the direction switch
++ * given the current configuration and logic level.
++ * It is not differentiated between standard and "high"(-power) drive mo=
+des.
++ */
++static bool is_connected(uint32_t config, uint32_t level)
++{
++    bool state;
++    uint32_t drive_config =3D extract32(config, 8, 3);
++
++    switch (drive_config) {
++    case 0 ... 3:
++        state =3D true;
++        break;
++    case 4 ... 5:
++        state =3D level !=3D 0;
++        break;
++    case 6 ... 7:
++        state =3D level =3D=3D 0;
++        break;
++    default:
++        g_assert_not_reached();
++        break;
 +    }
 +
-+    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0);
-+    memory_region_add_subregion_overlap(&s->container, NRF51_RNG_BASE, m=
-r, 0);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng), 0,
-+                       qdev_get_gpio_in(DEVICE(&s->cpu),
-+                       BASE_TO_IRQ(NRF51_RNG_BASE)));
++    return state;
++}
 +
-     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
-                                 NRF51_IOMEM_SIZE);
-     create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
-@@ -110,6 +123,9 @@ static void nrf51_soc_init(Object *obj)
-                            TYPE_NRF51_UART);
-     object_property_add_alias(obj, "serial0", OBJECT(&s->uart), "chardev=
-",
-                               &error_abort);
++static void update_output_irq(NRF51GPIOState *s, size_t i,
++                              bool connected, bool level)
++{
++    int64_t irq_level =3D connected ? level : -1;
++    bool old_connected =3D extract32(s->old_out_connected, i, 1);
++    bool old_level =3D extract32(s->old_out, i, 1);
 +
-+    sysbus_init_child_obj(obj, "rng", &s->rng, sizeof(s->rng),
-+                           TYPE_NRF51_RNG);
- }
-=20
- static Property nrf51_soc_properties[] =3D {
++    if ((old_connected !=3D connected) || (old_level !=3D level)) {
++        qemu_set_irq(s->output[i], irq_level);
++        trace_nrf51_gpio_update_output_irq(i, irq_level);
++    }
++
++    s->old_out =3D deposit32(s->old_out, i, 1, level);
++    s->old_out_connected =3D deposit32(s->old_out_connected, i, 1, conne=
+cted);
++}
++
++static void update_state(NRF51GPIOState *s)
++{
++    uint32_t pull;
++    size_t i;
++    bool connected_out, dir, connected_in, out, input;
++
++    for (i =3D 0; i < NRF51_GPIO_PINS; i++) {
++        pull =3D extract32(s->cnf[i], 2, 2);
++        dir =3D extract32(s->cnf[i], 0, 1);
++        connected_in =3D extract32(s->in_mask, i, 1);
++        out =3D extract32(s->out, i, 1);
++        input =3D !extract32(s->cnf[i], 1, 1);
++        connected_out =3D is_connected(s->cnf[i], out) && dir;
++
++        update_output_irq(s, i, connected_out, out);
++
++        /* Pin both driven externally and internally */
++        if (connected_out && connected_in) {
++            qemu_log_mask(LOG_GUEST_ERROR, "GPIO pin %zu short circuited=
+\n", i);
++        }
++
++        /*
++         * Input buffer disconnected from internal/external drives, so
++         * pull-up/pull-down becomes relevant
++         */
++        if (!input || (input && !connected_in && !connected_out)) {
++            if (pull =3D=3D NRF51_GPIO_PULLDOWN) {
++                s->in =3D deposit32(s->in, i, 1, 0);
++            } else if (pull =3D=3D NRF51_GPIO_PULLUP) {
++                s->in =3D deposit32(s->in, i, 1, 1);
++            }
++        }
++
++        /* Self stimulation through internal output driver */
++        if (connected_out && !connected_in && input) {
++            s->in =3D deposit32(s->in, i, 1, out);
++        }
++    }
++
++}
++
++/*
++ * Direction is exposed in both the DIR register and the DIR bit
++ * of each PINs CNF configuration register. Reflect bits for pins in DIR
++ * to individual pin configuration registers.
++ */
++static void reflect_dir_bit_in_cnf(NRF51GPIOState *s)
++{
++    size_t i;
++
++    uint32_t value =3D s->dir;
++
++    for (i =3D 0; i < NRF51_GPIO_PINS; i++) {
++        s->cnf[i] =3D (s->cnf[i] & ~(1UL)) | ((value >> i) & 0x01);
++    }
++}
++
++static uint64_t nrf51_gpio_read(void *opaque, hwaddr offset, unsigned in=
+t size)
++{
++    NRF51GPIOState *s =3D NRF51_GPIO(opaque);
++    uint64_t r =3D 0;
++    size_t idx;
++
++    switch (offset) {
++    case NRF51_GPIO_REG_OUT ... NRF51_GPIO_REG_OUTCLR:
++        r =3D s->out;
++        break;
++
++    case NRF51_GPIO_REG_IN:
++        r =3D s->in;
++        break;
++
++    case NRF51_GPIO_REG_DIR ... NRF51_GPIO_REG_DIRCLR:
++        r =3D s->dir;
++        break;
++
++    case NRF51_GPIO_REG_CNF_START ... NRF51_GPIO_REG_CNF_END:
++        idx =3D (offset - NRF51_GPIO_REG_CNF_START) / 4;
++        r =3D s->cnf[idx];
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: bad read offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++    }
++
++    trace_nrf51_gpio_read(offset, r);
++
++    return r;
++}
++
++static void nrf51_gpio_write(void *opaque, hwaddr offset,
++                       uint64_t value, unsigned int size)
++{
++    NRF51GPIOState *s =3D NRF51_GPIO(opaque);
++    size_t idx;
++
++    trace_nrf51_gpio_write(offset, value);
++
++    switch (offset) {
++    case NRF51_GPIO_REG_OUT:
++        s->out =3D value;
++        break;
++
++    case NRF51_GPIO_REG_OUTSET:
++        s->out |=3D value;
++        break;
++
++    case NRF51_GPIO_REG_OUTCLR:
++        s->out &=3D ~value;
++        break;
++
++    case NRF51_GPIO_REG_DIR:
++        s->dir =3D value;
++        reflect_dir_bit_in_cnf(s);
++        break;
++
++    case NRF51_GPIO_REG_DIRSET:
++        s->dir |=3D value;
++        reflect_dir_bit_in_cnf(s);
++        break;
++
++    case NRF51_GPIO_REG_DIRCLR:
++        s->dir &=3D ~value;
++        reflect_dir_bit_in_cnf(s);
++        break;
++
++    case NRF51_GPIO_REG_CNF_START ... NRF51_GPIO_REG_CNF_END:
++        idx =3D (offset - NRF51_GPIO_REG_CNF_START) / 4;
++        s->cnf[idx] =3D value;
++        /*
++         * direction is exposed in both the DIR register and the DIR bit
++         * of each PINs CNF configuration register.
++         */
++        s->dir =3D (s->dir & ~(1UL << idx)) | ((value & 0x01) << idx);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: bad write offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++    }
++
++    update_state(s);
++}
++
++static const MemoryRegionOps gpio_ops =3D {
++    .read =3D  nrf51_gpio_read,
++    .write =3D nrf51_gpio_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .impl.min_access_size =3D 4,
++    .impl.max_access_size =3D 4,
++};
++
++static void nrf51_gpio_set(void *opaque, int line, int value)
++{
++    NRF51GPIOState *s =3D NRF51_GPIO(opaque);
++
++    trace_nrf51_gpio_set(line, value);
++
++    assert(line >=3D 0 && line < NRF51_GPIO_PINS);
++
++    s->in_mask =3D deposit32(s->in_mask, line, 1, value >=3D 0);
++    if (value >=3D 0) {
++        s->in =3D deposit32(s->in, line, 1, value !=3D 0);
++    }
++
++    update_state(s);
++}
++
++static void nrf51_gpio_reset(DeviceState *dev)
++{
++    NRF51GPIOState *s =3D NRF51_GPIO(dev);
++    size_t i;
++
++    s->out =3D 0;
++    s->old_out =3D 0;
++    s->old_out_connected =3D 0;
++    s->in =3D 0;
++    s->in_mask =3D 0;
++    s->dir =3D 0;
++
++    for (i =3D 0; i < NRF51_GPIO_PINS; i++) {
++        s->cnf[i] =3D 0x00000002;
++    }
++}
++
++static const VMStateDescription vmstate_nrf51_gpio =3D {
++    .name =3D TYPE_NRF51_GPIO,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32(out, NRF51GPIOState),
++        VMSTATE_UINT32(in, NRF51GPIOState),
++        VMSTATE_UINT32(in_mask, NRF51GPIOState),
++        VMSTATE_UINT32(dir, NRF51GPIOState),
++        VMSTATE_UINT32_ARRAY(cnf, NRF51GPIOState, NRF51_GPIO_PINS),
++        VMSTATE_UINT32(old_out, NRF51GPIOState),
++        VMSTATE_UINT32(old_out_connected, NRF51GPIOState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void nrf51_gpio_init(Object *obj)
++{
++    NRF51GPIOState *s =3D NRF51_GPIO(obj);
++
++    memory_region_init_io(&s->mmio, obj, &gpio_ops, s,
++            TYPE_NRF51_GPIO, NRF51_GPIO_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++
++    qdev_init_gpio_in(DEVICE(s), nrf51_gpio_set, NRF51_GPIO_PINS);
++    qdev_init_gpio_out(DEVICE(s), s->output, NRF51_GPIO_PINS);
++}
++
++static void nrf51_gpio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->vmsd =3D &vmstate_nrf51_gpio;
++    dc->reset =3D nrf51_gpio_reset;
++    dc->desc =3D "nRF51 GPIO";
++}
++
++static const TypeInfo nrf51_gpio_info =3D {
++    .name =3D TYPE_NRF51_GPIO,
++    .parent =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(NRF51GPIOState),
++    .instance_init =3D nrf51_gpio_init,
++    .class_init =3D nrf51_gpio_class_init
++};
++
++static void nrf51_gpio_register_types(void)
++{
++    type_register_static(&nrf51_gpio_info);
++}
++
++type_init(nrf51_gpio_register_types)
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+new file mode 100644
+index 0000000000..cb41a89756
+--- /dev/null
++++ b/hw/gpio/trace-events
+@@ -0,0 +1,7 @@
++# See docs/devel/tracing.txt for syntax documentation.
++
++# hw/gpio/nrf51_gpio.c
++nrf51_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value=
+ 0x%" PRIx64
++nrf51_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " =
+value 0x%" PRIx64
++nrf51_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" P=
+RIi64
++nrf51_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi6=
+4 " value %" PRIi64
+\ No newline at end of file
 --=20
 2.19.2
 

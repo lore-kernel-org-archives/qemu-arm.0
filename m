@@ -1,183 +1,179 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4586266wrt;
-        Mon, 24 Dec 2018 23:30:24 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5Ros7dYqkmAonm6pRhxT/JFIC5Dg4DM9hW8HRmi1EObZcUXBqDQedH2a5S1itbh0P/yuS6
-X-Received: by 2002:a37:f23:: with SMTP id z35mr13700445qkg.171.1545723024641;
-        Mon, 24 Dec 2018 23:30:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1545723024; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp368270wrt;
+        Wed, 2 Jan 2019 23:56:40 -0800 (PST)
+X-Received: by 2002:a1c:43:: with SMTP id 64mr39619844wma.72.1546502200724;
+        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546502200; cv=none;
         d=google.com; s=arc-20160816;
-        b=H6eD2f2888NdtON5Gy4IiyqrFyr3fiO4I2ucVMjvIbuduh71oJ/i1ZD7rOPrF1ZagZ
-         wz28DRqeScMqxefZu4v/JBofA9NN0Sofd4PZKUHhASJ+AncVmbxNPlLGBvAjg2xzScaj
-         3MbJmaEq5tHBHEqxDp+oi8F3dBqpxZ8fKEsxQS2r+BjmkxpK5CaRfVMeJ1Rn0qz6sXjI
-         sUmQ99qHc1hhTG+CEtCED3CMaPtBQVToEspq5YisXWDjo78rrokvwbT79hdaOzEi4M+e
-         rSFlwCfVr2ACx2J+YKdZ95suP6mZ9LrmmccT8TDVwxe9mC/iE+UKKFFAr/MEXOwO441I
-         2LxQ==
+        b=H9oU8HfjY977OjG6vrPARbokn3E00/7yamOGXbgsFIGkHj+CGnqdb0RLQWTM7EjpU3
+         kM0CiI4rUvg1J8pXhieP86tp2ZEaZrvKXChhjA1IoKIwC/EhvSM68xWgJ3SJCb/9iaJQ
+         wTiOAA1764ZKt1anTHAwwp7GHZLMT/vFfM462HBpBcHL0G1+ny+8HzTikJA59fKHBoUF
+         U91PFfQdA5Jrb7dBenl0Rqv/bntgDzkg2v4eZhy5kO7ku02CHJG2UpWY1RacWJ2N5jqY
+         EFKDKvcPYESjDcn7eG1FJBAt9yjzoIJEzRTejJS5u7Emw2KSxjREE8PT92MFrIa9uPBJ
+         B0oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Y3KTP5SiCIOyk/YbMz9m+FuhAZletio3asdDQtmy6Fk=;
-        b=ajcjC1WaBb/iHFU+OpXvsxy35QKazz6VOC4eUmebIzMtdN/ww4VUQOZz0yH0oiMNy5
-         QNjUCkucmjTBw0QgH9Ynh3ce2elWxpzA1smCnYFfJT9H9UwNa49VoQTBIz+ujCb7hmHU
-         ku1VVh90D0j7ngLBul1uhrBZDil2V8qXYr1DOFpUm5LRT4rWsdTZ/gGCNcV6vsLCTzFq
-         IZ0vc8KWhzpgYN7mJRMJ2P8P9r4IXSVvTIJeONSA2598fmFU1pD623s9Xi1QZDtbDdme
-         hAFM55zvR22CGMyAuma+vKujP41x8KkdkM6MUMrTrCH8v2zrZQInvwNxxVOxvTrqIWfj
-         nTfw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
+        b=SaHwp4wlM8ZxMxPjEgqeM4Wn+xbUPpCiAa7rSc+1J2qAAi/iwmkDtKrA53XWJt2K6F
+         +nx7baQn+YpPoWPRS7jrSuBldMyZahFO2rL3gFHGBb8/wAfkTs/SO9Nqkb2Gn32TxgF6
+         ntI7IgpHqnA92sYQOcx0GrQ9UZVUzKW8gSzA8h53HWYZ0CEoxXSblNqNO3H/1KErTMcF
+         zgPAEC+V8w3+A4Dpd3GBzhKxQ9B3Rs9w1yVpuJ8Aqmdz5ONVPr7EkZ+nFZ4ITuLf4Hef
+         CJOgDqmgJtZOk0oJNJxPwa0DKBpJ4ioeUTQ3lsl0pieNNuM+y+WIM4hJcFm4kCoKWfKA
+         8gqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mEG7vn1h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1Z1E8w+;
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id j35si4930910qtc.137.2018.12.24.23.30.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Dec 2018 23:30:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+Return-Path: <stefanha@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id j10sor27713653wrx.15.2019.01.02.23.56.40
+        (Google Transport Security);
+        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mEG7vn1h;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=H1Z1E8w+;
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:39982 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gbhAW-00011v-6R
-	for alex.bennee@linaro.org; Tue, 25 Dec 2018 02:30:24 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:33336)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stast.3vium@gmail.com>) id 1gbhAM-0000xY-Pu
-	for qemu-arm@nongnu.org; Tue, 25 Dec 2018 02:30:15 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stast.3vium@gmail.com>) id 1gbhAM-0004zB-64
-	for qemu-arm@nongnu.org; Tue, 25 Dec 2018 02:30:14 -0500
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c]:41774)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stast.3vium@gmail.com>)
-	id 1gbhAM-0004yj-1I
-	for qemu-arm@nongnu.org; Tue, 25 Dec 2018 02:30:14 -0500
-Received: by mail-oi1-x22c.google.com with SMTP id j21so11102851oii.8
-	for <qemu-arm@nongnu.org>; Mon, 24 Dec 2018 23:30:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to; 
-	bh=Y3KTP5SiCIOyk/YbMz9m+FuhAZletio3asdDQtmy6Fk=;
-	b=mEG7vn1h49Ue2vB+zP8VOuxenPuRr2F/2YBFmMO92TwBU9ni8BcAfdoeuPxZJqpTso
-	qfrHwroQKGB3Ho8FokOk2djmc3Cri8OXJj5nSRhREATJdECXaB8fHglC6P1hIQUKAB0/
-	8x5BAESSLYmE1Gz6lXhiTn9vi7B0pxF2MV/kopF2efvCp6I66sPPNda/69/U8p0EOwut
-	Z8ddooGJKQYqfzkS06/ecatsGelfyR/gXWhu8UuwpWqB3wu+5ElBT1HE/onI2IqqV271
-	JxVSH43UG27cRVToRkwdQwn8JaCKKSYWj6mK1lcqqcFflWyxaco7ViooigZrFRfRwbvI
-	PhvA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
+        b=H1Z1E8w+WgcAi/Uo6EZS02Kj+cbg17bdTrpBW5cQTqkDr5G3d0AwTNtnDYZZipBBzD
+         PFhhuAm3BPPDEGt6kjcBVZCztye9IGxtKDDvB9EU9RprIuZpHk/klnUNRc8dzCN90B+h
+         th7tQqsx5WHO8TbDLWvHsEWxrjh+O8c2YY2sQpAzFQMZ18CtxzsNZOCJ0qWMsdWCxuVN
+         +YRsxYTqSyoBq4Ph6cyaFKyN0+Ua8Lwcb/t0Wg6fH2h/3nbE1QfewaXxJeRnG7i37XTv
+         5VVP0JzDiyBQ++xFI3tqdwt43VqPkFoJQCtGXBi+UwnO8Ojczdc3ChwBU67l3sCtkPgV
+         infw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to;
-	bh=Y3KTP5SiCIOyk/YbMz9m+FuhAZletio3asdDQtmy6Fk=;
-	b=g6cfV3F6HZwmdU2CtIs1GuWlAy5bPCRzubDJHNNOUl4f2pVA73zToiF3wmGLFCYtk2
-	3THdO1AeEpDRX3WYUsJIfJFfRoZ0dOvRmpd0HDZ5VOLmALGHzO8qIsnCoDe9jUSeMB1x
-	Re3TbuGIWX9fxJKEZUZBTjMJGFVvIZpprOv0DIxsuwNB0PbzCtnN7HjUWo79JQgQxjte
-	XHwpKKYWX8wnLm9EjIAzge6Ie0+dT8suiJbX8pMzhssEQZdC2L66vyUaGA8aR1D+b5eb
-	dSAmwgbTi3TJ38dwUUUuiPvqGjrqIMyhYT4OFiiCFQ3C6My635P6ho3XWjdQdcsfM58K
-	5Oxg==
-X-Gm-Message-State: AA+aEWbMDNdzK9pZwhyevhy+TMbxqo3ZSG6W0ruZVp80JzB0AhTfxfJN
-	4mUkuymMfeO1E7i1667P+d2ZgGPozTcfY37pj1KnswSf
-X-Received: by 2002:aca:d804:: with SMTP id p4mr10307871oig.304.1545723013327; 
-	Mon, 24 Dec 2018 23:30:13 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=Mom+Aivwo/6SAQQozIlFRehGgvayItmX6sq5yhsIoMU=;
+        b=OnLFBATtju3wBnsstRSJu+gbDoBiSExFDieBS62Qn8DNI6ScRm1s4LPi7oNy8YDkZK
+         aH5pqM2yztVhuLVTHJ4MxPDhw+XQPuP5vgYUqJw5uH+GA9KO3y+rXkwEZ/sNXngXvOd6
+         Zn0Q1S4ZTHbvR58FAuVADVvpQTOyFv7D8kqOfL7LWFtRkIqOE4T/V3ZKoM5tq3bXG0pP
+         XgZnl7e+tzi/mXXgofB0YVAuHjHoBGw9y7ffpxR4Z+k/e/C7Xb709wyNeiJfYhs2v496
+         YQs5mb0kR1durLH48XC0sZfUfKjz8Wn/HTvYumDRKQkznOQE69OqNsYHPEjWbXqWwFQM
+         1ezQ==
+X-Gm-Message-State: AJcUukdGkJAcAr5jHp3rq8dA/AUchw1j0lIsDGGUVU58ONsOI93OwR7/
+	VuxnXEl1/TOpY6oU4Mahumt/MoZiZWI=
+X-Google-Smtp-Source: ALg8bN4orEYyCiTDc7mIQEl0t7ioW1hbLy5czSOdS8TdpnUlUOT3FYeEZ5TVUG6AzNP7iEGN3xJ7nA==
+X-Received: by 2002:a5d:43d0:: with SMTP id v16mr43029280wrr.67.1546502200012;
+        Wed, 02 Jan 2019 23:56:40 -0800 (PST)
+Return-Path: <stefanha@gmail.com>
+Received: from localhost ([51.15.41.238])
+        by smtp.gmail.com with ESMTPSA id y34sm125192223wrd.68.2019.01.02.23.56.38
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 02 Jan 2019 23:56:38 -0800 (PST)
+Date: Thu, 3 Jan 2019 07:56:38 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, jim@groklearning.com,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>, jusual@mail.ru
+Subject: Re: [Qemu-devel] [PATCH] microbit: make -kernel optional
+Message-ID: <20190103075638.GA5724@stefanha-x1.localdomain>
+References: <20181214145152.27250-1-stefanha@redhat.com>
 MIME-Version: 1.0
-References: <CAC-7+Cg5EX1qb11kwRprSE8_E2SMtEm1Cgh0OzFMCuiBhh+3BQ@mail.gmail.com>
-	<CAFEAcA8qqzPxwYmjGG1Y940RFyuf0AccNy+N51HODnoKEuYSfQ@mail.gmail.com>
-	<CAC-7+Cix_s3xdzqre8r4c8f2djDBi42k4oOvyG6C4VCC29Ww6g@mail.gmail.com>
-	<CAC-7+CidVH8KGBaCKxeEricWKhago1w+-j7fDB88gnN1bXVy1A@mail.gmail.com>
-	<CAC-7+Cg-VJ9wivBYM+15mUs6cPUZ-Zu1Q818KieyjEVz02eLig@mail.gmail.com>
-In-Reply-To: <CAC-7+Cg-VJ9wivBYM+15mUs6cPUZ-Zu1Q818KieyjEVz02eLig@mail.gmail.com>
-From: =?UTF-8?B?0KHRgtCw0L3QuNGB0LvQsNCyINCi0YPQvNCw0YHQvtCy?=
-	<stast.3vium@gmail.com>
-Date: Tue, 25 Dec 2018 10:30:02 +0300
-Message-ID: <CAC-7+Cg2muWTajKd-nSEz37oHPug6AD-WGyXJ8E7yASGc9p-dA@mail.gmail.com>
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000002190fc057dd3af32"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::22c
-Subject: Re: [Qemu-arm] Run Kernel+rootfs for ARM Cortex-A72 on QEMU
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QahOKn2AbiyG
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="uAKRQypu60I7Lcqm"
+Content-Disposition: inline
+In-Reply-To: <20181214145152.27250-1-stefanha@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TUID: YPDA8Rs+6MkL
 
---0000000000002190fc057dd3af32
-Content-Type: text/plain; charset="UTF-8"
+
+--uAKRQypu60I7Lcqm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Thank you for information!
-Yes, I mean "virt" board.
+On Fri, Dec 14, 2018 at 02:51:52PM +0000, Stefan Hajnoczi wrote:
+> ARMv7M machine types support -kernel for ELF and raw image files.
+> Microbit programs are typically in Intel HEX (.hex) format.  The generic
+> loader supports .hex files but it doesn't work as expected:
+>=20
+>   $ qemu-system-arm -M microbit -device loader,file=3Dmicrobit.hex
+>   Guest image must be specified (using -kernel)
+>=20
+> This error comes from armv7m_load_kernel() but we don't have -kernel in
+> this case.
+>=20
+> This patch makes -kernel optional since most of the time we'll want to
+> use -device loader instead.
+>=20
+> Note that we need to register the reset handler that
+> armv7m_load_kernel() used to register for us.
+>=20
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  hw/arm/microbit.c | 17 +++++++++++++++--
+>  1 file changed, 15 insertions(+), 2 deletions(-)
 
-Although there is no big difference now. I really want to see the logs.
-If the board is not suitable for the kernel, the logs will not be displayed=
-?
+Ping
 
-With best regards, Stanislav.
+> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
+> index a734e7f650..638f638792 100644
+> --- a/hw/arm/microbit.c
+> +++ b/hw/arm/microbit.c
+> @@ -14,6 +14,7 @@
+>  #include "hw/arm/arm.h"
+>  #include "sysemu/sysemu.h"
+>  #include "exec/address-spaces.h"
+> +#include "qemu/error-report.h"
+> =20
+>  #include "hw/arm/nrf51_soc.h"
+> =20
+> @@ -28,6 +29,13 @@ typedef struct {
+>  #define MICROBIT_MACHINE(obj) \
+>      OBJECT_CHECK(MicrobitMachineState, obj, TYPE_MICROBIT_MACHINE)
+> =20
+> +static void microbit_cpu_reset(void *opaque)
+> +{
+> +    ARMCPU *cpu =3D opaque;
+> +
+> +    cpu_reset(CPU(cpu));
+> +}
+> +
+>  static void microbit_init(MachineState *machine)
+>  {
+>      MicrobitMachineState *s =3D MICROBIT_MACHINE(machine);
+> @@ -41,8 +49,13 @@ static void microbit_init(MachineState *machine)
+>                               &error_fatal);
+>      object_property_set_bool(soc, true, "realized", &error_fatal);
+> =20
+> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+> -                       NRF51_SOC(soc)->flash_size);
+> +    if (machine->kernel_filename) {
+> +        armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+> +                           NRF51_SOC(soc)->flash_size);
+> +    } else {
+> +        /* armv7m_load_kernel() does this, we need to do it manually her=
+e */
+> +        qemu_register_reset(microbit_cpu_reset, ARM_CPU(first_cpu));
+> +    }
+>  }
+> =20
+>  static void microbit_machine_class_init(ObjectClass *oc, void *data)
+> --=20
+> 2.19.2
+>=20
+>=20
 
-=D0=B2=D1=82, 25 =D0=B4=D0=B5=D0=BA. 2018 =D0=B3. =D0=B2 10:28, =D0=A1=D1=
-=82=D0=B0=D0=BD=D0=B8=D1=81=D0=BB=D0=B0=D0=B2 =D0=A2=D1=83=D0=BC=D0=B0=D1=
-=81=D0=BE=D0=B2 <stast.3vium@gmail.com>:
+--uAKRQypu60I7Lcqm
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> Thank you for information!
-> Yes, I mean "virt" board.
->
-> Although there is no big difference now. I really want to see the logs.
-> If the board is not suitable for the kernel, the logs will not be
-> displayed?
->
-> With best regards, Stanislav.
->
+-----BEGIN PGP SIGNATURE-----
 
---0000000000002190fc057dd3af32
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+iQEcBAEBAgAGBQJcLcA1AAoJEJykq7OBq3PIoTEH/2xOAU0P4RebFVcOUsh7+uPc
+Czfr0L5zoXelNYWU26F8xg7NeQpMGLISAfvVGfL68ptTdYLlVmCj07JUX1qcw0UL
+oU/KW2ZYh8ugCGmklCjj8LIpCfiMrBlBh6p8Tgd99g4f4VG4FSaRpXhlpVd5mRQN
+tPla/NqMZ/21G6b5vzCEqLFlHN/fCVNcGYQhH+HaP3CmRU8xoMdtwLnnQntWpmXn
+z9sZRTIg0Yn1sefCmcdATZwWNlsMbzzsP/FPa3vZaECmNVMJzcXJ9xx3/2qb+xYt
+nvGG3a/bbk4EUdeuJ3ROU9nTmKhUHZ3SksQQIO/dYL8mn78fnHpzP+IXGMNlPoE=
+=H6T4
+-----END PGP SIGNATURE-----
 
-<div dir=3D"ltr">Thank you for information!<br><div class=3D"gmail_quote"><=
-div dir=3D"ltr"><div>Yes, I mean &quot;virt&quot; board.<br><br><span class=
-=3D"gmail-m_-5067172010316508731gmail-m_-1222285124536088059m_-802535751559=
-6374928gmail-tlid-translation gmail-m_-5067172010316508731gmail-m_-12222851=
-24536088059m_-8025357515596374928gmail-translation"><span title=3D"">Althou=
-gh there is no big difference now.</span> <span title=3D"">I really want to=
- see the logs.</span><br><span title=3D"" class=3D"gmail-m_-506717201031650=
-8731gmail-m_-1222285124536088059m_-8025357515596374928gmail-">If the board =
-is not suitable for the kernel, the logs will not be displayed?<br><br></sp=
-an></span></div><span class=3D"gmail-m_-5067172010316508731gmail-m_-1222285=
-124536088059m_-8025357515596374928gmail-tlid-translation gmail-m_-506717201=
-0316508731gmail-m_-1222285124536088059m_-8025357515596374928gmail-translati=
-on"><span title=3D"" class=3D"gmail-m_-5067172010316508731gmail-m_-12222851=
-24536088059m_-8025357515596374928gmail-">With best regards, Stanislav.</spa=
-n></span></div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
-=D0=B2=D1=82, 25 =D0=B4=D0=B5=D0=BA. 2018 =D0=B3. =D0=B2 10:28, =D0=A1=D1=
-=82=D0=B0=D0=BD=D0=B8=D1=81=D0=BB=D0=B0=D0=B2 =D0=A2=D1=83=D0=BC=D0=B0=D1=
-=81=D0=BE=D0=B2 &lt;<a href=3D"mailto:stast.3vium@gmail.com">stast.3vium@gm=
-ail.com</a>&gt;:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
-><div dir=3D"ltr">Thank you for information!<br><div class=3D"gmail_quote">=
-<div dir=3D"ltr"><div>Yes, I mean &quot;virt&quot; board.<br><br><span clas=
-s=3D"gmail-m_-5067172010316508731gmail-m_-1222285124536088059m_-80253575155=
-96374928gmail-tlid-translation gmail-m_-5067172010316508731gmail-m_-1222285=
-124536088059m_-8025357515596374928gmail-translation"><span title=3D"">Altho=
-ugh there is no big difference now.</span> <span title=3D"">I really want t=
-o see the logs.</span><br><span title=3D"" class=3D"gmail-m_-50671720103165=
-08731gmail-m_-1222285124536088059m_-8025357515596374928gmail-">If the board=
- is not suitable for the kernel, the logs will not be displayed?<br><br></s=
-pan></span></div><span class=3D"gmail-m_-5067172010316508731gmail-m_-122228=
-5124536088059m_-8025357515596374928gmail-tlid-translation gmail-m_-50671720=
-10316508731gmail-m_-1222285124536088059m_-8025357515596374928gmail-translat=
-ion"><span title=3D"" class=3D"gmail-m_-5067172010316508731gmail-m_-1222285=
-124536088059m_-8025357515596374928gmail-">With best regards, Stanislav.</sp=
-an></span></div></div></div>
-</blockquote></div>
-
---0000000000002190fc057dd3af32--
+--uAKRQypu60I7Lcqm--

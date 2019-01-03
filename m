@@ -1,176 +1,124 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2869436wrt;
-        Sun, 6 Jan 2019 14:51:27 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5QhdAKg1U7/g96YHsf1dld6a6CrSr7a9FxHtezzwpOCr5Vg7/u20TeYt/WOKQ2YCmuKqVb
-X-Received: by 2002:a5d:5111:: with SMTP id s17mr48876680wrt.43.1546815087646;
-        Sun, 06 Jan 2019 14:51:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546815087; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp683651wrt;
+        Thu, 3 Jan 2019 06:19:06 -0800 (PST)
+X-Received: by 2002:a1c:448a:: with SMTP id r132mr36661653wma.47.1546525146053;
+        Thu, 03 Jan 2019 06:19:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546525146; cv=none;
         d=google.com; s=arc-20160816;
-        b=05Qtn4LKTMB/DPgaL7h8ZRY/9Lv9e1L8H/aigXK74uqnxdefJ2wJqVa9dtAycBYj+d
-         xoue0bj/CTNpJ/UOPEkKqfSkyQSe3ybkIRE+13QNOqxOq/uCWffkm7NxedST/sGROCE7
-         +C3XlvfOQc1bF0KwDZgukc8IAHealseOMf560AhcLM5sLv5ff/exH4D+v8b9jwEA426d
-         p2gFAgbXelX6v8RWkUuw/0ktoSEg6iTc9r3NaipqM9qO6YbtvOykiRSb25fUV8gmRql0
-         d2oTKHFjHJSWtfqhuQhkSJbA5dJoG3BbeX18NvTmU2mf0W7Dxy832vElg2K6CUZ8Kn5u
-         RSsQ==
+        b=l2+O9sbvzeiEM7eJKuphuZczNzdM1HX4A8NbHur7MRfn6nuPBthU4Y201RRur87SeD
+         6+LzLXiIPJwnbli2uZNFrTz+NrbEDqKOtzSUMS2oHxfimAWcgDa0jBXhkQVzezdDmWVe
+         7pVLFDsM4gwo3rCPkkcvsTfRORrmkJ79+Gp+6vUmz52WbGGzcl+UCGpj0tc5XogArOY9
+         JicFQDYUXz4hPM1A75cuYhu6R7mg4bdb+CwoeKv6sQhfBJnq3Ec+xmZd6cjNRoBL86im
+         LuxoWUzlqDp5bD+ffKaVHaXJbOIAPeXJ56IFamGoqSB9ONLnL98IO7elqvfOyy1REYk8
+         9eDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=FerA1jdUPmyzDQdllgAlLCmDGQMUpOXaXKd/jiLP8aM=;
-        b=bJGaPyIdcPq4iSABSzdjC1Fy9+GLivMr5oEuWj3Jd+SwQ8UmtslhvNI/qAxIqc07Jn
-         4QkvB5WhSowmxl9Oe5FkMCr1mlTPlfXfrBXbOZaJLfSZULAzCcLyEjZTN6OMFEshfpgG
-         YAwTrkK0XJyAyimcrbJjD2sP6WhlPkXGllcSp1MwqiXFYq1zUbQmxPOw4TRcSvOLOtiR
-         aDhhvdz+kcFWTwtCt/YkEuBk/wu1nwINImDNkPeQSUepKjnaeImu+nZpX00QtjNuAf3H
-         0LQd7OrRC1m0s5Z3XMJFLih+occ66cmzQhkNQDETbBau5j5JO/Xl9KrFPmCbOgNyEo72
-         o1RA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=rq2wYMO2IqAryL9jmDrtg33YzkObOc92gQ49F4zcf0M=;
+        b=zM6BPg5JonpEr8gKQaU/kqErMSCeuueeW2F2Flfd+sooWb8qAJPhCF0c22X/mD/wG7
+         2gdYiGo0pKXyBMQxiLpF7Nn6h7l3u6EbLdblZbaZJ8gSanwhxG3EtdGEDUbcVEHM+K9t
+         MPSTQZcQzYxsPC0kce4iAzn3VvIifpQFVPe9l5qUNmJXtsaPoR+8ToB2AzsRJ7WsEHhA
+         pIv2ktTsVVCDdi9cl4en8fFY42T9hQv2tgv+jkWdprextpqgs4hrAC3mKv8Xg2zrj+Uw
+         mP+R28GznzjP1jiOSGWR7w8sBBaOvkIZ8d91Fa9Pvx0KN6kxUWCkw762/yimDmie95f3
+         /Ixg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CgDnNjU3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t187si4113584wmb.5.2019.01.06.14.51.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 14:51:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Od6XtGx7;
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <stefanha@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id s185sor22041251wmf.25.2019.01.03.06.19.05
+        (Google Transport Security);
+        Thu, 03 Jan 2019 06:19:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CgDnNjU3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:50335 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggHGQ-0004DH-MT
-	for alex.bennee@linaro.org; Sun, 06 Jan 2019 17:51:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53572)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ggHFr-0003pf-6O
-	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 17:50:51 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1ggHFq-0004h1-Dh
-	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 17:50:51 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:46932)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1ggHFq-0004gq-8M
-	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 17:50:50 -0500
-Received: by mail-pl1-x643.google.com with SMTP id t13so19924877ply.13
-	for <qemu-arm@nongnu.org>; Sun, 06 Jan 2019 14:50:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=FerA1jdUPmyzDQdllgAlLCmDGQMUpOXaXKd/jiLP8aM=;
-	b=CgDnNjU3z/4026ZoL+JSXZx91soiI0VkY8LF2EkblXEjDAPh2sWt9qNB82bIsuQK6M
-	uThgi2KY3zWP9+1hU1NkEH+FtoZUWG/lKAkhAQXVHpitAKuqvTsj4JJO14uTrjTnpWOU
-	RnSQRf+uEdEAd58JH8exzmAUtAaYjvOFk02Zo=
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Od6XtGx7;
+       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=rq2wYMO2IqAryL9jmDrtg33YzkObOc92gQ49F4zcf0M=;
+        b=Od6XtGx7q1Io9aFe/ZLl57tMYE/jUkZoyPZV/qYF8VXnz9rZu+iTFSuPa1PPpuudK1
+         fUJu+AvPr2ggK9sniISrPV8Sl1VCkve0YysSbQD1EYIKVrT8bVPL5951V+nwp78G9B61
+         tMxibb2G9boHye70uKys1dRFihmA4dtYW52TsxjJTxJB281ioT5hsc1Z+BDNFIqWL6um
+         oj3o0teTqUrEFCOyeaXdSIdvOIewPIQn/m/iPKu2JM8DiDXGkbMcwj8l7D+F+c1bng3U
+         6AnHukKl/CNcN+Y/dSVR/cNZl9XiqeyJKCQApTpEPDPlvw5wBKhVb/kFc8SHlOTKXysn
+         nnAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=FerA1jdUPmyzDQdllgAlLCmDGQMUpOXaXKd/jiLP8aM=;
-	b=Gr1Vwe09G3DXZJInqo8QeQjMla2Z1Dd799/RdeyixyYXt5vZk5KbAOZqpl7rPguA/U
-	3Zt+6nxqdJQv92+vSDtLqGLomN0O75pJbw3JD98r0sffvbsqaqCC02YXA8OYIUb17wr2
-	1kGptvHufn5Tx+ltvruW/Mpn4mYb50NMLGjJ62JQeL2wBusyJkClncFh/WytE4dhheYn
-	H8nNWSIjuYZ50SsAwqIdiA3ezTK9XcNQG4mKTGHcvfbPeOUebH8VT77krVXQavOzwvt9
-	GD1EFSQGJ+/W1lhaXUzwcxYbVnet4I4jm/LzQZsfb/OHTiHbKfFGV7wjWKsML1n6LyJP
-	5yEg==
-X-Gm-Message-State: AJcUukfyNN2zLbH+f1sssPIazad/zhpl4Gh/PrfyeHnRaB/O3jq9IQHV
-	lJbbQcIU/fBHIbkUAfKscAyTaw==
-X-Received: by 2002:a17:902:5a4d:: with SMTP id
-	f13mr60842695plm.49.1546815049177; 
-	Sun, 06 Jan 2019 14:50:49 -0800 (PST)
-Received: from cloudburst.lan
-	(2001-44b8-2176-c800-8cc6-2630-7d99-5ef1.static.ipv6.internode.on.net.
-	[2001:44b8:2176:c800:8cc6:2630:7d99:5ef1])
-	by smtp.gmail.com with ESMTPSA id
-	n78sm45905768pfk.19.2019.01.06.14.50.46
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 06 Jan 2019 14:50:48 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Mon,  7 Jan 2019 08:50:34 +1000
-Message-Id: <20190106225035.5671-3-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20190106225035.5671-1-richard.henderson@linaro.org>
-References: <20190106225035.5671-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: [Qemu-arm] [PATCH 2/3] target/arm: Use vector minmax expanders for
- aarch64
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iBSVlTGR7TGu
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=rq2wYMO2IqAryL9jmDrtg33YzkObOc92gQ49F4zcf0M=;
+        b=DXoZ5RROn7V4xmyk6x796B745izhNe+mXhOxbA56BH0WgJyTpBEksNCgWD1ndKznfR
+         ddAuT+yP6wXIxWrUvRwKLw2+Lgr9L5ZDfTig2DYolmizsQu9RWf0v6z6ekVWugMU8YlR
+         Fis6+hy7QwK3Nf+2sjlYOvqeR1jzp3OcL/XAAFSuc0o5yY1+y26yAt7alk27D1aPenDG
+         c669mE6ERz6kiLdNZJMtEihocYFNA58vwVKZbjTXRUpoy1l33fULhM4C6S1OK302+erh
+         GOxy/2X7veUJSECf/ZDRKCMZMtkjvJmMt9tykNxNENeQ3zFqdi/FTZR4NltcnbByPj6w
+         QIrg==
+X-Gm-Message-State: AA+aEWZOkQkucS16yRDgjusmRihndIU3VePjdEIJ0WbwQry/TlcBh7K3
+	QFOCZG00+F0QgXCXxESC8mqVCAvKKw6NLm6lol6C44mt
+X-Google-Smtp-Source: AFSGD/VungtDM4axWIDWDLh9Oe9U+VBhZpc1YNEGTGuueRT8MuBJTdWS4PpNX+Y/s21W9szAcLR1nLNx4xyYAhSi/GE=
+X-Received: by 2002:a1c:1f83:: with SMTP id f125mr36933228wmf.56.1546525145233;
+ Thu, 03 Jan 2019 06:19:05 -0800 (PST)
+MIME-Version: 1.0
+References: <20181214145152.27250-1-stefanha@redhat.com> <CAFEAcA9OwKJQ0iWtuxMJrNPL5r_qtuZz57H=Dtcr6X45XqQ3TQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9OwKJQ0iWtuxMJrNPL5r_qtuZz57H=Dtcr6X45XqQ3TQ@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Thu, 3 Jan 2019 14:18:53 +0000
+Message-ID: <CAJSP0QWEVr=0XaYbd10-_4_9Vm_9tfKTw3Paj2QR_Wb1ev416g@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] microbit: make -kernel optional
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jim Mussared <jim@groklearning.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Steffen Gortz <qemu.ml@steffen-goertz.de>, 
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 3h39EBrPCPAp
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/translate-a64.c | 35 ++++++++++++++---------------------
- 1 file changed, 14 insertions(+), 21 deletions(-)
+On Thu, Jan 3, 2019 at 1:07 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Fri, 14 Dec 2018 at 14:51, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> > ARMv7M machine types support -kernel for ELF and raw image files.
+> > Microbit programs are typically in Intel HEX (.hex) format.  The generic
+> > loader supports .hex files but it doesn't work as expected:
+> >
+> >   $ qemu-system-arm -M microbit -device loader,file=microbit.hex
+> >   Guest image must be specified (using -kernel)
+> >
+> > This error comes from armv7m_load_kernel() but we don't have -kernel in
+> > this case.
+> >
+> > This patch makes -kernel optional since most of the time we'll want to
+> > use -device loader instead.
+> >
+> > Note that we need to register the reset handler that
+> > armv7m_load_kernel() used to register for us.
+> >
+> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+>
+> Hi, Stefan. (Happy new year :-))
+>
+> Looking at this, I think I'd prefer it if we handled
+> this in the armv7m_load_kernel() code, since having to register
+> your own reset handler to reset the CPU is a weird thing for
+> board level code to have to do. That then means the M-profile
+> kernel load code is in line with the A-profile load code, which
+> if it has no kernel to load will still register the reset handler,
+> and let the machine run however it ends up running.
+>
+> I think this basically amounts to "remove the 'insist that
+> kernel_filename is not NULL' check from armv7m_load_kernel()",
+> aka "revert commit 01fd41ab3fb69971". That commit's commit
+> message is correct that the behaviour if the user didn't
+> specify anything to run is a bit unhelpful, but it predates
+> the generic loader so it's no longer necessarily true that
+> a kernel must be specified, either for this or for any other
+> M-profile machine. (There's also the case of "board has a
+> flash device that was populated via a -pflash or -drive
+> option".)
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 2d6f8c1b4f..bef21ada71 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -10452,6 +10452,20 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-     }
- 
-     switch (opcode) {
-+    case 0x0c: /* SMAX, UMAX */
-+        if (u) {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_umax, size);
-+        } else {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_smax, size);
-+        }
-+        return;
-+    case 0x0d: /* SMIN, UMIN */
-+        if (u) {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_umin, size);
-+        } else {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_smin, size);
-+        }
-+        return;
-     case 0x10: /* ADD, SUB */
-         if (u) {
-             gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_sub, size);
-@@ -10613,27 +10627,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
-                 genenvfn = fns[size][u];
-                 break;
-             }
--            case 0xc: /* SMAX, UMAX */
--            {
--                static NeonGenTwoOpFn * const fns[3][2] = {
--                    { gen_helper_neon_max_s8, gen_helper_neon_max_u8 },
--                    { gen_helper_neon_max_s16, gen_helper_neon_max_u16 },
--                    { tcg_gen_smax_i32, tcg_gen_umax_i32 },
--                };
--                genfn = fns[size][u];
--                break;
--            }
--
--            case 0xd: /* SMIN, UMIN */
--            {
--                static NeonGenTwoOpFn * const fns[3][2] = {
--                    { gen_helper_neon_min_s8, gen_helper_neon_min_u8 },
--                    { gen_helper_neon_min_s16, gen_helper_neon_min_u16 },
--                    { tcg_gen_smin_i32, tcg_gen_umin_i32 },
--                };
--                genfn = fns[size][u];
--                break;
--            }
-             case 0xe: /* SABD, UABD */
-             case 0xf: /* SABA, UABA */
-             {
--- 
-2.17.2
+Happy New Year!
 
+That makes sense.  I will send a patch.
+
+Stefan

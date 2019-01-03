@@ -1,72 +1,100 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp443541wrt;
-        Thu, 3 Jan 2019 01:42:45 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XPajdWPHrf9MQ/6y0QfqGk2mHFIFTTw47G9TqbGicyrGaUpXQlf9e7jghfHb/knrhDr4Mr
-X-Received: by 2002:ac8:3ae5:: with SMTP id x92mr46974720qte.370.1546508565137;
-        Thu, 03 Jan 2019 01:42:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546508565; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp488650wrt;
+        Thu, 3 Jan 2019 02:41:32 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WxgcUkmI3mV70U1iijrp1EqOiOKPrK1mXIyyszsAPDE9B/kgKtFHMu1BV7q2HenzGmVCpV
+X-Received: by 2002:ac8:3aa3:: with SMTP id x32mr46556651qte.282.1546512092439;
+        Thu, 03 Jan 2019 02:41:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546512092; cv=none;
         d=google.com; s=arc-20160816;
-        b=u+y6+pRTEY3dQGRxPZxPs4KCrfEllpv4eJQXi5z3NRCeU1xT4Hk/CtOyPOQEXgQc+F
-         abVEI2l6bZ/rIhwV6QuF0uob2GwJOBWM0pA2BIgsR33fmk6oK1z5tRrvv/3gTHDPjF8u
-         9kz41pXX3hNdbPbkmTnZBZ75g+lOmF/PQSrwte3/4FDa0N2HwFN+9SImQl1wMjW38PQB
-         t1rp3lmS8/IBGRFvvqytYGenxt4JQHsktVQG/YWe6K6p1WFM536oz26nKXGJ9CfZmNXs
-         1omo02oWhw4ChBp9pdise0jd6s55KD6m/1QTHz95wL13yE6nEbB7TzDTRhSylSwqeAnh
-         95fA==
+        b=XnZw4wbscha7oBASGQxGNZxx19S6h0yVVsfbX3fO95UeRxVpX0yZwLHE/EbPnYxJLK
+         kEuS7P+JseyYWc17yLSf2xoOOz3+TH/6/dHmnBmUrNhuAm7LFzoiYpxpbXlmHoQyTD/I
+         z8dZQPMWndya3nLePbx2Hv+0Yy9xAzvmiSOVX7Kx6ZtUohcwPXZMdqmfFnR+IdWj77CO
+         E8OeV1kiPwbVZBZHbfQsA0GimEEmDCe+u4FEekgXo3BIJxo8poqZQb/XQG56BKX7rfrn
+         j6V1zKIq5wjQrbxi8r6EGtkhhB1nJ/QmKsx3lQelbeGhVP1or98JcQw8n73pm+F+2XCe
+         oPyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=Jfjr2MKf0bAh+UaNA6TxCaR34fhJLXIWMjtP6zIVixo=;
-        b=JB6aysxAI2IbyPOoWYPZ3fbW3cWnQfIFEhyTlGvDuHQYXVlYsNq2AdjUEvD5WXzHVS
-         hhF+CD8hjb7cURXquHKVEWJC/0UwDFyr3z9gG8Q0aAM6y2+ShedtP/usNziQYO1u8bIs
-         jsitFKzTOcyUNpeUU3lDs4/L6obhQSj8DgjYu29bITc8mRg2C+c/tti9dcyMpvodzosU
-         3vCRk2h0FxniBrRfYB37a6OG6pPDJja5YOK5Zl7DDQqIHfFU2vyvBV2suuzU3mG8qdS+
-         K0Xm+BOvqTJnHjVoD7a/SnOsQjJZeml3CYevyI+dsX983kMwRkdHcqXV0QbT2K7StHg2
-         g62g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=aOz2CyUkkorl3Bx7bQCFTQdPq5cGL0UTSpXnvZxiD48=;
+        b=ruV49aOcNYNjykpuu3XSnANXBhPDfnhmhMqqeXsKMXhBRwYwe/BPOh+mDLP/Gwduk8
+         YqL8uhzVpy0I0aCyRITKVKS1opWvkbHGwe6tAXa0GGjTiGsd2eoczgyXNASTpt8eth5R
+         Ct3zEPJbQhuXc8AvXAqe4sObUmRQvoTQPIAikYw8mJqrQ9jCT+950NjSV31PPC7I2LBU
+         aeI1h0Wo4uxKhLctJpXASQUT/wnvmHnOl3dGwZDCHWjTJu2fpC7fPFqvEv8Cv2Ze+fQ8
+         EnlpYOPQ4UUuqJThWSN7fgDBDzKBSgoa/Dr6h5Xfiyi6pQ/F/VDcSLK15O1XhG8Xe7oT
+         7SIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from listsout.gnu.org (listsout.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h35si2750439qvh.191.2019.01.03.01.42.44
+        by mx.google.com with ESMTPS id y63si2604633qkb.69.2019.01.03.02.41.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Jan 2019 01:42:45 -0800 (PST)
+        Thu, 03 Jan 2019 02:41:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:50164 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:50565 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gezWW-0007pi-Ly
-	for alex.bennee@linaro.org; Thu, 03 Jan 2019 04:42:44 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:32775)
+	id 1gf0RP-00018h-VT
+	for alex.bennee@linaro.org; Thu, 03 Jan 2019 05:41:32 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51201)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1gezWH-0007n3-9V
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 04:42:30 -0500
+	(envelope-from <philmd@redhat.com>) id 1gf0QY-0000Sq-R3
+	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 05:40:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1gezWE-0001BO-Fc
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 04:42:29 -0500
-Received: from albert.telenet-ops.be ([2a02:1800:110:4::f00:1a]:41730)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <geert@linux-m68k.org>)
-	id 1gezWC-00016G-Di
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 04:42:26 -0500
-Received: from ramsan ([84.194.111.163]) by albert.telenet-ops.be with bizsmtp
-	id KliH1z0023XaVaC06liHMx; Thu, 03 Jan 2019 10:42:19 +0100
-Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1gezW4-00011F-UN; Thu, 03 Jan 2019 10:42:16 +0100
-Received: from geert by rox.of.borg with local (Exim 4.90_1)
-	(envelope-from <geert@linux-m68k.org>)
-	id 1gezW4-0007Q0-Rp; Thu, 03 Jan 2019 10:42:16 +0100
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>
-Date: Thu,  3 Jan 2019 10:42:11 +0100
-Message-Id: <20190103094211.28473-1-geert+renesas@glider.be>
-X-Mailer: git-send-email 2.17.1
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2a02:1800:110:4::f00:1a
-Subject: [Qemu-arm] [PATCH QEMU v5] hw/arm/sysbus-fdt: Add support for
- instantiating generic devices
+	(envelope-from <philmd@redhat.com>) id 1gf0QU-0007cf-12
+	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 05:40:38 -0500
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:44832)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gf0QT-0007cA-RQ
+	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 05:40:33 -0500
+Received: by mail-wr1-f65.google.com with SMTP id z5so33103839wrt.11
+	for <qemu-arm@nongnu.org>; Thu, 03 Jan 2019 02:40:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=aOz2CyUkkorl3Bx7bQCFTQdPq5cGL0UTSpXnvZxiD48=;
+	b=TC7wLOx4HaoxxBRjs2T3/E5dxJ2p83CW5Q8tU1l59j+feVOBOTsbB2tZ1aGKJU0jCa
+	7DdN1omPBu2pgsf5CEJrFpEgbJ3x9eBf7shTUS3EghQcbOhB98yCfj+iO+VvUhlkabYm
+	0ZVGxJT07d6nEZStNaoWr6E7EsYXrHsO87NTOcMruWqSGY89K68aCCwxS2iL8lpTb1tl
+	gEU6mdwejDWXz5zhr4Ngas0Og2hsKXufKfmsI8M6vvE+5oGdb1T4BCROrJ84S5vk5oL3
+	4XI2tyOFkQKMLibJU9GFOO+CBl85d4zioK41Ng9AhGWbxw1dY94e5ZQ52z0kGY4921Yx
+	R/Eg==
+X-Gm-Message-State: AJcUukdMFZSbvthRSENgh33E8otiCTeJR5NOcfErmtQF2l6meSmnsfqr
+	ivP/Be7cxUJqUDNSIiHSf+/3IQ==
+X-Received: by 2002:a5d:4046:: with SMTP id w6mr43050377wrp.92.1546512032786; 
+	Thu, 03 Jan 2019 02:40:32 -0800 (PST)
+Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
+	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
+	h184sm31953211wmf.0.2019.01.03.02.40.31
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 03 Jan 2019 02:40:32 -0800 (PST)
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+References: <20190103091119.9367-1-stefanha@redhat.com>
+	<20190103091119.9367-3-stefanha@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <51ac1e9a-6576-9a54-91f3-76bf66040cc7@redhat.com>
+Date: Thu, 3 Jan 2019 11:40:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
+MIME-Version: 1.0
+In-Reply-To: <20190103091119.9367-3-stefanha@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/11] arm: Add header to host
+ common definition for nRF51 SOC peripherals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,333 +106,175 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Magnus Damm <damm+renesas@opensource.se>, qemu-devel@nongnu.org,
-	linux-renesas-soc@vger.kernel.org,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?Q?Steffen_G=c3=b6rtz?= <contrib@steffen-goertz.de>,
+	Jim Mussared <jim@groklearning.com>, qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nDq/yAK8y4/C
+X-TUID: 3elAOdTUFti+
 
-Add a fallback for instantiating generic devices without a type-specific
-or compatible-specific instantiation method.  This will be used when no
-other match is found.
+On 1/3/19 10:11 AM, Stefan Hajnoczi wrote:
+> From: Steffen Görtz <contrib@steffen-goertz.de>
+> 
+> Adds a header that provides definitions that are used
+> across nRF51 peripherals
+> 
+> Signed-off-by: Steffen Görtz <contrib@steffen-goertz.de>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  include/hw/arm/nrf51.h       | 45 ++++++++++++++++++++++++++++++++++++
+>  include/hw/char/nrf51_uart.h |  1 -
+>  hw/arm/nrf51_soc.c           | 33 ++++++++++----------------
+>  3 files changed, 57 insertions(+), 22 deletions(-)
+>  create mode 100644 include/hw/arm/nrf51.h
+> 
+> diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
+> new file mode 100644
+> index 0000000000..175bb6c301
+> --- /dev/null
+> +++ b/include/hw/arm/nrf51.h
+> @@ -0,0 +1,45 @@
+> +/*
+> + * Nordic Semiconductor nRF51 Series SOC Common Defines
+> + *
+> + * This file hosts generic defines used in various nRF51 peripheral devices.
+> + *
+> + * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.pdf
+> + * Product Spec: http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1.pdf
+> + *
+> + * Copyright 2018 Steffen Görtz <contrib@steffen-goertz.de>
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef NRF51_H
+> +#define NRF51_H
+> +
+> +#define NRF51_FLASH_BASE      0x00000000
+> +#define NRF51_FICR_BASE       0x10000000
+> +#define NRF51_FICR_SIZE       0x00000100
+> +#define NRF51_UICR_BASE       0x10001000
+> +#define NRF51_SRAM_BASE       0x20000000
+> +
+> +#define NRF51_IOMEM_BASE      0x40000000
+> +#define NRF51_IOMEM_SIZE      0x20000000
+> +
+> +#define NRF51_UART_BASE       0x40002000
+> +#define NRF51_TIMER_BASE      0x40008000
+> +#define NRF51_TIMER_SIZE      0x00001000
+> +#define NRF51_RNG_BASE        0x4000D000
+> +#define NRF51_NVMC_BASE       0x4001E000
+> +#define NRF51_GPIO_BASE       0x50000000
+> +
+> +#define NRF51_PRIVATE_BASE    0xF0000000
+> +#define NRF51_PRIVATE_SIZE    0x10000000
+> +
+> +#define NRF51_PAGE_SIZE       1024
 
-Generic device instantiation avoids having to write device-specific
-instantiation methods for each and every "simple" device using only a
-set of generic properties.  Devices that need more specialized handling
-can still provide their own instantiation methods.
+I'd keep this file in hw/arm (not include/...).
 
-The generic instantiation method creates a device node with remapped
-"reg" and (optional) "interrupts" properties, and copies properties from
-the host, if deemed appropriate:
-  - In general, properties without phandles are safe to be copied.
-    Unfortunately, the FDT does not carry type information, hence an
-    explicit whitelist is used, which can be extended when needed.
-  - Properties related to power management (power and/or clock domain),
-    isolation, and pin control, are handled by the host, and must not to
-    be copied.
+> +
+> +/* Trigger */
+> +#define NRF51_TRIGGER_TASK 0x01
+> +
+> +/* Events */
+> +#define NRF51_EVENT_CLEAR  0x00
 
-Devices nodes with subnodes are rejected, as subnodes cannot easily be
-handled in a generic way.
+These definitions might be the only one used out of hw/arm/.
 
-This has been tested on a Renesas Salvator-XS board (R-Car H3 ES2.0)
-with SATA, using:
-
-    -device vfio-platform,host=ee300000.sata
-
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
-Note: Also tested with GPIO, which needs "vfio: No-IOMMU mode support":
-
-    -device vfio-platform,host=e6055400.gpio
-
-v5:
-  - Replace copying of a fixed list of properties (and ignoring all
-    others), by scanning all properties on the host, and deciding if
-    they need to be ignored, copied, or rejected,
-  - Reject device nodes with subnodes,
-  - Handle edge interrupts,
-
-v3:
-  - New.
----
- hw/arm/sysbus-fdt.c | 238 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 238 insertions(+)
-
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index ad698d4832c694be..52de8c9a040c282a 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -28,6 +28,9 @@
- #ifdef CONFIG_LINUX
- #include <linux/vfio.h>
- #endif
-+#ifdef CONFIG_FNMATCH
-+#include <fnmatch.h>
-+#endif
- #include "hw/arm/sysbus-fdt.h"
- #include "qemu/error-report.h"
- #include "sysemu/device_tree.h"
-@@ -415,6 +418,232 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
-     return 0;
- }
- 
-+enum GenericPropertyAction {
-+    PROP_IGNORE,
-+    PROP_WARN,
-+    PROP_COPY,
-+    PROP_REJECT,
-+};
-+
-+static struct {
-+    const char *name;
-+    enum GenericPropertyAction action;
-+} generic_properties[] = {
-+    { "name",            PROP_IGNORE }, /* handled automatically */
-+    { "phandle",         PROP_IGNORE }, /* not needed for the generic case */
-+
-+    /* The following are copied and remapped by dedicated code */
-+    { "reg",             PROP_IGNORE },
-+    { "interrupts",      PROP_IGNORE },
-+
-+    /* The following are handled by the host */
-+    { "power-domains",   PROP_IGNORE }, /* power management (+ opt. clocks) */
-+    { "iommus",          PROP_IGNORE }, /* isolation */
-+    { "resets",          PROP_IGNORE }, /* isolation */
-+    { "pinctrl-*",       PROP_IGNORE }, /* pin control */
-+
-+    /* Ignoring the following may or may not work, hence the warning */
-+    { "gpio-ranges",     PROP_WARN },   /* no support for pinctrl yet */
-+    { "dmas",            PROP_WARN },   /* no support for external DMACs yet */
-+
-+    /* The following are irrelevant, as corresponding specifiers are ignored */
-+    { "clock-names",     PROP_IGNORE },
-+    { "reset-names",     PROP_IGNORE },
-+    { "dma-names",       PROP_IGNORE },
-+
-+    /* Whitelist of properties not taking phandles, and thus safe to copy */
-+    { "compatible",      PROP_COPY },
-+    { "status",          PROP_COPY },
-+    { "reg-names",       PROP_COPY },
-+    { "interrupt-names", PROP_COPY },
-+    { "#*-cells",        PROP_COPY },
-+};
-+
-+#ifndef CONFIG_FNMATCH
-+/* Fall back to exact string matching instead of allowing wildcards */
-+static inline int fnmatch(const char *pattern, const char *string, int flags)
-+{
-+        return strcmp(pattern, string);
-+}
-+#endif
-+
-+static enum GenericPropertyAction get_generic_property_action(const char *name)
-+{
-+    unsigned int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(generic_properties); i++) {
-+        if (!fnmatch(generic_properties[i].name, name, 0)) {
-+            return generic_properties[i].action;
-+        }
-+    }
-+
-+    /*
-+     * Unfortunately DT properties do not carry type information,
-+     * so we have to assume everything else contains a phandle,
-+     * and must be rejected
-+     */
-+    return PROP_REJECT;
-+}
-+
-+/**
-+ * copy_generic_node
-+ *
-+ * Copy the generic part of a DT node from the host
-+ */
-+static void copy_generic_node(void *host_fdt, void *guest_fdt, char *host_path,
-+                              char *guest_path)
-+{
-+    int node, prop, len;
-+    const void *data;
-+    const char *name;
-+    enum GenericPropertyAction action;
-+
-+    node = fdt_path_offset(host_fdt, host_path);
-+    if (node < 0) {
-+        error_report("Cannot find node %s: %s", host_path, fdt_strerror(node));
-+        exit(1);
-+    }
-+
-+    /* Submodes are not yet supported */
-+    if (fdt_first_subnode(host_fdt, node) >= 0) {
-+        error_report("%s has unsupported subnodes", host_path);
-+        goto unsupported;
-+    }
-+
-+    /* Copy generic properties */
-+    fdt_for_each_property_offset(prop, host_fdt, node) {
-+        data = fdt_getprop_by_offset(host_fdt, prop, &name, &len);
-+        if (!data) {
-+            error_report("Cannot get property of %s: %s", host_path,
-+                         fdt_strerror(len));
-+            exit(1);
-+        }
-+
-+        if (!len) {
-+            /* Zero-sized properties are safe to copy */
-+            action = PROP_COPY;
-+        } else if (!strcmp(name, "clocks")) {
-+            /* Reject "clocks" if "power-domains" is not present */
-+            action = fdt_getprop(host_fdt, node, "power-domains", NULL)
-+                     ? PROP_WARN : PROP_REJECT;
-+        } else {
-+            action = get_generic_property_action(name);
-+        }
-+
-+        switch (action) {
-+        case PROP_WARN:
-+            warn_report("%s: Ignoring %s property", host_path, name);
-+        case PROP_IGNORE:
-+            break;
-+
-+        case PROP_COPY:
-+            qemu_fdt_setprop(guest_fdt, guest_path, name, data, len);
-+            break;
-+
-+        case PROP_REJECT:
-+            error_report("%s has unsupported %s property", host_path, name);
-+            goto unsupported;
-+        }
-+    }
-+    return;
-+
-+unsupported:
-+    error_report("You can ask a wizard to enhance me");
-+    exit(1);
-+}
-+
-+/**
-+ * add_generic_fdt_node
-+ *
-+ * Generates a generic DT node by copying properties from the host
-+ */
-+static int add_generic_fdt_node(SysBusDevice *sbdev, void *opaque)
-+{
-+    PlatformBusFDTData *data = opaque;
-+    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-+    const char *parent_node = data->pbus_node_name;
-+    void *guest_fdt = data->fdt, *host_fdt;
-+    VFIODevice *vbasedev = &vdev->vbasedev;
-+    char **node_path, *node_name, *dt_name;
-+    PlatformBusDevice *pbus = data->pbus;
-+    uint32_t *reg_attr, *irq_attr;
-+    uint64_t mmio_base;
-+    int i, irq_number;
-+    VFIOINTp *intp;
-+
-+    host_fdt = load_device_tree_from_sysfs();
-+
-+    dt_name = sysfs_to_dt_name(vbasedev->name);
-+    if (!dt_name) {
-+        error_report("%s incorrect sysfs device name %s", __func__,
-+                     vbasedev->name);
-+        exit(1);
-+    }
-+    node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
-+                                   &error_fatal);
-+    if (!node_path || !node_path[0]) {
-+        error_report("%s unable to retrieve node path for %s/%s", __func__,
-+                     dt_name, vdev->compat);
-+        exit(1);
-+    }
-+
-+    if (node_path[1]) {
-+        error_report("%s more than one node matching %s/%s!", __func__,
-+                     dt_name, vdev->compat);
-+        exit(1);
-+    }
-+
-+    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    node_name = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
-+                               vbasedev->name, mmio_base);
-+    qemu_fdt_add_subnode(guest_fdt, node_name);
-+
-+    /* Copy generic parts from host */
-+    copy_generic_node(host_fdt, guest_fdt, node_path[0], node_name);
-+
-+    /* Copy reg (remapped) */
-+    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
-+    for (i = 0; i < vbasedev->num_regions; i++) {
-+        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
-+        reg_attr[2 * i] = cpu_to_be32(mmio_base);
-+        reg_attr[2 * i + 1] = cpu_to_be32(
-+                                memory_region_size(vdev->regions[i]->mem));
-+    }
-+    qemu_fdt_setprop(guest_fdt, node_name, "reg", reg_attr,
-+                     vbasedev->num_regions * 2 * sizeof(uint32_t));
-+
-+    /* Copy interrupts (remapped) */
-+    if (vbasedev->num_irqs) {
-+        irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
-+        for (i = 0; i < vbasedev->num_irqs; i++) {
-+            irq_number = platform_bus_get_irqn(pbus, sbdev, i) +
-+                         data->irq_start;
-+            irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
-+            irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
-+            QLIST_FOREACH(intp, &vdev->intp_list, next) {
-+                if (intp->pin == i) {
-+                    break;
-+                }
-+            }
-+            if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
-+                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+            } else {
-+                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
-+            }
-+        }
-+        qemu_fdt_setprop(guest_fdt, node_name, "interrupts",
-+                         irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
-+        g_free(irq_attr);
-+    }
-+
-+    g_free(reg_attr);
-+    g_free(node_name);
-+    g_strfreev(node_path);
-+    g_free(dt_name);
-+    g_free(host_fdt);
-+    return 0;
-+}
-+
- /* DT compatible matching */
- static bool vfio_platform_match(SysBusDevice *sbdev,
-                                 const BindingEntry *entry)
-@@ -423,6 +652,11 @@ static bool vfio_platform_match(SysBusDevice *sbdev,
-     const char *compat;
-     unsigned int n;
- 
-+    if (!entry->compat) {
-+        /* Generic DT fallback */
-+        return true;
-+    }
-+
-     for (n = vdev->num_compat, compat = vdev->compat; n > 0;
-          n--, compat += strlen(compat) + 1) {
-         if (!strcmp(entry->compat, compat)) {
-@@ -459,6 +693,10 @@ static const BindingEntry bindings[] = {
-     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
- #endif
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-+#ifdef CONFIG_LINUX
-+    /* Generic DT fallback must be last */
-+    VFIO_PLATFORM_BINDING(NULL, add_generic_fdt_node),
-+#endif
-     TYPE_BINDING("", NULL), /* last element */
- };
- 
--- 
-2.17.1
-
+> +
+> +#endif
+> diff --git a/include/hw/char/nrf51_uart.h b/include/hw/char/nrf51_uart.h
+> index e3ecb7c81c..eb1c15b490 100644
+> --- a/include/hw/char/nrf51_uart.h
+> +++ b/include/hw/char/nrf51_uart.h
+> @@ -16,7 +16,6 @@
+>  #include "hw/registerfields.h"
+>  
+>  #define UART_FIFO_LENGTH 6
+> -#define UART_BASE 0x40002000
+>  #define UART_SIZE 0x1000
+>  
+>  #define TYPE_NRF51_UART "nrf51_soc.uart"
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> index b89c1bdea0..55f8eaafcb 100644
+> --- a/hw/arm/nrf51_soc.c
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -21,27 +21,16 @@
+>  #include "qemu/log.h"
+>  #include "cpu.h"
+>  
+> +#include "hw/arm/nrf51.h"
+>  #include "hw/arm/nrf51_soc.h"
+>  
+> -#define IOMEM_BASE      0x40000000
+> -#define IOMEM_SIZE      0x20000000
+> -
+> -#define FICR_BASE       0x10000000
+> -#define FICR_SIZE       0x000000fc
+> -
+> -#define FLASH_BASE      0x00000000
+> -#define SRAM_BASE       0x20000000
+> -
+> -#define PRIVATE_BASE    0xF0000000
+> -#define PRIVATE_SIZE    0x10000000
+> -
+>  /*
+>   * The size and base is for the NRF51822 part. If other parts
+>   * are supported in the future, add a sub-class of NRF51SoC for
+>   * the specific variants
+>   */
+> -#define NRF51822_FLASH_SIZE     (256 * 1024)
+> -#define NRF51822_SRAM_SIZE      (16 * 1024)
+> +#define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
+> +#define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
+>  
+>  #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
+>  
+> @@ -76,14 +65,14 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+>          error_propagate(errp, err);
+>          return;
+>      }
+> -    memory_region_add_subregion(&s->container, FLASH_BASE, &s->flash);
+> +    memory_region_add_subregion(&s->container, NRF51_FLASH_BASE, &s->flash);
+>  
+>      memory_region_init_ram(&s->sram, NULL, "nrf51.sram", s->sram_size, &err);
+>      if (err) {
+>          error_propagate(errp, err);
+>          return;
+>      }
+> -    memory_region_add_subregion(&s->container, SRAM_BASE, &s->sram);
+> +    memory_region_add_subregion(&s->container, NRF51_SRAM_BASE, &s->sram);
+>  
+>      /* UART */
+>      object_property_set_bool(OBJECT(&s->uart), true, "realized", &err);
+> @@ -92,15 +81,17 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+>          return;
+>      }
+>      mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0);
+> -    memory_region_add_subregion_overlap(&s->container, UART_BASE, mr, 0);
+> +    memory_region_add_subregion_overlap(&s->container, NRF51_UART_BASE, mr, 0);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart), 0,
+>                         qdev_get_gpio_in(DEVICE(&s->cpu),
+> -                       BASE_TO_IRQ(UART_BASE)));
+> +                       BASE_TO_IRQ(NRF51_UART_BASE)));
+>  
+> -    create_unimplemented_device("nrf51_soc.io", IOMEM_BASE, IOMEM_SIZE);
+> -    create_unimplemented_device("nrf51_soc.ficr", FICR_BASE, FICR_SIZE);
+> +    create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
+> +                                NRF51_IOMEM_SIZE);
+> +    create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
+> +                                NRF51_FICR_SIZE);
+>      create_unimplemented_device("nrf51_soc.private",
+> -                                PRIVATE_BASE, PRIVATE_SIZE);
+> +                                NRF51_PRIVATE_BASE, NRF51_PRIVATE_SIZE);
+>  }
+>  
+>  static void nrf51_soc_init(Object *obj)
+> 

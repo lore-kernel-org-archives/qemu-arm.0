@@ -1,95 +1,152 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp704695wrt;
-        Thu, 3 Jan 2019 06:41:31 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4NyxrK0FmvjhbaL1BNResMhrBd9LT1bo2mQgQV3L4KJKV9PimUitfc+PBbkU8W/zu9anjv
-X-Received: by 2002:a37:4145:: with SMTP id o66mr42787484qka.129.1546526491662;
-        Thu, 03 Jan 2019 06:41:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546526491; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp704300wrt;
+        Fri, 4 Jan 2019 07:12:42 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XEpqcFwzzjey0/8RmZeq8aXk2IHOCN/vABBtCFnTF1Z6jfKRo8awMrotxy4GJ+ejhrOXn/
+X-Received: by 2002:ac8:2d2b:: with SMTP id n40mr48549528qta.38.1546614762607;
+        Fri, 04 Jan 2019 07:12:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546614762; cv=none;
         d=google.com; s=arc-20160816;
-        b=xUeP/Y2Mdg4Va5JvvBAnEbYf0jxW1NWgZGkjMEW5CcCO99EXEKsaV33SK3XxgUhUXf
-         CJox45VfYahSyYcbLquLWEZjBrPTU3coD48226sy4rvbmMjymW5WgWHT0buaHqxC8akS
-         83BYpWDrSQDFKDyqM+yAjMJ/BFz3yLg0EDvu4J+JdngJv5HSxpj0aEChqhqSxE+JOgx6
-         j8S+uwiDbsCpBlCkFn/NVrfw7n9dTUfYlNZ2cTM9wilqrziNWv4tpiNCYY0i4lbG5tsp
-         yuRLxnmFPigLxvUHWLK7vpc10qbAQaR5kY8FRnr+4/Acufb8G5ZVsQcd4Y8BoeCfqVdz
-         A4aw==
+        b=Q8/fCSG5BcBQTkqrcZSe5p1Tj5Yql230imVAWv9vL67w51Dbwq3B+1ViNr1GuVuyiA
+         C+iIU9czAYpUmwZFE1amEbxgTqAj8i6joId/ygIYA5mW63tjgMFQtAx2+dNIO/jdbLAK
+         HVr7TOjQxBO6xpHzgJprIScqNutgZ8qqokZUrwU38yms8NPju5etNauz62PzIq8G3z9V
+         qm6cg8CutsFsdl6qSHHOGYzSZosiLVG3+Aqke3zoK50uk/o/QpI54STwaoY+BIwaBQaB
+         yn4OMwxOa35crex3H4bGztbNwlIGFSjOfyELnHPDPPnxRNyiKwpLgqn8nWu0cv/ediqz
+         AfhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=HZejvBvL6cVFGUrZql9sEHMcNBkSfU3xKDW64f8ZOFM=;
-        b=dY0pOvqe3HCzPP6ExvakavbiGjU1YpO8rLYmD22VBTiYo0pM8DJ+EMqQhIvV0NuWl3
-         km8fMQATr8s+0WzWhU1Fy4IYePzhq5k46YBzvpuVFpy0hQ8hXRnj3VB5/nArTMikJJTL
-         6AsFMB0eblZii2DT1bpPYFn93AekaieVdMr7XRqs6wVG0M5znryTLfn3RDiIdxT/p2jD
-         TNoW2RphvJI8OLzEkKhaxABUvoilZCQwYSHRiCiCVgbP4yAUL9/vTscqth9e44eKCtfX
-         MHRaHCGjX+uHodKqlTOZsep3c+1C3aYB/kAYFYb2tznuBU3Lf8h7gFkLCqHYcPrNzPKZ
-         nigA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vyt+0mF+avPg4hEJmZVJRHr8mpXS0mBK5uD/KGvrrQo=;
+        b=HVG0qy34jZv8iW9xOS0GvvyIiVCqpihlAv8bl0SCS07LjJKFWLmz0+uzu6bc3kKIey
+         lvUSqinh8QmZ6sDufzu0DuWhTsrn7VIcCe2V2P+GCFrdaJRBtFbrjnvMdQssSa6E3XU/
+         V2vzJUoJyDvy7sY+DnZSNDl7JZT6ZiA2RLBWQ8lkL1EL7+BY6GpF47HUV/K100b1IXfO
+         2gxSn3qQNHqkbJx576RnMhflOXmGytpBFM9R1n+pc9IQ6KTCRquYYoqRS/pqjxSFUVyk
+         pPZpVDoQ87hltFQLhfKTlFXlojZBpqYMimnjY8vmpgEh2uwjucThiogeIawC1xJydST4
+         YmYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id n26si4462339qki.136.2019.01.03.06.41.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Jan 2019 06:41:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YhlMamZI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id a129si57279qkg.122.2019.01.04.07.12.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 04 Jan 2019 07:12:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9087C81DEA;
-	Thu,  3 Jan 2019 14:41:30 +0000 (UTC)
-Received: from localhost (ovpn-117-118.ams2.redhat.com [10.36.117.118])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E049B60BEC;
-	Thu,  3 Jan 2019 14:41:25 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: jim@groklearning.com,
-	jusual@mail.ru,
-	qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Steffen Gortz <qemu.ml@steffen-goertz.de>,
-	Joel Stanley <joel@jms.id.au>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [PATCH] Revert "armv7m: Guard against no -kernel argument"
-Date: Thu,  3 Jan 2019 14:41:24 +0000
-Message-Id: <20190103144124.18917-1-stefanha@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=YhlMamZI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:36158 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gfR9O-00030T-2f
+	for alex.bennee@linaro.org; Fri, 04 Jan 2019 10:12:42 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52425)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gfR9E-0002z1-56
+	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 10:12:32 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gfR9C-0003GU-OJ
+	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 10:12:32 -0500
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:38709)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gfR9A-00031q-4s
+	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 10:12:30 -0500
+Received: by mail-ot1-x329.google.com with SMTP id e12so32336964otl.5
+	for <qemu-arm@nongnu.org>; Fri, 04 Jan 2019 07:12:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=vyt+0mF+avPg4hEJmZVJRHr8mpXS0mBK5uD/KGvrrQo=;
+	b=YhlMamZI/4ZffQ2feoQ2HP+CIF9V8nCI9XopisJ+rB5F9uCWkehrXuwXB+nfWsQXG+
+	SGiojngf5Sxv28zOt5dKjQHjnpvOdrTO1qSg9odBTAASrWRTvNWSM8GpLxlWcymBSQQI
+	6cN/CQgqTGDTJ6F6Bz2dwFU0VPzTEyLbzoANc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=vyt+0mF+avPg4hEJmZVJRHr8mpXS0mBK5uD/KGvrrQo=;
+	b=NkKRvCczxWnL5WTdf3v+tEMmKKi6lnsUKgREW72SaO3t3Epn+Hvnpt56SZgICcdhEJ
+	yLhVNgHpGVyqsgpSlvMQz57F82nRtt3Lt+WL8IbnRm2IqnCvxbpXTtvF646bNIsxOAts
+	BJ+YGwO33hxi0VcYQJvzoI8jWzrAdJQFFrcEzk5RI/jg8I9lt/1VNiaZAlWAJK+O3G5b
+	mwQmO8IPWwhEJzAUQR33Eh6feWmg5+NF2QpnBLt6BiOFQIA8Tqqee3Ytv2KiSIFtEEA+
+	HbpVtQBQeV8hADH3SliDncxUYwdWlEByH9JP2lGqltQ8//jMOhRVH5V7+jo6blWOzMPF
+	C7Zg==
+X-Gm-Message-State: AJcUukfC04dxyOOU50BCTVampNVK9IxKcONDwqvG0nuXPiDBQeWNWK4U
+	Sk1YOV5VDBEjQi4hVWXexw8wDQxehKEOdSA10QBpIw==
+X-Received: by 2002:a9d:bf7:: with SMTP id 110mr36826502oth.201.1546614741465; 
+	Fri, 04 Jan 2019 07:12:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Thu, 03 Jan 2019 14:41:30 +0000 (UTC)
-X-TUID: FJtJ3q8OSQbC
+References: <20181207090135.7651-1-luc.michel@greensocs.com>
+In-Reply-To: <20181207090135.7651-1-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Jan 2019 15:12:10 +0000
+Message-ID: <CAFEAcA9F2q6fQV13EDWFzuPYiFTDvqSCx_4P9aD=zP2RR5Kp0g@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::329
+Subject: Re: [Qemu-arm] [PATCH v8 00/16] gdbstub: support for the
+ multiprocess extension
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: efKykfc+aFCG
 
-This reverts commit 01fd41ab3fb69971c24a69ed49cde96086d81278.
+On Fri, 7 Dec 2018 at 09:01, Luc Michel <luc.michel@greensocs.com> wrote:
+> This series adds support for the multiprocess extension of the GDB
+> remote protocol in the QEMU GDB stub.
+>
+> This extension is useful to split QEMU emulated CPUs in different
+> processes from the point of view of the GDB client. It adds the
+> possibility to debug different kind of processors (e.g. an AArch64 and
+> an ARMv7 CPU) at the same time (it is not possible otherwise since GDB
+> expects an SMP view at the thread granularity.
 
-The generic loader device (-device loader,file=kernel.bin) can be used
-to load a kernel instead of the -kernel option.  Some boards have flash
-memory (pflash) that is set via the -pflash or -drive options.
+I've applied this patchset to target-arm.next, thanks.
+(I fixed up a few checkpatch nits about block comment style.)
 
-Allow starting QEMU without the -kernel option to accommodate these
-scenarios.
+> To test this patchset, you can use the following commands:
+>
+> (Note that this requires a recent enough GDB, I think GDB 7.2 is OK.
+> Also, it must be compiled to support both ARM and AArch64 architectures)
+>
+> Run QEMU: (-smp 6 in xlnx-zcu102 enables both cortex-a53 and cortex-r5
+> CPUs)
+>
+> qemu-system-aarch64 -M xlnx-zcu102 -gdb tcp::1234 -S -smp 6
+>
+> Run the following commands in GDB:
+>
+> target extended :1234
+> add-inferior
+> inferior 2
+> attach 2
+> info threads
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
----
- hw/arm/armv7m.c | 5 -----
- 1 file changed, 5 deletions(-)
+This seems a bit clumsy -- is it just the limitations of
+gdb here? I was expecting that just connecting to the
+remote would cause gdb to interrogate it and attach to
+all the inferior processes that it had.
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 4bf9131b81..f444652830 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -285,11 +285,6 @@ void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-     big_endian = 0;
- #endif
- 
--    if (!kernel_filename && !qtest_enabled()) {
--        error_report("Guest image must be specified (using -kernel)");
--        exit(1);
--    }
--
-     if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-         asidx = ARMASIdx_S;
-     } else {
--- 
-2.20.1
+thanks
+-- PMM

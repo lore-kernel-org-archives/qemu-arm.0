@@ -1,114 +1,87 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp13491wrt;
-        Thu, 3 Jan 2019 15:01:13 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WZl1HVBITx2GYiArhke5BrHM8iX5kt3BairSeIFqCF+m+5mbKaFeuJbJdejMdHOxvNXF4V
-X-Received: by 2002:ac8:320a:: with SMTP id x10mr47644562qta.275.1546556473399;
-        Thu, 03 Jan 2019 15:01:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546556473; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp430616wrt;
+        Fri, 4 Jan 2019 01:53:26 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7XSmyjRCtJvWYtfPmhNjVYofiLaQjBjLa0VoUnRfliXPk8qG9cW5OZs3HuuOFLBym8TSYW
+X-Received: by 2002:a0c:b517:: with SMTP id d23mr50518789qve.221.1546595606110;
+        Fri, 04 Jan 2019 01:53:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546595606; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikKU0zWcG5haghomw3iB4m8FMdcTICiAST/q0Q3Uef/8Q/22+YW5izZLAyPi1tWtMW
-         Y5oZylfFbmEIzTMgcdBD1MchwyJegSrV81ANp9rFdFYCphn1weRK9xjTnyU0ODmX0jkZ
-         xA8nheb7rZCiY2DTrKSCiWgLHK9LFG6Sf7PRpsyLQRD47y67Hvs8oUO+R0kACrC3UCSs
-         4m4isix2G46uN7POgjFM33xeUOgqcjYJj8HG2porMl2CzCqKcOZHdMWiwh+ZujY39Urh
-         RUS5pLHyeUs1uvQ6m7yGYRmHTvqBSReuM3TCtsYKtNCgxpSnixDFjnsDOhAM6YdTVv36
-         EwrQ==
+        b=vTAUXCc3FhYXaZk1qliiq1jCxBch40MD9XJ0O1Pud+D4wEssLr17Z8UQUuVfZJxXCN
+         Ol+XE2XmzWz1A5u13PGZDobXoESLHV7x7JzXgRvfT2tYULiEga1/nmyZvsYUgqkJZ1UB
+         0KjtY+R3pkns6fXP/PpbUjE0ZqPhwOGwe9F5N03OjIwn6dAARvu9UuQscNvUGALD2vh5
+         xk0iYRtQqmfqxjGYmDVoT/+lZwI8VLXNbsXH12DebRz2jA6YJnYcYKH/wIuVmeXuvFXs
+         e8coSbDpv/vQnUn7GKw313q3UapZ9SHlqFUsDVs/mar6SMfLsonJAv1Bk/Z6tivQzWTG
+         JwfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=llAG0o/Zy8qiSIe7lTdT5c/OKITLbA/7R3sV/imGBv4=;
-        b=wNrRgyJbs4aeaHSYkTx07rhV4IrOVrHKk6fTeX+F1KllrsmC0TwgSDeBuFk3fEsF1t
-         UCYsyfjiLK2AAyC9KooNc9Y1JYbE15Mts8D0do/bTF9uKGEldd83+rVjrUcafxLsmct0
-         xFjx03cnmwZdwPonDKvh2z3ukWYiBneMX9JeHDXz4dKI10IDtcuNdUQJ3ksPBi8jhB0w
-         lm5WSiQibKSLYFvP5PsxDMZ0ma7sOSkiTOtsWAAOeYjYfMuTgXKsl1KCwDESpOFfN7BS
-         saZ/+mG91rNgCRX7qkbfI7neIfBa6VMP8PQpGua1hb0S2/+3v9RYDmL8XBuDm7UdOvnB
-         X2fg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=ZP6l+80zGuSAsBNctQNvYYmLC3Nzqjz5BZIUvGabuf4=;
+        b=Clshqdu1W6xGe8K4Q1SSbL9uo0atflmEdxDTzQ+wewBjWGYD++nciDU/34nXn7/uv2
+         ifgU5B1V4EIxPrJxNAF8oyHVi2QHp98LK8/ppgZyU2wbfmXqacJQByB1G1rVVqyTA9jN
+         IIVUgRdCztZ24w+dJBfDCUdTjaAqG2bR+QVHg4zijuVJsbXyHJ0h7ejW8rlWUEoq/jdy
+         dbu8oj6lPkIUwsWVD/L3ZlB5QwaX4XZX0arALuPeS6ZYlFI6CCsNwLVtAq5ohUfgBZFY
+         0Q8aAqOfx5DPPzKCUH3EZoQZzw2v5lPZKaUEEA7OvRX4JEptyL5ZPYbHeU3THvK9da/W
+         UXLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sWAcnH8d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id y31si4588657qvf.184.2019.01.03.15.01.13
+        by mx.google.com with ESMTPS id s5si1825371qvn.214.2019.01.04.01.53.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 03 Jan 2019 15:01:13 -0800 (PST)
+        Fri, 04 Jan 2019 01:53:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sWAcnH8d;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:58640 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:60746 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gfBzE-0005aE-Py
-	for alex.bennee@linaro.org; Thu, 03 Jan 2019 18:01:12 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55182)
+	id 1gfMAP-0006ss-L9
+	for alex.bennee@linaro.org; Fri, 04 Jan 2019 04:53:25 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:50937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gfByv-0005ZD-Hu
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 18:00:54 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gfM8h-0005Xw-SJ
+	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 04:51:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gfByu-0002wR-LV
-	for qemu-arm@nongnu.org; Thu, 03 Jan 2019 18:00:53 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50181)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <nicholas.a.hudson@gmail.com>)
-	id 1gfByu-0002w7-EY; Thu, 03 Jan 2019 18:00:52 -0500
-Received: by mail-wm1-x342.google.com with SMTP id n190so30624151wmd.0;
-	Thu, 03 Jan 2019 15:00:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=llAG0o/Zy8qiSIe7lTdT5c/OKITLbA/7R3sV/imGBv4=;
-	b=sWAcnH8dQireHNlQquy7aSxoJ3Wirj++QwWCeInFeydG+A29iTg4KoIJSZRvgvYZka
-	ebgFpT/2Rw5sdn4OjHkspllQo6X7rrdOYb7sTZJnt7bMYYrCQz07AWLryimcyWmND/FM
-	oDZhQAXaYMvhuuK1pvOb6HUXNohQWahAZa312YRWad2XztvviJI/QmCOG564LaV7Kunn
-	M3+CvCKg125a+PqjfAvgcwQx64wC9mwpx+A+en92yoxzhA6sUB/gKq/grzVkkAh/hEG8
-	g2f/Cyfx7aT6laS9d9E8mx/7JpuIl3eDawDwx7zB526gnXOLK3fvIJzfZCfbExdpu5km
-	ij6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=llAG0o/Zy8qiSIe7lTdT5c/OKITLbA/7R3sV/imGBv4=;
-	b=oJkS/tBQVG/8Y3zkvgpzna6vYXujGNP3t86biV7ihNNG0hgtkgOGwzhm6t6Kst0dYM
-	YJHztW9ZI5/mB9Tsgzx530bfBQsQXyt5ClRxosLqatFexzS8hcUMNRg4h9LwFvYPmrhO
-	wPqR2iXxvBIC/jAvWtpbztK/6vxZWCdj+X28wx72Ovw/bgnoGVHQFhhiJpm2uw4txgFt
-	zh+GeN22eFz96VevK5sJMTc4XyJEgz+PRw0zyXLBOZdJPCEdAr4hFVINKeIq+e16xUN2
-	ip34pjZlefVIUghoC3kSXhR/CfYMw4AE/rk9oTHKo/YTaqYlHNmZYo9qVYd0kpo03gTO
-	3kYg==
-X-Gm-Message-State: AA+aEWZ4vEwcy8WNkl1DAMh1PC98nv5RUYgJnYc+YXjXPxHXBTL9f0Hw
-	ID6Y/Nz9+/wBV5g12VLKfq9GQMJ4
-X-Received: by 2002:a1c:c2d5:: with SMTP id
-	s204mr42309831wmf.144.1546556451172; 
-	Thu, 03 Jan 2019 15:00:51 -0800 (PST)
-Received: from ?IPv6:2a02:c7d:8625:5a01:7503:9d7c:2958:5e7d?
-	([2a02:c7d:8625:5a01:7503:9d7c:2958:5e7d])
-	by smtp.gmail.com with ESMTPSA id
-	j8sm103979474wmd.0.2019.01.03.15.00.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 03 Jan 2019 15:00:50 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <975b9131-9937-cfea-3b5d-ef36d0c2b761@gmail.com>
-	<CAFEAcA-2tWtEqd-Z0xqNMeocf4rns+FihrAPudiQGz+85HFjJg@mail.gmail.com>
-	<7b61db39-7059-6286-2282-b90f45a85faf@gmail.com>
-	<CAFEAcA9HkBC4M8vNsHd9M0YrAEYPb=3vd9jj8zkPruMKrtP=mA@mail.gmail.com>
-From: Nick Hudson <nicholas.a.hudson@gmail.com>
-Message-ID: <b8242fec-0ad1-fcb8-0b99-264f8600a965@gmail.com>
-Date: Thu, 3 Jan 2019 23:00:45 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.3
+	(envelope-from <stefanha@redhat.com>) id 1gfM8e-0002Qj-Lv
+	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 04:51:39 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45360)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1gfM8e-0002Pt-DI; Fri, 04 Jan 2019 04:51:36 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3AF9416974A;
+	Fri,  4 Jan 2019 09:51:35 +0000 (UTC)
+Received: from localhost (ovpn-117-207.ams2.redhat.com [10.36.117.207])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DB1B5608C2;
+	Fri,  4 Jan 2019 09:51:31 +0000 (UTC)
+Date: Fri, 4 Jan 2019 09:51:30 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190104095130.GA30381@stefanha-x1.localdomain>
+References: <20190103091119.9367-1-stefanha@redhat.com>
+	<20190103091119.9367-3-stefanha@redhat.com>
+	<51ac1e9a-6576-9a54-91f3-76bf66040cc7@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9HkBC4M8vNsHd9M0YrAEYPb=3vd9jj8zkPruMKrtP=mA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: Re: [Qemu-arm] [PATCH v3] Support u-boot noload images for arm as
- used by, NetBSD/evbarm GENERIC kernel.
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="YZ5djTAD1cGYuMQK"
+Content-Disposition: inline
+In-Reply-To: <51ac1e9a-6576-9a54-91f3-76bf66040cc7@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 04 Jan 2019 09:51:35 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/11] arm: Add header to host
+ common definition for nRF51 SOC peripherals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,85 +93,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
+	Jim Mussared <jim@groklearning.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xKFInOSYeju/
+X-TUID: VnvN1HyFJh20
 
 
+--YZ5djTAD1cGYuMQK
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 03/01/2019 17:27, Peter Maydell wrote:
-> On Thu, 3 Jan 2019 at 16:50, Nick Hudson <nicholas.a.hudson@gmail.com> wrote:
->> On 03/01/2019 16:20, Peter Maydell wrote:
->>> On Tue, 11 Dec 2018 at 12:27, Nick Hudson <nicholas.a.hudson@gmail.com> wrote:
->>>> --- a/hw/arm/boot.c
->>>> +++ b/hw/arm/boot.c
->>>> @@ -30,8 +30,9 @@
->>>>      * Documentation/arm/Booting and Documentation/arm64/booting.txt
->>>>      * They have different preferred image load offsets from system RAM base.
->>>>      */
->>>> -#define KERNEL_ARGS_ADDR 0x100
->>>> -#define KERNEL_LOAD_ADDR 0x00010000
->>>> +#define KERNEL_ARGS_ADDR   0x100
->>>> +#define KERNEL_NOLOAD_ADDR 0x00000000
->>>
->>> If I'm reading the code right, this requests that noload images
->>> are loaded at offset zero into RAM, yes ?
->>
->> Not quite.
->>
->> They're loaded as if the full noload image (including uboot header)
->> was loaded at offset zero, but as load_uboot_image doesn't load the
->> header then the image body (minus the header) is loaded at offset
->> zero + the size of the u-boot header, i.e. 0x40.
->>
->>> That's not a great
->>> choice, because we put our little mini bootloader at offset 0,
->>> and so the two will clash.
->>
->> Fortuntately, the bootloader fits in the space that the uboot header would
->> have occupied.
->>
->> My commit message has
->>
->> "The bootloader fits in the space that the uboot header would have occupied."
->>
->> to try and described this. I could add more of a description if required?
-> 
-> Ah, I missed that. This seems very fragile to me -- 0x40
-> is only 64 bytes, which is 16 instructions. Currently
-> our boot loader code is less than that, but only by four
-> insns or so, so it's very plausible that some future
-> enhancement to the loader code would take it over the 0x40
-> boundary, at which point handling of noload images will
-> silently fail. At a minimum we should have an assertion
-> that we stay below 0x40; but I'm not keen on restricting
-> ourselves to 16-instruction bootloaders.
+On Thu, Jan 03, 2019 at 11:40:30AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> On 1/3/19 10:11 AM, Stefan Hajnoczi wrote:
+> > From: Steffen G=F6rtz <contrib@steffen-goertz.de>
+> >=20
+> > Adds a header that provides definitions that are used
+> > across nRF51 peripherals
+> >=20
+> > Signed-off-by: Steffen G=F6rtz <contrib@steffen-goertz.de>
+> > Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> > ---
+> >  include/hw/arm/nrf51.h       | 45 ++++++++++++++++++++++++++++++++++++
+> >  include/hw/char/nrf51_uart.h |  1 -
+> >  hw/arm/nrf51_soc.c           | 33 ++++++++++----------------
+> >  3 files changed, 57 insertions(+), 22 deletions(-)
+> >  create mode 100644 include/hw/arm/nrf51.h
+> >=20
+> > diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
+> > new file mode 100644
+> > index 0000000000..175bb6c301
+> > --- /dev/null
+> > +++ b/include/hw/arm/nrf51.h
+> > @@ -0,0 +1,45 @@
+> > +/*
+> > + * Nordic Semiconductor nRF51 Series SOC Common Defines
+> > + *
+> > + * This file hosts generic defines used in various nRF51 peripheral de=
+vices.
+> > + *
+> > + * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.=
+0.pdf
+> > + * Product Spec: http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1=
+=2Epdf
+> > + *
+> > + * Copyright 2018 Steffen G=F6rtz <contrib@steffen-goertz.de>
+> > + *
+> > + * This code is licensed under the GPL version 2 or later.  See
+> > + * the COPYING file in the top-level directory.
+> > + */
+> > +
+> > +#ifndef NRF51_H
+> > +#define NRF51_H
+> > +
+> > +#define NRF51_FLASH_BASE      0x00000000
+> > +#define NRF51_FICR_BASE       0x10000000
+> > +#define NRF51_FICR_SIZE       0x00000100
+> > +#define NRF51_UICR_BASE       0x10001000
+> > +#define NRF51_SRAM_BASE       0x20000000
+> > +
+> > +#define NRF51_IOMEM_BASE      0x40000000
+> > +#define NRF51_IOMEM_SIZE      0x20000000
+> > +
+> > +#define NRF51_UART_BASE       0x40002000
+> > +#define NRF51_TIMER_BASE      0x40008000
+> > +#define NRF51_TIMER_SIZE      0x00001000
+> > +#define NRF51_RNG_BASE        0x4000D000
+> > +#define NRF51_NVMC_BASE       0x4001E000
+> > +#define NRF51_GPIO_BASE       0x50000000
+> > +
+> > +#define NRF51_PRIVATE_BASE    0xF0000000
+> > +#define NRF51_PRIVATE_SIZE    0x10000000
+> > +
+> > +#define NRF51_PAGE_SIZE       1024
+>=20
+> I'd keep this file in hw/arm (not include/...).
 
-I can add an assertion.
+This header file avoids duplicating definitions in
+tests/microbit-test.c.
 
-Kernels often like to be 2MiB aligned to allow for more simple
-translation tables. This and the fact that  the bootloader hasn't 
-changed in 3 years I'd like to kick this can down the road.
+How would you structure it differently?
 
-> 
-> Will a noload image ever in practice also be a Linux kernel
-> (ie hdr->ih_os == IH_OS_LINUX) ?
+Stefan
 
-NetBSD/FreeBSD/OpenBSD (ab)use IH_OS_LINUX.  They and Linux
+--YZ5djTAD1cGYuMQK
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> If not, then we don't lose
-> anything by not allowing those to be loaded. (And if anybody
-> does in future complain that their image doesn't work, we
-> could make it supported by allowing the mini-bootloader to
-> be placed elsewhere in RAM.)
+-----BEGIN PGP SIGNATURE-----
 
+iQEcBAEBAgAGBQJcLyyiAAoJEJykq7OBq3PI6GUH/js0NDZi6qIts9vXgtVMhREZ
+sO05FQjiCnVnfJuBDqyUw3Or9JxnlPzdmoppEx4qxQNMWoknmnBmRk+WF0Jblh0o
+RZdmFIQd72XZTOALhVKhMVJhsbDManXm2g5F/OVlnqqLBBgL6nIOL5NpSuDSQ1/r
+43nKYfwdbrzubbvhig1IG1K2NekVkGEazKPmlC5PZbVuOaD1Y8qp2Zz4yZt7XO54
+X+Wja808NdtN2y2CxcxNCN8cWvSpeYNlkqEfDqjmRa77yrhRIIBchHNp8NtuJPTl
+EQSgnHuXKJf7emTuQvrePg5EWqQXFnefRNrtul33dQo7gpZg7OpMQwLjzPH/gUE=
+=mSUR
+-----END PGP SIGNATURE-----
 
-
-> 
-> thanks
-> -- PMM
-> 
-
-thanks,
-Nick
+--YZ5djTAD1cGYuMQK--

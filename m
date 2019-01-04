@@ -1,200 +1,132 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp430616wrt;
-        Fri, 4 Jan 2019 01:53:26 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7XSmyjRCtJvWYtfPmhNjVYofiLaQjBjLa0VoUnRfliXPk8qG9cW5OZs3HuuOFLBym8TSYW
-X-Received: by 2002:a0c:b517:: with SMTP id d23mr50518789qve.221.1546595606110;
-        Fri, 04 Jan 2019 01:53:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546595606; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp471130wrt;
+        Fri, 4 Jan 2019 02:48:17 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7luLEH3YpVvBZVpWtu2ArSLuYl+FWKOXASM8LKr0AeSv8v3FXp60lRkFQqDmFGdJ89Hw8v
+X-Received: by 2002:ac8:7518:: with SMTP id u24mr50034318qtq.75.1546598897607;
+        Fri, 04 Jan 2019 02:48:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546598897; cv=none;
         d=google.com; s=arc-20160816;
-        b=vTAUXCc3FhYXaZk1qliiq1jCxBch40MD9XJ0O1Pud+D4wEssLr17Z8UQUuVfZJxXCN
-         Ol+XE2XmzWz1A5u13PGZDobXoESLHV7x7JzXgRvfT2tYULiEga1/nmyZvsYUgqkJZ1UB
-         0KjtY+R3pkns6fXP/PpbUjE0ZqPhwOGwe9F5N03OjIwn6dAARvu9UuQscNvUGALD2vh5
-         xk0iYRtQqmfqxjGYmDVoT/+lZwI8VLXNbsXH12DebRz2jA6YJnYcYKH/wIuVmeXuvFXs
-         e8coSbDpv/vQnUn7GKw313q3UapZ9SHlqFUsDVs/mar6SMfLsonJAv1Bk/Z6tivQzWTG
-         JwfA==
+        b=hOh9Gmwb0/YyEpywYp9l9whOLcOyoYQgbytsRSV2Wbj51D9mA7U8T68cIn1kf449e7
+         yNXhbLaDT1/aUx9LAf0Lk7II/rPUfbVPphdjrO0LsJdGq6TNclMKU9O5+UcHYtyX9g85
+         MIcGYGzjo5IZrNPCCP57We2Ln5TElK2U637Cg86u4DEplfSB2NIqfByldssS+9dZ1xkJ
+         cUv8Bm5TvvtukMCQxcUL3eN01nwdfjntgrLkGZxUPyAYpe5sompxHn5YF+hGDj3BvC6M
+         kUTa2vsbomaFM/jSu6BYS+dkr7yr2boZWTBvnN3ff6OEwjOiRYTs/PrfS8ssqwkmXHiN
+         QmUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=ZP6l+80zGuSAsBNctQNvYYmLC3Nzqjz5BZIUvGabuf4=;
-        b=Clshqdu1W6xGe8K4Q1SSbL9uo0atflmEdxDTzQ+wewBjWGYD++nciDU/34nXn7/uv2
-         ifgU5B1V4EIxPrJxNAF8oyHVi2QHp98LK8/ppgZyU2wbfmXqacJQByB1G1rVVqyTA9jN
-         IIVUgRdCztZ24w+dJBfDCUdTjaAqG2bR+QVHg4zijuVJsbXyHJ0h7ejW8rlWUEoq/jdy
-         dbu8oj6lPkIUwsWVD/L3ZlB5QwaX4XZX0arALuPeS6ZYlFI6CCsNwLVtAq5ohUfgBZFY
-         0Q8aAqOfx5DPPzKCUH3EZoQZzw2v5lPZKaUEEA7OvRX4JEptyL5ZPYbHeU3THvK9da/W
-         UXLw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=v1W1ynEMdJJTgBN8DDXtdsjPO8eS5e0tY+lpPlPkWpk=;
+        b=PPnH6nK3/UIhtkAAbIPZAp+Xw6s5JwNKvnRbTWgDQkarxQC3m6sqBwK1xgkHTftqYm
+         s2LXlMT3C4BXKMJVlZHnGpPD0SW+ZDskaZPli3rlSnDblHtj2PyF/0yfy5saEYCoEinH
+         qByGOl5Ldezgkuyjzssvk7u0DXX7z/GMePR9cDd1LoTxB/N/G/WrRbkt5iCyU3K/afqK
+         uKkWjmT1qdlhHqNb9OYDEEZGpt49/rqSpDan9MJnmJaph4GwHhf84y3gfgpmyWFXCLDP
+         zq5rUqk7kfqhYAViY7u+6WubieiE3C8RaN/f13s1xI7DSPHSRdhMHUKmfzVqNQufQw2E
+         zECQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [208.118.235.17])
-        by mx.google.com with ESMTPS id s5si1825371qvn.214.2019.01.04.01.53.25
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ED7SCyMl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from listsout.gnu.org (listsout.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v60si514726qtd.31.2019.01.04.02.48.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Jan 2019 01:53:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
+        Fri, 04 Jan 2019 02:48:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60746 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ED7SCyMl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:34013 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gfMAP-0006ss-L9
-	for alex.bennee@linaro.org; Fri, 04 Jan 2019 04:53:25 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:50937)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gfN1V-0003tt-7M
+	for alex.bennee@linaro.org; Fri, 04 Jan 2019 05:48:17 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:42465)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gfM8h-0005Xw-SJ
-	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 04:51:40 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gfN1A-0003tT-Bz
+	for qemu-devel@nongnu.org; Fri, 04 Jan 2019 05:47:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gfM8e-0002Qj-Lv
-	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 04:51:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45360)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gfM8e-0002Pt-DI; Fri, 04 Jan 2019 04:51:36 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3AF9416974A;
-	Fri,  4 Jan 2019 09:51:35 +0000 (UTC)
-Received: from localhost (ovpn-117-207.ams2.redhat.com [10.36.117.207])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DB1B5608C2;
-	Fri,  4 Jan 2019 09:51:31 +0000 (UTC)
-Date: Fri, 4 Jan 2019 09:51:30 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190104095130.GA30381@stefanha-x1.localdomain>
-References: <20190103091119.9367-1-stefanha@redhat.com>
-	<20190103091119.9367-3-stefanha@redhat.com>
-	<51ac1e9a-6576-9a54-91f3-76bf66040cc7@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="YZ5djTAD1cGYuMQK"
-Content-Disposition: inline
-In-Reply-To: <51ac1e9a-6576-9a54-91f3-76bf66040cc7@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 04 Jan 2019 09:51:35 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/11] arm: Add header to host
- common definition for nRF51 SOC peripherals
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gfN17-0000Am-N3
+	for qemu-devel@nongnu.org; Fri, 04 Jan 2019 05:47:56 -0500
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b]:40852)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1gfN17-0000AV-Fs; Fri, 04 Jan 2019 05:47:53 -0500
+Received: by mail-lj1-x22b.google.com with SMTP id n18-v6so32095874lji.7;
+	Fri, 04 Jan 2019 02:47:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=v1W1ynEMdJJTgBN8DDXtdsjPO8eS5e0tY+lpPlPkWpk=;
+	b=ED7SCyMln3PKz9AaiPjQOBjTG/tp2S+MhNbAt971M5tMY6sYIeZpC9nUYinDduGR2A
+	FgzMfbQjKyfYF/rPyseOzyPYKdVRLhBBlEhB892Fpe32kVSK56SVuyAalFuPlNuBAKya
+	zLjQDh4zuKCOQzlNr2zKEqJGaDav+A090T6v0rApwHvIIHEG/vv6ufRNYpSzUnWWJxCU
+	/WijE/8lZHwPFp8oPW4I8rZFj9KYlqPb3VtKjf58N8CisMPE3Z99WtMCISggVScPONJN
+	oQJvlEqEjFed9ImwJjo4LUlnnQjRHyDturYuNajpRyFWJlt8Az0/EbJfXbtQNDa7g/14
+	1KEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=v1W1ynEMdJJTgBN8DDXtdsjPO8eS5e0tY+lpPlPkWpk=;
+	b=jraHxfjocdouQ8blYWLu4NA0+1YZ3KZS7UdRuc8GYBp0PEG6+gHWK1JA7eFZbpOUfH
+	xf7eRAMJqB1MqAhj/M9I5DwiQFYdgEMfqBeRF626qGykLKymuo6vspHRusM+WW5UjjoO
+	+c8GR7fH1W+0GLtQoeiIsPdO7/3Yw+9vZ/rneEun6BR7EHIH17U41eMF2W1lcuiPB3Ch
+	zRqPZIxwxxvHPmUgOq/BMUV02pOEO6gLuanCIxfxaQHmwxfofjolauHue3jzgwPETynm
+	MhS74EKkg4jDHs+9cypZY8G9UiTMZrE1f/xLNrNL9Rcr6n6Bt7dyk0HISciprrc3GwgG
+	T6Nw==
+X-Gm-Message-State: AJcUuke4jO73e8uSWGDERdkLlG3YwmQbtZlJQLYrtbBEiLOpgMiIJ7Ri
+	CTwup2/sSjOnsYej+jB8XJP6c48ZOXQ=
+X-Received: by 2002:a2e:4503:: with SMTP id
+	s3-v6mr28729416lja.44.1546598871557; 
+	Fri, 04 Jan 2019 02:47:51 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+	by smtp.gmail.com with ESMTPSA id
+	x11sm12410011lfd.81.2019.01.04.02.47.50
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 04 Jan 2019 02:47:50 -0800 (PST)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Fri,  4 Jan 2019 11:47:48 +0100
+Message-Id: <20190104104749.5314-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::22b
+Subject: [Qemu-devel] [PATCH v1 0/1] hw/arm: versal: Fix memory leaks
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
-	Jim Mussared <jim@groklearning.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
-	Paolo Bonzini <pbonzini@redhat.com>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VnvN1HyFJh20
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+	frasse.iglesias@gmail.com, alistair@alistair23.me,
+	frederic.konrad@adacore.com, philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FOKRxZ3pTnrn
 
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
---YZ5djTAD1cGYuMQK
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series fixes the memory leaks in versal board creation
+reported by Peter Maydell.
 
-On Thu, Jan 03, 2019 at 11:40:30AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On 1/3/19 10:11 AM, Stefan Hajnoczi wrote:
-> > From: Steffen G=F6rtz <contrib@steffen-goertz.de>
-> >=20
-> > Adds a header that provides definitions that are used
-> > across nRF51 peripherals
-> >=20
-> > Signed-off-by: Steffen G=F6rtz <contrib@steffen-goertz.de>
-> > Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> > ---
-> >  include/hw/arm/nrf51.h       | 45 ++++++++++++++++++++++++++++++++++++
-> >  include/hw/char/nrf51_uart.h |  1 -
-> >  hw/arm/nrf51_soc.c           | 33 ++++++++++----------------
-> >  3 files changed, 57 insertions(+), 22 deletions(-)
-> >  create mode 100644 include/hw/arm/nrf51.h
-> >=20
-> > diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
-> > new file mode 100644
-> > index 0000000000..175bb6c301
-> > --- /dev/null
-> > +++ b/include/hw/arm/nrf51.h
-> > @@ -0,0 +1,45 @@
-> > +/*
-> > + * Nordic Semiconductor nRF51 Series SOC Common Defines
-> > + *
-> > + * This file hosts generic defines used in various nRF51 peripheral de=
-vices.
-> > + *
-> > + * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.=
-0.pdf
-> > + * Product Spec: http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1=
-=2Epdf
-> > + *
-> > + * Copyright 2018 Steffen G=F6rtz <contrib@steffen-goertz.de>
-> > + *
-> > + * This code is licensed under the GPL version 2 or later.  See
-> > + * the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#ifndef NRF51_H
-> > +#define NRF51_H
-> > +
-> > +#define NRF51_FLASH_BASE      0x00000000
-> > +#define NRF51_FICR_BASE       0x10000000
-> > +#define NRF51_FICR_SIZE       0x00000100
-> > +#define NRF51_UICR_BASE       0x10001000
-> > +#define NRF51_SRAM_BASE       0x20000000
-> > +
-> > +#define NRF51_IOMEM_BASE      0x40000000
-> > +#define NRF51_IOMEM_SIZE      0x20000000
-> > +
-> > +#define NRF51_UART_BASE       0x40002000
-> > +#define NRF51_TIMER_BASE      0x40008000
-> > +#define NRF51_TIMER_SIZE      0x00001000
-> > +#define NRF51_RNG_BASE        0x4000D000
-> > +#define NRF51_NVMC_BASE       0x4001E000
-> > +#define NRF51_GPIO_BASE       0x50000000
-> > +
-> > +#define NRF51_PRIVATE_BASE    0xF0000000
-> > +#define NRF51_PRIVATE_SIZE    0x10000000
-> > +
-> > +#define NRF51_PAGE_SIZE       1024
->=20
-> I'd keep this file in hw/arm (not include/...).
+Best regards,
+Edgar
 
-This header file avoids duplicating definitions in
-tests/microbit-test.c.
+Edgar E. Iglesias (1):
+  hw/arm: versal: Plug memory leaks
 
-How would you structure it differently?
+ hw/arm/xlnx-versal-virt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Stefan
+-- 
+2.17.1
 
---YZ5djTAD1cGYuMQK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcLyyiAAoJEJykq7OBq3PI6GUH/js0NDZi6qIts9vXgtVMhREZ
-sO05FQjiCnVnfJuBDqyUw3Or9JxnlPzdmoppEx4qxQNMWoknmnBmRk+WF0Jblh0o
-RZdmFIQd72XZTOALhVKhMVJhsbDManXm2g5F/OVlnqqLBBgL6nIOL5NpSuDSQ1/r
-43nKYfwdbrzubbvhig1IG1K2NekVkGEazKPmlC5PZbVuOaD1Y8qp2Zz4yZt7XO54
-X+Wja808NdtN2y2CxcxNCN8cWvSpeYNlkqEfDqjmRa77yrhRIIBchHNp8NtuJPTl
-EQSgnHuXKJf7emTuQvrePg5EWqQXFnefRNrtul33dQo7gpZg7OpMQwLjzPH/gUE=
-=mSUR
------END PGP SIGNATURE-----
-
---YZ5djTAD1cGYuMQK--

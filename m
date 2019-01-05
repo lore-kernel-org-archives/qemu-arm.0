@@ -1,99 +1,81 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1112095wrt;
-        Fri, 4 Jan 2019 15:20:22 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6wlfcG4c6gj+ihr9QOX5qQyiLEAatXI9owE4/Wf3/bg3vsaOjGZv3EXitHNNDyFEMjTiOv
-X-Received: by 2002:a1c:70b:: with SMTP id 11mr2787224wmh.74.1546644022637;
-        Fri, 04 Jan 2019 15:20:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546644022; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1709024wrt;
+        Sat, 5 Jan 2019 07:02:21 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7dSkBTCBxK3Sdz9Wz1RiZqLIEPrqnAPymKWy9ITMO/Xuj6ezC3A9MacXP8hJyWkxNsyxP3
+X-Received: by 2002:a1c:58ce:: with SMTP id m197mr4420192wmb.31.1546700541769;
+        Sat, 05 Jan 2019 07:02:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546700541; cv=none;
         d=google.com; s=arc-20160816;
-        b=CnJhTMe1ce2LsUuU45ad63/tK4ZA/vWGzuBKpprrTsyB7QtcuUEkqPzOdNfmk1HGdf
-         89e0SpP+gw7TtNAEDrXAvjr28RNZW0SXCU+SjwFb9+T/JG2RSq7BOL3tN8DN8kaBriVo
-         LSsSafL/QDeUMcGUcJkO2NT9QekdDPFn++CGDGmDtxarvwOrfmOu7LxMnmFHh4is4TeN
-         xxj6l45+/FevWa+cFqA4xGvY7uwHWO6Bvy187JP1IqCUqMNzemlX6pUmeFLsaGAUjQYE
-         scqwqitN+qDesQ91TSUjYPV3z4AodPiO7QgSTyg0dqQwMAzalY+A4EY3eQnVwtamon9U
-         o4rg==
+        b=QfZ+HLrU6u8aZste0gvDcoTlCh6y/wA1zt7JghElsZzZCS0dpPCg7jlU9xoCcbqQ6d
+         Ts2noCtDm7OiEPg2d1jLUKkrkh8RlL7gkiI3CuI9/Vp7CfZbp6t5VLkcMFKXBlouqyOW
+         k20pzWx8m4+jBkB/UzBFm++pNKFqC8w3IiDuhPphtqqx3XsTvV4GvblFIzOyR57jDa2F
+         dSJNLa6YL8eOdiExGrSIq7vbAIExhhqRTHl1LvWVgD3XvnjL7VMyauw1iEMMWMvNSR2d
+         NuM9u4u2WRz7gwZbzsAqIwh8RcSbpO87PXnyvtnwCnFALADUcMGbmA++GQIzk98ZUOpy
+         TdYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=LPlVYj0zfJn6pyyr2vc3Lubju6XJwf5dj7I6pLPLIis=;
-        b=ofwbKA5XvPZLJNKdLrx29MyojFNo3K4vYyFR928JlDPP4/w3chbyAkzfOeSi0JYInz
-         aBHL3R+SeDV4Ypo6uChPA7pi1o4/cIGhKKsrmWHje9u2c+i2s16JGVTitMhVdCf7pAOL
-         ncIoiw7yZTiL34DMPu/DEO3F9feOZXlSsfV1/xZSM2yjx6dXzG8aKkeOsjxfTHi15jBR
-         WT5Gwiq0PoUsmOaGolLUQAB0+712aK4Gok4fSi1xPaDRQBKTbeLYXX531P7xoYTiXjgt
-         zMqz2cGDXeM3BTTkIp6lbXAr1SIuGB+/aztUsZ2qAFC4rKtgB06C1F2mElusDBpQRp8H
-         TQjg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=kf7w0ccGqxOuDU0Cum2rNWgCy+94BGLbIu2gbye0vls=;
+        b=TqSZlTbjF1qw5+v3fVWrDWRnoHuAA/ceHnEGQUgm8o/VjkgOlp8WbUX1pyU4KXVY1+
+         3Kx4c0XOqjWPu5WPw8Ezb7I4OCXO9ugTE7P8fTBr8xTEwDjfWHTvN+7iN9+vtq/68Pam
+         BvuswxfpQnrj3+hlPc3dT2vC/6DRuicCmQimlO921DhPJYCxMMsLcqP8QCk/Ua0HC9CN
+         cUDV/HSQ4VRxr3HKYbTWhjvKBjDEYgi8WgbZ9mwGWXDiH7ChDUlq9G9xgn4q9TafFxrs
+         fBBVTikUFVgyvmXzRFmOfNkYYnxZk/a4ov8dByPVn/GhmEruoDVYmD0LAsspW0jKf6wj
+         90nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PapDSYnk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 70si713440wmy.162.2019.01.04.15.20.22
+        by mx.google.com with ESMTPS id c6si32872920wrw.25.2019.01.05.07.02.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 04 Jan 2019 15:20:22 -0800 (PST)
+        Sat, 05 Jan 2019 07:02:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PapDSYnk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:40223 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:36202 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gfYlJ-0007OL-Lf
-	for alex.bennee@linaro.org; Fri, 04 Jan 2019 18:20:21 -0500
-Received: from eggsout.gnu.org ([209.51.188.92]:38503 helo=eggs.gnu.org)
+	id 1gfnSu-0005hu-TE
+	for alex.bennee@linaro.org; Sat, 05 Jan 2019 10:02:20 -0500
+Received: from eggsout.gnu.org ([209.51.188.92]:43259 helo=eggs.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gfYl4-0007Ly-KO
-	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 18:20:07 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gfnSh-0005ff-Gl
+	for qemu-arm@nongnu.org; Sat, 05 Jan 2019 10:02:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gfYl3-0007oS-Qc
-	for qemu-arm@nongnu.org; Fri, 04 Jan 2019 18:20:06 -0500
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:35364)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1gfYl1-0007mF-O6; Fri, 04 Jan 2019 18:20:03 -0500
-Received: by mail-lj1-x244.google.com with SMTP id x85-v6so33706056ljb.2;
-	Fri, 04 Jan 2019 15:20:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=LPlVYj0zfJn6pyyr2vc3Lubju6XJwf5dj7I6pLPLIis=;
-	b=PapDSYnk3enpzSddxLbnG87iLMQtomxo3V2xoTAbrcP/QxKJrx/8W9h/DAsPw2U3uc
-	sN3t/yNYsOd4k1TE4v1JmSlfoo5mVZlT/guyZMvHO9GLVIl183pEb6fFKtNOWUvBSYDm
-	nPG7pTW7jHpFKONCNG9S6eRjDi05QMHcmBfqIQHoZQjZ7trYiVzWwyNKNQ0qAO6GkbNU
-	N0LYlx/1MB9JLmXGyucrhUI3UXIkYOovThtZORQSuIaJSBRh5WsUBpkieTyeKYRmQl4Y
-	ZmTUN+l+p1EK7elJjMWBLgrFLEeEwvLDnvGOZSQaUqkdgp/mUIp2NLu6u0WVFYpgUzQR
-	jbTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=LPlVYj0zfJn6pyyr2vc3Lubju6XJwf5dj7I6pLPLIis=;
-	b=PfnHAavTix/4I8EJxIBrm1nyDhnHO6bE7QgvjXD1qoTl3la0Gaqs9GXKdThKo89g7G
-	hoFekaVPgDZp90intvSemUOyHktyfppYaNN1lKkJNEnCy2FjsiqpT0vkRU8Xn447tqbh
-	SAClCvy21LF7+j+wSn+G6QXefbSQiU1gF0mWly/zsPVwajCUPJoFkwMHoUus2EYYdQ3e
-	sQfTc1QxVQDLKMgBg67JLBK8W8csOFAPot/N6G6Waheymn++s8I8UZSbYq5rBHICCQb9
-	WCJrJKfODPeeppxdN4WnQHiQrHqCQ41dtXtEoMqf1k6Bz0bU0PhS31wd9HOz8kyVgikD
-	yVNw==
-X-Gm-Message-State: AJcUukdJWaE0AwB02+FyyJ41+xRoFrVS1gMXErmXdiT/TG28ZjcgN6OL
-	jqJ7GnyCVryjzzfDCVpVgne0fop4vQ13MEqt0nU=
-X-Received: by 2002:a2e:131a:: with SMTP id
-	26-v6mr6353291ljt.107.1546644002166; 
-	Fri, 04 Jan 2019 15:20:02 -0800 (PST)
+	(envelope-from <stefanha@redhat.com>) id 1gfnSe-0000ea-6L
+	for qemu-arm@nongnu.org; Sat, 05 Jan 2019 10:02:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43864)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1gfnSd-0000cv-Un; Sat, 05 Jan 2019 10:02:04 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3FA40859FF;
+	Sat,  5 Jan 2019 15:02:01 +0000 (UTC)
+Received: from localhost (ovpn-116-33.ams2.redhat.com [10.36.116.33])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0C4205D6A9;
+	Sat,  5 Jan 2019 15:01:57 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Sat,  5 Jan 2019 14:44:29 +0000
+Message-Id: <20190105144429.8702-1-stefanha@redhat.com>
 MIME-Version: 1.0
-References: <20190104142812.20444-1-edgar.iglesias@gmail.com>
-	<20190104142812.20444-3-edgar.iglesias@gmail.com>
-In-Reply-To: <20190104142812.20444-3-edgar.iglesias@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 4 Jan 2019 15:19:35 -0800
-Message-ID: <CAKmqyKN0ow18Wkst--cJ8+6d2h-1xTsU-WakTXL2AvDkeavdDw@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 2/2] target/microblaze: Add
- props enabling exceptions on failed bus accesses
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Sat, 05 Jan 2019 15:02:01 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] arm: Stub out NRF51 TWI
+ magnetometer/accelerometer detection
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,84 +87,147 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
-	Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-	Luc Michel <luc.michel@greensocs.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
+	contrib@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
+	Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dnIzsP9KymPA
+X-TUID: 54XYpaHgZPh6
 
-On Fri, Jan 4, 2019 at 6:28 AM Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
->
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Add MicroBlaze CPU properties to enable exceptions on failed
-> bus accesses.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Recent microbit firmwares panic if the TWI magnetometer/accelerometer
+devices are not detected during startup.  We don't implement TWI (I2C)
+so let's stub out these devices just to let the firmware boot.
 
-Alistair
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Based-on: <20190103091119.9367-1-stefanha@redhat.com>
+---
+Steffen: Please post your Signed-off-by.  I did some minor cleanups so
+your patch can be merged.  Thanks!
 
-> ---
->  target/microblaze/cpu.c | 12 +++++++++++-
->  target/microblaze/cpu.h |  2 ++
->  2 files changed, 13 insertions(+), 1 deletion(-)
->
-> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-> index 49876b19b3..5596cd5485 100644
-> --- a/target/microblaze/cpu.c
-> +++ b/target/microblaze/cpu.c
-> @@ -202,7 +202,11 @@ static void mb_cpu_realizefn(DeviceState *dev, Error **errp)
->                          (cpu->cfg.use_barrel ? PVR2_USE_BARREL_MASK : 0) |
->                          (cpu->cfg.use_div ? PVR2_USE_DIV_MASK : 0) |
->                          (cpu->cfg.use_msr_instr ? PVR2_USE_MSR_INSTR : 0) |
-> -                        (cpu->cfg.use_pcmp_instr ? PVR2_USE_PCMP_INSTR : 0);
-> +                        (cpu->cfg.use_pcmp_instr ? PVR2_USE_PCMP_INSTR : 0) |
-> +                        (cpu->cfg.dopb_bus_exception ?
-> +                                                 PVR2_DOPB_BUS_EXC_MASK : 0) |
-> +                        (cpu->cfg.iopb_bus_exception ?
-> +                                                 PVR2_IOPB_BUS_EXC_MASK : 0);
->
->      env->pvr.regs[5] |= cpu->cfg.dcache_writeback ?
->                                          PVR5_DCACHE_WRITEBACK_MASK : 0;
-> @@ -265,6 +269,12 @@ static Property mb_properties[] = {
->      DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, cfg.dcache_writeback,
->                       false),
->      DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
-> +    /* Enables bus exceptions on failed data accesses (load/stores).  */
-> +    DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
-> +                     cfg.dopb_bus_exception, false),
-> +    /* Enables bus exceptions on failed instruction fetches.  */
-> +    DEFINE_PROP_BOOL("iopb-bus-exception", MicroBlazeCPU,
-> +                     cfg.iopb_bus_exception, false),
->      DEFINE_PROP_STRING("version", MicroBlazeCPU, cfg.version),
->      DEFINE_PROP_UINT8("pvr", MicroBlazeCPU, cfg.pvr, C_PVR_FULL),
->      DEFINE_PROP_END_OF_LIST(),
-> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-> index 03ca91007d..792bbc97c7 100644
-> --- a/target/microblaze/cpu.h
-> +++ b/target/microblaze/cpu.h
-> @@ -308,6 +308,8 @@ struct MicroBlazeCPU {
->          bool use_mmu;
->          bool dcache_writeback;
->          bool endi;
-> +        bool dopb_bus_exception;
-> +        bool iopb_bus_exception;
->          char *version;
->          uint8_t pvr;
->      } cfg;
-> --
-> 2.17.1
->
->
+ include/hw/arm/nrf51.h     |  1 +
+ include/hw/arm/nrf51_soc.h |  1 +
+ hw/arm/nrf51_soc.c         | 62 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 64 insertions(+)
+
+diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
+index 175bb6c301..5411121b66 100644
+--- a/include/hw/arm/nrf51.h
++++ b/include/hw/arm/nrf51.h
+@@ -25,6 +25,7 @@
+ #define NRF51_IOMEM_SIZE      0x20000000
+=20
+ #define NRF51_UART_BASE       0x40002000
++#define NRF51_TWI_BASE        0x40003000
+ #define NRF51_TIMER_BASE      0x40008000
+ #define NRF51_TIMER_SIZE      0x00001000
+ #define NRF51_RNG_BASE        0x4000D000
+diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+index e06f0304b4..fbdefc07e4 100644
+--- a/include/hw/arm/nrf51_soc.h
++++ b/include/hw/arm/nrf51_soc.h
+@@ -39,6 +39,7 @@ typedef struct NRF51State {
+     MemoryRegion sram;
+     MemoryRegion flash;
+     MemoryRegion clock;
++    MemoryRegion twi;
+=20
+     uint32_t sram_size;
+     uint32_t flash_size;
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 1630c27594..265438f916 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -32,6 +32,11 @@
+ #define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
+ #define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
+=20
++#define NRF51_TWI_EVENT_STOPPED 0x104
++#define NRF51_TWI_EVENT_RXDREADY 0x108
++#define NRF51_TWI_EVENT_TXDSENT 0x11c
++#define NRF51_TWI_REG_RXD 0x518
++
+ #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
+=20
+ static uint64_t clock_read(void *opaque, hwaddr addr, unsigned int size)
+@@ -53,6 +58,58 @@ static const MemoryRegionOps clock_ops =3D {
+     .write =3D clock_write
+ };
+=20
++/* Two-Wire Interface (TWI) is not implemented but the microbit-dal firm=
+ware
++ * panics if the TWI accelerometer and magnetometer WHO_AM_I registers c=
+annot
++ * be read.  Stub out this read sequence so microbit-dal starts up.
++ */
++static uint32_t twi_read_sequence[] =3D {0x5A, 0x5A, 0x40};
++static uint32_t twi_regs[0x1000 / 4];
++
++static uint64_t twi_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    static int i;
++    uint64_t data =3D 0x00;
++
++    switch (addr) {
++    case NRF51_TWI_EVENT_STOPPED:
++        data =3D 0x01;
++        break;
++    case NRF51_TWI_EVENT_RXDREADY:
++        data =3D 0x01;
++        break;
++    case NRF51_TWI_EVENT_TXDSENT:
++        data =3D 0x01;
++        break;
++    case NRF51_TWI_REG_RXD:
++        data =3D twi_read_sequence[i];
++        if (i < ARRAY_SIZE(twi_read_sequence)) {
++            i++;
++        }
++        break;
++    default:
++        data =3D twi_regs[addr / 4];
++        break;
++    }
++
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u] =3D %" PRIx32 =
+"\n",
++                  __func__, addr, size, (uint32_t)data);
++
++
++    return data;
++}
++
++static void twi_write(void *opaque, hwaddr addr, uint64_t data,
++                      unsigned int size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
+u]\n",
++                  __func__, addr, data, size);
++    twi_regs[addr / 4] =3D data;
++}
++
++static const MemoryRegionOps twi_ops =3D {
++    .read =3D twi_read,
++    .write =3D twi_write
++};
+=20
+ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+ {
+@@ -156,6 +213,11 @@ static void nrf51_soc_realize(DeviceState *dev_soc, =
+Error **errp)
+     memory_region_add_subregion_overlap(&s->container,
+                                         NRF51_IOMEM_BASE, &s->clock, -1)=
+;
+=20
++    memory_region_init_io(&s->twi, NULL, &twi_ops, NULL,
++                          "nrf51_soc.twi", 0x1000);
++    memory_region_add_subregion_overlap(&s->container,
++                                        NRF51_TWI_BASE, &s->twi, -1);
++
+     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
+                                 NRF51_IOMEM_SIZE);
+     create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
+--=20
+2.20.1
+

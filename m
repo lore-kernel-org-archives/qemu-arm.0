@@ -1,84 +1,107 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2812952wrt;
-        Sun, 6 Jan 2019 13:03:45 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4C4j5pr23+xtnoZIzaFEtueXRFxLRpqpXbWToXy+aI/7TMD1CwTn1JA3xUl9AaPShHrGN1
-X-Received: by 2002:a5d:4202:: with SMTP id n2mr49558241wrq.260.1546808625055;
-        Sun, 06 Jan 2019 13:03:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546808625; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2849889wrt;
+        Sun, 6 Jan 2019 14:10:59 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5v5+5RJ1qil5uxc0bD0lx1XRAAfNL9CMOSDdZefJTcxRRU/pWcBPEAGNXQjE6l/blqitp3
+X-Received: by 2002:a1c:2b86:: with SMTP id r128mr1744863wmr.100.1546812659183;
+        Sun, 06 Jan 2019 14:10:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546812659; cv=none;
         d=google.com; s=arc-20160816;
-        b=WHf+nDPB8VMDcYda1A6JGPkHFNded595oa8DNskuWqScuDEmFQoEDhyXCytFTrs/MX
-         N52zBJtHo3ZLCVIMhYW5ZYErB54w97RzYxJN2dgsX5rcMNvOKeGA5JzuasD9MUE9vsrv
-         v3TWfdBm91B8o35uQFX/zwc8f0R+LVo1VJjjBuRGbGuUkn61flZhB5uEu4Glp6qIaBl1
-         mHtM6DmtuairSknaHORnW16mN/iApYIBlfMvd4NvafEJkW0qG3qVxeEgUhXoyF77hQ09
-         mhSiuL8AEIfFUkl4x1D9XluSE3fb9vGALExOXKYwCIKT0ludSS8G5OiWOxsbYpC3ggFW
-         Yj/g==
+        b=X5HfaEvyC1+j1qEHNAyDci9S2PVNvElklv44Z04bAPzEO2qHfj8KA+tl8Ok311Aokv
+         HNb9jIJkfG/2bp7Hx58xvYwnytz+WfzZPvzlVAT3A6oAbO0M9XUwffUyF6PxMArTtPoj
+         BOO2R2m0ylNuD9mtL3wcAyprXSGdNcwRyThr/bYzN/yEl6n+uEkWxjzWqIdrKurBy1np
+         M4SUhS6jb6XymBLoYyP3QOujKBbGEy5y0KA6QeSI7GQGQYHxEs+Ojx44XxbJ3oVvIBRd
+         aA1MiIeBWhUyBIzLW0D6QGXGfZq0zyykrnz9PDp+ELqulm96oMjnRxy+p1vJr1R9t0le
+         IXXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=ofL1x/E0LzQa7uXEkHR3mkzGdRI9SLZkvJxySh6AEbQ=;
-        b=kIS86bNjNyZUJ4zURYac9N4tBKg5IBGMTIoEk902QLPb5HQNHxaeoaYZ9H/gie48cH
-         uuhtmi4v2BQvSmTvXpe52MNBQ8zzXY9N17Uqa1rM3x0vYcUgsGI3zEk8PYvYjJgB89SH
-         eDkS7Kvf+eGnQyWr9rB4jFp6WTcvZ5CYPBlPhl+LW8tdSlm43mbuoI4XdwYRx+HkvQ/g
-         3Ye5hsV2aJDf41AjGbAfZuIQiyXK68HmW9V/VSCSpXbixg/eoEqesX8wKVytz7WcSKjQ
-         GAec0lZj3HncB0OEUdf1PfxQGrDJJxUcmzeWXfzU5uLsdfzmc/owQ5mCYg8YUDzIaSa+
-         VFXg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:from:to:dkim-signature;
+        bh=iQ9T46e91ARm6CPDv9Tgj7uRRERtmnvfaVaRPTfnb5I=;
+        b=j11wybw25F53ly0sX1HtIK5eU21q8mj2zGHrGNXFG73p5g2QbW/okcnML1RFcc0Gsq
+         l6Mda7YK/rNMXLswYbk0qP+rgMH/EjtT/4aWtPZDQynQtamc+Ql7FZ3QfitvGi5SHz7h
+         Z1y6o1xnNl2rc9YV5C+Wew8sBWmHRKCfhs/GCTkzdbRBF/MQ580n8UTb0IDJx9wO8CMJ
+         WYxSXl5sUWwUGUR/3vNZlYHR9u7AzlHfNlB4CCRkRX1YZ7pXiNtPg+1EuPuCftE8OyVD
+         NVgt54kWtWANcgPqfpQG/Zb+wZAyaLJfTztk8ZJ+8wF2Vu40FzzaQBvOYD/wHqYUqjPi
+         StFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@plaes.org header.s=mail header.b=d8KlgslX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YE/IA38L";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f17si34797198wru.378.2019.01.06.13.03.44
+Received: from listsout.gnu.org (listsout.gnu.org. [208.118.235.17])
+        by mx.google.com with ESMTPS id s17si34076624wrr.177.2019.01.06.14.10.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 13:03:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 06 Jan 2019 14:10:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) client-ip=208.118.235.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@plaes.org header.s=mail header.b=d8KlgslX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:46937 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="YE/IA38L";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 208.118.235.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:38708 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggFaB-00077a-MH
-	for alex.bennee@linaro.org; Sun, 06 Jan 2019 16:03:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59928)
+	id 1ggGdG-0000jD-40
+	for alex.bennee@linaro.org; Sun, 06 Jan 2019 17:10:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43511)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <plaes@plaes.org>) id 1ggFa2-00075P-G5
-	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 16:03:36 -0500
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1ggGd7-0000j5-5m
+	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 17:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <plaes@plaes.org>) id 1ggFZy-0001kN-S1
-	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 16:03:33 -0500
-Received: from plaes.org ([188.166.43.21]:34684)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <plaes@plaes.org>)
-	id 1ggFZy-0001jv-HD; Sun, 06 Jan 2019 16:03:30 -0500
-Received: from plaes.org (localhost [127.0.0.1])
-	by plaes.org (Postfix) with ESMTPSA id 26B8340633;
-	Sun,  6 Jan 2019 21:03:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=plaes.org; s=mail;
-	t=1546808608; bh=0o81Af6bm4CT13oUa3ZgHHws5nOQ68j5oWagVTZlQTc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d8KlgslXU9CqNrlu5zRIQ+l74mlyItfn8OKktMKU1dZjEyxV5tOC2DSOX9Pytk8b/
-	TscKEcn+ZLbaAfojZOBh4VlPLPHFJ2oUhwupm79+D3uQH11ynDaxR/ZFDA6yBUrgrj
-	846rpHeChTZmcJkSia+GxHhncdAnjqGWEOOLBxoxqE/tlmBIuqBmffXP7h+V3thIh9
-	NKYxFZxIvSkCITXSgZDEgJISi1xxyK35H5aMvNdbrEGOqJKYSuUv6bVGPcv0gsi6le
-	lbipGmTGO7/UPi8OX5vKtbQVt6GtTicxlXIJpuiYCvbundLxuEs0GMqefJe0OLL2yr
-	nizhUB3VMUHsg==
-Date: Sun, 6 Jan 2019 21:03:27 +0000
-From: Priit Laes <plaes@plaes.org>
-To: Alistair Francis <alistair23@gmail.com>
-Message-ID: <20190106210327.rbuob5kz2ezxxi7q@plaes.org>
-References: <20181226190702.403-1-plaes@plaes.org>
-	<CAKmqyKMBwBjV-8b=kNjqqWkG08a-dnLPLUxwCNw73q7TpOjEgA@mail.gmail.com>
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1ggGd5-0004cN-W3
+	for qemu-arm@nongnu.org; Sun, 06 Jan 2019 17:10:49 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:37668)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <nicholas.a.hudson@gmail.com>)
+	id 1ggGd5-0004cH-IB; Sun, 06 Jan 2019 17:10:47 -0500
+Received: by mail-wr1-x442.google.com with SMTP id s12so41351125wrt.4;
+	Sun, 06 Jan 2019 14:10:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=to:cc:from:subject:message-id:date:user-agent:mime-version
+	:content-language:content-transfer-encoding;
+	bh=iQ9T46e91ARm6CPDv9Tgj7uRRERtmnvfaVaRPTfnb5I=;
+	b=YE/IA38LdxCp4plbYBP7dzXkxgmMIWvQXWjOZSHdM5uESzXcCwuHviJcyC9rhVBMfv
+	x0MzNiMGfz9RhQ6bRenBR5vm+o7kvM3vI5HcuF9nZodLJAAL3Fi2jjwDIXlhanQ0Iu4c
+	WELJsveIVudpYG35US8Jc1I3BLBJv4LZc0y2G1Dat0xr39Zjtq4jLRYeRZ+ajVpjtdu0
+	ieLna8cnrH/p1PdcYR78go5MfBytWLalFqLbByPMPKeLEfwYxSnXYzPkCx9V08rvhfcm
+	Bc+IDfATBKPMh3kTkKkxfA3VKFirYB0YhsQ88DNd7OKbmUw4qcuIyUszLg5u6dER0J+8
+	D7XQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+	:mime-version:content-language:content-transfer-encoding;
+	bh=iQ9T46e91ARm6CPDv9Tgj7uRRERtmnvfaVaRPTfnb5I=;
+	b=hOSi2QJhtb/kwlkf2RCN6B/6+3Bpumwn1KzloySG5xUFiLzlREYcP7Jhg01MXvmaQL
+	74gt5H4SKWCgG2VmLRpnEy/E+xMFb9FPtcrelvUaUgBvz5m0i+oAIvvNgUCDrug5o1m7
+	5F3WD7AxD7uf81UBBEkrVuP+xlrqLV9agV2y5mq+OiQBz+256FaEm6rl2zLQThTr/CD/
+	FyMvd35+YC4jTv/9Cx/wFE9/15lbxpIncEh0cw6YFwR46RfacJbEY3GmQkxoJEeIXFit
+	HiZCUE2GkwLSdC+/dciqkp2DDIP7MHCXhOZtHpH92tuNP6s0pYhOhSYPyYzAdZFNxrXp
+	6bng==
+X-Gm-Message-State: AJcUukcNxd27EBmJ652bgcXFIyOV8bTlZo9hTVxRft7W4QaoyoBn/fqW
+	Sh/nXX5fYEqKzUfCotyyRKQ=
+X-Received: by 2002:adf:90e5:: with SMTP id i92mr47281657wri.210.1546812645601;
+	Sun, 06 Jan 2019 14:10:45 -0800 (PST)
+Received: from ?IPv6:2a02:c7d:8625:5a01:7503:9d7c:2958:5e7d?
+	([2a02:c7d:8625:5a01:7503:9d7c:2958:5e7d])
+	by smtp.gmail.com with ESMTPSA id
+	o4sm46464221wrq.66.2019.01.06.14.10.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 06 Jan 2019 14:10:45 -0800 (PST)
+To: QEMU Developers <qemu-devel@nongnu.org>
+From: Nick Hudson <nicholas.a.hudson@gmail.com>
+Message-ID: <d19529f5-841e-ea06-fe7d-86ccfd528817@gmail.com>
+Date: Sun, 6 Jan 2019 22:10:42 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAKmqyKMBwBjV-8b=kNjqqWkG08a-dnLPLUxwCNw73q7TpOjEgA@mail.gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.166.43.21
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] stm32f103: Add initial
- skeleton of STM32 F103 SoC
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH v4] Support u-boot noload images for arm as used
+ by, NetBSD/evbarm GENERIC kernel.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,343 +113,193 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r2zoUg7H4uwA
+X-TUID: caLdWjfMGGQT
 
-On Thu, Jan 03, 2019 at 01:33:08PM -0800, Alistair Francis wrote:
-> On Wed, Dec 26, 2018 at 11:08 AM Priit Laes <plaes@plaes.org> wrote:
-> >
-> > Initial barebone SoC implementation for STM32F103
-> > with "Blue Pill" board source for testing.
-> >
-> > Code is based on both nrf51/microbit and stm32f205.
-> >
-> > Although code loads and seems to be at the right
-> > addresses it does not yet run:
-> >
-> > ./arm-softmmu/qemu-system-arm -nographic \
-> >         -machine stm32bluepill \
-> >         -kernel \
-> >         libopencm3-miniblink/bin/stm32/bluepill.bin
-> > QEMU 3.1.50 monitor - type 'help' for more information
-> > (qemu) QEMU 3.1.50 monitor - type 'help' for more information
-> > (qemu) gdbserver
-> > Waiting for gdb connection on device 'tcp::1234'
-> >
-> > $ arm-none-eabi-gdb \
-> >         libopencm3-miniblink/bin/stm32/bluepill.elf
-> > (gdb) target remote tcp::1234
-> > Remote debugging using tcp::1234
-> > blocking_handler () at ../../cm3/vector.c:103
-> > 103     {
-> > (gdb) bt
-> > Backtrace stopped: previous frame identical to this frame (corrupt stack?)
-> > (gdb) info line
-> > Line 103 of "../../cm3/vector.c" starts at address 0x8000380 \
-> >         <blocking_handler> and ends at 0x8000382 <null_handler>.
-> >
-> > Any ideas?
-> 
-> Have you tried running QEMU with the -d option (-d in_asm is a good
-> place to start)? Does that shed any light on what is happening?
 
-Thanks for the tips, it actually was working, but just went into
-infinite loop (which is probably caused by unimplemented peripheral
-register access, or something else).
+noload kernels are loaded with the u-boot image header and as a result
+the header size needs adding to the entry point.  Fake up a hdr so the
+kernel image is loaded at the right address and the entry point is
+adjusted appropriately.
 
-Also, what helped in addition to (-d in_asm):
--S freezes CPU at startup (so one can singlestep with gdb)
--s starts gdbserver on tcp::1234
+The default location for the uboot file is 32MiB above bottom of DRAM.
+This matches the recommendation in Documentation/arm/Booting.
 
-Thanks! :)
-> 
-> Alistair
-> 
-> >
-> > Signed-off-by: Priit Laes <plaes@plaes.org>
-> > ---
-> >  default-configs/arm-softmmu.mak |  1 +
-> >  hw/arm/Makefile.objs            |  1 +
-> >  hw/arm/stm32f103_blue_pill.c    | 78 ++++++++++++++++++++++++++++
-> >  hw/arm/stm32f103_soc.c          | 92 +++++++++++++++++++++++++++++++++
-> >  include/hw/arm/stm32f103_soc.h  | 54 +++++++++++++++++++
-> >  5 files changed, 226 insertions(+)
-> >  create mode 100644 hw/arm/stm32f103_blue_pill.c
-> >  create mode 100644 hw/arm/stm32f103_soc.c
-> >  create mode 100644 include/hw/arm/stm32f103_soc.h
-> >
-> > diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> > index 2420491aac..7a55e523e1 100644
-> > --- a/default-configs/arm-softmmu.mak
-> > +++ b/default-configs/arm-softmmu.mak
-> > @@ -95,6 +95,7 @@ CONFIG_RASPI=y
-> >  CONFIG_REALVIEW=y
-> >  CONFIG_ZAURUS=y
-> >  CONFIG_ZYNQ=y
-> > +CONFIG_STM32F103_SOC=y
-> >  CONFIG_STM32F2XX_TIMER=y
-> >  CONFIG_STM32F2XX_USART=y
-> >  CONFIG_STM32F2XX_SYSCFG=y
-> > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> > index 50c7b4a927..7f59a9349d 100644
-> > --- a/hw/arm/Makefile.objs
-> > +++ b/hw/arm/Makefile.objs
-> > @@ -24,6 +24,7 @@ obj-$(CONFIG_OMAP) += omap1.o omap2.o
-> >  obj-$(CONFIG_STRONGARM) += strongarm.o
-> >  obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
-> >  obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
-> > +obj-$(CONFIG_STM32F103_SOC) += stm32f103_soc.o stm32f103_blue_pill.o
-> >  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
-> >  obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
-> >  obj-$(CONFIG_XLNX_VERSAL) += xlnx-versal.o xlnx-versal-virt.o
-> > diff --git a/hw/arm/stm32f103_blue_pill.c b/hw/arm/stm32f103_blue_pill.c
-> > new file mode 100644
-> > index 0000000000..09dd69aa71
-> > --- /dev/null
-> > +++ b/hw/arm/stm32f103_blue_pill.c
-> > @@ -0,0 +1,78 @@
-> > +/*
-> > + * STM32F103C8 Blue Pill development board Machine Model
-> > + *
-> > + * Copyright (c) 2018 Priit Laes <plaes@plaes.org>
-> > + *
-> > + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> > + * of this software and associated documentation files (the "Software"), to deal
-> > + * in the Software without restriction, including without limitation the rights
-> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> > + * copies of the Software, and to permit persons to whom the Software is
-> > + * furnished to do so, subject to the following conditions:
-> > + *
-> > + * The above copyright notice and this permission notice shall be included in
-> > + * all copies or substantial portions of the Software.
-> > + *
-> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> > + * THE SOFTWARE.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qapi/error.h"
-> > +#include "hw/boards.h"
-> > +#include "hw/arm/arm.h"
-> > +#include "exec/address-spaces.h"
-> > +
-> > +#include "hw/arm/stm32f103_soc.h"
-> > +
-> > +typedef struct {
-> > +    MachineState parent;
-> > +
-> > +    STM32F103State stm32f103;
-> > +} STM32BluePillMachineState;
-> > +
-> > +#define TYPE_STM32BLUEPILL_MACHINE MACHINE_TYPE_NAME("stm32bluepill")
-> > +
-> > +#define STM32BLUEPILL_MACHINE(obj) \
-> > +    OBJECT_CHECK(STM32BluePillMachineState, obj, TYPE_STM32BLUEPILL_MACHINE)
-> > +
-> > +static void stm32bluepill_init(MachineState *machine)
-> > +{
-> > +    STM32BluePillMachineState *s = STM32BLUEPILL_MACHINE(machine);
-> > +    Object *soc = OBJECT(&s->stm32f103);
-> > +
-> > +    sysbus_init_child_obj(OBJECT(machine), "stm32f103-soc", soc,
-> > +                          sizeof(s->stm32f103), TYPE_STM32F103_SOC);
-> > +    object_property_set_bool(soc, true, "realized", &error_fatal);
-> > +
-> > +    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> > +                       FLASH_SIZE);
-> > +}
-> > +
-> > +static void stm32bluepill_machine_class_init(ObjectClass *oc, void *data)
-> > +{
-> > +    MachineClass *mc = MACHINE_CLASS(oc);
-> > +
-> > +    mc->desc = "STM32F103 Blue Pill development board";
-> > +    mc->init = stm32bluepill_init;
-> > +    mc->max_cpus = 1;
-> > +}
-> > +
-> > +static const TypeInfo stm32bluepill_info = {
-> > +    .name = TYPE_STM32BLUEPILL_MACHINE,
-> > +    .parent = TYPE_MACHINE,
-> > +    .instance_size = sizeof(STM32BluePillMachineState),
-> > +    .class_init = stm32bluepill_machine_class_init,
-> > +};
-> > +
-> > +static void stm32bluepill_machine_init(void)
-> > +{
-> > +    type_register_static(&stm32bluepill_info);
-> > +}
-> > +
-> > +type_init(stm32bluepill_machine_init);
-> > diff --git a/hw/arm/stm32f103_soc.c b/hw/arm/stm32f103_soc.c
-> > new file mode 100644
-> > index 0000000000..3093bce4ea
-> > --- /dev/null
-> > +++ b/hw/arm/stm32f103_soc.c
-> > @@ -0,0 +1,92 @@
-> > +/*
-> > + * STM32 F103 SoC (or MCU)
-> > + *
-> > + * Copyright 2018 Priit Laes <plaes@plaes.org>
-> > + *
-> > + * This code is licensed under the GPL version 2 or later.  See
-> > + * the COPYING file in the top-level directory.
-> > + */
-> > +#include "qemu/osdep.h"
-> > +#include "qapi/error.h"
-> > +#include "hw/sysbus.h"
-> > +#include "exec/address-spaces.h"
-> > +
-> > +#include "hw/arm/stm32f103_soc.h"
-> > +
-> > +#define FLASH_BASE      0x08000000
-> > +#define SRAM_BASE       0x20000000
-> > +
-> > +static void stm32f103_soc_init(Object *obj)
-> > +{
-> > +    STM32F103State *s = STM32F103_SOC(obj);
-> > +
-> > +    sysbus_init_child_obj(obj, "armv7m", &s->cpu, sizeof(s->cpu),
-> > +                      TYPE_ARMV7M);
-> > +}
-> > +
-> > +static void stm32f103_soc_realize(DeviceState *dev_soc, Error **errp)
-> > +{
-> > +    STM32F103State *s = STM32F103_SOC(dev_soc);
-> > +    Error *err = NULL;
-> > +
-> > +    /*
-> > +     * XXX: Region 0x1FFF F000 - 0x1FFF F7FF is called "System Memory"
-> > +     * containing boot loader used to reprogram flash by using USART1.
-> > +     */
-> > +    MemoryRegion *system_memory = get_system_memory();
-> > +
-> > +    memory_region_init_rom(&s->flash, NULL, "stm32.flash", FLASH_SIZE,
-> > +                           &error_fatal);
-> > +    memory_region_add_subregion(system_memory, FLASH_BASE, &s->flash);
-> > +    /*
-> > +     * TODO: based on BOOT pin, 0x00000000 - 0x0007FFFF is aliased to
-> > +     * either Flash or system memory. We currently hardcode it to flash.
-> > +     */
-> > +    memory_region_init_alias(&s->flash_alias, NULL, "stm32.flash_alias",
-> > +                             &s->flash, 0, FLASH_SIZE);
-> > +    memory_region_add_subregion(system_memory, 0, &s->flash_alias);
-> > +
-> > +    memory_region_init_ram(&s->sram, NULL, "stm32.sram", SRAM_SIZE,
-> > +                           &error_fatal);
-> > +    memory_region_add_subregion(system_memory, SRAM_BASE, &s->sram);
-> > +
-> > +    qdev_prop_set_bit(DEVICE(&s->cpu), "enable-bitband", true);
-> > +    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 80);
-> > +    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
-> > +
-> > +    object_property_set_link(OBJECT(&s->cpu), OBJECT(system_memory),
-> > +                                    "memory", &error_abort);
-> > +    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-> > +    if (err != NULL) {
-> > +        error_propagate(errp, err);
-> > +        return;
-> > +    }
-> > +}
-> > +
-> > +static Property stm32f103_soc_properties[] = {
-> > +    DEFINE_PROP_UINT32("flash-size", STM32F103State, flash_size, FLASH_SIZE),
-> > +    DEFINE_PROP_UINT32("sram-size", STM32F103State, sram_size, SRAM_SIZE),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> > +
-> > +static void stm32f103_soc_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc = DEVICE_CLASS(klass);
-> > +
-> > +    dc->props   = stm32f103_soc_properties;
-> > +    dc->realize = stm32f103_soc_realize;
-> > +}
-> > +
-> > +static const TypeInfo stm32f103_soc_info = {
-> > +    .name          = TYPE_STM32F103_SOC,
-> > +    .parent        = TYPE_SYS_BUS_DEVICE,
-> > +    .instance_size = sizeof(STM32F103State),
-> > +    .instance_init = stm32f103_soc_init,
-> > +    .class_init    = stm32f103_soc_class_init,
-> > +};
-> > +
-> > +static void stm32f103_soc_types(void)
-> > +{
-> > +    type_register_static(&stm32f103_soc_info);
-> > +}
-> > +type_init(stm32f103_soc_types)
-> > diff --git a/include/hw/arm/stm32f103_soc.h b/include/hw/arm/stm32f103_soc.h
-> > new file mode 100644
-> > index 0000000000..d6b2eb9c57
-> > --- /dev/null
-> > +++ b/include/hw/arm/stm32f103_soc.h
-> > @@ -0,0 +1,54 @@
-> > +/*
-> > + * STM32 F103 SoC (or MCU)
-> > + *
-> > + * Copyright (c) 2018 Priit Laes <plaes@plaes.org>
-> > + *
-> > + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> > + * of this software and associated documentation files (the "Software"), to deal
-> > + * in the Software without restriction, including without limitation the rights
-> > + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> > + * copies of the Software, and to permit persons to whom the Software is
-> > + * furnished to do so, subject to the following conditions:
-> > + *
-> > + * The above copyright notice and this permission notice shall be included in
-> > + * all copies or substantial portions of the Software.
-> > + *
-> > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> > + * THE SOFTWARE.
-> > + */
-> > +
-> > +#ifndef HW_ARM_STM32F103_SOC_H
-> > +#define HW_ARM_STM32F103_SOC_H
-> > +
-> > +#include "hw/arm/armv7m.h"
-> > +
-> > +#define TYPE_STM32F103_SOC "stm32f103-soc"
-> > +#define STM32F103_SOC(obj) \
-> > +    OBJECT_CHECK(STM32F103State, (obj), TYPE_STM32F103_SOC)
-> > +
-> > +/* TODO: flash/sram sizes are for STM32F103C8 part. */
-> > +#define FLASH_SIZE     (64 * 1024)
-> > +#define SRAM_SIZE      (20 * 1024)
-> > +
-> > +typedef struct STM32F103State {
-> > +    SysBusDevice parent_obj;
-> > +
-> > +    ARMv7MState cpu;
-> > +
-> > +    uint32_t sram_size;
-> > +    uint32_t flash_size;
-> > +    MemoryRegion sram;
-> > +    MemoryRegion flash;
-> > +    /* XXX: find better name */
-> > +    MemoryRegion flash_alias;
-> > +
-> > +    /* TODO: Peripherals */
-> > +
-> > +} STM32F103State;
-> > +
-> > +#endif /* HW_ARM_STM32F103_SOC_H */
-> > --
-> > 2.20.1
-> >
-> >
+Clarify the load_uimage API to state the passing of a load address when an
+image doesn't specify one, or when loading a ramdisk is expected.
+
+Adjust callers of load_uimage, etc.
+---
+ hw/arm/boot.c          |  8 +++++---
+ hw/core/loader.c       | 19 ++++++++++++++++---
+ hw/core/uboot_image.h  |  1 +
+ hw/microblaze/boot.c   |  2 +-
+ hw/nios2/boot.c        |  2 +-
+ hw/ppc/e500.c          |  1 +
+ hw/ppc/ppc440_bamboo.c |  2 +-
+ hw/ppc/sam460ex.c      |  2 +-
+ include/hw/loader.h    |  7 ++++++-
+ 9 files changed, 33 insertions(+), 11 deletions(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 94fce12802..c7a67af7a9 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -30,8 +30,9 @@
+  * Documentation/arm/Booting and Documentation/arm64/booting.txt
+  * They have different preferred image load offsets from system RAM base.
+  */
+-#define KERNEL_ARGS_ADDR 0x100
+-#define KERNEL_LOAD_ADDR 0x00010000
++#define KERNEL_ARGS_ADDR   0x100
++#define KERNEL_NOLOAD_ADDR 0x02000000
++#define KERNEL_LOAD_ADDR   0x00010000
+ #define KERNEL64_LOAD_ADDR 0x00080000
+ 
+ #define ARM64_TEXT_OFFSET_OFFSET    8
+@@ -1082,7 +1083,8 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
+     }
+     entry = elf_entry;
+     if (kernel_size < 0) {
+-        kernel_size = load_uimage_as(info->kernel_filename, &entry, NULL,
++        uint64_t loadaddr = info->loader_start + KERNEL_NOLOAD_ADDR;
++        kernel_size = load_uimage_as(info->kernel_filename, &entry, &loadaddr,
+                                      &is_linux, NULL, NULL, as);
+     }
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && kernel_size < 0) {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index fa41842280..c7182dfa64 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -613,13 +613,26 @@ static int load_uboot_image(const char *filename, hwaddr *ep, hwaddr *loadaddr,
+         goto out;
+ 
+     if (hdr->ih_type != image_type) {
+-        fprintf(stderr, "Wrong image type %d, expected %d\n", hdr->ih_type,
+-                image_type);
+-        goto out;
++        if (!(image_type == IH_TYPE_KERNEL &&
++            hdr->ih_type == IH_TYPE_KERNEL_NOLOAD)) {
++            fprintf(stderr, "Wrong image type %d, expected %d\n", hdr->ih_type,
++                    image_type);
++            goto out;
++        }
+     }
+ 
+     /* TODO: Implement other image types.  */
+     switch (hdr->ih_type) {
++    case IH_TYPE_KERNEL_NOLOAD:
++        if (!loadaddr || *loadaddr == LOAD_UIMAGE_LOADADDR_INVALID) {
++            fprintf(stderr, "this image format (kernel_noload) cannot be "
++                    "loaded on this machine type");
++            goto out;
++        }
++
++        hdr->ih_load = *loadaddr + sizeof(*hdr);
++        hdr->ih_ep += hdr->ih_load;
++        /* fall through */
+     case IH_TYPE_KERNEL:
+         address = hdr->ih_load;
+         if (translate_fn) {
+diff --git a/hw/core/uboot_image.h b/hw/core/uboot_image.h
+index 34c11a70a6..608022de6e 100644
+--- a/hw/core/uboot_image.h
++++ b/hw/core/uboot_image.h
+@@ -124,6 +124,7 @@
+ #define IH_TYPE_SCRIPT		6	/* Script file			*/
+ #define IH_TYPE_FILESYSTEM	7	/* Filesystem Image (any type)	*/
+ #define IH_TYPE_FLATDT		8	/* Binary Flat Device Tree Blob	*/
++#define IH_TYPE_KERNEL_NOLOAD  14	/* OS Kernel Image (noload)	*/
+ 
+ /*
+  * Compression Types
+diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
+index 35bfeda7aa..489ab839b7 100644
+--- a/hw/microblaze/boot.c
++++ b/hw/microblaze/boot.c
+@@ -156,7 +156,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
+ 
+         /* If it wasn't an ELF image, try an u-boot image.  */
+         if (kernel_size < 0) {
+-            hwaddr uentry, loadaddr;
++            hwaddr uentry, loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+ 
+             kernel_size = load_uimage(kernel_filename, &uentry, &loadaddr, 0,
+                                       NULL, NULL);
+diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
+index 4bb5b601d3..ed5cb28e94 100644
+--- a/hw/nios2/boot.c
++++ b/hw/nios2/boot.c
+@@ -161,7 +161,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
+ 
+         /* If it wasn't an ELF image, try an u-boot image. */
+         if (kernel_size < 0) {
+-            hwaddr uentry, loadaddr;
++            hwaddr uentry, loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+ 
+             kernel_size = load_uimage(kernel_filename, &uentry, &loadaddr, 0,
+                                       NULL, NULL);
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index b20fea0dfc..0581e9e3d4 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -995,6 +995,7 @@ void ppce500_init(MachineState *machine)
+          * Hrm. No ELF image? Try a uImage, maybe someone is giving us an
+          * ePAPR compliant kernel
+          */
++        loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+         payload_size = load_uimage(filename, &bios_entry, &loadaddr, NULL,
+                                    NULL, NULL);
+         if (payload_size < 0) {
+diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
+index b8aa55d526..fc06191588 100644
+--- a/hw/ppc/ppc440_bamboo.c
++++ b/hw/ppc/ppc440_bamboo.c
+@@ -179,7 +179,7 @@ static void bamboo_init(MachineState *machine)
+     CPUPPCState *env;
+     uint64_t elf_entry;
+     uint64_t elf_lowaddr;
+-    hwaddr loadaddr = 0;
++    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+     target_long initrd_size = 0;
+     DeviceState *dev;
+     int success;
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index 4b051c0950..84ea592749 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -402,7 +402,7 @@ static void sam460ex_init(MachineState *machine)
+     CPUPPCState *env;
+     PPC4xxI2CState *i2c[2];
+     hwaddr entry = UBOOT_ENTRY;
+-    hwaddr loadaddr = 0;
++    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
+     target_long initrd_size = 0;
+     DeviceState *dev;
+     SysBusDevice *sbdev;
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 0a0ad808ea..84d6bb44b7 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -175,10 +175,15 @@ void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
+ int load_aout(const char *filename, hwaddr addr, int max_sz,
+               int bswap_needed, hwaddr target_page_size);
+ 
++#define LOAD_UIMAGE_LOADADDR_INVALID (-1)
++
+ /** load_uimage_as:
+  * @filename: Path of uimage file
+  * @ep: Populated with program entry point. Ignored if NULL.
+- * @loadaddr: Populated with the load address. Ignored if NULL.
++ * @loadaddr: load address if none specified in the image or when loading a ramdisk.
++ *            Populated with the the load address. Ignored if NULL or
++ *            LOAD_UIMAGE_LOADADDR_INVALID (images which do not specify a load address
++ *            will not be loadable).
+  * @is_linux: Is set to true if the image loaded is Linux. Ignored if NULL.
+  * @translate_fn: optional function to translate load addresses
+  * @translate_opaque: opaque data passed to @translate_fn
+-- 
+2.17.1
+

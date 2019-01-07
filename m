@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3163793wrt;
-        Sun, 6 Jan 2019 23:23:02 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6usGw4YASDE6RM3VN+zfYX2FD/32vCNLxXZyRMxZ+YBQZmk+6KGEjY7gSUryN+TxTipxUW
-X-Received: by 2002:adf:e3d0:: with SMTP id k16mr53369837wrm.223.1546845782436;
-        Sun, 06 Jan 2019 23:23:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546845782; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3166038wrt;
+        Sun, 6 Jan 2019 23:26:45 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5/r+k7dru6FiueChsWDf9sYcS6JJCiTSCuNlfIasdZWgu5qZDoWTav3MT9j6BqIc00MIEN
+X-Received: by 2002:adf:df01:: with SMTP id y1mr53160992wrl.127.1546846005001;
+        Sun, 06 Jan 2019 23:26:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546846004; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tz/dVhyNYul58SVH3tkVVfOFUlCGzf+RpeD6PHV4W3d4X7J2dDPuIt9KzUefaMcFzA
-         S5JbKBpy5awiX0ZZHCcKy5FXut56WF8gUoSFiy/VhNhy+OdI3Ke2PByI74dQZW754556
-         jkvXnBSaGGBTdtyYJ5gjVuS0pfE9JJq/lDz0fRxREnbXYnUJLawF6IyY8N0P138OSJdm
-         nCdx5yjeF0JlqIetKpUYkh+Nl+DU3vlgC09bykRwtGCufRjtEmKvq14Ei9Nok5aIwHZ2
-         fXcDHKFasHnWimPeRjo+3CHsYbGnTCUqiT4c4q5Xt1aZ2DlmYIJHYh5NmyBmVW4J/mAp
-         CCZA==
+        b=aQRbvWIEYNpbilXW57noSpwOxEEM8qK3r2EnR5zR+bU9HS5MMVC/AbkXRrA34+Oiu/
+         2nix2BWQj6x959STLwGmhl8EIXWcNJKnTM1HsQfQesnnX02rPGh0MjEaHT4/jG5cRY8L
+         w3H3sg959lGNJFi/LR6LYScja7u9MMI407J9X73iRgOYVGXX+JnkKdhpdJC6r6dz2kSP
+         M+C+EyTNCC6Ol5/ksvUtq9R3sM8RscdIIxDCjiQRnwNnERe56dd5U03pUNnKZi/TmK+Y
+         GFgSHs0jzrXD2dHpmkjPYQcBb4DnaR1xRkHFdVBd8Z51AzPIi+9OU/XVAjWag3YtJnxc
+         drvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=UXFtLxpbHwqS7aLRaZiEykMtwPvX5HsyyvDqdEJupF8=;
-        b=Z9OrZ665jiori+Fca2ZAKSCg6R/et2EC9Eupj+lAK/cijezNjoA6aGmSCL86rhydPd
-         dm7EwkgUEzgFBZkrXKG3AqpuaVa+b8976dliCioEhQJqdbTig0EShWR9S4aJaiCAmixn
-         QAEbvVNEzBpXdKHNoOXQHEGm0B601AG2JdaLXHlwdUv8AfeQUeL3sLammI7sgzGCJbfC
-         iINeo/53iVa6tl0iyGgaZPO5JRmUIdsPVgzjd+G5naZYmYQ4c/nO2MkA/qHbSKSEvDY4
-         zazRKhziKu4/b4hQKR/CLchB2bbvJiwW+HVuJ1V67Ls20/WPAXkoPPDi+0DAAgfkOlnf
-         kgUA==
+        bh=YKCg+XbxgA1R5IPUfH3KSCxN89HFvo5o55IIrGNFfSw=;
+        b=Yz5TVr54TzYf/p3skXeOCWmzP5F/atIKqqUguU/7zVyJ0wyET3dijGZvigBNU86h+C
+         jEF69ZncTplLfs8WM1bcR3tStRyP3hyCuUOhPEKTrQlc7yUNL28aADpoLrEqKvG3gGR2
+         YYl/QztzG8APhWnArXhcJ9aMr1npY1aBOfWes3YnHw5PRLJ91Z/HVcVdFEyUusRZJRfS
+         kCRgBzgCDby5Gf93TXmocrLhUAMcuRMJX5NP99k5M497NdT0boxoDfCu2CoT27iw0V90
+         YLwUZ8o9rwnugrs8rQxQ9edJH8nLmS25R8PTdUaSeqWTN5zkofBplg0MMwwJfHF+NPpV
+         KdPw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si4680104wmt.202.2019.01.06.23.23.02
+        by mx.google.com with ESMTPS id x126si4658160wmx.2.2019.01.06.23.26.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 23:23:02 -0800 (PST)
+        Sun, 06 Jan 2019 23:26:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60469 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggPFV-0001TP-Cs
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:23:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58445)
+	id 1ggPJ5-0002eg-VQ
+	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:26:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59363)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPFJ-0001T9-Sa
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:22:50 -0500
+	(envelope-from <thuth@redhat.com>) id 1ggPIx-0002eO-7i
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:26:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPFH-0002Y9-Rq
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:22:49 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60246)
+	(envelope-from <thuth@redhat.com>) id 1ggPIw-0007Li-Bk
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:26:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38636)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggPFE-0002VY-1N; Mon, 07 Jan 2019 02:22:45 -0500
+	id 1ggPIw-0007IQ-44; Mon, 07 Jan 2019 02:26:34 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8EE677F6A8;
-	Mon,  7 Jan 2019 07:22:41 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0997887624;
+	Mon,  7 Jan 2019 07:26:33 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2D53B5D965;
-	Mon,  7 Jan 2019 07:22:27 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 18FFD5D9CD;
+	Mon,  7 Jan 2019 07:26:20 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-10-philmd@redhat.com>
+	<20190104175847.6290-12-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,23 +111,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <4821a853-bd25-7972-66dd-95092d216868@redhat.com>
-Date: Mon, 7 Jan 2019 08:22:27 +0100
+Message-ID: <87221351-b355-f489-6381-adb131cd6ec4@redhat.com>
+Date: Mon, 7 Jan 2019 08:26:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-10-philmd@redhat.com>
+In-Reply-To: <20190104175847.6290-12-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 07 Jan 2019 07:22:42 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 07 Jan 2019 07:26:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 09/16] hw/devices: Move TI touchscreen
- declarations into a new header
+Subject: Re: [Qemu-arm] [PATCH 11/16] typedefs: Remove PS2State
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,8 +140,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
-	Magnus Damm <magnus.damm@gmail.com>, Joel Stanley <joel@jms.id.au>,
-	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
+	Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
 	Andrzej Zaborowski <balrogg@gmail.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
 	Peter Chubb <peter.chubb@nicta.com.au>,
@@ -151,28 +150,48 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
+	Michael Walle <michael@walle.cc>, Jan Kiszka <jan.kiszka@web.de>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 20MzmNrvJ/ZN
+X-TUID: VMBu2+ZbiV8q
 
 On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
-> Since uWireSlave is only used in this new header, there is no
+> PS2State is only used in "hw/input/ps2.h", there is no
 > need to expose it via "qemu/typedefs.h".
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  MAINTAINERS                     |  2 ++
->  hw/arm/nseries.c                |  2 +-
->  hw/arm/palm.c                   |  2 +-
->  hw/input/tsc2005.c              |  2 +-
->  hw/input/tsc210x.c              |  4 ++--
->  include/hw/arm/omap.h           |  6 +-----
->  include/hw/devices.h            | 14 --------------
->  include/hw/input/ti_uwire_tsc.h | 28 ++++++++++++++++++++++++++++
+>  include/hw/input/ps2.h  | 2 ++
+>  include/qemu/typedefs.h | 1 -
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
+> index 213aa16aa3..b60455d4f6 100644
+> --- a/include/hw/input/ps2.h
+> +++ b/include/hw/input/ps2.h
+> @@ -31,6 +31,8 @@
+>  #define PS2_MOUSE_BUTTON_SIDE   0x08
+>  #define PS2_MOUSE_BUTTON_EXTRA  0x10
+> =20
+> +typedef struct PS2State PS2State;
+> +
+>  /* ps2.c */
+>  void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg);
+>  void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg=
+);
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 927b340bb4..181f8fa68e 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -82,7 +82,6 @@ typedef struct PixelFormat PixelFormat;
+>  typedef struct PostcopyDiscardState PostcopyDiscardState;
+>  typedef struct Property Property;
+>  typedef struct PropertyInfo PropertyInfo;
+> -typedef struct PS2State PS2State;
+>  typedef struct QEMUBH QEMUBH;
+>  typedef struct QemuConsole QemuConsole;
+>  typedef struct QemuDmaBuf QemuDmaBuf;
+>=20
 
-I'd maybe rather name the new file "tsc2xxx.h" instead, so that it
-resembles the names of the .c files. Just my 0.02 =E2=82=AC.
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>

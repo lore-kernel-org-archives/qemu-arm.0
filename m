@@ -1,104 +1,104 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3219212wrt;
-        Mon, 7 Jan 2019 00:48:43 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN40SvKrQQzdivBrSIQNrshz6Zl0hvnEaZ6CcnuUUENM/WGb934i5hDnUKXLc830s3R4G7iO
-X-Received: by 2002:a1c:5a42:: with SMTP id o63mr7846602wmb.88.1546850923328;
-        Mon, 07 Jan 2019 00:48:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546850923; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3223985wrt;
+        Mon, 7 Jan 2019 00:56:27 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7xqwIJFaeGfKwWKhFIW9iICdvZwq5WuMj2//Rq2D2AhDqmZxQVr10I/kflyYlutbXQu6Lh
+X-Received: by 2002:adf:b243:: with SMTP id y3mr53454441wra.184.1546851387708;
+        Mon, 07 Jan 2019 00:56:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546851387; cv=none;
         d=google.com; s=arc-20160816;
-        b=PlH/4opPx4EnhyKDNnAlqox9Fo5nXCj4Ug+7+xrcUc5rUH9D3TnQYi/xfuiJqvPluK
-         D+/rF+YbG+fT8Turs7ozyU7hwXCj51U3WDIucUlLcEdKLuARUYga6lfKTNzXH9orOHer
-         DLZGBU54QkE81Vn/1BbScSOV2SE3PVW3SGa5Esa8hGr4p/eapBaRMBJGK1siLL/Ynkgn
-         EKKHyHLB7Vm55TmjzvV8rbtMeeZcrW8QIQHc8pFCo8tSzhdU5phqPsJAFZ8RVkwgsjRi
-         IHVVyb+L/R+RkQriQjuFsWsIAttz2vBYCjl14hgtytKfjZExgp2mnTgqMJJd6UPsZgMI
-         o4CA==
+        b=eQybvB+46Z0lb+xKqZ3aEiDSgnGV5O760zA/c9o7Rs9bQ3xkMqtoFtBrcJP+u83gS1
+         PSz8VZ9EE/Xvq0+eTOhfmIrftHXq3bl0LDmOTBlqAo9RerSOdpJOPCcnKNDI3R1e1WOh
+         5//fhqfhPFSO7C7TpriakcTMRGFTFubKzu/dQvbTc6gNfUofoZP6gsZIyODOs94oVTT2
+         pReG/T5aXzZ0QtdZRBaXkLu/h7SsZiY8MzkWL8bebfV8lCf9DqPvsaVt0ksna2TOnykA
+         s2maT4JZNWgAwJB3XltRT6KKG+bxkiofhI12Bf5/1J/ktziRAhw8llFYCl8+YKXxTGWV
+         A81A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
-         :references:to:dkim-signature:dkim-signature:dkim-signature;
-        bh=jcEht2FuH4gTN9viEohIlZZvPy+pED9CMUhR354dofg=;
-        b=SL0CSPVBzD8K3ES2KgeAUkv2X9/FCTldQnPyYKlJITxHovzef1fEKz3++23fXRWiBN
-         ZdPgkPhYlaXg2U1wK4gohaNH1/oQqxCMpWPFQpBELTvs+Fnbo8VcJxnaV9aFbrRNdkAX
-         v+kpwk8JPZngrHuM9sb31mR8W5yhg6UqZBgJAuCxcSoolxewdqybRywmsZDqLx/OsRk+
-         PB4ke6423uCdGJQ9q0444lM0HEYTn+3PQ2PloxhWHHkbIK2WZ4O/SE+9I5zyxxH3UMmk
-         /EvKNixJABYFKuRkOmuSXoQLeRWhb6gHn2C7vvDoDSouun1rwLvT+dllu1xvoM+I5It5
-         X1RQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature:dkim-signature:dkim-signature;
+        bh=j9HbdxYTkip9VZDGXKdYQpqs65G3B22OjQcBixPV7gc=;
+        b=HykEupN5B5MHwaYl3SbwGVSrZmbvlIQv5laxDqFjUOegQ4//i2B6SkWwrar/PlxyTJ
+         PhGYumf13TjpnZWEHrCYKLUXxbk93DU9oSfyQ9Sj6MnC10mUymEy0bAkW8P8jBERVljm
+         UZd43f1kKFW8QrmTBTK5VQvmb4I0LkvYV5Qq+QwHoKU4eol48UILEs9KQPxYcmJFEIhQ
+         0e9gOc/6ELRDvCb/Qpelvijg0Gl7O0Xjtno2SZpeEYwxF4qaWDzRxKT9iDvClVH6H+iJ
+         8YAYHBMO7HPOu0skM2q5Fr9sAwuiBpanZD/fTPILDHf2HTP9WpDfxEWXwtMENp+AuXCH
+         Augg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="4mTsS85/";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=xXhwutPR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=xXhwutPR;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=eCdThLhL;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=AAvRgUC4;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=AAvRgUC4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b69si4786156wmd.92.2019.01.07.00.48.43
+        by mx.google.com with ESMTPS id a186si4758235wmh.134.2019.01.07.00.56.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 07 Jan 2019 00:48:43 -0800 (PST)
+        Mon, 07 Jan 2019 00:56:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="4mTsS85/";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=xXhwutPR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=xXhwutPR;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=eCdThLhL;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=AAvRgUC4;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=AAvRgUC4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55284 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:57492 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggQaQ-0002A2-Dz
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 03:48:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57823)
+	id 1ggQhu-0004RB-OU
+	for alex.bennee@linaro.org; Mon, 07 Jan 2019 03:56:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60823)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1ggQaF-00029t-Ks
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 03:48:32 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1ggQhj-0004Qg-Uv
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 03:56:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1ggQaD-0007GM-ML
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 03:48:31 -0500
-Received: from greensocs.com ([193.104.36.180]:44364)
+	(envelope-from <luc.michel@greensocs.com>) id 1ggQhh-0006Ai-ML
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 03:56:15 -0500
+Received: from greensocs.com ([193.104.36.180]:45292)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1ggQaB-0007Dp-Ia; Mon, 07 Jan 2019 03:48:29 -0500
+	id 1ggQhf-00069b-Ra; Mon, 07 Jan 2019 03:56:13 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 74DED64141A;
-	Mon,  7 Jan 2019 09:48:26 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id 30F94641413;
+	Mon,  7 Jan 2019 09:56:02 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1546850906;
-	bh=4cd45cDFbIu7DwZ0RqYcbCCzFtoWBoEAKKW+++xsYlk=;
+	s=mail; t=1546851362;
+	bh=ncjTQAFxQE6AdMBmcGS0D4HlEjjuH8CxCneUlyHoaz8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=4mTsS85/OHKqRc1qBqk/zNWIuqxzvdARoNfwkx1zyeXih7uU19xetRezIbexsQ80d
-	1SUX9bzyVcK2HxWcxE7mErIO0apyo27OIe7dVf0e2Mk3yhuOvPiJKogNZy+gUyRJfv
-	oxYSEqeBi6BIQbmK/c8lBpklfn7ApVKju9w9bFZk=
+	b=eCdThLhL3mauItYH2l8FVSxMkYJ3LlZry+FHPSdZlb+L8YUi3OOf5rE3md9J7xNCP
+	904oF9BBtlUEiPXgsG/l1vQRJ9o0/gR5xUEzyITbXvzRU5HYqS17J0fHhyk4JlXnCG
+	17f3F5P3d2L62/wTLqFHKr3LSCIIuCTqUgPDIdYM=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=xXhwutPR;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=xXhwutPR
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=AAvRgUC4;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=AAvRgUC4
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8TOYuWqaSfME; Mon,  7 Jan 2019 09:48:25 +0100 (CET)
+	with ESMTP id vB2Tv8jSdJJw; Mon,  7 Jan 2019 09:56:01 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id A262464140F; Mon,  7 Jan 2019 09:48:25 +0100 (CET)
+	id 361EB64140F; Mon,  7 Jan 2019 09:56:01 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1546850905;
-	bh=4cd45cDFbIu7DwZ0RqYcbCCzFtoWBoEAKKW+++xsYlk=;
+	s=mail; t=1546851361;
+	bh=ncjTQAFxQE6AdMBmcGS0D4HlEjjuH8CxCneUlyHoaz8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=xXhwutPRWfDIJ+E9ZoKXB84MRW8NEtelZMpQ8zK9NuczX+r/LNjvDuo/08toGkJbD
-	PWU2jTJ+kJQSMDINhfMlndbN8M7WBxrV3CJkdhgM73q3bw8PKmvEd5xVFuwmyBYIFy
-	Yda686cLdhPLVA/nTJlRic4aISqPjK5kcr5CeNVU=
+	b=AAvRgUC4lZFV8qTMnfX7PH05nt/e+R9dmUjql1C/CSNElLHsDhDNsAPuItVFVOGUq
+	j8UuiGzewNVOXMlRcB16hKd5x2RT6ToGHNJK4IaV3ZCXO3L/bUHofabD6XTxfzXkoH
+	u/bUHhciOam62zfIxEnyS2FGRDy6yN9EsUgNF4Dc=
 Received: from [172.16.11.100] (antfield.tima.u-ga.fr [147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 379026413EF;
-	Mon,  7 Jan 2019 09:48:25 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id C7A106413EF;
+	Mon,  7 Jan 2019 09:56:00 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1546850905;
-	bh=4cd45cDFbIu7DwZ0RqYcbCCzFtoWBoEAKKW+++xsYlk=;
+	s=mail; t=1546851361;
+	bh=ncjTQAFxQE6AdMBmcGS0D4HlEjjuH8CxCneUlyHoaz8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=xXhwutPRWfDIJ+E9ZoKXB84MRW8NEtelZMpQ8zK9NuczX+r/LNjvDuo/08toGkJbD
-	PWU2jTJ+kJQSMDINhfMlndbN8M7WBxrV3CJkdhgM73q3bw8PKmvEd5xVFuwmyBYIFy
-	Yda686cLdhPLVA/nTJlRic4aISqPjK5kcr5CeNVU=
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-References: <20190104142812.20444-1-edgar.iglesias@gmail.com>
-	<20190104142812.20444-3-edgar.iglesias@gmail.com>
+	b=AAvRgUC4lZFV8qTMnfX7PH05nt/e+R9dmUjql1C/CSNElLHsDhDNsAPuItVFVOGUq
+	j8UuiGzewNVOXMlRcB16hKd5x2RT6ToGHNJK4IaV3ZCXO3L/bUHofabD6XTxfzXkoH
+	u/bUHhciOam62zfIxEnyS2FGRDy6yN9EsUgNF4Dc=
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20181207090135.7651-1-luc.michel@greensocs.com>
+	<CAFEAcA9F2q6fQV13EDWFzuPYiFTDvqSCx_4P9aD=zP2RR5Kp0g@mail.gmail.com>
 From: Luc Michel <luc.michel@greensocs.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
@@ -144,19 +144,19 @@ Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
 	RQRqLclXLl1hUF7XxUYFDJG64ljAbaCpVL43OkziHejUeM1oC7fZg3U9rnEwnc/JEnCpsHS7
 	bNHz5jlV9+JIV2sxFa1xVKZ0PdTRrZ4EuxO6CyXaOsjPGp4uqd+CWobc7wD77bFwdO+HQVt4
 	yXDhZGT0TxMQKXHtw1paExHsZq1xw1GvaFsutGLyX2S71jQ=
-Message-ID: <b35dfd51-bf47-7cca-159b-0649f8caebf8@greensocs.com>
-Date: Mon, 7 Jan 2019 09:48:24 +0100
+Message-ID: <8b118f0c-b2e4-3821-5348-25a9abbd7948@greensocs.com>
+Date: Mon, 7 Jan 2019 09:56:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.3
 MIME-Version: 1.0
-In-Reply-To: <20190104142812.20444-3-edgar.iglesias@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="cJKqJ45iR8fo8AsiVhOGC0hAlBolVKpzk"
+In-Reply-To: <CAFEAcA9F2q6fQV13EDWFzuPYiFTDvqSCx_4P9aD=zP2RR5Kp0g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-arm] [PATCH v1 2/2] target/microblaze: Add props enabling
- exceptions on failed bus accesses
+Subject: Re: [Qemu-arm] [PATCH v8 00/16] gdbstub: support for the
+ multiprocess extension
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -168,129 +168,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
-	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
-	frasse.iglesias@gmail.com, alistair@alistair23.me,
-	frederic.konrad@adacore.com, philmd@redhat.com
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iPYedGtzu7S7
+X-TUID: QfI9Njf2+Nh3
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---cJKqJ45iR8fo8AsiVhOGC0hAlBolVKpzk
-Content-Type: multipart/mixed; boundary="snzqRF2YJCPADlzhhn5QFk2jgtT0o5Fdu";
- protected-headers="v1"
-From: Luc Michel <luc.michel@greensocs.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, frederic.konrad@adacore.com,
- alistair@alistair23.me, philmd@redhat.com, frasse.iglesias@gmail.com,
- figlesia@xilinx.com, sstabellini@kernel.org, sai.pavan.boddu@xilinx.com,
- edgar.iglesias@xilinx.com
-Message-ID: <b35dfd51-bf47-7cca-159b-0649f8caebf8@greensocs.com>
-Subject: Re: [PATCH v1 2/2] target/microblaze: Add props enabling exceptions
- on failed bus accesses
-References: <20190104142812.20444-1-edgar.iglesias@gmail.com>
- <20190104142812.20444-3-edgar.iglesias@gmail.com>
-In-Reply-To: <20190104142812.20444-3-edgar.iglesias@gmail.com>
-
---snzqRF2YJCPADlzhhn5QFk2jgtT0o5Fdu
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr-classic
-Content-Transfer-Encoding: quoted-printable
-
-On 1/4/19 3:28 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 1/4/19 4:12 PM, Peter Maydell wrote:
+> On Fri, 7 Dec 2018 at 09:01, Luc Michel <luc.michel@greensocs.com> wrot=
+e:
+>> This series adds support for the multiprocess extension of the GDB
+>> remote protocol in the QEMU GDB stub.
+>>
+>> This extension is useful to split QEMU emulated CPUs in different
+>> processes from the point of view of the GDB client. It adds the
+>> possibility to debug different kind of processors (e.g. an AArch64 and
+>> an ARMv7 CPU) at the same time (it is not possible otherwise since GDB
+>> expects an SMP view at the thread granularity.
 >=20
-> Add MicroBlaze CPU properties to enable exceptions on failed
-> bus accesses.
+> I've applied this patchset to target-arm.next, thanks.
+> (I fixed up a few checkpatch nits about block comment style.)
+Thanks!
+
 >=20
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-
-> ---
->  target/microblaze/cpu.c | 12 +++++++++++-
->  target/microblaze/cpu.h |  2 ++
->  2 files changed, 13 insertions(+), 1 deletion(-)
+>> To test this patchset, you can use the following commands:
+>>
+>> (Note that this requires a recent enough GDB, I think GDB 7.2 is OK.
+>> Also, it must be compiled to support both ARM and AArch64 architecture=
+s)
+>>
+>> Run QEMU: (-smp 6 in xlnx-zcu102 enables both cortex-a53 and cortex-r5
+>> CPUs)
+>>
+>> qemu-system-aarch64 -M xlnx-zcu102 -gdb tcp::1234 -S -smp 6
+>>
+>> Run the following commands in GDB:
+>>
+>> target extended :1234
+>> add-inferior
+>> inferior 2
+>> attach 2
+>> info threads
 >=20
-> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-> index 49876b19b3..5596cd5485 100644
-> --- a/target/microblaze/cpu.c
-> +++ b/target/microblaze/cpu.c
-> @@ -202,7 +202,11 @@ static void mb_cpu_realizefn(DeviceState *dev, Err=
-or **errp)
->                          (cpu->cfg.use_barrel ? PVR2_USE_BARREL_MASK : =
-0) |
->                          (cpu->cfg.use_div ? PVR2_USE_DIV_MASK : 0) |
->                          (cpu->cfg.use_msr_instr ? PVR2_USE_MSR_INSTR :=
- 0) |
-> -                        (cpu->cfg.use_pcmp_instr ? PVR2_USE_PCMP_INSTR=
- : 0);
-> +                        (cpu->cfg.use_pcmp_instr ? PVR2_USE_PCMP_INSTR=
- : 0) |
-> +                        (cpu->cfg.dopb_bus_exception ?
-> +                                                 PVR2_DOPB_BUS_EXC_MAS=
-K : 0) |
-> +                        (cpu->cfg.iopb_bus_exception ?
-> +                                                 PVR2_IOPB_BUS_EXC_MAS=
-K : 0);
-> =20
->      env->pvr.regs[5] |=3D cpu->cfg.dcache_writeback ?
->                                          PVR5_DCACHE_WRITEBACK_MASK : 0=
-;
-> @@ -265,6 +269,12 @@ static Property mb_properties[] =3D {
->      DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, cfg.dcache_wri=
-teback,
->                       false),
->      DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
-> +    /* Enables bus exceptions on failed data accesses (load/stores).  =
-*/
-> +    DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
-> +                     cfg.dopb_bus_exception, false),
-> +    /* Enables bus exceptions on failed instruction fetches.  */
-> +    DEFINE_PROP_BOOL("iopb-bus-exception", MicroBlazeCPU,
-> +                     cfg.iopb_bus_exception, false),
->      DEFINE_PROP_STRING("version", MicroBlazeCPU, cfg.version),
->      DEFINE_PROP_UINT8("pvr", MicroBlazeCPU, cfg.pvr, C_PVR_FULL),
->      DEFINE_PROP_END_OF_LIST(),
-> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-> index 03ca91007d..792bbc97c7 100644
-> --- a/target/microblaze/cpu.h
-> +++ b/target/microblaze/cpu.h
-> @@ -308,6 +308,8 @@ struct MicroBlazeCPU {
->          bool use_mmu;
->          bool dcache_writeback;
->          bool endi;
-> +        bool dopb_bus_exception;
-> +        bool iopb_bus_exception;
->          char *version;
->          uint8_t pvr;
->      } cfg;
+> This seems a bit clumsy -- is it just the limitations of
+> gdb here? I was expecting that just connecting to the
+> remote would cause gdb to interrogate it and attach to
+> all the inferior processes that it had.
+AFAIK this is a "limitation" of GDB. In QEMU context it seems like a
+limitation, but when you are connecting to a remote gdbserver that
+exposes all the processes currently running on an OS, you probably don't
+want to attach them all automatically.
+
+Luc
+
 >=20
-
-
---snzqRF2YJCPADlzhhn5QFk2jgtT0o5Fdu--
-
---cJKqJ45iR8fo8AsiVhOGC0hAlBolVKpzk
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlwzElgACgkQd8knW3Qn
-Tr6DuhAAlLLjK7ik55617B5bbLGLNH/HmfUoWbS7RXxqveT3VmjwdYT6gsutzC5g
-E3Od4a7ylz0uLUNH3FSVHIcBVyisB8vn/F4oJGpR+/xAPioTS7D2wYaUkz9WzfWc
-H5sxXYMWTM5LSzgvM5CL5hAleIYqANKZtUctECiKRkZfaTVeP6lnomC+hdLg0Pfj
-CTBwwF06ygt7ExfNrmrnEmF3LSQgge7ZLzFO0Yw9ijk8cu7l20vS1UCfA2wiLVmg
-uGr1V3yZFesNZLIDy9L9dFX3zOOyz76PTU/R5CiDyJui/5IM3J7Vq7nHVx2HuR38
-Lt/zUOmXXlDPOKn6mvg+R8VSuyeAbMYhGqcWF3ZEgsv6qHiG62F7uFUb/w4WzquA
-y0L/wPofAnAIsD26Nf7lIiKmxjfb/IcbBZKRc7iqJmNhbIn/cXR7IdcoLvJUZMfH
-r65X7toRQMiPD5wGRwncltrQ+ggDcg88qZXMFOhe/pXpFI4N6qgdUcsT+fKV5x63
-zA5iZKgIDXZ1RN6h19YWF1fvTBP0nP3kmD8GhkWfKebB3ev/whV4dwT4SsfApP3Q
-YPXOX/6S3fNBCwixe7Uv0z+yUKC0fv6ATLMIDR+dDZmFks+HSychD3b/3d3rlQg3
-Q1NHONeIKc+4iWNeZZuWVDmXbiPXCmzrPsGUwZnyVAn1ZPZLWpk=
-=TCMI
------END PGP SIGNATURE-----
-
---cJKqJ45iR8fo8AsiVhOGC0hAlBolVKpzk--
+> thanks
+> -- PMM
+>=20

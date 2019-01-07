@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3166038wrt;
-        Sun, 6 Jan 2019 23:26:45 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5/r+k7dru6FiueChsWDf9sYcS6JJCiTSCuNlfIasdZWgu5qZDoWTav3MT9j6BqIc00MIEN
-X-Received: by 2002:adf:df01:: with SMTP id y1mr53160992wrl.127.1546846005001;
-        Sun, 06 Jan 2019 23:26:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546846004; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3168204wrt;
+        Sun, 6 Jan 2019 23:30:29 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5UT5jnLEIbqng0wovTfRSrWeu/qYkI74cyROBHCD/StdJmBJilg+7yVrsbGse874b6YdFR
+X-Received: by 2002:a1c:d74a:: with SMTP id o71mr7880529wmg.73.1546846229106;
+        Sun, 06 Jan 2019 23:30:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546846229; cv=none;
         d=google.com; s=arc-20160816;
-        b=aQRbvWIEYNpbilXW57noSpwOxEEM8qK3r2EnR5zR+bU9HS5MMVC/AbkXRrA34+Oiu/
-         2nix2BWQj6x959STLwGmhl8EIXWcNJKnTM1HsQfQesnnX02rPGh0MjEaHT4/jG5cRY8L
-         w3H3sg959lGNJFi/LR6LYScja7u9MMI407J9X73iRgOYVGXX+JnkKdhpdJC6r6dz2kSP
-         M+C+EyTNCC6Ol5/ksvUtq9R3sM8RscdIIxDCjiQRnwNnERe56dd5U03pUNnKZi/TmK+Y
-         GFgSHs0jzrXD2dHpmkjPYQcBb4DnaR1xRkHFdVBd8Z51AzPIi+9OU/XVAjWag3YtJnxc
-         drvg==
+        b=GLYJLqjh7VYZxjsBfK/41dw3vCKLYPM47cuzrsA8woBrzOMRM4pNr1JvBJT+gH/Ign
+         TI2NyvpXEibM7kCP55X8OnGP+W9psZzp35GqZ8Jx/GJbUClNMa3WhTVZ5P3e9F+r/klj
+         xPoxagve0+k/byMySpYbkQ+1HkVBPktTCZdd5bo//+PYtOHmY8mKKpcdVPHvye5PFpH1
+         A+tnMkUm7JWie7KQqJfQ8hLb1ZD6uFlf4p1eYCx2uX5U1wc8ijGOYaJ+zBGhxqWyilAE
+         rQ+Ie9Nw2SNV9egcpLBBC9oiihqgdGeyxHM/a0Ih3rSflCZZRmZ6Tjuab0nNec9jdpqa
+         W1mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=YKCg+XbxgA1R5IPUfH3KSCxN89HFvo5o55IIrGNFfSw=;
-        b=Yz5TVr54TzYf/p3skXeOCWmzP5F/atIKqqUguU/7zVyJ0wyET3dijGZvigBNU86h+C
-         jEF69ZncTplLfs8WM1bcR3tStRyP3hyCuUOhPEKTrQlc7yUNL28aADpoLrEqKvG3gGR2
-         YYl/QztzG8APhWnArXhcJ9aMr1npY1aBOfWes3YnHw5PRLJ91Z/HVcVdFEyUusRZJRfS
-         kCRgBzgCDby5Gf93TXmocrLhUAMcuRMJX5NP99k5M497NdT0boxoDfCu2CoT27iw0V90
-         YLwUZ8o9rwnugrs8rQxQ9edJH8nLmS25R8PTdUaSeqWTN5zkofBplg0MMwwJfHF+NPpV
-         KdPw==
+        bh=vc9rsHYG8QowqNsl6WXd+KxWKS8YL2/x4dPz50sRrGE=;
+        b=jYkKoiAsJiqjF34Uhi0xolSnPlJz0MdB94AKP9m7UEKPrG/NUbExXI3dd4sZP9NLG4
+         sebI8me0M5jAOpEsUIkLNqhuAq6MXsCbeQFBQsLQlTa1TK58EREFyvediFXzw+gnnSBY
+         9I72KSA0Hbs4PabvAcBTbap0HVX2WDu17pP8CfLZO+mc40C+GqpMEIO+0hZhGyYakYBY
+         hROr7Ox0kykOkPpehY2GDGqWYkcMX5JtfHxqZjFe2EDmftyvrti9BeV7an/6/Gi4pOwf
+         wbhvet5FrR8usn+2KvYubJ5ynvo/c159bAmiKNVoS1fa9KWhqKxPWD5AVq8+Cot6/YQ7
+         O2Lw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x126si4658160wmx.2.2019.01.06.23.26.44
+        by mx.google.com with ESMTPS id e16si35471267wrn.344.2019.01.06.23.30.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 23:26:44 -0800 (PST)
+        Sun, 06 Jan 2019 23:30:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33317 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34367 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggPJ5-0002eg-VQ
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:26:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59363)
+	id 1ggPMi-0003iZ-4B
+	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:30:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60692)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPIx-0002eO-7i
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:26:35 -0500
+	(envelope-from <thuth@redhat.com>) id 1ggPMZ-0003h8-QH
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:30:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPIw-0007Li-Bk
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:26:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38636)
+	(envelope-from <thuth@redhat.com>) id 1ggPMY-0002Aa-Sx
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:30:19 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57212)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggPIw-0007IQ-44; Mon, 07 Jan 2019 02:26:34 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1ggPMY-0002AG-L1; Mon, 07 Jan 2019 02:30:18 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0997887624;
-	Mon,  7 Jan 2019 07:26:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 514D537EEA;
+	Mon,  7 Jan 2019 07:30:17 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 18FFD5D9CD;
-	Mon,  7 Jan 2019 07:26:20 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 56ACD100164A;
+	Mon,  7 Jan 2019 07:29:59 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-12-philmd@redhat.com>
+	<20190104175847.6290-13-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,22 +111,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <87221351-b355-f489-6381-adb131cd6ec4@redhat.com>
-Date: Mon, 7 Jan 2019 08:26:19 +0100
+Message-ID: <222c7009-e950-c27d-89a1-674ada91b1e2@redhat.com>
+Date: Mon, 7 Jan 2019 08:29:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-12-philmd@redhat.com>
+In-Reply-To: <20190104175847.6290-13-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 07 Jan 2019 07:26:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 07 Jan 2019 07:30:17 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 11/16] typedefs: Remove PS2State
+Subject: Re: [Qemu-arm] [PATCH 12/16] hw/devices: Move LAN9118 declarations
+ into a new header
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,8 +141,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Rob Herring <robh@kernel.org>,
-	qemu-trivial@nongnu.org, Magnus Damm <magnus.damm@gmail.com>,
-	Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+	Magnus Damm <magnus.damm@gmail.com>, Joel Stanley <joel@jms.id.au>,
+	David Gibson <david@gibson.dropbear.id.au>,
 	Andrzej Zaborowski <balrogg@gmail.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
 	Peter Chubb <peter.chubb@nicta.com.au>,
@@ -150,48 +151,134 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Michael Walle <michael@walle.cc>, Jan Kiszka <jan.kiszka@web.de>,
-	Aurelien Jarno <aurelien@aurel32.net>
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VMBu2+ZbiV8q
+X-TUID: Rw+/OIx1oPoz
 
 On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
-> PS2State is only used in "hw/input/ps2.h", there is no
-> need to expose it via "qemu/typedefs.h".
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/hw/input/ps2.h  | 2 ++
->  include/qemu/typedefs.h | 1 -
->  2 files changed, 2 insertions(+), 1 deletion(-)
+>  hw/arm/kzm.c             |  2 +-
+>  hw/arm/mps2.c            |  2 +-
+>  hw/arm/realview.c        |  1 +
+>  hw/arm/vexpress.c        |  2 +-
+>  hw/net/lan9118.c         |  2 +-
+>  include/hw/devices.h     |  3 ---
+>  include/hw/net/lan9118.h | 21 +++++++++++++++++++++
+>  7 files changed, 26 insertions(+), 7 deletions(-)
+>  create mode 100644 include/hw/net/lan9118.h
 >=20
-> diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
-> index 213aa16aa3..b60455d4f6 100644
-> --- a/include/hw/input/ps2.h
-> +++ b/include/hw/input/ps2.h
-> @@ -31,6 +31,8 @@
->  #define PS2_MOUSE_BUTTON_SIDE   0x08
->  #define PS2_MOUSE_BUTTON_EXTRA  0x10
+> diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
+> index 864c7bd411..139934c4ec 100644
+> --- a/hw/arm/kzm.c
+> +++ b/hw/arm/kzm.c
+> @@ -22,7 +22,7 @@
+>  #include "qemu/error-report.h"
+>  #include "exec/address-spaces.h"
+>  #include "net/net.h"
+> -#include "hw/devices.h"
+> +#include "hw/net/lan9118.h"
+>  #include "hw/char/serial.h"
+>  #include "sysemu/qtest.h"
 > =20
-> +typedef struct PS2State PS2State;
+> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+> index e3d698ba6c..54b7395849 100644
+> --- a/hw/arm/mps2.c
+> +++ b/hw/arm/mps2.c
+> @@ -36,7 +36,7 @@
+>  #include "hw/timer/cmsdk-apb-timer.h"
+>  #include "hw/timer/cmsdk-apb-dualtimer.h"
+>  #include "hw/misc/mps2-scc.h"
+> -#include "hw/devices.h"
+> +#include "hw/net/lan9118.h"
+>  #include "net/net.h"
+> =20
+>  typedef enum MPS2FPGAType {
+> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> index 242f5a87b6..e9983c8763 100644
+> --- a/hw/arm/realview.c
+> +++ b/hw/arm/realview.c
+> @@ -15,6 +15,7 @@
+>  #include "hw/arm/arm.h"
+>  #include "hw/arm/primecell.h"
+>  #include "hw/devices.h"
+> +#include "hw/net/lan9118.h"
+>  #include "hw/pci/pci.h"
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+> index c02d18ee61..12e2c3986f 100644
+> --- a/hw/arm/vexpress.c
+> +++ b/hw/arm/vexpress.c
+> @@ -28,7 +28,7 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/arm/arm.h"
+>  #include "hw/arm/primecell.h"
+> -#include "hw/devices.h"
+> +#include "hw/net/lan9118.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+> index a6269d9463..a428b16eda 100644
+> --- a/hw/net/lan9118.c
+> +++ b/hw/net/lan9118.c
+> @@ -14,7 +14,7 @@
+>  #include "hw/sysbus.h"
+>  #include "net/net.h"
+>  #include "net/eth.h"
+> -#include "hw/devices.h"
+> +#include "hw/net/lan9118.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/ptimer.h"
+>  #include "qemu/log.h"
+> diff --git a/include/hw/devices.h b/include/hw/devices.h
+> index ba9034050b..ebc45c8799 100644
+> --- a/include/hw/devices.h
+> +++ b/include/hw/devices.h
+> @@ -8,7 +8,4 @@
+>  /* smc91c111.c */
+>  void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
+> =20
+> -/* lan9118.c */
+> -void lan9118_init(NICInfo *, uint32_t, qemu_irq);
+> -
+>  #endif
+> diff --git a/include/hw/net/lan9118.h b/include/hw/net/lan9118.h
+> new file mode 100644
+> index 0000000000..340d6681b7
+> --- /dev/null
+> +++ b/include/hw/net/lan9118.h
+> @@ -0,0 +1,21 @@
+> +/*
+> + * SMSC LAN9118 Ethernet interface emulation
+> + *
+> + * Copyright (c) 2009 CodeSourcery, LLC.
+> + * Written by Paul Brook
+> + *
+> + * This code is licensed under the GNU GPL v2
+> + *
+> + * Contributions after 2012-01-13 are licensed under the terms of the
+> + * GNU GPL, version 2 or (at your option) any later version.
+
+Since your contribution here is after 2012 and the file content is also
+just a trivial one-line prototype, please change the license code to say
+GPLv2+ only right from the start. We should avoid these v2 + v2+
+statements in new files.
+
+> + */
 > +
->  /* ps2.c */
->  void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg);
->  void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg=
-);
-> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index 927b340bb4..181f8fa68e 100644
-> --- a/include/qemu/typedefs.h
-> +++ b/include/qemu/typedefs.h
-> @@ -82,7 +82,6 @@ typedef struct PixelFormat PixelFormat;
->  typedef struct PostcopyDiscardState PostcopyDiscardState;
->  typedef struct Property Property;
->  typedef struct PropertyInfo PropertyInfo;
-> -typedef struct PS2State PS2State;
->  typedef struct QEMUBH QEMUBH;
->  typedef struct QemuConsole QemuConsole;
->  typedef struct QemuDmaBuf QemuDmaBuf;
+> +#ifndef HW_NET_LAN9118_H
+> +#define HW_NET_LAN9118_H
+> +
+> +#include "hw/irq.h"
+> +#include "net/net.h"
+> +
+> +void lan9118_init(NICInfo *, uint32_t, qemu_irq);
+> +
+> +#endif
 >=20
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+ Thomas

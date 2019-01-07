@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3155307wrt;
-        Sun, 6 Jan 2019 23:10:30 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7AMuKLMvqGXPWF8Y+37t496S3umO8C1GJxwzw43fI9E1Fp2cEb/PCWAGosXx5N5QAbdlj9
-X-Received: by 2002:adf:f052:: with SMTP id t18mr54148542wro.112.1546845030442;
-        Sun, 06 Jan 2019 23:10:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546845030; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3160885wrt;
+        Sun, 6 Jan 2019 23:18:36 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5ra5jKKgLsBW6wb1bJx/rF9zxNEwfH3E0RytiRS4iDKSE4C77BIBBPnjc20PUlqnX4qrUV
+X-Received: by 2002:a1c:2b86:: with SMTP id r128mr2658057wmr.100.1546845516099;
+        Sun, 06 Jan 2019 23:18:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546845516; cv=none;
         d=google.com; s=arc-20160816;
-        b=q5I0gBNViiVgyXJh5QlT5fP0AWHKe1UCpTLn5maSfw6aNKulXuXoXT1tG9oT/KxS97
-         +dz230uxL8+kt1GlAEm/H8aJoepYcY8LFl7Y1qQ3oMjWrrojKNk+oAQ1mQ4RLTOPz4Kz
-         yNC+ubMQd21YWQYzajKyZ8ttc45AUM1LXJJeUf6jj7tXSfmkxTFEJybMPB6vD1QisGel
-         pTLfd1hpQHT6EpMOWeBIdk6rvTo5ypzbxDPMjU9LVBrqY9qyqIV3Em5lH1dFMxwhy1y9
-         p252Rg9HvXo91I3jkegYWU0gizcJxx2FYlZTvVBnveCXLpdX0n1mSytYuDVrhD8Uum4j
-         ieIQ==
+        b=TqduOfSJfdmum6h9G+LPU8931f6b7ifQo+nAdV4BT4DU3H3dd/RpTZzq/1e8oDsVXm
+         zEaROt4T1Ku7CEtFfklFDCjykvJi0t/C9ekYWJPrJ6qYO/rb91Y3u9QFziXN8SclgB1r
+         YazUbSS0GsNjJoIJdSEHZRgv+KHjmnmE7icDL/wKlAJwlm22em5wrW26SzHAl7J2fBJn
+         R6xT+RoXsx8A1tHdUYooAqHhDy2r+9HToYHTAINt4dXYK/Q2+xXbmMYsPmU/8lOLyYJq
+         V52FKST18oANC2wE/D9Uf/qZRHF+Z05W77UXpXUV9qx2e6BDUC6Pb/4HYii48vBf9+16
+         /XYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=gfc8by3SJyj7aD8Dn9ooRdiSPPnWMfQiobKOp5TtGaI=;
-        b=CFg/6h+GC8D/ySm8IdrlvEn5zldrlw9Xbcu5k6OKb+oPxF+1eH4oIt13S0uxpZgwD+
-         BMFUrUX6aMk77WkDL8hZxHmrpaPmBQNmRW+OAeOSIf2OXBaw8J5rYftk6VSddF6IkSnm
-         p7BvZ5sJyFZpdFaxaRcRM0Uhi0Kg/qqiLhrCBwfSdJAJqW3Cid9uRdO5IRdC8TTF/KVH
-         XbixxqldvAGC4MBrRR/3BJi2oGf/uEwskIZt9RxFJgQtiLfqn3jbUDWLAbouDyqaOtvH
-         kUKSY8VCEi5U1ykXek7zvl3Mlf9VascKhpQLmdD91wcw9OTvQMqLUxm8vvykf319W/sK
-         n6SA==
+        bh=I9yBd4CRnrvjFkcNmlu68YHMR29zP3EW0Xd7G12nqK0=;
+        b=QxQ4CPRT9j/7iE0IhPGLIHQfy8PjLdB2tezWMZXRXADwiTWM5GU5pJyhpO/0karb8X
+         K0RWJSWy1NKh29Kqum5mSAz6xhTo/TLo/mR9EdLgM1P1IK8ig6qgdrOUEP+8fYOTgDZy
+         nlM+3gOaSRZO7uF25aeO+owuN8vsCwuifxubOwqwoBsLCKJIxG0GQboBced/HOdC3f2r
+         oYA0/iOUy6lPGtaoOQX4bb6mh8lYmsDqtwgaOwqfyfe94TMzvwgvrOj5QN8ruZxB7MSN
+         IPUxO8IC1j/p/5ZrBTcFxo0hOEsAOneirv3b1HiSreiBWMOjcTyo2esO3yaB3DOKTTR1
+         kQSw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e2si5199365wrp.54.2019.01.06.23.10.30
+        by mx.google.com with ESMTPS id d17si4548306wmb.100.2019.01.06.23.18.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 23:10:30 -0800 (PST)
+        Sun, 06 Jan 2019 23:18:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56983 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:59232 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggP3N-0006TK-Eb
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:10:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55329)
+	id 1ggPBD-0000Bv-5z
+	for alex.bennee@linaro.org; Mon, 07 Jan 2019 02:18:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57407)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggP3G-0006RH-9d
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:10:23 -0500
+	(envelope-from <thuth@redhat.com>) id 1ggPB5-0000Bm-Mj
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:18:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggP34-0000qX-MX
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:10:13 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33204)
+	(envelope-from <thuth@redhat.com>) id 1ggPB5-0006rQ-1K
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 02:18:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47284)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggP34-0000ne-CV; Mon, 07 Jan 2019 02:10:10 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1ggPB3-0006qu-N3; Mon, 07 Jan 2019 02:18:25 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1654E8762D;
-	Mon,  7 Jan 2019 07:10:08 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0D6A380467;
+	Mon,  7 Jan 2019 07:18:22 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7B08B60C44;
-	Mon,  7 Jan 2019 07:00:24 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 01D0E101E597;
+	Mon,  7 Jan 2019 07:18:13 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-7-philmd@redhat.com>
+	<20190104175847.6290-9-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,23 +111,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <9ac3a593-3053-ff83-0bb9-6089278774a5@redhat.com>
-Date: Mon, 7 Jan 2019 08:00:18 +0100
+Message-ID: <fe31012f-9311-1455-a20a-70eb83400e50@redhat.com>
+Date: Mon, 7 Jan 2019 08:18:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-7-philmd@redhat.com>
+In-Reply-To: <20190104175847.6290-9-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 07 Jan 2019 07:10:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 07 Jan 2019 07:18:22 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 06/16] hw/devices: Move CBus declarations
- into a new header
+Subject: Re: [Qemu-arm] [PATCH 08/16] MAINTAINERS: Add missing entries for
+ the TI touchscreen devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,125 +155,33 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0ZqOqHNefeeX
+X-TUID: MUNvAMFheXWl
 
 On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  MAINTAINERS            |  1 +
->  hw/arm/nseries.c       |  1 +
->  hw/misc/cbus.c         |  2 +-
->  include/hw/devices.h   | 14 --------------
->  include/hw/misc/cbus.h | 31 +++++++++++++++++++++++++++++++
->  5 files changed, 34 insertions(+), 15 deletions(-)
->  create mode 100644 include/hw/misc/cbus.h
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 156ce9a698..63ed6636ef 100644
+> index f571b29077..03872552ee 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -641,6 +641,7 @@ L: qemu-arm@nongnu.org
+> @@ -640,6 +640,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
 >  S: Odd Fixes
 >  F: hw/arm/nseries.c
+> +F: hw/input/tsc2*.c
 >  F: include/hw/display/blizzard.h
-> +F: include/hw/misc/cbus.h
-
-(note: I've added an entry for cbus.c here:
- https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg00097.html
- you likely got to rebase this patch in case it hits master before
- your patch)
-
->  Palm
->  M: Andrzej Zaborowski <balrogg@gmail.com>
-> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-> index 9521be1cef..ac876b5878 100644
-> --- a/hw/arm/nseries.c
-> +++ b/hw/arm/nseries.c
-> @@ -32,6 +32,7 @@
->  #include "hw/i2c/i2c.h"
->  #include "hw/devices.h"
->  #include "hw/display/blizzard.h"
-> +#include "hw/misc/cbus.h"
->  #include "hw/block/flash.h"
->  #include "hw/hw.h"
->  #include "hw/bt.h"
-> diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
-> index 25e337ea77..16ee704bca 100644
-> --- a/hw/misc/cbus.c
-> +++ b/hw/misc/cbus.c
-> @@ -23,7 +23,7 @@
->  #include "qemu/osdep.h"
->  #include "hw/hw.h"
->  #include "hw/irq.h"
-> -#include "hw/devices.h"
-> +#include "hw/misc/cbus.h"
->  #include "sysemu/sysemu.h"
+>  F: include/hw/misc/cbus.h
 > =20
->  //#define DEBUG
-> diff --git a/include/hw/devices.h b/include/hw/devices.h
-> index 25f895b330..8b649541b1 100644
-> --- a/include/hw/devices.h
-> +++ b/include/hw/devices.h
-> @@ -28,18 +28,4 @@ void tsc2005_set_transform(void *opaque, MouseTransf=
-ormInfo *info);
->  /* stellaris_input.c */
->  void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
-> =20
-> -/* cbus.c */
-> -typedef struct {
-> -    qemu_irq clk;
-> -    qemu_irq dat;
-> -    qemu_irq sel;
-> -} CBus;
-> -CBus *cbus_init(qemu_irq dat_out);
-> -void cbus_attach(CBus *bus, void *slave_opaque);
-> -
-> -void *retu_init(qemu_irq irq, int vilma);
-> -void *tahvo_init(qemu_irq irq, int betty);
-> -
-> -void retu_key_event(void *retu, int state);
-> -
->  #endif
-> diff --git a/include/hw/misc/cbus.h b/include/hw/misc/cbus.h
-> new file mode 100644
-> index 0000000000..1ce1855ccf
-> --- /dev/null
-> +++ b/include/hw/misc/cbus.h
-> @@ -0,0 +1,31 @@
-> +/*
-> + * CBUS three-pin bus and the Retu / Betty / Tahvo / Vilma / Avilma /
-> + * Hinku / Vinku / Ahne / Pihi chips used in various Nokia platforms.
-> + * Based on reverse-engineering of a linux driver.
-> + *
-> + * Copyright (C) 2008 Nokia Corporation
-> + * Written by Andrzej Zaborowski <andrew@openedhand.com>
+> @@ -649,6 +650,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+>  S: Odd Fixes
+>  F: hw/arm/palm.c
+> +F: hw/input/tsc2*.c
 
-I'd drop the invalid e-mail address here, too, I think.
+The Palm machine does not seem to use tsc2005, does it? So I think this
+entry here is wrong.
 
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +#ifndef HW_MISC_CBUS_H
-> +#define HW_MISC_CBUS_H
-> +
-> +#include "hw/irq.h"
-> +
-> +typedef struct {
-> +    qemu_irq clk;
-> +    qemu_irq dat;
-> +    qemu_irq sel;
-> +} CBus;
-> +
-> +CBus *cbus_init(qemu_irq dat_out);
-> +void cbus_attach(CBus *bus, void *slave_opaque);
-> +
-> +void *retu_init(qemu_irq irq, int vilma);
-> +void *tahvo_init(qemu_irq irq, int betty);
-> +
-> +void retu_key_event(void *retu, int state);
-> +
-> +#endif
->=20
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+ Thomas

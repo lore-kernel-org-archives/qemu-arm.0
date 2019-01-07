@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3135619wrt;
-        Sun, 6 Jan 2019 22:39:41 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6jp7bID6tOJIBbSeNLi6MJS2kgk98mRtXfVWHvnawtqkpr+4S6InIdSXNX0xtynhgaP0sM
-X-Received: by 2002:adf:e509:: with SMTP id j9mr54354636wrm.76.1546843181342;
-        Sun, 06 Jan 2019 22:39:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546843181; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3131391wrt;
+        Sun, 6 Jan 2019 22:32:44 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7f3Jx2hOc59CjKLoqpmoS+DNOvgpjWEUQXvOkei4ACcFRSfcjZ2RkpLDIz5FKmkbMd6GRV
+X-Received: by 2002:a1c:2b01:: with SMTP id r1mr7485250wmr.7.1546842764433;
+        Sun, 06 Jan 2019 22:32:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546842764; cv=none;
         d=google.com; s=arc-20160816;
-        b=oO/2pk18rr7DK5jT3M2qRN6rAIDD3WA2W/qU79aZLwZDepKZjjSAfKvEQiP3rnaV14
-         0MEj2avWn75kZg7oYzsL9UbIYxqGz7bv0NlIsSo61ie9SJ7vYbnQOg2BN2DGWCQrkE41
-         nA9QQmKVOHBUG+eT2rBucro3S1O3NZbBFHXEaCPrCWMqD3tSxuLzKYBamR482ZrZyk3l
-         CGQ0fJ2uTbcZH0hZQozzUsQKafZb0a8utHXrvAjjpM7zS3tZa3nJEnH313mpOqASZlD2
-         wnFJutsWN4GRR6slsnQb/ReEAaXK6gxrCho8+2uD4FIQmTvlOH7phPD8s/guH+XgbHY0
-         GFuA==
+        b=xmQlWfFDwxKw0p07UjakOFxA4vJBMuRMjBfIWthVvRUO4PPrYD+SSqA/uAMt9FDa0e
+         ZAUycY3EPjO4b6T1E4NZcfptzZ6iUggQtWamllLnTnn3gJVg4mN/KOdgfuZqEKAiu4+5
+         Bsm4xu9A9aS41cMQZTui5ITcYeCXXLJdy7mbFHqsrvl2BVpZEe0E9st07aiKMjvU+Kgd
+         kjtaxPYTjoMBvev91RfmZn2y3i977NOClmUXE90PGvnHkfSH+m7vduOA0xB9d6j7I8Ke
+         JA/9lIW25gvEiJerr8aL4KP/oCpfojHt389YcXiLY5pQy8nHDb6fRq0M6nFbUYprzB6U
+         ELxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=wOpiNdhU8Ubv+Q3JVeNPHqmKTQOkXAxrSZKwJY50WXE=;
-        b=GAgOESswqaW+aFJ5JdN8MVzCnCoqSTMOGGs1HL3gFP95blLqErb5d7/fsb180Lg9gN
-         jlOLDstQ3tq9kJ2ht9Cf265n3+9O3twqgCOjat+2IOqVxKsa10o/HWLtKgd6jYz6keeq
-         p4EpiLux1tdVDMoB++TRb7P7Jn6okTro8LzrfuZdKR5lXiboFvKpDQffWunlbjtCgo9V
-         h9uzmyCMOumcYxWbonOHsm/zmSPSaF9hFK2bEvqhRRxC1L7GX5tUGQpB/RL/TOyNO5xB
-         EgXKF6ilnLVLZSkC8Z3M6g2jyuhLI1SRzAj9bHQuquzLS3Q9cVbpsMktjpM0IQQkLrni
-         fTyA==
+        bh=BZiZau94X4F3wMmXQdZwr7ylusPDvrCJxHca/9oowQ0=;
+        b=04McT3O/we/XjZUe2YxBIaGwl0Gyi/KffqfV6TyekREl9mFgcZHXBa99r2PvmOsmTV
+         erlLYe+vKf7URiNDlc7da7iAOAsUqKWnzIoLkn8Aa/IpLODvnUgy88uCubGVxb3oVII3
+         XNM5i69OZOUz1f/wbNHAn9gE2f41FjzFZim/Kr+om7Ivxyo4B2oBJ1T31itBNvXkdXgd
+         Sd1TqWIbhVhfpBMX9z4ZfQIhTZ2ug1wzFduUqzYzW3H5ggRZcwyVodILCOiEM7uoih+z
+         ZgjPZ6/+zCW9PbNzUZC63KLETrrJLxCseWNdv5LkHaA6tPnN45GD/n9siVGd/9zvadoI
+         IA+g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18si34785666wrx.293.2019.01.06.22.39.41
+        by mx.google.com with ESMTPS id b8si4490033wmc.115.2019.01.06.22.32.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 06 Jan 2019 22:39:41 -0800 (PST)
+        Sun, 06 Jan 2019 22:32:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:48040 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:46220 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ggOZY-0000qo-Cv
-	for alex.bennee@linaro.org; Mon, 07 Jan 2019 01:39:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47929)
+	id 1ggOSp-0008Bh-GL
+	for alex.bennee@linaro.org; Mon, 07 Jan 2019 01:32:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggOZQ-0000qc-HK
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 01:39:33 -0500
+	(envelope-from <thuth@redhat.com>) id 1ggOSe-0008BS-UN
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 01:32:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggOZO-0006lR-EL
-	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 01:39:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35938)
+	(envelope-from <thuth@redhat.com>) id 1ggOSd-0004Md-Tp
+	for qemu-arm@nongnu.org; Mon, 07 Jan 2019 01:32:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38454)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggOZM-0006H3-C1; Mon, 07 Jan 2019 01:39:30 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1ggOSd-0004Gf-K8; Mon, 07 Jan 2019 01:32:31 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 40E5537E85;
-	Mon,  7 Jan 2019 06:39:22 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BDFC5C049580;
+	Mon,  7 Jan 2019 06:32:24 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CB477100194B;
-	Mon,  7 Jan 2019 06:39:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9768A60C46;
+	Mon,  7 Jan 2019 06:32:08 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-6-philmd@redhat.com>
+	<20190104175847.6290-4-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,23 +111,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <ddc16ba0-339e-2d6a-5771-f63f8f084b8c@redhat.com>
-Date: Mon, 7 Jan 2019 07:39:04 +0100
+Message-ID: <5d940a10-85c9-7361-86e0-99f9e1e8e737@redhat.com>
+Date: Mon, 7 Jan 2019 07:32:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-6-philmd@redhat.com>
+In-Reply-To: <20190104175847.6290-4-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 07 Jan 2019 06:39:22 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 07 Jan 2019 06:32:26 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 05/16] hw/devices: Move Blizzard declarations
- into a new header
+Subject: Re: [Qemu-arm] [PATCH 03/16] hw/devices: Remove unused TC6393XB_RAM
+ definition
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -155,112 +155,32 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KoOMOOILICwg
+X-TUID: 9fbo3KeEj3km
 
 On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
+> Introduced in 64b40bc54a9, this definition is no more used since
+> a0b753dfd39. Remove it.
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  MAINTAINERS                   |  1 +
->  hw/arm/nseries.c              |  1 +
->  hw/display/blizzard.c         |  2 +-
->  include/hw/devices.h          |  7 -------
->  include/hw/display/blizzard.h | 21 +++++++++++++++++++++
->  5 files changed, 24 insertions(+), 8 deletions(-)
->  create mode 100644 include/hw/display/blizzard.h
+>  include/hw/devices.h | 1 -
+>  1 file changed, 1 deletion(-)
 >=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index dff4b98401..156ce9a698 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -640,6 +640,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Odd Fixes
->  F: hw/arm/nseries.c
-> +F: include/hw/display/blizzard.h
-
-While you're at it, also add an entry for hw/display/blizzard.c here?
-
->  Palm
->  M: Andrzej Zaborowski <balrogg@gmail.com>
-> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-> index 906b7ca22d..9521be1cef 100644
-> --- a/hw/arm/nseries.c
-> +++ b/hw/arm/nseries.c
-> @@ -31,6 +31,7 @@
->  #include "hw/boards.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/devices.h"
-> +#include "hw/display/blizzard.h"
->  #include "hw/block/flash.h"
->  #include "hw/hw.h"
->  #include "hw/bt.h"
-> diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-> index 291abe6fca..471bd0ed99 100644
-> --- a/hw/display/blizzard.c
-> +++ b/hw/display/blizzard.c
-> @@ -21,7 +21,7 @@
->  #include "qemu/osdep.h"
->  #include "qemu-common.h"
->  #include "ui/console.h"
-> -#include "hw/devices.h"
-> +#include "hw/display/blizzard.h"
->  #include "ui/pixel_ops.h"
-> =20
->  typedef void (*blizzard_fn_t)(uint8_t *, const uint8_t *, unsigned int=
-);
 > diff --git a/include/hw/devices.h b/include/hw/devices.h
-> index 5ad134232c..25f895b330 100644
+> index 0e27feb0c2..4019b3be17 100644
 > --- a/include/hw/devices.h
 > +++ b/include/hw/devices.h
-> @@ -28,13 +28,6 @@ void tsc2005_set_transform(void *opaque, MouseTransf=
-ormInfo *info);
->  /* stellaris_input.c */
->  void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
+> @@ -51,7 +51,6 @@ void retu_key_event(void *retu, int state);
 > =20
-> -/* blizzard.c */
-> -void *s1d13745_init(qemu_irq gpio_int);
-> -void s1d13745_write(void *opaque, int dc, uint16_t value);
-> -void s1d13745_write_block(void *opaque, int dc,
-> -                void *buf, size_t len, int pitch);
-> -uint16_t s1d13745_read(void *opaque, int dc);
-> -
->  /* cbus.c */
->  typedef struct {
->      qemu_irq clk;
-> diff --git a/include/hw/display/blizzard.h b/include/hw/display/blizzar=
-d.h
-> new file mode 100644
-> index 0000000000..8132557da1
-> --- /dev/null
-> +++ b/include/hw/display/blizzard.h
-> @@ -0,0 +1,21 @@
-> +/*
-> + * Epson S1D13744/S1D13745 (Blizzard/Hailstorm/Tornado) LCD/TV control=
-ler.
-> + *
-> + * Copyright (C) 2008 Nokia Corporation
-> + * Written by Andrzej Zaborowski <andrew@openedhand.com>
-
-I don't think that this e-mail address is still valid since that company
-has been bought up > 10 years ago... so it likely does not make sense to
-mention it in new files anymore. So just mention the name?
-
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +#ifndef HW_DISPLAY_BLIZZARD_H
-> +#define HW_DISPLAY_BLIZZARD_H
-> +
-> +#include "hw/irq.h"
-> +
-> +void *s1d13745_init(qemu_irq gpio_int);
-> +void s1d13745_write(void *opaque, int dc, uint16_t value);
-> +void s1d13745_write_block(void *opaque, int dc,
-> +                          void *buf, size_t len, int pitch);
-> +uint16_t s1d13745_read(void *opaque, int dc);
-> +
-> +#endif
+>  /* tc6393xb.c */
+>  typedef struct TC6393xbState TC6393xbState;
+> -#define TC6393XB_RAM	0x110000 /* amount of ram for Video and USB */
+>  TC6393xbState *tc6393xb_init(struct MemoryRegion *sysmem,
+>                               uint32_t base, qemu_irq irq);
+>  void tc6393xb_gpio_out_set(TC6393xbState *s, int line,
 >=20
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I think I'd simply squash this into the next patch and mention it in the
+patch description there that you removed the #define.
+
+ Thomas

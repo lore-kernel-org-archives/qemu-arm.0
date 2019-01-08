@@ -1,234 +1,230 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4775659wrt;
-        Tue, 8 Jan 2019 08:31:07 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN77gMcJ510D+yLVYqpD4RST+IVqT5spS1dHA6YtcCB3INWq3gSNpqJi1ZdZ6GbyuY7KBDbb
-X-Received: by 2002:a1c:c10f:: with SMTP id r15mr2314769wmf.27.1546965067716;
-        Tue, 08 Jan 2019 08:31:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546965067; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4781735wrt;
+        Tue, 8 Jan 2019 08:36:57 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7h/KrtBKFwufysk+jTICB1g7Z1SI8AxMGepIsN/p7KV8ndOn/8QXk8/h4c+AlPL0Goa9rd
+X-Received: by 2002:a1c:544f:: with SMTP id p15mr2299238wmi.37.1546965417549;
+        Tue, 08 Jan 2019 08:36:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546965417; cv=none;
         d=google.com; s=arc-20160816;
-        b=fFboeV+Fp1XdvJ2PNupkioCTYVAur0xJhpzR6VP6qHbiDTxHPiGOvQCUewQOg5S0nH
-         9rMYCiJ4uwyODFGJriK0o0pGWsyf5jAHunqyPMCOVMpiO/9/mLSi/cb+1RNccsAHhC+R
-         +br3LGaWRQE9MenUJoncb9YnTKHUDyUxU3w20GPeOkm4DXNjJMwnTUOGOiLkEYk9gXFk
-         U2/TAmmXz6SZhCgRfbqVcA8Yr7KMJIYlVEB11qVSn+1SxydJVv2erwrasCV0XyMum37k
-         6Es3zjh8fkL+8486+BKnCEpeCkUXMEsXZ9dxcPYBj2lwErP8XevnQ5DDdah+NPFBL6+v
-         46VQ==
+        b=FVcMDSOd4asoHtf2BiYwlS4YDbuRaRPbr1ROFGm4sCivigHA61Gt70u2TpxyXOsqm9
+         3T5i7DeAZInW1liqTIR38adXRfo/H0h8dvDqzxvXLJ1RBVpIMq90VQmctwxpf+2/oQMn
+         Fwg+em748e+7U98cJhQlnoOYa5hywX0kYdSEhay3F/gymoLj7adXtjTTnqGbS+izqin2
+         zkrTqHYJfMVyP8qTDxhdD9aV3JI0bvd/rkDpiQLJY6wq799tWA4U3ZQQcdtS9Bn3MALA
+         ZXDwI7vgmSUD5ysqegqv7xJ8APOY57AJQIZttnq33iIldDJc3vSEpDVRe2xR9eHB8T90
+         IxzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=tVBDZIH4LGBduiNzI6RI1Bk43qY5icfsauGs6xKHS7A=;
-        b=x57AHLvDUaY6MaZoGEPLiWK4kjKMErfARsN07/drMdjztrMBy/25bh/TEn3WlUwxW7
-         /1x+8rd/ddL7JB3crkc750c1WasZgFHPlpqdmb6+KWxVfnhnrqwRCHF/0nsjFMlEo2YS
-         AHODpFMumYdJnF8OMnP24Vw+JZz5n4WuKblOoIdoid5TAtZCVNoGB9NBwxfjA6Ol0Jc3
-         /m1Ucvx3Y83idVtGA34RxAq/pwtmXyo1GGgO31XbaNaX3N6iX0Ezyd2GWdLn8ZxgdZO5
-         deGo974m7UV8CxTopcO7kG6cpb0KHa2XSv0hjFWb7F96cdfu4mcoTxCoQ850oniLXPz4
-         bZOg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=TATC/GqsN/FgHq4MryhWjntMwp6JF75V7wv+ciYOThE=;
+        b=w1cE47ZxChHqrsqLHUjd7v/9PCyMMv/anRGdRt5J2lTAN1tUIkX+oHG4bFhX1daT/Q
+         iUsP0iGPwWoZvRJ96dGMTQBkQlIAhcux/B0RqywtmrWoGWzqP2GOpgvmTCEUhGmSkl3g
+         1Znp+mxzq/nOMZbEzcHFn50JLNg14Pq0iem5PENI3940bmX+llC+xM57YTJqyfY7rpxA
+         LHXI76xlyq52eZuExM3Dlblsl5had5zJItdo7fc5maScHeaWARSj0jXiohE5TCtX0pwn
+         QyMIO9gf2h+YY1phKtpS+VxjlxySBAb5v91/7WZAKkWkDZUAkrXeWNOhPmDQrToMG0e8
+         JYtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DGIBz0Vk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12si39438328wri.426.2019.01.08.08.31.07
+        by mx.google.com with ESMTPS id t2si7291907wmd.99.2019.01.08.08.36.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Jan 2019 08:31:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Jan 2019 08:36:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DGIBz0Vk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:54641 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:55351 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gguHR-0002xv-N0
-	for alex.bennee@linaro.org; Tue, 08 Jan 2019 11:31:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51415)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gguN0-0007fe-L7
+	for alex.bennee@linaro.org; Tue, 08 Jan 2019 11:36:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53997)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gguGm-0002ly-Qj
-	for qemu-devel@nongnu.org; Tue, 08 Jan 2019 11:30:28 -0500
+	(envelope-from <mail@steffen-goertz.de>) id 1gguLq-0006xs-7k
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:35:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gguGb-0003ey-Cc
-	for qemu-devel@nongnu.org; Tue, 08 Jan 2019 11:30:20 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40796)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gguGb-0003Zy-5E
-	for qemu-devel@nongnu.org; Tue, 08 Jan 2019 11:30:13 -0500
-Received: by mail-wm1-x341.google.com with SMTP id f188so5021550wmf.5
-	for <qemu-devel@nongnu.org>; Tue, 08 Jan 2019 08:30:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=tVBDZIH4LGBduiNzI6RI1Bk43qY5icfsauGs6xKHS7A=;
-	b=DGIBz0VkDWcSuOvIwNLJ8yW/jRgATRKWF5EE6wl2O8DpQVxbcnFjZhKqSTTw6t1+wp
-	F9q3RQ59UrMKS65IdstRyPh+SMxzcjrLvJuzaU4yBilPfm6+m1EQcWw3/5PaId/2gnOr
-	4FFlUSm0df4fttlB4h1zuUyCIINXZY0L+1e9Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=tVBDZIH4LGBduiNzI6RI1Bk43qY5icfsauGs6xKHS7A=;
-	b=LUsnovsk9rzEqgssu4sDa9ka3mIYoRBCsmjyss8lNASScwfplqGh+floLJC1XGKu7F
-	OF7yFnhEvPyrHOXGpU68NnqdNeSkzmYHAJ/9XrcJj5HUAthC07N4dJwCAsg3vXpe9KjD
-	iR2iIo1tLMD9z/tANH5+vPP9rKlMhTV3IZhxMfUX2+sC924z6rrfOPfHCoLqT4mZ1Ag1
-	2SpL4huIfzxv/O9xztU95p/NZDEWs0rNHIPhVCn8PxlvVOe3qDeVDTEjUARg2vXGs01P
-	F3TwskcAbvZgVcTND4PEPpjOpCy5iv1BSGm7RmmMJOsPiogmIPRdzyZ/hTZ5yevXNfR2
-	FGgA==
-X-Gm-Message-State: AJcUuke5LlQcZgiVXyORFNQ7fRSNYvxOWL+pk4Iw3fxYhCVcHGzadthx
-	ukZGb2KfWETG3Cvay3eL491g+w==
-X-Received: by 2002:a7b:c181:: with SMTP id y1mr2344410wmi.10.1546965010821;
-	Tue, 08 Jan 2019 08:30:10 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	x81sm11278839wmg.17.2019.01.08.08.30.09
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 08 Jan 2019 08:30:10 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue,  8 Jan 2019 16:30:04 +0000
-Message-Id: <20190108163008.7006-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.19.2
+	(envelope-from <mail@steffen-goertz.de>) id 1gguLn-0008Af-80
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:35:37 -0500
+Received: from steffen-goertz.de ([88.198.119.201]:46402)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mail@steffen-goertz.de>)
+	id 1gguLm-0007vg-26; Tue, 08 Jan 2019 11:35:35 -0500
+Received: from [192.168.2.112] (p4FDCC8A8.dip0.t-ipconnect.de [79.220.200.168])
+	by steffen-goertz.de (Postfix) with ESMTPSA id C2B9D52942;
+	Tue,  8 Jan 2019 17:30:20 +0100 (CET)
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+References: <20190105144429.8702-1-stefanha@redhat.com>
+From: =?UTF-8?Q?Steffen_G=c3=b6rtz?= <mail@steffen-goertz.de>
+Openpgp: preference=signencrypt
+Message-ID: <598e64e2-ea00-2ef3-ba21-1c5511aa6410@steffen-goertz.de>
+Date: Tue, 8 Jan 2019 17:35:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: [Qemu-devel] [PATCH 0/4] tcg: support heterogenous CPU clusters
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20190105144429.8702-1-stefanha@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 88.198.119.201
+Subject: Re: [Qemu-arm] [PATCH] arm: Stub out NRF51 TWI
+ magnetometer/accelerometer detection
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>, patches@linaro.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /+SzZKYDFc6H
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
+	contrib@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
+	jusual@mail.ru
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: n8bvAs3wR4Er
 
-Currently, TCG implicitly assumes that all CPUs are alike,
-because we have a single cache of generated TBs and we
-don't account for which CPU generated the code or is looking
-for the TB when adding or searching for generated TBs.
-This can go wrong in two situations:
- (1) two CPUs have different physical address spaces
-     (eg CPU 1 has one lot of RAM/ROM, and CPU 2 has
-     different RAM/ROM): the physical address alone is
-     then not sufficient to distinguish what code to run
- (2) two CPUs have different features (eg FPU vs no FPU):
-     since our TCG frontends bake assumptions into the
-     generated code about the presence/absence of features,
-     if a CPU with FPU picks up a TB for one generated
-     without an FPU it will behave wrongly
-     
-This is unfortunate, because we already have one board in
-the tree which has a heterogenous setup: the xlnx-zcu102.
-This board has 4xCortex-A53 and 2xCortex-R5F. Although
-most "normal" guest code doesn't run into this, it is
-possible to demonstrate the bug with it. There's a test case
-at http://people.linaro.org/~peter.maydell/xlnx-het.tgz
-which arranges to run a fragment of code in AArch32 which
-should behave differently on the two CPUs, but does not
-(either the A53 gets the behaviour the R5 should have, or
-vice-versa).
+Signed-off by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 
-This patchset adds the "cluster ID" to the set of things
-we include in the TCG TB hash, which means that the two
-sets of CPUs in this board can no longer accidentally
-get TBs generated by the other cluster. It fixes the
-bug demonstrated by the test case.
-
-Design notes:
-
- * Adding cluster ID to the hash is RTH's suggestion. It might
-   also be possible to make each cluster have a TCGContext
-   code generation context, and have the CPUs use the right
-   one for the cluster, but that would be a lot more code
-   rework compared to this approach.
- * I put the cluster number in the existing cflags, since
-   we have plenty of spare bits there. If in future we
-   need either more than 256 clusters (unlikely) or want
-   to reclaim bits in the cflags field for some other
-   purpose we can always extend our xxhash from 28 to 32 bytes.
-   (I actually wrote the patch to do that before realising
-   I didn't need it...)
- * The cluster object now fills in the CPU object's
-   cluster_index field when the cluster object is realized.
-   This imposes an ordering constraint that all CPUs must
-   be added to a cluster before realizing the cluster. That's
-   not a big deal, except that unfortunately QOM provides
-   no way that I could find to enforce this. If anybody
-   has a suggestion for a better approach that would be great.
-   Patch 1 therefore makes sure our only current user of the
-   cluster feature obeys the ordering constraint.
- * Patch 4 is a tidyup to the gdbstub code which is possible
-   now that the CPUState struct has the cluster ID in it.
-
-I believe that this fix is basically all we need to support
-heterogenous setups (assuming of course that you just mean
-"within an architecture family" like Arm, rather than
-systems with say both an Arm and a Microblaze core in them).
-The other things I have considered are:
-
- * code that calls cpu_physical_memory_read() and friends,
-   uses address_space_memory, or otherwise assumes there's
-   only a single view of "CPU memory": I sent some patches
-   out before Christmas that fixed these in generic code
-   like the monitor and disassembler. There are also some
-   uses in target-arch or device-specific code, which I
-   think we can in practice ignore unless/until we come to
-   implement a board that is heterogenous and also uses those
-   devices or target architectures.
- * handling of TB invalidation: I think this should Just Work,
-   because tb_invalidate_phys_addr() takes an AddressSpace+hwaddr,
-   which it converts into a ramaddr for (the badly misnamed)
-   tb_invalidate_phys_page_range(). So the TB caching all works
-   on ramaddrs, and if CPU 1 writes to some ram X that's mapped
-   at physaddr A for it but at physaddr B for CPU 2, we will
-   still correctly invalidate any TBs that CPU 2 had for code
-   that from its point of view lives at physaddr B.
-   Note that translate-all.c has a single l1_map[] structure
-   which will have PageDesc entries for pages for all CPUs in
-   the system. I believe this is OK because the only thing
-   we use them for is TB invalidation.
- * dirty memory tracking: like TB invalidation, this is OK
-   because it all works either on MemoryRegions or on ramaddrs,
-   not on physaddrs.
-
-Have I missed anything that we also need to fix ?
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  hw/arm/xlx-zynqmp: Realize cluster after putting RPUs in it
-  qom/cpu: Add cluster_index to CPUState
-  accel/tcg: Add cluster number to TCG TB hash
-  gdbstub: Simplify gdb_get_cpu_pid() to use cpu->cluster_index
-
- include/exec/exec-all.h   |  4 +++-
- include/hw/cpu/cluster.h  | 19 ++++++++++++++++
- include/qom/cpu.h         |  7 ++++++
- accel/tcg/cpu-exec.c      |  4 ++++
- accel/tcg/translate-all.c |  3 +++
- gdbstub.c                 | 48 ++++-----------------------------------
- hw/arm/xlnx-zynqmp.c      |  4 ++--
- hw/cpu/cluster.c          | 33 +++++++++++++++++++++++++++
- qom/cpu.c                 |  1 +
- 9 files changed, 77 insertions(+), 46 deletions(-)
-
--- 
-2.19.2
-
+On 05.01.19 15:44, Stefan Hajnoczi wrote:
+> From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+>=20
+> Recent microbit firmwares panic if the TWI magnetometer/accelerometer
+> devices are not detected during startup.  We don't implement TWI (I2C)
+> so let's stub out these devices just to let the firmware boot.
+>=20
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Based-on: <20190103091119.9367-1-stefanha@redhat.com>
+> ---
+> Steffen: Please post your Signed-off-by.  I did some minor cleanups so
+> your patch can be merged.  Thanks!
+>=20
+>  include/hw/arm/nrf51.h     |  1 +
+>  include/hw/arm/nrf51_soc.h |  1 +
+>  hw/arm/nrf51_soc.c         | 62 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 64 insertions(+)
+>=20
+> diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
+> index 175bb6c301..5411121b66 100644
+> --- a/include/hw/arm/nrf51.h
+> +++ b/include/hw/arm/nrf51.h
+> @@ -25,6 +25,7 @@
+>  #define NRF51_IOMEM_SIZE      0x20000000
+> =20
+>  #define NRF51_UART_BASE       0x40002000
+> +#define NRF51_TWI_BASE        0x40003000
+>  #define NRF51_TIMER_BASE      0x40008000
+>  #define NRF51_TIMER_SIZE      0x00001000
+>  #define NRF51_RNG_BASE        0x4000D000
+> diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+> index e06f0304b4..fbdefc07e4 100644
+> --- a/include/hw/arm/nrf51_soc.h
+> +++ b/include/hw/arm/nrf51_soc.h
+> @@ -39,6 +39,7 @@ typedef struct NRF51State {
+>      MemoryRegion sram;
+>      MemoryRegion flash;
+>      MemoryRegion clock;
+> +    MemoryRegion twi;
+> =20
+>      uint32_t sram_size;
+>      uint32_t flash_size;
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> index 1630c27594..265438f916 100644
+> --- a/hw/arm/nrf51_soc.c
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -32,6 +32,11 @@
+>  #define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
+>  #define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
+> =20
+> +#define NRF51_TWI_EVENT_STOPPED 0x104
+> +#define NRF51_TWI_EVENT_RXDREADY 0x108
+> +#define NRF51_TWI_EVENT_TXDSENT 0x11c
+> +#define NRF51_TWI_REG_RXD 0x518
+> +
+>  #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
+> =20
+>  static uint64_t clock_read(void *opaque, hwaddr addr, unsigned int siz=
+e)
+> @@ -53,6 +58,58 @@ static const MemoryRegionOps clock_ops =3D {
+>      .write =3D clock_write
+>  };
+> =20
+> +/* Two-Wire Interface (TWI) is not implemented but the microbit-dal fi=
+rmware
+> + * panics if the TWI accelerometer and magnetometer WHO_AM_I registers=
+ cannot
+> + * be read.  Stub out this read sequence so microbit-dal starts up.
+> + */
+> +static uint32_t twi_read_sequence[] =3D {0x5A, 0x5A, 0x40};
+> +static uint32_t twi_regs[0x1000 / 4];
+> +
+> +static uint64_t twi_read(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    static int i;
+> +    uint64_t data =3D 0x00;
+> +
+> +    switch (addr) {
+> +    case NRF51_TWI_EVENT_STOPPED:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_EVENT_RXDREADY:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_EVENT_TXDSENT:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_REG_RXD:
+> +        data =3D twi_read_sequence[i];
+> +        if (i < ARRAY_SIZE(twi_read_sequence)) {
+> +            i++;
+> +        }
+> +        break;
+> +    default:
+> +        data =3D twi_regs[addr / 4];
+> +        break;
+> +    }
+> +
+> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u] =3D %" PRIx3=
+2 "\n",
+> +                  __func__, addr, size, (uint32_t)data);
+> +
+> +
+> +    return data;
+> +}
+> +
+> +static void twi_write(void *opaque, hwaddr addr, uint64_t data,
+> +                      unsigned int size)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " =
+[%u]\n",
+> +                  __func__, addr, data, size);
+> +    twi_regs[addr / 4] =3D data;
+> +}
+> +
+> +static const MemoryRegionOps twi_ops =3D {
+> +    .read =3D twi_read,
+> +    .write =3D twi_write
+> +};
+> =20
+>  static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+>  {
+> @@ -156,6 +213,11 @@ static void nrf51_soc_realize(DeviceState *dev_soc=
+, Error **errp)
+>      memory_region_add_subregion_overlap(&s->container,
+>                                          NRF51_IOMEM_BASE, &s->clock, -=
+1);
+> =20
+> +    memory_region_init_io(&s->twi, NULL, &twi_ops, NULL,
+> +                          "nrf51_soc.twi", 0x1000);
+> +    memory_region_add_subregion_overlap(&s->container,
+> +                                        NRF51_TWI_BASE, &s->twi, -1);
+> +
+>      create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
+>                                  NRF51_IOMEM_SIZE);
+>      create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
+>=20

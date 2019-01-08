@@ -1,113 +1,198 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1658230wrt;
-        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
-X-Received: by 2002:aca:4d8f:: with SMTP id a137mr6377152oib.168.1547116460387;
-        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547116460; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4499888wrt;
+        Tue, 8 Jan 2019 03:53:17 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5bjvmIVzkMuhP7oNI6+ZF5VNhCBbs8lQMIF0GOFSTDbKbWMoVn5vmAxtHweGl4Q6rkut54
+X-Received: by 2002:a5d:40c1:: with SMTP id b1mr1280295wrq.133.1546948397503;
+        Tue, 08 Jan 2019 03:53:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546948397; cv=none;
         d=google.com; s=arc-20160816;
-        b=ovgRcDMrF+eF2omeHxGZiM4LGqLnzqeQeTtsORqQb+jssYBYV+5JGil+lNO6UycqMu
-         0SIOCzKMxaDPQLT7AJjSHuDG90XLnr6iU5lkkpjLIFoSZFpsTYnHNa4a6VqRcYnDTFZM
-         8XdKN5H1HJLpjJ8DNxHUm2wb+m6lgu7NYMt6wK25GI/hHVrb5yCWFVxx5Tynl9UihiE2
-         9ND8wE12qVvmgtgBRA5+Xkv1B4ni3VDEdhzuo8JdLetDBDeYcgyIIlBY+5AJazqRDI3c
-         tpyo18s+wpNEyRPnT0KjPenGhYfkf1G+VrTT/uzW9inhaj+uE6iI6Uc3dYtMHZs034Ru
-         6m8g==
+        b=W5HOoB7hs8l9eEUvLcp1Z8uy8Dn12U1CXoNhryd8Ppqh+hQ+PFzOp5z89FwdGmNXi2
+         0MTvTauTCucWjWhutuzV5ay4L5mTNbYFGqenW7wPufFtsz80uMcsLeRpMmeGJ0BW0/Ud
+         M/J1cpBAFmZ+GAWTAKoepHL/psCdHTfAUNZ8Bj2MPBloen5fbXjsGcbqKRTIon9LUBNg
+         uEqfUt4/CKzdjLgcLv8q7aWxP9FzLgq71xK5NacXnNs7TBg4u+JQ4Ny6g2hvtr47Usk8
+         tGwR3PW5bRDCevjAO9tFFoHlkkuvdvDPU1gjOF7ZTmNI2AsrFgSvtANQMqm1821pTE6i
+         F+Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
-        b=NRCm+So6mB59ro0Q20c0hcXZr3Omvi6bedUJv+v2ZwTf+PZUpP2DqvFLhLGrOW+JfP
-         2mbN3caZbVFkzQ1TNTYt+FAAlgNTLEKPGJzGP3FmPAc2l6YCbWiWBBPnk6+fqkfG6IpX
-         216PaOxczbvagjQpAdsGbDgRJlMUTHKYCndKW4OEcN/3tF5U8ds5c7iOlkH+MyWrjbJY
-         8DszrlXfu3KedEwDnwYbWSiYxLXyGJYeZhMq/hroBzEStCInoXs6UkLy84HxG+WyScji
-         jZ7ea9+CkcuCoUDd3oiLekZnIHUR9NiDgUYve0+9e+BFy+B3IIXfJwvOBGc+o5AOkzug
-         to/A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=pNQ8r1DFcc89NhM6egdsCEB8nQILlP3WwTd2XDAQ2NQ=;
+        b=qjL5yx6Ae1qKJ4m/l2sBfXxg42MYy58Fkz2a41Qxlv3jrWpssozC+Q1bXqh/9L7919
+         J5um9GKQCpxsrtFxFciD/cLNYqHUh50ld62BXvhxWruRRzfbMqNO/5l+YOrPy9CU/Ttv
+         /ytO5W5eedyOkp1+C9icsc8gcNR3LxnltzuvGP9kj72BAZBu00/FEUbENFdUXu16ZVF0
+         ugQkon52KB5NGrpkC4JNsjEdVOLAiu7zajuFDLyL4/GbFsSkaa0Bo3pbwPJmfmc53lrA
+         Vz0CJdY1tzAGmane4e1eHD8CfwPyoKmm7rz+9ZkSC8mJUu6sTl4CmgZ+HfjMbeQC1DxY
+         PNCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WW+XQcbn;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c8sor32919086oia.31.2019.01.10.02.34.20
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZrGKuDMC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l14si37526588wrm.131.2019.01.08.03.53.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 08 Jan 2019 03:53:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WW+XQcbn;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
-        b=WW+XQcbnmf4/Uj/jZpn0yn5hL6AFxAqaCtx3r7d4wCjs3x69wv6lOYFLdx0YjkxaYE
-         uRx6G4frObyaIhV5kDrV5J33d5C4edb1/Uioac4+QnxZjf5ly95Q6SipFdld7+G0WClu
-         uyKxkeG4VuTNrqfXPpTNB9p3XngvkTkGKSv5g=
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZrGKuDMC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:49244 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ggpwa-0002yE-1K
+	for alex.bennee@linaro.org; Tue, 08 Jan 2019 06:53:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40022)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ggpwH-0002uX-FX
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 06:52:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ggpwG-0006Oo-Ms
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 06:52:57 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:37966)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ggpwG-0006HW-IE
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 06:52:56 -0500
+Received: by mail-ot1-x341.google.com with SMTP id e12so3232456otl.5
+	for <qemu-arm@nongnu.org>; Tue, 08 Jan 2019 03:52:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=pNQ8r1DFcc89NhM6egdsCEB8nQILlP3WwTd2XDAQ2NQ=;
+	b=ZrGKuDMCaxu682sOPGCG/9VZtBHiDSFC+9Dspzz7d/7+15o0IrHDOR5XMTbfD7gJbR
+	qqfwNQb84RO41U5SkDWxNSWb3X77t8+AuvdJArLwv7U768Y/PCmAHf9DD3VHIrzpy+rP
+	eP/myei1VKdd+JIpVK6bYXxLr83O2YirHWcD0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
-        b=iEejCBbw+U+ZUlawg5wIgj8ZIFasM1Ik0oRJcCAP/yUzikxf4dwDJ7ymQBewj1vR1/
-         dLe4juAHmXxeczUN/FrKMhTmVLnamhhl+9LBmV2bDyMA7Sbo2yUh+GquQJaDeLyIHsXE
-         +sT+OtrU28EJsa6JoOLJ/HClvqI82nVjEiUKzTAR1UmSRnfsBd/bBVJExKQzfYHqygvp
-         PVa4ajDf8+YuLYkBraNgz1rU4pfvYtG/bI3fUI5XEkgj41Nm5xNo/Kg9HQBjfejobONo
-         IUNLllE2nvgxRq6WrT+SWJ1oum9x6Axq0LRd9ifrH8TG3HeKqboexVTiqjDTX52ZHOnY
-         Ukzw==
-X-Gm-Message-State: AJcUukfxiMrRckL5pZDDSGSRFcuWK4QbiJwE0ECbSwZ0q/rIgrELeAkZ
-	r89hPOJ4Nl56aMwQHoMf0Q21RPandGCmxsm7nT5piPbClVs=
-X-Google-Smtp-Source: ALg8bN5cVLNzTT9tmtodtJPMNd2SyXGN4QBWvqZjZH6hvcIg8JwKrXS2reVcbgW6UIzBvAfgOXXco+qzqyyVh48lem4=
-X-Received: by 2002:aca:c501:: with SMTP id v1mr5878817oif.48.1547116459936;
- Thu, 10 Jan 2019 02:34:19 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=pNQ8r1DFcc89NhM6egdsCEB8nQILlP3WwTd2XDAQ2NQ=;
+	b=ncxExN/PUtwJuYFh4ja/zxWR1kZNVauCR+HCHWTLWDjuZzC3H7RyYPW3Ab6iJjKfCI
+	BLHYBiHod6Li/rtB1KvYfZ1MAUQmBo5PNkiaTKUNz2p/BJGxmQWEF7qeMFsbPQoox/XN
+	ixjlnyUdDPK10VqEDrwG4rnrfQSM2cKjkWqvvVTQO31CuLTQf4a1p2ubCiSESmv8p0Wx
+	A7f9RjsXSrOmVwOuiGz6J0EIiAwCKoHBZVov4AHh+kfl7aV6Y1YyTKkwS4g9C0TQBdzE
+	q6/zAgPkthjc9otrZRyAr0+O0mDw+7chre+Tq0jfr+Nl6qWAJNECqvd6ZyWdKkfp38/P
+	jUvw==
+X-Gm-Message-State: AJcUukdWqcf4R/Eu6JEMUSznh98NZGvZLTxLWZlwatkRfZreP7mxM1Wo
+	tAkhwis0ujibvfJI62YFdmCiEP74uA/A/TdKmBpY2A==
+X-Received: by 2002:a9d:6e8d:: with SMTP id a13mr943642otr.352.1546948373304; 
+	Tue, 08 Jan 2019 03:52:53 -0800 (PST)
 MIME-Version: 1.0
-References: <20190109152430.32359-1-agraf@suse.de> <CAFEAcA9zugZiWirk9QjqmAO9QKhLdCAWuG1PX5z7Nxm4O69aTg@mail.gmail.com>
- <CAFEAcA8Xzi8GjzUtzxbFzxdCS4kn0Cps+_bF70ZS0KnH0W8SvQ@mail.gmail.com>
- <92dba7da-f3fc-b7dc-6896-cf8d58cc7f17@suse.de> <CAFEAcA_sxvfHG6ryA4xHMfbwhDaRrF_+6xaef_0RqqH-7JESzQ@mail.gmail.com>
- <0673d8c0-16f0-49e7-f002-06491353cc6c@suse.de>
-In-Reply-To: <0673d8c0-16f0-49e7-f002-06491353cc6c@suse.de>
+References: <20190105144429.8702-1-stefanha@redhat.com>
+In-Reply-To: <20190105144429.8702-1-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jan 2019 10:34:08 +0000
-Message-ID: <CAFEAcA-duBwj2-DG=dQLo-448ca--+C6Fu54avwEFQ5D-bwy8A@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH] target/arm: Allow to switch from MON->HYP on AArch32
-To: Alexander Graf <agraf@suse.de>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Tom Rini <trini@konsulko.com>, 
-	Michal Simek <michal.simek@xilinx.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Stephen Warren <swarren@wwwdotorg.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Tue, 8 Jan 2019 11:52:42 +0000
+Message-ID: <CAFEAcA_NiH6Gj1_R6yUXKsgRjhnpqkYJ=84Ugd9t_mPd+af5Wg@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: U5oS507PvOWX
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH] arm: Stub out NRF51 TWI
+ magnetometer/accelerometer detection
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jZMs/jU9pyrF
 
-On Thu, 10 Jan 2019 at 06:43, Alexander Graf <agraf@suse.de> wrote:
+On Sat, 5 Jan 2019 at 15:02, Stefan Hajnoczi <stefanha@redhat.com> wrote:
 >
+> From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 >
+> Recent microbit firmwares panic if the TWI magnetometer/accelerometer
+> devices are not detected during startup.  We don't implement TWI (I2C)
+> so let's stub out these devices just to let the firmware boot.
 >
-> On 10.01.19 00:08, Peter Maydell wrote:
-> > On Wed, 9 Jan 2019 at 17:14, Alexander Graf <agraf@suse.de> wrote:
-> >>
-> >> On 01/09/2019 05:59 PM, Peter Maydell wrote:
-> >>> On Wed, 9 Jan 2019 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >>>> On Wed, 9 Jan 2019 at 15:26, Alexander Graf <agraf@suse.de> wrote:
-> >>>>> In U-boot, we switch from S-SVC -> MON -> HYP when we want to enter
-> >>>>> HYP mode. This dance seems to work ok (hence it's there in the code
-> >>>>> base), but breaks with current QEMU.
-> >>> PS: it would be helpful if the commit message said how u-boot
-> >>> is trying to go from Mon to Hyp -- some ways to try to do
-> >>> this are OK, and some are not, so whether it's supposed to
-> >>> work or not depends on what u-boot is actually doing...
-> >>
-> >> I don't fully understand all of it to be honest :). But the code is here:
-> >>
-> >> http://git.denx.de/?p=u-boot.git;a=blob;f=arch/arm/cpu/armv7/nonsec_virt.S
-> >>
-> >> What I managed to understand so far is that it goes to MON using the smc
-> >> #0 call and then changes SPSR so that on return (movs pc) the mode will
-> >> be different.
-> >
-> > Thanks -- yes, that's an exception return so it's the
-> > expected way to go from Mon to Hyp.
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Based-on: <20190103091119.9367-1-stefanha@redhat.com>
+> ---
+> Steffen: Please post your Signed-off-by.  I did some minor cleanups so
+> your patch can be merged.  Thanks!
 >
-> That was my understanding, yes. Do you still want me to change the
-> commit message to mention that or will you just do it when applying?
+>  include/hw/arm/nrf51.h     |  1 +
+>  include/hw/arm/nrf51_soc.h |  1 +
+>  hw/arm/nrf51_soc.c         | 62 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 64 insertions(+)
 
-I'll add a note when I apply it; thanks.
+>
+> +/* Two-Wire Interface (TWI) is not implemented but the microbit-dal firm=
+ware
+> + * panics if the TWI accelerometer and magnetometer WHO_AM_I registers c=
+annot
+> + * be read.  Stub out this read sequence so microbit-dal starts up.
+> + */
+> +static uint32_t twi_read_sequence[] =3D {0x5A, 0x5A, 0x40};
+> +static uint32_t twi_regs[0x1000 / 4];
+> +
+> +static uint64_t twi_read(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    static int i;
+> +    uint64_t data =3D 0x00;
+> +
+> +    switch (addr) {
+> +    case NRF51_TWI_EVENT_STOPPED:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_EVENT_RXDREADY:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_EVENT_TXDSENT:
+> +        data =3D 0x01;
+> +        break;
+> +    case NRF51_TWI_REG_RXD:
+> +        data =3D twi_read_sequence[i];
+> +        if (i < ARRAY_SIZE(twi_read_sequence)) {
+> +            i++;
+> +        }
+> +        break;
+> +    default:
+> +        data =3D twi_regs[addr / 4];
+> +        break;
+> +    }
+> +
+> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u] =3D %" PRIx32 =
+"\n",
+> +                  __func__, addr, size, (uint32_t)data);
+> +
+> +
+> +    return data;
+> +}
+> +
+> +static void twi_write(void *opaque, hwaddr addr, uint64_t data,
+> +                      unsigned int size)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
+u]\n",
+> +                  __func__, addr, data, size);
+> +    twi_regs[addr / 4] =3D data;
+> +}
+> +
+> +static const MemoryRegionOps twi_ops =3D {
+> +    .read =3D twi_read,
+> +    .write =3D twi_write
+> +};
 
+Can you put this in its own device in its own source file,
+please? This is too much device-specific code to have
+in the SoC's source file.
+
+thanks
 -- PMM

@@ -1,95 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4775035wrt;
-        Tue, 8 Jan 2019 08:30:31 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN49DTM4+ure54TDZErJg5mBZD0MiPKxYYhuMrMcOQhDieYH/XDh32GyCGUICmmw1nAFjyt4
-X-Received: by 2002:adf:b3c3:: with SMTP id x3mr1968391wrd.294.1546965031318;
-        Tue, 08 Jan 2019 08:30:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546965031; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4775399wrt;
+        Tue, 8 Jan 2019 08:30:54 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5V8wbJ1/Tb4KljbD+OgC3WQFbcnc1irSNP36W/ThPWWonSAz28bm8g9JPvrwF6zfhtHvqo
+X-Received: by 2002:a1c:b687:: with SMTP id g129mr2257980wmf.59.1546965054932;
+        Tue, 08 Jan 2019 08:30:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1546965054; cv=none;
         d=google.com; s=arc-20160816;
-        b=SzEONzdFGmw1E2L/2m77PyBg+t7yCwI55qSJTHZ/3dsYYtIU95b6d0JCXjN/U7l9HW
-         fzOJpjQF7/6qHiyVT2TBH98x9XA2du7TWiGbCM6o4qgqH3tj/6mw9Am2vm/1Uje/E4E1
-         syBDLC7ZpA196xMpiwMsOtDaCbp8INnmmQ0Lxd1rjv4b4hLs28nU4WiCSA2apQWIopOM
-         sT+XUOYIJhSQYp6x7yn5BNO/pHxTKYNSayrCzzv82GwDcyqDLjoiV756ey8HR9lhS+Kd
-         Pb1g7tPFWPK+a1KUf0XZGgYrNieHoiwsMrDia/85lifp5tsrYohWJ2xtohdrsDRGtegZ
-         /3AQ==
+        b=GVRXFIjSENINUG9MElt0+L5lEP8A9q17Z6Zd+/MRpTV8JcF7+B7LRBx7A8UIZ3jDxy
+         SJk81UcN8tFm7iVvQQeN9XXmksUybx+ihR2ixmlyYcGcmDsb0MXH9nbrveTffHEukxMc
+         hNSyU7KFn8qDi7kRptogDOZ+4HqXOa8DSl5xIizM6UjdFka+Py+qIrjUm9+wZMkGnfij
+         l5Xuy4Eoefxz0GgDHZqmqObnC218zKjvP5ODT4gOxD9A/TIwCo548fLHnrqtPtGfZKAO
+         gCFaqrV/NOm1BrGC7Tsk7yFP7LPkuZ2rT4SfV0jIHhTbNLISbEfQxq6HJVIsbLYiun35
+         N7gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=8TvLhHeHZ8C43Ib56UzJG7XSdaUbxT7qr+rCEbqz1Ng=;
-        b=XMgcG0jp8wLOjTqJWTrEYdFCofxYy9INy7OnDVdZbPFh2wU6JZeixzYrSxDzMbxADy
-         sWsu2Gcotj8yFhknvIFTcZa6Ahl9YIDBS7rXUsveY/cctJ0/HDzgM2Vk1Pkj7jJQUT+v
-         aWmfJfnbPAu9QhKwLHaGF3IWUxCmQ6/JOso1dklwntn6FVVLKmjtZCJbcKaShqcYjVly
-         y3n4vsjS/eAfMmAijn0z9NXqy5feonb8tECVKerG0mZ/zsHfhMjpv2VtQPpafNzeKiLj
-         1F4kkGF0IpKuPcs+IkcHSey6Uxno/fUN7AzRq8KrTqby1AQ6UaQo8vd44VOBgzdeX3SS
-         rl3A==
+        bh=lHw25Aq6KmkJUqEwitBkXgdSRY6pkgGYnAbHYsqk6tg=;
+        b=bhx4ULEv8XlMk//DFqD+nNhtHTckwV3THq0L80fSe3IvTj00uOiyQCkDnqnx2cDJi3
+         Sp5zXJvmmiXcOjPzOKy5p5dTAMEleh5AUVc24r6FNij8jwbQ3jCrTcMpu1T8RPAAs2Mz
+         MkbS0ArW6aDRn3TCDsIAUgCdluyBydX2nKIK/M3ZSEjkxiBrO2KwqS6/YSN1D5zovwM6
+         xgd1pdPnVKBZOT5qYH6hno9MQv5dcfCxmrT8Y3RDEKFfRaOZqoDU+2FIgJDgF2YZfyP8
+         gQKzfLE3AaWmwH0feM5xAzkdJdDSLb6Ia4kAaJ2XgFbb5oGi1peqp2EYRVfRrLbXBuyr
+         q6Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OD1j2net;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PFC02pyT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k132si7220711wmd.106.2019.01.08.08.30.31
+        by mx.google.com with ESMTPS id w18si37366350wro.157.2019.01.08.08.30.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 08 Jan 2019 08:30:31 -0800 (PST)
+        Tue, 08 Jan 2019 08:30:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OD1j2net;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PFC02pyT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:54604 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:54644 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gguGs-0002hl-CM
-	for alex.bennee@linaro.org; Tue, 08 Jan 2019 11:30:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51330)
+	id 1gguHD-0002zU-UD
+	for alex.bennee@linaro.org; Tue, 08 Jan 2019 11:30:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gguGe-0002gA-Oo
-	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:17 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gguGu-0002wD-2e
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gguGb-0003gD-Qb
-	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:14 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45042)
+	(envelope-from <peter.maydell@linaro.org>) id 1gguGk-0003zC-SS
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:26 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43167)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gguGb-0003eX-Jn
-	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:13 -0500
-Received: by mail-wr1-x444.google.com with SMTP id z5so4649575wrt.11
-	for <qemu-arm@nongnu.org>; Tue, 08 Jan 2019 08:30:13 -0800 (PST)
+	id 1gguGh-0003p8-31
+	for qemu-arm@nongnu.org; Tue, 08 Jan 2019 11:30:20 -0500
+Received: by mail-wr1-x442.google.com with SMTP id r10so4659864wrs.10
+	for <qemu-arm@nongnu.org>; Tue, 08 Jan 2019 08:30:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=8TvLhHeHZ8C43Ib56UzJG7XSdaUbxT7qr+rCEbqz1Ng=;
-	b=OD1j2netgEyGE6MXVCLp5wTzMppg3ETryCQe6xQ8ubpj8ybsL8WJMjh9ABEEzUeW60
-	F3DWwWLRHzcwrR9YDAYk9RFlqocA+R/js2DZ4pVue5Yzm53WPHsL+2EkYEGZy0podt1o
-	aga6nAqdRm8AgcPLXAEbpwGoxCSKvm/DcoiMU=
+	bh=lHw25Aq6KmkJUqEwitBkXgdSRY6pkgGYnAbHYsqk6tg=;
+	b=PFC02pyTYUTf7RVgboMHb9D890vfTPFjCqcMDUTi7873obKgsYCxfGUgXSthXTt196
+	OtFBZ19j3LcARz0wiN6DK23UhPjZLNU60Zc3hpmlGejtigi1pm9xKQDQdHq+qovfwPgw
+	b6kuvmHx39Agf/S49EDAMJ+gIXoTe7kAN/0TY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=8TvLhHeHZ8C43Ib56UzJG7XSdaUbxT7qr+rCEbqz1Ng=;
-	b=O9iBIDMD6iwAQPR/iqFeHt4H8fJZedePi6Ug3uwv3cKch2TdkOPsV50VMqCmq/DOT6
-	No0fA0HY9TaBri5JiC8H3HhrGDCyx8tS46XJDyMaEeUFUD80uUfPH5htvfFLG+/uUqxC
-	m+CP6FbTKyK0zorlTYmDS40J2MuPt5nN7P00KMxVbM2ZM7UDC41IwNv0I9+/ouV6ef48
-	7vZgrl3OTHeQFsvNKVMmNegLRc7yqHY3uC4T5U5r1vuk/+dsWA+mB+MMf1UJeK3PNcyA
-	9Zx3f/LGCqYphqGeRGFnsWdGRfOjeUoNJhcI6SYaj0htCf8dEKpdZfg/yW0Wnhz3TIlf
-	WpZQ==
-X-Gm-Message-State: AJcUukdTtkMdcp1f40JH+xRFlc7vg0NCODVosJhkbyZmojLcJCNWeWhO
-	pOuhQKUJt9yYVbmC63sD0vI5rZTuW5xRlw==
-X-Received: by 2002:a05:6000:100f:: with SMTP id
-	a15mr2074153wrx.298.1546965012378; 
-	Tue, 08 Jan 2019 08:30:12 -0800 (PST)
+	bh=lHw25Aq6KmkJUqEwitBkXgdSRY6pkgGYnAbHYsqk6tg=;
+	b=CywBxpV39AlKTG25WiQ7e9AEGVwrHYUm82rNf3+BjTNdtI+XyUu0P1npMfvrxijRXl
+	8sh/x2V6rr41/1RZzkBMpEM5qtWsZNx+kWQsy5hQIo1u+zLkK+DWbXNNgCwchwBgyPCw
+	FRGF8OeoOXGQdAUM6yiGlv2EiJtTCqmuml2cr51d1h7M3VFDWJFR1Ly+67vlV/wVqVNx
+	Fnzy+6wwQhvwP4zvw2gFy+u4InqkzT/Q5N5LaN31thTNCYkk/HeTW8OY3CX6Hqjze6b3
+	oeEPmBrgbkfANPFFWfGB1bx0jhmD93iL031Dx8JAynKRdOlaSUGm7V9gs5Lvq6og/iMz
+	f3wQ==
+X-Gm-Message-State: AJcUukfF86mQ5xP7anUFitNSim/xggi19rTM34Pu3o8Q67ra+2OgviGE
+	12YuUBArAMHgsp8RtGFnmOinh1vszzi5aA==
+X-Received: by 2002:a5d:47d1:: with SMTP id l17mr1925630wrs.319.1546965016893; 
+	Tue, 08 Jan 2019 08:30:16 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	x81sm11278839wmg.17.2019.01.08.08.30.10
+	x81sm11278839wmg.17.2019.01.08.08.30.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 08 Jan 2019 08:30:11 -0800 (PST)
+	Tue, 08 Jan 2019 08:30:16 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  8 Jan 2019 16:30:05 +0000
-Message-Id: <20190108163008.7006-2-peter.maydell@linaro.org>
+Date: Tue,  8 Jan 2019 16:30:08 +0000
+Message-Id: <20190108163008.7006-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20190108163008.7006-1-peter.maydell@linaro.org>
 References: <20190108163008.7006-1-peter.maydell@linaro.org>
@@ -97,9 +96,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH 1/4] hw/arm/xlx-zynqmp: Realize cluster after
- putting RPUs in it
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 4/4] gdbstub: Simplify gdb_get_cpu_pid() to use
+ cpu->cluster_index
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,42 +118,77 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0dXtmimNjutV
+X-TUID: pTAgbEXMGcPu
 
-Currently the cluster implementation doesn't have any constraints
-on the ordering of realizing the TYPE_CPU_CLUSTER and populating it
-with child objects. We want to impose a constraint that realize
-must happen only after all the child objects are added, so move
-the realize of rpu_cluster. (The apu_cluster is already
-realized after child population.)
+Now we're keeping the cluster index in the CPUState, we don't
+need to jump through hoops in gdb_get_cpu_pid() to find the
+associated cluster object.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/xlnx-zynqmp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ gdbstub.c | 48 +++++-------------------------------------------
+ 1 file changed, 5 insertions(+), 43 deletions(-)
 
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index c67ac2e64ac..370b0e44a38 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -183,8 +183,6 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
-                             &error_abort, NULL);
-     qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
+diff --git a/gdbstub.c b/gdbstub.c
+index bfc7afb5096..5d6cbea9d35 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -644,50 +644,12 @@ static int memtox(char *buf, const char *mem, int len)
  
--    qdev_init_nofail(DEVICE(&s->rpu_cluster));
+ static uint32_t gdb_get_cpu_pid(const GDBState *s, CPUState *cpu)
+ {
+-#ifndef CONFIG_USER_ONLY
+-    gchar *path, *name = NULL;
+-    Object *obj;
+-    CPUClusterState *cluster;
+-    uint32_t ret;
 -
-     for (i = 0; i < num_rpus; i++) {
-         char *name;
- 
-@@ -212,6 +210,8 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
-             return;
-         }
-     }
-+
-+    qdev_init_nofail(DEVICE(&s->rpu_cluster));
+-    path = object_get_canonical_path(OBJECT(cpu));
+-
+-    if (path == NULL) {
+-        /* Return the default process' PID */
+-        ret = s->processes[s->process_num - 1].pid;
+-        goto out;
+-    }
+-
+-    name = object_get_canonical_path_component(OBJECT(cpu));
+-    assert(name != NULL);
+-
+-    /*
+-     * Retrieve the CPU parent path by removing the last '/' and the CPU name
+-     * from the CPU canonical path.
+-     */
+-    path[strlen(path) - strlen(name) - 1] = '\0';
+-
+-    obj = object_resolve_path_type(path, TYPE_CPU_CLUSTER, NULL);
+-
+-    if (obj == NULL) {
+-        /* Return the default process' PID */
+-        ret = s->processes[s->process_num - 1].pid;
+-        goto out;
+-    }
+-
+-    cluster = CPU_CLUSTER(obj);
+-    ret = cluster->cluster_id + 1;
+-
+-out:
+-    g_free(name);
+-    g_free(path);
+-
+-    return ret;
+-
+-#else
+     /* TODO: In user mode, we should use the task state PID */
+-    return s->processes[s->process_num - 1].pid;
+-#endif
++    if (cpu->cluster_index == UNASSIGNED_CLUSTER_INDEX) {
++        /* Return the default process' PID */
++        return s->processes[s->process_num - 1].pid;
++    }
++    return cpu->cluster_index + 1;
  }
  
- static void xlnx_zynqmp_init(Object *obj)
+ static GDBProcess *gdb_get_process(const GDBState *s, uint32_t pid)
 -- 
 2.19.2
 

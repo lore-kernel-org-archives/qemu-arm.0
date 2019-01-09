@@ -1,168 +1,457 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp822654wrt;
-        Wed, 9 Jan 2019 08:31:29 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4uJNLKFN52EQ89ajO8pSju+BVqwyYFVub9UGOehJkRDMiMtxyc6iZOA/M52k1RVyXBkpzB
-X-Received: by 2002:adf:9484:: with SMTP id 4mr5315193wrr.98.1547051489166;
-        Wed, 09 Jan 2019 08:31:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547051489; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp874503wrt;
+        Wed, 9 Jan 2019 09:20:39 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7HGWUVR85fu5qckCffyd8rw7WukPFBdQNQZNjpTaJH32AaF0aiOtb8si39qUpwxgAXjKHZ
+X-Received: by 2002:adf:92a4:: with SMTP id 33mr5760562wrn.11.1547054439863;
+        Wed, 09 Jan 2019 09:20:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547054439; cv=none;
         d=google.com; s=arc-20160816;
-        b=WyiLYGB/tK4SGAwZ/k+fl7O6ZIepKYx0cp6CgIjhODoeKxxcFdU2C4O9buKLG8+VFZ
-         4fpqZRpC7QeWsREarlB9ZPpyV1jcdFg1CY+38HMgFjMZ3hltWNw8VV7Sy0GFPUGCvUyA
-         rw54VKVmWMkILZZFLvD5tUP42/8Fni/E7oHoGa0qWBi6EoHNe9aEbILQuoQngFFCEYmt
-         UXmwxDLn6NH5rUGpGscNd5gOP/jFeNOxAkddJejPxA5X5HvVOTBJls6H3zoY278wvGDl
-         uxI2kyZosyfiFn7pxJnb1SG0IE/LLJYJDQS6hYjeXsbArcoaqROOYtnzqqJSa4mFvgnU
-         P2IQ==
+        b=nd9fH91J/imhgEFGbcSZg1NVGzkDZeLqhulkg/4f/FDCMjHT0i72H7BZY/FTt7CUWb
+         sBskA2PMS7UqZNxOtITjQhnu7rgwktV8uasu9ttG7BQgdRIOfz36thT3ln2ZqSXZYfjC
+         sfAldl48MRQj5LS4cKALHmw/uozuGl2xTtjmKRuSpLeIJQfaONAjVfi3aD1OxOdfukBR
+         EpIHNVYsvlPn0q7lbKjAx44sr2326zvPiUZee96dAMzpJvYrC2FfnIarGPfNd/VkFXEk
+         j/pX2BK+P3QGzNrzjKH+Q+i+rbRou1o7+/LT2SKUXOECoD034VmlpHF0grPK2ogDyuAn
+         tK8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=jXg3RV9rboq4joqRbbYJIcCPrGYBg3tnnPQlBKYsoi8=;
-        b=lcnYbUoNG18hAFSy8j4Iy45/oIRlLWXHjhThCWUabH21M0sQpiX3m+a9t9Mwz7CKKW
-         fAZSBOypSMgDH1jbYPgYIR30N2xv2NSLCpXCLjwEa9TAd0iRr92H8aPwVozYMIorETGf
-         o+137CNqVX2w0ArSVGPKC3xHr/3yiIQofB7auxeAEwMGGLKH2TKzcNE/RBxH/6pHxWJK
-         JuiYoXW4DoTI3qJKIu70FwhrnsWjGEsIMpGOofrGVQL7KQ/DGeboPF3tLCkpq7YGkIhP
-         HczIFfniIu+tmr6NeZXyKf0Ye0Mx6LJes3BYNA63YYjszRdFnTInMHfF2rBL1wJfqPj2
-         hbCQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:to:from;
+        bh=au6lMPJOdGp5JVj6YHO1L5cGCouIiHv6RvM8WrVNyjo=;
+        b=cwsGlvvJA1oJfI++oAIXLbXGrmdTRidw66mUTyVP19M/sIqkYFkkrTmy3SC3Q7A8Q4
+         axilyx66VtJ2Vg/fH3ylSs+ELzW5dOTb7wxO7PRUJgZ1f4gEE+7eEUD9QxujlIV3YOgA
+         PONpsWAC20Isgj2o+u4Joj9G8AP+1Kff7fdUNCpXJLH6AlymeGr20Ku1o8JXlbJrhvWl
+         NC8Wae02JuO0YFeSFqkDodEcVymcfwS59hbKIxfgKZyhkKgFQ19DnacEeb3yd/aDquGW
+         Po8x+7gNxowdMgl6f0UFpObsEe5vF3foUNairpm+ObFlO+f5DOMPulGFncVJDl73GZt8
+         LJig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c189si9052499wma.70.2019.01.09.08.31.29
+        by mx.google.com with ESMTPS id f22si9096881wmb.59.2019.01.09.09.20.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Jan 2019 08:31:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Jan 2019 09:20:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:59546 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:43796 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghGlM-0001jK-9K
-	for alex.bennee@linaro.org; Wed, 09 Jan 2019 11:31:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45468)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ghHWw-0007sh-Q5
+	for alex.bennee@linaro.org; Wed, 09 Jan 2019 12:20:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert.uytterhoeven@gmail.com>) id 1ghGky-0001hG-Vy
-	for qemu-devel@nongnu.org; Wed, 09 Jan 2019 11:31:06 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ghHSd-0004sh-Jg
+	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 12:16:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert.uytterhoeven@gmail.com>) id 1ghGkx-0000vO-II
-	for qemu-devel@nongnu.org; Wed, 09 Jan 2019 11:31:04 -0500
-Received: from mail-vs1-f67.google.com ([209.85.217.67]:38158)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <geert.uytterhoeven@gmail.com>)
-	id 1ghGkr-0000gy-Od; Wed, 09 Jan 2019 11:30:58 -0500
-Received: by mail-vs1-f67.google.com with SMTP id x64so5114184vsa.5;
-	Wed, 09 Jan 2019 08:30:29 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=jXg3RV9rboq4joqRbbYJIcCPrGYBg3tnnPQlBKYsoi8=;
-	b=AbtZGtfmGvw+zA6R3ljzBHszH8kNK/aB7xrHKBGnnDEp7nWC/Mk1rKZY++x3d4UGQQ
-	Ul8VfcFWVr0KX/U41S9Tcf2qx6+RjWLpSvwEc6j+V9mj2maWu0Qck8/gp/6Gj3h+sP/e
-	v/cDJlkIJpAdDCVTmJDaTn0qnOHuv8GsFYJ0seEYNbxyaw8CfWOK/wn/4YIZT2Gjjuny
-	71DxSRRc46gQTM/U9h6VPJrI2XcDz/t+eiMmIhukUZ6sMVHAVqW0drZfJpcvE+bbUMmL
-	KnW6iBZUYo8eHdA0s20SljNKgvWXnY0JcumIDB6/sgBGC8TBpfTgo0Z+J4qUzwWjrGuB
-	MhqA==
-X-Gm-Message-State: AJcUukezD+1a+ZvgzA2MAX0RXWvacSb9xROEMxSqjLAlZRnECw7G5pYy
-	QpvLIOEyo2EE4+yiPty8SQCrIUH6EnlMbS7ooyA=
-X-Received: by 2002:a67:c202:: with SMTP id i2mr2533951vsj.11.1547051428903;
-	Wed, 09 Jan 2019 08:30:28 -0800 (PST)
-MIME-Version: 1.0
+	(envelope-from <eric.auger@redhat.com>) id 1ghHSb-0008Rl-Qw
+	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 12:16:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45556)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ghHSb-0008RU-II; Wed, 09 Jan 2019 12:16:09 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 22476C0005B2;
+	Wed,  9 Jan 2019 17:16:08 +0000 (UTC)
+Received: from [10.36.116.249] (ovpn-116-249.ams2.redhat.com [10.36.116.249])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7212767177;
+	Wed,  9 Jan 2019 17:16:05 +0000 (UTC)
+From: Auger Eric <eric.auger@redhat.com>
+To: Geert Uytterhoeven <geert+renesas@glider.be>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>
 References: <20190103094211.28473-1-geert+renesas@glider.be>
 	<acd10959-a781-d3bf-dc67-bda878740ec9@redhat.com>
-	<CAFEAcA9jk1ocW8h33-f9mRM52mT96o+bviaRe6MRErkyxBtqYQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9jk1ocW8h33-f9mRM52mT96o+bviaRe6MRErkyxBtqYQ@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 9 Jan 2019 17:30:15 +0100
-Message-ID: <CAMuHMdX6gwnw7RYQNik4QQmfWoTmemMgrUaPuW9Rgd56pW+4jQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <e1623349-9597-d618-aa02-956d8ae03cd7@redhat.com>
+Date: Wed, 9 Jan 2019 18:16:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
+MIME-Version: 1.0
+In-Reply-To: <acd10959-a781-d3bf-dc67-bda878740ec9@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 09 Jan 2019 17:16:08 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.217.67
-Subject: Re: [Qemu-devel] [PATCH QEMU v5] hw/arm/sysbus-fdt: Add support for
- instantiating generic devices
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH QEMU v5] hw/arm/sysbus-fdt: Add
+ support for instantiating generic devices
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <damm+renesas@opensource.se>, qemu-devel@nongnu.org,
+	linux-renesas-soc@vger.kernel.org,
 	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Magnus Damm <damm+renesas@opensource.se>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
-	Auger Eric <eric.auger@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
 	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4HPyifFlous8
+	qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VnLrZRviNMQZ
 
-Hi Peter,
+Hi Geert,
 
-Thanks for your comments!
+On 1/9/19 4:55 PM, Auger Eric wrote:
+> Hi Geert,
+> 
+> On 1/3/19 10:42 AM, Geert Uytterhoeven wrote:
+>> Add a fallback for instantiating generic devices without a type-specific
+>> or compatible-specific instantiation method.  This will be used when no
+>> other match is found.
+>>
+>> Generic device instantiation avoids having to write device-specific
+>> instantiation methods for each and every "simple" device using only a
+>> set of generic properties.  Devices that need more specialized handling
+>> can still provide their own instantiation methods.
+>>
+>> The generic instantiation method creates a device node with remapped
+>> "reg" and (optional) "interrupts" properties, and copies properties from
+>> the host, if deemed appropriate:
+>>   - In general, properties without phandles are safe to be copied.
+>>     Unfortunately, the FDT does not carry type information, hence an
+>>     explicit whitelist is used, which can be extended when needed.
+>>   - Properties related to power management (power and/or clock domain),
+>>     isolation, and pin control, are handled by the host, and must not to
+>>     be copied.
+>>
+>> Devices nodes with subnodes are rejected, as subnodes cannot easily be
+>> handled in a generic way.
+>>
+>> This has been tested on a Renesas Salvator-XS board (R-Car H3 ES2.0)
+>> with SATA, using:
+>>
+>>     -device vfio-platform,host=ee300000.sata
+>>
+>> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+>> ---
+>> Note: Also tested with GPIO, which needs "vfio: No-IOMMU mode support":
+>>
+>>     -device vfio-platform,host=e6055400.gpio
+>>
+>> v5:
+>>   - Replace copying of a fixed list of properties (and ignoring all
+>>     others), by scanning all properties on the host, and deciding if
+>>     they need to be ignored, copied, or rejected,
+>>   - Reject device nodes with subnodes,
+>>   - Handle edge interrupts,
+>>
+>> v3:
+>>   - New.
+>> ---
+>>  hw/arm/sysbus-fdt.c | 238 ++++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 238 insertions(+)
+>>
+>> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+>> index ad698d4832c694be..52de8c9a040c282a 100644
+>> --- a/hw/arm/sysbus-fdt.c
+>> +++ b/hw/arm/sysbus-fdt.c
+>> @@ -28,6 +28,9 @@
+>>  #ifdef CONFIG_LINUX
+>>  #include <linux/vfio.h>
+>>  #endif
+>> +#ifdef CONFIG_FNMATCH
+>> +#include <fnmatch.h>
+>> +#endif
+>>  #include "hw/arm/sysbus-fdt.h"
+>>  #include "qemu/error-report.h"
+>>  #include "sysemu/device_tree.h"
+>> @@ -415,6 +418,232 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+>>      return 0;
+>>  }
+>>  
+>> +enum GenericPropertyAction {
+>> +    PROP_IGNORE,
+>> +    PROP_WARN,
+>> +    PROP_COPY,
+>> +    PROP_REJECT,
+>> +};
+>> +
+>> +static struct {
+>> +    const char *name;
+>> +    enum GenericPropertyAction action;
+>> +} generic_properties[] = {
+>> +    { "name",            PROP_IGNORE }, /* handled automatically */
+>> +    { "phandle",         PROP_IGNORE }, /* not needed for the generic case */
+>> +
+>> +    /* The following are copied and remapped by dedicated code */
+>> +    { "reg",             PROP_IGNORE },
+>> +    { "interrupts",      PROP_IGNORE },
+> Shouldn't interrupt-parent be safely ignored as remapped?
+>> +
+>> +    /* The following are handled by the host */
+>> +    { "power-domains",   PROP_IGNORE }, /* power management (+ opt. clocks) */
+>> +    { "iommus",          PROP_IGNORE }, /* isolation */
+>> +    { "resets",          PROP_IGNORE }, /* isolation */
+>> +    { "pinctrl-*",       PROP_IGNORE }, /* pin control */
+>> +
+>> +    /* Ignoring the following may or may not work, hence the warning */
+>> +    { "gpio-ranges",     PROP_WARN },   /* no support for pinctrl yet */
+>> +    { "dmas",            PROP_WARN },   /* no support for external DMACs yet */
+> I would be tempted to simply reject things that may not work.
+>> +
+>> +    /* The following are irrelevant, as corresponding specifiers are ignored */
+>> +    { "clock-names",     PROP_IGNORE },
+>> +    { "reset-names",     PROP_IGNORE },
+>> +    { "dma-names",       PROP_IGNORE },
+>> +
+>> +    /* Whitelist of properties not taking phandles, and thus safe to copy */
+>> +    { "compatible",      PROP_COPY },
+>> +    { "status",          PROP_COPY },
+>> +    { "reg-names",       PROP_COPY },
+>> +    { "interrupt-names", PROP_COPY },
+>> +    { "#*-cells",        PROP_COPY },
+>> +};
+>> +
+>> +#ifndef CONFIG_FNMATCH
+>> +/* Fall back to exact string matching instead of allowing wildcards */
+>> +static inline int fnmatch(const char *pattern, const char *string, int flags)
+>> +{
+>> +        return strcmp(pattern, string);
+>> +}
+>> +#endif
+>> +
+>> +static enum GenericPropertyAction get_generic_property_action(const char *name)
+>> +{
+>> +    unsigned int i;
+>> +
+>> +    for (i = 0; i < ARRAY_SIZE(generic_properties); i++) {
+>> +        if (!fnmatch(generic_properties[i].name, name, 0)) {
+>> +            return generic_properties[i].action;
+>> +        }
+>> +    }
+>> +
+>> +    /*
+>> +     * Unfortunately DT properties do not carry type information,
+>> +     * so we have to assume everything else contains a phandle,
+>> +     * and must be rejected
+>> +     */
+>> +    return PROP_REJECT;
+>> +}
+>> +
+>> +/**
+>> + * copy_generic_node
+>> + *
+>> + * Copy the generic part of a DT node from the host
+>> + */
+>> +static void copy_generic_node(void *host_fdt, void *guest_fdt, char *host_path,
+>> +                              char *guest_path)
+>> +{
+>> +    int node, prop, len;
+>> +    const void *data;
+>> +    const char *name;
+>> +    enum GenericPropertyAction action;
+>> +
+>> +    node = fdt_path_offset(host_fdt, host_path);
+>> +    if (node < 0) {
+>> +        error_report("Cannot find node %s: %s", host_path, fdt_strerror(node));
+>> +        exit(1);
+>> +    }
+>> +
+>> +    /* Submodes are not yet supported */
+>> +    if (fdt_first_subnode(host_fdt, node) >= 0) {
+>> +        error_report("%s has unsupported subnodes", host_path);
+>> +        goto unsupported;
+>> +    }
+>> +
+>> +    /* Copy generic properties */
+>> +    fdt_for_each_property_offset(prop, host_fdt, node) {
+>> +        data = fdt_getprop_by_offset(host_fdt, prop, &name, &len);
+>> +        if (!data) {
+>> +            error_report("Cannot get property of %s: %s", host_path,
+>> +                         fdt_strerror(len));
+>> +            exit(1);
+>> +        }
+>> +
+>> +        if (!len) {
+>> +            /* Zero-sized properties are safe to copy */
+>> +            action = PROP_COPY;
+>> +        } else if (!strcmp(name, "clocks")) {
+>> +            /* Reject "clocks" if "power-domains" is not present */
+> Could you elaborate on clock management with and without power-domain.
+> If clock handles can be found on host side, don't we need to generate
+> clock nodes on guest side (as what was done with the amd xgmac). And in
+> that case don't you need clock-names prop too?
+> 
+> Please can you explain how the fact power-domain is not present
+> simplifies the problem. It is not obvious to me.
+> 
+>> +            action = fdt_getprop(host_fdt, node, "power-domains", NULL)
+>> +                     ? PROP_WARN : PROP_REJECT;
+>> +        } else {
+>> +            action = get_generic_property_action(name);
+>> +        }
+>> +
+>> +        switch (action) {
+>> +        case PROP_WARN:
+>> +            warn_report("%s: Ignoring %s property", host_path, name);
+>> +        case PROP_IGNORE:
+>> +            break;
+>> +
+>> +        case PROP_COPY:
+>> +            qemu_fdt_setprop(guest_fdt, guest_path, name, data, len);
+>> +            break;
+>> +
+>> +        case PROP_REJECT:
+>> +            error_report("%s has unsupported %s property", host_path, name);
+>> +            goto unsupported;
+>> +        }
+>> +    }
+>> +    return;
+>> +
+>> +unsupported:
+>> +    error_report("You can ask a wizard to enhance me");
+> maybe report which property causes the assignment abort
+>> +    exit(1);
+>> +}
+>> +
+>> +/**
+>> + * add_generic_fdt_node
+>> + *
+>> + * Generates a generic DT node by copying properties from the host
+>> + */
+>> +static int add_generic_fdt_node(SysBusDevice *sbdev, void *opaque)
+>> +{
+>> +    PlatformBusFDTData *data = opaque;
+>> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
+>> +    const char *parent_node = data->pbus_node_name;
+>> +    void *guest_fdt = data->fdt, *host_fdt;
+>> +    VFIODevice *vbasedev = &vdev->vbasedev;
+>> +    char **node_path, *node_name, *dt_name;
+>> +    PlatformBusDevice *pbus = data->pbus;
+>> +    uint32_t *reg_attr, *irq_attr;
+>> +    uint64_t mmio_base;
+>> +    int i, irq_number;
+>> +    VFIOINTp *intp;
+>> +
+>> +    host_fdt = load_device_tree_from_sysfs();
+>> +
+>> +    dt_name = sysfs_to_dt_name(vbasedev->name);
+>> +    if (!dt_name) {
+>> +        error_report("%s incorrect sysfs device name %s", __func__,
+>> +                     vbasedev->name);
+>> +        exit(1);
+>> +    }
+>> +    node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
+>> +                                   &error_fatal);
+>> +    if (!node_path || !node_path[0]) {
+>> +        error_report("%s unable to retrieve node path for %s/%s", __func__,
+>> +                     dt_name, vdev->compat);
+>> +        exit(1);
+>> +    }
+>> +
+>> +    if (node_path[1]) {
+>> +        error_report("%s more than one node matching %s/%s!", __func__,
+>> +                     dt_name, vdev->compat);
+>> +        exit(1);
+>> +    }
+> The above part now is duplicated with code in add_amd_xgbe_fdt_node().
+> couldn't we factorize this into an helper such like
+> char [*]*get_host_node_path(VFIODevice *vbasedev).
+>> +
+>> +    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+>> +    node_name = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
+>> +                               vbasedev->name, mmio_base);
+>> +    qemu_fdt_add_subnode(guest_fdt, node_name);
+>> +
+>> +    /* Copy generic parts from host */
+>> +    copy_generic_node(host_fdt, guest_fdt, node_path[0], node_name);
+>> +
+>> +    /* Copy reg (remapped) */
+>> +    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
+>> +    for (i = 0; i < vbasedev->num_regions; i++) {
+>> +        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
+>> +        reg_attr[2 * i] = cpu_to_be32(mmio_base);
+>> +        reg_attr[2 * i + 1] = cpu_to_be32(
+>> +                                memory_region_size(vdev->regions[i]->mem));
+>> +    }
+>> +    qemu_fdt_setprop(guest_fdt, node_name, "reg", reg_attr,
+>> +                     vbasedev->num_regions * 2 * sizeof(uint32_t));
+>> +
+>> +    /* Copy interrupts (remapped) */
+>> +    if (vbasedev->num_irqs) {
+>> +        irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
+>> +        for (i = 0; i < vbasedev->num_irqs; i++) {
+>> +            irq_number = platform_bus_get_irqn(pbus, sbdev, i) +
+>> +                         data->irq_start;
+>> +            irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
+>> +            irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
+>> +            QLIST_FOREACH(intp, &vdev->intp_list, next) {
+>> +                if (intp->pin == i) {
+>> +                    break;
+>> +                }
+>> +            }
+>> +            if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
+>> +                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>> +            } else {
+>> +                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+>> +            }
+>> +        }
+>> +        qemu_fdt_setprop(guest_fdt, node_name, "interrupts",
+>> +                         irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
+>> +        g_free(irq_attr);
+while we are at it, I think we should factorize the "reg" and
+"interrupts" property generation code and share it with the amd xgmac
+node creation function. There are duplicate.
 
-On Wed, Jan 9, 2019 at 5:03 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Wed, 9 Jan 2019 at 15:55, Auger Eric <eric.auger@redhat.com> wrote:
-> > On 1/3/19 10:42 AM, Geert Uytterhoeven wrote:
-> > > Add a fallback for instantiating generic devices without a type-specific
-> > > or compatible-specific instantiation method.  This will be used when no
-> > > other match is found.
-> > >
-> > > Generic device instantiation avoids having to write device-specific
-> > > instantiation methods for each and every "simple" device using only a
-> > > set of generic properties.  Devices that need more specialized handling
-> > > can still provide their own instantiation methods.
->
-> > > +    /* Ignoring the following may or may not work, hence the warning */
-> > > +    { "gpio-ranges",     PROP_WARN },   /* no support for pinctrl yet */
-> > > +    { "dmas",            PROP_WARN },   /* no support for external DMACs yet */
-> > I would be tempted to simply reject things that may not work.
->
-> More generally, this whole feature seems to be "allow things that
-> might not work", isn't it? Otherwise we could just have explicit
+Thanks
 
-I can remove the two PROP_WARN properties above from the list, if you prefer.
-Exporting rcar-sata still works fine after that.
-
-> whitelists for the devices we want to allow passthrough of and
-> that we've tested to work.
-
-In the end, this will become a loooooong list (SoC x devices)...
-
-> I have to say I'm not really very enthusiastic about
-> enhancing this to allow random device passthrough,
-> because it encourages further use of this. If people
-> want hardware that can be passed through they should
-> put it behind a bus that can be probed and can go
-> behind an IOMMU, ie pci or some equivalent. That
-> is a supportable hardware mechanism. All this
-> machinery feels very heath-robinson...
-
-As no-iommu suppport is not upstream (in Qemu; it is upstream in Linux,
-perhaps it should be removed?), all devices using DMA require being
-behind an IOMMU.
-
-Reality is that on embedded, on-SoC devices are usually not on a PCI bus.
-But IOMMUs are present, and virtualization is wanted.
-
-Thanks!
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Eric
+>> +    }
+>> +
+>> +    g_free(reg_attr);
+>> +    g_free(node_name);
+>> +    g_strfreev(node_path);
+>> +    g_free(dt_name);
+>> +    g_free(host_fdt);
+>> +    return 0;
+>> +}
+>> +
+>>  /* DT compatible matching */
+>>  static bool vfio_platform_match(SysBusDevice *sbdev,
+>>                                  const BindingEntry *entry)
+>> @@ -423,6 +652,11 @@ static bool vfio_platform_match(SysBusDevice *sbdev,
+>>      const char *compat;
+>>      unsigned int n;
+>>  
+>> +    if (!entry->compat) {
+>> +        /* Generic DT fallback */
+>> +        return true;
+>> +    }
+>> +
+>>      for (n = vdev->num_compat, compat = vdev->compat; n > 0;
+>>           n--, compat += strlen(compat) + 1) {
+>>          if (!strcmp(entry->compat, compat)) {
+>> @@ -459,6 +693,10 @@ static const BindingEntry bindings[] = {
+>>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+>>  #endif
+>>      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+>> +#ifdef CONFIG_LINUX
+>> +    /* Generic DT fallback must be last */
+>> +    VFIO_PLATFORM_BINDING(NULL, add_generic_fdt_node),
+>> +#endif
+>>      TYPE_BINDING("", NULL), /* last element */
+>>  };
+>>  
+>>
+> Could you share the SATA node that was generated with the generic function.
+> 
+> Thanks
+> 
+> Eric
+> 

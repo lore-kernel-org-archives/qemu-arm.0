@@ -1,120 +1,95 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp810796wrt;
-        Wed, 9 Jan 2019 08:19:47 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5Kt4gdRWP9GyeLUw2UeRRciCQxVThnL79Z2RS/b0LWDlM7pRJejV/H6aEoKjB6zt0IovNE
-X-Received: by 2002:a50:94f4:: with SMTP id t49mr6643743eda.24.1547050787396;
-        Wed, 09 Jan 2019 08:19:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547050787; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp827223wrt;
+        Wed, 9 Jan 2019 08:35:42 -0800 (PST)
+X-Received: by 2002:aca:4405:: with SMTP id r5mr4186524oia.188.1547051742363;
+        Wed, 09 Jan 2019 08:35:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547051742; cv=none;
         d=google.com; s=arc-20160816;
-        b=wgLsgGT9jqxKMBTS1DqbvpJcy9aE39BYnNIQmN1RvJh2jf81C0cOj+FSzSeOvAlBXs
-         9cMW44NyjlpuDNkjUGRqTOnB8CLDcPKJo8k1xzRkTvL0uiUlGambgLmieyKj/i5AC0zt
-         YU5pg+yoJ35Q8/7eGb5pOT+PiHHpDeu1idoHjC9qySdATA/qttFZ/Ar3PoyWjFoZVYVV
-         tuz0zAHduumvMb1YVzoIDPw58BF5qiQqNnNHGKSI2qcrIgczaBD3uwLMibU2q7t+3dcK
-         ZC67EWig5yMcBQTMuRKQl63yWYCMYfwE3iYvmSs4sxIycfrAmb3eZxNFL/dOcWU98RlX
-         gCmA==
+        b=cZcWlVeqZ8NyQxmSq3jTRGd70XmVsnLc+fkmkfctilyBSwCr1Cizfs8h23TWjSdC4U
+         1A1qPXH2lFSXeT1PTMQbzG/qh4utzflLMXf5eLfEFvXk6F1hqq6bPdOOd4Am7Xcblig7
+         o3fLccK8Jnj3bqefXuvpPl7B+kwhceUDG1cw3jDn/kMVBA0mLBlalzirZQeLd1dCHQvI
+         6MZAKiOicggodBKdxa/v4E8lD5/qsO1XwzOzkMcpq3SaT7KqI9KwDwqp18ArWVan+dbd
+         jF6idwoqQM7iMIao/lum6BmnbFkwOyop8vHNMjo8RGLeqxfC1S6HFznkGw3CE1qc3xWQ
+         9b5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=BtxEDhEMZQ2M0axEghCGtSAr0M5IqG2fD8CXAPBXLPE=;
-        b=YGPjAhwuArXecVAo+XUglCDZpOa/oFyg1e9a7knPbRzDQxUIt9GyfQ6yXl/9EM0piU
-         jV/dSNPn8IHdWFTwXJdC8yuhEz+aenujLyGo3DYQp1m3eq1vxyuhCRw1Q7khtOiOMYRk
-         8qEjPObSxJOU+JQ9ujDCxLXRefUXJdvOX9qYusLHfyitNVhu4ceH6RrMgZ8kg9xWxNQO
-         tEwJLKLnhIURBdF9DC0rsVpwT6K/YNAVZHlvA97xm4NWegeSFYU/MLBGbYmmx2LhLOKG
-         /M/+bco5Ca5hUTwRDgOz6hcghWyoXvsEJMmQ3UrRgo5KvlpTm3KdaDD6incKIUM1X5cF
-         DCjg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=2uESkddqXAZJEGNjiyaU2Ulffhkn+4IphWrwlm6wcWc=;
+        b=tO0dJTe0guGJZ+d1aoWDl9C6kzjZVy3kLLqdXm3ukmyTwhJaLJbg6TSHZWvsJErumb
+         zKCjMt7BIMf0DVzfl8RPBScmgQgFo99z4GbEHCVrfmHfPyX+0fKTaJYz49vkZ2WLE51H
+         DCV5FrUzHwdGz9MuxkXSBGHEs8MBumFwah7RDXfE8yvz8d8N4AM1M8X+OKoC1JDRZnLy
+         Lw71n5EZjqKu3TFegu79UfhjnV9uUoQ5nhNcGJc8PnoKxNHr8CPzh2DMhpwxDzXB2Iid
+         4ikxM2eKU+xFw/tw3QHfwlGdYMw7h/dz+JUJ3R8ZB5JUMGUQ928vW1J9Q90Y9+GzcPV4
+         f7tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of agraf@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=agraf@suse.de
-Return-Path: <agraf@suse.de>
-Received: from mx1.suse.de (mx2.suse.de. [195.135.220.15])
-        by mx.google.com with ESMTPS id k7si1626561edb.132.2019.01.09.08.19.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=FFHuwAUs;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 124sor35761041oif.157.2019.01.09.08.35.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Jan 2019 08:19:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of agraf@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
+        (Google Transport Security);
+        Wed, 09 Jan 2019 08:35:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of agraf@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=agraf@suse.de
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay1.suse.de (unknown [195.135.220.254])
-	by mx1.suse.de (Postfix) with ESMTP id 6DB84AEE1;
-	Wed,  9 Jan 2019 16:19:46 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH] target/arm: Allow to switch from MON->HYP on
- AArch32
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Tom Rini <trini@konsulko.com>, qemu-arm@nongnu.org,
- Michal Simek <michal.simek@xilinx.com>,
- Stephen Warren <swarren@wwwdotorg.org>
-References: <20190109152430.32359-1-agraf@suse.de> <871s5lx14y.fsf@linaro.org>
-From: Alexander Graf <agraf@suse.de>
-Message-ID: <36959924-c384-5850-9bea-0060fe744f2e@suse.de>
-Date: Wed, 9 Jan 2019 17:19:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=FFHuwAUs;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=2uESkddqXAZJEGNjiyaU2Ulffhkn+4IphWrwlm6wcWc=;
+        b=FFHuwAUsTod58iQmUwg9DXR9LPQtdG8fEgfOG84l94ehMymT1k/I10bjp1QWpIy6AF
+         JLsTAjvVxnpKBixRkQLgVYttGcLqADuYkmFQlhp7vRWSkNRhVvO4x4tqx/Fp0/8D3nDX
+         rbn8iWUmRfCMcSWQ4E1/Dz3wFSmcTQLpRdQHM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=2uESkddqXAZJEGNjiyaU2Ulffhkn+4IphWrwlm6wcWc=;
+        b=YxMLEuLRAXsqc+B8j91GXujg/svNYFEX3RKd5GHopz8D6TU3DtnmsZIyTMLrmb0+4e
+         Q+BjnihFYcWs+dsRBb+tqtxa7ss3ouD7zcdxM3a7ug4IA++11+y6tto5DqgmBIpAuzN9
+         DBoJBCbC9A2lZZEUIzdBx7yLFBsbpkTdmSyiX4KBZz/SJF0I21GMYJURXCX7Lp0BtzqZ
+         MoWxXGsZPRUgf65EdwsrCkqgVq4S3erVGCfvm34KnbQHB4423cJPJIz38IItTUgMBsQr
+         zysjfeD5fNgCBF21hAl7VMHQh5JYLUUCigsO+iTpNSCEab7S7lGaTS29Y/AtP8bfXYsv
+         fLVg==
+X-Gm-Message-State: AJcUukeDPhgHdZKL/LuqKHotUnbuz3rU1hWMtfmo1Dsym9morqpD44RV
+	hX8OT5QG/NOSE2nI5nwEfDqOER0ucp150SUHpw1MBBTfFdgfVw==
+X-Google-Smtp-Source: ALg8bN6/RG+fCDEVpz9x6zkVUdKOKVoK0ucna3dOQSytG7mxyNaOO8mWFsxpOW+LpxDi7mPu091ZNsJXrLu0jWfitxg=
+X-Received: by 2002:aca:1e17:: with SMTP id m23mr4487358oic.332.1547051741674;
+ Wed, 09 Jan 2019 08:35:41 -0800 (PST)
 MIME-Version: 1.0
+References: <20190109152430.32359-1-agraf@suse.de> <871s5lx14y.fsf@linaro.org>
 In-Reply-To: <871s5lx14y.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TUID: TFgsonw2h7WW
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 9 Jan 2019 16:35:30 +0000
+Message-ID: <CAFEAcA_6022cBFxHFmSuZVKVFvrX8bwFtoG2jaTwaQ5RoQ02cA@mail.gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Allow to switch from
+ MON->HYP on AArch32
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Tom Rini <trini@konsulko.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Michal Simek <michal.simek@xilinx.com>, 
+	Stephen Warren <swarren@wwwdotorg.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: M6jwxmp/Xk4a
 
-On 01/09/2019 05:10 PM, Alex Bennée wrote:
+On Wed, 9 Jan 2019 at 16:11, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+>
 > Alexander Graf <agraf@suse.de> writes:
 >
->> In U-boot, we switch from S-SVC -> MON -> HYP when we want to enter
->> HYP mode. This dance seems to work ok (hence it's there in the code
->> base), but breaks with current QEMU.
-> What EL is MON in this case? EL3? In which case I'm confused by the
-> terminology as the ARM ARM states:
+> > In U-boot, we switch from S-SVC -> MON -> HYP when we want to enter
+> > HYP mode. This dance seems to work ok (hence it's there in the code
+> > base), but breaks with current QEMU.
 >
->    The principles of the ARMv8-A security model are:
->    • If the implementation includes EL3, then it has two Security states, Secure and Non-secure, and:
->      — EL3 exists only in Secure state.
->      — A change from Non-secure state to Secure state can only occur on taking an exception to EL3.
->      — A change from Secure state to Non-secure state can only occur on an exception return from EL3.
->
-> We don't currently implement ARMv8.4-SecEL2 but that adds secure EL2 but
-> as you can only switch security state in in/out of EL3 you have to be go
-> to the secure monitor before you enter it.
+> What EL is MON in this case? EL3?
 
-Right - and exactly that switch seems to be prohibited here.
+Mon is an AArch32 term and EL is really AArch64, but in
+practice Mon is always (Secure) EL3. Note that if EL3
+is AArch32 then S-SVC is *also* EL3 !
 
->
->> The reason seems to be that we try to see whether we are entering
->> HYP mode from the NS side. However, MON is always considered secure,
->> so we always fall into an error case when going MON->HYP and never
->> manage to actually do the switch.
->>
->> Fix this by not using a different helper function that does not bork
->> when we're in MON state, as that switch is supposed to work.
->>
->> Signed-off-by: Alexander Graf <agraf@suse.de>
->> ---
->>   target/arm/helper.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index f00c141ef9..9bf8fbd8f9 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -6297,7 +6297,7 @@ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
->>           return 0;
->>       case ARM_CPU_MODE_HYP:
->>           return !arm_feature(env, ARM_FEATURE_EL2)
->> -            || arm_current_el(env) < 2 || arm_is_secure(env);
->> +            || arm_current_el(env) < 2 ||
->> arm_is_secure_below_el3(env);
-> This seems to violate the rule that you can enter a NS state from
-> anything other than EL3.
-
-How so? This statement basically says "Only return to HYP from NS-HYP or 
-EL3" now. Before it said "Only return to HYP from HYP".
-
-Alex
-
->
->>       case ARM_CPU_MODE_MON:
->>           return arm_current_el(env) < 3;
->>       default:
->
-> --
-> Alex Bennée
->
+thanks
+-- PMM

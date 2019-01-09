@@ -1,134 +1,88 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp464640wrt;
-        Wed, 9 Jan 2019 02:18:54 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7VRouMGaYrCVxb1IdinbHlYdA1omxqKoZViinvs1uoBKdBdM02XUA61Lds5jQPrrybw6hG
-X-Received: by 2002:a1c:c10f:: with SMTP id r15mr4973375wmf.27.1547029134352;
-        Wed, 09 Jan 2019 02:18:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547029134; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp785574wrt;
+        Wed, 9 Jan 2019 07:57:32 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN54IGiE79VVAUoqIBsbOa6zJW4JmJCuGaKe/bxaNiEwJm+LAz0W/wH/o6zbn+qG0P08SRLg
+X-Received: by 2002:adf:fd50:: with SMTP id h16mr6024138wrs.231.1547049452412;
+        Wed, 09 Jan 2019 07:57:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547049452; cv=none;
         d=google.com; s=arc-20160816;
-        b=mTK5dPJtph4Nc/iA23nJkm0LQEsBh18QQ8kjwPA2KFr/WtENdw8mUTczH0iUq/7/pF
-         kZR9PSGeOxpsTxzTKPpo/HZU24mbCOHMyETkaa5AyvOdFqsJCwR6yfS4skP/3r4iFHcj
-         7TRMWldXx8IDxBopz52vTT2Gkv1kWaKpk5QG2Nggpe0nN2RiTzZe3wNEVVHdGZuUi5HL
-         etfgrULxO4g0csq3DbX23NvtmS1EWMORF+iQgHnzpMEexprCFFb/T8Sc+t0+4vt+pzQg
-         0a2ryIsCBo1rruvWvGGdrjYGRDYBFIK/Tt7eA+MTe5kQ3bJTEoo1fwrlz1npxIrwOew4
-         kNOw==
+        b=IcPsdqLDnlYuTCnbDDKePLCZqRisLI7uOVgQXT05pNaPSLKQcxPbb3VGYCRD/Bx9m7
+         /K4f6LfS16INeEUZSTglgpc0ZzaA6b9tKgiakk9inifHm2XJAm/3XQChYSJwbXrShoQ2
+         J7vXLzLX/qV0Dsn8/F++lzibYPq1CC/4zGoQEu5XMRcnN7dmN5Dl7TW3iKp3qxjArosK
+         5DKOeQvcWeh2YDgBfomAZpNKCBZcf6FqjNGFGjg+xYceCKKUS0cmyPdi0JmjteqerU+z
+         I7mtoUW8n+z1zc9iB2CP2J3ohEHIQQ7Sj4M7HkoAqjjSj5FbXnQZO6GJgAjetcpY/mKy
+         j5pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=YwotW0+6JI6NQWqYULjNpNEBadMyV2rEiYMbL1BGX+g=;
-        b=eO4wfl+lHtbOAzgqgvd6m/UPrdMWc8spaAgyBzfM0XDr7ruM035jMMGLaXZjQq1ASQ
-         WQ6wgAn+5YNRb/pMTWAuwOEh8+qX29iugS1x+/Sm8bOorUSn5GSdGfCJXyz+kPkJLUz6
-         SYPyZdVo4xsovlzrs4sicZAbn6ZxLrJ8DdhloVXIbvQK6MubVFektbQn7SjYZcr7oKQo
-         IDdHgA5bZRE6fGFQnnlObSobMuyohY+ycOKnkgUUQWDcwQNriSqtKFzGMnOYsZuMs9NH
-         8LGj5DhmcfiIEgRBifQ3VAjjxsc1DO5G28WLM2XRwucETs9Hm/pxUDmVS43bjK80Tk11
-         SF7w==
+         :user-agent:date:message-id:from:references:to;
+        bh=5h8Gin+I0BZdrScxGYU+h/4CoWgk8/z/b1hL25vlAfw=;
+        b=N+Yzqc50kdbtQ61xHzaxDxSiAoj63JvLFQhZwGI5Dv5+BRyG0e8rmK69AuLyszv5My
+         gNdZcxSHJRlM9Ht+i9vplCWQWZHvzkbioyDBtbSE0zUEoXR9YEFi0nSmSyeogof+zfV4
+         nZP+kAw/42rNfUZR6u2PMtM/7Xrpmau3n3/0XbJcWFt4jWcSRqDle5IItngOobblRpIr
+         TXNF7vkzMHNH7R3lBma+tqWBsOGyeMSDJ9jp8ZSWpdL8NDQByCu+MR/07IYajdg3pPIr
+         eVHuMOmE9sapf7w8O+Epb1iDRIb4Kt32s541rhQseuUyYQrEuIMdv6jcHvC3ojTYhvVb
+         +k+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si8543157wmd.46.2019.01.09.02.18.54
+        by mx.google.com with ESMTPS id x4si9238441wmb.24.2019.01.09.07.57.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 09 Jan 2019 02:18:54 -0800 (PST)
+        Wed, 09 Jan 2019 07:57:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43628 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:50735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghAwn-00070E-C2
-	for alex.bennee@linaro.org; Wed, 09 Jan 2019 05:18:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33875)
+	id 1ghGEV-0006vO-EX
+	for alex.bennee@linaro.org; Wed, 09 Jan 2019 10:57:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAwW-0006z6-G2
-	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 05:18:37 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1ghGD5-000634-1X
+	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 10:56:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAwV-0008Rn-Nn
-	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 05:18:36 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:53563)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghAwV-0008Ko-DJ; Wed, 09 Jan 2019 05:18:35 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Mnac7-1h66M301VV-00jbpi; Wed, 09 Jan 2019 11:18:18 +0100
-To: Thomas Huth <thuth@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-References: <1546614146-10525-1-git-send-email-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <17de2d6a-7b80-ca81-f517-25cf68b2e2d7@vivier.eu>
-Date: Wed, 9 Jan 2019 11:18:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <eric.auger@redhat.com>) id 1ghGD2-0000zT-Ou
+	for qemu-arm@nongnu.org; Wed, 09 Jan 2019 10:56:02 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45664)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1ghGD2-0000yw-GA; Wed, 09 Jan 2019 10:56:00 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6B35481F0F;
+	Wed,  9 Jan 2019 15:55:57 +0000 (UTC)
+Received: from [10.36.116.249] (ovpn-116-249.ams2.redhat.com [10.36.116.249])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CDCF410A1834;
+	Wed,  9 Jan 2019 15:55:53 +0000 (UTC)
+To: Geert Uytterhoeven <geert+renesas@glider.be>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>
+References: <20190103094211.28473-1-geert+renesas@glider.be>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <acd10959-a781-d3bf-dc67-bda878740ec9@redhat.com>
+Date: Wed, 9 Jan 2019 16:55:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <1546614146-10525-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190103094211.28473-1-geert+renesas@glider.be>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:AvG53ojYOyLzP8qXgkFsw9MZ0lenil3rzc68VthfaF5s0q/j+5/
-	g1/IPPtx/37k/nKsSeIjKKWPSnDkaWDvf69Kltk0DY9RFA/l6W8ATccIq0zyEicCz+Myqpl
-	HMPH5UYOzHefwHztWd9GwKi5wz+cSfcbF5q7/QEp0GtNsCoc+gI/J8tghAKpby0yv8QWv9M
-	BWZcWz2v5MyNg3MJy3mnw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Lzq/Zmevk18=:n3xwgILXF5WMQne8qljo0k
-	3WKRlSlbsLlYARWjv5i4Vya1Rh+C45EvFCeUot2r54AKIFqR/mPFrh44EZ5FD5ykGoayL5Hhh
-	qpEPAbpmBCQKj+q9/NmFbKHFANwUp+tba7w62c1fOboPPeyzUd+pnASk+s/n/MVElZmNAsRbJ
-	XHID3Y+QRghrOX8kvTfr3gqwozDvpkCUDJwZtnkPWMAwMVkesNk2l7PZBLI4VsuOQuSz6Yhf2
-	dcggSyCzNmvLOtTpHoiBQ7R04DVKshulX+MsuF3YIk8GPOhixmduWFLOYOhl3SVXQoH6wN8ps
-	k+9rwJ4mFgB1mGaJsRoVAn+5tw2KBZeHVGTZRJmjd3ILwdkCYDwKPrgyrVaclMIvXxwNuqmB7
-	XOupnWmG1dPN2jtU4WFp/bAbn60gTzO4IG6VLb8WhCuobaJBS+ezsUPBG680E1u8Q2IAqJbw1
-	tj9f2rsoqzeNcI4ZdU57bn/exVPvd+8jMnBmX0sRRv7OPXS0DcSWrxGBsVt4C+4+bPOUuYtzx
-	WXbTzGm8T1iNlNwynkmTmLXqL15yb4KfBS7TUjk1DfpwWGxu/U/75BILxOHUrqig1+1PbeI9h
-	UL3qMOc/FaCDRpeF94EdCQDeSbs7hTwryEQMR2mgm+tCQ2z0PEOncNs0FlbdB0qNbaLuPw2xO
-	KBWcrA2szcORAqtLCdaH4dle0hF7WkjJU6slz6duxdqQhVePbyKLm04fKSVcJYWo7NE/QLKFr
-	QGj6yThK747g2lDMP6N7PgBEJ9bC1Z5dXgi4Zm4fPpHNlPUnes05wJ2xO5E=
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 09 Jan 2019 15:55:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-arm] [Qemu-trivial] [PATCH] hw/audio/marvell: Don't
- include unnecessary i2c.h header file
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH QEMU v5] hw/arm/sysbus-fdt: Add support for
+ instantiating generic devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,36 +94,351 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>
+Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Magnus Damm <damm+renesas@opensource.se>, qemu-devel@nongnu.org,
+	linux-renesas-soc@vger.kernel.org,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FGX8bcN/d7m6
+X-TUID: WFPN5CNiuZcy
 
-On 04/01/2019 16:02, Thomas Huth wrote:
-> This device does not use I2C, so no need to include the header file here.
+Hi Geert,
+
+On 1/3/19 10:42 AM, Geert Uytterhoeven wrote:
+> Add a fallback for instantiating generic devices without a type-specific
+> or compatible-specific instantiation method.  This will be used when no
+> other match is found.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Generic device instantiation avoids having to write device-specific
+> instantiation methods for each and every "simple" device using only a
+> set of generic properties.  Devices that need more specialized handling
+> can still provide their own instantiation methods.
+> 
+> The generic instantiation method creates a device node with remapped
+> "reg" and (optional) "interrupts" properties, and copies properties from
+> the host, if deemed appropriate:
+>   - In general, properties without phandles are safe to be copied.
+>     Unfortunately, the FDT does not carry type information, hence an
+>     explicit whitelist is used, which can be extended when needed.
+>   - Properties related to power management (power and/or clock domain),
+>     isolation, and pin control, are handled by the host, and must not to
+>     be copied.
+> 
+> Devices nodes with subnodes are rejected, as subnodes cannot easily be
+> handled in a generic way.
+> 
+> This has been tested on a Renesas Salvator-XS board (R-Car H3 ES2.0)
+> with SATA, using:
+> 
+>     -device vfio-platform,host=ee300000.sata
+> 
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 > ---
->  hw/audio/marvell_88w8618.c | 1 -
->  1 file changed, 1 deletion(-)
+> Note: Also tested with GPIO, which needs "vfio: No-IOMMU mode support":
 > 
-> diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
-> index 6600ab4..035dd76 100644
-> --- a/hw/audio/marvell_88w8618.c
-> +++ b/hw/audio/marvell_88w8618.c
-> @@ -12,7 +12,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/sysbus.h"
->  #include "hw/hw.h"
-> -#include "hw/i2c/i2c.h"
->  #include "hw/audio/wm8750.h"
->  #include "audio/audio.h"
->  #include "qapi/error.h"
+>     -device vfio-platform,host=e6055400.gpio
 > 
+> v5:
+>   - Replace copying of a fixed list of properties (and ignoring all
+>     others), by scanning all properties on the host, and deciding if
+>     they need to be ignored, copied, or rejected,
+>   - Reject device nodes with subnodes,
+>   - Handle edge interrupts,
+> 
+> v3:
+>   - New.
+> ---
+>  hw/arm/sysbus-fdt.c | 238 ++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 238 insertions(+)
+> 
+> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+> index ad698d4832c694be..52de8c9a040c282a 100644
+> --- a/hw/arm/sysbus-fdt.c
+> +++ b/hw/arm/sysbus-fdt.c
+> @@ -28,6 +28,9 @@
+>  #ifdef CONFIG_LINUX
+>  #include <linux/vfio.h>
+>  #endif
+> +#ifdef CONFIG_FNMATCH
+> +#include <fnmatch.h>
+> +#endif
+>  #include "hw/arm/sysbus-fdt.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/device_tree.h"
+> @@ -415,6 +418,232 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+>      return 0;
+>  }
+>  
+> +enum GenericPropertyAction {
+> +    PROP_IGNORE,
+> +    PROP_WARN,
+> +    PROP_COPY,
+> +    PROP_REJECT,
+> +};
+> +
+> +static struct {
+> +    const char *name;
+> +    enum GenericPropertyAction action;
+> +} generic_properties[] = {
+> +    { "name",            PROP_IGNORE }, /* handled automatically */
+> +    { "phandle",         PROP_IGNORE }, /* not needed for the generic case */
+> +
+> +    /* The following are copied and remapped by dedicated code */
+> +    { "reg",             PROP_IGNORE },
+> +    { "interrupts",      PROP_IGNORE },
+Shouldn't interrupt-parent be safely ignored as remapped?
+> +
+> +    /* The following are handled by the host */
+> +    { "power-domains",   PROP_IGNORE }, /* power management (+ opt. clocks) */
+> +    { "iommus",          PROP_IGNORE }, /* isolation */
+> +    { "resets",          PROP_IGNORE }, /* isolation */
+> +    { "pinctrl-*",       PROP_IGNORE }, /* pin control */
+> +
+> +    /* Ignoring the following may or may not work, hence the warning */
+> +    { "gpio-ranges",     PROP_WARN },   /* no support for pinctrl yet */
+> +    { "dmas",            PROP_WARN },   /* no support for external DMACs yet */
+I would be tempted to simply reject things that may not work.
+> +
+> +    /* The following are irrelevant, as corresponding specifiers are ignored */
+> +    { "clock-names",     PROP_IGNORE },
+> +    { "reset-names",     PROP_IGNORE },
+> +    { "dma-names",       PROP_IGNORE },
+> +
+> +    /* Whitelist of properties not taking phandles, and thus safe to copy */
+> +    { "compatible",      PROP_COPY },
+> +    { "status",          PROP_COPY },
+> +    { "reg-names",       PROP_COPY },
+> +    { "interrupt-names", PROP_COPY },
+> +    { "#*-cells",        PROP_COPY },
+> +};
+> +
+> +#ifndef CONFIG_FNMATCH
+> +/* Fall back to exact string matching instead of allowing wildcards */
+> +static inline int fnmatch(const char *pattern, const char *string, int flags)
+> +{
+> +        return strcmp(pattern, string);
+> +}
+> +#endif
+> +
+> +static enum GenericPropertyAction get_generic_property_action(const char *name)
+> +{
+> +    unsigned int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(generic_properties); i++) {
+> +        if (!fnmatch(generic_properties[i].name, name, 0)) {
+> +            return generic_properties[i].action;
+> +        }
+> +    }
+> +
+> +    /*
+> +     * Unfortunately DT properties do not carry type information,
+> +     * so we have to assume everything else contains a phandle,
+> +     * and must be rejected
+> +     */
+> +    return PROP_REJECT;
+> +}
+> +
+> +/**
+> + * copy_generic_node
+> + *
+> + * Copy the generic part of a DT node from the host
+> + */
+> +static void copy_generic_node(void *host_fdt, void *guest_fdt, char *host_path,
+> +                              char *guest_path)
+> +{
+> +    int node, prop, len;
+> +    const void *data;
+> +    const char *name;
+> +    enum GenericPropertyAction action;
+> +
+> +    node = fdt_path_offset(host_fdt, host_path);
+> +    if (node < 0) {
+> +        error_report("Cannot find node %s: %s", host_path, fdt_strerror(node));
+> +        exit(1);
+> +    }
+> +
+> +    /* Submodes are not yet supported */
+> +    if (fdt_first_subnode(host_fdt, node) >= 0) {
+> +        error_report("%s has unsupported subnodes", host_path);
+> +        goto unsupported;
+> +    }
+> +
+> +    /* Copy generic properties */
+> +    fdt_for_each_property_offset(prop, host_fdt, node) {
+> +        data = fdt_getprop_by_offset(host_fdt, prop, &name, &len);
+> +        if (!data) {
+> +            error_report("Cannot get property of %s: %s", host_path,
+> +                         fdt_strerror(len));
+> +            exit(1);
+> +        }
+> +
+> +        if (!len) {
+> +            /* Zero-sized properties are safe to copy */
+> +            action = PROP_COPY;
+> +        } else if (!strcmp(name, "clocks")) {
+> +            /* Reject "clocks" if "power-domains" is not present */
+Could you elaborate on clock management with and without power-domain.
+If clock handles can be found on host side, don't we need to generate
+clock nodes on guest side (as what was done with the amd xgmac). And in
+that case don't you need clock-names prop too?
 
+Please can you explain how the fact power-domain is not present
+simplifies the problem. It is not obvious to me.
 
-Applied to my trivial-patches branch.
+> +            action = fdt_getprop(host_fdt, node, "power-domains", NULL)
+> +                     ? PROP_WARN : PROP_REJECT;
+> +        } else {
+> +            action = get_generic_property_action(name);
+> +        }
+> +
+> +        switch (action) {
+> +        case PROP_WARN:
+> +            warn_report("%s: Ignoring %s property", host_path, name);
+> +        case PROP_IGNORE:
+> +            break;
+> +
+> +        case PROP_COPY:
+> +            qemu_fdt_setprop(guest_fdt, guest_path, name, data, len);
+> +            break;
+> +
+> +        case PROP_REJECT:
+> +            error_report("%s has unsupported %s property", host_path, name);
+> +            goto unsupported;
+> +        }
+> +    }
+> +    return;
+> +
+> +unsupported:
+> +    error_report("You can ask a wizard to enhance me");
+maybe report which property causes the assignment abort
+> +    exit(1);
+> +}
+> +
+> +/**
+> + * add_generic_fdt_node
+> + *
+> + * Generates a generic DT node by copying properties from the host
+> + */
+> +static int add_generic_fdt_node(SysBusDevice *sbdev, void *opaque)
+> +{
+> +    PlatformBusFDTData *data = opaque;
+> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
+> +    const char *parent_node = data->pbus_node_name;
+> +    void *guest_fdt = data->fdt, *host_fdt;
+> +    VFIODevice *vbasedev = &vdev->vbasedev;
+> +    char **node_path, *node_name, *dt_name;
+> +    PlatformBusDevice *pbus = data->pbus;
+> +    uint32_t *reg_attr, *irq_attr;
+> +    uint64_t mmio_base;
+> +    int i, irq_number;
+> +    VFIOINTp *intp;
+> +
+> +    host_fdt = load_device_tree_from_sysfs();
+> +
+> +    dt_name = sysfs_to_dt_name(vbasedev->name);
+> +    if (!dt_name) {
+> +        error_report("%s incorrect sysfs device name %s", __func__,
+> +                     vbasedev->name);
+> +        exit(1);
+> +    }
+> +    node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
+> +                                   &error_fatal);
+> +    if (!node_path || !node_path[0]) {
+> +        error_report("%s unable to retrieve node path for %s/%s", __func__,
+> +                     dt_name, vdev->compat);
+> +        exit(1);
+> +    }
+> +
+> +    if (node_path[1]) {
+> +        error_report("%s more than one node matching %s/%s!", __func__,
+> +                     dt_name, vdev->compat);
+> +        exit(1);
+> +    }
+The above part now is duplicated with code in add_amd_xgbe_fdt_node().
+couldn't we factorize this into an helper such like
+char [*]*get_host_node_path(VFIODevice *vbasedev).
+> +
+> +    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+> +    node_name = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
+> +                               vbasedev->name, mmio_base);
+> +    qemu_fdt_add_subnode(guest_fdt, node_name);
+> +
+> +    /* Copy generic parts from host */
+> +    copy_generic_node(host_fdt, guest_fdt, node_path[0], node_name);
+> +
+> +    /* Copy reg (remapped) */
+> +    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
+> +    for (i = 0; i < vbasedev->num_regions; i++) {
+> +        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
+> +        reg_attr[2 * i] = cpu_to_be32(mmio_base);
+> +        reg_attr[2 * i + 1] = cpu_to_be32(
+> +                                memory_region_size(vdev->regions[i]->mem));
+> +    }
+> +    qemu_fdt_setprop(guest_fdt, node_name, "reg", reg_attr,
+> +                     vbasedev->num_regions * 2 * sizeof(uint32_t));
+> +
+> +    /* Copy interrupts (remapped) */
+> +    if (vbasedev->num_irqs) {
+> +        irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
+> +        for (i = 0; i < vbasedev->num_irqs; i++) {
+> +            irq_number = platform_bus_get_irqn(pbus, sbdev, i) +
+> +                         data->irq_start;
+> +            irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
+> +            irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
+> +            QLIST_FOREACH(intp, &vdev->intp_list, next) {
+> +                if (intp->pin == i) {
+> +                    break;
+> +                }
+> +            }
+> +            if (intp->flags & VFIO_IRQ_INFO_AUTOMASKED) {
+> +                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +            } else {
+> +                irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_EDGE_LO_HI);
+> +            }
+> +        }
+> +        qemu_fdt_setprop(guest_fdt, node_name, "interrupts",
+> +                         irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
+> +        g_free(irq_attr);
+> +    }
+> +
+> +    g_free(reg_attr);
+> +    g_free(node_name);
+> +    g_strfreev(node_path);
+> +    g_free(dt_name);
+> +    g_free(host_fdt);
+> +    return 0;
+> +}
+> +
+>  /* DT compatible matching */
+>  static bool vfio_platform_match(SysBusDevice *sbdev,
+>                                  const BindingEntry *entry)
+> @@ -423,6 +652,11 @@ static bool vfio_platform_match(SysBusDevice *sbdev,
+>      const char *compat;
+>      unsigned int n;
+>  
+> +    if (!entry->compat) {
+> +        /* Generic DT fallback */
+> +        return true;
+> +    }
+> +
+>      for (n = vdev->num_compat, compat = vdev->compat; n > 0;
+>           n--, compat += strlen(compat) + 1) {
+>          if (!strcmp(entry->compat, compat)) {
+> @@ -459,6 +693,10 @@ static const BindingEntry bindings[] = {
+>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+>  #endif
+>      TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+> +#ifdef CONFIG_LINUX
+> +    /* Generic DT fallback must be last */
+> +    VFIO_PLATFORM_BINDING(NULL, add_generic_fdt_node),
+> +#endif
+>      TYPE_BINDING("", NULL), /* last element */
+>  };
+>  
+> 
+Could you share the SATA node that was generated with the generic function.
 
-Thanks,
-Laurent
+Thanks
+
+Eric

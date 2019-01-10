@@ -1,123 +1,179 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1946113wrt;
-        Thu, 10 Jan 2019 07:37:05 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5hoGbJz3RGKsq+iyzkmj9fsemwWvycOAUk0m+jLvuKIy5DXBUS/KJBPP1ncuRmpI9H7vm3
-X-Received: by 2002:a17:902:6e0f:: with SMTP id u15mr10614590plk.175.1547134625442;
-        Thu, 10 Jan 2019 07:37:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547134625; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2115688wrt;
+        Thu, 10 Jan 2019 10:26:44 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7zZ3aX4IeUH8QTV6PEbmDnWUY00aVrYAOj2F83h9kSTXiQIxzdapaTL8H+ak6hh1lbb+Fe
+X-Received: by 2002:adf:f504:: with SMTP id q4mr10785682wro.321.1547144804330;
+        Thu, 10 Jan 2019 10:26:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547144804; cv=none;
         d=google.com; s=arc-20160816;
-        b=BXTwh6SMguIcJeYJUzuEUlcZRgxUtg5p9wcbneUMPbjyq3OB3yVjn8vrJJMMqWBDg3
-         9TwxX2MqgzMBS3z4b+djooCVA30O6sZ9d89JkAESYnrPYvhJmiGBUlMt68Tyo643LWmS
-         WjSXq7dNO4DlwIirLltoddk5LkSdI5eSB+Vi/J4sz9Ll3Te5nLkGi28mOm35jdxdHRS6
-         4u/dyMZeKvjD4pTsbwPqMcboeRzVdTjjfhMR8dwCLW0iiWtdlCwUGW43mMvW8Qy/tdOL
-         rk/2WayaGQKV62OQvq6pEl+RUI1l2vJN+WkpOk4ngaQRWY9V81P4f2HNg/Zwu3zJYfYQ
-         OTdw==
+        b=UCbslr9yXqKUbJO4K+u9zl7/SEy/RqQJ/Dk7hGeiyNBF0vA+SXmckdUq5f9duu7Bap
+         vPcjYdnBwIb1JW1sIccvhYLi+yTwD+7dtbGJE4np9kNZTaaqk4/ahWTRkcWO3aXs3IRi
+         aO0rjMVeoY6dBKqlwV+cbTazVRQlfTn4aoR/qfOl4R6OE8wT0JnwVleqNC0BZ7cRwixM
+         5YBpttwasXQoUIyJIu+b/9Zv8c0avXiEypwox3odOx8RZLTlc/eT5+rk6mmzSzejptG6
+         7c6eMnqniW9a30EyGSUEMFmhGPEhDzqDv7cAmXBCxhwdp7QVwhsycF1pNbAzdw5G3Z9t
+         YhpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:content-transfer-encoding
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=5ciodWCagpvEvIHOj947F0pgd18YcGJCMSHAbDCIkQs=;
-        b=FjpK0bEZIMhaMM+Dl1XrBuMWk7mZWO9vZ85whoT9VS0Woc/5pNTg2Sot7Ih0Q/Hp+C
-         D0N/vVaa8VuQnW+8TtJ75CdK6w3jLb+w2EfXDRHASmiBUERJRa+epVnr9jfiPdM/G/c7
-         Mh4o/Mrq6AqR8cQ3oyFiV1nIJlihKaVUBTrGgkIrkFf5KwrJ4H+ZkaCgq9xbv5z/6Nl1
-         idfAU2tQ1OpfBPQvuZ60nG94wnfhkWi5K9tSzYEveZCAVIP5kMR3pba5NjLV8ncYsSmw
-         y3/VMeEOjcK3Ss1qXFHLdjbHrltynmr3ij0ZCex5CkkOyfieedakj30iFGjYin37/UL9
-         O5PQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8nM2dPl3r1bxqVGGKESWihC0P7+TzrtHYseQ+j21e1U=;
+        b=ob0nD8C0NLUKDaEwye/QF6MNwsIednk+m6EalMlwRWuSdszTq9d+XNb7xmajny9xYP
+         mJ/kcyMZdBtE1pi9wKLNIDtw9XMwtpYnpXjpuxfgtIQVgLg3CaJKsSnCMTqcG7/q49iV
+         12qn5qZS3hyQBxjTvYptNrHU8+hfUzM467lQc+kljThHcxiWaeKY5/qEo8SEP6wC2wrr
+         TvaQTvjgdoQw8p5786ejrz7sV+OG08D70C+AvlFQD323G2IIhVKFS5+2J/GH28OupJAB
+         S0Wmhh+UAlNoVD9h7jIKRJg4qK7KrPS4EpJCFwcgxe+eiqCAvFBagP02rPShi/rXiU62
+         14eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h36si51688680pgm.200.2019.01.10.07.37.05;
-        Thu, 10 Jan 2019 07:37:05 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b="PF/Flm7l";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m2si5293280wme.142.2019.01.10.10.26.44
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 10 Jan 2019 10:26:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729433AbfAJPhE (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 10 Jan 2019 10:37:04 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:56302 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727819AbfAJPhE (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 10 Jan 2019 10:37:04 -0500
-Received: from DGGEMA405-HUB.china.huawei.com (unknown [172.30.72.55])
-        by Forcepoint Email with ESMTP id 04DB6FA1D8DCD79FCF15;
-        Thu, 10 Jan 2019 23:36:59 +0800 (CST)
-Received: from DGGEMA523-MBX.china.huawei.com ([169.254.5.180]) by
- DGGEMA405-HUB.china.huawei.com ([10.3.20.46]) with mapi id 14.03.0415.000;
- Thu, 10 Jan 2019 23:36:58 +0800
-From:   gengdongjiu <gengdongjiu@huawei.com>
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v15 10/10] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-Thread-Topic: [PATCH v15 10/10] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-Thread-Index: AdSo+emXx7ndb7nXS/K5ksADz60bxQ==
-Date:   Thu, 10 Jan 2019 15:36:57 +0000
-Message-ID: <0184EA26B2509940AA629AE1405DD7F202045412@dggema523-mbx.china.huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.45.56.182]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=fail header.i=@linaro.org header.s=google header.b="PF/Flm7l";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:44663 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ghf2R-0007rL-E1
+	for alex.bennee@linaro.org; Thu, 10 Jan 2019 13:26:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45669)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ghf2I-0007qO-3N
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 13:26:35 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1ghf28-0000O2-7N
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 13:26:27 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:39508)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ghf22-0000Lf-M7
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 13:26:18 -0500
+Received: by mail-oi1-x241.google.com with SMTP id i6so10077016oia.6
+	for <qemu-arm@nongnu.org>; Thu, 10 Jan 2019 10:26:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=8nM2dPl3r1bxqVGGKESWihC0P7+TzrtHYseQ+j21e1U=;
+	b=PF/Flm7lmv+feZaEuvpjsmrHAHauMgkHDd0Pn3qiF2w78CmlNXWbtiN6fSay/d3KVP
+	ebD7hmnQ9hbXkys06NGND+lEHTkNafm1B0PnyCC9jaBGWJ7EQwNkvnKufKxVg7EaMZbC
+	ZodKaI5pPIItnBLsEFeeleqXst066b+LWpU0w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=8nM2dPl3r1bxqVGGKESWihC0P7+TzrtHYseQ+j21e1U=;
+	b=kaO7O/OQqtGdfmtJf5z4mbBqGMzBW0yxbcwRSbftnxqKutswfW8axVDoZHHyntgAGJ
+	MiETYH6LaWXoPPKENOUt90sjAXXv8Fz7At8WFlwUNsSzW2E/gCnu9hvcxDcekcaosEB1
+	vJ/T26aAaw7Wd3Wv2AaurjLj9sGnQrlNyvqFDVxISv/ws/rNjag/h9wNsFmaSKDFwItb
+	4lyZKbqoEmzCAwV2AYL6GvliuCgbX/7jV6oP6jJaKAaN1+Kjh1JYyqQvEX+GqYv4LgS6
+	7ET+7nBsm9MlCgd6Dwt4lIBnRGLFUGKvZbh/SeEjED0rw/EdQR6SIHBb4FsAQV//xaCk
+	/8zA==
+X-Gm-Message-State: AJcUukfQStbpb2DmqROXfYksKX005jFegvDciz3qOG6Oia9GYuybUbyI
+	Cs1ZI7ZiVzESRWesWsqBxXPDsdRuDoXMiEahEPKTTueF
+X-Received: by 2002:aca:ed92:: with SMTP id l140mr6798460oih.112.1547144776808;
+	Thu, 10 Jan 2019 10:26:16 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: nci5virF47vT
+References: <20190108163008.7006-1-peter.maydell@linaro.org>
+	<20190108163008.7006-4-peter.maydell@linaro.org>
+In-Reply-To: <20190108163008.7006-4-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 Jan 2019 18:26:05 +0000
+Message-ID: <CAFEAcA9xd-MJ7QHgYCyh0D+x_ooXYDCnKYTXELoxz3LbYO4SJw@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PATCH 3/4] accel/tcg: Add cluster number to TCG TB
+ hash
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	"Emilio G . Cota" <cota@braap.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qDG5xWuDkSUb
 
-PiANCj4gT24gVGh1LCA4IE5vdiAyMDE4IGF0IDEwOjE4LCBEb25naml1IEdlbmcgPGdlbmdkb25n
-aml1QGh1YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gQWRkIFNJR0JVUyBzaWduYWwgaGFuZGxl
-ci4gSW4gdGhpcyBoYW5kbGVyLCBpdCBjaGVja3MgdGhlIFNJR0JVUyB0eXBlLA0KPiA+IHRyYW5z
-bGF0ZXMgdGhlIGhvc3QgVkEgZGVsaXZlcmVkIGJ5IGhvc3QgdG8gZ3Vlc3QgUEEsIHRoZW4gZmls
-bCB0aGlzDQo+ID4gUEEgdG8gZ3Vlc3QgQVBFSSBHSEVTIG1lbW9yeSwgdGhlbiBub3RpZnkgZ3Vl
-c3QgYWNjb3JkaW5nIHRvIHRoZSBTSUdCVVMgdHlwZS4NCj4gPiBUaGVyZSBhcmUgdHdvIGtpbmRz
-IG9mIFNJR0JVUyB0aGF0IFFFTVUgbmVlZHMgdG8gaGFuZGxlLCB3aGljaCBhcmUNCj4gPiBCVVNf
-TUNFRVJSX0FPIGFuZCBCVVNfTUNFRVJSX0FSLg0KPiANCj4gPiArYm9vbCBnaGVzX3JlY29yZF9l
-cnJvcnModWludDMyX3Qgbm90aWZ5LCB1aW50NjRfdCBwaHlzaWNhbF9hZGRyZXNzKSB7DQo+ID4g
-KyAgICB1aW50NjRfdCBlcnJvcl9ibG9ja19hZGRyLCByZWFkX2Fja19yZWdpc3Rlcl9hZGRyOw0K
-PiA+ICsgICAgaW50IHJlYWRfYWNrX3JlZ2lzdGVyID0gMCwgbG9vcCA9IDA7DQo+ID4gKyAgICB1
-aW50NjRfdCBzdGFydF9hZGRyID0gbGUzMl90b19jcHUoZ2VzLmdoZXNfYWRkcl9sZSk7DQo+ID4g
-KyAgICBib29sIHJldCA9IEdIRVNfQ1BFUl9GQUlMOw0KPiA+ICsgICAgY29uc3QgdWludDhfdCBl
-cnJvcl9zb3VyY2VfaWRbXSA9IHsgMHhmZiwgMHhmZiwgMHhmZiwgMHhmZiwNCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDB4ZmYsIDB4ZmYsIDB4ZmYsIDAsIDF9
-Ow0KPiA+ICsNCj4gPiArICAgIC8qDQo+ID4gKyAgICAgKiB8ICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0rIGdlcy5naGVzX2FkZHJfbGUNCj4gPiArICAgICAqIHwgfGVycm9yX2Jsb2NrX2FkZHJlc3Mw
-fA0KPiA+ICsgICAgICogfCArLS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KPiA+ICsgICAgICogfCB8
-ZXJyb3JfYmxvY2tfYWRkcmVzczF8DQo+ID4gKyAgICAgKiB8ICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0rIC0tKy0tDQo+ID4gKyAgICAgKiB8IHwgICAgLi4uLi4uLi4uLi4uLiAgICB8IEdIRVNfQURE
-UkVTU19TSVpFDQo+ID4gKyAgICAgKiB8ICstLS0tLS0tLS0tLS0tLS0tLS0tLS0rIC0tKy0tDQo+
-ID4gKyAgICAgKiB8IHxlcnJvcl9ibG9ja19hZGRyZXNzTnwNCj4gPiArICAgICAqIHwgKy0tLS0t
-LS0tLS0tLS0tLS0tLS0tLSsNCj4gPiArICAgICAqIHwgfCByZWFkX2Fja19yZWdpc3RlcjAgIHwN
-Cj4gPiArICAgICAqIHwgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLSsgLS0rLS0NCj4gPiArICAgICAq
-IHwgfCByZWFkX2Fja19yZWdpc3RlcjEgIHwgR0hFU19BRERSRVNTX1NJWkUNCj4gPiArICAgICAq
-IHwgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLSsgLS0rLS0NCj4gPiArICAgICAqIHwgfCAgIC4uLi4u
-Li4uLi4uLi4gICAgIHwNCj4gPiArICAgICAqIHwgKy0tLS0tLS0tLS0tLS0tLS0tLS0tLSsNCj4g
-PiArICAgICAqIHwgfCByZWFkX2Fja19yZWdpc3Rlck4gIHwNCj4gPiArICAgICAqIHwgKy0tLS0t
-LS0tLS0tLS0tLS0tLS0tLSsgLS0rLS0NCj4gPiArICAgICAqIHwgfCAgICAgIENQRVIgICAgICAg
-ICAgIHwgICB8DQo+ID4gKyAgICAgKiB8IHwgICAgICAuLi4uICAgICAgICAgICB8IEdIRVNfTUFY
-X1JBV19EQVRBX0xFTkdUDQo+ID4gKyAgICAgKiB8IHwgICAgICBDUEVSICAgICAgICAgICB8ICAg
-fA0KPiA+ICsgICAgICogfCArLS0tLS0tLS0tLS0tLS0tLS0tLS0tKyAtLSstLQ0KPiA+ICsgICAg
-ICogfCB8ICAgIC4uLi4uLi4uLi4gICAgICAgfA0KPiA+ICsgICAgICogfCArLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tKw0KPiA+ICsgICAgICogfCB8ICAgICAgQ1BFUiAgICAgICAgICAgfA0KPiA+ICsg
-ICAgICogfCB8ICAgICAgLi4uLiAgICAgICAgICAgfA0KPiA+ICsgICAgICogfCB8ICAgICAgQ1BF
-UiAgICAgICAgICAgfA0KPiA+ICsgICAgICogfCArLS0tLS0tLS0tLS0tLS0tLS0tLS0tKw0KPiA+
-ICsgICAgICovDQo+ID4gKyAgICBpZiAocGh5c2ljYWxfYWRkcmVzcyAmJiBub3RpZnkgPCBBQ1BJ
-X0hFU1RfTk9USUZZX1JFU0VSVkVEKSB7DQo+IA0KPiBXaHkgaXMgYSB6ZXJvIHBoeXNpY2FsIGFk
-ZHJlc3Mgc3BlY2lhbCBoZXJlPyBTaG91bGRuJ3Qgd2UgYmUgYWJsZSB0byByZXBvcnQgInRoZSBt
-ZW1vcnkgYmFja2luZyBwaHlzYWRkciAwIGhhcyBhIGZhdWx0IiA/DQoNClRoYW5rcyBhIGxvdCBm
-b3IgdGhlIHJlbWluZGVyLCB0aGUgcGh5c2ljYWwgbWVtb3J5IGFkZHJlc3MgMCBjYW4gYWxzbyBo
-YXZlIGEgZmF1bHQuIEl0IHNob3VsZCBub3QgYSBzcGVjaWFsIGFkZHJlc3MuDQoNCj4gDQo+IHRo
-YW5rcw0KPiAtLSBQTU0NCg==
+On Tue, 8 Jan 2019 at 16:30, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Include the cluster number in the hash we use to look
+> up TBs. This is important because a TB that is valid
+> for one cluster at a given physical address and set
+> of CPU flags is not necessarily valid for another:
+> the two clusters may have different views of physical
+> memory, or may have different CPU features (eg FPU
+> present or absent).
+>
+> We put the cluster number in the high 8 bits of the
+> TB cflags. This gives us up to 256 clusters, which should
+> be enough for anybody. If we ever need more, or need
+> more bits in cflags for other purposes, we could make
+> tb_hash_func() take more data (and expand qemu_xxhash7()
+> to qemu_xxhash8()).
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/exec/exec-all.h   | 4 +++-
+>  accel/tcg/cpu-exec.c      | 4 ++++
+>  accel/tcg/translate-all.c | 3 +++
+>  3 files changed, 10 insertions(+), 1 deletion(-)
+>
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index 815e5b1e838..aa7b81aaf01 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -351,9 +351,11 @@ struct TranslationBlock {
+>  #define CF_USE_ICOUNT  0x00020000
+>  #define CF_INVALID     0x00040000 /* TB is stale. Set with @jmp_lock held */
+>  #define CF_PARALLEL    0x00080000 /* Generate code for a parallel context */
+> +#define CF_CLUSTER_MASK 0xff000000 /* Top 8 bits are cluster ID */
+> +#define CF_CLUSTER_SHIFT 24
+>  /* cflags' mask for hashing/comparison */
+>  #define CF_HASH_MASK   \
+> -    (CF_COUNT_MASK | CF_LAST_IO | CF_USE_ICOUNT | CF_PARALLEL)
+> +    (CF_COUNT_MASK | CF_LAST_IO | CF_USE_ICOUNT | CF_PARALLEL | CF_CLUSTER_MASK)
+>
+>      /* Per-vCPU dynamic tracing state used to generate this TB */
+>      uint32_t trace_vcpu_dstate;
+> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+> index 870027d4359..e578a1a3aee 100644
+> --- a/accel/tcg/cpu-exec.c
+> +++ b/accel/tcg/cpu-exec.c
+> @@ -336,6 +336,10 @@ TranslationBlock *tb_htable_lookup(CPUState *cpu, target_ulong pc,
+>          return NULL;
+>      }
+>      desc.phys_page1 = phys_pc & TARGET_PAGE_MASK;
+> +
+> +    cf_mask &= ~CF_CLUSTER_MASK;
+> +    cf_mask |= cpu->cluster_index << CF_CLUSTER_SHIFT;
+> +
+
+This hunk turns out not to be quite right -- it needs to move
+to the top of the function, before the assignment
+"desc.flags = flags;". Otherwise tb_lookup_cmp() will
+spuriously fail, and execution becomes somewhat slower because
+we have to keep retranslating TBs rather than reusing them.
+(Surprisingly this is only noticeable in an ARM TFM image
+I happen to have, not in Linux kernel boot...)
+
+thanks
+-- PMM

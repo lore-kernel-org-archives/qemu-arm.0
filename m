@@ -1,396 +1,190 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1618299wrt;
-        Thu, 10 Jan 2019 01:44:56 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6ErnvtPENriEVc9fNMWXZlMK6/7zqy5DFCdP78H3VETBarDWYoj3SvPaG5fSlbg9dHAPsN
-X-Received: by 2002:a1c:ce0e:: with SMTP id e14mr9608484wmg.53.1547113496931;
-        Thu, 10 Jan 2019 01:44:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547113496; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1621474wrt;
+        Thu, 10 Jan 2019 01:49:05 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6F/45pFw900FTY1TwJdLVqtj9Ts89v/vqy1ckAilZLKQgCABPhZmB3TiyabDMsUgGpESNl
+X-Received: by 2002:a1c:c90b:: with SMTP id f11mr9084719wmb.33.1547113745037;
+        Thu, 10 Jan 2019 01:49:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547113745; cv=none;
         d=google.com; s=arc-20160816;
-        b=d/drs3uypjdidwiSCYxmmJh+sJMuk2fga/C1ZE4wiZBaBu6ZGbfJ5uth6/qympl8kF
-         Sbz/7Cn2mvj94I6qY9IdmrzglLjDNi04QHnjrsFbzr2RtsFMKRqKID0YdmgMJmiAuqNw
-         jIE/fMpPuOOi3Sv/Ackz73ORSQvzYxzq2EGmrvpP7DrUchrFaROpIt2b59WJLuxXpxSy
-         36sjx8vuj94KkYzaEI8M1brPwTQBQbwCq7SkJNvyBDmEH5ssxfV4MlkuTJBsQCIxyvCU
-         Rk53WbcrdFOf/3/hxDuTRAn54idMcBnGQfzehIcovH1CL28RUgOgeNqhl0VbdKl5MENQ
-         2dDw==
+        b=rsCmqUijLcJ7kMf27lRWbBn3teWsqYSQIaOsiFHRIVm8AfDpn4lG7V2iHk3JuHB2jM
+         4W/ICumJQrQSkWpJWUFKTpvCYSvpRaOWmXymEbZoG3CftEzc0lidtLHzXouTYDcyhE3+
+         oQQKh0zyQ4giQp6s/OQ8P3dp0OZzU8fbFDc574BLVIqs1+fnCCWYZdleDgh5LZeWvIej
+         3ktSeobKD6ADO5RAFYUwno7UjbzZqAdznzJUJaABDXTQX3dimUEH6u5FUpU3wwR022S9
+         eOKFLBq8OsO0usFjK/0NOusEkGOISXtVMpzYa4EWnU868OXWbUQVMHdDoDVWinA8599T
+         7fFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=bZZzFxOTDqORaaE0SOR0tJr7ReRH/v4j5l0j1Kx8A2U=;
-        b=Un4HbSNHxws0DbNXVr8fN79Wx15MPV2n1HeMPmTxFZ5PdvylkCOlgZLPq2jmLaxaJR
-         h7kz1tnT18ABZ3ooRIg5iuohMj33hguiA61jU0SoYt9iQWLbM9xlRR2hvAc3TFCgnn5j
-         zx/eHoXH72Fz8T75fB88Y6yfg/z4pHlVnXmcXFD9jUjxRRA/evf6YN6xuPN2Nz0ts1dP
-         HXYFyw+ARq32g+PvxetF8sCLxZD57vYERpVKSpY2POR235z+newmpoVZ9zw8I+QcOr0q
-         Sd2/qnADxfIPMR9Vv2UkBU6nyahAHfCbWfnu6mzE3oqSg7kH5asHTpQHv9eK4NEudtj+
-         sB8A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=oaAZjOjmv9s02FqstR41nCugTSqIn2dH4DhcuUaRFVE=;
+        b=G8qCVApEn6sTJZDeM83txV/116F8wE0K3q2xQj4E0IsR4ATijvYphxQFGDjM3jbqqb
+         edvD01fhcAqd/hEOI381CN1ANP4UjF/3sRTAxUwiTfj4bvZn/xuEDHlSPNuTGbY61Tsm
+         xfVfB/g6Uzo1fipcuxisDtGwFDKOqpghwMKar3T4MMilBnOnKxh/KV09u5zj8YlKkcWj
+         i60yoSKwObrijjjlxrKoc30rrc1eLiCECYdcq3/ibPaYpCJ4jSP+nn/NBf/XrsX8FMQo
+         Vsx3OvM/J6RMrGesGPiumicVW40chdceRZJkXFoUD1akKcQ1XJrHpcfTMnCkIvPJrJmZ
+         OfkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j65si11527143wmd.175.2019.01.10.01.44.56
+        by mx.google.com with ESMTPS id g192si10725200wmg.71.2019.01.10.01.49.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Jan 2019 01:44:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Jan 2019 01:49:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42024 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:43181 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghWtT-0002e3-UG
-	for alex.bennee@linaro.org; Thu, 10 Jan 2019 04:44:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40410)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ghWxU-0004pG-4F
+	for alex.bennee@linaro.org; Thu, 10 Jan 2019 04:49:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42638)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1ghWpN-0000MM-Lh
-	for qemu-devel@nongnu.org; Thu, 10 Jan 2019 04:40:43 -0500
+	(envelope-from <thuth@redhat.com>) id 1ghWxD-0004p6-S0
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 04:48:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1ghWpM-0007cM-6J
-	for qemu-devel@nongnu.org; Thu, 10 Jan 2019 04:40:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40914)
+	(envelope-from <thuth@redhat.com>) id 1ghWxD-0006BS-0C
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 04:48:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43520)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1ghWpF-0007SJ-M8; Thu, 10 Jan 2019 04:40:33 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1ghWxC-0006AU-OB; Thu, 10 Jan 2019 04:48:46 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2CA7E2D4B7A;
-	Thu, 10 Jan 2019 09:40:28 +0000 (UTC)
-Received: from localhost (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A4883451B;
-	Thu, 10 Jan 2019 09:40:27 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: <qemu-devel@nongnu.org>
-Date: Thu, 10 Jan 2019 09:40:19 +0000
-Message-Id: <20190110094020.18354-2-stefanha@redhat.com>
-In-Reply-To: <20190110094020.18354-1-stefanha@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 7805F5A1F7;
+	Thu, 10 Jan 2019 09:48:43 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-101.ams2.redhat.com [10.36.116.101])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2A3B75D6AA;
+	Thu, 10 Jan 2019 09:48:36 +0000 (UTC)
+To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 References: <20190110094020.18354-1-stefanha@redhat.com>
+	<20190110094020.18354-3-stefanha@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <cd32de08-afd0-4b8b-a10a-99e1d88d1755@redhat.com>
+Date: Thu, 10 Jan 2019 10:48:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20190110094020.18354-3-stefanha@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 10 Jan 2019 09:40:28 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 10 Jan 2019 09:48:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v2 1/2] arm: Stub out NRF51 TWI
- magnetometer/accelerometer detection
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2 2/2] tests/microbit-test: add TWI stub
+ device test
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
-	contrib@steffen-goertz.de, Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
+	contrib@steffen-goertz.de, qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>,
 	Paolo Bonzini <pbonzini@redhat.com>, jusual@mail.ru
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a8anXwra8BVC
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3GyNtNOArpnV
 
-From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+On 2019-01-10 10:40, Stefan Hajnoczi wrote:
+> This test verifies that we read back the expected I2C WHO_AM_I register
+> values for the accelerometer/magnetometer.
+> 
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  tests/microbit-test.c | 44 +++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
+> 
+> diff --git a/tests/microbit-test.c b/tests/microbit-test.c
+> index 0c125535f6..dcdc0cd41a 100644
+> --- a/tests/microbit-test.c
+> +++ b/tests/microbit-test.c
+> @@ -21,6 +21,49 @@
+>  #include "hw/arm/nrf51.h"
+>  #include "hw/gpio/nrf51_gpio.h"
+>  #include "hw/timer/nrf51_timer.h"
+> +#include "hw/i2c/microbit_i2c.h"
+> +
+> +/* Read a byte from I2C device at @addr from register @reg */
+> +static uint32_t i2c_read_byte(uint32_t addr, uint32_t reg)
+> +{
+> +    uint32_t val;
+> +
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_REG_ADDRESS, addr);
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTTX, 1);
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_REG_TXD, reg);
+> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_TXDSENT);
+> +    g_assert_cmpuint(val, ==, 1);
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
+> +
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTRX, 1);
+> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_RXDREADY);
+> +    g_assert_cmpuint(val, ==, 1);
+> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_REG_RXD);
+> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
 
-Recent microbit firmwares panic if the TWI magnetometer/accelerometer
-devices are not detected during startup.  We don't implement TWI (I2C)
-so let's stub out these devices just to let the firmware boot.
+Any chance that you could use qemu_writel() right from the start here?
+That will make it easier to finally get rid of global_qtest one day...
 
-Signed-off by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
----
- hw/i2c/Makefile.objs          |   1 +
- include/hw/arm/nrf51.h        |   2 +
- include/hw/arm/nrf51_soc.h    |   1 +
- include/hw/i2c/microbit_i2c.h |  42 +++++++++++
- hw/arm/microbit.c             |  15 ++++
- hw/i2c/microbit_i2c.c         | 127 ++++++++++++++++++++++++++++++++++
- 6 files changed, 188 insertions(+)
- create mode 100644 include/hw/i2c/microbit_i2c.h
- create mode 100644 hw/i2c/microbit_i2c.c
-
-diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
-index 37cacde978..82e747e1cd 100644
---- a/hw/i2c/Makefile.objs
-+++ b/hw/i2c/Makefile.objs
-@@ -7,5 +7,6 @@ common-obj-$(CONFIG_BITBANG_I2C) +=3D bitbang_i2c.o
- common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_i2c.o
- common-obj-$(CONFIG_IMX_I2C) +=3D imx_i2c.o
- common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_i2c.o
-+common-obj-$(CONFIG_NRF51_SOC) +=3D microbit_i2c.o
- obj-$(CONFIG_OMAP) +=3D omap_i2c.o
- obj-$(CONFIG_PPC4XX) +=3D ppc4xx_i2c.o
-diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
-index 175bb6c301..1008fee6c9 100644
---- a/include/hw/arm/nrf51.h
-+++ b/include/hw/arm/nrf51.h
-@@ -25,6 +25,8 @@
- #define NRF51_IOMEM_SIZE      0x20000000
-=20
- #define NRF51_UART_BASE       0x40002000
-+#define NRF51_TWI_BASE        0x40003000
-+#define NRF51_TWI_SIZE        0x00001000
- #define NRF51_TIMER_BASE      0x40008000
- #define NRF51_TIMER_SIZE      0x00001000
- #define NRF51_RNG_BASE        0x4000D000
-diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-index e06f0304b4..fbdefc07e4 100644
---- a/include/hw/arm/nrf51_soc.h
-+++ b/include/hw/arm/nrf51_soc.h
-@@ -39,6 +39,7 @@ typedef struct NRF51State {
-     MemoryRegion sram;
-     MemoryRegion flash;
-     MemoryRegion clock;
-+    MemoryRegion twi;
-=20
-     uint32_t sram_size;
-     uint32_t flash_size;
-diff --git a/include/hw/i2c/microbit_i2c.h b/include/hw/i2c/microbit_i2c.=
-h
-new file mode 100644
-index 0000000000..aad636127e
---- /dev/null
-+++ b/include/hw/i2c/microbit_i2c.h
-@@ -0,0 +1,42 @@
-+/*
-+ * Microbit stub for Nordic Semiconductor nRF51 SoC Two-Wire Interface
-+ * http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.1.pdf
-+ *
-+ * Copyright 2019 Red Hat, Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef MICROBIT_I2C_H
-+#define MICROBIT_I2C_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/arm/nrf51.h"
-+
-+#define NRF51_TWI_TASK_STARTRX 0x000
-+#define NRF51_TWI_TASK_STARTTX 0x008
-+#define NRF51_TWI_TASK_STOP 0x014
-+#define NRF51_TWI_EVENT_STOPPED 0x104
-+#define NRF51_TWI_EVENT_RXDREADY 0x108
-+#define NRF51_TWI_EVENT_TXDSENT 0x11c
-+#define NRF51_TWI_REG_ENABLE 0x500
-+#define NRF51_TWI_REG_RXD 0x518
-+#define NRF51_TWI_REG_TXD 0x51c
-+#define NRF51_TWI_REG_ADDRESS 0x588
-+
-+#define TYPE_MICROBIT_I2C "microbit.i2c"
-+#define MICROBIT_I2C(obj) \
-+    OBJECT_CHECK(MicrobitI2CState, (obj), TYPE_MICROBIT_I2C)
-+
-+#define MICROBIT_I2C_NREGS (NRF51_TWI_SIZE / sizeof(uint32_t))
-+
-+typedef struct {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    uint32_t regs[MICROBIT_I2C_NREGS];
-+    uint32_t read_idx;
-+} MicrobitI2CState;
-+
-+#endif /* MICROBIT_I2C_H */
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-index a734e7f650..84d1b8dd2b 100644
---- a/hw/arm/microbit.c
-+++ b/hw/arm/microbit.c
-@@ -16,11 +16,13 @@
- #include "exec/address-spaces.h"
-=20
- #include "hw/arm/nrf51_soc.h"
-+#include "hw/i2c/microbit_i2c.h"
-=20
- typedef struct {
-     MachineState parent;
-=20
-     NRF51State nrf51;
-+    MicrobitI2CState i2c;
- } MicrobitMachineState;
-=20
- #define TYPE_MICROBIT_MACHINE MACHINE_TYPE_NAME("microbit")
-@@ -32,7 +34,9 @@ static void microbit_init(MachineState *machine)
- {
-     MicrobitMachineState *s =3D MICROBIT_MACHINE(machine);
-     MemoryRegion *system_memory =3D get_system_memory();
-+    MemoryRegion *mr;
-     Object *soc =3D OBJECT(&s->nrf51);
-+    Object *i2c =3D OBJECT(&s->i2c);
-=20
-     sysbus_init_child_obj(OBJECT(machine), "nrf51", soc, sizeof(s->nrf51=
-),
-                           TYPE_NRF51_SOC);
-@@ -41,6 +45,17 @@ static void microbit_init(MachineState *machine)
-                              &error_fatal);
-     object_property_set_bool(soc, true, "realized", &error_fatal);
-=20
-+    /* Overlap the TWI stub device into the SoC.  This is a microbit-spe=
-cific
-+     * hack until we implement the nRF51 TWI controller properly and the
-+     * magnetometer/accelerometer devices.
-+     */
-+    sysbus_init_child_obj(OBJECT(machine), "microbit.twi", i2c,
-+                          sizeof(s->i2c), TYPE_MICROBIT_I2C);
-+    object_property_set_bool(i2c, true, "realized", &error_fatal);
-+    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(i2c), 0);
-+    memory_region_add_subregion_overlap(&s->nrf51.container, NRF51_TWI_B=
-ASE,
-+                                        mr, -1);
-+
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-                        NRF51_SOC(soc)->flash_size);
- }
-diff --git a/hw/i2c/microbit_i2c.c b/hw/i2c/microbit_i2c.c
-new file mode 100644
-index 0000000000..793f1b0f8b
---- /dev/null
-+++ b/hw/i2c/microbit_i2c.c
-@@ -0,0 +1,127 @@
-+/*
-+ * Microbit stub for Nordic Semiconductor nRF51 SoC Two-Wire Interface
-+ * http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.1.pdf
-+ *
-+ * This is a microbit-specific stub for the TWI controller on the nRF51 =
-SoC.
-+ * We don't emulate I2C devices but the firmware probes the
-+ * accelerometer/magnetometer on startup and panics if they are not foun=
-d.
-+ * Therefore we stub out the probing.
-+ *
-+ * In the future this file could evolve into a full nRF51 TWI controller
-+ * device.
-+ *
-+ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
-+ * Copyright 2019 Red Hat, Inc.
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/i2c/microbit_i2c.h"
-+
-+static const uint32_t twi_read_sequence[] =3D {0x5A, 0x5A, 0x40};
-+
-+static uint64_t microbit_i2c_read(void *opaque, hwaddr addr, unsigned in=
-t size)
-+{
-+    MicrobitI2CState *s =3D opaque;
-+    uint64_t data =3D 0x00;
-+
-+    switch (addr) {
-+    case NRF51_TWI_EVENT_STOPPED:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_EVENT_RXDREADY:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_EVENT_TXDSENT:
-+        data =3D 0x01;
-+        break;
-+    case NRF51_TWI_REG_RXD:
-+        data =3D twi_read_sequence[s->read_idx];
-+        if (s->read_idx < G_N_ELEMENTS(twi_read_sequence)) {
-+            s->read_idx++;
-+        }
-+        break;
-+    default:
-+        data =3D s->regs[addr / sizeof(s->regs[0])];
-+        break;
-+    }
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u] =3D %" PRIx32 =
-"\n",
-+                  __func__, addr, size, (uint32_t)data);
-+
-+
-+    return data;
-+}
-+
-+static void microbit_i2c_write(void *opaque, hwaddr addr, uint64_t data,
-+                               unsigned int size)
-+{
-+    MicrobitI2CState *s =3D opaque;
-+
-+    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%=
-u]\n",
-+                  __func__, addr, data, size);
-+    s->regs[addr / sizeof(s->regs[0])] =3D data;
-+}
-+
-+static const MemoryRegionOps microbit_i2c_ops =3D {
-+    .read =3D microbit_i2c_read,
-+    .write =3D microbit_i2c_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .impl.min_access_size =3D 4,
-+    .impl.max_access_size =3D 4,
-+};
-+
-+static const VMStateDescription microbit_i2c_vmstate =3D {
-+    .name =3D TYPE_MICROBIT_I2C,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, MicrobitI2CState, MICROBIT_I2C_NREGS)=
-,
-+        VMSTATE_UINT32(read_idx, MicrobitI2CState),
-+    },
-+};
-+
-+static void microbit_i2c_reset(DeviceState *dev)
-+{
-+    MicrobitI2CState *s =3D MICROBIT_I2C(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->read_idx =3D 0;
-+}
-+
-+static void microbit_i2c_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    MicrobitI2CState *s =3D MICROBIT_I2C(dev);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &microbit_i2c_ops, s,
-+                          "microbit.twi", NRF51_TWI_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void microbit_i2c_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->vmsd =3D &microbit_i2c_vmstate;
-+    dc->reset =3D microbit_i2c_reset;
-+    dc->realize =3D microbit_i2c_realize;
-+    dc->desc =3D "Microbit I2C controller";
-+}
-+
-+static const TypeInfo microbit_i2c_info =3D {
-+    .name =3D TYPE_MICROBIT_I2C,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(MicrobitI2CState),
-+    .class_init =3D microbit_i2c_class_init,
-+};
-+
-+static void microbit_i2c_register_types(void)
-+{
-+    type_register_static(&microbit_i2c_info);
-+}
-+
-+type_init(microbit_i2c_register_types)
---=20
-2.20.1
-
+ Thomas

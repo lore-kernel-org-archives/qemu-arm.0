@@ -1,118 +1,113 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp614624wrt;
-        Thu, 3 Jan 2019 05:06:55 -0800 (PST)
-X-Received: by 2002:aca:f44c:: with SMTP id s73mr33409141oih.102.1546520815351;
-        Thu, 03 Jan 2019 05:06:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1546520815; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1658230wrt;
+        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
+X-Received: by 2002:aca:4d8f:: with SMTP id a137mr6377152oib.168.1547116460387;
+        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547116460; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJJmycUdxzC4sHxnY/dDH0YZGyox++UwKhja9wviHSrBNh0T4rre32gCujDIfue6co
-         Yn+56GwC54BMxHcYFusHi6fznVM51MiSMn6N78qkGRqrjQbgt5Uc/LiJ5NN17aRakxUZ
-         82ZGCWE8fYhHpjfPSTHEYw29g1D0OvoyD3KpVFyFODpu9bDVFrATD81iv/6Y8WbwQfR6
-         PyORFTcZgCgv08P6t19W+ll0WkRrFwiN+rmq2UZZogXZbe3iJYX53OYZriFIZXzPbrHj
-         WyqeduuEUZ8hh8So4NIqw03Uxvepwntb8wOYBzxYVBqLMxcnJ9KIXFAFxVPZEZsVm69H
-         zUWg==
+        b=ovgRcDMrF+eF2omeHxGZiM4LGqLnzqeQeTtsORqQb+jssYBYV+5JGil+lNO6UycqMu
+         0SIOCzKMxaDPQLT7AJjSHuDG90XLnr6iU5lkkpjLIFoSZFpsTYnHNa4a6VqRcYnDTFZM
+         8XdKN5H1HJLpjJ8DNxHUm2wb+m6lgu7NYMt6wK25GI/hHVrb5yCWFVxx5Tynl9UihiE2
+         9ND8wE12qVvmgtgBRA5+Xkv1B4ni3VDEdhzuo8JdLetDBDeYcgyIIlBY+5AJazqRDI3c
+         tpyo18s+wpNEyRPnT0KjPenGhYfkf1G+VrTT/uzW9inhaj+uE6iI6Uc3dYtMHZs034Ru
+         6m8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=2Wut+KLN/OKeeGP0Qss2cbkMB3XDM7E/DKsgHlpemK8=;
-        b=Fbt2ynnPtA7Y64XMVgfbZqDOpjAaDG+NLprzhPO0Y8+rMJOApEA1JyigKXaupvZJJK
-         9euECAxu0qiLSuGkHTVc/CWmyILSf4qxWZNo4Zpx13VmhBS8WGn/aoZfURy+t+Rrs7E7
-         EWzgEv5wegSwxeaH19Ryem+VcjGKpMbZnvEsAuVuFdUlDs8VSZSyt3s7WarAmw8MtL2g
-         QbaxmoX+qVbVW5YP6IaafvdjUBwarkuo5bwNDxQb44e//5qZVcEQgAhn9VeqsKIc9ksw
-         zIfu7kWxO7T+LXCzVtRF/xvuTiyUBINIQ+kFtYCCbwBMp8e1tt2JnfGR8bTca6PvbqLj
-         5+nQ==
+        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
+        b=NRCm+So6mB59ro0Q20c0hcXZr3Omvi6bedUJv+v2ZwTf+PZUpP2DqvFLhLGrOW+JfP
+         2mbN3caZbVFkzQ1TNTYt+FAAlgNTLEKPGJzGP3FmPAc2l6YCbWiWBBPnk6+fqkfG6IpX
+         216PaOxczbvagjQpAdsGbDgRJlMUTHKYCndKW4OEcN/3tF5U8ds5c7iOlkH+MyWrjbJY
+         8DszrlXfu3KedEwDnwYbWSiYxLXyGJYeZhMq/hroBzEStCInoXs6UkLy84HxG+WyScji
+         jZ7ea9+CkcuCoUDd3oiLekZnIHUR9NiDgUYve0+9e+BFy+B3IIXfJwvOBGc+o5AOkzug
+         to/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LK9e8Wmd;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WW+XQcbn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t22sor19736861oie.57.2019.01.03.05.06.55
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id c8sor32919086oia.31.2019.01.10.02.34.20
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 03 Jan 2019 05:06:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 10 Jan 2019 02:34:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LK9e8Wmd;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WW+XQcbn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=2Wut+KLN/OKeeGP0Qss2cbkMB3XDM7E/DKsgHlpemK8=;
-        b=LK9e8Wmd048C2Ao+PDQQihBLQuFuqc21CLNICCt9UtLR+M+tzMYpBajiemRPKwgrmW
-         DkYjZD9yO5FcAD+eZUynGBf6JLao5pVjLNOQzRpBdW9uG2KkpsUQqxUoO8l6LGbYtFSv
-         ssJHLbqJVxmkJ2vOnZc9LREfNCU6S3R0QYtio=
+        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
+        b=WW+XQcbnmf4/Uj/jZpn0yn5hL6AFxAqaCtx3r7d4wCjs3x69wv6lOYFLdx0YjkxaYE
+         uRx6G4frObyaIhV5kDrV5J33d5C4edb1/Uioac4+QnxZjf5ly95Q6SipFdld7+G0WClu
+         uyKxkeG4VuTNrqfXPpTNB9p3XngvkTkGKSv5g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=2Wut+KLN/OKeeGP0Qss2cbkMB3XDM7E/DKsgHlpemK8=;
-        b=Dtlri2vhw/zkjbrE4Vwa4TnCRLiYb4ocJSmgcyEtVeTwVyl5ad9wP7N/JtWhuz3lvg
-         7qLTumTVy85ZDfyDVHwtxzlimCHOrwAbxgvqKspfOWO+cRKbksIWWpNhkYA/QvZFbXVZ
-         D6PGHtQ4RtbjoHnQ1WXI1HVamRNHujyAebCl/1oKDCaX42FkDKsGBSrHLLTRoxr9JCBB
-         3HHdwfPHum8X+RityeCEAmmb6R6V+cMS2XOgvk4UffYItb9O52nDHbqPXNys9+mN/cY3
-         7OZL3xdMMG0KLWUY4qB3ukTyKqGvm4cNuGhyqQavmTl1elA6FriH+7dvt/4QfTqmGsSj
-         UhGw==
-X-Gm-Message-State: AA+aEWYuky0kAVz89098v52Bjjor93O0KUh8xt8q3pQ1SqIOCwN2ktuF
-	lTCiHV5LJsWfeB8Iwt531BkP6fmvo03b8byL2Hhd7tp5JM0=
-X-Google-Smtp-Source: AFSGD/UAkeE1EksWPAe5CWu42QxCIYCln7dZadUgWUEUNIMyxpgkrdXjlqbqNuE9wzDUHPoMHXtCTAeVdEUWLllSpLU=
-X-Received: by 2002:aca:bcc6:: with SMTP id m189mr33085453oif.337.1546520814870;
- Thu, 03 Jan 2019 05:06:54 -0800 (PST)
+        bh=gOGemD/OhZUYT79w4xcUa/KubwvdwIv32wWefvuujjY=;
+        b=iEejCBbw+U+ZUlawg5wIgj8ZIFasM1Ik0oRJcCAP/yUzikxf4dwDJ7ymQBewj1vR1/
+         dLe4juAHmXxeczUN/FrKMhTmVLnamhhl+9LBmV2bDyMA7Sbo2yUh+GquQJaDeLyIHsXE
+         +sT+OtrU28EJsa6JoOLJ/HClvqI82nVjEiUKzTAR1UmSRnfsBd/bBVJExKQzfYHqygvp
+         PVa4ajDf8+YuLYkBraNgz1rU4pfvYtG/bI3fUI5XEkgj41Nm5xNo/Kg9HQBjfejobONo
+         IUNLllE2nvgxRq6WrT+SWJ1oum9x6Axq0LRd9ifrH8TG3HeKqboexVTiqjDTX52ZHOnY
+         Ukzw==
+X-Gm-Message-State: AJcUukfxiMrRckL5pZDDSGSRFcuWK4QbiJwE0ECbSwZ0q/rIgrELeAkZ
+	r89hPOJ4Nl56aMwQHoMf0Q21RPandGCmxsm7nT5piPbClVs=
+X-Google-Smtp-Source: ALg8bN5cVLNzTT9tmtodtJPMNd2SyXGN4QBWvqZjZH6hvcIg8JwKrXS2reVcbgW6UIzBvAfgOXXco+qzqyyVh48lem4=
+X-Received: by 2002:aca:c501:: with SMTP id v1mr5878817oif.48.1547116459936;
+ Thu, 10 Jan 2019 02:34:19 -0800 (PST)
 MIME-Version: 1.0
-References: <20181214145152.27250-1-stefanha@redhat.com>
-In-Reply-To: <20181214145152.27250-1-stefanha@redhat.com>
+References: <20190109152430.32359-1-agraf@suse.de> <CAFEAcA9zugZiWirk9QjqmAO9QKhLdCAWuG1PX5z7Nxm4O69aTg@mail.gmail.com>
+ <CAFEAcA8Xzi8GjzUtzxbFzxdCS4kn0Cps+_bF70ZS0KnH0W8SvQ@mail.gmail.com>
+ <92dba7da-f3fc-b7dc-6896-cf8d58cc7f17@suse.de> <CAFEAcA_sxvfHG6ryA4xHMfbwhDaRrF_+6xaef_0RqqH-7JESzQ@mail.gmail.com>
+ <0673d8c0-16f0-49e7-f002-06491353cc6c@suse.de>
+In-Reply-To: <0673d8c0-16f0-49e7-f002-06491353cc6c@suse.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jan 2019 13:06:43 +0000
-Message-ID: <CAFEAcA9OwKJQ0iWtuxMJrNPL5r_qtuZz57H=Dtcr6X45XqQ3TQ@mail.gmail.com>
-Subject: Re: [PATCH] microbit: make -kernel optional
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Julia Suvorova <jusual@mail.ru>, Joel Stanley <joel@jms.id.au>, 
-	Jim Mussared <jim@groklearning.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Steffen Gortz <qemu.ml@steffen-goertz.de>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Date: Thu, 10 Jan 2019 10:34:08 +0000
+Message-ID: <CAFEAcA-duBwj2-DG=dQLo-448ca--+C6Fu54avwEFQ5D-bwy8A@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] target/arm: Allow to switch from MON->HYP on AArch32
+To: Alexander Graf <agraf@suse.de>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Tom Rini <trini@konsulko.com>, 
+	Michal Simek <michal.simek@xilinx.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Stephen Warren <swarren@wwwdotorg.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: SV25Rj3KJy9N
+X-TUID: U5oS507PvOWX
 
-On Fri, 14 Dec 2018 at 14:51, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+On Thu, 10 Jan 2019 at 06:43, Alexander Graf <agraf@suse.de> wrote:
 >
-> ARMv7M machine types support -kernel for ELF and raw image files.
-> Microbit programs are typically in Intel HEX (.hex) format.  The generic
-> loader supports .hex files but it doesn't work as expected:
 >
->   $ qemu-system-arm -M microbit -device loader,file=microbit.hex
->   Guest image must be specified (using -kernel)
 >
-> This error comes from armv7m_load_kernel() but we don't have -kernel in
-> this case.
+> On 10.01.19 00:08, Peter Maydell wrote:
+> > On Wed, 9 Jan 2019 at 17:14, Alexander Graf <agraf@suse.de> wrote:
+> >>
+> >> On 01/09/2019 05:59 PM, Peter Maydell wrote:
+> >>> On Wed, 9 Jan 2019 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >>>> On Wed, 9 Jan 2019 at 15:26, Alexander Graf <agraf@suse.de> wrote:
+> >>>>> In U-boot, we switch from S-SVC -> MON -> HYP when we want to enter
+> >>>>> HYP mode. This dance seems to work ok (hence it's there in the code
+> >>>>> base), but breaks with current QEMU.
+> >>> PS: it would be helpful if the commit message said how u-boot
+> >>> is trying to go from Mon to Hyp -- some ways to try to do
+> >>> this are OK, and some are not, so whether it's supposed to
+> >>> work or not depends on what u-boot is actually doing...
+> >>
+> >> I don't fully understand all of it to be honest :). But the code is here:
+> >>
+> >> http://git.denx.de/?p=u-boot.git;a=blob;f=arch/arm/cpu/armv7/nonsec_virt.S
+> >>
+> >> What I managed to understand so far is that it goes to MON using the smc
+> >> #0 call and then changes SPSR so that on return (movs pc) the mode will
+> >> be different.
+> >
+> > Thanks -- yes, that's an exception return so it's the
+> > expected way to go from Mon to Hyp.
 >
-> This patch makes -kernel optional since most of the time we'll want to
-> use -device loader instead.
->
-> Note that we need to register the reset handler that
-> armv7m_load_kernel() used to register for us.
->
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> That was my understanding, yes. Do you still want me to change the
+> commit message to mention that or will you just do it when applying?
 
-Hi, Stefan. (Happy new year :-))
+I'll add a note when I apply it; thanks.
 
-Looking at this, I think I'd prefer it if we handled
-this in the armv7m_load_kernel() code, since having to register
-your own reset handler to reset the CPU is a weird thing for
-board level code to have to do. That then means the M-profile
-kernel load code is in line with the A-profile load code, which
-if it has no kernel to load will still register the reset handler,
-and let the machine run however it ends up running.
-
-I think this basically amounts to "remove the 'insist that
-kernel_filename is not NULL' check from armv7m_load_kernel()",
-aka "revert commit 01fd41ab3fb69971". That commit's commit
-message is correct that the behaviour if the user didn't
-specify anything to run is a bit unhelpful, but it predates
-the generic loader so it's no longer necessarily true that
-a kernel must be specified, either for this or for any other
-M-profile machine. (There's also the case of "board has a
-flash device that was populated via a -pflash or -drive
-option".)
-
-thanks
 -- PMM

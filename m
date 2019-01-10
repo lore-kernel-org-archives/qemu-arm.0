@@ -1,154 +1,147 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1640581wrt;
-        Thu, 10 Jan 2019 02:11:35 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7BUjCNGOsrqZtYcJYyi56u0+/bQ1pPtjfAc0lnWGfdDTcSrs+87JECMGqxw6/AKiO4QJ1H
-X-Received: by 2002:adf:e34b:: with SMTP id n11mr8055311wrj.91.1547115095683;
-        Thu, 10 Jan 2019 02:11:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547115095; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1817711wrt;
+        Thu, 10 Jan 2019 05:27:44 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5/SppABzVFHYO057tj8ZfTbpaEEOxUIPWESKBCOe54Cpn6ccCjrNesLLegsvCOyHimJMdy
+X-Received: by 2002:a62:824c:: with SMTP id w73mr10180841pfd.150.1547126864896;
+        Thu, 10 Jan 2019 05:27:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547126864; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7TRLLZPHR+EpeMr00QmEioYZG1wsPB/76BKIZ1xOqK5JvCRRegzVUwA4HWum/pzcl
-         OPOV8G3dmHO95XH9GnB/m+JV0MlyVVSk1FfxQ4OLFB+ULpCHlxwGgBSsSmYUh2eXGOek
-         4g7OvWmIT3fm/q1Ik4i4aM/gnbIPYvymWAJb/oBEr5V8mF1vQYlDkEWmoFeZTTB04I2n
-         MWy2vlA/0SH0MCjyeTHXg21SZiCIAjpGI49IKotxML6quQF1kP0dQOr+McZme9XF9DR9
-         w+FxiL8B7GewjqWMpc1dwrNmXoeDyLZ6piknKOk+3bozXqkoNWuIZ2udPfs+bFbotbKw
-         Uvjg==
+        b=zSzu3N1Zn8tuBuL8NWtizhAhe1YV8MpIMM64vIcB/MInK0gBCuDKqf0xw/L6aTwGZT
+         jbHxsn+pE00Qy/CBO/09zIgeJ3tmjd/ElZiNvsCLa9YiJqzRl1uIbS16eMvTgauJ3MiI
+         N9obDptQdqWSCEgR1yIbOKsRxSK0+tEh5yvW+0+v6ZIdCPHsRfGsSkBXv+pVx4Vf5suY
+         9X0yTJX52o0qqx3DZrT+ayCUtVpnspP+C7g9jJlTCJfjrot0TFtZ9iNN257eF//xJGMn
+         DF7NZ4GUtZ9eEpPoZcoqhWwZKfWr2vBwMTOKJAy1JACrhPuEwpe2IctALEcpVb0z7UMz
+         FpoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:dkim-signature;
-        bh=DM/ZZwKxyqk1smT4wyYlOIvoeIyF8lxd9w3nO67yZ6Y=;
-        b=Xm8iQX+Q4JQ1Ei4Hpm6WXwaW5HDZK9OFCxssQkHese3w2xTVEW+1VtYmoG6urqaQKx
-         FIlDOIoaC4tTMw2rnnYBi0/TM0sKUXAXqrvD+SfFZjuoxZ6xGTN6fKm7bvtxHjrPxTR4
-         9jga1LgAtFLvR4B9MEUnc04EY3hMFNcHSMkimy8GVt1+4A/dGA15x565P4x1/z6pUBqt
-         jfn0AGGC5Agfm1NDdbPuI1+iZWhK8NGLYxJMlCsvulcnOhbenfoZDne8pum4rnvONAq8
-         aTDsZ6xjOam4LCqmZfKcecbFIHdssVVhVWrSBoU9vqDrRcu1fO+ytJkASSdYmhzBm8cF
-         pM3Q==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=XHLRUT7xo0iN1vh+bW4Q5zukEI/zBKolz2eo3P3CxGM=;
+        b=HwimSGAQzorSoIN2VGmlmhecjUFpWL44hj1sFuSmpgwUIghPOF4pVwtUnT/+cGmoDs
+         KISuxW1P4FzeVrlunozZfsDxOsD8G6DbbAhIfL0uV7aNIGqprEi5SmkDNt4ZPvR4J3Sq
+         BV65rJrjOgtmsoovzh2HN+UXX/OuMyXnOeNpomlnzqwXhTjm6RPejks/sAbIk34qqMLd
+         ywrBRRJ0KdbGWWD2j1UK6JLhRxzjGovWllzelIzGobi/VrrdZvF8ZWLxGBDPrxtgmCF0
+         VEH+7Rux3uGxhU+ebCqXR9fEnRSlXnlUTiXP7k4w7JQeC9lowULjDb4Du476vvAg0MtQ
+         1cQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@mail.ru header.s=mail2 header.b=Y8GLv5a0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si40269185wrs.302.2019.01.10.02.11.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Jan 2019 02:11:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMjWkNNj;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id u2si69845029pgo.544.2019.01.10.05.27.44;
+        Thu, 10 Jan 2019 05:27:44 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@mail.ru header.s=mail2 header.b=Y8GLv5a0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:49516 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghXJG-0003Gl-QK
-	for alex.bennee@linaro.org; Thu, 10 Jan 2019 05:11:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48947)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jusual@mail.ru>) id 1ghXJ9-0003GR-6M
-	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 05:11:27 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jusual@mail.ru>) id 1ghXIv-0002HB-HH
-	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 05:11:19 -0500
-Received: from smtp16.mail.ru ([94.100.176.153]:54640)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jusual@mail.ru>)
-	id 1ghXIt-0002F0-Au; Thu, 10 Jan 2019 05:11:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru;
-	s=mail2; 
-	h=Content-Transfer-Encoding:Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject;
-	bh=DM/ZZwKxyqk1smT4wyYlOIvoeIyF8lxd9w3nO67yZ6Y=; 
-	b=Y8GLv5a0LFA8N5bd2BluMXHBOGKH8sNfxnEB/qCPfMV+UJ2bmuREiw4h8+F0W/J0a8VD3Nqj0aQo5gI33+s49QHsgt75XciM1MkhsACPwYPt9I8fNp5dUhUjww2HMVDnSZ+iUfhmLsxJ4pfKKSqSXxiwFXYgTQAfuilkGPCBrps=;
-Received: by smtp16.mail.ru with esmtpa (envelope-from <jusual@mail.ru>)
-	id 1ghXIp-0004zh-5o; Thu, 10 Jan 2019 13:11:07 +0300
-To: Thomas Huth <thuth@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20190110094020.18354-1-stefanha@redhat.com>
-	<20190110094020.18354-3-stefanha@redhat.com>
-	<cd32de08-afd0-4b8b-a10a-99e1d88d1755@redhat.com>
-Message-ID: <5cc00012-1929-22a0-cbf8-14573b083ae7@mail.ru>
-Date: Thu, 10 Jan 2019 13:11:05 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=WMjWkNNj;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728858AbfAJN1n (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 10 Jan 2019 08:27:43 -0500
+Received: from mail-oi1-f196.google.com ([209.85.167.196]:44025 "EHLO
+        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727847AbfAJN1n (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 10 Jan 2019 08:27:43 -0500
+Received: by mail-oi1-f196.google.com with SMTP id u18so9235329oie.10
+        for <kvm@vger.kernel.org>; Thu, 10 Jan 2019 05:27:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=XHLRUT7xo0iN1vh+bW4Q5zukEI/zBKolz2eo3P3CxGM=;
+        b=WMjWkNNjUIxES8P7rLBVX3B+8AH6W2AQKsBQWw5n90mTaGzmjiGPmd8lVXpERxFNvR
+         oIuJu7hNgeP9Ih8SiA/+YqyQvI7kNboqllrWyqYz/jwGpxFCkq69xR1OwyQ7Bk2CxSrH
+         DGDHV+thKBXt4wNsmLcvFrkYVj2CwyRe0m9os=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=XHLRUT7xo0iN1vh+bW4Q5zukEI/zBKolz2eo3P3CxGM=;
+        b=dVhYVUj9ghfKTzGPceWJBNywhJ1Y5sDM/AGjgp9gYtJxHqg2biwzJI8FjUnUndRrcu
+         UYpqyGl6uLcmlXnIac2BfS9VwFted5gNKKAxWN0T4a6ARaIc79CJDdnjDSyaNI3bFUlh
+         f0ewnjqNc05PgWHYSeHbUhkgDMSWnktl2DRzd3ldNDR+PDbZEPIA2OdDeXln75L0Wn/T
+         7Nb4ikmDiiI4a/4Y3yyLvKTDkOgOt0a6cKl/D+zWZMmcNFWeuTTuCD/pVoJjJhdRDkOY
+         hKHw4L3auRNcPub6BeJ3MvZYMf4P88rbNrZmnN/AtAnEYGaCJcDb076I0O/IyT1rrlRW
+         hcDg==
+X-Gm-Message-State: AJcUukd4BXj8V/g06lPJVwmxSw6OAcCqNsBLMAeJaE7o6NtbCoUuvT2w
+        Lhp/CkAujcbsmG24mJVTuGgRodwcUaO2L/7nRpkUZQ==
+X-Received: by 2002:aca:5c05:: with SMTP id q5mr6255414oib.146.1547126862428;
+ Thu, 10 Jan 2019 05:27:42 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <cd32de08-afd0-4b8b-a10a-99e1d88d1755@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Authentication-Results: smtp16.mail.ru; auth=pass smtp.auth=jusual@mail.ru
-	smtp.mailfrom=jusual@mail.ru
-X-77F55803: 3FFC80838138E3AB5A78504BD2AC29419E620A54DAF35E3B45E9DC363823D634CD9B123D1561B2E0F8EB75264EBBD67B
-X-7FA49CB5: 0D63561A33F958A5E60386356D91E7649728155DBA0F2F4DDBC10B01E092AC218941B15DA834481FA18204E546F3947CEDCF5861DED71B2F389733CBF5DBD5E9C8A9BA7A39EFB7666BA297DBC24807EA117882F44604297287769387670735209ECD01F8117BC8BEA471835C12D1D977C4224003CC8364767815B9869FA544D8D32BA5DBAC0009BE9E8FC8737B5C2249D52CD31C43BF465F3AA81AA40904B5D9CF19DD082D7633A0E7DDDDC251EA7DABD81D268191BDAD3D78DA827A17800CE7F0DFBB38B116E9C7CD04E86FAF290E2D40A5AABA2AD3711975ECD9A6C639B01B78DA827A17800CE78551BB54DDA62695B306B6A77FF21E0575ECD9A6C639B01B4E70A05D1297E1BBC6867C52282FAC8519DC0BE04022C72727F269C8F02392CD5571747095F342E88FB05168BE4CE3AF
-X-Mailru-Sender: 3BB5BBD942886723BD903D2329646980DA835869AE4827E3659640B2081FB704CD254E74BFB65C42F47EA7097ACE9B7FFB559BB5D741EB963BB91581D3AD5D250F2DC73CC0BFB1A30DA7A0AF5A3A8387
-X-Mras: OK
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 94.100.176.153
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] tests/microbit-test: add TWI stub
- device test
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-From: Julia Suvorova via Qemu-arm <qemu-arm@nongnu.org>
-Reply-To: Julia Suvorova <jusual@mail.ru>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
-	contrib@steffen-goertz.de, qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FW+4ENHUkkQo
+References: <1541672153-15529-1-git-send-email-gengdongjiu@huawei.com> <1541672153-15529-11-git-send-email-gengdongjiu@huawei.com>
+In-Reply-To: <1541672153-15529-11-git-send-email-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 10 Jan 2019 13:27:31 +0000
+Message-ID: <CAFEAcA_toKXMDAcjTseB2WquCXkEKqh=GODiG1-tEUa32xy2bQ@mail.gmail.com>
+Subject: Re: [PATCH v15 10/10] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Igor Mammedov <imammedo@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: bZ8T+QO8xd5E
 
+On Thu, 8 Nov 2018 at 10:18, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>
+> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> translates the host VA delivered by host to guest PA, then fill this PA
+> to guest APEI GHES memory, then notify guest according to the SIGBUS type.
+> There are two kinds of SIGBUS that QEMU needs to handle, which are
+> BUS_MCEERR_AO and BUS_MCEERR_AR.
 
+> +bool ghes_record_errors(uint32_t notify, uint64_t physical_address)
+> +{
+> +    uint64_t error_block_addr, read_ack_register_addr;
+> +    int read_ack_register = 0, loop = 0;
+> +    uint64_t start_addr = le32_to_cpu(ges.ghes_addr_le);
+> +    bool ret = GHES_CPER_FAIL;
+> +    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff,
+> +                                        0xff, 0xff, 0xff, 0, 1};
+> +
+> +    /*
+> +     * | +---------------------+ ges.ghes_addr_le
+> +     * | |error_block_address0|
+> +     * | +---------------------+
+> +     * | |error_block_address1|
+> +     * | +---------------------+ --+--
+> +     * | |    .............    | GHES_ADDRESS_SIZE
+> +     * | +---------------------+ --+--
+> +     * | |error_block_addressN|
+> +     * | +---------------------+
+> +     * | | read_ack_register0  |
+> +     * | +---------------------+ --+--
+> +     * | | read_ack_register1  | GHES_ADDRESS_SIZE
+> +     * | +---------------------+ --+--
+> +     * | |   .............     |
+> +     * | +---------------------+
+> +     * | | read_ack_registerN  |
+> +     * | +---------------------+ --+--
+> +     * | |      CPER           |   |
+> +     * | |      ....           | GHES_MAX_RAW_DATA_LENGT
+> +     * | |      CPER           |   |
+> +     * | +---------------------+ --+--
+> +     * | |    ..........       |
+> +     * | +---------------------+
+> +     * | |      CPER           |
+> +     * | |      ....           |
+> +     * | |      CPER           |
+> +     * | +---------------------+
+> +     */
+> +    if (physical_address && notify < ACPI_HEST_NOTIFY_RESERVED) {
 
-On 10.01.2019 12:48, Thomas Huth wrote:
-> On 2019-01-10 10:40, Stefan Hajnoczi wrote:
->> This test verifies that we read back the expected I2C WHO_AM_I register
->> values for the accelerometer/magnetometer.
->>
->> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
->> ---
->>   tests/microbit-test.c | 44 +++++++++++++++++++++++++++++++++++++++++++
->>   1 file changed, 44 insertions(+)
->>
->> diff --git a/tests/microbit-test.c b/tests/microbit-test.c
->> index 0c125535f6..dcdc0cd41a 100644
->> --- a/tests/microbit-test.c
->> +++ b/tests/microbit-test.c
->> @@ -21,6 +21,49 @@
->>   #include "hw/arm/nrf51.h"
->>   #include "hw/gpio/nrf51_gpio.h"
->>   #include "hw/timer/nrf51_timer.h"
->> +#include "hw/i2c/microbit_i2c.h"
->> +
->> +/* Read a byte from I2C device at @addr from register @reg */
->> +static uint32_t i2c_read_byte(uint32_t addr, uint32_t reg)
->> +{
->> +    uint32_t val;
->> +
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_REG_ADDRESS, addr);
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTTX, 1);
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_REG_TXD, reg);
->> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_TXDSENT);
->> +    g_assert_cmpuint(val, ==, 1);
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
->> +
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTRX, 1);
->> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_RXDREADY);
->> +    g_assert_cmpuint(val, ==, 1);
->> +    val = readl(NRF51_TWI_BASE + NRF51_TWI_REG_RXD);
->> +    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
-> 
-> Any chance that you could use qemu_writel() right from the start here?
-> That will make it easier to finally get rid of global_qtest one day...
+Why is a zero physical address special here? Shouldn't we be
+able to report "the memory backing physaddr 0 has a fault" ?
 
-I'll send a patch soon to fix it.
-But this test can be merged without corrections.
-
-Best regards, Julia Suvorova.
+thanks
+-- PMM

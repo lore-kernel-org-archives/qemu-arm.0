@@ -1,80 +1,82 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1615772wrt;
-        Thu, 10 Jan 2019 01:41:31 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN42YBTegjciz/ZkEK0511HEEaNrppp6B+i27hkn4MF7v5QB5rat2sp1935gtfontETzFuiG
-X-Received: by 2002:adf:83a7:: with SMTP id 36mr8431615wre.13.1547113291019;
-        Thu, 10 Jan 2019 01:41:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547113291; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1617356wrt;
+        Thu, 10 Jan 2019 01:43:40 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5gM0AdkbYYtmv+vyO5bBPXhXGqgG8iOUtv8hb9HzhS1FrkjYiTa5b+PHZz4cYWcxxNg6+5
+X-Received: by 2002:adf:fd87:: with SMTP id d7mr8095901wrr.74.1547113420885;
+        Thu, 10 Jan 2019 01:43:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547113420; cv=none;
         d=google.com; s=arc-20160816;
-        b=DFF/v4GkbIBBoXn/JcyWwmDBWcLd6nHeU6WjhstD5YLcZJ2aTPbwXfXKez8XbriRJh
-         u9dRXlM4OqEVMHy5O/iv+PCCQkeFmI7iHx7xcvVwE78fYgeZoqFjeVtMDne8JS/BuTO9
-         8iJr3scSCe1DcfAhmjoHYNwG6IorG7Rb2YbEaGAN25rLH16rChvGey4tdPjvJzD/6XFg
-         VNyhnmC54h4jM1uI5OzGTpc9JdgLL1J5ZTCaU+SY2PjJ0rZigzizFSbYPdYXMnw2r8q1
-         c32fHCt+uiyDOyu5r2s2+Bj/PyNY4x6ddLuEatS4+KSLV4E6SZO+VMF8tGTLfzT+vGYC
-         UmAA==
+        b=BXb9eZBDfPU3xC+T7NtfLIYCHCTXCgmigxx9+GldufcV/iMxZJF0bk+BAqVywsTrnI
+         LqUp0b2f5bySK4R2f1wByrMZ4UhQ8JDku7a8eU/M48dfuKWosF5mNgmQTPxPGyFa2SQV
+         exjGdn/kvxhKYhkohhtzxcQXfW6tDoE2DdugJU3nQthIvgMoeb87w06/5e+rWeZURdks
+         smj5Bg36RQtxTLCmz5HjoTnNfPATaqJIB0CiqRn1CqoAUZC0VSXZRB0qw8X+H8VoZ3DP
+         DJ6uRM/ZeZv9CXEk+GAGm+Vph9mIVmqgFdINc8cDWSX4fUXPHdDNsPjEQ2uwTH5m3xbj
+         8DMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=LQAaCNPw3LAKyry0i+t0jfrC7MTjAs1oYJYD1eAkZhE=;
-        b=EqMQJYfKx7G5m2MTFP18ucqm37sr/A3+xMpFaz1kqUWAvJEf60jwSL4BT4YUQCxCqL
-         +Vbgm0RM4vozVH7XbAaykytOAIx1qtgecT1IHKbTJLbIY+Dq2RouArw8lh2bqgTuzljQ
-         w0LvVnCEz6cxS3kN7/90giqxHUh6igXOMt31+8I6d2WmIcbslAMFqKJU1EDARHBMpm6E
-         eK5HkkwLEC9slsubf0QXBLjqwvWvTBG81w06ayBXW3wmIMsaPkySLIQBHUdk9IvnCfYv
-         vORlKRd8qN6cADRi9f9cxLzwGZMFSeiMp9Hg8z+ywKBBTfBaNAY+mqRmsX6JeNgT+qnv
-         l/Cg==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=WEU/gEpcW3Jhx7/TAlN2ZCV3tHNdqKpHTWgy+FupsI8=;
+        b=nUdJZgfnYVwBGR4yMSQ4MT3dtfWFndFj9tMn0AZWbWC+2KGkyDra1pD/rV277b0paI
+         qWi60OV0rDA8WKkFLJHRvIBXk5KLUgLGqNrYhm+IGIlLs2bFkGCIErJZzugu+d0Rul5E
+         lU1T5RtW4s10zqSb2oDaogrsHngH3G2jR2iMtnU/PM7SwTMbK+aYFwPaierXeRztDqID
+         c5K7N4QR4vKlZLCPicbRGUwLHOmHekWkzExMcLZISRr1Xz3ft7aVZR2bim47zzBig2Mp
+         emgRkG587yZCsRtXDtUcqjlyb2LgY3jgNIr2Y5Hwl8sJs4oRJk84kaL9MSN4DbWKUJLk
+         nneQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h124si10567337wmf.39.2019.01.10.01.41.30
+        by mx.google.com with ESMTPS id r1si10934407wmr.17.2019.01.10.01.43.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 10 Jan 2019 01:41:31 -0800 (PST)
+        Thu, 10 Jan 2019 01:43:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41376 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:41872 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghWqA-0000hp-3g
-	for alex.bennee@linaro.org; Thu, 10 Jan 2019 04:41:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40296)
+	id 1ghWsF-0002BR-Sx
+	for alex.bennee@linaro.org; Thu, 10 Jan 2019 04:43:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40317)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1ghWpH-0000GA-5l
-	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 04:40:36 -0500
+	(envelope-from <stefanha@redhat.com>) id 1ghWpH-0000GF-U0
+	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 04:40:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1ghWpF-0007Vf-Nm
+	(envelope-from <stefanha@redhat.com>) id 1ghWpG-0007WP-2y
 	for qemu-arm@nongnu.org; Thu, 10 Jan 2019 04:40:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46302)
+Received: from mx1.redhat.com ([209.132.183.28]:34512)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1ghWpF-0007Ri-Gi; Thu, 10 Jan 2019 04:40:33 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1ghWpF-0007Ug-Pt; Thu, 10 Jan 2019 04:40:33 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 15EF3C05B003;
-	Thu, 10 Jan 2019 09:40:26 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C85F80F95;
+	Thu, 10 Jan 2019 09:40:32 +0000 (UTC)
 Received: from localhost (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 37172451B;
-	Thu, 10 Jan 2019 09:40:20 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AF5CF17CFB;
+	Thu, 10 Jan 2019 09:40:29 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Date: Thu, 10 Jan 2019 09:40:18 +0000
-Message-Id: <20190110094020.18354-1-stefanha@redhat.com>
+Date: Thu, 10 Jan 2019 09:40:20 +0000
+Message-Id: <20190110094020.18354-3-stefanha@redhat.com>
+In-Reply-To: <20190110094020.18354-1-stefanha@redhat.com>
+References: <20190110094020.18354-1-stefanha@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 10 Jan 2019 09:40:26 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 10 Jan 2019 09:40:32 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 0/2] arm: Stub out NRF51 TWI
- magnetometer/accelerometer detection
+Subject: [Qemu-arm] [PATCH v2 2/2] tests/microbit-test: add TWI stub device
+ test
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,39 +96,78 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2mEX/mRKbWDZ
+X-TUID: oofsLh2hy+y0
 
-v2:
- * Move stub code into a separate device [Peter]
- * Instantiate stub from microbit board instead of nRF51 SoC since this i=
-s
-   microbit-specific.  Other boards using the nRF51 wouldn't necessarily =
-want
-   to see these TWI/I2C devices.
- * Add test case
+This test verifies that we read back the expected I2C WHO_AM_I register
+values for the accelerometer/magnetometer.
 
-This series stubs out the microbit's TWI/I2C devices so the microbit-dal
-firmware boots successfully.  The accelerometer and magnetometer are prob=
-ed at
-startup.  If they are not found the firmware panics.
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+---
+ tests/microbit-test.c | 44 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-Stefan Hajnoczi (1):
-  tests/microbit-test: add TWI stub device test
-
-Steffen G=C3=B6rtz (1):
-  arm: Stub out NRF51 TWI magnetometer/accelerometer detection
-
- hw/i2c/Makefile.objs          |   1 +
- include/hw/arm/nrf51.h        |   2 +
- include/hw/arm/nrf51_soc.h    |   1 +
- include/hw/i2c/microbit_i2c.h |  42 +++++++++++
- hw/arm/microbit.c             |  15 ++++
- hw/i2c/microbit_i2c.c         | 127 ++++++++++++++++++++++++++++++++++
- tests/microbit-test.c         |  44 ++++++++++++
- 7 files changed, 232 insertions(+)
- create mode 100644 include/hw/i2c/microbit_i2c.h
- create mode 100644 hw/i2c/microbit_i2c.c
-
+diff --git a/tests/microbit-test.c b/tests/microbit-test.c
+index 0c125535f6..dcdc0cd41a 100644
+--- a/tests/microbit-test.c
++++ b/tests/microbit-test.c
+@@ -21,6 +21,49 @@
+ #include "hw/arm/nrf51.h"
+ #include "hw/gpio/nrf51_gpio.h"
+ #include "hw/timer/nrf51_timer.h"
++#include "hw/i2c/microbit_i2c.h"
++
++/* Read a byte from I2C device at @addr from register @reg */
++static uint32_t i2c_read_byte(uint32_t addr, uint32_t reg)
++{
++    uint32_t val;
++
++    writel(NRF51_TWI_BASE + NRF51_TWI_REG_ADDRESS, addr);
++    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTTX, 1);
++    writel(NRF51_TWI_BASE + NRF51_TWI_REG_TXD, reg);
++    val =3D readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_TXDSENT);
++    g_assert_cmpuint(val, =3D=3D, 1);
++    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
++
++    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STARTRX, 1);
++    val =3D readl(NRF51_TWI_BASE + NRF51_TWI_EVENT_RXDREADY);
++    g_assert_cmpuint(val, =3D=3D, 1);
++    val =3D readl(NRF51_TWI_BASE + NRF51_TWI_REG_RXD);
++    writel(NRF51_TWI_BASE + NRF51_TWI_TASK_STOP, 1);
++
++    return val;
++}
++
++static void test_microbit_i2c(void)
++{
++    uint32_t val;
++
++    /* We don't program pins/irqs but at least enable the device */
++    writel(NRF51_TWI_BASE + NRF51_TWI_REG_ENABLE, 5);
++
++    /* MMA8653 magnetometer detection */
++    val =3D i2c_read_byte(0x3A, 0x0D);
++    g_assert_cmpuint(val, =3D=3D, 0x5A);
++
++    val =3D i2c_read_byte(0x3A, 0x0D);
++    g_assert_cmpuint(val, =3D=3D, 0x5A);
++
++    /* LSM303 accelerometer detection */
++    val =3D i2c_read_byte(0x3C, 0x4F);
++    g_assert_cmpuint(val, =3D=3D, 0x40);
++
++    writel(NRF51_TWI_BASE + NRF51_TWI_REG_ENABLE, 0);
++}
+=20
+ static void test_nrf51_gpio(void)
+ {
+@@ -247,6 +290,7 @@ int main(int argc, char **argv)
+=20
+     qtest_add_func("/microbit/nrf51/gpio", test_nrf51_gpio);
+     qtest_add_func("/microbit/nrf51/timer", test_nrf51_timer);
++    qtest_add_func("/microbit/microbit/i2c", test_microbit_i2c);
+=20
+     ret =3D g_test_run();
+=20
 --=20
 2.20.1
 

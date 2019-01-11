@@ -1,111 +1,163 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3464840wrt;
-        Mon, 14 Jan 2019 13:07:47 -0800 (PST)
-X-Received: by 2002:a62:31c1:: with SMTP id x184mr459288pfx.204.1547500067877;
-        Mon, 14 Jan 2019 13:07:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547500067; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp189572wrt;
+        Fri, 11 Jan 2019 06:18:57 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7EfubZggOt8nvNfDva//vQKNgixh4BcZeptbZBLpK+r5+uPC1kOhfrna7ryOjOelAYrvNv
+X-Received: by 2002:a1c:cf82:: with SMTP id f124mr2542136wmg.95.1547216337085;
+        Fri, 11 Jan 2019 06:18:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547216337; cv=none;
         d=google.com; s=arc-20160816;
-        b=pVubBGsOGRVx+MNVN7hZ8QVTWKIEhedl4qBglqFRAot9wF5xIteJhVOSsWuYf8r2Ab
-         tUvmVHUp3PoRFH05u3nTYJU41CaWWqhaG+3pWp9kyHttHEqmMYdgc96ePKo50hDDWFET
-         iHls611KJ8mPRhoeVcNwZ9xdXQj2jXqbIJvH19vW/r4ywtnUvagQhMkPJy1JkLxChROH
-         NbK4R3DBbZyDXLILkKYQcioozay7jJnUVy7T0JbIGUGFz6fq8XyPxCm5563IecxRjp8e
-         O0sFD1IekQhcwUup0rOv8wqnnmYVUm2rmxgWMzwWP+Fw/cf1oTj1kX1vkOLXUFw0uytc
-         7s5Q==
+        b=dIGKXim5hYziSkAPwKx7+4GHSh8a1kKUBx9BHO58XeQh2Z7mpPpgC1+AV4MCOqHtmB
+         3pj7c+OY3jV3LLy9Y8fTV8fEdEYFn0up3goUIYmfloZi7OUYdSSULb8G1j83zAO0OPYm
+         hdomNNhmYu4z6tmKJEUnGbbJATo255EZcNQB34sild+Gi6rot6yuuYXu+6JdKC+m+B07
+         B7N3Lq/751wfFrZaEz387ThtFoq3gStyCSt5VvVqrEp9qlDV00pplvAZfcaXa7CcEqYW
+         CJxhqFHXfhXN9ubaDeXut74fbgWO9g4Gu9fT7jYWlkHBohEIW3oVkZErMO8o4c365Il/
+         9KTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=VemYPBEOTGEbQHGnsbsY+GXNgbQou+HnXbyPtA/TFrY=;
-        b=l3dMhsRkU6F6PyW+YeSjh0CSgu5ACUbfzDPTHA4Icz1VZcpF1h/w96aTGvFVpyyHMF
-         GTsI1vVaIWf0IbzM+uSrHvLAa00FpVNWD90gGUX8M9uyLV094uz/6uzQHW1Gh6gUZGgb
-         A2qyks7UNbpaDkrzfH1gPbNt6zBXcZBpfqOCIH/lTn4y2eNEHS/S+rPohiFZm0+xOr2h
-         7WX1e/XFrjDRzEzc5X1ZbF4f2vHCoqXFLV7yqnPH8A6wnL+KzlCb7Tx8gDZHFrVhLh4B
-         avBvhclLBMhx/2r8JXnr/3Nj+xS2lrtt9GBf+uH3/c/Ee2Vjhe/ErBO0znE60uZzQpe+
-         cdvQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=UZdt8nua/sJxBmqVPjSiF9kwDTtqHtZxOFO+PmzRsGI=;
+        b=TwSpNWGPrwH38xNd7NE1phZpSauDvmOd4066C+KglUWUTCnWilKbIidPURWjni3pfV
+         C5eU1FG8eNHclDGS7l72CDnnrCiVyN5Bf2wb2eb7QWAH/Hzyd5Dt7DI2/MEplt2xAmYj
+         ngRRdVOQMGbRfOWAKxIKgkNYgUPLhydYEZttvOKF2qELbjKfepbXxzktAQxBV0AXc0E1
+         /bFtpW6bFE2PzCCp1qdb34SnEk0kWrRyHJ1I18UyzrPMNnON0fgE205AKtW/AqqPirig
+         7v8NmMzi/NoAXnMQ5YVg9baCqQKPGvWo/cNh2wQMwunrQrWUKfn17QDLa2hs4azjk1WJ
+         EyxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LPG+k+aH;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y73sor2486881pfd.54.2019.01.14.13.07.47
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 128si13320709wmd.69.2019.01.11.06.18.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 14 Jan 2019 13:07:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 11 Jan 2019 06:18:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LPG+k+aH;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=VemYPBEOTGEbQHGnsbsY+GXNgbQou+HnXbyPtA/TFrY=;
-        b=LPG+k+aHiXzklbkrcbuG5z4U1na/RgQqzZJfiWwQCilJ8Igw+2XTH5fuHbnUBTr5Hr
-         D8cEioigQOlsVvlMhLdSeo7cs0bbdSfUJiDxo3J1xNqtSF5EkDFmToxmRUFK491SU/+4
-         G95IpVJIawHJjXEzsDjbhvt7MJU+7V6uio7to=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=VemYPBEOTGEbQHGnsbsY+GXNgbQou+HnXbyPtA/TFrY=;
-        b=LTnamJnOVuuyTHrHsoo4TIeuK7M3X0IHh//v+r1UNQgV5Z5ZrkRXfj9cRygrONgM8E
-         utuX0p+2jiwGD5FjJKDsBiZJ0Ru49lzUIfm/c+5ad7NJt2hkwSmirvNrzKrU5VkBacA0
-         5ajV6uM2jtT4xfAfUCtM/pIjnPrB5YHSX6C+YMUlv2jqzyo9su5mk3r9JKUvfiw4vfVQ
-         JJL7dOGY8Zhh0k/jBh9yu+iK33BISSfx7L+L6gAhylfVsZcP+4yb2wTXRnuycmH+k7Gw
-         c6RIiOmsaeWeov+EEH9aqKnS89M/rREDD75Yf+RhG/66DbWzvhW1gdDcWpe9HqHYHCG8
-         4gJg==
-X-Gm-Message-State: AJcUukd3vtruXYEeN38A9EZwreZE+OthqEx2iv3r9PCndVxPr0jMvX1u
-	ErOAW663WZHlVfvTSmWM+r3WiCq0T5zJgtUj
-X-Google-Smtp-Source: ALg8bN752tXgwXRFw2K1oULiexyLm9PhEDz8BF5rlrk91w82UnboU/yGGSsD7+T5K2zke6tFs8Nhwg==
-X-Received: by 2002:a62:1043:: with SMTP id y64mr474940pfi.78.1547500067246;
-        Mon, 14 Jan 2019 13:07:47 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net ([2001:8000:1064:7600:4085:6ae6:1bde:1c45])
-        by smtp.gmail.com with ESMTPSA id h15sm1377277pgl.43.2019.01.14.13.07.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Jan 2019 13:07:46 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH 17/17] tests/tcg/aarch64: Add mte smoke tests
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20190114011122.5995-1-richard.henderson@linaro.org>
- <20190114011122.5995-18-richard.henderson@linaro.org>
- <878sznpbd0.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <57ff8f98-95c9-734d-99dd-22d4ff350951@linaro.org>
-Date: Tue, 15 Jan 2019 08:07:41 +1100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:34109 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ghxeB-0005tj-Tx
+	for alex.bennee@linaro.org; Fri, 11 Jan 2019 09:18:56 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48167)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1ghxdt-0005cg-DH
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:18:38 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1ghxXb-000728-5Y
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:12:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44514)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1ghxXZ-0006x7-1p; Fri, 11 Jan 2019 09:12:05 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 32C9C804FA;
+	Fri, 11 Jan 2019 14:12:04 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-254.brq.redhat.com [10.40.204.254])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 576D65D6A9;
+	Fri, 11 Jan 2019 14:12:00 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	qemu-devel@nongnu.org
+Date: Fri, 11 Jan 2019 15:08:56 +0100
+Message-Id: <20190111140857.4211-15-philmd@redhat.com>
+In-Reply-To: <20190111140857.4211-1-philmd@redhat.com>
+References: <20190111140857.4211-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <878sznpbd0.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: KGCnQSpWHda9
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 11 Jan 2019 14:12:04 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 14/15] ui/console: Remove
+ DisplayState/DisplaySurface from "qemu/typedefs.h"
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fs0grTL4ombk
 
-On 1/15/19 1:22 AM, Alex Bennée wrote:
-> 
-> Richard Henderson <richard.henderson@linaro.org> writes:
-> 
->> ??? Requires a quite recent aarch64 assembler.  Use .inst instead?
-> 
-> How recent? Given buster is nearing release we could start using it as a
-> basis for the ARM cross compiler images. That is shipping gcc 8.2.0 as
-> of now.
+Files requiring DisplayState/DisplaySurface already include "ui/console.h=
+".
 
-Not yet released.  The patches adding the support include
+To clean "qemu/typedefs.h", move the declarations to "ui/console.h"
+(removing DisplaySurface forward declaration).
 
-commit 3a0f69be5589d351453afebd0974992cff3ee4d1
-Author: Sudakshina Das <sudi.das@arm.com>
-Date:   Mon Nov 12 13:29:38 2018 +0000
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ include/qemu/typedefs.h | 2 --
+ include/ui/console.h    | 6 ++++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-    [BINUTILS, AARCH64, 8/8] Add data cache instructions
-    for Memory Tagging Extension
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 55f4de7259..af0dc6e065 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -24,8 +24,6 @@ typedef struct DeviceListener DeviceListener;
+ typedef struct DeviceState DeviceState;
+ typedef struct DirtyBitmapSnapshot DirtyBitmapSnapshot;
+ typedef struct DisplayChangeListener DisplayChangeListener;
+-typedef struct DisplayState DisplayState;
+-typedef struct DisplaySurface DisplaySurface;
+ typedef struct DriveInfo DriveInfo;
+ typedef struct Error Error;
+ typedef struct EventNotifier EventNotifier;
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 8396387c47..aa9f975544 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -131,7 +131,7 @@ struct PixelFormat {
+     uint8_t rbits, gbits, bbits, abits;
+ };
+=20
+-struct DisplaySurface {
++typedef struct DisplaySurface {
+     pixman_format_code_t format;
+     pixman_image_t *image;
+     uint8_t flags;
+@@ -140,7 +140,7 @@ struct DisplaySurface {
+     GLenum gltype;
+     GLuint texture;
+ #endif
+-};
++} DisplaySurface;
+=20
+ typedef struct QemuUIInfo {
+     /* geometry */
+@@ -189,6 +189,8 @@ typedef struct QemuDmaBuf {
+     bool      y0_top;
+ } QemuDmaBuf;
+=20
++typedef struct DisplayState DisplayState;
++
+ typedef struct DisplayChangeListenerOps {
+     const char *dpy_name;
+=20
+--=20
+2.17.2
 
-but the most recent binutils release branch (2.31) is from June.
-
-
-r~

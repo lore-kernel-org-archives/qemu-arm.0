@@ -1,83 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp193705wrt;
-        Fri, 11 Jan 2019 06:22:34 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5xapGNCxouFLvAutO9//SFI0uE2I53MvF/roC3fUQ9Q1sGl2r3sLxOrGBZ9KEZk8p9aaCU
-X-Received: by 2002:adf:ef88:: with SMTP id d8mr13671742wro.163.1547216553993;
-        Fri, 11 Jan 2019 06:22:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547216553; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp194859wrt;
+        Fri, 11 Jan 2019 06:23:34 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5zZYk1shoJsYqGhti4iq89aLxLJ/Xt5j6yi7qg+5dwP+c/L5fhpy7nMJSkyONy/76VIb4s
+X-Received: by 2002:a1c:b1d5:: with SMTP id a204mr2641906wmf.32.1547216614917;
+        Fri, 11 Jan 2019 06:23:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547216614; cv=none;
         d=google.com; s=arc-20160816;
-        b=vTSiElGZc3ByBAZSKaa31l/O1GoG+WjY35myODqj5QdAeLV3N22wpVcedGwZRKqPSR
-         9U8FE7twtnKmD/muqMPm/XvBG0yl7OX9EW+fw8hnHFET1r3s+olASplYRdLkmIFZq727
-         8WnADGlzuidqMzlsgOyiz1+QmCVxSnOsBAMms1yknH51S+PAP/GUCTo1nCD6ETda8yHj
-         7hufH1PUw3jv/89f/9b1Te+i17bZ/U9cHWMG18j3Cw5D8fa+M38dLr9aVNAyB/bify99
-         bm67TigH4MgMTLKriY9X3jhxrqlc3ZTah7H5u1gVaTLp06yKi4lbrgnER/KnKTQEJjmn
-         eS6g==
+        b=z1eSrwoNoxBBI2vxpgLjnvAwXBFe2GWLUWB5x72ftDBY3YsjqyDTsloEGYQFnrqMW/
+         eVRSIcVDn/llNYloq/Q4EqE/xWIidxp8fsFyfk2eZm7MHVOR184YFTl+0DBya1iBnS5L
+         asNi/aLodmq35nVBRAFmLsOdUN2lGMFlvCDHp8c6559fT6NXo++K8N+3L7ae3jRBE6ji
+         duwX754yANeA6K6HB9YENCqcfXdD9RldBxlNt8GBC+0/ewr6uFgj7JOajX+wXVbnw+ZI
+         lqPPHgAzINT60nIiAP7d7dTeTRQx43IgRYmjRQZaJGkyBrWSqki96AphpKRtV8jbFcPS
+         xkPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=gKk1awim+9WGVcbTyeM19FfrYoa5z9rtr60ZSJdsmuI=;
-        b=V0XHIkrVoMRBNavPz4fJZxwXt5+gan602BHGZV0+R4J6wl/vSjIuzXFXbbSGqd22W3
-         7p5cuEbmeSDex0vrPZxUequEYjDvfvxinXVAvTNwY3x/GDLIW3yWyvX0nAb+1yL0tPiU
-         CPuafTyCsjm6HDGbwDohOLZBJD0I9gASxWWolH0mNIs4cSoJ8QjgfR5y85swHbqLRBI1
-         Yd4X6J6QCCqIyJ6/2HmAqgaFQfYzXBqXM7UaowniH4ew6gKRd34M6RBYQf3RwM9NdFlD
-         L8y3RGuSOJ4KNJ6TCeERckmGFofeNvU3UV1VkdGBnqNfZxncQWKA52BrqUJh8uY/OhmX
-         lsWA==
+        bh=+KG/twszNnbdOo6srcykILYIKl/bYOYBhRqozexPO7U=;
+        b=RgiJhzljkpmDcWnMaen++OtFl0Iv/VSHwpv4hvyir+9cJHTS/+sxTehMeaZSr3gEUK
+         4zgFJ6uEf1AqovmIRc720N9bDOw1yL+RFKXMjWGC1lhDM4oNVOpIWjSKDLuNZ11MqBS/
+         hJKx6EeN+wqz4LZS2sxf54jTbPJtg4uQz0tuO3l4r08Eb9pmzNKKU84w6QmofouljKMe
+         IWPsVu7iGq+27vR09JuVl1ScYOIRub2DvnhbaFYi+03YCGiOPnJnizenyiUyT7qrDyGa
+         qL3TqgARTCzqWj3o0oRUvfzHDb/2HV4/YLbsa17l5ImhUQsCGE4yRnpDhwk2wZqlaCBc
+         x+ng==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si42157666wrt.328.2019.01.11.06.22.33
+        by mx.google.com with ESMTPS id w75si13535320wmf.95.2019.01.11.06.23.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Jan 2019 06:22:33 -0800 (PST)
+        Fri, 11 Jan 2019 06:23:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35030 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:35282 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghxhh-0000vk-2J
-	for alex.bennee@linaro.org; Fri, 11 Jan 2019 09:22:33 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48167)
+	id 1ghxig-0001iq-0P
+	for alex.bennee@linaro.org; Fri, 11 Jan 2019 09:23:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1ghxdx-0005cg-J5
-	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:18:42 -0500
+	(envelope-from <philmd@redhat.com>) id 1ghxe2-0005j5-9x
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:18:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1ghxX5-0005s6-Lt
-	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:11:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38532)
+	(envelope-from <philmd@redhat.com>) id 1ghxW9-0003KX-1k
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:10:37 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59256)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1ghxX5-0005gy-Fg; Fri, 11 Jan 2019 09:11:35 -0500
+	id 1ghxW6-0002eh-Qu; Fri, 11 Jan 2019 09:10:36 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D5886C05E767;
-	Fri, 11 Jan 2019 14:11:30 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A6E2664100;
+	Fri, 11 Jan 2019 14:10:21 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-254.brq.redhat.com [10.40.204.254])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2782E5D6A9;
-	Fri, 11 Jan 2019 14:11:23 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D41795D739;
+	Fri, 11 Jan 2019 14:10:09 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org
-Date: Fri, 11 Jan 2019 15:08:52 +0100
-Message-Id: <20190111140857.4211-11-philmd@redhat.com>
+Date: Fri, 11 Jan 2019 15:08:47 +0100
+Message-Id: <20190111140857.4211-6-philmd@redhat.com>
 In-Reply-To: <20190111140857.4211-1-philmd@redhat.com>
 References: <20190111140857.4211-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 11 Jan 2019 14:11:30 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 11 Jan 2019 14:10:21 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 10/15] range: Remove Range from "qemu/typedefs.h"
+Subject: [Qemu-arm] [PATCH 05/15] hw/nvram/fw_cfg: Remove various typedefs
+ from "qemu/typedefs.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,88 +93,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	Laszlo Ersek <lersek@redhat.com>, qemu-arm@nongnu.org,
+	Laszlo Ersek <lersek@redhat.com>,
+	Ben Warren <ben@skyportsystems.com>, qemu-arm@nongnu.org,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mxuy6Yjb9jlD
+X-TUID: SOwInh/BZvc+
 
-Range is only used in "hw/pci-host/q35.h" in the MCHPCIState, and
-in "hw/pci/pci.h" by pci_bus_get_w64_range().  Let them include
-"qemu/range.h" directly to simplify "qemu/typedefs.h".
+There are only three files requiring these typedefs, let them
+include "hw/nvram/fw_cfg.h" directly to simplify "qemu/typedefs.h".
 
-To clean "qemu/typedefs.h", move the declaration to "qemu/range.h"
-(removing the forward declaration).
+To clean "qemu/typedefs.h", move the forward declarations
+to "hw/nvram/fw_cfg.h".
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- include/hw/pci-host/q35.h | 1 +
- include/hw/pci/pci.h      | 1 +
- include/qemu/range.h      | 4 ++--
- include/qemu/typedefs.h   | 1 -
- 4 files changed, 4 insertions(+), 3 deletions(-)
+ include/hw/acpi/vmgenid.h | 1 +
+ include/hw/arm/virt.h     | 1 +
+ include/hw/mem/nvdimm.h   | 1 +
+ include/hw/nvram/fw_cfg.h | 8 +++++++-
+ include/qemu/typedefs.h   | 4 ----
+ 5 files changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-index 8f4ddde393..236ff008c9 100644
---- a/include/hw/pci-host/q35.h
-+++ b/include/hw/pci-host/q35.h
-@@ -22,6 +22,7 @@
- #ifndef HW_Q35_H
- #define HW_Q35_H
+diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
+index 38586ecbdf..be53de38f1 100644
+--- a/include/hw/acpi/vmgenid.h
++++ b/include/hw/acpi/vmgenid.h
+@@ -3,6 +3,7 @@
 =20
-+#include "qemu/range.h"
- #include "hw/hw.h"
- #include "hw/isa/isa.h"
- #include "hw/sysbus.h"
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index d87f5f93e9..f9c020fd98 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -1,6 +1,7 @@
- #ifndef QEMU_PCI_H
- #define QEMU_PCI_H
-=20
-+#include "qemu/range.h"
+ #include "hw/acpi/bios-linker-loader.h"
  #include "hw/qdev.h"
- #include "exec/memory.h"
- #include "sysemu/dma.h"
-diff --git a/include/qemu/range.h b/include/qemu/range.h
-index 7e75f4e655..aaa09c8306 100644
---- a/include/qemu/range.h
-+++ b/include/qemu/range.h
-@@ -29,7 +29,7 @@
-  * - Ranges must not wrap around 0, but can include UINT64_MAX.
-  */
++#include "hw/nvram/fw_cfg.h"
+ #include "qemu/uuid.h"
 =20
--struct Range {
-+typedef struct Range {
-     /*
-      * Do not access members directly, use the functions!
-      * A non-empty range has @lob <=3D @upb.
-@@ -37,7 +37,7 @@ struct Range {
-      */
-     uint64_t lob;        /* inclusive lower bound */
-     uint64_t upb;        /* inclusive upper bound */
--};
-+} Range;
+ #define VMGENID_DEVICE           "vmgenid"
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 4cc57a7ef6..fef632dcf5 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -35,6 +35,7 @@
+ #include "qemu/notify.h"
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
++#include "hw/nvram/fw_cfg.h"
+ #include "sysemu/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
 =20
- static inline void range_invariant(const Range *range)
- {
+diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+index c5c9b3c7f8..51d3a52c4b 100644
+--- a/include/hw/mem/nvdimm.h
++++ b/include/hw/mem/nvdimm.h
+@@ -24,6 +24,7 @@
+ #define QEMU_NVDIMM_H
+=20
+ #include "hw/mem/pc-dimm.h"
++#include "hw/nvram/fw_cfg.h"
+ #include "hw/acpi/bios-linker-loader.h"
+=20
+ #define NVDIMM_DEBUG 0
+diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+index f5a6895a74..244ed78afa 100644
+--- a/include/hw/nvram/fw_cfg.h
++++ b/include/hw/nvram/fw_cfg.h
+@@ -14,7 +14,9 @@
+ #define FW_CFG_IO(obj)  OBJECT_CHECK(FWCfgIoState,  (obj), TYPE_FW_CFG_I=
+O)
+ #define FW_CFG_MEM(obj) OBJECT_CHECK(FWCfgMemState, (obj), TYPE_FW_CFG_M=
+EM)
+=20
+-typedef struct fw_cfg_file FWCfgFile;
++typedef struct FWCfgState FWCfgState;
++typedef struct FWCfgIoState FWCfgIoState;
++typedef struct FWCfgMemState FWCfgMemState;
+=20
+ #define FW_CFG_ORDER_OVERRIDE_VGA    70
+ #define FW_CFG_ORDER_OVERRIDE_NIC    80
+@@ -24,6 +26,8 @@ typedef struct fw_cfg_file FWCfgFile;
+ void fw_cfg_set_order_override(FWCfgState *fw_cfg, int order);
+ void fw_cfg_reset_order_override(FWCfgState *fw_cfg);
+=20
++typedef struct fw_cfg_file FWCfgFile;
++
+ typedef struct FWCfgFiles {
+     uint32_t  count;
+     FWCfgFile f[];
+@@ -34,6 +38,8 @@ typedef struct fw_cfg_dma_access FWCfgDmaAccess;
+ typedef void (*FWCfgCallback)(void *opaque);
+ typedef void (*FWCfgWriteCallback)(void *opaque, off_t start, size_t len=
+);
+=20
++typedef struct FWCfgEntry FWCfgEntry;
++
+ struct FWCfgState {
+     /*< private >*/
+     SysBusDevice parent_obj;
 diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 5e9a070ff3..fb9f29d892 100644
+index 3a5ca74bd3..1c294c296c 100644
 --- a/include/qemu/typedefs.h
 +++ b/include/qemu/typedefs.h
-@@ -97,7 +97,6 @@ typedef struct QNum QNum;
- typedef struct QObject QObject;
- typedef struct QString QString;
- typedef struct RAMBlock RAMBlock;
--typedef struct Range Range;
- typedef struct SHPCDevice SHPCDevice;
- typedef struct uWireSlave uWireSlave;
- typedef struct VirtIODevice VirtIODevice;
+@@ -31,10 +31,6 @@ typedef struct DriveInfo DriveInfo;
+ typedef struct Error Error;
+ typedef struct EventNotifier EventNotifier;
+ typedef struct FlatView FlatView;
+-typedef struct FWCfgEntry FWCfgEntry;
+-typedef struct FWCfgIoState FWCfgIoState;
+-typedef struct FWCfgMemState FWCfgMemState;
+-typedef struct FWCfgState FWCfgState;
+ typedef struct HCIInfo HCIInfo;
+ typedef struct HVFX86EmulatorState HVFX86EmulatorState;
+ typedef struct I2CBus I2CBus;
 --=20
 2.17.2
 

@@ -1,167 +1,187 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp200992wrt;
-        Fri, 11 Jan 2019 06:29:32 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6uYdkcLuEteA93gPIcoN08EvmJUr4E3gICMTL5Yz4Df9hTl3OR8N5z81I+cTbiEl7mrtPC
-X-Received: by 2002:a7b:c44d:: with SMTP id l13mr2561760wmi.144.1547216972698;
-        Fri, 11 Jan 2019 06:29:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547216972; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp203491wrt;
+        Fri, 11 Jan 2019 06:31:54 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN4N75gs0cRwV1+WWycrgC6SmFTSyhtcQ9SUCDEyTnrfIdcIaUVeRZge74xG5gaintQUV7U4
+X-Received: by 2002:a7b:c7c7:: with SMTP id z7mr2704696wmk.74.1547217114207;
+        Fri, 11 Jan 2019 06:31:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547217114; cv=none;
         d=google.com; s=arc-20160816;
-        b=nR3OzFV8erEaqw9UWcvoavAhB+Py52xfqsrTPXF6MY4QqXzXi9MOHf8XZh3Y3HQpRf
-         x47yncwYWzdRpFPp+GGTjnOmF3spPXXpiTEaNqQUAVK6g3unIiAVBSfSwyph1QAwFMBp
-         h6ucw23JTLm3+YjdhmalgBqVB+ijz2BtRB8GTBfgIty0LQI6RKRPeUihe49TX4yHx3CB
-         xcg4sGu5dxzDEUGh78jIZN3bcATbIgEJaJeLJyqXhDMuaiKMfE7xMQy8L3DvDA3wShZe
-         eFgLp370nidqpT3ADIEWXZS4l+OyRKxTVxpcAHN3dAVRprBWhgH8Kvz+LThzjoJnz8JN
-         8L/g==
+        b=02ce32h0m3EYQtoCwF76Ifso8V+M9J42rt7m/y6QypszjLENOMUG3SDJCKYWJTHrTx
+         FuhJbeu/SBMlpYEvIjIe8n3gLlYath5S3K5z5zgDP2BioWwWUfAtV5EAA7glWu/7BRUN
+         X1l2Xu4wpk+tsRGIKj3Q/QspLXKBMf78ebrpgB9E2DoPopKtu0DHySK6OueDxlF+Nib5
+         z2GQ7O0jHYjUW2jhjD+KvR+OCbGp+jOEfGauie768NsLsySxt/hFzd2XVMfZ++odRW0w
+         xnUAOsjY8r04ZjWJDtbEdnEB94Pe2K2NX1ZfDNLSZaMPGyp4Fegfflz12TRxii9V6IUS
+         Icpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=lj5EiV7X41aeSfPteJA1mg5P38QDyNrgto1cuIVBguk=;
-        b=Dt/9ulf/GaDf/WnwinXhenbpK1a6qzYU03VXrOqVQYam+VXtCI4jn7ngUcgWWMMxAa
-         kuDrfCwQrbTyLm8qPhcYA0BfVqFpMSQJwe338nQUOtlQE0FfDN/zFoby2xQuFU9Uypbf
-         EXv2P/7Ep9R9yx+Tbxx9A6TXGHPoMDXLqStxrhXgqC3rxY0iam015v/mSqfFpDVo9wF7
-         +aqJhjgnlI8Y9sxKGka8HSGGs6QHvHBMFVw9IdnNLZX1wLIa0QlSWr18CTTTYk32GJzg
-         YOLK7tKZMe3eGJEJ+gMf93K95NJbapzpxnvJCAujC4RwZJ77MJviSUljJJvA+pb6um2G
-         TLXg==
+        bh=SocKeOwUbkQubg70ffjgn1h11b+pZM83bNvp5P4Sw0g=;
+        b=Nfc8Uqu0j10ub7MMOeGDWvxzdGmTbeTi9zilLGLGRdwQRcRGk5Lf3Bu794K0Pltufl
+         72oBMWJuvfEFgpnoePTxL30pglt70GB+nJqZSFkYspgX6etGTFI3kA0SlPGaFwK6XH5D
+         q7A+WZlwxfB69sttjV8Q7/4avwsf8eS4DBdZtwrC4vkaCKv7KDwkjK1UtNlmkJHwGyOA
+         kQd9LYMdkdHkWooAQg/hzYpARDwR1qEgwNehheSQSptUYlsgBM4GaQ0iLCivvUPoaC1z
+         /ivV3SSOnxAy0h9IJcnTmaQUcMyXLZpSJ+lYQK0UU0dBYy12j5iZXM0sWZnZL6PjxuZM
+         Ylhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 194si13146674wmb.190.2019.01.11.06.29.32
+        by mx.google.com with ESMTPS id v9si42363179wrn.219.2019.01.11.06.31.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 11 Jan 2019 06:29:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 11 Jan 2019 06:31:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36758 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:37520 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ghxoR-0006Pl-Mo
-	for alex.bennee@linaro.org; Fri, 11 Jan 2019 09:29:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48240)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ghxqg-0000WH-E1
+	for alex.bennee@linaro.org; Fri, 11 Jan 2019 09:31:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48167)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1ghxe6-0005j5-22
-	for qemu-devel@nongnu.org; Fri, 11 Jan 2019 09:18:50 -0500
+	(envelope-from <philmd@redhat.com>) id 1ghxe5-0005cg-EG
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:18:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1ghxVA-0000Xt-Le
-	for qemu-devel@nongnu.org; Fri, 11 Jan 2019 09:09:37 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42244)
+	(envelope-from <philmd@redhat.com>) id 1ghxVJ-0000zb-47
+	for qemu-arm@nongnu.org; Fri, 11 Jan 2019 09:09:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53007)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1ghxV7-0000B9-IZ; Fri, 11 Jan 2019 09:09:33 -0500
+	id 1ghxVI-0000xC-SI; Fri, 11 Jan 2019 09:09:45 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A1FCD19CBDB;
-	Fri, 11 Jan 2019 14:09:30 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E430E4E93F;
+	Fri, 11 Jan 2019 14:09:43 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-254.brq.redhat.com [10.40.204.254])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 77C5E5D6A9;
-	Fri, 11 Jan 2019 14:09:21 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 39AE15D6A9;
+	Fri, 11 Jan 2019 14:09:30 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org
-Date: Fri, 11 Jan 2019 15:08:44 +0100
-Message-Id: <20190111140857.4211-3-philmd@redhat.com>
+Date: Fri, 11 Jan 2019 15:08:45 +0100
+Message-Id: <20190111140857.4211-4-philmd@redhat.com>
 In-Reply-To: <20190111140857.4211-1-philmd@redhat.com>
 References: <20190111140857.4211-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 11 Jan 2019 14:09:30 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 11 Jan 2019 14:09:44 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 02/15] hw/pcmcia: Remove PCMCIACardState from
+Subject: [Qemu-arm] [PATCH 03/15] hw/ssi: Remove SSIBus from
  "qemu/typedefs.h"
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Laszlo Ersek <lersek@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8hw6YnjlCdqj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vkDd+fj06ZOL
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-There is only one file requiring this typedef (hw/arm/pxa.h),
-let it include "hw/pcmcia.h" directly to simplify "qemu/typedefs.h".
+There are only three files requiring this typedef, let them
+include "hw/ssi/ssi.h" directly to simplify "qemu/typedefs.h".
 
-To clean "qemu/typedefs.h", move the declaration to "hw/pcmcia.h"
-(removing the forward declaration).
+To clean "qemu/typedefs.h", move the forward declaration
+to "hw/ssi/ssi.h".
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 ---
+ hw/arm/strongarm.h      | 1 +
  include/hw/arm/pxa.h    | 1 +
- include/hw/pcmcia.h     | 4 ++--
+ include/hw/ssi/pl022.h  | 1 +
+ include/hw/ssi/ssi.h    | 1 +
  include/qemu/typedefs.h | 1 -
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ 5 files changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-index 0df1199caa..f6dfb5c0cf 100644
---- a/include/hw/arm/pxa.h
-+++ b/include/hw/arm/pxa.h
-@@ -12,6 +12,7 @@
+diff --git a/hw/arm/strongarm.h b/hw/arm/strongarm.h
+index e98840b461..ae51a1ae34 100644
+--- a/hw/arm/strongarm.h
++++ b/hw/arm/strongarm.h
+@@ -3,6 +3,7 @@
 =20
  #include "exec/memory.h"
  #include "target/arm/cpu-qom.h"
-+#include "hw/pcmcia.h"
++#include "hw/ssi/ssi.h"
+=20
+ #define SA_CS0          0x00000000
+ #define SA_CS1          0x08000000
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index f6dfb5c0cf..f184349f02 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -13,6 +13,7 @@
+ #include "exec/memory.h"
+ #include "target/arm/cpu-qom.h"
+ #include "hw/pcmcia.h"
++#include "hw/ssi/ssi.h"
 =20
  /* Interrupt numbers */
  # define PXA2XX_PIC_SSP3	0
-diff --git a/include/hw/pcmcia.h b/include/hw/pcmcia.h
-index 79cac9c761..1b4080764f 100644
---- a/include/hw/pcmcia.h
-+++ b/include/hw/pcmcia.h
-@@ -18,13 +18,13 @@ typedef struct PCMCIASocket {
- #define PCMCIA_CARD_CLASS(cls) \
-     OBJECT_CLASS_CHECK(PCMCIACardClass, cls, TYPE_PCMCIA_CARD)
+diff --git a/include/hw/ssi/pl022.h b/include/hw/ssi/pl022.h
+index a080519366..1cf16f1539 100644
+--- a/include/hw/ssi/pl022.h
++++ b/include/hw/ssi/pl022.h
+@@ -22,6 +22,7 @@
+ #define HW_SSI_PL022_H
 =20
--struct PCMCIACardState {
-+typedef struct PCMCIACardState {
-     /*< private >*/
-     DeviceState parent_obj;
-     /*< public >*/
+ #include "hw/sysbus.h"
++#include "hw/ssi/ssi.h"
 =20
-     PCMCIASocket *slot;
--};
-+} PCMCIACardState;
+ #define TYPE_PL022 "pl022"
+ #define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
+diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+index 6a0c3c3cdb..bdbf3c51f5 100644
+--- a/include/hw/ssi/ssi.h
++++ b/include/hw/ssi/ssi.h
+@@ -13,6 +13,7 @@
 =20
- typedef struct PCMCIACardClass {
-     /*< private >*/
+ #include "hw/qdev.h"
+=20
++typedef struct SSIBus SSIBus;
+ typedef struct SSISlave SSISlave;
+ typedef struct SSISlaveClass SSISlaveClass;
+ typedef enum SSICSMode SSICSMode;
 diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index 28a8b9e7c2..3bd9215d55 100644
+index 3bd9215d55..c026229573 100644
 --- a/include/qemu/typedefs.h
 +++ b/include/qemu/typedefs.h
-@@ -78,7 +78,6 @@ typedef struct PCIHostDeviceAddress PCIHostDeviceAddres=
-s;
- typedef struct PCIHostState PCIHostState;
- typedef struct PCMachineClass PCMachineClass;
- typedef struct PCMachineState PCMachineState;
--typedef struct PCMCIACardState PCMCIACardState;
- typedef struct PixelFormat PixelFormat;
- typedef struct PostcopyDiscardState PostcopyDiscardState;
- typedef struct Property Property;
+@@ -108,7 +108,6 @@ typedef struct Range Range;
+ typedef struct SerialState SerialState;
+ typedef struct SHPCDevice SHPCDevice;
+ typedef struct SMBusDevice SMBusDevice;
+-typedef struct SSIBus SSIBus;
+ typedef struct uWireSlave uWireSlave;
+ typedef struct VirtIODevice VirtIODevice;
+ typedef struct Visitor Visitor;
 --=20
 2.17.2
 

@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2806865wrt;
-        Mon, 14 Jan 2019 00:44:29 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4B2c1LJaD95kZ+JrbzeXoXnnB2nqrRqyYlI49mTTMeAEgqrN/avhKSmgcZTB9r1dD3neGQ
-X-Received: by 2002:adf:e284:: with SMTP id v4mr22393889wri.26.1547455469496;
-        Mon, 14 Jan 2019 00:44:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547455469; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2808121wrt;
+        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6ZUPydGIeJ0olTVDl+ecsJnuRm8ex09RFPbBiC0zbOT3QG5y37j3mvWizdGRnUJ1ywR7gq
+X-Received: by 2002:a1c:cc2:: with SMTP id 185mr11218589wmm.1.1547455587272;
+        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547455587; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zo2/uUn3KtJqCbJptITMeOK8UN+BmtDbziB5KCwW1RzTtfISp1zgBJcgnwqCKJyh8d
-         BEKoYInRqMKkC/a4KdYGUkDCd07WK1vlir2Vg6/2e9RCWbfL5ceeP/pkQqnQUdtMNfdJ
-         /46SIeIoftcgTVJ3K3a+2ZJ7gQH14PCC5OTsZuN64OLyQWOUFW4nXISm2zWUUgN/8S7I
-         RAGFcqelFi0ToEnjFhBB1vfFXEkvm6X1AT0ru7RVOkLtKu8Edj6HsG0m0mIVAC3vfvgB
-         eZ5O80F/z04Qaot/clPmoiaarML2kCOmEU7dV/F9fOLoCSkcNo8VRM2yGr6k+DXmey5W
-         3c9g==
+        b=JwKGiA4Kuzw7zg0lsIFaJoUu1ZigMQfSkKRHXTKVe5Y1EzGmte+EMIg3qOcq2e3Ukl
+         f6t7BbYUHnJj30/B4kCpFOg5kDVxwXRPqfwJh7tcp9CTcdzEM0nbM+F3lHGQoGOSDSsE
+         BbhkDLvlEqj7Zt3sO5Eh8ZEJXf/6x5eV4RgwqvUwPHpyNZiFsHt7wJ0oFixQKT7ywiHL
+         hjPCC/fneGClshntWdEUc8uyAnJhqaF+XAjmWu/2YUg8UJCYTl8B6wlYyTwbJMTHcz1+
+         9TgQRc4huldj1iK8yjQSRIuEuSPFtr2r3mMJ5IXOUSfz4/AY4h3aUQg2bY8SIMmdmrpa
+         jqEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=jj4vd0xmr5dgpPB+BU/ZoXW4xa/mSyUUPJuSY8Xve9k=;
-        b=zelUgty5VPE2ds94iB5GCVQl+YsQdbq6vxwbmRaTCJZUIoizpEcXEz1NaO+osQFnbD
-         jmFFfAwIeixWtJROC+xHIKPeB03Cb6wrkB0UotShk+NErkWw5W+drLAkelyZp//Pj7dj
-         fpBT0HbB14RnR6IpbJmw6SA3vkHyWqKErCTr5VoBWaip1z6V/kaMTkfWlwdN69U04m9H
-         WCbs3Z+NLAM6akY5jsXFD9rC3303af6ATNGQRhxx9QDpXzNwcP1640v2I+UnSfXGT02l
-         n/zf90yJ070HJS/AJN7TnR6tXrtzr15pgJWadl7VavfFVmO5aM3k81dclEYNzSayLFTt
-         Rimw==
+        bh=8732+6QxzfOOt8TU0tphhYMqG/s2tH8tvnNuWlB9nGg=;
+        b=iXgCeJf/TF/7nDg1tHVzS6BuVyUBRWFuTAUd/cu20666YB/2YpVUQCX3RI6BYsnnuo
+         9A3AoceJ30skdzFUdCVJ/vwkxry6feTbUVOb5Sqb/nqCNQmnnP9LyW2a36E7vcvma4HQ
+         jHAbTjKUNjOs2BljJY4Ro/SIyB7gqCPPrlkTf40+AMt6chggGAb7ITSoAzfNh/KZD0Ak
+         gprdtCHBSlMj4fXFofnHNQJ0ozaq12FHdZWBr0hbWmvEbyxQ8S5uhBzVAAUqP3Iulo21
+         DtSyT92T0Aup1mzYNz5UrEnSjXVvVdS+wnansGp5CDAGm9YrtvCQSN/wfXkB/2CdLW81
+         dXqw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y191si17755182wmc.97.2019.01.14.00.44.29
+        by mx.google.com with ESMTPS id s123si7178098wmd.29.2019.01.14.00.46.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 14 Jan 2019 00:44:29 -0800 (PST)
+        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40302 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40804 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gixrA-0005vO-Hl
-	for alex.bennee@linaro.org; Mon, 14 Jan 2019 03:44:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55492)
+	id 1gixt4-0006p8-AO
+	for alex.bennee@linaro.org; Mon, 14 Jan 2019 03:46:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56025)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gixr1-0005v3-S2
-	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:44:22 -0500
+	(envelope-from <thuth@redhat.com>) id 1gixsp-0006oy-MQ
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:46:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gixr0-0000j9-P3
-	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:44:19 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45816)
+	(envelope-from <thuth@redhat.com>) id 1gixso-0001vg-Vl
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:46:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60062)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gixr0-0000ii-FG; Mon, 14 Jan 2019 03:44:18 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1gixso-0001vI-Ns; Mon, 14 Jan 2019 03:46:10 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 57FDF6147B;
-	Mon, 14 Jan 2019 08:44:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E92644E8B7;
+	Mon, 14 Jan 2019 08:46:09 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-190.ams2.redhat.com [10.36.116.190])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E65DE608E5;
-	Mon, 14 Jan 2019 08:44:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2E181BAA8;
+	Mon, 14 Jan 2019 08:45:55 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
 References: <20190111140857.4211-1-philmd@redhat.com>
-	<20190111140857.4211-4-philmd@redhat.com>
+	<20190111140857.4211-5-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,23 +111,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <0ab7861d-9be4-49ac-76bb-6786b8b18546@redhat.com>
-Date: Mon, 14 Jan 2019 09:44:05 +0100
+Message-ID: <a6cff6e3-afd1-6c75-5c5d-208a803d7219@redhat.com>
+Date: Mon, 14 Jan 2019 09:45:54 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190111140857.4211-4-philmd@redhat.com>
+In-Reply-To: <20190111140857.4211-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 14 Jan 2019 08:44:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 14 Jan 2019 08:46:10 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 03/15] hw/ssi: Remove SSIBus from
- "qemu/typedefs.h"
+Subject: Re: [Qemu-arm] [PATCH 04/15] hw/ide/ahci: Remove AllwinnerAHCIState
+ from "qemu/typedefs.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -140,100 +140,63 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
+	John Snow <jsnow@redhat.com>,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wCRQNurxaZxR
+X-TUID: pLAS7A3CAgHa
 
 On 2019-01-11 15:08, Philippe Mathieu-Daud=C3=A9 wrote:
 > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >=20
-> There are only three files requiring this typedef, let them
-
-s/files/header files/
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-> include "hw/ssi/ssi.h" directly to simplify "qemu/typedefs.h".
+> Files requiring AllwinnerAHCIState already include "hw/ide/ahci.h".
 >=20
-> To clean "qemu/typedefs.h", move the forward declaration
-> to "hw/ssi/ssi.h".
+> To clean "qemu/typedefs.h", move the declaration to "hw/ide/ahci.h"
+> (removing the forward declaration).
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/arm/strongarm.h      | 1 +
->  include/hw/arm/pxa.h    | 1 +
->  include/hw/ssi/pl022.h  | 1 +
->  include/hw/ssi/ssi.h    | 1 +
+>  include/hw/ide/ahci.h   | 4 ++--
 >  include/qemu/typedefs.h | 1 -
->  5 files changed, 4 insertions(+), 1 deletion(-)
+>  2 files changed, 2 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/hw/arm/strongarm.h b/hw/arm/strongarm.h
-> index e98840b461..ae51a1ae34 100644
-> --- a/hw/arm/strongarm.h
-> +++ b/hw/arm/strongarm.h
-> @@ -3,6 +3,7 @@
+> diff --git a/include/hw/ide/ahci.h b/include/hw/ide/ahci.h
+> index b7bb2b02d6..b44e3000cf 100644
+> --- a/include/hw/ide/ahci.h
+> +++ b/include/hw/ide/ahci.h
+> @@ -73,13 +73,13 @@ typedef struct SysbusAHCIState {
+>  #define ALLWINNER_AHCI_MMIO_OFF  0x80
+>  #define ALLWINNER_AHCI_MMIO_SIZE 0x80
 > =20
->  #include "exec/memory.h"
->  #include "target/arm/cpu-qom.h"
-> +#include "hw/ssi/ssi.h"
+> -struct AllwinnerAHCIState {
+> +typedef struct AllwinnerAHCIState {
+>      /*< private >*/
+>      SysbusAHCIState parent_obj;
+>      /*< public >*/
 > =20
->  #define SA_CS0          0x00000000
->  #define SA_CS1          0x08000000
-> diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-> index f6dfb5c0cf..f184349f02 100644
-> --- a/include/hw/arm/pxa.h
-> +++ b/include/hw/arm/pxa.h
-> @@ -13,6 +13,7 @@
->  #include "exec/memory.h"
->  #include "target/arm/cpu-qom.h"
->  #include "hw/pcmcia.h"
-> +#include "hw/ssi/ssi.h"
+>      MemoryRegion mmio;
+>      uint32_t regs[ALLWINNER_AHCI_MMIO_SIZE/4];
+> -};
+> +} AllwinnerAHCIState;
 > =20
->  /* Interrupt numbers */
->  # define PXA2XX_PIC_SSP3	0
-> diff --git a/include/hw/ssi/pl022.h b/include/hw/ssi/pl022.h
-> index a080519366..1cf16f1539 100644
-> --- a/include/hw/ssi/pl022.h
-> +++ b/include/hw/ssi/pl022.h
-> @@ -22,6 +22,7 @@
->  #define HW_SSI_PL022_H
-> =20
->  #include "hw/sysbus.h"
-> +#include "hw/ssi/ssi.h"
-> =20
->  #define TYPE_PL022 "pl022"
->  #define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
-> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-> index 6a0c3c3cdb..bdbf3c51f5 100644
-> --- a/include/hw/ssi/ssi.h
-> +++ b/include/hw/ssi/ssi.h
-> @@ -13,6 +13,7 @@
-> =20
->  #include "hw/qdev.h"
-> =20
-> +typedef struct SSIBus SSIBus;
->  typedef struct SSISlave SSISlave;
->  typedef struct SSISlaveClass SSISlaveClass;
->  typedef enum SSICSMode SSICSMode;
+>  #endif /* HW_IDE_AHCI_H */
 > diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index 3bd9215d55..c026229573 100644
+> index c026229573..3a5ca74bd3 100644
 > --- a/include/qemu/typedefs.h
 > +++ b/include/qemu/typedefs.h
-> @@ -108,7 +108,6 @@ typedef struct Range Range;
->  typedef struct SerialState SerialState;
->  typedef struct SHPCDevice SHPCDevice;
->  typedef struct SMBusDevice SMBusDevice;
-> -typedef struct SSIBus SSIBus;
->  typedef struct uWireSlave uWireSlave;
->  typedef struct VirtIODevice VirtIODevice;
->  typedef struct Visitor Visitor;
+> @@ -8,7 +8,6 @@
+>  typedef struct AdapterInfo AdapterInfo;
+>  typedef struct AddressSpace AddressSpace;
+>  typedef struct AioContext AioContext;
+> -typedef struct AllwinnerAHCIState AllwinnerAHCIState;
+>  typedef struct AudioState AudioState;
+>  typedef struct BdrvDirtyBitmap BdrvDirtyBitmap;
+>  typedef struct BdrvDirtyBitmapIter BdrvDirtyBitmapIter;
 >=20
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>

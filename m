@@ -1,112 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1273319wrt;
-        Wed, 23 Jan 2019 15:46:28 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5VOZamkOZTizlMFjU93cMptmJftqn7uRpGdqbh4MjYxUCKIBG7BxN/bRUkW1EcZzFoKnlR
-X-Received: by 2002:a1c:2787:: with SMTP id n129mr157396wmn.128.1548287188647;
-        Wed, 23 Jan 2019 15:46:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548287188; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3019904wrt;
+        Mon, 14 Jan 2019 05:11:10 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5cYCDjMScjUDJhpuVlZlSJr4Oabtm/k4LGe+/6sBlaypgqw9JJEKSWpJNaj8mZ4jYMTQw+
+X-Received: by 2002:a1c:c543:: with SMTP id v64mr11304725wmf.123.1547471470264;
+        Mon, 14 Jan 2019 05:11:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547471470; cv=none;
         d=google.com; s=arc-20160816;
-        b=ig8x6Ac/3/xMfvn3fxeiYJQEIq4KEhjL/jpzQtzMUrRmEzz90e4mZCo+VXL2Po3PL5
-         VDVPphmzEje5rlh094iqdI3wQwHhypm21oYv/ADZv7pb3uLogECZzBUAAYjEo1luhJw7
-         VNmfMYnl+7wlUF+iFcfkcJ5kjVm3/mgM7OCTN3Q+5xlLYLH0q5odAJ7oeK1PcDeBlEd9
-         KcmFUe8eYLNvDJm3N62Obv0iUBrLs+PALRGsNQgbvAVSu53+lix85W/fWtK9sBYH0IWX
-         44F6xE1Y2T24AqFt8CVLUYmO++5yrT7nr/nTWjYpPpN1I6EpFx30WGopZNPOIc4Vtv+O
-         6hvw==
+        b=eXlpsKz2HdOGG3QatSeKBrbTH0Mow1A9AlBgCtvMtQ6hTaPNJ4Heel6vw7MucrR8NJ
+         CSeEnJ72EY8ByuNHUb/k6q3jjiigoDRSvJjc6Kb8ngZG9DurXT4fcvpkLgDb+wutzbc6
+         aWWMc/sTtu7vyyMY6tb2tcuJshuMbEe7n7sdtRS3h1fhCU7zAIKFDulPePtLmWS0Hs9B
+         hhdIQJOxi+Ytkh2+6qaEw3wzYXy+JVsB1guoVkIFyDJNg0EA27QmlZ/B2MuYFr3y+Xk6
+         s4AbnviZ63dVw2dWb0F0Q0aSgMlrBZH7VuT/PrKFQij96EdQ9j4BkrkthZpNvYujJRnL
+         G38w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=fP18UAxTCq2EiPInVKneNBzzlHldqtUyJ/vwM4lZF+g=;
-        b=ZWhJzcyJvTBaENWv5jKY6aaqrlwbI/BsHry524pTMQcbUrZrdEMzWC1tq1OylbAoU8
-         DS9MP9RnAz88i+ZMjW47mqaGbDmBkOHqYkgU4rMlbYlzVMQLI0GpWsV1x6PgvW3uyV/P
-         RYUKarO1l62iXcdhHmujefWv09CWbKPOBqiLt2B7yG37UDH2+EcMlF61B3TUag9727cH
-         /GpKK/03dd4fhbJblZgZbBjUUTuEcFNgPB8mwyz7HXqtF1GF/homxqCru3q+5TlBW8qm
-         a45wQKr6J+FMZ9tmxia6Uln5RqPpfXo7PM9vNCFwC4gLxr5il8+aK5e4U97zOE6WbH0o
-         IadQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=O56HlOZyeMdqoqC7M/z1oHpUQaXX2S9ZLXB7Ek319xo=;
+        b=vchEkKw5y66GnVC7neEWubJgAXp6+61qDTmSY0z/KepzjESDgxDOayRLlY/Pysds/D
+         bA8IwOoQcUmZwU9xaEWo1/iqs73LZe5KH2REFuNHYr4iVCyQ90/H9b1nNzJoOYrQ1F1Y
+         15pucUix6BeytwdnQ+AwpVAkU5qrdALjs474FsRczKEQb9PnWVPNbz5o/LmGsXzshmgN
+         K2Gl6IHMuVKd3tn3U+3/VIAmRkNgr2cFFc0yQhf9WHambLfyg5YdfR6zFy9/+wKldXJK
+         m/n4wf8+V0TP5S19xo6ZDhPVvYG943+MPecF/lRWrtyregX5s0ilwSIWg6LhXhdomCmL
+         hTaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Fa5bBiW/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u14si77908752wrg.415.2019.01.23.15.46.28
+        by mx.google.com with ESMTPS id h64si18589592wmd.15.2019.01.14.05.11.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Jan 2019 15:46:28 -0800 (PST)
+        Mon, 14 Jan 2019 05:11:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Fa5bBiW/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:43685 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:48179 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gmSDz-0008GF-NR
-	for alex.bennee@linaro.org; Wed, 23 Jan 2019 18:46:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51963)
+	id 1gj21F-0006qC-A0
+	for alex.bennee@linaro.org; Mon, 14 Jan 2019 08:11:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gmSDD-0007mP-HA
-	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 18:45:40 -0500
+	(envelope-from <philmd@redhat.com>) id 1gj1z5-0005Lr-ND
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 08:08:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gmSDC-0002YD-RW
-	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 18:45:39 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:41916)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gmSDC-0002XF-IY
-	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 18:45:38 -0500
-Received: by mail-pl1-x641.google.com with SMTP id u6so1956072plm.8
-	for <qemu-arm@nongnu.org>; Wed, 23 Jan 2019 15:45:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=fP18UAxTCq2EiPInVKneNBzzlHldqtUyJ/vwM4lZF+g=;
-	b=Fa5bBiW/FBwVtRApsQpt6UnrXWn+405Abj/RCJPk/fArxKimsTXEcR+kZzuQJBcdyZ
-	1+0hSCHdsXpM6JWj3aB8xZRJV3+dakKYiS6XM5laaRRUbBk1V0H301JxTikwPlWRHFCE
-	KDKGcn+6Gy/6+HV0hh2DeUPvartnFelbfCKHo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=fP18UAxTCq2EiPInVKneNBzzlHldqtUyJ/vwM4lZF+g=;
-	b=KWXnkjae1khF2jUQf+OTteqAfDxHVC4X9fqMUtXILo1cicOSoUrZ4t837rBEYSCWdc
-	rfBL3bP8I+g9+chsntQGHTHogqelSqNQIaCBMTNGitPu4l/oRMRAr/pkHgNfeG796Tp9
-	z7txWtn9ZGltqXSPt3byK8uLOCS7Bcrxp9oGGQvGTMLsdXczelM8Pz0KUy8gZ4dYyPhj
-	XGg16RUsbD/tUxAU2k1XfgaDBHeStnmEjgrmgiryM50TY7yxRHbJGK9pi8LxgRn3fX9W
-	VZW0rZXtjL9XaTgUfFIlxpmTJu94o/D4g2uOQyenCqNWd71wvz/11M9Ky0JQjZA8lmDR
-	gwMg==
-X-Gm-Message-State: AJcUukdheDzTfqBY8jtRz0/r5Q8XMAI8GFdv8g5eE6oNnjSrmPsc88X3
-	1G7GNp4WAk6aQ2FWirceqxhOV7CMmJs=
-X-Received: by 2002:a17:902:8bc6:: with SMTP id
-	r6mr4257926plo.67.1548287135944; 
-	Wed, 23 Jan 2019 15:45:35 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-126-115-157.tukw.qwest.net.
-	[97.126.115.157]) by smtp.gmail.com with ESMTPSA id
-	b68sm26515348pfg.160.2019.01.23.15.45.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 23 Jan 2019 15:45:35 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	(envelope-from <philmd@redhat.com>) id 1gj1z4-000757-Gc
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 08:08:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50004)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gj1z4-00074o-8X; Mon, 14 Jan 2019 08:08:54 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 71581369CA;
+	Mon, 14 Jan 2019 13:08:53 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.90])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6999E5D75F;
+	Mon, 14 Jan 2019 13:08:45 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org
-References: <20190121185118.18550-1-peter.maydell@linaro.org>
-	<20190121185118.18550-4-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <0c5f3a76-bba9-95de-9aa1-c33d8587e4d5@linaro.org>
-Date: Wed, 23 Jan 2019 15:45:33 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+Date: Mon, 14 Jan 2019 14:08:27 +0100
+Message-Id: <20190114130829.21790-2-philmd@redhat.com>
+In-Reply-To: <20190114130829.21790-1-philmd@redhat.com>
+References: <20190114130829.21790-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190121185118.18550-4-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/23] armv7m: Pass through
- start-powered-off CPU property
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 14 Jan 2019 13:08:53 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 1/3] hw/nvram/fw_cfg: Remove various typedefs
+ from "qemu/typedefs.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,30 +90,153 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Ben Warren <ben@skyportsystems.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	"open list:Virt" <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i5VOoO7tpxuT
+X-TUID: J256n3+kmSvb
 
-On 1/21/19 10:50 AM, Peter Maydell wrote:
-> Expose "start-powered-off" as a property of the ARMv7M container,
-> which we just pass through to the CPU object in the same way that we
-> do for "init-svtor" and "idau". (We want this for the SSE-200, which
-> powers up only the first CPU at reset and leaves the second powered
-> down.)
-> 
-> As with the other CPU properties here, we can't just use alias
-> properties, because the CPU QOM object is not created until armv7m
-> realize time.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/arm/armv7m.h |  1 +
->  hw/arm/armv7m.c         | 10 ++++++++++
->  2 files changed, 11 insertions(+)
+There are only three include files requiring these typedefs, let them
+include "hw/nvram/fw_cfg.h" directly to simplify "qemu/typedefs.h".
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+To clean "qemu/typedefs.h", move the declarations to "hw/nvram/fw_cfg.h".
+Reorder two function declarations to avoid forward typedef declarations.
 
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+---
+ include/hw/acpi/vmgenid.h |  1 +
+ include/hw/arm/virt.h     |  1 +
+ include/hw/mem/nvdimm.h   |  1 +
+ include/hw/nvram/fw_cfg.h | 22 ++++++++++++----------
+ include/qemu/typedefs.h   |  4 ----
+ 5 files changed, 15 insertions(+), 14 deletions(-)
 
-r~
+diff --git a/include/hw/acpi/vmgenid.h b/include/hw/acpi/vmgenid.h
+index 38586ecbdf..be53de38f1 100644
+--- a/include/hw/acpi/vmgenid.h
++++ b/include/hw/acpi/vmgenid.h
+@@ -3,6 +3,7 @@
+=20
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/qdev.h"
++#include "hw/nvram/fw_cfg.h"
+ #include "qemu/uuid.h"
+=20
+ #define VMGENID_DEVICE           "vmgenid"
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 4cc57a7ef6..fef632dcf5 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -35,6 +35,7 @@
+ #include "qemu/notify.h"
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
++#include "hw/nvram/fw_cfg.h"
+ #include "sysemu/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
+=20
+diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+index c5c9b3c7f8..51d3a52c4b 100644
+--- a/include/hw/mem/nvdimm.h
++++ b/include/hw/mem/nvdimm.h
+@@ -24,6 +24,7 @@
+ #define QEMU_NVDIMM_H
+=20
+ #include "hw/mem/pc-dimm.h"
++#include "hw/nvram/fw_cfg.h"
+ #include "hw/acpi/bios-linker-loader.h"
+=20
+ #define NVDIMM_DEBUG 0
+diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+index f5a6895a74..cc744d5268 100644
+--- a/include/hw/nvram/fw_cfg.h
++++ b/include/hw/nvram/fw_cfg.h
+@@ -14,15 +14,12 @@
+ #define FW_CFG_IO(obj)  OBJECT_CHECK(FWCfgIoState,  (obj), TYPE_FW_CFG_I=
+O)
+ #define FW_CFG_MEM(obj) OBJECT_CHECK(FWCfgMemState, (obj), TYPE_FW_CFG_M=
+EM)
+=20
+-typedef struct fw_cfg_file FWCfgFile;
+-
+ #define FW_CFG_ORDER_OVERRIDE_VGA    70
+ #define FW_CFG_ORDER_OVERRIDE_NIC    80
+ #define FW_CFG_ORDER_OVERRIDE_USER   100
+ #define FW_CFG_ORDER_OVERRIDE_DEVICE 110
+=20
+-void fw_cfg_set_order_override(FWCfgState *fw_cfg, int order);
+-void fw_cfg_reset_order_override(FWCfgState *fw_cfg);
++typedef struct fw_cfg_file FWCfgFile;
+=20
+ typedef struct FWCfgFiles {
+     uint32_t  count;
+@@ -34,7 +31,9 @@ typedef struct fw_cfg_dma_access FWCfgDmaAccess;
+ typedef void (*FWCfgCallback)(void *opaque);
+ typedef void (*FWCfgWriteCallback)(void *opaque, off_t start, size_t len=
+);
+=20
+-struct FWCfgState {
++typedef struct FWCfgEntry FWCfgEntry;
++
++typedef struct FWCfgState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+@@ -53,17 +52,17 @@ struct FWCfgState {
+     dma_addr_t dma_addr;
+     AddressSpace *dma_as;
+     MemoryRegion dma_iomem;
+-};
++} FWCfgState;
+=20
+-struct FWCfgIoState {
++typedef struct FWCfgIoState {
+     /*< private >*/
+     FWCfgState parent_obj;
+     /*< public >*/
+=20
+     MemoryRegion comb_iomem;
+-};
++} FWCfgIoState;
+=20
+-struct FWCfgMemState {
++typedef struct FWCfgMemState {
+     /*< private >*/
+     FWCfgState parent_obj;
+     /*< public >*/
+@@ -71,7 +70,10 @@ struct FWCfgMemState {
+     MemoryRegion ctl_iomem, data_iomem;
+     uint32_t data_width;
+     MemoryRegionOps wide_data_ops;
+-};
++} FWCfgMemState;
++
++void fw_cfg_set_order_override(FWCfgState *fw_cfg, int order);
++void fw_cfg_reset_order_override(FWCfgState *fw_cfg);
+=20
+ /**
+  * fw_cfg_add_bytes:
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index 30ad8b2d8d..293e47ef7c 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -28,10 +28,6 @@ typedef struct DriveInfo DriveInfo;
+ typedef struct Error Error;
+ typedef struct EventNotifier EventNotifier;
+ typedef struct FlatView FlatView;
+-typedef struct FWCfgEntry FWCfgEntry;
+-typedef struct FWCfgIoState FWCfgIoState;
+-typedef struct FWCfgMemState FWCfgMemState;
+-typedef struct FWCfgState FWCfgState;
+ typedef struct HVFX86EmulatorState HVFX86EmulatorState;
+ typedef struct I2CBus I2CBus;
+ typedef struct I2SCodec I2SCodec;
+--=20
+2.17.2
 

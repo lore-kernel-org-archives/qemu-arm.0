@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2808121wrt;
-        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6ZUPydGIeJ0olTVDl+ecsJnuRm8ex09RFPbBiC0zbOT3QG5y37j3mvWizdGRnUJ1ywR7gq
-X-Received: by 2002:a1c:cc2:: with SMTP id 185mr11218589wmm.1.1547455587272;
-        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547455587; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2817073wrt;
+        Mon, 14 Jan 2019 01:00:55 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN652Knr1Od6I1qIf0/VzA3ZcjssLGe9D88Ji60cjjMacq4E8GgP2ku2ee8L38e5kSGnhkHu
+X-Received: by 2002:a7b:c7c7:: with SMTP id z7mr11623215wmk.74.1547456455795;
+        Mon, 14 Jan 2019 01:00:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547456455; cv=none;
         d=google.com; s=arc-20160816;
-        b=JwKGiA4Kuzw7zg0lsIFaJoUu1ZigMQfSkKRHXTKVe5Y1EzGmte+EMIg3qOcq2e3Ukl
-         f6t7BbYUHnJj30/B4kCpFOg5kDVxwXRPqfwJh7tcp9CTcdzEM0nbM+F3lHGQoGOSDSsE
-         BbhkDLvlEqj7Zt3sO5Eh8ZEJXf/6x5eV4RgwqvUwPHpyNZiFsHt7wJ0oFixQKT7ywiHL
-         hjPCC/fneGClshntWdEUc8uyAnJhqaF+XAjmWu/2YUg8UJCYTl8B6wlYyTwbJMTHcz1+
-         9TgQRc4huldj1iK8yjQSRIuEuSPFtr2r3mMJ5IXOUSfz4/AY4h3aUQg2bY8SIMmdmrpa
-         jqEQ==
+        b=UpCiOYuISd83gHkVm+Bk7keKAqVZcny0WOVVhS2Sd3gWK76OspinvtK/OblsRa42Ky
+         nRaUI4InOt2XrPYNwUBNk42q4Am2aQdXyb2GR2/NHn+rCEfILB9MkObu/PpnTPoDVl/W
+         r5XzhcWMML+GDXp6a/dIz8PVpy+dLmaXw3t1pOieyUrb9LlGaStEg8o/Y9219pAdcNIb
+         HTRuh2jrSvp9Mteg5J55+S2PNXJllYDFf1o8mw8UaiDPm0mKfsU4IMHhdkZJRXiUh2UW
+         TG+SlAoMr21jTb9b8E2heI8srhicTBXyuDEJtFfXIMMaqWuYfmzyPHkr0y0Spyxx4vL9
+         V8nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=8732+6QxzfOOt8TU0tphhYMqG/s2tH8tvnNuWlB9nGg=;
-        b=iXgCeJf/TF/7nDg1tHVzS6BuVyUBRWFuTAUd/cu20666YB/2YpVUQCX3RI6BYsnnuo
-         9A3AoceJ30skdzFUdCVJ/vwkxry6feTbUVOb5Sqb/nqCNQmnnP9LyW2a36E7vcvma4HQ
-         jHAbTjKUNjOs2BljJY4Ro/SIyB7gqCPPrlkTf40+AMt6chggGAb7ITSoAzfNh/KZD0Ak
-         gprdtCHBSlMj4fXFofnHNQJ0ozaq12FHdZWBr0hbWmvEbyxQ8S5uhBzVAAUqP3Iulo21
-         DtSyT92T0Aup1mzYNz5UrEnSjXVvVdS+wnansGp5CDAGm9YrtvCQSN/wfXkB/2CdLW81
-         dXqw==
+        bh=veAnhg94rYDJpeJDXLRsrBctfzOYaD3BBljCx2Fr9r8=;
+        b=d9+IrOC2F7HK2vA/qUQCQLKZRilvPtOt3z0dRm8MVf5+N3moQJfX8ImWbh3Odl5PDG
+         bpa6SGHvqjlQ8rHd49PVS4qk/n1y2bypjjOGLSmOclVtpbh2+Jo/3RJwXEHiSAMZd3Ra
+         TnK9IWAuDl8YETW67OPF4wDLUC+KYHfhFuQCkBEVTxq7jBIP2iaDSoAs5pdU2XUOIX+o
+         du2F1hjbn5clGX2LNbsx51H1qF//t0nnaG1YRZ6Oi43y8m9CDzW+pORlfgCyCEi7hTEW
+         qXHwUfc9jsv1mEhQ6Ydi12gsukaea1zawck5NfFXogc2DsnccIZ0ZrrtXLxrH/j51+9b
+         gu8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s123si7178098wmd.29.2019.01.14.00.46.27
+        by mx.google.com with ESMTPS id m2si11690258wme.142.2019.01.14.01.00.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 14 Jan 2019 00:46:27 -0800 (PST)
+        Mon, 14 Jan 2019 01:00:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40804 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:44837 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gixt4-0006p8-AO
-	for alex.bennee@linaro.org; Mon, 14 Jan 2019 03:46:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56025)
+	id 1giy74-0002Vp-Nm
+	for alex.bennee@linaro.org; Mon, 14 Jan 2019 04:00:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gixsp-0006oy-MQ
-	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:46:12 -0500
+	(envelope-from <thuth@redhat.com>) id 1giy6v-0002Vi-Hq
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 04:00:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gixso-0001vg-Vl
-	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 03:46:11 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60062)
+	(envelope-from <thuth@redhat.com>) id 1giy6p-0008QR-OX
+	for qemu-arm@nongnu.org; Mon, 14 Jan 2019 04:00:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46484)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gixso-0001vI-Ns; Mon, 14 Jan 2019 03:46:10 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1giy6p-0008P9-Fo; Mon, 14 Jan 2019 04:00:39 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E92644E8B7;
-	Mon, 14 Jan 2019 08:46:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D349D7AEB2;
+	Mon, 14 Jan 2019 09:00:37 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-190.ams2.redhat.com [10.36.116.190])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2E181BAA8;
-	Mon, 14 Jan 2019 08:45:55 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D5EB36014F;
+	Mon, 14 Jan 2019 08:59:54 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
 References: <20190111140857.4211-1-philmd@redhat.com>
-	<20190111140857.4211-5-philmd@redhat.com>
+	<20190111140857.4211-13-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -111,23 +111,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <a6cff6e3-afd1-6c75-5c5d-208a803d7219@redhat.com>
-Date: Mon, 14 Jan 2019 09:45:54 +0100
+Message-ID: <4f2bc8e2-de3b-aaac-bc4a-e3f3b013b44e@redhat.com>
+Date: Mon, 14 Jan 2019 09:59:54 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190111140857.4211-5-philmd@redhat.com>
+In-Reply-To: <20190111140857.4211-13-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Mon, 14 Jan 2019 08:46:10 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 14 Jan 2019 09:00:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 04/15] hw/ide/ahci: Remove AllwinnerAHCIState
- from "qemu/typedefs.h"
+Subject: Re: [Qemu-arm] [PATCH 12/15] ui/console: Remove MouseTransformInfo
+ from qemu/typedefs.h
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -142,61 +142,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	John Snow <jsnow@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pLAS7A3CAgHa
+X-TUID: F4Row+ZnWKb2
 
 On 2019-01-11 15:08, Philippe Mathieu-Daud=C3=A9 wrote:
-> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> MouseTransformInfo is only used in "ui/console.h", there is no
+> need to expose it via "qemu/typedefs.h".
+
+You also touch devices.h here ... that should be mentioned, too?
+
+ Thomas
+
+
+> Move the declaration to "ui/console.h" (removing the forward
+> declaration).
 >=20
-> Files requiring AllwinnerAHCIState already include "hw/ide/ahci.h".
->=20
-> To clean "qemu/typedefs.h", move the declaration to "hw/ide/ahci.h"
-> (removing the forward declaration).
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/hw/ide/ahci.h   | 4 ++--
+>  include/hw/devices.h    | 1 +
 >  include/qemu/typedefs.h | 1 -
->  2 files changed, 2 insertions(+), 3 deletions(-)
+>  include/ui/console.h    | 4 ++--
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/include/hw/ide/ahci.h b/include/hw/ide/ahci.h
-> index b7bb2b02d6..b44e3000cf 100644
-> --- a/include/hw/ide/ahci.h
-> +++ b/include/hw/ide/ahci.h
-> @@ -73,13 +73,13 @@ typedef struct SysbusAHCIState {
->  #define ALLWINNER_AHCI_MMIO_OFF  0x80
->  #define ALLWINNER_AHCI_MMIO_SIZE 0x80
+> diff --git a/include/hw/devices.h b/include/hw/devices.h
+> index 0e27feb0c2..b5f1662225 100644
+> --- a/include/hw/devices.h
+> +++ b/include/hw/devices.h
+> @@ -4,6 +4,7 @@
+>  /* Devices that have nowhere better to go.  */
 > =20
-> -struct AllwinnerAHCIState {
-> +typedef struct AllwinnerAHCIState {
->      /*< private >*/
->      SysbusAHCIState parent_obj;
->      /*< public >*/
+>  #include "hw/hw.h"
+> +#include "ui/console.h"
 > =20
->      MemoryRegion mmio;
->      uint32_t regs[ALLWINNER_AHCI_MMIO_SIZE/4];
-> -};
-> +} AllwinnerAHCIState;
-> =20
->  #endif /* HW_IDE_AHCI_H */
+>  /* smc91c111.c */
+>  void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
 > diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index c026229573..3a5ca74bd3 100644
+> index 9baebe9d33..e44f1473a5 100644
 > --- a/include/qemu/typedefs.h
 > +++ b/include/qemu/typedefs.h
-> @@ -8,7 +8,6 @@
->  typedef struct AdapterInfo AdapterInfo;
->  typedef struct AddressSpace AddressSpace;
->  typedef struct AioContext AioContext;
-> -typedef struct AllwinnerAHCIState AllwinnerAHCIState;
->  typedef struct AudioState AudioState;
->  typedef struct BdrvDirtyBitmap BdrvDirtyBitmap;
->  typedef struct BdrvDirtyBitmapIter BdrvDirtyBitmapIter;
+> @@ -49,7 +49,6 @@ typedef struct MigrationIncomingState MigrationIncomi=
+ngState;
+>  typedef struct MigrationState MigrationState;
+>  typedef struct Monitor Monitor;
+>  typedef struct MonitorDef MonitorDef;
+> -typedef struct MouseTransformInfo MouseTransformInfo;
+>  typedef struct MSIMessage MSIMessage;
+>  typedef struct NetClientState NetClientState;
+>  typedef struct NetFilterState NetFilterState;
+> diff --git a/include/ui/console.h b/include/ui/console.h
+> index 853fcf4eb7..b74246f0f5 100644
+> --- a/include/ui/console.h
+> +++ b/include/ui/console.h
+> @@ -65,13 +65,13 @@ void qemu_remove_led_event_handler(QEMUPutLEDEntry =
+*entry);
+> =20
+>  void kbd_put_ledstate(int ledstate);
+> =20
+> -struct MouseTransformInfo {
+> +typedef struct MouseTransformInfo {
+>      /* Touchscreen resolution */
+>      int x;
+>      int y;
+>      /* Calibration values as used/generated by tslib */
+>      int a[7];
+> -};
+> +} MouseTransformInfo;
+> =20
+>  void hmp_mouse_set(Monitor *mon, const QDict *qdict);
+> =20
 >=20
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>

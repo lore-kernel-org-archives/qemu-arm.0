@@ -1,71 +1,72 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4468562wrt;
-        Tue, 15 Jan 2019 09:58:42 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6vdAGf58N3fg13B6mCxxlXTcfnQ+CCpcNQQvRVGpOJZiNx0WoX1XtzD8mwmXrWIChR2b2i
-X-Received: by 2002:a1c:dc86:: with SMTP id t128mr4576199wmg.42.1547575122584;
-        Tue, 15 Jan 2019 09:58:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547575122; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4473392wrt;
+        Tue, 15 Jan 2019 10:03:04 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6GCbXTrG+O+0L4mOJTYDtg+UuxbAc+XFvnKnAY058+Nchb4w6mxuTV211mZBMbJFU+78mP
+X-Received: by 2002:a7b:c7c2:: with SMTP id z2mr4137608wmk.47.1547575384844;
+        Tue, 15 Jan 2019 10:03:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547575384; cv=none;
         d=google.com; s=arc-20160816;
-        b=xlpGqlhmsclgXBTNsA8Z5DakwtUAjnsJ119P1CJ36ld2llaaZNM2QAx3eAMeaGwiYk
-         ux6KGafwvyaU8Afc5BExI+wA4nGCE0AcHF1qMeDndhXa/DEAyQw0swAvNzQsrnBFFGO4
-         bqwAezzZPHOFJVKukGHMUoWNzklxW4pnFQUtOoHCCohnBCufxXcD0O5lLfKJt25FV39a
-         TJjXkDixZo4lUU9mk1qwEcFTAZ19ZZfPnmwrGYsuQIyx6RYAIaAIiz1at6+uvxstAv3z
-         u54JkD1oJlq26OYkv4m5/lLSoDtTnUGj7ehnq2PLqfWQESgDz8pY9PrPqLJDm7i6DNXh
-         AHgg==
+        b=DC9WfsQjt2EdQng0ZKr6s+1RTOwLAKkSJ+wDFdXxjLmGYJ1m2eETtJfnnz4QMVXeFP
+         9aDA+A29VbSbE5ppomoPWyIq67niBOsfJUED+Exqh+FmOja7dmjRiLJx1J35Tndhdo/x
+         72YbCG4BntXxSh9WK48NXNry1D5crXz19rSzVz6g8NbtbPQgGu36xQ1QQer2orUdQ7DN
+         4733UJFrz2vkAtHCigSU+LV7DrAu4dQpORTceLqPeUV+SzBtX9z0c60y4p+A+wOogHy5
+         VIzYl49BIVO2lbF/+2VwyaFlRd7uAAoGo/QSOOL6rAMxOdflCOH/ubmSltPbR+Aq+H7I
+         PHEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=WyEiOa/qJCAAhzs4/p83OmxqPWqyL9ZUPI47aZGUZPE=;
-        b=H59m0UwS+KGFkwl15G2I+JUUdnm+0Y1ixqpXzrvoFDp9BmbZhXYFe7RxBe38BZ7pPd
-         yfAqllxQzqlhyTplrP4cDoZH4wQ8WeTMYHBpinMIL6/IaoKphFSe4JkjbqbTrzxhPuFH
-         ayNHkSMb18R4wT1QtvMbndqExXY2QcXbq1ZBwzqmGka28VRyIf8HdI1Z9PKWIdYx0YTq
-         vBco/ElZxSG0JKWY+aKJLebfpAAl9xSFBUS/doMHD9ZSfq1g+BiOnvyAF0tgyHUua8pV
-         3ouiFsGXLO8kcBBfi8rC2uN/KM5xGhOXkFgXBRygo2ec7v59nKL/yTH/G3cqU+PKQBKn
-         +YtA==
+        bh=OOL1LPlWfqeMS52iqQzK69CUqqXUdcS3J4ZjKsnVE8o=;
+        b=rgzrlhQsLb0grgTHYVcpJ7DYLlmDHnQYgRw4em2SwFUndnhlOkZhRxlWzRUKh1ZmkI
+         HsAOH+Ik0YeN8lJq5Hn9sWfnT3R4MSo7fIBkN9BTpGb/zC8wCWYR+IvzCouROZVfhpCk
+         EAwdAG1SEy7GwMBL0bMxW5akDK++CCmpbUsI2xTCw/acMOw0OPVCgaj/vjF/HTg0krV6
+         zGuMxTVkiR8hcA+fkY0Slfzu+GZPhIfoQnQJGokgmbvXDph/PBSrnt/FSrpiDaqMU380
+         2hb+4jjQcu/xheD1gbgA22Vy6x5E7HAV+1RI0LkppSR4ddd3j6WMXHVXnrB+Nrd9gP2x
+         O2Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si35520540wri.0.2019.01.15.09.58.42
+        by mx.google.com with ESMTPS id x1si43275304wru.294.2019.01.15.10.03.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 15 Jan 2019 09:58:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Jan 2019 10:03:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35257 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36564 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gjSz3-00038G-Ir
-	for alex.bennee@linaro.org; Tue, 15 Jan 2019 12:58:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40081)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gjT3H-0005oZ-Ux
+	for alex.bennee@linaro.org; Tue, 15 Jan 2019 13:03:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gjSyd-00036R-8q
-	for qemu-devel@nongnu.org; Tue, 15 Jan 2019 12:58:18 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gjT3B-0005oS-W1
+	for qemu-arm@nongnu.org; Tue, 15 Jan 2019 13:02:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gjSyT-00014j-BO
-	for qemu-devel@nongnu.org; Tue, 15 Jan 2019 12:58:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:30697)
+	(envelope-from <pbonzini@redhat.com>) id 1gjT38-0003wt-KG
+	for qemu-arm@nongnu.org; Tue, 15 Jan 2019 13:02:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52468)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gjSyH-0000v7-O6; Tue, 15 Jan 2019 12:57:53 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gjT36-0003uw-MZ; Tue, 15 Jan 2019 13:02:53 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 281977F41D;
-	Tue, 15 Jan 2019 17:57:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BFB615A1F0;
+	Tue, 15 Jan 2019 18:02:48 +0000 (UTC)
 Received: from [10.36.112.19] (ovpn-112-19.ams2.redhat.com [10.36.112.19])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC6FD197F7;
-	Tue, 15 Jan 2019 17:57:35 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>,
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F11A2103BAB8;
+	Tue, 15 Jan 2019 18:02:34 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20190111140857.4211-1-philmd@redhat.com>
 	<20190111140857.4211-4-philmd@redhat.com>
 	<875zuqjea7.fsf@dusky.pond.sub.org>
+	<403ad2e4-3282-051c-1ff5-8a3a23899293@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -123,75 +124,75 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT/ujKaGd4vxG2Ei+MMNDm
 	S1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO53DliFMkVTecLptsXaes
 	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <f907c7b9-5eed-e604-d0da-b7a3265fc1bc@redhat.com>
-Date: Tue, 15 Jan 2019 18:57:34 +0100
+Message-ID: <be75e72a-9f54-c9b5-4a1f-e87e28df8ba5@redhat.com>
+Date: Tue, 15 Jan 2019 19:02:33 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <875zuqjea7.fsf@dusky.pond.sub.org>
+In-Reply-To: <403ad2e4-3282-051c-1ff5-8a3a23899293@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 15 Jan 2019 17:57:51 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 15 Jan 2019 18:02:48 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH 03/15] hw/ssi: Remove SSIBus from
- "qemu/typedefs.h"
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/15] hw/ssi: Remove SSIBus
+ from "qemu/typedefs.h"
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TQt9RPGaJ2vt
+	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>,
+	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2lhYK5pCgNEG
 
-On 15/01/19 13:28, Markus Armbruster wrote:
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> ---
->>  hw/arm/strongarm.h      | 1 +
->>  include/hw/arm/pxa.h    | 1 +
->>  include/hw/ssi/pl022.h  | 1 +
->>  include/hw/ssi/ssi.h    | 1 +
->>  include/qemu/typedefs.h | 1 -
->>  5 files changed, 4 insertions(+), 1 deletion(-)
-> When typedefs.h changes, we recompile the world, but it pretty much onl=
-y
-> ever changes when new typedefs are added.  Thus, *keeping* a typedef
-> there is therefore pretty cheap.
->=20
-> Nevertheless, we shouldn't keep typedefs there without a real reason.
-> Being able to move one away without having to add any new #include
-> directives is a strong sign for "no real reason".  I like patches doing
-> that.
->=20
-> What I don't like is adding #include directives just so you can move
-> typedefs out of typedefs.h: it slows down the build.  Granted, the four
+On 15/01/19 13:56, Thomas Huth wrote:
+> Yes, agreed, removing things from typedefs.h just to add lots of
+> #includes in other files is not really the best idea. I also dropped
+> this patch in v2 of my current PULL request because of this reason.
+> Phil, I suggest to simply drop this patch. What we maybe could do is to
+> split up typedefs.h per subsystem, so that we additionally have a
+> hw/arm/typedefs.h, hw/ppc/typedefs.h etc. in the end, then the
+> target-specific typedefs would not clutter the common qemu/typedefs.h
+> file anymore.
 
-(three - one added line is the typedef).
+I disagree.  The *inclusions* of target-specific typedefs.h would then
+clutter something.
 
-> added by this patch are a drop in the bucket.  The point I'm trying to
-> make is typedefs.h's purpose: it's for avoiding #include directives.
-> Circular ones in particular, but others, too.
+For the (important, mind) case of circular includes, allowing struct in
+prototypes pretty much solves the issues, and a subsystem-specific
+typedefs.h is another solution according to maintainer's discretion.
 
-In this case, adding ssi.h inclusions to SSI controllers seems to be a
-feature, not a bug.
+In this case, however, keeping subsystems self-contained is a good
+reason to apply the patch.  Having SSIBus in typedefs.h means that the
+next SSI type has a higher chance of being added to typedefs.h even if
+it's not necessary.
+
+Sometimes we need to take patches that seem unnecessary in order to keep
+the codebase tidy.  Think of the churn that was the introduction of
+hw/SUBSYSTEM.  It was painful and it added all the complexity to the
+Makefiles in order to support recursive Makefile.objs in our
+not-that-recursive makefiles.  However, it made MAINTAINERS usable and
+now, a few years later, few of us would probably be happy to go back to
+the flat hw/ directory.
 
 Paolo

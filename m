@@ -1,156 +1,117 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp649020wrt;
-        Wed, 16 Jan 2019 06:49:39 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6Ug6bKMXJULwO9RyrEC8kAa5aM5pI6AS2C0IFpfYVxLm50p29VmEjhcOItrwLhNEqBEaSg
-X-Received: by 2002:a5d:454f:: with SMTP id p15mr8316904wrr.39.1547650179958;
-        Wed, 16 Jan 2019 06:49:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1547650179; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2149906wrt;
+        Thu, 17 Jan 2019 10:43:32 -0800 (PST)
+X-Received: by 2002:aca:aa81:: with SMTP id t123mr8724495oie.218.1547750612825;
+        Thu, 17 Jan 2019 10:43:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547750612; cv=none;
         d=google.com; s=arc-20160816;
-        b=DSfNBg1C5kwcu54z3+2xdKR8xYM0tHBV+Fim6o76VX9jj/7IXbiY2YWVaRxBOXgofo
-         PtPtbg16XEKydMHel8OYyrSiHK2EHX+fx7zI2j0rMUmFiDtpzkmVeiVqHm3JaU5CO4Xr
-         hkCUThOVpMvNPX7iDzjAwA3Vivc8CFSmXqNFGjk6vC+oG39BKLY4DJmkqBVpFDlvS5er
-         dvZyXLHvIerukaNLU3TuXaaodc1s1vg9g+FZGh+eAwFPwvdgu0+EDXYVuHcq7W1beV0P
-         jBpRuWIbzeqi5Y5shchqHTmwZ8QPskdf/smuVjKlnGS8yvotloCLTxAMMfbAqCtr1Ny6
-         MGAg==
+        b=ZqCu++khlwLKAI8DmRBU6RO8PSDqVKQVp1mZl3eIkpgjIciN9E85Yxp4sMzwUF8H+I
+         KYR2f4m66y8M0T9dBYeNlpIPlY0fJpFFuPToZ74aG/CVlr/3cbSo7NNIfnNq22qPiebk
+         N7IUqkihWZmwS0hE+qLxj+kdXQeMIVgxLSBwudeuuwWiNsEPdjK3wg9V28DOdHosFG5H
+         rOBffTvsJ+2bJlu9ZgYcA5V2CLk1pkm/C2hX9m5QLCkGQxU3W4k/nvI/P2FHS+3OOEBC
+         H1fJYJOnZpIjhm+pv4Waie6K4/NJsW3GUdurakMM+/Ad/P1o9mOFXmjl/FrTy+PtqJ2M
+         xUNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=O+pweC59C7UId9vacJHHGMB8dzsJEro/9WS23PU5RJM=;
-        b=dsstKEBG9XHysr9ilBYsm4sjlzcf/Fn317r6GZeztsOV4nBsoriz0AJ1UEwF0wy0F2
-         zR5dJl4jsjEDt1PjZkhuB3L4PRlvoyaQ+cEzi8jWDIaewCgsDw4WowMVMGlx/0RNRiQb
-         zu9ksr6tSxiQSGm7P67/DKfuMzJEur9754Cyh5yF/ryLoM/nwwXDAM89qoWRtLv44dZj
-         obKTQB5GWD1M9ThFlKZFRQe+Z50UTOj41P4jDMRo1iJVE3Fea8nCDqmgvkHl/k2z6cry
-         O9W9U/9jMrKkMITpvl2QH4ZFPoVQkcCMLWRnx5bVkiA4CYEalb0tiy2lFV1b/XW97rul
-         GlTw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=+3NC05mo4a39ZI45zeaorf9hA9zb+j5sNllbwJ50wlQ=;
+        b=B9hComxM+iv+CteALK3GZQk9OAFK+8QLGweKo1TyXQFU17viaLr3B2ROC/yEnsu77Y
+         C3oWyXOiEm4PX4Ukzy+HpU9Ph5dIe/tqsGXXlY7xb6fqMklMA55+X12QlNayyVUKI46B
+         2jIfTOQNp89afDwZQOowPqoCE87kKgMC9VlbcM+ZXX94msNsZZKlsdh0RXTWSoMWpyHq
+         dblVd7xPgHb4PabiX31+VYbBq1q6UUrrhYBNQ1nxoyOeKcCwKUHEffw7oBVqbbxIBipD
+         7q0MKFlQnkBKIFt0S/XYtOktHRZfwtfO/PnfvZvyubfOPQI4iNAM+oj24rMsk7bF1BmY
+         j/1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si53255551wrm.42.2019.01.16.06.49.39
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vxe0le5U;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id q20sor1188814otl.111.2019.01.17.10.43.32
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Jan 2019 06:49:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 17 Jan 2019 10:43:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42603 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gjmVf-00041Q-1V
-	for alex.bennee@linaro.org; Wed, 16 Jan 2019 09:49:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50975)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gjmV7-0003nm-Lf
-	for qemu-arm@nongnu.org; Wed, 16 Jan 2019 09:49:06 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gjmV5-0001z7-QI
-	for qemu-arm@nongnu.org; Wed, 16 Jan 2019 09:49:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57350)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1gjmV5-0001us-JU; Wed, 16 Jan 2019 09:49:03 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6DCD54E937;
-	Wed, 16 Jan 2019 14:49:02 +0000 (UTC)
-Received: from redhat.com (ovpn-120-67.rdu2.redhat.com [10.10.120.67])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 36C12100194A;
-	Wed, 16 Jan 2019 14:48:53 +0000 (UTC)
-Date: Wed, 16 Jan 2019 09:48:52 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20190116091801-mutt-send-email-mst@kernel.org>
-References: <20190111140857.4211-1-philmd@redhat.com>
-	<20190111140857.4211-4-philmd@redhat.com>
-	<875zuqjea7.fsf@dusky.pond.sub.org>
-	<403ad2e4-3282-051c-1ff5-8a3a23899293@redhat.com>
-	<be75e72a-9f54-c9b5-4a1f-e87e28df8ba5@redhat.com>
-	<87sgxtatod.fsf@dusky.pond.sub.org>
-	<4b24723e-5a27-f25f-76c1-f2f4e94757ba@redhat.com>
-	<20190116113455.dyl6uctl4dpaqh6v@sirius.home.kraxel.org>
-	<ad34caf3-5f1f-dffc-4aed-60bb90ba2e5f@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vxe0le5U;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=+3NC05mo4a39ZI45zeaorf9hA9zb+j5sNllbwJ50wlQ=;
+        b=Vxe0le5UgjQ27oevLiO9BI56CaPOH0KoUvY8AHxGb5JH+xE+jC2QLi2D9nsc7rUgbY
+         xQptXlCMzWpT20DK7oCFA5pFQWlKqRehbTM8r94EKVAzRZtbyBb/3jnkYtg0LPlP5P13
+         lhQHu5k9o3netkT90uWLm9uab7GK//QqckGQs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=+3NC05mo4a39ZI45zeaorf9hA9zb+j5sNllbwJ50wlQ=;
+        b=r/bVvXNWwWa09fzNSR6iHeprtedjOZCvsRSgraeYY9UF+o6G4lu9+ddBJHt5PycIKA
+         DRcPuHOcVWww88BYSl7stPBH7NAGhaaOall1v0MuErIvsUW1iGMdR5qRPf5yaEPvfG6t
+         k9YZKyzN1TR1WMVHZZZgS7wmBh3BUiiqF1+MrekgeRLTSXAoLQRwFTMmWW3+DjfUbqPO
+         hxTmx8JZh9/BbFNU8rnagb+Mljj0o9zpiPXkayibxE+WfKBvolqNiWbdZplc/caLJicg
+         j4Gg/i0u4fnlVxO+Nudd71KHh18/KnWV+wykKTq4obICl+OsyUpllwozTDhYpqBiVIgc
+         kLTQ==
+X-Gm-Message-State: AJcUukfPk5ycyMHe7xFJXyG8VK6CBUwABL3L6Gxyjv7QWG1+G6UAUmqR
+	rsevdookLHeOnxb13H0kv60pnAOy1gXicwsiwo6Ob0mOdjo=
+X-Google-Smtp-Source: ALg8bN6MhsoSeEWCGSKOrhaFZb39l1d3KYUKHlIZ0c3XenTFOIQLf3sbRavAde971iAEOCaRTfxM5Jm7ITBlnlrq8oo=
+X-Received: by 2002:a9d:5617:: with SMTP id e23mr8825718oti.151.1547750612400;
+ Thu, 17 Jan 2019 10:43:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ad34caf3-5f1f-dffc-4aed-60bb90ba2e5f@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 16 Jan 2019 14:49:02 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/15] hw/ssi: Remove SSIBus
- from "qemu/typedefs.h"
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	qemu-block@nongnu.org, Laszlo Ersek <lersek@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOzwb6AWTDHO
+References: <20190109152430.32359-1-agraf@suse.de> <CAFEAcA9zugZiWirk9QjqmAO9QKhLdCAWuG1PX5z7Nxm4O69aTg@mail.gmail.com>
+ <CAFEAcA8Xzi8GjzUtzxbFzxdCS4kn0Cps+_bF70ZS0KnH0W8SvQ@mail.gmail.com>
+ <92dba7da-f3fc-b7dc-6896-cf8d58cc7f17@suse.de> <CAFEAcA_sxvfHG6ryA4xHMfbwhDaRrF_+6xaef_0RqqH-7JESzQ@mail.gmail.com>
+ <0673d8c0-16f0-49e7-f002-06491353cc6c@suse.de> <CAFEAcA-duBwj2-DG=dQLo-448ca--+C6Fu54avwEFQ5D-bwy8A@mail.gmail.com>
+In-Reply-To: <CAFEAcA-duBwj2-DG=dQLo-448ca--+C6Fu54avwEFQ5D-bwy8A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 17 Jan 2019 18:43:20 +0000
+Message-ID: <CAFEAcA8UxBW1JCp4ky-OxsAV1ip_rkRp1ZCb=bK5nwG5ickStQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] target/arm: Allow to switch from MON->HYP on AArch32
+To: Alexander Graf <agraf@suse.de>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Tom Rini <trini@konsulko.com>, 
+	Michal Simek <michal.simek@xilinx.com>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Stephen Warren <swarren@wwwdotorg.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: w+uFXfvE5E8A
 
-On Wed, Jan 16, 2019 at 12:49:07PM +0100, Paolo Bonzini wrote:
-> On 16/01/19 12:34, Gerd Hoffmann wrote:
-> >   Hi,
-> > 
-> >> typedefs.h is useful to avoid rebuilding the world too often if a type
-> >> is used many times as a pointer, but rarely as a struct and rarely has
-> >> functions called on its instances.
-> > 
-> > Related:  Can also be used to keep struct content private.  struct
-> > QemuConsole for example is private to ui/console.c, but pointers to
-> > QemuConsole are passed around alot in ui/* and hw/display/* code.
-> 
-> True, though as we switch more and more from pointers to embedded
-> structs that does not work that much anymore.  Another way to do that is
-> to split the header in include/path/to/foo.h and path/to/foo_internal.h.
-> 
-> Paolo
+On Thu, 10 Jan 2019 at 10:34, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 10 Jan 2019 at 06:43, Alexander Graf <agraf@suse.de> wrote:
+> >
+> >
+> >
+> > On 10.01.19 00:08, Peter Maydell wrote:
+> > > On Wed, 9 Jan 2019 at 17:14, Alexander Graf <agraf@suse.de> wrote:
+> > >>
+> > >> On 01/09/2019 05:59 PM, Peter Maydell wrote:
+> > >>> On Wed, 9 Jan 2019 at 16:52, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > >>>> On Wed, 9 Jan 2019 at 15:26, Alexander Graf <agraf@suse.de> wrote:
+> > >>>>> In U-boot, we switch from S-SVC -> MON -> HYP when we want to enter
+> > >>>>> HYP mode. This dance seems to work ok (hence it's there in the code
+> > >>>>> base), but breaks with current QEMU.
+> > >>> PS: it would be helpful if the commit message said how u-boot
+> > >>> is trying to go from Mon to Hyp -- some ways to try to do
+> > >>> this are OK, and some are not, so whether it's supposed to
+> > >>> work or not depends on what u-boot is actually doing...
+> > >>
+> > >> I don't fully understand all of it to be honest :). But the code is here:
+> > >>
+> > >> http://git.denx.de/?p=u-boot.git;a=blob;f=arch/arm/cpu/armv7/nonsec_virt.S
+> > >>
+> > >> What I managed to understand so far is that it goes to MON using the smc
+> > >> #0 call and then changes SPSR so that on return (movs pc) the mode will
+> > >> be different.
+> > >
+> > > Thanks -- yes, that's an exception return so it's the
+> > > expected way to go from Mon to Hyp.
+> >
+> > That was my understanding, yes. Do you still want me to change the
+> > commit message to mention that or will you just do it when applying?
+>
+> I'll add a note when I apply it; thanks.
 
-Not sure this will help since no tool checks structure isn't
-actually used even though it's in internal.
+Now applied to target-arm.next with a rewritten commit message; thanks.
 
-If you want to go overboard it's solvable of course, e.g.
-something like this will work:
-
-
-E.g. in virtio.h
-
-#ifndef VIRTIO_PRIVATE
-#define VIRTIO_PRIVATE(f) (VIRTIO_PIVATE_##f)
-#endif
-
-struct VirtioPrivate {
-	int VIRTIO_PRIVATE(bar);
-};
-
-and in virtio.c:
-
-#define VIRTIO_PRIVATE(f) (f)
-#include <virtio.h>
-
-
--- 
-MST
+-- PMM

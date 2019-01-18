@@ -1,268 +1,224 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6175869wrt;
-        Mon, 21 Jan 2019 07:23:19 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7NViJRZl8/SiYUD0G9pUyQWPapqdJ5dKFKZibBz+qGqr9/t1FpCg/s2hrEYQQVtQYzSYyN
-X-Received: by 2002:a1c:f909:: with SMTP id x9mr8074430wmh.108.1548084199848;
-        Mon, 21 Jan 2019 07:23:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548084199; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3100014wrt;
+        Fri, 18 Jan 2019 06:29:28 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5Eb2Es4U7wlexuuhhYzbynAMK//C31HvxK+JkY9hhZ2sWoXEs229T/Y4QhSxLyiHKkW1Z9
+X-Received: by 2002:a7b:c76b:: with SMTP id x11mr15468852wmk.37.1547821768003;
+        Fri, 18 Jan 2019 06:29:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1547821767; cv=none;
         d=google.com; s=arc-20160816;
-        b=SELlcM87iMrJlnZyqsgHsNxqncKQvabFfrwNG9mNpTZAjztdwkops+tDr8yRYI+Z5D
-         uFG8V1vIn8I2nzHlykvSncgVhUGu/lGCLZ9RNJdTNz/+EMQUERpFNjlbWSXQqi/rc074
-         sBCHI+XFUfO03NPiuMMhw1bv1GHFtLfTVy/wBFxvxsNpdNV+qUNjHUgE4Vnd/h5QwWwX
-         YYTQM0biGOMqdglIU5UU5hZpSE9Knk0NXlDz1DNXX699ZchZlV5TK8ZUTpnKSETAC1KC
-         /V/2bYsTwzHaypShw7LdGYTWZGx9Olw8Y/IzK70CkWRN3LUbJ/k607r7m35FGGM/c9G5
-         o61w==
+        b=PjdOZRg0mRIdbAf9rPZ60FR1PhBSVvQgCvxOrEB8umYY+DUPhE0y9Wj5s8VZnXWsNS
+         gxagqvsRISx5GD1ctqSq2Mpiudgu5aeUw25KC+KIrAI64hpr6ZU6vebxhq9DBr2F5toc
+         aAgZX3KlhhlOSCbnjwpG8rAjwjqhO7cyyxq9Nb1QetgBkipav+sj+KEFwAVdwelOjnnw
+         zwe0K1tsxisXm+88JFavSS6dZNGXtnfbckHUt/cH32j30qrn1ygFcAIKOm3A2A+YOEkd
+         ZbCl4P1H02k20DQ3GzxaS720606RSFCVRvbMFGSc2G8S7sbczJn1IpETi/UBfl3E1tGL
+         T0zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=4MvUNGHV/vkBrZ+X/IxGZhQvVLqxEZ/wDaQURyKKI10=;
-        b=hlFNvDn2GbPALb+STcU+mqJ7hM7t/I+wfMzsDj/Ux8lLqLnXeOzOBF6QPm5drRXoDc
-         W5peoWNPN84ypHN7vzIH2qaoddqNHaUBoa/4J6yGKzhYWcDu8HvXqa0/GpShiquPEd4Y
-         tGhDhQ+l+1XPeg9+xNxRUFlXqQ3O70YvA0D7qlsWU7Evvj9YP0Gn8m/UarKr/TglLtwp
-         alOIrWARTbTgKl7CpuOWoJb2OWN9x2adRyBJ5KQJchFWhlbpdhi5VdWNMZaxJcUJLWEI
-         CqTh3XAADaw0+51QMTy/d2/fTMoHYfsnq0ln+0g9597TswzQ/dWsdi5+6OSWtIePiksr
-         +uxg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=78EA/DzATuPS+n6NMHd3XV/EU4KqQbM3M28ivwifBO0=;
+        b=0ZyAd6rUW9fg/sBtiH50FhAejBgjtiM1itVR3pJqkPhk3Y3PK0BvZQ7hsnIJlTrJLf
+         HqdlXK0GXGq3yUv+Uq6wLwziPmd0NToZslEA261znbFKwioSjRh01jXTy82LTvn1E9zx
+         stCfK4wZDrdsBWbkD2tCIZmoY8hmHBZGnmj+wQ5LEgDaQ4SIc0EZulx5W85GnZZMBcp4
+         FNt+wqqEE0e0rpY8LB6/pLvJ8uYWSKpJLj+3vP2abyaTBZd++zcS70Pb5sgb69IFkF/e
+         yqdsLaWSJKA6+1n0X19uZ75HWYQ8O+ZX5qw7Y6RDPiYZ+4p4nHtq8N4EyvSiawoC2bM7
+         i7uw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYBSO1Hk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Kqm3lTcU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w72si32953738wme.155.2019.01.21.07.23.19
+        by mx.google.com with ESMTPS id u13si57827822wrs.240.2019.01.18.06.29.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 07:23:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 18 Jan 2019 06:29:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYBSO1Hk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Kqm3lTcU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:55153 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40479 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glbPy-0007x3-Q8
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 10:23:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44441)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gkV9D-0005lz-0W
+	for alex.bennee@linaro.org; Fri, 18 Jan 2019 09:29:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35705)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glbPD-0007wx-Qq
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:33 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gkV90-0005kC-1P
+	for qemu-arm@nongnu.org; Fri, 18 Jan 2019 09:29:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glbPA-0003sQ-FN
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:31 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:54147)
+	(envelope-from <peter.maydell@linaro.org>) id 1gkV8z-0004Pd-0T
+	for qemu-arm@nongnu.org; Fri, 18 Jan 2019 09:29:14 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41732)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glbP6-0003pw-Jy
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:27 -0500
-Received: by mail-wm1-x341.google.com with SMTP id d15so11168190wmb.3
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 07:22:22 -0800 (PST)
+	id 1gkV8y-0004Nx-IP
+	for qemu-arm@nongnu.org; Fri, 18 Jan 2019 09:29:12 -0500
+Received: by mail-ot1-x344.google.com with SMTP id u16so14499027otk.8
+	for <qemu-arm@nongnu.org>; Fri, 18 Jan 2019 06:29:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=4MvUNGHV/vkBrZ+X/IxGZhQvVLqxEZ/wDaQURyKKI10=;
-	b=YYBSO1HkRLZHX3e/t1kJFHHrLKdyVGtQNG53v4fL5lgFz3B9/qQcTppFv0D2JlCGdz
-	Vk0fH6kCNLUTqoU+FNc8DBzA0wcCCqzLiANdtnh8xV5//IaLZ/XFaf7lp/ZEIZUORQBy
-	9py3INCm3op20AbQAah2+kqJujNzqEI+PsSRg=
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=78EA/DzATuPS+n6NMHd3XV/EU4KqQbM3M28ivwifBO0=;
+	b=Kqm3lTcUskZsCoi+bSslIcie0nxs2dyXfgZkuR8nWGBuBAjk2vwZfTAH/FwopFlNDN
+	O5OcjqVsp23hy81O7gcDSVIiP+lRaYhr+oTg0D1R8xIEF6DMbZxn3op9sbJ62jjjSZD7
+	W2250IDBl/UQLfB0WZLeacDKSczWR39jk8rII=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=4MvUNGHV/vkBrZ+X/IxGZhQvVLqxEZ/wDaQURyKKI10=;
-	b=ORCXudWdnLi0tMTgzIR+nICFg9rfEdUr88XIaoI4jyQ/F5IfYcyY+Z0dKW4mJY0f5F
-	8MiUACXXJ99352t1B/farDX9F1Cg79Vq7jNvig/XhJ7Zwh9mq1j3deiCaE6w6u1eqpkg
-	+nainq/6kuB6ssXwHbGaBVpZX9/1oCYjnkVNIcB97xRc+atKmgafinyf6upx8sbBuZAy
-	BmdGfnmiYpGbLRqLAv4j5Ye3HWoA2cr9P666uSyzf4VLrTSygDWypR236NeM+5H2Tlcm
-	oM1FaePAtoOa9yhw9o7kkhAg/BuvFOSRA9CP0t7NUL1qdso/UY2DCZJOm1n9KADjbX1r
-	V+7A==
-X-Gm-Message-State: AJcUukfCPVPuFhZ8/baMCf0WvvoyZ4ZJOVisajTLLXIxnZedSiF/zWE+
-	65a/QpVCeqp/ViIwpFssLkuTUw==
-X-Received: by 2002:a1c:a6c2:: with SMTP id
-	p185mr22943962wme.133.1548084141383; 
-	Mon, 21 Jan 2019 07:22:21 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	o16sm128900134wrn.11.2019.01.21.07.22.19
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 07:22:20 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 15:22:14 +0000
-Message-Id: <20190121152218.9592-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=78EA/DzATuPS+n6NMHd3XV/EU4KqQbM3M28ivwifBO0=;
+	b=CB4HSF/5MnhnE2FS+rTBEitINhoUBEBthQMLWFgF6nUiWxRrewcmQL/QLkgJT9ZT0P
+	4Z/PgeHr0RtcZ/r9yFIiwfEs9BUl4bABeFJ6EXod/RM9JIt3mCFH7AT6m0DWT1DU+WbE
+	80dkZD/6dbXefv3s7ZgOSih03ZBQfLZMNmRY2nmQbv5B+lox/kXOiPNJZQrs5aaAkkhI
+	SwXPAacAFdJCMJ5RolRkxTaEl5hOYaKDNUemQsDsc3bxwpSiWJunT/WiPSBtkIdJnmKP
+	1Mw0U/ZXYi7OWF8gXdQ3JoIf7wtsbt5EWB26PVFMR0tvz1KWKgmOKZPV0fivvNi/Ew7k
+	aWdQ==
+X-Gm-Message-State: AJcUukd+0Mhjm33kb7IXiH4Y9vwMDpoPyefUa8HciFbWT0RHaV4vM06R
+	GYcz0MyEnwN1J4DLPn6bew0VorYHkw3Yz1kVeaXpmCA+
+X-Received: by 2002:a9d:5617:: with SMTP id e23mr10998704oti.151.1547821751333;
+	Fri, 18 Jan 2019 06:29:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190108180014.32386-1-peter.maydell@linaro.org>
+In-Reply-To: <20190108180014.32386-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 18 Jan 2019 14:29:00 +0000
+Message-ID: <CAFEAcA-9otDEjp7Q4xmdRPbCxUiEQjaKuxaZMsC9A0jMLRQu2w@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: [Qemu-devel] [PATCH v3 0/4] tcg: support heterogenous CPU clusters
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH] accel/tcg/user-exec: Don't parse aarch64
+ insns to test for read vs write
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nvBXextvCZzu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Riku Voipio <riku.voipio@iki.fi>,
+	Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ajoL+9ap0qXr
 
-In the process of debugging my board code that uses this
-feature, I realized I needed to support the CPU object
-not being a direct child of the cluster object, which
-also lead me to the object_child_foreach_recursive()
-function which is a neater way to iterate children anyway.
-I also figured out we could add an assert which catches
-most "parenting CPU vs cluster realize ordering" bugs.
-
-Only patch 2 has changed here, others are already reviewed.
-
-Changes v2->v3:
-
- * allow CPU objects to be indirect children of the cluster;
-   this is useful for ARMv7M, where the CPU object is a child
-   of the armv7m container and the board code that sets up
-   the cluster object only has the armv7m container object:
-   this is done by using object_child_foreach_recursive()
-   rather than an open-coded child iteration
- * add an assertion that the cluster has at least one CPU,
-   which catches the easiest-to-make errors when creating
-   and populating the cluster
-
-Changes v1->v2:
- * just fixing a bug in patch 3 that meant we were
-   accidentally never reusing TBs. Patch 3 is the only
-   one that needs review.
-
-Original cover letter included below for context.
+Ping for review?
 
 thanks
 -- PMM
 
-Currently, TCG implicitly assumes that all CPUs are alike,
-because we have a single cache of generated TBs and we
-don't account for which CPU generated the code or is looking
-for the TB when adding or searching for generated TBs.
-This can go wrong in two situations:
- (1) two CPUs have different physical address spaces
-     (eg CPU 1 has one lot of RAM/ROM, and CPU 2 has
-     different RAM/ROM): the physical address alone is
-     then not sufficient to distinguish what code to run
- (2) two CPUs have different features (eg FPU vs no FPU):
-     since our TCG frontends bake assumptions into the
-     generated code about the presence/absence of features,
-     if a CPU with FPU picks up a TB for one generated
-     without an FPU it will behave wrongly
-
-This is unfortunate, because we already have one board in
-the tree which has a heterogenous setup: the xlnx-zcu102.
-This board has 4xCortex-A53 and 2xCortex-R5F. Although
-most "normal" guest code doesn't run into this, it is
-possible to demonstrate the bug with it. There's a test case
-at http://people.linaro.org/~peter.maydell/xlnx-het.tgz
-which arranges to run a fragment of code in AArch32 which
-should behave differently on the two CPUs, but does not
-(either the A53 gets the behaviour the R5 should have, or
-vice-versa).
-
-This patchset adds the "cluster ID" to the set of things
-we include in the TCG TB hash, which means that the two
-sets of CPUs in this board can no longer accidentally
-get TBs generated by the other cluster. It fixes the
-bug demonstrated by the test case.
-
-Design notes:
-
- * Adding cluster ID to the hash is RTH's suggestion. It might
-   also be possible to make each cluster have a TCGContext
-   code generation context, and have the CPUs use the right
-   one for the cluster, but that would be a lot more code
-   rework compared to this approach.
- * I put the cluster number in the existing cflags, since
-   we have plenty of spare bits there. If in future we
-   need either more than 256 clusters (unlikely) or want
-   to reclaim bits in the cflags field for some other
-   purpose we can always extend our xxhash from 28 to 32 bytes.
-   (I actually wrote the patch to do that before realising
-   I didn't need it...)
- * The cluster object now fills in the CPU object's
-   cluster_index field when the cluster object is realized.
-   This imposes an ordering constraint that all CPUs must
-   be added to a cluster before realizing the cluster. That's
-   not a big deal, except that unfortunately QOM provides
-   no way that I could find to enforce this. If anybody
-   has a suggestion for a better approach that would be great.
-   Patch 1 therefore makes sure our only current user of the
-   cluster feature obeys the ordering constraint.
- * Patch 4 is a tidyup to the gdbstub code which is possible
-   now that the CPUState struct has the cluster ID in it.
-
-I believe that this fix is basically all we need to support
-heterogenous setups (assuming of course that you just mean
-"within an architecture family" like Arm, rather than
-systems with say both an Arm and a Microblaze core in them).
-The other things I have considered are:
-
- * code that calls cpu_physical_memory_read() and friends,
-   uses address_space_memory, or otherwise assumes there's
-   only a single view of "CPU memory": I sent some patches
-   out before Christmas that fixed these in generic code
-   like the monitor and disassembler. There are also some
-   uses in target-arch or device-specific code, which I
-   think we can in practice ignore unless/until we come to
-   implement a board that is heterogenous and also uses those
-   devices or target architectures.
- * handling of TB invalidation: I think this should Just Work,
-   because tb_invalidate_phys_addr() takes an AddressSpace+hwaddr,
-   which it converts into a ramaddr for (the badly misnamed)
-   tb_invalidate_phys_page_range(). So the TB caching all works
-   on ramaddrs, and if CPU 1 writes to some ram X that's mapped
-   at physaddr A for it but at physaddr B for CPU 2, we will
-   still correctly invalidate any TBs that CPU 2 had for code
-   that from its point of view lives at physaddr B.
-   Note that translate-all.c has a single l1_map[] structure
-   which will have PageDesc entries for pages for all CPUs in
-   the system. I believe this is OK because the only thing
-   we use them for is TB invalidation.
- * dirty memory tracking: like TB invalidation, this is OK
-   because it all works either on MemoryRegions or on ramaddrs,
-   not on physaddrs.
-
-Have I missed anything that we also need to fix ?
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  hw/arm/xlx-zynqmp: Realize cluster after putting RPUs in it
-  qom/cpu: Add cluster_index to CPUState
-  accel/tcg: Add cluster number to TCG TB hash
-  gdbstub: Simplify gdb_get_cpu_pid() to use cpu->cluster_index
-
- include/exec/exec-all.h   |  4 +++-
- include/hw/cpu/cluster.h  | 24 ++++++++++++++++++++
- include/qom/cpu.h         |  7 ++++++
- accel/tcg/cpu-exec.c      |  3 +++
- accel/tcg/translate-all.c |  3 +++
- gdbstub.c                 | 48 ++++-----------------------------------
- hw/arm/xlnx-zynqmp.c      |  4 ++--
- hw/cpu/cluster.c          | 46 +++++++++++++++++++++++++++++++++++++
- qom/cpu.c                 |  1 +
- 9 files changed, 94 insertions(+), 46 deletions(-)
-
--- 
-2.20.1
-
+On Tue, 8 Jan 2019 at 18:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> In cpu_signal_handler() for aarch64 hosts, currently we parse
+> the faulting instruction to see if it is a load or a store.
+> Since the 3.16 kernel (~2014), the kernel has provided us with
+> the syndrome register for a fault, which includes the WnR bit.
+> Use this instead if it is present, only falling back to
+> instruction parsing if not.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Since I originally asked the kernel folks to add the ESR context
+> so we could use it in QEMU, I figured that it was about time
+> (five years later...) to write the code to make use of it.
+>
+> I wanted to say "everybody surely has at least a 3.16
+> kernel for aarch64 machines" and delete the fallback code,
+> but it turns out that the gcc compile farm box has 3.13.0...
+> ---
+>  accel/tcg/user-exec.c | 66 ++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 52 insertions(+), 14 deletions(-)
+>
+> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+> index 941295ea49b..66cc818e3f3 100644
+> --- a/accel/tcg/user-exec.c
+> +++ b/accel/tcg/user-exec.c
+> @@ -479,28 +479,66 @@ int cpu_signal_handler(int host_signum, void *pinfo,
+>
+>  #elif defined(__aarch64__)
+>
+> +#ifndef ESR_MAGIC
+> +/* Pre-3.16 kernel headers don't have these, so provide fallback definitions */
+> +#define ESR_MAGIC 0x45535201
+> +struct esr_context {
+> +    struct _aarch64_ctx head;
+> +    uint64_t esr;
+> +};
+> +#endif
+> +
+> +static inline struct _aarch64_ctx *first_ctx(ucontext_t *uc)
+> +{
+> +    return (struct _aarch64_ctx *)&uc->uc_mcontext.__reserved;
+> +}
+> +
+> +static inline struct _aarch64_ctx *next_ctx(struct _aarch64_ctx *hdr)
+> +{
+> +    return (struct _aarch64_ctx *)((char *)hdr + hdr->size);
+> +}
+> +
+>  int cpu_signal_handler(int host_signum, void *pinfo, void *puc)
+>  {
+>      siginfo_t *info = pinfo;
+>      ucontext_t *uc = puc;
+>      uintptr_t pc = uc->uc_mcontext.pc;
+> -    uint32_t insn = *(uint32_t *)pc;
+>      bool is_write;
+> +    struct _aarch64_ctx *hdr;
+> +    struct esr_context const *esrctx = NULL;
+>
+> -    /* XXX: need kernel patch to get write flag faster.  */
+> -    is_write = (   (insn & 0xbfff0000) == 0x0c000000   /* C3.3.1 */
+> -                || (insn & 0xbfe00000) == 0x0c800000   /* C3.3.2 */
+> -                || (insn & 0xbfdf0000) == 0x0d000000   /* C3.3.3 */
+> -                || (insn & 0xbfc00000) == 0x0d800000   /* C3.3.4 */
+> -                || (insn & 0x3f400000) == 0x08000000   /* C3.3.6 */
+> -                || (insn & 0x3bc00000) == 0x39000000   /* C3.3.13 */
+> -                || (insn & 0x3fc00000) == 0x3d800000   /* ... 128bit */
+> -                /* Ingore bits 10, 11 & 21, controlling indexing.  */
+> -                || (insn & 0x3bc00000) == 0x38000000   /* C3.3.8-12 */
+> -                || (insn & 0x3fe00000) == 0x3c800000   /* ... 128bit */
+> -                /* Ignore bits 23 & 24, controlling indexing.  */
+> -                || (insn & 0x3a400000) == 0x28000000); /* C3.3.7,14-16 */
+> +    /* Find the esr_context, which has the WnR bit in it */
+> +    for (hdr = first_ctx(uc); hdr->magic; hdr = next_ctx(hdr)) {
+> +        if (hdr->magic == ESR_MAGIC) {
+> +            esrctx = (struct esr_context const *)hdr;
+> +            break;
+> +        }
+> +    }
+>
+> +    if (esrctx) {
+> +        /* For data aborts ESR.EC is 0b10010x: then bit 6 is the WnR bit */
+> +        uint64_t esr = esrctx->esr;
+> +        is_write = extract32(esr, 27, 5) == 0x12 && extract32(esr, 6, 1) == 1;
+> +    } else {
+> +        /*
+> +         * Fall back to parsing instructions; will only be needed
+> +         * for really ancient (pre-3.16) kernels.
+> +         */
+> +        uint32_t insn = *(uint32_t *)pc;
+> +
+> +        is_write = ((insn & 0xbfff0000) == 0x0c000000   /* C3.3.1 */
+> +                    || (insn & 0xbfe00000) == 0x0c800000   /* C3.3.2 */
+> +                    || (insn & 0xbfdf0000) == 0x0d000000   /* C3.3.3 */
+> +                    || (insn & 0xbfc00000) == 0x0d800000   /* C3.3.4 */
+> +                    || (insn & 0x3f400000) == 0x08000000   /* C3.3.6 */
+> +                    || (insn & 0x3bc00000) == 0x39000000   /* C3.3.13 */
+> +                    || (insn & 0x3fc00000) == 0x3d800000   /* ... 128bit */
+> +                    /* Ignore bits 10, 11 & 21, controlling indexing.  */
+> +                    || (insn & 0x3bc00000) == 0x38000000   /* C3.3.8-12 */
+> +                    || (insn & 0x3fe00000) == 0x3c800000   /* ... 128bit */
+> +                    /* Ignore bits 23 & 24, controlling indexing.  */
+> +                    || (insn & 0x3a400000) == 0x28000000); /* C3.3.7,14-16 */
+> +    }
+>      return handle_cpu_signal(pc, info, is_write, &uc->uc_sigmask);
+>  }
+>
+> --
+> 2.20.1
+>

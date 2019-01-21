@@ -1,318 +1,344 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6175738wrt;
-        Mon, 21 Jan 2019 07:23:10 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6yTVm3hypgj880FkB+sCKeBVk3GPkU7bJgmnJh/pUwvNOP0jPP+8AD0Jzr6ZGkYStWxZms
-X-Received: by 2002:a1c:9183:: with SMTP id t125mr24566505wmd.79.1548084190310;
-        Mon, 21 Jan 2019 07:23:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548084190; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6200130wrt;
+        Mon, 21 Jan 2019 07:50:06 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN4nC/F2FNXRFJXQa47W8Tr7cuPbrp6LkV832t0fUJsgcJaJAJwOIVvzrBwxsCnKpzmNUl+0
+X-Received: by 2002:adf:90e5:: with SMTP id i92mr27507315wri.210.1548085806357;
+        Mon, 21 Jan 2019 07:50:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548085806; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z68BnrSjrZvCD6tFdpTPBv3i5MPzIwWDI+2catImcPt8ZgyWWKB484aJ/+vUfev8GJ
-         onZfwtLsHdnRXoAqYTh+O+zPBW9XyFWtR1LNiTu8cv8KaJmAvxQdwK4gNoLuDYA0h7JL
-         qgv7+qtJzYqCd6G3jWVhbxUmlEDuhGfArk5Ly9kfvntgex97mT8231kYnxIfkk7u5sOV
-         DFFar1VEFlmNhwTGyTv/Tfbif+w7d8UERPGdg/QGSpJVPsxfHRIDlDd3x66bnJL2MLa3
-         fxX9alSxESV3GZ9HUUdIHjL33junmj2CrJqJmwSBQl45qDlEaBQwjI5BqUcKFEIRIXzd
-         Xa3w==
+        b=eNZbWMyAw9OqoL/WItYIM/OOxdjHiCLIiO/EOuterqz6Qmrv5rewP3BRFzSUQTJKX8
+         sTYJP0ipUWBqTROd6RqYUvxAAX0gwcKkkuXz00S3nEbI0xj7xSn1j9wj0kR+GBR+bSO8
+         Zcun+4zNH3t5sWfJVm9q/qwSzEmVxHO9aXzAFDmCT7GN0gtKgedFJocCe3HTqyEmfBeN
+         V6/fDLEJMj0/ZPBxEo+vf1SMhs6ppsRY5sm5qP+bdwDRKVIIMrBxnEnFBLTCfB7Qohn3
+         LI7I50LKm9ctGXma8UmSNH71upd1L8T0GRpC6GfTuy9ny6rrLzAMOf0Rab9LKzIb3q6b
+         7Nag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=dW3XYUmi+127c7xazctmwe4gw2x2VuqOsI6Nkm1CZQ4=;
-        b=ZvLJNytbvqIhWfptsOgw6OCcoTRkO9sI/EgVf1fLMqlf+Xe1a35/b1o9L8DZ0F90UV
-         lg7m/E0rDbENYJGBdJHy6qFpveAdlhnbYwUx8zleo2bLixBLgbM6T3iEp+ILEevKtVS6
-         tDK6W4n62M+BWERuS289FdjwSy0vLzR4DnMD9m6ldUnXKYrZ9IuMN5knxJT+GDNKbZ4J
-         aBaWMdnyzYx8QGIZpYIF+LljD/bgV74TMmTtCZnOzbiw9QO07TPhSOAxYhQ4ox+6Vp30
-         F0yX6b8rEdKzJFXXUXqP2/IKtYgCP/+LicwfVu4CjqwE6F3I3L29hNgtfXBdn8pXWza5
-         EAxw==
+         :content-transfer-encoding:message-id:mime-version:date:to:from;
+        bh=1U6+equNP6pleallM77mvf9cdTgwcuYj+peT3Ry5biU=;
+        b=O0nj9aeI61CGv3/3pSP+TzQE57LbOfdmMH8V27PNuaZHKnezWRqJ3ZRBuU9lS4nlj9
+         YYcLxR2CXe2YA0rrO+SbQNCXuduVgZ5B4k8xnRDKT7KSNLHJ9ZzoHf2K1w6p68EnLZtE
+         GJkTTJo86D2PezX4xBq2NMGUhyu64GSYuGxETiz95DybHY8r5AA4pQnzOUVUShtIjkHn
+         kc39+M4/2s2WMrt+hIDWjwvj9LQKXbJKKPWxIJvrG2UkOuadeYJSKKxOMT2OZfTv9uH9
+         Fglu9KH6XzJUkIHpOeE0Ke4tmQjWdSt49wmCForcuhT85RHfu1fUcyVoJ+O9jlJmkJbh
+         rhYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JaiSTkMu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d2si35808808wmd.9.2019.01.21.07.23.10
+        by mx.google.com with ESMTPS id v2si66769038wrs.381.2019.01.21.07.50.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 07:23:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jan 2019 07:50:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JaiSTkMu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:55163 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:55488 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glbPp-00084k-6L
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 10:23:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44558)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1glbpt-0001CF-BP
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 10:50:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50849)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glbPL-000811-Pi
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:41 -0500
+	(envelope-from <clg@kaod.org>) id 1glbpf-0001C4-EB
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 10:49:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glbPJ-0003wB-DR
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:39 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36837)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glbPH-0003rB-6H
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:35 -0500
-Received: by mail-wm1-x342.google.com with SMTP id p6so11162599wmc.1
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 07:22:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=dW3XYUmi+127c7xazctmwe4gw2x2VuqOsI6Nkm1CZQ4=;
-	b=JaiSTkMuDG9yYdoVn9j8PHj//y1/3F+NUCp2oVY9uQ2/4l+rylAWmciwtoJymDGQ6e
-	wwShQuxrOcdHRUlGapFVnEh3cDQ7sykiVfuLdgtISDCeLY9x/Jcv57qvtRQPt/6/8xsv
-	stGTpvbhGrw+R5XeOIJO27BBg99GPoJgni040=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=dW3XYUmi+127c7xazctmwe4gw2x2VuqOsI6Nkm1CZQ4=;
-	b=GA9ovWR6EpFj+ATze7NWVGEikkEeACuwccDcwlofgic+dejC209JLsPRCm/BakPGSE
-	O4o6VPOUSDtujBicUx40j0YNRGj1WV55hVfXHgru5BNfeQEONRSzQu6D2B1+RV8UCzmc
-	J4X4p8ccfWl/RwJxEMTbnr2QR+JqYzTCTYpF84sZ1O6kF6ohIj18UnZdePbqIDlCoHUC
-	8NDA73G+aqiy28WHKyX2zu1NgcrIy8JHAdNmkjy/dNQ71KQYnVnY1eObSx/ByU9oSa/Q
-	8nXpM7LUK8o0y40ypJSVeJh8PTCC6Z+EpQ907AZUgEOxE4owYHttI6WpcINWtY3nERoM
-	1jWw==
-X-Gm-Message-State: AJcUukdVrH7yANZj4jjs/RMxihcxrIXsb+J6O0zAPgwyxksBtB8Volsw
-	NlZUrq0GnYkIC512cD1qcEQhpQ==
-X-Received: by 2002:a1c:e044:: with SMTP id x65mr10063934wmg.86.1548084144516; 
-	Mon, 21 Jan 2019 07:22:24 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	o16sm128900134wrn.11.2019.01.21.07.22.23
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 07:22:23 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 15:22:16 +0000
-Message-Id: <20190121152218.9592-3-peter.maydell@linaro.org>
+	(envelope-from <clg@kaod.org>) id 1glbpe-0000LD-6s
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 10:49:51 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:40294)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1glbpd-0000Cy-OI
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 10:49:50 -0500
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x0LFhVYS052106
+	for <qemu-arm@nongnu.org>; Mon, 21 Jan 2019 10:49:41 -0500
+Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2q5fpquxq5-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Mon, 21 Jan 2019 10:49:41 -0500
+Received: from localhost
+	by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <clg@kaod.org>;
+	Mon, 21 Jan 2019 15:49:39 -0000
+Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
+	by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Mon, 21 Jan 2019 15:49:34 -0000
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+	[9.149.105.59])
+	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id x0LFnXi962324978
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Mon, 21 Jan 2019 15:49:33 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 69DA3A4055;
+	Mon, 21 Jan 2019 15:49:33 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 4DCD2A404D;
+	Mon, 21 Jan 2019 15:49:33 +0000 (GMT)
+Received: from smtp.lab.toulouse-stg.fr.ibm.com (unknown [9.101.4.1])
+	by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Mon, 21 Jan 2019 15:49:33 +0000 (GMT)
+Received: from zorba.kaod.org.com (sig-9-145-190-81.de.ibm.com [9.145.190.81])
+	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id
+	4FDE022019C; Mon, 21 Jan 2019 16:49:32 +0100 (CET)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Date: Mon, 21 Jan 2019 16:49:28 +0100
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190121152218.9592-1-peter.maydell@linaro.org>
-References: <20190121152218.9592-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-devel] [PATCH v3 2/4] qom/cpu: Add cluster_index to CPUState
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-TM-AS-GCONF: 00
+x-cbid: 19012115-0008-0000-0000-000002B3F2F2
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19012115-0009-0000-0000-000022201B86
+Message-Id: <20190121154928.32065-1-clg@kaod.org>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-01-21_09:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=4 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=738 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1901210124
+Content-Transfer-Encoding: quoted-printable
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+	mx0a-001b2d01.pphosted.com id x0LFhVYS052106
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
+Subject: [Qemu-arm] [PATCH] aspeed/smc: snoop SPI transfers to fake dummy
+ cycles
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SBaVHwtPYdh2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 78TlUrMurT6Y
 
-For TCG we want to distinguish which cluster a CPU is in, and
-we need to do it quickly. Cache the cluster index in the CPUState
-struct, by having the cluster object set cpu->cluster_index for
-each CPU child when it is realized.
+The m25p80 models dummy cycles using byte transfers. This works well
+when the transfers are initiated by the QEMU model of a SPI controller
+but when these are initiated by the OS, it breaks emulation.
 
-This means that board/SoC code must add all CPUs to the cluster
-before realizing the cluster object. Regrettably QOM provides no
-way to prevent adding children to a realized object and no way for
-the parent to be notified when a new child is added to it, so
-we don't have any way to enforce/assert this constraint; all
-we can do is document it in a comment. We can at least put in a
-check that the cluster contains at least one CPU, which should
-catch the typical cases of "realized cluster too early" or
-"forgot to parent the CPUs into it".
+Snoop the SPI transfer to catch commands requiring dummy cycles and
+replace them with byte transfers compatible with the m25p80 model.
 
-The restriction on how many clusters can exist in the system
-is imposed by TCG code which will be added in a subsequent commit,
-but the check to enforce it in cluster.c fits better in this one.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
-Changes v2->v3:
- * allow CPU objects to be indirect children of the cluster;
-   this is useful for ARMv7M, where the CPU object is a child
-   of the armv7m container and the board code that sets up
-   the cluster object only has the armv7m container object:
-   this is done by using object_child_foreach_recursive()
-   rather than an open-coded child iteration
- * add an assertion that the cluster has at least one CPU,
-   which catches the easiest-to-make errors when creating
-   and populating the cluster
----
- include/hw/cpu/cluster.h | 24 +++++++++++++++++++++
- include/qom/cpu.h        |  7 ++++++
- hw/cpu/cluster.c         | 46 ++++++++++++++++++++++++++++++++++++++++
- qom/cpu.c                |  1 +
- 4 files changed, 78 insertions(+)
 
-diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
-index 73818232437..549c2d31d43 100644
---- a/include/hw/cpu/cluster.h
-+++ b/include/hw/cpu/cluster.h
-@@ -34,12 +34,36 @@
-  * Arm big.LITTLE system) they should be in different clusters. If the CPUs do
-  * not have the same view of memory (for example the main CPU and a management
-  * controller processor) they should be in different clusters.
-+ *
-+ * A cluster is created by creating an object of TYPE_CPU_CLUSTER, and then
-+ * adding the CPUs to it as QOM child objects (e.g. using the
-+ * object_initialize_child() or object_property_add_child() functions).
-+ * The CPUs may be either direct children of the cluster object, or indirect
-+ * children (e.g. children of children of the cluster object).
-+ *
-+ * All CPUs must be added as children before the cluster is realized.
-+ * (Regrettably QOM provides no way to prevent adding children to a realized
-+ * object and no way for the parent to be notified when a new child is added
-+ * to it, so this restriction is not checked for, but the system will not
-+ * behave correctly if it is not adhered to. The cluster will assert that
-+ * it contains at least one CPU, which should catch most inadvertent
-+ * violations of this constraint.)
-+ *
-+ * A CPU which is not put into any cluster will be considered implicitly
-+ * to be in a cluster with all the other "loose" CPUs, so all CPUs that are
-+ * not assigned to clusters must be identical.
-  */
- 
- #define TYPE_CPU_CLUSTER "cpu-cluster"
- #define CPU_CLUSTER(obj) \
-     OBJECT_CHECK(CPUClusterState, (obj), TYPE_CPU_CLUSTER)
- 
-+/*
-+ * This limit is imposed by TCG, which puts the cluster ID into an
-+ * 8 bit field (and uses all-1s for the default "not in any cluster").
-+ */
-+#define MAX_CLUSTERS 255
+ I have had few hacks to work around this problem, Andrew also, but I
+ think that the model for the Xilinx Zynq SPI controller has an
+ elegant solution.
+
+ Tested with on different Linux kernels (OpenBMC, 5.0.0-rcX) and
+ different Linux drivers doing fast read SPI transfers in User
+ mode. It would be good to give the patch a try on other proprietary
+ Firmwares using the USER command mode to access the flash.
+
+ include/hw/ssi/aspeed_smc.h |   3 +
+ hw/ssi/aspeed_smc.c         | 115 +++++++++++++++++++++++++++++++++++-
+ 2 files changed, 115 insertions(+), 3 deletions(-)
+
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index b8b2dfbec280..f3909440d53c 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -104,6 +104,9 @@ typedef struct AspeedSMCState {
+     AddressSpace dma_as;
+=20
+     AspeedSMCFlash *flashes;
 +
- /**
-  * CPUClusterState:
-  * @cluster_id: The cluster ID. This value is for internal use only and should
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 16bbed1ae09..4c2feb9c17b 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -280,6 +280,11 @@ struct qemu_work_item;
- /**
-  * CPUState:
-  * @cpu_index: CPU index (informative).
-+ * @cluster_index: Identifies which cluster this CPU is in.
-+ *   For boards which don't define clusters or for "loose" CPUs not assigned
-+ *   to a cluster this will be UNASSIGNED_CLUSTER_INDEX; otherwise it will
-+ *   be the same as the cluster-id property of the CPU object's TYPE_CPU_CLUSTER
-+ *   QOM parent.
-  * @nr_cores: Number of cores within this CPU package.
-  * @nr_threads: Number of threads within this CPU.
-  * @running: #true if CPU is currently running (lockless).
-@@ -405,6 +410,7 @@ struct CPUState {
- 
-     /* TODO Move common fields from CPUArchState here. */
-     int cpu_index;
-+    int cluster_index;
-     uint32_t halted;
-     uint32_t can_do_io;
-     int32_t exception_index;
-@@ -1111,5 +1117,6 @@ extern const struct VMStateDescription vmstate_cpu_common;
- #endif /* NEED_CPU_H */
- 
- #define UNASSIGNED_CPU_INDEX -1
-+#define UNASSIGNED_CLUSTER_INDEX -1
- 
- #endif
-diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-index 9d50a235d5c..25f90702b16 100644
---- a/hw/cpu/cluster.c
-+++ b/hw/cpu/cluster.c
-@@ -20,19 +20,65 @@
- 
- #include "qemu/osdep.h"
- #include "hw/cpu/cluster.h"
-+#include "qom/cpu.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-+#include "qemu/cutils.h"
- 
- static Property cpu_cluster_properties[] = {
-     DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-+typedef struct CallbackData {
-+    CPUClusterState *cluster;
-+    int cpu_count;
-+} CallbackData;
++    uint8_t snoop_index;
++    uint8_t snoop_dummies;
+ } AspeedSMCState;
+=20
+ #endif /* ASPEED_SMC_H */
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 0dc22e44cfd4..69683aca61b7 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -166,6 +166,9 @@
+ /* Flash opcodes. */
+ #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
+=20
++#define SNOOP_OFF         0xFF
++#define SNOOP_START       0x0
 +
-+static int add_cpu_to_cluster(Object *obj, void *opaque)
-+{
-+    CallbackData *cbdata = opaque;
-+    CPUState *cpu = (CPUState *)object_dynamic_cast(obj, TYPE_CPU);
-+
-+    if (cpu) {
-+        cpu->cluster_index = cbdata->cluster->cluster_id;
-+        cbdata->cpu_count++;
-+    }
-+    return 0;
-+}
-+
-+static void cpu_cluster_realize(DeviceState *dev, Error **errp)
-+{
-+    /* Iterate through all our CPU children and set their cluster_index */
-+    CPUClusterState *cluster = CPU_CLUSTER(dev);
-+    Object *cluster_obj = OBJECT(dev);
-+    CallbackData cbdata = {
-+        .cluster = cluster,
-+        .cpu_count = 0,
-+    };
-+
-+    if (cluster->cluster_id >= MAX_CLUSTERS) {
-+        error_setg(errp, "cluster-id must be less than %d", MAX_CLUSTERS);
-+        return;
-+    }
-+
-+    object_child_foreach_recursive(cluster_obj, add_cpu_to_cluster, &cbdata);
-+
-+    /*
-+     * A cluster with no CPUs is a bug in the board/SoC code that created it;
-+     * if you hit this during development of new code, check that you have
-+     * created the CPUs and parented them into the cluster object before
-+     * realizing the cluster object.
-+     */
-+    assert(cbdata.cpu_count > 0);
-+}
-+
- static void cpu_cluster_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->props = cpu_cluster_properties;
-+    dc->realize = cpu_cluster_realize;
+ /*
+  * Default segments mapping addresses and size for each slave per
+  * controller. These can be changed when board is initialized with the
+@@ -587,6 +590,101 @@ static uint64_t aspeed_smc_flash_read(void *opaque,=
+ hwaddr addr, unsigned size)
+     return ret;
  }
- 
- static const TypeInfo cpu_cluster_type_info = {
-diff --git a/qom/cpu.c b/qom/cpu.c
-index 5442a7323be..f5579b1cd50 100644
---- a/qom/cpu.c
-+++ b/qom/cpu.c
-@@ -364,6 +364,7 @@ static void cpu_common_initfn(Object *obj)
-     CPUClass *cc = CPU_GET_CLASS(obj);
- 
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-+    cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
-     cpu->gdb_num_regs = cpu->gdb_num_g_regs = cc->gdb_num_core_regs;
-     /* *-user doesn't have configurable SMP topology */
-     /* the default value is changed by qemu_init_vcpu() for softmmu */
--- 
+=20
++/*
++ * TODO (clg@kaod.org): stolen from xilinx_spips.c. Should move to a
++ * common include header.
++ */
++typedef enum {
++    READ =3D 0x3,         READ_4 =3D 0x13,
++    FAST_READ =3D 0xb,    FAST_READ_4 =3D 0x0c,
++    DOR =3D 0x3b,         DOR_4 =3D 0x3c,
++    QOR =3D 0x6b,         QOR_4 =3D 0x6c,
++    DIOR =3D 0xbb,        DIOR_4 =3D 0xbc,
++    QIOR =3D 0xeb,        QIOR_4 =3D 0xec,
++
++    PP =3D 0x2,           PP_4 =3D 0x12,
++    DPP =3D 0xa2,
++    QPP =3D 0x32,         QPP_4 =3D 0x34,
++} FlashCMD;
++
++static int aspeed_smc_num_dummies(uint8_t command)
++{
++    switch (command) { /* check for dummies */
++    case READ: /* no dummy bytes/cycles */
++    case PP:
++    case DPP:
++    case QPP:
++    case READ_4:
++    case PP_4:
++    case QPP_4:
++        return 0;
++    case FAST_READ:
++    case DOR:
++    case QOR:
++    case DOR_4:
++    case QOR_4:
++        return 1;
++    case DIOR:
++    case FAST_READ_4:
++    case DIOR_4:
++        return 2;
++    case QIOR:
++    case QIOR_4:
++        return 4;
++    default:
++        return -1;
++    }
++}
++
++static bool aspeed_smc_do_snoop(AspeedSMCFlash *fl,  uint64_t data,
++                                unsigned size)
++{
++    AspeedSMCState *s =3D fl->controller;
++    uint8_t addr_width =3D aspeed_smc_flash_is_4byte(fl) ? 4 : 3;
++
++    if (s->snoop_index =3D=3D SNOOP_OFF) {
++        return false; /* Do nothing */
++
++    } else if (s->snoop_index =3D=3D SNOOP_START) {
++        uint8_t cmd =3D data & 0xff;
++        int ndummies =3D aspeed_smc_num_dummies(cmd);
++
++        /*
++         * No dummy cycles are expected with the current command. Turn
++         * off snooping and let the transfer proceed normally.
++         */
++        if (ndummies <=3D 0) {
++            s->snoop_index =3D SNOOP_OFF;
++            return false;
++        }
++
++        s->snoop_dummies =3D ndummies * 8;
++
++    } else if (s->snoop_index >=3D addr_width + 1) {
++
++        /* The SPI transfer has reached the dummy cycles sequence */
++        for (; s->snoop_dummies; s->snoop_dummies--) {
++            ssi_transfer(s->spi, s->regs[R_DUMMY_DATA] & 0xff);
++        }
++
++        /* If no more dummy cycles are expected, turn off snooping */
++        if (!s->snoop_dummies) {
++            s->snoop_index =3D SNOOP_OFF;
++        } else {
++            s->snoop_index +=3D size;
++        }
++
++        /*
++         * Dummy cycles have been faked already. Ignore the current
++         * SPI transfer
++         */
++        return true;
++    }
++
++    s->snoop_index +=3D size;
++    return false;
++}
++
+ static void aspeed_smc_flash_write(void *opaque, hwaddr addr, uint64_t d=
+ata,
+                                    unsigned size)
+ {
+@@ -602,6 +700,10 @@ static void aspeed_smc_flash_write(void *opaque, hwa=
+ddr addr, uint64_t data,
+=20
+     switch (aspeed_smc_flash_mode(fl)) {
+     case CTRL_USERMODE:
++        if (aspeed_smc_do_snoop(fl, data, size)) {
++            break;
++        }
++
+         for (i =3D 0; i < size; i++) {
+             ssi_transfer(s->spi, (data >> (8 * i)) & 0xff);
+         }
+@@ -634,7 +736,9 @@ static const MemoryRegionOps aspeed_smc_flash_ops =3D=
+ {
+=20
+ static void aspeed_smc_flash_update_cs(AspeedSMCFlash *fl)
+ {
+-    const AspeedSMCState *s =3D fl->controller;
++    AspeedSMCState *s =3D fl->controller;
++
++    s->snoop_index =3D aspeed_smc_is_ce_stop_active(fl) ? SNOOP_OFF : SN=
+OOP_START;
+=20
+     qemu_set_irq(s->cs_lines[fl->id], aspeed_smc_is_ce_stop_active(fl));
+ }
+@@ -670,6 +774,9 @@ static void aspeed_smc_reset(DeviceState *d)
+     if (s->ctrl->segments =3D=3D aspeed_segments_fmc) {
+         s->regs[s->r_conf] |=3D (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0=
+);
+     }
++
++    s->snoop_index =3D SNOOP_OFF;
++    s->snoop_dummies =3D 0;
+ }
+=20
+ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int =
+size)
+@@ -1100,10 +1207,12 @@ static void aspeed_smc_realize(DeviceState *dev, =
+Error **errp)
+=20
+ static const VMStateDescription vmstate_aspeed_smc =3D {
+     .name =3D "aspeed.smc",
+-    .version_id =3D 1,
+-    .minimum_version_id =3D 1,
++    .version_id =3D 2,
++    .minimum_version_id =3D 2,
+     .fields =3D (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
++        VMSTATE_UINT8(snoop_index, AspeedSMCState),
++        VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+--=20
 2.20.1
 

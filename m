@@ -1,90 +1,199 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id e8-v6sm4243641wrw.75.2018.11.08.08.33.31
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Nov 2018 08:33:32 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 59D063E059D;
-	Thu,  8 Nov 2018 16:33:30 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 6/6] arm: fix aa64_generate_debug_exceptions to work with EL2
-Date: Thu,  8 Nov 2018 16:33:29 +0000
-Message-Id: <20181108163329.19940-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20181108163329.19940-1-alex.bennee@linaro.org>
-References: <20181108163329.19940-1-alex.bennee@linaro.org>
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6177119wrt;
+        Mon, 21 Jan 2019 07:24:38 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN757uu5KEuKHe0m1YYGaNDzLScHQxZa0+TR+EY2U4UMjbSbEU/dGbqN9GLkkMl+k4QFG3uS
+X-Received: by 2002:adf:a1d2:: with SMTP id v18mr27214204wrv.87.1548084278852;
+        Mon, 21 Jan 2019 07:24:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548084278; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KNw1XXRix4zXrMeTYyTWRRVcfwF97b60Fk3g03SjnmG5RlVTEKApsqCJnBUbYJNCwh
+         HNJsSDzVhG3kk5hiZyNS1Tk2YJGTb9nETRSFjKlVFi35P8Rkuh9OwvlRwDi851iwjixq
+         UQ3wtUhnS7ZrLwdQalha5x2CVpMDKMZpT5x61ySwUBrKNG6XvCPSCjHHUoq5aOECDniW
+         +26cFPFWtnpngkFoDoUoValsB6RgnUsrNR5PnQ738cwoB/VblM3sFYEzZFDrP9EeBdW5
+         qK6pZe5mZz69Qo/tiuC7/DNpQEbV6FXbxCVZX+Hrg4oO+Th4OtV7m0H/pTaDORV1MsCY
+         j5Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=dhk3Zq9opGnAhyvLiJeHk55/147P47tsFD5cqMO13d8=;
+        b=WUyWAOUcSrTd4oAwDnf/Y5EYIAYQd1PprWmIKEaIAT4UyVVu2Tc/tdjW8MIpmg4k+1
+         8LIV091PlTYkX98VBGPnyt7nDMu70S+MQ+ReWF7/zygdK9ON0Jpug8RqD/37/E12KZVj
+         TWBKhSKFsBleJthd5lDvRn5sUmT24+lfwgdOrz3XrwvSN61BMXOAd0CQkRl6nf+QNq81
+         uHQ/O/M292h9Rw28wyQTQN13LbyLR4pcESZnQ6KGxPCBHa468z/7tIMvP/OEFJDIKvpO
+         qWWvnw2TDLDI+gGuCZJRw0HDo1TrL2QkmEPtMFUsnF5SU/Q5VceI1qyY5lZW9xRNxwtV
+         0x/w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K7+FLLDP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j17si64392533wri.283.2019.01.21.07.24.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 21 Jan 2019 07:24:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=K7+FLLDP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:55174 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1glbRF-0000dm-T4
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 10:24:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44518)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1glbPK-00080I-UZ
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:39 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1glbPH-0003uh-1P
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:37 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:32768)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1glbPD-0003rd-QN
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 10:22:33 -0500
+Received: by mail-wm1-x343.google.com with SMTP id r24so6401484wmh.0
+	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 07:22:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=dhk3Zq9opGnAhyvLiJeHk55/147P47tsFD5cqMO13d8=;
+	b=K7+FLLDPLAxC0VDE6tMo41Aa3M6C0B7zOo4ffLGlZcFAYtf1qdX+KU3HcB9IBFU0iy
+	+tibzap5rv1Sqh0DxlF3+uJNlyoTYHIpEgO3BO/tpMFScVrIAwNdfLzImUXk/gFT6Y/s
+	aOt1CquEURvucu3thODoLJieoCuXM+813skGc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=dhk3Zq9opGnAhyvLiJeHk55/147P47tsFD5cqMO13d8=;
+	b=HkbEDMFD0u+fLmD4WuwrrpsDYzCVHjkj8wacNv0JGiZeLP8exS2V44oBkmhvNDv7Jk
+	Ypc9rxTQLCSVTuC3ivBcQILHvb8WU16bOzfEqdvp9RGbOUhRYMxnMdFLCh3VSNvyxt23
+	O4lGDm6321Ix8GmWcXG0UR51yk+Z+b2YamHhYW3iyx/PwnL49rhec/Ye8zBOxoD1b0RW
+	owXBkOxtudd2OBOpqPmlN7MbZo9o7Fa5oGTxY9ib827i45vsEmP+hmBTtkAq08uSCvXf
+	IBQEH31KcWhxG/U2TzSV3mNUd7D55LHjOGziALvo6sCxmwpNBYRSuucHNeIwSXYH56da
+	V7cQ==
+X-Gm-Message-State: AJcUukd++pMkCF056SlOPvtU/XzQY1i4eHLXo+DmqMLiweiyHQ70osFc
+	SS0Sk6guinfMk+NfNpt61vGbHw==
+X-Received: by 2002:a1c:bdc5:: with SMTP id n188mr26632670wmf.69.1548084146172;
+	Mon, 21 Jan 2019 07:22:26 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	o16sm128900134wrn.11.2019.01.21.07.22.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 21 Jan 2019 07:22:25 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 21 Jan 2019 15:22:17 +0000
+Message-Id: <20190121152218.9592-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190121152218.9592-1-peter.maydell@linaro.org>
+References: <20190121152218.9592-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OVfLfcNNiMxW
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::343
+Subject: [Qemu-devel] [PATCH v3 3/4] accel/tcg: Add cluster number to TCG TB
+ hash
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"Emilio G . Cota" <cota@braap.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1CBTrVgJu1wG
 
-The test was incomplete and incorrectly caused debug exceptions to be
-generated when returning to EL2 after a failed attempt to single-step
-an EL1 instruction. Fix this while cleaning up the function a little.
+Include the cluster number in the hash we use to look
+up TBs. This is important because a TB that is valid
+for one cluster at a given physical address and set
+of CPU flags is not necessarily valid for another:
+the two clusters may have different views of physical
+memory, or may have different CPU features (eg FPU
+present or absent).
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+We put the cluster number in the high 8 bits of the
+TB cflags. This gives us up to 256 clusters, which should
+be enough for anybody. If we ever need more, or need
+more bits in cflags for other purposes, we could make
+tb_hash_func() take more data (and expand qemu_xxhash7()
+to qemu_xxhash8()).
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h | 27 +++++++++++++++++----------
- 1 file changed, 17 insertions(+), 10 deletions(-)
+v1->v2: move the setting of the cluster index in
+cf_mask in tb_htable_lookup() up to before we
+set desc.cf_mask from it...
+---
+ include/exec/exec-all.h   | 4 +++-
+ accel/tcg/cpu-exec.c      | 3 +++
+ accel/tcg/translate-all.c | 3 +++
+ 3 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1efff21a18..a6d8eb14f6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2764,23 +2764,33 @@ static inline bool arm_v7m_csselr_razwi(ARMCPU *cpu)
-     return (cpu->clidr & R_V7M_CLIDR_CTYPE_ALL_MASK) != 0;
- }
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 815e5b1e838..aa7b81aaf01 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -351,9 +351,11 @@ struct TranslationBlock {
+ #define CF_USE_ICOUNT  0x00020000
+ #define CF_INVALID     0x00040000 /* TB is stale. Set with @jmp_lock held */
+ #define CF_PARALLEL    0x00080000 /* Generate code for a parallel context */
++#define CF_CLUSTER_MASK 0xff000000 /* Top 8 bits are cluster ID */
++#define CF_CLUSTER_SHIFT 24
+ /* cflags' mask for hashing/comparison */
+ #define CF_HASH_MASK   \
+-    (CF_COUNT_MASK | CF_LAST_IO | CF_USE_ICOUNT | CF_PARALLEL)
++    (CF_COUNT_MASK | CF_LAST_IO | CF_USE_ICOUNT | CF_PARALLEL | CF_CLUSTER_MASK)
  
-+/* See AArch64.GenerateDebugExceptionsFrom() in ARM ARM pseudocode */
- static inline bool aa64_generate_debug_exceptions(CPUARMState *env)
- {
-+    int cur_el = arm_current_el(env);
-+    int debug_el;
+     /* Per-vCPU dynamic tracing state used to generate this TB */
+     uint32_t trace_vcpu_dstate;
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 870027d4359..6c4a33262f5 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -325,6 +325,9 @@ TranslationBlock *tb_htable_lookup(CPUState *cpu, target_ulong pc,
+     struct tb_desc desc;
+     uint32_t h;
+ 
++    cf_mask &= ~CF_CLUSTER_MASK;
++    cf_mask |= cpu->cluster_index << CF_CLUSTER_SHIFT;
 +
-     if (arm_is_secure(env)) {
-         /* MDCR_EL3.SDD disables debug events from Secure state */
-         if (extract32(env->cp15.mdcr_el3, 16, 1) != 0
--            || arm_current_el(env) == 3) {
-+            || cur_el == 3) {
-             return false;
-         }
+     desc.env = (CPUArchState *)cpu->env_ptr;
+     desc.cs_base = cs_base;
+     desc.flags = flags;
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 8cb8c8870e6..7364e8a071f 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -1688,6 +1688,9 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+         cflags |= CF_NOCACHE | 1;
      }
  
--    if (arm_current_el(env) == arm_debug_target_el(env)) {
--        if ((extract32(env->cp15.mdscr_el1, 13, 1) == 0)
--            || (env->daif & PSTATE_D)) {
--            return false;
--        }
-+    /*
-+     * Same EL to same EL debug exceptions need MDSCR_KDE enabled
-+     * while not masking the (D)ebug bit in DAIF.
-+     */
-+    debug_el = arm_debug_target_el(env);
++    cflags &= ~CF_CLUSTER_MASK;
++    cflags |= cpu->cluster_index << CF_CLUSTER_SHIFT;
 +
-+    if (cur_el == debug_el) {
-+        return extract32(env->cp15.mdscr_el1, 13, 1)
-+            && !(env->daif & PSTATE_D);
-     }
--    return true;
-+
-+    /* Otherwise the debug target needs to be a higher EL */
-+    return debug_el > cur_el;
- }
- 
- static inline bool aa32_generate_debug_exceptions(CPUARMState *env)
-@@ -2833,9 +2843,6 @@ static inline bool aa32_generate_debug_exceptions(CPUARMState *env)
-  * since the pseudocode has it at all callsites except for the one in
-  * CheckSoftwareStep(), where it is elided because both branches would
-  * always return the same value.
-- *
-- * Parts of the pseudocode relating to EL2 and EL3 are omitted because we
-- * don't yet implement those exception levels or their associated trap bits.
-  */
- static inline bool arm_generate_debug_exceptions(CPUARMState *env)
- {
+  buffer_overflow:
+     tb = tb_alloc(pc);
+     if (unlikely(!tb)) {
 -- 
-2.17.1
+2.20.1
+

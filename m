@@ -1,94 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6403487wrt;
-        Mon, 21 Jan 2019 11:23:16 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN40xlvRA/G2su8P0hEx7ua3ssO1c5w7BUUeE2eko0kIuVxKjlQfSIhAOpSqvkN9d6vVYGUn
-X-Received: by 2002:adf:9bda:: with SMTP id e26mr2059003wrc.295.1548098595987;
-        Mon, 21 Jan 2019 11:23:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548098595; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6404822wrt;
+        Mon, 21 Jan 2019 11:25:00 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5BQDbz5WxY/fuX0lcFMXhyq3ZyQLTgY7ZdUQA66tU3t8UBbo/4zeTfwhcaPFvFFJvdkRNm
+X-Received: by 2002:a1c:99ce:: with SMTP id b197mr652591wme.75.1548098700903;
+        Mon, 21 Jan 2019 11:25:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548098700; cv=none;
         d=google.com; s=arc-20160816;
-        b=dXhWdyNQtbZPhMhuvVr8hc6gvAmI8vPXsYbnhm+IMn2z6Mu3E3NVAau0KspiRk7i8d
-         /cpyqKrOINMheWq7S6f2M8BoPAa5O4+JuhpZcI9TuWNVfSaUp5BbNkmD1IqOH8cX2vvD
-         +YoNcVBiIBpTwIkGD9UyD0HDkW7//PZBhiqHAwXFQHlscB7VleQkYcoIloNJaVEvT8Ur
-         JkwiVL6d3W2yW0j4MLUTUluET8CGajFwQAM6T2skYhgyb6zgLIsZgawClFNy/ucV36QC
-         TLVy0hgauQvvGnUvYTodNNUiQrzLOYh2LJrogy2hIOLBP/MwPkVO1HEi6aFyBUAiP0UR
-         bX0Q==
+        b=yh0FYijxSl6odrQCO3L34vXfqdq5GxE3gXp8zujkKFY2fFtF7REld8QPHHtwPQa4Mq
+         JXC6DlvqV8BXRgt/HyN5rqaeD2V2trq1tgXS71G1FIhrhsLRcF5uuh0VwfzYUiZ3Zr3y
+         TbMyKY14Z9Cgr3X62SB5WYJSWXtqdoSYECXw03emN3xGm7zT2Hao+DN453rsugitibRl
+         qJiATtX6WIHj+RwJZCsc4Af3VbSfGaOVonUSW3/6t2kCx22BdtAYbunzy7Mx/eWWBgt3
+         DQbJO0YNr8VXlITsamJdiBMiGUuQlT65Bd7d+QWnNQSSpxCeBFLSEYAGU2IIAp6s0W5S
+         ZchA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=NyOzJo6HdhqirSo4FTNN+HWWChIIYH9S1hj1nxz1Els=;
-        b=bLutCEerL1EEVP1gDKdQaFFyiYlMg/dApZhmq3BSi/mfdwMg80ptqCfT4y5bd7LtGM
-         gT5TeuRSt1e2+uPo6yF5XNc9wKdVbnHtdbQ9LwQQ+y+RJmNdiToUdCNRrGsSzq+IZp2i
-         ozcm0oNvhc3EqaQXpa2aEV9xSTlAukdXOSpiranf1e3iq2j9P6ppGX4Xo+G88JScD2Qf
-         9Cae74jtktuk9zqmHg6YL+7fa/4psi7S5qBxRBAiU6PL3aSHVZy2c6XQbYtINGBwLpwV
-         D3LKgEh53yjI8sEe1/WL7mPlS1CyY3E/VKK0l3iZJYjSpO/iX1U4/V1BxX02yiUyBLMm
-         hhhA==
+        bh=ZtglysStG0tXIkc7Lj+My+7b7XqiO1d9EdiWVYmU19M=;
+        b=WbLBs5T6O0X9dfgm7sIT6dC1QuEg7Vt+A3nB3QXrJaeh5pp+l5DdNxvS1seJ6GNFV7
+         RmiT2SIqxrdU+I9OzCAHQr5wsZgh3+44PbF673f4EeByIAF5YCd7REeU+MxW4JeKbca8
+         cNJsUEuyUtp0DOXwCrFHXWBdWy/lhZAz41Veun5DnwdnjMJuyLk5DvKiDVYdxXWpZ/k5
+         JWVZzg+7njxprauC0I2lssWrYjo6wRzNjyL53aZI39dY0/lzCUiVrlTbdN+qDny9qXd2
+         jKd8TXQKEbT858KkjzgZIWlntGO6ESQ+mMXwhgD2hQDmSG1ayhGGc1WVDKvEtqywit0K
+         cPCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=emaPeNzZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZMdYJmqz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b128si31847994wmd.141.2019.01.21.11.23.15
+        by mx.google.com with ESMTPS id z16si65201075wrm.377.2019.01.21.11.25.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 11:23:15 -0800 (PST)
+        Mon, 21 Jan 2019 11:25:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=emaPeNzZ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZMdYJmqz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:58561 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58575 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glfAA-00039L-Rk
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:23:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39509)
+	id 1glfBs-0004GZ-0B
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:25:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glevU-0008OH-10
+	(envelope-from <peter.maydell@linaro.org>) id 1glevU-000854-Ey
 	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 14:08:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefe-0002sL-M6
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:44 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42972)
+	(envelope-from <peter.maydell@linaro.org>) id 1glefa-0002qR-Mm
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:40 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:56109)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glefe-0002d3-Eo
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:42 -0500
-Received: by mail-wr1-x442.google.com with SMTP id q18so24571077wrx.9
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:30 -0800 (PST)
+	id 1glefY-0002eg-Uh
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:37 -0500
+Received: by mail-wm1-x342.google.com with SMTP id y139so11755175wmc.5
+	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=NyOzJo6HdhqirSo4FTNN+HWWChIIYH9S1hj1nxz1Els=;
-	b=emaPeNzZfiytvchph1Vs4rV0jasLnMCz6Otco+zPhu8DUgwpls2bYG/kT3lx72wYme
-	O3sceL8DhdZAM5NH4XLjCOAzNE6POmWlzSNyINL7L8hYBzSt3bIFFoV16Tiiv+pfVKOx
-	76I+JzpWLzw0yZKrlK29K4t/N9E7OeyKAqr0g=
+	bh=ZtglysStG0tXIkc7Lj+My+7b7XqiO1d9EdiWVYmU19M=;
+	b=ZMdYJmqzA5/BcWiQm8dp6Y66h5RsB/6WGQZ6Uk6pgVk1JEReUlPo7fupO4z0o2YNxA
+	Ie7svBsqsr5CU2IvQ2/w8aV80Eymgqel6wyFcc2nyhwbklU79jDpfUXeuu6nrn+hRd21
+	BOyNKJIjrV8gfpfmEJgJeGL4OuQPaPmti0yCk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=NyOzJo6HdhqirSo4FTNN+HWWChIIYH9S1hj1nxz1Els=;
-	b=gIk7UVYMxKv9JZaaCmNS5J7+cLygzxa5jChMOEM9jmXdHwLm2fAjwSmYvP3eDskqLR
-	whxym9NlD/cvAITptvxHBNqJVpI1Fhl6PdjMbcJE9UWLonDF7g11oZiPpC0eE6H1xQjz
-	+Bj34IwF7sbhdbseaL2EZuZFThDhwEWQes883kbfciiTvu/bW2dRfBninDqmIH4j7Yfv
-	C6iNF0BcTr661PTQ2ufd/xfaDLXq0QPYwzERx67DC0wvTYAZS37Fxw0mCfKOSf/VhMU5
-	eQo8G2scNs1hMFy2Wf4wI1gkohqX+YGi2cXiO+AgQDhkmVzmHIkPJ8Uj18eV0hAh+pM8
-	Ah2w==
-X-Gm-Message-State: AJcUukfXA3MnIi7i5lpkaZ5T8d+AwHlB0yg6cHlEILsTN8dhwS1pH+ke
-	b17JCIc9fre+jS1vaah3ZkWFITRGyAcwbA==
-X-Received: by 2002:a5d:678b:: with SMTP id v11mr31458990wru.245.1548096689601;
-	Mon, 21 Jan 2019 10:51:29 -0800 (PST)
+	bh=ZtglysStG0tXIkc7Lj+My+7b7XqiO1d9EdiWVYmU19M=;
+	b=Gc8wjQXdk7rjcVq0X4H7gu71hPoNvcYX3L+rTHxfgfXJoDqKlI/IU/EYUBcSx7k7UK
+	ASalf+mSwUXy9t6K6L6AURXq3k5TMCJD9Hl0TC0LAgHeqAa/m0tun8A4pGI1KIfo+XOy
+	tkGwW05MGz1r5fvQMQ7hrKny5+Z+V2wOqpItrBtu17/5Q7d+KAF3HU64Lq8ExCCO1lyJ
+	eHKjm5q7dDTYNVzHfeYbp4lZGMsN7CLqcCKO3xZBVr3t9QvMWbIC7q9erdUQf8U3dPCa
+	dLRfuv90FkW995ZVp1YDANMjSN2qUSz3BT7NVPDE2zbZ9mX00S5QQpjGY9qMPnMAmyva
+	SghA==
+X-Gm-Message-State: AJcUukf8Dwn1mxw9vdoHWDb8fepZ5k/ddhZ+Y8/mPiW6ZB6fj/QAZVKA
+	zCAJWvUZQnSmyQSjYv3tR9Ilkg==
+X-Received: by 2002:a7b:c44d:: with SMTP id l13mr578253wmi.144.1548096691956; 
+	Mon, 21 Jan 2019 10:51:31 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	n82sm50386660wma.42.2019.01.21.10.51.28
+	n82sm50386660wma.42.2019.01.21.10.51.30
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 10:51:29 -0800 (PST)
+	Mon, 21 Jan 2019 10:51:31 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 18:51:03 +0000
-Message-Id: <20190121185118.18550-9-peter.maydell@linaro.org>
+Date: Mon, 21 Jan 2019 18:51:05 +0000
+Message-Id: <20190121185118.18550-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
 References: <20190121185118.18550-1-peter.maydell@linaro.org>
@@ -96,9 +96,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-devel] [PATCH 08/23] hw/misc/iotkit-secctl: Support 4
- internal MPCs
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-devel] [PATCH 10/23] hw/arm/armsse: Make SRAM bank size
+ configurable
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,104 +113,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CcP2NaV0iL4u
+X-TUID: U+tuIdQACqHb
 
-The SSE-200 has 4 banks of SRAM, each with its own internal
-Memory Protection Controller. The interrupt status for these
-extra MPCs appears in the same security controller SECMPCINTSTATUS
-register as the MPC for the IoTKit's single SRAM bank. Enhance the
-iotkit-secctl device to allow 4 MPCs. (If the particular IoTKit/SSE
-variant in use does not have all 4 MPCs then the unused inputs will
-simply result in the SECMPCINTSTATUS bits being zero as required.)
+For the IoTKit the SRAM bank size is always 32K (15 bits); for the
+SSE-200 this is a configurable parameter, which defaults to 32K but
+can be changed when it is built into a particular SoC. For instance
+the Musca-B1 board sets it to 128K (17 bits).
 
-The hardcoded constant "1"s in armsse.c indicate the actual number
-of SRAM MPCs the IoTKit has, and will be replaced in the following
-commit.
+Make the bank size a QOM property. We follow the SSE-200 hardware in
+naming the parameter SRAM_ADDR_WIDTH, which specifies the number of
+address bits of a single SRAM bank.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/misc/iotkit-secctl.h | 6 +++---
- hw/arm/armsse.c                 | 6 +++---
- hw/misc/iotkit-secctl.c         | 5 +++--
- 3 files changed, 9 insertions(+), 8 deletions(-)
+ include/hw/arm/armsse.h |  1 +
+ hw/arm/armsse.c         | 18 ++++++++++++++++--
+ 2 files changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/misc/iotkit-secctl.h b/include/hw/misc/iotkit-secctl.h
-index 1a193b306f1..bcb0437be5b 100644
---- a/include/hw/misc/iotkit-secctl.h
-+++ b/include/hw/misc/iotkit-secctl.h
-@@ -40,8 +40,8 @@
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
-  *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-- * Controlling the MPC in the IoTKit:
-- *  + named GPIO input mpc_status
-+ * Controlling the (up to) 4 MPCs in the IoTKit/SSE:
-+ *  + named GPIO inputs mpc_status[0..3]
-  * Controlling each of the 16 expansion MPCs which a system using the IoTKit
-  * might provide:
-  *  + named GPIO inputs mpcexp_status[0..15]
-@@ -67,7 +67,7 @@
- #define IOTS_NUM_APB_EXP_PPC 4
- #define IOTS_NUM_AHB_EXP_PPC 4
- #define IOTS_NUM_EXP_MPC 16
--#define IOTS_NUM_MPC 1
-+#define IOTS_NUM_MPC 4
- #define IOTS_NUM_EXP_MSC 16
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 99714aa63cd..e4a05013316 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -146,6 +146,7 @@ typedef struct ARMSSE {
+     MemoryRegion *board_memory;
+     uint32_t exp_numirq;
+     uint32_t mainclk_frq;
++    uint32_t sram_addr_width;
+ } ARMSSE;
  
- typedef struct IoTKitSecCtl IoTKitSecCtl;
+ typedef struct ARMSSEInfo ARMSSEInfo;
 diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 8554be14128..074c1d3a6cf 100644
+index b639b54e0db..a2ae5d3c4b9 100644
 --- a/hw/arm/armsse.c
 +++ b/hw/arm/armsse.c
-@@ -138,7 +138,7 @@ static void armsse_init(Object *obj)
-                             sizeof(s->mpc_irq_orgate), TYPE_OR_IRQ,
-                             &error_abort, NULL);
+@@ -221,6 +221,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     DeviceState *dev_apb_ppc1;
+     DeviceState *dev_secctl;
+     DeviceState *dev_splitter;
++    uint32_t addr_width_max;
  
--    for (i = 0; i < ARRAY_SIZE(s->mpc_irq_splitter); i++) {
-+    for (i = 0; i < IOTS_NUM_EXP_MPC + 1; i++) {
-         char *name = g_strdup_printf("mpc-irq-splitter-%d", i);
-         SplitIRQ *splitter = &s->mpc_irq_splitter[i];
- 
-@@ -363,7 +363,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
- 
-     /* We must OR together lines from the MPC splitters to go to the NVIC */
-     object_property_set_int(OBJECT(&s->mpc_irq_orgate),
--                            IOTS_NUM_EXP_MPC + IOTS_NUM_MPC, "num-lines", &err);
-+                            IOTS_NUM_EXP_MPC + 1, "num-lines", &err);
-     if (err) {
-         error_propagate(errp, err);
+     if (!s->board_memory) {
+         error_setg(errp, "memory property was not set");
+@@ -232,6 +233,15 @@ static void armsse_realize(DeviceState *dev, Error **errp)
          return;
-@@ -636,7 +636,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
      }
  
-     /* Wire up the splitters for the MPC IRQs */
--    for (i = 0; i < IOTS_NUM_EXP_MPC + IOTS_NUM_MPC; i++) {
-+    for (i = 0; i < IOTS_NUM_EXP_MPC + 1; i++) {
-         SplitIRQ *splitter = &s->mpc_irq_splitter[i];
-         DeviceState *dev_splitter = DEVICE(splitter);
++    /* max SRAM_ADDR_WIDTH: 24 - log2(SRAM_NUM_BANK) */
++    assert(is_power_of_2(info->sram_banks));
++    addr_width_max = 24 - ctz32(info->sram_banks);
++    if (s->sram_addr_width < 1 || s->sram_addr_width > addr_width_max) {
++        error_setg(errp, "SRAM_ADDR_WIDTH must be between 1 and %d",
++                   addr_width_max);
++        return;
++    }
++
+     /* Handling of which devices should be available only to secure
+      * code is usually done differently for M profile than for A profile.
+      * Instead of putting some devices only into the secure address space,
+@@ -352,8 +362,10 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < info->sram_banks; i++) {
+         char *ramname = g_strdup_printf("armsse.sram%d", i);
+         SysBusDevice *sbd_mpc;
++        uint32_t sram_bank_size = 1 << s->sram_addr_width;
  
-diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-index 2222b3e147d..537601cd53f 100644
---- a/hw/misc/iotkit-secctl.c
-+++ b/hw/misc/iotkit-secctl.c
-@@ -600,7 +600,7 @@ static void iotkit_secctl_mpc_status(void *opaque, int n, int level)
- {
-     IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
- 
--    s->mpcintstatus = deposit32(s->mpcintstatus, 0, 1, !!level);
-+    s->mpcintstatus = deposit32(s->mpcintstatus, n, 1, !!level);
- }
- 
- static void iotkit_secctl_mpcexp_status(void *opaque, int n, int level)
-@@ -686,7 +686,8 @@ static void iotkit_secctl_init(Object *obj)
-     qdev_init_gpio_out_named(dev, &s->sec_resp_cfg, "sec_resp_cfg", 1);
-     qdev_init_gpio_out_named(dev, &s->nsc_cfg_irq, "nsc_cfg", 1);
- 
--    qdev_init_gpio_in_named(dev, iotkit_secctl_mpc_status, "mpc_status", 1);
-+    qdev_init_gpio_in_named(dev, iotkit_secctl_mpc_status, "mpc_status",
-+                            IOTS_NUM_MPC);
-     qdev_init_gpio_in_named(dev, iotkit_secctl_mpcexp_status,
-                             "mpcexp_status", IOTS_NUM_EXP_MPC);
+-        memory_region_init_ram(&s->sram[i], NULL, ramname, 0x00008000, &err);
++        memory_region_init_ram(&s->sram[i], NULL, ramname,
++                               sram_bank_size, &err);
+         g_free(ramname);
+         if (err) {
+             error_propagate(errp, err);
+@@ -372,7 +384,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         }
+         /* Map the upstream end of the MPC into the right place... */
+         sbd_mpc = SYS_BUS_DEVICE(&s->mpc[i]);
+-        memory_region_add_subregion(&s->container, 0x20000000 + i * 0x8000,
++        memory_region_add_subregion(&s->container,
++                                    0x20000000 + i * sram_bank_size,
+                                     sysbus_mmio_get_region(sbd_mpc, 1));
+         /* ...and its register interface */
+         memory_region_add_subregion(&s->container, 0x50083000 + i * 0x1000,
+@@ -748,6 +761,7 @@ static Property armsse_properties[] = {
+                      MemoryRegion *),
+     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
+     DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
++    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
+     DEFINE_PROP_END_OF_LIST()
+ };
  
 -- 
 2.20.1

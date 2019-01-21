@@ -1,101 +1,104 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6376916wrt;
-        Mon, 21 Jan 2019 10:52:30 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN42jFcn6Z8KxwLzAl+ZEH+1G0UVJdfssjFjTrUiKyhPxqrxareoHvwWKj1AYf+1FP25VuOG
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr28154178wrn.157.1548096750878;
-        Mon, 21 Jan 2019 10:52:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548096750; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6378081wrt;
+        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6XTe4/GoRWS0CluRCeWf2wKi6cSN3uXbajz9PsFAXtvdpV30FbSy7PDO/AipM/KWu10KzL
+X-Received: by 2002:a1c:1d8e:: with SMTP id d136mr555177wmd.98.1548096843835;
+        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548096843; cv=none;
         d=google.com; s=arc-20160816;
-        b=aUh+RJvNDaOoG2n/JZe+xS6tbIGFBEM3KZ8uITjgPgmFINHmklQ6qY8tG1dvIR2mmU
-         4mZrLHtRrUjuTvFDvpYY/NEjvaCTqS87+hNk7p5b4bKspfcWbe5Imq1+GyrnBJkSREIC
-         +U2nWMlBEd9UMQjvlgfpXZ8wzrVA/gv3mkasft0yY5Ci0IzBVSKdLJVxJv3IlWRxGWC9
-         hyAL4j8SLRmNQR/ZdwIgTvcQTu65CdA3u4c9e35YynaevuiCijpCmA80kALFqK30yWiv
-         +4aKChzqODjulkDSZtp4qkXBN74/k4/cpnDclJKxmBoq2fe4lNt1sIFAmts5XAY2CLiZ
-         I7bQ==
+        b=ikTY8aSU15p6JFMAazs5uvprlKHdV0XdUHfNjEsDBvwXupufZrvSz8p+4mQk1Vp53j
+         fSQcPdDJv+jfy5BzwvlBv1WsYLhd85Cxp2YlpERdiaMLYZrPZyiajG8V0pNr53H5glRi
+         ZDvKqbJelfTPW4Iv0f6EB/LgkAduTkRv49zRDQ0iXwjqKLD9r71J2Pb7/G3kN1QhFPAg
+         aiLe8k6zB6nNi0ibXkPDhquaRyA+1eydP7uA1NSJpSTv40f6WDBTooMSyZiGzYxApoXn
+         iKzWe0QAaQUBh9P2oRkj0OC4H6sYa+6J7clLN66rBRQTz75Qez6+v8hL2vlPOoWr0/PN
+         CwAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=I4lFl2Gd5Nw4u8renKtyvQ4Jierdvf6o0yMgc0rAeJA=;
-        b=csiH/fkHTi3XTinY0H5rYktS7vhlDJtcygaALNQ+1zTZHPKrYfSeXYbkEs2YNMP6VF
-         BG2yZRIQFqiEwrZmSxTkLKeunZKTnaj5D8dbyTiflwX7YbcHAEPAovtVTfA+WYYoivuM
-         plH16mjnXsORz7X58ssa0YPiEfrtLFK6L/Y7YLV9dIqYD9F0+CiTemzGsfkIUN4x4lHF
-         JiJbCQkAMo6LP3EfYxeFWU32RQ+7/BwiWJF9mrm3wU0aZj/BXEivPWOR/Td0DGQ/HFwY
-         8IbDdPKTCJjLL9UibpFy4NKMBl/ng34N5JKC+BqKOsHIeMRP9WDSAo7A0tkJ2ndr7EnD
-         OoIw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
+        b=LedZ+suS8CVPSEM3u0T/tZF4CiAF9KiJYiPLCHfXiE3K8NdhJ4t202HP8CnMAw68sP
+         M8hMeckEr3u2a1U9pxZZw1Aav34ns7JzMF7GJ+SacFqamJP6DBKjxublJfUIvn+0vr6t
+         8P/F5HmMUe+tYDJOnbYRhaVSrGmDoCNxfEnaknLmjYSiSlte5+e4iUre5tI2QHHqBlCG
+         A9Z7rsY8sd4wn9u3zigmrutigR3eCb+xPfVuUsjGNUXhT2TBpMWwPh+eC1ygN8Qs5mFS
+         NvS0xR0dlAbs+cK/zcebvyqWkGambt9z1yGH0WnUmA9oAYfJevjUfG6TKRrToN6I1TPA
+         LeTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JSJPZHot;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XGzQP9dE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p11si64308806wrs.447.2019.01.21.10.52.30
+        by mx.google.com with ESMTPS id 18si33359567wml.176.2019.01.21.10.54.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 10:52:30 -0800 (PST)
+        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JSJPZHot;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XGzQP9dE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:58068 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58090 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glegP-0000to-Pc
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:52:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35766)
+	id 1glehu-0002Ge-SO
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:54:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefQ-0000qs-0A
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:29 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefM-0002WU-Ej
+	(envelope-from <peter.maydell@linaro.org>) id 1glefN-0000oN-5H
 	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:27 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:36525)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1glefM-0002W6-9s
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:25 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54296)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glefL-0002UQ-TX
+	id 1glefL-0002Ue-Ut
 	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:24 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id p6so11831173wmc.1
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:21 -0800 (PST)
+Received: by mail-wm1-x343.google.com with SMTP id a62so11833785wmh.4
+	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=I4lFl2Gd5Nw4u8renKtyvQ4Jierdvf6o0yMgc0rAeJA=;
-	b=JSJPZHotC/rzT0f/GehFgGYPCgm6fmmADmg6sKbRR2Y+O407PnyT+MPkW1yhNLeGNb
-	EhT8c9ENk3SRlIdmperrylL2ASDSTncXfpIOzGrzF/MghSLQ9h8DAkmCPByCln7FmfHE
-	HW6fhztcS2q0O4VsyzweCSpw937FV6rVDgn0o=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
+	b=XGzQP9dEvABjlLxrY/+/pZ/MQQI8uNCahT7MkkBNCbeGAYlBVVnNTWqUxZqbOioDx2
+	DPrEyzLGeU+PumTbco9Pj9sbKuO+/xtnqD4ZI35xnJQw+Nw9htZ7VIfhPZ1M7mLh3Mig
+	Jhy4GdPtL7l4afGLwQnDQtaA7XBGoN8f2bVo4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=I4lFl2Gd5Nw4u8renKtyvQ4Jierdvf6o0yMgc0rAeJA=;
-	b=gkFwkkR2vb79OLy4J8jeg1vO7FoDyTjs4NaErN/F0gH7IEFazQEfxq+UN2IVagDje3
-	3GIR3GNZ5dNFyJCEeeiwiaVR2kIo13CBsSUqE9KQvAVkOVIKyxB2r23hYFG+WSRKBN6w
-	mniBzU4aJPWiqfkjLoWrdTgro321DwMZijcXTt1pIqaw2kUEa8f6PBG5Il/9I7U2DuQt
-	hXPJTKlN6LYzaBL4lSEDAZJQ9tEKr05GSX0qPQqS73RW6Ron1CVzlVHLA8y3sg0Addo3
-	9+U5gKR/afrbS87WihpA8HSKZTYsFHi2N2gqNlZfLRss0ZQpwXfBpu1MTN5RMHslazvI
-	xGqA==
-X-Gm-Message-State: AJcUukcXpIhuKe1/UxmRIb+5/5Ypyhsqlcj4sSgnUNS6mieSFJw9wIoL
-	tYTmxm/NyUbXF97GBaq/BXaBPw==
-X-Received: by 2002:a7b:c5d1:: with SMTP id n17mr549096wmk.152.1548096680548; 
-	Mon, 21 Jan 2019 10:51:20 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
+	b=mUtk5blq5vEFecdvF3/yjr0sy0b9YsEQQcVZpsdrqyc1SMtDZ1NjJqR8E4sH9KlPms
+	O5NHn3pNhJl8OFwH4C+7hFyOMQ8bSA0KHHt8eX8ySnFlWImWkO5wvumDnLwOyCDVdeIl
+	2h9hexdP0SHPgk9KUMei63U2brTEp86QQ16OU9xZE+A8HC/2VoOs3bKMzh1D+ByaU3vX
+	rWJuBJytMEptvHZ6KHaXQxcW/Tj3oaUp6wRu8yaBl4oaiYpJnbQqXgVty7dWHT1VT3Bm
+	SSOpTjUyewuLoZjc85sKB4xCe5I6iFbmHewg65cwty6jv0QdfH0FOlKddbeBl3ZnNMGO
+	sajw==
+X-Gm-Message-State: AJcUukcoDhW2oW1eFZY5B4LtIt00bYweN52qVj1cipf9UCV5CvNuE7b/
+	o39Sk7+v9BWvQgltOEFLR4NoxthjBm7IQg==
+X-Received: by 2002:a1c:5984:: with SMTP id n126mr555831wmb.62.1548096681581; 
+	Mon, 21 Jan 2019 10:51:21 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	n82sm50386660wma.42.2019.01.21.10.51.19
+	n82sm50386660wma.42.2019.01.21.10.51.20
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 10:51:19 -0800 (PST)
+	Mon, 21 Jan 2019 10:51:20 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 18:50:55 +0000
-Message-Id: <20190121185118.18550-1-peter.maydell@linaro.org>
+Date: Mon, 21 Jan 2019 18:50:56 +0000
+Message-Id: <20190121185118.18550-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
+References: <20190121185118.18550-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::32f
-Subject: [Qemu-devel] [PATCH 00/23] arm: Implement MPS2 AN521 FPGA image
+X-Received-From: 2a00:1450:4864:20::343
+Subject: [Qemu-devel] [PATCH 01/23] armv7m: Don't assume the NVIC's CPU is
+ CPU 0
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,116 +113,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BH6fC8CGnBUo
+X-TUID: hOdmD3Qg8dSY
 
-This patchset implements a model of the AN521 FPGA image for the
-MPS2 dev board. The AN521 is similar to our existing AN505 model,
-except that it is based on the SSE-200 Subsystem for Embedded
-rather than the older IoTKit. The SSE-200 is essentially an
-updated version of the IoTKit with a few extra devices and
-two Cortex-M33 CPUs. Most of the patchset is enhancing our
-IoTKit emulation to add the SSE-200 functionality.
-The SSE-200 is the part that I'm most interested in, because
-the eventual aim is a model of the Musca-B1 devboard, which
-also uses the SSE-200:
-https://developer.arm.com/products/system-design/development-boards/iot-test-chips-and-boards/musca-b-test-chip-board
-The MPS2-AN521 is a convenient stepping stone that allows us to
-test the SSE-200 parts.
+Currently the ARMv7M NVIC object's realize method assumes that the
+CPU the NVIC is attached to is CPU 0, because it thinks there can
+only ever be one CPU in the system. To allow a dual-Cortex-M33
+setup we need to remove this assumption; instead the armv7m
+wrapper object tells the NVIC its CPU, in the same way that it
+already tells the CPU what the NVIC is.
 
-Patchset structure:
- * patches 1-3 fix some armv7m limitations so we can create
-   multiple Cortex-M33s in one board with one starting powered off
- * patches 4-7 rename the IoTKit code/files to ARMSSE and refactor
-   it to have an abstract base class that will be subclassed by
-   the IoTKit and SSE-200 devices
- * patches 8-20 add the various extra/different SSE-200 features
-   (or unimplemented-device stubs for them) governed by feature
-   switches
- * patch 21 adds the SSE-200 model which sets those feature switches
- * patches 22 and 23 make the minor mps2-tz changes needed to add
-   the AN521 image
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/armv7m.c       | 6 ++++--
+ hw/intc/armv7m_nvic.c | 3 +--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-Currently unimplemented features:
- * the iotkit-sysctl device has some extra registers on SSE-200:
-   FCLK_DIV, SYSCLK_DI, CLOCK_FORCE, INITSVRTOR1, NMI_ENABLE, EWCTRL,
-   PDCM_PD_SYS_SENSE, PDCM_PD_SRAM[0123]_SENSE (these will fall into
-   the existing bad-offset logging so we can identify if a guest
-   is trying to use them)
- * the icache control, CPU local security control register bank,
-   the Message Handling Units (MHUs) and Power Policy Units (PPUs)
-   are all stubbed out
- * the crypto unit and its non-volatile memory are optional, and
-   we do not implement it
- * no CPU power control is implemented -- notably this means that there
-   is no way for the guest to ever power up CPU 1, so it will sit
-   permanently dormant. Guest images that only use CPU 0 will work fine.
-
-Before we fix the last of those we (ideally) need the "heterogenous
-CPU support" patchset to land.
-
-This image can run the Arm Trusted Firmware M built for AN521.
-
-AN521 docs:
-http://infocenter.arm.com/help/topic/com.arm.doc.dai0521c/index.html
-
-SSE-200 TRM:
-http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
-
-thanks
--- PMM
-
-Peter Maydell (23):
-  armv7m: Don't assume the NVIC's CPU is CPU 0
-  armv7m: Make cpu object a child of the armv7m container
-  armv7m: Pass through start-powered-off CPU property
-  hw/arm/iotkit: Rename IoTKit to ARMSSE
-  hw/arm/iotkit: Refactor into abstract base class and subclass
-  hw/arm/iotkit: Rename 'iotkit' local variables and functions
-  hw/arm/iotkit: Rename files to hw/arm/armsse.[ch]
-  hw/misc/iotkit-secctl: Support 4 internal MPCs
-  hw/arm/armsse: Make number of SRAM banks parameterised
-  hw/arm/armsse: Make SRAM bank size configurable
-  hw/arm/armsse: Support dual-CPU configuration
-  hw/arm/armsse: Give each CPU its own view of memory
-  hw/arm/armsse: Put each CPU in its own cluster object
-  iotkit-sysinfo: Make SYS_VERSION and SYS_CONFIG configurable
-  hw/arm/armsse: Add unimplemented-device stubs for MHUs
-  hw/arm/armsse: Add unimplemented-device stubs for PPUs
-  hw/arm/armsse: Add unimplemented-device stub for cache control
-    registers
-  hw/arm/armsse: Add unimplemented-device stub for CPU local control
-    registers
-  hw/misc/armsse-cpuid: Implement SSE-200 CPU_IDENTITY register block
-  hw/arm/armsse: Add CPU_IDENTITY block to SSE-200
-  hw/arm/armsse: Add SSE-200 model
-  hw/arm/mps2-tz: Add IRQ infrastructure to support SSE-200
-  hw/arm/mps2-tz: Add mps2-an521 model
-
- hw/arm/Makefile.objs                  |    2 +-
- hw/misc/Makefile.objs                 |    1 +
- include/hw/arm/{iotkit.h => armsse.h} |  113 ++-
- include/hw/arm/armv7m.h               |    1 +
- include/hw/misc/armsse-cpuid.h        |   41 +
- include/hw/misc/iotkit-secctl.h       |    6 +-
- include/hw/misc/iotkit-sysinfo.h      |    6 +
- hw/arm/armsse.c                       | 1241 +++++++++++++++++++++++++
- hw/arm/armv7m.c                       |   23 +-
- hw/arm/iotkit.c                       |  759 ---------------
- hw/arm/mps2-tz.c                      |  121 ++-
- hw/intc/armv7m_nvic.c                 |    3 +-
- hw/misc/armsse-cpuid.c                |  134 +++
- hw/misc/iotkit-secctl.c               |    5 +-
- hw/misc/iotkit-sysinfo.c              |   15 +-
- MAINTAINERS                           |    6 +-
- default-configs/arm-softmmu.mak       |    3 +-
- hw/misc/trace-events                  |    4 +
- 18 files changed, 1670 insertions(+), 814 deletions(-)
- rename include/hw/arm/{iotkit.h => armsse.h} (53%)
- create mode 100644 include/hw/misc/armsse-cpuid.h
- create mode 100644 hw/arm/armsse.c
- delete mode 100644 hw/arm/iotkit.c
- create mode 100644 hw/misc/armsse-cpuid.c
-
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index f4446528307..f9aa83d20ef 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -178,10 +178,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+         }
+     }
+ 
+-    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
+-     * have one.
++    /*
++     * Tell the CPU where the NVIC is; it will fail realize if it doesn't
++     * have one. Similarly, tell the NVIC where its CPU is.
+      */
+     s->cpu->env.nvic = &s->nvic;
++    s->nvic.cpu = s->cpu;
+ 
+     object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
+     if (err != NULL) {
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 0beefb05d44..790a3d95849 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -2274,8 +2274,7 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+     Error *err = NULL;
+     int regionlen;
+ 
+-    s->cpu = ARM_CPU(qemu_get_cpu(0));
+-
++    /* The armv7m container object will have set our CPU pointer */
+     if (!s->cpu || !arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
+         error_setg(errp, "The NVIC can only be used with a Cortex-M CPU");
+         return;
 -- 
 2.20.1
 

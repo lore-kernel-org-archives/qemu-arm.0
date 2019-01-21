@@ -1,174 +1,151 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6283795wrt;
-        Mon, 21 Jan 2019 09:13:29 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN47pfrHIWw14PjakaaznUKP3uXYs+LLCF0U3QcgqZIYmelQXwF0UWXoq7NCw6zYWBcBWjQ2
-X-Received: by 2002:a1c:494:: with SMTP id 142mr230162wme.111.1548090809281;
-        Mon, 21 Jan 2019 09:13:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548090809; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6372503wrt;
+        Mon, 21 Jan 2019 10:47:07 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN76NHvrC1uF4vVhfUYsgqquiL+0y7JYK34u21N6ds0BTkl9wQ/63AeRME6gPPvjUaGsbGtn
+X-Received: by 2002:a1c:c90b:: with SMTP id f11mr527424wmb.33.1548096427141;
+        Mon, 21 Jan 2019 10:47:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548096427; cv=none;
         d=google.com; s=arc-20160816;
-        b=EmQ43cteQ1X55nthc77RqD3vhCxOvtTfqq1Gcdqmm/e+i1Ooa1ie91+oxflUyZ9WE0
-         nGGdDwZwSKtFBLKyM42uFePLbdrn03V5ETVC2gU2tpZh+1EQ6WWADN/yijGxpSZyCvfk
-         RZv1m6MUPRqU9uPVVEnvlLyWFltqQwDKaISLq3d2tP/WVbrgMGh4ej4aoEasmV0WAKzs
-         RUL2qfL+Z2B+LNQv6OGyGlnCVqQuaELyyV42vTNMyv2ib7NBtDkLXCvTDCFEQfhyE2/U
-         PwgLrHW24EqDKS5lOQgWWwKFzcMo5qu7A8EqVaPxs9e6YsYd0J0/ypRPrl6X5lJqdQ1w
-         RfXg==
+        b=n/7aNgQGW16/IS/QPWHcu5innRjdO2mZTg76p0gObU5eMIxkO3olE1cN+zz0dQmm9b
+         R2ITX4NL4PU6el5nOkaviH4WuesUOg+8fhFRJWyfXfBqO4EQEwJNUAAYFT02AvkuYJ61
+         RlHFIa+vrjfHB4VBor1fbqr46U29viHxCUMW780cLtPK1oAikom4eb2k5KPxP6dnfFE7
+         cUtsF04YGPNq6N/N6Qxlk4/juOvmIYLXa6v/d1wV6Yei8qPxytDz9YBw6gVZCp93UfwN
+         TM2i843trExywtKcvzqawGmeBk8kR3qR4Qx+2822ZBnhXXPpAZRz5tQhZ4+24CrQOke4
+         iTkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=EtJt1MynqXkwlDT4368KD5DUD8yYcsNVI4t1TOPht/k=;
-        b=x0FcIBNqqOZnz0IPrRjtsgGvGd8E7Jg5Vd+rCImljlweN65I9zq1cQ29D1BwrijEfC
-         IQAwMEzyIkH6fWOpHZxGN//qxw8cINowSPGzXIDgYxwucIgxxygCv9wVpGYGgjQdRY9h
-         uk9lp5fCnVTSGUrEG6g6GkrhdlTi2UspL/LOwbp48qVdTvXrmM4QChWza09RO2syAhkH
-         JRucpr7LXdb439NN8RwZS9wwUc/zWv7J3BayQ77raHdWbHKrVV6UwmgVB5Kp9O5SOtiY
-         KpUoE9qGnHcqXAn/nD9P83vgQ43BPH9SzQUlKr9q7bIxOtSG4etLnx/Jkx0g+8DDx7Zr
-         9UuA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=WiI/ai6LBZIUIZQd++BmhxhHpLIGKWoxtvMp7jrWOAw=;
+        b=ST9Q/Y2m39efpw5D9hji2970raTulZ5r/Iib/IF1QOjVLfpIE1eYPu2bJvdQ+GVu1U
+         CXRHad8AdNZSiv+JTyL0w4qpLBtZ2H8WeOIZMSbOiU/ARM6SEeSicfuDgINPjs9Dzvu3
+         6wBQDyVK64N/VcsJnI7BM2OwVxy+4SrI+/f8Lk4Yjqa1UF5NKeeCSsF5lLHtAKz9g55u
+         Q7zaP2M5wfEoyqOiC+QJ+QrR3QUrfrzu7KxFyfxW6BFAAhDOa+oeaZIPAmQaVYKtcgih
+         l/Y+0bOvgR3gm/YmHXAy+DlAWD+uuZzoP2kYufsh+No5cUWwBXmWiJQuVxqBXb6MrWxO
+         GJJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=kBeVTm0f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si24516387wmg.69.2019.01.21.09.13.29
+        by mx.google.com with ESMTPS id h62si32643387wmf.53.2019.01.21.10.47.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 09:13:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jan 2019 10:47:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:56601 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kBeVTm0f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:57975 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gld8a-00030d-98
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 12:13:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38827)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1glebC-0005bP-4N
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:47:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gld6S-0001wk-BQ
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 12:11:17 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gleXZ-0002Rf-KX
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:43:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gld4X-0006h8-At
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 12:09:18 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45340 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gld4W-0006fP-41; Mon, 21 Jan 2019 12:09:16 -0500
-Received: from LHREML711-CAH.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id C434A426B0017C286A24;
-	Mon, 21 Jan 2019 17:09:12 +0000 (GMT)
-Received: from LHREML524-MBB.china.huawei.com ([169.254.3.138]) by
-	LHREML711-CAH.china.huawei.com ([10.201.108.34]) with mapi id
-	14.03.0415.000; Mon, 21 Jan 2019 17:09:03 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "kwangwoo.lee@sk.com" <kwangwoo.lee@sk.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>, "david@redhat.com"
-	<david@redhat.com>
-Thread-Topic: [Qemu-devel] [RFC v4 11/16] acpi: move
-	build_srat_hotpluggable_memory to generic ACPI source
-Thread-Index: AQHUZu9aRRVygOh3jESbe01H8Wl8e6W6H8wQgAA1K4CAADJ0sA==
-Date: Mon, 21 Jan 2019 17:09:02 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA839292DA4@lhreml524-mbb.china.huawei.com>
-References: <20181018143042.29588-1-eric.auger@redhat.com>
-	<20181018143042.29588-12-eric.auger@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392925E9@lhreml524-mbb.china.huawei.com>
-	<b766bfce-6d19-393e-8f36-2f9320162150@redhat.com>
-In-Reply-To: <b766bfce-6d19-393e-8f36-2f9320162150@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <peter.maydell@linaro.org>) id 1gleXX-0006dR-Az
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:43:21 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37187)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gleXX-0006ce-5S
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:43:19 -0500
+Received: by mail-wr1-x443.google.com with SMTP id s12so24605547wrt.4
+	for <qemu-arm@nongnu.org>; Mon, 21 Jan 2019 10:43:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=WiI/ai6LBZIUIZQd++BmhxhHpLIGKWoxtvMp7jrWOAw=;
+	b=kBeVTm0flg/zNKFVys1m3Gk5FbfoKckXCdrOOP/NP+9reDUXyUdOwQeKO3XCaQzxxd
+	zfZ06TM0XDXYXw8FYRAIphZS96T44gIncgHpX2qE3kzEpZKfunmbgDDdSqo01oxv76c7
+	B1v7bpfVrMwPuyp7EVleQUtJZGnSfMNfZRKW8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=WiI/ai6LBZIUIZQd++BmhxhHpLIGKWoxtvMp7jrWOAw=;
+	b=sqBvErKX2VDBOg44DNK5mPctwf3HGZiKbe9npyCUbnQau8VH3BSXL958gr+I3gk4I+
+	q34j7vWJgAd2fmlNiyDbTdi07i305gvmFU20VeWjoTRcP7ggSTxdZfldr9mHRnqpHp+5
+	QUBIQ6qe5aQQxwkaDyDEvp0scfLr1b3CYJEm7ElqQbFQ8hbAAqPUhj3l+kHt7COkNhQq
+	On+EgG8hfFMr0tHlr+5uN+gCw17R32jJwO4bpGkWZb0fUnZYne+C+dqa4qrH/s5wh/K1
+	sbbzC9Ikpr4zNvhk8hkZB7e7wNBG0FN0dx5kXuf4yySLVusk749JzMrjcm4wQXtI3uCi
+	Zhjw==
+X-Gm-Message-State: AJcUukdSQsdAX6wRxxS/AMNqCiW7yUkW4f4296Q2PK6E3tdhgYE8LGUC
+	oPzCkIFzuSKRFABLy4Wa4wBaeoym3fcrEg==
+X-Received: by 2002:adf:eb45:: with SMTP id u5mr28174324wrn.102.1548096197585; 
+	Mon, 21 Jan 2019 10:43:17 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	200sm52038603wmw.31.2019.01.21.10.43.16
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 21 Jan 2019 10:43:16 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 21 Jan 2019 18:43:14 +0000
+Message-Id: <20190121184314.14311-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-devel] [RFC v4 11/16] acpi: move
- build_srat_hotpluggable_memory to generic ACPI source
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: [Qemu-arm] [PATCH] xlnx-zynqmp: Don't create rpu-cluster if there
+ are no RPUs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "drjones@redhat.com" <drjones@redhat.com>,
-	"Suzuki.Poulose@arm.com" <Suzuki.Poulose@arm.com>,
-	Linuxarm <linuxarm@huawei.com>, "dgilbert@redhat.com" <dgilbert@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jlq717ACAH9t
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+	Luc Michel <luc.michel@greensocs.com>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 68++H4li4uWi
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBBdWdlciBF
-cmljIFttYWlsdG86ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50OiAyMSBKYW51YXJ5IDIw
-MTkgMTM6NTkNCj4gVG86IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgPHNoYW1lZXJhbGkua29s
-b3RodW0udGhvZGlAaHVhd2VpLmNvbT47DQo+IGVyaWMuYXVnZXIucHJvQGdtYWlsLmNvbTsgcWVt
-dS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFybUBub25nbnUub3JnOw0KPiBwZXRlci5tYXlkZWxs
-QGxpbmFyby5vcmc7IGt3YW5nd29vLmxlZUBzay5jb207IGltYW1tZWRvQHJlZGhhdC5jb207DQo+
-IGRhdmlkQHJlZGhhdC5jb20NCj4gQ2M6IGRyam9uZXNAcmVkaGF0LmNvbTsgTGludXhhcm0gPGxp
-bnV4YXJtQGh1YXdlaS5jb20+Ow0KPiBkZ2lsYmVydEByZWRoYXQuY29tOyBTdXp1a2kuUG91bG9z
-ZUBhcm0uY29tDQo+IFN1YmplY3Q6IFJlOiBbUWVtdS1kZXZlbF0gW1JGQyB2NCAxMS8xNl0gYWNw
-aTogbW92ZQ0KPiBidWlsZF9zcmF0X2hvdHBsdWdnYWJsZV9tZW1vcnkgdG8gZ2VuZXJpYyBBQ1BJ
-IHNvdXJjZQ0KDQpbLi4uXQ0KDQo+ID4+ICt2b2lkIGJ1aWxkX3NyYXRfaG90cGx1Z2dhYmxlX21l
-bW9yeShHQXJyYXkgKnRhYmxlX2RhdGEsIHVpbnQ2NF90IGJhc2UsDQo+ID4+ICsgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICB1aW50NjRfdCBsZW4sIGludCBkZWZhdWx0X25vZGUp
-DQo+ID4+ICt7DQo+ID4+ICsgICAgTWVtb3J5RGV2aWNlSW5mb0xpc3QgKmluZm9fbGlzdCA9IHFt
-cF9tZW1vcnlfZGV2aWNlX2xpc3QoKTsNCj4gPj4gKyAgICBNZW1vcnlEZXZpY2VJbmZvTGlzdCAq
-aW5mbzsNCj4gPj4gKyAgICBNZW1vcnlEZXZpY2VJbmZvICptaTsNCj4gPj4gKyAgICBQQ0RJTU1E
-ZXZpY2VJbmZvICpkaTsNCj4gPj4gKyAgICB1aW50NjRfdCBlbmQgPSBiYXNlICsgbGVuLCBjdXIs
-IHNpemU7DQo+ID4+ICsgICAgYm9vbCBpc19udmRpbW07DQo+ID4+ICsgICAgQWNwaVNyYXRNZW1v
-cnlBZmZpbml0eSAqbnVtYW1lbTsNCj4gPj4gKyAgICBNZW1vcnlBZmZpbml0eUZsYWdzIGZsYWdz
-Ow0KPiA+PiArDQo+ID4+ICsgICAgZm9yIChjdXIgPSBiYXNlLCBpbmZvID0gaW5mb19saXN0Ow0K
-PiA+PiArICAgICAgICAgY3VyIDwgZW5kOw0KPiA+PiArICAgICAgICAgY3VyICs9IHNpemUsIGlu
-Zm8gPSBpbmZvLT5uZXh0KSB7DQo+ID4+ICsgICAgICAgIG51bWFtZW0gPSBhY3BpX2RhdGFfcHVz
-aCh0YWJsZV9kYXRhLCBzaXplb2YgKm51bWFtZW0pOw0KPiA+PiArDQo+ID4+ICsgICAgICAgIGlm
-ICghaW5mbykgew0KPiA+PiArICAgICAgICAgICAgYnVpbGRfc3JhdF9tZW1vcnkobnVtYW1lbSwg
-Y3VyLCBlbmQgLSBjdXIsIGRlZmF1bHRfbm9kZSwNCj4gPj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIE1FTV9BRkZJTklUWV9IT1RQTFVHR0FCTEUgfA0KPiA+PiBNRU1fQUZGSU5JVFlf
-RU5BQkxFRCk7DQo+ID4+ICsgICAgICAgICAgICBicmVhazsNCj4gPj4gKyAgICAgICAgfQ0KPiA+
-PiArDQo+ID4+ICsgICAgICAgIG1pID0gaW5mby0+dmFsdWU7DQo+ID4+ICsgICAgICAgIGlzX252
-ZGltbSA9IChtaS0+dHlwZSA9PQ0KPiA+PiBNRU1PUllfREVWSUNFX0lORk9fS0lORF9OVkRJTU0p
-Ow0KPiA+PiArICAgICAgICBkaSA9ICFpc19udmRpbW0gPyBtaS0+dS5kaW1tLmRhdGEgOiBtaS0+
-dS5udmRpbW0uZGF0YTsNCj4gPj4gKw0KPiA+PiArICAgICAgICBpZiAoY3VyIDwgZGktPmFkZHIp
-IHsNCj4gPj4gKyAgICAgICAgICAgIGJ1aWxkX3NyYXRfbWVtb3J5KG51bWFtZW0sIGN1ciwgZGkt
-PmFkZHIgLSBjdXIsDQo+ID4+IGRlZmF1bHRfbm9kZSwNCj4gPj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIE1FTV9BRkZJTklUWV9IT1RQTFVHR0FCTEUgfA0KPiA+PiBNRU1fQUZGSU5J
-VFlfRU5BQkxFRCk7DQo+ID4+ICsgICAgICAgICAgICBudW1hbWVtID0gYWNwaV9kYXRhX3B1c2go
-dGFibGVfZGF0YSwgc2l6ZW9mDQo+ICpudW1hbWVtKTsNCj4gPj4gKyAgICAgICAgfQ0KPiA+PiAr
-DQo+ID4+ICsgICAgICAgIHNpemUgPSBkaS0+c2l6ZTsNCj4gPj4gKw0KPiA+PiArICAgICAgICBm
-bGFncyA9IE1FTV9BRkZJTklUWV9FTkFCTEVEOw0KPiA+PiArICAgICAgICBpZiAoZGktPmhvdHBs
-dWdnYWJsZSkgew0KPiA+PiArICAgICAgICAgICAgZmxhZ3MgfD0gTUVNX0FGRklOSVRZX0hPVFBM
-VUdHQUJMRTsNCj4gPj4gKyAgICAgICAgfQ0KPiA+PiArICAgICAgICBpZiAoaXNfbnZkaW1tKSB7
-DQo+ID4+ICsgICAgICAgICAgICBmbGFncyB8PSBNRU1fQUZGSU5JVFlfTk9OX1ZPTEFUSUxFOw0K
-PiA+PiArICAgICAgICB9DQo+ID4+ICsNCj4gPj4gKyAgICAgICAgYnVpbGRfc3JhdF9tZW1vcnko
-bnVtYW1lbSwgZGktPmFkZHIsIHNpemUsIGRpLT5ub2RlLCBmbGFncyk7DQo+ID4+ICsgICAgfQ0K
-PiA+PiArDQo+ID4+ICsgICAgcWFwaV9mcmVlX01lbW9yeURldmljZUluZm9MaXN0KGluZm9fbGlz
-dCk7DQo+ID4+ICt9DQo+ID4NCj4gPiBUaGUgYWJvdmUgbG9naWMgY2hhbmdlcyB0aGUgU1JBVCBl
-bnRyaWVzIGlmIGRpbW0gaXMgaG90LWFkZGVkIGFuZCBhIHJlYm9vdCBpcw0KPiA+IHBlcmZvcm1l
-ZCBhbmQgYXMgbWVudGlvbmVkIGFib3ZlLCBFREsyIHNlZW1zIHRvIGJlIG5vdCBoYXBweSB3aXRo
-IHRoaXMuDQo+ID4NCj4gPiBJIGhhZCBhIGxvb2sgYXQgdGhlIHBjIGNvZGUgYW5kIGl0IGxvb2tz
-IGxpa2UgaXQgb25seSBoYXMgb25lIFNSQVQgZW50cnkgZm9yIHRoZQ0KPiA+IHdob2xlIGhvdC1w
-bHVnZ2FibGUgYWRkcmVzcyBzcGFjZVsyXSB3aGljaCBwcm9iYWJsZSBtZWFucyBTUkFUIHJlbWFp
-bnMNCj4gc2FtZQ0KPiA+IGFjcm9zcyByZWJvb3QgZXZlbiBhZnRlciBtZW0gaXMgaG90IGFkZGVk
-LiBOb3Qgc3VyZSB3aHkgd2UgYXJlIGRvaW5nIHRoaXMNCj4gZGlmZmVyZW50bHkNCj4gPiBmb3Ig
-QVJNLg0KPiANCj4gSW5pdGlhbGx5IHRoaXMgY29kZSB3YXMgaW5waXJlZCBmcm9tIHg4NiBjb2Rl
-LiBUaGVuIElnb3IgZml4ZWQgaXQgb24geDg2DQo+ICB3aXRoOg0KPiBkYmI2ZGE4YmE3ZTAyMTA1
-YmRiYjMzYjUyN2UwODgyNDljOTg0M2M4ICBwYzogYWNwaTogcmV2ZXJ0IGJhY2sgdG8gMQ0KPiBT
-UkFUIGVudHJ5IGZvciBob3RwbHVnZ2FibGUgYXJlYQ0KDQpPay4gVGhhdCBleHBsYWlucyBpdC4g
-VGhhbmtzIGZvciB0aGUgaW5mby4NCg0KPiBTbyBpdCBsb29rcyB0aGUgc2FtZSBjaGFuZ2UgbXVz
-dCBiZSBkb25lIG9uIEFSTS4NCg0KT2suIA0KIA0KPiBJIGFtIGN1cnJlbnRseSBidXN5IHdpdGgg
-dGhpcyByZXNwaW4uIEFzIHN1Z2dlc3RlZCBieSBEYXZpZCBhbmQgSWdvciBJDQo+IGltcGxlbWVu
-dGVkIHRoZSBpbml0aWFsIFJBTSBhcyBkZXZpY2UgbWVtb3J5LiBJIGFtIG5vdyBsb29raW5nIGF0
-IE5VTUENCj4gaW1wYWN0cyBvZiB0aGF0IGNoYW5nZS4NCg0KU3VyZS4gTWVhbiB0aW1lIEkgd2ls
-bCBjb250aW51ZSB3aXRoIG15IHRlc3RpbmcgYW5kIHdpbGwgc2VudCBvdXQgdGhlIFJGQyBmb3Ig
-DQpob3QtYWRkIGZlYXR1cmUgb24gdG9wIG9mIHY1IG9mIHRoaXMgc2VyaWVzIHRoZW4uDQoNClRo
-YW5rcywNClNoYW1lZXIuDQo=
+If we aren't going to create any RPUs, then don't create the
+rpu-cluster unit. This allows us to add an assertion to the
+cluster object that it contains at least one CPU, which helps
+to avoid bugs in creating clusters and putting CPUs in them.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This is a preparatory patch that is necessary for the series
+"[PATCH v3 0/4] tcg: support heterogenous CPU clusters"
+(20190121152218.9592-1-peter.maydell@linaro.org)
+in order to avoid the xlnx-zcu102 board asserting if started with
+fewer than 5 CPUs.
+
+ hw/arm/xlnx-zynqmp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 370b0e44a38..16cba433cb7 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -178,6 +178,11 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+     int i;
+     int num_rpus = MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYNQMP_NUM_RPU_CPUS);
+ 
++    if (num_rpus == 0) {
++        /* Don't create rpu-cluster object if there's nothing to put in it */
++        return;
++    }
++
+     object_initialize_child(OBJECT(s), "rpu-cluster", &s->rpu_cluster,
+                             sizeof(s->rpu_cluster), TYPE_CPU_CLUSTER,
+                             &error_abort, NULL);
+-- 
+2.20.1
+

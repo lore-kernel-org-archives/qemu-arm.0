@@ -1,94 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6378081wrt;
-        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6XTe4/GoRWS0CluRCeWf2wKi6cSN3uXbajz9PsFAXtvdpV30FbSy7PDO/AipM/KWu10KzL
-X-Received: by 2002:a1c:1d8e:: with SMTP id d136mr555177wmd.98.1548096843835;
-        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548096843; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6378641wrt;
+        Mon, 21 Jan 2019 10:54:47 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN4o7HtQv1Q4OX5qM79R+xj3eLF74Fl2ONcvfodQb165uqshQOKX6JuxvjOPpW7RWi1LktSZ
+X-Received: by 2002:adf:f0c5:: with SMTP id x5mr28260495wro.77.1548096887505;
+        Mon, 21 Jan 2019 10:54:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548096887; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikTY8aSU15p6JFMAazs5uvprlKHdV0XdUHfNjEsDBvwXupufZrvSz8p+4mQk1Vp53j
-         fSQcPdDJv+jfy5BzwvlBv1WsYLhd85Cxp2YlpERdiaMLYZrPZyiajG8V0pNr53H5glRi
-         ZDvKqbJelfTPW4Iv0f6EB/LgkAduTkRv49zRDQ0iXwjqKLD9r71J2Pb7/G3kN1QhFPAg
-         aiLe8k6zB6nNi0ibXkPDhquaRyA+1eydP7uA1NSJpSTv40f6WDBTooMSyZiGzYxApoXn
-         iKzWe0QAaQUBh9P2oRkj0OC4H6sYa+6J7clLN66rBRQTz75Qez6+v8hL2vlPOoWr0/PN
-         CwAA==
+        b=g+BlUjXzPZ0n47MwL+y3K1jje18hsV6gC61WXyj3BzOl3mEu2o6XvtEkklcjgefvro
+         aRUitm2GMAjIMgUT+ngOi1MjWLC5tMS/7NJ1Jhco6tTsOA9ZYVR5CCMnkoJtJoR8wpqg
+         K6HHRP6dvPg3snfYPEBeOj8mF+fDMnXkMkHwi2RRR/iFX4fE9LwNJXG4EaZRbe6QnAKC
+         YlXuCfrw28yBcznR8yD1OaFgO1a970QS8NVzxPH3mrJgu6km3c1bS7zvEtw2/kiAs4Cq
+         po4wlC1bVGAau7ncDL0WzhtaBdXVhVSEA58eKL7W4zNgqkVB0yCfW3+nkkPmp+0DXLM+
+         W8Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
-        b=LedZ+suS8CVPSEM3u0T/tZF4CiAF9KiJYiPLCHfXiE3K8NdhJ4t202HP8CnMAw68sP
-         M8hMeckEr3u2a1U9pxZZw1Aav34ns7JzMF7GJ+SacFqamJP6DBKjxublJfUIvn+0vr6t
-         8P/F5HmMUe+tYDJOnbYRhaVSrGmDoCNxfEnaknLmjYSiSlte5+e4iUre5tI2QHHqBlCG
-         A9Z7rsY8sd4wn9u3zigmrutigR3eCb+xPfVuUsjGNUXhT2TBpMWwPh+eC1ygN8Qs5mFS
-         NvS0xR0dlAbs+cK/zcebvyqWkGambt9z1yGH0WnUmA9oAYfJevjUfG6TKRrToN6I1TPA
-         LeTw==
+        bh=WmmMPknEg5hUgKMPxj3CIX2ru0eV6+lHEZhIc4wzqM8=;
+        b=wcA/IMEQ4FRpqbNyhgKS55TFMk4MPFexuRp4PBs2mAYSgm31422aE2caT+4oekDQvE
+         kBi9jyS4jxeZ3zjP0NbT4lu2mJlso0V2FNtrzAjS6B0+zbrtor/OaawTHDW9StYAAJrO
+         qC7Xl73VrjHMEQQWR4nyTV6pzMUBubGEQeQXGWdbih35A5ztC+YNa8NfhXAJIdRhcYS3
+         c1v2YQAG4oQPY7cGDUk9Wb0XncFPCNeziqkbC8sQCeIMLcNy/ZlahXthIQsB6+gYLI8r
+         CGVbcjIuM4O60LTdwF8Uguu2CVyorhGB6ZeYWEMkhSlAQheTYCK2jFA7iQxMZ/VpNste
+         ixdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XGzQP9dE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kH4B50ds;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18si33359567wml.176.2019.01.21.10.54.03
+        by mx.google.com with ESMTPS id a5si69693389wro.126.2019.01.21.10.54.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 10:54:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jan 2019 10:54:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XGzQP9dE;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=kH4B50ds;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:58090 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58100 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glehu-0002Ge-SO
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:54:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35715)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gleic-0003br-JT
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:54:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefN-0000oN-5H
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:27 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1glefQ-0000qw-0i
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:51:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefM-0002W6-9s
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:25 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54296)
+	(envelope-from <peter.maydell@linaro.org>) id 1glefN-0002Yz-7b
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:51:27 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33432)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glefL-0002Ue-Ut
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:24 -0500
-Received: by mail-wm1-x343.google.com with SMTP id a62so11833785wmh.4
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:22 -0800 (PST)
+	id 1glefN-0002WN-1X
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:51:25 -0500
+Received: by mail-wr1-x444.google.com with SMTP id c14so24666047wrr.0
+	for <qemu-arm@nongnu.org>; Mon, 21 Jan 2019 10:51:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
-	b=XGzQP9dEvABjlLxrY/+/pZ/MQQI8uNCahT7MkkBNCbeGAYlBVVnNTWqUxZqbOioDx2
-	DPrEyzLGeU+PumTbco9Pj9sbKuO+/xtnqD4ZI35xnJQw+Nw9htZ7VIfhPZ1M7mLh3Mig
-	Jhy4GdPtL7l4afGLwQnDQtaA7XBGoN8f2bVo4=
+	bh=WmmMPknEg5hUgKMPxj3CIX2ru0eV6+lHEZhIc4wzqM8=;
+	b=kH4B50dshKqdlBEi6X0rMUGnH6egzwECFs6BSbOgtvrdRxemJY4HfY13l7SC5DYKHB
+	7OER1cxXNm7G6ztPQKqunG7Hnzaum2GCAifUl3gx/wr9h0pVFo3Z/e+uYtRevlhvoVhU
+	vn+oclbjsas45TKGbePHHNtXJbMLFnYIQNe6w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=BudMfJPXXih/S5U7jqBZwz9zkq27ugNQSCi2J5JSPGU=;
-	b=mUtk5blq5vEFecdvF3/yjr0sy0b9YsEQQcVZpsdrqyc1SMtDZ1NjJqR8E4sH9KlPms
-	O5NHn3pNhJl8OFwH4C+7hFyOMQ8bSA0KHHt8eX8ySnFlWImWkO5wvumDnLwOyCDVdeIl
-	2h9hexdP0SHPgk9KUMei63U2brTEp86QQ16OU9xZE+A8HC/2VoOs3bKMzh1D+ByaU3vX
-	rWJuBJytMEptvHZ6KHaXQxcW/Tj3oaUp6wRu8yaBl4oaiYpJnbQqXgVty7dWHT1VT3Bm
-	SSOpTjUyewuLoZjc85sKB4xCe5I6iFbmHewg65cwty6jv0QdfH0FOlKddbeBl3ZnNMGO
-	sajw==
-X-Gm-Message-State: AJcUukcoDhW2oW1eFZY5B4LtIt00bYweN52qVj1cipf9UCV5CvNuE7b/
-	o39Sk7+v9BWvQgltOEFLR4NoxthjBm7IQg==
-X-Received: by 2002:a1c:5984:: with SMTP id n126mr555831wmb.62.1548096681581; 
-	Mon, 21 Jan 2019 10:51:21 -0800 (PST)
+	bh=WmmMPknEg5hUgKMPxj3CIX2ru0eV6+lHEZhIc4wzqM8=;
+	b=jJyvvAh7fo8eDCG3ayWX89H/aY9WdU4hby9nl45zvRWg4CBLlpeUT95r+JwzdvyeIL
+	/mW9sBye4YA6fD6PHWeCzfYExtJvCJv50l9gJOE08fDz3bOvHr7X3qo/iod1vvNA7NVA
+	it4UKmZonpSN5KiMIIAXJ21Bs9xulYI6osVVpiEyAKVxTVb++XxXIqfF1N5TMn5/4lMb
+	PGEm+z32x7+CNkwMlI+OZ7+NRurxItlLJWQizdZH4Z1x/w97Czo9U1p82FU3xMG5HCbw
+	1vYWMQas+zHx3c9mhdGCY6A4geVFiyKZ0H4THSatbtz6vEOQvI0WOhjZ7sYVxcZ23Ubo
+	R0xg==
+X-Gm-Message-State: AJcUukdpDkY8Yc7yypQcfqK0wKUf+DcaS/WZGWEhi8j0jnR2CQjetjNC
+	CJmlgG9+HneYZfSsoek7IPZNtJCTWunMcA==
+X-Received: by 2002:adf:9f10:: with SMTP id l16mr30472796wrf.206.1548096683696;
+	Mon, 21 Jan 2019 10:51:23 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	n82sm50386660wma.42.2019.01.21.10.51.20
+	n82sm50386660wma.42.2019.01.21.10.51.22
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 10:51:20 -0800 (PST)
+	Mon, 21 Jan 2019 10:51:23 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 18:50:56 +0000
-Message-Id: <20190121185118.18550-2-peter.maydell@linaro.org>
+Date: Mon, 21 Jan 2019 18:50:58 +0000
+Message-Id: <20190121185118.18550-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
 References: <20190121185118.18550-1-peter.maydell@linaro.org>
@@ -96,71 +96,81 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::343
-Subject: [Qemu-devel] [PATCH 01/23] armv7m: Don't assume the NVIC's CPU is
- CPU 0
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH 03/23] armv7m: Pass through start-powered-off CPU
+ property
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hOdmD3Qg8dSY
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gqqs9AvZqnIl
 
-Currently the ARMv7M NVIC object's realize method assumes that the
-CPU the NVIC is attached to is CPU 0, because it thinks there can
-only ever be one CPU in the system. To allow a dual-Cortex-M33
-setup we need to remove this assumption; instead the armv7m
-wrapper object tells the NVIC its CPU, in the same way that it
-already tells the CPU what the NVIC is.
+Expose "start-powered-off" as a property of the ARMv7M container,
+which we just pass through to the CPU object in the same way that we
+do for "init-svtor" and "idau". (We want this for the SSE-200, which
+powers up only the first CPU at reset and leaves the second powered
+down.)
+
+As with the other CPU properties here, we can't just use alias
+properties, because the CPU QOM object is not created until armv7m
+realize time.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/armv7m.c       | 6 ++++--
- hw/intc/armv7m_nvic.c | 3 +--
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ include/hw/arm/armv7m.h |  1 +
+ hw/arm/armv7m.c         | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
 
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index 2ba24953b63..e96a98f8093 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -65,6 +65,7 @@ typedef struct ARMv7MState {
+     Object *idau;
+     uint32_t init_svtor;
+     bool enable_bitband;
++    bool start_powered_off;
+ } ARMv7MState;
+ 
+ #endif
 diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index f4446528307..f9aa83d20ef 100644
+index 0f2c8e066cf..adae11e76ed 100644
 --- a/hw/arm/armv7m.c
 +++ b/hw/arm/armv7m.c
-@@ -178,10 +178,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+@@ -182,6 +182,14 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+             return;
          }
      }
++    if (object_property_find(OBJECT(s->cpu), "start-powered-off", NULL)) {
++        object_property_set_bool(OBJECT(s->cpu), s->start_powered_off,
++                                 "start-powered-off", &err);
++        if (err != NULL) {
++            error_propagate(errp, err);
++            return;
++        }
++    }
  
--    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
--     * have one.
-+    /*
-+     * Tell the CPU where the NVIC is; it will fail realize if it doesn't
-+     * have one. Similarly, tell the NVIC where its CPU is.
-      */
-     s->cpu->env.nvic = &s->nvic;
-+    s->nvic.cpu = s->cpu;
+     /*
+      * Tell the CPU where the NVIC is; it will fail realize if it doesn't
+@@ -250,6 +258,8 @@ static Property armv7m_properties[] = {
+     DEFINE_PROP_LINK("idau", ARMv7MState, idau, TYPE_IDAU_INTERFACE, Object *),
+     DEFINE_PROP_UINT32("init-svtor", ARMv7MState, init_svtor, 0),
+     DEFINE_PROP_BOOL("enable-bitband", ARMv7MState, enable_bitband, false),
++    DEFINE_PROP_BOOL("start-powered-off", ARMv7MState, start_powered_off,
++                     false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
  
-     object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
-     if (err != NULL) {
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 0beefb05d44..790a3d95849 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2274,8 +2274,7 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
-     Error *err = NULL;
-     int regionlen;
- 
--    s->cpu = ARM_CPU(qemu_get_cpu(0));
--
-+    /* The armv7m container object will have set our CPU pointer */
-     if (!s->cpu || !arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
-         error_setg(errp, "The NVIC can only be used with a Cortex-M CPU");
-         return;
 -- 
 2.20.1
 

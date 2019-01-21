@@ -1,94 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6398440wrt;
-        Mon, 21 Jan 2019 11:16:39 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5rygHM2GyrOtM0KE4RSTE8ZoEpb/js+YkIR4ZBktxUQYjKi1P8t2WODQ/Y+iuLH9SAt2Xw
-X-Received: by 2002:adf:c042:: with SMTP id c2mr30438365wrf.158.1548098199077;
-        Mon, 21 Jan 2019 11:16:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548098199; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6398722wrt;
+        Mon, 21 Jan 2019 11:17:01 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN578263S0HhKN90whKQE1bWdpFyYXQVbfaWWldgTTFyfrcpC8gD+m7uFJPVGqo/YP9vOUu7
+X-Received: by 2002:a1c:a913:: with SMTP id s19mr641448wme.4.1548098221878;
+        Mon, 21 Jan 2019 11:17:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548098221; cv=none;
         d=google.com; s=arc-20160816;
-        b=vXmhdLdZcEImN5ceKjqTrdcntimMWz5y7+4Rf1s5Ilr/mpPNSS8xoydTawZxoVEi/+
-         HBzPjPDWAOIAeMUJgkVC5V57wEIXJ0HC72DuVE5WFHNXh0Hzx+dfUmIi9ZAonyr3p6aM
-         0Ic0v+Wx5xw2LxsZ7yTggNi5QT+iO7BqKidmkSAN6igr647qCyeU+qYNSzYrV+yxwZ7h
-         5iANioSKyZw3FoivLoUNpNUWWFrOxf+YdLd9gTKSnusK0qJNC/mOz9hRWDIEKQcNF27E
-         kBuDPN4JIM9VC8xROsHe+lowrH198LTWhYBeHOyF1qZh96S693V83mYby2V96EAemr+X
-         YcHg==
+        b=PKggQ7sYU0xTZ5Sd//UCaM5hjoctnuZtqrMp7Ttlu/DIvPS71euUm30tBPbi6gccpw
+         Ji3k23CRfXuE/bSRelP5NcHcHa4rBOd9mxvSU8z8AG9xuEq8H4b+Lq74FQE0X9DnASMy
+         e/XLYvEppAp3ppIZ9HoYVA6kEPfk26iMwLWMRj8y/Mc4xuPFgj8Ri0lgJ0huV/JW5TzZ
+         QzJt2HetXJyafFX3hK/NI76tuBnCu5/f5paomafM68WefiCwnIJLal0621tWWR9sntk0
+         8EO6mpDucZvjF/1XaVfvmAbSt1Ia8R5vhNKUUfZ5+SpVjXxCisXx6mXrwbO4m9UiH69Q
+         BtkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=ERgJG9PhtMoyjC++bigjOAZTdVMBDVouJXesxc5aBKU=;
-        b=QDGtyiLpYQIWb65+2nu/J7F8uOad9gKAgkGesk5whW/IB4dpYnPUdOFCg9gQQsyqLA
-         mBJxyDjM3QPV+6jOUZLarc9WBw/JSi2eRhZ/6G6A4V2U6I3XKBSfEHw8XL3hq84e1iYU
-         0p5Y8rxF+nw0eA9yNGrZ6WPbysX1Lyle43qJz7Bm2wDfzWJkRZ3s0Mj+J8Tq3yP3bcOQ
-         w0aS7JhPZj7cxu5y2DN4wz2beE5wgaZIvwRsHRhqt9odefdkRUMzrr1d94ojqPjLdlqJ
-         E9PVgw05AdvyalHOaCn9f0cssXwlXuFzT4lglfdoKO0X+8KnJ+ISk9JDbyco9j63lX6e
-         lx0Q==
+        bh=ptElJAOC24V6aCwdEwgL13NkItv2g2+5CEz3KW95t8w=;
+        b=k/DWQqteWjhnT+qlY/GPp2ZR82EDRass3mtW3DwhHo4KE2a8oPE/tYfZmqfXQSDdt2
+         9YWnKkpkdjAI7rYN7V1B2TYcuYBuGYMz/+mGUJQI3/0STojCZWzHrvLXAtwx/Rj17dAN
+         tRcjJP9nX+NgBDmbKukIX9V5aAGZ4H+kpuc6e5ETwtE1fWTGDCf5mRF8bGKDykYLwy9U
+         5fCIXkEVG7Z//n70Z+Mk4Br183ruTv9/K0vhvfsR+KKfrFMtveUsVNkGugao4HY6qXTP
+         LRW4CJ36pCgEIzZBE1H30kY/TfUy8U2dSoLWdqdqM5l9NP7OdoCtJAhHHUdcU8karhEZ
+         8/rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Nbmar4Ta;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=WFIkmDzw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n204si32958136wma.87.2019.01.21.11.16.38
+        by mx.google.com with ESMTPS id b66si22246210wmc.136.2019.01.21.11.17.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 11:16:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jan 2019 11:17:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Nbmar4Ta;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=WFIkmDzw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:58444 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58458 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glf3l-00074O-RK
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:16:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39234)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1glf48-0007UJ-OZ
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:17:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39097)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glevN-0008Da-W8
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 14:08:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1glevP-000888-IE
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 14:08:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gleff-0002uj-Qt
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:49 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:38678)
+	(envelope-from <peter.maydell@linaro.org>) id 1glefg-0002uy-5O
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:51:48 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33446)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gleff-0002fY-Dx
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:43 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id v13so24619441wrw.5
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:34 -0800 (PST)
+	id 1gleff-0002sg-PN
+	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 13:51:44 -0500
+Received: by mail-wm1-x343.google.com with SMTP id r24so6819221wmh.0
+	for <qemu-arm@nongnu.org>; Mon, 21 Jan 2019 10:51:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ERgJG9PhtMoyjC++bigjOAZTdVMBDVouJXesxc5aBKU=;
-	b=Nbmar4Ta2YoevbRAXWViDayhj3522vcuqTNxt5Ir0Og/25a15O8haSV24npiZfiDJQ
-	zygnLbMgJgOIp7m4pyoVVno7G88GFzgk+mIhpT/1m0TdRrbAiNlKGcZC/hklxZr7wjpH
-	p/Hy8trwsC9eymAItvjO5j49jykp8l67dYvdk=
+	bh=ptElJAOC24V6aCwdEwgL13NkItv2g2+5CEz3KW95t8w=;
+	b=WFIkmDzwGTUR/d4XtIBue0PmRyHGfjn/zBABzmHq8uB3lM2vPa/5lSypbCInheqrGu
+	P5oC9v+vF1oTX7Xe9HVHLsCiz7vZT4pho36KQp9ihgLNbnbKD5fPcDrXhUSWIs/GDd3Y
+	kVh8nXca6cKp//P4B+PCZBdQF6Sekflec1OOs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=ERgJG9PhtMoyjC++bigjOAZTdVMBDVouJXesxc5aBKU=;
-	b=UTbh5obNFpCFFWEai5WeHiSq90bfI32B18I0/Cu8lYmEaDvcwDo2/kdDKwomiUW5FF
-	Iz0rgKZszuzWthj1BF6yVqxPBqQWO5CZGwrJaeA7OaM+ZY0nO5hcT9vSqZZ1GI3erF3L
-	HqMoh6jsoyJAhrju0AxftMO7hiYCMEaBvnNzfLtnMm7d+v4scTvFWvOrV8GMN0CbwTwB
-	sIpL01lsacbERJOMQGBFwbK+yW8i9PJWA37ntEMK01dzdUPzp5f4aiMR9o1CGvq2ga3a
-	3fS4C/nMFX7EaPIrTllC1MINgGGWUEoE1fxkqcldoZWcu8gFQ5w9bX6wHnw4yXquKFtS
-	hhJw==
-X-Gm-Message-State: AJcUukeuDUktGz+TWm9xVEJQQ8vYd3WwvQnGZPbMmcLX1rS1MSzFzSde
-	wuWRxbBUGcLd34IRbjD68E1HxVBdPv0zjQ==
-X-Received: by 2002:adf:9f10:: with SMTP id l16mr30473325wrf.206.1548096693322;
-	Mon, 21 Jan 2019 10:51:33 -0800 (PST)
+	bh=ptElJAOC24V6aCwdEwgL13NkItv2g2+5CEz3KW95t8w=;
+	b=sqZ5kHw7sAVlTC1jSKtdHOGmstRKKuv2pTnhKYdnGhG+7DJyQFJ4mlSKZwqCLSigaT
+	S8SOlGoNq1PiOlXftHhdsjpzB37KfE7PF84LBmTGQfNPRybpFKTpXeydG6GoqDFDsO/7
+	7GRZnKnBkdeEg69zUrttP+BI66H2Oime0wKCXwxcKtVVm5UWf+UeIhxrOJswPJb3hBKg
+	/Vkdhvjhq7Dnk6Jb0fCbidWWdkCSiDfvfnbKSlnyNqRmuYZn1ZDNNKhRi4GEAl/bbOcb
+	D/ywssNykNwgd8VMriQp0iDlLRCt+F1z3EJQuCBnPa/qPD6k4uPeWa9TeE6YuCSyVJWN
+	N6pg==
+X-Gm-Message-State: AJcUukflsYw0qIfykkh96qDBYHurOAA5P0UzO9ByJWtLu3jPT9fMVgGm
+	TXKLFsAYuP0YdarnGXlYcLtAJ+G7hMpGMQ==
+X-Received: by 2002:a1c:bc82:: with SMTP id m124mr527840wmf.77.1548096702192; 
+	Mon, 21 Jan 2019 10:51:42 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	n82sm50386660wma.42.2019.01.21.10.51.32
+	n82sm50386660wma.42.2019.01.21.10.51.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 10:51:32 -0800 (PST)
+	Mon, 21 Jan 2019 10:51:41 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 18:51:06 +0000
-Message-Id: <20190121185118.18550-12-peter.maydell@linaro.org>
+Date: Mon, 21 Jan 2019 18:51:14 +0000
+Message-Id: <20190121185118.18550-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
 References: <20190121185118.18550-1-peter.maydell@linaro.org>
@@ -96,426 +96,278 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::42c
-Subject: [Qemu-devel] [PATCH 11/23] hw/arm/armsse: Support dual-CPU
- configuration
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::343
+Subject: [Qemu-arm] [PATCH 19/23] hw/misc/armsse-cpuid: Implement SSE-200
+ CPU_IDENTITY register block
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oSgO2sm616/z
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UycYcVROME1u
 
-The SSE-200 has two Cortex-M33 CPUs. These see the same view
-of memory, with the exception of the "private CPU region" which
-has per-CPU devices. Internal device interrupts for SSE-200
-devices are mostly wired up to both CPUs, with the exception of
-a few per-CPU devices. External GPIO inputs on the SSE-200
-device are provided for the second CPU's interrupts above 32,
-as is already the case for the first CPU.
-
-Refactor the code to support creation of multiple CPUs.
-For the moment we leave all CPUs with the same view of
-memory: this will not work in the multiple-CPU case, but
-we will fix this in the following commit.
+The SSE-200 has a CPU_IDENTITY register block, which is a set of
+read-only registers. As well as the usual PID/CID registers, there
+is a single CPUID register which indicates whether the CPU is CPU 0
+or CPU 1. Implement a model of this register block.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h |  21 +++-
- hw/arm/armsse.c         | 206 ++++++++++++++++++++++++++++++++--------
- 2 files changed, 180 insertions(+), 47 deletions(-)
+ hw/misc/Makefile.objs           |   1 +
+ include/hw/misc/armsse-cpuid.h  |  41 ++++++++++
+ hw/misc/armsse-cpuid.c          | 134 ++++++++++++++++++++++++++++++++
+ MAINTAINERS                     |   2 +
+ default-configs/arm-softmmu.mak |   1 +
+ hw/misc/trace-events            |   4 +
+ 6 files changed, 183 insertions(+)
+ create mode 100644 include/hw/misc/armsse-cpuid.h
+ create mode 100644 hw/misc/armsse-cpuid.c
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index e4a05013316..faf5dfed252 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -28,9 +28,16 @@
-  *  + QOM property "memory" is a MemoryRegion containing the devices provided
-  *    by the board model.
-  *  + QOM property "MAINCLK" is the frequency of the main system clock
-- *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts
-- *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts, which
-- *    are wired to the NVIC lines 32 .. n+32
-+ *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts.
-+ *    (In hardware, the SSE-200 permits the number of expansion interrupts
-+ *    for the two CPUs to be configured separately, but we restrict it to
-+ *    being the same for both, to avoid having to have separate Property
-+ *    lists for different variants. This restriction can be relaxed later
-+ *    if necessary.)
-+ *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts for CPU 0,
-+ *    which are wired to its NVIC lines 32 .. n+32
-+ *  + Named GPIO inputs "EXP_CPU1_IRQ" 0..n are the expansion interrupts for
-+ *    CPU 1, which are wired to its NVIC lines 32 .. n+32
-  *  + sysbus MMIO region 0 is the "AHB Slave Expansion" which allows
-  *    bus master devices in the board model to make transactions into
-  *    all the devices and memory areas in the IoTKit
-@@ -95,12 +102,14 @@
- #error Too many SRAM banks
- #endif
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 04f3bfa516e..74c91d250c8 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -69,6 +69,7 @@ obj-$(CONFIG_TZ_PPC) += tz-ppc.o
+ obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
+ obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
+ obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
++obj-$(CONFIG_ARMSSE_CPUID) += armsse-cpuid.o
  
-+#define SSE_MAX_CPUS 2
+ obj-$(CONFIG_PVPANIC) += pvpanic.o
+ obj-$(CONFIG_AUX) += auxbus.o
+diff --git a/include/hw/misc/armsse-cpuid.h b/include/hw/misc/armsse-cpuid.h
+new file mode 100644
+index 00000000000..0ef33fcaba2
+--- /dev/null
++++ b/include/hw/misc/armsse-cpuid.h
+@@ -0,0 +1,41 @@
++/*
++ * ARM SSE-200 CPU_IDENTITY register block
++ *
++ * Copyright (c) 2019 Linaro Limited
++ * Written by Peter Maydell
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
 +
- typedef struct ARMSSE {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
--    ARMv7MState armv7m;
-+    ARMv7MState armv7m[SSE_MAX_CPUS];
-     IoTKitSecCtl secctl;
-     TZPPC apb_ppc0;
-     TZPPC apb_ppc1;
-@@ -115,6 +124,8 @@ typedef struct ARMSSE {
-     qemu_or_irq mpc_irq_orgate;
-     qemu_or_irq nmi_orgate;
- 
-+    SplitIRQ cpu_irq_splitter[32];
++/*
++ * This is a model of the "CPU_IDENTITY" register block which is part of the
++ * Arm SSE-200 and documented in
++ * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ *
++ * QEMU interface:
++ *  + QOM property "CPUID": the value to use for the CPUID register
++ *  + sysbus MMIO region 0: the system information register bank
++ */
 +
-     CMSDKAPBDualTimer dualtimer;
- 
-     CMSDKAPBWatchdog s32kwatchdog;
-@@ -130,7 +141,7 @@ typedef struct ARMSSE {
-     MemoryRegion alias3;
-     MemoryRegion sram[MAX_SRAM_BANKS];
- 
--    qemu_irq *exp_irqs;
-+    qemu_irq *exp_irqs[SSE_MAX_CPUS];
-     qemu_irq ppc0_irq;
-     qemu_irq ppc1_irq;
-     qemu_irq sec_resp_cfg;
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index a2ae5d3c4b9..5cb2b78b1fc 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -21,18 +21,35 @@
- struct ARMSSEInfo {
-     const char *name;
-     int sram_banks;
-+    int num_cpus;
- };
- 
- static const ARMSSEInfo armsse_variants[] = {
-     {
-         .name = TYPE_IOTKIT,
-         .sram_banks = 1,
-+        .num_cpus = 1,
-     },
- };
- 
- /* Clock frequency in HZ of the 32KHz "slow clock" */
- #define S32KCLK (32 * 1000)
- 
-+/* Is internal IRQ n shared between CPUs in a multi-core SSE ? */
-+static bool irq_is_common[32] = {
-+    [0 ... 5] = true,
-+    /* 6, 7: per-CPU MHU interrupts */
-+    [8 ... 12] = true,
-+    /* 13: per-CPU icache interrupt */
-+    /* 14: reserved */
-+    [15 ... 20] = true,
-+    /* 21: reserved */
-+    [22 ... 26] = true,
-+    /* 27: reserved */
-+    /* 28, 29: per-CPU CTI interrupts */
-+    /* 30, 31: reserved */
++#ifndef HW_MISC_ARMSSE_CPUID_H
++#define HW_MISC_ARMSSE_CPUID_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_ARMSSE_CPUID "armsse-cpuid"
++#define ARMSSE_CPUID(obj) OBJECT_CHECK(ARMSSECPUID, (obj), TYPE_ARMSSE_CPUID)
++
++typedef struct ARMSSECPUID {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++
++    /* Properties */
++    uint32_t cpuid;
++} ARMSSECPUID;
++
++#endif
+diff --git a/hw/misc/armsse-cpuid.c b/hw/misc/armsse-cpuid.c
+new file mode 100644
+index 00000000000..7788f6ced6a
+--- /dev/null
++++ b/hw/misc/armsse-cpuid.c
+@@ -0,0 +1,134 @@
++/*
++ * ARM SSE-200 CPU_IDENTITY register block
++ *
++ * Copyright (c) 2019 Linaro Limited
++ * Written by Peter Maydell
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
++
++/*
++ * This is a model of the "CPU_IDENTITY" register block which is part of the
++ * Arm SSE-200 and documented in
++ * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
++ *
++ * It consists of one read-only CPUID register (set by QOM property), plus the
++ * usual ID registers.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "trace.h"
++#include "qapi/error.h"
++#include "sysemu/sysemu.h"
++#include "hw/sysbus.h"
++#include "hw/registerfields.h"
++#include "hw/misc/armsse-cpuid.h"
++
++REG32(CPUID, 0x0)
++REG32(PID4, 0xfd0)
++REG32(PID5, 0xfd4)
++REG32(PID6, 0xfd8)
++REG32(PID7, 0xfdc)
++REG32(PID0, 0xfe0)
++REG32(PID1, 0xfe4)
++REG32(PID2, 0xfe8)
++REG32(PID3, 0xfec)
++REG32(CID0, 0xff0)
++REG32(CID1, 0xff4)
++REG32(CID2, 0xff8)
++REG32(CID3, 0xffc)
++
++/* PID/CID values */
++static const int sysinfo_id[] = {
++    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
++    0x58, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
++    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
 +};
 +
- /* Create an alias region of @size bytes starting at @base
-  * which mirrors the memory starting at @orig.
-  */
-@@ -125,13 +142,18 @@ static void armsse_init(Object *obj)
-     int i;
- 
-     assert(info->sram_banks <= MAX_SRAM_BANKS);
-+    assert(info->num_cpus <= SSE_MAX_CPUS);
- 
-     memory_region_init(&s->container, obj, "armsse-container", UINT64_MAX);
- 
--    sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
--                          TYPE_ARMV7M);
--    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
--                         ARM_CPU_TYPE_NAME("cortex-m33"));
-+    for (i = 0; i < info->num_cpus; i++) {
-+        char *name = g_strdup_printf("armv7m%d", i);
-+        sysbus_init_child_obj(obj, name, &s->armv7m[i], sizeof(s->armv7m),
-+                              TYPE_ARMV7M);
-+        qdev_prop_set_string(DEVICE(&s->armv7m[i]), "cpu-type",
-+                             ARM_CPU_TYPE_NAME("cortex-m33"));
-+        g_free(name);
-+    }
- 
-     sysbus_init_child_obj(obj, "secctl", &s->secctl, sizeof(s->secctl),
-                           TYPE_IOTKIT_SECCTL);
-@@ -192,13 +214,25 @@ static void armsse_init(Object *obj)
-                                 TYPE_SPLIT_IRQ, &error_abort, NULL);
-         g_free(name);
-     }
-+    if (info->num_cpus > 1) {
-+        for (i = 0; i < ARRAY_SIZE(s->cpu_irq_splitter); i++) {
-+            if (irq_is_common[i]) {
-+                char *name = g_strdup_printf("cpu-irq-splitter%d", i);
-+                SplitIRQ *splitter = &s->cpu_irq_splitter[i];
-+
-+                object_initialize_child(obj, name, splitter, sizeof(*splitter),
-+                                        TYPE_SPLIT_IRQ, &error_abort, NULL);
-+                g_free(name);
-+            }
-+        }
-+    }
- }
- 
- static void armsse_exp_irq(void *opaque, int n, int level)
- {
--    ARMSSE *s = ARMSSE(opaque);
-+    qemu_irq *irqarray = opaque;
- 
--    qemu_set_irq(s->exp_irqs[n], level);
-+    qemu_set_irq(irqarray[n], level);
- }
- 
- static void armsse_mpcexp_status(void *opaque, int n, int level)
-@@ -207,6 +241,26 @@ static void armsse_mpcexp_status(void *opaque, int n, int level)
-     qemu_set_irq(s->mpcexp_status_in[n], level);
- }
- 
-+static qemu_irq armsse_get_common_irq_in(ARMSSE *s, int irqno)
++static uint64_t armsse_cpuid_read(void *opaque, hwaddr offset,
++                                    unsigned size)
 +{
-+    /*
-+     * Return a qemu_irq which can be used to signal IRQ n to
-+     * all CPUs in the SSE.
-+     */
-+    ARMSSEClass *asc = ARMSSE_GET_CLASS(s);
-+    const ARMSSEInfo *info = asc->info;
++    ARMSSECPUID *s = ARMSSE_CPUID(opaque);
++    uint64_t r;
 +
-+    assert(irq_is_common[irqno]);
-+
-+    if (info->num_cpus == 1) {
-+        /* Only one CPU -- just connect directly to it */
-+        return qdev_get_gpio_in(DEVICE(&s->armv7m[0]), irqno);
-+    } else {
-+        /* Connect to the splitter which feeds all CPUs */
-+        return qdev_get_gpio_in(DEVICE(&s->cpu_irq_splitter[irqno]), 0);
++    switch (offset) {
++    case A_CPUID:
++        r = s->cpuid;
++        break;
++    case A_PID4 ... A_CID3:
++        r = sysinfo_id[(offset - A_PID4) / 4];
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "SSE CPU_IDENTITY read: bad offset 0x%x\n", (int)offset);
++        r = 0;
++        break;
 +    }
++    trace_armsse_cpuid_read(offset, r, size);
++    return r;
 +}
 +
- static void armsse_realize(DeviceState *dev, Error **errp)
- {
-     ARMSSE *s = ARMSSE(dev);
-@@ -280,37 +334,105 @@ static void armsse_realize(DeviceState *dev, Error **errp)
- 
-     memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
- 
--    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", s->exp_numirq + 32);
--    /* In real hardware the initial Secure VTOR is set from the INITSVTOR0
--     * register in the IoT Kit System Control Register block, and the
--     * initial value of that is in turn specifiable by the FPGA that
--     * instantiates the IoT Kit. In QEMU we don't implement this wrinkle,
--     * and simply set the CPU's init-svtor to the IoT Kit default value.
--     */
--    qdev_prop_set_uint32(DEVICE(&s->armv7m), "init-svtor", 0x10000000);
--    object_property_set_link(OBJECT(&s->armv7m), OBJECT(&s->container),
--                             "memory", &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
--    }
--    object_property_set_link(OBJECT(&s->armv7m), OBJECT(s), "idau", &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
--    }
--    object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
-+    for (i = 0; i < info->num_cpus; i++) {
-+        DeviceState *cpudev = DEVICE(&s->armv7m[i]);
-+        Object *cpuobj = OBJECT(&s->armv7m[i]);
-+        int j;
-+        char *gpioname;
++static void armsse_cpuid_write(void *opaque, hwaddr offset,
++                                 uint64_t value, unsigned size)
++{
++    trace_armsse_cpuid_write(offset, value, size);
 +
-+        qdev_prop_set_uint32(cpudev, "num-irq", s->exp_numirq + 32);
-+        /*
-+         * In real hardware the initial Secure VTOR is set from the INITSVTOR0
-+         * register in the IoT Kit System Control Register block, and the
-+         * initial value of that is in turn specifiable by the FPGA that
-+         * instantiates the IoT Kit. In QEMU we don't implement this wrinkle,
-+         * and simply set the CPU's init-svtor to the IoT Kit default value.
-+         * In SSE-200 the situation is similar, except that the default value
-+         * is a reset-time signal input. Typically a board using the SSE-200
-+         * will have a system control processor whose boot firmware initializes
-+         * the INITSVTOR* registers before powering up the CPUs in any case,
-+         * so the hardware's default value doesn't matter. QEMU doesn't emulate
-+         * the control processor, so instead we behave in the way that the
-+         * firmware does. All boards currently known about have firmware that
-+         * sets the INITSVTOR0 and INITSVTOR1 registers to 0x10000000, like the
-+         * IoTKit default. We can make this more configurable if necessary.
-+         */
-+        qdev_prop_set_uint32(cpudev, "init-svtor", 0x10000000);
-+        /*
-+         * Start all CPUs except CPU0 powered down. In real hardware it is
-+         * a configurable property of the SSE-200 which CPUs start powered up
-+         * (via the CPUWAIT0_RST and CPUWAIT1_RST parameters), but since all
-+         * the boards we care about start CPU0 and leave CPU1 powered off,
-+         * we hard-code that for now. We can add QOM properties for this
-+         * later if necessary.
-+         */
-+        if (i > 0) {
-+            object_property_set_bool(cpuobj, true, "start-powered-off", &err);
-+            if (err) {
-+                error_propagate(errp, err);
-+                return;
-+            }
-+        }
-+        object_property_set_link(cpuobj, OBJECT(&s->container), "memory", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        object_property_set_link(cpuobj, OBJECT(s), "idau", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        object_property_set_bool(cpuobj, true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "SSE CPU_IDENTITY: write to RO offset 0x%x\n", (int)offset);
++}
 +
-+        /* Connect EXP_IRQ/EXP_CPUn_IRQ GPIOs to the NVIC's lines 32 and up */
-+        s->exp_irqs[i] = g_new(qemu_irq, s->exp_numirq);
-+        for (j = 0; j < s->exp_numirq; j++) {
-+            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, i + 32);
-+        }
-+        if (i == 0) {
-+            gpioname = g_strdup("EXP_IRQ");
-+        } else {
-+            gpioname = g_strdup_printf("EXP_CPU%d_IRQ", i);
-+        }
-+        qdev_init_gpio_in_named_with_opaque(dev, armsse_exp_irq,
-+                                            s->exp_irqs[i],
-+                                            gpioname, s->exp_numirq);
-+        g_free(gpioname);
-     }
- 
--    /* Connect our EXP_IRQ GPIOs to the NVIC's lines 32 and up. */
--    s->exp_irqs = g_new(qemu_irq, s->exp_numirq);
--    for (i = 0; i < s->exp_numirq; i++) {
--        s->exp_irqs[i] = qdev_get_gpio_in(DEVICE(&s->armv7m), i + 32);
-+    /* Wire up the splitters that connect common IRQs to all CPUs */
-+    if (info->num_cpus > 1) {
-+        for (i = 0; i < ARRAY_SIZE(s->cpu_irq_splitter); i++) {
-+            if (irq_is_common[i]) {
-+                Object *splitter = OBJECT(&s->cpu_irq_splitter[i]);
-+                DeviceState *devs = DEVICE(splitter);
-+                int cpunum;
++static const MemoryRegionOps armsse_cpuid_ops = {
++    .read = armsse_cpuid_read,
++    .write = armsse_cpuid_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    /* byte/halfword accesses are just zero-padded on reads and writes */
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 4,
++};
 +
-+                object_property_set_int(splitter, info->num_cpus,
-+                                        "num-lines", &err);
-+                if (err) {
-+                    error_propagate(errp, err);
-+                    return;
-+                }
-+                object_property_set_bool(splitter, true, "realized", &err);
-+                if (err) {
-+                    error_propagate(errp, err);
-+                    return;
-+                }
-+                for (cpunum = 0; cpunum < info->num_cpus; cpunum++) {
-+                    DeviceState *cpudev = DEVICE(&s->armv7m[cpunum]);
++static Property armsse_cpuid_props[] = {
++    DEFINE_PROP_UINT32("CPUID", ARMSSECPUID, cpuid, 0),
++    DEFINE_PROP_END_OF_LIST()
++};
 +
-+                    qdev_connect_gpio_out(devs, cpunum,
-+                                          qdev_get_gpio_in(cpudev, i));
-+                }
-+            }
-+        }
-     }
--    qdev_init_gpio_in_named(dev, armsse_exp_irq, "EXP_IRQ", s->exp_numirq);
++static void armsse_cpuid_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    ARMSSECPUID *s = ARMSSE_CPUID(obj);
++
++    memory_region_init_io(&s->iomem, obj, &armsse_cpuid_ops,
++                          s, "armsse-cpuid", 0x1000);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void armsse_cpuid_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    /*
++     * This device has no guest-modifiable state and so it
++     * does not need a reset function or VMState.
++     */
++
++    dc->props = armsse_cpuid_props;
++}
++
++static const TypeInfo armsse_cpuid_info = {
++    .name = TYPE_ARMSSE_CPUID,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(ARMSSECPUID),
++    .instance_init = armsse_cpuid_init,
++    .class_init = armsse_cpuid_class_init,
++};
++
++static void armsse_cpuid_register_types(void)
++{
++    type_register_static(&armsse_cpuid_info);
++}
++
++type_init(armsse_cpuid_register_types);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 52222117d77..42719880bad 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -633,6 +633,8 @@ F: hw/misc/iotkit-sysctl.c
+ F: include/hw/misc/iotkit-sysctl.h
+ F: hw/misc/iotkit-sysinfo.c
+ F: include/hw/misc/iotkit-sysinfo.h
++F: hw/misc/armsse-cpuid.c
++F: include/hw/misc/armsse-cpuid.h
  
-     /* Set up the big aliases first */
-     make_alias(s, &s->alias1, "alias 1", 0x10000000, 0x10000000, 0x00000000);
-@@ -407,7 +529,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     qdev_connect_gpio_out(DEVICE(&s->mpc_irq_orgate), 0,
--                          qdev_get_gpio_in(DEVICE(&s->armv7m), 9));
-+                          armsse_get_common_irq_in(s, 9));
+ Musicpal
+ M: Jan Kiszka <jan.kiszka@web.de>
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 3f200157879..be88870799c 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -118,6 +118,7 @@ CONFIG_ARMSSE=y
+ CONFIG_IOTKIT_SECCTL=y
+ CONFIG_IOTKIT_SYSCTL=y
+ CONFIG_IOTKIT_SYSINFO=y
++CONFIG_ARMSSE_CPUID=y
  
-     /* Devices behind APB PPC0:
-      *   0x40000000: timer0
-@@ -424,7 +546,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer0), 0,
--                       qdev_get_gpio_in(DEVICE(&s->armv7m), 3));
-+                       armsse_get_common_irq_in(s, 3));
-     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer0), 0);
-     object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[0]", &err);
-     if (err) {
-@@ -439,7 +561,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer1), 0,
--                       qdev_get_gpio_in(DEVICE(&s->armv7m), 4));
-+                       armsse_get_common_irq_in(s, 4));
-     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer1), 0);
-     object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[1]", &err);
-     if (err) {
-@@ -455,7 +577,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
--                       qdev_get_gpio_in(DEVICE(&s->armv7m), 5));
-+                       armsse_get_common_irq_in(s, 5));
-     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
-     object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]", &err);
-     if (err) {
-@@ -513,7 +635,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     qdev_connect_gpio_out(DEVICE(&s->ppc_irq_orgate), 0,
--                          qdev_get_gpio_in(DEVICE(&s->armv7m), 10));
-+                          armsse_get_common_irq_in(s, 10));
- 
-     /* 0x40010000 .. 0x4001ffff: private CPU region: unused in IoTKit */
- 
-@@ -528,7 +650,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->s32ktimer), 0,
--                       qdev_get_gpio_in(DEVICE(&s->armv7m), 2));
-+                       armsse_get_common_irq_in(s, 2));
-     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->s32ktimer), 0);
-     object_property_set_link(OBJECT(&s->apb_ppc1), OBJECT(mr), "port[0]", &err);
-     if (err) {
-@@ -609,7 +731,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-         return;
-     }
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->nswatchdog), 0,
--                       qdev_get_gpio_in(DEVICE(&s->armv7m), 1));
-+                       armsse_get_common_irq_in(s, 1));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->nswatchdog), 0, 0x40081000);
- 
-     qdev_prop_set_uint32(DEVICE(&s->swatchdog), "wdogclk-frq", s->mainclk_frq);
-@@ -715,7 +837,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     qdev_pass_gpios(dev_secctl, dev, "mscexp_clear");
-     qdev_pass_gpios(dev_secctl, dev, "mscexp_ns");
-     qdev_connect_gpio_out_named(dev_secctl, "msc_irq", 0,
--                                qdev_get_gpio_in(DEVICE(&s->armv7m), 11));
-+                                armsse_get_common_irq_in(s, 11));
- 
-     /*
-      * Expose our container region to the board model; this corresponds
+ CONFIG_VERSATILE=y
+ CONFIG_VERSATILE_PCI=y
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 52466c77c4e..b0701bddd3c 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -132,3 +132,7 @@ iotkit_sysinfo_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysI
+ iotkit_sysctl_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysCtl read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ iotkit_sysctl_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysCtl write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ iotkit_sysctl_reset(void) "IoTKit SysCtl: reset"
++
++# hw/misc/armsse-cpuid.c
++armsse_cpuid_read(uint64_t offset, uint64_t data, unsigned size) "SSE-200 CPU_IDENTITY read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++armsse_cpuid_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 CPU_IDENTITY write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
 -- 
 2.20.1
 

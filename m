@@ -1,171 +1,205 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6411519wrt;
-        Mon, 21 Jan 2019 11:34:18 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5q8Es5uZ9xnbYIvCZib3ywFx9qwyHRVFq34r0jXfiPxaSTAzLiFxNppv1nMyqcjaZ49GsK
-X-Received: by 2002:a1c:c181:: with SMTP id r123mr712990wmf.8.1548099258827;
-        Mon, 21 Jan 2019 11:34:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548099258; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6413327wrt;
+        Mon, 21 Jan 2019 11:36:52 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6Gl98+Drm2Jrd3M+yYTtPXAVHG1GcW+94e81LSj0035bq8INFeVP5vlK9PN//0/Pbwbsd2
+X-Received: by 2002:a5d:6647:: with SMTP id f7mr29365309wrw.225.1548099412881;
+        Mon, 21 Jan 2019 11:36:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548099412; cv=none;
         d=google.com; s=arc-20160816;
-        b=WiYYQVlVJqyn2XXfReydFg1pZvGCQ0ziKtFfnTgbW5UDyglYyTX44fQhPVw9fX6L0u
-         hX/Cb16cZbZm0Dr4sv1R7J+xbba9K9bOK8QdKZfLScsmePNpzlcU7zp6/43kxb0nhaNH
-         JzKVXou4Ej6wW9EkwE9AwEnr4+j28Fp3rftx4KLCKddyfejxc6gcXoBIB9Pl15OstuEz
-         BVg/KLc5UDOu9kUVA+/416I93KlWvcSw0/5Dr/XOkQx43gR1BBdqPZa6w/DvwppDhMaK
-         TViOy2YOaXs6pxqRkNBKz46AS0Xm7T7MYZlHFc3CWCHzbEHIUNPthQcSI1pAoypm9wiP
-         xZkA==
+        b=oqY9fZbJlAr2NNpUOmCRzmzuJlCipVjgfMqkxiXQlvmw0ZPyivWfL7mI9L3QaW7rtS
+         i8/AsnJ1idmlW5CZ1h7fMBetwEH2tW6u8MYQ2GQQWGIqrjsYblUcP4cExKB1ffGbvV06
+         7PBIC1KOCLH5EESHj7hJHXR07F8BRzyjrsSiVyfnl1T5N07pAyB4lio912TT0ApqOAdW
+         CPlmB2W+tWwuGuwP5N8dHfVQrbV6y1e5S1az9ANrxv/bShFtTdOIJ7Bl6Efk0YLMC3U2
+         hsj0xLns7WKo/2wN9c+/X3Hf9AJvScym1CDnrttgmQA73vsTfh+vPaQR5/3qgigqyhoj
+         7x0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=HrJEVNRZXqBVmR2Ha500yTVDaZRkCVZwLzlUegyOfyo=;
-        b=zcFtcXyi7Ld9r5vLkqtVdNzvNuFBAlvUg+h3h/2PoDRPuKpYH3gJmzyJi+JXvKlgwC
-         63A3f0RvKZQtVTbA0aDSUZY4ocdsJSwdYMuZ3Qko4gKjtytGqKAxF8NiDxvgtss9pHi0
-         fQbWLpmCpO7KeiCnasPmbGub03xinKNs3GF5ZTQzy/eZz9hubDX+CrzpvQ8bvzYbdaxw
-         20gT/pkyNj5NPgxziKUnyIs5sfpm9nPMslFmEpcFv0NRGdkKZtHa0Sl5QPe1N1txAStF
-         dRjcU5TmJF0Gb/KFNmOxzYj4fV/ReolkkmyzSQ0TAFnbwdpvme4bXaOihYdV812kS+Hd
-         0JZw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=hxN9w6vB/LiDEV5gzGDXQH/dDiAcrkx41p69PfQpSas=;
+        b=ruFqVt6y/XjO6KkywTVW0MBZI99LcZ9VFKZk87AqVro581CP9RHyHWQTZRIZijEc5a
+         wBAyklFTm8cPdDS9zlWPY+mwm1GhdalQBxacy1Yt14HsE1P6NSrmM3fCtdeu2THkLxt0
+         n9JBvLj7LMSGV6ZCNKLH/emvjybYmnOA6AW5iO0xbhaCupjDhQhHr90Bxn7vAIb9Msyy
+         6eshYN2yZqTnc/6xiTX3bIV/bj6C9/g6alckfr57ocgvS1lE8VvPZhKPQlhNNqog3okR
+         vNgE+QKXKnd4wBfuG3jBZhEMX4By+nd6qZBXOHtzfUqv5vuN6DWCYxh6VE2ikudT24dg
+         vfpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gsv2RDAY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=czH42x5G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v3si65518790wrw.434.2019.01.21.11.34.18
+        by mx.google.com with ESMTPS id n6si64535463wrw.334.2019.01.21.11.36.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 11:34:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Jan 2019 11:36:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gsv2RDAY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:58733 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=czH42x5G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:58787 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glfKr-0003yd-PV
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:34:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46514)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1glfNL-0005h1-Tx
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:36:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1glfKX-0003tl-OB
-	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 14:34:00 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1glevT-000854-2z
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 14:08:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1glfKW-0001ec-TC
-	for qemu-arm@nongnu.org; Mon, 21 Jan 2019 14:33:57 -0500
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:42523)
+	(envelope-from <peter.maydell@linaro.org>) id 1gleff-0002t1-7w
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:44 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54199)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1glfKW-0001dy-Kw; Mon, 21 Jan 2019 14:33:56 -0500
-Received: by mail-ed1-x543.google.com with SMTP id y20so17431577edw.9;
-	Mon, 21 Jan 2019 11:33:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=HrJEVNRZXqBVmR2Ha500yTVDaZRkCVZwLzlUegyOfyo=;
-	b=Gsv2RDAY+H60Jt7KCIWUJOaeBtTJ+jQrOcJOs1+BLGOH2BXj8Skes3RfZ/wuQ+kInc
-	dtWwWnqxKsBbhRGWIuc/GfLCzY3hCC9hZ98lOQhB0T60cORZY29Q/4qRC9TFqLz1srSH
-	6y+zAGANHcYpPyFb/QEK1wIPLTF+B7IW8YAxLsU/BioFHKaWQ+2DLXColZKp27nc589Z
-	D2ubzoklXW4L3JfiEjn3wYppui8qOFGa9vJqmq7hlgf7Wq609t0XodkeIUD8k7mPd13+
-	DYmVr/Zdgzl6qN61qkFmvm4Kqf5mZ0YkxMQsbTyCJRhq+SO7CeobHzAgQHUeio+vEolf
-	cIBg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1glefe-0002fw-QL
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:42 -0500
+Received: by mail-wm1-x342.google.com with SMTP id d15so11828499wmb.3
+	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=hxN9w6vB/LiDEV5gzGDXQH/dDiAcrkx41p69PfQpSas=;
+	b=czH42x5GG7hu82urZ1qyzXtX0PdCCEGBdww4vSZWEk9jkvtCRhQaIcvOupgjxp8P9o
+	H8TDD10vorRCkBfzamXuZjCt0SbF3jT9NifOw9nnqbbxXJJeaAKHioQbjDVlhaqokLs4
+	lntdSHJc1OwoFJzZfgv57zVRJPva8RG0DQTMk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=HrJEVNRZXqBVmR2Ha500yTVDaZRkCVZwLzlUegyOfyo=;
-	b=moiZCCmy4y1CkwRfFMKKGdjXHx6IL6OQB6Dfs6m/GR9MRZQYSWrj6hDJre0eiFCHRh
-	FGEzVAWeTBwa/ujkkAseywicJH4faZNj5sk2gb7CSGFdReSLOlQYDu9fKaTnnY5kHlEk
-	zoDeYU6A+/oCu1TOetCm7w3AnhgIg/axbxKPxpra055/FGSuplVGOhJibz0uJI4i0qTC
-	64suUHUOskIg7Vjdzm7Fbw1t0DIDaZ4HKAeWKnQF1VacMzRJW8fduDpkjlfueREkHade
-	HGNDU4VWQFS4+eRTuoWx5pRJjfdTdaDqVhZ5sWY32TQYa98YJ+8XnIIpKZpsBB4qn/mQ
-	xMEA==
-X-Gm-Message-State: AJcUuke/HWdn7JRP7bcXFSeboezMrrT8bNJ894tEv0qq0z63d3n0TVzI
-	p8qEMa6LcFIeT9ID+7ulZJc=
-X-Received: by 2002:a50:a982:: with SMTP id n2mr27513187edc.236.1548099235361; 
-	Mon, 21 Jan 2019 11:33:55 -0800 (PST)
-Received: from localhost ([149.199.62.131]) by smtp.gmail.com with ESMTPSA id
-	i46sm9123033eda.37.2019.01.21.11.33.54
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 21 Jan 2019 11:33:54 -0800 (PST)
-Date: Mon, 21 Jan 2019 11:33:20 -0800
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190121193320.GC19750@toto>
-References: <20190121152218.9592-1-peter.maydell@linaro.org>
-	<20190121152218.9592-2-peter.maydell@linaro.org>
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=hxN9w6vB/LiDEV5gzGDXQH/dDiAcrkx41p69PfQpSas=;
+	b=iIsrnvWyHEaZpCbQkVO7lUZkyUrHiyRLW6JGaGOMObj9Src4LIBE1BqjKGormQVgml
+	wpTWxR1M0+tPIchk99HaVOAxLvckU+QJYESfKjtINPcdxn42+uBoAXsOEhwFmyme9O9k
+	jooTpyPhQIKwjuhchKqHadLdblvYZ4W1BAzFB9OljS3gzNQ0iSa/sCXwa5q32lus4eO2
+	r5NFJyOylixsZEubrd16ZT+0jgp9qcJ6XyUR6cxXUJXZBShgJRPxppns4uMnzo3uuiDv
+	xGXpWwyLXtiJdWACj7vkMymFhZMZfJirZexTDD2KOl+oVcLq9wM4AX9S5QAAsCHsZWRN
+	3Iug==
+X-Gm-Message-State: AJcUukd5Pmn+dslRBNZdvZQXgxGnrCyJEylY1Tx+8p9qpLiBKvs8E/vi
+	9kurhA6XchYmX2pOUaU1w7Yhrw==
+X-Received: by 2002:a1c:bd86:: with SMTP id n128mr588135wmf.22.1548096694400; 
+	Mon, 21 Jan 2019 10:51:34 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	n82sm50386660wma.42.2019.01.21.10.51.33
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 21 Jan 2019 10:51:33 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 21 Jan 2019 18:51:07 +0000
+Message-Id: <20190121185118.18550-13-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
+References: <20190121185118.18550-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190121152218.9592-2-peter.maydell@linaro.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::543
-Subject: Re: [Qemu-arm] [PATCH v3 1/4] hw/arm/xlx-zynqmp: Realize cluster
- after putting RPUs in it
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-devel] [PATCH 12/23] hw/arm/armsse: Give each CPU its own
+ view of memory
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	"Emilio G . Cota" <cota@braap.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Agg0AHJfIpgp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GJ6Hc9SScANz
 
-On Mon, Jan 21, 2019 at 03:22:15PM +0000, Peter Maydell wrote:
-> Currently the cluster implementation doesn't have any constraints
-> on the ordering of realizing the TYPE_CPU_CLUSTER and populating it
-> with child objects. We want to impose a constraint that realize
-> must happen only after all the child objects are added, so move
-> the realize of rpu_cluster. (The apu_cluster is already
-> realized after child population.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Give each CPU its own container memory region. This is necessary
+for two reasons:
+ * some devices are instantiated one per CPU and the CPU sees only
+   its own device
+ * since a memory region can only be put into one container, we must
+   give each armv7m object a different MemoryRegion as its 'memory'
+   property, or a dual-CPU configuration will assert on realize when
+   the second armv7m object tries to put the MR into a container when
+   it is already in the first armv7m object's container
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/armsse.h | 10 ++++++++++
+ hw/arm/armsse.c         | 22 ++++++++++++++++++++--
+ 2 files changed, 30 insertions(+), 2 deletions(-)
 
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index faf5dfed252..89f19a971f4 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -135,7 +135,17 @@ typedef struct ARMSSE {
+     IoTKitSysCtl sysctl;
+     IoTKitSysCtl sysinfo;
+ 
++    /*
++     * 'container' holds all devices seen by all CPUs.
++     * 'cpu_container[i]' is the view that CPU i has: this has the
++     * per-CPU devices of that CPU, plus as the background 'container'
++     * (or an alias of it, since we can only use it directly once).
++     * container_alias[i] is the alias of 'container' used by CPU i+1;
++     * CPU 0 can use 'container' directly.
++     */
+     MemoryRegion container;
++    MemoryRegion container_alias[SSE_MAX_CPUS - 1];
++    MemoryRegion cpu_container[SSE_MAX_CPUS];
+     MemoryRegion alias1;
+     MemoryRegion alias2;
+     MemoryRegion alias3;
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 5cb2b78b1fc..2472dfef3a1 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -153,6 +153,15 @@ static void armsse_init(Object *obj)
+         qdev_prop_set_string(DEVICE(&s->armv7m[i]), "cpu-type",
+                              ARM_CPU_TYPE_NAME("cortex-m33"));
+         g_free(name);
++        name = g_strdup_printf("arm-sse-cpu-container%d", i);
++        memory_region_init(&s->cpu_container[i], obj, name, UINT64_MAX);
++        g_free(name);
++        if (i > 0) {
++            name = g_strdup_printf("arm-sse-container-alias%d", i);
++            memory_region_init_alias(&s->container_alias[i - 1], obj,
++                                     name, &s->container, 0, UINT64_MAX);
++            g_free(name);
++        }
+     }
+ 
+     sysbus_init_child_obj(obj, "secctl", &s->secctl, sizeof(s->secctl),
+@@ -332,7 +341,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+      * 0x50000000..0x5fffffff  alias of 0x40000000..0x4fffffff
+      */
+ 
+-    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
++    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -2);
+ 
+     for (i = 0; i < info->num_cpus; i++) {
+         DeviceState *cpudev = DEVICE(&s->armv7m[i]);
+@@ -373,7 +382,16 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+                 return;
+             }
+         }
+-        object_property_set_link(cpuobj, OBJECT(&s->container), "memory", &err);
++
++        if (i > 0) {
++            memory_region_add_subregion_overlap(&s->cpu_container[i], 0,
++                                                &s->container_alias[i - 1], -1);
++        } else {
++            memory_region_add_subregion_overlap(&s->cpu_container[i], 0,
++                                                &s->container, -1);
++        }
++        object_property_set_link(cpuobj, OBJECT(&s->cpu_container[i]),
++                                 "memory", &err);
+         if (err) {
+             error_propagate(errp, err);
+             return;
+-- 
+2.20.1
 
-> ---
->  hw/arm/xlnx-zynqmp.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index c67ac2e64ac..370b0e44a38 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -183,8 +183,6 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
->                              &error_abort, NULL);
->      qdev_prop_set_uint32(DEVICE(&s->rpu_cluster), "cluster-id", 1);
->  
-> -    qdev_init_nofail(DEVICE(&s->rpu_cluster));
-> -
->      for (i = 0; i < num_rpus; i++) {
->          char *name;
->  
-> @@ -212,6 +210,8 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
->              return;
->          }
->      }
-> +
-> +    qdev_init_nofail(DEVICE(&s->rpu_cluster));
->  }
->  
->  static void xlnx_zynqmp_init(Object *obj)
-> -- 
-> 2.20.1
-> 

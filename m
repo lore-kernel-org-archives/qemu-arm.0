@@ -1,94 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6381967wrt;
-        Mon, 21 Jan 2019 10:59:06 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4upXHcoPk6eg+UKONr/ygOXQ9tUBrQd8stddkD9vVAmXtv1QjBNVH72hGpHykkyCKYfOlx
-X-Received: by 2002:adf:e54a:: with SMTP id z10mr28484318wrm.238.1548097146192;
-        Mon, 21 Jan 2019 10:59:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548097146; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6393651wrt;
+        Mon, 21 Jan 2019 11:10:33 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5hsluSZXGsQepum4LjV97FpgIbookFe35BZb5aTr8+l1JwOBpzumf2xrgc7Nf27sBSdR1y
+X-Received: by 2002:a5d:694d:: with SMTP id r13mr43327wrw.323.1548097833034;
+        Mon, 21 Jan 2019 11:10:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548097833; cv=none;
         d=google.com; s=arc-20160816;
-        b=atyzTmKCLDyEkAb9iSCWDlsy6/KELeHTghV1CqugEQrOTskz96mctVE9nOV+Ajpbhv
-         CaTZ4nFFa030/T9DvYI0AGMxp1djYMjuLp+v6/D6eHoSpuizNmedEXowlNZ7RXIHF9Rs
-         TkIWHXpUJhKqWqG5npTn7tLxgvqWd/ADPNB9reyF1yMz+33W3CTUD+TJUUq/h9fo7SDM
-         +77SvuIrT18fAQSrwar7Q7aQOy4fRBEzuWD3wBBg1s4qjfOth/ru/hyNjOgxJpi+Lk1G
-         dsEoa3p7vH8+1YDoXaaM7QbdFCOpgUHqWCjeq0QfHrj4ANr1JMNLaYRje4mos4LFCzoJ
-         h5KQ==
+        b=a1Ug2tzUp73nEWVBCG2cdxOn9NkYefXhwo9hmcR6aT2cv78f4xj0c6esIt+8lB05JA
+         QPE9eKNZsTu585pBQ8272NCbxIHBZQQUKGLhh2lJ/VuYo9UeZL/LU1OaASUh63T113vT
+         n4Gnfnl7hDYrtt6cx4HhrEwHKX7HBxH8phB9t4CHFu5HbAZshY5q5lXnf4GK6DAuj/Su
+         y2DiuDkzFgiDM0AA2reYUyP0F8ROYBcEcCEvHWlqmzpXsGXILm3CwGrsHLdqRFWl5Mcr
+         P3Luq4jFK5n7Nw78xWofmqjlCuB2kYKn9naxGfrpges4IsvbqiwXOlwpTTpCKyvLS7jJ
+         z/kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=GGm0EepQW4CpO+lX7AkPi0zjfoy2SviKPe3G9gGyJx4=;
-        b=lXdRXSmnaxpHAkej7Ux8DMgL+hWXIJ1Pj2xFU/UtShrq7SOS0uJJnuOAMLTfacAiOt
-         rM5z5PRI+nnfsYVfd8bbi4GCTPHnbP4ef8cDPDtjqNIWldrx+8LiK6UFqJ0+R3jvfq4U
-         /gv4uW6WDwNbO4JTQFYLaqTFMUYMGXQub3BOXfS/ZgQgD00ETec1UEPjSirf5JSmXH/F
-         uQ7OJAfJj8R/usPSopb5pa1Sr9GA1YMDSPbiKD//ArQqLwkzjzgwfkuWuB/5tpJgekqA
-         lZ8gxgH4FuhJdYM2Ltqbi0aaVes+L0ICsZovbbsVFiiAJ/+GLu+ag15MwcO7ME6UD7+d
-         +ozw==
+        bh=6dJlwUKV/mqO+LXLnxltTP2TIDBTQAdk8nXHap2RUUY=;
+        b=ydQaCRi1f6N6JKzOqKtARJNlhSJKI6puLVm8z4iDHYGcAakRobcNe+j5+swyazAFn4
+         32tppySinNIbjUkmNWuSgePCOWAXDmGp2yvH8MJfc1f/14p9lngnM646BC7/gNwrXHHx
+         /DDB+bsAGXwLQZVk2pskNaZ2gqeUOB37NEaHqL2Y6DXylYRPO4BYdkU6jzF0p1e/xfhk
+         D23JBVRdoB+Wr+iCQv+EGHXzvxdhCMQHp4vhhoPl0KxDQGZe3Qdp9l0CMuhBp5mFfOLh
+         Y9ofLN53JHN74Po03NPmoFzvxpHF6kxH/gqtyiK0KMSLlSj9sJH7A7VAYxzUctGFDjAo
+         HSDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YfHdsCji;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SAD5tiJY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z19si31841943wmf.171.2019.01.21.10.59.05
+        by mx.google.com with ESMTPS id f8si67215065wro.330.2019.01.21.11.10.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 21 Jan 2019 10:59:06 -0800 (PST)
+        Mon, 21 Jan 2019 11:10:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YfHdsCji;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SAD5tiJY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:58181 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58296 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glemn-00067F-8r
-	for alex.bennee@linaro.org; Mon, 21 Jan 2019 13:59:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35811)
+	id 1glexr-0001XM-R6
+	for alex.bennee@linaro.org; Mon, 21 Jan 2019 14:10:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38654)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefT-0000up-5l
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:32 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1glevS-0007jF-K3
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 14:08:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glefR-0002cc-9E
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:31 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35860)
+	(envelope-from <peter.maydell@linaro.org>) id 1gleff-0002tG-9q
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:45 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37154)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glefP-0002ZL-CP
-	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:28 -0500
-Received: by mail-wm1-x344.google.com with SMTP id p6so11831332wmc.1
-	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:26 -0800 (PST)
+	id 1glefe-0002q6-Tc
+	for qemu-devel@nongnu.org; Mon, 21 Jan 2019 13:51:43 -0500
+Received: by mail-wm1-x341.google.com with SMTP id g67so11810974wmd.2
+	for <qemu-devel@nongnu.org>; Mon, 21 Jan 2019 10:51:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=GGm0EepQW4CpO+lX7AkPi0zjfoy2SviKPe3G9gGyJx4=;
-	b=YfHdsCjizcCsLAbf3gRWn3IhWz6cr7bEgsgJZ5i8TntyhRbsku0wYrGqEssQ8pQZil
-	eddIxA2AataA0XctefU7foeLALVWbyfB8o5DndIUuS7gzlgntPF/dff5UT0zY2om+D0x
-	C3ka0sUv0MD2ewW1oSde3ipn16pc9TrSmVlbo=
+	bh=6dJlwUKV/mqO+LXLnxltTP2TIDBTQAdk8nXHap2RUUY=;
+	b=SAD5tiJYu6GshOFt06OOesXbZzTo7uSnbOUYUPP6hioR7NUflBeSy72YkIuyrwN7oX
+	aLQuXcQhe+ZMXQfxHe50YOXIq3qbei+/aVge2SxWMv7fEOg+ZqoeT/h18L2PM4D6aSfa
+	nI9sisNjgTfbfI3NdCCJl6IPaOOHRZbEp5pXE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=GGm0EepQW4CpO+lX7AkPi0zjfoy2SviKPe3G9gGyJx4=;
-	b=K2RUbDF7B6Ls+TZQKZ6Fukq7UfywHC5gUbLE3XMSPxRtk2tSGyiOi10lWSAMQDgLX3
-	Nj1l5h+mEIGv0LoXfUrt12aFbjQXfxFscyz09+67nAC6yeCfHJRvuAcPq10NtK9CY6ze
-	jB0J8OpSSy9pBDpzu+EWwSMn07isBM2yyBMjECF1xiJTCpgSORiVmnySafUsFABkJW1W
-	T3V5gAfjBPKsmc9DZ2P5WHQm68mDBI6rwp3FuRCF/DWCkns51bM0h8KodajL7zcthIV1
-	rTiSTc/MoRnUjaAyNffN7uKkVWUBDsdNvddjiXRw6N5bD4CxAGDp6Ux5AQSRi6umnpgz
-	wuVQ==
-X-Gm-Message-State: AJcUukfBGrbd/Ue0/7chnBH2qmOiatxQpuS+MQzAPLgmwOK5shH2Mn+B
-	5jCWpUWUid0/ia/7UZAF/iDQ1A==
-X-Received: by 2002:a1c:13d1:: with SMTP id 200mr577151wmt.4.1548096684911;
-	Mon, 21 Jan 2019 10:51:24 -0800 (PST)
+	bh=6dJlwUKV/mqO+LXLnxltTP2TIDBTQAdk8nXHap2RUUY=;
+	b=KgFROWJEnRQ2dnd2gKuy4YGFcvExYTO5mGaECTr+BEoUERe4E7iAFLjTUsHKFNvfR/
+	nPgPCs6rejDyZFdiitCfCFBaZuivDjDx0cddjn2DOi8IP5BatRfHBKdVlnI3Kah00UXn
+	2yFiqEy5Msbpkckf4ZWIVlqmwCPBSrFhfgwdHGWWXdIyxMXdyPUCN7Sm4BP7wjMXrsFi
+	KlWkZODIaIDX1BHmocylMLESYzn/axDbqIYTr7eYTy4m9nsRkU6nNXPn82MX5v7iXva0
+	CNOHEBqDG23TqP1eWDUUCYEVeLkHXSxqyYwII9NiOO2/beD2vf1wLONdV+bTyAWz+GXp
+	iwYg==
+X-Gm-Message-State: AJcUukcJtFRl4lA2MtH9LfujDahA0JrwKKDD2QNpcB6a6aMs3K1VlMnd
+	izRo3PiAbDnTK8FxEUmRsMlcbg==
+X-Received: by 2002:a1c:4807:: with SMTP id v7mr555289wma.53.1548096697933;
+	Mon, 21 Jan 2019 10:51:37 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	n82sm50386660wma.42.2019.01.21.10.51.23
+	n82sm50386660wma.42.2019.01.21.10.51.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 21 Jan 2019 10:51:24 -0800 (PST)
+	Mon, 21 Jan 2019 10:51:37 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 21 Jan 2019 18:50:59 +0000
-Message-Id: <20190121185118.18550-5-peter.maydell@linaro.org>
+Date: Mon, 21 Jan 2019 18:51:10 +0000
+Message-Id: <20190121185118.18550-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190121185118.18550-1-peter.maydell@linaro.org>
 References: <20190121185118.18550-1-peter.maydell@linaro.org>
@@ -96,8 +96,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: [Qemu-devel] [PATCH 04/23] hw/arm/iotkit: Rename IoTKit to ARMSSE
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-devel] [PATCH 15/23] hw/arm/armsse: Add unimplemented-device
+ stubs for MHUs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,301 +113,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TBnsPYFFMoyA
+X-TUID: rKYF1j4tuP/K
 
-The Arm IoTKit was effectively the forerunner of a series of
-subsystems for embedded SoCs, named the SSE-050, SSE-100 and SSE-200:
-https://developer.arm.com/products/system-design/subsystems
-These are generally quite similar, though later iterations have
-extra devices that earlier ones do not.
-
-We want to add a model of the SSE-200, which means refactoring the
-IoTKit code into an abstract base class and subclasses (using the
-same design that the bcm283x SoC and Aspeed SoC family
-implementations do). As a first step, rename the IoTKit struct and
-QOM macros to ARMSSE, which is what we're going to name the base
-class. We temporarily retain TYPE_IOTKIT to avoid changing the
-code that instantiates a TYPE_IOTKIT device here and then changing
-it back again when it is re-introduced as a subclass.
+The SSE-200 has two Message Handling Units (MHUs), which sit behind
+the APB PPC0. Wire up some unimplemented-device stubs for these,
+since we don't yet implement a real model of this device.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/iotkit.h | 22 ++++++++++-----
- hw/arm/iotkit.c         | 59 +++++++++++++++++++++--------------------
- hw/arm/mps2-tz.c        |  2 +-
- 3 files changed, 47 insertions(+), 36 deletions(-)
+ include/hw/arm/armsse.h |  3 +++
+ hw/arm/armsse.c         | 41 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 44 insertions(+)
 
-diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-index 3a8ee639085..9701738ec75 100644
---- a/include/hw/arm/iotkit.h
-+++ b/include/hw/arm/iotkit.h
-@@ -1,5 +1,5 @@
- /*
-- * ARM IoT Kit
-+ * ARM SSE (Subsystems for Embedded): IoTKit
-  *
-  * Copyright (c) 2018 Linaro Limited
-  * Written by Peter Maydell
-@@ -9,7 +9,10 @@
-  * (at your option) any later version.
-  */
- 
--/* This is a model of the Arm IoT Kit which is documented in
-+/*
-+ * This is a model of the Arm "Subsystems for Embedded" family of
-+ * hardware, which include the IoT Kit and the SSE-050, SSE-100 and
-+ * SSE-200. Currently we model only the Arm IoT Kit which is documented in
-  * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-  * It contains:
-  *  a Cortex-M33
-@@ -71,8 +74,15 @@
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index 999c2e4f7e5..dbfcb280605 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -78,6 +78,7 @@
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
+ #include "hw/misc/iotkit-sysctl.h"
+ #include "hw/misc/iotkit-sysinfo.h"
++#include "hw/misc/unimp.h"
  #include "hw/or-irq.h"
  #include "hw/core/split-irq.h"
+ #include "hw/cpu/cluster.h"
+@@ -137,6 +138,8 @@ typedef struct ARMSSE {
+     IoTKitSysCtl sysctl;
+     IoTKitSysCtl sysinfo;
  
--#define TYPE_IOTKIT "iotkit"
--#define IOTKIT(obj) OBJECT_CHECK(IoTKit, (obj), TYPE_IOTKIT)
-+#define TYPE_ARMSSE "iotkit"
-+#define ARMSSE(obj) OBJECT_CHECK(ARMSSE, (obj), TYPE_ARMSSE)
++    UnimplementedDeviceState mhu[2];
 +
-+/*
-+ * For the moment TYPE_IOTKIT is a synonym for TYPE_ARMSSE (and the
-+ * latter's underlying name is left as "iotkit"); in a later
-+ * commit it will become a subclass of TYPE_ARMSSE.
-+ */
-+#define TYPE_IOTKIT TYPE_ARMSSE
+     /*
+      * 'container' holds all devices seen by all CPUs.
+      * 'cpu_container[i]' is the view that CPU i has: this has the
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 19cae77e770..1f3dc89c8e8 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -30,6 +30,7 @@ struct ARMSSEInfo {
+     int num_cpus;
+     uint32_t sys_version;
+     SysConfigFormat sys_config_format;
++    bool has_mhus;
+ };
  
- /* We have an IRQ splitter and an OR gate input for each external PPC
-  * and the 2 internal PPCs
-@@ -80,7 +90,7 @@
- #define NUM_EXTERNAL_PPCS (IOTS_NUM_AHB_EXP_PPC + IOTS_NUM_APB_EXP_PPC)
- #define NUM_PPCS (NUM_EXTERNAL_PPCS + 2)
+ static const ARMSSEInfo armsse_variants[] = {
+@@ -39,6 +40,7 @@ static const ARMSSEInfo armsse_variants[] = {
+         .num_cpus = 1,
+         .sys_version = 0x41743,
+         .sys_config_format = IoTKitFormat,
++        .has_mhus = false,
+     },
+ };
  
--typedef struct IoTKit {
-+typedef struct ARMSSE {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-@@ -131,6 +141,6 @@ typedef struct IoTKit {
-     MemoryRegion *board_memory;
-     uint32_t exp_numirq;
-     uint32_t mainclk_frq;
--} IoTKit;
-+} ARMSSE;
- 
- #endif
-diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-index 8742200fb42..9360053184e 100644
---- a/hw/arm/iotkit.c
-+++ b/hw/arm/iotkit.c
-@@ -1,5 +1,5 @@
- /*
-- * Arm IoT Kit
-+ * Arm SSE (Subsystems for Embedded): IoTKit
-  *
-  * Copyright (c) 2018 Linaro Limited
-  * Written by Peter Maydell
-@@ -24,7 +24,7 @@
- /* Create an alias region of @size bytes starting at @base
-  * which mirrors the memory starting at @orig.
-  */
--static void make_alias(IoTKit *s, MemoryRegion *mr, const char *name,
-+static void make_alias(ARMSSE *s, MemoryRegion *mr, const char *name,
-                        hwaddr base, hwaddr size, hwaddr orig)
- {
-     memory_region_init_alias(mr, NULL, name, &s->container, orig, size);
-@@ -41,18 +41,18 @@ static void irq_status_forwarder(void *opaque, int n, int level)
- 
- static void nsccfg_handler(void *opaque, int n, int level)
- {
--    IoTKit *s = IOTKIT(opaque);
-+    ARMSSE *s = ARMSSE(opaque);
- 
-     s->nsccfg = level;
- }
- 
--static void iotkit_forward_ppc(IoTKit *s, const char *ppcname, int ppcnum)
-+static void iotkit_forward_ppc(ARMSSE *s, const char *ppcname, int ppcnum)
- {
-     /* Each of the 4 AHB and 4 APB PPCs that might be present in a
--     * system using the IoTKit has a collection of control lines which
-+     * system using the ARMSSE has a collection of control lines which
-      * are provided by the security controller and which we want to
--     * expose as control lines on the IoTKit device itself, so the
--     * code using the IoTKit can wire them up to the PPCs.
-+     * expose as control lines on the ARMSSE device itself, so the
-+     * code using the ARMSSE can wire them up to the PPCs.
-      */
-     SplitIRQ *splitter = &s->ppc_irq_splitter[ppcnum];
-     DeviceState *iotkitdev = DEVICE(s);
-@@ -91,7 +91,7 @@ static void iotkit_forward_ppc(IoTKit *s, const char *ppcname, int ppcnum)
-     g_free(name);
- }
- 
--static void iotkit_forward_sec_resp_cfg(IoTKit *s)
-+static void iotkit_forward_sec_resp_cfg(ARMSSE *s)
- {
-     /* Forward the 3rd output from the splitter device as a
-      * named GPIO output of the iotkit object.
-@@ -107,7 +107,7 @@ static void iotkit_forward_sec_resp_cfg(IoTKit *s)
- 
- static void iotkit_init(Object *obj)
- {
--    IoTKit *s = IOTKIT(obj);
-+    ARMSSE *s = ARMSSE(obj);
-     int i;
- 
-     memory_region_init(&s->container, obj, "iotkit-container", UINT64_MAX);
-@@ -175,20 +175,20 @@ static void iotkit_init(Object *obj)
- 
- static void iotkit_exp_irq(void *opaque, int n, int level)
- {
--    IoTKit *s = IOTKIT(opaque);
-+    ARMSSE *s = ARMSSE(opaque);
- 
-     qemu_set_irq(s->exp_irqs[n], level);
- }
- 
- static void iotkit_mpcexp_status(void *opaque, int n, int level)
- {
--    IoTKit *s = IOTKIT(opaque);
-+    ARMSSE *s = ARMSSE(opaque);
-     qemu_set_irq(s->mpcexp_status_in[n], level);
- }
- 
- static void iotkit_realize(DeviceState *dev, Error **errp)
- {
--    IoTKit *s = IOTKIT(dev);
-+    ARMSSE *s = ARMSSE(dev);
-     int i;
-     MemoryRegion *mr;
-     Error *err = NULL;
-@@ -215,9 +215,9 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-      * devices exist in both address spaces but with hard-wired security
-      * permissions that will cause the CPU to fault for non-secure accesses.
-      *
--     * The IoTKit has an IDAU (Implementation Defined Access Unit),
-+     * The ARMSSE has an IDAU (Implementation Defined Access Unit),
-      * which specifies hard-wired security permissions for different
--     * areas of the physical address space. For the IoTKit IDAU, the
-+     * areas of the physical address space. For the ARMSSE IDAU, the
-      * top 4 bits of the physical address are the IDAU region ID, and
-      * if bit 28 (ie the lowest bit of the ID) is 0 then this is an NS
-      * region, otherwise it is an S region.
-@@ -239,7 +239,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-      * 0x20000000..0x2007ffff  32KB FPGA block RAM
-      * 0x30000000..0x3fffffff  alias of 0x20000000..0x2fffffff
-      * 0x40000000..0x4000ffff  base peripheral region 1
--     * 0x40010000..0x4001ffff  CPU peripherals (none for IoTKit)
-+     * 0x40010000..0x4001ffff  CPU peripherals (none for ARMSSE)
-      * 0x40020000..0x4002ffff  system control element peripherals
-      * 0x40080000..0x400fffff  base peripheral region 2
-      * 0x50000000..0x5fffffff  alias of 0x40000000..0x4fffffff
-@@ -306,8 +306,8 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-     qdev_connect_gpio_out_named(dev_secctl, "nsc_cfg", 0, s->nsc_cfg_in);
- 
-     /* The sec_resp_cfg output from the security controller must be split into
--     * multiple lines, one for each of the PPCs within the IoTKit and one
--     * that will be an output from the IoTKit to the system.
-+     * multiple lines, one for each of the PPCs within the ARMSSE and one
-+     * that will be an output from the ARMSSE to the system.
-      */
-     object_property_set_int(OBJECT(&s->sec_resp_splitter), 3,
-                             "num-lines", &err);
-@@ -475,7 +475,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
- 
-     /* 0x40010000 .. 0x4001ffff: private CPU region: unused in IoTKit */
- 
--    /* 0x40020000 .. 0x4002ffff : IoTKit system control peripheral region */
-+    /* 0x40020000 .. 0x4002ffff : ARMSSE system control peripheral region */
-     /* Devices behind APB PPC1:
-      *   0x4002f000: S32K timer
-      */
-@@ -558,7 +558,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-                        qdev_get_gpio_in(DEVICE(&s->nmi_orgate), 0));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->s32kwatchdog), 0, 0x5002e000);
- 
--    /* 0x40080000 .. 0x4008ffff : IoTKit second Base peripheral region */
-+    /* 0x40080000 .. 0x4008ffff : ARMSSE second Base peripheral region */
- 
-     qdev_prop_set_uint32(DEVICE(&s->nswatchdog), "wdogclk-frq", s->mainclk_frq);
-     object_property_set_bool(OBJECT(&s->nswatchdog), true, "realized", &err);
-@@ -678,7 +678,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
-      * Expose our container region to the board model; this corresponds
-      * to the AHB Slave Expansion ports which allow bus master devices
-      * (eg DMA controllers) in the board model to make transactions into
--     * devices in the IoTKit.
-+     * devices in the ARMSSE.
-      */
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
- 
-@@ -688,11 +688,12 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
- static void iotkit_idau_check(IDAUInterface *ii, uint32_t address,
-                               int *iregion, bool *exempt, bool *ns, bool *nsc)
- {
--    /* For IoTKit systems the IDAU responses are simple logical functions
-+    /*
-+     * For ARMSSE systems the IDAU responses are simple logical functions
-      * of the address bits. The NSC attribute is guest-adjustable via the
-      * NSCCFG register in the security controller.
-      */
--    IoTKit *s = IOTKIT(ii);
-+    ARMSSE *s = ARMSSE(ii);
-     int region = extract32(address, 28, 4);
- 
-     *ns = !(region & 1);
-@@ -707,22 +708,22 @@ static const VMStateDescription iotkit_vmstate = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(nsccfg, IoTKit),
-+        VMSTATE_UINT32(nsccfg, ARMSSE),
-         VMSTATE_END_OF_LIST()
+@@ -257,6 +259,12 @@ static void armsse_init(Object *obj)
+                           sizeof(s->sysctl), TYPE_IOTKIT_SYSCTL);
+     sysbus_init_child_obj(obj, "armsse-sysinfo", &s->sysinfo,
+                           sizeof(s->sysinfo), TYPE_IOTKIT_SYSINFO);
++    if (info->has_mhus) {
++        sysbus_init_child_obj(obj, "mhu0", &s->mhu[0], sizeof(s->mhu[0]),
++                              TYPE_UNIMPLEMENTED_DEVICE);
++        sysbus_init_child_obj(obj, "mhu1", &s->mhu[1], sizeof(s->mhu[1]),
++                              TYPE_UNIMPLEMENTED_DEVICE);
++    }
+     object_initialize_child(obj, "nmi-orgate", &s->nmi_orgate,
+                             sizeof(s->nmi_orgate), TYPE_OR_IRQ,
+                             &error_abort, NULL);
+@@ -616,6 +624,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+      *   0x40000000: timer0
+      *   0x40001000: timer1
+      *   0x40002000: dual timer
++     *   0x40003000: MHU0 (SSE-200 only)
++     *   0x40004000: MHU1 (SSE-200 only)
+      * We must configure and realize each downstream device and connect
+      * it to the appropriate PPC port; then we can realize the PPC and
+      * map its upstream ends to the right place in the container.
+@@ -666,6 +676,31 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         return;
      }
- };
  
- static Property iotkit_properties[] = {
--    DEFINE_PROP_LINK("memory", IoTKit, board_memory, TYPE_MEMORY_REGION,
-+    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
--    DEFINE_PROP_UINT32("EXP_NUMIRQ", IoTKit, exp_numirq, 64),
--    DEFINE_PROP_UINT32("MAINCLK", IoTKit, mainclk_frq, 0),
-+    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
-+    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
- static void iotkit_reset(DeviceState *dev)
- {
--    IoTKit *s = IOTKIT(dev);
-+    ARMSSE *s = ARMSSE(dev);
- 
-     s->nsccfg = 0;
- }
-@@ -740,9 +741,9 @@ static void iotkit_class_init(ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo iotkit_info = {
--    .name = TYPE_IOTKIT,
-+    .name = TYPE_ARMSSE,
-     .parent = TYPE_SYS_BUS_DEVICE,
--    .instance_size = sizeof(IoTKit),
-+    .instance_size = sizeof(ARMSSE),
-     .instance_init = iotkit_init,
-     .class_init = iotkit_class_init,
-     .interfaces = (InterfaceInfo[]) {
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 82b1d020a58..5824335b4fb 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -66,7 +66,7 @@ typedef struct {
- typedef struct {
-     MachineState parent;
- 
--    IoTKit iotkit;
-+    ARMSSE iotkit;
-     MemoryRegion psram;
-     MemoryRegion ssram[3];
-     MemoryRegion ssram1_m;
++    if (info->has_mhus) {
++        for (i = 0; i < ARRAY_SIZE(s->mhu); i++) {
++            char *name = g_strdup_printf("MHU%d", i);
++            char *port = g_strdup_printf("port[%d]", i + 3);
++
++            qdev_prop_set_string(DEVICE(&s->mhu[i]), "name", name);
++            qdev_prop_set_uint64(DEVICE(&s->mhu[i]), "size", 0x1000);
++            object_property_set_bool(OBJECT(&s->mhu[i]), true,
++                                     "realized", &err);
++            if (err) {
++                error_propagate(errp, err);
++                return;
++            }
++            mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mhu[i]), 0);
++            object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr),
++                                     port, &err);
++            if (err) {
++                error_propagate(errp, err);
++                return;
++            }
++            g_free(name);
++            g_free(port);
++        }
++    }
++
+     object_property_set_bool(OBJECT(&s->apb_ppc0), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -681,6 +716,12 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->container, 0x40001000, mr);
+     mr = sysbus_mmio_get_region(sbd_apb_ppc0, 2);
+     memory_region_add_subregion(&s->container, 0x40002000, mr);
++    if (info->has_mhus) {
++        mr = sysbus_mmio_get_region(sbd_apb_ppc0, 3);
++        memory_region_add_subregion(&s->container, 0x40003000, mr);
++        mr = sysbus_mmio_get_region(sbd_apb_ppc0, 4);
++        memory_region_add_subregion(&s->container, 0x40004000, mr);
++    }
+     for (i = 0; i < IOTS_APB_PPC0_NUM_PORTS; i++) {
+         qdev_connect_gpio_out_named(dev_secctl, "apb_ppc0_nonsec", i,
+                                     qdev_get_gpio_in_named(dev_apb_ppc0,
 -- 
 2.20.1
 

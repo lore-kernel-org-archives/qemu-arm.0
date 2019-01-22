@@ -1,99 +1,107 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7026965wrt;
-        Tue, 22 Jan 2019 01:54:37 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5zknGsowG4jOngod7XE5z71htoQOYurMDRKBOK9xOohvFdIRPjR3/ND587m3ToC7+Kiz2x
-X-Received: by 2002:adf:f449:: with SMTP id f9mr32591113wrp.40.1548150877837;
-        Tue, 22 Jan 2019 01:54:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548150877; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7036827wrt;
+        Tue, 22 Jan 2019 02:05:26 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN4ZNB/KUukQ5z8++GiQrT1A5gscMwYh6iR+7aT4ZiOsZosWvtaPdD7rD2f06ymrTrgQnCco
+X-Received: by 2002:a5d:628a:: with SMTP id k10mr31275670wru.254.1548151526060;
+        Tue, 22 Jan 2019 02:05:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548151526; cv=none;
         d=google.com; s=arc-20160816;
-        b=PQYzeX+7cTb+vigTE12FPZB6oVvzD4GzdiLx9E3rFPZ0ojOdLyOAztrZ1wlAlFCdfn
-         nrJoayLrVxEbNgVjvPOeMpZy9UDbyjDflNuGntytXZcHmx0BJnNUnY67sItZg4bUd8u8
-         GvBREv80KuTutxg0LrJRgs3GUfNtPPKAtAGk2JGRFtC9o5yrTIWhEV2U3lPzITTwvbvb
-         /cB51n6pQCJAvSp53CqcexfAyfW7udqqKi7DHjUQftrF+31K9rbvWIiN/k9BO/7OwDkj
-         u9jMuFhvCQVdwF/xPH0ZVj6+YULMG/GKBC4EydrB6QUsvX7eLXDhSLu8LkQswMbTwWhh
-         kjtg==
+        b=g06CUJHWBo9sEM4g6poVkIE63H4XII/Pc8UHfD1OYNgDB6L8YUloiQcqCt6j3n1dHZ
+         mM4O2yhGd+zjbFpzR97OJ3I2YSDUOLYMYhCnRCxjo0FuAl7QadCnw1EhMJH6PO9MdFV9
+         q1g4eK48T4Hke5fxfwcHiaZdbvvoO0YUcIqsWZddzCMe7/XSndTG2XkIf2LWA1DXqq4F
+         83PM0AzVPROvz+ufM9hyuRonID6DdBJFttaqbq/8MvkNJgtmRcW3C77g4/GZZNOL37MX
+         B/CaKAaWGGTUS3NNocsqM6fWymwRiV0li/NWlXRE6qf+M9/2BrEsjrryLdxeokcUmBhh
+         ledg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=plS6RYjuR4ETWUUyhWCrOUITpkCBmz1voGmAiCh3ojI=;
-        b=NORMszD2Ba3mbmgoCr0YmWZHakK9gUlf+vfBb66qtSTmLS44ozVGwp4NnkEg3NKYkO
-         dKpliahpsQMsRyFz6IO4kLGTi1Qa+eFAdWgNH2WpDqnihFQrk2j7otHMcaAefABfPIc5
-         +fTl9f4qCpeAB0JZEuKG3nAH7cx9vTCm6FyECDGNR9vSFI7WO3WK7xuz5AHaaUfCk2oY
-         gp2pa/UENbWq+654rJHFzuSGGqLPfc6ve21V/evYByXDJFSBIJI3eJmgzSiGWgOGgOWw
-         eOYePCH/3qzx+Xzlq4sw03wyElCRGErERUohIcjz10xAY+1wljU+Omte82x4KQdSw2zN
-         LHjA==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=R44cpBsVj6/9CFDyox+CuZhB9j8jyVuRGgSIptMVyNQ=;
+        b=N7HIL/jxNYss+5SzfcoEPCbemDF2O8two90DXdG4Bsw5Z8Nz/lKnek85EgVV7jDWUF
+         XRMr+VzdB0wmuVOGMK+O0Nlsf5Fh5cOUMh/0fmvEJnexMoeMb60KAZMVlA+9WVUdhiI6
+         LQD74FyMc1OgSt8WB+7JcOYgy2qSIdAUHQpBPFJU5Qmy4qYS1SpslmLqIV5o3Hfr5Fb4
+         3gnJYq+Po9TexZqsn+0EUJCvul6+VgyvAazHlQjyxWjzv8DzMHrKW8gKNbUToS2Ci1oc
+         Kfkaf6ZSJWNzsMipADBgRlpX9tPTnFDSRGA0FkO2qY69kr5h4FQte3R4f0JbivxQq3Ds
+         XsXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=arOIFf+9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UKlcAFa8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4si64336022wru.170.2019.01.22.01.54.37
+        by mx.google.com with ESMTPS id q9si10268023wrv.174.2019.01.22.02.05.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Jan 2019 01:54:37 -0800 (PST)
+        Tue, 22 Jan 2019 02:05:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=arOIFf+9;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UKlcAFa8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:41797 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:41966 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glslQ-0002LW-TD
-	for alex.bennee@linaro.org; Tue, 22 Jan 2019 04:54:36 -0500
+	id 1glsvt-0002Py-5c
+	for alex.bennee@linaro.org; Tue, 22 Jan 2019 05:05:25 -0500
 Received: from eggs.gnu.org ([209.51.188.92]:59106)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glsVu-0006AI-Kx
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:38:35 -0500
+	(envelope-from <stefanha@gmail.com>) id 1glsW0-0006AI-GN
+	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:38:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1glsMn-0004Cd-Vh
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:29:10 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:37499)
+	(envelope-from <stefanha@gmail.com>) id 1glsKk-0002k7-3O
+	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:27:07 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38426)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1glsMn-0004Bz-QH
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:29:09 -0500
-Received: by mail-oi1-x244.google.com with SMTP id y23so16840065oia.4
-	for <qemu-devel@nongnu.org>; Tue, 22 Jan 2019 01:29:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=plS6RYjuR4ETWUUyhWCrOUITpkCBmz1voGmAiCh3ojI=;
-	b=arOIFf+9z2j/5eYi+D4wGRJTOUYoL7yzZ+0MWfC6VlHplLEycoGhmYaPGgzbIkqCHO
-	bJPE4D26tZaSADvNfLMc9mjhSwVcy8ZblbQDxtrZQU1TzfpaDSAg8sYMxKsGQkcz9khi
-	vTpDyT/zIoU7MAp2eqlQVOc9n+H87FekpAOQY=
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1glsKj-0002hL-Mt; Tue, 22 Jan 2019 04:27:02 -0500
+Received: by mail-wr1-x444.google.com with SMTP id v13so26456963wrw.5;
+	Tue, 22 Jan 2019 01:27:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=R44cpBsVj6/9CFDyox+CuZhB9j8jyVuRGgSIptMVyNQ=;
+	b=UKlcAFa8RMva6b2V2F8euoaY5+e6Nwn5KWGPNE3x6R7GFqY23c/WPRfPkvBKDvEhI5
+	K5DCzB5AGkF/ZPUFTX6XZtQzEp6C4AP+wPFdV+c2j3CeHceQqqV9VSR+z2J8wLCIGrfh
+	9ryno6meKsnthMxhcnE3gQTo0FCmmH7AEOrwNhqu7HWmFkbkAOGmsf3JctdljU0kI0KN
+	Uox67AWIZfNYJGTTjrBo526ltkzBv0IVZuAlvyXimhGLwHET3zfNdy0EHu5jT2Pdm1Dx
+	OsXhDCsWTv8hmy1ZmHnx5vKLDbjiJQqWChpsrUbMCZS+4l7amdaJ1Ej2LJhNuU1fRDzu
+	6VmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=plS6RYjuR4ETWUUyhWCrOUITpkCBmz1voGmAiCh3ojI=;
-	b=WxPxk4+GEcwGCIJ8SuwXKm2POGN9PLAvbnkavNqzTVGedu0n3B6lM2FWZ5BWPMXIF0
-	bgl5ujhxIFokHh4IC+tlJhKBz/McUV7vN7Kwr4KyU90rOZIrLKy5rA3BjLZr+csp6Elj
-	IOUD8yKIffQ1PXeocKlEo5CESe5wPsX5HEEaVwis9jiUFKVN9jOMz9T8lV3UFHl8Kw9g
-	dtABPFjRikDP4hEaYfo8IUtxBRQGwrclyxM0mB3AkmbVF+/iyZFjbsdT8CdC7KsRyHFv
-	LgWCKYARfGpE0rmwkWOvrOeZvzbGWa4yRrc9UAwjckc3HemqwU3+ipqpG9du3SSNwYUZ
-	bM8A==
-X-Gm-Message-State: AJcUukcNo0bN7jMsD90GNgSttjTAdKR/eiVGNebuColbHE7VhPub6AEn
-	d+OlKavrdpI18HV/lvDZFMN8yHZ/9fGncXrKeSijTw==
-X-Received: by 2002:aca:1e17:: with SMTP id m23mr8146449oic.332.1548149348057; 
-	Tue, 22 Jan 2019 01:29:08 -0800 (PST)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=R44cpBsVj6/9CFDyox+CuZhB9j8jyVuRGgSIptMVyNQ=;
+	b=HyKgmabQWFJKcAGOqT3jm5tBr6p4loc0hTl6A/7TKodOPPcCYGeRKYmf6TDAAX5HEs
+	LzuSwSA0fFYQX3Q6RsXFeKVUcDek9AT7dzBh0EgzfsAUeAvhqCUT+xRkG+CJvvLCa8qx
+	kkouaFb42nls5YNLnfGIfRtrJqJ5U3eaZ/yOHk0AoWqXJjbZCXoyPPw952OADAD2dCCw
+	CB8UmNu+nNkmsZ8l/QUWqh8DQv8yxQ3oQNGHTAIQqOEEQP6LqskQgoxQeO5ReDvE6J9u
+	aT85r/59vp1lvjbo8qYJTecgoi18pqJXYwLNv4mi3Q+ds1QEjkRSNLNSPhGQXeIhOibl
+	FAOA==
+X-Gm-Message-State: AJcUukesYo1YeJ36LpXLhGlos2zSJLvsZicLLqoE5Kg9VciDavUM5mbB
+	CeTGZIeymcOh5fcF+aQa+/E=
+X-Received: by 2002:a5d:68c3:: with SMTP id p3mr32791161wrw.34.1548149219551; 
+	Tue, 22 Jan 2019 01:26:59 -0800 (PST)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	v6sm75052357wrd.88.2019.01.22.01.26.58
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 22 Jan 2019 01:26:58 -0800 (PST)
+Date: Tue, 22 Jan 2019 09:26:57 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190122092657.GA17452@stefanha-x1.localdomain>
+References: <20190110094020.18354-1-stefanha@redhat.com>
+	<CAFEAcA8bz7ViuZeZqCBZHy49=dbYxW7Q04MbuVKapEfT5K56ug@mail.gmail.com>
 MIME-Version: 1.0
-References: <20190121184314.14311-1-peter.maydell@linaro.org>
-	<383fd07d-9c2a-a7b2-5b88-f9a411c8b91a@redhat.com>
-In-Reply-To: <383fd07d-9c2a-a7b2-5b88-f9a411c8b91a@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Jan 2019 09:28:56 +0000
-Message-ID: <CAFEAcA9G7CuZ3wSO9YLs-OH4m1zQ7s73yWp8rwsDBSyUZokyGg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="RnlQjJ0d97Da+TV1"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8bz7ViuZeZqCBZHy49=dbYxW7Q04MbuVKapEfT5K56ug@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH] xlnx-zynqmp: Don't create rpu-cluster if
- there are no RPUs
+X-Received-From: 2a00:1450:4864:20::444
+Subject: Re: [Qemu-devel] [PATCH v2 0/2] arm: Stub out NRF51 TWI
+ magnetometer/accelerometer detection
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,79 +113,77 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Luc Michel <luc.michel@greensocs.com>
+Cc: Laurent Vivier <lvivier@redhat.com>, Jim Mussared <jim@groklearning.com>,
+	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FxEZElQGOCBq
+X-TUID: lB+7aYLgqQIT
 
-On Mon, 21 Jan 2019 at 20:12, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Hi Peter,
->
-> On 1/21/19 7:43 PM, Peter Maydell wrote:
-> > If we aren't going to create any RPUs, then don't create the
-> > rpu-cluster unit. This allows us to add an assertion to the
-> > cluster object that it contains at least one CPU, which helps
-> > to avoid bugs in creating clusters and putting CPUs in them.
+
+--RnlQjJ0d97Da+TV1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jan 21, 2019 at 04:21:03PM +0000, Peter Maydell wrote:
+> On Thu, 10 Jan 2019 at 09:40, Stefan Hajnoczi <stefanha@redhat.com> wrote:
 > >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> > This is a preparatory patch that is necessary for the series
-> > "[PATCH v3 0/4] tcg: support heterogenous CPU clusters"
-> > (20190121152218.9592-1-peter.maydell@linaro.org)
-> > in order to avoid the xlnx-zcu102 board asserting if started with
-> > fewer than 5 CPUs.
+> > v2:
+> >  * Move stub code into a separate device [Peter]
+> >  * Instantiate stub from microbit board instead of nRF51 SoC since this=
+ is
+> >    microbit-specific.  Other boards using the nRF51 wouldn't necessaril=
+y want
+> >    to see these TWI/I2C devices.
+> >  * Add test case
 > >
-> >  hw/arm/xlnx-zynqmp.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
+> > This series stubs out the microbit's TWI/I2C devices so the microbit-dal
+> > firmware boots successfully.  The accelerometer and magnetometer are pr=
+obed at
+> > startup.  If they are not found the firmware panics.
 > >
-> > diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> > index 370b0e44a38..16cba433cb7 100644
-> > --- a/hw/arm/xlnx-zynqmp.c
-> > +++ b/hw/arm/xlnx-zynqmp.c
-> > @@ -178,6 +178,11 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState=
- *s, const char *boot_cpu,
-> >      int i;
-> >      int num_rpus =3D MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYN=
-QMP_NUM_RPU_CPUS);
->
-> Not related to this patch, but this check seems dangerous, i.e. using
-> "-smp 2" we get num_rpus=3D-2 which luckyly doesn't enter the for() loop.
->
+> > Stefan Hajnoczi (1):
+> >   tests/microbit-test: add TWI stub device test
 > >
-> > +    if (num_rpus =3D=3D 0) {
->
-> With the current codebase, you'd have to check for "num_rpus <=3D 0", ...
+> > Steffen G=F6rtz (1):
+> >   arm: Stub out NRF51 TWI magnetometer/accelerometer detection
+> >
+> >  hw/i2c/Makefile.objs          |   1 +
+> >  include/hw/arm/nrf51.h        |   2 +
+> >  include/hw/arm/nrf51_soc.h    |   1 +
+> >  include/hw/i2c/microbit_i2c.h |  42 +++++++++++
+> >  hw/arm/microbit.c             |  15 ++++
+> >  hw/i2c/microbit_i2c.c         | 127 ++++++++++++++++++++++++++++++++++
+> >  tests/microbit-test.c         |  44 ++++++++++++
+> >  7 files changed, 232 insertions(+)
+> >  create mode 100644 include/hw/i2c/microbit_i2c.h
+> >  create mode 100644 hw/i2c/microbit_i2c.c
+>=20
+> Applied to target-arm.next, thanks. Can you provide a
+> MAINTAINERS file update for the new files, please?
+> (You can send that separately or stick it in another
+> nrf51 series if you're sending one.)
 
-Oops, nice catch.
+Sure, will do.
 
-> What about this instead?
->
-> -- >8 --
-> @@ -451,10 +451,12 @@ static void xlnx_zynqmp_realize(DeviceState *dev,
-> Error **errp)
->                      "RPUs just use -smp 6.");
->      }
->
-> -    xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    if (smp_cpus > XLNX_ZYNQMP_NUM_APU_CPUS) {
-> +        xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->      }
+Stefan
 
-Yeah, that would work too. I think I would just go for
-using "if (num_rpus <=3D 0)" in the function, though.
+--RnlQjJ0d97Da+TV1
+Content-Type: application/pgp-signature; name="signature.asc"
 
-thanks
--- PMM
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcRuHhAAoJEJykq7OBq3PIoXYH/2kCnoguR7EO1X7TnB+GAArT
+BdAJYlGbXTLepUjO9IQ2Q8B4CMC2/jg9YopD9zJGJJJRFUckHCZkL6bHZDNloKfr
+y33j3g5g5estByYfYBz8X0zm1xbpd/3FF2KwRFDDbCg87cOGr7CLfRl1Pq92kn0F
+Lr0Wc3VSDtVBdLNSgBcAaicZL1CUOJtdrLCTtauQuedAUg61uPdjvqXT0b4impfT
+2LUXVZO/En5AgbGwxdk2q3vgNWXa5gxqKw9IzkGcJIoHBIbS6IKTsL7sAB+A1Oob
+ic+AYhPR7U8qZHI13DGEFLuIB6LyFkBMidVsvnP1PZAqsNM86sGFSMPmYnMMaFw=
+=jj9T
+-----END PGP SIGNATURE-----
+
+--RnlQjJ0d97Da+TV1--

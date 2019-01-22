@@ -1,193 +1,244 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7046884wrt;
-        Tue, 22 Jan 2019 02:15:38 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6NRyNouIHvlbOityx8YOmO/ddsiByGc3BnuoUnT/ft8Px9FfPbDyOOcLMdKUxJbZfChjES
-X-Received: by 2002:a7b:cb86:: with SMTP id m6mr2990172wmi.61.1548152138258;
-        Tue, 22 Jan 2019 02:15:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548152138; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7085152wrt;
+        Tue, 22 Jan 2019 03:01:58 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5TJWRlKWj9YlCUan3i/ALW2g2v6hDiMVpOUrTeq99a/gUdhhLV0jLSBsynYKcLbfhusiya
+X-Received: by 2002:a5d:528e:: with SMTP id c14mr32042916wrv.236.1548154918729;
+        Tue, 22 Jan 2019 03:01:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548154918; cv=none;
         d=google.com; s=arc-20160816;
-        b=kAyEmG5ctNJ1mkWNZKP424DIZCg8ARIHSsOgxQKt6fVfxtF5J8nFz1oK77l0R9boIq
-         4muqyVB2OwVrndNpqB5cYFRZ5CjEzvuhpKdsP6XMT4Tnw72ZrocWBTOSc/xXPu2k5H5a
-         dpscsnyi2QQnp6YQQBtTCNlxzDhmc9F1QPO7va8llLhWbvT2pCGCmlpXo4scj+9qRbXl
-         42x5isiQ7pgMDwSFI+ocz4XuNlO4TQNSSkMwE8tbBNK76AQCbBYF6fEV5VNtBI1RlxvB
-         gOq8mxK72JsgM4DeX10cvV8UGMjcRuKaZq0z+ZkQBSsMRNRWtqMhWqD4sGPor2ZrpfZC
-         DtYw==
+        b=0CI0YvnLFg7MBFWyE4yKQQzUE1ibPSXWWR7TW++Zkpyg9neH3nqpX6ctVXcAbC4T7V
+         rNFQI4GQtAPkm9DUkh8zUOrvJV36Kw/n5IgpOZuhxtE8zi1/aOHS6Xt5HEB40aIor0Cf
+         96LMg5svRCttpnSpSVAuY8D+5t9Eo3Q5tNGDFUwDgxECK1KAZCUMleXYhf3CBri4pPa3
+         ySH80DsjRveS90UHeMRTuWo5EfWpQh7XnzJ5bSTDMSeLnb0l432WAc2F61sb0qDZcdxZ
+         4I3TSdh8FVdDkB/ohP8IEEc7F07YPGnP6ErTCuSi6gufeRj4L/Jv/uBgwN3cd1x3GClf
+         Mxpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=srOvF2wQniTiCAVmemG6GaOAq/AgGEF8mOesGOF8u3E=;
-        b=y1/yNytVK/Foixi7+zxP6nCIXlWUYbZf6TuOx67glRpb9cptOy12LhkKUOUeewvZp9
-         oly44asCmGQdAqSvor778B+QvD9sK5frstvF79rkH0Z9XcGX4E3RaiZt7ajqat34fvoD
-         rNNB1Cwlr7EeErof54+XeahmAOPUs+2yH+sRhi58Xpf27rA8a9yg0gXiJQ1rjf8gzwVF
-         6Mu+p8eAACwBvx1fteOfKutr26nJSe1ndnfMQHTd5mpM5zmH8mlKETIIwaaC0a9WM0HO
-         5UgtEeg4XT3wPGi5dKLdy2H/VlsD5ZVA7Vi+Rv7LnbNWkwhmoinwBqyZebIAKGhBfG/8
-         zT5A==
+        bh=qc3OnSPpbCO6/jYaQe15dOzBHjvEOeqCCZd+0BR4zyc=;
+        b=wio8h86ungkuUTr8HIj3SCIjI59mEEy1qSINVIfB6pNKjkra07UWWGJ3JCyFNUUIpx
+         0B7zpLMICLjc6TbW36Va2ywO7GtmzhHjqo1WydEPQHoagQYUOvCwwwLvqqkwomBi1tBr
+         bgNAkj7cDJW3LrILOMqTNHnvNd95COLOudSvh6AZUPbHCDo0un+DMuc4T252Dgx4dkzw
+         KtWqUTGHJUDJAasELJHrFewFc19T8Q6myigPyPpCBayd2oFg/q8Z6aXCQCxnrl96UU5d
+         O3/Qjkn3oLjugj5TOLeBn3wQt1auwLjYLL6EAfK6lUFgr2a8p22bdWLemy7ga90RcySZ
+         /m+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3si66691034wrv.158.2019.01.22.02.15.38
+        by mx.google.com with ESMTPS id a7si32619976wme.181.2019.01.22.03.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 Jan 2019 02:15:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Jan 2019 03:01:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42165 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:43190 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1glt5l-00031u-6v
-	for alex.bennee@linaro.org; Tue, 22 Jan 2019 05:15:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33285)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gltob-0004vv-Nj
+	for alex.bennee@linaro.org; Tue, 22 Jan 2019 06:01:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56079)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1glsaw-0002s6-9p
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:43:47 -0500
+	(envelope-from <philmd@redhat.com>) id 1gltoM-0004v5-BD
+	for qemu-arm@nongnu.org; Tue, 22 Jan 2019 06:01:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1glsau-0004tJ-Ak
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:43:46 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:40438)
+	(envelope-from <philmd@redhat.com>) id 1gltoK-0007Eg-9l
+	for qemu-arm@nongnu.org; Tue, 22 Jan 2019 06:01:42 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:41316)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1glsaq-0004ni-Io
-	for qemu-devel@nongnu.org; Tue, 22 Jan 2019 04:43:42 -0500
-Received: by mail-wr1-f67.google.com with SMTP id p4so26500713wrt.7
-	for <qemu-devel@nongnu.org>; Tue, 22 Jan 2019 01:43:37 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gltoI-000765-JN
+	for qemu-arm@nongnu.org; Tue, 22 Jan 2019 06:01:40 -0500
+Received: by mail-wr1-f66.google.com with SMTP id x10so26755523wrs.8
+	for <qemu-arm@nongnu.org>; Tue, 22 Jan 2019 03:01:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=srOvF2wQniTiCAVmemG6GaOAq/AgGEF8mOesGOF8u3E=;
-	b=BtwkL28RrlMheENQQlIvBaeQlVR87trH/jNw/4aA57agUC3Mog9+9swMQX6ibJCZ3H
-	+XugE+VHdTJyQc9OfimYpv53njPDaP4Xi92ax+B3bv5uQ6G4rnlT2mVR5F7bCU58yl6P
-	MaDuN4Bs/UxsNwccuNPz1yLqi9yMkkSELY00WCm8RmCFLHchV46T3SYXMKyhg4IjihJj
-	30EZh4QL+h1beX1jf98hdqug/bMLpUSn5clkm7RCj3X9Q5tJ83UsaWB8mGIwSkEhjAUu
-	8M6DfI6dkp+oLx8ZH77vpOdQeuuRsrTZkMNatN/jGxOY06FKFKARPyS5bB6wr1IOfb1o
-	NmrA==
-X-Gm-Message-State: AJcUukfhwnPiTOhxhGEbxSHGwRf/9YjraVG0U8QVzP0QR3qhQkeCe1kF
-	kecvm/ym5AWVMKiDlH7tcSHTVQ==
-X-Received: by 2002:a5d:4acb:: with SMTP id y11mr2711378wrs.281.1548150216707; 
-	Tue, 22 Jan 2019 01:43:36 -0800 (PST)
+	bh=qc3OnSPpbCO6/jYaQe15dOzBHjvEOeqCCZd+0BR4zyc=;
+	b=b88cA5VwsUaeEIdZeXN1YM5/BUBecHIC28Asc07Xr/4McDDIQAsvYbi+YPFPIvpctg
+	kwjULjNNITfgEINAgNWB/WPUd1XRJnQvT3Hl1kvJ3hQjlcLfK/QuxbX7i7QSG/2EsLQO
+	ur721xoU/FfFL0+x+1yFTVoB2wgN6rSktSdI3ZAPIcAohj/7in6NO6qf+1QTIDFKVYp3
+	xPgbg065hpn8ca7mFl6b4hLQjWIYDphaHU6+VRFJ57/A2Zww+p5c6YuwEPh6k9rHZ4AV
+	z5ixTAtVU/Mm06loULrTei6+sWsDLgTTexWHuRlynebzKhfEdRBDbNf2VPDmpHXtTiSr
+	et7g==
+X-Gm-Message-State: AJcUukdpLJ+MtpfQXgliPuTIFkFuF+ouTKqNvCdrAEVS+HgjNe5pa7P4
+	YYAGd8ncg65P0zXSeX+yRsym1Q==
+X-Received: by 2002:adf:e08c:: with SMTP id c12mr30988258wri.199.1548154876952;
+	Tue, 22 Jan 2019 03:01:16 -0800 (PST)
 Received: from [192.168.1.39] (110.red-83-51-161.dynamicip.rima-tde.net.
 	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	s132sm34446299wmf.28.2019.01.22.01.43.35
+	a187sm49824750wmf.33.2019.01.22.03.01.16
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 22 Jan 2019 01:43:36 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190121184314.14311-1-peter.maydell@linaro.org>
-	<383fd07d-9c2a-a7b2-5b88-f9a411c8b91a@redhat.com>
-	<CAFEAcA9G7CuZ3wSO9YLs-OH4m1zQ7s73yWp8rwsDBSyUZokyGg@mail.gmail.com>
+	Tue, 22 Jan 2019 03:01:16 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20190121185118.18550-1-peter.maydell@linaro.org>
+	<20190121185118.18550-6-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <0941b5d5-b399-7306-6779-7c82e53e08c1@redhat.com>
-Date: Tue, 22 Jan 2019 10:43:35 +0100
+Message-ID: <60356aab-3e21-bf0a-3829-d643e5e7fa56@redhat.com>
+Date: Tue, 22 Jan 2019 12:01:15 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9G7CuZ3wSO9YLs-OH4m1zQ7s73yWp8rwsDBSyUZokyGg@mail.gmail.com>
+In-Reply-To: <20190121185118.18550-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH] xlnx-zynqmp: Don't create rpu-cluster if
- there are no RPUs
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 05/23] hw/arm/iotkit: Refactor
+ into abstract base class and subclass
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VjogLZa9GcLo
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 439XCGpJQOKR
 
-On 1/22/19 10:28 AM, Peter Maydell wrote:
-> On Mon, 21 Jan 2019 at 20:12, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Hi Peter,
->>
->> On 1/21/19 7:43 PM, Peter Maydell wrote:
->>> If we aren't going to create any RPUs, then don't create the
->>> rpu-cluster unit. This allows us to add an assertion to the
->>> cluster object that it contains at least one CPU, which helps
->>> to avoid bugs in creating clusters and putting CPUs in them.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>> This is a preparatory patch that is necessary for the series
->>> "[PATCH v3 0/4] tcg: support heterogenous CPU clusters"
->>> (20190121152218.9592-1-peter.maydell@linaro.org)
->>> in order to avoid the xlnx-zcu102 board asserting if started with
->>> fewer than 5 CPUs.
->>>
->>>  hw/arm/xlnx-zynqmp.c | 5 +++++
->>>  1 file changed, 5 insertions(+)
->>>
->>> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
->>> index 370b0e44a38..16cba433cb7 100644
->>> --- a/hw/arm/xlnx-zynqmp.c
->>> +++ b/hw/arm/xlnx-zynqmp.c
->>> @@ -178,6 +178,11 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
->>>      int i;
->>>      int num_rpus = MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYNQMP_NUM_RPU_CPUS);
->>
->> Not related to this patch, but this check seems dangerous, i.e. using
->> "-smp 2" we get num_rpus=-2 which luckyly doesn't enter the for() loop.
->>
->>>
->>> +    if (num_rpus == 0) {
->>
->> With the current codebase, you'd have to check for "num_rpus <= 0", ...
+On 1/21/19 7:51 PM, Peter Maydell wrote:
+> The Arm SSE-200 Subsystem for Embedded is a revised and
+> extended version of the older IoTKit SoC. Prepare for
+> adding a model of it by refactoring the IoTKit code into
+> an abstract base class which contains the functionality,
+> driven by a class data block specific to each subclass.
+> (This is the same approach used by the existing bcm283x
+> SoC family implementation.)
 > 
-> Oops, nice catch.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  include/hw/arm/iotkit.h | 22 +++++++++++++++++-----
+>  hw/arm/iotkit.c         | 34 +++++++++++++++++++++++++++++-----
+>  2 files changed, 46 insertions(+), 10 deletions(-)
 > 
->> What about this instead?
->>
->> -- >8 --
->> @@ -451,10 +451,12 @@ static void xlnx_zynqmp_realize(DeviceState *dev,
->> Error **errp)
->>                      "RPUs just use -smp 6.");
->>      }
->>
->> -    xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
->> -    if (err) {
->> -        error_propagate(errp, err);
->> -        return;
->> +    if (smp_cpus > XLNX_ZYNQMP_NUM_APU_CPUS) {
->> +        xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
->> +        if (err) {
->> +            error_propagate(errp, err);
->> +            return;
->> +        }
->>      }
+> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+> index 9701738ec75..521d1f73757 100644
+> --- a/include/hw/arm/iotkit.h
+> +++ b/include/hw/arm/iotkit.h
+> @@ -74,15 +74,15 @@
+>  #include "hw/or-irq.h"
+>  #include "hw/core/split-irq.h"
+>  
+> -#define TYPE_ARMSSE "iotkit"
+> +#define TYPE_ARMSSE "arm-sse"
+>  #define ARMSSE(obj) OBJECT_CHECK(ARMSSE, (obj), TYPE_ARMSSE)
+>  
+>  /*
+> - * For the moment TYPE_IOTKIT is a synonym for TYPE_ARMSSE (and the
+> - * latter's underlying name is left as "iotkit"); in a later
+> - * commit it will become a subclass of TYPE_ARMSSE.
+> + * These type names are for specific IoTKit subsystems; other than
+> + * instantiating them, code using these devices should always handle
+> + * them via the ARMSSE base class, so they have no IOTKIT() etc macros.
+>   */
+> -#define TYPE_IOTKIT TYPE_ARMSSE
+> +#define TYPE_IOTKIT "iotkit"
+>  
+>  /* We have an IRQ splitter and an OR gate input for each external PPC
+>   * and the 2 internal PPCs
+> @@ -143,4 +143,16 @@ typedef struct ARMSSE {
+>      uint32_t mainclk_frq;
+>  } ARMSSE;
+>  
+> +typedef struct ARMSSEInfo ARMSSEInfo;
+> +
+> +typedef struct ARMSSEClass {
+> +    DeviceClass parent_class;
+> +    const ARMSSEInfo *info;
+> +} ARMSSEClass;
+> +
+> +#define ARMSSE_CLASS(klass) \
+> +    OBJECT_CLASS_CHECK(ARMSSEClass, (klass), TYPE_ARMSSE)
+> +#define ARMSSE_GET_CLASS(obj) \
+> +    OBJECT_GET_CLASS(ARMSSEClass, (obj), TYPE_ARMSSE)
+> +
+>  #endif
+> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+> index 9360053184e..d5b172933c3 100644
+> --- a/hw/arm/iotkit.c
+> +++ b/hw/arm/iotkit.c
+> @@ -18,6 +18,16 @@
+>  #include "hw/arm/iotkit.h"
+>  #include "hw/arm/arm.h"
+>  
+> +struct ARMSSEInfo {
+> +    const char *name;
+> +};
+> +
+> +static const ARMSSEInfo armsse_variants[] = {
+> +    {
+> +        .name = TYPE_IOTKIT,
+> +    },
+> +};
+> +
+>  /* Clock frequency in HZ of the 32KHz "slow clock" */
+>  #define S32KCLK (32 * 1000)
+>  
+> @@ -732,29 +742,43 @@ static void iotkit_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      IDAUInterfaceClass *iic = IDAU_INTERFACE_CLASS(klass);
+> +    ARMSSEClass *asc = ARMSSE_CLASS(klass);
+>  
+>      dc->realize = iotkit_realize;
+>      dc->vmsd = &iotkit_vmstate;
+>      dc->props = iotkit_properties;
+>      dc->reset = iotkit_reset;
+>      iic->check = iotkit_idau_check;
+> +    asc->info = data;
+>  }
+>  
+> -static const TypeInfo iotkit_info = {
+> +static const TypeInfo armsse_info = {
+>      .name = TYPE_ARMSSE,
+>      .parent = TYPE_SYS_BUS_DEVICE,
+>      .instance_size = sizeof(ARMSSE),
+>      .instance_init = iotkit_init,
+> -    .class_init = iotkit_class_init,
+> +    .abstract = true,
+>      .interfaces = (InterfaceInfo[]) {
+>          { TYPE_IDAU_INTERFACE },
+>          { }
+>      }
+>  };
+>  
+> -static void iotkit_register_types(void)
+> +static void armsse_register_types(void)
+>  {
+> -    type_register_static(&iotkit_info);
+> +    int i;
+> +
+> +    type_register_static(&armsse_info);
+> +
+> +    for (i = 0; i < ARRAY_SIZE(armsse_variants); i++) {
+> +        TypeInfo ti = {
+> +            .name = armsse_variants[i].name,
+> +            .parent = TYPE_ARMSSE,
+> +            .class_init = iotkit_class_init,
+> +            .class_data = (void *)&armsse_variants[i],
+> +        };
+> +        type_register(&ti);
+> +    }
+>  }
+>  
+> -type_init(iotkit_register_types);
+> +type_init(armsse_register_types);
 > 
-> Yeah, that would work too. I think I would just go for
-> using "if (num_rpus <= 0)" in the function, though.
 
-OK, whichever patch you prefer, you can add:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-Regards,
-
-Phil.
-
-> 
-> thanks
-> -- PMM
-> 

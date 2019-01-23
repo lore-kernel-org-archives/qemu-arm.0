@@ -1,84 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp523060wrt;
-        Wed, 23 Jan 2019 02:22:38 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN78c6+WmEkCnYn9yH2DfXqgw17qra4f2pP7PPsz6+k65hnCuNtKyb4yJHCp+MQfVKKEWXT4
-X-Received: by 2002:a5d:4e0b:: with SMTP id p11mr2141366wrt.227.1548238958353;
-        Wed, 23 Jan 2019 02:22:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548238958; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp523172wrt;
+        Wed, 23 Jan 2019 02:22:49 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5TG3RI1qOwyONrJybMKu9hKVwiKNDtQfQSLHBSEtNuknwkrSe8aST1dE23LefD7kzBK2aB
+X-Received: by 2002:a1c:b14:: with SMTP id 20mr2170094wml.103.1548238969033;
+        Wed, 23 Jan 2019 02:22:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548238969; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ur3wdcxeI/7Ur8fkOSYoV8ziHHU3EodvZKnYouh+2ff8K/hlnV3bnsgo/YWrgY+pao
-         kumVQJzMMzuMCp/r6hDpbbs1FcKjbZH1K4vsh/MAeIYus/3Kordyjb6dNgOWv1fGPWt4
-         4G0mZKlaUZiTjvZeHR+u3CCMXgJ6HK2m2/u8sKH/3NmZWYe0IWN/Nt/Uppqwn5rmOdvg
-         +GnVdYo972GymZe3oIPPPYRUF78LfTyYDGW/U2XCPlCvHJVriHtG1rxfKgyGk+0QAhx3
-         bD/sWgiTOIb72S9eEhMGxiyjoW/r5o5Oh9JtvBL1x0aiIFEasTN448KGURGcVoXW46fa
-         xdug==
+        b=f1yMo4lSw94i02qdOvZWOUR+g5zZjIMXRgkdtU/QJiceHgRuMtbXQDUfXCsk4mla+C
+         l7KTDiu/1D3Z4Y9KfZ+7xCBMC0BbUtDE5l14szDas8Z4u/8PtuxDvdfKnyZhx9UWtWmZ
+         u/89UvkVxDlQL8fks9PD97pYM4qgKNZKojJ31OUBzdFWQ4i9ToBmKKpcK1G1P36r6ii9
+         Xu2TeSrJKgDlCKT8b3G21C/3FS08hMdfbhy4GctTv/305C+bZQmcSgzEcfeLNSFHtNyg
+         EPw2wcREf168uZ3SnwSz1BXi3XENycMsIbinGXLWXd8cQ/Qwx6XRafXuDgG3OIAw63Sz
+         cXSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=NzUSZYvKwbAPCP2ohb42WMBvj7Tl0TXtbVEXqN0OrHo=;
-        b=wLf4jdLNKfd2v63eyndXR7J1KJJSJBxwa4OplxfyxorJtR6Cddx5/VSb4EpcyepJ1B
-         ihMwYSv/G2sIJR3Kw8NEl1uE61P0Gc+obqdl1bsrnaKIuEue9gFn9XNHFrJl/51YTU1p
-         8kgVnhBTEA5UsifBjbYW1rZl4g5AAEP5paqyhxTrMsg39cf56bTnf5gh8oX10ed8c3KI
-         R+8EqQ/tKU+RVTODLNPtk031/ldOTGj74SB93aeKtvI3ZX5AkbxlucQaOfep9VIiG4nL
-         V4peSzJsoTKWlZ6WkmlNQgXuoxaR6jmQesd4bvgZvc3KDhtRiGFRfyma+zXRLU2WY/l5
-         snjw==
+        bh=RTCPplszxMGine6MFD+yOgg/ugghUPQnOrvwXmnTzlM=;
+        b=hmQsVvh3vW1aOAB6xYUNWnvyHSvy4+59gKCMY1IEEjf7nWNsumvoL8GoIOXe6aNnS6
+         qSK9jxftbTR3eGLJUOGqMqoS2ajQ91d9ULk4QgMQTZUeSQ8AarYo1A+fZ46JikiBgP4q
+         x1FnoHIquRZLfRjDGn7GuAsc/ILRlcFNtvQwXmnbBNX4F0wR5JNVPP8HrFt+qvGFcX7v
+         3w/WJU+iEbDd5hdhiAwzgs0T+gDkjCnYVHxCH8aEDVa8cXGK4cCkEorzqUkeHd7krIbI
+         CkAHtDZsnMYkUZyox1Z8i0JZ6BsEKTshThHrgaA3wklSy8aOZvJKg1hQJtrussLWSRmM
+         AtZA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a10si49691704wrs.326.2019.01.23.02.22.38
+        by mx.google.com with ESMTPS id c6si68834997wrx.230.2019.01.23.02.22.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 Jan 2019 02:22:38 -0800 (PST)
+        Wed, 23 Jan 2019 02:22:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:59762 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:59766 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gmFg5-0006pv-Ac
-	for alex.bennee@linaro.org; Wed, 23 Jan 2019 05:22:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35100)
+	id 1gmFgF-0006zm-VU
+	for alex.bennee@linaro.org; Wed, 23 Jan 2019 05:22:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34785)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gmFaU-0002Ji-PP
-	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 05:16:52 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gmFZk-0001ix-W0
+	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 05:16:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gmFaT-0007qn-Pe
-	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 05:16:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46298)
+	(envelope-from <eric.auger@redhat.com>) id 1gmFZh-0007SS-SB
+	for qemu-arm@nongnu.org; Wed, 23 Jan 2019 05:16:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52732)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gmFaT-0007pc-GN; Wed, 23 Jan 2019 05:16:49 -0500
+	id 1gmFZf-0007Px-OT; Wed, 23 Jan 2019 05:15:59 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 25A7112039;
-	Wed, 23 Jan 2019 10:16:48 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E3FA419E53;
+	Wed, 23 Jan 2019 10:15:57 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-91.ams2.redhat.com [10.36.117.91])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9817D6046C;
-	Wed, 23 Jan 2019 10:16:41 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 568EC600C6;
+	Wed, 23 Jan 2019 10:15:55 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Wed, 23 Jan 2019 11:14:57 +0100
-Message-Id: <20190123101458.12478-18-eric.auger@redhat.com>
+Date: Wed, 23 Jan 2019 11:14:51 +0100
+Message-Id: <20190123101458.12478-12-eric.auger@redhat.com>
 In-Reply-To: <20190123101458.12478-1-eric.auger@redhat.com>
 References: <20190123101458.12478-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 23 Jan 2019 10:16:48 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 23 Jan 2019 10:15:58 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 17/18] hw/arm/boot: Expose the pmem nodes in
- the DT
+Subject: [Qemu-arm] [PATCH v5 11/18] hw/arm/virt: Add memory hotplug
+ framework
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,70 +93,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ElIZVIiTQpmp
+X-TUID: LckJM0QR6jm0
 
-In case of NV-DIMM slots, let's add /pmem DT nodes.
+This patch adds the the memory hot-plug/hot-unplug infrastructure
+in machvirt. It is still not enabled as no device memory is allocated.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/boot.c | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 15432bb895..8fbdc3ff00 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -454,6 +454,36 @@ out:
-     return ret;
+---
+v4 -> v5:
+- change in pc_dimm_pre_plug signature
+- CONFIG_MEM_HOTPLUG replaced by CONFIG_MEM_DEVICE and CONFIG_DIMM
+
+v3 -> v4:
+- check the memory device is not hotplugged
+
+v2 -> v3:
+- change in pc_dimm_plug()'s signature
+- add pc_dimm_pre_plug call
+
+v1 -> v2:
+- s/virt_dimm_plug|unplug/virt_memory_plug|unplug
+- s/pc_dimm_memory_plug/pc_dimm_plug
+- reworded title and commit message
+- added pre_plug cb
+- don't handle get_memory_region failure anymore
+---
+ default-configs/arm-softmmu.mak |  2 ++
+ hw/arm/virt.c                   | 64 ++++++++++++++++++++++++++++++++-
+ 2 files changed, 65 insertions(+), 1 deletion(-)
+
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
+u.mak
+index 2420491aac..3c5928aae0 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -159,3 +159,5 @@ CONFIG_PCI_DESIGNWARE=3Dy
+ CONFIG_STRONGARM=3Dy
+ CONFIG_HIGHBANK=3Dy
+ CONFIG_MUSICPAL=3Dy
++CONFIG_MEM_DEVICE=3Dy
++CONFIG_DIMM=3Dy
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 61c3bb1cef..aad7e0f095 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -59,6 +59,8 @@
+ #include "qapi/visitor.h"
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
++#include "hw/mem/pc-dimm.h"
++#include "hw/mem/nvdimm.h"
+=20
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -1736,6 +1738,49 @@ static const CPUArchIdList *virt_possible_cpu_arch=
+_ids(MachineState *ms)
+     return ms->possible_cpus;
  }
 =20
-+static int fdt_add_pmem_node(void *fdt, uint32_t acells, hwaddr mem_base=
-,
-+                             uint32_t scells, hwaddr mem_len,
-+                             int numa_node_id)
++static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceStat=
+e *dev,
++                                 Error **errp)
 +{
-+    char *nodename =3D NULL;
-+    int ret;
++    const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
+M);
 +
-+    nodename =3D g_strdup_printf("/pmem@%" PRIx64, mem_base);
-+    qemu_fdt_add_subnode(fdt, nodename);
-+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-region");
-+    ret =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, m=
-em_base,
-+                                       scells, mem_len);
-+    if (ret < 0) {
-+        fprintf(stderr, "couldn't set %s/reg\n", nodename);
-+        goto out;
-+    }
-+    if (numa_node_id < 0) {
-+        goto out;
++    if (dev->hotplugged) {
++        error_setg(errp, "memory hotplug is not supported");
 +    }
 +
-+    ret =3D qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", numa_no=
-de_id);
-+    if (ret < 0) {
-+        fprintf(stderr, "couldn't set %s/numa-node-id\n", nodename);
++    if (is_nvdimm) {
++        error_setg(errp, "nvdimm is not yet supported");
++        return;
 +    }
 +
-+out:
-+    g_free(nodename);
-+    return ret;
++    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
 +}
 +
- static void fdt_add_psci_node(void *fdt)
++static void virt_memory_plug(HotplugHandler *hotplug_dev,
++                             DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
++    Error *local_err =3D NULL;
++
++    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
++
++    error_propagate(errp, local_err);
++}
++
++static void virt_memory_unplug(HotplugHandler *hotplug_dev,
++                               DeviceState *dev, Error **errp)
++{
++    pc_dimm_unplug(PC_DIMM(dev), MACHINE(hotplug_dev));
++    object_unparent(OBJECT(dev));
++}
++
++static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
++                                            DeviceState *dev, Error **er=
+rp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_memory_pre_plug(hotplug_dev, dev, errp);
++    }
++}
++
+ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+                                         DeviceState *dev, Error **errp)
  {
-     uint32_t cpu_suspend_fn;
-@@ -541,7 +571,8 @@ static int fdt_add_hotpluggable_memory_nodes(void *fd=
-t,
-         di =3D !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
+@@ -1747,12 +1792,27 @@ static void virt_machine_device_plug_cb(HotplugHa=
+ndler *hotplug_dev,
+                                      SYS_BUS_DEVICE(dev));
+         }
+     }
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++            virt_memory_plug(hotplug_dev, dev, errp);
++    }
++}
++
++static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
++                                          DeviceState *dev, Error **errp=
+)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_memory_unplug(hotplug_dev, dev, errp);
++    } else {
++        error_setg(errp, "device unplug request for unsupported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
+ }
 =20
-         if (is_nvdimm) {
--            ret =3D -ENOENT; /* NV-DIMM not yet supported */
-+            ret =3D fdt_add_pmem_node(fdt, acells, di->addr,
-+                                    scells, di->size, di->node);
-         } else {
-             ret =3D fdt_add_memory_node(fdt, acells, di->addr,
-                                       scells, di->size, di->node);
+ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *ma=
+chine,
+                                                         DeviceState *dev=
+)
+ {
+-    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
++    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
++       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
+         return HOTPLUG_HANDLER(machine);
+     }
+=20
+@@ -1812,7 +1872,9 @@ static void virt_machine_class_init(ObjectClass *oc=
+, void *data)
+     mc->kvm_type =3D virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
+     mc->get_hotplug_handler =3D virt_machine_get_hotplug_handler;
++    hc->pre_plug =3D virt_machine_device_pre_plug_cb;
+     hc->plug =3D virt_machine_device_plug_cb;
++    hc->unplug =3D virt_machine_device_unplug_cb;
+ }
+=20
+ static void virt_instance_init(Object *obj)
 --=20
 2.20.1
 

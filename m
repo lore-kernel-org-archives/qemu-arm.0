@@ -1,101 +1,134 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2411847wrt;
-        Thu, 24 Jan 2019 13:30:17 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6Z/Qhy3PvWVaGOB5shwxeQI2qVfbtK9i1THavh5AdSzMGPCnAkT3pN7Xdgz9e2Jojn43DY
-X-Received: by 2002:a5d:6549:: with SMTP id z9mr8530493wrv.116.1548365417404;
-        Thu, 24 Jan 2019 13:30:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548365417; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp290912wrt;
+        Fri, 25 Jan 2019 04:57:26 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5UOBSlhAkI6E+5eW87GQZyq/Pw9FH9Ro9DrXKmh5jtvbCvvOTYBspsY/PIqIEswZlTjC1q
+X-Received: by 2002:a1c:e18a:: with SMTP id y132mr7259963wmg.48.1548421046768;
+        Fri, 25 Jan 2019 04:57:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548421046; cv=none;
         d=google.com; s=arc-20160816;
-        b=oGF+NE2+LOklyVlU6sBrhz09jFcaeOP1WN+ELAnqES3RwofHpYg4fxsRFcWNzTCTrB
-         eKpdKJBr9nbRO966CC9n3MfiPolc322lc7KIWw09LxK1Vv+7LlA2OLl/rRcqhjjzUyDb
-         sVD3IdugIPGROTQCBmwuvtwrFALVYqCtp6OVJplDXpPLV9+CJY2mp+/fkojIZsUjyH3W
-         NwPTmpiP/Vi8hKgjVewmfKxb2HaeCt7pG+BICWVGDTWvMf5xq0sIK+gIG0soJ3/DwS+r
-         R8H+/mgggn+/eC1GCAj91RmF0oHIJXiWc/sqPpe0vuILUQIng4T6otPv9oQDgnvmKT0+
-         EF9g==
+        b=uBXXeIdVgmgZwTrqXGatuke7CXHMJWKkrmTJyEbE+P4HCO3iU49tkAakhywvPEJUBf
+         7o5i1909F9TdJ3s1nyF88jDx5hhoVLXLefrNOtOnTZP5PhYmngou4O4S2HsjS+O3tMhw
+         7mJt3FstUkoSxshAbGani51qw48xoQeUn9t25BmJVVTSrAMlZ3n3QF+4yEWjXsZ6TNNW
+         jo8mBulSd/PhaoKd3NftqFG7rvN+YWimSdWbhVxhOL+I5KIF+nj9FIX8QmBjEOVJcJ4g
+         5CKuOV/c3rxaDtRWh3bbHIDwlT2R7DnNE2x67LruXpSAL1+uOpf9nqka/C4NiGgZEuQA
+         wZbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=xubx3qxGS3ZD0cCV+7QhE6zHjUBd2O44uVNg9IsaNro=;
-        b=jTP5ZiPP2nDcfVRDNewdmoaylotKM7NHI3tVxwTFQ/cDuzlc0dtqaxcMgCExfTUTYH
-         1JmYNVRiAuvyMLdktkf0rqATc6xrT7xaMIJnW3wvZAJifM8rpafMclTYOlmXK8ZqYKl1
-         o/f9CkfXEx9/Fvvg8u34xfCKZnKeHFuA3zrgaiGFnsIXZUElA8uPtXikL2UgU5dQwxbA
-         0sQr58FN4KWiPpnEKIqZWcO3BUjUq/FKmy6MKM4W23AMbOvlJG1ulHAoVEbTxI7BvVMZ
-         u3D85qJ0i/ihEGYdP+TqPUrgyBqyxop7J6V31ubtmDuRzeLxvuDheix01ANNnrY1osHy
-         /cXQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=wezOxAw4AuIjCLyftUJqQxgRSpuU9hpYVjrwckG5m0c=;
+        b=euXshTsg5DlggBlNj6HWHV+wC8ebsXoV7nw7XxYWxJWGdYRxElAMh/3Rc5k5p3sBwF
+         mXLyo2yJN2OKycipDMGDHbOATUI0EX5YF6ARTiyaZwOPyhHkgVMPX7Ba4YNc71GNjZoF
+         XYmz3s43r9wWlDgf5rxCAQwGFYO/9zPgO+nHKU2z2IoN5g0jnmBu6Jg5nBtEopC7Dvz9
+         op3h4bvUPaJrnrlNeUMO4KGr/mQ/FT6dJf2Ey0t7/Cbwuxbyx8STf4PUuJWWaUumd1AE
+         NEz3YiefQ75iYQBPHaJdK/SoVLeaB1CgQKgrd0sui3N10MdKTELiJ1c0kBy6htj/1z4u
+         jlPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I5aaY93+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p2si42847784wrm.14.2019.01.24.13.30.17
+        by mx.google.com with ESMTPS id c8si72632740wrq.389.2019.01.25.04.57.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 Jan 2019 13:30:17 -0800 (PST)
+        Fri, 25 Jan 2019 04:57:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I5aaY93+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:32857 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:43855 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gmmZk-0000ct-Es
-	for alex.bennee@linaro.org; Thu, 24 Jan 2019 16:30:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39021)
+	id 1gn12z-0001jd-Q8
+	for alex.bennee@linaro.org; Fri, 25 Jan 2019 07:57:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40211)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gmmZY-0000bD-4k
-	for qemu-arm@nongnu.org; Thu, 24 Jan 2019 16:30:04 -0500
+	(envelope-from <thuth@redhat.com>) id 1gn10N-0007PK-Rm
+	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 07:54:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gmmZX-0001Aw-Da
-	for qemu-arm@nongnu.org; Thu, 24 Jan 2019 16:30:04 -0500
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:40188)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1gmmZV-00018l-FZ; Thu, 24 Jan 2019 16:30:01 -0500
-Received: by mail-lj1-x243.google.com with SMTP id n18-v6so6577049lji.7;
-	Thu, 24 Jan 2019 13:30:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=xubx3qxGS3ZD0cCV+7QhE6zHjUBd2O44uVNg9IsaNro=;
-	b=I5aaY93+1nBs2Cn69T3t3quAmiyXUojPOVZt8JHbet4sN45/DqJ3rm1eXqPUodN9qY
-	LaRA+KqGwDsLK5X5fyUi1+I84tCDDLlP0Q5uTt1/nLv4uh2oXQJI70+3VFi+AhjZr1Sk
-	1zhEw+QkZcR6eDnAL30MALZDA0ylamaRIq0MYlkeFRVEP9aegDVYV0Vw7hGtYIejfVri
-	1OnB00b9SFcXqmZ/4mqjt/prLhdDG2uoeaDC7heCkAHq5BStgU9cg1cBTMWL2QvhttDu
-	Y7yznnJRtAzAAlZBIMSM32qCD+Dt1slT7+XH8Beb29M/lBXTX/600nQFpibPiGHlZrjI
-	J9Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=xubx3qxGS3ZD0cCV+7QhE6zHjUBd2O44uVNg9IsaNro=;
-	b=d0rPQVKqyf2xYxDWfGjxSI5KUmdTK0tixWhtjVpep0SM8w/a3wj84GXGIkjtohrirE
-	wdKDdzlH/Lq5M53hl3aUOOUHkO9FjZALxX75sy6WCmTif6zvBf9E86vOVDmLwIWSZvag
-	vRDOuIGlDiBTfnYbnvIzULS7rUpkJ8bpwnPCUAodKZgv8GmKwuuBGLe1pccjTaE3Ze36
-	8JE4hyrtPBBWyd/CyYxf6VYRBUnyUVPH+CAv3nDLkSjQhbz4iEbwTH8Dj+Zn7ZGnWvPJ
-	aRiBb/ZKtEBE5aPzweKiJmf5gFNbGhda1W7lICFScoRuO0uU9E3RR1xxLoRLDja4TNYx
-	m06g==
-X-Gm-Message-State: AHQUAubUY6Fais86Zmb7zNoMjzndgAaB1fW+DlZZgsKlfdA79yntclPA
-	klvq6mH3E0Mo+YFKjF1ihgjcc1jYpitscJi440A=
-X-Received: by 2002:a2e:5747:: with SMTP id r7-v6mr964552ljd.141.1548365399933;
-	Thu, 24 Jan 2019 13:29:59 -0800 (PST)
+	(envelope-from <thuth@redhat.com>) id 1gn0n0-0004oD-Tg
+	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 07:40:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53610)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gn0my-0004la-NO; Fri, 25 Jan 2019 07:40:54 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5403EC0528D8;
+	Fri, 25 Jan 2019 12:40:45 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-56.ams2.redhat.com [10.36.116.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 18EA45C1B4;
+	Fri, 25 Jan 2019 12:40:39 +0000 (UTC)
+To: ksourav <sourav.jb1988@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <CAAJhNetR-8z37JuOmFDRuq3JfG_S03VDZkciqiKh_kieoqxQ1g@mail.gmail.com>
+	<628a94ba-2202-6a15-865b-16d52653288d@redhat.com>
+	<CAFEAcA8jvRRpphFS7jvisU+f0SEvU1DOhrBxgKSRWEMkZV3eOw@mail.gmail.com>
+	<CAAJhNeta4fWX7y-ap-CSUhrHDGrZH_Xss6tyDa6=vn_uUJSk0Q@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <c7e75a05-d1ca-8a7d-5f90-19e4efa0e28f@redhat.com>
+Date: Fri, 25 Jan 2019 13:40:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20190124140519.13838-1-clg@kaod.org>
-	<20190124140519.13838-4-clg@kaod.org>
-In-Reply-To: <20190124140519.13838-4-clg@kaod.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 24 Jan 2019 13:29:31 -0800
-Message-ID: <CAKmqyKN3xpBkB5C52RcQOvs-Ra8hmcUETP3FgGRyCntgtp_0Pg@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAAJhNeta4fWX7y-ap-CSUhrHDGrZH_Xss6tyDa6=vn_uUJSk0Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 25 Jan 2019 12:40:45 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/4] aspeed/smc: Add dummy data
- register
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] object owner argument of
+ memory_region_init_ram
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,80 +140,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Alistair Francis <alistair@alistair23.me>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WzxJ/o7Uicye
+X-TUID: 18bR/7ncdxlc
 
-On Thu, Jan 24, 2019 at 6:06 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The SMC controllers have a register containing the byte that will be
-> used as dummy output. It can be modified by software.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 2019-01-23 16:50, ksourav wrote:
+> Thanks for the reply.
+> Should I send patches for socs using NULL owner to qemu-trivial@nongnu.=
+org ?
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Sure, but please also CC: qemu-arm@nongnu.org for ARM-related patches.
 
-Alistair
+> I have been reading qemu source code for soc and different device
+> implementation for past few days to understand qemu internals.
+> While I have a rough idea of qemu object model, I would like to have yo=
+ur input.
+> If someone has to learn about qemu object model or soc implementation,
+> what would be the correct way ?
 
-> ---
->  hw/ssi/aspeed_smc.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 6045ca11b969..9f3b6f4b4501 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -98,8 +98,8 @@
->  /* Misc Control Register #1 */
->  #define R_MISC_CTRL1      (0x50 / 4)
->
-> -/* Misc Control Register #2 */
-> -#define R_MISC_CTRL2      (0x54 / 4)
-> +/* SPI dummy cycle data */
-> +#define R_DUMMY_DATA      (0x54 / 4)
->
->  /* DMA Control/Status Register */
->  #define R_DMA_CTRL        (0x80 / 4)
-> @@ -529,7 +529,7 @@ static void aspeed_smc_flash_setup(AspeedSMCFlash *fl=
-, uint32_t addr)
->       */
->      if (aspeed_smc_flash_mode(fl) =3D=3D CTRL_FREADMODE) {
->          for (i =3D 0; i < aspeed_smc_flash_dummies(fl); i++) {
-> -            ssi_transfer(fl->controller->spi, 0xFF);
-> +            ssi_transfer(fl->controller->spi, s->regs[R_DUMMY_DATA] & 0x=
-ff);
->          }
->      }
->  }
-> @@ -664,6 +664,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr =
-addr, unsigned int size)
->          addr =3D=3D s->r_timings ||
->          addr =3D=3D s->r_ce_ctrl ||
->          addr =3D=3D R_INTR_CTRL ||
-> +        addr =3D=3D R_DUMMY_DATA ||
->          (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
-es) ||
->          (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves=
-)) {
->          return s->regs[addr];
-> @@ -697,6 +698,8 @@ static void aspeed_smc_write(void *opaque, hwaddr add=
-r, uint64_t data,
->          if (value !=3D s->regs[R_SEG_ADDR0 + cs]) {
->              aspeed_smc_flash_set_segment(s, cs, value);
->          }
-> +    } else if (addr =3D=3D R_DUMMY_DATA) {
-> +        s->regs[addr] =3D value & 0xff;
->      } else {
->          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
-"\n",
->                        __func__, addr);
-> --
-> 2.20.1
->
->
+We certainly lack documentation here. Studying the available sources is
+likely the best thing you can do. There were also a couple of
+presentations about QOM and qdev during the various KVM Forums (see
+https://www.linux-kvm.org/page/KVM_Forum for example), but they are
+likely not quite up to date anymore.
+
+ Thomas

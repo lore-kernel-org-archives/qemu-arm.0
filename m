@@ -1,161 +1,137 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp455643wrt;
-        Fri, 25 Jan 2019 07:37:47 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6A3uzT5hcG6ejTbbH5/Qzo7OXeDGWItGlFBTU88svWvNitsfijG26dQ2E/S9G6v3+WqIyr
-X-Received: by 2002:a1c:4301:: with SMTP id q1mr7279001wma.44.1548430667056;
-        Fri, 25 Jan 2019 07:37:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548430667; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp473352wrt;
+        Fri, 25 Jan 2019 07:57:25 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5MMIzZGgd9/jZXfMdJTMtF+AIHXTGudbESFLXuHx4AXUsrKV3FFiPQjbTw/46NvN1ILr97
+X-Received: by 2002:adf:a393:: with SMTP id l19mr12395819wrb.110.1548431845192;
+        Fri, 25 Jan 2019 07:57:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548431845; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mg02Dzmx49sdHPBP7iQF2fn2Cvg4HkFdNiviHO2VXVcL24mFhcc7mXDj/iUb77jt+x
-         dwhrhd92czsV62lsSzshisboHGHpKSePSyPqtwkHTx9Xv5bF+2p/NZlDsNJuf1AXJXIv
-         P3EdKwyA0dd7g2v6UxOKC/jhGZ8BvvVNt7S0H2mAa/5kSC5VywobPyyeyogRcHlSKl3K
-         Q75eJxKUTqh0ov5063m4hB22evcoPC0TxbCifoybGVJ2ZjoyXYhJuRYpbFTfK9ioQLBg
-         mEJ3nVLy3BIz62vc75+/JRUowG97eY4nH45hKkwUUJT4Q/fnSOOB13aUv20Bd0ey8XPf
-         6z3A==
+        b=MdKRLo5sbHQEkr4oWx2mRZ04Rl8XrQSNCH/YIQP0P4Mmzi6iOBXGTCWPi9LVypSXfP
+         CiO9hd1utQT/uO8OYvE1o25wlDP+LwSKXw4kRROOiczEAY5kbSLLa+LoihMAdrKjPyFt
+         p8r2Scmp113O4tgfycs09GOhKKcmdQUR+jTcleH1gEwfhkZK0XCOFtcrbKsGETxMRXUU
+         iu2H9XPY63k6vC2v676ohfCCPPTsR2RVn6ZhOGp+Y1KYCBCDNoK+xqIV5neWYKKvqxow
+         Kt2ynpse/fgp8TdFQIJHgL1Pov1J8HyEw7ES/asSCvy+PNJeznAGMUPO79Gh7WkXQ4dJ
+         knSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=wa6go2LP5UZvnk+/d3uW+VpjOMd/lS/hlGXZsk/CB4I=;
-        b=O64RO9Q9xbOcPI8j7A29dWeC7doBY9G+k4yxvq+Gmga7X3IVATD3mKqZUjKdPg4ha/
-         2Jgr4/29tMhSEdH+vJ5LM8dv3ByeDAdyHtD3a4zycnH0MqhZ4nUXiJUFtwYJYauBJy+n
-         T8dK+j3zXaE+umfInSt2zVOEH/dO+CpDPI2LBi1o+LByi3wpJV+Pof58HEARHIQbE1w9
-         DVIkT/I0t8frZgJ7cJUcDQ8uy+w8TF5FnYzs+hLjUjvezQAN1YOwbALLqb0p/OoNT3dC
-         OnPfXsdLHe+MUvY4qsM/3MtAoJt0+cMH9a2eI7BiOiyqm1kOQy967f52aEzdOi3Xj1IL
-         Di6g==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=TTpRtE73zn9+9XaAgwkTXd6X+SweJAaNdeUuT7cud4Q=;
+        b=VAV7HOw7mV/X/psK2UcYRQjjznhtLn8nhpmQZgU2XmxCastPM+uBi8jf116DwQWray
+         /eLNDZFddE748HS5UOgVJZLadLWrWIivTZka/H9//GDKLMPK9Zl029baZZ+HSn5UZuuC
+         rJa+aA2uvTVrcbzBWqnGKXJi94ikWxIxPXqSnhg+lHVt04oo51Rd0NsSjdQzD0ssGdgp
+         8wWdBsbQMy00DTqwqNOrZqqv9sd6ndbOy+8Zm86Kx27u69Lcu5K0jNI+PcHdo+0O0pxE
+         5J1CEactKlzi8oED1Yi6sZkQkdzv9iWJcONdnVsMpMcF1tAmOAkPGkzOSDeFwmzeH3Xi
+         8GYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=noDmVd7H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b4si35140162wrs.375.2019.01.25.07.37.46
+        by mx.google.com with ESMTPS id l201si3045434wmb.201.2019.01.25.07.57.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 25 Jan 2019 07:37:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Jan 2019 07:57:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46399 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=noDmVd7H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:46578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gn3YA-0002aS-4V
-	for alex.bennee@linaro.org; Fri, 25 Jan 2019 10:37:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42589)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gn3rA-0007vv-2Y
+	for alex.bennee@linaro.org; Fri, 25 Jan 2019 10:57:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46215)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gn3Y0-0002Zv-SU
-	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 10:37:37 -0500
+	(envelope-from <sourav.jb1988@gmail.com>) id 1gn3qb-0007qy-1G
+	for qemu-devel@nongnu.org; Fri, 25 Jan 2019 10:56:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gn3Y0-00056o-2u
-	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 10:37:36 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33290)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gn3Xy-0004s6-3c; Fri, 25 Jan 2019 10:37:34 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A54422DD2A;
-	Fri, 25 Jan 2019 15:37:25 +0000 (UTC)
-Received: from localhost (ovpn-117-242.ams2.redhat.com [10.36.117.242])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B7BFD6E3F2;
-	Fri, 25 Jan 2019 15:37:15 +0000 (UTC)
-Date: Fri, 25 Jan 2019 15:37:14 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190125153714.GB305@stefanha-x1.localdomain>
-References: <20190123212234.32068-1-stefanha@redhat.com>
-	<20190123212234.32068-3-stefanha@redhat.com>
-	<f58f9085-c895-1fa5-9fae-afe4ac8de39a@redhat.com>
-	<20190125102842.GB28305@stefanha-x1.localdomain>
-	<CAFEAcA-Dy0B-qCdojx9j49vF_p7OcAyQAiXYMv-_EZq7CCgT1A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="8GpibOaaTibBMecb"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-Dy0B-qCdojx9j49vF_p7OcAyQAiXYMv-_EZq7CCgT1A@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 25 Jan 2019 15:37:26 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/5] pflash: flush rom device
- memory region
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <sourav.jb1988@gmail.com>) id 1gn3qa-0007h8-CM
+	for qemu-devel@nongnu.org; Fri, 25 Jan 2019 10:56:48 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:33495)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sourav.jb1988@gmail.com>)
+	id 1gn3qW-0007ex-O8; Fri, 25 Jan 2019 10:56:46 -0500
+Received: by mail-pf1-x444.google.com with SMTP id c123so4959797pfb.0;
+	Fri, 25 Jan 2019 07:56:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=TTpRtE73zn9+9XaAgwkTXd6X+SweJAaNdeUuT7cud4Q=;
+	b=noDmVd7HKeCq5XMB6KcNrX9oPg5Op95rl7BBz135AcLZLbQxzcRzGr3RjjlLqpacv3
+	IG7ojydAhUd7d99AkgtA/mOkJmkrBB7JyommlAnCYBwzlGmBZgBVXKjh12rSweCwLYUX
+	21ngabjaibeK8PeojY8KiQffsQ6yc9uPQDMjEa0xLeCCY7LQ4+xqF6w56BVqZbaBRkvg
+	ArvKtXNhELKb5bKCTNae6GFO5i5a00jYDsv43Ae7CjT4eGZtSY88AuLqbntm1x9VDdUC
+	edyt2zE6ffug64DjzxchFWYw2VpVgaIyWbMXxMcT0wVEKM2fiQ2BqVW5lVbSfukM7dJ7
+	OfpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=TTpRtE73zn9+9XaAgwkTXd6X+SweJAaNdeUuT7cud4Q=;
+	b=Af1a3Et6HMZ1GEkz3UW555cmbcqFNoEoXOzhv1+KYDEfDPwskcQCYftF+tgqVrCPBg
+	iANryqio7wI089nZIQitCWkqKAqvbh74+HWm4QaVxcpZEeC7dLBI6OsIcDI+vZg6OCF2
+	cUfe5WjuPmhczyS0MrcTYXMioa7KjiGyzL2LQpoHChcxIeIH7WJBu+k8V8it1t00CiDd
+	Snxu/EC7c8uc1snW6ik74+v5SzDn03+W4r01kyJGv/ARgo1vEyTxeD39jSYMXWNPOriy
+	/xzVRvHiTDD5pEzpCLmt6rtjWoTBdV78i/b/xGTVxTJdEQVio6cHRwuz+zjmEna5wNp2
+	68ow==
+X-Gm-Message-State: AJcUukfySc/UolreKGdVPpplmctsbseQ/ewIhJXN2EbxGyKTw29JgB+U
+	peIgDRmAm0PuPEJwdj6aFBufyqxi5J0=
+X-Received: by 2002:a63:e344:: with SMTP id o4mr10287195pgj.158.1548431802602; 
+	Fri, 25 Jan 2019 07:56:42 -0800 (PST)
+Received: from localhost.localdomain ([27.7.213.28])
+	by smtp.gmail.com with ESMTPSA id
+	j6sm46557634pfg.126.2019.01.25.07.56.39
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 25 Jan 2019 07:56:41 -0800 (PST)
+From: kumar sourav <sourav.jb1988@gmail.com>
+To: qemu-trivial@nongnu.org
+Date: Fri, 25 Jan 2019 21:26:30 +0530
+Message-Id: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: [Qemu-devel] [PATCH] hw/arm/nrf51_soc: set object owner in
+ memory_region_init_ram
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, Julia Suvorova <jusual@mail.ru>,
-	Qemu-block <qemu-block@nongnu.org>, Stefan Hajnoczi <stefanha@gmail.com>,
-	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, Jim Mussared <jim@groklearning.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LWOTR0Nue6V8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, joel@jms.id.au,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G4v8fb0oXT8P
 
+set object owner in memory_region_init_ram() instead
+of NULL.
 
---8GpibOaaTibBMecb
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+---
+ hw/arm/nrf51_soc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Fri, Jan 25, 2019 at 10:36:17AM +0000, Peter Maydell wrote:
-> On Fri, 25 Jan 2019 at 10:28, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> >
-> > On Thu, Jan 24, 2019 at 12:11:55PM +0100, Philippe Mathieu-Daud=E9 wrot=
-e:
-> > > The device realize() is also executed before the guest is started, is
-> > > this call really necessary?
-> >
-> > My rationale was that machine init only happens before the guest is
-> > started while ->realize() is called by hotplug too.
->=20
-> Yes, but before realize the flash memory can't actually be
-> visible to the guest, so there's no need to invalidate anything.
->=20
-> > That said, can pflash devices be hotplugged?
->=20
-> I guess you could have one inside a hotplugged device in theory;
-> they can't be directly hotpluggged. (I bet that in practice
-> there are leaks though if you did do that, and we don't have
-> any devices that do so today.)
->=20
-> > If you guys prefer not flushing from pflash ->realize() then I'll drop
-> > it.
->=20
-> I think it makes more sense not to do a flush in the realize method.
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 1630c27594..3a1c7e200c 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -89,7 +89,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+     }
+     memory_region_add_subregion(&s->container, NRF51_FLASH_BASE, &s->flash);
+ 
+-    memory_region_init_ram(&s->sram, NULL, "nrf51.sram", s->sram_size, &err);
++    memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
++                           &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+-- 
+2.17.1
 
-Okay, I'll resend this patch.
-
-Stefan
-
---8GpibOaaTibBMecb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcSy0qAAoJEJykq7OBq3PIKz8H/jOHIMRSb+Nz1Hy0qxPEA8Wu
-qg338TxsVVQgKLvcr6kMCDuV8MaCHrT29cODfBWocjAqyCR98ReizZfiennDvgjQ
-6ovAbvJPHPo+I4vNoNdxvtJJsyYYDJbkvk0c1dqPR1Cyb2S3ZitUBi4QVwcE9A9Z
-RqaYfvjOTHQxFTN0QWotTsiu9SyRpIblj0SdhyvTkhUlA3rYt42XnnGem3tV1BDL
-iTQ6OcD8kseUFLI3fJtlsDLstZGTZOoGB7//dz9RWHYDpWHVT289g7Lr7F+C2cPh
-UxuHOcxggGcJir1oF/Ay72N+nr1Co/h2JwTCeEaWrHnnJaOCnRaDLWM8/7aVLAo=
-=mBGV
------END PGP SIGNATURE-----
-
---8GpibOaaTibBMecb--

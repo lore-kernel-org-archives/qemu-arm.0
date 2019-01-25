@@ -1,108 +1,111 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7129474wrt;
-        Tue, 22 Jan 2019 03:49:56 -0800 (PST)
-X-Received: by 2002:a9d:17ca:: with SMTP id j68mr20646875otj.268.1548157796425;
-        Tue, 22 Jan 2019 03:49:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548157796; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp832794wrt;
+        Fri, 25 Jan 2019 15:02:33 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7IQOit/lc8ttsZDtpMM7sAt2nobLz8hd6pMJgQeEIhmp2maQn8V9JT1mU6y1Y4FEUN3S6C
+X-Received: by 2002:a7b:cb18:: with SMTP id u24mr8087394wmj.138.1548457353291;
+        Fri, 25 Jan 2019 15:02:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548457353; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8p4fQ1YtNxyGZiaTzQyrSNj77kz0qYwfaRVEKX/pUzaEHTwJLdgqsJHjvsYZr5729
-         9I0bpj4UbKonKnI3Dwg2hOdAM39i1+1zE7pyW0fNAaSaQfm4FbNYSiryhSs95Oe1HDqd
-         yPnx1dbjmTOtTwu5hrdQeP8zW6EnWrswsZQb/DOqe4lTiybqDvS7bORHnRtr3pXhg9+O
-         YU9xiXbP20Aiw1vQA+2cUn3lcyKrYoTp/8RW44VC7rrKzXmx4HQfclto1AMAobnupuYS
-         cPhEomrBlsnH6M5FmEEz3eL7x6jG1BqfAVsRcFFw/roqxKjY2SlIJ8iUymp8czNTB6Cg
-         HLlg==
+        b=adx+Ar2XDI3gFFkaivSMba976Xjh69ci+gh5b5AMr8vAdtFgLJ8z7h46rgjaPCTByd
+         XFXp39M4NnAzd3tP6WAZgyt1hDjzrbPa7EuO9gTk5OwEOJ+zvCqqcOWWZfTp9mhJ/Xtx
+         yU7yqnkTM3h0q2MbQANR3xXC94npc3sTI4ZxGo21Wot6zDxbAT0/bSYPoEQpsIsd11sd
+         9OfWQwPJxncqz2PO4qUNmYHEN/oTgcM3tXF8XpiqRmBGYNBaiemZPiCqjaoLmj/UhMiP
+         hhfTJJsh6DvvsvobAJ5YlcwIFcwQDO/T/b19HhLXYQkWEmdmHL6Iv0MrqZwmNVvkXVIi
+         jt/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=bswhO6asGCKl5LqbLzCt7GfUF46hZQpBTL/amFxLxEw=;
-        b=eG3hMnQiX1pip+HYEKvZdd3cO+Q8B+wJeXwc8dGvfewKMgVuYZ+HXDMbxYGQMlP+nB
-         8avxbJpLfzwBJMc1GaZh/Peo6HmXd01lMbZ+wbEAEIIse+EPwyOQga0Mv3jL0h5gd6Zv
-         0RjfSFPCZcFDoeHGJka7wu8MtrONOq1RTCLqEQ3t/Uj9z+DNONyzcLiJ7XuDdL/YE8u4
-         9B1chAUqLHyYvIIesxySPbn8GILMfkoWxxI88TUaKlmB+DwUQ2Mecri9db06zdc22Rk4
-         xj2TGYYOoWZbfZA+csQg754G/PURR91pNl3635rZ4iAX4/cRqxYN2kxU1EXtenXtP+ov
-         bkhw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:message-id:date
+         :to:from;
+        bh=sQCR3xSCEBDm9fprIaE09kVdPBXmsVng3UlxyBNUU0o=;
+        b=dZP7Bzd1WE/ujlJFfYB9k6SaUxTKHTnpH2Bh/iYBlxGsEuHz09Hz/J/r0wq0cK58aP
+         RdQ4YBxsfDMVAYKit/dLzCkwtnCDvv/ULId393An1BqihlBWXxBlUMKKltMtLVij2kJi
+         EclBuT2ekex2IK11o3QJRYKh8qvkoZQLBSpjHGpqzxHfKmkXaloliqmgU+N/bPgmZDbA
+         oDDMmx64foc5CTd7pYsgzGM2U2FMmayz1kHJwDM7WSRKroT/LWl2aZDyQwgNg8BUxr2W
+         slTKsjUfClO7hJ0Rd7uoRNJPa3d6HwYq4YEcLA4/fEsaNP3r/owYUBR0NQ3M88G+7A1l
+         dlHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VtkrvP5x;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b65sor9280846otc.24.2019.01.22.03.49.56
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j18si53029838wrh.224.2019.01.25.15.02.33
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 Jan 2019 03:49:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 25 Jan 2019 15:02:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VtkrvP5x;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=bswhO6asGCKl5LqbLzCt7GfUF46hZQpBTL/amFxLxEw=;
-        b=VtkrvP5xv+gaZttFCeSzB9XAKxNC3zXlZNTKWHBR87QpinMFPIaHKyszMQVUfXtIrt
-         BXFD9bCueZPsv2tNJ3avAw0l3vqcn1lfnK2iLu9Ox6NNlOpVLPP/h2yFlYqdl71YU5Fb
-         xyMmy06zdZBKD3cetTqjJw22DkOBmJ2W/RYaw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=bswhO6asGCKl5LqbLzCt7GfUF46hZQpBTL/amFxLxEw=;
-        b=KW4dTaJlEZphFXiyHzIWuk3wozlfg16sniHUcwbcZ+eQ2PDvSNSrt2oykiozg9/wBE
-         2em22Cq32fZ4HxbjzTOhjyiiKcZAIcd9vONXNrHjUy5morr6HeF8PGmga9EFrHv05FYN
-         O3Ijcvx64OXxdnHu8F/Z6L4XnLXWxS09kxDaCT7YX3aC7y2tFoQc0rgCqXNo8+gvAP0q
-         FaFgc2bUkLGZs5Elx6wYriRhCpCO201YN/BKhts9ntW+icKDGLQmSQ53TpsFdSpmV9ox
-         7d3yjeHLGDJ7zpTcjoHhBl7MgfgI+zDVe3xvIAW0381Rihf8WNKNb9bwiq0x8rhiHmlc
-         JA2g==
-X-Gm-Message-State: AJcUukfK/E75Tw6TA8rodE1ldJOenmC1io6gIIHkvvl+wHto3vGhbno9
-	MeReXM7tkXMq3qbY8aKCTJpv+Six4aqbArUToU6PTGZsmZs=
-X-Google-Smtp-Source: ALg8bN7VbQcXKYkeRjBHXcw/p3X0Ua9VStmJgY/rAwsAbGqGDEsMB3EQ1U8Apavc2wtAi//mrqjROiLyfKy25oYG2uA=
-X-Received: by 2002:a9d:5a81:: with SMTP id w1mr3732676oth.317.1548157796055;
- Tue, 22 Jan 2019 03:49:56 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:52079 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gnAUa-00016B-C9
+	for alex.bennee@linaro.org; Fri, 25 Jan 2019 18:02:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52019)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <remi@remlab.net>) id 1gn9LE-0001HC-M0
+	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 16:48:49 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <remi@remlab.net>) id 1gn9LD-0002SG-NQ
+	for qemu-arm@nongnu.org; Fri, 25 Jan 2019 16:48:48 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:42966
+	helo=ns207790.ip-94-23-215.eu) by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <remi@remlab.net>)
+	id 1gn9LD-0002Mv-Ei; Fri, 25 Jan 2019 16:48:47 -0500
+Received: from basile.remlab.net (dbfyyyyy6f5dmhghlbr-t-3.rev.dnainternet.fi
+	[IPv6:2001:14ba:900:0:1a26:46a3:14c9:bbf])
+	(Authenticated sender: remi)
+	by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id 297135FBCB;
+	Fri, 25 Jan 2019 22:48:40 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi@remlab.net>
+To: qemu-arm@nongnu.org
+Date: Fri, 25 Jan 2019 23:48:35 +0200
+Message-ID: <1648289.tQCHxfjYn9@basile.remlab.net>
+Organization: Remlab
 MIME-Version: 1.0
-References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org> <1544173675-14217-3-git-send-email-hongbo.zhang@linaro.org>
-In-Reply-To: <1544173675-14217-3-git-send-email-hongbo.zhang@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 Jan 2019 11:49:44 +0000
-Message-ID: <CAFEAcA9mF+WiPLW4yyv1aEMLTg2QK2krZvxyjCSsMziJtzx3Ug@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] hw/arm: add Arm SBSA reference machine, devices part
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: F1lLtb99stHh
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:41d0:2:5a1a::
+X-Mailman-Approved-At: Fri, 25 Jan 2019 18:02:18 -0500
+Subject: [Qemu-arm] [PATCH 0/3] target/arm: fix PAuth in user mode
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9kqF/Lctg5bW
 
-On Fri, 7 Dec 2018 at 09:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->
-> Following the previous patch, this patch adds peripheral devices to the
-> newly introduced SBSA-ref machine.
->
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
->  hw/arm/sbsa-ref.c | 421 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 421 insertions(+)
+	Hello,
 
-Most of this code looks good, thanks.
+As things stand, ARMv8.3-PAuth does not work in user mode. These tiny patch=
+es=20
+attempt to fix that.
 
-> +
-> +static void sbsa_ref_machine_done(Notifier *notifier, void *data)
-> +{
-> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-> +                                         machine_done);
-> +    ARMCPU *cpu = ARM_CPU(first_cpu);
-> +    struct arm_boot_info *info = &vms->bootinfo;
-> +    AddressSpace *as = arm_boot_address_space(cpu, info);
-> +
-> +    if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as) < 0) {
-> +        exit(1);
-> +    }
-> +}
+Br,
 
-I still don't understand why we need this -- it doesn't seem
-to be doing anything different from the default behaviour that
-boot.c implements if skip_dtb_autoload is false.
+=2D---------------------------------------------------------------
+Remi Denis-Courmont (3):
+      target/arm: fix AArch64 virtual address space size
+      target/arm: actually enable PAuth in user mode
+      target/arm: fix decoding of B{,L}RA{A,B}
 
-thanks
--- PMM
+ target/arm/cpu.h           | 2 +-
+ target/arm/cpu64.c         | 4 ++--
+ target/arm/translate-a64.c | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+=2D-=20
+R=C3=A9mi Denis-Courmont
+http://www.remlab.net/
+
+
+

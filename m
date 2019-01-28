@@ -1,188 +1,127 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3032459wrt;
-        Mon, 28 Jan 2019 00:37:57 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7og6SWhxiDmlYGesDy/4ngMJoy4iGWJcN6yHVnY216E3vGazn1b57q9sY2H4oM1thcIdnO
-X-Received: by 2002:adf:d0c9:: with SMTP id z9mr19806898wrh.317.1548664677557;
-        Mon, 28 Jan 2019 00:37:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548664677; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3082606wrt;
+        Mon, 28 Jan 2019 01:46:26 -0800 (PST)
+X-Received: by 2002:a2e:2e1a:: with SMTP id u26-v6mr17010477lju.8.1548668786564;
+        Mon, 28 Jan 2019 01:46:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548668786; cv=none;
         d=google.com; s=arc-20160816;
-        b=v9AvxFbkIK6MPxuVH0ANACczc6Co4qOI0FKATLlY7cPushY1ssOo55+CNtmgEPJkAF
-         WdmR49f7dhg27uA+brLyFMny5vdClPdAo9xhjqhWIbc42KHq2DH681D7TcgGN5sL3USw
-         +Vkl5Du5tRnhwPcKy4YQWtZbvE8+Z2IgsR3F4Y4nXe9tWbDzfNKJ4EMvwCOfsPgPCZvB
-         VvjpMBzN9279FDYnU6q7GZHdF+BhOPNwvXMhsT9l1H+cEDhk/nri2SBXxv+6BGo/ZN/t
-         8060cCJjeoSojTZvyVdSbqFEa8JcqwliGxY9e6zr+DICrblfMM2cS6wDPZRB13H059kY
-         nJSQ==
+        b=DvjkMYqYZrtwkojR/PP1oDUl/QZKl0cXZkSPQPp36bjSgukCkqlC01IIfWcI3lrHMz
+         YHR+arGA1WatLbhogqgxUYB/EZhYWu0axb6U0qtYwqwt9FpLB1IOdMxYDhqQneeKECTD
+         vQASH6MS2ZuyOn13RIfw0SCyBz+q6Zsmej1K1MZPNGHNpp6XQ2HjDRsERvkDQavQBPVO
+         22G0h70U/tisxs56niFk6XsBNzsHXub3ZvaTNu/o1sExB5P7zt0vhzcq3HQS3CmAEf2H
+         uZuq+y/BGUVwryhoFeXUx8tV1r7w+yGrxuhT02sMWltouuFYdf5IupEhZ2hOQOCaeQQ+
+         sIsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=ZIsXa6kevxo7wfmZWoX90W6iTQN2NiuNnjs9Z/SBMOg=;
-        b=fJgVwenKB3V4BH5BLdWLW+FWRP91blbGxEEYIZzHBS90v6HfOkIMylsd12MOXvoeSz
-         gguWH3d8xE0T4Y2q7V69eSdpeSIcP6gQJfeo0iU4ZMHonfvq5fuLeeD89NEZ+BdIeob6
-         cXiaW7p3P7uc7Fg9BEtTsySO4p25CWGoTGwKKuFeawd77th8/1o+F79feQe2+LbZv3Pp
-         cT4CgDcOcIL36uKNmFBx5sZj480TuMZEFboB+rKeRSzDg8/7AZRWti9c5VgCniEcXT+s
-         q2THL19IuFJCgG8eiBEb9owHnVFpVlfcMzp8l3AUKIekK6pPRnTp9Tl4uexy/xPpxef+
-         JG6A==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=oYEtZurntTZuLoxLB/lbIGBz5ikcXYMMXLBV3IJuXv8=;
+        b=F00OVVmbeLXh0tDQ3t9Q8/G6y46akpPEV3CAQAqJa+CagODgqUVt8E3mC6Ue+vdead
+         GBz08LQSufTP/EJVN5/Ddr/NGCUH2DVlNXi1+IDCQ+DiFjoGrVyb+9l4fx+RIAk2bISO
+         jRtcIEZcakJksGdizxRF/v3J9PnAs/FiQH4akib5VCs7afLaFOmGL7QROGlZHKPUGeMJ
+         yMQGEfIylJfHAor/PYvpAfbCi7Y5X2zgOC+ggZ+4KSASR4pNXAW8kdby15Je2L0HSeYW
+         ayJ2HjXuI1UGLvACDHR32mY3U0LmKQQSxPQ7EoAztVfWwZR9TsmCPAgSLHhUh7m9h7Zl
+         WhRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4si46881890wme.21.2019.01.28.00.37.57
+       dkim=pass header.i=@linaro.org header.s=google header.b="D/FTBWkf";
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g21sor4540587lfj.22.2019.01.28.01.46.26
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Jan 2019 00:37:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 28 Jan 2019 01:46:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56051 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1go2QW-0005Q5-Jh
-	for alex.bennee@linaro.org; Mon, 28 Jan 2019 03:37:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52425)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go2QJ-0005Pj-T4
-	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 03:37:44 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go2QH-0003r3-Vc
-	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 03:37:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37930)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1go2QE-0003jW-LG; Mon, 28 Jan 2019 03:37:41 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9A2623DDB8;
-	Mon, 28 Jan 2019 08:37:32 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-122.ams2.redhat.com [10.36.116.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 09B1118539;
-	Mon, 28 Jan 2019 08:37:29 +0000 (UTC)
-To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-References: <20190127101836.15451-1-sourav.jb1988@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
-Date: Mon, 28 Jan 2019 09:37:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+       dkim=pass header.i=@linaro.org header.s=google header.b="D/FTBWkf";
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=oYEtZurntTZuLoxLB/lbIGBz5ikcXYMMXLBV3IJuXv8=;
+        b=D/FTBWkfeCrXrc2uNV3dffZ43jpPWkezHBM+BjVBclf/lusXmrsQzyn7DR8Uu7mSC9
+         J656xJCRl2/UXVrZ7li+gTqTvR6sP9y/ssyXVNTWalIVatHduZgNqIzrJ4PE2J0K80nz
+         lVWazTd5fhjdX7409MV1+yE1bxYnh43O9XPVg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=oYEtZurntTZuLoxLB/lbIGBz5ikcXYMMXLBV3IJuXv8=;
+        b=rd8P2QnaO3ZyNaSLt5/V9uTy4xduL/BvQrICsmZnbJQYL7MZQDVru84ul8ovDBHlmj
+         LWuyGDLnV6KN+NHSbBB7unWR6m4EI9CtRrUCF3uo/av3M2rxcMxsSbJvpW5+wlJePxQk
+         4kHi1BmsL4+HGfQSM78nxm4Kc/qW0VPSKWnCAlqTq0L5tc8Blufj0ArNyZKr3EoMAtZh
+         81rJ4BteOUAevs0HrRpP3hiPAXzZ2xd94euZ5ICINICzgZhfuOcYaF+wmPGJOFPo+Znc
+         zQOuMSXTrxaGipSg1bKrQcW7Q6s2zdeJU6LfR/ZFUpApou0oN0Ww0w1Prvftugr3AY8Y
+         EJKg==
+X-Gm-Message-State: AJcUukd+Wekt+F4auzX/X/A4tRiHvFqet55MsBGOwiliYtjyfThpaBSH
+	rPqnygL5Ovx71qUknUVlMO+HsMAD3a1Q2gQ0x5+B+Ofi
+X-Google-Smtp-Source: ALg8bN7URcr9X2sXCX6mrTuX/N4qcJAT0JiRfCdZWzURVfuKXIqk6ZwlZTmvLjIW1x0O/4e2klvV4qAE0xxJlTENPJo=
+X-Received: by 2002:a19:5d42:: with SMTP id p2mr15522880lfj.83.1548668786050;
+ Mon, 28 Jan 2019 01:46:26 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190127101836.15451-1-sourav.jb1988@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 28 Jan 2019 08:37:32 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/input/lm832x: set device
- category of lm832x
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /jU30KLK3Yl9
+References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
+ <1544173675-14217-3-git-send-email-hongbo.zhang@linaro.org> <CAFEAcA9mF+WiPLW4yyv1aEMLTg2QK2krZvxyjCSsMziJtzx3Ug@mail.gmail.com>
+In-Reply-To: <CAFEAcA9mF+WiPLW4yyv1aEMLTg2QK2krZvxyjCSsMziJtzx3Ug@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Mon, 28 Jan 2019 17:46:14 +0800
+Message-ID: <CAHmQWvCw5ndod93WqLXDgGxDERtRM3ee_qiLA+S34Y9X2JFvVQ@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] hw/arm: add Arm SBSA reference machine, devices part
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: OkT1UCqm0fda
 
- Hi,
+On Tue, 22 Jan 2019 at 19:49, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 7 Dec 2018 at 09:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> >
+> > Following the previous patch, this patch adds peripheral devices to the
+> > newly introduced SBSA-ref machine.
+> >
+> > Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+> > ---
+> >  hw/arm/sbsa-ref.c | 421 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 421 insertions(+)
+>
+> Most of this code looks good, thanks.
+>
 
-On 2019-01-27 11:18, kumar sourav wrote:
-> Sets the category of lm832x as DEVICE_CATEGORY_INPUT
-> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
->=20
-> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
-> ---
->  hw/input/lm832x.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-> index cffbf586d4..07ae5e0aee 100644
-> --- a/hw/input/lm832x.c
-> +++ b/hw/input/lm832x.c
-> @@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass, v=
-oid *data)
->      k->recv =3D lm_i2c_rx;
->      k->send =3D lm_i2c_tx;
->      dc->vmsd =3D &vmstate_lm_kbd;
-> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
+Thanks.
+By the way, this patch https://patchwork.kernel.org/patch/10744759/
+has been merged, now we have a generic EHCI controller, I will add
+this in my next iteration.
 
-This device already has DEVICE_CATEGORY_MISC set since it is derived
-from TYPE_I2C_SLAVE. If you now set another category bit here, the
-device shows up twice in the output of "-device help". That's not so nice=
-.
+> > +
+> > +static void sbsa_ref_machine_done(Notifier *notifier, void *data)
+> > +{
+> > +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
+> > +                                         machine_done);
+> > +    ARMCPU *cpu = ARM_CPU(first_cpu);
+> > +    struct arm_boot_info *info = &vms->bootinfo;
+> > +    AddressSpace *as = arm_boot_address_space(cpu, info);
+> > +
+> > +    if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as) < 0) {
+> > +        exit(1);
+> > +    }
+> > +}
+>
+> I still don't understand why we need this -- it doesn't seem
+> to be doing anything different from the default behaviour that
+> boot.c implements if skip_dtb_autoload is false.
+>
 
-I see multiple options here:
+According to the process of arm_load_kernel() in boot.c, If only
+kernel loaded via -kernel but without any firmware, it works fine.
+While in this case, we have have firmware loaded but no kernel (eg
+firmware loads kernel from storage, firmware never come back to qemu
+again), so the arm_load_kernel() returns in the middle before calling
+arm_load_dtb(),  because arm_load_dtb() is the final step in
+arm_load_kernel(), so there is no chance for the arm_load_dtb() to be
+called, then we get error message and qemu quits.
 
-1) Drop this patch since the device already has a category
-
-2) Make sure to clear_bit() the MISC category here again
-
-3) Remove the set_bit(DEVICE_CATEGORY_MISC, k->categories) in
-   hw/i2c/core.c - it does not make that much sense to set the
-   MISC category for an abstract parent class.
-
-4) Introduce a new DEVICE_CATEGORY_I2C which could be used
-   instead of the DEVICE_CATEGORY_MISC in hw/i2c/core.c
-
-One of the last two options sound most appealing to me.
-
- Thomas
+> thanks
+> -- PMM

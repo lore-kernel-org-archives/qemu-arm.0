@@ -1,53 +1,179 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id w80sm34736wme.38.2019.01.28.09.39.40
+        by smtp.gmail.com with ESMTPSA id f14sm97017077wrv.56.2019.01.28.09.39.41
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jan 2019 09:39:40 -0800 (PST)
+        Mon, 28 Jan 2019 09:39:42 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 555123E0489;
-	Mon, 28 Jan 2019 17:39:40 +0000 (GMT)
+	by zen.linaro.local (Postfix) with ESMTP id 1BA6E3E07DF;
+	Mon, 28 Jan 2019 17:39:41 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v1 0/4] HWCAP_CPUID registers for aarch64
-Date: Mon, 28 Jan 2019 17:39:36 +0000
-Message-Id: <20190128173940.25813-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 4/4] tests/tcg/aarch64: userspace system register test
+Date: Mon, 28 Jan 2019 17:39:40 +0000
+Message-Id: <20190128173940.25813-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190128173940.25813-1-alex.bennee@linaro.org>
+References: <20190128173940.25813-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: h/HbASjC5f1B
+X-TUID: UrpXjFyOAlr6
 
+This tests a bunch of registers that the kernel allows userspace to
+read including the CPUID registers.
 
-Hi,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-I posted a series to expose some of the CPU registers to user-space.
-The counter registers got merged at the time but the HW_CPUID had some
-comments that needed addressing. I've re-spun the series and cleaned
-it up, hopefully addressing the comments at the same time. The test
-case has been expanded.
-
-The ABI is described in the kernel document:
-
-  https://www.kernel.org/doc/Documentation/arm64/cpu-feature-registers.txt
-
-but from QEMU's point of view we just need to ensure the correct
-values are reported for CONFIG_USER_ONLY.
-
-Alex Bennée (4):
-  target/arm: relax permission checks for HWCAP_CPUID registers
-  target/arm: expose CPUID registers to userspace
-  linux-user/elfload: enable HWCAP_CPUID for AArch64
-  tests/tcg/aarch64: userspace system register test
-
- linux-user/elfload.c              |   1 +
- target/arm/cpu.h                  |  12 +++
- target/arm/helper.c               |  57 ++++++++++----
+---
+v4
+  - also test for extra bits that shouldn't be exposed
+---
  tests/tcg/aarch64/Makefile.target |   2 +-
  tests/tcg/aarch64/sysregs.c       | 120 ++++++++++++++++++++++++++++++
- 5 files changed, 175 insertions(+), 17 deletions(-)
+ 2 files changed, 121 insertions(+), 1 deletion(-)
  create mode 100644 tests/tcg/aarch64/sysregs.c
 
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 08c45b8470..cc1a7eb486 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -7,7 +7,7 @@ VPATH 		+= $(AARCH64_SRC)
+ 
+ # we don't build any of the ARM tests
+ AARCH64_TESTS=$(filter-out $(ARM_TESTS), $(TESTS))
+-AARCH64_TESTS+=fcvt
++AARCH64_TESTS+=fcvt sysregs
+ TESTS:=$(AARCH64_TESTS)
+ 
+ fcvt: LDFLAGS+=-lm
+diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
+new file mode 100644
+index 0000000000..8e11288ee3
+--- /dev/null
++++ b/tests/tcg/aarch64/sysregs.c
+@@ -0,0 +1,120 @@
++/*
++ * Check emulated system register access for linux-user mode.
++ *
++ * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-registers.txt
++ */
++
++#include <asm/hwcap.h>
++#include <stdio.h>
++#include <sys/auxv.h>
++#include <signal.h>
++#include <string.h>
++#include <stdbool.h>
++
++int failed_mask_count;
++
++#define get_cpu_reg(id) ({                                      \
++            unsigned long __val = 0xdeadbeef;                   \
++            asm("mrs %0, "#id : "=r" (__val));                  \
++            printf("%-20s: 0x%016lx\n", #id, __val);            \
++            __val;                                               \
++        })
++
++#define get_cpu_reg_check_mask(id, mask) ({                     \
++            unsigned long __cval = get_cpu_reg(id);             \
++            unsigned long __extra = __cval & ~mask;             \
++            if (__extra) {                                      \
++                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra);   \
++                failed_mask_count++;                            \
++            }                                                   \
++})
++
++bool should_fail;
++int should_fail_count;
++int should_not_fail_count;
++uintptr_t failed_pc[10];
++
++void sigill_handler(int signo, siginfo_t *si, void *data)
++{
++    ucontext_t *uc = (ucontext_t *)data;
++
++    if (should_fail) {
++        should_fail_count++;
++    } else {
++        uintptr_t pc = (uintptr_t) uc->uc_mcontext.pc;
++        failed_pc[should_not_fail_count++] =  pc;
++    }
++    uc->uc_mcontext.pc += 4;
++}
++
++int main(void)
++{
++    struct sigaction sa;
++
++    /* Hook in a SIGILL handler */
++    memset(&sa, 0, sizeof(struct sigaction));
++    sa.sa_flags = SA_SIGINFO;
++    sa.sa_sigaction = &sigill_handler;
++    sigemptyset(&sa.sa_mask);
++
++    if (sigaction(SIGILL, &sa, 0) != 0) {
++        perror("sigaction");
++        return 1;
++    }
++
++    /* since 4.12 */
++    printf("Checking CNT registers\n");
++
++    get_cpu_reg(ctr_el0);
++    get_cpu_reg(cntvct_el0);
++    get_cpu_reg(cntfrq_el0);
++
++    /* when (getauxval(AT_HWCAP) & HWCAP_CPUID), since 4.11*/
++    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
++        printf("CPUID registers unavailable\n");
++        return 1;
++    } else {
++        printf("Checking CPUID registers\n");
++    }
++
++    /*
++     * Some registers only expose some bits to user-space. Anything
++     * that is IMDEF is exported as 0 to user-space.
++     */
++    get_cpu_reg_check_mask(id_aa64isar0_el1, 0x000fffffff0ffff0ULL);
++    get_cpu_reg_check_mask(id_aa64isar1_el1, 0x00000000ffffffffULL);
++    get_cpu_reg(id_aa64mmfr0_el1);
++    get_cpu_reg(id_aa64mmfr1_el1);
++    get_cpu_reg_check_mask(id_aa64pfr0_el1, 0x000f000f0ff0000ULL);
++    get_cpu_reg(id_aa64pfr1_el1);
++    get_cpu_reg(id_aa64dfr0_el1);
++    get_cpu_reg(id_aa64dfr1_el1);
++
++    get_cpu_reg_check_mask(midr_el1, 0x00000000ffffffffULL);
++    get_cpu_reg(mpidr_el1);
++    /* REVIDR is all IMPDEF so should be all zeros to user-space */
++    get_cpu_reg_check_mask(revidr_el1, 0x0);
++
++    printf("Remaining registers should fail\n");
++    should_fail = true;
++
++    /* Unexposed register access causes SIGILL */
++    get_cpu_reg(id_mmfr0_el1);
++
++    if (should_not_fail_count > 0) {
++        int i;
++        for (i = 0; i < should_not_fail_count; i++) {
++            uintptr_t pc = failed_pc[i];
++            uint32_t insn = *(uint32_t *) pc;
++            printf("insn %#x @ %#lx unexpected FAIL\n", insn, pc);
++        }
++        return 1;
++    }
++
++    if (failed_mask_count > 0) {
++        printf("Extra information leaked to user-space!\n");
++        return 1;
++    }
++
++    return should_fail_count == 1 ? 0 : 1;
++}
 -- 
 2.17.1

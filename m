@@ -1,163 +1,169 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3152723wrt;
-        Mon, 28 Jan 2019 03:13:52 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN5NxpUs31oaMMcabieB2Adj3de5Ebf/HnOFTpxERgI2Hx/BbmyWueCM0rpm3HX9NlC5WtZG
-X-Received: by 2002:adf:9123:: with SMTP id j32mr22361253wrj.122.1548674032411;
-        Mon, 28 Jan 2019 03:13:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548674032; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3152851wrt;
+        Mon, 28 Jan 2019 03:14:01 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7oJxqorXDINsQvv2hrSt2OWvr4YVWbM8726/p5UQtZpdQ7rtE1lcSeGZAQA0OKJu2WPI/S
+X-Received: by 2002:adf:afdc:: with SMTP id y28mr20706562wrd.275.1548674041515;
+        Mon, 28 Jan 2019 03:14:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548674041; cv=none;
         d=google.com; s=arc-20160816;
-        b=GsUPrIV29yV64PoSkk9lH1u70AgFxuq77WV0BM9hui17fYzGR9lTznOmNWdrPdAW6v
-         /YXdwgsj23cU7pRlJ2x1mdpJkEPZOHAOUCJJz52yVQzEmGS2Wbk0tbtTeME+o8XXi04C
-         ZrHsBzRrRKC9rkWWC0uQD6uOZxTr3M3FryxqVG7SbUJvtRvolTn21VcNo9c9gmFafagI
-         4rOsOVz4QYnMGwjoAiQmvi61qLc+HUkc8i/o76l/+roRxnZZ7P4OVVEVEN6ZuP6GsP05
-         aatytI2KmNMaZYaxh3Ylm7hhBAu/9Y/3l4YX7CKnl7rVVP2phBis1wsNxck+PURxqRUG
-         VkdQ==
+        b=qZxho/kR/XaPSCyxuSBATHNXtE2i6qjBLAHEeUam4dy5ahl/09KIdIo3aMy13pLL+X
+         bP2H9byPmgEmb/bJ1JnXyaD9+h0IyEvnhb/oGmId+7BnRW57qUGonqbEIq3i4p38jQGI
+         k4+TgxX/osDynvkbjEu3QrhNgbNxvqlRrJixg94bVnmW/BCxoeBn8EznN04sU6Ky48OZ
+         dRTWhmxhFzjHW1qddVLLuuhxIiG1R11ladnLaM6d3gVdBZ9KOcSc30nc13VElQbBJyuH
+         b+t5+b5L2DnEZpULcDFM+L5cyt8no5Ka/XWJ462kU7m3NE764KH7731HHcJNVDMV3IpI
+         +kVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=l4tenfaYhnUwlU6ZJ4c8+GdhStTt3X1eRvpanqxT3hg=;
-        b=lDKStErMwLmnMtzH0+DvAhLkOe03QPnV9KBkkpID5ORdqtbLNoO4FP2Q8ImkC8S8YJ
-         2A/kcsucwVNaUOeUvxQk1RuVc2KNMajsBCV1ocBAavJQBdS8zfrx6r+MD7uBMDgAR+DG
-         rRDj+Wjs8/ubs3HoJQNfbF01pTLedDLenqCybrGiyggvCIGLiKA4F8Lac/XDohyu65on
-         OoSZiow3SWArt7IeMzaqo9RgsyWU1wfui3SobNYDSyhcNnBKd6AWLnUtwioA9IvLT/ba
-         eQkUeCQ8B4xRsrmm/N9WLXh+N1fDb9cmx+v3EgFc62i1I/LOo/6euRx75qxV7/TkIcCz
-         wllw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Fxtu5FLc8Auyskoc0iQC6b+XqgVWmca/AxJOJx1HdU4=;
+        b=iNiLaYsAPR5BAMUTnNU73wmhJ3R8Dj6oe4ybbjjsZyReWdOUQdFweWzVx2YYPtbHGs
+         UkFM/A6hA84WSkuQN1PKZD2HZ1bR5+4HzMAZ/NrWbm8gXfHxLR+ioR4yTNUkrqsR7e+D
+         IFmxZScNzQz4L9j23+ZC8qgqcGCgy0cdmzJyK5VOwdBP65/TBkGWZZVtjt+ugbuH5vuW
+         SPIHO301hZhlK22zpduXLQAKpEgx3n/ixyIjAzxx8N0claNvgY3j2ZtewRrsFMLyrKXo
+         /hYAlgvgH754wzJxgOmCQSD/56ZBLsK25CTHn0BD/vqIjFZHKmwytt5gokm4A21alJ2L
+         yhig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kT3fUDsB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i4si6320345wrn.60.2019.01.28.03.13.52
+        by mx.google.com with ESMTPS id f8si81773421wro.330.2019.01.28.03.14.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 Jan 2019 03:13:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Jan 2019 03:14:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:58031 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kT3fUDsB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:58023 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1go4rP-0000oj-FR
-	for alex.bennee@linaro.org; Mon, 28 Jan 2019 06:13:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56865)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1go4rY-0000VS-K8
+	for alex.bennee@linaro.org; Mon, 28 Jan 2019 06:14:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57207)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1go4ns-0006Qc-Gq
-	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 06:10:13 -0500
+	(envelope-from <laurent.desnogues@gmail.com>) id 1go4pQ-0007jg-73
+	for qemu-devel@nongnu.org; Mon, 28 Jan 2019 06:11:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1go4nr-0005hk-LF
-	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 06:10:12 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:44677)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1go4pP-0006Hl-Ak
+	for qemu-devel@nongnu.org; Mon, 28 Jan 2019 06:11:48 -0500
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:34805)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1go4nq-0005gz-Qy
-	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 06:10:10 -0500
-Received: by mail-wr1-f67.google.com with SMTP id z5so17510163wrt.11
-	for <qemu-arm@nongnu.org>; Mon, 28 Jan 2019 03:10:10 -0800 (PST)
+	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
+	id 1go4pJ-0006B9-6B; Mon, 28 Jan 2019 06:11:42 -0500
+Received: by mail-io1-xd42.google.com with SMTP id b16so13153142ior.1;
+	Mon, 28 Jan 2019 03:11:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=Fxtu5FLc8Auyskoc0iQC6b+XqgVWmca/AxJOJx1HdU4=;
+	b=kT3fUDsBYVSaAyLrlE671QZJELUIKaSk5zqrx9Lr0BOiGzGvtsFJ2UYmG56Kaa3Xb+
+	LUfqYT8p8q+o9tBfnbFD30eo7fetccxUzXYRsseXlqoezS+cX/u4ptxFu2W1HI+BB0gp
+	803e8QG7DASDzPlBWnn/rMSB/SGx7FwfT1nAcrgUGXFXsgK63BY9hEMzkupQIooeMZRr
+	mJt4IyQVIvXwY0UGebc8hSOsxWN2OlyUZG0fGc5Q2CHuCtV5oNlXXTN9efflyML2mutS
+	/dakyE2r0UvvBLsr8K6+v8vlO5aoAYm+QeFQiM/VnT33z2B13dTClGlquPrlAP/8BlId
+	kmYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=l4tenfaYhnUwlU6ZJ4c8+GdhStTt3X1eRvpanqxT3hg=;
-	b=lR7K/75WWBZepVcD0q6PzR5CY2kppBK4b9DnrD4AleW0PB5ySs1PXvG84clbFQrH8z
-	nqi88P5VK+83jCvxGN6FKPRdLlwrQJqMdAFVAcY7y4od71dpQRBfix5AHa1SeIRc7uQy
-	5P8oCF40/SKeoftzjZqrjXad403It6Q9L87vG/z9tOoKT4VqienDf1F+ipFzH32gRMvo
-	ShE59+JtpH/kpkBmLhlatwdHfSMJD2bET4aO5fB/3/UPYlLNCph5ffc/OgQmB+PyQkEr
-	dOheD+LY3gghr6LxF6bZRs1wVRJpknLQXI1UKkVV11Q40wdMAWngYBxgsCqIFjTeAjV6
-	GR6A==
-X-Gm-Message-State: AJcUukcz4lCc/VbMb+7CdAUgkDMDg7X4Z4cob8D0GaBF+OH1XhIWZaYC
-	wY24bEpRArk9x4fk+v1Es3JzBQ==
-X-Received: by 2002:adf:93e2:: with SMTP id 89mr22052193wrp.129.1548673809372; 
-	Mon, 28 Jan 2019 03:10:09 -0800 (PST)
-Received: from [192.168.1.40] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	o8sm109679915wrx.15.2019.01.28.03.10.08
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 Jan 2019 03:10:08 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, kumar sourav <sourav.jb1988@gmail.com>,
-	qemu-trivial@nongnu.org
-References: <20190127101836.15451-1-sourav.jb1988@gmail.com>
-	<33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <05c9ef91-39d7-0579-b007-443748559007@redhat.com>
-Date: Mon, 28 Jan 2019 12:10:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=Fxtu5FLc8Auyskoc0iQC6b+XqgVWmca/AxJOJx1HdU4=;
+	b=CJ+sOwtTlzjTrqsUP8Ob8Wt1hOYYf65Tl6PAq5N9vV3GuAgt2pftuae8FtmG8oIfkN
+	72zQy45NC3bpgllcm0jgmiiV6EB+0vsI53P+7NgFBk9jXWQ0173ooa+H1XWZjnVtlKz/
+	GFM5CbCa6v642ahWr30QisuHO76IXHvoOfKFMbyWQINB8WQjmjV/YOnLrOeqYZDn64Lc
+	AvHwkzrtPK4nWwyog0n28uuOHUofCGgdTfZtq42E9TOZI3Gk7YKnzNvphVFoGVfcq9Ze
+	PijhWqf7WfK3BweGkdhdVgr/qNW3gG00IpAPe0rK+9GkCrzvhpMuLfvymhcix5DiHilF
+	Ms+A==
+X-Gm-Message-State: AHQUAub3BBRCjMSPzjbknVSS8XlQDB+gStfysgjS2Itj1MMkBT7nZCkc
+	H32a8ilARWaUIBaGKTQkFnZ+/Cs+WjcmvWXMXPQ=
+X-Received: by 2002:a6b:c815:: with SMTP id y21mr11410571iof.98.1548673893869; 
+	Mon, 28 Jan 2019 03:11:33 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/input/lm832x: set device
- category of lm832x
-X-BeenThere: qemu-arm@nongnu.org
+References: <20190125182626.9221-1-peter.maydell@linaro.org>
+	<20190125182626.9221-4-peter.maydell@linaro.org>
+In-Reply-To: <20190125182626.9221-4-peter.maydell@linaro.org>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Mon, 28 Jan 2019 12:11:44 +0100
+Message-ID: <CABoDooPjnoh86VMwmq6CcOs1e5-ddBCfSp7aCvQGkTY9AAQauA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::d42
+Subject: Re: [Qemu-devel] [PATCH 3/7] target/arm/translate-a64: Don't
+ underdecode SIMD ld/st multiple
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qSUlvdD1evTI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Patch Tracking <patches@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Thu6sX5cxqMU
 
-Hi Thomas,
+On Fri, Jan 25, 2019 at 7:26 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> In the AdvSIMD load/store multiple structures encodings,
+> the non-post-indexed case should have zeroes in [20:16]
+> (which is the Rm field for the post-indexed case).
+> Correctly UNDEF the currently unallocated encodings which
+> have non-zeroes in those bits.
+>
+> Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-On 1/28/19 9:37 AM, Thomas Huth wrote:
->  Hi,
-> 
-> On 2019-01-27 11:18, kumar sourav wrote:
->> Sets the category of lm832x as DEVICE_CATEGORY_INPUT
->> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
->>
->> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
->> ---
->>  hw/input/lm832x.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
->> index cffbf586d4..07ae5e0aee 100644
->> --- a/hw/input/lm832x.c
->> +++ b/hw/input/lm832x.c
->> @@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass, void *data)
->>      k->recv = lm_i2c_rx;
->>      k->send = lm_i2c_tx;
->>      dc->vmsd = &vmstate_lm_kbd;
->> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->>  }
-> 
-> This device already has DEVICE_CATEGORY_MISC set since it is derived
-> from TYPE_I2C_SLAVE. If you now set another category bit here, the
-> device shows up twice in the output of "-device help". That's not so nice.
-> 
-> I see multiple options here:
-> 
-> 1) Drop this patch since the device already has a category
-> 
-> 2) Make sure to clear_bit() the MISC category here again
-> 
-> 3) Remove the set_bit(DEVICE_CATEGORY_MISC, k->categories) in
->    hw/i2c/core.c - it does not make that much sense to set the
->    MISC category for an abstract parent class.
-> 
-> 4) Introduce a new DEVICE_CATEGORY_I2C which could be used
->    instead of the DEVICE_CATEGORY_MISC in hw/i2c/core.c
-> 
-> One of the last two options sound most appealing to me.
+Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
 
-Can we go with 0/3/4 together? 0 being this patch:
+Thanks,
 
-  0) This devices inherited DEVICE_CATEGORY_I2C from his
-     abstract parent, also select the DEVICE_CATEGORY_INPUT
-     bit.
+Laurent
+
+> ---
+>  target/arm/translate-a64.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 8e081758e03..c1f0cad7691 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -3249,6 +3249,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+>  {
+>      int rt = extract32(insn, 0, 5);
+>      int rn = extract32(insn, 5, 5);
+> +    int rm = extract32(insn, 16, 5);
+>      int size = extract32(insn, 10, 2);
+>      int opcode = extract32(insn, 12, 4);
+>      bool is_store = !extract32(insn, 22, 1);
+> @@ -3268,6 +3269,11 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+>          return;
+>      }
+>
+> +    if (!is_postidx && rm != 0) {
+> +        unallocated_encoding(s);
+> +        return;
+> +    }
+> +
+>      /* From the shared decode logic */
+>      switch (opcode) {
+>      case 0x0:
+> @@ -3367,7 +3373,6 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+>      }
+>
+>      if (is_postidx) {
+> -        int rm = extract32(insn, 16, 5);
+>          if (rm == 31) {
+>              tcg_gen_mov_i64(tcg_rn, tcg_addr);
+>          } else {
+> --
+> 2.20.1
+>

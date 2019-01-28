@@ -1,77 +1,180 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t199sm348163wmt.1.2019.01.28.09.39.40
+        by smtp.gmail.com with ESMTPSA id f191sm82872wmg.12.2019.01.28.09.39.41
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Jan 2019 09:39:40 -0800 (PST)
+        Mon, 28 Jan 2019 09:39:42 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 8D6913E050B;
+	by zen.linaro.local (Postfix) with ESMTP id B69653E0733;
 	Mon, 28 Jan 2019 17:39:40 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH  v1 1/4] target/arm: relax permission checks for HWCAP_CPUID registers
-Date: Mon, 28 Jan 2019 17:39:37 +0000
-Message-Id: <20190128173940.25813-2-alex.bennee@linaro.org>
+Subject: [PATCH  v1 2/4] target/arm: expose CPUID registers to userspace
+Date: Mon, 28 Jan 2019 17:39:38 +0000
+Message-Id: <20190128173940.25813-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190128173940.25813-1-alex.bennee@linaro.org>
 References: <20190128173940.25813-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5Xzzad0gE4mh
+X-TUID: +qubyevEJpC2
 
-Although technically not visible to userspace the kernel does make
-them visible via a trap and emulate ABI. We provide a new permission
-mask (PL0U_R) which maps to PL0_R for CONFIG_USER builds and adjust
-the minimum permission check accordingly.
+A number of CPUID registers are exposed to userspace by modern Linux
+kernels thanks to the "ARM64 CPU Feature Registers" ABI. For QEMU's
+user-mode emulation we don't need to emulate the kernels trap but just
+return the value the trap would have done. For this we use the PL0U_R
+permission mask which allows this access in CONFIG_USER mode.
+
+Some registers only return a subset of their contents so we need
+specific CONFIG_USER_ONLY logic to do this.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/cpu.h    | 12 ++++++++++++
- target/arm/helper.c |  6 +++++-
- 2 files changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ff81db420d..3b3c359cca 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2202,6 +2202,18 @@ static inline bool cptype_valid(int cptype)
- #define PL0_R (0x02 | PL1_R)
- #define PL0_W (0x01 | PL1_W)
- 
-+/*
-+ * For user-mode some registers are accessible to EL0 via a kernel
-+ * trap-and-emulate ABI. In this case we define the read permissions
-+ * as actually being PL0_R. However some bits of any given register
-+ * may still be masked.
-+ */
-+#ifdef CONFIG_USER_ONLY
-+#define PL0U_R PL0_R
-+#else
-+#define PL0U_R PL1_R
-+#endif
-+
- #define PL3_RW (PL3_R | PL3_W)
- #define PL2_RW (PL2_R | PL2_W)
- #define PL1_RW (PL1_R | PL1_W)
+---
+v4
+  - tweak commit message
+  - use PL0U_R instead of PL1U_R to be less confusing
+  - more CONFIG_USER logic for special cases
+  - mask a bunch of bits for some registers
+---
+ target/arm/helper.c | 51 ++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 36 insertions(+), 15 deletions(-)
+
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 92666e5208..42c1c0b144 100644
+index 42c1c0b144..68808e7293 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6731,7 +6731,11 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
-     if (r->state != ARM_CP_STATE_AA32) {
-         int mask = 0;
-         switch (r->opc1) {
--        case 0: case 1: case 2:
-+        case 0:
-+            /* min_EL EL1, but some accessible to EL0 via kernel ABI */
-+            mask = PL0U_R | PL1_RW;
-+            break;
-+        case 1: case 2:
-             /* min_EL EL1 */
-             mask = PL1_RW;
-             break;
+@@ -3543,7 +3543,7 @@ static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ static const ARMCPRegInfo mpidr_cp_reginfo[] = {
+     { .name = "MPIDR", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 5,
+-      .access = PL1_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
++      .access = PL0U_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
+     REGINFO_SENTINEL
+ };
+ 
+@@ -5488,6 +5488,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     return pfr1;
+ }
+ 
++#ifndef CONFIG_USER_ONLY
+ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     ARMCPU *cpu = arm_env_get_cpu(env);
+@@ -5498,6 +5499,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     }
+     return pfr0;
+ }
++#endif
+ 
+ /* Shared logic between LORID and the rest of the LOR* registers.
+  * Secure state has already been delt with.
+@@ -5799,18 +5801,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+          * define new registers here.
+          */
+         ARMCPRegInfo v8_idregs[] = {
+-            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST because we don't
+-             * know the right value for the GIC field until after we
+-             * define these regs.
++            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST for system
++             * emulation because we don't know the right value for the
++             * GIC field until after we define these regs. For
++             * user-mode HWCAP_CPUID emulation the GIC bits are masked
++             * anyway.
+              */
+             { .name = "ID_AA64PFR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 0,
++#ifndef CONFIG_USER_ONLY
+               .access = PL1_R, .type = ARM_CP_NO_RAW,
+               .readfn = id_aa64pfr0_read,
+-              .writefn = arm_cp_write_ignore },
++              .writefn = arm_cp_write_ignore
++#else
++              .access = PL0U_R, .type = ARM_CP_CONST,
++              .resetvalue = cpu->isar.id_aa64pfr0 & 0x000f000f0ff0000ULL
++#endif
++            },
+             { .name = "ID_AA64PFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 1,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->isar.id_aa64pfr1},
+             { .name = "ID_AA64PFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 4, .opc2 = 2,
+@@ -5839,11 +5849,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .resetvalue = 0 },
+             { .name = "ID_AA64DFR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->id_aa64dfr0 },
+             { .name = "ID_AA64DFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 1,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->id_aa64dfr1 },
+             { .name = "ID_AA64DFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 2,
+@@ -5871,11 +5881,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .resetvalue = 0 },
+             { .name = "ID_AA64ISAR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 0,
+-              .access = PL1_R, .type = ARM_CP_CONST,
+-              .resetvalue = cpu->isar.id_aa64isar0 },
++              .access = PL0U_R, .type = ARM_CP_CONST,
++#ifdef CONFIG_USER_ONLY
++              .resetvalue = cpu->isar.id_aa64isar0 & 0x000fffffff0ffff0ULL
++#else
++              .resetvalue = cpu->isar.id_aa64isar0
++#endif
++            },
+             { .name = "ID_AA64ISAR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 1,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->isar.id_aa64isar1 },
+             { .name = "ID_AA64ISAR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 2,
+@@ -5903,11 +5918,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .resetvalue = 0 },
+             { .name = "ID_AA64MMFR0_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 0,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->isar.id_aa64mmfr0 },
+             { .name = "ID_AA64MMFR1_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 1,
+-              .access = PL1_R, .type = ARM_CP_CONST,
++              .access = PL0U_R, .type = ARM_CP_CONST,
+               .resetvalue = cpu->isar.id_aa64mmfr1 },
+             { .name = "ID_AA64MMFR2_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 7, .opc2 = 2,
+@@ -6211,7 +6226,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         ARMCPRegInfo id_v8_midr_cp_reginfo[] = {
+             { .name = "MIDR_EL1", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 0,
+-              .access = PL1_R, .type = ARM_CP_NO_RAW, .resetvalue = cpu->midr,
++              .access = PL0U_R, .type = ARM_CP_NO_RAW, .resetvalue = cpu->midr,
+               .fieldoffset = offsetof(CPUARMState, cp15.c0_cpuid),
+               .readfn = midr_read },
+             /* crn = 0 op1 = 0 crm = 0 op2 = 4,7 : AArch32 aliases of MIDR */
+@@ -6223,7 +6238,13 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .access = PL1_R, .resetvalue = cpu->midr },
+             { .name = "REVIDR_EL1", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 6,
+-              .access = PL1_R, .type = ARM_CP_CONST, .resetvalue = cpu->revidr },
++#ifdef CONFIG_USER_ONLY
++              .access = PL0U_R, .type = ARM_CP_CONST,
++              .resetvalue = 0 /* HW_CPUID IMPDEF fields are 0 */ },
++#else
++              .access = PL1_R, .type = ARM_CP_CONST,
++              .resetvalue = cpu->revidr },
++#endif
+             REGINFO_SENTINEL
+         };
+         ARMCPRegInfo id_cp_reginfo[] = {
 -- 
 2.17.1

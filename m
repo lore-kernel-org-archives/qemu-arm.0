@@ -1,137 +1,112 @@
-Received: by 10.223.172.38 with SMTP id v35csp950144wrc;
-        Wed, 13 Sep 2017 04:52:36 -0700 (PDT)
-X-Google-Smtp-Source: ADKCNb4cJxcCSq4qbtVATVIKniLYfvUb4MNad6O77z1BzEAAJefuwqMYeaH54Q1vOQfEifLZtG/s
-X-Received: by 10.98.213.201 with SMTP id d192mr18187421pfg.210.1505303556455;
-        Wed, 13 Sep 2017 04:52:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505303556; cv=none;
-        d=google.com; s=arc-20160816;
-        b=uhg/Uxjl/KEUsxxctywSAK55xyWyUo0RSFWhrwuk1lYIBbzRiSNPpYlN+DJ/b35eCo
-         dULYRKscMLmRq3cI+ljZqluG5jpZvJ/x6+Mw1iULGE59yFWDI631lfTtflZ8rIfwR7ys
-         3h9mwGebosJ9DPNojOg3Hx1zYCguWlwfbraJ2FdYYEa23hDOIG9t9rrCobC5cArcxw4i
-         PB54rNAmORI0U101i8e9f/VV8MnwyHqhCiys2IZ3LloO0jTccvNiWIdl57wZ/uYEMcNr
-         zmS1aKeWpwBhv1T/1GtOovwXE4fXtBWHjG07UBN9iecExtvzfXyZlWPR+5x9oJ8rDgTP
-         fygA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:in-reply-to
-         :mime-version:user-agent:date:message-id:from:cc:references:to
-         :subject:arc-authentication-results;
-        bh=7ynODYN4+AolAHxqdyizoWghYv5EnUz4Mqo51mXy56o=;
-        b=wNmPOMe01fxg9D1mi/eNsYIfERQWNzzSTDuwx4e6h9+QIfNuTBvJuLrkBUtZQND89e
-         TEyiKXS069bOW6cKLA/xNSYY6pxFtbkwL+fPiQ8r+1rvF4vQJxlahs2PVCcr4uBW23D1
-         95HhfwW1BHXkPB3MT8K6iZt59UakeqJ6ecTSCxqHqXjp5x80yBjX6tApTkxGatyHmCT6
-         fkRmp34hoteNJ1wxTWjYCtpChAFg2m8GYTGV6rvX+SdopBcub8n8C5LwKlypw0YhQ6w1
-         K4HLomDRZ85V/+lYV7a843tTe2bdfrJkldWjxN1Tw8L8yo3uce3RbtXzzThRVPT0eEzX
-         xvEg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id i90si5847850pli.615.2017.09.13.04.52.36;
-        Wed, 13 Sep 2017 04:52:36 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1751951AbdIMLwd (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 26 others); Wed, 13 Sep 2017 07:52:33 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:6473 "EHLO
-        szxga04-in.huawei.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1751380AbdIMLwa (ORCPT
-        <rfc822;linux-kernel@vger.kernel.org>);
-        Wed, 13 Sep 2017 07:52:30 -0400
-Received: from 172.30.72.59 (EHLO DGGEMS405-HUB.china.huawei.com) ([172.30.72.59])
-        by dggrg04-dlp.huawei.com (MOS 4.4.6-GA FastPath queued)
-        with ESMTP id DHD52775;
-        Wed, 13 Sep 2017 19:52:10 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.301.0; Wed, 13 Sep 2017
- 19:51:59 +0800
-Subject: Re: [PATCH v11 6/6] target-arm: kvm64: Handle SError interrupt for
- the guest OS
-To:     Peter Maydell <peter.maydell@linaro.org>
-References: <0184EA26B2509940AA629AE1405DD7F2015FE17F@DGGEMA503-MBX.china.huawei.com>
- <CAFEAcA8J5wZ23kQypzcbUScUResjWnN6rDG0b0idD1rv7F5Fsw@mail.gmail.com>
- <5552cf68-b998-686b-8e7e-710399c2b014@huawei.com>
- <CAFEAcA_zO_-kDYb0MkW=p5oY6tQPk4PpCqZoG0_01pn=sa3upw@mail.gmail.com>
-CC:     James Morse <james.morse@arm.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Zhaoshenglong <zhaoshenglong@huawei.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "QEMU Developers" <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, kvm-devel <kvm@vger.kernel.org>,
-        "edk2-devel@lists.01.org" <edk2-devel@lists.01.org>,
-        Christoffer Dall <christoffer.dall@linaro.org>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        Will Deacon <will.deacon@arm.com>,
-        Tyler Baicar <tbaicar@codeaurora.org>,
-        Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-        "Ingo Molnar" <mingo@kernel.org>, "bp@suse.de" <bp@suse.de>,
-        Shiju Jose <shiju.jose@huawei.com>,
-        "zjzhang@codeaurora.org" <zjzhang@codeaurora.org>,
-        arm-mail-list <linux-arm-kernel@lists.infradead.org>,
-        "kvmarm@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>,
-        "lkml - Kernel Mailing List" <linux-kernel@vger.kernel.org>,
-        "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
-        "devel@acpica.org" <devel@acpica.org>,
-        "John Garry" <john.garry@huawei.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        Shameerali Kolothum Thodi 
-        <shameerali.kolothum.thodi@huawei.com>,
-        huangdaode <huangdaode@hisilicon.com>,
-        "Wangzhou (B)" <wangzhou1@hisilicon.com>,
-        Huangshaoyu <huangshaoyu@huawei.com>,
-        Wuquanming <wuquanming@huawei.com>,
-        Linuxarm <linuxarm@huawei.com>,
-        "Zhengqiang (turing)" <zhengqiang10@huawei.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <c105c670-6aec-32cd-d32b-30642819323e@huawei.com>
-Date:   Wed, 13 Sep 2017 19:51:56 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id 141sm2913886wmb.5.2019.01.29.03.08.20
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 29 Jan 2019 03:08:20 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id EA0F83E171D;
+	Tue, 29 Jan 2019 11:08:19 +0000 (GMT)
+User-agent: mu4e 1.1.0; emacs 26.1.91
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel <qemu-devel@nongnu.org>, "open list\:ARM" <qemu-arm@nongnu.org>, "linux-arm-kernel\@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "kvmarm\@lists.cs.columbia.edu" <kvmarm@lists.cs.columbia.edu>
+Cc: Mark Rutland <mark.rutland@arm.com>, Richard Henderson <richard.henderson@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>
+Subject: Kernel boot regression with PAuth and aarch64-softmmu -cpu max and el2 enabled
+Date: Tue, 29 Jan 2019 11:08:19 +0000
+Message-ID: <87va27n2l8.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_zO_-kDYb0MkW=p5oY6tQPk4PpCqZoG0_01pn=sa3upw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-X-Mirapoint-Virus-RAPID-Raw: score=unknown(0),
-        refid=str=0001.0A090204.59B91BEB.00A1,ss=1,re=0.000,recu=0.000,reip=0.000,cl=1,cld=1,fgs=0,
-        ip=0.0.0.0,
-        so=2014-11-16 11:51:01,
-        dmn=2013-03-21 17:37:32
-X-Mirapoint-Loop-Id: 15ca247d2cce4cb8bdac82ce9979ed6f
-Sender: linux-kernel-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: QyM6ZegxJEGZ
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: hAV34fa5b0OZ
 
 
+Hi,
 
-On 2017/9/13 18:52, Peter Maydell wrote:
-> This question seems to be not really related to the review
-> comment that it is responding to.
-> 
-> (1) If the host does not support notifying us about
-> errors, then there is clearly nothing to do in this
-> code, because we will never get a notification.
-> 
-> (2) If the host does support notifying us about errors,
-> but we choose not to expose RAS to the guest, then
-> there's not much to do either. We probably just want
-> to take whatever the default behaviour is for any
-> application when it touches memory that's bad.
-> We definitely don't want to tell the guest anything.
-> 
-> (3) If the host supports notification, and we choose
-> to expose RAS to the guest, then we need to do
-> whatever we have to do to notify the guest.
-> 
-> If we're in this signal handler and also
-> arm_feature(env, ARM_FEATURE_RAS) is false then that
-> is case (2), and my point is that doing anything with
-> the guest 'syndrome' value looks like the wrong thing.
+Following up on yesterday's discussion on IRC I thought I'd better
+report on my findings in the permanent record so things don't get lost.
 
-Peter,
-  your explanation is clear. OK, understand, thanks.
+As I tend to periodically rebuild my test kernels from the current
+state of linux.git I occasionally run into these things. My test
+invocation is:
+
+  qemu-system-aarch64 -machine type=3Dvirt,virtualization=3Don \
+                      -display none -m 4096 -serial mon:stdio \
+                      -kernel ../../kernel-v8-plain.build/arch/arm64/boot/I=
+mage \
+                      -append 'console=3DttyAMA0 panic=3D-1' -no-reboot -cp=
+u max
+
+The kernel is essentially a defconfig kernel with a bunch of the VIRTIO
+device drivers built-in for when I actually boot a more complex setup
+with disks and drives. However this is a boot test so doesn't really
+matter.
+
+The -machine type=3Dvirt,virtualization=3Don enables our virt machine model
+with EL2 turned on. As there is no BIOS involved the kernel is invoked
+directly at EL2.
+
+The -cpu max enabled a cortex-a57 + whatever extra features we've
+enabled in QEMU so far. It won't match any "real" CPU but it should be
+architecturally correct in so far we implement prerequisite features for
+any given feature. The cpuid feature bits should also be correct as we
+test them internally in QEMU to enable features.
+
+The breakage is the kernel never boots (no output on serial port) and on
+attaching with gdb I found it stuck in:
+
+  (gdb) bt
+  #0  0xffffff8010a9e480 in overflow_stack ()
+  Backtrace stopped: not enough registers or memory available to unwind fur=
+ther
+
+If I turn on exception tracing it looks like we go into an exception
+loop.
+
+On the QEMU side this breakage comes in at:
+
+  commit 1ce32e47db52e3511132c7104770eae65d412144 (HEAD, refs/bisect/bad)
+  Author: Richard Henderson <richard.henderson@linaro.org>
+  Date:   Mon Jan 21 10:23:13 2019 +0000
+
+      target/arm: Enable PAuth for -cpu max
+
+      Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+      Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+      Message-id: 20190108223129.5570-30-richard.henderson@linaro.org
+      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+and as you would expect the system boots fine with -cpu cortex-a57
+
+On the kernel side it breaks at:
+
+  commit 04ca3204fa09f5f55c8f113b0072004a7b364ff4
+  Author: Mark Rutland <mark.rutland@arm.com>
+  Date:   Fri Dec 7 18:39:30 2018 +0000
+
+      arm64: enable pointer authentication
+
+      Now that all the necessary bits are in place for userspace, add the
+      necessary Kconfig logic to allow this to be enabled.
+
+      Signed-off-by: Mark Rutland <mark.rutland@arm.com>
+      Signed-off-by: Kristina Martsenko <kristina.martsenko@arm.com>
+      Cc: Catalin Marinas <catalin.marinas@arm.com>
+      Cc: Will Deacon <will.deacon@arm.com>
+      Signed-off-by: Will Deacon <will.deacon@arm.com>
+
+So predictably we failed at enabling PAuth somewhere between the kernel
+and QEMU.
+
+I'm guessing the kernel so far has been tested on the fast model with a
+full chain of TF, UEFI and kernel?
+
+I think Richard's tests were without EL2 enabled.
+
+So in the case that the kernel boots in EL2 is it expecting anyone else
+to deal with Pauth exceptions or should it be able to cope with an
+enabled Pauth but no firmware underneath it?
+
+Either we've got something wrong or we'll need to rethink what features
+the user can have enabled by -cpu max on a direct kernel boot.
+
+--
+Alex Benn=C3=A9e

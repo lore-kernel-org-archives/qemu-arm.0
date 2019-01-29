@@ -1,109 +1,106 @@
-Received: by 10.100.176.137 with SMTP id h9csp3729301pjb;
-        Mon, 18 Sep 2017 04:00:08 -0700 (PDT)
-X-Google-Smtp-Source: AOwi7QAlMgNQxvHIhOo4/0E2GQPr4MqEcq7Ros5/hKLsZ5iAnYbvr3DKRadnxy13w3I4GuFEvEyX
-X-Received: by 10.200.40.104 with SMTP id 37mr42676094qtr.284.1505732408816;
-        Mon, 18 Sep 2017 04:00:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505732408; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3969149wrt;
+        Mon, 28 Jan 2019 18:56:24 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7vsNfT/CQGJ/KjtP53jMsM3B8SX50k0Z9tuo0yGkSyDD/oXeOhjHhR793YggHhqxbWe1Vv
+X-Received: by 2002:adf:f5d1:: with SMTP id k17mr25734678wrp.59.1548730584329;
+        Mon, 28 Jan 2019 18:56:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548730584; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1DG1Q61BcrDs+SEPpY8zA0ZMNWrNkGWqeTGZWTZsz8jkDmzetUlwlIWzhI/wTYHsG
-         zjlBlB9A+d0gvOKgTMJ5ZxPJKDQ1JGLkRCRLuzPfRDx2Z9FVmm2no1bnjYyX41yMIcnO
-         3oaVhFn6gqz8dIt6UNRnLVzqhyN7w8UBBfxzHCTqAAixyDxs0/epN8abr8lfG3fRpgH6
-         NunbYoE/dA/JwmSBn5wAqvbmHoGJ24f8w/2CiBvTmhmVmVzgbdIFoh/ewzzymiv/eRVE
-         dDezKsWfMzuDFX60G9daMwzN+zxC9n0hWYdWjA0lN1G122TKmooTTkSu/gnG1rYSAGtc
-         QKNQ==
+        b=mrZnURA7JPqDp0uqBtKRchWQwbHJYaQ2RRhExfLSgsRAMd4EaawAFLK5DqP71eT1Nk
+         KucMYY5wNXUrCfs5La0Y8L9eFmBjPK8gbwHkQ5CkIXLKHuSnLWCW2jhtl+FqtzkG7VsM
+         xSGSQ20jDKQJBT39NdWOGZrT7PMMy5me1fsqhrjU0sIw03qb++C9jHuVJgTJTqnKauQQ
+         eaPbjonj1cSCvJ93Q7wX1k5YoXRevQoF0ISvmKYakWSH0CpgpPdJ9A4CXgkdA/TGrY3C
+         Ss9f1mn0gUvHZJUmXfl9/3FCyKiQxYq9ivwBOx9nT87et1ITyAxkI3zj2wg3i+Z2RXmk
+         Teeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=X5vYktdO7BC2R0MjhXnnKECdmle0bLaSL8t+2ktYKEo=;
-        b=PSVM6bdE/NA5kl3EyEE7//t++rFVv5R2BDjogpzpC2cXB+NTaBAmghZnJm/W2PpwgU
-         4fbyLbKQoYhw4n6oXNvZRnqJqf56SCn159ObxlW5bA1i3tv9KcchAKFxqb8P9ePixdL1
-         kNaItOftRec0BXQJ7ZiB0jo3jvDZ/mevprZ3MxkI/dBUX3vlLAgLfer+tJCsUUIFrTWy
-         Zs6mNxwK5W4tjdKFgFZef6JyNSCszBgWKOOx13C0/6HcOC3JlRZ6aSzJ8u8SYzhvVeqg
-         wQo3N8skF3TINr5uybteUuC/7ZgPi3DCuLOT95QJS7emM1WlOkJOt+dHVscf+LXwxPxj
-         SeCA==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
+        b=iLnVZUsgYZwbv/gbYeGxi0j6mnwv3XQrPKYsFEDgN+BPgsbq8hBZJYBZIO5JFSCVmJ
+         Sz36mskS6deXK8m8dP3FeFZt69kTgoT8BAV7MmkNdM0fWwiQaG673FP+M2r6dtGczYo9
+         kBH2JG9Xrr1LNYldeUcFHe0lOUtqEHprTj+14YtlZ7hFVZ+V46nAR5/gYS4L9nnNwpPy
+         6WwCVmMU3yReSJnWg8X0UwUnO39wtNmcdFz/YwxS5+B+TZZkBhzNapM6qHNANYU3zUSq
+         XRzn7GgmPkaBULMvdR2TmoYzP4M7bWff8nrBTAU8Z3oqP3g/G8GeOLZ3+wKwM2lNEd6B
+         mL7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cxzXu7Qm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m7si5536791qtc.151.2017.09.18.04.00.08
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x15si72789214wrl.31.2019.01.28.18.56.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Sep 2017 04:00:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 Jan 2019 18:56:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35765 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cxzXu7Qm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:42286 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1dttmY-00014c-OO
-	for alex.bennee@linaro.org; Mon, 18 Sep 2017 07:00:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58160)
+	id 1goJZX-0006W4-AG
+	for alex.bennee@linaro.org; Mon, 28 Jan 2019 21:56:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37149)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dttmQ-00014H-LE
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 06:59:59 -0400
+	(envelope-from <stefanha@gmail.com>) id 1goJZJ-0006V0-GI
+	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 21:56:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1dttmN-0005M3-Hn
-	for qemu-arm@nongnu.org; Mon, 18 Sep 2017 06:59:58 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:53831)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1dttmN-0005Lf-81; Mon, 18 Sep 2017 06:59:55 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue104 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	0MUo3w-1dv3SU195g-00YBOs; Mon, 18 Sep 2017 12:59:18 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?Q?Llu=c3=ads_Vilanova?= <vilanova@ac.upc.edu>,
-	Richard Henderson <rth@twiddle.net>, Alexander Graf <agraf@suse.de>,
-	Anthony Green <green@moxielogic.com>, Artyom Tarasenko
-	<atar4qemu@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Chris Wulff <crwulff@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stafford Horne <shorne@gmail.com>, Yongbok Kim <yongbok.kim@imgtec.com>
-References: <20170917232842.14544-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <17911dc7-9326-66c6-7b94-8e59d06d2af2@vivier.eu>
-Date: Mon, 18 Sep 2017 12:59:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.3.0
+	(envelope-from <stefanha@gmail.com>) id 1goJZI-0008HK-Su
+	for qemu-arm@nongnu.org; Mon, 28 Jan 2019 21:56:09 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:38045)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1goJZH-0008Fr-BU; Mon, 28 Jan 2019 21:56:07 -0500
+Received: by mail-pf1-x442.google.com with SMTP id q1so8962903pfi.5;
+	Mon, 28 Jan 2019 18:56:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
+	b=cxzXu7Qmc/a+zxx5QCVhYqWbJ4kqA+oBg8bE05a3EVSgHw8yXLUFRAigwLvoA5RhCT
+	xpBHEE6/QfgOV9GgP2TxPX2H3W9doDAKaKIh3UwZEzhf6cQbS0MkU7agtQUOp056RgmE
+	yu2QgDh6ppKr0Ox+i7brWJCxxDOGKcfkJrWJaFf+toKJgtQvSOtH0K6g3qD3ZD3lzXp5
+	x92NwgnfubVmU4txyNSWgbant+0f8mGDeiCrjZwmFVhxRVr+Ns8YwzHeVdd5a/zHpSn7
+	TT3X72Xaz6A+F6ybAtr7je8LVeaqSo5L40W8zhRUy6QyYqTFh6QLVN+QaUDt7GDQbko3
+	aqgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
+	b=tFva+e4IjcMycdsAIkKDQpgYCW5VRlfpnuaWr5zdKwRlMM8q19RZF2x+MZW83U/e48
+	E+9f6lA6j6Wr7OGkIFHiDvx/6NcpNcT5ck+SFg7Zz9KiPr7czEVk8SOR57SRweYnAPbG
+	oaWYb2tMJ1olLXHZ5lOH4GcHPWzcQGPYdzKNHSogLhlKpQHQZGOSVBETTwZCEiGPaWtT
+	yj938rMYJ7acIXMNb2u4FVHpzVzXWnQ9Buv207zuGIkHnQF0/wOQIGG+q+92SR9/vEvI
+	YT3aXrEdE54LDzwBDCNus7bOpdFvIiMN1GOHZJw8g78WANjd1GknZ31NSyZUUfuFQ7Lx
+	DfDg==
+X-Gm-Message-State: AJcUukdVQWNNnvzy/f3lgB/WRNe9gNe7CiOC/+aIaZD12QVOAeSsTN4A
+	MEdgvHKt5wG/xycxzwRMD/0=
+X-Received: by 2002:a63:fd53:: with SMTP id m19mr22350182pgj.340.1548730566544;
+	Mon, 28 Jan 2019 18:56:06 -0800 (PST)
+Received: from localhost (42-3-94-015.static.netvigator.com. [42.3.94.15])
+	by smtp.gmail.com with ESMTPSA id e9sm41444259pff.5.2019.01.28.18.56.05
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 28 Jan 2019 18:56:05 -0800 (PST)
+Date: Tue, 29 Jan 2019 10:56:03 +0800
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: kumar sourav <sourav.jb1988@gmail.com>
+Message-ID: <20190129025603.GC3264@stefanha-x1.localdomain>
+References: <20190125155630.17430-1-sourav.jb1988@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20170917232842.14544-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:QSXK4Ou+jCP/wgdEef+Pa/G1ECeLkRRViq4gfFhJPMR7+WmeQog
-	60evQ7ghAqWC4gZC/trrV2rzsiPs95c/v/7Eba71GTljXJt+L05IrARwnBxh4zzCe8J+bCr
-	2TEqzon1R7t86fNfsjzdAqqmp4bvLrJfT6I/Y3pbl+cFwSjq0CiZh3kR5GpojWjIARrmjzv
-	kkAY+/pZb5aoiWNgD/sbw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:2jVId6bnc3Q=:QadWSLgpX4dMsZJTV/jCX3
-	+n2jV2SsfBzx+M3uHQFk8mfnNU1RtIJHgzicgF3lzgCJL2Y9hxVczG/iinsqXtuknyLsg71DG
-	rAWaZHw6CwhHy07FEqGqgJPcZRIY6ZqoaxreeYfvm+jgP39qb9YbXVrngNyvcG0K4x6nXVLcs
-	hQwDTM+J07Lb/Hdplc22adaevBkYtlnZx0hq+Z90J25tL6dq39oeeLd0eT5SRfZIkJsDuIsJT
-	2XNSho7R71GH2ReMDg9GqaQ4Hqz3VH9yOXuVgYGYHSxm84k6lms688mvsq5GrgidOKiCnCc2d
-	jJ7XlQV+TYyKRPThgP0kw6mz1sdqYP4xw2Rbj4t9afzMfmn2OBocGnv+ZDmgqkCjiWxwZ+khu
-	ZeDBbdWi1g16utOdcqHcOoYpStQlSOgynss0qCLJ3upe6Mz+0Va7vEUk/kstYaL09wKWaij1H
-	5KIxLMW38wme+aWwPWekfZ3w+K/9BAneEt24gzBtA3jLDSHQb68GZtlcznLz/tVbOZoCOdWtL
-	xnMAOPa7l/1cG1L2pQl1UFVlRaL/LudBj2MnU2YMFHBNMnppbu18vRwAC89OLMicrhJ4SG+o1
-	1zEitRmCLpMYST4zthyCWvu6oNGhPbFUzIruwWDRRTNTK2yv8Fsr7vspB5zQhpD/0DTo7tKfe
-	KcYdV5QeaxjtK68wWWHsgR0O6v0Jnc1KYsrQLHO3lmVH16WHChC8nK/sBOn22eLM1oT/qqZIG
-	7c1Aml5x3tjZ3hojyJwR8Pr4KJ58UVaT80J42d5G4ks/3GUGIu87ysrsvek=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-arm] [PATCH] qom/cpu: move cpu_model null check to
- cpu_class_by_name()
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="/Uq4LBwYP4y1W6pO"
+Content-Disposition: inline
+In-Reply-To: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/nrf51_soc: set object
+ owner in memory_region_init_ram
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,20 +112,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marcel Apfelbaum <marcel@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	joel@jms.id.au, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zlaQnH6W/rwf
+X-TUID: lJUoj/Ipnax5
 
-Le 18/09/2017 à 01:28, Philippe Mathieu-Daudé a écrit :
-> and clean every implementation.
-> 
-> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+--/Uq4LBwYP4y1W6pO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jan 25, 2019 at 09:26:30PM +0530, kumar sourav wrote:
+> set object owner in memory_region_init_ram() instead
+> of NULL.
+>=20
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
 > ---
-> Based-on: 20170917232010.14183-7-f4bug@amsat.org
+>  hw/arm/nrf51_soc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
+--/Uq4LBwYP4y1W6pO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcT8DDAAoJEJykq7OBq3PIK+cH/0l8V9pfs307KCKinbjQ60dR
+F+qmqIPxXg6RTOnCQ5E5b5gNtxEtzR2xVu4l/E9WAnkeVe+6hrtD+SlI3Okx6WtL
+ARiOOF8mx+ouitE+abwha42U+a+8GkjJvfo59V8C7n/LjYFtcJtZh0o0X03/e7wj
+8vGSVnbYbYgRklVc3BkQf8OQXzIHFSlZDbYE+dEAaYFarB3IdvCpPoAKeEyPGAE9
+jpD3wXwq3dT6UErsvIxyzpsiaUa4+X8UuEotlwoNq2JLGPH10uDm9+OOIZK/44dE
+rvPJJcX8UzqcvYwae7/rmkSvPdZsVuEWePWgobCPEk8MNIV0x4sVo6SWYTkR0fM=
+=DADY
+-----END PGP SIGNATURE-----
+
+--/Uq4LBwYP4y1W6pO--

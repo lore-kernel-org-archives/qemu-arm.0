@@ -1,83 +1,83 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5341991wrt;
-        Tue, 29 Jan 2019 23:22:09 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN62DrrxWOBoFgBUIyVGO0AW01nlqT6RvznjtuQJq8xYBrrcxmwM6GwctrKUHhXNVFEIKpkk
-X-Received: by 2002:a25:8288:: with SMTP id r8mr27765063ybk.55.1548832929440;
-        Tue, 29 Jan 2019 23:22:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548832929; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5342139wrt;
+        Tue, 29 Jan 2019 23:22:19 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaLx/RrMM9W4PPN4aZEZ0O0o4wKjTfP/Sf+hoqzVwRQ0Mlo8akFuZH4f6Qycn+cYv/mCMwH
+X-Received: by 2002:a25:b3c4:: with SMTP id x4mr7786052ybf.265.1548832938962;
+        Tue, 29 Jan 2019 23:22:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548832938; cv=none;
         d=google.com; s=arc-20160816;
-        b=lcW6RYVJdSYeNBvqVZFFeU6tMfBw7RGs4GF7nIhcUw6KkrnU2oRsj/0qFiVEeZzesm
-         YyxTrikwMWiYVvGmC4fteF3+UC24c4n8EA+zBeDop+no/rjARaa5H9Pi4K4W6i2Vh86q
-         zMT6YuUcYs+hgEK5VGn/4SGaggnnryV0DPbW7eHRWm+lMbGMTKTyTpFJNHIc7wztObMV
-         3WJzMNAuB2969JJ4GTIAc3bXoqeB9Q+IkCOHdGj1kYknVwfTGgZbKSBeYPsqKmzgPBzm
-         Fkh34RXv84k/AifS9lwUZqtk9R0KJ1iU80k7XA1HexK0oV+gG0MKPfBWBCcLdJSnivOi
-         aCug==
+        b=zp8r7GUxWEDprcDvrTOu795rV6cCbsDEallNBp/LffzyPB2ifyAZ9lBytk/VKqR8LB
+         CdDn2tDOhgmPdf+oRv2y7whB3cEd7i/9ABUhfozaL8O2UEbATiO1fo2RerOPUH0R5ZK1
+         0QwZ1Y82IPfAYGqINWVAuARGhjbWEo20XK0C3aLW1HfBwMpafF9ONifSvh/+Gb2Jnp1f
+         6+vdM0rSYOR+RMr6a4yW3QKXep0Xqi2VLc3GmiE0YAsW22DTlQoZRaAGJKLzeLgXNNOB
+         k8MBzismQDM0Mrr2T8ln90VW1HWh5UiKoUahIN8rhSMMavVfDzKdfEXPZp5Wg0XHvxCz
+         lEwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=kbzk6aoqUjfLTSlkX29zbbd0n7gxTsdg8h/ByNsgpNQ=;
-        b=dr4KU5kSA9hTt9sENRuAPfYxG8S/7cKSXJh3kKxFNRU054aYf2bFcqRgJ71tg/AYne
-         twGdRnPMQk755x/brMRtRY1Y1HGGkmpa2tbtrmgZv/VJI3PC9in3Niwn4p1rD6gubMGf
-         zoa4NySO/J3Y4Y9aomT0Bo+JG5BP5bCQ8/wRlu0DrPVLujRwP1zxyV245j6CwyAC7V1C
-         dTmwpJZazC8HVCQ2PPR8N5QvdGsrUymiCyL4TOCxl0GFYjT9QwOz1YMfwaT3aJM18yg7
-         P7rOe2e4B97eAev0RIkmgGd9qcZ18QP+MrnURwTR3/lk/67eiQHdQYGgGdA5fGLi1s2c
-         gl3A==
+        bh=Ey2CCIF9UpGL8C6AVrDL5ZhdGZFBkNcGJ0SF4B2PXMU=;
+        b=N3fKpIHInIN4B1Hoi7WnZXQXBMnWoY1io59ARBESkCpxUtrr6JAAIuFODkPiT9PytU
+         Gk2PXG2tBiBc2rLBwFDqPwFO6WOOox2ShKQ22M5cug2CsANbrn2HQecRS8AQdPkZzPZl
+         3WEXCQWm7JVa4ooX4YaXaStj/k+0NgmGFIdCYH4olfcVyj7kYIrIIFegn+d0Zv0Gz/am
+         UmLoe4pPij+eA4vpQhr1MajhZdkerc09zlsVMXXE2M65QdphVznNTtnAu1o8X7VauxUn
+         epKhHJQ/Gh2ky/4jF7MCajt/EEywnnnyAXy8Fz02zPtMfPbgTJ93rD/oWYQC8JjQpHbc
+         i9HA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w205si410167ybw.161.2019.01.29.23.22.09
+        by mx.google.com with ESMTPS id e204si417220ybb.28.2019.01.29.23.22.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Jan 2019 23:22:09 -0800 (PST)
+        Tue, 29 Jan 2019 23:22:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33365 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33369 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gokCG-0000vx-Oe
-	for alex.bennee@linaro.org; Wed, 30 Jan 2019 02:22:08 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43226)
+	id 1gokCQ-00011r-9f
+	for alex.bennee@linaro.org; Wed, 30 Jan 2019 02:22:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43289)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gokBz-0000tO-8C
-	for qemu-arm@nongnu.org; Wed, 30 Jan 2019 02:21:54 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gokC8-0000zB-Qc
+	for qemu-arm@nongnu.org; Wed, 30 Jan 2019 02:22:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gokBv-0002IE-Ct
-	for qemu-arm@nongnu.org; Wed, 30 Jan 2019 02:21:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56478)
+	(envelope-from <stefanha@redhat.com>) id 1gokC6-0002Lk-3K
+	for qemu-arm@nongnu.org; Wed, 30 Jan 2019 02:21:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56776)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gokBv-0002Gd-2q; Wed, 30 Jan 2019 02:21:47 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1gokC5-0002Ky-4S; Wed, 30 Jan 2019 02:21:58 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5230DDC8F5;
-	Wed, 30 Jan 2019 07:21:44 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 025E2804F4;
+	Wed, 30 Jan 2019 07:21:55 +0000 (UTC)
 Received: from localhost (unknown [10.64.242.24])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EFC645D97A;
-	Wed, 30 Jan 2019 07:21:39 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B2A14512D0;
+	Wed, 30 Jan 2019 07:21:50 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 30 Jan 2019 15:21:29 +0800
-Message-Id: <20190130072131.13247-2-stefanha@redhat.com>
+Date: Wed, 30 Jan 2019 15:21:31 +0800
+Message-Id: <20190130072131.13247-4-stefanha@redhat.com>
 In-Reply-To: <20190130072131.13247-1-stefanha@redhat.com>
 References: <20190130072131.13247-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 30 Jan 2019 07:21:44 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 30 Jan 2019 07:21:55 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 1/3] hw/nvram/nrf51_nvm: Add nRF51
- non-volatile memories
+Subject: [Qemu-arm] [PATCH v3 3/3] tests/microbit-test: Add tests for nRF51
+ NVMC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,535 +97,155 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0xWHV3KAVAna
+X-TUID: UF8XCD/L/eWU
 
 From: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 
-The nRF51 contains three regions of non-volatile memory (NVM):
-- CODE (R/W): contains code
-- FICR (R): Factory information like code size, chip id etc.
-- UICR (R/W): Changeable configuration data. Lock bits, Code
-  protection configuration, Bootloader address, Nordic SoftRadio
-  configuration, Firmware configuration.
-
-Read and write access to the memories is managed by the
-Non-volatile memory controller.
-
-Memory schema:
- [ CPU ] -+- [ NVM, either FICR, UICR or CODE ]
-          |      |
-          \- [ NVMC ]
-
 Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Tested-by: Joel Stanley <joel@jms.id.au>
+Acked-by: Thomas Huth <thuth@redhat.com>
 ---
-v3:
- * Fix endianness of s->storage[] [Peter]
- * Fix off-by-one that prevented clearing the last page of flash
- * Add missing memory_region_flush_rom_device() call to flash_write()
-v2:
- * Fix device-introspect-test segfault due to missing owner when
-   initializing FICR and UICR memory regions [Peter]
- * Fix off-by-one assertion checks [Peter]
- * Fix missing whitespace at end of comment [Peter]
- * Clear UICR on reset - we'd need a block device for true
-   non-volatility [Peter]
- * Use memory_region_flush_rom_device() to dirty/invalidate memory
-   [Peter]
----
- hw/nvram/Makefile.objs       |   1 +
- include/hw/nvram/nrf51_nvm.h |  64 ++++++
- hw/nvram/nrf51_nvm.c         | 388 +++++++++++++++++++++++++++++++++++
- 3 files changed, 453 insertions(+)
- create mode 100644 include/hw/nvram/nrf51_nvm.h
- create mode 100644 hw/nvram/nrf51_nvm.c
+ tests/microbit-test.c | 108 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 108 insertions(+)
 
-diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-index b318e53a43..26f7b4ca35 100644
---- a/hw/nvram/Makefile.objs
-+++ b/hw/nvram/Makefile.objs
-@@ -5,3 +5,4 @@ common-obj-y +=3D fw_cfg.o
- common-obj-y +=3D chrp_nvram.o
- common-obj-$(CONFIG_MAC_NVRAM) +=3D mac_nvram.o
- obj-$(CONFIG_PSERIES) +=3D spapr_nvram.o
-+obj-$(CONFIG_NRF51_SOC) +=3D nrf51_nvm.o
-diff --git a/include/hw/nvram/nrf51_nvm.h b/include/hw/nvram/nrf51_nvm.h
-new file mode 100644
-index 0000000000..3792e4a9fe
---- /dev/null
-+++ b/include/hw/nvram/nrf51_nvm.h
-@@ -0,0 +1,64 @@
-+/*
-+ * Nordic Semiconductor nRF51 non-volatile memory
-+ *
-+ * It provides an interface to erase regions in flash memory.
-+ * Furthermore it provides the user and factory information registers.
-+ *
-+ * QEMU interface:
-+ * + sysbus MMIO regions 0: NVMC peripheral registers
-+ * + sysbus MMIO regions 1: FICR peripheral registers
-+ * + sysbus MMIO regions 2: UICR peripheral registers
-+ * + flash-size property: flash size in bytes.
-+ *
-+ * Accuracy of the peripheral model:
-+ * + Code regions (MPU configuration) are disregarded.
-+ *
-+ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ *
-+ */
-+#ifndef NRF51_NVM_H
-+#define NRF51_NVM_H
-+
-+#include "hw/sysbus.h"
-+#define TYPE_NRF51_NVM "nrf51_soc.nvm"
-+#define NRF51_NVM(obj) OBJECT_CHECK(NRF51NVMState, (obj), TYPE_NRF51_NVM=
-)
-+
-+#define NRF51_UICR_FIXTURE_SIZE 64
-+
-+#define NRF51_NVMC_SIZE         0x1000
-+
-+#define NRF51_NVMC_READY        0x400
-+#define NRF51_NVMC_READY_READY  0x01
-+#define NRF51_NVMC_CONFIG       0x504
-+#define NRF51_NVMC_CONFIG_MASK  0x03
-+#define NRF51_NVMC_CONFIG_WEN   0x01
-+#define NRF51_NVMC_CONFIG_EEN   0x02
-+#define NRF51_NVMC_ERASEPCR1    0x508
-+#define NRF51_NVMC_ERASEPCR0    0x510
-+#define NRF51_NVMC_ERASEALL     0x50C
-+#define NRF51_NVMC_ERASEUICR    0x514
-+#define NRF51_NVMC_ERASE        0x01
-+
-+#define NRF51_UICR_SIZE         0x100
-+
-+typedef struct NRF51NVMState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion mmio;
-+    MemoryRegion ficr;
-+    MemoryRegion uicr;
-+    MemoryRegion flash;
-+
-+    uint32_t uicr_content[NRF51_UICR_FIXTURE_SIZE];
-+    uint32_t flash_size;
-+    uint8_t *storage;
-+
-+    uint32_t config;
-+
-+} NRF51NVMState;
-+
-+
-+#endif
-diff --git a/hw/nvram/nrf51_nvm.c b/hw/nvram/nrf51_nvm.c
-new file mode 100644
-index 0000000000..a2cb6a547c
---- /dev/null
-+++ b/hw/nvram/nrf51_nvm.c
-@@ -0,0 +1,388 @@
-+/*
-+ * Nordic Semiconductor nRF51 non-volatile memory
-+ *
-+ * It provides an interface to erase regions in flash memory.
-+ * Furthermore it provides the user and factory information registers.
-+ *
-+ * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.=
-pdf
-+ *
-+ * See nRF51 reference manual and product sheet sections:
-+ * + Non-Volatile Memory Controller (NVMC)
-+ * + Factory Information Configuration Registers (FICR)
-+ * + User Information Configuration Registers (UICR)
-+ *
-+ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "exec/address-spaces.h"
-+#include "hw/arm/nrf51.h"
+diff --git a/tests/microbit-test.c b/tests/microbit-test.c
+index 3bad947b6c..04e199ec33 100644
+--- a/tests/microbit-test.c
++++ b/tests/microbit-test.c
+@@ -21,6 +21,7 @@
+ #include "hw/arm/nrf51.h"
+ #include "hw/char/nrf51_uart.h"
+ #include "hw/gpio/nrf51_gpio.h"
 +#include "hw/nvram/nrf51_nvm.h"
+ #include "hw/timer/nrf51_timer.h"
+ #include "hw/i2c/microbit_i2c.h"
+=20
+@@ -156,6 +157,112 @@ static void test_microbit_i2c(void)
+     qtest_quit(qts);
+ }
+=20
++#define FLASH_SIZE          (256 * NRF51_PAGE_SIZE)
 +
-+/*
-+ * FICR Registers Assignments
-+ * CODEPAGESIZE      0x010
-+ * CODESIZE          0x014
-+ * CLENR0            0x028
-+ * PPFC              0x02C
-+ * NUMRAMBLOCK       0x034
-+ * SIZERAMBLOCKS     0x038
-+ * SIZERAMBLOCK[0]   0x038
-+ * SIZERAMBLOCK[1]   0x03C
-+ * SIZERAMBLOCK[2]   0x040
-+ * SIZERAMBLOCK[3]   0x044
-+ * CONFIGID          0x05C
-+ * DEVICEID[0]       0x060
-+ * DEVICEID[1]       0x064
-+ * ER[0]             0x080
-+ * ER[1]             0x084
-+ * ER[2]             0x088
-+ * ER[3]             0x08C
-+ * IR[0]             0x090
-+ * IR[1]             0x094
-+ * IR[2]             0x098
-+ * IR[3]             0x09C
-+ * DEVICEADDRTYPE    0x0A0
-+ * DEVICEADDR[0]     0x0A4
-+ * DEVICEADDR[1]     0x0A8
-+ * OVERRIDEEN        0x0AC
-+ * NRF_1MBIT[0]      0x0B0
-+ * NRF_1MBIT[1]      0x0B4
-+ * NRF_1MBIT[2]      0x0B8
-+ * NRF_1MBIT[3]      0x0BC
-+ * NRF_1MBIT[4]      0x0C0
-+ * BLE_1MBIT[0]      0x0EC
-+ * BLE_1MBIT[1]      0x0F0
-+ * BLE_1MBIT[2]      0x0F4
-+ * BLE_1MBIT[3]      0x0F8
-+ * BLE_1MBIT[4]      0x0FC
-+ */
-+static const uint32_t ficr_content[64] =3D {
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000400,
-+    0x00000100, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000002, 0x00002000,
-+    0x00002000, 0x00002000, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000003,
-+    0x12345678, 0x9ABCDEF1, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-+    0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-+};
-+
-+static uint64_t ficr_read(void *opaque, hwaddr offset, unsigned int size=
-)
++static void fill_and_erase(QTestState *qts, hwaddr base, hwaddr size,
++                           uint32_t address_reg)
 +{
-+    assert(offset < sizeof(ficr_content));
-+    return ficr_content[offset / 4];
-+}
++    hwaddr i;
 +
-+static void ficr_write(void *opaque, hwaddr offset, uint64_t value,
-+        unsigned int size)
-+{
-+    /* Intentionally do nothing */
-+}
++    /* Erase Page */
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x02);
++    qtest_writel(qts, NRF51_NVMC_BASE + address_reg, base);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +
-+static const MemoryRegionOps ficr_ops =3D {
-+    .read =3D ficr_read,
-+    .write =3D ficr_write,
-+    .impl.min_access_size =3D 4,
-+    .impl.max_access_size =3D 4,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN
-+};
-+
-+/*
-+ * UICR Registers Assignments
-+ * CLENR0           0x000
-+ * RBPCONF          0x004
-+ * XTALFREQ         0x008
-+ * FWID             0x010
-+ * BOOTLOADERADDR   0x014
-+ * NRFFW[0]         0x014
-+ * NRFFW[1]         0x018
-+ * NRFFW[2]         0x01C
-+ * NRFFW[3]         0x020
-+ * NRFFW[4]         0x024
-+ * NRFFW[5]         0x028
-+ * NRFFW[6]         0x02C
-+ * NRFFW[7]         0x030
-+ * NRFFW[8]         0x034
-+ * NRFFW[9]         0x038
-+ * NRFFW[10]        0x03C
-+ * NRFFW[11]        0x040
-+ * NRFFW[12]        0x044
-+ * NRFFW[13]        0x048
-+ * NRFFW[14]        0x04C
-+ * NRFHW[0]         0x050
-+ * NRFHW[1]         0x054
-+ * NRFHW[2]         0x058
-+ * NRFHW[3]         0x05C
-+ * NRFHW[4]         0x060
-+ * NRFHW[5]         0x064
-+ * NRFHW[6]         0x068
-+ * NRFHW[7]         0x06C
-+ * NRFHW[8]         0x070
-+ * NRFHW[9]         0x074
-+ * NRFHW[10]        0x078
-+ * NRFHW[11]        0x07C
-+ * CUSTOMER[0]      0x080
-+ * CUSTOMER[1]      0x084
-+ * CUSTOMER[2]      0x088
-+ * CUSTOMER[3]      0x08C
-+ * CUSTOMER[4]      0x090
-+ * CUSTOMER[5]      0x094
-+ * CUSTOMER[6]      0x098
-+ * CUSTOMER[7]      0x09C
-+ * CUSTOMER[8]      0x0A0
-+ * CUSTOMER[9]      0x0A4
-+ * CUSTOMER[10]     0x0A8
-+ * CUSTOMER[11]     0x0AC
-+ * CUSTOMER[12]     0x0B0
-+ * CUSTOMER[13]     0x0B4
-+ * CUSTOMER[14]     0x0B8
-+ * CUSTOMER[15]     0x0BC
-+ * CUSTOMER[16]     0x0C0
-+ * CUSTOMER[17]     0x0C4
-+ * CUSTOMER[18]     0x0C8
-+ * CUSTOMER[19]     0x0CC
-+ * CUSTOMER[20]     0x0D0
-+ * CUSTOMER[21]     0x0D4
-+ * CUSTOMER[22]     0x0D8
-+ * CUSTOMER[23]     0x0DC
-+ * CUSTOMER[24]     0x0E0
-+ * CUSTOMER[25]     0x0E4
-+ * CUSTOMER[26]     0x0E8
-+ * CUSTOMER[27]     0x0EC
-+ * CUSTOMER[28]     0x0F0
-+ * CUSTOMER[29]     0x0F4
-+ * CUSTOMER[30]     0x0F8
-+ * CUSTOMER[31]     0x0FC
-+ */
-+
-+static uint64_t uicr_read(void *opaque, hwaddr offset, unsigned int size=
-)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(opaque);
-+
-+    assert(offset < sizeof(s->uicr_content));
-+    return s->uicr_content[offset / 4];
-+}
-+
-+static void uicr_write(void *opaque, hwaddr offset, uint64_t value,
-+        unsigned int size)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(opaque);
-+
-+    assert(offset < sizeof(s->uicr_content));
-+    s->uicr_content[offset / 4] =3D value;
-+}
-+
-+static const MemoryRegionOps uicr_ops =3D {
-+    .read =3D uicr_read,
-+    .write =3D uicr_write,
-+    .impl.min_access_size =3D 4,
-+    .impl.max_access_size =3D 4,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN
-+};
-+
-+
-+static uint64_t io_read(void *opaque, hwaddr offset, unsigned int size)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(opaque);
-+    uint64_t r =3D 0;
-+
-+    switch (offset) {
-+    case NRF51_NVMC_READY:
-+        r =3D NRF51_NVMC_READY_READY;
-+        break;
-+    case NRF51_NVMC_CONFIG:
-+        r =3D s->config;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: bad read offset 0x%" HWADDR_PRIx "\n", __func__, of=
-fset);
-+        break;
++    /* Check memory */
++    for (i =3D 0; i < size / 4; i++) {
++        g_assert_cmpuint(qtest_readl(qts, base + i * 4), =3D=3D, 0xFFFFF=
+FFF);
 +    }
 +
-+    return r;
-+}
-+
-+static void io_write(void *opaque, hwaddr offset, uint64_t value,
-+        unsigned int size)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(opaque);
-+
-+    switch (offset) {
-+    case NRF51_NVMC_CONFIG:
-+        s->config =3D value & NRF51_NVMC_CONFIG_MASK;
-+        break;
-+    case NRF51_NVMC_ERASEPCR0:
-+    case NRF51_NVMC_ERASEPCR1:
-+        if (s->config & NRF51_NVMC_CONFIG_EEN) {
-+            /* Mask in-page sub address */
-+            value &=3D ~(NRF51_PAGE_SIZE - 1);
-+            if (value <=3D (s->flash_size - NRF51_PAGE_SIZE)) {
-+                memset(s->storage + value, 0xFF, NRF51_PAGE_SIZE);
-+                memory_region_flush_rom_device(&s->flash, value,
-+                                               NRF51_PAGE_SIZE);
-+            }
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+            "%s: Flash erase at 0x%" HWADDR_PRIx" while flash not erasab=
-le.\n",
-+            __func__, offset);
-+        }
-+        break;
-+    case NRF51_NVMC_ERASEALL:
-+        if (value =3D=3D NRF51_NVMC_ERASE) {
-+            if (s->config & NRF51_NVMC_CONFIG_EEN) {
-+                memset(s->storage, 0xFF, s->flash_size);
-+                memory_region_flush_rom_device(&s->flash, 0, s->flash_si=
-ze);
-+                memset(s->uicr_content, 0xFF, sizeof(s->uicr_content));
-+            } else {
-+                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash not erasable.\=
-n",
-+                              __func__);
-+            }
-+        }
-+        break;
-+    case NRF51_NVMC_ERASEUICR:
-+        if (value =3D=3D NRF51_NVMC_ERASE) {
-+            memset(s->uicr_content, 0xFF, sizeof(s->uicr_content));
-+        }
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: bad write offset 0x%" HWADDR_PRIx "\n", __func__, o=
-ffset);
++    /* Fill memory */
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x01);
++    for (i =3D 0; i < size / 4; i++) {
++        qtest_writel(qts, base + i * 4, i);
++        g_assert_cmpuint(qtest_readl(qts, base + i * 4), =3D=3D, i);
 +    }
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +}
 +
-+static const MemoryRegionOps io_ops =3D {
-+        .read =3D io_read,
-+        .write =3D io_write,
-+        .impl.min_access_size =3D 4,
-+        .impl.max_access_size =3D 4,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-+};
-+
-+
-+static void flash_write(void *opaque, hwaddr offset, uint64_t value,
-+        unsigned int size)
++static void test_nrf51_nvmc(void)
 +{
-+    NRF51NVMState *s =3D NRF51_NVM(opaque);
++    uint32_t value;
++    hwaddr i;
++    QTestState *qts =3D qtest_init("-M microbit");
 +
-+    if (s->config & NRF51_NVMC_CONFIG_WEN) {
-+        uint32_t oldval;
++    /* Test always ready */
++    value =3D qtest_readl(qts, NRF51_NVMC_BASE + NRF51_NVMC_READY);
++    g_assert_cmpuint(value & 0x01, =3D=3D, 0x01);
 +
-+        assert(offset < s->flash_size);
++    /* Test write-read config register */
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x03);
++    g_assert_cmpuint(qtest_readl(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFI=
+G),
++                     =3D=3D, 0x03);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
++    g_assert_cmpuint(qtest_readl(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFI=
+G),
++                     =3D=3D, 0x00);
 +
-+        /* NOR Flash only allows bits to be flipped from 1's to 0's on w=
-rite */
-+        oldval =3D ldl_le_p(s->storage + offset);
-+        oldval &=3D value;
-+        stl_le_p(s->storage + offset, oldval);
++    /* Test PCR0 */
++    fill_and_erase(qts, NRF51_FLASH_BASE, NRF51_PAGE_SIZE,
++                   NRF51_NVMC_ERASEPCR0);
++    fill_and_erase(qts, NRF51_FLASH_BASE + NRF51_PAGE_SIZE,
++                   NRF51_PAGE_SIZE, NRF51_NVMC_ERASEPCR0);
 +
-+        memory_region_flush_rom_device(&s->flash, offset, size);
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                "%s: Flash write 0x%" HWADDR_PRIx" while flash not writa=
-ble.\n",
-+                __func__, offset);
++    /* Test PCR1 */
++    fill_and_erase(qts, NRF51_FLASH_BASE, NRF51_PAGE_SIZE,
++                   NRF51_NVMC_ERASEPCR1);
++    fill_and_erase(qts, NRF51_FLASH_BASE + NRF51_PAGE_SIZE,
++                   NRF51_PAGE_SIZE, NRF51_NVMC_ERASEPCR1);
++
++    /* Erase all */
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x02);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_ERASEALL, 0x01);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
++
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x01);
++    for (i =3D 0; i < FLASH_SIZE / 4; i++) {
++        qtest_writel(qts, NRF51_FLASH_BASE + i * 4, i);
++        g_assert_cmpuint(qtest_readl(qts, NRF51_FLASH_BASE + i * 4), =3D=
+=3D, i);
 +    }
-+}
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x02);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_ERASEALL, 0x01);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +
-+
-+static const MemoryRegionOps flash_ops =3D {
-+    .write =3D flash_write,
-+    .valid.min_access_size =3D 4,
-+    .valid.max_access_size =3D 4,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void nrf51_nvm_init(Object *obj)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(obj);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-+
-+    memory_region_init_io(&s->mmio, obj, &io_ops, s, "nrf51_soc.nvmc",
-+                          NRF51_NVMC_SIZE);
-+    sysbus_init_mmio(sbd, &s->mmio);
-+
-+    memory_region_init_io(&s->ficr, obj, &ficr_ops, s, "nrf51_soc.ficr",
-+                          sizeof(ficr_content));
-+    sysbus_init_mmio(sbd, &s->ficr);
-+
-+    memory_region_init_io(&s->uicr, obj, &uicr_ops, s, "nrf51_soc.uicr",
-+                          sizeof(s->uicr_content));
-+    sysbus_init_mmio(sbd, &s->uicr);
-+}
-+
-+static void nrf51_nvm_realize(DeviceState *dev, Error **errp)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(dev);
-+    Error *err =3D NULL;
-+
-+    memory_region_init_rom_device(&s->flash, OBJECT(dev), &flash_ops, s,
-+        "nrf51_soc.flash", s->flash_size, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
++    for (i =3D 0; i < FLASH_SIZE / 4; i++) {
++        g_assert_cmpuint(qtest_readl(qts, NRF51_FLASH_BASE + i * 4),
++                         =3D=3D, 0xFFFFFFFF);
 +    }
 +
-+    s->storage =3D memory_region_get_ram_ptr(&s->flash);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->flash);
-+}
++    /* Erase UICR */
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x02);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_ERASEUICR, 0x01);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +
-+static void nrf51_nvm_reset(DeviceState *dev)
-+{
-+    NRF51NVMState *s =3D NRF51_NVM(dev);
-+
-+    s->config =3D 0x00;
-+    memset(s->uicr_content, 0xFF, sizeof(s->uicr_content));
-+}
-+
-+static Property nrf51_nvm_properties[] =3D {
-+    DEFINE_PROP_UINT32("flash-size", NRF51NVMState, flash_size, 0x40000)=
-,
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static const VMStateDescription vmstate_nvm =3D {
-+    .name =3D "nrf51_soc.nvm",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(uicr_content, NRF51NVMState,
-+                NRF51_UICR_FIXTURE_SIZE),
-+        VMSTATE_UINT32(config, NRF51NVMState),
-+        VMSTATE_END_OF_LIST()
++    for (i =3D 0; i < NRF51_UICR_SIZE / 4; i++) {
++        g_assert_cmpuint(qtest_readl(qts, NRF51_UICR_BASE + i * 4),
++                         =3D=3D, 0xFFFFFFFF);
 +    }
-+};
 +
-+static void nrf51_nvm_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x01);
++    for (i =3D 0; i < NRF51_UICR_SIZE / 4; i++) {
++        qtest_writel(qts, NRF51_UICR_BASE + i * 4, i);
++        g_assert_cmpuint(qtest_readl(qts, NRF51_UICR_BASE + i * 4), =3D=3D=
+, i);
++    }
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
 +
-+    dc->props =3D nrf51_nvm_properties;
-+    dc->vmsd =3D &vmstate_nvm;
-+    dc->realize =3D nrf51_nvm_realize;
-+    dc->reset =3D nrf51_nvm_reset;
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x02);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_ERASEUICR, 0x01);
++    qtest_writel(qts, NRF51_NVMC_BASE + NRF51_NVMC_CONFIG, 0x00);
++
++    for (i =3D 0; i < NRF51_UICR_SIZE / 4; i++) {
++        g_assert_cmpuint(qtest_readl(qts, NRF51_UICR_BASE + i * 4),
++                         =3D=3D, 0xFFFFFFFF);
++    }
++
++    qtest_quit(qts);
 +}
 +
-+static const TypeInfo nrf51_nvm_info =3D {
-+    .name =3D TYPE_NRF51_NVM,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(NRF51NVMState),
-+    .instance_init =3D nrf51_nvm_init,
-+    .class_init =3D nrf51_nvm_class_init
-+};
-+
-+static void nrf51_nvm_register_types(void)
-+{
-+    type_register_static(&nrf51_nvm_info);
-+}
-+
-+type_init(nrf51_nvm_register_types)
+ static void test_nrf51_gpio(void)
+ {
+     size_t i;
+@@ -392,6 +499,7 @@ int main(int argc, char **argv)
+=20
+     qtest_add_func("/microbit/nrf51/uart", test_nrf51_uart);
+     qtest_add_func("/microbit/nrf51/gpio", test_nrf51_gpio);
++    qtest_add_func("/microbit/nrf51/nvmc", test_nrf51_nvmc);
+     qtest_add_func("/microbit/nrf51/timer", test_nrf51_timer);
+     qtest_add_func("/microbit/microbit/i2c", test_microbit_i2c);
+=20
 --=20
 2.20.1
 

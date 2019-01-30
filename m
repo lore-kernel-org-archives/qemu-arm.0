@@ -1,150 +1,154 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4870100wrt;
-        Tue, 29 Jan 2019 12:25:59 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4OvHyY2gemTZ5iVn1kzljROAuQlbu6AkHeqRcq31N8617bOUOPstKWMlEoBR5mAuONVddL
-X-Received: by 2002:a25:c202:: with SMTP id s2mr26881596ybf.392.1548793559843;
-        Tue, 29 Jan 2019 12:25:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548793559; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5112851wrt;
+        Tue, 29 Jan 2019 17:54:21 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7RnxbiRadEBtscRQ1rrWHOvKtB8qvfVfhj8Yc86ksOrxfNhyXQfPqNhqsi/GAkMuR7AZ2q
+X-Received: by 2002:a25:8145:: with SMTP id j5mr25839717ybm.472.1548813261407;
+        Tue, 29 Jan 2019 17:54:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548813261; cv=none;
         d=google.com; s=arc-20160816;
-        b=FgN0CKZRYl/SMKlG+bqTpeq01RvkMYKGiJevZxKhVlxO0aOomm/pD7Nm9HhWK0DYgy
-         u+XI7CKNCoTQoiAV/LhMWA/p/L4zpMG603z7eCf9w31S65V5kqy9D9X28ugrR0e2TQca
-         a2KV3q5DbpqOzghXHaZQKgsY9VIX5YsudxyLplcPuns/EuPm0/lS6+ZhqmD/Jtej+bIa
-         V7flSo6anxkX70KgfcIAaR/Ng0WNoVujNeQTTDtoIJ9CJB2UDk+8xuLr+e7VE+hr78sd
-         MeeVLRCncAea3vLyZh09ZevOTlN0/eWLi6VRLFYJ8EIAe5UVJuYzB47hGG+puCmUEyvf
-         Yr4g==
+        b=jInfwKBybXgJp2ttL6E8dYXpzAyi6gUjgGVLFj9oi/MGQ0ZaOcBTpif7qB5m1xHhqV
+         jTc5qMT4JYYGCxk+LvET2H0rfxeTCo1m6zGgCSpnL0H0A15Udiw3MF8cvBHSvnzZFMvF
+         JvUvekCcxV6VfJ0m0IFX0WMTkqt9jMvXPkNs+2IZwq6r2xzdul23jiKhga03rH71iBRt
+         seKBJ7fyWHQHLGLJoFs3kuogL80qp+RLMnCW04i++pP5VMEo+MJYs8dTLqByRjpaAke4
+         nlABEHR8qEnoDa75dLLGUq0CFBS5Pm5ni8+wjzn8YSurwOcg5WEzKegh1m7YQYEJ70PK
+         zybg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=KnHPxVFNoAyckEri4ksdxwWrYuG3PfP1uvMuf+q6cBQ=;
-        b=z7guPJGkbDboMJZ4At6Y2AyyNYOmJr3AarbQjTQ7+y4I9W+yiA6QMpan5hv6ynEQrV
-         2AVjE3fXXWNxc5MQw60fiLv/akjvgyyS1Yg2XJ4wveZ9zDBrQFR7oxBNg9UU4FuSulY/
-         YTTHGg7FjtodtFSFTnvL5F/C/sJk7WQrjYiUftnODMMCMoJ0aGLJrOC0RRTGLgGYrFfh
-         OTy1gKqgq3h//IdmZlMCjetJXs76Zs2XEpErMPirKE42Yi/aWYuDMaXot5Jk7m3ZZGcP
-         D32neWCKem0y/UJuvcowxbrFPfgIqgqFi0L8/pEzsFzP035hbYSrzdlYVfuZ/52KsZfB
-         xdAA==
+        bh=VJd/QlW81wbA95QtykEeTs8OQftZYRxJNS6VyvUJCgQ=;
+        b=DKW4riW7ARERNB0Hb2D0xReNVi1Q+JVJSTRg0yNfxsJQ0EixptzBJx+eOQo6wcZHBj
+         3NAU+zMu7DWFbrvdV/ZWRGmQjwxAdtcVfQTsAlPHijdCilVfGwBL3w+Bi+d589YkSRqd
+         qtHCrLqAzL2poz8rod5LaMcaQjTsm4Hfp4krvfACesePqGn+gpCJQOtxbEQFCNvTa3RG
+         5ZNZ7wdeW0LzLvnjiJiXHQAV6EJwIhqn8Pn0ySxJCa7Wsad/2ybx6QzCsGPDM/76mVvF
+         KQ+wvvZSSmi0h9x1gLlCOFHJZrFzzrJne1Cut0mDkp+VKD8WNB96OSsVXVQaL1VozQ3z
+         5icA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="TfX/ho4U";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KG4zkh+n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f17si21291469ybn.179.2019.01.29.12.25.59
+        by mx.google.com with ESMTPS id h3si83989ywd.32.2019.01.29.17.54.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 Jan 2019 12:25:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Jan 2019 17:54:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="TfX/ho4U";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KG4zkh+n;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:55136 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58810 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1goZxH-0006cz-8m
-	for alex.bennee@linaro.org; Tue, 29 Jan 2019 15:25:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41392)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gof52-0007iA-UP
+	for alex.bennee@linaro.org; Tue, 29 Jan 2019 20:54:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1goZx7-0006bg-4F
-	for qemu-arm@nongnu.org; Tue, 29 Jan 2019 15:25:49 -0500
+	(envelope-from <stefanha@gmail.com>) id 1gof4W-0007i3-Gb
+	for qemu-devel@nongnu.org; Tue, 29 Jan 2019 20:53:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcmvbkbc@gmail.com>) id 1goZx6-0001Tj-Dq
-	for qemu-arm@nongnu.org; Tue, 29 Jan 2019 15:25:49 -0500
-Received: from mail-yb1-xb44.google.com ([2607:f8b0:4864:20::b44]:39283)
+	(envelope-from <stefanha@gmail.com>) id 1gof4V-0005In-Le
+	for qemu-devel@nongnu.org; Tue, 29 Jan 2019 20:53:48 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34431)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
-	id 1goZx4-0001Sn-GS; Tue, 29 Jan 2019 15:25:46 -0500
-Received: by mail-yb1-xb44.google.com with SMTP id s17so8710476ybp.6;
-	Tue, 29 Jan 2019 12:25:46 -0800 (PST)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1gof4V-0005IL-Dy; Tue, 29 Jan 2019 20:53:47 -0500
+Received: by mail-wr1-x444.google.com with SMTP id f7so24380710wrp.1;
+	Tue, 29 Jan 2019 17:53:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=KnHPxVFNoAyckEri4ksdxwWrYuG3PfP1uvMuf+q6cBQ=;
-	b=TfX/ho4UHo/pB5iyFu38Ze6o7gfIXtuBg8M9AnkfONHnJZyTDFA3to7LDhD0ke3x7x
-	op4jsqZF7ux4ZvlkPPbMclJ1c1e4VQ/QhPYf+8FfyO6nV2ZJZMWp59QLuaDDmkkyJf5J
-	UY+ssQTlBkV9RbLMVc4JL3F+UtYh6dIvlAElNFJUwPHbOCdtEJ42q+EDPbBPVT8I9nrh
-	5DezVTzMBulAImLqj/S2cNOHGvtoLtbNGb74t0W0/kz3quFlPtywat5ansiJDoWpkjtl
-	0/ZUuKN4pfAZFi2v7//TmACz5ube2j+Fj7DRruQd0uB7XYtQWUXQQU9PIdUwaKLfucOl
-	k1TQ==
+	:cc; bh=VJd/QlW81wbA95QtykEeTs8OQftZYRxJNS6VyvUJCgQ=;
+	b=KG4zkh+nVmXRMxmu//UjTsGCPfGc9k3e1OJkAm6I0qK1kfvZvMmymgB/VxdoST3bGY
+	M45ent8da0iv7BjeRNyy+BLJ5mskvoY+FzfLujQjUD+OM/wIl9neZ0kv8wyFN5QPVGRi
+	VXm1Wt7O8VZyqXEzJT2+lrvzo0D25G4oxXQNGSrP7C7UB3hEjGyauefVG8HDON5vIqjh
+	p1UypRAeC+e8ppI8tZNrLy66kfDVXgdmBiK8moLTuuw3AGAhSGX8Xp0wH+2lGnDK3mtN
+	iufVbeAfT/uqXvulnyhVrON5ZE8uKqVRZgetkLnVAdXi0KpMVP3D2EchsloeAgBxtczH
+	kJyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=KnHPxVFNoAyckEri4ksdxwWrYuG3PfP1uvMuf+q6cBQ=;
-	b=IjO1SpNfoyXrhNkhJDtlcn6wjX+RauAQMxraZ5PnQqlZSLchm+3fgyZQ/GEQPMZZXA
-	VYvIc2rs5vOpQ3IH1jmJ87GjwUZd27G+kap+i0tO6Y+928nyY6pcclCVB769uVaD7QnH
-	Hd8UR3YqOREuq2QmQg3IUgh9AWNhIpfP4xNxLYKaLuUL5D2r2sPwdEy+U8HI87Q8EtBh
-	3YcFC5OqFXupN4P7+n8LhchWWlhEHdJtAj5KJSBlplh36HwyGVwzIaXll/SiKCo5DA0D
-	PvmM4OwGrR3XgsOD3SOo5CS5thcb9l6za2oWTfSBQGYDfSx9wdLmcerQV9NFOHd6nfax
-	GfJw==
-X-Gm-Message-State: AJcUukdjum052QCQiqiOUFhTio7q1sBpzIlRz6VhCG1R18lwLRPg0BO7
-	cIYejhIUqXfRV2ZK/2D3zWzQOd0IYiZT9i6vQVg=
-X-Received: by 2002:a25:3788:: with SMTP id
-	e130mr27320757yba.399.1548793545556; 
-	Tue, 29 Jan 2019 12:25:45 -0800 (PST)
+	bh=VJd/QlW81wbA95QtykEeTs8OQftZYRxJNS6VyvUJCgQ=;
+	b=RB46PYAGVg38L0TDafMY5ohrY+yRByMhQ1YYGqpRTsd+GGr8RstSEA83Rk8JezwsV1
+	524xBVvBiVVDTpqP8grQd9hsJPU+/V/wB7NVhbHnWBWS3hAlqs8zHWtYXFJgXIuRjbD7
+	4CUX+F5tWD4Bnu0zWZy7frskkV1WJniUimnbTkoQg3RAFXjpJJB8OdtGUOW8D9BisfDU
+	TS2vNN8aKpL8dHkw+tPLSHdJ1+3dIgkd4g9yj8YtieBxuG6yb4tkBTTdIfv+l1GBM+9T
+	QX/1c32JQdNixbvSkp2tR+D4wEMzbxN5gRRdmUfKvCWZiZojqsYG4zBQKHvHFocFFcE2
+	Ofqw==
+X-Gm-Message-State: AJcUukccoA6RcVfsyNFR+/OYnW267t/Q5ll47OsLjWGQ1Eeo8pmgr3Fe
+	sRBghR+GLkeiZAbeuNu6cqzh8J1ggBrWfe/tHaQ=
+X-Received: by 2002:adf:a357:: with SMTP id d23mr29396846wrb.195.1548813226035;
+	Tue, 29 Jan 2019 17:53:46 -0800 (PST)
 MIME-Version: 1.0
-References: <20181207090135.7651-1-luc.michel@greensocs.com>
-	<20181207090135.7651-8-luc.michel@greensocs.com>
-	<CAMo8Bf+siB=vdjK+WPKvRCqKS59OVGOcAoH0HtN6VSvFyOc9gQ@mail.gmail.com>
-	<CAFEAcA9uVMs8aGTcbUpz+EGGyFBXtCNVMT-_t5eYPBjJF_4Rrw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9uVMs8aGTcbUpz+EGGyFBXtCNVMT-_t5eYPBjJF_4Rrw@mail.gmail.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Tue, 29 Jan 2019 12:25:34 -0800
-Message-ID: <CAMo8BfL7AVGwmXnBVf_RN8eUBshv+fYrkFhgZQ5UB_4bJ8Ss0g@mail.gmail.com>
+References: <20190124141147.8416-1-stefanha@redhat.com>
+	<CAFEAcA_NBtWFZi8G8goXrX0OHHeHheW6MK3W9ByHVi1DNX3JWw@mail.gmail.com>
+	<CAFEAcA-62rkQ4AQ1FQD3C4qn8tfxREu6BJuAdfw+VS95zS3Ung@mail.gmail.com>
+In-Reply-To: <CAFEAcA-62rkQ4AQ1FQD3C4qn8tfxREu6BJuAdfw+VS95zS3Ung@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Wed, 30 Jan 2019 09:53:34 +0800
+Message-ID: <CAJSP0QWGLEoje0F+4cPtUx5FaGKjV3_=wMjcDqFAmbM4XbyDvQ@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::b44
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v8 07/16] gdbstub: add
- multiprocess support to (f|s)ThreadInfo and ThreadExtraInfo
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+Subject: Re: [Qemu-devel] [PATCH] tests/microbit-test: Add tests for nRF51
+ NVMC
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Mark Burton <mark.burton@greensocs.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel <qemu-devel@nongnu.org>, Sai Pavan Boddu <saipava@xilinx.com>,
-	Edgar Iglesias <edgari@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LjXpQg9I7MJq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	Jim Mussared <jim@groklearning.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zj5x8ebi4zyh
 
-On Tue, Jan 29, 2019 at 2:05 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > Starting with this commit it is no longer possible to kill QEMU
-> > with the 'kill' command from the gdb. This was a nice feature,
-> > was this removal intentional, or is it just an implementation
-> > bug?
+On Tue, Jan 29, 2019 at 7:47 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Mon, 28 Jan 2019 at 19:01, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > This assertion fails on PPC64 hosts:
+> > ERROR:/home/pm215/qemu/tests/microbit-test.c:181:fill_and_erase:
+> > assertion failed (qtest_readl(qts, base + i * 4) == i): (16777216 ==
+> > 1)
+> >
+> > I suspect an endianness issue, given that 16777216 is 0x0100_0000.
+> > The test looks OK, though -- a word write ought to come back
+> > the same on a word read -- so maybe it's in the implementation?
 >
-> That sounds like a bug. I think with the multiprocess extensions
-> available gdb may switch from killing using the 'k' packet to using
-> the 'vKill;pid' packet, which we don't implement? Looking at
-> what gdb is sending ('set debug remote 1' turns on logging in
-> gdb of remote protocol packets) would let us check that theory.
+> The problem here is that the read path goes directly to the
+> underlying host memory, but the write path goes via the
+> flash_write() function, and the two disagree about the
+> representation of the underlying storage.
+>
+> I think that declaring s->storage to be a uint32_t* is a mistake --
+> the underlying RAM needs to be treated as a byte array, not as an
+> array of host-endian-order 32-bit words (because the direct-to-RAM
+> path effectively treats it as a byte array). Then, since the
+> flash_write() function is part of a DEVICE_LITTLE_ENDIAN
+> MemoryRegionOps, its 'value' argument is a 32-bit LE value, and
+> it should do the modification of s->storage via something like
+>    oldval = ldl_le_p(s->storage + offset);
+>    oldval &= value;
+>    stl_le_p(s->storage + offset, oldval);
+>
+> Another reference to s->storage also simplifies when we fix its
+> type: s->storage + value / 4 becomes just s->storage + value.
+>
+> NB: untested!
 
-That's correct:
+Thanks for looking into this!  I'll retest on a big-endian host and
+send a new revision.
 
-(gdb) kill
-Kill the program being debugged? (y or n) y
-Sending packet: $vKill;1#6e...Ack
-Packet received:
-Packet vKill (kill) is NOT supported
-Can't kill process
-
-> It's not clear how our implementation should deal with being asked
-> to kill just one process if we have more than one, though...
-
-I'll send a fix that restores previous behavior in case of a single
-inferior process.
-
--- 
-Thanks.
--- Max
+Stefan

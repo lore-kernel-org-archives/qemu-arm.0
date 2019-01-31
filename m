@@ -1,142 +1,146 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6752663wrt;
-        Thu, 31 Jan 2019 03:27:36 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6+8fC9hVk9kZ3Q8odZv84KR4Tpk2dJt3Nrdrx5jC/w9mYs6myZ5aZchk7C7CShE2wtPAoD
-X-Received: by 2002:a25:7909:: with SMTP id u9mr32151119ybc.451.1548934055993;
-        Thu, 31 Jan 2019 03:27:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548934055; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6782201wrt;
+        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
+X-Received: by 2002:a9d:908:: with SMTP id 8mr26853904otp.28.1548936125262;
+        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548936125; cv=none;
         d=google.com; s=arc-20160816;
-        b=c/sspfnoxtDSNuQm05a2IGr+seRe317eY0U0YPcZ23mAhTne+FfF/z0lcIKMx8Xs0s
-         N3IlAz7zBJer3ieMHZhEMVwGwH6BMEKiWxjnvljZ/9kRkIZ5PILu0M8RXfwvsiOJ4d/Z
-         dCbKDbK6CON+NQvTPMJmpOh1SaKKyAO8mVQ7URGYa4DSBV+s8hl2ZeoYv9zDkvEKf5Cl
-         xG7L53W4d+xgI0BuL88UtkL2EyU/z10D/fV4FHqEqPu49xNMej7vXnsuWhYnNQ++ON1g
-         qstkY6+yRkOFCJvIJ4D/34YfJ5bzx3MurWIdX68f+Pe0hwIBHa29cCJsThraT9xHO5ct
-         MXEg==
+        b=BrKwyVzlpR9d+1AjJA2ZhEIeK4GlNqvgk2NQim8VcHQLgwptYNVDc/RiU1glRSb5CY
+         my+uLay5ZU941fAIXRfTqA3WPMMevYYYOZB9tYDVOvMWdH2I+6vzeWOMShupxtT2sovs
+         uJesv65eWGB+gtXu9AwDieW0KYVUgPBBOB9JhwgQYJhyRVE6O26R1VSAcaTtDqGrzFJA
+         +BEENhZmCvoeb3BXkIjD3uKi8XwDcWqhsZmBknp8nqyHSkcQLROk2JeAkoW5Vu2OWgfA
+         oFCAlmfSzx7v4q20l+CnTPgZYorjYKa1hUAnnk7ckYz5kEgalD3ofbDRj8Mn76C1v8z2
+         rk1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=gyxX1X6cDLYlEibagFDko7Cs/zrt8AkVbdYa/LmUQe4=;
-        b=ougUN+1yhRAxjReRzAswFO8J1Hpz5kflqUY23ePltuZTGxPO5jPMqyzJPFhzVkas3S
-         opStDV9V5aIwDZbhBc+iq8gWGiAtVPOnYweEDYu4FMQUCnGMTG5PCadco3BhE9K9TmKp
-         by4dpI4naYLiMOdEW4J3WUv3ogx5jZMiO+yqIialqiIqc5uyF89oVzvCb58OoPvN+4dU
-         5OXeXwCRWbioz/rRj3FMG+sOFW5qcbivygwDzlJ6h0DOp72ojJSZDR6VLnXbPbmSnyT8
-         kcgnMVtJQhBIP36mFmyFpv33xmBq0+7irmeqr+X/YG4Npr3AvUlVItJWscdJwEvUyn2x
-         pwRw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
+        b=P8DoawJLX2Whd1ownaS2zZFqOUnlrFyn5c9ONVYojq9WzFPCLhrxLJu2evpW76gAp4
+         HEgfBUvpxIldvIa71ch7eBc6AVqTqgNaU8NeCmZVwxlhVPDZhZhMOyMLHqZj8hN8z/t9
+         qM2nC/yMwlg29kPMlJIHW7dz85TF+E/IoqOq7B0PPdSMaezgO7mNIL0UJUem4yRbGf2w
+         MQaVP7MKE2fZwVBWKhgR3SJnwqcJFpaydBg2tc6mLguIcFzvtE/1UepY5QxgibwNgYXl
+         osrR2HF/oNdGUeYDmavja0gR1p9SP7/dw6EwZcisNDOHAtgpicIsU2jkbW6JSC8YhpV4
+         6xHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N0mk2ZCF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p68si2403486ywg.370.2019.01.31.03.27.35
+       dkim=pass header.i=@linaro.org header.s=google header.b=XtU9r3gF;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id i83sor2102314oif.115.2019.01.31.04.02.05
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 Jan 2019 03:27:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N0mk2ZCF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:53121 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gpAVL-0005mc-HT
-	for alex.bennee@linaro.org; Thu, 31 Jan 2019 06:27:35 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55505)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpAQk-0002G3-MX
-	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 06:22:51 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpAQj-0008F4-Ug
-	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 06:22:50 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34786)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gpAQj-0008E8-NY
-	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 06:22:49 -0500
-Received: by mail-wr1-x444.google.com with SMTP id f7so2898380wrp.1
-	for <qemu-devel@nongnu.org>; Thu, 31 Jan 2019 03:22:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=gyxX1X6cDLYlEibagFDko7Cs/zrt8AkVbdYa/LmUQe4=;
-	b=N0mk2ZCFvKLSO5H9Og2pO2fJxST75khTk9FfLt1KDNij3dsFzpgjOVzYNO4z2EYjx8
-	+bWeaRsDRBeIgEGSsxURkLYAardH165jZI4WnASVR7zf25zPxLbQA+7RLmWkEGsTvT6y
-	4Vq6xo9Vn8dwP1wAG25tpxZANbfJKxq4IULlg=
+       dkim=pass header.i=@linaro.org header.s=google header.b=XtU9r3gF;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
+        b=XtU9r3gFgo3bUEH4w0RJrQGsg+ZyUiLkb02g16d1lz4I5Ej22pJjBjnr5xiRGMEV3P
+         ziVHeyyY1jZ8aCYtCkTBJ+h1ITT2/E42aydIy3hfSSzo4zAGwMFIxjz439uVPbLLZ+hX
+         5IW5tYOQTmcQiDY2is2EOAqgzmeLEVqzW3Dvs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=gyxX1X6cDLYlEibagFDko7Cs/zrt8AkVbdYa/LmUQe4=;
-	b=ZV6BXRH4FzPqqc6itMldxC6sYh7JY9UZiuM8MxOmLmSAnIutpntNEtTVMvxJNYbTDL
-	auyWpI3sKXe5jVx3l9yh59e30x3rtyt4z3sMK9MAuXa5cm+7rr0yXNtIkSk3gBBASh/3
-	94/67wy2tf96TM9RxbrT/YZNRIIoRhrRbuRBNNxD5xOm59qTJrL2v2CtFqGh0aZot4WA
-	no183R1xkAm3zGGq556BbytzOWH9lTnC+Q0T0IjA5vQq4np2f0rcNJMHoUUs5wHHEv5D
-	N+ljN6dx8jSjwoJLcR8I0uHy7ZZNzyjgt2QIrRV3VO6acqBWbb60n/FqMeTREfmpgESv
-	DRFQ==
-X-Gm-Message-State: AJcUukcRJ5iFJZaCFAeQKg+wov15KkvUM3RDw4nrs/USWXPuVGb1g6bR
-	k2hIODlnsfyla/QfMwo4z5c+Iw==
-X-Received: by 2002:adf:e911:: with SMTP id f17mr36025418wrm.126.1548933768789;
-	Thu, 31 Jan 2019 03:22:48 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id c8sm4078173wrx.42.2019.01.31.03.22.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 31 Jan 2019 03:22:48 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu, 31 Jan 2019 11:22:39 +0000
-Message-Id: <20190131112240.8395-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190131112240.8395-1-peter.maydell@linaro.org>
-References: <20190131112240.8395-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
+        b=nz39XCnCXsfpBc7CHOGmtWhAR4GUHmgRjCNmVSQ7q1VY3C1KNGElnV4K5nnHVeMryp
+         Ojd3notLp04JmMNB/Brhu3QZuZSnaBpHmF6ZmFhYQHt+wvjV2dv/ES0s1AZKDJyyvU+m
+         MITgg9gYh7Pc9MPMmyDpg0cJPsO6n+zJmPml4+FFjXxxTnSqB4Mf34qDSv0DmpQfqnS6
+         rBXHDTWvVtGlW/kX/IzlsApVNOWg5DDO0n0L9moASLi/ArJaTcLkPW3sO9yWwmc4kGuH
+         k5LQnovAtzi+BFGJPLAPs6FitcqAwxtayGVnSfBaOSqhxGtt+NuYHIGwCJ7b1V0P5SDm
+         tq6Q==
+X-Gm-Message-State: AJcUukfiynM8fEH9IpAutjOvec57DwTo8F7v9BIsUtg0APOcoiiNb8pS
+	NNzmNBIQ8GZ1c+zdJfSd403gEyRojnFvroPmx3UcnOuE
+X-Google-Smtp-Source: ALg8bN6mdRwKZnNpf22H+Qqy6UY5qg2s3ebu7H4UbIxN7Y91qy1mOY8XXguA0SGSQy+n4OKZsmy2rKkuPe03XhqBsv8=
+X-Received: by 2002:aca:5c05:: with SMTP id q5mr14435971oib.146.1548936124876;
+ Thu, 31 Jan 2019 04:02:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-devel] [PATCH 4/5] hw/arm/boot: Clarify why
- arm_setup_firmware_boot() doesn't set env->boot_info
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
-	patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GXcLGRz0yt9d
+References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
+ <1544173675-14217-2-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA8WF1nKfgQWZ11GgMzgLxOtGwoJS9zyeFQkm5ii5GLrpw@mail.gmail.com> <CAHmQWvCRfcP1z01OD4_EWVz6nYoYgvDiQKiQJ0puxGGreJchHA@mail.gmail.com>
+In-Reply-To: <CAHmQWvCRfcP1z01OD4_EWVz6nYoYgvDiQKiQJ0puxGGreJchHA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 31 Jan 2019 12:01:53 +0000
+Message-ID: <CAFEAcA8uZyW8i-5Enb_0AC04UEUrtjZ0Lk5Tr8XjXPCgVgwTfw@mail.gmail.com>
+Subject: Re: [PATCH v5 1/2] hw/arm: Add arm SBSA reference machine, skeleton part
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: x0/uXf/gmRrE
 
-The code path for booting firmware doesn't set env->boot_info. At
-first sight this looks odd, so add a comment saying why we don't.
+On Wed, 30 Jan 2019 at 08:59, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>
+> On Tue, 22 Jan 2019 at 19:42, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Fri, 7 Dec 2018 at 09:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> > > +    [VIRT_SECURE_MEM] =         { 0x20000000, 0x20000000 },
+> > > +    [VIRT_CPUPERIPHS] =         { 0x40000000, 0x00080000 },
+> > > +    /* GIC distributor and CPU interface expansion spaces reserved */
+> > > +    [VIRT_GIC_DIST] =           { 0x40000000, 0x00010000 },
+> > > +    [VIRT_GIC_CPU] =            { 0x40040000, 0x00010000 },
+> >
+> > If they're just reserved you don't really need to list them here,
+> > as they're covered by the VIRT_CPUPERIPHS space anyway. (You
+> > don't list the VIRT_GIC_HYP registers or VIRT_GIC_VCPU.)
+> >
+> We need more consideration here.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/boot.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Yeah, this is a little more complex than I thought.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index a2e724ac68a..cfcfdf421cf 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -1186,7 +1186,8 @@ static void arm_setup_firmware_boot(ARMCPU *cpu, struct arm_boot_info *info)
- 
-     /*
-      * We will start from address 0 (typically a boot ROM image) in the
--     * same way as hardware.
-+     * same way as hardware. Leave env->boot_info NULL, so that
-+     * do_cpu_reset() knows it does not need to alter the PC on reset.
-      */
- }
- 
--- 
-2.20.1
+> Why CPUPERIPHS is used to cover DIST and CPU interface? is this from
+> some old platform? I don't see the term in GICv3 memory map in the
+> user manual, so do we still need it for this Arm64 GICv3?
+> If we only list CPUPERIPHS but without DIST, I am afraid firmware or
+> driver developer still looking for the term of DIST for base address.
 
+OK, so what CPUPERIPHS does (in the virt board) is set the
+CPU property which defines the reset value of the CBAR_EL1 register.
+(The size specified isn't used.)
+
+The set of memory mapped things in this area should (in theory)
+be the same as what the hardware CPU puts there, because guest
+code can reasonably look at CBAR and expect to find there the
+devices that the real CPU puts there. Unfortunately on the virt
+board we don't get this right (and in any case we support multiple
+CPU types which don't necessarily have the same set of devices).
+Things work in practice because Linux and OVMF both look at
+the device tree rather than assuming they can find things
+via CBAR_EL1. This is awkward to fix in the virt board without
+breaking compatibility, but we can get it right for this new board.
+
+> For GICv3, what we can have are DIST, CPU, REDIST, VCPU and HYP.
+> CPU, VCPU and HYP are not simulated for GICv3 (curious it still works
+> without CPU interface emulated), so we only have DIST and REDIST.
+> Can we only list the DIST and REDIST without CPUPERIPHS?
+
+QEMU's GICv3 implementation only supports the system register
+interface, not the memory-mapped interface. This is why we don't
+have a memory mapped thing to put into VIRT_GIC_HYP/VIRT_GIC_CPU/
+VIRT_GIC_VCPU.
+
+For the Cortex-A53/A57/A72, the only things in the CBAR area are
+these memory mapped interfaces that we don't implement:
+  CBAR+0x00000 : cpu interface
+  CBAR+0x10000 : virt interface control
+  CBAR+0x20000 : vcpu interface
+  CBAR+0x2F000 : alias of vcpu interface
+(other parts of the CBAR+0x00000 to CBAR+0x3ffff reserved)
+
+So for the SBSA reference board, I think the right thing is to
+leave a gap in the memory map of 0x40000 in size for CPUPERIPHS,
+with a comment that this is reserved CPU peripheral space
+because we don't implement the GICv3 memory-mapped CPU interface.
+Put GIC_DIST somewhere else (it is a GICv3 device register
+bank, not part of the CPU's peripherals), and don't define
+GIC_CPU at all (since you don't use it).
+
+thanks
+-- PMM

@@ -1,102 +1,155 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6667417wrt;
-        Thu, 31 Jan 2019 01:48:49 -0800 (PST)
-X-Received: by 2002:aca:7581:: with SMTP id q123mr15304240oic.176.1548928128969;
-        Thu, 31 Jan 2019 01:48:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548928128; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6748805wrt;
+        Thu, 31 Jan 2019 03:23:00 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7SNNoljQivb2m6R475+TnwRqTcAEAdrE8QYCkXEtFcmgoNlQnvgc2EEPtG3NpL0rXkjd+4
+X-Received: by 2002:a25:e55:: with SMTP id 82mr32535922ybo.101.1548933780849;
+        Thu, 31 Jan 2019 03:23:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548933780; cv=none;
         d=google.com; s=arc-20160816;
-        b=I36Zgf7s0HNeQa0Lclt7C/aUcaBrR3iw7Re0bP75rGXqY7XtIWP42dAvFka5UDZhZ9
-         v7Eliv46UNtG7Bv6a3MMiLkjVLQ2nPoQQ2/K1j68aCJK4ekL9OMF0LA2AFFQellGXa0q
-         Fc2+rXwm0L93iG9rmcIyd5vZMFoXeMCeekALbXqZ9pPME+ep3RAI06EvOL/pd8R02jpL
-         /HND3V+5bGRjZ0axP8Kyi1Ndzk4RlAp600PhcPhq23Vz9yPjjADcEjtKjpwdOA3vvgdL
-         sJUCESBPe9RRCC+ZxfCtLm+WSLbW2YXsKsrN1FFXPKltqQ1gu19aINcY31N8kI09UJNm
-         i8RQ==
+        b=bpL/HewN2C6Tkc1ARALQ3jxj6Q5IwvJB8vmEPo9exFpzs/Hh+kDRea3ovIwyjHi8UA
+         p4znjFJd/6QVdpQLLiJprkkgV5HkHniN9JjySV4E5mOKgh0gJ6zNZQ59CNrhOIbjaN8J
+         tflDKg/93yodcTYKyqm1s366K6G4YsUBieVpWH2qBJLZdK+e0/KLQ63Oqo/HkCVGW0vp
+         TNLhgTdP0obkKz5YtrsBH1ICtBuSbNXkBpLpBjvZq8o7IR/pFtF1WgEKFmDY5kCtr4uV
+         VgC+1wELaKcq5vY8cftDPtCosP4+5ynUsCUVyqwZ2NT6hVso6HqfOrRx8u6lM4JRwbB/
+         an+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ZzUGZ8zqf3cOafK/6hY4QFh3DtgOKBQy6MTXMwDmmM8=;
-        b=ak4INLiK4dO56i5SN6F/qpcdCuUsqaU6k0GOQtoJBpNtIzIkbsex9c4N5fAbQn3SRC
-         1V6W2FGOTgaVFGu79GTLmdb+bziL6m/No7e4jTZpq2SYDA6a8fj1YckszvOj/PZ1kbxv
-         byoRoWUhkXogY853y9RFHPN2YfWRmDt90MdrKocKUXKjT6sOx8FMHyczlyjMsqEU8XBY
-         oGdp8brOxiwzU1pClL1+5eVbkGNPoRqUZHgxNV0uX3O9zwWecS+z9dPL79zVt94hRYu4
-         bcC3QQE+t5sjd6ig9u/opN4RDgPP8V2KoRR0TmeIwfkVmM+onuZYVnRKiCalL+PxOEme
-         +jDA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=6KMspSn5pQ2uKgLYMeJKO75iQe8Dqi6xIeUCCNIRlxE=;
+        b=DE5U4Gt5yr8q/N8qTgcSz39nmat7ix/j5v9YN3syeZPwvJxlSWokHcURw6ZX6kMzt8
+         DbxL3OGQW+B9f/VaR5TJ3xA4N7yrBcTiQIVTgC02LBTRFBNZj/mzN/IClJZ4FDdy+9mZ
+         +LE0YoB+7GwvmgHrmpK0VwnBq0jIMeZwT0f5zcxItK48fx+zQS9WVUBkzMvyxN/dcv49
+         onJ3QnKABoDiIB6YFPB5+93nZ24DDUa8USnHAYgbohCssvxLOJDeTWo6hAXlal5KDyZg
+         IlgtaDN9S0f1JPg5JwYHCg0WT6R+4nTEx6NR0E4lFJ5T/2iZqOv0ua937EJY5gGh5Mvn
+         I3zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="St/qYaJF";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g110sor2065939otg.156.2019.01.31.01.48.48
+       dkim=fail header.i=@linaro.org header.s=google header.b=UDpazzBq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n207si2471084ywd.335.2019.01.31.03.23.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 31 Jan 2019 01:48:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 31 Jan 2019 03:23:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="St/qYaJF";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ZzUGZ8zqf3cOafK/6hY4QFh3DtgOKBQy6MTXMwDmmM8=;
-        b=St/qYaJFP+ZydrEUM7xnLsnsiitBqicL06wEH3oVYlk61UjeIN3vkAxFavvzlcgpAB
-         cCZ3xkJJedF74TeZxglG2pTFFryiD7JrwTpn7SxXMJn/bS8hNLdnTm4TS2SkV+TdQ3mZ
-         +4jhhyUyPnwHBXTABkLto9NOwoIQIvBRW0r7I=
+       dkim=fail header.i=@linaro.org header.s=google header.b=UDpazzBq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:53023 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gpAQu-0002Dh-8x
+	for alex.bennee@linaro.org; Thu, 31 Jan 2019 06:23:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55387)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gpAQf-0002AA-ED
+	for qemu-arm@nongnu.org; Thu, 31 Jan 2019 06:22:46 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gpAQe-0008BA-MT
+	for qemu-arm@nongnu.org; Thu, 31 Jan 2019 06:22:45 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54601)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gpAQe-0008Ah-HD
+	for qemu-arm@nongnu.org; Thu, 31 Jan 2019 06:22:44 -0500
+Received: by mail-wm1-x342.google.com with SMTP id a62so2076322wmh.4
+	for <qemu-arm@nongnu.org>; Thu, 31 Jan 2019 03:22:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=6KMspSn5pQ2uKgLYMeJKO75iQe8Dqi6xIeUCCNIRlxE=;
+	b=UDpazzBqY71x+bWquf8pDFz3rqiUWgqW64JKx1AP8J2VQKZopvKmoTJbDITJrXw4dI
+	s/qmO0HFUlIP9VrMGWtn64VPVa8l2zxA2eTszFEZwpU5LqsCzDlZEqbovNYVX+2MAX/u
+	ko6MWfGLJ9x/On/AhkKHQ/wths2g+ctgWR9Qc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ZzUGZ8zqf3cOafK/6hY4QFh3DtgOKBQy6MTXMwDmmM8=;
-        b=ZJLi0iOeVwEjnwK95ErZame0n94WXkVB449RgwZZhGehTNJHe9uL9HhMUs3AduRCUx
-         Xs5CnXZvL07E51S17QzOHTjk2OnUXKxKIh8nQEhRsOeVfXQSLTVlL32KbQLIWOqaUsH2
-         Fl8fgMF8stKzLXsKKauLEw6XKLYGtIq+MgvYbJ0hohyEDfX75cyty53nQ7mFkGXAhhOa
-         W8x2t1OyvDMvgF5w3LgnAReE/3pNArV5KEkC6sDEsaDxVX4Mxe0J1L8qlw/1zeEO0Ngv
-         noRTaRZWsjBjv1CsV9jPLokcoMQ6HrJwM60NTgDSy3jc4X/y4yyfXSOvUW7s5O4vLyL1
-         sgCw==
-X-Gm-Message-State: AJcUukf+G8HesYMRBKuyigd0yLA20MWVgp2ECaCL55mokKN6CXqQcGSw
-	t0PLq42+bHLccKdWDOBYlS898P3Q+cRYmP1FA4wbl0LMlyHCOA==
-X-Google-Smtp-Source: ALg8bN50V1HFyM1fUWsbcesOSeLRZPKBNFkF17ijcyeSJ6nX4GmraZYSg6wgq0+fWfJlWhkUOPue56SBYBVrG+k/6Rw=
-X-Received: by 2002:a05:6830:1115:: with SMTP id w21mr24774732otq.316.1548928128569;
- Thu, 31 Jan 2019 01:48:48 -0800 (PST)
-MIME-Version: 1.0
-References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
- <1544173675-14217-3-git-send-email-hongbo.zhang@linaro.org>
- <CAFEAcA9mF+WiPLW4yyv1aEMLTg2QK2krZvxyjCSsMziJtzx3Ug@mail.gmail.com>
- <CAHmQWvCw5ndod93WqLXDgGxDERtRM3ee_qiLA+S34Y9X2JFvVQ@mail.gmail.com>
- <CAFEAcA_+UhU56D7Yx5K8+=DbtUiiV8V7sX2UgxFKSkScUypxFg@mail.gmail.com> <20190130092321.1ddbd29a@Igors-MacBook-Pro.local>
-In-Reply-To: <20190130092321.1ddbd29a@Igors-MacBook-Pro.local>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=6KMspSn5pQ2uKgLYMeJKO75iQe8Dqi6xIeUCCNIRlxE=;
+	b=Q+Cz5L8ZGDHFjk05kVt5alZ/CpOgsrYtcRskhf7C/l+nr5phz38qWdgU/2Y9bkgInK
+	3Y5NzLVIOYu/o/KUz94/rjzkIejroLToF11tqD4TuUffLUEIsJ+MRCi0rkWglxjO1rfp
+	WBdBawjeafZdAFesvzOJQbB/RFsLq0q1aCs54zvrpxH4zVMwlMZIMt9oTHjfpJstgj2N
+	8k59SjC/pWLYBjr6oiJeoBEl2WofX5W4Xxb19XgOFZ7x5X+vyxYdXhK9w9PtebqgqPQV
+	lctwm7SKZC22/m4ZV6YvoqaMGDJ36nydJy/gambspm2xVOhwbJ2D9ELpA5JTi2R8eH94
+	DRJA==
+X-Gm-Message-State: AHQUAuZT74Vdzy8o8Oz72XbbSAuOI7mR18y3XWHP4suLV6DG1FuJ3dsl
+	HzaQYo640EA9CYmL1S0DRLleSOk4IlAvhg==
+X-Received: by 2002:a1c:7511:: with SMTP id o17mr906873wmc.42.1548933763132;
+	Thu, 31 Jan 2019 03:22:43 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id c8sm4078173wrx.42.2019.01.31.03.22.41
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 31 Jan 2019 03:22:42 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Jan 2019 09:48:37 +0000
-Message-ID: <CAFEAcA_i0dXNUfzKGBgn=riupWtBa=pGYYtY8LUqHdrf6YzbvQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v5 2/2] hw/arm: add Arm SBSA reference
- machine, devices part
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: ri3WQC6pKZAj
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 31 Jan 2019 11:22:35 +0000
+Message-Id: <20190131112240.8395-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH 0/5] hw/arm/boot: Support DTB autoload for
+ firmware-only boots
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E93RMEmsuvXz
 
-On Wed, 30 Jan 2019 at 08:23, Igor Mammedov <imammedo@redhat.com> wrote:
->
-> On Tue, 29 Jan 2019 15:26:29 +0000
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> > Oh, I see now. I think this is a bug in boot.c and we should
-> > fix it by making the "this is a firmware boot" code path also
-> > do the arm_load_dtb() call. I'll send a patch.
-> pls, CC me on it as well.
->
-> I'm interested in it from hotplug + reboot perspective,
-> where we have a changed/bigger DTB on reboot as it contains new devices (cpus|memory)
->
-> loading rom like now doesn't work nice in case of reboot.
+The arm_boot_info struct has a skip_dtb_autoload flag: if this is
+set to true by the board code then arm_load_kernel() will not
+load the DTB itself, but will leave this for the board code to
+do itself later. However, the check for this is done in a
+code path which is only executed for the case where we load
+a kernel image file. If we're taking the "boot via firmware"
+code path then the flag isn't honoured and the DTB is never
+loaded.
+    
+We didn't notice this because the only real user of "boot
+via firmware" that cares about the DTB is the virt board
+(for UEFI boot), and that always wants skip_dtb_autoload
+anyway. But the SBSA reference board model we're planning to
+add will want the flag to behave correctly.
 
-OK, but I don't think it will help you there, because all it
-does (after a pile of refactoring) is make the firmware-boot
-code path go through the if() clause at the bottom of
-arm_load_kernel() that calls arm_load_dtb().
+The first four patches in this set are just refactoring,
+splitting the code in arm_load_kernel() out into a
+couple of sub-functions for "direct kernel boot" and
+"firmware boot". The last patch that fixes the issue is
+then just a one-liner. (Without the refactoring we'd
+need to use a goto, which is what I wanted to avoid.)
 
 thanks
 -- PMM
+
+Peter Maydell (5):
+  hw/arm/boot: Fix block comment style in arm_load_kernel()
+  hw/arm/boot: Factor out "direct kernel boot" code into its own
+    function
+  hw/arm/boot: Factor out "set up firmware boot" code
+  hw/arm/boot: Clarify why arm_setup_firmware_boot() doesn't set
+    env->boot_info
+  hw/arm/boot: Support DTB autoload for firmware-only boots
+
+ hw/arm/boot.c | 166 +++++++++++++++++++++++++++++---------------------
+ 1 file changed, 96 insertions(+), 70 deletions(-)
+
+-- 
+2.20.1
+

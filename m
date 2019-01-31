@@ -1,146 +1,183 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6782201wrt;
-        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
-X-Received: by 2002:a9d:908:: with SMTP id 8mr26853904otp.28.1548936125262;
-        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548936125; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6845757wrt;
+        Thu, 31 Jan 2019 05:07:45 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN5k2PCuFLzgqSTxOH6BwcAA/kDIF5B4RIlRaWOwlrjfHYxbVP5QLZw+yHnbvmF1cxCFsek5
+X-Received: by 2002:a25:b701:: with SMTP id t1mr33275717ybj.81.1548940065260;
+        Thu, 31 Jan 2019 05:07:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548940065; cv=none;
         d=google.com; s=arc-20160816;
-        b=BrKwyVzlpR9d+1AjJA2ZhEIeK4GlNqvgk2NQim8VcHQLgwptYNVDc/RiU1glRSb5CY
-         my+uLay5ZU941fAIXRfTqA3WPMMevYYYOZB9tYDVOvMWdH2I+6vzeWOMShupxtT2sovs
-         uJesv65eWGB+gtXu9AwDieW0KYVUgPBBOB9JhwgQYJhyRVE6O26R1VSAcaTtDqGrzFJA
-         +BEENhZmCvoeb3BXkIjD3uKi8XwDcWqhsZmBknp8nqyHSkcQLROk2JeAkoW5Vu2OWgfA
-         oFCAlmfSzx7v4q20l+CnTPgZYorjYKa1hUAnnk7ckYz5kEgalD3ofbDRj8Mn76C1v8z2
-         rk1A==
+        b=aJ2GaVLPfsud9SSpcs2nLG0iKyKPZ7KqUItzFd/qocPhz6HDiNYo9VzCRedgVfXuVl
+         pvapZAczT2UhV/i4rFLsh9Z7kmFmeG6LGIZUQHX0FQha7D2EYIM+jqT1HDTh4Hz6R4Do
+         BNpIQHohod76MWFmWqAglHpPWgPf8LdOyFh68q0YohSDX44/2v0RhfwlnEH1pzIhx7Fl
+         iAsX5YMVztNiqvnPOE2wmT9EK1HjKGhzGaDwWHbyMxYbkqAXhvVFVcSYtHAjLpommcrD
+         ZofqbLiUnctnIm+xLRGHFzNCCjrRnij+Gzx6pBiCK+KTW3cEOj/qnAp8BNA/0FYoV7SI
+         uumA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
-        b=P8DoawJLX2Whd1ownaS2zZFqOUnlrFyn5c9ONVYojq9WzFPCLhrxLJu2evpW76gAp4
-         HEgfBUvpxIldvIa71ch7eBc6AVqTqgNaU8NeCmZVwxlhVPDZhZhMOyMLHqZj8hN8z/t9
-         qM2nC/yMwlg29kPMlJIHW7dz85TF+E/IoqOq7B0PPdSMaezgO7mNIL0UJUem4yRbGf2w
-         MQaVP7MKE2fZwVBWKhgR3SJnwqcJFpaydBg2tc6mLguIcFzvtE/1UepY5QxgibwNgYXl
-         osrR2HF/oNdGUeYDmavja0gR1p9SP7/dw6EwZcisNDOHAtgpicIsU2jkbW6JSC8YhpV4
-         6xHQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=0JO8RPLDHt6vVAFDC7iq+vX8nhpxSiNaD91+Ug+YDzk=;
+        b=zCABybpQbZkHcZAtloF+zD1qIBUOJVoz46E0thjyDATvSHZgt4K0ymgksQ0uzSKX6P
+         PnNxOTROvLzZp8BGd6upWH4hoVtONoq/mvPTR6GvR0lk5mhW+qSV4wnf1JtVvQHmgIO2
+         anh1H87jxdhQ+ipmvyvo7p1LV2AFqQ/Z48bt+1uqsb9xB/SG58IJpGTAZIRFUCTACVRk
+         UVjzMApqCHQ1W2kYS07z2myTCtCDql9uVknRsOpUnkVZnAErQfu1mWfvBaTDcAm2LlvH
+         qDPbU50T+o2GqhLc++rpVUZKCBdP1tXVQlrYsLNDrESNylBDdFGwzq2mEFnX1jqnhkea
+         45+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XtU9r3gF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id i83sor2102314oif.115.2019.01.31.04.02.05
+       dkim=fail header.i=@linaro.org header.s=google header.b=Nb59Kl0v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v65si2617762ywf.79.2019.01.31.05.07.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 31 Jan 2019 04:02:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 31 Jan 2019 05:07:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XtU9r3gF;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
-        b=XtU9r3gFgo3bUEH4w0RJrQGsg+ZyUiLkb02g16d1lz4I5Ej22pJjBjnr5xiRGMEV3P
-         ziVHeyyY1jZ8aCYtCkTBJ+h1ITT2/E42aydIy3hfSSzo4zAGwMFIxjz439uVPbLLZ+hX
-         5IW5tYOQTmcQiDY2is2EOAqgzmeLEVqzW3Dvs=
+       dkim=fail header.i=@linaro.org header.s=google header.b=Nb59Kl0v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:54496 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gpC4G-0006C9-Ph
+	for alex.bennee@linaro.org; Thu, 31 Jan 2019 08:07:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47634)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gpC3d-0006Bj-OY
+	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 08:07:11 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gpC3c-00082j-RA
+	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 08:07:05 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38331)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gpC3c-00082D-L4
+	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 08:07:04 -0500
+Received: by mail-wm1-x344.google.com with SMTP id m22so2488677wml.3
+	for <qemu-devel@nongnu.org>; Thu, 31 Jan 2019 05:07:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=0JO8RPLDHt6vVAFDC7iq+vX8nhpxSiNaD91+Ug+YDzk=;
+	b=Nb59Kl0v+3p6tkbJR2PCaO7QajeT/VOjszk2uOVfvYEaTN1/eBZi4yzvOUsoZgcDoD
+	n7ULiHkFqCf/bf6AuwkRTXFpiYbW7nI+7NvjiWV2/XAB5j5NMfIm09AR2lgLHADIYpWo
+	eFtYVxu+hFXftyNmbM0wQUuL0AaDsgOPk5G4o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ynjsnciFralf6Bmf9SXjB4eRLOUAGotw5tZyhd5LCKY=;
-        b=nz39XCnCXsfpBc7CHOGmtWhAR4GUHmgRjCNmVSQ7q1VY3C1KNGElnV4K5nnHVeMryp
-         Ojd3notLp04JmMNB/Brhu3QZuZSnaBpHmF6ZmFhYQHt+wvjV2dv/ES0s1AZKDJyyvU+m
-         MITgg9gYh7Pc9MPMmyDpg0cJPsO6n+zJmPml4+FFjXxxTnSqB4Mf34qDSv0DmpQfqnS6
-         rBXHDTWvVtGlW/kX/IzlsApVNOWg5DDO0n0L9moASLi/ArJaTcLkPW3sO9yWwmc4kGuH
-         k5LQnovAtzi+BFGJPLAPs6FitcqAwxtayGVnSfBaOSqhxGtt+NuYHIGwCJ7b1V0P5SDm
-         tq6Q==
-X-Gm-Message-State: AJcUukfiynM8fEH9IpAutjOvec57DwTo8F7v9BIsUtg0APOcoiiNb8pS
-	NNzmNBIQ8GZ1c+zdJfSd403gEyRojnFvroPmx3UcnOuE
-X-Google-Smtp-Source: ALg8bN6mdRwKZnNpf22H+Qqy6UY5qg2s3ebu7H4UbIxN7Y91qy1mOY8XXguA0SGSQy+n4OKZsmy2rKkuPe03XhqBsv8=
-X-Received: by 2002:aca:5c05:: with SMTP id q5mr14435971oib.146.1548936124876;
- Thu, 31 Jan 2019 04:02:04 -0800 (PST)
-MIME-Version: 1.0
-References: <1544173675-14217-1-git-send-email-hongbo.zhang@linaro.org>
- <1544173675-14217-2-git-send-email-hongbo.zhang@linaro.org>
- <CAFEAcA8WF1nKfgQWZ11GgMzgLxOtGwoJS9zyeFQkm5ii5GLrpw@mail.gmail.com> <CAHmQWvCRfcP1z01OD4_EWVz6nYoYgvDiQKiQJ0puxGGreJchHA@mail.gmail.com>
-In-Reply-To: <CAHmQWvCRfcP1z01OD4_EWVz6nYoYgvDiQKiQJ0puxGGreJchHA@mail.gmail.com>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=0JO8RPLDHt6vVAFDC7iq+vX8nhpxSiNaD91+Ug+YDzk=;
+	b=iRzGDsiJJ/gc4GdRbQjvzgOnq4dqciA9MdjIWKH59BVgYpTnvH6H9eef7zS2AV+TeN
+	IZ3j4BoZZ0VFx1B9Mz2Y7weBAQrNvHIqkEXgatHc+QRbd2+lMKXJRTgdyz+G59LXB9qY
+	muZVpaVNjrAhCkpD1ECHNDAaZvAIOnKJcVAunw1VKdnq1vb3KVuDHlGXpANM6tzEXL7v
+	xsJ98wE8gdgwOo81P0k6tShb/i3x0MI+M858mcPheuEZwZeqSxiioACkvpgnqp2jpo9W
+	fd1LR4dgO7DlcZ/vQTz4i3zz2/IcX9LLgfoIBeNJ2QUq+bsokoZwp7k4y6G25+s2HOeJ
+	80Og==
+X-Gm-Message-State: AJcUukf9Cdth0cRJSRRtaVIc69IQks4bBLykl8oHO7v3LbBUYODUu4fq
+	Kwa/ub+hPDCd0ky7rO93heYbmg==
+X-Received: by 2002:a7b:c7c7:: with SMTP id z7mr31420339wmk.74.1548940022914; 
+	Thu, 31 Jan 2019 05:07:02 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	h16sm9719135wrb.62.2019.01.31.05.07.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 31 Jan 2019 05:07:02 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Jan 2019 12:01:53 +0000
-Message-ID: <CAFEAcA8uZyW8i-5Enb_0AC04UEUrtjZ0Lk5Tr8XjXPCgVgwTfw@mail.gmail.com>
-Subject: Re: [PATCH v5 1/2] hw/arm: Add arm SBSA reference machine, skeleton part
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: x0/uXf/gmRrE
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 31 Jan 2019 13:07:00 +0000
+Message-Id: <20190131130700.28392-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::344
+Subject: [Qemu-devel] [PATCH] target/arm: Make FPSCR/FPCR trapped-exception
+ bits RAZ/WI
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Martin Husemann <martin@netbsd.org>, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Zn5GyiaDQijY
 
-On Wed, 30 Jan 2019 at 08:59, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->
-> On Tue, 22 Jan 2019 at 19:42, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Fri, 7 Dec 2018 at 09:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> > > +    [VIRT_SECURE_MEM] =         { 0x20000000, 0x20000000 },
-> > > +    [VIRT_CPUPERIPHS] =         { 0x40000000, 0x00080000 },
-> > > +    /* GIC distributor and CPU interface expansion spaces reserved */
-> > > +    [VIRT_GIC_DIST] =           { 0x40000000, 0x00010000 },
-> > > +    [VIRT_GIC_CPU] =            { 0x40040000, 0x00010000 },
-> >
-> > If they're just reserved you don't really need to list them here,
-> > as they're covered by the VIRT_CPUPERIPHS space anyway. (You
-> > don't list the VIRT_GIC_HYP registers or VIRT_GIC_VCPU.)
-> >
-> We need more consideration here.
+The {IOE, DZE, OFE, UFE, IXE, IDE} bits in the FPSCR/FPCR are for
+enabling trapped IEEE floating point exceptions (where IEEE exception
+conditions cause a CPU exception rather than updating the FPSR status
+bits). QEMU doesn't implement this (and nor does the hardware we're
+modelling), but for implementations which don't implement trapped
+exception handling these control bits are supposed to be RAZ/WI.
+This allows guest code to test for whether the feature is present
+by trying to write to the bit and checking whether it sticks.
 
-Yeah, this is a little more complex than I thought.
+QEMU is incorrectly making these bits read as written. Make them
+RAZ/WI as the architecture requires.
 
-> Why CPUPERIPHS is used to cover DIST and CPU interface? is this from
-> some old platform? I don't see the term in GICv3 memory map in the
-> user manual, so do we still need it for this Arm64 GICv3?
-> If we only list CPUPERIPHS but without DIST, I am afraid firmware or
-> driver developer still looking for the term of DIST for base address.
+In particular this was causing problems for the NetBSD automatic
+test suite.
 
-OK, so what CPUPERIPHS does (in the virt board) is set the
-CPU property which defines the reset value of the CBAR_EL1 register.
-(The size specified isn't used.)
+Reported-by: Martin Husemann <martin@netbsd.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Martin: this is a different fix to the one I suggested you test,
+because I realized we need to make these bits RAZ/WI in the aarch32
+FPSCR as well as the aarch64 FPCR, but it should have the same effect.
 
-The set of memory mapped things in this area should (in theory)
-be the same as what the hardware CPU puts there, because guest
-code can reasonably look at CBAR and expect to find there the
-devices that the real CPU puts there. Unfortunately on the virt
-board we don't get this right (and in any case we support multiple
-CPU types which don't necessarily have the same set of devices).
-Things work in practice because Linux and OVMF both look at
-the device tree rather than assuming they can find things
-via CBAR_EL1. This is awkward to fix in the virt board without
-breaking compatibility, but we can get it right for this new board.
+General note: the difference between "RAZ/WI" and "RES0" is a bit
+subtle (see the Arm ARM glossary), but the main distinction is that
+RES0 bits can often be implemented as reads-as-written whilst
+RAZ/WI bits never can.
+---
+ target/arm/cpu.h    | 6 ++++++
+ target/arm/helper.c | 6 ++++++
+ 2 files changed, 12 insertions(+)
 
-> For GICv3, what we can have are DIST, CPU, REDIST, VCPU and HYP.
-> CPU, VCPU and HYP are not simulated for GICv3 (curious it still works
-> without CPU interface emulated), so we only have DIST and REDIST.
-> Can we only list the DIST and REDIST without CPUPERIPHS?
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b8161cb6d73..15e1464460f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1404,6 +1404,12 @@ void vfp_set_fpscr(CPUARMState *env, uint32_t val);
+ #define FPSR_MASK 0xf800009f
+ #define FPCR_MASK 0x07ff9f00
+ 
++#define FPCR_IOE    (1 << 8)    /* Invalid Operation exception trap enable */
++#define FPCR_DZE    (1 << 9)    /* Divide by Zero exception trap enable */
++#define FPCR_OFE    (1 << 10)   /* Overflow exception trap enable */
++#define FPCR_UFE    (1 << 11)   /* Underflow exception trap enable */
++#define FPCR_IXE    (1 << 12)   /* Inexact exception trap enable */
++#define FPCR_IDE    (1 << 15)   /* Input Denormal exception trap enable */
+ #define FPCR_FZ16   (1 << 19)   /* ARMv8.2+, FP16 flush-to-zero */
+ #define FPCR_FZ     (1 << 24)   /* Flush-to-zero enable bit */
+ #define FPCR_DN     (1 << 25)   /* Default NaN enable bit */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 66faebea8ec..c5f10ddbe92 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12508,6 +12508,12 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+         val &= ~FPCR_FZ16;
+     }
+ 
++    /*
++     * We don't implement trapped exception handling, so the
++     * trap enable bits are all RAZ/WI (not RES0!)
++     */
++    val &= ~(FPCR_IDE | FPCR_IXE | FPCR_UFE | FPCR_OFE | FPCR_DZE | FPCR_IOE);
++
+     changed = env->vfp.xregs[ARM_VFP_FPSCR];
+     env->vfp.xregs[ARM_VFP_FPSCR] = (val & 0xffc8ffff);
+     env->vfp.vec_len = (val >> 16) & 7;
+-- 
+2.20.1
 
-QEMU's GICv3 implementation only supports the system register
-interface, not the memory-mapped interface. This is why we don't
-have a memory mapped thing to put into VIRT_GIC_HYP/VIRT_GIC_CPU/
-VIRT_GIC_VCPU.
-
-For the Cortex-A53/A57/A72, the only things in the CBAR area are
-these memory mapped interfaces that we don't implement:
-  CBAR+0x00000 : cpu interface
-  CBAR+0x10000 : virt interface control
-  CBAR+0x20000 : vcpu interface
-  CBAR+0x2F000 : alias of vcpu interface
-(other parts of the CBAR+0x00000 to CBAR+0x3ffff reserved)
-
-So for the SBSA reference board, I think the right thing is to
-leave a gap in the memory map of 0x40000 in size for CPUPERIPHS,
-with a comment that this is reserved CPU peripheral space
-because we don't implement the GICv3 memory-mapped CPU interface.
-Put GIC_DIST somewhere else (it is a GICv3 device register
-bank, not part of the CPU's peripherals), and don't define
-GIC_CPU at all (since you don't use it).
-
-thanks
--- PMM

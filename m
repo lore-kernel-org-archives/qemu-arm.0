@@ -1,147 +1,155 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7541362wrt;
-        Thu, 31 Jan 2019 17:45:54 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN7YQb8e4Mt8VxbSNLc95mFui9pPUvj+le7swweQu/uOXpRS3Q2iT6Zdsr2mcE8CZ1RZd1JN
-X-Received: by 2002:a25:a501:: with SMTP id h1mr34807189ybi.440.1548985554243;
-        Thu, 31 Jan 2019 17:45:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1548985554; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp7575572wrt;
+        Thu, 31 Jan 2019 18:34:20 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN7YI44pCBNlt/d/J/dsWobD9ZogYMFVdtJ9mvBXGQ2frkaVq+qoOMINwtVKo9Gq0IrZLHrP
+X-Received: by 2002:a81:7ad0:: with SMTP id v199mr36672134ywc.149.1548988460692;
+        Thu, 31 Jan 2019 18:34:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1548988460; cv=none;
         d=google.com; s=arc-20160816;
-        b=VKK9aibwatIhNWpYX4QSZ2wyWsS8iAijV1FkDK81JquNR2D1xxyLOPPzEeBTtEn+Hk
-         rsGEuI4KuefETpQuzKklS9ZosJuNPUb2N2cxFhGem6Xfo5reFMQmTX8vNBwj8nfr3Bbs
-         /UgSJbaYLDaXIsD6KUsWwN8IdsPzUh0HVOTX68f7xRe56yxo2PdQoXGXASVUtLPw6AqW
-         LPz111bd3/gn1VhrDUJiOl7s3wWZHs2IoLYY2cZTOEu3LqE173e/SXj0L+YKa1RkwAOX
-         GZJPAAZJUsuMdj7iOSDaohc8JFyb0eepzXZTQeOIIYCXNaslzDOcV/Ktdxr/EGw4tF0p
-         p+cA==
+        b=jY8klK7eb4RYxhl/jR4T0g+JVZWSYxUpYld2gDj2AvQGE9gLbCkFUf5f91bc6tm0FB
+         A2yKHFqpSuu+W2IuyxfDZ1Cif7xZBPaj1LdEU+fQrFwpaulczK9RaXWq8TXeeDXEi10W
+         Zq1wIDM4GjzMaQ2pUNADP6U3EHecPOPI8p7ZqmsihSH/VspVumJIE78Q2/Z1i6uL0SlN
+         T4giaLO2WHu9+/xkutZhlGsszgRQP+6eKlzO73ncNQ0z/quiqaVNONeERF7Auzz24xwf
+         oi2Dy54/wQYaleK4Y+BZKg7dpDy8/7FfNe19fH88rsSSAniGVZphCA/cKXWZN3rBj4Rh
+         X5JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=WTdNhU8ryYaufrelMnXjcRozsxwAQFzQhcN/2AgKcHE=;
-        b=yKAoqei5iDnGkMnTzfuViUjaxE8uLJsL0YDxjNp/vpz649tn8k7CWL6zYrdp8ZpUCT
-         m36lJlpXy2rlCFvhwNG13y9Xf6KpS1qepwZFeZjsdm51mTLbr1VzV/WJFG20PuFR1r7T
-         SycqCjK0e6BEBd743efW/N0bXRPExkO4fYaF2nm85CmvZzUJp9hzj6XBvgBtBiOhbafn
-         yotGdVRcrWZClhUacNbu92eixm6KOHLmxUhwqXC972qYQXf9ETn+CLhTUUDSzqJokFme
-         0XLbb3oMVAu1GIk+R1aas7LfG5Gyhgh7+fVhywlPRaNCwPsZlOlbVNd2H7NwpeA/hnCg
-         AV/A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=+JhSZFRZC9TxTbM9wSRxahTFPGcRXiDG75sGfQXtTkE=;
+        b=n5ueMXq4X2CunxoUywrrpKy4q4wERjQJ6LMQPX4msaCSNFTNlUFxPhkDZTFyePzJSF
+         1vCwdhTjNqSUA0NMxDGo4L7J1K6wxYJDWQFdrbcHV+Lc4s3lnyp4Pak/+4h6M4v8HoIR
+         AWHb3W/E66vdhXvgnCPYh0vTGiU4E/7VC59qunCOfuVk4BYy37GLgC6/YFmChVMjCHb0
+         0l9w75WhMTPF4XCQ/hR6Pdop3Xp4gUl4OiWtJDP+Wl3nluwgrk7AG/Coi/7/nm3zqaCS
+         PTohWylqTgEvCGrqk80nmO341iAFyQoHTGD89+R2OFfA6uTAsW6PkxqIGhn1Ofrt+I24
+         4REw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dK1Gijps;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t18si3477959ybl.105.2019.01.31.17.45.54
+        by mx.google.com with ESMTPS id p203si3737231ywg.170.2019.01.31.18.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 Jan 2019 17:45:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Jan 2019 18:34:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dK1Gijps;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:35552 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:35915 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gpNtx-0007PN-PA
-	for alex.bennee@linaro.org; Thu, 31 Jan 2019 20:45:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59022)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gpOeq-0007l9-2L
+	for alex.bennee@linaro.org; Thu, 31 Jan 2019 21:34:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <catherine.hecx@gmail.com>) id 1gpNsz-00071P-Gl
-	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 20:44:54 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gpOeh-0007kt-JP
+	for qemu-arm@nongnu.org; Thu, 31 Jan 2019 21:34:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <catherine.hecx@gmail.com>) id 1gpNsy-0007wJ-Th
-	for qemu-devel@nongnu.org; Thu, 31 Jan 2019 20:44:53 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33124)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <catherine.hecx@gmail.com>)
-	id 1gpNsy-0007vt-OI; Thu, 31 Jan 2019 20:44:52 -0500
-Received: by mail-pg1-x541.google.com with SMTP id z11so2185857pgu.0;
-	Thu, 31 Jan 2019 17:44:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=WTdNhU8ryYaufrelMnXjcRozsxwAQFzQhcN/2AgKcHE=;
-	b=dK1GijpsvMQwnByAwmZuvt5haVM2YI64wteuFHZNUrjx5PbtJX3/SNInnCQpacFJrq
-	h61fustUlirDTSHaHEhOwg9N+HMgzLXB2rhwmskkOYNnHSHVC/gI86Oam/edac9LZdqc
-	SxFZp2x4pm5WuVSHJ4smuoVLGxqXmvsMLopPazxfHkBrzKHGNoNpDxsk0KQp9hkcrcgB
-	JjZ2NGRcMc1iJfRx1YMy0oHM6hz231rAMzUVouyIaesHUyEt1EeUbRi5hf/gwXVOLCl0
-	R298bymce7nVUwqVoV27SUC97hbPVMxmSP4EiE48VV+V2WXLDomCb7iCqq/Aez1HIJa0
-	BDug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=WTdNhU8ryYaufrelMnXjcRozsxwAQFzQhcN/2AgKcHE=;
-	b=de1VUMpgIP/C7WSTPD3Rh7HCkfn7PLCYB54x0wq4DMIJkBACADp3vdN0Ns2SF5Qs1B
-	CCOlLYZ9ysuBeSFFdbZO0BTMnxAURfJlKwEWgKbgttuNygNwyTXF/28/37CkNCgwGsoW
-	XO3fgD27BSGCla4INiDU/n0fvKNiTHOc+nUXx/U6HnY8fzzNSlRC3oYGDFQA4hY5Qvjp
-	Vcz7NyjFKsLDXlsbP4oeOcYvNVByGdKXvca0k7476U4Z0WfZFWJNfvoopazxIlODFaoe
-	Z0dHcpKbQZ5VEYngEq6Umg1C1c+s5zKeWztjZVG+JklRCZgPcqLCYsSfze77uQcqznV9
-	8n0A==
-X-Gm-Message-State: AJcUukcGBY3CGx6F45IdDabvvrIOMaKqW+R79uuPDp/+1hgPp0QlxWax
-	/iMGohH0uQLkda4sz6owm5Y=
-X-Received: by 2002:a63:4c4e:: with SMTP id m14mr34112805pgl.173.1548985491122;
-	Thu, 31 Jan 2019 17:44:51 -0800 (PST)
-Received: from host.localdomain (96.45.178.72.16clouds.com. [96.45.178.72])
-	by smtp.gmail.com with ESMTPSA id b2sm11329587pfm.3.2019.01.31.17.44.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 31 Jan 2019 17:44:50 -0800 (PST)
-From: Catherine Ho <catherine.hecx@gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>,
-	"Emilio G. Cota" <cota@braap.org>, Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 Jan 2019 20:40:44 -0500
-Message-Id: <1548985244-24523-1-git-send-email-catherine.hecx@gmail.com>
-X-Mailer: git-send-email 1.7.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-Subject: [Qemu-devel] [RFC PATCH] target/arm: Fix int128_make128 lo,
- hi order in paired_cmpxchg64_be
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <stefanha@redhat.com>) id 1gpOef-0002mP-Kl
+	for qemu-arm@nongnu.org; Thu, 31 Jan 2019 21:34:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53992)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1gpOeb-0002kW-PV; Thu, 31 Jan 2019 21:34:07 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C525E7F76D;
+	Fri,  1 Feb 2019 02:34:02 +0000 (UTC)
+Received: from localhost (unknown [10.64.242.78])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 865F25C220;
+	Fri,  1 Feb 2019 02:33:59 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  1 Feb 2019 10:33:54 +0800
+Message-Id: <20190201023357.22596-1-stefanha@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 01 Feb 2019 02:34:03 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v4 0/3] arm: microbit Non-Volatile Memory
+ Controller
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Catherine Ho <catherine.hecx@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hv7Aq65gWJio
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	jim@groklearning.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, jusual@mail.ru
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7lRvLkvQ+aZE
 
-The lo,hi order is different from the comments. And in commit
-1ec182c33379 ("target/arm: Convert to HAVE_CMPXCHG128"), it changes
-the original code logic. So just restore the old code logic before this 
-commit:
-do_paired_cmpxchg64_be():
-    cmpv = int128_make128(env->exclusive_high, env->exclusive_val);
-    newv = int128_make128(new_hi, new_lo);
+v4:
+ * assert(offset + size <=3D s->flash_size) [Peter]
+v3:
+ * Fix endianness of s->storage[], tested by Joel Stanley <joel@jms.id.au=
+> on
+   big-endian ppc [Peter]
+ * Fix off-by-one that prevented clearing the last page of flash
+ * Add missing memory_region_flush_rom_device() call to flash_write()
+v2:
+ * Add Patch 2 to call memory_region_flush_rom_device() from pflash devic=
+es
+   [Peter]
 
-Fixes: 1ec182c33379 ("target/arm: Convert to HAVE_CMPXCHG128")
+This series adds the Non-Volatile Memory Controller, which controls acces=
+s to
+the User Information Control Registers (UICR), Factory Information Contro=
+l
+Registers (FICR), and flash memory.
 
-Signed-off-by: Catherine Ho <catherine.hecx@gmail.com>
----
-I didn't see any obvious real error case here, so set it as RFC
+This is the last piece of microbit work needed to make basic programs lik=
+e
+Micropython "Hello world" work under QEMU.
 
- target/arm/helper-a64.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Originally sent as part of Steffen's longer microbit device emulation ser=
+ies, I
+extracted this and deferred it until later because cleanups were necessar=
+y:
 
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 101fa6d3ea..70850e564d 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -583,8 +583,8 @@ uint64_t HELPER(paired_cmpxchg64_be)(CPUARMState *env, uint64_t addr,
-      * High and low need to be switched here because this is not actually a
-      * 128bit store but two doublewords stored consecutively
-      */
--    Int128 cmpv = int128_make128(env->exclusive_val, env->exclusive_high);
--    Int128 newv = int128_make128(new_lo, new_hi);
-+    Int128 cmpv = int128_make128(env->exclusive_high, env->exclusive_val);
-+    Int128 newv = int128_make128(new_hi, new_lo);
-     Int128 oldv;
-     uintptr_t ra = GETPC();
-     uint64_t o0, o1;
--- 
-2.17.1
+ * Use memory_region_flush_rom_device() to dirty/invalidate memory [Peter=
+]
+   ^--- Paolo: I CCed you on this new memory API
+ * Fix device-introspect-test segfault due to missing owner when initiali=
+zing
+   FICR and UICR memory regions [Peter]
+ * Fix off-by-one assertion checks [Peter]
+ * Fix missing whitespace at end of comment [Peter]
+ * Clear UICR on reset - we'd need a block device for true non-volatility
+   [Peter]
+
+Steffen G=C3=B6rtz (3):
+  hw/nvram/nrf51_nvm: Add nRF51 non-volatile memories
+  arm: Instantiate NRF51 special NVM's and NVMC
+  tests/microbit-test: Add tests for nRF51 NVMC
+
+ hw/nvram/Makefile.objs       |   1 +
+ include/hw/arm/nrf51_soc.h   |   2 +
+ include/hw/nvram/nrf51_nvm.h |  64 ++++++
+ hw/arm/nrf51_soc.c           |  41 ++--
+ hw/nvram/nrf51_nvm.c         | 388 +++++++++++++++++++++++++++++++++++
+ tests/microbit-test.c        | 108 ++++++++++
+ 6 files changed, 592 insertions(+), 12 deletions(-)
+ create mode 100644 include/hw/nvram/nrf51_nvm.h
+ create mode 100644 hw/nvram/nrf51_nvm.c
+
+--=20
+2.20.1
 

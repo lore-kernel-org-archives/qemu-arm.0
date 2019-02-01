@@ -1,90 +1,98 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp164249wrt;
-        Fri, 1 Feb 2019 02:41:11 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN59fRD3M27VVGvYcPkRjI1RDUi0v373TslEpnqAQAWiNh1j2q2h+ynxXmbaRloTyQWh1gOQ
-X-Received: by 2002:a81:5fd5:: with SMTP id t204mr35945719ywb.312.1549017671683;
-        Fri, 01 Feb 2019 02:41:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549017671; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp469785wrt;
+        Fri, 1 Feb 2019 07:28:00 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN6//jE0O0Xlk7zfCoGtIVp7YmYhQYj7Ta7Rkbs6OJRdzd8Jepxck1aWSVkAX9yCbdJVjlfn
+X-Received: by 2002:a81:a155:: with SMTP id y82mr30318046ywg.400.1549034880450;
+        Fri, 01 Feb 2019 07:28:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549034880; cv=none;
         d=google.com; s=arc-20160816;
-        b=MgZut0xFaMmD5hv6xSR44/SmcAqb+zPR+LV9wSoSibkMsFdKVe0szxz/Zm61Ot12uN
-         JpJmEVOEsChr+W4ENQzLig+kgnoMf2I/Kh/mvBSJNRnqxkuj05kDrfi2Bysroo70LeiZ
-         GH9uQ8fhVnopxXSdyqRLxwjqHQovkSB2g2FROMwALGVKuGMhxpwDsXIoQOeVGWf9qFQC
-         5P9svAv9ZOb+ZN+mgqx3P58MZ09JXy5z6r8voMBNNUlRHm25uXBACygJDWXGDHG+/4TT
-         Sk9TUf6e8k8rQ6NbajqHyXL1OtuFO/1zwbW3iJwLSOu+X2ErlH81bxB4bAmo/LGRn3lX
-         1YNQ==
+        b=haGR35D6I2ZdIPDlLHMLYNAMNnDVcBxEUCK70BbdjAqBAZ6jBb5oadbzYZba4DOs+N
+         p35oQkDFzkachPPYZjmTgyOPbMoyTOCiUoZM8vleIdFW81QDP1lvZQwiIMLqU95+fso5
+         1BbOQUDRLCJv7RdslZcmuQZMSdsxwzzwa9U/tse6P39DvY9a10uRUPw8YpqtMkof7dWt
+         3oFd1aQZUwzb7zglYtBlz1ulea1GbJ3AfDGjHADPFGX9rF4Le63UM7e84xpzJN1C1XNC
+         m96ljVPkdKMawT7l37+dBG09xU/Uh/yGcjK9tsK+Cra0XLM4JTqffwUx7zHOWzsT8l4K
+         oa5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=lmzERwM+J4ejrmdguGPwkj5bdugmFt8nKj+QoCH4Tmc=;
-        b=pe2IGDp5wgY2voaj4xDWtdLhyVpiErokZ7TzdJrysjUZUdfp9MKVHEyi2HiOM42HsV
-         fPO7btonQqx0b+SNiqGGViTxJCOeC8T1aIxMynnJCOHdtc3R7y9KzxXX+Ou3X8ER+wIF
-         qb/PNKJljVtyMWQ3ch2r+LJ+r+LRk7pPEooRbzJ5hpmWeoUGJRM/BovyqJDVfTxWzQmS
-         xb+H5DxRkSnVqU78D/b3LGA4XLv77mbplh2VQl4jQWcvSl6lF5rnDA0oE260+1hafD8n
-         JOvOgsfKJwmfG+LaTeQBNHEC/EEhx8LorUOeNYWXCJN4JQYCgiw5aqZcRkYvq+ZCRRPy
-         uc8A==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
+        b=PciCrmsDDwGB6voWplllnO2jVM2cTy5W0M0jT4mX1Q498Jaf21S5eErwOXm6r6r/Yo
+         /MhMpAnmDEXQWCIkJeyHwbJA61up379SI5fCHuqeQJaE41xNOEuXFTaG1f0rnVb5JiAy
+         wlGDCA67YfZ2+Al5IHKcEhIgMG4yqNldoCihxxO3Bz8/D3e3WYFfsg8xmibTc1yVlyWr
+         nwGcqNZOOcoENdlhn+BS+qSf/+bIRsDudMUzd1RMtpzY3TSg+7NiATrFolKgi1Dl+lxC
+         QPaXLmEmU/NWl3fc6Iu5aj7TGfL+5Q79Si+fF/NuaHJi8gQDvpXPI+FmtFIeiiKDymwU
+         c2OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BmRK0okQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j65si4202790yba.141.2019.02.01.02.41.11
+        by mx.google.com with ESMTPS id q11si5057997ywi.448.2019.02.01.07.28.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Feb 2019 02:41:11 -0800 (PST)
+        Fri, 01 Feb 2019 07:28:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BmRK0okQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51186 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:56659 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gpWFz-0000m5-1q
-	for alex.bennee@linaro.org; Fri, 01 Feb 2019 05:41:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41284)
+	id 1gpajX-0004BY-U8
+	for alex.bennee@linaro.org; Fri, 01 Feb 2019 10:27:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49349)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gpWFj-0000kR-Mw
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 05:40:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gpajN-0004Ar-I0
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gpWFi-0002p6-Te
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 05:40:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60314)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gpWFi-0002oO-M0; Fri, 01 Feb 2019 05:40:54 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 247F67D0DF;
-	Fri,  1 Feb 2019 10:30:53 +0000 (UTC)
-Received: from [10.36.117.45] (ovpn-117-45.ams2.redhat.com [10.36.117.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D93E19742;
-	Fri,  1 Feb 2019 10:30:50 +0000 (UTC)
-To: Jia He <jiakernel2@gmail.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-References: <20190123101458.12478-1-eric.auger@redhat.com>
-	<20190123101458.12478-8-eric.auger@redhat.com>
-	<85896c69-2434-ee08-331a-2216704d25e0@gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <a6ff5732-5ba2-89aa-77ab-327c22dfbca0@redhat.com>
-Date: Fri, 1 Feb 2019 11:30:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1gpajM-0001a0-L2
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:49 -0500
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37084)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gpajM-0001Vn-Df
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:48 -0500
+Received: by mail-oi1-x243.google.com with SMTP id y23so6092118oia.4
+	for <qemu-arm@nongnu.org>; Fri, 01 Feb 2019 07:27:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
+	b=BmRK0okQbuhjjOa8qE+d31rw0jwEbKDqYbLzk4aoa0m+F3sITkM554+jG4pjtaxul5
+	dKNhp7u8P/HQNH1KsJk1o0elwMLI2u8nG2Yq5t7wRH3IEh49kBPys5AiRBQ1eHux9cuc
+	igrQovMgxmGx5JsLBAO1aUeiEP0B9Rl5708uU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
+	b=Fwm2KK/pEAMf4DZit8lFEWh5+QB6neugLkNgzAVQFgnTkaOlt+++OyYX95p8ORS9q9
+	R9bSJGWKBTLe0CZ2BsKayb9YnLg3uIyL83jd92bobh02wmL/UA6EcQpUXLRjKi8sKQTJ
+	ErmB2E97ThXfV0iqUoeLVBPCdt7U6zrm1jwnw0GqjLG1XWsmMfDT15IIQP4xO1CPdA9o
+	m3ytUeqMd6D1EYs993x+TCLc+XxWPpkmaTeoB4sa1a7bA9rTcgOofvfPCwmQSvQ0BWi+
+	LyMdtNxS9rOFnVX5zUYox/DjTGss9Zl4RiFFzg0vpuJJeyxt5QcBPvTPWVO0KCoPZAWY
+	PItQ==
+X-Gm-Message-State: AHQUAubMtRccL7uYcElM+xqMyrPKbBBEA5wjeQgZ3onEeZnuLGB8t5Yy
+	PRvtoeZFMqvoR63bBxh0nCHNXetRFTTd5JPxeolbdw==
+X-Received: by 2002:aca:2dc9:: with SMTP id
+	t192mr19325357oit.325.1549034856858; 
+	Fri, 01 Feb 2019 07:27:36 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <85896c69-2434-ee08-331a-2216704d25e0@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 01 Feb 2019 10:30:53 +0000 (UTC)
+References: <1648289.tQCHxfjYn9@basile.remlab.net>
+In-Reply-To: <1648289.tQCHxfjYn9@basile.remlab.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 Feb 2019 15:27:26 +0000
+Message-ID: <CAFEAcA98cbqquL+mtz00XNgXoVuWqy66tvaw5pym02qy55ubUg@mail.gmail.com>
+To: =?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi@remlab.net>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 07/18] kvm: add
- kvm_arm_get_max_vm_phys_shift
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-arm] [PATCH 0/3] target/arm: fix PAuth in user mode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,115 +104,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jzb32ob+1BrX
+X-TUID: 6KIusKyFbGA3
 
-Hi Hia,
+On Fri, 25 Jan 2019 at 23:02, R=C3=A9mi Denis-Courmont <remi@remlab.net> wr=
+ote:
+>
+>         Hello,
+>
+> As things stand, ARMv8.3-PAuth does not work in user mode. These tiny pat=
+ches
+> attempt to fix that.
+>
+> Br,
+>
+> ----------------------------------------------------------------
+> Remi Denis-Courmont (3):
+>       target/arm: fix AArch64 virtual address space size
+>       target/arm: actually enable PAuth in user mode
+>       target/arm: fix decoding of B{,L}RA{A,B}
 
-On 1/29/19 3:25 PM, Jia He wrote:
-> Hi Eric
->=20
-> On 2019/1/23 18:14, Eric Auger wrote:
->> Add the kvm_arm_get_max_vm_phys_shift() helper that returns the
->> log of the maximum IPA size supported by KVM. This capability
->> needs to be known to create the VM with a specific IPA max size
->> (kvm_type passed along KVM_CREATE_VM ioctl.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->> v3 -> v4:
->> - s/s/ms in kvm_arm_get_max_vm_phys_shift function comment
->> - check KVM_CAP_ARM_VM_IPA_SIZE extension
->>
->> v1 -> v2:
->> - put this in ARM specific code
->> ---
->> =C2=A0 target/arm/kvm.c=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 8 ++++++++
->> =C2=A0 target/arm/kvm_arm.h | 16 ++++++++++++++++
->> =C2=A0 2 files changed, 24 insertions(+)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index e00ccf9c98..877c588ef5 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -18,6 +18,7 @@
->> =C2=A0 #include "qemu/error-report.h"
->> =C2=A0 #include "sysemu/sysemu.h"
->> =C2=A0 #include "sysemu/kvm.h"
->> +#include "sysemu/kvm_int.h"
->> =C2=A0 #include "kvm_arm.h"
->> =C2=A0 #include "cpu.h"
->> =C2=A0 #include "trace.h"
->> @@ -162,6 +163,13 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *c=
-pu)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 env->features =3D arm_host_cpu_features=
-.features;
->> =C2=A0 }
->> =C2=A0 +int kvm_arm_get_max_vm_phys_shift(MachineState *ms)
->> +{
->> +=C2=A0=C2=A0=C2=A0 KVMState *s =3D KVM_STATE(ms->accelerator);
->> +
->> +=C2=A0=C2=A0=C2=A0 return kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_S=
-IZE);
->=20
-> If KVM_CAP_ARM_VM_IPA_SIZE is not supported in host kernel, would it be
->=20
-> better if kvm_arm_get_max_vm_phys_shift returns a default value
->=20
-> (e.g. 40),instead of an errno?
-Yes I can change that. At the moment kvm_check_extension() should return
-0 if the KVM_CAP_ARM_VM_IPA_SIZE entry is not supported by the kernel.
+Thanks for this patchset. I've applied patches 1 (v2) and 3
+to my target-arm.next tree. (For patch 2 I prefer the approach
+in Richard's patchset which deletes the cpu properties entirely.)
 
-Thanks
+PS: for future patchsets, if you do a v2 of a patch it's better
+to then resend the whole patchset as a fresh email thread (not a
+followup. That makes our automated patch email handling tooling
+happier as it can keep the v1 and v2 versions distinct.
 
-Eric
->=20
-> ---
-> Cheers,
-> Jia He
->=20
->> +}
->> +
->> =C2=A0 int kvm_arch_init(MachineState *ms, KVMState *s)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* For ARM interrupt delivery is always=
- asynchronous,
->> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
->> index 6393455b1d..5969c41f83 100644
->> --- a/target/arm/kvm_arm.h
->> +++ b/target/arm/kvm_arm.h
->> @@ -207,6 +207,17 @@ bool
->> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
->> =C2=A0=C2=A0 */
->> =C2=A0 void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
->> =C2=A0 +/**
->> + * kvm_arm_get_max_vm_phys_shift - Returns log2 of the max IPA size
->> + * supported by KVM
->> + *
->> + * @ms: Machine state handle
->> + *
->> + * Return the max number of IPA bits or a negative value if
->> + * the host kernel does not expose this value.
->> + */
->> +int kvm_arm_get_max_vm_phys_shift(MachineState *ms);
->> +
->> =C2=A0 /**
->> =C2=A0=C2=A0 * kvm_arm_sync_mpstate_to_kvm
->> =C2=A0=C2=A0 * @cpu: ARMCPU
->> @@ -239,6 +250,11 @@ static inline void
->> kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 cpu->host_cpu_probe_failed =3D true;
->> =C2=A0 }
->> =C2=A0 +static inline int kvm_arm_get_max_vm_phys_shift(MachineState *=
-ms)
->> +{
->> +=C2=A0=C2=A0=C2=A0 return -ENOENT;
->> +}
->> +
->> =C2=A0 static inline int kvm_arm_vgic_probe(void)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
->=20
+thanks
+-- PMM

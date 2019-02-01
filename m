@@ -1,98 +1,99 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp469785wrt;
-        Fri, 1 Feb 2019 07:28:00 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN6//jE0O0Xlk7zfCoGtIVp7YmYhQYj7Ta7Rkbs6OJRdzd8Jepxck1aWSVkAX9yCbdJVjlfn
-X-Received: by 2002:a81:a155:: with SMTP id y82mr30318046ywg.400.1549034880450;
-        Fri, 01 Feb 2019 07:28:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549034880; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp481780wrt;
+        Fri, 1 Feb 2019 07:38:20 -0800 (PST)
+X-Google-Smtp-Source: ALg8bN4/P28FOJUjx6Nnuy/ntpffcuQTIsousipHqT7f/k8WCyXTXxGWwe30sdrD6+RaGsbxF3IT
+X-Received: by 2002:a5b:49:: with SMTP id e9mr28016430ybp.457.1549035500331;
+        Fri, 01 Feb 2019 07:38:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549035500; cv=none;
         d=google.com; s=arc-20160816;
-        b=haGR35D6I2ZdIPDlLHMLYNAMNnDVcBxEUCK70BbdjAqBAZ6jBb5oadbzYZba4DOs+N
-         p35oQkDFzkachPPYZjmTgyOPbMoyTOCiUoZM8vleIdFW81QDP1lvZQwiIMLqU95+fso5
-         1BbOQUDRLCJv7RdslZcmuQZMSdsxwzzwa9U/tse6P39DvY9a10uRUPw8YpqtMkof7dWt
-         3oFd1aQZUwzb7zglYtBlz1ulea1GbJ3AfDGjHADPFGX9rF4Le63UM7e84xpzJN1C1XNC
-         m96ljVPkdKMawT7l37+dBG09xU/Uh/yGcjK9tsK+Cra0XLM4JTqffwUx7zHOWzsT8l4K
-         oa5w==
+        b=fMvBEKegh/aHZntq9oiQ/H/7C+VWcETIIXbEUpNy1uhLA8QsyNnG6QyKiB80s0HeL6
+         mCRRzO28vdWn3l3KurYTY+cWZGG9iLG8LRCoA6dNNg+Qh42zYB71s9fq5x4UTYFjOOoJ
+         GsbOtiDqMfKZvTRGUULBnuITHMo6dfgnEm2tme9wJfLvgrwb7grKfFdOXxDrxpM2/4Lf
+         yAo5jmI1Tg/P2jj2fA93B36iYocMpo1oihl8EB1FViic64+SUYQhHucNaeNUhnmVSXbL
+         aO80Q0DttrK2tgLAIvO/5hei7QGUtFL+scgY6OKT9H3O/E3aBZ+BXIcSAlki8weCHSm2
+         s+nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
-        b=PciCrmsDDwGB6voWplllnO2jVM2cTy5W0M0jT4mX1Q498Jaf21S5eErwOXm6r6r/Yo
-         /MhMpAnmDEXQWCIkJeyHwbJA61up379SI5fCHuqeQJaE41xNOEuXFTaG1f0rnVb5JiAy
-         wlGDCA67YfZ2+Al5IHKcEhIgMG4yqNldoCihxxO3Bz8/D3e3WYFfsg8xmibTc1yVlyWr
-         nwGcqNZOOcoENdlhn+BS+qSf/+bIRsDudMUzd1RMtpzY3TSg+7NiATrFolKgi1Dl+lxC
-         QPaXLmEmU/NWl3fc6Iu5aj7TGfL+5Q79Si+fF/NuaHJi8gQDvpXPI+FmtFIeiiKDymwU
-         c2OQ==
+        bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
+        b=WLU6eA2121KNa7VjcI3UJodF0SXF8uaz0LD4iU3UWPmDYZjF/qG2u0x0bLVIZIqPhE
+         clEEoOhndqfz5mySaCGv8vwF6g0EvcHckDcYMjz2KbhIbNhQYPfnNDKm3yN14rv3BqMh
+         ttCjTyKffzlfM92IKMHQdx3UBX5HIIFFWJfTYpb4VQZrsFRXAWhQLgxkBoNg5LHE28n/
+         lE3HdoHnjNRMLZJ03JPTDp5V8/IIYqDiABebGinmk9MASBSEz903xiAjH7T9fGry/hAM
+         nm7QDEz/SZ0ULKrjRM+US1KTttW7blDGN1Bmvp/cwpSS+VMssTxfoh7DVrB6+arBrxF2
+         yaYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BmRK0okQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=b4Zc5+Bo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11si5057997ywi.448.2019.02.01.07.28.00
+        by mx.google.com with ESMTPS id g5si4671980ybg.163.2019.02.01.07.38.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Feb 2019 07:28:00 -0800 (PST)
+        Fri, 01 Feb 2019 07:38:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BmRK0okQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=b4Zc5+Bo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:56659 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:56803 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gpajX-0004BY-U8
-	for alex.bennee@linaro.org; Fri, 01 Feb 2019 10:27:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49349)
+	id 1gpatU-0006wV-Lx
+	for alex.bennee@linaro.org; Fri, 01 Feb 2019 10:38:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpajN-0004Ar-I0
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:50 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gpatE-0006vJ-Am
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:38:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpajM-0001a0-L2
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:49 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37084)
+	(envelope-from <peter.maydell@linaro.org>) id 1gpatD-0006Qa-2l
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:38:00 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41428)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gpajM-0001Vn-Df
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:27:48 -0500
-Received: by mail-oi1-x243.google.com with SMTP id y23so6092118oia.4
-	for <qemu-arm@nongnu.org>; Fri, 01 Feb 2019 07:27:37 -0800 (PST)
+	id 1gpatC-0006O7-Ga
+	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:37:58 -0500
+Received: by mail-oi1-x244.google.com with SMTP id j21so6095043oii.8
+	for <qemu-arm@nongnu.org>; Fri, 01 Feb 2019 07:37:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
-	b=BmRK0okQbuhjjOa8qE+d31rw0jwEbKDqYbLzk4aoa0m+F3sITkM554+jG4pjtaxul5
-	dKNhp7u8P/HQNH1KsJk1o0elwMLI2u8nG2Yq5t7wRH3IEh49kBPys5AiRBQ1eHux9cuc
-	igrQovMgxmGx5JsLBAO1aUeiEP0B9Rl5708uU=
+	bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
+	b=b4Zc5+BoGsmZhbMQsX5g67IlVUkDbch2MqrZ9nqZnMYJ93d43Kq8aikMKwate8QXFE
+	z4PEJSMLe9S7NYJseJ/ZnTUuWR2aVxyBNEMNsC+KllMeAkMydslYHaIqiKD+TtUe7HkQ
+	tVvKA7fsbZvoJ/iAKTtfoeTXEZuWacBH1hveo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=zc/4Am9ZiDJtEhSdYluuZU2Lj5Beek5vuuicYy0z+sM=;
-	b=Fwm2KK/pEAMf4DZit8lFEWh5+QB6neugLkNgzAVQFgnTkaOlt+++OyYX95p8ORS9q9
-	R9bSJGWKBTLe0CZ2BsKayb9YnLg3uIyL83jd92bobh02wmL/UA6EcQpUXLRjKi8sKQTJ
-	ErmB2E97ThXfV0iqUoeLVBPCdt7U6zrm1jwnw0GqjLG1XWsmMfDT15IIQP4xO1CPdA9o
-	m3ytUeqMd6D1EYs993x+TCLc+XxWPpkmaTeoB4sa1a7bA9rTcgOofvfPCwmQSvQ0BWi+
-	LyMdtNxS9rOFnVX5zUYox/DjTGss9Zl4RiFFzg0vpuJJeyxt5QcBPvTPWVO0KCoPZAWY
-	PItQ==
-X-Gm-Message-State: AHQUAubMtRccL7uYcElM+xqMyrPKbBBEA5wjeQgZ3onEeZnuLGB8t5Yy
-	PRvtoeZFMqvoR63bBxh0nCHNXetRFTTd5JPxeolbdw==
-X-Received: by 2002:aca:2dc9:: with SMTP id
-	t192mr19325357oit.325.1549034856858; 
-	Fri, 01 Feb 2019 07:27:36 -0800 (PST)
+	bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
+	b=A2CXnHIsq2WV9AoxI0TI4KOG8Ph2mzMa6+aVCkeBjjU6PtXlu6PGrnY0f/DKOdZvhY
+	HS8nAbjhFLMwO91LnvSP3gV0kv61kxB0fIW7On4sSz/LaeNxk4E090XxlJa/TZwW+Pj8
+	Bb6WE8MXhuWiNhiR50mEcSmONsgXBrUE4f7rI9IYj4F4IgUgtZfIATrBUTyKw4lVuZCn
+	ih2Fu3jpYsKS2BQPcsFeui7L8IZBVdcpQYzokrSLS9OzwhS/jfe/ekbuPF7j/Su4NVZ1
+	H0qm1MrOZnp9Ky8mBv1Rlp9HfP4d3yIHVHBmVzI6aY1IzWrdGbRmuxCOGtr135w665Rb
+	9uKg==
+X-Gm-Message-State: AHQUAuaxHyzVcJswIdkzml54LW4AwaSBOi5TH/R6M/5O6MgktClrYYuW
+	6mhWE5H1DF/z9fWxOrOgva+C8dqUZQnRjiz/aM929w==
+X-Received: by 2002:aca:bcc6:: with SMTP id
+	m189mr19351274oif.337.1549035473956; 
+	Fri, 01 Feb 2019 07:37:53 -0800 (PST)
 MIME-Version: 1.0
-References: <1648289.tQCHxfjYn9@basile.remlab.net>
-In-Reply-To: <1648289.tQCHxfjYn9@basile.remlab.net>
+References: <20190201023357.22596-1-stefanha@redhat.com>
+In-Reply-To: <20190201023357.22596-1-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Feb 2019 15:27:26 +0000
-Message-ID: <CAFEAcA98cbqquL+mtz00XNgXoVuWqy66tvaw5pym02qy55ubUg@mail.gmail.com>
-To: =?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi@remlab.net>
+Date: Fri, 1 Feb 2019 15:37:42 +0000
+Message-ID: <CAFEAcA_EvJFyAW67=-9=bpVmnwO7vB88YH0BckNgPqiwOHX5FQ@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-arm] [PATCH 0/3] target/arm: fix PAuth in user mode
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-arm] [PATCH v4 0/3] arm: microbit Non-Volatile Memory
+ Controller
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,36 +105,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Jim Mussared <jim@groklearning.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6KIusKyFbGA3
+X-TUID: a/KQXLzwvEfc
 
-On Fri, 25 Jan 2019 at 23:02, R=C3=A9mi Denis-Courmont <remi@remlab.net> wr=
-ote:
+On Fri, 1 Feb 2019 at 02:34, Stefan Hajnoczi <stefanha@redhat.com> wrote:
 >
->         Hello,
+> v4:
+>  * assert(offset + size <=3D s->flash_size) [Peter]
+> v3:
+>  * Fix endianness of s->storage[], tested by Joel Stanley <joel@jms.id.au=
+> on
+>    big-endian ppc [Peter]
+>  * Fix off-by-one that prevented clearing the last page of flash
+>  * Add missing memory_region_flush_rom_device() call to flash_write()
+> v2:
+>  * Add Patch 2 to call memory_region_flush_rom_device() from pflash devic=
+es
+>    [Peter]
 >
-> As things stand, ARMv8.3-PAuth does not work in user mode. These tiny pat=
-ches
-> attempt to fix that.
+> This series adds the Non-Volatile Memory Controller, which controls acces=
+s to
+> the User Information Control Registers (UICR), Factory Information Contro=
+l
+> Registers (FICR), and flash memory.
 >
-> Br,
+> This is the last piece of microbit work needed to make basic programs lik=
+e
+> Micropython "Hello world" work under QEMU.
 >
-> ----------------------------------------------------------------
-> Remi Denis-Courmont (3):
->       target/arm: fix AArch64 virtual address space size
->       target/arm: actually enable PAuth in user mode
->       target/arm: fix decoding of B{,L}RA{A,B}
+> Originally sent as part of Steffen's longer microbit device emulation ser=
+ies, I
+> extracted this and deferred it until later because cleanups were necessar=
+y:
+>
+>  * Use memory_region_flush_rom_device() to dirty/invalidate memory [Peter=
+]
+>    ^--- Paolo: I CCed you on this new memory API
+>  * Fix device-introspect-test segfault due to missing owner when initiali=
+zing
+>    FICR and UICR memory regions [Peter]
+>  * Fix off-by-one assertion checks [Peter]
+>  * Fix missing whitespace at end of comment [Peter]
+>  * Clear UICR on reset - we'd need a block device for true non-volatility
+>    [Peter]
+>
+> Steffen G=C3=B6rtz (3):
+>   hw/nvram/nrf51_nvm: Add nRF51 non-volatile memories
+>   arm: Instantiate NRF51 special NVM's and NVMC
+>   tests/microbit-test: Add tests for nRF51 NVMC
 
-Thanks for this patchset. I've applied patches 1 (v2) and 3
-to my target-arm.next tree. (For patch 2 I prefer the approach
-in Richard's patchset which deletes the cpu properties entirely.)
 
-PS: for future patchsets, if you do a v2 of a patch it's better
-to then resend the whole patchset as a fresh email thread (not a
-followup. That makes our automated patch email handling tooling
-happier as it can keep the v1 and v2 versions distinct.
 
-thanks
+Applied to target-arm.next, thanks.
+
 -- PMM

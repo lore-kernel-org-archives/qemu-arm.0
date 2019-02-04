@@ -1,260 +1,190 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3607593wrt;
-        Mon, 4 Feb 2019 05:53:06 -0800 (PST)
-X-Received: by 2002:a05:6830:165a:: with SMTP id h26mr5991051otr.299.1549288386818;
-        Mon, 04 Feb 2019 05:53:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549288386; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3619474wrt;
+        Mon, 4 Feb 2019 06:05:15 -0800 (PST)
+X-Received: by 2002:a9d:2926:: with SMTP id d35mr36491361otb.355.1549289115163;
+        Mon, 04 Feb 2019 06:05:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549289115; cv=none;
         d=google.com; s=arc-20160816;
-        b=R9a2QnWzaMfAS5hPBPRIn8/LHn+p6XcZach0tIzXo3Twz3XjTaU0JI1L7YIpIROupy
-         guuiF3SziWzYL8GRfQnnoXgdmCHEeLNHeLUQWqxSdxkkDmK7czUnEFCFP7DIXIyw0IiH
-         77Qcn0u1oM7B12KG4DgOR6yR64RnxuAhSm5SJ4BL7BCEMCyS/iunfJauIqgX7VSNBm4I
-         2QUjPlTi9RjRdjjmBLQNKDbvnhuOl1gYIeENZlsMeCJkVkdhtiRg0j81N6Ftsr5zGTvm
-         YyMKFpYocYN4hEMDPLkWQRWG/gvO63Vj6MMvxtQbzDnPToxhuZwEAa2S4PUXRyzCXJZv
-         Eeyg==
+        b=b+tqAHTd6s2MT7lLA3WWDn+P9WQmGFk5ZFErx+mYOxpl5gZyNZaWwVFN1eK0qIpN8P
+         Qcy/nWsXY15X6pQBF+LdZHcgv5wSdbKWUfTZ5H0rmQRfGpmlKTdVyzGCoID2vVyuQD2f
+         LtSIPHVZAci6AVJ75oMPkRLnyuzxVci9zzsKrfFusj2cAIiq102Pni4YLzBdbqUu7ra+
+         yUrCTZSjcrIwZ660zl+LgToSw9snkzG3JX4nbolQHT6nIJF6n2J3X9PIFB9Q95rnzum5
+         L9kW3r6IEfqWgvXLfhGbFJarMgqyT8Eqb04wRY9B9SYZAVSb7JS0mq8rSAq1AiH3y68g
+         slzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yY4mF+q+4xfEZfP1X12YeJeICrOwqSLLsqINxtPYRSQ=;
-        b=FSrfUoPwHnYPljWZgUiphhUnL9sMQKuHLwycVNp9RXpGRnZeczXGqtep4CnKmtBD3w
-         nGOa8doH3RAkvWVd3ngnX6z6vCDhlLb5FDa0wOctAwC2EYa8f4XDG7gSYzB7pUNdupFc
-         ENygRKcBwT6VKuKMZsuSqKEP4KHagksJvCQQAf9rj4MJXHq8icR1TOIme5+FsNxPkamu
-         pA3h1U10yj8GfvSO84deWJSj2zWLSCPowe93dmQmpAbumpyRIZjCAlmu4w19uXE1Yo7T
-         5Puhrz9OExdtk9pC6Iexi4M2JzADuJK0gSLRICQKRS3Sbt9SiwT4fzWl3vPYz2iZhZe8
-         ceGQ==
+        bh=+gMV1kYagTBINxrYG7rdDYmFKEMIXEm4xYp0g3kaENM=;
+        b=0AW9rfT6DvZkMy0JFu6aZsu7Cx5h/GgCSBMero4a22Zsg3z9Is6FQo+oXX8tzCHpNn
+         Mpw6QEaASlhT9E9xKxxbH9ykUkSbS/3pLzkbxt3nxeqt4xHaeqBbJx9LaG62FQ2WOdru
+         0keI/VAQwxywkCY6IHSVsfVdRLreP1QrRkUr01iNKj17fYozAnby2V1254v7uXH5V0UA
+         GN6mtGS6SWa5IxIJziOqTHw/PqVKYTYakro4irvtQ5/q7n4BqdWDlw+C3mMVOT8JwyRA
+         e/S9UVBQfxnRzRfIoCD++fg0NljfYtg+hxDyuh8Gb6erzJ9P6GnR0QEgzCKixeI7f1U7
+         6yvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GTVj255t;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DGuQ9/3+";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f64sor10582567otf.178.2019.02.04.05.53.06
+        by mx.google.com with SMTPS id m31sor9489595otm.64.2019.02.04.06.05.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 04 Feb 2019 05:53:06 -0800 (PST)
+        Mon, 04 Feb 2019 06:05:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GTVj255t;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DGuQ9/3+";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=yY4mF+q+4xfEZfP1X12YeJeICrOwqSLLsqINxtPYRSQ=;
-        b=GTVj255tXcDsTKSF+CTP3xOlEGlHhPLGLrNj2zEgVtF0jpXPQZJfZwpcjRbVDYhRp6
-         FoPwH+Ez9TFzoPPIEacrABtv/ufxRwhC9PJqoQXE+lj36F0fNWmI72nL+3O6nG7cNAgz
-         LrLRrDTo6GWKuT2YMK7KbUbixUGrBbkWWzceM=
+        bh=+gMV1kYagTBINxrYG7rdDYmFKEMIXEm4xYp0g3kaENM=;
+        b=DGuQ9/3+lPdIwTcqQ8PTdxeM3sRytV2k1kLTxKrlgmT8hxoJbiFhmTgdYjdvtkTSTJ
+         NR5FM5V3kT+7TLhPPInu8QlAkE1wxeFvdG2E/JNRt7QJXpZkcuz0ms5q6OQ+T1sTJPkY
+         aL0VsBZNaHU3SiYd4Wjieun5y1MxlIVneRH4I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=yY4mF+q+4xfEZfP1X12YeJeICrOwqSLLsqINxtPYRSQ=;
-        b=c+zml3KNvO98LeS0Uo4J28W3utwiq1hiUUBu7+xd+uy3yGJFJyCi8XszHrc2gfaDas
-         jjhUc7DXG7Lhl3bCKW2lB3xK+YWE5weSyjEqhwlosH/Of9tQTWQpdWIyrQs6iWiDsOZr
-         8GeDVKcHb52eERieOqp/Pi67/iOZ55u0nV61hQQhsSZhHT1EfkoG+T4LMsmxgCblYJYB
-         yi8GyAH7WYSpwH5+PxxHzM9lobLN4SyVqg+luO3op+wKZxqBCjmP71jSNTAdTSgdsTzn
-         L9E0RpXPAbu//e1KPDMfvVpqyAoexcPDAYRSwnwWpHsiMbE/z5Edx+NHg9A6/O1NKt+s
-         onEQ==
-X-Gm-Message-State: AJcUukcdLGDMKglOT8tyalqSk0tTS22HuhWGZyIKUuAaA90NJUNPIJ+M
-	4Ccf5WLdRpTBuVCNxldoheBE9Q7N0S5+PckEb3uBj9wt/UzPvA==
-X-Google-Smtp-Source: ALg8bN59CHY/6ogT4vZ96Wih9THSC/bu3io8xe2oH+MxVnzgRVijylu3XZ3iJugGcNnTE0UaU97XF17WORDpdCTh8OE=
-X-Received: by 2002:a9d:3a22:: with SMTP id j31mr37610224otc.238.1549288386249;
- Mon, 04 Feb 2019 05:53:06 -0800 (PST)
+        bh=+gMV1kYagTBINxrYG7rdDYmFKEMIXEm4xYp0g3kaENM=;
+        b=Au6ebOWb9ZbwMc1TnW8911SHNxNJ1ETBxJODyHnHk0J0Dms2nnQe2WlbPU3YDqIXhk
+         HCb7ck2PzbuKUaLvrvdkMBrBSHnO5Bv+/poY/i7TSQTh1fcsTiByiiKhELfxAATUtavV
+         xsEVVseCVgQWeFKWDTs1mNpDb9k6GTfFi+jBu6RI3DiwOcXzM7pgxXLJqxwei84M/HDo
+         BAPWe0hpFiCu9wJFmJWyh9BTmb38Yf2hIr/TYcUBPCegAdLHLPo2vH/qonIsay+CBfw6
+         65to1v6lqkToQMe55aP6R3hZVoEnx3WUUISxrHELymnP7+CT76OTHK/mKYxGdQsugbCm
+         E1BQ==
+X-Gm-Message-State: AJcUukctH2eDlqzk/PDBtnFdFquJy8EIH9iWoF8stobOVqh1SjyNLnq+
+	VPA2TJ+/cEhgozRenY8ALNCQmxlE4H+ejzaaZ41WTZdwWdUiDQ==
+X-Google-Smtp-Source: ALg8bN5hNNg3UI4I+UBbpcEAv5bjLsnuFtF1A0yxORMgkCj9GQAXpcdfOPLaafrrHCj5RiJsg8cq3vgA+kuNycEWXHs=
+X-Received: by 2002:a05:6830:1115:: with SMTP id w21mr36680514otq.316.1549289114513;
+ Mon, 04 Feb 2019 06:05:14 -0800 (PST)
 MIME-Version: 1.0
-References: <20190128173940.25813-1-alex.bennee@linaro.org> <20190128173940.25813-5-alex.bennee@linaro.org>
-In-Reply-To: <20190128173940.25813-5-alex.bennee@linaro.org>
+References: <20190128173940.25813-1-alex.bennee@linaro.org> <20190128173940.25813-3-alex.bennee@linaro.org>
+In-Reply-To: <20190128173940.25813-3-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Feb 2019 13:52:54 +0000
-Message-ID: <CAFEAcA_NoLsU2kg7TDhSH-Uv7+19B3-vC+=DwS=vLkCHuyNMcw@mail.gmail.com>
-Subject: Re: [PATCH v1 4/4] tests/tcg/aarch64: userspace system register test
+Date: Mon, 4 Feb 2019 14:05:03 +0000
+Message-ID: <CAFEAcA9fD_bju_+QM3D+088rKJffQ66HBPYUB-cDknKmPikhaQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/4] target/arm: expose CPUID registers to userspace
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: kkxjRw+iYU0J
+X-TUID: iSbeCQoA6JkY
 
 On Mon, 28 Jan 2019 at 17:39, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
-> This tests a bunch of registers that the kernel allows userspace to
-> read including the CPUID registers.
+> A number of CPUID registers are exposed to userspace by modern Linux
+> kernels thanks to the "ARM64 CPU Feature Registers" ABI. For QEMU's
+> user-mode emulation we don't need to emulate the kernels trap but just
+> return the value the trap would have done. For this we use the PL0U_R
+> permission mask which allows this access in CONFIG_USER mode.
+>
+> Some registers only return a subset of their contents so we need
+> specific CONFIG_USER_ONLY logic to do this.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >
 > ---
 > v4
->   - also test for extra bits that shouldn't be exposed
+>   - tweak commit message
+>   - use PL0U_R instead of PL1U_R to be less confusing
+>   - more CONFIG_USER logic for special cases
+>   - mask a bunch of bits for some registers
 > ---
->  tests/tcg/aarch64/Makefile.target |   2 +-
->  tests/tcg/aarch64/sysregs.c       | 120 ++++++++++++++++++++++++++++++
->  2 files changed, 121 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/sysregs.c
+>  target/arm/helper.c | 51 ++++++++++++++++++++++++++++++++-------------
+>  1 file changed, 36 insertions(+), 15 deletions(-)
 >
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefi=
-le.target
-> index 08c45b8470..cc1a7eb486 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -7,7 +7,7 @@ VPATH           +=3D $(AARCH64_SRC)
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 42c1c0b144..68808e7293 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3543,7 +3543,7 @@ static uint64_t mpidr_read(CPUARMState *env, const =
+ARMCPRegInfo *ri)
+>  static const ARMCPRegInfo mpidr_cp_reginfo[] =3D {
+>      { .name =3D "MPIDR", .state =3D ARM_CP_STATE_BOTH,
+>        .opc0 =3D 3, .crn =3D 0, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 5,
+> -      .access =3D PL1_R, .readfn =3D mpidr_read, .type =3D ARM_CP_NO_RAW=
+ },
+> +      .access =3D PL0U_R, .readfn =3D mpidr_read, .type =3D ARM_CP_NO_RA=
+W },
+>      REGINFO_SENTINEL
+>  };
 >
->  # we don't build any of the ARM tests
->  AARCH64_TESTS=3D$(filter-out $(ARM_TESTS), $(TESTS))
-> -AARCH64_TESTS+=3Dfcvt
-> +AARCH64_TESTS+=3Dfcvt sysregs
->  TESTS:=3D$(AARCH64_TESTS)
+> @@ -5488,6 +5488,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, cons=
+t ARMCPRegInfo *ri)
+>      return pfr1;
+>  }
 >
->  fcvt: LDFLAGS+=3D-lm
-> diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-> new file mode 100644
-> index 0000000000..8e11288ee3
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/sysregs.c
-> @@ -0,0 +1,120 @@
-> +/*
-> + * Check emulated system register access for linux-user mode.
-> + *
-> + * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-regis=
-ters.txt
-> + */
+> +#ifndef CONFIG_USER_ONLY
+>  static uint64_t id_aa64pfr0_read(CPUARMState *env, const ARMCPRegInfo *r=
+i)
+>  {
+>      ARMCPU *cpu =3D arm_env_get_cpu(env);
+> @@ -5498,6 +5499,7 @@ static uint64_t id_aa64pfr0_read(CPUARMState *env, =
+const ARMCPRegInfo *ri)
+>      }
+>      return pfr0;
+>  }
+> +#endif
+>
+>  /* Shared logic between LORID and the rest of the LOR* registers.
+>   * Secure state has already been delt with.
+> @@ -5799,18 +5801,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>           * define new registers here.
+>           */
+>          ARMCPRegInfo v8_idregs[] =3D {
+> -            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST because we do=
+n't
+> -             * know the right value for the GIC field until after we
+> -             * define these regs.
+> +            /* ID_AA64PFR0_EL1 is not a plain ARM_CP_CONST for system
+> +             * emulation because we don't know the right value for the
+> +             * GIC field until after we define these regs. For
+> +             * user-mode HWCAP_CPUID emulation the GIC bits are masked
+> +             * anyway.
+>               */
+>              { .name =3D "ID_AA64PFR0_EL1", .state =3D ARM_CP_STATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 4, .opc2 =
+=3D 0,
+> +#ifndef CONFIG_USER_ONLY
+>                .access =3D PL1_R, .type =3D ARM_CP_NO_RAW,
+>                .readfn =3D id_aa64pfr0_read,
+> -              .writefn =3D arm_cp_write_ignore },
+> +              .writefn =3D arm_cp_write_ignore
+> +#else
+> +              .access =3D PL0U_R, .type =3D ARM_CP_CONST,
+> +              .resetvalue =3D cpu->isar.id_aa64pfr0 & 0x000f000f0ff0000U=
+LL
+> +#endif
+> +            },
+>              { .name =3D "ID_AA64PFR1_EL1", .state =3D ARM_CP_STATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 4, .opc2 =
+=3D 1,
+> -              .access =3D PL1_R, .type =3D ARM_CP_CONST,
+> +              .access =3D PL0U_R, .type =3D ARM_CP_CONST,
+>                .resetvalue =3D cpu->isar.id_aa64pfr1},
+>              { .name =3D "ID_AA64PFR2_EL1_RESERVED", .state =3D ARM_CP_ST=
+ATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 4, .opc2 =
+=3D 2,
+> @@ -5839,11 +5849,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>                .resetvalue =3D 0 },
+>              { .name =3D "ID_AA64DFR0_EL1", .state =3D ARM_CP_STATE_AA64,
+>                .opc0 =3D 3, .opc1 =3D 0, .crn =3D 0, .crm =3D 5, .opc2 =
+=3D 0,
+> -              .access =3D PL1_R, .type =3D ARM_CP_CONST,
+> +              .access =3D PL0U_R, .type =3D ARM_CP_CONST,
+>                .resetvalue =3D cpu->id_aa64dfr0 },
 
-This needs the usual copyright line and license statement.
+This doesn't seem right -- I think ID_AA64DFR0_EL1 should be exposed
+as zero, not whatever the underlying register value is.
 
-> +
-> +#include <asm/hwcap.h>
-> +#include <stdio.h>
-> +#include <sys/auxv.h>
-> +#include <signal.h>
-> +#include <string.h>
-> +#include <stdbool.h>
-> +
-> +int failed_mask_count;
-> +
-> +#define get_cpu_reg(id) ({                                      \
-> +            unsigned long __val =3D 0xdeadbeef;                   \
-> +            asm("mrs %0, "#id : "=3Dr" (__val));                  \
-> +            printf("%-20s: 0x%016lx\n", #id, __val);            \
-> +            __val;                                               \
-> +        })
-> +
-> +#define get_cpu_reg_check_mask(id, mask) ({                     \
-> +            unsigned long __cval =3D get_cpu_reg(id);             \
-> +            unsigned long __extra =3D __cval & ~mask;             \
-> +            if (__extra) {                                      \
-> +                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra)=
-;   \
-> +                failed_mask_count++;                            \
-> +            }                                                   \
-> +})
-
-A brief comment describing what the arguments to these macros
-do would be helpful if we ever have to add more registers in future.
-
-> +
-> +bool should_fail;
-> +int should_fail_count;
-> +int should_not_fail_count;
-> +uintptr_t failed_pc[10];
-> +
-> +void sigill_handler(int signo, siginfo_t *si, void *data)
-> +{
-> +    ucontext_t *uc =3D (ucontext_t *)data;
-> +
-> +    if (should_fail) {
-> +        should_fail_count++;
-> +    } else {
-> +        uintptr_t pc =3D (uintptr_t) uc->uc_mcontext.pc;
-> +        failed_pc[should_not_fail_count++] =3D  pc;
-> +    }
-> +    uc->uc_mcontext.pc +=3D 4;
-> +}
-> +
-> +int main(void)
-> +{
-> +    struct sigaction sa;
-> +
-> +    /* Hook in a SIGILL handler */
-> +    memset(&sa, 0, sizeof(struct sigaction));
-> +    sa.sa_flags =3D SA_SIGINFO;
-> +    sa.sa_sigaction =3D &sigill_handler;
-> +    sigemptyset(&sa.sa_mask);
-> +
-> +    if (sigaction(SIGILL, &sa, 0) !=3D 0) {
-> +        perror("sigaction");
-> +        return 1;
-> +    }
-> +
-> +    /* since 4.12 */
-
-This is a rather cryptic comment.
-
-> +    printf("Checking CNT registers\n");
-> +
-> +    get_cpu_reg(ctr_el0);
-> +    get_cpu_reg(cntvct_el0);
-> +    get_cpu_reg(cntfrq_el0);
-> +
-> +    /* when (getauxval(AT_HWCAP) & HWCAP_CPUID), since 4.11*/
-
-Missing space before "*/".
-
-> +    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
-> +        printf("CPUID registers unavailable\n");
-> +        return 1;
-> +    } else {
-> +        printf("Checking CPUID registers\n");
-> +    }
-> +
-> +    /*
-> +     * Some registers only expose some bits to user-space. Anything
-> +     * that is IMDEF is exported as 0 to user-space.
-
-IMPDEF
-
-> +     */
-> +    get_cpu_reg_check_mask(id_aa64isar0_el1, 0x000fffffff0ffff0ULL);
-
-I can't make sense of this mask value. Presumably it's supposed to be
-1s where the value is visible, but the docs say that the visible
-bits for ID_AA64ISAR0_EL1 are [23..4] and [55..28], whereas the
-mask value here has 1s in [51..24] and [20..4], unless I've miscounted.
-
-> +    get_cpu_reg_check_mask(id_aa64isar1_el1, 0x00000000ffffffffULL);
-> +    get_cpu_reg(id_aa64mmfr0_el1);
-> +    get_cpu_reg(id_aa64mmfr1_el1);
-> +    get_cpu_reg_check_mask(id_aa64pfr0_el1, 0x000f000f0ff0000ULL);
-
-This seems to have [31..28] set but not [35..32]. The bits that
-should be [51..48] are also in the wrong place, and the whole
-number has one hex digit too few to be 64 bits.
-
-> +    get_cpu_reg(id_aa64pfr1_el1);
-> +    get_cpu_reg(id_aa64dfr0_el1);
-> +    get_cpu_reg(id_aa64dfr1_el1);
-> +
-> +    get_cpu_reg_check_mask(midr_el1, 0x00000000ffffffffULL);
-> +    get_cpu_reg(mpidr_el1);
-> +    /* REVIDR is all IMPDEF so should be all zeros to user-space */
-> +    get_cpu_reg_check_mask(revidr_el1, 0x0);
-
-Missing check of the mask value for ID_AA64MMFR2_EL1 ? Should have
-bits [35..32] visible.
-
-Missing checks for:
- ID_AA64ZFR0_EL1
- ID_AA64AFR0_EL1
- ID_AA64AFR1_EL1
-
-Missing checks for all the parts of the ID space that are currently
-unallocated (and which should be exposed as RAZ/WI).
-
-Missing checks for registers which are exposed but with all
-features hidden, eg ID_PFR0_EL1 and the other aarch32 ID regs.
-
-The kernel returns some value, ie does not fault, all the
-architecturally defined registers in Op0=3D3, Op1=3D0, CRn=3D0,
-CRm=3D0,4,5,6,7. For CRm =3D 0 only op2 =3D {0,5,6} [MIDR_EL1,
-MPIDR_EL1, REVIDR_EL1] are valid, but for CRm =3D {4,5,6,7}
-the whole set of op2 =3D {0..7} are defined (and RAZ if not
-yet given some meaning).
+More generally, this ifdeffing of "maybe mask the values" doesn't
+seem very future-proof. If we add something to one of the cpu-id_*
+values, that should be masked out to zero by default for linux-user,
+not defaulting to passed through.
 
 thanks
 -- PMM

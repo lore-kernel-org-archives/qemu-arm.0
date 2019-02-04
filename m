@@ -1,168 +1,194 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp481780wrt;
-        Fri, 1 Feb 2019 07:38:20 -0800 (PST)
-X-Google-Smtp-Source: ALg8bN4/P28FOJUjx6Nnuy/ntpffcuQTIsousipHqT7f/k8WCyXTXxGWwe30sdrD6+RaGsbxF3IT
-X-Received: by 2002:a5b:49:: with SMTP id e9mr28016430ybp.457.1549035500331;
-        Fri, 01 Feb 2019 07:38:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549035500; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3944261wrt;
+        Mon, 4 Feb 2019 11:38:22 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY+jQYrwljd6Hlhd4YeH2kVZaN0cQYmBJ+WgPPlnrBvyzvdh2YT2GaFKiKaGHQGxywtTV5M
+X-Received: by 2002:a81:3757:: with SMTP id e84mr962255ywa.380.1549309102901;
+        Mon, 04 Feb 2019 11:38:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549309102; cv=none;
         d=google.com; s=arc-20160816;
-        b=fMvBEKegh/aHZntq9oiQ/H/7C+VWcETIIXbEUpNy1uhLA8QsyNnG6QyKiB80s0HeL6
-         mCRRzO28vdWn3l3KurYTY+cWZGG9iLG8LRCoA6dNNg+Qh42zYB71s9fq5x4UTYFjOOoJ
-         GsbOtiDqMfKZvTRGUULBnuITHMo6dfgnEm2tme9wJfLvgrwb7grKfFdOXxDrxpM2/4Lf
-         yAo5jmI1Tg/P2jj2fA93B36iYocMpo1oihl8EB1FViic64+SUYQhHucNaeNUhnmVSXbL
-         aO80Q0DttrK2tgLAIvO/5hei7QGUtFL+scgY6OKT9H3O/E3aBZ+BXIcSAlki8weCHSm2
-         s+nw==
+        b=qZyEDaju1E4q7SKA1wWaLCdZhTG1tE8xzkouUnRxa5hkMvSgO+aqEL4DBVGaQkx2Kl
+         QX/5njgCqhTpAYYfKhdPwuQsl0h48xsFgHHnypm9dMaVmdj/EeoE9POgKudhBXbNWzb/
+         ZMSzbBWg1BzRMTLd+pQC5g34W1mDNBy2SvVCf93dy+Rupx6G+vViaqoCkEuS7DFY4qUj
+         IBgYpsWa8Go8qtb6Men0dxlYYMPiA8PIrjE9KfMCWoY07RIYwGG02PmIxF8WWLce0lZb
+         JcsBvy73XhelHiek5sn3NRcU7iqtfR27htZ2IDr3MwJ4OgPnCCxBL7BUZ4U13PphUQI6
+         ptng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
-        b=WLU6eA2121KNa7VjcI3UJodF0SXF8uaz0LD4iU3UWPmDYZjF/qG2u0x0bLVIZIqPhE
-         clEEoOhndqfz5mySaCGv8vwF6g0EvcHckDcYMjz2KbhIbNhQYPfnNDKm3yN14rv3BqMh
-         ttCjTyKffzlfM92IKMHQdx3UBX5HIIFFWJfTYpb4VQZrsFRXAWhQLgxkBoNg5LHE28n/
-         lE3HdoHnjNRMLZJ03JPTDp5V8/IIYqDiABebGinmk9MASBSEz903xiAjH7T9fGry/hAM
-         nm7QDEz/SZ0ULKrjRM+US1KTttW7blDGN1Bmvp/cwpSS+VMssTxfoh7DVrB6+arBrxF2
-         yaYA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UjPiOhHL+Z5660Jy6wUjG/eTOGeYN78mVHEgxjVh2EQ=;
+        b=jW8Q1MLrLHGEtRYUkSlGHYlx349WuTcWlRRzeWvp9sIkVuIxuLGu+LFCJACL+r9yrF
+         3V/iA1Jki+mw0imrvgOPHHBwRRvxgqZtZY9H2DW4s4+Miqkc8vd7Zff19vP81Njvh0s+
+         YkdJGg+I2d+YQcz/0+Ztl0+tipHdNVw30Rph2nzlKWKk7se/wf2hNtX7QklPhB9T0JTa
+         dbw9TYg1pC6MbJBhODa2s0vNMVQXBe22kc7+MK/K4Yevk4wDNX3rSOIGka/1Z0eMSw4K
+         3n5LdnNHz0mTuShPFHFmbivDGin2XhXDZ/20RjpNDWGnsQ7e68W9drSz8GXkXZhxxajX
+         ZdKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=b4Zc5+Bo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g7QNVcr5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si4671980ybg.163.2019.02.01.07.38.20
+        by mx.google.com with ESMTPS id t185si606704ybf.403.2019.02.04.11.38.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Feb 2019 07:38:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Feb 2019 11:38:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=b4Zc5+Bo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:56803 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=g7QNVcr5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:48232 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gpatU-0006wV-Lx
-	for alex.bennee@linaro.org; Fri, 01 Feb 2019 10:38:19 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52107)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gqk4U-0005uB-Ch
+	for alex.bennee@linaro.org; Mon, 04 Feb 2019 14:38:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpatE-0006vJ-Am
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:38:02 -0500
+	(envelope-from <laurent.desnogues@gmail.com>) id 1gqjpi-0002Ef-Sg
+	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 14:23:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gpatD-0006Qa-2l
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:38:00 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41428)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1gqjph-0007Im-NG
+	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 14:23:06 -0500
+Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144]:33754)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gpatC-0006O7-Ga
-	for qemu-arm@nongnu.org; Fri, 01 Feb 2019 10:37:58 -0500
-Received: by mail-oi1-x244.google.com with SMTP id j21so6095043oii.8
-	for <qemu-arm@nongnu.org>; Fri, 01 Feb 2019 07:37:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
+	id 1gqjpd-00078V-Kg; Mon, 04 Feb 2019 14:23:01 -0500
+Received: by mail-it1-x144.google.com with SMTP id m8so12368791itk.0;
+	Mon, 04 Feb 2019 11:22:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
-	b=b4Zc5+BoGsmZhbMQsX5g67IlVUkDbch2MqrZ9nqZnMYJ93d43Kq8aikMKwate8QXFE
-	z4PEJSMLe9S7NYJseJ/ZnTUuWR2aVxyBNEMNsC+KllMeAkMydslYHaIqiKD+TtUe7HkQ
-	tVvKA7fsbZvoJ/iAKTtfoeTXEZuWacBH1hveo=
+	:cc; bh=UjPiOhHL+Z5660Jy6wUjG/eTOGeYN78mVHEgxjVh2EQ=;
+	b=g7QNVcr508t32yuUPbGqMP0rrTDIx2zDSn4nf5o+gTFKMg3GH1YvDQJG1BH9Jypb0S
+	c/qmNddCBnqtq2/51XEoo6dQDTHf8oMuNU+vqrUI7r0JJI+VIcDZQE0x+Cpz8JtlcYSl
+	7IVHGt1HoIeoT3e9StPLekVr8YDyn8urbZM+bKZNb+yZKUtSJvJjPe8XBIf8iloB1Tbo
+	EEzk5V2zGf17VDWVzwe6GQFO5cvIdMvA6gK6M2Q0aml1aFe8pYvsW9ZtStVcgE/ojd/W
+	PHk033jWieIvMpj0Ud/peZvs+L71+ifsdIge3zYFPrqp+43fGrBKmFqkUjKi9yKAVzk/
+	oR5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=wdu+NIXqxUv3JyxaVvHH6ZlQmwNhwrWCJGRgHKRyRxo=;
-	b=A2CXnHIsq2WV9AoxI0TI4KOG8Ph2mzMa6+aVCkeBjjU6PtXlu6PGrnY0f/DKOdZvhY
-	HS8nAbjhFLMwO91LnvSP3gV0kv61kxB0fIW7On4sSz/LaeNxk4E090XxlJa/TZwW+Pj8
-	Bb6WE8MXhuWiNhiR50mEcSmONsgXBrUE4f7rI9IYj4F4IgUgtZfIATrBUTyKw4lVuZCn
-	ih2Fu3jpYsKS2BQPcsFeui7L8IZBVdcpQYzokrSLS9OzwhS/jfe/ekbuPF7j/Su4NVZ1
-	H0qm1MrOZnp9Ky8mBv1Rlp9HfP4d3yIHVHBmVzI6aY1IzWrdGbRmuxCOGtr135w665Rb
-	9uKg==
-X-Gm-Message-State: AHQUAuaxHyzVcJswIdkzml54LW4AwaSBOi5TH/R6M/5O6MgktClrYYuW
-	6mhWE5H1DF/z9fWxOrOgva+C8dqUZQnRjiz/aM929w==
-X-Received: by 2002:aca:bcc6:: with SMTP id
-	m189mr19351274oif.337.1549035473956; 
-	Fri, 01 Feb 2019 07:37:53 -0800 (PST)
+	:message-id:subject:to:cc;
+	bh=UjPiOhHL+Z5660Jy6wUjG/eTOGeYN78mVHEgxjVh2EQ=;
+	b=lazwlbBAJVfS2WSyQSZQNgLe/ePIkPiBCKE2pyksR5UV5pn82FtG4XiCVFS4bRm8Jb
+	qYG5cd0bCw+UjJd0/M2JJORdY7y0jjBHloQJAbFhvZrM/4m3ooN7F1hGDTt1NKngbqHx
+	R+61DyxcBAdWvwwMzlesucuMX517vxpqZNLcab856dxKXZkmk5/kRXEuaWEVLqDbu9Vg
+	8RUR7Iep+eQnOvIOHj0XnUL443ukalpxtWQNhP8MffElfzc4gsfvu9rJkiX1HvJHl4+W
+	8yiHVK80I3DIE4k8fgR8cgcHWlNc69eQzGiqhx0OCJFwrx3qK3qXjzWA03FA0idGGPQi
+	FhOw==
+X-Gm-Message-State: AHQUAuZC0bC5isAI0VFnaiNfT+dWcx6EyHwvFuMJivAFSdXJ3Kr3e7MT
+	H1QaNXwwxNOi0lqxzy764XcpVBP4p/QSk34No1E=
+X-Received: by 2002:a05:660c:fd2:: with SMTP id m18mr564069itn.1.1549308172630;
+	Mon, 04 Feb 2019 11:22:52 -0800 (PST)
 MIME-Version: 1.0
-References: <20190201023357.22596-1-stefanha@redhat.com>
-In-Reply-To: <20190201023357.22596-1-stefanha@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Feb 2019 15:37:42 +0000
-Message-ID: <CAFEAcA_EvJFyAW67=-9=bpVmnwO7vB88YH0BckNgPqiwOHX5FQ@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
+References: <20181211151945.29137-1-aaron@os.amperecomputing.com>
+	<20181211151945.29137-11-aaron@os.amperecomputing.com>
+In-Reply-To: <20181211151945.29137-11-aaron@os.amperecomputing.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Mon, 4 Feb 2019 20:22:41 +0100
+Message-ID: <CABoDooPMwWR3TXxAqzoByeyuaReVmV0NFpWCJr897QL6r7n_nw@mail.gmail.com>
+To: Aaron Lindsay <aaron@os.amperecomputing.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH v4 0/3] arm: microbit Non-Volatile Memory
- Controller
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::144
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v10 10/14] target/arm: Finish
+ implementation of PM[X]EVCNTR and PM[X]EVTYPER
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Jim Mussared <jim@groklearning.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a/KQXLzwvEfc
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ndPpuG9pJ0s6
 
-On Fri, 1 Feb 2019 at 02:34, Stefan Hajnoczi <stefanha@redhat.com> wrote:
->
-> v4:
->  * assert(offset + size <=3D s->flash_size) [Peter]
-> v3:
->  * Fix endianness of s->storage[], tested by Joel Stanley <joel@jms.id.au=
-> on
->    big-endian ppc [Peter]
->  * Fix off-by-one that prevented clearing the last page of flash
->  * Add missing memory_region_flush_rom_device() call to flash_write()
-> v2:
->  * Add Patch 2 to call memory_region_flush_rom_device() from pflash devic=
-es
->    [Peter]
->
-> This series adds the Non-Volatile Memory Controller, which controls acces=
-s to
-> the User Information Control Registers (UICR), Factory Information Contro=
-l
-> Registers (FICR), and flash memory.
->
-> This is the last piece of microbit work needed to make basic programs lik=
-e
-> Micropython "Hello world" work under QEMU.
->
-> Originally sent as part of Steffen's longer microbit device emulation ser=
-ies, I
-> extracted this and deferred it until later because cleanups were necessar=
-y:
->
->  * Use memory_region_flush_rom_device() to dirty/invalidate memory [Peter=
-]
->    ^--- Paolo: I CCed you on this new memory API
->  * Fix device-introspect-test segfault due to missing owner when initiali=
-zing
->    FICR and UICR memory regions [Peter]
->  * Fix off-by-one assertion checks [Peter]
->  * Fix missing whitespace at end of comment [Peter]
->  * Clear UICR on reset - we'd need a block device for true non-volatility
->    [Peter]
->
-> Steffen G=C3=B6rtz (3):
->   hw/nvram/nrf51_nvm: Add nRF51 non-volatile memories
->   arm: Instantiate NRF51 special NVM's and NVMC
->   tests/microbit-test: Add tests for nRF51 NVMC
+Hello,
 
+On Tue, Dec 11, 2018 at 4:25 PM Aaron Lindsay
+<aaron@os.amperecomputing.com> wrote:
+>
+> Add arrays to hold the registers, the definitions themselves, access
+> functions, and logic to reset counters when PMCR.P is set. Update
+> filtering code to support counters other than PMCCNTR. Support migration
+> with raw read/write functions.
+>
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h    |   3 +
+>  target/arm/helper.c | 296 +++++++++++++++++++++++++++++++++++++++++---
+>  2 files changed, 282 insertions(+), 17 deletions(-)
+[...]
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index fd2923f033..1b851d1689 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+[...]
+> @@ -5301,6 +5526,43 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          };
+>          define_one_arm_cp_reg(cpu, &pmcr);
+>          define_one_arm_cp_reg(cpu, &pmcr64);
+> +        for (i = 0; i < pmcrn; i++) {
+> +            char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
+> +            char *pmevcntr_el0_name = g_strdup_printf("PMEVCNTR%d_EL0", i);
+> +            char *pmevtyper_name = g_strdup_printf("PMEVTYPER%d", i);
+> +            char *pmevtyper_el0_name = g_strdup_printf("PMEVTYPER%d_EL0", i);
+> +            ARMCPRegInfo pmev_regs[] = {
+> +                { .name = pmevcntr_name, .cp = 15, .crn = 15,
+> +                  .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
+> +                  .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
+> +                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
+> +                  .accessfn = pmreg_access },
+> +                { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
+> +                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 8 | (3 & (i >> 3)),
+> +                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
+> +                  .type = ARM_CP_IO,
+> +                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
+> +                  .raw_readfn = pmevcntr_rawread,
+> +                  .raw_writefn = pmevcntr_rawwrite },
+> +                { .name = pmevtyper_name, .cp = 15, .crn = 15,
+> +                  .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
+> +                  .access = PL0_RW, .type = ARM_CP_IO | ARM_CP_ALIAS,
+> +                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
+> +                  .accessfn = pmreg_access },
+> +                { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
+> +                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 12 | (3 & (i >> 3)),
 
+Looking at ARM documentation, I think the value for crn should be 14
+for PMEVCNTR<n>_EL0 and PMEVTYPER<n>_EL0.
 
-Applied to target-arm.next, thanks.
+Thanks,
 
--- PMM
+Laurent
+
+> +                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
+> +                  .type = ARM_CP_IO,
+> +                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
+> +                  .raw_writefn = pmevtyper_rawwrite },
+> +                REGINFO_SENTINEL
+> +            };
+> +            define_arm_cp_regs(cpu, pmev_regs);
+> +            g_free(pmevcntr_name);
+> +            g_free(pmevcntr_el0_name);
+> +            g_free(pmevtyper_name);
+> +            g_free(pmevtyper_el0_name);
+> +        }
+>  #endif
+>          ARMCPRegInfo clidr = {
+>              .name = "CLIDR", .state = ARM_CP_STATE_BOTH,
+> --
+> 2.19.2
+>
+>

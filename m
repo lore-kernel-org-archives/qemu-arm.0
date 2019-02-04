@@ -1,84 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4116441wrt;
-        Mon, 4 Feb 2019 15:26:11 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia6Q9YwcoiZbQS/Tac3DZDrnD/QDMfbc8k1kOIeKn2xUdBXrmRWDzNBQaCdVv0SvOH8mPxw
-X-Received: by 2002:a25:d3c1:: with SMTP id e184mr1592157ybf.416.1549322771836;
-        Mon, 04 Feb 2019 15:26:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549322771; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4117422wrt;
+        Mon, 4 Feb 2019 15:27:45 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IabPz8svMJNQXKMOk/J3QKkv9ljxIizOmwNaEXN4PEUtzv0SfJEoQpwH25j+HPeonZCz3bq
+X-Received: by 2002:a25:ae1e:: with SMTP id a30mr1662494ybj.196.1549322865518;
+        Mon, 04 Feb 2019 15:27:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549322865; cv=none;
         d=google.com; s=arc-20160816;
-        b=aFuU+YCnhoytAXIFA+3KkNq/eAVnf76QSL2q3TLKLvTxQwe46fKehHRbvrtJyTXHQi
-         HqserdI8eARSbr4wbYjCpmvjs+jKUGnb0YDPb1Vr/FcHxp+Gd2vAP7bNCAeeg/BUjDUB
-         XboDzfFJGt0hYeCtec14cBqUhEbKx+5MPgTFhqhCX2ZD78fVrkiwydxlyTIO8evj/ZD2
-         SOUWj4WKr6Ia8gw44EVFWWTrd/4ErrmTRivO3K7GpRGdBtewVQfxfs2xq2jtCLoahh2g
-         gawFQvAvowCzg0t3KwLlaHWlEfAozcCzvpZ0B3ZSZJ3GuvKLJweZQ113su1w0XRaZ+pd
-         C/OA==
+        b=e820Ab4JSExayWFpcUD1Q80iGt4w7vKZKYq6FbSsE6XzPu2xOqDiEtZSCUGKNZLJ6E
+         5O7Zt0CbPBtUy5pliVzBgEbN3wQiMCCRUGGEu2TtvtMiGoQuBdIPfAigOdzk+Dl3vAFX
+         gPPeclgmgQoq5zNwTRJ/fM8Je9zlOa8b594hmQKWnQDFeZtFnwR6aYcWLh+iN94LBS83
+         BlkFaT4TFJiL79v5E7O3cVThlZs05g+xx/ngIfGt4sI+PubOfzYNtyak1NQvjvNaeqeg
+         UqOaS6njorwN1iTlLm7PEgXHvEi+vQYJWIP8JxSqFx5Ob/uiafTPMWjDdL16udCDqt9Y
+         5jBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=3QKHr3FbPcpSdGUusnQ59M+yuxdjk5eeaIXxeWW7v8Q=;
-        b=tKJsxGqAfLZNxGYQSHvnYWUIpjbheCZqKQPO18B8CSyZyhySrkEmTGyB4EO3ySQwdp
-         a4VXZGgMF92HsZ/zJAG8hI1gUcqxoApd2BBrdf/5NtRyCcR9wTeM2xxShHg6S4AxSrjL
-         kJ1FbYYQl3uo2gz0jEq7t2eipG2Tao08oVlU/r+6z8XljYykWDqHSckMi7XxUZFde6M1
-         K9FGETql6sGXAHJZ8BB2xjiNDaDHvaTUDEdzppLnQBDnwenMpWrF73dPbLgQvxf3YdCE
-         U0nR2rroP+f3SJ0MqdEVwSyB4HqzZBeAs30DGncYOs1GPoMjt62cQK42EhlGdXGYoDSR
-         51Kg==
+        bh=K/wD+ObNpP/DtLyVE8MLgpp5Z4aIHDBKX2T6XXU9m0U=;
+        b=SKSW0rChLzXeeDY12phvKrjCgMg2y2EuVrsVZAx2c9/ikGkAmHbXDY3S56DO/jGSiM
+         BfaNzXcuplO4YsZacL24e25NsUXiyJg1nmi6vpTa2FahZX3Fo5mdTJOIJuN8A7BAh05A
+         t5yqIN8P52m9p7lYPYTHujB9qNY6UzySycRe7RWaH1oQ5E3vvxPkxf4up03fmWuHC4Go
+         m4cJRIeyvVUVuOGKnqy12iEcZAAv76OaaZVrP6ewGPsw+XXIwLXpyoqyyAbo15azAOPk
+         zncwgNzQPJTpMcUa0/4/ZGbrPdau1lv7+rDdU8NTmvC6wOaBC4qPFF3BVrTKb70GSVtf
+         ufzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x126si893686ywf.120.2019.02.04.15.26.11
+        by mx.google.com with ESMTPS id 127si932283ybk.192.2019.02.04.15.27.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Feb 2019 15:26:11 -0800 (PST)
+        Mon, 04 Feb 2019 15:27:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51047 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51076 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gqncx-0006OE-9f
-	for alex.bennee@linaro.org; Mon, 04 Feb 2019 18:26:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50137)
+	id 1gqneT-0008AQ-03
+	for alex.bennee@linaro.org; Mon, 04 Feb 2019 18:27:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnWG-00014A-BL
-	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 18:19:17 -0500
+	(envelope-from <philmd@redhat.com>) id 1gqnXh-0002MT-Ig
+	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 18:20:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnWF-0000us-HD
-	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 18:19:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49534)
+	(envelope-from <philmd@redhat.com>) id 1gqnXf-00021g-Q7
+	for qemu-devel@nongnu.org; Mon, 04 Feb 2019 18:20:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51400)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gqnWD-0000t9-Fc; Mon, 04 Feb 2019 18:19:13 -0500
+	id 1gqnXZ-0001io-Tx; Mon, 04 Feb 2019 18:20:39 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 365F4C058CBA;
-	Mon,  4 Feb 2019 23:19:12 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C26EE80F6C;
+	Mon,  4 Feb 2019 23:20:18 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-98.brq.redhat.com [10.40.204.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D97187A5;
-	Mon,  4 Feb 2019 23:19:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FD8913AB9;
+	Mon,  4 Feb 2019 23:20:02 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  5 Feb 2019 00:18:09 +0100
-Message-Id: <20190204231815.29661-6-philmd@redhat.com>
+Date: Tue,  5 Feb 2019 00:18:14 +0100
+Message-Id: <20190204231815.29661-11-philmd@redhat.com>
 In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
 References: <20190204231815.29661-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 04 Feb 2019 23:19:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Mon, 04 Feb 2019 23:20:19 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v2 05/11] hw/devices: Move CBus declarations
- into a new header
+Subject: [Qemu-devel] [PATCH v2 10/11] hw/net/lan9118: Export TYPE_LAN9118
+ and use it instead of hardcoded string
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,7 +95,6 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Rob Herring <robh@kernel.org>, Magnus Damm <magnus.damm@gmail.com>,
 	Joel Stanley <joel@jms.id.au>, Richard Henderson <rth@twiddle.net>,
-	Thomas Huth <thuth@redhat.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
 	Peter Chubb <peter.chubb@nicta.com.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -109,119 +108,85 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
 	Jan Kiszka <jan.kiszka@web.de>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PvhiNZtoRu76
+X-TUID: NoQMk7NLbU3q
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS            |  1 +
- hw/arm/nseries.c       |  1 +
- hw/misc/cbus.c         |  2 +-
- include/hw/devices.h   | 14 --------------
- include/hw/misc/cbus.h | 32 ++++++++++++++++++++++++++++++++
- 5 files changed, 35 insertions(+), 15 deletions(-)
- create mode 100644 include/hw/misc/cbus.h
+ hw/arm/exynos4_boards.c  | 3 ++-
+ hw/arm/mps2-tz.c         | 3 ++-
+ hw/net/lan9118.c         | 1 -
+ include/hw/net/lan9118.h | 2 ++
+ 4 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a21e7b546b..daae4a3beb 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -654,6 +654,7 @@ F: hw/input/tsc2005.c
- F: hw/misc/cbus.c
- F: hw/timer/twl92230.c
- F: include/hw/display/blizzard.h
-+F: include/hw/misc/cbus.h
-=20
- Palm
- M: Andrzej Zaborowski <balrogg@gmail.com>
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 9521be1cef..ac876b5878 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
+diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+index 750162cc95..ea8100f65a 100644
+--- a/hw/arm/exynos4_boards.c
++++ b/hw/arm/exynos4_boards.c
 @@ -32,6 +32,7 @@
- #include "hw/i2c/i2c.h"
- #include "hw/devices.h"
- #include "hw/display/blizzard.h"
-+#include "hw/misc/cbus.h"
- #include "hw/block/flash.h"
- #include "hw/hw.h"
- #include "hw/bt.h"
-diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
-index 25e337ea77..16ee704bca 100644
---- a/hw/misc/cbus.c
-+++ b/hw/misc/cbus.c
-@@ -23,7 +23,7 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
+ #include "hw/arm/arm.h"
+ #include "exec/address-spaces.h"
+ #include "hw/arm/exynos4210.h"
++#include "hw/net/lan9118.h"
+ #include "hw/boards.h"
+=20
+ #undef DEBUG
+@@ -92,7 +93,7 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
+     /* This should be a 9215 but the 9118 is close enough */
+     if (nd_table[0].used) {
+         qemu_check_nic_model(&nd_table[0], "lan9118");
+-        dev =3D qdev_create(NULL, "lan9118");
++        dev =3D qdev_create(NULL, TYPE_LAN9118);
+         qdev_set_nic_properties(dev, &nd_table[0]);
+         qdev_prop_set_uint32(dev, "mode_16bit", 1);
+         qdev_init_nofail(dev);
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index f79f090a4a..7832408bb7 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -56,6 +56,7 @@
+ #include "hw/arm/armsse.h"
+ #include "hw/dma/pl080.h"
+ #include "hw/ssi/pl022.h"
++#include "hw/net/lan9118.h"
+ #include "net/net.h"
+ #include "hw/core/split-irq.h"
+=20
+@@ -244,7 +245,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState =
+*mms, void *opaque,
+      * except that it doesn't support the checksum-offload feature.
+      */
+     qemu_check_nic_model(nd, "lan9118");
+-    mms->lan9118 =3D qdev_create(NULL, "lan9118");
++    mms->lan9118 =3D qdev_create(NULL, TYPE_LAN9118);
+     qdev_set_nic_properties(mms->lan9118, nd);
+     qdev_init_nofail(mms->lan9118);
+=20
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index a428b16eda..b29e3fee49 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -175,7 +175,6 @@ static const VMStateDescription vmstate_lan9118_packe=
+t =3D {
+     }
+ };
+=20
+-#define TYPE_LAN9118 "lan9118"
+ #define LAN9118(obj) OBJECT_CHECK(lan9118_state, (obj), TYPE_LAN9118)
+=20
+ typedef struct {
+diff --git a/include/hw/net/lan9118.h b/include/hw/net/lan9118.h
+index d13d8cd3d2..500acb4c14 100644
+--- a/include/hw/net/lan9118.h
++++ b/include/hw/net/lan9118.h
+@@ -14,6 +14,8 @@
  #include "hw/irq.h"
--#include "hw/devices.h"
-+#include "hw/misc/cbus.h"
- #include "sysemu/sysemu.h"
+ #include "net/net.h"
 =20
- //#define DEBUG
-diff --git a/include/hw/devices.h b/include/hw/devices.h
-index 77d6611302..e400f9eac0 100644
---- a/include/hw/devices.h
-+++ b/include/hw/devices.h
-@@ -29,18 +29,4 @@ void tsc2005_set_transform(void *opaque, MouseTransfor=
-mInfo *info);
- /* stellaris_input.c */
- void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
++#define TYPE_LAN9118 "lan9118"
++
+ void lan9118_init(NICInfo *, uint32_t, qemu_irq);
 =20
--/* cbus.c */
--typedef struct {
--    qemu_irq clk;
--    qemu_irq dat;
--    qemu_irq sel;
--} CBus;
--CBus *cbus_init(qemu_irq dat_out);
--void cbus_attach(CBus *bus, void *slave_opaque);
--
--void *retu_init(qemu_irq irq, int vilma);
--void *tahvo_init(qemu_irq irq, int betty);
--
--void retu_key_event(void *retu, int state);
--
  #endif
-diff --git a/include/hw/misc/cbus.h b/include/hw/misc/cbus.h
-new file mode 100644
-index 0000000000..c899943e03
---- /dev/null
-+++ b/include/hw/misc/cbus.h
-@@ -0,0 +1,32 @@
-+/*
-+ * CBUS three-pin bus and the Retu / Betty / Tahvo / Vilma / Avilma /
-+ * Hinku / Vinku / Ahne / Pihi chips used in various Nokia platforms.
-+ * Based on reverse-engineering of a linux driver.
-+ *
-+ * Copyright (C) 2008 Nokia Corporation
-+ * Written by Andrzej Zaborowski
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_MISC_CBUS_H
-+#define HW_MISC_CBUS_H
-+
-+#include "hw/irq.h"
-+
-+typedef struct {
-+    qemu_irq clk;
-+    qemu_irq dat;
-+    qemu_irq sel;
-+} CBus;
-+
-+CBus *cbus_init(qemu_irq dat_out);
-+void cbus_attach(CBus *bus, void *slave_opaque);
-+
-+void *retu_init(qemu_irq irq, int vilma);
-+void *tahvo_init(qemu_irq irq, int betty);
-+
-+void retu_key_event(void *retu, int state);
-+
-+#endif
 --=20
 2.20.1
 

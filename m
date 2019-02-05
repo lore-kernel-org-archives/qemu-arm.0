@@ -1,165 +1,72 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id v22sm4901871wml.37.2019.02.05.11.02.24
+        by smtp.gmail.com with ESMTPSA id z14sm13469930wrm.48.2019.02.05.11.02.25
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Feb 2019 11:02:25 -0800 (PST)
+        Tue, 05 Feb 2019 11:02:26 -0800 (PST)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9600C1FF82;
+	by zen.linaroharston (Postfix) with ESMTP id A1C4A1FF83;
 	Tue,  5 Feb 2019 19:02:24 +0000 (UTC)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 2/6] target/arm: expose CPUID registers to userspace
-Date: Tue,  5 Feb 2019 19:02:20 +0000
-Message-Id: <20190205190224.2198-3-alex.bennee@linaro.org>
+Subject: [PATCH  v2 3/6] target/arm: expose MPIDR_EL1 to userspace
+Date: Tue,  5 Feb 2019 19:02:21 +0000
+Message-Id: <20190205190224.2198-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190205190224.2198-1-alex.bennee@linaro.org>
 References: <20190205190224.2198-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IauPeg0gglwS
+X-TUID: YRgPb+P+I2Va
 
-A number of CPUID registers are exposed to userspace by modern Linux
-kernels thanks to the "ARM64 CPU Feature Registers" ABI. For QEMU's
-user-mode emulation we don't need to emulate the kernels trap but just
-return the value the trap would have done. To avoid too much #ifdef
-hackery we process ARMCPRegInfo with a new helper (modify_arm_cp_regs)
-before defining the registers. The modify routine is driven by a
-simple data structure which describes which bits are exported and
-which are fixed.
+As this is a single register we could expose it with a simple ifdef
+but we use the existing modify_arm_cp_regs mechanism for consistency.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v4
-  - tweak commit message
-  - use PL0U_R instead of PL1U_R to be less confusing
-  - more CONFIG_USER logic for special cases
-  - mask a bunch of bits for some registers
-v5
-  - use data driven modify_arm_cp_regs
----
- target/arm/cpu.h    | 21 ++++++++++++++++
- target/arm/helper.c | 59 +++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 80 insertions(+)
+ target/arm/helper.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1616632dcb..354df22102 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2449,6 +2449,27 @@ static inline void define_one_arm_cp_reg(ARMCPU *cpu, const ARMCPRegInfo *regs)
- }
- const ARMCPRegInfo *get_arm_cp_reginfo(GHashTable *cpregs, uint32_t encoded_cp);
- 
-+/*
-+ * Definition of an ARM co-processor register as viewed from
-+ * userspace. This is used for presenting sanitised versions of
-+ * registers to userspace when emulating the Linux AArch64 CPU
-+ * ID/feature ABI (advertised as HWCAP_CPUID).
-+ */
-+typedef struct ARMCPRegUserSpaceInfo {
-+    /* Name of register */
-+    const char *name;
-+
-+    /* Only some bits are exported to user space */
-+    uint64_t exported_bits;
-+
-+    /* Fixed bits are applied after the mask */
-+    uint64_t fixed_bits;
-+} ARMCPRegUserSpaceInfo;
-+
-+#define REGUSERINFO_SENTINEL { .name = NULL }
-+
-+void modify_arm_cp_regs(ARMCPRegInfo *regs, const ARMCPRegUserSpaceInfo *mods);
-+
- /* CPWriteFn that can be used to implement writes-ignored behaviour */
- void arm_cp_write_ignore(CPUARMState *env, const ARMCPRegInfo *ri,
-                          uint64_t value);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5857c0ba96..f90754cc11 100644
+index f90754cc11..f2f868ff92 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6103,6 +6103,30 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .resetvalue = cpu->pmceid1 },
-             REGINFO_SENTINEL
-         };
-+#ifdef CONFIG_USER_ONLY
-+        ARMCPRegUserSpaceInfo v8_user_idregs[] = {
-+            { .name = "ID_AA64PFR0_EL1",
-+              .exported_bits = 0x000f000f00ff0000,
-+              .fixed_bits    = 0x0000000000000011 },
-+            { .name = "ID_AA64PFR1_EL1",
-+              .exported_bits = 0x00000000000000f0 },
-+            { .name = "ID_AA64ZFR0_EL1"           },
-+            { .name = "ID_AA64MMFR0_EL1",
-+              .fixed_bits    = 0x00000000ff000000 },
-+            { .name = "ID_AA64MMFR1_EL1"          },
-+            { .name = "ID_AA64DFR0_EL1",
-+              .fixed_bits    = 0x0000000000000006 },
-+            { .name = "ID_AA64DFR1_EL1"           },
-+            { .name = "ID_AA64AFR0_EL1"           },
-+            { .name = "ID_AA64AFR1_EL1"           },
-+            { .name = "ID_AA64ISAR0_EL1",
-+              .exported_bits = 0x00fffffff0fffff0 },
-+            { .name = "ID_AA64ISAR1_EL1",
-+              .exported_bits = 0x000000f0ffffffff },
-+            REGUSERINFO_SENTINEL
-+        };
-+        modify_arm_cp_regs(v8_idregs, v8_user_idregs);
-+#endif
-         /* RVBAR_EL1 is only implemented if EL1 is the highest EL */
-         if (!arm_feature(env, ARM_FEATURE_EL3) &&
-             !arm_feature(env, ARM_FEATURE_EL2)) {
-@@ -6379,6 +6403,15 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             .opc1 = CP_ANY, .opc2 = CP_ANY, .access = PL1_W,
-             .type = ARM_CP_NOP | ARM_CP_OVERRIDE
-         };
-+#ifdef CONFIG_USER_ONLY
-+        ARMCPRegUserSpaceInfo id_v8_user_midr_cp_reginfo[] = {
-+            { .name = "MIDR_EL1",
-+              .exported_bits = 0x00000000ffffffff },
-+            { .name = "REVIDR_EL1"                },
-+            REGUSERINFO_SENTINEL
-+        };
-+        modify_arm_cp_regs(id_v8_midr_cp_reginfo, id_v8_user_midr_cp_reginfo);
-+#endif
-         if (arm_feature(env, ARM_FEATURE_OMAPCP) ||
-             arm_feature(env, ARM_FEATURE_STRONGARM)) {
-             ARMCPRegInfo *r;
-@@ -6960,6 +6993,32 @@ void define_arm_cp_regs_with_opaque(ARMCPU *cpu,
-     }
+@@ -3657,13 +3657,6 @@ static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     return mpidr_read_val(env);
  }
  
-+/*
-+ * Modify ARMCPRegInfo for access from userspace.
-+ *
-+ * This is a data driven modification directed by
-+ * ARMCPRegUserSpaceInfo. All registers become ARM_CP_CONST as
-+ * user-space cannot alter any values and dynamic values pertaining to
-+ * execution state are hidden from user space view anyway.
-+ */
-+void modify_arm_cp_regs(ARMCPRegInfo *regs, const ARMCPRegUserSpaceInfo *mods)
-+{
-+    const ARMCPRegUserSpaceInfo *m;
-+    ARMCPRegInfo *r;
-+
-+    for (m = mods; m->name; m++) {
-+        for (r = regs; r->type != ARM_CP_SENTINEL; r++) {
-+            if (strcmp(r->name, m->name) == 0) {
-+                r->type = ARM_CP_CONST;
-+                r->access = PL0U_R;
-+                r->resetvalue &= m->exported_bits;
-+                r->resetvalue |= m->fixed_bits;
-+                break;
-+            }
-+        }
-+    }
-+}
-+
- const ARMCPRegInfo *get_arm_cp_reginfo(GHashTable *cpregs, uint32_t encoded_cp)
- {
-     return g_hash_table_lookup(cpregs, &encoded_cp);
+-static const ARMCPRegInfo mpidr_cp_reginfo[] = {
+-    { .name = "MPIDR", .state = ARM_CP_STATE_BOTH,
+-      .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 5,
+-      .access = PL1_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
+-    REGINFO_SENTINEL
+-};
+-
+ static const ARMCPRegInfo lpae_cp_reginfo[] = {
+     /* NOP AMAIR0/1 */
+     { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
+@@ -6445,6 +6438,20 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     }
+ 
+     if (arm_feature(env, ARM_FEATURE_MPIDR)) {
++        ARMCPRegInfo mpidr_cp_reginfo[] = {
++            { .name = "MPIDR_EL1", .state = ARM_CP_STATE_BOTH,
++              .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 5,
++              .access = PL1_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
++            REGINFO_SENTINEL
++        };
++#ifdef CONFIG_USER_ONLY
++        ARMCPRegUserSpaceInfo mpidr_user_cp_reginfo[] = {
++            { .name = "MPIDR_EL1",
++              .fixed_bits = 0x0000000080000000 },
++            REGUSERINFO_SENTINEL
++        };
++        modify_arm_cp_regs(mpidr_cp_reginfo, mpidr_user_cp_reginfo);
++#endif
+         define_arm_cp_regs(cpu, mpidr_cp_reginfo);
+     }
+ 
 -- 
 2.20.1

@@ -1,125 +1,160 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5160464wrt;
-        Tue, 5 Feb 2019 12:06:44 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbdFVNDD9KaZReES7JkqwTz5TcGijRmV9nKQ0sjjCPKMp79m1dTbO082b7Yepb0+OJCDzI8
-X-Received: by 2002:a5b:449:: with SMTP id s9mr5376364ybp.57.1549397204079;
-        Tue, 05 Feb 2019 12:06:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549397204; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5162890wrt;
+        Tue, 5 Feb 2019 12:09:11 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZxV3jXDziorIfx4msoBxaQndQ/pvuZTVLxVsJ49XHmx2sHCr8blXEFqzzLv4+7u/5ftkjJ
+X-Received: by 2002:a0d:f8c6:: with SMTP id i189mr5541967ywf.286.1549397351697;
+        Tue, 05 Feb 2019 12:09:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549397351; cv=none;
         d=google.com; s=arc-20160816;
-        b=KMkKSzgCYtOCvPpIAi3tc0flHQZPjz/xsP2hc4e7dlCRfb3haN3PrymxveIDW3A67J
-         mPKxL/U6Pe5+E5ZJNM09JhLUwsAYFPAkpv1yW9EqXdqb5bEDBz4uJMHAJvJ4KiNMb9sa
-         B8LuU6qWUhZcCwfcijq4FTokWxJoFdAmmpQycH1/mdsfK0WuL/C7K+7yQ6Hs5CCdbzRL
-         /ZExiSaJUbE+OEv3SLNZZKHYM/ZZjip7PQHl9DPmfJ8LTcNaGmpdP7kH6kE3rL8A7dpE
-         yh5Po42NqMHYTZe16Vm+lkaiOFphasha5/upBXNLC/KYxl2Yagb6yZdn/ENgTq5RPl52
-         1c5Q==
+        b=BPVyFz3Ndxq2tcBjGI/qIBz+X6OBEcLuLf7c4wCxEjroEoKZ9998Gaq0dX4Y3Umuh6
+         KT6kFm2Ie5wI3OeIhElq60z8HIFOxnXMmeEIjF9F/0NWrRu2SNTCpM8OTUWKWySLI6Dn
+         6uxZdEno6pDBWwdBE/9BZAxLSywuNiE0MEA8aP4lyH7Z2a7RB/PSHD+HsXS4omlP/3QR
+         YEsTvxajcpFTKFnS6MyrLdgWTB1Y3pueCkkREJAndx0oaJA6SIff7tOBIlk98Ig+OYBR
+         mIWrHS9wLtmA0zG0cBfxYHKwlqvubi+at/xklnwHh3eaBSYI7LtBCYqmKclJoeAHQB4S
+         DS/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=5p3YLgryXcDiQKunnqLVkVgvMEtg2dAgiLUSpv/E/zw=;
-        b=oGI0cGcwQQQZB86vtyngyDRH4CnI2vzToOcIySm2bB7tK58XnvtVJxckBaDbrPLH78
-         /dgKHHCpdCWwuTzng5++H4mpDTs9nzXvCRq8S0KhnjjiTn4sZ/ncZl/u+GqBEVFTLpuV
-         mVBJeMeX1Dbds0sFdspn78M+NaGr8rgj3VONFZadbklUmiKCX8a8LnbYYpRvU/DzNNGU
-         l0AlELT//9hEbmtraHoYs9xHBW6MzK5BIkLfOl8mbMNACKEsn7dx4wT7rOjXn1N5+tuK
-         ZLMblOcUqzOKnubnfUk8p5Ni8Jz4t6d/JXhRSzf3/En6+FrQvMOPGdOGSgkgSoBA6hEf
-         CZfQ==
+        bh=nrws9AXUBL35xch6ekr1OlNl7FySMn16fqUNYApuLy4=;
+        b=Ip317ttRfMpoAzINOxEGbKDmhBPy4CtyJHmVdxvcFI4wWCbkZoBN0npkU7ZYPBIb8I
+         ruIAZZ4KcZYXb7/DBqWzKAGTtxzMz3Q9rzdbAyfjO6gAM7J2rJAARRzVX4JP83dQw69X
+         e15wdsk2TFqp40r85GS1uY2lkk2sgmUZd7YfAv/EiL/5jZV0daOtC1D9CzNVloW+VEjf
+         60m4hYm5qOHZHuMq7cU2n7I4+yA3xo0KD/OiW/sQQG0MVTLEz4ZEuoozaqnWJl4n5+4A
+         CXCAArAAzkzd72LKlBye0Tr7V4hRAuD0nzAR2GctdP3cy/i4Dj1upr7nocoFH//tYfi2
+         HZ8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ybfuxNYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MluQUDLT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l207si202333ybl.303.2019.02.05.12.06.43
+        by mx.google.com with ESMTPS id 3si1841834ybr.89.2019.02.05.12.09.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Feb 2019 12:06:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Feb 2019 12:09:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ybfuxNYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:39656 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MluQUDLT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:39732 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gr6zT-0000xI-Bh
-	for alex.bennee@linaro.org; Tue, 05 Feb 2019 15:06:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54711)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gr71r-00030F-4P
+	for alex.bennee@linaro.org; Tue, 05 Feb 2019 15:09:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57458)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gr65Q-0003ux-4K
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 14:08:48 -0500
+	(envelope-from <alistair23@gmail.com>) id 1gr6DT-0002aB-6j
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 14:17:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gr65M-0007o8-VF
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 14:08:46 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:36042)
+	(envelope-from <alistair23@gmail.com>) id 1gr6DS-0002W8-EC
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 14:17:07 -0500
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:36899)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gr65I-0007mf-Ce
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 14:08:40 -0500
-Received: by mail-ot1-x342.google.com with SMTP id k98so7681381otk.3
-	for <qemu-devel@nongnu.org>; Tue, 05 Feb 2019 11:08:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1gr6DO-0002Sn-LH; Tue, 05 Feb 2019 14:17:02 -0500
+Received: by mail-lj1-x244.google.com with SMTP id t18-v6so3895957ljd.4;
+	Tue, 05 Feb 2019 11:17:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=5p3YLgryXcDiQKunnqLVkVgvMEtg2dAgiLUSpv/E/zw=;
-	b=ybfuxNYuiUTuW4B6qCbU8v688zZcorkum1C5K0IfvjGDQA5WlifiCGUfFYmYsDSMpx
-	epdGoIYpbCSZXz9510huoU6FQLZDdcHN3aybH0mmx7dDgU1kbUmJdNf5zXS1SJygy0Oo
-	TZ2kmVEjX+oIuwcCOHzmfA+ruELlCD5PVMM1oyK6pfIGXgzfhLbn5LpDSluhZsjkTJKT
-	/LFo3htARWI4gXkb1yFVUGzWEKbY3t2rhHoNUy+2hZv/ZvR7WVE5tDPvlT3fzXNfOd+M
-	nJQYHi0LnCM6WyMmouT+XvvkNBNFiy5YcNl8om1tOZvzGc1aZp9FkxnULX3fat9vFWhq
-	hKxQ==
+	:cc; bh=nrws9AXUBL35xch6ekr1OlNl7FySMn16fqUNYApuLy4=;
+	b=MluQUDLT71zYhKcFiZBJbOj9DsG6It0X3YTeHeXBtu9OOci8ZZadEgFSrR0PYCRVng
+	HQhAwPW7AEoA4VEsENgDAxJQZnlQvEcx9V82Tr0rLW4wyoACFbiRIDM6+Gqn4Exx4jyJ
+	kSPLnuLRoCyhP4YS0g74p4+Rnl3JsX12MiFqlreQYH2YEhOB+K7zRVsDeTd1XhR8CpP2
+	7hpwmCkahUnvWxIDcFL4O0XYFwzjKLYN88rjhII5Fmq7BAQOIdUFUYlCE332XbqGwTyl
+	cey0/b653YZAzLIUyTSmVrd52cjT+YLlncm4yxrtAPl4QRhnZWPY+RjEE3FmVE6jfoT6
+	3yVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=5p3YLgryXcDiQKunnqLVkVgvMEtg2dAgiLUSpv/E/zw=;
-	b=CP65ma4uWwJemGkVpITzD0huHqmtA277zV4BtHPHXyQptm074oUz4DGWVObHvHO4aO
-	SzGEgJF3owB2CSB58ZFA1QE4Q7P7F4X9/KsrODhgFUt+ESLo/6vnJksx6zgqTo4w5h11
-	vT8dOLmuoj/s32zjmND++9IRWHM+k88c7kPaslPke92flQkSFVkyFtHyeLJx6ZyMenPM
-	jxXtiRHI+srjg3CarVgRjgLya0vj0NiyaeJtp8ptPznU79qHHYS28t7GGd7LKrfEjiXD
-	cFv3yXyQhEJ0Xod57Ec4dGDb/dGtSMwHvZL0iXR1hrQip1H1rq3UCI7Y50fxFAzU7jJv
-	q+OQ==
-X-Gm-Message-State: AHQUAuZgBGyfF2L8feFYb+BZpa46WTYlXtL+TDPzJHbYURInARoyL+yI
-	dLqjJQJP2UhwSvSUSQxoFasIi/GwerffhMFuzV32MQ==
-X-Received: by 2002:aca:4f11:: with SMTP id d17mr541607oib.337.1549393716835; 
-	Tue, 05 Feb 2019 11:08:36 -0800 (PST)
+	bh=nrws9AXUBL35xch6ekr1OlNl7FySMn16fqUNYApuLy4=;
+	b=XdSO9kSkncW3S+DCK+wo2axENkG20qgWzKYhGrqgoApLyCwP+Ye6L1LjFU7v6pfZ8b
+	bFpz9fVz/QjhBNrOQxH3eIZ1O2/V0XjXGIFmoz59GA9d4RzYfk5OWOKbUjglj8pW87ns
+	b8VsGE8ADtLbA+3E8W978tZIXZgc0Qh+JTYbdkBLPPWvWhcBs4SV8lf26c3eK78+ZoF4
+	26bCI2BoEwdjc7sh5CI/cvNJ1kdecaYSukttVI38q+AraIpCMQrBaeRwOghftbpUQ+4u
+	OgbRNMeExXJkGFMMwHFh2LzJc+dHdJHcYhqPtNy3FMvbK9R2xd6t2CktGwrSBToc8pOh
+	S5Ug==
+X-Gm-Message-State: AHQUAuY9l+34IPdHIN5Rb1S8B8b6FD4/DFR+zcOFmxY6bU9/TYlsYpBU
+	x7lthGpDtolL1Jb1Kxs7CM0h9DrcLEiBAN8k0Q0=
+X-Received: by 2002:a2e:3308:: with SMTP id d8-v6mr3867958ljc.38.1549394220312;
+	Tue, 05 Feb 2019 11:17:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20190114011122.5995-1-richard.henderson@linaro.org>
-	<20190114011122.5995-3-richard.henderson@linaro.org>
-In-Reply-To: <20190114011122.5995-3-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Feb 2019 19:08:23 +0000
-Message-ID: <CAFEAcA-yNdB_f4p33tyyC3b4kSpFhqegqu4d+7RGCKdNbSt_og@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+References: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+	<50ea8b3e-cd8e-c6e9-86dc-2e50b78646c5@greensocs.com>
+In-Reply-To: <50ea8b3e-cd8e-c6e9-86dc-2e50b78646c5@greensocs.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 5 Feb 2019 11:16:22 -0800
+Message-ID: <CAKmqyKNgj=u5vKgR1F_fMKs8NLq2ze1OamgUxZOqzN1jytF3qQ@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-devel] [PATCH 02/17] target/arm: Extract TCMA with
- ARMVAParameters
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/cpu/cluster: Mark the
+ cpu-cluster device with user_creatable = false
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YcPZl6weEB4p
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7YhDJ+QOgX5M
 
-On Mon, 14 Jan 2019 at 01:11, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, Feb 5, 2019 at 7:22 AM Luc Michel <luc.michel@greensocs.com> wrote:
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/internals.h | 1 +
->  target/arm/helper.c    | 8 ++++++--
->  2 files changed, 7 insertions(+), 2 deletions(-)
+>
+>
+> On 2/5/19 1:58 PM, Thomas Huth wrote:
+> > The device can not be instantiated by the user and QEMU currently
+> > aborts when you try to use it:
+> >
+> > $ x86_64-softmmu/qemu-system-x86_64 -device cpu-cluster
+> > qemu-system-x86_64: hw/cpu/cluster.c:73: cpu_cluster_realize:
+> >  Assertion `cbdata.cpu_count > 0' failed.
+> > Aborted (core dumped)
+> >
+> > Since this is an internal device only, mark it with user_creatable = false.
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-thanks
--- PMM
+Alistair
+
+>
+> > ---
+> >  hw/cpu/cluster.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+> > index 25f9070..6f5f037 100644
+> > --- a/hw/cpu/cluster.c
+> > +++ b/hw/cpu/cluster.c
+> > @@ -79,6 +79,9 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+> >
+> >      dc->props = cpu_cluster_properties;
+> >      dc->realize = cpu_cluster_realize;
+> > +
+> > +    /* This is not directly for users, CPU children must be attached by code */
+> > +    dc->user_creatable = false;
+> >  }
+> >
+> >  static const TypeInfo cpu_cluster_type_info = {
+> >
+>

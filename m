@@ -1,162 +1,203 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5055658wrt;
-        Tue, 5 Feb 2019 10:09:52 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaAG8ACTnDdrhmOZVA54AgdZWDvAMBCWO5Y8yUKGggagWxwtsy6IIJQHUsVyHzLP6Akg86L
-X-Received: by 2002:a25:3885:: with SMTP id f127mr5157617yba.10.1549390192773;
-        Tue, 05 Feb 2019 10:09:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549390192; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5056228wrt;
+        Tue, 5 Feb 2019 10:10:27 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaDEBTuHQSpliLGoijR6vrWcr6gG9nej9P85/6lOnLx2mYEBZpFNYhtop+UOdFdSEOBciU+
+X-Received: by 2002:a25:454:: with SMTP id 81mr5290793ybe.69.1549390227573;
+        Tue, 05 Feb 2019 10:10:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549390227; cv=none;
         d=google.com; s=arc-20160816;
-        b=LwGjdBZlOAL0dryNmdE2GyuNjsbuonZK+a+J7JouSFTJt+P+LQccUpx7edqNfoKhTt
-         7uCWQyFbG945Wjj9yNtq2r0Rh0XmMBRe38MAORlmeGsJJcSMwCRBMDTOwhHRUAk9nOLw
-         b9lWI5T1D6Hug587G6AmP4c8kH7VhY4PzPylTvrUky/78xWl+1ha/a8EdeKpMonGkXou
-         i7suI0X/95JCHuDffVE4buGyShemPIobX7fopS0wfDWQGRmILWamQ2fUJTy5i5f+3j1J
-         WsCQ2Zcub/NW6/BNfZuobm9d02IpTyigbjSLw41yUeozreLwRnylnPlXZGe9JZVtYJbb
-         I92A==
+        b=JiiQcAxZ/qwsrXvXceZU42SVrdC+8cV9QIbDXwJqs2TU8DrctHJky0fL4jkb/w8Qtv
+         fzpljL9oEeuFN0Bbl1+Yin6PF6/LwTPJ8zlfwXCINDl5OXK8NH6EnM3y/ht4+CtLOHWA
+         TdKJ1VooX/tj6zn5gHrpa88dyqgMrBhxakF8zuYx5ZtsLpHjtfJ7fFuqbISoofUdPZ7i
+         L1uUkEtXjTZXkk0KqNGtkiQ+9dR9uP+/4bonx1HrJntUtrCp98OWgeY/KxBXu3cX6MGw
+         uSJOqzb8WRBXZJ/fKrPPVxlPA0ErN9/TNDJ3a22VuXtuu+Cz4AlxJa0t0EyWO/cAWWpv
+         HjwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=QVhrilWsfpQs3wVEFCZLtyNoE+h0TULThnIFEQJ+j0g=;
-        b=fo62wYOm2dbbM+K92Y6JNXCU5ntMXDBWC9kNM6t1JhnY+roJ5w0fSwzhCSACM6CUC2
-         cAHY2EdfvYYR3VXb6/3UnNiaLrgwYOAuRPYwcEu5cHS8Gr4MMV/49GUb5HeGk+EwvPUJ
-         4GxaF26YXijC8gwPf2wVGVoQHa0yhi8+A7KRld3fVTZ4/XPC+pBuN6SM35qcDNMeMF+Z
-         7kaTu12UBl6XJcqyRAlrKdz7PgFX1D1bC2LOW2sneAEwiL3fr3eZI3unIIX2GVq14OO9
-         X07iuXNaBHThZhSQBiZrW8keC1hKxyvDa4mpj3iNysIWVj3cBNj9w8OL/Q9CowWDUfZ7
-         N7iw==
+        bh=dlQQc7HElkZIfO3R+gpFmRPbT3x3I5lQIcYoP8PGYKk=;
+        b=KVjhiQbN3TdWNORID8pNnSkiQ1HAKKcHz8/Gvt5K9PyUSnKBGp0WE0fvCYQB078dgf
+         kF8ATYpyU1pclnjxkk3RWJ3kwcNh6yA3CEPjGUPGvSuP3uNnHxpM6DE0zhYXDf56ldlV
+         /KpF3BbsFwSRoVkc+Gps1Ujhwl/J5Xdd57omNNo4wD3UesZt2IyN5TPI/t+uhlqGDOyE
+         XZV7sPK7eId4h+6oGKJto2xG+SqzCHhF9T1/I6tmTDoq+LGAc7Lx/dH8Q6pFsefWycO8
+         1nZd0t51/a5pKnHD+Ao619u8PdSx5V57I7VEuivkADqfaojsnPTpyjOuJAy2wEQtcb6m
+         CXAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9si2534468ywh.263.2019.02.05.10.09.52
+        by mx.google.com with ESMTPS id s5si2442065ybb.229.2019.02.05.10.10.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Feb 2019 10:09:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Feb 2019 10:10:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36259 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36430 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gr5AO-0004Uz-44
-	for alex.bennee@linaro.org; Tue, 05 Feb 2019 13:09:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47228)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gr5Aw-0005hB-R7
+	for alex.bennee@linaro.org; Tue, 05 Feb 2019 13:10:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4cc-00013r-PB
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:35:00 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gr4cZ-000100-4o
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 12:34:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4cb-0004oB-3J
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:34:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48430)
+	(envelope-from <eric.auger@redhat.com>) id 1gr4cX-0004jY-9m
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 12:34:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40112)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gr4cV-0004bX-VB; Tue, 05 Feb 2019 12:34:53 -0500
+	id 1gr4cV-0004d5-Gw; Tue, 05 Feb 2019 12:34:52 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 49E98E6A7D;
-	Tue,  5 Feb 2019 17:34:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 44A11155E0;
+	Tue,  5 Feb 2019 17:34:40 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A949183EA;
-	Tue,  5 Feb 2019 17:34:29 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9C94457983;
+	Tue,  5 Feb 2019 17:34:37 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  5 Feb 2019 18:33:05 +0100
-Message-Id: <20190205173306.20483-18-eric.auger@redhat.com>
+Date: Tue,  5 Feb 2019 18:33:06 +0100
+Message-Id: <20190205173306.20483-19-eric.auger@redhat.com>
 In-Reply-To: <20190205173306.20483-1-eric.auger@redhat.com>
 References: <20190205173306.20483-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 05 Feb 2019 17:34:37 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 05 Feb 2019 17:34:40 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v6 17/18] hw/arm/boot: Expose the pmem nodes in
- the DT
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v6 18/18] hw/arm/virt: Add nvdimm and
+ nvdimm-persistence options
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HJd28+EB2ZiL
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +Z1CSV1/VDdj
 
-In case of NV-DIMM slots, let's add /pmem DT nodes.
+Machine option nvdimm allows to turn NVDIMM support on.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/boot.c | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+ hw/arm/virt.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 57 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 2a70e8aa82..b1aa866f07 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -454,6 +454,36 @@ out:
-     return ret;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0c8c2cc191..85ce9becdb 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1776,6 +1776,47 @@ static void virt_set_iommu(Object *obj, const char=
+ *value, Error **errp)
+     }
  }
 =20
-+static int fdt_add_pmem_node(void *fdt, uint32_t acells, hwaddr mem_base=
-,
-+                             uint32_t scells, hwaddr mem_len,
-+                             int numa_node_id)
++static bool virt_get_nvdimm(Object *obj, Error **errp)
 +{
-+    char *nodename =3D NULL;
-+    int ret;
++    VirtMachineState *vms =3D VIRT_MACHINE(obj);
 +
-+    nodename =3D g_strdup_printf("/pmem@%" PRIx64, mem_base);
-+    qemu_fdt_add_subnode(fdt, nodename);
-+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-region");
-+    ret =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, m=
-em_base,
-+                                       scells, mem_len);
-+    if (ret < 0) {
-+        fprintf(stderr, "couldn't set %s/reg\n", nodename);
-+        goto out;
-+    }
-+    if (numa_node_id < 0) {
-+        goto out;
-+    }
-+
-+    ret =3D qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", numa_no=
-de_id);
-+    if (ret < 0) {
-+        fprintf(stderr, "couldn't set %s/numa-node-id\n", nodename);
-+    }
-+
-+out:
-+    g_free(nodename);
-+    return ret;
++    return vms->acpi_nvdimm_state.is_enabled;
 +}
 +
- static void fdt_add_psci_node(void *fdt)
++static void virt_set_nvdimm(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms =3D VIRT_MACHINE(obj);
++
++    vms->acpi_nvdimm_state.is_enabled =3D value;
++}
++
++static char *virt_get_nvdimm_persistence(Object *obj, Error **errp)
++{
++    VirtMachineState *vms =3D VIRT_MACHINE(obj);
++
++    return g_strdup(vms->acpi_nvdimm_state.persistence_string);
++}
++
++static void virt_set_nvdimm_persistence(Object *obj, const char *value,
++                                        Error **errp)
++{
++    VirtMachineState *vms =3D VIRT_MACHINE(obj);
++    AcpiNVDIMMState *nvdimm_state =3D &vms->acpi_nvdimm_state;
++
++    if (strcmp(value, "cpu") =3D=3D 0)
++        nvdimm_state->persistence =3D 3;
++    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
++        nvdimm_state->persistence =3D 2;
++    else {
++        error_report("-machine nvdimm-persistence=3D%s: unsupported opti=
+on",
++                     value);
++        exit(EXIT_FAILURE);
++    }
++
++    g_free(nvdimm_state->persistence_string);
++    nvdimm_state->persistence_string =3D g_strdup(value);
++}
++
+ static CpuInstanceProperties
+ virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
  {
-     uint32_t cpu_suspend_fn;
-@@ -541,7 +571,8 @@ static int fdt_add_hotpluggable_memory_nodes(void *fd=
-t,
-         di =3D !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
+@@ -1818,13 +1859,14 @@ static void virt_memory_pre_plug(HotplugHandler *=
+hotplug_dev, DeviceState *dev,
+                                  Error **errp)
+ {
+     const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
+M);
++    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
 =20
-         if (is_nvdimm) {
--            ret =3D -ENOENT; /* NV-DIMM not yet supported */
-+            ret =3D fdt_add_pmem_node(fdt, acells, di->addr,
-+                                    scells, di->size, di->node);
-         } else {
-             ret =3D fdt_add_memory_node(fdt, acells, di->addr,
-                                       scells, di->size, di->node);
+     if (dev->hotplugged) {
+         error_setg(errp, "memory hotplug is not supported");
+     }
+=20
+-    if (is_nvdimm) {
+-        error_setg(errp, "nvdimm is not yet supported");
++    if (is_nvdimm && !vms->acpi_nvdimm_state.is_enabled) {
++        error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M=
+'");
+         return;
+     }
+=20
+@@ -2032,6 +2074,19 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+=20
++    object_property_add_bool(obj, "nvdimm",
++                             virt_get_nvdimm, virt_set_nvdimm, NULL);
++    object_property_set_description(obj, "nvdimm",
++                                         "Set on/off to enable/disable N=
+VDIMM "
++                                         "instantiation", NULL);
++
++    object_property_add_str(obj, "nvdimm-persistence",
++                            virt_get_nvdimm_persistence,
++                            virt_set_nvdimm_persistence, NULL);
++    object_property_set_description(obj, "nvdimm-persistence",
++                                    "Set NVDIMM persistence"
++                                    "Valid values are cpu and mem-ctrl",=
+ NULL);
++
+     vms->irqmap =3D a15irqmap;
+ }
+=20
 --=20
 2.20.1
 

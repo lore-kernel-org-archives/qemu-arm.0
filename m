@@ -1,83 +1,96 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5040586wrt;
-        Tue, 5 Feb 2019 09:54:50 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaLtJud/+Y8tpAtMZPkJqGsWk2jY+xUr9/G6cU9NZGuROer/UtrPm6/cQPfpH3BksoRA1ri
-X-Received: by 2002:a25:2b83:: with SMTP id r125mr4893226ybr.299.1549389289986;
-        Tue, 05 Feb 2019 09:54:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549389289; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5042704wrt;
+        Tue, 5 Feb 2019 09:57:14 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IboVwGvGPB4wZ3zTsov6NMs+W+lPIBcF/38OIFzOjF5kDzAV/0p2OIqDEOifZjkZbQgJK5/
+X-Received: by 2002:a81:1b44:: with SMTP id b65mr5076287ywb.393.1549389434175;
+        Tue, 05 Feb 2019 09:57:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549389434; cv=none;
         d=google.com; s=arc-20160816;
-        b=BVhE46RethfzjkWpJUvk+NOdXdpwt3SUGlZVYimkszp+zqEk3vw3oAft3ZvYM8fRX9
-         VY9UB5XW2CbeS/QwxfqYuAHMfG/LqV9+BzWw6FJgORaRbZZQUvongaZAo6gwdcfAr2HT
-         g06Gh51H6sFYdYZdspn/QsvT/1ILhT9xcamBoMSxqeqrew4aTnrbQZFnRSx6wHEesbUd
-         buyDHcK6k78WrScRxd45Jv+5m4xxfraLGlO4G7ieHhvWftNYik5vDy27hJltuq+gsiI5
-         DYbaNoPgJ5EJU0xl8Vn65up2bPSfaoRTyoT0DEPQOLu/r9acOGzqTYlHFctPC/ryCyVm
-         7qsw==
+        b=TysQ1JrajL5MlMn6mMU3MGHr0m2oowPHxHkwm7h2aBCvTEFwxkcwjobH1W1RozLYPX
+         lutb2ZC2mV+Syf3olIg/j6zELVL1GffMXMRP57/7lUupqqOw0mvLIOfOP/w57mo9OCkj
+         ffo0H2Q5vXUamsiAqKo82+90nLyF1hTDZ6NvBK8KdOagDjunvGmGBxq+JDvL32TnQvD6
+         MWLR8gyW6qreoIWiKQ3oz7Z7Q2/FwFMc//1xp5pOQ1uNFYbIGHrI0b7d4dddZDKKM8ry
+         Nnv09E/9Sq8zYBnR0eQKAHBzFELv1CTKt+WY08ua1bmV17X+RAlbLbBfvzuZ3whHWqiO
+         ZJUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=5Wz3IYAugv2cawEy5bhBT/UpVuoeHyMvbrsTEF5anoM=;
-        b=D9e6GU21gEVlhXGeJtjphq5z0KBbr8EAtNQ1s/OTJxsMSTKaLfKzC6kesw0HVd88ke
-         +UTDFs3RRjzPbEO+NAUeYt78KayRn0WreooMiC+BwyWvLT33f72XuqjrRF54g9CL9Gbs
-         WVBKicg65Va5SljIzrx0TF6BEC/riH7Y64MD0Wzy/gA91I0zBGuB55ChIUcn041fl+e7
-         PnW0z+KdWyk0ZjIJLpeYXBD4HDUH5/tPf5INcFLNhU1POGfL5vC3J9NHWh25AEkqVHFV
-         WhppKRsS+703GureerzXoe2eWd0pPq57nR1nprNuuKeBCylyK+1DEqRMSleSI1SDlOaC
-         OWDg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=GOSTi3s19iCszsGsZE7h9KTjRXOOszpIVlataz1Uw1Q=;
+        b=KvkRwclSonHRtieWV+6HP2L+S6EGZZK9lX/DqG4v+myYOn9TJNQB1/FGmTt3DcUz2m
+         1dgdv/Ob7xZaEyvsvgfBUd8+UK5f/fgnnho6e4PI/+GwC1BOemw3dr2kWiHOBaiiNNAR
+         B+zP4rQEKQOw85Aplo7kYkkTZ5fxXcl8iwwjySV9XGHJxnT6Df6/KcafMgJ+FJvtVeKy
+         F/dTj7v8PodsQcmuddCo8dCD8dRRAeoVizb53uO/RBE7QnFUQaBwc+NAninbewbbscqg
+         kk0vxi+ikcVoj4GlOdQcPQl+yzQK4imGe8X6X9xwsCL+8tWKvw9xCn95c8Obym3TyTj+
+         b2YQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sAbT9zfH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y189si2187702ywa.431.2019.02.05.09.54.49
+        by mx.google.com with ESMTPS id 1si13149ywm.10.2019.02.05.09.57.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Feb 2019 09:54:49 -0800 (PST)
+        Tue, 05 Feb 2019 09:57:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sAbT9zfH;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35993 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:36044 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gr4vp-0008Vk-EQ
-	for alex.bennee@linaro.org; Tue, 05 Feb 2019 12:54:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46638)
+	id 1gr4y9-0001tm-JP
+	for alex.bennee@linaro.org; Tue, 05 Feb 2019 12:57:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4bf-00009N-4r
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:33:59 -0500
+	(envelope-from <laurent.desnogues@gmail.com>) id 1gr4bl-0000J3-C0
+	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:34:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4bd-0004Hq-HU
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:33:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38990)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gr4bY-00043y-EX; Tue, 05 Feb 2019 12:33:53 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 655182D4B7E;
-	Tue,  5 Feb 2019 17:33:48 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B497E60A9D;
-	Tue,  5 Feb 2019 17:33:45 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  5 Feb 2019 18:32:55 +0100
-Message-Id: <20190205173306.20483-8-eric.auger@redhat.com>
-In-Reply-To: <20190205173306.20483-1-eric.auger@redhat.com>
-References: <20190205173306.20483-1-eric.auger@redhat.com>
+	(envelope-from <laurent.desnogues@gmail.com>) id 1gr4bk-0004Nm-OR
+	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:34:05 -0500
+Received: from mail-it1-x135.google.com ([2607:f8b0:4864:20::135]:36975)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
+	id 1gr4bg-0004Jx-SI; Tue, 05 Feb 2019 12:34:01 -0500
+Received: by mail-it1-x135.google.com with SMTP id b5so10294078iti.2;
+	Tue, 05 Feb 2019 09:34:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=GOSTi3s19iCszsGsZE7h9KTjRXOOszpIVlataz1Uw1Q=;
+	b=sAbT9zfHbnzb/bRe+qn7TBIQeLN9qGZihEmD/suFm6mhg2wmlVC6bKl0CHzwqbLF0h
+	/plR9DrxUO6nmZL19QsykCQXtDcDYmTBeQHIuCjZARDej8JjfLattc2vU+6ZBZwNgQTi
+	pJrUetzopduZ3O5yEzFMpRDtSJGWg5EpJyq6tT0Sl04yjiFu42Sc8AosNMgYVbLDiV0f
+	sKAsC2+wOaKmpQ/Yh9SHdj9Q/NF+Ce3XO+RIw6j0g5I6Yk6EMIGD9C9QO9RDxbiSjava
+	UNg6FLg+16ddKHmxLIQkqM6FNppoJ8AyBd7sbjpgQx8+Il4hd1q6MV2yD+7/AD8yhaPd
+	wYEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=GOSTi3s19iCszsGsZE7h9KTjRXOOszpIVlataz1Uw1Q=;
+	b=oN3vz10SfUkr7NCXnWMdlyaX1hijCYmiPNezwE7mvTVjmtALrRgNw4S4K+MSgJWzjt
+	d4AUHTlFYtcyH8ITg0LsHGaZI/Cc/haAuOzek+Wai60zDaqstf25mbjuvdDwKAcIy8rT
+	o9sZFOtnyihejc1UVQkRn6SroDMDckTbTT+qDv3i6OOWljGD/cIOsF31NirGzB0nW+uT
+	6L3QLB9TBp9div/6EEeMAtkaVuq486R1uft8tdX06i5RNXaR5jepnLnSpb5pKc7SE8MK
+	KL4wVTfpycA7S4OFQA1x/+RUsDadYNcrfBddNlpWge5xK8MUu3vgoDcXrMThih9a4QAy
+	/lwA==
+X-Gm-Message-State: AHQUAuYk7rUorWU0twPCXZ7LRxLgpzISPg2redPzEHaakNiAwP/E8X3v
+	goHZJePmb9JQ86j34oiANhJ1db0OXhTZaQBFp0k=
+X-Received: by 2002:a05:660c:fd2:: with SMTP id
+	m18mr3208084itn.1.1549388039282; 
+	Tue, 05 Feb 2019 09:33:59 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 05 Feb 2019 17:33:48 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v6 07/18] kvm: add kvm_arm_get_max_vm_phys_shift
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Tue, 5 Feb 2019 18:33:48 +0100
+Message-ID: <CABoDooNUh3SnTEN2-3d2NJf6E9d1tTMcfxxAqdD1On-qR4dbjA@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::135
+Subject: [Qemu-devel] ARM: another round of missed undefined instructions
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,94 +102,37 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l6MvU65vTrjE
+X-TUID: 4p8qkKRwaQEl
 
-Add the kvm_arm_get_max_vm_phys_shift() helper that returns the
-log of the maximum IPA size supported by KVM. This capability
-needs to be known to create the VM with a specific IPA max size
-(kvm_type passed along KVM_CREATE_VM ioctl.
+Hello,
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+here are some missed undefined instructions I skipped over last time
+(I had forgotten to enable FP16 support in QEMU):
 
----
-v4 -> v5:
-- return 40 if the host does not support the capability
+- disas_simd_across_lanes: for FP16 FMAX/FMINV/FMAXNMV/FMINNMV it
+should be checked that bit 0 of the size field is 0
 
-v3 -> v4:
-- s/s/ms in kvm_arm_get_max_vm_phys_shift function comment
-- check KVM_CAP_ARM_VM_IPA_SIZE extension
+- disas_simd_mod_imm: FP16 FMOV imm must have bit 29 = 0
 
-v1 -> v2:
-- put this in ARM specific code
----
- target/arm/kvm.c     | 10 ++++++++++
- target/arm/kvm_arm.h | 13 +++++++++++++
- 2 files changed, 23 insertions(+)
+- disas_simd_scalar_pairwise: FP16 FMAXP/FADPP/... must have bit 0 of
+the size field = 0
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index e00ccf9c98..fc1dd3ec6a 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -18,6 +18,7 @@
- #include "qemu/error-report.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
-+#include "sysemu/kvm_int.h"
- #include "kvm_arm.h"
- #include "cpu.h"
- #include "trace.h"
-@@ -162,6 +163,15 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     env->features =3D arm_host_cpu_features.features;
- }
-=20
-+int kvm_arm_get_max_vm_phys_shift(MachineState *ms)
-+{
-+    KVMState *s =3D KVM_STATE(ms->accelerator);
-+    int ret;
-+
-+    ret =3D kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
-+    return ret > 0 ? ret : 40;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     /* For ARM interrupt delivery is always asynchronous,
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 6393455b1d..0728bbfa6b 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -207,6 +207,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeature=
-s *ahcf);
-  */
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-=20
-+/**
-+ * kvm_arm_get_max_vm_phys_shift - Returns log2 of the max IPA size
-+ * supported by KVM
-+ *
-+ * @ms: Machine state handle
-+ */
-+int kvm_arm_get_max_vm_phys_shift(MachineState *ms);
-+
- /**
-  * kvm_arm_sync_mpstate_to_kvm
-  * @cpu: ARMCPU
-@@ -239,6 +247,11 @@ static inline void kvm_arm_set_cpu_features_from_hos=
-t(ARMCPU *cpu)
-     cpu->host_cpu_probe_failed =3D true;
- }
-=20
-+static inline int kvm_arm_get_max_vm_phys_shift(MachineState *ms)
-+{
-+    return -ENOENT;
-+}
-+
- static inline int kvm_arm_vgic_probe(void)
- {
-     return 0;
---=20
-2.20.1
+- disas_simd_three_reg_same_fp16: opcodes 5, b, c, d, 11, 19, 1b, 1f
+are unallocated
 
+- disas_simd_two_reg_misc_fp16: FRECPX is a scalar only instruction
+
+- disas_simd_two_reg_misc_fp16: FABS/FNEG/FSQRT are vector only instructions
+
+- disas_simd_two_reg_misc_fp16: the default clause should undef in the
+first switch statement
+
+- disas_simd_two_reg_misc_fp16:  FNEG should be removed from the scalar part.
+
+Hopefully that's all that was left...
+
+Thanks,
+
+Laurent

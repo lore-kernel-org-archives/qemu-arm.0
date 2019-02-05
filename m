@@ -1,84 +1,81 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5044732wrt;
-        Tue, 5 Feb 2019 09:59:50 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZZu556xUV/4gju1uMowLtUACJ6cvN5BLA1NodGKbO3tFR7HF2txnVUpFw640mGFiTGb+bO
-X-Received: by 2002:a25:404c:: with SMTP id n73mr5012061yba.27.1549389590844;
-        Tue, 05 Feb 2019 09:59:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549389590; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5045460wrt;
+        Tue, 5 Feb 2019 10:00:32 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ian2sQNYTZFZLi0z5aW+LURC4Ti5hDsB7AX5GUcNofJAUs58Lw637pMO4AVz8C79XgmtLTB
+X-Received: by 2002:a81:5d5:: with SMTP id 204mr5175734ywf.338.1549389632552;
+        Tue, 05 Feb 2019 10:00:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549389632; cv=none;
         d=google.com; s=arc-20160816;
-        b=QiU9W6sErv71rwxdm4hOojnxIK+AKfay7cF1EDtFw1agS3CZaZtjQapWbIiKEivyBC
-         NU9nThnVX4sMd6g2PoYUxxXxi/W+8EuNrrIWh+MX1vbQcxw6a42FG14wUk9O2G1uT9uv
-         OKdwwGphNoAzS38bqgRYl0M7uDU8AOlNXSpit1bvd+FHKFJ27CZupV+tgWhX0MuIMGXS
-         MtvJqxmbJ/lVv8HV4s2BTspWH1r+FQNH0X4oF9Gr1PUhmZm6pHJ//B8FcM1FbqHAp84W
-         lxJXJ9tMLfYwga4ZP4xj+CH9o4QFSpPFMks3/6eSTXjOLj0Gj6MvAbevnqcxSyE1ch9T
-         3h0g==
+        b=dnlFbwtJNidkeVjkmSV7AclpCP/PyHK/Zv/GyGQFLLiY4Tb0X7eAPk0XDCkbd2HlxX
+         ughSz19RbKULMIbPgjDnGkMgIZRLEE4TkGOsz1D+HJn/yJCXcrgzTfXX3GgYgSd4Euxw
+         mPJjlVQXDbdymxuuR3FBMywritqoqYGLLlAdY4dkpjfL0hcyPholx/DBX/6fcXxZByJ+
+         1CtR0xWXOja1J4icZy+4ebWcKw5uzkskwLLwVbpIXCbMO+IkkYZEkxsyJTHvf2y5J4xI
+         ddiVjOi0vZrmZ1BgHLGc6bdoa49hTUpPPMnc7Z/dpYBMItqj48QKAyzk68duaY2a1BLJ
+         eBFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=YX1rR2WRIJNCTb2sN5wUAkXe8c8AsqsWygnfaZZWwCY=;
-        b=cnDIzTSm7zVDfNfUp0W0rzMh9LeeDN0eAxrUfIexnMyzafTWphtCfRw+NzR7H75wCQ
-         hCBeX3nlbAeZCxx72fOBtsX7Aau0N5NplEVgvPO6epdMyfMk2SpqvoLLZHFBxOmxsIhh
-         T5cPXK/l0bDZ5d9JTxvVG3IknCLKkoXrKfydkZqj+t8QaNs9tHjaY2EvwTEDXBWLI2hv
-         qCAowEcPHF0J9TjnwZh+SZQ1QMPCUjHWZp3omqgcCiOztBOnHFYBSAb+4mT7rx7weN1t
-         0Qtgncrj+kP5ujdcVoCH55Bxhxztsy5F8gA/o6oEt3m9715Vgj1b3Tv3llgCe5neO3dZ
-         akDg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=GkpqS0FA0Co3tknmZZMkJKnKZRykX8P8cP2NSy3s+qM=;
+        b=edMUN5sVhFPoqzscfLPlNILy0RcXHw0T+8rFZ+igbE0sHH0uZ+WlK/uAuUdPVIhUZo
+         pbLbv1R3Trvcgh8Xu4Pj7kal19KLE1xisdBgEutSc9lnJKZ9MtmYxil16uVe1/eaiBlR
+         1z+CutP+fq5immrPS7GPqPIUd/zToQr/kwxBBl4LU3gGXcc4WD1vXooAhmX/EMfgGoG8
+         EO53Ah99FwOVxygWmU0VhDiKnot5s0DlXi+hSLasjvpFD57EgXiWIepc8Fb6boDZe8mp
+         pN1rvmGgjFNAlwxmGwXG0D9U0jCUh0+n2+FZoqQotiCWujnYlNNeSY+3Z4jKKOxSmljO
+         zk9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c16si1332592ywk.105.2019.02.05.09.59.50
+        by mx.google.com with ESMTPS id x6si2322233ybj.112.2019.02.05.10.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Feb 2019 09:59:50 -0800 (PST)
+        Tue, 05 Feb 2019 10:00:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36069 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36077 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gr50g-0004Qp-3q
-	for alex.bennee@linaro.org; Tue, 05 Feb 2019 12:59:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46689)
+	id 1gr51L-0004zA-Sp
+	for alex.bennee@linaro.org; Tue, 05 Feb 2019 13:00:31 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46408)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4bh-0000EB-Kd
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:34:02 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gr4bE-0008BA-NV
+	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:33:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4bg-0004Km-8g
-	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:34:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60195)
+	(envelope-from <eric.auger@redhat.com>) id 1gr4bC-0003tM-Ne
+	for qemu-devel@nongnu.org; Tue, 05 Feb 2019 12:33:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33370)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gr4bc-0004Ex-Hq; Tue, 05 Feb 2019 12:33:57 -0500
+	id 1gr4b4-0003m8-8A; Tue, 05 Feb 2019 12:33:24 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8E9AB58E59;
-	Tue,  5 Feb 2019 17:33:55 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 885CF80F83;
+	Tue,  5 Feb 2019 17:33:17 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A445717988;
-	Tue,  5 Feb 2019 17:33:48 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DF80F57988;
+	Tue,  5 Feb 2019 17:33:09 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  5 Feb 2019 18:32:56 +0100
-Message-Id: <20190205173306.20483-9-eric.auger@redhat.com>
-In-Reply-To: <20190205173306.20483-1-eric.auger@redhat.com>
-References: <20190205173306.20483-1-eric.auger@redhat.com>
+Date: Tue,  5 Feb 2019 18:32:48 +0100
+Message-Id: <20190205173306.20483-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 05 Feb 2019 17:33:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 05 Feb 2019 17:33:17 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v6 08/18] vl: Set machine ram_size,
- maxram_size and ram_slots earlier
+Subject: [Qemu-devel] [PATCH v6 00/18] ARM virt: Initial RAM expansion and
+ PCDIMM/NVDIMM support
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,48 +90,222 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SQh/rEGrDChk
+X-TUID: DN8D1i+TWxyB
 
-The machine RAM attributes will need to be analyzed during the
-configure_accelerator() process. especially kvm_type() arm64
-machine callback will use them to know how many IPA/GPA bits are
-needed to model the whole RAM range. So let's assign those machine
-state fields before calling configure_accelerator.
+This series aims to bump the 255GB RAM limit in machvirt and to
+support device memory in general, and especially PCDIMM/NVDIMM.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+In machvirt versions < 4.0, the initial RAM starts at 1GB and can
+grow up to 255GB. From 256GB onwards we find IO regions such as the
+additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
+MMIO region. The address map was 1TB large. This corresponded to
+the max IPA capacity KVM was able to manage.
 
----
+Since 4.20, the host kernel is able to support a larger and dynamic
+IPA range. So the guest physical address can go beyond the 1TB. The
+max GPA size depends on the host kernel configuration and physical CPUs.
 
-v4: new
----
- vl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+In this series we use this feature and allow the RAM to grow without
+any other limit than the one put by the host.
 
-diff --git a/vl.c b/vl.c
-index 9cf0fbe0b8..28f6bbebe2 100644
---- a/vl.c
-+++ b/vl.c
-@@ -4324,6 +4324,9 @@ int main(int argc, char **argv, char **envp)
-     machine_opts =3D qemu_get_machine_opts();
-     qemu_opt_foreach(machine_opts, machine_set_property, current_machine=
-,
-                      &error_fatal);
-+    current_machine->ram_size =3D ram_size;
-+    current_machine->maxram_size =3D maxram_size;
-+    current_machine->ram_slots =3D ram_slots;
-=20
-     configure_accelerator(current_machine, argv[0]);
-=20
-@@ -4521,9 +4524,6 @@ int main(int argc, char **argv, char **envp)
-     replay_checkpoint(CHECKPOINT_INIT);
-     qdev_machine_init();
-=20
--    current_machine->ram_size =3D ram_size;
--    current_machine->maxram_size =3D maxram_size;
--    current_machine->ram_slots =3D ram_slots;
-     current_machine->boot_order =3D boot_order;
-=20
-     /* parse features once if machine provides default cpu_type */
+The RAM still starts at 1GB. First comes the initial ram (-m) of size
+ram_size and then comes the device memory (,maxmem) of size
+maxram_size - ram_size. The device memory is potentially hotpluggable
+depending on the instantiated memory objects.
+
+IO regions previously located between 256GB and 1TB are moved after
+the RAM. Their offset is dynamically computed, depends on ram_size
+and maxram_size. Size alignment is enforced.
+
+In case maxmem value is inferior to 255GB, the legacy memory map
+still is used. The change of memory map becomes effective from 4.0
+onwards.
+
+As we keep the initial RAM at 1GB base address, we do not need to do
+invasive changes in the EDK2 FW. It seems nobody is eager to do
+that job at the moment.
+
+Device memory being put just after the initial RAM, it is possible
+to get access to this feature while keeping a 1TB address map.
+
+This series reuses/rebases patches initially submitted by Shameer
+in [1] and Kwangwoo in [2] for the PC-DIMM and NV-DIMM parts.
+
+Functionally, the series is split into 3 parts:
+1) bump of the initial RAM limit [1 - 10] and change in
+   the memory map
+2) Support of PC-DIMM [11 - 14]
+3) Support of NV-DIMM [15 - 18]
+
+1) can be upstreamed before 2 and 2 can be upstreamed before 3.
+
+Work is ongoing to transform the whole memory as device memory.
+However this move is not trivial and to me, is independent on
+the improvements brought by this series:
+- if we were to use DIMM for initial RAM, those DIMMs would use
+  use slots. Although they would not be part of the ones provided
+  using the ",slots" options, they are ACPI limited resources.
+- DT and ACPI description needs to be reworked
+- NUMA integration needs special care
+- a special device memory object may be required to avoid consuming
+  slots and easing the FW description.
+
+So I preferred to separate the concerns. This new implementation
+based on device memory could be candidate for another virt
+version.
+
+Best Regards
+
+Eric
+
+References:
+
+[0] [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
+http://patchwork.ozlabs.org/cover/914694/
+
+[1] [RFC PATCH 0/3] add nvdimm support on AArch64 virt platform
+https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg04599.html
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v3.1.0-dimm-v6
+
+Tests:
+- On HPE system, allocated a VM with 300GB initial RAM and 220 vcpus
+- tested on kernel versions not supporting variable IPA range
+- tested with different virt versions
+
+History:
+
+v5 -> v6:
+- mingw compilation issue fix
+- kvm_arm_get_max_vm_phys_shift always returns the number of supported
+  IPA bits
+- new patch "hw/arm/virt: Rename highmem IO regions" that eases the revie=
+w
+  of "hw/arm/virt: Split the memory map description"
+- "hw/arm/virt: Move memory map initialization into machvirt_init"
+  squashed into the previous patch
+- change alignment of IO regions beyond the RAM so that it matches their
+  size
+
+v4 -> v5:
+- change in the memory map
+- see individual logs
+
+v3 -> v4:
+- rebase on David's "pc-dimm: next bunch of cleanups" and
+  "pc-dimm: pre_plug "slot" and "addr" assignment"
+- kvm-type option not used anymore. We directly use
+  maxram_size and ram_size machine fields to compute the
+  MAX IPA range. Migration is naturally handled as CLI
+  option are kept between source and destination. This was
+  suggested by David.
+- device_memory_start and device_memory_size not stored
+  anymore in vms->bootinfo
+- I did not take into account 2 Igor's comments: the one
+  related to the refactoring of arm_load_dtb and the one
+  related to the generation of the dtb after system_reset
+  which would contain nodes of hotplugged devices (we do
+  not support hotplug at this stage)
+- check the end-user does not attempt to hotplug a device
+- addition of "vl: Set machine ram_size, maxram_size and
+  ram_slots earlier"
+
+v2 -> v3:
+- fix pc_q35 and pc_piix compilation error
+- kwangwoo's email being not valid anymore, remove his address
+
+v1 -> v2:
+- kvm_get_max_vm_phys_shift moved in arch specific file
+- addition of NVDIMM part
+- single series
+- rebase on David's refactoring
+
+v1:
+- was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+- was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+
+Best Regards
+
+Eric
+
+Alexey Kardashevskiy (1):
+  update-linux-headers.sh: Copy new headers
+
+Eric Auger (12):
+  linux-headers: Update to v5.0-rc2
+  hw/arm/virt: Rename highmem IO regions
+  hw/arm/virt: Split the memory map description
+  hw/boards: Add a MachineState parameter to kvm_type callback
+  kvm: add kvm_arm_get_max_vm_phys_shift
+  vl: Set machine ram_size, maxram_size and ram_slots earlier
+  hw/arm/virt: Implement kvm_type function for 4.0 machine
+  hw/arm/virt: Bump the 255GB initial RAM limit
+  hw/arm/virt: Add memory hotplug framework
+  hw/arm/virt: Allocate device_memory
+  hw/arm/boot: Expose the pmem nodes in the DT
+  hw/arm/virt: Add nvdimm and nvdimm-persistence options
+
+Kwangwoo Lee (2):
+  nvdimm: use configurable ACPI IO base and size
+  hw/arm/virt: Add nvdimm hot-plug infrastructure
+
+Shameer Kolothum (3):
+  hw/arm/boot: introduce fdt_add_memory_node helper
+  hw/arm/boot: Expose the PC-DIMM nodes in the DT
+  hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+
+ accel/kvm/kvm-all.c                           |    2 +-
+ default-configs/arm-softmmu.mak               |    4 +
+ hw/acpi/nvdimm.c                              |   28 +-
+ hw/arm/boot.c                                 |  120 +-
+ hw/arm/virt-acpi-build.c                      |   23 +-
+ hw/arm/virt.c                                 |  311 ++++-
+ hw/i386/pc_piix.c                             |    8 +-
+ hw/i386/pc_q35.c                              |    8 +-
+ hw/ppc/mac_newworld.c                         |    3 +-
+ hw/ppc/mac_oldworld.c                         |    2 +-
+ hw/ppc/spapr.c                                |    2 +-
+ include/hw/arm/virt.h                         |   21 +-
+ include/hw/boards.h                           |    2 +-
+ include/hw/mem/nvdimm.h                       |   12 +
+ include/standard-headers/drm/drm_fourcc.h     |   63 +
+ include/standard-headers/linux/ethtool.h      |   19 +-
+ .../linux/input-event-codes.h                 |   19 +
+ include/standard-headers/linux/pci_regs.h     |    1 +
+ .../standard-headers/linux/virtio_balloon.h   |    8 +
+ include/standard-headers/linux/virtio_blk.h   |   54 +
+ .../standard-headers/linux/virtio_config.h    |    3 +
+ include/standard-headers/linux/virtio_gpu.h   |   18 +
+ include/standard-headers/linux/virtio_ring.h  |   52 +
+ .../standard-headers/rdma/vmw_pvrdma-abi.h    |    1 +
+ linux-headers/asm-arm/unistd-common.h         |    1 +
+ linux-headers/asm-arm64/unistd.h              |    1 +
+ linux-headers/asm-generic/unistd.h            |   10 +-
+ linux-headers/asm-mips/sgidefs.h              |    8 -
+ linux-headers/asm-mips/unistd.h               | 1074 +----------------
+ linux-headers/asm-mips/unistd_n32.h           |  338 ++++++
+ linux-headers/asm-mips/unistd_n64.h           |  334 +++++
+ linux-headers/asm-mips/unistd_o32.h           |  374 ++++++
+ linux-headers/asm-powerpc/unistd.h            |  389 +-----
+ linux-headers/asm-powerpc/unistd_32.h         |  381 ++++++
+ linux-headers/asm-powerpc/unistd_64.h         |  372 ++++++
+ linux-headers/linux/kvm.h                     |   29 +
+ linux-headers/linux/vfio.h                    |   92 ++
+ linux-headers/linux/vhost.h                   |  113 +-
+ linux-headers/linux/vhost_types.h             |  128 ++
+ scripts/update-linux-headers.sh               |   11 +-
+ target/arm/kvm.c                              |   10 +
+ target/arm/kvm_arm.h                          |   13 +
+ vl.c                                          |    6 +-
+ 43 files changed, 2797 insertions(+), 1671 deletions(-)
+ create mode 100644 linux-headers/asm-mips/unistd_n32.h
+ create mode 100644 linux-headers/asm-mips/unistd_n64.h
+ create mode 100644 linux-headers/asm-mips/unistd_o32.h
+ create mode 100644 linux-headers/asm-powerpc/unistd_32.h
+ create mode 100644 linux-headers/asm-powerpc/unistd_64.h
+ create mode 100644 linux-headers/linux/vhost_types.h
+
 --=20
 2.20.1
 

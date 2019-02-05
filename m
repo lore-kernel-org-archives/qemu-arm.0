@@ -1,84 +1,104 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5056228wrt;
-        Tue, 5 Feb 2019 10:10:27 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaDEBTuHQSpliLGoijR6vrWcr6gG9nej9P85/6lOnLx2mYEBZpFNYhtop+UOdFdSEOBciU+
-X-Received: by 2002:a25:454:: with SMTP id 81mr5290793ybe.69.1549390227573;
-        Tue, 05 Feb 2019 10:10:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549390227; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5073753wrt;
+        Tue, 5 Feb 2019 10:29:47 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbsDdfWhMHce5nsKkhG7+AH8DtukaHrHFOUp9wivTQOWg4qrdQ46z9vznBTl7ZSbonzSU8U
+X-Received: by 2002:a81:d201:: with SMTP id x1mr5364826ywi.9.1549391387737;
+        Tue, 05 Feb 2019 10:29:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549391387; cv=none;
         d=google.com; s=arc-20160816;
-        b=JiiQcAxZ/qwsrXvXceZU42SVrdC+8cV9QIbDXwJqs2TU8DrctHJky0fL4jkb/w8Qtv
-         fzpljL9oEeuFN0Bbl1+Yin6PF6/LwTPJ8zlfwXCINDl5OXK8NH6EnM3y/ht4+CtLOHWA
-         TdKJ1VooX/tj6zn5gHrpa88dyqgMrBhxakF8zuYx5ZtsLpHjtfJ7fFuqbISoofUdPZ7i
-         L1uUkEtXjTZXkk0KqNGtkiQ+9dR9uP+/4bonx1HrJntUtrCp98OWgeY/KxBXu3cX6MGw
-         uSJOqzb8WRBXZJ/fKrPPVxlPA0ErN9/TNDJ3a22VuXtuu+Cz4AlxJa0t0EyWO/cAWWpv
-         HjwA==
+        b=yKhWir8M+QjjVTHD3mmmiIxAc2zLVxzY9Efl08M+HSl6vVVlv8aRWUrRCzzolDjuhO
+         KOsAkX8KCheeLkNIhEO4YtkgrD4h6k4DMA8zudRSyTCRH8n6tutgusmx/At8/oiQliS8
+         2P+dp5HrVIFxLkqMXQ6MfxM8fqBXuXDjXxT5aUU4erH19p5tGbaS2678D/T4lHk+yvGf
+         gvLXwOtShVh3Jf07ctCbfVbqt85ixvNm0h+1uywmpGBHLbnwUQ38VQNY6sJcaupaCMT4
+         RcAmxwxgLYLdJ58yzww4CpJVVtL9/SFhu68jIes0/DIVFn9gXbUBRSZcQavYldAc+kqw
+         skDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=dlQQc7HElkZIfO3R+gpFmRPbT3x3I5lQIcYoP8PGYKk=;
-        b=KVjhiQbN3TdWNORID8pNnSkiQ1HAKKcHz8/Gvt5K9PyUSnKBGp0WE0fvCYQB078dgf
-         kF8ATYpyU1pclnjxkk3RWJ3kwcNh6yA3CEPjGUPGvSuP3uNnHxpM6DE0zhYXDf56ldlV
-         /KpF3BbsFwSRoVkc+Gps1Ujhwl/J5Xdd57omNNo4wD3UesZt2IyN5TPI/t+uhlqGDOyE
-         XZV7sPK7eId4h+6oGKJto2xG+SqzCHhF9T1/I6tmTDoq+LGAc7Lx/dH8Q6pFsefWycO8
-         1nZd0t51/a5pKnHD+Ao619u8PdSx5V57I7VEuivkADqfaojsnPTpyjOuJAy2wEQtcb6m
-         CXAg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=M98p1uZhiAqbZbizsbvMNJKrarrSLsz1eMgBMbbzlI4=;
+        b=LwP4V1nMdWG3ucxaBLw2vu0PlOoGspAXUKcnRDkKw9Sshy0TBZQtUSpC7VJFefB6wm
+         Hgywy300rfkT66a/fcslN0Sm0prSvSXMXFnVUASTz2lk/fA/1PJIIfDScEF5eVhe6v+L
+         f72Q/042/TJjSnvssxUJI+xxyilDK4HWmfSukkHlmYTLGfSDXxfXI6hVAC9rXOAcntZC
+         B0DtqyMxEfzUdfx1dc3Pe/5568vxBlwd6vdJcYVNoq4WNoLcncREKkAkU9ZR68GsfpM/
+         +qb+8pDZ/whj/P+af0pooHFsrsOov0kziQTiRIjiw2JZNigK3Ca0lISExjDm6ZHxm7UL
+         SYJA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ifmSOh3a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si2442065ybb.229.2019.02.05.10.10.27
+        by mx.google.com with ESMTPS id c195si2386673ywc.457.2019.02.05.10.29.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Feb 2019 10:10:27 -0800 (PST)
+        Tue, 05 Feb 2019 10:29:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ifmSOh3a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36430 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:37485 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gr5Aw-0005hB-R7
-	for alex.bennee@linaro.org; Tue, 05 Feb 2019 13:10:26 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47119)
+	id 1gr5Tf-0005Rf-4O
+	for alex.bennee@linaro.org; Tue, 05 Feb 2019 13:29:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4cZ-000100-4o
-	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 12:34:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gr5Ct-0007cQ-48
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 13:12:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gr4cX-0004jY-9m
-	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 12:34:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40112)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gr4cV-0004d5-Gw; Tue, 05 Feb 2019 12:34:52 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 44A11155E0;
-	Tue,  5 Feb 2019 17:34:40 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9C94457983;
-	Tue,  5 Feb 2019 17:34:37 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  5 Feb 2019 18:33:06 +0100
-Message-Id: <20190205173306.20483-19-eric.auger@redhat.com>
-In-Reply-To: <20190205173306.20483-1-eric.auger@redhat.com>
-References: <20190205173306.20483-1-eric.auger@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gr5Cr-00016v-58
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 13:12:27 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:54445)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gr5Cp-00010I-3F
+	for qemu-arm@nongnu.org; Tue, 05 Feb 2019 13:12:23 -0500
+Received: by mail-wm1-x341.google.com with SMTP id a62so4668771wmh.4
+	for <qemu-arm@nongnu.org>; Tue, 05 Feb 2019 10:12:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=M98p1uZhiAqbZbizsbvMNJKrarrSLsz1eMgBMbbzlI4=;
+	b=ifmSOh3axv0hFEA807/rZPTgmj8qz8kbQpvEHX1HaeeWtmc6Rd//ONjltjyLVCjgTS
+	2G1UjXrBfvAla0JjxS30OG6VD1DgS0u+h1IXFP7t0X12pdGNRNAfi+x6L5vd39HTJxia
+	klbRoUT6a0gvpF9eHk8w1coG2Cr/x9aptfzOdhR7+CIRu1xgakYYgUaNctKNCZEfMHYw
+	sLoohNmJseUEAU+975kqY/Imzb9YqIFsSVNPFxfgOV+poYAKctG+8YBMQA+Z0xGZzlmx
+	TymB6r+rnyWtVbfx7FL8Qc4pNkF4DORqXQaUrmMbZs5v/Z/8TPfrie/jkmxEMhV8ibtz
+	C1aQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=M98p1uZhiAqbZbizsbvMNJKrarrSLsz1eMgBMbbzlI4=;
+	b=DiQvPZ+/zrdzRaIE4WIafzPY0FHII0EGel0S6jIGaUOq/Z3kdgFhqkdvOF4+6l60ku
+	+0cOk7FCRFYpWFkM/4RXxWfSoklFe7YRJzDUUDD9p2wfU2oAJoHD3LfQrQ3NA0RY7tY+
+	14+BCkQsvDSMIV622pvfxJBsugtIME7/BAWlNiNcmh+OSEORB8HnI/W3W7JGRF9GA9Fs
+	NLNOWFcDhig6r7MCiUXLAAsWTHJ1LxNa9VuUvY1FAEQ8docBT2dniGTrxIjR+5BEZDki
+	HUGluiShARkchty/guWxHSddPKNjFdRqIxML0Xl6gQ7DBf6zEfkdJ/bu4S0meQBiejJ0
+	aZJA==
+X-Gm-Message-State: AHQUAubJ+Duh+UEad6ekMCS7IGTh0KvMkCSWxPUMffsjc9w1400wfy+C
+	mhWvUakt3JmTScxcboFj7HN/e2rKiXmt+g==
+X-Received: by 2002:a1c:4b0b:: with SMTP id y11mr4903009wma.137.1549390341018; 
+	Tue, 05 Feb 2019 10:12:21 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	129sm26662086wmd.18.2019.02.05.10.12.19
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 05 Feb 2019 10:12:20 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue,  5 Feb 2019 18:12:18 +0000
+Message-Id: <20190205181218.8995-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 05 Feb 2019 17:34:40 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v6 18/18] hw/arm/virt: Add nvdimm and
- nvdimm-persistence options
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-arm] [PATCH] target/arm: Implement HACR_EL2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,114 +110,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Z1CSV1/VDdj
+X-TUID: r2S/FuYe2KN3
 
-Machine option nvdimm allows to turn NVDIMM support on.
+HACR_EL2 is a register with IMPDEF behaviour, which allows
+implementation specific trapping to EL2. Implement it as RAZ/WI,
+since QEMU's implementation has no extra traps. This also
+matches what h/w implementations like Cortex-A53 and A57 do.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 57 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0c8c2cc191..85ce9becdb 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1776,6 +1776,47 @@ static void virt_set_iommu(Object *obj, const char=
- *value, Error **errp)
-     }
- }
-=20
-+static bool virt_get_nvdimm(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+
-+    return vms->acpi_nvdimm_state.is_enabled;
-+}
-+
-+static void virt_set_nvdimm(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+
-+    vms->acpi_nvdimm_state.is_enabled =3D value;
-+}
-+
-+static char *virt_get_nvdimm_persistence(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+
-+    return g_strdup(vms->acpi_nvdimm_state.persistence_string);
-+}
-+
-+static void virt_set_nvdimm_persistence(Object *obj, const char *value,
-+                                        Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+    AcpiNVDIMMState *nvdimm_state =3D &vms->acpi_nvdimm_state;
-+
-+    if (strcmp(value, "cpu") =3D=3D 0)
-+        nvdimm_state->persistence =3D 3;
-+    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
-+        nvdimm_state->persistence =3D 2;
-+    else {
-+        error_report("-machine nvdimm-persistence=3D%s: unsupported opti=
-on",
-+                     value);
-+        exit(EXIT_FAILURE);
-+    }
-+
-+    g_free(nvdimm_state->persistence_string);
-+    nvdimm_state->persistence_string =3D g_strdup(value);
-+}
-+
- static CpuInstanceProperties
- virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- {
-@@ -1818,13 +1859,14 @@ static void virt_memory_pre_plug(HotplugHandler *=
-hotplug_dev, DeviceState *dev,
-                                  Error **errp)
- {
-     const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
-M);
-+    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-=20
-     if (dev->hotplugged) {
-         error_setg(errp, "memory hotplug is not supported");
-     }
-=20
--    if (is_nvdimm) {
--        error_setg(errp, "nvdimm is not yet supported");
-+    if (is_nvdimm && !vms->acpi_nvdimm_state.is_enabled) {
-+        error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M=
-'");
-         return;
-     }
-=20
-@@ -2032,6 +2074,19 @@ static void virt_instance_init(Object *obj)
-                                     "Valid values are none and smmuv3",
-                                     NULL);
-=20
-+    object_property_add_bool(obj, "nvdimm",
-+                             virt_get_nvdimm, virt_set_nvdimm, NULL);
-+    object_property_set_description(obj, "nvdimm",
-+                                         "Set on/off to enable/disable N=
-VDIMM "
-+                                         "instantiation", NULL);
-+
-+    object_property_add_str(obj, "nvdimm-persistence",
-+                            virt_get_nvdimm_persistence,
-+                            virt_set_nvdimm_persistence, NULL);
-+    object_property_set_description(obj, "nvdimm-persistence",
-+                                    "Set NVDIMM persistence"
-+                                    "Valid values are cpu and mem-ctrl",=
- NULL);
-+
-     vms->irqmap =3D a15irqmap;
- }
-=20
---=20
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d070879894c..f09f815578e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4434,6 +4434,9 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "HACR_EL2", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 7,
++      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "ESR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 0,
+       .access = PL2_RW,
+@@ -4666,6 +4669,9 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
+       .writefn = hcr_writelow },
++    { .name = "HACR_EL2", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 7,
++      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "ELR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 1,
+-- 
 2.20.1
 

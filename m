@@ -1,111 +1,160 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6069559wrt;
-        Wed, 6 Feb 2019 07:28:23 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibl1ITO+wB86r4sQ/vsNqX8A2cIp1UsreVsYQNFi8eBoIn8Giz70pz1RSusfJX6YdQfg2GS
-X-Received: by 2002:a05:6000:104b:: with SMTP id c11mr8504552wrx.303.1549466903067;
-        Wed, 06 Feb 2019 07:28:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549466903; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp6070122wrt;
+        Wed, 6 Feb 2019 07:28:54 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZG05K5Df3usvseIk1NzOQwKdYFresy08QCkdzj0hYuyeeSoEFCf2X9d3B72Ohkd7In9YFd
+X-Received: by 2002:a5d:4d11:: with SMTP id z17mr8043129wrt.209.1549466934009;
+        Wed, 06 Feb 2019 07:28:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549466934; cv=none;
         d=google.com; s=arc-20160816;
-        b=SLMAsaRqFOT8pmCFQAq1U/h4Xdt5m09TtJBbodxu4GkWSk8I2OAXZLdGelNU6R0rg1
-         4RyY45HEHShWbh24jhVXHqUlfreQSWDWJ0D9ENKdL7UDdv3i0vRJELecUEfn+6fqkG3W
-         dOiue2tL2Uk+A/CFRp2odjbmcgCD31UaxtedGMuMPFV5MaUuTZGgcKvL0doL/6PXVJpR
-         e/AZaGCFQO5/9K2XhCOD5Eb1Hcp5oYaEw6zezyqfBw+z/vhD2Cl+nhIZY5z39B44niZS
-         +yqowLxWXRVSqKeSem1uoZ6DkrjjD7DbpHh9xrWP4Ox1KbedNm04yPR1EzPHs3kgEcLh
-         OF7A==
+        b=H8ODvF2hLt3krcQmNUUzmZZnhbVOU5X8dz7OjgqLv0YSdS6PA56hdCvoh09VBYyGRa
+         q+0fOeHkHdLsgAuUKTtwWHBYmvH7SG7UUOiwVSEP4390hPbQYa5/8OOiSAlJnj9Okh6S
+         kGcK7qoY80GpIUKrRPyBMxcouxpSa7o7/qHK2LNqKm0kkGOKfWjNq+TWm8ahQppe4sk/
+         4vOp3dOW8NeZsgZhTGY2YxuOAJrhK4UA0oyj0aGjE5xpQY77cIDrkrVTzO1S2Hh4baKX
+         w5itisJLoI7xxyrmvp/K1GNSKLkT48sa0W1eVkL8jN4nrifEU/J95rGbVNj6Rrrg4tyy
+         1riw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=dc6ELhCeVUThgGLdHk4jYTOuPhcXJ4nM9dtjJ7OUTRU=;
-        b=QW5QmzC/rWctGNjs+dEdO/1C1OYE1BJszcM4eBjV8hdZ6YFx0J2KKwxj0W8a2mnWum
-         nEqh9hKctwSQdUbAe7XKtMvzZYVDN9IPv0a5DqRgLyTTdht2mxBGEMNvY4mLLqpM4M8L
-         wgidQpO1omLIrpiiocmaMUAheSUfSEHVKu1/UBzmLlP8qlnz/jVxZlnpptZUoGkKLtWL
-         w4d3IYOm62w8FbMesYNCJRotVnB8p8q/qL0AIH5lZ62aQcF4+SYFMhQOMtEQRWggMiFR
-         IFXDG9PLyAt0Io2eRGH3ArIFlocMClaXRmbSimdoN5Ad8RYZwJwbqNQS50xjodEGIQY7
-         4Mqg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=P8Tlr6CL1+YozalSOKU6ldx/HWMmBGvLz/iNl8xNFmo=;
+        b=PgVdSI3pd5h2Hdzf33Je7/FeRi0UdoTX7UoKZlvvn+5mqHeJrO6VAJhDu6J720gGzv
+         ckDbg2jqdp0Kpa7FljDCoxZ3iUOJbs7ULojFBMPjqCX6um1W8Tkr62tdm3hry8MbnA/9
+         xmKTKHljYbWQA3rP9aOfiMutwBDIh2tiNnmo+Lw1KXXrp/RQjSZs84ogxP81aEwOp6/u
+         g7C40stI1xDJGCjueP9FkV+E9Y7k1jOFb6BzFaTec/gff+Bcxr3mr32HAc7DndWQDapT
+         8IUt4zwYdkB8dvnBHz2zALlzH2cG1j0SttygBwqkIeGyMHarSJwJiYny92dAj29AQkAH
+         0QlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
-        by mx.google.com with ESMTPS id y68si12005357wmc.147.2019.02.06.07.28.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Feb 2019 07:28:23 -0800 (PST)
-Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r1si652867wro.194.2019.02.06.07.28.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 06 Feb 2019 07:28:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:52606 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1grP89-0008Vb-1c
+	for alex.bennee@linaro.org; Wed, 06 Feb 2019 10:28:53 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55753)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <laurent@vivier.eu>) id 1grP7u-0008VQ-KX
+	for qemu-arm@nongnu.org; Wed, 06 Feb 2019 10:28:39 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <laurent@vivier.eu>) id 1grP7k-0004LL-T9
+	for qemu-arm@nongnu.org; Wed, 06 Feb 2019 10:28:30 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:46841)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1grP7i-0004KE-TE; Wed, 06 Feb 2019 10:28:27 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MKsaz-1gYtjh21YT-00LDQP; Wed, 06 Feb 2019 16:28:16 +0100
+	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1MLi4W-1gZjkF0OWW-00HdzY; Wed, 06 Feb 2019 16:28:15 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-trivial@nongnu.org,
-	Anthony Green <green@moxielogic.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	qemu-arm@nongnu.org,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eric Blake <eblake@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PULL 1/7] qemu-common.h: Update copyright string for 2019
-Date: Wed,  6 Feb 2019 16:28:01 +0100
-Message-Id: <20190206152807.31896-2-laurent@vivier.eu>
+Date: Wed,  6 Feb 2019 16:28:00 +0100
+Message-Id: <20190206152807.31896-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190206152807.31896-1-laurent@vivier.eu>
-References: <20190206152807.31896-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FxcW8Sbtvzn7pG9lhKTO7bT45vhL3DRvt26w18Fw9BB+hhujV4d
- 4YEout9mI8xg6+/zoKBmhkvhD/XPdNDcO2B7djPEe7YM3acTIaHwF53qdSiCYwymEMfI3tC
- +W2MwbJLhQ012RfqK9TbXQM20XRWqIXbmY28xe9XkKczdgzn6jijXRqiWzMSx83lu9euZmc
- UMCSTvVY6cloBBDgDYbzw==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gXltWkK9geg=:Ro4Ih6JrW9jLPYEFHmFtWJ
- BX0Z6E8mpQs2NwRda3C3eEDnYu1zH2MJZ1rbhuSm6jQbA9Tufd18zDwMiHD6jUorQob2wjG65
- CQq/MRTHTTpeot/lqVZguhhhD/Sbr6TCwz88LGx7eCRfpYsLWsaAJ3hTnfFP2YKeqqWveg63k
- kCy/I0Rs6dgV6hQpnfGC5gEiyx5854/DZwigh+Af8NkbTUlt4TwPKpddle2L30g8xjTsGhBf7
- srTx244hD5GC9tF0ho3KkBQKyGaUArM37PgyjYjUTyYQ7X+9PFEM7TAaGh1PVc9M1vpJm3vZY
- fWLm198BKAHgd6dBNkz/Hy9AscAT6z4RS+MM5jysETWcEl3r9geg6GfT8X+ElKBcBsEufrM1c
- PrECp28Cdz6nSwi0f6Yv8Uzi89mq9UkmKqieLG/PmV8ISNTMiFDkCCcyoTNwEW2AkrXYny0fo
- oggDhPHjX9G+0so03lE48A8wrbAvjK2ApBKb+b7KxWQNyVvCRVwXW+uci6Ec9Uk49PDiMgg7u
- 9oCjoAH57424PfdbtwQF96rBh5ecdP1cc5GiiVvWbUVvHL4kGVwdnf9Jl3uGcoCPJAH3US5c+
- tA2W/QUo9iA03L8NUlOspbX8f/lt/FJ4JyyI2Kvxik3uwMF3PlLrU29wYppgazUZfWLslmq3O
- JFStrbLAR8htN0NFjGTFxisOcDIH/RdalPGwrQ+M8/PLn7G1YiuraYbefAEYOTsKUCdOHCobY
- vHPKaUZUN72V4wRg4GDl0f7OACiEFh7HLdPCXC4002up/0Ew2K3FN9EedN4=
-X-TUID: HY2/tHICkQnO
+X-Provags-ID: V03:K1:1WV4LHov9H9VzI4geQyG7/VDJuvJVIT/0FzqbTmcyY13bJiZHhz
+	FZhMyT1Ljm8EZC+9WvHBArpxWSJ3TpLr0WFLCpoDiVt6wvf7Uu6cf3KW3KUV9Ak5yjPjPiD
+	JXZmGyJI1zhvYcKF8/4ftClR7TAi1pqnkcxShBirgoksjzWJQt/2K7utqC6GzjEZuyceqFG
+	YzJfzR2gBbQ0mf/dy3Zgg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gls5uUnZpsc=:KWtERISnbZ4ih/3Cex+Vlz
+	e88sTUcug9qjF9LLvTi8ZjRPkqRobfDmUr8ol0GiuX82XujUckv8pI7g4aFAcIOR3EQ8xAcnZ
+	v5lF6OA7tATQQfV/Ls31NxoE41oI0Cn0Xb9x0fdA7Mym5kk4RdxLOBfsfk+xWk3wWMU13AadV
+	lGm1b1r/XSzGgIcI+X6WnJfAeeLet4WsThobg8fR1s9TLy5gSMxyxtgbLgAOWzfRUGZAqSBA9
+	WDgt6GqH8zkXvzbTeZ89fszq4oLbs18b4+Y0/VSKZVC56JDYoPNwovZAGRNiKzi8ywR6oddf1
+	znLPTjlkEXwaj2RZlIgXWIFh4yWQRCypEz3ENJSyFnV3TN/uk1k3BQQgDmvkJO7YRouBLrxSO
+	XA84nhHp6zVU2R+VHHU3ERlf/exouljAYR3VKwQAX4VSF8XNSNsl7G8rHC2gCtpbpIm/BJDu3
+	VN1gCKEFE+XynYkLZqJ+5QPPEqTZCmZvJyu1Br1ce5owBJ8y+lKl6aLJl4CENmFSo4QJzlr5/
+	pYWQhOmChKg2z/qEGodHT+iXWX74dYbrbCGPBXs/Pqkg2XosmzH9AckGye5eFJH+XIgmz/KVk
+	nhDF3anEEH2/jzSWRIHLWn8OsiEzZl2NpVfNiFM4dZOnS9E0ekgrbJYEU42srWSo8+w9CeWbb
+	HDCiSEWewyg38qxHXhi9sesMrk3tJ7Pc2QFIiTDuhvrjZJCqKJNtADai+PJ4XFqJVqAJNIb55
+	uIgFkRNqCv23sLeDy52GXBxhaDB7ta8RevVemw+IKpfCq+rQ9SHsxZJuOWg=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.130
+Subject: [Qemu-arm] [PULL 0/7] Trivial patches patches
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Anthony Green <green@moxielogic.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Andrzej Zaborowski <balrogg@gmail.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1U7jdIogoKTE
 
-From: Peter Maydell <peter.maydell@linaro.org>
+The following changes since commit 47994e16b1d66411953623e7c0bf0cdcd50bd507:
 
-Update the copyright string we use in version/help output,
-since we're well into the new year now.
+  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20190205' into staging (2019-02-05 18:25:07 +0000)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20190201173655.4567-1-peter.maydell@linaro.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- include/qemu-common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+are available in the Git repository at:
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index ed60ba251d..a102245519 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -17,7 +17,7 @@
- #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
- 
- /* Copyright string for -version arguments, About dialogs, etc */
--#define QEMU_COPYRIGHT "Copyright (c) 2003-2018 " \
-+#define QEMU_COPYRIGHT "Copyright (c) 2003-2019 " \
-     "Fabrice Bellard and the QEMU Project developers"
- 
- /* Bug reporting information for --help arguments, About dialogs, etc */
+  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+
+for you to fetch changes up to e67e91b4b55331973f783ca89790ee9f7861ced1:
+
+  hw/input/tsc210x: Fix building with no verbosity (2019-02-06 15:57:06 +0100)
+
+----------------------------------------------------------------
+Trivial patches:
+* Update copyright
+* Fix LGPL in target/moxie
+* configure portability fix
+* Drop useless inclusion of "hw/i386/pc.h"
+* Mark the cpu-cluster device with user_creatable = false
+* tsc210x: Fix building with no verbosity
+
+----------------------------------------------------------------
+
+Eric Blake (1):
+  configure: Avoid non-portable 'test -o/-a'
+
+Peter Maydell (1):
+  qemu-common.h: Update copyright string for 2019
+
+Philippe Mathieu-Daudé (3):
+  hw/sparc64/sun4u: Drop useless inclusion of "hw/i386/pc.h"
+  hw/unicore32/puv3: Drop useless inclusion of "hw/i386/pc.h"
+  hw/input/tsc210x: Fix building with no verbosity
+
+Thomas Huth (2):
+  target/moxie: Fix LGPL information in the file headers
+  hw/cpu/cluster: Mark the cpu-cluster device with user_creatable =
+    false
+
+ configure                | 63 +++++++++++++++++++++-------------------
+ hw/cpu/cluster.c         |  3 ++
+ hw/input/tsc210x.c       | 18 ++++--------
+ hw/sparc64/sun4u.c       |  1 -
+ hw/unicore32/puv3.c      |  1 -
+ include/qemu-common.h    |  2 +-
+ target/moxie/cpu.c       |  2 +-
+ target/moxie/cpu.h       |  4 +--
+ target/moxie/helper.c    |  4 +--
+ target/moxie/mmu.c       |  4 +--
+ target/moxie/translate.c |  4 +--
+ 11 files changed, 52 insertions(+), 54 deletions(-)
+
 -- 
 2.20.1
+

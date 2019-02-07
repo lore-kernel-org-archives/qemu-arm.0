@@ -1,94 +1,98 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp698819wrt;
-        Thu, 7 Feb 2019 07:32:15 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYhBSx6ITcnHXPSLYKYuJO3hft3FiYBo30znEtP5atN77kPHZrQ66hcAE26lDfDo3c1NJ6p
-X-Received: by 2002:a25:40c1:: with SMTP id n184mr1340543yba.158.1549553535184;
-        Thu, 07 Feb 2019 07:32:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549553535; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp725796wrt;
+        Thu, 7 Feb 2019 07:58:17 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ1Ocdl8rgwlbZ/Z6FlBolAMH+XU/OJ2wLv5+3r/OEv9yDaJNfoUCuq9YaKauvTWr7FcOpo
+X-Received: by 2002:a81:7355:: with SMTP id o82mr11357150ywc.400.1549555097486;
+        Thu, 07 Feb 2019 07:58:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549555097; cv=none;
         d=google.com; s=arc-20160816;
-        b=nq9yjN9dximjq2m7NO/4Sjv8fcl3o4B9GpvjM/KO+Y6ANqn4qLVA01OegKz8w2i3C1
-         fksLg3DamrvXHX9UCWX3CX1eCMecRNkWWHApyM7tp0OEKbUYf88aml3D6DRN2Al0BWgI
-         qx7PywZjWOgcqb6HA/cVhar6T0vm+40aB1+Bm4oXukJ56dqhDDuq+aV5uiI3QffrY+9d
-         2TeM6r2zOXrlR903LYn9id0yOYv6agMrZlKk1O2j5H308u7UzhUSFjykUoVbZElgiamz
-         3mkoTlhkL3nc9whjJxXwq+SRIONdTOt270ZL1nAYE0tqbLKf5F05uRrG6WKc1OkU56fA
-         LfPQ==
+        b=XzCCtLzkJQWR2+1VVCsWn/2yINCVDQmygSAd5906hIrPd15vLKzlVRxB/PTQ+edNFK
+         KV1GA6rhNewj5GozQa8JqfC9aS3moKurr/M2IVvS9MKXePcG3Q+ByYP//188NYBpA2bl
+         3/0Qjq8EccoFzkNm4knyXBgFAQmgQc+/geYPkNxBeJ4lGSOI1RFVHt0LvERHrHjtcrQE
+         i9kOM8TWoOvz2vtESZ7siHC8Ovsan+OqBwD7qZdHnzlkVRovM1Vg1YTCyBFU4vImhhxW
+         v+gXhuw0JPznqUbUYzR0I+CqukVwM923NtDXtD+KX6VH/oyjNVHzVxQn094pKqH1T173
+         dj+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=CatiifzXgfKVPDOU9Ivv4c5HJq6yozfMvG/QQISYzJA=;
-        b=Lervp5NOynPcNpzHVctBWkFqostpGKHRHox0Cn3Rhmc/rs8xY4ALgxfomhUgwfjEW7
-         Y+PGsOBY4P5DHalILAUKRwU7q65T3mcECHdRpBjCjvXCUam9APdKX/VEq82nNMaZ4K+a
-         4BEFteWVYqm+yUIIY+r4x+AmjWUNa5TWXS8mbt2R8HHVgt52J6dVgUkdZRnEAaopAYzQ
-         EJaboJxEyzOK47SX6OlhKB45vZ/XVvppO77aYc5+odGnCAgCTwQmR1UZ2f1CMwA/vjNi
-         mFOsFbUYrQ8Qsh5Un89fhinAD5r7XMQVVxGduupOcakdF8W/opa9q9EiQnlhXx8fLTZg
-         sQAA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=h2QTy97fPqApKshu4c3gq4F5JCAemWG+eOW7k9hcPb4=;
+        b=nMaJFRVy5eMSoplQyLYChkUscPGXd9oVUmIiI+z74LEhjNIxh/ewyB+Fo5sxB9MeX7
+         h865FRugJZGHmeH3K1z8WByjYl1vob7LJh+oAqAMX57fcSJNRgW2RpfHPE6+0/SSOqo4
+         BvQrJ5ENHfZ+pm+Pko0448czyEvwUbWVEotWKbd0iVTre5t82ow0QDqyyw63kr2obBm8
+         Yrtl4VWoychXkHvMlJV/tMJXhtNLMpctyK9U4+faH440+blRtgvtQL2a1IESykf3Mvch
+         NzjnxfW0jbx9DNRWHsIT044/2i0xAjlB7J0rf0kFalqc8QscWL0WolQyqCkRFDV8xX2H
+         mmZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CXfVbFZJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c204si5819344yba.318.2019.02.07.07.32.15
+        by mx.google.com with ESMTPS id g125si1482690ywe.357.2019.02.07.07.58.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Feb 2019 07:32:15 -0800 (PST)
+        Thu, 07 Feb 2019 07:58:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CXfVbFZJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42165 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:42477 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1grlew-00021h-Mb
-	for alex.bennee@linaro.org; Thu, 07 Feb 2019 10:32:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52361)
+	id 1grm48-00052w-U5
+	for alex.bennee@linaro.org; Thu, 07 Feb 2019 10:58:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57887)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1grleq-00021a-My
-	for qemu-arm@nongnu.org; Thu, 07 Feb 2019 10:32:09 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1grm3y-000522-TF
+	for qemu-arm@nongnu.org; Thu, 07 Feb 2019 10:58:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1grlek-0008Sv-Mv
-	for qemu-arm@nongnu.org; Thu, 07 Feb 2019 10:32:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34310)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1grlei-0008PA-MP; Thu, 07 Feb 2019 10:32:01 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 30DDE5859C;
-	Thu,  7 Feb 2019 15:25:22 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CCC062998;
-	Thu,  7 Feb 2019 15:25:10 +0000 (UTC)
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"david@redhat.com" <david@redhat.com>
-References: <20190205173306.20483-1-eric.auger@redhat.com>
-	<20190205173306.20483-11-eric.auger@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392B2D8D@lhreml524-mbs.china.huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <49dfe0ee-7afb-6639-3a4e-f4317073feba@redhat.com>
-Date: Thu, 7 Feb 2019 16:25:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1grm3y-0008FV-0I
+	for qemu-arm@nongnu.org; Thu, 07 Feb 2019 10:58:06 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35962)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1grm3x-0008Ek-PS
+	for qemu-arm@nongnu.org; Thu, 07 Feb 2019 10:58:05 -0500
+Received: by mail-ot1-x343.google.com with SMTP id k98so606610otk.3
+	for <qemu-arm@nongnu.org>; Thu, 07 Feb 2019 07:58:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=h2QTy97fPqApKshu4c3gq4F5JCAemWG+eOW7k9hcPb4=;
+	b=CXfVbFZJuRbFpnT7Nh+sLREI6U8TFBWcelQygQWHGXtmwJ2EoVKWuemzO2Fv0x6Qt7
+	SvEvxP4asMjeGzB6z/MkKJCKnwWVSGDpXxKBVgtCk7MaXfDNY6aaT92tDP51t+6wT1FB
+	4NOjhSuSXg8fnrVw+ZmTyh4NAu7vd4rUpCKf7tP4FVJs5nKnKNiLFJ1JIgbmR/PBqvIf
+	2Ff8CLlN+rppl0RRiTWP1WbWhK15dh+nPTGvfdQSBiRGts5+WWmC6CM+9rqK/SfpGwiN
+	3kG3owviBsDciIXDbV69l2aeEAd/HD6c9zKaHMk1rOirAw5/qEX6i/9QFy7zdg4u0zM8
+	fr4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=h2QTy97fPqApKshu4c3gq4F5JCAemWG+eOW7k9hcPb4=;
+	b=Ui0i65WXGljpIrCV0d753ADjFd1qFvZ3ldO2qpcJQcw+auKUdbskdjyOdyw1spcrPE
+	lgMFrZmfcrgkysbN9LcuEmUOn4F4IprFX25ljC9Wk9SZ8DPyvYkE/lKDGioc3VQjcIoS
+	KMzLE263H/sdGwKzf5T6bP/o2kXeHKvQF/sAF1xq3ohThxNVKnaJw5dPf22foHdFjp70
+	PPzp9H2y60WBbKmVSTpa1uZ+JYo+R2ytzryHZx8p9sBxyS7kjcMpYpiWB6bqyvfSUT83
+	Q2RdLdAxBSEzLtKJAtUohJU6oVTffXi98ZEAMuoQctqmXYNq06mcDqaUhcDyyUm5jFZn
+	ekfQ==
+X-Gm-Message-State: AHQUAuZHhjREZVAUT8mrntP1wRtdMpXJJgDclUfJZ9qJuOfmAPB7+YbD
+	aXfK517xatEuJPPHJ357FaQaRD8C2y2dWz/ana0KdA==
+X-Received: by 2002:a9d:3a22:: with SMTP id j31mr9131709otc.238.1549555084594; 
+	Thu, 07 Feb 2019 07:58:04 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8392B2D8D@lhreml524-mbs.china.huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 07 Feb 2019 15:25:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v6 10/18] hw/arm/virt: Bump the 255GB initial
- RAM limit
+References: <20190114011122.5995-1-richard.henderson@linaro.org>
+	<20190114011122.5995-5-richard.henderson@linaro.org>
+In-Reply-To: <20190114011122.5995-5-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Feb 2019 15:57:52 +0000
+Message-ID: <CAFEAcA_EWtyqOnsropKbsmAnoZc60H339u5YtoLbx6H6m-K3sQ@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH 04/17] target/arm: Fill in helper_mte_check
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,104 +104,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "drjones@redhat.com" <drjones@redhat.com>,
-	"dgilbert@redhat.com" <dgilbert@redhat.com>,
-	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E+o8ylAOHbZb
+X-TUID: ASHBTWxTU4e0
 
-Hi Shameer,
+On Mon, 14 Jan 2019 at 01:11, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Implements the rules of "PE generation of Checked and
+> Unchecked accesses" which aren't already covered by XXX.
 
-On 2/7/19 4:19 PM, Shameerali Kolothum Thodi wrote:
-> Hi Eric,
-> 
->> -----Original Message-----
->> From: Eric Auger [mailto:eric.auger@redhat.com]
->> Sent: 05 February 2019 17:33
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
->> qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
->> Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
->> imammedo@redhat.com; david@redhat.com
->> Cc: dgilbert@redhat.com; david@gibson.dropbear.id.au; drjones@redhat.com
->> Subject: [PATCH v6 10/18] hw/arm/virt: Bump the 255GB initial RAM limit
->>
->> Now we have the extended memory map (high IO regions beyond the
->> scalable RAM) and dynamic IPA range support at KVM/ARM level
->> we can bump the legacy 255GB initial RAM limit. The actual maximum
->> RAM size now depends on the physical CPU and host kernel.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/arm/virt.c | 26 +++++++-------------------
->>  1 file changed, 7 insertions(+), 19 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index b90ffc2e5d..f01886da22 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -93,22 +93,9 @@
->>
->>  #define PLATFORM_BUS_NUM_IRQS 64
->>
->> -/* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
->> - * RAM can go up to the 256GB mark, leaving 256GB of the physical
->> - * address space unallocated and free for future use between 256G and 512G.
->> - * If we need to provide more RAM to VMs in the future then we need to:
->> - *  * allocate a second bank of RAM starting at 2TB and working up
->> - *  * fix the DT and ACPI table generation code in QEMU to correctly
->> - *    report two split lumps of RAM to the guest
->> - *  * fix KVM in the host kernel to allow guests with >40 bit address spaces
->> - * (We don't want to fill all the way up to 512GB with RAM because
->> - * we might want it for non-RAM purposes later. Conversely it seems
->> - * reasonable to assume that anybody configuring a VM with a quarter
->> - * of a terabyte of RAM will be doing it on a host with more than a
->> - * terabyte of physical address space.)
->> - */
->> -#define RAMLIMIT_GB 255
->> -#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
->> +/* Legacy RAM limit in GB (< version 4.0) */
->> +#define LEGACY_RAMLIMIT_GB 255
->> +#define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
->>
->>  /* Addresses and sizes of our components.
->>   * 0..128MB is space for a flash device so we can run bootrom code such as
->> UEFI.
->> @@ -149,7 +136,7 @@ static const MemMapEntry a15memmap[] = {
->>      [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
->>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
->>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
->> -    [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
->> +    [VIRT_MEM] =                { 0x40000000,
->> LEGACY_RAMLIMIT_BYTES },
->>  };
->>
->>  /*
->> @@ -1483,8 +1470,9 @@ static void machvirt_init(MachineState *machine)
->>
->>      vms->smp_cpus = smp_cpus;
->>
->> -    if (machine->ram_size > vms->memmap[VIRT_MEM].size) {
->> -        error_report("mach-virt: cannot model more than %dGB RAM",
->> RAMLIMIT_GB);
->> +    if (!vms->extended_memmap && machine->ram_size >
->> LEGACY_RAMLIMIT_GB) {
-> 
-> Just hit this while testing, should this check be against LEGACY_RAMLIMIT_BYTES?
-Definitively, my mistake. Thank you for spotting that.
+What should the "XXX" be here ?
 
-Thanks
+> Implements the rules of "PE handling of Tag Check Failure".
+>
+> Does not implement tag physical address space, so all
+> operations reduce to unchecked so far.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/mte_helper.c | 80 ++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 79 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+> index a3226c44a4..6f4bc0aa04 100644
+> --- a/target/arm/mte_helper.c
+> +++ b/target/arm/mte_helper.c
+> @@ -25,8 +25,86 @@
+>  #include "exec/helper-proto.h"
+>
+>
+> +static int get_allocation_tag(CPUARMState *env, uint64_t ptr)
+> +{
+> +    /* Tag storage not implemented.  */
+> +    return -1;
+> +}
+> +
+> +static int allocation_tag_from_addr(uint64_t ptr)
+> +{
+> +    return (extract64(ptr, 56, 4) + extract64(ptr, 55, 1)) & 15;
+> +}
+> +
+>  uint64_t HELPER(mte_check)(CPUARMState *env, uint64_t ptr)
+>  {
+> -    /* Only unchecked implemented so far.  */
+> +    ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
+> +    ARMVAParameters param = aa64_va_parameters(env, ptr, mmu_idx, true);
+> +    int ptr_tag, mem_tag;
+> +
+> +    /*
+> +     * If TBI is disabled, then the access is unchecked.
+> +     * While we filtered out TBI0==0 && TBI1==0 in cpu_get_tb_cpu_state,
+> +     * we did not save separate bits for TBI0 != TBI1.
+> +     */
+> +    if (!param.tbi) {
+> +        /* Do not ignore the top byte.  */
+> +        return ptr;
+> +    }
+> +
+> +    /*
+> +     * If TCMA is enabled, then physical tag 0 is unchecked.
+> +     * Note the rules R0076 & R0077 are written with logical tags,
+> +     * and we need the physical tag below anyway.
+> +     */
+> +    ptr_tag = allocation_tag_from_addr(ptr);
+> +    if (param.tcma && ptr_tag == 0) {
+> +        goto pass;
+> +    }
+> +
+> +    /*
+> +     * If an access is made to an address that does not provide tag storage,
+> +     * the result is implementation defined (R0006).  We choose to treat the
+> +     * access as unchecked.
+> +     * This is similar to MemAttr != Tagged, which are also unchecked.
+> +     */
+> +    mem_tag = get_allocation_tag(env, ptr);
+> +    if (mem_tag < 0) {
+> +        goto pass;
+> +    }
+> +
+> +    /* If the tags do not match, the tag check operation fails.  */
+> +    if (ptr_tag != mem_tag) {
+> +        int el = arm_current_el(env);
+> +        int tcf;
+> +
+> +        /* Indicate the tag check fail, both async and sync reporting.  */
+> +        env->cp15.tfsr_el[el] |= 1 << param.select;
 
-Eric
-> 
-> Thanks,
-> Shameer
-> 
->> +        error_report("mach-virt: cannot model more than %dGB RAM",
->> +                     LEGACY_RAMLIMIT_GB);
->>          exit(1);
->>      }
->>
->> --
->> 2.20.1
-> 
+We should only update the TFSR bits if we're not taking a fault
+(ie if tcf == 2).
+
+> +
+> +        if (el == 0) {
+> +            /* FIXME: ARMv8.1-VHE S2 translation regime.  */
+> +            tcf = extract64(env->cp15.sctlr_el[1], 38, 2);
+> +        } else {
+> +            tcf = extract64(env->cp15.sctlr_el[el], 40, 2);
+> +        }
+> +        if (tcf == 1) {
+> +            /* Tag check fail causes a synchronous exception.  */
+> +            CPUState *cs = ENV_GET_CPU(env);
+> +
+> +            /*
+> +             * In restore_state_to_opc, we set the exception syndrome
+> +             * for the load or store operation.  Do that first so we
+> +             * may overwrite that with the syndrome for the tag check.
+> +             */
+> +            cpu_restore_state(cs, GETPC(), true);
+> +            env->exception.vaddress = ptr;
+> +            raise_exception(env, EXCP_DATA_ABORT,
+> +                            syn_data_abort_no_iss(el != 0, 0, 0, 0, 0, 0x11),
+> +                            exception_target_el(env));
+> +        }
+> +    }
+> +
+> + pass:
+> +    /* Unchecked, or tag check pass.  Ignore the top byte.  */
+>      return sextract64(ptr, 0, 55);
+>  }
+
+Remarks from earlier patch still apply about the 'unchecked or check pass'
+code path needing to do the usual TBI stuff.
+
+thanks
+-- PMM

@@ -1,76 +1,77 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r12sm26882504wrq.3.2019.02.07.10.45.05
+        by smtp.gmail.com with ESMTPSA id n9sm9537wrx.80.2019.02.07.12.55.51
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Feb 2019 10:45:06 -0800 (PST)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3B5651FF8D;
-	Thu,  7 Feb 2019 18:37:45 +0000 (UTC)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH  v2 13/16] tests/vm: call make check directly for netbsd/freebsd/ubuntu.i386
-Date: Thu,  7 Feb 2019 18:37:41 +0000
-Message-Id: <20190207183744.5054-14-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190207183744.5054-1-alex.bennee@linaro.org>
-References: <20190207183744.5054-1-alex.bennee@linaro.org>
+        Thu, 07 Feb 2019 12:55:51 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D4A9D1FF80;
+	Thu,  7 Feb 2019 20:55:50 +0000 (UTC)
+References: <20190130004811.27372-1-cota@braap.org> <20190130004811.27372-39-cota@braap.org>
+User-agent: mu4e 1.0; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "Emilio G. Cota" <cota@braap.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH v6 38/73] arm: convert to cpu_interrupt_request
+In-reply-to: <20190130004811.27372-39-cota@braap.org>
+Date: Thu, 07 Feb 2019 20:55:50 +0000
+Message-ID: <87h8dfmi7d.fsf@zen.linaroharston>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: vb4pBtYtau5+
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: XfO8lI4A3/Lu
 
-The "make check" target calls check-qtest which has the appropriate
-system binaries as dependencies so we shouldn't need to do two steps
-of make invocation. Doing it in two steps was a hangover from when our
-make check couldn't run tests in parallel.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/vm/freebsd     | 1 -
- tests/vm/netbsd      | 1 -
- tests/vm/ubuntu.i386 | 1 -
- 3 files changed, 3 deletions(-)
+Emilio G. Cota <cota@braap.org> writes:
 
-diff --git a/tests/vm/freebsd b/tests/vm/freebsd
-index 19a3729172..a85c866c30 100755
---- a/tests/vm/freebsd
-+++ b/tests/vm/freebsd
-@@ -25,7 +25,6 @@ class FreeBSDVM(basevm.BaseVM):
-         cd $(mktemp -d /var/tmp/qemu-test.XXXXXX);
-         tar -xf /dev/vtbd1;
-         ./configure {configure_opts};
--        gmake --output-sync -j{jobs} {verbose};
-         gmake --output-sync -j{jobs} check {verbose};
-     """
- 
-diff --git a/tests/vm/netbsd b/tests/vm/netbsd
-index fac6a7ce51..edea113bb5 100755
---- a/tests/vm/netbsd
-+++ b/tests/vm/netbsd
-@@ -25,7 +25,6 @@ class NetBSDVM(basevm.BaseVM):
-         cd $(mktemp -d /var/tmp/qemu-test.XXXXXX);
-         tar -xf /dev/rld1a;
-         ./configure --python=python2.7 {configure_opts};
--        gmake --output-sync -j{jobs} {verbose};
-         gmake --output-sync -j{jobs} check {verbose};
-     """
- 
-diff --git a/tests/vm/ubuntu.i386 b/tests/vm/ubuntu.i386
-index 1b7e1ab8f0..252e514859 100755
---- a/tests/vm/ubuntu.i386
-+++ b/tests/vm/ubuntu.i386
-@@ -26,7 +26,6 @@ class UbuntuX86VM(basevm.BaseVM):
-         sudo chmod a+r /dev/vdb;
-         tar -xf /dev/vdb;
-         ./configure {configure_opts};
--        make --output-sync -j{jobs};
-         make --output-sync check -j{jobs} {verbose};
-     """
- 
--- 
-2.20.1
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
+<snip>
+>
+> -    /* Hooks may change global state so BQL should be held, also the
+> -     * BQL needs to be held for any modification of
+> -     * cs->interrupt_request.
+> -     */
+> +    /* Hooks may change global state so BQL should be held */
+>      g_assert(qemu_mutex_iothread_locked());
+>
+>      arm_call_pre_el_change_hook(cpu);
+
+So I dug into this and currently the only user is pmu_pre_el_change
+which updates a bunch of the performance counters. While profiling the
+system running the other thing that showed up was:
+
+  void HELPER(set_cp_reg)(CPUARMState *env, void *rip, uint32_t value)
+  {
+      const ARMCPRegInfo *ri =3D rip;
+
+      if (ri->type & ARM_CP_IO) {
+          qemu_mutex_lock_iothread();
+          ri->writefn(env, ri, value);
+          qemu_mutex_unlock_iothread();
+      } else {
+          ri->writefn(env, ri, value);
+      }
+  }
+
+And friends. I'm wondering now if these are candidates for using CPU
+locks. We mention it in out docs (which might be a little out of date now):
+
+  MMIO access automatically serialises hardware emulation by way of the
+  BQL. Currently ARM targets serialise all ARM_CP_IO register accesses
+  and also defer the reset/startup of vCPUs to the vCPU context by way
+  of async_run_on_cpu().
+
+for registers that affect things like the GIC that can have cross-vCPU
+effects I suspect the race free IRQ raising might be enough. Are we over
+locking if only a vCPU can read/write it's own CP regs?
+
+Peter any thoughts?
+
+Anyway as far as this patch goes:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--
+Alex Benn=C3=A9e

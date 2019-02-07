@@ -1,152 +1,78 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u3sm90545wrq.21.2019.02.07.10.37.48
+        by smtp.gmail.com with ESMTPSA id r12sm26872714wrq.3.2019.02.07.10.37.48
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 07 Feb 2019 10:37:53 -0800 (PST)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 16C1D1FF8A;
+	by zen.linaroharston (Postfix) with ESMTP id 2EF621FF8C;
 	Thu,  7 Feb 2019 18:37:45 +0000 (UTC)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 10/16] tests: docker.py be even smarter with persistent binfmt_misc
-Date: Thu,  7 Feb 2019 18:37:38 +0000
-Message-Id: <20190207183744.5054-11-alex.bennee@linaro.org>
+Subject: [PATCH  v2 12/16] tests/vm: move images to $HOME/.cache/qemu-vm/images
+Date: Thu,  7 Feb 2019 18:37:40 +0000
+Message-Id: <20190207183744.5054-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190207183744.5054-1-alex.bennee@linaro.org>
 References: <20190207183744.5054-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jNYlwR0vcDam
+X-TUID: +bqEr56kypz1
 
-If we have a persistent mapping we don't need the QEMU binary copied
-into the container as the kernel has already opened the file and will
-pass the fd in. However the support libraries will still need to be
-there.
+From: Gerd Hoffmann <kraxel@redhat.com>
 
+It's easier to move around the images then, by replacing the
+subdirectory with a symlink.  Allows to share the images between
+multiple qemu checkouts for example.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/docker.py | 56 ++++++++++++++++++++++++++++--------------
- 1 file changed, 38 insertions(+), 18 deletions(-)
+ tests/vm/Makefile.include | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/tests/docker/docker.py b/tests/docker/docker.py
-index 768728785f..a74338cb61 100755
---- a/tests/docker/docker.py
-+++ b/tests/docker/docker.py
-@@ -96,13 +96,22 @@ def _get_so_libs(executable):
+diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+index a98fb3027f..a58383d263 100644
+--- a/tests/vm/Makefile.include
++++ b/tests/vm/Makefile.include
+@@ -3,7 +3,8 @@
+ .PHONY: vm-build-all vm-clean-all
  
-     return libs
+ IMAGES := ubuntu.i386 freebsd netbsd openbsd centos
+-IMAGE_FILES := $(patsubst %, tests/vm/%.img, $(IMAGES))
++IMAGES_DIR := $(HOME)/.cache/qemu-vm/images
++IMAGE_FILES := $(patsubst %, $(IMAGES_DIR)/%.img, $(IMAGES))
  
--def _copy_binary_with_libs(src, dest_dir):
--    """Copy a binary executable and all its dependent libraries.
-+def _copy_binary_with_libs(src, bin_dest, dest_dir):
-+    """Maybe copy a binary and all its dependent libraries.
-+
-+    If bin_dest isn't set we only copy the support libraries because
-+    we don't need qemu in the docker path to run (due to persistent
-+    mapping). Indeed users may get confused if we aren't running what
-+    is in the image.
+ .PRECIOUS: $(IMAGE_FILES)
  
-     This does rely on the host file-system being fairly multi-arch
--    aware so the file don't clash with the guests layout."""
-+    aware so the file don't clash with the guests layout.
-+    """
+@@ -24,9 +25,10 @@ vm-build-all: $(addprefix vm-build-, $(IMAGES))
+ vm-clean-all:
+ 	rm -f $(IMAGE_FILES)
  
--    _copy_with_mkdir(src, dest_dir, "/usr/bin")
-+    if bin_dest:
-+        _copy_with_mkdir(src, dest_dir, os.path.dirname(bin_dest))
-+    else:
-+        print("only copying support libraries for %s" % (src))
+-tests/vm/%.img: $(SRC_PATH)/tests/vm/% \
+-		$(SRC_PATH)/tests/vm/basevm.py \
+-		$(SRC_PATH)/tests/vm/Makefile.include
++$(IMAGES_DIR)/%.img:	$(SRC_PATH)/tests/vm/% \
++			$(SRC_PATH)/tests/vm/basevm.py \
++			$(SRC_PATH)/tests/vm/Makefile.include
++	@mkdir -p $(IMAGES_DIR)
+ 	$(call quiet-command, \
+ 		$< \
+ 		$(if $(V)$(DEBUG), --debug) \
+@@ -37,7 +39,7 @@ tests/vm/%.img: $(SRC_PATH)/tests/vm/% \
  
-     libs = _get_so_libs(src)
-     if libs:
-@@ -116,21 +125,26 @@ def _check_binfmt_misc(executable):
  
-     The details of setting up binfmt_misc are outside the scope of
-     this script but we should at least fail early with a useful
--    message if it won't work."""
-+    message if it won't work.
-+
-+    Returns the configured binfmt path and a valid flag. For
-+    persistent configurations we will still want to copy and dependent
-+    libraries.
-+    """
- 
-     binary = os.path.basename(executable)
-     binfmt_entry = "/proc/sys/fs/binfmt_misc/%s" % (binary)
- 
-     if not os.path.exists(binfmt_entry):
-         print ("No binfmt_misc entry for %s" % (binary))
--        return None
-+        return None, False
- 
-     with open(binfmt_entry) as x: entry = x.read()
- 
-     if re.search("flags:.*F.*\n", entry):
-         print("binfmt_misc for %s uses persistent(F) mapping to host binary\n" %
-               (binary))
--        return None
-+        return None, True
- 
-     m = re.search("interpreter (\S+)\n", entry)
-     interp = m.group(1)
-@@ -138,7 +152,8 @@ def _check_binfmt_misc(executable):
-         print("binfmt_misc for %s does not point to %s, using %s" %
-               (binary, executable, interp))
- 
--    return interp
-+    return interp, True
-+
- 
- def _read_qemu_dockerfile(img_name):
-     # special case for Debian linux-user images
-@@ -345,7 +360,8 @@ class BuildCommand(SubCommand):
- 
-             # Validate binfmt_misc will work
-             if args.include_executable:
--                if not _check_binfmt_misc(args.include_executable):
-+                qpath, enabled = _check_binfmt_misc(args.include_executable)
-+                if not enabled:
-                     return 1
- 
-             # Is there a .pre file to run in the build context?
-@@ -368,7 +384,9 @@ class BuildCommand(SubCommand):
-                 # FIXME: there is no checksum of this executable and the linked
-                 # libraries, once the image built any change of this executable
-                 # or any library won't trigger another build.
--                _copy_binary_with_libs(args.include_executable, docker_dir)
-+                _copy_binary_with_libs(args.include_executable,
-+                                       qpath, docker_dir)
-+
-             for filename in args.extra_files or []:
-                 _copy_with_mkdir(filename, docker_dir)
-                 cksum += [(filename, _file_checksum(filename))]
-@@ -400,14 +418,16 @@ class UpdateCommand(SubCommand):
-         tmp_tar = TarFile(fileobj=tmp, mode='w')
- 
-         # Add the executable to the tarball, using the current
--        # configured binfmt_misc path.
--        ff = _check_binfmt_misc(args.executable)
--        if not ff:
--            bn = os.path.basename(args.executable)
--            ff = "/usr/bin/%s" % bn
--            print ("No binfmt_misc configured: copied to %s" % (ff))
--
--        tmp_tar.add(args.executable, arcname=ff)
-+        # configured binfmt_misc path. If we don't get a path then we
-+        # only need the support libraries copied
-+        ff, enabled = _check_binfmt_misc(args.executable)
-+
-+        if not enabled:
-+            print("binfmt_misc not enabled, update disabled")
-+            return 1
-+
-+        if ff:
-+            tmp_tar.add(args.executable, arcname=ff)
- 
-         # Add any associated libraries
-         libs = _get_so_libs(args.executable)
+ # Build in VM $(IMAGE)
+-vm-build-%: tests/vm/%.img
++vm-build-%: $(IMAGES_DIR)/%.img
+ 	$(call quiet-command, \
+ 		$(SRC_PATH)/tests/vm/$* \
+ 		$(if $(V)$(DEBUG), --debug) \
 -- 
 2.20.1

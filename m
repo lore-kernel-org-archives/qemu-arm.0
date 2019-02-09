@@ -1,160 +1,159 @@
-Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp343869wrq;
-        Thu, 7 Feb 2019 14:01:22 -0800 (PST)
-X-Received: by 2002:a5d:690d:: with SMTP id t13mr14698889wru.195.1549576882893;
-        Thu, 07 Feb 2019 14:01:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549576882; cv=none;
+Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp292225wrq;
+        Fri, 8 Feb 2019 22:40:39 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZDX13+VvxgIF0OPoPwfvuHypzgjCjaPCx3TIPh1u+PeHzRrAk42p63IUPcl3eeIhIEQSrP
+X-Received: by 2002:a5d:6244:: with SMTP id m4mr18869712wrv.314.1549694439305;
+        Fri, 08 Feb 2019 22:40:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549694439; cv=none;
         d=google.com; s=arc-20160816;
-        b=T4lK8t1vHd07XsV+e6SJW5adN+LTmJhvKcANZg20+UVxAKIV37gobMECO3pmKRCvp0
-         uJn5U7NdVseHWB+K+R5lQpZXtcNUoL4YiS04SA+fv2shqZ7ABnvUCqtBI2/poBi3MIqd
-         vSsE/qLj7d7XdEpC/9mMNJaGkj8+di6V1CUD6Y9U7DFwaafpisojODfM6ndBelXnhbKi
-         fLsGDiCSbYxg8USnnnAVXPM0J2FfeS6VaHPrSTNnDZMzvEn2z2S+Mn00Ue+MUKoOzoGF
-         sDyUN5r6MPEgeYRfvjz9PMWompCe0kIV951JX+iU9OkqtdXVBLNW12/2cr2+Y4s8GI8U
-         TE5A==
+        b=ELf/dgPhyaMQykutX+8RnZ1Dz3NbaK5EqUs2liIOmbgyfwSW7vMSBqS4osAxwN7ham
+         KRAqMw+eT9VkP6vRifqcmDIUOqXddLRp7ipTbMWjpda8m2SuCNSFQ7X/S2tr8gBeaxrb
+         x28+4Dx27MZTOLhwAErkhDYB11LM5W+OBM6Aqu/P0ouq6PLgMJqdxduXBgVJcJzYOrW0
+         ZhpxUsf8nWqs6o9rCuvYmeV9lTbjeajLxFrCiZnImY03KB1SShyBq88QOrYfFGdEEoro
+         y8hLS+sCnPiT8qze41EMXBVV7+ZiMYn3Z31EWH6JN9VQm7ocHhZ7o92O3B5Ol6zpcFZb
+         yg6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=effcbpWzdXybaN+N2GTHgOjaNhH61WlOl3sno/4wBdE=;
-        b=TFTc2BAVVmp263ypSSnqZXUlGG4c2IEVQ4iFXm4QapYQcOuFygCLpBg+2hNFxnbSeI
-         p+Oot13puCX9Njfb81liYlBSNSjcQGOxdpjyd74VdKGHysXMllBZOlHhstjNvEAgJDsD
-         J8eDCgpZtOlk3tOXyKFJoRS92ZGLGpYNzZGdyzOHJVq/HS6wMz/2ivsJP1El4FrxZFGL
-         ftIbL41wx3WzWLLJZSBV4V9D1R2/A+y6oK1u9Rto+z8Vh0jY3Mx22s0TGiNBkstLogT8
-         Izckc7rw6G7BRQ3TpCi20fpPY+KKX9JPvT6ODeVjgFdHP2Xo/7zK4PGrxalEGfPTzual
-         /SCw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=44kjqtSQEpgLpbUbukKYMReAOCUkoBPs7Kwe0Wo4vx8=;
+        b=p0IC3D/W3+jm26Y4EC1yRflTeEPhSdChavoqb5ISGv/zPMhowAYIqHAl/E9Gvnr6Pq
+         /tA0foczGSvDbyf/qyd3dQcnbE7xuiP2C84Qc5S7AFJMhbJTbky8Y4h2C7B0UZE6LBd2
+         ExUI4pgVc0BD3gEwMTmCBuh4HLsW9IJSYHu6R9Y48YBBXVYbIcCTrxgdpxVp7YBQciA4
+         PM34+oQklRlFLMxNqPIOKdUfAdC9T9Nnzgxs1lf9Z8SXA17Qb4i/zy6pVEgbLnQ9yZ4p
+         00HTLcTppJ2og1xVUNx3pXnqJpEqlkoLUzLzpN5AagmKy6MytP4vc15JZOBmK6OuSMqF
+         z39A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h13sor351447wmd.3.2019.02.07.14.01.22
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z77si3626698wmc.15.2019.02.08.22.40.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 07 Feb 2019 14:01:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 08 Feb 2019 22:40:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=effcbpWzdXybaN+N2GTHgOjaNhH61WlOl3sno/4wBdE=;
-        b=oopg5S+Dds48DsrQfdLpw9528unokU6kVDjaIy/Af1G6SO1vEZJqmf4S9/kIj1wJLU
-         jkFBWUMU12vn0PUnlPncXFcompg2HKgEZMAvu0u5nuV2Yq4qPqug3phpZCYYHC7AMjai
-         aVUGM97e29o4F4OL29s0l1P1gGZ0fPIwmo+WrcBtisTaHigbJ5A/JuNDKjEiMhW1jOKg
-         djT0PJTY6aQD+OHPzVd9EgbjS7YOLF9vC4H48SjwCMgT18n1QepGTY1m87+vSBfGOncv
-         TtWI5kF8HwMddNPSUstDP+O6tn0sFgcAvWeTu2X1WTDMWeYpXV3+foKVZB5mxWNIuEzU
-         fdVQ==
-X-Gm-Message-State: AHQUAuaBEW/inNF8In7S+7SCBojh2ZhnNIc2FAxORSRtkJ/FUrjOKoO4
-	zOikHq6HO1wE7KDIFKhI6cZMxA==
-X-Google-Smtp-Source: AHgI3Iai/h5roPXdL9NQWigZ1eFGyuKHh/37QSkq+8Q6e6lPj3UcMf81mWgQ2tVfCrSRCtaFGSeKew==
-X-Received: by 2002:a1c:96ce:: with SMTP id y197mr9423192wmd.36.1549576882541;
-        Thu, 07 Feb 2019 14:01:22 -0800 (PST)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net. [83.35.153.10])
-        by smtp.gmail.com with ESMTPSA id l6sm145627wrv.70.2019.02.07.14.01.21
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Feb 2019 14:01:21 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v2 00/16] current testing/next queue (with
- build fixes)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-arm@nongnu.org
-References: <20190207183744.5054-1-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <8cd5c316-f912-7184-f854-c892a4391990@redhat.com>
-Date: Thu, 7 Feb 2019 23:01:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:41436 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gsMJa-0003xI-AR
+	for alex.bennee@linaro.org; Sat, 09 Feb 2019 01:40:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41785)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1gsMIv-0003W0-9M
+	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 01:39:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1gsMIt-0003Oa-0q
+	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 01:39:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60162)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gsMIs-0003BP-LX; Sat, 09 Feb 2019 01:39:54 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E59853DE0F;
+	Sat,  9 Feb 2019 06:39:33 +0000 (UTC)
+Received: from thuth.com (ovpn-116-16.ams2.redhat.com [10.36.116.16])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D58E85B6A4;
+	Sat,  9 Feb 2019 06:39:29 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	yang.zhong@intel.com,
+	pbonzini@redhat.com
+Date: Sat,  9 Feb 2019 07:39:01 +0100
+Message-Id: <1549694366-1284-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190207183744.5054-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: JFbna7rzQ5Vs
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Sat, 09 Feb 2019 06:39:34 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 00/25] Kconfig dependencies for ARM machines
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ng1MbstzFR0c
 
-Cc'ing Michael.
+This series reworks the default-configs/arm-softmmu.mak and
+default-configs/aarch64-softmmu.mak files to use the new Kconfig-style
+dependencies instead.
 
-On 2/7/19 7:37 PM, Alex Bennée wrote:
-> 
-> Hi,
-> 
-> There are a few more additions from the last iteration including some
-> more fixes to try and get Travis green again. It's nice to see our ARM
-> features are now catching up we need a newer toolchain to build
-> things. I did try upgrading to debian 10 for the cross build but there
-> are some upstream problems with the multiarch build deps that get in
-> the way of that. People with Debian packaging experience can jump in
-> on:
-> 
->   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=921458
->   (dependancy on gcc-s390x-linux-gnu fails on non-x86 hosts)
-> 
->   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=921648
->   (apt-get build-dep -a arm64 qemu fails on multiarch setup)
-> 
-> as it would be good to get these problems fixed as we get to
-> softfreeze (and given how much we leverage Debian's cross toolchains).
-> 
-> If all the testing is green by tomorrow I'll put together a pull
-> request. Unless people are desperate to grab the arm64 compiler image
-> now as a build fix?
-> 
-> The following patches need review
->  patch 0004/.travis.yml fold disable tcg into alternate corou.patch
->  patch 0007/docker add debian buster arm64 cross.patch
->  patch 0008/tests make docker.py update use configured binfmt.patch
->  patch 0009/tests make docker.py check for persistent configs.patch
->  patch 0010/tests docker.py be even smarter with persistent b.patch
->  patch 0011/tests PEP8 cleanup of docker.py mostly white spac.patch
->  patch 0016/scripts qemu.py allow arches use KVM for their 32.patch
-> 
-> 
-> Alex Bennée (11):
->   .travis.yml: separate tools and docs into another entry
->   .travis.yml: fold --disable-tcg into alternate coroutine builds
->   docker: add debian-buster-arm64-cross
->   tests: make docker.py update use configured binfmt path
->   tests: make docker.py check for persistent configs
->   tests: docker.py be even smarter with persistent binfmt_misc
->   tests: PEP8 cleanup of docker.py, mostly white space
->   tests/vm: call make check directly for netbsd/freebsd/ubuntu.i386
->   tests/vm: add --build-target option
->   tests/vm: expose BUILD_TARGET, TARGET_LIST and EXTRA_CONFIGURE_OPTS
->   scripts/qemu.py: allow arches use KVM for their 32bit cousins
-> 
-> Daniel P. Berrangé (1):
->   .travis.yml: stop requesting libffi & gettext from homebrew
-> 
-> Ed Maste (1):
->   .cirrus.yml: basic compile and test for FreeBSD
-> 
-> Gerd Hoffmann (1):
->   tests/vm: move images to $HOME/.cache/qemu-vm/images
-> 
-> Philippe Mathieu-Daudé (2):
->   MAINTAINERS: Add an entry for scripts/archive-source.sh
->   archive-source.sh: Clone the submodules locally
-> 
->  .cirrus.yml                                   |  16 +++
->  .travis.yml                                   |  31 +++--
->  MAINTAINERS                                   |   9 ++
->  scripts/archive-source.sh                     |   7 ++
->  scripts/qemu.py                               |  12 +-
->  tests/docker/Makefile.include                 |   1 +
->  tests/docker/docker.py                        | 110 +++++++++++++-----
->  .../debian-buster-arm64-cross.docker          |  15 +++
->  tests/docker/dockerfiles/debian10.docker      |  31 +++++
->  tests/tcg/aarch64/Makefile.include            |   2 +-
->  tests/vm/Makefile.include                     |  22 +++-
->  tests/vm/basevm.py                            |   3 +
->  tests/vm/freebsd                              |   3 +-
->  tests/vm/netbsd                               |   3 +-
->  tests/vm/ubuntu.i386                          |   3 +-
->  15 files changed, 213 insertions(+), 55 deletions(-)
->  create mode 100644 .cirrus.yml
->  create mode 100644 tests/docker/dockerfiles/debian-buster-arm64-cross.docker
->  create mode 100644 tests/docker/dockerfiles/debian10.docker
-> 
+Based-on: 1549562254-41157-1-git-send-email-pbonzini@redhat.com
+          ("Support Kconfig in QEMU")
+
+The first half of the patches is slightly based on the work by =C3=81kos =
+Kov=C3=A1cs:
+
+https://lists.nongnu.org/archive/html/qemu-devel/2013-08/msg03730.html
+
+The second part has been created by looking at the sources and finding
+out the dependencies the hard way via trial-and-error (i.e. by enabling
+only one machine at a time and checking whether it can be compiled and
+started).
+
+NB: One thing I noticed while working on these patches: We should
+tidy up the dependencies of AHCI and SDHCI. Both currently depend
+on PCI, but some boards that do not have PCI also want to use them
+(via sysbus devices)... but that's a clean-up for the future, this
+series here is already big enough.
+
+Thomas Huth (25):
+  hw/arm: Express dependencies of the exynos machines with Kconfig
+  hw/arm: Express dependencies of the highbank machines with Kconfig
+  hw/arm: Express dependencies of integratorcp with Kconfig
+  hw/arm: Express dependencies of the fsl-imx31 machine with Kconfig
+  hw/arm: Express dependencies of musicpal with Kconfig
+  hw/arm: Express dependencies of the OMAP machines with Kconfig
+  hw/arm: Express dependencies of stellaris with Kconfig
+  hw/arm: Express dependencies of realview, versatile and vexpress with
+    Kconfig
+  hw/arm: Express dependencies of the PXA2xx machines with Kconfig
+  hw/arm: Express dependencies of xilinx-zynq with Kconfig
+  hw/arm: Express dependencies of collie with Kconfig
+  hw/arm: Express dependencies of the aspeed boards with Kconfig
+  hw/arm: Express dependencies of the virt machine with Kconfig
+  hw/arm: Express dependencies of netduino / stm32f2xx with Kconfig
+  hw/arm: Express dependencies of allwinner / cubieboard with Kconfig
+  hw/arm: Express dependencies of the MPS2 boards with Kconfig
+  hw/arm: Express dependencies of the raspi machines with Kconfig
+  hw/arm: Express dependencies of canon-a1100 with Kconfig
+  hw/arm: Express dependencies of sabrelite with Kconfig
+  hw/arm: Express dependencies of the MSF2 machine with Kconfig
+  hw/arm: Express dependencies for remaining IMX boards with Kconfig
+  hw/arm: Express dependencies of nrf51 Kconfig
+  hw/arm: Express dependencies of the ZynqMP zcu102 machine with Kconfig
+  hw/arm: Express dependencies of the xlnx-versal-virt machine with
+    Kconfig
+  hw/arm: Remove hard-enablement of the remaining PCI devices
+
+ default-configs/aarch64-softmmu.mak |   4 -
+ default-configs/arm-softmmu.mak     | 175 +++-----------------
+ hw/arm/Kconfig                      | 310 ++++++++++++++++++++++++++++++=
+++++++
+ hw/arm/Makefile.objs                |  19 ++-
+ hw/display/Kconfig                  |   3 +
+ hw/i2c/Kconfig                      |   2 +-
+ hw/misc/Kconfig                     |   2 +
+ 7 files changed, 354 insertions(+), 161 deletions(-)
+
+--=20
+1.8.3.1
+

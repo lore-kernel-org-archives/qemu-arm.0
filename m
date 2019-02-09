@@ -1,65 +1,79 @@
-Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp432143wrq;
-        Sat, 9 Feb 2019 02:12:10 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IajWnmoWRdsDFaML8Fk1Y30bZPkDfuBYXLZBbuWjbdULQCR73d6oL5tefSnagXBbzrtHezf
-X-Received: by 2002:a5d:44cd:: with SMTP id z13mr19428046wrr.69.1549707130220;
-        Sat, 09 Feb 2019 02:12:10 -0800 (PST)
+Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp652753wrq;
+        Sat, 9 Feb 2019 06:49:11 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaedvF8QJ8srJKv6Wm+UKTrCBUi4RCxDPrKa6uqsTQtdwCmN+Zz3gCL4YA5A+BIpsBiny6j
+X-Received: by 2002:a5d:434c:: with SMTP id u12mr13069194wrr.14.1549723751057;
+        Sat, 09 Feb 2019 06:49:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549723751; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Yow0vRovmzsu22TGV0KeZkUMdHpX2WtoJdy8Ec/SWN2ZD4/omp4c+WljJ6JlZ4Zhu6
+         wthHX3UZDvJyruhm26I8r8nbAg//m9cplFr80sNjlsvU/mGf1nyYeqmoSP+9ZBkVIjkG
+         sSYChEfeTVGV0/usPJUQoAK+nufeZvxgpd3LYjFKYbwge+b6AMSd2Dpj+YbsH4sjEROo
+         c/di3DFZoFXSb2SX/pNyrHwcYedoQmDsPQe4AxqXMOR22G7BSz00BumcOqlZwn4XUT2H
+         0mpHyhuOYMD3wyiW2S56z8xWNp/VDRJPnOeEOKSpun4CSzGjTQQbtekUeMDFG4NJQidt
+         r1Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent
+         :content-disposition:mime-version:message-id:to:from:dkim-signature
+         :date;
+        bh=0M0zSvL/3ANd+Sc+FrsEdiKBgUIn+2LmWrFAAC4MGUg=;
+        b=KJ9vcpS3/JWXD9sBNz3zpKxIfeAKaZ2uh+78kfRmwAv/WuJjYN+9r/gW6HseTcwZPy
+         04X3qxYGSlVqSLfu5TI28fFsJkZz6rjIpHDeyJFgRh+qkO68hBamO7LDiTTMBDSP7rBI
+         jF0tXHh08z6tgzH++YzergqBGHR9vuJdouRBHp614o2e+5bpdWO8VmfgAxzRSPvN9NAh
+         +fsxDuc+6oIE9pEmoWm9G3EFdrAhYExnST0eUHnZueSQRvugi158MRmRgmNJbwW9w0Nz
+         LM47fSb3ZVi9egbGoiEIaYc7EguKeJHP/WmMMFd089zOtJJc/zOtwAIO5CrLnKfbT+fH
+         uJjw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@airmail.cc header.s=mail header.b=zTPbJufD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 76si4422287wrb.181.2019.02.09.02.12.10
+        by mx.google.com with ESMTPS id t124si4157827wmg.75.2019.02.09.06.49.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Feb 2019 02:12:10 -0800 (PST)
+        Sat, 09 Feb 2019 06:49:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
+       dkim=fail header.i=@airmail.cc header.s=mail header.b=zTPbJufD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43466 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:46285 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gsPcH-0004gP-6D
-	for alex.bennee@linaro.org; Sat, 09 Feb 2019 05:12:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44125)
+	id 1gsTwM-0007eA-2p
+	for alex.bennee@linaro.org; Sat, 09 Feb 2019 09:49:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gsPc2-0004f3-VI
-	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 05:11:56 -0500
+	(envelope-from <alnyan@airmail.cc>) id 1gsTwD-0007dq-Om
+	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 09:49:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gsPbz-0002wG-B9
-	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 05:11:53 -0500
-Resent-Date: Sat, 09 Feb 2019 05:11:52 -0500
-Resent-Message-Id: <E1gsPbz-0002wG-B9@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21031)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1gsPbu-0002mw-VV
-	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 05:11:49 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1549679106; cv=none; d=zoho.com; s=zohoarc; 
-	b=ZqsFCJtcGvdMlNNFohxmIMl74Dq5tsui9ouFKJKqn0QFaqr9RcFnof87tWS/NF9MWrS2JSxPPYeQKpAJDa52JNaSO+C/EDCZBHK1CL6TXXToWbM05mYcTfjxoqAepBtS51JRpZaO3UErfhxWfchXYVX0bIlzbZ9ixcot/hTY8AE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1549679106;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=po7bD+mWgtS4qht2jbiLZb6FGKD9cTOCQksQhIMRbYw=; 
-	b=AYEQrvGcHJEUbQblu95nwrmWFjio+Y6+j4hBv4jIDeMUYOHOTrrFQHrKesmvg6yAihFa9qDcOENJdPrvlfcxHM3vyNtUZzhQm4amx54iQUpDkicz/TLVrrdkNlnBxHungR6j+2VUqAlFEb2PVr/SIZd+jUhq1aSbdSHXvGw1cCo=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1549679103447287.3918832193468;
-	Fri, 8 Feb 2019 18:25:03 -0800 (PST)
-Message-ID: <154967910201.29184.5537071614047013306@ebba9967afc0>
-In-Reply-To: <20190208224020.GA4670@nyan>
+	(envelope-from <alnyan@airmail.cc>) id 1gsTwC-0005sG-0V
+	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 09:49:01 -0500
+Received: from cock.li ([2a06:1700:0:b::c0cc]:52180)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alnyan@airmail.cc>)
+	id 1gsTwB-0005mw-3H; Sat, 09 Feb 2019 09:48:59 -0500
+Date: Sat, 9 Feb 2019 16:49:20 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=airmail.cc; s=mail;
+	t=1549723733; bh=Iw+l1CQWO2o0JVkVmofOAm7nfy2fsN7uLm4jNqx+ZzU=;
+	h=Date:From:To:Cc:Subject:From;
+	b=zTPbJufDDORNb/dR8XnDsDHFSMGvJ1IKEo+HokEgDOng0gAnrHHpcJBF1D1aWSH2l
+	H6UKQ/TvpRz4qVYY3UkUIcKE/EBaoJvQGWVdjF0PH2ATbd7xiN+e8pJ7ryDNirOBxM
+	+o/sb8eisfp6o6PPcyS13/4G1ZN4L4S+UK225hzJXYlBsB43zLySKQTcm+7pUuhIPF
+	obWX/zLGRTtwceJ2+AllMXdG3WR/5jhrE7iyotfxNdIlOQDH0A2aCX/KkSOFqehx+L
+	5HsLPWCWhP5OUk3CPNedsN8z/Lo1jS0Fwzb/Xn3c1AADNvdTsv1tdTv+/bu3dEgDwT
+	YhU7ivuQmcZ9g==
+From: Mark <alnyan@airmail.cc>
+To: qemu-devel@nongnu.org
+Message-ID: <20190209144918.GA14036@nyan>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alnyan@airmail.cc
-Date: Fri, 8 Feb 2019 18:25:03 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/bcm2835_peripheral: add
- bcm283x sp804-alike timer
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a06:1700:0:b::c0cc
+Subject: [Qemu-arm] [v2 PATCH] hw/arm/bcm2835_peripherals: add bcm283x
+ sp804-alike timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,90 +85,440 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: fam@euphon.net, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	Andrew.Baumann@microsoft.com, f4bug@amsat.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bJp7J1oSeaRS
+X-TUID: qiXRLxsd92ow
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDIwODIyNDAyMC5HQTQ2
-NzBAbnlhbi8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0
-eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKU3Vi
-amVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSF0gaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJhbDogYWRk
-IGJjbTI4M3ggc3A4MDQtYWxpa2UgdGltZXIKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTkw
-MjA4MjI0MDIwLkdBNDY3MEBueWFuCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9i
-YXNoCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxv
-Y2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBo
-aXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRF
-U1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0
-YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUK
-IHQgW3RhZyB1cGRhdGVdICAgICAgICAgICAgcGF0Y2hldy8yMDE5MDEzMDIxMDM1MC4xNjc1Ny0x
-LWx1a2Uuci5uZWxzQGdtYWlsLmNvbSAtPiBwYXRjaGV3LzIwMTkwMTMwMjEwMzUwLjE2NzU3LTEt
-bHVrZS5yLm5lbHNAZ21haWwuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgICAgICAgIHBhdGNoZXcv
-MjAxOTAyMDgyMjQwMjAuR0E0NjcwQG55YW4gLT4gcGF0Y2hldy8yMDE5MDIwODIyNDAyMC5HQTQ2
-NzBAbnlhbgpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmExZTIzMzBkNGQgaHcvYXJt
-L2JjbTI4MzVfcGVyaXBoZXJhbDogYWRkIGJjbTI4M3ggc3A4MDQtYWxpa2UgdGltZXIKCj09PSBP
-VVRQVVQgQkVHSU4gPT09CkFyZ3VtZW50ICJtIiBpc24ndCBudW1lcmljIGluIG51bWVyaWMgZXEg
-KD09KSBhdCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCBsaW5lIDI3NzEuCkFyZ3VtZW50ICJtIiBp
-c24ndCBudW1lcmljIGluIG51bWVyaWMgZXEgKD09KSBhdCAuL3NjcmlwdHMvY2hlY2twYXRjaC5w
-bCBsaW5lIDI3NzEuClVzZSBvZiB1bmluaXRpYWxpemVkIHZhbHVlICQxIGluIGNvbmNhdGVuYXRp
-b24gKC4pIG9yIHN0cmluZyBhdCAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCBsaW5lIDI3NzIuCldB
-Uk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyNTogRklMRTogaHcvYXJtL2JjbTI4MzVf
-cGVyaXBoZXJhbHMuYzoxMjI6CisgICAgb2JqZWN0X2luaXRpYWxpemUoJnMtPmJjbTI4M3hzcDgw
-NCwgc2l6ZW9mKHMtPmJjbTI4M3hzcDgwNCksIFRZUEVfQkNNMjgzeFNQODA0KTsKCldBUk5JTkc6
-IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMyNjogRklMRTogaHcvYXJtL2JjbTI4MzVfcGVyaXBo
-ZXJhbHMuYzoxMjM6CisgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9jaGlsZChvYmosICJiY20yODN4
-c3A4MDQiLCBPQkpFQ1QoJnMtPmJjbTI4M3hzcDgwNCksIE5VTEwpOwoKV0FSTklORzogYWRkZWQs
-IG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5n
-PwojNTk6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJST1I6IGRvIG5vdCB1c2UgQzk5IC8vIGNv
-bW1lbnRzCiM5MDogRklMRTogaHcvdGltZXIvYmNtMjgzeF90aW1lci5jOjI3OgorICAgIGludCBw
-cmV2X2RpdjsgICAgICAgLy8gTm90IGltcGxlbWVudGVkCgpFUlJPUjogZG8gbm90IHVzZSBDOTkg
-Ly8gY29tbWVudHMKIzkxOiBGSUxFOiBody90aW1lci9iY20yODN4X3RpbWVyLmM6Mjg6CisgICAg
-aW50IGZyZWVfcnVuX2NudDsgICAvLyBOb3QgaW1wbGVtZW50ZWQKCldBUk5JTkc6IGxpbmUgb3Zl
-ciA4MCBjaGFyYWN0ZXJzCiMxMTY6IEZJTEU6IGh3L3RpbWVyL2JjbTI4M3hfdGltZXIuYzo1MzoK
-KyAgICAgICAgLyogVGhlIHJlZ2lzdGVyIGlzIHdyaXRlLW9ubHksIGJ1dCByZXR1cm5zIHJldmVy
-c2UgIkFSTVQiIHN0cmluZyBieXRlcyAqLwoKRVJST1I6IGJyYWNlcyB7fSBhcmUgbmVjZXNzYXJ5
-IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojMTIxOiBGSUxFOiBody90aW1lci9iY20y
-ODN4X3RpbWVyLmM6NTg6CisgICAgICAgIGlmICgocy0+Y29udHJvbCAmIFRJTUVSX0NUUkxfSUUp
-ID09IDApClsuLi5dCgpFUlJPUjogc3dpdGNoIGFuZCBjYXNlIHNob3VsZCBiZSBhdCB0aGUgc2Ft
-ZSBpbmRlbnQKIzE0NjogRklMRTogaHcvdGltZXIvYmNtMjgzeF90aW1lci5jOjgzOgorICAgIHN3
-aXRjaCAob2Zmc2V0ID4+IDIpIHsKKyAgICAgICAgY2FzZSAwOiAvKiBMb2FkIHJlZ2lzdGVyICov
-ClsuLi5dCisgICAgICAgIGNhc2UgMTogLyogVmFsdWUgcmVnaXN0ZXIgKi8KWy4uLl0KKyAgICAg
-ICAgY2FzZSAyOiAvKiBDb250cm9sIHJlZ2lzdGVyICovClsuLi5dCisgICAgICAgIGNhc2UgMzog
-LyogSVJRIGNsZWFyL0FDSyByZWdpc3RlciAqLwpbLi4uXQorICAgICAgICBjYXNlIDY6IC8qIFJl
-bG9hZCByZWdpc3RlciAqLwpbLi4uXQorICAgICAgICBkZWZhdWx0OgoKRVJST1I6IHRyYWlsaW5n
-IHN0YXRlbWVudHMgc2hvdWxkIGJlIG9uIG5leHQgbGluZQojMTY0OiBGSUxFOiBody90aW1lci9i
-Y20yODN4X3RpbWVyLmM6MTAxOgorICAgICAgICAgICAgY2FzZSAxOiBmcmVxID4+PSA0OyBicmVh
-azsgLyogMTYgKi8KCkVSUk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRzIHNob3VsZCBiZSBvbiBuZXh0
-IGxpbmUKIzE2NTogRklMRTogaHcvdGltZXIvYmNtMjgzeF90aW1lci5jOjEwMjoKKyAgICAgICAg
-ICAgIGNhc2UgMjogZnJlcSA+Pj0gODsgYnJlYWs7IC8qIDI1NiAqLwoKRVJST1I6IHVubmVjZXNz
-YXJ5IGNhc3QgbWF5IGhpZGUgYnVncywgdXNlIGdfbmV3MCBpbnN0ZWFkCiMyMTU6IEZJTEU6IGh3
-L3RpbWVyL2JjbTI4M3hfdGltZXIuYzoxNTI6CisgICAgcyA9IChiY20yODN4X3RpbWVyX3N0YXRl
-ICopIGdfbWFsbG9jMChzaXplb2YoYmNtMjgzeF90aW1lcl9zdGF0ZSkpOwoKV0FSTklORzogbGlu
-ZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzIyODogRklMRTogaHcvdGltZXIvYmNtMjgzeF90aW1lci5j
-OjE2NToKKy8qIFhYWDogQkNNJ3MgZGF0YXNoZWV0IGRvZXMgbm90IHNlZW0gdG8gcHJvdmlkZSB0
-aGVzZSB2YWx1ZXMgYW5kIHRoZXkgbWF5IGRpZmZlciAqLwoKV0FSTklORzogbGluZSBvdmVyIDgw
-IGNoYXJhY3RlcnMKIzI2MjogRklMRTogaHcvdGltZXIvYmNtMjgzeF90aW1lci5jOjE5OToKKyAg
-ICAgICAgICAgICAgICAgICAgICAiJXM6IGludGVncmF0aW9uIHRlc3QgcmVnaXN0ZXJzIHVuaW1w
-bGVtZW50ZWRcbiIsIF9fZnVuY19fKTsKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJz
-CiMyNzE6IEZJTEU6IGh3L3RpbWVyL2JjbTI4M3hfdGltZXIuYzoyMDg6CitzdGF0aWMgdm9pZCBi
-Y20yODN4c3A4MDNfd3JpdGUodm9pZCAqb3BhcXVlLCBod2FkZHIgb2Zmc2V0LCB1aW50NjRfdCB2
-YWx1ZSwgdW5zaWduZWQgc2l6ZSkKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiMz
-MDY6IEZJTEU6IGh3L3RpbWVyL2JjbTI4M3hfdGltZXIuYzoyNDM6CisgICAgbWVtb3J5X3JlZ2lv
-bl9pbml0X2lvKCZzLT5pb21lbSwgb2JqLCAmYmNtMjgzeHNwODA0X29wcywgcywgImJjbTI4M3hz
-cDgwNCIsIDB4MTAwMCk7CgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojMzk1OiBG
-SUxFOiBpbmNsdWRlL2h3L3RpbWVyL2JjbTI4M3hfdGltZXIuaDoyMzoKKyNkZWZpbmUgQkNNMjgz
-eFNQODA0KG9iaikgT0JKRUNUX0NIRUNLKEJDTTI4M3hTUDgwNFN0YXRlLCAob2JqKSwgVFlQRV9C
-Q00yODN4U1A4MDQpCgp0b3RhbDogNyBlcnJvcnMsIDkgd2FybmluZ3MsIDM2NiBsaW5lcyBjaGVj
-a2VkCgpDb21taXQgYTFlMjMzMGQ0ZGUyIChody9hcm0vYmNtMjgzNV9wZXJpcGhlcmFsOiBhZGQg
-YmNtMjgzeCBzcDgwNC1hbGlrZSB0aW1lcikgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2
-aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0
-aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09
-IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBm
-dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTAyMDgy
-MjQwMjAuR0E0NjcwQG55YW4vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpF
-bWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5v
-cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
-b20=
+Signed-off-by: Mark <alnyan@airmail.cc>
+---
+ hw/arm/bcm2835_peripherals.c         |  17 ++
+ hw/timer/Makefile.objs               |   2 +
+ hw/timer/bcm283x_timer.c             | 299 +++++++++++++++++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |   2 +
+ include/hw/timer/bcm283x_timer.h     |  38 ++++
+ 5 files changed, 358 insertions(+)
+ create mode 100644 hw/timer/bcm283x_timer.c
+ create mode 100644 include/hw/timer/bcm283x_timer.h
+
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 6be7660e8c..fccdb9509b 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -117,6 +117,13 @@ static void bcm2835_peripherals_init(Object *obj)
+                                    OBJECT(&s->sdhci.sdbus), &error_abort);
+     object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
+                                    OBJECT(&s->sdhost.sdbus), &error_abort);
++
++    /* SP804-alike ARM Timer */
++    object_initialize(&s->bcm283xsp804, sizeof(s->bcm283xsp804),
++            TYPE_BCM283xSP804);
++    object_property_add_child(obj, "bcm283xsp804", OBJECT(&s->bcm283xsp804),
++            NULL);
++    qdev_set_parent_bus(DEVICE(&s->bcm283xsp804), sysbus_get_default());
+ }
+
+ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+@@ -334,6 +341,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         error_propagate(errp, err);
+         return;
+     }
++
++    /* SP804-alike ARM Timer */
++    object_property_set_bool(OBJECT(&s->bcm283xsp804), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, ARMCTRL_TIMER0_1_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->bcm283xsp804), 0));
+ }
+
+ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 0e9a4530f8..09a3706701 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -47,3 +47,5 @@ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+ common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
+ common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
+ common-obj-$(CONFIG_MSF2) += mss-timer.o
++
++common-obj-$(CONFIG_RASPI) += bcm283x_timer.o
+diff --git a/hw/timer/bcm283x_timer.c b/hw/timer/bcm283x_timer.c
+new file mode 100644
+index 0000000000..55e8a68807
+--- /dev/null
++++ b/hw/timer/bcm283x_timer.c
+@@ -0,0 +1,299 @@
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "qemu/timer.h"
++#include "qemu-common.h"
++#include "hw/qdev.h"
++#include "hw/ptimer.h"
++#include "hw/timer/bcm283x_timer.h"
++#include "qemu/main-loop.h"
++#include "qemu/log.h"
++
++/* TODO: implement free-running timer as per BCM283x peripheral specification */
++
++#define TIMER_CTRL_32BIT    (1 << 1)
++#define TIMER_CTRL_DIV1     (0 << 2)
++#define TIMER_CTRL_DIV16    (1 << 2)
++#define TIMER_CTRL_DIV256   (2 << 2)
++#define TIMER_CTRL_IE       (1 << 5)
++#define TIMER_CTRL_ENABLE   (1 << 7)
++
++struct bcm283x_timer_state {
++    ptimer_state *timer;
++    uint32_t control;
++    uint32_t limit;
++    int freq;
++    int int_level;
++    qemu_irq irq;
++    /* Not implemented */
++    int prev_div;
++    /* Not implemented */
++    int free_run_cnt;
++};
++
++static void bcm283x_timer_update(bcm283x_timer_state *s)
++{
++    if (s->int_level && (s->control & TIMER_CTRL_IE)) {
++        qemu_irq_raise(s->irq);
++    } else {
++        qemu_irq_lower(s->irq);
++    }
++}
++
++static uint32_t bcm283x_timer_read(void *opaque, hwaddr offset)
++{
++    bcm283x_timer_state *s = (bcm283x_timer_state *) opaque;
++
++    switch (offset >> 2) {
++    case 0: /* Load register */
++    case 6: /* Reload register */
++        return s->limit;
++    case 1: /* Value register */
++        return ptimer_get_count(s->timer);
++    case 2: /* Control register */
++        return s->control;
++    case 3: /* IRQ clear/ACK register */
++        /*
++         * The register is write-only,
++         * but returns reverse "ARMT" string bytes
++         */
++        return 0x544D5241;
++    case 4: /* RAW IRQ register */
++        return s->int_level;
++    case 5: /* Masked IRQ register */
++        if ((s->control & TIMER_CTRL_IE) == 0) {
++            return 0;
++        }
++        return s->int_level;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset %x\n", __func__, (int) offset);
++        return 0;
++    }
++}
++
++static void bcm283x_timer_recalibrate(bcm283x_timer_state *s, int reload)
++{
++    uint32_t limit;
++
++    /* Consider timer periodic */
++    limit = s->limit;
++
++    ptimer_set_limit(s->timer, limit, reload);
++}
++
++static void bcm283x_timer_write(void *opaque, hwaddr offset, uint32_t value)
++{
++    bcm283x_timer_state *s = (bcm283x_timer_state *) opaque;
++    int freq;
++
++    switch (offset >> 2) {
++    case 0: /* Load register */
++        s->limit = value;
++        bcm283x_timer_recalibrate(s, 1);
++        break;
++    case 1: /* Value register */
++        /* Read only */
++        break;
++    case 2: /* Control register */
++        if (s->control & TIMER_CTRL_ENABLE) {
++            ptimer_stop(s->timer);
++        }
++
++        s->control = value;
++        freq = s->freq;
++
++        /* Set pre-scaler */
++        switch ((value >> 2) & 3) {
++        case 1: /* 16 */
++            freq >>= 4;
++            break;
++        case 2: /* 256 */
++            freq >>= 8;
++            break;
++        }
++
++        bcm283x_timer_recalibrate(s, s->control & TIMER_CTRL_ENABLE);
++        ptimer_set_freq(s->timer, freq);
++        if (s->control & TIMER_CTRL_ENABLE) {
++            ptimer_run(s->timer, 0);
++        }
++        break;
++    case 3: /* IRQ clear/ACK register */
++        s->int_level = 0;
++        break;
++    case 6: /* Reload register */
++        s->limit = value;
++        bcm283x_timer_recalibrate(s, 0);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Bad offset %x\n", __func__, (int) offset);
++        break;
++    }
++
++    bcm283x_timer_update(s);
++}
++
++static void bcm283x_timer_tick(void *opaque)
++{
++    bcm283x_timer_state *s = (bcm283x_timer_state *) opaque;
++    s->int_level = 1;
++    bcm283x_timer_update(s);
++}
++
++static const VMStateDescription vmstate_bcm283x_timer = {
++    .name = "bcm283x_timer",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(control, bcm283x_timer_state),
++        VMSTATE_UINT32(limit, bcm283x_timer_state),
++        VMSTATE_INT32(int_level, bcm283x_timer_state),
++        VMSTATE_PTIMER(timer, bcm283x_timer_state),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static bcm283x_timer_state *bcm283x_timer_init(uint32_t freq)
++{
++    bcm283x_timer_state *s;
++    QEMUBH *bh;
++
++    s = g_new0(bcm283x_timer_state, 1);
++    s->freq = freq;
++    s->control = TIMER_CTRL_IE;
++
++    bh = qemu_bh_new(bcm283x_timer_tick, s);
++    s->timer = ptimer_init(bh, PTIMER_POLICY_DEFAULT);
++    vmstate_register(NULL, -1, &vmstate_bcm283x_timer, s);
++
++    return s;
++}
++
++/* BCM283x's implementation of SP804 ARM timer */
++
++/*
++ * XXX: BCM's datasheet does not seem to
++ * provide these values and they may differ
++ */
++static const uint8_t bcm283xsp803_ids[] = {
++    /* Timer ID */
++    0x04, 0x18, 0x14, 0x00,
++    /* PrimeCell ID */
++    0x0D, 0xF0, 0x05, 0xB1
++};
++
++static void bcm283xsp804_set_irq(void *opaque, int irq, int level)
++{
++    BCM283xSP804State *s = (BCM283xSP804State *) opaque;
++
++    s->level = level;
++    qemu_set_irq(s->irq, s->level);
++}
++
++static uint64_t bcm283xsp804_read(void *opaque, hwaddr offset, unsigned size)
++{
++    BCM283xSP804State *s = (BCM283xSP804State *) opaque;
++
++    if (offset < 0x20) {
++        return bcm283x_timer_read(s->timer, offset);
++    }
++    /* No second timer (0x20 < offset < 0x40) */
++
++    if (offset >= 0xFE0 && offset <= 0xFFC) {
++        return bcm283xsp803_ids[(offset - 0xFE0) >> 2];
++    }
++
++    switch (offset) {
++    /* Unimplemented: integration test control registers */
++    case 0xF00:
++    case 0xF04:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: integration test registers unimplemented\n",
++                      __func__);
++        return 0;
++    }
++
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "%s: Bad offset %x\n", __func__, (int) offset);
++    return 0;
++}
++
++static void bcm283xsp803_write(void *opaque, hwaddr offset, uint64_t value,
++        unsigned size)
++{
++    BCM283xSP804State *s = (BCM283xSP804State *) opaque;
++
++    if (offset < 0x20) {
++        bcm283x_timer_write(s->timer, offset, value);
++    }
++    /* No second timer (0x20 < offset < 0x40) */
++
++    qemu_log_mask(LOG_GUEST_ERROR,
++                  "%s: Bad offset %x\n", __func__, (int) offset);
++}
++
++static const MemoryRegionOps bcm283xsp804_ops = {
++    .read = bcm283xsp804_read,
++    .write = bcm283xsp803_write,
++    .endianness = DEVICE_NATIVE_ENDIAN
++};
++
++static const VMStateDescription vmstate_bcm283xsp804 = {
++    .name = "bcm283xsp804",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_INT32(level, BCM283xSP804State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm283xsp804_init(Object *obj)
++{
++    BCM283xSP804State *s = BCM283xSP804(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    sysbus_init_irq(sbd, &s->irq);
++    memory_region_init_io(&s->iomem, obj, &bcm283xsp804_ops, s,
++            "bcm283xsp804", 0x1000);
++
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void bcm283xsp804_realize(DeviceState *dev, Error **errp)
++{
++    BCM283xSP804State *s = BCM283xSP804(dev);
++
++    s->timer = bcm283x_timer_init(s->freq0);
++    s->timer->irq = qemu_allocate_irq(bcm283xsp804_set_irq, s, 0);
++}
++
++static Property bcm283xsp804_properties[] = {
++    DEFINE_PROP_UINT32("freq0", BCM283xSP804State, freq0, 1000000),
++    DEFINE_PROP_END_OF_LIST()
++};
++
++static void bcm283xsp804_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *k = DEVICE_CLASS(klass);
++
++    k->realize = bcm283xsp804_realize;
++    k->props = bcm283xsp804_properties;
++    k->vmsd = &vmstate_bcm283xsp804;
++}
++
++static const TypeInfo bcm283xsp804_info = {
++    .name           = TYPE_BCM283xSP804,
++    .parent         = TYPE_SYS_BUS_DEVICE,
++    .instance_size  = sizeof(BCM283xSP804State),
++    .instance_init  = bcm283xsp804_init,
++    .class_init     = bcm283xsp804_class_init
++};
++
++static void bcm283x_timer_register_types(void)
++{
++    type_register_static(&bcm283xsp804_info);
++}
++
++type_init(bcm283x_timer_register_types)
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index f5b193f670..d13aad43cb 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -23,6 +23,7 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/sd/bcm2835_sdhost.h"
+ #include "hw/gpio/bcm2835_gpio.h"
++#include "hw/timer/bcm283x_timer.h"
+
+ #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
+ #define BCM2835_PERIPHERALS(obj) \
+@@ -48,6 +49,7 @@ typedef struct BCM2835PeripheralState {
+     SDHCIState sdhci;
+     BCM2835SDHostState sdhost;
+     BCM2835GpioState gpio;
++    BCM283xSP804State bcm283xsp804;
+ } BCM2835PeripheralState;
+
+ #endif /* BCM2835_PERIPHERALS_H */
+diff --git a/include/hw/timer/bcm283x_timer.h b/include/hw/timer/bcm283x_timer.h
+new file mode 100644
+index 0000000000..f5e8dcddfc
+--- /dev/null
++++ b/include/hw/timer/bcm283x_timer.h
+@@ -0,0 +1,38 @@
++/*
++ * Broadcom BCM283x ARM timer variant based on ARM SP804
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version
++ * 2 of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef HW_TIMER_BCM2835_TIMER_H
++#define HW_TIMER_BCM2835_TIMER_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_BCM283xSP804 "bcm283xsp804"
++#define BCM283xSP804(obj)
++    OBJECT_CHECK(BCM283xSP804State, (obj), TYPE_BCM283xSP804)
++
++typedef struct bcm283x_timer_state bcm283x_timer_state;
++
++typedef struct {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++    bcm283x_timer_state *timer;
++    uint32_t freq0;
++    int level;
++    qemu_irq irq;
++} BCM283xSP804State;
++
++#endif
+--
+2.20.1
 

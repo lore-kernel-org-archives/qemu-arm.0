@@ -1,85 +1,85 @@
-Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp292034wrq;
-        Fri, 8 Feb 2019 22:40:18 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbQWf8uiu3IyYhfi5zygUFgVuCGZ+1FrtfE2+hkmHU3vp0vW0wZmx+5irWRXI5dGgzvOIXv
-X-Received: by 2002:a1c:2804:: with SMTP id o4mr1782869wmo.150.1549694418426;
-        Fri, 08 Feb 2019 22:40:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549694418; cv=none;
+Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp292187wrq;
+        Fri, 8 Feb 2019 22:40:34 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYaPMsPH9vhw3i+WhARxYX2LvGxZzP0+20bl6ZZ32fV9r5c6Y1aW5RdK6PMoFWY+F+gZTwp
+X-Received: by 2002:a1c:1a8a:: with SMTP id a132mr1760188wma.109.1549694434937;
+        Fri, 08 Feb 2019 22:40:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549694434; cv=none;
         d=google.com; s=arc-20160816;
-        b=amNJtgbMXLnb/SC1UExYrciafL5t/djydntZhOgpf4fjGO7bFfCAbywTXM/nFFoppE
-         nKfEZOBu4ZPO4BAl/hJ9bK49t+yNih9IJVMLk8EOVS6l4mjWG/EY2+AYXzfReua0IVzk
-         0tAa6bBeQZPnqBftNkaIf1nOxGvwVgdCN1BlZt3RmOISclOKb47PbS4Ud6IbdKUTaFGO
-         1Jmw/GcfTvEFRdXXg4n+YKYU3aZVUB1NhdbHTO+b7r5DEjA/hOIbD3EUc0i/ta3Hwdja
-         wyqrdtTmvlk+gX7CoZIYe4hdguzlMVzyFupetkgwKdDo8Wg/EWxIRDIN+A7Gbh9v1K7e
-         G2zw==
+        b=SbWnNEAd/Hiu1M325GenXW+pgU8FwR3MR5tLzYzYaB55ZjqhPQbhkEgrEPyLI1rKRG
+         Sh284MbY0SAGokKioApxqY8NVeQ8th+am7oI5cuJ0VjnNJjXABBTmRSwCgurRpIU84ow
+         Rjvvs5bSU5nwTTh2mHGhW/5hEBliu1bB3CfkB9X1KupsS47qBkeZXyuGBN5FzykKZMZe
+         +8x9JuDcmlCOA6vGWjG9eEH7Oej3er1xiMnY9mDFEPbeaaymqPNSV3EL4MmduyeoC1Kj
+         9fFMuejimPlUme/Ka2NqqtKEJtvk0SX5LbFDpFAjSmRKOsUFGjUF1WQYT5FZ+H2JjYyo
+         8YIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=XtbzCvZw5jUzRJ2rkLPxMEPCbfCut317u6A++snQMN8=;
-        b=vrwxU5ZmTqcv/f04pbeinrI4YKpHCu9fuy/E+RcirNE1Mo7qoDjFpef4PVo81WkPVB
-         90thZHnJKRMdIOQVgheZ6iDVSI3QnvVKohalPX/Mwaopa3j46gZVztea8Sp0JDcJGTvA
-         i/+Hrri2vbJEhh2i66Mxyc6pZSfPaNrlMIY3c7Gjsd1S8VhhSTB1yab/HEEmjVZ6aydY
-         vDivRgwdSpvsqKoZppNvcXsWsf7GMEKo2HnXc0B+i6XWnJwBXzl/qTC7vsIVQbaNnAf8
-         4XSLgOK/KBRnJbOETz7fPDI6HZj9him5bayGvHl8KMpKF61B801FMpHj6B0izwfhMC/9
-         f7Yg==
+        bh=f5f+GuVSvBfnGe1caiJDMpxcA79uLa/BxP9r4rjcQb0=;
+        b=GjmMiQKL6LvLiG8roB0kjFiHqwMUqZIi/R9IgUENTTTqrCshhKAzO6HI36LMzdD6hN
+         bxRdJj+eOUWtgZ+x0aOLonnJnEzYYwv5UZ7wuY8/AdbavCWhmw0mfVKOhVQfHAzzAwx8
+         5IiaWqo+aa0x9Oo0qu9XWSanY4YP2QL05lj+i4uIfkAdiNvPVd4aGa5um4kfpbVq8aNe
+         0hM5baNg8GBZDxSBBfT9ZkN+Q+GIxqS32hge/W1DhhOuRDR0pOsrhi8ONBYSoVoeYoQn
+         Bd5cGbalQrEhrbJCAvyw1BFAOlj/vlfq1525ewHwXiUd9Z1SHwzRRj1ZjPi+T21WAJ2x
+         CRvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si3268867wme.142.2019.02.08.22.40.18
+        by mx.google.com with ESMTPS id h17si922707wrx.97.2019.02.08.22.40.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Feb 2019 22:40:18 -0800 (PST)
+        Fri, 08 Feb 2019 22:40:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41401 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:41432 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gsMJF-0003a9-En
-	for alex.bennee@linaro.org; Sat, 09 Feb 2019 01:40:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41788)
+	id 1gsMJW-0003pr-1Y
+	for alex.bennee@linaro.org; Sat, 09 Feb 2019 01:40:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gsMIv-0003W2-9o
+	(envelope-from <thuth@redhat.com>) id 1gsMIv-0003W9-AY
 	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 01:39:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gsMIs-0003OS-UG
+	(envelope-from <thuth@redhat.com>) id 1gsMIs-0003OH-Sj
 	for qemu-arm@nongnu.org; Sat, 09 Feb 2019 01:39:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50426)
+Received: from mx1.redhat.com ([209.132.183.28]:55150)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gsMIs-0003M1-HL; Sat, 09 Feb 2019 01:39:54 -0500
+	id 1gsMIs-0003IC-Ix; Sat, 09 Feb 2019 01:39:54 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CCF147F6B2;
-	Sat,  9 Feb 2019 06:39:52 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B6B9F5947C;
+	Sat,  9 Feb 2019 06:39:46 +0000 (UTC)
 Received: from thuth.com (ovpn-116-16.ams2.redhat.com [10.36.116.16])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E5C6F5B6A4;
-	Sat,  9 Feb 2019 06:39:48 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3E32562662;
+	Sat,  9 Feb 2019 06:39:45 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	yang.zhong@intel.com,
 	pbonzini@redhat.com
-Date: Sat,  9 Feb 2019 07:39:10 +0100
-Message-Id: <1549694366-1284-10-git-send-email-thuth@redhat.com>
+Date: Sat,  9 Feb 2019 07:39:08 +0100
+Message-Id: <1549694366-1284-8-git-send-email-thuth@redhat.com>
 In-Reply-To: <1549694366-1284-1-git-send-email-thuth@redhat.com>
 References: <1549694366-1284-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Sat, 09 Feb 2019 06:39:52 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Sat, 09 Feb 2019 06:39:46 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 09/25] hw/arm: Express dependencies of the PXA2xx
- machines with Kconfig
+Subject: [Qemu-arm] [PATCH 07/25] hw/arm: Express dependencies of stellaris
+ with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,160 +94,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KhjeaiATDgfP
+X-TUID: 3l8p4IpYKi2X
 
-Add Kconfig dependencies for the PXA2xx machines (akita, borzoi,
-connex and verdex gumstix, tosa, mainstone, spitz, terrier and z2).
-This patch is based on earlier work by =C3=81kos Kov=C3=A1cs (i.e.
+This patch is slightly based on earlier work by =C3=81kos Kov=C3=A1cs (i.=
+e.
 his "hw/arm/Kconfig: Add ARM Kconfig" patch).
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- default-configs/arm-softmmu.mak | 17 +++++----------
- hw/arm/Kconfig                  | 46 +++++++++++++++++++++++++++++++++++=
-++++++
- hw/arm/Makefile.objs            |  5 ++++-
- 3 files changed, 55 insertions(+), 13 deletions(-)
+ default-configs/arm-softmmu.mak |  7 +------
+ hw/arm/Kconfig                  | 10 ++++++++++
+ 2 files changed, 11 insertions(+), 6 deletions(-)
 
 diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
 u.mak
-index 2bac13b..1db76f6 100644
+index 492db53..1be49bd 100644
 --- a/default-configs/arm-softmmu.mak
 +++ b/default-configs/arm-softmmu.mak
-@@ -15,22 +15,20 @@ CONFIG_STELLARIS=3Dy
- CONFIG_REALVIEW=3Dy
- CONFIG_VERSATILE=3Dy
- CONFIG_VEXPRESS=3Dy
-+CONFIG_MAINSTONE=3Dy
-+CONFIG_GUMSTIX=3Dy
-+CONFIG_SPITZ=3Dy
-+CONFIG_TOSA=3Dy
-+CONFIG_Z2=3Dy
+@@ -13,6 +13,7 @@ CONFIG_MUSICPAL=3Dy
+ CONFIG_CHEETAH=3Dy
+ CONFIG_SX1=3Dy
+ CONFIG_NSERIES=3Dy
++CONFIG_STELLARIS=3Dy
 =20
  CONFIG_VGA=3Dy
--CONFIG_NAND=3Dy
--CONFIG_ECC=3Dy
--CONFIG_SERIAL=3Dy
--CONFIG_MAX7310=3Dy
+ CONFIG_NAND=3Dy
+@@ -21,16 +22,10 @@ CONFIG_SERIAL=3Dy
+ CONFIG_MAX7310=3Dy
  CONFIG_TMP421=3Dy
  CONFIG_PCA9552=3Dy
--CONFIG_ADS7846=3Dy
--CONFIG_MAX111X=3Dy
+-CONFIG_STELLARIS=3Dy
+-CONFIG_STELLARIS_INPUT=3Dy
+-CONFIG_STELLARIS_ENET=3Dy
+-CONFIG_SSD0303=3Dy
+-CONFIG_SSD0323=3Dy
+ CONFIG_DDC=3Dy
+ CONFIG_SII9022=3Dy
+ CONFIG_ADS7846=3Dy
+ CONFIG_MAX111X=3Dy
+-CONFIG_SSI_SD=3Dy
  CONFIG_SSI_M25P80=3Dy
  CONFIG_ALLWINNER_EMAC=3Dy
  CONFIG_IMX_FEC=3Dy
- CONFIG_FTGMAC100=3Dy
- CONFIG_DS1338=3Dy
--CONFIG_MICRODRIVE=3Dy
- CONFIG_PLATFORM_BUS=3Dy
- CONFIG_VIRTIO_MMIO=3Dy
-=20
-@@ -38,16 +36,13 @@ CONFIG_NETDUINO2=3Dy
-=20
- CONFIG_PL330=3Dy
- CONFIG_CADENCE=3Dy
--CONFIG_PXA2XX=3Dy
- CONFIG_FRAMEBUFFER=3Dy
- CONFIG_XILINX_SPIPS=3Dy
- CONFIG_ZYNQ_DEVCFG=3Dy
-=20
- CONFIG_DIGIC=3Dy
--CONFIG_MAINSTONE=3Dy
- CONFIG_MPS2=3Dy
- CONFIG_RASPI=3Dy
--CONFIG_ZAURUS=3Dy
- CONFIG_ZYNQ=3Dy
- CONFIG_STM32F2XX_TIMER=3Dy
- CONFIG_STM32F2XX_USART=3Dy
-@@ -80,8 +75,6 @@ CONFIG_VFIO_PLATFORM=3Dy
- CONFIG_VFIO_XGMAC=3Dy
- CONFIG_VFIO_AMD_XGBE=3Dy
-=20
--CONFIG_SDHCI=3Dy
--
- CONFIG_ALLWINNER_A10_PIT=3Dy
- CONFIG_ALLWINNER_A10_PIC=3Dy
- CONFIG_ALLWINNER_A10=3Dy
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index b76fd7c..95f2713 100644
+index fe1505e..3034252 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -89,6 +89,50 @@ config OMAP
+@@ -95,6 +95,16 @@ config REALVIEW
 =20
- config PXA2XX
+ config STELLARIS
      bool
-+    select FRAMEBUFFER
++    select ARM_V7M
 +    select I2C
-+    select PCI
-+    select SERIAL
-+    select SD
-+    select SSI
-+    select USB_OHCI
-+
-+config GUMSTIX
-+    bool
-+    select PFLASH_CFI01
-+    select SMC91C111
-+    select PXA2XX
-+
-+config TOSA
-+    bool
-+    select ZAURUS  # scoop
-+    select MICRODRIVE
-+    select PXA2XX
-+
-+config MAINSTONE
-+    bool
-+    select PXA2XX
-+    select PFLASH_CFI01
-+    select SMC91C111
-+
-+config SPITZ
-+    bool
-+    select ADS7846 # display
-+    select MAX111X # A/D converter
-+    select WM8750  # audio codec
-+    select MAX7310 # GPIO expander
-+    select ZAURUS  # scoop
-+    select NAND    # memory
-+    select ECC     # Error-correcting for NAND
-+    select MICRODRIVE
-+    select PXA2XX
-+
-+config Z2
-+    bool
-+    select PFLASH_CFI01
-+    select WM8750
 +    select PL011 # UART
-+    select PXA2XX
++    select PL022 # Serial port
++    select PL061 # GPIO
++    select SSD0303 # OLED display
++    select SSD0323 # OLED display
++    select SSI_SD
++    select STELLARIS_INPUT
++    select STELLARIS_ENET # ethernet
 =20
- config REALVIEW
+ config STRONGARM
      bool
-@@ -227,6 +271,8 @@ config MSF2
-=20
- config ZAURUS
-     bool
-+    select NAND
-+    select ECC
-=20
- config A9MPCORE
-     bool
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 420641e..93e1160 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -11,7 +11,10 @@ obj-$(CONFIG_NETDUINO2) +=3D netduino2.o
- obj-$(CONFIG_NSERIES) +=3D nseries.o
- obj-$(CONFIG_SX1) +=3D omap_sx1.o
- obj-$(CONFIG_CHEETAH) +=3D palm.o
--obj-$(CONFIG_PXA2XX) +=3D gumstix.o spitz.o tosa.o z2.o
-+obj-$(CONFIG_GUMSTIX) +=3D gumstix.o
-+obj-$(CONFIG_SPITZ) +=3D spitz.o
-+obj-$(CONFIG_TOSA) +=3D tosa.o
-+obj-$(CONFIG_Z2) +=3D z2.o
- obj-$(CONFIG_REALVIEW) +=3D realview.o
- obj-$(CONFIG_STELLARIS) +=3D stellaris.o
- obj-$(CONFIG_STRONGARM) +=3D collie.o
 --=20
 1.8.3.1
 

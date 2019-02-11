@@ -1,102 +1,103 @@
-Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp1949001wrq;
+Received: by 2002:a5d:4506:0:0:0:0:0 with SMTP id s6csp1949005wrq;
         Sun, 10 Feb 2019 17:20:26 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbcOx0O7yB6eYWndGzRhx3V81rH/NjNv/F/7dKbB3eOyACFH/qKoZuVm+AkXBiR59L67k4k
-X-Received: by 2002:adf:f58b:: with SMTP id f11mr1317237wro.266.1549848026369;
+X-Google-Smtp-Source: AHgI3IYUDJlRaS28ke8lJcE6OxfRC1WnzZwIkWKN88uC7S1eWALRQipYl0OG2SWK8HHFhGfUkV0G
+X-Received: by 2002:a7b:cb82:: with SMTP id m2mr7969259wmi.135.1549848026638;
         Sun, 10 Feb 2019 17:20:26 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1549848026; cv=none;
         d=google.com; s=arc-20160816;
-        b=v7IsTBm5mQqabUXHRPZNWh03V5xSKif5vVAOGXVOpS6t0YjEnEnAiUUGa9xbXGcAUQ
-         jPdLCYa6gmoK3V8V0Z58g3S5Nz7t2Hj7xhXv2VFMPsulFXwV8HFYtB6Bmnw7dnDVDA8V
-         pnUD6cAYQVSX0WLLDLyf2N6LiEdPyzpToYI6ZGiGloDjCh170ctXuMoQot2KCV4UGAmv
-         SIF3/Z0MwC8IZt7mF3y3B/jDLybk3rOEFky5onGtDWJ+o8CtS6TMb9SWvljCY/YEdqfK
-         dtjyIsmfd3m3gqizZELB5H3jdobZDBpXhl5mZYOnwFx7KozdTs+sOB+rqYSwHIChyIVX
-         G01w==
+        b=maaWqifPRL5SnY019vSIOqwu5EbyrBmsXFbUsqoRl1X3mj02qsxnGCDo7MzBzhYjYQ
+         beRYSCkmnp/zSCh4Mc0wh09uCAYYyzczhqk+Ke0fyqoxMg9O6DFc66KrG7T6Zlym2KlI
+         YkYDG6Qktb4Iwpdc9pwiUG4ntVuXhAkxR+2+gL1SXMOaCZNzPjUt3gMw2YFkT/2hTj1i
+         b96xK7KP0z6jb9x47MZ8xJdqNckEGiMhnR3+8OJfyejyeEUzi/abOHJtsUwU5QeAiEb3
+         mqgQWJFrKHMp0JJ5G5n+JcseJAC7+yz2oHFFDR2eZpLwO9ieWud57riNebkf/RRR9/IP
+         sQhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=g7oNh1d8VWGEQw+YCuZLsLZ9OlLSdLVyb8nPu7OZ0AM=;
-        b=NFfCHzFIDACwjmT0uWf0AY/GrHQ5cyg0tFTvjVXVMJFl+x/kAojQfOoySke9uYp6S6
-         y+jg+QUBTigtJ/4jv5R13039u+vYYoCdbPsWUINbVEq+EQFB9xzaZvlcJdz559TzZ8Oq
-         Nb95lI6poVQ9p5WFyPo2zzOY/5o96vtfrFc/+/NXlPbXohn5O3xmFkJCKyAxCJ1FXvfD
-         5PQ0WxmnLpTC2w8iVTQqRZZ2SXJ/i1ykNbuESz2XvI1nuMi9f5JzzKohfkm3lysG6Ox8
-         g6hbLkCb+09qbOd6bO/M6OOwazu5Xa4uVh3UPCio2SsL7JIrmeqqGxgp71d33i9kmjmw
-         xeaw==
+        bh=PJAqbiDKYxYxOSUmg7S9N0tHoZ0pCVJBOmi1qgJP2Co=;
+        b=taL8Q7ePsAxvzsO7VH1zCE6TE6ZwGjm5jssx9r2+nmB8O9r8avLLCw9b379d/tuDCw
+         /mPK4fGql7G2e2J5Aac/SD67i25B1DmE9Flh7H3NG4mg4Egl2SPXeEtl5HTACk/23zxF
+         SbdmlBnyvlPIAzUrva2u/UR86udlfW1ZmT0Bg3Fxl4oWaL5meTtZ/Yh4ESfhceNEnWAm
+         gpIcM7KJ2u5ZqqCNO6Qs8vyt0u4Sj7FiMG8NXiB1tlV0fHzGPQgZd7lCJl1hzArHye5f
+         8PeEMHtpfCX8h59GY0C2p3Z0FQh0VcCbZAl9QqwHGNBvqo2lmsCuB84oWr4bYitLk1Bq
+         LX2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mou86ucX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lofp4ue2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t8si6280131wrm.446.2019.02.10.17.20.26
+        by mx.google.com with ESMTPS id f72si6622312wme.176.2019.02.10.17.20.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Sun, 10 Feb 2019 17:20:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mou86ucX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lofp4ue2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:42234 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:42225 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gt0Gn-00068z-Dj
+	id 1gt0Gn-0005dL-L5
 	for alex.bennee@linaro.org; Sun, 10 Feb 2019 20:20:25 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37620)
+Received: from eggs.gnu.org ([209.51.188.92]:37307)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gt05v-0005ws-Lj
-	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:09:16 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gt05l-0005ie-5M
+	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:09:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gt05s-00008k-HK
-	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:09:11 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:38626)
+	(envelope-from <richard.henderson@linaro.org>) id 1gt05i-0008Np-G5
+	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:08:59 -0500
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:44318)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gt05s-0008Ug-74
-	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:09:08 -0500
-Received: by mail-pl1-x641.google.com with SMTP id e5so4510915plb.5
-	for <qemu-devel@nongnu.org>; Sun, 10 Feb 2019 17:09:05 -0800 (PST)
+	id 1gt05i-0008Em-2E
+	for qemu-devel@nongnu.org; Sun, 10 Feb 2019 20:08:58 -0500
+Received: by mail-pl1-x62a.google.com with SMTP id p4so4492102plq.11
+	for <qemu-devel@nongnu.org>; Sun, 10 Feb 2019 17:08:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=g7oNh1d8VWGEQw+YCuZLsLZ9OlLSdLVyb8nPu7OZ0AM=;
-	b=Mou86ucXOZrCzuhlxiH5ZHCEHc+smQK99AsvZlKAD1V3+HoDfRgEI0uCVAftMOKJfq
-	XJROt97HxcPVvCL2EhD/85T6j8PNjwxX9YBQ1t9J2DAY56izUjkQMbRMNypDJH3Ov28u
-	NYBgNQnr8oL/sf9FwRWpSTFsuEd4IhkzoZwV0Q6DbrGAbtnn9zaiNUYkEBaEbp2dnwXk
-	LDgAFZWWibNOToeBbE+lJnIy3tjKq9+Ai6xIPSSekLLSj8E6FeJwf3cfROACssmQk2Pb
-	I2ACk/oRF6R5AYIh1gQ23wYNkfmZaWTqVQfGktPkr8pt4rOkzbKP+S5Xf2AD2nj8/h34
-	awjA==
+	bh=PJAqbiDKYxYxOSUmg7S9N0tHoZ0pCVJBOmi1qgJP2Co=;
+	b=lofp4ue2VWOtrXmgafqy5UhMs5IUAsUzs24ekVb5xrimAeSAz9V9es4dtwpzeT1Uzx
+	7fdeM3iyhnGr2qsdAuv53nYdLUGWmnINHHGAoP9OxjWxpfr3FUeTP91Ub+Fk04apyJ/9
+	W75e3qoULTbuGRaUxpkAZGAt/yVCIB2AeWvN6fEizbCECYbJSlxLEEuCseAic8O44Hca
+	d4UHMIJKm5I4QQTnB4IrjPEMkBeHsieAwouhhdy8HyDU5W4HxtBJdsB5XP7ZGvJFHLRF
+	1spVW7dIwKxEw0e/8knN0jGhwtK5Yv1UrktFekgLnmH0eWbPfC1xPYgHSlf3xdEGplum
+	y/DQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=g7oNh1d8VWGEQw+YCuZLsLZ9OlLSdLVyb8nPu7OZ0AM=;
-	b=SqmX/AeoDJXhTLoBsEY5uvd7sgM/fYXL3HWpeP/nh30QK3UHzmr4Rmno/U5FOWp7rJ
-	Xedbdc4NfEoygSADWFmGFbfkk8mex9BBk6iR9r0Czvrh2jLsklBd2i4gP7cit9FQ2Inl
-	PEyoUhedYnj+HRj636MQkdveAbOXwg3IYnvx2R57gQVxXY/1dXdWFaMsoDdYvOST77IT
-	vfRyh9EyWnPqU/3WyhwNcPCrHmrrWYU8PNr9Z5N5M4zzOv+VA/XOTWxqi6T8u77zECgy
-	HGt4LarHXGWs3rFn8qpWhVpAOBdv+iwnvbdO0zCtg9zY7M51Wws6FZwo5QhPB5BVLmlw
-	eG7A==
-X-Gm-Message-State: AHQUAuatroFg5toBXCcz/qVVZaQhUYFf8EChClt6ua566Pks8EPVw47V
-	RFjajODWETmVKpkzyAz5fINicbBiPAo=
-X-Received: by 2002:a17:902:280b:: with SMTP id
-	e11mr34975123plb.269.1549847343970; 
-	Sun, 10 Feb 2019 17:09:03 -0800 (PST)
+	bh=PJAqbiDKYxYxOSUmg7S9N0tHoZ0pCVJBOmi1qgJP2Co=;
+	b=bxEQpa/i7FPPc8qOBkMXeoZ2c/9n4scUCODP+taDSxWMS6KlS2dzPOKFb8RoPFScyA
+	PU1S1eN2qrpAfWDMLhLHs77JAGqykCiY76HwqtnbcXsKA+raideDULpWQYODvm8EKKt1
+	3qNZS15opy5oz/abSOjPuL9fqjDpsW6Z5wJf18ZeD2dz49rn4GeK3+GbSUB4DjQBGVKk
+	jO2xtc5tj/IsFyV4jr9WEFa289pKhoLsF1Gc9MmgXs8yCv20cf1llVLV/UD/t7xJnk8M
+	JF+LktD+xKhi9NgVRogYE7QxdBj5uf/HkcoI/y7CMxnlkQYj8S+iyAItL0LDiEWWmwG+
+	GZdg==
+X-Gm-Message-State: AHQUAubdb6srcAC6AA6oUM0+E9j7IjTXwJLJ/rTQJc+SDB5dzOo9iAsE
+	AKHTpcbshJed7aauCXW2DiiSFrhHRJ0=
+X-Received: by 2002:a17:902:aa07:: with SMTP id
+	be7mr34837830plb.63.1549847329012; 
+	Sun, 10 Feb 2019 17:08:49 -0800 (PST)
 Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
 	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
-	g14sm17177630pfg.27.2019.02.10.17.09.02
+	g14sm17177630pfg.27.2019.02.10.17.08.47
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 10 Feb 2019 17:09:03 -0800 (PST)
+	Sun, 10 Feb 2019 17:08:48 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Sun, 10 Feb 2019 17:08:28 -0800
-Message-Id: <20190211010829.29869-26-richard.henderson@linaro.org>
+Date: Sun, 10 Feb 2019 17:08:16 -0800
+Message-Id: <20190211010829.29869-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20190211010829.29869-1-richard.henderson@linaro.org>
 References: <20190211010829.29869-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-Subject: [Qemu-devel] [PATCH v2 25/26] target/arm: Enable MTE
+X-Received-From: 2607:f8b0:4864:20::62a
+Subject: [Qemu-devel] [PATCH v2 13/26] target/arm: Implement the SUBP
+ instruction
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,47 +112,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eMrFsuTB/2ge
+X-TUID: VAhP7NuvOr8u
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c   | 10 ++++++++++
- target/arm/cpu64.c |  1 +
- 2 files changed, 11 insertions(+)
+v2: Fix extraction length.
+---
+ target/arm/translate-a64.c | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index decf95de3e..a5599ae19f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -206,6 +206,16 @@ static void arm_cpu_reset(CPUState *s)
-          * make no difference to the user-level emulation.
-          */
-         env->cp15.tcr_el[1].raw_tcr = (3ULL << 37);
-+        /* Enable MTE allocation tags.  */
-+        env->cp15.hcr_el2 |= HCR_ATA;
-+        env->cp15.scr_el3 |= SCR_ATA;
-+        env->cp15.sctlr_el[1] |= SCTLR_ATA0;
-+        /* Enable synchronous tag check failures.  */
-+        env->cp15.sctlr_el[1] |= 1ull << 38;
-+#ifdef TARGET_AARCH64
-+        /* Set MTE seed to non-zero value, otherwise RandomTag fails.  */
-+        env->cp15.rgsr_el1 = 0x123400;
-+#endif
- #else
-         /* Reset into the highest available EL */
-         if (arm_feature(env, ARM_FEATURE_EL3)) {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 53a7d92c95..7bd761b8f5 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -352,6 +352,7 @@ static void aarch64_max_initfn(Object *obj)
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 2e0d797294..3e46ee6f69 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -5132,19 +5132,39 @@ static void handle_crc32(DisasContext *s,
+  */
+ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
+ {
+-    unsigned int sf, rm, opcode, rn, rd;
++    unsigned int sf, rm, opcode, rn, rd, setflag;
+     sf = extract32(insn, 31, 1);
++    setflag = extract32(insn, 29, 1);
+     rm = extract32(insn, 16, 5);
+     opcode = extract32(insn, 10, 6);
+     rn = extract32(insn, 5, 5);
+     rd = extract32(insn, 0, 5);
  
-         t = cpu->isar.id_aa64pfr1;
-         t = FIELD_DP64(t, ID_AA64PFR1, BT, 1);
-+        t = FIELD_DP64(t, ID_AA64PFR1, MTE, 2);
-         cpu->isar.id_aa64pfr1 = t;
+-    if (extract32(insn, 29, 1)) {
++    if (setflag && opcode != 0) {
+         unallocated_encoding(s);
+         return;
+     }
  
-         t = cpu->isar.id_aa64mmfr1;
+     switch (opcode) {
++    case 0: /* SUBP(S) */
++        if (sf == 0 || !dc_isar_feature(aa64_mte_insn_reg, s)) {
++            goto do_unallocated;
++        } else {
++            TCGv_i64 tcg_n, tcg_m, tcg_d;
++
++            tcg_n = read_cpu_reg_sp(s, rn, true);
++            tcg_m = read_cpu_reg_sp(s, rm, true);
++            tcg_gen_sextract_i64(tcg_n, tcg_n, 0, 56);
++            tcg_gen_sextract_i64(tcg_m, tcg_m, 0, 56);
++            tcg_d = cpu_reg(s, rd);
++
++            if (setflag) {
++                gen_sub_CC(true, tcg_d, tcg_n, tcg_m);
++            } else {
++                tcg_gen_sub_i64(tcg_d, tcg_n, tcg_m);
++            }
++        }
++        break;
+     case 2: /* UDIV */
+         handle_div(s, false, sf, rm, rn, rd);
+         break;
 -- 
 2.17.2
 

@@ -1,61 +1,61 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp469157wrp;
-        Tue, 12 Feb 2019 00:33:47 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ib5d2XB0JkKWUYW13eLajNC8F/DWU95NXHQJ7YRDNwZo2Sx77vLPkeMjWfxZcnkOASgAGW1
-X-Received: by 2002:a81:a691:: with SMTP id d139mr1948028ywh.278.1549960427568;
-        Tue, 12 Feb 2019 00:33:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1549960427; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp469969wrp;
+        Tue, 12 Feb 2019 00:34:57 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IatTHmsLANdtmEw/S6ctKdE8UlTEZN1kUBIlk95WNvo5L2EjeRNuCy00iin9MxQILdhAeOV
+X-Received: by 2002:a25:6110:: with SMTP id v16mr2001889ybb.4.1549960497583;
+        Tue, 12 Feb 2019 00:34:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1549960497; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIl6Z1jD8MyQZcJHMSLGiRR86QDYDPcfrCtlzWID6Hoi6YWAQfnWJerL85Ejeuxirt
-         w6ReKnLJLJyyrYR0yYSMw8aVGCvLG/BsCbqpICUxRsFjhuUYMuB6ZOvBbxojPzUN2JQb
-         xjtTt4VQkeKuOqp/yuSrYAkVeq3eBOuj+lHBa8HG2GGSWf/9jwLnALYdqOK9Y3nsqW1O
-         QSWcwMxyobplrGyl4s0ccsJgqTGfqZgxdch9mVnJUoCWbiDosSu5ZYSSXHaL1hrApHOI
-         ySlRd6CqsNt/33tSM41H0xzYXRO1s7ugMpEPvtUH/+GyO6l6eXicwsYMR4H7VPxlbYHE
-         e6cQ==
+        b=Mz5xKHtNrDa0rpoUUxmVoFywSU411TFTGtQUohuL4fa8zLD33l2ufYDiq9s9mLJctA
+         RcNYHZ8Go3FpveRc0yCNgAAcIBhmlX6sfIBnrqdTJOf3mfjNVTekg8y1y8nzls8s7ycr
+         Zt35yXRHW6oBmdGvNKftry1MRTtWZ7LddgQVhFu3JxCkQcABpGuhJIr2euEfW7HlrO5c
+         pIFWepp2WkRIuAvSCC9IdjExZ51ykq9yypacH00o8S1yz+IHgQ0nK9IYZEdVkh7tkfPc
+         VtaZ8AS3ER4AlUszyRBe4MQ3nZVazucxHKBjJ35Lt8hr4dk64Zhm4fvC97kdWS/q1733
+         rFYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=Vyt20LN/GUAhHXaYWXpRwMi6N15hownW9KX6XVthY0E=;
-        b=eqNlhpszPT8YKjYazA1wXtvw8ZVGgigSNiodzRvLek3b6R9GCbd/rVtrgv3gNgb2C2
-         kE0MLmWgzclvc8AeXVX9HfauqQyyCSZrAe1Es3fLZ9vlSzSVx90aZsm6FkM9zXY42gaI
-         0TaUMBaTW3BvGpc+av9aM9dhTqTbcuDCv1hEcUwHYiPwmVw8kll1SP3fRTP5VSaIs65L
-         LY769xKvzetl2Rc7TT2vQTOEgJ+qpRyNEuNmJ3jDmh+zH1haK0Os+khtnsaZWVZOxwYV
-         M4aGPYT1/Kr9OZBf+Rzh7/cLgPfQWEgzNuHRF5wY2NKOaw71O9Y7ln3bWvxTAr8evnP0
-         ZKfA==
+        bh=R4aqvxAwFEyV6dk+dyS884LYxDDwWllej+8pPWrZm0w=;
+        b=L/ztlkmVizEZh1u3yCM3AwQMzyLuwapK+yCHP3d+G6UtA8gCCk+JsKIaNQSdgKk77n
+         WWsHNdbd+ysxSpz21Gk3gOSmnekaYPuyj7uVvE3re1ZEaJQaPiddRRZDJ0yqNBcRfyX4
+         wdSzfiydbtlOFKS3wXygZqzSRs7a59VfxTJo6xTvMlBK5ZXOzfLcsklhfJePpXujrIhG
+         SopjJheALDBN/vD/wGhGCHOu7eMOh7kOsKz6mGrYFxsr2Sjafds8O7smPza1B+DK6ln3
+         AjFG4zJP0aHIjTSuICdMY8tznSbQUDrbMrNj7EhsQZbUM549VYM8zidtw1ZY3wkx3BVY
+         IoCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r132si2657942ywb.210.2019.02.12.00.33.47
+        by mx.google.com with ESMTPS id g7si617396ybk.264.2019.02.12.00.34.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Feb 2019 00:33:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Feb 2019 00:34:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:35542 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:35560 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gtTVj-00047K-0s
-	for alex.bennee@linaro.org; Tue, 12 Feb 2019 03:33:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36843)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gtTWr-0004mt-2u
+	for alex.bennee@linaro.org; Tue, 12 Feb 2019 03:34:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36903)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gtTUu-0003cP-Rj
-	for qemu-arm@nongnu.org; Tue, 12 Feb 2019 03:33:02 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gtTUy-0003gk-B0
+	for qemu-devel@nongnu.org; Tue, 12 Feb 2019 03:33:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gtTTn-0003X3-Ra
-	for qemu-arm@nongnu.org; Tue, 12 Feb 2019 03:31:51 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:34487)
+	(envelope-from <laurent@vivier.eu>) id 1gtTPc-0007eH-Un
+	for qemu-devel@nongnu.org; Tue, 12 Feb 2019 03:27:34 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:52211)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gtTTa-0003EJ-AQ; Tue, 12 Feb 2019 03:31:36 -0500
+	id 1gtTPW-0007Ss-8M; Tue, 12 Feb 2019 03:27:22 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MMGVE-1gcUYO3VvK-00JHD3; Tue, 12 Feb 2019 09:31:23 +0100
+	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MREqy-1ghSq70fi8-00N86F; Tue, 12 Feb 2019 09:27:15 +0100
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20190212074840.13542-1-richard.henderson@linaro.org>
-	<20190212074840.13542-2-richard.henderson@linaro.org>
+	<20190212074840.13542-3-richard.henderson@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -100,106 +100,75 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <dc08d748-eb29-ccb1-ae1b-62b7ad0d6ffd@vivier.eu>
-Date: Tue, 12 Feb 2019 09:31:20 +0100
+Message-ID: <6de87786-3e4e-0d83-3699-ea073fa7bd7d@vivier.eu>
+Date: Tue, 12 Feb 2019 09:27:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190212074840.13542-2-richard.henderson@linaro.org>
+In-Reply-To: <20190212074840.13542-3-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:R8T41xf+nx9S7dev5mnnXbmHizWzRvn4+E/BLILmBo7gajwEBAl
-	tW+Lvb1opei9m7DYnd/cflE6LLCJSbyA5z9A5LXUhnzx9SW8fKrOtvh2vO5CjxUBLqKh30N
-	W6kO1HKITyrqi1xR/d04rCid7w3oW+q5Ep2nhcY2jiTrl4jTDK8EsgOmxHfgvYkl0xHS0fO
-	g+ZEbAYagXNekUJ8kt7+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ee1Nt+QpjjA=:huVsXm1wItAxWL7/eOLOpG
-	Up0+58k8jjN6HY/1Q+6vEcO/YC/OKJFNx0gTVyoBvyhi68yx5m80PdMY08PVyAxStbYxBm8aj
-	wmMlSps0XjkbFncfwcU1GJclSxtXQI7pfH8napnJuyc16RUe68dGTf4NZKa+eX89y7WCXeDGC
-	Ank21CFpszTpFdMgcHKXH0sIMWJFcXmZoBWHjN2eyrmqA5E00gp8/b90mqQ3ww0G5WvRMDw68
-	0AeGd2LtS/daWX6VPypBItGSIFAA8deAH0aFjHgy6lju8RTald2E1vA19MJCucNeLFEC6q54v
-	97bB6XgBzo05buHV5ba1vmStqJNqNWqsba0clIvVazVqJz6eYCKv4p8ukEUAtH3HSn5qAusth
-	hquyJyou4rdT6Ky8V4CwAXESHTlH5gCl6uQQwfkLgFzEVT5BNdX7GXdyqM201oKBJHVvSdyrL
-	yhlax0TmftVGfTO97afQq/R0nYv9hcLw3QPpBdejhkQkBLixfC1os4AlyfFr84C6OimMfrsF/
-	d1RPMPBzsw6WY/i5vVllEK6ueSo5Vy7JI0+l2hYukmhk1KEo5xWg4pGXhTc2cRMtX2kgp4e7p
-	cIe9EZuSHNhjAZTV7qwJEYgB/NsoBb+oJdywyaPJBuybfU4+Owx8+9luHPD/oamQ9VolpTRNE
-	Pq5koqGTlXMExD1nviHR7TTobMA2QqyqVQL0zLU3t/eKgj+oSqmx86vyxk15A0arTLNdcOvMt
-	lOfislq+W81FgWi0I06TSmDDhN4MYjcxEVLwIsXhhEn5Fpyj5oFp2Yi+PsQ=
+X-Provags-ID: V03:K1:m8VaLEbtclgyf58MZSm6KUBsWB6jCNm8L0fBDO3rDirMusat5cb
+	2q1wA6ghFIdHrhaOEu8Bo80e6gMIC6QSlJ9ibvKJ/D7d8ZTm43+VurclHN6gEAJWAg8dT3b
+	rFqww0gj90CmA4Uo1OOLveH4DR4/Q9fX1rTffRS5L0vTcZQ5Joqn4NMRVtipmNuNS/Y/YWW
+	uqjEnBTqiX37o2GHSk2cQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:40bM/LCFi64=:mNgcFzk0tDUa/91Lark2mU
+	tVFXNm/cMGZGOW69M1E5+qrEwMdsn2iveUW0r+zkR8o0htMcu5QnO7C0QDLQdrck4MeSJVdKt
+	/RKIqE7x+277mt2dEcLIVqkd4FSZ+mljE3VuABOZ4vJLVq41L2yuy82c3EC2dP3MlVIGAX7bc
+	WOWjbX6jNVg/Ny8Bn5pfOFXnZ2RnURJ0AEO3jIx0OWnhLhduAJvHulUzlwIiBUGmsxRQIMS8s
+	dlroPNYw4CRlfYOcTIp0ZdTMpklwT5/o8E4gbiD/HxjM/EgyA581mYvrODnOp9gTHRj7rdImC
+	2l/7f/bYRzmMZyTYyz+H0KfjqKjGc56gXQn9yUtvK/hGw40SkxrAr4WGIplWsGDSr56y1/0k3
+	zz7f+zgz76E3mt1FDhPnEA08W2NYQ+e+bGRmv6n4Ke8BO8UMS3H1G+zHtBpdaSD9rhBdE5+z/
+	nyHzb22CZXZ1JLRfP+vcx1rkeji7dZCYdMY3r4Fc2sjDPLWbJxenTMcMlUU5wCMUQrTS+Rx0i
+	cPjf9AGW4HSAANuDpobkmULW4RcoXZKGI+0tEGBtdeHVq29UUImfP+AAYELfqa89yV+iaKiLP
+	E67umGlu19StCOxJ82QovkvmEWrG5nSQDOfHRLxTLvTxNHLFhMP7P1H4uFQmTmcif9S734KsI
+	J6xcKPs/SgFnSx4c1FdVkeFiaXKvVNq/9yrsSNG3cVxXcrS0Qb6rm2gRjuzfr0VXuruSGwExU
+	tqg0ZGJ/29Krl7UvbSplNXIlFO47YcWBICZbj3oKDoWmBKkZN+UoziGa1oc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-arm] [PATCH v2 1/2] linux-user: Add ELF_PLATFORM for arm
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] linux-user: Fix ELF_PLATFORM for
+ aarch64_be-linux-user
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z/bCJx4kTixH
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lLkHf+p5EGxB
 
 On 12/02/2019 08:48, Richard Henderson wrote:
-> The 32-bit kernel has strings for v4, v5, v6, v7, v7m.
-> The 64-bit kernel, in compat mode, has strings for v8.
-> 
-> Fixes: https://bugs.launchpad.net/bugs/1813034
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> v2: Include v8.
-> ---
->  linux-user/elfload.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
+>  linux-user/elfload.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 > 
 > diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index 775a36ccdd..d796d51ec6 100644
+> index d796d51ec6..5aa0628ae9 100644
 > --- a/linux-user/elfload.c
 > +++ b/linux-user/elfload.c
-> @@ -500,6 +500,37 @@ static uint32_t get_elf_hwcap2(void)
->  #undef GET_FEATURE
->  #undef GET_FEATURE_ID
+> @@ -537,7 +537,11 @@ static const char *get_elf_platform(void)
 >  
-> +#define ELF_PLATFORM get_elf_platform()
-> +
-> +static const char *get_elf_platform(void)
-> +{
-> +    CPUARMState *env = thread_cpu->env_ptr;
-> +
+>  #define ELF_ARCH        EM_AARCH64
+>  #define ELF_CLASS       ELFCLASS64
+> -#define ELF_PLATFORM    "aarch64"
 > +#ifdef TARGET_WORDS_BIGENDIAN
-> +# define END  "b"
+> +# define ELF_PLATFORM    "aarch64_be"
 > +#else
-> +# define END  "l"
+> +# define ELF_PLATFORM    "aarch64"
 > +#endif
-> +
-> +    if (arm_feature(env, ARM_FEATURE_V8)) {
-> +        return "v8" END;
-> +    } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> +        if (arm_feature(env, ARM_FEATURE_M)) {
-> +            return "v7m" END;
-> +        } else {
-> +            return "v7" END;
-> +        }
-> +    } else if (arm_feature(env, ARM_FEATURE_V6)) {
-> +        return "v6" END;
-> +    } else if (arm_feature(env, ARM_FEATURE_V5)) {
-> +        return "v5" END;
-> +    } else {
-> +        return "v4" END;
-> +    }
-
-I know nothing about ARM, but in kernel we have also a "v5t"
-(cpu_elf_name) and in QEMU we have a ARM_FEATURE_V4T which is set with
-ARM_FEATURE_V5. Is it related?
+>  
+>  static inline void init_thread(struct target_pt_regs *regs,
+>                                 struct image_info *infop)
+> 
 
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-
-Thanks,
-Laurent
-
-
 

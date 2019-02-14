@@ -1,142 +1,87 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1291083wrp;
-        Thu, 14 Feb 2019 10:18:10 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibu38Trq7xJ8BPFGPSWjTnLkj4vzgzkVz893gxmup++SoJWG0tMqI7nix8NR+30yURQj+KK
-X-Received: by 2002:a5b:407:: with SMTP id m7mr4430190ybp.202.1550168290188;
-        Thu, 14 Feb 2019 10:18:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550168290; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1295212wrp;
+        Thu, 14 Feb 2019 10:22:42 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IarDGqApSKO/xT2AIRFfv4eIs+nhyZK88bGcj4zI8pVPTJi6B31J3JunzcO43pmip5sKPZy
+X-Received: by 2002:a81:55ce:: with SMTP id j197mr4489925ywb.100.1550168562561;
+        Thu, 14 Feb 2019 10:22:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550168562; cv=none;
         d=google.com; s=arc-20160816;
-        b=UYFEBhT2Q2OZKmJVNYygDtQdn03k5ZhQActw2BH4KxlTN3iHy604e2L2YBmXyHM+NL
-         jPQbYm/EjScKn9FQdSNZb94ddImSsKH5DMWlVqsbOKwX29VbQiki1Zi3yWgsl3+FaFM0
-         Qgx+HqVYZpRK9HWd6Nzy6saP4lQJqsVmWkQE3p8464MM/sAhW+nOurQAN16uxQQSSSmG
-         64hmI1Ci+kscque3UK/xicjO9ZR1f2M4NNMYqZehvEP6PCuhUF4bSrdqCoroDPQlXdzL
-         oV7hb8p8x6jcgaY8xHTOEPl+0CZAnygKYj/KALy7VmBiva1YrmbWYt2i0aGfRSG+Y0jb
-         H54Q==
+        b=uPLKAXwbZqH8ul2Etl6fHbuXWo+eBIvA4+93+neLWEqZ1SJle7nS21JqAP44W8SCRb
+         1hpeypgsPaAYVvPNxWmYnZsgSqx2pWicXRtemAMPisggAGew8rPaUGsgeGJTDIekiS8N
+         GKPWLN8hQ16EjDDu1GZOSZkIN6O8V4E40FbG+/MAfTMFRL1L6rHmb39PYbGfFbMAAaSa
+         szFMf6P7zzaBlHkyLT0glXK2/Y1jCVJtSvbfa0SsEmhcrr0ZClqtJo/VoL1H+0Oi4BrB
+         M/ZhLspupHYDHVHN7SniOR8LwaE8uZxDhouvP7o4eqVHGfbqTrURty91iLSWprOJurjC
+         AYJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=1V8sQhKyyctnyTxeFRWWrklVIRRJAnQFZy7Nt5SSeyA=;
-        b=rLUNzTzP8gA+aJ+JtkCC7x2m760tGjF9Oz6tFjh4Bf8K4GRBSNFSA4bBsHEtXUKHxd
-         FdqRIfheOofyUZCzHxZcKr3dHZ9uZM9LDgh2Eb3GGEpLk3qkN6R2IhN3nsuWVKGxn9oX
-         u7UL9puhtPUXetwd2wqt15D/0M1W3u04G529ga1TJaAP39XUjF1EBhwjxNo7ZLeg0Osw
-         l0wSO9ibsskG69TQFRbi/4qrlfk/reT0BiFB8re6SK2dlMYXFyqQtzV6v3oXZ/RtOaO7
-         LfUumRPDLO4xvth53hi8YwqYh1G8aixW+XfICAraln/nBMcCihqIwbzZjZpgVEO7BMHH
-         A5fw==
+         :user-agent:date:message-id:from:references:to;
+        bh=wchcFG9yqYOpPKbEROdZqIxrS94En0LVEgAsSie6XCs=;
+        b=POhglZlIT/iNtOBtG53QBjKCGS3YGctaD0c66cX/ejh6KfCiRG/5DJje9FJvpnVE1+
+         aLXkwDUf+jtFGqg9JECb81J2HJmUB1BMBrUQGbYWfHmmmTMAFOwSNISFr2CIPMS1w4QY
+         9948pBo6YozRAhd7olUmP7wv2YmiXeV6UhugciK184Zit8c8WGcBymv+S2tZVgh7DRtf
+         bmHWtMqY5u/b8yiVTRDs7ENG+jJYJ3RI6fXeVY+Ch5bJcArtn618ASl9++v7IvuIfnJv
+         EmFUp++K3YeJdusZmu2+n9yHcHUTIQchdrRAa24T4pbsySTMYro98qLGbJD/l4tyElst
+         t9TQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 126si1837687ybv.310.2019.02.14.10.18.10
+        by mx.google.com with ESMTPS id c65si1808607ybf.428.2019.02.14.10.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 10:18:10 -0800 (PST)
+        Thu, 14 Feb 2019 10:22:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:52838 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:52918 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guLaL-0001F8-IN
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 13:18:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42474)
+	id 1guLej-0004nh-Vk
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 13:22:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41004)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1guLZG-0001Dv-Nl
-	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 13:17:03 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1guLSU-0004OL-Ql
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 13:10:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1guLZG-0005MY-5H
-	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 13:17:02 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37336)
+	(envelope-from <eric.auger@redhat.com>) id 1guLSU-0000pI-3k
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 13:10:02 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38298)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1guLUO-0001dc-6p; Thu, 14 Feb 2019 13:12:00 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1guLSS-0000jK-7R; Thu, 14 Feb 2019 13:10:00 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E9F4FC04BE32;
-	Thu, 14 Feb 2019 18:11:34 +0000 (UTC)
-Received: from [10.36.112.66] (ovpn-112-66.ams2.redhat.com [10.36.112.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5A130611B3;
-	Thu, 14 Feb 2019 18:11:30 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-References: <20190214140714.15738-1-imammedo@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <4d8518f7-5272-fc18-d5c7-20c4cafdf7e8@redhat.com>
-Date: Thu, 14 Feb 2019 19:11:27 +0100
+	by mx1.redhat.com (Postfix) with ESMTPS id 5F36389C3B;
+	Thu, 14 Feb 2019 18:00:28 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E17A600C1;
+	Thu, 14 Feb 2019 18:00:20 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190205173306.20483-1-eric.auger@redhat.com>
+	<CAFEAcA9QHxm7ACYBnKibfderjfgg+9p+xHZZB4QmMHk26BqTuw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <8b51d0ed-ea6b-1f75-e134-5e51e111bb98@redhat.com>
+Date: Thu, 14 Feb 2019 19:00:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190214140714.15738-1-imammedo@redhat.com>
+In-Reply-To: <CAFEAcA9QHxm7ACYBnKibfderjfgg+9p+xHZZB4QmMHk26BqTuw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 14 Feb 2019 18:11:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 14 Feb 2019 18:00:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [RFC] memory: use memory_region_init_ram() instead
- of memory_region_allocate_system_memory()
+Subject: Re: [Qemu-devel] [PATCH v6 00/18] ARM virt: Initial RAM expansion
+ and PCDIMM/NVDIMM support
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,23 +93,53 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
-	mark.cave-ayland@ilande.co.uk, qemu-arm@nongnu.org,
-	jan.kiszka@web.de, atar4qemu@gmail.com
+Cc: Andrew Jones <drjones@redhat.com>, David Hildenbrand <david@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xUX44HS2p7Mx
+X-TUID: iISRhOvl3oBH
 
-On 14/02/19 15:07, Igor Mammedov wrote:
-> Also some boards (ab)use memory_region_allocate_system_memory(), calling it several
-> times to allocate various fixed sized chunks of RAM and ROMs, which is problematic
-> to map to a single initial RAM Machine::memdev backend and is currently broken if
-> -mem-path points to a not hugepage pool.
+Hi Peter,
 
-This is certainly a good idea.  However, I'm not sure why you would need
-a memdev property on the Machine instead of just allowing 1 -numa node,
-which is what really is.
+On 2/14/19 6:35 PM, Peter Maydell wrote:
+> On Tue, 5 Feb 2019 at 17:33, Eric Auger <eric.auger@redhat.com> wrote:
+>> This series aims to bump the 255GB RAM limit in machvirt and to
+>> support device memory in general, and especially PCDIMM/NVDIMM.
+> 
+>> Functionally, the series is split into 3 parts:
+>> 1) bump of the initial RAM limit [1 - 10] and change in
+>>    the memory map
+>> 2) Support of PC-DIMM [11 - 14]
+>> 3) Support of NV-DIMM [15 - 18]
+>>
+>> 1) can be upstreamed before 2 and 2 can be upstreamed before 3.
+> 
+> Hi Eric; sorry I haven't reviewed this series earlier. I think
+> that 1-10 are pretty near to ready to go in; maybe the easiest
+> path is to do a respin of just those with the review issues fixed?
 
-Thanks,
+No problem. Thank you for the review.
 
-Paolo
+Yes I will quickly respin the patches you reviewed.
+
+> 
+> I'm a long way from being expert in the PC-DIMM/NV-DIMM stuff, so
+> I'm going to be reliant on other people to review those parts.
+> 
+> I don't know if your series needs anything from linux-headers
+> which isn't already in QEMU master after the update to match
+> 5.0rc1 -- if not you could drop the header-sync patch.
+5.0-rc1 should be OK so I think I can drop the header sync.
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

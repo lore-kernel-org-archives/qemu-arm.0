@@ -1,228 +1,218 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1019795wrp;
-        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaVJmMIN8LuwHE68FQ4OY4udgpwmXD6cKqdYJ0cMH7eMfg13XC9yxhgYNn+Y0L4l6PFLw8M
-X-Received: by 2002:a25:38d2:: with SMTP id f201mr3299652yba.253.1550153269347;
-        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550153269; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1075859wrp;
+        Thu, 14 Feb 2019 06:59:25 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbC3PuKBzebDsME/gbkhfNK/XJYVnnmqt6Nk0ZusLAK0YKt3Hd0C9YIWFQIG71gBrTLM+6p
+X-Received: by 2002:a81:4e0e:: with SMTP id c14mr3495198ywb.503.1550156365566;
+        Thu, 14 Feb 2019 06:59:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550156365; cv=none;
         d=google.com; s=arc-20160816;
-        b=HQ6J0lBXmpxba3wi3Q7vY9iP1pqaG6Gorih6Du2uDvKtzfUqRHnEN/7O1Ic5713vBx
-         MaMyKs6yc9lbTTRADv2KmVNrf1ehNOFfNoeI2jy5YMDcIJ4+aap807fv7f5lRR16i1qF
-         t7xkC6KXDORJj1z5qZDcMJHoJh1zC5HT6SD5TwEmc0UI2OQv/vIdH2VS9sE9R9LP10aN
-         CiZTekoxrweJnBxo1qT3431P0/2ENXxLAkVDySfxUKMAL2zoXXOm4xDvvrLseIn+CMMc
-         6j2sccAsiM2aI+VokBWikWk+sy8wvoINCL9SQOaUOvtpeAb7DnUH7nY/7nSo477T/7oE
-         dA2g==
+        b=0YkoVFFlkYa7walOCKdBKgIT1KJqkMQRciC8j1PA4vqq8VZNQOhJcT78Zh18bA/tMB
+         2M5GbwJAaT3g07pRl8SzhARprLLlap3U42Abh5FFLxVyMZNfUvEaEoFmO1XZe4GF5nRu
+         DnoW1f59sQKjktS2gQfAe0auuSTPA3rBJvHcei03l7vE/ROzJ4dGbMWEnHlk52c291+S
+         ezrovyRX02Q5wMDxV711wb0sLTX5mvSLYe1ZXu+l5zUcdLF/B5L/Yw+Dj0ARdZKOGWhV
+         tG40n9kiMqqlzxorpcLDLOgUdmIIEZ1mxfX/rkayZm+TKnWS63wlv3AnP0pAbJrDnwrN
+         yl6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=g+9y7MInoR1lchmUlctU2AFWeYRH0VIdg3F2W2C2thU=;
-        b=y1GY3z9Vfo+C6sCos3SPH5wEaxAuntMFlgfVOMmZLwwfRZtPW9VfSb5SCLrd3Q54++
-         VsTqA1GGHWoSpx2vssIhhvBeLM/BqAlomevJIHtN1dL7c5QEfB3k+rJnolJdLsPssy95
-         x22XuzIjiaR2ZV6SWIcpucgBR5BngXc4eDSaQQ1tI9qujZ/0zkeePdwpBAQ/9RrT5jL3
-         /mW0js19/oCPDqvR7+bKt8A3wcOcH7FG/yi+rA6c73o+02P2Vo4xbB2Cyjp+E9/oIAJ1
-         bZ6BvFLlg++Njw2yS/mYEQiHsOyc+Q8wS7VJkq6KqVYGt0oiTZu9HgdXOHlG8jH/QK0Q
-         OLgA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=divhy0n6pLMY9os92Bfo4KYNUBTMSuJDLbmIOSsAy8k=;
+        b=xa6pny+X5+6bhx926WsdrsLhNaJneS4GvKbOgC+aGkxaN1ZfdGp9e2KhgJkb57RE50
+         spU4RA6SxAd0o48lLrWdtbqXZ4TIewAavhBWervg38qRFwAjUqXIJp9mPFR6SnnMfgfb
+         OuAqebGWlWEAc1d6EQBn8nNUnNOXl1gkCIPfuc0xxB0Wz1TZQsv3alUFjQ10kSvocTpx
+         TASRg757V+xD7GfdYAw+0oRIRZJAZb9sq54o5IkdinG6mk5aQK6JuVdtGAoymGQ8m3ox
+         SvSZ0p+Zwc/nSrhWLagI0QlYPyriL7htr4TTah5ymhAFJCCcteiU3LGSwT7PmDAIqsNb
+         vQ8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=iYYO6Ua1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9si1444275ybi.282.2019.02.14.06.07.49
+        by mx.google.com with ESMTPS id n185si1513289ywe.430.2019.02.14.06.59.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Feb 2019 06:59:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49226 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=iYYO6Ua1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:49811 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guHg4-0000F6-Nt
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 09:07:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38624)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1guIU1-0007rG-0D
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 09:59:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1guHfo-0000DW-JN
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 09:07:34 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1guIRc-0006Th-Hj
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 09:56:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1guHfk-0004HV-Nh
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 09:07:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:3131)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1guHfh-0004CE-4Y; Thu, 14 Feb 2019 09:07:26 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2ABF189AF3;
-	Thu, 14 Feb 2019 14:07:20 +0000 (UTC)
-Received: from dell-r430-03.lab.eng.brq.redhat.com
-	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 40D87277CF;
-	Thu, 14 Feb 2019 14:07:18 +0000 (UTC)
-From: Igor Mammedov <imammedo@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 14 Feb 2019 09:07:14 -0500
-Message-Id: <20190214140714.15738-1-imammedo@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 14 Feb 2019 14:07:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC] memory: use memory_region_init_ram() instead of
- memory_region_allocate_system_memory()
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <richard.henderson@linaro.org>) id 1guIRL-0006TX-2K
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 09:56:46 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:40462)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1guIRC-0006Hm-Fj
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 09:56:32 -0500
+Received: by mail-pf1-x444.google.com with SMTP id h1so3217106pfo.7
+	for <qemu-devel@nongnu.org>; Thu, 14 Feb 2019 06:56:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=divhy0n6pLMY9os92Bfo4KYNUBTMSuJDLbmIOSsAy8k=;
+	b=iYYO6Ua1XfXoV6Ocn8vLnwHdL/TT1FuRI7L/avBenhP3bJP99fNH9KGMZeo90eK6K8
+	nK7VxEeVL1ECNoEjjnr3KfAUUPgBNi5wvawSHxmW2Kl/HvswwHuuw4PDEJwnO4QWw9xk
+	aczI/8t3kiGWuPutLND/4uO83CwkbywXUneqWEsjV0z6VRJkW5RoRaG36E9fnFz7UliA
+	/oUMAi7+NBQP1csq+Ed2CuCXgMrbJpimT2aiHgvAWkXyYTNOIqlxRC2NJVUy5UG6rCm5
+	O+ZUzNbCyoOYU1OegjNSO85bCKv6I35TeUPhZmHEr6d6lmaO1Jo1YtcDdwZurmpsSiAf
+	XyjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=divhy0n6pLMY9os92Bfo4KYNUBTMSuJDLbmIOSsAy8k=;
+	b=RgpkA7pn+gdomCqbXidNotHqZejPjqLdx8sU+YeOkblwXaUpQ9TC3FWsawwe/LQ7yS
+	wGG0X6NBqJqo3uhEUHtI/it6QF1zD+eBNBFZIBd7m+exa8lrwyMVUj2F2bJq4KPv2V4U
+	+1gKyF2HU36sLRqIKiRsWAtdnwNHoAgjw1Hr50vhP/I9w4fkdvPkRDRyUwKH0gnMOod5
+	uXfZriIDlLwOlAOvzaO2Rfcnu6YCcBTjsHeYY2U09FlbaF1ZpW7vjKU/U3TINXS/HxoR
+	hovCIZX2k9c2wvya9NBOt4JO5wI2rav8WqZQZTU3MyYVggKHIHcGDjeeyjKrr/LTCDho
+	8Wvw==
+X-Gm-Message-State: AHQUAubmBCM0ymZfNSNnNDciRnzfc2cD8KdZYt0BMGfedbC3m89AAN2J
+	iGB9+on213pjgaEMzybpIehZGw==
+X-Received: by 2002:aa7:8c8c:: with SMTP id p12mr4670778pfd.0.1550156184770;
+	Thu, 14 Feb 2019 06:56:24 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
+	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
+	d129sm3912960pfc.31.2019.02.14.06.56.23
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 14 Feb 2019 06:56:24 -0800 (PST)
+To: Laurent Desnogues <laurent.desnogues@gmail.com>
+References: <20190214034345.24722-1-richard.henderson@linaro.org>
+	<20190214034345.24722-2-richard.henderson@linaro.org>
+	<CABoDooPZMc8OD7h59B_9Q+Jv+B7cXbJFEqmZPawZJ7b1_Bdp5A@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <d6cfe7e8-0d5a-00f7-c2ff-5db201d19df7@linaro.org>
+Date: Thu, 14 Feb 2019 06:56:22 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <CABoDooPZMc8OD7h59B_9Q+Jv+B7cXbJFEqmZPawZJ7b1_Bdp5A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-devel] [PATCH 1/4] target/arm: Add helpers for FMLAL and
+ FMLSL
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
-	mark.cave-ayland@ilande.co.uk, qemu-arm@nongnu.org,
-	jan.kiszka@web.de, pbonzini@redhat.com, atar4qemu@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aSRFugIka2DA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ve6Auhb741Tf
 
-I'm considering to deprecating -mem-path/prealloc CLI options and replacing
-them with a single memdev Machine property to allow interested users to pick
-used backend for initial RAM (fixes mixed -mem-path+hostmem backends issues)
-and as a transition step to modeling initial as a Device instead of (ab)using
-MemoryRegion APIs.
+On 2/14/19 1:16 AM, Laurent Desnogues wrote:
+> Hello,
+> 
+> On Thu, Feb 14, 2019 at 5:00 AM Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Note that float16_to_float32 rightly squashes SNaN to QNaN.
+>> But of course pickNaNMulAdd, for ARM, selects SNaNs first.
+>> So we have to preserve SNaN long enough for the correct NaN
+>> to be selected.  Thus float16_to_float32_by_bits.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  target/arm/helper.h     |   9 +++
+>>  target/arm/vec_helper.c | 154 ++++++++++++++++++++++++++++++++++++++++
+>>  2 files changed, 163 insertions(+)
+>>
+>> diff --git a/target/arm/helper.h b/target/arm/helper.h
+>> index 53a38188c6..0302e13604 100644
+>> --- a/target/arm/helper.h
+>> +++ b/target/arm/helper.h
+>> @@ -653,6 +653,15 @@ DEF_HELPER_FLAGS_6(gvec_fmla_idx_s, TCG_CALL_NO_RWG,
+>>  DEF_HELPER_FLAGS_6(gvec_fmla_idx_d, TCG_CALL_NO_RWG,
+>>                     void, ptr, ptr, ptr, ptr, ptr, i32)
+>>
+>> +DEF_HELPER_FLAGS_5(gvec_fmlal_h, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fmlsl_h, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fmlal_idx_h, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +DEF_HELPER_FLAGS_5(gvec_fmlsl_idx_h, TCG_CALL_NO_RWG,
+>> +                   void, ptr, ptr, ptr, ptr, i32)
+>> +
+>>  #ifdef TARGET_AARCH64
+>>  #include "helper-a64.h"
+>>  #include "helper-sve.h"
+>> diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+>> index 37f338732e..0c3b3de961 100644
+>> --- a/target/arm/vec_helper.c
+>> +++ b/target/arm/vec_helper.c
+>> @@ -766,3 +766,157 @@ DO_FMLA_IDX(gvec_fmla_idx_s, float32, H4)
+>>  DO_FMLA_IDX(gvec_fmla_idx_d, float64, )
+>>
+>>  #undef DO_FMLA_IDX
+>> +
+>> +/*
+>> + * Convert float16 to float32, raising no exceptions and
+>> + * preserving exceptional values, including SNaN.
+>> + * This is effectively an unpack+repack operation.
+>> + */
+>> +static float32 float16_to_float32_by_bits(uint32_t f16)
+>> +{
+>> +    const int f16_bias = 15;
+>> +    const int f32_bias = 127;
+>> +    uint32_t sign = extract32(f16, 15, 1);
+>> +    uint32_t exp = extract32(f16, 10, 5);
+>> +    uint32_t frac = extract32(f16, 0, 10);
+>> +
+>> +    if (exp == 0x1f) {
+>> +        /* Inf or NaN */
+>> +        exp = 0xff;
+>> +    } else if (exp == 0) {
+>> +        /* Zero or denormal.  */
+>> +        if (frac != 0) {
+>> +            /*
+>> +             * Denormal; these are all normal float32.
+>> +             * Shift the fraction so that the msb is at bit 11,
+>> +             * then remove bit 11 as the implicit bit of the
+>> +             * normalized float32.  Note that we still go through
+>> +             * the shift for normal numbers below, to put the
+>> +             * float32 fraction at the right place.
+>> +             */
+>> +            int shift = clz32(frac) - 21;
+>> +            frac = (frac << shift) & 0x3ff;
+>> +            exp = f32_bias - f16_bias - shift + 1;
+> 
+> If FZ16 is set, this should flush to zero.
 
-Currently most boards use memory_region_allocate_system_memory() to allocate
-RAM and the interface tied up too much to MemoryRegion that makes changing API
-to hostmem across tree is quite a bit of work sometimes requiring logic rewrite
-to do it cleanly and I'm not sure it's worth the effort and that it really has
-a merit to do in case of TCG only boards.
+Ho, hum, yes it should.
 
-I suggest to get rid memory_region_allocate_system_memory() on TCG only boards
-since most of them don't really need NUMA features provided by this API and/or
-probably won't noticeably benefit from -mem-path/prealloc backed memory if at all
-and replacing memory allocation with plain memory_region_init_ram() API.
+> This means you will have to use both fp_status (for the muladd) and
+> fp_status_f16 (for this function) and so you should pass cpu_env to
+> the helpers rather than the fp_status.
 
-It won't require extensive changes in TCG only boards we have now, since they would
-continue to use MemoryRegion based API approach. And the boards, that really need
-to use hugepages or numa features, could be amended to use new machine memdev
-property and/or initial RAM being allocated by implictly (-m) using hostmem-ram backend.
+It's not quite as simple as that, because aa32 mode would pass
+standard_fp_status.  I'll figure something out...
 
-Also some boards (ab)use memory_region_allocate_system_memory(), calling it several
-times to allocate various fixed sized chunks of RAM and ROMs, which is problematic
-to map to a single initial RAM Machine::memdev backend and is currently broken if
--mem-path points to a not hugepage pool.
 
-This RFC attempts to cleanup things a bit on TCG only boards (only several ones)
-side and test waters if it's acceptable approach.  If it looks acceptable, I'll send
-a proper series to make usage of memory_region_allocate_system_memory() minimal across
-the codebase and then convert boards that actually use numa/hugepages to initial RAM
-memdev model (arm/virt, spapr, s390x, pc/q35).
-
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/arm/musicpal.c    |  4 ++--
- hw/arm/vexpress.c    |  4 ++--
- hw/sparc64/niagara.c | 30 +++++++++++++++---------------
- 3 files changed, 19 insertions(+), 19 deletions(-)
-
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index d22532a11c..197e7d1282 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -1592,8 +1592,8 @@ static void musicpal_init(MachineState *machine)
-     cpu = ARM_CPU(cpu_create(machine->cpu_type));
- 
-     /* For now we use a fixed - the original - RAM size */
--    memory_region_allocate_system_memory(ram, NULL, "musicpal.ram",
--                                         MP_RAM_DEFAULT_SIZE);
-+    memory_region_init_ram(ram, NULL, "musicpal.ram", MP_RAM_DEFAULT_SIZE,
-+                           &error_fatal);
-     memory_region_add_subregion(address_space_mem, 0, ram);
- 
-     memory_region_init_ram(sram, NULL, "musicpal.sram", MP_SRAM_SIZE,
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index c02d18ee61..a2cf5c0af2 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -280,8 +280,8 @@ static void a9_daughterboard_init(const VexpressMachineState *vms,
-         exit(1);
-     }
- 
--    memory_region_allocate_system_memory(ram, NULL, "vexpress.highmem",
--                                         ram_size);
-+    memory_region_init_ram(ram, NULL, "vexpress.highmem", ram_size,
-+                           &error_fatal);
-     low_ram_size = ram_size;
-     if (low_ram_size > 0x4000000) {
-         low_ram_size = 0x4000000;
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index f8a856f611..62e0348d5f 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -37,6 +37,7 @@
- #include "sysemu/block-backend.h"
- #include "qemu/error-report.h"
- #include "sysemu/qtest.h"
-+#include "qapi/error.h"
- 
- 
- typedef struct NiagaraBoardState {
-@@ -108,27 +109,26 @@ static void niagara_init(MachineState *machine)
-     /* init CPUs */
-     sparc64_cpu_devinit(machine->cpu_type, NIAGARA_PROM_BASE);
-     /* set up devices */
--    memory_region_allocate_system_memory(&s->hv_ram, NULL, "sun4v-hv.ram",
--                                         NIAGARA_HV_RAM_SIZE);
-+    memory_region_init_ram(&s->hv_ram, NULL, "sun4v-hv.ram",
-+                                         NIAGARA_HV_RAM_SIZE, &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_HV_RAM_BASE, &s->hv_ram);
- 
--    memory_region_allocate_system_memory(&s->partition_ram, NULL,
--                                         "sun4v-partition.ram",
--                                         machine->ram_size);
-+    memory_region_init_ram(&s->partition_ram, NULL, "sun4v-partition.ram",
-+                                         machine->ram_size, &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_PARTITION_RAM_BASE,
-                                 &s->partition_ram);
- 
--    memory_region_allocate_system_memory(&s->nvram, NULL,
--                                         "sun4v.nvram", NIAGARA_NVRAM_SIZE);
-+    memory_region_init_ram(&s->nvram, NULL, "sun4v.nvram", NIAGARA_NVRAM_SIZE,
-+                           &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_NVRAM_BASE, &s->nvram);
--    memory_region_allocate_system_memory(&s->md_rom, NULL,
--                                         "sun4v-md.rom", NIAGARA_MD_ROM_SIZE);
-+    memory_region_init_ram(&s->md_rom, NULL, "sun4v-md.rom",
-+                           NIAGARA_MD_ROM_SIZE, &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_MD_ROM_BASE, &s->md_rom);
--    memory_region_allocate_system_memory(&s->hv_rom, NULL,
--                                         "sun4v-hv.rom", NIAGARA_HV_ROM_SIZE);
-+    memory_region_init_ram(&s->hv_rom, NULL, "sun4v-hv.rom",
-+                           NIAGARA_HV_ROM_SIZE, &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_HV_ROM_BASE, &s->hv_rom);
--    memory_region_allocate_system_memory(&s->prom, NULL,
--                                         "sun4v.prom", PROM_SIZE_MAX);
-+    memory_region_init_ram(&s->prom, NULL, "sun4v.prom",
-+                                         PROM_SIZE_MAX, &error_fatal);
-     memory_region_add_subregion(sysmem, NIAGARA_PROM_BASE, &s->prom);
- 
-     add_rom_or_fail("nvram1", NIAGARA_NVRAM_BASE);
-@@ -145,8 +145,8 @@ static void niagara_init(MachineState *machine)
-         BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
-         int size = blk_getlength(blk);
-         if (size > 0) {
--            memory_region_allocate_system_memory(&s->vdisk_ram, NULL,
--                                                 "sun4v_vdisk.ram", size);
-+            memory_region_init_ram(&s->vdisk_ram, NULL, "sun4v_vdisk.ram", size,
-+                                   &error_fatal);
-             memory_region_add_subregion(get_system_memory(),
-                                         NIAGARA_VDISK_BASE, &s->vdisk_ram);
-             dinfo->is_default = 1;
--- 
-2.18.1
-
+r~

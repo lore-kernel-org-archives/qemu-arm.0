@@ -1,106 +1,107 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp955001wrp;
-        Thu, 14 Feb 2019 05:06:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IajZjJshAqzK3plmccd14EhDmOgkI9hxwAB/KnwBm96RLzT7RZCp14pI0SLrZiIBpB6Zf7T
-X-Received: by 2002:a0d:eb94:: with SMTP id u142mr2905941ywe.356.1550149596968;
-        Thu, 14 Feb 2019 05:06:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550149596; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp956752wrp;
+        Thu, 14 Feb 2019 05:08:06 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYVZ+XmmpQh2y058+7JEXsNB112ecahO5cMbQLLat3RCd3+BBInjvFCmITSn6Nqi11Qh/6W
+X-Received: by 2002:a81:2e96:: with SMTP id u144mr2887271ywu.333.1550149686829;
+        Thu, 14 Feb 2019 05:08:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550149686; cv=none;
         d=google.com; s=arc-20160816;
-        b=kgoXK8VDakwoakoNszctr7KzkZiCSl5gnK94EQDmb5RBEmOzJGzL7XTbuyAooWWp9x
-         SY5Jni2lR+2e3lkt3q4WvYxjICursSVCflhJrr1h1vJS28/J5+g+9cNjY429EXswTE0+
-         +lwCwIt5f4jqnfpXxLTtinejMlUuFUO8GqJq8ppVTGy6bnFb5VslT2UkXdRKHIefQvtP
-         Bs7tJzPiXh4S4NSOGaz4RDxlnHvwFHw0VAUE/N7VwUKc0+Q+Smajl9B2NFmWpIoniv4e
-         NaDMKRYw9aDvYtklIvmWgS4jwS07dLwE05PEwgQCeKdpTeKVk8+Vhou8TY+/hjm9kem8
-         RHZg==
+        b=nvMYaL5NGm2rQoeGxRZsviE0GOS2UpJdw8K0wOpuPgfVskwjvhEy2/tqvSW+kpNS5q
+         ZWAOCusNdw2+9ijUk8ak2NPHdVEoEmR1lgi+0hXvFziLVlW4X2GhzEGTyLIhji+vCJ0f
+         LgPjuNkk257aj1Gb4Z9JPTL1/VxmTmS/S7ANUMF7PrUl7aJUAUu8FVZndK8Zp1JTuSAr
+         Ft7eLN0eeGZS+lF3LSSD9ecWOV7lQ0RKwehA/wiNJMAsBvJMAw0ECZsxoHDnIAAf3NUe
+         MKUaXnuPXuui+Tek1zclcIg8+zybtXsEXTijmMib5Xc13+Zh5o97kZibbIngVosBG/oW
+         MgAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=i7iefvAvCVRA+KRHNYGYL+qeYUkXaEz5YcRL7tedKZY=;
-        b=aYeLyX/gAhP1xy5zhZLnNUevDTwgBg03kxXN9cCTaFwbUtarRxbjtaqEZqhXx1HohF
-         nekUd/oqxgItVf6eCuxix6VpTxgJNzRiv4AcYKnOjjEgMmMrAgB93TOkJZ79S4CWZJx0
-         bpAWB9ZDZnQA3r4M9wg9s5FuQVSknGHtEPVOKXhok0yjVLogpuOZUc4XpnTCjm+nV1pu
-         xFQ7tLACUKCdBYT+6mr34QTodSIFMNXdqTHSBjVzVv8vBcJo5p+4S35HXiQjiEkKs0GY
-         aTbWLa68X0HN8rgYkD1dA4js4S4MXJ9coUpF8QbF3RsQaCbWR4CDtbYYQ/kBPtuo8fiW
-         gWhg==
+        bh=xO0SmjJi87cMCHBDYE6Aqyprx2bqu1BuqChTWfqFWYg=;
+        b=W0ZhVQwjHacDyyoXDFi58f9oSKDMeO7hRnbNSytjr9p6CdH9SsdviFzdthCbi2i4Pt
+         X3o+N43XNC4TmVtZF5+vUdrenHQPBqH0Q0hZAMKq/lb3xqdfzuBaItJ57sMus7rpREHh
+         +AGdR0YgnU75Gp7Alrk8E0ZbE56XrLBWFuNeGSI1rCnCFIVKCyG4SW6md/RZXgaKzSBN
+         65vd40A3p3Fz6eAT9U4NwX31A0rXLwUehzvh+1jfzXNxc5BY51iBgo4ERr5BGXkC+B43
+         sYM73TFMEiVXY8ufxQHaVO3uefpSBEp/dOeDSZ0xd90MDVU8P7tyI/H69S06OGSh2D4W
+         jPWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RJDEqj7j;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jODasDd2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19si1323069ywa.231.2019.02.14.05.06.36
+        by mx.google.com with ESMTPS id x204si1383045ywb.236.2019.02.14.05.08.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 05:06:36 -0800 (PST)
+        Thu, 14 Feb 2019 05:08:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RJDEqj7j;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jODasDd2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48302 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48316 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guGiq-0005xX-8q
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 08:06:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49693)
+	id 1guGkI-0007EJ-4i
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 08:08:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49709)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGeO-0002tT-LM
-	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 08:02:01 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1guGeW-0002tY-E1
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 08:02:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGUe-00071u-GD
-	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 07:51:57 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54896)
+	(envelope-from <peter.maydell@linaro.org>) id 1guGTv-0006Pi-Mj
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 07:51:12 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35873)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1guGUe-0006bC-8C
-	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 07:51:56 -0500
-Received: by mail-wm1-x342.google.com with SMTP id a62so6166418wmh.4
-	for <qemu-devel@nongnu.org>; Thu, 14 Feb 2019 04:51:20 -0800 (PST)
+	id 1guGTv-0006Ov-GU
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 07:51:11 -0500
+Received: by mail-wm1-x341.google.com with SMTP id j125so5992535wmj.1
+	for <qemu-devel@nongnu.org>; Thu, 14 Feb 2019 04:51:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=i7iefvAvCVRA+KRHNYGYL+qeYUkXaEz5YcRL7tedKZY=;
-	b=RJDEqj7j8XWkG/cMdBPF8DDTmFYF71f6ppHBCIj8blVUT3Id1IvQ9u21UvtfDavnRg
-	Gt8RKUIkzBjMxfRVL3K7MT9sdlzsytUnYN5mXm3fHFCIBCyNw4+B5TKgsuPQDu5qPeca
-	nOukU8K7yVbm7GlLheLXUaS5fuJRlYBWvOGrasCGPOQHUqSq23v6svgWnLe8x0gjORMl
-	tsMRyku9uF89kg4ZBgAfv5kcLJITnnZ1VNuvXiNL4Cf6ukzZOzrB0nHR4dNsrIpfPbwE
-	oFoaCPgJypi3mGrCb2CDJ/0IjYo5ziaNHrhqdpHxFfWney7mkk7pLNB1wPbzwmLXtuHa
-	+kAA==
+	bh=xO0SmjJi87cMCHBDYE6Aqyprx2bqu1BuqChTWfqFWYg=;
+	b=jODasDd2CprkDE+SMmDJ85XKzxN4RW0kLA7p/4H/kR88P23aVkEW5u39Liy0jXgBfm
+	67fWPG3UMDqN+EK9ujfMGKZg3fEpDRYmtBkjfy709q8nPFE1sNzCc04I5QbIRcUkDCkT
+	pOlOgUNYvQrH97+f8fomIEqpbkHLUQPj7DtVQ7N1haFuo2pLFkiYAYJteBfqXY3dDCUp
+	iSqOBum1ac9DtwjksTyyRGjxg1DnS4/3K0IKfXPyydLv2kH6+w80P+Co4QfDoXqbIJKU
+	PU8O+zIidJEx0D0qz8mdp4/xoZ2rWPdxdcUlRyDVuQXTkeMZuL8a6dZoR/SlgqIBnOJP
+	8BPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=i7iefvAvCVRA+KRHNYGYL+qeYUkXaEz5YcRL7tedKZY=;
-	b=Om86H/dkVN8uHAUZtpT/BzuO40OGF+GtsXHVaC3wzgCaHM9901C2llYRLDmPYNDoeP
-	ZQGRjRa3zSfNIqqxk+ZEA8uE9uwdCEdaW8eBWG/RpGm4OMhhDCqQyCU1SdiQasG9ohSZ
-	jgTjTbCEEWMQ2yBvBRkB/rGtMBg5Q4HDB5iCP7FWzZE4ct+YQ3liAGoIZvZRTtTjOEnh
-	g/T3N+kDTn3PR9mRquKt7ga4EOsUGGzewRhoAdaL7rk+Kvv2rX9FwrVlcvi7mfULxxD2
-	zzgy1xD1KcQPyS1dJaxcWHY5+cntDdupW3hniaixGIx7GsTUK3ANoVIzIpF0dGUeiMHi
-	BqiA==
-X-Gm-Message-State: AHQUAubrJt1dQPdxsm4ATsUJc7Z7YPcMRybhRws7z06McT8E9Syb+/b8
-	IXUZ7pdTgdC34HHh5yha6APatw==
-X-Received: by 2002:a1c:c40c:: with SMTP id u12mr2530542wmf.11.1550148679746; 
-	Thu, 14 Feb 2019 04:51:19 -0800 (PST)
+	bh=xO0SmjJi87cMCHBDYE6Aqyprx2bqu1BuqChTWfqFWYg=;
+	b=rUHW4mhHHj65qt5wqOYGRRuWXkwOBSPYcums19nhdkNSZ9cZdJrcAOr9sMCyBZwQDT
+	Kc16XqZ2s+Sf4pH9FlkfH/wdpSoSeHejSMLx8Qo5vbscZSeIFQHFQAhGcLBFKDiOcN1Z
+	OJ9qOlcJVnmjBd2d8q9PL3bIyfH+EOcGa1T+HQXv2VJqry0DV1Z2aacQDO4U6q5XeW/x
+	VZVuIEtvAR12pY9NMbqSg6BupA3jluT2EOdBbdwXJaLbV5/5GuPIVCrJASJhHx6h4C9W
+	uhtZPQgDMpcyptysRBP/zKgRNNoMr2hDR2IKOfM32HT/KKVjzreW+2PgSy9KBY+c7Y3I
+	syMQ==
+X-Gm-Message-State: AHQUAuZbQeHHfmBK4qvBi1MzQtaScZVv247o3020HRWRz77U+4fgJBo3
+	dMG5z7KBqdMw3Gu7dM1ZmzVYSQ==
+X-Received: by 2002:a1c:6442:: with SMTP id y63mr2469483wmb.143.1550148670479; 
+	Thu, 14 Feb 2019 04:51:10 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id j3sm1488073wmb.39.2019.02.14.04.51.18
+	by smtp.gmail.com with ESMTPSA id j3sm1488073wmb.39.2019.02.14.04.51.09
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Feb 2019 04:51:19 -0800 (PST)
+	Thu, 14 Feb 2019 04:51:09 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 14 Feb 2019 12:51:02 +0000
-Message-Id: <20190214125107.22178-10-peter.maydell@linaro.org>
+Date: Thu, 14 Feb 2019 12:50:54 +0000
+Message-Id: <20190214125107.22178-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214125107.22178-1-peter.maydell@linaro.org>
 References: <20190214125107.22178-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-devel] [PATCH 09/14] hw/arm/armsse: Allow boards to specify
- init-svtor
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-devel] [PATCH 01/14] hw/arm/armsse: Fix miswiring of
+ expansion IRQs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,68 +116,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eLRYE/qyBXi4
+X-TUID: W6+d66TVOIjA
 
-The Musca boards have DAPLink firmware that sets the initial
-secure VTOR value (the location of the vector table) differently
-depending on the boot mode (from flash, from RAM, etc). Export
-the init-svtor as a QOM property of the ARMSSE object so that
-the board can change it.
+In commit 91c1e9fcbd7548db368 where we added dual-CPU support to
+the ARMSSE, we set up the wiring of the expansion IRQs via nested
+loops: the outer loop on 'i' loops for each CPU, and the inner loop
+on 'j' loops for each interrupt. Fix a typo which meant we were
+wiring every expansion IRQ line to external IRQ 0 on CPU 0 and
+to external IRQ 1 on CPU 1.
 
+Fixes: 91c1e9fcbd7548db368 ("hw/arm/armsse: Support dual-CPU configuration")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/arm/armsse.h | 3 +++
- hw/arm/armsse.c         | 8 ++++----
- 2 files changed, 7 insertions(+), 4 deletions(-)
+ hw/arm/armsse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 444605b44dc..84879f40dd8 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -48,6 +48,8 @@
-  *    if necessary.)
-  *  + QOM property "SRAM_ADDR_WIDTH" sets the number of bits used for the
-  *    address of each SRAM bank (and thus the total amount of internal SRAM)
-+ *  + QOM property "init-svtor" sets the initial value of the CPU SVTOR register
-+ *    (where it expects to load the PC and SP from the vector table on reset)
-  *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts for CPU 0,
-  *    which are wired to its NVIC lines 32 .. n+32
-  *  + Named GPIO inputs "EXP_CPU1_IRQ" 0..n are the expansion interrupts for
-@@ -204,6 +206,7 @@ typedef struct ARMSSE {
-     uint32_t exp_numirq;
-     uint32_t mainclk_frq;
-     uint32_t sram_addr_width;
-+    uint32_t init_svtor;
- } ARMSSE;
- 
- typedef struct ARMSSEInfo ARMSSEInfo;
 diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 9a8c49547db..3040ea9324e 100644
+index 5d53071a5a0..9a8c49547db 100644
 --- a/hw/arm/armsse.c
 +++ b/hw/arm/armsse.c
-@@ -505,11 +505,10 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-          * the INITSVTOR* registers before powering up the CPUs in any case,
-          * so the hardware's default value doesn't matter. QEMU doesn't emulate
-          * the control processor, so instead we behave in the way that the
--         * firmware does. All boards currently known about have firmware that
--         * sets the INITSVTOR0 and INITSVTOR1 registers to 0x10000000, like the
--         * IoTKit default. We can make this more configurable if necessary.
-+         * firmware does. The initial value is configurable by the board code
-+         * to match whatever its firmware does.
-          */
--        qdev_prop_set_uint32(cpudev, "init-svtor", 0x10000000);
-+        qdev_prop_set_uint32(cpudev, "init-svtor", s->init_svtor);
-         /*
-          * Start all CPUs except CPU0 powered down. In real hardware it is
-          * a configurable property of the SSE-200 which CPUs start powered up
-@@ -1185,6 +1184,7 @@ static Property armsse_properties[] = {
-     DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
-     DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
-     DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
-+    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
+@@ -565,7 +565,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         /* Connect EXP_IRQ/EXP_CPUn_IRQ GPIOs to the NVIC's lines 32 and up */
+         s->exp_irqs[i] = g_new(qemu_irq, s->exp_numirq);
+         for (j = 0; j < s->exp_numirq; j++) {
+-            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, i + 32);
++            s->exp_irqs[i][j] = qdev_get_gpio_in(cpudev, j + 32);
+         }
+         if (i == 0) {
+             gpioname = g_strdup("EXP_IRQ");
 -- 
 2.20.1
 

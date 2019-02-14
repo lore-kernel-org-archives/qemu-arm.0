@@ -1,106 +1,77 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp960879wrp;
-        Thu, 14 Feb 2019 05:11:36 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaMS2WRtDdPdCnpPT5w0FLbT30rtugrTqzyBjQ/4W4eX3TgxvBWAclDQRQTwuwj1Cyrt36S
-X-Received: by 2002:a81:71c5:: with SMTP id m188mr2932773ywc.353.1550149896606;
-        Thu, 14 Feb 2019 05:11:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550149896; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1019795wrp;
+        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaVJmMIN8LuwHE68FQ4OY4udgpwmXD6cKqdYJ0cMH7eMfg13XC9yxhgYNn+Y0L4l6PFLw8M
+X-Received: by 2002:a25:38d2:: with SMTP id f201mr3299652yba.253.1550153269347;
+        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550153269; cv=none;
         d=google.com; s=arc-20160816;
-        b=04rC/VaUdi/C7/29fGJ0hXrNS0jw3YLN6mZZkpK4oxvF9wy6RnkcFRTU0OWgeAQIXp
-         c1mfyM6BqKLWiPyDpptXcqfI9+grOemVZNKr0qRQXD+PubegPgGy2BZpq6euwxC6FhLU
-         ARqTTajJIdVxYkgCbJymrOYUTRNifV1deUbAwATrLquaex4pyOer89CRHNCNH0Bns/BR
-         BpSk/tCXC/9XlJhG401qyahI556mYjHN0HBpXGWyBonpOQzVrnEXO7nX3eGh/LA0inb2
-         by24RylfyhU59k/AHlADbRelzsxO4MVVyOaYnlSXuSFpXsUstKLj2bIYqZGue4G9/8ec
-         aZHw==
+        b=HQ6J0lBXmpxba3wi3Q7vY9iP1pqaG6Gorih6Du2uDvKtzfUqRHnEN/7O1Ic5713vBx
+         MaMyKs6yc9lbTTRADv2KmVNrf1ehNOFfNoeI2jy5YMDcIJ4+aap807fv7f5lRR16i1qF
+         t7xkC6KXDORJj1z5qZDcMJHoJh1zC5HT6SD5TwEmc0UI2OQv/vIdH2VS9sE9R9LP10aN
+         CiZTekoxrweJnBxo1qT3431P0/2ENXxLAkVDySfxUKMAL2zoXXOm4xDvvrLseIn+CMMc
+         6j2sccAsiM2aI+VokBWikWk+sy8wvoINCL9SQOaUOvtpeAb7DnUH7nY/7nSo477T/7oE
+         dA2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=7g9zWEgPnQ1/3e/7FE39QU99XF4zWTWG/yRPa1dvYJ4=;
-        b=ckXaNQwvPNp0zYLT0v65eRPHhQBIcikUqTHgX81XQN0twmAOu9BFbV9G9MSTpxDHKJ
-         O8S6+UYoR5jtGSjDxiMuVq8+Sy50m4tamIPwkHiRmbHF6obW8z3MgkM4Y9SQXCEDX8hG
-         WYfItev7bEp42F7OUeG8d3tIV9i07aPu3Ycuesw3Cw9A7aDEcMlXJTMJcsuu514rijdm
-         MWWWx7i3O4SWCANtLFUWrRCH19BDZwGS6hKBVq4TD/2Y5MCIaUPhcY47G6fBFEfVvzix
-         p4J8BYPOV1nuu2YrbSo8D7aXrEvfp96qhDorTlpRdOG9LPJo8OyGcKfbHjo5YhvDFUny
-         JFCg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=g+9y7MInoR1lchmUlctU2AFWeYRH0VIdg3F2W2C2thU=;
+        b=y1GY3z9Vfo+C6sCos3SPH5wEaxAuntMFlgfVOMmZLwwfRZtPW9VfSb5SCLrd3Q54++
+         VsTqA1GGHWoSpx2vssIhhvBeLM/BqAlomevJIHtN1dL7c5QEfB3k+rJnolJdLsPssy95
+         x22XuzIjiaR2ZV6SWIcpucgBR5BngXc4eDSaQQ1tI9qujZ/0zkeePdwpBAQ/9RrT5jL3
+         /mW0js19/oCPDqvR7+bKt8A3wcOcH7FG/yi+rA6c73o+02P2Vo4xbB2Cyjp+E9/oIAJ1
+         bZ6BvFLlg++Njw2yS/mYEQiHsOyc+Q8wS7VJkq6KqVYGt0oiTZu9HgdXOHlG8jH/QK0Q
+         OLgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L9Ajd4o6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t124si1281923ywc.232.2019.02.14.05.11.36
+        by mx.google.com with ESMTPS id h9si1444275ybi.282.2019.02.14.06.07.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 05:11:36 -0800 (PST)
+        Thu, 14 Feb 2019 06:07:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L9Ajd4o6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48398 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:49226 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guGng-0002NW-2G
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 08:11:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49709)
+	id 1guHg4-0000F6-Nt
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 09:07:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38624)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGeO-0002tY-Nu
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 08:02:07 -0500
+	(envelope-from <imammedo@redhat.com>) id 1guHfo-0000DW-JN
+	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 09:07:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGUe-00072D-JW
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:57 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45219)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1guGUe-0006jS-A6
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:56 -0500
-Received: by mail-wr1-x442.google.com with SMTP id w17so6308075wrn.12
-	for <qemu-arm@nongnu.org>; Thu, 14 Feb 2019 04:51:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=7g9zWEgPnQ1/3e/7FE39QU99XF4zWTWG/yRPa1dvYJ4=;
-	b=L9Ajd4o6Pgb6p4DcApMyojBNs9E6icveqCja/w7bkw12ndkmgLBvoUw4QhfXU1wvOr
-	LQan0eZiJUA5nXl+sFcUbHdHmEaXV2uTteAytSPuM0aHhd+3Z12bK0gtodDpli/kwYEC
-	L2S6OHfQsllwdeLRH0kuXwv0x2ARSJxViyFN/cRlsspPzEat+N4j5dthn4dgYbj5SUET
-	YdnP8ON+n23dxzaCEP4S+jBkavrftozrRnv+DLHGmq0pJ68nqOh+kOtjLOYScepBHYUv
-	Ez7qfNwfEW1wlKz03WmJPP/NSJaBxhpxnHnsXzIrsfVaI7HnhSv+boTtrcn99f6rKLlq
-	TcFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=7g9zWEgPnQ1/3e/7FE39QU99XF4zWTWG/yRPa1dvYJ4=;
-	b=Ww8B3LKtn7fSAZgYtYtNvns/CkEdSUj88cqYerqoHoOGJHer0jMqUJYpI5wYLn2y6L
-	hpnWeNDZuASwOOHGeVwD2feMbGrFeIJBLxvloYJbRFekZJj6R8plV9qdM4kEiRgqtpRE
-	bgfo7e6u/4lh5Q6/hjt9nkyy9kQKlvxQ/jrMn9FKMc5DtwahxnEgdeJVqZ7ZK3r9hg4n
-	JMK6IppqxrVcARqQBiYF8LqqVR7z4DvcBH4OgeKa256UpAg1osL8+m68EfZFtdlgswNt
-	yhJJHSeFdyq9wV4/TQMbYiM29JT2HvkYy6pJ1CnbybL49utZA85O7ZT7b4cIkkRSUwFL
-	eOIQ==
-X-Gm-Message-State: AHQUAuZyGq1F97SmRAToyV56KYW+6qDkYvgCPWBGGJUQqCKOnj641mDY
-	jdBFtT3XcRAlAWyyy8UPEpOAZJ1SXrBAKA==
-X-Received: by 2002:a05:6000:1287:: with SMTP id
-	f7mr2882462wrx.203.1550148686149; 
-	Thu, 14 Feb 2019 04:51:26 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id j3sm1488073wmb.39.2019.02.14.04.51.24
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Feb 2019 04:51:25 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu, 14 Feb 2019 12:51:07 +0000
-Message-Id: <20190214125107.22178-15-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190214125107.22178-1-peter.maydell@linaro.org>
-References: <20190214125107.22178-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-arm] [PATCH 14/14] hw/arm/musca: Wire up PL011 UARTs
+	(envelope-from <imammedo@redhat.com>) id 1guHfk-0004HV-Nh
+	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 09:07:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:3131)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1guHfh-0004CE-4Y; Thu, 14 Feb 2019 09:07:26 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2ABF189AF3;
+	Thu, 14 Feb 2019 14:07:20 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq.redhat.com
+	(dell-r430-03.lab.eng.brq.redhat.com [10.37.153.18])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 40D87277CF;
+	Thu, 14 Feb 2019 14:07:18 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Thu, 14 Feb 2019 09:07:14 -0500
+Message-Id: <20190214140714.15738-1-imammedo@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 14 Feb 2019 14:07:20 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC] memory: use memory_region_init_ram() instead of
+ memory_region_allocate_system_memory()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,94 +83,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com,
+	mark.cave-ayland@ilande.co.uk, qemu-arm@nongnu.org,
+	jan.kiszka@web.de, pbonzini@redhat.com, atar4qemu@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WeLr5/XH1QH4
+X-TUID: aSRFugIka2DA
 
-Wire up the two PL011 UARTs in the Musca board.
+I'm considering to deprecating -mem-path/prealloc CLI options and replacing
+them with a single memdev Machine property to allow interested users to pick
+used backend for initial RAM (fixes mixed -mem-path+hostmem backends issues)
+and as a transition step to modeling initial as a Device instead of (ab)using
+MemoryRegion APIs.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Currently most boards use memory_region_allocate_system_memory() to allocate
+RAM and the interface tied up too much to MemoryRegion that makes changing API
+to hostmem across tree is quite a bit of work sometimes requiring logic rewrite
+to do it cleanly and I'm not sure it's worth the effort and that it really has
+a merit to do in case of TCG only boards.
+
+I suggest to get rid memory_region_allocate_system_memory() on TCG only boards
+since most of them don't really need NUMA features provided by this API and/or
+probably won't noticeably benefit from -mem-path/prealloc backed memory if at all
+and replacing memory allocation with plain memory_region_init_ram() API.
+
+It won't require extensive changes in TCG only boards we have now, since they would
+continue to use MemoryRegion based API approach. And the boards, that really need
+to use hugepages or numa features, could be amended to use new machine memdev
+property and/or initial RAM being allocated by implictly (-m) using hostmem-ram backend.
+
+Also some boards (ab)use memory_region_allocate_system_memory(), calling it several
+times to allocate various fixed sized chunks of RAM and ROMs, which is problematic
+to map to a single initial RAM Machine::memdev backend and is currently broken if
+-mem-path points to a not hugepage pool.
+
+This RFC attempts to cleanup things a bit on TCG only boards (only several ones)
+side and test waters if it's acceptable approach.  If it looks acceptable, I'll send
+a proper series to make usage of memory_region_allocate_system_memory() minimal across
+the codebase and then convert boards that actually use numa/hugepages to initial RAM
+memdev model (arm/virt, spapr, s390x, pc/q35).
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/arm/musca.c | 34 +++++++++++++++++++++++++++++-----
- 1 file changed, 29 insertions(+), 5 deletions(-)
+ hw/arm/musicpal.c    |  4 ++--
+ hw/arm/vexpress.c    |  4 ++--
+ hw/sparc64/niagara.c | 30 +++++++++++++++---------------
+ 3 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index ec8dfee1964..e9701533d20 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -23,9 +23,11 @@
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index d22532a11c..197e7d1282 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1592,8 +1592,8 @@ static void musicpal_init(MachineState *machine)
+     cpu = ARM_CPU(cpu_create(machine->cpu_type));
+ 
+     /* For now we use a fixed - the original - RAM size */
+-    memory_region_allocate_system_memory(ram, NULL, "musicpal.ram",
+-                                         MP_RAM_DEFAULT_SIZE);
++    memory_region_init_ram(ram, NULL, "musicpal.ram", MP_RAM_DEFAULT_SIZE,
++                           &error_fatal);
+     memory_region_add_subregion(address_space_mem, 0, ram);
+ 
+     memory_region_init_ram(sram, NULL, "musicpal.sram", MP_SRAM_SIZE,
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index c02d18ee61..a2cf5c0af2 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -280,8 +280,8 @@ static void a9_daughterboard_init(const VexpressMachineState *vms,
+         exit(1);
+     }
+ 
+-    memory_region_allocate_system_memory(ram, NULL, "vexpress.highmem",
+-                                         ram_size);
++    memory_region_init_ram(ram, NULL, "vexpress.highmem", ram_size,
++                           &error_fatal);
+     low_ram_size = ram_size;
+     if (low_ram_size > 0x4000000) {
+         low_ram_size = 0x4000000;
+diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+index f8a856f611..62e0348d5f 100644
+--- a/hw/sparc64/niagara.c
++++ b/hw/sparc64/niagara.c
+@@ -37,6 +37,7 @@
+ #include "sysemu/block-backend.h"
  #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "exec/address-spaces.h"
-+#include "sysemu/sysemu.h"
- #include "hw/arm/arm.h"
- #include "hw/arm/armsse.h"
- #include "hw/boards.h"
-+#include "hw/char/pl011.h"
- #include "hw/core/split-irq.h"
- #include "hw/misc/tz-mpc.h"
- #include "hw/misc/tz-ppc.h"
-@@ -69,7 +71,7 @@ typedef struct {
-     UnimplementedDeviceState mhu[2];
-     UnimplementedDeviceState pwm[3];
-     UnimplementedDeviceState i2s;
--    UnimplementedDeviceState uart[2];
-+    PL011State uart[2];
-     UnimplementedDeviceState i2c[2];
-     UnimplementedDeviceState spi;
-     UnimplementedDeviceState scc;
-@@ -285,6 +287,28 @@ static MemoryRegion *make_rtc(MuscaMachineState *mms, void *opaque,
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(rtc), 0);
- }
+ #include "sysemu/qtest.h"
++#include "qapi/error.h"
  
-+static MemoryRegion *make_uart(MuscaMachineState *mms, void *opaque,
-+                               const char *name, hwaddr size)
-+{
-+    PL011State *uart = opaque;
-+    int i = uart - &mms->uart[0];
-+    int irqbase = 7 + i * 6;
-+    SysBusDevice *s;
-+
-+    sysbus_init_child_obj(OBJECT(mms), name, uart, sizeof(mms->uart[0]),
-+                          TYPE_PL011);
-+    qdev_prop_set_chr(DEVICE(uart), "chardev", serial_hd(i));
-+    object_property_set_bool(OBJECT(uart), true, "realized", &error_fatal);
-+    s = SYS_BUS_DEVICE(uart);
-+    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqbase + 5)); /* combined */
-+    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqbase + 0)); /* RX */
-+    sysbus_connect_irq(s, 2, get_sse_irq_in(mms, irqbase + 1)); /* TX */
-+    sysbus_connect_irq(s, 3, get_sse_irq_in(mms, irqbase + 2)); /* RT */
-+    sysbus_connect_irq(s, 4, get_sse_irq_in(mms, irqbase + 3)); /* MS */
-+    sysbus_connect_irq(s, 5, get_sse_irq_in(mms, irqbase + 4)); /* E */
-+    return sysbus_mmio_get_region(SYS_BUS_DEVICE(uart), 0);
-+}
-+
- static MemoryRegion *make_musca_a_devs(MuscaMachineState *mms, void *opaque,
-                                        const char *name, hwaddr size)
- {
-@@ -300,8 +324,8 @@ static MemoryRegion *make_musca_a_devs(MuscaMachineState *mms, void *opaque,
-     MemoryRegion *container = &mms->container;
  
-     const PPCPortInfo devices[] = {
--        { "uart0", make_unimp_dev, &mms->uart[0], 0x1000, 0x1000 },
--        { "uart1", make_unimp_dev, &mms->uart[1], 0x2000, 0x1000 },
-+        { "uart0", make_uart, &mms->uart[0], 0x1000, 0x1000 },
-+        { "uart1", make_uart, &mms->uart[1], 0x2000, 0x1000 },
-         { "spi", make_unimp_dev, &mms->spi, 0x3000, 0x1000 },
-         { "i2c0", make_unimp_dev, &mms->i2c[0], 0x4000, 0x1000 },
-         { "i2c1", make_unimp_dev, &mms->i2c[1], 0x5000, 0x1000 },
-@@ -460,8 +484,8 @@ static void musca_init(MachineState *machine)
-                 { "pwm1", make_unimp_dev, &mms->pwm[1], 0x40102000, 0x1000 },
-                 { "pwm2", make_unimp_dev, &mms->pwm[2], 0x40103000, 0x1000 },
-                 { "i2s", make_unimp_dev, &mms->i2s, 0x40104000, 0x1000 },
--                { "uart0", make_unimp_dev, &mms->uart[0], 0x40105000, 0x1000 },
--                { "uart1", make_unimp_dev, &mms->uart[1], 0x40106000, 0x1000 },
-+                { "uart0", make_uart, &mms->uart[0], 0x40105000, 0x1000 },
-+                { "uart1", make_uart, &mms->uart[1], 0x40106000, 0x1000 },
-                 { "i2c0", make_unimp_dev, &mms->i2c[0], 0x40108000, 0x1000 },
-                 { "i2c1", make_unimp_dev, &mms->i2c[1], 0x40109000, 0x1000 },
-                 { "spi", make_unimp_dev, &mms->spi, 0x4010a000, 0x1000 },
+ typedef struct NiagaraBoardState {
+@@ -108,27 +109,26 @@ static void niagara_init(MachineState *machine)
+     /* init CPUs */
+     sparc64_cpu_devinit(machine->cpu_type, NIAGARA_PROM_BASE);
+     /* set up devices */
+-    memory_region_allocate_system_memory(&s->hv_ram, NULL, "sun4v-hv.ram",
+-                                         NIAGARA_HV_RAM_SIZE);
++    memory_region_init_ram(&s->hv_ram, NULL, "sun4v-hv.ram",
++                                         NIAGARA_HV_RAM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_HV_RAM_BASE, &s->hv_ram);
+ 
+-    memory_region_allocate_system_memory(&s->partition_ram, NULL,
+-                                         "sun4v-partition.ram",
+-                                         machine->ram_size);
++    memory_region_init_ram(&s->partition_ram, NULL, "sun4v-partition.ram",
++                                         machine->ram_size, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_PARTITION_RAM_BASE,
+                                 &s->partition_ram);
+ 
+-    memory_region_allocate_system_memory(&s->nvram, NULL,
+-                                         "sun4v.nvram", NIAGARA_NVRAM_SIZE);
++    memory_region_init_ram(&s->nvram, NULL, "sun4v.nvram", NIAGARA_NVRAM_SIZE,
++                           &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_NVRAM_BASE, &s->nvram);
+-    memory_region_allocate_system_memory(&s->md_rom, NULL,
+-                                         "sun4v-md.rom", NIAGARA_MD_ROM_SIZE);
++    memory_region_init_ram(&s->md_rom, NULL, "sun4v-md.rom",
++                           NIAGARA_MD_ROM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_MD_ROM_BASE, &s->md_rom);
+-    memory_region_allocate_system_memory(&s->hv_rom, NULL,
+-                                         "sun4v-hv.rom", NIAGARA_HV_ROM_SIZE);
++    memory_region_init_ram(&s->hv_rom, NULL, "sun4v-hv.rom",
++                           NIAGARA_HV_ROM_SIZE, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_HV_ROM_BASE, &s->hv_rom);
+-    memory_region_allocate_system_memory(&s->prom, NULL,
+-                                         "sun4v.prom", PROM_SIZE_MAX);
++    memory_region_init_ram(&s->prom, NULL, "sun4v.prom",
++                                         PROM_SIZE_MAX, &error_fatal);
+     memory_region_add_subregion(sysmem, NIAGARA_PROM_BASE, &s->prom);
+ 
+     add_rom_or_fail("nvram1", NIAGARA_NVRAM_BASE);
+@@ -145,8 +145,8 @@ static void niagara_init(MachineState *machine)
+         BlockBackend *blk = blk_by_legacy_dinfo(dinfo);
+         int size = blk_getlength(blk);
+         if (size > 0) {
+-            memory_region_allocate_system_memory(&s->vdisk_ram, NULL,
+-                                                 "sun4v_vdisk.ram", size);
++            memory_region_init_ram(&s->vdisk_ram, NULL, "sun4v_vdisk.ram", size,
++                                   &error_fatal);
+             memory_region_add_subregion(get_system_memory(),
+                                         NIAGARA_VDISK_BASE, &s->vdisk_ram);
+             dinfo->is_default = 1;
 -- 
-2.20.1
+2.18.1
 

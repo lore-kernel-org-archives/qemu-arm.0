@@ -1,325 +1,120 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp753817wrp;
-        Thu, 14 Feb 2019 01:29:43 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IY3mtG2No+s/PTio/D0x9+2sjpXS5/rTfpJo2tEOPTqkWTGJDE9I5RS2lJgCmoqWLlu0INU
-X-Received: by 2002:a25:6d05:: with SMTP id i5mr2089128ybc.489.1550136583518;
-        Thu, 14 Feb 2019 01:29:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550136583; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp755188wrp;
+        Thu, 14 Feb 2019 01:31:16 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZJ8DuUKMHr8OnAUWdqftSuhv2PVa6YEBk1T6p9wqWU6ViK1qEX2tCN1Su4Cwa734pYaLER
+X-Received: by 2002:a25:3f86:: with SMTP id m128mr2127214yba.315.1550136676864;
+        Thu, 14 Feb 2019 01:31:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550136676; cv=none;
         d=google.com; s=arc-20160816;
-        b=IqAMA+BApk5jC5pPxKxJWc0vi0yUYkYkKh7BSUirn9pL0zc3xplRPKT0s2nI8/Eqn/
-         yMyqoUaxpjCOOdJcsIkDxOn7vrLSUdJxXZrHHK1LizDgPH/CknfgBQkADRzenvRsc/hF
-         QqQbbHzgZmeaFvwPNJSnL6jqaWiOryoAsuCpZBbrJP+9VPBX393O1dU8YDXsQFA9qdKo
-         X3KhXo+A0kP45G+B15p8wHn0wkQst5nw3EUNBgYqj4AQjfyIb7MSGBur5pd78ZSMrE6S
-         6oyY26geivOvCbfXkG4P81c3BF4rFT4vjvtOGcpDehWJfyfgh5MywmbmX7UMeBM2+Zwo
-         qvAg==
+        b=QQQCs2T6qN55wZbl9CSlh5xL6ULwpKi58NTDnuEdwJwQu7Pa7sGLR6FtpnSjg6IgGq
+         zpfXBjYZx3TzMUeVDf8o6GCZ9fAqYdnuIjiCFU2GSnJhO8REcQlCQlHfuqWo2PjNrAXM
+         5r2sYA1gib2qCvraqKPxvV7R1Ba6Yh79vmjpoOgtuqmvXQNmFgYJIoXeEi8eAiYEJEQh
+         BZ/iAFW2HFbp8HznIj2RQTo/15MXvwmbs+DB27Z/aOeFs4k/gKGPNGxs1RJwGkS+iS23
+         LHq/pig/2k7GjCnR3OKokp8M4o7YYKnL3u1gFEIQsjzB3MqcNw9M0c/YcEk1qSSgyP7g
+         qusA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7B0eOaIL1j1Flh1GWkPAhe+p3u9vEKK2sRPw59hpVOA=;
-        b=xFbqPy9ga9SpgOLTap4q9x1I3mx7V6Z4SgKLm8wF5wDKGtfECzI91GTWwZg8+q5b7m
-         3ZfCPm60D8ND8mdkPFFMIk74g4MQmMcriot9iVVMbkLMNK8IaVbQaHfmmwHNEkMMsPnw
-         Fn3og+GMrZCwTJ4W8ZFuPrzm2+eCIjaYrJXRy2ZmvTydu7EsQxMc4g3pPqci9BnZEgeY
-         jR0zfznVjsn2Aj8RqarZ/DjlsbWV7w+xQMj60BessSL4v1+RY78pld/Lm7FbPVecOIGb
-         AmOKE1DCuTTUXO0IKUwc6W9vUaPhLeCQ2vhmFumD0DRt68aCckI4JD0QfqqQUZapsjZ6
-         8B/g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=2ycppfDAZWsITiLoA2+lmV2peyIxutHKIqrXq3LFC8I=;
+        b=XOTV3iyM50K8dmmM0EC5Fmg3a4lqRNeDVJKkD70WnAtogIbRSCMQN6xpIAVWx9xvMq
+         zazz9KW2elGHO1HP8uK2LLlvby7DrSRLgPAgbm9roawoMa3GCoqVtfcZMgJkp1su7alo
+         IaSNlsBWtEbkgUHBO73pSigzw9O+5FpzL1gsueHeh3T/gt5VKulRoeJ6zjXVurqtJaVz
+         VyCKY0VDJKUE4BcgQUakOOMlqTkidQ62dKNwhn1IGGyH1yJw7yxabnu+Hv6lsNbzdZuT
+         Lhbgz/w7QIhubqScMfc94YfPgtra9hFPEouxC0noxAVJoD8Bq9G6Pl8AA6vXPAyRM+Wa
+         cCXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N2MQRM++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si1101177ybh.414.2019.02.14.01.29.43
+        by mx.google.com with ESMTPS id l189si187529ywg.418.2019.02.14.01.31.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 01:29:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Feb 2019 01:31:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N2MQRM++;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:44310 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:44373 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guDKw-0002JH-Tj
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 04:29:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54768)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1guDMS-0002uY-AO
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 04:31:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent.desnogues@gmail.com>) id 1guDKO-0001oI-Tc
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 04:29:11 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guDKD-0001mu-0v
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 04:28:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent.desnogues@gmail.com>) id 1guD8K-000263-Q8
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 04:16:42 -0500
-Received: from mail-it1-x142.google.com ([2607:f8b0:4864:20::142]:35783)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
-	id 1guD8C-0001yM-Ot; Thu, 14 Feb 2019 04:16:33 -0500
-Received: by mail-it1-x142.google.com with SMTP id v72so12802517itc.0;
-	Thu, 14 Feb 2019 01:16:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=7B0eOaIL1j1Flh1GWkPAhe+p3u9vEKK2sRPw59hpVOA=;
-	b=N2MQRM++t/Rw7+tZuaI3TiWtwK6YutZPJdszGeOB9IF9fVs0YWHpx4t6R7KzwFuVSJ
-	WeAjSe68Cwe2aZb1jUHoygA0mfk6TJ0CXZBXJ2ra2i8uJmLb8Rcwy4UfgN0jxX01HeHY
-	NxNmCrgGhcE2/2tCk+WCyEjCILqjXn9S1SeNxTjdPybAA3B3Wk7UNEI+Iz1NbFNuI3jy
-	W8TAYNyWgft7OOwUEkq/69DaLXS+87mAAPS8V/eJd5pWHbIpYVSgjVTQDMRuu1BFjV0O
-	rGS5Km3pC6X2oxruk2vfL3T5VYNAm704VwJfIb6AP8Q44FkO8jwWN1OO/PySN8RyIjNz
-	Ouog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=7B0eOaIL1j1Flh1GWkPAhe+p3u9vEKK2sRPw59hpVOA=;
-	b=sepak7XmQqrbyrSLcV88nv/TXCTtOtwv4aoAz8xoZ9NzSy5fUXke2IWqdofda+TcvS
-	rjP7qZIrEKEFnrAIthOJd40PrCpp4GzFLylNlvD8u1bJhUkgNkQopQAE1qtpURVjdJWx
-	3vzTlZlLbgGHlJzNkBhyeD7rBjnmk5wJYaxmC5qPi3Qmsk/DoXKplq2RKrsTI7iB03pk
-	BAnbx/dInKWw4xC2w04PbmzZLPTrQIPzWBrCB8ikgDv3k1txd+qEULmmWD4pkTKt+yd6
-	IucNRgGWDhM+CicXvnSYTJ1ZUz9bBa7f0Px3CPee3wMtNSU3D3dNhv9is+ffj/aSn0dZ
-	glxA==
-X-Gm-Message-State: AHQUAuYxeWGEOvm+K+yW2DzbL7D4lChaCpUjelt4NHVkdgHRWGnsSLGl
-	AUUYpjwD1sqWVGlrtckfTbay8sSAj7n7dY53Brk=
-X-Received: by 2002:a24:7f17:: with SMTP id r23mr1387653itc.1.1550135785869;
-	Thu, 14 Feb 2019 01:16:25 -0800 (PST)
+	(envelope-from <laurent@vivier.eu>) id 1guDGS-0003DI-G4
+	for qemu-devel@nongnu.org; Thu, 14 Feb 2019 04:25:05 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:36647)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1guDGS-0003Be-68; Thu, 14 Feb 2019 04:25:04 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1N3bfB-1h3SH71pTP-010cZ6; Thu, 14 Feb 2019 10:25:02 +0100
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20190212074840.13542-1-richard.henderson@linaro.org>
+	<20190212074840.13542-2-richard.henderson@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <8e47e7c3-1903-0a02-dc05-43ddc5b8e299@vivier.eu>
+Date: Thu, 14 Feb 2019 10:25:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-References: <20190214034345.24722-1-richard.henderson@linaro.org>
-	<20190214034345.24722-2-richard.henderson@linaro.org>
-In-Reply-To: <20190214034345.24722-2-richard.henderson@linaro.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Thu, 14 Feb 2019 10:16:14 +0100
-Message-ID: <CABoDooPZMc8OD7h59B_9Q+Jv+B7cXbJFEqmZPawZJ7b1_Bdp5A@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::142
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/4] target/arm: Add helpers for
- FMLAL and FMLSL
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20190212074840.13542-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:Qh44oR3pbDSYxk5Qp8iiZlx5+GQO+qdlK8KLzPmcAfXLcyJt+Dj
+	LYTF47BKkiteyyS35fS9oceE+YSOYXzSHQ8zQ2HICriN49RBa6wPqH3SJBss4rsIzVvq+p9
+	CnX+dp2gVKlaFz5shgyP2emRAsSWEgxo2nN1HTfdwZVneWIjT8zz+eMgzfmvfMNUkNrRKHa
+	wWGw5PgxkQGScMWBc0WCQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7Y2iiv2E0vo=:sVCDbppMe1kTCe03LQjBDz
+	2cdbRsglHaPBeYcmIJvy/NB49F/Zr4h46fEM7sFmf9j5qiJ0DFa0rKleW7MVani3Jx0PlH3lE
+	deu5p4eEqQ+pzuXirWdyHDaTEfjvSflbfTAnTvg9DIcYT+6Nv8wy+rLGRwoV5DE0KEngt8vK+
+	WzHgQCle4EOAl9pNKHubUj7DAdDGQvMFKqZrQco1vMwGxKhrQX2Ks6SZFuw1K9OnC9rYsuxq/
+	jQsOrxys2ZvitaGKdhe4LAK3XqraoLrPEVkf8qqdOZ72kevloVRZbE48D01RdtWYNSw78hsaC
+	2yUn3Z8tYct76Yh6/cCEMm8xKDWv+PdCWZrNpYvH08YHoUB+3tUsMhdyWYEsn/gD/J4wwksty
+	Q5N4SG4WzXOO/kiS8GPkfCsNqtI2+qTgByJRcgEyy+S8tynlX5yI/bnjiBCptBdLQno75A/Ke
+	tqPEi7ZbLHHQBLkvwlNBH5HihwYJGvSJAVkdHkOIEkywT6fTQ7OnisRo+kTcDmuzZfj+UIZi4
+	SPy/f8UOt/WQGsKneKXniw+Z/vw2x0IqDPOxJjHWF0bb7P8hEYh3g2V8vfDLnI6JW8biAGgGH
+	TsL6nyluOKJ+FgewL+FhxuVa7DvKCxy6JITn9HrSKUNBT//4Ep8lz03DGjnnbRqhBImOyC3kT
+	njGmcFwwFy5tZllvJcY+ieilDbk3sbqYWuqEHvPfSbUfLqSIo3Upgo+JNDOnKGFR927Q2oARn
+	cy7bqlnbzh0kcmTljxLifBRjycWo8Thi6qIAm14xsIf/WlwHPyCwefcnuTM=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 217.72.192.74
+Subject: Re: [Qemu-devel] [PATCH v2 1/2] linux-user: Add ELF_PLATFORM for arm
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 58OLH9xGF9Uz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Nt6yCxY458Q
 
-Hello,
-
-On Thu, Feb 14, 2019 at 5:00 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Note that float16_to_float32 rightly squashes SNaN to QNaN.
-> But of course pickNaNMulAdd, for ARM, selects SNaNs first.
-> So we have to preserve SNaN long enough for the correct NaN
-> to be selected.  Thus float16_to_float32_by_bits.
->
+On 12/02/2019 08:48, Richard Henderson wrote:
+> The 32-bit kernel has strings for v4, v5, v6, v7, v7m.
+> The 64-bit kernel, in compat mode, has strings for v8.
+> 
+> Fixes: https://bugs.launchpad.net/bugs/1813034
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/helper.h     |   9 +++
->  target/arm/vec_helper.c | 154 ++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 163 insertions(+)
->
-> diff --git a/target/arm/helper.h b/target/arm/helper.h
-> index 53a38188c6..0302e13604 100644
-> --- a/target/arm/helper.h
-> +++ b/target/arm/helper.h
-> @@ -653,6 +653,15 @@ DEF_HELPER_FLAGS_6(gvec_fmla_idx_s, TCG_CALL_NO_RWG,
->  DEF_HELPER_FLAGS_6(gvec_fmla_idx_d, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, ptr, i32)
->
-> +DEF_HELPER_FLAGS_5(gvec_fmlal_h, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fmlsl_h, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fmlal_idx_h, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(gvec_fmlsl_idx_h, TCG_CALL_NO_RWG,
-> +                   void, ptr, ptr, ptr, ptr, i32)
-> +
->  #ifdef TARGET_AARCH64
->  #include "helper-a64.h"
->  #include "helper-sve.h"
-> diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-> index 37f338732e..0c3b3de961 100644
-> --- a/target/arm/vec_helper.c
-> +++ b/target/arm/vec_helper.c
-> @@ -766,3 +766,157 @@ DO_FMLA_IDX(gvec_fmla_idx_s, float32, H4)
->  DO_FMLA_IDX(gvec_fmla_idx_d, float64, )
->
->  #undef DO_FMLA_IDX
-> +
-> +/*
-> + * Convert float16 to float32, raising no exceptions and
-> + * preserving exceptional values, including SNaN.
-> + * This is effectively an unpack+repack operation.
-> + */
-> +static float32 float16_to_float32_by_bits(uint32_t f16)
-> +{
-> +    const int f16_bias = 15;
-> +    const int f32_bias = 127;
-> +    uint32_t sign = extract32(f16, 15, 1);
-> +    uint32_t exp = extract32(f16, 10, 5);
-> +    uint32_t frac = extract32(f16, 0, 10);
-> +
-> +    if (exp == 0x1f) {
-> +        /* Inf or NaN */
-> +        exp = 0xff;
-> +    } else if (exp == 0) {
-> +        /* Zero or denormal.  */
-> +        if (frac != 0) {
-> +            /*
-> +             * Denormal; these are all normal float32.
-> +             * Shift the fraction so that the msb is at bit 11,
-> +             * then remove bit 11 as the implicit bit of the
-> +             * normalized float32.  Note that we still go through
-> +             * the shift for normal numbers below, to put the
-> +             * float32 fraction at the right place.
-> +             */
-> +            int shift = clz32(frac) - 21;
-> +            frac = (frac << shift) & 0x3ff;
-> +            exp = f32_bias - f16_bias - shift + 1;
+> v2: Include v8.
+> ---
+>  linux-user/elfload.c | 31 +++++++++++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
 
-If FZ16 is set, this should flush to zero.
-
-This means you will have to use both fp_status (for the muladd) and
-fp_status_f16 (for this function) and so you should pass cpu_env to
-the helpers rather than the fp_status.
+Applied to my linux-user branch.
 
 Thanks,
-
 Laurent
 
-> +        }
-> +    } else {
-> +        /* Normal number; adjust the bias.  */
-> +        exp += f32_bias - f16_bias;
-> +    }
-> +    sign <<= 31;
-> +    exp <<= 23;
-> +    frac <<= 23 - 10;
-> +
-> +    return sign | exp | frac;
-> +}
-> +
-> +static float32 fmlal(float32 a, float16 n16, float16 m16, float_status *fpst)
-> +{
-> +    float32 n = float16_to_float32_by_bits(n16);
-> +    float32 m = float16_to_float32_by_bits(m16);
-> +    return float32_muladd(n, m, a, 0, fpst);
-> +}
-> +
-> +static float32 fmlsl(float32 a, float16 n16, float16 m16, float_status *fpst)
-> +{
-> +    float32 n = float16_to_float32_by_bits(n16);
-> +    float32 m = float16_to_float32_by_bits(m16);
-> +    return float32_muladd(float32_chs(n), m, a, 0, fpst);
-> +}
-> +
-> +static inline uint64_t load4_f16(uint64_t *ptr, int is_q, int is_2)
-> +{
-> +    /*
-> +     * Branchless load of u32[0], u64[0], u32[1], or u64[1].
-> +     * Load the 2nd qword iff is_q & is_2.
-> +     * Shift to the 2nd dword iff !is_q & is_2.
-> +     * For !is_q & !is_2, the upper bits of the result are garbage.
-> +     */
-> +    return ptr[is_q & is_2] >> ((is_2 & ~is_q) << 5);
-> +}
-> +
-> +/*
-> + * Note that FMLAL and FMLSL require oprsz == 8 or oprsz == 16,
-> + * as there is not yet SVE versions that might use blocking.
-> + */
-> +
-> +void HELPER(gvec_fmlal_h)(void *vd, void *vn, void *vm,
-> +                          void *fpst, uint32_t desc)
-> +{
-> +    intptr_t i, oprsz = simd_oprsz(desc);
-> +    int is_2 = extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    int is_q = oprsz == 16;
-> +    float32 *d = vd;
-> +    uint64_t n_4, m_4;
-> +
-> +    /* Pre-load all of the f16 data, avoiding overlap issues.  */
-> +    n_4 = load4_f16(vn, is_q, is_2);
-> +    m_4 = load4_f16(vm, is_q, is_2);
-> +
-> +    for (i = 0; i < oprsz / 4; i++) {
-> +        d[H4(i)] = fmlal(d[H4(i)], extract64(n_4, i*16, 16),
-> +                         extract64(m_4, i*16, 16), fpst);
-> +    }
-> +    clear_tail(d, oprsz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fmlsl_h)(void *vd, void *vn, void *vm,
-> +                          void *fpst, uint32_t desc)
-> +{
-> +    intptr_t i, oprsz = simd_oprsz(desc);
-> +    int is_2 = extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    int is_q = oprsz == 16;
-> +    float32 *d = vd;
-> +    uint64_t n_4, m_4;
-> +
-> +    /* Pre-load all of the f16 data, avoiding overlap issues.  */
-> +    n_4 = load4_f16(vn, is_q, is_2);
-> +    m_4 = load4_f16(vm, is_q, is_2);
-> +
-> +    for (i = 0; i < oprsz / 4; i++) {
-> +        d[H4(i)] = fmlsl(d[H4(i)], extract64(n_4, i*16, 16),
-> +                         extract64(m_4, i*16, 16), fpst);
-> +    }
-> +    clear_tail(d, oprsz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fmlal_idx_h)(void *vd, void *vn, void *vm,
-> +                              void *fpst, uint32_t desc)
-> +{
-> +    intptr_t i, oprsz = simd_oprsz(desc);
-> +    int is_2 = extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    int index = extract32(desc, SIMD_DATA_SHIFT + 1, 3);
-> +    int is_q = oprsz == 16;
-> +    float32 *d = vd;
-> +    uint64_t n_4;
-> +    float16 m_1;
-> +
-> +    /* Pre-load all of the f16 data, avoiding overlap issues.  */
-> +    n_4 = load4_f16(vn, is_q, is_2);
-> +    m_1 = ((float16 *)vm)[H2(index)];
-> +
-> +    for (i = 0; i < oprsz / 4; i++) {
-> +        d[H4(i)] = fmlal(d[H4(i)], extract64(n_4, i * 16, 16), m_1, fpst);
-> +    }
-> +    clear_tail(d, oprsz, simd_maxsz(desc));
-> +}
-> +
-> +void HELPER(gvec_fmlsl_idx_h)(void *vd, void *vn, void *vm,
-> +                              void *fpst, uint32_t desc)
-> +{
-> +    intptr_t i, oprsz = simd_oprsz(desc);
-> +    int is_2 = extract32(desc, SIMD_DATA_SHIFT, 1);
-> +    int index = extract32(desc, SIMD_DATA_SHIFT + 1, 3);
-> +    int is_q = oprsz == 16;
-> +    float32 *d = vd;
-> +    uint64_t n_4;
-> +    float16 m_1;
-> +
-> +    /* Pre-load all of the f16 data, avoiding overlap issues.  */
-> +    n_4 = load4_f16(vn, is_q, is_2);
-> +    m_1 = ((float16 *)vm)[H2(index)];
-> +
-> +    for (i = 0; i < oprsz / 4; i++) {
-> +        d[H4(i)] = fmlsl(d[H4(i)], extract64(n_4, i*16, 16), m_1, fpst);
-> +    }
-> +    clear_tail(d, oprsz, simd_maxsz(desc));
-> +}
-> --
-> 2.17.2
->
->

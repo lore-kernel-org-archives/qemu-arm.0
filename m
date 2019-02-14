@@ -1,96 +1,96 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp952529wrp;
-        Thu, 14 Feb 2019 05:04:42 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaisUwqY3HpF3lNvmibH61+CuaTHDOE7n5mfCyPoaqmGYrkqWFh6aAAkTrw/DxiV+sH/Wsq
-X-Received: by 2002:ae9:ee02:: with SMTP id i2mr2603945qkg.179.1550149482573;
-        Thu, 14 Feb 2019 05:04:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550149482; cv=none;
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp953248wrp;
+        Thu, 14 Feb 2019 05:05:17 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaATTuydtzGf7luQRNssO4RYfxyBXJEWIblHEdgsyFtZaa1KBq3K304Gjkv4i9O8eNG87sS
+X-Received: by 2002:a81:1701:: with SMTP id 1mr2813607ywx.56.1550149517771;
+        Thu, 14 Feb 2019 05:05:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550149517; cv=none;
         d=google.com; s=arc-20160816;
-        b=tQ4UwFLTWJF0WUb0AyBcg9Oa9CzPWME21NjDYLJJnQspWal+e+oOZkYLlH7tNRRxuC
-         K6vfjuMmd6o9c8cB53p2zf95Onjxi6cLrNHcUnJ+zszZMl0D9Qqow5IlgZZlOnn65nO/
-         SIsTd172pLcvVSFkmopwrYFDVH0okrkq+E8EHpRLGDoTq7Ju1CjNH04XQNmvhxLJjdtb
-         YoIKKeo8mZBGgJHB9gcxnCI1ptSANp/50jwPVXlVdNLbNvIFKyalDHYu9vVhYmKMpyts
-         rPq7r7RMTTeQG2U6uyezeBobsh34Uq2ZVKXzqV6q72N3jN37OGdtu8OYo4nXsyWaTn+p
-         jarQ==
+        b=zJDfh7pXH8nhJfoA9k4algl7C3hVH9l793TIMoOi3oFRduQKfuSitzGNpFurTw4Gzo
+         UxvKH1og/Vmp1a5C1mDD+dAEKeTg2Odc3JcUEbmrQ+ElbPAPOXfxtVVH/3xn1CZvyrhs
+         EtZMD74CihfYtHwzU0R0upfB//iRKbDkxlJ9miRosj0tuM6laxSIbXafZj41rfgE4ERr
+         uaR5ltARrKARLuwbp2vGtt/NRVAV1klexvJLuWJb0uT9nrIzP7tV5TTMY/THCezb8VYR
+         KMlTSwDBSyzBryqmp0qogAqZ56qYNEzceWAWoBofL8g0cIaHd3q2xHq0Zeqvz5ySUBOP
+         QsEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=vaS39ErdvakXDhjr2AJlzEtf1NZBf73g6lMHeNCY3fs=;
-        b=e36u33O01o4JrA3xZbyk4yL8xDqG5CzU3dALcwDLm+2P/UpRTljaYP4eqfs9qiPsv3
-         QgH4IpChFVErJloDWB6AZIdxUi38e+aENCe1KyTCB6FdPZ3mPimboZhn1bO1TT/kovBT
-         KkyGiByX8ravLqFYq0i4+8W4QCH8Mx67z8GNpqlmh66SrN/YlvNIfm4PnNNiWqmlHq+U
-         U5cBnr0pdYFRjBElHCbkXiNxBTWY/W0lYmOi2Gn9FC488llitxDz2LJJlDcnJcW6lZZ/
-         lZQRBDyCirH1c2HRSrdyaAXUVQjmPmvM9+B+fzJPZqexDqGU7JiWfgZpm/edquSlwgYl
-         aCuw==
+        bh=fPHjh0vcD+s+CvwW5rloGqyfYyS+yolZGFn/O41zExg=;
+        b=IeeWkcsN1rqEfhmLcU5GT8ylabZ/BiOn0YTT0th8vx10G1sN0rTZz1tY1TiOm3nX8w
+         J5k6z8ouyFU1xMcupsSxY/VvCQaFO//9JrVIdl3qG+fn614yDB8vDbN6jJnr0980ddB2
+         KvGC67p3GS6sJ9RvKEonnVLyK4drRqZ6e+xCdeH3FLHU7vTsQOhK2l8MzoQtPojWxcIY
+         y2FL1t9K61ommBdLDONUiDBt6ot+jM2syEbBxtugRYSjr1WmzLbyGRe/YsAd8SaSe9hv
+         odTLBiU2ngGHPOCT1PNDr0SHnWPJTI6waaryoY0BkAuj9P72FX8gRXjiJJjbpdNCO0L+
+         YYjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OlJCJtVB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CJ2gk9o8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15si1512268qtc.367.2019.02.14.05.04.42
+        by mx.google.com with ESMTPS id j187si1308918ybj.177.2019.02.14.05.05.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Feb 2019 05:04:42 -0800 (PST)
+        Thu, 14 Feb 2019 05:05:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OlJCJtVB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CJ2gk9o8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48253 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48264 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1guGh0-0004xM-1a
-	for alex.bennee@linaro.org; Thu, 14 Feb 2019 08:04:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49830)
+	id 1guGhZ-0005T8-5e
+	for alex.bennee@linaro.org; Thu, 14 Feb 2019 08:05:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49695)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGeD-0002zc-P1
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 08:01:51 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1guGeP-0002tV-Ka
+	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 08:02:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1guGTx-0006RO-79
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:14 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:36941)
+	(envelope-from <peter.maydell@linaro.org>) id 1guGUe-000718-5G
+	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:57 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36896)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1guGTx-0006Qh-1N
-	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:13 -0500
-Received: by mail-wm1-x341.google.com with SMTP id x10so5925950wmg.2
-	for <qemu-arm@nongnu.org>; Thu, 14 Feb 2019 04:51:12 -0800 (PST)
+	id 1guGUc-0006hr-6o
+	for qemu-arm@nongnu.org; Thu, 14 Feb 2019 07:51:54 -0500
+Received: by mail-wr1-x442.google.com with SMTP id c8so6346678wrs.4
+	for <qemu-arm@nongnu.org>; Thu, 14 Feb 2019 04:51:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=vaS39ErdvakXDhjr2AJlzEtf1NZBf73g6lMHeNCY3fs=;
-	b=OlJCJtVB2LvWDyzuPYVS8RradArrRRjjE6HjgcFad8rjTF4UWhmyhuWB4cEW3ZrMHf
-	nY6WCwuH2wpwu2cDv4vU46aBQxcRWKL0w9D5HH4/BKcfeL8WuCF2pUFJu9FsqpEghNgt
-	TVPZVl2hEJrkeabRX64496eRmt3fPNDw/zrIg1x+pAPPVel5jDaz+AZKWoooxWBq+uc1
-	dl35LdhhAt//9+vR1Ep3O6bdSwQYnWUnEyRe+GzOD20uL7mmG+ZLaIKmvKCPh/CdzPEr
-	1WfFEsJ4Eh2JkfpqBKbGJDnh0X5Q9jYfEHQ7ixX/XKcC8dinpqI2l85Knd5B6rCha7up
-	B8CQ==
+	bh=fPHjh0vcD+s+CvwW5rloGqyfYyS+yolZGFn/O41zExg=;
+	b=CJ2gk9o8AkB2+K7FMlmN4yNzeVcbZiMH7mupkS/ToqRV/qSeSkfCjD1ukhP3NVht8t
+	xm/0A2aKXV4l+y5d8PVh0rGCdfb1JYgjfWCVggo4X9KC8b/Dp9EoiLGAhTQS1qTQnRDg
+	R+ZA+4aQjPORvrvpR4vrC2yyaIhsRoK8g2dDqDUCgAP2UiXKLyS4yyCgG+GCRkC+1/9z
+	JqGYkUzOnkj4su8bx/SqyP5O3bhYiGMOc1TfhVio8JIU+VEPIzThjQBQw1tfwOsA7AWT
+	3sCsEnBtdAGVJm1DHVEqj+XekOiD8Ni5w7lvQp/W6sc8vODqe1tiEBWmLRDPkXUtPkZb
+	bq6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=vaS39ErdvakXDhjr2AJlzEtf1NZBf73g6lMHeNCY3fs=;
-	b=RRNRa83sLGZT64RpGyyTpvsIAkt3Y0uLjP7psyzHkqazh22MVjwPsktTIiRmEXdxF4
-	LSgtcaohHNL8Unlmji6UVrkidphtUsjOVlx9N7r4UbgWdRAtl/kaZmZXnL2w/eFEtgxA
-	zjSXjuOoJTKr1D9gYjPZU4uCgBWSjdzHXrrRzXXjYlJEydeKT3UdsTSi/dP7VA5PL0/k
-	mZ9rAJDDydUnFCQsWPXQVAonmpqAEXUaNB9w1IpjL07B0xVV+insFZVsyZVN+m4jFlIS
-	5lLEK9xJByRxQluWK2j19owEsJymUEfFFiAZv75j6LYCeDxyBmfphPx04qaqJE+acaCc
-	FKqA==
-X-Gm-Message-State: AHQUAuZqV5X3fpmBRgEtq3b3LzvOxeguk2a67k4PBbvF1ek+M0Tq8iKZ
-	6wVuMTqPq97KF6dEFlM2u9beWjXmHJHD4Q==
-X-Received: by 2002:a1c:f901:: with SMTP id x1mr2667013wmh.84.1550148671731;
-	Thu, 14 Feb 2019 04:51:11 -0800 (PST)
+	bh=fPHjh0vcD+s+CvwW5rloGqyfYyS+yolZGFn/O41zExg=;
+	b=AojW+Q8QW47NTqnCYZlYPidPfGWM77KWaiB/ihBMNv9rd7F05VdyjmPMrJUrD5tAwS
+	4FlqFyZXouosKdQrxAPFva9wjBEDh12JzW6n7S1ACbR7Iuouz+t90aF8N1U9+1deXgao
+	aJuhkx5P/hllvFgLFbk6Ryfe+hCqv8ZIjYg3pl6lAqPNLZjK/nVkmb96pGoYTcSbRR3m
+	h5WMEiTuq9y6K5yR1N0/owVr8i6oYAonEbq2Byf1ws8KiYAk112cfM501Wd7jbkwO+zi
+	t6cKAoaKwQZMGO3G+U4cT0ZCZnJafEjKJtILtVvVF008mrxLSt67hSyyTMLF7e9iiDMJ
+	jF9A==
+X-Gm-Message-State: AHQUAubEP1xlyE9IhSsItpEFsVg5P1Fl0exY7qFMDRFxYld89m5OeypV
+	xuuzT/E22reTm1JVT83QC1jIKFhgRNoBNw==
+X-Received: by 2002:adf:f80c:: with SMTP id s12mr2644877wrp.150.1550148684789; 
+	Thu, 14 Feb 2019 04:51:24 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id j3sm1488073wmb.39.2019.02.14.04.51.10
+	by smtp.gmail.com with ESMTPSA id j3sm1488073wmb.39.2019.02.14.04.51.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Feb 2019 04:51:10 -0800 (PST)
+	Thu, 14 Feb 2019 04:51:24 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 14 Feb 2019 12:50:55 +0000
-Message-Id: <20190214125107.22178-3-peter.maydell@linaro.org>
+Date: Thu, 14 Feb 2019 12:51:06 +0000
+Message-Id: <20190214125107.22178-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214125107.22178-1-peter.maydell@linaro.org>
 References: <20190214125107.22178-1-peter.maydell@linaro.org>
@@ -98,9 +98,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: [Qemu-arm] [PATCH 02/14] hw/misc/tz-ppc: Support having unused
- ports in the middle of the range
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 13/14] hw/arm/musca: Wire up PL031 RTC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,108 +114,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 42KRfnrYSf42
+X-TUID: /r/z6nnOmIsf
 
-The Peripheral Protection Controller's handling of unused ports
-is that if there is nothing connected to the port's downstream
-then it does not create the sysbus MMIO region for the upstream
-end of the port. This results in odd behaviour when there is
-an unused port in the middle of the range: since sysbus MMIO
-regions are implicitly consecutively allocated, any used ports
-above the unused ones end up with sysbus MMIO region numbers
-that don't match the port number.
-
-Avoid this numbering mismatch by creating dummy MMIO regions
-for the unused ports. This doesn't change anything for our
-existing boards, which don't have any gaps in the middle of
-the port ranges they use; but it will be needed for the Musca
-board.
+Wire up the PL031 RTC for the Musca board.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/misc/tz-ppc.h |  8 +++++++-
- hw/misc/tz-ppc.c         | 32 ++++++++++++++++++++++++++++++++
- 2 files changed, 39 insertions(+), 1 deletion(-)
+ hw/arm/musca.c | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/misc/tz-ppc.h b/include/hw/misc/tz-ppc.h
-index fc8b806e4df..080d6e2ec17 100644
---- a/include/hw/misc/tz-ppc.h
-+++ b/include/hw/misc/tz-ppc.h
-@@ -38,7 +38,13 @@
-  *
-  * QEMU interface:
-  * + sysbus MMIO regions 0..15: MemoryRegions defining the upstream end
-- *   of each of the 16 ports of the PPC
-+ *   of each of the 16 ports of the PPC. When a port is unused (i.e. no
-+ *   downstream MemoryRegion is connected to it) at the end of the 0..15
-+ *   range then no sysbus MMIO region is created for its upstream. When an
-+ *   unused port lies in the middle of the range with other used ports at
-+ *   higher port numbers, a dummy MMIO region is created to ensure that
-+ *   port N's upstream is always sysbus MMIO region N. Dummy regions should
-+ *   not be mapped, and will assert if any access is made to them.
-  * + Property "port[0..15]": MemoryRegion defining the downstream device(s)
-  *   for each of the 16 ports of the PPC
-  * + Named GPIO inputs "cfg_nonsec[0..15]": set to 1 if the port should be
-diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
-index 3dd045c15f5..2e04837bea9 100644
---- a/hw/misc/tz-ppc.c
-+++ b/hw/misc/tz-ppc.c
-@@ -181,6 +181,21 @@ static const MemoryRegionOps tz_ppc_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index 5fadac8c09b..ec8dfee1964 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -30,6 +30,7 @@
+ #include "hw/misc/tz-mpc.h"
+ #include "hw/misc/tz-ppc.h"
+ #include "hw/misc/unimp.h"
++#include "hw/timer/pl031.h"
  
-+static bool tz_ppc_dummy_accepts(void *opaque, hwaddr addr,
-+                                 unsigned size, bool is_write,
-+                                 MemTxAttrs attrs)
+ #define MUSCA_NUMIRQ_MAX 96
+ #define MUSCA_PPC_MAX 3
+@@ -73,7 +74,7 @@ typedef struct {
+     UnimplementedDeviceState spi;
+     UnimplementedDeviceState scc;
+     UnimplementedDeviceState timer;
+-    UnimplementedDeviceState rtc;
++    PL031State rtc;
+     UnimplementedDeviceState pvt;
+     UnimplementedDeviceState sdio;
+     UnimplementedDeviceState gpio;
+@@ -98,6 +99,14 @@ typedef struct {
+  */
+ #define SYSCLK_FRQ 40000000
+ 
++static qemu_irq get_sse_irq_in(MuscaMachineState *mms, int irqno)
 +{
-+    /*
-+     * Board code should never map the upstream end of an unused port,
-+     * so we should never try to make a memory access to it.
-+     */
-+    g_assert_not_reached();
++    /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
++    assert(irqno < MUSCA_NUMIRQ_MAX);
++
++    return qdev_get_gpio_in(DEVICE(&mms->cpu_irq_splitter[irqno]), 0);
 +}
 +
-+static const MemoryRegionOps tz_ppc_dummy_ops = {
-+    .valid.accepts = tz_ppc_dummy_accepts,
-+};
+ /*
+  * Most of the devices in the Musca board sit behind Peripheral Protection
+  * Controllers. These data structures define the layout of which devices
+@@ -265,6 +274,17 @@ static MemoryRegion *make_mpc(MuscaMachineState *mms, void *opaque,
+     return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
+ }
+ 
++static MemoryRegion *make_rtc(MuscaMachineState *mms, void *opaque,
++                              const char *name, hwaddr size)
++{
++    PL031State *rtc = opaque;
 +
- static void tz_ppc_reset(DeviceState *dev)
++    sysbus_init_child_obj(OBJECT(mms), name, rtc, sizeof(mms->rtc), TYPE_PL031);
++    object_property_set_bool(OBJECT(rtc), true, "realized", &error_fatal);
++    sysbus_connect_irq(SYS_BUS_DEVICE(rtc), 0, get_sse_irq_in(mms, 39));
++    return sysbus_mmio_get_region(SYS_BUS_DEVICE(rtc), 0);
++}
++
+ static MemoryRegion *make_musca_a_devs(MuscaMachineState *mms, void *opaque,
+                                        const char *name, hwaddr size)
  {
-     TZPPC *s = TZ_PPC(dev);
-@@ -210,16 +225,33 @@ static void tz_ppc_realize(DeviceState *dev, Error **errp)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     TZPPC *s = TZ_PPC(dev);
-     int i;
-+    int max_port = 0;
- 
-     /* We can't create the upstream end of the port until realize,
-      * as we don't know the size of the MR used as the downstream until then.
-      */
-     for (i = 0; i < TZ_NUM_PORTS; i++) {
-+        if (s->port[i].downstream) {
-+            max_port = i;
-+        }
-+    }
-+
-+    for (i = 0; i <= max_port; i++) {
-         TZPPCPort *port = &s->port[i];
-         char *name;
-         uint64_t size;
- 
-         if (!port->downstream) {
-+            /*
-+             * Create dummy sysbus MMIO region so the sysbus region
-+             * numbering doesn't get out of sync with the port numbers.
-+             * The size is entirely arbitrary.
-+             */
-+            name = g_strdup_printf("tz-ppc-dummy-port[%d]", i);
-+            memory_region_init_io(&port->upstream, obj, &tz_ppc_dummy_ops,
-+                                  port, name, 0x10000);
-+            sysbus_init_mmio(sbd, &port->upstream);
-+            g_free(name);
-             continue;
-         }
- 
+@@ -287,7 +307,7 @@ static MemoryRegion *make_musca_a_devs(MuscaMachineState *mms, void *opaque,
+         { "i2c1", make_unimp_dev, &mms->i2c[1], 0x5000, 0x1000 },
+         { "i2s", make_unimp_dev, &mms->i2s, 0x6000, 0x1000 },
+         { "pwm0", make_unimp_dev, &mms->pwm[0], 0x7000, 0x1000 },
+-        { "rtc", make_unimp_dev, &mms->rtc, 0x8000, 0x1000 },
++        { "rtc", make_rtc, &mms->rtc, 0x8000, 0x1000 },
+         { "qspi", make_unimp_dev, &mms->qspi, 0xa000, 0x1000 },
+         { "timer", make_unimp_dev, &mms->timer, 0xb000, 0x1000 },
+         { "scc", make_unimp_dev, &mms->scc, 0xc000, 0x1000 },
+@@ -447,7 +467,7 @@ static void musca_init(MachineState *machine)
+                 { "spi", make_unimp_dev, &mms->spi, 0x4010a000, 0x1000 },
+                 { "scc", make_unimp_dev, &mms->scc, 0x5010b000, 0x1000 },
+                 { "timer", make_unimp_dev, &mms->timer, 0x4010c000, 0x1000 },
+-                { "rtc", make_unimp_dev, &mms->rtc, 0x4010d000, 0x1000 },
++                { "rtc", make_rtc, &mms->rtc, 0x4010d000, 0x1000 },
+                 { "pvt", make_unimp_dev, &mms->pvt, 0x4010e000, 0x1000 },
+                 { "sdio", make_unimp_dev, &mms->sdio, 0x4010f000, 0x1000 },
+             },
 -- 
 2.20.1
 

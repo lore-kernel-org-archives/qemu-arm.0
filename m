@@ -1,120 +1,127 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y185sm1836045wmg.34.2019.02.14.03.52.04
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Feb 2019 03:52:04 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 7CA831FF80;
-	Thu, 14 Feb 2019 11:52:04 +0000 (UTC)
-References: <20181206151401.13455-1-peter.maydell@linaro.org> <87ftsrird3.fsf@zen.linaroharston> <CAFEAcA_GPW0B9bMOia_aB=H0PV8DwUNWBARz+uNbRk2565a+4w@mail.gmail.com> <87bm3figs9.fsf@zen.linaroharston>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "patches\@linaro.org" <patches@linaro.org>, Dongjiu Geng <gengdongjiu@huawei.com>, "mark.rutland\@arm.com" <mark.rutland@arm.com>
-Subject: Re: [RFC] arm: Allow system registers for KVM guests to be changed by QEMU code
-In-reply-to: <87bm3figs9.fsf@zen.linaroharston>
-Date: Thu, 14 Feb 2019 11:52:04 +0000
-Message-ID: <875ztmio4b.fsf@zen.linaroharston>
+Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp1039663wrp;
+        Thu, 14 Feb 2019 06:24:24 -0800 (PST)
+X-Received: by 2002:aca:ed81:: with SMTP id l123mr2375775oih.139.1550154264889;
+        Thu, 14 Feb 2019 06:24:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550154264; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dQnKvWEyceA1LykVp1mw3PJfL4cqfBC2OuVaKSnZmkq6WHfLZgi+o+tf7BLbElVVg0
+         hliNYmmja9/2Hkb9Q4/OtDz5pSxR7wXWjKkOHCM6UCEbfs4wNqDexe4jWZeL100UIRPJ
+         l3EHf/rqys4Bv12xATcdiQ9X7nH9SuRiZq6nsggK9NGDTFVCUS8nj1QYpe3S4tmeqglA
+         wUHO/1S4A4S1pQhvhJIDHmjtxJei2wmBqbUO9+2iUs3n0BMUO04JpgUCva0lH9VHmsSH
+         niK/vvF5vK1FAROdGeLEVzjLE99tdK2zoVZh6sf0woM9Jr83fDwCseOpttShdZzI0jVS
+         wHMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=RZeMM78YTWIzK8wBU7X6pPNQxK3QZZoIjakh2J/oNCc=;
+        b=SM9ZkojKgit2OFtc5/gDO5MZFCDBrjRFnHT4Ms97MGeCS733gU2M6qG7BCrNHXZHnl
+         6IxiqulO8Am63bnDh7JgkvifZWrgriu5G29B9Ko5U9BMgr9f5pNBA0z6H0tVlSiTWkVK
+         Kwh7ydD0xLDN+i+P2G6Fy5ixm+NpCDmRrwIGoAINcqFNeFu2/0Wq72ZrFxOQkJuJ+WVe
+         9ESF0khvJgq/eGhD14/xqbJmWyVsO5YX9vFsggiyW5TtATQC6xp7qmd4519H0emMoYsa
+         5XVe1xyxrIm5ItTAXf5TNo04q+odt6x9YeRDOebOekLd/ZxljIlvQ+uFlHx+f30mV2Zi
+         HTPQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HygWViMU;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b188sor1333037oia.9.2019.02.14.06.24.24
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 14 Feb 2019 06:24:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HygWViMU;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=RZeMM78YTWIzK8wBU7X6pPNQxK3QZZoIjakh2J/oNCc=;
+        b=HygWViMUt4IHQP9mOMGKIHMNkMWhZdKNeznqMw2aDAURWg/XNOHJzaTxAN8KZVvb9B
+         HbAVkUd2eaVOHveVksRx6uxSeSqqNWvWK7kyEKJc+0LKPB3x8Mf3MVnH7E1ECL7EZnrr
+         lv5bJuYss6gB+/2k3cMjXRN+EGl6Mi+cvGPNdoKuR2M6xosve4cKXj5JOpqHmDMmzH4b
+         Wyu5WSnrsT/FPna3dcog4S3xOwyNvdAWWlHEm2pYQfYlrQ9DYJOYaVyOxJnle5Celufh
+         2cM6Hcmqo4fJFBLgT7WYY0FvJ6DhnX8HBS5wt2BS3+dbgfQ1PVeMlXdnb3hpcHLIAezj
+         iO0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=RZeMM78YTWIzK8wBU7X6pPNQxK3QZZoIjakh2J/oNCc=;
+        b=OIyIVPCu5zZOmVBWIvJBfD1GzW56Qj2bo8wOcBQZY6/Ojz2lDkTGiedLFF69jglEUn
+         Or2hmSmk0q72aRTDdM+hjZxb4ZXwpg9vbcA0BEXbrzc+oYZlsb+OBXwUV8Cx+r9ZTLgh
+         yp8g4NvT3wJVlufyb0+oTq9L/xHqBnxdypHYIKQzrY1YlzcUwH8w58hVr7Gc7zFH9Q5d
+         9FvjMb5RNQvzVPTqL4Cq25F2cXTzycj3V0HThXuEuEkN+EOgsPQjZI1DiV37pL4BAkNb
+         O2X8vCzB3kObf25c6esctMo589PdE1Nrj6KHPVArYFDfKJuNDPnReSg17c6I+7zlIq1n
+         sIdg==
+X-Gm-Message-State: AHQUAuYdx7CCAz9leM2q/3UM9crtSF8LEQE2zZObJpNLYCuY6SLdrj7P
+	pu/fNxuTYfwbNLJgzb5C5hx1ivjRhi5lLEHvzM700H3BSJY0ww==
+X-Google-Smtp-Source: AHgI3IauaHcGxjBo0q8OZ/mNelTvqCDwpbj8O+WJ2RpTxLXInGi3Avr4JfdnqTGJVPyNy1ZyC269NW1i6AqAEDbceIo=
+X-Received: by 2002:aca:b341:: with SMTP id c62mr2349458oif.112.1550154264156;
+ Thu, 14 Feb 2019 06:24:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190205190224.2198-1-alex.bennee@linaro.org>
+In-Reply-To: <20190205190224.2198-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Feb 2019 14:24:13 +0000
+Message-ID: <CAFEAcA_FdK2HsFto8zBZnoZQWyrnKLtskOz6Sb42n_qBw-qV=Q@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 0/6] HWCAP_CPUID registers for aarch64
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: t7TSx94qcECG
+X-TUID: odtdsMAwZePH
 
-
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
-
-> Peter Maydell <peter.maydell@linaro.org> writes:
+On Tue, 5 Feb 2019 at 20:21, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 >
->> On Wed, 13 Feb 2019 at 16:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->>>
->>>
->>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>
->>> > At the moment the Arm implementations of kvm_arch_{get,put}_registers=
-()
->>> > don't support having QEMU change the values of system registers
->>> > (aka coprocessor registers for AArch32). This is because although
->>> > kvm_arch_get_registers() calls write_list_to_cpustate() to
->>> > update the CPU state struct fields (so QEMU code can read the
->>> > values in the usual way), kvm_arch_put_registers() does not
->>> > call write_cpustate_to_list(), meaning that any changes to
->>> > the CPU state struct fields will not be passed back to KVM.
-<snip>
+> Hi,
 >
->>
->> I'm confused -- I'm not sure if the things you're saying
->> didn't work:
->>  (a) didn't work before this patch and still don't
->>  (b) used to work and are broken by this patch
->>  (c) used to not work and are fixed by this patch
+> I've re-spun the cpuid patches with the changes suggested by Peter's
+> review. The biggest change is the squashing of bits is now all data
+> driven with ARMCPRegUserSpaceInfo being used to control how bits are
+> altered for userspace presentation. This includes using glob matching
+> to set whole bunches to RAZ.
 >
-> option (c) - this patch has made things better hence the t-b and r-b
-> tags. I might send you a follow up if we can also have single-step
-> working as well but that requires me to test a kernel patch (and remove
-> the error leg for guest single step in kvm64).
-
-Oh well it looks like we need to keep the suppression of SS while guest
-debug is happening. Otherwise we end up looping exceptions:
-
-first SS from guest trigger and exception at:
-kvm_arm_handle_debug: @0xffffff8010083fa8 mdscr_el1:0x9001 pstate:0x400003c5
-
-then repeats:
-kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
-kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
-kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
-kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
-
-This all looks like it is in the kernel which is slightly confusing:
-
-  (gdb) x/6i 0xffffff8010083fa0
-     0xffffff8010083fa0 <+24>:    orr     x2, x2, #0x1
-     0xffffff8010083fa4 <+28>:    msr     mdscr_el1, x2
-     0xffffff8010083fa8 <ret_to_user+32>: ldp     x21, x22, [sp, #256]
-     0xffffff8010083fac <ret_to_user+36>: bl      0xffffff80101f1ad8  <cont=
-ext_tracking_user_enter>
-     0xffffff8010083fb0 <ret_to_user+40>: ldr     x23, [sp, #248]
-     0xffffff8010083fb4 <ret_to_user+44>: msr     sp_el0, x23
-
-which is weird because we it seems the kernel is delivering a SOFTSTEP
-exception to userspace on access to mdscr_el1 rather than trapping the
-access and emulating it in kernel. The loop then just ends up in the
-vectors table:
-
-  (gdb) x/4i 0xffffff8010082200
-=3D> 0xffffff8010082200 <vectors+512>:    sub     sp, sp, #0x140
-   0xffffff8010082204 <vectors+516>:    add     sp, sp, x0
-   0xffffff8010082208 <vectors+520>:    sub     x0, sp, x0
-   0xffffff801008220c <vectors+524>:    tbnz    w0, #14, 0xffffff801008221c=
- <vectors+540>
-
-Anyway that doesn't affect the viability of this patch for the
-breakpoint behaviour.
-
+> The testcase isn't as comprehensive as it could be because you need a
+> fairly new compiler (binutils) to emit all the various system register
+> id's to test. I did look into upgrading debian-arm64-cross with Buster
+> but I managed to find a bug in Debian's dependencies which rules out
+> upgrading for now.
 >
->>
->> More generally:
->>  * this patch claims to fix the code path where QEMU sets
->>    up the guest to take a breakpoint exception (specifically
->>    making our change of ESR_EL1 actually take effect) -- so does
->>    it do that? Or is it impossible for that code path in QEMU
->>    to be used (if so, can we just remove it) ?
+> checkpatch is complaining about the _m macro I used to group together
+> words in the masks I defined. I'm not sure adding the spaces makes it
+> as readable though.
 >
-> No it's needed - I'm observing exceptions coming through the path and
-> then being delivered to the guest while the host is debugging - modulo
-> the you can't have active HW breakpoints in both guest and host at the
-> same time.
->
-> Even here now we are sure the guest state is correctly reflected we
-> could make the debug code smarter and try it's best to preserve guest
-> debug regs while using it's own entirely in userspace. But I suspect
-> that is a bit niche.
->
->>
->> thanks
->> -- PMM
+> The following patches need review:
+>  patch 0001/target arm relax permission checks for HWCAP_CPUI.patch
+>  patch 0002/target arm expose CPUID registers to userspace.patch
+>  patch 0003/target arm expose MPIDR_EL1 to userspace.patch
+>  patch 0004/target arm expose remaining CPUID registers as RA.patch
+>  patch 0006/tests tcg aarch64 userspace system register test.patch
 
+I'll take 1-5 into target-arm.next, but 6 breaks 'make check-tcg'
+for me:
 
---
-Alex Benn=C3=A9e
+  BUILD   aarch64 guest-tests with aarch64-linux-gnu-gcc
+cc1: error: invalid feature modifier in =E2=80=98-march=3Darmv8.1-a+sve=E2=
+=80=99
+
+I imagine you're assuming a newer binutils than Ubuntu ships.
+You should probably go for just encoding the insns rather than using
+their names -- binutils should accept "S<op0>_<op1>_<Cn>_<Cm>_<op2>"
+as a register name for mrs and msr insn.
+
+It would also be nice to test some of the sysreg cases which
+go through your "glob the register name" code path -- I think
+at the moment you are only testing the ones which use the
+specific-match case ? (Ideally we'd loop through and test that
+we could read everything in the defined-to-be-exposed encoding
+range, though that would require some slightly tedious preprocessor
+macro effort.)
+
+thanks
+-- PMM

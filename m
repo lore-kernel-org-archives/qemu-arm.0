@@ -1,139 +1,120 @@
-Received: by 2002:adf:efc1:0:0:0:0:0 with SMTP id i1csp506530wrp;
-        Wed, 13 Feb 2019 19:58:24 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IY24GCIy2+8lr8h7HJsD4iDBJ1CTAdW0jSXl0Mq0saRp8dpsd9EFQJSm+OhYBlxQCENjj3s
-X-Received: by 2002:a25:a2c7:: with SMTP id c7mr1299918ybn.411.1550116703933;
-        Wed, 13 Feb 2019 19:58:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550116703; cv=none;
-        d=google.com; s=arc-20160816;
-        b=fP+Re92rv+kE1hPf/2WcAv6BjBRw1ZYaDYv85cTdLBShOttDDVDvOov7IJscE7DeJH
-         A6E+ZMSq7XUcwBPTu+07lkkvHZNcnXmZrh318Z2jHOZ51fV2c0gv3ZFGG3az5zITtP8l
-         iS+bHKIG0UXXeP0gVJBjZfeX43VhdfHgOMjprLsQyT3q4czjwQfeZ9b1pReHy04VVdrx
-         81OneS85AH7dk+cUBCxnuUbWkyha7qh0rpnMgCIczUleJjb/Yavz51msLqHrhgjhAaJp
-         ZsdaXjkpLbVnkyGcHjXiUZBcqu95+Vpqv/IFUI3sj31hpWWfWHDO972VHRML7Lyd5Ywd
-         LLcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=LY5syL0pyEGDn4IDGdZxhslqrDlmJwOplMyFI7S+0GI=;
-        b=1CtZLArg8qxFLkIztw7LjvlIofYA5GnpjkKZ06UWn+8TDAdJY9N2nhRl8NUjiBYC31
-         8AysqzjgrR13VVRrDL4IZ/tS2GsxoyOHwjA6N7Ys6n1bV9Xe5pptc71SJWg1GGIvQVL5
-         8KiLiJO3YPGyIjzqa7UEsw+vmXKgCV8fpackFCaauCkbfI216p89sHxdCn2wkRGAewUj
-         6G2o36tKCGr1+vjArnHXDAsXPoYRGrG/F+I0L8XLlDSBtahmjomwPN5pd8UPF6FzZDOn
-         VjFflRT+nseHCtsZSu/P+QKX6c/5GORWpCEltnAGwRtELqHxxSPfRjUIAJXy79BL2jkG
-         ciZA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="m/mt1EbO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p124si727565ywd.454.2019.02.13.19.58.23
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Feb 2019 19:58:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="m/mt1EbO";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:39419 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gu8AJ-0007P6-Bd
-	for alex.bennee@linaro.org; Wed, 13 Feb 2019 22:58:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60397)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gu89f-0006vk-Dw
-	for qemu-arm@nongnu.org; Wed, 13 Feb 2019 22:57:44 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gu7wL-00075u-8c
-	for qemu-arm@nongnu.org; Wed, 13 Feb 2019 22:43:58 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:42382)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gu7wL-0006xt-0l
-	for qemu-arm@nongnu.org; Wed, 13 Feb 2019 22:43:57 -0500
-Received: by mail-pl1-x642.google.com with SMTP id s1so2365421plp.9
-	for <qemu-arm@nongnu.org>; Wed, 13 Feb 2019 19:43:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id;
-	bh=LY5syL0pyEGDn4IDGdZxhslqrDlmJwOplMyFI7S+0GI=;
-	b=m/mt1EbOuQUMspqeIhOq2mrnVykk3hXXoJKdh5qfoqmnKZnWHGNSoNxykSz3/29LCj
-	hDt8bjutKBE+89BV0GxsjoT9xpU6SurbLcolTT2V6WMrwItE8JnHlMG6jd04EEiuQzgZ
-	PdBkzmqjW6OdR+DdffAXR8tw6H8l7oepbCrYV7CLULULQxSJ+NjXMCdjzdhbOREMmZfR
-	4Nnl1VnsttgnZ+TsADrFjX87MlmokAlqUqdhBIipN9100wkrsRLI9/A2v4gTLEFLWW0u
-	1aAoRIwvZbxHYUg/plV0eA3tN4x9HY6FqRJV4kffs7faWGmwrOt9Gr3iRJLzpKBDhEOu
-	eK3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=LY5syL0pyEGDn4IDGdZxhslqrDlmJwOplMyFI7S+0GI=;
-	b=kWYKfI11DbWkWR/2Eu4Z3+YrUXx2nlQ2qKsWrZsIUCFlzpVq/25uIDF+h8CyOUI0sk
-	gKo76HBwMOoxF2erh1CXvaj1Fbk0oEm7taw91B1tv4pj2FW5ORKlbagnl0oxGABu2vRR
-	z+ouhp1Vobsyi8Ru7PkToVScwAZL2v0tZN5/+7hm8kBK/sAePAq6pHb0NGtoaDpnyeTT
-	mkUQ4iQxZ+20+gQbFmWnjEyiXZTalmHuJz8jCJKhnuIlINgtgbFwxQ+10DrO3dw5b4sg
-	pjb7V88iR/tp3wqQzM1Crxg31cPd8c7nkeHxxlFnYHiT6lJu3H6JNitrYZGwIBiCcFvI
-	ARug==
-X-Gm-Message-State: AHQUAubdmBXQuHQda7vCdDcrI/uM0j4yyFewae+QWWwOwXgV7tjljpFH
-	zIqd8DVtNKvKr3cpZSqQtN3s9sb9Qk4=
-X-Received: by 2002:a17:902:7e0d:: with SMTP id
-	b13mr1896986plm.154.1550115827864; 
-	Wed, 13 Feb 2019 19:43:47 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
-	[97.113.188.82])
-	by smtp.gmail.com with ESMTPSA id o2sm972713pgq.90.2019.02.13.19.43.46
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 13 Feb 2019 19:43:47 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed, 13 Feb 2019 19:43:41 -0800
-Message-Id: <20190214034345.24722-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-Subject: [Qemu-arm] [PATCH 0/4] target/arm: Implement ARMv8.2-FHM
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b7RIVEsrxkPH
-
-Tested with RISU vs Foundation Model, both a32 and a64.
-
-I am aware of a trivial conflict with the ARMv8.3-JSConv patch set.
-I just thought it was easier to manage separately based on master.
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id y185sm1836045wmg.34.2019.02.14.03.52.04
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Feb 2019 03:52:04 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 7CA831FF80;
+	Thu, 14 Feb 2019 11:52:04 +0000 (UTC)
+References: <20181206151401.13455-1-peter.maydell@linaro.org> <87ftsrird3.fsf@zen.linaroharston> <CAFEAcA_GPW0B9bMOia_aB=H0PV8DwUNWBARz+uNbRk2565a+4w@mail.gmail.com> <87bm3figs9.fsf@zen.linaroharston>
+User-agent: mu4e 1.1.0; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, "patches\@linaro.org" <patches@linaro.org>, Dongjiu Geng <gengdongjiu@huawei.com>, "mark.rutland\@arm.com" <mark.rutland@arm.com>
+Subject: Re: [RFC] arm: Allow system registers for KVM guests to be changed by QEMU code
+In-reply-to: <87bm3figs9.fsf@zen.linaroharston>
+Date: Thu, 14 Feb 2019 11:52:04 +0000
+Message-ID: <875ztmio4b.fsf@zen.linaroharston>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: t7TSx94qcECG
 
 
-r~
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+>> On Wed, 13 Feb 2019 at 16:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+>>>
+>>>
+>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>
+>>> > At the moment the Arm implementations of kvm_arch_{get,put}_registers=
+()
+>>> > don't support having QEMU change the values of system registers
+>>> > (aka coprocessor registers for AArch32). This is because although
+>>> > kvm_arch_get_registers() calls write_list_to_cpustate() to
+>>> > update the CPU state struct fields (so QEMU code can read the
+>>> > values in the usual way), kvm_arch_put_registers() does not
+>>> > call write_cpustate_to_list(), meaning that any changes to
+>>> > the CPU state struct fields will not be passed back to KVM.
+<snip>
+>
+>>
+>> I'm confused -- I'm not sure if the things you're saying
+>> didn't work:
+>>  (a) didn't work before this patch and still don't
+>>  (b) used to work and are broken by this patch
+>>  (c) used to not work and are fixed by this patch
+>
+> option (c) - this patch has made things better hence the t-b and r-b
+> tags. I might send you a follow up if we can also have single-step
+> working as well but that requires me to test a kernel patch (and remove
+> the error leg for guest single step in kvm64).
+
+Oh well it looks like we need to keep the suppression of SS while guest
+debug is happening. Otherwise we end up looping exceptions:
+
+first SS from guest trigger and exception at:
+kvm_arm_handle_debug: @0xffffff8010083fa8 mdscr_el1:0x9001 pstate:0x400003c5
+
+then repeats:
+kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
+kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
+kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
+kvm_arm_handle_debug: @0xffffff8010082200 mdscr_el1:0x9001 pstate:0x3c5
+
+This all looks like it is in the kernel which is slightly confusing:
+
+  (gdb) x/6i 0xffffff8010083fa0
+     0xffffff8010083fa0 <+24>:    orr     x2, x2, #0x1
+     0xffffff8010083fa4 <+28>:    msr     mdscr_el1, x2
+     0xffffff8010083fa8 <ret_to_user+32>: ldp     x21, x22, [sp, #256]
+     0xffffff8010083fac <ret_to_user+36>: bl      0xffffff80101f1ad8  <cont=
+ext_tracking_user_enter>
+     0xffffff8010083fb0 <ret_to_user+40>: ldr     x23, [sp, #248]
+     0xffffff8010083fb4 <ret_to_user+44>: msr     sp_el0, x23
+
+which is weird because we it seems the kernel is delivering a SOFTSTEP
+exception to userspace on access to mdscr_el1 rather than trapping the
+access and emulating it in kernel. The loop then just ends up in the
+vectors table:
+
+  (gdb) x/4i 0xffffff8010082200
+=3D> 0xffffff8010082200 <vectors+512>:    sub     sp, sp, #0x140
+   0xffffff8010082204 <vectors+516>:    add     sp, sp, x0
+   0xffffff8010082208 <vectors+520>:    sub     x0, sp, x0
+   0xffffff801008220c <vectors+524>:    tbnz    w0, #14, 0xffffff801008221c=
+ <vectors+540>
+
+Anyway that doesn't affect the viability of this patch for the
+breakpoint behaviour.
+
+>
+>>
+>> More generally:
+>>  * this patch claims to fix the code path where QEMU sets
+>>    up the guest to take a breakpoint exception (specifically
+>>    making our change of ESR_EL1 actually take effect) -- so does
+>>    it do that? Or is it impossible for that code path in QEMU
+>>    to be used (if so, can we just remove it) ?
+>
+> No it's needed - I'm observing exceptions coming through the path and
+> then being delivered to the guest while the host is debugging - modulo
+> the you can't have active HW breakpoints in both guest and host at the
+> same time.
+>
+> Even here now we are sure the guest state is correctly reflected we
+> could make the debug code smarter and try it's best to preserve guest
+> debug regs while using it's own entirely in userspace. But I suspect
+> that is a bit niche.
+>
+>>
+>> thanks
+>> -- PMM
 
 
-Richard Henderson (4):
-  target/arm: Add helpers for FMLAL and FMLSL
-  target/arm: Implement FMLAL and FMLSL for aarch64
-  target/arm: Implement VFMAL and VFMSL for aarch32
-  target/arm: Enable ARMv8.2-FHM for -cpu max
-
- target/arm/cpu.h           |  10 +++
- target/arm/helper.h        |   9 +++
- target/arm/cpu.c           |   1 +
- target/arm/cpu64.c         |   2 +
- target/arm/translate-a64.c |  49 +++++++++++-
- target/arm/translate.c     | 104 ++++++++++++++++++-------
- target/arm/vec_helper.c    | 154 +++++++++++++++++++++++++++++++++++++
- 7 files changed, 299 insertions(+), 30 deletions(-)
-
--- 
-2.17.2
-
+--
+Alex Benn=C3=A9e

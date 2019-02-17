@@ -1,113 +1,114 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1522577wrx;
-        Sun, 17 Feb 2019 10:03:17 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYiCsh/6Mup4QtLgsHKSd0MmYXXjHuNeK0MD0e8DfPi6UHOGqoKSWwTXgSCQpjJVYXsPTi+
-X-Received: by 2002:a81:5d8:: with SMTP id 207mr15534692ywf.197.1550426597492;
-        Sun, 17 Feb 2019 10:03:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550426597; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1527366wrx;
+        Sun, 17 Feb 2019 10:09:24 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY4NPtfviAZy8xzeg1n0tSIAMmvG3bA8XqTDo5wo8X1aduh5M6o5y24Mzfaz5s+uRt/hGMK
+X-Received: by 2002:a81:1e13:: with SMTP id e19mr16494267ywe.234.1550426964698;
+        Sun, 17 Feb 2019 10:09:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550426964; cv=none;
         d=google.com; s=arc-20160816;
-        b=yuZd9CKXftuR7zjKXJQGxPCV4NrHmUNcmEsyJTW0mtIEEZ4SIyOzCyaT/Sn+ONx0GA
-         O2pFjre1Q9hP3ghkrLJBcGCP++auf5hqgFzQYNvGRPNoGnjutfsjCea9OuDOHIMdkp3U
-         5yl3hZ7ftTmubglkDuklSP1E/WUtJUWV5SI4q7bfpwU3QCI+0ssE+rD3CzVzqAmhNTFk
-         iA89y3UB3pgZhOAknSUVkWDTiR3qXyvJGjyCCXLM8m12vgvHODsh8E3aJNgltX8ZpWWw
-         eElhxMUG7oBRJAAHCJVjkVIxl3EPxh8HofuaZB0ANAEX7zyIMQPWhCfseeenTwjYitBY
-         4adw==
+        b=VsduWCILXRrrhSAta0WqZQFHf7/mE4e0M5HBGru2CnHQQ5qrD+rhN+kipaChMyGlhE
+         vCXx0Bqac8J/Ou3rTAzPXqsTSYw8YurF11gPFFZ9a5jwDHKKGyqH+U7eYQwEgGSqvnv3
+         lYEuQAlhSh13k1RIIAyy4V+C6HrJdTaiCTqwIleZ9PWW53tgUHwTiu7UUcBxt7huCuTR
+         psAxnqnhrHw7TNcIgrlYly3aBVGPMPymwg5O0sJxyC3IH0/NGMc+dRxLlm9Cmrgw4lix
+         U1J/CQfC3vZidc+/zUPW0efhPk4cxZojFh1s8pbXLAJq1FIjfGE47KF1kv3Yb8MS+Jky
+         VLFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature;
-        bh=ePsI+8aktUfeg5Rs+/Rf67i9hRN3LzGDiAI/xVSpxBg=;
-        b=VbK/kkj/gmTXjik8dv09T4+tOtbNdGQXuDLiuKBnwOUprl+yncQnPsXKUQeGsP/4ge
-         jWublF4zRB+KCTdLpx53zTuvyWzjLluGrib9v3tnP3iRGOhiTcmEsOUgWHpPjGCUobzr
-         Y8cfKDo84qu7eCMf+oeuE7PQIPDLuwsk1UsTUAWXcp3JT1UlpuWCf+qt1avsgZXW++00
-         TXBVmWAUytMpwBXeSEs55KaAs02uOcFnYRVKtONR81nWOuzFrh/bHpt4wnhUlYkS7F51
-         wqvy1XygHAGh9YafjeLUU4tdVTZsvwkiKWOEv+8ULvsZaZUGLJtT9soBKNLPwiz3ZxCy
-         gSHA==
+        bh=DIdTpmCS+qk1ZwGd1Y+/a91lKw9BJopyWVg9S7MPqpE=;
+        b=cYrCZmqw/2WKpg6/AyN/fHZebsvdGPMI8nx7WqVVku/zivDmAo1TWlSo6otL9a25tl
+         DD90BzjS2+kyqY5sDRt/Tkmrw/ki+84VtvLmriJ4gF08xgGGikvb7JGxFjCwQgNk45mZ
+         RGSv7XLXyutb6pvJC9/sORu5EkPvWBLVBTNy+WYtqPtwgi4ic8cID+elpTOzFXl2wMY7
+         Q5kW4bJ2XROvg7LASAnSvBziEojwFLPr7ARxC0Vp+1cHPM1g7rAXLb4fZet/Hum0xWjl
+         0wRNSetVlnmUdc8SHfkBZPAp8Zo1hmg1EmkvM/A48nlkHmq1alTBR3JaWZFbpXA4kPpb
+         hppw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ol46Jfep;
+       dkim=fail header.i=@linaro.org header.s=google header.b=B3qu5c88;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si6078538ybb.174.2019.02.17.10.03.17
+        by mx.google.com with ESMTPS id c203si239466ywb.249.2019.02.17.10.09.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Feb 2019 10:03:17 -0800 (PST)
+        Sun, 17 Feb 2019 10:09:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ol46Jfep;
+       dkim=fail header.i=@linaro.org header.s=google header.b=B3qu5c88;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:44728 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:44857 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gvQma-00010O-Vg
-	for alex.bennee@linaro.org; Sun, 17 Feb 2019 13:03:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52562)
+	id 1gvQsW-0003h0-5U
+	for alex.bennee@linaro.org; Sun, 17 Feb 2019 13:09:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54281)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gvQmQ-0000zL-8P
-	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:03:06 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gvQsL-0003fd-8U
+	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:09:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gvQmP-00074c-Ip
-	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:03:06 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:32855)
+	(envelope-from <richard.henderson@linaro.org>) id 1gvQsK-0001cS-KE
+	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:09:13 -0500
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:36473)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gvQmP-00074A-7q
-	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:03:05 -0500
-Received: by mail-pg1-x541.google.com with SMTP id h11so4912510pgl.0
-	for <qemu-arm@nongnu.org>; Sun, 17 Feb 2019 10:03:05 -0800 (PST)
+	id 1gvQsK-0001c7-EG
+	for qemu-arm@nongnu.org; Sun, 17 Feb 2019 13:09:12 -0500
+Received: by mail-pf1-x441.google.com with SMTP id n22so7362295pfa.3
+	for <qemu-arm@nongnu.org>; Sun, 17 Feb 2019 10:09:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ePsI+8aktUfeg5Rs+/Rf67i9hRN3LzGDiAI/xVSpxBg=;
-	b=Ol46JfepA8fcagp52fNQMl0VX8tt+OmnoeROtODv2trZBX7W37DjqbnEy3RS/Ke6tE
-	9twSn3fxX4ALTo6mTGGyaA0WCl+FPWF+O8JXzDbfO13RnRRwBPvCWD6+O9HyXXKTfUbw
-	tFmgEXYmQ4jpX7aMyArUNXnFNLOclxG9tFBkSOzKfgNT8dVxbCrLXlTL2iNwd6VrVg72
-	z5pDyF8FWFhU8HbkAWgVaM8sEq6p/NgE+PdtU1Utz4sN3G8auiAZW1N8KHcUZc208iwO
-	iiYIuDd/uR4zFwBUuFijzLztIjnoA7IqK/kQJh06tW296J4CyqK3gucyZTxAJuX+gqKs
-	RN0w==
+	bh=DIdTpmCS+qk1ZwGd1Y+/a91lKw9BJopyWVg9S7MPqpE=;
+	b=B3qu5c88HZJL0bGtISk2e3s/XWlTbQAPPT6nOMOHd7enW/Noe6fc/xYvkQmLltEqUQ
+	7x184TAcGvdJDJ7WKqZ89zBZ7+zNxFKxumQYirrxxRJFVjKDOSqowmXYKMQiGXqGIPma
+	JZZUBgbViZi7KJqEIDxOXc9rKgjYwNSIN2TsyyX0hca0fhn4ti1xnGAWfBvVj9tj0lyA
+	JCTzgWeXYVaGnrx95bD4aD7+tshMsv1Fgn+XV2lCUCTZeYPbDnKfdAYlvNhlnv27IRBz
+	p2lEhsydWQQolH0D+DTCE6qO78ggnby7FICCNVOSWAucp6KZLCKMrAJFPh+ycyZVDBYl
+	D7tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ePsI+8aktUfeg5Rs+/Rf67i9hRN3LzGDiAI/xVSpxBg=;
-	b=PJKrMXFgIhzB5FnpL+w3DGUhLwGHdVPZHu/NzzLRtNj7aneQR2pqPTn3Hspmoj42of
-	IbfvITAADvkGalNkK072pnXMzxOuhwEl9X5u8Q7ACjez9RfgVaYHqqmSU72AF3H98cb5
-	PL3O4A8QKsKgkDchtePZlVKnDdQYaKUOq1uoYdFn6xgoXTrpML0C+mEZ89Oh1PdRJ7XT
-	nyaxQBySUMx1sWcuOnR/a07WrPJJxaRU9CCNOBL4RcN6MxGXc9TfhQSZ+7cKE/4zIgPo
-	3OF4vKgSubLhkTtWuR+ZPfYwIOCIlzh1/oyvw6Z0J7dX7JmLaHPv4oBv0L1kAmFpzxbj
-	79vw==
-X-Gm-Message-State: AHQUAuZgDy/CuEbwJOS2aPgVvEocTEw62kmL5E/OsGNoO/k0xvSB6K1i
-	/w44WkoW4VQqItspK8G7SGi7sQ==
-X-Received: by 2002:a62:9359:: with SMTP id b86mr20165545pfe.161.1550426584138;
-	Sun, 17 Feb 2019 10:03:04 -0800 (PST)
+	bh=DIdTpmCS+qk1ZwGd1Y+/a91lKw9BJopyWVg9S7MPqpE=;
+	b=s7vKvcO2tBAtSjAlotGwBYWWm3Fs2KYh6G7HQ+/JxFVLfWGLRWOz7dv8ujkOE2AR9q
+	mV0Ot4JA7ehaaFEacupUPsOjpFXwQb6M/EQIuVgmNNEU2p8is09xA8j7ObiSxZZ25Qs9
+	ltFX2QTHjqzQsVbTfRpAG7sWBJeJN+/ugtmXME2t/hwoqiCVNJ93IlIY6kZDN+42MS1i
+	XNKMFXcMMF3r7UNeKAV13pCG5X8ynkQTCFMaudgmX4lpqbYnwb35WJ1EG5IExMq7+xtX
+	Z+Bu68PDp9w1qAh0nHdZBPy4fMeptHHjHgupzDElwzXwe/UZUtA7t33WqbKWwkF+96PJ
+	TRoA==
+X-Gm-Message-State: AHQUAuZbB8CRyjYmhV+L+lpR7yrj+ZTnAV/uTHMTNPp2gi9iw6oYM80f
+	F1NrjPxymh2FaUizB2T30i5zXg==
+X-Received: by 2002:aa7:8286:: with SMTP id s6mr19896192pfm.63.1550426951203; 
+	Sun, 17 Feb 2019 10:09:11 -0800 (PST)
 Received: from cloudburst.twiddle.net ([47.39.62.139])
-	by smtp.gmail.com with ESMTPSA id o2sm8379002pgq.29.2019.02.17.10.03.02
+	by smtp.gmail.com with ESMTPSA id
+	b15sm21448313pfj.44.2019.02.17.10.09.09
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 17 Feb 2019 10:03:03 -0800 (PST)
+	Sun, 17 Feb 2019 10:09:10 -0800 (PST)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20190214125107.22178-1-peter.maydell@linaro.org>
-	<20190214125107.22178-10-peter.maydell@linaro.org>
+	<20190214125107.22178-11-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <78c3ece6-248d-4cac-467c-7a4b45d4bb18@linaro.org>
-Date: Sun, 17 Feb 2019 10:03:00 -0800
+Message-ID: <42a585ac-5766-7042-13bd-7a50a8253460@linaro.org>
+Date: Sun, 17 Feb 2019 10:09:07 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190214125107.22178-10-peter.maydell@linaro.org>
+In-Reply-To: <20190214125107.22178-11-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 09/14] hw/arm/armsse: Allow
- boards to specify init-svtor
+X-Received-From: 2607:f8b0:4864:20::441
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 10/14] hw/arm/musca.c: Implement
+ models of the Musca-A and -B1 boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,20 +123,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zWZSSkQCy654
+X-TUID: aduaK20/zMB4
 
 On 2/14/19 4:51 AM, Peter Maydell wrote:
-> The Musca boards have DAPLink firmware that sets the initial
-> secure VTOR value (the location of the vector table) differently
-> depending on the boot mode (from flash, from RAM, etc). Export
-> the init-svtor as a QOM property of the ARMSSE object so that
-> the board can change it.
+> The Musca-A and Musca-B1 development boards are based on the
+> SSE-200 subsystem for embedded. Implement an initial skeleton
+> model of these boards, which are similar but not identical.
+> 
+> This commit creates the board model with the SSE and the IRQ
+> splitters to wire IRQs up to its two CPUs. As yet there
+> are no devices and no memory: these will be added later.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/hw/arm/armsse.h | 3 +++
->  hw/arm/armsse.c         | 8 ++++----
->  2 files changed, 7 insertions(+), 4 deletions(-)
+>  hw/arm/Makefile.objs            |   1 +
+>  hw/arm/musca.c                  | 197 ++++++++++++++++++++++++++++++++
+>  MAINTAINERS                     |   6 +
+>  default-configs/arm-softmmu.mak |   1 +
+>  4 files changed, 205 insertions(+)
+>  create mode 100644 hw/arm/musca.c
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

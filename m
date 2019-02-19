@@ -1,97 +1,97 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3380050wrx;
-        Tue, 19 Feb 2019 05:03:14 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbRmFVtHnDfsKEUZTA/QM2fjZ5DM0NZE//a417BGhx0WPy5OalEc8y8IcQS6BtSMTyUkEDb
-X-Received: by 2002:a37:f506:: with SMTP id l6mr8820417qkk.110.1550581394803;
-        Tue, 19 Feb 2019 05:03:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550581394; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3382496wrx;
+        Tue, 19 Feb 2019 05:05:23 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYtqGRSffnBVOBs9aGvhI19zK+ej4wV0aQjap66fB1cauVYlIWSN1DYvAP84szgW1ftS0VC
+X-Received: by 2002:ac8:3501:: with SMTP id y1mr22016159qtb.209.1550581523797;
+        Tue, 19 Feb 2019 05:05:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550581523; cv=none;
         d=google.com; s=arc-20160816;
-        b=aJxkxnFnSFZ4orsPLcsYneGl4Iil+jDtSK//oboqplwKox+xrxP8CdAzRy4BFonzro
-         0b9UoCiYQOMP1dm2mUNOW3n4UKLRlZnnAe6MQeC/G8LEKfvn0dJUT7KBaBnGKfAqFpLj
-         AWV62Mwo0Tae+UhIMQz9kXt1c34BwcP4xdR96aMT0IEmK1YEpooC665SdAdUbht+fkCB
-         QPPF7QsrhHE67FrNUmwNb4tkC9yFzx6/hs/qdfiI5J+6rNv35Y3dZbQ5QWDRfjksm5r/
-         ih0aiZZvnrq1JKkSOm0qlrZn+Il/oee8ttBVMEW3vO+bfK+x97svY5x0R1fwu5QgxrCr
-         5Rdw==
+        b=us2NhLyd1qIxWUG6S1R5He1i2NwWi+LItXrwL082JsDUx5p5DStBsq3pQjRm5GrM61
+         fxjZdxaoZGv9SPx0Um1dgfrSRc6mci5vpFsu0P4zc6xg1cnXw6cH6wl11ckUqxiioh3k
+         jp6JdN7/pZfgt5xmsZEw9w09snxQLRZr+5qMfba1JSQR5wkBdMOE7N0Jdx0Fm/azosis
+         aOBwSBKY34F+T7KEaf3FqSrnoWaDCHG7JgUvf2rJmFF4XpNlwrwMp2G4bSx3Hz0LXBtN
+         elK46Fuwih5OO8YhbZj68irJhTfQ+BlmyDtWHUrsu/VwHsNSngh1XbzES6rYGzFVMywU
+         en6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=z9u5w0T0Lwyuy9HIkprGJsanlIZ38qvna0IXR0Nck2w=;
-        b=e5So5rFlInTf0/AdSTH0SYuyC0jNuG4bROvbohz7SdI0qLC4vTcWoVKV8XMP1OfpF3
-         Vg7g2fZCSkKHdFYPOUUntgmC0MRu9zK5SaIG4kTrBSaV+3Tw0VAUv/UXbgjymf/ZHJlF
-         66vB0dv4jogGJHgWCgISu/ETQoa5ARN3NBpROpkmZdSnlh5q3ba33XDFjhHUfqsxtweN
-         RuHLqGDeiwjEVLwjgdtmWcspuHrvSe31K39xp0YKT7b1aw0z+fkfXVithRp5o7dX+VR/
-         x3XQNvUUcjaiijbSqwSHcXUHAIPY8fw+N/UVFk6Mapn2yVp/qfprvwyJ72+wMIiRH6vE
-         LG0g==
+        bh=yXhjNBRfk4bgBthdgKq2jkIg12QhrODqy/sEJjyPMGI=;
+        b=MIpm3ujVNEmZBiDm1H6NhFWApUlTTOXi43rtUU2+u4699iky62ur+jkDLq52W6ZEC0
+         Q6qFAtq4Yr6IZRqRSseXeHi7OLkg972KZuBXv6gqhiTJgKEgmAbg4Y8my2YauOzl7WSv
+         bvf9lCRaOYvby2pimn0wLD7DAFX6R2rZNg1VY5PIstzA8LI9nO8mgbkiYkJdyww+FVlv
+         cb8NX/D/N60WrCrh273Lu8d17juAH73gwMvbwPyBrQOM/OjxrbgR/axiTJOthjBIqYxg
+         pjKvrWGR5nV4wJvALXW/y08LQU3B56DrD1ha2w/p6SqJNCZt9Zp9fd6Xwx80cAtSj6Pf
+         o/Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mSakjBRX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y3BDzJJ+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r18si10891426qtf.204.2019.02.19.05.03.14
+        by mx.google.com with ESMTPS id g14si2457627qvj.193.2019.02.19.05.05.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Feb 2019 05:03:14 -0800 (PST)
+        Tue, 19 Feb 2019 05:05:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=mSakjBRX;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y3BDzJJ+;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:47932 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48000 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gw53K-0005IX-7O
-	for alex.bennee@linaro.org; Tue, 19 Feb 2019 08:03:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53152)
+	id 1gw55P-0006uW-3c
+	for alex.bennee@linaro.org; Tue, 19 Feb 2019 08:05:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gw4yW-0001fi-My
-	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:17 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gw4yZ-0001hd-9n
+	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gw4yV-0002nh-Lx
-	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:16 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45175)
+	(envelope-from <peter.maydell@linaro.org>) id 1gw4yY-0002pm-6C
+	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:19 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38250)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gw4yV-0002nA-BZ
-	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:15 -0500
-Received: by mail-wr1-x444.google.com with SMTP id w17so21812000wrn.12
-	for <qemu-devel@nongnu.org>; Tue, 19 Feb 2019 04:58:15 -0800 (PST)
+	id 1gw4yX-0002pB-Tl
+	for qemu-devel@nongnu.org; Tue, 19 Feb 2019 07:58:18 -0500
+Received: by mail-wr1-x444.google.com with SMTP id v13so21841278wrw.5
+	for <qemu-devel@nongnu.org>; Tue, 19 Feb 2019 04:58:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=z9u5w0T0Lwyuy9HIkprGJsanlIZ38qvna0IXR0Nck2w=;
-	b=mSakjBRXHRlXXmvnr6vFCvEDHDQr0i2028unf3LImD0wKHCFwL1pVKYRvSd4vvlC+h
-	Bkblz/7IFGAdBuc6RmehQJYoDEznKnMB5Q7Ifc8Q8np/gawvkw1zg3IXm7gOJJaK89c2
-	qlCuI2i8xzELfpSLFKEPy+WbQctIQh/NyhBF6jnQNjLqUD0WaAbYkacJRmIfavORqHHq
-	Ld1uKORUb0oXOTAgNzP2zCiGZleclK7rBM8t08zuhsGz1jVRuTFblydUq2vqxhyrbdyj
-	7LtWMw8QKvZ2F0cbcRex/aIf4MexqBr2+TXWzfpXFCU5+YzSRz85djrwC2MHkh12jB4s
-	Z4hQ==
+	bh=yXhjNBRfk4bgBthdgKq2jkIg12QhrODqy/sEJjyPMGI=;
+	b=Y3BDzJJ+PbAW8IfpHbGIAdSi/a28nybW5Mqyrqom8pwlh/+DJGgnSBDdHd83Q1NbvE
+	XEDrtbSx+m3mSmU8jM+Dt6OgDcJCD0z29/+7UWutfCi82HiXogtJVKLDsjhiwKWM1bwK
+	3sa7JEFp6jv7uSfnpsQYIkqsWK3obbhNEWtn4BFDnYvY4hunvnH0AKewcvCEnWPiCpLu
+	B583iYokjOv0tVPKZmYqGMGW+qSrJ2C5zFiTz8SYrUWyDnlxn45UEja1BAus9O6/X2y4
+	WWTNJ7khUR3dVj/khvsHIVKWUV2SSd41M4Uq97flSI9ShUtfn7UdguKxh5v5D91iSidl
+	8NfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=z9u5w0T0Lwyuy9HIkprGJsanlIZ38qvna0IXR0Nck2w=;
-	b=p3geWA3GJ7xos3zceog6430aBTw0X0WvX1yE4LAvYDoSn6AxTisCkpux2E5kjlL24e
-	rXGINo5i6U2y5VGBF6Y2m/azVx4dzcvCjx4CSt/wG8WIEJYjVn0he4fXX8O7Yc+hObVG
-	+Ec84JIkfT4AT4Jy+L4g27KVhVyXsP50UgmID01jCalUiDJGVg9j7h9RidkErS0uSKfI
-	297YC3aUvzAjGdGP8nWHReIoHuaZR3wgugTk51dnbOX8EPxF6k20VIO/OP3N4sqMHYYN
-	eivZwgQhxOqETm/JLkUtVQJlr7z1uqRLTbJFqAoWVR7wNnWYiPNbXhDKwjicfMzaw7jt
-	qxeg==
-X-Gm-Message-State: AHQUAubkJ43hRh/f/8Ks4GcAMcqvSUJHY7XZiCOG4lpwC47XygA+/uWN
-	cUe1+LL0+vJlKfzmMSoVrHrU3Y2CyHiEIQ==
-X-Received: by 2002:adf:9123:: with SMTP id j32mr21805495wrj.122.1550581094393;
-	Tue, 19 Feb 2019 04:58:14 -0800 (PST)
+	bh=yXhjNBRfk4bgBthdgKq2jkIg12QhrODqy/sEJjyPMGI=;
+	b=L+Ks5tdpsHXAH6r4p3/+28rpGFLC2c2UaR8oNNhQ0ig2fMK3KVAsKXatqY3D6jeQaZ
+	rSt3w87vGYbh6SslaRbqYnUAtVpF+CD+zCk/rTnrBmGmd+Gq2xWVHba97+C4dTLS1VgT
+	Yw05N+FBPEEiFzuc9rkA0KUVVFcfDmAu5N6Rwqjn0cHPObzOIvyPGalMOJP3RCQxL49r
+	KCYUtLGW4D/zRhrBMtU+f9Ie5ke3Jf9nVeqpgNHzBGZBq3cn8GaDxt2U8YOfxrezDiSl
+	ahWBQTCwvOZCqDDcsUW1xI52U9YwwU0toY9A5uKKwjfWYc+yWjNwRl2VJHYhYP/4i0Pn
+	BGDw==
+X-Gm-Message-State: AHQUAubFt1jtX5fSPHp4cB7snSZ+TJg5OU2hYREpAofeLPlVGVzrowO7
+	aqbqNj4VrCLPguEmae9N0+FHGA==
+X-Received: by 2002:a5d:500c:: with SMTP id e12mr7667572wrt.27.1550581096927; 
+	Tue, 19 Feb 2019 04:58:16 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	e75sm5226113wmg.32.2019.02.19.04.58.13
+	e75sm5226113wmg.32.2019.02.19.04.58.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Feb 2019 04:58:13 -0800 (PST)
+	Tue, 19 Feb 2019 04:58:16 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 19 Feb 2019 12:58:02 +0000
-Message-Id: <20190219125808.25174-3-peter.maydell@linaro.org>
+Date: Tue, 19 Feb 2019 12:58:04 +0000
+Message-Id: <20190219125808.25174-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190219125808.25174-1-peter.maydell@linaro.org>
 References: <20190219125808.25174-1-peter.maydell@linaro.org>
@@ -100,7 +100,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-devel] [PATCH 2/8] hw/arm/armsse: Wire up the MHUs
+Subject: [Qemu-devel] [PATCH 4/8] target/arm/arm-powerctl: Add new
+ arm_set_cpu_on_and_reset()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,111 +116,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gw+/Um/FIbY1
+X-TUID: xdUHkqL95pJ+
 
-Create and connect the MHUs in the SSE-200.
+Currently the Arm arm-powerctl.h APIs allow:
+ * arm_set_cpu_on(), which powers on a CPU and sets its
+   initial PC and other startup state
+ * arm_reset_cpu(), which resets a CPU which is already on
+   (and fails if the CPU is powered off)
+
+but there is no way to say "power on a CPU as if it had
+just come out of reset and don't do anything else to it".
+
+Add a new function arm_set_cpu_on_and_reset(), which does this.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/armsse.h |  3 ++-
- hw/arm/armsse.c         | 40 ++++++++++++++++++++++++++++++----------
- 2 files changed, 32 insertions(+), 11 deletions(-)
+ target/arm/arm-powerctl.h | 16 +++++++++++
+ target/arm/arm-powerctl.c | 56 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 7ef871c7dfe..81e082cccf8 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -95,6 +95,7 @@
- #include "hw/misc/iotkit-sysctl.h"
- #include "hw/misc/iotkit-sysinfo.h"
- #include "hw/misc/armsse-cpuid.h"
-+#include "hw/misc/armsse-mhu.h"
- #include "hw/misc/unimp.h"
- #include "hw/or-irq.h"
- #include "hw/core/split-irq.h"
-@@ -166,7 +167,7 @@ typedef struct ARMSSE {
-     IoTKitSysCtl sysctl;
-     IoTKitSysCtl sysinfo;
+diff --git a/target/arm/arm-powerctl.h b/target/arm/arm-powerctl.h
+index 04353923c06..37c8a04f0a9 100644
+--- a/target/arm/arm-powerctl.h
++++ b/target/arm/arm-powerctl.h
+@@ -74,4 +74,20 @@ int arm_set_cpu_off(uint64_t cpuid);
+  */
+ int arm_reset_cpu(uint64_t cpuid);
  
--    UnimplementedDeviceState mhu[2];
-+    ARMSSEMHU mhu[2];
-     UnimplementedDeviceState ppu[NUM_PPUS];
-     UnimplementedDeviceState cachectrl[SSE_MAX_CPUS];
-     UnimplementedDeviceState cpusecctrl[SSE_MAX_CPUS];
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index 129e7ea7fe0..5768d6fbf8b 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -282,9 +282,9 @@ static void armsse_init(Object *obj)
-                           sizeof(s->sysinfo), TYPE_IOTKIT_SYSINFO);
-     if (info->has_mhus) {
-         sysbus_init_child_obj(obj, "mhu0", &s->mhu[0], sizeof(s->mhu[0]),
--                              TYPE_UNIMPLEMENTED_DEVICE);
-+                              TYPE_ARMSSE_MHU);
-         sysbus_init_child_obj(obj, "mhu1", &s->mhu[1], sizeof(s->mhu[1]),
--                              TYPE_UNIMPLEMENTED_DEVICE);
-+                              TYPE_ARMSSE_MHU);
-     }
-     if (info->has_ppus) {
-         for (i = 0; i < info->num_cpus; i++) {
-@@ -766,22 +766,28 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-     }
- 
-     if (info->has_mhus) {
--        for (i = 0; i < ARRAY_SIZE(s->mhu); i++) {
--            char *name;
--            char *port;
-+        /*
-+         * An SSE-200 with only one CPU should have only one MHU created,
-+         * with the region where the second MHU usually is being RAZ/WI.
-+         * We don't implement that SSE-200 config; if we want to support
-+         * it then this code needs to be enhanced to handle creating the
-+         * RAZ/WI region instead of the second MHU.
-+         */
-+        assert(info->num_cpus > 1);
++/*
++ * arm_set_cpu_on_and_reset:
++ * @cpuid: the id of the CPU we want to star
++ *
++ * Start the cpu designated by @cpuid and put it through its normal
++ * CPU reset process. The CPU will start in the way it is architected
++ * to start after a power-on reset.
++ *
++ * Returns: QEMU_ARM_POWERCTL_RET_SUCCESS on success.
++ * QEMU_ARM_POWERCTL_INVALID_PARAM if there is no CPU with that ID.
++ * QEMU_ARM_POWERCTL_ALREADY_ON if the CPU is already on.
++ * QEMU_ARM_POWERCTL_ON_PENDING if the CPU is already partway through
++ * powering on.
++ */
++int arm_set_cpu_on_and_reset(uint64_t cpuid);
 +
-+        for (i = 0; i < ARRAY_SIZE(s->mhu); i++) {
-+            char *port;
-+            int cpunum;
-+            SysBusDevice *mhu_sbd = SYS_BUS_DEVICE(&s->mhu[i]);
+ #endif
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index f9de5164e55..f77a950db67 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -228,6 +228,62 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+     return QEMU_ARM_POWERCTL_RET_SUCCESS;
+ }
  
--            name = g_strdup_printf("MHU%d", i);
--            qdev_prop_set_string(DEVICE(&s->mhu[i]), "name", name);
--            qdev_prop_set_uint64(DEVICE(&s->mhu[i]), "size", 0x1000);
-             object_property_set_bool(OBJECT(&s->mhu[i]), true,
-                                      "realized", &err);
--            g_free(name);
-             if (err) {
-                 error_propagate(errp, err);
-                 return;
-             }
-             port = g_strdup_printf("port[%d]", i + 3);
--            mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mhu[i]), 0);
-+            mr = sysbus_mmio_get_region(mhu_sbd, 0);
-             object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr),
-                                      port, &err);
-             g_free(port);
-@@ -789,6 +795,20 @@ static void armsse_realize(DeviceState *dev, Error **errp)
-                 error_propagate(errp, err);
-                 return;
-             }
++static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
++                                                run_on_cpu_data data)
++{
++    ARMCPU *target_cpu = ARM_CPU(target_cpu_state);
 +
-+            /*
-+             * Each MHU has an irq line for each CPU:
-+             *  MHU 0 irq line 0 -> CPU 0 IRQ 6
-+             *  MHU 0 irq line 1 -> CPU 1 IRQ 6
-+             *  MHU 1 irq line 0 -> CPU 0 IRQ 7
-+             *  MHU 1 irq line 1 -> CPU 1 IRQ 7
-+             */
-+            for (cpunum = 0; cpunum < info->num_cpus; cpunum++) {
-+                DeviceState *cpudev = DEVICE(&s->armv7m[cpunum]);
++    /* Initialize the cpu we are turning on */
++    cpu_reset(target_cpu_state);
++    target_cpu_state->halted = 0;
 +
-+                sysbus_connect_irq(mhu_sbd, cpunum,
-+                                   qdev_get_gpio_in(cpudev, 6 + i));
-+            }
-         }
-     }
- 
++    /* Finally set the power status */
++    assert(qemu_mutex_iothread_locked());
++    target_cpu->power_state = PSCI_ON;
++}
++
++int arm_set_cpu_on_and_reset(uint64_t cpuid)
++{
++    CPUState *target_cpu_state;
++    ARMCPU *target_cpu;
++
++    assert(qemu_mutex_iothread_locked());
++
++    /* Retrieve the cpu we are powering up */
++    target_cpu_state = arm_get_cpu_by_id(cpuid);
++    if (!target_cpu_state) {
++        /* The cpu was not found */
++        return QEMU_ARM_POWERCTL_INVALID_PARAM;
++    }
++
++    target_cpu = ARM_CPU(target_cpu_state);
++    if (target_cpu->power_state == PSCI_ON) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[ARM]%s: CPU %" PRId64 " is already on\n",
++                      __func__, cpuid);
++        return QEMU_ARM_POWERCTL_ALREADY_ON;
++    }
++
++    /*
++     * If another CPU has powered the target on we are in the state
++     * ON_PENDING and additional attempts to power on the CPU should
++     * fail (see 6.6 Implementation CPU_ON/CPU_OFF races in the PSCI
++     * spec)
++     */
++    if (target_cpu->power_state == PSCI_ON_PENDING) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[ARM]%s: CPU %" PRId64 " is already powering on\n",
++                      __func__, cpuid);
++        return QEMU_ARM_POWERCTL_ON_PENDING;
++    }
++
++    async_run_on_cpu(target_cpu_state, arm_set_cpu_on_and_reset_async_work,
++                     RUN_ON_CPU_NULL);
++
++    /* We are good to go */
++    return QEMU_ARM_POWERCTL_RET_SUCCESS;
++}
++
+ static void arm_set_cpu_off_async_work(CPUState *target_cpu_state,
+                                        run_on_cpu_data data)
+ {
 -- 
 2.20.1
 

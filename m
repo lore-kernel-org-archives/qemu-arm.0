@@ -1,97 +1,97 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3374892wrx;
-        Tue, 19 Feb 2019 04:58:33 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbVe1iGS6kh54mAcTlUv+ROmSG0UtBqd4HcvkBdSoxC7tcC0Hwa+NQvLhHXsgWmh2MKh0ZR
-X-Received: by 2002:a81:6d0b:: with SMTP id i11mr23242630ywc.117.1550581113116;
-        Tue, 19 Feb 2019 04:58:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550581113; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3375134wrx;
+        Tue, 19 Feb 2019 04:58:49 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbfmHWPwp6ezSnddfkryXm0dr5f8QkA96rRyyygBCNw0yQkRiE4x1La+V7Ea4v8G2VZjBJU
+X-Received: by 2002:a0d:f8c6:: with SMTP id i189mr23046878ywf.286.1550581129123;
+        Tue, 19 Feb 2019 04:58:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550581129; cv=none;
         d=google.com; s=arc-20160816;
-        b=phy8aVzJoxqzWwmtA2MmKkJ/edVYFhvfRFO1yl1DlSdldqISOlQBuCU/7LPvY79MEO
-         VP5/l2cu2ZKo2EHJka3x+NfQ1Bt2swx+qq+bFIKrRAIICuEMZptU/rFdx0AfkhcRhiUE
-         wWLpjNcI3h76YLLYUx4kRDtz9SEbWPXca7B17j8R/U1OUe6+MTFAAN6xwE3035pjPkcR
-         Miq3C+YbY+j4ATmHM/VQ7kbmexq3yhXGEHzPhPTR8k/tPmt5DpAGGkb/I4jcvS7l3F3s
-         SU0pkVeaydwXHd5TR3MnqZjbHlX4HAHqUvE6Bac6vOfbyPH12Frxw1ijCMb70bgkBmNt
-         uaMQ==
+        b=h7Vld3eyWUeQa+q87FUE/fUA27UFdzfTfiiOuOvfdtwhgbf9vh7vmfKXixeR40F2NL
+         ZXjP52Rj94bRmSBHCOJiNY5vzFGfnRe3WrDyBQTxaoslDdOjoKfeKSo7Xd1Hp9s2Uz5C
+         CCsMp+Hn3A2Cqb7V24Ta92SsHsQePxjt1Z8Fsjal437l+LviNBtEwFssxMzVeTLU9ycH
+         SMLhF389U7mNB81RSBMNFelA/Z+WaL9DjC5O5shKXUK1xLlZCZPJniTX4RtLKi3vwfRu
+         +nu7YDI5qBVbrFFlwE/pjd02ho1CC4MV1ifLl6xJ8vOvcDSmNv71yDFSxFOLT/8k0qZk
+         tn8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=B8tKueiUEpLkUPEUz3rtGmcp4sKBv8bSzBMqRMa4eyM=;
-        b=QjuUBpf5mcnNj3FqBb5LBqFHD+q9gv58IAFPVBOhNaaJSV4S6iuu1TIZSYGVFArO8j
-         MTnAMHVGHc5GjAGSHaCXZIFxbE3rec7+m9kXwqabt3GfsjWq/MtcytW3qGqnMmNCGAsn
-         qnFuAimwL9/fLbKtr6H2fibH/i5raYzUrTlWV2U8P7vnrZdoqzt5G9R0Hvadn2qYV2Ay
-         FnBx2izoeEM5ANyEnKFTXDEv1WQ6lzM19qEe4msrFU/6b/NOvhqBFjLCjGFbceB81wb/
-         cnUu8cuaO0SYb2I28ARS7y2uhTsZzH3QXIgzVYcorgHA+nB2QiWJ+c7bdDy6QemlkDpq
-         qvJQ==
+        bh=+7hrcQXswMt8u3DqhSZ2esGYAUAMYuaF4oZO23FfjSM=;
+        b=OLZKDFZLZzqHOHhRo1a894rCJV4FbEAMV7So6hxiyT9Ir0JUCNQAIhn6z8I/0qqrP3
+         5Q7v0CcsvmRS1Lno2ieYOgs+fnAVmBZhfE82+ltucJfU3l15HiLO2X6Qy5CP47na31E7
+         UId6JGJ+txDUat8jWsXbwElAKJOHqjIk+ciDM1fnjkh2z2HJ4FDZlc+sDlZPNYkTX2c9
+         tQqS8pRmvlhR6R6zQtwn0unQrCv9lj0OG4g9dTOKWqd55ZUbsuIgoxHK236nTk+sXEhP
+         yYM0v95xqYlHjFIbvLU+JGHeywTmnSG6tV++9yV6ZU2XSI/4JrTWJAmnNQgJ0Wn1Vuqk
+         Pr9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tPDMN7kE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DS2amq8j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16si10327181ybk.317.2019.02.19.04.58.32
+        by mx.google.com with ESMTPS id w69si9352076yww.428.2019.02.19.04.58.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Feb 2019 04:58:33 -0800 (PST)
+        Tue, 19 Feb 2019 04:58:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tPDMN7kE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DS2amq8j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:47703 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:47709 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gw4ym-0001gk-GA
-	for alex.bennee@linaro.org; Tue, 19 Feb 2019 07:58:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53143)
+	id 1gw4z2-0001wN-EM
+	for alex.bennee@linaro.org; Tue, 19 Feb 2019 07:58:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gw4yW-0001fY-Dz
-	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:18 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gw4yY-0001gQ-4n
+	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gw4yU-0002nD-QE
-	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:16 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37584)
+	(envelope-from <peter.maydell@linaro.org>) id 1gw4yX-0002p1-5g
+	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:18 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37582)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gw4yU-0002mY-HK
-	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:14 -0500
-Received: by mail-wr1-x444.google.com with SMTP id c8so21857045wrs.4
-	for <qemu-arm@nongnu.org>; Tue, 19 Feb 2019 04:58:14 -0800 (PST)
+	id 1gw4yW-0002oE-Uy
+	for qemu-arm@nongnu.org; Tue, 19 Feb 2019 07:58:17 -0500
+Received: by mail-wr1-x441.google.com with SMTP id c8so21857200wrs.4
+	for <qemu-arm@nongnu.org>; Tue, 19 Feb 2019 04:58:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=B8tKueiUEpLkUPEUz3rtGmcp4sKBv8bSzBMqRMa4eyM=;
-	b=tPDMN7kEyXR9l3GuCrxdO6QgVhxP6HxYjS6sbo4xlcuH4C9iryBqsBzzhUsX5vTeWO
-	TDVxYYO0YZjEf15Of+vil/Wae5PDgJmEgnHIpGvlpqxLrvnYFazapGlgpfeQfadW9Kml
-	BjhjnNpWwNUqp/eqnX2PS8OeGWz2Oz+z11ZJ/KBO+oAx7xffwJcli6YgJ9sgUYYZdsjL
-	UqBaauUqIl/OpdsMC+QAwvTXA44O/nw4Jvou6ftEp4mb3pa09mXE0PpPJNFd+53Hwk2Q
-	GWW0V+GO9h93YB4pGmQNkKoIso0C8owSJ1IjwHzt6EgrX66yc3CdtUEAfvaEolJ3+sXy
-	JZNw==
+	bh=+7hrcQXswMt8u3DqhSZ2esGYAUAMYuaF4oZO23FfjSM=;
+	b=DS2amq8jdXrXtWOfFJggiEtrJGMsH+G+jKafRTkoiKJa5++2mlLssdWEPHJPg8ZyI9
+	LPldjrg0jzeMRwI+2tI8USr2S+E0OpG3WGVkgpNFH4akv9o+UpwlPsJOF3lWVxTVoEsw
+	UnYU+y1oB3IJ0xqwKE1E5vrs3iUTY/sdZbdCc03/mswhRvijSurICFU5olmHAtVZGLyk
+	t+PTCWdXF/5zw1NE9uDFKVILmZv0uL1HJD9VvYolWrrni0xDPnXuBYLJIhC4XWxamUzW
+	WyUflwwPpEdDs1ymbHk6qeXLfFMX6mK57S28Q5ipNZJB1pJxd3880CENLi0/vR+FsJ/x
+	TC1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=B8tKueiUEpLkUPEUz3rtGmcp4sKBv8bSzBMqRMa4eyM=;
-	b=F4EYh7AWOD4JHXlATdovgNBHjFdqk76odulVf/tG+/qYEeJ7o5p7CAemK9kKHCjNHY
-	uFFxEOAdQiYVSzxDJ/4t6VyomXd/1Z3x1q2tCKMuNG5SzP/7OARtS7Kr61cJx3y3XHQY
-	ZM9+/VngZasS3ZCvWU1R0ftAeSiVEUGMuylfAS26/8My8u7Bq/JqrDhfR3hkMkwiu/fZ
-	JcAxS5nELOy4rV/qCpAWbWP716hnijYWeANNk/Ovg1RVNN+kk0rJPr8BN+lUybmVokVP
-	9mrLbXqckRaJycaA5ch3hk7VyKJ2ebu5RuwCsybGjCfscPiBxE6LDpnGinhYZVP+05GR
-	tLxg==
-X-Gm-Message-State: AHQUAuaErhu1v4NqFprTSv+O6ntIS28RYLS/vi3+Cm49C8fo8ftvc5VX
-	Z2/FJVJlVxA4/8xto2Oza/HjP1qrNCHy2Q==
-X-Received: by 2002:a5d:464b:: with SMTP id j11mr19889798wrs.307.1550581093205;
-	Tue, 19 Feb 2019 04:58:13 -0800 (PST)
+	bh=+7hrcQXswMt8u3DqhSZ2esGYAUAMYuaF4oZO23FfjSM=;
+	b=nYLyaZsTp+ES9Emu3x3ZtQe9YjwDn7BXBcrSqBq4ru6CGFUyZYSiZ24nO8298wasWD
+	rLK0O28sRHTypyXeT6cKV9rvUD9RuHzDAH7BVdRNb1BPfKtiheHP8BB1Lm2tRxH2Pit+
+	BXuvhcr0S4DdCjV9l4ChNlOBRl9/dlUVER8Qscu+Kce8zgTmfWYwWnBXfHyamHGfpuQ9
+	ZILFsZ/vGFuQC3IZr4i/CN9Wx7utNe1dN4dKPKxgl2xplAQ8ehicpyWgMbdJ45sLp0+S
+	H1Pv9BUEI8P8kkDSRcZicOhg6RJsRmp7VT+UNP1cwwcH8Tq8R3TdxY7PlSSzG+eJo1p7
+	pQgg==
+X-Gm-Message-State: AHQUAuZY/1MaLBeT12MX5ftJQcdOni991xVfH22qLYGURRmnxw70YLNm
+	xtIdmcfqTApQGDZ5cYxbZ+HIELoPFilhYA==
+X-Received: by 2002:a5d:51cd:: with SMTP id n13mr19934551wrv.310.1550581095787;
+	Tue, 19 Feb 2019 04:58:15 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	e75sm5226113wmg.32.2019.02.19.04.58.11
+	e75sm5226113wmg.32.2019.02.19.04.58.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Feb 2019 04:58:12 -0800 (PST)
+	Tue, 19 Feb 2019 04:58:15 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 19 Feb 2019 12:58:01 +0000
-Message-Id: <20190219125808.25174-2-peter.maydell@linaro.org>
+Date: Tue, 19 Feb 2019 12:58:03 +0000
+Message-Id: <20190219125808.25174-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190219125808.25174-1-peter.maydell@linaro.org>
 References: <20190219125808.25174-1-peter.maydell@linaro.org>
@@ -99,9 +99,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH 1/8] hw/misc/armsse-mhu.c: Model the SSE-200
- Message Handling Unit
+X-Received-From: 2a00:1450:4864:20::441
+Subject: [Qemu-arm] [PATCH 3/8] target/arm/cpu: Allow init-svtor property to
+ be set after realize
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,328 +116,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hxh43ofBR4JS
+X-TUID: CDyzSGhP3yOn
 
-Implement a model of the Message Handling Unit (MHU) found in
-the Arm SSE-200. This is a simple device which just contains
-some registers which allow the two cores of the SSE-200
-to raise interrupts on each other.
+Make the M-profile "init-svtor" property be settable after realize.
+This matches the hardware, where this is a config signal which
+is sampled on CPU reset and can thus be changed between one
+reset and another. To do this we have to change the API we
+use to add the property.
+
+(We will need this capability for the SSE-200.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/Makefile.objs           |   1 +
- include/hw/misc/armsse-mhu.h    |  44 +++++++
- hw/misc/armsse-mhu.c            | 198 ++++++++++++++++++++++++++++++++
- MAINTAINERS                     |   2 +
- default-configs/arm-softmmu.mak |   1 +
- hw/misc/trace-events            |   4 +
- 6 files changed, 250 insertions(+)
- create mode 100644 include/hw/misc/armsse-mhu.h
- create mode 100644 hw/misc/armsse-mhu.c
+ target/arm/cpu.c | 29 ++++++++++++++++++++++++-----
+ 1 file changed, 24 insertions(+), 5 deletions(-)
 
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 74c91d250c8..c71e07ae35d 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -70,6 +70,7 @@ obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
- obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
- obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
- obj-$(CONFIG_ARMSSE_CPUID) += armsse-cpuid.o
-+obj-$(CONFIG_ARMSSE_MHU) += armsse-mhu.o
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index edf6e0e1f1c..a418ac5cc32 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -22,6 +22,7 @@
+ #include "target/arm/idau.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
++#include "qapi/visitor.h"
+ #include "cpu.h"
+ #include "internals.h"
+ #include "qemu-common.h"
+@@ -771,9 +772,21 @@ static Property arm_cpu_pmsav7_dregion_property =
+                                            pmsav7_dregion,
+                                            qdev_prop_uint32, uint32_t);
  
- obj-$(CONFIG_PVPANIC) += pvpanic.o
- obj-$(CONFIG_AUX) += auxbus.o
-diff --git a/include/hw/misc/armsse-mhu.h b/include/hw/misc/armsse-mhu.h
-new file mode 100644
-index 00000000000..e57eafc2521
---- /dev/null
-+++ b/include/hw/misc/armsse-mhu.h
-@@ -0,0 +1,44 @@
-+/*
-+ * ARM SSE-200 Message Handling Unit (MHU)
-+ *
-+ * Copyright (c) 2019 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+/*
-+ * This is a model of the Message Handling Unit (MHU) which is part of the
-+ * Arm SSE-200 and documented in
-+ * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
-+ *
-+ * QEMU interface:
-+ *  + sysbus MMIO region 0: the system information register bank
-+ *  + sysbus IRQ 0: interrupt for CPU 0
-+ *  + sysbus IRQ 1: interrupt for CPU 1
-+ */
-+
-+#ifndef HW_MISC_SSE_MHU_H
-+#define HW_MISC_SSE_MHU_H
-+
-+#include "hw/sysbus.h"
-+
-+#define TYPE_ARMSSE_MHU "armsse-mhu"
-+#define ARMSSE_MHU(obj) OBJECT_CHECK(ARMSSEMHU, (obj), TYPE_ARMSSE_MHU)
-+
-+typedef struct ARMSSEMHU {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    qemu_irq cpu0irq;
-+    qemu_irq cpu1irq;
-+
-+    uint32_t cpu0intr;
-+    uint32_t cpu1intr;
-+} ARMSSEMHU;
-+
-+#endif
-diff --git a/hw/misc/armsse-mhu.c b/hw/misc/armsse-mhu.c
-new file mode 100644
-index 00000000000..9ebca32e9aa
---- /dev/null
-+++ b/hw/misc/armsse-mhu.c
-@@ -0,0 +1,198 @@
-+/*
-+ * ARM SSE-200 Message Handling Unit (MHU)
-+ *
-+ * Copyright (c) 2019 Linaro Limited
-+ * Written by Peter Maydell
-+ *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
-+ */
-+
-+/*
-+ * This is a model of the Message Handling Unit (MHU) which is part of the
-+ * Arm SSE-200 and documented in
-+ * http://infocenter.arm.com/help/topic/com.arm.doc.101104_0100_00_en/corelink_sse200_subsystem_for_embedded_technical_reference_manual_101104_0100_00_en.pdf
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "trace.h"
-+#include "qapi/error.h"
-+#include "sysemu/sysemu.h"
-+#include "hw/sysbus.h"
-+#include "hw/registerfields.h"
-+#include "hw/misc/armsse-mhu.h"
-+
-+REG32(CPU0INTR_STAT, 0x0)
-+REG32(CPU0INTR_SET, 0x4)
-+REG32(CPU0INTR_CLR, 0x8)
-+REG32(CPU1INTR_STAT, 0x10)
-+REG32(CPU1INTR_SET, 0x14)
-+REG32(CPU1INTR_CLR, 0x18)
-+REG32(PID4, 0xfd0)
-+REG32(PID5, 0xfd4)
-+REG32(PID6, 0xfd8)
-+REG32(PID7, 0xfdc)
-+REG32(PID0, 0xfe0)
-+REG32(PID1, 0xfe4)
-+REG32(PID2, 0xfe8)
-+REG32(PID3, 0xfec)
-+REG32(CID0, 0xff0)
-+REG32(CID1, 0xff4)
-+REG32(CID2, 0xff8)
-+REG32(CID3, 0xffc)
-+
-+/* Valid bits in the interrupt registers. If any are set the IRQ is raised */
-+#define INTR_MASK 0xf
-+
-+/* PID/CID values */
-+static const int armsse_mhu_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0x56, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-+};
-+
-+static void armsse_mhu_update(ARMSSEMHU *s)
+-/* M profile: initial value of the Secure VTOR */
+-static Property arm_cpu_initsvtor_property =
+-            DEFINE_PROP_UINT32("init-svtor", ARMCPU, init_svtor, 0);
++static void arm_get_init_svtor(Object *obj, Visitor *v, const char *name,
++                               void *opaque, Error **errp)
 +{
-+    qemu_set_irq(s->cpu0irq, s->cpu0intr != 0);
-+    qemu_set_irq(s->cpu1irq, s->cpu1intr != 0);
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    visit_type_uint32(v, name, &cpu->init_svtor, errp);
 +}
 +
-+static uint64_t armsse_mhu_read(void *opaque, hwaddr offset, unsigned size)
++static void arm_set_init_svtor(Object *obj, Visitor *v, const char *name,
++                               void *opaque, Error **errp)
 +{
-+    ARMSSEMHU *s = ARMSSE_MHU(opaque);
-+    uint64_t r;
++    ARMCPU *cpu = ARM_CPU(obj);
 +
-+    switch (offset) {
-+    case A_CPU0INTR_STAT:
-+        r = s->cpu0intr;
-+        break;
-+
-+    case A_CPU1INTR_STAT:
-+        r = s->cpu1intr;
-+        break;
-+
-+    case A_PID4 ... A_CID3:
-+        r = armsse_mhu_id[(offset - A_PID4) / 4];
-+        break;
-+
-+    case A_CPU0INTR_SET:
-+    case A_CPU0INTR_CLR:
-+    case A_CPU1INTR_SET:
-+    case A_CPU1INTR_CLR:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE MHU: read of write-only register at offset 0x%x\n",
-+                      (int)offset);
-+        r = 0;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE MHU read: bad offset 0x%x\n", (int)offset);
-+        r = 0;
-+        break;
-+    }
-+    trace_armsse_mhu_read(offset, r, size);
-+    return r;
++    visit_type_uint32(v, name, &cpu->init_svtor, errp);
 +}
-+
-+static void armsse_mhu_write(void *opaque, hwaddr offset,
-+                             uint64_t value, unsigned size)
-+{
-+    ARMSSEMHU *s = ARMSSE_MHU(opaque);
-+
-+    trace_armsse_mhu_write(offset, value, size);
-+
-+    switch (offset) {
-+    case A_CPU0INTR_SET:
-+        s->cpu0intr |= (value & INTR_MASK);
-+        break;
-+    case A_CPU0INTR_CLR:
-+        s->cpu0intr &= ~(value & INTR_MASK);
-+        break;
-+    case A_CPU1INTR_SET:
-+        s->cpu1intr |= (value & INTR_MASK);
-+        break;
-+    case A_CPU1INTR_CLR:
-+        s->cpu1intr &= ~(value & INTR_MASK);
-+        break;
-+
-+    case A_CPU0INTR_STAT:
-+    case A_CPU1INTR_STAT:
-+    case A_PID4 ... A_CID3:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE MHU: write to read-only register at offset 0x%x\n",
-+                      (int)offset);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "SSE MHU write: bad offset 0x%x\n", (int)offset);
-+        break;
-+    }
-+
-+    armsse_mhu_update(s);
-+}
-+
-+static const MemoryRegionOps armsse_mhu_ops = {
-+    .read = armsse_mhu_read,
-+    .write = armsse_mhu_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void armsse_mhu_reset(DeviceState *dev)
-+{
-+    ARMSSEMHU *s = ARMSSE_MHU(dev);
-+
-+    s->cpu0intr = 0;
-+    s->cpu1intr = 0;
-+}
-+
-+static const VMStateDescription armsse_mhu_vmstate = {
-+    .name = "armsse-mhu",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(cpu0intr, ARMSSEMHU),
-+        VMSTATE_UINT32(cpu1intr, ARMSSEMHU),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void armsse_mhu_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    ARMSSEMHU *s = ARMSSE_MHU(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &armsse_mhu_ops,
-+                          s, "armsse-mhu", 0x1000);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->cpu0irq);
-+    sysbus_init_irq(sbd, &s->cpu1irq);
-+}
-+
-+static void armsse_mhu_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->reset = armsse_mhu_reset;
-+    dc->vmsd = &armsse_mhu_vmstate;
-+}
-+
-+static const TypeInfo armsse_mhu_info = {
-+    .name = TYPE_ARMSSE_MHU,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(ARMSSEMHU),
-+    .instance_init = armsse_mhu_init,
-+    .class_init = armsse_mhu_class_init,
-+};
-+
-+static void armsse_mhu_register_types(void)
-+{
-+    type_register_static(&armsse_mhu_info);
-+}
-+
-+type_init(armsse_mhu_register_types);
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 770b2eaaf91..f198d510e89 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -633,6 +633,8 @@ F: hw/misc/iotkit-sysinfo.c
- F: include/hw/misc/iotkit-sysinfo.h
- F: hw/misc/armsse-cpuid.c
- F: include/hw/misc/armsse-cpuid.h
-+F: hw/misc/armsse-mhu.c
-+F: include/hw/misc/armsse-mhu.h
  
- Musca
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 87ad2674946..bd6943b691a 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -119,6 +119,7 @@ CONFIG_IOTKIT_SECCTL=y
- CONFIG_IOTKIT_SYSCTL=y
- CONFIG_IOTKIT_SYSINFO=y
- CONFIG_ARMSSE_CPUID=y
-+CONFIG_ARMSSE_MHU=y
+ void arm_cpu_post_init(Object *obj)
+ {
+@@ -845,8 +858,14 @@ void arm_cpu_post_init(Object *obj)
+                                  qdev_prop_allow_set_link_before_realize,
+                                  OBJ_PROP_LINK_STRONG,
+                                  &error_abort);
+-        qdev_property_add_static(DEVICE(obj), &arm_cpu_initsvtor_property,
+-                                 &error_abort);
++        /*
++         * M profile: initial value of the Secure VTOR. We can't just use
++         * a simple DEFINE_PROP_UINT32 for this because we want to permit
++         * the property to be set after realize.
++         */
++        object_property_add(obj, "init-svtor", "uint32",
++                            arm_get_init_svtor, arm_set_init_svtor,
++                            NULL, NULL, &error_abort);
+     }
  
- CONFIG_VERSATILE=y
- CONFIG_VERSATILE_PCI=y
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index b0701bddd3c..c1795bb54b8 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -136,3 +136,7 @@ iotkit_sysctl_reset(void) "IoTKit SysCtl: reset"
- # hw/misc/armsse-cpuid.c
- armsse_cpuid_read(uint64_t offset, uint64_t data, unsigned size) "SSE-200 CPU_IDENTITY read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- armsse_cpuid_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 CPU_IDENTITY write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+
-+# hw/misc/armsse-mhu.c
-+armsse_mhu_read(uint64_t offset, uint64_t data, unsigned size) "SSE-200 MHU read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
-+armsse_mhu_write(uint64_t offset, uint64_t data, unsigned size) "SSE-200 MHU write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property,
 -- 
 2.20.1
 

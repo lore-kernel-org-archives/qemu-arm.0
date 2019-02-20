@@ -1,184 +1,278 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4799384wrx;
-        Wed, 20 Feb 2019 09:31:32 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbcJy0dnqAbOFdxiTa8K46+ceDrYlxOP+njHK7Of7P5wWmQZg4XZWfvIiu58SdRSz0zHDR7
-X-Received: by 2002:a0d:d4c4:: with SMTP id w187mr28968153ywd.41.1550683892864;
-        Wed, 20 Feb 2019 09:31:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550683892; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5045787wrx;
+        Wed, 20 Feb 2019 14:40:37 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ibl4+lPDQ1MuvXQH3h0yKRy38Sb+9xPcEySURaxVkuJxVhMgA0s4kfOcCM0D7ZVaMZeBEVW
+X-Received: by 2002:a0d:f8c6:: with SMTP id i189mr29920532ywf.286.1550702437288;
+        Wed, 20 Feb 2019 14:40:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550702437; cv=none;
         d=google.com; s=arc-20160816;
-        b=I77OoJCU3sqCA5mibdMEubUpoCnPNHOfud9MrrcHrJG5j94FdTa8rhwaEX1rmKcomH
-         i4Na1NTaUoRprVm6qu5w7+O1NyGDbdWNaI8tCRfPnJ3NgmaUgKP58dkVbM21ZP+jnuuo
-         fCEwVIL6sxuaRoX7XBg/JEgBVKGj8rDk1sk32qn/5/yLhQuxTMzQbqVWX+g27pPU9EUx
-         8j7xfuc7QxhrglKlx1mxdYNRHmcATK/rzHCzLlGpK43MrPVq9X6rpks32UnKxhObEIHA
-         YoeS3tOtnfI3Ckvc8+bUjKmJmDQdAIp8mvyrWZNgghuZC50Oplokcv3eNZiupdYQRNBE
-         jtEQ==
+        b=wnYNYr14mgsezfrFxSODVe9Z2caenuiegUqZsW7HLQzYoN6DJjhnOCaHYLHWArwhEo
+         4OH+RQ4UDMwy5Pvxpdwr903c/hPRSa+Z9AUR6cvuCIvHS2IXxhUV2LsTqEZxFGDGbmpI
+         0GsFm05ygnmiphNV9O/RPiEGhwoU1OrRQmmEC9dZowUW9f5nBgy+9toE+0vHDx5zbtsX
+         UNGnqaHpNtu9Dupokk/ObZros2IXTP5T1OoNaZeR43oBF5AihhC+UE5XlCr4MQg0UKAf
+         +p4RSB0KVz2+eOXiC/FTtQUhsPTsmiLUv9JxZJfTxO3wK2UCxAre4MZnZ1h6vsA/cmTZ
+         3OKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=kyJgILNvYIGnPHdQyki6tgQMyyWqsNc+eZiQe3npfYQ=;
-        b=wfzi/JVpz0SnJU7BUKG31In9yRBN+PE3/aBmpZ9QmO1x/+mbYZ9EK5LArZ7qYFERZE
-         JpMURyPzR9+s/wvYEdxJAjBv8rw1+LXFYEu8Xr7B26CT2TV1ffBVBakevaCIA3ILPDel
-         NqL850bPuHiBlFxP+sLizMpbj48DIWWJ+qDfr6WlDNUU8ZyCoOb4QvuHHbZga1UdGA/9
-         qmEiCpXRRM2AJ+r4BuGTh+YFvYFcaBIyQffov1uvcRgxxGMoI8IMk/Y6Tx35vi0PkWzn
-         lynsGE5fIAl1Lt5QJfSZEO8jIfkWU5RJhSij24wdSNnX7HorHnElAJ615fKcWQGysS/X
-         i4rA==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=TkAm8pC1gNj0a21m01lFTg824JLhcReYJPkltBSWI08=;
+        b=IwWfB61FFl3F7rIOfAFkb6F41kAJz/oqX3n4ZRZO0PPUTt3U/qducvUtsodYrPDpAm
+         /qTB13SN5s5HDisYM+hs+uIwc4V/wGw4D0PBuUPhKb4T9orwkgIHncJ036P0HR2Se/P5
+         Lzvw0SF7mrFoXSJy13mEljQE1p8L0aCneC4oxP9kemwEzD9dqnKmFb7AH99ApUh4aaj9
+         RpaP+Z7GP2cw47KysPlg2M0O8lqtLqcPhfFL2+iV2uOD7gK0qAoxuTVRddxHfmQjejYC
+         Un7YgBCtUPuXYQNPhrSqqsMYYs+dyDaYrytB9+b2QpHCodBCikUjbSFcncjeWocLjI7Q
+         D6iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Bw4cO6iI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l39si5844805ywh.183.2019.02.20.09.31.32
+        by mx.google.com with ESMTPS id 129si11433277ybl.206.2019.02.20.14.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 09:31:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Feb 2019 14:40:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Bw4cO6iI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:44241 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:49926 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwViW-00076A-6k
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 12:31:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45815)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gwaXc-0003rm-JL
+	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:40:36 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gwVeN-0004Dg-06
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 12:27:16 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gwaXJ-0003qe-14
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:40:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gwVeK-00018R-FG
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 12:27:14 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:40883)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gwVeI-00017U-HF
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 12:27:11 -0500
-Received: by mail-pf1-x441.google.com with SMTP id h1so12218482pfo.7
-	for <qemu-devel@nongnu.org>; Wed, 20 Feb 2019 09:27:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=kyJgILNvYIGnPHdQyki6tgQMyyWqsNc+eZiQe3npfYQ=;
-	b=Bw4cO6iI2Yp2xvsHMQbvw3F4Q/+riN/h4JImNdMmmxXxC/890rJuJm89TaPT6VZGCl
-	VxeNyj1yfjeTT59CznwaqZMwg2bcc+ugVIEpWxEZ68yR20RO1NM1R1bvJaLFfk4FL2ty
-	I8su96RKWexnneqiktbqcNmECVtrJNIwpnZsXEVDDE46jQdfdNKlhWTe+xZlSSxfQd/0
-	Ogc/O1kic6SfOypSFL2i7CAGvd4ujuyzvxzDoO56zqSX8Q8IwHWcxVOyaHrLWO0q4acT
-	NRRPH1+i0QxJGlri8yKNr9uoVm9bMVfEBvfulmg2pOk2c290EIyvo8g5H3l50YlUgOmE
-	LCjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=kyJgILNvYIGnPHdQyki6tgQMyyWqsNc+eZiQe3npfYQ=;
-	b=PSTabpCdqxjFStBkzAILYAxD8k7XLHse6Zb4pVnRYnN+JeybaqxrYiXC8Sg8sYnaU5
-	zsn0QiVc9LAA226BHeASWMCEBt8/RT6iO+Sm4n3fxY2ZXg101wy/ErfpnB/VfHAiedDF
-	Xkr1HyJUvM8eKI3eKtkfXlzOvglz2KTmWobq9wzBuqfBnHbiRsWCI8mVysTLm03pPxPV
-	VIP+PXDT1J9Gs0eeBUiwq6TQ5GutXbqII85kLoATE6rgucuuRr/KWobE2uC3F2WzEt/X
-	y+h9UwKgt4QMIXnNorbirZfxzbl5XVyPxJzNkIDT5g5S34nMYgjugcVDsXu+QME5FtSk
-	YNVA==
-X-Gm-Message-State: AHQUAuYCCAaP+JFx9qezLiUgDgi7NNREl8WewfXIU0x64K6ZVP1CHLka
-	RZatWy6KDuXSdYwD+xYyClbhFQ==
-X-Received: by 2002:a62:e11a:: with SMTP id q26mr11226137pfh.187.1550683629251;
-	Wed, 20 Feb 2019 09:27:09 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
-	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
-	p29sm25858943pgm.78.2019.02.20.09.27.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 20 Feb 2019 09:27:08 -0800 (PST)
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <20190130004811.27372-1-cota@braap.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <70297ac5-defa-0d7b-b4da-44303b328ce2@linaro.org>
-Date: Wed, 20 Feb 2019 09:27:06 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <eric.auger@redhat.com>) id 1gwaXH-0008OO-Gg
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:40:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55200)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gwaXH-0008OD-6t; Wed, 20 Feb 2019 17:40:15 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EC4383082E55;
+	Wed, 20 Feb 2019 22:40:13 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5BE625D6AA;
+	Wed, 20 Feb 2019 22:40:06 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
+Date: Wed, 20 Feb 2019 23:39:46 +0100
+Message-Id: <20190220224003.4420-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190130004811.27372-1-cota@braap.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: Re: [Qemu-devel] [PATCH v6 00/73] per-CPU locks
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.46]);
+	Wed, 20 Feb 2019 22:40:14 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v7 00/17] ARM virt: Initial RAM expansion and
+ PCDIMM/NVDIMM support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	David Hildenbrand <david@redhat.com>, James Hogan <jhogan@kernel.org>,
-	Anthony Green <green@moxielogic.com>, Palmer Dabbelt <palmer@sifive.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, Alistair Francis <alistair23@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y9F9mnE3WDzl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5RiKnJaoDej7
 
-On 1/29/19 4:46 PM, Emilio G. Cota wrote:
-> v5: https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg02979.html
-> 
-> For context, the goal of this series is to substitute the BQL for the
-> per-CPU locks in many places, notably the execution loop in cpus.c.
-> This leads to better scalability for MTTCG, since CPUs don't have
-> to acquire a contended global lock (the BQL) every time they
-> stop executing code.
-> 
-> See the last commit for some performance numbers.
-> 
-> After this series, the remaining obstacles to achieving KVM-like
-> scalability in MTTCG are: (1) interrupt handling, which
-> in some targets requires the BQL, and (2) frequent execution of
-> "async safe" work.
-> That said, some targets scale great on MTTCG even before this
-> series -- for instance, when running a parallel compilation job
-> in an x86_64 guest, scalability is comparable to what we get with
-> KVM.
-> 
-> This series is very long. If you only have time to look at a few patches,
-> I suggest the following, which do most of the heavy lifting and
-> have not yet been reviewed:
-> 
-> - Patch 7: cpu: make per-CPU locks an alias of the BQL in TCG rr mode
-> - Patch 70: cpu: protect CPU state with cpu->lock instead of the BQL
-> 
-> I've tested all patches with `make check-qtest -j' for all targets.
-> The series is checkpatch-clean (just some warnings about __COVERITY__).
-> 
-> You can fetch the series from:
->   https://github.com/cota/qemu/tree/cpu-lock-v6
+This series aims to bump the 255GB RAM limit in machvirt and to
+support device memory in general, and especially PCDIMM/NVDIMM.
 
-Thanks for the patience.  Both Alex and I have now completed review, and I
-think this is ready for merge.
+In machvirt versions < 4.0, the initial RAM starts at 1GB and can
+grow up to 255GB. From 256GB onwards we find IO regions such as the
+additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
+MMIO region. The address map was 1TB large. This corresponded to
+the max IPA capacity KVM was able to manage.
 
-There are some patch conflicts with master, so if you can fix those and post a
-v7, we'll get it merged right away.
+Since 4.20, the host kernel is able to support a larger and dynamic
+IPA range. So the guest physical address can go beyond the 1TB. The
+max GPA size depends on the host kernel configuration and physical CPUs.
+
+In this series we use this feature and allow the RAM to grow without
+any other limit than the one put by the host kernel.
+
+The RAM still starts at 1GB. First comes the initial ram (-m) of size
+ram_size and then comes the device memory (,maxmem) of size
+maxram_size - ram_size. The device memory is potentially hotpluggable
+depending on the instantiated memory objects.
+
+IO regions previously located between 256GB and 1TB are moved after
+the RAM. Their offset is dynamically computed, depends on ram_size
+and maxram_size. Size alignment is enforced.
+
+In case maxmem value is inferior to 255GB, the legacy memory map
+still is used. The change of memory map becomes effective from 4.0
+onwards.
+
+As we keep the initial RAM at 1GB base address, we do not need to do
+invasive changes in the EDK2 FW. It seems nobody is eager to do
+that job at the moment.
+
+Device memory being put just after the initial RAM, it is possible
+to get access to this feature while keeping a 1TB address map.
+
+This series reuses/rebases patches initially submitted by Shameer
+in [1] and Kwangwoo in [2] for the PC-DIMM and NV-DIMM parts.
+
+Functionally, the series is split into 3 parts:
+1) bump of the initial RAM limit [1 - 9] and change in
+   the memory map
+2) Support of PC-DIMM [10 - 13]
+3) Support of NV-DIMM [14 - 17]
+
+1) can be upstreamed before 2 and 2 can be upstreamed before 3.
+
+Work is ongoing to transform the whole memory as device memory.
+However this move is not trivial and to me, is independent on
+the improvements brought by this series:
+- if we were to use DIMM for initial RAM, those DIMMs would use
+  use slots. Although they would not be part of the ones provided
+  using the ",slots" options, they are ACPI limited resources.
+- DT and ACPI description needs to be reworked
+- NUMA integration needs special care
+- a special device memory object may be required to avoid consuming
+  slots and easing the FW description.
+
+So I preferred to separate the concerns. This new implementation
+based on device memory could be candidate for another virt
+version.
+
+Best Regards
+
+Eric
+
+References:
+
+[0] [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
+http://patchwork.ozlabs.org/cover/914694/
+
+[1] [RFC PATCH 0/3] add nvdimm support on AArch64 virt platform
+https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg04599.html
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v3.1.0-dimm-v7
+
+History:
+
+v6 -> v7:
+- Addressed Peter and Igor comments (exceptions sent my email)
+- Fixed TCG case. Now device memory works also for TCG and vcpu
+  pamax is checked
+- See individual logs for more details
+
+v5 -> v6:
+- mingw compilation issue fix
+- kvm_arm_get_max_vm_phys_shift always returns the number of supported
+  IPA bits
+- new patch "hw/arm/virt: Rename highmem IO regions" that eases the revie=
+w
+  of "hw/arm/virt: Split the memory map description"
+- "hw/arm/virt: Move memory map initialization into machvirt_init"
+  squashed into the previous patch
+- change alignment of IO regions beyond the RAM so that it matches their
+  size
+
+v4 -> v5:
+- change in the memory map
+- see individual logs
+
+v3 -> v4:
+- rebase on David's "pc-dimm: next bunch of cleanups" and
+  "pc-dimm: pre_plug "slot" and "addr" assignment"
+- kvm-type option not used anymore. We directly use
+  maxram_size and ram_size machine fields to compute the
+  MAX IPA range. Migration is naturally handled as CLI
+  option are kept between source and destination. This was
+  suggested by David.
+- device_memory_start and device_memory_size not stored
+  anymore in vms->bootinfo
+- I did not take into account 2 Igor's comments: the one
+  related to the refactoring of arm_load_dtb and the one
+  related to the generation of the dtb after system_reset
+  which would contain nodes of hotplugged devices (we do
+  not support hotplug at this stage)
+- check the end-user does not attempt to hotplug a device
+- addition of "vl: Set machine ram_size, maxram_size and
+  ram_slots earlier"
+
+v2 -> v3:
+- fix pc_q35 and pc_piix compilation error
+- kwangwoo's email being not valid anymore, remove his address
+
+v1 -> v2:
+- kvm_get_max_vm_phys_shift moved in arch specific file
+- addition of NVDIMM part
+- single series
+- rebase on David's refactoring
+
+v1:
+- was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+- was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+
+Best Regards
+
+Eric
 
 
-r~
+Eric Auger (12):
+  hw/arm/virt: Rename highmem IO regions
+  hw/arm/virt: Split the memory map description
+  hw/boards: Add a MachineState parameter to kvm_type callback
+  kvm: add kvm_arm_get_max_vm_ipa_size
+  vl: Set machine ram_size, maxram_size and ram_slots earlier
+  hw/arm/virt: Dynamic memory map depending on RAM requirements
+  hw/arm/virt: Implement kvm_type function for 4.0 machine
+  hw/arm/virt: Bump the 255GB initial RAM limit
+  hw/arm/virt: Add memory hotplug framework
+  hw/arm/virt: Allocate device_memory
+  hw/arm/boot: Expose the pmem nodes in the DT
+  hw/arm/virt: Add nvdimm and nvdimm-persistence options
+
+Kwangwoo Lee (2):
+  nvdimm: use configurable ACPI IO base and size
+  hw/arm/virt: Add nvdimm hot-plug infrastructure
+
+Shameer Kolothum (3):
+  hw/arm/boot: introduce fdt_add_memory_node helper
+  hw/arm/boot: Expose the PC-DIMM nodes in the DT
+  hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+
+ accel/kvm/kvm-all.c             |   2 +-
+ default-configs/arm-softmmu.mak |   4 +
+ hw/acpi/nvdimm.c                |  31 ++-
+ hw/arm/boot.c                   | 136 ++++++++++--
+ hw/arm/virt-acpi-build.c        |  23 +-
+ hw/arm/virt.c                   | 364 ++++++++++++++++++++++++++++----
+ hw/i386/pc_piix.c               |   6 +-
+ hw/i386/pc_q35.c                |   6 +-
+ hw/ppc/mac_newworld.c           |   3 +-
+ hw/ppc/mac_oldworld.c           |   2 +-
+ hw/ppc/spapr.c                  |   2 +-
+ include/hw/arm/virt.h           |  24 ++-
+ include/hw/boards.h             |   5 +-
+ include/hw/mem/nvdimm.h         |   4 +
+ target/arm/kvm.c                |  10 +
+ target/arm/kvm_arm.h            |  13 ++
+ vl.c                            |   6 +-
+ 17 files changed, 556 insertions(+), 85 deletions(-)
+
+--=20
+2.20.1
+

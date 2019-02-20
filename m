@@ -1,84 +1,84 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5047751wrx;
-        Wed, 20 Feb 2019 14:43:50 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Iboc2O9AM6moizhef6tUkE5CzmH2qN1WSbXutRlY/7rD4WK3WzeYDxWtWda07wHOHwwJPsk
-X-Received: by 2002:a81:70d7:: with SMTP id l206mr30247247ywc.141.1550702630170;
-        Wed, 20 Feb 2019 14:43:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550702630; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5048251wrx;
+        Wed, 20 Feb 2019 14:44:36 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZa3UP4olPQsZNqVvEPpYT+/weV6u872kwvC25b5iq2C3dgHgzB/S77YX6h+QXqKKbwfEw+
+X-Received: by 2002:a81:1d44:: with SMTP id d65mr30421295ywd.483.1550702676453;
+        Wed, 20 Feb 2019 14:44:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550702676; cv=none;
         d=google.com; s=arc-20160816;
-        b=jV2fgEubsmBeDGD+UQ0BuysdTVMpGnLPibwcjjCXjBRDrdOC6xXNHSfVpAe5yJKh5S
-         ixa1cP40K6gqzcqd2Qratt+fxlxNDZElIc3b9mGugipw46/r51p88txfOQCwJpq9zNib
-         oCjbYOjEUKmeSFOMRruzt9c4VlF4t8JFI/nwqdwC2rGjFoaIsXJHx/8qfOID2lyP9q2J
-         7gAB2qmVaxhrX2YT/9cYsISgGtcn/wlf/EcZjlewGMwqp9E8xx818gQagweGwYQiP+GS
-         3Gl61YlzhXLnTb//vz/RIy/8eAvVRoxTGEM9yW3RdjhRvITymSJOjTaq0g0eeYjjrJWK
-         vqnA==
+        b=Bu4fZSBUdfLkxcEet/AsZZ63DRoJflFNEgROp0z0CXi6M3orAJQkFezx+6ZfIboaey
+         vgpvmNYlbUo2k/qtkDhJQ4s4Z8wG+zRNcf+TxXmlniVh3LDwvblBdKXN6/v1wn0AjKxZ
+         sf+IYmdmAQqczP981MqMaLsfC7dTXoKHgf0zwSwfZ0IE5JOFF8JPGewSHGjdt0EtEKCy
+         iNKY/XOeeySTxcCZDkS6lYvU4/B8fuJbMJefCJr2U/JeF3gWTjjZkcwlpFRcYhDRJ95H
+         JGT/1dwa01cIbxFF/RkqYzicG8WTDjUWc8fFN3Dl84hCZxvdjg9CPUUXRmRxDc0q1RsD
+         o12Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=Gc8HQJCIRjk0qxNQzf4pozYkW1Sp/wNGfIhEUNNJeSM=;
-        b=UUbzw8TXMsO8oUBWcNl1B+n278apiqWLbRbkg+dtsi6GJMTCPhVi7CtAbRB/XxM78Y
-         rlIe0jkIIx6yEfzsEl8BWEhL72PgsK6Fkmbd/exo4qjTIafVZAjUF4S+TzyVmhwOjRUZ
-         B928RoYoc1KPvsNberVcCFBWoA631j2nUos+UmOWmRq4p3UitzefrH9L1nBzUA6bU/c9
-         wBokohS+W7MLftSpNy1OsxBLmmZ7ro6WQPGzlHyD8fSuQ0UFVUJnF0fzQavGjkueeNO5
-         J+8c9GGyGpspYZjyTCuG9f9HFVN8Yw8e+Ba0QEio8EWORfY5upaysSNS5etsIfZ8eqqH
-         /3+A==
+        bh=c0GtwCB+X9rfUMA0kB2xUB+YKdcIxsS/f4mUN/fYOmc=;
+        b=z80Grei6xv+PvkgrYXCBdI2A48UC1SGF31JmGYCqHFwV31lwpjuNSjIxoSzAKv+e3k
+         QycXP09NviA70S0uBm0AY5UP0XP0GNjIIpkGvMjNa0/9y1WO/3PnIhG/WI0HXFDMsZG2
+         Rt5NrVfq/RUizg85N/MbLBdvvfNC4qKpakE7+kx9x0GOK5RcbEVmn3Urz6ONEARNGF8p
+         uG9tKNBWLgMLKiI9giI0YeI2Zc88qNhj6UnpWUjT09J5uWHX4sU2tKPMaGvvacgwlwAt
+         vaA59Lo/Zo5UfEjb0V63lBIokd0JL8h3BIRkf371zBbqdt7KHs2uAojqoaQCNvaxANw/
+         uTTA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190si4895771ywg.410.2019.02.20.14.43.50
+        by mx.google.com with ESMTPS id x63si11413757ybx.217.2019.02.20.14.44.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 14:43:50 -0800 (PST)
+        Wed, 20 Feb 2019 14:44:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49958 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49970 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwaaj-0006Hp-IC
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:43:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35008)
+	id 1gwabT-0007BK-QS
+	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:44:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaXV-0003v6-Do
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:40:30 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gwaYF-0004Wn-UM
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:41:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaXT-0008TO-6C
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:40:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55254)
+	(envelope-from <eric.auger@redhat.com>) id 1gwaYF-0000pI-8g
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:41:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:23691)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gwaXS-0008T2-Tf; Wed, 20 Feb 2019 17:40:27 -0500
+	id 1gwaYE-0000hc-TX; Wed, 20 Feb 2019 17:41:15 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E98C53082E5A;
-	Wed, 20 Feb 2019 22:40:25 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 91DC9308A967;
+	Wed, 20 Feb 2019 22:41:13 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 554AC5D6AA;
-	Wed, 20 Feb 2019 22:40:23 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 03E0A5D6AA;
+	Wed, 20 Feb 2019 22:41:10 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Wed, 20 Feb 2019 23:39:50 +0100
-Message-Id: <20190220224003.4420-5-eric.auger@redhat.com>
+Date: Wed, 20 Feb 2019 23:40:02 +0100
+Message-Id: <20190220224003.4420-17-eric.auger@redhat.com>
 In-Reply-To: <20190220224003.4420-1-eric.auger@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Wed, 20 Feb 2019 22:40:26 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Wed, 20 Feb 2019 22:41:13 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v7 04/17] hw/boards: Add a MachineState parameter
- to kvm_type callback
+Subject: [Qemu-arm] [PATCH v7 16/17] hw/arm/boot: Expose the pmem nodes in
+ the DT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,113 +93,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JpgvPjndD7QW
+X-TUID: uuv/gyc0zOzA
 
-On ARM, the kvm_type will be resolved by querying the KVMState.
-Let's add the MachineState handle to the callback so that we
-can retrieve the  KVMState handle. in kvm_init, when the callback
-is called, the kvm_state variable is not yet set.
+In case of NV-DIMM slots, let's add /pmem DT nodes.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-[ppc parts]
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
-v6 -> v7:
-- add a comment for kvm_type
-- use machine instead of ms in the declaration
-- add Peter's R-b
----
- accel/kvm/kvm-all.c   | 2 +-
- hw/ppc/mac_newworld.c | 3 +--
- hw/ppc/mac_oldworld.c | 2 +-
- hw/ppc/spapr.c        | 2 +-
- include/hw/boards.h   | 5 ++++-
- 5 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index fd92b6f375..241db496c3 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -1593,7 +1593,7 @@ static int kvm_init(MachineState *ms)
-=20
-     kvm_type =3D qemu_opt_get(qemu_get_machine_opts(), "kvm-type");
-     if (mc->kvm_type) {
--        type =3D mc->kvm_type(kvm_type);
-+        type =3D mc->kvm_type(ms, kvm_type);
-     } else if (kvm_type) {
-         ret =3D -EINVAL;
-         fprintf(stderr, "Invalid argument kvm-type=3D%s\n", kvm_type);
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index 98461052ac..97e8817145 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -564,8 +564,7 @@ static char *core99_fw_dev_path(FWPathProvider *p, Bu=
-sState *bus,
-=20
-     return NULL;
- }
--
--static int core99_kvm_type(const char *arg)
-+static int core99_kvm_type(MachineState *machine, const char *arg)
- {
-     /* Always force PR KVM */
-     return 2;
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index 284431ddd6..cc1e463466 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -420,7 +420,7 @@ static char *heathrow_fw_dev_path(FWPathProvider *p, =
-BusState *bus,
-     return NULL;
+v6 -> v7
+- does the same rework as for fdt_add_memory_node
+---
+ hw/arm/boot.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 255aaca0cf..66caf005e5 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -450,6 +450,32 @@ out:
+     return ret;
  }
 =20
--static int heathrow_kvm_type(const char *arg)
-+static int heathrow_kvm_type(MachineState *machine, const char *arg)
++static int fdt_add_pmem_node(void *fdt, uint32_t acells, hwaddr mem_base=
+,
++                             uint32_t scells, hwaddr mem_len,
++                             int numa_node_id)
++{
++    char *nodename;
++    int ret;
++
++    nodename =3D g_strdup_printf("/pmem@%" PRIx64, mem_base);
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-region");
++    ret =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, m=
+em_base,
++                                       scells, mem_len);
++    if (ret < 0) {
++        goto out;
++    }
++
++    /* only set the NUMA ID if it is specified */
++    if (numa_node_id >=3D 0) {
++        ret =3D qemu_fdt_setprop_cell(fdt, nodename,
++                                    "numa-node-id", numa_node_id);
++    }
++out:
++    g_free(nodename);
++    return ret;
++}
++
+ static void fdt_add_psci_node(void *fdt)
  {
-     /* Always force PR KVM */
-     return 2;
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index abf9ebce59..3d0811fa81 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2920,7 +2920,7 @@ static void spapr_machine_init(MachineState *machin=
-e)
-     }
- }
-=20
--static int spapr_kvm_type(const char *vm_type)
-+static int spapr_kvm_type(MachineState *machine, const char *vm_type)
- {
-     if (!vm_type) {
-         return 0;
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 05f9f45c3d..ed2fec82d5 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -156,6 +156,9 @@ typedef struct {
-  *    should instead use "unimplemented-device" for all memory ranges wh=
-ere
-  *    the guest will attempt to probe for a device that QEMU doesn't
-  *    implement and a stub device is required.
-+ * @kvm_type:
-+ *    Return the type of KVM corresponding to the kvm-type string option=
- or
-+ *    computed based on other criteria such as the host kernel capabilit=
-ies.
-  */
- struct MachineClass {
-     /*< private >*/
-@@ -171,7 +174,7 @@ struct MachineClass {
-     void (*init)(MachineState *state);
-     void (*reset)(void);
-     void (*hot_add_cpu)(const int64_t id, Error **errp);
--    int (*kvm_type)(const char *arg);
-+    int (*kvm_type)(MachineState *machine, const char *arg);
-=20
-     BlockInterfaceType block_default_type;
-     int units_per_default_bus;
+     uint32_t cpu_suspend_fn;
+@@ -546,6 +572,20 @@ static int fdt_add_hotpluggable_memory_nodes(void *f=
+dt,
+             }
+             break;
+         }
++        case MEMORY_DEVICE_INFO_KIND_NVDIMM:
++        {
++            PCDIMMDeviceInfo *di =3D mi->u.nvdimm.data;
++
++            ret =3D fdt_add_pmem_node(fdt, acells, di->addr,
++                                    scells, di->size, di->node);
++            if (ret) {
++                fprintf(stderr,
++                        "couldn't add NVDIMM /memory@%"PRIx64" node\n",
++                        di->addr);
++                goto out;
++            }
++            break;
++        }
+         default:
+             fprintf(stderr, "%s memory nodes are not yet supported\n",
+                     MemoryDeviceInfoKind_str(mi->type));
 --=20
 2.20.1
 

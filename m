@@ -1,202 +1,298 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5055605wrx;
-        Wed, 20 Feb 2019 14:56:45 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbnV5H2jcSpOYjGDjHLSDYyAnkp9jes/bEfWVH5SkJFX7367RsqbXgsfuio1dIC6wKTbDyI
-X-Received: by 2002:a25:f20a:: with SMTP id i10mr14031351ybe.132.1550703405893;
-        Wed, 20 Feb 2019 14:56:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550703405; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5056569wrx;
+        Wed, 20 Feb 2019 14:58:17 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaChxmEwejRsIjjtS6Z0JpPtbp0w6JjzCGN/AWwpzuF9zjQJ16hEcX/C5G5igk57XDrXpAo
+X-Received: by 2002:a81:1a03:: with SMTP id a3mr28967737ywa.429.1550703497844;
+        Wed, 20 Feb 2019 14:58:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550703497; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y/lsTt8yA+Y8ltjy7Yp0V+MTvEhd/Y2exOlNXAOdCBQTjRn8wq5XxkBpnEp7tM3+3W
-         J4P31Dg6x4nVhAGbbOF8oJCZ4+WvbElcYCv0bB/oWExMot/7LfLsY/e2cqVwNQ/fEP2w
-         IKsfVBLeKZfiUyFL6G+U5dyRICmYC/VmYo1Cy6i7VHja4/mkJnBtEEmQFAauEndw2UNs
-         2mkN2QkIbG/Dnc+lXh1EBembWZkQS01b8FGPGLbWlgxyPQcPNvXCNApb5QIjhIngNVPs
-         fnIBgmeCG4ixHBSnf8ybGx5cRZFTXmrohKSk1kKBMet2T2RDy7DYGfGRmDPloB6+04dF
-         WDng==
+        b=z42pXNFryDmHWmtXHcB/vkNkFq/imgNir4dZpXZ26TBsTA2kHzQ/bf12Ddmtw0KyeD
+         LsD300fmSgyuoq3wa9csrHw/ULzPFgeJHrVrYjI7bDIfp4TuJeLzFEp+6LnfCXjhy3vs
+         mpp/k7YBr7gurzR4AdXGC9ET1uEFvVizjaOJZxPGO0jIA2/yyI8WJfV//CG650lTi8G8
+         R9bM+Yipy9U6ME8x/ivzIbJWCjARPAeo/VWpj/ySAg3LjMw0dxL3two6xdVfA8zNhPno
+         R8K8v93QsIxr9W4XDF+XqhKXijpjgqAZeKieVsEiciIOn/2zvevicABy2pvW90dkNhRX
+         buxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=vuW4BC8PaCe0NuzYIWfPPJSVNfyxFp2/D/2Nnv+wFkw=;
-        b=S4Rc1ZUx3hqSPI/iNafu5nqGOus5UoX0b1cWavyJ3l+LEdmUPXILvK30+0u7JkeYtC
-         jK0QBzg2fZwzMRNrssQAiUAa3MaqjSjzIUz1V7fsS3uJSdN5jMRRKA62MqpQ16hUGxxQ
-         1qgoz9NwWBXCLquJ8SBBkgq2IkbgTiDwfmnMvKVy4iXzm6JGQNXUJxYWOkk6g8c0GFdg
-         Q4+Y10py09AwGdei4iIpJ2nn6ssyjiwa11u+4sl9g3zvRY0dGEwtV2/bDFq0FW6h032J
-         CHanlQ6R0V6LKubCG1nw3prh+ku/S/LgLtI8/597vU+GIiwBsLb0dCOLXTezv6UenPSs
-         1hbQ==
+        bh=f6f19ewziamJh67KGoLlr+lSsSd2myJDgysgba8rrAk=;
+        b=YeS3BpASSDvm5uoI7rgS95FyRbf9AkuY1H8gOUDL+SNLGrE9iXeAl1dH4uv+aPo4tm
+         Nf8+axi72lvvSI+5DRtJZKFf+u7cjQ+nc4b/ntNaHHwQJB9/4xucZ3YoGnm7l23xzxUl
+         trXwgc0yRBHla223JfD1Gw5mYx1daB5jjs9n9FXdSlUC3p1gHmX24R8fJG1966+AojAc
+         ZWJDQ/B01Ywl1/a+yepkKYf0GTUpqRIjPXuziD0SltWqJdrsXu+qBTjkj6VqrkqxlZKh
+         JCvGUrZ1lErb5l2Cv1FEzeVfXFLwRClC50TIxwNhQoM6JtOyejxByo/qtv3g/kCUW3xl
+         GotA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 63si2333987ybo.487.2019.02.20.14.56.45
+        by mx.google.com with ESMTPS id t1si12040387ybp.222.2019.02.20.14.58.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 14:56:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Feb 2019 14:58:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:50194 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50208 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwanF-00082I-BT
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:56:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35473)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gwaoj-0000xo-8a
+	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:58:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35315)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaYa-0004po-Ee
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:41:39 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gwaY7-0004Nn-Vd
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:41:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaYT-0001fT-Fh
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:41:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55544)
+	(envelope-from <eric.auger@redhat.com>) id 1gwaY5-0000Qc-3Y
+	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:41:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59810)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gwaYI-0000vn-Od; Wed, 20 Feb 2019 17:41:18 -0500
+	id 1gwaY4-0000P6-L5; Wed, 20 Feb 2019 17:41:04 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 964BC3082E09;
-	Wed, 20 Feb 2019 22:41:16 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id CB9BA308624A;
+	Wed, 20 Feb 2019 22:41:03 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E84E85D6AA;
-	Wed, 20 Feb 2019 22:41:13 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 28E545D6AA;
+	Wed, 20 Feb 2019 22:41:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Wed, 20 Feb 2019 23:40:03 +0100
-Message-Id: <20190220224003.4420-18-eric.auger@redhat.com>
+Date: Wed, 20 Feb 2019 23:40:00 +0100
+Message-Id: <20190220224003.4420-15-eric.auger@redhat.com>
 In-Reply-To: <20190220224003.4420-1-eric.auger@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Wed, 20 Feb 2019 22:41:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Wed, 20 Feb 2019 22:41:03 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v7 17/17] hw/arm/virt: Add nvdimm and
- nvdimm-persistence options
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v7 14/17] nvdimm: use configurable ACPI IO base
+ and size
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yphI6/2Pk6iT
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iqffx1mjpy2T
 
-Machine option nvdimm allows to turn NVDIMM support on.
+From: Kwangwoo Lee <kwangwoo.lee@sk.com>
 
+This patch uses configurable IO base and size to create NPIO AML for
+ACPI NFIT. Since a different architecture like AArch64 does not use
+port-mapped IO, a configurable IO base is required to create correct
+mapping of ACPI IO address and size.
+
+Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c | 59 +++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 57 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 1896920570..c7e68e2428 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1814,6 +1814,47 @@ static void virt_set_iommu(Object *obj, const char=
- *value, Error **errp)
-     }
- }
+---
+v6 -> v7:
+- Use NvdimmDsmIO constant
+- use AcpiGenericAddress instead of AcpiNVDIMMIOEntry
+
+v2 -> v3:
+- s/size/len in pc_piix.c and pc_q35.c
+---
+ hw/acpi/nvdimm.c        | 31 ++++++++++++++++++++++---------
+ hw/i386/pc_piix.c       |  6 +++++-
+ hw/i386/pc_q35.c        |  6 +++++-
+ include/hw/mem/nvdimm.h |  4 ++++
+ 4 files changed, 36 insertions(+), 11 deletions(-)
+
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index e53b2cb681..fddc790945 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -33,6 +33,9 @@
+ #include "hw/nvram/fw_cfg.h"
+ #include "hw/mem/nvdimm.h"
 =20
-+static bool virt_get_nvdimm(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
++const struct AcpiGenericAddress NvdimmDsmIO =3D { .space_id =3D AML_AS_S=
+YSTEM_IO,
++        .bit_width =3D NVDIMM_ACPI_IO_LEN << 3, .address =3D NVDIMM_ACPI=
+_IO_BASE};
 +
-+    return vms->acpi_nvdimm_state.is_enabled;
-+}
-+
-+static void virt_set_nvdimm(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+
-+    vms->acpi_nvdimm_state.is_enabled =3D value;
-+}
-+
-+static char *virt_get_nvdimm_persistence(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+
-+    return g_strdup(vms->acpi_nvdimm_state.persistence_string);
-+}
-+
-+static void virt_set_nvdimm_persistence(Object *obj, const char *value,
-+                                        Error **errp)
-+{
-+    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-+    AcpiNVDIMMState *nvdimm_state =3D &vms->acpi_nvdimm_state;
-+
-+    if (strcmp(value, "cpu") =3D=3D 0)
-+        nvdimm_state->persistence =3D 3;
-+    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
-+        nvdimm_state->persistence =3D 2;
-+    else {
-+        error_report("-machine nvdimm-persistence=3D%s: unsupported opti=
-on",
-+                     value);
-+        exit(EXIT_FAILURE);
+ static int nvdimm_device_list(Object *obj, void *opaque)
+ {
+     GSList **list =3D opaque;
+@@ -929,8 +932,8 @@ void nvdimm_init_acpi_state(AcpiNVDIMMState *state, M=
+emoryRegion *io,
+                             FWCfgState *fw_cfg, Object *owner)
+ {
+     memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
+-                          "nvdimm-acpi-io", NVDIMM_ACPI_IO_LEN);
+-    memory_region_add_subregion(io, NVDIMM_ACPI_IO_BASE, &state->io_mr);
++                          "nvdimm-acpi-io", state->dsm_io.bit_width >> 3=
+);
++    memory_region_add_subregion(io, state->dsm_io.address, &state->io_mr=
+);
+=20
+     state->dsm_mem =3D g_array_new(false, true /* clear */, 1);
+     acpi_data_push(state->dsm_mem, sizeof(NvdimmDsmIn));
+@@ -959,12 +962,14 @@ void nvdimm_init_acpi_state(AcpiNVDIMMState *state,=
+ MemoryRegion *io,
+=20
+ #define NVDIMM_QEMU_RSVD_UUID   "648B9CF2-CDA1-4312-8AD9-49C4AF32BD62"
+=20
+-static void nvdimm_build_common_dsm(Aml *dev)
++static void nvdimm_build_common_dsm(Aml *dev,
++                                    AcpiNVDIMMState *acpi_nvdimm_state)
+ {
+     Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
+     Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
+     Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_bu=
+f_size;
+     uint8_t byte_list[1];
++    AmlRegionSpace rs;
+=20
+     method =3D aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
+     uuid =3D aml_arg(0);
+@@ -975,9 +980,16 @@ static void nvdimm_build_common_dsm(Aml *dev)
+=20
+     aml_append(method, aml_store(aml_name(NVDIMM_ACPI_MEM_ADDR), dsm_mem=
+));
+=20
++    if (acpi_nvdimm_state->dsm_io.space_id =3D=3D AML_AS_SYSTEM_IO) {
++        rs =3D AML_SYSTEM_IO;
++    } else {
++        rs =3D AML_SYSTEM_MEMORY;
 +    }
 +
-+    g_free(nvdimm_state->persistence_string);
-+    nvdimm_state->persistence_string =3D g_strdup(value);
-+}
-+
- static CpuInstanceProperties
- virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- {
-@@ -1856,13 +1897,14 @@ static void virt_memory_pre_plug(HotplugHandler *=
-hotplug_dev, DeviceState *dev,
-                                  Error **errp)
- {
-     const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
-M);
-+    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+     /* map DSM memory and IO into ACPI namespace. */
+-    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, AML_SYSTE=
+M_IO,
+-               aml_int(NVDIMM_ACPI_IO_BASE), NVDIMM_ACPI_IO_LEN));
++    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, rs,
++               aml_int(acpi_nvdimm_state->dsm_io.address),
++               acpi_nvdimm_state->dsm_io.bit_width >> 3));
+     aml_append(method, aml_operation_region(NVDIMM_DSM_MEMORY,
+                AML_SYSTEM_MEMORY, dsm_mem, sizeof(NvdimmDsmIn)));
 =20
-     if (dev->hotplugged) {
-         error_setg(errp, "memory hotplug is not supported");
-     }
+@@ -1260,7 +1272,8 @@ static void nvdimm_build_nvdimm_devices(Aml *root_d=
+ev, uint32_t ram_slots)
+ }
 =20
--    if (is_nvdimm) {
--        error_setg(errp, "nvdimm is not yet supported");
-+    if (is_nvdimm && !vms->acpi_nvdimm_state.is_enabled) {
-+        error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M=
-'");
+ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+-                              BIOSLinker *linker, GArray *dsm_dma_arrea,
++                              BIOSLinker *linker,
++                              AcpiNVDIMMState *acpi_nvdimm_state,
+                               uint32_t ram_slots)
+ {
+     Aml *ssdt, *sb_scope, *dev;
+@@ -1288,7 +1301,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets=
+, GArray *table_data,
+      */
+     aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0012")));
+=20
+-    nvdimm_build_common_dsm(dev);
++    nvdimm_build_common_dsm(dev, acpi_nvdimm_state);
+=20
+     /* 0 is reserved for root device. */
+     nvdimm_build_device_dsm(dev, 0);
+@@ -1307,7 +1320,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets=
+, GArray *table_data,
+                                                NVDIMM_ACPI_MEM_ADDR);
+=20
+     bios_linker_loader_alloc(linker,
+-                             NVDIMM_DSM_MEM_FILE, dsm_dma_arrea,
++                             NVDIMM_DSM_MEM_FILE, acpi_nvdimm_state->dsm=
+_mem,
+                              sizeof(NvdimmDsmIn), false /* high memory *=
+/);
+     bios_linker_loader_add_pointer(linker,
+         ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
+@@ -1329,7 +1342,7 @@ void nvdimm_build_acpi(GArray *table_offsets, GArra=
+y *table_data,
          return;
      }
 =20
-@@ -2076,6 +2118,19 @@ static void virt_instance_init(Object *obj)
-         vms->extended_memmap =3D true;
+-    nvdimm_build_ssdt(table_offsets, table_data, linker, state->dsm_mem,
++    nvdimm_build_ssdt(table_offsets, table_data, linker, state,
+                       ram_slots);
+=20
+     device_list =3D nvdimm_get_device_list();
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index fd0f2c268f..d0a262d106 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -298,7 +298,11 @@ static void pc_init1(MachineState *machine,
      }
 =20
-+    object_property_add_bool(obj, "nvdimm",
-+                             virt_get_nvdimm, virt_set_nvdimm, NULL);
-+    object_property_set_description(obj, "nvdimm",
-+                                         "Set on/off to enable/disable N=
-VDIMM "
-+                                         "instantiation", NULL);
+     if (pcms->acpi_nvdimm_state.is_enabled) {
+-        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
++        AcpiNVDIMMState *acpi_nvdimm_state =3D &pcms->acpi_nvdimm_state;
 +
-+    object_property_add_str(obj, "nvdimm-persistence",
-+                            virt_get_nvdimm_persistence,
-+                            virt_set_nvdimm_persistence, NULL);
-+    object_property_set_description(obj, "nvdimm-persistence",
-+                                    "Set NVDIMM persistence"
-+                                    "Valid values are cpu and mem-ctrl",=
- NULL);
++        acpi_nvdimm_state->dsm_io =3D NvdimmDsmIO;
 +
-     vms->irqmap =3D a15irqmap;
++        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
+                                pcms->fw_cfg, OBJECT(pcms));
+     }
  }
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 4a175ea50e..21f594001f 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -330,7 +330,11 @@ static void pc_q35_init(MachineState *machine)
+     pc_nic_init(pcmc, isa_bus, host_bus);
+=20
+     if (pcms->acpi_nvdimm_state.is_enabled) {
+-        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
++        AcpiNVDIMMState *acpi_nvdimm_state =3D &pcms->acpi_nvdimm_state;
++
++        acpi_nvdimm_state->dsm_io =3D NvdimmDsmIO;
++
++        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
+                                pcms->fw_cfg, OBJECT(pcms));
+     }
+ }
+diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+index c5c9b3c7f8..ead51d958d 100644
+--- a/include/hw/mem/nvdimm.h
++++ b/include/hw/mem/nvdimm.h
+@@ -25,6 +25,7 @@
+=20
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/acpi/bios-linker-loader.h"
++#include "hw/acpi/aml-build.h"
+=20
+ #define NVDIMM_DEBUG 0
+ #define nvdimm_debug(fmt, ...)                                \
+@@ -123,6 +124,8 @@ struct NvdimmFitBuffer {
+ };
+ typedef struct NvdimmFitBuffer NvdimmFitBuffer;
+=20
++extern const struct AcpiGenericAddress NvdimmDsmIO;
++
+ struct AcpiNVDIMMState {
+     /* detect if NVDIMM support is enabled. */
+     bool is_enabled;
+@@ -140,6 +143,7 @@ struct AcpiNVDIMMState {
+      */
+     int32_t persistence;
+     char    *persistence_string;
++    struct AcpiGenericAddress dsm_io;
+ };
+ typedef struct AcpiNVDIMMState AcpiNVDIMMState;
 =20
 --=20
 2.20.1

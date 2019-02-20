@@ -1,206 +1,150 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4701687wrx;
-        Wed, 20 Feb 2019 07:54:44 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaDYuLAXwvMgHWej1D5ZM39LxPB7ymOAvMMtvobxpIZrbyQw5t8JHYV6Lt2dJlK2e6hqTPy
-X-Received: by 2002:a25:cc57:: with SMTP id l84mr27377337ybf.465.1550678084267;
-        Wed, 20 Feb 2019 07:54:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550678084; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4828173wrx;
+        Wed, 20 Feb 2019 10:03:51 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY8Uj8czX6Y9O59WC967rki9YNTsdcQ8OA85OeKTcNaedOCekwqLfrwnuyfgTpPXfILdrQM
+X-Received: by 2002:a25:d1d0:: with SMTP id i199mr27139929ybg.275.1550685831411;
+        Wed, 20 Feb 2019 10:03:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550685831; cv=none;
         d=google.com; s=arc-20160816;
-        b=DIixYw+pFdMXfWaD5rdMJ0kTDsWCsvRpPWfy18fe2FsG0hiXP+htDSKveiGrrfkBeo
-         NzWYqnDHQuRDooWOD62p20dFAZoz5Kfp8jIGU2SZZrpW1tPyPlfV8xXMREEfXKMpCQls
-         9ntpQ0DiZuHOsOmkd6C5eM0bpYjxPyczQQ/rVZLwRZlzDmhZoKDhb184B0A/NoMNAQhA
-         JYelnOJqX99knPPh//lfDmQtwwv9SQC6G5KpxbYfyWk3PuVq2o0ucJrSovdQCGFuUphU
-         IoK7Sk1sI2UYi8kVPFJ8QDYZM1g6PJNsaDswHyO4CXliJVrPB2yg/ETjTFP+7iQsdUxm
-         EFKw==
+        b=Iui3dYS8hs0bg4uSB9AyFhxnBhNsKBtk4QFe1+7bX+jxxfQ3ZyUxdE7Q8S+vaN8KEZ
+         gcMIbPp1IOmKwbxymg5plPkDldP1BRSbYZV0Yw7/HnWMqrBUhtx8EDnld4aIjfnf/p3b
+         rJNlu3o+J//bR2UHIyV8+dmZiVceMfIDv5HQWaa/2xTVHWNgvC/tHaDenMUYeQ2xMgfW
+         ErVJDeYjtuiJFpLj5v2kXTCRDlC5KGeqFfFB+DUszWL4qlhgwR2pEQVLzMqSd8aONZRt
+         SHOzFeLp/8o73hJTHN64a3QzW0OIpt5nW0rtMW4HXlPj/e7oaZ0fKGX1VVIV4fQ5JWMO
+         WR8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=i1mFjVBgOJE8k/iN00AtxDLlbt3vShmkI9kssJPVcIM=;
-        b=eBUWvuXNFMS8q4R+qetXu3qqMehQfvZ01OXDrWgcrrGE+H/Ft3Ihq0XA9TcwyfdEh7
-         mGujopaS9Gyg3fRKVB61WhNWIX7Bvd48eA9h/2xOpSeUltucYJcLnmoa9eh1vD3////S
-         Y2ihAtucQxEV61GVMj024QznisGPKe0Lfp/BT58G3KoBcaFAlITzMtJ4N1g009Pe3kwD
-         ePbPlefpqRHwiXj3ueuTcszvH2iyG3RmxLnDDVV//6+Ym1Gjj39gqWPieK1klRZ4dWYi
-         pKNXurN2lv+lc68FDs4Fl9SYgRK/FloyVZptqwgJ/esKj/RZdQXJBBJ7ypch8rSY0Axm
-         GWww==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=mKQiwXSWy8nUk2+Th/YdbdQIfH+WEHnmFUBMk6xygYE=;
+        b=XT7zNWGp0vJ+Xl0ZdZ+rNOXaHV+qHYaCYENAo8bgZEb1g56CPPE4whIKzFlqRM7M8K
+         w+O94TcsgYCNxprUpJsEtFz/tzqApcmoIyS1EqTiDj0RodHCs6S873hACkpgDuIr5sqU
+         WDBa8Y70VlkVbVkxbKDG15rFFD/M8H5HWTf+Nv8NoVr/AnD9GAClf6mrxnUGPY8tJH8D
+         XZ345tg7/rSxeINUEo7PeViajQ1/c8+mSmcwMn0R9hxL79+6VO+dZfeq5j/JQSf8805Y
+         PXNCyKGr4CXK+FN9NwUX/9nhQPGA8jS7GRzaAJhMnJtIgRlOzUSNm9SGAjUV65ZXSY3i
+         TyhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZGDN81Jj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si2984659ybk.151.2019.02.20.07.54.44
+        by mx.google.com with ESMTPS id a62si10215543ywa.134.2019.02.20.10.03.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 07:54:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 20 Feb 2019 10:03:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41388 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZGDN81Jj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:44928 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwUCp-0008KP-KI
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 10:54:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45795)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gwWDm-0000bE-QO
+	for alex.bennee@linaro.org; Wed, 20 Feb 2019 13:03:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwTpr-0005UH-H6
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 10:31:00 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gwWB2-0007o8-Ph
+	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 13:01:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwTpb-0001mD-B8
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 10:30:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36978)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gwTpa-0001eE-GD; Wed, 20 Feb 2019 10:30:42 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 52B6611DBB2;
-	Wed, 20 Feb 2019 15:30:20 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 90C6A17144;
-	Wed, 20 Feb 2019 15:30:14 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20190205173306.20483-1-eric.auger@redhat.com>
-	<20190205173306.20483-13-eric.auger@redhat.com>
-	<20190218095838.048819c5@Igors-MacBook-Pro.local>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8f8abcb6-6665-dc89-b836-6e9d131f6f44@redhat.com>
-Date: Wed, 20 Feb 2019 16:30:13 +0100
+	(envelope-from <richard.henderson@linaro.org>) id 1gwWAz-0004FI-E9
+	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 13:00:59 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37642)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gwWAv-0004CR-2H
+	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 13:00:53 -0500
+Received: by mail-pl1-x641.google.com with SMTP id q3so5224360pll.4
+	for <qemu-devel@nongnu.org>; Wed, 20 Feb 2019 10:00:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=mKQiwXSWy8nUk2+Th/YdbdQIfH+WEHnmFUBMk6xygYE=;
+	b=ZGDN81JjXTvG08riyIcHQYeHyku73/jY8kX8rH6VE8a3CpaT3v5ILBJR3b/scHnHEy
+	JlBGaIqT79RKQNhsaa1DYPDf5E1utuc9yJ74Pg09oVZmevifwrHvBL87oe4Zu/MfCFR9
+	28j80+dJ49mAGGloP4bTUHvRxFlC0f5vAQPxJwGMWSvLyBXhudHucoKz85LJniJPuOb4
+	cJV53pSTrIkARqrdxFphX/FojXfl0AnV+p10wQSeE5Qqv7Mwlr23DzEYPS80cbkP/Kwb
+	Md2h3U/yhGEdaSs3n43gz497zGM/W4XKr7n4h8btKm1sPJryVfrDZMz17FsBwGqJ+xrb
+	T4gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=mKQiwXSWy8nUk2+Th/YdbdQIfH+WEHnmFUBMk6xygYE=;
+	b=Nn6iNagSW/Kw8c+e3+ivda6cPeba0Naj2YUQenuIB2wdfbrtXsfvn447OKmtDndTi2
+	AiMjIhjoDk7SlGC8EdP6kVrrsWrY07H025puOM+GgBoRHKst6s07FMY4cWhL7ZEQwY9e
+	2HNHjtsokIanSDVrPqF3ZrYYvc/LLzcCZfdTKYLo3DFWVAKi77OLD1TrkpIv1hA/lIbj
+	ncCdsj8QdNrI8CVEAEiZCfqwta/U+RPNSuaniGDuFKad74NgLLtq1XdPprDVwCYJrNxV
+	nff+6rs8FYmSZoLio0FTJQimfBWXVXK28W49hCSw5uH+sCFORe0StJUUmtKZ10d8IXpW
+	aTfw==
+X-Gm-Message-State: AHQUAuaE8nl41HCCSlBAi9SBXIQGlagYnzFrlbIifMDqm5A1osE19bmW
+	1S3Kupa5MLHve+4y/NCgCJhLvOMTYLM=
+X-Received: by 2002:a17:902:f096:: with SMTP id
+	go22mr685286plb.172.1550685649575; 
+	Wed, 20 Feb 2019 10:00:49 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
+	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
+	l81sm48551084pfg.100.2019.02.20.10.00.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 20 Feb 2019 10:00:48 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20190219125808.25174-1-peter.maydell@linaro.org>
+	<20190219125808.25174-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <8615f5d6-6080-e560-91c3-8afa2a5606ce@linaro.org>
+Date: Wed, 20 Feb 2019 10:00:46 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190218095838.048819c5@Igors-MacBook-Pro.local>
+In-Reply-To: <20190219125808.25174-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 20 Feb 2019 15:30:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 12/18] hw/arm/boot: Expose
- the PC-DIMM nodes in the DT
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: Re: [Qemu-devel] [PATCH 1/8] hw/misc/armsse-mhu.c: Model the
+ SSE-200 Message Handling Unit
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	dgilbert@redhat.com, qemu-arm@nongnu.org,
-	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /3P+ibUJ/2OE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gephzfQ0DljE
 
-Hi Igor,
+On 2/19/19 4:58 AM, Peter Maydell wrote:
+> Implement a model of the Message Handling Unit (MHU) found in
+> the Arm SSE-200. This is a simple device which just contains
+> some registers which allow the two cores of the SSE-200
+> to raise interrupts on each other.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/misc/Makefile.objs           |   1 +
+>  include/hw/misc/armsse-mhu.h    |  44 +++++++
+>  hw/misc/armsse-mhu.c            | 198 ++++++++++++++++++++++++++++++++
+>  MAINTAINERS                     |   2 +
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/misc/trace-events            |   4 +
+>  6 files changed, 250 insertions(+)
+>  create mode 100644 include/hw/misc/armsse-mhu.h
+>  create mode 100644 hw/misc/armsse-mhu.c
 
-On 2/18/19 9:58 AM, Igor Mammedov wrote:
-> On Tue,  5 Feb 2019 18:33:00 +0100
-> Eric Auger <eric.auger@redhat.com> wrote:
-> 
->> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->>
->> This patch add memory nodes corresponding to PC-DIMM regions.
-> s/add/adds/ or s/This patch add/Add/
-> 
->>
->> NV_DIMM and ACPI_NVDIMM configs are not yet set for ARM so we
->> don't need to care about NV-DIMM at this stage.
->>
->> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->> v3 -> v4:
->> - git rid of @base and @len in fdt_add_hotpluggable_memory_nodes
->>
->> v1 -> v2:
->> - added qapi_free_MemoryDeviceInfoList and simplify the loop
->> ---
->>  hw/arm/boot.c | 35 +++++++++++++++++++++++++++++++++++
->>  1 file changed, 35 insertions(+)
->>
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index 2ef367e15b..2a70e8aa82 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -19,6 +19,7 @@
->>  #include "sysemu/numa.h"
->>  #include "hw/boards.h"
->>  #include "hw/loader.h"
->> +#include "hw/mem/memory-device.h"
->>  #include "elf.h"
->>  #include "sysemu/device_tree.h"
->>  #include "qemu/config-file.h"
->> @@ -526,6 +527,34 @@ static void fdt_add_psci_node(void *fdt)
->>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
->>  }
->>  
->> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
->> +                                             uint32_t acells, uint32_t scells) {
->> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
->> +    MemoryDeviceInfo *mi;
->> +    PCDIMMDeviceInfo *di;
->> +    bool is_nvdimm;
->> +    int ret = 0;
->> +
->> +    for (info = info_list; info != NULL; info = info->next) {
->> +        mi = info->value;
->> +        is_nvdimm = (mi->type == MEMORY_DEVICE_INFO_KIND_NVDIMM);
->> +        di = !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
->> +
->> +        if (is_nvdimm) {
->> +            ret = -ENOENT; /* NV-DIMM not yet supported */
->> +        } else {
->> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
->> +                                      scells, di->size, di->node);
->> +        }
->> +        if (ret < 0) {
->> +            goto out;
->> +        }
->> +    }
->> +out:
->> +    qapi_free_MemoryDeviceInfoList(info_list);
->> +    return ret;
->> +}
->> +
->>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>                   hwaddr addr_limit, AddressSpace *as)
->>  {
->> @@ -621,6 +650,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>          }
->>      }
->>  
->> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
->> +    if (rc < 0) {
->> +            fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
-> error message is rather vague, user using nvdimms + pc-dimms on CLI won't have
-> a clue that the former is not supported.
-> Suggest pass in error_fatal as argument and report more specific error from
-> fdt_add_hotpluggable_memory_nodes()
-> 
-> does this run on reboot?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Yes after a QMP system_reset I can see the DIMMS on guest in /proc/meminfo
 
-Thanks
-
-Eric
-> 
->> +            goto fail;
->> +    }
->> +
->>      rc = fdt_path_offset(fdt, "/chosen");
->>      if (rc < 0) {
->>          qemu_fdt_add_subnode(fdt, "/chosen");
-> 
+r~

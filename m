@@ -1,84 +1,83 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5050252wrx;
-        Wed, 20 Feb 2019 14:47:52 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYD+xGytvPldWm7whcV6RNAY7C2yc1TmKh4Yl8mySCJoTshCfXr9DsdPYjzYinihs/GkjAh
-X-Received: by 2002:a25:e45:: with SMTP id 66mr2909664ybo.519.1550702872673;
-        Wed, 20 Feb 2019 14:47:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550702872; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5051146wrx;
+        Wed, 20 Feb 2019 14:49:23 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IaTjx7/gA74ZEMuxEOJ0A/0r8vMMOMGR+Vl3KWwH+4Ec7OBq9XPyzpc/sl1jryGvsNiLdmz
+X-Received: by 2002:a25:8e07:: with SMTP id p7mr29581054ybl.193.1550702963459;
+        Wed, 20 Feb 2019 14:49:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550702963; cv=none;
         d=google.com; s=arc-20160816;
-        b=P0T2bqjeUO/MW1M+5VrPjA1Vh2h2ZaeKjlvmcKs9iJHLBr2t3y5TiLP9XW2Ly6gep5
-         PD3U3Aih1tX4NPyvUy+T23Zr5nvQmV/GO4Ce2SsV2i2GfXNrEMZtnzFVH/nGZEh3OltJ
-         dZP/WP2upkDesG7sb0ZU6SZYn9OqrlrJ+U+7X5wnQoARrHAe1DaF2jrx8aERgTPNnCx/
-         aaOzjXcd9VWtBJkKrw4BnycELZd+po0GY1UzfLj6fixxYRKQ8YGnN/DTf5WWsj/2DsGi
-         TTP2OGvLQTlaNo64WnmmCqBXJDjAgPJnnhUWT1TGOI/2x9/ezKPVRLsrGipss4Tuk7KX
-         PVpg==
+        b=Kiimkc+ZCXJOt54RVSIZU02HgOgpxTGT+GvgemNBr485D+bK9fL+qJDSLJcWudRsFu
+         bJu+aud2cEMpz7y5gY00zo+dcKBDeD2XuVpszJ2jtGUE9pTfC6UzUjvQ76vRZWSeNaF6
+         A1bNJDhv04PkQizBmXOsLApUyoK9Y7bxSeTLMLuwZolCBkfgx8AQiNtflydk/NAneqr8
+         ra72eXFqpVz3scyQYgaBFlCSAqCfri2LjxHXtb+39oVbj0866ficirZX8yVxffF7Yaw0
+         EhPlV8Y++YnNLgFW0KRmH9SKJ560MMm6neIbreaYiJO0F9IdfNFLHiJ6AVNuamTHoDQU
+         nzcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=5I2blt09WUdGFj1hEAB7V1gh05nsfr24j0HsDfXRjUQ=;
-        b=ugWjAq83G6yuh0TL1fEkW/5c7M/LHQeYxU35vwW+ckcJpOQKh/f936ORaBLV2xjGDm
-         D39em6a+f2Ctm7HTTeAC1HG8ivRYKHgCAloer3ejtgdQp0Dfxs6i21iSVlHf7Hhx9Yk0
-         klh9GKkUPzi4cEuou08zS2Hq1VaT45Vj6kRDouvwyYg59jqV4VzJWESE05eY+w8tO2dh
-         S2rhP5bovX7tU7GgBHJ7aWsI9k61F7gYYE9GMmAPgKjnMsfTxLl92gQj/fVvrdrGaOTD
-         NqzvzznEQ/xV6DumNE/mp2DfYgA980a5+CYgzaKuEUMug/Pb299NVat88FX29I6M28Ph
-         hLfA==
+        bh=oIE87mZKaXD5BawL9YDuMEUHC+qrw3lgh0NUMbAaGZk=;
+        b=Ve/t33s1KIXbnqQmHBUjFVYB/Y+z1vZQqaMOfoFuFtZhRymRWqB3O2uKb8cMnvSZtR
+         8L0HK532z5LTjmXLOxDK1wqxcU1o6g+mMij1cRiuSnT2V7bVz6Aekn08f5hWm1vunyJl
+         SJ5JzkTpgGzb0xTIPivwWrSxZglCqjG/s3StrRuHlz59oVHY9vBVBuw1g08mW+MzUlK8
+         rCnaA/JW8XF6BlqNYohV77pPcjrW7LzcHxMUXDrseASsNe0wDjLFUWZfiOqA7TUQMUUS
+         rYHKlROAC9U/vqZ0HSQkiXG8A41/UzmF7rxVIYctt9gsQCvYyB5FOoexu41axnlBI605
+         Rf6A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b193si6533958yba.347.2019.02.20.14.47.52
+        by mx.google.com with ESMTPS id s18si11898556ybp.31.2019.02.20.14.49.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 14:47:52 -0800 (PST)
+        Wed, 20 Feb 2019 14:49:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:50019 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50041 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwaee-0000l6-3U
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:47:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35421)
+	id 1gwag6-0001uL-UB
+	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:49:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35060)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaYF-0004Wo-UP
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:41:16 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gwaXd-00042x-0z
+	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:40:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gwaYE-0000oh-UG
-	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:41:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43468)
+	(envelope-from <eric.auger@redhat.com>) id 1gwaXc-0008WQ-7y
+	for qemu-devel@nongnu.org; Wed, 20 Feb 2019 17:40:36 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58236)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gwaYB-0000Zz-Jf; Wed, 20 Feb 2019 17:41:11 -0500
+	id 1gwaXa-0008VJ-8J; Wed, 20 Feb 2019 17:40:34 -0500
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A14D2308A9E0;
-	Wed, 20 Feb 2019 22:41:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C6C5EC049D67;
+	Wed, 20 Feb 2019 22:40:32 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2B9565D6AA;
-	Wed, 20 Feb 2019 22:41:03 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 43FF45D6AA;
+	Wed, 20 Feb 2019 22:40:26 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Wed, 20 Feb 2019 23:40:01 +0100
-Message-Id: <20190220224003.4420-16-eric.auger@redhat.com>
+Date: Wed, 20 Feb 2019 23:39:51 +0100
+Message-Id: <20190220224003.4420-6-eric.auger@redhat.com>
 In-Reply-To: <20190220224003.4420-1-eric.auger@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Wed, 20 Feb 2019 22:41:10 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 20 Feb 2019 22:40:32 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v7 15/17] hw/arm/virt: Add nvdimm hot-plug
- infrastructure
+Subject: [Qemu-devel] [PATCH v7 05/17] kvm: add kvm_arm_get_max_vm_ipa_size
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,138 +92,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: drjones@redhat.com, dgilbert@redhat.com, david@gibson.dropbear.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RXnr7lsExEzd
+X-TUID: PfptP7N7FhHz
 
-From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+Add the kvm_arm_get_max_vm_ipa_size() helper that returns the
+number of bits in the IPA address space supported by KVM.
 
-Pre-plug and plug handlers are prepared for NVDIMM support.
+This capability needs to be known to create the VM with a
+specific IPA max size (kvm_type passed along KVM_CREATE_VM ioctl.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
----
- default-configs/arm-softmmu.mak |  2 ++
- hw/arm/virt-acpi-build.c        |  6 ++++++
- hw/arm/virt.c                   | 22 ++++++++++++++++++++++
- include/hw/arm/virt.h           |  3 +++
- 4 files changed, 33 insertions(+)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 0a78421f72..03dbebb197 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -165,3 +165,5 @@ CONFIG_HIGHBANK=3Dy
- CONFIG_MUSICPAL=3Dy
- CONFIG_MEM_DEVICE=3Dy
- CONFIG_DIMM=3Dy
-+CONFIG_NVDIMM=3Dy
-+CONFIG_ACPI_NVDIMM=3Dy
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 781eafaf5e..f086adfa82 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -784,6 +784,7 @@ static
- void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- {
-     VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(vms);
-+    MachineState *ms =3D MACHINE(vms);
-     GArray *table_offsets;
-     unsigned dsdt, xsdt;
-     GArray *tables_blob =3D tables->table_data;
-@@ -824,6 +825,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuil=
-dTables *tables)
-         }
-     }
-=20
-+    if (vms->acpi_nvdimm_state.is_enabled) {
-+        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-+                          &vms->acpi_nvdimm_state, ms->ram_slots);
-+    }
-+
-     if (its_class_name() && !vmc->no_its) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 33ad9b3f63..1896920570 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -134,6 +134,7 @@ static const MemMapEntry base_memmap[] =3D {
-     [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
-     [VIRT_SMMU] =3D               { 0x09050000, 0x00020000 },
-+    [VIRT_ACPI_IO] =3D            { 0x09070000, 0x00010000 },
-     [VIRT_MMIO] =3D               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that s=
-ize */
-     [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
-@@ -1675,6 +1676,18 @@ static void machvirt_init(MachineState *machine)
-=20
-     create_platform_bus(vms, pic);
-=20
-+    if (vms->acpi_nvdimm_state.is_enabled) {
-+        AcpiNVDIMMState *acpi_nvdimm_state =3D &vms->acpi_nvdimm_state;
-+
-+        acpi_nvdimm_state->dsm_io.space_id =3D AML_AS_SYSTEM_MEMORY;
-+        acpi_nvdimm_state->dsm_io.address =3D
-+                vms->memmap[VIRT_ACPI_IO].base + NVDIMM_ACPI_IO_BASE;
-+        acpi_nvdimm_state->dsm_io.bit_width =3D NVDIMM_ACPI_IO_LEN << 3;
-+
-+        nvdimm_init_acpi_state(acpi_nvdimm_state, sysmem,
-+                               vms->fw_cfg, OBJECT(vms));
-+    }
-+
-     vms->bootinfo.ram_size =3D machine->ram_size;
-     vms->bootinfo.kernel_filename =3D machine->kernel_filename;
-     vms->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
-@@ -1860,10 +1873,19 @@ static void virt_memory_plug(HotplugHandler *hotp=
-lug_dev,
-                              DeviceState *dev, Error **errp)
- {
-     VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-+    bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-     Error *local_err =3D NULL;
-=20
-     pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-=20
-+    if (is_nvdimm) {
-+        nvdimm_plug(&vms->acpi_nvdimm_state);
-+    }
-+
-+out:
-     error_propagate(errp, local_err);
+---
+v6 -> v7:
+- s/kvm_arm_get_max_vm_phys_shift/kvm_arm_get_max_vm_ipa_size
+- reword the comment
+
+v4 -> v5:
+- return 40 if the host does not support the capability
+
+v3 -> v4:
+- s/s/ms in kvm_arm_get_max_vm_phys_shift function comment
+- check KVM_CAP_ARM_VM_IPA_SIZE extension
+
+v1 -> v2:
+- put this in ARM specific code
+---
+ target/arm/kvm.c     | 10 ++++++++++
+ target/arm/kvm_arm.h | 13 +++++++++++++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index e00ccf9c98..79a79f0190 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -18,6 +18,7 @@
+ #include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/kvm_int.h"
+ #include "kvm_arm.h"
+ #include "cpu.h"
+ #include "trace.h"
+@@ -162,6 +163,15 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features =3D arm_host_cpu_features.features;
  }
 =20
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 7798462cb0..bd9cf68311 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -37,6 +37,7 @@
- #include "hw/arm/arm.h"
- #include "sysemu/kvm.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/mem/nvdimm.h"
++int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
++{
++    KVMState *s =3D KVM_STATE(ms->accelerator);
++    int ret;
++
++    ret =3D kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
++    return ret > 0 ? ret : 40;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     /* For ARM interrupt delivery is always asynchronous,
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 6393455b1d..2a07333c61 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -207,6 +207,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeature=
+s *ahcf);
+  */
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
 =20
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
-@@ -77,6 +78,7 @@ enum {
-     VIRT_GPIO,
-     VIRT_SECURE_UART,
-     VIRT_SECURE_MEM,
-+    VIRT_ACPI_IO,
-     VIRT_LOWMEMMAP_LAST,
- };
++/**
++ * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
++ * IPA address space supported by KVM
++ *
++ * @ms: Machine state handle
++ */
++int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
++
+ /**
+  * kvm_arm_sync_mpstate_to_kvm
+  * @cpu: ARMCPU
+@@ -239,6 +247,11 @@ static inline void kvm_arm_set_cpu_features_from_hos=
+t(ARMCPU *cpu)
+     cpu->host_cpu_probe_failed =3D true;
+ }
 =20
-@@ -137,6 +139,7 @@ typedef struct {
-     hwaddr device_memory_base;
-     hwaddr device_memory_size;
-     bool extended_memmap;
-+    AcpiNVDIMMState acpi_nvdimm_state;
- } VirtMachineState;
-=20
- #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
++static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
++{
++    return -ENOENT;
++}
++
+ static inline int kvm_arm_vgic_probe(void)
+ {
+     return 0;
 --=20
 2.20.1
 

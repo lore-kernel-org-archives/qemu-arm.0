@@ -1,84 +1,84 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5858726wrx;
-        Thu, 21 Feb 2019 07:01:34 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibb9KLl83NMScal3Kh0mXyDpsyP31QVxr8DU7Xs2OE/MnynK/Pk/u27049RQOTXY/v8wU9q
-X-Received: by 2002:a81:1fd4:: with SMTP id f203mr32223563ywf.422.1550761294746;
-        Thu, 21 Feb 2019 07:01:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550761294; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5865869wrx;
+        Thu, 21 Feb 2019 07:07:10 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbIE7a8RtEWy6HdNYj88a6LSkuoPon5fh799Z/ok75BE4P5t/m6Wi8WMIV0bh09zwwVzMHQ
+X-Received: by 2002:a25:5f49:: with SMTP id h9mr6692588ybm.232.1550761630069;
+        Thu, 21 Feb 2019 07:07:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550761630; cv=none;
         d=google.com; s=arc-20160816;
-        b=ly9N+DX4AYc3GQURWqUUTH7Nrlp3RRrqWOY2jEWRFjor2+KwPIvJHAdUa1ODVU8II5
-         ROOHTumGbHRXBBNciHOjhHH2XuIdxuaHVlUNxgG5rNtcMeuG1FWrJO/H7NRmAqWlRFNy
-         3V5l6Hpa66L3g3bDn5XQCrf4D5u/Ts+2Ybx+CO5Bu3x1iGFHD2Q8zS4f5F+Cywz2kSn6
-         QF+ldjXJl9YmyNNf5sKNBCf5N9FeY3s0ZNSCf0Lrr4IyJ4wjyCaLWAsL5+IBbzcQhY3D
-         +qgqw2njNlz78LjgFtNFtHvAVeTNVe5339szAOLMQmvOE3WchWIP54exJV8ZKFmT2FgD
-         g36Q==
+        b=AeXFy07ApyG2T72lMC2ZA9eIwKcoMk478gQgxYZAb19oGCYi55I/Xer+eKNT4AdXfu
+         REhfhG2L53hEbdriAe6y6sGXsqK8EaXiFi8KV1xePbYSWqOxCgWiJx8BnIgxzUHO3fH4
+         W5M/eVgR9eePtMj83QkjMJCimJ0tYVoQsfdgJR77EA8Hk+TWcoqPKfaFMcHaeBF8ZxNi
+         Se/wvHpgoFjvipVJewIO5BPzwiXIkP77wCXHVgIaBrhJTT8gj5cDDC0TgRijdifvIr4D
+         aFJS5NbuWqJHaF7yEpqnnOxMT8Vn7sDLDYhCbWRvbf2P4s24QpGnTBdpR7B2B0IOyjoX
+         60Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=rB2OYZflsdQdl7jkgPreX772LQU0JORjfTkz5JwZehc=;
-        b=AAuWnNhTybsL/3giNu3CZtWBgTlndoTtYshx2bPXAV17bmzbn6QHt574GhOAXCx3qo
-         iH3JHZGSNGRTby3q9xl7YnuiagEcEPNLJf9ky2Yj1O+7hmLe/hNoG2ZTQZTVzki6Q71b
-         bjDyzOwopEWP/iNNRY5QS8/o/tVectEnhhwoJnNchbaIe0/5LNPFwdtIAVXmykJgiFWQ
-         4MZQ07GzC56odgQ4dSBVyPixXPd7oSv0pqd3W/Z82BqbVkJWGJK5zdk7/l8qxKrnfXFM
-         yBQJ5WKcv2DubQXx9LYxbmJ/OjRTg5rsz7y8Vxc1cA4lsF//ilIDBazBqvTkKHUc/IXY
-         U4NA==
+        bh=K21gH5A7edwnxWks4RFVCiOSYVtVsKHds6cPU+hY9tg=;
+        b=OoSMH9Kr9DUefZcwbaD2TmoFXC2xZW1baqH9Lti9meoYdGXHD7HXkY2URRGXJ7cKwU
+         Oq957mEocnaMYU6L9l2NZVYd2yNivHdCtiEMyyInc65lJvWKfwxqru1DwZVQTqhK3kUk
+         LChJIT95lf43VTx+XGsmAzCVdah2MJ2A67V7GSKStZ8xJBcWrtRvOzyVWRJ+dFdYAs4Z
+         NwRqOFhZIqLR0L21ZzurmU+Cx6Yoec3ZDdwIpgQBD46O0xL4Y4w7cB8FvMO/8GWY5pno
+         p0JMFaZdY3v4sAGPYt9HsV7AyBirxZkPiLdsKKgc2ka0Onvt8qEe9q4M244NUCcAj9N2
+         gJKA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15si562455ybn.55.2019.02.21.07.01.34
+        by mx.google.com with ESMTPS id 79si13122604ybl.42.2019.02.21.07.07.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Feb 2019 07:01:34 -0800 (PST)
+        Thu, 21 Feb 2019 07:07:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33454 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33537 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwpqw-0006xX-6V
-	for alex.bennee@linaro.org; Thu, 21 Feb 2019 10:01:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54165)
+	id 1gwpwL-0002TD-Hi
+	for alex.bennee@linaro.org; Thu, 21 Feb 2019 10:07:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gwpog-0005Ld-Hq
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 09:59:15 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gwpvH-00020i-NT
+	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 10:06:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gwpoe-0001DK-Iz
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 09:59:14 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48708)
+	(envelope-from <imammedo@redhat.com>) id 1gwpvG-0006bM-Hf
+	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 10:06:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51258)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gwpoa-00012J-Nr; Thu, 21 Feb 2019 09:59:10 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1gwpvG-0006Rl-6d; Thu, 21 Feb 2019 10:06:02 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 233CB821E5;
-	Thu, 21 Feb 2019 14:59:00 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 57281308FF18;
+	Thu, 21 Feb 2019 15:05:50 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C3E7A5C290;
-	Thu, 21 Feb 2019 14:58:50 +0000 (UTC)
-Date: Thu, 21 Feb 2019 15:58:49 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4086E6017F;
+	Thu, 21 Feb 2019 15:05:35 +0000 (UTC)
+Date: Thu, 21 Feb 2019 16:05:34 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190221155849.7a79d979@redhat.com>
-In-Reply-To: <20190220224003.4420-2-eric.auger@redhat.com>
+Message-ID: <20190221160534.183636e0@redhat.com>
+In-Reply-To: <20190220224003.4420-3-eric.auger@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
-	<20190220224003.4420-2-eric.auger@redhat.com>
+	<20190220224003.4420-3-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 21 Feb 2019 14:59:00 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 21 Feb 2019 15:05:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v7 01/17] hw/arm/boot: introduce
- fdt_add_memory_node helper
+Subject: Re: [Qemu-arm] [PATCH v7 02/17] hw/arm/virt: Rename highmem IO
+ regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,117 +96,163 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
 	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 09HN0UmQigNY
+X-TUID: xbNegS5FJnE9
 
-On Wed, 20 Feb 2019 23:39:47 +0100
+On Wed, 20 Feb 2019 23:39:48 +0100
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> 
-> We introduce an helper to create a memory node.
+> In preparation for a split of the memory map into a static
+> part and a dynamic part floating after the RAM, let's rename the
+> regions located after the RAM
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+with indent and checkpatch warnings fixed
 
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-> ---
 > 
-> v6 -> v7:
-> - msg error in the caller
-> - add comment about NUMA ID
 > ---
->  hw/arm/boot.c | 54 ++++++++++++++++++++++++++++++++-------------------
->  1 file changed, 34 insertions(+), 20 deletions(-)
+> v7: added Peter's R-b
+> v6: creation
+> ---
+>  hw/arm/virt-acpi-build.c |  8 ++++----
+>  hw/arm/virt.c            | 21 +++++++++++----------
+>  include/hw/arm/virt.h    |  8 ++++----
+>  3 files changed, 19 insertions(+), 18 deletions(-)
 > 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index d90af2f17d..a830655e1a 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -423,6 +423,32 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
->      }
->  }
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 04b62c714d..829d2f0035 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -229,8 +229,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+>                       size_pio));
 >  
-> +static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-> +                               uint32_t scells, hwaddr mem_len,
-> +                               int numa_node_id)
-> +{
-> +    char *nodename;
-> +    int ret;
-> +
-> +    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> +    qemu_fdt_add_subnode(fdt, nodename);
-> +    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> +    ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
-> +                                       scells, mem_len);
-> +    if (ret < 0) {
-> +        goto out;
-> +    }
-> +
-> +    /* only set the NUMA ID if it is specified */
-> +    if (numa_node_id >= 0) {
-> +        ret = qemu_fdt_setprop_cell(fdt, nodename,
-> +                                    "numa-node-id", numa_node_id);
-> +    }
-> +out:
-> +    g_free(nodename);
-> +    return ret;
-> +}
-> +
->  static void fdt_add_psci_node(void *fdt)
->  {
->      uint32_t cpu_suspend_fn;
-> @@ -502,7 +528,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->      void *fdt = NULL;
->      int size, rc, n = 0;
->      uint32_t acells, scells;
-> -    char *nodename;
->      unsigned int i;
->      hwaddr mem_base, mem_len;
->      char **node_path;
-> @@ -576,35 +601,24 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->          mem_base = binfo->loader_start;
->          for (i = 0; i < nb_numa_nodes; i++) {
->              mem_len = numa_info[i].node_mem;
-> -            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
-> -            qemu_fdt_add_subnode(fdt, nodename);
-> -            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> -            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> -                                              acells, mem_base,
-> -                                              scells, mem_len);
-> +            rc = fdt_add_memory_node(fdt, acells, mem_base,
-> +                                     scells, mem_len, i);
->              if (rc < 0) {
-> -                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
-> -                        i);
-> +                fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
-> +                        mem_base);
->                  goto fail;
->              }
+>      if (use_highmem) {
+> -        hwaddr base_mmio_high = memmap[VIRT_PCIE_MMIO_HIGH].base;
+> -        hwaddr size_mmio_high = memmap[VIRT_PCIE_MMIO_HIGH].size;
+> +        hwaddr base_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].base;
+> +        hwaddr size_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].size;
 >  
-> -            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
->              mem_base += mem_len;
-> -            g_free(nodename);
+>          aml_append(rbuf,
+>              aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+> @@ -663,8 +663,8 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>              gicr = acpi_data_push(table_data, sizeof(*gicr));
+>              gicr->type = ACPI_APIC_GENERIC_REDISTRIBUTOR;
+>              gicr->length = sizeof(*gicr);
+> -            gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST2].base);
+> -            gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST2].size);
+> +            gicr->base_address = cpu_to_le64(memmap[VIRT_HIGH_GIC_REDIST2].base);
+> +            gicr->range_length = cpu_to_le32(memmap[VIRT_HIGH_GIC_REDIST2].size);
+>          }
+>  
+>          if (its_class_name() && !vmc->no_its) {
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 99c2b6e60d..a1955e7764 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -150,10 +150,10 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+>      [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
+>      /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+> -    [VIRT_GIC_REDIST2] =        { 0x4000000000ULL, 0x4000000 },
+> -    [VIRT_PCIE_ECAM_HIGH] =     { 0x4010000000ULL, 0x10000000 },
+> +    [VIRT_HIGH_GIC_REDIST2] =   { 0x4000000000ULL, 0x4000000 },
+> +    [VIRT_HIGH_PCIE_ECAM] =     { 0x4010000000ULL, 0x10000000 },
+>      /* Second PCIe window, 512GB wide at the 512GB boundary */
+> -    [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
+> +    [VIRT_HIGH_PCIE_MMIO] =     { 0x8000000000ULL, 0x8000000000ULL },
+>  };
+>  
+>  static const int a15irqmap[] = {
+> @@ -435,8 +435,8 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+>                                           2, vms->memmap[VIRT_GIC_DIST].size,
+>                                           2, vms->memmap[VIRT_GIC_REDIST].base,
+>                                           2, vms->memmap[VIRT_GIC_REDIST].size,
+> -                                         2, vms->memmap[VIRT_GIC_REDIST2].base,
+> -                                         2, vms->memmap[VIRT_GIC_REDIST2].size);
+> +                                         2, vms->memmap[VIRT_HIGH_GIC_REDIST2].base,
+> +                                         2, vms->memmap[VIRT_HIGH_GIC_REDIST2].size);
+>          }
+>  
+>          if (vms->virt) {
+> @@ -584,7 +584,7 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+>  
+>          if (nb_redist_regions == 2) {
+>              uint32_t redist1_capacity =
+> -                        vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIST_SIZE;
+> +                    vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDIST_SIZE;
+is indent correct here (it didn't look correct to begin with).
+
+Strangle checkpatch didn't complain about it, but since I've run it
+does complain about a bunch of "line over 80 characters" on this patch
+
+>  
+>              qdev_prop_set_uint32(gicdev, "redist-region-count[1]",
+>                  MIN(smp_cpus - redist0_count, redist1_capacity));
+> @@ -601,7 +601,8 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+>      if (type == 3) {
+>          sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base);
+>          if (nb_redist_regions == 2) {
+> -            sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_REDIST2].base);
+> +            sysbus_mmio_map(gicbusdev, 2,
+> +                            vms->memmap[VIRT_HIGH_GIC_REDIST2].base);
 >          }
 >      } else {
-> -        nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
-> -        qemu_fdt_add_subnode(fdt, nodename);
-> -        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> -
-> -        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> -                                          acells, binfo->loader_start,
-> -                                          scells, binfo->ram_size);
-> +        rc = fdt_add_memory_node(fdt, acells, binfo->loader_start,
-> +                                 scells, binfo->ram_size, -1);
->          if (rc < 0) {
-> -            fprintf(stderr, "couldn't set %s reg\n", nodename);
-> +            fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
-> +                    binfo->loader_start);
->              goto fail;
->          }
-> -        g_free(nodename);
+>          sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
+> @@ -1088,8 +1089,8 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
+>  {
+>      hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+>      hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
+> -    hwaddr base_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].base;
+> -    hwaddr size_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].size;
+> +    hwaddr base_mmio_high = vms->memmap[VIRT_HIGH_PCIE_MMIO].base;
+> +    hwaddr size_mmio_high = vms->memmap[VIRT_HIGH_PCIE_MMIO].size;
+>      hwaddr base_pio = vms->memmap[VIRT_PCIE_PIO].base;
+>      hwaddr size_pio = vms->memmap[VIRT_PCIE_PIO].size;
+>      hwaddr base_ecam, size_ecam;
+> @@ -1418,7 +1419,7 @@ static void machvirt_init(MachineState *machine)
+>       */
+>      if (vms->gic_version == 3) {
+>          virt_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
+> -        virt_max_cpus += vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIST_SIZE;
+> +        virt_max_cpus += vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDIST_SIZE;
+>      } else {
+>          virt_max_cpus = GIC_NCPU;
 >      }
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 4cc57a7ef6..a27086d524 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -64,7 +64,7 @@ enum {
+>      VIRT_GIC_VCPU,
+>      VIRT_GIC_ITS,
+>      VIRT_GIC_REDIST,
+> -    VIRT_GIC_REDIST2,
+> +    VIRT_HIGH_GIC_REDIST2,
+>      VIRT_SMMU,
+>      VIRT_UART,
+>      VIRT_MMIO,
+> @@ -74,9 +74,9 @@ enum {
+>      VIRT_PCIE_MMIO,
+>      VIRT_PCIE_PIO,
+>      VIRT_PCIE_ECAM,
+> -    VIRT_PCIE_ECAM_HIGH,
+> +    VIRT_HIGH_PCIE_ECAM,
+>      VIRT_PLATFORM_BUS,
+> -    VIRT_PCIE_MMIO_HIGH,
+> +    VIRT_HIGH_PCIE_MMIO,
+>      VIRT_GPIO,
+>      VIRT_SECURE_UART,
+>      VIRT_SECURE_MEM,
+> @@ -128,7 +128,7 @@ typedef struct {
+>      int psci_conduit;
+>  } VirtMachineState;
 >  
->      rc = fdt_path_offset(fdt, "/chosen");
+> -#define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
+> +#define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+>  
+>  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+>  #define VIRT_MACHINE(obj) \
 

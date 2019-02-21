@@ -1,153 +1,133 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5052117wrx;
-        Wed, 20 Feb 2019 14:50:56 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYiKrGH7VqSb+L6OZPg2LXviBTMNTDBc4bzugJ1z99LQBd2IR1Qdem/CKTZajRo4FwdqB57
-X-Received: by 2002:a25:c050:: with SMTP id c77mr29994507ybf.459.1550703056263;
-        Wed, 20 Feb 2019 14:50:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550703056; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HBeyusNknHbPCjAaQ6gYyVMpZoLLp04kYWh7z50/DYuTIgxKoFhICfazT31GIyLyBL
-         920FG5YAmFLUW5Csb78eEbdT642w94oUj61eaUogMTRiHDomiWbfm5qmCUp6uUzEaw95
-         URS9MP5ea43vbPsSNvI91LG+lD5b6hHk/K7RLB8BTgnUbUxp1Jn8CItmjrL0oI0k/y9m
-         dMsvA4iVdHa9ivHd2r/O16fEqJatlPO5HceJ9a3OCvO07JVhTNCkuFID3vjf2zajZF1L
-         LImtMJiF1v7vdY8JtUHUiWx9HUcmfuy5BlHHCHjxB8O2sfCv/XxA09nI/ZuuLAW5Mz3m
-         gyHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:dkim-signature;
-        bh=EudDAC2Yr0yKC1BuX/sFf5U4Pzk056iWdb4RJV7Oq70=;
-        b=L9l068SwkWiBYTvt4nhNi4ZBvmcEcjQCaQv5tGsWtq6VKZz0vnjDAQXsrCWKTGb2BR
-         dlCJzZ2XafxGAe/1kKtV3P8UoeDDKIgaonj5ARU1dbj3+pKhcLeyATLMR2iAtEGRqrGi
-         XEuN3gEVSaEyCpTYUTh5Y1yg8eQ6tomcvt/rqjWEN6QDtCJkq8mVIseR8wdY+ujMkCx5
-         f3ikxom9HmNTLoGGbCKzConAi2SK6Zq4zRmT2MuKQLzlDm4vUN7IQ1yBWB1eaZV6diDs
-         uuEc0CwNVMy6gcAH13oMAcFLoTpSR+o5loIxiNaO0RdMXhY/Qi7NEL0brMReMaJ2amPF
-         kHIg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=ZrmOsscO;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=2Gyb66Vp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c74si11489893ywc.400.2019.02.20.14.50.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Feb 2019 14:50:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=ZrmOsscO;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=2Gyb66Vp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:50088 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwahb-0003uy-LU
-	for alex.bennee@linaro.org; Wed, 20 Feb 2019 17:50:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37553)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gwahF-0003tG-Q8
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:50:34 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gwah9-0001NF-N5
-	for qemu-arm@nongnu.org; Wed, 20 Feb 2019 17:50:29 -0500
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:35403)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1gwah7-0001Hr-G5; Wed, 20 Feb 2019 17:50:25 -0500
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 633CF22A6F;
-	Wed, 20 Feb 2019 17:50:22 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-	by compute4.internal (MEProxy); Wed, 20 Feb 2019 17:50:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=mesmtp; bh=EudDAC2Yr0yKC1BuX/sFf5U4
-	Pzk056iWdb4RJV7Oq70=; b=ZrmOsscOePmao0KJo1K27ZiBq9F//A95BExbWc97
-	hjBRAc/6wkI0kRWnSgmXRuLlZPBZxZ8Fai20bwPc8ploSojOS0TyNnW1RbgYTqFm
-	pg1AM4L2BoXdyXtWXgL77D+Uvrww+rAl7m/yko/cMXMWAX7RclFkr6d6hQgoNxVa
-	sCU=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=EudDAC
-	2Yr0yKC1BuX/sFf5U4Pzk056iWdb4RJV7Oq70=; b=2Gyb66Vp3KoD/KDi/5REdG
-	onsWr7pqlEcmeTuYsBO3ILRcjbYJaqhP0ESHWz34tdvaln80NUWjRfm/57rokc1i
-	SL3oDhdZyfr1gypqfmAHxmKaGasusT2LXHsbbbIJa+0ZKulczusS25iSJQJO3My/
-	wdj6kn+Q3KW54wjxPVWXBqrhGpNZpdKDU5E7hZY95H4ItoZMBd7HpexR5IXXtMrD
-	PB46+krlr6g41vAcCZJXoQ4NwOFquwQAfjq1sQeLmuuncKY5cSscwsmIecQJEE2l
-	QFToPrs4RADfBpxgDyaN1RoK/OsIHQzgd2m5wEPCFtydsb/Oajc3/Hs9TuRkdWCQ
-	==
-X-ME-Sender: <xms:qdltXFKTs48iewtbx4BkdJ82Vs6fIeu9LwNLzB8VVsgPnrXEFj7xDg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrtdejgddtvdculddtuddrgedtledrtddtmd
-	cutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfhuthen
-	uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-	cujfgurhepfffhvffukfhfgggtuggjfgesthdtredttdervdenucfhrhhomhepfdfgmhhi
-	lhhiohcuifdrucevohhtrgdfuceotghothgrsegsrhgrrghprdhorhhgqeenucfkphepud
-	dvkedrheelrddvtddrvdduieenucfrrghrrghmpehmrghilhhfrhhomheptghothgrsegs
-	rhgrrghprdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:qtltXI6oO0yM54c1gGXAim3hvxHtYlPp61GzXW6c861U6CFKd8KczA>
-	<xmx:qtltXCvI0eyj2Dx2S80q_NdCg6ws6BobBrixCJgLGET55B0rT-5Ryw>
-	<xmx:qtltXOaWoSKN1Jw8BQ4lbYtKcHRa9EJamk3PpaGcz0Yfk0yrc0qJtw>
-	<xmx:rtltXIDbndoLTQR2dVQIU3IDK2GmsFc1YRBqXL9kT4WnJwI6x68WIQ>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 561D210323;
-	Wed, 20 Feb 2019 17:50:17 -0500 (EST)
-Date: Wed, 20 Feb 2019 17:50:16 -0500
-From: "Emilio G. Cota" <cota@braap.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20190220225016.GA19073@flamenco>
-References: <20190130004811.27372-1-cota@braap.org>
-	<70297ac5-defa-0d7b-b4da-44303b328ce2@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id z15sm31605464wrh.18.2019.02.21.06.40.54
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 Feb 2019 06:40:54 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 3215C1FF80;
+	Thu, 21 Feb 2019 14:40:54 +0000 (UTC)
+References: <20190215180500.6906-1-peter.maydell@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, patches@linaro.org
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/armsse: Make 0x5... alias region work for per-CPU devices
+In-reply-to: <20190215180500.6906-1-peter.maydell@linaro.org>
+Date: Thu, 21 Feb 2019 14:40:54 +0000
+Message-ID: <87h8cx432h.fsf@zen.linaroharston>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <70297ac5-defa-0d7b-b4da-44303b328ce2@linaro.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.26
-Subject: Re: [Qemu-arm] [PATCH v6 00/73] per-CPU locks
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	David Hildenbrand <david@redhat.com>, James Hogan <jhogan@kernel.org>,
-	Anthony Green <green@moxielogic.com>, Palmer Dabbelt <palmer@sifive.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, Alistair Francis <alistair23@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t/CdF47XET39
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: ijR552zxL3sL
 
-On Wed, Feb 20, 2019 at 09:27:06 -0800, Richard Henderson wrote:
-> Thanks for the patience.  Both Alex and I have now completed review, and I
-> think this is ready for merge.
-> 
-> There are some patch conflicts with master, so if you can fix those and post a
-> v7, we'll get it merged right away.
 
-Thanks for reviewing! Will send a v7 in a few days.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-		Emilio
+> The region 0x40010000 .. 0x4001ffff and its secure-only alias
+> at 0x50010000... are for per-CPU devices. We implement this by
+> giving each CPU its own container memory region, where the
+> per-CPU devices live. Unfortunately, the alias region which
+> makes devices mapped at 0x4... addresses also appear at 0x5...
+> is only implemented in the overall "all CPUs" container. The
+> effect of this bug is that the CPU_IDENTITY register block appears
+> only at 0x4001f000, but not at the 0x5001f000 alias where it should
+> also appear. Guests (like very recent Arm Trusted Firmware-M)
+> which try to access it at 0x5001f000 will crash.
+>
+> Fix this by moving the handling for this alias from the "all CPUs"
+> container to the per-CPU container. (We leave the aliases for
+> 0x1... and 0x3... in the overall container, because there are
+> no per-CPU devices there.)
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Looks good from code inspection. However I'm having trouble getting the
+right runes for building the firmware. What TARGET_PLATFORM matches the
+IoTKit SSE2 that uses this?
+
+Anyway:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  include/hw/arm/armsse.h |  2 +-
+>  hw/arm/armsse.c         | 26 ++++++++++++++++----------
+>  2 files changed, 17 insertions(+), 11 deletions(-)
+>
+> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+> index f800bafb14a..5a845b3478d 100644
+> --- a/include/hw/arm/armsse.h
+> +++ b/include/hw/arm/armsse.h
+> @@ -182,7 +182,7 @@ typedef struct ARMSSE {
+>      MemoryRegion cpu_container[SSE_MAX_CPUS];
+>      MemoryRegion alias1;
+>      MemoryRegion alias2;
+> -    MemoryRegion alias3;
+> +    MemoryRegion alias3[SSE_MAX_CPUS];
+>      MemoryRegion sram[MAX_SRAM_BANKS];
+>
+>      qemu_irq *exp_irqs[SSE_MAX_CPUS];
+> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+> index d0207dbabc7..ee1357312f1 100644
+> --- a/hw/arm/armsse.c
+> +++ b/hw/arm/armsse.c
+> @@ -110,15 +110,16 @@ static bool irq_is_common[32] =3D {
+>      /* 30, 31: reserved */
+>  };
+>
+> -/* Create an alias region of @size bytes starting at @base
+> +/*
+> + * Create an alias region in @container of @size bytes starting at @base
+>   * which mirrors the memory starting at @orig.
+>   */
+> -static void make_alias(ARMSSE *s, MemoryRegion *mr, const char *name,
+> -                       hwaddr base, hwaddr size, hwaddr orig)
+> +static void make_alias(ARMSSE *s, MemoryRegion *mr, MemoryRegion *contai=
+ner,
+> +                       const char *name, hwaddr base, hwaddr size, hwadd=
+r orig)
+>  {
+> -    memory_region_init_alias(mr, NULL, name, &s->container, orig, size);
+> +    memory_region_init_alias(mr, NULL, name, container, orig, size);
+>      /* The alias is even lower priority than unimplemented_device region=
+s */
+> -    memory_region_add_subregion_overlap(&s->container, base, mr, -1500);
+> +    memory_region_add_subregion_overlap(container, base, mr, -1500);
+>  }
+>
+>  static void irq_status_forwarder(void *opaque, int n, int level)
+> @@ -608,16 +609,21 @@ static void armsse_realize(DeviceState *dev, Error =
+**errp)
+>      }
+>
+>      /* Set up the big aliases first */
+> -    make_alias(s, &s->alias1, "alias 1", 0x10000000, 0x10000000, 0x00000=
+000);
+> -    make_alias(s, &s->alias2, "alias 2", 0x30000000, 0x10000000, 0x20000=
+000);
+> +    make_alias(s, &s->alias1, &s->container, "alias 1",
+> +               0x10000000, 0x10000000, 0x00000000);
+> +    make_alias(s, &s->alias2, &s->container,
+> +               "alias 2", 0x30000000, 0x10000000, 0x20000000);
+>      /* The 0x50000000..0x5fffffff region is not a pure alias: it has
+>       * a few extra devices that only appear there (generally the
+>       * control interfaces for the protection controllers).
+>       * We implement this by mapping those devices over the top of this
+> -     * alias MR at a higher priority.
+> +     * alias MR at a higher priority. Some of the devices in this range
+> +     * are per-CPU, so we must put this alias in the per-cpu containers.
+>       */
+> -    make_alias(s, &s->alias3, "alias 3", 0x50000000, 0x10000000, 0x40000=
+000);
+> -
+> +    for (i =3D 0; i < info->num_cpus; i++) {
+> +        make_alias(s, &s->alias3[i], &s->cpu_container[i],
+> +                   "alias 3", 0x50000000, 0x10000000, 0x40000000);
+> +    }
+>
+>      /* Security controller */
+>      object_property_set_bool(OBJECT(&s->secctl), true, "realized", &err);
+
+
+--
+Alex Benn=C3=A9e

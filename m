@@ -1,213 +1,219 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5551910wrx;
-        Thu, 21 Feb 2019 01:28:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbYCWDCXq9UB41aRXk5yP0e2RrhcrwIB85kd41GF0Lv8s8Bqlyck2i6FI+g9L93GQ3sKkjR
-X-Received: by 2002:a25:73d3:: with SMTP id o202mr279949ybc.310.1550741316978;
-        Thu, 21 Feb 2019 01:28:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550741316; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5571788wrx;
+        Thu, 21 Feb 2019 01:55:37 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ia1cVzXDblIj9KLwGk5YhXmdimpjjwSBxc8jDQflMubWtNEh1+4/7DzSXFJxUAKomIwtHPy
+X-Received: by 2002:a81:5845:: with SMTP id m66mr31718923ywb.185.1550742936923;
+        Thu, 21 Feb 2019 01:55:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550742936; cv=none;
         d=google.com; s=arc-20160816;
-        b=IJ1seX9bXfkCy1GMKRnSEaVBt8Z3aV12lItUn6WlF6UJ34ttjKxyaaxQZElJTssCDw
-         pDsS4mmdap5xVO4rcLLmdDvFXcbD4TTREweyHBVV6DO1j/EMyx2/+ySWzMeXIDu1mIev
-         lYEfTFkneswYwUrBKOlk/yd+K2Q3U4+ObhQBxLXHqEkD/4hajJtB9gdA0qCu+QFoqBOB
-         OSKF6dBRQvOBCrYsc2tO4U6NzEHPAacdp03QldoFClGaf8cX0mc5UElpMsmZIxtQ4026
-         NMUVYnJr21ohlJtK19auBJ7ZgmX/yq3g1LVNAvTICOq/YtchwI4qsAmEtBXyTKeiN7ZD
-         PI+w==
+        b=gmk5zvSwERgQCzsx8yLQW4apmxsFO1Uh7Fh/MoS2Vz+ofP4Qd3qwPOqobe8i5P9FvK
+         9uqAHb4mKBYkwuZikrm9F1ZyVMBQSQ2G/RN8jbqq1Sz3krJhLVTr8+iVGL0JakuQHOLT
+         lc/Mtn9Hfu1DEu8s/jobQtnReA9LCI711c0MPADt4BKUfW4+M2DK+/iksX6mMdoAXiEF
+         yU/qiZhlYr+EBAXrOFxp5HUebKeqhko+B8MtQkAjjx9J/UpNbNPX0znYayg/vwtKkIa/
+         TNnJE211qufbKY1CTbej2yVQRtLqAv6PapPzmJZ5PPbyMb6gC/eZXBJ7C7zwb6FcNDiR
+         idNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=blw63M9V/EkB8Fp+Mbsat3F+YCIbNDrbbwF/6ie1Zfw=;
-        b=njGHK54u06G/WT4/TyuvbSKLpKHhPMibJv6LWCyPytXTLVmDiw0nVkIFX7N2QjYBUl
-         Z7OQH/8NQApHafgIWzR5fr8sIQWbPAwCCRUh2lDWv+B+3O6E2hmYmW4il7IfvHziZFwW
-         z8pzJpA0c8hOD/2t0+0U5Dc3zSzglNgAVAtM5R4v+1VJfTMl3q0ZgNrHemBxjLj7s9k2
-         4iiZWpnsYai7qTz01r6z3sHEgEkRxYy+RX1S3JhHngKo8xPrmjlL6IGtvoutLf/1xZSt
-         21vUWnAtdOAyJx3Z/+A9x/DYO6am5zhcn7ZwjVixfpOK38bHifBA004ycJe1hzfsBTRR
-         FV1g==
+        bh=w3RvVIsj+KitPOxHRqODwcU05UFLKDk6IBW4asCTCQo=;
+        b=MZlFjONnxkWDN5r9MLztKwVR8WX/EMrqvydQOjEFdUlaOk6FPeRTAmpUqFMBbgRDc5
+         YjDaPIc8JbikIgDsBs9Z0ZqKucyvHxdt/JPzR95asDra9LuDO3xBoJYg8Cy+xpPU/h2z
+         J3gZOCnn2ahOmtUYH5c8JehacvO7ETYtAgIEUY58lzzoeLRf5tqiQiIde7NoK88ttLq9
+         FwufctRQqyfi/IMnqz4e5ZYEh8UiK8Tk3fa3XCaUPlW7UKMR2zlU8UhrhOymKAWcaF7Z
+         m2M1Ilp4t06XQdUnBINIwVcA2bP5fSQmntFXHkQPEgWOC3GDcTz/8YwzgdkotP0dSDN2
+         NHoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x76si7163604ybg.490.2019.02.21.01.28.36
+        by mx.google.com with ESMTPS id q32si138987ywa.429.2019.02.21.01.55.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Feb 2019 01:28:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Feb 2019 01:55:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56989 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:57306 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwkei-0006bE-9c
-	for alex.bennee@linaro.org; Thu, 21 Feb 2019 04:28:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38128)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gwl4q-0001F2-BQ
+	for alex.bennee@linaro.org; Thu, 21 Feb 2019 04:55:36 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45202)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gwkeP-0006Yw-SD
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 04:28:18 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gwl4L-0007Tz-Dt
+	for qemu-devel@nongnu.org; Thu, 21 Feb 2019 04:55:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gwkeL-0006f5-W4
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 04:28:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54568)
+	(envelope-from <imammedo@redhat.com>) id 1gwkmu-0005O7-A3
+	for qemu-devel@nongnu.org; Thu, 21 Feb 2019 04:37:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47214)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gwkeI-000667-4o; Thu, 21 Feb 2019 04:28:12 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1gwkmq-0004xG-8V; Thu, 21 Feb 2019 04:37:00 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 050BFE6A81;
-	Thu, 21 Feb 2019 09:27:20 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E0F30308FEC3;
+	Thu, 21 Feb 2019 09:36:17 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8317360BFE;
-	Thu, 21 Feb 2019 09:27:13 +0000 (UTC)
-Date: Thu, 21 Feb 2019 10:27:11 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E64FE5D9D3;
+	Thu, 21 Feb 2019 09:36:11 +0000 (UTC)
+Date: Thu, 21 Feb 2019 10:36:10 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20190221102711.4ad80d72@redhat.com>
-In-Reply-To: <8f8abcb6-6665-dc89-b836-6e9d131f6f44@redhat.com>
+Message-ID: <20190221103610.0c2add1c@redhat.com>
+In-Reply-To: <852c526c-42fd-4ff4-d00e-1a44e1561e67@redhat.com>
 References: <20190205173306.20483-1-eric.auger@redhat.com>
-	<20190205173306.20483-13-eric.auger@redhat.com>
-	<20190218095838.048819c5@Igors-MacBook-Pro.local>
-	<8f8abcb6-6665-dc89-b836-6e9d131f6f44@redhat.com>
+	<20190205173306.20483-15-eric.auger@redhat.com>
+	<20190218103155.2b74e0a2@Igors-MacBook-Pro.local>
+	<852c526c-42fd-4ff4-d00e-1a44e1561e67@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 21 Feb 2019 09:27:20 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 21 Feb 2019 09:36:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 12/18] hw/arm/boot: Expose
- the PC-DIMM nodes in the DT
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v6 14/18] hw/arm/virt: Allocate
+ device_memory
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	dgilbert@redhat.com, qemu-arm@nongnu.org,
-	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: POhAIgW0+gUI
+	dgilbert@redhat.com, shameerali.kolothum.thodi@huawei.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	eric.auger.pro@gmail.com, david@gibson.dropbear.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qH6OPai+Afb4
 
-On Wed, 20 Feb 2019 16:30:13 +0100
+On Tue, 19 Feb 2019 16:53:22 +0100
 Auger Eric <eric.auger@redhat.com> wrote:
 
 > Hi Igor,
 > 
-> On 2/18/19 9:58 AM, Igor Mammedov wrote:
-> > On Tue,  5 Feb 2019 18:33:00 +0100
+> On 2/18/19 10:31 AM, Igor Mammedov wrote:
+> > On Tue,  5 Feb 2019 18:33:02 +0100
 > > Eric Auger <eric.auger@redhat.com> wrote:
 > >   
-> >> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> >> The device memory region is located after the initial RAM.
+> >> its start/size are 1GB aligned.
 > >>
-> >> This patch add memory nodes corresponding to PC-DIMM regions.  
-> > s/add/adds/ or s/This patch add/Add/
-> >   
-> >>
-> >> NV_DIMM and ACPI_NVDIMM configs are not yet set for ARM so we
-> >> don't need to care about NV-DIMM at this stage.
-> >>
-> >> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 > >>
 > >> ---
+> >> v4 -> v5:
+> >> - device memory set after the initial RAM
+> >>
 > >> v3 -> v4:
-> >> - git rid of @base and @len in fdt_add_hotpluggable_memory_nodes
-> >>
-> >> v1 -> v2:
-> >> - added qapi_free_MemoryDeviceInfoList and simplify the loop
+> >> - remove bootinfo.device_memory_start/device_memory_size
+> >> - rename VIRT_HOTPLUG_MEM into VIRT_DEVICE_MEM
 > >> ---
-> >>  hw/arm/boot.c | 35 +++++++++++++++++++++++++++++++++++
-> >>  1 file changed, 35 insertions(+)
+> >>  hw/arm/virt.c | 36 ++++++++++++++++++++++++++++++++++++
+> >>  1 file changed, 36 insertions(+)
 > >>
-> >> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> >> index 2ef367e15b..2a70e8aa82 100644
-> >> --- a/hw/arm/boot.c
-> >> +++ b/hw/arm/boot.c
-> >> @@ -19,6 +19,7 @@
-> >>  #include "sysemu/numa.h"
-> >>  #include "hw/boards.h"
-> >>  #include "hw/loader.h"
-> >> +#include "hw/mem/memory-device.h"
-> >>  #include "elf.h"
-> >>  #include "sysemu/device_tree.h"
-> >>  #include "qemu/config-file.h"
-> >> @@ -526,6 +527,34 @@ static void fdt_add_psci_node(void *fdt)
-> >>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >> index 783468ba77..b683902991 100644
+> >> --- a/hw/arm/virt.c
+> >> +++ b/hw/arm/virt.c
+> >> @@ -61,6 +61,7 @@
+> >>  #include "hw/arm/smmuv3.h"
+> >>  #include "hw/mem/pc-dimm.h"
+> >>  #include "hw/mem/nvdimm.h"
+> >> +#include "hw/acpi/acpi.h"
+> >>  
+> >>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+> >>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+> >> @@ -1260,6 +1261,37 @@ static void create_secure_ram(VirtMachineState *vms,
+> >>      g_free(nodename);
 > >>  }
 > >>  
-> >> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
-> >> +                                             uint32_t acells, uint32_t scells) {
-> >> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
-> >> +    MemoryDeviceInfo *mi;
-> >> +    PCDIMMDeviceInfo *di;
-> >> +    bool is_nvdimm;
-> >> +    int ret = 0;
-> >> +
-> >> +    for (info = info_list; info != NULL; info = info->next) {
-> >> +        mi = info->value;
-> >> +        is_nvdimm = (mi->type == MEMORY_DEVICE_INFO_KIND_NVDIMM);
-> >> +        di = !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
-> >> +
-> >> +        if (is_nvdimm) {
-> >> +            ret = -ENOENT; /* NV-DIMM not yet supported */
-> >> +        } else {
-> >> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
-> >> +                                      scells, di->size, di->node);
-> >> +        }
-> >> +        if (ret < 0) {
-> >> +            goto out;
-> >> +        }
-> >> +    }
-> >> +out:
-> >> +    qapi_free_MemoryDeviceInfoList(info_list);
-> >> +    return ret;
-> >> +}
-> >> +
-> >>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-> >>                   hwaddr addr_limit, AddressSpace *as)
-> >>  {
-> >> @@ -621,6 +650,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-> >>          }
-> >>      }
-> >>  
-> >> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
-> >> +    if (rc < 0) {
-> >> +            fprintf(stderr, "couldn't add hotpluggable memory nodes\n");  
-> > error message is rather vague, user using nvdimms + pc-dimms on CLI won't have
-> > a clue that the former is not supported.
-> > Suggest pass in error_fatal as argument and report more specific error from
-> > fdt_add_hotpluggable_memory_nodes()
-> > 
-> > does this run on reboot?  
+> >> +static void create_device_memory(VirtMachineState *vms, MemoryRegion *sysmem)
+> >> +{
+> >> +    MachineState *ms = MACHINE(vms);
+> >> +    uint64_t device_memory_size = ms->maxram_size - ms->ram_size;  
+> > should size it with 1Gb alignment per slot from the start (to avoid x86 mistakes),
+> > see enforce_aligned_dimm usage and associated commit for more details  
+> I don't understand the computation done in pc machine. eventually we are
+> likely to have more device memory than requested by the user. Why don't
+> we check (machine->maxram_size - machine->ram_size) >=
+> machine->ram_slots * GiB
+> instead of adding 1GiB/slot to the initial user requirements?
 > 
-> Yes after a QMP system_reset I can see the DIMMS on guest in /proc/meminfo
-it siims that dimms come from ACPI and not DTB.
+> Also machine->maxram_size - machine->ram_size is checked to be aligned
+> with TARGET_PAGE_SIZE. Is TARGET_PAGE_SIZE representative of the guest
+> PAGE in accelerated mode? Is it valid ro require an alignment on 1GB
+> boundary as I do in this patch?
+See commit 085f8e88b for explanation,
+What we are basically are doing there is sizing hotpluggbale address space
+to allow max possible huge page aligned DIMM to be successfully plugged in
+even if address space if fragmented.
 
-My worry was that arm_load_dtb() always end up with exit(1) on failure but it seems
-that it's not called on reboot so it should be fine.
-
+> 
+> >   
+> >> +    uint64_t align = GiB;
+> >> +
+> >> +    if (!device_memory_size) {
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    if (ms->ram_slots > ACPI_MAX_RAM_SLOTS) {
+> >> +        error_report("unsupported number of memory slots: %"PRIu64,
+> >> +                     ms->ram_slots);
+> >> +        exit(EXIT_FAILURE);
+> >> +    }
+> >> +
+> >> +    if (QEMU_ALIGN_UP(ms->maxram_size, align) != ms->maxram_size) {
+> >> +        error_report("maximum memory size must be aligned to multiple of 0x%"
+> >> +                     PRIx64, align);
+> >> +        exit(EXIT_FAILURE);
+> >> +    }
+> >> +
+> >> +    ms->device_memory = g_malloc0(sizeof(*ms->device_memory));
+> >> +    ms->device_memory->base = QEMU_ALIGN_UP(GiB + ms->ram_size, GiB);  
+> >                                                ^^^ where does this come from?  
+> OK, introduced RAMBASE macro
 > 
 > Thanks
 > 
 > Eric
+> > 
 > >   
-> >> +            goto fail;
+> >> +
+> >> +    memory_region_init(&ms->device_memory->mr, OBJECT(vms),
+> >> +                       "device-memory", device_memory_size);
+> >> +    memory_region_add_subregion(sysmem, ms->device_memory->base,
+> >> +                                &ms->device_memory->mr);
+> >> +}
+> >> +
+> >>  static void *machvirt_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+> >>  {
+> >>      const VirtMachineState *board = container_of(binfo, VirtMachineState,
+> >> @@ -1569,6 +1601,10 @@ static void machvirt_init(MachineState *machine)
+> >>                                           machine->ram_size);
+> >>      memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
+> >>  
+> >> +    if (vms->extended_memmap) {
+> >> +        create_device_memory(vms, sysmem);
 > >> +    }
 > >> +
-> >>      rc = fdt_path_offset(fdt, "/chosen");
-> >>      if (rc < 0) {
-> >>          qemu_fdt_add_subnode(fdt, "/chosen");  
+> >>      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+> >>  
+> >>      create_gic(vms, pic);  
 > >   
+> 
 

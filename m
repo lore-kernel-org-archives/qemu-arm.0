@@ -1,90 +1,114 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7288783wrx;
-        Fri, 22 Feb 2019 11:11:51 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZ5ECTLDxWqxnOJOCbG+LAw+CceT5NrQrN4tQzp1fiFN9jlcKVIHDtU3PbDel/7rP+XMW5d
-X-Received: by 2002:a81:4f92:: with SMTP id d140mr4716261ywb.384.1550862710925;
-        Fri, 22 Feb 2019 11:11:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550862710; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7416380wrx;
+        Fri, 22 Feb 2019 13:56:11 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbJ3dp5hGPnZkYbP1fPmTOIYy8sym7VK8I4PuMOujSMbSTb2MCU7G8cLSmAJy5wXOCs936f
+X-Received: by 2002:a25:8708:: with SMTP id a8mr5174535ybl.164.1550872571352;
+        Fri, 22 Feb 2019 13:56:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550872571; cv=none;
         d=google.com; s=arc-20160816;
-        b=aYQ0t0a+cbTnWpV0ZYBNKDqJpwvAAgoRMiqJtkbKpDtgc5jxA5Udd7uisC125/NKeF
-         dQNCFL22DsWlh2lOQhW1Crbf35IlhlmCGz7JdduFVH0ss3mIROxhpE89zBoHArYFXjIQ
-         HJ2z6LXOmbauN270VMXEm37LTBo5zj6jV3CW66tJ1+1BmkA07WZMWQ25oAZUJ8gj05o0
-         WK6tEASUGRf0y/+ty61JVutqTzobR+1kGNju3G04HH/o0nhLWkARHtnQmajTV632SD+v
-         lXPKim1b1Up442ENXdHqlN9hhhCrFqVq6lF+Pe2xKeQisHzdFE5IOhEY3m3L2cgd/uHj
-         qvDA==
+        b=cDOLEvnZ3WAssfAyOctdUWUbpCay0Iokne/Tp4tJ2KxOsKq9hmS7y9fwj1yuOaTpNx
+         m4zDXBvqZ4V+xjJnNGlGodNUwPJO9d/fZMs4LRJNh6r7X4Vclomi76mL9ocCUb7uQ7z7
+         4Grk5ciHZLSY8WQgpN19yAFWBK5bZbjUvVS9emJRGAfVlykP64mmZp1sxVWgr6PuIuse
+         SRcoAJFDX++1Ap8Lwf+QYkkQBhcLcEvt4e3Pkl5fCR2O/IqvB/hSLyowroB5HFF9M1PU
+         ykB1FBsRh9/Nbrxc/ItHTTJRWpBCFByBfGdjjSsDWI1OOaJmRn9GL6G2F/8q11LNaF0E
+         DBdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=VBo7THo0B5iWU1ZCaAukZN2AdwZNVKduF7EdpAmefwg=;
-        b=Ry98mJ5U3RYa0c2TaMVA7Rqu2cL6joo9iMu+n6M1umO2qu10hVx82N90jOiKY5ZlUE
-         /9snx63hZ/DOPP6EBW2qTh6kfIoma2mBxTeVgwIzXyjM1LLCaISG0g6TxMxcmrQtgf9m
-         h9FpZOxmalY2szYd0dtBDK+1GmTylw7qG/BlIZSzd8vRQ7vH6zAqJ6aMVXyJclhKdoSc
-         XibSCM+bs/YOvkTSu/PiCQkEd+9X2SOn7/QlTlya58zRII8Hd4DBUWYmZK2bKSZ9ehZ0
-         xtskRfsgmld/qS3EnhR87ZbxQxERFC2zVKfU9jd720HtBKFnQ7CXEIypJJPfZZWysPzP
-         VWgg==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=qPHnIQqEELQm2e2DSCnb6WkbGTh0s8Vu9fpCHir+bek=;
+        b=P40aKZPlc6448Ul1wL5CVxwf5+DzotyHNjQdJ3KgK3H/LcfOpQopsXEBm4mJQeOyoG
+         zEM1kJts6GGM6XSxW9tR47dA7rgsQ9lDFRF3iH7wECqngnhPy5OD/vxHHAGNXoLUcUo7
+         ++Q2vuR2f+GQ8DO6Zs0XEiwgEK8KxvuNRW21wSYKkfHWz26zmLszk8pjeee1B2dCmAa/
+         SaC1ngnz7EQcvdIaU1aeW9V0jZb6nkQMDpzL+MJBJMtAVpnEiWybJQZ9E47YlN0d4EkM
+         rNJBR1qNs6JrjVxnfHp5XpUb7Tf9ur6FyttJON1AjBF03UNgLALZ1ooGTia0pZKe4sT1
+         uOlg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c1mEPZY2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i17si1405924ywg.13.2019.02.22.11.11.50
+        by mx.google.com with ESMTPS id v199si1579296ybv.44.2019.02.22.13.56.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 11:11:50 -0800 (PST)
+        Fri, 22 Feb 2019 13:56:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=c1mEPZY2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:55703 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:57469 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxGEg-0008SU-DK
-	for alex.bennee@linaro.org; Fri, 22 Feb 2019 14:11:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55889)
+	id 1gxIni-0003bA-So
+	for alex.bennee@linaro.org; Fri, 22 Feb 2019 16:56:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1gxGEZ-0008SO-Lj
-	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 14:11:44 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gxInb-0003aj-JC
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 16:56:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1gxGEY-0003K6-Dv
-	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 14:11:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41002)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1gxGEY-0003H1-4g; Fri, 22 Feb 2019 14:11:42 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3622530BC680;
-	Fri, 22 Feb 2019 19:11:40 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-125-131.rdu2.redhat.com
-	[10.10.125.131])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9951E5D9CA;
-	Fri, 22 Feb 2019 19:11:30 +0000 (UTC)
-To: Auger Eric <eric.auger@redhat.com>,
-	Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
-	shannon.zhaosl@gmail.com, peter.maydell@linaro.org, imammedo@redhat.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com>
-Date: Fri, 22 Feb 2019 20:11:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <richard.henderson@linaro.org>) id 1gxIna-0003I3-Kq
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 16:56:03 -0500
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:34002)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gxIna-0002kQ-34
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 16:56:02 -0500
+Received: by mail-pg1-x543.google.com with SMTP id i130so1717293pgd.1
+	for <qemu-arm@nongnu.org>; Fri, 22 Feb 2019 13:55:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=qPHnIQqEELQm2e2DSCnb6WkbGTh0s8Vu9fpCHir+bek=;
+	b=c1mEPZY2CzA65vHkKv+iHr5Ieqp/SgtVur4giMYS2zy5o/ZHjZWBc/Z9OY8ReKrke0
+	x1gd1parm41rGQoUWlDZb9tnNPLvznwKn/fJnNbNa2dwJCuSbfvnDX2aO1FDdbXgKal5
+	o8FtiDwcRAmXsfmah6RO6hljsV8FYIFvdM0w6QUGKiN3TsGQgulcMN7OV+PAWUqzaKR3
+	G7c4fnbZnBtDP0Pt3P2CRlOjZk3Lb9EmprI/eBOQCdEv/yj2CVYCUevmRxVCWPE/lCPG
+	HEv8kgqpvTXdCSthyO/b5b3QwbOpju+I/j4foLvYi52Fy3m0B2CiGVGvMIr5sA/3xPOc
+	Yx7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=qPHnIQqEELQm2e2DSCnb6WkbGTh0s8Vu9fpCHir+bek=;
+	b=kc0CaquHPhlYowa4QR9WMCPy/mqNwEgX/sw76lWQHHcET/iYDgz77X79f0gYQzYScN
+	7obix6IcQZHqd6GvtLdDLTm6c652JQVvgued60xhhJ66QMuieHSehjE3A7O3hpPmJRfp
+	yHnrmd6aEoIsaiZToaf6e9TPfSsoXUDERMxHUO8J+9aXcA3fxDQZcmfanEwjU8E38r4F
+	lxwJGpTo067oizFd279Z46TnwxE2V5Md9GFLqoiNOfcxR8TaF85HyfPbS7Rm9Jwn9HdB
+	6rGcggZNn4qgTtFekcGyorrnrigvl56PHdHMF+D630PudLHvqKau3IQ28adZ6r05ATQU
+	7fyg==
+X-Gm-Message-State: AHQUAuY/QH2SY4a5wNxB+zlJ7WnEOPmkSp7ogwpUTRkTGw+uFtwl55gP
+	W0ntdZ448NQkPSDM22udS8Q62A==
+X-Received: by 2002:a63:d70e:: with SMTP id d14mr5987552pgg.159.1550872553694; 
+	Fri, 22 Feb 2019 13:55:53 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
+	[97.113.188.82])
+	by smtp.gmail.com with ESMTPSA id s1sm3051611pgv.30.2019.02.22.13.55.52
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Feb 2019 13:55:52 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20190222170936.13268-1-peter.maydell@linaro.org>
+	<20190222170936.13268-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <ce67ed48-a67a-de30-944b-a793c46d2a5c@linaro.org>
+Date: Fri, 22 Feb 2019 13:55:50 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
+In-Reply-To: <20190222170936.13268-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Fri, 22 Feb 2019 19:11:40 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] target/arm: Use MVFR1
+ feature bits to gate A32/T32 FP16 instructions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,138 +120,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
-	linuxarm@huawei.com, xuwei5@huawei.com,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: plKalXCKL4A5
+X-TUID: TXWgqzhj8Yz+
 
-On 02/22/19 17:03, Auger Eric wrote:
-> Hi Shameer,
+On 2/22/19 9:09 AM, Peter Maydell wrote:
+> Instead of gating the A32/T32 FP16 conversion instructions on
+> the ARM_FEATURE_VFP_FP16 flag, switch to our new approach of
+> looking at ID register bits. In this case MVFR1 fields FPHP
+> and SIMDHP indicate the presence of these insns.
 > 
-> On 1/28/19 12:05 PM, Shameer Kolothum wrote:
->> This series is an attempt to provide hotplug support to both
->> pc-dimm and nvdimm device memory on ARM virt platform. This is
->> based on Eric's recent works to support PCDIMM/NVDIMM device memory[1].
->> The kernel support for arm64 memory hot add was added only
->> recently by Robin[2] and hence the guest kernel should be => 5.0-rc1.
->>
->> This makes use of PL061 GPIO controller to sent related ACPI events
-> s/sent/send
->> to the Guest. The only reference I could find with respect to the GPIO
->> pins usage is here[3] which says, "use PIN 3 for system_powerdown,
->> reserving PIN 0, 1, 2 for PCI hotplug, CPU hotplug and memory hotplug".
->> Hence Pin 2 is used for PCDIMM and pin 4 for NVDIMM.
->>
->> This is sanity tested on a HiSilicon ARM64 platform and appreciate
->> any further testing.
+> This change doesn't alter behaviour for any of our CPUs.
 > 
-> I did some testing on another platform and I got the exactly the same
-> results as yours: PCDIMM hot plug works fine. Also after system_reset I
-> still can see the slots.
-> Hot-unplug is not supported though.
-> For NVDIMM, hot-add works fine and and I can see the slots using ndctl
-> on guest. But after system_reset, the guest does not boot properly.
-> 
->>
->> This series can be applied on top of Eric's branch here[4]
->>
->> Test:
->> ------
->> Please use a Guest kernel image >5.0-rc1 with all the mem/nvdimm
->> hotplug related CONFIGs enabled.
->>
->> ./qemu-system-aarch64 \
->> -machine virt,gic-version=3,nvdimm \
->> -m 1G,maxmem=4G,slots=4 \
->> -cpu host \
->> -kernel Image \
->> -initrd rootfs-iperf.cpio \
->> -bios QEMU_EFI.fd \
->> -numa node,nodeid=0 \
->> -net none \
->> -nographic -enable-kvm \
->> -append "console=ttyAMA0 acpi=force earlycon=pl011,0x9000000"
->>
->> Enter Qemu monitor,
->> Add pc-dimm:
->> object_add memory-backend-ram,id=mem1,size=1G
->> device_add pc-dimm,id=dimm1,memdev=mem1
->>
->> Add nvdimm:
->> object_add memory-backend-ram,id=mem2,size=1G
->> device_add nvdimm,id=dimm2,memdev=mem2
->>
->> Known Issue:
->>
->> It is observed that hot adding nvdimm will results in guest reboot
->> failure. EDK2 fails to build the ACPI tables on reboot. Please find
->> below EDK2 log on Guest reboot after nvdimm hot-add,
->>
->> ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
->> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
->>
->> The root cause seems to be EDK2 ACPI table checksum failure
->> as NFIT table is getting updated on hot-add. This needs further
->> investigation.
-> + Ard, Leif, Laszlo if they have any idea of what is missing/wrong.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h       | 37 ++++++++++++++++++++++++++++++++++++-
+>  target/arm/cpu.c       |  2 --
+>  target/arm/kvm32.c     |  3 ---
+>  target/arm/translate.c | 26 ++++++++++++++++++--------
+>  4 files changed, 54 insertions(+), 14 deletions(-)
 
-Huh, very interesting; I usually don't expect my sanity checks to fire
-in practice. :)
-
-The message
-
-  ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
-
-is logged by OVMF's and ArmVirtQemu's ACPI Platform DXE Driver when it
-finds an invalid COMMAND_ADD_CHECKSUM command in QEMU's ACPI
-linker/loader script.
-
-Please see the command definition in QEMU's
-"hw/acpi/bios-linker-loader.c". In particular, please refer to the
-function bios_linker_loader_add_checksum(), which builds the command
-structure, and documents the fields.
-
-(You may also refer to QEMU_LOADER_ADD_CHECKSUM in file
-"OvmfPkg/AcpiPlatformDxe/QemuLoader.h" in the edk2 source tree, for the
-same information.)
-
-The error message is logged if:
-- the offset at which the checksum should be stored falls outside of the
-size of the fw_cfg blob, or
-- the range over which the checksum should be calculated falls outside
-(at least in part) of the fw_cfg blob.
-
-To me this suggests that QEMU generates an invalid COMMAND_ADD_CHECKSUM
-command for the firmware.
-
-... I've tried to skim the patches briefly. I think there must be an
-error in the DSDT building logic that is only active on reboot if an
-nvdimm module was hot-added before the reboot.
-
-Thanks,
-Laszlo
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
->> [1]https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg05740.html
->> [2]https://patchwork.kernel.org/patch/10724455/
->> [3]https://lists.gnu.org/archive/html/qemu-arm/2015-12/msg00095.html
->> [4]https://github.com/eauger/qemu/tree/v3.1.0-dimm-v5
->>
->> Shameer Kolothum (4):
->>   hw:acpi: Make ACPI IO address space configurable
->>   hw/arm/virt: Add GPIO based pcdimm hotplug ACPI event support
->>   hw/arm/virt: Enable pc-dimm hotplug support
->>   hw/arm/virt: Add nvdimm hotplug support
->>
->>  default-configs/arm-softmmu.mak  |   1 +
->>  hw/acpi/memory_hotplug.c         |  13 +++--
->>  hw/arm/virt-acpi-build.c         |  45 +++++++++++++++--
->>  hw/arm/virt.c                    | 105 ++++++++++++++++++++++++++++++++++++---
->>  hw/i386/acpi-build.c             |   3 +-
->>  include/hw/acpi/memory_hotplug.h |   6 ++-
->>  include/hw/arm/virt.h            |  15 ++++++
->>  7 files changed, 168 insertions(+), 20 deletions(-)
->>
-
+r~

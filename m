@@ -1,149 +1,217 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7178165wrx;
-        Fri, 22 Feb 2019 09:10:35 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ib/MJJQN9Hejcbm4f/z1vEUnobCsGRjO6ZeD4RBNTkbHFSU8i1AKZuC8NsrXVnb9BbjvsTQ
-X-Received: by 2002:a25:c044:: with SMTP id c65mr4327437ybf.284.1550855435617;
-        Fri, 22 Feb 2019 09:10:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550855435; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7180382wrx;
+        Fri, 22 Feb 2019 09:12:41 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYJDn8REGcaiZavVLnIJwnnlj7y7PqIUmFRE/ooGCO+qKUrkeOQNQAbmieSP0I1ZbSEJZ1/
+X-Received: by 2002:a25:da12:: with SMTP id n18mr4298270ybf.236.1550855561835;
+        Fri, 22 Feb 2019 09:12:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550855561; cv=none;
         d=google.com; s=arc-20160816;
-        b=ioBltXDfvBuXw0CJ4qKDFZygGEI/X0tMyCkD26y10d7bgAm52KEsSjAMMS9CvlI95d
-         G+Ar/809Op23KGUHhZ07501WH0no9YN0+oN05mZbZCijxAatVdIMxQFThr161Nomd2S0
-         oNALc4jcXG3zvfvBs5AieB/0i2mQHh41QQLARel1Fd4Wgnz5NZQ0zwT6LIe9gmEADAeo
-         0Yj/xRsHfIgFVQzPOvOUvUsAtnrFumoWXXWTtr5amqEOAaD0WnDVFfHdyb6zcIYGHlrR
-         Wu2F9sCPUDlQUt0fCU0PtaWZyxx0qzOAedTkKhx0IfIj5N/uhq76pEGWi1c8Ob1JphhR
-         Jgkw==
+        b=i4l4SAhtBQ4GCeB+QZyWrm6+xa3hEb3CntEDxkoGCjwwceBdrEIRYAcwug/9tsoWMt
+         g2BTwLMihLceZO02KSoU8unj9KMglLfpeLYmPts9d5XR8LiBvlsASpqWq8YIjvk2YpDr
+         Nvucn+or0M1b0foX59ZxDohLtQ1m4QAJa6KYtzlvcQZ7d+Df0Ri2htiYOmVxcJQyeSNQ
+         6BmvpUr2cMCYeFO9suxjTORjr/v8LMaV6+c+tt8nBk/a4XGeLK1vwxUzkbINT6oIVCFO
+         HNEKa4NZYtKSBMChD43PACJZbyzVdNYNTLVr1LcQdqHM2+1yKCY8jATUJkeDqmL1hWMD
+         iK0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=eOc2MC5G7RAcLxP1oY0WaDEgqJOO5LdIGP0QvWVZQQQ=;
-        b=lGYCifM8dZ1Z5e1Ohq17uJfa2157/vVxOn+kmnc6ueH6xBR3/JgLnt/mySpQ2TfspF
-         0LAQ0fAVUMPny3irtFZl1VCjV9YTHyD5XFkBrvi8kEug90GF72yT/XQdM2ZXNrql/SX/
-         ZubXdfXx8x0SL6TyMy3RWnCeXcnJXnUo2R+erv2EA9ajcbPsanTG3V08p/94fM96HAFp
-         TphAWhA0ZaSqhr/zsO+2UtEecOUzJkTsrRlxJK2lR3uGrsWFBU/FIMLxav//wpoxCbnB
-         J5oqG2Qf6kG+S0Id4IzYhejFO3t0+YDBBJgsjLsTrv54O2h6IN/LQm85L05HThizBqgh
-         0IlQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=9Y2fmsp12Tf3NP9yxnPACBVe0lEx7m4Aj9FlcnxqqZc=;
+        b=M5xxykv7is0Y1RQMo1a1/thkUD7S0rEYwZoqrOv6cCjgI1/e4vnazGFV2i1zDZTKx0
+         64lTrCLtZCTh8vLK1mJr8QPY7H+mLdynWwPdhjbUG76NPUk/HYdv7J/HoCuWHhf2+fCH
+         1ZvIhdLRoeZPFhNTc4yIXiyX2EMTyMuaAdwDDZF6TVevsDc5O93QYkb8Q2XpbU0WtnJ3
+         G2ZzqU8asuOukyISqjJ00IuoNDbiGyVJPCSQk0RSRj2IT6um0r0D++h6+fj/gbvU4Dsl
+         ESLljW9x2KiNrHAPq12ot4hPdU+SR55rP406NwcOvxqP0P5ZmbS1omCqq3nuxHNZa2La
+         KQwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SfY6vStL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=nzheUzVf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 63si1154706ybo.487.2019.02.22.09.10.35
+        by mx.google.com with ESMTPS id 64si1126548ybi.363.2019.02.22.09.12.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 09:10:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Feb 2019 09:12:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SfY6vStL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=nzheUzVf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:54472 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:54487 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxELL-0006Ri-38
-	for alex.bennee@linaro.org; Fri, 22 Feb 2019 12:10:35 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36600)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gxENN-0007dA-A8
+	for alex.bennee@linaro.org; Fri, 22 Feb 2019 12:12:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36626)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gxEKx-0006Hs-7a
-	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 12:10:12 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gxEKz-0006JT-DR
+	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 12:10:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gxEKv-0001gC-39
-	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 12:10:10 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:43520)
+	(envelope-from <peter.maydell@linaro.org>) id 1gxEKv-0001h5-Gp
+	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 12:10:11 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44752)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gxEKu-0000pH-Kx
-	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 12:10:08 -0500
-Received: by mail-wr1-x432.google.com with SMTP id d17so3135352wre.10
-	for <qemu-arm@nongnu.org>; Fri, 22 Feb 2019 09:09:40 -0800 (PST)
+	id 1gxEKu-0000uI-TG
+	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 12:10:09 -0500
+Received: by mail-wr1-x444.google.com with SMTP id w2so3134923wrt.11
+	for <qemu-devel@nongnu.org>; Fri, 22 Feb 2019 09:09:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=eOc2MC5G7RAcLxP1oY0WaDEgqJOO5LdIGP0QvWVZQQQ=;
-	b=SfY6vStLsXlaSnVtHuGBv/l+rBrWDzlGzVH+Ctrxgx9CFRo1vd/PgpzS1YLKzoC4n2
-	gtJZ/YHTD/XX95J6NBGxKj5fg+U2VKxT5DV5yZ3m/HWQwCBongh5u730VZIe6CR3bhDJ
-	5FD1FTH3ODYlzUR3I02hx6rxWoxffSZ+/V/m8SOddz2aosX+WPHywfEb+Ew1fo4eQgVu
-	fw1a1Gc9gWjkipKZj711BK81Y2EGqtvRKyIbr9bRmpEmgqmCUqFLLKf2ZmhY/QJF6xlg
-	YljvuFlaU+e47IUUFoa4xXj8sxVm6Ez2qfWhsM6Ju83G+Kcd4QngP1snZR+46U9cBxXD
-	Jtcw==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=9Y2fmsp12Tf3NP9yxnPACBVe0lEx7m4Aj9FlcnxqqZc=;
+	b=nzheUzVfNUNTDRN0YH+G8dhIGCNgoIKpfelurAPUhwjMNPZdEu5ZApQNQ31hOxBYEC
+	V5NTpjgs06DR0gSZ9ddxsUVSClyl6SFg7JpP7P5y3QBjJKVVgjwdVsx5WilCcwixUej/
+	5160cXhPCcz/crPGc0CHexaZE9w9oEKxF7CHiTq3z1Zpx6K9Kykp1yhLIRVQ31JPj2jv
+	t2eTOcQrWm1bJIQbtFLcEHIsn6N4G8rtpro7WLBVHEvqXlAjUBW/v+lWHNvCIfUJnKXc
+	K72nDZsbJxyy6ANVTauad3TzCNZZIABJySkRSwcLw0FzQmt6NVAoLN38/tgBrO5HP9Mc
+	8RAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=eOc2MC5G7RAcLxP1oY0WaDEgqJOO5LdIGP0QvWVZQQQ=;
-	b=oF2pZ3rBezby6SO783+36nwuu3O0uNXMju0A/YdRaXHP8O6kiehtmvyCO+QGLuqd8F
-	f3yRJCNY0yoiucVCpx/1KSEIDAr6D/sPTebv6G7wFG52rQWpKyHt2jcymI1GP2//4WEg
-	FGaer225MpXJ65qTk3JSO8YNGNIp4wDTwlrjeBfnKkH/RsWdcCfbyLm9C/DaE7NpPV8U
-	MD59dLQO0ffuTLT6fo0HBRNyw/rif4444VEWyXF1oUYsiaZZVW392WLaKYowaIY4rX/R
-	cWpbjFpCOjwfTpCMWlMwLLhEqENfrxNm6E9s96mJe+5hygAXYIV49u7Frkcp/dTvUWQN
-	nAXQ==
-X-Gm-Message-State: AHQUAuaxlH/3gFJoAoANX5QWTXnIztqyNKpqV3+R9itX5g21XDEeEjxH
-	ztjHWMFifEyGEmDRCn2hDZ6h1QtHkw4=
-X-Received: by 2002:a05:6000:1142:: with SMTP id
-	d2mr3622449wrx.43.1550855378889; 
-	Fri, 22 Feb 2019 09:09:38 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=9Y2fmsp12Tf3NP9yxnPACBVe0lEx7m4Aj9FlcnxqqZc=;
+	b=ob5CHogUCg+khahe6+fXLVHleGJlutvLdyz5UyD5ijOpPNH3eiPbfn69p+Gn8vFenY
+	2BKqqJFHhcTYmqk8yQqYgHE+gIJmk4UogwOi3yNSOUaOz5s/wO2AcLx8DaTHy3BX1DeG
+	RdPDWZ0cx9uUjpyu3gdHc6TFZK3rnwvyfe3Pw4+ezybnLnOAwiOmTM6JeN1ZXJKkSOUN
+	l67gpHBY5jJaeXJCn0g2KPM/r0Cvgt9DPlA/uNKJ+m0Pp4NNZIVYPaY7f0YWriPS0m78
+	iBDWE78J6tZuEUYO6hpkn7V+6697K4M5YjhGKzxYdyLr7cfsaUlwGd76bPg1lDuxLT6x
+	1D6w==
+X-Gm-Message-State: AHQUAubfyhIRn4SkN+nYNCQeu1cRmlTmYsbPMx3LY6pLKaBka/kMAaFp
+	8Bp0X4wmw5EWEIASAGZJHSbD0A==
+X-Received: by 2002:adf:f70c:: with SMTP id r12mr3946648wrp.54.1550855381548; 
+	Fri, 22 Feb 2019 09:09:41 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id f6sm2829077wrt.87.2019.02.22.09.09.37
+	by smtp.gmail.com with ESMTPSA id f6sm2829077wrt.87.2019.02.22.09.09.40
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Feb 2019 09:09:38 -0800 (PST)
+	Fri, 22 Feb 2019 09:09:40 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 22 Feb 2019 17:09:34 +0000
-Message-Id: <20190222170936.13268-1-peter.maydell@linaro.org>
+Date: Fri, 22 Feb 2019 17:09:36 +0000
+Message-Id: <20190222170936.13268-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190222170936.13268-1-peter.maydell@linaro.org>
+References: <20190222170936.13268-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::432
-Subject: [Qemu-arm] [PATCH 0/2] target/arm: Use MVFR feature bits to gate
- some insns
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-devel] [PATCH 2/2] target/arm: Gate "miscellaneous FP" insns
+ by ID register field
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0JJVLPWm811t
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SUH6jyCb1LoN
 
-This patchset switches some of the A32/T32 VFP decode to
-look at the relevant MVFR feature bits rather than using
-ARM_FEATURE_* feature flags:
- * use MVFR1.FPHP and .SIMDHP to gate the FP16 conversion insns
- * use MVFR2.FPMISC to gate the various insns in disas_vfp_v8_insn()
+There is a set of VFP instructions which we implement in
+disas_vfp_v8_insn() and gate on the ARM_FEATURE_V8 bit.
+These were all first introduced in v8 for A-profile, but in
+M-profile they appeared in v7M. Gate them on the MVFR2
+FPMisc field instead, and rename the function appropriately.
 
-This is a bit of preparatory work for v7M/v8M floating point
-support: the v7M FPU has the "misc" insns that only arrived
-in A-profile in v8, and also the FP16 to/from double precision
-conversion insns which are v8-only. So feature checks that look
-at ARM_FEATURE_V8 won't work there, and we need to look at the
-MVFR* fields instead.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h       | 20 ++++++++++++++++++++
+ target/arm/translate.c | 21 +++++++++++++--------
+ 2 files changed, 33 insertions(+), 8 deletions(-)
 
-This should have no behavioural changes for current CPUs.
-
-thanks
--- PMM
-
-Peter Maydell (2):
-  target/arm: Use MVFR1 feature bits to gate A32/T32 FP16 instructions
-  target/arm: Gate "miscellaneous FP" insns by ID register field
-
- target/arm/cpu.h       | 57 +++++++++++++++++++++++++++++++++++++++++-
- target/arm/cpu.c       |  2 --
- target/arm/kvm32.c     |  3 ---
- target/arm/translate.c | 47 ++++++++++++++++++++++------------
- 4 files changed, 87 insertions(+), 22 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 36ea3b58567..ff9ba387b42 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3328,6 +3328,26 @@ static inline bool isar_feature_aa32_fp16_dpconv(const ARMISARegisters *id)
+     return FIELD_EX64(id->mvfr1, MVFR1, FPHP) > 1;
+ }
+ 
++static inline bool isar_feature_aa32_vsel(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->mvfr2, MVFR2, FPMISC) >= 1;
++}
++
++static inline bool isar_feature_aa32_vcvt_dr(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->mvfr2, MVFR2, FPMISC) >= 2;
++}
++
++static inline bool isar_feature_aa32_vrint(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->mvfr2, MVFR2, FPMISC) >= 3;
++}
++
++static inline bool isar_feature_aa32_vminmaxnm(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->mvfr2, MVFR2, FPMISC) >= 4;
++}
++
+ /*
+  * 64-bit feature tests via id registers.
+  */
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index b7702fb49f7..af8f9e669b8 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -3357,7 +3357,7 @@ static const uint8_t fp_decode_rm[] = {
+     FPROUNDING_NEGINF,
+ };
+ 
+-static int disas_vfp_v8_insn(DisasContext *s, uint32_t insn)
++static int disas_vfp_misc_insn(DisasContext *s, uint32_t insn)
+ {
+     uint32_t rd, rn, rm, dp = extract32(insn, 8, 1);
+ 
+@@ -3375,15 +3375,18 @@ static int disas_vfp_v8_insn(DisasContext *s, uint32_t insn)
+         rm = VFP_SREG_M(insn);
+     }
+ 
+-    if ((insn & 0x0f800e50) == 0x0e000a00) {
++    if ((insn & 0x0f800e50) == 0x0e000a00 && dc_isar_feature(aa32_vsel, s)) {
+         return handle_vsel(insn, rd, rn, rm, dp);
+-    } else if ((insn & 0x0fb00e10) == 0x0e800a00) {
++    } else if ((insn & 0x0fb00e10) == 0x0e800a00 &&
++               dc_isar_feature(aa32_vminmaxnm, s)) {
+         return handle_vminmaxnm(insn, rd, rn, rm, dp);
+-    } else if ((insn & 0x0fbc0ed0) == 0x0eb80a40) {
++    } else if ((insn & 0x0fbc0ed0) == 0x0eb80a40 &&
++               dc_isar_feature(aa32_vrint, s)) {
+         /* VRINTA, VRINTN, VRINTP, VRINTM */
+         int rounding = fp_decode_rm[extract32(insn, 16, 2)];
+         return handle_vrint(insn, rd, rm, dp, rounding);
+-    } else if ((insn & 0x0fbc0e50) == 0x0ebc0a40) {
++    } else if ((insn & 0x0fbc0e50) == 0x0ebc0a40 &&
++               dc_isar_feature(aa32_vcvt_dr, s)) {
+         /* VCVTA, VCVTN, VCVTP, VCVTM */
+         int rounding = fp_decode_rm[extract32(insn, 16, 2)];
+         return handle_vcvt(insn, rd, rm, dp, rounding);
+@@ -3427,10 +3430,12 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+     }
+ 
+     if (extract32(insn, 28, 4) == 0xf) {
+-        /* Encodings with T=1 (Thumb) or unconditional (ARM):
+-         * only used in v8 and above.
++        /*
++         * Encodings with T=1 (Thumb) or unconditional (ARM):
++         * only used for the "miscellaneous VFP features" added in v8A
++         * and v7M (and gated on the MVFR2.FPMisc field).
+          */
+-        return disas_vfp_v8_insn(s, insn);
++        return disas_vfp_misc_insn(s, insn);
+     }
+ 
+     dp = ((insn & 0xf00) == 0xb00);
 -- 
 2.20.1
 

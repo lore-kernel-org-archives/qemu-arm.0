@@ -1,81 +1,98 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6076082wrx;
-        Thu, 21 Feb 2019 10:39:47 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYEGO9PjSiLxghRpKXmEB/gUjh/tiFZyv1FByuOeat5nJOd3nRfEgibynoXxBEwCIQh6kMo
-X-Received: by 2002:a25:81c3:: with SMTP id n3mr34075984ybm.222.1550774387145;
-        Thu, 21 Feb 2019 10:39:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550774387; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7517265wrx;
+        Fri, 22 Feb 2019 16:21:25 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZIEdAaFpCu8dSkK20VvmwynYoq71g2Hy832VXauqrK+qjPnt+db0ZU+Z1tmElEwD4IjFwq
+X-Received: by 2002:a25:2c2:: with SMTP id 185mr5923017ybc.322.1550881285126;
+        Fri, 22 Feb 2019 16:21:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550881285; cv=none;
         d=google.com; s=arc-20160816;
-        b=U0S+oVGfuVS+06s+PW8JJp5pVHwiXHl1LmcPRptseqcEnRMHenExHaeyl1ytqEzm2c
-         1t/Lg2Z2vgAgkR/efiXw1LkWwS6+J4OFXcLIrFDgk7R2pT+odKFkmqx/4mgrwzg+yuM6
-         tS2Vi/c7q4QE/xzIfZyC0PlaEIy4BStd8WjLlyeCSV6IBzue6PP22+5r5nOf+cGUUo3N
-         y3DIOHZGVxl80VpHEN/vIyuddZVq95M/2wC1Yg3FRd4N/HFWll0nfdxQ7Ry0Ih26pBjb
-         S9nUYFMQlGJuQHLm5Rx+Xb+o5dq5u7K1ZG3rJjjupoSkDORGT3xTaUlqptEUFMYbXJtM
-         TXOw==
+        b=xwg4yuoPVMRZuTGhhYmK3MQ96hq26hAHXkFQ/+M7kS31n2ABheCUZg/x1gwkbEFNry
+         H6hU5Xouqm+KLSgA26/ysUENXbMi/yQAdG7sAhY+Ww/Xya3SyPJ8MUezn66Rd91vuaIw
+         173zggGB+vHd8T0mJiSvIQB95PaEV3+k+2z+ZgeyV/M6Koh4zwawMvdALlrY3EJCarTu
+         IGDLz+vEEPCv1Rj6jC76tNPCKVrVkhpXqoeoAon2aeuplTjtY/fJYFiLsHcsFqnU7bEZ
+         DyVdgxJ1C3pjoFReXnj0aP9wDzyw7J2LJwRV0Is4vjtHeV7H1pAreU+3X488pX8nJ7Tf
+         NL9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=QXayaCoKP5isriLYVqjPKXRF6kEfq3/bGTfM7n7K0Ug=;
-        b=Jsr8TYSqYpIiLwuxbMUNAElSJpXIoICvhIfqbgONpv2GGJ+wtmtxdCuEtpn3hkc8b8
-         GC0CKgKwMxYJlAe1ZmOSUe/QrNI9WlmX3GxvXGvFscNHGutJgj+HSId+SQ4HXS22LgCH
-         00A5e2JmeMAy69PCnF/dBw0xRX4YjV65FFx7UyUfMvgzFVdI9bBvIk07PVoH0Q9KAiYM
-         99G+kCjo4izcS11ceqzUY1DFM1EiSUxWPRajRzbKBFddrte1KMzSIViIJHZUz9jW4XOt
-         bJ7mmCgX0kcmsUpwckAk2NlsL+6l863dHzYcgsIF/9fdJd5OqVrkkpcdcpOWdHQwrMyi
-         yiXw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=MHm+IAapOiBzL901PzQLZ/BE05vz+/FSZkBItL7Bfr4=;
+        b=UKmsNppYJcxN2VvqRc/7BlmrgyEVoOY6XJEeNDi+7XXXcIUjBBtVjoRTY1oWIzGoyx
+         Il+fnqi9jf/qega9LsfpVzBbpBNrq7EilN3PmgHvEgb+Z7OQnhZz2IxGOgf5XzECpI/x
+         i/dFjklLGlHDJitzuxwhDsFMOxJhmtU/1yJHCX16WUczxj86X3Cb8nqha32N8S369Ipd
+         oMiIE5yabYW15oG958TwSpuD2TYHZESfI6UgByeMsrjuKceVgtJ0XHQXG5Hly1DIO3cl
+         Jp7HBvGa+AC7AFjcBCgpP6UgdBfjBg5ozjKoeGFAOAovOJeBsdJdjDZyUQm+rltHncPt
+         XqSg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W4D5cDW3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m66si4607071ywb.436.2019.02.21.10.39.46
+        by mx.google.com with ESMTPS id v186si1728030ybg.136.2019.02.22.16.21.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Feb 2019 10:39:47 -0800 (PST)
+        Fri, 22 Feb 2019 16:21:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W4D5cDW3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36614 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:58928 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gwtG5-0004K2-Kh
-	for alex.bennee@linaro.org; Thu, 21 Feb 2019 13:39:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48221)
+	id 1gxL4G-00085E-Im
+	for alex.bennee@linaro.org; Fri, 22 Feb 2019 19:21:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gwtFx-0004JZ-Na
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 13:39:39 -0500
+	(envelope-from <michelheily@gmail.com>) id 1gxKVv-0004Qr-MR
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 18:45:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gwtFv-0001Fs-Ep
-	for qemu-arm@nongnu.org; Thu, 21 Feb 2019 13:39:37 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58838)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gwtFn-00050M-Fl; Thu, 21 Feb 2019 13:39:29 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8BC655944A;
-	Thu, 21 Feb 2019 18:38:42 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-77.brq.redhat.com [10.40.204.77])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 185C71001DD6;
-	Thu, 21 Feb 2019 18:38:33 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Thu, 21 Feb 2019 19:38:29 +0100
-Message-Id: <20190221183829.31019-1-philmd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 21 Feb 2019 18:38:42 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH] hw/arm: Use object_initialize_child for correct
- reference counting
+	(envelope-from <michelheily@gmail.com>) id 1gxKVr-0007gx-EQ
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 18:45:52 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34111)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <michelheily@gmail.com>)
+	id 1gxKVh-0007TW-PJ; Fri, 22 Feb 2019 18:45:42 -0500
+Received: by mail-wr1-x441.google.com with SMTP id f14so4122475wrg.1;
+	Fri, 22 Feb 2019 15:45:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=MHm+IAapOiBzL901PzQLZ/BE05vz+/FSZkBItL7Bfr4=;
+	b=W4D5cDW34vj15hJsMVgYcvBrL3A78yhnJuGro+t++N7PYotpAv5UoLY/QIHVCJUrXn
+	+tY/kgQgS9K6iGkZErYWDgC/9ufwhEN67cdY57ofTzDbVKt+l0P+dqepnDIPWiu50tqA
+	TXKXsrcMUoyW+QWdfgvq+MqJHsEmuWGYYiUs3WtXYL+CQi3wHDBTPJs4IohxR9LGzD61
+	hk87rDnmZpsR1B1OnCK1nnPymZOkA2S+6+zdAvJxIU1H0+jrgLMm8XUpWFBDBLUP3nIy
+	dVis/voB9T8m1O3D2nVPo+nw2iGH+QQoje8jJ8pxGnG3Yp0VqDuax23DpXi41N3CPmB1
+	e3sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=MHm+IAapOiBzL901PzQLZ/BE05vz+/FSZkBItL7Bfr4=;
+	b=bOYzQSXUNXxwQnxGXL7/sUC8QzYt10F98OpwFXoRrwsKWWEeHYczJMBKNFZO7RPJiO
+	Dyawrk7qzPxKVnP8IphoQInh3mC+3OT8JrwR9wosnGJ9Jo1gVjeD37YsEF6utgp0tGcs
+	moMGk9uBaWzi6FPAvOaGSP3fWbRY8A/htTe/OSqElJDov/ZK284EPR+TEPJlb1ME37mV
+	5OQrMpC4Pn/QhWngBROn+l+8H/oW3zN0ycGGmol1yd9h5BUp5qW6Pg5ll8cp+tJ5C0yB
+	Url7ZY0Wfw6mvoCHvAD3Z69PAjUofNlBurpOoDyLv1QbZaaI5PP42UoAJ8hhZ07I9Se8
+	fL9w==
+X-Gm-Message-State: AHQUAuYNb+Iv7YPLBwAiKx2rhd2cksGSJeYiZ4VhHspSeL5Cv0O+jRM+
+	+Y6haVHmUZFwjv4Ob3WapomXRjsgIoo=
+X-Received: by 2002:a5d:6b43:: with SMTP id x3mr5047220wrw.76.1550879129008;
+	Fri, 22 Feb 2019 15:45:29 -0800 (PST)
+Received: from localhost.localdomain (bzq-84-109-209-49.cablep.bezeqint.net.
+	[84.109.209.49])
+	by smtp.gmail.com with ESMTPSA id o12sm5264918wre.0.2019.02.22.15.45.27
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 22 Feb 2019 15:45:28 -0800 (PST)
+From: michelheily@gmail.com
+To: qemu-devel@nongnu.org
+Date: Sat, 23 Feb 2019 01:38:06 +0200
+Message-Id: <1550878686-23934-1-git-send-email-michelheily@gmail.com>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::441
+X-Mailman-Approved-At: Fri, 22 Feb 2019 19:21:11 -0500
+Subject: [Qemu-arm] [PATCH] hw/arm/stellaris: Implement watchdog timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,285 +104,333 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Michel Heily <michelheily@gmail.com>,
+	"open list:Stellaris" <qemu-arm@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MqlQkmTgFfmR
+X-TUID: 1B1IqaRo8uPh
 
-As Thomas Huth explained:
-"Both functions, object_initialize() and object_property_add_child()
-increase the reference counter of the new object, so one of the
-references has to be dropped afterwards to get the reference counting
-right. Otherwise the child object will not be properly cleaned up
-when the parent gets destroyed.
-Thus let's use now object_initialize_child() instead to get the
-reference counting here right."
+From: Michel Heily <michelheily@gmail.com>
 
-This patch was generated using the following Coccinelle script:
-
- @use_object_initialize_child@
- identifier parent_obj;
- expression child;
- expression propname;
- expression child_type;
- expression errp;
- @@
- (
- -    object_initialize(&child, sizeof(child), child_type);
- -    object_property_add_child(parent_obj, propname, OBJECT(&child), NUL=
-L);
- +    object_initialize_child(parent_obj, propname,  &child, sizeof(child=
-),
- +                            child_type, &error_abort, NULL);
- |
- -    object_initialize(&child, sizeof(child), child_type);
- -    object_property_add_child(parent_obj, propname, OBJECT(&child), err=
-p);
- +    object_initialize_child(parent_obj, propname,  &child, sizeof(child=
-),
- +                            child_type, errp, NULL);
- )
-
-and a bit of manual fix-up for overly long lines.
-
-Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-Inspired-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Michel Heily <michelheily@gmail.com>
 ---
- hw/arm/aspeed_soc.c          | 43 ++++++++++++++++++------------------
- hw/arm/bcm2835_peripherals.c | 41 +++++++++++++++++-----------------
- hw/arm/digic.c               |  4 ++--
- 3 files changed, 45 insertions(+), 43 deletions(-)
+ hw/arm/stellaris.c | 260 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 258 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index a27233d487..81665f2948 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -106,11 +106,11 @@ static void aspeed_soc_init(Object *obj)
-     AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-     int i;
-=20
--    object_initialize(&s->cpu, sizeof(s->cpu), sc->info->cpu_type);
--    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
-+    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
-+                            sc->info->cpu_type, &error_abort, NULL);
-=20
--    object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
--    object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
-+    object_initialize_child(obj, "scu", &s->scu, sizeof(s->scu),
-+                            TYPE_ASPEED_SCU, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
-     qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
-                          sc->info->silicon_rev);
-@@ -121,35 +121,35 @@ static void aspeed_soc_init(Object *obj)
-     object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
-                               "hw-prot-key", &error_abort);
-=20
--    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
--    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
-+    object_initialize_child(obj, "vic", &s->vic, sizeof(s->vic),
-+                            TYPE_ASPEED_VIC, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
-=20
--    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_T=
-IMER);
--    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), N=
-ULL);
-+    object_initialize_child(obj, "timerctrl", &s->timerctrl,
-+                            sizeof(s->timerctrl), TYPE_ASPEED_TIMER,
-+                            &error_abort, NULL);
-     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
-                                    OBJECT(&s->scu), &error_abort);
-     qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
-=20
--    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
--    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
-+    object_initialize_child(obj, "i2c", &s->i2c, sizeof(s->i2c),
-+                            TYPE_ASPEED_I2C, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
-=20
--    object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
--    object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
-+    object_initialize_child(obj, "fmc", &s->fmc, sizeof(s->fmc),
-+                            sc->info->fmc_typename, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->fmc), sysbus_get_default());
-     object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs",
-                               &error_abort);
-=20
-     for (i =3D 0; i < sc->info->spis_num; i++) {
--        object_initialize(&s->spi[i], sizeof(s->spi[i]),
--                          sc->info->spi_typename[i]);
--        object_property_add_child(obj, "spi[*]", OBJECT(&s->spi[i]), NUL=
-L);
-+        object_initialize_child(obj, "spi[*]", &s->spi[i], sizeof(s->spi=
-[i]),
-+                                sc->info->spi_typename[i], &error_abort,=
- NULL);
-         qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
-     }
-=20
--    object_initialize(&s->sdmc, sizeof(s->sdmc), TYPE_ASPEED_SDMC);
--    object_property_add_child(obj, "sdmc", OBJECT(&s->sdmc), NULL);
-+    object_initialize_child(obj, "sdmc", &s->sdmc, sizeof(s->sdmc),
-+                            TYPE_ASPEED_SDMC, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get_default());
-     qdev_prop_set_uint32(DEVICE(&s->sdmc), "silicon-rev",
-                          sc->info->silicon_rev);
-@@ -159,15 +159,16 @@ static void aspeed_soc_init(Object *obj)
-                               "max-ram-size", &error_abort);
-=20
-     for (i =3D 0; i < sc->info->wdts_num; i++) {
--        object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_WDT=
-);
--        object_property_add_child(obj, "wdt[*]", OBJECT(&s->wdt[i]), NUL=
-L);
-+        object_initialize_child(obj, "wdt[*]", &s->wdt[i], sizeof(s->wdt=
-[i]),
-+                                TYPE_ASPEED_WDT, &error_abort, NULL);
-         qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus_get_default());
-         qdev_prop_set_uint32(DEVICE(&s->wdt[i]), "silicon-rev",
-                                     sc->info->silicon_rev);
-     }
-=20
--    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC10=
-0);
--    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), N=
-ULL);
-+    object_initialize_child(obj, "ftgmac100", &s->ftgmac100,
-+                            sizeof(s->ftgmac100), TYPE_FTGMAC100,
-+                            &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 442529c..08baeb2 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -348,6 +348,241 @@ static void stellaris_gptm_init(Object *obj)
  }
-=20
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 6be7660e8c..0355a41d8b 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -41,8 +41,8 @@ static void bcm2835_peripherals_init(Object *obj)
-                        MBOX_CHAN_COUNT << MBOX_AS_CHAN_SHIFT);
-=20
-     /* Interrupt Controller */
--    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
--    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-+    object_initialize_child(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM28=
-35_IC,
-+                            &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-=20
-     /* UART0 */
-@@ -51,21 +51,21 @@ static void bcm2835_peripherals_init(Object *obj)
-     qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
-=20
-     /* AUX / UART1 */
--    object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
--    object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
-+    object_initialize_child(obj, "aux", &s->aux, sizeof(s->aux),
-+                            TYPE_BCM2835_AUX, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
-=20
-     /* Mailboxes */
--    object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
--    object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
-+    object_initialize_child(obj, "mbox", &s->mboxes, sizeof(s->mboxes),
-+                            TYPE_BCM2835_MBOX, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus_get_default());
-=20
-     object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
-                                    OBJECT(&s->mbox_mr), &error_abort);
-=20
-     /* Framebuffer */
--    object_initialize(&s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
--    object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
-+    object_initialize_child(obj, "fb", &s->fb, sizeof(s->fb), TYPE_BCM28=
-35_FB,
-+                            &error_abort, NULL);
-     object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-=
-size",
-                               &error_abort);
-     qdev_set_parent_bus(DEVICE(&s->fb), sysbus_get_default());
-@@ -74,8 +74,9 @@ static void bcm2835_peripherals_init(Object *obj)
-                                    OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
-=20
-     /* Property channel */
--    object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PR=
-OPERTY);
--    object_property_add_child(obj, "property", OBJECT(&s->property), NUL=
-L);
-+    object_initialize_child(obj, "property", &s->property,
-+                            sizeof(s->property), TYPE_BCM2835_PROPERTY,
-+                            &error_abort, NULL);
-     object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
-                               "board-rev", &error_abort);
-     qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
-@@ -86,31 +87,31 @@ static void bcm2835_peripherals_init(Object *obj)
-                                    OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
-=20
-     /* Random Number Generator */
--    object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
--    object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
-+    object_initialize_child(obj, "rng", &s->rng, sizeof(s->rng),
-+                            TYPE_BCM2835_RNG, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
-=20
-     /* Extended Mass Media Controller */
--    object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
--    object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
-+    object_initialize_child(obj, "sdhci", &s->sdhci, sizeof(s->sdhci),
-+                            TYPE_SYSBUS_SDHCI, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
-=20
-     /* SDHOST */
--    object_initialize(&s->sdhost, sizeof(s->sdhost), TYPE_BCM2835_SDHOST=
-);
--    object_property_add_child(obj, "sdhost", OBJECT(&s->sdhost), NULL);
-+    object_initialize_child(obj, "sdhost", &s->sdhost, sizeof(s->sdhost)=
-,
-+                            TYPE_BCM2835_SDHOST, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->sdhost), sysbus_get_default());
-=20
-     /* DMA Channels */
--    object_initialize(&s->dma, sizeof(s->dma), TYPE_BCM2835_DMA);
--    object_property_add_child(obj, "dma", OBJECT(&s->dma), NULL);
-+    object_initialize_child(obj, "dma", &s->dma, sizeof(s->dma),
-+                            TYPE_BCM2835_DMA, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->dma), sysbus_get_default());
-=20
-     object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
-=20
-     /* GPIO */
--    object_initialize(&s->gpio, sizeof(s->gpio), TYPE_BCM2835_GPIO);
--    object_property_add_child(obj, "gpio", OBJECT(&s->gpio), NULL);
-+    object_initialize_child(obj, "gpio", &s->gpio, sizeof(s->gpio),
-+                            TYPE_BCM2835_GPIO, &error_abort, NULL);
-     qdev_set_parent_bus(DEVICE(&s->gpio), sysbus_get_default());
-=20
-     object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
-diff --git a/hw/arm/digic.c b/hw/arm/digic.c
-index 726abb9b48..14409ef080 100644
---- a/hw/arm/digic.c
-+++ b/hw/arm/digic.c
-@@ -35,8 +35,8 @@ static void digic_init(Object *obj)
-     DeviceState *dev;
-     int i;
-=20
--    object_initialize(&s->cpu, sizeof(s->cpu), "arm946-" TYPE_ARM_CPU);
--    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
-+    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
-+                            "arm946-" TYPE_ARM_CPU, &error_abort, NULL);
-=20
-     for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
- #define DIGIC_TIMER_NAME_MLEN    11
---=20
-2.20.1
+ 
+ 
++/* Hardware watchdog. */
++
++#define TYPE_STELLARIS_WDTIMER "stellaris-wdtimer"
++#define STELLARIS_WDTIMER(obj) \
++    OBJECT_CHECK(wdtimer_state, (obj), TYPE_STELLARIS_WDTIMER)
++
++typedef struct wdtimer_state {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++    uint32_t control;
++    uint32_t load;
++    uint32_t tick;
++    uint32_t state;
++    uint32_t mask;
++    uint32_t stage;
++    bool locked;
++    bool reset;
++
++    struct wdtimer_state *opaque;
++    QEMUTimer *timer;
++    qemu_irq irq;
++} wdtimer_state;
++
++static void wdtimer_reset(wdtimer_state *s)
++{
++    s->load = 0xffffffff;
++    s->tick = 0xffffffff;
++    s->state = 0;
++    s->mask = 0;
++    s->locked = false;
++    s->reset = false;
++    s->stage = 1;
++}
++
++static void wdtimer_update_irq(wdtimer_state *s)
++{
++    int level;
++    level = (s->state & s->mask) != 0;
++    qemu_set_irq(s->irq, level);
++}
++
++
++static void wdtimer_reload(wdtimer_state *s, uint32_t stage)
++{
++    s->stage = stage;
++
++    uint64_t tick = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    timer_mod(s->timer, tick + s->load * system_clock_scale);
++}
++
++static void wdtimer_expired(void *opaque)
++{
++    wdtimer_state **p = (wdtimer_state **)opaque;
++    wdtimer_state *s;
++
++    s = *p;
++
++    if (s->mask & 1) {
++        s->state = 1; /* assert IRQ */
++        wdtimer_update_irq(s);
++    }
++
++    if (s->stage == 1) {
++        wdtimer_reload(s, 2);
++
++    } else if (s->stage == 2) {
++        if (s->reset && (s->state & s->mask) != 0) {
++            qemu_log_mask(CPU_LOG_RESET,
++                          "WDT: system reset on 2nd time-out\n");
++            wdtimer_reset(s);
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_PANIC);
++        } else {
++            wdtimer_reload(s, 1);
++        }
++    }
++}
++
++/* WDT offsets */
++#define WDT_O_LOAD              0x00000000
++#define WDT_O_VALUE             0x00000004
++#define WDT_O_CTL               0x00000008
++#define WDT_O_ICR               0x0000000C
++#define WDT_O_RIS               0x00000010
++#define WDT_O_MIS               0x00000014
++#define WDT_O_TEST              0x00000418
++#define WDT_O_LOCK              0x00000C00
++#define WDT_O_PeriphID4         0x00000FD0
++#define WDT_O_PeriphID5         0x00000FD4
++#define WDT_O_PeriphID6         0x00000FD8
++#define WDT_O_PeriphID7         0x00000FDC
++#define WDT_O_PeriphID0         0x00000FE0
++#define WDT_O_PeriphID1         0x00000FE4
++#define WDT_O_PeriphID2         0x00000FE8
++#define WDT_O_PeriphID3         0x00000FEC
++#define WDT_O_PCellID0          0x00000FF0
++#define WDT_O_PCellID1          0x00000FF4
++#define WDT_O_PCellID2          0x00000FF8
++#define WDT_O_PCellID3          0x00000FFC
++
++static uint64_t wdtimer_read(void *opaque, hwaddr offset,
++                          unsigned size)
++{
++    wdtimer_state *s = (wdtimer_state *)opaque;
++
++    switch (offset) {
++    case WDT_O_LOAD:
++        return s->load;
++    case WDT_O_VALUE:
++        return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    case WDT_O_CTL:
++        return s->control;
++    case WDT_O_RIS:
++        return s->state;
++    case WDT_O_MIS:
++        return s->state & s->mask;
++    case WDT_O_TEST:
++        qemu_log_mask(LOG_UNIMP,
++                      "WDT: stall not implemented\n");
++        return 0;
++    case WDT_O_LOCK:
++        return s->locked ? 1 : 0;
++    case WDT_O_PeriphID4: /* fallthrough */
++    case WDT_O_PeriphID5:
++    case WDT_O_PeriphID6:
++    case WDT_O_PeriphID7:
++    case WDT_O_PeriphID0:
++    case WDT_O_PeriphID1:
++    case WDT_O_PeriphID2:
++    case WDT_O_PeriphID3:
++        qemu_log_mask(LOG_UNIMP,
++                      "WDT: Peripheral identification not implemented\n");
++        return 0;
++    case WDT_O_PCellID0:
++    case WDT_O_PCellID1:
++    case WDT_O_PCellID2:
++    case WDT_O_PCellID3:
++        qemu_log_mask(LOG_UNIMP,
++                      "WDT: PrimieCell identification not implemented\n");
++        return 0;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "WDT: read at bad offset 0x02%" HWADDR_PRIx "\n",
++                      offset);
++        return 0;
++    }
++}
++
++static void wdtimer_write(void *opaque, hwaddr offset,
++                       uint64_t value, unsigned size)
++{
++    wdtimer_state *s = (wdtimer_state *)opaque;
++
++    if (s->locked) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "WDT: write to watchdog registers in locked state\n");
++        wdtimer_update_irq(s);
++        return;
++    }
++
++    switch (offset) {
++    case WDT_O_LOAD:
++        s->load = value;
++        wdtimer_reload(s, 1);
++        break;
++    case WDT_O_CTL:
++        if (!(s->mask & 1)) {
++            if (value & 2) {
++                s->reset = true;
++            }
++            if (value & 1) {
++                s->mask = value;
++                wdtimer_reload(s, 1);
++            }
++        }
++        break;
++    case WDT_O_ICR:
++        /* clear the interrupt and reload the counter */
++        s->state &= ~value;
++        wdtimer_reload(s, 1);
++        break;
++    case WDT_O_TEST:
++        qemu_log_mask(LOG_UNIMP,
++                      "WDT: stall not implemented\n");
++        break;
++    case WDT_O_LOCK:
++        s->locked = value == 0x1acce551;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "WDT: write at bad offset 0x02%" HWADDR_PRIx "\n",
++                      offset);
++    }
++    wdtimer_update_irq(s);
++}
++
++static const MemoryRegionOps wdtimer_ops = {
++    .read = wdtimer_read,
++    .write = wdtimer_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_stellaris_wdtimer = {
++    .name = "stellaris_wdtimer",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(control, wdtimer_state),
++        VMSTATE_UINT32(load, wdtimer_state),
++        VMSTATE_UINT32(tick, wdtimer_state),
++        VMSTATE_UINT32(state, wdtimer_state),
++        VMSTATE_UINT32(mask, wdtimer_state),
++        VMSTATE_UINT32(stage, wdtimer_state),
++        VMSTATE_BOOL(locked, wdtimer_state),
++        VMSTATE_BOOL(reset, wdtimer_state),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void stellaris_wdtimer_init(Object *obj)
++{
++    wdtimer_state *s = STELLARIS_WDTIMER(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    sysbus_init_irq(sbd, &s->irq);
++    memory_region_init_io(&s->iomem, obj, &wdtimer_ops, s,
++                          "wdtimer", 0x1000);
++    sysbus_init_mmio(sbd, &s->iomem);
++    s->opaque = s;
++
++    s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, wdtimer_expired, &s->opaque);
++    wdtimer_reset(s);
++}
++
++
+ /* System controller.  */
+ 
+ typedef struct {
+@@ -1243,7 +1478,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+      * Stellaris LM3S6965 Microcontroller Data Sheet (rev I)
+      * http://www.ti.com/lit/ds/symlink/lm3s6965.pdf
+      *
+-     * 40000000 wdtimer (unimplemented)
++     * 40000000 wdtimer
+      * 40002000 i2c (unimplemented)
+      * 40004000 GPIO
+      * 40005000 GPIO
+@@ -1335,6 +1570,12 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+         }
+     }
+ 
++    if (board->dc1 & (1  << 3)) { /* watchdog present */
++        dev  = sysbus_create_simple(TYPE_STELLARIS_WDTIMER,
++                                    0x40000000,
++                                    qdev_get_gpio_in(nvic, 18));
++    }
++
+     stellaris_sys_init(0x400fe000, qdev_get_gpio_in(nvic, 28),
+                        board, nd_table[0].macaddr.a);
+ 
+@@ -1431,7 +1672,6 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     /* Add dummy regions for the devices we don't implement yet,
+      * so guest accesses don't cause unlogged crashes.
+      */
+-    create_unimplemented_device("wdtimer", 0x40000000, 0x1000);
+     create_unimplemented_device("i2c-0", 0x40002000, 0x1000);
+     create_unimplemented_device("i2c-2", 0x40021000, 0x1000);
+     create_unimplemented_device("PWM", 0x40028000, 0x1000);
+@@ -1517,6 +1757,13 @@ static void stellaris_gptm_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_stellaris_gptm;
+ }
+ 
++static void stellaris_wdtimer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_stellaris_wdtimer;
++}
++
+ static const TypeInfo stellaris_gptm_info = {
+     .name          = TYPE_STELLARIS_GPTM,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+@@ -1525,6 +1772,14 @@ static const TypeInfo stellaris_gptm_info = {
+     .class_init    = stellaris_gptm_class_init,
+ };
+ 
++static const TypeInfo stellaris_wdtimer_info = {
++    .name          = TYPE_STELLARIS_WDTIMER,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(wdtimer_state),
++    .instance_init = stellaris_wdtimer_init,
++    .class_init    = stellaris_wdtimer_class_init,
++};
++
+ static void stellaris_adc_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1545,6 +1800,7 @@ static void stellaris_register_types(void)
+     type_register_static(&stellaris_i2c_info);
+     type_register_static(&stellaris_gptm_info);
+     type_register_static(&stellaris_adc_info);
++    type_register_static(&stellaris_wdtimer_info);
+ }
+ 
+ type_init(stellaris_register_types)
+-- 
+2.7.4
 

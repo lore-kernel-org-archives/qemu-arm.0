@@ -1,253 +1,204 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6965702wrx;
-        Fri, 22 Feb 2019 05:39:28 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbcLQgKWKkhS9wE3P3USPkbxokg+UpaSAfAPqazTDRNkE+Qtne/Utv0/A8trTVx0vFCXKlO
-X-Received: by 2002:a0d:edc3:: with SMTP id w186mr3250147ywe.301.1550842768416;
-        Fri, 22 Feb 2019 05:39:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550842768; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6973214wrx;
+        Fri, 22 Feb 2019 05:47:21 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY8hRNZ74w7Cut93vhMU4S4aW5zWkzNUA4HHkLPbarNUB0M2KvaZ6Egcxk0dmfgW6M5w2Kb
+X-Received: by 2002:a25:cb54:: with SMTP id b81mr3275339ybg.520.1550843241250;
+        Fri, 22 Feb 2019 05:47:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550843241; cv=none;
         d=google.com; s=arc-20160816;
-        b=CNNXpxuijFKNed5WhyMeireg1JeM634tdv3rPuPqQ9MHCyCkkcj7OALLTEbrPEg20I
-         DuA1DxEF2vchS4RX64PssAYa8JO3ZMl+I633N/WgJCWNUFIuecO2aq8PLQ4FJE4a8JLx
-         714l196Omt7m509sDOAXNsTNxb9RVKDwZu/ba2jzic5P9/IHfopeN1aR1BYMGyhPMNWQ
-         D8/twG5BUARkcUGguQVVZfASdDvN95hw0zl07H4ha5R222Pl2JTRVf35t6hkJ03TYoXT
-         0Lp2NiDex7KR4g3ThsSoDw7RAA1yHg8GZ1bViPYmOPP1Uy5la7NQXKJZQ7QBtCOL83Vi
-         A+lw==
+        b=G4KNkBqv9quP5h0LEEdFf6Pvriw1dtYXl3g3FlxOiSeGXJv503i6i1Z/p+RmZ/FNtt
+         xjuJ+/i2INX/B1UjK8EivhYpZ/791NBmY3Rm/SehPM1oy8tECjeGzAMxB6Aim6AmBFgr
+         zAViF2tuZL25eEbIOYABm8AQMhygkSUqYS5u8Dr7zXfaCA70uYd5djUrpzQ8tWpuj4ob
+         sEHAZorc3YqCcyTFILRNt6i3rIJJVip9nw6p9l9Y1KrRd4Pa0zaixa7tPqS5UKwKCcB6
+         aLTJAW3EPamm0OhV1qqfRqICCflQ8OzwrLEHRtuzPCtWbiCg8TaBpYS3ZcM/fDJipc7e
+         1JIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=QazDfhLhIosPbNXVB5xXO7UWiGQG6zT0y75XaQmCJEo=;
-        b=k7nfEXb8Kh2YrxdZN2UaTKiwXyxABhLN09rRJXih4BWPZD6toHVP6bKLJ9aKAfhJaH
-         sz02cp8wywG10zAWefcT6cVJHjhVg3KsMNmN/P9lHYz1CKCxj+iBViUNevfVBVD7LNUu
-         YHAStgQkLQqPzQa5Ww1JxaYzt/RkBWHXUbs1jP2kF4m6GVfydxd4dhQiwQvm/8I78aGt
-         h/jWJAOoKN/WM8llyfAnrWfZxANDdpilLCtlfvoG1kE156jJprefoYRcbJwq40eKdfr6
-         UR1frmzSB+GadXZ975znrRaP5rpe7u96CFEY2QMlTN7kVUX69AATlK8MmgPBS0l6X/oA
-         T0uw==
+        bh=Dk+7/Wd1dv2JIQHaPz9317wRNRdOngfi9M+on9CMEP4=;
+        b=PRjb+L5RfFR+ctAlGR+T2u5Z5Ga6WhpOcBmBhxc7l2w8nQ6nQStE9b8VmILyeAM2GY
+         u50imHe7Qi/9QvflSzu6jxKRWs4HDXINHXh1uuL1Mw+PJTqv8Y4Z+W3bYsnp5QioGrMg
+         zn+RfbD4MW2Jjc+R0/gayVObNIpJcJQ3ZqVtNnCh8Tn4pOMHGrFlVvdzCWjuIxkkC5rd
+         ZZKg3d0EcdpocsL6VgRHDznlYKniXi/Std6pwegfBdY7ToIUS/DSTdTVDzpWxUPQ60va
+         7s9C+X8qf4755qNO9KjoyAByFJ6qGosPCwwPmBB8BCkB/I0Gb+uWgz4t6F6DE21+TR0j
+         dvWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f76si822086ywb.305.2019.02.22.05.39.28
+        by mx.google.com with ESMTPS id z8si773737ybg.149.2019.02.22.05.47.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 05:39:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Feb 2019 05:47:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:50790 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50930 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxB31-0002vY-SC
-	for alex.bennee@linaro.org; Fri, 22 Feb 2019 08:39:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41898)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gxBAe-0006ak-Ll
+	for alex.bennee@linaro.org; Fri, 22 Feb 2019 08:47:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53224)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gxAqP-0002Ai-QU
-	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 08:26:28 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gxBAG-0005nY-O5
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 08:46:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gxAqE-0004Mx-8N
-	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 08:26:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35770)
+	(envelope-from <imammedo@redhat.com>) id 1gxAv2-00039Y-Pj
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 08:31:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52366)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gxAq8-00046J-EH; Fri, 22 Feb 2019 08:26:09 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1gxAuy-0002E3-Rh; Fri, 22 Feb 2019 08:31:11 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B2D66356F6;
-	Fri, 22 Feb 2019 13:26:04 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 80F5AC0587DD;
+	Fri, 22 Feb 2019 13:30:22 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E3C391001E6D;
-	Fri, 22 Feb 2019 13:25:57 +0000 (UTC)
-Date: Fri, 22 Feb 2019 14:25:56 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F0E9A5DA98;
+	Fri, 22 Feb 2019 13:30:04 +0000 (UTC)
+Date: Fri, 22 Feb 2019 14:30:02 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190222142556.38027ef4@redhat.com>
-In-Reply-To: <20190220224003.4420-11-eric.auger@redhat.com>
+Message-ID: <20190222143002.23705904@redhat.com>
+In-Reply-To: <20190220224003.4420-12-eric.auger@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
-	<20190220224003.4420-11-eric.auger@redhat.com>
+	<20190220224003.4420-12-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 22 Feb 2019 13:26:05 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 22 Feb 2019 13:30:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v7 10/17] hw/arm/virt: Add memory hotplug
- framework
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v7 11/17] hw/arm/boot: Expose the PC-DIMM
+ nodes in the DT
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
 	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
 	dgilbert@redhat.com, qemu-arm@nongnu.org,
 	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 95WBfnqddqFE
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tnjPAPwV6gYJ
 
-On Wed, 20 Feb 2019 23:39:56 +0100
+On Wed, 20 Feb 2019 23:39:57 +0100
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> This patch adds the the memory hot-plug/hot-unplug infrastructure
-> in machvirt. It is still not enabled as no device memory is allocated.
+> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> This patch adds memory nodes corresponding to PC-DIMM regions.
+> 
+> NV_DIMM and ACPI_NVDIMM configs are not yet set for ARM so we
+  ^^^
+git grep says it doesn't exists
 
-with nit below fixed
+> don't need to care about NV-DIMM at this stage.
+we use NVDIMM term everywhere in QEMU so fix it up just for consistency
+
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+with all comments addressed
 
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > 
 > ---
-> v4 -> v5:
-> - change in pc_dimm_pre_plug signature
-> - CONFIG_MEM_HOTPLUG replaced by CONFIG_MEM_DEVICE and CONFIG_DIMM
-> 
+> v6 -> v7:
+> - rework the error messages, use a switch/case
 > v3 -> v4:
-> - check the memory device is not hotplugged
-> 
-> v2 -> v3:
-> - change in pc_dimm_plug()'s signature
-> - add pc_dimm_pre_plug call
+> - git rid of @base and @len in fdt_add_hotpluggable_memory_nodes
 > 
 > v1 -> v2:
-> - s/virt_dimm_plug|unplug/virt_memory_plug|unplug
-> - s/pc_dimm_memory_plug/pc_dimm_plug
-> - reworded title and commit message
-> - added pre_plug cb
-> - don't handle get_memory_region failure anymore
+> - added qapi_free_MemoryDeviceInfoList and simplify the loop
 > ---
->  default-configs/arm-softmmu.mak |  2 ++
->  hw/arm/virt.c                   | 64 ++++++++++++++++++++++++++++++++-
->  2 files changed, 65 insertions(+), 1 deletion(-)
+>  hw/arm/boot.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
 > 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 734ca721e9..0a78421f72 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -163,3 +163,5 @@ CONFIG_PCI_EXPRESS_DESIGNWARE=y
->  CONFIG_STRONGARM=y
->  CONFIG_HIGHBANK=y
->  CONFIG_MUSICPAL=y
-> +CONFIG_MEM_DEVICE=y
-> +CONFIG_DIMM=y
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 5b656f9db5..470ca0ce2d 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -60,6 +60,8 @@
->  #include "standard-headers/linux/input.h"
->  #include "hw/arm/smmuv3.h"
->  #include "target/arm/internals.h"
-> +#include "hw/mem/pc-dimm.h"
-> +#include "hw/mem/nvdimm.h"
->  
->  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> @@ -1804,6 +1806,49 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->      return ms->possible_cpus;
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index a830655e1a..255aaca0cf 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -19,6 +19,7 @@
+>  #include "sysemu/numa.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
+> +#include "hw/mem/memory-device.h"
+>  #include "elf.h"
+>  #include "sysemu/device_tree.h"
+>  #include "qemu/config-file.h"
+> @@ -522,6 +523,41 @@ static void fdt_add_psci_node(void *fdt)
+>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
 >  }
 >  
-> +static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-> +                                 Error **errp)
-> +{
-> +    const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
+> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
+> +                                             uint32_t acells, uint32_t scells) {
+> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
+> +    MemoryDeviceInfo *mi;
+> +    int ret = 0;
 > +
-> +    if (dev->hotplugged) {
-> +        error_setg(errp, "memory hotplug is not supported");
+> +    for (info = info_list; info != NULL; info = info->next) {
+> +        mi = info->value;
+> +        switch (mi->type) {
+> +        case MEMORY_DEVICE_INFO_KIND_DIMM:
+> +        {
+> +            PCDIMMDeviceInfo *di = mi->u.dimm.data;
+> +
+> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
+> +                                      scells, di->size, di->node);
+> +            if (ret) {
+> +                fprintf(stderr,
+> +                        "couldn't add PCDIMM /memory@%"PRIx64" node\n",
+> +                        di->addr);
+> +                goto out;
+> +            }
+> +            break;
+> +        }
+> +        default:
+> +            fprintf(stderr, "%s memory nodes are not yet supported\n",
+> +                    MemoryDeviceInfoKind_str(mi->type));
+> +            ret = -ENOENT;
+> +            goto out;
+> +        }
 > +    }
-> +
-> +    if (is_nvdimm) {
-> +        error_setg(errp, "nvdimm is not yet supported");
-> +        return;
-> +    }
-> +
-> +    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
+> +out:
+> +    qapi_free_MemoryDeviceInfoList(info_list);
+> +    return ret;
 > +}
 > +
-> +static void virt_memory_plug(HotplugHandler *hotplug_dev,
-> +                             DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    Error *local_err = NULL;
-> +
-> +    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-> +
-> +    error_propagate(errp, local_err);
-> +}
-> +
-> +static void virt_memory_unplug(HotplugHandler *hotplug_dev,
-> +                               DeviceState *dev, Error **errp)
-> +{
-> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(hotplug_dev));
-> +    object_unparent(OBJECT(dev));
-> +}
-> +
-> +static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-> +                                            DeviceState *dev, Error **errp)
-> +{
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        virt_memory_pre_plug(hotplug_dev, dev, errp);
-> +    }
-> +}
-> +
->  static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->                                          DeviceState *dev, Error **errp)
+>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>                   hwaddr addr_limit, AddressSpace *as)
 >  {
-> @@ -1815,12 +1860,27 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->                                       SYS_BUS_DEVICE(dev));
+> @@ -621,6 +657,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
 >          }
 >      }
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +            virt_memory_plug(hotplug_dev, dev, errp);
+>  
+> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
+> +    if (rc < 0) {
+> +            fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
+> +            goto fail;
 wrong indent
 
 > +    }
-> +}
 > +
-> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-> +                                          DeviceState *dev, Error **errp)
-> +{
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        virt_memory_unplug(hotplug_dev, dev, errp);
-> +    } else {
-> +        error_setg(errp, "device unplug request for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
->  }
->  
->  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->                                                          DeviceState *dev)
->  {
-> -    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
-> +       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
->          return HOTPLUG_HANDLER(machine);
->      }
->  
-> @@ -1884,7 +1944,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      mc->kvm_type = virt_kvm_type;
->      assert(!mc->get_hotplug_handler);
->      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
-> +    hc->pre_plug = virt_machine_device_pre_plug_cb;
->      hc->plug = virt_machine_device_plug_cb;
-> +    hc->unplug = virt_machine_device_unplug_cb;
->  }
->  
->  static void virt_instance_init(Object *obj)
+>      rc = fdt_path_offset(fdt, "/chosen");
+>      if (rc < 0) {
+>          qemu_fdt_add_subnode(fdt, "/chosen");
 

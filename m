@@ -1,267 +1,271 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6986811wrx;
-        Fri, 22 Feb 2019 06:02:14 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IY8ZEBnR+JyVFhXIs4g84gSSKEwczbTJO6+PQPKgruQO9goyzYPcm5Tn4IIVhbQBO4DkBuO
-X-Received: by 2002:a25:6b41:: with SMTP id o1mr778768ybm.135.1550844134745;
-        Fri, 22 Feb 2019 06:02:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550844134; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6992555wrx;
+        Fri, 22 Feb 2019 06:06:55 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYonhjbhJ+LnjcW8/MxEoQrC9R7hgWNC2NFDBBoqecCkwKj0XHrTa6VLf7QbhZiqWu88mYh
+X-Received: by 2002:a25:e751:: with SMTP id e78mr1385908ybh.28.1550844415845;
+        Fri, 22 Feb 2019 06:06:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550844415; cv=none;
         d=google.com; s=arc-20160816;
-        b=l2Fj+M7vphBK6CyeXa3L3Qr9iFUyMhFsuOKb9oZA8TCPI937nUpcXwMkmZ7l0T4Fd9
-         TaKd5HFVa9xky3T2WZD2ndGItOr7gshqRdmyMBoHwQv9ySMxSgSIYEyMTNquDrKjGRw/
-         Od9ER2o8rOYQUqU45YVeDzsdFj+Fiy8Mtn1aBpbv5jGmGJWU1cUL7YtzIHko+S/1wAeG
-         SGljp7cUMbFlNbGaeGnXUuHhBS0V85pnTAj7zqk5n8Jz0w9VvHuiymsIQ9NmGyiGXODg
-         Sh8kQEMr9qbAUWnRjnhy8OhXfmyh59GcY8s/zN95cNUitBAO8KxVxZ+Jgfw+45eNU1Ia
-         Fy1g==
+        b=jvsPhghO/govjiS74V1/A44EV//bg9H4n0/InJoI6hkcusQlf6+X22FSGaoJJkIAvC
+         FbgI7CF/g4OW4Tsnd/3kznPOSPoyHurr0SNUGTNe/N7Y+0+gJxpKTT/bJxJZ+nF14BJw
+         p4z1GKfTyVca4u5lqBhnJQGMpDtzOC41yB/e9I8VUHjrHoFv8jYKCqikvKJoESbHd9YN
+         ia3KHB3sKMZdGfAnK6EPzdMdPylqpxI4JGMLvkcSZB3OBj5IEn2N60rRTXS2crwg60GK
+         fMeYDfpFvvr/vReTWDoX4N13NlJUtoIVG61hAir1yMREnHq0kKItp78MDLeEQCife3zs
+         +Njw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=krHSgMsJ2rNndWMvoTwKwZTor9UxIqDMK5CcuFg6/vA=;
-        b=AVl5woO65TXzcw8gUM9D1/lG6G4nm4Jx2eYhpB5OpCD8xAAb4G7iQ/TdtLD5zIBVMc
-         bsT4iNN+zy8hiEqfFMxiFE2x4Su9ijPD8StGtCF86HUk4fVlSMaSnOsMeOCnWxvY/Bzr
-         l9JzBOEPKVNQtlB/L/Zj41esrERtP4F3EutP8o579dF+jyXILis/zP1gA6q2AS+qWQ7C
-         aCyptRurN+2z11oXW8zkwMNjVLPgvMAbT0oiNl9oKIdZJ91bZux8xUZ0KyvEy3WV43Sl
-         xkLap7sbmDn74FtQj3eOQqDB2LnOF2LEAI9lXnFFh2HuYYeDIgihhuR3vVvh3B4CFGkX
-         g+HA==
+        bh=mb/BpM4DtqbNrz/sohB9JSo3n4FMwErOVz3zoQamqvA=;
+        b=qjhO5gIqg6ceZyNbAVSwRXIHc03kAJBzDdMdditUAPc4DiaBFsNVCOnm+affpnQ3/o
+         Bz+F2U+p7rpPInX0mhVW0ZwjGKAHEqQsZFJdC3BNjjq8kYCbOX7Hi8BLPtEy9RPWDsPx
+         PdZHq8iofCxMvn2TPB1MEZZpndVYlVR0SahGvXCMh31Bsm/bW1gmBbgrDlZOxCv5fRVZ
+         Z4WmPh54bQTWGOBlWcnYmZytEqxppcTmtzHcoXGpZdkRrupMaNSL3z0+VZ3LCWTYu1ZE
+         XNRJiNFzkzF7SwWcEcVPN7ncoiY5b1lkLuK5kAe09REUKMa96HAIYHAc7TbPfmbEku/+
+         J+XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si847737ybp.222.2019.02.22.06.02.14
+        by mx.google.com with ESMTPS id z126si839145yba.57.2019.02.22.06.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 06:02:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Feb 2019 06:06:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51204 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51258 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxBP4-0006HF-6x
-	for alex.bennee@linaro.org; Fri, 22 Feb 2019 09:02:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34245)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gxBTb-0000la-7M
+	for alex.bennee@linaro.org; Fri, 22 Feb 2019 09:06:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gxBOZ-0006Dc-O3
-	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 09:01:51 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gxBTH-0000hc-9L
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 09:06:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gxBOY-00081i-0Q
-	for qemu-devel@nongnu.org; Fri, 22 Feb 2019 09:01:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45576)
+	(envelope-from <eric.auger@redhat.com>) id 1gxBTF-0007ID-QV
+	for qemu-arm@nongnu.org; Fri, 22 Feb 2019 09:06:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57724)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gxBOT-0007by-Ve; Fri, 22 Feb 2019 09:01:38 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1gxBTF-0006tx-CJ; Fri, 22 Feb 2019 09:06:33 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D376A3076C66;
-	Fri, 22 Feb 2019 14:01:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C96D300B916;
+	Fri, 22 Feb 2019 14:06:23 +0000 (UTC)
 Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 81F28611D1;
-	Fri, 22 Feb 2019 14:01:28 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 77A335D9D5;
+	Fri, 22 Feb 2019 14:06:16 +0000 (UTC)
 To: Igor Mammedov <imammedo@redhat.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
-	<20190220224003.4420-9-eric.auger@redhat.com>
-	<20190222134516.575288c2@redhat.com>
+	<20190220224003.4420-8-eric.auger@redhat.com>
+	<20190222135721.25ddcaf7@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <d6b2654c-d345-152b-4eec-7f2b885e6047@redhat.com>
-Date: Fri, 22 Feb 2019 15:01:25 +0100
+Message-ID: <447b96fa-16ab-ab18-1772-5e8f85000e53@redhat.com>
+Date: Fri, 22 Feb 2019 15:06:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190222134516.575288c2@redhat.com>
+In-Reply-To: <20190222135721.25ddcaf7@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Fri, 22 Feb 2019 14:01:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Fri, 22 Feb 2019 14:06:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v7 08/17] hw/arm/virt: Implement kvm_type
- function for 4.0 machine
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v7 07/17] hw/arm/virt: Dynamic memory map
+ depending on RAM requirements
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
 	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
 	dgilbert@redhat.com, qemu-arm@nongnu.org,
 	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0m5hc9Z6T8eL
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DpRyKZ3Seyfs
 
 Hi Igor,
 
-On 2/22/19 1:45 PM, Igor Mammedov wrote:
-> On Wed, 20 Feb 2019 23:39:54 +0100
+On 2/22/19 1:57 PM, Igor Mammedov wrote:
+> On Wed, 20 Feb 2019 23:39:53 +0100
 > Eric Auger <eric.auger@redhat.com> wrote:
 > 
->> This patch implements the machine class kvm_type() callback.
->> It returns the number of bits requested to implement the whole GPA
->> range including the RAM and IO regions located beyond.
->> The returned value in passed though the KVM_CREATE_VM ioctl and
->> this allows KVM to set the stage2 tables dynamically.
+>> Up to now the memory map has been static and the high IO region
+>> base has always been 256GiB.
+>>
+>> This patch modifies the virt_set_memmap() function, which freezes
+>> the memory map, so that the high IO range base becomes floating,
+>> located after the initial RAM and the device memory.
+>>
+>> The function computes
+>> - the base of the device memory,
+>> - the size of the device memory and
+>> - the highest GPA used in the memory map.
+>>
+>> The two former will be used when defining the device memory region
+>> while the latter will be used at VM creation to choose the requested
+>> IPA size.
+>>
+>> Setting all the existing highmem IO regions beyond the RAM
+>> allows to have a single contiguous RAM region (initial RAM and
+>> possible hotpluggable device memory). That way we do not need
+>> to do invasive changes in the EDK2 FW to support a dynamic
+>> RAM base.
+>>
+>> Still the user cannot request an initial RAM size greater than 255GB.
+>> Also we handle the case where maxmem or slots options are passed,
+>> although no device memory is usable at the moment. In this case, we
+>> just ignore those settings.
 >>
 >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
 >> ---
->>
->> v6 -> v7:
->> - Introduce RAMBASE and rename add LEGACY_ prefix in that patch
->> - use local variables with explicit names in virt_set_memmap:
->>   device_memory_base, device_memory_size
->> - add an extended_memmap field in the class
->>
->> v5 -> v6:
->> - add some comments
->> - high IO region cannot start before 256GiB
->> ---
->>  hw/arm/virt.c         | 50 ++++++++++++++++++++++++++++++++++++++++++-
->>  include/hw/arm/virt.h |  2 ++
->>  2 files changed, 51 insertions(+), 1 deletion(-)
+>>  hw/arm/virt.c         | 47 ++++++++++++++++++++++++++++++++++---------
+>>  include/hw/arm/virt.h |  3 +++
+>>  2 files changed, 41 insertions(+), 9 deletions(-)
 >>
 >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 9db602457b..ad3a0ad73d 100644
+>> index 12039a0367..9db602457b 100644
 >> --- a/hw/arm/virt.c
 >> +++ b/hw/arm/virt.c
->> @@ -1437,7 +1437,14 @@ static void machvirt_init(MachineState *machine)
->>      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>      bool aarch64 = true;
+>> @@ -107,8 +107,9 @@
+>>   * of a terabyte of RAM will be doing it on a host with more than a
+>>   * terabyte of physical address space.)
+>>   */
+>> -#define RAMLIMIT_GB 255
+>> -#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
+>> +#define RAMBASE GiB
+>> +#define LEGACY_RAMLIMIT_GB 255
+>> +#define LEGACY_RAMLIMIT_BYTES (LEGACY_RAMLIMIT_GB * GiB)
 >>  
->> -    virt_set_memmap(vms);
->> +    /*
->> +     * In accelerated mode, the memory map is computed in kvm_type(),
->> +     * if set, to create a VM with the right number of IPA bits.
->> +     */
->> +
->> +    if (!mc->kvm_type || !kvm_enabled()) {
->> +        virt_set_memmap(vms);
->> +    }
+>>  /* Addresses and sizes of our components.
+>>   * 0..128MB is space for a flash device so we can run bootrom code such as UEFI.
+>> @@ -149,7 +150,7 @@ static const MemMapEntry base_memmap[] = {
+>>      [VIRT_PCIE_MMIO] =          { 0x10000000, 0x2eff0000 },
+>>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+>>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+>> -    [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
+>> +    [VIRT_MEM] =                { RAMBASE, LEGACY_RAMLIMIT_BYTES },
+>>  };
 >>  
->>      /* We can probe only here because during property set
->>       * KVM is not available yet
->> @@ -1814,6 +1821,36 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->>      return NULL;
->>  }
+>>  /*
+>> @@ -1367,16 +1368,48 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
 >>  
->> +/*
->> + * for arm64 kvm_type [7-0] encodes the requested number of bits
->> + * in the IPA address space
->> + */
->> +static int virt_kvm_type(MachineState *ms, const char *type_str)
->> +{
->> +    VirtMachineState *vms = VIRT_MACHINE(ms);
->> +    int max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms);
->> +    int requested_pa_size;
->> +
->> +    /* we freeze the memory map to compute the highest gpa */
->> +    virt_set_memmap(vms);
->> +
->> +    requested_pa_size = 64 - clz64(vms->highest_gpa);
->> +
->> +    if (requested_pa_size > max_vm_pa_size) {
->> +        error_report("-m and ,maxmem option values "
->> +                     "require an IPA range (%d bits) larger than "
->> +                     "the one supported by the host (%d bits)",
->> +                     requested_pa_size, max_vm_pa_size);
->> +       exit(1);
->> +    }
->> +    /*
->> +     * By default we return 0 which corresponds to an implicit legacy
->> +     * 40b IPA setting. Otherwise we return the actual requested PA
->> +     * logsize
->> +     */
->> +    return requested_pa_size > 40 ? requested_pa_size : 0;
->> +}
->> +
->>  static void virt_machine_class_init(ObjectClass *oc, void *data)
+>>  static void virt_set_memmap(VirtMachineState *vms)
 >>  {
->>      MachineClass *mc = MACHINE_CLASS(oc);
->> @@ -1838,6 +1875,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->>      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
->>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
->>      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
->> +    mc->kvm_type = virt_kvm_type;
->>      assert(!mc->get_hotplug_handler);
->>      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
->>      hc->plug = virt_machine_device_plug_cb;
->> @@ -1909,6 +1947,12 @@ static void virt_instance_init(Object *obj)
->>                                      "Valid values are none and smmuv3",
->>                                      NULL);
+>> +    MachineState *ms = MACHINE(vms);
+>>      hwaddr base;
+>>      int i;
 >>  
->> +    if (vmc->no_extended_memmap) {
->> +        vms->extended_memmap = false;
->> +    } else {
->> +        vms->extended_memmap = true;
+>> +    if (ms->maxram_size > ms->ram_size || ms->ram_slots > 0) {
+>> +        error_report("mach-virt: does not support device memory: "
+>> +                     "ignore maxmem and slots options");
+>> +        ms->maxram_size = ms->ram_size;
+>> +        ms->ram_slots = 0;
 >> +    }
->> +
->>      vms->irqmap = a15irqmap;
->>  }
->>  
->> @@ -1939,8 +1983,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 0)
->>  
->>  static void virt_machine_3_1_options(MachineClass *mc)
->>  {
->> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
->>      virt_machine_4_0_options(mc);
->>      compat_props_add(mc->compat_props, hw_compat_3_1, hw_compat_3_1_len);
->> +
->> +    /* extended memory map is enabled from 4.0 onwards */
->> +    vmc->no_extended_memmap = true;
-> That's probably was asked in v6,
-> do we really need this knob?
-Yes the point was raised by Peter and I replied by another question ;-) "
-But don't we want to forbid any pre-4.0 machvirt to run with more than
-255GiB RAM?
-"
-without this knob:
-- pre-4.0 machines will gain the capability to support more than 255GB
-initial RAM if the kernel supports dynamic IPA setting
-- pre-4.0 machines will gain PCDIMM/NVDIMM support
-- another concern, maxmem and slots were not checked previously. If for
-some reason - without instantiating the actual slots -, the user
-specified it this was previously ignored. Now this is not anymore as
-both parameters allow to compute the requested IPA range. So this may
-fail now.
-So I thought this was clearer to disable all the above for pre-4.0
-machines. However if both of you agree, I will remove it.
+>> +    if (ms->ram_size > (ram_addr_t)LEGACY_RAMLIMIT_BYTES) {
+>> +        error_report("mach-virt: cannot model more than %dGB RAM",
+>> +                     LEGACY_RAMLIMIT_GB);
+>> +        exit(1);
+>> +    }
+> I'd drop these checks and amend below code so that it would init device_memory
+> logic when ram_slots > 0. It should simplify follow up patches by dropping
+> all machine version specific parts.
+I don't have sufficient knowledge of virtio-mem/virtio-pmem. Do they
+also use slots?
 
-thanks
+
+> It shouldn't break old machines as layout stays the same but would allow to
+> start old machine with pc-dimms which is fine from migration pov as target
+> also should be able to start QEMU with the same options for migration to start.
+> 
+> 
+>> +
+>>      vms->memmap = extended_memmap;
+>>  
+>>      for (i = 0; i < ARRAY_SIZE(base_memmap); i++) {
+>>          vms->memmap[i] = base_memmap[i];
+>>      }
+>>  
+>> -    vms->high_io_base = 256 * GiB; /* Top of the legacy initial RAM region */
+>> +    /*
+>> +     * We compute the base of the high IO region depending on the
+>> +     * amount of initial and device memory. The device memory start/size
+>> +     * is aligned on 1GiB. We never put the high IO region below 256GiB
+>> +     * so that if maxram_size is < 255GiB we keep the legacy memory map.
+>> +     * The device region size assumes 1GiB page max alignment per slot.
+>> +     */
+>> +    vms->device_memory_base = ROUND_UP(RAMBASE + ms->ram_size, GiB);
+>> +    vms->device_memory_size = ms->maxram_size - ms->ram_size +
+>> +                              ms->ram_slots * GiB;
+So does everyone agree on this device memory size computation? I would
+like to make sure this is future proof. Do I need to add a machine
+option like on x86 to enforce slot alignment or is it OK?
+
+Thanks
 
 Eric
-> 
->>  }
->>  DEFINE_VIRT_MACHINE(3, 1)
+>> +
+>> +    vms->high_io_base = vms->device_memory_base +
+>> +                        ROUND_UP(vms->device_memory_size, GiB);
+>> +    if (vms->high_io_base < vms->device_memory_base) {
+>> +        error_report("maxmem/slots too huge");
+>> +        exit(EXIT_FAILURE);
+>> +    }
+>> +    if (vms->high_io_base < 256 * GiB) {
+>> +        vms->high_io_base = 256 * GiB;
+>> +    }
+>>      base = vms->high_io_base;
 >>  
+>>      for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
+>> @@ -1387,6 +1420,7 @@ static void virt_set_memmap(VirtMachineState *vms)
+>>          vms->memmap[i].size = size;
+>>          base += size;
+>>      }
+>> +    vms->highest_gpa = base - 1;
+>>  }
+>>  
+>>  static void machvirt_init(MachineState *machine)
+>> @@ -1470,11 +1504,6 @@ static void machvirt_init(MachineState *machine)
+>>  
+>>      vms->smp_cpus = smp_cpus;
+>>  
+>> -    if (machine->ram_size > vms->memmap[VIRT_MEM].size) {
+>> -        error_report("mach-virt: cannot model more than %dGB RAM", RAMLIMIT_GB);
+>> -        exit(1);
+>> -    }
+>> -
+>>      if (vms->virt && kvm_enabled()) {
+>>          error_report("mach-virt: KVM does not support providing "
+>>                       "Virtualization extensions to the guest CPU");
 >> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index acad0400d8..7798462cb0 100644
+>> index 3dc7a6c5d5..acad0400d8 100644
 >> --- a/include/hw/arm/virt.h
 >> +++ b/include/hw/arm/virt.h
->> @@ -106,6 +106,7 @@ typedef struct {
->>      bool claim_edge_triggered_timers;
->>      bool smbios_old_sys_ver;
->>      bool no_highmem_ecam;
->> +    bool no_extended_memmap;
->>  } VirtMachineClass;
->>  
->>  typedef struct {
->> @@ -135,6 +136,7 @@ typedef struct {
->>      hwaddr highest_gpa;
->>      hwaddr device_memory_base;
->>      hwaddr device_memory_size;
->> +    bool extended_memmap;
+>> @@ -132,6 +132,9 @@ typedef struct {
+>>      uint32_t iommu_phandle;
+>>      int psci_conduit;
+>>      hwaddr high_io_base;
+>> +    hwaddr highest_gpa;
+>> +    hwaddr device_memory_base;
+>> +    hwaddr device_memory_size;
 >>  } VirtMachineState;
 >>  
 >>  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)

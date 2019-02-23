@@ -1,81 +1,81 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7781262wrx;
-        Fri, 22 Feb 2019 23:49:57 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbA/8fPICMshy/MCKCA4bfbn3Gmt7UxQETXRSUBZlI2gAyz7CIHGGVJLhE1VF7ZoBNBRfVJ
-X-Received: by 2002:a5b:b0b:: with SMTP id z11mr4361661ybp.323.1550908197620;
-        Fri, 22 Feb 2019 23:49:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550908197; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7781367wrx;
+        Fri, 22 Feb 2019 23:50:10 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IapvmQvfiULk3yY4m1IHTFi9qmDBZEzX+v3M5beJrEomhWLOVDW32YwsAuDm2N40kTEyrYP
+X-Received: by 2002:a81:7446:: with SMTP id p67mr6455115ywc.233.1550908210038;
+        Fri, 22 Feb 2019 23:50:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1550908210; cv=none;
         d=google.com; s=arc-20160816;
-        b=NIpacU+Dpgnlx//Fd33QyjT5mK8O3d050/M6X2mXJ21vYTqOO1ljeMAm2kzIAxWUZ9
-         dXCacEqvp7gfvjWrF6aVPs+l0Ebbb8kXoLPE/myvGmiMi9YRZg8fJGuclbAZRWxpNK47
-         AV4upl7Y77PCJbkelG0yiegA3u0nDFNpBSrCV+mpxO+EI8T07+qnCen47cUEO7OSuDhG
-         zyzoZ2x6roA9SmGo2oEQGTAXepcTzAAnzvPtgzkUuxkljBHljdKLYCcgL3Tcff3KQGfN
-         7P5TpymEZ+frjQdoyb6sT9n0bjqvqI2LdOqy8ze97lSTbJ+aLvgbDZtspdlX1KJaeEby
-         HWwQ==
+        b=bjfYZofaPgliqFPio9xrI3WFysOxKhEYtxxm9FhjktTehdXEC4YBqmGVLUy81TezZr
+         dPcPav1+riCdmdl5510MTpGLJVnRjipk2tUjp3nzy02c7FjhARPSTm5D7zoO8GoKDPg+
+         UQXw4ic7xMbpybtkEluxW75BONkVXOfrEqzELdadhfv/Ts3wqKl7FDM4hEr8Zp4wA4Tl
+         LGsglyX5oY1J6sOjakLRFJe9SbuNNHR/EFfTVJS64kuHy3fRPPqQzWcwq4HljB/5A0cQ
+         a7OsfDVxhdOvlBgg9i1PmiF2zcDw+EWGqmjdwJRcyjJo+93wgMdOL6iGedMQXkSRFmUn
+         nRcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=pB5+qbG3Bk/bL30DKO1REe5xFKm9Zot5669k+QzMFow=;
-        b=a0q0reJ9Dd2WVBMpRlUJeKZOx+y+Fs8FdGTI4EWugm8xXIKfemmeReut+xGzQwOYoE
-         TpQaNDxz2pHwSZ63t4lpM8ZnrbE1V2SsNyPxU+1lPWmk7RbaqLIggBtjF+PzQRIsySep
-         X84OOOQ1V8UQMjFhCMf11kiS2+lMsaNcb3fTK6mvtJxXOKLAMzR/trAyK+XvoaY+/emx
-         IGLscN03x1w4V1WftzZG0QOoxUd98hujamAkCKXzUvAKCtqtJi7e5s0momnHFyvkZikn
-         3lXWteR1Troh5R6JhNT6ypjuh3QptGtYiyjRL5ZYR46ckYPcFD51XW5cp6+raC7RKN78
-         3tTg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=blLYKMz8Zn21py/Q7AtyVTXHfaxZwh+0lszJmF/J7mw=;
+        b=0R6qE0fhv2O3/UOjmmoLuW6HwBOF58U02gBeJQzj9RhugZuMfvCvAe4YwJaz0lfq9m
+         U6qvdyIFwTR+f4eDgjrNpFjqGQSm0pA2SyTeKiMPjhH+8NCq5VfYh3ULPeiMK7Zsu2QW
+         gwTaAmasODm3Ald7Xg82JTes9mw2kOwgyaRAdMhypPSTECnOSw6k0rucJce4Q9LCFHwy
+         AhcltcwLKLRi4IpSIxRiokf7RdCpjtOltu5W9hpMBjckhUcA9dk7dEWgzLMd3eVV2prx
+         TQqKJGq5ouKyV84uF/mZlVLoni9kllNy26S46Q0H8FcveVtANCATWI5EXZVBSlRMDCCf
+         hZVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o126si2115680ybb.80.2019.02.22.23.49.57
+        by mx.google.com with ESMTPS id a7si2170893ywe.230.2019.02.22.23.50.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Feb 2019 23:49:57 -0800 (PST)
+        Fri, 22 Feb 2019 23:50:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34038 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34040 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxS4L-0004RD-2I
-	for alex.bennee@linaro.org; Sat, 23 Feb 2019 02:49:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56979)
+	id 1gxS4X-0004VR-AR
+	for alex.bennee@linaro.org; Sat, 23 Feb 2019 02:50:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gxS40-0004Pe-3M
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:37 -0500
+	(envelope-from <thuth@redhat.com>) id 1gxS46-0004Tu-3V
+	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gxS3x-0001ju-VA
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36310)
+	(envelope-from <thuth@redhat.com>) id 1gxS44-0001pM-82
+	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51598)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gxS3w-0001fU-5Q; Sat, 23 Feb 2019 02:49:32 -0500
+	id 1gxS42-0001nF-4j; Sat, 23 Feb 2019 02:49:40 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5D079307D978;
-	Sat, 23 Feb 2019 07:49:29 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 350A03082208;
+	Sat, 23 Feb 2019 07:49:36 +0000 (UTC)
 Received: from thuth.com (ovpn-116-32.ams2.redhat.com [10.36.116.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BD40D5D9CA;
-	Sat, 23 Feb 2019 07:49:25 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C9E3F5D9CA;
+	Sat, 23 Feb 2019 07:49:34 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: yang.zhong@intel.com,
 	pbonzini@redhat.com,
 	qemu-devel@nongnu.org
-Date: Sat, 23 Feb 2019 08:48:52 +0100
-Message-Id: <1550908162-22644-1-git-send-email-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Date: Sat, 23 Feb 2019 08:48:56 +0100
+Message-Id: <1550908162-22644-5-git-send-email-thuth@redhat.com>
+In-Reply-To: <1550908162-22644-1-git-send-email-thuth@redhat.com>
+References: <1550908162-22644-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Sat, 23 Feb 2019 07:49:29 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.47]);
+	Sat, 23 Feb 2019 07:49:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 00/30] Kconfig dependencies for ARM machines
+Subject: [Qemu-arm] [PATCH v3 04/30] hw/sd/sdhci: Move PCI-related code into
+ a separate file
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,90 +91,353 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /qX5j1IuEhn2
+X-TUID: lBSdPApj0MLi
 
-This series reworks the default-configs/arm-softmmu.mak and
-default-configs/aarch64-softmmu.mak files to use the new Kconfig-style
-dependencies instead.
+Some machines have an SDHCI device, but no PCI. To be able to
+compile hw/sd/sdhci.c without CONFIG_PCI, we must not call functions
+like pci_get_address_space() and pci_allocate_irq() there. Thus
+move the PCI-related code into a separate file.
 
-Based-on: 1549562254-41157-1-git-send-email-pbonzini@redhat.com
-          ("Support Kconfig in QEMU")
+This is required for the new Kconfig-like build system, e.g. it is
+needed if a user wants to compile a QEMU binary with just one machine
+that has SDHCI, but no PCI, like the ARM "raspi" machines for example.
 
-Some of the patches are slightly based on the work by =C3=81kos Kov=C3=A1=
-cs:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ Philippe, I dropped your "Reviewed-by" since I modified the patch for
+ Kconfig now. Please have another look at the Kconfig and Makefile.objs
+ changes, the rest is still the same.
 
-https://lists.nongnu.org/archive/html/qemu-devel/2013-08/msg03730.html
-
-The other patches have been created by looking at the sources and finding
-out the dependencies the hard way via trial-and-error (i.e. by enabling
-only one machine at a time and checking whether it can be compiled and
-started).
-
-v3:
- - Addressed review feedback from v2
- - Included patches to clean up the PCI dependencies of AHCI and SDHCI
-   (so CONFIG_AHCI and CONFIG_SDHCI do not depend on CONFIG_PCI anymore)
- - Added an additional patch for the new "musca" machines
-
-v2: Adressed review-feedback from v1
- - CONFIG_SDHCI and CONFIG_AHCI now select CONFIG_PCI
- - Added switches for MICROBIT and EMCRAFT_SF2
-
-Thomas Huth (30):
-  hw/arm/Kconfig: Add a config switch for MUSCA
-  hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci stubs
-  hw/ide/ahci: Add a Kconfig switch for the AHDI-ICH9 device
-  hw/sd/sdhci: Move PCI-related code into a separate file
-  hw/arm: Express dependencies of the exynos machines with Kconfig
-  hw/arm: Express dependencies of the highbank machines with Kconfig
-  hw/arm: Express dependencies of integratorcp with Kconfig
-  hw/arm: Express dependencies of the fsl-imx31 machine with Kconfig
-  hw/arm: Express dependencies of musicpal with Kconfig
-  hw/arm: Express dependencies of the OMAP machines with Kconfig
-  hw/arm: Express dependencies of stellaris with Kconfig
-  hw/arm: Express dependencies of realview, versatile and vexpress with
-    Kconfig
-  hw/arm: Express dependencies of the PXA2xx machines with Kconfig
-  hw/arm: Express dependencies of xilinx-zynq with Kconfig
-  hw/arm: Express dependencies of collie with Kconfig
-  hw/arm: Express dependencies of the aspeed boards with Kconfig
-  hw/arm: Express dependencies of the virt machine with Kconfig
-  hw/arm: Express dependencies of netduino / stm32f2xx with Kconfig
-  hw/arm: Express dependencies of allwinner / cubieboard with Kconfig
-  hw/arm: Express dependencies of the MPS2 boards with Kconfig
-  hw/arm: Express dependencies of the raspi machines with Kconfig
-  hw/arm: Express dependencies of canon-a1100 with Kconfig
-  hw/arm: Express dependencies of sabrelite with Kconfig
-  hw/arm: Express dependencies of the MSF2 / EMCRAFT_SF2 machine with
-    Kconfig
-  hw/arm: Express dependencies for remaining IMX boards with Kconfig
-  hw/arm: Express dependencies of the microbit / nrf51 machine with
-    Kconfig
-  hw/arm: Express dependencies of the ZynqMP zcu102 machine with Kconfig
-  hw/arm: Express dependencies of the xlnx-versal-virt machine with
-    Kconfig
-  hw/arm: Express dependencies of the musca machines with Kconfig
-  hw/arm: Remove hard-enablement of the remaining PCI devices
-
- default-configs/aarch64-softmmu.mak |   4 -
- default-configs/arm-softmmu.mak     | 177 +++-----------------
- hw/arm/Kconfig                      | 316 ++++++++++++++++++++++++++++++=
-++++++
- hw/arm/Makefile.objs                |  25 ++-
- hw/display/Kconfig                  |   3 +
- hw/i2c/Kconfig                      |   2 +-
- hw/ide/Kconfig                      |   6 +-
- hw/ide/Makefile.objs                |   2 +-
- hw/misc/Kconfig                     |   2 +
- hw/pci/pci-stub.c                   |  11 ++
- hw/sd/Kconfig                       |   6 +-
- hw/sd/Makefile.objs                 |   1 +
- hw/sd/sdhci-internal.h              |  34 ++++
- hw/sd/sdhci-pci.c                   |  87 ++++++++++
- hw/sd/sdhci.c                       |  98 +----------
- 15 files changed, 514 insertions(+), 260 deletions(-)
+ hw/sd/Kconfig          |  6 +++-
+ hw/sd/Makefile.objs    |  1 +
+ hw/sd/sdhci-internal.h | 34 ++++++++++++++++++
+ hw/sd/sdhci-pci.c      | 87 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/sd/sdhci.c          | 98 +++-----------------------------------------------
+ 5 files changed, 132 insertions(+), 94 deletions(-)
  create mode 100644 hw/sd/sdhci-pci.c
 
---=20
+diff --git a/hw/sd/Kconfig b/hw/sd/Kconfig
+index 864f535..c5e1e55 100644
+--- a/hw/sd/Kconfig
++++ b/hw/sd/Kconfig
+@@ -12,6 +12,10 @@ config SD
+ 
+ config SDHCI
+     bool
++    select SD
++
++config SDHCI_PCI
++    bool
+     default y if PCI_DEVICES
+     depends on PCI
+-    select SD
++    select SDHCI
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index a99d9fb..0665727 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -2,6 +2,7 @@ common-obj-$(CONFIG_PL181) += pl181.o
+ common-obj-$(CONFIG_SSI_SD) += ssi-sd.o
+ common-obj-$(CONFIG_SD) += sd.o core.o sdmmc-internal.o
+ common-obj-$(CONFIG_SDHCI) += sdhci.o
++common-obj-$(CONFIG_SDHCI_PCI) += sdhci-pci.o
+ 
+ obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
+ obj-$(CONFIG_OMAP) += omap_mmc.o
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index 19665fd..3414140 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -304,4 +304,38 @@ extern const VMStateDescription sdhci_vmstate;
+ 
+ #define ESDHC_PRNSTS_SDSTB              (1 << 3)
+ 
++/*
++ * Default SD/MMC host controller features information, which will be
++ * presented in CAPABILITIES register of generic SD host controller at reset.
++ *
++ * support:
++ * - 3.3v and 1.8v voltages
++ * - SDMA/ADMA1/ADMA2
++ * - high-speed
++ * max host controller R/W buffers size: 512B
++ * max clock frequency for SDclock: 52 MHz
++ * timeout clock frequency: 52 MHz
++ *
++ * does not support:
++ * - 3.0v voltage
++ * - 64-bit system bus
++ * - suspend/resume
++ */
++#define SDHC_CAPAB_REG_DEFAULT 0x057834b4
++
++#define DEFINE_SDHCI_COMMON_PROPERTIES(_state) \
++    DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
++    DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
++    \
++    /* Capabilities registers provide information on supported
++     * features of this specific host controller implementation */ \
++    DEFINE_PROP_UINT64("capareg", _state, capareg, SDHC_CAPAB_REG_DEFAULT), \
++    DEFINE_PROP_UINT64("maxcurr", _state, maxcurr, 0)
++
++void sdhci_initfn(SDHCIState *s);
++void sdhci_uninitfn(SDHCIState *s);
++void sdhci_common_realize(SDHCIState *s, Error **errp);
++void sdhci_common_unrealize(SDHCIState *s, Error **errp);
++void sdhci_common_class_init(ObjectClass *klass, void *data);
++
+ #endif
+diff --git a/hw/sd/sdhci-pci.c b/hw/sd/sdhci-pci.c
+new file mode 100644
+index 0000000..f884661
+--- /dev/null
++++ b/hw/sd/sdhci-pci.c
+@@ -0,0 +1,87 @@
++/*
++ * SDHCI device on PCI
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or (at your
++ * option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++ * See the GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/hw.h"
++#include "hw/sd/sdhci.h"
++#include "sdhci-internal.h"
++
++static Property sdhci_pci_properties[] = {
++    DEFINE_SDHCI_COMMON_PROPERTIES(SDHCIState),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void sdhci_pci_realize(PCIDevice *dev, Error **errp)
++{
++    SDHCIState *s = PCI_SDHCI(dev);
++    Error *local_err = NULL;
++
++    sdhci_initfn(s);
++    sdhci_common_realize(s, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    dev->config[PCI_CLASS_PROG] = 0x01; /* Standard Host supported DMA */
++    dev->config[PCI_INTERRUPT_PIN] = 0x01; /* interrupt pin A */
++    s->irq = pci_allocate_irq(dev);
++    s->dma_as = pci_get_address_space(dev);
++    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->iomem);
++}
++
++static void sdhci_pci_exit(PCIDevice *dev)
++{
++    SDHCIState *s = PCI_SDHCI(dev);
++
++    sdhci_common_unrealize(s, &error_abort);
++    sdhci_uninitfn(s);
++}
++
++static void sdhci_pci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++
++    k->realize = sdhci_pci_realize;
++    k->exit = sdhci_pci_exit;
++    k->vendor_id = PCI_VENDOR_ID_REDHAT;
++    k->device_id = PCI_DEVICE_ID_REDHAT_SDHCI;
++    k->class_id = PCI_CLASS_SYSTEM_SDHCI;
++    dc->props = sdhci_pci_properties;
++
++    sdhci_common_class_init(klass, data);
++}
++
++static const TypeInfo sdhci_pci_info = {
++    .name = TYPE_PCI_SDHCI,
++    .parent = TYPE_PCI_DEVICE,
++    .instance_size = sizeof(SDHCIState),
++    .class_init = sdhci_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
++    },
++};
++
++static void sdhci_pci_register_type(void)
++{
++    type_register_static(&sdhci_pci_info);
++}
++
++type_init(sdhci_pci_register_type)
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 83f1574..17ad546 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -40,24 +40,6 @@
+ 
+ #define MASKED_WRITE(reg, mask, val)  (reg = (reg & (mask)) | (val))
+ 
+-/* Default SD/MMC host controller features information, which will be
+- * presented in CAPABILITIES register of generic SD host controller at reset.
+- *
+- * support:
+- * - 3.3v and 1.8v voltages
+- * - SDMA/ADMA1/ADMA2
+- * - high-speed
+- * max host controller R/W buffers size: 512B
+- * max clock frequency for SDclock: 52 MHz
+- * timeout clock frequency: 52 MHz
+- *
+- * does not support:
+- * - 3.0v voltage
+- * - 64-bit system bus
+- * - suspend/resume
+- */
+-#define SDHC_CAPAB_REG_DEFAULT 0x057834b4
+-
+ static inline unsigned int sdhci_get_fifolen(SDHCIState *s)
+ {
+     return 1 << (9 + FIELD_EX32(s->capareg, SDHC_CAPAB, MAXBLOCKLENGTH));
+@@ -1328,16 +1310,7 @@ static void sdhci_init_readonly_registers(SDHCIState *s, Error **errp)
+ 
+ /* --- qdev common --- */
+ 
+-#define DEFINE_SDHCI_COMMON_PROPERTIES(_state) \
+-    DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
+-    DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
+-    \
+-    /* Capabilities registers provide information on supported
+-     * features of this specific host controller implementation */ \
+-    DEFINE_PROP_UINT64("capareg", _state, capareg, SDHC_CAPAB_REG_DEFAULT), \
+-    DEFINE_PROP_UINT64("maxcurr", _state, maxcurr, 0)
+-
+-static void sdhci_initfn(SDHCIState *s)
++void sdhci_initfn(SDHCIState *s)
+ {
+     qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
+                         TYPE_SDHCI_BUS, DEVICE(s), "sd-bus");
+@@ -1348,7 +1321,7 @@ static void sdhci_initfn(SDHCIState *s)
+     s->io_ops = &sdhci_mmio_ops;
+ }
+ 
+-static void sdhci_uninitfn(SDHCIState *s)
++void sdhci_uninitfn(SDHCIState *s)
+ {
+     timer_del(s->insert_timer);
+     timer_free(s->insert_timer);
+@@ -1359,7 +1332,7 @@ static void sdhci_uninitfn(SDHCIState *s)
+     s->fifo_buffer = NULL;
+ }
+ 
+-static void sdhci_common_realize(SDHCIState *s, Error **errp)
++void sdhci_common_realize(SDHCIState *s, Error **errp)
+ {
+     Error *local_err = NULL;
+ 
+@@ -1375,7 +1348,7 @@ static void sdhci_common_realize(SDHCIState *s, Error **errp)
+                           SDHC_REGISTERS_MAP_SIZE);
+ }
+ 
+-static void sdhci_common_unrealize(SDHCIState *s, Error **errp)
++void sdhci_common_unrealize(SDHCIState *s, Error **errp)
+ {
+     /* This function is expected to be called only once for each class:
+      * - SysBus:    via DeviceClass->unrealize(),
+@@ -1445,7 +1418,7 @@ const VMStateDescription sdhci_vmstate = {
+     },
+ };
+ 
+-static void sdhci_common_class_init(ObjectClass *klass, void *data)
++void sdhci_common_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+@@ -1454,66 +1427,6 @@ static void sdhci_common_class_init(ObjectClass *klass, void *data)
+     dc->reset = sdhci_poweron_reset;
+ }
+ 
+-/* --- qdev PCI --- */
+-
+-static Property sdhci_pci_properties[] = {
+-    DEFINE_SDHCI_COMMON_PROPERTIES(SDHCIState),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+-static void sdhci_pci_realize(PCIDevice *dev, Error **errp)
+-{
+-    SDHCIState *s = PCI_SDHCI(dev);
+-    Error *local_err = NULL;
+-
+-    sdhci_initfn(s);
+-    sdhci_common_realize(s, &local_err);
+-    if (local_err) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+-    dev->config[PCI_CLASS_PROG] = 0x01; /* Standard Host supported DMA */
+-    dev->config[PCI_INTERRUPT_PIN] = 0x01; /* interrupt pin A */
+-    s->irq = pci_allocate_irq(dev);
+-    s->dma_as = pci_get_address_space(dev);
+-    pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->iomem);
+-}
+-
+-static void sdhci_pci_exit(PCIDevice *dev)
+-{
+-    SDHCIState *s = PCI_SDHCI(dev);
+-
+-    sdhci_common_unrealize(s, &error_abort);
+-    sdhci_uninitfn(s);
+-}
+-
+-static void sdhci_pci_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+-
+-    k->realize = sdhci_pci_realize;
+-    k->exit = sdhci_pci_exit;
+-    k->vendor_id = PCI_VENDOR_ID_REDHAT;
+-    k->device_id = PCI_DEVICE_ID_REDHAT_SDHCI;
+-    k->class_id = PCI_CLASS_SYSTEM_SDHCI;
+-    dc->props = sdhci_pci_properties;
+-
+-    sdhci_common_class_init(klass, data);
+-}
+-
+-static const TypeInfo sdhci_pci_info = {
+-    .name = TYPE_PCI_SDHCI,
+-    .parent = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(SDHCIState),
+-    .class_init = sdhci_pci_class_init,
+-    .interfaces = (InterfaceInfo[]) {
+-        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+-        { },
+-    },
+-};
+-
+ /* --- qdev SysBus --- */
+ 
+ static Property sdhci_sysbus_properties[] = {
+@@ -1846,7 +1759,6 @@ static const TypeInfo imx_usdhc_info = {
+ 
+ static void sdhci_register_types(void)
+ {
+-    type_register_static(&sdhci_pci_info);
+     type_register_static(&sdhci_sysbus_info);
+     type_register_static(&sdhci_bus_info);
+     type_register_static(&imx_usdhc_info);
+-- 
 1.8.3.1
 

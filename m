@@ -1,33 +1,34 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7781656wrx;
-        Fri, 22 Feb 2019 23:50:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZDW6lx+wSNNX67KRg1CSoIjyk9djzCuOMm90yjrCL+ZLBI4QmCRFXB/sIavzSTNgL2lgOP
-X-Received: by 2002:a25:e68d:: with SMTP id d135mr4378049ybh.334.1550908237144;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7781665wrx;
+        Fri, 22 Feb 2019 23:50:38 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IYpmT7uJxuxZ3cbmQ51d+ig8YBZ44sWCj5pbVHCrsrJfo9KO9WbytT661JzfhmgNjV5Hl+R
+X-Received: by 2002:a5b:447:: with SMTP id s7mr6241260ybp.168.1550908237955;
         Fri, 22 Feb 2019 23:50:37 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1550908237; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCMaTZYHB/jSDyRiYd04BxV0i/1brdFoZETVayy1q6jzsSR4ufAD3m4DGjBQXoG9h9
-         tK5OyhyS0qVzcUaYpJR5sReCA4h0YN228lqCcRj0Qva3BKdblNGCmu0VRrPbPJxDay3/
-         1UCL5b3QIM7BRlcXtFc46kQ/f48sWq+15nYBaN+Az7rXiDDDSykY62IDYt3ok3xQu7oC
-         2YfybV5v2N6GhIBhJ38saJ/DSV5auZdkHXIaW4QTohRVJzbt6uwMg+nzFbEz5kvTmiwH
-         QhW9R6zzxPeUiYbPacArmWgViXZliqVCrfgZ1tX/3LLrwvCDQMl/Iw792Kz6levUGAm5
-         5dnQ==
+        b=oxFu4vsQdEk28jJzbDJ7sl5GWa4lGfJiVBAuGvsKDJbcmp3EaUWM/7QEKA/+u3bBEq
+         w3/PmDirq4fzXbGHoPMP4lUrfnxymcwkYSFeuy3uti1DCeyzY9aLOO9PZSM+ncL98/9F
+         t3a6DPG3XGNshhzW8IpfCfBA0+tGyEtSJNDTXU2nC2dTmL5MF7kxAlkN9pWM+l79vp3a
+         7ixzBsPLXRemErTAQrHmO2qDY5OwR177pxuM4ZdfoBpHVhv4elLWiyLTdfN84Cfd97fo
+         LmyoCK629AMnaGU5hytFW8Dw+qmPkzOC56v4q8TkVd4J/+dsN6iOLNC/ZNvxaVBHO1hn
+         eyPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=mvdowafB+jdOdpe+ogtjnMmL+imgI63mhcOGcEf4/E4=;
-        b=ugUIu5LDmjIEm0PM5u0Hi3fm/2xdetj/C5dhY0joIfxF6v80Dx0XcOAaN6KV7+bzMz
-         94Q6Hqwkh1z+5V5EIuL27aoKLs/QXoeMNCPNIRFSCXvkTvDBUZ4DZtbL1Ab2zllsbtjv
-         18l8kVdcTaA5JW0/94Cv+FS4IrobIUuFjKjA9PhWgLrsZUEQpm2J1xex01oBHK9G/Y9T
-         iG+GNPLv3OsFhjBft79RUs5TkwpXg3T7+DhC5x+IIWOUOdClrvrBpEr+Sxk/nFroHhBI
-         FFQ/2c2Tm7lxbN8bJ6eQLsf6f55kpxRuf+dpaGigjT+9jNpo4mfp0UJ3uEY4z81ImdI8
-         8tUg==
+        bh=ZbzXTtkKQQZQv4Oesbi2xx48lLYpwSQaa+B9lwoudTg=;
+        b=iosPkFiwsBBgtN3dKF+jP+BrRTSYLnVxPJptAPrykb/9njqJNRSjBVnaXrPcaeaK8Q
+         MU91XNIoBLj0RWJv4G0CFBt3774tYv9p6B56hxlrOBFjEDt/EpuiBJsi4CMvOGWaa0xu
+         Z3/cjnsUZVregwvkSAiUD0Tk3fzDIv06bxXkOUp3YVdxFlDQkZmOj2HZmgzobsBmBZXV
+         ches5i+EQlRA0BUm/G/eIbUMAo/nNEBhEUg+ZyZNUtqtQwpgN7Jmwm+v1XFqzgYWdECF
+         EmUppZZ0/qW/idaBLOZqnlKDk5F9TsKKhtqGwXuqUEviapAl04MJb47f9TWXWegAaqXB
+         LJSA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si2100054ybl.194.2019.02.22.23.50.36
+        by mx.google.com with ESMTPS id o132si2162418ywo.220.2019.02.22.23.50.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Fri, 22 Feb 2019 23:50:37 -0800 (PST)
@@ -35,47 +36,50 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34081 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34083 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxS4y-0004w7-Hx
-	for alex.bennee@linaro.org; Sat, 23 Feb 2019 02:50:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57035)
+	id 1gxS4z-0004x8-DT
+	for alex.bennee@linaro.org; Sat, 23 Feb 2019 02:50:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57144)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gxS46-0004Tv-3X
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:45 -0500
+	(envelope-from <thuth@redhat.com>) id 1gxS4A-0004VO-PT
+	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gxS44-0001pG-7X
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43672)
+	(envelope-from <thuth@redhat.com>) id 1gxS49-0001tr-Qc
+	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 02:49:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51608)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gxS42-0001ka-5g; Sat, 23 Feb 2019 02:49:40 -0500
+	id 1gxS49-0001tI-L6; Sat, 23 Feb 2019 02:49:45 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8210C3082B52;
-	Sat, 23 Feb 2019 07:49:34 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C41053082208;
+	Sat, 23 Feb 2019 07:49:44 +0000 (UTC)
 Received: from thuth.com (ovpn-116-32.ams2.redhat.com [10.36.116.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1EFED5D9CA;
-	Sat, 23 Feb 2019 07:49:32 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 65E9E5D9CA;
+	Sat, 23 Feb 2019 07:49:43 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: yang.zhong@intel.com,
 	pbonzini@redhat.com,
 	qemu-devel@nongnu.org
-Date: Sat, 23 Feb 2019 08:48:55 +0100
-Message-Id: <1550908162-22644-4-git-send-email-thuth@redhat.com>
+Date: Sat, 23 Feb 2019 08:49:01 +0100
+Message-Id: <1550908162-22644-10-git-send-email-thuth@redhat.com>
 In-Reply-To: <1550908162-22644-1-git-send-email-thuth@redhat.com>
 References: <1550908162-22644-1-git-send-email-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Sat, 23 Feb 2019 07:49:34 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.47]);
+	Sat, 23 Feb 2019 07:49:44 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 03/30] hw/ide/ahci: Add a Kconfig switch for
- the AHDI-ICH9 device
+Subject: [Qemu-arm] [PATCH v3 09/30] hw/arm: Express dependencies of
+ musicpal with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,62 +95,87 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZN2XijE5XyIq
+X-TUID: cpbxTIljLtJb
 
-Some of our machines (like the ARM cubieboard) use CONFIG_AHCI for an AHCI
-sysbus device, but do not use CONFIG_PCI since they do not feature a PCI
-bus. With CONFIG_AHCI but without CONFIG_PCI, currently linking fails:
-
-    ../hw/ide/ich.o: In function `pci_ich9_ahci_realize':
-    hw/ide/ich.c:124: undefined reference to `pci_allocate_irq'
-    hw/ide/ich.c:126: undefined reference to `pci_register_bar'
-    hw/ide/ich.c:128: undefined reference to `pci_register_bar'
-    hw/ide/ich.c:131: undefined reference to `pci_add_capability'
-    hw/ide/ich.c:147: undefined reference to `msi_init'
-    ../hw/ide/ich.o: In function `pci_ich9_uninit':
-    hw/ide/ich.c:158: undefined reference to `msi_uninit'
-    ../hw/ide/ich.o:(.data.rel+0x50): undefined reference to `vmstate_pci_device'
-
-We must only compile ich.c if CONFIG_PCI is available, too, so introduce a
-new config switch for this device.
+This patch is slightly based on earlier work by =C3=81kos Kov=C3=A1cs (i.=
+e.
+his "hw/arm/Kconfig: Add ARM Kconfig" patch).
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/ide/Kconfig       | 6 +++++-
- hw/ide/Makefile.objs | 2 +-
- 2 files changed, 6 insertions(+), 2 deletions(-)
+ default-configs/arm-softmmu.mak | 6 +-----
+ hw/arm/Kconfig                  | 6 ++++++
+ 2 files changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/hw/ide/Kconfig b/hw/ide/Kconfig
-index ab47b6a..5d9106b 100644
---- a/hw/ide/Kconfig
-+++ b/hw/ide/Kconfig
-@@ -44,9 +44,13 @@ config MICRODRIVE
- 
- config AHCI
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
+u.mak
+index 388a2ba..c8eafb1 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -9,13 +9,13 @@ CONFIG_EXYNOS4=3Dy
+ CONFIG_HIGHBANK=3Dy
+ CONFIG_INTEGRATOR=3Dy
+ CONFIG_FSL_IMX31=3Dy
++CONFIG_MUSICPAL=3Dy
+=20
+ CONFIG_VGA=3Dy
+ CONFIG_NAND=3Dy
+ CONFIG_ECC=3Dy
+ CONFIG_SERIAL=3Dy
+ CONFIG_MAX7310=3Dy
+-CONFIG_WM8750=3Dy
+ CONFIG_TWL92230=3Dy
+ CONFIG_TSC2005=3Dy
+ CONFIG_LM832X=3Dy
+@@ -38,7 +38,6 @@ CONFIG_IMX_FEC=3Dy
+ CONFIG_FTGMAC100=3Dy
+ CONFIG_DS1338=3Dy
+ CONFIG_PFLASH_CFI01=3Dy
+-CONFIG_PFLASH_CFI02=3Dy
+ CONFIG_MICRODRIVE=3Dy
+ CONFIG_USB_MUSB=3Dy
+ CONFIG_PLATFORM_BUS=3Dy
+@@ -54,14 +53,12 @@ CONFIG_PL190=3Dy
+ CONFIG_PL330=3Dy
+ CONFIG_CADENCE=3Dy
+ CONFIG_PXA2XX=3Dy
+-CONFIG_BITBANG_I2C=3Dy
+ CONFIG_FRAMEBUFFER=3Dy
+ CONFIG_XILINX_SPIPS=3Dy
+ CONFIG_ZYNQ_DEVCFG=3Dy
+=20
+ CONFIG_ARM11SCU=3Dy
+ CONFIG_DIGIC=3Dy
+-CONFIG_MARVELL_88W8618=3Dy
+ CONFIG_OMAP=3Dy
+ CONFIG_TSC210X=3Dy
+ CONFIG_BLIZZARD=3Dy
+@@ -137,7 +134,6 @@ CONFIG_XILINX_AXI=3Dy
+ CONFIG_PCI_EXPRESS_DESIGNWARE=3Dy
+=20
+ CONFIG_STRONGARM=3Dy
+-CONFIG_MUSICPAL=3Dy
+=20
+ # for realview and versatilepb
+ CONFIG_LSI_SCSI_PCI=3Dy
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index df10a4d..ece2962 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -51,7 +51,13 @@ config MUSCA
+=20
+ config MUSICPAL
      bool
-+    select IDE_QDEV
-+
-+config AHCI_ICH9
-+    bool
-     default y if PCI_DEVICES
-     depends on PCI
--    select IDE_QDEV
-+    select AHCI
- 
- config IDE_SII3112
++    select BITBANG_I2C
++    select MARVELL_88W8618
+     select PTIMER
++    select PFLASH_CFI02
++    select PCI
++    select SERIAL
++    select WM8750
+=20
+ config NETDUINO2
      bool
-diff --git a/hw/ide/Makefile.objs b/hw/ide/Makefile.objs
-index a142add..faf04e0 100644
---- a/hw/ide/Makefile.objs
-+++ b/hw/ide/Makefile.objs
-@@ -9,6 +9,6 @@ common-obj-$(CONFIG_IDE_MMIO) += mmio.o
- common-obj-$(CONFIG_IDE_VIA) += via.o
- common-obj-$(CONFIG_MICRODRIVE) += microdrive.o
- common-obj-$(CONFIG_AHCI) += ahci.o
--common-obj-$(CONFIG_AHCI) += ich.o
-+common-obj-$(CONFIG_AHCI_ICH9) += ich.o
- common-obj-$(CONFIG_ALLWINNER_A10) += ahci-allwinner.o
- common-obj-$(CONFIG_IDE_SII3112) += sii3112.o
--- 
+--=20
 1.8.3.1
 

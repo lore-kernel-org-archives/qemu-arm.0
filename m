@@ -1,87 +1,94 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8362584wrx;
-        Sat, 23 Feb 2019 13:53:07 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZI0DEaO8D++v1YX6VzBas6C2nxw8eccSzcIXiqvBGNp8efqazx+nstGZNbbOI+/rhgkV1L
-X-Received: by 2002:a81:9193:: with SMTP id i141mr8502487ywg.94.1550958787681;
-        Sat, 23 Feb 2019 13:53:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550958787; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9983629wrx;
+        Mon, 25 Feb 2019 06:18:07 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY9FEb8NY/R8LjHpyANdiGeDPEeXU84bQGG69ryOuEsefzOBNwL2mcsycsioUJUABkxvLzu
+X-Received: by 2002:a25:a2c5:: with SMTP id c5mr14033744ybn.378.1551104287284;
+        Mon, 25 Feb 2019 06:18:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551104287; cv=none;
         d=google.com; s=arc-20160816;
-        b=lLMoALx6l6xqKIrE05wDi23wyPzDp6pYhNkdtavayZZVpTA10mwKI7XCUsyLkVgbZk
-         Q+JPlZfIJnbcpWcjMGi8BeWJXH9HZLzKAQK8Y22VD6RjHv6RYj2gWrgyDNAv4nN5Re11
-         V97rMoH+GK4FBvp+5v4WhQGrqbstyLaMZ7J2kHO36TTnySdv0jP+1h2ESaflvTBuPQJf
-         NiR1PzvwR39wwg9QIbEeq+UmrpjDx/H91tKJzg8Rqv2nY4KieiRnyRcIjwt8oHmUeDAC
-         xU46knDMEvVlmPNbL7bJcXIfg50u/mxDEPcPcC6800Q7EItsTbzMXsp39g4dRR35jJUP
-         g9yw==
+        b=jFB/lM0vZLNT/IRVPhXon3rTPJLzV0fODiMKEA/OFvvKaaQ2EI502Y96BVw3ysTcrW
+         hz5aGgu84QWjiRDdaKBErJ178lOScnoDn/Ec36F9qhPRn5d3gtfBPNsqp1NWE8Cecsp+
+         a0iWHAqaOijEI8AZxCqS2Z/yyMlO+HKHsUBCwEutDOAJoBU6Z9mzs9umWsIOT22LSyRF
+         s8Mggl+zGxJqfK6VfFGZT4u1+Mxa/UgfYxldFZ3tkrg0+CE20aWFjnXItOg889NEJvn/
+         6laJCxvCTKccv/8OjetsdwRTcyurljjedFy5VdlodssE4oAubc3X1gK8LxWz1LIAh6QQ
+         GRJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to;
-        bh=sGO2P82ZZyIyL1Kfj7u67O7aHRGXvr4nOQfDPCWzD/0=;
-        b=AlmDZ6u5QXHV8PoHPiFkoDZemxOEe8CTPeGixcrBeciiDtYJH0vdlN7mOGbR4zbjt5
-         To84E1Nkk68UKsZvTVmvfPBH1KSPj1CkHm5rDzBDrGtNJOc8BPfWyMRUHgvI+0UtNJl7
-         7YB/HLqDk1m/txpre+AjU+tEn5Gxyqj49zQzRbMfTXXA05tPBKYCSY/kxQ0yegTdzZX8
-         8v9ItFNTWc2UErkAZ63PI1agUN6tQ66cpp5JAZZR76bZsKU+kFrXYC6X5YHOqBX6jsjb
-         bBn2fEQcDAhWdha71eBkLk42yGIYr9LRyoqAdQ2wPYOCz8DgbJgLfIGINNxfiFaW1v4M
-         Os3w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=sDBvZR+pfSzzu+l/dqJnibhgSdFrnmpzMz1/NEVSmKI=;
+        b=mYjDFxaKtFkv0919OvdhT8K0gC4pvd/nUkeMujVvoUZyLtDtnX464wAByPYRln+6Kn
+         fn66zGd36lKqWuRuWg7Bsu41CNyx/NqQeX7ryiuwK+gNECAR8D1HKKmAirxWzh5Q1NKU
+         gpuH/5cmVmEB5heVRcTi/GJfIesjHcU9xZH6r6shjMIfb6Y1FpaoYxcTiOCQo7bIg7wj
+         ThUOqpQ39fhxxoPbqAyndzdjLbd/bA56TVU9gQwmXQFGaDTAt9XEV/UEnGC6n4PAkeDo
+         z1Vn0GmKOxfikhFAzamytbAPZ30uBEG0cLQOni8v0NaqIGB7Jisju+53/6YdcDefczNe
+         Vj8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@hexatier-com.20150623.gappssmtp.com header.s=20150623 header.b=CdYN+iQ8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si3156132ybj.495.2019.02.23.13.53.07
+        by mx.google.com with ESMTPS id p13si4725804ywm.58.2019.02.25.06.18.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Feb 2019 13:53:07 -0800 (PST)
+        Mon, 25 Feb 2019 06:18:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:43020 helo=lists.gnu.org)
+       dkim=fail header.i=@hexatier-com.20150623.gappssmtp.com header.s=20150623 header.b=CdYN+iQ8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38120 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gxfEJ-0004Xs-7X
-	for alex.bennee@linaro.org; Sat, 23 Feb 2019 16:53:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54536)
+	id 1gyH54-0002ym-Jn
+	for alex.bennee@linaro.org; Mon, 25 Feb 2019 09:18:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40644)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gxfEB-0004Xl-Jl
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 16:53:00 -0500
+	(envelope-from <benny.baraz@greensql.com>) id 1gyGIj-0000wB-OO
+	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 08:28:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gxfE4-0007hM-3m
-	for qemu-arm@nongnu.org; Sat, 23 Feb 2019 16:52:54 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51124)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gxfE0-0007W9-2Y; Sat, 23 Feb 2019 16:52:52 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 575903084298;
-	Sat, 23 Feb 2019 21:52:41 +0000 (UTC)
-Received: from [10.3.116.222] (ovpn-116-222.phx2.redhat.com [10.3.116.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D4BBB601AD;
-	Sat, 23 Feb 2019 21:52:40 +0000 (UTC)
-To: michelheily@gmail.com, qemu-devel@nongnu.org
-References: <1550878686-23934-1-git-send-email-michelheily@gmail.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <ae330da4-ab5d-1376-f897-0d2e3d5870ce@redhat.com>
-Date: Sat, 23 Feb 2019 15:52:40 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.0
+	(envelope-from <benny.baraz@greensql.com>) id 1gyGIj-0003jC-01
+	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 08:28:09 -0500
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835]:43763)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <benny.baraz@greensql.com>)
+	id 1gyGIg-0003gB-Tj
+	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 08:28:08 -0500
+Received: by mail-qt1-x835.google.com with SMTP id y4so10344494qtc.10
+	for <qemu-arm@nongnu.org>; Mon, 25 Feb 2019 05:27:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=hexatier-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=sDBvZR+pfSzzu+l/dqJnibhgSdFrnmpzMz1/NEVSmKI=;
+	b=CdYN+iQ8Qw7Btt02p4bRkm/iCF1cRs31BmOprY8AvakNHP9r8RGrgqLgNVu05wh2UO
+	awOwr2DDtaXFFUB0jpW5Wd0cfgj73wEh3XMq7Kw1xRM4tF5ylMMBp4NpkV3qhQNh9kqX
+	KcZODVtEmJLEOV5KnD5HP/Zbza7Al6WrDAvIcQJNLnYrPwxoeaFA6XQihP1r2l3Tag+k
+	w3MyjPkBeksKFSlF0A/PW1D3coeeV/6F+AKhMegHxFTYtofZwNbWS0dGW4bw51Vm8bRh
+	W+v50Xwr8TVtOqWPOapQ2xvRwBCTq15eR44+sBsDKzOawjrKJoinPTCsJlkJKE/mBCX6
+	sW2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=sDBvZR+pfSzzu+l/dqJnibhgSdFrnmpzMz1/NEVSmKI=;
+	b=NxGK4DrZL0gClUXVUssS+HfLESU/m25DTaf97KttwtHgjLtHvAZJffLNsTrmdMrMQJ
+	BqqF5a5l3WvrOg2W6NwZ7TSrWc0T/vbZwKTXhuk3Xu8wOkSmoCw4/8ZAkfNZjBe/Hngn
+	s3cCJVpdb+scFRRgLSFmzI1E6E3QwjLqgnlsn29066VFnU8O5rrDGmHyH//QwSorYtXQ
+	HqPK0g6SI07xAJytpvnnfVBsx0WS7aFhZgPTM5+iToe7j2Nphtiu6d+yN5EzCD9TzH/T
+	vkAclSSFCKWRBaXJ5wutE//Im0BVQnQLQozAyb9Y9hI9s3FLcnjHiL/HxG9GRGZo8Vfc
+	UflQ==
+X-Gm-Message-State: AHQUAuYZ0NAe2k/iNalcL11BHPTgPf4yE5wATjYvtqp8wqwIbRmm6vdv
+	WhuCAdm9UQUmj5rDMqUpjU7kcMdHoLCfdNL6t65671Al+3Y=
+X-Received: by 2002:a0c:c966:: with SMTP id v35mr13899733qvj.116.1551101275361;
+	Mon, 25 Feb 2019 05:27:55 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1550878686-23934-1-git-send-email-michelheily@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Sat, 23 Feb 2019 21:52:41 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/stellaris: Implement
- watchdog timer
+From: Benny Baraz <benny.baraz@hexatier.com>
+Date: Mon, 25 Feb 2019 15:27:44 +0200
+Message-ID: <CADdcL-_0R4fPFjyMZMHWy43iB=F6Y_ZF1F3CbhMAd_Kv0MsatA@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000087666c0582b7e814"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::835
+X-Mailman-Approved-At: Mon, 25 Feb 2019 09:17:42 -0500
+Subject: [Qemu-arm] ARMv8 (aarch64) emulator
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,80 +100,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"open list:Stellaris" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0MS8d9ciLC6b
+X-TUID: LgH4wt6MxW+l
 
-On 2/22/19 5:38 PM, michelheily@gmail.com wrote:
-> From: Michel Heily <michelheily@gmail.com>
-> 
-> Signed-off-by: Michel Heily <michelheily@gmail.com>
+--00000000000087666c0582b7e814
+Content-Type: text/plain; charset="UTF-8"
 
-This appears to be your first contribution to qemu. Welcome to the
-community!
+Hi,
 
-Your commit message doesn't give any details beyond the "what" in the
-subject line. The body of the commit message should explain the "why"
-(what bug are you fixing, how to reproduce it), so that a reviewer
-stands a chance of determining if the code matches the description you
-gave, and if the issue you describe really does warrant the inclusion of
-your patch.  In particular, when implementing a particular piece of
-hardware, giving a URL to the datasheet you used as your reference will
-let reviewers check if your software appears to match what the actual
-hardware would do.
+I have to run ARMv8 (aarch64) emulator.
 
-For more patch submission hints, see:
-https://wiki.qemu.org/Contribute/SubmitAPatch
+I have created an image centos7-arm.img with
+qemu-img create -f qcow2 centos7-arm.img 40G
 
-I'm not an expert on this hardware, but will at least give a cursory
-glance for style issues:
+I run the qemu-system-aarch64 on Fedora on Xen.
+(particularly
+qemu-system-aarch64 -boot d -cdrom
+/root/Download/QEMU/CentOS-7-aarch64-Minimal-1810.iso -m 8000 -hda
+centos7-arm.img -machine virt
+)
 
-> +    case WDT_O_LOCK:
-> +        return s->locked ? 1 : 0;
-> +    case WDT_O_PeriphID4: /* fallthrough */
-> +    case WDT_O_PeriphID5:
+But there is a challenge - it answers
+*Unable to init server: Could not connect: Connection refused*
+*gtk initialization failed*
 
-I don't think that particular /* fallthrough */ comment is needed. It
-matters when you have a case with code, but not for consecutive case labels.
+I see many people asked about but no answer has been found.
 
+Alternatively I tried to run
+qemu-system-aarch64 -boot d -cdrom
+/root/Download/QEMU/CentOS-7-aarch64-Minimal-1810.iso -m 8000 -hda
+centos7-arm.img -machine virt *-curses*
 
-> +
-> +static void wdtimer_write(void *opaque, hwaddr offset,
-> +                       uint64_t value, unsigned size)
+In this case there is just no prompt.
 
-Alignment looks off.
+Do you have any idea how I can solve it?
 
-> +{
-> +    wdtimer_state *s = (wdtimer_state *)opaque;
+--00000000000087666c0582b7e814
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This is C, where void* implicitly converts to other types; you don't
-need the cast.
+<div dir=3D"ltr"><div dir=3D"ltr">Hi,</div><div dir=3D"ltr"><br></div><div =
+dir=3D"ltr">I have to run ARMv8 (aarch64) emulator.<br><div><br></div><div>=
+<div>I have created an image centos7-arm.img with=C2=A0</div><div><span sty=
+le=3D"color:rgb(51,51,51);font-family:Arial,sans-serif;font-size:14px;backg=
+round-color:rgb(245,245,245)">qemu-img create -f qcow2 centos7-arm.img 40G<=
+/span>=C2=A0</div><div><br></div></div><div><div>I run the=C2=A0qemu-system=
+-aarch64 on Fedora on Xen.</div><div>(particularly=C2=A0<br></div><div>qemu=
+-system-aarch64 -boot d -cdrom /root/Download/QEMU/CentOS-7-aarch64-Minimal=
+-1810.iso -m 8000 -hda=C2=A0 centos7-arm.img -machine virt</div><div>)</div=
+><div><br></div><div>But there is a challenge - it answers</div><div><div><=
+b>Unable to init server: Could not connect: Connection refused</b></div><di=
+v><b>gtk initialization failed</b></div></div><div><br></div><div>I see man=
+y people asked about but no answer has been found.</div><div><br></div><div=
+>Alternatively I tried to run=C2=A0</div><div>qemu-system-aarch64 -boot d -=
+cdrom /root/Download/QEMU/CentOS-7-aarch64-Minimal-1810.iso -m 8000 -hda=C2=
+=A0 centos7-arm.img -machine virt <b>-curses</b><br></div><div><br></div><d=
+iv>In this case there is just no prompt.=C2=A0<br></div><div><br></div><div=
+>Do you have any idea how I can solve it?</div><div><br></div><br class=3D"=
+m_-1904047479752640569gmail-Apple-interchange-newline"></div></div></div>
 
-
-> @@ -1243,7 +1478,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
->       * Stellaris LM3S6965 Microcontroller Data Sheet (rev I)
->       * http://www.ti.com/lit/ds/symlink/lm3s6965.pdf
->       *
-> -     * 40000000 wdtimer (unimplemented)
-> +     * 40000000 wdtimer
-
-Okay, so there is a datasheet. But it may still help to mention it in
-the commit message in addition to the comment already in the code.
-
->       * 40002000 i2c (unimplemented)
->       * 40004000 GPIO
->       * 40005000 GPIO
-> @@ -1335,6 +1570,12 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
->          }
->      }
->  
-> +    if (board->dc1 & (1  << 3)) { /* watchdog present */
-
-Spacing looks off.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+--00000000000087666c0582b7e814--

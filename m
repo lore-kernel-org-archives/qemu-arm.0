@@ -1,91 +1,89 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9754478wrx;
-        Mon, 25 Feb 2019 01:54:54 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZgJx1e57CRZw+K+5d2IOLflTL2+OVDT8C40IA6p1aXEcHii7YvODqQ7CYyuWO8pJye2t16
-X-Received: by 2002:a81:62d4:: with SMTP id w203mr13136429ywb.389.1551088494210;
-        Mon, 25 Feb 2019 01:54:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551088494; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9769719wrx;
+        Mon, 25 Feb 2019 02:14:28 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ia9Ig+7BtiqW6hRrj/76Rs98tER69qpo0LllPHtNJ69i0wUO9niqf7x15UVP9MOpg/WhWfF
+X-Received: by 2002:a5b:544:: with SMTP id r4mr13161354ybp.235.1551089668396;
+        Mon, 25 Feb 2019 02:14:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551089668; cv=none;
         d=google.com; s=arc-20160816;
-        b=KnGx6m2KQlrhqNZtQNZReilsKT7WlNatHMVENUE4Hm1815UoabcHusrKoEGx6J8iQJ
-         YpilHp8LI3VnVbLKLo5v6a3otmlCGv9rLCUMbIyx4ev4wD/4Lk3Y7vgxsOO0V5xgyKm4
-         BDlZC3Q3gSymSkzXMDp2S7MkGj43TLSbJiMGnMQsSKaH1Dghe3WvMQHPTI4RXgEnlK1H
-         I2bndtD02gOuaTUek0f9QvVHyLA/QjJy5dSsXAIXMk+qlvKFrahvMWknfgmq2cnJJssA
-         F5OIh8v63qZflno9Te7mx6eAwDhZEWIVfk20LKzxjwn1Ci2OEvmoAufuXMHfiTWsjj5P
-         RldQ==
+        b=ul8AB7pw3AfVFPM4z8JRNNB7sCGXnPVuzkVNFqMRl0mdi6FYVnKz8Yvy9CVWXjBKer
+         +PZ4FztPD31T9vkWwnzuRmXq9CG1aT6I1aRwIs9ItxSruG7MocfAU8P1Sr4vTynmQpS2
+         tSXlbeoAUkZ2nrxzfJ8QwemPw6X1r9vsNs8m2AEYHCVNNVmLY650G7xUuaydVeN+pA7G
+         kmbPr7bYm/CsuCkD8quPkKRYbV8DqNxSVWoDUqmJPVwrn4kf9F0jwmDI6EHn1xHJdpU4
+         S4X01rVBLBdjOI3VFFOOmYrdt1W0sNmmBKM1xExN9KtIwmV0f8cdaghfRY30vX1r+NHt
+         h68A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic:to
          :from;
-        bh=5qPl5WbQuFhPFE3Ow1Spg8KGNj7dGhc5r9/j5c/YbiY=;
-        b=hwfOj7fGaCzlGBY+4AINzSaRKh4s22COgqzM/x7R9LTVfD908zv3RBP9eIScGtnho9
-         yNG4ooO0tW64Ws5e2m3Ttc4I7YztTxgw/eYqp2zs0GfNo3vtWFheZYA9MR6LB1JJQsvb
-         fxMaW3LGGmX3mTt+GRqMIMIDHsSjiUY65diKgmfpefc05OCHQx8Z8ubvGf3kBZUAzaVG
-         CAjBUjUmIr8eap8bViUEDCoK7FbDxEqS+hnsreruB/2QL1ioBViVj8bm2wsyk6fTpPEr
-         rLWtU3L4uVZjO1pfZ60eRJVrmtsMFf7AN0VsOZzA1utdBmZfrz7zYU2/eTNcXFfXy6W4
-         eNeQ==
+        bh=3BMB01miAqMUlumNA+sNcm8UiIxDYiY+/8WjE4KnXy8=;
+        b=k+YMT8z+DXij95alN5l0E+pqkFcgKLgGJ/x57i9bbJJM80neTuxNm8RHskUiQPguw6
+         z94BQum9HkryJO5JflihGcdGerJo4Yk7xAJAI3Pf8xud9Vnjh4ubKaibtvBwHIYdqZMq
+         ADBEz8KxoOIlUn7CqnJhTuA2wlVv3bBl410wMqPsJZ6cXh0ZV2SXUR7qe6yxHD1SchQy
+         2QVSHDyCmpIAjN03sPuxvkEx3al2dAo5/89t9Xw7xn+gvIwZzznFX7o5M8qw1MprPkTT
+         x7nYJot6y8YT/i5XKyJWZ+MoWgAe2k4qUqde8syBIA3Qmj7eaHk/JDqPYJYl2ClSbyR9
+         vYDg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h185si1472325ybh.43.2019.02.25.01.54.54
+        by mx.google.com with ESMTPS id v8si1373498ybk.65.2019.02.25.02.14.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Feb 2019 01:54:54 -0800 (PST)
+        Mon, 25 Feb 2019 02:14:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:34387 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34622 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gyCyL-00068u-Mq
-	for alex.bennee@linaro.org; Mon, 25 Feb 2019 04:54:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54482)
+	id 1gyDHH-0002ra-LO
+	for alex.bennee@linaro.org; Mon, 25 Feb 2019 05:14:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59182)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyCy8-00067C-L0
-	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 04:54:42 -0500
+	id 1gyDH0-0002pT-Js
+	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 05:14:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyCy6-0007b6-AP
-	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 04:54:40 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45345 helo=huawei.com)
+	id 1gyDGy-0004GU-Ue
+	for qemu-arm@nongnu.org; Mon, 25 Feb 2019 05:14:10 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45346 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyCy4-0007Mm-KW; Mon, 25 Feb 2019 04:54:37 -0500
-Received: from lhreml702-cah.china.huawei.com (unknown [172.18.7.107])
-	by Forcepoint Email with ESMTP id 24846A6BECD9EFBC8FD9;
-	Mon, 25 Feb 2019 09:54:15 +0000 (GMT)
+	id 1gyDGy-0004FL-Kn; Mon, 25 Feb 2019 05:14:08 -0500
+Received: from LHREML713-CAH.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id A013AAB48374A486D813;
+	Mon, 25 Feb 2019 10:14:05 +0000 (GMT)
 Received: from LHREML524-MBS.china.huawei.com ([169.254.2.86]) by
-	lhreml702-cah.china.huawei.com ([10.201.108.43]) with mapi id
-	14.03.0415.000; Mon, 25 Feb 2019 09:54:06 +0000
+	LHREML713-CAH.china.huawei.com ([10.201.108.36]) with mapi id
+	14.03.0415.000; Mon, 25 Feb 2019 10:13:57 +0000
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Laszlo Ersek <lersek@redhat.com>, Auger Eric <eric.auger@redhat.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"imammedo@redhat.com"
-	<imammedo@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
-Thread-Index: AQHUtvmpFsitltmfREOfc6NLrhEY6qXsIlgAgAA0iICABBmRQA==
-Date: Mon, 25 Feb 2019 09:54:05 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8392D48D9@lhreml524-mbs.china.huawei.com>
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
-	<892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com>
-In-Reply-To: <892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>, Auger Eric <eric.auger@redhat.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM expansion
+	and PCDIMM/NVDIMM support
+Thread-Index: AQHUyW1El5IR0Rd+70mvbAClIWqLhaXsBDYAgAAS7QCABDLGAIAAByLQ
+Date: Mon, 25 Feb 2019 10:13:57 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8392D4928@lhreml524-mbs.china.huawei.com>
+References: <20190220224003.4420-1-eric.auger@redhat.com>
+	<20190222172742.18c3835a@redhat.com>
+	<c016024e-9f4b-8953-f492-8802675f7e22@redhat.com>
+	<20190225104212.7d40e65e@Igors-MacBook-Pro.local>
+In-Reply-To: <20190225104212.7d40e65e@Igors-MacBook-Pro.local>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM
+ expansion and PCDIMM/NVDIMM support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,113 +95,240 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
-	Linuxarm <linuxarm@huawei.com>, "xuwei \(O\)" <xuwei5@huawei.com>, Ard
-	Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"david@redhat.com" <david@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"dgilbert@redhat.com" <dgilbert@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q3NM63eqiz+W
+X-TUID: BdmAzI3/nuAI
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTGFzemxvIEVyc2VrIFtt
-YWlsdG86bGVyc2VrQHJlZGhhdC5jb21dDQo+IFNlbnQ6IDIyIEZlYnJ1YXJ5IDIwMTkgMTk6MTEN
-Cj4gVG86IEF1Z2VyIEVyaWMgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT47IFNoYW1lZXJhbGkgS29s
-b3RodW0gVGhvZGkNCj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47IHNo
-YW5ub24uemhhb3NsQGdtYWlsLmNvbTsNCj4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBpbWFt
-bWVkb0ByZWRoYXQuY29tOyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+IHFlbXUtYXJtQG5vbmdu
-dS5vcmcNCj4gQ2M6IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBMaW51eGFybSA8bGlu
-dXhhcm1AaHVhd2VpLmNvbT47IEFyZA0KPiBCaWVzaGV1dmVsIDxhcmQuYmllc2hldXZlbEBsaW5h
-cm8ub3JnPjsgTGVpZiBMaW5kaG9sbSAoTGluYXJvIGFkZHJlc3MpDQo+IDxsZWlmLmxpbmRob2xt
-QGxpbmFyby5vcmc+DQo+IFN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIDAvNF0gQVJNIHZpcnQ6IEFD
-UEkgbWVtb3J5IGhvdHBsdWcgc3VwcG9ydA0KPiANCj4gT24gMDIvMjIvMTkgMTc6MDMsIEF1Z2Vy
-IEVyaWMgd3JvdGU6DQo+ID4gSGkgU2hhbWVlciwNCj4gPg0KPiA+IE9uIDEvMjgvMTkgMTI6MDUg
-UE0sIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6DQo+ID4+IFRoaXMgc2VyaWVzIGlzIGFuIGF0dGVt
-cHQgdG8gcHJvdmlkZSBob3RwbHVnIHN1cHBvcnQgdG8gYm90aA0KPiA+PiBwYy1kaW1tIGFuZCBu
-dmRpbW0gZGV2aWNlIG1lbW9yeSBvbiBBUk0gdmlydCBwbGF0Zm9ybS4gVGhpcyBpcw0KPiA+PiBi
-YXNlZCBvbiBFcmljJ3MgcmVjZW50IHdvcmtzIHRvIHN1cHBvcnQgUENESU1NL05WRElNTSBkZXZp
-Y2UNCj4gbWVtb3J5WzFdLg0KPiA+PiBUaGUga2VybmVsIHN1cHBvcnQgZm9yIGFybTY0IG1lbW9y
-eSBob3QgYWRkIHdhcyBhZGRlZCBvbmx5DQo+ID4+IHJlY2VudGx5IGJ5IFJvYmluWzJdIGFuZCBo
-ZW5jZSB0aGUgZ3Vlc3Qga2VybmVsIHNob3VsZCBiZSA9PiA1LjAtcmMxLg0KPiA+Pg0KPiA+PiBU
-aGlzIG1ha2VzIHVzZSBvZiBQTDA2MSBHUElPIGNvbnRyb2xsZXIgdG8gc2VudCByZWxhdGVkIEFD
-UEkgZXZlbnRzDQo+ID4gcy9zZW50L3NlbmQNCj4gPj4gdG8gdGhlIEd1ZXN0LiBUaGUgb25seSBy
-ZWZlcmVuY2UgSSBjb3VsZCBmaW5kIHdpdGggcmVzcGVjdCB0byB0aGUgR1BJTw0KPiA+PiBwaW5z
-IHVzYWdlIGlzIGhlcmVbM10gd2hpY2ggc2F5cywgInVzZSBQSU4gMyBmb3Igc3lzdGVtX3Bvd2Vy
-ZG93biwNCj4gPj4gcmVzZXJ2aW5nIFBJTiAwLCAxLCAyIGZvciBQQ0kgaG90cGx1ZywgQ1BVIGhv
-dHBsdWcgYW5kIG1lbW9yeSBob3RwbHVnIi4NCj4gPj4gSGVuY2UgUGluIDIgaXMgdXNlZCBmb3Ig
-UENESU1NIGFuZCBwaW4gNCBmb3IgTlZESU1NLg0KPiA+Pg0KPiA+PiBUaGlzIGlzIHNhbml0eSB0
-ZXN0ZWQgb24gYSBIaVNpbGljb24gQVJNNjQgcGxhdGZvcm0gYW5kIGFwcHJlY2lhdGUNCj4gPj4g
-YW55IGZ1cnRoZXIgdGVzdGluZy4NCj4gPg0KPiA+IEkgZGlkIHNvbWUgdGVzdGluZyBvbiBhbm90
-aGVyIHBsYXRmb3JtIGFuZCBJIGdvdCB0aGUgZXhhY3RseSB0aGUgc2FtZQ0KPiA+IHJlc3VsdHMg
-YXMgeW91cnM6IFBDRElNTSBob3QgcGx1ZyB3b3JrcyBmaW5lLiBBbHNvIGFmdGVyIHN5c3RlbV9y
-ZXNldCBJDQo+ID4gc3RpbGwgY2FuIHNlZSB0aGUgc2xvdHMuDQo+ID4gSG90LXVucGx1ZyBpcyBu
-b3Qgc3VwcG9ydGVkIHRob3VnaC4NCj4gPiBGb3IgTlZESU1NLCBob3QtYWRkIHdvcmtzIGZpbmUg
-YW5kIGFuZCBJIGNhbiBzZWUgdGhlIHNsb3RzIHVzaW5nIG5kY3RsDQo+ID4gb24gZ3Vlc3QuIEJ1
-dCBhZnRlciBzeXN0ZW1fcmVzZXQsIHRoZSBndWVzdCBkb2VzIG5vdCBib290IHByb3Blcmx5Lg0K
-PiA+DQo+ID4+DQo+ID4+IFRoaXMgc2VyaWVzIGNhbiBiZSBhcHBsaWVkIG9uIHRvcCBvZiBFcmlj
-J3MgYnJhbmNoIGhlcmVbNF0NCj4gPj4NCj4gPj4gVGVzdDoNCj4gPj4gLS0tLS0tDQo+ID4+IFBs
-ZWFzZSB1c2UgYSBHdWVzdCBrZXJuZWwgaW1hZ2UgPjUuMC1yYzEgd2l0aCBhbGwgdGhlIG1lbS9u
-dmRpbW0NCj4gPj4gaG90cGx1ZyByZWxhdGVkIENPTkZJR3MgZW5hYmxlZC4NCj4gPj4NCj4gPj4g
-Li9xZW11LXN5c3RlbS1hYXJjaDY0IFwNCj4gPj4gLW1hY2hpbmUgdmlydCxnaWMtdmVyc2lvbj0z
-LG52ZGltbSBcDQo+ID4+IC1tIDFHLG1heG1lbT00RyxzbG90cz00IFwNCj4gPj4gLWNwdSBob3N0
-IFwNCj4gPj4gLWtlcm5lbCBJbWFnZSBcDQo+ID4+IC1pbml0cmQgcm9vdGZzLWlwZXJmLmNwaW8g
-XA0KPiA+PiAtYmlvcyBRRU1VX0VGSS5mZCBcDQo+ID4+IC1udW1hIG5vZGUsbm9kZWlkPTAgXA0K
-PiA+PiAtbmV0IG5vbmUgXA0KPiA+PiAtbm9ncmFwaGljIC1lbmFibGUta3ZtIFwNCj4gPj4gLWFw
-cGVuZCAiY29uc29sZT10dHlBTUEwIGFjcGk9Zm9yY2UgZWFybHljb249cGwwMTEsMHg5MDAwMDAw
-Ig0KPiA+Pg0KPiA+PiBFbnRlciBRZW11IG1vbml0b3IsDQo+ID4+IEFkZCBwYy1kaW1tOg0KPiA+
-PiBvYmplY3RfYWRkIG1lbW9yeS1iYWNrZW5kLXJhbSxpZD1tZW0xLHNpemU9MUcNCj4gPj4gZGV2
-aWNlX2FkZCBwYy1kaW1tLGlkPWRpbW0xLG1lbWRldj1tZW0xDQo+ID4+DQo+ID4+IEFkZCBudmRp
-bW06DQo+ID4+IG9iamVjdF9hZGQgbWVtb3J5LWJhY2tlbmQtcmFtLGlkPW1lbTIsc2l6ZT0xRw0K
-PiA+PiBkZXZpY2VfYWRkIG52ZGltbSxpZD1kaW1tMixtZW1kZXY9bWVtMg0KPiA+Pg0KPiA+PiBL
-bm93biBJc3N1ZToNCj4gPj4NCj4gPj4gSXQgaXMgb2JzZXJ2ZWQgdGhhdCBob3QgYWRkaW5nIG52
-ZGltbSB3aWxsIHJlc3VsdHMgaW4gZ3Vlc3QgcmVib290DQo+ID4+IGZhaWx1cmUuIEVESzIgZmFp
-bHMgdG8gYnVpbGQgdGhlIEFDUEkgdGFibGVzIG9uIHJlYm9vdC4gUGxlYXNlIGZpbmQNCj4gPj4g
-YmVsb3cgRURLMiBsb2cgb24gR3Vlc3QgcmVib290IGFmdGVyIG52ZGltbSBob3QtYWRkLA0KPiA+
-Pg0KPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IGludmFsaWQgY2hlY2tzdW0gcmFuZ2UgaW4g
-ImV0Yy9hY3BpL3RhYmxlcyINCj4gPj4gT25Sb290QnJpZGdlc0Nvbm5lY3RlZDogSW5zdGFsbEFj
-cGlUYWJsZXM6IFByb3RvY29sIEVycm9yDQo+ID4+DQo+ID4+IFRoZSByb290IGNhdXNlIHNlZW1z
-IHRvIGJlIEVESzIgQUNQSSB0YWJsZSBjaGVja3N1bSBmYWlsdXJlDQo+ID4+IGFzIE5GSVQgdGFi
-bGUgaXMgZ2V0dGluZyB1cGRhdGVkIG9uIGhvdC1hZGQuIFRoaXMgbmVlZHMgZnVydGhlcg0KPiA+
-PiBpbnZlc3RpZ2F0aW9uLg0KPiA+ICsgQXJkLCBMZWlmLCBMYXN6bG8gaWYgdGhleSBoYXZlIGFu
-eSBpZGVhIG9mIHdoYXQgaXMgbWlzc2luZy93cm9uZy4NCj4gDQo+IEh1aCwgdmVyeSBpbnRlcmVz
-dGluZzsgSSB1c3VhbGx5IGRvbid0IGV4cGVjdCBteSBzYW5pdHkgY2hlY2tzIHRvIGZpcmUNCj4g
-aW4gcHJhY3RpY2UuIDopDQo+IA0KPiBUaGUgbWVzc2FnZQ0KPiANCj4gICBQcm9jZXNzQ21kQWRk
-Q2hlY2tzdW06IGludmFsaWQgY2hlY2tzdW0gcmFuZ2UgaW4gImV0Yy9hY3BpL3RhYmxlcyINCj4g
-DQo+IGlzIGxvZ2dlZCBieSBPVk1GJ3MgYW5kIEFybVZpcnRRZW11J3MgQUNQSSBQbGF0Zm9ybSBE
-WEUgRHJpdmVyIHdoZW4gaXQNCj4gZmluZHMgYW4gaW52YWxpZCBDT01NQU5EX0FERF9DSEVDS1NV
-TSBjb21tYW5kIGluIFFFTVUncyBBQ1BJDQo+IGxpbmtlci9sb2FkZXIgc2NyaXB0Lg0KPiANCj4g
-UGxlYXNlIHNlZSB0aGUgY29tbWFuZCBkZWZpbml0aW9uIGluIFFFTVUncw0KPiAiaHcvYWNwaS9i
-aW9zLWxpbmtlci1sb2FkZXIuYyIuIEluIHBhcnRpY3VsYXIsIHBsZWFzZSByZWZlciB0byB0aGUN
-Cj4gZnVuY3Rpb24gYmlvc19saW5rZXJfbG9hZGVyX2FkZF9jaGVja3N1bSgpLCB3aGljaCBidWls
-ZHMgdGhlIGNvbW1hbmQNCj4gc3RydWN0dXJlLCBhbmQgZG9jdW1lbnRzIHRoZSBmaWVsZHMuDQo+
-IA0KPiAoWW91IG1heSBhbHNvIHJlZmVyIHRvIFFFTVVfTE9BREVSX0FERF9DSEVDS1NVTSBpbiBm
-aWxlDQo+ICJPdm1mUGtnL0FjcGlQbGF0Zm9ybUR4ZS9RZW11TG9hZGVyLmgiIGluIHRoZSBlZGsy
-IHNvdXJjZSB0cmVlLCBmb3IgdGhlDQo+IHNhbWUgaW5mb3JtYXRpb24uKQ0KPiANCj4gVGhlIGVy
-cm9yIG1lc3NhZ2UgaXMgbG9nZ2VkIGlmOg0KPiAtIHRoZSBvZmZzZXQgYXQgd2hpY2ggdGhlIGNo
-ZWNrc3VtIHNob3VsZCBiZSBzdG9yZWQgZmFsbHMgb3V0c2lkZSBvZiB0aGUNCj4gc2l6ZSBvZiB0
-aGUgZndfY2ZnIGJsb2IsIG9yDQo+IC0gdGhlIHJhbmdlIG92ZXIgd2hpY2ggdGhlIGNoZWNrc3Vt
-IHNob3VsZCBiZSBjYWxjdWxhdGVkIGZhbGxzIG91dHNpZGUNCj4gKGF0IGxlYXN0IGluIHBhcnQp
-IG9mIHRoZSBmd19jZmcgYmxvYi4NCj4gDQo+IFRvIG1lIHRoaXMgc3VnZ2VzdHMgdGhhdCBRRU1V
-IGdlbmVyYXRlcyBhbiBpbnZhbGlkDQo+IENPTU1BTkRfQUREX0NIRUNLU1VNDQo+IGNvbW1hbmQg
-Zm9yIHRoZSBmaXJtd2FyZS4NCj4gDQo+IC4uLiBJJ3ZlIHRyaWVkIHRvIHNraW0gdGhlIHBhdGNo
-ZXMgYnJpZWZseS4gSSB0aGluayB0aGVyZSBtdXN0IGJlIGFuDQo+IGVycm9yIGluIHRoZSBEU0RU
-IGJ1aWxkaW5nIGxvZ2ljIHRoYXQgaXMgb25seSBhY3RpdmUgb24gcmVib290IGlmIGFuDQo+IG52
-ZGltbSBtb2R1bGUgd2FzIGhvdC1hZGRlZCBiZWZvcmUgdGhlIHJlYm9vdC4NCg0KVGhhbmtzIGZv
-ciB0YWtpbmcgYSBsb29rIGFuZCB0aGUgcG9pbnRlcnMuIEkgd2lsbCBkZWJ1ZyB0aGlzIGZ1cnRo
-ZXINCmFuZCBnZXQgYmFjay4NCg0KVGhhbmtzLA0KU2hhbWVlcg0KDQo+IFRoYW5rcywNCj4gTGFz
-emxvDQo+IA0KPiANCj4gPj4gWzFdaHR0cHM6Ly9saXN0cy5nbnUub3JnL2FyY2hpdmUvaHRtbC9x
-ZW11LWRldmVsLzIwMTktMDEvbXNnMDU3NDAuaHRtbA0KPiA+PiBbMl1odHRwczovL3BhdGNod29y
-ay5rZXJuZWwub3JnL3BhdGNoLzEwNzI0NDU1Lw0KPiA+PiBbM11odHRwczovL2xpc3RzLmdudS5v
-cmcvYXJjaGl2ZS9odG1sL3FlbXUtYXJtLzIwMTUtMTIvbXNnMDAwOTUuaHRtbA0KPiA+PiBbNF1o
-dHRwczovL2dpdGh1Yi5jb20vZWF1Z2VyL3FlbXUvdHJlZS92My4xLjAtZGltbS12NQ0KPiA+Pg0K
-PiA+PiBTaGFtZWVyIEtvbG90aHVtICg0KToNCj4gPj4gICBodzphY3BpOiBNYWtlIEFDUEkgSU8g
-YWRkcmVzcyBzcGFjZSBjb25maWd1cmFibGUNCj4gPj4gICBody9hcm0vdmlydDogQWRkIEdQSU8g
-YmFzZWQgcGNkaW1tIGhvdHBsdWcgQUNQSSBldmVudCBzdXBwb3J0DQo+ID4+ICAgaHcvYXJtL3Zp
-cnQ6IEVuYWJsZSBwYy1kaW1tIGhvdHBsdWcgc3VwcG9ydA0KPiA+PiAgIGh3L2FybS92aXJ0OiBB
-ZGQgbnZkaW1tIGhvdHBsdWcgc3VwcG9ydA0KPiA+Pg0KPiA+PiAgZGVmYXVsdC1jb25maWdzL2Fy
-bS1zb2Z0bW11Lm1hayAgfCAgIDEgKw0KPiA+PiAgaHcvYWNwaS9tZW1vcnlfaG90cGx1Zy5jICAg
-ICAgICAgfCAgMTMgKysrLS0NCj4gPj4gIGh3L2FybS92aXJ0LWFjcGktYnVpbGQuYyAgICAgICAg
-IHwgIDQ1ICsrKysrKysrKysrKysrKy0tDQo+ID4+ICBody9hcm0vdmlydC5jICAgICAgICAgICAg
-ICAgICAgICB8IDEwNQ0KPiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0N
-Cj4gPj4gIGh3L2kzODYvYWNwaS1idWlsZC5jICAgICAgICAgICAgIHwgICAzICstDQo+ID4+ICBp
-bmNsdWRlL2h3L2FjcGkvbWVtb3J5X2hvdHBsdWcuaCB8ICAgNiArKy0NCj4gPj4gIGluY2x1ZGUv
-aHcvYXJtL3ZpcnQuaCAgICAgICAgICAgIHwgIDE1ICsrKysrKw0KPiA+PiAgNyBmaWxlcyBjaGFu
-Z2VkLCAxNjggaW5zZXJ0aW9ucygrKSwgMjAgZGVsZXRpb25zKC0pDQo+ID4+DQoNCg==
+Hi Igor,
+
+> -----Original Message-----
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: 25 February 2019 09:42
+> To: Auger Eric <eric.auger@redhat.com>
+> Cc: peter.maydell@linaro.org; drjones@redhat.com; david@redhat.com;
+> qemu-devel@nongnu.org; Shameerali Kolothum Thodi
+> <shameerali.kolothum.thodi@huawei.com>; dgilbert@redhat.com;
+> qemu-arm@nongnu.org; david@gibson.dropbear.id.au;
+> eric.auger.pro@gmail.com
+> Subject: Re: [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM expansio=
+n
+> and PCDIMM/NVDIMM support
+>=20
+> On Fri, 22 Feb 2019 18:35:26 +0100
+> Auger Eric <eric.auger@redhat.com> wrote:
+
+[...]
+
+> > I understand hotplug
+> > would require extra modifications but I don't see anything else missing
+> > for coldplug.
+> > > Even though I've tried make mem hotplug ACPI parts not x86 specific,
+> > > I'm afraid it might be tightly coupled with hotplug support.
+> > > So here are 2 options make DSDT part work without hotplug or
+> > > implement hotplug here. I think the former is just a waste of time
+> > > and we should just add hotplug. It should take relatively minor effor=
+t
+> > > since you already implemented most of boiler plate here.
+> >
+> > Shameer sent an RFC series for supporting hotplug.
+> >
+> > [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+> > https://patchwork.kernel.org/cover/10783589/
+> >
+> > I tested PCDIMM hotplug (with ACPI) this afternoon and it seemed to be
+> > OK, even after system_reset.
+> >
+> > Note the hotplug kernel support on ARM is very recent. I would prefer t=
+o
+> > dissociate both efforts if we want to get a chance making coldplug for
+> > 4.0. Also we have an issue for NVDIMM since on reboot the guest does no=
+t
+> > boot properly.
+> I guess we can merge implemetation that works on some kernel configs
+> [DT based I'd guess], and add ACPI part later. Though that will be
+> a bit of a mess as we do not version firmware parts (ACPI tables).
+>=20
+> > > As for how to implement ACPI HW part, I suggest to borrow GED
+> > > device that NEMU guys trying to use instead of GPIO route,
+> > > like we do now for ACPI_POWER_BUTTON_DEVICE to deliver event.
+> > > So that it would be easier to share this with their virt-x86
+> > > machine eventually.
+> > Sounds like a different approach than the one initiated by Shameer?
+> ARM boards were first to use ACPI hw-reduced profile so they picked up
+> available back then GPIO based way to deliver hotplug event, later spec
+> introduced Generic Event Device for that means to use with hw-reduced
+> profile, which NEMU implemented[1], so I'd use that rather than ad-hoc
+> GPIO mapping. I'd guess it will more compatible with various contemporary
+> guests and we could reuse the same code for both x86/arm virt boards)
+>=20
+> 1) https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
+
+Thanks for this suggestion. Looks like that is definitely a better way of h=
+andling
+ACPI events. I will take a look and use GED for the next revision of hotplu=
+g=20
+series.
+
+Thanks,
+Shameer
+
+> > Thanks
+> >
+> > Eric
+> > >
+> > >
+> > >> 3) Support of NV-DIMM [14 - 17]
+> > > The same might be true for NUMA but I haven't dug this deep in to
+> > > that part.
+> > >
+> > >>
+> > >> 1) can be upstreamed before 2 and 2 can be upstreamed before 3.
+> > >>
+> > >> Work is ongoing to transform the whole memory as device memory.
+> > >> However this move is not trivial and to me, is independent on
+> > >> the improvements brought by this series:
+> > >> - if we were to use DIMM for initial RAM, those DIMMs would use
+> > >>   use slots. Although they would not be part of the ones provided
+> > >>   using the ",slots" options, they are ACPI limited resources.
+> > >> - DT and ACPI description needs to be reworked
+> > >> - NUMA integration needs special care
+> > >> - a special device memory object may be required to avoid consuming
+> > >>   slots and easing the FW description.
+> > >>
+> > >> So I preferred to separate the concerns. This new implementation
+> > >> based on device memory could be candidate for another virt
+> > >> version.
+> > >>
+> > >> Best Regards
+> > >>
+> > >> Eric
+> > >>
+> > >> References:
+> > >>
+> > >> [0] [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
+> > >> http://patchwork.ozlabs.org/cover/914694/
+> > >>
+> > >> [1] [RFC PATCH 0/3] add nvdimm support on AArch64 virt platform
+> > >> https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg04599.html
+> > >>
+> > >> This series can be found at:
+> > >> https://github.com/eauger/qemu/tree/v3.1.0-dimm-v7
+> > >>
+> > >> History:
+> > >>
+> > >> v6 -> v7:
+> > >> - Addressed Peter and Igor comments (exceptions sent my email)
+> > >> - Fixed TCG case. Now device memory works also for TCG and vcpu
+> > >>   pamax is checked
+> > >> - See individual logs for more details
+> > >>
+> > >> v5 -> v6:
+> > >> - mingw compilation issue fix
+> > >> - kvm_arm_get_max_vm_phys_shift always returns the number of
+> supported
+> > >>   IPA bits
+> > >> - new patch "hw/arm/virt: Rename highmem IO regions" that eases the
+> review
+> > >>   of "hw/arm/virt: Split the memory map description"
+> > >> - "hw/arm/virt: Move memory map initialization into machvirt_init"
+> > >>   squashed into the previous patch
+> > >> - change alignment of IO regions beyond the RAM so that it matches t=
+heir
+> > >>   size
+> > >>
+> > >> v4 -> v5:
+> > >> - change in the memory map
+> > >> - see individual logs
+> > >>
+> > >> v3 -> v4:
+> > >> - rebase on David's "pc-dimm: next bunch of cleanups" and
+> > >>   "pc-dimm: pre_plug "slot" and "addr" assignment"
+> > >> - kvm-type option not used anymore. We directly use
+> > >>   maxram_size and ram_size machine fields to compute the
+> > >>   MAX IPA range. Migration is naturally handled as CLI
+> > >>   option are kept between source and destination. This was
+> > >>   suggested by David.
+> > >> - device_memory_start and device_memory_size not stored
+> > >>   anymore in vms->bootinfo
+> > >> - I did not take into account 2 Igor's comments: the one
+> > >>   related to the refactoring of arm_load_dtb and the one
+> > >>   related to the generation of the dtb after system_reset
+> > >>   which would contain nodes of hotplugged devices (we do
+> > >>   not support hotplug at this stage)
+> > >> - check the end-user does not attempt to hotplug a device
+> > >> - addition of "vl: Set machine ram_size, maxram_size and
+> > >>   ram_slots earlier"
+> > >>
+> > >> v2 -> v3:
+> > >> - fix pc_q35 and pc_piix compilation error
+> > >> - kwangwoo's email being not valid anymore, remove his address
+> > >>
+> > >> v1 -> v2:
+> > >> - kvm_get_max_vm_phys_shift moved in arch specific file
+> > >> - addition of NVDIMM part
+> > >> - single series
+> > >> - rebase on David's refactoring
+> > >>
+> > >> v1:
+> > >> - was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+> > >> - was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+> > >>
+> > >> Best Regards
+> > >>
+> > >> Eric
+> > >>
+> > >>
+> > >> Eric Auger (12):
+> > >>   hw/arm/virt: Rename highmem IO regions
+> > >>   hw/arm/virt: Split the memory map description
+> > >>   hw/boards: Add a MachineState parameter to kvm_type callback
+> > >>   kvm: add kvm_arm_get_max_vm_ipa_size
+> > >>   vl: Set machine ram_size, maxram_size and ram_slots earlier
+> > >>   hw/arm/virt: Dynamic memory map depending on RAM requirements
+> > >>   hw/arm/virt: Implement kvm_type function for 4.0 machine
+> > >>   hw/arm/virt: Bump the 255GB initial RAM limit
+> > >>   hw/arm/virt: Add memory hotplug framework
+> > >>   hw/arm/virt: Allocate device_memory
+> > >>   hw/arm/boot: Expose the pmem nodes in the DT
+> > >>   hw/arm/virt: Add nvdimm and nvdimm-persistence options
+> > >>
+> > >> Kwangwoo Lee (2):
+> > >>   nvdimm: use configurable ACPI IO base and size
+> > >>   hw/arm/virt: Add nvdimm hot-plug infrastructure
+> > >>
+> > >> Shameer Kolothum (3):
+> > >>   hw/arm/boot: introduce fdt_add_memory_node helper
+> > >>   hw/arm/boot: Expose the PC-DIMM nodes in the DT
+> > >>   hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+> > >>
+> > >>  accel/kvm/kvm-all.c             |   2 +-
+> > >>  default-configs/arm-softmmu.mak |   4 +
+> > >>  hw/acpi/nvdimm.c                |  31 ++-
+> > >>  hw/arm/boot.c                   | 136 ++++++++++--
+> > >>  hw/arm/virt-acpi-build.c        |  23 +-
+> > >>  hw/arm/virt.c                   | 364
+> ++++++++++++++++++++++++++++----
+> > >>  hw/i386/pc_piix.c               |   6 +-
+> > >>  hw/i386/pc_q35.c                |   6 +-
+> > >>  hw/ppc/mac_newworld.c           |   3 +-
+> > >>  hw/ppc/mac_oldworld.c           |   2 +-
+> > >>  hw/ppc/spapr.c                  |   2 +-
+> > >>  include/hw/arm/virt.h           |  24 ++-
+> > >>  include/hw/boards.h             |   5 +-
+> > >>  include/hw/mem/nvdimm.h         |   4 +
+> > >>  target/arm/kvm.c                |  10 +
+> > >>  target/arm/kvm_arm.h            |  13 ++
+> > >>  vl.c                            |   6 +-
+> > >>  17 files changed, 556 insertions(+), 85 deletions(-)
+> > >>
+> > >
+> > >
+

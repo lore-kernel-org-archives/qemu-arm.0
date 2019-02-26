@@ -1,84 +1,97 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp11102616wrx;
-        Tue, 26 Feb 2019 06:02:47 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IaWqymfUDHRISzCxlMuZ5BFJGay3oCLxSUpGPm25e7tNKkDt9Ntits7bJZwMByOo6P152dN
-X-Received: by 2002:a25:b9c2:: with SMTP id y2mr19107688ybj.173.1551189767361;
-        Tue, 26 Feb 2019 06:02:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551189767; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp11134419wrx;
+        Tue, 26 Feb 2019 06:31:55 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZTC4+hlvFJ27toCLOAUeVHGPUvKWmUMnnVl32hmaE1YO+pPtft2BuulPHMaJcmuFVTL2XY
+X-Received: by 2002:a81:11d5:: with SMTP id 204mr18386558ywr.287.1551191515744;
+        Tue, 26 Feb 2019 06:31:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551191515; cv=none;
         d=google.com; s=arc-20160816;
-        b=ka4/1ejSZcvPnVTQAB6yvMZjqx7jDgHroii+tji14VxmePwpqg6ulrPjtcbR8/6I5u
-         VeB2edeIWoFBCoYqp94R1kg2xf534jxb6hg/ejPTuWVpBM4HxuB/qbDOiWoq2EGy166X
-         XJ8dLbkjuNfGQCAAx7FjlSSVJ1q59YBRXtMxKA6VJXcocKyH4kMhwAVrVoydHf6IaEfe
-         km+NkevLW7R53rNdpca1kOs+yPj6PESWpeNg3a/N3bvJgamkBanmvQH0OeW9zoAR4xa4
-         FDOK70+v9mHsZzdFfpTjudUTTF8NrVsresOKDcsm1/uT5a5x3lowoTaYYzjuBnjw2ZN9
-         b8RQ==
+        b=n8LVsjh3LJPUqqUAFp8kKV6Iw4VlfNrz1tRDFBYv5eFpuFqp2vjkJ7FymlYttDhv4v
+         Mal0tjMDYZqKS00z8Zi6Zi7HjhASR0VfVdyvNxgFfgdt4oRWLS8o23iXUYs07RVEiae3
+         M4XlLjTnJ+d5BnJ5Td8aK2Hd2WfHZgQbipLNOHMUbgQ7YMzcsH0suUyU+Iq/1gZ5kyEb
+         viWH68e4TlGLzH0XYXoeUk4IOVIRx+X74OZKP+th3jDb59cuQl4tHQPBlLuD9AL2dFIu
+         nW9Zg5lugzaFNVOyHreaxw3b8HWk5oq4dRr1ydd6IUPlBLZFu6qnS0rtwFMmbyjVnKfB
+         OWGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=zd4dKhd8IHqhTW1PfhT8Pc/UCQzE41rquGpZZyQgpqU=;
-        b=PIBhT9XnRgx2iP3Md4F8EPs6pFBYY/joQJwcniwWqPiqkLI4i3uWeav6yz0oHfegYI
-         AUEEgdAtNlDlcNhGPbmUadBLI0jJBSBgT47R33i7V3GNywZ5V5w7werJrY06082gDYGe
-         TewBmzWut3I293tG1nJu8ZaXV4PIT3nxgyXrei0FPfl9S9GHCvprfaLg4G6G1BAjyn5y
-         m0LOApyiH6+78oUfAeGQ6ZIfe7ZxT+mPkyOIlXor5LpGYgRLwTGZ2izYUu/3EXDV4CuL
-         lXBfxlbtpHQUABuxmHDiD3+t7y2BQR06EzR6Afv3asNBosS8nHplcuaaQ57u1BLz42WK
-         XGGA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TDjPI/8ayyXucymfn8BG0+HRbPlLvF4+ZvFwPDDXfSk=;
+        b=ZMJuv2pBDlBa+GGSaLE64OMVTZC2dRo15iOc+L4beMKb+tK/etZCAWaGEMEvcm8dd9
+         poOD5ZWbt6OCQihgI+oGREcyUW/m9eIcusACcDq1OPlsmbpCz4uLs1HI6tspDC/YuucP
+         WWXQ934+kC9WsWkH3SSDd36g7BBN4valVOdvUDQdq7lVXbc93UPUakwN0AVUtP4a8fEl
+         gqMdztnRQGWQbPASdFOjoaushyxM+0nmOUR+0xi1XtlMwdHMH/0vrm7hz06HupgDZcPe
+         gKoT3vOZArzNxPYRqLx+Gekz3Ay5DauOFyvyM/VDum3SEqXy1C7RdWPStjeAiAbwLkBw
+         T4cA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@linaro.org header.s=google header.b="K0/Tr23A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si6984409ywp.65.2019.02.26.06.02.47
+        by mx.google.com with ESMTPS id o2si6752133ybp.230.2019.02.26.06.31.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Feb 2019 06:02:47 -0800 (PST)
+        Tue, 26 Feb 2019 06:31:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:55844 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="K0/Tr23A";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:56406 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gydJm-00013H-Jp
-	for alex.bennee@linaro.org; Tue, 26 Feb 2019 09:02:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47848)
+	id 1gydlz-0002bQ-7s
+	for alex.bennee@linaro.org; Tue, 26 Feb 2019 09:31:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gyd9R-0000zh-Od
-	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 08:52:06 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gydlj-0002aH-Ip
+	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 09:31:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gyd9Q-0007p4-Hz
-	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 08:52:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:10338)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gyd9Q-0007bP-8P; Tue, 26 Feb 2019 08:52:04 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D0E7F30BCD1C;
-	Tue, 26 Feb 2019 13:51:44 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 243005F9A0;
-	Tue, 26 Feb 2019 13:51:41 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue, 26 Feb 2019 14:50:12 +0100
-Message-Id: <20190226135014.31854-17-eric.auger@redhat.com>
-In-Reply-To: <20190226135014.31854-1-eric.auger@redhat.com>
-References: <20190226135014.31854-1-eric.auger@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gydlh-0001Ib-KW
+	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 09:31:39 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:37521)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gydlf-0001DJ-St
+	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 09:31:36 -0500
+Received: by mail-ot1-x341.google.com with SMTP id b3so11221295otp.4
+	for <qemu-arm@nongnu.org>; Tue, 26 Feb 2019 06:31:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=TDjPI/8ayyXucymfn8BG0+HRbPlLvF4+ZvFwPDDXfSk=;
+	b=K0/Tr23AiZRZQh05IdpMNeN/s5xCSS3tc6X4lwXhhG9wBuA+WNFaAbp/T9HyB38l/c
+	I1icV1G2uR5QyCi2m1Vxb/ESR1vpQgQbchbcgetPckGJ9lsEELsYon+I3kDQBubYMXxm
+	m5iUiejOP5ZXB8tohi50kFmbfsMkGRvAV4eRAFxN0Z8OkCYRlEJCqpS1Cjk87jrbzRYA
+	nDj8/aV87+Zl67FEZ4SLbICitbaTs2vQzoeyfe/hxOoYRovDHpfwZLsKhMMXRGSwAvVC
+	bBkDB0D04p8p9mqmJeaUyu8AWbCQKSNorPSqSVh8K+BZ9EUUfX7zqY6qaal/kGwnG51u
+	qpOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=TDjPI/8ayyXucymfn8BG0+HRbPlLvF4+ZvFwPDDXfSk=;
+	b=UatvSxMvJcuWRWW+gjTn0E41X9DUnVD7nOW93wB/2TM0RWt5CAsV+HWRInfCeL6dVu
+	S4UJF0XsZ9wroXJFVcBqavDZ2WGEL1E6xn8JaPD7v2WTsIWf0wNBLeecDos9UxNOutUW
+	lXDlTsgQ8dlxmDKYVzfcYK89mrR5BYLOsEfS6easgqoNxHYSY7BkZRBzzoBdGOC3V8Ip
+	E7xjcHV5T0GWtowztd9jMBOBgMwW4K0YD2R1Ui0yYjaSOQTDXRay9hQxmq8RjJt6DpqO
+	TAXNdIRDVsuGQZy7bSTcCFzl6LK160FvnRcIGDFJr7cDFTNLMNLcEF99aIaTCMnI/vaf
+	AuDw==
+X-Gm-Message-State: AHQUAubXRVohZbkldnn4KoHPTsLOKZ2B28PFRzmqkeeIAJbO4G1LXhrc
+	saH0WoUThizsZ2rwohZpgVbqNr1f/Z5llYhyq54w+w==
+X-Received: by 2002:a9d:4e8b:: with SMTP id v11mr14735859otk.316.1551191488850;
+	Tue, 26 Feb 2019 06:31:28 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Tue, 26 Feb 2019 13:51:44 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v8 16/18] hw/arm/virt: Add nvdimm hot-plug
- infrastructure
+References: <20190215155919.GA10823@nyan>
+	<CAFEAcA9yEBy-=-2oSDqAXLffGjU7Aa9MeVtYFCU29qxerWb23A@mail.gmail.com>
+In-Reply-To: <CAFEAcA9yEBy-=-2oSDqAXLffGjU7Aa9MeVtYFCU29qxerWb23A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 26 Feb 2019 14:31:16 +0000
+Message-ID: <CAFEAcA8mJ=69NkrO_7_9WoCPq+GYCN9WRf6PuUtGv+4LXXDRow@mail.gmail.com>
+To: Mark <alnyan@airmail.cc>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [v4 PATCH] hw/arm/bcm2835_peripherals: add bcm283x
+ arm timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,144 +103,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
-	david@gibson.dropbear.id.au
+Cc: "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sSDke1fvEsfk
+X-TUID: dDOwaRtTawoi
 
-From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+On Thu, 21 Feb 2019 at 11:31, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 15 Feb 2019 at 15:59, Mark <alnyan@airmail.cc> wrote:
+> > +    s->irq = qemu_allocate_irq(bcm283x_timer_set_irq, s, 0);
+>
+> I know this code has come from the sp804 code, but it's
+> actually wrong (and I should fix the sp804). qemu_allocate_irq()
+> is for interrupt lines that come into a device, not for ones
+> that go out from it, like this one. The call happens to have
+> no visible bad effects because what it does will be overrriden
+> later when the board code wires up the interrupt to the
+> interrupt controller. (There will be a tiny memory leak.)
 
-Pre-plug and plug handlers are prepared for NVDIMM support.
+Looking more closely at this, my analysis here is wrong -- sorry.
+For the sp804, this call is necessary, because the sp804
+has a dual layer structure between the arm_timer_state
+layer and the SP804State layer. It creates outbound IRQs
+from the arm_timer_state with qemu_allocate_irq(), and
+effectively connects them to the SP804State via the
+sp804_set_irq() function (which raises the outbound IRQ from
+the SP804State if either of the arm_timer_state lines is high).
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+In your case there is no dual-layer structure, so you don't
+need to call qemu_allocate_irq() at all. (You're effectively
+trying to use BCM283xTimerState as both the inner layer IRQ
+and the outer layer IRQ, and it happens to work because the
+setup of the outer layer happens last so the bogus inner
+layer initialization is ignored.)
 
----
+> You can just delete the qemu_allocate_irq() call here, and
+> the bcm283x_timer_set_irq() function.
 
-v7 -> v8:
-- s/VIRT_ACPI_IO_BASE/VIRT_NVDIMM_ACPI_IO_BASE
-- use const AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio
----
- default-configs/arm-softmmu.mak |  2 ++
- hw/arm/virt-acpi-build.c        |  6 ++++++
- hw/arm/virt.c                   | 27 +++++++++++++++++++++++++--
- include/hw/arm/virt.h           |  2 ++
- 4 files changed, 35 insertions(+), 2 deletions(-)
+So my recommendation here was correct, but my reasoning was
+not right.
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 4009a56c67..42027bcee5 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -166,3 +166,5 @@ CONFIG_HIGHBANK=3Dy
- CONFIG_MUSICPAL=3Dy
- CONFIG_MEM_DEVICE=3Dy
- CONFIG_DIMM=3Dy
-+CONFIG_NVDIMM=3Dy
-+CONFIG_ACPI_NVDIMM=3Dy
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 8151fda239..d8f7b484ee 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -786,6 +786,7 @@ static
- void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
- {
-     VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(vms);
-+    MachineState *ms =3D MACHINE(vms);
-     GArray *table_offsets;
-     unsigned dsdt, xsdt;
-     GArray *tables_blob =3D tables->table_data;
-@@ -826,6 +827,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuil=
-dTables *tables)
-         }
-     }
-=20
-+    if (ms->acpi_nvdimm_state.is_enabled) {
-+        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-+                          &ms->acpi_nvdimm_state, ms->ram_slots);
-+    }
-+
-     if (its_class_name() && !vmc->no_its) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 222b112b5a..0a04f5ca88 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -134,6 +134,7 @@ static const MemMapEntry base_memmap[] =3D {
-     [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
-     [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
-     [VIRT_SMMU] =3D               { 0x09050000, 0x00020000 },
-+    [VIRT_NVDIMM_ACPI_IO] =3D     { 0x09070000, 0x00010000 },
-     [VIRT_MMIO] =3D               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that s=
-ize */
-     [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
-@@ -1641,6 +1642,19 @@ static void machvirt_init(MachineState *machine)
-=20
-     create_platform_bus(vms, pic);
-=20
-+    if (machine->acpi_nvdimm_state.is_enabled) {
-+        const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio =3D {
-+            .space_id =3D AML_AS_SYSTEM_MEMORY,
-+            .address =3D vms->memmap[VIRT_NVDIMM_ACPI_IO].base +
-+                       NVDIMM_ACPI_IO_BASE,
-+            .bit_width =3D NVDIMM_ACPI_IO_LEN << 3
-+        };
-+
-+        nvdimm_init_acpi_state(&machine->acpi_nvdimm_state, sysmem,
-+                               arm_virt_nvdimm_acpi_dsmio,
-+                               vms->fw_cfg, OBJECT(vms));
-+    }
-+
-     vms->bootinfo.ram_size =3D machine->ram_size;
-     vms->bootinfo.kernel_filename =3D machine->kernel_filename;
-     vms->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
-@@ -1825,11 +1839,20 @@ static void virt_memory_pre_plug(HotplugHandler *=
-hotplug_dev, DeviceState *dev,
- static void virt_memory_plug(HotplugHandler *hotplug_dev,
-                              DeviceState *dev, Error **errp)
- {
--    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-+    MachineState *ms =3D MACHINE(hotplug_dev);
-+    bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-     Error *local_err =3D NULL;
-=20
--    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-+    pc_dimm_plug(PC_DIMM(dev), ms, &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-=20
-+    if (is_nvdimm) {
-+        nvdimm_plug(&ms->acpi_nvdimm_state);
-+    }
-+
-+out:
-     error_propagate(errp, local_err);
- }
-=20
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 326a26b6d6..c8a4039f3f 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -37,6 +37,7 @@
- #include "hw/arm/arm.h"
- #include "sysemu/kvm.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/mem/nvdimm.h"
-=20
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
-@@ -77,6 +78,7 @@ enum {
-     VIRT_GPIO,
-     VIRT_SECURE_UART,
-     VIRT_SECURE_MEM,
-+    VIRT_NVDIMM_ACPI_IO,
-     VIRT_LOWMEMMAP_LAST,
- };
-=20
---=20
-2.20.1
-
+thanks
+-- PMM

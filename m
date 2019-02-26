@@ -1,88 +1,84 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp11342188wrx;
-        Tue, 26 Feb 2019 10:00:15 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia7VcNFlS4NaihuXLLvOmfiXaYNaKwoIufcxw4P+sRjaDUAKumgBMAiW23E0T6+7IbK4SVs
-X-Received: by 2002:a25:ccc6:: with SMTP id l189mr17092327ybf.301.1551204015788;
-        Tue, 26 Feb 2019 10:00:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551204015; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp11488749wrx;
+        Tue, 26 Feb 2019 12:45:24 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IbwHHNtRTMbR8LMxJGC/Ql0EsqaXe3Po6Z4gm2cfZkCm3f2wGuehKfDbC4BjbDLLKfQdmKW
+X-Received: by 2002:a81:480b:: with SMTP id v11mr19529335ywa.254.1551213924329;
+        Tue, 26 Feb 2019 12:45:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551213924; cv=none;
         d=google.com; s=arc-20160816;
-        b=chTz79HA4dpIoaxNrwDl2cRrAO9gSo531xoYlcvyztfMjeHSWlH0FLA97MkH1GknW7
-         6rz9iBxkrfNkvZIyeBaSEWsm/381SjHt9JoqYRXS+DY/WWZu7JYgVhSaOjjotBOQTSUu
-         Qx5sIlTMxj54l3pYKLZF2MEoFoa8pkazm7veIKT6l8r3otf90W+XYf3j2wgw8/j1UMac
-         KnQiWmjZBLPXFQIYAKscI25lKdynOwohTL8bZFbGObJgr8WiQTEUjbQkD3XLq/vVc7d0
-         G42QRckrhn8O3DtHxP1LGu/IBCF4/FyewdJRqLsUPC/ysgVy7yNiOVQjo1PJXxb/PBB/
-         Si3Q==
+        b=eIm5ARaajHB18UGHdZahKEuvC5E7GGjkFDDbEIY3ZSKCT1qU7LTaXuXP1cZ7ntFDj0
+         2Wtq+NPsst1nj0eAtmsaXRnESxYZ0pJs9wKuVcFQDzoUPgSoTzV7dKbpcYADLjnHkMOx
+         FPjqX4p9ujCeE/TbG52mqV346iWrMTuTHd47762xgLCPyX7g3nQ9v8KKOQC27f9Q64Hb
+         fGMvJyh905Tsdb1Fei25Zhm2tnOKTOhY0/qhB8aB6fq6/Kd7EmySQT9KOsFgGCE3Kj2O
+         czHbf0Hu5mFwWMyPvHdou6Co13xvDHJSPuv1K6f/EFKe3WE6OScEPZBToxg2Sh8hH8ks
+         WjxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=gfPko6hP146zie84zO+LO8y24S/PPiqzKC42jvbKizc=;
-        b=dVyYfzA3b5B9PzQQrwtIia8P94vtdUfZqGpwBZEb/dc1a7BVALo3Qr10W18VJXVIl3
-         +1sdSzGUxE5EGTzAPVyTNnPJq7ouAVnpQldseq83mR5CDADz2ebwEQqeVShUyYEEZ29o
-         B1tLeOaZQcuJB3/2QRV4Nmheszm0zcDQ/bs40WeM3EjSoKey+rtA6tzInGxLzdIhqPd4
-         BpwLQDhee+PHLSV0mnVS/hCUAgaSaLighQWdjtA+aW6+3qAhbLZoF9mtShZuIHMPMLOC
-         j0l6+xLkH+6+ArpDCfqHlhdwdDOetx5htzcP4QrrL0HTUE6SRssnXNvyMwNMO6jXXS8u
-         Tpow==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=C2LpJ7ZMuN20S4X8pT62dgpxmK1WyE8vf33vGnCty98=;
+        b=Exx1dp+ViXFB82DM8dROEudZLz2bYzfIjZ7o4oFPCeIi4qJLY4qvaaRwhOqA1ekiY2
+         2rt0QT40dMSaY6Aiz0pVNIt/ME8ikNYCAUThC5lp9DX4k5hyWlNMYvZzkxP/46+YqLO0
+         jZ72JOffHySlYE4X6VsG+UqpFgI30uEXqdRnbJ2/GkicEXlf+L9RdbrpUv5M60c1v7q2
+         WMqTevABKIByCFs2y0aW2uHEBuXMCgB1ZIjta/GHSRIVJL5ieUVKM8z4FqSC1X1a5J8H
+         E4qSdP2km8lgHoot1cXCX/mbO+gRnC/kkiVWSJi9RG8sMUO4yuarOTpO28DE1gaThFaV
+         gX0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l77si975055ywl.243.2019.02.26.10.00.15
+        by mx.google.com with ESMTPS id j10si7756438ywm.12.2019.02.26.12.45.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Feb 2019 10:00:15 -0800 (PST)
+        Tue, 26 Feb 2019 12:45:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:59195 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:32907 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gyh1b-0000B8-By
-	for alex.bennee@linaro.org; Tue, 26 Feb 2019 13:00:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54166)
+	id 1gyjbP-0005fg-JY
+	for alex.bennee@linaro.org; Tue, 26 Feb 2019 15:45:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60210)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gyh1U-0000Au-1v
-	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 13:00:10 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gyjb6-0005bd-8K
+	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 15:45:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gyh1S-0000hH-HL
-	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 13:00:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33244)
+	(envelope-from <eric.auger@redhat.com>) id 1gyjb4-0008KX-Vp
+	for qemu-arm@nongnu.org; Tue, 26 Feb 2019 15:45:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57884)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gyh1S-0000VF-5X; Tue, 26 Feb 2019 13:00:06 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gyjb4-0008Jt-MM; Tue, 26 Feb 2019 15:45:02 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6A64489C3F;
-	Tue, 26 Feb 2019 17:59:58 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D1CC5600C0;
-	Tue, 26 Feb 2019 17:59:51 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20190226135014.31854-1-eric.auger@redhat.com>
-	<20190226135014.31854-13-eric.auger@redhat.com>
-	<20190226180841.0c30af3c@Igors-MacBook-Pro.local>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <2cd3fb96-6f46-18db-cb55-5c4e30fd3bac@redhat.com>
-Date: Tue, 26 Feb 2019 18:59:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	by mx1.redhat.com (Postfix) with ESMTPS id DDF348665A;
+	Tue, 26 Feb 2019 20:45:01 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0FD4F5D6A6;
+	Tue, 26 Feb 2019 20:44:58 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
+Date: Tue, 26 Feb 2019 21:44:24 +0100
+Message-Id: <20190226204439.2296-4-eric.auger@redhat.com>
+In-Reply-To: <20190226204439.2296-1-eric.auger@redhat.com>
+References: <20190226204439.2296-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190226180841.0c30af3c@Igors-MacBook-Pro.local>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 26 Feb 2019 17:59:58 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 26 Feb 2019 20:45:02 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v8 12/18] hw/arm/boot: Expose the PC-DIMM
- nodes in the DT
+Subject: [Qemu-arm] [PATCH v9 03/18] hw/arm/virt: Split the memory map
+ description
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,124 +90,226 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	dgilbert@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
+	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4js0epnEg9H/
+X-TUID: kuWx+KqTeZjJ
 
-Hi Igor,
+In the prospect to introduce an extended memory map supporting more
+RAM, let's split the memory map array into two parts:
 
-On 2/26/19 6:08 PM, Igor Mammedov wrote:
-> On Tue, 26 Feb 2019 14:50:08 +0100
-> Eric Auger <eric.auger@redhat.com> wrote:
-> 
->> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->>
->> This patch adds memory nodes corresponding to PC-DIMM regions.
->>
->> NVDIMM and ACPI_NVDIMM configs are not yet set for ARM so we
->> don't need to care about NVDIMM at this stage.
->>
->> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> I'm having second thoughts on this one,
-> maybe we should drop this patch or at least not to do this by default.
-See my reply on your cover letter remark.
-> In the later case it would mean some kind of property that user could use
-> to turn this on which in its own turn adds more clutter to user tunables
-> (which is not desirable). So I'm leaning more towards dropping this patch for now.
-So what about DT support? Doesn't it make sense to support
-cold-pluggable DIMMS?
+- the former a15memmap, renamed base_memmap, contains regions below
+  and including the RAM. MemMapEntries initialized in this array
+  have a static size and base address.
+- extended_memmap, only initialized with entries located after the
+  RAM. MemMapEntries initialized in this array only get their size
+  initialized. Their base address is dynamically computed depending
+  on the the top of the RAM, with same alignment as their size.
 
-Thanks
+Eventually base_memmap entries are copied into the extended_memmap
+array. Using two separate arrays however clarifies which entries
+are statically allocated and those which are dynamically allocated.
 
-Eric
-> 
->>
->> ---
->> v7 -> v8:
->> - s/NV_DIMM/NVDIMM
->> - fix indent
->> v6 -> v7:
->> - rework the error messages, use a switch/case
->> v3 -> v4:
->> - git rid of @base and @len in fdt_add_hotpluggable_memory_nodes
->>
->> v1 -> v2:
->> - added qapi_free_MemoryDeviceInfoList and simplify the loop
->> ---
->>  hw/arm/boot.c | 42 ++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 42 insertions(+)
->>
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index a830655e1a..4caaf91583 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -19,6 +19,7 @@
->>  #include "sysemu/numa.h"
->>  #include "hw/boards.h"
->>  #include "hw/loader.h"
->> +#include "hw/mem/memory-device.h"
->>  #include "elf.h"
->>  #include "sysemu/device_tree.h"
->>  #include "qemu/config-file.h"
->> @@ -522,6 +523,41 @@ static void fdt_add_psci_node(void *fdt)
->>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
->>  }
->>  
->> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
->> +                                             uint32_t acells, uint32_t scells) {
->> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
->> +    MemoryDeviceInfo *mi;
->> +    int ret = 0;
->> +
->> +    for (info = info_list; info != NULL; info = info->next) {
->> +        mi = info->value;
->> +        switch (mi->type) {
->> +        case MEMORY_DEVICE_INFO_KIND_DIMM:
->> +        {
->> +            PCDIMMDeviceInfo *di = mi->u.dimm.data;
->> +
->> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
->> +                                      scells, di->size, di->node);
->> +            if (ret) {
->> +                fprintf(stderr,
->> +                        "couldn't add PCDIMM /memory@%"PRIx64" node\n",
->> +                        di->addr);
->> +                goto out;
->> +            }
->> +            break;
->> +        }
->> +        default:
->> +            fprintf(stderr, "%s memory nodes are not yet supported\n",
->> +                    MemoryDeviceInfoKind_str(mi->type));
->> +            ret = -ENOENT;
->> +            goto out;
->> +        }
->> +    }
->> +out:
->> +    qapi_free_MemoryDeviceInfoList(info_list);
->> +    return ret;
->> +}
->> +
->>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>                   hwaddr addr_limit, AddressSpace *as)
->>  {
->> @@ -621,6 +657,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
->>          }
->>      }
->>  
->> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
->> +    if (rc < 0) {
->> +        fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
->> +        goto fail;
->> +    }
->> +
->>      rc = fdt_path_offset(fdt, "/chosen");
->>      if (rc < 0) {
->>          qemu_fdt_add_subnode(fdt, "/chosen");
-> 
+This new split will allow to grow the RAM size without changing the
+description of the high IO entries.
+
+We introduce a new virt_set_memmap() helper function which
+"freezes" the memory map. We call it in machvirt_init as
+memory attributes of the machine are not yet set when
+virt_instance_init() gets called.
+
+The memory map is unchanged (the top of the initial RAM still is
+256GiB). Then come the high IO regions with same layout as before.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+---
+v8 -> v9:
+- restore virt_set_memmap call in machvirt_init as otherwise it does
+  not work in TCG mode
+
+v7 -> v8:
+- removed Peter's R-b due to the changes induced by Igor's comments
+- call set_memmap back in virt_instance_init
+- add comments about sizing of extended_memmap
+- s/region/entries as suggested by Igor
+- rewording of the commit message
+
+v6 -> v7:
+- s/a15memmap/base_memmap
+- slight rewording of the commit message
+- add "if there is less than 256GiB of RAM then the floating area
+  starts at the 256GiB mark" in the comment associated to the floating
+  memory map
+- Added Peter's R-b
+
+v5 -> v6
+- removal of many macros in units.h
+- introduce the virt_set_memmap helper
+- new computation for offsets of high IO regions
+- add comments
+---
+ hw/arm/virt.c         | 51 ++++++++++++++++++++++++++++++++++++++-----
+ include/hw/arm/virt.h | 14 ++++++++----
+ 2 files changed, 55 insertions(+), 10 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 892bae4f3a..8a23608d3e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -29,6 +29,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/arm.h"
+@@ -121,7 +122,7 @@
+  * Note that devices should generally be placed at multiples of 0x10000,
+  * to accommodate guests using 64K pages.
+  */
+-static const MemMapEntry a15memmap[] =3D {
++static const MemMapEntry base_memmap[] =3D {
+     /* Space up to 0x8000000 is reserved for a boot ROM */
+     [VIRT_FLASH] =3D              {          0, 0x08000000 },
+     [VIRT_CPUPERIPHS] =3D         { 0x08000000, 0x00020000 },
+@@ -149,11 +150,24 @@ static const MemMapEntry a15memmap[] =3D {
+     [VIRT_PCIE_PIO] =3D           { 0x3eff0000, 0x00010000 },
+     [VIRT_PCIE_ECAM] =3D          { 0x3f000000, 0x01000000 },
+     [VIRT_MEM] =3D                { 0x40000000, RAMLIMIT_BYTES },
++};
++
++/*
++ * Highmem IO Regions: This memory map is floating, located after the RA=
+M.
++ * Each MemMapEntry base (GPA) will be dynamically computed, depending o=
+n the
++ * top of the RAM, so that its base get the same alignment as the size,
++ * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
++ * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
++ * Note the extended_memmap is sized so that it eventually also includes=
+ the
++ * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the =
+last
++ * index of base_memmap).
++ */
++static MemMapEntry extended_memmap[] =3D {
+     /* Additional 64 MB redist region (can contain up to 512 redistribut=
+ors) */
+-    [VIRT_HIGH_GIC_REDIST2] =3D   { 0x4000000000ULL, 0x4000000 },
+-    [VIRT_HIGH_PCIE_ECAM] =3D     { 0x4010000000ULL, 0x10000000 },
+-    /* Second PCIe window, 512GB wide at the 512GB boundary */
+-    [VIRT_HIGH_PCIE_MMIO] =3D     { 0x8000000000ULL, 0x8000000000ULL },
++    [VIRT_HIGH_GIC_REDIST2] =3D   { 0x0, 64 * MiB },
++    [VIRT_HIGH_PCIE_ECAM] =3D     { 0x0, 256 * MiB },
++    /* Second PCIe window */
++    [VIRT_HIGH_PCIE_MMIO] =3D     { 0x0, 512 * GiB },
+ };
+=20
+ static const int a15irqmap[] =3D {
+@@ -1354,6 +1368,30 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineSt=
+ate *vms, int idx)
+     return arm_cpu_mp_affinity(idx, clustersz);
+ }
+=20
++static void virt_set_memmap(VirtMachineState *vms)
++{
++    hwaddr base;
++    int i;
++
++    vms->memmap =3D extended_memmap;
++
++    for (i =3D 0; i < ARRAY_SIZE(base_memmap); i++) {
++        vms->memmap[i] =3D base_memmap[i];
++    }
++
++    vms->high_io_base =3D 256 * GiB; /* Top of the legacy initial RAM re=
+gion */
++    base =3D vms->high_io_base;
++
++    for (i =3D VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++=
+) {
++        hwaddr size =3D extended_memmap[i].size;
++
++        base =3D ROUND_UP(base, size);
++        vms->memmap[i].base =3D base;
++        vms->memmap[i].size =3D size;
++        base +=3D size;
++    }
++}
++
+ static void machvirt_init(MachineState *machine)
+ {
+     VirtMachineState *vms =3D VIRT_MACHINE(machine);
+@@ -1368,6 +1406,8 @@ static void machvirt_init(MachineState *machine)
+     bool firmware_loaded =3D bios_name || drive_get(IF_PFLASH, 0, 0);
+     bool aarch64 =3D true;
+=20
++    virt_set_memmap(vms);
++
+     /* We can probe only here because during property set
+      * KVM is not available yet
+      */
+@@ -1845,7 +1885,6 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+=20
+-    vms->memmap =3D a15memmap;
+     vms->irqmap =3D a15irqmap;
+ }
+=20
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a27086d524..3dc7a6c5d5 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -64,7 +64,6 @@ enum {
+     VIRT_GIC_VCPU,
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
+-    VIRT_HIGH_GIC_REDIST2,
+     VIRT_SMMU,
+     VIRT_UART,
+     VIRT_MMIO,
+@@ -74,12 +73,18 @@ enum {
+     VIRT_PCIE_MMIO,
+     VIRT_PCIE_PIO,
+     VIRT_PCIE_ECAM,
+-    VIRT_HIGH_PCIE_ECAM,
+     VIRT_PLATFORM_BUS,
+-    VIRT_HIGH_PCIE_MMIO,
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_LOWMEMMAP_LAST,
++};
++
++/* indices of IO regions located after the RAM */
++enum {
++    VIRT_HIGH_GIC_REDIST2 =3D  VIRT_LOWMEMMAP_LAST,
++    VIRT_HIGH_PCIE_ECAM,
++    VIRT_HIGH_PCIE_MMIO,
+ };
+=20
+ typedef enum VirtIOMMUType {
+@@ -116,7 +121,7 @@ typedef struct {
+     int32_t gic_version;
+     VirtIOMMUType iommu;
+     struct arm_boot_info bootinfo;
+-    const MemMapEntry *memmap;
++    MemMapEntry *memmap;
+     const int *irqmap;
+     int smp_cpus;
+     void *fdt;
+@@ -126,6 +131,7 @@ typedef struct {
+     uint32_t msi_phandle;
+     uint32_t iommu_phandle;
+     int psci_conduit;
++    hwaddr high_io_base;
+ } VirtMachineState;
+=20
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+--=20
+2.20.1
+

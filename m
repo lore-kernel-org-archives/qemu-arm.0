@@ -1,84 +1,93 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12474474wrx;
-        Wed, 27 Feb 2019 09:14:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ia5gTF5PlT2hS3Wz9UmgCy+pjUWga7eadFVWVAACdqvqO4p87IPi1a41bOuvKv29ET1sxxR
-X-Received: by 2002:a81:348b:: with SMTP id b133mr2086453ywa.174.1551287677629;
-        Wed, 27 Feb 2019 09:14:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551287677; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12512448wrx;
+        Wed, 27 Feb 2019 09:52:01 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZbyY6pmQRwHOyB6oFqSNtMKmvS/+Sc8QaC9dMwRxlCdYLcaTKv1Ykz/7zTDk9AGH84zwZR
+X-Received: by 2002:a81:4f90:: with SMTP id d138mr2177967ywb.373.1551289921823;
+        Wed, 27 Feb 2019 09:52:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551289921; cv=none;
         d=google.com; s=arc-20160816;
-        b=jGc8MXs4933T73tI+oN9EQ4bMt82Mi6LaeIp+ta2m83hrKNObS9m8e9u2aZJNrJtC4
-         2bceHA3j1bD+UOck02hUcJ8qGsZ+uIbpt8GnrgI60uv8maIFmJmPlsAn3FxN+xjU/Vnh
-         zlMRLYrHzxYznzLZ46h07BUR+NiKJoZx+Od08Ek0+0loOrusXwxIs39tO4C6H2PR0xlU
-         dFQJJ7iHZrmevNVdX7ezeEhd5L0xpPRp9prGReQWr7kvk1Sq/ttQUdTRy/oML+s1cQYh
-         X+3Cu7AMxfRMMKC8b2FZGH5W4v1PRd6D7vIW4wFwJ+K/uBlxhQTQOJOuWaqHTbD3WnIU
-         tWoQ==
+        b=Q129d+dY1rE8bOWQLzZ258muecIO8IjGZgAaLOFKzvQT/6iYLODPi4Y7Ku5TZ6eTBH
+         FHA7zTz3i/1sLmc5O3DFLFYsZ6XN+Uz21hjLVwjCFfOSvELeXOHvbuAaiaBP5HSbA7ES
+         DA3YzyOInT9E645c7xN4RquoPFqLwcxrvZ90tu910NllAYkx7/3M8v0lSpJJyroaj82T
+         sVCyGph4M2s9JOpSbBCrtAi78cg2mo/+KvXC8DQCvix2x7T/RombbAoYCAFn0+Trbdqw
+         ThWEWHyQc97Q5A0COG9yq7JUUattYR2tbHRA0S/tQ2hS7qSo8g8gJhgCsW9S9iVnGugE
+         AaXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=csdk0Xtlp7JXg9EhjZp7uqaK1Z/rgoDqOY06LCXLLMM=;
-        b=IPkXdrPHTi8zlso8xyhhz4ufayEecQCuIONlxuPHScp3p3kM2ahHGeQqCMARwGBO1R
-         YTyUcuWBq8RO378i5b6pDmCD1CHAe/zIrdlpRXwnOKPCoLPXn77KAbCUqWlbBx6vDCW+
-         MnxaYPlFRlTliZD2VgkdoQOHKlVu16t9W/TjC4rZ4Nlpfd3E5O1EcA8oRlf1pdDz8/su
-         U609GOT9UPKoSSKdEs9SR4tEXInEpF4EFOfFb52lPgIKCH0Seg0tDyvhsBTA6ZLCQNWa
-         1aE4jk2ovj12n2BRCyT3p/kuBgM7FhtRc/sqc9E4kw4c4lRC1QwnielgoTbZdWmHcWin
-         xJsA==
+        bh=iT43vV/8uAHMn7FAg00g9i6Mme4+F8hCwy+JaDp9TpQ=;
+        b=gtOyJPJml/nxM8fDqM6tlWr1EI5UutGhbwnX/Dsm4Ax4PK3rSTmhGR900rLw/FFPuZ
+         papDQGN1Q0b0hv+eQRC+iAzcuzjBgCea+rfoPFb2IDS6icQvmwsg1ZUqbYuK+fQX3XJF
+         NLCQfLiGfnZr/GTzUUJss6MY4Dt5Nh6LHLtrcshY55KRIf6qkrix59vB5AXYMKcH4NWo
+         24hn18jBBnD4vH7+jqH8upXsf503SLOH+KIiJr2LuuPk+LWtkwcOhTLUguyNeoH5UZmS
+         vvkxvuANRa1cUIzgzUJ9bQPtQeHiwv/xNgU/W7b5LHv3uib1/en2zqhkpS5Uwh+f+DlU
+         WcuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o6si9109369ybp.451.2019.02.27.09.14.37
+        by mx.google.com with ESMTPS id b72si4340960ywb.133.2019.02.27.09.52.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Feb 2019 09:14:37 -0800 (PST)
+        Wed, 27 Feb 2019 09:52:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:47778 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48393 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gz2mz-0000mA-2q
-	for alex.bennee@linaro.org; Wed, 27 Feb 2019 12:14:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49046)
+	id 1gz3NB-00083w-33
+	for alex.bennee@linaro.org; Wed, 27 Feb 2019 12:52:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59388)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gz2mo-0000iq-Kd
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 12:14:27 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gz3Mt-00080p-Gg
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 12:51:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gz2ml-0006p7-Ab
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 12:14:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33152)
+	(envelope-from <imammedo@redhat.com>) id 1gz3Mr-0001Xd-Os
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 12:51:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36172)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gz2mk-0006kY-DH; Wed, 27 Feb 2019 12:14:22 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gz3Mr-0001Q0-DN; Wed, 27 Feb 2019 12:51:41 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3ABF53169B2D;
-	Wed, 27 Feb 2019 17:14:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3A4947BDDE;
+	Wed, 27 Feb 2019 17:51:33 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9822D4215;
-	Wed, 27 Feb 2019 17:14:13 +0000 (UTC)
-Date: Wed, 27 Feb 2019 18:14:12 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CF47684ED;
+	Wed, 27 Feb 2019 17:51:24 +0000 (UTC)
+Date: Wed, 27 Feb 2019 18:51:23 +0100
 From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190227181412.2a69a926@redhat.com>
-In-Reply-To: <20190128110545.20644-4-shameerali.kolothum.thodi@huawei.com>
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<20190128110545.20644-4-shameerali.kolothum.thodi@huawei.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190227185123.314171ae@redhat.com>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8392D6690@lhreml524-mbs.china.huawei.com>
+References: <20190220224003.4420-1-eric.auger@redhat.com>
+	<20190222172742.18c3835a@redhat.com>
+	<c016024e-9f4b-8953-f492-8802675f7e22@redhat.com>
+	<20190225104212.7d40e65e@Igors-MacBook-Pro.local>
+	<70249194-349e-37f6-0e8d-dc50b39082b7@redhat.com>
+	<cd283485-49a9-ddd1-a020-26110ee093be@redhat.com>
+	<20190226175653.6ca2b6c4@Igors-MacBook-Pro.local>
+	<c68ba5a2-0d24-c1ad-c2af-c957768abf9f@redhat.com>
+	<20190227111025.4bb39cc7@redhat.com>
+	<116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA8392D6690@lhreml524-mbs.china.huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Wed, 27 Feb 2019 17:14:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 27 Feb 2019 17:51:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/4] hw/arm/virt: Enable
- pc-dimm hotplug support
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM
+ expansion and PCDIMM/NVDIMM support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,160 +99,306 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, linuxarm@huawei.com,
-	qemu-devel@nongnu.org, eric.auger@redhat.com,
-	qemu-arm@nongnu.org, xuwei5@huawei.com
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"david@redhat.com" <david@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"dgilbert@redhat.com" <dgilbert@redhat.com>,
+	Auger Eric <eric.auger@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4QCgeDSQf6Ae
+X-TUID: iQy7fEvLfKsf
 
-On Mon, 28 Jan 2019 11:05:45 +0000
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+On Wed, 27 Feb 2019 10:41:45 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> pc-dimm memory hotplug is enabled using GPIO(Pin 2) based ACPI
-> event. Hot removal functionality is not yet supported.
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/virt.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++++++--
->  1 file changed, 55 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 884960d..cf64554 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -62,6 +62,7 @@
->  #include "hw/mem/pc-dimm.h"
->  #include "hw/mem/nvdimm.h"
->  #include "hw/acpi/acpi.h"
-> +#include "hw/acpi/pc-hotplug.h"
->  
->  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> @@ -1651,7 +1652,14 @@ static void machvirt_init(MachineState *machine)
->          nvdimm_init_acpi_state(acpi_nvdimm_state, sysmem,
->                                 vms->fw_cfg, OBJECT(vms));
->      }
-> +    if (vms->acpi_memhp_state.is_enabled) {
-> +        MemHotplugState *state =  &vms->acpi_memhp_state;
-> +        hwaddr base;
->  
-> +        state->hw_reduced_acpi = true;
-> +        base = vms->memmap[VIRT_ACPI_IO].base + ACPI_MEMORY_HOTPLUG_BASE;
-> +        acpi_memory_hotplug_init(sysmem, OBJECT(vms), state, base);
-> +    }
-this hunk should be a part of 'acpi' device that owns respective interrupts and mmio regions.
-(something like we do in x86)
-In this case I'd suggest to make 'base' its property and the board will set it during
-device creation.
+> Hi Eric,
+>=20
+> > -----Original Message-----
+> > From: Auger Eric [mailto:eric.auger@redhat.com]
+> > Sent: 27 February 2019 10:27
+> > To: Igor Mammedov <imammedo@redhat.com>
+> > Cc: peter.maydell@linaro.org; drjones@redhat.com; david@redhat.com;
+> > dgilbert@redhat.com; Shameerali Kolothum Thodi
+> > <shameerali.kolothum.thodi@huawei.com>; qemu-devel@nongnu.org;
+> > qemu-arm@nongnu.org; eric.auger.pro@gmail.com;
+> > david@gibson.dropbear.id.au
+> > Subject: Re: [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM expans=
+ion
+> > and PCDIMM/NVDIMM support
+> >=20
+> > Hi Igor, Shameer,
+> >=20
+> > On 2/27/19 11:10 AM, Igor Mammedov wrote: =20
+> > > On Tue, 26 Feb 2019 18:53:24 +0100
+> > > Auger Eric <eric.auger@redhat.com> wrote:
+> > > =20
+> > >> Hi Igor,
+> > >>
+> > >> On 2/26/19 5:56 PM, Igor Mammedov wrote: =20
+> > >>> On Tue, 26 Feb 2019 14:11:58 +0100
+> > >>> Auger Eric <eric.auger@redhat.com> wrote:
+> > >>> =20
+> > >>>> Hi Igor,
+> > >>>>
+> > >>>> On 2/26/19 9:40 AM, Auger Eric wrote: =20
+> > >>>>> Hi Igor,
+> > >>>>>
+> > >>>>> On 2/25/19 10:42 AM, Igor Mammedov wrote: =20
+> > >>>>>> On Fri, 22 Feb 2019 18:35:26 +0100
+> > >>>>>> Auger Eric <eric.auger@redhat.com> wrote:
+> > >>>>>> =20
+> > >>>>>>> Hi Igor,
+> > >>>>>>>
+> > >>>>>>> On 2/22/19 5:27 PM, Igor Mammedov wrote: =20
+> > >>>>>>>> On Wed, 20 Feb 2019 23:39:46 +0100
+> > >>>>>>>> Eric Auger <eric.auger@redhat.com> wrote:
+> > >>>>>>>> =20
+> > >>>>>>>>> This series aims to bump the 255GB RAM limit in machvirt and =
+to
+> > >>>>>>>>> support device memory in general, and especially =20
+> > PCDIMM/NVDIMM. =20
+> > >>>>>>>>>
+> > >>>>>>>>> In machvirt versions < 4.0, the initial RAM starts at 1GB and=
+ can
+> > >>>>>>>>> grow up to 255GB. From 256GB onwards we find IO regions such =
+as =20
+> > the =20
+> > >>>>>>>>> additional GICv3 RDIST region, high PCIe ECAM region and high=
+ =20
+> > PCIe =20
+> > >>>>>>>>> MMIO region. The address map was 1TB large. This corresponded=
+ =20
+> > to =20
+> > >>>>>>>>> the max IPA capacity KVM was able to manage.
+> > >>>>>>>>>
+> > >>>>>>>>> Since 4.20, the host kernel is able to support a larger and d=
+ynamic
+> > >>>>>>>>> IPA range. So the guest physical address can go beyond the 1T=
+B. =20
+> > The =20
+> > >>>>>>>>> max GPA size depends on the host kernel configuration and phy=
+sical =20
+> > CPUs. =20
+> > >>>>>>>>>
+> > >>>>>>>>> In this series we use this feature and allow the RAM to grow =
+=20
+> > without =20
+> > >>>>>>>>> any other limit than the one put by the host kernel.
+> > >>>>>>>>>
+> > >>>>>>>>> The RAM still starts at 1GB. First comes the initial ram (-m)=
+ of size
+> > >>>>>>>>> ram_size and then comes the device memory (,maxmem) of size
+> > >>>>>>>>> maxram_size - ram_size. The device memory is potentially =20
+> > hotpluggable =20
+> > >>>>>>>>> depending on the instantiated memory objects.
+> > >>>>>>>>>
+> > >>>>>>>>> IO regions previously located between 256GB and 1TB are moved=
+ =20
+> > after =20
+> > >>>>>>>>> the RAM. Their offset is dynamically computed, depends on =20
+> > ram_size =20
+> > >>>>>>>>> and maxram_size. Size alignment is enforced.
+> > >>>>>>>>>
+> > >>>>>>>>> In case maxmem value is inferior to 255GB, the legacy memory =
+=20
+> > map =20
+> > >>>>>>>>> still is used. The change of memory map becomes effective fro=
+m 4.0
+> > >>>>>>>>> onwards.
+> > >>>>>>>>>
+> > >>>>>>>>> As we keep the initial RAM at 1GB base address, we do not nee=
+d to =20
+> > do =20
+> > >>>>>>>>> invasive changes in the EDK2 FW. It seems nobody is eager to =
+do
+> > >>>>>>>>> that job at the moment.
+> > >>>>>>>>>
+> > >>>>>>>>> Device memory being put just after the initial RAM, it is pos=
+sible
+> > >>>>>>>>> to get access to this feature while keeping a 1TB address map.
+> > >>>>>>>>>
+> > >>>>>>>>> This series reuses/rebases patches initially submitted by Sha=
+meer
+> > >>>>>>>>> in [1] and Kwangwoo in [2] for the PC-DIMM and NV-DIMM parts.
+> > >>>>>>>>>
+> > >>>>>>>>> Functionally, the series is split into 3 parts:
+> > >>>>>>>>> 1) bump of the initial RAM limit [1 - 9] and change in
+> > >>>>>>>>>    the memory map =20
+> > >>>>>>>> =20
+> > >>>>>>>>> 2) Support of PC-DIMM [10 - 13] =20
+> > >>>>>>>> Is this part complete ACPI wise (for coldplug)? I haven't noti=
+ced
+> > >>>>>>>> DSDT AML here no E820 changes, so ACPI wise pc-dimm shouldn't =
+be
+> > >>>>>>>> visible to the guest. It might be that DT is masking problem
+> > >>>>>>>> but well, that won't work on ACPI only guests. =20
+> > >>>>>>>
+> > >>>>>>> guest /proc/meminfo or "lshw -class memory" reflects the amount=
+ of =20
+> > mem =20
+> > >>>>>>> added with the DIMM slots. =20
+> > >>>>>> Question is how does it get there? Does it come from DT or from =
+=20
+> > firmware =20
+> > >>>>>> via UEFI interfaces?
+> > >>>>>> =20
+> > >>>>>>> So it looks fine to me. Isn't E820 a pure x86 matter? =20
+> > >>>>>> sorry for misleading, I've meant is UEFI GetMemoryMap().
+> > >>>>>> On x86, I'm wary of adding PC-DIMMs to E802 which then gets expo=
+sed
+> > >>>>>> via UEFI GetMemoryMap() as guest kernel might start using it as =
+=20
+> > normal =20
+> > >>>>>> memory early at boot and later put that memory into zone normal =
+and =20
+> > hence =20
+> > >>>>>> make it non-hot-un-pluggable. The same concerns apply to DT base=
+d =20
+> > means =20
+> > >>>>>> of discovery.
+> > >>>>>> (That's guest issue but it's easy to workaround it not putting =
+=20
+> > hotpluggable =20
+> > >>>>>> memory into UEFI GetMemoryMap() or DT and let DSDT describe it =
+=20
+> > properly) =20
+> > >>>>>> That way memory doesn't get (ab)used by firmware or early boot =
+=20
+> > kernel stages =20
+> > >>>>>> and doesn't get locked up.
+> > >>>>>> =20
+> > >>>>>>> What else would you expect in the dsdt? =20
+> > >>>>>> Memory device descriptions, look for code that adds PNP0C80 with=
+ =20
+> > _CRS =20
+> > >>>>>> describing memory ranges =20
+> > >>>>>
+> > >>>>> OK thank you for the explanations. I will work on PNP0C80 additio=
+n then.
+> > >>>>> Does it mean that in ACPI mode we must not output DT hotplug memo=
+ry
+> > >>>>> nodes or assuming that PNP0C80 is properly described, it will "ov=
+erride"
+> > >>>>> DT description? =20
+> > >>>>
+> > >>>> After further investigations, I think the pieces you pointed out a=
+re
+> > >>>> added by Shameer's series, ie. through the build_memory_hotplug_am=
+l()
+> > >>>> call. So I suggest we separate the concerns: this series brings su=
+pport
+> > >>>> for DIMM coldplug. hotplug, including all the relevant ACPI struct=
+ures
+> > >>>> will be added later on by Shameer. =20
+> > >>>
+> > >>> Maybe we should not put pc-dimms in DT for this series until it get=
+s clear
+> > >>> if it doesn't conflict with ACPI in some way. =20
+> > >>
+> > >> I guess you mean removing the DT hotpluggable memory nodes only in A=
+CPI
+> > >> mode? Otherwise you simply remove the DIMM feature, right? =20
+> > > Something like this so DT won't get in conflict with ACPI.
+> > > Only we don't have a switch for it something like, -machine fdt=3Don =
+(with =20
+> > default off) =20
+> > > =20
+> > >> I double checked and if you remove the hotpluggable memory DT nodes =
+in
+> > >> ACPI mode:
+> > >> - you do not see the PCDIMM slots in guest /proc/meminfo anymore. So=
+ I
+> > >> guess you're right, if the DT nodes are available, that memory is
+> > >> considered as not unpluggable by the guest.
+> > >> - You can see the NVDIMM slots using ndctl list -u. You can mount a =
+DAX
+> > >> system.
+> > >>
+> > >> Hotplug/unplug is clearly not supported by this series and any attem=
+pt
+> > >> results in "memory hotplug is not supported". Is it really an issue =
+if
+> > >> the guest does not consider DIMM slots as not hot-unpluggable memory=
+? I
+> > >> am not even sure the guest kernel would support to unplug that memor=
+y.
+> > >>
+> > >> In case we want all ACPI tables to be ready for making this memory s=
+een
+> > >> as hot-unpluggable we need some Shameer's patches on top of this ser=
+ies. =20
+> > > May be we should push for this way (into 4.0), it's just a several pa=
+tches
+> > > after all or even merge them in your series (I'd guess it would need =
+to be
+> > > rebased on top of your latest work) =20
+> >=20
+> > Shameer, would you agree if we merge PATCH 1 of your RFC hotplug series
+> > (without the reduced hw_reduced_acpi flag) in this series and isolate in
+> > a second PATCH the acpi_memory_hotplug_init() + build_memory_hotplug_aml
+> > called in virt code? =20
+probably we can do it as transitional step as we need working mmio interface
+in place for build_memory_hotplug_aml() to work, provided it won't create
+migration issues (do we need VMSTATE_MEMORY_HOTPLUG for cold-plug case?).
 
->      vms->bootinfo.ram_size = machine->ram_size;
->      vms->bootinfo.kernel_filename = machine->kernel_filename;
->      vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;
-> @@ -1819,6 +1827,20 @@ static void virt_set_nvdimm_persistence(Object *obj, const char *value,
->      nvdimm_state->persistence_string = g_strdup(value);
->  }
->  
-> +static bool virt_get_memhp_support(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->acpi_memhp_state.is_enabled;
-> +}
-> +
-> +static void virt_set_memhp_support(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->acpi_memhp_state.is_enabled = value;
-> +}
-> +
->  static CpuInstanceProperties
->  virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
->  {
-> @@ -1863,8 +1885,8 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->      const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
->      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
->  
-> -    if (dev->hotplugged) {
-> -        error_setg(errp, "memory hotplug is not supported");
-> +    if (dev->hotplugged && is_nvdimm) {
-> +        error_setg(errp, "nvdimm hotplug is not supported");
->      }
->  
->      if (is_nvdimm && !vms->acpi_nvdimm_state.is_enabled) {
-> @@ -1875,6 +1897,22 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->      pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
->  }
->  
-> +static void virt_memhp_send_event(HotplugHandler *hotplug_dev, DeviceState *dev,
-> +                                  Error **errp)
-> +{
-> +    DeviceState *gpio_dev;
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +
-> +    gpio_dev = virt_get_gpio_dev(GPIO_PCDIMM);
-> +    if (!gpio_dev) {
-> +        error_setg(errp, "No dev interface to send hotplug event");
-                             ^^^^^^ confusing
-> +        return;
-> +    }
-> +    acpi_memory_plug_cb(hotplug_dev, &vms->acpi_memhp_state,
-> +                        dev, errp);
-> +    qemu_set_irq(qdev_get_gpio_in(gpio_dev, 0), 1);
-> +}
-> +
->  static void virt_memory_plug(HotplugHandler *hotplug_dev,
->                               DeviceState *dev, Error **errp)
->  {
-> @@ -1891,6 +1929,10 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
->          nvdimm_plug(&vms->acpi_nvdimm_state);
->      }
->  
-> +    if (dev->hotplugged && !is_nvdimm) {
-> +        virt_memhp_send_event(hotplug_dev, dev, errp);
-...
-  acpi_memory_plug_cb();
-  hotplug_handler_plug(HOTPLUG_HANDLER(pcms->gpio_dev), dev, &error_abort);
-  ^^^^ forward snd process hotplug notification event in gpio_dev,
-       machine should not care about which and how to deal with random IRQs
+What about dummy initial GED (empty device), that manages mmio region only
+and then later it will be filled with remaining logic IRQ. In this case mmi=
+o region
+and vmstate won't change (maybe) so it won't cause ABI or migration issues.
 
-> +    }
-> +
->  out:
->      error_propagate(errp, local_err);
->  }
-> @@ -1898,6 +1940,11 @@ out:
->  static void virt_memory_unplug(HotplugHandler *hotplug_dev,
->                                 DeviceState *dev, Error **errp)
->  {
-> +    if (dev->hotplugged) {
-> +        error_setg(errp, "memory hot unplug is not supported");
-> +        return;
-> +    }
-what if unplug is called on cold-plugged device?
 
-Better way to disable mgmt initiated unplug is to forbid it in unplug_request()
-For guest initiated one ('unplug' handler), the best we can do is log error
-and ignore it (provided guest won't get in confused). it's also possible 
-to hide _EJ method and then it would be even fine to abort if it gets here,
-since guest is not supposed to interface with MMIO interface without using AML.
+> Sure, that=E2=80=99s fine with me. So what would you use for the event_ha=
+ndler_method in
+> build_memory_hotplug_aml()? GPO0 device?
 
-> +
->      pc_dimm_unplug(PC_DIMM(dev), MACHINE(hotplug_dev));
->      object_unparent(OBJECT(dev));
->  }
-> @@ -2085,6 +2132,12 @@ static void virt_instance_init(Object *obj)
->                                      "Set NVDIMM persistence"
->                                      "Valid values are cpu and mem-ctrl", NULL);
->  
-> +    vms->acpi_memhp_state.is_enabled = true;
-> +    object_property_add_bool(obj, "memory-hotplug-support",
-> +                             virt_get_memhp_support,
-> +                             virt_set_memhp_support,
-> +                             NULL);
-> +
->      vms->irqmap = a15irqmap;
->  }
->  
+a method name not defined in spec, so it won't be called might do.
+
+
+>=20
+> Thanks,
+> Shameer
+>=20
+> > Then would remain the GED/GPIO actual integration.
+> >=20
+> > Thanks
+> >=20
+> > Eric =20
+> > > =20
+> > >> Also don't DIMM slots already make sense in DT mode. Usually we acce=
+pt
+> > >> to add one feature in DT and then in ACPI. For instance we can benef=
+it =20
+> > > usually it doesn't conflict with each other (at least I'm not aware o=
+f it)
+> > > but I see a problem with in this case.
+> > > =20
+> > >> from nvdimm in dt mode right? So, considering an incremental approac=
+h I
+> > >> would be in favour of keeping the DT nodes. =20
+> > > I'd guess it is the same as for DIMMs, ACPI support for NVDIMMs is mu=
+ch
+> > > more versatile.
+> > >
+> > > I consider target application of arm/virt as a board that's used to
+> > > run in production generic ACPI capable guest in most use cases and
+> > > various DT only guests as secondary ones. It's hard to make
+> > > both usecases be happy with defaults (that's probably  one of the
+> > > reasons why 'sbsa' board is being added).
+> > >
+> > > So I'd give priority to ACPI based arm/virt versus DT when defaults a=
+re
+> > > considered.
+> > > =20
+> > >> Thanks
+> > >>
+> > >> Eric =20
+> > >>>
+> > >>>
+> > >>>
+> > >>> =20
+> > > =20
 

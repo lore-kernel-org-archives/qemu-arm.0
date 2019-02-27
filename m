@@ -1,89 +1,86 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12254478wrx;
-        Wed, 27 Feb 2019 05:42:30 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IbC7pVwMeO0GT7Gv5ifK9EysMsoTInroLvWIWraslmO/P6upCiIcHUIDjjt+HNylpNVjAJl
-X-Received: by 2002:a25:b96:: with SMTP id 144mr2079111ybl.31.1551274950435;
-        Wed, 27 Feb 2019 05:42:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551274950; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12288069wrx;
+        Wed, 27 Feb 2019 06:15:45 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ7jXIVr08bytmjzuxu+s/RLtm2tt20Vb6MfCleDDweJipcG2BhDHwp8bJBE7fCr5i8oDPl
+X-Received: by 2002:a81:4f0c:: with SMTP id d12mr1254879ywb.414.1551276945753;
+        Wed, 27 Feb 2019 06:15:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551276945; cv=none;
         d=google.com; s=arc-20160816;
-        b=VnQaDywZDkICWG5gJ2D466nD033/hZvowO9OIKxero9woyHndGI0a2PsTCCjdcp0Qe
-         0sz+dxmIcIuxnhYVFDjD4ddjAQzhlLkrjfc3kpqfls92obOv0is5eSi0Qqk050XtA2BL
-         LRR8tShwe0yrp0NUpRLUBtoifqdAiFU0Y/XgyjBMUUe3KLdLgM7UWmPh4HOS0tE84i9A
-         gcZvXOLLPIbLF4Uorc+dc6J3sBfhKUEzZtr9CgApWSMcUpE2QRGJvV7OXl7kKsFkWwiY
-         X4FDwEgCt1lAJZUtCA4FnO3YXMuq4SO6SjX2hC5D1GbEIaQ19U5q/F661pq3Dl2cSSkF
-         nSUA==
+        b=xzfpIjUqPNMSkcEt5LGduyugOXWF2bpx0oXLKa+41nyKKz+xHalOtGng79FnbVlipy
+         JDE1b75O2lNytLB6qhNFB0mgUe0kumqR2LlJBzQL1VYE38f9d3LJR53DM8pXz+0WOXN6
+         3/fv+HlEgbLeDQXkCivH4DkcrhzbWGgt+4tII5CeQgpWj/8+xvSsEno7FITVm0Prl6jd
+         ibP5XwaYY1jmVJdQvYcqHR4jtuQmNwwznej2LA2fE3sYMA4BqgEGMUYQfFjp4iD6E2OH
+         YnH0f1HP/OSi1SfyO0mYv17xP/j7/1CpwKH6KSTiAW/UlZx4/tuochXJZyjjLQpa+bdg
+         WzTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :references:message-id:date:thread-index:thread-topic:to:from;
-        bh=iKOE+aHF28GvjYxWFOqV5ArUbYZNAdBpk2ei3gyyXjY=;
-        b=rEYCFU5rA9aR8SgA6mTa1lyLo7Apr2bFW5kQpWi7Dv1nxOAqiSl2dMF5CEJ1KlTHKe
-         jDLU4MQRHrL2wQQya59MmBWtfaCnZMaFi+4vnuBKIwRc9TPkcbQExHBwJsDFJDhthHqS
-         hIc/aPiTNXK0mRC/VV6YFKpjOwOiJ92/pLrDFkcxVO/fcO0J1gf4akNthvyHrdBatIpK
-         CHfULUoYtj6xBW89aFyYE76EQWJ7WUn8raoS9gvWqjAHKrK2zxYmnxQfOiI45E8ddCYs
-         EG8pF14u68QKygTIUCMOgXmYI5IfzhTUqhymJhCjXiPOqHYn7zkWjhP6A+IYP+m1igYa
-         54Pg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=+qTRdb+tE491oOemeWfysyQyLv0zkZgaCQk+r5K9AlU=;
+        b=qRFSJvPclAeQRWPujU4YFBXiGIz5CvbfeEXyB8u/9v32ToYB1EZvJADx6JHFFPZg4I
+         SnmA/2tnnPUPYy/36IyvEcrf5WU3cnGsJzLZTKp8gYiErXJOq0CJ/bF7qjOWbicrEHNG
+         XFceooQAMd5qmmJs449s17GY3E/ljRBg+7Ug7siC6FYnsrbqc4ppZxjsaJ0eiCf7/bZN
+         p307G+TbZMDupXNebbEEV6TQ/GE2vG4cjN+1vetmCBrE3SjwyDsLZsnVu9wRyahweLBh
+         JpVjN7m9XqXsMdEScASQYZSbhRLwoEH49KqxnQ2pIDZBUrbQVy1QHRrqGHBCZTA32Ctb
+         w6hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k188si9211701ywe.126.2019.02.27.05.42.30
+        by mx.google.com with ESMTPS id l85si5436233ywc.375.2019.02.27.06.15.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Feb 2019 05:42:30 -0800 (PST)
+        Wed, 27 Feb 2019 06:15:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43941 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:44615 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gyzTh-00056T-Sw
-	for alex.bennee@linaro.org; Wed, 27 Feb 2019 08:42:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50949)
+	id 1gyzzt-0006Zx-5P
+	for alex.bennee@linaro.org; Wed, 27 Feb 2019 09:15:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56363)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyzTW-00050b-GV
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 08:42:20 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gyzgz-0007im-Fm
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 08:56:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyzSO-0001DR-Ua
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 08:41:10 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45350 helo=huawei.com)
+	(envelope-from <imammedo@redhat.com>) id 1gyzgy-0005ZQ-2E
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 08:56:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54574)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1gyzSO-000166-JG; Wed, 27 Feb 2019 08:41:08 -0500
-Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 8B0A2BBE9A1BB8E13B3B;
-	Wed, 27 Feb 2019 12:55:26 +0000 (GMT)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.86]) by
-	lhreml707-cah.china.huawei.com ([10.201.108.48]) with mapi id
-	14.03.0415.000; Wed, 27 Feb 2019 12:55:18 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Laszlo Ersek <lersek@redhat.com>, Auger Eric <eric.auger@redhat.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"imammedo@redhat.com"
-	<imammedo@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
-Thread-Index: AQHUtvmpFsitltmfREOfc6NLrhEY6qXsIlgAgAA0iICABBmRQIADVpbw
-Date: Wed, 27 Feb 2019 12:55:18 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8392D6875@lhreml524-mbs.china.huawei.com>
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
-	<892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com> 
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gyzgw-0005Wk-1e; Wed, 27 Feb 2019 08:56:11 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BCA6C2F9453;
+	Wed, 27 Feb 2019 12:40:45 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 50EF25F9D5;
+	Wed, 27 Feb 2019 12:40:36 +0000 (UTC)
+Date: Wed, 27 Feb 2019 13:40:35 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190227134035.5b8a0b98@redhat.com>
+In-Reply-To: <2cd3fb96-6f46-18db-cb55-5c4e30fd3bac@redhat.com>
+References: <20190226135014.31854-1-eric.auger@redhat.com>
+	<20190226135014.31854-13-eric.auger@redhat.com>
+	<20190226180841.0c30af3c@Igors-MacBook-Pro.local>
+	<2cd3fb96-6f46-18db-cb55-5c4e30fd3bac@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 27 Feb 2019 12:40:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v8 12/18] hw/arm/boot: Expose the PC-DIMM
+ nodes in the DT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,140 +92,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
-	Linuxarm <linuxarm@huawei.com>, "xuwei \(O\)" <xuwei5@huawei.com>, Ard
-	Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
+	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
+	dgilbert@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LfwmZQWr1H1M
+X-TUID: 3m3Us/ggM2u8
 
-SGkgTGFzemxvLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFNoYW1l
-ZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gU2VudDogMjUgRmVicnVhcnkgMjAxOSAwOTo1NA0KPiBU
-bzogJ0xhc3psbyBFcnNlaycgPGxlcnNla0ByZWRoYXQuY29tPjsgQXVnZXIgRXJpYyA8ZXJpYy5h
-dWdlckByZWRoYXQuY29tPjsNCj4gc2hhbm5vbi56aGFvc2xAZ21haWwuY29tOyBwZXRlci5tYXlk
-ZWxsQGxpbmFyby5vcmc7DQo+IGltYW1tZWRvQHJlZGhhdC5jb207IHFlbXUtZGV2ZWxAbm9uZ251
-Lm9yZzsgcWVtdS1hcm1Abm9uZ251Lm9yZw0KPiBDYzogeHV3ZWkgKE8pIDx4dXdlaTVAaHVhd2Vp
-LmNvbT47IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsgQXJkDQo+IEJpZXNoZXV2ZWwg
-PGFyZC5iaWVzaGV1dmVsQGxpbmFyby5vcmc+OyBMZWlmIExpbmRob2xtIChMaW5hcm8gYWRkcmVz
-cykNCj4gPGxlaWYubGluZGhvbG1AbGluYXJvLm9yZz4NCj4gU3ViamVjdDogUkU6IFtSRkMgUEFU
-Q0ggMC80XSBBUk0gdmlydDogQUNQSSBtZW1vcnkgaG90cGx1ZyBzdXBwb3J0DQoNClsuLi5dDQog
-DQo+ID4gPj4gVGhlIHJvb3QgY2F1c2Ugc2VlbXMgdG8gYmUgRURLMiBBQ1BJIHRhYmxlIGNoZWNr
-c3VtIGZhaWx1cmUNCj4gPiA+PiBhcyBORklUIHRhYmxlIGlzIGdldHRpbmcgdXBkYXRlZCBvbiBo
-b3QtYWRkLiBUaGlzIG5lZWRzIGZ1cnRoZXINCj4gPiA+PiBpbnZlc3RpZ2F0aW9uLg0KPiA+ID4g
-KyBBcmQsIExlaWYsIExhc3psbyBpZiB0aGV5IGhhdmUgYW55IGlkZWEgb2Ygd2hhdCBpcyBtaXNz
-aW5nL3dyb25nLg0KPiA+DQo+ID4gSHVoLCB2ZXJ5IGludGVyZXN0aW5nOyBJIHVzdWFsbHkgZG9u
-J3QgZXhwZWN0IG15IHNhbml0eSBjaGVja3MgdG8gZmlyZQ0KPiA+IGluIHByYWN0aWNlLiA6KQ0K
-PiA+DQo+ID4gVGhlIG1lc3NhZ2UNCj4gPg0KPiA+ICAgUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBp
-bnZhbGlkIGNoZWNrc3VtIHJhbmdlIGluICJldGMvYWNwaS90YWJsZXMiDQo+ID4NCj4gPiBpcyBs
-b2dnZWQgYnkgT1ZNRidzIGFuZCBBcm1WaXJ0UWVtdSdzIEFDUEkgUGxhdGZvcm0gRFhFIERyaXZl
-ciB3aGVuIGl0DQo+ID4gZmluZHMgYW4gaW52YWxpZCBDT01NQU5EX0FERF9DSEVDS1NVTSBjb21t
-YW5kIGluIFFFTVUncyBBQ1BJDQo+ID4gbGlua2VyL2xvYWRlciBzY3JpcHQuDQo+ID4NCj4gPiBQ
-bGVhc2Ugc2VlIHRoZSBjb21tYW5kIGRlZmluaXRpb24gaW4gUUVNVSdzDQo+ID4gImh3L2FjcGkv
-Ymlvcy1saW5rZXItbG9hZGVyLmMiLiBJbiBwYXJ0aWN1bGFyLCBwbGVhc2UgcmVmZXIgdG8gdGhl
-DQo+ID4gZnVuY3Rpb24gYmlvc19saW5rZXJfbG9hZGVyX2FkZF9jaGVja3N1bSgpLCB3aGljaCBi
-dWlsZHMgdGhlIGNvbW1hbmQNCj4gPiBzdHJ1Y3R1cmUsIGFuZCBkb2N1bWVudHMgdGhlIGZpZWxk
-cy4NCj4gPg0KPiA+IChZb3UgbWF5IGFsc28gcmVmZXIgdG8gUUVNVV9MT0FERVJfQUREX0NIRUNL
-U1VNIGluIGZpbGUNCj4gPiAiT3ZtZlBrZy9BY3BpUGxhdGZvcm1EeGUvUWVtdUxvYWRlci5oIiBp
-biB0aGUgZWRrMiBzb3VyY2UgdHJlZSwgZm9yIHRoZQ0KPiA+IHNhbWUgaW5mb3JtYXRpb24uKQ0K
-PiA+DQo+ID4gVGhlIGVycm9yIG1lc3NhZ2UgaXMgbG9nZ2VkIGlmOg0KPiA+IC0gdGhlIG9mZnNl
-dCBhdCB3aGljaCB0aGUgY2hlY2tzdW0gc2hvdWxkIGJlIHN0b3JlZCBmYWxscyBvdXRzaWRlIG9m
-IHRoZQ0KPiA+IHNpemUgb2YgdGhlIGZ3X2NmZyBibG9iLCBvcg0KPiA+IC0gdGhlIHJhbmdlIG92
-ZXIgd2hpY2ggdGhlIGNoZWNrc3VtIHNob3VsZCBiZSBjYWxjdWxhdGVkIGZhbGxzIG91dHNpZGUN
-Cj4gPiAoYXQgbGVhc3QgaW4gcGFydCkgb2YgdGhlIGZ3X2NmZyBibG9iLg0KPiA+DQo+ID4gVG8g
-bWUgdGhpcyBzdWdnZXN0cyB0aGF0IFFFTVUgZ2VuZXJhdGVzIGFuIGludmFsaWQNCj4gPiBDT01N
-QU5EX0FERF9DSEVDS1NVTQ0KPiA+IGNvbW1hbmQgZm9yIHRoZSBmaXJtd2FyZS4NCj4gPg0KPiA+
-IC4uLiBJJ3ZlIHRyaWVkIHRvIHNraW0gdGhlIHBhdGNoZXMgYnJpZWZseS4gSSB0aGluayB0aGVy
-ZSBtdXN0IGJlIGFuDQo+ID4gZXJyb3IgaW4gdGhlIERTRFQgYnVpbGRpbmcgbG9naWMgdGhhdCBp
-cyBvbmx5IGFjdGl2ZSBvbiByZWJvb3QgaWYgYW4NCj4gPiBudmRpbW0gbW9kdWxlIHdhcyBob3Qt
-YWRkZWQgYmVmb3JlIHRoZSByZWJvb3QuDQo+IA0KPiBUaGFua3MgZm9yIHRha2luZyBhIGxvb2sg
-YW5kIHRoZSBwb2ludGVycy4gSSB3aWxsIGRlYnVnIHRoaXMgZnVydGhlcg0KPiBhbmQgZ2V0IGJh
-Y2suDQoNClRoZSByb290IGNhdXNlIG9mIHRoZSBpc3N1ZSBzZWVtcyB0byBiZSBVRUZJIG5vdCBz
-ZWVpbmcgdGhlIHVwZGF0ZWQgYWNwaQ0KdGFibGUgYmxvYiBzaXplIG9uIHJlYm9vdCBvbmNlIGEg
-bmV3IE5GSVQgdGFibGUgaXMgYWRkZWQobnZkaW1tIGhvdCBhZGRlZCkuDQoNClBsZWFzZSBzZWUg
-dGhlIGRlYnVnIGxvZ3MgYmVsb3csDQoNCkluaXRpYWwgR3Vlc3QgYm9vdA0KLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tDQoNCkRlYnVnIGxvZ3MgZnJvbSBRZW11Og0KDQpidWlsZF9oZWFkZXI6
-IGFjcGkgc2lnIERTRFQgbGVuIDB4NTEyNw0KYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBGQUNQIGxl
-biAweDEwYw0KYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBBUElDIGxlbiAweGE4DQpidWlsZF9oZWFk
-ZXI6IGFjcGkgc2lnIEdURFQgbGVuIDB4NjANCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgTUNGRyBs
-ZW4gMHgzYw0KYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBTUENSIGxlbiAweDUwDQpidWlsZF9oZWFk
-ZXI6IGFjcGkgc2lnIFNSQVQgbGVuIDB4OTINCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgU1NEVCBs
-ZW4gMHgzOGYNCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgWFNEVCBsZW4gMHg1Yw0KdmlydF9hY3Bp
-X2J1aWxkOiBhY3BpIHRhYmxlX2Jsb2IgbGVuIDB4NTg0NA0KDQpEZWJ1ZyBsb2dzIGZyb20gVUVG
-SToNCg0KUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3Vs
-dE9mZnNldD0weDkgU3RhcnQ9MHgwIExlbmd0aD0weDUxMjcgQmxvYi0+U2l6ZT0weDU4NDQNClBy
-b2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9
-MHg1MTMwIFN0YXJ0PTB4NTEyNyBMZW5ndGg9MHgxMEMgQmxvYi0+U2l6ZT0weDU4NDQNClByb2Nl
-c3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1
-MjNDIFN0YXJ0PTB4NTIzMyBMZW5ndGg9MHhBOCBCbG9iLT5TaXplPTB4NTg0NA0KUHJvY2Vzc0Nt
-ZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNldD0weDUyRTQg
-U3RhcnQ9MHg1MkRCIExlbmd0aD0weDYwIEJsb2ItPlNpemU9MHg1ODQ0DQpQcm9jZXNzQ21kQWRk
-Q2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTM0NCBTdGFy
-dD0weDUzM0IgTGVuZ3RoPTB4M0MgQmxvYi0+U2l6ZT0weDU4NDQNClByb2Nlc3NDbWRBZGRDaGVj
-a3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1MzgwIFN0YXJ0PTB4
-NTM3NyBMZW5ndGg9MHg1MCBCbG9iLT5TaXplPTB4NTg0NA0KUHJvY2Vzc0NtZEFkZENoZWNrc3Vt
-OiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNldD0weDUzRDAgU3RhcnQ9MHg1M0M3
-IExlbmd0aD0weDkyIEJsb2ItPlNpemU9MHg1ODQ0DQpQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZp
-bGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTQ2MiBTdGFydD0weDU0NTkgTGVu
-Z3RoPTB4MzhGIEJsb2ItPlNpemU9MHg1ODQ0DQpQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9
-ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTdGMSBTdGFydD0weDU3RTggTGVuZ3Ro
-PTB4NUMgQmxvYi0+U2l6ZT0weDU4NDQNClByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRj
-L2FjcGkvcnNkcCIgUmVzdWx0T2Zmc2V0PTB4OCBTdGFydD0weDAgTGVuZ3RoPTB4MTQgQmxvYi0+
-U2l6ZT0weDI0DQpQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3JzZHAiIFJl
-c3VsdE9mZnNldD0weDIwIFN0YXJ0PTB4MCBMZW5ndGg9MHgyNCBCbG9iLT5TaXplPTB4MjQNCklu
-c3RhbGxRZW11RndDZmdUYWJsZXM6IGluc3RhbGxlZCA4IHRhYmxlcw0KDQpHdWVzdCBSZWJvb3Qg
-YWZ0ZXIgbmRpbW0gaG90IGFkZGVkDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0NCg0KRGVidWcgbG9ncyBmcm9tIFFlbXU6DQoNCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgRFNE
-VCBsZW4gMHg1MTI3DQpidWlsZF9oZWFkZXI6IGFjcGkgc2lnIEZBQ1AgbGVuIDB4MTBjDQpidWls
-ZF9oZWFkZXI6IGFjcGkgc2lnIEFQSUMgbGVuIDB4YTgNCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcg
-R1REVCBsZW4gMHg2MA0KYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBNQ0ZHIGxlbiAweDNjDQpidWls
-ZF9oZWFkZXI6IGFjcGkgc2lnIFNQQ1IgbGVuIDB4NTANCmJ1aWxkX2hlYWRlcjogYWNwaSBzaWcg
-U1JBVCBsZW4gMHg5Mg0KYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBTU0RUIGxlbiAweDM4Zg0KYnVp
-bGRfaGVhZGVyOiBhY3BpIHNpZyBORklUIGxlbiAweGUwICAtLT5OZXcNCmJ1aWxkX2hlYWRlcjog
-YWNwaSBzaWcgWFNEVCBsZW4gMHg2NA0KdmlydF9hY3BpX2J1aWxkOiBhY3BpIHRhYmxlX2Jsb2Ig
-bGVuIDB4NTkyYyAtLT5ibG9iIGxlbiB1cGRhdGVkDQoNCkRlYnVnIGxvZ3MgZnJvbSBVRUZJOg0K
-DQpQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zm
-c2V0PTB4OSBTdGFydD0weDAgTGVuZ3RoPTB4NTEyNyBCbG9iLT5TaXplPTB4NTg0NCAgLS0+V3Jv
-bmcgYmxvYiBzaXplLg0KUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJs
-ZXMiIFJlc3VsdE9mZnNldD0weDUxMzAgU3RhcnQ9MHg1MTI3IExlbmd0aD0weDEwQyBCbG9iLT5T
-aXplPTB4NTg0NA0KUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMi
-IFJlc3VsdE9mZnNldD0weDUyM0MgU3RhcnQ9MHg1MjMzIExlbmd0aD0weEE4IEJsb2ItPlNpemU9
-MHg1ODQ0DQpQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVz
-dWx0T2Zmc2V0PTB4NTJFNCBTdGFydD0weDUyREIgTGVuZ3RoPTB4NjAgQmxvYi0+U2l6ZT0weDU4
-NDQNClByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRP
-ZmZzZXQ9MHg1MzQ0IFN0YXJ0PTB4NTMzQiBMZW5ndGg9MHgzQyBCbG9iLT5TaXplPTB4NTg0NA0K
-UHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNl
-dD0weDUzODAgU3RhcnQ9MHg1Mzc3IExlbmd0aD0weDUwIEJsb2ItPlNpemU9MHg1ODQ0DQpQcm9j
-ZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4
-NTNEMCBTdGFydD0weDUzQzcgTGVuZ3RoPTB4OTIgQmxvYi0+U2l6ZT0weDU4NDQNClByb2Nlc3ND
-bWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1NDYy
-IFN0YXJ0PTB4NTQ1OSBMZW5ndGg9MHgzOEYgQmxvYi0+U2l6ZT0weDU4NDQNClByb2Nlc3NDbWRB
-ZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1N0YxIFN0
-YXJ0PTB4NTdFOCBMZW5ndGg9MHhFMCBCbG9iLT5TaXplPTB4NTg0NA0KUHJvY2Vzc0NtZEFkZENo
-ZWNrc3VtOiBpbnZhbGlkIGNoZWNrc3VtIHJhbmdlIGluICJldGMvYWNwaS90YWJsZXMiDQpPblJv
-b3RCcmlkZ2VzQ29ubmVjdGVkOiBJbnN0YWxsQWNwaVRhYmxlczogUHJvdG9jb2wgRXJyb3INCg0K
-DQpUbyBtZSBpdCBzZWVtcyBvbiBBUk0gdml0IGFjcGkgcGF0aCwgdGhlIGJsb2IgbGVuIGlzIGNh
-bGN1bGF0ZWQgYmFzZWQNCm9uIGFjdHVhbCB0YWJsZXMgYW5kIGlzIHVwZGF0ZWQgb25seSBpbiB2
-aXJ0X2FjcGlfc2V0dXAoKSAtLT4gYWNwaV9hZGRfcm9tX2Jsb2IoKQ0KcGF0aC4gSSBoYWQgYSBs
-b29rIGF0IHRoZSB4ODYgY29kZSBhbmQgaXQgbG9va3MgbGlrZSwgdGhlcmUsIHRoZSBibG9iIGxl
-biBnZXRzIHVwZGF0ZWQNCndpdGggYW4gYWRkaXRpb25hbCBidWZmZXIgdG8gdGFrZSBjYXJlIG9m
-IHRhYmxlIHJlc2l6aW5nWzFdLg0KDQpBcyBhIGhhY2sgaSBhZGRlZCB0aGUgc2FtZSB0byBBUk0g
-dmlydCBhbmQgaXQgc2VlbXMgdG8gcmVzb2x2ZSB0aGUgaXNzdWUuDQpJIGFtIG5vdCBzdXJlIHRo
-aXMgaXMgdGhlIGJlc3QgYXBwcm9hY2ggdG8gZml4IHRoaXMgdGhvdWdoLg0KDQpQbGVhc2UgbGV0
-IG1lIGtub3cgeW91ciB0aG91Z2h0cy4NCg0KVGhhbmtzLA0KU2hhbWVlcg0KDQpkaWZmIC0tZ2l0
-IGEvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5jIGIvaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5jDQpp
-bmRleCAxMzI0MTRjLi40MjkxNTUzIDEwMDY0NA0KLS0tIGEvaHcvYXJtL3ZpcnQtYWNwaS1idWls
-ZC5jDQorKysgYi9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLmMNCkBAIC01MCw2ICs1MCw4IEBADQog
-I2RlZmluZSBBUk1fU1BJX0JBU0UgMzINCiAjZGVmaW5lIEFDUElfUE9XRVJfQlVUVE9OX0RFVklD
-RSAiUFdSQiINCg0KKyNkZWZpbmUgQUNQSV9CVUlMRF9UQUJMRV9TSVpFICAgIDB4MjAwMDANCisN
-CiBzdGF0aWMgdm9pZCBhY3BpX2RzZHRfYWRkX2NwdXMoQW1sICpzY29wZSwgaW50IHNtcF9jcHVz
-KQ0KIHsNCiAgICAgdWludDE2X3QgaTsNCkBAIC04ODYsNiArODg4LDEwIEBAIHZvaWQgdmlydF9h
-Y3BpX2J1aWxkKFZpcnRNYWNoaW5lU3RhdGUgKnZtcywgQWNwaUJ1aWxkVGFibGVzICp0YWJsZXMp
-DQogICAgICAgICBidWlsZF9yc2RwKHRhYmxlcy0+cnNkcCwgdGFibGVzLT5saW5rZXIsICZyc2Rw
-X2RhdGEpOw0KICAgICB9DQoNCisgICAgLyogTWFrZSBzdXJlIHdlIGhhdmUgYSBidWZmZXIgaW4g
-Y2FzZSB3ZSBuZWVkIHRvIHJlc2l6ZSB0aGUgdGFibGVzLiAqLw0KKyAgICBnX2FycmF5X3NldF9z
-aXplKHRhYmxlc19ibG9iLCBST1VORF9VUChhY3BpX2RhdGFfbGVuKHRhYmxlc19ibG9iKSwNCisg
-ICAgICAgICAgICAgICAgICAgICBBQ1BJX0JVSUxEX1RBQkxFX1NJWkUpKTsNCisNCiAgICAgLyog
-Q2xlYW51cCBtZW1vcnkgdGhhdCdzIG5vIGxvbmdlciB1c2VkLiAqLw0KICAgICBnX2FycmF5X2Zy
-ZWUodGFibGVfb2Zmc2V0cywgdHJ1ZSk7DQogfQ0KDQpbMV0gaHR0cHM6Ly9naXRodWIuY29tL3Fl
-bXUvcWVtdS9ibG9iL21hc3Rlci9ody9pMzg2L2FjcGktYnVpbGQuYyNMMjc5Mg0KDQoNCg0KDQoN
-Cg0K
+On Tue, 26 Feb 2019 18:59:49 +0100
+Auger Eric <eric.auger@redhat.com> wrote:
+
+> Hi Igor,
+> 
+> On 2/26/19 6:08 PM, Igor Mammedov wrote:
+> > On Tue, 26 Feb 2019 14:50:08 +0100
+> > Eric Auger <eric.auger@redhat.com> wrote:
+> >   
+> >> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> >>
+> >> This patch adds memory nodes corresponding to PC-DIMM regions.
+> >>
+> >> NVDIMM and ACPI_NVDIMM configs are not yet set for ARM so we
+> >> don't need to care about NVDIMM at this stage.
+> >>
+> >> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >> Reviewed-by: Igor Mammedov <imammedo@redhat.com>  
+> > I'm having second thoughts on this one,
+> > maybe we should drop this patch or at least not to do this by default.  
+> See my reply on your cover letter remark.
+Replied there.
+
+> > In the later case it would mean some kind of property that user could use
+> > to turn this on which in its own turn adds more clutter to user tunables
+> > (which is not desirable). So I'm leaning more towards dropping this patch for now.  
+> So what about DT support? Doesn't it make sense to support
+> cold-pluggable DIMMS?
+It would have a sense if initial memory was also dimms, in that case
+for static cases it would be possible to describe numa mapping using
+only -device, but we are far from being ale to do it yet.
+
+So right now, I'm not sure if is there are a compelling reasons for
+cold-plugged dimms, at startup time initial RAM is sufficient to do the job.
+Main goal was to introduce most of infrastructure so that it would be
+easier to add hotplug on top. 
+
+
+> 
+> Thanks
+> 
+> Eric
+> >   
+> >>
+> >> ---
+> >> v7 -> v8:
+> >> - s/NV_DIMM/NVDIMM
+> >> - fix indent
+> >> v6 -> v7:
+> >> - rework the error messages, use a switch/case
+> >> v3 -> v4:
+> >> - git rid of @base and @len in fdt_add_hotpluggable_memory_nodes
+> >>
+> >> v1 -> v2:
+> >> - added qapi_free_MemoryDeviceInfoList and simplify the loop
+> >> ---
+> >>  hw/arm/boot.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+> >>  1 file changed, 42 insertions(+)
+> >>
+> >> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> >> index a830655e1a..4caaf91583 100644
+> >> --- a/hw/arm/boot.c
+> >> +++ b/hw/arm/boot.c
+> >> @@ -19,6 +19,7 @@
+> >>  #include "sysemu/numa.h"
+> >>  #include "hw/boards.h"
+> >>  #include "hw/loader.h"
+> >> +#include "hw/mem/memory-device.h"
+> >>  #include "elf.h"
+> >>  #include "sysemu/device_tree.h"
+> >>  #include "qemu/config-file.h"
+> >> @@ -522,6 +523,41 @@ static void fdt_add_psci_node(void *fdt)
+> >>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> >>  }
+> >>  
+> >> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
+> >> +                                             uint32_t acells, uint32_t scells) {
+> >> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
+> >> +    MemoryDeviceInfo *mi;
+> >> +    int ret = 0;
+> >> +
+> >> +    for (info = info_list; info != NULL; info = info->next) {
+> >> +        mi = info->value;
+> >> +        switch (mi->type) {
+> >> +        case MEMORY_DEVICE_INFO_KIND_DIMM:
+> >> +        {
+> >> +            PCDIMMDeviceInfo *di = mi->u.dimm.data;
+> >> +
+> >> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
+> >> +                                      scells, di->size, di->node);
+> >> +            if (ret) {
+> >> +                fprintf(stderr,
+> >> +                        "couldn't add PCDIMM /memory@%"PRIx64" node\n",
+> >> +                        di->addr);
+> >> +                goto out;
+> >> +            }
+> >> +            break;
+> >> +        }
+> >> +        default:
+> >> +            fprintf(stderr, "%s memory nodes are not yet supported\n",
+> >> +                    MemoryDeviceInfoKind_str(mi->type));
+> >> +            ret = -ENOENT;
+> >> +            goto out;
+> >> +        }
+> >> +    }
+> >> +out:
+> >> +    qapi_free_MemoryDeviceInfoList(info_list);
+> >> +    return ret;
+> >> +}
+> >> +
+> >>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+> >>                   hwaddr addr_limit, AddressSpace *as)
+> >>  {
+> >> @@ -621,6 +657,12 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+> >>          }
+> >>      }
+> >>  
+> >> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
+> >> +    if (rc < 0) {
+> >> +        fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
+> >> +        goto fail;
+> >> +    }
+> >> +
+> >>      rc = fdt_path_offset(fdt, "/chosen");
+> >>      if (rc < 0) {
+> >>          qemu_fdt_add_subnode(fdt, "/chosen");  
+> >   
+

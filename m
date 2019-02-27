@@ -1,67 +1,71 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12078221wrx;
-        Wed, 27 Feb 2019 02:27:57 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IYEj168pJz0yPIWfq64P50qy1CR61HKfFl1mVDB9PbnqbfpQ4+FCQA6Wy4fZq7k88yV7ycO
-X-Received: by 2002:a81:180b:: with SMTP id 11mr394759ywy.431.1551263276980;
-        Wed, 27 Feb 2019 02:27:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551263276; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12090115wrx;
+        Wed, 27 Feb 2019 02:42:42 -0800 (PST)
+X-Google-Smtp-Source: AHgI3Ia4qvAE6pCKJvoi8gyuS7krMMCPrYIjhXSdKNh4759DSqTT8NHOhaC+YEVxuZvT0Y1MoCbg
+X-Received: by 2002:a25:5306:: with SMTP id h6mr1373814ybb.102.1551264162566;
+        Wed, 27 Feb 2019 02:42:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551264162; cv=none;
         d=google.com; s=arc-20160816;
-        b=S3myLGBSW8jxHBmCy/JzNWf9Z2c+UKsev/Bd5zij8zJauEo5WPaJOYpr3IjMFNWJt0
-         D/wfbHigM7/ZC0fQesB8giDlN1HDwiro6CI8tTlB9dcjQIgmTG2w52UxKPR7Sb0mcwEq
-         3MUJ6vsGBnFEeUpjo5OZ798jFGeWIcunRTBZSiNCPBpbgnf5LfccyVTyKOzdmY/GvXYJ
-         uNOOOrU7UWSf2LagjvEOebjF4f1QdJiKYUIUeGYzpu7JxKtskkPGWf4q2+RItts4+Y4G
-         TA3lfh7Zo/sAEkciMWfbo9j/px/3vHgCk/Atg9o1dT56mNscnG+empOObqMAE4l3lJ+t
-         jo7Q==
+        b=RpT6XgUsaOeyLR9eZSCCV+eMUuEBsWXm458WDTGSq/pqeUZXNvixF/WHVT0J5rkR9n
+         49c/iGOEFXkhqypNt7eaUX8id40Sjd7jGAE1oyYrxFNu49R2yLEv+T7RwlREz8V3kgZj
+         9bn2dv32ttqTo4kyx5V4ZR0G/+DldiAxhhaZz9lSMU1Y/jBthnGubiYOj3BoEPZJ7rf2
+         lsHAYq1IGEFg2wfstNevfY/IJ7gY3xUGLlhoknfjRy3nxhgyl5yF6JM2vLYy4zU2fzFG
+         0ZYFZsByLbc8KNHxk9vHikvqrk2g4DpXHDDJ1Ey7Gfe/wxbC31AdhDt39gfLXoVzhnYH
+         Y6xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=BwNkzVreaqS2sr0cm9rbebtKdPE52bBMVWlWY4/CzU8=;
-        b=f/apJLDqHXyd2P6xHO1ISlCJTKeX2OtntqhDl4sPxAlgzywof3t6BQ7oAj5FGhfkoN
-         RrTyhV89jTtjFYRMQW8YnQZ9ThbTpn6lgvfrhclgEh7/8XsgZU0vTbI4WBKghUC64Gyh
-         JulCP3BqcTqSDYQN1He01sKMTp7783hB8BjJLU3snNdR6WwCyKrqJJNiyGMfKre/6eIt
-         DsltDH7UDAOBzMgay3owLW1UvghlETazP2OOA04t2zcUWG+4zqadELM2eJMG6ni7QFt5
-         rS4UYzz9JOwekJ8aRQjjac2clGRQDTyPKb9DM4oBk7CkXgLrKWiqOY1+TxBXnG9piJa2
-         aqUg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=grAzJnUuvu8aiotnFBLAD5iDKsToUszFqQPJkniOz+k=;
+        b=UyeqlOEJtiroW3mYzIyQGUrFIFwhMhZEcX92EbTOqQqzp6DDQE0HWp6NRg2vIYuOC7
+         WsrkAMLMAsK+9wkH6fSradIcxZTqZrQStPvB/izNG9a9nQzoYhaGz2URHkpnEO7LQyKV
+         SCJUr2wM+ukdWCXM8nVBdrOyAiP5RF8FuVxzzY8duj/aIVSVT6cDpjBJJ2GnMJ4vdgip
+         3a7tAgLSRdYSiH/ELDFjstrS6ssXStngAR6rlRIb9d1++i3UBqFftREHNG41c1mtXQyt
+         OrooYwoK4uFwQzV2u9+B8R5Hl36fhWVxUOJkLayI23RW11xID+i6tMqB8eik7MVISVCe
+         Iikg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2si8127933ybk.219.2019.02.27.02.27.56
+        by mx.google.com with ESMTPS id m62si7913658ywc.20.2019.02.27.02.42.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Feb 2019 02:27:56 -0800 (PST)
+        Wed, 27 Feb 2019 02:42:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41472 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:41710 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gywRQ-00032N-Ba
-	for alex.bennee@linaro.org; Wed, 27 Feb 2019 05:27:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54392)
+	id 1gywfi-0003NN-0x
+	for alex.bennee@linaro.org; Wed, 27 Feb 2019 05:42:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57756)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gywRD-00031a-NR
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 05:27:45 -0500
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gywfQ-0003Jy-AW
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 05:42:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gywRB-0006IF-Uw
-	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 05:27:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:14502)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gywfO-00009T-82
+	for qemu-arm@nongnu.org; Wed, 27 Feb 2019 05:42:24 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45347 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gywRB-0006EP-H5; Wed, 27 Feb 2019 05:27:41 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C5F7068571;
-	Wed, 27 Feb 2019 10:27:37 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E675F66D3D;
-	Wed, 27 Feb 2019 10:27:30 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gywfI-0008Pg-A4; Wed, 27 Feb 2019 05:42:18 -0500
+Received: from LHREML714-CAH.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id 60E762DA9750E9BE8CEB;
+	Wed, 27 Feb 2019 10:42:07 +0000 (GMT)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.86]) by
+	LHREML714-CAH.china.huawei.com ([10.201.108.37]) with mapi id
+	14.03.0415.000; Wed, 27 Feb 2019 10:41:46 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Auger Eric <eric.auger@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM expansion
+	and PCDIMM/NVDIMM support
+Thread-Index: AQHUyW1El5IR0Rd+70mvbAClIWqLhaXsBDYAgAAS7QCABDLGAIABgRMAgABL3gCAAD7XgIAAD8oAgAEQ+oCAAATDAIAAAdHg
+Date: Wed, 27 Feb 2019 10:41:45 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8392D6690@lhreml524-mbs.china.huawei.com>
 References: <20190220224003.4420-1-eric.auger@redhat.com>
 	<20190222172742.18c3835a@redhat.com>
 	<c016024e-9f4b-8953-f492-8802675f7e22@redhat.com>
@@ -71,22 +75,19 @@ References: <20190220224003.4420-1-eric.auger@redhat.com>
 	<20190226175653.6ca2b6c4@Igors-MacBook-Pro.local>
 	<c68ba5a2-0d24-c1ad-c2af-c957768abf9f@redhat.com>
 	<20190227111025.4bb39cc7@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
-Date: Wed, 27 Feb 2019 11:27:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <20190227111025.4bb39cc7@redhat.com>
-Content-Type: text/plain; charset=utf-8
+	<116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
+In-Reply-To: <116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Wed, 27 Feb 2019 10:27:38 +0000 (UTC)
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 185.176.76.210
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM
  expansion and PCDIMM/NVDIMM support
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,184 +101,174 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	dgilbert@redhat.com, qemu-arm@nongnu.org,
-	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"david@redhat.com" <david@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"dgilbert@redhat.com" <dgilbert@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1kmf8npbp44A
+X-TUID: FxvP/+Z9dILK
 
-Hi Igor, Shameer,
-
-On 2/27/19 11:10 AM, Igor Mammedov wrote:
-> On Tue, 26 Feb 2019 18:53:24 +0100
-> Auger Eric <eric.auger@redhat.com> wrote:
-> 
->> Hi Igor,
->>
->> On 2/26/19 5:56 PM, Igor Mammedov wrote:
->>> On Tue, 26 Feb 2019 14:11:58 +0100
->>> Auger Eric <eric.auger@redhat.com> wrote:
->>>   
->>>> Hi Igor,
->>>>
->>>> On 2/26/19 9:40 AM, Auger Eric wrote:  
->>>>> Hi Igor,
->>>>>
->>>>> On 2/25/19 10:42 AM, Igor Mammedov wrote:  
->>>>>> On Fri, 22 Feb 2019 18:35:26 +0100
->>>>>> Auger Eric <eric.auger@redhat.com> wrote:
->>>>>>  
->>>>>>> Hi Igor,
->>>>>>>
->>>>>>> On 2/22/19 5:27 PM, Igor Mammedov wrote:  
->>>>>>>> On Wed, 20 Feb 2019 23:39:46 +0100
->>>>>>>> Eric Auger <eric.auger@redhat.com> wrote:
->>>>>>>>  
->>>>>>>>> This series aims to bump the 255GB RAM limit in machvirt and to
->>>>>>>>> support device memory in general, and especially PCDIMM/NVDIMM.
->>>>>>>>>
->>>>>>>>> In machvirt versions < 4.0, the initial RAM starts at 1GB and can
->>>>>>>>> grow up to 255GB. From 256GB onwards we find IO regions such as the
->>>>>>>>> additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
->>>>>>>>> MMIO region. The address map was 1TB large. This corresponded to
->>>>>>>>> the max IPA capacity KVM was able to manage.
->>>>>>>>>
->>>>>>>>> Since 4.20, the host kernel is able to support a larger and dynamic
->>>>>>>>> IPA range. So the guest physical address can go beyond the 1TB. The
->>>>>>>>> max GPA size depends on the host kernel configuration and physical CPUs.
->>>>>>>>>
->>>>>>>>> In this series we use this feature and allow the RAM to grow without
->>>>>>>>> any other limit than the one put by the host kernel.
->>>>>>>>>
->>>>>>>>> The RAM still starts at 1GB. First comes the initial ram (-m) of size
->>>>>>>>> ram_size and then comes the device memory (,maxmem) of size
->>>>>>>>> maxram_size - ram_size. The device memory is potentially hotpluggable
->>>>>>>>> depending on the instantiated memory objects.
->>>>>>>>>
->>>>>>>>> IO regions previously located between 256GB and 1TB are moved after
->>>>>>>>> the RAM. Their offset is dynamically computed, depends on ram_size
->>>>>>>>> and maxram_size. Size alignment is enforced.
->>>>>>>>>
->>>>>>>>> In case maxmem value is inferior to 255GB, the legacy memory map
->>>>>>>>> still is used. The change of memory map becomes effective from 4.0
->>>>>>>>> onwards.
->>>>>>>>>
->>>>>>>>> As we keep the initial RAM at 1GB base address, we do not need to do
->>>>>>>>> invasive changes in the EDK2 FW. It seems nobody is eager to do
->>>>>>>>> that job at the moment.
->>>>>>>>>
->>>>>>>>> Device memory being put just after the initial RAM, it is possible
->>>>>>>>> to get access to this feature while keeping a 1TB address map.
->>>>>>>>>
->>>>>>>>> This series reuses/rebases patches initially submitted by Shameer
->>>>>>>>> in [1] and Kwangwoo in [2] for the PC-DIMM and NV-DIMM parts.
->>>>>>>>>
->>>>>>>>> Functionally, the series is split into 3 parts:
->>>>>>>>> 1) bump of the initial RAM limit [1 - 9] and change in
->>>>>>>>>    the memory map  
->>>>>>>>  
->>>>>>>>> 2) Support of PC-DIMM [10 - 13]  
->>>>>>>> Is this part complete ACPI wise (for coldplug)? I haven't noticed
->>>>>>>> DSDT AML here no E820 changes, so ACPI wise pc-dimm shouldn't be
->>>>>>>> visible to the guest. It might be that DT is masking problem
->>>>>>>> but well, that won't work on ACPI only guests.  
->>>>>>>
->>>>>>> guest /proc/meminfo or "lshw -class memory" reflects the amount of mem
->>>>>>> added with the DIMM slots.  
->>>>>> Question is how does it get there? Does it come from DT or from firmware
->>>>>> via UEFI interfaces?
->>>>>>  
->>>>>>> So it looks fine to me. Isn't E820 a pure x86 matter?  
->>>>>> sorry for misleading, I've meant is UEFI GetMemoryMap().
->>>>>> On x86, I'm wary of adding PC-DIMMs to E802 which then gets exposed
->>>>>> via UEFI GetMemoryMap() as guest kernel might start using it as normal
->>>>>> memory early at boot and later put that memory into zone normal and hence
->>>>>> make it non-hot-un-pluggable. The same concerns apply to DT based means
->>>>>> of discovery.
->>>>>> (That's guest issue but it's easy to workaround it not putting hotpluggable
->>>>>> memory into UEFI GetMemoryMap() or DT and let DSDT describe it properly)
->>>>>> That way memory doesn't get (ab)used by firmware or early boot kernel stages
->>>>>> and doesn't get locked up.
->>>>>>  
->>>>>>> What else would you expect in the dsdt?  
->>>>>> Memory device descriptions, look for code that adds PNP0C80 with _CRS
->>>>>> describing memory ranges  
->>>>>
->>>>> OK thank you for the explanations. I will work on PNP0C80 addition then.
->>>>> Does it mean that in ACPI mode we must not output DT hotplug memory
->>>>> nodes or assuming that PNP0C80 is properly described, it will "override"
->>>>> DT description?  
->>>>
->>>> After further investigations, I think the pieces you pointed out are
->>>> added by Shameer's series, ie. through the build_memory_hotplug_aml()
->>>> call. So I suggest we separate the concerns: this series brings support
->>>> for DIMM coldplug. hotplug, including all the relevant ACPI structures
->>>> will be added later on by Shameer.  
->>>
->>> Maybe we should not put pc-dimms in DT for this series until it gets clear
->>> if it doesn't conflict with ACPI in some way.  
->>
->> I guess you mean removing the DT hotpluggable memory nodes only in ACPI
->> mode? Otherwise you simply remove the DIMM feature, right?
-> Something like this so DT won't get in conflict with ACPI.
-> Only we don't have a switch for it something like, -machine fdt=on (with default off)
->  
->> I double checked and if you remove the hotpluggable memory DT nodes in
->> ACPI mode:
->> - you do not see the PCDIMM slots in guest /proc/meminfo anymore. So I
->> guess you're right, if the DT nodes are available, that memory is
->> considered as not unpluggable by the guest.
->> - You can see the NVDIMM slots using ndctl list -u. You can mount a DAX
->> system.
->>
->> Hotplug/unplug is clearly not supported by this series and any attempt
->> results in "memory hotplug is not supported". Is it really an issue if
->> the guest does not consider DIMM slots as not hot-unpluggable memory? I
->> am not even sure the guest kernel would support to unplug that memory.
->>
->> In case we want all ACPI tables to be ready for making this memory seen
->> as hot-unpluggable we need some Shameer's patches on top of this series.
-> May be we should push for this way (into 4.0), it's just a several patches
-> after all or even merge them in your series (I'd guess it would need to be
-> rebased on top of your latest work)
-
-Shameer, would you agree if we merge PATCH 1 of your RFC hotplug series
-(without the reduced hw_reduced_acpi flag) in this series and isolate in
-a second PATCH the acpi_memory_hotplug_init() + build_memory_hotplug_aml
-called in virt code?
-
-Then would remain the GED/GPIO actual integration.
-
-Thanks
-
-Eric
->  
->> Also don't DIMM slots already make sense in DT mode. Usually we accept
->> to add one feature in DT and then in ACPI. For instance we can benefit
-> usually it doesn't conflict with each other (at least I'm not aware of it)
-> but I see a problem with in this case.
-> 
->> from nvdimm in dt mode right? So, considering an incremental approach I
->> would be in favour of keeping the DT nodes.
-> I'd guess it is the same as for DIMMs, ACPI support for NVDIMMs is much
-> more versatile.
-> 
-> I consider target application of arm/virt as a board that's used to
-> run in production generic ACPI capable guest in most use cases and
-> various DT only guests as secondary ones. It's hard to make
-> both usecases be happy with defaults (that's probably  one of the
-> reasons why 'sbsa' board is being added).
-> 
-> So I'd give priority to ACPI based arm/virt versus DT when defaults are
-> considered.
-> 
->> Thanks
->>
->> Eric
->>>
->>>
->>>
->>>   
-> 
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBBdWdlciBF
+cmljIFttYWlsdG86ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50OiAyNyBGZWJydWFyeSAy
+MDE5IDEwOjI3DQo+IFRvOiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29tPg0KPiBD
+YzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBkcmpvbmVzQHJlZGhhdC5jb207IGRhdmlkQHJl
+ZGhhdC5jb207DQo+IGRnaWxiZXJ0QHJlZGhhdC5jb207IFNoYW1lZXJhbGkgS29sb3RodW0gVGhv
+ZGkNCj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47IHFlbXUtZGV2ZWxA
+bm9uZ251Lm9yZzsNCj4gcWVtdS1hcm1Abm9uZ251Lm9yZzsgZXJpYy5hdWdlci5wcm9AZ21haWwu
+Y29tOw0KPiBkYXZpZEBnaWJzb24uZHJvcGJlYXIuaWQuYXUNCj4gU3ViamVjdDogUmU6IFtRZW11
+LWRldmVsXSBbUEFUQ0ggdjcgMDAvMTddIEFSTSB2aXJ0OiBJbml0aWFsIFJBTSBleHBhbnNpb24N
+Cj4gYW5kIFBDRElNTS9OVkRJTU0gc3VwcG9ydA0KPiANCj4gSGkgSWdvciwgU2hhbWVlciwNCj4g
+DQo+IE9uIDIvMjcvMTkgMTE6MTAgQU0sIElnb3IgTWFtbWVkb3Ygd3JvdGU6DQo+ID4gT24gVHVl
+LCAyNiBGZWIgMjAxOSAxODo1MzoyNCArMDEwMA0KPiA+IEF1Z2VyIEVyaWMgPGVyaWMuYXVnZXJA
+cmVkaGF0LmNvbT4gd3JvdGU6DQo+ID4NCj4gPj4gSGkgSWdvciwNCj4gPj4NCj4gPj4gT24gMi8y
+Ni8xOSA1OjU2IFBNLCBJZ29yIE1hbW1lZG92IHdyb3RlOg0KPiA+Pj4gT24gVHVlLCAyNiBGZWIg
+MjAxOSAxNDoxMTo1OCArMDEwMA0KPiA+Pj4gQXVnZXIgRXJpYyA8ZXJpYy5hdWdlckByZWRoYXQu
+Y29tPiB3cm90ZToNCj4gPj4+DQo+ID4+Pj4gSGkgSWdvciwNCj4gPj4+Pg0KPiA+Pj4+IE9uIDIv
+MjYvMTkgOTo0MCBBTSwgQXVnZXIgRXJpYyB3cm90ZToNCj4gPj4+Pj4gSGkgSWdvciwNCj4gPj4+
+Pj4NCj4gPj4+Pj4gT24gMi8yNS8xOSAxMDo0MiBBTSwgSWdvciBNYW1tZWRvdiB3cm90ZToNCj4g
+Pj4+Pj4+IE9uIEZyaSwgMjIgRmViIDIwMTkgMTg6MzU6MjYgKzAxMDANCj4gPj4+Pj4+IEF1Z2Vy
+IEVyaWMgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4gd3JvdGU6DQo+ID4+Pj4+Pg0KPiA+Pj4+Pj4+
+IEhpIElnb3IsDQo+ID4+Pj4+Pj4NCj4gPj4+Pj4+PiBPbiAyLzIyLzE5IDU6MjcgUE0sIElnb3Ig
+TWFtbWVkb3Ygd3JvdGU6DQo+ID4+Pj4+Pj4+IE9uIFdlZCwgMjAgRmViIDIwMTkgMjM6Mzk6NDYg
+KzAxMDANCj4gPj4+Pj4+Pj4gRXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPiB3cm90
+ZToNCj4gPj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+IFRoaXMgc2VyaWVzIGFpbXMgdG8gYnVtcCB0aGUg
+MjU1R0IgUkFNIGxpbWl0IGluIG1hY2h2aXJ0IGFuZCB0bw0KPiA+Pj4+Pj4+Pj4gc3VwcG9ydCBk
+ZXZpY2UgbWVtb3J5IGluIGdlbmVyYWwsIGFuZCBlc3BlY2lhbGx5DQo+IFBDRElNTS9OVkRJTU0u
+DQo+ID4+Pj4+Pj4+Pg0KPiA+Pj4+Pj4+Pj4gSW4gbWFjaHZpcnQgdmVyc2lvbnMgPCA0LjAsIHRo
+ZSBpbml0aWFsIFJBTSBzdGFydHMgYXQgMUdCIGFuZCBjYW4NCj4gPj4+Pj4+Pj4+IGdyb3cgdXAg
+dG8gMjU1R0IuIEZyb20gMjU2R0Igb253YXJkcyB3ZSBmaW5kIElPIHJlZ2lvbnMgc3VjaCBhcw0K
+PiB0aGUNCj4gPj4+Pj4+Pj4+IGFkZGl0aW9uYWwgR0lDdjMgUkRJU1QgcmVnaW9uLCBoaWdoIFBD
+SWUgRUNBTSByZWdpb24gYW5kIGhpZ2gNCj4gUENJZQ0KPiA+Pj4+Pj4+Pj4gTU1JTyByZWdpb24u
+IFRoZSBhZGRyZXNzIG1hcCB3YXMgMVRCIGxhcmdlLiBUaGlzIGNvcnJlc3BvbmRlZA0KPiB0bw0K
+PiA+Pj4+Pj4+Pj4gdGhlIG1heCBJUEEgY2FwYWNpdHkgS1ZNIHdhcyBhYmxlIHRvIG1hbmFnZS4N
+Cj4gPj4+Pj4+Pj4+DQo+ID4+Pj4+Pj4+PiBTaW5jZSA0LjIwLCB0aGUgaG9zdCBrZXJuZWwgaXMg
+YWJsZSB0byBzdXBwb3J0IGEgbGFyZ2VyIGFuZCBkeW5hbWljDQo+ID4+Pj4+Pj4+PiBJUEEgcmFu
+Z2UuIFNvIHRoZSBndWVzdCBwaHlzaWNhbCBhZGRyZXNzIGNhbiBnbyBiZXlvbmQgdGhlIDFUQi4N
+Cj4gVGhlDQo+ID4+Pj4+Pj4+PiBtYXggR1BBIHNpemUgZGVwZW5kcyBvbiB0aGUgaG9zdCBrZXJu
+ZWwgY29uZmlndXJhdGlvbiBhbmQgcGh5c2ljYWwNCj4gQ1BVcy4NCj4gPj4+Pj4+Pj4+DQo+ID4+
+Pj4+Pj4+PiBJbiB0aGlzIHNlcmllcyB3ZSB1c2UgdGhpcyBmZWF0dXJlIGFuZCBhbGxvdyB0aGUg
+UkFNIHRvIGdyb3cNCj4gd2l0aG91dA0KPiA+Pj4+Pj4+Pj4gYW55IG90aGVyIGxpbWl0IHRoYW4g
+dGhlIG9uZSBwdXQgYnkgdGhlIGhvc3Qga2VybmVsLg0KPiA+Pj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+
+IFRoZSBSQU0gc3RpbGwgc3RhcnRzIGF0IDFHQi4gRmlyc3QgY29tZXMgdGhlIGluaXRpYWwgcmFt
+ICgtbSkgb2Ygc2l6ZQ0KPiA+Pj4+Pj4+Pj4gcmFtX3NpemUgYW5kIHRoZW4gY29tZXMgdGhlIGRl
+dmljZSBtZW1vcnkgKCxtYXhtZW0pIG9mIHNpemUNCj4gPj4+Pj4+Pj4+IG1heHJhbV9zaXplIC0g
+cmFtX3NpemUuIFRoZSBkZXZpY2UgbWVtb3J5IGlzIHBvdGVudGlhbGx5DQo+IGhvdHBsdWdnYWJs
+ZQ0KPiA+Pj4+Pj4+Pj4gZGVwZW5kaW5nIG9uIHRoZSBpbnN0YW50aWF0ZWQgbWVtb3J5IG9iamVj
+dHMuDQo+ID4+Pj4+Pj4+Pg0KPiA+Pj4+Pj4+Pj4gSU8gcmVnaW9ucyBwcmV2aW91c2x5IGxvY2F0
+ZWQgYmV0d2VlbiAyNTZHQiBhbmQgMVRCIGFyZSBtb3ZlZA0KPiBhZnRlcg0KPiA+Pj4+Pj4+Pj4g
+dGhlIFJBTS4gVGhlaXIgb2Zmc2V0IGlzIGR5bmFtaWNhbGx5IGNvbXB1dGVkLCBkZXBlbmRzIG9u
+DQo+IHJhbV9zaXplDQo+ID4+Pj4+Pj4+PiBhbmQgbWF4cmFtX3NpemUuIFNpemUgYWxpZ25tZW50
+IGlzIGVuZm9yY2VkLg0KPiA+Pj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+IEluIGNhc2UgbWF4bWVtIHZh
+bHVlIGlzIGluZmVyaW9yIHRvIDI1NUdCLCB0aGUgbGVnYWN5IG1lbW9yeQ0KPiBtYXANCj4gPj4+
+Pj4+Pj4+IHN0aWxsIGlzIHVzZWQuIFRoZSBjaGFuZ2Ugb2YgbWVtb3J5IG1hcCBiZWNvbWVzIGVm
+ZmVjdGl2ZSBmcm9tIDQuMA0KPiA+Pj4+Pj4+Pj4gb253YXJkcy4NCj4gPj4+Pj4+Pj4+DQo+ID4+
+Pj4+Pj4+PiBBcyB3ZSBrZWVwIHRoZSBpbml0aWFsIFJBTSBhdCAxR0IgYmFzZSBhZGRyZXNzLCB3
+ZSBkbyBub3QgbmVlZCB0bw0KPiBkbw0KPiA+Pj4+Pj4+Pj4gaW52YXNpdmUgY2hhbmdlcyBpbiB0
+aGUgRURLMiBGVy4gSXQgc2VlbXMgbm9ib2R5IGlzIGVhZ2VyIHRvIGRvDQo+ID4+Pj4+Pj4+PiB0
+aGF0IGpvYiBhdCB0aGUgbW9tZW50Lg0KPiA+Pj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+IERldmljZSBt
+ZW1vcnkgYmVpbmcgcHV0IGp1c3QgYWZ0ZXIgdGhlIGluaXRpYWwgUkFNLCBpdCBpcyBwb3NzaWJs
+ZQ0KPiA+Pj4+Pj4+Pj4gdG8gZ2V0IGFjY2VzcyB0byB0aGlzIGZlYXR1cmUgd2hpbGUga2VlcGlu
+ZyBhIDFUQiBhZGRyZXNzIG1hcC4NCj4gPj4+Pj4+Pj4+DQo+ID4+Pj4+Pj4+PiBUaGlzIHNlcmll
+cyByZXVzZXMvcmViYXNlcyBwYXRjaGVzIGluaXRpYWxseSBzdWJtaXR0ZWQgYnkgU2hhbWVlcg0K
+PiA+Pj4+Pj4+Pj4gaW4gWzFdIGFuZCBLd2FuZ3dvbyBpbiBbMl0gZm9yIHRoZSBQQy1ESU1NIGFu
+ZCBOVi1ESU1NIHBhcnRzLg0KPiA+Pj4+Pj4+Pj4NCj4gPj4+Pj4+Pj4+IEZ1bmN0aW9uYWxseSwg
+dGhlIHNlcmllcyBpcyBzcGxpdCBpbnRvIDMgcGFydHM6DQo+ID4+Pj4+Pj4+PiAxKSBidW1wIG9m
+IHRoZSBpbml0aWFsIFJBTSBsaW1pdCBbMSAtIDldIGFuZCBjaGFuZ2UgaW4NCj4gPj4+Pj4+Pj4+
+ICAgIHRoZSBtZW1vcnkgbWFwDQo+ID4+Pj4+Pj4+DQo+ID4+Pj4+Pj4+PiAyKSBTdXBwb3J0IG9m
+IFBDLURJTU0gWzEwIC0gMTNdDQo+ID4+Pj4+Pj4+IElzIHRoaXMgcGFydCBjb21wbGV0ZSBBQ1BJ
+IHdpc2UgKGZvciBjb2xkcGx1Zyk/IEkgaGF2ZW4ndCBub3RpY2VkDQo+ID4+Pj4+Pj4+IERTRFQg
+QU1MIGhlcmUgbm8gRTgyMCBjaGFuZ2VzLCBzbyBBQ1BJIHdpc2UgcGMtZGltbSBzaG91bGRuJ3Qg
+YmUNCj4gPj4+Pj4+Pj4gdmlzaWJsZSB0byB0aGUgZ3Vlc3QuIEl0IG1pZ2h0IGJlIHRoYXQgRFQg
+aXMgbWFza2luZyBwcm9ibGVtDQo+ID4+Pj4+Pj4+IGJ1dCB3ZWxsLCB0aGF0IHdvbid0IHdvcmsg
+b24gQUNQSSBvbmx5IGd1ZXN0cy4NCj4gPj4+Pj4+Pg0KPiA+Pj4+Pj4+IGd1ZXN0IC9wcm9jL21l
+bWluZm8gb3IgImxzaHcgLWNsYXNzIG1lbW9yeSIgcmVmbGVjdHMgdGhlIGFtb3VudCBvZg0KPiBt
+ZW0NCj4gPj4+Pj4+PiBhZGRlZCB3aXRoIHRoZSBESU1NIHNsb3RzLg0KPiA+Pj4+Pj4gUXVlc3Rp
+b24gaXMgaG93IGRvZXMgaXQgZ2V0IHRoZXJlPyBEb2VzIGl0IGNvbWUgZnJvbSBEVCBvciBmcm9t
+DQo+IGZpcm13YXJlDQo+ID4+Pj4+PiB2aWEgVUVGSSBpbnRlcmZhY2VzPw0KPiA+Pj4+Pj4NCj4g
+Pj4+Pj4+PiBTbyBpdCBsb29rcyBmaW5lIHRvIG1lLiBJc24ndCBFODIwIGEgcHVyZSB4ODYgbWF0
+dGVyPw0KPiA+Pj4+Pj4gc29ycnkgZm9yIG1pc2xlYWRpbmcsIEkndmUgbWVhbnQgaXMgVUVGSSBH
+ZXRNZW1vcnlNYXAoKS4NCj4gPj4+Pj4+IE9uIHg4NiwgSSdtIHdhcnkgb2YgYWRkaW5nIFBDLURJ
+TU1zIHRvIEU4MDIgd2hpY2ggdGhlbiBnZXRzIGV4cG9zZWQNCj4gPj4+Pj4+IHZpYSBVRUZJIEdl
+dE1lbW9yeU1hcCgpIGFzIGd1ZXN0IGtlcm5lbCBtaWdodCBzdGFydCB1c2luZyBpdCBhcw0KPiBu
+b3JtYWwNCj4gPj4+Pj4+IG1lbW9yeSBlYXJseSBhdCBib290IGFuZCBsYXRlciBwdXQgdGhhdCBt
+ZW1vcnkgaW50byB6b25lIG5vcm1hbCBhbmQNCj4gaGVuY2UNCj4gPj4+Pj4+IG1ha2UgaXQgbm9u
+LWhvdC11bi1wbHVnZ2FibGUuIFRoZSBzYW1lIGNvbmNlcm5zIGFwcGx5IHRvIERUIGJhc2VkDQo+
+IG1lYW5zDQo+ID4+Pj4+PiBvZiBkaXNjb3ZlcnkuDQo+ID4+Pj4+PiAoVGhhdCdzIGd1ZXN0IGlz
+c3VlIGJ1dCBpdCdzIGVhc3kgdG8gd29ya2Fyb3VuZCBpdCBub3QgcHV0dGluZw0KPiBob3RwbHVn
+Z2FibGUNCj4gPj4+Pj4+IG1lbW9yeSBpbnRvIFVFRkkgR2V0TWVtb3J5TWFwKCkgb3IgRFQgYW5k
+IGxldCBEU0RUIGRlc2NyaWJlIGl0DQo+IHByb3Blcmx5KQ0KPiA+Pj4+Pj4gVGhhdCB3YXkgbWVt
+b3J5IGRvZXNuJ3QgZ2V0IChhYil1c2VkIGJ5IGZpcm13YXJlIG9yIGVhcmx5IGJvb3QNCj4ga2Vy
+bmVsIHN0YWdlcw0KPiA+Pj4+Pj4gYW5kIGRvZXNuJ3QgZ2V0IGxvY2tlZCB1cC4NCj4gPj4+Pj4+
+DQo+ID4+Pj4+Pj4gV2hhdCBlbHNlIHdvdWxkIHlvdSBleHBlY3QgaW4gdGhlIGRzZHQ/DQo+ID4+
+Pj4+PiBNZW1vcnkgZGV2aWNlIGRlc2NyaXB0aW9ucywgbG9vayBmb3IgY29kZSB0aGF0IGFkZHMg
+UE5QMEM4MCB3aXRoDQo+IF9DUlMNCj4gPj4+Pj4+IGRlc2NyaWJpbmcgbWVtb3J5IHJhbmdlcw0K
+PiA+Pj4+Pg0KPiA+Pj4+PiBPSyB0aGFuayB5b3UgZm9yIHRoZSBleHBsYW5hdGlvbnMuIEkgd2ls
+bCB3b3JrIG9uIFBOUDBDODAgYWRkaXRpb24gdGhlbi4NCj4gPj4+Pj4gRG9lcyBpdCBtZWFuIHRo
+YXQgaW4gQUNQSSBtb2RlIHdlIG11c3Qgbm90IG91dHB1dCBEVCBob3RwbHVnIG1lbW9yeQ0KPiA+
+Pj4+PiBub2RlcyBvciBhc3N1bWluZyB0aGF0IFBOUDBDODAgaXMgcHJvcGVybHkgZGVzY3JpYmVk
+LCBpdCB3aWxsICJvdmVycmlkZSINCj4gPj4+Pj4gRFQgZGVzY3JpcHRpb24/DQo+ID4+Pj4NCj4g
+Pj4+PiBBZnRlciBmdXJ0aGVyIGludmVzdGlnYXRpb25zLCBJIHRoaW5rIHRoZSBwaWVjZXMgeW91
+IHBvaW50ZWQgb3V0IGFyZQ0KPiA+Pj4+IGFkZGVkIGJ5IFNoYW1lZXIncyBzZXJpZXMsIGllLiB0
+aHJvdWdoIHRoZSBidWlsZF9tZW1vcnlfaG90cGx1Z19hbWwoKQ0KPiA+Pj4+IGNhbGwuIFNvIEkg
+c3VnZ2VzdCB3ZSBzZXBhcmF0ZSB0aGUgY29uY2VybnM6IHRoaXMgc2VyaWVzIGJyaW5ncyBzdXBw
+b3J0DQo+ID4+Pj4gZm9yIERJTU0gY29sZHBsdWcuIGhvdHBsdWcsIGluY2x1ZGluZyBhbGwgdGhl
+IHJlbGV2YW50IEFDUEkgc3RydWN0dXJlcw0KPiA+Pj4+IHdpbGwgYmUgYWRkZWQgbGF0ZXIgb24g
+YnkgU2hhbWVlci4NCj4gPj4+DQo+ID4+PiBNYXliZSB3ZSBzaG91bGQgbm90IHB1dCBwYy1kaW1t
+cyBpbiBEVCBmb3IgdGhpcyBzZXJpZXMgdW50aWwgaXQgZ2V0cyBjbGVhcg0KPiA+Pj4gaWYgaXQg
+ZG9lc24ndCBjb25mbGljdCB3aXRoIEFDUEkgaW4gc29tZSB3YXkuDQo+ID4+DQo+ID4+IEkgZ3Vl
+c3MgeW91IG1lYW4gcmVtb3ZpbmcgdGhlIERUIGhvdHBsdWdnYWJsZSBtZW1vcnkgbm9kZXMgb25s
+eSBpbiBBQ1BJDQo+ID4+IG1vZGU/IE90aGVyd2lzZSB5b3Ugc2ltcGx5IHJlbW92ZSB0aGUgRElN
+TSBmZWF0dXJlLCByaWdodD8NCj4gPiBTb21ldGhpbmcgbGlrZSB0aGlzIHNvIERUIHdvbid0IGdl
+dCBpbiBjb25mbGljdCB3aXRoIEFDUEkuDQo+ID4gT25seSB3ZSBkb24ndCBoYXZlIGEgc3dpdGNo
+IGZvciBpdCBzb21ldGhpbmcgbGlrZSwgLW1hY2hpbmUgZmR0PW9uICh3aXRoDQo+IGRlZmF1bHQg
+b2ZmKQ0KPiA+DQo+ID4+IEkgZG91YmxlIGNoZWNrZWQgYW5kIGlmIHlvdSByZW1vdmUgdGhlIGhv
+dHBsdWdnYWJsZSBtZW1vcnkgRFQgbm9kZXMgaW4NCj4gPj4gQUNQSSBtb2RlOg0KPiA+PiAtIHlv
+dSBkbyBub3Qgc2VlIHRoZSBQQ0RJTU0gc2xvdHMgaW4gZ3Vlc3QgL3Byb2MvbWVtaW5mbyBhbnlt
+b3JlLiBTbyBJDQo+ID4+IGd1ZXNzIHlvdSdyZSByaWdodCwgaWYgdGhlIERUIG5vZGVzIGFyZSBh
+dmFpbGFibGUsIHRoYXQgbWVtb3J5IGlzDQo+ID4+IGNvbnNpZGVyZWQgYXMgbm90IHVucGx1Z2dh
+YmxlIGJ5IHRoZSBndWVzdC4NCj4gPj4gLSBZb3UgY2FuIHNlZSB0aGUgTlZESU1NIHNsb3RzIHVz
+aW5nIG5kY3RsIGxpc3QgLXUuIFlvdSBjYW4gbW91bnQgYSBEQVgNCj4gPj4gc3lzdGVtLg0KPiA+
+Pg0KPiA+PiBIb3RwbHVnL3VucGx1ZyBpcyBjbGVhcmx5IG5vdCBzdXBwb3J0ZWQgYnkgdGhpcyBz
+ZXJpZXMgYW5kIGFueSBhdHRlbXB0DQo+ID4+IHJlc3VsdHMgaW4gIm1lbW9yeSBob3RwbHVnIGlz
+IG5vdCBzdXBwb3J0ZWQiLiBJcyBpdCByZWFsbHkgYW4gaXNzdWUgaWYNCj4gPj4gdGhlIGd1ZXN0
+IGRvZXMgbm90IGNvbnNpZGVyIERJTU0gc2xvdHMgYXMgbm90IGhvdC11bnBsdWdnYWJsZSBtZW1v
+cnk/IEkNCj4gPj4gYW0gbm90IGV2ZW4gc3VyZSB0aGUgZ3Vlc3Qga2VybmVsIHdvdWxkIHN1cHBv
+cnQgdG8gdW5wbHVnIHRoYXQgbWVtb3J5Lg0KPiA+Pg0KPiA+PiBJbiBjYXNlIHdlIHdhbnQgYWxs
+IEFDUEkgdGFibGVzIHRvIGJlIHJlYWR5IGZvciBtYWtpbmcgdGhpcyBtZW1vcnkgc2Vlbg0KPiA+
+PiBhcyBob3QtdW5wbHVnZ2FibGUgd2UgbmVlZCBzb21lIFNoYW1lZXIncyBwYXRjaGVzIG9uIHRv
+cCBvZiB0aGlzIHNlcmllcy4NCj4gPiBNYXkgYmUgd2Ugc2hvdWxkIHB1c2ggZm9yIHRoaXMgd2F5
+IChpbnRvIDQuMCksIGl0J3MganVzdCBhIHNldmVyYWwgcGF0Y2hlcw0KPiA+IGFmdGVyIGFsbCBv
+ciBldmVuIG1lcmdlIHRoZW0gaW4geW91ciBzZXJpZXMgKEknZCBndWVzcyBpdCB3b3VsZCBuZWVk
+IHRvIGJlDQo+ID4gcmViYXNlZCBvbiB0b3Agb2YgeW91ciBsYXRlc3Qgd29yaykNCj4gDQo+IFNo
+YW1lZXIsIHdvdWxkIHlvdSBhZ3JlZSBpZiB3ZSBtZXJnZSBQQVRDSCAxIG9mIHlvdXIgUkZDIGhv
+dHBsdWcgc2VyaWVzDQo+ICh3aXRob3V0IHRoZSByZWR1Y2VkIGh3X3JlZHVjZWRfYWNwaSBmbGFn
+KSBpbiB0aGlzIHNlcmllcyBhbmQgaXNvbGF0ZSBpbg0KPiBhIHNlY29uZCBQQVRDSCB0aGUgYWNw
+aV9tZW1vcnlfaG90cGx1Z19pbml0KCkgKyBidWlsZF9tZW1vcnlfaG90cGx1Z19hbWwNCj4gY2Fs
+bGVkIGluIHZpcnQgY29kZT8NCg0KU3VyZSwgdGhhdOKAmXMgZmluZSB3aXRoIG1lLiBTbyB3aGF0
+IHdvdWxkIHlvdSB1c2UgZm9yIHRoZSBldmVudF9oYW5kbGVyX21ldGhvZCBpbg0KYnVpbGRfbWVt
+b3J5X2hvdHBsdWdfYW1sKCk/IEdQTzAgZGV2aWNlPw0KDQpUaGFua3MsDQpTaGFtZWVyDQoNCj4g
+VGhlbiB3b3VsZCByZW1haW4gdGhlIEdFRC9HUElPIGFjdHVhbCBpbnRlZ3JhdGlvbi4NCj4gDQo+
+IFRoYW5rcw0KPiANCj4gRXJpYw0KPiA+DQo+ID4+IEFsc28gZG9uJ3QgRElNTSBzbG90cyBhbHJl
+YWR5IG1ha2Ugc2Vuc2UgaW4gRFQgbW9kZS4gVXN1YWxseSB3ZSBhY2NlcHQNCj4gPj4gdG8gYWRk
+IG9uZSBmZWF0dXJlIGluIERUIGFuZCB0aGVuIGluIEFDUEkuIEZvciBpbnN0YW5jZSB3ZSBjYW4g
+YmVuZWZpdA0KPiA+IHVzdWFsbHkgaXQgZG9lc24ndCBjb25mbGljdCB3aXRoIGVhY2ggb3RoZXIg
+KGF0IGxlYXN0IEknbSBub3QgYXdhcmUgb2YgaXQpDQo+ID4gYnV0IEkgc2VlIGEgcHJvYmxlbSB3
+aXRoIGluIHRoaXMgY2FzZS4NCj4gPg0KPiA+PiBmcm9tIG52ZGltbSBpbiBkdCBtb2RlIHJpZ2h0
+PyBTbywgY29uc2lkZXJpbmcgYW4gaW5jcmVtZW50YWwgYXBwcm9hY2ggSQ0KPiA+PiB3b3VsZCBi
+ZSBpbiBmYXZvdXIgb2Yga2VlcGluZyB0aGUgRFQgbm9kZXMuDQo+ID4gSSdkIGd1ZXNzIGl0IGlz
+IHRoZSBzYW1lIGFzIGZvciBESU1NcywgQUNQSSBzdXBwb3J0IGZvciBOVkRJTU1zIGlzIG11Y2gN
+Cj4gPiBtb3JlIHZlcnNhdGlsZS4NCj4gPg0KPiA+IEkgY29uc2lkZXIgdGFyZ2V0IGFwcGxpY2F0
+aW9uIG9mIGFybS92aXJ0IGFzIGEgYm9hcmQgdGhhdCdzIHVzZWQgdG8NCj4gPiBydW4gaW4gcHJv
+ZHVjdGlvbiBnZW5lcmljIEFDUEkgY2FwYWJsZSBndWVzdCBpbiBtb3N0IHVzZSBjYXNlcyBhbmQN
+Cj4gPiB2YXJpb3VzIERUIG9ubHkgZ3Vlc3RzIGFzIHNlY29uZGFyeSBvbmVzLiBJdCdzIGhhcmQg
+dG8gbWFrZQ0KPiA+IGJvdGggdXNlY2FzZXMgYmUgaGFwcHkgd2l0aCBkZWZhdWx0cyAodGhhdCdz
+IHByb2JhYmx5ICBvbmUgb2YgdGhlDQo+ID4gcmVhc29ucyB3aHkgJ3Nic2EnIGJvYXJkIGlzIGJl
+aW5nIGFkZGVkKS4NCj4gPg0KPiA+IFNvIEknZCBnaXZlIHByaW9yaXR5IHRvIEFDUEkgYmFzZWQg
+YXJtL3ZpcnQgdmVyc3VzIERUIHdoZW4gZGVmYXVsdHMgYXJlDQo+ID4gY29uc2lkZXJlZC4NCj4g
+Pg0KPiA+PiBUaGFua3MNCj4gPj4NCj4gPj4gRXJpYw0KPiA+Pj4NCj4gPj4+DQo+ID4+Pg0KPiA+
+Pj4NCj4gPg0K

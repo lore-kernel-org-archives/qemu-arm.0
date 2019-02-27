@@ -1,89 +1,65 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12516213wrx;
-        Wed, 27 Feb 2019 09:56:09 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZTnq6Ktv62Mbsq9oNMk+XJed0idC9+0CPNwKSg0dinxRej3vvKlEAMgWTaMe+HGj01ooDv
-X-Received: by 2002:a81:1a03:: with SMTP id a3mr2100555ywa.429.1551290169853;
-        Wed, 27 Feb 2019 09:56:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551290169; cv=none;
-        d=google.com; s=arc-20160816;
-        b=hwmixtCmw/iU4sYe81IQ00FuvXVQ1AlAxr/GNwAMb1PMrYc+s3oUgxYvAzTd9NNeq6
-         IaMSrR0QUMgaXW/0XP8ZqXFU8DSZRdjTUPmP8Y+eunkJaJS9MrpSrlGJOH9g9cX6yG6K
-         HFZItjZy5xBL8btXHER6iFYJdyWzREpvTP0SSGQDIEYg7DyRx+PIACIattYc9SEYvpn4
-         zigEWWIVQNa2vSO0iyZJBq5hoiWFt3N8oC6YIVtLDJIV41GJkOuXQ5NAWmO6CW2yvPf1
-         i/ve/HXc6c4T26hHcHm8fe5NqHugXdEJCTKv+G74GQ+AY9rgx4u9x2ABMtva6iJL0OJ9
-         QChQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=6tQEVhUgQODjh4qEvVze7CC+cjgxj7TioHXhE95vXDU=;
-        b=bk4P6big9V8b+ljH5xBubL8ysPiqyEjAWqcOvE9uoQ0qEwDoFKA9RSGjcQmCwstnt2
-         UVyjfeDVc4E8QFsTNn+Qkric/2pZSqGCeVBSXk5NOods6qKDGFiHuhJQgHTprBPZPwJq
-         BcwU/csvMcAiZSgvAKli6XYY7xIb4q0dFzMSA1868AtCNpzBQZ1ByDg34o/ShmJ65/sH
-         V0B8av0AhlNer68CYzyMfD8dngE19lCyp9CqNh/EeRksvrxtKO7Kb/NbtFEyht0NsssO
-         cia/xQuQwK9DxA5MHxYrZ/i3IMSYpF4LUu5UUcgHOEwuhFmawXAIHZx+6LpP7MXt/RGb
-         OuUw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp12519676wrx;
+        Wed, 27 Feb 2019 10:00:09 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ79iW9t0V6QtBXxBSEJrp+4JeiZIpWRy6qnYf/38Qdhr/0fXSLnOdQ46gz/Y4n2U6jYbzq
+X-Received: by 2002:a25:d20d:: with SMTP id j13mr3125661ybg.417.1551290408862;
+        Wed, 27 Feb 2019 10:00:08 -0800 (PST)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d130si3115976ywh.216.2019.02.27.09.56.09
+        by mx.google.com with ESMTPS id o84si9333805ywd.343.2019.02.27.10.00.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 27 Feb 2019 09:56:09 -0800 (PST)
+        Wed, 27 Feb 2019 10:00:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:48470 helo=lists.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:48514 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gz3RB-0002NS-9n
-	for alex.bennee@linaro.org; Wed, 27 Feb 2019 12:56:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59681)
+	id 1gz3V2-0004ip-8o
+	for alex.bennee@linaro.org; Wed, 27 Feb 2019 13:00:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33049)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gz3OF-0000d1-Al
-	for qemu-devel@nongnu.org; Wed, 27 Feb 2019 12:53:08 -0500
+	(envelope-from <no-reply@patchew.org>) id 1gz3Tq-00044Y-DK
+	for qemu-devel@nongnu.org; Wed, 27 Feb 2019 12:58:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gz3OB-0002wk-7q
-	for qemu-devel@nongnu.org; Wed, 27 Feb 2019 12:53:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49777)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gz3Ns-0002d4-PC; Wed, 27 Feb 2019 12:52:45 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC2192DB724;
-	Wed, 27 Feb 2019 17:52:43 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB6D75E7A9;
-	Wed, 27 Feb 2019 17:52:41 +0000 (UTC)
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
-	shannon.zhaosl@gmail.com, peter.maydell@linaro.org, imammedo@redhat.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<20190128110545.20644-2-shameerali.kolothum.thodi@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b1cd0cb1-d914-3d04-8a48-c53e0c63eed2@redhat.com>
-Date: Wed, 27 Feb 2019 18:52:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <no-reply@patchew.org>) id 1gz3Tp-0000oS-1Z
+	for qemu-devel@nongnu.org; Wed, 27 Feb 2019 12:58:54 -0500
+Resent-Date: Wed, 27 Feb 2019 12:58:54 -0500
+Resent-Message-Id: <E1gz3Tp-0000oS-1Z@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21120)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1gz3To-0000mr-Ot
+	for qemu-devel@nongnu.org; Wed, 27 Feb 2019 12:58:52 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1551289407; cv=none; d=zoho.com; s=zohoarc; 
+	b=VH7DTZDSkGcZcUcr8nFrLYAdwjUyUpkSUZY+nxZhGYJww7BaOopon2QiGeLU0PwIFpC18BYmUbA0/jPIRhiYhbS2PzJpLC0qaeyEXqzbwNooW9AvpTHlKK3mCt1XLAJzbq8M54Rcy6390LFA7Su/GdfAt4sENuWRejXV1beWQvI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1551289407;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=OEb5/aHq4IkA1O7fmDmD3dbJyuGO4e3jozJV+HqAvok=; 
+	b=lHNxA1vtxbf4j0tKUx/xrmdESogXotLZlWqSiBEjFXWXZGDvOR1XBHdga56Gcs4doD2+JQ6dYDWljLjFeYvVJ22uO+Q5QIpXq8Lv3765iO7BX9c6vvb5iZyu2tjOv8wLCn7808GlVG/rJCQtxDiqySRcrWisrqHZQ/twOuNpHnA=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1551289405667858.8138392278613;
+	Wed, 27 Feb 2019 09:43:25 -0800 (PST)
+Message-ID: <155128940420.2181.8745272081996827756@49fa7ef69f7b>
+In-Reply-To: <1550908162-22644-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190128110545.20644-2-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 27 Feb 2019 17:52:43 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: thuth@redhat.com
+Date: Wed, 27 Feb 2019 09:43:25 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [RFC PATCH 1/4] hw:acpi: Make ACPI IO address
- space configurable
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-devel] [PATCH v3 00/30] Kconfig dependencies for ARM
+ machines
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,133 +71,140 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: linuxarm@huawei.com, xuwei5@huawei.com
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, yang.zhong@intel.com, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+	philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GcnDybcjRlkx
+X-TUID: RCzdlW9kcGzp
 
-Hi Shameer,
-On 1/28/19 12:05 PM, Shameer Kolothum wrote:
-> This is in preparation for adding support for ARM64 platforms
-> where it doesn't use port mapped IO for ACPI IO space.
-> 
-> Also add a flag to identify hw reduced ACPI platforms as they
-> might use GPIO hw for signaling ACPI platform events.
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/acpi/memory_hotplug.c         | 13 ++++++++-----
->  hw/i386/acpi-build.c             |  3 ++-
->  include/hw/acpi/memory_hotplug.h |  6 ++++--
->  3 files changed, 14 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
-> index 921cad2..05f1d45 100644
-> --- a/hw/acpi/memory_hotplug.c
-> +++ b/hw/acpi/memory_hotplug.c
-> @@ -34,7 +34,7 @@
->  #define MEMORY_HOTPLUG_IO_LEN         24
->  #define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
->  
-> -static uint16_t memhp_io_base;
-> +static hwaddr memhp_io_base;
->  
->  static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
->  {
-> @@ -208,7 +208,7 @@ static const MemoryRegionOps acpi_memory_hotplug_ops = {
->  };
->  
->  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
-> -                              MemHotplugState *state, uint16_t io_base)
-> +                              MemHotplugState *state, hwaddr io_base)
->  {
->      MachineState *machine = MACHINE(qdev_get_machine());
->  
-> @@ -279,7 +279,9 @@ void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
->      mdev->is_enabled = true;
->      if (dev->hotplugged) {
->          mdev->is_inserting = true;
-> -        acpi_send_event(DEVICE(hotplug_dev), ACPI_MEMORY_HOTPLUG_STATUS);
-> +        if (!mem_st->hw_reduced_acpi) {
-> +            acpi_send_event(DEVICE(hotplug_dev), ACPI_MEMORY_HOTPLUG_STATUS);
-> +        }
->      }
->  }
->  
-> @@ -341,7 +343,8 @@ const VMStateDescription vmstate_memory_hotplug = {
->  
->  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
->                                const char *res_root,
-> -                              const char *event_handler_method)
-> +                              const char *event_handler_method,
-> +                              AmlRegionSpace rs)
->  {
->      int i;
->      Aml *ifctx;
-> @@ -371,7 +374,7 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
->          aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
->  
->          aml_append(mem_ctrl_dev, aml_operation_region(
-> -            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
-> +            MEMORY_HOTPLUG_IO_REGION, rs,
->              aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
-Given the change in the datatype (memhp_io_base) is it OK to keep the
-aml_int() cast.
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTUwOTA4MTYyLTIyNjQ0LTEt
+Z2l0LXNlbmQtZW1haWwtdGh1dGhAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVt
+cyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZv
+cgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMTU1MDkwODE2Mi0yMjY0NC0xLWdpdC1z
+ZW5kLWVtYWlsLXRodXRoQHJlZGhhdC5jb20KU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2
+MyAwMC8zMF0gS2NvbmZpZyBkZXBlbmRlbmNpZXMgZm9yIEFSTSBtYWNoaW5lcwpUeXBlOiBzZXJp
+ZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBi
+YXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVs
+aW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0t
+bG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0t
+bWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVh
+OWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29t
+L3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgICAgICAgIHBhdGNoZXcv
+MjAxOTAyMjUxNTIwNTMuMTU5NzYtMS1rd29sZkByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAxOTAy
+MjUxNTIwNTMuMTU5NzYtMS1rd29sZkByZWRoYXQuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5j
+aCAndGVzdCcKYjY3YjIyZGM2YyBody9hcm06IFJlbW92ZSBoYXJkLWVuYWJsZW1lbnQgb2YgdGhl
+IHJlbWFpbmluZyBQQ0kgZGV2aWNlcwpiNDk3YmIzZTljIGh3L2FybTogRXhwcmVzcyBkZXBlbmRl
+bmNpZXMgb2YgdGhlIG11c2NhIG1hY2hpbmVzIHdpdGggS2NvbmZpZwo5OTAxNmNlMjMzIGh3L2Fy
+bTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgdGhlIHhsbngtdmVyc2FsLXZpcnQgbWFjaGluZSB3
+aXRoIEtjb25maWcKYzQzOTJmMTYwNCBody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9mIHRo
+ZSBaeW5xTVAgemN1MTAyIG1hY2hpbmUgd2l0aCBLY29uZmlnCjc3NGE3YzA3NzkgaHcvYXJtOiBF
+eHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgbWljcm9iaXQgLyBucmY1MSBtYWNoaW5lIHdpdGgg
+S2NvbmZpZwpkODljN2JiNjBlIGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgZm9yIHJlbWFp
+bmluZyBJTVggYm9hcmRzIHdpdGggS2NvbmZpZwo0MTc4YmMzMWY1IGh3L2FybTogRXhwcmVzcyBk
+ZXBlbmRlbmNpZXMgb2YgdGhlIE1TRjIgLyBFTUNSQUZUX1NGMiBtYWNoaW5lIHdpdGggS2NvbmZp
+Zwo5YmVkNDliZTMyIGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2Ygc2FicmVsaXRlIHdp
+dGggS2NvbmZpZwo5MGQ1OTFiOTY0IGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgY2Fu
+b24tYTExMDAgd2l0aCBLY29uZmlnCjg3MTJjOTVmNmQgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVu
+Y2llcyBvZiB0aGUgcmFzcGkgbWFjaGluZXMgd2l0aCBLY29uZmlnCjJhOWIxOGFlMmMgaHcvYXJt
+OiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgTVBTMiBib2FyZHMgd2l0aCBLY29uZmlnCmY3
+NmRiMDE1YTkgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiBhbGx3aW5uZXIgLyBjdWJp
+ZWJvYXJkIHdpdGggS2NvbmZpZwo1MDc1MTFmOGY0IGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNp
+ZXMgb2YgbmV0ZHVpbm8gLyBzdG0zMmYyeHggd2l0aCBLY29uZmlnCjk5NWFmMGQ3NmYgaHcvYXJt
+OiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgdmlydCBtYWNoaW5lIHdpdGggS2NvbmZpZwpi
+MmE2MmU5ODBjIGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgdGhlIGFzcGVlZCBib2Fy
+ZHMgd2l0aCBLY29uZmlnCjZjZmY2ZTZjODAgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBv
+ZiBjb2xsaWUgd2l0aCBLY29uZmlnCjlmN2ExMjU3MTUgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVu
+Y2llcyBvZiB4aWxpbngtenlucSB3aXRoIEtjb25maWcKMTI0MzI5MWU2MSBody9hcm06IEV4cHJl
+c3MgZGVwZW5kZW5jaWVzIG9mIHRoZSBQWEEyeHggbWFjaGluZXMgd2l0aCBLY29uZmlnCmY2ZmI4
+MzgxYWUgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiByZWFsdmlldywgdmVyc2F0aWxl
+IGFuZCB2ZXhwcmVzcyB3aXRoIEtjb25maWcKZDQyMDE4MDM2NCBody9hcm06IEV4cHJlc3MgZGVw
+ZW5kZW5jaWVzIG9mIHN0ZWxsYXJpcyB3aXRoIEtjb25maWcKNzU2OTNkMmE4YSBody9hcm06IEV4
+cHJlc3MgZGVwZW5kZW5jaWVzIG9mIHRoZSBPTUFQIG1hY2hpbmVzIHdpdGggS2NvbmZpZwozYzRm
+YWQ4YzgzIGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgbXVzaWNwYWwgd2l0aCBLY29u
+ZmlnCmY3NWQ4MTQyYjMgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgZnNsLWlt
+eDMxIG1hY2hpbmUgd2l0aCBLY29uZmlnCmQ3MjYzZTNkMGEgaHcvYXJtOiBFeHByZXNzIGRlcGVu
+ZGVuY2llcyBvZiBpbnRlZ3JhdG9yY3Agd2l0aCBLY29uZmlnCjkwNDliYzhjODQgaHcvYXJtOiBF
+eHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgaGlnaGJhbmsgbWFjaGluZXMgd2l0aCBLY29uZmln
+Cjg1YTY2ZmJkYmUgaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgZXh5bm9zIG1h
+Y2hpbmVzIHdpdGggS2NvbmZpZwoxY2VhN2Q5ZDQ4IGh3L3NkL3NkaGNpOiBNb3ZlIFBDSS1yZWxh
+dGVkIGNvZGUgaW50byBhIHNlcGFyYXRlIGZpbGUKNzhlNDVkZGU5NyBody9pZGUvYWhjaTogQWRk
+IGEgS2NvbmZpZyBzd2l0Y2ggZm9yIHRoZSBBSERJLUlDSDkgZGV2aWNlCjJhMDM5ODJhMmQgaHcv
+cGNpL3BjaS1zdHViOiBBZGQgbXNpX2VuYWJsZWQoKSBhbmQgbXNpX25vdGlmeSgpIHRvIHRoZSBw
+Y2kgc3R1YnMKMWY4MDM5N2FiYSBody9hcm0vS2NvbmZpZzogQWRkIGEgY29uZmlnIHN3aXRjaCBm
+b3IgTVVTQ0EKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEvMzAgQ2hlY2tpbmcgY29tbWl0IDFmODAz
+OTdhYmExNSAoaHcvYXJtL0tjb25maWc6IEFkZCBhIGNvbmZpZyBzd2l0Y2ggZm9yIE1VU0NBKQoy
+LzMwIENoZWNraW5nIGNvbW1pdCAyYTAzOTgyYTJkNDkgKGh3L3BjaS9wY2ktc3R1YjogQWRkIG1z
+aV9lbmFibGVkKCkgYW5kIG1zaV9ub3RpZnkoKSB0byB0aGUgcGNpIHN0dWJzKQozLzMwIENoZWNr
+aW5nIGNvbW1pdCA3OGU0NWRkZTk3YWYgKGh3L2lkZS9haGNpOiBBZGQgYSBLY29uZmlnIHN3aXRj
+aCBmb3IgdGhlIEFIREktSUNIOSBkZXZpY2UpCjQvMzAgQ2hlY2tpbmcgY29tbWl0IDFjZWE3ZDlk
+NDg5OCAoaHcvc2Qvc2RoY2k6IE1vdmUgUENJLXJlbGF0ZWQgY29kZSBpbnRvIGEgc2VwYXJhdGUg
+ZmlsZSkKRVJST1I6IE1hY3JvcyB3aXRoIGNvbXBsZXggdmFsdWVzIHNob3VsZCBiZSBlbmNsb3Nl
+ZCBpbiBwYXJlbnRoZXNpcwojNzY6IEZJTEU6IGh3L3NkL3NkaGNpLWludGVybmFsLmg6MzI2Ogor
+I2RlZmluZSBERUZJTkVfU0RIQ0lfQ09NTU9OX1BST1BFUlRJRVMoX3N0YXRlKSBcCisgICAgREVG
+SU5FX1BST1BfVUlOVDgoInNkLXNwZWMtdmVyc2lvbiIsIF9zdGF0ZSwgc2Rfc3BlY192ZXJzaW9u
+LCAyKSwgXAorICAgIERFRklORV9QUk9QX1VJTlQ4KCJ1aHMiLCBfc3RhdGUsIHVoc19tb2RlLCBV
+SFNfTk9UX1NVUFBPUlRFRCksIFwKKyAgICBcCisgICAgLyogQ2FwYWJpbGl0aWVzIHJlZ2lzdGVy
+cyBwcm92aWRlIGluZm9ybWF0aW9uIG9uIHN1cHBvcnRlZAoKV0FSTklORzogQmxvY2sgY29tbWVu
+dHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzgwOiBGSUxFOiBody9zZC9z
+ZGhjaS1pbnRlcm5hbC5oOjMzMDoKKyAgICAvKiBDYXBhYmlsaXRpZXMgcmVnaXN0ZXJzIHByb3Zp
+ZGUgaW5mb3JtYXRpb24gb24gc3VwcG9ydGVkCgpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVs
+ZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiM5MzogCm5ldyBm
+aWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMSBlcnJvcnMsIDIgd2FybmluZ3MsIDI5MCBsaW5lcyBj
+aGVja2VkCgpQYXRjaCA0LzMwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
+IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
+aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo1LzMwIENoZWNr
+aW5nIGNvbW1pdCA4NWE2NmZiZGJlNzggKGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2Yg
+dGhlIGV4eW5vcyBtYWNoaW5lcyB3aXRoIEtjb25maWcpCjYvMzAgQ2hlY2tpbmcgY29tbWl0IDkw
+NDliYzhjODQzMSAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgaGlnaGJhbmsg
+bWFjaGluZXMgd2l0aCBLY29uZmlnKQo3LzMwIENoZWNraW5nIGNvbW1pdCBkNzI2M2UzZDBhMTQg
+KGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgaW50ZWdyYXRvcmNwIHdpdGggS2NvbmZp
+ZykKOC8zMCBDaGVja2luZyBjb21taXQgZjc1ZDgxNDJiMzdmIChody9hcm06IEV4cHJlc3MgZGVw
+ZW5kZW5jaWVzIG9mIHRoZSBmc2wtaW14MzEgbWFjaGluZSB3aXRoIEtjb25maWcpCjkvMzAgQ2hl
+Y2tpbmcgY29tbWl0IDNjNGZhZDhjODNkMiAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBv
+ZiBtdXNpY3BhbCB3aXRoIEtjb25maWcpCjEwLzMwIENoZWNraW5nIGNvbW1pdCA3NTY5M2QyYThh
+NGYgKGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2YgdGhlIE9NQVAgbWFjaGluZXMgd2l0
+aCBLY29uZmlnKQoxMS8zMCBDaGVja2luZyBjb21taXQgZDQyMDE4MDM2NDJjIChody9hcm06IEV4
+cHJlc3MgZGVwZW5kZW5jaWVzIG9mIHN0ZWxsYXJpcyB3aXRoIEtjb25maWcpCjEyLzMwIENoZWNr
+aW5nIGNvbW1pdCBmNmZiODM4MWFlMzEgKGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgb2Yg
+cmVhbHZpZXcsIHZlcnNhdGlsZSBhbmQgdmV4cHJlc3Mgd2l0aCBLY29uZmlnKQoxMy8zMCBDaGVj
+a2luZyBjb21taXQgMTI0MzI5MWU2MTZjIChody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9m
+IHRoZSBQWEEyeHggbWFjaGluZXMgd2l0aCBLY29uZmlnKQoxNC8zMCBDaGVja2luZyBjb21taXQg
+OWY3YTEyNTcxNTYyIChody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9mIHhpbGlueC16eW5x
+IHdpdGggS2NvbmZpZykKMTUvMzAgQ2hlY2tpbmcgY29tbWl0IDZjZmY2ZTZjODBkMCAoaHcvYXJt
+OiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiBjb2xsaWUgd2l0aCBLY29uZmlnKQoxNi8zMCBDaGVj
+a2luZyBjb21taXQgYjJhNjJlOTgwYzViIChody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9m
+IHRoZSBhc3BlZWQgYm9hcmRzIHdpdGggS2NvbmZpZykKMTcvMzAgQ2hlY2tpbmcgY29tbWl0IDk5
+NWFmMGQ3NmZlYyAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgdmlydCBtYWNo
+aW5lIHdpdGggS2NvbmZpZykKMTgvMzAgQ2hlY2tpbmcgY29tbWl0IDUwNzUxMWY4ZjQ5OSAoaHcv
+YXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiBuZXRkdWlubyAvIHN0bTMyZjJ4eCB3aXRoIEtj
+b25maWcpCjE5LzMwIENoZWNraW5nIGNvbW1pdCBmNzZkYjAxNWE5NTUgKGh3L2FybTogRXhwcmVz
+cyBkZXBlbmRlbmNpZXMgb2YgYWxsd2lubmVyIC8gY3ViaWVib2FyZCB3aXRoIEtjb25maWcpCjIw
+LzMwIENoZWNraW5nIGNvbW1pdCAyYTliMThhZTJjOGUgKGh3L2FybTogRXhwcmVzcyBkZXBlbmRl
+bmNpZXMgb2YgdGhlIE1QUzIgYm9hcmRzIHdpdGggS2NvbmZpZykKMjEvMzAgQ2hlY2tpbmcgY29t
+bWl0IDg3MTJjOTVmNmQ5NSAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgcmFz
+cGkgbWFjaGluZXMgd2l0aCBLY29uZmlnKQoyMi8zMCBDaGVja2luZyBjb21taXQgOTBkNTkxYjk2
+NDI4IChody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9mIGNhbm9uLWExMTAwIHdpdGggS2Nv
+bmZpZykKMjMvMzAgQ2hlY2tpbmcgY29tbWl0IDliZWQ0OWJlMzIzZiAoaHcvYXJtOiBFeHByZXNz
+IGRlcGVuZGVuY2llcyBvZiBzYWJyZWxpdGUgd2l0aCBLY29uZmlnKQoyNC8zMCBDaGVja2luZyBj
+b21taXQgNDE3OGJjMzFmNTE4IChody9hcm06IEV4cHJlc3MgZGVwZW5kZW5jaWVzIG9mIHRoZSBN
+U0YyIC8gRU1DUkFGVF9TRjIgbWFjaGluZSB3aXRoIEtjb25maWcpCjI1LzMwIENoZWNraW5nIGNv
+bW1pdCBkODljN2JiNjBlYWEgKGh3L2FybTogRXhwcmVzcyBkZXBlbmRlbmNpZXMgZm9yIHJlbWFp
+bmluZyBJTVggYm9hcmRzIHdpdGggS2NvbmZpZykKMjYvMzAgQ2hlY2tpbmcgY29tbWl0IDc3NGE3
+YzA3NzkzOSAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgbWljcm9iaXQgLyBu
+cmY1MSBtYWNoaW5lIHdpdGggS2NvbmZpZykKMjcvMzAgQ2hlY2tpbmcgY29tbWl0IGM0MzkyZjE2
+MDRlYiAoaHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgWnlucU1QIHpjdTEwMiBt
+YWNoaW5lIHdpdGggS2NvbmZpZykKMjgvMzAgQ2hlY2tpbmcgY29tbWl0IDk5MDE2Y2UyMzM5ZCAo
+aHcvYXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgeGxueC12ZXJzYWwtdmlydCBtYWNo
+aW5lIHdpdGggS2NvbmZpZykKMjkvMzAgQ2hlY2tpbmcgY29tbWl0IGI0OTdiYjNlOWNkOCAoaHcv
+YXJtOiBFeHByZXNzIGRlcGVuZGVuY2llcyBvZiB0aGUgbXVzY2EgbWFjaGluZXMgd2l0aCBLY29u
+ZmlnKQozMC8zMCBDaGVja2luZyBjb21taXQgYjY3YjIyZGM2YzAzIChody9hcm06IFJlbW92ZSBo
+YXJkLWVuYWJsZW1lbnQgb2YgdGhlIHJlbWFpbmluZyBQQ0kgZGV2aWNlcykKPT09IE9VVFBVVCBF
+TkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBp
+cyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMTU1MDkwODE2Mi0yMjY0NC0x
+LWdpdC1zZW5kLWVtYWlsLXRodXRoQHJlZGhhdC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBl
+PW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFto
+dHRwOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3
+LWRldmVsQHJlZGhhdC5jb20=
 
-Also we have
-"
-        aml_append(crs,
-            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
-                   MEMORY_HOTPLUG_IO_LEN)
-        );
-" where we have aml_io being used + AML_decode16. Shouldn't we have
-aml_*_memory depending on rs?
-
-I am not knowledged enough about the aml description but just in case.
-
-Thanks
-
-Eric
-
->          );
->  
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 2e21a31..b62c1a3 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1852,7 +1852,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
->                         "\\_SB.PCI0", "\\_GPE._E02");
->      }
-> -    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0", "\\_GPE._E03");
-> +    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
-> +                             "\\_GPE._E03", AML_SYSTEM_IO);
->  
->      scope =  aml_scope("_GPE");
->      {
-> diff --git a/include/hw/acpi/memory_hotplug.h b/include/hw/acpi/memory_hotplug.h
-> index 77c6576..ec56579 100644
-> --- a/include/hw/acpi/memory_hotplug.h
-> +++ b/include/hw/acpi/memory_hotplug.h
-> @@ -26,10 +26,11 @@ typedef struct MemHotplugState {
->      uint32_t selector;
->      uint32_t dev_count;
->      MemStatus *devs;
-> +    bool hw_reduced_acpi; /*true for hw reduced acpi platform */
->  } MemHotplugState;
->  
->  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
-> -                              MemHotplugState *state, uint16_t io_base);
-> +                              MemHotplugState *state, hwaddr io_base);
->  
->  void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
->                           DeviceState *dev, Error **errp);
-> @@ -48,5 +49,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st, ACPIOSTInfoList ***list);
->  
->  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
->                                const char *res_root,
-> -                              const char *event_handler_method);
-> +                              const char *event_handler_method,
-> +                              AmlRegionSpace rs);
->  #endif
-> 

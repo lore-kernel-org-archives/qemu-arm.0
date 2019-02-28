@@ -1,95 +1,81 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp617851wrx;
-        Thu, 28 Feb 2019 06:06:00 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ib/Esp7DOxVlCj4vsvfYzUNV0C5WAkMFcA+kTqB9UlyjnBVhIJF+G5IrIURTS9gRVTs/Cdx
-X-Received: by 2002:a81:180b:: with SMTP id 11mr5365501ywy.431.1551362760273;
-        Thu, 28 Feb 2019 06:06:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551362760; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp680802wrx;
+        Thu, 28 Feb 2019 07:05:31 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IY8ijH1gGyPEPQG2Pt4Bv+FIxLFiuxSCaN4+FJQo66TbZ4fsijlGTfIF7XVeX/9PKq6sDpM
+X-Received: by 2002:a81:74d6:: with SMTP id p205mr5900417ywc.116.1551366331251;
+        Thu, 28 Feb 2019 07:05:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551366331; cv=none;
         d=google.com; s=arc-20160816;
-        b=TVUhYmpaBT9k8Htd52PI7dXSBcZ6pnD6jGPdoMiPdqf9ey2TeHAYNnvGqXU2c95jVx
-         o74Ia7KUWQYQCzHOpxwuDKqZQ6k++GTJ1LUFGGms21wD7Pn5MYN1OgiOTCJhiwDSZY9Q
-         c+TgXgJ39n7xjDl4PMZVDu/Sd9KYK/VSt6sws+QIa8DiGEStLL5LKsnk/0hQ1z0+rkkx
-         R1XGAc83x8iRnaYb6QLn63ThvxBJoezEW750vE8FrZomkcPArLwLCQjSw6jsqk+gtURy
-         M0yb8cLSdMR/ulGMoOt7IDIjjZcFbRaB3Gll8ozciVG/jV36d1pz5rlo7i1E6SqyuUqy
-         qT4A==
+        b=HGWSvRrmR0sDeBpKTM3dZ5ods4qFSQwf//1lyyFOR/xArAu3Ic8PL0T1QbDikBxuHo
+         kj+FuRA6nzrkFOUehyKAdfyU7ALNcdQIWHKqrJbRmOROyakle1fek8acLOv7uiefFSba
+         5Q3r5HhZT4sDrF4VtAhU43K3ZzsidCYCWJtJrbnEhHTRe0XBznCCjqaggvKNxmMT3aNF
+         ABHuVThZzY32mbfFgDQlkVocZ15mb3xfO1Lj4cdPJxoiDESkl+AagIAachScGGjmrPEF
+         ux/JO3zkry0M0VcjJGFjloG0baR/ueX4jgezjq6eg7O6qc3l6rG91rBkZtkJIKELjwCM
+         0U5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=rM11UeelmzyHJ0ZPdcZ1oMhBp88l7W82GrkJLAgqEyc=;
-        b=j7fMpBl5czquqMuZYxl7HEI+E+0h//7jYcnPG0ghMwnf4yucHnx1Acl87BuUvM7whM
-         mSm/ZBXGQuJ6zFUcsRRLTE2yp0iaNxntheAPh1iWkAS1+ieDOkFBmrXpuH6DHa5iQBYA
-         9wVxikHvfeinW5qGnyxvqgko3P64ThaCIj5XUqzrmUfwCz87nN9/EFoFmwh2RWwjqZ7b
-         aJNSIxo7NyNVCSI5H8mCvGaE2/fPr7SRL+Q31TLULjfxkDuRDbBfYUJgVBxG3aS1Ki8R
-         k11WJ/FZS7qWWgTbHjcH5MvOw6sdi+v0cqSouBykg2W4qzsFhjEOyzmha4LQ9wVZ/zBv
-         QZag==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=kWI38asY+6LqXbAPZ5LqTIf0uFPXGjk4de2AKupw2dg=;
+        b=CFEgkmcE0Srep+rdygRD0yyqmB+TyFpNXbl89p1/NMU2/jzIkyhk0tz2Yc+JFaTSYl
+         A/HIxy4HrPoLDXh8R7pf5njB9ir7uzzauNUwc5Uem/VCIvRxF8cdt41HNSDrC7u8NQ5a
+         pnBsGVrIXKNw53ox75naT1l4aj0Ywm+6asgxYUs0kOiYxnx4lgEDpv1nF5HXsRKZi3od
+         Sz4VgqE+q/EH53DIUmQOaklADjzIUXvpQ4urcS+0zMw0IlCT7NuiHSK4Nvtt0yAnPsD7
+         XrgTt89e+rI40j5XoB1pmZC0UnE10tPkfQ9GbNo2Ghu7y14JoVUC6W41/yhQMtzmZJTs
+         llfg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q126si11265050ybc.29.2019.02.28.06.06.00
+        by mx.google.com with ESMTPS id e64si761312ybe.164.2019.02.28.07.05.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Feb 2019 06:06:00 -0800 (PST)
+        Thu, 28 Feb 2019 07:05:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:39039 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:39784 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzMJz-0006M3-PW
-	for alex.bennee@linaro.org; Thu, 28 Feb 2019 09:05:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42414)
+	id 1gzNFa-0002UB-KL
+	for alex.bennee@linaro.org; Thu, 28 Feb 2019 10:05:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53761)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzMJs-0006Lx-CN
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 09:05:54 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gzNEA-0001Qf-IU
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 10:04:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzMJl-0007gG-7S
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 09:05:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46596)
+	(envelope-from <eric.auger@redhat.com>) id 1gzNDr-0003k5-VZ
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 10:03:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55962)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gzMJk-0007f6-So; Thu, 28 Feb 2019 09:05:45 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gzNDr-0003jJ-LO; Thu, 28 Feb 2019 10:03:43 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C5A65313925A;
-	Thu, 28 Feb 2019 14:05:43 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 689A35D78C;
-	Thu, 28 Feb 2019 14:05:33 +0000 (UTC)
-Date: Thu, 28 Feb 2019 15:05:31 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20190228150531.184f5974@redhat.com>
-In-Reply-To: <f9518e2d-0e46-d25f-f9f5-809b21f744aa@redhat.com>
-References: <20190220224003.4420-1-eric.auger@redhat.com>
-	<20190222172742.18c3835a@redhat.com>
-	<c016024e-9f4b-8953-f492-8802675f7e22@redhat.com>
-	<20190225104212.7d40e65e@Igors-MacBook-Pro.local>
-	<70249194-349e-37f6-0e8d-dc50b39082b7@redhat.com>
-	<cd283485-49a9-ddd1-a020-26110ee093be@redhat.com>
-	<20190226175653.6ca2b6c4@Igors-MacBook-Pro.local>
-	<c68ba5a2-0d24-c1ad-c2af-c957768abf9f@redhat.com>
-	<20190227111025.4bb39cc7@redhat.com>
-	<116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392D6690@lhreml524-mbs.china.huawei.com>
-	<20190227185123.314171ae@redhat.com>
-	<f9518e2d-0e46-d25f-f9f5-809b21f744aa@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 5D474BCFED;
+	Thu, 28 Feb 2019 15:03:42 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 99CD819C71;
+	Thu, 28 Feb 2019 15:03:33 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
+Date: Thu, 28 Feb 2019 16:03:14 +0100
+Message-Id: <20190228150324.25973-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Thu, 28 Feb 2019 14:05:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 28 Feb 2019 15:03:42 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM
- expansion and PCDIMM/NVDIMM support
+Subject: [Qemu-arm] [PATCH v10 00/10] ARM virt: Initial RAM expansion and
+ extended memory map
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,360 +87,159 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	"david@redhat.com" <david@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"dgilbert@redhat.com" <dgilbert@redhat.com>,
-	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>
+Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
+	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Sey6Ql5izdsr
+X-TUID: 0oj7wvmbkiL0
 
-On Thu, 28 Feb 2019 08:48:18 +0100
-Auger Eric <eric.auger@redhat.com> wrote:
+This series aims to bump the 255GB RAM limit in machvirt and paves the
+way to device memory addition.
 
-> Hi Igor, Shameer,
->=20
-> On 2/27/19 6:51 PM, Igor Mammedov wrote:
-> > On Wed, 27 Feb 2019 10:41:45 +0000
-> > Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
-> >  =20
-> >> Hi Eric,
-> >> =20
-> >>> -----Original Message-----
-> >>> From: Auger Eric [mailto:eric.auger@redhat.com]
-> >>> Sent: 27 February 2019 10:27
-> >>> To: Igor Mammedov <imammedo@redhat.com>
-> >>> Cc: peter.maydell@linaro.org; drjones@redhat.com; david@redhat.com;
-> >>> dgilbert@redhat.com; Shameerali Kolothum Thodi
-> >>> <shameerali.kolothum.thodi@huawei.com>; qemu-devel@nongnu.org;
-> >>> qemu-arm@nongnu.org; eric.auger.pro@gmail.com;
-> >>> david@gibson.dropbear.id.au
-> >>> Subject: Re: [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM expa=
-nsion
-> >>> and PCDIMM/NVDIMM support
-> >>>
-> >>> Hi Igor, Shameer,
-> >>>
-> >>> On 2/27/19 11:10 AM, Igor Mammedov wrote:   =20
-> >>>> On Tue, 26 Feb 2019 18:53:24 +0100
-> >>>> Auger Eric <eric.auger@redhat.com> wrote:
-> >>>>   =20
-> >>>>> Hi Igor,
-> >>>>>
-> >>>>> On 2/26/19 5:56 PM, Igor Mammedov wrote:   =20
-> >>>>>> On Tue, 26 Feb 2019 14:11:58 +0100
-> >>>>>> Auger Eric <eric.auger@redhat.com> wrote:
-> >>>>>>   =20
-> >>>>>>> Hi Igor,
-> >>>>>>>
-> >>>>>>> On 2/26/19 9:40 AM, Auger Eric wrote:   =20
-> >>>>>>>> Hi Igor,
-> >>>>>>>>
-> >>>>>>>> On 2/25/19 10:42 AM, Igor Mammedov wrote:   =20
-> >>>>>>>>> On Fri, 22 Feb 2019 18:35:26 +0100
-> >>>>>>>>> Auger Eric <eric.auger@redhat.com> wrote:
-> >>>>>>>>>   =20
-> >>>>>>>>>> Hi Igor,
-> >>>>>>>>>>
-> >>>>>>>>>> On 2/22/19 5:27 PM, Igor Mammedov wrote:   =20
-> >>>>>>>>>>> On Wed, 20 Feb 2019 23:39:46 +0100
-> >>>>>>>>>>> Eric Auger <eric.auger@redhat.com> wrote:
-> >>>>>>>>>>>   =20
-> >>>>>>>>>>>> This series aims to bump the 255GB RAM limit in machvirt and=
- to
-> >>>>>>>>>>>> support device memory in general, and especially   =20
-> >>> PCDIMM/NVDIMM.   =20
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> In machvirt versions < 4.0, the initial RAM starts at 1GB an=
-d can
-> >>>>>>>>>>>> grow up to 255GB. From 256GB onwards we find IO regions such=
- as   =20
-> >>> the   =20
-> >>>>>>>>>>>> additional GICv3 RDIST region, high PCIe ECAM region and hig=
-h   =20
-> >>> PCIe   =20
-> >>>>>>>>>>>> MMIO region. The address map was 1TB large. This corresponde=
-d   =20
-> >>> to   =20
-> >>>>>>>>>>>> the max IPA capacity KVM was able to manage.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Since 4.20, the host kernel is able to support a larger and =
-dynamic
-> >>>>>>>>>>>> IPA range. So the guest physical address can go beyond the 1=
-TB.   =20
-> >>> The   =20
-> >>>>>>>>>>>> max GPA size depends on the host kernel configuration and ph=
-ysical   =20
-> >>> CPUs.   =20
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> In this series we use this feature and allow the RAM to grow=
-   =20
-> >>> without   =20
-> >>>>>>>>>>>> any other limit than the one put by the host kernel.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> The RAM still starts at 1GB. First comes the initial ram (-m=
-) of size
-> >>>>>>>>>>>> ram_size and then comes the device memory (,maxmem) of size
-> >>>>>>>>>>>> maxram_size - ram_size. The device memory is potentially   =
-=20
-> >>> hotpluggable   =20
-> >>>>>>>>>>>> depending on the instantiated memory objects.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> IO regions previously located between 256GB and 1TB are move=
-d   =20
-> >>> after   =20
-> >>>>>>>>>>>> the RAM. Their offset is dynamically computed, depends on   =
-=20
-> >>> ram_size   =20
-> >>>>>>>>>>>> and maxram_size. Size alignment is enforced.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> In case maxmem value is inferior to 255GB, the legacy memory=
-   =20
-> >>> map   =20
-> >>>>>>>>>>>> still is used. The change of memory map becomes effective fr=
-om 4.0
-> >>>>>>>>>>>> onwards.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> As we keep the initial RAM at 1GB base address, we do not ne=
-ed to   =20
-> >>> do   =20
-> >>>>>>>>>>>> invasive changes in the EDK2 FW. It seems nobody is eager to=
- do
-> >>>>>>>>>>>> that job at the moment.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Device memory being put just after the initial RAM, it is po=
-ssible
-> >>>>>>>>>>>> to get access to this feature while keeping a 1TB address ma=
-p.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> This series reuses/rebases patches initially submitted by Sh=
-ameer
-> >>>>>>>>>>>> in [1] and Kwangwoo in [2] for the PC-DIMM and NV-DIMM parts.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> Functionally, the series is split into 3 parts:
-> >>>>>>>>>>>> 1) bump of the initial RAM limit [1 - 9] and change in
-> >>>>>>>>>>>>    the memory map   =20
-> >>>>>>>>>>>   =20
-> >>>>>>>>>>>> 2) Support of PC-DIMM [10 - 13]   =20
-> >>>>>>>>>>> Is this part complete ACPI wise (for coldplug)? I haven't not=
-iced
-> >>>>>>>>>>> DSDT AML here no E820 changes, so ACPI wise pc-dimm shouldn't=
- be
-> >>>>>>>>>>> visible to the guest. It might be that DT is masking problem
-> >>>>>>>>>>> but well, that won't work on ACPI only guests.   =20
-> >>>>>>>>>>
-> >>>>>>>>>> guest /proc/meminfo or "lshw -class memory" reflects the amoun=
-t of   =20
-> >>> mem   =20
-> >>>>>>>>>> added with the DIMM slots.   =20
-> >>>>>>>>> Question is how does it get there? Does it come from DT or from=
-   =20
-> >>> firmware   =20
-> >>>>>>>>> via UEFI interfaces?
-> >>>>>>>>>   =20
-> >>>>>>>>>> So it looks fine to me. Isn't E820 a pure x86 matter?   =20
-> >>>>>>>>> sorry for misleading, I've meant is UEFI GetMemoryMap().
-> >>>>>>>>> On x86, I'm wary of adding PC-DIMMs to E802 which then gets exp=
-osed
-> >>>>>>>>> via UEFI GetMemoryMap() as guest kernel might start using it as=
-   =20
-> >>> normal   =20
-> >>>>>>>>> memory early at boot and later put that memory into zone normal=
- and   =20
-> >>> hence   =20
-> >>>>>>>>> make it non-hot-un-pluggable. The same concerns apply to DT bas=
-ed   =20
-> >>> means   =20
-> >>>>>>>>> of discovery.
-> >>>>>>>>> (That's guest issue but it's easy to workaround it not putting =
-  =20
-> >>> hotpluggable   =20
-> >>>>>>>>> memory into UEFI GetMemoryMap() or DT and let DSDT describe it =
-  =20
-> >>> properly)   =20
-> >>>>>>>>> That way memory doesn't get (ab)used by firmware or early boot =
-  =20
-> >>> kernel stages   =20
-> >>>>>>>>> and doesn't get locked up.
-> >>>>>>>>>   =20
-> >>>>>>>>>> What else would you expect in the dsdt?   =20
-> >>>>>>>>> Memory device descriptions, look for code that adds PNP0C80 wit=
-h   =20
-> >>> _CRS   =20
-> >>>>>>>>> describing memory ranges   =20
-> >>>>>>>>
-> >>>>>>>> OK thank you for the explanations. I will work on PNP0C80 additi=
-on then.
-> >>>>>>>> Does it mean that in ACPI mode we must not output DT hotplug mem=
-ory
-> >>>>>>>> nodes or assuming that PNP0C80 is properly described, it will "o=
-verride"
-> >>>>>>>> DT description?   =20
-> >>>>>>>
-> >>>>>>> After further investigations, I think the pieces you pointed out =
-are
-> >>>>>>> added by Shameer's series, ie. through the build_memory_hotplug_a=
-ml()
-> >>>>>>> call. So I suggest we separate the concerns: this series brings s=
-upport
-> >>>>>>> for DIMM coldplug. hotplug, including all the relevant ACPI struc=
-tures
-> >>>>>>> will be added later on by Shameer.   =20
-> >>>>>>
-> >>>>>> Maybe we should not put pc-dimms in DT for this series until it ge=
-ts clear
-> >>>>>> if it doesn't conflict with ACPI in some way.   =20
-> >>>>>
-> >>>>> I guess you mean removing the DT hotpluggable memory nodes only in =
-ACPI
-> >>>>> mode? Otherwise you simply remove the DIMM feature, right?   =20
-> >>>> Something like this so DT won't get in conflict with ACPI.
-> >>>> Only we don't have a switch for it something like, -machine fdt=3Don=
- (with   =20
-> >>> default off)   =20
-> >>>>   =20
-> >>>>> I double checked and if you remove the hotpluggable memory DT nodes=
- in
-> >>>>> ACPI mode:
-> >>>>> - you do not see the PCDIMM slots in guest /proc/meminfo anymore. S=
-o I
-> >>>>> guess you're right, if the DT nodes are available, that memory is
-> >>>>> considered as not unpluggable by the guest.
-> >>>>> - You can see the NVDIMM slots using ndctl list -u. You can mount a=
- DAX
-> >>>>> system.
-> >>>>>
-> >>>>> Hotplug/unplug is clearly not supported by this series and any atte=
-mpt
-> >>>>> results in "memory hotplug is not supported". Is it really an issue=
- if
-> >>>>> the guest does not consider DIMM slots as not hot-unpluggable memor=
-y? I
-> >>>>> am not even sure the guest kernel would support to unplug that memo=
-ry.
-> >>>>>
-> >>>>> In case we want all ACPI tables to be ready for making this memory =
-seen
-> >>>>> as hot-unpluggable we need some Shameer's patches on top of this se=
-ries.   =20
-> >>>> May be we should push for this way (into 4.0), it's just a several p=
-atches
-> >>>> after all or even merge them in your series (I'd guess it would need=
- to be
-> >>>> rebased on top of your latest work)   =20
-> >>>
-> >>> Shameer, would you agree if we merge PATCH 1 of your RFC hotplug seri=
-es
-> >>> (without the reduced hw_reduced_acpi flag) in this series and isolate=
- in
-> >>> a second PATCH the acpi_memory_hotplug_init() + build_memory_hotplug_=
-aml
-> >>> called in virt code?   =20
-> > probably we can do it as transitional step as we need working mmio inte=
-rface
-> > in place for build_memory_hotplug_aml() to work, provided it won't crea=
-te
-> > migration issues (do we need VMSTATE_MEMORY_HOTPLUG for cold-plug case?=
-).
-> >=20
-> > What about dummy initial GED (empty device), that manages mmio region o=
-nly
-> > and then later it will be filled with remaining logic IRQ. In this case=
- mmio region
-> > and vmstate won't change (maybe) so it won't cause ABI or migration iss=
-ues. =20
->=20
->=20
-> >=20
-> >  =20
-> >> Sure, that=E2=80=99s fine with me. So what would you use for the event=
-_handler_method in
-> >> build_memory_hotplug_aml()? GPO0 device? =20
-> >=20
-> > a method name not defined in spec, so it won't be called might do. =20
->=20
-> At this point the event_handler_method, ie. \_SB.GPO0._E02, is not
-> supposed to be called, right? So effectivily we should be able to use
-> any other method name (unlinked to any GPIO/GED). I guess at this stage
-> only the PNP0C80 definition blocks + methods are used.
-pretty much yes.
-=20
-> What still remains fuzzy for me is in case of cold plug the mmio hotplug
-> control region part only is read (despite the slot selection of course)
-> and returns 0 for addr/size and also flags meaning the slot is not
-> enabled.
-If you mean guest reads 0s than it looks broken, could you show
-trace log with mhp_* tracepoints enabled during a dimm hotplug.
+In machvirt versions < 4.0, the initial RAM starts at 1GB and can
+grow up to 255GB. From 256GB onwards we find IO regions such as the
+additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
+MMIO region. The address map was 1TB large. This corresponded to
+the max IPA capacity KVM was able to manage.
 
-> So despite the slots are advertised as hotpluggable/enabled in
-> the SRAT; I am not sure for the OS it actually makes any difference
-> whether the DSDT definition blocks are described or not.
-SRAT isn't used fro informing guests about amount of present RAM,
-it holds affinity information for present and possible RAM
+Since 4.20, the host kernel is able to support a larger and dynamic
+IPA range. So the guest physical address can go beyond the 1TB. The
+max GPA size depends on the host kernel configuration and physical CPUs.
 
-> To be honest I am afraid this is too late to add those additional
-> features for 4.0 now. This is going to jeopardize the first preliminary
-> part which is the introduction of the new memory map, allowing the
-> expansion of the initial RAM and paving the way for device memory
-> introduction. So I think I am going to resend the first 10 patches in a
-> standalone series. And we can iterate on the PCDIMM/NVDIMM parts
-> independently.
-sounds good to me, I'll try to review 1-10 today=20
-=20
-> Thanks
->=20
-> Eric
-> >=20
-> >  =20
-> >>
-> >> Thanks,
-> >> Shameer
-> >> =20
-> >>> Then would remain the GED/GPIO actual integration.
-> >>>
-> >>> Thanks
-> >>>
-> >>> Eric   =20
-> >>>>   =20
-> >>>>> Also don't DIMM slots already make sense in DT mode. Usually we acc=
-ept
-> >>>>> to add one feature in DT and then in ACPI. For instance we can bene=
-fit   =20
-> >>>> usually it doesn't conflict with each other (at least I'm not aware =
-of it)
-> >>>> but I see a problem with in this case.
-> >>>>   =20
-> >>>>> from nvdimm in dt mode right? So, considering an incremental approa=
-ch I
-> >>>>> would be in favour of keeping the DT nodes.   =20
-> >>>> I'd guess it is the same as for DIMMs, ACPI support for NVDIMMs is m=
-uch
-> >>>> more versatile.
-> >>>>
-> >>>> I consider target application of arm/virt as a board that's used to
-> >>>> run in production generic ACPI capable guest in most use cases and
-> >>>> various DT only guests as secondary ones. It's hard to make
-> >>>> both usecases be happy with defaults (that's probably  one of the
-> >>>> reasons why 'sbsa' board is being added).
-> >>>>
-> >>>> So I'd give priority to ACPI based arm/virt versus DT when defaults =
-are
-> >>>> considered.
-> >>>>   =20
-> >>>>> Thanks
-> >>>>>
-> >>>>> Eric   =20
-> >>>>>>
-> >>>>>>
-> >>>>>>
-> >>>>>>   =20
-> >>>>   =20
-> >=20
-> >  =20
+In this series we use this feature and allow the RAM to grow without
+any other limit than the one put by the host kernel.
+
+The RAM still starts at 1GB. First comes the initial ram (-m) of size
+ram_size and then we provision sufficient space for the looming
+device memory (dimensionned using ,maxmem and slots options).
+
+IO regions previously located between 256GB and 1TB are moved after
+the RAM. Their offset is dynamically computed, depends on ram_size,
+slots, maxram_size. Size alignment is enforced.
+
+In case maxmem value is inferior to 255GB, the legacy memory map
+still is used.
+
+As we keep the initial RAM at 1GB base address, we do not need to do
+invasive changes in the EDK2 FW. It seems nobody is eager to do
+that job at the moment.
+
+Device memory being put just after the initial RAM, it will be
+possible to get access to this feature while keeping a 1TB address
+map.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v3.1.0-extended-memmap-v10
+
+History:
+
+v9 -> v10:
+- only the keep the first 10 patches which move to the extended memmap
+- remove the 1GB alignment check on maxram_size
+
+v8 -> v9:
+- fixed make check SIGSEV
+- fixed TCG issue (restored virt_set_memmap in machvirt_init)
+- removed Igor's R-b on "hw/arm/boot: Expose the PC-DIMM nodes in the DT"
+
+v7 -> v8:
+- addressed Igor's comments"
+- remove no_extended_memmap knob
+- moved acpi_nvdimm_state into MachineState
+- separate "hw/arm/virt: Check the VCPU PA range in TCG mode" patch
+
+v6 -> v7:
+- Addressed Peter and Igor comments (exceptions sent my email)
+- Fixed TCG case. Now device memory works also for TCG and vcpu
+  pamax is checked
+- See individual logs for more details
+
+v5 -> v6:
+- mingw compilation issue fix
+- kvm_arm_get_max_vm_phys_shift always returns the number of supported
+  IPA bits
+- new patch "hw/arm/virt: Rename highmem IO regions" that eases the revie=
+w
+  of "hw/arm/virt: Split the memory map description"
+- "hw/arm/virt: Move memory map initialization into machvirt_init"
+  squashed into the previous patch
+- change alignment of IO regions beyond the RAM so that it matches their
+  size
+
+v4 -> v5:
+- change in the memory map
+- see individual logs
+
+v3 -> v4:
+- rebase on David's "pc-dimm: next bunch of cleanups" and
+  "pc-dimm: pre_plug "slot" and "addr" assignment"
+- kvm-type option not used anymore. We directly use
+  maxram_size and ram_size machine fields to compute the
+  MAX IPA range. Migration is naturally handled as CLI
+  option are kept between source and destination. This was
+  suggested by David.
+- device_memory_start and device_memory_size not stored
+  anymore in vms->bootinfo
+- I did not take into account 2 Igor's comments: the one
+  related to the refactoring of arm_load_dtb and the one
+  related to the generation of the dtb after system_reset
+  which would contain nodes of hotplugged devices (we do
+  not support hotplug at this stage)
+- check the end-user does not attempt to hotplug a device
+- addition of "vl: Set machine ram_size, maxram_size and
+  ram_slots earlier"
+
+v2 -> v3:
+- fix pc_q35 and pc_piix compilation error
+- kwangwoo's email being not valid anymore, remove his address
+
+v1 -> v2:
+- kvm_get_max_vm_phys_shift moved in arch specific file
+- addition of NVDIMM part
+- single series
+- rebase on David's refactoring
+
+v1:
+- was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+- was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+
+Best Regards
+
+Eric
+
+
+Eric Auger (9):
+  hw/arm/virt: Rename highmem IO regions
+  hw/arm/virt: Split the memory map description
+  hw/boards: Add a MachineState parameter to kvm_type callback
+  kvm: add kvm_arm_get_max_vm_ipa_size
+  vl: Set machine ram_size, maxram_size and ram_slots earlier
+  hw/arm/virt: Dynamic memory map depending on RAM requirements
+  hw/arm/virt: Implement kvm_type function for 4.0 machine
+  hw/arm/virt: Check the VCPU PA range in TCG mode
+  hw/arm/virt: Bump the 255GB initial RAM limit
+
+Shameer Kolothum (1):
+  hw/arm/boot: introduce fdt_add_memory_node helper
+
+ accel/kvm/kvm-all.c      |   2 +-
+ hw/arm/boot.c            |  54 +++++++----
+ hw/arm/virt-acpi-build.c |  10 +-
+ hw/arm/virt.c            | 195 +++++++++++++++++++++++++++++++--------
+ hw/ppc/mac_newworld.c    |   3 +-
+ hw/ppc/mac_oldworld.c    |   2 +-
+ hw/ppc/spapr.c           |   2 +-
+ include/hw/arm/virt.h    |  17 +++-
+ include/hw/boards.h      |   5 +-
+ target/arm/kvm.c         |  10 ++
+ target/arm/kvm_arm.h     |  13 +++
+ vl.c                     |   6 +-
+ 12 files changed, 241 insertions(+), 78 deletions(-)
+
+--=20
+2.20.1
 

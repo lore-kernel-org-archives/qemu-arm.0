@@ -1,275 +1,315 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp786287wrx;
-        Thu, 28 Feb 2019 08:44:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwUmBcME4Vq114Wr/3enYXFww3jEwlG7M93QoC2BNn7MAY/wMOV4xjfMUqLenkk2bumxVPo
-X-Received: by 2002:a5b:78b:: with SMTP id b11mr245727ybq.185.1551372294919;
-        Thu, 28 Feb 2019 08:44:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551372294; cv=none;
-        d=google.com; s=arc-20160816;
-        b=ygdhP5PdNNuCduNYh00MeJ5/rX2YsNBEQpsU5TpdfARAO5uwMsPQdQYuLuWs/2mmD3
-         IFkuy2IbbZz/r1w9gRiGqwduDS9zoAzZnP5yqQpA9iq/0xvPSJUnXRcsIWrcwyrhlXPY
-         w7M84reN+dB3wSA0zfPzQ3R0URfp9wfMKkkZoW5N+V9KbzX8ocn+f4cQcP2CxJZnelsS
-         sIlZqmlEF2QAMr0E8nny36839myOYc7wJvfGFVlvPMJHsAfg+mQKuMeQ+lGuQg2NJtWA
-         RZxZaNfM5AMOoX4b7z11hQfZ1SdkoNEFJIVzNJX9idqJ05X0Y8f3E3Us63TUt3OphL3g
-         rTrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=JqCEDMIa6hmV4K+EYgGBddPhcBOAVTNgmvDbzNuRJE8=;
-        b=Dr9jOjWcTZgEJBxTu6tInkJvsk4hYH9q8X3RKYx0INB5O5Jmjzf0zh91IfXVtIc5tQ
-         SdOQgq9oKDj70UrxpS3rzGzuftlzKW10btQBMRszg1ez0EY3TjPe4UYWrteRuEvhP/C6
-         YO1G2X02cMZyVFwxBMh4KpOVOlq1V4J8BwMLyYlYc8O/yyD5ufCNKZeHP6amfwi0OuB1
-         /dAhSu4tSTwWJlS31Dos3S3b9mX5EP7IoXQQJKZ7JnaS/eNod4jQWFBXqhtZC9T0wI0P
-         ATgi+wTUmMNy/W5jX2P+T4OcepmqRvLzO3wuDgnwZcwgDxDVCvFKxZDITHUtbRqby7RZ
-         50yg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o124si8502722yba.142.2019.02.28.08.44.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Feb 2019 08:44:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42777 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzOnm-0000Tp-7f
-	for alex.bennee@linaro.org; Thu, 28 Feb 2019 11:44:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54209)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzOne-0000Sv-1Y
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 11:44:47 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzOnb-00018Z-Oq
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 11:44:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38906)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gzOnZ-00010W-K2; Thu, 28 Feb 2019 11:44:42 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B0FCA13B251;
-	Thu, 28 Feb 2019 16:44:29 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B4ED55DD74;
-	Thu, 28 Feb 2019 16:44:25 +0000 (UTC)
-Date: Thu, 28 Feb 2019 17:44:24 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190228174424.1cae71b8@redhat.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8392D7AB9@lhreml524-mbs.china.huawei.com>
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<20190128110545.20644-2-shameerali.kolothum.thodi@huawei.com>
-	<b1cd0cb1-d914-3d04-8a48-c53e0c63eed2@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392D7AB9@lhreml524-mbs.china.huawei.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id o127sm6762492wmo.20.2019.02.28.12.25.37
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Feb 2019 12:25:37 -0800 (PST)
+Received: from zen.linaroharston. (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 617C71FF80;
+	Thu, 28 Feb 2019 20:25:37 +0000 (UTC)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	edgar.iglesias@gmail.com,
+	jcmvbkbc@gmail.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH  v2 00/16] Enabling tcg/tests for cris and system mode xtensa & arm
+Date: Thu, 28 Feb 2019 20:25:21 +0000
+Message-Id: <20190228202537.4638-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 28 Feb 2019 16:44:29 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC PATCH 1/4] hw:acpi: Make ACPI IO address space
- configurable
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OIHvxwW1Di64
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 6OiMmaUzQ+F/
 
-On Thu, 28 Feb 2019 16:09:48 +0000
-Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+Hi,
 
-> Hi Eric,
-> 
-> > -----Original Message-----
-> > From: Auger Eric [mailto:eric.auger@redhat.com]
-> > Sent: 27 February 2019 17:53
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
-> > shannon.zhaosl@gmail.com; peter.maydell@linaro.org;
-> > imammedo@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> > Cc: xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>
-> > Subject: Re: [RFC PATCH 1/4] hw:acpi: Make ACPI IO address space
-> > configurable
-> > 
-> > Hi Shameer,
-> > On 1/28/19 12:05 PM, Shameer Kolothum wrote:  
-> > > This is in preparation for adding support for ARM64 platforms where it
-> > > doesn't use port mapped IO for ACPI IO space.
-> > >
-> > > Also add a flag to identify hw reduced ACPI platforms as they might
-> > > use GPIO hw for signaling ACPI platform events.
-> > >
-> > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > > ---
-> > >  hw/acpi/memory_hotplug.c         | 13 ++++++++-----
-> > >  hw/i386/acpi-build.c             |  3 ++-
-> > >  include/hw/acpi/memory_hotplug.h |  6 ++++--
-> > >  3 files changed, 14 insertions(+), 8 deletions(-)
-> > >
-> > > diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c index
-> > > 921cad2..05f1d45 100644
-> > > --- a/hw/acpi/memory_hotplug.c
-> > > +++ b/hw/acpi/memory_hotplug.c
-> > > @@ -34,7 +34,7 @@
-> > >  #define MEMORY_HOTPLUG_IO_LEN         24
-> > >  #define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
-> > >
-> > > -static uint16_t memhp_io_base;
-> > > +static hwaddr memhp_io_base;
-> > >
-> > >  static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus
-> > > *mdev)  { @@ -208,7 +208,7 @@ static const MemoryRegionOps
-> > > acpi_memory_hotplug_ops = {  };
-> > >
-> > >  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
-> > > -                              MemHotplugState *state, uint16_t  
-> > io_base)  
-> > > +                              MemHotplugState *state, hwaddr  
-> > io_base)  
-> > >  {
-> > >      MachineState *machine = MACHINE(qdev_get_machine());
-> > >
-> > > @@ -279,7 +279,9 @@ void acpi_memory_plug_cb(HotplugHandler  
-> > *hotplug_dev, MemHotplugState *mem_st,  
-> > >      mdev->is_enabled = true;
-> > >      if (dev->hotplugged) {
-> > >          mdev->is_inserting = true;
-> > > -        acpi_send_event(DEVICE(hotplug_dev),  
-> > ACPI_MEMORY_HOTPLUG_STATUS);  
-> > > +        if (!mem_st->hw_reduced_acpi) {
-> > > +            acpi_send_event(DEVICE(hotplug_dev),  
-> > ACPI_MEMORY_HOTPLUG_STATUS);  
-> > > +        }
-> > >      }
-> > >  }
-> > >
-> > > @@ -341,7 +343,8 @@ const VMStateDescription  
-> > vmstate_memory_hotplug =  
-> > > {
-> > >
-> > >  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
-> > >                                const char *res_root,
-> > > -                              const char *event_handler_method)
-> > > +                              const char *event_handler_method,
-> > > +                              AmlRegionSpace rs)
-> > >  {
-> > >      int i;
-> > >      Aml *ifctx;
-> > > @@ -371,7 +374,7 @@ void build_memory_hotplug_aml(Aml *table,  
-> > uint32_t nr_mem,  
-> > >          aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
-> > >
-> > >          aml_append(mem_ctrl_dev, aml_operation_region(
-> > > -            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
-> > > +            MEMORY_HOTPLUG_IO_REGION, rs,
-> > >              aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)  
-> > Given the change in the datatype (memhp_io_base) is it OK to keep the
-> > aml_int() cast.  
-> 
-> Hmm...aml_int() has uint64_t but not sure hwaddr will cause any unwarranted effects on
-> other platforms. Do you see any potential issues here?
-aml_int encodes it according to the value so it should e fine
+This is the second version of my system tests for TCG. We actually
+only enable system tests for ARM and Xtensa but the framework is all
+there for adding the others. I thought I'd get this out for comment
+before starting on some softmmu tests for my demacro series. Also in
+this set:
 
-> 
-> > Also we have
-> > "
-> >         aml_append(crs,
-> >             aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
-> >                    MEMORY_HOTPLUG_IO_LEN)
-> >         );
-> > " where we have aml_io being used + AML_decode16. Shouldn't we have
-> > aml_*_memory depending on rs?  
-> 
-> That looks like a valid point, but then I wonder how this worked. I will double check.
+  - add cris linux-user to check-tcg
+  - fixup some mips hello-world
+  - gdb test runner
+  - .travis.yml tweaks
 
-maybe use aml_memory32_fixed() or aml_[dq]word_memory()
+checkpatch complains a bit due to the motion of the cris tests. I
+actually clean-up the errors in the next patch but didn't want to
+merge them together in-case something got missed in the noise.
 
-  
-> > I am not knowledged enough about the aml description but just in case.  
-> 
-> Same here :).
-> 
-> Thanks,
-> Shameer
-> 
-> 
-> > Thanks
-> > 
-> > Eric
-> >   
-> > >          );
-> > >
-> > > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c index
-> > > 2e21a31..b62c1a3 100644
-> > > --- a/hw/i386/acpi-build.c
-> > > +++ b/hw/i386/acpi-build.c
-> > > @@ -1852,7 +1852,8 @@ build_dsdt(GArray *table_data, BIOSLinker  
-> > *linker,  
-> > >          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
-> > >                         "\\_SB.PCI0", "\\_GPE._E02");
-> > >      }
-> > > -    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",  
-> > "\\_GPE._E03");  
-> > > +    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
-> > > +                             "\\_GPE._E03", AML_SYSTEM_IO);
-> > >
-> > >      scope =  aml_scope("_GPE");
-> > >      {
-> > > diff --git a/include/hw/acpi/memory_hotplug.h
-> > > b/include/hw/acpi/memory_hotplug.h
-> > > index 77c6576..ec56579 100644
-> > > --- a/include/hw/acpi/memory_hotplug.h
-> > > +++ b/include/hw/acpi/memory_hotplug.h
-> > > @@ -26,10 +26,11 @@ typedef struct MemHotplugState {
-> > >      uint32_t selector;
-> > >      uint32_t dev_count;
-> > >      MemStatus *devs;
-> > > +    bool hw_reduced_acpi; /*true for hw reduced acpi platform */
-> > >  } MemHotplugState;
-> > >
-> > >  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
-> > > -                              MemHotplugState *state, uint16_t  
-> > io_base);  
-> > > +                              MemHotplugState *state, hwaddr
-> > > + io_base);
-> > >
-> > >  void acpi_memory_plug_cb(HotplugHandler *hotplug_dev,  
-> > MemHotplugState *mem_st,  
-> > >                           DeviceState *dev, Error **errp); @@ -48,5
-> > > +49,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st,
-> > > ACPIOSTInfoList ***list);
-> > >
-> > >  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
-> > >                                const char *res_root,
-> > > -                              const char *event_handler_method);
-> > > +                              const char *event_handler_method,
-> > > +                              AmlRegionSpace rs);
-> > >  #endif
-> > >  
+The following patches need review
+  patch 0004/tests tcg add gdb runner variant.patch
+  patch 0005/tests tcg mips fix hello mips compilation.patch
+  patch 0007/tests tcg xtensa enable system tests.patch
+  patch 0009/tests docker add fedora cris cross compilers.patch
+  patch 0010/tests tcg split cris tests into bare and libc dir.patch
+  patch 0011/tests tcg cris cleanup sys.c.patch
+  patch 0012/tests tcg cris comment out the ccs test.patch
+  patch 0013/tests tcg cris align mul operations.patch
+  patch 0014/tests tcg enable cris base user mode tests.patch
+  patch 0015/.travis.yml separate softfloat from check tcg.patch
+  patch 0016/.travis.yml add softmmu check tcg tests.patch
 
+Alex Bennée (14):
+  tests/tcg: add softmmu awareness to Makefile
+  tests/tcg: enable tcg tests for softmmu
+  tests/tcg: add QEMU_OPT option for test runner
+  tests/tcg: add gdb runner variant
+  tests/tcg/mips: fix hello-mips compilation
+  tests/tcg/xtensa: enable system tests
+  tests/docker: add fedora-cris-cross compilers
+  tests/tcg: split cris tests into bare and libc directories
+  tests/tcg/cris: cleanup sys.c
+  tests/tcg/cris: comment out the ccs test
+  tests/tcg/cris: align mul operations
+  tests/tcg: enable cris base user-mode tests
+  .travis.yml: separate softfloat from check-tcg
+  .travis.yml: add softmmu check-tcg tests
+
+Philippe Mathieu-Daudé (1):
+  tests/docker: add debian-xtensa-cross image
+
+Stefan Hajnoczi (1):
+  tests/tcg/arm: add ARMv6-M UNDEFINED 32-bit instruction test
+
+ .travis.yml                                   |  12 ++
+ Makefile.target                               |   2 -
+ tests/Makefile.include                        |   9 +-
+ tests/docker/Makefile.include                 |   1 +
+ .../dockerfiles/debian-xtensa-cross.docker    |  31 ++++
+ .../dockerfiles/fedora-cris-cross.docker      |   8 +
+ tests/tcg/Makefile                            |  25 ++-
+ tests/tcg/Makefile.include                    |   2 +-
+ tests/tcg/arm/Makefile.softmmu-target         |  29 +++
+ tests/tcg/arm/test-armv6m-undef.S             | 154 ++++++++++++++++
+ tests/tcg/arm/test-armv6m-undef.ld            |  21 +++
+ tests/tcg/cris/Makefile                       | 168 ------------------
+ tests/tcg/cris/Makefile.include               |   6 +
+ tests/tcg/cris/Makefile.target                |  58 ++++++
+ tests/tcg/cris/{ => bare}/check_addcv17.s     |   0
+ tests/tcg/cris/{ => bare}/check_addi.s        |   0
+ tests/tcg/cris/{ => bare}/check_addiv32.s     |   0
+ tests/tcg/cris/{ => bare}/check_addm.s        |   0
+ tests/tcg/cris/{ => bare}/check_addq.s        |   0
+ tests/tcg/cris/{ => bare}/check_addr.s        |   0
+ tests/tcg/cris/{ => bare}/check_addxc.s       |   0
+ tests/tcg/cris/{ => bare}/check_addxm.s       |   0
+ tests/tcg/cris/{ => bare}/check_addxr.s       |   0
+ tests/tcg/cris/{ => bare}/check_andc.s        |   0
+ tests/tcg/cris/{ => bare}/check_andm.s        |   0
+ tests/tcg/cris/{ => bare}/check_andq.s        |   0
+ tests/tcg/cris/{ => bare}/check_andr.s        |   0
+ tests/tcg/cris/{ => bare}/check_asr.s         |   0
+ tests/tcg/cris/{ => bare}/check_ba.s          |   0
+ tests/tcg/cris/{ => bare}/check_bas.s         |   0
+ tests/tcg/cris/{ => bare}/check_bcc.s         |   0
+ tests/tcg/cris/{ => bare}/check_boundc.s      |   0
+ tests/tcg/cris/{ => bare}/check_boundr.s      |   0
+ tests/tcg/cris/{ => bare}/check_btst.s        |  14 +-
+ tests/tcg/cris/{ => bare}/check_clearfv32.s   |   0
+ tests/tcg/cris/{ => bare}/check_clrjmp1.s     |   0
+ tests/tcg/cris/{ => bare}/check_cmp-2.s       |   0
+ tests/tcg/cris/{ => bare}/check_cmpc.s        |   0
+ tests/tcg/cris/{ => bare}/check_cmpm.s        |   0
+ tests/tcg/cris/{ => bare}/check_cmpq.s        |   0
+ tests/tcg/cris/{ => bare}/check_cmpr.s        |   0
+ tests/tcg/cris/{ => bare}/check_cmpxc.s       |   0
+ tests/tcg/cris/{ => bare}/check_cmpxm.s       |   0
+ tests/tcg/cris/{ => bare}/check_dstep.s       |   0
+ tests/tcg/cris/{ => bare}/check_jsr.s         |   0
+ tests/tcg/cris/{ => bare}/check_lapc.s        |   0
+ tests/tcg/cris/{ => bare}/check_lsl.s         |   0
+ tests/tcg/cris/{ => bare}/check_lsr.s         |   0
+ tests/tcg/cris/{ => bare}/check_mcp.s         |   0
+ tests/tcg/cris/{ => bare}/check_movdelsr1.s   |   0
+ tests/tcg/cris/{ => bare}/check_movecr.s      |   0
+ tests/tcg/cris/{ => bare}/check_movei.s       |   0
+ tests/tcg/cris/{ => bare}/check_movemr.s      |   0
+ tests/tcg/cris/{ => bare}/check_movemrv32.s   |   0
+ tests/tcg/cris/{ => bare}/check_mover.s       |   0
+ tests/tcg/cris/{ => bare}/check_moverm.s      |   0
+ tests/tcg/cris/{ => bare}/check_movmp.s       |   0
+ tests/tcg/cris/{ => bare}/check_movpmv32.s    |   0
+ tests/tcg/cris/{ => bare}/check_movpr.s       |   0
+ tests/tcg/cris/{ => bare}/check_movprv32.s    |   0
+ tests/tcg/cris/{ => bare}/check_movscr.s      |   0
+ tests/tcg/cris/{ => bare}/check_movsm.s       |   0
+ tests/tcg/cris/{ => bare}/check_movsr.s       |   0
+ tests/tcg/cris/{ => bare}/check_movucr.s      |   0
+ tests/tcg/cris/{ => bare}/check_movum.s       |   0
+ tests/tcg/cris/{ => bare}/check_movur.s       |   0
+ tests/tcg/cris/{ => bare}/check_mulv32.s      |   0
+ tests/tcg/cris/{ => bare}/check_mulx.s        |  11 ++
+ tests/tcg/cris/{ => bare}/check_neg.s         |   0
+ tests/tcg/cris/{ => bare}/check_not.s         |   0
+ tests/tcg/cris/{ => bare}/check_orc.s         |   0
+ tests/tcg/cris/{ => bare}/check_orm.s         |   0
+ tests/tcg/cris/{ => bare}/check_orq.s         |   0
+ tests/tcg/cris/{ => bare}/check_orr.s         |   0
+ tests/tcg/cris/{ => bare}/check_ret.s         |   0
+ tests/tcg/cris/{ => bare}/check_scc.s         |   0
+ tests/tcg/cris/{ => bare}/check_subc.s        |   0
+ tests/tcg/cris/{ => bare}/check_subm.s        |   0
+ tests/tcg/cris/{ => bare}/check_subq.s        |   0
+ tests/tcg/cris/{ => bare}/check_subr.s        |   0
+ tests/tcg/cris/{ => bare}/check_xarith.s      |   0
+ tests/tcg/cris/{ => bare}/crt.s               |   0
+ tests/tcg/cris/bare/sys.c                     |  59 ++++++
+ tests/tcg/cris/{ => bare}/testutils.inc       |   0
+ tests/tcg/cris/{ => libc}/check_abs.c         |   0
+ tests/tcg/cris/{ => libc}/check_addc.c        |   0
+ tests/tcg/cris/{ => libc}/check_addcm.c       |   0
+ tests/tcg/cris/{ => libc}/check_addo.c        |   0
+ tests/tcg/cris/{ => libc}/check_addoq.c       |   0
+ tests/tcg/cris/{ => libc}/check_bound.c       |   0
+ tests/tcg/cris/{ => libc}/check_ftag.c        |   0
+ .../{ => libc}/check_gcctorture_pr28634-1.c   |   0
+ .../{ => libc}/check_gcctorture_pr28634.c     |   0
+ .../{ => libc}/check_glibc_kernelversion.c    |   0
+ tests/tcg/cris/{ => libc}/check_hello.c       |   0
+ tests/tcg/cris/{ => libc}/check_int64.c       |   0
+ tests/tcg/cris/{ => libc}/check_lz.c          |   0
+ tests/tcg/cris/{ => libc}/check_mapbrk.c      |   0
+ tests/tcg/cris/{ => libc}/check_mmap1.c       |   0
+ tests/tcg/cris/{ => libc}/check_mmap2.c       |   0
+ tests/tcg/cris/{ => libc}/check_mmap3.c       |   0
+ tests/tcg/cris/{ => libc}/check_moveq.c       |   0
+ tests/tcg/cris/{ => libc}/check_openpf1.c     |   0
+ tests/tcg/cris/{ => libc}/check_openpf2.c     |   0
+ tests/tcg/cris/{ => libc}/check_openpf3.c     |   0
+ tests/tcg/cris/{ => libc}/check_openpf5.c     |   0
+ tests/tcg/cris/{ => libc}/check_settls1.c     |   0
+ tests/tcg/cris/{ => libc}/check_sigalrm.c     |   0
+ tests/tcg/cris/{ => libc}/check_stat1.c       |   0
+ tests/tcg/cris/{ => libc}/check_stat2.c       |   0
+ tests/tcg/cris/{ => libc}/check_stat3.c       |   0
+ tests/tcg/cris/{ => libc}/check_stat4.c       |   0
+ tests/tcg/cris/{ => libc}/check_swap.c        |   0
+ tests/tcg/cris/{ => libc}/check_time2.c       |   0
+ tests/tcg/cris/{ => libc}/crisutils.h         |   0
+ tests/tcg/cris/{ => libc}/sys.c               |  74 ++++----
+ tests/tcg/cris/{ => libc}/sys.h               |   0
+ tests/tcg/mips/Makefile.target                |  11 +-
+ tests/tcg/mips/hello-mips.c                   |   2 +-
+ tests/tcg/xtensa/Makefile                     |  93 ----------
+ tests/tcg/xtensa/Makefile.include             |  11 ++
+ tests/tcg/xtensa/Makefile.softmmu-target      |  40 +++++
+ 122 files changed, 520 insertions(+), 321 deletions(-)
+ create mode 100644 tests/docker/dockerfiles/debian-xtensa-cross.docker
+ create mode 100644 tests/docker/dockerfiles/fedora-cris-cross.docker
+ create mode 100644 tests/tcg/arm/Makefile.softmmu-target
+ create mode 100644 tests/tcg/arm/test-armv6m-undef.S
+ create mode 100644 tests/tcg/arm/test-armv6m-undef.ld
+ delete mode 100644 tests/tcg/cris/Makefile
+ create mode 100644 tests/tcg/cris/Makefile.include
+ create mode 100644 tests/tcg/cris/Makefile.target
+ rename tests/tcg/cris/{ => bare}/check_addcv17.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addi.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addiv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addq.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addxc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addxm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_addxr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_andc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_andm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_andq.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_andr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_asr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_ba.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_bas.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_bcc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_boundc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_boundr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_btst.s (89%)
+ rename tests/tcg/cris/{ => bare}/check_clearfv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_clrjmp1.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmp-2.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpq.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpxc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_cmpxm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_dstep.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_jsr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_lapc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_lsl.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_lsr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_mcp.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movdelsr1.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movecr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movei.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movemr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movemrv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_mover.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_moverm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movmp.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movpmv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movpr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movprv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movscr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movsm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movsr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movucr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movum.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_movur.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_mulv32.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_mulx.s (98%)
+ rename tests/tcg/cris/{ => bare}/check_neg.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_not.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_orc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_orm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_orq.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_orr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_ret.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_scc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_subc.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_subm.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_subq.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_subr.s (100%)
+ rename tests/tcg/cris/{ => bare}/check_xarith.s (100%)
+ rename tests/tcg/cris/{ => bare}/crt.s (100%)
+ create mode 100644 tests/tcg/cris/bare/sys.c
+ rename tests/tcg/cris/{ => bare}/testutils.inc (100%)
+ rename tests/tcg/cris/{ => libc}/check_abs.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_addc.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_addcm.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_addo.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_addoq.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_bound.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_ftag.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634-1.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_glibc_kernelversion.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_hello.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_int64.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_lz.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_mapbrk.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_mmap1.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_mmap2.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_mmap3.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_moveq.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_openpf1.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_openpf2.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_openpf3.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_openpf5.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_settls1.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_sigalrm.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_stat1.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_stat2.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_stat3.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_stat4.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_swap.c (100%)
+ rename tests/tcg/cris/{ => libc}/check_time2.c (100%)
+ rename tests/tcg/cris/{ => libc}/crisutils.h (100%)
+ rename tests/tcg/cris/{ => libc}/sys.c (69%)
+ rename tests/tcg/cris/{ => libc}/sys.h (100%)
+ delete mode 100644 tests/tcg/xtensa/Makefile
+ create mode 100644 tests/tcg/xtensa/Makefile.include
+ create mode 100644 tests/tcg/xtensa/Makefile.softmmu-target
+
+-- 
+2.20.1

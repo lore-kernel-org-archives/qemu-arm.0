@@ -1,99 +1,98 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1148957wrx;
-        Thu, 28 Feb 2019 15:24:19 -0800 (PST)
-X-Received: by 2002:a81:7a04:: with SMTP id v4mr1364882ywc.410.1551396259040;
-        Thu, 28 Feb 2019 15:24:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551396259; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1151725wrx;
+        Thu, 28 Feb 2019 15:28:22 -0800 (PST)
+X-Received: by 2002:a5d:474f:: with SMTP id o15mr1305518wrs.70.1551396502528;
+        Thu, 28 Feb 2019 15:28:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551396502; cv=none;
         d=google.com; s=arc-20160816;
-        b=VCAmw8tvQGo8JlMwwhwdaaY1nRUCDf7XZcq4UdUrrFZ0TDxyVUYEn78iWAQj+hC7d4
-         rswa4l7epNWwZ0rKUWQ/Sywk6J4EKeitwZaRVSWkYfPVKmaOnruJQPQQj9YSyermlIua
-         FL892fRTEWs+OML8Ro/5HGZVJRYA5SEgg72V5kaGF0TgCS5/Q2OsfAWUxXtygBxc2lVQ
-         GCZHpqQdHrWRdjpnfM3YppgoK5zA98DPYiuB5b1R8nr6JL4RPSDZZYahXBMwuo/M1/AD
-         AujGDI5EdJDSlzidrLovfk9VPFrYPC3Hg1GDY7z+GcIKbr6sTtSsSjIGIqyYrbE6IAzF
-         MJEw==
+        b=hSmtD4FRlmF0Odw26QFKhJS9aPGl01s7T/mPiR7+4P7emAhtAuEJ0o8THUdxFxTOol
+         iYNIp4FMGvl1/RlMltbYx5wD+blradPOf4OJZXzCMp14qIvj3tEsmoVLo2TJmApp9g2R
+         Zk4i+c24yk3aOfM0Dmm5cbThqMDO3HP/q7jr1GwMmZZmScTQ8AmHinha/kxHiDeprwLL
+         zLbB9hCKwG6OqgeFbr+gAuVI7hXlwfLfi8iyfPXWiAzJV4Sd1hsfreoVUY1p5T2u2sIf
+         rvNtW/iV/szvMBYH1OIxbRL6wo/Ya3i4+6TcTBS7sMcjUcqgcJMYd4Qa6J1VlvWuuiWO
+         aFbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ecqNqYuel6F+52FGkYyr+31FyYAt9r0IgpPKpAwPZ1Q=;
-        b=vxBV1cTsVz5Z4YdKbGyydXhKnVOCZOofIlIwqEWZCQrV+vi4tW1MRue5XzMZKadn/I
-         5raL0xiqjN4eX1D21rtqXL+HTRPZSrvIg+gMFWR0olbF2ypNIjykNhlnpBmv+2/PnWZC
-         wVz8V8Wm3plKMFMYVqJUK/WkIwxJQQwPhNZzUlZHb9S0QH2hHXTAaG7bro5E+yNWNt/w
-         K/LtZdCYcmb2U/wcXEHJLPjgH/MI2INDDoPGPEK2ehjQtcEhFLi27NmKJHFMO+l8PB+F
-         bDLvCrfB/d/mP+kZVI0XnCW/wrUQMQWp77gdREbjXxItRFt0lzRqeE/kmLe/aQzuUDeR
-         72UQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=h9jVCQsB4tARWZjQGcMFm92MOXElUeKeVVR9SGPqjd4=;
+        b=XGHjqXI6xGae5BZOltFh7NnOkMxuidI2TrcjIshpAAbQmmJcTPQTVeSRyW3WATKBOh
+         38RheHqRN3la8ZVDz5GubZ9YM1g5uaZPVjJhrLvzWpqmV0POUCVM+QdQwjJh8FlU93eS
+         sgP1Aowia57f8aB74bg48md3jP2+49VJg6or2nfwI5rLHD9qibD5gM3F1OZDdkep0oDW
+         f2RMVGuRMVCQtFIJjQvF6KS9qPdaWbPk5csVXyjwF4drKzntWXHDBsMMGi/Qej8BH8WP
+         s2jBNzD/l9vrcEyjbhqq4TBRTZdjWGep+TlJ/+NIbUFfW/8SGawQkeRnADYU+ztS3Ela
+         ogcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rELL14x7;
-       spf=pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jcmvbkbc@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jcmvbkbc@gmail.com>
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o137sor10714225ybc.23.2019.02.28.15.24.18
+        by mx.google.com with SMTPS id b14sor14663584wrx.20.2019.02.28.15.28.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 28 Feb 2019 15:24:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Thu, 28 Feb 2019 15:28:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rELL14x7;
-       spf=pass (google.com: domain of jcmvbkbc@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=jcmvbkbc@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=ecqNqYuel6F+52FGkYyr+31FyYAt9r0IgpPKpAwPZ1Q=;
-        b=rELL14x7bnI3HNEVINlB7AJeVKSpNnmQH3Q/uzomVzRuiGhpF/pBgCJPgknvLAH9ao
-         IDskPzmI0IFcPD1yYtfcZZDQ2v8tQBZVv1YO8ulDy/UE0ZEL8VV1hn+abi2czDWQcDXK
-         4DWPvYskB+frA+88/7nPKqjVS2u9RPaJbou/fiyowh8i2FHSBSUcfPD+6llD1Ck3aaQw
-         chYtsYX7sU6h5ymDNLwk9fuiiPfOohUxYbU2B3oT2UgEab1BHIlsNoNjkJ8pCD5CxxoN
-         WA9lDCdCfcqBxu6TEN2uR/Z6PhCHevxMvJ8lAeVZdYSgud85F1QdARjpQmeWAibtX54s
-         QRhg==
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=ecqNqYuel6F+52FGkYyr+31FyYAt9r0IgpPKpAwPZ1Q=;
-        b=rHvbz3mIy950IcFouqVRgvjt5p3RXLGDSWZITOSdolUlHzNFyDTPDP2IDo/cp60/Qd
-         0CuqN/Bt5wjQbRMeYUlaNtZuDItMQ3gPM11w8ryhQ1sIvpST+sa1Y11mPtAKmptdxed7
-         aJfGjetu9v1CjokhQz/51azBCCiN7XwzGIr5BRtNVXS5caorrk3di+ymBHQzpzdtQSuC
-         tt91/r1AQnR3+rym1QWG1CvvmAzSlhnkTQwiyBjE847niH99PaFgiD76ziztXhAyLm79
-         jTi1k+znt79v+cmUovqUlk1fG7boO1zsL2w1Iq+Gf5KLDaxP9KpO+7dYKyevg3gPYYg/
-         YeEg==
-X-Gm-Message-State: APjAAAULYWwd/MFS7G2csmjBC9MAoK/5HNA7Kwetu3tNAasK6dn1HEpc
-	iveo9SYkPpHcNSQ6AFxU8cLL/ZXuFVGa+UO6G80=
-X-Google-Smtp-Source: APXvYqwzHHQWpI6bpbYZqx/+D0k2RyICFlStjf9YKUgGhIdhRN2GZWYsk2JCgr7SDV4MI9MqOBAGgD6E4dRvH6/bO8c=
-X-Received: by 2002:a25:e64d:: with SMTP id d74mr1856170ybh.399.1551396258736;
- Thu, 28 Feb 2019 15:24:18 -0800 (PST)
-MIME-Version: 1.0
-References: <20190228202537.4638-1-alex.bennee@linaro.org> <20190228202537.4638-8-alex.bennee@linaro.org>
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=h9jVCQsB4tARWZjQGcMFm92MOXElUeKeVVR9SGPqjd4=;
+        b=ZWTAgiMpMYZ5japjLihkxPvdrLtX99Vir3ohwONyxJyF/++Hd8VTPjE/rXzHoYtGmo
+         5P3GSACu125N5ldF7/QY1R1rY8PEw6ZMAMHU6dj8W9JJqyVUAON5cqD2J72gy5J/JJtU
+         JQVYa2X9ko4pZzWV+CzhFyqRDc+rKywwa8JfSvX1pZs9ou/jbQMSDBKCeqSehJFb5e7s
+         tVCsY4auKhCDHzdhuif8PpEfydo3NDoazzNu3zQ2dqY7T3j2A7fduIrh4tr9IlJQvY9k
+         pwNqpeoBbzJpzdiwdU8bIrpwy3rgpTZx94V4GpEPwilXIdaNM6MfzRXgPujHZYDnqL+u
+         i6pA==
+X-Gm-Message-State: APjAAAVBDqt9AmjogglyaKOeCAYURnXNQyhC5o4QjYL5DeT+DtM8uwZa
+	V2qkXwOLRinq3H8mpSmyhWcbFir1daZ2rA==
+X-Google-Smtp-Source: APXvYqwW/ByiDM1B71mCJxIs8gaAvtLwUEHtB96td8cpwd3qEr+tUgzz/+BsyxU1/+LTp/XZQUxLCg==
+X-Received: by 2002:adf:f6ca:: with SMTP id y10mr1248437wrp.148.1551396502291;
+        Thu, 28 Feb 2019 15:28:22 -0800 (PST)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net. [88.25.181.43])
+        by smtp.gmail.com with ESMTPSA id g81sm6923894wmf.7.2019.02.28.15.28.21
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Feb 2019 15:28:21 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 07/16] tests/tcg/xtensa: enable system
+ tests
+To: Max Filippov <jcmvbkbc@gmail.com>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel <qemu-devel@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <20190228202537.4638-1-alex.bennee@linaro.org>
+ <20190228202537.4638-8-alex.bennee@linaro.org>
  <71a55c0c-3c09-edea-82a5-63fb0cfb4f12@redhat.com>
-In-Reply-To: <71a55c0c-3c09-edea-82a5-63fb0cfb4f12@redhat.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Thu, 28 Feb 2019 15:24:06 -0800
-Message-ID: <CAMo8BfKvQZyp3ri356LoqCDhsFszU5proLGH2MBbBi2pgRZ4rw@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 07/16] tests/tcg/xtensa: enable system tests
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel <qemu-devel@nongnu.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WP4aqYEU9eZH
+ <CAMo8BfKvQZyp3ri356LoqCDhsFszU5proLGH2MBbBi2pgRZ4rw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <a845da4a-603f-a469-77a8-028c5a5d2063@redhat.com>
+Date: Fri, 1 Mar 2019 00:28:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
+MIME-Version: 1.0
+In-Reply-To: <CAMo8BfKvQZyp3ri356LoqCDhsFszU5proLGH2MBbBi2pgRZ4rw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: +CzCAYcZnkOK
 
-On Thu, Feb 28, 2019 at 2:54 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
-> Max: I think it should be quite easy to port your simulator to Alex's
-> new Makefile.
+On 3/1/19 12:24 AM, Max Filippov wrote:
+> On Thu, Feb 28, 2019 at 2:54 PM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+> 
+>> BTW is this simulator downloadable? I see the Zephyr project also uses
+>> it, and I looked for it on https://ip.cadence.com/swdev but couldnt find
+>> a (public) link.
+> 
+> There's a site https://www.tensilicatools.com/
+> with tools for various end-user-programmable xtensa cores,
+> but I'm pretty sure that neither dc232b nor dc233c are available
+> there.
 
-I agree.
+Thanks!
 
-> BTW is this simulator downloadable? I see the Zephyr project also uses
-> it, and I looked for it on https://ip.cadence.com/swdev but couldnt find
-> a (public) link.
-
-There's a site https://www.tensilicatools.com/
-with tools for various end-user-programmable xtensa cores,
-but I'm pretty sure that neither dc232b nor dc233c are available
-there.
-
---=20
-Thanks.
--- Max
+Phil.

@@ -1,315 +1,98 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o127sm6762492wmo.20.2019.02.28.12.25.37
+        by smtp.gmail.com with ESMTPSA id m189sm6380630wmf.7.2019.02.28.12.25.37
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 28 Feb 2019 12:25:37 -0800 (PST)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 617C71FF80;
+	by zen.linaroharston (Postfix) with ESMTP id 6E9F61FF82;
 	Thu, 28 Feb 2019 20:25:37 +0000 (UTC)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	edgar.iglesias@gmail.com,
 	jcmvbkbc@gmail.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 00/16] Enabling tcg/tests for cris and system mode xtensa & arm
-Date: Thu, 28 Feb 2019 20:25:21 +0000
-Message-Id: <20190228202537.4638-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH  v2 01/16] tests/tcg: add softmmu awareness to Makefile
+Date: Thu, 28 Feb 2019 20:25:22 +0000
+Message-Id: <20190228202537.4638-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190228202537.4638-1-alex.bennee@linaro.org>
+References: <20190228202537.4638-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6OiMmaUzQ+F/
+X-TUID: QRVwgOy093H+
 
-Hi,
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tests/tcg/Makefile         | 17 ++++++++++++++++-
+ tests/tcg/Makefile.include |  2 +-
+ 2 files changed, 17 insertions(+), 2 deletions(-)
 
-This is the second version of my system tests for TCG. We actually
-only enable system tests for ARM and Xtensa but the framework is all
-there for adding the others. I thought I'd get this out for comment
-before starting on some softmmu tests for my demacro series. Also in
-this set:
-
-  - add cris linux-user to check-tcg
-  - fixup some mips hello-world
-  - gdb test runner
-  - .travis.yml tweaks
-
-checkpatch complains a bit due to the motion of the cris tests. I
-actually clean-up the errors in the next patch but didn't want to
-merge them together in-case something got missed in the noise.
-
-The following patches need review
-  patch 0004/tests tcg add gdb runner variant.patch
-  patch 0005/tests tcg mips fix hello mips compilation.patch
-  patch 0007/tests tcg xtensa enable system tests.patch
-  patch 0009/tests docker add fedora cris cross compilers.patch
-  patch 0010/tests tcg split cris tests into bare and libc dir.patch
-  patch 0011/tests tcg cris cleanup sys.c.patch
-  patch 0012/tests tcg cris comment out the ccs test.patch
-  patch 0013/tests tcg cris align mul operations.patch
-  patch 0014/tests tcg enable cris base user mode tests.patch
-  patch 0015/.travis.yml separate softfloat from check tcg.patch
-  patch 0016/.travis.yml add softmmu check tcg tests.patch
-
-Alex Bennée (14):
-  tests/tcg: add softmmu awareness to Makefile
-  tests/tcg: enable tcg tests for softmmu
-  tests/tcg: add QEMU_OPT option for test runner
-  tests/tcg: add gdb runner variant
-  tests/tcg/mips: fix hello-mips compilation
-  tests/tcg/xtensa: enable system tests
-  tests/docker: add fedora-cris-cross compilers
-  tests/tcg: split cris tests into bare and libc directories
-  tests/tcg/cris: cleanup sys.c
-  tests/tcg/cris: comment out the ccs test
-  tests/tcg/cris: align mul operations
-  tests/tcg: enable cris base user-mode tests
-  .travis.yml: separate softfloat from check-tcg
-  .travis.yml: add softmmu check-tcg tests
-
-Philippe Mathieu-Daudé (1):
-  tests/docker: add debian-xtensa-cross image
-
-Stefan Hajnoczi (1):
-  tests/tcg/arm: add ARMv6-M UNDEFINED 32-bit instruction test
-
- .travis.yml                                   |  12 ++
- Makefile.target                               |   2 -
- tests/Makefile.include                        |   9 +-
- tests/docker/Makefile.include                 |   1 +
- .../dockerfiles/debian-xtensa-cross.docker    |  31 ++++
- .../dockerfiles/fedora-cris-cross.docker      |   8 +
- tests/tcg/Makefile                            |  25 ++-
- tests/tcg/Makefile.include                    |   2 +-
- tests/tcg/arm/Makefile.softmmu-target         |  29 +++
- tests/tcg/arm/test-armv6m-undef.S             | 154 ++++++++++++++++
- tests/tcg/arm/test-armv6m-undef.ld            |  21 +++
- tests/tcg/cris/Makefile                       | 168 ------------------
- tests/tcg/cris/Makefile.include               |   6 +
- tests/tcg/cris/Makefile.target                |  58 ++++++
- tests/tcg/cris/{ => bare}/check_addcv17.s     |   0
- tests/tcg/cris/{ => bare}/check_addi.s        |   0
- tests/tcg/cris/{ => bare}/check_addiv32.s     |   0
- tests/tcg/cris/{ => bare}/check_addm.s        |   0
- tests/tcg/cris/{ => bare}/check_addq.s        |   0
- tests/tcg/cris/{ => bare}/check_addr.s        |   0
- tests/tcg/cris/{ => bare}/check_addxc.s       |   0
- tests/tcg/cris/{ => bare}/check_addxm.s       |   0
- tests/tcg/cris/{ => bare}/check_addxr.s       |   0
- tests/tcg/cris/{ => bare}/check_andc.s        |   0
- tests/tcg/cris/{ => bare}/check_andm.s        |   0
- tests/tcg/cris/{ => bare}/check_andq.s        |   0
- tests/tcg/cris/{ => bare}/check_andr.s        |   0
- tests/tcg/cris/{ => bare}/check_asr.s         |   0
- tests/tcg/cris/{ => bare}/check_ba.s          |   0
- tests/tcg/cris/{ => bare}/check_bas.s         |   0
- tests/tcg/cris/{ => bare}/check_bcc.s         |   0
- tests/tcg/cris/{ => bare}/check_boundc.s      |   0
- tests/tcg/cris/{ => bare}/check_boundr.s      |   0
- tests/tcg/cris/{ => bare}/check_btst.s        |  14 +-
- tests/tcg/cris/{ => bare}/check_clearfv32.s   |   0
- tests/tcg/cris/{ => bare}/check_clrjmp1.s     |   0
- tests/tcg/cris/{ => bare}/check_cmp-2.s       |   0
- tests/tcg/cris/{ => bare}/check_cmpc.s        |   0
- tests/tcg/cris/{ => bare}/check_cmpm.s        |   0
- tests/tcg/cris/{ => bare}/check_cmpq.s        |   0
- tests/tcg/cris/{ => bare}/check_cmpr.s        |   0
- tests/tcg/cris/{ => bare}/check_cmpxc.s       |   0
- tests/tcg/cris/{ => bare}/check_cmpxm.s       |   0
- tests/tcg/cris/{ => bare}/check_dstep.s       |   0
- tests/tcg/cris/{ => bare}/check_jsr.s         |   0
- tests/tcg/cris/{ => bare}/check_lapc.s        |   0
- tests/tcg/cris/{ => bare}/check_lsl.s         |   0
- tests/tcg/cris/{ => bare}/check_lsr.s         |   0
- tests/tcg/cris/{ => bare}/check_mcp.s         |   0
- tests/tcg/cris/{ => bare}/check_movdelsr1.s   |   0
- tests/tcg/cris/{ => bare}/check_movecr.s      |   0
- tests/tcg/cris/{ => bare}/check_movei.s       |   0
- tests/tcg/cris/{ => bare}/check_movemr.s      |   0
- tests/tcg/cris/{ => bare}/check_movemrv32.s   |   0
- tests/tcg/cris/{ => bare}/check_mover.s       |   0
- tests/tcg/cris/{ => bare}/check_moverm.s      |   0
- tests/tcg/cris/{ => bare}/check_movmp.s       |   0
- tests/tcg/cris/{ => bare}/check_movpmv32.s    |   0
- tests/tcg/cris/{ => bare}/check_movpr.s       |   0
- tests/tcg/cris/{ => bare}/check_movprv32.s    |   0
- tests/tcg/cris/{ => bare}/check_movscr.s      |   0
- tests/tcg/cris/{ => bare}/check_movsm.s       |   0
- tests/tcg/cris/{ => bare}/check_movsr.s       |   0
- tests/tcg/cris/{ => bare}/check_movucr.s      |   0
- tests/tcg/cris/{ => bare}/check_movum.s       |   0
- tests/tcg/cris/{ => bare}/check_movur.s       |   0
- tests/tcg/cris/{ => bare}/check_mulv32.s      |   0
- tests/tcg/cris/{ => bare}/check_mulx.s        |  11 ++
- tests/tcg/cris/{ => bare}/check_neg.s         |   0
- tests/tcg/cris/{ => bare}/check_not.s         |   0
- tests/tcg/cris/{ => bare}/check_orc.s         |   0
- tests/tcg/cris/{ => bare}/check_orm.s         |   0
- tests/tcg/cris/{ => bare}/check_orq.s         |   0
- tests/tcg/cris/{ => bare}/check_orr.s         |   0
- tests/tcg/cris/{ => bare}/check_ret.s         |   0
- tests/tcg/cris/{ => bare}/check_scc.s         |   0
- tests/tcg/cris/{ => bare}/check_subc.s        |   0
- tests/tcg/cris/{ => bare}/check_subm.s        |   0
- tests/tcg/cris/{ => bare}/check_subq.s        |   0
- tests/tcg/cris/{ => bare}/check_subr.s        |   0
- tests/tcg/cris/{ => bare}/check_xarith.s      |   0
- tests/tcg/cris/{ => bare}/crt.s               |   0
- tests/tcg/cris/bare/sys.c                     |  59 ++++++
- tests/tcg/cris/{ => bare}/testutils.inc       |   0
- tests/tcg/cris/{ => libc}/check_abs.c         |   0
- tests/tcg/cris/{ => libc}/check_addc.c        |   0
- tests/tcg/cris/{ => libc}/check_addcm.c       |   0
- tests/tcg/cris/{ => libc}/check_addo.c        |   0
- tests/tcg/cris/{ => libc}/check_addoq.c       |   0
- tests/tcg/cris/{ => libc}/check_bound.c       |   0
- tests/tcg/cris/{ => libc}/check_ftag.c        |   0
- .../{ => libc}/check_gcctorture_pr28634-1.c   |   0
- .../{ => libc}/check_gcctorture_pr28634.c     |   0
- .../{ => libc}/check_glibc_kernelversion.c    |   0
- tests/tcg/cris/{ => libc}/check_hello.c       |   0
- tests/tcg/cris/{ => libc}/check_int64.c       |   0
- tests/tcg/cris/{ => libc}/check_lz.c          |   0
- tests/tcg/cris/{ => libc}/check_mapbrk.c      |   0
- tests/tcg/cris/{ => libc}/check_mmap1.c       |   0
- tests/tcg/cris/{ => libc}/check_mmap2.c       |   0
- tests/tcg/cris/{ => libc}/check_mmap3.c       |   0
- tests/tcg/cris/{ => libc}/check_moveq.c       |   0
- tests/tcg/cris/{ => libc}/check_openpf1.c     |   0
- tests/tcg/cris/{ => libc}/check_openpf2.c     |   0
- tests/tcg/cris/{ => libc}/check_openpf3.c     |   0
- tests/tcg/cris/{ => libc}/check_openpf5.c     |   0
- tests/tcg/cris/{ => libc}/check_settls1.c     |   0
- tests/tcg/cris/{ => libc}/check_sigalrm.c     |   0
- tests/tcg/cris/{ => libc}/check_stat1.c       |   0
- tests/tcg/cris/{ => libc}/check_stat2.c       |   0
- tests/tcg/cris/{ => libc}/check_stat3.c       |   0
- tests/tcg/cris/{ => libc}/check_stat4.c       |   0
- tests/tcg/cris/{ => libc}/check_swap.c        |   0
- tests/tcg/cris/{ => libc}/check_time2.c       |   0
- tests/tcg/cris/{ => libc}/crisutils.h         |   0
- tests/tcg/cris/{ => libc}/sys.c               |  74 ++++----
- tests/tcg/cris/{ => libc}/sys.h               |   0
- tests/tcg/mips/Makefile.target                |  11 +-
- tests/tcg/mips/hello-mips.c                   |   2 +-
- tests/tcg/xtensa/Makefile                     |  93 ----------
- tests/tcg/xtensa/Makefile.include             |  11 ++
- tests/tcg/xtensa/Makefile.softmmu-target      |  40 +++++
- 122 files changed, 520 insertions(+), 321 deletions(-)
- create mode 100644 tests/docker/dockerfiles/debian-xtensa-cross.docker
- create mode 100644 tests/docker/dockerfiles/fedora-cris-cross.docker
- create mode 100644 tests/tcg/arm/Makefile.softmmu-target
- create mode 100644 tests/tcg/arm/test-armv6m-undef.S
- create mode 100644 tests/tcg/arm/test-armv6m-undef.ld
- delete mode 100644 tests/tcg/cris/Makefile
- create mode 100644 tests/tcg/cris/Makefile.include
- create mode 100644 tests/tcg/cris/Makefile.target
- rename tests/tcg/cris/{ => bare}/check_addcv17.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addi.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addiv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addq.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addxc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addxm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_addxr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_andc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_andm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_andq.s (100%)
- rename tests/tcg/cris/{ => bare}/check_andr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_asr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_ba.s (100%)
- rename tests/tcg/cris/{ => bare}/check_bas.s (100%)
- rename tests/tcg/cris/{ => bare}/check_bcc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_boundc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_boundr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_btst.s (89%)
- rename tests/tcg/cris/{ => bare}/check_clearfv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_clrjmp1.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmp-2.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpq.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpxc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_cmpxm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_dstep.s (100%)
- rename tests/tcg/cris/{ => bare}/check_jsr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_lapc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_lsl.s (100%)
- rename tests/tcg/cris/{ => bare}/check_lsr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_mcp.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movdelsr1.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movecr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movei.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movemr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movemrv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_mover.s (100%)
- rename tests/tcg/cris/{ => bare}/check_moverm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movmp.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movpmv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movpr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movprv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movscr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movsm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movsr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movucr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movum.s (100%)
- rename tests/tcg/cris/{ => bare}/check_movur.s (100%)
- rename tests/tcg/cris/{ => bare}/check_mulv32.s (100%)
- rename tests/tcg/cris/{ => bare}/check_mulx.s (98%)
- rename tests/tcg/cris/{ => bare}/check_neg.s (100%)
- rename tests/tcg/cris/{ => bare}/check_not.s (100%)
- rename tests/tcg/cris/{ => bare}/check_orc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_orm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_orq.s (100%)
- rename tests/tcg/cris/{ => bare}/check_orr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_ret.s (100%)
- rename tests/tcg/cris/{ => bare}/check_scc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_subc.s (100%)
- rename tests/tcg/cris/{ => bare}/check_subm.s (100%)
- rename tests/tcg/cris/{ => bare}/check_subq.s (100%)
- rename tests/tcg/cris/{ => bare}/check_subr.s (100%)
- rename tests/tcg/cris/{ => bare}/check_xarith.s (100%)
- rename tests/tcg/cris/{ => bare}/crt.s (100%)
- create mode 100644 tests/tcg/cris/bare/sys.c
- rename tests/tcg/cris/{ => bare}/testutils.inc (100%)
- rename tests/tcg/cris/{ => libc}/check_abs.c (100%)
- rename tests/tcg/cris/{ => libc}/check_addc.c (100%)
- rename tests/tcg/cris/{ => libc}/check_addcm.c (100%)
- rename tests/tcg/cris/{ => libc}/check_addo.c (100%)
- rename tests/tcg/cris/{ => libc}/check_addoq.c (100%)
- rename tests/tcg/cris/{ => libc}/check_bound.c (100%)
- rename tests/tcg/cris/{ => libc}/check_ftag.c (100%)
- rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634-1.c (100%)
- rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634.c (100%)
- rename tests/tcg/cris/{ => libc}/check_glibc_kernelversion.c (100%)
- rename tests/tcg/cris/{ => libc}/check_hello.c (100%)
- rename tests/tcg/cris/{ => libc}/check_int64.c (100%)
- rename tests/tcg/cris/{ => libc}/check_lz.c (100%)
- rename tests/tcg/cris/{ => libc}/check_mapbrk.c (100%)
- rename tests/tcg/cris/{ => libc}/check_mmap1.c (100%)
- rename tests/tcg/cris/{ => libc}/check_mmap2.c (100%)
- rename tests/tcg/cris/{ => libc}/check_mmap3.c (100%)
- rename tests/tcg/cris/{ => libc}/check_moveq.c (100%)
- rename tests/tcg/cris/{ => libc}/check_openpf1.c (100%)
- rename tests/tcg/cris/{ => libc}/check_openpf2.c (100%)
- rename tests/tcg/cris/{ => libc}/check_openpf3.c (100%)
- rename tests/tcg/cris/{ => libc}/check_openpf5.c (100%)
- rename tests/tcg/cris/{ => libc}/check_settls1.c (100%)
- rename tests/tcg/cris/{ => libc}/check_sigalrm.c (100%)
- rename tests/tcg/cris/{ => libc}/check_stat1.c (100%)
- rename tests/tcg/cris/{ => libc}/check_stat2.c (100%)
- rename tests/tcg/cris/{ => libc}/check_stat3.c (100%)
- rename tests/tcg/cris/{ => libc}/check_stat4.c (100%)
- rename tests/tcg/cris/{ => libc}/check_swap.c (100%)
- rename tests/tcg/cris/{ => libc}/check_time2.c (100%)
- rename tests/tcg/cris/{ => libc}/crisutils.h (100%)
- rename tests/tcg/cris/{ => libc}/sys.c (69%)
- rename tests/tcg/cris/{ => libc}/sys.h (100%)
- delete mode 100644 tests/tcg/xtensa/Makefile
- create mode 100644 tests/tcg/xtensa/Makefile.include
- create mode 100644 tests/tcg/xtensa/Makefile.softmmu-target
-
+diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile
+index bf06415390..55feab0f67 100644
+--- a/tests/tcg/Makefile
++++ b/tests/tcg/Makefile
+@@ -26,7 +26,7 @@
+ #
+ # We also accept SPEED=slow to enable slower running tests
+ #
+-# We also expect to be in the tests build dir for the FOO-linux-user.
++# We also expect to be in the tests build dir for the FOO-(linux-user|softmmu).
+ #
+ 
+ -include ../../config-host.mak
+@@ -52,7 +52,11 @@ QEMU_CFLAGS=
+ LDFLAGS=
+ 
+ # The QEMU for this TARGET
++ifdef CONFIG_USER_ONLY
+ QEMU=../qemu-$(TARGET_NAME)
++else
++QEMU=../qemu-system-$(TARGET_NAME)
++endif
+ 
+ # If TCG debugging is enabled things are a lot slower
+ ifeq ($(CONFIG_DEBUG_TCG),y)
+@@ -61,6 +65,7 @@ else
+ TIMEOUT=15
+ endif
+ 
++ifdef CONFIG_USER_ONLY
+ # The order we include is important. We include multiarch, base arch
+ # and finally arch if it's not the same as base arch.
+ -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
+@@ -77,6 +82,16 @@ endif
+ 
+ %: %.c
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++else
++# For softmmu targets we include a different Makefile fragement as the
++# build options for bare programs are usually pretty different. They
++# are expected to provide their own build recipes.
++-include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.softmmu-target
++ifneq ($(TARGET_BASE_ARCH),$(TARGET_NAME))
++-include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
++endif
++
++endif
+ 
+ all: $(TESTS)
+ 
+diff --git a/tests/tcg/Makefile.include b/tests/tcg/Makefile.include
+index c581bd6ffc..73b5626fc5 100644
+--- a/tests/tcg/Makefile.include
++++ b/tests/tcg/Makefile.include
+@@ -67,7 +67,7 @@ endif
+ ifneq ($(GUEST_BUILD),)
+ guest-tests: $(GUEST_BUILD)
+ 
+-run-guest-tests: guest-tests qemu-$(TARGET_NAME)
++run-guest-tests: guest-tests qemu-$(subst y,system-,$(CONFIG_SOFTMMU))$(TARGET_NAME)
+ 	$(call quiet-command, \
+ 	(cd tests && $(MAKE) -f $(TCG_MAKE) SPEED=$(SPEED) run), \
+ 	"RUN", "tests for $(TARGET_NAME)")
 -- 
 2.20.1

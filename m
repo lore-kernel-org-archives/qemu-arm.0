@@ -1,34 +1,34 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1125858wrx;
-        Thu, 28 Feb 2019 14:56:36 -0800 (PST)
-X-Received: by 2002:adf:e603:: with SMTP id p3mr1123529wrm.104.1551394596395;
-        Thu, 28 Feb 2019 14:56:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551394596; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp1135911wrx;
+        Thu, 28 Feb 2019 15:07:55 -0800 (PST)
+X-Received: by 2002:a5d:6542:: with SMTP id z2mr1159579wrv.237.1551395275239;
+        Thu, 28 Feb 2019 15:07:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551395275; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1Cq1x05/z8PqdgbBekuTtCXQCDoS3CWV/W0+qnu5yvgz/ShYC6LmTJEMpdwFMUAoc
-         kBAYogKjdKb+xqGa9+y/v5oSQibCT7ToYewejqH1kUVM+ji3OMf40MEdXRuQ8pPuKcQL
-         ogA8sriaIN4CFgakXYz1KnYav3aN2RXvA0io594ls2M8mIBslkWcyt5UK+H0PKtYkokb
-         Euub+OvDtXYV6fYu/BPO6ZXf3sAjNY1iXvGCQZgT0pagqrC/kC5M+OtmyTWkEZvZN0Kq
-         vE6SMEZm8XFsUh9reFeyZTMJydZNiFpIacZigIu7AJClIux24Y2DWcnUVAa1MoxV8guk
-         LvIA==
+        b=VSGxuAQD9esPkZi64BZIX/8zRcf9THFd+dNIMW+Jv1yvxmIu/JrEkSH8xQptbnUtYD
+         mfRA0lT2VeTkxMn4nLGXCT+5ebHC0GpuD4GRLZ9zNdp0S4NgoJRDdugHq1jLNFKZ7vzA
+         bD6QmBwALWiE/A+ha2XNLRQ70BrHfAJO2MFmuAsRr1n+XOjqnz0LOz7a6RO1WCi5ZM6i
+         5Uiybe3jZj9jb4MxDNuTGQQjKy5YP9eS0WrqKdnZP0XbV76QBLrELdu30aV7Ga1Qi21m
+         ItiTiB7/242dlw1uxR1l31828wTuMR5Gg7M2k8uTH7io79jRWLTbbGsU0Vda3yQLMod1
+         PgWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=2yUNSVOgvHh+OwKsQlqMncF+1Raefd7kSchiOC9/FCA=;
-        b=e1EAVe9zALP1gVjI7eoq5VaQU2dwDQ1mMJxbFTDd+QrB5Oo2kKIEHdEcTjKbokWv7a
-         sdoH88UH6Bxs8UC9vV9uL2a1UGx6N11DH9nFpqM5bXtdmjQMA2xPUpdvn9zF8eOz/RH0
-         fDWMxoIDsv/uhP5cNLpyMpp8u7csaqn8b68O9ut0r/kd4VIL5ttRfXICmNY+MT35QJIE
-         lomyg586YtYe9v4Mg6FlKZkfV7h1yJPik4+erLkyR5x0uqVQZuXtnObt3R8ywBeGeF6i
-         +mjHR8T2VBo3KvqdKBpiEQ7ZYZTvPKEU2VVHmP0xflZGnWXDwsnLOvWG4L8HsYd8DTpt
-         PidQ==
+        bh=JbzJKZrqtQLEzf6dE3y4q2AwtI+CXbJjIA2quBrMt5I=;
+        b=C6kjO+5B668U2rlJhmmXT5o5I2lPRpKW7UuuTyx4YCYRqs2ix1uOQuONhYh+Yet4yI
+         3zLpwAKG/wUVgudmhJ7mx89AJ6sLCkqPkrIBlaanGue48Q1dmFBS7roqHGvdrDsTCVgp
+         ro8+f0wE4Yzm0QVg/h1y3HdgYY+QOK6jU0AcTfqjD7zFDx0Yy5p2RenOZQykIUL/BXbL
+         bkN6CWlVdWSp1bpjInwIggtEHFKx1zDaLLyaVxaDgz0Vhg0FJDOiCY7xMs2cvg1qtdZP
+         yNO1qFgZlJnzJ3I+pDV2Tpa2bMKxrnjXR69oBkj58ITQmnIsuMTgJ+yCvqBSH4qGflfI
+         rHEw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h3sor4248811wmf.7.2019.02.28.14.56.36
+        by mx.google.com with SMTPS id g9sor14669249wrm.40.2019.02.28.15.07.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 28 Feb 2019 14:56:36 -0800 (PST)
+        Thu, 28 Feb 2019 15:07:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -38,297 +38,749 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=2yUNSVOgvHh+OwKsQlqMncF+1Raefd7kSchiOC9/FCA=;
-        b=U/SATuRc5ALw3fzs35/0yPu4o/72CCUcvN2WpB5g3onTeXbVXwhuNI2Ftau4Icaalb
-         9UkdjhHiBKAzvyknL1R8UadDu4BNfI3givnNqV/Cncv0JgiXfE6sdUkx3YMSiASf92pO
-         cigF0lIx+EtzKJXP27AN9axWPE2NQvQDcq0EbDZKYq6VBf30878I7aTZ6mX6XlslVw3s
-         AlzgRBQXA9czH0tm7dxNaxyCEbft3smRaBsuc0KMtrsS4WX++jqTvDsUKFfC13HD1ldb
-         gqiQb0HpvbFcei/if5rCgY3ZNwryxd4cTSsFVEoAnRE/wQS0ruuUJ3vTTJV0/v58StKo
-         CeOQ==
-X-Gm-Message-State: APjAAAWZu8au5o7NQe3Jpyv4LJg073I4+0OcvGbk74wIMzK06K7AYpG2
-	0PPUhpgG5RCbFzHJLvCNWm0XwXKeB2EzxA==
-X-Google-Smtp-Source: AHgI3IaliHlchkKO8pKwmtvBHn0U2wy7Dn9w+/tl3Vh2/JlQ18bHOdJXvJngXL4fXLWvfVhmDYe4kg==
-X-Received: by 2002:a1c:740d:: with SMTP id p13mr1328740wmc.46.1551394596014;
-        Thu, 28 Feb 2019 14:56:36 -0800 (PST)
+        bh=JbzJKZrqtQLEzf6dE3y4q2AwtI+CXbJjIA2quBrMt5I=;
+        b=imASW03x/ZzfGaJg0lx/222s0TJ1/nlNVK9TvASR2msqaTxnEhJUaprYYc3XhiJ5GZ
+         R9s1iYxdGtFY+KLlc7LrFo1CqJSgCWIUXzaU2dxm8VkloOM6poKSyj7PjrPoJa6hGczL
+         kgXhR4Dx6yPfLPwWW7Apw5lk4A3i8vlNok9TKS7kvG9Lch9kPhf+MDJ80Cex7N8rT6o7
+         jDRU2lAoFHdZpXKIzGX04WApPrEpxk6cacjXecbD9XJtdQOc6v/cSbPbApQh/Gfb1uhp
+         rupG9sBeMjOwgmkr1OKhWKZyh05GnPEZWh6vDgCC3cAQGlOhPSQ5PGGMiSaUzOfFNrTp
+         cKog==
+X-Gm-Message-State: APjAAAWB6YC4NT9NzmLkVJKlKpXPrWqRWr3aM/zP+2cL56KyJKtVFRbM
+	tx+nMjiS9fUyhiBncFd+0ygp3w==
+X-Google-Smtp-Source: APXvYqwSKuQYxdyd/uavKqEkCcTUmhCimbTvODExGoxlVUnrmN26QMavnZbxM/TCNV42/3EXLRroxg==
+X-Received: by 2002:adf:ecc7:: with SMTP id s7mr1140970wro.255.1551395274771;
+        Thu, 28 Feb 2019 15:07:54 -0800 (PST)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net. [88.25.181.43])
-        by smtp.gmail.com with ESMTPSA id c126sm11341562wma.0.2019.02.28.14.56.35
+        by smtp.gmail.com with ESMTPSA id 93sm59411608wrh.15.2019.02.28.15.07.53
         (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Thu, 28 Feb 2019 14:56:35 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v2 08/16] tests/tcg/arm: add ARMv6-M
- UNDEFINED 32-bit instruction test
+        Thu, 28 Feb 2019 15:07:54 -0800 (PST)
+Subject: Re: [Qemu-devel] [PATCH v2 10/16] tests/tcg: split cris tests into
+ bare and libc directories
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: edgar.iglesias@gmail.com, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, jcmvbkbc@gmail.com
+Cc: edgar.iglesias@gmail.com, qemu-arm@nongnu.org, jcmvbkbc@gmail.com
 References: <20190228202537.4638-1-alex.bennee@linaro.org>
- <20190228202537.4638-9-alex.bennee@linaro.org>
+ <20190228202537.4638-11-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <8f8d9193-14f9-4fda-2f68-cf04b4d9cd8c@redhat.com>
-Date: Thu, 28 Feb 2019 23:56:34 +0100
+Message-ID: <fec89b30-8da5-daa9-e8e7-22ddfc055ac6@redhat.com>
+Date: Fri, 1 Mar 2019 00:07:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.5.1
 MIME-Version: 1.0
-In-Reply-To: <20190228202537.4638-9-alex.bennee@linaro.org>
+In-Reply-To: <20190228202537.4638-11-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: W4wKmnYOGSNN
+X-TUID: p9vVkoJZCPGs
+
+Hi Alex,
 
 On 2/28/19 9:25 PM, Alex Bennée wrote:
-> From: Stefan Hajnoczi <stefanha@redhat.com>
+> Bare tests are standalone assembly tests that don't require linking to
+> any libc and hence can be built with kernel only compilers. The libc
+> tests need a compiler capable of building properly linked userspace
+> binaries. As we don't have such a cross compiler at the moment we
+> won't be building those tests.
 > 
-> Test that 32-bit instructions declared UNDEFINED in the ARMv6-M
-> Reference Manual really do raise an exception.  Also test that the 6
-> 32-bit instructions defined in the ARMv6-M Reference Manual do not raise
-> an exception.
-> 
-> Based-on: <20181029194519.15628-1-stefanha@redhat.com>
-
-^ cut 'Based-on' from git history?
-
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Message-Id: <20181129185113.30353-1-stefanha@redhat.com>
-> [AJB: integrated into system tests]
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > 
 > ---
 > v2
->   - added to series
->   - used softmmu-target Makefile with single compile/link step
->   - launches with -kernel
->   - drop .hex file
+>   - split between bare/libc instead of system/user
 > ---
->  tests/tcg/arm/Makefile.softmmu-target |  29 +++++
->  tests/tcg/arm/test-armv6m-undef.S     | 154 ++++++++++++++++++++++++++
->  tests/tcg/arm/test-armv6m-undef.ld    |  21 ++++
->  3 files changed, 204 insertions(+)
->  create mode 100644 tests/tcg/arm/Makefile.softmmu-target
->  create mode 100644 tests/tcg/arm/test-armv6m-undef.S
->  create mode 100644 tests/tcg/arm/test-armv6m-undef.ld
+>  tests/tcg/cris/{ => bare}/check_addcv17.s     |  0
+>  tests/tcg/cris/{ => bare}/check_addi.s        |  0
+>  tests/tcg/cris/{ => bare}/check_addiv32.s     |  0
+>  tests/tcg/cris/{ => bare}/check_addm.s        |  0
+>  tests/tcg/cris/{ => bare}/check_addq.s        |  0
+>  tests/tcg/cris/{ => bare}/check_addr.s        |  0
+>  tests/tcg/cris/{ => bare}/check_addxc.s       |  0
+>  tests/tcg/cris/{ => bare}/check_addxm.s       |  0
+>  tests/tcg/cris/{ => bare}/check_addxr.s       |  0
+>  tests/tcg/cris/{ => bare}/check_andc.s        |  0
+>  tests/tcg/cris/{ => bare}/check_andm.s        |  0
+>  tests/tcg/cris/{ => bare}/check_andq.s        |  0
+>  tests/tcg/cris/{ => bare}/check_andr.s        |  0
+>  tests/tcg/cris/{ => bare}/check_asr.s         |  0
+>  tests/tcg/cris/{ => bare}/check_ba.s          |  0
+>  tests/tcg/cris/{ => bare}/check_bas.s         |  0
+>  tests/tcg/cris/{ => bare}/check_bcc.s         |  0
+>  tests/tcg/cris/{ => bare}/check_boundc.s      |  0
+>  tests/tcg/cris/{ => bare}/check_boundr.s      |  0
+>  tests/tcg/cris/{ => bare}/check_btst.s        |  0
+>  tests/tcg/cris/{ => bare}/check_clearfv32.s   |  0
+>  tests/tcg/cris/{ => bare}/check_clrjmp1.s     |  0
+>  tests/tcg/cris/{ => bare}/check_cmp-2.s       |  0
+>  tests/tcg/cris/{ => bare}/check_cmpc.s        |  0
+>  tests/tcg/cris/{ => bare}/check_cmpm.s        |  0
+>  tests/tcg/cris/{ => bare}/check_cmpq.s        |  0
+>  tests/tcg/cris/{ => bare}/check_cmpr.s        |  0
+>  tests/tcg/cris/{ => bare}/check_cmpxc.s       |  0
+>  tests/tcg/cris/{ => bare}/check_cmpxm.s       |  0
+>  tests/tcg/cris/{ => bare}/check_dstep.s       |  0
+>  tests/tcg/cris/{ => bare}/check_jsr.s         |  0
+>  tests/tcg/cris/{ => bare}/check_lapc.s        |  0
+>  tests/tcg/cris/{ => bare}/check_lsl.s         |  0
+>  tests/tcg/cris/{ => bare}/check_lsr.s         |  0
+>  tests/tcg/cris/{ => bare}/check_mcp.s         |  0
+>  tests/tcg/cris/{ => bare}/check_movdelsr1.s   |  0
+>  tests/tcg/cris/{ => bare}/check_movecr.s      |  0
+>  tests/tcg/cris/{ => bare}/check_movei.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movemr.s      |  0
+>  tests/tcg/cris/{ => bare}/check_movemrv32.s   |  0
+>  tests/tcg/cris/{ => bare}/check_mover.s       |  0
+>  tests/tcg/cris/{ => bare}/check_moverm.s      |  0
+>  tests/tcg/cris/{ => bare}/check_movmp.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movpmv32.s    |  0
+>  tests/tcg/cris/{ => bare}/check_movpr.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movprv32.s    |  0
+>  tests/tcg/cris/{ => bare}/check_movscr.s      |  0
+>  tests/tcg/cris/{ => bare}/check_movsm.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movsr.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movucr.s      |  0
+>  tests/tcg/cris/{ => bare}/check_movum.s       |  0
+>  tests/tcg/cris/{ => bare}/check_movur.s       |  0
+>  tests/tcg/cris/{ => bare}/check_mulv32.s      |  0
+>  tests/tcg/cris/{ => bare}/check_mulx.s        |  0
+>  tests/tcg/cris/{ => bare}/check_neg.s         |  0
+>  tests/tcg/cris/{ => bare}/check_not.s         |  0
+>  tests/tcg/cris/{ => bare}/check_orc.s         |  0
+>  tests/tcg/cris/{ => bare}/check_orm.s         |  0
+>  tests/tcg/cris/{ => bare}/check_orq.s         |  0
+>  tests/tcg/cris/{ => bare}/check_orr.s         |  0
+>  tests/tcg/cris/{ => bare}/check_ret.s         |  0
+>  tests/tcg/cris/{ => bare}/check_scc.s         |  0
+>  tests/tcg/cris/{ => bare}/check_subc.s        |  0
+>  tests/tcg/cris/{ => bare}/check_subm.s        |  0
+>  tests/tcg/cris/{ => bare}/check_subq.s        |  0
+>  tests/tcg/cris/{ => bare}/check_subr.s        |  0
+>  tests/tcg/cris/{ => bare}/check_xarith.s      |  0
+>  tests/tcg/cris/{ => bare}/crt.s               |  0
+>  tests/tcg/cris/{ => bare}/sys.c               |  0
+
+Here you move the current sys.c which includes stdio/stdlib/unistd to
+bare ...
+
+>  tests/tcg/cris/{ => bare}/testutils.inc       |  0
+>  tests/tcg/cris/{ => libc}/check_abs.c         |  0
+>  tests/tcg/cris/{ => libc}/check_addc.c        |  0
+>  tests/tcg/cris/{ => libc}/check_addcm.c       |  0
+>  tests/tcg/cris/{ => libc}/check_addo.c        |  0
+>  tests/tcg/cris/{ => libc}/check_addoq.c       |  0
+>  tests/tcg/cris/{ => libc}/check_bound.c       |  0
+>  tests/tcg/cris/{ => libc}/check_ftag.c        |  0
+>  .../{ => libc}/check_gcctorture_pr28634-1.c   |  0
+>  .../{ => libc}/check_gcctorture_pr28634.c     |  0
+>  .../{ => libc}/check_glibc_kernelversion.c    |  0
+>  tests/tcg/cris/{ => libc}/check_hello.c       |  0
+>  tests/tcg/cris/{ => libc}/check_int64.c       |  0
+>  tests/tcg/cris/{ => libc}/check_lz.c          |  0
+>  tests/tcg/cris/{ => libc}/check_mapbrk.c      |  0
+>  tests/tcg/cris/{ => libc}/check_mmap1.c       |  0
+>  tests/tcg/cris/{ => libc}/check_mmap2.c       |  0
+>  tests/tcg/cris/{ => libc}/check_mmap3.c       |  0
+>  tests/tcg/cris/{ => libc}/check_moveq.c       |  0
+>  tests/tcg/cris/{ => libc}/check_openpf1.c     |  0
+>  tests/tcg/cris/{ => libc}/check_openpf2.c     |  0
+>  tests/tcg/cris/{ => libc}/check_openpf3.c     |  0
+>  tests/tcg/cris/{ => libc}/check_openpf5.c     |  0
+>  tests/tcg/cris/{ => libc}/check_settls1.c     |  0
+>  tests/tcg/cris/{ => libc}/check_sigalrm.c     |  0
+>  tests/tcg/cris/{ => libc}/check_stat1.c       |  0
+>  tests/tcg/cris/{ => libc}/check_stat2.c       |  0
+>  tests/tcg/cris/{ => libc}/check_stat3.c       |  0
+>  tests/tcg/cris/{ => libc}/check_stat4.c       |  0
+>  tests/tcg/cris/{ => libc}/check_swap.c        |  0
+>  tests/tcg/cris/{ => libc}/check_time2.c       |  0
+>  tests/tcg/cris/{ => libc}/crisutils.h         |  0
+>  tests/tcg/cris/libc/sys.c                     | 58 +++++++++++++++++++
+>  tests/tcg/cris/{ => libc}/sys.h               |  0
+>  103 files changed, 58 insertions(+)
+>  rename tests/tcg/cris/{ => bare}/check_addcv17.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addi.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addiv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addq.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addxc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addxm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_addxr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_andc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_andm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_andq.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_andr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_asr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_ba.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_bas.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_bcc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_boundc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_boundr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_btst.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_clearfv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_clrjmp1.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmp-2.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpq.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpxc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_cmpxm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_dstep.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_jsr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_lapc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_lsl.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_lsr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_mcp.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movdelsr1.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movecr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movei.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movemr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movemrv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_mover.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_moverm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movmp.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movpmv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movpr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movprv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movscr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movsm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movsr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movucr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movum.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_movur.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_mulv32.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_mulx.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_neg.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_not.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_orc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_orm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_orq.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_orr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_ret.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_scc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_subc.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_subm.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_subq.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_subr.s (100%)
+>  rename tests/tcg/cris/{ => bare}/check_xarith.s (100%)
+>  rename tests/tcg/cris/{ => bare}/crt.s (100%)
+>  rename tests/tcg/cris/{ => bare}/sys.c (100%)
+>  rename tests/tcg/cris/{ => bare}/testutils.inc (100%)
+>  rename tests/tcg/cris/{ => libc}/check_abs.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_addc.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_addcm.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_addo.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_addoq.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_bound.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_ftag.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634-1.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_gcctorture_pr28634.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_glibc_kernelversion.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_hello.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_int64.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_lz.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_mapbrk.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_mmap1.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_mmap2.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_mmap3.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_moveq.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_openpf1.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_openpf2.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_openpf3.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_openpf5.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_settls1.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_sigalrm.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_stat1.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_stat2.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_stat3.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_stat4.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_swap.c (100%)
+>  rename tests/tcg/cris/{ => libc}/check_time2.c (100%)
+>  rename tests/tcg/cris/{ => libc}/crisutils.h (100%)
+>  create mode 100644 tests/tcg/cris/libc/sys.c
+>  rename tests/tcg/cris/{ => libc}/sys.h (100%)
 > 
-> diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
+> diff --git a/tests/tcg/cris/check_addcv17.s b/tests/tcg/cris/bare/check_addcv17.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addcv17.s
+> rename to tests/tcg/cris/bare/check_addcv17.s
+> diff --git a/tests/tcg/cris/check_addi.s b/tests/tcg/cris/bare/check_addi.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addi.s
+> rename to tests/tcg/cris/bare/check_addi.s
+> diff --git a/tests/tcg/cris/check_addiv32.s b/tests/tcg/cris/bare/check_addiv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addiv32.s
+> rename to tests/tcg/cris/bare/check_addiv32.s
+> diff --git a/tests/tcg/cris/check_addm.s b/tests/tcg/cris/bare/check_addm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addm.s
+> rename to tests/tcg/cris/bare/check_addm.s
+> diff --git a/tests/tcg/cris/check_addq.s b/tests/tcg/cris/bare/check_addq.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addq.s
+> rename to tests/tcg/cris/bare/check_addq.s
+> diff --git a/tests/tcg/cris/check_addr.s b/tests/tcg/cris/bare/check_addr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addr.s
+> rename to tests/tcg/cris/bare/check_addr.s
+> diff --git a/tests/tcg/cris/check_addxc.s b/tests/tcg/cris/bare/check_addxc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addxc.s
+> rename to tests/tcg/cris/bare/check_addxc.s
+> diff --git a/tests/tcg/cris/check_addxm.s b/tests/tcg/cris/bare/check_addxm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addxm.s
+> rename to tests/tcg/cris/bare/check_addxm.s
+> diff --git a/tests/tcg/cris/check_addxr.s b/tests/tcg/cris/bare/check_addxr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_addxr.s
+> rename to tests/tcg/cris/bare/check_addxr.s
+> diff --git a/tests/tcg/cris/check_andc.s b/tests/tcg/cris/bare/check_andc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_andc.s
+> rename to tests/tcg/cris/bare/check_andc.s
+> diff --git a/tests/tcg/cris/check_andm.s b/tests/tcg/cris/bare/check_andm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_andm.s
+> rename to tests/tcg/cris/bare/check_andm.s
+> diff --git a/tests/tcg/cris/check_andq.s b/tests/tcg/cris/bare/check_andq.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_andq.s
+> rename to tests/tcg/cris/bare/check_andq.s
+> diff --git a/tests/tcg/cris/check_andr.s b/tests/tcg/cris/bare/check_andr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_andr.s
+> rename to tests/tcg/cris/bare/check_andr.s
+> diff --git a/tests/tcg/cris/check_asr.s b/tests/tcg/cris/bare/check_asr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_asr.s
+> rename to tests/tcg/cris/bare/check_asr.s
+> diff --git a/tests/tcg/cris/check_ba.s b/tests/tcg/cris/bare/check_ba.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_ba.s
+> rename to tests/tcg/cris/bare/check_ba.s
+> diff --git a/tests/tcg/cris/check_bas.s b/tests/tcg/cris/bare/check_bas.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_bas.s
+> rename to tests/tcg/cris/bare/check_bas.s
+> diff --git a/tests/tcg/cris/check_bcc.s b/tests/tcg/cris/bare/check_bcc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_bcc.s
+> rename to tests/tcg/cris/bare/check_bcc.s
+> diff --git a/tests/tcg/cris/check_boundc.s b/tests/tcg/cris/bare/check_boundc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_boundc.s
+> rename to tests/tcg/cris/bare/check_boundc.s
+> diff --git a/tests/tcg/cris/check_boundr.s b/tests/tcg/cris/bare/check_boundr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_boundr.s
+> rename to tests/tcg/cris/bare/check_boundr.s
+> diff --git a/tests/tcg/cris/check_btst.s b/tests/tcg/cris/bare/check_btst.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_btst.s
+> rename to tests/tcg/cris/bare/check_btst.s
+> diff --git a/tests/tcg/cris/check_clearfv32.s b/tests/tcg/cris/bare/check_clearfv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_clearfv32.s
+> rename to tests/tcg/cris/bare/check_clearfv32.s
+> diff --git a/tests/tcg/cris/check_clrjmp1.s b/tests/tcg/cris/bare/check_clrjmp1.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_clrjmp1.s
+> rename to tests/tcg/cris/bare/check_clrjmp1.s
+> diff --git a/tests/tcg/cris/check_cmp-2.s b/tests/tcg/cris/bare/check_cmp-2.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmp-2.s
+> rename to tests/tcg/cris/bare/check_cmp-2.s
+> diff --git a/tests/tcg/cris/check_cmpc.s b/tests/tcg/cris/bare/check_cmpc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpc.s
+> rename to tests/tcg/cris/bare/check_cmpc.s
+> diff --git a/tests/tcg/cris/check_cmpm.s b/tests/tcg/cris/bare/check_cmpm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpm.s
+> rename to tests/tcg/cris/bare/check_cmpm.s
+> diff --git a/tests/tcg/cris/check_cmpq.s b/tests/tcg/cris/bare/check_cmpq.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpq.s
+> rename to tests/tcg/cris/bare/check_cmpq.s
+> diff --git a/tests/tcg/cris/check_cmpr.s b/tests/tcg/cris/bare/check_cmpr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpr.s
+> rename to tests/tcg/cris/bare/check_cmpr.s
+> diff --git a/tests/tcg/cris/check_cmpxc.s b/tests/tcg/cris/bare/check_cmpxc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpxc.s
+> rename to tests/tcg/cris/bare/check_cmpxc.s
+> diff --git a/tests/tcg/cris/check_cmpxm.s b/tests/tcg/cris/bare/check_cmpxm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_cmpxm.s
+> rename to tests/tcg/cris/bare/check_cmpxm.s
+> diff --git a/tests/tcg/cris/check_dstep.s b/tests/tcg/cris/bare/check_dstep.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_dstep.s
+> rename to tests/tcg/cris/bare/check_dstep.s
+> diff --git a/tests/tcg/cris/check_jsr.s b/tests/tcg/cris/bare/check_jsr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_jsr.s
+> rename to tests/tcg/cris/bare/check_jsr.s
+> diff --git a/tests/tcg/cris/check_lapc.s b/tests/tcg/cris/bare/check_lapc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_lapc.s
+> rename to tests/tcg/cris/bare/check_lapc.s
+> diff --git a/tests/tcg/cris/check_lsl.s b/tests/tcg/cris/bare/check_lsl.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_lsl.s
+> rename to tests/tcg/cris/bare/check_lsl.s
+> diff --git a/tests/tcg/cris/check_lsr.s b/tests/tcg/cris/bare/check_lsr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_lsr.s
+> rename to tests/tcg/cris/bare/check_lsr.s
+> diff --git a/tests/tcg/cris/check_mcp.s b/tests/tcg/cris/bare/check_mcp.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_mcp.s
+> rename to tests/tcg/cris/bare/check_mcp.s
+> diff --git a/tests/tcg/cris/check_movdelsr1.s b/tests/tcg/cris/bare/check_movdelsr1.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movdelsr1.s
+> rename to tests/tcg/cris/bare/check_movdelsr1.s
+> diff --git a/tests/tcg/cris/check_movecr.s b/tests/tcg/cris/bare/check_movecr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movecr.s
+> rename to tests/tcg/cris/bare/check_movecr.s
+> diff --git a/tests/tcg/cris/check_movei.s b/tests/tcg/cris/bare/check_movei.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movei.s
+> rename to tests/tcg/cris/bare/check_movei.s
+> diff --git a/tests/tcg/cris/check_movemr.s b/tests/tcg/cris/bare/check_movemr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movemr.s
+> rename to tests/tcg/cris/bare/check_movemr.s
+> diff --git a/tests/tcg/cris/check_movemrv32.s b/tests/tcg/cris/bare/check_movemrv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movemrv32.s
+> rename to tests/tcg/cris/bare/check_movemrv32.s
+> diff --git a/tests/tcg/cris/check_mover.s b/tests/tcg/cris/bare/check_mover.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_mover.s
+> rename to tests/tcg/cris/bare/check_mover.s
+> diff --git a/tests/tcg/cris/check_moverm.s b/tests/tcg/cris/bare/check_moverm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_moverm.s
+> rename to tests/tcg/cris/bare/check_moverm.s
+> diff --git a/tests/tcg/cris/check_movmp.s b/tests/tcg/cris/bare/check_movmp.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movmp.s
+> rename to tests/tcg/cris/bare/check_movmp.s
+> diff --git a/tests/tcg/cris/check_movpmv32.s b/tests/tcg/cris/bare/check_movpmv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movpmv32.s
+> rename to tests/tcg/cris/bare/check_movpmv32.s
+> diff --git a/tests/tcg/cris/check_movpr.s b/tests/tcg/cris/bare/check_movpr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movpr.s
+> rename to tests/tcg/cris/bare/check_movpr.s
+> diff --git a/tests/tcg/cris/check_movprv32.s b/tests/tcg/cris/bare/check_movprv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movprv32.s
+> rename to tests/tcg/cris/bare/check_movprv32.s
+> diff --git a/tests/tcg/cris/check_movscr.s b/tests/tcg/cris/bare/check_movscr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movscr.s
+> rename to tests/tcg/cris/bare/check_movscr.s
+> diff --git a/tests/tcg/cris/check_movsm.s b/tests/tcg/cris/bare/check_movsm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movsm.s
+> rename to tests/tcg/cris/bare/check_movsm.s
+> diff --git a/tests/tcg/cris/check_movsr.s b/tests/tcg/cris/bare/check_movsr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movsr.s
+> rename to tests/tcg/cris/bare/check_movsr.s
+> diff --git a/tests/tcg/cris/check_movucr.s b/tests/tcg/cris/bare/check_movucr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movucr.s
+> rename to tests/tcg/cris/bare/check_movucr.s
+> diff --git a/tests/tcg/cris/check_movum.s b/tests/tcg/cris/bare/check_movum.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movum.s
+> rename to tests/tcg/cris/bare/check_movum.s
+> diff --git a/tests/tcg/cris/check_movur.s b/tests/tcg/cris/bare/check_movur.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_movur.s
+> rename to tests/tcg/cris/bare/check_movur.s
+> diff --git a/tests/tcg/cris/check_mulv32.s b/tests/tcg/cris/bare/check_mulv32.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_mulv32.s
+> rename to tests/tcg/cris/bare/check_mulv32.s
+> diff --git a/tests/tcg/cris/check_mulx.s b/tests/tcg/cris/bare/check_mulx.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_mulx.s
+> rename to tests/tcg/cris/bare/check_mulx.s
+> diff --git a/tests/tcg/cris/check_neg.s b/tests/tcg/cris/bare/check_neg.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_neg.s
+> rename to tests/tcg/cris/bare/check_neg.s
+> diff --git a/tests/tcg/cris/check_not.s b/tests/tcg/cris/bare/check_not.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_not.s
+> rename to tests/tcg/cris/bare/check_not.s
+> diff --git a/tests/tcg/cris/check_orc.s b/tests/tcg/cris/bare/check_orc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_orc.s
+> rename to tests/tcg/cris/bare/check_orc.s
+> diff --git a/tests/tcg/cris/check_orm.s b/tests/tcg/cris/bare/check_orm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_orm.s
+> rename to tests/tcg/cris/bare/check_orm.s
+> diff --git a/tests/tcg/cris/check_orq.s b/tests/tcg/cris/bare/check_orq.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_orq.s
+> rename to tests/tcg/cris/bare/check_orq.s
+> diff --git a/tests/tcg/cris/check_orr.s b/tests/tcg/cris/bare/check_orr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_orr.s
+> rename to tests/tcg/cris/bare/check_orr.s
+> diff --git a/tests/tcg/cris/check_ret.s b/tests/tcg/cris/bare/check_ret.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_ret.s
+> rename to tests/tcg/cris/bare/check_ret.s
+> diff --git a/tests/tcg/cris/check_scc.s b/tests/tcg/cris/bare/check_scc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_scc.s
+> rename to tests/tcg/cris/bare/check_scc.s
+> diff --git a/tests/tcg/cris/check_subc.s b/tests/tcg/cris/bare/check_subc.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_subc.s
+> rename to tests/tcg/cris/bare/check_subc.s
+> diff --git a/tests/tcg/cris/check_subm.s b/tests/tcg/cris/bare/check_subm.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_subm.s
+> rename to tests/tcg/cris/bare/check_subm.s
+> diff --git a/tests/tcg/cris/check_subq.s b/tests/tcg/cris/bare/check_subq.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_subq.s
+> rename to tests/tcg/cris/bare/check_subq.s
+> diff --git a/tests/tcg/cris/check_subr.s b/tests/tcg/cris/bare/check_subr.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_subr.s
+> rename to tests/tcg/cris/bare/check_subr.s
+> diff --git a/tests/tcg/cris/check_xarith.s b/tests/tcg/cris/bare/check_xarith.s
+> similarity index 100%
+> rename from tests/tcg/cris/check_xarith.s
+> rename to tests/tcg/cris/bare/check_xarith.s
+> diff --git a/tests/tcg/cris/crt.s b/tests/tcg/cris/bare/crt.s
+> similarity index 100%
+> rename from tests/tcg/cris/crt.s
+> rename to tests/tcg/cris/bare/crt.s
+> diff --git a/tests/tcg/cris/sys.c b/tests/tcg/cris/bare/sys.c
+> similarity index 100%
+> rename from tests/tcg/cris/sys.c
+> rename to tests/tcg/cris/bare/sys.c
+> diff --git a/tests/tcg/cris/testutils.inc b/tests/tcg/cris/bare/testutils.inc
+> similarity index 100%
+> rename from tests/tcg/cris/testutils.inc
+> rename to tests/tcg/cris/bare/testutils.inc
+> diff --git a/tests/tcg/cris/check_abs.c b/tests/tcg/cris/libc/check_abs.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_abs.c
+> rename to tests/tcg/cris/libc/check_abs.c
+> diff --git a/tests/tcg/cris/check_addc.c b/tests/tcg/cris/libc/check_addc.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_addc.c
+> rename to tests/tcg/cris/libc/check_addc.c
+> diff --git a/tests/tcg/cris/check_addcm.c b/tests/tcg/cris/libc/check_addcm.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_addcm.c
+> rename to tests/tcg/cris/libc/check_addcm.c
+> diff --git a/tests/tcg/cris/check_addo.c b/tests/tcg/cris/libc/check_addo.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_addo.c
+> rename to tests/tcg/cris/libc/check_addo.c
+> diff --git a/tests/tcg/cris/check_addoq.c b/tests/tcg/cris/libc/check_addoq.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_addoq.c
+> rename to tests/tcg/cris/libc/check_addoq.c
+> diff --git a/tests/tcg/cris/check_bound.c b/tests/tcg/cris/libc/check_bound.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_bound.c
+> rename to tests/tcg/cris/libc/check_bound.c
+> diff --git a/tests/tcg/cris/check_ftag.c b/tests/tcg/cris/libc/check_ftag.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_ftag.c
+> rename to tests/tcg/cris/libc/check_ftag.c
+> diff --git a/tests/tcg/cris/check_gcctorture_pr28634-1.c b/tests/tcg/cris/libc/check_gcctorture_pr28634-1.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_gcctorture_pr28634-1.c
+> rename to tests/tcg/cris/libc/check_gcctorture_pr28634-1.c
+> diff --git a/tests/tcg/cris/check_gcctorture_pr28634.c b/tests/tcg/cris/libc/check_gcctorture_pr28634.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_gcctorture_pr28634.c
+> rename to tests/tcg/cris/libc/check_gcctorture_pr28634.c
+> diff --git a/tests/tcg/cris/check_glibc_kernelversion.c b/tests/tcg/cris/libc/check_glibc_kernelversion.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_glibc_kernelversion.c
+> rename to tests/tcg/cris/libc/check_glibc_kernelversion.c
+> diff --git a/tests/tcg/cris/check_hello.c b/tests/tcg/cris/libc/check_hello.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_hello.c
+> rename to tests/tcg/cris/libc/check_hello.c
+> diff --git a/tests/tcg/cris/check_int64.c b/tests/tcg/cris/libc/check_int64.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_int64.c
+> rename to tests/tcg/cris/libc/check_int64.c
+> diff --git a/tests/tcg/cris/check_lz.c b/tests/tcg/cris/libc/check_lz.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_lz.c
+> rename to tests/tcg/cris/libc/check_lz.c
+> diff --git a/tests/tcg/cris/check_mapbrk.c b/tests/tcg/cris/libc/check_mapbrk.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_mapbrk.c
+> rename to tests/tcg/cris/libc/check_mapbrk.c
+> diff --git a/tests/tcg/cris/check_mmap1.c b/tests/tcg/cris/libc/check_mmap1.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_mmap1.c
+> rename to tests/tcg/cris/libc/check_mmap1.c
+> diff --git a/tests/tcg/cris/check_mmap2.c b/tests/tcg/cris/libc/check_mmap2.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_mmap2.c
+> rename to tests/tcg/cris/libc/check_mmap2.c
+> diff --git a/tests/tcg/cris/check_mmap3.c b/tests/tcg/cris/libc/check_mmap3.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_mmap3.c
+> rename to tests/tcg/cris/libc/check_mmap3.c
+> diff --git a/tests/tcg/cris/check_moveq.c b/tests/tcg/cris/libc/check_moveq.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_moveq.c
+> rename to tests/tcg/cris/libc/check_moveq.c
+> diff --git a/tests/tcg/cris/check_openpf1.c b/tests/tcg/cris/libc/check_openpf1.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_openpf1.c
+> rename to tests/tcg/cris/libc/check_openpf1.c
+> diff --git a/tests/tcg/cris/check_openpf2.c b/tests/tcg/cris/libc/check_openpf2.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_openpf2.c
+> rename to tests/tcg/cris/libc/check_openpf2.c
+> diff --git a/tests/tcg/cris/check_openpf3.c b/tests/tcg/cris/libc/check_openpf3.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_openpf3.c
+> rename to tests/tcg/cris/libc/check_openpf3.c
+> diff --git a/tests/tcg/cris/check_openpf5.c b/tests/tcg/cris/libc/check_openpf5.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_openpf5.c
+> rename to tests/tcg/cris/libc/check_openpf5.c
+> diff --git a/tests/tcg/cris/check_settls1.c b/tests/tcg/cris/libc/check_settls1.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_settls1.c
+> rename to tests/tcg/cris/libc/check_settls1.c
+> diff --git a/tests/tcg/cris/check_sigalrm.c b/tests/tcg/cris/libc/check_sigalrm.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_sigalrm.c
+> rename to tests/tcg/cris/libc/check_sigalrm.c
+> diff --git a/tests/tcg/cris/check_stat1.c b/tests/tcg/cris/libc/check_stat1.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_stat1.c
+> rename to tests/tcg/cris/libc/check_stat1.c
+> diff --git a/tests/tcg/cris/check_stat2.c b/tests/tcg/cris/libc/check_stat2.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_stat2.c
+> rename to tests/tcg/cris/libc/check_stat2.c
+> diff --git a/tests/tcg/cris/check_stat3.c b/tests/tcg/cris/libc/check_stat3.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_stat3.c
+> rename to tests/tcg/cris/libc/check_stat3.c
+> diff --git a/tests/tcg/cris/check_stat4.c b/tests/tcg/cris/libc/check_stat4.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_stat4.c
+> rename to tests/tcg/cris/libc/check_stat4.c
+> diff --git a/tests/tcg/cris/check_swap.c b/tests/tcg/cris/libc/check_swap.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_swap.c
+> rename to tests/tcg/cris/libc/check_swap.c
+> diff --git a/tests/tcg/cris/check_time2.c b/tests/tcg/cris/libc/check_time2.c
+> similarity index 100%
+> rename from tests/tcg/cris/check_time2.c
+> rename to tests/tcg/cris/libc/check_time2.c
+> diff --git a/tests/tcg/cris/crisutils.h b/tests/tcg/cris/libc/crisutils.h
+> similarity index 100%
+> rename from tests/tcg/cris/crisutils.h
+> rename to tests/tcg/cris/libc/crisutils.h
+> diff --git a/tests/tcg/cris/libc/sys.c b/tests/tcg/cris/libc/sys.c
 > new file mode 100644
-> index 0000000000..49d48d8a1c
+> index 0000000000..b8e759eee3
 > --- /dev/null
-> +++ b/tests/tcg/arm/Makefile.softmmu-target
-> @@ -0,0 +1,29 @@
-> +# -*- Mode: makefile -*-
-> +#
-> +# ARM SoftMMU tests - included from tests/tcg/Makefile
-> +#
-> +
-> +ifeq ($(TARGET_ABI_DIR),arm)
-> +
-> +ARM_SRC=$(SRC_PATH)/tests/tcg/arm
-> +
-> +# Set search path for all sources
-> +VPATH 		+= $(ARM_SRC)
-> +
-> +ARM_TESTS=test-armv6m-undef
-> +
-> +TESTS += $(ARM_TESTS)
-> +
-> +CFLAGS+=-Wl,--build-id=none -x assembler-with-cpp
-> +LDFLAGS+=-nostdlib -N -static
-> +
-> +%: %.S %.ld
-> +	$(CC) $(CFLAGS) $(ASFLAGS) $< -o $@ $(LDFLAGS) -T $(ARM_SRC)/$@.ld
-> +
-> +# Specific Test Rules
-> +
-> +test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0
-> +
-> +run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
-> +
-> +endif
-> diff --git a/tests/tcg/arm/test-armv6m-undef.S b/tests/tcg/arm/test-armv6m-undef.S
-> new file mode 100644
-> index 0000000000..d18ca56b4a
-> --- /dev/null
-> +++ b/tests/tcg/arm/test-armv6m-undef.S
-> @@ -0,0 +1,154 @@
+> +++ b/tests/tcg/cris/libc/sys.c
+> @@ -0,0 +1,58 @@
 > +/*
-> + * Test ARMv6-M UNDEFINED 32-bit instructions
-> + *
-> + * Copyright 2018 Red Hat Inc.
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2
-> + * or later. See the COPYING file in the top-level directory.
+> + * Minilib helpers functions for system test
 > + */
 > +
-> +/*
-> + * Test that UNDEFINED 32-bit instructions fault as expected.  This is an
-> + * interesting test because ARMv6-M shares code with its more fully-featured
-> + * siblings and it's necessary to verify that its limited instruction set is
-> + * emulated correctly.
-> + *
-> + * The emulator must be invoked with -semihosting so that the test case can
-> + * terminate with exit code 0 on success or 1 on failure.
-> + *
-> + * Failures can be debugged with -d in_asm,int,exec,cpu and the
-> + * gdbstub (-S -s).
-> + */
 > +
-> +.syntax unified
-> +.cpu cortex-m0
-> +.thumb
-> +
-> +/*
-> + * Memory map
-> + */
-> +#define SRAM_BASE 0x20000000
-> +#define SRAM_SIZE (16 * 1024)
-> +
-> +/*
-> + * Semihosting interface on ARM T32
-> + * See "Semihosting for AArch32 and AArch64 Version 2.0 Documentation" by ARM
-> + */
-> +#define semihosting_call bkpt 0xab
-> +#define SYS_EXIT 0x18
-> +
-> +vector_table:
-> +    .word SRAM_BASE + SRAM_SIZE /* 0. SP_main */
-> +    .word exc_reset_thumb       /* 1. Reset */
-> +    .word 0                     /* 2. NMI */
-> +    .word exc_hard_fault_thumb  /* 3. HardFault */
-> +    .rept 7
-> +    .word 0                     /* 4-10. Reserved */
-> +    .endr
-> +    .word 0                     /* 11. SVCall */
-> +    .word 0                     /* 12. Reserved */
-> +    .word 0                     /* 13. Reserved */
-> +    .word 0                     /* 14. PendSV */
-> +    .word 0                     /* 15. SysTick */
-> +    .rept 32
-> +    .word 0                     /* 16-47. External Interrupts */
-> +    .endr
-> +
-> +exc_reset:
-> +.equ exc_reset_thumb, exc_reset + 1
-> +.global exc_reset_thumb
-> +    /* The following 32-bit UNDEFINED instructions are tested by executing
-> +     * them.  The HardFault exception handler should execute and return to
-> +     * the next test case.  If no exception is raised the test fails.
-> +     */
-> +
-> +    /* Table A5-9 32-bit Thumb encoding */
-> +    .short 0b1110100000000000
-> +    .short 0b0000000000000000
-> +    b not_reached
-> +    .short 0b1110100000000000
-> +    .short 0b1000000000000000
-> +    b not_reached
-> +    .short 0b1111100000000000
-> +    .short 0b0000000000000000
-> +    b not_reached
-> +    .short 0b1111100000000000
-> +    .short 0b1000000000000000
-> +    b not_reached
-> +    .short 0b1111000000000000
-> +    .short 0b0000000000000000
-> +    b not_reached
-> +
-> +    /* Table A5-10 Branch and miscellaneous control instructions */
-> +    .short 0b1111011111110000
-> +    .short 0b1010000000000000
-> +    b not_reached
-> +
-> +    /* The following are valid 32-bit instructions that must not raise a
-> +     * HardFault.
-> +     */
-> +
-> +    /* B4.2.3 Move to Special Register (moves to IPSR are ignored) */
-> +    msr ipsr, r0
-> +    b 1f
-> +    b not_reached
-> +1:
-> +    /* B4.2.2 Move from Special Register */
-> +    mrs r0, ipsr
-> +    b 1f
-> +    b not_reached
-> +1:
-> +    /* A6.7.13 Branch with Link (immediate) */
-> +    bl 1f
-> +1:
-> +    b 1f
-> +    b not_reached
-> +1:
-> +    /* A6.7.21 Data Memory Barrier */
-> +    dmb
-> +    b 1f
-> +    b not_reached
-> +1:
-> +    /* A6.7.22 Data Synchronization Barrier */
-> +    dsb
-> +    b 1f
-> +    b not_reached
-> +1:
-> +    /* A6.7.24 Instruction Memory Barrier */
-> +    isb
-> +    b 1f
-> +    b not_reached
-> +1:
-> +
-> +    /* Success! */
-> +    movs r0, 1
-> +    b exit
-> +
-> +not_reached: /* Failure :( */
-> +    movs r0, 0
-> +    b exit
-> +
-> +/* When a HardFault occurs, return to pc+6 (test cases are 3 halfwords long) */
-> +exc_hard_fault:
-> +.equ exc_hard_fault_thumb, exc_hard_fault + 1
-> +.global exc_hard_fault_thumb
-> +    ldr r0, [sp, 0x18]
-> +    adds r0, 6
-> +    str r0, [sp, 0x18]
-> +    bx lr
-> +
-> +/*
-> + * exit: Terminate emulator
-> + * @r0: 0 - failure, 1 - success
-> + */
-> +exit:
-> +    movs r1, 0
-> +    cmp r0, 1
-> +    bne 1f
-> +    ldr r1, ADP_Stopped_ApplicationExit
-> +1:
-> +    movs r0, SYS_EXIT
-> +    semihosting_call
-> +.align 2
-> +ADP_Stopped_ApplicationExit:
-> +    .word 0x20026
-> diff --git a/tests/tcg/arm/test-armv6m-undef.ld b/tests/tcg/arm/test-armv6m-undef.ld
-> new file mode 100644
-> index 0000000000..43dbbf17d5
-> --- /dev/null
-> +++ b/tests/tcg/arm/test-armv6m-undef.ld
-> @@ -0,0 +1,21 @@
-> +ENTRY(exc_reset_thumb)
-> +
-> +SECTIONS
-> +{
-> +    . = 0x0;
-> +    .text : {
-> +        *(.text)
-> +    }
-> +    .data : {
-> +        *(.data)
-> +    }
-> +    .rodata : {
-> +        *(.rodata)
-> +    }
-> +    .bss : {
-> +        *(.bss)
-> +    }
-> +    /DISCARD/ : {
-> +        *(.ARM.attributes)
-> +    }
+
+... and you add a copy which doesn't include stdio/stdlib/unistd in
+libc/. Don't we want the opposite? Maybe we can avoid duplicate code
+having each including ../sys.inc.c.
+
+> +void exit (int status) {
+> +	register unsigned int callno asm ("r9") = 1; /* NR_exit */
+> +	asm volatile ("break 13\n"
+> +		      :
+> +		      : "r" (callno)
+> +		      : "memory" );
+> +	while(1);
 > +}
+> +
+> +ssize_t write (int fd, const void *buf, size_t count) {
+
+The CPP should complain about size_t undefined.
+
+> +	register unsigned int callno asm ("r9") = 4; /* NR_write */
+> +	register unsigned int r10 asm ("r10") = fd;
+> +	register const void *r11 asm ("r11") = buf;
+> +	register size_t r12 asm ("r12") = count;
+> +	register unsigned int r asm ("r10");
+> +
+> +	asm volatile ("break 13\n"
+> +	     : "=r" (r)
+> +	     : "r" (callno), "0" (r10), "r" (r11), "r" (r12)
+> +	     : "memory");
+> +
+> +	return r;
+> +}
+> +
+> +static inline int mystrlen(char *s) {
+> +	int i = 0;
+> +	while (s[i])
+> +		i++;
+> +	return i;
+> +}
+> +
+> +void pass(void) {
+> +	char s[] = "passed.\n";
+> +	write (1, s, sizeof (s) - 1);
+> +	exit (0);
+> +}
+> +
+> +void _fail(char *reason) {
+> +	char s[] = "\nfailed: ";
+> +	int len = mystrlen(reason);
+> +	write (1, s, sizeof (s) - 1);
+> +	write (1, reason, len);
+> +	write (1, "\n", 1);
+> +//	exit (1);
+> +}
+> +
+> +void *memset (void *s, int c, size_t n) {
+> +	char *p = s;
+> +	int i;
+> +	for (i = 0; i < n; i++)
+> +		p[i] = c;
+> +	return p;
+> +}
+> diff --git a/tests/tcg/cris/sys.h b/tests/tcg/cris/libc/sys.h
+> similarity index 100%
+> rename from tests/tcg/cris/sys.h
+> rename to tests/tcg/cris/libc/sys.h
 > 

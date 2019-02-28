@@ -1,73 +1,71 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp585515wrx;
-        Thu, 28 Feb 2019 05:33:04 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZQr3oz+LCTuv5+SBdyC6Y4HrxQSVgq+DPJ0Ok3Q5F9SrdhF3CxYpPMQFM58DcGbkRgoThY
-X-Received: by 2002:a25:7085:: with SMTP id l127mr6518147ybc.369.1551360784515;
-        Thu, 28 Feb 2019 05:33:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551360784; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp595640wrx;
+        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZ7TWKZTbr5MyjTnt2cgFHt6iYvYAz4urPZAo9Y5PPrtPU+HlbOW269/8xHTrFskst8eVRW
+X-Received: by 2002:a0d:de82:: with SMTP id h124mr5487179ywe.354.1551361417637;
+        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551361417; cv=none;
         d=google.com; s=arc-20160816;
-        b=VHpehNwDLZ9sdY9l92QVaucqwgPMCRyU3aJnl4lXHwqhgR3OrsGL26pYy/2zBPQ+Ey
-         E98GzCGhhZK6TLWbTgh48lmLqw6v/M4zPRxo5ZFMYjxo3qqqsNbJJJAFbpfpMOJI2sEz
-         g+ziy+NlC1M2LtpM8SKiwR+LLXAqmCgOqyXmrq4RBY0yAVIInMQZs5Dl9RoY6mCCMNlp
-         jcX4t9KUZyDN29CBE+MTdu6iE9GWxmhuBgNEwu86q2f/CUte/Vz80mtVh83zWhDvggNP
-         lWbSxnFNo8qrsM4PX3Rlrpgvw3cObGX95joYLKK06wJFIUkRHP6k3ho+seatzQ9bujpU
-         TiiA==
+        b=UwwK+nCT84lre+UjAD5mcBeXw3hiT3OXI+FdNyOFtfsNmFxTXa0T3sr9IgHWxpWdxg
+         nGfrLYF2Q6topFf7/Jk7RbY7b9ISEdBS1K1D7IQKjSLCS2mV6eDGcDHAFtg2j1jlzSJl
+         ysW7zSSVp68OXw8L27Aq06fZb622csS5Tj8reiajWArLmeNysvh+AFhF3OVtJGsy9lHN
+         vdO0R7RY/NliK4GEJr8UiavGb0r4D0nFBtpusG3TvI2s9yEx5238eQqoad6Gloc3wLZS
+         +fQV9VvRIG450G2IpGakW6L30EC29f4/iAkQkD6AKoVzGJbd0bsHP7oYj9QSq1H7HfEL
+         lgJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=VqHwtD0Z5qfiGhjzgPnza5c1zyqVQfHN0ZKHXcfQ4SE=;
-        b=0plovXH0H47ac1mtF8c/bTTluARXWQsi0hJcWfYIjpuzicQP2I6qCnCZyqu+XUyzrO
-         GMTvQbw2lH2pMZFSZB6X59Dv4Tdl48hSlOYZnBi8hwwk06HaKEJRLF5qh+KM9FcGpMQ2
-         UXmH9ZWLyXm7UEMVqri8sDoy27SqEM01dw4tCCAsOc+MYkLMgE5d8jkLi0ar/XIjQZap
-         XFzIIuPHdYllLK4+w3AiaAjHgpX+dIXf/V6GUAWw9WA8rhc1PFKsXwcrxfvUF/xYUsT1
-         srYCtjccR8zYzkOAPDuhs9ihaR/TdTHgwwFzXfLPlm0Shgn1ZHmNs6YIGQCYEkGr3SyH
-         RxqA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=zdMYnlKt8QrjmI2NI2ycpPq+ALMkTwDO01I9Oy6RjNg=;
+        b=09AYU6VumPnAwkDzSaTTY+mFoZ8DNsajPwuKBSMm0cpsfteybCg7FizwUNgkW7M/a/
+         PjonTr54+PYKT5vPZnbrxsyqoi/gD9H9wl9PvW2f0qg8G3OGdQRvz7D/PwRNM1pttYcQ
+         92R3MmOU5XhxDgcBt/CuKOgYqpqdQDEpPQkySoJHahrGvtKfmWolhtqsADuRSXiARc3j
+         muhwH7J/4AKFyGWkn6VttNCwW0Ag9IlpZGKyCrmrcnPW74SqmS4Cj4ccN3B1m12/nbAz
+         7d0eLcxeskw9ts0UCHxxogWp0ZqGbPY5TiVndox45TrkyfbVLs2dGfJymDLHTFbHzB4Q
+         Qh7w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j70si10547875ywb.235.2019.02.28.05.33.04
+        by mx.google.com with ESMTPS id d130si4494113ywh.216.2019.02.28.05.43.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Feb 2019 05:33:04 -0800 (PST)
+        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:38559 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38671 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzLo7-0000cV-Vr
-	for alex.bennee@linaro.org; Thu, 28 Feb 2019 08:33:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36671)
+	id 1gzLyL-0004Rf-3u
+	for alex.bennee@linaro.org; Thu, 28 Feb 2019 08:43:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38231)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gzLo0-0000cQ-NT
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:32:58 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gzLy9-0004Pt-KQ
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:43:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gzLny-0000FR-T9
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:32:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:7314)
+	(envelope-from <imammedo@redhat.com>) id 1gzLy7-0005kC-7A
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:43:25 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55798)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gzLny-0000EW-JI; Thu, 28 Feb 2019 08:32:54 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gzLy6-0005jg-Ra; Thu, 28 Feb 2019 08:43:23 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3DE29DF5C0;
-	Thu, 28 Feb 2019 13:32:52 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AF0219C58;
-	Thu, 28 Feb 2019 13:32:48 +0000 (UTC)
-To: Laszlo Ersek <lersek@redhat.com>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id CA72F3142296;
+	Thu, 28 Feb 2019 13:43:21 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 268A918509;
+	Thu, 28 Feb 2019 13:43:16 +0000 (UTC)
+Date: Thu, 28 Feb 2019 14:43:15 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <20190228144315.2644cf9a@redhat.com>
+In-Reply-To: <de323ed6-c09f-4db0-daf9-9d299aec4c80@redhat.com>
 References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
 	<3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
 	<892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com>
@@ -75,20 +73,13 @@ References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
 	<d3c99948-2fdb-f345-8b22-03a7e181122c@redhat.com>
 	<6f4276b4-c79c-00a0-530e-be72c8093ad1@redhat.com>
 	<de323ed6-c09f-4db0-daf9-9d299aec4c80@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <6968e65a-0e74-ce90-1ec9-58e52202cc38@redhat.com>
-Date: Thu, 28 Feb 2019 14:32:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <de323ed6-c09f-4db0-daf9-9d299aec4c80@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 28 Feb 2019 13:32:52 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.43]);
+	Thu, 28 Feb 2019 13:43:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
@@ -103,201 +94,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
-	Linuxarm <linuxarm@huawei.com>, "xuwei \(O\)" <xuwei5@huawei.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
+	"xuwei \(O\)" <xuwei5@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gj44U8Ybxc7D
+X-TUID: SZss10YZX/KH
 
-Hi Laszlo,
-On 2/28/19 1:27 PM, Laszlo Ersek wrote:
+On Thu, 28 Feb 2019 13:27:54 +0100
+Laszlo Ersek <lersek@redhat.com> wrote:
+
 > On 02/28/19 11:12, Auger Eric wrote:
->> Hi Laszlo,
->>
->> On 2/27/19 9:14 PM, Laszlo Ersek wrote:
->>> On 02/27/19 13:55, Shameerali Kolothum Thodi wrote:
->>>> Hi Laszlo,
->>>>
->>>>> -----Original Message-----
->>>>> From: Shameerali Kolothum Thodi
->>>>> Sent: 25 February 2019 09:54
->>>>> To: 'Laszlo Ersek' <lersek@redhat.com>; Auger Eric <eric.auger@redhat.com>;
->>>>> shannon.zhaosl@gmail.com; peter.maydell@linaro.org;
->>>>> imammedo@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org
->>>>> Cc: xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>; Ard
->>>>> Biesheuvel <ard.biesheuvel@linaro.org>; Leif Lindholm (Linaro address)
->>>>> <leif.lindholm@linaro.org>
->>>>> Subject: RE: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
->>>>
->>>> [...]
->>>>  
->>>>>>>> The root cause seems to be EDK2 ACPI table checksum failure
->>>>>>>> as NFIT table is getting updated on hot-add. This needs further
->>>>>>>> investigation.
->>>>>>> + Ard, Leif, Laszlo if they have any idea of what is missing/wrong.
->>>>>>
->>>>>> Huh, very interesting; I usually don't expect my sanity checks to fire
->>>>>> in practice. :)
->>>>>>
->>>>>> The message
->>>>>>
->>>>>>   ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
->>>>>>
->>>>>> is logged by OVMF's and ArmVirtQemu's ACPI Platform DXE Driver when it
->>>>>> finds an invalid COMMAND_ADD_CHECKSUM command in QEMU's ACPI
->>>>>> linker/loader script.
->>>>>>
->>>>>> Please see the command definition in QEMU's
->>>>>> "hw/acpi/bios-linker-loader.c". In particular, please refer to the
->>>>>> function bios_linker_loader_add_checksum(), which builds the command
->>>>>> structure, and documents the fields.
->>>>>>
->>>>>> (You may also refer to QEMU_LOADER_ADD_CHECKSUM in file
->>>>>> "OvmfPkg/AcpiPlatformDxe/QemuLoader.h" in the edk2 source tree, for the
->>>>>> same information.)
->>>>>>
->>>>>> The error message is logged if:
->>>>>> - the offset at which the checksum should be stored falls outside of the
->>>>>> size of the fw_cfg blob, or
->>>>>> - the range over which the checksum should be calculated falls outside
->>>>>> (at least in part) of the fw_cfg blob.
->>>>>>
->>>>>> To me this suggests that QEMU generates an invalid
->>>>>> COMMAND_ADD_CHECKSUM
->>>>>> command for the firmware.
->>>>>>
->>>>>> ... I've tried to skim the patches briefly. I think there must be an
->>>>>> error in the DSDT building logic that is only active on reboot if an
->>>>>> nvdimm module was hot-added before the reboot.
->>>>>
->>>>> Thanks for taking a look and the pointers. I will debug this further
->>>>> and get back.
->>>>
->>>> The root cause of the issue seems to be UEFI not seeing the updated acpi
->>>> table blob size on reboot once a new NFIT table is added(nvdimm hot added).
->>>>
->>>> Please see the debug logs below,
->>>>
->>>> Initial Guest boot
->>>> ---------------------------
->>>>
->>>> Debug logs from Qemu:
->>>>
->>>> build_header: acpi sig DSDT len 0x5127
->>>> build_header: acpi sig FACP len 0x10c
->>>> build_header: acpi sig APIC len 0xa8
->>>> build_header: acpi sig GTDT len 0x60
->>>> build_header: acpi sig MCFG len 0x3c
->>>> build_header: acpi sig SPCR len 0x50
->>>> build_header: acpi sig SRAT len 0x92
->>>> build_header: acpi sig SSDT len 0x38f
->>>> build_header: acpi sig XSDT len 0x5c
->>>> virt_acpi_build: acpi table_blob len 0x5844
->>>>
->>>> Debug logs from UEFI:
->>>>
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0x5C Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x8 Start=0x0 Length=0x14 Blob->Size=0x24
->>>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x20 Start=0x0 Length=0x24 Blob->Size=0x24
->>>> InstallQemuFwCfgTables: installed 8 tables
->>>>
->>>> Guest Reboot after ndimm hot added
->>>> ------------------------------------
->>>>
->>>> Debug logs from Qemu:
->>>>
->>>> build_header: acpi sig DSDT len 0x5127
->>>> build_header: acpi sig FACP len 0x10c
->>>> build_header: acpi sig APIC len 0xa8
->>>> build_header: acpi sig GTDT len 0x60
->>>> build_header: acpi sig MCFG len 0x3c
->>>> build_header: acpi sig SPCR len 0x50
->>>> build_header: acpi sig SRAT len 0x92
->>>> build_header: acpi sig SSDT len 0x38f
->>>> build_header: acpi sig NFIT len 0xe0  -->New
->>>> build_header: acpi sig XSDT len 0x64
->>>> virt_acpi_build: acpi table_blob len 0x592c -->blob len updated
->>>>
->>>> Debug logs from UEFI:
->>>>
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844  -->Wrong blob size.
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0xE0 Blob->Size=0x5844
->>>> ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
->>>> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
->>>>
->>>>
->>>> To me it seems on ARM vit acpi path, the blob len is calculated based
->>>> on actual tables and is updated only in virt_acpi_setup() --> acpi_add_rom_blob()
->>>> path. I had a look at the x86 code and it looks like, there, the blob len gets updated
->>>> with an additional buffer to take care of table resizing[1].
->>>>
->>>> As a hack i added the same to ARM virt and it seems to resolve the issue.
->>>> I am not sure this is the best approach to fix this though.
->>>>
->>>> Please let me know your thoughts.
->>>>
->>>> Thanks,
->>>> Shameer
->>>>
->>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>>> index 132414c..4291553 100644
->>>> --- a/hw/arm/virt-acpi-build.c
->>>> +++ b/hw/arm/virt-acpi-build.c
->>>> @@ -50,6 +50,8 @@
->>>>  #define ARM_SPI_BASE 32
->>>>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
->>>>
->>>> +#define ACPI_BUILD_TABLE_SIZE    0x20000
->>>> +
->>>>  static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
->>>>  {
->>>>      uint16_t i;
->>>> @@ -886,6 +888,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>>>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
->>>>      }
->>>>
->>>> +    /* Make sure we have a buffer in case we need to resize the tables. */
->>>> +    g_array_set_size(tables_blob, ROUND_UP(acpi_data_len(tables_blob),
->>>> +                     ACPI_BUILD_TABLE_SIZE));
->>>> +
->>>>      /* Cleanup memory that's no longer used. */
->>>>      g_array_free(table_offsets, true);
->>>>  }
->>>>
->>>> [1] https://github.com/qemu/qemu/blob/master/hw/i386/acpi-build.c#L2792
->>>
->>> Nice analysis, thanks.
->>>
->>> I think the line that you reference, i.e.
->>>
->>>   acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
->>>
->>> in acpi_build() [hw/i386/acpi-build.c] masks this issue for x86 only as
->>> a side effect. To my understanding, the alignment / padding exists there
->>> for migration compatibility. It doesn't exist for updating the size of
->>> the ACPI blobs in fw_cfg across reboots. The issue is masked because the
->>> alignment is large enough (un-changed) to contain the regenerated blobs
->>> as well.>
->>> Given that the "virt" machine type is versioned, I think migration
->>> compat is a valid concern there too. This in itself would justify a
->>> similar padding.
->> I don't understand the migration compat issue. Please could you elaborate?
+> > Hi Laszlo,
+> > 
+> > On 2/27/19 9:14 PM, Laszlo Ersek wrote:  
+> >> On 02/27/19 13:55, Shameerali Kolothum Thodi wrote:  
+> >>> Hi Laszlo,
+> >>>  
+> >>>> -----Original Message-----
+> >>>> From: Shameerali Kolothum Thodi
+> >>>> Sent: 25 February 2019 09:54
+> >>>> To: 'Laszlo Ersek' <lersek@redhat.com>; Auger Eric <eric.auger@redhat.com>;
+> >>>> shannon.zhaosl@gmail.com; peter.maydell@linaro.org;
+> >>>> imammedo@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> >>>> Cc: xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>; Ard
+> >>>> Biesheuvel <ard.biesheuvel@linaro.org>; Leif Lindholm (Linaro address)
+> >>>> <leif.lindholm@linaro.org>
+> >>>> Subject: RE: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support  
+> >>>
+> >>> [...]
+> >>>    
+> >>>>>>> The root cause seems to be EDK2 ACPI table checksum failure
+> >>>>>>> as NFIT table is getting updated on hot-add. This needs further
+> >>>>>>> investigation.  
+> >>>>>> + Ard, Leif, Laszlo if they have any idea of what is missing/wrong.  
+> >>>>>
+> >>>>> Huh, very interesting; I usually don't expect my sanity checks to fire
+> >>>>> in practice. :)
+> >>>>>
+> >>>>> The message
+> >>>>>
+> >>>>>   ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
+> >>>>>
+> >>>>> is logged by OVMF's and ArmVirtQemu's ACPI Platform DXE Driver when it
+> >>>>> finds an invalid COMMAND_ADD_CHECKSUM command in QEMU's ACPI
+> >>>>> linker/loader script.
+> >>>>>
+> >>>>> Please see the command definition in QEMU's
+> >>>>> "hw/acpi/bios-linker-loader.c". In particular, please refer to the
+> >>>>> function bios_linker_loader_add_checksum(), which builds the command
+> >>>>> structure, and documents the fields.
+> >>>>>
+> >>>>> (You may also refer to QEMU_LOADER_ADD_CHECKSUM in file
+> >>>>> "OvmfPkg/AcpiPlatformDxe/QemuLoader.h" in the edk2 source tree, for the
+> >>>>> same information.)
+> >>>>>
+> >>>>> The error message is logged if:
+> >>>>> - the offset at which the checksum should be stored falls outside of the
+> >>>>> size of the fw_cfg blob, or
+> >>>>> - the range over which the checksum should be calculated falls outside
+> >>>>> (at least in part) of the fw_cfg blob.
+> >>>>>
+> >>>>> To me this suggests that QEMU generates an invalid
+> >>>>> COMMAND_ADD_CHECKSUM
+> >>>>> command for the firmware.
+> >>>>>
+> >>>>> ... I've tried to skim the patches briefly. I think there must be an
+> >>>>> error in the DSDT building logic that is only active on reboot if an
+> >>>>> nvdimm module was hot-added before the reboot.  
+> >>>>
+> >>>> Thanks for taking a look and the pointers. I will debug this further
+> >>>> and get back.  
+> >>>
+> >>> The root cause of the issue seems to be UEFI not seeing the updated acpi
+> >>> table blob size on reboot once a new NFIT table is added(nvdimm hot added).
+> >>>
+> >>> Please see the debug logs below,
+> >>>
+> >>> Initial Guest boot
+> >>> ---------------------------
+> >>>
+> >>> Debug logs from Qemu:
+> >>>
+> >>> build_header: acpi sig DSDT len 0x5127
+> >>> build_header: acpi sig FACP len 0x10c
+> >>> build_header: acpi sig APIC len 0xa8
+> >>> build_header: acpi sig GTDT len 0x60
+> >>> build_header: acpi sig MCFG len 0x3c
+> >>> build_header: acpi sig SPCR len 0x50
+> >>> build_header: acpi sig SRAT len 0x92
+> >>> build_header: acpi sig SSDT len 0x38f
+> >>> build_header: acpi sig XSDT len 0x5c
+> >>> virt_acpi_build: acpi table_blob len 0x5844
+> >>>
+> >>> Debug logs from UEFI:
+> >>>
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0x5C Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x8 Start=0x0 Length=0x14 Blob->Size=0x24
+> >>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x20 Start=0x0 Length=0x24 Blob->Size=0x24
+> >>> InstallQemuFwCfgTables: installed 8 tables
+> >>>
+> >>> Guest Reboot after ndimm hot added
+> >>> ------------------------------------
+> >>>
+> >>> Debug logs from Qemu:
+> >>>
+> >>> build_header: acpi sig DSDT len 0x5127
+> >>> build_header: acpi sig FACP len 0x10c
+> >>> build_header: acpi sig APIC len 0xa8
+> >>> build_header: acpi sig GTDT len 0x60
+> >>> build_header: acpi sig MCFG len 0x3c
+> >>> build_header: acpi sig SPCR len 0x50
+> >>> build_header: acpi sig SRAT len 0x92
+> >>> build_header: acpi sig SSDT len 0x38f
+> >>> build_header: acpi sig NFIT len 0xe0  -->New
+> >>> build_header: acpi sig XSDT len 0x64
+> >>> virt_acpi_build: acpi table_blob len 0x592c -->blob len updated
+> >>>
+> >>> Debug logs from UEFI:
+> >>>
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844  -->Wrong blob size.
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0xE0 Blob->Size=0x5844
+> >>> ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
+> >>> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
+> >>>
+> >>>
+> >>> To me it seems on ARM vit acpi path, the blob len is calculated based
+> >>> on actual tables and is updated only in virt_acpi_setup() --> acpi_add_rom_blob()
+> >>> path. I had a look at the x86 code and it looks like, there, the blob len gets updated
+> >>> with an additional buffer to take care of table resizing[1].
+> >>>
+> >>> As a hack i added the same to ARM virt and it seems to resolve the issue.
+> >>> I am not sure this is the best approach to fix this though.
+> >>>
+> >>> Please let me know your thoughts.
+> >>>
+> >>> Thanks,
+> >>> Shameer
+> >>>
+> >>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >>> index 132414c..4291553 100644
+> >>> --- a/hw/arm/virt-acpi-build.c
+> >>> +++ b/hw/arm/virt-acpi-build.c
+> >>> @@ -50,6 +50,8 @@
+> >>>  #define ARM_SPI_BASE 32
+> >>>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> >>>
+> >>> +#define ACPI_BUILD_TABLE_SIZE    0x20000
+> >>> +
+> >>>  static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+> >>>  {
+> >>>      uint16_t i;
+> >>> @@ -886,6 +888,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> >>>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+> >>>      }
+> >>>
+> >>> +    /* Make sure we have a buffer in case we need to resize the tables. */
+> >>> +    g_array_set_size(tables_blob, ROUND_UP(acpi_data_len(tables_blob),
+> >>> +                     ACPI_BUILD_TABLE_SIZE));
+> >>> +
+> >>>      /* Cleanup memory that's no longer used. */
+> >>>      g_array_free(table_offsets, true);
+> >>>  }
+> >>>
+> >>> [1] https://github.com/qemu/qemu/blob/master/hw/i386/acpi-build.c#L2792  
+> >>
+> >> Nice analysis, thanks.
+> >>
+> >> I think the line that you reference, i.e.
+> >>
+> >>   acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
+> >>
+> >> in acpi_build() [hw/i386/acpi-build.c] masks this issue for x86 only as
+> >> a side effect. To my understanding, the alignment / padding exists there
+> >> for migration compatibility. It doesn't exist for updating the size of
+> >> the ACPI blobs in fw_cfg across reboots. The issue is masked because the
+> >> alignment is large enough (un-changed) to contain the regenerated blobs
+> >> as well.>
+> >> Given that the "virt" machine type is versioned, I think migration
+> >> compat is a valid concern there too. This in itself would justify a
+> >> similar padding.  
+> > I don't understand the migration compat issue. Please could you elaborate?  
 > 
 > git-blame explains it to some extent -- please see commit 07fb61760cde
 > ("pc: hack for migration compatibility from QEMU 2.0", 2014-07-28).
@@ -335,11 +333,11 @@ On 2/28/19 1:27 PM, Laszlo Ersek wrote:
 > Hence the padding -- it tries to cancel out small variances in ACPI
 > payload size.
 > 
->>>
->>> I don't know if we want to specifically care about size-changing
->>> ACPI-regen across reboot. I believe measures for that specific use case
->>> don't exist in x86 machine types either.
->> The NFIT redimensioning should exit on x86 too?
+> >>
+> >> I don't know if we want to specifically care about size-changing
+> >> ACPI-regen across reboot. I believe measures for that specific use case
+> >> don't exist in x86 machine types either.  
+> > The NFIT redimensioning should exit on x86 too?  
 > 
 > That's not my point. My point was that the padding, which was originally
 > supposed to mask variances in ACPI payload size across *QEMU releases*,
@@ -352,15 +350,44 @@ On 2/28/19 1:27 PM, Laszlo Ersek wrote:
 > In virt, there is no such ACPI padding code (for migration compat) --
 > for whatever reason --, and so it *also* cannot take care of the
 > resize-on-reboot problem.
+What's describe above is a bit outdate, let me paint a rough current state
+in chronological order (I haven't checked how it actually works now).
+--
+1. how it work(s|ed):
+     * tables are generated during machine_done and registered with fw_cfg
+     * then oops: we have device_add that could be called later but before
+       guest runs and we don't have complete picture wrt CRS resources for
+       PCI as that is programmed by firmware, so here goes a trick to
+       regenerate tables when firmware accesses its fwcfg entry
+       (see how build_state->patched is used), byt that time FW has intialized
+       PCI to the extent necessary to build valid tables.
+     * then we do hot add ACPI table are not updated until reset
+       (acpi_build_reset) and all dance with patching repeats when FW
+       gets tables form QEMU.
+     * at those versions of QEMU tables size was static
+     
+2. Later on hotplugging bridges (I think) caused issues on reboot/migration
+as it caused DSDT size increase, that made as invent padding race train-wreak.
+2.2 then there were cases where tables changed size depending where a device
+was cold or hot plugged and may be some other issues I don't recall.
 
-That's clearer now. Thank you for the explanations.
+3. With padding race being a lost game (there always were border line configs
+where it broke migration), Michael introduced re-sizable blobs 42d859001d for
+acpi table blobs, which could be resized on target to accommodate larger
+tables blob during migration.
 
-Thanks
+4. Even with resizable memory regions for the sake of backward migration
+compatibility we needed to keep padding we used with legacy machine. It's
+still broken in some cases but mostly works (we declared padding approach
+broken by design and left it as is)
+--
 
-Eric
-> 
+Thankfully arm/virt ACPI support materialized after all of the above
+so we don't have legacy padding obligations at all. Hence suggest to
+find were the bug is instead of trying to start yet another padding race.
+ 
 > [...]
 > 
 > Thanks
 > Laszlo
-> 
+

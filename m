@@ -1,87 +1,91 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp595640wrx;
-        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZ7TWKZTbr5MyjTnt2cgFHt6iYvYAz4urPZAo9Y5PPrtPU+HlbOW269/8xHTrFskst8eVRW
-X-Received: by 2002:a0d:de82:: with SMTP id h124mr5487179ywe.354.1551361417637;
-        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551361417; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp614062wrx;
+        Thu, 28 Feb 2019 06:03:05 -0800 (PST)
+X-Google-Smtp-Source: AHgI3IZtoCLv7wT1T3hEP++bQ0B4ap2UOVEKlED/anhwR7v/a7v6Hztxtq41FbpFm+WyhYPaTPNf
+X-Received: by 2002:a25:7650:: with SMTP id r77mr6458168ybc.206.1551362585429;
+        Thu, 28 Feb 2019 06:03:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551362585; cv=none;
         d=google.com; s=arc-20160816;
-        b=UwwK+nCT84lre+UjAD5mcBeXw3hiT3OXI+FdNyOFtfsNmFxTXa0T3sr9IgHWxpWdxg
-         nGfrLYF2Q6topFf7/Jk7RbY7b9ISEdBS1K1D7IQKjSLCS2mV6eDGcDHAFtg2j1jlzSJl
-         ysW7zSSVp68OXw8L27Aq06fZb622csS5Tj8reiajWArLmeNysvh+AFhF3OVtJGsy9lHN
-         vdO0R7RY/NliK4GEJr8UiavGb0r4D0nFBtpusG3TvI2s9yEx5238eQqoad6Gloc3wLZS
-         +fQV9VvRIG450G2IpGakW6L30EC29f4/iAkQkD6AKoVzGJbd0bsHP7oYj9QSq1H7HfEL
-         lgJw==
+        b=oUH3xZOXcRf9PyciNkNQrpZs/YXuoDLfK1hGGgdEW4Jw9KWHR+cqhqF7CdTS2UryLR
+         I9GsRgEp+HNuRq+rW9RXRE7vW135s80snkmW9p+eo9pKsrDMQrgJsoSWNojhv2rwrLhM
+         SVSj1fKdIkyHXF8emT5aQTLwwsnml81ITxNct43We2pko4l4bLrUoAPSNZQvsSIuUKz2
+         do8hB06d9RNWFC0BG9IbD0aAJiOko7qVVJGAYpMBXrZvCOhhjXALbrSFXemhdrFhxeBm
+         +r7nviz3GBMwAFMN9ZL7atPWECq4sd76NEvYK/rtw6Pkpn0JzLc+k1Q1AdjCRCIsDfHt
+         +x8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=zdMYnlKt8QrjmI2NI2ycpPq+ALMkTwDO01I9Oy6RjNg=;
-        b=09AYU6VumPnAwkDzSaTTY+mFoZ8DNsajPwuKBSMm0cpsfteybCg7FizwUNgkW7M/a/
-         PjonTr54+PYKT5vPZnbrxsyqoi/gD9H9wl9PvW2f0qg8G3OGdQRvz7D/PwRNM1pttYcQ
-         92R3MmOU5XhxDgcBt/CuKOgYqpqdQDEpPQkySoJHahrGvtKfmWolhtqsADuRSXiARc3j
-         muhwH7J/4AKFyGWkn6VttNCwW0Ag9IlpZGKyCrmrcnPW74SqmS4Cj4ccN3B1m12/nbAz
-         7d0eLcxeskw9ts0UCHxxogWp0ZqGbPY5TiVndox45TrkyfbVLs2dGfJymDLHTFbHzB4Q
-         Qh7w==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :references:message-id:date:thread-index:thread-topic:to:from;
+        bh=Q9juvvtUbhA/yQScWD9pviPL6zf8/zGIcWYKjRciENY=;
+        b=g/6YOB72V0R0ru5OCuvwDR+xu5wUEgKQDYOfDfA3pQx2jmDPoAA4Nj0EkMAXpI/gIp
+         5E2b7+P/Fnn0Ns4gOhw/xZPu7rwvSG1UbDHOBS/dErzmN1i+cLywLGustqKXANbiUQ3+
+         kmBy0DNn5ZYaJUni/QnHGLntwgdDJ4kAZG5j4t/6A54numJpsPp0qmKx8u1//O0wyWos
+         7GqWr0NJ2Fv3K0A6/8EzkUlijeNQ9eofE+FNBDTliwz8gyG5FZNWRJEyFgkXo+7HyRsc
+         yshK5BCxrc4QbkCsblUVVrIbv439EHvyRy12Efn0O8fWOOv1BqRWjwXxxtqlZtLKadzG
+         LYBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d130si4494113ywh.216.2019.02.28.05.43.37
+        by mx.google.com with ESMTPS id 207si5858995ywh.212.2019.02.28.06.03.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Feb 2019 05:43:37 -0800 (PST)
+        Thu, 28 Feb 2019 06:03:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:38671 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38987 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzLyL-0004Rf-3u
-	for alex.bennee@linaro.org; Thu, 28 Feb 2019 08:43:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38231)
+	id 1gzMHA-00050l-SV
+	for alex.bennee@linaro.org; Thu, 28 Feb 2019 09:03:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41854)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzLy9-0004Pt-KQ
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:43:27 -0500
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gzMGu-0004yl-J9
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 09:02:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzLy7-0005kC-7A
-	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 08:43:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55798)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gzMGj-0005eS-4H
+	for qemu-arm@nongnu.org; Thu, 28 Feb 2019 09:02:48 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45354 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gzLy6-0005jg-Ra; Thu, 28 Feb 2019 08:43:23 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CA72F3142296;
-	Thu, 28 Feb 2019 13:43:21 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 268A918509;
-	Thu, 28 Feb 2019 13:43:16 +0000 (UTC)
-Date: Thu, 28 Feb 2019 14:43:15 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <20190228144315.2644cf9a@redhat.com>
-In-Reply-To: <de323ed6-c09f-4db0-daf9-9d299aec4c80@redhat.com>
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gzMGi-0005Zl-Pq; Thu, 28 Feb 2019 09:02:37 -0500
+Received: from LHREML713-CAH.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id 3719C40162CC03FF25D9;
+	Thu, 28 Feb 2019 14:02:29 +0000 (GMT)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.86]) by
+	LHREML713-CAH.china.huawei.com ([10.201.108.36]) with mapi id
+	14.03.0415.000; Thu, 28 Feb 2019 14:02:21 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Auger Eric <eric.auger@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"imammedo@redhat.com"
+	<imammedo@redhat.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Thread-Topic: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+Thread-Index: AQHUtvmpFsitltmfREOfc6NLrhEY6qXsIlgAgAA0iICABBmRQIADVpbwgAB9CICAAOofAIAAHCHwgAAiZLA=
+Date: Thu, 28 Feb 2019 14:02:21 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8392D778D@lhreml524-mbs.china.huawei.com>
 References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
 	<3a6bf5ea-5b48-18c2-8a2c-0ced777be816@redhat.com>
 	<892e3eb7-66f5-92a3-5891-de8665fc984a@redhat.com>
 	<5FC3163CFD30C246ABAA99954A238FA8392D6875@lhreml524-mbs.china.huawei.com>
 	<d3c99948-2fdb-f345-8b22-03a7e181122c@redhat.com>
-	<6f4276b4-c79c-00a0-530e-be72c8093ad1@redhat.com>
-	<de323ed6-c09f-4db0-daf9-9d299aec4c80@redhat.com>
+	<6f4276b4-c79c-00a0-530e-be72c8093ad1@redhat.com> 
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Thu, 28 Feb 2019 13:43:21 +0000 (UTC)
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 185.176.76.210
 Subject: Re: [Qemu-arm] [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -94,300 +98,236 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>
+Cc: "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
+	Linuxarm <linuxarm@huawei.com>, "xuwei \(O\)" <xuwei5@huawei.com>, Ard
+	Biesheuvel <ard.biesheuvel@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SZss10YZX/KH
+X-TUID: If2lkY3yQnhU
 
-On Thu, 28 Feb 2019 13:27:54 +0100
-Laszlo Ersek <lersek@redhat.com> wrote:
-
-> On 02/28/19 11:12, Auger Eric wrote:
-> > Hi Laszlo,
-> > 
-> > On 2/27/19 9:14 PM, Laszlo Ersek wrote:  
-> >> On 02/27/19 13:55, Shameerali Kolothum Thodi wrote:  
-> >>> Hi Laszlo,
-> >>>  
-> >>>> -----Original Message-----
-> >>>> From: Shameerali Kolothum Thodi
-> >>>> Sent: 25 February 2019 09:54
-> >>>> To: 'Laszlo Ersek' <lersek@redhat.com>; Auger Eric <eric.auger@redhat.com>;
-> >>>> shannon.zhaosl@gmail.com; peter.maydell@linaro.org;
-> >>>> imammedo@redhat.com; qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> >>>> Cc: xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>; Ard
-> >>>> Biesheuvel <ard.biesheuvel@linaro.org>; Leif Lindholm (Linaro address)
-> >>>> <leif.lindholm@linaro.org>
-> >>>> Subject: RE: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support  
-> >>>
-> >>> [...]
-> >>>    
-> >>>>>>> The root cause seems to be EDK2 ACPI table checksum failure
-> >>>>>>> as NFIT table is getting updated on hot-add. This needs further
-> >>>>>>> investigation.  
-> >>>>>> + Ard, Leif, Laszlo if they have any idea of what is missing/wrong.  
-> >>>>>
-> >>>>> Huh, very interesting; I usually don't expect my sanity checks to fire
-> >>>>> in practice. :)
-> >>>>>
-> >>>>> The message
-> >>>>>
-> >>>>>   ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
-> >>>>>
-> >>>>> is logged by OVMF's and ArmVirtQemu's ACPI Platform DXE Driver when it
-> >>>>> finds an invalid COMMAND_ADD_CHECKSUM command in QEMU's ACPI
-> >>>>> linker/loader script.
-> >>>>>
-> >>>>> Please see the command definition in QEMU's
-> >>>>> "hw/acpi/bios-linker-loader.c". In particular, please refer to the
-> >>>>> function bios_linker_loader_add_checksum(), which builds the command
-> >>>>> structure, and documents the fields.
-> >>>>>
-> >>>>> (You may also refer to QEMU_LOADER_ADD_CHECKSUM in file
-> >>>>> "OvmfPkg/AcpiPlatformDxe/QemuLoader.h" in the edk2 source tree, for the
-> >>>>> same information.)
-> >>>>>
-> >>>>> The error message is logged if:
-> >>>>> - the offset at which the checksum should be stored falls outside of the
-> >>>>> size of the fw_cfg blob, or
-> >>>>> - the range over which the checksum should be calculated falls outside
-> >>>>> (at least in part) of the fw_cfg blob.
-> >>>>>
-> >>>>> To me this suggests that QEMU generates an invalid
-> >>>>> COMMAND_ADD_CHECKSUM
-> >>>>> command for the firmware.
-> >>>>>
-> >>>>> ... I've tried to skim the patches briefly. I think there must be an
-> >>>>> error in the DSDT building logic that is only active on reboot if an
-> >>>>> nvdimm module was hot-added before the reboot.  
-> >>>>
-> >>>> Thanks for taking a look and the pointers. I will debug this further
-> >>>> and get back.  
-> >>>
-> >>> The root cause of the issue seems to be UEFI not seeing the updated acpi
-> >>> table blob size on reboot once a new NFIT table is added(nvdimm hot added).
-> >>>
-> >>> Please see the debug logs below,
-> >>>
-> >>> Initial Guest boot
-> >>> ---------------------------
-> >>>
-> >>> Debug logs from Qemu:
-> >>>
-> >>> build_header: acpi sig DSDT len 0x5127
-> >>> build_header: acpi sig FACP len 0x10c
-> >>> build_header: acpi sig APIC len 0xa8
-> >>> build_header: acpi sig GTDT len 0x60
-> >>> build_header: acpi sig MCFG len 0x3c
-> >>> build_header: acpi sig SPCR len 0x50
-> >>> build_header: acpi sig SRAT len 0x92
-> >>> build_header: acpi sig SSDT len 0x38f
-> >>> build_header: acpi sig XSDT len 0x5c
-> >>> virt_acpi_build: acpi table_blob len 0x5844
-> >>>
-> >>> Debug logs from UEFI:
-> >>>
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0x5C Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x8 Start=0x0 Length=0x14 Blob->Size=0x24
-> >>> ProcessCmdAddChecksum: File="etc/acpi/rsdp" ResultOffset=0x20 Start=0x0 Length=0x24 Blob->Size=0x24
-> >>> InstallQemuFwCfgTables: installed 8 tables
-> >>>
-> >>> Guest Reboot after ndimm hot added
-> >>> ------------------------------------
-> >>>
-> >>> Debug logs from Qemu:
-> >>>
-> >>> build_header: acpi sig DSDT len 0x5127
-> >>> build_header: acpi sig FACP len 0x10c
-> >>> build_header: acpi sig APIC len 0xa8
-> >>> build_header: acpi sig GTDT len 0x60
-> >>> build_header: acpi sig MCFG len 0x3c
-> >>> build_header: acpi sig SPCR len 0x50
-> >>> build_header: acpi sig SRAT len 0x92
-> >>> build_header: acpi sig SSDT len 0x38f
-> >>> build_header: acpi sig NFIT len 0xe0  -->New
-> >>> build_header: acpi sig XSDT len 0x64
-> >>> virt_acpi_build: acpi table_blob len 0x592c -->blob len updated
-> >>>
-> >>> Debug logs from UEFI:
-> >>>
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x9 Start=0x0 Length=0x5127 Blob->Size=0x5844  -->Wrong blob size.
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5130 Start=0x5127 Length=0x10C Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x523C Start=0x5233 Length=0xA8 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x52E4 Start=0x52DB Length=0x60 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5344 Start=0x533B Length=0x3C Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5380 Start=0x5377 Length=0x50 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x53D0 Start=0x53C7 Length=0x92 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x5462 Start=0x5459 Length=0x38F Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: File="etc/acpi/tables" ResultOffset=0x57F1 Start=0x57E8 Length=0xE0 Blob->Size=0x5844
-> >>> ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
-> >>> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
-> >>>
-> >>>
-> >>> To me it seems on ARM vit acpi path, the blob len is calculated based
-> >>> on actual tables and is updated only in virt_acpi_setup() --> acpi_add_rom_blob()
-> >>> path. I had a look at the x86 code and it looks like, there, the blob len gets updated
-> >>> with an additional buffer to take care of table resizing[1].
-> >>>
-> >>> As a hack i added the same to ARM virt and it seems to resolve the issue.
-> >>> I am not sure this is the best approach to fix this though.
-> >>>
-> >>> Please let me know your thoughts.
-> >>>
-> >>> Thanks,
-> >>> Shameer
-> >>>
-> >>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> >>> index 132414c..4291553 100644
-> >>> --- a/hw/arm/virt-acpi-build.c
-> >>> +++ b/hw/arm/virt-acpi-build.c
-> >>> @@ -50,6 +50,8 @@
-> >>>  #define ARM_SPI_BASE 32
-> >>>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-> >>>
-> >>> +#define ACPI_BUILD_TABLE_SIZE    0x20000
-> >>> +
-> >>>  static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
-> >>>  {
-> >>>      uint16_t i;
-> >>> @@ -886,6 +888,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >>>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
-> >>>      }
-> >>>
-> >>> +    /* Make sure we have a buffer in case we need to resize the tables. */
-> >>> +    g_array_set_size(tables_blob, ROUND_UP(acpi_data_len(tables_blob),
-> >>> +                     ACPI_BUILD_TABLE_SIZE));
-> >>> +
-> >>>      /* Cleanup memory that's no longer used. */
-> >>>      g_array_free(table_offsets, true);
-> >>>  }
-> >>>
-> >>> [1] https://github.com/qemu/qemu/blob/master/hw/i386/acpi-build.c#L2792  
-> >>
-> >> Nice analysis, thanks.
-> >>
-> >> I think the line that you reference, i.e.
-> >>
-> >>   acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
-> >>
-> >> in acpi_build() [hw/i386/acpi-build.c] masks this issue for x86 only as
-> >> a side effect. To my understanding, the alignment / padding exists there
-> >> for migration compatibility. It doesn't exist for updating the size of
-> >> the ACPI blobs in fw_cfg across reboots. The issue is masked because the
-> >> alignment is large enough (un-changed) to contain the regenerated blobs
-> >> as well.>
-> >> Given that the "virt" machine type is versioned, I think migration
-> >> compat is a valid concern there too. This in itself would justify a
-> >> similar padding.  
-> > I don't understand the migration compat issue. Please could you elaborate?  
-> 
-> git-blame explains it to some extent -- please see commit 07fb61760cde
-> ("pc: hack for migration compatibility from QEMU 2.0", 2014-07-28).
-> 
-> I don't remember any details at this point that the commit does not
-> state. (I see that I reviewed the patch back then, so perhaps the
-> mailing list archive has some discussion.)
-> 
-> Interestingly, the commit message refers to "memory hotplug work" too.
-> 
-> ... Ahh, wait, I do remember the main issue now. Here's the thing. The
-> ACPI payload that QEMU generates for the firmware is considered a part
-> of the firmware itself. Therefore, it is not versioned -- because the
-> firmware itself is not versioned. (In other words, if you migrate a VM
-> from one host to another host, and that other host has different
-> firmware that the VM will pick up after re-launch (from cold boot), then
-> the firmware will change in the VM.)
-> 
-> By considering ACPI a part of the firmware, QEMU never versioned the
-> ACPI payload, just like the actual firmware was never versioned. In
-> other words, if you have machine type Foo on qemu release Bar, and
-> machine type Foo on qemu release Baz, compat properties and such will
-> ensure that the virtual hardware looks the same to the guest, but QEMU
-> will *not* ensure that the ACPI payload generated at QEMU startup (more
-> precisely, at "machine done") will be identical. Despite the fact that
-> both QEMU instances use machine type Foo.
-> 
-> Now, combine this with the feature that fw_cfg has been backed by RAM
-> Blocks, for a quite long time now (this wasn't always the case, but it
-> has been for multiple years now). The end result is that the RAM
-> block(s) holding the initial ACPI payload may differ between releases
-> Bar and Baz, within the same machine type Foo. This means that migration
-> between them will fail, due to RAMBlock size difference.
-> 
-> Hence the padding -- it tries to cancel out small variances in ACPI
-> payload size.
-> 
-> >>
-> >> I don't know if we want to specifically care about size-changing
-> >> ACPI-regen across reboot. I believe measures for that specific use case
-> >> don't exist in x86 machine types either.  
-> > The NFIT redimensioning should exit on x86 too?  
-> 
-> That's not my point. My point was that the padding, which was originally
-> supposed to mask variances in ACPI payload size across *QEMU releases*,
-> for migration compat, ended up masking a variance of different origin:
-> namely ACPI regeneration at reboot (with different contents). In other
-> words, we never implemented any specific measures for this
-> resize-on-reboot issue, instead we allowed the migration compat code
-> (the padding) to take care of it as well.
-> 
-> In virt, there is no such ACPI padding code (for migration compat) --
-> for whatever reason --, and so it *also* cannot take care of the
-> resize-on-reboot problem.
-What's describe above is a bit outdate, let me paint a rough current state
-in chronological order (I haven't checked how it actually works now).
---
-1. how it work(s|ed):
-     * tables are generated during machine_done and registered with fw_cfg
-     * then oops: we have device_add that could be called later but before
-       guest runs and we don't have complete picture wrt CRS resources for
-       PCI as that is programmed by firmware, so here goes a trick to
-       regenerate tables when firmware accesses its fwcfg entry
-       (see how build_state->patched is used), byt that time FW has intialized
-       PCI to the extent necessary to build valid tables.
-     * then we do hot add ACPI table are not updated until reset
-       (acpi_build_reset) and all dance with patching repeats when FW
-       gets tables form QEMU.
-     * at those versions of QEMU tables size was static
-     
-2. Later on hotplugging bridges (I think) caused issues on reboot/migration
-as it caused DSDT size increase, that made as invent padding race train-wreak.
-2.2 then there were cases where tables changed size depending where a device
-was cold or hot plugged and may be some other issues I don't recall.
-
-3. With padding race being a lost game (there always were border line configs
-where it broke migration), Michael introduced re-sizable blobs 42d859001d for
-acpi table blobs, which could be resized on target to accommodate larger
-tables blob during migration.
-
-4. Even with resizable memory regions for the sake of backward migration
-compatibility we needed to keep padding we used with legacy machine. It's
-still broken in some cases but mostly works (we declared padding approach
-broken by design and left it as is)
---
-
-Thankfully arm/virt ACPI support materialized after all of the above
-so we don't have legacy padding obligations at all. Hence suggest to
-find were the bug is instead of trying to start yet another padding race.
- 
-> [...]
-> 
-> Thanks
-> Laszlo
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogU2hhbWVlcmFsaSBLb2xv
+dGh1bSBUaG9kaQ0KPiBTZW50OiAyOCBGZWJydWFyeSAyMDE5IDEyOjA0DQo+IFRvOiAnQXVnZXIg
+RXJpYycgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT47IExhc3psbyBFcnNlayA8bGVyc2VrQHJlZGhh
+dC5jb20+Ow0KPiBzaGFubm9uLnpoYW9zbEBnbWFpbC5jb207IHBldGVyLm1heWRlbGxAbGluYXJv
+Lm9yZzsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11
+LWFybUBub25nbnUub3JnDQo+IENjOiB4dXdlaSAoTykgPHh1d2VpNUBodWF3ZWkuY29tPjsgTGlu
+dXhhcm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+OyBBcmQNCj4gQmllc2hldXZlbCA8YXJkLmJpZXNo
+ZXV2ZWxAbGluYXJvLm9yZz47IExlaWYgTGluZGhvbG0gKExpbmFybyBhZGRyZXNzKQ0KPiA8bGVp
+Zi5saW5kaG9sbUBsaW5hcm8ub3JnPg0KPiBTdWJqZWN0OiBSRTogW1JGQyBQQVRDSCAwLzRdIEFS
+TSB2aXJ0OiBBQ1BJIG1lbW9yeSBob3RwbHVnIHN1cHBvcnQNCj4gDQo+IA0KPiANCj4gPiAtLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+IEZyb206IEF1Z2VyIEVyaWMgW21haWx0bzplcmlj
+LmF1Z2VyQHJlZGhhdC5jb21dDQo+ID4gU2VudDogMjggRmVicnVhcnkgMjAxOSAxMDoxMg0KPiA+
+IFRvOiBMYXN6bG8gRXJzZWsgPGxlcnNla0ByZWRoYXQuY29tPjsgU2hhbWVlcmFsaSBLb2xvdGh1
+bSBUaG9kaQ0KPiA+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+OyBzaGFu
+bm9uLnpoYW9zbEBnbWFpbC5jb207DQo+ID4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBpbWFt
+bWVkb0ByZWRoYXQuY29tOw0KPiBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+ID4gcWVtdS1hcm1A
+bm9uZ251Lm9yZw0KPiA+IENjOiB4dXdlaSAoTykgPHh1d2VpNUBodWF3ZWkuY29tPjsgTGludXhh
+cm0gPGxpbnV4YXJtQGh1YXdlaS5jb20+Ow0KPiBBcmQNCj4gPiBCaWVzaGV1dmVsIDxhcmQuYmll
+c2hldXZlbEBsaW5hcm8ub3JnPjsgTGVpZiBMaW5kaG9sbSAoTGluYXJvIGFkZHJlc3MpDQo+ID4g
+PGxlaWYubGluZGhvbG1AbGluYXJvLm9yZz4NCj4gPiBTdWJqZWN0OiBSZTogW1JGQyBQQVRDSCAw
+LzRdIEFSTSB2aXJ0OiBBQ1BJIG1lbW9yeSBob3RwbHVnIHN1cHBvcnQNCj4gPg0KPiA+IEhpIExh
+c3psbywNCj4gPg0KPiA+IE9uIDIvMjcvMTkgOToxNCBQTSwgTGFzemxvIEVyc2VrIHdyb3RlOg0K
+PiA+ID4gT24gMDIvMjcvMTkgMTM6NTUsIFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgd3JvdGU6
+DQo+ID4gPj4gSGkgTGFzemxvLA0KPiA+ID4+DQo+ID4gPj4+IC0tLS0tT3JpZ2luYWwgTWVzc2Fn
+ZS0tLS0tDQo+ID4gPj4+IEZyb206IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPiA+Pj4g
+U2VudDogMjUgRmVicnVhcnkgMjAxOSAwOTo1NA0KPiA+ID4+PiBUbzogJ0xhc3psbyBFcnNlaycg
+PGxlcnNla0ByZWRoYXQuY29tPjsgQXVnZXIgRXJpYw0KPiA+IDxlcmljLmF1Z2VyQHJlZGhhdC5j
+b20+Ow0KPiA+ID4+PiBzaGFubm9uLnpoYW9zbEBnbWFpbC5jb207IHBldGVyLm1heWRlbGxAbGlu
+YXJvLm9yZzsNCj4gPiA+Pj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgcWVtdS1kZXZlbEBub25nbnUu
+b3JnOw0KPiA+IHFlbXUtYXJtQG5vbmdudS5vcmcNCj4gPiA+Pj4gQ2M6IHh1d2VpIChPKSA8eHV3
+ZWk1QGh1YXdlaS5jb20+OyBMaW51eGFybQ0KPiA8bGludXhhcm1AaHVhd2VpLmNvbT47DQo+ID4g
+QXJkDQo+ID4gPj4+IEJpZXNoZXV2ZWwgPGFyZC5iaWVzaGV1dmVsQGxpbmFyby5vcmc+OyBMZWlm
+IExpbmRob2xtIChMaW5hcm8gYWRkcmVzcykNCj4gPiA+Pj4gPGxlaWYubGluZGhvbG1AbGluYXJv
+Lm9yZz4NCj4gPiA+Pj4gU3ViamVjdDogUkU6IFtSRkMgUEFUQ0ggMC80XSBBUk0gdmlydDogQUNQ
+SSBtZW1vcnkgaG90cGx1ZyBzdXBwb3J0DQo+ID4gPj4NCj4gPiA+PiBbLi4uXQ0KPiA+ID4+DQo+
+ID4gPj4+Pj4+IFRoZSByb290IGNhdXNlIHNlZW1zIHRvIGJlIEVESzIgQUNQSSB0YWJsZSBjaGVj
+a3N1bSBmYWlsdXJlDQo+ID4gPj4+Pj4+IGFzIE5GSVQgdGFibGUgaXMgZ2V0dGluZyB1cGRhdGVk
+IG9uIGhvdC1hZGQuIFRoaXMgbmVlZHMgZnVydGhlcg0KPiA+ID4+Pj4+PiBpbnZlc3RpZ2F0aW9u
+Lg0KPiA+ID4+Pj4+ICsgQXJkLCBMZWlmLCBMYXN6bG8gaWYgdGhleSBoYXZlIGFueSBpZGVhIG9m
+IHdoYXQgaXMgbWlzc2luZy93cm9uZy4NCj4gPiA+Pj4+DQo+ID4gPj4+PiBIdWgsIHZlcnkgaW50
+ZXJlc3Rpbmc7IEkgdXN1YWxseSBkb24ndCBleHBlY3QgbXkgc2FuaXR5IGNoZWNrcyB0byBmaXJl
+DQo+ID4gPj4+PiBpbiBwcmFjdGljZS4gOikNCj4gPiA+Pj4+DQo+ID4gPj4+PiBUaGUgbWVzc2Fn
+ZQ0KPiA+ID4+Pj4NCj4gPiA+Pj4+ICAgUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBpbnZhbGlkIGNo
+ZWNrc3VtIHJhbmdlIGluDQo+ID4gImV0Yy9hY3BpL3RhYmxlcyINCj4gPiA+Pj4+DQo+ID4gPj4+
+PiBpcyBsb2dnZWQgYnkgT1ZNRidzIGFuZCBBcm1WaXJ0UWVtdSdzIEFDUEkgUGxhdGZvcm0gRFhF
+IERyaXZlciB3aGVuDQo+ID4gaXQNCj4gPiA+Pj4+IGZpbmRzIGFuIGludmFsaWQgQ09NTUFORF9B
+RERfQ0hFQ0tTVU0gY29tbWFuZCBpbiBRRU1VJ3MNCj4gQUNQSQ0KPiA+ID4+Pj4gbGlua2VyL2xv
+YWRlciBzY3JpcHQuDQo+ID4gPj4+Pg0KPiA+ID4+Pj4gUGxlYXNlIHNlZSB0aGUgY29tbWFuZCBk
+ZWZpbml0aW9uIGluIFFFTVUncw0KPiA+ID4+Pj4gImh3L2FjcGkvYmlvcy1saW5rZXItbG9hZGVy
+LmMiLiBJbiBwYXJ0aWN1bGFyLCBwbGVhc2UgcmVmZXIgdG8gdGhlDQo+ID4gPj4+PiBmdW5jdGlv
+biBiaW9zX2xpbmtlcl9sb2FkZXJfYWRkX2NoZWNrc3VtKCksIHdoaWNoIGJ1aWxkcyB0aGUNCj4g
+Y29tbWFuZA0KPiA+ID4+Pj4gc3RydWN0dXJlLCBhbmQgZG9jdW1lbnRzIHRoZSBmaWVsZHMuDQo+
+ID4gPj4+Pg0KPiA+ID4+Pj4gKFlvdSBtYXkgYWxzbyByZWZlciB0byBRRU1VX0xPQURFUl9BRERf
+Q0hFQ0tTVU0gaW4gZmlsZQ0KPiA+ID4+Pj4gIk92bWZQa2cvQWNwaVBsYXRmb3JtRHhlL1FlbXVM
+b2FkZXIuaCIgaW4gdGhlIGVkazIgc291cmNlIHRyZWUsIGZvcg0KPiA+IHRoZQ0KPiA+ID4+Pj4g
+c2FtZSBpbmZvcm1hdGlvbi4pDQo+ID4gPj4+Pg0KPiA+ID4+Pj4gVGhlIGVycm9yIG1lc3NhZ2Ug
+aXMgbG9nZ2VkIGlmOg0KPiA+ID4+Pj4gLSB0aGUgb2Zmc2V0IGF0IHdoaWNoIHRoZSBjaGVja3N1
+bSBzaG91bGQgYmUgc3RvcmVkIGZhbGxzIG91dHNpZGUgb2YgdGhlDQo+ID4gPj4+PiBzaXplIG9m
+IHRoZSBmd19jZmcgYmxvYiwgb3INCj4gPiA+Pj4+IC0gdGhlIHJhbmdlIG92ZXIgd2hpY2ggdGhl
+IGNoZWNrc3VtIHNob3VsZCBiZSBjYWxjdWxhdGVkIGZhbGxzIG91dHNpZGUNCj4gPiA+Pj4+IChh
+dCBsZWFzdCBpbiBwYXJ0KSBvZiB0aGUgZndfY2ZnIGJsb2IuDQo+ID4gPj4+Pg0KPiA+ID4+Pj4g
+VG8gbWUgdGhpcyBzdWdnZXN0cyB0aGF0IFFFTVUgZ2VuZXJhdGVzIGFuIGludmFsaWQNCj4gPiA+
+Pj4+IENPTU1BTkRfQUREX0NIRUNLU1VNDQo+ID4gPj4+PiBjb21tYW5kIGZvciB0aGUgZmlybXdh
+cmUuDQo+ID4gPj4+Pg0KPiA+ID4+Pj4gLi4uIEkndmUgdHJpZWQgdG8gc2tpbSB0aGUgcGF0Y2hl
+cyBicmllZmx5LiBJIHRoaW5rIHRoZXJlIG11c3QgYmUgYW4NCj4gPiA+Pj4+IGVycm9yIGluIHRo
+ZSBEU0RUIGJ1aWxkaW5nIGxvZ2ljIHRoYXQgaXMgb25seSBhY3RpdmUgb24gcmVib290IGlmIGFu
+DQo+ID4gPj4+PiBudmRpbW0gbW9kdWxlIHdhcyBob3QtYWRkZWQgYmVmb3JlIHRoZSByZWJvb3Qu
+DQo+ID4gPj4+DQo+ID4gPj4+IFRoYW5rcyBmb3IgdGFraW5nIGEgbG9vayBhbmQgdGhlIHBvaW50
+ZXJzLiBJIHdpbGwgZGVidWcgdGhpcyBmdXJ0aGVyDQo+ID4gPj4+IGFuZCBnZXQgYmFjay4NCj4g
+PiA+Pg0KPiA+ID4+IFRoZSByb290IGNhdXNlIG9mIHRoZSBpc3N1ZSBzZWVtcyB0byBiZSBVRUZJ
+IG5vdCBzZWVpbmcgdGhlIHVwZGF0ZWQgYWNwaQ0KPiA+ID4+IHRhYmxlIGJsb2Igc2l6ZSBvbiBy
+ZWJvb3Qgb25jZSBhIG5ldyBORklUIHRhYmxlIGlzIGFkZGVkKG52ZGltbSBob3QNCj4gPiBhZGRl
+ZCkuDQo+ID4gPj4NCj4gPiA+PiBQbGVhc2Ugc2VlIHRoZSBkZWJ1ZyBsb2dzIGJlbG93LA0KPiA+
+ID4+DQo+ID4gPj4gSW5pdGlhbCBHdWVzdCBib290DQo+ID4gPj4gLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tDQo+ID4gPj4NCj4gPiA+PiBEZWJ1ZyBsb2dzIGZyb20gUWVtdToNCj4gPiA+Pg0K
+PiA+ID4+IGJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgRFNEVCBsZW4gMHg1MTI3DQo+ID4gPj4gYnVp
+bGRfaGVhZGVyOiBhY3BpIHNpZyBGQUNQIGxlbiAweDEwYw0KPiA+ID4+IGJ1aWxkX2hlYWRlcjog
+YWNwaSBzaWcgQVBJQyBsZW4gMHhhOA0KPiA+ID4+IGJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgR1RE
+VCBsZW4gMHg2MA0KPiA+ID4+IGJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgTUNGRyBsZW4gMHgzYw0K
+PiA+ID4+IGJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgU1BDUiBsZW4gMHg1MA0KPiA+ID4+IGJ1aWxk
+X2hlYWRlcjogYWNwaSBzaWcgU1JBVCBsZW4gMHg5Mg0KPiA+ID4+IGJ1aWxkX2hlYWRlcjogYWNw
+aSBzaWcgU1NEVCBsZW4gMHgzOGYNCj4gPiA+PiBidWlsZF9oZWFkZXI6IGFjcGkgc2lnIFhTRFQg
+bGVuIDB4NWMNCj4gPiA+PiB2aXJ0X2FjcGlfYnVpbGQ6IGFjcGkgdGFibGVfYmxvYiBsZW4gMHg1
+ODQ0DQo+ID4gPj4NCj4gPiA+PiBEZWJ1ZyBsb2dzIGZyb20gVUVGSToNCj4gPiA+Pg0KPiA+ID4+
+IFByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZz
+ZXQ9MHg5DQo+ID4gU3RhcnQ9MHgwIExlbmd0aD0weDUxMjcgQmxvYi0+U2l6ZT0weDU4NDQNCj4g
+PiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0
+T2Zmc2V0PTB4NTEzMA0KPiA+IFN0YXJ0PTB4NTEyNyBMZW5ndGg9MHgxMEMgQmxvYi0+U2l6ZT0w
+eDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxl
+cyIgUmVzdWx0T2Zmc2V0PTB4NTIzQw0KPiA+IFN0YXJ0PTB4NTIzMyBMZW5ndGg9MHhBOCBCbG9i
+LT5TaXplPTB4NTg0NA0KPiA+ID4+IFByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2Fj
+cGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1MkU0DQo+ID4gU3RhcnQ9MHg1MkRCIExlbmd0aD0w
+eDYwIEJsb2ItPlNpemU9MHg1ODQ0DQo+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxl
+PSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNldD0weDUzNDQNCj4gPiBTdGFydD0weDUzM0Ig
+TGVuZ3RoPTB4M0MgQmxvYi0+U2l6ZT0weDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tz
+dW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTM4MA0KPiA+IFN0YXJ0
+PTB4NTM3NyBMZW5ndGg9MHg1MCBCbG9iLT5TaXplPTB4NTg0NA0KPiA+ID4+IFByb2Nlc3NDbWRB
+ZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1M0QwDQo+
+ID4gU3RhcnQ9MHg1M0M3IExlbmd0aD0weDkyIEJsb2ItPlNpemU9MHg1ODQ0DQo+ID4gPj4gUHJv
+Y2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNldD0w
+eDU0NjINCj4gPiBTdGFydD0weDU0NTkgTGVuZ3RoPTB4MzhGIEJsb2ItPlNpemU9MHg1ODQ0DQo+
+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3Vs
+dE9mZnNldD0weDU3RjENCj4gPiBTdGFydD0weDU3RTggTGVuZ3RoPTB4NUMgQmxvYi0+U2l6ZT0w
+eDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3JzZHAi
+IFJlc3VsdE9mZnNldD0weDgNCj4gU3RhcnQ9MHgwDQo+ID4gTGVuZ3RoPTB4MTQgQmxvYi0+U2l6
+ZT0weDI0DQo+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS9yc2Rw
+IiBSZXN1bHRPZmZzZXQ9MHgyMA0KPiA+IFN0YXJ0PTB4MCBMZW5ndGg9MHgyNCBCbG9iLT5TaXpl
+PTB4MjQNCj4gPiA+PiBJbnN0YWxsUWVtdUZ3Q2ZnVGFibGVzOiBpbnN0YWxsZWQgOCB0YWJsZXMN
+Cj4gPiA+Pg0KPiA+ID4+IEd1ZXN0IFJlYm9vdCBhZnRlciBuZGltbSBob3QgYWRkZWQNCj4gPiA+
+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gPiA+Pg0KPiA+ID4+IERl
+YnVnIGxvZ3MgZnJvbSBRZW11Og0KPiA+ID4+DQo+ID4gPj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNp
+ZyBEU0RUIGxlbiAweDUxMjcNCj4gPiA+PiBidWlsZF9oZWFkZXI6IGFjcGkgc2lnIEZBQ1AgbGVu
+IDB4MTBjDQo+ID4gPj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBBUElDIGxlbiAweGE4DQo+ID4g
+Pj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBHVERUIGxlbiAweDYwDQo+ID4gPj4gYnVpbGRfaGVh
+ZGVyOiBhY3BpIHNpZyBNQ0ZHIGxlbiAweDNjDQo+ID4gPj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNp
+ZyBTUENSIGxlbiAweDUwDQo+ID4gPj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBTUkFUIGxlbiAw
+eDkyDQo+ID4gPj4gYnVpbGRfaGVhZGVyOiBhY3BpIHNpZyBTU0RUIGxlbiAweDM4Zg0KPiA+ID4+
+IGJ1aWxkX2hlYWRlcjogYWNwaSBzaWcgTkZJVCBsZW4gMHhlMCAgLS0+TmV3DQo+ID4gPj4gYnVp
+bGRfaGVhZGVyOiBhY3BpIHNpZyBYU0RUIGxlbiAweDY0DQo+ID4gPj4gdmlydF9hY3BpX2J1aWxk
+OiBhY3BpIHRhYmxlX2Jsb2IgbGVuIDB4NTkyYyAtLT5ibG9iIGxlbiB1cGRhdGVkDQo+ID4gPj4N
+Cj4gPiA+PiBEZWJ1ZyBsb2dzIGZyb20gVUVGSToNCj4gPiA+Pg0KPiA+ID4+IFByb2Nlc3NDbWRB
+ZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg5DQo+ID4g
+U3RhcnQ9MHgwIExlbmd0aD0weDUxMjcgQmxvYi0+U2l6ZT0weDU4NDQgIC0tPldyb25nIGJsb2Ig
+c2l6ZS4NCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxl
+cyIgUmVzdWx0T2Zmc2V0PTB4NTEzMA0KPiA+IFN0YXJ0PTB4NTEyNyBMZW5ndGg9MHgxMEMgQmxv
+Yi0+U2l6ZT0weDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9h
+Y3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTIzQw0KPiA+IFN0YXJ0PTB4NTIzMyBMZW5ndGg9
+MHhBOCBCbG9iLT5TaXplPTB4NTg0NA0KPiA+ID4+IFByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmls
+ZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg1MkU0DQo+ID4gU3RhcnQ9MHg1MkRC
+IExlbmd0aD0weDYwIEJsb2ItPlNpemU9MHg1ODQ0DQo+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNr
+c3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3VsdE9mZnNldD0weDUzNDQNCj4gPiBTdGFy
+dD0weDUzM0IgTGVuZ3RoPTB4M0MgQmxvYi0+U2l6ZT0weDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21k
+QWRkQ2hlY2tzdW06IEZpbGU9ImV0Yy9hY3BpL3RhYmxlcyIgUmVzdWx0T2Zmc2V0PTB4NTM4MA0K
+PiA+IFN0YXJ0PTB4NTM3NyBMZW5ndGg9MHg1MCBCbG9iLT5TaXplPTB4NTg0NA0KPiA+ID4+IFBy
+b2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9
+MHg1M0QwDQo+ID4gU3RhcnQ9MHg1M0M3IExlbmd0aD0weDkyIEJsb2ItPlNpemU9MHg1ODQ0DQo+
+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJsZXMiIFJlc3Vs
+dE9mZnNldD0weDU0NjINCj4gPiBTdGFydD0weDU0NTkgTGVuZ3RoPTB4MzhGIEJsb2ItPlNpemU9
+MHg1ODQ0DQo+ID4gPj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNwaS90YWJs
+ZXMiIFJlc3VsdE9mZnNldD0weDU3RjENCj4gPiBTdGFydD0weDU3RTggTGVuZ3RoPTB4RTAgQmxv
+Yi0+U2l6ZT0weDU4NDQNCj4gPiA+PiBQcm9jZXNzQ21kQWRkQ2hlY2tzdW06IGludmFsaWQgY2hl
+Y2tzdW0gcmFuZ2UgaW4gImV0Yy9hY3BpL3RhYmxlcyINCj4gPiA+PiBPblJvb3RCcmlkZ2VzQ29u
+bmVjdGVkOiBJbnN0YWxsQWNwaVRhYmxlczogUHJvdG9jb2wgRXJyb3INCj4gPiA+Pg0KPiA+ID4+
+DQo+ID4gPj4gVG8gbWUgaXQgc2VlbXMgb24gQVJNIHZpdCBhY3BpIHBhdGgsIHRoZSBibG9iIGxl
+biBpcyBjYWxjdWxhdGVkIGJhc2VkDQo+ID4gPj4gb24gYWN0dWFsIHRhYmxlcyBhbmQgaXMgdXBk
+YXRlZCBvbmx5IGluIHZpcnRfYWNwaV9zZXR1cCgpIC0tPg0KPiA+IGFjcGlfYWRkX3JvbV9ibG9i
+KCkNCj4gPiA+PiBwYXRoLiBJIGhhZCBhIGxvb2sgYXQgdGhlIHg4NiBjb2RlIGFuZCBpdCBsb29r
+cyBsaWtlLCB0aGVyZSwgdGhlIGJsb2IgbGVuIGdldHMNCj4gPiB1cGRhdGVkDQo+ID4gPj4gd2l0
+aCBhbiBhZGRpdGlvbmFsIGJ1ZmZlciB0byB0YWtlIGNhcmUgb2YgdGFibGUgcmVzaXppbmdbMV0u
+DQo+ID4gPj4NCj4gPiA+PiBBcyBhIGhhY2sgaSBhZGRlZCB0aGUgc2FtZSB0byBBUk0gdmlydCBh
+bmQgaXQgc2VlbXMgdG8gcmVzb2x2ZSB0aGUgaXNzdWUuDQo+ID4gPj4gSSBhbSBub3Qgc3VyZSB0
+aGlzIGlzIHRoZSBiZXN0IGFwcHJvYWNoIHRvIGZpeCB0aGlzIHRob3VnaC4NCj4gPiA+Pg0KPiA+
+ID4+IFBsZWFzZSBsZXQgbWUga25vdyB5b3VyIHRob3VnaHRzLg0KPiA+ID4+DQo+ID4gPj4gVGhh
+bmtzLA0KPiA+ID4+IFNoYW1lZXINCj4gPiA+Pg0KPiA+ID4+IGRpZmYgLS1naXQgYS9ody9hcm0v
+dmlydC1hY3BpLWJ1aWxkLmMgYi9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLmMNCj4gPiA+PiBpbmRl
+eCAxMzI0MTRjLi40MjkxNTUzIDEwMDY0NA0KPiA+ID4+IC0tLSBhL2h3L2FybS92aXJ0LWFjcGkt
+YnVpbGQuYw0KPiA+ID4+ICsrKyBiL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KPiA+ID4+IEBA
+IC01MCw2ICs1MCw4IEBADQo+ID4gPj4gICNkZWZpbmUgQVJNX1NQSV9CQVNFIDMyDQo+ID4gPj4g
+ICNkZWZpbmUgQUNQSV9QT1dFUl9CVVRUT05fREVWSUNFICJQV1JCIg0KPiA+ID4+DQo+ID4gPj4g
+KyNkZWZpbmUgQUNQSV9CVUlMRF9UQUJMRV9TSVpFICAgIDB4MjAwMDANCj4gPiA+PiArDQo+ID4g
+Pj4gIHN0YXRpYyB2b2lkIGFjcGlfZHNkdF9hZGRfY3B1cyhBbWwgKnNjb3BlLCBpbnQgc21wX2Nw
+dXMpDQo+ID4gPj4gIHsNCj4gPiA+PiAgICAgIHVpbnQxNl90IGk7DQo+ID4gPj4gQEAgLTg4Niw2
+ICs4ODgsMTAgQEAgdm9pZCB2aXJ0X2FjcGlfYnVpbGQoVmlydE1hY2hpbmVTdGF0ZSAqdm1zLA0K
+PiA+IEFjcGlCdWlsZFRhYmxlcyAqdGFibGVzKQ0KPiA+ID4+ICAgICAgICAgIGJ1aWxkX3JzZHAo
+dGFibGVzLT5yc2RwLCB0YWJsZXMtPmxpbmtlciwgJnJzZHBfZGF0YSk7DQo+ID4gPj4gICAgICB9
+DQo+ID4gPj4NCj4gPiA+PiArICAgIC8qIE1ha2Ugc3VyZSB3ZSBoYXZlIGEgYnVmZmVyIGluIGNh
+c2Ugd2UgbmVlZCB0byByZXNpemUgdGhlIHRhYmxlcy4NCj4gKi8NCj4gPiA+PiArICAgIGdfYXJy
+YXlfc2V0X3NpemUodGFibGVzX2Jsb2IsDQo+ID4gUk9VTkRfVVAoYWNwaV9kYXRhX2xlbih0YWJs
+ZXNfYmxvYiksDQo+ID4gPj4gKyAgICAgICAgICAgICAgICAgICAgIEFDUElfQlVJTERfVEFCTEVf
+U0laRSkpOw0KPiA+ID4+ICsNCj4gPiA+PiAgICAgIC8qIENsZWFudXAgbWVtb3J5IHRoYXQncyBu
+byBsb25nZXIgdXNlZC4gKi8NCj4gPiA+PiAgICAgIGdfYXJyYXlfZnJlZSh0YWJsZV9vZmZzZXRz
+LCB0cnVlKTsNCj4gPiA+PiAgfQ0KPiA+ID4+DQo+ID4gPj4gWzFdDQo+ID4gaHR0cHM6Ly9naXRo
+dWIuY29tL3FlbXUvcWVtdS9ibG9iL21hc3Rlci9ody9pMzg2L2FjcGktYnVpbGQuYyNMMjc5Mg0K
+PiA+ID4NCj4gPiA+IE5pY2UgYW5hbHlzaXMsIHRoYW5rcy4NCj4gPiA+DQo+ID4gPiBJIHRoaW5r
+IHRoZSBsaW5lIHRoYXQgeW91IHJlZmVyZW5jZSwgaS5lLg0KPiA+ID4NCj4gPiA+ICAgYWNwaV9h
+bGlnbl9zaXplKHRhYmxlc19ibG9iLCBBQ1BJX0JVSUxEX1RBQkxFX1NJWkUpOw0KPiANCj4gWWVz
+Lg0KPiANCj4gPiA+IGluIGFjcGlfYnVpbGQoKSBbaHcvaTM4Ni9hY3BpLWJ1aWxkLmNdIG1hc2tz
+IHRoaXMgaXNzdWUgZm9yIHg4NiBvbmx5IGFzDQo+ID4gPiBhIHNpZGUgZWZmZWN0LiBUbyBteSB1
+bmRlcnN0YW5kaW5nLCB0aGUgYWxpZ25tZW50IC8gcGFkZGluZyBleGlzdHMgdGhlcmUNCj4gPiA+
+IGZvciBtaWdyYXRpb24gY29tcGF0aWJpbGl0eS4gSXQgZG9lc24ndCBleGlzdCBmb3IgdXBkYXRp
+bmcgdGhlIHNpemUgb2YNCj4gPiA+IHRoZSBBQ1BJIGJsb2JzIGluIGZ3X2NmZyBhY3Jvc3MgcmVi
+b290cy4gVGhlIGlzc3VlIGlzIG1hc2tlZCBiZWNhdXNlIHRoZQ0KPiA+ID4gYWxpZ25tZW50IGlz
+IGxhcmdlIGVub3VnaCAodW4tY2hhbmdlZCkgdG8gY29udGFpbiB0aGUgcmVnZW5lcmF0ZWQgYmxv
+YnMNCj4gPiA+IGFzIHdlbGwuPg0KPiA+ID4gR2l2ZW4gdGhhdCB0aGUgInZpcnQiIG1hY2hpbmUg
+dHlwZSBpcyB2ZXJzaW9uZWQsIEkgdGhpbmsgbWlncmF0aW9uDQo+ID4gPiBjb21wYXQgaXMgYSB2
+YWxpZCBjb25jZXJuIHRoZXJlIHRvby4gVGhpcyBpbiBpdHNlbGYgd291bGQganVzdGlmeSBhDQo+
+ID4gPiBzaW1pbGFyIHBhZGRpbmcuDQo+ID4gSSBkb24ndCB1bmRlcnN0YW5kIHRoZSBtaWdyYXRp
+b24gY29tcGF0IGlzc3VlLiBQbGVhc2UgY291bGQgeW91IGVsYWJvcmF0ZT8NCj4gDQo+IFllcy4g
+UGxlYXNlIGVsYWJvcmF0ZS4NCj4gDQo+ID4gPiBJIGRvbid0IGtub3cgaWYgd2Ugd2FudCB0byBz
+cGVjaWZpY2FsbHkgY2FyZSBhYm91dCBzaXplLWNoYW5naW5nDQo+ID4gPiBBQ1BJLXJlZ2VuIGFj
+cm9zcyByZWJvb3QuIEkgYmVsaWV2ZSBtZWFzdXJlcyBmb3IgdGhhdCBzcGVjaWZpYyB1c2UgY2Fz
+ZQ0KPiA+ID4gZG9uJ3QgZXhpc3QgaW4geDg2IG1hY2hpbmUgdHlwZXMgZWl0aGVyLg0KPiA+IFRo
+ZSBORklUIHJlZGltZW5zaW9uaW5nIHNob3VsZCBleGl0IG9uIHg4NiB0b28/DQo+IA0KPiBJIGhh
+ZCBhIGdvIHdpdGggeDg2IGNvbW1lbnRpbmcgb3V0IHRoZSBwYWRkaW5nIGNvbXBsZXRlbHkuIEJ1
+dCBpbnRlcmVzdGluZ2x5DQo+IHNvbWV3aGVyZSBpbiB4ODYgY29kZSBwYXRoIHRoZSBibG9iIGxl
+bmd0aCBnZXRzIGFsaWduZWQgdG8gMHgxMDAwIGJvdW5kYXJ5DQo+IGFuZCBpdCBlc2NhcGVzIHRo
+ZSBzYW5pdHkgY2hlY2suDQo+IA0KPiBXaXRoIHBhZGRpbmcsIFVFRkkgYWx3YXlzIHNlZXMsIEFD
+UElfQlVJTERfVEFCTEVfU0laRSAoMHgyMDAwMCkNCj4gDQo+IFByb2Nlc3NDbWRBZGRDaGVja3N1
+bTogRmlsZT0iZXRjL2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg0OQ0KPiBTdGFydD0weDQw
+IExlbmd0aD0weDE5RTkgQmxvYi0+U2l6ZT0weDIwMDAwDQo+IA0KPiBXaXRoIHBhZGRpbmcgcmVt
+b3ZlZCwNCj4gDQo+IEZyb20gUWVtdSwNCj4gYWNwaV9idWlsZDogdGFibGVzX2Jsb2IgbGVuIDB4
+MmM2Mg0KPiANCj4gVUVGSToNCj4gUHJvY2Vzc0NtZEFkZENoZWNrc3VtOiBGaWxlPSJldGMvYWNw
+aS90YWJsZXMiIFJlc3VsdE9mZnNldD0weDQ5DQo+IFN0YXJ0PTB4NDAgTGVuZ3RoPTB4MUYzMyBC
+bG9iLT5TaXplPTB4MzAwMA0KPiANCj4gR3Vlc3QgUmVib290IGFmdGVyIGFkZGluZyBhIG51bWJl
+ciBvZiBudmRpbW1zLA0KPiANCj4gUWVtdToNCj4gYWNwaV9idWlsZDogIHRhYmxlc19ibG9iIGxl
+biAweDM4MGUNCj4gDQo+IFVFRkk6DQo+IFByb2Nlc3NDbWRBZGRDaGVja3N1bTogRmlsZT0iZXRj
+L2FjcGkvdGFibGVzIiBSZXN1bHRPZmZzZXQ9MHg0OQ0KPiBTdGFydD0weDQwIExlbmd0aD0weDI0
+MDEgQmxvYi0+U2l6ZT0weDQwMDANCj4gDQo+IEkgY291bGRu4oCZdCBmaWd1cmUgb3V0IGZyb20g
+dGhlIGNvZGUgd2hlcmUgdGhhdCByb3VuZCB1cCBpcyBoYXBwZW5pbmcuIEJ1dA0KPiB4ODYgYWxz
+byBoYXMgc2FtZSBpc3N1ZSBpZiB0aGUgcGFkZGluZyBpcyByZW1vdmVkLCBJIGd1ZXNzLg0KDQpB
+aC4uSSBtaXNzZWQgdGhlIGZhY3QgdGhhdCwgZmlybXdhcmUgaW5kZWVkIHNlZXMgYW4gdXBkYXRl
+IGluIHRoZSBibG9iIGxlbiBoZXJlDQoocm91bmRlZCBvciBub3QpIGFmdGVyIHJlYm9vdC4gU28g
+ZG9u4oCZdCB0aGluayB4ODYgaGFzIHRoZSBzYW1lIGlzc3VlIGFuZCBwYWRkaW5nDQppcyBub3Qg
+dGhlIHJpZ2h0IHNvbHV0aW9uIGFzIElnb3IgZXhwbGFpbmVkIGluIGhpcyByZXBseS4NCg0KSSB3
+aWxsIHRyeSB0byBkZWJ1ZyB0aGlzIGZ1cnRoZXIuIEFueSBwb2ludGVycyB3ZWxjb21lLg0KDQpD
+aGVlcnMsDQpTaGFtZWVyDQoNCj4gVGhhbmtzLA0KPiBTaGFtZWVyDQo+IA0KPiA+ID4gQW5vdGhl
+ciB0cmljayB0aGF0IGlzIG9jY2FzaW9uYWxseSB1c2VkIChidXQgbWlnaHQgbm90IGFwcGx5IGhl
+cmUsIEknbQ0KPiA+ID4gdW5jZXJ0YWluKSBpcyB0byBhbHdheXMgZ2VuZXJhdGUgdGhlIHJlbGV2
+YW50IEFDUEkgb2JqZWN0cywgYnV0LCBpbiBjYXNlDQo+ID4gPiB0aGV5IGFyZSBub3QganVzdGlm
+aWVkIGZvciB0aGUgdmlydHVhbCBoYXJkd2FyZSBjb25maWcsIGludmFsaWRhdGUgdGhlbQ0KPiA+
+ID4gYnkgb3ZlcndyaXRpbmcgcGFydGljdWxhciBwYXJ0cyBvZiB0aGVtIChmb3IgZXhhbXBsZSwg
+b25lIG9yIHR3byBieXRlcw0KPiA+ID4gb2YgdGhlaXIgbmFtZXMpLiBIb3BlZnVsbHkgdGhpcyBz
+aG91bGRuJ3QgaW50cm9kdWNlIEFDUEkgb3IgQU1MIGVycm9ycywNCj4gPiA+IGp1c3QgbWFrZSB0
+aGUgQUNQSSBpbnRlcnByZXRlciBpZ25vcmUgdGhlIGFmZmVjdGVkIG9iamVjdHMuDQo+ID4NCj4g
+PiBUaGFua3MhDQo+ID4NCj4gPiBFcmljDQo+ID4gPg0KPiA+ID4gVGhhbmtzLA0KPiA+ID4gTGFz
+emxvDQo+ID4gPg0K

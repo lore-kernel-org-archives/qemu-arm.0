@@ -1,228 +1,217 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp607003wrx;
-        Fri, 1 Mar 2019 05:10:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwQ6pmGcXNSI0rukHQZEghpS74Jp6x168MnNWCYwjZPfdmk5Hnwq8gMJE1JrbpFIpCGL8Cc
-X-Received: by 2002:a0d:eb0e:: with SMTP id u14mr3486232ywe.375.1551445823957;
-        Fri, 01 Mar 2019 05:10:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551445823; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp644640wrx;
+        Fri, 1 Mar 2019 05:47:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzyqfxN99PteBOL9JhuG01xsq30i97BGkJYpmgQUHxJ5N1D7cFAceOo7Meq1w2TJgs1SoOR
+X-Received: by 2002:a0d:e2cb:: with SMTP id l194mr3631643ywe.391.1551448070588;
+        Fri, 01 Mar 2019 05:47:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551448070; cv=none;
         d=google.com; s=arc-20160816;
-        b=tEj/RbgU4gOdhipjdHRlkKEamW4eSPFJDyoQR8FTa5raeteaIgzh4Jr5F4LjumA+8T
-         em5O8spx/pjex4Z89xVv/btN2H5HNJHll/iVij7N0kp7mLRjJABbRMdCaP060VFhGVX2
-         /ZX1aHyHhH6NMZWsL2UfyQVIlZLJZsxK9kTYNIKEXXd4L7zxDYKrfdrMQQ6v75bwnLB3
-         MEE4wOs9mWIOct0IQSGFun2muYjmZ4xSpRQcvsbZ2Wlt/iF56PDmc+VAatd0x1/7Dsqm
-         My7ErWfbD+WOINXpxb0w/YYp+MKpwdJI7JPp3+Q7dWdwjogx5jZyj9PMuauSQE2mlAzh
-         1pIQ==
+        b=U+5fChwtjkKdSs2f9cmdBpQrUZ2eG3D8zZfDQOvYBZmdvVlgxNdjOz9C7Zpqb76viQ
+         BIjuqc1rttt5GWyWNYtUTgLggQGojEFYQQp0HtUXqTJlC7tDtZqZFng0vOz+weVel/Jw
+         NSGA4AzLbzzKtox/I5EMBbUusY/BpdWfqngtcp4w8dNPYJG9Kk6xOZDWhD8Gb7NI69HF
+         Zq7LY2UAuHhUKY3VTgjMtesJBQKvX34wLSBmHuwG9pi1Jsbgeo3vOyXZbPnQRToDZ3Qd
+         p0qvqtD74V+1BeHMQfOQUUh6jpSKFytigYGds9TnBUoR741Yt5i0elHDr4SkQe86vNZm
+         buHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=lPS9RlWqUjmBkBJZsantGllAEFI6KGNz8wOx6GRWRc0=;
-        b=OGCneuxDIz6nfpz8UZhLtKRGUfatyHvLGkYoJ9zSClCCc1j/Sbny5ctlD/PdSATj+r
-         /+uiEZNSX0FGu9g4As5Rin97ymp3ObQcQvjnJL2yhCPgn4q9VLlLe9an8AmPLzVFu9qa
-         ZJPL/07kmmYVfbrYg1mUfn4ZdXMersNeVP26twvhvoFGxmbJZFdIGNqd7CVNFwefwnbJ
-         OnKOmJnXd9VnlX6DXEEIQ68Njf8hDviig1eWRbWRMrDu4rl7Fh4rmUNaHJU2gpSzPnxL
-         Z8WbrN6QhXJMNwObxcDLA8NKQ7gBKtNdMyOes5P61/KBdNOtJi2P2zx3CBrfcoN6FbG9
-         teag==
+         :message-id:date:to:from;
+        bh=tyXit8NmLkEhnnY3W1d0QFoJU3Ko7hayo3uNKlOBb9o=;
+        b=DReH3wzUD42BIjANs3vk42X2tAFiuTlGUSarzpea11iOBbZMtgxJNrOxoNTdo3RdIv
+         2ZJ7nAjOsj9L5khjug96Oh0zEWgchVuEv4p1WchXe1S5njPmUfAnp/sCfpFhzx70W6wf
+         bTjLPd+FIAvlsCCoyJfmptlW3L13vxvj8Hqy2uNnV0iayPOs5QU3ipCKhq1aDUnroNaT
+         agw9Oeft+MP1YibDn626odW04iy5/iwip7UstnpvPmlNBRenl1w0WrKn7U8U54Jus+Zw
+         0udT1rFD1KisrVegPwd/mMA3gG/KZfD3VJ/hXAlpwh5P4QPYpL12ndxyxdNAi6JUUr7W
+         RQsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i184si6607964ybb.438.2019.03.01.05.10.23
+        by mx.google.com with ESMTPS id w18si12304691ybp.100.2019.03.01.05.47.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Mar 2019 05:10:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Mar 2019 05:47:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:37672 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38088 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzhvj-00071z-82
-	for alex.bennee@linaro.org; Fri, 01 Mar 2019 08:10:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54376)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gziVy-0002j8-1p
+	for alex.bennee@linaro.org; Fri, 01 Mar 2019 08:47:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59592)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzhvJ-0006zp-Gp
-	for qemu-devel@nongnu.org; Fri, 01 Mar 2019 08:09:58 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gziVf-0002hu-Oi
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 08:47:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzhvI-0004MD-6Y
-	for qemu-devel@nongnu.org; Fri, 01 Mar 2019 08:09:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49283)
+	(envelope-from <eric.auger@redhat.com>) id 1gziVd-0002Xs-8O
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 08:47:31 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49450)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gzhvF-0004K0-6D; Fri, 01 Mar 2019 08:09:53 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gziVb-0002Tp-2l; Fri, 01 Mar 2019 08:47:27 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EEFA6301BE6D;
-	Fri,  1 Mar 2019 13:09:51 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 51531608C3;
-	Fri,  1 Mar 2019 13:09:47 +0000 (UTC)
-Date: Fri, 1 Mar 2019 14:09:45 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190301140945.238b5e80@redhat.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8392D8366@lhreml524-mbs.china.huawei.com>
-References: <20190128110545.20644-1-shameerali.kolothum.thodi@huawei.com>
-	<20190128110545.20644-4-shameerali.kolothum.thodi@huawei.com>
-	<20190301101204.361adfb6@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392D81D6@lhreml524-mbs.china.huawei.com>
-	<20190301112635.40200742@redhat.com>
-	<20190301113352.585d54f3@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8392D8366@lhreml524-mbs.china.huawei.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 49AA54CEAB;
+	Fri,  1 Mar 2019 13:47:23 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 85D915D704;
+	Fri,  1 Mar 2019 13:47:20 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
+Date: Fri,  1 Mar 2019 14:47:00 +0100
+Message-Id: <20190301134709.4695-2-eric.auger@redhat.com>
+In-Reply-To: <20190301134709.4695-1-eric.auger@redhat.com>
+References: <20190301134709.4695-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Fri, 01 Mar 2019 13:09:52 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Fri, 01 Mar 2019 13:47:23 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [RFC PATCH 3/4] hw/arm/virt: Enable pc-dimm
- hotplug support
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v11 01/10] hw/arm/boot: introduce
+ fdt_add_memory_node helper
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	Linuxarm <linuxarm@huawei.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l4EGfOg+gOH6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
+	david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: O35LxEEqL7yt
 
-On Fri, 1 Mar 2019 10:51:45 +0000
-Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-> > -----Original Message-----
-> > From: Qemu-devel
-> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn
-> > u.org] On Behalf Of Igor Mammedov
-> > Sent: 01 March 2019 10:34
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com;
-> > qemu-devel@nongnu.org; Linuxarm <linuxarm@huawei.com>;
-> > eric.auger@redhat.com; qemu-arm@nongnu.org; xuwei (O)
-> > <xuwei5@huawei.com>
-> > Subject: Re: [Qemu-devel] [RFC PATCH 3/4] hw/arm/virt: Enable pc-dimm
-> > hotplug support
-> > 
-> > On Fri, 1 Mar 2019 11:26:35 +0100
-> > Igor Mammedov <imammedo@redhat.com> wrote:
-> >   
-> > > On Fri, 1 Mar 2019 09:23:11 +0000
-> > > Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>  
-> > wrote:  
-> > >  
-> > > > > -----Original Message-----
-> > > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > > Sent: 01 March 2019 09:12
-> > > > > To: Shameerali Kolothum Thodi  
-> > <shameerali.kolothum.thodi@huawei.com>  
-> > > > > Cc: eric.auger@redhat.com; shannon.zhaosl@gmail.com;
-> > > > > peter.maydell@linaro.org; qemu-devel@nongnu.org;  
-> > qemu-arm@nongnu.org;  
-> > > > > Linuxarm <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>
-> > > > > Subject: Re: [Qemu-devel] [RFC PATCH 3/4] hw/arm/virt: Enable pc-dimm
-> > > > > hotplug support
-> > > > >
-> > > > > On Mon, 28 Jan 2019 11:05:45 +0000
-> > > > > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-> > > > >  
-> > > > > > pc-dimm memory hotplug is enabled using GPIO(Pin 2) based ACPI
-> > > > > > event. Hot removal functionality is not yet supported.
-> > > > > >
-> > > > > > Signed-off-by: Shameer Kolothum  
-> > <shameerali.kolothum.thodi@huawei.com>  
-> > > > > > ---
-> > > > > >  hw/arm/virt.c | 57  
-> > > > > +++++++++++++++++++++++++++++++++++++++++++++++++++++++--  
-> > > > > >  1 file changed, 55 insertions(+), 2 deletions(-)
-> > > > > >
-> > > > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > > > index 884960d..cf64554 100644
-> > > > > > --- a/hw/arm/virt.c
-> > > > > > +++ b/hw/arm/virt.c
-> > > > > > @@ -62,6 +62,7 @@
-> > > > > >  #include "hw/mem/pc-dimm.h"
-> > > > > >  #include "hw/mem/nvdimm.h"
-> > > > > >  #include "hw/acpi/acpi.h"
-> > > > > > +#include "hw/acpi/pc-hotplug.h"  
-> > > > > it looks like x86 specific file, what is this here for?  
-> > > >
-> > > > Yes. That is for ACPI_MEMORY_HOTPLUG_BASE which is only used by x86
-> > > > at the moment. I guess, it can be moved to hw/acpi/memory_hotplug.h ?  
-> > > it's GPA and pc/q35 impl. specific so you should use it,  
-> > s/should/should not/
-> >   
-> > > this address will always be board specific one.
-> > > Makeup a virt specific one  
-> 
-> Ok. I was under the impression that the offsets can be reused as it is defined
-> here docs/specs/acpi_mem_hotplug.txt(though that is GPE and pc/q35 acpi dev 
-> specific). But agree, it doesn't make sense to make it generic.
-Offsets defined by docs/specs/acpi_mem_hotplug.txt are meant to be reused
-but IO port address (0xa00) where interface's address space starts is board specific.
+We introduce an helper to create a memory node.
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-> > > >  
-> > > > > >
-> > > > > >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> > > > > >      static void virt_##major##_##minor##_class_init(ObjectClass *oc,  
-> > \  
-> > > > > > @@ -1651,7 +1652,14 @@ static void machvirt_init(MachineState  
-> > > > > *machine)  
-> > > > > >          nvdimm_init_acpi_state(acpi_nvdimm_state, sysmem,
-> > > > > >                                 vms->fw_cfg, OBJECT(vms));
-> > > > > >      }
-> > > > > > +    if (vms->acpi_memhp_state.is_enabled) {
-> > > > > > +        MemHotplugState *state =  &vms->acpi_memhp_state;
-> > > > > > +        hwaddr base;
-> > > > > >
-> > > > > > +        state->hw_reduced_acpi = true;
-> > > > > > +        base = vms->memmap[VIRT_ACPI_IO].base +  
-> > > > > ACPI_MEMORY_HOTPLUG_BASE;  
-> > > well, this is confusing, why adding 2 base addresses?
-> > > If vms->memmap[VIRT_ACPI_IO].base is already set than why not use it
-> > > as is without adding an offset?  
-> 
-> Well, Eric's work on which this was based had one NVDIMM_ACPI_IO_BASE offset
-> from what appears to be a generic VIRT_ACPI_IO region. Now I see that, it is
-> renamed to VIRT_NVDIMM_ACPI_IO. Do we really need two separate regions?
-I'm afraid we can't reuse MMIO regions as ther might be used at the same time
-and do different things (we would have done this for x86 if it was possible)
+---
+v7 -> v8:
+- Added Igor's R-b
 
-As for naming try to find some consensus/coordinate it with Eric
+v6 -> v7:
+- msg error in the caller
+- add comment about NUMA ID
+---
+ hw/arm/boot.c | 54 ++++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 34 insertions(+), 20 deletions(-)
 
-
-> Thanks,
-> Shameer
-> 
-> > >  
-> > > > > > +        acpi_memory_hotplug_init(sysmem, OBJECT(vms), state,  
-> > base);  
-> > > > > > +    }
-> > > > > >      vms->bootinfo.ram_size = machine->ram_size;
-> > > > > >      vms->bootinfo.kernel_filename = machine->kernel_filename;
-> > > > > >      vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;  
-> > > > > [...]  
-> > >
-> > >  
-> >   
-> 
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index d90af2f17d..a830655e1a 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -423,6 +423,32 @@ static void set_kernel_args_old(const struct arm_boo=
+t_info *info,
+     }
+ }
+=20
++static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_ba=
+se,
++                               uint32_t scells, hwaddr mem_len,
++                               int numa_node_id)
++{
++    char *nodename;
++    int ret;
++
++    nodename =3D g_strdup_printf("/memory@%" PRIx64, mem_base);
++    qemu_fdt_add_subnode(fdt, nodename);
++    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    ret =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, m=
+em_base,
++                                       scells, mem_len);
++    if (ret < 0) {
++        goto out;
++    }
++
++    /* only set the NUMA ID if it is specified */
++    if (numa_node_id >=3D 0) {
++        ret =3D qemu_fdt_setprop_cell(fdt, nodename,
++                                    "numa-node-id", numa_node_id);
++    }
++out:
++    g_free(nodename);
++    return ret;
++}
++
+ static void fdt_add_psci_node(void *fdt)
+ {
+     uint32_t cpu_suspend_fn;
+@@ -502,7 +528,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
+nfo *binfo,
+     void *fdt =3D NULL;
+     int size, rc, n =3D 0;
+     uint32_t acells, scells;
+-    char *nodename;
+     unsigned int i;
+     hwaddr mem_base, mem_len;
+     char **node_path;
+@@ -576,35 +601,24 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+_info *binfo,
+         mem_base =3D binfo->loader_start;
+         for (i =3D 0; i < nb_numa_nodes; i++) {
+             mem_len =3D numa_info[i].node_mem;
+-            nodename =3D g_strdup_printf("/memory@%" PRIx64, mem_base);
+-            qemu_fdt_add_subnode(fdt, nodename);
+-            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memor=
+y");
+-            rc =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+-                                              acells, mem_base,
+-                                              scells, mem_len);
++            rc =3D fdt_add_memory_node(fdt, acells, mem_base,
++                                     scells, mem_len, i);
+             if (rc < 0) {
+-                fprintf(stderr, "couldn't set %s/reg for node %d\n", nod=
+ename,
+-                        i);
++                fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
++                        mem_base);
+                 goto fail;
+             }
+=20
+-            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
+             mem_base +=3D mem_len;
+-            g_free(nodename);
+         }
+     } else {
+-        nodename =3D g_strdup_printf("/memory@%" PRIx64, binfo->loader_s=
+tart);
+-        qemu_fdt_add_subnode(fdt, nodename);
+-        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+-
+-        rc =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+-                                          acells, binfo->loader_start,
+-                                          scells, binfo->ram_size);
++        rc =3D fdt_add_memory_node(fdt, acells, binfo->loader_start,
++                                 scells, binfo->ram_size, -1);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set %s reg\n", nodename);
++            fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
++                    binfo->loader_start);
+             goto fail;
+         }
+-        g_free(nodename);
+     }
+=20
+     rc =3D fdt_path_offset(fdt, "/chosen");
+--=20
+2.20.1
 

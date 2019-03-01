@@ -1,180 +1,171 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp781812wrx;
-        Fri, 1 Mar 2019 08:00:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqytwTBOmmlg1nUe6+vhpH+3Xn2gxgSv3kFAukYYDYvnxeJsp2+S0RLvQ++dJ2cq6IO1g+H2
-X-Received: by 2002:a25:4d8b:: with SMTP id a133mr4712781ybb.165.1551456006199;
-        Fri, 01 Mar 2019 08:00:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551456006; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp787967wrx;
+        Fri, 1 Mar 2019 08:04:59 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxYzCGMAsafbqJbZRWkMvMxw7BQiZz3LAla9IlhwV75iRomWqe2TlCOOza9hIGyrZvEOl+R
+X-Received: by 2002:a25:5454:: with SMTP id i81mr4876322ybb.142.1551456299167;
+        Fri, 01 Mar 2019 08:04:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551456299; cv=none;
         d=google.com; s=arc-20160816;
-        b=mucz6z3TO3T/NVatjg8zQPbrgkMe7qJLdx1A4hJHfXZtZEjBwbw+sA58YzJTSaJ2JA
-         +REVAC3j4/GHPqS17FlF964rH4LWltSh2Z5EeMwbd4jeCYLAZf+qB7Jerv42UuhsGGU+
-         Bqrbks21NfEfvrJeK5Nd6Jm9g7XpXlyakHxYAJZ2WPUXJRdGyujmiGNMtRG5lg/8KAIK
-         nDQEM4qnAWVRrD9fw87+GARNKty2NRjCBC8raSnXRgu4PaeNCpY0viLDIDqYc4ZEyA+W
-         BJRvadTbbfuBjWSaNAtea9D0nSe4eBr03fHdzsqIqtoM7UdiLBR1ZllXuhBjwW4q9WlJ
-         8UZA==
+        b=q+QRly9ml0yEQ5WjNm2+pM7ZomcWoxTCXGGq63nwT93CA8/tOkbFk9Ck+KGPy+3b0I
+         yhiOTi05IE5RLptXC3irCiHzT5PBBElsfHIJicnuofX4VgrHzsB4J356ymegI2hElf3A
+         ITe1DpURa7KusCY4Ja8SOlVH/ycZnTcsK6YMWM5L+HfdlIpIwTtTDyH0OLrhMHQ51I18
+         SGS1RZVWW1C550YREwza55rJtcPj9Q+YYvZbfp2+JW+LpX96agRAoPxWmbQrSOdQJy+Q
+         Tkocbs8WlCl2fUah3V6hcdiONEUV2rMmssmjCwRopMYXumi4hWZp0vR55RB3tww0uaSV
+         LUCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :to:from:date;
-        bh=xB36Vi4t8tH760X3gJdCn48VAhF2UZg7PKi3+gF1xNc=;
-        b=mps6OJegxVereTy7T3RUlYZV2owIZ5kIb4M/mS5d3+Rtr4S+Lc95Udqa7kjqb9Rl7W
-         FmVFGDmmnVpYYqznUTWRwi0PwxiWKap07Fb2e52n/28uwtb8KbcHzFb74lo5ck0LHztT
-         kH1EjP6mgH9Zhl6tMQLtuN5N7+Limv4TgbBzE8jTdrgQOquOliLUeB3JfQUXXlMmksAM
-         8q4oCaSLVgIXfX6jhcIT6XLlOep0utCNTBSJwqW3YlNIZjfsKcK91ewhS7msJICWtKyp
-         CxAHF83u5XlpKsWWDbJ3ahlj1GQWLpROGUXrN8mWGE814YTmTZqozHOaHMltPVgjManf
-         Eoug==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=FgNUNpSNqECBnjX3eThe0Snb6v6PuE5N9vzkpNhK7W0=;
+        b=ZulBXZNvkX6z3yhwlGtJ/lHeC7J6OL6WT5te+ffXNP4o8RJXB1keO8X964XWPK4q8M
+         zLxUuxC2+e6Fk8WsiNdkpikyk66i4SuXMYmLeDBFqvQH5uxsQ513hJIuPakgcAYPFRQ9
+         xEVoO2s3NeT22uZ3R7qHPmeD0McVv0BLI2AVvyxdP6Z82xsEKI4q8KgzAM5a66GWvDZD
+         s3DW/i7yMs5D4mVP7rZC7A+TxF+fh/YavjzXP4jDFdmbn5J5I+3v0uYkmj5xbuK6KEVw
+         3P55txGnzOGqMQUW3NCbUXGTCLIP/MGacR5wzKAjhULx0+kviHHmu/QK5Gn/TSjs7u40
+         l8Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p130si9385797ywg.245.2019.03.01.08.00.06
+        by mx.google.com with ESMTPS id r145si13183592ywe.178.2019.03.01.08.04.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Mar 2019 08:00:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Mar 2019 08:04:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:39730 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:39820 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzkZx-0006vn-LI
-	for alex.bennee@linaro.org; Fri, 01 Mar 2019 11:00:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gzkeg-0002ax-Kn
+	for alex.bennee@linaro.org; Fri, 01 Mar 2019 11:04:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51830)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gzkQC-0007ak-Fd
-	for qemu-devel@nongnu.org; Fri, 01 Mar 2019 10:50:01 -0500
+	(envelope-from <mst@redhat.com>) id 1gzkPw-0007MT-EC
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 10:49:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gzkQ8-0001Gc-LO
-	for qemu-devel@nongnu.org; Fri, 01 Mar 2019 10:49:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45972)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1gzkQ5-0001AT-UT; Fri, 01 Mar 2019 10:49:54 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 31E75C7CB7;
-	Fri,  1 Mar 2019 15:49:53 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.17.75])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB971608DA;
-	Fri,  1 Mar 2019 15:49:49 +0000 (UTC)
-Date: Fri, 1 Mar 2019 15:49:47 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+	(envelope-from <mst@redhat.com>) id 1gzkPv-0000qq-Ec
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 10:49:44 -0500
+Received: from mail-qt1-f194.google.com ([209.85.160.194]:36674)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1gzkPv-0000pg-A6
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 10:49:43 -0500
+Received: by mail-qt1-f194.google.com with SMTP id p25so28262942qtb.3
+	for <qemu-arm@nongnu.org>; Fri, 01 Mar 2019 07:49:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to;
+	bh=FgNUNpSNqECBnjX3eThe0Snb6v6PuE5N9vzkpNhK7W0=;
+	b=Tiz6VzzF82fdN3jDh14AC0aPcb73qPK04xfEXH1YKhkOGyb652SG9z1EWTPghbL3Z0
+	/Mp/55sm5cToUlPlw5qX27J0IYDiDIbzer+OOBD4okLBAR62a0QbQgB1QUyKQb37I66y
+	LKKEku/waSlU2836mGr0uLz0NyItenzYDeBrOFBaVGmJg1KSK3RO/Y/le6qIfa5c9G3m
+	tV6rlRCh3C+aXfLelXqjgBll54/0lukhyjpcRK33zHfruY7raafssj2w9apOEwJ17ISg
+	rAv65kDNvxrzFmX9gRTw4GBeTvYB0r+WmcRfmedQN2VbTlvne8ixcOl2VkPCPOoalyRQ
+	qnPQ==
+X-Gm-Message-State: APjAAAX0zBZdDIsg1jAgnfmBgUEkQ9CSsyw332Idtp+AfKTrSK229IKF
+	V/fFZRuHba47+2ZmlXyDoKB1lg==
+X-Received: by 2002:a0c:8afc:: with SMTP id 57mr4162071qvw.99.1551455382716;
+	Fri, 01 Mar 2019 07:49:42 -0800 (PST)
+Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
+	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
+	w20sm11130665qki.35.2019.03.01.07.49.41
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 01 Mar 2019 07:49:42 -0800 (PST)
+Date: Fri, 1 Mar 2019 10:49:39 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190301154947.GJ21251@redhat.com>
-References: <1551454936-205218-1-git-send-email-imammedo@redhat.com>
-	<1551454936-205218-2-git-send-email-imammedo@redhat.com>
+Message-ID: <20190301104928-mutt-send-email-mst@kernel.org>
+References: <1551407310-32413-1-git-send-email-guoheyi@huawei.com>
+	<20190301084619-mutt-send-email-mst@kernel.org>
+	<cc3c8e42-0632-0c90-41cc-27bfdcaef11d@huawei.com>
+	<20190301091214-mutt-send-email-mst@kernel.org>
+	<20190301153311.79c0d287@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1551454936-205218-2-git-send-email-imammedo@redhat.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 01 Mar 2019 15:49:53 +0000 (UTC)
+In-Reply-To: <20190301153311.79c0d287@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [libvirt] [PATCH 1/2] numa: deprecate 'mem'
- parameter of '-numa node' option
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 209.85.160.194
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/acpi: enable SHPC native hot plug
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, libvir-list@redhat.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	pbonzini@redhat.com, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HwyWFSWlOzfK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Heyi Guo <heyi.guo@linaro.org>, qemu-arm@nongnu.org,
+	Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vsqc40R3htiA
 
-On Fri, Mar 01, 2019 at 04:42:15PM +0100, Igor Mammedov wrote:
-> The parameter allows to configure fake NUMA topology where guest
-> VM simulates NUMA topology but not actually getting a performance
-> benefits from it. The same or better results could be achieved
-> using 'memdev' parameter. In light of that any VM that uses NUMA
-> to get its benefits should use 'memdev' and to allow transition
-> initial RAM to device based model, deprecate 'mem' parameter as
-> its ad-hoc partitioning of initial RAM MemoryRegion can't be
-> translated to memdev based backend transparently to users and in
-> compatible manner (migration wise).
+On Fri, Mar 01, 2019 at 03:33:11PM +0100, Igor Mammedov wrote:
+> On Fri, 1 Mar 2019 09:12:33 -0500
+> "Michael S. Tsirkin" <mst@redhat.com> wrote:
 > 
-> That will also allow to clean up a bit our numa code, leaving only
-> 'memdev' impl. in place and several boards that use node_mem
-> to generate FDT/ACPI description from it.
+> > On Fri, Mar 01, 2019 at 10:04:38PM +0800, Heyi Guo wrote:
+> > > 
+> > > 
+> > > On 2019/3/1 21:47, Michael S. Tsirkin wrote:  
+> > > > On Fri, Mar 01, 2019 at 10:28:30AM +0800, Heyi Guo wrote:  
+> > > > > After the introduction of generic PCIe root port and PCIe-PCI bridge,
+> > > > > we will also have SHPC controller on ARM, so just enalbe SHPC native
+> > > > > hot plug.
+> > > > > 
+> > > > > Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> > > > > Cc: Peter Maydell <peter.maydell@linaro.org>
+> > > > > Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> > > > > Cc: Igor Mammedov <imammedo@redhat.com>
+> > > > > Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+> > > > > Signed-off-by: Heyi Guo <heyi.guo@linaro.org>  
+> > > > 
+> > > > So when OS enables SHPC, should we block ACPI hotplug events?  
+> > > I supposed we don't support ACPI hotplug events on ARM virt; do we have any currently?
+> > > 
+> > > Thanks,
+> > > Heyi  
+> > 
+> > Oh I didn't realise. That explains it sorry about the noise.
+> And I thought we did not support them on PCIe completely (I mean q35/ich9).
+> (Or did I miss something)?
 
-Can you confirm that the  'mem' and 'memdev' parameters to -numa
-are 100% live migration compatible in both directions ?  Libvirt
-would need this to be the case in order to use the 'memdev' syntax
-instead.
+True for PCIe.
 
-> 
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  numa.c               |  2 ++
->  qemu-deprecated.texi | 14 ++++++++++++++
->  2 files changed, 16 insertions(+)
-> 
-> diff --git a/numa.c b/numa.c
-> index 3875e1e..2205773 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -121,6 +121,8 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
->  
->      if (node->has_mem) {
->          numa_info[nodenr].node_mem = node->mem;
-> +        warn_report("Parameter -numa node,mem is deprecated,"
-> +                    " use -numa node,memdev instead");
->      }
->      if (node->has_memdev) {
->          Object *o;
-> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-> index 45c5795..73f99d4 100644
-> --- a/qemu-deprecated.texi
-> +++ b/qemu-deprecated.texi
-> @@ -60,6 +60,20 @@ Support for invalid topologies will be removed, the user must ensure
->  topologies described with -smp include all possible cpus, i.e.
->    @math{@var{sockets} * @var{cores} * @var{threads} = @var{maxcpus}}.
->  
-> +@subsection -numa node,mem=@var{size} (since 4.0)
-> +
-> +The parameter @option{mem} of @option{-numa node} is used to assign a part of
-> +guest RAM to a NUMA node. But when using it, it's impossible to manage specified
-> +size on the host side (like bind it to a host node, setting bind policy, ...),
-> +so guest end-ups with the fake NUMA configuration with suboptiomal performance.
-> +However since 2014 there is an alternative way to assign RAM to a NUMA node
-> +using parameter @option{memdev}, which does the same as @option{mem} and has
-> +an ability to actualy manage node RAM on the host side. Use parameter
-> +@option{memdev} with @var{memory-backend-ram} backend as an replacement for
-> +parameter @option{mem} to achieve the same fake NUMA effect or a properly
-> +configured @var{memory-backend-file} backend to actually benefit from NUMA
-> +configuration.
-> +
->  @section QEMU Machine Protocol (QMP) commands
->  
->  @subsection block-dirty-bitmap-add "autoload" parameter (since 2.12.0)
-> -- 
-> 2.7.4
-> 
-> --
-> libvir-list mailing list
-> libvir-list@redhat.com
-> https://www.redhat.com/mailman/listinfo/libvir-list
-
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> > 
+> > > >   
+> > > > > ---
+> > > > >   hw/arm/virt-acpi-build.c | 7 ++++++-
+> > > > >   1 file changed, 6 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > > > index 04b62c7..7849ec5 100644
+> > > > > --- a/hw/arm/virt-acpi-build.c
+> > > > > +++ b/hw/arm/virt-acpi-build.c
+> > > > > @@ -265,7 +265,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+> > > > >           aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+> > > > >       aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+> > > > >       aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+> > > > > -    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
+> > > > > +
+> > > > > +    /*
+> > > > > +     * Allow OS control for all 5 features:
+> > > > > +     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
+> > > > > +     */
+> > > > > +    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1F), NULL),
+> > > > >                                   aml_name("CTRL")));
+> > > > >       ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+> > > > > -- 
+> > > > > 1.8.3.1  
+> > > > .
+> > > >   
+> > >   

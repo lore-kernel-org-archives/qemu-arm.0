@@ -1,84 +1,97 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp793834wrx;
-        Fri, 1 Mar 2019 08:09:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyDDJwhE1RKQnRjBtqcqGz8zLlpjrbpM40JkmToOj+npizu53ulBQFpGlh9ekDKjPn9UlJN
-X-Received: by 2002:a25:3446:: with SMTP id b67mr4675855yba.87.1551456587902;
-        Fri, 01 Mar 2019 08:09:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551456587; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp826617wrx;
+        Fri, 1 Mar 2019 08:40:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxgJzqKXqvtnqG3xOFBKoQTHmQXyzZmd28/+ZQATDeWaZbwnY8WQd6rQDXT/rFVRzF05G59
+X-Received: by 2002:a81:1017:: with SMTP id 23mr4342404ywq.72.1551458410302;
+        Fri, 01 Mar 2019 08:40:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551458410; cv=none;
         d=google.com; s=arc-20160816;
-        b=bzvvppehbifjwZ9TbYbtmum+jfPTihy4lxKn3rHgPWm2laDEOCBxlP5aYV7kNH0CBP
-         lArXKjNzoMbMkW1d+FmGY+uNjYjJ+K9lR1TcDAZfoQGfQv6fIM1DhI+5GbFG5UIUIHEZ
-         yJkl6ynCyUysrehelIkLlFQJXzGAQu/x8Ec5op3dmlKh273lIDUiezMTjbBOXImwO+nE
-         U7hEZcoZj+mlZ7iFEqlU7uFbA0mTPiB9Int/7hyQQLGKwOXMa/k5123CG+fYI7Z48udg
-         peipIyhVdEhx7QZgGjJ/qZhOOk/nyLoXsm6jxPoKOxblqA40G4kajdQP5Ue2KpyddYF3
-         QlDw==
+        b=lB6i8eCC8UPZAjWLb+HAse+7lQ/QYSvi17xaWOMqcDzChd1DVd3i/cHbt9G0+IU/zF
+         Qh1R0vdEDbRZ17aqTWXTMjKukrChq5+kjj/GHdv8Be2EIImJYht90dENcPNCKfvhHh4t
+         hSwPaKqSjdroeMGbzDZJUyqmG8OaVp+IeqlvRd7G4jOm08DGjTc4LI8dQyaLVruLkquP
+         M/vNeXRw2Sa5EFhrfIpaEhvM4InXBDpgSXofPvPvmNTZc1N/q/F8JDZ4jGgLaJcywNsz
+         z9tmAcJltlTYgHR0gXaaSrtnluLlk5VTJNWd8duXi+HEEwffnV52XnJNfB6Obo7ZfQe2
+         0BBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=cNaD7XlZlkBzvK7bT+x2jpGvjdIXPQQbqYjhSv72v7U=;
-        b=txcT94xgFeZGuoiO4ct77fk2pP/39UtYW2LLEPBExHHOIeig/zYzQ9IWCpYWyOLqk5
-         y/08qpLGrD3fs6181GyU6QKgmZVtKp74/taMIuYJ+2+J6DqHISdvTkEd4q6SVYCiiHDy
-         qjxKRAOvgCzGXcnvfYThwT25nxgj1DHp+8lQeIeBnA+AX7YU5zmLt3RRUxfPpLQNSb5Z
-         bg4zsQzIqSubNL20Vs+tweetwBy/seKPzc0eqqEwjTNbSrRtbIQcgHj0IhtZHBd9x0MD
-         Yd1SF7RgnL6lF+rdot8PEaqfkii71oRHFhrTvYxK3Becm5CjC/N5odpDVuIgpZtM1Bd7
-         U3GQ==
+        bh=NkyXKFWZ/1nZS6CKh8fIaLuCwAYwewMa0mCDeSqc2Eg=;
+        b=p/y2jl2mdya90UWGZQtAdRokCWpZ/6XiN+qxTelGZ7hFpWkL5bPE8ei9DD6BAlEEWR
+         nHOUSxhQJN32/hc4nxdu8lJt+nYU2lkwGb5Kij+9FW2/SPZDs2FC3UWe2XJT4al5ctwL
+         JhYRq8/BmcFRRqWCn02SS6ZCng1HvN4T/0Q/EUD34g0VkqoV02VTz5cuWYGxedzAztH0
+         S9hIiUWWThMOL7A557WlGyR7jAXSeli7/f+pWEVMjtVqeSp2C8LbH36QuIaUWewudJ3r
+         m4CZCqoFAE3l8hTiY122tjaHYBotCNU5ZYdO3B1InjJ5aBfgWPdH4HaJd8xtORBT3sKI
+         Yb3w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 189si12018192ybi.121.2019.03.01.08.09.47
+        by mx.google.com with ESMTPS id j128si12367907ywb.125.2019.03.01.08.40.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Mar 2019 08:09:47 -0800 (PST)
+        Fri, 01 Mar 2019 08:40:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:39914 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40457 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gzkjL-0006Tl-AQ
-	for alex.bennee@linaro.org; Fri, 01 Mar 2019 11:09:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55859)
+	id 1gzlCj-0005sI-PB
+	for alex.bennee@linaro.org; Fri, 01 Mar 2019 11:40:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzkdd-0001n2-PW
-	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 11:03:54 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gzl60-0000ER-0j
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 11:33:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gzkdc-0007F4-MV
-	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 11:03:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33856)
+	(envelope-from <imammedo@redhat.com>) id 1gzl5y-0006b3-Lb
+	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 11:33:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40500)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gzkdc-0007Ei-DG; Fri, 01 Mar 2019 11:03:52 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1gzl5y-0006aZ-9R; Fri, 01 Mar 2019 11:33:10 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4359230B96AA;
-	Fri,  1 Mar 2019 16:03:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 69737307EAA0;
+	Fri,  1 Mar 2019 16:33:09 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0E3BA60A9A;
-	Fri,  1 Mar 2019 16:03:44 +0000 (UTC)
-Date: Fri, 1 Mar 2019 17:03:44 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1C60F19C5B;
+	Fri,  1 Mar 2019 16:33:02 +0000 (UTC)
+Date: Fri, 1 Mar 2019 17:33:00 +0100
 From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190301170344.59e654ae@redhat.com>
-In-Reply-To: <20190301134709.4695-9-eric.auger@redhat.com>
-References: <20190301134709.4695-1-eric.auger@redhat.com>
-	<20190301134709.4695-9-eric.auger@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190301173300.33848636@redhat.com>
+In-Reply-To: <0ddadb92-cd96-c6c7-40f6-51663936c0b2@redhat.com>
+References: <20190220224003.4420-1-eric.auger@redhat.com>
+	<20190222172742.18c3835a@redhat.com>
+	<c016024e-9f4b-8953-f492-8802675f7e22@redhat.com>
+	<20190225104212.7d40e65e@Igors-MacBook-Pro.local>
+	<70249194-349e-37f6-0e8d-dc50b39082b7@redhat.com>
+	<cd283485-49a9-ddd1-a020-26110ee093be@redhat.com>
+	<20190226175653.6ca2b6c4@Igors-MacBook-Pro.local>
+	<c68ba5a2-0d24-c1ad-c2af-c957768abf9f@redhat.com>
+	<20190227111025.4bb39cc7@redhat.com>
+	<116c5375-0ff4-8f91-ac05-05a53e7fe206@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA8392D6690@lhreml524-mbs.china.huawei.com>
+	<20190227185123.314171ae@redhat.com>
+	<f9518e2d-0e46-d25f-f9f5-809b21f744aa@redhat.com>
+	<20190228150531.184f5974@redhat.com>
+	<0ddadb92-cd96-c6c7-40f6-51663936c0b2@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Fri, 01 Mar 2019 16:03:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Fri, 01 Mar 2019 16:33:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v11 08/10] hw/arm/virt: Implement kvm_type
- function for 4.0 machine
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/17] ARM virt: Initial RAM
+ expansion and PCDIMM/NVDIMM support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,116 +103,195 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	dgilbert@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
-	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"drjones@redhat.com" <drjones@redhat.com>,
+	"david@redhat.com" <david@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"dgilbert@redhat.com" <dgilbert@redhat.com>,
+	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dchkAIC4+lKm
+X-TUID: p5bu5PFf1TjD
 
-On Fri,  1 Mar 2019 14:47:07 +0100
-Eric Auger <eric.auger@redhat.com> wrote:
+On Fri, 1 Mar 2019 15:18:14 +0100
+Auger Eric <eric.auger@redhat.com> wrote:
 
-> This patch implements the machine class kvm_type() callback.
-> It returns the number of bits requested to implement the whole GPA
-> range including the RAM and IO regions located beyond.
-> The returned value in passed though the KVM_CREATE_VM ioctl and
-s/in/is/
+> Hi Igor,
+> 
+> [..]
+> 
+> >    
+> >> What still remains fuzzy for me is in case of cold plug the mmio hotplug
+> >> control region part only is read (despite the slot selection of course)
+> >> and returns 0 for addr/size and also flags meaning the slot is not
+> >> enabled.  
+> > If you mean guest reads 0s than it looks broken, could you show
+> > trace log with mhp_* tracepoints enabled during a dimm hotplug.  
+> 
+> Please find the traces + cmd line on x86
+I've thought that you where talking about pc-dimms, so here it goes:
 
-> this allows KVM to set the stage2 tables dynamically.
-> 
-> To compute the highest GPA used in the memory map, kvm_type()
-> must freeze the memory map by calling virt_set_memmap().
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-with fixed commit:
+nvdimm is not part of memory hotplug interface, they have their own
+mmio region through which they let guest read completely rebuilt
+NFIT table and their own GPE._E04 event handler.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+you see 0's in trace because guest enumerates all PNP0C80 in DSDT
+to check if for any present pc-dimm for which mem hotplug interface
+reports 0s since there is none.
 
+PS:
+In ACPI spec there is an example of NVDIMMs where they also have
+associated memory device (PNP0C80) and that it's somehow related
+to nvdimm hotplug, but it's not described in sufficient detail
+so I'm honestly do not know what to do with it. Hence QEMU doesn't
+have PNP0C80 counterpart for nvdimm. To me it looks more like
+a mistake in the spec, but that's a topic for another discussion.
+
+
+> /qemu-system-x86_64 -M
+> q35,usb=off,dump-guest-core=off,kernel_irqchip=split,nvdimm -cpu
+> Haswell,-hle,-rtm -smp 4,sockets=4,cores=1,threads=1 -m
+> 16G,maxmem=32G,slots=4 -display none --enable-kvm -serial
+> tcp:localhost:4444,server -trace
+> events=/home/augere/UPSTREAM/qemu2/nvdimm.txt -qmp
+> unix:/home/augere/TEST/QEMU/qmp-sock,server,nowait -rtc
+> base=utc,driftfix=slew -global kvm-pit.lost_tick_policy=delay -realtime
+> mlock=off -no-hpet -no-shutdown -global PIIX4_PM.disable_s3=1 -global
+> PIIX4_PM.disable_s4=1 -boot strict=on -machine kernel_irqchip=split
+> -object
+> memory-backend-file,id=mem3,share,mem-path=/home/augere/TEST/QEMU/nv-dimm-3,size=2G,align=128M
+> -device nvdimm,memdev=mem3,id=dimm3,label-size=2M -object
+> memory-backend-file,id=mem4,share,mem-path=/home/augere/TEST/QEMU/nv-dimm-4,size=2G,align=128M
+> -device nvdimm,memdev=mem4,id=dimm4,label-size=2M -device
+> virtio-blk-pci,bus=pcie.0,scsi=off,drive=drv0,id=virtio-disk0,bootindex=1,werror=stop,rerror=stop
+> -drive
+> file=/home/augere/VM/IMAGES/x86_64-vm1-f28.raw,format=raw,if=none,cache=writethrough,id=drv0
+> -device virtio-net-pci,bus=pcie.0,netdev=nic0,mac=6a:f5:10:b1:3d:d2
+> -netdev
+> tap,id=nic0,script=/home/augere/TEST/SCRIPTS/qemu-ifup,downscript=/home/augere/TEST/SCRIPTS/qemu-ifdown,vhost=on
+> -net none -d guest_errors
 > 
-> ---
-> v10 -> v11:
-> - replace !kvm_enabled check by !vms->memmap
+> ******************************************************************
+> ioctl(TUNSETIFF): Device or resource busy
+> qemu-system-x86_64: -serial tcp:localhost:4444,server: info: QEMU
+> waiting for connection on: disconnected:tcp:::1:4444,server
+> qemu-system-x86_64: warning: global PIIX4_PM.disable_s3=1 not used
+> qemu-system-x86_64: warning: global PIIX4_PM.disable_s4=1 not used
+> 29556@1551449303.339464:mhp_acpi_write_slot set active slot: 0x0
+> 29556@1551449303.339496:mhp_acpi_read_addr_hi slot[0x0] addr hi: 0x0
+> 29556@1551449303.339505:mhp_acpi_read_addr_lo slot[0x0] addr lo: 0x0
+> 29556@1551449303.339512:mhp_acpi_read_size_hi slot[0x0] size hi: 0x0
+> 29556@1551449303.339520:mhp_acpi_read_size_lo slot[0x0] size lo: 0x0
+> 29556@1551449303.339563:mhp_acpi_write_slot set active slot: 0x0
+> 29556@1551449303.339574:mhp_acpi_read_flags slot[0x0] flags: 0x0
+> 29556@1551449303.339621:mhp_acpi_write_slot set active slot: 0x1
+> 29556@1551449303.339643:mhp_acpi_read_addr_hi slot[0x1] addr hi: 0x0
+> 29556@1551449303.339651:mhp_acpi_read_addr_lo slot[0x1] addr lo: 0x0
+> 29556@1551449303.339659:mhp_acpi_read_size_hi slot[0x1] size hi: 0x0
+> 29556@1551449303.339667:mhp_acpi_read_size_lo slot[0x1] size lo: 0x0
+> 29556@1551449303.339705:mhp_acpi_write_slot set active slot: 0x1
+> 29556@1551449303.339713:mhp_acpi_read_flags slot[0x1] flags: 0x0
+> 29556@1551449303.339757:mhp_acpi_write_slot set active slot: 0x2
+> 29556@1551449303.339779:mhp_acpi_read_addr_hi slot[0x2] addr hi: 0x0
+> 29556@1551449303.339787:mhp_acpi_read_addr_lo slot[0x2] addr lo: 0x0
+> 29556@1551449303.339796:mhp_acpi_read_size_hi slot[0x2] size hi: 0x0
+> 29556@1551449303.339804:mhp_acpi_read_size_lo slot[0x2] size lo: 0x0
+> 29556@1551449303.339861:mhp_acpi_write_slot set active slot: 0x2
+> 29556@1551449303.339870:mhp_acpi_read_flags slot[0x2] flags: 0x0
+> 29556@1551449303.339916:mhp_acpi_write_slot set active slot: 0x3
+> 29556@1551449303.339944:mhp_acpi_read_addr_hi slot[0x3] addr hi: 0x0
+> 29556@1551449303.339954:mhp_acpi_read_addr_lo slot[0x3] addr lo: 0x0
+> 29556@1551449303.339963:mhp_acpi_read_size_hi slot[0x3] size hi: 0x0
+> 29556@1551449303.339971:mhp_acpi_read_size_lo slot[0x3] size lo: 0x0
+> 29556@1551449303.340012:mhp_acpi_write_slot set active slot: 0x3
+> 29556@1551449303.340020:mhp_acpi_read_flags slot[0x3] flags: 0x0
+> 29556@1551449303.439695:mhp_acpi_write_slot set active slot: 0x0
+> 29556@1551449303.439713:mhp_acpi_read_flags slot[0x0] flags: 0x0
+> 29556@1551449303.439733:mhp_acpi_write_slot set active slot: 0x1
+> 29556@1551449303.439740:mhp_acpi_read_flags slot[0x1] flags: 0x0
+> 29556@1551449303.439759:mhp_acpi_write_slot set active slot: 0x2
+> 29556@1551449303.439767:mhp_acpi_read_flags slot[0x2] flags: 0x0
+> 29556@1551449303.439793:mhp_acpi_write_slot set active slot: 0x3
+> 29556@1551449303.439801:mhp_acpi_read_flags slot[0x3] flags: 0x0
+> 29556@1551449303.539590:mhp_acpi_write_slot set active slot: 0x0
+> 29556@1551449303.539606:mhp_acpi_read_flags slot[0x0] flags: 0x0
+> 29556@1551449303.539627:mhp_acpi_write_slot set active slot: 0x1
+> 29556@1551449303.539634:mhp_acpi_read_flags slot[0x1] flags: 0x0
+> 29556@1551449303.539652:mhp_acpi_write_slot set active slot: 0x2
+> 29556@1551449303.539659:mhp_acpi_read_flags slot[0x2] flags: 0x0
+> 29556@1551449303.539677:mhp_acpi_write_slot set active slot: 0x3
+> 29556@1551449303.539684:mhp_acpi_read_flags slot[0x3] flags: 0x0
 > 
-> v7 -> v8:
-> - remove vmc->no_extended_memmap and vms->extended_memmap
+> That's the only traces I get until I get the login prompt.
 > 
-> v6 -> v7:
-> - Introduce RAMBASE and rename add LEGACY_ prefix in that patch
-> - use local variables with explicit names in virt_set_memmap:
->   device_memory_base, device_memory_size
-> - add an extended_memmap field in the class
+> Thanks
 > 
-> v5 -> v6:
-> - add some comments
-> - high IO region cannot start before 256GiB
-> ---
->  hw/arm/virt.c | 39 ++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 38 insertions(+), 1 deletion(-)
+> Eric
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 624f417cd4..300eaae26f 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1440,7 +1440,13 @@ static void machvirt_init(MachineState *machine)
->      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->      bool aarch64 = true;
->  
-> -    virt_set_memmap(vms);
-> +    /*
-> +     * In accelerated mode, the memory map is computed earlier in kvm_type()
-> +     * to create a VM with the right number of IPA bits.
-> +     */
-> +    if (!vms->memmap) {
-> +        virt_set_memmap(vms);
-> +    }
->  
->      /* We can probe only here because during property set
->       * KVM is not available yet
-> @@ -1829,6 +1835,36 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->      return NULL;
->  }
->  
-> +/*
-> + * for arm64 kvm_type [7-0] encodes the requested number of bits
-> + * in the IPA address space
-> + */
-> +static int virt_kvm_type(MachineState *ms, const char *type_str)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(ms);
-> +    int max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms);
-> +    int requested_pa_size;
-> +
-> +    /* we freeze the memory map to compute the highest gpa */
-> +    virt_set_memmap(vms);
-> +
-> +    requested_pa_size = 64 - clz64(vms->highest_gpa);
-> +
-> +    if (requested_pa_size > max_vm_pa_size) {
-> +        error_report("-m and ,maxmem option values "
-> +                     "require an IPA range (%d bits) larger than "
-> +                     "the one supported by the host (%d bits)",
-> +                     requested_pa_size, max_vm_pa_size);
-> +       exit(1);
-> +    }
-> +    /*
-> +     * By default we return 0 which corresponds to an implicit legacy
-> +     * 40b IPA setting. Otherwise we return the actual requested PA
-> +     * logsize
-> +     */
-> +    return requested_pa_size > 40 ? requested_pa_size : 0;
-> +}
-> +
->  static void virt_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -1853,6 +1889,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
->      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-> +    mc->kvm_type = virt_kvm_type;
->      assert(!mc->get_hotplug_handler);
->      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
->      hc->plug = virt_machine_device_plug_cb;
+> 
+> >   
+> >> So despite the slots are advertised as hotpluggable/enabled in
+> >> the SRAT; I am not sure for the OS it actually makes any difference
+> >> whether the DSDT definition blocks are described or not.  
+> > SRAT isn't used fro informing guests about amount of present RAM,
+> > it holds affinity information for present and possible RAM
+> >   
+> >> To be honest I am afraid this is too late to add those additional
+> >> features for 4.0 now. This is going to jeopardize the first preliminary
+> >> part which is the introduction of the new memory map, allowing the
+> >> expansion of the initial RAM and paving the way for device memory
+> >> introduction. So I think I am going to resend the first 10 patches in a
+> >> standalone series. And we can iterate on the PCDIMM/NVDIMM parts
+> >> independently.  
+> > sounds good to me, I'll try to review 1-10 today 
+> >    
+> >> Thanks
+> >>
+> >> Eric  
+> >>>
+> >>>     
+> >>>>
+> >>>> Thanks,
+> >>>> Shameer
+> >>>>    
+> >>>>> Then would remain the GED/GPIO actual integration.
+> >>>>>
+> >>>>> Thanks
+> >>>>>
+> >>>>> Eric      
+> >>>>>>      
+> >>>>>>> Also don't DIMM slots already make sense in DT mode. Usually we accept
+> >>>>>>> to add one feature in DT and then in ACPI. For instance we can benefit      
+> >>>>>> usually it doesn't conflict with each other (at least I'm not aware of it)
+> >>>>>> but I see a problem with in this case.
+> >>>>>>      
+> >>>>>>> from nvdimm in dt mode right? So, considering an incremental approach I
+> >>>>>>> would be in favour of keeping the DT nodes.      
+> >>>>>> I'd guess it is the same as for DIMMs, ACPI support for NVDIMMs is much
+> >>>>>> more versatile.
+> >>>>>>
+> >>>>>> I consider target application of arm/virt as a board that's used to
+> >>>>>> run in production generic ACPI capable guest in most use cases and
+> >>>>>> various DT only guests as secondary ones. It's hard to make
+> >>>>>> both usecases be happy with defaults (that's probably  one of the
+> >>>>>> reasons why 'sbsa' board is being added).
+> >>>>>>
+> >>>>>> So I'd give priority to ACPI based arm/virt versus DT when defaults are
+> >>>>>> considered.
+> >>>>>>      
+> >>>>>>> Thanks
+> >>>>>>>
+> >>>>>>> Eric      
+> >>>>>>>>
+> >>>>>>>>
+> >>>>>>>>
+> >>>>>>>>      
+> >>>>>>      
+> >>>
+> >>>     
+> >   
 

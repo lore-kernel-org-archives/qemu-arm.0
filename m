@@ -1,81 +1,102 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp644573wrx;
-        Fri, 1 Mar 2019 05:47:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyAZNXklL9qrE8fFmnAg4cM69JCTCPH1crlCfS5Eq9n9vhN0jXYYDcakjtuw/VfUzmUSvOa
-X-Received: by 2002:a81:3154:: with SMTP id x81mr3705915ywx.29.1551448065322;
-        Fri, 01 Mar 2019 05:47:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551448065; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3753756wrx;
+        Mon, 4 Mar 2019 07:55:36 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwuWX4fiXIsT4x5balYLxOQMzeDwR6ECDv4Lb+dRBhKMOHSYqN9ekyA561AAmT8th+DJ3IP
+X-Received: by 2002:a81:9210:: with SMTP id j16mr14818449ywg.456.1551714936301;
+        Mon, 04 Mar 2019 07:55:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551714936; cv=none;
         d=google.com; s=arc-20160816;
-        b=FUgmgQnwZ+W/ussX7t69Vig74jGwCLjTo8ceNRsFBhhonJGHfm6nNwpbqb300iV/NC
-         zjbL6lKjClVpbzRhJg13l8h5Coh8v7010c0pzGw50+LGJzv/96vase2D/jQDULRD2qxU
-         /yzGmlSgpsO3OerwpcMI9L27GLMrL1tlcF8wMR9ZrEHZuankVFFC558TGGrHqddjxrmB
-         bkqNO1Bboxkzc+q8zanmvk0Myf63VfkLApDBQBTEakfXNWYtG+0GCmXCWdmO87iVccRo
-         GeCAk/zr9K/G8tT9wSBculg91qruogRozPFHZmyT4v5e0fJaSXsmt0lkDGFe/4aH3RzK
-         +gvg==
+        b=zr76ugUwQ92Eueqr/GPvKzHfJf32oIWnuVOUnYBVozZ++99TuOh72jsdJQoVWXkI8B
+         4l7ZcfwdrBdghOftPO00GOIADMKHhfwS5kCLTFRcC601GQgQUhM+WNLZxa18Kp3iIIF8
+         HSi6WWQvl8NPJcdbKUgzfqTFu8d4RYVd3NPwJz6g2L1UNDOqbGGB2RLCh2At1WS3naNs
+         5IUNK0FdBMxAfD9sl0OWbZIjklOvrKC/Vz5HFcjV1oyHnpCi0ayvwPTMtyQsuCTqWcN9
+         XACQXj0XDfE9W4F4MR+6O8W6VTSXWZqZIhFyDhFk6NPfzN5O/cmHD5jkGotbmTztusTC
+         7EKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=QBxORSVp60PKJ8vGCXpiBD4Rk1uS+0UYVx/vRG2YTIo=;
-        b=ggCsby4tZN+b5t/JvMT4ddwA1Rws1AzQPBxQk8YYZOCLCyt7Evt+beW/r/jw6G9QJ/
-         4e144h379ZgwJirtirQkkfSHIybP9+7ypXLJEBhLEm5SWQyy6tBhTF25PR7VzinXNnxv
-         zptlpWOzyhX5sSTr7AuZzbwz7mZhALpcREo0nVa3t4+zkbdhb/7RyOYOwZ5ZOi9fdjmH
-         9Hp3w/hzbskBnqVJNrUxeuMuiWHJZc8+ojs/nC4CCsV4p7wHVMZDV2o5Vb7/J6cwcMuu
-         VeFtNvaDL3adfTBeyzDvHvqyf49r4Nt7jkvKqc7XXhEJw1fIXMLc52epBzSBvUHfQLfm
-         ykhg==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=LB+t+VMefuU3TFbh2m7vS9bBvJmbunHB7GRw/qQFPVg=;
+        b=ZqG1nrT1Zi9mX1TCFVXcs1SH/11f1PRLMyvsq6CS1LX+YBgw+dswyaQcG3YSpjADtL
+         puSmJWcGLvYCFAScxB5KPwCXd+sFEM/O/qZ/a50lKVE/b5Y3cgjg4WCHM5yEGd6enDiN
+         cYpV4Qj0O9T6WXr4KgO+50nA2a1UjEAaluyCbGvjpqLdThIJfnUUo7FpDAiC4ChidRvx
+         qCCxzdFgQ/hl+7NyxwrAa+6K6Chc7eIosJGM6x4/zyWrfNLXuXMumYTiLXvyRf+OdVe5
+         frDC6HTNvuqa0umdZ1N/H8gPi3xy1FcLFRSxDus2AbPtO1k/jaWw1Kbg1+i6DCZjdebV
+         kMng==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EGE7N9KY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16si13171306ywh.128.2019.03.01.05.47.45
+        by mx.google.com with ESMTPS id 12si3393230ywx.313.2019.03.04.07.55.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Mar 2019 05:47:45 -0800 (PST)
+        Mon, 04 Mar 2019 07:55:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EGE7N9KY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:38086 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:56284 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gziVs-0002hv-Lr
-	for alex.bennee@linaro.org; Fri, 01 Mar 2019 08:47:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59577)
+	id 1h0pwF-0006dz-KC
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 10:55:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gziVd-0002gM-8p
-	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 08:47:30 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1h0pw1-0006dh-Ac
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 10:55:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gziVb-0002We-C6
-	for qemu-arm@nongnu.org; Fri, 01 Mar 2019 08:47:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:25916)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gziVX-0002Rz-M5; Fri, 01 Mar 2019 08:47:25 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 32EDF3007429;
-	Fri,  1 Mar 2019 13:47:20 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0C0625D704;
-	Fri,  1 Mar 2019 13:47:11 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Fri,  1 Mar 2019 14:46:59 +0100
-Message-Id: <20190301134709.4695-1-eric.auger@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1h0pvz-0004zQ-BN
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 10:55:21 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45470)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h0pvx-0004xK-M3
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 10:55:18 -0500
+Received: by mail-oi1-x244.google.com with SMTP id t82so4191862oie.12
+	for <qemu-arm@nongnu.org>; Mon, 04 Mar 2019 07:55:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=LB+t+VMefuU3TFbh2m7vS9bBvJmbunHB7GRw/qQFPVg=;
+	b=EGE7N9KY9zwL3IsqDwFLsxnx0GOqcJxB+aDiQ//zQiwBJ6SwS4zZJcOZnMnZSQGrk/
+	TZa6X0vYmUbu9vXZgEeCx5y7tkoK0sZ9/eCezgPYpDy2idaZMr96uEdYb5kH7W40G6Ty
+	U0TjSwpldZm0ZTdQ5vyg/A4W++p907FdbGf1Gl3i8zvXrLtf0mAZ9bC0rnUykr3Tf2j8
+	B6AXiNbh10DJFofXEYmTkwtB12Nbh82yJUEN3lXt314Fb7pxrWC/h6shqdDUAZV9VgRO
+	pzJSN7pC3rdtQpt1kG/c85slRT7PNTx+HCDG/gSGTHcmbRq/miACbB3cOAYS03lNjKrN
+	oOCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=LB+t+VMefuU3TFbh2m7vS9bBvJmbunHB7GRw/qQFPVg=;
+	b=ui41+idoLNKogZssWpiWUs/L0Xx9UtyQGkVeg6RkcmY8WTHRb1MEUljOZbex1esAcf
+	oeHZpHuWZ7EtmpKUr5aHMYs5e83nLpwsn4x0lSxNizmS6UdYn3kvY2Ge+aGMDrZvSXBb
+	LdF1zhzHjYaILohAmdTg+WHV1tpRWPEoD7Q3Orrc69p10Li/qOYToJaxE/vvAcsmV3an
+	pc2DgctoZCvI70kz3Gm2jsqklj3buRY0A9tEDRfLb+5RgtWWH+CcSSzA6MIOaGBzg3dB
+	r4NYPJcNxEOMp3rCyyfT27PxMR13ElYV3zMNZa1FDHbxS8VS1FB+tAGLwYBHTr0dT3sK
+	4b1w==
+X-Gm-Message-State: AHQUAuaqI84qmX0NPw1Zfty2FufQtOY+CUzvcEkDHPs3+bjPkr32Rgu8
+	5pPGo7Naq1eVbJ5/Ena9LpScQTCygXH02eIAxdwEyw==
+X-Received: by 2002:aca:c1c1:: with SMTP id
+	r184mr11701485oif.146.1551714916203; 
+	Mon, 04 Mar 2019 07:55:16 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Fri, 01 Mar 2019 13:47:20 +0000 (UTC)
+References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
+In-Reply-To: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Mar 2019 15:55:05 +0000
+Message-ID: <CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
+To: bzt <bztemail@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v11 00/10] ARM virt: Initial RAM expansion and
- extended memory map
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-arm] [PATCH] Added periodic IRQ support for
+ bcm2836_control local timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,164 +108,321 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
-	david@gibson.dropbear.id.au
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q1RauzjCuXZx
+X-TUID: 8ULjjwami18l
 
-This series aims to bump the 255GB RAM limit in machvirt and paves the
-way to device memory addition.
+On Tue, 26 Feb 2019 at 11:38, bzt <bztemail@gmail.com> wrote:
+>
+> Dear qemu developers,
+>
+> Honestly SubmitAPatch is a bit complicated for me, so I'm hoping I've
+> done everything right. To be sure, you can find my patch here:
+> https://github.com/bztsrc/qemu-local-timer and diff against the latest
+> github repo here:
+> https://github.com/bztsrc/qemu-local-timer/blob/patches/3.1.50.diff
+>
+> Currently the IRQ_TIMER in bcm2836_control is defined, but not
+> implemented. This patch adds the basic functionality to qemu by
+> implementing 3 new registers in bcm2836_control. You can route the
+> interrupt to one of the cores' IRQ or FIQ line by writing 0x40000024,
+> and you can set up a periodic interrupt with 38.4MHz frequency by
+> writing the divider into 0x40000034. Prescaler are not taken into
+> account. When the IRQ fired, you'll see it in 0x40000040+4*N bit 11
+> with the rest of the local IRQs, and you can acknowledge it by writing
+> 1<<31 to 0x40000038.
+>
+> The patch is pretty simple, should be easy to review: it does not
+> create new classes, does not delete anything, does not change class
+> interface, and only two files modified, the bcm2836_control.c and it's
+> header.
+>
+> Sign-off-by: Zolt=C3=A1n Baldaszti <bztemail@gmail.com>
+> Subject: [PATCH] Added periodic IRQ support for bcm2836_control local tim=
+er
 
-In machvirt versions < 4.0, the initial RAM starts at 1GB and can
-grow up to 255GB. From 256GB onwards we find IO regions such as the
-additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
-MMIO region. The address map was 1TB large. This corresponded to
-the max IPA capacity KVM was able to manage.
+OK, here are my substantive review comments.
 
-Since 4.20, the host kernel is able to support a larger and dynamic
-IPA range. So the guest physical address can go beyond the 1TB. The
-max GPA size depends on the host kernel configuration and physical CPUs.
+> diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+> index cfa5bc7365..fbd31de0f1 100644
+> --- a/hw/intc/bcm2836_control.c
+> +++ b/hw/intc/bcm2836_control.c
+> @@ -7,7 +7,11 @@
+>   * This code is licensed under the GNU GPLv2 and later.
+>   *
+>   * At present, only implements interrupt routing, and mailboxes (i.e.,
+> - * not local timer, PMU interrupt, or AXI counters).
+> + * not PMU interrupt, or AXI counters).
+> + *
+> + * 64-bit ARM Local Timer Copyright (c) 2019. Zolt=C3=A1n Baldaszti
+> + * The IRQ_TIMER support is still very basic, does not handle timer acce=
+ss,
+> + * and such there's no point in enabling it without the interrupt flag s=
+et.
 
-In this series we use this feature and allow the RAM to grow without
-any other limit than the one put by the host kernel.
+Can you be more precise about what's missing here? I didn't
+see anything in the spec that looked like a register for
+reading the current timer value (though it would certainly
+be usual to provide one).
 
-The RAM still starts at 1GB. First comes the initial ram (-m) of size
-ram_size and then we provision sufficient space for the looming
-device memory (dimensionned using ,maxmem and slots options).
+>   *
+>   * Ref:
+>   * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm283=
+6/QA7_rev3.4.pdf
+> @@ -18,6 +22,9 @@
+>  #include "qemu/log.h"
+>
+>  #define REG_GPU_ROUTE           0x0c
+> +#define REG_LOCALTIMERROUTING   0x24
+> +#define REG_LOCALTIMERCONTROL   0x34
+> +#define REG_LOCALTIMERACK       0x38
+>  #define REG_TIMERCONTROL        0x40
+>  #define REG_MBOXCONTROL         0x50
+>  #define REG_IRQSRC              0x60
+> @@ -43,6 +50,13 @@
+>  #define IRQ_TIMER       11
+>  #define IRQ_MAX         IRQ_TIMER
+>
+> +#define LOCALTIMER_FREQ      38400000
+> +#define LOCALTIMER_INTFLAG   (1 << 31)
+> +#define LOCALTIMER_RELOAD    (1 << 30)
+> +#define LOCALTIMER_INTENABLE (1 << 29)
+> +#define LOCALTIMER_ENABLE    (1 << 28)
+> +#define LOCALTIMER_VALUE(x)  ((x) & 0xfffffff)
+> +
+>  static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t =
+irq,
+>                            uint32_t controlreg, uint8_t controlidx)
+>  {
+> @@ -78,6 +92,15 @@ static void bcm2836_control_update(BCM2836ControlState=
+ *s)
+>          s->fiqsrc[s->route_gpu_fiq] |=3D (uint32_t)1 << IRQ_GPU;
+>      }
+>
+> +    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
+> +    if (s->triggered) {
+> +        if (s->route_localtimer & 4) {
+> +            s->fiqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ=
+_TIMER;
+> +        } else {
+> +            s->irqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ=
+_TIMER;
+> +        }
+> +    }
+> +
+>      for (i =3D 0; i < BCM2836_NCORES; i++) {
+>          /* handle local timer interrupts for this core */
+>          if (s->timerirqs[i]) {
+> @@ -162,6 +185,62 @@ static void bcm2836_control_set_gpu_fiq(void
+> *opaque, int irq, int level)
+>      bcm2836_control_update(s);
+>  }
+>
+> +static void bcm2836_control_local_timer_set_next(void *opaque)
+> +{
+> +    BCM2836ControlState *s =3D opaque;
+> +    uint64_t next_event;
+> +
+> +    assert(s->period > 0);
+> +
+> +    next_event =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> +        (NANOSECONDS_PER_SECOND * s->period / LOCALTIMER_FREQ);
 
-IO regions previously located between 256GB and 1TB are moved after
-the RAM. Their offset is dynamically computed, depends on ram_size,
-slots, maxram_size. Size alignment is enforced.
+This sort of X * Y / Z calculation for timers should
+be done with muldiv64() which uses a larger intermediate
+result to avoid overflow problems:
 
-In case maxmem value is inferior to 255GB, the legacy memory map
-still is used.
+       next_event =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+          muldiv64(s->period, NANOSECONDS_PER_SECOND, LOCALTIMER_FREQ);
 
-As we keep the initial RAM at 1GB base address, we do not need to do
-invasive changes in the EDK2 FW. It seems nobody is eager to do
-that job at the moment.
+> +    timer_mod(s->timer, next_event);
+> +}
+> +
+> +static void bcm2836_control_local_timer_tick(void *opaque)
+> +{
+> +    BCM2836ControlState *s =3D opaque;
+> +
+> +    bcm2836_control_local_timer_set_next(s);
+> +
+> +    if (!s->triggered) {
+> +        s->triggered =3D 1;
+> +        bcm2836_control_update(s);
+> +    }
+> +}
+> +
+> +static void bcm2836_control_local_timer_control(void *opaque, uint32_t v=
+al)
+> +{
+> +    BCM2836ControlState *s =3D opaque;
+> +
+> +    s->period =3D LOCALTIMER_VALUE(val);
+> +    if (val & LOCALTIMER_INTENABLE) {
+> +        if (!s->timer) {
+> +            s->timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
+> +                bcm2836_control_local_timer_tick, s);
 
-Device memory being put just after the initial RAM, it will be
-possible to get access to this feature while keeping a 1TB address
-map.
+You should just create the timer once, at device initialization,
+not every time the guest enables it. Enabling the timer
+can be done with timer_mod().
 
-Best Regards
+> +        }
+> +        bcm2836_control_local_timer_set_next(s);
+> +    } else {
+> +        if (s->timer) {
+> +            timer_del(s->timer);
+> +            s->timer =3D NULL;
 
-Eric
+This leaks the timer, because timer_del() is just "turn
+off the timer", not "deinitialize and free the timer memory".
+You just want to use timer_del() here, and leave s->timer
+set so that when it's enabled you can use timer_mod() to
+restart it.
 
-This series can be found at:
-https://github.com/eauger/qemu/tree/v3.1.0-extended-memmap-v11
+> +        }
+> +        s->triggered =3D 0;
+> +    }
+> +}
+> +
+> +static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
+> +{
+> +    BCM2836ControlState *s =3D opaque;
+> +
+> +    if (val & LOCALTIMER_INTFLAG) {
+> +        s->triggered =3D 0;
+> +    }
+> +    if (val & LOCALTIMER_RELOAD) {
+> +        bcm2836_control_local_timer_set_next(s);
+> +    }
+> +}
+> +
+>  static uint64_t bcm2836_control_read(void *opaque, hwaddr offset,
+> unsigned size)
+>  {
+>      BCM2836ControlState *s =3D opaque;
+> @@ -170,6 +249,14 @@ static uint64_t bcm2836_control_read(void
+> *opaque, hwaddr offset, unsigned size)
+>          assert(s->route_gpu_fiq < BCM2836_NCORES
+>                 && s->route_gpu_irq < BCM2836_NCORES);
+>          return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
+> +    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
+> +        return s->route_localtimer;
+> +    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
+> +        return s->period |
+> +            (s->timer ? LOCALTIMER_ENABLE | LOCALTIMER_INTENABLE : 0) |
 
-History:
+This looks odd - the timer enable and interrupt enable bits
+should be independent, not always either both set or both cleared.
 
-v10 -> v11:
-- remove vms->high_io_base
-- remove RAM_BASE
-- see individual change logs for other adjustments
+I suspect this register will be simpler to model if you
+have the state struct have a
+  uint32_t local_timer_control;
+which just stores the whole register value (so no
+separate s->triggered and s->period -- just pull
+the fields out of the s->local_timer_control with
+extract32() or masking when you need them).
 
-v9 -> v10:
-- only the keep the first 10 patches which move to the extended memmap
-- remove the 1GB alignment check on maxram_size
+> +            (s->triggered ? LOCALTIMER_INTFLAG : 0);
+> +    } else if (offset =3D=3D REG_LOCALTIMERACK) {
+> +        return 0;
+>      } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL)=
+ {
+>          return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
+>      } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
+> @@ -195,6 +282,12 @@ static void bcm2836_control_write(void *opaque,
+> hwaddr offset,
+>      if (offset =3D=3D REG_GPU_ROUTE) {
+>          s->route_gpu_irq =3D val & 0x3;
+>          s->route_gpu_fiq =3D (val >> 2) & 0x3;
+> +    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
+> +        s->route_localtimer =3D val & 7;
+> +    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
+> +        bcm2836_control_local_timer_control(s, val);
+> +    } else if (offset =3D=3D REG_LOCALTIMERACK) {
+> +        bcm2836_control_local_timer_ack(s, val);
+>      } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL)=
+ {
+>          s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] =3D val & 0xff=
+;
+>      } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
+> @@ -227,6 +320,13 @@ static void bcm2836_control_reset(DeviceState *d)
+>
+>      s->route_gpu_irq =3D s->route_gpu_fiq =3D 0;
+>
+> +    s->route_localtimer =3D s->triggered =3D 0;
+> +    s->period =3D 0;
+> +    if(s->timer) {
+> +        timer_del(s->timer);
+> +        s->timer =3D NULL;
 
-v8 -> v9:
-- fixed make check SIGSEV
-- fixed TCG issue (restored virt_set_memmap in machvirt_init)
-- removed Igor's R-b on "hw/arm/boot: Expose the PC-DIMM nodes in the DT"
+As above, this shouldn't be NULLing out s->timer; you can just
+unconditionally call timer_del().
 
-v7 -> v8:
-- addressed Igor's comments"
-- remove no_extended_memmap knob
-- moved acpi_nvdimm_state into MachineState
-- separate "hw/arm/virt: Check the VCPU PA range in TCG mode" patch
+> +    }
+> +
+>      for (i =3D 0; i < BCM2836_NCORES; i++) {
+>          s->timercontrol[i] =3D 0;
+>          s->mailboxcontrol[i] =3D 0;
+> diff --git a/include/hw/intc/bcm2836_control.h
+> b/include/hw/intc/bcm2836_control.h
+> index 613f3c4186..873bd52253 100644
+> --- a/include/hw/intc/bcm2836_control.h
+> +++ b/include/hw/intc/bcm2836_control.h
+> @@ -5,6 +5,9 @@
+>   * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
+>   * Written by Andrew Baumann
+>   *
+> + * 64-bit ARM Local Timer Copyright (c) 2019. Zolt=C3=A1n Baldaszti
+> + * Added basic IRQ_TIMER interrupt support
+> + *
+>   * This code is licensed under the GNU GPLv2 and later.
+>   */
+>
+> @@ -12,6 +15,7 @@
+>  #define BCM2836_CONTROL_H
+>
+>  #include "hw/sysbus.h"
+> +#include "qemu/timer.h"
+>
+>  /* 4 mailboxes per core, for 16 total */
+>  #define BCM2836_NCORES 4
+> @@ -39,6 +43,12 @@ typedef struct BCM2836ControlState {
+>      bool gpu_irq, gpu_fiq;
+>      uint8_t timerirqs[BCM2836_NCORES];
+>
+> +    /* local timer */
+> +    uint8_t route_localtimer;
+> +    uint32_t period;
+> +    bool triggered;
+> +    QEMUTimer *timer;
 
-v6 -> v7:
-- Addressed Peter and Igor comments (exceptions sent my email)
-- Fixed TCG case. Now device memory works also for TCG and vcpu
-  pamax is checked
-- See individual logs for more details
+Slightly nicer to just embed the QEMUTimer struct (and
+then initialize it with timer_init_ns() rather than using
+timer_new_ns(), which does 'allocate and init'.)
 
-v5 -> v6:
-- mingw compilation issue fix
-- kvm_arm_get_max_vm_phys_shift always returns the number of supported
-  IPA bits
-- new patch "hw/arm/virt: Rename highmem IO regions" that eases the revie=
-w
-  of "hw/arm/virt: Split the memory map description"
-- "hw/arm/virt: Move memory map initialization into machvirt_init"
-  squashed into the previous patch
-- change alignment of IO regions beyond the RAM so that it matches their
-  size
+> +
+>      /* interrupt source registers, post-routing (also input-derived;
+> visible) */
+>      uint32_t irqsrc[BCM2836_NCORES];
+>      uint32_t fiqsrc[BCM2836_NCORES];
 
-v4 -> v5:
-- change in the memory map
-- see individual logs
+New fields in this struct require new entries in the
+vmstate_bcm2836_control struct so the data is migrated.
+In this case we don't care about maintaining migration
+compatibility between QEMU versions, so the easiest thing
+is to bump the .version_id field to 2, and use
+VMSTATE_*_V(..., 2) macros to mark the new fields as
+being only present in version 2.
 
-v3 -> v4:
-- rebase on David's "pc-dimm: next bunch of cleanups" and
-  "pc-dimm: pre_plug "slot" and "addr" assignment"
-- kvm-type option not used anymore. We directly use
-  maxram_size and ram_size machine fields to compute the
-  MAX IPA range. Migration is naturally handled as CLI
-  option are kept between source and destination. This was
-  suggested by David.
-- device_memory_start and device_memory_size not stored
-  anymore in vms->bootinfo
-- I did not take into account 2 Igor's comments: the one
-  related to the refactoring of arm_load_dtb and the one
-  related to the generation of the dtb after system_reset
-  which would contain nodes of hotplugged devices (we do
-  not support hotplug at this stage)
-- check the end-user does not attempt to hotplug a device
-- addition of "vl: Set machine ram_size, maxram_size and
-  ram_slots earlier"
+If you take my suggestion about using a single uint32_t
+local_timer_control and an embedded QEMUTimer struct,
+that works out at
+   VMSTATE_TIMER_V(timer, BCM2836ControlState, 2),
+   VMSTATE_UINT32_V(local_timer_control, BCM2836ControlState, 2),
+   VMSTATE_UINT8_V(route_localtimer, BCM2836ControlState, 2),
 
-v2 -> v3:
-- fix pc_q35 and pc_piix compilation error
-- kwangwoo's email being not valid anymore, remove his address
-
-v1 -> v2:
-- kvm_get_max_vm_phys_shift moved in arch specific file
-- addition of NVDIMM part
-- single series
-- rebase on David's refactoring
-
-v1:
-- was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
-- was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
-
-Best Regards
-
-Eric
-
-
-Eric Auger (9):
-  hw/arm/virt: Rename highmem IO regions
-  hw/arm/virt: Split the memory map description
-  hw/boards: Add a MachineState parameter to kvm_type callback
-  kvm: add kvm_arm_get_max_vm_ipa_size
-  vl: Set machine ram_size, maxram_size and ram_slots earlier
-  hw/arm/virt: Dynamic memory map depending on RAM requirements
-  hw/arm/virt: Implement kvm_type function for 4.0 machine
-  hw/arm/virt: Check the VCPU PA range in TCG mode
-  hw/arm/virt: Bump the 255GB initial RAM limit
-
-Shameer Kolothum (1):
-  hw/arm/boot: introduce fdt_add_memory_node helper
-
- accel/kvm/kvm-all.c      |   2 +-
- hw/arm/boot.c            |  54 +++++++----
- hw/arm/virt-acpi-build.c |  10 +-
- hw/arm/virt.c            | 197 +++++++++++++++++++++++++++++++--------
- hw/ppc/mac_newworld.c    |   3 +-
- hw/ppc/mac_oldworld.c    |   2 +-
- hw/ppc/spapr.c           |   2 +-
- include/hw/arm/virt.h    |  16 +++-
- include/hw/boards.h      |   5 +-
- target/arm/kvm.c         |  10 ++
- target/arm/kvm_arm.h     |  13 +++
- vl.c                     |   6 +-
- 12 files changed, 242 insertions(+), 78 deletions(-)
-
---=20
-2.20.1
-
+thanks
+-- PMM

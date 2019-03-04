@@ -1,262 +1,134 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3830755wrx;
-        Mon, 4 Mar 2019 09:12:11 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwO5IuVjWzHK1ezD5MUZXoDWjqvsvTxaQvnoURpziG+N+qNK3Zqzqz7E3WKCBTypFA/FA+K
-X-Received: by 2002:a25:8241:: with SMTP id d1mr15494968ybn.345.1551719531764;
-        Mon, 04 Mar 2019 09:12:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551719531; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3973001wrx;
+        Mon, 4 Mar 2019 12:00:45 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx+s7QALZ4ks3iFPqR7arCOemjLCxLrXe5O+m+38AezUzIf3P51JWfhz9cN+wWYj+dSDmJ6
+X-Received: by 2002:a25:4287:: with SMTP id p129mr16875164yba.106.1551729645749;
+        Mon, 04 Mar 2019 12:00:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551729645; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqbPY9RsXcsdaSe7uF3CLhmqaOdT0lUYxUpXrU1UWXaFd0dJyqIte9GKw3rJahPixg
-         ofkhwTxSmYqrpMk1dUpvD2ernc+jp0Z4O4Tmlx02otVPbj7jl10vNYmGFfsPa950DB46
-         DRG3YNHcZF8OTYs6snM9bWRcKjpNOnMrapVVtSF3EWKigjeRGOGaWQNKkDCaVG7Sw2LU
-         faATHlX4SsPo6Wj8xqHpnK/b3WlseMqLT2y8nz5w9N6OK4Qz1XZv6seyItc09gzByKpN
-         XsHQf9ye5K01HJ74XgSUqegRAZPoHu3xSRIeE3cAimk+ccYwbbRkLLaguaOtiRaSEeVj
-         sAvA==
+        b=hg0otojyRnohWs0fZeyAEB5dXdTAd9PHpsL72hRG20/rhZMWk6NGon0sEQGETJEFXX
+         xL1zOq5jzvfCKwke4tEbwdHGzLHVM8x1vmhKomdQ6XSCtlVQ0eyId92qdLKAlO7c5m3G
+         r34ksbGwmaMH75QnFJMAm49/mOoCb0J1ojysGG2++y5/cat9BDSdTIHTsU7KomqfKvMU
+         k+Q/HCQ5y869/Ub8+mdMWIqoFn5exZMJM3sYjg1PQStpfJ6MyQqIxxk8vvH7126zYinl
+         QzcASwW1XEA6OfZVrxeQ+yQaSHbOAggBCiNJ7G2Fv2/1jCyM8NfBnU7QjWxMAZ6VMru4
+         jqyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=DmGWuFm7kqvA7eiuXxCwItI3tNJYZcCLNsEhXTChurA=;
-        b=ZtQv8yaWMCKEL4PCuV2ixa6hbfetFh00DebBudfs2z/pRulycXX9qEKPz7nGUUGKbY
-         SvfIv1WXNH7wDmqv2U1OgKrXtj6bF5iYsmqfbxelFG7ntMmFyuwdpHrMSWgIdosLyQtw
-         9KeWbI7g9adgtqBlHSLNu7lKQpiGZY79XqgPUkFWwRFLkgdr8YD0w9sk5/pzeYYF8vgU
-         7y4vtR6pY2AVvK8fyzHlGxvq4fkLXY8LMaD5yW3c//ok9tH/bi+oY9xsW7kwKF1RUnfI
-         lowiuodfdqrjlU/nIp0ODyCR2IVSRBiIbNdVe0qE3hXzNebgXFfT2dn8nl7QM9GAhVWi
-         CfTw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=HDNtP6G259hAUQ2Zp3dom0RdwUORzEynzQxqZeGLHhk=;
+        b=JuDj/slBZMuGi7TiSOSXIjA4NyR63WXsDITBhZB7fO5+q68Y3C1HMAMEJz9hbJCmo4
+         emsXyndTW+MUjpWptDmmNTJZz0msDfiG1XM6KwAPQH7/A1f8PiNhvs4fjBSSaIQxxYkN
+         noTJ1YWJSNpGWN+ZHCA7dOXD+3McqI7+ylCM+mST690FRq1NxYxvj0ieAwfo8kdy4SnG
+         flLLBOnYXRf9IevNSqrJAYURTCS1grRFa6EJA9/e4xrPesec+mbLB/o8WtM+k04gMPl0
+         mUJshiCbeN+5mMVUtIex+/Si+IhX9GU6u1xwpQNrkDvJwed3OqxlMCJuy1K+jB4WAJT/
+         iccA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=xreSzo0v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f132si3760255ywc.198.2019.03.04.09.12.11
+        by mx.google.com with ESMTPS id d64si3767725ywh.465.2019.03.04.12.00.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 09:12:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2019 12:00:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:57734 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=xreSzo0v;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:60141 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0r8N-0004NO-4m
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 12:12:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57638)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h0tlV-0003Fu-4S
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 15:00:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0r8F-0004ND-7T
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 12:12:04 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1h0sUi-0001Im-A1
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 13:39:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0r8D-0002mW-Ui
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 12:12:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59978)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1h0r8D-0002l4-K8; Mon, 04 Mar 2019 12:12:01 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B8C053680B;
-	Mon,  4 Mar 2019 17:11:59 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 17EC55C207;
-	Mon,  4 Mar 2019 17:11:53 +0000 (UTC)
-To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
-	imammedo@redhat.com, david@redhat.com
-References: <20190304101339.25970-1-eric.auger@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <a90df8ae-503e-227a-2f4a-3bd61e4da99f@redhat.com>
-Date: Mon, 4 Mar 2019 18:11:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1h0sUg-0002FR-I1
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 13:39:20 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:41200)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h0sUc-0002C4-VG
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 13:39:15 -0500
+Received: by mail-ot1-x343.google.com with SMTP id t7so5087208otk.8
+	for <qemu-devel@nongnu.org>; Mon, 04 Mar 2019 10:39:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=HDNtP6G259hAUQ2Zp3dom0RdwUORzEynzQxqZeGLHhk=;
+	b=xreSzo0vNNlGQocCL0Y+UKFL0EWkoXDLzSDDsB9UgLnkseCYN+gVh1+oP4RkNucCp6
+	MRS8ZY1RN9L1JgepR0dUQqhbh7NUA5iLmDq38suYU5nSdkSK4TTI7E5aL8dtkwUxLuy4
+	iA8Kk0B+6BcIU9K6oC6hEg4J8Cy6dGGYS+A6rJ3km6F5OZkFcaYiZUV2a3YPJsckNWI1
+	aDBDn0p3e7hOmBBsGSggcY3aZ4zNA6aMUX1cgx7hc28s0/cYFbfXkVp4f0ufdyFHXd8C
+	+/K8mpB96YaAL3gRyhsd0inzSFXJUp91co3CVbuAavOizkSUb6kJ7HGZCO+QXz5DZSti
+	cXng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=HDNtP6G259hAUQ2Zp3dom0RdwUORzEynzQxqZeGLHhk=;
+	b=m/ipBvFeqMsSwu7ua0papDcSCFWeQUKUFcDvqRGgpnzQqUtJhBUTb+ap6IbsVXfvHb
+	1MxYEln9VxOyoVGi+YonPcDKVY53bmSl/aDKsbuLtl+rRs+76Ag3fLPHdCucZzX5CuAA
+	TsdZ/cjpgOvggzLkPxmnR/mUu2PCx8kzI41ZdwIhelGlyHU3H+v6+0nW2K9BkLxGR4V5
+	WUyOMlzf/lZ7cBJJPXiLGJ3RJ6NR5hzSG/mVQLvSiu/3QU85TarM3rEVNoT/KMKWBdeB
+	zwyIz3Ey+ZLJjmTLMMszJjQz70KWocF7Ii4QaGyoTKShrsRsqJix1x5Yfpp5zqZqJhoy
+	LY+g==
+X-Gm-Message-State: APjAAAXSFmxcS/mZfaRPNVDs8LDRRI0BF9lftPucbsi/Z3YaIwWeyuqN
+	xRx+XZC41OLjo02umL8iNX7ToHvOmpKxLnoBUXI3jQ==
+X-Received: by 2002:a9d:6406:: with SMTP id h6mr13249843otl.238.1551724749653; 
+	Mon, 04 Mar 2019 10:39:09 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190304101339.25970-1-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 04 Mar 2019 17:11:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v12 00/10] ARM virt: Initial RAM expansion
+References: <20190304101339.25970-1-eric.auger@redhat.com>
+	<a90df8ae-503e-227a-2f4a-3bd61e4da99f@redhat.com>
+In-Reply-To: <a90df8ae-503e-227a-2f4a-3bd61e4da99f@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Mar 2019 18:38:56 +0000
+Message-ID: <CAFEAcA8S4OytKYuieOsU+qxqZXhDQcnHrVeqL0G2mdnggR7gRA@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-devel] [PATCH v12 00/10] ARM virt: Initial RAM expansion
  and extended memory map
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
-	david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I8dSFZfuDYSz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, David Hildenbrand <david@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0ZFJpy93pGlf
 
-Hi Peter,
+On Mon, 4 Mar 2019 at 17:12, Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi Peter,
+>
+> On 3/4/19 11:13 AM, Eric Auger wrote:
+> > This series aims to bump the 255GB RAM limit in machvirt and paves the
+> > way to device memory addition.
 
-On 3/4/19 11:13 AM, Eric Auger wrote:
-> This series aims to bump the 255GB RAM limit in machvirt and paves the
-> way to device memory addition.
-> 
-> In machvirt versions < 4.0, the initial RAM starts at 1GB and can
-> grow up to 255GB. From 256GB onwards we find IO regions such as the
-> additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
-> MMIO region. The address map was 1TB large. This corresponded to
-> the max IPA capacity KVM was able to manage.
-> 
-> Since 4.20, the host kernel is able to support a larger and dynamic
-> IPA range. So the guest physical address can go beyond the 1TB. The
-> max GPA size depends on the host kernel configuration and physical CPUs.
-> 
-> In this series we use this feature and allow the RAM to grow without
-> any other limit than the one put by the host kernel.
-> 
-> The RAM still starts at 1GB. First comes the initial ram (-m) of size
-> ram_size and then we provision sufficient space for the looming
-> device memory (dimensionned using ,maxmem and slots options).
-> 
-> IO regions previously located between 256GB and 1TB are moved after
-> the RAM. Their offset is dynamically computed, depends on ram_size,
-> slots, maxram_size. Size alignment is enforced.
-> 
-> In case maxmem value is inferior to 255GB, the legacy memory map
-> still is used.
-> 
-> As we keep the initial RAM at 1GB base address, we do not need to do
-> invasive changes in the EDK2 FW. It seems nobody is eager to do
-> that job at the moment.
-> 
-> Device memory being put just after the initial RAM, it will be
-> possible to get access to this feature while keeping a 1TB address
-> map.
-> 
-> Best Regards
-> 
-> Eric
-> 
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v3.1.0-extended-memmap-v12
-> 
-> History:
-> v11 -> v12:
-> - collected last Igor's and Richard's R-b's
-> - removed the memmap initialization to NULL
+> I collected all the R-b's I received from Igor and Richard and I removed
+> the PCDIMM/NVDIMM integration. Please let me know if you have some
+> remaining comments so that this series hopefully lands in the next release.
 
-I collected all the R-b's I received from Igor and Richard and I removed
-the PCDIMM/NVDIMM integration. Please let me know if you have some
-remaining comments so that this series hopefully lands in the next release.
+Thanks -- I've applied it to target-arm.next.
 
-Thanks
-
-Eric
-> 
-> v10 -> v11:
-> - remove vms->high_io_base
-> - remove RAM_BASE
-> - see individual change logs for other adjustments
-> 
-> v9 -> v10:
-> - only the keep the first 10 patches which move to the extended memmap
-> - remove the 1GB alignment check on maxram_size
-> 
-> v8 -> v9:
-> - fixed make check SIGSEV
-> - fixed TCG issue (restored virt_set_memmap in machvirt_init)
-> - removed Igor's R-b on "hw/arm/boot: Expose the PC-DIMM nodes in the DT"
-> 
-> v7 -> v8:
-> - addressed Igor's comments"
-> - remove no_extended_memmap knob
-> - moved acpi_nvdimm_state into MachineState
-> - separate "hw/arm/virt: Check the VCPU PA range in TCG mode" patch
-> 
-> v6 -> v7:
-> - Addressed Peter and Igor comments (exceptions sent my email)
-> - Fixed TCG case. Now device memory works also for TCG and vcpu
->   pamax is checked
-> - See individual logs for more details
-> 
-> v5 -> v6:
-> - mingw compilation issue fix
-> - kvm_arm_get_max_vm_phys_shift always returns the number of supported
->   IPA bits
-> - new patch "hw/arm/virt: Rename highmem IO regions" that eases the review
->   of "hw/arm/virt: Split the memory map description"
-> - "hw/arm/virt: Move memory map initialization into machvirt_init"
->   squashed into the previous patch
-> - change alignment of IO regions beyond the RAM so that it matches their
->   size
-> 
-> v4 -> v5:
-> - change in the memory map
-> - see individual logs
-> 
-> v3 -> v4:
-> - rebase on David's "pc-dimm: next bunch of cleanups" and
->   "pc-dimm: pre_plug "slot" and "addr" assignment"
-> - kvm-type option not used anymore. We directly use
->   maxram_size and ram_size machine fields to compute the
->   MAX IPA range. Migration is naturally handled as CLI
->   option are kept between source and destination. This was
->   suggested by David.
-> - device_memory_start and device_memory_size not stored
->   anymore in vms->bootinfo
-> - I did not take into account 2 Igor's comments: the one
->   related to the refactoring of arm_load_dtb and the one
->   related to the generation of the dtb after system_reset
->   which would contain nodes of hotplugged devices (we do
->   not support hotplug at this stage)
-> - check the end-user does not attempt to hotplug a device
-> - addition of "vl: Set machine ram_size, maxram_size and
->   ram_slots earlier"
-> 
-> v2 -> v3:
-> - fix pc_q35 and pc_piix compilation error
-> - kwangwoo's email being not valid anymore, remove his address
-> 
-> v1 -> v2:
-> - kvm_get_max_vm_phys_shift moved in arch specific file
-> - addition of NVDIMM part
-> - single series
-> - rebase on David's refactoring
-> 
-> v1:
-> - was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
-> - was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
-> 
-> Eric Auger (9):
->   hw/arm/virt: Rename highmem IO regions
->   hw/arm/virt: Split the memory map description
->   hw/boards: Add a MachineState parameter to kvm_type callback
->   kvm: add kvm_arm_get_max_vm_ipa_size
->   vl: Set machine ram_size, maxram_size and ram_slots earlier
->   hw/arm/virt: Dynamic memory map depending on RAM requirements
->   hw/arm/virt: Implement kvm_type function for 4.0 machine
->   hw/arm/virt: Check the VCPU PA range in TCG mode
->   hw/arm/virt: Bump the 255GB initial RAM limit
-> 
-> Shameer Kolothum (1):
->   hw/arm/boot: introduce fdt_add_memory_node helper
-> 
->  accel/kvm/kvm-all.c      |   2 +-
->  hw/arm/boot.c            |  54 +++++++----
->  hw/arm/virt-acpi-build.c |  10 +-
->  hw/arm/virt.c            | 196 +++++++++++++++++++++++++++++++--------
->  hw/ppc/mac_newworld.c    |   3 +-
->  hw/ppc/mac_oldworld.c    |   2 +-
->  hw/ppc/spapr.c           |   2 +-
->  include/hw/arm/virt.h    |  16 +++-
->  include/hw/boards.h      |   5 +-
->  target/arm/kvm.c         |  10 ++
->  target/arm/kvm_arm.h     |  13 +++
->  vl.c                     |   6 +-
->  12 files changed, 241 insertions(+), 78 deletions(-)
-> 
+-- PMM

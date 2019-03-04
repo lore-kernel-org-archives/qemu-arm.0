@@ -1,203 +1,201 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3890946wrx;
-        Mon, 4 Mar 2019 10:18:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzx2SgfK+bWxgGqrY0/pmL6D+jny8IvaR105z+tAlYc683cyTUIAdTdydqJLUqBlIEoUfyd
-X-Received: by 2002:a0c:b597:: with SMTP id g23mr15272222qve.142.1551723506100;
-        Mon, 04 Mar 2019 10:18:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551723506; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3892429wrx;
+        Mon, 4 Mar 2019 10:19:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy+2KN/zq9EEW4kZ6OzRZOrUNxsZ35Ar7JdtFfQ5szocVu96tyPTX1+E8fPcuoMhoSbAM5P
+X-Received: by 2002:aed:3ef6:: with SMTP id o51mr15481104qtf.183.1551723499462;
+        Mon, 04 Mar 2019 10:18:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551723499; cv=none;
         d=google.com; s=arc-20160816;
-        b=A3e3X/NKpjBJ/6HhCjS5HjrBWM+/ZcpENe0W2jJDH3r6G24s4num+UuM4SZeJx0EDY
-         64xX40mjzzYFJiKtsJHMO+QdTLmf2o5OVK1pshn3ZZwtl1i0QfkSrPnkNbdkRx6egh7I
-         CKoEYESzh+I66JeUZJFw0n0yWw/i/I/69OfttqqOUGKmIWgeamjD5JP8q76iqjPU6E+p
-         SmBNxhuo24ejr2an7ARGm5PSawbOjY8MTV/UnpLPuRnhP+Cys3XwM/Ktj+miedKUsDEx
-         ndg84le4unoXywlMDgT54jh8jnRpjYc0tKsrgSRizQOAqx50V0st3FUnOuSzGUliMrEc
-         mhRQ==
+        b=fXsGv0kKjGdeR3booxDG+ZzPrJlPuZAGhN5AWxKz3hn7Px5LHQzA3nyYISWlRhQ7B9
+         Om76km+1fTw43JAIMiDtwkA18ZBxlskztgX9RWiruynfmTIIbr42JnHTwuoVtxww8Q6w
+         4P6uOPIXSleMJ1YxfaiC1ij+oyQODprya+u+gU4rBMG1ZYtGEzC+wxvTInQEZ6l6o3Yd
+         NfCh24NyzkXzgz8ssr2FugDdviU9qwzw8mTWrtfWaCUqUitWEkym+8vL8BFtkAoi6w3+
+         2nOWgdeK5VCJ2f6XSi4QyMgxufD3HRPwT2UXIpAsbXllxgv5p8+hz/p+Xupx263AjQcA
+         vwHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=FPbopEfX3DCU5tyPHThHNKbNHYi4C4irP7knpRtWl1M=;
-        b=qpSacfFQ0/l+HRmbQf8OMnAJInhFiTho82vno5ixgdxojiCVQC1zXqTVSOr4rhxck7
-         tNQnwOd6Pb9QiqGzZ1Cg2xq8ewCriPKBDy7fJ3ZnEPzGYNW62hRxJaBqVaaFHdwaNOAN
-         YLysEQ2xsntw68OIq86Rkldj4Lar9/TGjJwxlLwkg/N50FIs2pE2xCkmJgUW0HF5RQAy
-         kLe5EP1QRKGdmacjDnlslvqekssLNzwMx0JQmGHX2fn8mVbpNDB0+nIucr+KBrAc6FHy
-         cZ4MRI3AOvMpkDx57YHHG/DCNS0KThzJBhPpE8+lECVZbmwHNkOPy1DHQiH5jdBaxXwf
-         XRSw==
+        h=message-id:date:subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=Z4KV7GaFmevlqDcX9Cv1lXDvSLs5qtJUKfpu42eXeyo=;
+        b=xGtDT6rz6jOAw261zNCh27U1uSDI006DjtSGsxHIeirUsEvIOxjIcTjAc53w+lXxWT
+         yzP6ONCnQA52hJhvW36UBvRJTExynmDLHllaR8dO3AbAzhoyiu1iYhqeUc1GgMSYAmEa
+         LeGY6FCngPTyPnv5orE+CV3zz4/ybnCjukFHgguH4am0njP5HhYnZD0fz8G6DG5BrnQS
+         C0yVSLdcibKcXVPG/UJ2tFJeudIr6KfXBgw3rNSv8qgI/omeHuTiRcovjdf+mECnOEge
+         wC4YGlOOXcB4W85Bl7qosY2M2cwvpsA91yTkQCAx4aFOwc0Rhtrh3DEw/ZROH++RB8o+
+         /Ukg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.s=mesmtp header.b=T+SsFQzT;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=UTEMkFTc;
-       spf=pass (google.com: domain of cota@braap.org designates 64.147.123.25 as permitted sender) smtp.mailfrom=cota@braap.org
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=NWa5noOU;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=cZyGL2RB;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) smtp.mailfrom=cota@braap.org
 Return-Path: <cota@braap.org>
-Received: from wout2-smtp.messagingengine.com (wout2-smtp.messagingengine.com. [64.147.123.25])
-        by mx.google.com with ESMTPS id g14si3561171qte.339.2019.03.04.10.18.25
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
+        by mx.google.com with ESMTPS id i6si1583339qkd.16.2019.03.04.10.18.19
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Mar 2019 10:18:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of cota@braap.org designates 64.147.123.25 as permitted sender) client-ip=64.147.123.25;
+        Mon, 04 Mar 2019 10:18:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.s=mesmtp header.b=T+SsFQzT;
-       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=UTEMkFTc;
-       spf=pass (google.com: domain of cota@braap.org designates 64.147.123.25 as permitted sender) smtp.mailfrom=cota@braap.org
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=NWa5noOU;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=cZyGL2RB;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) smtp.mailfrom=cota@braap.org
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.west.internal (Postfix) with ESMTP id AE31E371C;
-	Mon,  4 Mar 2019 13:18:24 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Mon, 04 Mar 2019 13:18:25 -0500
+	by mailout.nyi.internal (Postfix) with ESMTP id 137442222B;
+	Mon,  4 Mar 2019 13:18:19 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Mon, 04 Mar 2019 13:18:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
-	from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-type:content-transfer-encoding; s=mesmtp;
-	 bh=FPbopEfX3DCU5tyPHThHNKbNHYi4C4irP7knpRtWl1M=; b=T+SsFQzTAgnT
-	pr5JqJh1Db/iKReoVtyw8t1sKsag6Ot0O4sIaD/q+D67lL1C0WeC3rJfGhRTzUP2
-	xjPqlFmDjkLyPjZX8+j22aZ8iHx/b1J3/24p0SsjQLEU6SYPhA8xAEqePH6r6MFx
-	py2nj8c9GfxA5Shd1TG161xjLNWCapY=
+	from:to:cc:subject:date:message-id; s=mesmtp; bh=Z4KV7GaFmevlqDc
+	X9Cv1lXDvSLs5qtJUKfpu42eXeyo=; b=NWa5noOUYPCQrLkC4p93DnKXZbiYnjH
+	eXEgs8LbanXf1ZCiUQ7efce7HWvEhuoi8O5jY7l4QTGRQ/f7q02I+ON012IVqOF0
+	SFtkXrG7tfqCRYhXY5zgXHy3iuSwkbVCwdsyAGaX8pk+S3rcWLLGXi8HbqIXO+rS
+	BgbSBFsaetpk=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
-	:x-sasl-enc; s=fm2; bh=FPbopEfX3DCU5tyPHThHNKbNHYi4C4irP7knpRtWl
-	1M=; b=UTEMkFTcrWyV54Gq6Ww8CuLiqAvwrzEouDSwV/RIjoHTqUNRsUMYmqCFp
-	VRBQzAecwZmiHhkSSBfaO4gbpOwxK0xUYE5FPbwkg5oVNu03LQOGKsdjVBoePgQg
-	5ePojMa/I7ufZh10zfG2mNR3Mu84xz75CU1bV2GTmI36k20+qZ+8YigjQ/6Akohq
-	bhERjMXxYpC+nqsVHfhHeOZ53Gzfui648gRSqszWtDQBnHzorIosGAgaSEYdWCr6
-	itMrQR+ZV+4r9utBZcQuC6FW1u0y43w38wrIXKtqghzsqYRQxTNxDP8N6yXwDAAu
-	c0A2PBB4GsuKPzdb05J+O1OF5FXag==
-X-ME-Sender: <xms:8Gt9XCR4Ii5JxBMiCJcJxV1YodUmg7hROBo2DZA3iKXT2NEkgWFk0A>
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; bh=Z4KV7GaFmevlqDcX9Cv1lXDvSLs5qtJUKfpu42eXeyo=; b=cZyGL2RB
+	rYw37Mhlr4+E5PS1MdFbdKgVcs3ahrtDFNfoaCE8ezvmQ32tT3lbs34O82QWddEK
+	C5YP0ZMmEIq3zKVB9mJ2N5NxxPpnE5AHnk3PRGleiPR5rZtvrDmAjiWQ6BqqMZNd
+	wNVmOLjhRv9wL9MO42cley6ery5NF+UwvA7zGnqMwcN5eqrQCFaOZPoF9NtTvt/4
+	QrpVL0A415MEhSYWQjHNet6w0SMdsPFJcr7UXUZDzuXpCVhafHqSpCw6SHfqmZtq
+	Clnp4bg/3+zLGT6gpJ2MsPNNlnr8NlOR50tBcdF+SUsly04PL+16xRbndA+K2WTa
+	ENizBM/8GOjBMg==
+X-ME-Sender: <xms:5mt9XIv-bsYjk4BiIn1d5rgka3w08PIUbSFLyoqaKtvp4QWFMALcfw>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrfedugdduuddtucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepfdfgmhhi
-    lhhiohcuifdrucevohhtrgdfuceotghothgrsegsrhgrrghprdhorhhgqeenucfkphepud
-    dvkedrheelrddvtddrvdduieenucfrrghrrghmpehmrghilhhfrhhomheptghothgrsegs
-    rhgrrghprdhorhhgnecuvehluhhsthgvrhfuihiivgepvdeh
-X-ME-Proxy: <xmx:8Gt9XFdm4Z5klKFura0Q1-mPIGBq6vBBBof7nPocl1eQH3fMhCEBAQ>
-    <xmx:8Gt9XBmnkUUZFa6pJSctFXrBTzwMtohhWz-fUKvcFBSqYfgr7JN0fw>
-    <xmx:8Gt9XKhUnK8EOJ7TI98uogWtgWABFc8xWgLrahM7t4J-_r4SnGOlRQ>
-    <xmx:8Gt9XCEWq2y6wuc9adAshKPz3sfma0U46on8SZtrunH8yAIKGecK6A>
+    cujfgurhephffvufffkffosedttdertdertddtnecuhfhrohhmpedfgfhmihhlihhoucfi
+    rdcuvehothgrfdcuoegtohhtrgessghrrggrphdrohhrgheqnecuffhomhgrihhnpehgih
+    hthhhusgdrtghomhdpghhnuhdrohhrghenucfkphepuddvkedrheelrddvtddrvdduieen
+    ucfrrghrrghmpehmrghilhhfrhhomheptghothgrsegsrhgrrghprdhorhhgnecuvehluh
+    hsthgvrhfuihiivgeptd
+X-ME-Proxy: <xmx:5mt9XGycXwQ7T6aIZktwlD6CSkAyoxzDcqcNtqI7QBS9QsQSJkijXA>
+    <xmx:5mt9XGPp-Gz_uDGEtqcqMHSCsW0-8YkXpN04v0xDde_5fWzve56ThQ>
+    <xmx:5mt9XA2Rq1Gh6l96hgpz92nb-TZFqE1v7S5loPfccYTYxcVcFiUktQ>
+    <xmx:62t9XOQT9N_DN8MWQn5SmvbRZ_JPGm8UMxIDRmb80mZBYEIV8R4ktQ>
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id D798C1033A;
-	Mon,  4 Mar 2019 13:18:23 -0500 (EST)
+	by mail.messagingengine.com (Postfix) with ESMTPA id 68CE7E44A5;
+	Mon,  4 Mar 2019 13:18:14 -0500 (EST)
 From: "Emilio G. Cota" <cota@braap.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v7 38/73] arm: convert to cpu_interrupt_request
-Date: Mon,  4 Mar 2019 13:17:38 -0500
-Message-Id: <20190304181813.8075-39-cota@braap.org>
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Alistair Francis <alistair23@gmail.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Anthony Green <green@moxielogic.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Chris Wulff <crwulff@gmail.com>,	Cornelia Huck <cohuck@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,	James Hogan <jhogan@kernel.org>,
+	Laurent Vivier <laurent@vivier.eu>,	Marek Vasut <marex@denx.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,	Michael Walle <michael@walle.cc>,
+	Palmer Dabbelt <palmer@sifive.com>,	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,	qemu-s390x@nongnu.org,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Stafford Horne <shorne@gmail.com>
+Subject: [PATCH v7 00/73] per-CPU locks
+Date: Mon,  4 Mar 2019 13:17:00 -0500
+Message-Id: <20190304181813.8075-1-cota@braap.org>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190304181813.8075-1-cota@braap.org>
-References: <20190304181813.8075-1-cota@braap.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 4uEMAm4sOId8
+X-TUID: Kx7Tbh6U8OS7
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Emilio G. Cota <cota@braap.org>
+v6: https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg07650.html
+
+All patches in the series have reviews now. Thanks everyone!
+
+I've tested all patches with `make check-qtest -j' for all targets.
+The series is checkpatch-clean (just some warnings about __COVERITY__).
+
+You can fetch the series from:
+  https://github.com/cota/qemu/tree/cpu-lock-v7
+
 ---
- target/arm/cpu.c     |  6 +++---
- target/arm/helper.c  | 16 +++++++---------
- target/arm/machine.c |  2 +-
- 3 files changed, 11 insertions(+), 13 deletions(-)
+v6->v7:
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 845730c00c..7037e22580 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -73,7 +73,7 @@ static bool arm_cpu_has_work(CPUState *cs)
-     ARMCPU *cpu = ARM_CPU(cs);
+- Rebase on master
+  - Add a cpu_halted_set call to arm code that wasn't there in v6
+
+- Add R-b's and Ack's.
+
+- Add comment to patch 3's log to explain why the bitmap is added
+  there, even though it only gains a user at the end of the series.
+
+- Fix "prevent deadlock" comments before assertions; use
+  "enforce locking order" instead, which is more accurate.
+
+- Add a few more comments, as suggested by Alex.
+
+v6->v7 diff (before rebase) below.
+
+Thanks,
+
+		Emilio
+---
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index e4ae04f72c..a513457520 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -435,7 +435,7 @@ static inline bool cpu_handle_halt_locked(CPUState *cpu)
+             && replay_interrupt()) {
+             X86CPU *x86_cpu = X86_CPU(cpu);
  
-     return (cpu->power_state != PSCI_OFF)
--        && cs->interrupt_request &
-+        && cpu_interrupt_request(cs) &
-         (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
-          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
-          | CPU_INTERRUPT_EXITTB);
-@@ -484,7 +484,7 @@ void arm_cpu_update_virq(ARMCPU *cpu)
-     bool new_state = (env->cp15.hcr_el2 & HCR_VI) ||
-         (env->irq_line_state & CPU_INTERRUPT_VIRQ);
+-            /* prevent deadlock; cpu_mutex must be acquired _after_ the BQL */
++            /* locking order: cpu_mutex must be acquired _after_ the BQL */
+             cpu_mutex_unlock(cpu);
+             qemu_mutex_lock_iothread();
+             cpu_mutex_lock(cpu);
+diff --git a/cpus.c b/cpus.c
+index 4f17fe25bf..82a93f2a5a 100644
+--- a/cpus.c
++++ b/cpus.c
+@@ -2062,7 +2062,7 @@ void qemu_mutex_lock_iothread_impl(const char *file, int line)
+ {
+     QemuMutexLockFunc bql_lock = atomic_read(&qemu_bql_mutex_lock_func);
  
--    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VIRQ) != 0)) {
-+    if (new_state != ((cpu_interrupt_request(cs) & CPU_INTERRUPT_VIRQ) != 0)) {
-         if (new_state) {
-             cpu_interrupt(cs, CPU_INTERRUPT_VIRQ);
-         } else {
-@@ -505,7 +505,7 @@ void arm_cpu_update_vfiq(ARMCPU *cpu)
-     bool new_state = (env->cp15.hcr_el2 & HCR_VF) ||
-         (env->irq_line_state & CPU_INTERRUPT_VFIQ);
+-    /* prevent deadlock with CPU mutex */
++    /* enforce locking order */
+     g_assert(no_cpu_mutex_locked());
  
--    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VFIQ) != 0)) {
-+    if (new_state != ((cpu_interrupt_request(cs) & CPU_INTERRUPT_VFIQ) != 0)) {
-         if (new_state) {
-             cpu_interrupt(cs, CPU_INTERRUPT_VFIQ);
-         } else {
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1fa282a7fc..2affe7965c 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1893,23 +1893,24 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     CPUState *cs = ENV_GET_CPU(env);
-     uint64_t hcr_el2 = arm_hcr_el2_eff(env);
-     uint64_t ret = 0;
-+    uint32_t interrupt_request = cpu_interrupt_request(cs);
+     g_assert(!qemu_mutex_iothread_locked());
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index bb0729f969..726cb7b090 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -322,7 +322,8 @@ struct qemu_work_item;
+  * @mem_io_pc: Host Program Counter at which the memory was accessed.
+  * @mem_io_vaddr: Target virtual address at which the memory was accessed.
+  * @kvm_fd: vCPU file descriptor for KVM.
+- * @lock: Lock to prevent multiple access to per-CPU fields.
++ * @lock: Lock to prevent multiple access to per-CPU fields. Must be acquired
++ *        after the BQL.
+  * @cond: Condition variable for per-CPU events.
+  * @work_list: List of pending asynchronous work.
+  * @halted: Nonzero if the CPU is in suspended state.
+@@ -804,6 +805,7 @@ static inline bool cpu_has_work(CPUState *cpu)
+     bool (*func)(CPUState *cpu);
+     bool ret;
  
-     if (hcr_el2 & HCR_IMO) {
--        if (cs->interrupt_request & CPU_INTERRUPT_VIRQ) {
-+        if (interrupt_request & CPU_INTERRUPT_VIRQ) {
-             ret |= CPSR_I;
-         }
-     } else {
--        if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
-+        if (interrupt_request & CPU_INTERRUPT_HARD) {
-             ret |= CPSR_I;
-         }
++    /* some targets require us to hold the BQL when checking for work */
+     if (cc->has_work_with_iothread_lock) {
+         if (qemu_mutex_iothread_locked()) {
+             func = cc->has_work_with_iothread_lock;
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 3f3c670897..65a14deb2f 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -3216,6 +3216,10 @@ void kvm_arch_pre_run(CPUState *cpu, struct kvm_run *run)
+         qemu_mutex_lock_iothread();
      }
  
-     if (hcr_el2 & HCR_FMO) {
--        if (cs->interrupt_request & CPU_INTERRUPT_VFIQ) {
-+        if (interrupt_request & CPU_INTERRUPT_VFIQ) {
-             ret |= CPSR_F;
-         }
-     } else {
--        if (cs->interrupt_request & CPU_INTERRUPT_FIQ) {
-+        if (interrupt_request & CPU_INTERRUPT_FIQ) {
-             ret |= CPSR_F;
-         }
-     }
-@@ -9647,10 +9648,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-         return;
-     }
++    /*
++     * We might have cleared some bits in cpu->interrupt_request since reading
++     * it; read it again.
++     */
+     interrupt_request = cpu_interrupt_request(cpu);
  
--    /* Hooks may change global state so BQL should be held, also the
--     * BQL needs to be held for any modification of
--     * cs->interrupt_request.
--     */
-+    /* Hooks may change global state so BQL should be held */
-     g_assert(qemu_mutex_iothread_locked());
- 
-     arm_call_pre_el_change_hook(cpu);
-@@ -9665,7 +9663,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     arm_call_el_change_hook(cpu);
- 
-     if (!kvm_enabled()) {
--        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-+        cpu_interrupt_request_or(cs, CPU_INTERRUPT_EXITTB);
-     }
- }
- #endif /* !CONFIG_USER_ONLY */
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index b292549614..4f2099ecde 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -693,7 +693,7 @@ static int cpu_post_load(void *opaque, int version_id)
-     if (env->irq_line_state == UINT32_MAX) {
-         CPUState *cs = CPU(cpu);
- 
--        env->irq_line_state = cs->interrupt_request &
-+        env->irq_line_state = cpu_interrupt_request(cs) &
-             (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ |
-              CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VFIQ);
-     }
--- 
-2.17.1
+     /* Force the VCPU out of its inner loop to process any INIT requests

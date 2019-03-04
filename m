@@ -1,287 +1,248 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3452536wrx;
-        Mon, 4 Mar 2019 02:23:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzYPygUEwcv+5CP+rSsNUITdyRV1XVubyFQTEki9z42L6Vp7JFQNYzq2pH7pEk0bJU4u9XU
-X-Received: by 2002:a25:2a88:: with SMTP id q130mr13870536ybq.99.1551694989923;
-        Mon, 04 Mar 2019 02:23:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551694989; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3454546wrx;
+        Mon, 4 Mar 2019 02:26:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz1/igCdv/9aJUxNeA8/3J6sFGRAje5Ys7/pSRkHVqhBFsO1UAcx7dHXfjhoOfufLRbCtlL
+X-Received: by 2002:a81:6584:: with SMTP id z126mr13969965ywb.216.1551695175223;
+        Mon, 04 Mar 2019 02:26:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551695175; cv=none;
         d=google.com; s=arc-20160816;
-        b=Na8lW9X7JjUx5y5A7QU60VLfUNlTEyHMeL6JIAxTBEsX9i1n8lwCi0y6fizASFjnUb
-         JFIaKNOvkHL/hJHWDxdEiwCQUwmJ9fe/CNsepPlJhfeYr9iQcm+0LH8hoMNVXIvuCXMg
-         XlamT/dRYO9ijJfxOEUx2mamZYQXA1/vhAlO+29j9T00qU79fV/Afu0u5Q4auLjEJ2qq
-         Tgefo584Dj3KV+ei/F5YyVfPF86U+5X1b7EAYtWY5nmncAXvhmELIi3W97m4SR82x0Ev
-         o3tKNeEvrsj6koKnPH4PjgUumNAgc15dmEDVa+nfwf4DYZOti9ZvvRgLBvtEwwtbpyfz
-         c0Eg==
+        b=DJi1K4uySzlZX0JyAQhhbAlK8N1GDr0Wlk7alGN6rcSJVKMqi2cCMxEHE8PsIEuN68
+         MBeJ0yljzj177wt/ZKUY4ejnn9qjQaXVjcmy/JzMiU3U7hP83EWftQnQtRx0ygXO6GtM
+         xUhisTuUTceYnf4kdYZjAQn+P6lrExJh+VQ/I/M3GAlgoub3qPB6VPBlswZ4Wq3fztV2
+         aYAsYDRHdJu22jLyDbT+qlNaG8VfSkHjxIPXj4sE/NozsFC+LeBquKRac/Y+CQJYCc6g
+         V6U21JKRfmQMLp0scX9AvTc4XUORlO0mACSFwPaCAj0/7ufbNsEiH8FdJjjUk9zkB5Kf
+         z6qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=sbHzGCsyUkUHhIXf+2RBFf/fJ4Arijru656BVn5Y/XA=;
-        b=CGdmwblNCB/HXiPCDb2syZDmW5ad39uD02lX/2wmUnJXRdSwZN7U9z44AdqJRpiolV
-         Y59arVuMqwLIlyiNekC8l9lAQ8DZg2Z/D8FXP6PTN/G1E/r1woTVz3jddNoK3Kl5SOWB
-         0ArRDOpfnU16jS14r9ycL4okOJGIBLwgmsOHg+ENv1dj2+9zO3Vsj2eiL45lR0qdwrz8
-         Fsf8T6ixk3zbR8ofoH/86+li2K2ZYUv8S8gowCXFuA/3wHA64HCQ4YozgAQysOUtURm5
-         l2Yu6hqZsVGeJUO5k9VnbKWUTqIXSmOauWDeeGYEIRWzrutjLFceDSEqQH4wCiNwPkc/
-         qfSQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=6xHuzEspMuTBTMivLSrAvYfy/Oqtxjc5auTPW2jA93w=;
+        b=wY8enfu/erAUGpifSLJMGdsTivc3FGYbb9NUSUdjXS3C3OqvBynQDiebTn8/MdL9Og
+         lzhnXepZjLSbUyR1fED8ruI+J8jr8l+urUY2Ztr0ZxBDMqVGLUSoyD+HWNu3zQplJoN7
+         d0ELrC9tb3KzrOJrFua9hNjYhis+rxTHInNqd7Eft5rEUa8Vlx7Jt4lPXWBs9s3ae+UN
+         UD64jV1C+nULmuZrqwOkMNohZveLTfJWaEseAo8oSDEOl8mPBZ6tYiOqzeqKOriaLEHa
+         GRcH44D7xeOlJlWbNfpDbVPq4i+uTLQSyveAW3h3O8yH0MS20xcVSXrVIDa2TRcI2UqO
+         dh9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h27si2038235ywk.48.2019.03.04.02.23.09
+        by mx.google.com with ESMTPS id a15si2733800ybk.152.2019.03.04.02.26.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 02:23:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2019 02:26:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51459 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51515 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0kkX-0008VR-A6
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 05:23:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53441)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h0knW-00023T-Kj
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 05:26:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0kij-0007D4-Du
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:21:19 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h0khA-0005rB-L1
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 05:19:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0kii-0005H6-2m
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:21:17 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39472)
+	(envelope-from <eric.auger@redhat.com>) id 1h0kh9-0004I0-GY
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 05:19:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37330)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1h0kih-0005FY-Py; Mon, 04 Mar 2019 05:21:16 -0500
+	id 1h0kh6-0004Gt-Mp; Mon, 04 Mar 2019 05:19:36 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 44BD930832EB;
-	Mon,  4 Mar 2019 10:14:18 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C43D81F25;
+	Mon,  4 Mar 2019 10:13:52 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1286A60F8D;
-	Mon,  4 Mar 2019 10:14:07 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 984492B893;
+	Mon,  4 Mar 2019 10:13:41 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Mon,  4 Mar 2019 11:13:31 +0100
-Message-Id: <20190304101339.25970-3-eric.auger@redhat.com>
-In-Reply-To: <20190304101339.25970-1-eric.auger@redhat.com>
-References: <20190304101339.25970-1-eric.auger@redhat.com>
+Date: Mon,  4 Mar 2019 11:13:29 +0100
+Message-Id: <20190304101339.25970-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Mon, 04 Mar 2019 10:14:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 04 Mar 2019 10:13:52 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v12 02/10] hw/arm/virt: Rename highmem IO regions
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v12 00/10] ARM virt: Initial RAM expansion and
+ extended memory map
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
 	david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nJ31fBXp12KU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5ClbuJSjbvXH
 
-In preparation for a split of the memory map into a static
-part and a dynamic part floating after the RAM, let's rename the
-regions located after the RAM
+This series aims to bump the 255GB RAM limit in machvirt and paves the
+way to device memory addition.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+In machvirt versions < 4.0, the initial RAM starts at 1GB and can
+grow up to 255GB. From 256GB onwards we find IO regions such as the
+additional GICv3 RDIST region, high PCIe ECAM region and high PCIe
+MMIO region. The address map was 1TB large. This corresponded to
+the max IPA capacity KVM was able to manage.
 
----
-v8:
-- added Igor's R-b and fixed "line over 80 characters" warnings
-- nit: potential indent issue reported by Igor looks a false positive
-  to me
-v7: added Peter's R-b
-v6: creation
----
- hw/arm/virt-acpi-build.c | 10 ++++++----
- hw/arm/virt.c            | 33 ++++++++++++++++++---------------
- include/hw/arm/virt.h    |  8 ++++----
- 3 files changed, 28 insertions(+), 23 deletions(-)
+Since 4.20, the host kernel is able to support a larger and dynamic
+IPA range. So the guest physical address can go beyond the 1TB. The
+max GPA size depends on the host kernel configuration and physical CPUs.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 04b62c714d..d7e2e4885b 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -229,8 +229,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMa=
-pEntry *memmap,
-                      size_pio));
-=20
-     if (use_highmem) {
--        hwaddr base_mmio_high =3D memmap[VIRT_PCIE_MMIO_HIGH].base;
--        hwaddr size_mmio_high =3D memmap[VIRT_PCIE_MMIO_HIGH].size;
-+        hwaddr base_mmio_high =3D memmap[VIRT_HIGH_PCIE_MMIO].base;
-+        hwaddr size_mmio_high =3D memmap[VIRT_HIGH_PCIE_MMIO].size;
-=20
-         aml_append(rbuf,
-             aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXE=
-D,
-@@ -663,8 +663,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, V=
-irtMachineState *vms)
-             gicr =3D acpi_data_push(table_data, sizeof(*gicr));
-             gicr->type =3D ACPI_APIC_GENERIC_REDISTRIBUTOR;
-             gicr->length =3D sizeof(*gicr);
--            gicr->base_address =3D cpu_to_le64(memmap[VIRT_GIC_REDIST2].=
-base);
--            gicr->range_length =3D cpu_to_le32(memmap[VIRT_GIC_REDIST2].=
-size);
-+            gicr->base_address =3D
-+                cpu_to_le64(memmap[VIRT_HIGH_GIC_REDIST2].base);
-+            gicr->range_length =3D
-+                cpu_to_le32(memmap[VIRT_HIGH_GIC_REDIST2].size);
-         }
-=20
-         if (its_class_name() && !vmc->no_its) {
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 99c2b6e60d..892bae4f3a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -150,10 +150,10 @@ static const MemMapEntry a15memmap[] =3D {
-     [VIRT_PCIE_ECAM] =3D          { 0x3f000000, 0x01000000 },
-     [VIRT_MEM] =3D                { 0x40000000, RAMLIMIT_BYTES },
-     /* Additional 64 MB redist region (can contain up to 512 redistribut=
-ors) */
--    [VIRT_GIC_REDIST2] =3D        { 0x4000000000ULL, 0x4000000 },
--    [VIRT_PCIE_ECAM_HIGH] =3D     { 0x4010000000ULL, 0x10000000 },
-+    [VIRT_HIGH_GIC_REDIST2] =3D   { 0x4000000000ULL, 0x4000000 },
-+    [VIRT_HIGH_PCIE_ECAM] =3D     { 0x4010000000ULL, 0x10000000 },
-     /* Second PCIe window, 512GB wide at the 512GB boundary */
--    [VIRT_PCIE_MMIO_HIGH] =3D   { 0x8000000000ULL, 0x8000000000ULL },
-+    [VIRT_HIGH_PCIE_MMIO] =3D     { 0x8000000000ULL, 0x8000000000ULL },
- };
-=20
- static const int a15irqmap[] =3D {
-@@ -431,12 +431,12 @@ static void fdt_add_gic_node(VirtMachineState *vms)
-                                          2, vms->memmap[VIRT_GIC_REDIST]=
-.size);
-         } else {
-             qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
--                                         2, vms->memmap[VIRT_GIC_DIST].b=
-ase,
--                                         2, vms->memmap[VIRT_GIC_DIST].s=
-ize,
--                                         2, vms->memmap[VIRT_GIC_REDIST]=
-.base,
--                                         2, vms->memmap[VIRT_GIC_REDIST]=
-.size,
--                                         2, vms->memmap[VIRT_GIC_REDIST2=
-].base,
--                                         2, vms->memmap[VIRT_GIC_REDIST2=
-].size);
-+                                 2, vms->memmap[VIRT_GIC_DIST].base,
-+                                 2, vms->memmap[VIRT_GIC_DIST].size,
-+                                 2, vms->memmap[VIRT_GIC_REDIST].base,
-+                                 2, vms->memmap[VIRT_GIC_REDIST].size,
-+                                 2, vms->memmap[VIRT_HIGH_GIC_REDIST2].b=
-ase,
-+                                 2, vms->memmap[VIRT_HIGH_GIC_REDIST2].s=
-ize);
-         }
-=20
-         if (vms->virt) {
-@@ -584,7 +584,7 @@ static void create_gic(VirtMachineState *vms, qemu_ir=
-q *pic)
-=20
-         if (nb_redist_regions =3D=3D 2) {
-             uint32_t redist1_capacity =3D
--                        vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIS=
-T_SIZE;
-+                    vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDI=
-ST_SIZE;
-=20
-             qdev_prop_set_uint32(gicdev, "redist-region-count[1]",
-                 MIN(smp_cpus - redist0_count, redist1_capacity));
-@@ -601,7 +601,8 @@ static void create_gic(VirtMachineState *vms, qemu_ir=
-q *pic)
-     if (type =3D=3D 3) {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base)=
-;
-         if (nb_redist_regions =3D=3D 2) {
--            sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_REDIST2].=
-base);
-+            sysbus_mmio_map(gicbusdev, 2,
-+                            vms->memmap[VIRT_HIGH_GIC_REDIST2].base);
-         }
-     } else {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
-@@ -1088,8 +1089,8 @@ static void create_pcie(VirtMachineState *vms, qemu=
-_irq *pic)
- {
-     hwaddr base_mmio =3D vms->memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio =3D vms->memmap[VIRT_PCIE_MMIO].size;
--    hwaddr base_mmio_high =3D vms->memmap[VIRT_PCIE_MMIO_HIGH].base;
--    hwaddr size_mmio_high =3D vms->memmap[VIRT_PCIE_MMIO_HIGH].size;
-+    hwaddr base_mmio_high =3D vms->memmap[VIRT_HIGH_PCIE_MMIO].base;
-+    hwaddr size_mmio_high =3D vms->memmap[VIRT_HIGH_PCIE_MMIO].size;
-     hwaddr base_pio =3D vms->memmap[VIRT_PCIE_PIO].base;
-     hwaddr size_pio =3D vms->memmap[VIRT_PCIE_PIO].size;
-     hwaddr base_ecam, size_ecam;
-@@ -1417,8 +1418,10 @@ static void machvirt_init(MachineState *machine)
-      * many redistributors we can fit into the memory map.
-      */
-     if (vms->gic_version =3D=3D 3) {
--        virt_max_cpus =3D vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDI=
-ST_SIZE;
--        virt_max_cpus +=3D vms->memmap[VIRT_GIC_REDIST2].size / GICV3_RE=
-DIST_SIZE;
-+        virt_max_cpus =3D
-+            vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
-+        virt_max_cpus +=3D
-+            vms->memmap[VIRT_HIGH_GIC_REDIST2].size / GICV3_REDIST_SIZE;
-     } else {
-         virt_max_cpus =3D GIC_NCPU;
-     }
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 4cc57a7ef6..a27086d524 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -64,7 +64,7 @@ enum {
-     VIRT_GIC_VCPU,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
--    VIRT_GIC_REDIST2,
-+    VIRT_HIGH_GIC_REDIST2,
-     VIRT_SMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-@@ -74,9 +74,9 @@ enum {
-     VIRT_PCIE_MMIO,
-     VIRT_PCIE_PIO,
-     VIRT_PCIE_ECAM,
--    VIRT_PCIE_ECAM_HIGH,
-+    VIRT_HIGH_PCIE_ECAM,
-     VIRT_PLATFORM_BUS,
--    VIRT_PCIE_MMIO_HIGH,
-+    VIRT_HIGH_PCIE_MMIO,
-     VIRT_GPIO,
-     VIRT_SECURE_UART,
-     VIRT_SECURE_MEM,
-@@ -128,7 +128,7 @@ typedef struct {
-     int psci_conduit;
- } VirtMachineState;
-=20
--#define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
-+#define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
-=20
- #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
- #define VIRT_MACHINE(obj) \
+In this series we use this feature and allow the RAM to grow without
+any other limit than the one put by the host kernel.
+
+The RAM still starts at 1GB. First comes the initial ram (-m) of size
+ram_size and then we provision sufficient space for the looming
+device memory (dimensionned using ,maxmem and slots options).
+
+IO regions previously located between 256GB and 1TB are moved after
+the RAM. Their offset is dynamically computed, depends on ram_size,
+slots, maxram_size. Size alignment is enforced.
+
+In case maxmem value is inferior to 255GB, the legacy memory map
+still is used.
+
+As we keep the initial RAM at 1GB base address, we do not need to do
+invasive changes in the EDK2 FW. It seems nobody is eager to do
+that job at the moment.
+
+Device memory being put just after the initial RAM, it will be
+possible to get access to this feature while keeping a 1TB address
+map.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v3.1.0-extended-memmap-v12
+
+History:
+v11 -> v12:
+- collected last Igor's and Richard's R-b's
+- removed the memmap initialization to NULL
+
+v10 -> v11:
+- remove vms->high_io_base
+- remove RAM_BASE
+- see individual change logs for other adjustments
+
+v9 -> v10:
+- only the keep the first 10 patches which move to the extended memmap
+- remove the 1GB alignment check on maxram_size
+
+v8 -> v9:
+- fixed make check SIGSEV
+- fixed TCG issue (restored virt_set_memmap in machvirt_init)
+- removed Igor's R-b on "hw/arm/boot: Expose the PC-DIMM nodes in the DT"
+
+v7 -> v8:
+- addressed Igor's comments"
+- remove no_extended_memmap knob
+- moved acpi_nvdimm_state into MachineState
+- separate "hw/arm/virt: Check the VCPU PA range in TCG mode" patch
+
+v6 -> v7:
+- Addressed Peter and Igor comments (exceptions sent my email)
+- Fixed TCG case. Now device memory works also for TCG and vcpu
+  pamax is checked
+- See individual logs for more details
+
+v5 -> v6:
+- mingw compilation issue fix
+- kvm_arm_get_max_vm_phys_shift always returns the number of supported
+  IPA bits
+- new patch "hw/arm/virt: Rename highmem IO regions" that eases the revie=
+w
+  of "hw/arm/virt: Split the memory map description"
+- "hw/arm/virt: Move memory map initialization into machvirt_init"
+  squashed into the previous patch
+- change alignment of IO regions beyond the RAM so that it matches their
+  size
+
+v4 -> v5:
+- change in the memory map
+- see individual logs
+
+v3 -> v4:
+- rebase on David's "pc-dimm: next bunch of cleanups" and
+  "pc-dimm: pre_plug "slot" and "addr" assignment"
+- kvm-type option not used anymore. We directly use
+  maxram_size and ram_size machine fields to compute the
+  MAX IPA range. Migration is naturally handled as CLI
+  option are kept between source and destination. This was
+  suggested by David.
+- device_memory_start and device_memory_size not stored
+  anymore in vms->bootinfo
+- I did not take into account 2 Igor's comments: the one
+  related to the refactoring of arm_load_dtb and the one
+  related to the generation of the dtb after system_reset
+  which would contain nodes of hotplugged devices (we do
+  not support hotplug at this stage)
+- check the end-user does not attempt to hotplug a device
+- addition of "vl: Set machine ram_size, maxram_size and
+  ram_slots earlier"
+
+v2 -> v3:
+- fix pc_q35 and pc_piix compilation error
+- kwangwoo's email being not valid anymore, remove his address
+
+v1 -> v2:
+- kvm_get_max_vm_phys_shift moved in arch specific file
+- addition of NVDIMM part
+- single series
+- rebase on David's refactoring
+
+v1:
+- was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+- was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+
+Eric Auger (9):
+  hw/arm/virt: Rename highmem IO regions
+  hw/arm/virt: Split the memory map description
+  hw/boards: Add a MachineState parameter to kvm_type callback
+  kvm: add kvm_arm_get_max_vm_ipa_size
+  vl: Set machine ram_size, maxram_size and ram_slots earlier
+  hw/arm/virt: Dynamic memory map depending on RAM requirements
+  hw/arm/virt: Implement kvm_type function for 4.0 machine
+  hw/arm/virt: Check the VCPU PA range in TCG mode
+  hw/arm/virt: Bump the 255GB initial RAM limit
+
+Shameer Kolothum (1):
+  hw/arm/boot: introduce fdt_add_memory_node helper
+
+ accel/kvm/kvm-all.c      |   2 +-
+ hw/arm/boot.c            |  54 +++++++----
+ hw/arm/virt-acpi-build.c |  10 +-
+ hw/arm/virt.c            | 196 +++++++++++++++++++++++++++++++--------
+ hw/ppc/mac_newworld.c    |   3 +-
+ hw/ppc/mac_oldworld.c    |   2 +-
+ hw/ppc/spapr.c           |   2 +-
+ include/hw/arm/virt.h    |  16 +++-
+ include/hw/boards.h      |   5 +-
+ target/arm/kvm.c         |  10 ++
+ target/arm/kvm_arm.h     |  13 +++
+ vl.c                     |   6 +-
+ 12 files changed, 241 insertions(+), 78 deletions(-)
+
 --=20
 2.20.1
 

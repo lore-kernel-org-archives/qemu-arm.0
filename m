@@ -1,136 +1,84 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3355834wrx;
-        Mon, 4 Mar 2019 00:11:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxhEcGhIq3O8pq/zunLbfxdMMLjseGNuP6n3s0KPGyVokO8/wxe4fGC6RkjahAlyhnSRRrT
-X-Received: by 2002:a81:6dc5:: with SMTP id i188mr13341525ywc.385.1551687107562;
-        Mon, 04 Mar 2019 00:11:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551687107; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3446338wrx;
+        Mon, 4 Mar 2019 02:14:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx5asiU6vEDsXnFycgrwc/ZvOEXeeAtCo9GhB0b3qg8NPDeiFQlh+DXPipSQlhurTuvequ1
+X-Received: by 2002:a0d:df15:: with SMTP id i21mr13690360ywe.27.1551694480056;
+        Mon, 04 Mar 2019 02:14:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551694480; cv=none;
         d=google.com; s=arc-20160816;
-        b=xCr+Vdc2bw+ycCWxXyhI427+4Uvvy6WVd5dIFz8K7s7xk9s3v7DKo9X93UHQ1brZSY
-         Klyalmh4hoNz7fSGYGNuNXvwbZJMUZu8jAGVpCyHslEfWNuTTopXPN3XUJHYet1xzUVV
-         9LMsJ3Xng4CadZF1tkJcOtMWaThDu+dlDUuD12hGVLLNlQFcbtuxeW3N+pfo1Du1OK0I
-         mClP0CvxjN/CeR+YYk92z5QYkClDu7v++AqqZC42eBCw3vIkG1UOU/3mpjmx89W7dVFC
-         YXZq2JUcovOQQT0UUjgzKAZ02swNCXZ4q3IzScvXeSsgVGYncLlMmRK3wvNOEPCQA7Av
-         rQug==
+        b=SZrc/W2aMdlCTfc81O8UBnCuobEJ1mL4I3c4hG1TOSsZPS7C04eq3kOS3zK0tBTNlX
+         ED3ro+71BH6q20h1NE8zpPAuOMaW8oaznPcQorBc2zv0kxTi2/LCdSrFMU8PXp16aT5u
+         vb6+zrzKY8+xXV3bqDVVtjxxTS7C1kmYRPKNLc9lNXfzWmAoYJAMuo6VMd8npAkjQzqY
+         rrEnPJIKLGrLcGh4R3gM36hoiimHR+qUcPkuztTFEG5E2lJC532Cn7gsGnqH1pXPvY7i
+         yibf4PUARVYt9knIAYDmAG89Oj3DV/K3Q4oxEGh4nNy3xe9pRkdXxU76GCGDNSgx8zcn
+         9d6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=P1sVl4UnGtUQswce9FcBr61uc6iWLBEarPnzZcR/Z6Q=;
-        b=cs3OzUtoMsJ/cdK7W0rUEe8ZON97h8m152rF/3FD8hleilylgBq0TE3Qo8tEeJ3p5l
-         SnIxB9oRKiuHar/+/I148Ua3/35YDhZgcP3UhWHOydRjkjePk2uu7nZYurcPce7yL+dA
-         WC26fFdv7LfyJvUmaKTPK6MR3kTG7qFgn3ixeRFmW7TgsHS6/ee92FYemwJTBqRD5TuV
-         sr8xJJclUbDLzrrutq7p5BOasW9dEwx+/aOlbnCOwThRgxteHdIpCrqkxa+71BA9//JV
-         6unfK5rBAGCy/YWbg1G9ObUD9Mx8TuL1cWzWmqi59evK9W/8lo36xa3m9SezW2piAdLA
-         WVWg==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=vOeDMNcO1KgApLUf7Ekot50jXcVY696k6MGyjR/s3VI=;
+        b=ynUwgTc+d6b96Cc25GyVeXHVO2j3dtK2f1w+c/jXkIHfFDVa0NdU8hx0c5jJcEv88g
+         M8+fz/gBNIeXlFwnbErxqKrsb92pIfHH21YWph032VmwnXwQB+DWiKWutV20cMIZJDGy
+         GtisF5QPp2RgYgulItmYK2DM+cFKl+ZhM+XMmE8xUZY6PtCFl5SGsJ1UWDSjSX8ECT8o
+         0gJ2Sb6fdMxDZA6zZ1ddl2NfKD4rlKlJvUCe6gxsPb0f8OSB5sbum/02fyBi08paiVeH
+         Z/xVDElvK7XOhTuV/PnEutO3B8zpjGPmq4dwgb9ZwG/FgsFaEJi6IXPXWlKS5ilRZpUH
+         Q/vQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i128si3046895ywe.393.2019.03.04.00.11.47
+        by mx.google.com with ESMTPS id z62si2924051ybb.428.2019.03.04.02.14.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 00:11:47 -0800 (PST)
+        Mon, 04 Mar 2019 02:14:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:50040 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51290 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0ihP-00061D-1N
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 03:11:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56285)
+	id 1h0kcJ-0001WG-GM
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 05:14:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h0ihH-00060z-FU
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 03:11:40 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h0kc9-0001W8-B0
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:14:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h0ihD-0007BR-4F
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 03:11:37 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39096)
+	(envelope-from <eric.auger@redhat.com>) id 1h0kc8-0008TX-B7
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:14:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52682)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h0ih8-000749-Mk; Mon, 04 Mar 2019 03:11:32 -0500
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h0kc8-0008T4-2r; Mon, 04 Mar 2019 05:14:28 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8295E3091753;
-	Mon,  4 Mar 2019 08:11:27 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-117-63.ams2.redhat.com [10.36.117.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 831A951F02;
-	Mon,  4 Mar 2019 08:11:20 +0000 (UTC)
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>
-References: <1551454936-205218-1-git-send-email-imammedo@redhat.com>
-	<1551454936-205218-2-git-send-email-imammedo@redhat.com>
-	<20190301154947.GJ21251@redhat.com>
-	<20190301183328.20b63e23@redhat.com>
-	<20190301174806.GN21251@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <15464582-e8a6-6654-7679-15d87c10af38@redhat.com>
-Date: Mon, 4 Mar 2019 09:11:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 4CC3B8666F;
+	Mon,  4 Mar 2019 10:14:27 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C0CC60F8D;
+	Mon,  4 Mar 2019 10:14:24 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
+Date: Mon,  4 Mar 2019 11:13:33 +0100
+Message-Id: <20190304101339.25970-5-eric.auger@redhat.com>
+In-Reply-To: <20190304101339.25970-1-eric.auger@redhat.com>
+References: <20190304101339.25970-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190301174806.GN21251@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Mon, 04 Mar 2019 08:11:27 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 04 Mar 2019 10:14:27 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-ppc] [Qemu-devel] [libvirt] [PATCH 1/2] numa:
- deprecate 'mem' parameter of '-numa node' option
+Subject: [Qemu-arm] [PATCH v12 04/10] hw/boards: Add a MachineState
+ parameter to kvm_type callback
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -142,31 +90,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, libvir-list@redhat.com,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	pbonzini@redhat.com, david@gibson.dropbear.id.au
+Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
+	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0O6rkOix8uMO
+X-TUID: SpUMBrTPTxYo
 
-On 01/03/2019 18.48, Daniel P. Berrang=C3=A9 wrote:
-[...]
-> So I think this patch has to be dropped & replaced with one that
-> simply documents that memdev syntax is preferred.
+On ARM, the kvm_type will be resolved by querying the KVMState.
+Let's add the MachineState handle to the callback so that we
+can retrieve the  KVMState handle. in kvm_init, when the callback
+is called, the kvm_state variable is not yet set.
 
-That's definitely not enough. I've had a couple of cases already where
-we documented that certain options should not be used anymore, and
-people simply ignored it (aka. if it ain't broken, don't do any change).
-Then they just started to complain when I really tried to remove the
-option after the deprecation period.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+[ppc parts]
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-So Igor, if you can not officially deprecate these things here yet, you
-should at least make sure that they can not be used with new machine
-types anymore. Then, after a couple of years, when we feel sure that
-there are only some few or no people left who still use it with the old
-machine types, we can start to discuss the deprecation process again, I
-think.
+---
+v7 -> v8: added Igor's R-b
+v6 -> v7:
+- add a comment for kvm_type
+- use machine instead of ms in the declaration
+- add Peter's R-b
+---
+ accel/kvm/kvm-all.c   | 2 +-
+ hw/ppc/mac_newworld.c | 3 +--
+ hw/ppc/mac_oldworld.c | 2 +-
+ hw/ppc/spapr.c        | 2 +-
+ include/hw/boards.h   | 5 ++++-
+ 5 files changed, 8 insertions(+), 6 deletions(-)
 
- Thomas
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index fd92b6f375..241db496c3 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1593,7 +1593,7 @@ static int kvm_init(MachineState *ms)
+=20
+     kvm_type =3D qemu_opt_get(qemu_get_machine_opts(), "kvm-type");
+     if (mc->kvm_type) {
+-        type =3D mc->kvm_type(kvm_type);
++        type =3D mc->kvm_type(ms, kvm_type);
+     } else if (kvm_type) {
+         ret =3D -EINVAL;
+         fprintf(stderr, "Invalid argument kvm-type=3D%s\n", kvm_type);
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index 98461052ac..97e8817145 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -564,8 +564,7 @@ static char *core99_fw_dev_path(FWPathProvider *p, Bu=
+sState *bus,
+=20
+     return NULL;
+ }
+-
+-static int core99_kvm_type(const char *arg)
++static int core99_kvm_type(MachineState *machine, const char *arg)
+ {
+     /* Always force PR KVM */
+     return 2;
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 284431ddd6..cc1e463466 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -420,7 +420,7 @@ static char *heathrow_fw_dev_path(FWPathProvider *p, =
+BusState *bus,
+     return NULL;
+ }
+=20
+-static int heathrow_kvm_type(const char *arg)
++static int heathrow_kvm_type(MachineState *machine, const char *arg)
+ {
+     /* Always force PR KVM */
+     return 2;
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index b6a571b6f1..d7850ada7d 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -3023,7 +3023,7 @@ static void spapr_machine_init(MachineState *machin=
+e)
+     }
+ }
+=20
+-static int spapr_kvm_type(const char *vm_type)
++static int spapr_kvm_type(MachineState *machine, const char *vm_type)
+ {
+     if (!vm_type) {
+         return 0;
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 1447f37010..bbc8cafd19 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -157,6 +157,9 @@ typedef struct {
+  *    should instead use "unimplemented-device" for all memory ranges wh=
+ere
+  *    the guest will attempt to probe for a device that QEMU doesn't
+  *    implement and a stub device is required.
++ * @kvm_type:
++ *    Return the type of KVM corresponding to the kvm-type string option=
+ or
++ *    computed based on other criteria such as the host kernel capabilit=
+ies.
+  */
+ struct MachineClass {
+     /*< private >*/
+@@ -172,7 +175,7 @@ struct MachineClass {
+     void (*init)(MachineState *state);
+     void (*reset)(void);
+     void (*hot_add_cpu)(const int64_t id, Error **errp);
+-    int (*kvm_type)(const char *arg);
++    int (*kvm_type)(MachineState *machine, const char *arg);
+=20
+     BlockInterfaceType block_default_type;
+     int units_per_default_bus;
+--=20
+2.20.1
 

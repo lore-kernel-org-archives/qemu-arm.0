@@ -1,90 +1,77 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp2997729wrx;
-        Sun, 3 Mar 2019 15:38:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxGoZARaOf7Pbc2mVKnvY72BO5Ud76TUd6W6rIJIMFyFruhV+3igTSPr/+AncfQ1/7KSO/c
-X-Received: by 2002:a25:3252:: with SMTP id y79mr9580086yby.460.1551656338309;
-        Sun, 03 Mar 2019 15:38:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551656338; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3068569wrx;
+        Sun, 3 Mar 2019 16:47:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7rYLZbahH2RDJJdNWk9cHZkilIPPuDASlnsuXldm5la2TGPgNbBtZ7ncnmOweAOD/TgCJ
+X-Received: by 2002:a25:828c:: with SMTP id r12mr13110679ybk.331.1551660442812;
+        Sun, 03 Mar 2019 16:47:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551660442; cv=none;
         d=google.com; s=arc-20160816;
-        b=Omm5/K3muZP7VFq/nH6OUKC1pl69i1QhF/PKG/vKrRB9x42OJqes7ybBApBZL3wqvh
-         QPMaNV77bNWpGkn66KyEDKS//7HE5XaybtrDabcJ78BNGrywZL1o7qy8w3mtihQq2YfU
-         gjOmAmAqDQXCw93QYOuWDSjIYqVKxp9RTq7mEqUfsrFR0dQjv5aO+q/kgPZyFEOZ5uPK
-         SFam8TXs+ZIZmiozip6nyu4wMaJfR+kntb4Vui2p7o3/3UYKDdOpnYmV/1e26mhI52KO
-         iYo9aBeasBmZk6N/mqbTO2POA46JoAG0RBXXc3Yw5gB2fzXjLZqmZNiOY3rN84tRcJkE
-         xbfw==
+        b=mnjKPptieKKMAsOpN/7nfu1rvQuHiHZudpfLS9kqUPUgcOYZe/BzJROGuIp4MjF7cC
+         qj0EITVQ+p7tFiOAPPbFbZXYJfuwTIuXYDA7fIEw7vaZkV/0CSCtvOWOOwv0Fa5UKUcF
+         eE90cYJ8zqMGT543cOYayO/jzQWpVPGFaGY8GoEudL3b+6vsBFje6CRD+B4zY3s7fUvB
+         WdxPgTfpa9kLQyXrj5XQy0VtHOwBYKWj6K0IfKFzfqGsueY674iWCquJ3i9ak1DFpK9s
+         gaHGLONcNZD0mpW9zhPbRIEwVcn+YSGspo3e9ijASwuAqDBdBztd+IGwU3qucJ12dXBX
+         yLaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=lOZO1INMAc5rxqhnF7RWN5LpyJmXoBTGOvhOqJMkcDo=;
-        b=fqwRhWEtl2ZzVsv7bJle3e12AI0U6os+K1QtTbuoGNkwbgLuDUR2YiWavAIBWJWMpj
-         /iDVNyolmS4Aee3zIOBYMWppQmDv7DSfYtNvqmS1UVl+hXK4EbiPoKPM2Vh3wuhgUOlW
-         gE5mnpyqfxFsJrRSaggkH0TYvsPjFy+wwOa9pfkxShAHj3OOYMEOOVs57afetlQAfIJU
-         gXDgbwo2o9fG6zk1ayvyCfD/ZxtyiJwbav6B19EYodQvQga5oHNJju1S9cOq3CSI3ODm
-         SYiXauuYLjvdebnD0i0cu4GUoa8NWF++QFqrG8Od4SRlHGlBo1P5siGQn5CVlpCyuH/G
-         +j2Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to;
+        bh=OYP1gqyj0EtINrvYl6StEFqYpgi40a8iTwkHgoE4yQo=;
+        b=MQh/bAg5daZmRt9iLe4oU55qUsToiG0gGu2L5fXd0YmQivNp2B5b8sTl9IMK53je2d
+         0x+ux5i9QDIBR1L0AG9cU6MsZY83sP3UDYxPYpeDpaI/IXZnHMDTHv/odDs/fqsxR107
+         0qEY4dMHgAq2H8oqVzRF2uM1oR9qW/YLAQvzEnP0LVyhiWSWWgVIZHY8dXLPtx3G55H4
+         7Y1bTgp10Lz7uJW25JUGPm6zUfQRUOSaj7KMEqGH36x1yvZ0wsayBVEqRMNtNGgZb5Xz
+         kUFFC9XN0lDxl7zPY39uwIpj7ENZn0ImzbNn9NR/VN/Hj8MR9MZWUO+VwK9ISfAMww2U
+         ybdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g125si2477883ywe.96.2019.03.03.15.38.58
+        by mx.google.com with ESMTPS id y70si2454049ywa.70.2019.03.03.16.47.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 03 Mar 2019 15:38:58 -0800 (PST)
+        Sun, 03 Mar 2019 16:47:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:45516 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:46073 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0ah7-00026U-P1
-	for alex.bennee@linaro.org; Sun, 03 Mar 2019 18:38:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47407)
+	id 1h0blK-0004hQ-9b
+	for alex.bennee@linaro.org; Sun, 03 Mar 2019 19:47:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1h0agy-00026J-6L
-	for qemu-arm@nongnu.org; Sun, 03 Mar 2019 18:38:48 -0500
+	(envelope-from <guoheyi@huawei.com>) id 1h0bl8-0004h7-Qo
+	for qemu-arm@nongnu.org; Sun, 03 Mar 2019 19:47:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1h0agw-00084T-Pp
-	for qemu-arm@nongnu.org; Sun, 03 Mar 2019 18:38:48 -0500
-Received: from mail-qt1-f193.google.com ([209.85.160.193]:37959)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1h0agu-00082i-RM
-	for qemu-arm@nongnu.org; Sun, 03 Mar 2019 18:38:44 -0500
-Received: by mail-qt1-f193.google.com with SMTP id s1so3413134qte.5
-	for <qemu-arm@nongnu.org>; Sun, 03 Mar 2019 15:38:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=lOZO1INMAc5rxqhnF7RWN5LpyJmXoBTGOvhOqJMkcDo=;
-	b=D2zjMrz53xfIqSBjTgFI9vHXhKUU6XYlff1rjiXD1zX4HbW8E4yUqZuloEO161MZ1X
-	0MC/GNMali04ETUP8KW++Iekreso/F0RyYNdbbBqSe/9a2gpe++iuGagbN7v68ZNqaqa
-	0dAqqwHXbdp5CCu03dI5VNNkodlAaKw4mU7LuD+K7IVc7XfEZImbz+/XtCDmBCpA9ifq
-	h7/ivgRI+SF6k73DldZiwSgWY2Cgu5MGgT8qK1HSbXA/xBDhyUva8QaCpVSMCNpUJBNk
-	rb5OdothygevmHTopFVt/aRdeczLCdrJ84vAY59u9yKxLh5dRdD/R/kmbgBJTiOFiWkt
-	jWwA==
-X-Gm-Message-State: APjAAAWpdqpbKMW1uZGYprAOVtF/Uws+9QLvJq4kQAfBvp1idousz3w8
-	52IO9wUT49E8Ernql2RNL+ucEQ==
-X-Received: by 2002:a0c:8b50:: with SMTP id d16mr12102310qvc.233.1551656322676;
-	Sun, 03 Mar 2019 15:38:42 -0800 (PST)
-Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
-	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
-	d51sm2988032qta.31.2019.03.03.15.38.41
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 03 Mar 2019 15:38:41 -0800 (PST)
-Date: Sun, 3 Mar 2019 18:38:39 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Message-ID: <20190303183805-mutt-send-email-mst@kernel.org>
+	(envelope-from <guoheyi@huawei.com>) id 1h0bl3-0002ym-Kx
+	for qemu-arm@nongnu.org; Sun, 03 Mar 2019 19:47:09 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2239 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+	id 1h0bl1-0002pY-OC; Sun, 03 Mar 2019 19:47:05 -0500
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+	by Forcepoint Email with ESMTP id 6AF09E4AC8C90420F931;
+	Mon,  4 Mar 2019 08:46:54 +0800 (CST)
+Received: from [127.0.0.1] (10.177.31.55) by DGGEMS409-HUB.china.huawei.com
+	(10.3.19.209) with Microsoft SMTP Server id 14.3.408.0; Mon, 4 Mar 2019
+	08:46:45 +0800
+To: "Michael S. Tsirkin" <mst@redhat.com>
 References: <1551407310-32413-1-git-send-email-guoheyi@huawei.com>
+	<20190303183805-mutt-send-email-mst@kernel.org>
+From: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <ca7be001-fc06-3852-cd0f-bf20eedc550d@huawei.com>
+Date: Mon, 4 Mar 2019 08:46:43 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+	Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1551407310-32413-1-git-send-email-guoheyi@huawei.com>
+In-Reply-To: <20190303183805-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset="windows-1252"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.31.55]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.193
+X-Received-From: 45.249.212.191
 Subject: Re: [Qemu-arm] [PATCH] hw/arm/acpi: enable SHPC native hot plug
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -103,48 +90,58 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Eps+GJa6/V91
+X-TUID: Gych2NzFpk68
 
-On Fri, Mar 01, 2019 at 10:28:30AM +0800, Heyi Guo wrote:
-> After the introduction of generic PCIe root port and PCIe-PCI bridge,
-> we will also have SHPC controller on ARM, so just enalbe SHPC native
-> hot plug.
-> 
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> Signed-off-by: Heyi Guo <heyi.guo@linaro.org>
 
-I don't think you need two Signed-off-by lines.
-Besides that:
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+On 2019/3/4 7:38, Michael S. Tsirkin wrote:
+> On Fri, Mar 01, 2019 at 10:28:30AM +0800, Heyi Guo wrote:
+>> After the introduction of generic PCIe root port and PCIe-PCI bridge,
+>> we will also have SHPC controller on ARM, so just enalbe SHPC native
+>> hot plug.
+>>
+>> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+>> Cc: Igor Mammedov <imammedo@redhat.com>
+>> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+>> Signed-off-by: Heyi Guo <heyi.guo@linaro.org>
+> I don't think you need two Signed-off-by lines.
+> Besides that:
+>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+>
+> Pls feel free to merge through the ARM tree.
+Thanks, I'll change that and add your R-b, and send a v2 for some dear maintainer to commit it :)
 
-Pls feel free to merge through the ARM tree.
+Heyi
 
-> ---
->  hw/arm/virt-acpi-build.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 04b62c7..7849ec5 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -265,7 +265,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->          aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
->      aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
->      aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
-> -    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
-> +
-> +    /*
-> +     * Allow OS control for all 5 features:
-> +     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
-> +     */
-> +    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1F), NULL),
->                                  aml_name("CTRL")));
->  
->      ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
-> -- 
-> 1.8.3.1
+>
+>> ---
+>>   hw/arm/virt-acpi-build.c | 7 ++++++-
+>>   1 file changed, 6 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 04b62c7..7849ec5 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -265,7 +265,12 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+>>           aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+>>       aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+>>       aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+>> -    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
+>> +
+>> +    /*
+>> +     * Allow OS control for all 5 features:
+>> +     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
+>> +     */
+>> +    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1F), NULL),
+>>                                   aml_name("CTRL")));
+>>   
+>>       ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+>> -- 
+>> 1.8.3.1
+> .
+>
+
+

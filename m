@@ -1,98 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3692573wrx;
-        Mon, 4 Mar 2019 06:55:12 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxJHj4V25OK9tjrhpwIrui/D8gryFZxlSUoVE3ONt8o3Xf/rCC8cKJHpwENdlugPr9IFXtM
-X-Received: by 2002:a81:3742:: with SMTP id e63mr14544034ywa.416.1551711312411;
-        Mon, 04 Mar 2019 06:55:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551711312; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3694117wrx;
+        Mon, 4 Mar 2019 06:56:54 -0800 (PST)
+X-Google-Smtp-Source: APXvYqycH7Gq3HtgwprngaY5p+MqXrNnPbs7xptbMCb8Vh5S4u24kPvimDgk92SwWHb6zgxFDby9
+X-Received: by 2002:a25:c947:: with SMTP id z68mr14948495ybf.522.1551711414862;
+        Mon, 04 Mar 2019 06:56:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551711414; cv=none;
         d=google.com; s=arc-20160816;
-        b=vY4JbR+mYge9VoCcFCYq0gHex/asOC+2sTFqkiwyntT88fJTyqBS/P8rPiavIv/7hh
-         9yRC79j9AEYgTQxGTVrtv3fcAHpwszRywAzOqD8JouGZR0wrtIsFtL6cknnTSLh+kz2Q
-         cNYI6RYaMSTvp5VTf+JKn18ryvvAibreyPHfO7pUq/aenaDg0fPgb3i+NAgqnRN0Bz43
-         tceLVOuyVxOVAnRzDVGYL7dgHrdjqm/fQg4djzyHI7/Nx64EVtB25z82fQpxGpyiMIfB
-         BtrI/JMwnSjqNsqb+7lbKzdUDaqn5bi2NDoHx9vGg0gjhG1LOiApB54CMk5EIXtkf9b1
-         Onog==
+        b=ptPEtScyY3np4KoGdKbVaKnhIEB3vtyJsEWvrW8cpqud0oEBAURVFyjMZhg0sEDUVw
+         zr1vnawFtJzofQjQbFvRmaBtxm2L4rpT1a9Qtq/TCmFhb+9b+cOaSlAE+WdQp+5t3u+s
+         sS8XjQIBKjQ+MzfkoNlx32AuPdEyDhG83wOq3Khkd9gUYwsIwg51bNMtV654rO0h18y/
+         EyyFZToNoPJkqc3Y3KipadmVS7MDcc7uIBF0oh9OvuxXPl75DrbG93LogfOQIcWItpnX
+         hL63/4NfcDZHGp15+uuJ8A2OWKKmL1ibgEJS8dQeP3FdOsUL+gLmEUmOSxGo2Oi3k5zu
+         FnfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=zkKEQPGBuWWpdBGjD8adi7tocrBrwwEJSJ2lLz6SaWk=;
-        b=KrTOqfaMEHe2kqnNwGEWqMtcm/+/6mZCYRz7IXTy7u+05rEmIw2O2V6gWDC3EcYyx3
-         YHjnbUqzLzTo05IWSIDuCdLKOas6xKtF70RjtnzUAykReJtmq+WvR9dfrv8dU6ERv84Q
-         kEPncY5yWNJQYuwSITrN50rC71v+k1dOKiYLpQfn8K1G6cShPaBdJorl/m+ZmphPQCEU
-         EWgj91Ci1T6sMcyE32dOJb/XjWYSnslzW0QK83x+ww2jzYEf+gLmNEyNIJogb2Pjn/D3
-         u4f3NCb/GAhfpwDeOGdYLfrjzT7FDhVSsP8p5uRr9dak64z3SK+SKbK+u6lHzdu10B6e
-         aXxA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=X1fQp/TQT03Y7bOTEVx78aRqZctiYtYoQSz4CXxUcsY=;
+        b=SSnXBqEptNkW+Vjh7MrpzDmxz42pNCGebFOcV4DBsZD3oKpQuxqlpURGIB9XNSPcv8
+         +47YAdzQejCADttetXcRJZCAyTa1ZiXY5ifhkiTvLgj8i8XacW4KoD8LxABqwytq3iir
+         SGal37sCN4Txrqt+w6mr/MWiBK0IVUuCCdMz4qyPSBst+T1rYEyorPjhRaPLRseBswV3
+         3xhr5b2Bx16mjk5kqf51wkGHyH4sRxg0YlRWzQ9uLNGKY0+EIP5nzAFlrpf7ku/lpGPs
+         X0VOyqI9wvsK3d6dxx2LkV7cP9S8SBjdtDLiLw/6OHlbdSsLgR75s/SbQ7DrQqprWmXf
+         pthw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tcBY20CV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si3336394ywr.321.2019.03.04.06.55.12
+        by mx.google.com with ESMTPS id l9si3162841ybb.53.2019.03.04.06.56.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 06:55:12 -0800 (PST)
+        Mon, 04 Mar 2019 06:56:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tcBY20CV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:55263 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:55308 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0ozn-0004Ws-TU
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 09:55:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53236)
+	id 1h0p1S-0005jx-BT
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 09:56:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53328)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h0oza-0004VU-LY
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 09:54:59 -0500
+	(envelope-from <imammedo@redhat.com>) id 1h0ozp-0004jY-BN
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 09:55:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h0ozY-0008Qa-7A
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 09:54:58 -0500
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:38816)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h0ozW-0008D4-96
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 09:54:54 -0500
-Received: by mail-ot1-x32d.google.com with SMTP id m1so4419260otf.5
-	for <qemu-arm@nongnu.org>; Mon, 04 Mar 2019 06:54:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=zkKEQPGBuWWpdBGjD8adi7tocrBrwwEJSJ2lLz6SaWk=;
-	b=tcBY20CVtajseZOJk7gg3OaPTkL2X9+CW53E+OqtRvB5ncHZKeVwWE6xcCAsk4cmTT
-	S6mvBCqBafETGoqONnLYmIU8OZVexi4GuTmqu4S8uqnITXC2US2K8Oytx4YuvN9sHZIc
-	JRV7MoEEqiTsq27cJKIOTXDPXlJWISxL+WoVqO6olvkuxE3Zc/1hYECmwvquTS6EbYnn
-	zMuwTucVgzuRvAsUCnCaCoe9D90whXGO7BWAQbZskMH3Xh2ikbjfU1rp+TIy3EwSZF+9
-	Wekut7bP4nkmnFVuUtemnV/fLPcsUiM2u2vpuR3MyTywcsNZMOsv/G5H4b4fyRqr/cIC
-	004w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=zkKEQPGBuWWpdBGjD8adi7tocrBrwwEJSJ2lLz6SaWk=;
-	b=ZeHMgIFz8iUnwTTiXWZJAiMo9vIXzktJ1qP0TitE2ViDokrOHm7YWasKOxcl19KSOB
-	rWXkuoVvgKz/XUpNsrmX09R6WSoiq8fl9MQc9O31i8ihqc0zgnHzoKZt3PFujbol39Ii
-	9GPInuFpL9hrf9UkCDQPTl8hhEvAQzj7wE1OFnjGIkRm+9qCrtPV6l0zQaJTn9N4WWJ9
-	7CN8YZRMpyzAHP+2q3a4EapdoWhkvEZ2zAcQofl20LLD+5MsTQeS7+rL5Lg4B35C7WA5
-	vITEE5z4qO8gaHraVuNOOUTAdpjtvDY/GQbvuDvIjZOatQ8oz70ZRu5A43Ia+rlsflCN
-	/DpQ==
-X-Gm-Message-State: APjAAAV5mzfROAGB1cbQvZHruHlr7Zz7SuUzkgPAwQ6btec50e6TAy9p
-	gPhozEMVanWzFyvUXh+5IDsiPo4ifpqB4TdC2ibYiQ==
-X-Received: by 2002:a05:6830:d8:: with SMTP id
-	x24mr12261346oto.352.1551711292310; 
-	Mon, 04 Mar 2019 06:54:52 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1h0ozn-0000j3-J8
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 09:55:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51074)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h0ozk-0000Xl-R9; Mon, 04 Mar 2019 09:55:09 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 03E95D2EE5;
+	Mon,  4 Mar 2019 14:55:07 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1C96160F8D;
+	Mon,  4 Mar 2019 14:54:59 +0000 (UTC)
+Date: Mon, 4 Mar 2019 15:54:57 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>
+Message-ID: <20190304155457.206a7ff7@redhat.com>
+In-Reply-To: <20190304135909.GL4239@redhat.com>
+References: <1551454936-205218-1-git-send-email-imammedo@redhat.com>
+	<1551454936-205218-2-git-send-email-imammedo@redhat.com>
+	<20190301154947.GJ21251@redhat.com>
+	<20190301183328.20b63e23@redhat.com>
+	<20190301174806.GN21251@redhat.com>
+	<15464582-e8a6-6654-7679-15d87c10af38@redhat.com>
+	<20190304145510.57c73177@redhat.com>
+	<20190304135909.GL4239@redhat.com>
 MIME-Version: 1.0
-References: <1551564698-9922-1-git-send-email-michelheily@gmail.com>
-In-Reply-To: <1551564698-9922-1-git-send-email-michelheily@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Mar 2019 14:54:40 +0000
-Message-ID: <CAFEAcA9Y_ZM0tDuvK+bOO+4+hT8ApLYR9EsKPojL9zGG=LJ-Rw@mail.gmail.com>
-To: Michel Heily <michelheily@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::32d
-Subject: Re: [Qemu-arm] [PATCH v2] hw/arm/stellaris: Implement watchdog timer
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Mon, 04 Mar 2019 14:55:07 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-ppc] [Qemu-devel] [libvirt] [PATCH 1/2] numa:
+ deprecate 'mem' parameter of '-numa node' option
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,177 +96,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:Stellaris" <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, Thomas Huth <thuth@redhat.com>,
+	ehabkost@redhat.com, libvir-list@redhat.com, "Dr.
+	David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hKBx8seGx6hG
+X-TUID: YHs/27zR/xUK
 
-On Sat, 2 Mar 2019 at 22:11, <michelheily@gmail.com> wrote:
->
-> From: Michel Heily <michelheily@gmail.com>
->
-> I've added the stellaris watchdog functionality because I needed it for a home project.
-> Documentation for the hardware can be found at http://www.ti.com/lit/ds/symlink/lm3s6965.pdf.
->
-> Signed-off-by: Michel Heily <michelheily@gmail.com>
+On Mon, 4 Mar 2019 13:59:09 +0000
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 
-Thanks; this is looking pretty good. I have some minor
-comments below. We're getting quite close to softfreeze now,
-but if you can manage to get a v3 to the list some time this
-week I should be able to squeeze it into the next release.
+> On Mon, Mar 04, 2019 at 02:55:10PM +0100, Igor Mammedov wrote:
+> > On Mon, 4 Mar 2019 09:11:19 +0100
+> > Thomas Huth <thuth@redhat.com> wrote:
+> >  =20
+> > > On 01/03/2019 18.48, Daniel P. Berrang=C3=A9 wrote:
+> > > [...] =20
+> > > > So I think this patch has to be dropped & replaced with one that
+> > > > simply documents that memdev syntax is preferred.   =20
+> > >=20
+> > > That's definitely not enough. I've had a couple of cases already where
+> > > we documented that certain options should not be used anymore, and
+> > > people simply ignored it (aka. if it ain't broken, don't do any chang=
+e).
+> > > Then they just started to complain when I really tried to remove the
+> > > option after the deprecation period. =20
+> >  =20
+> > > So Igor, if you can not officially deprecate these things here yet, y=
+ou
+> > > should at least make sure that they can not be used with new machine
+> > > types anymore. Then, after a couple of years, when we feel sure that
+> > > there are only some few or no people left who still use it with the o=
+ld
+> > > machine types, we can start to discuss the deprecation process again,=
+ I
+> > > think. =20
+> > Is it acceptable to silently disable CLI options (even if they are brok=
+en
+> > like in this case) for new machine types?
+> > I was under impression that it should go through deprecation first. =20
+>=20
+> Yes, it must go through deprecation. I was saying we can't disable
+> the CLI options at all, until there is a way for libvirt to correctly
+> use the new options.
 
-> @@ -1338,6 +1339,24 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
->      stellaris_sys_init(0x400fe000, qdev_get_gpio_in(nvic, 28),
->                         board, nd_table[0].macaddr.a);
->
-> +
-> +    if (board->dc1 & (1  << 3)) { /* watchdog present */
+I'm not adding new options (nor plan to for numa case (yet)),
+-numa node,memdev is around several years by now and should be used
+as default for creating new configs.
 
-Stray extra space before "<<"
+In light of keeping 'mem' option around for old machines,
+Deprecation should have served for notifying users that legacy
+options will be disabled later on (for new machines at least
+if no way found for migration compatible transition for older ones).
 
-> diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
-> index eb79a73..5029838 100644
-> --- a/hw/watchdog/cmsdk-apb-watchdog.c
-> +++ b/hw/watchdog/cmsdk-apb-watchdog.c
-> @@ -37,6 +37,7 @@ REG32(WDOGINTCLR, 0xc)
->  REG32(WDOGRIS, 0x10)
->      FIELD(WDOGRIS, INT, 0, 1)
->  REG32(WDOGMIS, 0x14)
-> +REG32(WDOTEST, 0x418)
+What I'm mainly aiming here is to prevent using broken legacy options
+for new VMs (like in RHBZ1624223 case) and deprecation is the only way
+we have now to notify users about CLI breaking changes.
 
-Typo. This should either be "WDOGTEST" to follow the naming convention
-of the other registers, or "WDTTEST" to follow the Stellaris datasheet's
-name. I'd go with "WDOGTEST" but it doesn't much matter which.
+In the -mem-path/prealloc case, there will be a new machine option 'memdev'
+to replace them but that's migration compatible, so libvirt could use new
+CLI syntax to replace even old configs.
+(If there is a mechanism for introducing/introspecting a new options
+per-machine or whole QEMU, I'd happy to add a new option there on top of
+just deprecation notice that we have now).
 
-Also worth a comment
-/* only in the Stellaris/Luminary version of the device */
+> Regards,
+> Daniel
 
->  REG32(WDOGLOCK, 0xc00)
->  #define WDOG_UNLOCK_VALUE 0x1ACCE551
->  REG32(WDOGITCR, 0xf00)
-> @@ -61,12 +62,18 @@ REG32(CID2, 0xff8)
->  REG32(CID3, 0xffc)
->
->  /* PID/CID values */
-> -static const int watchdog_id[] = {
-> +static const uint32_t cmsdk_apb_watchdog_id[] = {
->      0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
->      0x24, 0xb8, 0x1b, 0x00, /* PID0..PID3 */
->      0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
->  };
->
-> +static const uint32_t luminary_watchdog_id[] = {
-> +    0x00, 0x00, 0x00, 0x00, /* PID4..PID7 */
-> +    0x05, 0x18, 0x18, 0x01, /* PID0..PID3 */
-> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-> +};
-> +
->  static bool cmsdk_apb_watchdog_intstatus(CMSDKAPBWatchdog *s)
->  {
->      /* Return masked interrupt status */
-> @@ -102,6 +109,7 @@ static uint64_t cmsdk_apb_watchdog_read(void *opaque, hwaddr offset,
->                                          unsigned size)
->  {
->      CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(opaque);
-> +    bool _default = false;
-
-Don't name variables with leading underscores.
-In any case you don't need this one...
-
->      uint64_t r;
->
->      switch (offset) {
-> @@ -124,24 +132,46 @@ static uint64_t cmsdk_apb_watchdog_read(void *opaque, hwaddr offset,
->          r = s->lock;
->          break;
->      case A_WDOGITCR:
-> +        if (s->is_luminary) {
-> +            _default = true;
-> +            break;
-> +        }
-
-Just use
- if (s->is_luminary) {
-     goto bad_offset;
- }
-
-and then add the bad_offset: label after default:.
-This is clearer than having a flag that modifies the program flow.
-
-
-> @@ -150,6 +180,7 @@ static void cmsdk_apb_watchdog_write(void *opaque, hwaddr offset,
->                                       uint64_t value, unsigned size)
->  {
->      CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(opaque);
-> +    bool _default = false;
-
-Similarly here.
-
-> @@ -197,11 +240,23 @@ static void cmsdk_apb_watchdog_write(void *opaque, hwaddr offset,
->                        "CMSDK APB watchdog write: write to RO offset 0x%x\n",
->                        (int)offset);
->          break;
-> +    case A_WDOTEST:
-> +        if (s->is_luminary) {
-> +            qemu_log_mask(LOG_UNIMP,
-> +                      "Luminary watchdog write: stall not implemented\n");
-> +            break;
-> +        }
-> +        _default = true;
-> +        break;
->      default:
-> +        _default = true;
-> +        break;
-> +    }
-> +
-> +    if (_default) {
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "CMSDK APB watchdog write: bad offset 0x%x\n",
->                        (int)offset);
-> -        break;
->      }
->  }
->
-> @@ -256,6 +311,9 @@ static void cmsdk_apb_watchdog_init(Object *obj)
->                            s, "cmsdk-apb-watchdog", 0x1000);
->      sysbus_init_mmio(sbd, &s->iomem);
->      sysbus_init_irq(sbd, &s->wdogint);
-> +
-> +    s->is_luminary = false;
-> +    memcpy(s->id, cmsdk_apb_watchdog_id, sizeof(s->id));
-
-You don't need a memcpy here -- just make s->id a const uint32_t*,
-and then you can do "s->id = cmsdk_apb_watchdog_id;"
-
->  }
->
->  static void cmsdk_apb_watchdog_realize(DeviceState *dev, Error **errp)
-> @@ -291,6 +349,7 @@ static const VMStateDescription cmsdk_apb_watchdog_vmstate = {
->          VMSTATE_UINT32(itcr, CMSDKAPBWatchdog),
->          VMSTATE_UINT32(itop, CMSDKAPBWatchdog),
->          VMSTATE_UINT32(resetstatus, CMSDKAPBWatchdog),
-> +        VMSTATE_UINT32_ARRAY(id, CMSDKAPBWatchdog, 12),
-
-The ID registers are constant so they don't need to be transferred
-as part of the VM migration state, so you don't need to change
-anything here.
-
->          VMSTATE_END_OF_LIST()
->      }
->  };
-> @@ -318,9 +377,24 @@ static const TypeInfo cmsdk_apb_watchdog_info = {
->      .class_init = cmsdk_apb_watchdog_class_init,
->  };
->
-> +static void luminary_watchdog_init(Object *obj)
-> +{
-> +    CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(obj);
-> +
-> +    s->is_luminary = true;
-> +    memcpy(s->id, luminary_watchdog_id, sizeof(s->id));
-
-Similarly this memcpy isn't needed.
-
-thanks
--- PMM

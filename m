@@ -1,70 +1,70 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3791159wrx;
-        Mon, 4 Mar 2019 08:32:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwvNqieXgFG9NaPFAGe5RJs897f/geWbDJQotLMVbw2irJvoJh8LVgpp6Pb5/A4m7SCGwam
-X-Received: by 2002:a25:1e07:: with SMTP id e7mr13683680ybe.511.1551717150792;
-        Mon, 04 Mar 2019 08:32:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551717150; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3794472wrx;
+        Mon, 4 Mar 2019 08:35:43 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzSOnXae3dHWLr35bYvb6dG8fdJlL7H0beIcNFuDMHUfWmW722M8hV4rto1Bih2GkvoS9Gm
+X-Received: by 2002:a25:aa70:: with SMTP id s103mr16517152ybi.394.1551717343678;
+        Mon, 04 Mar 2019 08:35:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551717343; cv=none;
         d=google.com; s=arc-20160816;
-        b=UtfoO/t7Ggl3ZFDqjTUISjSzljBfC+AHM0ZkAHFW28ang9VSELxGIcVycFoSy+KHnv
-         F86L4d1KIIiPBKPRFJ9NI99pPOJGlh3CLi1LX73A437/coltyME9QtcHMY5RIMMSZpcR
-         IiUAie7iSKWshn5rD7sprNpHmbUqOGXOY5U1Ef9YWrkpYwwcocipg87IS7nrFGsdmKYn
-         /wpyGxO3GAHx+xj5fmzCT1CJd21NPLYpo1o/4VA4WgDr5CgZS2zc1sZ/8DsFeStFjife
-         CGGQIaKAfVRC7dhR1pe8fZzIq/0ae99aRGAZCyWpBRJyT+3MgzREtePdjX2ePum7PVvy
-         eGWA==
+        b=Jz2xaJi6E4rnXLfJRnEHB5NB5M25Q6GI77QL8wVo1khAeCRZLLE3BWutgyuud3w29B
+         EvR45iGOX4jdOhT7g03d4qGgtrsKD0lnZesKt982VE0JnpslFM3IKf1r5CxvZp/teIlI
+         g5tU8Cx4uZRkNanOdW+beqHjw1APQ3O/t2UiVuPJxszftWiNfqJfYyp6V7yk0bnvnkPL
+         YtNOuHO4fvebIx4mCUk+iV3A8TCRTkKnzog0xWCPlEGXEduX/9TBlwwp0q3cLkoGPuDC
+         SRARHSgUD93g5GtTJ4YPDwkXLoPhamxvWVt4gM9+vjFChgHUuPBaVZvwVQUZolNsJNi3
+         L7BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=7Kk52F3kyhxqftQcFysxZ9bpSwRH9z8zXNzdnz8nK+o=;
-        b=y4WOPDzdIXImYO2tg6Wt3Ac5bOreJw0Y4IFAOU/j1aYbjZku0FSAzYkXKpxF+Lp67R
-         lL+uPnxG3hQuEw9GmvgqpKryAxbuCwsQmZXn2lRV+5y9ROWhiv4NByg3NnhUpgbVAzDb
-         Fx7pJ7oOtD6nkBKnO64qHUUtA7mthloUJyXQgIZl5yVDGxRc8/Qa2WX3ce+knDkFrDGs
-         hQtJqm0jQtuskHAycrQywn+w+tDrvsxCwVvA4tA5SFSi9rCp6qVaxW+utUs+chEFzxBw
-         y6O4jer5/IhGxY+TPPXGTKr4SegsXydRb1AuBnFqwmGbUYQWUhpmMrVDmOJyqtiepGiW
-         GAYw==
+        bh=zHJ+DzhWnvaHfix6Nj1xQMQUOBMO7RpNYDJKY7TtBK0=;
+        b=XojREmRqRTsR0gCzo98RkRclgyJRd9S1iW1gy9xtCQlhtSY2cNuqXBKgT/p8GPn2mr
+         qxGuZg93dI5hnBCuHbaLt8KgKxOSmDSu1K4AA6uMxUR324dPYeAa3nQz+AdODyfC3ki4
+         exvSN5iSwZCtk2nmyCNWYw9d/WUlAw7Bo3o+1ACa6wW/Ws13RMLwGcLNDfGJTWwell2k
+         OPCnKKKrDkmmNnI5fCweHkwzrF/KAynMHX6UFGZYf7BAT4TFoje2Q51ZBnifp+iArxPH
+         8yxPXz1Xv0inRRy/zK2t8OAl7nZfC6AUoYccEhUjmzwgOxq0/pu6ssbz9j89977kgQoZ
+         aG2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 191si3408412ybk.243.2019.03.04.08.32.30
+        by mx.google.com with ESMTPS id g3si2020429ybo.497.2019.03.04.08.35.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 08:32:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2019 08:35:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56864 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:56947 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0qVy-0002da-54
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 11:32:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48200)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h0qZ5-0005AQ-3Y
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 11:35:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49221)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1h0qVQ-0002Yz-3m
-	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 11:31:57 -0500
+	(envelope-from <berrange@redhat.com>) id 1h0qYq-00056i-E2
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 11:35:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1h0qVO-0004oa-Gu
-	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 11:31:56 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48832)
+	(envelope-from <berrange@redhat.com>) id 1h0qYo-0003XI-SN
+	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 11:35:28 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35332)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1h0qVO-0004hi-3P; Mon, 04 Mar 2019 11:31:54 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1h0qYo-0003Sz-IN; Mon, 04 Mar 2019 11:35:26 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 700B93082E6A;
-	Mon,  4 Mar 2019 16:31:51 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.19])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14C3C60863;
-	Mon,  4 Mar 2019 16:31:46 +0000 (UTC)
-Date: Mon, 4 Mar 2019 16:31:44 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 95B9E307DAB7;
+	Mon,  4 Mar 2019 16:35:25 +0000 (UTC)
+Received: from redhat.com (ovpn-112-62.ams2.redhat.com [10.36.112.62])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3837919724;
+	Mon,  4 Mar 2019 16:35:19 +0000 (UTC)
+Date: Mon, 4 Mar 2019 16:35:16 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Michal Privoznik <mprivozn@redhat.com>
-Message-ID: <20190304163143.GB2596@work-vm>
+Message-ID: <20190304163516.GQ4239@redhat.com>
 References: <1551454936-205218-2-git-send-email-imammedo@redhat.com>
 	<20190301154947.GJ21251@redhat.com>
 	<20190301183328.20b63e23@redhat.com>
@@ -76,52 +76,54 @@ References: <1551454936-205218-2-git-send-email-imammedo@redhat.com>
 	<20190304142432.GM4239@redhat.com>
 	<a6081774-c9d5-0496-3e65-ffb885408261@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 In-Reply-To: <a6081774-c9d5-0496-3e65-ffb885408261@redhat.com>
 User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Mon, 04 Mar 2019 16:31:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Mon, 04 Mar 2019 16:35:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [libvirt] [PATCH 1/2] numa: deprecate 'mem'
- parameter of '-numa node' option
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [libvirt] [PATCH 1/2] numa: deprecate
+ 'mem' parameter of '-numa node' option
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: peter.maydell@linaro.org, ehabkost@redhat.com, libvir-list@redhat.com,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
-	Igor Mammedov <imammedo@redhat.com>, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sYLxf3u4Tv1o
+	Igor Mammedov <imammedo@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, david@gibson.dropbear.id.au
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G+QlifmMtkzS
 
-* Michal Privoznik (mprivozn@redhat.com) wrote:
-> On 3/4/19 3:24 PM, Daniel P. Berrang=E9 wrote:
+On Mon, Mar 04, 2019 at 05:20:13PM +0100, Michal Privoznik wrote:
+> On 3/4/19 3:24 PM, Daniel P. Berrang=C3=A9 wrote:
 > > On Mon, Mar 04, 2019 at 03:16:41PM +0100, Igor Mammedov wrote:
 > > > On Mon, 4 Mar 2019 12:39:08 +0000
-> > > Daniel P. Berrang=E9 <berrange@redhat.com> wrote:
+> > > Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 > > >=20
 > > > > On Mon, Mar 04, 2019 at 01:25:07PM +0100, Igor Mammedov wrote:
 > > > > > On Mon, 04 Mar 2019 08:13:53 +0100
 > > > > > Markus Armbruster <armbru@redhat.com> wrote:
-> > > > > > Daniel P. Berrang=E9 <berrange@redhat.com> writes:
+> > > > > > Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 > > > > > > > On Fri, Mar 01, 2019 at 06:33:28PM +0100, Igor Mammedov wro=
 te:
 > > > > > > > > On Fri, 1 Mar 2019 15:49:47 +0000
-> > > > > > > > Daniel P. Berrang=E9 <berrange@redhat.com> wrote:
+> > > > > > > > Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 > > > > > > > > > On Fri, Mar 01, 2019 at 04:42:15PM +0100, Igor Mammedov=
  wrote:
 > > > > > > > > > > The parameter allows to configure fake NUMA topology =
@@ -297,7 +299,7 @@ ed
 > 1) whenever so called cold booting a new machine (fresh, brand new star=
 t of
 > a new domain) libvirt would default to modern cmd line,
->
+>=20
 > 2) on migration, libvirt would record in the migration stream (or statu=
 s XML
 > or wherever) that modern cmd line was generated and thus it'll make the
@@ -313,18 +315,29 @@ e the
 write
 > those migration patches).
 
-What's interesting here is that this problem isn't really machine-type
-related; so providing introspection on the machine type doesn't
-immediately help.  What we're actually trying to do here is (mis)use a
-machine type as a proxy for knowing that both sides are new enough to
-handle the new command line.
+Yeah supporting backwards migration is a non-optional requirement from at
+least one of the mgmt apps using libvirt, so breaking the new to old case
+is something we always aim to avoid.
 
-That's an OK thing to do, and if we did have introspection we could
-add a fudge flag to say it's allowed now.
+These incompabilities are reminding me why we haven't tied these kind of
+changes to machine type versions in the past. New machine type !=3D new
+libvirt, so we can't tie usage of a feature in livirt to a new machine
+type.
 
-Dave
+I'm wondering exactly which cases libvirt will still use the "mem" option
+in  as opposed to "memdev".  If none of the cases using "mem" actually
+suffer from the ill-effects of "mem", then there's not a compelling reaso=
+n
+to stop using it. It can be discouraged in QEMU documentation but otherwi=
+se
+left alone.
 
-
-> Michal
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|

@@ -1,314 +1,192 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3446423wrx;
-        Mon, 4 Mar 2019 02:14:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwbpE1grNHvWl9+VYDJ1pF3NTmaYxBdNyGvPc9M8cPZ4Zt0CpvDOSLgqzy8JobftViq9tTv
-X-Received: by 2002:a25:b211:: with SMTP id i17mr14247421ybj.122.1551694486502;
-        Mon, 04 Mar 2019 02:14:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551694486; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp3447135wrx;
+        Mon, 4 Mar 2019 02:15:37 -0800 (PST)
+X-Google-Smtp-Source: APXvYqza0L3N6D+FIQ1jmcvODiMMPhhno0sPixEKRe14ARhVyvYZdDD+ef6yRLUrhIunMqbsKTHV
+X-Received: by 2002:a0d:d70f:: with SMTP id z15mr13642064ywd.249.1551694537750;
+        Mon, 04 Mar 2019 02:15:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551694537; cv=none;
         d=google.com; s=arc-20160816;
-        b=zOKi+gkvvyqenKHUJgwMjWeRWTjzzIXO0lmDdsoPVJPcK2zcdLmRRtx7VWfGfCYSob
-         biJKqd5xi3/aSukCTGAkY/8mjAHPuC9yh/PGLP8J38DaMAeCGd71tBfHTbU/eGDNaa/5
-         BO6b1A1VkGKfZieEzX0m8aelA87LS9Cm9saBQrQaFtHqQ5NcudhNrWdrFj2m1tptBGtQ
-         IZbTIoJk1N4H/u6uaWcGBqJsvWaJzCyd+2R0W9BMomEtqGyRDR9eFMnRcM4PmXV7XOg0
-         sfvvSxPm9D3gw/8c3lVRIb2JHV/ZQGNYQRtNQ3GWMnuA9Hv73AofVBOBmh8YVkMkwtyz
-         jwuQ==
+        b=LJXFz8pjrBoWChpVepE9iNPDa+qkJnFCfdgwijbyoN7jXnNbIrQTwHlvu5nqfX2k20
+         z/AtjpPG1nux0r3gNZZNJC2NbaR1pwwVn762Hufet0/0cOG1X9HAVKvHSjxfs/O+81yC
+         BeBMZ9/v8pL6a6dQuTWMgLhExKwckTcgE1Fa5EiWy+W0hbaGZvEbJ2kAC/Wzpov49B8s
+         y07HK0hC5SNTBvt324q1TM9bpRI2PtzhGxw6/pov0tyBzqe7c+HKhpqB2nUcLv4b1Qc2
+         vCLqZCSUJ88O6DluUZN8LBMcRWZsegCUOAK0Nt0HRCPIKI6FkW2DQcZ3R3tFI9xLn1fC
+         f3WA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=DljKNdBRxtfXrWi0XGGtwVr9l+MBnYisFLW0O8xCs3M=;
-        b=CD/0cEmLQBiIrrbK7+qqo+BOUjZQg9yZkbZEN+iyks4NXWfQPPwKx98bwLWqSx01q4
-         ac0K9jEA34/c0ZoKu5j3fBpqqHdvqOX2lnd2G74+4hNLpFzUt3YiJ2ZhwlCKW2ZBFF+w
-         0uhR33bEhzCEegRt2itdsk1iIJnDfRDesMjmio8fbprSxMzgQG4H3nSEogIqVvSzfj7u
-         cg0bZIwFP5AXMxoGXw5svKWYb9eeaRHi6kQEPYpIFk6pmOPX8YCADsV4VxsJ/34Y5XYT
-         BYW9FcZWNsa85vxJsxJdw27Jt77YESB50F/aLhIH//kGG6H+Sc1/mB4BaRcCif2fYyxD
-         ilpg==
+        bh=dXvRLu+M+eEYlTOjnvt/OqXnRdcRRARrJZI+ZQ7JUB4=;
+        b=uEPMsFU+jkyY7vk54GAgbInn7AF1mSnLpHLS7JJ95lXuUIyBlPQJ7U4FOao3O0ENyA
+         guDKiEGg7J1HeS2BjC6rw/IQsUrWJVxVAxXFHSY3ewDaf1qQ+VjCFQy+Wzs/5k/f2EL5
+         8dJeFU6cP0Pst1ASwfEf4ZSu8S/JH35JYyVvDrNvU8o8iy0MTO/972fmiTZZnaq33NcR
+         s3cIjvSjrjPAX5LsQo1cSqlOGDz/49ggmbet74nk+ZBebCsuXgPlG7RMrj4BJoCr6YYL
+         QhUgNFRjJztGoBLf4YxHeT5NCYhiB/iK4Eo2RnWkWMKO6O4yd9J1EZYQnPjaN/0hVpFC
+         BZyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5si3004808yba.190.2019.03.04.02.14.46
+        by mx.google.com with ESMTPS id e135si2996368ywa.372.2019.03.04.02.15.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 04 Mar 2019 02:14:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 04 Mar 2019 02:15:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51296 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51300 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h0kcP-0001Yc-Rz
-	for alex.bennee@linaro.org; Mon, 04 Mar 2019 05:14:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51445)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h0kdF-0001j0-5K
+	for alex.bennee@linaro.org; Mon, 04 Mar 2019 05:15:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51519)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0kc6-0001U8-WC
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:14:32 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h0kcH-0001bZ-7g
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 05:14:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h0kc5-0008SQ-NZ
-	for qemu-arm@nongnu.org; Mon, 04 Mar 2019 05:14:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52656)
+	(envelope-from <eric.auger@redhat.com>) id 1h0kcG-00009Y-Au
+	for qemu-devel@nongnu.org; Mon, 04 Mar 2019 05:14:37 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52730)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1h0kc5-0008Rz-EX; Mon, 04 Mar 2019 05:14:25 -0500
+	id 1h0kcE-00006x-6D; Mon, 04 Mar 2019 05:14:34 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3484D8665D;
-	Mon,  4 Mar 2019 10:14:24 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 64B6086678;
+	Mon,  4 Mar 2019 10:14:33 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9A03151F00;
-	Mon,  4 Mar 2019 10:14:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A1F2051F00;
+	Mon,  4 Mar 2019 10:14:27 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Mon,  4 Mar 2019 11:13:32 +0100
-Message-Id: <20190304101339.25970-4-eric.auger@redhat.com>
+Date: Mon,  4 Mar 2019 11:13:34 +0100
+Message-Id: <20190304101339.25970-6-eric.auger@redhat.com>
 In-Reply-To: <20190304101339.25970-1-eric.auger@redhat.com>
 References: <20190304101339.25970-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.26]);
-	Mon, 04 Mar 2019 10:14:24 +0000 (UTC)
+	Mon, 04 Mar 2019 10:14:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v12 03/10] hw/arm/virt: Split the memory map
- description
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v12 05/10] kvm: add kvm_arm_get_max_vm_ipa_size
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: pbonzini@redhat.com, drjones@redhat.com, dgilbert@redhat.com,
 	david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ornmAVQlhsGy
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r7d02scUb7W7
 
-In the prospect to introduce an extended memory map supporting more
-RAM, let's split the memory map array into two parts:
+Add the kvm_arm_get_max_vm_ipa_size() helper that returns the
+number of bits in the IPA address space supported by KVM.
 
-- the former a15memmap, renamed base_memmap, contains regions below
-  and including the RAM. MemMapEntries initialized in this array
-  have a static size and base address.
-- extended_memmap, only initialized with entries located after the
-  RAM. MemMapEntries initialized in this array only get their size
-  initialized. Their base address is dynamically computed depending
-  on the the top of the RAM, with same alignment as their size.
-
-Eventually base_memmap entries are copied into the extended_memmap
-array. Using two separate arrays however clarifies which entries
-are statically allocated and those which are dynamically allocated.
-
-This new split will allow to grow the RAM size without changing the
-description of the high IO entries.
-
-We introduce a new virt_set_memmap() helper function which
-"freezes" the memory map. We call it in machvirt_init as
-memory attributes of the machine are not yet set when
-virt_instance_init() gets called.
-
-The memory map is unchanged (the top of the initial RAM still is
-256GiB). Then come the high IO regions with same layout as before.
+This capability needs to be known to create the VM with a
+specific IPA max size (kvm_type passed along KVM_CREATE_VM ioctl.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 ---
-v11 -> v12:
-- removed vms->memmap =3D NULL;
+v10 -> v11:
 - added Igor's R-b
 
-v10 -> v11:
-- remove vms->high_io_base
-- initialize vms->memmamp to NULL in the instance_init
-
-v8 -> v9:
-- restore virt_set_memmap call in machvirt_init as otherwise it does
-  not work in TCG mode
-
-v7 -> v8:
-- removed Peter's R-b due to the changes induced by Igor's comments
-- call set_memmap back in virt_instance_init
-- add comments about sizing of extended_memmap
-- s/region/entries as suggested by Igor
-- rewording of the commit message
-
 v6 -> v7:
-- s/a15memmap/base_memmap
-- slight rewording of the commit message
-- add "if there is less than 256GiB of RAM then the floating area
-  starts at the 256GiB mark" in the comment associated to the floating
-  memory map
-- Added Peter's R-b
+- s/kvm_arm_get_max_vm_phys_shift/kvm_arm_get_max_vm_ipa_size
+- reword the comment
 
-v5 -> v6
-- removal of many macros in units.h
-- introduce the virt_set_memmap helper
-- new computation for offsets of high IO regions
-- add comments
+v4 -> v5:
+- return 40 if the host does not support the capability
+
+v3 -> v4:
+- s/s/ms in kvm_arm_get_max_vm_phys_shift function comment
+- check KVM_CAP_ARM_VM_IPA_SIZE extension
+
+v1 -> v2:
+- put this in ARM specific code
 ---
- hw/arm/virt.c         | 50 +++++++++++++++++++++++++++++++++++++------
- include/hw/arm/virt.h | 13 +++++++----
- 2 files changed, 53 insertions(+), 10 deletions(-)
+ target/arm/kvm.c     | 10 ++++++++++
+ target/arm/kvm_arm.h | 13 +++++++++++++
+ 2 files changed, 23 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 892bae4f3a..9596c7c7f1 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -29,6 +29,7 @@
-  */
-=20
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/arm/arm.h"
-@@ -121,7 +122,7 @@
-  * Note that devices should generally be placed at multiples of 0x10000,
-  * to accommodate guests using 64K pages.
-  */
--static const MemMapEntry a15memmap[] =3D {
-+static const MemMapEntry base_memmap[] =3D {
-     /* Space up to 0x8000000 is reserved for a boot ROM */
-     [VIRT_FLASH] =3D              {          0, 0x08000000 },
-     [VIRT_CPUPERIPHS] =3D         { 0x08000000, 0x00020000 },
-@@ -149,11 +150,24 @@ static const MemMapEntry a15memmap[] =3D {
-     [VIRT_PCIE_PIO] =3D           { 0x3eff0000, 0x00010000 },
-     [VIRT_PCIE_ECAM] =3D          { 0x3f000000, 0x01000000 },
-     [VIRT_MEM] =3D                { 0x40000000, RAMLIMIT_BYTES },
-+};
-+
-+/*
-+ * Highmem IO Regions: This memory map is floating, located after the RA=
-M.
-+ * Each MemMapEntry base (GPA) will be dynamically computed, depending o=
-n the
-+ * top of the RAM, so that its base get the same alignment as the size,
-+ * ie. a 512GiB entry will be aligned on a 512GiB boundary. If there is
-+ * less than 256GiB of RAM, the floating area starts at the 256GiB mark.
-+ * Note the extended_memmap is sized so that it eventually also includes=
- the
-+ * base_memmap entries (VIRT_HIGH_GIC_REDIST2 index is greater than the =
-last
-+ * index of base_memmap).
-+ */
-+static MemMapEntry extended_memmap[] =3D {
-     /* Additional 64 MB redist region (can contain up to 512 redistribut=
-ors) */
--    [VIRT_HIGH_GIC_REDIST2] =3D   { 0x4000000000ULL, 0x4000000 },
--    [VIRT_HIGH_PCIE_ECAM] =3D     { 0x4010000000ULL, 0x10000000 },
--    /* Second PCIe window, 512GB wide at the 512GB boundary */
--    [VIRT_HIGH_PCIE_MMIO] =3D     { 0x8000000000ULL, 0x8000000000ULL },
-+    [VIRT_HIGH_GIC_REDIST2] =3D   { 0x0, 64 * MiB },
-+    [VIRT_HIGH_PCIE_ECAM] =3D     { 0x0, 256 * MiB },
-+    /* Second PCIe window */
-+    [VIRT_HIGH_PCIE_MMIO] =3D     { 0x0, 512 * GiB },
- };
-=20
- static const int a15irqmap[] =3D {
-@@ -1354,6 +1368,29 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineSt=
-ate *vms, int idx)
-     return arm_cpu_mp_affinity(idx, clustersz);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index e00ccf9c98..79a79f0190 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -18,6 +18,7 @@
+ #include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
++#include "sysemu/kvm_int.h"
+ #include "kvm_arm.h"
+ #include "cpu.h"
+ #include "trace.h"
+@@ -162,6 +163,15 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features =3D arm_host_cpu_features.features;
  }
 =20
-+static void virt_set_memmap(VirtMachineState *vms)
++int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
 +{
-+    hwaddr base;
-+    int i;
++    KVMState *s =3D KVM_STATE(ms->accelerator);
++    int ret;
 +
-+    vms->memmap =3D extended_memmap;
-+
-+    for (i =3D 0; i < ARRAY_SIZE(base_memmap); i++) {
-+        vms->memmap[i] =3D base_memmap[i];
-+    }
-+
-+    base =3D 256 * GiB; /* Top of the legacy initial RAM region */
-+
-+    for (i =3D VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++=
-) {
-+        hwaddr size =3D extended_memmap[i].size;
-+
-+        base =3D ROUND_UP(base, size);
-+        vms->memmap[i].base =3D base;
-+        vms->memmap[i].size =3D size;
-+        base +=3D size;
-+    }
++    ret =3D kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
++    return ret > 0 ? ret : 40;
 +}
 +
- static void machvirt_init(MachineState *machine)
+ int kvm_arch_init(MachineState *ms, KVMState *s)
  {
-     VirtMachineState *vms =3D VIRT_MACHINE(machine);
-@@ -1368,6 +1405,8 @@ static void machvirt_init(MachineState *machine)
-     bool firmware_loaded =3D bios_name || drive_get(IF_PFLASH, 0, 0);
-     bool aarch64 =3D true;
+     /* For ARM interrupt delivery is always asynchronous,
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 6393455b1d..2a07333c61 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -207,6 +207,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeature=
+s *ahcf);
+  */
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
 =20
-+    virt_set_memmap(vms);
++/**
++ * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
++ * IPA address space supported by KVM
++ *
++ * @ms: Machine state handle
++ */
++int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
 +
-     /* We can probe only here because during property set
-      * KVM is not available yet
-      */
-@@ -1845,7 +1884,6 @@ static void virt_instance_init(Object *obj)
-                                     "Valid values are none and smmuv3",
-                                     NULL);
-=20
--    vms->memmap =3D a15memmap;
-     vms->irqmap =3D a15irqmap;
+ /**
+  * kvm_arm_sync_mpstate_to_kvm
+  * @cpu: ARMCPU
+@@ -239,6 +247,11 @@ static inline void kvm_arm_set_cpu_features_from_hos=
+t(ARMCPU *cpu)
+     cpu->host_cpu_probe_failed =3D true;
  }
 =20
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index a27086d524..f3f7fae4ac 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -64,7 +64,6 @@ enum {
-     VIRT_GIC_VCPU,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
--    VIRT_HIGH_GIC_REDIST2,
-     VIRT_SMMU,
-     VIRT_UART,
-     VIRT_MMIO,
-@@ -74,12 +73,18 @@ enum {
-     VIRT_PCIE_MMIO,
-     VIRT_PCIE_PIO,
-     VIRT_PCIE_ECAM,
--    VIRT_HIGH_PCIE_ECAM,
-     VIRT_PLATFORM_BUS,
--    VIRT_HIGH_PCIE_MMIO,
-     VIRT_GPIO,
-     VIRT_SECURE_UART,
-     VIRT_SECURE_MEM,
-+    VIRT_LOWMEMMAP_LAST,
-+};
++static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
++{
++    return -ENOENT;
++}
 +
-+/* indices of IO regions located after the RAM */
-+enum {
-+    VIRT_HIGH_GIC_REDIST2 =3D  VIRT_LOWMEMMAP_LAST,
-+    VIRT_HIGH_PCIE_ECAM,
-+    VIRT_HIGH_PCIE_MMIO,
- };
-=20
- typedef enum VirtIOMMUType {
-@@ -116,7 +121,7 @@ typedef struct {
-     int32_t gic_version;
-     VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
--    const MemMapEntry *memmap;
-+    MemMapEntry *memmap;
-     const int *irqmap;
-     int smp_cpus;
-     void *fdt;
+ static inline int kvm_arm_vgic_probe(void)
+ {
+     return 0;
 --=20
 2.20.1
 

@@ -1,465 +1,570 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4545892wrx;
-        Tue, 5 Mar 2019 01:35:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwikRNepYfZUxc4uVgtdp36Jx7whRK9+muyQqm51TzgSvpf38b7aW5/9WZn5U9teIOpm2CG
-X-Received: by 2002:a81:5507:: with SMTP id j7mr119945ywb.491.1551778548328;
-        Tue, 05 Mar 2019 01:35:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551778548; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4549089wrx;
+        Tue, 5 Mar 2019 01:40:14 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxNs43KQ+McqET90p96PWe/DrGWRXDbB/V6QRnwUo01sEzm50xmgMhRQGX0RhAd/bB1Cxqw
+X-Received: by 2002:a0d:d4d6:: with SMTP id w205mr146879ywd.103.1551778814755;
+        Tue, 05 Mar 2019 01:40:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551778814; cv=none;
         d=google.com; s=arc-20160816;
-        b=nBYafxlpZmvLxOLrkF08ck1nBr1+eDTW77P+j41qekcrbeamngjPppWeOVORhf3e4s
-         kleiyim6VlJ20964WTGSysUwY5LwGk/WN9QvIxyXtgWBET2P3692tZeckqWBr1sN4Rh5
-         yqTi+kESIieR2Doze3Q/oIN5mcU/DhhGCESYVBRt+o7F2kHHf56QuTvFPEfI+WlbxMpk
-         bGZ+hOG1O36yNfBhR1EMbmc3K7CaVpK7HRY3HrdGwqCyEqP2Tsh7y4O8Edi0ObyHAGxt
-         qgPPsGiKA8msNqYG/o/JZjXH249QYm+K+GUpW1b8Lg/xeDw9WTyH1wSPbi/hPjX0Cmgr
-         hXEQ==
+        b=nb9hDFCk9lwGMLNmXYvzOv41OcgUMZxErB5+LGmY6Ap02baUUthXPhRt00GJl1bMrJ
+         EuYn3CxbG9SslpmrDy/2FgjrSONpMy+kXrYJNXn9Xv/9s3cfkzfBq8fHvFLxaKF9hiLG
+         eGNFvM+FXbc5I4RdX22YNidmC++8vWGxPRQsH32EaDe0wuHUwA69crEFjpLRBbaEaO7r
+         mOUvp/cp6NEJ7bqEfRM25kw+38eIi5s7W/fBioqDEJ05bZcSItq2KzmxJ+imSxilOEMT
+         P0rEdlAQc0tFG8fgWToBorryHSVWMBz3q+WFIZ9JMpAeLlcWPwrqqQVyLtm+268fS4AB
+         HrpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id
-         :content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:from:references:to;
-        bh=knhAUY+4cTo5ViOoHYGhRCoQ/GT1uTdFVCaowUOfgwM=;
-        b=wyRr7ZPL2OsqTvPXvM6/b3Zkng8MUpzCGa4+Ss7KnSpnHT9jI8mdgtoO9rOUBOB9OR
-         0lEKzGeZMBf8DWxV5bH4VauJJTExyfmsSXUgYAXyqBLuxmPkUZz8y005G31keIgC3V9f
-         EpyBY9W9nHlDQDvmKICSRQJUNH01hjGtagVZS6Hrom+CmkgRdQ0RQVftCBx5AfwK5fMs
-         5SasJ8VcdkM8QI1ak5pa7TrSKBm10FI9vAfZT6RIkU96rVOYuunQ3IJY9wftJ8NZN4xb
-         QzjKpBOpzS+qC5AuhVCAsgDGMhLbp8EOec6ic65QuYKJ4LUXLWcbcJGDVs9bheVv/sT9
-         Y1Fw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=gtbQWM6NG4LBXMtYCe4YgbfkfY7z9FYFpCNSDe7vd7o=;
+        b=KVxTWuqyJMFm8NJJLowwRU1EHUe/hbngN9KGiIaJeBoqTvXIYwSzpMEG0PTFQ9c4yI
+         KrbJxKaGcQtycWdcuVZ+FCyYZPp1mPm1kN1oHFBCyMS9aDRdJxv+5dswmKxO1d9hSOnq
+         EanXPojttI+x7IfpKK1kFXnZyfiIJg+ERVT0MSyFtoQzjoex9KZtpKcMDYC4ZmORICVo
+         gc4aoE/519W017DsKLBIXYIGpE6vwtxfMpe3qchLPhnCC9edFGP+nsz2PZVdPtflsZ18
+         ZmWilJTFRBJ35ZRPn6djmkCPD21dFGHoR3zWVefbehs2nb4Lak9i3u9HzqJaLOdhaUjw
+         MZ6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si3181743ybc.134.2019.03.05.01.35.48
+        by mx.google.com with ESMTPS id t84si4899940ywc.339.2019.03.05.01.40.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 01:35:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Mar 2019 01:40:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([127.0.0.1]:40212 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:40242 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h16UF-0001dr-RA
-	for alex.bennee@linaro.org; Tue, 05 Mar 2019 04:35:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43836)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h16YY-0002qZ-72
+	for alex.bennee@linaro.org; Tue, 05 Mar 2019 04:40:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44749)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sbhat@linux.ibm.com>) id 1h16Tx-0001Yi-43
-	for qemu-devel@nongnu.org; Tue, 05 Mar 2019 04:35:30 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h16YN-0002qJ-1f
+	for qemu-arm@nongnu.org; Tue, 05 Mar 2019 04:40:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sbhat@linux.ibm.com>) id 1h16Tv-0000xP-7p
-	for qemu-devel@nongnu.org; Tue, 05 Mar 2019 04:35:29 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:46000
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sbhat@linux.ibm.com>) id 1h16Tu-0000w4-Vs
-	for qemu-devel@nongnu.org; Tue, 05 Mar 2019 04:35:27 -0500
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
-	x259ZBHZ016402
-	for <qemu-devel@nongnu.org>; Tue, 5 Mar 2019 04:35:25 -0500
-Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 2r1pj4048h-1
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
-	for <qemu-devel@nongnu.org>; Tue, 05 Mar 2019 04:35:22 -0500
-Received: from localhost
-	by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-devel@nongnu.org> from <sbhat@linux.ibm.com>;
-	Tue, 5 Mar 2019 09:35:19 -0000
-Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
-	by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
-	Tue, 5 Mar 2019 09:35:16 -0000
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
-	(b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
-	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id x259ZF9B58982642
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Tue, 5 Mar 2019 09:35:15 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0705EA405F;
-	Tue,  5 Mar 2019 09:35:15 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 2FBF7A405B;
-	Tue,  5 Mar 2019 09:35:12 +0000 (GMT)
-Received: from [9.199.196.93] (unknown [9.199.196.93])
-	by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
-	Tue,  5 Mar 2019 09:35:12 +0000 (GMT)
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	(envelope-from <eric.auger@redhat.com>) id 1h16YL-0007Ye-6i
+	for qemu-arm@nongnu.org; Tue, 05 Mar 2019 04:40:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43196)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h16YK-0007Ss-SX; Tue, 05 Mar 2019 04:40:01 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 99B48307D944;
+	Tue,  5 Mar 2019 09:39:59 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2666861B7A;
+	Tue,  5 Mar 2019 09:39:50 +0000 (UTC)
+To: Shivaprasad G Bhat <sbhat@linux.ibm.com>, eric.auger.pro@gmail.com,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
-	david@redhat.com, pbonzini@redhat.com, ehabkost@redhat.com,
-	richard.henderson@linaro.org
+	david@redhat.com, 
+	pbonzini@redhat.com, ehabkost@redhat.com, richard.henderson@linaro.org
 References: <20190301140623.5390-1-eric.auger@redhat.com>
-From: Shivaprasad G Bhat <sbhat@linux.ibm.com>
-Date: Tue, 5 Mar 2019 15:05:11 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	<e0565169-23e6-5934-47b1-478130ee987e@linux.ibm.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <25a67533-b557-25dd-c528-0034fe06c3e2@redhat.com>
+Date: Tue, 5 Mar 2019 10:39:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190301140623.5390-1-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <e0565169-23e6-5934-47b1-478130ee987e@linux.ibm.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-TM-AS-GCONF: 00
-x-cbid: 19030509-0008-0000-0000-000002C8B183
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19030509-0009-0000-0000-00002234B715
-Message-Id: <e0565169-23e6-5934-47b1-478130ee987e@linux.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
-	definitions=2019-03-05_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	priorityscore=1501
-	malwarescore=0 suspectscore=2 phishscore=0 bulkscore=0 spamscore=0
-	clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
-	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
-	scancount=1 engine=8.0.1-1810050000 definitions=main-1903050069
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-devel] [PATCH] machine: Move acpi_nvdimm_state into
- struct MachineState
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.48]);
+	Tue, 05 Mar 2019 09:39:59 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] machine: Move acpi_nvdimm_state
+ into struct MachineState
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kAKKXcGV98TB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uFYeHMNIg2r7
 
+Hi Shivaprasad,
 
+On 3/5/19 10:35 AM, Shivaprasad G Bhat wrote:
+>=20
+>=20
+> On 03/01/2019 07:36 PM, Eric Auger wrote:
+>> As NVDIMM support is looming for ARM and SPAPR, let's
+>> move the acpi_nvdimm_state to the generic machine struct
+> Name - "acpi_nvdimm_state" sounds very x86 specific.
+>=20
+> Could you please rename ?
+Sure, do you have any suggestion?
 
-On 03/01/2019 07:36 PM, Eric Auger wrote:
-> As NVDIMM support is looming for ARM and SPAPR, let's
-> move the acpi_nvdimm_state to the generic machine struct
-Name - "acpi_nvdimm_state" sounds very x86 specific.
+Thanks
 
-Could you please rename ?
-
-Thanks,
-Shivaprasad
-> instead of duplicating the same code in several machines.
->
-> nvdimm and nvdimm-persistence become generic machine options.
-> We also add a description for those options.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->   hw/core/machine.c        | 57 ++++++++++++++++++++++++++++++++++++++++
->   hw/i386/acpi-build.c     |  6 ++---
->   hw/i386/pc.c             | 56 +++------------------------------------
->   hw/i386/pc_piix.c        |  4 +--
->   hw/i386/pc_q35.c         |  4 +--
->   include/hw/boards.h      |  2 ++
->   include/hw/i386/pc.h     |  4 ---
->   include/hw/mem/pc-dimm.h |  1 -
->   8 files changed, 70 insertions(+), 64 deletions(-)
->
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 766ca5899d..19a5ee7cd8 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -481,6 +481,47 @@ static void machine_set_memory_encryption(Object *obj, const char *value,
->       ms->memory_encryption = g_strdup(value);
->   }
->   
-> +static bool machine_get_nvdimm(Object *obj, Error **errp)
-> +{
-> +    MachineState *ms = MACHINE(obj);
-> +
-> +    return ms->acpi_nvdimm_state.is_enabled;
-> +}
-> +
-> +static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
-> +{
-> +    MachineState *ms = MACHINE(obj);
-> +
-> +    ms->acpi_nvdimm_state.is_enabled = value;
-> +}
-> +
-> +static char *machine_get_nvdimm_persistence(Object *obj, Error **errp)
-> +{
-> +    MachineState *ms = MACHINE(obj);
-> +
-> +    return g_strdup(ms->acpi_nvdimm_state.persistence_string);
-> +}
-> +
-> +static void machine_set_nvdimm_persistence(Object *obj, const char *value,
-> +                                               Error **errp)
-> +{
-> +    MachineState *ms = MACHINE(obj);
-> +    AcpiNVDIMMState *nvdimm_state = &ms->acpi_nvdimm_state;
-> +
-> +    if (strcmp(value, "cpu") == 0)
-> +        nvdimm_state->persistence = 3;
-> +    else if (strcmp(value, "mem-ctrl") == 0)
-> +        nvdimm_state->persistence = 2;
-> +    else {
-> +        error_setg(errp, "-machine nvdimm-persistence=%s: unsupported option",
-> +                   value);
-> +        return;
-> +    }
-> +
-> +    g_free(nvdimm_state->persistence_string);
-> +    nvdimm_state->persistence_string = g_strdup(value);
-> +}
-> +
->   void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
->   {
->       strList *item = g_new0(strList, 1);
-> @@ -765,6 +806,20 @@ static void machine_class_init(ObjectClass *oc, void *data)
->           &error_abort);
->       object_class_property_set_description(oc, "memory-encryption",
->           "Set memory encryption object to use", &error_abort);
-> +
-> +    object_class_property_add_bool(oc, "nvdimm",
-> +        machine_get_nvdimm, machine_set_nvdimm, &error_abort);
-> +    object_class_property_set_description(oc, "nvdimm",
-> +                                         "Set on/off to enable/disable NVDIMM "
-> +                                         "instantiation", NULL);
-> +
-> +    object_class_property_add_str(oc, "nvdimm-persistence",
-> +                                  machine_get_nvdimm_persistence,
-> +                                  machine_set_nvdimm_persistence, &error_abort);
-> +    object_class_property_set_description(oc, "nvdimm-persistence",
-> +                                          "Set NVDIMM persistence"
-> +                                          "Valid values are cpu and mem-ctrl",
-> +                                          NULL);
->   }
->   
->   static void machine_class_base_init(ObjectClass *oc, void *data)
-> @@ -790,6 +845,8 @@ static void machine_initfn(Object *obj)
->       ms->dump_guest_core = true;
->       ms->mem_merge = true;
->       ms->enable_graphics = true;
-> +    /* nvdimm is disabled on default. */
-> +    ms->acpi_nvdimm_state.is_enabled = false;
->   
->       /* Register notifier when init is done for sysbus sanity checks */
->       ms->sysbus_notifier.notify = machine_init_notify;
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 9ecc96dcc7..622ccb9408 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->               aml_append(scope, method);
->           }
->   
-> -        if (pcms->acpi_nvdimm_state.is_enabled) {
-> +        if (machine->acpi_nvdimm_state.is_enabled) {
->               method = aml_method("_E04", 0, AML_NOTSERIALIZED);
->               aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
->                                             aml_int(0x80)));
-> @@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
->               build_dmar_q35(tables_blob, tables->linker);
->           }
->       }
-> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> +    if (machine->acpi_nvdimm_state.is_enabled) {
->           nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-> -                          &pcms->acpi_nvdimm_state, machine->ram_slots);
-> +                          &machine->acpi_nvdimm_state, machine->ram_slots);
->       }
->   
->       /* Add tables supplied by user (if any) */
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 3889eccdc3..356213e0b8 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -2096,6 +2096,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->   {
->       const PCMachineState *pcms = PC_MACHINE(hotplug_dev);
->       const PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-> +    const MachineState *ms = MACHINE(hotplug_dev);
->       const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
->       const uint64_t legacy_align = TARGET_PAGE_SIZE;
->   
-> @@ -2110,7 +2111,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->           return;
->       }
->   
-> -    if (is_nvdimm && !pcms->acpi_nvdimm_state.is_enabled) {
-> +    if (is_nvdimm && !ms->acpi_nvdimm_state.is_enabled) {
->           error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M'");
->           return;
->       }
-> @@ -2124,6 +2125,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_dev,
->   {
->       Error *local_err = NULL;
->       PCMachineState *pcms = PC_MACHINE(hotplug_dev);
-> +    MachineState *ms = MACHINE(hotplug_dev);
->       bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
->   
->       pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
-> @@ -2132,7 +2134,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_dev,
->       }
->   
->       if (is_nvdimm) {
-> -        nvdimm_plug(&pcms->acpi_nvdimm_state);
-> +        nvdimm_plug(&ms->acpi_nvdimm_state);
->       }
->   
->       hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &error_abort);
-> @@ -2574,47 +2576,6 @@ static void pc_machine_set_smm(Object *obj, Visitor *v, const char *name,
->       visit_type_OnOffAuto(v, name, &pcms->smm, errp);
->   }
->   
-> -static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
-> -{
-> -    PCMachineState *pcms = PC_MACHINE(obj);
-> -
-> -    return pcms->acpi_nvdimm_state.is_enabled;
-> -}
-> -
-> -static void pc_machine_set_nvdimm(Object *obj, bool value, Error **errp)
-> -{
-> -    PCMachineState *pcms = PC_MACHINE(obj);
-> -
-> -    pcms->acpi_nvdimm_state.is_enabled = value;
-> -}
-> -
-> -static char *pc_machine_get_nvdimm_persistence(Object *obj, Error **errp)
-> -{
-> -    PCMachineState *pcms = PC_MACHINE(obj);
-> -
-> -    return g_strdup(pcms->acpi_nvdimm_state.persistence_string);
-> -}
-> -
-> -static void pc_machine_set_nvdimm_persistence(Object *obj, const char *value,
-> -                                               Error **errp)
-> -{
-> -    PCMachineState *pcms = PC_MACHINE(obj);
-> -    AcpiNVDIMMState *nvdimm_state = &pcms->acpi_nvdimm_state;
-> -
-> -    if (strcmp(value, "cpu") == 0)
-> -        nvdimm_state->persistence = 3;
-> -    else if (strcmp(value, "mem-ctrl") == 0)
-> -        nvdimm_state->persistence = 2;
-> -    else {
-> -        error_setg(errp, "-machine nvdimm-persistence=%s: unsupported option",
-> -                   value);
-> -        return;
-> -    }
-> -
-> -    g_free(nvdimm_state->persistence_string);
-> -    nvdimm_state->persistence_string = g_strdup(value);
-> -}
-> -
->   static bool pc_machine_get_smbus(Object *obj, Error **errp)
->   {
->       PCMachineState *pcms = PC_MACHINE(obj);
-> @@ -2664,8 +2625,6 @@ static void pc_machine_initfn(Object *obj)
->       pcms->max_ram_below_4g = 0; /* use default */
->       pcms->smm = ON_OFF_AUTO_AUTO;
->       pcms->vmport = ON_OFF_AUTO_AUTO;
-> -    /* nvdimm is disabled on default. */
-> -    pcms->acpi_nvdimm_state.is_enabled = false;
->       /* acpi build is enabled by default if machine supports it */
->       pcms->acpi_build_enabled = PC_MACHINE_GET_CLASS(pcms)->has_acpi_build;
->       pcms->smbus_enabled = true;
-> @@ -2826,13 +2785,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
->       object_class_property_set_description(oc, PC_MACHINE_VMPORT,
->           "Enable vmport (pc & q35)", &error_abort);
->   
-> -    object_class_property_add_bool(oc, PC_MACHINE_NVDIMM,
-> -        pc_machine_get_nvdimm, pc_machine_set_nvdimm, &error_abort);
-> -
-> -    object_class_property_add_str(oc, PC_MACHINE_NVDIMM_PERSIST,
-> -        pc_machine_get_nvdimm_persistence,
-> -        pc_machine_set_nvdimm_persistence, &error_abort);
-> -
->       object_class_property_add_bool(oc, PC_MACHINE_SMBUS,
->           pc_machine_get_smbus, pc_machine_set_smbus, &error_abort);
->   
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index fd0f2c268f..8b94b70f14 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
->                                    PC_MACHINE_ACPI_DEVICE_PROP, &error_abort);
->       }
->   
-> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> +    if (machine->acpi_nvdimm_state.is_enabled) {
-> +        nvdimm_init_acpi_state(&machine->acpi_nvdimm_state, system_io,
->                                  pcms->fw_cfg, OBJECT(pcms));
->       }
->   }
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 4a175ea50e..26727c964d 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
->       pc_vga_init(isa_bus, host_bus);
->       pc_nic_init(pcmc, isa_bus, host_bus);
->   
-> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> +    if (machine->acpi_nvdimm_state.is_enabled) {
-> +        nvdimm_init_acpi_state(&machine->acpi_nvdimm_state, system_io,
->                                  pcms->fw_cfg, OBJECT(pcms));
->       }
->   }
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 05f9f45c3d..b55c9cc087 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -8,6 +8,7 @@
->   #include "hw/qdev.h"
->   #include "qom/object.h"
->   #include "qom/cpu.h"
-> +#include "hw/mem/nvdimm.h"
->   
->   /**
->    * memory_region_allocate_system_memory - Allocate a board's main memory
-> @@ -268,6 +269,7 @@ struct MachineState {
->       const char *cpu_type;
->       AccelState *accelerator;
->       CPUArchIdList *possible_cpus;
-> +    AcpiNVDIMMState acpi_nvdimm_state;
->   };
->   
->   #define DEFINE_MACHINE(namestr, machine_initfn) \
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 3ff127ebd0..f7c59743e0 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -45,8 +45,6 @@ struct PCMachineState {
->       OnOffAuto vmport;
->       OnOffAuto smm;
->   
-> -    AcpiNVDIMMState acpi_nvdimm_state;
-> -
->       bool acpi_build_enabled;
->       bool smbus_enabled;
->       bool sata_enabled;
-> @@ -74,8 +72,6 @@ struct PCMachineState {
->   #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
->   #define PC_MACHINE_VMPORT           "vmport"
->   #define PC_MACHINE_SMM              "smm"
-> -#define PC_MACHINE_NVDIMM           "nvdimm"
-> -#define PC_MACHINE_NVDIMM_PERSIST   "nvdimm-persistence"
->   #define PC_MACHINE_SMBUS            "smbus"
->   #define PC_MACHINE_SATA             "sata"
->   #define PC_MACHINE_PIT              "pit"
-> diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
-> index 01436b9f50..3e5489d3a1 100644
-> --- a/include/hw/mem/pc-dimm.h
-> +++ b/include/hw/mem/pc-dimm.h
-> @@ -19,7 +19,6 @@
->   #include "exec/memory.h"
->   #include "sysemu/hostmem.h"
->   #include "hw/qdev.h"
-> -#include "hw/boards.h"
->   
->   #define TYPE_PC_DIMM "pc-dimm"
->   #define PC_DIMM(obj) \
-
+Eric
+>=20
+> Thanks,
+> Shivaprasad
+>> instead of duplicating the same code in several machines.
+>>
+>> nvdimm and nvdimm-persistence become generic machine options.
+>> We also add a description for those options.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>> ---
+>> =C2=A0 hw/core/machine.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 5=
+7 ++++++++++++++++++++++++++++++++++++++++
+>> =C2=A0 hw/i386/acpi-build.c=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 6 ++---
+>> =C2=A0 hw/i386/pc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 | 56 +++------------------------------------
+>> =C2=A0 hw/i386/pc_piix.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0 4 +--
+>> =C2=A0 hw/i386/pc_q35.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0 4 +--
+>> =C2=A0 include/hw/boards.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 2 ++
+>> =C2=A0 include/hw/i386/pc.h=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 4 ---
+>> =C2=A0 include/hw/mem/pc-dimm.h |=C2=A0 1 -
+>> =C2=A0 8 files changed, 70 insertions(+), 64 deletions(-)
+>>
+>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>> index 766ca5899d..19a5ee7cd8 100644
+>> --- a/hw/core/machine.c
+>> +++ b/hw/core/machine.c
+>> @@ -481,6 +481,47 @@ static void machine_set_memory_encryption(Object
+>> *obj, const char *value,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ms->memory_encryption =3D g_strdup(valu=
+e);
+>> =C2=A0 }
+>> =C2=A0 +static bool machine_get_nvdimm(Object *obj, Error **errp)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 MachineState *ms =3D MACHINE(obj);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return ms->acpi_nvdimm_state.is_enabled;
+>> +}
+>> +
+>> +static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 MachineState *ms =3D MACHINE(obj);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 ms->acpi_nvdimm_state.is_enabled =3D value;
+>> +}
+>> +
+>> +static char *machine_get_nvdimm_persistence(Object *obj, Error **errp=
+)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 MachineState *ms =3D MACHINE(obj);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 return g_strdup(ms->acpi_nvdimm_state.persistence_=
+string);
+>> +}
+>> +
+>> +static void machine_set_nvdimm_persistence(Object *obj, const char
+>> *value,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Error **errp)
+>> +{
+>> +=C2=A0=C2=A0=C2=A0 MachineState *ms =3D MACHINE(obj);
+>> +=C2=A0=C2=A0=C2=A0 AcpiNVDIMMState *nvdimm_state =3D &ms->acpi_nvdimm=
+_state;
+>> +
+>> +=C2=A0=C2=A0=C2=A0 if (strcmp(value, "cpu") =3D=3D 0)
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence =
+=3D 3;
+>> +=C2=A0=C2=A0=C2=A0 else if (strcmp(value, "mem-ctrl") =3D=3D 0)
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence =
+=3D 2;
+>> +=C2=A0=C2=A0=C2=A0 else {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "-machine=
+ nvdimm-persistence=3D%s: unsupported
+>> option",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> +=C2=A0=C2=A0=C2=A0 }
+>> +
+>> +=C2=A0=C2=A0=C2=A0 g_free(nvdimm_state->persistence_string);
+>> +=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence_string =3D g_strdup(valu=
+e);
+>> +}
+>> +
+>> =C2=A0 void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, c=
+onst
+>> char *type)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 strList *item =3D g_new0(strList, 1);
+>> @@ -765,6 +806,20 @@ static void machine_class_init(ObjectClass *oc,
+>> void *data)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &error_abort);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_class_property_set_description(o=
+c, "memory-encryption",
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Set memory enc=
+ryption object to use", &error_abort);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 object_class_property_add_bool(oc, "nvdimm",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 machine_get_nvdimm, machin=
+e_set_nvdimm, &error_abort);
+>> +=C2=A0=C2=A0=C2=A0 object_class_property_set_description(oc, "nvdimm"=
+,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 "Set on/off to
+>> enable/disable NVDIMM "
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 "instantiation", NULL);
+>> +
+>> +=C2=A0=C2=A0=C2=A0 object_class_property_add_str(oc, "nvdimm-persiste=
+nce",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 machine_get_nvdimm=
+_persistence,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 machine_set_nvdimm=
+_persistence,
+>> &error_abort);
+>> +=C2=A0=C2=A0=C2=A0 object_class_property_set_description(oc, "nvdimm-=
+persistence",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Set NVDIMM persistence"
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Valid values are cpu and
+>> mem-ctrl",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 NULL);
+>> =C2=A0 }
+>> =C2=A0 =C2=A0 static void machine_class_base_init(ObjectClass *oc, voi=
+d *data)
+>> @@ -790,6 +845,8 @@ static void machine_initfn(Object *obj)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ms->dump_guest_core =3D true;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ms->mem_merge =3D true;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ms->enable_graphics =3D true;
+>> +=C2=A0=C2=A0=C2=A0 /* nvdimm is disabled on default. */
+>> +=C2=A0=C2=A0=C2=A0 ms->acpi_nvdimm_state.is_enabled =3D false;
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Register notifier when init i=
+s done for sysbus sanity
+>> checks */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ms->sysbus_notifier.notify =3D machine_=
+init_notify;
+>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>> index 9ecc96dcc7..622ccb9408 100644
+>> --- a/hw/i386/acpi-build.c
+>> +++ b/hw/i386/acpi-build.c
+>> @@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linke=
+r,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 aml_append(scope, method);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (pcms->acpi_nvdi=
+mm_state.is_enabled) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (machine->acpi_nvdimm_s=
+tate.is_enabled) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 method =3D aml_method("_E04", 0, AML_NOTSERIALIZED);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aml_int(0x80)));
+>> @@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables,
+>> MachineState *machine)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 build_dmar_q35(tables_blob, tables->linker);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -=C2=A0=C2=A0=C2=A0 if (pcms->acpi_nvdimm_state.is_enabled) {
+>> +=C2=A0=C2=A0=C2=A0 if (machine->acpi_nvdimm_state.is_enabled) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_build_ac=
+pi(table_offsets, tables_blob, tables->linker,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 &pcms->acpi_nvdimm_state, machine->ram_slots);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 &machine->acpi_nvdimm_state,
+>> machine->ram_slots);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* Add tables supplied by user (=
+if any) */
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 3889eccdc3..356213e0b8 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -2096,6 +2096,7 @@ static void pc_memory_pre_plug(HotplugHandler
+>> *hotplug_dev, DeviceState *dev,
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const PCMachineState *pcms =3D PC_MACHI=
+NE(hotplug_dev);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const PCMachineClass *pcmc =3D PC_MACHI=
+NE_GET_CLASS(pcms);
+>> +=C2=A0=C2=A0=C2=A0 const MachineState *ms =3D MACHINE(hotplug_dev);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const bool is_nvdimm =3D object_dynamic=
+_cast(OBJECT(dev),
+>> TYPE_NVDIMM);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const uint64_t legacy_align =3D TARGET_=
+PAGE_SIZE;
+>> =C2=A0 @@ -2110,7 +2111,7 @@ static void pc_memory_pre_plug(HotplugHan=
+dler
+>> *hotplug_dev, DeviceState *dev,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (is_nvdimm && !pcms->acpi_nvdimm_state.i=
+s_enabled) {
+>> +=C2=A0=C2=A0=C2=A0 if (is_nvdimm && !ms->acpi_nvdimm_state.is_enabled=
+) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp=
+, "nvdimm is not enabled: missing 'nvdimm' in
+>> '-M'");
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> @@ -2124,6 +2125,7 @@ static void pc_memory_plug(HotplugHandler
+>> *hotplug_dev,
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Error *local_err =3D NULL;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(hot=
+plug_dev);
+>> +=C2=A0=C2=A0=C2=A0 MachineState *ms =3D MACHINE(hotplug_dev);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool is_nvdimm =3D object_dynamic_cast(=
+OBJECT(dev), TYPE_NVDIMM);
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_dimm_plug(PC_DIMM(dev), MACHI=
+NE(pcms), &local_err);
+>> @@ -2132,7 +2134,7 @@ static void pc_memory_plug(HotplugHandler
+>> *hotplug_dev,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (is_nvdimm) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_plug(&pcms->acpi_nv=
+dimm_state);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_plug(&ms->acpi_nvdi=
+mm_state);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hotplug_handler_plug(HOTPLUG_HAN=
+DLER(pcms->acpi_dev), dev,
+>> &error_abort);
+>> @@ -2574,47 +2576,6 @@ static void pc_machine_set_smm(Object *obj,
+>> Visitor *v, const char *name,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 visit_type_OnOffAuto(v, name, &pcms->sm=
+m, errp);
+>> =C2=A0 }
+>> =C2=A0 -static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
+>> -{
+>> -=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -=C2=A0=C2=A0=C2=A0 return pcms->acpi_nvdimm_state.is_enabled;
+>> -}
+>> -
+>> -static void pc_machine_set_nvdimm(Object *obj, bool value, Error **er=
+rp)
+>> -{
+>> -=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -=C2=A0=C2=A0=C2=A0 pcms->acpi_nvdimm_state.is_enabled =3D value;
+>> -}
+>> -
+>> -static char *pc_machine_get_nvdimm_persistence(Object *obj, Error
+>> **errp)
+>> -{
+>> -=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -=C2=A0=C2=A0=C2=A0 return g_strdup(pcms->acpi_nvdimm_state.persistenc=
+e_string);
+>> -}
+>> -
+>> -static void pc_machine_set_nvdimm_persistence(Object *obj, const char
+>> *value,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Error **errp)
+>> -{
+>> -=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -=C2=A0=C2=A0=C2=A0 AcpiNVDIMMState *nvdimm_state =3D &pcms->acpi_nvdi=
+mm_state;
+>> -
+>> -=C2=A0=C2=A0=C2=A0 if (strcmp(value, "cpu") =3D=3D 0)
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence =
+=3D 3;
+>> -=C2=A0=C2=A0=C2=A0 else if (strcmp(value, "mem-ctrl") =3D=3D 0)
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence =
+=3D 2;
+>> -=C2=A0=C2=A0=C2=A0 else {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_setg(errp, "-machine=
+ nvdimm-persistence=3D%s: unsupported
+>> option",
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value);
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>> -=C2=A0=C2=A0=C2=A0 }
+>> -
+>> -=C2=A0=C2=A0=C2=A0 g_free(nvdimm_state->persistence_string);
+>> -=C2=A0=C2=A0=C2=A0 nvdimm_state->persistence_string =3D g_strdup(valu=
+e);
+>> -}
+>> -
+>> =C2=A0 static bool pc_machine_get_smbus(Object *obj, Error **errp)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 PCMachineState *pcms =3D PC_MACHINE(obj=
+);
+>> @@ -2664,8 +2625,6 @@ static void pc_machine_initfn(Object *obj)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->max_ram_below_4g =3D 0; /* use de=
+fault */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->smm =3D ON_OFF_AUTO_AUTO;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->vmport =3D ON_OFF_AUTO_AUTO;
+>> -=C2=A0=C2=A0=C2=A0 /* nvdimm is disabled on default. */
+>> -=C2=A0=C2=A0=C2=A0 pcms->acpi_nvdimm_state.is_enabled =3D false;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* acpi build is enabled by default if =
+machine supports it */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->acpi_build_enabled =3D
+>> PC_MACHINE_GET_CLASS(pcms)->has_acpi_build;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->smbus_enabled =3D true;
+>> @@ -2826,13 +2785,6 @@ static void pc_machine_class_init(ObjectClass
+>> *oc, void *data)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_class_property_set_description(o=
+c, PC_MACHINE_VMPORT,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "Enable vmport =
+(pc & q35)", &error_abort);
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 object_class_property_add_bool(oc, PC_MACHI=
+NE_NVDIMM,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_machine_get_nvdimm, pc_=
+machine_set_nvdimm, &error_abort);
+>> -
+>> -=C2=A0=C2=A0=C2=A0 object_class_property_add_str(oc, PC_MACHINE_NVDIM=
+M_PERSIST,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_machine_get_nvdimm_pers=
+istence,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_machine_set_nvdimm_pers=
+istence, &error_abort);
+>> -
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 object_class_property_add_bool(oc, PC_M=
+ACHINE_SMBUS,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_machine_get_=
+smbus, pc_machine_set_smbus, &error_abort);
+>> =C2=A0 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+>> index fd0f2c268f..8b94b70f14 100644
+>> --- a/hw/i386/pc_piix.c
+>> +++ b/hw/i386/pc_piix.c
+>> @@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 PC_MACHINE_ACPI=
+_DEVICE_PROP,
+>> &error_abort);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (pcms->acpi_nvdimm_state.is_enabled) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_init_acpi_state(&pc=
+ms->acpi_nvdimm_state, system_io,
+>> +=C2=A0=C2=A0=C2=A0 if (machine->acpi_nvdimm_state.is_enabled) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_init_acpi_state(&ma=
+chine->acpi_nvdimm_state, system_io,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->fw_cfg, OBJECT(pcms))=
+;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 }
+>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+>> index 4a175ea50e..26727c964d 100644
+>> --- a/hw/i386/pc_q35.c
+>> +++ b/hw/i386/pc_q35.c
+>> @@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_vga_init(isa_bus, host_bus);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pc_nic_init(pcmc, isa_bus, host_bus);
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 if (pcms->acpi_nvdimm_state.is_enabled) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_init_acpi_state(&pc=
+ms->acpi_nvdimm_state, system_io,
+>> +=C2=A0=C2=A0=C2=A0 if (machine->acpi_nvdimm_state.is_enabled) {
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 nvdimm_init_acpi_state(&ma=
+chine->acpi_nvdimm_state, system_io,
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pcms->fw_cfg, OBJECT(pcms))=
+;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0 }
+>> diff --git a/include/hw/boards.h b/include/hw/boards.h
+>> index 05f9f45c3d..b55c9cc087 100644
+>> --- a/include/hw/boards.h
+>> +++ b/include/hw/boards.h
+>> @@ -8,6 +8,7 @@
+>> =C2=A0 #include "hw/qdev.h"
+>> =C2=A0 #include "qom/object.h"
+>> =C2=A0 #include "qom/cpu.h"
+>> +#include "hw/mem/nvdimm.h"
+>> =C2=A0 =C2=A0 /**
+>> =C2=A0=C2=A0 * memory_region_allocate_system_memory - Allocate a board=
+'s main
+>> memory
+>> @@ -268,6 +269,7 @@ struct MachineState {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char *cpu_type;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AccelState *accelerator;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 CPUArchIdList *possible_cpus;
+>> +=C2=A0=C2=A0=C2=A0 AcpiNVDIMMState acpi_nvdimm_state;
+>> =C2=A0 };
+>> =C2=A0 =C2=A0 #define DEFINE_MACHINE(namestr, machine_initfn) \
+>> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+>> index 3ff127ebd0..f7c59743e0 100644
+>> --- a/include/hw/i386/pc.h
+>> +++ b/include/hw/i386/pc.h
+>> @@ -45,8 +45,6 @@ struct PCMachineState {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 OnOffAuto vmport;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 OnOffAuto smm;
+>> =C2=A0 -=C2=A0=C2=A0=C2=A0 AcpiNVDIMMState acpi_nvdimm_state;
+>> -
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool acpi_build_enabled;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool smbus_enabled;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool sata_enabled;
+>> @@ -74,8 +72,6 @@ struct PCMachineState {
+>> =C2=A0 #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
+>> =C2=A0 #define PC_MACHINE_VMPORT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 "vmport"
+>> =C2=A0 #define PC_MACHINE_SMM=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "smm"
+>> -#define PC_MACHINE_NVDIMM=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 "nvdimm"
+>> -#define PC_MACHINE_NVDIMM_PERSIST=C2=A0=C2=A0 "nvdimm-persistence"
+>> =C2=A0 #define PC_MACHINE_SMBUS=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "smbus"
+>> =C2=A0 #define PC_MACHINE_SATA=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "sata"
+>> =C2=A0 #define PC_MACHINE_PIT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "pit"
+>> diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
+>> index 01436b9f50..3e5489d3a1 100644
+>> --- a/include/hw/mem/pc-dimm.h
+>> +++ b/include/hw/mem/pc-dimm.h
+>> @@ -19,7 +19,6 @@
+>> =C2=A0 #include "exec/memory.h"
+>> =C2=A0 #include "sysemu/hostmem.h"
+>> =C2=A0 #include "hw/qdev.h"
+>> -#include "hw/boards.h"
+>> =C2=A0 =C2=A0 #define TYPE_PC_DIMM "pc-dimm"
+>> =C2=A0 #define PC_DIMM(obj) \
+>=20
+>=20

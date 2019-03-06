@@ -1,101 +1,129 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6292184wrx;
-        Wed, 6 Mar 2019 11:57:56 -0800 (PST)
-X-Received: by 2002:a9d:7d05:: with SMTP id v5mr5810187otn.201.1551902276396;
-        Wed, 06 Mar 2019 11:57:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551902276; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6484793wrx;
+        Wed, 6 Mar 2019 15:49:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyppZKkfVEx+clyWD4KqdBoKcR0wy1rVvnHp+hoXaO2YX26x4EKLV2u3qp9cZ6CknXjLInB
+X-Received: by 2002:ac8:35f8:: with SMTP id l53mr8128588qtb.15.1551916172823;
+        Wed, 06 Mar 2019 15:49:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551916172; cv=none;
         d=google.com; s=arc-20160816;
-        b=hruXIp5EG98I66WF/eeoKix+XlHzQTI5J3n0v4+PLGSw0syo4FxDWKOD+NTsma9+Bm
-         H/0DzFYRCMVRjXQBFHQ5xxC18hERb4Ncehgdi3VohbYIIzlpDNrPzFAY5urvhUSwYjsf
-         dvO54jvPOFcXpdo41YneKPSsy4x74PexBR/NopWnpOBziExXh91F/IfsrsCvug5CTpWF
-         s1GF4YfOpBUxFTbvR2cv6XEINEVbkevt+KDKXUq56ysBqUYVMul+adOaQqjfRzxCacuD
-         LOI2Bij6ONDGVTzrpL63y77Ag6ZmNz+w9VI7ncX0Hrv1cFoNqySmd+JLUUiodps+brEV
-         MVxw==
+        b=0IQzmdlrpSGZrgLel+8xEAfu2/A7yvN9KKDoTmz6jpnTxxvAWUcCmD0uwzJx82sj0/
+         B0YShW/+/6Ep+Io6vHRiGFpVPLfCyu2H+zNA/oYXpV9QvpQrEHvN6sh0kLFc7ckQ+mIG
+         ZycJCW+I3LYyb4hDKrHclKh9YHtTNHxfIp59JBw7Ef3Uy4MHzoAaz7KTSD+7SIoiqr6h
+         GEaDQs9Sr38X9RvlpgO4gbMVkYuDWyn+kJ1EhYUaD888P+8hibouUcNWbjwFF2It8HZ+
+         J/a8QhSeiCZVzIXlOzYuLu32NoLY02BMXwxT2n/BN7q6UbqF4D0VtCX8W8JHyf+3+q/N
+         epTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=yfQD0T4BwReoRuz32f69IWQYHvvPK7eTZRhLX66S9ZQ=;
-        b=FRPFdRSaD6EtLT5HLpy5wL984q024tAg2pPNc87WLNrnZlOE0VoRnhDL3CqXOTRUDw
-         oMcAsTeviJkFXAiXj0+5LX52dvlPJ37FtjJkC81CXKftNrMEhJt8j6JGkh6cZB7Qac89
-         cAxE9EQ3BcCqrSmIwWJXMzk9W5RaquO9l+WitrWFC6I0laN+xigKvbnQ3G8xNWpYDRTp
-         hsq+RpvCWwFk2YaIZydw8qtOHPCfNQchvrt3xZwIp06wegDQdIWgEeenEVJaVQxa+enT
-         moI2H/XcGUhXRwt2pwamIN7G28pCp2gbqSgzFWqeToXyXgixopwJv/a9Fq33iF1wyXb4
-         pl8g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=iB26MdNCYp6DZmLzhRFIhwRfqSIXUu8HqXykfadqT4k=;
+        b=eScnnoWxqJIrbmmwqNsOz2O1d3D2+wzbQkJzXwcakVJ+96xKuY1zKwzgqtO2rb2f1/
+         fKCG8IY0jTwUTmAjCpUUuP/b2hECaeDxqZRNdQBo//imaWY2i1OxZ+MCtV4MqIuA1W89
+         tZ+dVCgC01OEAYe1hTplDnRdpKjCS49oraTBJUBvE8fWwob8qWqHKWTWiEXq3dpoV45z
+         JgP9A9P3g2mciyIkYVuSS0P6DvzT140eDs64eHzTSEN0R+lHRCxZEY95CjwWww+2bVwE
+         CUu7l/4EuTQTM2ldLVB+qIQfW2C9f7vm3lkzNQaCMizlNL6nZbe1yzb90eSsdgmDHi5X
+         iWmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MmjrcHo2;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d7sor1664552otl.145.2019.03.06.11.57.56
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 06 Mar 2019 11:57:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=PxCfxwAe;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=kxT71JpB;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out2-smtp.messagingengine.com (out2-smtp.messagingengine.com. [66.111.4.26])
+        by mx.google.com with ESMTPS id g23si1803683qtp.400.2019.03.06.15.49.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Mar 2019 15:49:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) client-ip=66.111.4.26;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MmjrcHo2;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=yfQD0T4BwReoRuz32f69IWQYHvvPK7eTZRhLX66S9ZQ=;
-        b=MmjrcHo2HDqPtrnsMHr87VuYoIZu1Qj9OfHo2vknxdo2YCeBXHmeqSzmYFFg79+22J
-         NQ7iQqaw3MwpWuvGRC174t7BsXL+w+Os9pBy8oWc2zbHHA9lf3EHHYHK6y0fM/0FrWst
-         tnxt4LTV9e1k2cWzWtz+QLmytkmZyJbf5lzVDT4s5woqR7h0iiYkHJ2wbyNC9D9mMIE5
-         4a/PM4Rft1Weqz9VLMF5iXAy4R5OSktKLW2kwmhrGjFptmT4c/YECpSI71bjpc0A4JDQ
-         wJ4OkL6Oc4dLJIKt1NPh7ukG5mnL2l1hgHC0eyOMjNng6I9GBhSKR/z+kI1C+QshOp25
-         huDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=yfQD0T4BwReoRuz32f69IWQYHvvPK7eTZRhLX66S9ZQ=;
-        b=eN/J4Lp7WMZm46iDqZ4Oz3Kww2KdK4Ws9SsJGOKfRwSA+k+ea+raTKWyfwLUseyRGr
-         GGj8QkBLYAOa2448Ao87aGxgtghNl00DLVgePpk0Zb/6W2va7fuMfXpnSvMHP3JiotMs
-         Zs/KRxBOfxgi6ujLJ9jcYD787cIrrinCEi/WUk+vGwKCT6Sb9sJmRrZ125vRBlc2sW0y
-         7djpDT8sZsqLxMGc4Ph0HCe5POyCzNzDLoU4CRX0rwoR3BC9Ica5w3CcwxC0yyJFKjJ4
-         bLLcvge67wJJwB4InvoROn7XB2Lu7UqB9VkjUNvr9lRuPHyDzq3Q/kjERiB/ryDEdwVl
-         myRA==
-X-Gm-Message-State: APjAAAVrqIHnMeORsiaBI9mXBrroD8PQylxfcaoVG5+J4ZiOZ6DG2J45
-	upCFH59MAmyf3uPMw7sfWD29sApHrdScarBjiH7wN0Vn
-X-Google-Smtp-Source: APXvYqxqdMB3QysADGVvRo0EeHY4jRJDGGGM3p2pgzrjEbRvzJvjoRWvp+xNkKAUHrZbkW0xNf6UQu6X6X9+ArkriBg=
-X-Received: by 2002:a9d:61c7:: with SMTP id h7mr5202192otk.363.1551902275928;
- Wed, 06 Mar 2019 11:57:55 -0800 (PST)
-MIME-Version: 1.0
-References: <20190304181813.8075-1-cota@braap.org> <2adf8423-458d-27c3-67bf-d4775104ad43@linaro.org>
-In-Reply-To: <2adf8423-458d-27c3-67bf-d4775104ad43@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 6 Mar 2019 19:57:44 +0000
-Message-ID: <CAFEAcA_z=ky-8XPLKxXEXJxAj+M5TWv7ZNrB1B0rJ2_Jna8GUA@mail.gmail.com>
-Subject: Re: [PATCH v7 00/73] per-CPU locks
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=PxCfxwAe;
+       dkim=pass header.i=@messagingengine.com header.s=fm2 header.b=kxT71JpB;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.26 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id EB1C42202A;
+	Wed,  6 Mar 2019 18:49:31 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Wed, 06 Mar 2019 18:49:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=mesmtp; bh=iB26MdNCYp6DZmLzhRFIhwRf
+	qSIXUu8HqXykfadqT4k=; b=PxCfxwAeepnBxHEg2ue+HMhq4UkYbPoiThqD/muC
+	3txUznznrxm24RavFiGvRUPW6NjffhMmiLB0fbXjcfJ5S0xRbnvHiA3CBrMlWFRW
+	d3eKXUHmhWS1qHY+WL9Szfe7ugRo+iOO/Hu+2aPn2wAx4WF7kQpRbWkah8PM2bb9
+	dRE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=iB26Md
+	NCYp6DZmLzhRFIhwRfqSIXUu8HqXykfadqT4k=; b=kxT71JpBAIzp08GleguRor
+	AA0YK6o8MvLXFvrjSdKflTg+5VpUK9MCkwFIP7mtiZpGCYPbq1cmcjcTVF+pozao
+	6ct10W5JNwsj3tdPNtIMYRdM+DgpFlD9C/dZ/QeZBqcgqEdsisFgEciFw7+ASXJm
+	ZJPTOMkZj8NKglG66p1PdSwlQ2wtv/nzzUlmOUpLtLRuanoYqsuZwHGfCom5yID9
+	rTL+BkN0ecFb4x7wNrMO8tPg80rigpqeapEYaq91jy6iBGFE2yKmzpajRCymf7K8
+	il68ADwpTWl6rqr6QYd90ZcAJinYwQ+7/sT5VYHrOOD2Ge1aRR8dU7DHxSOfNtWw
+	==
+X-ME-Sender: <xms:h1yAXJ18EcTTdKpa1T7rX5BLx3bmW0utwEtjmLEzHIJPQVbgP6FcdQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedutddrfeejgddufecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpeffhffvuffkfhggtggujggfsehttdertddtredvnecuhfhrohhmpedfgfhmihhl
+    ihhoucfirdcuvehothgrfdcuoegtohhtrgessghrrggrphdrohhrgheqnecukfhppeduvd
+    ekrdehledrvddtrddvudeinecurfgrrhgrmhepmhgrihhlfhhrohhmpegtohhtrgessghr
+    rggrphdrohhrghenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:h1yAXGzuXroYwGrUomjP26Psjr0ozpTgY0Scqg4ND0STFuVJhri6cw>
+    <xmx:h1yAXOXg3vlyszxYJo_8xfXGE7AzqbfY181zLqXBJOpz97Vs93fh6A>
+    <xmx:h1yAXFDOT77iF2hNuHcXZFtrUWi0DU7Z3uaKOfM9h3431DlRo2syZQ>
+    <xmx:i1yAXJl-38coUldH1SjUQoUb31jJe8Qr8dkN9JCuL1nIP3Y9A2ih7w>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 0161D10335;
+	Wed,  6 Mar 2019 18:49:27 -0500 (EST)
+Date: Wed, 6 Mar 2019 18:49:26 -0500
+From: "Emilio G. Cota" <cota@braap.org>
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: "Emilio G. Cota" <cota@braap.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, Alistair Francis <alistair23@gmail.com>, 
-	Andrzej Zaborowski <balrogg@gmail.com>, Anthony Green <green@moxielogic.com>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>, Chris Wulff <crwulff@gmail.com>, 
-	Cornelia Huck <cohuck@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
-	David Hildenbrand <david@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Fabien Chouteau <chouteau@adacore.com>, 
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, James Hogan <jhogan@kernel.org>, 
-	Laurent Vivier <laurent@vivier.eu>, Marek Vasut <marex@denx.de>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Max Filippov <jcmvbkbc@gmail.com>, 
-	Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@sifive.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	qemu-ppc <qemu-ppc@nongnu.org>, qemu-s390x <qemu-s390x@nongnu.org>, 
-	Sagar Karandikar <sagark@eecs.berkeley.edu>, Stafford Horne <shorne@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: /qigaBUoxXQB
+Cc: qemu-devel@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Alistair Francis <alistair23@gmail.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Anthony Green <green@moxielogic.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Chris Wulff <crwulff@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, James Hogan <jhogan@kernel.org>,
+	Laurent Vivier <laurent@vivier.eu>, Marek Vasut <marex@denx.de>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	Palmer Dabbelt <palmer@sifive.com>,	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Stafford Horne <shorne@gmail.com>
+Subject: Re: [PATCH v7 00/73] per-CPU locks
+Message-ID: <20190306234926.GA6115@flamenco>
+References: <20190304181813.8075-1-cota@braap.org>
+ <2adf8423-458d-27c3-67bf-d4775104ad43@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2adf8423-458d-27c3-67bf-d4775104ad43@linaro.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-TUID: xI1vhs5swiu/
 
-On Wed, 6 Mar 2019 at 19:41, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> I had hoped that I would have been able to reproduce this on another host by
-> forcing rr mode.  But so far no luck.
+On Wed, Mar 06, 2019 at 11:40:57 -0800, Richard Henderson wrote:
+> Peter reported to me a hang on the x86_64
+> bios-tables-test with an arm32 host.  I have been able to replicate this.
+(snip)
 
-Have you tried rr's "chaos mode" switch?
+I reproduced this on a power7 machine (gcc110). However, after a few
+git checkout->build cycles I was not able to reproduce this again (!?).
 
-thanks
--- PMM
+I currently have very little time to spend on this. Given how close we
+are to the soft freeze, I suggest we defer the merge of this series
+to post-v4.0.
+
+Thanks,
+
+		Emilio

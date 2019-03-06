@@ -1,100 +1,83 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp4936815wrx;
-        Tue, 5 Mar 2019 08:37:39 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyRE3hpJVd4Xrqd6dmqqw7KhB78qCfMHkxX8Nw/cGbzzGE178D56Lf/9N1HHgVhh9gCKpni
-X-Received: by 2002:a25:ea02:: with SMTP id p2mr2898643ybd.41.1551803859338;
-        Tue, 05 Mar 2019 08:37:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551803859; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp5737144wrx;
+        Wed, 6 Mar 2019 02:34:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwCOj4Vai7X3+bN5/itONGshOM93MATy+RnAZKeBGkXtdg4e/pZhK71y8Hx1knn+x7uopIF
+X-Received: by 2002:a5b:54e:: with SMTP id r14mr6176370ybp.214.1551868472854;
+        Wed, 06 Mar 2019 02:34:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551868472; cv=none;
         d=google.com; s=arc-20160816;
-        b=A76PtOMwdJI1WouuPQYpkpoHsxCpzdnAjkLwScAtFN0kX/5G6rLpZhcCA+WYJxUuV4
-         ccvelqXMvjJalszHvSY0N3fAwVaWpylWMJoGBZ9YeIUgrNBqboclrBii0BDuDL9MEhdf
-         iXJdbEEXnjHvJGQAtixpYfp0AVxJJYjd4gf2iTILbn+0OHk2Bnw4B28KA1yyNSStE31z
-         SvPlhlHpabMzdrx99wcPYK/DVfX7EEmiD0xBFiLiJlKU3faparot5WB0G6kFH9fbE1/4
-         1jyv+OtgH7dT+I4lpoI8wx8zXs7lJN+rSUQVKIN1sg/upVYhhE/XlLcI9Bl0dU4rRilk
-         RJiA==
+        b=zSXSObfAe0S0vgefggBTYsXXK7t/+QZ4g3shCne0bS9ALM4/5HFoM8W6wTBEaUJnxZ
+         W7TI8+Dpy9X8+JhVXgFfH4mZGoE6t4P6h7UWUsoerlhTl5IiSmMm4yo1aUOEMyieRlo+
+         AA8X/U+Zt9nfEtBrKNqRopQDROsNpC0qECy7zziJSBL0qCwshdDBA6GD70hQSBw0y9dP
+         V+qoSF36pL/Qa6hth9sli20wxG3G9+md/pNl4AV/pl1zIJFFpTw6yzAnq9cF0NCrjEIx
+         FjCvH6TF6ZsvHL8XaUGknKd10L/0tj8JwJV8dCYYzhclKoTDx5DVSBO3iF6Vpjd1OBr7
+         ZMyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WUZ0WJpoP6M45K4WU1OMQUQQ23gucGVmyC9SEUSDr8E=;
-        b=a+CLR4GD7rER5F/O8JX4fUzk/BljJZPGBxNCc0jT4TPygUcdVk/+XkV/yMFBKZH5Zk
-         xyTRzrcHx0rEghtkfSTlQv/B+2x+waTa4adFIfg9JjS4UPhNfO74i/JeTt7nRiYjKcqI
-         kJ0vEIdYjR/Oql/x4SUCXTvsI0dNei+dFIbUZLYhtm7T9nhvcjtsozHsWvezywjJEtqe
-         F9tTgplBHm4wMlQAyzBSszgsuYFLYAwrqg4uMy4Z/oUySbUCh9vkz5ysfJOAaw67GqiG
-         j6GoGNmvFSBP3ePiR3uuGuk1XJNagI78jGKTKDGR48/ngVYomWPFpPeZTcVlkS+clGGB
-         uEWA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=juSLf71v/UkXOtAGK4yfhOJD8sTTW80Qn/aPvZAo81s=;
+        b=PxnCVKEJg4wn4CvwI24QskqH2vZ0VsvbvVOt0lWlp/wADuAfQermunY+iNwIDkBLOd
+         7HFLPN7Ynv/6E7RTNprpIIqaYldtLo83GyxCLPEDaoqQxeTx261bjrDd+3KcQhvaX9WN
+         YiZ76YGOMpEPeiAbbliChSEaj1AQzBg7/pdrFbek9v/z8hczVtNoLQKfhG2ijqcLE3UU
+         Fei+jY2Pv3atWIm/zqvr1rnJOwKiUBMyRi5FRVt/EVQqyLH664AAKtEv5v+CZ1t77oq2
+         /P2h6pS3Ezat2hcdn76K1C53J7lG/IicT73JgXk7j1Y+f3YeTUEAEdEazOm4L/E/JFAL
+         Gyiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Plr89zkX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 188si5384942ybp.38.2019.03.05.08.37.39
+        by mx.google.com with ESMTPS id m6si578815ywb.376.2019.03.06.02.34.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Mar 2019 08:37:39 -0800 (PST)
+        Wed, 06 Mar 2019 02:34:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Plr89zkX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:45544 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:58603 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h1D4U-0004sq-QG
-	for alex.bennee@linaro.org; Tue, 05 Mar 2019 11:37:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51745)
+	id 1h1Tse-0004az-8q
+	for alex.bennee@linaro.org; Wed, 06 Mar 2019 05:34:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56253)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h1D4K-0004rs-5k
-	for qemu-arm@nongnu.org; Tue, 05 Mar 2019 11:37:29 -0500
+	(envelope-from <imammedo@redhat.com>) id 1h1TsN-0004Zd-4v
+	for qemu-arm@nongnu.org; Wed, 06 Mar 2019 05:34:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h1D4J-0003lc-5v
-	for qemu-arm@nongnu.org; Tue, 05 Mar 2019 11:37:28 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41446)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h1D4I-0003kN-IO
-	for qemu-arm@nongnu.org; Tue, 05 Mar 2019 11:37:26 -0500
-Received: by mail-ot1-x341.google.com with SMTP id t7so7951078otk.8
-	for <qemu-arm@nongnu.org>; Tue, 05 Mar 2019 08:37:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=WUZ0WJpoP6M45K4WU1OMQUQQ23gucGVmyC9SEUSDr8E=;
-	b=Plr89zkXf15VDxbLtUUc1Q/e3QPy4s42qF/rf119Qx2GZFHfNg9Mu4HjnFuWOoNpBt
-	N9TRruUlpWJfDjZnzJxqpyfBrYamA3AjxbrXJH2o4DydQJwyqNx41xn0jB1MOaCKyWeJ
-	pfDVv5XmUTJniFOj4gDeTNP2CMj8PEVShLE4wu7erMgnl8ioTwPrV8iBEYXTXijMZBLx
-	UlshkdieY7gZGq5Y0nUE9ANl3AoRQkMhMVoUIAX8FoIOqbA5/ObWYvbaUPUB1vzZo3Gu
-	UbzWL+dXrZJo95KsLAFjlGVNieSOboItt06aUfXlN0h8YdYxf5or8ADoNFhe+OBEy6P3
-	jaYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=WUZ0WJpoP6M45K4WU1OMQUQQ23gucGVmyC9SEUSDr8E=;
-	b=cfz9TCXFIJSeTc6jfugqNCzhoZVCd34J0KyN/TFjtdUxilVjGw3HcX00FlYV3ZhyKC
-	AesyNdjUsSTdty+EyCNpfLbpQ1fjeLunizqApvfwdScisCPODBbV8JkV/DZKt3fBkR8w
-	qKTcBb3T+iADOXwaxegLu52FtyPkMpkcGpruw8nPUl/GeYdXB1uJAOC77VVmL4BNmh/O
-	yT5G+aM3524FWQf5aT7hTKBN2Ka2oV5LV7AV6Wvyz0uCcdeGH5NWLOual7J5//fK4wNy
-	2C5uMs9y6e5C3hG9NXVFUtGp1btll9GOe2hYFAKLdCVBlVQx4gg3uPFMdxix/52G8aAg
-	K5hg==
-X-Gm-Message-State: APjAAAWz3vaF93EE6UFUys4AqcmsvQaEhQ/fD2McCKCnYpc8Nnz74NON
-	0sfz4I1Ak4RarNYRtUwOfF8hCu+hFNCx4SOHGS8uHQ==
-X-Received: by 2002:a9d:61c7:: with SMTP id h7mr1360690otk.363.1551803845327; 
-	Tue, 05 Mar 2019 08:37:25 -0800 (PST)
+	(envelope-from <imammedo@redhat.com>) id 1h1TsL-0002Nc-5S
+	for qemu-arm@nongnu.org; Wed, 06 Mar 2019 05:34:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39950)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h1TsH-0001gU-Aq; Wed, 06 Mar 2019 05:34:11 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EFB9F8762F;
+	Wed,  6 Mar 2019 10:33:59 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 56C9F165D1;
+	Wed,  6 Mar 2019 10:33:56 +0000 (UTC)
+Date: Wed, 6 Mar 2019 11:33:54 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <20190306113354.5a98654b@redhat.com>
+In-Reply-To: <1551823429-1440-1-git-send-email-guoheyi@huawei.com>
+References: <1551823429-1440-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
-References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
-	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
-	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
-In-Reply-To: <CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Mar 2019 16:37:13 +0000
-Message-ID: <CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
-To: bzt <bztemail@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH] Added periodic IRQ support for
- bcm2836_control local timer
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 06 Mar 2019 10:34:00 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 1/2] hw/arm/acpi: simplify
+ AML bit and/or statement
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,67 +89,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WkBuoJAUeT2l
+X-TUID: O5dD5E1YbagI
 
-On Mon, 4 Mar 2019 at 19:27, bzt <bztemail@gmail.com> wrote:
->
-> On 3/4/19, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >> + * The IRQ_TIMER support is still very basic, does not handle timer
-> >> access,
-> >> + * and such there's no point in enabling it without the interrupt flag
-> >> set.
-> >
-> > Can you be more precise about what's missing here? I didn't
->
-> The local timer (as per the referenced QA7 doc calls it, section
-> 4.11), means 3 registers in the ARM Control MMIO, at addresses 0x24,
-> 0x34, 0x38. Please note that I haven't named IRQ_TIMER bit in the
-> irqsrc and fiqsrc fields, that was already defined. This patch
-> implements that one.
->
-> > see anything in the spec that looked like a register for
-> > reading the current timer value (though it would certainly
-> > be usual to provide one).
->
-> Those are registers 0x1C and 0x20, called "Core timer access LS/MS",
-> section 4.3. I'll make the comment more clear. Those are not local
-> timer IRQ related, because they could use a different frequency than
-> the IRQ, just happen to be enabled with a bit in the local timer's
-> control register (and not in the core timer control register at 0x0),
-> and on real hardware triggering an IRQ requires both the timer enable
-> and interrupt enable bits to be set. The timer counter is a 64 bits
-> one, while the IRQ's counter is only 28 bit wide, which cannot be
-> directly read, does not use the prescaler, and it's reload value
-> stored in the local timer control register itself (unusal, but that's
-> how it is).
+On Wed, 6 Mar 2019 06:03:48 +0800
+Heyi Guo <guoheyi@huawei.com> wrote:
 
-OK, so that's just an entirely separate timer whose control bit
-happens to be in the same register? I'd assumed that the enable
-bit here was so you could have the local timer be running but
-not generate interrupts -- in which case when it expired it would
-set the "interrupt flag" (and reload), but it wouldn't assert
-the external interrupt line.
+> The last argument of AML bit and/or statement is the target variable,
+> so we don't need to use a NULL target and then an additional store
+> operation; a single bit and/or statement is enough.
+> 
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 04b62c7..1c84e87 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -265,16 +265,16 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+>          aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+>      aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+>      aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+> -    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
+> +    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1D),
+>                                  aml_name("CTRL")));
+pls fix indent in all such cases. I'd align it like this:
+   aml_append(ifctx,
+              aml_and(aml_name("CTRL"), aml_int(0x1D), aml_name("CTRL")));
 
-In fact thinking about it that does seem like the more plausible
-reading of that specification:
- * bit 28 (Timer enable) enables the timer
- * when it gets to zero we set bit 31 "Interrupt flag"
- * the outbound interrupt line is the logical OR of
-   bits 31 ('interrupt flag') and 29 ('interrupt enable')
+or
+   aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1D),
+                             aml_name("CTRL")));
 
-Are you sure it doesn't work that way ?
 
-I'd have thought that any enable bit for the "core timer" would
-be in the core timer control register at 0x4000_0000. Since the
-"core timer" is (apparently) the source of the clock for all the
-per-CPU architected generic timers, it seems more likely that
-it just runs constantly without an enable bit.
+PS:
+When making multi-patch series use --cover-letter git option
 
-thanks
--- PMM
+>  
+>      ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+> -    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x08), NULL),
+> +    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+>                                   aml_name("CDW1")));
+>      aml_append(ifctx, ifctx1);
+>  
+>      ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
+> -    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x10), NULL),
+> +    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
+>                                   aml_name("CDW1")));
+>      aml_append(ifctx, ifctx1);
+>  
+> @@ -283,7 +283,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+>      aml_append(method, ifctx);
+>  
+>      elsectx = aml_else();
+> -    aml_append(elsectx, aml_store(aml_or(aml_name("CDW1"), aml_int(4), NULL),
+> +    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
+>                                    aml_name("CDW1")));
+>      aml_append(elsectx, aml_return(aml_arg(3)));
+>      aml_append(method, elsectx);
+

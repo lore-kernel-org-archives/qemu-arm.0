@@ -1,105 +1,102 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7301331wrx;
-        Thu, 7 Mar 2019 07:58:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxT+f33GkdSaMIJLo6JS80MxoskwSzj4CvAHfarTiEBP2Bs31FVVlAeaUjzJPYIRlDwpstX
-X-Received: by 2002:a25:ba87:: with SMTP id s7mr12169514ybg.49.1551974293407;
-        Thu, 07 Mar 2019 07:58:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551974293; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7316498wrx;
+        Thu, 7 Mar 2019 08:11:11 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyWRe6sg34l4pErQMcVu5Wo6ol5TYGeYwr1LP2NaIaG+dyQew/nLmnUeYScCP3/9Zg+OX/y
+X-Received: by 2002:a0d:eb42:: with SMTP id u63mr10627521ywe.162.1551975071729;
+        Thu, 07 Mar 2019 08:11:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551975071; cv=none;
         d=google.com; s=arc-20160816;
-        b=EyWq8h04sYYrLCoJrLS+Ii9+ytrlBlCe0gKX/oW8XcZ1IciKZoyhA1XKJEXpoy4Gir
-         DGZ/Jxv+OYKoOu87nXuZpS4CdqWeRbX58UbQpphKtk4JY7fKpevQvpgYzQCsHMt1TDXQ
-         yzHPqB3hmafR6uwdi/NpvF9y7F2VTWuK7LKbkwbJRAo8Mhe8IGziLTZpWEVvoQ+shlBa
-         Dnc27uEi9I7ffWP15WB5IJGXMknPKWm2YNcY8tWndZC/JbkpuivP4rOicZoF9oihX9yW
-         CcbfuADxBDht6WQVjLR3NKXdmnm72/ma0m2cG+ZgeTLFxJPGJcbnMRAN60mlsJQmFtjT
-         xgzg==
+        b=Bghqkn2LVibT5yxdqNZiMsWOu1aLg6eJEYrCltQuvhTLzsiO0MYbURx7CGDu0rzq5A
+         c4ZnVFnvik5lpOoBZZ2WsS6BGcB16AR+zfxtqB/vDghKDDtPtHCK+tu1t5kgDl/5SVL/
+         XROvLtBcSf/RxrFBaEpfndwLIidoPo/Oct/os3NcAs5mo6xKHiAw0Dd8tYFDQidAVD/Z
+         gWTNZZoFNjqJBrtL0YXvEmKz9FU4W+vFoM7+D2TKA+ihwt6SEI1G/5xSz4hRUYhUAkzI
+         B3znqrPozCOFGunkllwl8c6EgTNVflgqZW71AO0VaWp+BMBd4VB3yjskM18CMM79rptF
+         lYAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature;
-        bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
-        b=penp39PEbog2HrriCmfh07Vu7kbs9VuWzsv1/vavpkmYa9qr6Oz0uGGE6DugiwgZXu
-         dCCI4ehgJLwRimzwQyeY+c33XhGombpV1U44M5FgDmgs3+q3XwZAvtxYGabvRf+F/EgY
-         q364u7PoL2/NRNChpByR5csgT4//5jjZf36djjdfd+TPgnXnOJbEowlEuoT8YaCVJF+w
-         eaQlRN1r/uhAfrXgGH+/hm2gK8B2prenzCwXJ9fCS+Q8goSzCQzct0hEAzTfK0QK8cJv
-         NyhMjVbvWueDD2vrlrXM9h6Z0/tvlgHWx6P4SFVIawlMgErlYI9ABqLA8sOJ+kTiiLRh
-         Chyw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Z5doX+fi+4wfzdPqQX0RJ7hSMkj/WjtGzp/D7ne9GEw=;
+        b=t0A3eTiLDR1sXAn1qBiVs+sw3dNpFnGD31rPc9FXPBQVCNrIo3dH/I0oT8elPrUnm6
+         IxLRw6iw7sgoz1hhOfn3I2GEvSi21hP+D8dec1jo0BnKUMKKgJrDMCA4tOLzLSUTCXFY
+         Eo0V3beMsu1YsgF8qBY7rbq5vzAGv9O8OyetHV6OskrJGyVSUy7V2p+KAu0h0HHEvhJ4
+         rwZtGU44hIDVui/FzJHUKXEKLC6kdBBQgoAdmu0QHYMVmggZYKwJS+rMaucThXIewha+
+         EEMHWcWBLiULqyh7lkhC3LOJn5M0LPfoopeHTka3X8tGQpaKHTnfJqNtOBPyN3d+I1qw
+         XnLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUx8DaDN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NLRuMg5U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c203si2842898ybc.271.2019.03.07.07.58.13
+        by mx.google.com with ESMTPS id s31si2974197ybe.106.2019.03.07.08.11.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 07:58:13 -0800 (PST)
+        Thu, 07 Mar 2019 08:11:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUx8DaDN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NLRuMg5U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:54369 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:54607 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h1vPQ-0005Pc-PL
-	for alex.bennee@linaro.org; Thu, 07 Mar 2019 10:58:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42377)
+	id 1h1vbw-0007MC-8k
+	for alex.bennee@linaro.org; Thu, 07 Mar 2019 11:11:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h1vOY-0005MY-PT
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 10:57:20 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1h1vZH-0005Ue-4J
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 11:08:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h1vOW-0007Ca-TE
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 10:57:18 -0500
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:45049)
+	(envelope-from <peter.maydell@linaro.org>) id 1h1vZG-00080V-BS
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 11:08:23 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:32912)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
-	id 1h1vON-00074f-44; Thu, 07 Mar 2019 10:57:09 -0500
-Received: by mail-lj1-x241.google.com with SMTP id q128so14653432ljb.11;
-	Thu, 07 Mar 2019 07:57:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
-	b=qUx8DaDNTlKHmNk/gbOgNcjBNF2R4NxLZvovYMpEpj6OHEE4yg7qN+gow9UjwXktom
-	mttpVUGJlSSFIi1litUAhn9G7tTSqE8smnW7Q7lrug5lKR4m1K3PcmxnowLaPyDHhCUX
-	OyH9SgW/mh3l/Pqd0rN1FTdL1WbQbf73eOyC+9qwZwH6pam47n2Lmb2oqE7R9gOLDU6k
-	mb6dhQt3LnKbxTOF+iRQZL2qLBjdaCne/Ckk3TmO7lCva2geDB6w7LP5qbBhdVREFuYB
-	UaykcWJMSeB93dlgYxqTFtzFiBU8wmLiTiFMhJrf54O/xBl+VVW979N0qC1E6K4AGvXx
-	Lf3Q==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h1vZG-0007zb-3W
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 11:08:22 -0500
+Received: by mail-ot1-x342.google.com with SMTP id q24so14607501otk.0
+	for <qemu-devel@nongnu.org>; Thu, 07 Mar 2019 08:08:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=Z5doX+fi+4wfzdPqQX0RJ7hSMkj/WjtGzp/D7ne9GEw=;
+	b=NLRuMg5UxHq6kyNwCwEjMPnvXrxG61vxnnUgrBYOeEdQfD6v7mrzmy7K1xdbGE/kH6
+	sLPf3t8Pqgb2K/IBHPx+5Jmrl0D3WXihhGb0lyFeVExTJnjHEwc9DfP4f7M4U5J2GgcK
+	H0eeHBQsieJmHCyx+ISf3iooXwL39v59pM5Kw2oUtIE6lH1rPrqjI81T6iQxinJOoCe0
+	AzPjxZzUuxLJVbehFdbjWOtTSwpE57495FYL3+xFxWbREZlbkFz3V4d2HlB8/aUlxDCH
+	qmOvaYECTji5bxzUNiSjbIYzmsyEXAsk3itwz5vh49+g5qvgBoEKJaHVdDbxHYPn45a/
+	XxYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
-	b=Mdclxk8E3IVZ+dEVS6Ta7FGMPBiVpbcwgVZHUHR870dqG0cyhQ7BLL2pywzHu/Fg3M
-	KqTI6YPyW0/5EZQu/oaNvzgD4fgee+ev7Pp8q6b3IMnW84/zC7Wuiyfzde7dRRjH3FNk
-	JkNBNJEQDOyeV6fhOO2NNrAHVSs4lF8nvexKgHKYDq8y//ceeEuzPhGdPzwkxzuc6IHM
-	i3niwhCysiujTx0BCfZcufXdwN2QAKJ93CiIo7ch0CjcViOhLQoHtGqjCql8LwiVV6+4
-	4vxcD6KFjbzOnp9WmNRoJTsVCww7zQhG22F0YzYTBaYMmt0pnOw/Ev4dCqk10hWsOywE
-	Fb3g==
-X-Gm-Message-State: APjAAAW1t4k0w/FBC/bGUvtDo8lczqlyNxMssHmLwTki2aSTYhvKas1/
-	M4/exsecy8fJ42A7dvWW+prZu9U1n7BNn4p1o1I=
-X-Received: by 2002:a2e:9355:: with SMTP id m21mr6195960ljh.172.1551974224495; 
-	Thu, 07 Mar 2019 07:57:04 -0800 (PST)
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=Z5doX+fi+4wfzdPqQX0RJ7hSMkj/WjtGzp/D7ne9GEw=;
+	b=rG2cez7miCdAiqMqwNq0IUm2t9ySfmviPa3089729NYnOQvmBhmHACBveFpSlifSB8
+	hw7msXKG+LMtVYidORwGLZLCoYhIvyLGvt+93vLr7Xvb03XW/j4t0GV7gVUi5Fjj3c2N
+	IjZtdty3NO4cV0NBnP3m56NmfqGKF++Y4a8jgJJVR/ggXFttH2+VJUM/ekvzd5cOKPLi
+	O1crrnEx/MCxFPMLvKsOYuSMx6Q971Ri0Fg1q84Xm2DPv5/lHaeZzIH1NhC10+LbkQNO
+	0SABdMRFYrJplg05HFJFziDLofO1rVPyRJWXyvWJmw/Lt1LTBBwLAcRuP5ZhwWyyUKB5
+	qwvw==
+X-Gm-Message-State: APjAAAXjrdLJ2AJAPE2oFhnM7c6ElbnhqAe4EF16RqSW2r5YuicyRAfS
+	Cf1CdiFVbSO4qoSakY8ZV+OoCi0JVcBioPRZfOwePw==
+X-Received: by 2002:a9d:61c7:: with SMTP id h7mr7871917otk.363.1551974900850; 
+	Thu, 07 Mar 2019 08:08:20 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a2e:8554:0:0:0:0:0 with HTTP;
-	Thu, 7 Mar 2019 07:57:03 -0800 (PST)
-In-Reply-To: <CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
 References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
 	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
 	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
 	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
 	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
 	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
-From: bzt <bztemail@gmail.com>
-Date: Thu, 7 Mar 2019 16:57:03 +0100
-Message-ID: <CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+	<CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
+In-Reply-To: <CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Mar 2019 16:08:09 +0000
+Message-ID: <CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
+To: bzt <bztemail@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::241
+X-Received-From: 2607:f8b0:4864:20::342
 Subject: Re: [Qemu-devel] [PATCH] Added periodic IRQ support for
  bcm2836_control local timer
 X-BeenThere: qemu-devel@nongnu.org
@@ -119,278 +116,81 @@ Cc: qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zhSekQ0wq5T4
+X-TUID: N/1dlDNddXD6
 
-Nope. I meant the second patch, sent on 4th Mar, which had all the
-things fixed you listed in your review.
-
-But here's the modification for your latest query. This one controls
-the timer depending on ENABLE bit. It sets the INTFLAG even if
-INTENABLE is not set, and only raises the IRQ if both are set.
-
-Sign-off-by: Zolt=C3=A1n Baldaszti <bztemail@gmail.com>
-Subject: [PATCH] Added periodic IRQ support for bcm2836_control local timer
-diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
-index cfa5bc7365..d75dedbf20 100644
---- a/hw/intc/bcm2836_control.c
-+++ b/hw/intc/bcm2836_control.c
-@@ -7,7 +7,13 @@
-  * This code is licensed under the GNU GPLv2 and later.
-  *
-  * At present, only implements interrupt routing, and mailboxes (i.e.,
-- * not local timer, PMU interrupt, or AXI counters).
-+ * not PMU interrupt, or AXI counters).
-+ *
-+ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
-+ * The IRQ_TIMER support is still very basic, does not provide timer count=
-er
-+ * access and other timer features, it just generates periodic IRQs. But i=
-t
-+ * still requires not only the interrupt enable, but the timer enable bit =
-to
-+ * be set.
-  *
-  * Ref:
-  * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/=
-QA7_rev3.4.pdf
-@@ -18,6 +24,9 @@
- #include "qemu/log.h"
-
- #define REG_GPU_ROUTE           0x0c
-+#define REG_LOCALTIMERROUTING   0x24
-+#define REG_LOCALTIMERCONTROL   0x34
-+#define REG_LOCALTIMERACK       0x38
- #define REG_TIMERCONTROL        0x40
- #define REG_MBOXCONTROL         0x50
- #define REG_IRQSRC              0x60
-@@ -43,6 +52,13 @@
- #define IRQ_TIMER       11
- #define IRQ_MAX         IRQ_TIMER
-
-+#define LOCALTIMER_FREQ      38400000
-+#define LOCALTIMER_INTFLAG   (1 << 31)
-+#define LOCALTIMER_RELOAD    (1 << 30)
-+#define LOCALTIMER_INTENABLE (1 << 29)
-+#define LOCALTIMER_ENABLE    (1 << 28)
-+#define LOCALTIMER_VALUE(x)  ((x) & 0xfffffff)
-+
- static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t ir=
-q,
-                           uint32_t controlreg, uint8_t controlidx)
- {
-@@ -78,6 +94,17 @@ static void bcm2836_control_update(BCM2836ControlState *=
-s)
-         s->fiqsrc[s->route_gpu_fiq] |=3D (uint32_t)1 << IRQ_GPU;
-     }
-
-+    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
-+    if ((s->local_timer_control & LOCALTIMER_INTENABLE) &&
-+        (s->local_timer_control & LOCALTIMER_INTFLAG)) {
-+        if (s->route_localtimer & 4) {
-+            s->fiqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
-IMER;
-+        } else {
-+            s->irqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
-IMER;
-+        }
-+        s->local_timer_control &=3D ~LOCALTIMER_INTENABLE;
-+    }
-+
-     for (i =3D 0; i < BCM2836_NCORES; i++) {
-         /* handle local timer interrupts for this core */
-         if (s->timerirqs[i]) {
-@@ -162,6 +189,55 @@ static void bcm2836_control_set_gpu_fiq(void
-*opaque, int irq, int level)
-     bcm2836_control_update(s);
- }
-
-+static void bcm2836_control_local_timer_set_next(void *opaque)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+    uint64_t next_event;
-+
-+    assert(LOCALTIMER_VALUE(s->local_timer_control) > 0);
-+
-+    next_event =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+        muldiv64(LOCALTIMER_VALUE(s->local_timer_control),
-+            NANOSECONDS_PER_SECOND, LOCALTIMER_FREQ);
-+    timer_mod(&s->timer, next_event);
-+}
-+
-+static void bcm2836_control_local_timer_tick(void *opaque)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    bcm2836_control_local_timer_set_next(s);
-+
-+    s->local_timer_control |=3D LOCALTIMER_INTFLAG;
-+    bcm2836_control_update(s);
-+}
-+
-+static void bcm2836_control_local_timer_control(void *opaque, uint32_t val=
-)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    s->local_timer_control =3D val & ~LOCALTIMER_INTFLAG;
-+    if (val & LOCALTIMER_ENABLE) {
-+        bcm2836_control_local_timer_set_next(s);
-+    } else {
-+        timer_del(&s->timer);
-+    }
-+}
-+
-+static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    if (val & LOCALTIMER_INTFLAG) {
-+        s->local_timer_control |=3D LOCALTIMER_INTENABLE;
-+        s->local_timer_control &=3D ~LOCALTIMER_INTFLAG;
-+    }
-+    if ((val & LOCALTIMER_RELOAD) &&
-+        (s->local_timer_control & LOCALTIMER_ENABLE)) {
-+            bcm2836_control_local_timer_set_next(s);
-+    }
-+}
-+
- static uint64_t bcm2836_control_read(void *opaque, hwaddr offset,
-unsigned size)
- {
-     BCM2836ControlState *s =3D opaque;
-@@ -170,6 +246,12 @@ static uint64_t bcm2836_control_read(void
-*opaque, hwaddr offset, unsigned size)
-         assert(s->route_gpu_fiq < BCM2836_NCORES
-                && s->route_gpu_irq < BCM2836_NCORES);
-         return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
-+    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
-+        return s->route_localtimer;
-+    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
-+        return s->local_timer_control;
-+    } else if (offset =3D=3D REG_LOCALTIMERACK) {
-+        return 0;
-     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-         return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
-     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
-@@ -195,6 +277,12 @@ static void bcm2836_control_write(void *opaque,
-hwaddr offset,
-     if (offset =3D=3D REG_GPU_ROUTE) {
-         s->route_gpu_irq =3D val & 0x3;
-         s->route_gpu_fiq =3D (val >> 2) & 0x3;
-+    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
-+        s->route_localtimer =3D val & 7;
-+    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
-+        bcm2836_control_local_timer_control(s, val);
-+    } else if (offset =3D=3D REG_LOCALTIMERACK) {
-+        bcm2836_control_local_timer_ack(s, val);
-     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-         s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] =3D val & 0xff;
-     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
-@@ -227,6 +315,10 @@ static void bcm2836_control_reset(DeviceState *d)
-
-     s->route_gpu_irq =3D s->route_gpu_fiq =3D 0;
-
-+    timer_del(&s->timer);
-+    s->route_localtimer =3D 0;
-+    s->local_timer_control =3D 0;
-+
-     for (i =3D 0; i < BCM2836_NCORES; i++) {
-         s->timercontrol[i] =3D 0;
-         s->mailboxcontrol[i] =3D 0;
-@@ -263,11 +355,14 @@ static void bcm2836_control_init(Object *obj)
-     /* outputs to CPU cores */
-     qdev_init_gpio_out_named(dev, s->irq, "irq", BCM2836_NCORES);
-     qdev_init_gpio_out_named(dev, s->fiq, "fiq", BCM2836_NCORES);
-+
-+    /* create a qemu virtual timer */
-+    timer_init_ns(&s->timer, QEMU_CLOCK_VIRTUAL,
-bcm2836_control_local_timer_tick, s);
- }
-
- static const VMStateDescription vmstate_bcm2836_control =3D {
-     .name =3D TYPE_BCM2836_CONTROL,
--    .version_id =3D 1,
-+    .version_id =3D 2,
-     .minimum_version_id =3D 1,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(mailboxes, BCM2836ControlState,
-@@ -277,6 +372,9 @@ static const VMStateDescription vmstate_bcm2836_control=
- =3D {
-         VMSTATE_UINT32_ARRAY(timercontrol, BCM2836ControlState,
-BCM2836_NCORES),
-         VMSTATE_UINT32_ARRAY(mailboxcontrol, BCM2836ControlState,
-                              BCM2836_NCORES),
-+        VMSTATE_TIMER_V(timer, BCM2836ControlState, 2),
-+        VMSTATE_UINT32_V(local_timer_control, BCM2836ControlState, 2),
-+        VMSTATE_UINT8_V(route_localtimer, BCM2836ControlState, 2),
-         VMSTATE_END_OF_LIST()
-     }
- };
-diff --git a/include/hw/intc/bcm2836_control.h
-b/include/hw/intc/bcm2836_control.h
-index 613f3c4186..de061b8929 100644
---- a/include/hw/intc/bcm2836_control.h
-+++ b/include/hw/intc/bcm2836_control.h
-@@ -5,6 +5,9 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-+ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
-+ * Added basic IRQ_TIMER interrupt support
-+ *
-  * This code is licensed under the GNU GPLv2 and later.
-  */
-
-@@ -12,6 +15,7 @@
- #define BCM2836_CONTROL_H
-
- #include "hw/sysbus.h"
-+#include "qemu/timer.h"
-
- /* 4 mailboxes per core, for 16 total */
- #define BCM2836_NCORES 4
-@@ -39,6 +43,11 @@ typedef struct BCM2836ControlState {
-     bool gpu_irq, gpu_fiq;
-     uint8_t timerirqs[BCM2836_NCORES];
-
-+    /* local timer */
-+    QEMUTimer timer;
-+    uint32_t local_timer_control;
-+    uint8_t route_localtimer;
-+
-     /* interrupt source registers, post-routing (also input-derived;
-visible) */
-     uint32_t irqsrc[BCM2836_NCORES];
-     uint32_t fiqsrc[BCM2836_NCORES];
-
-
-On 3/7/19, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Thu, 7 Mar 2019 at 15:27, bzt <bztemail@gmail.com> wrote:
->> Yes, could be. The QA7 spec is not really detailed, and calling both
->> timers simply ARM timers can be misleading. But it's not relevant
->> anyway from the IRQ's point of view. My latest patch checks both bits
->> to be set to generate the IRQ, so it does not really matter. As I've
->> said, this patch adds only the periodic IRQ, and not a full timer
->> emulation.
->>
->> Do you want any modifications on the patch? If so, what exactly? Let
->> me know and I'll update it.
+On Thu, 7 Mar 2019 at 15:57, bzt <bztemail@gmail.com> wrote:
 >
-> I assume by "latest patch" you mean a planned v3
-> that you haven't sent yet?
+> Nope. I meant the second patch, sent on 4th Mar, which had all the
+> things fixed you listed in your review.
 >
-> I think it's probably best to go with my interpretation of
-> the specs, if you think it makes sense:
->  * running and stopping the timer is controlled by the
->    "timer enable" bit (and doesn't care about the
->    "interrupt enable" bit)
->  * the timer timing out always sets the "interrupt flag" bit
->  * we set the destination core IRQ/FIQ if the "interrupt flag"
->    and "interrupt enable" bits are both set (we don't care
->    about whether the "timer enable" bit is set for this)
+> But here's the modification for your latest query. This one controls
+> the timer depending on ENABLE bit. It sets the INTFLAG even if
+> INTENABLE is not set, and only raises the IRQ if both are set.
+
+Thanks. I've listed a couple of minor things below
+which I think are not quite handling the flags right,
+but the rest looks good.
+
+> @@ -78,6 +94,17 @@ static void bcm2836_control_update(BCM2836ControlState *s)
+>          s->fiqsrc[s->route_gpu_fiq] |= (uint32_t)1 << IRQ_GPU;
+>      }
 >
-> That should be only very minor changes from what you have now.
->
-> thanks
-> -- PMM
->
+> +    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
+> +    if ((s->local_timer_control & LOCALTIMER_INTENABLE) &&
+> +        (s->local_timer_control & LOCALTIMER_INTFLAG)) {
+> +        if (s->route_localtimer & 4) {
+> +            s->fiqsrc[(s->route_localtimer & 3)] |= (uint32_t)1 << IRQ_TIMER;
+> +        } else {
+> +            s->irqsrc[(s->route_localtimer & 3)] |= (uint32_t)1 << IRQ_TIMER;
+> +        }
+> +        s->local_timer_control &= ~LOCALTIMER_INTENABLE;
+
+This shouldn't clear the INTENABLE flag.
+
+> +    }
+> +
+>      for (i = 0; i < BCM2836_NCORES; i++) {
+>          /* handle local timer interrupts for this core */
+>          if (s->timerirqs[i]) {
+> @@ -162,6 +189,55 @@ static void bcm2836_control_set_gpu_fiq(void
+> *opaque, int irq, int level)
+>      bcm2836_control_update(s);
+>  }
+
+> +static void bcm2836_control_local_timer_control(void *opaque, uint32_t val)
+> +{
+> +    BCM2836ControlState *s = opaque;
+> +
+> +    s->local_timer_control = val & ~LOCALTIMER_INTFLAG;
+
+This will clear the LOCALTIMER_INTFLAG if it was already
+set -- you want to preserve it, something like
+   s->local_timer_control = (s->local_timer_control & LOCALTIMER_INTFLAG) |
+     (val & ~LOCALTIMER_INTFLAG);
+
+> +    if (val & LOCALTIMER_ENABLE) {
+> +        bcm2836_control_local_timer_set_next(s);
+> +    } else {
+> +        timer_del(&s->timer);
+> +    }
+> +}
+> +
+> +static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
+> +{
+> +    BCM2836ControlState *s = opaque;
+> +
+> +    if (val & LOCALTIMER_INTFLAG) {
+> +        s->local_timer_control |= LOCALTIMER_INTENABLE;
+> +        s->local_timer_control &= ~LOCALTIMER_INTFLAG;
+
+This should just clear the INTFLAG, it doesn't affect INTENABLE.
+
+> +    }
+> +    if ((val & LOCALTIMER_RELOAD) &&
+> +        (s->local_timer_control & LOCALTIMER_ENABLE)) {
+> +            bcm2836_control_local_timer_set_next(s);
+> +    }
+> +}
+
+thanks
+-- PMM

@@ -1,83 +1,104 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6944240wrx;
-        Thu, 7 Mar 2019 01:49:51 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxMhKY9C8WfJFY2q+Ss7WLT0Ie3PC+3QpEF2ICfsmImD1PtrpocJkTidI8yWFExPbvanSsR
-X-Received: by 2002:a81:290c:: with SMTP id p12mr9278511ywp.62.1551952191898;
-        Thu, 07 Mar 2019 01:49:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551952191; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp6997768wrx;
+        Thu, 7 Mar 2019 02:56:50 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzEGxBWy5Bl341UgYEXo6VoYQeO2xMudKemW0sUfnMXjRFRTiwX2gNHMk6laYsENRVT2DkB
+X-Received: by 2002:a0d:ec05:: with SMTP id v5mr9203741ywe.165.1551956210512;
+        Thu, 07 Mar 2019 02:56:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551956210; cv=none;
         d=google.com; s=arc-20160816;
-        b=pt1nzrPBUFc6paBV1QHRTGym0b6/tVEgsJAx0khesOiWK3LdY28BuiS3l7wYlKaVXQ
-         ECPPteQF1Za/pAIYJt3ylJDkOfi81pggzw5NiwuzloUJ0alN4e6PGgNakDYCzoe05Qk8
-         4NCv+HglT2wWqQo7Q4CW53wFBx3zm26fg+D2SBRw5mlmKJwgeUPdRvkrkV3K6RdaZD4y
-         X1roaUHWbYmXWFHxlg1y3X8XYyxrrux8UjuxMXyhXD34PyqgjvGK9q14wDYnID8h1uFp
-         5iyUuJnVHpZxYi4RWceOF9r6CLRRdnwBPekevxd/P3L3gRvWPGx9rJopjexVrp+9DfQc
-         tYzg==
+        b=ijt82RQXqsVLfS00BXH4x+LVq4VLtXu+pRFzb0QeOqbsogz9WDbivt7+PYX+yvGl5d
+         GeBF0gJzi0SpaNSqs5DVbQE4vYLdHH6O0sdYPIs2D6ydfDZhdHQtlGJTDcECkY2sgGHi
+         +vOBBKNjxUHLuE0pp/oD8R5Ct9Z9gvD2lVP4Gt4yWggvCKsJE+4Kq9+/mJou9VAgov/N
+         8E410mISr/LblKaP10zLw+Ka5HnaR54KPHtZVb0EUMPtZ32jPj9UtOOgGhf/FYjuS99z
+         6hNXVDS2ADKNh/RLqXaM8ckl5dCRHbXFBLF1kr3Vr+qZOotgcTUuud/IkgCSQ+5URVsw
+         KmOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=OrdbWK3PP8ks5Zqn+UE/hiXmM0nHWjj1YvuIhX7FwyE=;
-        b=GXLdcJ8zgPDCiG6nLiF/DtntmTZksWrEvbuCQPaJ2djrRt95ieM8yNs58zfg4tXL3b
-         WRtZhvC5HJzBhHwaOGsJhfGXo5BEJuEClWDKzAeCYGjH2SH4qkMglhPLitnn+awUaUFw
-         iFL6UHoGcwI48PvFHIQJz0up8OVVKpfyuRDOoxPyOV7JnPDD/5TxniJYxgDaAJpbj36S
-         tbd6dE13tV5kP6ue4OutXxOZCvXxtR8XeHJOR7/n1h29UewkLfJ3E+ZTDHsdmjBp+8VI
-         tWNumuYZSCOK2PrbIbbPzz5rBLI7JYLhpAx/pRk17UV7MEpP49gireGAy75ebcWuHUbE
-         D4AQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=azbuYYrFHCpT51otGSk86engcU7N1K0aFm5IQVpBRsI=;
+        b=LQqIorZF8Bj9ldlNbq8h+1Eg/fpgH2k68wuLJzeAsHWfwDUHop5alGwxZk0/AGnkHe
+         jywOgbj9i9Peff306TOAodqhY65xecp7EROURcFj6ZrTGK8B1Y5QKFkwtbm9sSoI+SMm
+         JwWhCk8lKtCHo/g2uFbZrq8ihJxG3uY571f+86aUT81iSGrmnUhVtPJmDRRIAKHNfl9U
+         NNAJDS/7rQkkodY5mo0AskJRo4DMbxR3nbYhmcOt94ZEPuw+jfpJWXWBUmM36tqHjjq9
+         GkaHUn6d+ROdCqCTOK+WK3e7U2am8Kxj1I5V023j7W2ErL4/cVPf1uqlwUSmQGeBNJ13
+         pbKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5si2406995yba.190.2019.03.07.01.49.51
+        by mx.google.com with ESMTPS id p139si2614706ywe.130.2019.03.07.02.56.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 01:49:51 -0800 (PST)
+        Thu, 07 Mar 2019 02:56:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:48213 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49154 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h1pex-0003N1-EA
-	for alex.bennee@linaro.org; Thu, 07 Mar 2019 04:49:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33655)
+	id 1h1qhm-0003gf-1L
+	for alex.bennee@linaro.org; Thu, 07 Mar 2019 05:56:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h1peL-00036B-Tv
-	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 04:49:15 -0500
+	(envelope-from <philmd@redhat.com>) id 1h1qhd-0003gV-Nz
+	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 05:56:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h1peK-0004HP-9R
-	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 04:49:13 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51822)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1h1peJ-0004Fx-T2; Thu, 07 Mar 2019 04:49:12 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 72BA5309E979;
-	Thu,  7 Mar 2019 09:49:10 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D43DC608C3;
-	Thu,  7 Mar 2019 09:49:00 +0000 (UTC)
-Date: Thu, 7 Mar 2019 10:48:59 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190307104859.248a7608@redhat.com>
-In-Reply-To: <20190307090639.8261-1-eric.auger@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1h1qha-000821-DZ
+	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 05:56:39 -0500
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:35862)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h1qhZ-00081M-Ub
+	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 05:56:38 -0500
+Received: by mail-wr1-f68.google.com with SMTP id o17so16888653wrw.3
+	for <qemu-arm@nongnu.org>; Thu, 07 Mar 2019 02:56:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=azbuYYrFHCpT51otGSk86engcU7N1K0aFm5IQVpBRsI=;
+	b=LZuktfyaDllf1v/GUyz5myvcgXPbo7cVLUFiEcmHWcHjTee0pZfeWA5vG0hbmIunix
+	ONEysJv8zqoOf3UDXMGix3bRGXCn+GCg0+w3WDa3IzfFVqivfP2NYdlhoTHn1t8NyKzP
+	MKUsgIVA81JrG4FHoezWaFyiTmezHWI1jap8+XXotDOmR1jaVvHiD5bOakg57Xa3/68m
+	rpO0KFVIICsBH8VpW3yqbxJScWdcrZGLx2USpKlDQNvfDcZyfBasv2VKviMwJYV5cRO5
+	LeiS7Lqji6l6H53j3ssC54Wg6stVTuZGywIx7eiaAJNMrQzkoF+CxqYXrMzPsRsQ99Lx
+	ObmQ==
+X-Gm-Message-State: APjAAAWTiUDD5NX92oZuDP7WEM4mCxPdupjQJAFrd8RdUzqlq3xQogz+
+	XJYoRDBADa71L3yKWcL3SForBg==
+X-Received: by 2002:adf:efc4:: with SMTP id i4mr7022631wrp.42.1551956196738;
+	Thu, 07 Mar 2019 02:56:36 -0800 (PST)
+Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
+	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
+	a131sm6035593wmh.34.2019.03.07.02.56.35
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Thu, 07 Mar 2019 02:56:36 -0800 (PST)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
+	david@redhat.com, 
+	pbonzini@redhat.com, ehabkost@redhat.com, richard.henderson@linaro.org, 
+	sbhat@linux.ibm.com
 References: <20190307090639.8261-1-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <d36618f5-4dc4-f4a2-2cb3-9a689cb3f771@redhat.com>
+Date: Thu, 7 Mar 2019 11:56:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20190307090639.8261-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Thu, 07 Mar 2019 09:49:10 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2] machine: Move acpi_nvdimm_state into
- struct MachineState
+	[fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] machine: Move
+ acpi_nvdimm_state into struct MachineState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,18 +110,13 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, sbhat@linux.ibm.com,
-	david@redhat.com, richard.henderson@linaro.org,
-	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: im7t0wmCvqkR
+X-TUID: uyfcPI/Lz1Nb
 
-On Thu,  7 Mar 2019 10:06:39 +0100
-Eric Auger <eric.auger@redhat.com> wrote:
+Hi Eric, Eduardo,
 
+On 3/7/19 10:06 AM, Eric Auger wrote:
 > As NVDIMM support is looming for ARM and SPAPR, let's
 > move the acpi_nvdimm_state to the generic machine struct
 > instead of duplicating the same code in several machines.
@@ -162,26 +178,14 @@ Eric Auger <eric.auger@redhat.com> wrote:
 > +
 > +static void machine_set_nvdimm_persistence(Object *obj, const char *value,
 > +                                               Error **errp)
-
-broken indent
-
 > +{
 > +    MachineState *ms = MACHINE(obj);
 > +    AcpiNVDIMMState *nvdimms_state = &ms->nvdimms_state;
 > +
 > +    if (strcmp(value, "cpu") == 0)
 > +        nvdimms_state->persistence = 3;
-we probably should use QAPI enum magic to handle description to value conversion
-but I don't know how to (CCed Markus).
-But since it's just moving existing code, it do not insist and it could be
-done on top later on.
-
-
 > +    else if (strcmp(value, "mem-ctrl") == 0)
 > +        nvdimms_state->persistence = 2;
-
-As opposed to kernel if/else in QEMU always should use {} even if they affect only one line
-
 > +    else {
 > +        error_setg(errp, "-machine nvdimm-persistence=%s: unsupported option",
 > +                   value);
@@ -397,7 +401,25 @@ As opposed to kernel if/else in QEMU always should use {} even if they affect on
 >      AccelState *accelerator;
 >      CPUArchIdList *possible_cpus;
 > +    AcpiNVDIMMState nvdimms_state;
-it's still dubbed after Acpi in type name ...
+
+It looks we are breaking the generic/abstract machine design.
+You introduce 2 specific concepts here, ACPI and NVDIMM.
+
+MachineClass tries to be generic, and and still suffer from specific
+fields inherited from the PC Machine.
+
+I'd use an intermediate Memory-related object between Machine and
+AcpiNVDIMM states.
+
+I see there already is DeviceMemoryState.
+
+Can AcpiNVDIMMState go there? That would be more acceptable IMHO.
+
+Eduardo, what do you think (about this patch refactor in general)?
+
+Thanks,
+
+Phil.
 
 >  };
 >  
@@ -436,4 +458,4 @@ it's still dubbed after Acpi in type name ...
 >  
 >  #define TYPE_PC_DIMM "pc-dimm"
 >  #define PC_DIMM(obj) \
-
+> 

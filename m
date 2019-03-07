@@ -1,528 +1,396 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7298765wrx;
-        Thu, 7 Mar 2019 07:55:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyCBhDSoBZfkMI0DZiR7WTrC9Vx3k68YihnG6UmtOS4b95lmnseWmyRaZasNUWW05zOZKgH
-X-Received: by 2002:a25:3c87:: with SMTP id j129mr12045081yba.361.1551974125390;
-        Thu, 07 Mar 2019 07:55:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551974125; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7301331wrx;
+        Thu, 7 Mar 2019 07:58:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxT+f33GkdSaMIJLo6JS80MxoskwSzj4CvAHfarTiEBP2Bs31FVVlAeaUjzJPYIRlDwpstX
+X-Received: by 2002:a25:ba87:: with SMTP id s7mr12169514ybg.49.1551974293407;
+        Thu, 07 Mar 2019 07:58:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551974293; cv=none;
         d=google.com; s=arc-20160816;
-        b=l//Fovix7yc8gp1zhYP4nbNZLqMfnqqNYg2VHf5KDju+8dPGrMXNvapLXqKfV3bqgH
-         N8cCFvkgAR6NMaq4HCDgIRvp/I4LUESawCKAERDXpDY8HMJuNEpF+6+fi4B0JaeDR41v
-         NXz6qO+aOjziJUPoT9wZP1v9HyPh2ETs0Hh+r4ckvHXatt+pHyeayj/60HW1Lvz8usnz
-         PiqCsSulPBJw22p0uiyeeGgXbwgr5kWB1HjQ4jDYJcvmg/IMR/2M7HRSnoSomLqbp4rr
-         L/PXXIJmRtf0SOBy4c3Qr2+aVjqMusOte30MfhChZ5EEkVFIRdITwMO2dZ6zuFTE0ag5
-         6IPA==
+        b=EyWq8h04sYYrLCoJrLS+Ii9+ytrlBlCe0gKX/oW8XcZ1IciKZoyhA1XKJEXpoy4Gir
+         DGZ/Jxv+OYKoOu87nXuZpS4CdqWeRbX58UbQpphKtk4JY7fKpevQvpgYzQCsHMt1TDXQ
+         yzHPqB3hmafR6uwdi/NpvF9y7F2VTWuK7LKbkwbJRAo8Mhe8IGziLTZpWEVvoQ+shlBa
+         Dnc27uEi9I7ffWP15WB5IJGXMknPKWm2YNcY8tWndZC/JbkpuivP4rOicZoF9oihX9yW
+         CcbfuADxBDht6WQVjLR3NKXdmnm72/ma0m2cG+ZgeTLFxJPGJcbnMRAN60mlsJQmFtjT
+         xgzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=Gc7qu6Px/RqD25IpsrX7y8cvqnkluunywn1ePlnxI90=;
-        b=ZgnK07/QN3pX/tacoL54hwmoorxG+JhR+qBroCBPPMy+oILl0Z4qtZfQsv0cy6HvCI
-         qfKTgP5L5Ou/hMOf46ZSb1WdKLN7jsS+foQIP6StG3xl++NNhPhRvzONNl9DJ1w5Y/2K
-         V6BTxnbPIOvvaUANdG5DK4iM670jKP1/jtMXXj2GgfGZs2pBSyQQ/DZTTyhzp7GX/ZnA
-         2KXMbgcjUqGkc0tJJ5Z7E84qPXLTYWywjvQIfpGPeY99XCNoT7PEgYrOySdpZpPZPE4s
-         d1Ul1WvDnSa/yyMvt7MxwAhoFufRw14bLf97BWaJPqK7122JUKXgqT2uEwc6LifqzLsW
-         jqfQ==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
+        b=penp39PEbog2HrriCmfh07Vu7kbs9VuWzsv1/vavpkmYa9qr6Oz0uGGE6DugiwgZXu
+         dCCI4ehgJLwRimzwQyeY+c33XhGombpV1U44M5FgDmgs3+q3XwZAvtxYGabvRf+F/EgY
+         q364u7PoL2/NRNChpByR5csgT4//5jjZf36djjdfd+TPgnXnOJbEowlEuoT8YaCVJF+w
+         eaQlRN1r/uhAfrXgGH+/hm2gK8B2prenzCwXJ9fCS+Q8goSzCQzct0hEAzTfK0QK8cJv
+         NyhMjVbvWueDD2vrlrXM9h6Z0/tvlgHWx6P4SFVIawlMgErlYI9ABqLA8sOJ+kTiiLRh
+         Chyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUx8DaDN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b68si2862684ywh.221.2019.03.07.07.55.25
+        by mx.google.com with ESMTPS id c203si2842898ybc.271.2019.03.07.07.58.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 07:55:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Mar 2019 07:58:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:54332 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qUx8DaDN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:54369 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h1vMi-0003aR-Pm
-	for alex.bennee@linaro.org; Thu, 07 Mar 2019 10:55:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40590)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h1vPQ-0005Pc-PL
+	for alex.bennee@linaro.org; Thu, 07 Mar 2019 10:58:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42377)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1h1vIk-00009c-Vk
-	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 10:51:20 -0500
+	(envelope-from <bztemail@gmail.com>) id 1h1vOY-0005MY-PT
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 10:57:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1h1vIj-0000yx-8C
-	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 10:51:18 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48626)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <david@redhat.com>)
-	id 1h1vIi-0000yE-Tq; Thu, 07 Mar 2019 10:51:17 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D0433E6A90;
-	Thu,  7 Mar 2019 15:51:15 +0000 (UTC)
-Received: from [10.36.116.238] (ovpn-116-238.ams2.redhat.com [10.36.116.238])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ECCAA611BC;
-	Thu,  7 Mar 2019 15:51:08 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
-	pbonzini@redhat.com, ehabkost@redhat.com, richard.henderson@linaro.org, 
-	sbhat@linux.ibm.com
-References: <20190307090639.8261-1-eric.auger@redhat.com>
-	<d36618f5-4dc4-f4a2-2cb3-9a689cb3f771@redhat.com>
-	<8db3bb89-6b7f-fe6b-1ba5-3263da3d0528@redhat.com>
-	<3c64370f-1e91-70e0-6f7e-ce0a3c1175da@redhat.com>
-	<c9f7838f-0554-59d3-53c2-1a556119308b@redhat.com>
-From: David Hildenbrand <david@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	SE+xAvmumFBY
-Organization: Red Hat GmbH
-Message-ID: <994cdc93-0de5-a10f-e1b3-83b7f3ef01e4@redhat.com>
-Date: Thu, 7 Mar 2019 16:51:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <bztemail@gmail.com>) id 1h1vOW-0007Ca-TE
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 10:57:18 -0500
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:45049)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
+	id 1h1vON-00074f-44; Thu, 07 Mar 2019 10:57:09 -0500
+Received: by mail-lj1-x241.google.com with SMTP id q128so14653432ljb.11;
+	Thu, 07 Mar 2019 07:57:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
+	b=qUx8DaDNTlKHmNk/gbOgNcjBNF2R4NxLZvovYMpEpj6OHEE4yg7qN+gow9UjwXktom
+	mttpVUGJlSSFIi1litUAhn9G7tTSqE8smnW7Q7lrug5lKR4m1K3PcmxnowLaPyDHhCUX
+	OyH9SgW/mh3l/Pqd0rN1FTdL1WbQbf73eOyC+9qwZwH6pam47n2Lmb2oqE7R9gOLDU6k
+	mb6dhQt3LnKbxTOF+iRQZL2qLBjdaCne/Ckk3TmO7lCva2geDB6w7LP5qbBhdVREFuYB
+	UaykcWJMSeB93dlgYxqTFtzFiBU8wmLiTiFMhJrf54O/xBl+VVW979N0qC1E6K4AGvXx
+	Lf3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=LkQHDH4Sl0IznM+pvfc0ceGRXVpmEVF88k+aJQ34Nww=;
+	b=Mdclxk8E3IVZ+dEVS6Ta7FGMPBiVpbcwgVZHUHR870dqG0cyhQ7BLL2pywzHu/Fg3M
+	KqTI6YPyW0/5EZQu/oaNvzgD4fgee+ev7Pp8q6b3IMnW84/zC7Wuiyfzde7dRRjH3FNk
+	JkNBNJEQDOyeV6fhOO2NNrAHVSs4lF8nvexKgHKYDq8y//ceeEuzPhGdPzwkxzuc6IHM
+	i3niwhCysiujTx0BCfZcufXdwN2QAKJ93CiIo7ch0CjcViOhLQoHtGqjCql8LwiVV6+4
+	4vxcD6KFjbzOnp9WmNRoJTsVCww7zQhG22F0YzYTBaYMmt0pnOw/Ev4dCqk10hWsOywE
+	Fb3g==
+X-Gm-Message-State: APjAAAW1t4k0w/FBC/bGUvtDo8lczqlyNxMssHmLwTki2aSTYhvKas1/
+	M4/exsecy8fJ42A7dvWW+prZu9U1n7BNn4p1o1I=
+X-Received: by 2002:a2e:9355:: with SMTP id m21mr6195960ljh.172.1551974224495; 
+	Thu, 07 Mar 2019 07:57:04 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <c9f7838f-0554-59d3-53c2-1a556119308b@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 07 Mar 2019 15:51:15 +0000 (UTC)
+Received: by 2002:a2e:8554:0:0:0:0:0 with HTTP;
+	Thu, 7 Mar 2019 07:57:03 -0800 (PST)
+In-Reply-To: <CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
+References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
+	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
+	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
+	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
+	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
+	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
+From: bzt <bztemail@gmail.com>
+Date: Thu, 7 Mar 2019 16:57:03 +0100
+Message-ID: <CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] machine: Move
- acpi_nvdimm_state into struct MachineState
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::241
+Subject: Re: [Qemu-devel] [PATCH] Added periodic IRQ support for
+ bcm2836_control local timer
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fryZbkVfVDEe
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zhSekQ0wq5T4
 
-On 07.03.19 16:36, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 3/7/19 4:21 PM, David Hildenbrand wrote:
->> On 07.03.19 16:15, Auger Eric wrote:
->>> Hi Philippe, Eduardo,
->>>
->>> On 3/7/19 11:56 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> Hi Eric, Eduardo,
->>>>
->>>> On 3/7/19 10:06 AM, Eric Auger wrote:
->>>>> As NVDIMM support is looming for ARM and SPAPR, let's
->>>>> move the acpi_nvdimm_state to the generic machine struct
->>>>> instead of duplicating the same code in several machines.
->>>>> It is also renamed into nvdimms_state.
->>>>>
->>>>> nvdimm and nvdimm-persistence become generic machine options.
->>>>> We also add a description for those options.
->>>>>
->>>>> We also remove the nvdimms_state.is_enabled initialization to
->>>>> false as objects are guaranteed to be zero initialized.
->>>>>
->>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->>>>>
->>>>> ---
->>>>>
->>>>> v1 -> v2:
->>>>> - s/acpi_nvdimm_state/nvdimms_state
->>>>> - remove ms->nvdimms_state.is_enabled initialization to false.
->>>>> ---
->>>>>  hw/core/machine.c        | 55 ++++++++++++++++++++++++++++++++++++=
-+++
->>>>>  hw/i386/acpi-build.c     |  6 ++---
->>>>>  hw/i386/pc.c             | 56 +++---------------------------------=
-----
->>>>>  hw/i386/pc_piix.c        |  4 +--
->>>>>  hw/i386/pc_q35.c         |  4 +--
->>>>>  include/hw/boards.h      |  2 ++
->>>>>  include/hw/i386/pc.h     |  4 ---
->>>>>  include/hw/mem/pc-dimm.h |  1 -
->>>>>  8 files changed, 68 insertions(+), 64 deletions(-)
->>>>>
->>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>>>> index 766ca5899d..21a7209246 100644
->>>>> --- a/hw/core/machine.c
->>>>> +++ b/hw/core/machine.c
->>>>> @@ -481,6 +481,47 @@ static void machine_set_memory_encryption(Obje=
-ct *obj, const char *value,
->>>>>      ms->memory_encryption =3D g_strdup(value);
->>>>>  }
->>>>> =20
->>>>> +static bool machine_get_nvdimm(Object *obj, Error **errp)
->>>>> +{
->>>>> +    MachineState *ms =3D MACHINE(obj);
->>>>> +
->>>>> +    return ms->nvdimms_state.is_enabled;
->>>>> +}
->>>>> +
->>>>> +static void machine_set_nvdimm(Object *obj, bool value, Error **er=
-rp)
->>>>> +{
->>>>> +    MachineState *ms =3D MACHINE(obj);
->>>>> +
->>>>> +    ms->nvdimms_state.is_enabled =3D value;
->>>>> +}
->>>>> +
->>>>> +static char *machine_get_nvdimm_persistence(Object *obj, Error **e=
-rrp)
->>>>> +{
->>>>> +    MachineState *ms =3D MACHINE(obj);
->>>>> +
->>>>> +    return g_strdup(ms->nvdimms_state.persistence_string);
->>>>> +}
->>>>> +
->>>>> +static void machine_set_nvdimm_persistence(Object *obj, const char=
- *value,
->>>>> +                                               Error **errp)
->>>>> +{
->>>>> +    MachineState *ms =3D MACHINE(obj);
->>>>> +    AcpiNVDIMMState *nvdimms_state =3D &ms->nvdimms_state;
->>>>> +
->>>>> +    if (strcmp(value, "cpu") =3D=3D 0)
->>>>> +        nvdimms_state->persistence =3D 3;
->>>>> +    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
->>>>> +        nvdimms_state->persistence =3D 2;
->>>>> +    else {
->>>>> +        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupp=
-orted option",
->>>>> +                   value);
->>>>> +        return;
->>>>> +    }
->>>>> +
->>>>> +    g_free(nvdimms_state->persistence_string);
->>>>> +    nvdimms_state->persistence_string =3D g_strdup(value);
->>>>> +}
->>>>> +
->>>>>  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, cons=
-t char *type)
->>>>>  {
->>>>>      strList *item =3D g_new0(strList, 1);
->>>>> @@ -765,6 +806,20 @@ static void machine_class_init(ObjectClass *oc=
-, void *data)
->>>>>          &error_abort);
->>>>>      object_class_property_set_description(oc, "memory-encryption",
->>>>>          "Set memory encryption object to use", &error_abort);
->>>>> +
->>>>> +    object_class_property_add_bool(oc, "nvdimm",
->>>>> +        machine_get_nvdimm, machine_set_nvdimm, &error_abort);
->>>>> +    object_class_property_set_description(oc, "nvdimm",
->>>>> +                                         "Set on/off to enable/dis=
-able NVDIMM "
->>>>> +                                         "instantiation", NULL);
->>>>> +
->>>>> +    object_class_property_add_str(oc, "nvdimm-persistence",
->>>>> +                                  machine_get_nvdimm_persistence,
->>>>> +                                  machine_set_nvdimm_persistence, =
-&error_abort);
->>>>> +    object_class_property_set_description(oc, "nvdimm-persistence"=
-,
->>>>> +                                          "Set NVDIMM persistence"
->>>>> +                                          "Valid values are cpu an=
-d mem-ctrl",
->>>>> +                                          NULL);
->>>>>  }
->>>>> =20
->>>>>  static void machine_class_base_init(ObjectClass *oc, void *data)
->>>>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->>>>> index 9ecc96dcc7..2d7d46fe50 100644
->>>>> --- a/hw/i386/acpi-build.c
->>>>> +++ b/hw/i386/acpi-build.c
->>>>> @@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *li=
-nker,
->>>>>              aml_append(scope, method);
->>>>>          }
->>>>> =20
->>>>> -        if (pcms->acpi_nvdimm_state.is_enabled) {
->>>>> +        if (machine->nvdimms_state.is_enabled) {
->>>>>              method =3D aml_method("_E04", 0, AML_NOTSERIALIZED);
->>>>>              aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
->>>>>                                            aml_int(0x80)));
->>>>> @@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables, Mach=
-ineState *machine)
->>>>>              build_dmar_q35(tables_blob, tables->linker);
->>>>>          }
->>>>>      }
->>>>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
->>>>> +    if (machine->nvdimms_state.is_enabled) {
->>>>>          nvdimm_build_acpi(table_offsets, tables_blob, tables->link=
-er,
->>>>> -                          &pcms->acpi_nvdimm_state, machine->ram_s=
-lots);
->>>>> +                          &machine->nvdimms_state, machine->ram_sl=
-ots);
->>>>>      }
->>>>> =20
->>>>>      /* Add tables supplied by user (if any) */
->>>>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->>>>> index 42128183e9..cacc4068cf 100644
->>>>> --- a/hw/i386/pc.c
->>>>> +++ b/hw/i386/pc.c
->>>>> @@ -2069,6 +2069,7 @@ static void pc_memory_pre_plug(HotplugHandler=
- *hotplug_dev, DeviceState *dev,
->>>>>  {
->>>>>      const PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
->>>>>      const PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
->>>>> +    const MachineState *ms =3D MACHINE(hotplug_dev);
->>>>>      const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE=
-_NVDIMM);
->>>>>      const uint64_t legacy_align =3D TARGET_PAGE_SIZE;
->>>>> =20
->>>>> @@ -2083,7 +2084,7 @@ static void pc_memory_pre_plug(HotplugHandler=
- *hotplug_dev, DeviceState *dev,
->>>>>          return;
->>>>>      }
->>>>> =20
->>>>> -    if (is_nvdimm && !pcms->acpi_nvdimm_state.is_enabled) {
->>>>> +    if (is_nvdimm && !ms->nvdimms_state.is_enabled) {
->>>>>          error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' =
-in '-M'");
->>>>>          return;
->>>>>      }
->>>>> @@ -2097,6 +2098,7 @@ static void pc_memory_plug(HotplugHandler *ho=
-tplug_dev,
->>>>>  {
->>>>>      Error *local_err =3D NULL;
->>>>>      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
->>>>> +    MachineState *ms =3D MACHINE(hotplug_dev);
->>>>>      bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
-M);
->>>>> =20
->>>>>      pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
->>>>> @@ -2105,7 +2107,7 @@ static void pc_memory_plug(HotplugHandler *ho=
-tplug_dev,
->>>>>      }
->>>>> =20
->>>>>      if (is_nvdimm) {
->>>>> -        nvdimm_plug(&pcms->acpi_nvdimm_state);
->>>>> +        nvdimm_plug(&ms->nvdimms_state);
->>>>>      }
->>>>> =20
->>>>>      hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &er=
-ror_abort);
->>>>> @@ -2546,47 +2548,6 @@ static void pc_machine_set_smm(Object *obj, =
-Visitor *v, const char *name,
->>>>>      visit_type_OnOffAuto(v, name, &pcms->smm, errp);
->>>>>  }
->>>>> =20
->>>>> -static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
->>>>> -{
->>>>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
->>>>> -
->>>>> -    return pcms->acpi_nvdimm_state.is_enabled;
->>>>> -}
->>>>> -
->>>>> -static void pc_machine_set_nvdimm(Object *obj, bool value, Error *=
-*errp)
->>>>> -{
->>>>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
->>>>> -
->>>>> -    pcms->acpi_nvdimm_state.is_enabled =3D value;
->>>>> -}
->>>>> -
->>>>> -static char *pc_machine_get_nvdimm_persistence(Object *obj, Error =
-**errp)
->>>>> -{
->>>>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
->>>>> -
->>>>> -    return g_strdup(pcms->acpi_nvdimm_state.persistence_string);
->>>>> -}
->>>>> -
->>>>> -static void pc_machine_set_nvdimm_persistence(Object *obj, const c=
-har *value,
->>>>> -                                               Error **errp)
->>>>> -{
->>>>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
->>>>> -    AcpiNVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
->>>>> -
->>>>> -    if (strcmp(value, "cpu") =3D=3D 0)
->>>>> -        nvdimm_state->persistence =3D 3;
->>>>> -    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
->>>>> -        nvdimm_state->persistence =3D 2;
->>>>> -    else {
->>>>> -        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupp=
-orted option",
->>>>> -                   value);
->>>>> -        return;
->>>>> -    }
->>>>> -
->>>>> -    g_free(nvdimm_state->persistence_string);
->>>>> -    nvdimm_state->persistence_string =3D g_strdup(value);
->>>>> -}
->>>>> -
->>>>>  static bool pc_machine_get_smbus(Object *obj, Error **errp)
->>>>>  {
->>>>>      PCMachineState *pcms =3D PC_MACHINE(obj);
->>>>> @@ -2636,8 +2597,6 @@ static void pc_machine_initfn(Object *obj)
->>>>>      pcms->max_ram_below_4g =3D 0; /* use default */
->>>>>      pcms->smm =3D ON_OFF_AUTO_AUTO;
->>>>>      pcms->vmport =3D ON_OFF_AUTO_AUTO;
->>>>> -    /* nvdimm is disabled on default. */
->>>>> -    pcms->acpi_nvdimm_state.is_enabled =3D false;
->>>>>      /* acpi build is enabled by default if machine supports it */
->>>>>      pcms->acpi_build_enabled =3D PC_MACHINE_GET_CLASS(pcms)->has_a=
-cpi_build;
->>>>>      pcms->smbus_enabled =3D true;
->>>>> @@ -2798,13 +2757,6 @@ static void pc_machine_class_init(ObjectClas=
-s *oc, void *data)
->>>>>      object_class_property_set_description(oc, PC_MACHINE_VMPORT,
->>>>>          "Enable vmport (pc & q35)", &error_abort);
->>>>> =20
->>>>> -    object_class_property_add_bool(oc, PC_MACHINE_NVDIMM,
->>>>> -        pc_machine_get_nvdimm, pc_machine_set_nvdimm, &error_abort=
-);
->>>>> -
->>>>> -    object_class_property_add_str(oc, PC_MACHINE_NVDIMM_PERSIST,
->>>>> -        pc_machine_get_nvdimm_persistence,
->>>>> -        pc_machine_set_nvdimm_persistence, &error_abort);
->>>>> -
->>>>>      object_class_property_add_bool(oc, PC_MACHINE_SMBUS,
->>>>>          pc_machine_get_smbus, pc_machine_set_smbus, &error_abort);
->>>>> =20
->>>>> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
->>>>> index 8770ecada9..16ebfc5a5a 100644
->>>>> --- a/hw/i386/pc_piix.c
->>>>> +++ b/hw/i386/pc_piix.c
->>>>> @@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
->>>>>                                   PC_MACHINE_ACPI_DEVICE_PROP, &err=
-or_abort);
->>>>>      }
->>>>> =20
->>>>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
->>>>> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io=
-,
->>>>> +    if (machine->nvdimms_state.is_enabled) {
->>>>> +        nvdimm_init_acpi_state(&machine->nvdimms_state, system_io,
->>>>>                                 pcms->fw_cfg, OBJECT(pcms));
->>>>>      }
->>>>>  }
->>>>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
->>>>> index cfb9043e12..dacaa90611 100644
->>>>> --- a/hw/i386/pc_q35.c
->>>>> +++ b/hw/i386/pc_q35.c
->>>>> @@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
->>>>>      pc_vga_init(isa_bus, host_bus);
->>>>>      pc_nic_init(pcmc, isa_bus, host_bus);
->>>>> =20
->>>>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
->>>>> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io=
-,
->>>>> +    if (machine->nvdimms_state.is_enabled) {
->>>>> +        nvdimm_init_acpi_state(&machine->nvdimms_state, system_io,
->>>>>                                 pcms->fw_cfg, OBJECT(pcms));
->>>>>      }
->>>>>  }
->>>>> diff --git a/include/hw/boards.h b/include/hw/boards.h
->>>>> index 9690c71a6d..ccf0c5a69d 100644
->>>>> --- a/include/hw/boards.h
->>>>> +++ b/include/hw/boards.h
->>>>> @@ -8,6 +8,7 @@
->>>>>  #include "hw/qdev.h"
->>>>>  #include "qom/object.h"
->>>>>  #include "qom/cpu.h"
->>>>> +#include "hw/mem/nvdimm.h"
->>>>> =20
->>>>>  /**
->>>>>   * memory_region_allocate_system_memory - Allocate a board's main =
-memory
->>>>> @@ -272,6 +273,7 @@ struct MachineState {
->>>>>      const char *cpu_type;
->>>>>      AccelState *accelerator;
->>>>>      CPUArchIdList *possible_cpus;
->>>>> +    AcpiNVDIMMState nvdimms_state;
->>>>
->>>> It looks we are breaking the generic/abstract machine design.
->>>> You introduce 2 specific concepts here, ACPI and NVDIMM.
->>> at least this should be renamed NVDIMMState according to last Igor's
->>> comment.
->>>>
->>>> MachineClass tries to be generic, and and still suffer from specific
->>>> fields inherited from the PC Machine.
->>>>
->>>> I'd use an intermediate Memory-related object between Machine and
->>>> AcpiNVDIMM states.
->>>>
->>>> I see there already is DeviceMemoryState.
->>>>
->>>> Can AcpiNVDIMMState go there? That would be more acceptable IMHO.
->>> DeviceMemoryState is also declared in include/hw/boards.h so does it
->>> hide any details.
->>>
->>> Not every machine has device memory or irqchip_split either for insta=
-nce
+Nope. I meant the second patch, sent on 4th Mar, which had all the
+things fixed you listed in your review.
+
+But here's the modification for your latest query. This one controls
+the timer depending on ENABLE bit. It sets the INTFLAG even if
+INTENABLE is not set, and only raises the IRQ if both are set.
+
+Sign-off-by: Zolt=C3=A1n Baldaszti <bztemail@gmail.com>
+Subject: [PATCH] Added periodic IRQ support for bcm2836_control local timer
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+index cfa5bc7365..d75dedbf20 100644
+--- a/hw/intc/bcm2836_control.c
++++ b/hw/intc/bcm2836_control.c
+@@ -7,7 +7,13 @@
+  * This code is licensed under the GNU GPLv2 and later.
+  *
+  * At present, only implements interrupt routing, and mailboxes (i.e.,
+- * not local timer, PMU interrupt, or AXI counters).
++ * not PMU interrupt, or AXI counters).
++ *
++ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
++ * The IRQ_TIMER support is still very basic, does not provide timer count=
+er
++ * access and other timer features, it just generates periodic IRQs. But i=
+t
++ * still requires not only the interrupt enable, but the timer enable bit =
+to
++ * be set.
+  *
+  * Ref:
+  * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/=
+QA7_rev3.4.pdf
+@@ -18,6 +24,9 @@
+ #include "qemu/log.h"
+
+ #define REG_GPU_ROUTE           0x0c
++#define REG_LOCALTIMERROUTING   0x24
++#define REG_LOCALTIMERCONTROL   0x34
++#define REG_LOCALTIMERACK       0x38
+ #define REG_TIMERCONTROL        0x40
+ #define REG_MBOXCONTROL         0x50
+ #define REG_IRQSRC              0x60
+@@ -43,6 +52,13 @@
+ #define IRQ_TIMER       11
+ #define IRQ_MAX         IRQ_TIMER
+
++#define LOCALTIMER_FREQ      38400000
++#define LOCALTIMER_INTFLAG   (1 << 31)
++#define LOCALTIMER_RELOAD    (1 << 30)
++#define LOCALTIMER_INTENABLE (1 << 29)
++#define LOCALTIMER_ENABLE    (1 << 28)
++#define LOCALTIMER_VALUE(x)  ((x) & 0xfffffff)
++
+ static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t ir=
+q,
+                           uint32_t controlreg, uint8_t controlidx)
+ {
+@@ -78,6 +94,17 @@ static void bcm2836_control_update(BCM2836ControlState *=
+s)
+         s->fiqsrc[s->route_gpu_fiq] |=3D (uint32_t)1 << IRQ_GPU;
+     }
+
++    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
++    if ((s->local_timer_control & LOCALTIMER_INTENABLE) &&
++        (s->local_timer_control & LOCALTIMER_INTFLAG)) {
++        if (s->route_localtimer & 4) {
++            s->fiqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
+IMER;
++        } else {
++            s->irqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
+IMER;
++        }
++        s->local_timer_control &=3D ~LOCALTIMER_INTENABLE;
++    }
++
+     for (i =3D 0; i < BCM2836_NCORES; i++) {
+         /* handle local timer interrupts for this core */
+         if (s->timerirqs[i]) {
+@@ -162,6 +189,55 @@ static void bcm2836_control_set_gpu_fiq(void
+*opaque, int irq, int level)
+     bcm2836_control_update(s);
+ }
+
++static void bcm2836_control_local_timer_set_next(void *opaque)
++{
++    BCM2836ControlState *s =3D opaque;
++    uint64_t next_event;
++
++    assert(LOCALTIMER_VALUE(s->local_timer_control) > 0);
++
++    next_event =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
++        muldiv64(LOCALTIMER_VALUE(s->local_timer_control),
++            NANOSECONDS_PER_SECOND, LOCALTIMER_FREQ);
++    timer_mod(&s->timer, next_event);
++}
++
++static void bcm2836_control_local_timer_tick(void *opaque)
++{
++    BCM2836ControlState *s =3D opaque;
++
++    bcm2836_control_local_timer_set_next(s);
++
++    s->local_timer_control |=3D LOCALTIMER_INTFLAG;
++    bcm2836_control_update(s);
++}
++
++static void bcm2836_control_local_timer_control(void *opaque, uint32_t val=
+)
++{
++    BCM2836ControlState *s =3D opaque;
++
++    s->local_timer_control =3D val & ~LOCALTIMER_INTFLAG;
++    if (val & LOCALTIMER_ENABLE) {
++        bcm2836_control_local_timer_set_next(s);
++    } else {
++        timer_del(&s->timer);
++    }
++}
++
++static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
++{
++    BCM2836ControlState *s =3D opaque;
++
++    if (val & LOCALTIMER_INTFLAG) {
++        s->local_timer_control |=3D LOCALTIMER_INTENABLE;
++        s->local_timer_control &=3D ~LOCALTIMER_INTFLAG;
++    }
++    if ((val & LOCALTIMER_RELOAD) &&
++        (s->local_timer_control & LOCALTIMER_ENABLE)) {
++            bcm2836_control_local_timer_set_next(s);
++    }
++}
++
+ static uint64_t bcm2836_control_read(void *opaque, hwaddr offset,
+unsigned size)
+ {
+     BCM2836ControlState *s =3D opaque;
+@@ -170,6 +246,12 @@ static uint64_t bcm2836_control_read(void
+*opaque, hwaddr offset, unsigned size)
+         assert(s->route_gpu_fiq < BCM2836_NCORES
+                && s->route_gpu_irq < BCM2836_NCORES);
+         return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
++    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
++        return s->route_localtimer;
++    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
++        return s->local_timer_control;
++    } else if (offset =3D=3D REG_LOCALTIMERACK) {
++        return 0;
+     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
+         return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
+     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
+@@ -195,6 +277,12 @@ static void bcm2836_control_write(void *opaque,
+hwaddr offset,
+     if (offset =3D=3D REG_GPU_ROUTE) {
+         s->route_gpu_irq =3D val & 0x3;
+         s->route_gpu_fiq =3D (val >> 2) & 0x3;
++    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
++        s->route_localtimer =3D val & 7;
++    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
++        bcm2836_control_local_timer_control(s, val);
++    } else if (offset =3D=3D REG_LOCALTIMERACK) {
++        bcm2836_control_local_timer_ack(s, val);
+     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
+         s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] =3D val & 0xff;
+     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
+@@ -227,6 +315,10 @@ static void bcm2836_control_reset(DeviceState *d)
+
+     s->route_gpu_irq =3D s->route_gpu_fiq =3D 0;
+
++    timer_del(&s->timer);
++    s->route_localtimer =3D 0;
++    s->local_timer_control =3D 0;
++
+     for (i =3D 0; i < BCM2836_NCORES; i++) {
+         s->timercontrol[i] =3D 0;
+         s->mailboxcontrol[i] =3D 0;
+@@ -263,11 +355,14 @@ static void bcm2836_control_init(Object *obj)
+     /* outputs to CPU cores */
+     qdev_init_gpio_out_named(dev, s->irq, "irq", BCM2836_NCORES);
+     qdev_init_gpio_out_named(dev, s->fiq, "fiq", BCM2836_NCORES);
++
++    /* create a qemu virtual timer */
++    timer_init_ns(&s->timer, QEMU_CLOCK_VIRTUAL,
+bcm2836_control_local_timer_tick, s);
+ }
+
+ static const VMStateDescription vmstate_bcm2836_control =3D {
+     .name =3D TYPE_BCM2836_CONTROL,
+-    .version_id =3D 1,
++    .version_id =3D 2,
+     .minimum_version_id =3D 1,
+     .fields =3D (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(mailboxes, BCM2836ControlState,
+@@ -277,6 +372,9 @@ static const VMStateDescription vmstate_bcm2836_control=
+ =3D {
+         VMSTATE_UINT32_ARRAY(timercontrol, BCM2836ControlState,
+BCM2836_NCORES),
+         VMSTATE_UINT32_ARRAY(mailboxcontrol, BCM2836ControlState,
+                              BCM2836_NCORES),
++        VMSTATE_TIMER_V(timer, BCM2836ControlState, 2),
++        VMSTATE_UINT32_V(local_timer_control, BCM2836ControlState, 2),
++        VMSTATE_UINT8_V(route_localtimer, BCM2836ControlState, 2),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+diff --git a/include/hw/intc/bcm2836_control.h
+b/include/hw/intc/bcm2836_control.h
+index 613f3c4186..de061b8929 100644
+--- a/include/hw/intc/bcm2836_control.h
++++ b/include/hw/intc/bcm2836_control.h
+@@ -5,6 +5,9 @@
+  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
+  * Written by Andrew Baumann
+  *
++ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
++ * Added basic IRQ_TIMER interrupt support
++ *
+  * This code is licensed under the GNU GPLv2 and later.
+  */
+
+@@ -12,6 +15,7 @@
+ #define BCM2836_CONTROL_H
+
+ #include "hw/sysbus.h"
++#include "qemu/timer.h"
+
+ /* 4 mailboxes per core, for 16 total */
+ #define BCM2836_NCORES 4
+@@ -39,6 +43,11 @@ typedef struct BCM2836ControlState {
+     bool gpu_irq, gpu_fiq;
+     uint8_t timerirqs[BCM2836_NCORES];
+
++    /* local timer */
++    QEMUTimer timer;
++    uint32_t local_timer_control;
++    uint8_t route_localtimer;
++
+     /* interrupt source registers, post-routing (also input-derived;
+visible) */
+     uint32_t irqsrc[BCM2836_NCORES];
+     uint32_t fiqsrc[BCM2836_NCORES];
+
+
+On 3/7/19, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Thu, 7 Mar 2019 at 15:27, bzt <bztemail@gmail.com> wrote:
+>> Yes, could be. The QA7 spec is not really detailed, and calling both
+>> timers simply ARM timers can be misleading. But it's not relevant
+>> anyway from the IRQ's point of view. My latest patch checks both bits
+>> to be set to generate the IRQ, so it does not really matter. As I've
+>> said, this patch adds only the periodic IRQ, and not a full timer
+>> emulation.
 >>
->> device_memory is an abstracted concept that can be theoretically
->> implemented by any machine. nvdimm is not.
->=20
-> Then maybe the DeviceMemoryState is misleading, NVDIMM might not be
-> related to QEMU's DeviceMemory concept, but it is a 'device memory' :)
-
-We should have/should name it MemoryDeviceState/memory_device_state.
-That is source of confusion (memory device vs. device memory) :) Yes, I
-am to blame.
-
->=20
-> The between-object I'm referring to would be a container of device
-> memory types. It doesn't have to be a single instance but rather a list
-> of 'hw memory' interfaces.
+>> Do you want any modifications on the patch? If so, what exactly? Let
+>> me know and I'll update it.
 >
->>
-
-
---=20
-
-Thanks,
-
-David / dhildenb
+> I assume by "latest patch" you mean a planned v3
+> that you haven't sent yet?
+>
+> I think it's probably best to go with my interpretation of
+> the specs, if you think it makes sense:
+>  * running and stopping the timer is controlled by the
+>    "timer enable" bit (and doesn't care about the
+>    "interrupt enable" bit)
+>  * the timer timing out always sets the "interrupt flag" bit
+>  * we set the destination core IRQ/FIQ if the "interrupt flag"
+>    and "interrupt enable" bits are both set (we don't care
+>    about whether the "timer enable" bit is set for this)
+>
+> That should be only very minor changes from what you have now.
+>
+> thanks
+> -- PMM
+>

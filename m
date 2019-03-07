@@ -1,132 +1,128 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7221281wrx;
-        Thu, 7 Mar 2019 06:42:36 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwuCa0iHFCSkMXpZHutHMLOdy7SvaRMa65g98q6/J4CMCAtI1Oe4WU4rCOeA6ZJpG6ZX0R3
-X-Received: by 2002:a25:4287:: with SMTP id p129mr11739904yba.106.1551969756685;
-        Thu, 07 Mar 2019 06:42:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551969756; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7222076wrx;
+        Thu, 7 Mar 2019 06:43:25 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxQpFNvWPAJObBSRpGGNu2WEpZg2V3KjA5uyrSzOGOd1EUQCOSDZRq0l+6DU3fZ5aJZzrW4
+X-Received: by 2002:a0d:c544:: with SMTP id h65mr10216530ywd.35.1551969805518;
+        Thu, 07 Mar 2019 06:43:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1551969805; cv=none;
         d=google.com; s=arc-20160816;
-        b=o0BSTx4KZTO76txtGf2VzA6aIt4ZMJk2iX1Fs+M0zJuDjmOUrZXVjKt1H0vrdFfck5
-         BBxWXWTmgxoFcvhJ8Pbt0ah5n1xZdJhIasLdXIcnWpR7rpSXO/YM83XwkoHPGnXjrynk
-         SvMkfv9h/3vfzws6+B3X2WpjbJcGLW3BF3m9SXRKfCHO8CU1ERl+t2ieu4YESgXppsjV
-         vShsV38upHI0kBM3e6ycLyMz459pEStp8MUdy7m62WbiVOMLKJsesc4cTbw15YDxy6+l
-         x9pBLhs7KEBNBjhvlFcp7zUd+iKUDDQ1MMbw200t5xN/L89Yd8LkDEwW8Pwao8pavf7E
-         khKQ==
+        b=FApM7gtPEHdqet2h5w+0TeG8/bfCRIEAZjvj/kGiuCAaJyNjED1Aq24pjmquzYaaDP
+         Wrgb+8TFh5XK3PbqrUjJVWJlgY+13085oGimMx13lsg1Enptn8RpzhX7aGhtGKogVc2m
+         Qc1pKuGG+9bhQO9ScJd+Q7f2iEcPEVdBelyksFtjSJUz+MDBKf+xVEm2jTby/ZzIupvl
+         CvCI8qcFAPHm5FL0AsggZ0bHB5nmaPb3wwd4yAB46+YeXP3uij6ahYqcUixhYtBAbQmV
+         CjBQc4oTQIQAmq2NsiFnrdHRPEiTRmj/i8M+auAq3CzDfOXy7I8VWRmvx1i+ccGIbrOH
+         htBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=oFbu7HUn0Dolu5xer2msz9nMxqj5GvstVGKH3V3exGk=;
-        b=Ck1FNAY8LdcAEEMXtUsT6pWuJb9MLmwAciyc1UgZ3qAfcxQeCedJG1FjXMrFGpZUr1
-         pqgiEcJ69CcNbayFrq3Vmj0Zu52dkKUR4Fo42U2CnVUmxiq5FbCtH/ZsMNJq0B1XaB1a
-         I6Jb9VtJxNaHSGaazZQlApAwkGuy+9+SgOu1fcOpI14Snj8q9/i0/x2vmQbkhs19O0qd
-         7EIzZk1xF6yoRJ7TV0czg4paJNK0BplJ2/PGqHgQhhWeET0f7Xo5efvlEJMLMBxt8+Vb
-         Wh/VTeSs1066mj8Ghoo/qrJSGLnXptWpcEPSUjaB5jS6M+PdFKfkkzLKH5+aL8f86nam
-         P6vw==
+        bh=uMnfloeqlfTA7eKuFqoy+w2Pz3igFh67uNMUKd0K3tA=;
+        b=CR9cI72oTOEjMz3c5RRHH4JNW9gAQzlVgwJ9qAvDRC+VzWk2s/HjqB1Wd9gfcShF1n
+         ec+p1sBAVsm9vAVRaEXypcTOVRXUipdv+7PQh06DSjToXvhPIEjryJaP4OV2rMz6SsTW
+         0Mwj94ti8GEyYEbbjQpilMO35VzuMNydcH50R7RTl5oQW3CnIcPbSQ+tQVieYHJx+uuJ
+         Tsy6z3f+S0pCXVxfPuJuFwhId3LW+wfh6XlZMVSSPXSyK3ttxr27CEWBmrBeo5Q9+U1t
+         bWIiq+pXnQa72I38d2uKpWiQAt9VcRj35ptVxwxOCi1wXm40n4p5Yhi35IMhZmhS3OJ3
+         fBBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si2766560ybg.68.2019.03.07.06.42.36
+        by mx.google.com with ESMTPS id 21si2698404ywd.413.2019.03.07.06.43.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 06:42:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Mar 2019 06:43:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:52944 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:52968 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h1uEG-0006uR-3i
-	for alex.bennee@linaro.org; Thu, 07 Mar 2019 09:42:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44856)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h1uF3-0008CD-13
+	for alex.bennee@linaro.org; Thu, 07 Mar 2019 09:43:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44883)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h1tv3-0007Pm-0Z
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 09:22:45 -0500
+	(envelope-from <thuth@redhat.com>) id 1h1tv7-0007UY-B0
+	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 09:22:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h1tv2-0002ih-B6
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 09:22:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:33930)
+	(envelope-from <thuth@redhat.com>) id 1h1tv5-0002lF-3u
+	for qemu-arm@nongnu.org; Thu, 07 Mar 2019 09:22:49 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59794)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h1tv0-0002gI-O8; Thu, 07 Mar 2019 09:22:42 -0500
+	id 1h1tv4-0002k2-BW; Thu, 07 Mar 2019 09:22:46 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E9CB7A737;
-	Thu,  7 Mar 2019 14:22:41 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 874D230718E9;
+	Thu,  7 Mar 2019 14:22:45 +0000 (UTC)
 Received: from thuth.com (ovpn-116-26.ams2.redhat.com [10.36.116.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D49275C5FD;
-	Thu,  7 Mar 2019 14:22:37 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 40CC35C1B5;
+	Thu,  7 Mar 2019 14:22:42 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: yang.zhong@intel.com,
 	pbonzini@redhat.com,
 	qemu-devel@nongnu.org
-Date: Thu,  7 Mar 2019 15:18:53 +0100
-Message-Id: <1551968334-18982-29-git-send-email-thuth@redhat.com>
+Date: Thu,  7 Mar 2019 15:18:54 +0100
+Message-Id: <1551968334-18982-30-git-send-email-thuth@redhat.com>
 In-Reply-To: <1551968334-18982-1-git-send-email-thuth@redhat.com>
 References: <1551968334-18982-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 07 Mar 2019 14:22:42 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.40]);
+	Thu, 07 Mar 2019 14:22:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v4 28/29] hw/arm: Express dependencies of the
- musca machines with Kconfig
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v4 29/29] hw/arm: Remove hard-enablement of the
+ remaining PCI devices
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pRwhu6MBA+DR
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YNSBgjrjrPb8
 
-Dependencies have been determined with trial-and-error and by
-looking at the musca.c source file.
+The PCI devices should be pulled in by default if PCI_DEVICES
+is set, so there is no need anymore to enforce them in the configs
+file.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/Kconfig | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ default-configs/arm-softmmu.mak | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 3a04def..7a0e0ba 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -77,6 +77,12 @@ config MAINSTONE
-     select PFLASH_CFI01
-     select SMC91C111
- 
-+config MUSCA
-+    bool
-+    select ARMSSE
-+    select PL011
-+    select PL031
-+
- config MUSICPAL
-     bool
-     select BITBANG_I2C
-@@ -429,6 +435,3 @@ config ARMSSE_CPUID
- 
- config ARMSSE_MHU
-     bool
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index ee95cc0..6b1f6a8 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -33,14 +33,6 @@ CONFIG_DIGIC=y
+ CONFIG_SABRELITE=y
+ CONFIG_EMCRAFT_SF2=y
+ CONFIG_MICROBIT=y
 -
--config MUSCA
--    bool
+-CONFIG_VGA=y
+-
+ CONFIG_FSL_IMX25=y
+ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+-
+-CONFIG_PCIE_PORT=y
+-CONFIG_XIO3130=y
+-CONFIG_IOH3420=y
+-CONFIG_I82801B11=y
 -- 
 1.8.3.1
 

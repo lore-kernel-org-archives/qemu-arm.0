@@ -1,85 +1,105 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8646980wrx;
-        Fri, 8 Mar 2019 09:46:13 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxIsSyUHV1jAy+u9Jb2BuunLGBw25WCWO9esooVLyYyA5hJtcDQQtYH1ziboVw6NKgtWLZK
-X-Received: by 2002:a0d:d4d6:: with SMTP id w205mr15964961ywd.103.1552067173204;
-        Fri, 08 Mar 2019 09:46:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552067173; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8658994wrx;
+        Fri, 8 Mar 2019 10:00:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyShO/W3rcKB4KPqhSfBPGOOZcUnoGWmrxy+vB1prHxaB2Ps5TeZ1kqG5SMRrqzLXD7ODo/
+X-Received: by 2002:a81:524d:: with SMTP id g74mr15427222ywb.461.1552068007332;
+        Fri, 08 Mar 2019 10:00:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552068007; cv=none;
         d=google.com; s=arc-20160816;
-        b=hIBxGkrV4grZkDf1LIZnA6hzAzf4ChiXaojBwpz4DTZRb6YVHwg4uhT/qtBM6W9Bpw
-         H4cCL081Gmhjffz3RYMImnoWpqJI0zU5v1W77SZK/H6WBvamrxSO8NrPysaDOk/Kxw+n
-         wJXnbwMr02ubFnEzUbA1OSTYaIEfnenTxBRT2FNDs+rJGrohVEejLUDPWtHF+6FMgpo+
-         evvE5V39hQNj9l2lE+eSDtR/aSs6KftAOqyHTL2RMaybdh8mRb41alBUQn7J6kf7LG15
-         JvowSkNmI9FVs0e963NVbY7aOI4I1JiFQ91X4npvi1rlO+KZY70LHm8PdQSx7BAVlBrc
-         HiEw==
+        b=DVoLG5eetZGY6N0tQvvjDun+DhlM5yAT2BiRkQduae6MoI0hRXEo8a/KJ5UWEx61W/
+         bHhBQaO52HBY4HIMILnV51/mavvLutm/k53gHHzlcx7Nsboj/0b5qNkzdIFLAPchs7hz
+         fStJGq7COYLn7d8/pXPCbZgaSmOUKcbWHEB3IZbym5AIEW6mlny7EMeX2ShgEyyGew0T
+         cD9HxJGYr0FBNoBAum1yuVil5NwPgAZddWD6Qc6j76ey+S6Qq8WgRhIXHUMiB8bVJSZ6
+         wp4g/BAyrPZl53GS/YihuPyuPpUNHgNhXq47hCGdaQ7UWZ5N5fk/dYe4cxLmJOE7zccs
+         SyKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=P0f001PH9wtSAoPdiWpJgdyRvWqDR+VcdVM6g2zjCYQ=;
-        b=F4C9t+fD46La2DsjauS///NCrB896Z5YxZnLx2oBNOxpr+hqFwHwyfuV1Okw27fBAI
-         8DdMQ3vdWJPv/3sh9qxhKkQwP3zO0iAWS5IUNXr1rHI8n65GURllO7dbgchjYUjsChJv
-         AUzps5hNK3mWvrT+GfqrLueWWaEaW7n4a5ZMJtaZl6mGpHo8uD2Sv2P97YLxfsMdybXS
-         9GSoHTTMbP7F2hjQ7D5v5K+4y/JaoVADJTvIeO9qiKf9DGMa5R1sdWwDHLZs/pVCOEtq
-         sxsq9xae/5g0KCtVI8LFDLdkEZxdM0y0uLpoqL4j2CNROiVGMjKFDTdgbT9RvSeCmnk0
-         7TKA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=Yu2v8GiyUhMXWK14LJHqbGtqqQxctjK68/rG0ZPKftU=;
+        b=GNXfKdw52evOwRnSlbA4tgWB0xe1eUt4rAs7kZMJ3fpNfj4OxX6xJdDb4dpqhbQyHd
+         r5O4xB5MsAZq9enqKTeCikRgRazt+XPD/Phk2RfZ/2MFQpfe7/5NbmWBhpGYDJcNIL1j
+         BU5fc4xe6KU/n62E+Q6fIUYmZAzgtOdXTGSigjZbY9JRjTe+Qp9AaTbbfjNKqZgxQZYH
+         UPaQTIp3Qqf4JMncg+yCQ4M9SKJlQcj3LxGiq+gzUJ9tti5ftNG03IhJaicQQHsZiiRf
+         UxslIUEknd7inq24YWLFBa0vLH/tuHbQ2f4lgcpcFaB9t1m9dM63bJKO3VquXC3ktUO8
+         s+Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p192si5137918ywh.50.2019.03.08.09.46.13
+        by mx.google.com with ESMTPS id o2si4707586ybp.230.2019.03.08.10.00.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 09:46:13 -0800 (PST)
+        Fri, 08 Mar 2019 10:00:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:47697 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:47820 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2JZU-0006Q0-Iv
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 12:46:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42882)
+	id 1h2Jmw-0002jG-Q6
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 13:00:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1h2JYz-0006BU-CN
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 12:45:42 -0500
+	(envelope-from <philmd@redhat.com>) id 1h2Jmk-0002is-50
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 12:59:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1h2JYs-0006A4-U1
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 12:45:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44430)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1h2JYk-0005wZ-Bx; Fri, 08 Mar 2019 12:45:27 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5AC1F3089E68;
-	Fri,  8 Mar 2019 17:45:20 +0000 (UTC)
-Received: from localhost (ovpn-116-90.gru2.redhat.com [10.97.116.90])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6188A5FCA5;
-	Fri,  8 Mar 2019 17:45:12 +0000 (UTC)
-Date: Fri, 8 Mar 2019 14:45:11 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190308174511.GE8899@habkost.net>
+	(envelope-from <philmd@redhat.com>) id 1h2Jmj-0007iY-0N
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 12:59:54 -0500
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:39636)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h2Jmi-0007hY-MX
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 12:59:52 -0500
+Received: by mail-wr1-f65.google.com with SMTP id l12so5847747wrp.6
+	for <qemu-arm@nongnu.org>; Fri, 08 Mar 2019 09:59:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Yu2v8GiyUhMXWK14LJHqbGtqqQxctjK68/rG0ZPKftU=;
+	b=nThAOm8ylbsfgBO6tW8b2oQ+/hh+WU07JA/2wdnUtq///tAc4EecE9uS5CmDHVb/KM
+	pt0IKX9/j+65cFrYbKDgjCt/WdimvEnnU1IU7U15WUWXuqcz6dLgASnFjB4aDj7pSyr7
+	W/KgclQ2kU8WvfQVI/KPvF9QoaLlCGISgGLbmiXN2s8nX4QFQDU5B8fImqWk8zyx2uGJ
+	zyu0Xn/W16HVgKVeSEHrwSQYh/MfcUe8QqBBX9actY0kgW7G1/Tnv+uuIj+w2swjW151
+	yzexhO1SejNTkR3U8eIIPanDkDUpgXefJarMJN66vsL0dDASmSrZFnYJ3qs3AG0uvgeX
+	UN8w==
+X-Gm-Message-State: APjAAAVs25xN4akNMrzJ2ME2u07mQM6zhLYOVvJW8x1hUk6w0KubSPtl
+	3Bh8OVHqBqHgH8M78h0IYpdVcA==
+X-Received: by 2002:a5d:4b06:: with SMTP id v6mr6320515wrq.151.1552067991481; 
+	Fri, 08 Mar 2019 09:59:51 -0800 (PST)
+Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
+	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
+	a24sm12859930wmm.1.2019.03.08.09.59.50
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Fri, 08 Mar 2019 09:59:50 -0800 (PST)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
+	david@redhat.com, 
+	pbonzini@redhat.com, ehabkost@redhat.com, richard.henderson@linaro.org, 
+	sbhat@linux.ibm.com
 References: <20190308152511.10882-1-eric.auger@redhat.com>
-	<20190308152511.10882-3-eric.auger@redhat.com>
-	<20190308174214.GD8899@habkost.net>
+	<20190308152511.10882-2-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <4dbd1705-af66-6152-d865-5bdfeb290178@redhat.com>
+Date: Fri, 8 Mar 2019 18:59:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190308174214.GD8899@habkost.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Fri, 08 Mar 2019 17:45:20 +0000 (UTC)
+In-Reply-To: <20190308152511.10882-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 2/2] machine: Move nvdimms state into
- struct MachineState
+	[fuzzy]
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-arm] [PATCH v3 1/2] nvdimm: Rename AcpiNVDIMMState into
+ NVDIMMState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,59 +111,164 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sbhat@linux.ibm.com, david@redhat.com,
-	richard.henderson@linaro.org, qemu-devel@nongnu.org,
-	shameerali.kolothum.thodi@huawei.com, qemu-arm@nongnu.org,
-	pbonzini@redhat.com, imammedo@redhat.com, philmd@redhat.com,
-	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FR8MjsHJAZwF
+X-TUID: qcE6eSgGaYQc
 
-On Fri, Mar 08, 2019 at 02:42:14PM -0300, Eduardo Habkost wrote:
-> On Fri, Mar 08, 2019 at 04:25:11PM +0100, Eric Auger wrote:
-> [...]
-> > @@ -791,6 +833,28 @@ static void machine_initfn(Object *obj)
-> >      ms->mem_merge = true;
-> >      ms->enable_graphics = true;
-> >  
-> > +    if (mc->nvdimm_supported) {
-> > +        ObjectClass *oc = OBJECT_CLASS(mc);
-> > +
-> > +        ms->nvdimms_state = g_new0(NVDIMMState, 1);
+On 3/8/19 4:25 PM, Eric Auger wrote:
+> As we intend to migrate the acpi_nvdimm_state into
+> the base machine with a new dimms_state name, let's
+> also rename the datatype.
 > 
-> Initializing ms->nvdimms_state inside machine_initfn()
-> only if mc->nvdimm_support makes sense.
-> 
-> But:
-> 
-> > +        object_class_property_add_bool(oc, "nvdimm",
-> > +                                       machine_get_nvdimm, machine_set_nvdimm,
-> > +                                       &error_abort);
-> > +        object_class_property_set_description(oc, "nvdimm",
-> > +                                             "Set on/off to enable/disable "
-> > +                                             "NVDIMM instantiation", NULL);
-> > +
-> > +        object_class_property_add_str(oc, "nvdimm-persistence",
-> > +                                      machine_get_nvdimm_persistence,
-> > +                                      machine_set_nvdimm_persistence,
-> > +                                      &error_abort);
-> > +        object_class_property_set_description(oc, "nvdimm-persistence",
-> > +                                             "Set NVDIMM persistence"
-> > +                                             "Valid values are cpu, mem-ctrl",
-> > +                                              NULL);
-> 
-> Calling object_class_property_add_*() inside instance_init
-> defeats the purpose of class properties.  I suggest either using
-> object_property_add_*(), or registering these class properties in
-> machine_class_base_init().
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
 
-I just realized that machine_class_base_init() won't work, as
-it is called before the subclasses' class_init functions.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The only solutions I see here are using object_property_add*() or
-creating a nvdimm_machine_class_init(MachineClass*) helper that
-will set mc->nvdimm_supported=true and register the class properties.
-
--- 
-Eduardo
+> ---
+>  hw/acpi/nvdimm.c        | 18 +++++++++---------
+>  hw/i386/pc.c            |  2 +-
+>  include/hw/i386/pc.h    |  2 +-
+>  include/hw/mem/nvdimm.h | 10 +++++-----
+>  4 files changed, 16 insertions(+), 16 deletions(-)
+> 
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index e53b2cb681..f73cfb9d90 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -382,7 +382,7 @@ nvdimm_build_structure_caps(GArray *structures, uint32_t capabilities)
+>      nfit_caps->capabilities = cpu_to_le32(capabilities);
+>  }
+>  
+> -static GArray *nvdimm_build_device_structure(AcpiNVDIMMState *state)
+> +static GArray *nvdimm_build_device_structure(NVDIMMState *state)
+>  {
+>      GSList *device_list = nvdimm_get_device_list();
+>      GArray *structures = g_array_new(false, true /* clear */, 1);
+> @@ -416,7 +416,7 @@ static void nvdimm_init_fit_buffer(NvdimmFitBuffer *fit_buf)
+>      fit_buf->fit = g_array_new(false, true /* clear */, 1);
+>  }
+>  
+> -static void nvdimm_build_fit_buffer(AcpiNVDIMMState *state)
+> +static void nvdimm_build_fit_buffer(NVDIMMState *state)
+>  {
+>      NvdimmFitBuffer *fit_buf = &state->fit_buf;
+>  
+> @@ -425,12 +425,12 @@ static void nvdimm_build_fit_buffer(AcpiNVDIMMState *state)
+>      fit_buf->dirty = true;
+>  }
+>  
+> -void nvdimm_plug(AcpiNVDIMMState *state)
+> +void nvdimm_plug(NVDIMMState *state)
+>  {
+>      nvdimm_build_fit_buffer(state);
+>  }
+>  
+> -static void nvdimm_build_nfit(AcpiNVDIMMState *state, GArray *table_offsets,
+> +static void nvdimm_build_nfit(NVDIMMState *state, GArray *table_offsets,
+>                                GArray *table_data, BIOSLinker *linker)
+>  {
+>      NvdimmFitBuffer *fit_buf = &state->fit_buf;
+> @@ -570,7 +570,7 @@ nvdimm_dsm_no_payload(uint32_t func_ret_status, hwaddr dsm_mem_addr)
+>  #define NVDIMM_QEMU_RSVD_HANDLE_ROOT         0x10000
+>  
+>  /* Read FIT data, defined in docs/specs/acpi_nvdimm.txt. */
+> -static void nvdimm_dsm_func_read_fit(AcpiNVDIMMState *state, NvdimmDsmIn *in,
+> +static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
+>                                       hwaddr dsm_mem_addr)
+>  {
+>      NvdimmFitBuffer *fit_buf = &state->fit_buf;
+> @@ -619,7 +619,7 @@ exit:
+>  }
+>  
+>  static void
+> -nvdimm_dsm_handle_reserved_root_method(AcpiNVDIMMState *state,
+> +nvdimm_dsm_handle_reserved_root_method(NVDIMMState *state,
+>                                         NvdimmDsmIn *in, hwaddr dsm_mem_addr)
+>  {
+>      switch (in->function) {
+> @@ -863,7 +863,7 @@ nvdimm_dsm_read(void *opaque, hwaddr addr, unsigned size)
+>  static void
+>  nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+>  {
+> -    AcpiNVDIMMState *state = opaque;
+> +    NVDIMMState *state = opaque;
+>      NvdimmDsmIn *in;
+>      hwaddr dsm_mem_addr = val;
+>  
+> @@ -925,7 +925,7 @@ void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev)
+>      }
+>  }
+>  
+> -void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
+> +void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+>                              FWCfgState *fw_cfg, Object *owner)
+>  {
+>      memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
+> @@ -1319,7 +1319,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+>  }
+>  
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+> -                       BIOSLinker *linker, AcpiNVDIMMState *state,
+> +                       BIOSLinker *linker, NVDIMMState *state,
+>                         uint32_t ram_slots)
+>  {
+>      GSList *device_list;
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 42128183e9..0338dbe9da 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -2571,7 +2571,7 @@ static void pc_machine_set_nvdimm_persistence(Object *obj, const char *value,
+>                                                 Error **errp)
+>  {
+>      PCMachineState *pcms = PC_MACHINE(obj);
+> -    AcpiNVDIMMState *nvdimm_state = &pcms->acpi_nvdimm_state;
+> +    NVDIMMState *nvdimm_state = &pcms->acpi_nvdimm_state;
+>  
+>      if (strcmp(value, "cpu") == 0)
+>          nvdimm_state->persistence = 3;
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 54222a202d..94fb620d65 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -45,7 +45,7 @@ struct PCMachineState {
+>      OnOffAuto vmport;
+>      OnOffAuto smm;
+>  
+> -    AcpiNVDIMMState acpi_nvdimm_state;
+> +    NVDIMMState acpi_nvdimm_state;
+>  
+>      bool acpi_build_enabled;
+>      bool smbus_enabled;
+> diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+> index c5c9b3c7f8..523a9b3d4a 100644
+> --- a/include/hw/mem/nvdimm.h
+> +++ b/include/hw/mem/nvdimm.h
+> @@ -123,7 +123,7 @@ struct NvdimmFitBuffer {
+>  };
+>  typedef struct NvdimmFitBuffer NvdimmFitBuffer;
+>  
+> -struct AcpiNVDIMMState {
+> +struct NVDIMMState {
+>      /* detect if NVDIMM support is enabled. */
+>      bool is_enabled;
+>  
+> @@ -141,13 +141,13 @@ struct AcpiNVDIMMState {
+>      int32_t persistence;
+>      char    *persistence_string;
+>  };
+> -typedef struct AcpiNVDIMMState AcpiNVDIMMState;
+> +typedef struct NVDIMMState NVDIMMState;
+>  
+> -void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
+> +void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+>                              FWCfgState *fw_cfg, Object *owner);
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+> -                       BIOSLinker *linker, AcpiNVDIMMState *state,
+> +                       BIOSLinker *linker, NVDIMMState *state,
+>                         uint32_t ram_slots);
+> -void nvdimm_plug(AcpiNVDIMMState *state);
+> +void nvdimm_plug(NVDIMMState *state);
+>  void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev);
+>  #endif
+> 

@@ -1,515 +1,1366 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8821634wrx;
-        Fri, 8 Mar 2019 13:05:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwiTE2kmCNyCYGialQI7R0wKFiorK3WzYL8cwaNbtM11tbeKWx4hkHSMCp+1cdTKPAp0FhT
-X-Received: by 2002:a25:938f:: with SMTP id a15mr17107456ybm.19.1552079115424;
-        Fri, 08 Mar 2019 13:05:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552079115; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8896858wrx;
+        Fri, 8 Mar 2019 14:38:08 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwiK7aaWFD8/gIh/ndArKTOMWgb7j+axiEuat3p9sBsSluhT/Eai4yU+r0J91iolQEzy4rm
+X-Received: by 2002:a25:3604:: with SMTP id d4mr18257269yba.466.1552084688894;
+        Fri, 08 Mar 2019 14:38:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552084688; cv=none;
         d=google.com; s=arc-20160816;
-        b=r2Sq8fM00Q891odtg0bdqs5115FX67/l5mMB59SW+gBV8uPCUbIMqvSAFzm3oUoJq1
-         QtdjJoJ6vxQbYYYw5Xu81u/1mFL8odfv1GdVSMqscKiCGsWetE0/CKgjULw+ornhEr+o
-         /0JN/hGmHo9lpG1bgBIV2ey77HR9YH1Xn5KrSQKhP/l2Sk12WRcXpATV2iG/aGlZiDZp
-         DBTvijqgOk3ZHeiYI33fa8vQr/Bx+2LhrHY3YPYo1xLmPWPpMax5sD8jY4syy7o+EwFV
-         tHdzlRAsoNoHNkDQCDfheysSb0EvX8P7wNGLFU4ZH3Wvmby/8VIXoMP93FEJfP60itK6
-         NpfQ==
+        b=koeCYuwql5EXjdmxPbWRK1TXfy7oTTOOAuLfHDZJmhI7balZZLIAZt+PbAyCqgPttd
+         B1rKM+rawFRis94662yZv9PYLmkKTsVbIc9z23jZS/f9W19c7m2uGQZKMkd/GrAOjwEV
+         8IFmFnYWA1w7rlEmcen89IHHRhsyoswuhukda58dHA4JvVxHTwlSb6/EY7IwhAsBWowx
+         DOxnPcMW13CGiUlnmN6G6RYBmjWzTSwITKpMj0aza/8dTUmJKnLsFOIPBS0h88v5mFvd
+         8BUmX1GRhN5pGV1nPWxN3dpUnb0hLh7esbxNMNXF6oAgwB8xCjH93RL2LuyITkzynUVj
+         XT3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version;
-        bh=zp6aTvZ/Leh9a5CTTLqcCKww14lZeVj847K2yoms0uY=;
-        b=B7wAFpGRELZDjI0TduC6f4ejAcqqeCQMcNGIz8d2CrE3S/B6XSN/NTboPVeg1ybLJF
-         ZGMKIPvZr7erGRbu373pBL9webt9UweDQuMt+WDf+5URnDLp/DZSat9ASFBDwAmdmqW5
-         /8wdvNtpPgPlZDcSjzcMkJOsdf5TrawdwkY4MDjk9Oe81roKxp0xNMVPWlBETv17fTHs
-         +hzG+ZaZgKdYbimg3TAHmi0WqEMVPqCaf2Bmhv+OkvxHn2M1OdxbvRdVzdbCj6RqF72r
-         m3sJvC8h7lNvtzMAGKStmdoGloGuGDnw2vV9rS8Wgv05AhPuXXdJiQz7sHetC8YvYvyi
-         AF4g==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=Hvlphl/zwUzHITek935+1OYpx2LA56IB8mO/sERYlgk=;
+        b=i01OQqLHVBUsr7iK/x37yL+gMsKcNhBTYp3SG0o4CCmB0K/57+F8RvRXx2pO1i3ABF
+         MxAc35PfvKlvQDM65UbTagFNpOFSIUhKfEytGQ0ZZs5CFmS2pZWd4fuyJigWjz94Jze1
+         O9QS/OqDJbfHUs1944S9fLmBAoTF0VQOaq+1GkM5ARK/I2EjdCDcDfRKu2UMi/6IIPOR
+         qkR//lblJB+qT8+zAOcM9lPgSo8srvgNv38EISTb3g+yqP0ywHYKVL+MPQ15LBhpTJ4L
+         8cdN24RB4ImSdGfSDpxv0Hhm+MHG2v+iDv5PJA3YyHbSpOgLMMSihd4IK1KjXDYjgBnK
+         Nd0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t5cUPTmB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 192si5206887ywi.360.2019.03.08.13.05.15
+        by mx.google.com with ESMTPS id 138si5469551ybc.380.2019.03.08.14.38.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 13:05:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Mar 2019 14:38:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49882 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t5cUPTmB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:50806 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2Mg6-0002Tf-Rv
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 16:05:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52137)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h2O80-0001oc-5i
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 17:38:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pmathieu@redhat.com>) id 1h2Mfo-0002SF-67
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 16:04:58 -0500
+	(envelope-from <dirty.ice.hu@gmail.com>) id 1h2O4Y-0007cp-L5
+	for qemu-devel@nongnu.org; Fri, 08 Mar 2019 17:34:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pmathieu@redhat.com>) id 1h2Mfm-00061H-97
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 16:04:56 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:32792)
+	(envelope-from <dirty.ice.hu@gmail.com>) id 1h2O4V-0002aT-Ig
+	for qemu-devel@nongnu.org; Fri, 08 Mar 2019 17:34:34 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:39365)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1h2Mfm-0005zN-1m
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 16:04:54 -0500
-Received: by mail-wm1-f67.google.com with SMTP id c13so9747956wmb.0
-	for <qemu-arm@nongnu.org>; Fri, 08 Mar 2019 13:04:52 -0800 (PST)
+	(Exim 4.71) (envelope-from <dirty.ice.hu@gmail.com>)
+	id 1h2O4V-0002Zz-6h; Fri, 08 Mar 2019 17:34:31 -0500
+Received: by mail-wm1-x342.google.com with SMTP id z84so13683406wmg.4;
+	Fri, 08 Mar 2019 14:34:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=Hvlphl/zwUzHITek935+1OYpx2LA56IB8mO/sERYlgk=;
+	b=t5cUPTmBk82ez5plv6LXATVZt9eQzRObf6qiThTz/CgZ/6hrPcrF+YgE+GOiCawOfA
+	FrQ3zBRRKJRSTnGinJX0+DQuHW8fuRwtrfW9FCkoZvLK1lQRxB7hODxK4mx1wmMsBPho
+	mteUoxHlUwYfWcFCskHFrfAeQATCq8MDRqtpyJBsaH27nn6jFItETj7JOE5QomtYpXW7
+	WAET3+L5nja4znf33ritQoyfQnyshJ9SMCb1ODMEHn2/T5yf+pZXlHty27bkqOfM4NP3
+	GYuyx4rXPCO00J2Oq1wzkbyy0r5xrzOtsGgh+amHjt/gsFvu025GlAdE3ph/KEi9OcH4
+	WMTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=zp6aTvZ/Leh9a5CTTLqcCKww14lZeVj847K2yoms0uY=;
-	b=BOJr9+hOGSUTUlWv6xRQtseOfsHQixdT9xZErhYVTCIxu2/cu29yLbchMaPi3XgXY7
-	qOfd2htxGxBUB1JbSun8rwH7ElGeXRlub1GC/xxx4jNrKMtOwdHNuSv++UtS0DD9fac/
-	InhLcwZkBhk7ekVXjUrEAo5o9he1qrVVoIWsfgEvXp6e+hW3BqZ7ed4Yf3a8K9tF9Q/M
-	980tXYf5lwj8d2d0/5tXEby8gTvVXAafTO70Z9ZnIOjkKEWbNJJRwUEbfnUCsoYSDlmH
-	aeWFx+CucuSsSO8AkD/E5EiXp2a1kPzBSt/SONazzpH18vjo/A5H3ykPAq8B3yy6c0iz
-	HcWg==
-X-Gm-Message-State: APjAAAXO8BibnJvvPZU2HIh2E/wyzQR/ZjYbqz0SiQ+vK8cidCafUltf
-	DzOhczQlMbXZqFkUHJeKAEZzYOwptqDEeG8SWZ7wEA==
-X-Received: by 2002:a1c:6305:: with SMTP id x5mr8860829wmb.144.1552079091425; 
-	Fri, 08 Mar 2019 13:04:51 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=Hvlphl/zwUzHITek935+1OYpx2LA56IB8mO/sERYlgk=;
+	b=N6sW1UQ0XCpQkmD4PbAKOqpVgxgcwcTBhTN/EUBzs1u7p3jdJnEeBK05aelJAfeK55
+	iEd3X9l7mIJ+RRxdGwG996wPFNb+jb1G5+ezgFy7NddLjrJnojICAqCeJ4DRhV4G8zU3
+	VrM5WKmcUjS+zOA0we4hgycEdZclzeB7qzqm57QgyDqrogLC0RvHUJNDcb0HiilPN6Cu
+	PO2kLYmrE+zxLrQDW2CeD//J0qb9sDIyUAyajZOGhrY7mUh41/AIWFBhWSH9MJXfp7dC
+	QH2jTwiGOMvI9b4fG3HEIcBGOxJaVSMb6omx1yV5mSdu+A1sktmguU55bDpLmMrNZk4I
+	CplQ==
+X-Gm-Message-State: APjAAAVmDzzFGcVugHJFUqkSZvmP5vQes3Kfbz4ZOScp2e8drM2m7bPu
+	hoGb++6wEoCRI7kiRpIaSqKLY2DhwgM=
+X-Received: by 2002:a1c:dc85:: with SMTP id
+	t127mr10085317wmg.136.1552084469377; 
+	Fri, 08 Mar 2019 14:34:29 -0800 (PST)
+Received: from nullptr.home.dirty-ice.org
+	(2a01-036c-0113-6af5-0000-0000-0000-0005.pool6.digikabel.hu.
+	[2a01:36c:113:6af5::5]) by smtp.gmail.com with ESMTPSA id
+	v2sm15269144wme.29.2019.03.08.14.34.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 08 Mar 2019 14:34:28 -0800 (PST)
+From: "=?UTF-8?q?K=C5=91v=C3=A1g=C3=B3=2C=20Zolt=C3=A1n?="
+	<dirty.ice.hu@gmail.com>
+X-Google-Original-From: =?UTF-8?q?K=C5=91v=C3=A1g=C3=B3=2C=20Zolt=C3=A1n?=
+	<DirtY.iCE.hu@gmail.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  8 Mar 2019 23:34:13 +0100
+Message-Id: <01251b2758a1679c66842120b77c0fb46d7d0eaf.1552083282.git.DirtY.iCE.hu@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <cover.1552083282.git.DirtY.iCE.hu@gmail.com>
+References: <cover.1552083282.git.DirtY.iCE.hu@gmail.com>
 MIME-Version: 1.0
-References: <20190308152511.10882-1-eric.auger@redhat.com>
-	<20190308152511.10882-3-eric.auger@redhat.com>
-	<03ee1ae0-2646-e744-709d-431dd1aaa3c2@redhat.com>
-	<4ff97430-5df2-48fd-046b-6363ad6420ca@redhat.com>
-In-Reply-To: <4ff97430-5df2-48fd-046b-6363ad6420ca@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Fri, 8 Mar 2019 22:04:40 +0100
-Message-ID: <CAP+75-X+A7UcAtw6M_V1wG4E4+0H7omuXg8iuxT8qtU=FdG4aA@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-arm] [PATCH v3 2/2] machine: Move nvdimms state into
- struct MachineState
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-devel] [PATCH v6 02/14] audio: use qapi AudioFormat instead
+ of audfmt_e
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, sbhat@linux.ibm.com,
-	David Hildenbrand <david@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	shameerali.kolothum.thodi@huawei.com, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D3ogDhSyYaj1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Michael Walle <michael@walle.cc>, "open list:ARM" <qemu-arm@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3+Qt0ReeKsOz
 
-On Fri, Mar 8, 2019 at 7:16 PM Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Philippe,
-> On 3/8/19 7:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > hi Eric,
-> >
-> > On 3/8/19 4:25 PM, Eric Auger wrote:
-> >> As NVDIMM support is looming for ARM and SPAPR, let's
-> >> move the acpi_nvdimm_state to the generic machine struct
-> >> instead of duplicating the same code in several machines.
-> >> It is also renamed into nvdimms_state and becomes a pointer.
-> >>
-> >> nvdimm and nvdimm-persistence become generic machine options.
-> >> They become guarded by a nvdimm_supported machine class member.
-> >> We also add a description for those options.
-> >>
-> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> >>
-> >> ---
-> >> v2 -> v3
-> >> - nvdimms_state becomes a pointer
-> >> - add machine class nvdimm_supported
-> >>
-> >> v1 -> v2:
-> >> - s/acpi_nvdimm_state/nvdimms_state
-> >> - remove ms->nvdimms_state.is_enabled initialization to false.
-> >> ---
-> >>  hw/core/machine.c    | 65 +++++++++++++++++++++++++++++++++++++++++++=
+I had to include an enum for audio sampling formats into qapi, but that
+meant duplicating the audfmt_e enum.  This patch replaces audfmt_e and
+associated values with the qapi generated AudioFormat enum.
+
+This patch is mostly a search-and-replace, except for switches where the
+qapi generated AUDIO_FORMAT_MAX caused problems.
+
+Signed-off-by: Kővágó, Zoltán <DirtY.iCE.hu@gmail.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+ audio/audio.h             | 12 +----
+ audio/alsaaudio.c         | 53 +++++++++++----------
+ audio/audio.c             | 97 +++++++++++++++++++++------------------
+ audio/audio_win_int.c     | 18 ++++----
+ audio/ossaudio.c          | 30 ++++++------
+ audio/paaudio.c           | 28 +++++------
+ audio/sdlaudio.c          | 26 +++++------
+ audio/spiceaudio.c        |  4 +-
+ audio/wavaudio.c          | 17 ++++---
+ audio/wavcapture.c        |  2 +-
+ hw/arm/omap2.c            |  2 +-
+ hw/audio/ac97.c           |  2 +-
+ hw/audio/adlib.c          |  2 +-
+ hw/audio/cs4231a.c        |  6 +--
+ hw/audio/es1370.c         |  4 +-
+ hw/audio/gus.c            |  2 +-
+ hw/audio/hda-codec.c      | 18 ++++----
+ hw/audio/lm4549.c         |  6 +--
+ hw/audio/milkymist-ac97.c |  2 +-
+ hw/audio/pcspk.c          |  2 +-
+ hw/audio/sb16.c           | 14 +++---
+ hw/audio/wm8750.c         |  6 +--
+ hw/display/xlnx_dp.c      |  2 +-
+ hw/input/tsc210x.c        |  2 +-
+ hw/usb/dev-audio.c        |  2 +-
+ ui/vnc.c                  | 26 +++++------
+ 26 files changed, 196 insertions(+), 189 deletions(-)
+
+diff --git a/audio/audio.h b/audio/audio.h
+index f4339a185e..02f29a3b3e 100644
+--- a/audio/audio.h
++++ b/audio/audio.h
+@@ -26,18 +26,10 @@
+ #define QEMU_AUDIO_H
+ 
+ #include "qemu/queue.h"
++#include "qapi/qapi-types-audio.h"
+ 
+ typedef void (*audio_callback_fn) (void *opaque, int avail);
+ 
+-typedef enum {
+-    AUD_FMT_U8,
+-    AUD_FMT_S8,
+-    AUD_FMT_U16,
+-    AUD_FMT_S16,
+-    AUD_FMT_U32,
+-    AUD_FMT_S32
+-} audfmt_e;
+-
+ #ifdef HOST_WORDS_BIGENDIAN
+ #define AUDIO_HOST_ENDIANNESS 1
+ #else
+@@ -47,7 +39,7 @@ typedef enum {
+ struct audsettings {
+     int freq;
+     int nchannels;
+-    audfmt_e fmt;
++    AudioFormat fmt;
+     int endianness;
+ };
+ 
+diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
+index 635be73bf4..5bd034267f 100644
+--- a/audio/alsaaudio.c
++++ b/audio/alsaaudio.c
+@@ -87,7 +87,7 @@ struct alsa_params_req {
+ 
+ struct alsa_params_obt {
+     int freq;
+-    audfmt_e fmt;
++    AudioFormat fmt;
+     int endianness;
+     int nchannels;
+     snd_pcm_uframes_t samples;
+@@ -294,16 +294,16 @@ static int alsa_write (SWVoiceOut *sw, void *buf, int len)
+     return audio_pcm_sw_write (sw, buf, len);
+ }
+ 
+-static snd_pcm_format_t aud_to_alsafmt (audfmt_e fmt, int endianness)
++static snd_pcm_format_t aud_to_alsafmt (AudioFormat fmt, int endianness)
+ {
+     switch (fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         return SND_PCM_FORMAT_S8;
+ 
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         return SND_PCM_FORMAT_U8;
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         if (endianness) {
+             return SND_PCM_FORMAT_S16_BE;
+         }
+@@ -311,7 +311,7 @@ static snd_pcm_format_t aud_to_alsafmt (audfmt_e fmt, int endianness)
+             return SND_PCM_FORMAT_S16_LE;
+         }
+ 
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         if (endianness) {
+             return SND_PCM_FORMAT_U16_BE;
+         }
+@@ -319,7 +319,7 @@ static snd_pcm_format_t aud_to_alsafmt (audfmt_e fmt, int endianness)
+             return SND_PCM_FORMAT_U16_LE;
+         }
+ 
+-    case AUD_FMT_S32:
++    case AUDIO_FORMAT_S32:
+         if (endianness) {
+             return SND_PCM_FORMAT_S32_BE;
+         }
+@@ -327,7 +327,7 @@ static snd_pcm_format_t aud_to_alsafmt (audfmt_e fmt, int endianness)
+             return SND_PCM_FORMAT_S32_LE;
+         }
+ 
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_U32:
+         if (endianness) {
+             return SND_PCM_FORMAT_U32_BE;
+         }
+@@ -344,58 +344,58 @@ static snd_pcm_format_t aud_to_alsafmt (audfmt_e fmt, int endianness)
+     }
+ }
+ 
+-static int alsa_to_audfmt (snd_pcm_format_t alsafmt, audfmt_e *fmt,
++static int alsa_to_audfmt (snd_pcm_format_t alsafmt, AudioFormat *fmt,
+                            int *endianness)
+ {
+     switch (alsafmt) {
+     case SND_PCM_FORMAT_S8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S8;
++        *fmt = AUDIO_FORMAT_S8;
+         break;
+ 
+     case SND_PCM_FORMAT_U8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U8;
++        *fmt = AUDIO_FORMAT_U8;
+         break;
+ 
+     case SND_PCM_FORMAT_S16_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case SND_PCM_FORMAT_U16_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     case SND_PCM_FORMAT_S16_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case SND_PCM_FORMAT_U16_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     case SND_PCM_FORMAT_S32_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S32;
++        *fmt = AUDIO_FORMAT_S32;
+         break;
+ 
+     case SND_PCM_FORMAT_U32_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U32;
++        *fmt = AUDIO_FORMAT_U32;
+         break;
+ 
+     case SND_PCM_FORMAT_S32_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_S32;
++        *fmt = AUDIO_FORMAT_S32;
+         break;
+ 
+     case SND_PCM_FORMAT_U32_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_U32;
++        *fmt = AUDIO_FORMAT_U32;
+         break;
+ 
+     default:
+@@ -638,19 +638,22 @@ static int alsa_open (int in, struct alsa_params_req *req,
+         bytes_per_sec = freq << (nchannels == 2);
+ 
+         switch (obt->fmt) {
+-        case AUD_FMT_S8:
+-        case AUD_FMT_U8:
++        case AUDIO_FORMAT_S8:
++        case AUDIO_FORMAT_U8:
+             break;
+ 
+-        case AUD_FMT_S16:
+-        case AUD_FMT_U16:
++        case AUDIO_FORMAT_S16:
++        case AUDIO_FORMAT_U16:
+             bytes_per_sec <<= 1;
+             break;
+ 
+-        case AUD_FMT_S32:
+-        case AUD_FMT_U32:
++        case AUDIO_FORMAT_S32:
++        case AUDIO_FORMAT_U32:
+             bytes_per_sec <<= 2;
+             break;
 +
-> >>  hw/i386/acpi-build.c |  6 ++--
-> >>  hw/i386/pc.c         | 57 ++++----------------------------------
-> >>  hw/i386/pc_piix.c    |  4 +--
-> >>  hw/i386/pc_q35.c     |  4 +--
-> >>  include/hw/boards.h  |  2 ++
-> >>  include/hw/i386/pc.h |  4 ---
-> >>  7 files changed, 79 insertions(+), 63 deletions(-)
-> >>
-> >> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> >> index 766ca5899d..29a33194a9 100644
-> >> --- a/hw/core/machine.c
-> >> +++ b/hw/core/machine.c
-> >> @@ -22,6 +22,7 @@
-> >>  #include "qemu/error-report.h"
-> >>  #include "sysemu/qtest.h"
-> >>  #include "hw/pci/pci.h"
-> >> +#include "hw/mem/nvdimm.h"
-> >>
-> >>  GlobalProperty hw_compat_3_1[] =3D {
-> >>      { "pcie-root-port", "x-speed", "2_5" },
-> >> @@ -481,6 +482,47 @@ static void machine_set_memory_encryption(Object =
-*obj, const char *value,
-> >>      ms->memory_encryption =3D g_strdup(value);
-> >>  }
-> >>
-> >> +static bool machine_get_nvdimm(Object *obj, Error **errp)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +
-> >> +    return ms->nvdimms_state->is_enabled;
-> >> +}
-> >> +
-> >> +static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +
-> >> +    ms->nvdimms_state->is_enabled =3D value;
-> >> +}
-> >> +
-> >> +static char *machine_get_nvdimm_persistence(Object *obj, Error **errp=
-)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +
-> >> +    return g_strdup(ms->nvdimms_state->persistence_string);
-> >> +}
-> >> +
-> >> +static void machine_set_nvdimm_persistence(Object *obj, const char *v=
-alue,
-> >> +                                           Error **errp)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +    NVDIMMState *nvdimms_state =3D ms->nvdimms_state;
-> >> +
-> >> +    if (strcmp(value, "cpu") =3D=3D 0) {
-> >> +        nvdimms_state->persistence =3D 3;
-> >> +    } else if (strcmp(value, "mem-ctrl") =3D=3D 0) {
-> >> +        nvdimms_state->persistence =3D 2;
-> >> +    } else {
-> >> +        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupport=
-ed option",
-> >> +                   value);
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    g_free(nvdimms_state->persistence_string);
-> >> +    nvdimms_state->persistence_string =3D g_strdup(value);
-> >> +}
-> >> +
-> >>  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const c=
-har *type)
-> >>  {
-> >>      strList *item =3D g_new0(strList, 1);
-> >> @@ -791,6 +833,28 @@ static void machine_initfn(Object *obj)
-> >>      ms->mem_merge =3D true;
-> >>      ms->enable_graphics =3D true;
-> >>
-> >> +    if (mc->nvdimm_supported) {
-> >> +        ObjectClass *oc =3D OBJECT_CLASS(mc);
-> >> +
-> >> +        ms->nvdimms_state =3D g_new0(NVDIMMState, 1);
-> >> +        object_class_property_add_bool(oc, "nvdimm",
-> >> +                                       machine_get_nvdimm, machine_se=
-t_nvdimm,
-> >> +                                       &error_abort);
-> >> +        object_class_property_set_description(oc, "nvdimm",
-> >> +                                             "Set on/off to enable/di=
-sable "
-> >> +                                             "NVDIMM instantiation", =
-NULL);
-> >> +
-> >> +        object_class_property_add_str(oc, "nvdimm-persistence",
-> >> +                                      machine_get_nvdimm_persistence,
-> >> +                                      machine_set_nvdimm_persistence,
-> >> +                                      &error_abort);
-> >> +        object_class_property_set_description(oc, "nvdimm-persistence=
-",
-> >> +                                             "Set NVDIMM persistence"
-> >> +                                             "Valid values are cpu, m=
-em-ctrl",
-> >> +                                              NULL);
-> >> +    }
-> >> +
-> >> +
-> >>      /* Register notifier when init is done for sysbus sanity checks *=
-/
-> >>      ms->sysbus_notifier.notify =3D machine_init_notify;
-> >>      qemu_add_machine_init_done_notifier(&ms->sysbus_notifier);
-> >> @@ -809,6 +873,7 @@ static void machine_finalize(Object *obj)
-> >>      g_free(ms->dt_compatible);
-> >>      g_free(ms->firmware);
-> >>      g_free(ms->device_memory);
-> >> +    g_free(ms->nvdimms_state);
-> >>  }
-> >>
-> >>  bool machine_usb(MachineState *machine)
-> >> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> >> index 9ecc96dcc7..416da318ae 100644
-> >> --- a/hw/i386/acpi-build.c
-> >> +++ b/hw/i386/acpi-build.c
-> >> @@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linke=
-r,
-> >>              aml_append(scope, method);
-> >>          }
-> >>
-> >> -        if (pcms->acpi_nvdimm_state.is_enabled) {
-> >> +        if (machine->nvdimms_state->is_enabled) {
-> >>              method =3D aml_method("_E04", 0, AML_NOTSERIALIZED);
-> >>              aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
-> >>                                            aml_int(0x80)));
-> >> @@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables, Machine=
-State *machine)
-> >>              build_dmar_q35(tables_blob, tables->linker);
-> >>          }
-> >>      }
-> >> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> >> +    if (machine->nvdimms_state->is_enabled) {
-> >>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-> >> -                          &pcms->acpi_nvdimm_state, machine->ram_slot=
-s);
-> >> +                          machine->nvdimms_state, machine->ram_slots)=
-;
-> >>      }
-> >>
-> >>      /* Add tables supplied by user (if any) */
-> >> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> >> index 0338dbe9da..71385cfac9 100644
-> >> --- a/hw/i386/pc.c
-> >> +++ b/hw/i386/pc.c
-> >> @@ -2069,6 +2069,7 @@ static void pc_memory_pre_plug(HotplugHandler *h=
-otplug_dev, DeviceState *dev,
-> >>  {
-> >>      const PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> >>      const PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
-> >> +    const MachineState *ms =3D MACHINE(hotplug_dev);
-> >>      const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NV=
-DIMM);
-> >>      const uint64_t legacy_align =3D TARGET_PAGE_SIZE;
-> >>
-> >> @@ -2083,7 +2084,7 @@ static void pc_memory_pre_plug(HotplugHandler *h=
-otplug_dev, DeviceState *dev,
-> >>          return;
-> >>      }
-> >>
-> >> -    if (is_nvdimm && !pcms->acpi_nvdimm_state.is_enabled) {
-> >> +    if (is_nvdimm && !ms->nvdimms_state->is_enabled) {
-> >>          error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in =
-'-M'");
-> >>          return;
-> >>      }
-> >> @@ -2097,6 +2098,7 @@ static void pc_memory_plug(HotplugHandler *hotpl=
-ug_dev,
-> >>  {
-> >>      Error *local_err =3D NULL;
-> >>      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> >> +    MachineState *ms =3D MACHINE(hotplug_dev);
-> >>      bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-> >>
-> >>      pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
-> >> @@ -2105,7 +2107,7 @@ static void pc_memory_plug(HotplugHandler *hotpl=
-ug_dev,
-> >>      }
-> >>
-> >>      if (is_nvdimm) {
-> >> -        nvdimm_plug(&pcms->acpi_nvdimm_state);
-> >> +        nvdimm_plug(ms->nvdimms_state);
-> >>      }
-> >>
-> >>      hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &error=
-_abort);
-> >> @@ -2546,47 +2548,6 @@ static void pc_machine_set_smm(Object *obj, Vis=
-itor *v, const char *name,
-> >>      visit_type_OnOffAuto(v, name, &pcms->smm, errp);
-> >>  }
-> >>
-> >> -static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
-> >> -{
-> >> -    PCMachineState *pcms =3D PC_MACHINE(obj);
-> >> -
-> >> -    return pcms->acpi_nvdimm_state.is_enabled;
-> >> -}
-> >> -
-> >> -static void pc_machine_set_nvdimm(Object *obj, bool value, Error **er=
-rp)
-> >> -{
-> >> -    PCMachineState *pcms =3D PC_MACHINE(obj);
-> >> -
-> >> -    pcms->acpi_nvdimm_state.is_enabled =3D value;
-> >> -}
-> >> -
-> >> -static char *pc_machine_get_nvdimm_persistence(Object *obj, Error **e=
-rrp)
-> >> -{
-> >> -    PCMachineState *pcms =3D PC_MACHINE(obj);
-> >> -
-> >> -    return g_strdup(pcms->acpi_nvdimm_state.persistence_string);
-> >> -}
-> >> -
-> >> -static void pc_machine_set_nvdimm_persistence(Object *obj, const char=
- *value,
-> >> -                                               Error **errp)
-> >> -{
-> >> -    PCMachineState *pcms =3D PC_MACHINE(obj);
-> >> -    NVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
-> >> -
-> >> -    if (strcmp(value, "cpu") =3D=3D 0)
-> >> -        nvdimm_state->persistence =3D 3;
-> >> -    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
-> >> -        nvdimm_state->persistence =3D 2;
-> >> -    else {
-> >> -        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupport=
-ed option",
-> >> -                   value);
-> >> -        return;
-> >> -    }
-> >> -
-> >> -    g_free(nvdimm_state->persistence_string);
-> >> -    nvdimm_state->persistence_string =3D g_strdup(value);
-> >> -}
-> >> -
-> >>  static bool pc_machine_get_smbus(Object *obj, Error **errp)
-> >>  {
-> >>      PCMachineState *pcms =3D PC_MACHINE(obj);
-> >> @@ -2636,8 +2597,6 @@ static void pc_machine_initfn(Object *obj)
-> >>      pcms->max_ram_below_4g =3D 0; /* use default */
-> >>      pcms->smm =3D ON_OFF_AUTO_AUTO;
-> >>      pcms->vmport =3D ON_OFF_AUTO_AUTO;
-> >> -    /* nvdimm is disabled on default. */
-> >> -    pcms->acpi_nvdimm_state.is_enabled =3D false;
-> >>      /* acpi build is enabled by default if machine supports it */
-> >>      pcms->acpi_build_enabled =3D PC_MACHINE_GET_CLASS(pcms)->has_acpi=
-_build;
-> >>      pcms->smbus_enabled =3D true;
-> >> @@ -2774,6 +2733,7 @@ static void pc_machine_class_init(ObjectClass *o=
-c, void *data)
-> >>      hc->unplug =3D pc_machine_device_unplug_cb;
-> >>      nc->nmi_monitor_handler =3D x86_nmi;
-> >>      mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
-> >> +    mc->nvdimm_supported =3D true;
-> >>
-> >>      object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int=
-",
-> >>          pc_machine_get_device_memory_region_size, NULL,
-> >> @@ -2798,13 +2758,6 @@ static void pc_machine_class_init(ObjectClass *=
-oc, void *data)
-> >>      object_class_property_set_description(oc, PC_MACHINE_VMPORT,
-> >>          "Enable vmport (pc & q35)", &error_abort);
-> >>
-> >> -    object_class_property_add_bool(oc, PC_MACHINE_NVDIMM,
-> >> -        pc_machine_get_nvdimm, pc_machine_set_nvdimm, &error_abort);
-> >> -
-> >> -    object_class_property_add_str(oc, PC_MACHINE_NVDIMM_PERSIST,
-> >> -        pc_machine_get_nvdimm_persistence,
-> >> -        pc_machine_set_nvdimm_persistence, &error_abort);
-> >> -
-> >>      object_class_property_add_bool(oc, PC_MACHINE_SMBUS,
-> >>          pc_machine_get_smbus, pc_machine_set_smbus, &error_abort);
-> >>
-> >> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> >> index 8770ecada9..8ad8e885c6 100644
-> >> --- a/hw/i386/pc_piix.c
-> >> +++ b/hw/i386/pc_piix.c
-> >> @@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
-> >>                                   PC_MACHINE_ACPI_DEVICE_PROP, &error_=
-abort);
-> >>      }
-> >>
-> >> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> >> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> >> +    if (machine->nvdimms_state->is_enabled) {
-> >> +        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
-> >>                                 pcms->fw_cfg, OBJECT(pcms));
-> >>      }
-> >>  }
-> >> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> >> index cfb9043e12..372c6b73be 100644
-> >> --- a/hw/i386/pc_q35.c
-> >> +++ b/hw/i386/pc_q35.c
-> >> @@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
-> >>      pc_vga_init(isa_bus, host_bus);
-> >>      pc_nic_init(pcmc, isa_bus, host_bus);
-> >>
-> >> -    if (pcms->acpi_nvdimm_state.is_enabled) {
-> >> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-> >> +    if (machine->nvdimms_state->is_enabled) {
-> >> +        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
-> >>                                 pcms->fw_cfg, OBJECT(pcms));
-> >>      }
-> >>  }
-> >> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> >> index 9690c71a6d..e231860666 100644
-> >> --- a/include/hw/boards.h
-> >> +++ b/include/hw/boards.h
-> >> @@ -210,6 +210,7 @@ struct MachineClass {
-> >>                                   int nb_nodes, ram_addr_t size);
-> >>      bool ignore_boot_device_suffixes;
-> >>      bool smbus_no_migration_support;
-> >> +    bool nvdimm_supported;
-> >>
-> >>      HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-> >>                                             DeviceState *dev);
-> >> @@ -272,6 +273,7 @@ struct MachineState {
-> >>      const char *cpu_type;
-> >>      AccelState *accelerator;
-> >>      CPUArchIdList *possible_cpus;
-> >> +    struct NVDIMMState *nvdimms_state;
-> >
-> > What about simply 'nvdimm'?
-> > - it is already part of a state
-> > - no plural, there is only 1 state
-> Well actually I followed Igor's suggestion
-> (https://www.mail-archive.com/qemu-devel@nongnu.org/msg601980.html).
->
-> The state contains information about all present NVDIMMs (See
-> NvdimmFitBuffer comment and "fit: FIT structures for present NVDIMMs").
++        default:
++            abort();
+         }
+ 
+         threshold = (conf->threshold * bytes_per_sec) / 1000;
+diff --git a/audio/audio.c b/audio/audio.c
+index 909c817103..77216e5010 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -113,7 +113,7 @@ static struct {
+         .settings = {
+             .freq = 44100,
+             .nchannels = 2,
+-            .fmt = AUD_FMT_S16,
++            .fmt = AUDIO_FORMAT_S16,
+             .endianness =  AUDIO_HOST_ENDIANNESS,
+         }
+     },
+@@ -125,7 +125,7 @@ static struct {
+         .settings = {
+             .freq = 44100,
+             .nchannels = 2,
+-            .fmt = AUD_FMT_S16,
++            .fmt = AUDIO_FORMAT_S16,
+             .endianness = AUDIO_HOST_ENDIANNESS,
+         }
+     },
+@@ -257,58 +257,61 @@ static char *audio_alloc_prefix (const char *s)
+     return r;
+ }
+ 
+-static const char *audio_audfmt_to_string (audfmt_e fmt)
++static const char *audio_audfmt_to_string (AudioFormat fmt)
+ {
+     switch (fmt) {
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         return "U8";
+ 
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         return "U16";
+ 
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         return "S8";
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         return "S16";
+ 
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_U32:
+         return "U32";
+ 
+-    case AUD_FMT_S32:
++    case AUDIO_FORMAT_S32:
+         return "S32";
++
++    default:
++        abort();
+     }
+ 
+     dolog ("Bogus audfmt %d returning S16\n", fmt);
+     return "S16";
+ }
+ 
+-static audfmt_e audio_string_to_audfmt (const char *s, audfmt_e defval,
++static AudioFormat audio_string_to_audfmt (const char *s, AudioFormat defval,
+                                         int *defaultp)
+ {
+     if (!strcasecmp (s, "u8")) {
+         *defaultp = 0;
+-        return AUD_FMT_U8;
++        return AUDIO_FORMAT_U8;
+     }
+     else if (!strcasecmp (s, "u16")) {
+         *defaultp = 0;
+-        return AUD_FMT_U16;
++        return AUDIO_FORMAT_U16;
+     }
+     else if (!strcasecmp (s, "u32")) {
+         *defaultp = 0;
+-        return AUD_FMT_U32;
++        return AUDIO_FORMAT_U32;
+     }
+     else if (!strcasecmp (s, "s8")) {
+         *defaultp = 0;
+-        return AUD_FMT_S8;
++        return AUDIO_FORMAT_S8;
+     }
+     else if (!strcasecmp (s, "s16")) {
+         *defaultp = 0;
+-        return AUD_FMT_S16;
++        return AUDIO_FORMAT_S16;
+     }
+     else if (!strcasecmp (s, "s32")) {
+         *defaultp = 0;
+-        return AUD_FMT_S32;
++        return AUDIO_FORMAT_S32;
+     }
+     else {
+         dolog ("Bogus audio format `%s' using %s\n",
+@@ -318,8 +321,8 @@ static audfmt_e audio_string_to_audfmt (const char *s, audfmt_e defval,
+     }
+ }
+ 
+-static audfmt_e audio_get_conf_fmt (const char *envname,
+-                                    audfmt_e defval,
++static AudioFormat audio_get_conf_fmt (const char *envname,
++                                    AudioFormat defval,
+                                     int *defaultp)
+ {
+     const char *var = getenv (envname);
+@@ -421,7 +424,7 @@ static void audio_print_options (const char *prefix,
+ 
+         case AUD_OPT_FMT:
+             {
+-                audfmt_e *fmtp = opt->valp;
++                AudioFormat *fmtp = opt->valp;
+                 printf (
+                     "format, %s = %s, (one of: U8 S8 U16 S16 U32 S32)\n",
+                     state,
+@@ -492,7 +495,7 @@ static void audio_process_options (const char *prefix,
+ 
+         case AUD_OPT_FMT:
+             {
+-                audfmt_e *fmtp = opt->valp;
++                AudioFormat *fmtp = opt->valp;
+                 *fmtp = audio_get_conf_fmt (optname, *fmtp, &def);
+             }
+             break;
+@@ -524,22 +527,22 @@ static void audio_print_settings (struct audsettings *as)
+     dolog ("frequency=%d nchannels=%d fmt=", as->freq, as->nchannels);
+ 
+     switch (as->fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         AUD_log (NULL, "S8");
+         break;
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         AUD_log (NULL, "U8");
+         break;
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         AUD_log (NULL, "S16");
+         break;
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         AUD_log (NULL, "U16");
+         break;
+-    case AUD_FMT_S32:
++    case AUDIO_FORMAT_S32:
+         AUD_log (NULL, "S32");
+         break;
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_U32:
+         AUD_log (NULL, "U32");
+         break;
+     default:
+@@ -570,12 +573,12 @@ static int audio_validate_settings (struct audsettings *as)
+     invalid |= as->endianness != 0 && as->endianness != 1;
+ 
+     switch (as->fmt) {
+-    case AUD_FMT_S8:
+-    case AUD_FMT_U8:
+-    case AUD_FMT_S16:
+-    case AUD_FMT_U16:
+-    case AUD_FMT_S32:
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_U8:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_U16:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_U32:
+         break;
+     default:
+         invalid = 1;
+@@ -591,25 +594,28 @@ static int audio_pcm_info_eq (struct audio_pcm_info *info, struct audsettings *a
+     int bits = 8, sign = 0;
+ 
+     switch (as->fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         sign = 1;
+         /* fall through */
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         break;
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         sign = 1;
+         /* fall through */
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         bits = 16;
+         break;
+ 
+-    case AUD_FMT_S32:
++    case AUDIO_FORMAT_S32:
+         sign = 1;
+         /* fall through */
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_U32:
+         bits = 32;
+         break;
++
++    default:
++        abort();
+     }
+     return info->freq == as->freq
+         && info->nchannels == as->nchannels
+@@ -623,24 +629,27 @@ void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as)
+     int bits = 8, sign = 0, shift = 0;
+ 
+     switch (as->fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         sign = 1;
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         break;
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         sign = 1;
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         bits = 16;
+         shift = 1;
+         break;
+ 
+-    case AUD_FMT_S32:
++    case AUDIO_FORMAT_S32:
+         sign = 1;
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_U32:
+         bits = 32;
+         shift = 2;
+         break;
++
++    default:
++        abort();
+     }
+ 
+     info->freq = as->freq;
+diff --git a/audio/audio_win_int.c b/audio/audio_win_int.c
+index 6900008d0c..b938fd667b 100644
+--- a/audio/audio_win_int.c
++++ b/audio/audio_win_int.c
+@@ -24,20 +24,20 @@ int waveformat_from_audio_settings (WAVEFORMATEX *wfx,
+     wfx->cbSize = 0;
+ 
+     switch (as->fmt) {
+-    case AUD_FMT_S8:
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_U8:
+         wfx->wBitsPerSample = 8;
+         break;
+ 
+-    case AUD_FMT_S16:
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_U16:
+         wfx->wBitsPerSample = 16;
+         wfx->nAvgBytesPerSec <<= 1;
+         wfx->nBlockAlign <<= 1;
+         break;
+ 
+-    case AUD_FMT_S32:
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_U32:
+         wfx->wBitsPerSample = 32;
+         wfx->nAvgBytesPerSec <<= 2;
+         wfx->nBlockAlign <<= 2;
+@@ -85,15 +85,15 @@ int waveformat_to_audio_settings (WAVEFORMATEX *wfx,
+ 
+     switch (wfx->wBitsPerSample) {
+     case 8:
+-        as->fmt = AUD_FMT_U8;
++        as->fmt = AUDIO_FORMAT_U8;
+         break;
+ 
+     case 16:
+-        as->fmt = AUD_FMT_S16;
++        as->fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case 32:
+-        as->fmt = AUD_FMT_S32;
++        as->fmt = AUDIO_FORMAT_S32;
+         break;
+ 
+     default:
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index 6c69622b4c..355e8fbda5 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -70,7 +70,7 @@ typedef struct OSSVoiceIn {
+ 
+ struct oss_params {
+     int freq;
+-    audfmt_e fmt;
++    AudioFormat fmt;
+     int nchannels;
+     int nfrags;
+     int fragsize;
+@@ -148,16 +148,16 @@ static int oss_write (SWVoiceOut *sw, void *buf, int len)
+     return audio_pcm_sw_write (sw, buf, len);
+ }
+ 
+-static int aud_to_ossfmt (audfmt_e fmt, int endianness)
++static int aud_to_ossfmt (AudioFormat fmt, int endianness)
+ {
+     switch (fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         return AFMT_S8;
+ 
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         return AFMT_U8;
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         if (endianness) {
+             return AFMT_S16_BE;
+         }
+@@ -165,7 +165,7 @@ static int aud_to_ossfmt (audfmt_e fmt, int endianness)
+             return AFMT_S16_LE;
+         }
+ 
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         if (endianness) {
+             return AFMT_U16_BE;
+         }
+@@ -182,37 +182,37 @@ static int aud_to_ossfmt (audfmt_e fmt, int endianness)
+     }
+ }
+ 
+-static int oss_to_audfmt (int ossfmt, audfmt_e *fmt, int *endianness)
++static int oss_to_audfmt (int ossfmt, AudioFormat *fmt, int *endianness)
+ {
+     switch (ossfmt) {
+     case AFMT_S8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S8;
++        *fmt = AUDIO_FORMAT_S8;
+         break;
+ 
+     case AFMT_U8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U8;
++        *fmt = AUDIO_FORMAT_U8;
+         break;
+ 
+     case AFMT_S16_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case AFMT_U16_LE:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     case AFMT_S16_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case AFMT_U16_BE:
+         *endianness = 1;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     default:
+@@ -500,7 +500,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+     int endianness;
+     int err;
+     int fd;
+-    audfmt_e effective_fmt;
++    AudioFormat effective_fmt;
+     struct audsettings obt_as;
+     OSSConf *conf = drv_opaque;
+ 
+@@ -667,7 +667,7 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+     int endianness;
+     int err;
+     int fd;
+-    audfmt_e effective_fmt;
++    AudioFormat effective_fmt;
+     struct audsettings obt_as;
+     OSSConf *conf = drv_opaque;
+ 
+diff --git a/audio/paaudio.c b/audio/paaudio.c
+index 6153b908da..8246f260a8 100644
+--- a/audio/paaudio.c
++++ b/audio/paaudio.c
+@@ -385,21 +385,21 @@ static int qpa_read (SWVoiceIn *sw, void *buf, int len)
+     return audio_pcm_sw_read (sw, buf, len);
+ }
+ 
+-static pa_sample_format_t audfmt_to_pa (audfmt_e afmt, int endianness)
++static pa_sample_format_t audfmt_to_pa (AudioFormat afmt, int endianness)
+ {
+     int format;
+ 
+     switch (afmt) {
+-    case AUD_FMT_S8:
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_U8:
+         format = PA_SAMPLE_U8;
+         break;
+-    case AUD_FMT_S16:
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_U16:
+         format = endianness ? PA_SAMPLE_S16BE : PA_SAMPLE_S16LE;
+         break;
+-    case AUD_FMT_S32:
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_U32:
+         format = endianness ? PA_SAMPLE_S32BE : PA_SAMPLE_S32LE;
+         break;
+     default:
+@@ -410,26 +410,26 @@ static pa_sample_format_t audfmt_to_pa (audfmt_e afmt, int endianness)
+     return format;
+ }
+ 
+-static audfmt_e pa_to_audfmt (pa_sample_format_t fmt, int *endianness)
++static AudioFormat pa_to_audfmt (pa_sample_format_t fmt, int *endianness)
+ {
+     switch (fmt) {
+     case PA_SAMPLE_U8:
+-        return AUD_FMT_U8;
++        return AUDIO_FORMAT_U8;
+     case PA_SAMPLE_S16BE:
+         *endianness = 1;
+-        return AUD_FMT_S16;
++        return AUDIO_FORMAT_S16;
+     case PA_SAMPLE_S16LE:
+         *endianness = 0;
+-        return AUD_FMT_S16;
++        return AUDIO_FORMAT_S16;
+     case PA_SAMPLE_S32BE:
+         *endianness = 1;
+-        return AUD_FMT_S32;
++        return AUDIO_FORMAT_S32;
+     case PA_SAMPLE_S32LE:
+         *endianness = 0;
+-        return AUD_FMT_S32;
++        return AUDIO_FORMAT_S32;
+     default:
+         dolog ("Internal logic error: Bad pa_sample_format %d\n", fmt);
+-        return AUD_FMT_U8;
++        return AUDIO_FORMAT_U8;
+     }
+ }
+ 
+diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
+index f7ee70b153..4cd4cbaf00 100644
+--- a/audio/sdlaudio.c
++++ b/audio/sdlaudio.c
+@@ -68,19 +68,19 @@ static void GCC_FMT_ATTR (1, 2) sdl_logerr (const char *fmt, ...)
+     AUD_log (AUDIO_CAP, "Reason: %s\n", SDL_GetError ());
+ }
+ 
+-static int aud_to_sdlfmt (audfmt_e fmt)
++static int aud_to_sdlfmt (AudioFormat fmt)
+ {
+     switch (fmt) {
+-    case AUD_FMT_S8:
++    case AUDIO_FORMAT_S8:
+         return AUDIO_S8;
+ 
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_U8:
+         return AUDIO_U8;
+ 
+-    case AUD_FMT_S16:
++    case AUDIO_FORMAT_S16:
+         return AUDIO_S16LSB;
+ 
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_U16:
+         return AUDIO_U16LSB;
+ 
+     default:
+@@ -92,37 +92,37 @@ static int aud_to_sdlfmt (audfmt_e fmt)
+     }
+ }
+ 
+-static int sdl_to_audfmt(int sdlfmt, audfmt_e *fmt, int *endianness)
++static int sdl_to_audfmt(int sdlfmt, AudioFormat *fmt, int *endianness)
+ {
+     switch (sdlfmt) {
+     case AUDIO_S8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S8;
++        *fmt = AUDIO_FORMAT_S8;
+         break;
+ 
+     case AUDIO_U8:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U8;
++        *fmt = AUDIO_FORMAT_U8;
+         break;
+ 
+     case AUDIO_S16LSB:
+         *endianness = 0;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case AUDIO_U16LSB:
+         *endianness = 0;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     case AUDIO_S16MSB:
+         *endianness = 1;
+-        *fmt = AUD_FMT_S16;
++        *fmt = AUDIO_FORMAT_S16;
+         break;
+ 
+     case AUDIO_U16MSB:
+         *endianness = 1;
+-        *fmt = AUD_FMT_U16;
++        *fmt = AUDIO_FORMAT_U16;
+         break;
+ 
+     default:
+@@ -265,7 +265,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
+     SDL_AudioSpec req, obt;
+     int endianness;
+     int err;
+-    audfmt_e effective_fmt;
++    AudioFormat effective_fmt;
+     struct audsettings obt_as;
+ 
+     req.freq = as->freq;
+diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
+index 6ad0eafbc6..3aeb0cb357 100644
+--- a/audio/spiceaudio.c
++++ b/audio/spiceaudio.c
+@@ -130,7 +130,7 @@ static int line_out_init(HWVoiceOut *hw, struct audsettings *as,
+     settings.freq       = SPICE_INTERFACE_PLAYBACK_FREQ;
+ #endif
+     settings.nchannels  = SPICE_INTERFACE_PLAYBACK_CHAN;
+-    settings.fmt        = AUD_FMT_S16;
++    settings.fmt        = AUDIO_FORMAT_S16;
+     settings.endianness = AUDIO_HOST_ENDIANNESS;
+ 
+     audio_pcm_init_info (&hw->info, &settings);
+@@ -258,7 +258,7 @@ static int line_in_init(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+     settings.freq       = SPICE_INTERFACE_RECORD_FREQ;
+ #endif
+     settings.nchannels  = SPICE_INTERFACE_RECORD_CHAN;
+-    settings.fmt        = AUD_FMT_S16;
++    settings.fmt        = AUDIO_FORMAT_S16;
+     settings.endianness = AUDIO_HOST_ENDIANNESS;
+ 
+     audio_pcm_init_info (&hw->info, &settings);
+diff --git a/audio/wavaudio.c b/audio/wavaudio.c
+index 40adfa30c3..35a614785e 100644
+--- a/audio/wavaudio.c
++++ b/audio/wavaudio.c
+@@ -117,20 +117,23 @@ static int wav_init_out(HWVoiceOut *hw, struct audsettings *as,
+ 
+     stereo = wav_as.nchannels == 2;
+     switch (wav_as.fmt) {
+-    case AUD_FMT_S8:
+-    case AUD_FMT_U8:
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_U8:
+         bits16 = 0;
+         break;
+ 
+-    case AUD_FMT_S16:
+-    case AUD_FMT_U16:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_U16:
+         bits16 = 1;
+         break;
+ 
+-    case AUD_FMT_S32:
+-    case AUD_FMT_U32:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_U32:
+         dolog ("WAVE files can not handle 32bit formats\n");
+         return -1;
++
++    default:
++        abort();
+     }
+ 
+     hdr[34] = bits16 ? 0x10 : 0x08;
+@@ -225,7 +228,7 @@ static int wav_ctl_out (HWVoiceOut *hw, int cmd, ...)
+ static WAVConf glob_conf = {
+     .settings.freq      = 44100,
+     .settings.nchannels = 2,
+-    .settings.fmt       = AUD_FMT_S16,
++    .settings.fmt       = AUDIO_FORMAT_S16,
+     .wav_path           = "qemu.wav"
+ };
+ 
+diff --git a/audio/wavcapture.c b/audio/wavcapture.c
+index cd24570aa7..74320dfecc 100644
+--- a/audio/wavcapture.c
++++ b/audio/wavcapture.c
+@@ -136,7 +136,7 @@ int wav_start_capture (CaptureState *s, const char *path, int freq,
+ 
+     as.freq = freq;
+     as.nchannels = 1 << stereo;
+-    as.fmt = bits16 ? AUD_FMT_S16 : AUD_FMT_U8;
++    as.fmt = bits16 ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_U8;
+     as.endianness = 0;
+ 
+     ops.notify = wav_notify;
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index 94dffb2f57..446223906e 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -273,7 +273,7 @@ static void omap_eac_format_update(struct omap_eac_s *s)
+      * does I2S specify it?  */
+     /* All register writes are 16 bits so we we store 16-bit samples
+      * in the buffers regardless of AGCFR[B8_16] value.  */
+-    fmt.fmt = AUD_FMT_U16;
++    fmt.fmt = AUDIO_FORMAT_U16;
+ 
+     s->codec.in_voice = AUD_open_in(&s->codec.card, s->codec.in_voice,
+                     "eac.codec.in", s, omap_eac_in_cb, &fmt);
+diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+index d799533aa9..2265622d44 100644
+--- a/hw/audio/ac97.c
++++ b/hw/audio/ac97.c
+@@ -365,7 +365,7 @@ static void open_voice (AC97LinkState *s, int index, int freq)
+ 
+     as.freq = freq;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = 0;
+ 
+     if (freq > 0) {
+diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
+index 97b876c7e0..0957780a3d 100644
+--- a/hw/audio/adlib.c
++++ b/hw/audio/adlib.c
+@@ -269,7 +269,7 @@ static void adlib_realizefn (DeviceState *dev, Error **errp)
+ 
+     as.freq = s->freq;
+     as.nchannels = SHIFT;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = AUDIO_HOST_ENDIANNESS;
+ 
+     AUD_register_card ("adlib", &s->card);
+diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
+index 9089dcb47e..62da75eefe 100644
+--- a/hw/audio/cs4231a.c
++++ b/hw/audio/cs4231a.c
+@@ -288,7 +288,7 @@ static void cs_reset_voices (CSState *s, uint32_t val)
+ 
+     switch ((val >> 5) & ((s->dregs[MODE_And_ID] & MODE2) ? 7 : 3)) {
+     case 0:
+-        as.fmt = AUD_FMT_U8;
++        as.fmt = AUDIO_FORMAT_U8;
+         s->shift = as.nchannels == 2;
+         break;
+ 
+@@ -298,7 +298,7 @@ static void cs_reset_voices (CSState *s, uint32_t val)
+     case 3:
+         s->tab = ALawDecompressTable;
+     x_law:
+-        as.fmt = AUD_FMT_S16;
++        as.fmt = AUDIO_FORMAT_S16;
+         as.endianness = AUDIO_HOST_ENDIANNESS;
+         s->shift = as.nchannels == 2;
+         break;
+@@ -307,7 +307,7 @@ static void cs_reset_voices (CSState *s, uint32_t val)
+         as.endianness = 1;
+         /* fall through */
+     case 2:
+-        as.fmt = AUD_FMT_S16;
++        as.fmt = AUDIO_FORMAT_S16;
+         s->shift = as.nchannels;
+         break;
+ 
+diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+index 97789a0771..a5314d66fd 100644
+--- a/hw/audio/es1370.c
++++ b/hw/audio/es1370.c
+@@ -414,14 +414,14 @@ static void es1370_update_voices (ES1370State *s, uint32_t ctl, uint32_t sctl)
+                     i,
+                     new_freq,
+                     1 << (new_fmt & 1),
+-                    (new_fmt & 2) ? AUD_FMT_S16 : AUD_FMT_U8,
++                    (new_fmt & 2) ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_U8,
+                     d->shift);
+             if (new_freq) {
+                 struct audsettings as;
+ 
+                 as.freq = new_freq;
+                 as.nchannels = 1 << (new_fmt & 1);
+-                as.fmt = (new_fmt & 2) ? AUD_FMT_S16 : AUD_FMT_U8;
++                as.fmt = (new_fmt & 2) ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_U8;
+                 as.endianness = 0;
+ 
+                 if (i == ADC_CHANNEL) {
+diff --git a/hw/audio/gus.c b/hw/audio/gus.c
+index 8e0b27e0f2..b3e2a7fdd5 100644
+--- a/hw/audio/gus.c
++++ b/hw/audio/gus.c
+@@ -251,7 +251,7 @@ static void gus_realizefn (DeviceState *dev, Error **errp)
+ 
+     as.freq = s->freq;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = GUS_ENDIANNESS;
+ 
+     s->voice = AUD_open_out (
+diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+index 617a1c1016..c25bfa38b1 100644
+--- a/hw/audio/hda-codec.c
++++ b/hw/audio/hda-codec.c
+@@ -99,9 +99,9 @@ static void hda_codec_parse_fmt(uint32_t format, struct audsettings *as)
+     }
+ 
+     switch (format & AC_FMT_BITS_MASK) {
+-    case AC_FMT_BITS_8:  as->fmt = AUD_FMT_S8;  break;
+-    case AC_FMT_BITS_16: as->fmt = AUD_FMT_S16; break;
+-    case AC_FMT_BITS_32: as->fmt = AUD_FMT_S32; break;
++    case AC_FMT_BITS_8:  as->fmt = AUDIO_FORMAT_S8;  break;
++    case AC_FMT_BITS_16: as->fmt = AUDIO_FORMAT_S16; break;
++    case AC_FMT_BITS_32: as->fmt = AUDIO_FORMAT_S32; break;
+     }
+ 
+     as->nchannels = ((format & AC_FMT_CHAN_MASK) >> AC_FMT_CHAN_SHIFT) + 1;
+@@ -134,12 +134,12 @@ static void hda_codec_parse_fmt(uint32_t format, struct audsettings *as)
+ /* -------------------------------------------------------------------------- */
+ 
+ static const char *fmt2name[] = {
+-    [ AUD_FMT_U8  ] = "PCM-U8",
+-    [ AUD_FMT_S8  ] = "PCM-S8",
+-    [ AUD_FMT_U16 ] = "PCM-U16",
+-    [ AUD_FMT_S16 ] = "PCM-S16",
+-    [ AUD_FMT_U32 ] = "PCM-U32",
+-    [ AUD_FMT_S32 ] = "PCM-S32",
++    [ AUDIO_FORMAT_U8  ] = "PCM-U8",
++    [ AUDIO_FORMAT_S8  ] = "PCM-S8",
++    [ AUDIO_FORMAT_U16 ] = "PCM-U16",
++    [ AUDIO_FORMAT_S16 ] = "PCM-S16",
++    [ AUDIO_FORMAT_U32 ] = "PCM-U32",
++    [ AUDIO_FORMAT_S32 ] = "PCM-S32",
+ };
+ 
+ typedef struct HDAAudioState HDAAudioState;
+diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
+index a46f2301af..af8b22b541 100644
+--- a/hw/audio/lm4549.c
++++ b/hw/audio/lm4549.c
+@@ -185,7 +185,7 @@ void lm4549_write(lm4549_state *s,
+         struct audsettings as;
+         as.freq = value;
+         as.nchannels = 2;
+-        as.fmt = AUD_FMT_S16;
++        as.fmt = AUDIO_FORMAT_S16;
+         as.endianness = 0;
+ 
+         s->voice = AUD_open_out(
+@@ -255,7 +255,7 @@ static int lm4549_post_load(void *opaque, int version_id)
+     struct audsettings as;
+     as.freq = freq;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = 0;
+ 
+     s->voice = AUD_open_out(
+@@ -292,7 +292,7 @@ void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque)
+     /* Open a default voice */
+     as.freq = 48000;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = 0;
+ 
+     s->voice = AUD_open_out(
+diff --git a/hw/audio/milkymist-ac97.c b/hw/audio/milkymist-ac97.c
+index bc8db71ae0..90cce1e6ed 100644
+--- a/hw/audio/milkymist-ac97.c
++++ b/hw/audio/milkymist-ac97.c
+@@ -308,7 +308,7 @@ static void milkymist_ac97_realize(DeviceState *dev, Error **errp)
+ 
+     as.freq = 48000;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = 1;
+ 
+     s->voice_in = AUD_open_in(&s->card, s->voice_in,
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index b80a62ce90..fdbb4b6e99 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -162,7 +162,7 @@ static void pcspk_initfn(Object *obj)
+ 
+ static void pcspk_realizefn(DeviceState *dev, Error **errp)
+ {
+-    struct audsettings as = {PCSPK_SAMPLE_RATE, 1, AUD_FMT_U8, 0};
++    struct audsettings as = {PCSPK_SAMPLE_RATE, 1, AUDIO_FORMAT_U8, 0};
+     ISADevice *isadev = ISA_DEVICE(dev);
+     PCSpkState *s = PC_SPEAKER(dev);
+ 
+diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
+index c5b9bf79e8..65ea0cd938 100644
+--- a/hw/audio/sb16.c
++++ b/hw/audio/sb16.c
+@@ -66,7 +66,7 @@ typedef struct SB16State {
+     int fmt_stereo;
+     int fmt_signed;
+     int fmt_bits;
+-    audfmt_e fmt;
++    AudioFormat fmt;
+     int dma_auto;
+     int block_size;
+     int fifo;
+@@ -224,7 +224,7 @@ static void continue_dma8 (SB16State *s)
+ 
+ static void dma_cmd8 (SB16State *s, int mask, int dma_len)
+ {
+-    s->fmt = AUD_FMT_U8;
++    s->fmt = AUDIO_FORMAT_U8;
+     s->use_hdma = 0;
+     s->fmt_bits = 8;
+     s->fmt_signed = 0;
+@@ -319,18 +319,18 @@ static void dma_cmd (SB16State *s, uint8_t cmd, uint8_t d0, int dma_len)
+ 
+     if (16 == s->fmt_bits) {
+         if (s->fmt_signed) {
+-            s->fmt = AUD_FMT_S16;
++            s->fmt = AUDIO_FORMAT_S16;
+         }
+         else {
+-            s->fmt = AUD_FMT_U16;
++            s->fmt = AUDIO_FORMAT_U16;
+         }
+     }
+     else {
+         if (s->fmt_signed) {
+-            s->fmt = AUD_FMT_S8;
++            s->fmt = AUDIO_FORMAT_S8;
+         }
+         else {
+-            s->fmt = AUD_FMT_U8;
++            s->fmt = AUDIO_FORMAT_U8;
+         }
+     }
+ 
+@@ -852,7 +852,7 @@ static void legacy_reset (SB16State *s)
+ 
+     as.freq = s->freq;
+     as.nchannels = 1;
+-    as.fmt = AUD_FMT_U8;
++    as.fmt = AUDIO_FORMAT_U8;
+     as.endianness = 0;
+ 
+     s->voice = AUD_open_out (
+diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
+index 169b006ade..ca0ad73caf 100644
+--- a/hw/audio/wm8750.c
++++ b/hw/audio/wm8750.c
+@@ -201,7 +201,7 @@ static void wm8750_set_format(WM8750State *s)
+     in_fmt.endianness = 0;
+     in_fmt.nchannels = 2;
+     in_fmt.freq = s->adc_hz;
+-    in_fmt.fmt = AUD_FMT_S16;
++    in_fmt.fmt = AUDIO_FORMAT_S16;
+ 
+     s->adc_voice[0] = AUD_open_in(&s->card, s->adc_voice[0],
+                     CODEC ".input1", s, wm8750_audio_in_cb, &in_fmt);
+@@ -214,7 +214,7 @@ static void wm8750_set_format(WM8750State *s)
+     out_fmt.endianness = 0;
+     out_fmt.nchannels = 2;
+     out_fmt.freq = s->dac_hz;
+-    out_fmt.fmt = AUD_FMT_S16;
++    out_fmt.fmt = AUDIO_FORMAT_S16;
+ 
+     s->dac_voice[0] = AUD_open_out(&s->card, s->dac_voice[0],
+                     CODEC ".speaker", s, wm8750_audio_out_cb, &out_fmt);
+@@ -681,7 +681,7 @@ uint32_t wm8750_adc_dat(void *opaque)
+     if (s->idx_in >= sizeof(s->data_in)) {
+         wm8750_in_load(s);
+         if (s->idx_in >= sizeof(s->data_in)) {
+-            return 0x80008000; /* silence in AUD_FMT_S16 sample format */
++            return 0x80008000; /* silence in AUDIO_FORMAT_S16 sample format */
+         }
+     }
+ 
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index cc0f9bc9cc..11b09bd18c 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -1260,7 +1260,7 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+ 
+     as.freq = 44100;
+     as.nchannels = 2;
+-    as.fmt = AUD_FMT_S16;
++    as.fmt = AUDIO_FORMAT_S16;
+     as.endianness = 0;
+ 
+     AUD_register_card("xlnx_dp.audio", &s->aud_card);
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+index 2eb3cb9518..41731619bb 100644
+--- a/hw/input/tsc210x.c
++++ b/hw/input/tsc210x.c
+@@ -318,7 +318,7 @@ static void tsc2102_audio_output_update(TSC210xState *s)
+     fmt.endianness = 0;
+     fmt.nchannels = 2;
+     fmt.freq = s->codec.tx_rate;
+-    fmt.fmt = AUD_FMT_S16;
++    fmt.fmt = AUDIO_FORMAT_S16;
+ 
+     s->dac_voice[0] = AUD_open_out(&s->card, s->dac_voice[0],
+                     "tsc2102.sink", s, (void *) tsc210x_audio_out_cb, &fmt);
+diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+index 28ac7c5165..c46d5eeb79 100644
+--- a/hw/usb/dev-audio.c
++++ b/hw/usb/dev-audio.c
+@@ -650,7 +650,7 @@ static void usb_audio_realize(USBDevice *dev, Error **errp)
+     s->out.vol[1]        = 240; /* 0 dB */
+     s->out.as.freq       = USBAUDIO_SAMPLE_RATE;
+     s->out.as.nchannels  = 2;
+-    s->out.as.fmt        = AUD_FMT_S16;
++    s->out.as.fmt        = AUDIO_FORMAT_S16;
+     s->out.as.endianness = 0;
+     streambuf_init(&s->out.buf, s->buffer);
+ 
+diff --git a/ui/vnc.c b/ui/vnc.c
+index da4a21d4ce..b724e998ba 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -1013,16 +1013,16 @@ static void vnc_update_throttle_offset(VncState *vs)
+         int bps;
+         switch (vs->as.fmt) {
+         default:
+-        case  AUD_FMT_U8:
+-        case  AUD_FMT_S8:
++        case  AUDIO_FORMAT_U8:
++        case  AUDIO_FORMAT_S8:
+             bps = 1;
+             break;
+-        case  AUD_FMT_U16:
+-        case  AUD_FMT_S16:
++        case  AUDIO_FORMAT_U16:
++        case  AUDIO_FORMAT_S16:
+             bps = 2;
+             break;
+-        case  AUD_FMT_U32:
+-        case  AUD_FMT_S32:
++        case  AUDIO_FORMAT_U32:
++        case  AUDIO_FORMAT_S32:
+             bps = 4;
+             break;
+         }
+@@ -2369,12 +2369,12 @@ static int protocol_client_msg(VncState *vs, uint8_t *data, size_t len)
+                 if (len == 4)
+                     return 10;
+                 switch (read_u8(data, 4)) {
+-                case 0: vs->as.fmt = AUD_FMT_U8; break;
+-                case 1: vs->as.fmt = AUD_FMT_S8; break;
+-                case 2: vs->as.fmt = AUD_FMT_U16; break;
+-                case 3: vs->as.fmt = AUD_FMT_S16; break;
+-                case 4: vs->as.fmt = AUD_FMT_U32; break;
+-                case 5: vs->as.fmt = AUD_FMT_S32; break;
++                case 0: vs->as.fmt = AUDIO_FORMAT_U8; break;
++                case 1: vs->as.fmt = AUDIO_FORMAT_S8; break;
++                case 2: vs->as.fmt = AUDIO_FORMAT_U16; break;
++                case 3: vs->as.fmt = AUDIO_FORMAT_S16; break;
++                case 4: vs->as.fmt = AUDIO_FORMAT_U32; break;
++                case 5: vs->as.fmt = AUDIO_FORMAT_S32; break;
+                 default:
+                     VNC_DEBUG("Invalid audio format %d\n", read_u8(data, 4));
+                     vnc_client_error(vs);
+@@ -3105,7 +3105,7 @@ static void vnc_connect(VncDisplay *vd, QIOChannelSocket *sioc,
+ 
+     vs->as.freq = 44100;
+     vs->as.nchannels = 2;
+-    vs->as.fmt = AUD_FMT_S16;
++    vs->as.fmt = AUDIO_FORMAT_S16;
+     vs->as.endianness = 0;
+ 
+     qemu_mutex_init(&vs->output_mutex);
+-- 
+2.20.1
 
-So 'nvdimms' then :)
-
-Anyway, Igor's call.
-
-> No strong opinion though.
->
-> Thanks
->
-> Eric
->
->
->
-> >
-> >>  };
-> >>
-> >>  #define DEFINE_MACHINE(namestr, machine_initfn) \
-> >> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> >> index 94fb620d65..263a6343ff 100644
-> >> --- a/include/hw/i386/pc.h
-> >> +++ b/include/hw/i386/pc.h
-> >> @@ -45,8 +45,6 @@ struct PCMachineState {
-> >>      OnOffAuto vmport;
-> >>      OnOffAuto smm;
-> >>
-> >> -    NVDIMMState acpi_nvdimm_state;
-> >> -
-> >>      bool acpi_build_enabled;
-> >>      bool smbus_enabled;
-> >>      bool sata_enabled;
-> >> @@ -74,8 +72,6 @@ struct PCMachineState {
-> >>  #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
-> >>  #define PC_MACHINE_VMPORT           "vmport"
-> >>  #define PC_MACHINE_SMM              "smm"
-> >> -#define PC_MACHINE_NVDIMM           "nvdimm"
-> >> -#define PC_MACHINE_NVDIMM_PERSIST   "nvdimm-persistence"
-> >>  #define PC_MACHINE_SMBUS            "smbus"
-> >>  #define PC_MACHINE_SATA             "sata"
-> >>  #define PC_MACHINE_PIT              "pit"
-> >>

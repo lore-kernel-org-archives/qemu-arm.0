@@ -1,91 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8198736wrx;
-        Fri, 8 Mar 2019 02:30:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwTHqW8V0X7bKQFXiZpYR5p4/cb7C6+qYXf4CD6HZnyLC6nUVvvhhf0t54Mk46BjnF4uVqp
-X-Received: by 2002:a81:6604:: with SMTP id a4mr14132686ywc.510.1552041018804;
-        Fri, 08 Mar 2019 02:30:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552041018; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8200196wrx;
+        Fri, 8 Mar 2019 02:31:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzNCBwSBH1dc8Du3WKXd1lfZUWNOrFwIn+Wg/VQ2jDxvmQqzdWpr8PeEfZrIxBRbqCCgLrz
+X-Received: by 2002:a81:b653:: with SMTP id h19mr14039613ywk.463.1552041107152;
+        Fri, 08 Mar 2019 02:31:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552041107; cv=none;
         d=google.com; s=arc-20160816;
-        b=r/GzcwvTjRL4NqkIuIJWAvH54qDl/Q89RrHdKQLWXH4Tpvvvj7ng3p5niPweCEy30r
-         0SN9oZhqzjhaiwhm+Wpt5NbUtQ4z7zVI5APMt8AzAMLWc/T+Wj8Am6IIfepROD8xoYYm
-         /8hSDIbN/MJ4YfDqos8JnJ5Wil8mLGmiKxcfbOfF2LdwB/QrJvF3bkCeDHoJurTHWLVe
-         DNJypRY9qzk4aesrgCXaYB0ZpIWv6KSvkVXn1qFJWeKzKUz3gjz6PZOhFrFbmQA36LIr
-         lo0IJjYrOXIt0qt7w1LvPAy/fFcMGQ8VhGZbJVsjvRDZIN0D36oDxSwCvf+zJepO7QQY
-         NVJQ==
+        b=Hyy1/EI4NO5/EpdVeYk6lgVSW9EZGbzCCGO7ygE4w2Dxvj3sEC4T15v4BZ6PA14jVP
+         oCQF8kIzuKLg0SVvkw3HaF7dZpw3mL2rv19sNvUKLtHZHlK8Hnr98QbUaZkJodTp6u8+
+         IYJNAmDQc8RsHqW/0Ep634+GIJYELPXWlOXWqL4B4a685mRyUiX94Q1w0wkEXHjTlw9t
+         +evDGc53IzDxJtL/eC4PT6QKbLVjrpK9eoJM3DuUw9gHWtU4UGB7ByNwljjDUJEDrAeg
+         zNzZ5PllnJNXlJjni3c98Jsk7Z5FenrDAkBBabOA4s0Jo7hRDeiFKjRzAeAdK3d8p6lF
+         8JQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from;
-        bh=h1FGPTxxbrL93VIwjSZSTarSbRer3MqtGTHZZOl+O+4=;
-        b=eEM5QTyxTT1FSTvDzYeUWTuBIt344tb12o2wBE09JPiy0z+yluz82Ft73PiLz9DxcW
-         Bib63UGXoJGnchr8s91E8kBjOq+WkEmoBm0p7IlSVkz+vyGPh6N8uUyGMIUOmxmiv6+L
-         cDpys9U+irIakha43VZsjurahCb9KUmk281Gg+qNZROnY4gNE2L0QTq0IOCnUY0NdN7O
-         RKr+J5fNZq9R7//9PlGjjl6Zn9fa7Q6Dze5ir1+311kjygZGGir8f1DPpINwThXrAUMK
-         5nCxcjlLyuEFbbYrC8fWhMZRYfSDfuYXcVIkE17AVD3yeTHjBIMI9RnlF8c3Fbr1p78F
-         ORMQ==
+         :user-agent:date:message-id:from:references:to;
+        bh=04z8g7aQlbXa5sL4wYkrxT7QimRS43isxZkpXdDPNw8=;
+        b=uFoKVMtDJLf/sORiaEToA/3KFw6ctCesQHOlNlWBHhV8gGwPROx/WUwquHkgYI69Cg
+         TY/jg71+QjtmGNGZDc4cyON6jHn9aHOqsmQFC8J0nMlFSBa72nRYY6t5WIPJogThPexc
+         MyYtuaMOTX+Dgi4PIvc331QJpHN/EwOO8v+RDvV1gUfeOXPlfGdovfdl+tTmnSM5z4uN
+         DV6jxuxsPaT+w3J85f/vXQp16+IBKPjqOB9+rMY9xV0pN7eTNlhFVPkqA31YNAbJwXyL
+         OvCTARgdb6UM2fkgmoG+pUg7qGhL07V36iVp6RnpTu/bRM0czbCr8TZEuz4dZZV+q09k
+         RKeA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l77si4330562ywl.243.2019.03.08.02.30.18
+        by mx.google.com with ESMTPS id e3si4407852ywa.279.2019.03.08.02.31.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 02:30:18 -0800 (PST)
+        Fri, 08 Mar 2019 02:31:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40616 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40636 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2Cle-0005eJ-7W
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:30:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54954)
+	id 1h2Cn4-0006a7-HT
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:31:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55199)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2ClV-0005e4-Hx
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:30:10 -0500
+	(envelope-from <lersek@redhat.com>) id 1h2Cmn-0006ZC-OT
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:31:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2ClU-0001Hv-L2
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:30:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43290)
+	(envelope-from <lersek@redhat.com>) id 1h2Cml-0002hC-U5
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:31:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57198)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1h2ClT-0001B8-IL; Fri, 08 Mar 2019 05:30:08 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1h2Cmk-0002ee-1K; Fri, 08 Mar 2019 05:31:26 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0C5FE3003D2A;
-	Fri,  8 Mar 2019 10:30:05 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 46793804F2;
+	Fri,  8 Mar 2019 10:31:24 +0000 (UTC)
 Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-151.rdu2.redhat.com
 	[10.10.120.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 03831608C3;
-	Fri,  8 Mar 2019 10:29:52 +0000 (UTC)
-From: Laszlo Ersek <lersek@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3C9295C1A1;
+	Fri,  8 Mar 2019 10:31:13 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-8-philmd@redhat.com>
-	<5166477f-67db-cf41-cdc9-a459597be80e@redhat.com>
-Message-ID: <390aa400-70ee-ac80-ba83-290875cca56c@redhat.com>
-Date: Fri, 8 Mar 2019 11:29:51 +0100
+	<20190308013222.12524-10-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <9a4ee1fd-25ec-6113-496a-c5c4f51435f2@redhat.com>
+Date: Fri, 8 Mar 2019 11:31:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <5166477f-67db-cf41-cdc9-a459597be80e@redhat.com>
+In-Reply-To: <20190308013222.12524-10-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Fri, 08 Mar 2019 10:30:05 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 08 Mar 2019 10:31:24 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 07/18] hw/nvram/fw_cfg: Add
- fw_cfg_common_unrealize()
+Subject: Re: [Qemu-arm] [PATCH v2 09/18] hw/nvram/fw_cfg: Free file_slots in
+ common_unrealize()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,7 +96,7 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	"Daniel P . Berrange" <berrange@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -109,46 +108,34 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wUEiOsuHOGA0
+X-TUID: pq0KbsR/3Y2K
 
-On 03/08/19 07:55, Thomas Huth wrote:
-> On 08/03/2019 02.32, Philippe Mathieu-Daud=C3=A9 wrote:
->> Back in abe147e0ce4 when fw_cfg_add_file() was introduced, there
->> was no QOM design, object where not created and released at runtime.
-
-s/object where/objects were/
-
->> Later 38f3adc34d finished the QOM conversion of the fw_cfg device,
->> adding the fw_cfg_common_realize() method.
-
-(I'm not sure if 38f3adc34d "finished the QOM conversion", but that's
-just my lack of QOM knowledge. Hopefully someone can confirm whether
-this statement is accurate.)
-
->> The time has come to add the equivalent destructor and release the
->> memory allocated for 'files'.
+On 03/08/19 02:32, Philippe Mathieu-Daud=C3=A9 wrote:
+> Called by fw_cfg_common_realize(), fw_cfg_file_slots_allocate()
+> allocates various buffers.
+> Free them in fw_cfg_common_unrealize().
 >=20
-> You should mention that the unrealize function is currently never calle=
-d
-> since the object never gets destroyed (AFAIK). But I hope we can fix
-> that in the not so distant future, so:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/nvram/fw_cfg.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >=20
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index ca58d279a4..b73a591eff 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -971,6 +971,10 @@ static void fw_cfg_common_unrealize(DeviceState *d=
+ev, Error **errp)
+>      FWCfgState *s =3D FW_CFG(dev);
+> =20
+>      g_free(s->files);
+> +
+> +    g_free(s->entries[0]);
+> +    g_free(s->entries[1]);
+> +    g_free(s->entry_order);
+>  }
+> =20
+>  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
 >=20
 
-How about we delay this patch until such time the function is actually
-called?
-
-This series is already huge, and quite divergent considering its goals.
-(Please refer to the blurb.)
-
-I don't mind this patch, but I think it should either belong to a
-separate fw_cfg cleanup series (or "wave" if you like).
-
-Or else, we should have a bug reported somewhere public, ensuring that
-we eventually call the function introduced here. And then the commit
-message should spell out -- as you say -- that the function is not
-called yet, but it will be, because of <ticket-reference>.
-
-Thanks
-Laszlo
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>

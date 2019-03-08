@@ -1,101 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8223368wrx;
-        Fri, 8 Mar 2019 02:59:32 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzqZyFWT1x4Xa52ZK8HlNw7G1fi3b9oZ59ZbrRm9/RoCFESG8dYLlZ3m1eAEZqnfalrbHrM
-X-Received: by 2002:a81:5dc2:: with SMTP id r185mr14021819ywb.55.1552042772400;
-        Fri, 08 Mar 2019 02:59:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552042772; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8229260wrx;
+        Fri, 8 Mar 2019 03:04:35 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw9b06tAT43GwpUs+J3m0prkvQWlcHp7HEHAqM0wgjAb+0sQ6pnTHj+zgDXaX3r2uzXIb6u
+X-Received: by 2002:a5b:f4a:: with SMTP id y10mr15979784ybr.322.1552043075097;
+        Fri, 08 Mar 2019 03:04:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552043075; cv=none;
         d=google.com; s=arc-20160816;
-        b=e/ndvn7V4K0SM1lLc+rBbdrws6blYhjumDRqgN94ULi9bBjXxDJdilWuTgUbq0WoYZ
-         0yJZvAYJ8b3YXvJcK1ZS50GtDtycad5fGj/JSlWfS7ZuVV32/wSsdEUbAYT/E1uRGJ0D
-         d+JYZUq6rcACxoZ2DZ5412xV3WdtqcjlVmYCP3KNqUB4WSf7RT9ZiE6qqtfYV4S+kxr9
-         eQPCKZ0cpHakxDCeYpcXyKFTjc68z2WoWIRrMXnaLPcFSwE9IYn8RXfmSEfzRzMPerjF
-         Cb7uaFayTXODZPLPLT7o44KLos16JbQFHFmdqF78Xw0AnZqxU4tZf0v9TC41sr3I4XMJ
-         Ko0A==
+        b=yx+5kGVpG+463jwKVkSjN1dOdMQ9/c15TD5a43AL4GXJYMlrx0UH1dLapZi7fu8Wkz
+         rmimX1nNPFpo6Um269xo3fxeURq1Bess6pSZiWO99kkPQW9mfdr1pFYIY2UkApzU9Gff
+         5cu551ne/AsHLBpb64x7tpevvipkXDEALutU0o0Wg9Dfu9gJc90cYBGQpFz4st0LHqEM
+         rueSMMrsuXa6H5P+lhK41MimIRfj6+HxniMX9YDoDSwynDuKXshcQk95CRXvEbUaB0/C
+         gYbg2YSe7tm6Ciex41uowMOqmB50MRT5OGE77NhCcRDqeRGRsGxK6Ff5LgLJsQF05w4C
+         TLvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=Ys6uPAr+ImGeq/iEIhWO9gWsTp3q4D6bNG1uIHkjyOY=;
-        b=RhrVXmBKLyfUwODjpEH3K3FIeqVVtzYzM2s/WyBhwts9R8q+vNVPqoR2TJaYCSE19c
-         y+Q9jRGbtb8LWurnT/VAcSj+IV3vAdxUyTBPCkzsxXt1cJweliyWAkrLpiogP7Nh5Pn4
-         2cocqofAVe0KZoVRJnD6kUQlLA2cTqhVhwuZ5X9oJFr/u35MIY29dAwp+vMLy7zxEVfs
-         Sm7WK3vlIYtCE0NQalJt5PAhnju/PFmOoEUn+sPHpXyoAy179KLB2UU2dU2clFuzINk4
-         eT/dX+54tv3k+3nwyrVvSYSSsaIHtj/7MXO3xUkmc+UiS+xccKHpPD9ZTz7PtlVYXnug
-         QykQ==
+         :user-agent:date:message-id:from:references:to;
+        bh=8Pbps4VbDBhOyC3Kyk6tcblDhvMvkJIizJbNCwYn+IM=;
+        b=KfFzLsf99q4zaEPdd749TuLT2D1Qaa+jV3D/SskhuyDEBqlLkwMmwqzclOZF05fP9W
+         ocno7ho7cJ2mVI33SCD3XFHJHKgYT/HJRPZ3TPn88/ZV5boWw1oL1ggJ2V1kRkFKxhb6
+         hEugSIrVZJ2NRX+4/oJgDVy5nemnJsxUwSnsKYpwxoYrZWuuS0QAATFQfzzMW7a/6lBY
+         8gsbtCo1FwDhW42W0gCInNLmhHwzY8VrJym/eCAHRwsxg2GYnPQxkQMG4WG1cyHaraf4
+         LUvHl45NszNofOWZqneUC3tWc/orkxvTh00U71CszMeOMp3lTDnxikpqxUQyFw6t8Dfo
+         Bk1w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si4335893ybk.291.2019.03.08.02.59.32
+        by mx.google.com with ESMTPS id v79si4502180ywa.260.2019.03.08.03.04.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 02:59:32 -0800 (PST)
+        Fri, 08 Mar 2019 03:04:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40955 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:41005 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2DDv-0001Tl-R2
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:59:31 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60174)
+	id 1h2DIo-00030n-Lp
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 06:04:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:32803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2DDf-0001Ra-81
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:59:17 -0500
+	(envelope-from <lersek@redhat.com>) id 1h2DIe-00030X-Uw
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 06:04:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2DDb-0005Qk-Ln
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:59:13 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:37476)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h2DDa-0005Kd-6T
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:59:10 -0500
-Received: by mail-wm1-f67.google.com with SMTP id x10so11932746wmg.2
-	for <qemu-arm@nongnu.org>; Fri, 08 Mar 2019 02:59:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Ys6uPAr+ImGeq/iEIhWO9gWsTp3q4D6bNG1uIHkjyOY=;
-	b=Tui6kx2lHKhN3HZIe327zFKypSx+S6ezA/pzdfH7kniRVcmyGo4dWzB3MpOWW/Vhtu
-	ahYPXQ7h7UMK+9HsS1h+x1r2UFPLibWSgnzUar8FWPKCo5YIP1Nbl7EeRyKL9SHOhspI
-	P3keoxR5dtxzrab+8VXTlv/LXa3kjpRCBEuuavTKenYFPq3xMvNYXlPEfIkdAqnnxYkF
-	RxbMuji/4SU0UwdV3+rFH0S49zTUojYkNRM8TOqpi5CVGn0y0ndzJT2wZPrm9DRSiYSd
-	wlS7z8l9Siq3W1Jp1FacKiYb/ZXru8HGwDVJOTCQm+qWnl5QQv8J6lRW+COO7k6oHStJ
-	dLMQ==
-X-Gm-Message-State: APjAAAWH98VJV2H6RZLtqXqvN4sDWLMWIBYeURx3I1BjAeI2od/zCY7n
-	LhOVG5spCJU9M2GkLFkdu7U5tw==
-X-Received: by 2002:a1c:9c04:: with SMTP id f4mr8740214wme.149.1552042747494; 
-	Fri, 08 Mar 2019 02:59:07 -0800 (PST)
-Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43])
-	by smtp.gmail.com with ESMTPSA id z6sm5335612wml.40.2019.03.08.02.59.06
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Fri, 08 Mar 2019 02:59:06 -0800 (PST)
-To: Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
+	(envelope-from <lersek@redhat.com>) id 1h2DIe-0002xZ-0W
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 06:04:24 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:34362)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1h2DIc-0002uJ-Ng; Fri, 08 Mar 2019 06:04:23 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 523A43092656;
+	Fri,  8 Mar 2019 11:04:21 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-151.rdu2.redhat.com
+	[10.10.120.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6306B19C70;
+	Fri,  8 Mar 2019 11:04:10 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-5-philmd@redhat.com>
-	<599de4a4-9754-5e93-17df-9f3bffc366e8@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f567c4dc-555d-0ad3-d7b3-76018771c1f8@redhat.com>
-Date: Fri, 8 Mar 2019 11:59:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	<20190308013222.12524-11-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <40a49a86-3010-da90-41f3-0f4a1705bca0@redhat.com>
+Date: Fri, 8 Mar 2019 12:04:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <599de4a4-9754-5e93-17df-9f3bffc366e8@redhat.com>
+In-Reply-To: <20190308013222.12524-11-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Fri, 08 Mar 2019 11:04:21 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-arm] [PATCH v2 04/18] hw/nvram/fw_cfg: Add trace events
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 10/18] hw/nvram/fw_cfg: Add reboot_timeout
+ to FWCfgState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,403 +108,93 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: neSf8bO3k1Pj
+X-TUID: 6MMPr1VHIhns
 
-Hi Laszlo,
+Hi Phil,
 
-On 3/8/19 10:57 AM, Laszlo Ersek wrote:
-> Hi Phil,
-> 
-> On 03/08/19 02:32, Philippe Mathieu-Daudé wrote:
->> Add fw_cfg_arch_key_name() to be able to resolve architecture
->> specific keys. All architectures do have specific keys, thus
->> implement this function. Architectures that don't use the fw_cfg
->> device don't have to implement this function, however to ease
->> the Makefile rules and satisfy the linking, we provide a stub.
->>
->> Now than we can resolve keys into "well know numeric", add
->> trace events to display more information when keys are added
->> (and dump the key content when possible).
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> v2: Added fw_cfg_arch_key_name() -> reset R-b
->> ---
-> 
-> This is not a small patch, and Michael and I reviewed v1 three months ago:
-> 
-> https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01616.html
-> https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01947.html
-> 
-> I'm not keen on re-reviewing the patch from zero (after three months)
-> just because of fw_cfg_arch_key_name().
-> 
-> Is it possible to split fw_cfg_arch_key_name() to a separate patch first
-> (which we could review in isolation -- it affects multiple arches), and
-> rebase the original (v1) patch to it, with minimal updates (keeping the
-> R-b's, or at least pointing out the minimal change for incremental review)?
+On 03/08/19 02:32, Philippe Mathieu-Daud=C3=A9 wrote:
+> Due to the contract interface of fw_cfg_add_file(), the
+> 'reboot_timeout' data has to be valid for the lifetime of the
+> FwCfg object. For this reason it is copied on the heap with
+> memdup().
+>=20
+> The object state, 'FWCfgState', is also meant to be valid during the
+> lifetime of the object.
+> Move the 'reboot_timeout' in FWCfgState to achieve the same purpose.
+> Doing so we avoid a memory leak.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/nvram/fw_cfg.c         | 4 +++-
+>  include/hw/nvram/fw_cfg.h | 2 ++
+>  2 files changed, 5 insertions(+), 1 deletion(-)
 
-Sure it is, this is what I first did, then expected a comment "this is
-not used until the next patch, why not squash it?" and I squashed both.
-The series respin will have this patch split as you suggested.
+Currently, there is no memory leak. Right now, the leak is theoretical,
+and it would depend on the fw_cfg object being actually destroyed.
 
-> 
-> Thanks
-> Laszlo
-> 
->>  MAINTAINERS               |  1 +
->>  hw/i386/pc.c              | 21 +++++++++++++
->>  hw/nvram/fw_cfg.c         | 63 ++++++++++++++++++++++++++++++++++++++-
->>  hw/nvram/trace-events     |  7 ++++-
->>  hw/ppc/Makefile.objs      |  2 +-
->>  hw/ppc/fw_cfg.c           | 31 +++++++++++++++++++
->>  hw/sparc/sun4m.c          | 19 ++++++++++++
->>  hw/sparc64/sun4u.c        | 19 ++++++++++++
->>  include/hw/nvram/fw_cfg.h | 11 +++++++
->>  stubs/Makefile.objs       |  1 +
->>  stubs/fw_cfg.c            | 19 ++++++++++++
->>  11 files changed, 191 insertions(+), 3 deletions(-)
->>  create mode 100644 hw/ppc/fw_cfg.c
->>  create mode 100644 stubs/fw_cfg.c
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 074ad46d47..306fc2aefa 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -1659,6 +1659,7 @@ R: Gerd Hoffmann <kraxel@redhat.com>
->>  S: Supported
->>  F: docs/specs/fw_cfg.txt
->>  F: hw/nvram/fw_cfg.c
->> +F: stubs/fw_cfg.c
->>  F: include/hw/nvram/fw_cfg.h
->>  F: include/standard-headers/linux/qemu_fw_cfg.h
->>  F: tests/libqos/fw_cfg.c
->> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
->> index 42128183e9..0848cdc18f 100644
->> --- a/hw/i386/pc.c
->> +++ b/hw/i386/pc.c
->> @@ -349,6 +349,27 @@ GlobalProperty pc_compat_1_4[] = {
->>  };
->>  const size_t pc_compat_1_4_len = G_N_ELEMENTS(pc_compat_1_4);
->>  
->> +const char *fw_cfg_arch_key_name(uint16_t key)
->> +{
->> +    static const struct {
->> +        uint16_t key;
->> +        const char *name;
->> +    } fw_cfg_arch_wellknown_keys[] = {
->> +        {FW_CFG_ACPI_TABLES, "acpi_tables"},
->> +        {FW_CFG_SMBIOS_ENTRIES, "smbios_entries"},
->> +        {FW_CFG_IRQ0_OVERRIDE, "irq0_override"},
->> +        {FW_CFG_E820_TABLE, "e820_tables"},
->> +        {FW_CFG_HPET, "hpet"},
->> +    };
->> +
->> +    for (size_t i = 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i++) {
->> +        if (fw_cfg_arch_wellknown_keys[i].key == key) {
->> +            return fw_cfg_arch_wellknown_keys[i].name;
->> +        }
->> +    }
->> +    return NULL;
->> +}
->> +
->>  void gsi_handler(void *opaque, int n, int level)
->>  {
->>      GSIState *s = opaque;
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index 7fdf04adc9..684c2cf00a 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -60,6 +60,62 @@ struct FWCfgEntry {
->>      FWCfgWriteCallback write_cb;
->>  };
->>  
->> +/**
->> + * key_name:
->> + *
->> + * @key: The uint16 selector key.
->> + *
->> + * Returns: The stringified name if the selector refers to a well-known
->> + *          numerically defined item, or NULL on key lookup failure.
->> + */
->> +static const char *key_name(uint16_t key)
->> +{
->> +    static const char *fw_cfg_wellknown_keys[FW_CFG_FILE_FIRST] = {
->> +        [FW_CFG_SIGNATURE] = "signature",
->> +        [FW_CFG_ID] = "id",
->> +        [FW_CFG_UUID] = "uuid",
->> +        [FW_CFG_RAM_SIZE] = "ram_size",
->> +        [FW_CFG_NOGRAPHIC] = "nographic",
->> +        [FW_CFG_NB_CPUS] = "nb_cpus",
->> +        [FW_CFG_MACHINE_ID] = "machine_id",
->> +        [FW_CFG_KERNEL_ADDR] = "kernel_addr",
->> +        [FW_CFG_KERNEL_SIZE] = "kernel_size",
->> +        [FW_CFG_KERNEL_CMDLINE] = "kernel_cmdline",
->> +        [FW_CFG_INITRD_ADDR] = "initrd_addr",
->> +        [FW_CFG_INITRD_SIZE] = "initdr_size",
->> +        [FW_CFG_BOOT_DEVICE] = "boot_device",
->> +        [FW_CFG_NUMA] = "numa",
->> +        [FW_CFG_BOOT_MENU] = "boot_menu",
->> +        [FW_CFG_MAX_CPUS] = "max_cpus",
->> +        [FW_CFG_KERNEL_ENTRY] = "kernel_entry",
->> +        [FW_CFG_KERNEL_DATA] = "kernel_data",
->> +        [FW_CFG_INITRD_DATA] = "initrd_data",
->> +        [FW_CFG_CMDLINE_ADDR] = "cmdline_addr",
->> +        [FW_CFG_CMDLINE_SIZE] = "cmdline_size",
->> +        [FW_CFG_CMDLINE_DATA] = "cmdline_data",
->> +        [FW_CFG_SETUP_ADDR] = "setup_addr",
->> +        [FW_CFG_SETUP_SIZE] = "setup_size",
->> +        [FW_CFG_SETUP_DATA] = "setup_data",
->> +        [FW_CFG_FILE_DIR] = "file_dir",
->> +    };
->> +
->> +    if (key & FW_CFG_ARCH_LOCAL) {
->> +        return fw_cfg_arch_key_name(key);
->> +    }
->> +    if (key < FW_CFG_FILE_FIRST) {
->> +        return fw_cfg_wellknown_keys[key];
->> +    }
->> +
->> +    return NULL;
->> +}
->> +
->> +static inline const char *trace_key_name(uint16_t key)
->> +{
->> +    const char *name = key_name(key);
->> +
->> +    return name ? name : "unknown";
->> +}
->> +
->>  #define JPG_FILE 0
->>  #define BMP_FILE 1
->>  
->> @@ -234,7 +290,7 @@ static int fw_cfg_select(FWCfgState *s, uint16_t key)
->>          }
->>      }
->>  
->> -    trace_fw_cfg_select(s, key, ret);
->> +    trace_fw_cfg_select(s, key, trace_key_name(key), ret);
->>      return ret;
->>  }
->>  
->> @@ -617,6 +673,7 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s, uint16_t key,
->>  
->>  void fw_cfg_add_bytes(FWCfgState *s, uint16_t key, void *data, size_t len)
->>  {
->> +    trace_fw_cfg_add_bytes(key, trace_key_name(key), len);
->>      fw_cfg_add_bytes_callback(s, key, NULL, NULL, NULL, data, len, true);
->>  }
->>  
->> @@ -624,6 +681,7 @@ void fw_cfg_add_string(FWCfgState *s, uint16_t key, const char *value)
->>  {
->>      size_t sz = strlen(value) + 1;
->>  
->> +    trace_fw_cfg_add_string(key, trace_key_name(key), value);
->>      fw_cfg_add_bytes(s, key, g_memdup(value, sz), sz);
->>  }
->>  
->> @@ -633,6 +691,7 @@ void fw_cfg_add_i16(FWCfgState *s, uint16_t key, uint16_t value)
->>  
->>      copy = g_malloc(sizeof(value));
->>      *copy = cpu_to_le16(value);
->> +    trace_fw_cfg_add_i16(key, trace_key_name(key), value);
->>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->>  }
->>  
->> @@ -652,6 +711,7 @@ void fw_cfg_add_i32(FWCfgState *s, uint16_t key, uint32_t value)
->>  
->>      copy = g_malloc(sizeof(value));
->>      *copy = cpu_to_le32(value);
->> +    trace_fw_cfg_add_i32(key, trace_key_name(key), value);
->>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->>  }
->>  
->> @@ -661,6 +721,7 @@ void fw_cfg_add_i64(FWCfgState *s, uint16_t key, uint64_t value)
->>  
->>      copy = g_malloc(sizeof(value));
->>      *copy = cpu_to_le64(value);
->> +    trace_fw_cfg_add_i64(key, trace_key_name(key), value);
->>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->>  }
->>  
->> diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
->> index 6b55ba7a09..4d8fa992fe 100644
->> --- a/hw/nvram/trace-events
->> +++ b/hw/nvram/trace-events
->> @@ -5,6 +5,11 @@ nvram_read(uint32_t addr, uint32_t ret) "read addr %d: 0x%02x"
->>  nvram_write(uint32_t addr, uint32_t old, uint32_t val) "write addr %d: 0x%02x -> 0x%02x"
->>  
->>  # hw/nvram/fw_cfg.c
->> -fw_cfg_select(void *s, uint16_t key, int ret) "%p key %d = %d"
->> +fw_cfg_select(void *s, uint16_t key_value, const char *key_name, int ret) "%p key 0x%04" PRIx16 " '%s', ret: %d"
->>  fw_cfg_read(void *s, uint64_t ret) "%p = 0x%"PRIx64
->> +fw_cfg_add_bytes(uint16_t key_value, const char *key_name, size_t len) "key 0x%04" PRIx16 " '%s', %zu bytes"
->>  fw_cfg_add_file(void *s, int index, char *name, size_t len) "%p #%d: %s (%zd bytes)"
->> +fw_cfg_add_string(uint16_t key_value, const char *key_name, const char *value) "key 0x%04" PRIx16 " '%s', value '%s'"
->> +fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
->> +fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
->> +fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t value) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
->> diff --git a/hw/ppc/Makefile.objs b/hw/ppc/Makefile.objs
->> index 1111b218a0..ae94098155 100644
->> --- a/hw/ppc/Makefile.objs
->> +++ b/hw/ppc/Makefile.objs
->> @@ -1,5 +1,5 @@
->>  # shared objects
->> -obj-y += ppc.o ppc_booke.o fdt.o
->> +obj-y += ppc.o ppc_booke.o fdt.o fw_cfg.o
->>  # IBM pSeries (sPAPR)
->>  obj-$(CONFIG_PSERIES) += spapr.o spapr_caps.o spapr_vio.o spapr_events.o
->>  obj-$(CONFIG_PSERIES) += spapr_hcall.o spapr_iommu.o spapr_rtas.o
->> diff --git a/hw/ppc/fw_cfg.c b/hw/ppc/fw_cfg.c
->> new file mode 100644
->> index 0000000000..0e7616b78a
->> --- /dev/null
->> +++ b/hw/ppc/fw_cfg.c
->> @@ -0,0 +1,31 @@
->> +#include "qemu/osdep.h"
->> +#include "hw/ppc/ppc.h"
->> +#include "hw/nvram/fw_cfg.h"
->> +
->> +const char *fw_cfg_arch_key_name(uint16_t key)
->> +{
->> +    static const struct {
->> +        uint16_t key;
->> +        const char *name;
->> +    } fw_cfg_arch_wellknown_keys[] = {
->> +        {FW_CFG_PPC_WIDTH, "width"},
->> +        {FW_CFG_PPC_HEIGHT, "height"},
->> +        {FW_CFG_PPC_DEPTH, "depth"},
->> +        {FW_CFG_PPC_TBFREQ, "tbfreq"},
->> +        {FW_CFG_PPC_CLOCKFREQ, "clockfreq"},
->> +        {FW_CFG_PPC_IS_KVM, "is_kvm"},
->> +        {FW_CFG_PPC_KVM_HC, "kvm_hc"},
->> +        {FW_CFG_PPC_KVM_PID, "pid"},
->> +        {FW_CFG_PPC_NVRAM_ADDR, "nvram_addr"},
->> +        {FW_CFG_PPC_BUSFREQ, "busfreq"},
->> +        {FW_CFG_PPC_NVRAM_FLAT, "nvram_flat"},
->> +        {FW_CFG_PPC_VIACONFIG, "viaconfig"},
->> +    };
->> +
->> +    for (size_t i = 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i++) {
->> +        if (fw_cfg_arch_wellknown_keys[i].key == key) {
->> +            return fw_cfg_arch_wellknown_keys[i].name;
->> +        }
->> +    }
->> +    return NULL;
->> +}
->> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
->> index ca1e3825d5..49251d62b3 100644
->> --- a/hw/sparc/sun4m.c
->> +++ b/hw/sparc/sun4m.c
->> @@ -97,6 +97,25 @@ struct sun4m_hwdef {
->>      uint8_t nvram_machine_id;
->>  };
->>  
->> +const char *fw_cfg_arch_key_name(uint16_t key)
->> +{
->> +    static const struct {
->> +        uint16_t key;
->> +        const char *name;
->> +    } fw_cfg_arch_wellknown_keys[] = {
->> +        {FW_CFG_SUN4M_DEPTH, "depth"},
->> +        {FW_CFG_SUN4M_WIDTH, "width"},
->> +        {FW_CFG_SUN4M_HEIGHT, "height"},
->> +    };
->> +
->> +    for (size_t i = 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i++) {
->> +        if (fw_cfg_arch_wellknown_keys[i].key == key) {
->> +            return fw_cfg_arch_wellknown_keys[i].name;
->> +        }
->> +    }
->> +    return NULL;
->> +}
->> +
->>  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->>                              Error **errp)
->>  {
->> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
->> index 399f2d73c8..4230b17b87 100644
->> --- a/hw/sparc64/sun4u.c
->> +++ b/hw/sparc64/sun4u.c
->> @@ -91,6 +91,25 @@ typedef struct EbusState {
->>  #define TYPE_EBUS "ebus"
->>  #define EBUS(obj) OBJECT_CHECK(EbusState, (obj), TYPE_EBUS)
->>  
->> +const char *fw_cfg_arch_key_name(uint16_t key)
->> +{
->> +    static const struct {
->> +        uint16_t key;
->> +        const char *name;
->> +    } fw_cfg_arch_wellknown_keys[] = {
->> +        {FW_CFG_SPARC64_WIDTH, "width"},
->> +        {FW_CFG_SPARC64_HEIGHT, "height"},
->> +        {FW_CFG_SPARC64_DEPTH, "depth"},
->> +    };
->> +
->> +    for (size_t i = 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i++) {
->> +        if (fw_cfg_arch_wellknown_keys[i].key == key) {
->> +            return fw_cfg_arch_wellknown_keys[i].name;
->> +        }
->> +    }
->> +    return NULL;
->> +}
->> +
->>  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->>                              Error **errp)
->>  {
->> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
->> index f5a6895a74..828ad9dedc 100644
->> --- a/include/hw/nvram/fw_cfg.h
->> +++ b/include/hw/nvram/fw_cfg.h
->> @@ -226,4 +226,15 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
->>  FWCfgState *fw_cfg_find(void);
->>  bool fw_cfg_dma_enabled(void *opaque);
->>  
->> +/**
->> + * fw_cfg_arch_key_name:
->> + *
->> + * @key: The uint16 selector key.
->> + *
->> + * Returns: The stringified architecture-specific name if the selector
->> + *          refers to a well-known numerically defined item, or NULL on
->> + *          key lookup failure.
->> + */
->> +const char *fw_cfg_arch_key_name(uint16_t key);
->> +
->>  #endif
->> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
->> index 269dfa5832..73452ad265 100644
->> --- a/stubs/Makefile.objs
->> +++ b/stubs/Makefile.objs
->> @@ -39,3 +39,4 @@ stub-obj-y += xen-hvm.o
->>  stub-obj-y += pci-host-piix.o
->>  stub-obj-y += ram-block.o
->>  stub-obj-y += ramfb.o
->> +stub-obj-y += fw_cfg.o
->> diff --git a/stubs/fw_cfg.c b/stubs/fw_cfg.c
->> new file mode 100644
->> index 0000000000..2b886c94d6
->> --- /dev/null
->> +++ b/stubs/fw_cfg.c
->> @@ -0,0 +1,19 @@
->> +/*
->> + * fw_cfg stubs
->> + *
->> + * Copyright (c) 2019 Red Hat, Inc.
->> + *
->> + * Author:
->> + *   Philippe Mathieu-Daudé <philmd@redhat.com>
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
->> + * See the COPYING file in the top-level directory.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "hw/nvram/fw_cfg.h"
->> +
->> +const char *fw_cfg_arch_key_name(uint16_t key)
->> +{
->> +    return NULL;
->> +}
->>
-> 
+I think armoring the fw_cfg implementation for such lifetime actions is
+valuable. But, that definitely belongs to its own series, in my opinion.
+
+In the "hw/nvram/fw_cfg.c" file, I count:
+
+(a) two "specific purpose" g_memdup() calls, namely in
+fw_cfg_bootsplash() and in fw_cfg_reboot();
+
+(b) one "generic purpose" g_memdup() call, namely in fw_cfg_add_string();
+
+(c) two "generic purpose" g_malloc() calls, namely in fw_cfg_add_i16(),
+fw_cfg_add_i32(), and fw_cfg_add_i64(). (The one in fw_cfg_modify_i16()
+does not matter here because the previous blob is freed in that function.=
+)
+
+Your series deals with (a), namely with fw_cfg_reboot() in this patch,
+and with fw_cfg_bootsplash() in the next one.
+
+Your series deals with neither (b) nor (c). The
+fw_cfg_add_(string|i16|i32|i64) functions are called from a bunch of
+places however, so if we really intend *not* to leak those copies upon
+fw_cfg destruction, then we'll have to track all of them dynamically, in
+a list for example.
+
+(And that necessitates a separate series for this topic even more.)
+
+In turn, once we add dynamic tracking, for those blobs that the
+fw_cfg_add_(string|i16|i32|i64) functions allocate internally -- as they
+are advertized to do --, then we might as well use the same tracking
+infrastructure for (a). In other words, it should not be necessary to
+add the specific fields "reboot_timeout" and "boot_splash" to FWCfgState.
+
+Thanks,
+Laszlo
+
+>=20
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index b73a591eff..182d27f59a 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -250,7 +250,9 @@ static void fw_cfg_reboot(FWCfgState *s)
+>          }
+>      }
+> =20
+> -    fw_cfg_add_file(s, "etc/boot-fail-wait", g_memdup(&rt_val, 4), 4);
+> +    s->reboot_timeout =3D rt_val;
+> +    fw_cfg_add_file(s, "etc/boot-fail-wait",
+> +                    &s->reboot_timeout, sizeof(s->reboot_timeout));
+>  }
+> =20
+>  static void fw_cfg_write(FWCfgState *s, uint8_t value)
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index 828ad9dedc..99f6fafcaa 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -53,6 +53,8 @@ struct FWCfgState {
+>      dma_addr_t dma_addr;
+>      AddressSpace *dma_as;
+>      MemoryRegion dma_iomem;
+> +
+> +    uint32_t reboot_timeout;
+>  };
+> =20
+>  struct FWCfgIoState {
+>=20
+

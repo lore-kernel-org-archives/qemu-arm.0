@@ -1,291 +1,528 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8163574wrx;
-        Fri, 8 Mar 2019 01:53:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyQj6pzTejZgVF2GKwJTPBGQozHBiIG/d52GKkwn9oGlRAC3DikQbuvXeqF4Nn5oQjPmhAl
-X-Received: by 2002:a81:a4ca:: with SMTP id b193mr1866871ywh.94.1552038786517;
-        Fri, 08 Mar 2019 01:53:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552038786; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8174524wrx;
+        Fri, 8 Mar 2019 02:04:01 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxYfL1AVyVqi50elZdjmYgYCKshfdWhTvaYBkfNaddaRKhY7oPWfwHDntn1iBjTmCZMNhRU
+X-Received: by 2002:a25:2cc1:: with SMTP id s184mr15628033ybs.9.1552039441645;
+        Fri, 08 Mar 2019 02:04:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552039441; cv=none;
         d=google.com; s=arc-20160816;
-        b=U3zBrebv6t0gy6KDUIi9P3AxHYnuR5AJ66qE36DF4Xg8XC8woSu6rlLKjvexQBIY+1
-         +IvvTv914vJg0XoEpOc03B6rfl4ZBQ3u8FusJiKN830GVKV864WFTQrJBiR/IYLPqDMC
-         xN3D/nJ3ietHa7WgGf0BbJcS9gglszuxGIbr6vDtvOo5ysI2mkoWXvxvw+uSfPrVWzn6
-         kO7ufVWvK5HpQRqRoby54PmbGuzzGwWOOd/677PPU73zcqGki85yliF+GU6h9Y2WjjIe
-         rl+DxHb3GT/Hmw6kKDreLQk9Sr36aVAii58iQsImlqy3igW05i27drlvka+CxtEh/pRq
-         RI7Q==
+        b=xU2EvDne8vjryzT3DCoB5+WRFq8q02DU8D5kL7BSenvsDxrSbhUwxSnMgYH+seYama
+         XP56B21xV+oed4nzSaEHtXtq+leeZnhrW9V72kr4QItbedH/yGwptsBERiMpk2IbUAJm
+         oIuZchfTO3kdkj4hpmubXlkCGwNIfIQH7OmOWxQRRDrWtai++ySb6vDWsgMNmeRBNbVx
+         L+tLXb/w6sgvI4ID1v/Tdcs46FNbRzlYmvoqW7b6QeCKNPcoqePBSfOkIp8wg3OvnlBZ
+         vj0oSkg4xrv+qMac90JOw8JOA6Z826CsskVLoHQ2WTsDlhZNnQoXw01m3a6JDNnME1pf
+         Hh0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=KRJ/ByqLbM35gQ08tf3EBYDhFRacJtkK9BFBwrLDp0c=;
-        b=ac2PJCYFHLa6B7OzllBoA14qFgmkITiZhmv4M5PWWCI1Ph5ohrVS0hleC/UpdMaeNV
-         oF9erV5sre9llCX7UZSd/EgJvAwhK+1NOc4cBPvmIhC70rql9x28xJg4ceGGykREdB5b
-         xl5j9jGsZyyX/V1cOHXhFR3XtwI9ZNSCgVGqecqnAlWQ8szwVhKV5rGr2b7t6i1s2uOT
-         IgfI8NmXwDCh6MoPovjv+bQje3BKmaIjbjxhaTaQdu/DtfTbgiIaSPFvIe35v3MN1p7G
-         R5Uv9oJOdXCaTREDaPmNR3BAw42wxlLgFbIacmLzBoNLN1ztst0lkwEx4k55T+B2EWuO
-         JNwg==
+        bh=1EnrEAZcFNsWLJJZcqv777qxswhAfnf6RJbth7kzU48=;
+        b=G6VNgKVmsSXOr/a326obuGFv7trdyWlUG/xIS1I0L1S8zgg2tqF6t4kRGRXTNj4DIE
+         GZ83gBsVejXijK+yoyhEjfjnngUBEImvHp8rvoSQYraqK19+QrfJJuSIeeINrK2iHqrJ
+         XAYnY/vA/VihtdYjodvg6x/NC15Terd22pvRmj58LkVtzdm5aH7iyvmXSkctor8vgo5z
+         U4nDrmyAkakduLjL6hb3RXLcw8BZYg9sUwBcO7LUoObyMt5DJoMqyLsgoA5vqyJEIDq4
+         /ESNeSM93QoQ2XQVVpDjYSvw0Rqh1PZMg/ZaejM8MZLSUqHH8x92PseWAf7cwcm7Hh3G
+         Jmlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i207si4133010ywa.448.2019.03.08.01.53.06
+        by mx.google.com with ESMTPS id t141si4614173ywe.21.2019.03.08.02.04.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 01:53:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Mar 2019 02:04:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40004 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40195 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2CBe-0007NV-0c
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 04:53:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44025)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h2CMD-0008Sc-43
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:04:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2C7E-000461-Ue
-	for qemu-devel@nongnu.org; Fri, 08 Mar 2019 04:48:34 -0500
+	(envelope-from <lersek@redhat.com>) id 1h2CG5-0003Pd-R1
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 04:57:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2C7D-0008Ap-PS
-	for qemu-devel@nongnu.org; Fri, 08 Mar 2019 04:48:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41250)
+	(envelope-from <lersek@redhat.com>) id 1h2CG3-0000Ub-W8
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 04:57:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45950)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1h2C7B-00086y-0q; Fri, 08 Mar 2019 04:48:29 -0500
+	id 1h2CG3-0000TK-Mi; Fri, 08 Mar 2019 04:57:39 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33903307E076;
-	Fri,  8 Mar 2019 09:48:28 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A376381F19;
+	Fri,  8 Mar 2019 09:57:38 +0000 (UTC)
 Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-151.rdu2.redhat.com
 	[10.10.120.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9E55D1A933;
-	Fri,  8 Mar 2019 09:48:08 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 786071A92E;
+	Fri,  8 Mar 2019 09:57:27 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-4-philmd@redhat.com>
+	<20190308013222.12524-5-philmd@redhat.com>
 From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <71bce75b-a2a9-061b-a1c2-7c4e49d957b1@redhat.com>
-Date: Fri, 8 Mar 2019 10:48:07 +0100
+Message-ID: <599de4a4-9754-5e93-17df-9f3bffc366e8@redhat.com>
+Date: Fri, 8 Mar 2019 10:57:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190308013222.12524-4-philmd@redhat.com>
+In-Reply-To: <20190308013222.12524-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Fri, 08 Mar 2019 09:48:28 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 08 Mar 2019 09:57:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v2 03/18] cutils: Add qemu_strdup_hexlify()
- and qemu_strdup_unhexlify()
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2 04/18] hw/nvram/fw_cfg: Add trace events
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>, Eric Blake <eblake@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aeePGn1oxY16
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HYbcJ3KSA23n
 
 Hi Phil,
 
-most important comment at the bottom.
-
 On 03/08/19 02:32, Philippe Mathieu-Daud=C3=A9 wrote:
-> Add two helpers: one to represent a binary data as a string of
-> hexadecimal values, and one to restore a such string into its
-> original binary data.
+> Add fw_cfg_arch_key_name() to be able to resolve architecture
+> specific keys. All architectures do have specific keys, thus
+> implement this function. Architectures that don't use the fw_cfg
+> device don't have to implement this function, however to ease
+> the Makefile rules and satisfy the linking, we provide a stub.
+>=20
+> Now than we can resolve keys into "well know numeric", add
+> trace events to display more information when keys are added
+> (and dump the key content when possible).
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/qemu/cutils.h | 33 ++++++++++++++++++++++++++
->  util/cutils.c         | 55 +++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 88 insertions(+)
->=20
-> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-> index d2dad3057c..375a5508b0 100644
-> --- a/include/qemu/cutils.h
-> +++ b/include/qemu/cutils.h
-> @@ -171,6 +171,39 @@ bool test_buffer_is_zero_next_accel(void);
->  int uleb128_encode_small(uint8_t *out, uint32_t n);
->  int uleb128_decode_small(const uint8_t *in, uint32_t *n);
-> =20
-> +/**
-> + * qemu_strdup_hexlify:
+> v2: Added fw_cfg_arch_key_name() -> reset R-b
+> ---
 
-(1) I think the name "hexlify" is unusual. I think we should use
-encode/decode terminology, or hex/unhex, or, if we want to stick with
-the "stringify" pattern, hexify/unhexify. (No "l".)
+This is not a small patch, and Michael and I reviewed v1 three months ago=
+:
 
-> + *
-> + * Encode a sequence of binary data into its hexadecimal stringified
-> + * representation.
-> + *
-> + * @ptr: Buffer to hexlify
-> + * @size: Length of the buffer
-> + *
-> + * Use qemu_strdup_unhexlify() to convert the hex string to original d=
-ata.
-> + *
-> + * Returns: A newly allocated, zero-terminated hex encoded string repr=
-esenting
-> + * the data. The returned string must be freed with g_free().
-> + */
-> +gchar *qemu_strdup_hexlify(gconstpointer ptr, gsize size);
-> +
-> +/**
-> + * qemu_strdup_unhexlify:
-> + *
-> + * Decode a sequence of hexadecimal encoded text into binary data.
-> + *
-> + * @hex_string: String to unhexlify
-> + * @out_size: if not NULL: gsize to be written with the data length
-> + *
-> + * This function is the opposite of qemu_strdup_hexlify().
-> + *
-> + * Returns: A newly allocated buffer containing the binary data that t=
-ext
-> + * represents. The returned buffer must be freed with g_free().
-> + * Note that the returned binary data is not necessarily zero-terminat=
-ed,
-> + * so it should not be used as a character string.
-> + */
-> +gpointer qemu_strdup_unhexlify(const gchar *hex_string, gsize *out_siz=
-e);
-> +
->  /**
->   * qemu_pstrcmp0:
->   * @str1: a non-NULL pointer to a C string (*str1 can be NULL)
-> diff --git a/util/cutils.c b/util/cutils.c
-> index e098debdc0..bf324c0d8b 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -779,6 +779,61 @@ int uleb128_decode_small(const uint8_t *in, uint32=
-_t *n)
->      }
->  }
-> =20
-> +static guchar hexval(const gchar v)
-> +{
-> +    switch (v) {
-> +    case '0' ... '9':
-> +        return v - '0';
-> +    case 'A' ... 'F':
-> +        return v - 'A' + 10;
-> +    case 'a' ... 'f':
-> +        return v - 'a' + 10;
-> +    default:
-> +        return 0;
-> +    }
-> +}
+https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01616.html
+https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01947.html
 
-(2) I don't think that we should silently translate invalid characters
-to zero, in any hexadecimal decoder.
+I'm not keen on re-reviewing the patch from zero (after three months)
+just because of fw_cfg_arch_key_name().
 
-> +
-> +gchar *qemu_strdup_hexlify(gconstpointer ptr, gsize len)
-> +{
-> +    guchar *data =3D (guchar *)ptr;
-> +    gchar *hex_string;
-> +
-> +    if (!ptr || !len) {
-> +        return g_strdup("");
-> +    }
-> +
-> +    hex_string =3D g_malloc(2 * len + 1);
-
-(3) Should check against integer overflow in the g_malloc() argument
-(multiplication and addition).
-
-> +    for (gsize i =3D 0; i < len; i++) {
-> +        g_snprintf(&hex_string[2 * i], 3, "%02x", data[i]);
-> +    }
-> +
-> +    return hex_string;
-> +}
-> +
-> +gpointer qemu_strdup_unhexlify(const gchar *hex_string, gsize *out_siz=
-e)
-> +{
-> +    size_t size =3D 0;
-> +    guchar *data =3D NULL;
-> +
-> +    if (hex_string) {
-> +        size =3D strlen(hex_string) / 2;
-
-(4) Should likely check that the length of the string is an even integer.
-
-> +        if (size) {
-> +            size_t i;
-> +
-> +            data =3D g_new(guchar, size + 1);
-> +            for (i =3D 0; i < size; i++) {
-> +                data[i]  =3D hexval(*hex_string++) << 4;
-> +                data[i] |=3D hexval(*hex_string++);
-> +            }
-> +            data[i] =3D '\0';
-> +        }
-> +    }
-> +    if (out_size) {
-> +        *out_size =3D size;
-> +    }
-> +    return data;
-> +}
-> +
->  /*
->   * helper to parse debug environment variables
->   */
->=20
-
-(5) Most importantly: I don't think we need this patch.
-
-First, AFAICS, the unhex function is never used in the series, and no
-unit test is being added for it. That makes it a bad candidate for
-"include/qemu/cutils.h".
-
-Second, while the hex function is used in PATCH v2 13/18
-("hw/nvram/fw_cfg: Add QMP 'info fw_cfg' command"), the documentation in
-that patch and the logic in the patch are inconsistent. The
-documentation -- i.e. both the commit message and the "misc.json" change
--- say that "FirmwareConfigurationItem.data" is unused (not populated).
-However, that's exactly what create_qmp_fw_cfg_item() uses the hex
-function for.
-
-Third, if we do decide that the QMP command should output the fw_cfg
-binary data, then the QMP tradition (to my knowledge) has been to use
-base64 encoding. GLib provides helpers for base64:
-
-https://developer.gnome.org/glib/stable/glib-Base64-Encoding.html
-
-and you can see examples of it being used in e.g.
-
-(a) qmp_ringbuf_read() [chardev/char-ringbuf.c] -- the  @ringbuf-read
-command is defined in "qapi/char.json"
-
-(b) qmp_guest_exec_status() [qga/commands.c] -- the @guest-exec-status
-command is defined in "qga/qapi-schema.json".
+Is it possible to split fw_cfg_arch_key_name() to a separate patch first
+(which we could review in isolation -- it affects multiple arches), and
+rebase the original (v1) patch to it, with minimal updates (keeping the
+R-b's, or at least pointing out the minimal change for incremental review=
+)?
 
 Thanks
 Laszlo
+
+>  MAINTAINERS               |  1 +
+>  hw/i386/pc.c              | 21 +++++++++++++
+>  hw/nvram/fw_cfg.c         | 63 ++++++++++++++++++++++++++++++++++++++-
+>  hw/nvram/trace-events     |  7 ++++-
+>  hw/ppc/Makefile.objs      |  2 +-
+>  hw/ppc/fw_cfg.c           | 31 +++++++++++++++++++
+>  hw/sparc/sun4m.c          | 19 ++++++++++++
+>  hw/sparc64/sun4u.c        | 19 ++++++++++++
+>  include/hw/nvram/fw_cfg.h | 11 +++++++
+>  stubs/Makefile.objs       |  1 +
+>  stubs/fw_cfg.c            | 19 ++++++++++++
+>  11 files changed, 191 insertions(+), 3 deletions(-)
+>  create mode 100644 hw/ppc/fw_cfg.c
+>  create mode 100644 stubs/fw_cfg.c
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 074ad46d47..306fc2aefa 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1659,6 +1659,7 @@ R: Gerd Hoffmann <kraxel@redhat.com>
+>  S: Supported
+>  F: docs/specs/fw_cfg.txt
+>  F: hw/nvram/fw_cfg.c
+> +F: stubs/fw_cfg.c
+>  F: include/hw/nvram/fw_cfg.h
+>  F: include/standard-headers/linux/qemu_fw_cfg.h
+>  F: tests/libqos/fw_cfg.c
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 42128183e9..0848cdc18f 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -349,6 +349,27 @@ GlobalProperty pc_compat_1_4[] =3D {
+>  };
+>  const size_t pc_compat_1_4_len =3D G_N_ELEMENTS(pc_compat_1_4);
+> =20
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    static const struct {
+> +        uint16_t key;
+> +        const char *name;
+> +    } fw_cfg_arch_wellknown_keys[] =3D {
+> +        {FW_CFG_ACPI_TABLES, "acpi_tables"},
+> +        {FW_CFG_SMBIOS_ENTRIES, "smbios_entries"},
+> +        {FW_CFG_IRQ0_OVERRIDE, "irq0_override"},
+> +        {FW_CFG_E820_TABLE, "e820_tables"},
+> +        {FW_CFG_HPET, "hpet"},
+> +    };
+> +
+> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
+++) {
+> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
+> +            return fw_cfg_arch_wellknown_keys[i].name;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+>  void gsi_handler(void *opaque, int n, int level)
+>  {
+>      GSIState *s =3D opaque;
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 7fdf04adc9..684c2cf00a 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -60,6 +60,62 @@ struct FWCfgEntry {
+>      FWCfgWriteCallback write_cb;
+>  };
+> =20
+> +/**
+> + * key_name:
+> + *
+> + * @key: The uint16 selector key.
+> + *
+> + * Returns: The stringified name if the selector refers to a well-know=
+n
+> + *          numerically defined item, or NULL on key lookup failure.
+> + */
+> +static const char *key_name(uint16_t key)
+> +{
+> +    static const char *fw_cfg_wellknown_keys[FW_CFG_FILE_FIRST] =3D {
+> +        [FW_CFG_SIGNATURE] =3D "signature",
+> +        [FW_CFG_ID] =3D "id",
+> +        [FW_CFG_UUID] =3D "uuid",
+> +        [FW_CFG_RAM_SIZE] =3D "ram_size",
+> +        [FW_CFG_NOGRAPHIC] =3D "nographic",
+> +        [FW_CFG_NB_CPUS] =3D "nb_cpus",
+> +        [FW_CFG_MACHINE_ID] =3D "machine_id",
+> +        [FW_CFG_KERNEL_ADDR] =3D "kernel_addr",
+> +        [FW_CFG_KERNEL_SIZE] =3D "kernel_size",
+> +        [FW_CFG_KERNEL_CMDLINE] =3D "kernel_cmdline",
+> +        [FW_CFG_INITRD_ADDR] =3D "initrd_addr",
+> +        [FW_CFG_INITRD_SIZE] =3D "initdr_size",
+> +        [FW_CFG_BOOT_DEVICE] =3D "boot_device",
+> +        [FW_CFG_NUMA] =3D "numa",
+> +        [FW_CFG_BOOT_MENU] =3D "boot_menu",
+> +        [FW_CFG_MAX_CPUS] =3D "max_cpus",
+> +        [FW_CFG_KERNEL_ENTRY] =3D "kernel_entry",
+> +        [FW_CFG_KERNEL_DATA] =3D "kernel_data",
+> +        [FW_CFG_INITRD_DATA] =3D "initrd_data",
+> +        [FW_CFG_CMDLINE_ADDR] =3D "cmdline_addr",
+> +        [FW_CFG_CMDLINE_SIZE] =3D "cmdline_size",
+> +        [FW_CFG_CMDLINE_DATA] =3D "cmdline_data",
+> +        [FW_CFG_SETUP_ADDR] =3D "setup_addr",
+> +        [FW_CFG_SETUP_SIZE] =3D "setup_size",
+> +        [FW_CFG_SETUP_DATA] =3D "setup_data",
+> +        [FW_CFG_FILE_DIR] =3D "file_dir",
+> +    };
+> +
+> +    if (key & FW_CFG_ARCH_LOCAL) {
+> +        return fw_cfg_arch_key_name(key);
+> +    }
+> +    if (key < FW_CFG_FILE_FIRST) {
+> +        return fw_cfg_wellknown_keys[key];
+> +    }
+> +
+> +    return NULL;
+> +}
+> +
+> +static inline const char *trace_key_name(uint16_t key)
+> +{
+> +    const char *name =3D key_name(key);
+> +
+> +    return name ? name : "unknown";
+> +}
+> +
+>  #define JPG_FILE 0
+>  #define BMP_FILE 1
+> =20
+> @@ -234,7 +290,7 @@ static int fw_cfg_select(FWCfgState *s, uint16_t ke=
+y)
+>          }
+>      }
+> =20
+> -    trace_fw_cfg_select(s, key, ret);
+> +    trace_fw_cfg_select(s, key, trace_key_name(key), ret);
+>      return ret;
+>  }
+> =20
+> @@ -617,6 +673,7 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s=
+, uint16_t key,
+> =20
+>  void fw_cfg_add_bytes(FWCfgState *s, uint16_t key, void *data, size_t =
+len)
+>  {
+> +    trace_fw_cfg_add_bytes(key, trace_key_name(key), len);
+>      fw_cfg_add_bytes_callback(s, key, NULL, NULL, NULL, data, len, tru=
+e);
+>  }
+> =20
+> @@ -624,6 +681,7 @@ void fw_cfg_add_string(FWCfgState *s, uint16_t key,=
+ const char *value)
+>  {
+>      size_t sz =3D strlen(value) + 1;
+> =20
+> +    trace_fw_cfg_add_string(key, trace_key_name(key), value);
+>      fw_cfg_add_bytes(s, key, g_memdup(value, sz), sz);
+>  }
+> =20
+> @@ -633,6 +691,7 @@ void fw_cfg_add_i16(FWCfgState *s, uint16_t key, ui=
+nt16_t value)
+> =20
+>      copy =3D g_malloc(sizeof(value));
+>      *copy =3D cpu_to_le16(value);
+> +    trace_fw_cfg_add_i16(key, trace_key_name(key), value);
+>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
+>  }
+> =20
+> @@ -652,6 +711,7 @@ void fw_cfg_add_i32(FWCfgState *s, uint16_t key, ui=
+nt32_t value)
+> =20
+>      copy =3D g_malloc(sizeof(value));
+>      *copy =3D cpu_to_le32(value);
+> +    trace_fw_cfg_add_i32(key, trace_key_name(key), value);
+>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
+>  }
+> =20
+> @@ -661,6 +721,7 @@ void fw_cfg_add_i64(FWCfgState *s, uint16_t key, ui=
+nt64_t value)
+> =20
+>      copy =3D g_malloc(sizeof(value));
+>      *copy =3D cpu_to_le64(value);
+> +    trace_fw_cfg_add_i64(key, trace_key_name(key), value);
+>      fw_cfg_add_bytes(s, key, copy, sizeof(value));
+>  }
+> =20
+> diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
+> index 6b55ba7a09..4d8fa992fe 100644
+> --- a/hw/nvram/trace-events
+> +++ b/hw/nvram/trace-events
+> @@ -5,6 +5,11 @@ nvram_read(uint32_t addr, uint32_t ret) "read addr %d:=
+ 0x%02x"
+>  nvram_write(uint32_t addr, uint32_t old, uint32_t val) "write addr %d:=
+ 0x%02x -> 0x%02x"
+> =20
+>  # hw/nvram/fw_cfg.c
+> -fw_cfg_select(void *s, uint16_t key, int ret) "%p key %d =3D %d"
+> +fw_cfg_select(void *s, uint16_t key_value, const char *key_name, int r=
+et) "%p key 0x%04" PRIx16 " '%s', ret: %d"
+>  fw_cfg_read(void *s, uint64_t ret) "%p =3D 0x%"PRIx64
+> +fw_cfg_add_bytes(uint16_t key_value, const char *key_name, size_t len)=
+ "key 0x%04" PRIx16 " '%s', %zu bytes"
+>  fw_cfg_add_file(void *s, int index, char *name, size_t len) "%p #%d: %=
+s (%zd bytes)"
+> +fw_cfg_add_string(uint16_t key_value, const char *key_name, const char=
+ *value) "key 0x%04" PRIx16 " '%s', value '%s'"
+> +fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t valu=
+e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
+> +fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t valu=
+e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
+> +fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t valu=
+e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
+> diff --git a/hw/ppc/Makefile.objs b/hw/ppc/Makefile.objs
+> index 1111b218a0..ae94098155 100644
+> --- a/hw/ppc/Makefile.objs
+> +++ b/hw/ppc/Makefile.objs
+> @@ -1,5 +1,5 @@
+>  # shared objects
+> -obj-y +=3D ppc.o ppc_booke.o fdt.o
+> +obj-y +=3D ppc.o ppc_booke.o fdt.o fw_cfg.o
+>  # IBM pSeries (sPAPR)
+>  obj-$(CONFIG_PSERIES) +=3D spapr.o spapr_caps.o spapr_vio.o spapr_even=
+ts.o
+>  obj-$(CONFIG_PSERIES) +=3D spapr_hcall.o spapr_iommu.o spapr_rtas.o
+> diff --git a/hw/ppc/fw_cfg.c b/hw/ppc/fw_cfg.c
+> new file mode 100644
+> index 0000000000..0e7616b78a
+> --- /dev/null
+> +++ b/hw/ppc/fw_cfg.c
+> @@ -0,0 +1,31 @@
+> +#include "qemu/osdep.h"
+> +#include "hw/ppc/ppc.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    static const struct {
+> +        uint16_t key;
+> +        const char *name;
+> +    } fw_cfg_arch_wellknown_keys[] =3D {
+> +        {FW_CFG_PPC_WIDTH, "width"},
+> +        {FW_CFG_PPC_HEIGHT, "height"},
+> +        {FW_CFG_PPC_DEPTH, "depth"},
+> +        {FW_CFG_PPC_TBFREQ, "tbfreq"},
+> +        {FW_CFG_PPC_CLOCKFREQ, "clockfreq"},
+> +        {FW_CFG_PPC_IS_KVM, "is_kvm"},
+> +        {FW_CFG_PPC_KVM_HC, "kvm_hc"},
+> +        {FW_CFG_PPC_KVM_PID, "pid"},
+> +        {FW_CFG_PPC_NVRAM_ADDR, "nvram_addr"},
+> +        {FW_CFG_PPC_BUSFREQ, "busfreq"},
+> +        {FW_CFG_PPC_NVRAM_FLAT, "nvram_flat"},
+> +        {FW_CFG_PPC_VIACONFIG, "viaconfig"},
+> +    };
+> +
+> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
+++) {
+> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
+> +            return fw_cfg_arch_wellknown_keys[i].name;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index ca1e3825d5..49251d62b3 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -97,6 +97,25 @@ struct sun4m_hwdef {
+>      uint8_t nvram_machine_id;
+>  };
+> =20
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    static const struct {
+> +        uint16_t key;
+> +        const char *name;
+> +    } fw_cfg_arch_wellknown_keys[] =3D {
+> +        {FW_CFG_SUN4M_DEPTH, "depth"},
+> +        {FW_CFG_SUN4M_WIDTH, "width"},
+> +        {FW_CFG_SUN4M_HEIGHT, "height"},
+> +    };
+> +
+> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
+++) {
+> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
+> +            return fw_cfg_arch_wellknown_keys[i].name;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+>  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
+>                              Error **errp)
+>  {
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index 399f2d73c8..4230b17b87 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -91,6 +91,25 @@ typedef struct EbusState {
+>  #define TYPE_EBUS "ebus"
+>  #define EBUS(obj) OBJECT_CHECK(EbusState, (obj), TYPE_EBUS)
+> =20
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    static const struct {
+> +        uint16_t key;
+> +        const char *name;
+> +    } fw_cfg_arch_wellknown_keys[] =3D {
+> +        {FW_CFG_SPARC64_WIDTH, "width"},
+> +        {FW_CFG_SPARC64_HEIGHT, "height"},
+> +        {FW_CFG_SPARC64_DEPTH, "depth"},
+> +    };
+> +
+> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
+++) {
+> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
+> +            return fw_cfg_arch_wellknown_keys[i].name;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+>  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
+>                              Error **errp)
+>  {
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index f5a6895a74..828ad9dedc 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -226,4 +226,15 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+>  FWCfgState *fw_cfg_find(void);
+>  bool fw_cfg_dma_enabled(void *opaque);
+> =20
+> +/**
+> + * fw_cfg_arch_key_name:
+> + *
+> + * @key: The uint16 selector key.
+> + *
+> + * Returns: The stringified architecture-specific name if the selector
+> + *          refers to a well-known numerically defined item, or NULL o=
+n
+> + *          key lookup failure.
+> + */
+> +const char *fw_cfg_arch_key_name(uint16_t key);
+> +
+>  #endif
+> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+> index 269dfa5832..73452ad265 100644
+> --- a/stubs/Makefile.objs
+> +++ b/stubs/Makefile.objs
+> @@ -39,3 +39,4 @@ stub-obj-y +=3D xen-hvm.o
+>  stub-obj-y +=3D pci-host-piix.o
+>  stub-obj-y +=3D ram-block.o
+>  stub-obj-y +=3D ramfb.o
+> +stub-obj-y +=3D fw_cfg.o
+> diff --git a/stubs/fw_cfg.c b/stubs/fw_cfg.c
+> new file mode 100644
+> index 0000000000..2b886c94d6
+> --- /dev/null
+> +++ b/stubs/fw_cfg.c
+> @@ -0,0 +1,19 @@
+> +/*
+> + * fw_cfg stubs
+> + *
+> + * Copyright (c) 2019 Red Hat, Inc.
+> + *
+> + * Author:
+> + *   Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +const char *fw_cfg_arch_key_name(uint16_t key)
+> +{
+> +    return NULL;
+> +}
+>=20
+

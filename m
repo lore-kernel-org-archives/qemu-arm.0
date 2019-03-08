@@ -1,86 +1,86 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8499657wrx;
-        Fri, 8 Mar 2019 07:26:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwSVzk5RbGASZxogcaDqgABQpOmB7OY321OAWPC2rniwzAseO+OjO2srmhEtnycNLJudySz
-X-Received: by 2002:a25:6601:: with SMTP id a1mr16948648ybc.467.1552058760381;
-        Fri, 08 Mar 2019 07:26:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552058760; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8526309wrx;
+        Fri, 8 Mar 2019 07:50:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxco4weleSaERIhOAVq6Lj3r5t0Y4ay0Havp+rD/rQ93Xx4OklF1zjYymyL5FffFVz+GiTs
+X-Received: by 2002:a81:5d82:: with SMTP id r124mr15689135ywb.109.1552060258576;
+        Fri, 08 Mar 2019 07:50:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552060258; cv=none;
         d=google.com; s=arc-20160816;
-        b=xaGbYIL3T2rp29rEiNXPhO3bmy1+UBb3SXAY7cttJSCs40VWgMo/0A2YN6MlSnHluF
-         2BAvV/qMMiWF+IG2bRagaNnmXYXg0nxpsBII2Xp0oyTX/lCJhXHPAPV9+/6h6xlHKDuf
-         MeffYG2Dk1uKGSMbWslZpqb9FAVtAkDxSa9332+v/Ps0Ap2oBsohbgnGA5aqn6s7NzoM
-         2lEGtDqWcKw1GV81DSFKQ/32ocNArITg55iLcLvIrP7Bzqoyq5DRC2r9ReE226R7yWGy
-         26KykOPnj/VNef1tLUZKzMmlHaW1VjLa1rjKtHvT/DwIBhseQGhnA5OQdsCtN4s39vIK
-         KAcQ==
+        b=RqJz+XdLLDHZ1Setk0xoJVUv9MDjpyYmzxtsYyMmpyysJMnrf9cCadbeCFvJJ5//3l
+         Bj4o138MT/aaaJpZ1giav9Jd7tqlcsncmnpGMp7ZQk29hUkiQ4zvNx0UfVu6oXEA5CQT
+         gDkPFj0GdR6oVaEkiej7PNJCWyPY/tBEUHJL8PGzbRLfX/SHoAyAz/O6qXTwJZTyfD4b
+         ETST8TQFFrgzpkUGimN9bqVQonVWMzrRXao/nsrx1dIV/Isy04DNT0ZxwyiHMN99xhSB
+         eoZyfxFLxwTwE7YPUp2uZDeAx00mQG6EcqZiN/HD89oYYeEwNakkiDg0TkJb2kZ+duph
+         sZSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=xWWONxBOofnTL94OapxO6v9DJi/UHDKP0Ul1sc0DXrM=;
-        b=iPfTA5+dcJ2FjJ5yu9cLbGsiMtmeH7IFDZNcs99QoG3hNwiBpw6WkN4qszk69AjgNo
-         tzGUz791xj+s3wiitZaHfir77IG+kcNLK7zkOML24hLRqtU9F2AHZS8AR5qu4owZnRGI
-         URBcr4N5hFwdJBHbA8BFSbzSvcxQ8Une+9D0w6useAobMXMQNDkw4l7JlFCiefkj0BcV
-         H4g70RffcDTfBwbXxiQbihF6XI8c2htHL58VtNOkL5WQqfHPU47Bj+xB1LdLo01hlUab
-         l2pn3CO4cMvTxWpcWpBkDjpcQP1X9pWzgmcq/hirdy3LewZy5drcSPjr38GIttGhpgid
-         SwsQ==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=HzUuIFeRwq07mbyUNodaOfSEiaiOkGx17Z7gwBfkSxo=;
+        b=RUGwxZRCKM2i8iARV67X76Vx+qipcqwBcXRUTadc6EF3uuRMVIEuvI6XZfnPzSmLY3
+         ZX0TvtCkW2aNqfLdXGfGikerpawFawgsiyZ8SqQlsPIPd2p4koDwSCdjLXd9a4yZOngM
+         9rYZ5w6IxTxw0RJts07APxZl7lIzekHsI5Z/xb5fjqQmRXbM3yeYwcyx6aeTFAik2pIi
+         dC+Lft/8E23zaLK3xt7DnX7xAvIXiOjXdgF/VsWdfBJ/OzWSR6VV/AS6acpxUt27B32e
+         wm/wFY1pAHHyrRD5URXPajcc4xGj1Kuzz4i1Vw4N/lEgNCB32eRvr4DU8OWM5JE5yqFm
+         iyWg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 126si4753217ybk.474.2019.03.08.07.26.00
+        by mx.google.com with ESMTPS id c7si4886857yba.176.2019.03.08.07.50.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 07:26:00 -0800 (PST)
+        Fri, 08 Mar 2019 07:50:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:45588 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:45928 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2HNn-0001LP-Nk
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 10:25:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39726)
+	id 1h2Hlx-0006Cx-SI
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 10:50:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h2HNV-0001GH-Et
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:25:43 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1h2HlL-0005tY-L6
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:50:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h2HNT-0003jP-QD
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:25:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37098)
+	(envelope-from <dgilbert@redhat.com>) id 1h2HlE-000155-UO
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:50:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56694)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1h2HNT-0003hK-GC; Fri, 08 Mar 2019 10:25:39 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1h2HlB-0000ct-AH; Fri, 08 Mar 2019 10:50:11 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A08CC883B8;
-	Fri,  8 Mar 2019 15:25:38 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 294115D786;
-	Fri,  8 Mar 2019 15:25:32 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
-	david@redhat.com, pbonzini@redhat.com, ehabkost@redhat.com,
-	richard.henderson@linaro.org, sbhat@linux.ibm.com, philmd@redhat.com
-Date: Fri,  8 Mar 2019 16:25:11 +0100
-Message-Id: <20190308152511.10882-3-eric.auger@redhat.com>
-In-Reply-To: <20190308152511.10882-1-eric.auger@redhat.com>
-References: <20190308152511.10882-1-eric.auger@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 20F55C07EFD8;
+	Fri,  8 Mar 2019 15:49:55 +0000 (UTC)
+Received: from work-vm (ovpn-117-233.ams2.redhat.com [10.36.117.233])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F419F2A2EE;
+	Fri,  8 Mar 2019 15:49:30 +0000 (UTC)
+Date: Fri, 8 Mar 2019 15:49:28 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190308154927.GA2834@work-vm>
+References: <20190308013222.12524-1-philmd@redhat.com>
+	<20190308013222.12524-15-philmd@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20190308013222.12524-15-philmd@redhat.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 08 Mar 2019 15:25:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Fri, 08 Mar 2019 15:49:55 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 2/2] machine: Move nvdimms state into struct
- MachineState
+Subject: Re: [Qemu-arm] [PATCH v2 14/18] hw/nvram/fw_cfg: Add HMP 'info
+ fw_cfg' command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,375 +92,283 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Laszlo Ersek <lersek@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gOiddQyrgBLV
+X-TUID: sPg97C1EpEus
 
-As NVDIMM support is looming for ARM and SPAPR, let's
-move the acpi_nvdimm_state to the generic machine struct
-instead of duplicating the same code in several machines.
-It is also renamed into nvdimms_state and becomes a pointer.
+* Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
+> When debugging a paravirtualized guest firmware, it results very
+> useful to dump the fw_cfg table.
+> Add a HMP command which displays the most useful fields.
+> We display each fw_cfg item data in hexadecimal (only the first 8
+> bytes):
+>=20
+> $ (echo info fw_cfg; echo q) | qemu-system-x86_64 -S -monitor stdio
+> (qemu) info fw_cfg
+> Selector  Well-Known Key  Pathname ArchSpec Perm   Size Order Hex Data
+>  0x0000   signature                          RO       4       51454d55
+>  0x0001   id                                 RO       4       03000000
+>  0x0002   uuid                               RO      16       000000000=
+0000000..
+>  0x0003   ram_size                           RO       8       000000080=
+0000000
+>  0x0004   nographic                          RO       2       0000
+>  0x0005   nb_cpus                            RO       2       0100
+>  0x000d   numa                               RO      16       000000000=
+0000000..
+>  0x000e   boot_menu                          RO       2       0000
+>  0x000f   max_cpus                           RO       2       0100
+>  0x0019   file_dir                           RO    2052       0000000b0=
+0000000..
+>  0x0021   file: etc/acpi/rsdp                RO      20  160  525344205=
+0545220..
+>  0x0022   file: etc/acpi/tables              RO  131072  130  464143534=
+0000000..
+>  0x0023   file: etc/boot-fail-wait           RO       4   15  ffffffff
+>  0x0024   file: etc/e820                     RO      20   40  000000000=
+0000000..
+>  0x0025   file: etc/smbios/smbios-anchor     RO      31   30  5f534d5f0=
+01f0208..
+>  0x0026   file: etc/smbios/smbios-tables     RO     321   20  011b00010=
+1020300..
+>  0x0027   file: etc/system-states            RO       6   90  800000818=
+280
+>  0x0028   file: etc/table-loader             RO    4096  140  010000006=
+574632f..
+>  0x002a   file: genroms/kvmvapic.bin         RO    9216   55  55aa12060=
+e0731c0..
+>  0x0002   irq0_override                   *  RO       4       01000000
+>  0x0003   e820_tables                     *  RO     324       000000000=
+0000000..
+>  0x0004   hpet                            *  RO     121       0101a2868=
+00000d0..
+> (qemu) q
+>=20
+> $ (echo info fw_cfg; echo q) | qemu-system-mips -S -monitor stdio
+> (qemu) info fw_cfg
+> This machine does not use fw_cfg
+> (qemu) q
+>=20
+> $ (echo info fw_cfg; echo q) | qemu-system-ppc -S -monitor stdio
+> (qemu) info fw_cfg
+> Selector  Well-Known Key  Pathname ArchSpec Perm   Size Order Hex Data
+>  0x0000   signature                          RO       4       51454d55
+>  0x0001   id                                 RO       4       01000000
+>  0x0002   uuid                               RO      16       000000000=
+0000000..
+>  0x0003   ram_size                           RO       8       000000080=
+0000000
+>  0x0004   nographic                          RO       2       0000
+>  0x0005   nb_cpus                            RO       2       0100
+>  0x0006   machine_id                         RO       2       0200
+>  0x0007   kernel_addr                        RO       4       00000000
+>  0x0008   kernel_size                        RO       4       00000000
+>  0x0009   kernel_cmdline                     RO       4       00000000
+>  0x000a   initrd_addr                        RO       4       00000000
+>  0x000b   initdr_size                        RO       4       00000000
+>  0x000c   boot_device                        RO       2       6300
+>  0x000e   boot_menu                          RO       2       0000
+>  0x000f   max_cpus                           RO       2       0100
+>  0x0019   file_dir                           RO    2052       000000020=
+0000000..
+>  0x0021   file: etc/boot-fail-wait           RO       4   15  ffffffff
+>  0x0000   width                           *  RO       2       2003
+>  0x0001   height                          *  RO       2       5802
+>  0x0002   depth                           *  RO       2       2000
+>  0x0003   tbfreq                          *  RO       4       c04bfd00
+>  0x0004   clockfreq                       *  RO       4       80d6da0f
+>  0x0005   is_kvm                          *  RO       4       00000000
+>  0x0009   busfreq                         *  RO       4       8014ef03
+> (qemu) q
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-nvdimm and nvdimm-persistence become generic machine options.
-They become guarded by a nvdimm_supported machine class member.
-We also add a description for those options.
+I think this is fine from an HMP view; one thought of something that
+might be useful is an optional parameter to specify a particular key
+that dumps the whole object; then if you're particularly desperate to
+look at an acpi table you could do something like:
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
+info fw_cfg "file: etc/acpi/tables"
 
----
-v2 -> v3
-- nvdimms_state becomes a pointer
-- add machine class nvdimm_supported
+and get a fun block of hex back.
 
-v1 -> v2:
-- s/acpi_nvdimm_state/nvdimms_state
-- remove ms->nvdimms_state.is_enabled initialization to false.
----
- hw/core/machine.c    | 65 ++++++++++++++++++++++++++++++++++++++++++++
- hw/i386/acpi-build.c |  6 ++--
- hw/i386/pc.c         | 57 ++++----------------------------------
- hw/i386/pc_piix.c    |  4 +--
- hw/i386/pc_q35.c     |  4 +--
- include/hw/boards.h  |  2 ++
- include/hw/i386/pc.h |  4 ---
- 7 files changed, 79 insertions(+), 63 deletions(-)
+But that's just a suggestion, so:
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 766ca5899d..29a33194a9 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -22,6 +22,7 @@
- #include "qemu/error-report.h"
- #include "sysemu/qtest.h"
- #include "hw/pci/pci.h"
-+#include "hw/mem/nvdimm.h"
-=20
- GlobalProperty hw_compat_3_1[] =3D {
-     { "pcie-root-port", "x-speed", "2_5" },
-@@ -481,6 +482,47 @@ static void machine_set_memory_encryption(Object *ob=
-j, const char *value,
-     ms->memory_encryption =3D g_strdup(value);
- }
-=20
-+static bool machine_get_nvdimm(Object *obj, Error **errp)
-+{
-+    MachineState *ms =3D MACHINE(obj);
-+
-+    return ms->nvdimms_state->is_enabled;
-+}
-+
-+static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
-+{
-+    MachineState *ms =3D MACHINE(obj);
-+
-+    ms->nvdimms_state->is_enabled =3D value;
-+}
-+
-+static char *machine_get_nvdimm_persistence(Object *obj, Error **errp)
-+{
-+    MachineState *ms =3D MACHINE(obj);
-+
-+    return g_strdup(ms->nvdimms_state->persistence_string);
-+}
-+
-+static void machine_set_nvdimm_persistence(Object *obj, const char *valu=
-e,
-+                                           Error **errp)
-+{
-+    MachineState *ms =3D MACHINE(obj);
-+    NVDIMMState *nvdimms_state =3D ms->nvdimms_state;
-+
-+    if (strcmp(value, "cpu") =3D=3D 0) {
-+        nvdimms_state->persistence =3D 3;
-+    } else if (strcmp(value, "mem-ctrl") =3D=3D 0) {
-+        nvdimms_state->persistence =3D 2;
-+    } else {
-+        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupported =
-option",
-+                   value);
-+        return;
-+    }
-+
-+    g_free(nvdimms_state->persistence_string);
-+    nvdimms_state->persistence_string =3D g_strdup(value);
-+}
-+
- void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char=
- *type)
- {
-     strList *item =3D g_new0(strList, 1);
-@@ -791,6 +833,28 @@ static void machine_initfn(Object *obj)
-     ms->mem_merge =3D true;
-     ms->enable_graphics =3D true;
-=20
-+    if (mc->nvdimm_supported) {
-+        ObjectClass *oc =3D OBJECT_CLASS(mc);
-+
-+        ms->nvdimms_state =3D g_new0(NVDIMMState, 1);
-+        object_class_property_add_bool(oc, "nvdimm",
-+                                       machine_get_nvdimm, machine_set_n=
-vdimm,
-+                                       &error_abort);
-+        object_class_property_set_description(oc, "nvdimm",
-+                                             "Set on/off to enable/disab=
-le "
-+                                             "NVDIMM instantiation", NUL=
-L);
-+
-+        object_class_property_add_str(oc, "nvdimm-persistence",
-+                                      machine_get_nvdimm_persistence,
-+                                      machine_set_nvdimm_persistence,
-+                                      &error_abort);
-+        object_class_property_set_description(oc, "nvdimm-persistence",
-+                                             "Set NVDIMM persistence"
-+                                             "Valid values are cpu, mem-=
-ctrl",
-+                                              NULL);
-+    }
-+
-+
-     /* Register notifier when init is done for sysbus sanity checks */
-     ms->sysbus_notifier.notify =3D machine_init_notify;
-     qemu_add_machine_init_done_notifier(&ms->sysbus_notifier);
-@@ -809,6 +873,7 @@ static void machine_finalize(Object *obj)
-     g_free(ms->dt_compatible);
-     g_free(ms->firmware);
-     g_free(ms->device_memory);
-+    g_free(ms->nvdimms_state);
- }
-=20
- bool machine_usb(MachineState *machine)
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 9ecc96dcc7..416da318ae 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-             aml_append(scope, method);
-         }
-=20
--        if (pcms->acpi_nvdimm_state.is_enabled) {
-+        if (machine->nvdimms_state->is_enabled) {
-             method =3D aml_method("_E04", 0, AML_NOTSERIALIZED);
-             aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
-                                           aml_int(0x80)));
-@@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
-te *machine)
-             build_dmar_q35(tables_blob, tables->linker);
-         }
-     }
--    if (pcms->acpi_nvdimm_state.is_enabled) {
-+    if (machine->nvdimms_state->is_enabled) {
-         nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
--                          &pcms->acpi_nvdimm_state, machine->ram_slots);
-+                          machine->nvdimms_state, machine->ram_slots);
-     }
-=20
-     /* Add tables supplied by user (if any) */
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 0338dbe9da..71385cfac9 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -2069,6 +2069,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotp=
-lug_dev, DeviceState *dev,
- {
-     const PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-     const PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
-+    const MachineState *ms =3D MACHINE(hotplug_dev);
-     const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
-M);
-     const uint64_t legacy_align =3D TARGET_PAGE_SIZE;
-=20
-@@ -2083,7 +2084,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotp=
-lug_dev, DeviceState *dev,
-         return;
-     }
-=20
--    if (is_nvdimm && !pcms->acpi_nvdimm_state.is_enabled) {
-+    if (is_nvdimm && !ms->nvdimms_state->is_enabled) {
-         error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M=
-'");
-         return;
-     }
-@@ -2097,6 +2098,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_=
-dev,
- {
-     Error *local_err =3D NULL;
-     PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-+    MachineState *ms =3D MACHINE(hotplug_dev);
-     bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-=20
-     pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
-@@ -2105,7 +2107,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_=
-dev,
-     }
-=20
-     if (is_nvdimm) {
--        nvdimm_plug(&pcms->acpi_nvdimm_state);
-+        nvdimm_plug(ms->nvdimms_state);
-     }
-=20
-     hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &error_ab=
-ort);
-@@ -2546,47 +2548,6 @@ static void pc_machine_set_smm(Object *obj, Visito=
-r *v, const char *name,
-     visit_type_OnOffAuto(v, name, &pcms->smm, errp);
- }
-=20
--static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
--{
--    PCMachineState *pcms =3D PC_MACHINE(obj);
--
--    return pcms->acpi_nvdimm_state.is_enabled;
--}
--
--static void pc_machine_set_nvdimm(Object *obj, bool value, Error **errp)
--{
--    PCMachineState *pcms =3D PC_MACHINE(obj);
--
--    pcms->acpi_nvdimm_state.is_enabled =3D value;
--}
--
--static char *pc_machine_get_nvdimm_persistence(Object *obj, Error **errp=
-)
--{
--    PCMachineState *pcms =3D PC_MACHINE(obj);
--
--    return g_strdup(pcms->acpi_nvdimm_state.persistence_string);
--}
--
--static void pc_machine_set_nvdimm_persistence(Object *obj, const char *v=
-alue,
--                                               Error **errp)
--{
--    PCMachineState *pcms =3D PC_MACHINE(obj);
--    NVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
--
--    if (strcmp(value, "cpu") =3D=3D 0)
--        nvdimm_state->persistence =3D 3;
--    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
--        nvdimm_state->persistence =3D 2;
--    else {
--        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupported =
-option",
--                   value);
--        return;
--    }
--
--    g_free(nvdimm_state->persistence_string);
--    nvdimm_state->persistence_string =3D g_strdup(value);
--}
--
- static bool pc_machine_get_smbus(Object *obj, Error **errp)
- {
-     PCMachineState *pcms =3D PC_MACHINE(obj);
-@@ -2636,8 +2597,6 @@ static void pc_machine_initfn(Object *obj)
-     pcms->max_ram_below_4g =3D 0; /* use default */
-     pcms->smm =3D ON_OFF_AUTO_AUTO;
-     pcms->vmport =3D ON_OFF_AUTO_AUTO;
--    /* nvdimm is disabled on default. */
--    pcms->acpi_nvdimm_state.is_enabled =3D false;
-     /* acpi build is enabled by default if machine supports it */
-     pcms->acpi_build_enabled =3D PC_MACHINE_GET_CLASS(pcms)->has_acpi_bu=
-ild;
-     pcms->smbus_enabled =3D true;
-@@ -2774,6 +2733,7 @@ static void pc_machine_class_init(ObjectClass *oc, =
-void *data)
-     hc->unplug =3D pc_machine_device_unplug_cb;
-     nc->nmi_monitor_handler =3D x86_nmi;
-     mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
-+    mc->nvdimm_supported =3D true;
-=20
-     object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
-         pc_machine_get_device_memory_region_size, NULL,
-@@ -2798,13 +2758,6 @@ static void pc_machine_class_init(ObjectClass *oc,=
- void *data)
-     object_class_property_set_description(oc, PC_MACHINE_VMPORT,
-         "Enable vmport (pc & q35)", &error_abort);
-=20
--    object_class_property_add_bool(oc, PC_MACHINE_NVDIMM,
--        pc_machine_get_nvdimm, pc_machine_set_nvdimm, &error_abort);
--
--    object_class_property_add_str(oc, PC_MACHINE_NVDIMM_PERSIST,
--        pc_machine_get_nvdimm_persistence,
--        pc_machine_set_nvdimm_persistence, &error_abort);
--
-     object_class_property_add_bool(oc, PC_MACHINE_SMBUS,
-         pc_machine_get_smbus, pc_machine_set_smbus, &error_abort);
-=20
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 8770ecada9..8ad8e885c6 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
-                                  PC_MACHINE_ACPI_DEVICE_PROP, &error_abo=
-rt);
-     }
-=20
--    if (pcms->acpi_nvdimm_state.is_enabled) {
--        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-+    if (machine->nvdimms_state->is_enabled) {
-+        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
-                                pcms->fw_cfg, OBJECT(pcms));
-     }
- }
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index cfb9043e12..372c6b73be 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
-     pc_vga_init(isa_bus, host_bus);
-     pc_nic_init(pcmc, isa_bus, host_bus);
-=20
--    if (pcms->acpi_nvdimm_state.is_enabled) {
--        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-+    if (machine->nvdimms_state->is_enabled) {
-+        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
-                                pcms->fw_cfg, OBJECT(pcms));
-     }
- }
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 9690c71a6d..e231860666 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -210,6 +210,7 @@ struct MachineClass {
-                                  int nb_nodes, ram_addr_t size);
-     bool ignore_boot_device_suffixes;
-     bool smbus_no_migration_support;
-+    bool nvdimm_supported;
-=20
-     HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
-                                            DeviceState *dev);
-@@ -272,6 +273,7 @@ struct MachineState {
-     const char *cpu_type;
-     AccelState *accelerator;
-     CPUArchIdList *possible_cpus;
-+    struct NVDIMMState *nvdimms_state;
- };
-=20
- #define DEFINE_MACHINE(namestr, machine_initfn) \
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 94fb620d65..263a6343ff 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -45,8 +45,6 @@ struct PCMachineState {
-     OnOffAuto vmport;
-     OnOffAuto smm;
-=20
--    NVDIMMState acpi_nvdimm_state;
--
-     bool acpi_build_enabled;
-     bool smbus_enabled;
-     bool sata_enabled;
-@@ -74,8 +72,6 @@ struct PCMachineState {
- #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
- #define PC_MACHINE_VMPORT           "vmport"
- #define PC_MACHINE_SMM              "smm"
--#define PC_MACHINE_NVDIMM           "nvdimm"
--#define PC_MACHINE_NVDIMM_PERSIST   "nvdimm-persistence"
- #define PC_MACHINE_SMBUS            "smbus"
- #define PC_MACHINE_SATA             "sata"
- #define PC_MACHINE_PIT              "pit"
---=20
-2.20.1
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
+> ---
+> v2: Check fw_cfg !=3D NULL (Michael)
+>     Rename keys, display data in hexa (Laszlo)
+> ---
+>  hmp-commands-info.hx      | 17 ++++++++++
+>  hw/nvram/fw_cfg.c         | 71 ++++++++++++++++++++++++++++++++++++++-
+>  include/hw/nvram/fw_cfg.h |  2 ++
+>  3 files changed, 89 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
+> index cbee8b944d..2c9538c8da 100644
+> --- a/hmp-commands-info.hx
+> +++ b/hmp-commands-info.hx
+> @@ -916,6 +916,23 @@ STEXI
+>  @item info sev
+>  @findex info sev
+>  Show SEV information.
+> +ETEXI
+> +
+> +    {
+> +        .name       =3D "fw_cfg",
+> +        .args_type  =3D "",
+> +        .params     =3D "",
+> +        .help       =3D "Display the table firmware configuration entr=
+ies "
+> +                      "registered by a paravirtualized machine. Helpfu=
+l "
+> +                      "when debugging guest firmwares.",
+> +        .cmd        =3D hmp_info_fw_cfg,
+> +    },
+> +
+> +STEXI
+> +@item info fw_cfg
+> +@findex info fw_cfg
+> +Display the table firmware configuration entries registered by a parav=
+irtualized
+> +machine. This information is useful when debugging guest firmwares.
+>  ETEXI
+> =20
+>  STEXI
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 2a8d69ba07..4c82dcc125 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -35,6 +35,7 @@
+>  #include "qemu/config-file.h"
+>  #include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> +#include "monitor/monitor.h"
+>  #include "qapi/qapi-commands-misc.h"
+> =20
+>  #define FW_CFG_FILE_SLOTS_DFLT 0x20
+> @@ -1273,7 +1274,18 @@ static FirmwareConfigurationItem *create_qmp_fw_=
+cfg_item(FWCfgState *s,
+>      return item;
+>  }
+> =20
+> -FirmwareConfigurationItemList *qmp_query_fw_cfg_items(Error **errp)
+> +/**
+> + * query_fw_cfg_items:
+> + *
+> + * @use_hexdump: Whether to populate the @data field with the hexadeci=
+mal
+> + *               representation of the item data.
+> + * @errp: Pointer to a NULL initialized error object.
+> + *
+> + * Returns: A list of @FirmwareConfigurationItem, reverse sorted by th=
+e
+> + *          item selector key.
+> + */
+> +static FirmwareConfigurationItemList *query_fw_cfg_items(bool use_hexd=
+ump,
+> +                                                         Error **errp)
+>  {
+>      FirmwareConfigurationItemList *item_list =3D NULL;
+>      uint32_t max_entries;
+> @@ -1294,6 +1306,9 @@ FirmwareConfigurationItemList *qmp_query_fw_cfg_i=
+tems(Error **errp)
+>              if (!e->len) {
+>                  continue;
+>              }
+> +            if (use_hexdump) {
+> +                qmp_hex_length =3D MIN(e->len, 8);
+> +            }
+> =20
+>              info =3D g_malloc0(sizeof(*info));
+>              info->value =3D create_qmp_fw_cfg_item(s, e, arch, key,
+> @@ -1305,3 +1320,57 @@ FirmwareConfigurationItemList *qmp_query_fw_cfg_=
+items(Error **errp)
+> =20
+>      return item_list;
+>  }
+> +
+> +FirmwareConfigurationItemList *qmp_query_fw_cfg_items(Error **errp)
+> +{
+> +    return query_fw_cfg_items(false, errp);
+> +}
+> +
+> +void hmp_info_fw_cfg(Monitor *mon, const QDict *qdict)
+> +{
+> +    FirmwareConfigurationItemList *item_list, *method;
+> +    Error *err =3D NULL;
+> +
+> +    item_list =3D query_fw_cfg_items(true, &err);
+> +    if (!item_list) {
+> +        monitor_printf(mon, "This machine does not use fw_cfg\n");
+> +        return;
+> +    }
+> +    if (err) {
+> +        monitor_printf(mon, "Could not query fw_cfg entries: %s\n",
+> +                       error_get_pretty(err));
+> +        error_free(err);
+> +        return;
+> +    }
+> +
+> +    monitor_printf(mon, "Selector  Well-Known Key  Pathname"
+> +                        " ArchSpec Perm   Size Order Hex Data\n");
+> +    for (method =3D item_list; method; method =3D method->next) {
+> +        if (method->value->has_path) {
+> +            monitor_printf(mon,
+> +                           " 0x%04x   file: %-28s %2s %7" PRId64
+> +                           "  %3" PRId64 "  %-16s%s\n",
+> +                           method->value->key,
+> +                           method->value->path,
+> +                           method->value->writeable ? "RW" : "RO",
+> +                           method->value->size,
+> +                           method->value->order,
+> +                           method->value->data,
+> +                           method->value->size > 8 ? ".." : "");
+> +        } else {
+> +            monitor_printf(mon,
+> +                           " 0x%04x   %-30s  %c  %2s %7" PRId64
+> +                           "       %-16s%s\n",
+> +                           method->value->key,
+> +                           method->value->has_keyname
+> +                                ? method->value->keyname : "",
+> +                           method->value->architecture_specific ? '*' =
+: ' ',
+> +                           method->value->writeable ? "RW" : "RO",
+> +                           method->value->size,
+> +                           method->value->data,
+> +                           method->value->size > 8 ? ".." : "");
+> +       }
+> +    }
+> +
+> +    qapi_free_FirmwareConfigurationItemList(item_list);
+> +}
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index 83a0540b6c..5ac9adfe1f 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -243,4 +243,6 @@ bool fw_cfg_dma_enabled(void *opaque);
+>   */
+>  const char *fw_cfg_arch_key_name(uint16_t key);
+> =20
+> +void hmp_info_fw_cfg(Monitor *mon, const QDict *qdict);
+> +
+>  #endif
+> --=20
+> 2.20.1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

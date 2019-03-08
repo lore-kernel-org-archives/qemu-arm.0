@@ -1,90 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8546940wrx;
-        Fri, 8 Mar 2019 08:09:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxxl9I2r8jK5BP5ozFuVrfQrTe23JVlKgANErQnrTlXGrwNtqR5fycUhEzfjck2vCkzPcwB
-X-Received: by 2002:a81:1d58:: with SMTP id d85mr15280118ywd.286.1552061381335;
-        Fri, 08 Mar 2019 08:09:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552061381; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8552036wrx;
+        Fri, 8 Mar 2019 08:14:07 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzeGO+5oMbAoAOHnIAT59+DDVZTY0Gb6tOxpUBQqV4JhcNpaoIjURPwi0sDxuLhrrY6SUrc
+X-Received: by 2002:a25:3342:: with SMTP id z63mr3352278ybz.227.1552061647664;
+        Fri, 08 Mar 2019 08:14:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552061647; cv=none;
         d=google.com; s=arc-20160816;
-        b=x7pwr5iPWxf8OuDy94H8P4ZGBouitEy3m+Uf51tzkauIOsm28w6zPEfJH052nPOrVk
-         unuTWuxi4nBFRnRWQQXKYDsTBGaD2Ng4WogODiIlQ4AOnuFgluTzIE9/WY+/aJKbBx27
-         HO65ARZS5qXJpeD9KbvIz40BUL+8QJo3ECEr9ThzdltJv175lKT0oB+F5+pEb6J6aAvy
-         URBHypMNWHudQdm5wbetY8wbszF4aoxt0XUuX1Ri92b7HXp+gqmrJYhqxbIKairYahIN
-         mmABNacAyFFXov+khYFa1Qajm/EbAYqJifM3vcBmvuhL6estBE3IrbJ6VEnapaNSAKTo
-         C/TA==
+        b=x2Sqtg25ctXeislAB8obx8pRUMvn/sCNYFi3PAtgQRnC1fXr4fwvD6lQeGOSJQozmf
+         GUs3XzJkwlELHFWs/15D4qVe9nNk7C7VCjq0VfSrqvSHcfriAjgHkZRoPhhi25bRafEk
+         7XuPYmfDS8+Tp7AVrl4lpsc/E5/qi16jU3/gdc8n1alFF8bqyikPUj8hVpS+ZuR5xAV2
+         lJD7Rkkd57zYXNr576YA+lcwlHogPF8So1GnmhIa5rHScrhUmc4F9WVjMfPHjVxqUvjh
+         alKf+XMuhogn4KkgiXGJq8iIsLFHNCko76VcylkqXp7cDHZxcGpWLBuNcZNHNr1jrF9Q
+         G0aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=g/2K2feYYuOETQ0Y8h7U7aglU52yrHKIn1LihkDAQFs=;
-        b=nZAhi3Ai/QGPt20SAGD5sOgqVXylBGHbQpKwfVnjHTWwYLgLMU2FTFddN2yJpBQJu5
-         Ke7Bq9cIq5/drjVGzQGgOFAyBjFEpgGZXYmWMu1ztvTUHh86CA2OaUJMPXKMLbIasDls
-         mDjyQYB1ZIccaKcOhGTKEKfd1ImUL4/cQTUFLmZ12nc7MqZaMoYdl8JO7WJQHn0iOkw8
-         au1p1riFiClsHVPJFiqC/4gXDnJgj0cTzxUZOg9Xz+997q0/V6MZp3BCsOVLCD2g0b7s
-         rzHslzUl/4vdMz4q0AvnPRr++OatFzh49JE5p2MGyzW/utNJDPLBNPw8sl2xd3R8inVV
-         9qpg==
+        bh=x7xSItSa+NtSEytI8Z//Ko2Noa5wqlN647coNbNpjWI=;
+        b=L4Hm3XcpkYwc8jYqSySoZMsi2DHlAp2/0jsS16eahevgzlWR/hm35SS8zfnFZUB9a9
+         LlT3mRc9G66tfFb1Mn5Q6p51+G+XAUhuNqMDCi8agX+7aKSOaNcZthavGxS2dpAthPZ+
+         mSFT+Tl44ZrVwRsDOpfrjaH4f8XfCooMr95pkXH/AsHhaZnVXVPQfSELrFfY3SmaN7k1
+         26GGeb6yEZfqQbyCNlsCB8AuKuVQtY67OInHtejUusEIrEUS8NBqzKQZw4qqNBXyZ7Oj
+         0hFUC3WYNjZzqIIAszeWi69HmzCnzH4D/0al/3P4TZs0y31tNqypveK+GFHxCapo17Lb
+         AWFA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15si4623561ywa.49.2019.03.08.08.09.41
+        by mx.google.com with ESMTPS id k68si4751491ywa.135.2019.03.08.08.14.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 08:09:41 -0800 (PST)
+        Fri, 08 Mar 2019 08:14:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46179 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:46253 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2I44-0006vW-Qn
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 11:09:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49393)
+	id 1h2I8N-0001An-3r
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 11:14:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50457)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h2I3w-0006vN-Gq
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 11:09:33 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h2I89-00019c-3x
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 11:13:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1h2I3v-0000FY-If
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 11:09:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:54598)
+	(envelope-from <eric.auger@redhat.com>) id 1h2I88-0003Oq-8O
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 11:13:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33878)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1h2I3u-0000Dw-45; Fri, 08 Mar 2019 11:09:30 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1h2I87-0003NF-Uc; Fri, 08 Mar 2019 11:13:52 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 55E2E318A61F;
-	Fri,  8 Mar 2019 16:09:28 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 123D5A77F;
+	Fri,  8 Mar 2019 16:13:51 +0000 (UTC)
 Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D02595D9C5;
-	Fri,  8 Mar 2019 16:09:23 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 19B181001DCC;
+	Fri,  8 Mar 2019 16:13:46 +0000 (UTC)
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org, imammedo@redhat.com,
 	peter.maydell@linaro.org, shannon.zhaosl@gmail.com, sameo@linux.intel.com, 
 	sebastien.boeuf@intel.com
 References: <20190308114218.26692-1-shameerali.kolothum.thodi@huawei.com>
-	<20190308114218.26692-2-shameerali.kolothum.thodi@huawei.com>
+	<20190308114218.26692-3-shameerali.kolothum.thodi@huawei.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <7490ad1c-d4a6-ad5b-ebbf-c27a674d9629@redhat.com>
-Date: Fri, 8 Mar 2019 17:09:18 +0100
+Message-ID: <e2e5a025-34bb-7a34-80c7-99d8cef37f2c@redhat.com>
+Date: Fri, 8 Mar 2019 17:13:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190308114218.26692-2-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20190308114218.26692-3-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Fri, 08 Mar 2019 16:09:28 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 08 Mar 2019 16:13:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 01/11] hw/acpi: Move constant definitions
- to header files
+Subject: Re: [Qemu-arm] [PATCH v2 02/11] hw/acpi: Make ACPI IO address space
+ configurable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,111 +99,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: linuxarm@huawei.com, xuwei5@hisilicon.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vZiZfl0vc7Xj
+X-TUID: bZ/zhOSU3rQa
 
 Hi,
 
 On 3/8/19 12:42 PM, Shameer Kolothum wrote:
-> From: Sebastien Boeuf <sebastien.boeuf@intel.com>
+> This is in preparation for adding support for ARM64 platforms
+> where it doesn't use port mapped IO for ACPI IO space.
 > 
-> By moving the definition of memory hotplug related constants used
-> by ACPI for both CPU and memory, this commits allows those to be
-> used from  other parts of the code.
-
-Maybe elaborate on where you intend to use them.
-
-> 
-> Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/acpi/memory_hotplug.c         | 26 --------------------------
->  include/hw/acpi/memory_hotplug.h | 26 ++++++++++++++++++++++++++
->  2 files changed, 26 insertions(+), 26 deletions(-)
-> 
-> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
-> index 921cad2..a6beb10 100644
-> --- a/hw/acpi/memory_hotplug.c
-> +++ b/hw/acpi/memory_hotplug.c
-> @@ -8,32 +8,6 @@
->  #include "qapi/error.h"
->  #include "qapi/qapi-events-misc.h"
->  
-> -#define MEMORY_SLOTS_NUMBER          "MDNR"
-> -#define MEMORY_HOTPLUG_IO_REGION     "HPMR"
-> -#define MEMORY_SLOT_ADDR_LOW         "MRBL"
-> -#define MEMORY_SLOT_ADDR_HIGH        "MRBH"
-> -#define MEMORY_SLOT_SIZE_LOW         "MRLL"
-> -#define MEMORY_SLOT_SIZE_HIGH        "MRLH"
-> -#define MEMORY_SLOT_PROXIMITY        "MPX"
-> -#define MEMORY_SLOT_ENABLED          "MES"
-> -#define MEMORY_SLOT_INSERT_EVENT     "MINS"
-> -#define MEMORY_SLOT_REMOVE_EVENT     "MRMV"
-> -#define MEMORY_SLOT_EJECT            "MEJ"
-> -#define MEMORY_SLOT_SLECTOR          "MSEL"
-> -#define MEMORY_SLOT_OST_EVENT        "MOEV"
-> -#define MEMORY_SLOT_OST_STATUS       "MOSC"
-> -#define MEMORY_SLOT_LOCK             "MLCK"
-> -#define MEMORY_SLOT_STATUS_METHOD    "MRST"
-> -#define MEMORY_SLOT_CRS_METHOD       "MCRS"
-> -#define MEMORY_SLOT_OST_METHOD       "MOST"
-> -#define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
-> -#define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
-> -#define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
-> -#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
-> -#define MEMORY_HOTPLUG_DEVICE        "MHPD"
-> -#define MEMORY_HOTPLUG_IO_LEN         24
-> -#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
-
-Do we really need to expose all of them. I just can see
-MEMORY_SLOT_SCAN_METHOD used in hw/acpi/ged.c? Maybe I missed some though?
-
-Also at the beginning I tried to find some specification details for
-those stuff but I failed. It would be helpful for a non specialist
-reader to add a comment that helps to understand what is part of a
-specification (link?) and what is arbitrarily defined.
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Thanks
 
 Eric
-> -
->  static uint16_t memhp_io_base;
+> ---
+>  hw/acpi/memory_hotplug.c         | 22 ++++++++++++++--------
+>  hw/i386/acpi-build.c             |  3 ++-
+>  include/hw/acpi/memory_hotplug.h |  5 +++--
+>  3 files changed, 19 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+> index a6beb10..77ff0af 100644
+> --- a/hw/acpi/memory_hotplug.c
+> +++ b/hw/acpi/memory_hotplug.c
+> @@ -8,7 +8,7 @@
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-events-misc.h"
+>  
+> -static uint16_t memhp_io_base;
+> +static hwaddr memhp_io_base;
 >  
 >  static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
+>  {
+> @@ -182,7 +182,7 @@ static const MemoryRegionOps acpi_memory_hotplug_ops = {
+>  };
+>  
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t io_base)
+> +                              MemHotplugState *state, hwaddr io_base)
+>  {
+>      MachineState *machine = MACHINE(qdev_get_machine());
+>  
+> @@ -315,7 +315,8 @@ const VMStateDescription vmstate_memory_hotplug = {
+>  
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method)
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs)
+>  {
+>      int i;
+>      Aml *ifctx;
+> @@ -338,14 +339,19 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>              aml_name_decl("_UID", aml_string("Memory hotplug resources")));
+>  
+>          crs = aml_resource_template();
+> -        aml_append(crs,
+> -            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+> -                   MEMORY_HOTPLUG_IO_LEN)
+> -        );
+> +        if (rs == AML_SYSTEM_IO) {
+> +            aml_append(crs,
+> +                aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+> +                       MEMORY_HOTPLUG_IO_LEN)
+> +            );
+> +        } else {
+> +            aml_append(crs, aml_memory32_fixed(memhp_io_base,
+> +                            MEMORY_HOTPLUG_IO_LEN, AML_READ_WRITE));
+> +        }
+>          aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
+>  
+>          aml_append(mem_ctrl_dev, aml_operation_region(
+> -            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
+> +            MEMORY_HOTPLUG_IO_REGION, rs,
+>              aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
+>          );
+>  
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 622ccb9..d9b554f 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1852,7 +1852,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+>                         "\\_SB.PCI0", "\\_GPE._E02");
+>      }
+> -    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0", "\\_GPE._E03");
+> +    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
+> +                             "\\_GPE._E03", AML_SYSTEM_IO);
+>  
+>      scope =  aml_scope("_GPE");
+>      {
 > diff --git a/include/hw/acpi/memory_hotplug.h b/include/hw/acpi/memory_hotplug.h
-> index 77c6576..fbfcbe6 100644
+> index fbfcbe6..52f9027 100644
 > --- a/include/hw/acpi/memory_hotplug.h
 > +++ b/include/hw/acpi/memory_hotplug.h
-> @@ -5,6 +5,32 @@
->  #include "hw/acpi/acpi.h"
->  #include "hw/acpi/aml-build.h"
+> @@ -55,7 +55,7 @@ typedef struct MemHotplugState {
+>  } MemHotplugState;
 >  
-> +#define MEMORY_SLOTS_NUMBER          "MDNR"
-> +#define MEMORY_HOTPLUG_IO_REGION     "HPMR"
-> +#define MEMORY_SLOT_ADDR_LOW         "MRBL"
-> +#define MEMORY_SLOT_ADDR_HIGH        "MRBH"
-> +#define MEMORY_SLOT_SIZE_LOW         "MRLL"
-> +#define MEMORY_SLOT_SIZE_HIGH        "MRLH"
-> +#define MEMORY_SLOT_PROXIMITY        "MPX"
-> +#define MEMORY_SLOT_ENABLED          "MES"
-> +#define MEMORY_SLOT_INSERT_EVENT     "MINS"
-> +#define MEMORY_SLOT_REMOVE_EVENT     "MRMV"
-> +#define MEMORY_SLOT_EJECT            "MEJ"
-> +#define MEMORY_SLOT_SLECTOR          "MSEL"
-> +#define MEMORY_SLOT_OST_EVENT        "MOEV"
-> +#define MEMORY_SLOT_OST_STATUS       "MOSC"
-> +#define MEMORY_SLOT_LOCK             "MLCK"
-> +#define MEMORY_SLOT_STATUS_METHOD    "MRST"
-> +#define MEMORY_SLOT_CRS_METHOD       "MCRS"
-> +#define MEMORY_SLOT_OST_METHOD       "MOST"
-> +#define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
-> +#define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
-> +#define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
-> +#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
-> +#define MEMORY_HOTPLUG_DEVICE        "MHPD"
-> +#define MEMORY_HOTPLUG_IO_LEN         24
-> +#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
-> +
->  /**
->   * MemStatus:
->   * @is_removing: the memory device in slot has been requested to be ejected.
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t io_base);
+> +                              MemHotplugState *state, hwaddr io_base);
+>  
+>  void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
+>                           DeviceState *dev, Error **errp);
+> @@ -74,5 +74,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st, ACPIOSTInfoList ***list);
+>  
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method);
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs);
+>  #endif
 > 

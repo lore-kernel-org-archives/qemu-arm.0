@@ -1,89 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8174524wrx;
-        Fri, 8 Mar 2019 02:04:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxYfL1AVyVqi50elZdjmYgYCKshfdWhTvaYBkfNaddaRKhY7oPWfwHDntn1iBjTmCZMNhRU
-X-Received: by 2002:a25:2cc1:: with SMTP id s184mr15628033ybs.9.1552039441645;
-        Fri, 08 Mar 2019 02:04:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552039441; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8176980wrx;
+        Fri, 8 Mar 2019 02:06:10 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzT3vMknVWM+0EIQOT1qqeTwrPPSpwy2jaGuzPU1KDcNyfJQ6cfVoiqrVMLoY/MgV8mCAwk
+X-Received: by 2002:a81:3657:: with SMTP id d84mr13779759ywa.53.1552039570608;
+        Fri, 08 Mar 2019 02:06:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552039570; cv=none;
         d=google.com; s=arc-20160816;
-        b=xU2EvDne8vjryzT3DCoB5+WRFq8q02DU8D5kL7BSenvsDxrSbhUwxSnMgYH+seYama
-         XP56B21xV+oed4nzSaEHtXtq+leeZnhrW9V72kr4QItbedH/yGwptsBERiMpk2IbUAJm
-         oIuZchfTO3kdkj4hpmubXlkCGwNIfIQH7OmOWxQRRDrWtai++ySb6vDWsgMNmeRBNbVx
-         L+tLXb/w6sgvI4ID1v/Tdcs46FNbRzlYmvoqW7b6QeCKNPcoqePBSfOkIp8wg3OvnlBZ
-         vj0oSkg4xrv+qMac90JOw8JOA6Z826CsskVLoHQ2WTsDlhZNnQoXw01m3a6JDNnME1pf
-         Hh0Q==
+        b=loCkd65m1QknyYyXuLkyfA0ak1O3vZR4F8GTlYsJFxo44WKQpuphuz6RLvFwpWXPRr
+         Py3SaOfZ9kPM6IXnDfLOVFQJ6Ijq/RNmu1xYhiwKsIEtN1DG4+u4I93Q7RiAZP6iJg7n
+         Q51bIVbR7iWVQn/38fJPL/wWxpZ7Dhz3apLFwILzPPrla4CxY/KWca9uBLj+DxVm3cN8
+         /I+neGi5lPjJIEAeejIXbD/Pl0eDCNnTUEDfKCR69cHy9xtjrPkiQPYTMODyGuuj/U65
+         woPUAbLcEauEs5qkTj0Oslp7aRRTpRuOBfeBo3rKzf0BBUXCz9FYL4+o/ELARvKn5Px/
+         ShZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=1EnrEAZcFNsWLJJZcqv777qxswhAfnf6RJbth7kzU48=;
-        b=G6VNgKVmsSXOr/a326obuGFv7trdyWlUG/xIS1I0L1S8zgg2tqF6t4kRGRXTNj4DIE
-         GZ83gBsVejXijK+yoyhEjfjnngUBEImvHp8rvoSQYraqK19+QrfJJuSIeeINrK2iHqrJ
-         XAYnY/vA/VihtdYjodvg6x/NC15Terd22pvRmj58LkVtzdm5aH7iyvmXSkctor8vgo5z
-         U4nDrmyAkakduLjL6hb3RXLcw8BZYg9sUwBcO7LUoObyMt5DJoMqyLsgoA5vqyJEIDq4
-         /ESNeSM93QoQ2XQVVpDjYSvw0Rqh1PZMg/ZaejM8MZLSUqHH8x92PseWAf7cwcm7Hh3G
-         Jmlw==
+        bh=TYt7wk8o6Lhe9EVS8X7ZciCrYDsGtUqnBwiBKopGYBM=;
+        b=M+adLl+zg4wTS+CfYt9v5KQcypntRer27WCq6w2ocvxGXjf10pMdBaX7M9MzShwF2p
+         mG6sLa2u/qr7dslxQtSuDiVFtmwkhVLi/55UhR32mtudKZQiJ4Vjqz6scXZTh+pxnr/L
+         i8OCochXU6IFxKFlKNwabo7SYKMFxcHpTxXPgybEuglsprHR2OFUemQrnCKeaTPJoqeN
+         /72s61V3eWdpAZp2djTw/EwKDqnTuQNuwwsX1Ptu2IrqqFkFTYDvHfeM3EhN6MlD1qM4
+         /o2StbF7S3lV9qfTBxKsIhkB+SSW9pxo6WS7jn5VA8P+8DpRn4Q0K7+TbP6OOkGLhzyd
+         37gg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t141si4614173ywe.21.2019.03.08.02.04.01
+        by mx.google.com with ESMTPS id 22si4335050ywh.146.2019.03.08.02.06.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 02:04:01 -0800 (PST)
+        Fri, 08 Mar 2019 02:06:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40195 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40268 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2CMD-0008Sc-43
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:04:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46417)
+	id 1h2COH-0001hs-W4
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 05:06:10 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48794)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2CG5-0003Pd-R1
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 04:57:43 -0500
+	(envelope-from <lersek@redhat.com>) id 1h2CO2-0001gS-DC
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:05:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h2CG3-0000Ub-W8
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 04:57:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45950)
+	(envelope-from <lersek@redhat.com>) id 1h2CO1-0007Im-Jo
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 05:05:54 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48904)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1h2CG3-0000TK-Mi; Fri, 08 Mar 2019 04:57:39 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1h2CO1-0007I2-BJ; Fri, 08 Mar 2019 05:05:53 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A376381F19;
-	Fri,  8 Mar 2019 09:57:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 756127E441;
+	Fri,  8 Mar 2019 10:05:52 +0000 (UTC)
 Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-151.rdu2.redhat.com
 	[10.10.120.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 786071A92E;
-	Fri,  8 Mar 2019 09:57:27 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2BD961001E77;
+	Fri,  8 Mar 2019 10:05:37 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
 	qemu-devel@nongnu.org
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-5-philmd@redhat.com>
+	<20190308013222.12524-7-philmd@redhat.com>
 From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <599de4a4-9754-5e93-17df-9f3bffc366e8@redhat.com>
-Date: Fri, 8 Mar 2019 10:57:21 +0100
+Message-ID: <eb5b1516-9dca-e9bc-4a2b-d5573c14146f@redhat.com>
+Date: Fri, 8 Mar 2019 11:05:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190308013222.12524-5-philmd@redhat.com>
+In-Reply-To: <20190308013222.12524-7-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.27]);
-	Fri, 08 Mar 2019 09:57:38 +0000 (UTC)
+	Fri, 08 Mar 2019 10:05:52 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 04/18] hw/nvram/fw_cfg: Add trace events
+Subject: Re: [Qemu-arm] [PATCH v2 06/18] hw/nvram/fw_cfg: Remove the
+ unnecessary boot_splash_filedata_size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,422 +108,77 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HYbcJ3KSA23n
-
-Hi Phil,
+X-TUID: 6bAytkxdmCks
 
 On 03/08/19 02:32, Philippe Mathieu-Daud=C3=A9 wrote:
-> Add fw_cfg_arch_key_name() to be able to resolve architecture
-> specific keys. All architectures do have specific keys, thus
-> implement this function. Architectures that don't use the fw_cfg
-> device don't have to implement this function, however to ease
-> the Makefile rules and satisfy the linking, we provide a stub.
->=20
-> Now than we can resolve keys into "well know numeric", add
-> trace events to display more information when keys are added
-> (and dump the key content when possible).
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: Added fw_cfg_arch_key_name() -> reset R-b
-> ---
+> The 'boot_splash_filedata_size' was introduced as a global variable
+> in 3d3b8303c6f. This variable is used as a 'size' argument to the
+> fw_cfg_add_file(). This function has an interface contract with his
 
-This is not a small patch, and Michael and I reviewed v1 three months ago=
-:
+s/with his/on its/
 
-https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01616.html
-https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01947.html
+With that update:
 
-I'm not keen on re-reviewing the patch from zero (after three months)
-just because of fw_cfg_arch_key_name().
-
-Is it possible to split fw_cfg_arch_key_name() to a separate patch first
-(which we could review in isolation -- it affects multiple arches), and
-rebase the original (v1) patch to it, with minimal updates (keeping the
-R-b's, or at least pointing out the minimal change for incremental review=
-)?
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
 Thanks
 Laszlo
 
->  MAINTAINERS               |  1 +
->  hw/i386/pc.c              | 21 +++++++++++++
->  hw/nvram/fw_cfg.c         | 63 ++++++++++++++++++++++++++++++++++++++-
->  hw/nvram/trace-events     |  7 ++++-
->  hw/ppc/Makefile.objs      |  2 +-
->  hw/ppc/fw_cfg.c           | 31 +++++++++++++++++++
->  hw/sparc/sun4m.c          | 19 ++++++++++++
->  hw/sparc64/sun4u.c        | 19 ++++++++++++
->  include/hw/nvram/fw_cfg.h | 11 +++++++
->  stubs/Makefile.objs       |  1 +
->  stubs/fw_cfg.c            | 19 ++++++++++++
->  11 files changed, 191 insertions(+), 3 deletions(-)
->  create mode 100644 hw/ppc/fw_cfg.c
->  create mode 100644 stubs/fw_cfg.c
+> 'data' argument, but there is no such contract for 'size' (this is
+> not a referenced pointer).  We can simply remove it.
 >=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 074ad46d47..306fc2aefa 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1659,6 +1659,7 @@ R: Gerd Hoffmann <kraxel@redhat.com>
->  S: Supported
->  F: docs/specs/fw_cfg.txt
->  F: hw/nvram/fw_cfg.c
-> +F: stubs/fw_cfg.c
->  F: include/hw/nvram/fw_cfg.h
->  F: include/standard-headers/linux/qemu_fw_cfg.h
->  F: tests/libqos/fw_cfg.c
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 42128183e9..0848cdc18f 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -349,6 +349,27 @@ GlobalProperty pc_compat_1_4[] =3D {
->  };
->  const size_t pc_compat_1_4_len =3D G_N_ELEMENTS(pc_compat_1_4);
-> =20
-> +const char *fw_cfg_arch_key_name(uint16_t key)
-> +{
-> +    static const struct {
-> +        uint16_t key;
-> +        const char *name;
-> +    } fw_cfg_arch_wellknown_keys[] =3D {
-> +        {FW_CFG_ACPI_TABLES, "acpi_tables"},
-> +        {FW_CFG_SMBIOS_ENTRIES, "smbios_entries"},
-> +        {FW_CFG_IRQ0_OVERRIDE, "irq0_override"},
-> +        {FW_CFG_E820_TABLE, "e820_tables"},
-> +        {FW_CFG_HPET, "hpet"},
-> +    };
-> +
-> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
-++) {
-> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
-> +            return fw_cfg_arch_wellknown_keys[i].name;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
->  void gsi_handler(void *opaque, int n, int level)
->  {
->      GSIState *s =3D opaque;
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/nvram/fw_cfg.c       | 5 ++---
+>  include/sysemu/sysemu.h | 1 -
+>  vl.c                    | 1 -
+>  3 files changed, 2 insertions(+), 5 deletions(-)
+>=20
 > diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 7fdf04adc9..684c2cf00a 100644
+> index 8eb76a382c..b2dc0a80cb 100644
 > --- a/hw/nvram/fw_cfg.c
 > +++ b/hw/nvram/fw_cfg.c
-> @@ -60,6 +60,62 @@ struct FWCfgEntry {
->      FWCfgWriteCallback write_cb;
->  };
-> =20
-> +/**
-> + * key_name:
-> + *
-> + * @key: The uint16 selector key.
-> + *
-> + * Returns: The stringified name if the selector refers to a well-know=
-n
-> + *          numerically defined item, or NULL on key lookup failure.
-> + */
-> +static const char *key_name(uint16_t key)
-> +{
-> +    static const char *fw_cfg_wellknown_keys[FW_CFG_FILE_FIRST] =3D {
-> +        [FW_CFG_SIGNATURE] =3D "signature",
-> +        [FW_CFG_ID] =3D "id",
-> +        [FW_CFG_UUID] =3D "uuid",
-> +        [FW_CFG_RAM_SIZE] =3D "ram_size",
-> +        [FW_CFG_NOGRAPHIC] =3D "nographic",
-> +        [FW_CFG_NB_CPUS] =3D "nb_cpus",
-> +        [FW_CFG_MACHINE_ID] =3D "machine_id",
-> +        [FW_CFG_KERNEL_ADDR] =3D "kernel_addr",
-> +        [FW_CFG_KERNEL_SIZE] =3D "kernel_size",
-> +        [FW_CFG_KERNEL_CMDLINE] =3D "kernel_cmdline",
-> +        [FW_CFG_INITRD_ADDR] =3D "initrd_addr",
-> +        [FW_CFG_INITRD_SIZE] =3D "initdr_size",
-> +        [FW_CFG_BOOT_DEVICE] =3D "boot_device",
-> +        [FW_CFG_NUMA] =3D "numa",
-> +        [FW_CFG_BOOT_MENU] =3D "boot_menu",
-> +        [FW_CFG_MAX_CPUS] =3D "max_cpus",
-> +        [FW_CFG_KERNEL_ENTRY] =3D "kernel_entry",
-> +        [FW_CFG_KERNEL_DATA] =3D "kernel_data",
-> +        [FW_CFG_INITRD_DATA] =3D "initrd_data",
-> +        [FW_CFG_CMDLINE_ADDR] =3D "cmdline_addr",
-> +        [FW_CFG_CMDLINE_SIZE] =3D "cmdline_size",
-> +        [FW_CFG_CMDLINE_DATA] =3D "cmdline_data",
-> +        [FW_CFG_SETUP_ADDR] =3D "setup_addr",
-> +        [FW_CFG_SETUP_SIZE] =3D "setup_size",
-> +        [FW_CFG_SETUP_DATA] =3D "setup_data",
-> +        [FW_CFG_FILE_DIR] =3D "file_dir",
-> +    };
-> +
-> +    if (key & FW_CFG_ARCH_LOCAL) {
-> +        return fw_cfg_arch_key_name(key);
-> +    }
-> +    if (key < FW_CFG_FILE_FIRST) {
-> +        return fw_cfg_wellknown_keys[key];
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
-> +static inline const char *trace_key_name(uint16_t key)
-> +{
-> +    const char *name =3D key_name(key);
-> +
-> +    return name ? name : "unknown";
-> +}
-> +
->  #define JPG_FILE 0
->  #define BMP_FILE 1
-> =20
-> @@ -234,7 +290,7 @@ static int fw_cfg_select(FWCfgState *s, uint16_t ke=
-y)
+> @@ -217,15 +217,14 @@ static void fw_cfg_bootsplash(FWCfgState *s)
 >          }
+>          g_free(boot_splash_filedata);
+>          boot_splash_filedata =3D (uint8_t *)file_data;
+> -        boot_splash_filedata_size =3D file_size;
+> =20
+>          /* insert data */
+>          if (file_type =3D=3D JPG_FILE) {
+>              fw_cfg_add_file(s, "bootsplash.jpg",
+> -                    boot_splash_filedata, boot_splash_filedata_size);
+> +                            boot_splash_filedata, file_size);
+>          } else {
+>              fw_cfg_add_file(s, "bootsplash.bmp",
+> -                    boot_splash_filedata, boot_splash_filedata_size);
+> +                            boot_splash_filedata, file_size);
+>          }
+>          g_free(filename);
 >      }
+> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> index 89604a8328..6065d9e420 100644
+> --- a/include/sysemu/sysemu.h
+> +++ b/include/sysemu/sysemu.h
+> @@ -110,7 +110,6 @@ extern int old_param;
+>  extern int boot_menu;
+>  extern bool boot_strict;
+>  extern uint8_t *boot_splash_filedata;
+> -extern size_t boot_splash_filedata_size;
+>  extern bool enable_mlock;
+>  extern bool enable_cpu_pm;
+>  extern QEMUClockType rtc_clock;
+> diff --git a/vl.c b/vl.c
+> index 4c5cc0d8ad..fad6fec38c 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -188,7 +188,6 @@ const char *prom_envs[MAX_PROM_ENVS];
+>  int boot_menu;
+>  bool boot_strict;
+>  uint8_t *boot_splash_filedata;
+> -size_t boot_splash_filedata_size;
+>  bool wakeup_suspend_enabled;
 > =20
-> -    trace_fw_cfg_select(s, key, ret);
-> +    trace_fw_cfg_select(s, key, trace_key_name(key), ret);
->      return ret;
->  }
-> =20
-> @@ -617,6 +673,7 @@ static void *fw_cfg_modify_bytes_read(FWCfgState *s=
-, uint16_t key,
-> =20
->  void fw_cfg_add_bytes(FWCfgState *s, uint16_t key, void *data, size_t =
-len)
->  {
-> +    trace_fw_cfg_add_bytes(key, trace_key_name(key), len);
->      fw_cfg_add_bytes_callback(s, key, NULL, NULL, NULL, data, len, tru=
-e);
->  }
-> =20
-> @@ -624,6 +681,7 @@ void fw_cfg_add_string(FWCfgState *s, uint16_t key,=
- const char *value)
->  {
->      size_t sz =3D strlen(value) + 1;
-> =20
-> +    trace_fw_cfg_add_string(key, trace_key_name(key), value);
->      fw_cfg_add_bytes(s, key, g_memdup(value, sz), sz);
->  }
-> =20
-> @@ -633,6 +691,7 @@ void fw_cfg_add_i16(FWCfgState *s, uint16_t key, ui=
-nt16_t value)
-> =20
->      copy =3D g_malloc(sizeof(value));
->      *copy =3D cpu_to_le16(value);
-> +    trace_fw_cfg_add_i16(key, trace_key_name(key), value);
->      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->  }
-> =20
-> @@ -652,6 +711,7 @@ void fw_cfg_add_i32(FWCfgState *s, uint16_t key, ui=
-nt32_t value)
-> =20
->      copy =3D g_malloc(sizeof(value));
->      *copy =3D cpu_to_le32(value);
-> +    trace_fw_cfg_add_i32(key, trace_key_name(key), value);
->      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->  }
-> =20
-> @@ -661,6 +721,7 @@ void fw_cfg_add_i64(FWCfgState *s, uint16_t key, ui=
-nt64_t value)
-> =20
->      copy =3D g_malloc(sizeof(value));
->      *copy =3D cpu_to_le64(value);
-> +    trace_fw_cfg_add_i64(key, trace_key_name(key), value);
->      fw_cfg_add_bytes(s, key, copy, sizeof(value));
->  }
-> =20
-> diff --git a/hw/nvram/trace-events b/hw/nvram/trace-events
-> index 6b55ba7a09..4d8fa992fe 100644
-> --- a/hw/nvram/trace-events
-> +++ b/hw/nvram/trace-events
-> @@ -5,6 +5,11 @@ nvram_read(uint32_t addr, uint32_t ret) "read addr %d:=
- 0x%02x"
->  nvram_write(uint32_t addr, uint32_t old, uint32_t val) "write addr %d:=
- 0x%02x -> 0x%02x"
-> =20
->  # hw/nvram/fw_cfg.c
-> -fw_cfg_select(void *s, uint16_t key, int ret) "%p key %d =3D %d"
-> +fw_cfg_select(void *s, uint16_t key_value, const char *key_name, int r=
-et) "%p key 0x%04" PRIx16 " '%s', ret: %d"
->  fw_cfg_read(void *s, uint64_t ret) "%p =3D 0x%"PRIx64
-> +fw_cfg_add_bytes(uint16_t key_value, const char *key_name, size_t len)=
- "key 0x%04" PRIx16 " '%s', %zu bytes"
->  fw_cfg_add_file(void *s, int index, char *name, size_t len) "%p #%d: %=
-s (%zd bytes)"
-> +fw_cfg_add_string(uint16_t key_value, const char *key_name, const char=
- *value) "key 0x%04" PRIx16 " '%s', value '%s'"
-> +fw_cfg_add_i16(uint16_t key_value, const char *key_name, uint16_t valu=
-e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx16
-> +fw_cfg_add_i32(uint16_t key_value, const char *key_name, uint32_t valu=
-e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx32
-> +fw_cfg_add_i64(uint16_t key_value, const char *key_name, uint64_t valu=
-e) "key 0x%04" PRIx16 " '%s', value 0x%" PRIx64
-> diff --git a/hw/ppc/Makefile.objs b/hw/ppc/Makefile.objs
-> index 1111b218a0..ae94098155 100644
-> --- a/hw/ppc/Makefile.objs
-> +++ b/hw/ppc/Makefile.objs
-> @@ -1,5 +1,5 @@
->  # shared objects
-> -obj-y +=3D ppc.o ppc_booke.o fdt.o
-> +obj-y +=3D ppc.o ppc_booke.o fdt.o fw_cfg.o
->  # IBM pSeries (sPAPR)
->  obj-$(CONFIG_PSERIES) +=3D spapr.o spapr_caps.o spapr_vio.o spapr_even=
-ts.o
->  obj-$(CONFIG_PSERIES) +=3D spapr_hcall.o spapr_iommu.o spapr_rtas.o
-> diff --git a/hw/ppc/fw_cfg.c b/hw/ppc/fw_cfg.c
-> new file mode 100644
-> index 0000000000..0e7616b78a
-> --- /dev/null
-> +++ b/hw/ppc/fw_cfg.c
-> @@ -0,0 +1,31 @@
-> +#include "qemu/osdep.h"
-> +#include "hw/ppc/ppc.h"
-> +#include "hw/nvram/fw_cfg.h"
-> +
-> +const char *fw_cfg_arch_key_name(uint16_t key)
-> +{
-> +    static const struct {
-> +        uint16_t key;
-> +        const char *name;
-> +    } fw_cfg_arch_wellknown_keys[] =3D {
-> +        {FW_CFG_PPC_WIDTH, "width"},
-> +        {FW_CFG_PPC_HEIGHT, "height"},
-> +        {FW_CFG_PPC_DEPTH, "depth"},
-> +        {FW_CFG_PPC_TBFREQ, "tbfreq"},
-> +        {FW_CFG_PPC_CLOCKFREQ, "clockfreq"},
-> +        {FW_CFG_PPC_IS_KVM, "is_kvm"},
-> +        {FW_CFG_PPC_KVM_HC, "kvm_hc"},
-> +        {FW_CFG_PPC_KVM_PID, "pid"},
-> +        {FW_CFG_PPC_NVRAM_ADDR, "nvram_addr"},
-> +        {FW_CFG_PPC_BUSFREQ, "busfreq"},
-> +        {FW_CFG_PPC_NVRAM_FLAT, "nvram_flat"},
-> +        {FW_CFG_PPC_VIACONFIG, "viaconfig"},
-> +    };
-> +
-> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
-++) {
-> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
-> +            return fw_cfg_arch_wellknown_keys[i].name;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index ca1e3825d5..49251d62b3 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -97,6 +97,25 @@ struct sun4m_hwdef {
->      uint8_t nvram_machine_id;
->  };
-> =20
-> +const char *fw_cfg_arch_key_name(uint16_t key)
-> +{
-> +    static const struct {
-> +        uint16_t key;
-> +        const char *name;
-> +    } fw_cfg_arch_wellknown_keys[] =3D {
-> +        {FW_CFG_SUN4M_DEPTH, "depth"},
-> +        {FW_CFG_SUN4M_WIDTH, "width"},
-> +        {FW_CFG_SUN4M_HEIGHT, "height"},
-> +    };
-> +
-> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
-++) {
-> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
-> +            return fw_cfg_arch_wellknown_keys[i].name;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
->  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->                              Error **errp)
->  {
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index 399f2d73c8..4230b17b87 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -91,6 +91,25 @@ typedef struct EbusState {
->  #define TYPE_EBUS "ebus"
->  #define EBUS(obj) OBJECT_CHECK(EbusState, (obj), TYPE_EBUS)
-> =20
-> +const char *fw_cfg_arch_key_name(uint16_t key)
-> +{
-> +    static const struct {
-> +        uint16_t key;
-> +        const char *name;
-> +    } fw_cfg_arch_wellknown_keys[] =3D {
-> +        {FW_CFG_SPARC64_WIDTH, "width"},
-> +        {FW_CFG_SPARC64_HEIGHT, "height"},
-> +        {FW_CFG_SPARC64_DEPTH, "depth"},
-> +    };
-> +
-> +    for (size_t i =3D 0; i < ARRAY_SIZE(fw_cfg_arch_wellknown_keys); i=
-++) {
-> +        if (fw_cfg_arch_wellknown_keys[i].key =3D=3D key) {
-> +            return fw_cfg_arch_wellknown_keys[i].name;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
->  static void fw_cfg_boot_set(void *opaque, const char *boot_device,
->                              Error **errp)
->  {
-> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> index f5a6895a74..828ad9dedc 100644
-> --- a/include/hw/nvram/fw_cfg.h
-> +++ b/include/hw/nvram/fw_cfg.h
-> @@ -226,4 +226,15 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
->  FWCfgState *fw_cfg_find(void);
->  bool fw_cfg_dma_enabled(void *opaque);
-> =20
-> +/**
-> + * fw_cfg_arch_key_name:
-> + *
-> + * @key: The uint16 selector key.
-> + *
-> + * Returns: The stringified architecture-specific name if the selector
-> + *          refers to a well-known numerically defined item, or NULL o=
-n
-> + *          key lookup failure.
-> + */
-> +const char *fw_cfg_arch_key_name(uint16_t key);
-> +
->  #endif
-> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-> index 269dfa5832..73452ad265 100644
-> --- a/stubs/Makefile.objs
-> +++ b/stubs/Makefile.objs
-> @@ -39,3 +39,4 @@ stub-obj-y +=3D xen-hvm.o
->  stub-obj-y +=3D pci-host-piix.o
->  stub-obj-y +=3D ram-block.o
->  stub-obj-y +=3D ramfb.o
-> +stub-obj-y +=3D fw_cfg.o
-> diff --git a/stubs/fw_cfg.c b/stubs/fw_cfg.c
-> new file mode 100644
-> index 0000000000..2b886c94d6
-> --- /dev/null
-> +++ b/stubs/fw_cfg.c
-> @@ -0,0 +1,19 @@
-> +/*
-> + * fw_cfg stubs
-> + *
-> + * Copyright (c) 2019 Red Hat, Inc.
-> + *
-> + * Author:
-> + *   Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/nvram/fw_cfg.h"
-> +
-> +const char *fw_cfg_arch_key_name(uint16_t key)
-> +{
-> +    return NULL;
-> +}
+>  int icount_align_option;
 >=20
 

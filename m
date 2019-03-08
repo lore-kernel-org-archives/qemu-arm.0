@@ -1,84 +1,84 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7813589wrx;
-        Thu, 7 Mar 2019 17:44:18 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzYIiTAYjctB/mr9PGyxDU2sAMANJIvzfVx6ig01jX9u8i/bXviwQqpw35+Y/npHiV1bYse
-X-Received: by 2002:a81:3a0d:: with SMTP id h13mr12915849ywa.224.1552009458007;
-        Thu, 07 Mar 2019 17:44:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552009458; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp7815372wrx;
+        Thu, 7 Mar 2019 17:46:39 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwEglcNoRIdjgE1bDKJViYSDk4nkP3pWaSmmtQfsL9DwCtVBDmgFT5DKftFgS/1MAdLeAYo
+X-Received: by 2002:a81:8a87:: with SMTP id a129mr13134418ywg.161.1552009599106;
+        Thu, 07 Mar 2019 17:46:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552009599; cv=none;
         d=google.com; s=arc-20160816;
-        b=SO+kzzEmhJvW5a22NftX9fSarunTM2rWDRoA5csLP29G510yIPEODxKlPyEXuewfeU
-         2VUkQRPV44VEjxbrQIsODLEmTm7l4kkMj4s7QDEiLzNpNz7PibnZjeGQMnFY+dM+mWeW
-         fPY9NaLDiagp6l2Nmt3chod6LhV2URssUm0F1RkkGwp1A38ZtPpy89Km1VmHfUe5+731
-         vC9y9xX4pJiW64n/va1L0pl5+zvCFVTNG+/TMFi6kx0wbmePYs6Sb2LIXx32b9OTVUg0
-         Z+TUiHcIDKoEuXlUDSYn6A8Ogcpkd/Q5P//DODhdZT9yk0FRjtYROvNXXO/h/Rf+lx7E
-         e6Jw==
+        b=JQwSVvyHwczRsEf6JfqNiKjsnZv1ojmDCDGzb3IdFS1ZkqW2wOGba5WhfMN+B5XCpt
+         GJcMLlmjJUDyuL0w1rMH4132ewKQGZn7WOMMu30ovXBg/oSuN90F4FW4h9bOz2ErKWMe
+         Og7xLQZkgGR5G9l0ZVayfJWYXD7KHmTRTDutUYe89zibDZuCZQbrZmxAAPENFlAHklqf
+         su7dMwBiGLu6NrlH4sMCfCHEiGhiIT7UcnmWJQN5yJElWIyB87VCofuj/symsl4nZ9dI
+         21LKMmUKXcHOuCUD82b5jsiG3kUKbIV1gv9C4DgCuWsYuHBT8ldMS5VI2f94TmMswVV2
+         qPwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=6GFgI6dOesbajjvt0EdxDc9nyzRZH0WWODhEVpvCfhg=;
-        b=HpNfFzExWXB4PO3eGCLcuMF8SkMBitsSLN82vNsP124JvCdrGL591A+W/WOsI6PFOp
-         HqYYCIOwLMQpw0Kss0GUTitW5rsypBgozJB3WK8pzoNLCj5U+zv3rik54r1KwDFLtrdF
-         shB6VVl4oCgACoh2qK2B2sbpDTdt4bYfP7sVVBXmwfnzJrezjqkGfE2rtbohxBAZ7Zdk
-         1ETGAkrehfh+FrE3WybTwZ3+tKG+/Typ1+QzGKdtfmHASOOubgoT5zqshORbe+zOG+0A
-         ZP4c/wqPYsmK44V1jQWURcBDInlic3/xgtKynXcs4kmYA+ngWPq/j50MerlC5/ZrFR2R
-         VRiQ==
+        bh=2TJaBI32E8Un8eCTV9TjOlYe907znlCRu01yzSDV0Rw=;
+        b=RTl0CrAnv6s8E2UvazURUcAEfpA2wRiHxQLN/Yw2Gr0VnovB/dQn4PWe/fo2Yka0WJ
+         Hrp0G9Bm9xF4L9jGONZ4F1gB51nNI+eHLSeIDWQUbKje70oVfPmeszWAaH4BSAaTPTdW
+         W4JhwEO8Ic0VXPt5msso3RH0kl+k+zQ1mELzUoD4q779loqQth3zXbcKUF8RHBvf8ktR
+         VAxO+0IkrXYQlH+J6EvBCMpoxwgWZbP1SfIMif1+W1rj4IztWR2rlUMnbNjJVVX7mX+r
+         tzpKX2QWgaw+fOEB7SxOEufFMyqmQnRP7LGursBR4LB4ZAjdgZN7yUNzzitGzm4bemjS
+         Nuaw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 66si3775825ybt.122.2019.03.07.17.44.17
+        by mx.google.com with ESMTPS id 123si4018408ybd.460.2019.03.07.17.46.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Mar 2019 17:44:17 -0800 (PST)
+        Thu, 07 Mar 2019 17:46:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34660 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34724 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h24Yb-0003MF-Ck
-	for alex.bennee@linaro.org; Thu, 07 Mar 2019 20:44:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58369)
+	id 1h24as-00055B-Hq
+	for alex.bennee@linaro.org; Thu, 07 Mar 2019 20:46:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h24PL-0003Sy-Vj
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 20:34:44 -0500
+	(envelope-from <philmd@redhat.com>) id 1h24QH-0004QU-3S
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 20:35:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h24PL-0002G5-1W
-	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 20:34:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60410)
+	(envelope-from <philmd@redhat.com>) id 1h24QE-0003L8-7P
+	for qemu-devel@nongnu.org; Thu, 07 Mar 2019 20:35:40 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41388)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1h24PH-000297-U4; Thu, 07 Mar 2019 20:34:40 -0500
+	id 1h24Q9-0003Ae-VZ; Thu, 07 Mar 2019 20:35:35 -0500
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0FD593092672;
-	Fri,  8 Mar 2019 01:34:39 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id F423B307DABB;
+	Fri,  8 Mar 2019 01:35:32 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.206.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 231C060BE5;
-	Fri,  8 Mar 2019 01:34:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C7B5860BE5;
+	Fri,  8 Mar 2019 01:35:25 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
-Date: Fri,  8 Mar 2019 02:32:15 +0100
-Message-Id: <20190308013222.12524-12-philmd@redhat.com>
+Date: Fri,  8 Mar 2019 02:32:19 +0100
+Message-Id: <20190308013222.12524-16-philmd@redhat.com>
 In-Reply-To: <20190308013222.12524-1-philmd@redhat.com>
 References: <20190308013222.12524-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Fri, 08 Mar 2019 01:34:39 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Fri, 08 Mar 2019 01:35:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v2 11/18] hw/nvram/fw_cfg: Add
- boot_splash.time_le16 to FWCfgState
+Subject: [Qemu-devel] [PATCH v2 15/18] hw/nvram/fw_cfg: Add
+ fw_cfg_add_file_from_host()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,59 +102,93 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Exz7H9Z0qIv/
+X-TUID: 9MUqkR/YfuIb
 
-Similar to the previous commit, use the FWCfgState lifetime state
-to hold the 'bst_le16' variable content (renaned as time_le16).
-Doing so we avoid a memory leak.
+Add a function to read the full content of file on the host, and add
+a new 'file' name item to the fw_cfg device.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/nvram/fw_cfg.c         | 6 +++---
- include/hw/nvram/fw_cfg.h | 3 +++
- 2 files changed, 6 insertions(+), 3 deletions(-)
+v2: s/ptr/data, corrected documentation (Laszlo)
+---
+ hw/nvram/fw_cfg.c         | 21 +++++++++++++++++++++
+ include/hw/nvram/fw_cfg.h | 23 +++++++++++++++++++++++
+ 2 files changed, 44 insertions(+)
 
 diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 182d27f59a..3ac6687a04 100644
+index 4c82dcc125..a46a7c8f06 100644
 --- a/hw/nvram/fw_cfg.c
 +++ b/hw/nvram/fw_cfg.c
-@@ -187,7 +187,6 @@ static void fw_cfg_bootsplash(FWCfgState *s)
-     /* insert splash time if user configurated */
-     if (boot_splash_time) {
-         int64_t bst_val =3D qemu_opt_get_number(opts, "splash-time", -1)=
-;
--        uint16_t bst_le16;
+@@ -890,6 +890,27 @@ void fw_cfg_add_file(FWCfgState *s,  const char *fil=
+ename,
+     fw_cfg_add_file_callback(s, filename, NULL, NULL, NULL, data, len, t=
+rue);
+ }
 =20
-         /* validate the input */
-         if (bst_val < 0 || bst_val > 0xffff) {
-@@ -196,9 +195,10 @@ static void fw_cfg_bootsplash(FWCfgState *s)
-             exit(1);
-         }
-         /* use little endian format */
--        bst_le16 =3D cpu_to_le16(bst_val);
-+        s->boot_splash.time_le16 =3D cpu_to_le16(bst_val);
-         fw_cfg_add_file(s, "etc/boot-menu-wait",
--                        g_memdup(&bst_le16, sizeof bst_le16), sizeof bst=
-_le16);
-+                        &s->boot_splash.time_le16,
-+                        sizeof(s->boot_splash.time_le16));
-     }
-=20
-     /* insert splash file if user configurated */
++void *fw_cfg_add_file_from_host(FWCfgState *s, const char *filename,
++                                const char *host_path, size_t *len)
++{
++    GError *gerr =3D NULL;
++    gchar *data =3D NULL;
++    gsize contents_len =3D 0;
++
++    if (g_file_get_contents(host_path, &data, &contents_len, &gerr)) {
++        fw_cfg_add_file(s, filename, data, contents_len);
++    } else {
++        error_report("%s", gerr->message);
++        g_error_free(gerr);
++        return NULL;
++    }
++    if (len) {
++        *len =3D contents_len;
++    }
++
++    return data;
++}
++
+ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+                         void *data, size_t len)
+ {
 diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-index 99f6fafcaa..fcb771186c 100644
+index 5ac9adfe1f..75a29858dc 100644
 --- a/include/hw/nvram/fw_cfg.h
 +++ b/include/hw/nvram/fw_cfg.h
-@@ -55,6 +55,9 @@ struct FWCfgState {
-     MemoryRegion dma_iomem;
+@@ -172,6 +172,29 @@ void fw_cfg_add_i64(FWCfgState *s, uint16_t key, uin=
+t64_t value);
+ void fw_cfg_add_file(FWCfgState *s, const char *filename, void *data,
+                      size_t len);
 =20
-     uint32_t reboot_timeout;
-+    struct {
-+        uint16_t time_le16;
-+    } boot_splash;
- };
-=20
- struct FWCfgIoState {
++/**
++ * fw_cfg_add_file_from_host:
++ * @s: fw_cfg device being modified
++ * @filename: name of new fw_cfg file item
++ * @host_path: path of the host file to read the data from
++ * @len: pointer to hold the length of the host file (optional)
++ *
++ * Read the content of a host file as a raw "blob" then add a new NAMED
++ * fw_cfg item of the file size. If @len is provided, it will contain th=
+e
++ * total length read from the host file. The data read from the host
++ * filesystem is owned by the new fw_cfg entry, and is stored into the d=
+ata
++ * structure of the fw_cfg device.
++ * The next available (unused) selector key starting at FW_CFG_FILE_FIRS=
+T
++ * will be used; also, a new entry will be added to the file directory
++ * structure residing at key value FW_CFG_FILE_DIR, containing the item =
+name,
++ * data size, and assigned selector key value.
++ *
++ * Returns: pointer to the newly allocated file content, or NULL if an e=
+rror
++ * occured. The returned pointer must be freed with g_free().
++ */
++void *fw_cfg_add_file_from_host(FWCfgState *s, const char *filename,
++                                const char *host_path, size_t *len);
++
+ /**
+  * fw_cfg_add_file_callback:
+  * @s: fw_cfg device being modified
 --=20
 2.20.1
 

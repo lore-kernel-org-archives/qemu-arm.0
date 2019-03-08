@@ -1,105 +1,92 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8667724wrx;
-        Fri, 8 Mar 2019 10:07:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqziYgALBCAEPfXgi+kem9cjZOxSV2Ui1hEpB8EjX85sDfPloGCVPVecF4vt/QFfpni/PAw9
-X-Received: by 2002:a25:5906:: with SMTP id n6mr16054345ybb.412.1552068474801;
-        Fri, 08 Mar 2019 10:07:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552068474; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8676460wrx;
+        Fri, 8 Mar 2019 10:16:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzFku0HXacJc9MDH+sLTc8yum5TbO6O4QcXSCp38gzfvhMRtFU8RfwWbHspZ3ChMDppxL6P
+X-Received: by 2002:a81:3a05:: with SMTP id h5mr15960638ywa.282.1552069014995;
+        Fri, 08 Mar 2019 10:16:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552069014; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFhN31NhsZdDc9hlTwFJUJ/krEOoI1/7VATNrlUc5E453WnDHOXyQ8UYOdCVl7pZVc
-         4A6NP1YLdX5JGlCEf33n713k150rrwywOIW05dCIP5Tx6rqtSz61dW6DhU/DiYSp2iro
-         sFH2w+ubgjOeD8VMU//bIUg8Um9j0qXo9bo2kKA6FsKfxyAROXL8hVQdXYj1X+yUfFAo
-         xa5S1tGGHQr4ckrnrU0alh3attu7LJ4zDOW2QHmt5TRhTC7OZMZg3M7CXDNf+eVVMf4E
-         YZMoCwgE1CUsBvOCPJjJsLWLO3gPW/wlU7mxFB1JCBCMBN7DyL1IDQ7KFBGlYnmNU7/p
-         2GgA==
+        b=MEkW+sFR473sqSvL/8LVJP1vyR/GUMyRxlavaApHpS020qLhSUQ3hLgk2A2OzzV+bH
+         4CW0NGDSZpP8HcJvmCs16eMQ4mO6LVZszL/05Xuc9IZt+mk+3VcbLt1YmgyuYr6zzCZN
+         1EKdv9XIXKkAUhqEVv1XpUkPVfN/qei2IdnRknuMCyQX+2g+Kms0LEGKfCfZLgeeNzR7
+         +p6aaZAomhKFFh6JK8NhtvJhAfz0ZRELYw2PU2iOszwmtlAYSUY8/iWBDJXPh9sPbjvS
+         NFOUXgjL+QOnL/ajOu5hGwoig5JtxHgVMEswn9GpHitN7UNyxbRm72WhpBo9QZF990y4
+         R5Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=SIO4EtvKP79qbO07hmJtCLL8AOy6PpvWuWQ7BXZVSII=;
-        b=s59VgAxNcgZd2uUp6Vo7p9nu0xT8GAdEiBFBFEbq7xBJOLiIIUoboUQuabDAKfYNiJ
-         ZhN2+Oj0jY0VS0qa++9Nt18XTinAwhdzTlaK8ycAcehz+6szkHCW2qTgWAapJRbLyhmY
-         ZvXJJjP3uTWUPX2oGtw7CZJ8QvDpLTMX5XAhfm04puM54mRcND9fuSkPRi9MtY7HgrYQ
-         roXNDMZPNfCY4WqcTt3rkg41i+kxT8rchKENISr6p38FSmUH57vq6TVaPPCeawZFmPHw
-         lKkMj+LA66MNUTEkiOBNNvWFWFvRjU6O401mAODDqgx1MVj4wlMhIgK9NkZdnPSOyG3m
-         4SUQ==
+         :user-agent:date:message-id:from:references:to;
+        bh=74Tcw0WdVwc9QACcFkAEUVYwW0mjC7TXkByLSxLkQEg=;
+        b=kHZAceaa5XB579ZDUk8L+bAwwPLqgMkwHJT4r99H4Iahxxt7o1JurDhJIyGR5njB5i
+         dc0oPe/y93CIwXvb+8yPz2s9kD+766FAbFl5wqvAQuS9ilGoX0FZHyswH7SRg37tb12E
+         lnwfpaV0ovZp8POYaAUNDmqVCruhLW7MxZX9CuW/5UrS8pUcUcP5gVIpIy/5cH/FkY3E
+         CyoYQV/L3/n7j1vdm0ee3g9TrP9Hsz802WlbM3ACjHtli+MDmGqNDb9Qfvh13KyNdJ0l
+         J9aCaVrhH5VzLD80HQ6bGrQmTC9ECQGMmiTECKKWn8Z2G4unSskxsLTF0OIagSoEGkCo
+         uc7A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 126si4978366ybe.430.2019.03.08.10.07.54
+        by mx.google.com with ESMTPS id e144si4716510yba.178.2019.03.08.10.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 10:07:54 -0800 (PST)
+        Fri, 08 Mar 2019 10:16:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:47937 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48034 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2JuU-0005CN-5r
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 13:07:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46633)
+	id 1h2K3C-0007P9-B2
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 13:16:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48078)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2JuF-0005BR-4Z
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 13:07:40 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h2K30-0007Lw-2E
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 13:16:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2JuD-00058p-3u
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 13:07:39 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:54383)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h2JuB-0004zQ-7m
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 13:07:37 -0500
-Received: by mail-wm1-f67.google.com with SMTP id f3so13477458wmj.4
-	for <qemu-arm@nongnu.org>; Fri, 08 Mar 2019 10:07:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=SIO4EtvKP79qbO07hmJtCLL8AOy6PpvWuWQ7BXZVSII=;
-	b=IQ6D12IuPyOPFyKAzl/nJVkjk5StZvOxVoXd0qGvhEHtw5YzWVaFGqxqU4KJqIu5x8
-	dk8sz6IFwzVpoWtfKhnta8uUKLlrkHp9XN47M7IroHzREV/olBv9bJSrc+w3OCZFd3sN
-	DfKwf0G/29Ehkh3go1G3XWvOXf5U3lN4dKxCOQ1Arg5fMa34FUFuAe9DDzrtv3lbDbXq
-	wh/rOSIG3/Qf5tHwI7OiD8HF7PTyuWsCoGPY8ppcxisexDqZ+MP7Cro6dQ3m5kPMKr0x
-	31jtJ5bqwZneabs1RviMnh8k8hybO+jQ2mVEzrmIy8Q6Ws9sh5StqeWPhoT2LT4E7ntQ
-	/nMg==
-X-Gm-Message-State: APjAAAUOOmV6barvVjSYp44G2mncWoX1uBwHSEU1iAyJYCHP4ewGrndb
-	123ae0zD+yaS11FVIIruFYEy2A==
-X-Received: by 2002:a1c:9dcc:: with SMTP id g195mr10499246wme.9.1552068450550; 
-	Fri, 08 Mar 2019 10:07:30 -0800 (PST)
-Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
-	a20sm4465663wmb.17.2019.03.08.10.07.28
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Fri, 08 Mar 2019 10:07:29 -0800 (PST)
-To: Eric Blake <eblake@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-14-philmd@redhat.com>
-	<0e007e09-cf54-312b-9563-59f3994209bf@redhat.com>
-	<40319ac6-4545-4e7b-0339-8229727355e3@redhat.com>
-	<a3c759a5-73df-f481-ba21-48ece92f1185@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <9f1cdb48-3262-de5e-a500-1dfb3d6372e5@redhat.com>
-Date: Fri, 8 Mar 2019 19:07:28 +0100
+	(envelope-from <eric.auger@redhat.com>) id 1h2K2y-0004mP-8l
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 13:16:42 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42615)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h2K2x-0004lC-TZ; Fri, 08 Mar 2019 13:16:40 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3798EF3FAD;
+	Fri,  8 Mar 2019 18:16:38 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E8581B5BC;
+	Fri,  8 Mar 2019 18:16:15 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	peter.maydell@linaro.org, shameerali.kolothum.thodi@huawei.com,
+	imammedo@redhat.com, david@redhat.com, pbonzini@redhat.com,
+	ehabkost@redhat.com, richard.henderson@linaro.org, sbhat@linux.ibm.com
+References: <20190308152511.10882-1-eric.auger@redhat.com>
+	<20190308152511.10882-3-eric.auger@redhat.com>
+	<03ee1ae0-2646-e744-709d-431dd1aaa3c2@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4ff97430-5df2-48fd-046b-6363ad6420ca@redhat.com>
+Date: Fri, 8 Mar 2019 19:16:09 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <a3c759a5-73df-f481-ba21-48ece92f1185@redhat.com>
+In-Reply-To: <03ee1ae0-2646-e744-709d-431dd1aaa3c2@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 08 Mar 2019 18:16:38 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-arm] [PATCH v2 13/18] hw/nvram/fw_cfg: Add QMP 'info
- fw_cfg' command
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 2/2] machine: Move nvdimms state into
+ struct MachineState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,123 +98,406 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D8YvkmQffl8a
+X-TUID: h0xs1o/F/Il2
 
-On 3/8/19 6:31 PM, Eric Blake wrote:
-> On 3/8/19 5:08 AM, Philippe Mathieu-Daudé wrote:
-> 
->>>> {
->>>>     "return": [
->>>>         {
->>>>             "architecture_specific": false,
->>>>             "key": 0,
->>>>             "writeable": false,
->>>>             "size": 4,
->>>>             "keyname": "signature"
->>>
->>> You could return a base64-encoded representation of the field (we do
->>> that in other interfaces where raw binary can't be passed reliably over
->>> JSON).  For 4 bytes, that makes sense,
->>>
->>>
->>>>         {
->>>>             "architecture_specific": true,
->>>>             "key": 3,
->>>>             "writeable": false,
->>>>             "size": 324,
->>>>             "keyname": "e820_tables"
->>>
->>> for 324 bytes, it gets a bit long. Still, may be worth it for the added
->>> debug visibility.
+Hi Philippe,
+On 3/8/19 7:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> hi Eric,
+>=20
+> On 3/8/19 4:25 PM, Eric Auger wrote:
+>> As NVDIMM support is looming for ARM and SPAPR, let's
+>> move the acpi_nvdimm_state to the generic machine struct
+>> instead of duplicating the same code in several machines.
+>> It is also renamed into nvdimms_state and becomes a pointer.
 >>
->> Until you see values in the next patch...:
+>> nvdimm and nvdimm-persistence become generic machine options.
+>> They become guarded by a nvdimm_supported machine class member.
+>> We also add a description for those options.
 >>
->> $ (echo info fw_cfg; echo q) | qemu-system-x86_64 -S -monitor stdio
->> Selector  Well-Known Key  Pathname ArchSpec Perm   Size Order Hex Data
->> [...]
->>  0x0019   file_dir                           RO    2052       0000000b..
->>  0x0022   file: etc/acpi/tables              RO  131072  130  46414353..
-> 
-> Yeah, that's a no-go.
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
 >>
->> What about using a 512B limit on this QMP answer?
-> 
-> Seems reasonable. Either omit the field when its size exceeds the limit,
-> or use the field to give a truncated version (where the size field still
-> shows the full length, either way).
-
-OK.
-
->>>> +# @path: If the key is a 'file', the named file path.
->>>> +# @order: If the key is a 'file', the named file order.
->>>> +#
->>>> +# Since 4.0
->>>> +##
->>>> +{ 'struct': 'FirmwareConfigurationItem',
->>>> +  'data': { 'key': 'uint16',
->>>> +            '*keyname': 'str',
->>>> +            'architecture_specific': 'bool',
->>>> +            'writeable': 'bool',
->>>> +            '*data': 'str',
->>>> +            'size': 'int',
->>>> +            '*path': 'str',
->>>> +            '*order': 'int' } }
->>>
->>> Is it worth making 'keyname' an enum type, and turning this into a flat
->>> union where 'path' and 'order' appear on the branch associated with
->>> 'file', and where all other well-known keynames have smaller branches?
+>> ---
+>> v2 -> v3
+>> - nvdimms_state becomes a pointer
+>> - add machine class nvdimm_supported
 >>
->> I have no idea about that, I will have a look at QMP flat unions.
-> 
-> Markus can help if you get stuck on what it might look like. But by now,
-> there are several examples in .qapi files to copy from (look for
-> 'discriminator').
-
-OK.
-
+>> v1 -> v2:
+>> - s/acpi_nvdimm_state/nvdimms_state
+>> - remove ms->nvdimms_state.is_enabled initialization to false.
+>> ---
+>>  hw/core/machine.c    | 65 +++++++++++++++++++++++++++++++++++++++++++=
++
+>>  hw/i386/acpi-build.c |  6 ++--
+>>  hw/i386/pc.c         | 57 ++++----------------------------------
+>>  hw/i386/pc_piix.c    |  4 +--
+>>  hw/i386/pc_q35.c     |  4 +--
+>>  include/hw/boards.h  |  2 ++
+>>  include/hw/i386/pc.h |  4 ---
+>>  7 files changed, 79 insertions(+), 63 deletions(-)
 >>
->>>> +
->>>> +
->>>> +##
->>>> +# @query-fw_cfg-items:
->>>
->>> That looks weird to mix - and _. Any reason we can't just go with
->>> query-firmware-config?
+>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>> index 766ca5899d..29a33194a9 100644
+>> --- a/hw/core/machine.c
+>> +++ b/hw/core/machine.c
+>> @@ -22,6 +22,7 @@
+>>  #include "qemu/error-report.h"
+>>  #include "sysemu/qtest.h"
+>>  #include "hw/pci/pci.h"
+>> +#include "hw/mem/nvdimm.h"
+>> =20
+>>  GlobalProperty hw_compat_3_1[] =3D {
+>>      { "pcie-root-port", "x-speed", "2_5" },
+>> @@ -481,6 +482,47 @@ static void machine_set_memory_encryption(Object =
+*obj, const char *value,
+>>      ms->memory_encryption =3D g_strdup(value);
+>>  }
+>> =20
+>> +static bool machine_get_nvdimm(Object *obj, Error **errp)
+>> +{
+>> +    MachineState *ms =3D MACHINE(obj);
+>> +
+>> +    return ms->nvdimms_state->is_enabled;
+>> +}
+>> +
+>> +static void machine_set_nvdimm(Object *obj, bool value, Error **errp)
+>> +{
+>> +    MachineState *ms =3D MACHINE(obj);
+>> +
+>> +    ms->nvdimms_state->is_enabled =3D value;
+>> +}
+>> +
+>> +static char *machine_get_nvdimm_persistence(Object *obj, Error **errp=
+)
+>> +{
+>> +    MachineState *ms =3D MACHINE(obj);
+>> +
+>> +    return g_strdup(ms->nvdimms_state->persistence_string);
+>> +}
+>> +
+>> +static void machine_set_nvdimm_persistence(Object *obj, const char *v=
+alue,
+>> +                                           Error **errp)
+>> +{
+>> +    MachineState *ms =3D MACHINE(obj);
+>> +    NVDIMMState *nvdimms_state =3D ms->nvdimms_state;
+>> +
+>> +    if (strcmp(value, "cpu") =3D=3D 0) {
+>> +        nvdimms_state->persistence =3D 3;
+>> +    } else if (strcmp(value, "mem-ctrl") =3D=3D 0) {
+>> +        nvdimms_state->persistence =3D 2;
+>> +    } else {
+>> +        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupport=
+ed option",
+>> +                   value);
+>> +        return;
+>> +    }
+>> +
+>> +    g_free(nvdimms_state->persistence_string);
+>> +    nvdimms_state->persistence_string =3D g_strdup(value);
+>> +}
+>> +
+>>  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const c=
+har *type)
+>>  {
+>>      strList *item =3D g_new0(strList, 1);
+>> @@ -791,6 +833,28 @@ static void machine_initfn(Object *obj)
+>>      ms->mem_merge =3D true;
+>>      ms->enable_graphics =3D true;
+>> =20
+>> +    if (mc->nvdimm_supported) {
+>> +        ObjectClass *oc =3D OBJECT_CLASS(mc);
+>> +
+>> +        ms->nvdimms_state =3D g_new0(NVDIMMState, 1);
+>> +        object_class_property_add_bool(oc, "nvdimm",
+>> +                                       machine_get_nvdimm, machine_se=
+t_nvdimm,
+>> +                                       &error_abort);
+>> +        object_class_property_set_description(oc, "nvdimm",
+>> +                                             "Set on/off to enable/di=
+sable "
+>> +                                             "NVDIMM instantiation", =
+NULL);
+>> +
+>> +        object_class_property_add_str(oc, "nvdimm-persistence",
+>> +                                      machine_get_nvdimm_persistence,
+>> +                                      machine_set_nvdimm_persistence,
+>> +                                      &error_abort);
+>> +        object_class_property_set_description(oc, "nvdimm-persistence=
+",
+>> +                                             "Set NVDIMM persistence"
+>> +                                             "Valid values are cpu, m=
+em-ctrl",
+>> +                                              NULL);
+>> +    }
+>> +
+>> +
+>>      /* Register notifier when init is done for sysbus sanity checks *=
+/
+>>      ms->sysbus_notifier.notify =3D machine_init_notify;
+>>      qemu_add_machine_init_done_notifier(&ms->sysbus_notifier);
+>> @@ -809,6 +873,7 @@ static void machine_finalize(Object *obj)
+>>      g_free(ms->dt_compatible);
+>>      g_free(ms->firmware);
+>>      g_free(ms->device_memory);
+>> +    g_free(ms->nvdimms_state);
+>>  }
+>> =20
+>>  bool machine_usb(MachineState *machine)
+>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>> index 9ecc96dcc7..416da318ae 100644
+>> --- a/hw/i386/acpi-build.c
+>> +++ b/hw/i386/acpi-build.c
+>> @@ -1867,7 +1867,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linke=
+r,
+>>              aml_append(scope, method);
+>>          }
+>> =20
+>> -        if (pcms->acpi_nvdimm_state.is_enabled) {
+>> +        if (machine->nvdimms_state->is_enabled) {
+>>              method =3D aml_method("_E04", 0, AML_NOTSERIALIZED);
+>>              aml_append(method, aml_notify(aml_name("\\_SB.NVDR"),
+>>                                            aml_int(0x80)));
+>> @@ -2704,9 +2704,9 @@ void acpi_build(AcpiBuildTables *tables, Machine=
+State *machine)
+>>              build_dmar_q35(tables_blob, tables->linker);
+>>          }
+>>      }
+>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
+>> +    if (machine->nvdimms_state->is_enabled) {
+>>          nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
+>> -                          &pcms->acpi_nvdimm_state, machine->ram_slot=
+s);
+>> +                          machine->nvdimms_state, machine->ram_slots)=
+;
+>>      }
+>> =20
+>>      /* Add tables supplied by user (if any) */
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 0338dbe9da..71385cfac9 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -2069,6 +2069,7 @@ static void pc_memory_pre_plug(HotplugHandler *h=
+otplug_dev, DeviceState *dev,
+>>  {
+>>      const PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
+>>      const PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
+>> +    const MachineState *ms =3D MACHINE(hotplug_dev);
+>>      const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NV=
+DIMM);
+>>      const uint64_t legacy_align =3D TARGET_PAGE_SIZE;
+>> =20
+>> @@ -2083,7 +2084,7 @@ static void pc_memory_pre_plug(HotplugHandler *h=
+otplug_dev, DeviceState *dev,
+>>          return;
+>>      }
+>> =20
+>> -    if (is_nvdimm && !pcms->acpi_nvdimm_state.is_enabled) {
+>> +    if (is_nvdimm && !ms->nvdimms_state->is_enabled) {
+>>          error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in =
+'-M'");
+>>          return;
+>>      }
+>> @@ -2097,6 +2098,7 @@ static void pc_memory_plug(HotplugHandler *hotpl=
+ug_dev,
+>>  {
+>>      Error *local_err =3D NULL;
+>>      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
+>> +    MachineState *ms =3D MACHINE(hotplug_dev);
+>>      bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
+>> =20
+>>      pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
+>> @@ -2105,7 +2107,7 @@ static void pc_memory_plug(HotplugHandler *hotpl=
+ug_dev,
+>>      }
+>> =20
+>>      if (is_nvdimm) {
+>> -        nvdimm_plug(&pcms->acpi_nvdimm_state);
+>> +        nvdimm_plug(ms->nvdimms_state);
+>>      }
+>> =20
+>>      hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &error=
+_abort);
+>> @@ -2546,47 +2548,6 @@ static void pc_machine_set_smm(Object *obj, Vis=
+itor *v, const char *name,
+>>      visit_type_OnOffAuto(v, name, &pcms->smm, errp);
+>>  }
+>> =20
+>> -static bool pc_machine_get_nvdimm(Object *obj, Error **errp)
+>> -{
+>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -    return pcms->acpi_nvdimm_state.is_enabled;
+>> -}
+>> -
+>> -static void pc_machine_set_nvdimm(Object *obj, bool value, Error **er=
+rp)
+>> -{
+>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -    pcms->acpi_nvdimm_state.is_enabled =3D value;
+>> -}
+>> -
+>> -static char *pc_machine_get_nvdimm_persistence(Object *obj, Error **e=
+rrp)
+>> -{
+>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -
+>> -    return g_strdup(pcms->acpi_nvdimm_state.persistence_string);
+>> -}
+>> -
+>> -static void pc_machine_set_nvdimm_persistence(Object *obj, const char=
+ *value,
+>> -                                               Error **errp)
+>> -{
+>> -    PCMachineState *pcms =3D PC_MACHINE(obj);
+>> -    NVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
+>> -
+>> -    if (strcmp(value, "cpu") =3D=3D 0)
+>> -        nvdimm_state->persistence =3D 3;
+>> -    else if (strcmp(value, "mem-ctrl") =3D=3D 0)
+>> -        nvdimm_state->persistence =3D 2;
+>> -    else {
+>> -        error_setg(errp, "-machine nvdimm-persistence=3D%s: unsupport=
+ed option",
+>> -                   value);
+>> -        return;
+>> -    }
+>> -
+>> -    g_free(nvdimm_state->persistence_string);
+>> -    nvdimm_state->persistence_string =3D g_strdup(value);
+>> -}
+>> -
+>>  static bool pc_machine_get_smbus(Object *obj, Error **errp)
+>>  {
+>>      PCMachineState *pcms =3D PC_MACHINE(obj);
+>> @@ -2636,8 +2597,6 @@ static void pc_machine_initfn(Object *obj)
+>>      pcms->max_ram_below_4g =3D 0; /* use default */
+>>      pcms->smm =3D ON_OFF_AUTO_AUTO;
+>>      pcms->vmport =3D ON_OFF_AUTO_AUTO;
+>> -    /* nvdimm is disabled on default. */
+>> -    pcms->acpi_nvdimm_state.is_enabled =3D false;
+>>      /* acpi build is enabled by default if machine supports it */
+>>      pcms->acpi_build_enabled =3D PC_MACHINE_GET_CLASS(pcms)->has_acpi=
+_build;
+>>      pcms->smbus_enabled =3D true;
+>> @@ -2774,6 +2733,7 @@ static void pc_machine_class_init(ObjectClass *o=
+c, void *data)
+>>      hc->unplug =3D pc_machine_device_unplug_cb;
+>>      nc->nmi_monitor_handler =3D x86_nmi;
+>>      mc->default_cpu_type =3D TARGET_DEFAULT_CPU_TYPE;
+>> +    mc->nvdimm_supported =3D true;
+>> =20
+>>      object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int=
+",
+>>          pc_machine_get_device_memory_region_size, NULL,
+>> @@ -2798,13 +2758,6 @@ static void pc_machine_class_init(ObjectClass *=
+oc, void *data)
+>>      object_class_property_set_description(oc, PC_MACHINE_VMPORT,
+>>          "Enable vmport (pc & q35)", &error_abort);
+>> =20
+>> -    object_class_property_add_bool(oc, PC_MACHINE_NVDIMM,
+>> -        pc_machine_get_nvdimm, pc_machine_set_nvdimm, &error_abort);
+>> -
+>> -    object_class_property_add_str(oc, PC_MACHINE_NVDIMM_PERSIST,
+>> -        pc_machine_get_nvdimm_persistence,
+>> -        pc_machine_set_nvdimm_persistence, &error_abort);
+>> -
+>>      object_class_property_add_bool(oc, PC_MACHINE_SMBUS,
+>>          pc_machine_get_smbus, pc_machine_set_smbus, &error_abort);
+>> =20
+>> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+>> index 8770ecada9..8ad8e885c6 100644
+>> --- a/hw/i386/pc_piix.c
+>> +++ b/hw/i386/pc_piix.c
+>> @@ -297,8 +297,8 @@ static void pc_init1(MachineState *machine,
+>>                                   PC_MACHINE_ACPI_DEVICE_PROP, &error_=
+abort);
+>>      }
+>> =20
+>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
+>> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
+>> +    if (machine->nvdimms_state->is_enabled) {
+>> +        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+>>                                 pcms->fw_cfg, OBJECT(pcms));
+>>      }
+>>  }
+>> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+>> index cfb9043e12..372c6b73be 100644
+>> --- a/hw/i386/pc_q35.c
+>> +++ b/hw/i386/pc_q35.c
+>> @@ -329,8 +329,8 @@ static void pc_q35_init(MachineState *machine)
+>>      pc_vga_init(isa_bus, host_bus);
+>>      pc_nic_init(pcmc, isa_bus, host_bus);
+>> =20
+>> -    if (pcms->acpi_nvdimm_state.is_enabled) {
+>> -        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
+>> +    if (machine->nvdimms_state->is_enabled) {
+>> +        nvdimm_init_acpi_state(machine->nvdimms_state, system_io,
+>>                                 pcms->fw_cfg, OBJECT(pcms));
+>>      }
+>>  }
+>> diff --git a/include/hw/boards.h b/include/hw/boards.h
+>> index 9690c71a6d..e231860666 100644
+>> --- a/include/hw/boards.h
+>> +++ b/include/hw/boards.h
+>> @@ -210,6 +210,7 @@ struct MachineClass {
+>>                                   int nb_nodes, ram_addr_t size);
+>>      bool ignore_boot_device_suffixes;
+>>      bool smbus_no_migration_support;
+>> +    bool nvdimm_supported;
+>> =20
+>>      HotplugHandler *(*get_hotplug_handler)(MachineState *machine,
+>>                                             DeviceState *dev);
+>> @@ -272,6 +273,7 @@ struct MachineState {
+>>      const char *cpu_type;
+>>      AccelState *accelerator;
+>>      CPUArchIdList *possible_cpus;
+>> +    struct NVDIMMState *nvdimms_state;
+>=20
+> What about simply 'nvdimm'?
+> - it is already part of a state
+> - no plural, there is only 1 state
+Well actually I followed Igor's suggestion
+(https://www.mail-archive.com/qemu-devel@nongnu.org/msg601980.html).
+
+The state contains information about all present NVDIMMs (See
+NvdimmFitBuffer comment and "fit: FIT structures for present NVDIMMs").
+
+No strong opinion though.
+
+Thanks
+
+Eric
+
+
+
+>=20
+>>  };
+>> =20
+>>  #define DEFINE_MACHINE(namestr, machine_initfn) \
+>> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+>> index 94fb620d65..263a6343ff 100644
+>> --- a/include/hw/i386/pc.h
+>> +++ b/include/hw/i386/pc.h
+>> @@ -45,8 +45,6 @@ struct PCMachineState {
+>>      OnOffAuto vmport;
+>>      OnOffAuto smm;
+>> =20
+>> -    NVDIMMState acpi_nvdimm_state;
+>> -
+>>      bool acpi_build_enabled;
+>>      bool smbus_enabled;
+>>      bool sata_enabled;
+>> @@ -74,8 +72,6 @@ struct PCMachineState {
+>>  #define PC_MACHINE_MAX_RAM_BELOW_4G "max-ram-below-4g"
+>>  #define PC_MACHINE_VMPORT           "vmport"
+>>  #define PC_MACHINE_SMM              "smm"
+>> -#define PC_MACHINE_NVDIMM           "nvdimm"
+>> -#define PC_MACHINE_NVDIMM_PERSIST   "nvdimm-persistence"
+>>  #define PC_MACHINE_SMBUS            "smbus"
+>>  #define PC_MACHINE_SATA             "sata"
+>>  #define PC_MACHINE_PIT              "pit"
 >>
->> Way better! I'll use query-firmware-config-items.
-> 
-> Do we need the -items suffix? Also, is there a chance that we might ever
-> want to extend the command to return more information that is global to
-> firmware-config rather than per-item?
-
-Laszlo suggested it could be useful to ask for a specific item (with the
-full data encoded?).
-
->>>> +{ 'command': 'query-fw_cfg-items', 'returns': ['FirmwareConfigurationItem']}
-> 
-> As written, this results in:
-> 
-> { "return": [ { ... }, { ... } ] }
-> 
-> but if you add a layer of nesting, you could have easier extensions:
-> 
-> { "return": { "global": {}, "items": [ { ... }, { ... } ] } }
-> 
-
-Oh I guess I got it, I'll try it.
-
-Thanks!
-
-Phil.

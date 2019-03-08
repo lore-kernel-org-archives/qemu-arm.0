@@ -1,96 +1,83 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8393242wrx;
-        Fri, 8 Mar 2019 05:49:07 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzMpFM823jlmuzD+cyiZ2PhviwkPm2PjSa/WkG1nGmNvkgONcnmckUajI/wP0xMcbgDyC/2
-X-Received: by 2002:a25:5089:: with SMTP id e131mr15541052ybb.477.1552052946932;
-        Fri, 08 Mar 2019 05:49:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552052946; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8499328wrx;
+        Fri, 8 Mar 2019 07:25:42 -0800 (PST)
+X-Google-Smtp-Source: APXvYqx7g9vuSrzqfQZhOx9gaaT7hzdCf4DlOCJCnLSd5tr6RY0LAjIeN2EU9t1Isfbog7BKhax0
+X-Received: by 2002:a25:bf82:: with SMTP id l2mr16605874ybk.15.1552058742460;
+        Fri, 08 Mar 2019 07:25:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552058742; cv=none;
         d=google.com; s=arc-20160816;
-        b=l7T7h1WhVxe6vBWHRYNzgIkd1Pk0OOVRVkOzlwxkyr1c65y/XJFXhbFD6hQq6LFkkT
-         s1Vtm/pzBdzb4IwYS9hFbwA8c2iBK1Nc2hdOGIbzI8z2d6BBiHOfe4VIFhqmNlskavt9
-         bU+HRYTsIPsYVXdglV4EwE09Hr2FGGVSzq1Ao/fZdtOJ9zLxHwtEKPUv+0f5DrlbrSEd
-         4e+oEj6BBV9EZdbGGZuNkwrTJ6DKNzPmT9XrsTKdK5zqFVlWl9eSGdKfcb72pKFGk11F
-         6nl1iRUsNPM+M1vF9qabpfWX1RiKh1VU9aIpIdfaOOY/qyryJMG3NcQH+3mQJl2neEvP
-         OZwQ==
+        b=MhBAU4SYyP9zI+VIEVxWP17Bn/8pYPFb+ePDEAgYcfHQPrcHjHcXTGSSAeF/AhHLhy
+         KXWZa3EJ3GMDJdHealcHaSL+frH1tKqHViVgnTDUTf0ANivFda8gKtfpy+IWsEMgZR+X
+         LS2dZ9v10RGwmEuqUD2xJAFeDqH9+fRb/awYG5fbNpU1AXac0qEcTKVy2kRcYyb60sUW
+         cnOyprPrX48RBvQbP0vr6UdJd+ytgMKbcqrT47HJmDutfh8a26TFTVmp2BJKmrX8tJ7n
+         yapkuu4mY0o7g0uOj79G7oVj9h5lRoeNCAAwTdOwzv1wz4eYpKOzT5mQoayisE1wlv2O
+         9RSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date;
-        bh=iAB6rvKCidREX7VrCIugHkgUzNSgP9ol0zsyRwBuwKc=;
-        b=Y2V6OdraeEHwfQcM46yNViZ4zM84SizqhsMZ9vuK+R6mwUglb0gYLEsNHqzmywTw6p
-         KnVZCLvEdkskWpwnoA1u+mETl8UcUKOLlykqMP0j4+msAIU3hWmGR670C3G/8FElw0hh
-         jGqOAOqH6nphOJEVV1caTMvIu/vWgRHmiimyvlV/YG+qT109raa6wuTiuPFmCTVM2NqY
-         y7/tD6zjMeABGHf26hGtiHpHvgjZCF28NIg4dOqr/M6m7fpteaL7g+24u/sa1HMSTHL7
-         QYRHA3X8AQpfxuckpnuU0MMWoONHYF4JyzHAuNXtbmUHRppRB/DVKx4bJCA8c+7QIdYF
-         GufA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=2pm8KxTIkawOuxV37zvCD91Bb7vALx0+xJ6kszj7Bdw=;
+        b=sOljkQmEHgtmrase7WJ5c7QeemlcDAXqq+RIuvXMRZlQwEcIFvBzpi444zAAd1dFHB
+         JyTLd+elNEUfOwyWgFObs3oU8tvYqnkrdVNdGLkPclZYHobJtEKfOXgnBuVpfJe5jEtL
+         lo1UPXlFlxXrEGpZ0oCFGoxTQpM3u3/xeAJ0GCxqGhIi17nyEUKKom29g8VmpQeD8UP4
+         HHqkJX0DzpLIrVNoCT0T7HghHamK+y0LH4ggT2md8fGfpOCoCm33HM56FvKT7NwKePUW
+         7JAe6/0SYdglDkbljrp7tUhp7g+5uOQZDkazgq7aEvNQlLOLvD1FXvFByOTO4cka8974
+         HtVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si4601814ybg.275.2019.03.08.05.49.06
+        by mx.google.com with ESMTPS id v79si4898540ywa.260.2019.03.08.07.25.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 05:49:06 -0800 (PST)
+        Fri, 08 Mar 2019 07:25:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:43792 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:45580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2Fs1-0007mY-80
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 08:49:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45538)
+	id 1h2HNV-0001AT-Rk
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 10:25:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1h2Fri-0007kN-QR
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 08:48:47 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1h2HNM-0001AB-6a
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:25:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1h2Frf-0006hY-Mw
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 08:48:45 -0500
-Received: from mail-qt1-f195.google.com ([209.85.160.195]:39360)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1h2Fre-0006QF-89
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 08:48:43 -0500
-Received: by mail-qt1-f195.google.com with SMTP id o6so21198737qtk.6
-	for <qemu-arm@nongnu.org>; Fri, 08 Mar 2019 05:48:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to;
-	bh=iAB6rvKCidREX7VrCIugHkgUzNSgP9ol0zsyRwBuwKc=;
-	b=fBBnX5hv8/ocz+FU0ozehgBuEoy6vM40rmlkPYbvpYnI4+e+2cOtltKTyCUAk7u8OW
-	3SIYd/tYbyDNCadumJhQZ5stns5B3pvQOdtpXudKDYIdR5jbSkRu0g+x22sDvvGNUXbp
-	zmtx9V93LmvrOyak2hqSqbiBAVjxCSpamHG69R2t4I6hME759/8MXckVpqB0TDGXp3Xf
-	f8fkRecPatFatafdKAs+IPEh2e/UWzcBT93V9f9qdImnX8eKf6DFPoUFSPZSfEc2uRdj
-	Q4p4Q4JCSb2GkAZpkSqSlF8m2ovkTBS1LFAeGqNT1ZB2RDUXWFySuPuq1HAQQfFddReB
-	syGg==
-X-Gm-Message-State: APjAAAWFG0/WPNnOi4ExZlauANj0NsfGFydG3cJqm5DMjmJKYt5pDdsd
-	VDzIuOXTwXxiledhy/KhN7OXHQ==
-X-Received: by 2002:aed:2a6d:: with SMTP id k42mr15288166qtf.390.1552052918965;
-	Fri, 08 Mar 2019 05:48:38 -0800 (PST)
-Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
-	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
-	p35sm4902529qte.83.2019.03.08.05.48.37
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 08 Mar 2019 05:48:38 -0800 (PST)
-Date: Fri, 8 Mar 2019 08:48:35 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190308084438-mutt-send-email-mst@kernel.org>
-References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-11-philmd@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1h2HNL-0003Is-C3
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 10:25:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60056)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h2HNL-0003C2-60; Fri, 08 Mar 2019 10:25:31 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6C89AC05D3F4;
+	Fri,  8 Mar 2019 15:25:29 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CC0485D704;
+	Fri,  8 Mar 2019 15:25:19 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com,
+	david@redhat.com, pbonzini@redhat.com, ehabkost@redhat.com,
+	richard.henderson@linaro.org, sbhat@linux.ibm.com, philmd@redhat.com
+Date: Fri,  8 Mar 2019 16:25:09 +0100
+Message-Id: <20190308152511.10882-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190308013222.12524-11-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 08 Mar 2019 15:25:29 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.195
-Subject: Re: [Qemu-arm] [PATCH v2 10/18] hw/nvram/fw_cfg: Add reboot_timeout
- to FWCfgState
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v3 0/2] machine: Move nvdimms state into struct
+ MachineState
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,73 +89,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Laszlo Ersek <lersek@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EHg40q2vG+LC
+X-TUID: +AdJuRFR9pyc
 
-On Fri, Mar 08, 2019 at 02:32:14AM +0100, Philippe Mathieu-Daudé wrote:
-> Due to the contract interface of fw_cfg_add_file(), the
-> 'reboot_timeout' data has to be valid for the lifetime of the
-> FwCfg object. For this reason it is copied on the heap with
-> memdup().
-> 
-> The object state, 'FWCfgState', is also meant to be valid during the
-> lifetime of the object.
-> Move the 'reboot_timeout' in FWCfgState to achieve the same purpose.
-> Doing so we avoid a memory leak.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+As NVDIMM support is looming for ARM and SPAPR, let's
+move the acpi_nvdimm_state to the generic machine struct
+instead of duplicating the same code in several machines.
 
-I don't like adding random per-file state to fw cfg at all.
+nvdimm and nvdimm-persistence become generic machine options.
+They become guarded by a nvdimm_supported machine class member.
 
-I don't see a leak. Please add more explanation about this.
-And maybe split from this series.
+Best regards
 
-> ---
->  hw/nvram/fw_cfg.c         | 4 +++-
->  include/hw/nvram/fw_cfg.h | 2 ++
->  2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index b73a591eff..182d27f59a 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -250,7 +250,9 @@ static void fw_cfg_reboot(FWCfgState *s)
->          }
->      }
->  
-> -    fw_cfg_add_file(s, "etc/boot-fail-wait", g_memdup(&rt_val, 4), 4);
-> +    s->reboot_timeout = rt_val;
-> +    fw_cfg_add_file(s, "etc/boot-fail-wait",
-> +                    &s->reboot_timeout, sizeof(s->reboot_timeout));
->  }
->  
->  static void fw_cfg_write(FWCfgState *s, uint8_t value)
-> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> index 828ad9dedc..99f6fafcaa 100644
-> --- a/include/hw/nvram/fw_cfg.h
-> +++ b/include/hw/nvram/fw_cfg.h
-> @@ -53,6 +53,8 @@ struct FWCfgState {
->      dma_addr_t dma_addr;
->      AddressSpace *dma_as;
->      MemoryRegion dma_iomem;
-> +
-> +    uint32_t reboot_timeout;
->  };
->  
->  struct FWCfgIoState {
-> -- 
-> 2.20.1
+Eric
+
+https://github.com/eauger/qemu/tree/nvdimms_state_v3
+
+Eric Auger (2):
+  nvdimm: Rename AcpiNVDIMMState into NVDIMMState
+  machine: Move nvdimms state into struct MachineState
+
+ hw/acpi/nvdimm.c        | 18 ++++++------
+ hw/core/machine.c       | 65 +++++++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c    |  6 ++--
+ hw/i386/pc.c            | 57 ++++--------------------------------
+ hw/i386/pc_piix.c       |  4 +--
+ hw/i386/pc_q35.c        |  4 +--
+ include/hw/boards.h     |  2 ++
+ include/hw/i386/pc.h    |  4 ---
+ include/hw/mem/nvdimm.h | 10 +++----
+ 9 files changed, 93 insertions(+), 77 deletions(-)
+
+--=20
+2.20.1
+

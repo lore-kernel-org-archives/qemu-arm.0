@@ -1,112 +1,106 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8983993wrx;
-        Fri, 8 Mar 2019 16:45:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwYqKl8nI7b3/JDcvFslJDNrm2/tlwBjKL/9c6uk3xVMkkDx8rdC05+hHqAJmZnTlzBs6WU
-X-Received: by 2002:a81:25d4:: with SMTP id l203mr16681109ywl.279.1552092354390;
-        Fri, 08 Mar 2019 16:45:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552092354; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp8996014wrx;
+        Fri, 8 Mar 2019 17:03:32 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw9+UMvFDj+lKLr4YwrWqd2XYPt+z8/8FsuaMIPJfpkaCx9qylie77VXKfIi70xvLzwc7Z6
+X-Received: by 2002:a25:2f91:: with SMTP id v139mr18475113ybv.407.1552093412049;
+        Fri, 08 Mar 2019 17:03:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552093412; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZOMw2isyOAZDZ6eP7SDgSx3DBh4r7fuNzJ6vdO8cBYh6vLbNdn1QVTatPM9eGOdDi
-         BoWyKzBonTp/SAAiukFWSYU5VhGU/JWpqy/PwES7pnPnKSFLpyplPAamaHsvNr9j3QBq
-         2sUQDwX6458wRC/5NzRS3p0fG3vAwdxJj3Kgwq1dFhmsKiYwB7ztbzifXsiddb8UQ0Nu
-         wd7VuiU7SnXbKa3Agdv5tL8aSyD+vpD2vSw/jKR4OwUpDZZpxgmXXFgVcpgu0xxG4Mjv
-         K5ERiarfC8avmzZPsyC3IcVc2Kn0CSygxZXyUjadjFQMGF2d8ptUxdSD9cTlEsY1iFMi
-         +Hrg==
+        b=YaMa43avowEUEZ16J8NLzCDJmvY91AUrkGNOD0UwOcxDcqTMn5Sisza7zCvG2xbvby
+         n5z8ojVkfSWwdefUvZmx0BwBqo0aDdJ3tjzSKb0MN6vsc11IGSZCBoLRcNIJZnBL65/I
+         Pls5+YNHMW8EIIivgGFEFrZh7u8ivMdAf3lwbfNbMmUxlQ56XbCVAoQjStliNhjHbLBl
+         QacUZFK/QUinJcBpFN/IMWqzdCITt3TFaMRibzc/2Ov85+ojSjmK4UCjPnzd2dNYGuYh
+         VYyeRBRug21fV/MfYAFl4U2f8gmJjfoyVH7+7irbuUR/3++gTr+bYamh1nMPOzBa8nk8
+         5LJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=xfvoNQ1extiUI8d00iB78lGZa/wNK/eOopu7rJYLiNo=;
-        b=VVm2s4/9jpwo7hl8Sps6phV5EOP+WNTbcWd92DLfRJzPr1KoYGG0uG3SomiivMgwbs
-         5CdZ6jvPKuupEhdIWb/rHelCxf+vU4Cv/TEW+FBN3GkYMreqQF5iS/mQ2ntwT/rWHJjD
-         sNbdVLLeRpwP0keJxsJV6ZqBQDiAeLKn7nVpIGE7U0evGyTslgm8SdkEwHL+j2a8eb0A
-         aWJO0lTyz3R8yu1ubcQVDdQ/so4qgaCh26RyR6HKX1c1v+Iia7rZkyiJLF0F0THdIGdK
-         Kwc4JNt7cKEXEEf7vIiPieE7UWZ9DphYVUWn3sa0qA5QYXASyHPq+LblkFH7jsfb1Qc6
-         Zirw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=7B6vq2Tg2ea97nifXGcS5qHp/idM1KczvyomVshz4mA=;
+        b=ypJSUTGBeOUescHl6p0jopshLbYvHfnwS/sip4pab1AS+hnTfeuYKpBfiZHYv4Bpna
+         rRi6bvL2pVJHSViwBzEn/GwXeITtqsq36CvTwZ75ki0olyKyuXPLNcYoKrdbESQfVE5I
+         6l1UHlQMNOwh/DbByjp2QFMVMKQpQ7cRHC6YKVNeHXnXcOyGA4IPJpR4nQgSNTtkumTo
+         KNgRQeb3qWf/NEg0Vs1BiIKaUdu9tNr3YGTyib8NnAwG1qaWFAsHeCGBLfOYh78H3bpY
+         KboXbHI3+aD2qFkcMzdMy0zQT73OEai3KzkrFwvextV+P8Vk6mONnPaqpA5cl5BDy0u4
+         keng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=P16WDcYD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qnRBnimA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q126si2315863ywd.303.2019.03.08.16.45.53
+        by mx.google.com with ESMTPS id i14si5520831ywa.225.2019.03.08.17.03.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Mar 2019 16:45:54 -0800 (PST)
+        Fri, 08 Mar 2019 17:03:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=P16WDcYD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:52028 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qnRBnimA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:52241 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2Q7c-0007jd-Qf
-	for alex.bennee@linaro.org; Fri, 08 Mar 2019 19:45:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57227)
+	id 1h2QOf-0001yZ-4s
+	for alex.bennee@linaro.org; Fri, 08 Mar 2019 20:03:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60900)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h2Q7O-0007jV-RR
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 19:45:39 -0500
+	(envelope-from <bztemail@gmail.com>) id 1h2QOT-0001yF-Qz
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 20:03:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h2Q7N-0006rK-Ty
-	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 19:45:38 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:32899)
+	(envelope-from <bztemail@gmail.com>) id 1h2QOS-0006nV-UT
+	for qemu-arm@nongnu.org; Fri, 08 Mar 2019 20:03:17 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:43742)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h2Q7N-0006qJ-NY; Fri, 08 Mar 2019 19:45:37 -0500
-Received: by mail-wr1-x441.google.com with SMTP id i8so84351wrm.0;
-	Fri, 08 Mar 2019 16:45:37 -0800 (PST)
+	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
+	id 1h2QOS-0006mX-Lo; Fri, 08 Mar 2019 20:03:16 -0500
+Received: by mail-lj1-x242.google.com with SMTP id z20so18920999ljj.10;
+	Fri, 08 Mar 2019 17:03:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=xfvoNQ1extiUI8d00iB78lGZa/wNK/eOopu7rJYLiNo=;
-	b=P16WDcYDZMh0Xo5cvq39G31xfh8KRmXWgqqnC1dseG76XTfLyVHgVkwoCGQnwQkIdj
-	TW883MOswNhB3ql6jilJyQgtstZuj1WOkGlVoQkWIXlJjFguVRU9rpodgaQs3gZ8tnPW
-	kC0OoFiYX8nlyx0tWsZOWyNs5G80JHmGoWrKvodEkotbPZ75QKVCq9c/KRrPEUXXwkLq
-	3IFgrNaGw+PkOl33adbBg+rMd/+Sx/zx6xI5+wVc1vvliYiQkonTRS76MPljc4JwCyz4
-	g1l2S7K7p1ZcjyPcCE1FqtQ0udt8kOgo3uuZaUbmLMbjW0iVhqrWdIJACYEOVlFTecIq
-	rFkw==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=7B6vq2Tg2ea97nifXGcS5qHp/idM1KczvyomVshz4mA=;
+	b=qnRBnimARrczUqJ4BkuVvAerZ3HLDjTi7v5zUcplk8wQafWaSh+9yBGEVfIhVRAadU
+	SSqzq5C13yMkJiIYpWbyujfL8sN8kvhkRZEx9hsZyhF2dXD2Q0MlUhni4cLoEsPAm8LI
+	BJordTFD3q7Z/FexHhZLIjOa7Fb4lF+g2iEYY7ALK9jDMmnf4IoUYX+h7D3dt5uePjwb
+	y//dIKdDQ9lzI/MxMvCdOnsxdNm5p05TYSX64JExo2n++F/glgPQQsq9GtI/67/AiVEL
+	/cRcYH93ucUKkYKNi1L7tG/NdrejoSIzwlLllNWtNQ+SjP39NKFS8bP0b6m2RnXuzK77
+	MnLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=xfvoNQ1extiUI8d00iB78lGZa/wNK/eOopu7rJYLiNo=;
-	b=h43ruXlWx46OrztMi1+SxcSH+QsS1GTdXXMODkMK2fYkoGXcnATLrRQgCFcyrWVOT1
-	fviuyLbQ9tSP0nUG65CJnoX1rlus6aAyzcp/1PDdPgQsqzarSyVcbgEeynhuE2SRKSOf
-	GImKuPf0/jsrSLIro4q1AhLbRQRMqWHNiSJAbdfYKGXAEh/I0It027VKef1zbP9Y04ns
-	I8HOFBxw9uKMEIHK9Mpc3Cie5jxLLSuYd7H2hlk5ZefNQxietwQxwKa7odvauK1zlQ4o
-	YnKDuocp3rrr+WRa1JfLKEwiaIcWg7gYhgZ+QNYLNmn+/mxfFmNDMADXwHK0Zwbh2iCO
-	7z0A==
-X-Gm-Message-State: APjAAAVYp1bg7NTIUqn27GkW22axkZ7+owJifNehGsfrWUH+MxGrmm1l
-	igN8druX0DaLC/YgpKHkzDE=
-X-Received: by 2002:adf:e78d:: with SMTP id n13mr6107859wrm.75.1552092336352; 
-	Fri, 08 Mar 2019 16:45:36 -0800 (PST)
-Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
-	p6sm26156004wre.63.2019.03.08.16.45.34
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Fri, 08 Mar 2019 16:45:35 -0800 (PST)
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20190307144126.31847-1-richard.henderson@linaro.org>
-	<20190307144126.31847-10-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <906cb044-a5ef-21a2-3ccc-2b7492c2301c@amsat.org>
-Date: Sat, 9 Mar 2019 01:45:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=7B6vq2Tg2ea97nifXGcS5qHp/idM1KczvyomVshz4mA=;
+	b=SJchREggSUu/JHHDYglqV3IV9lgqD4MpGUE91GIB813K8T1Rl1r5RaLI4WseAWFk3O
+	CIN+XnSanvK6Kck8GZRr0JAT00hi5/TWSA6Sug5HEevZkV6XXeVDq3Zq+bubZEEdhV0C
+	RDDzCzd1R/j5jNwmcjEPkqcwGzuhDnwdFtEzM2ClK+v5EZXJTXGBEERlUXRARsVo9w2t
+	bVz+WbfMCs53M+lJsQoivbO/9k8Nzdt+xcvy9j6lVQokj/JOCzjqTvK4Cj88C3oq40Qo
+	qHck6yalZ3VTnM19jBcLtOkglJrh8xFLHDGHCqPD/EYQqNKuqhwnhA/4K/Foe/ygDCok
+	yQQA==
+X-Gm-Message-State: APjAAAWnOuDAbAoJULllwKCYTuAwj+QGlceyt+kp7oVuvEn3bhK7/+lx
+	S4HvTqOfv+R5lnjaXGj1809Y9VFfsc08o5GYHeU=
+X-Received: by 2002:a2e:9dd2:: with SMTP id x18mr11609103ljj.109.1552093394751;
+	Fri, 08 Mar 2019 17:03:14 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190307144126.31847-10-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a2e:8554:0:0:0:0:0 with HTTP;
+	Fri, 8 Mar 2019 17:03:13 -0800 (PST)
+In-Reply-To: <CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
+References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
+	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
+	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
+	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
+	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
+	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
+	<CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
+	<CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
+From: bzt <bztemail@gmail.com>
+Date: Sat, 9 Mar 2019 02:03:13 +0100
+Message-ID: <CADYoBw2XWeDUqBHVJBWxJAzQ4f0imosEeLHHoG9AfHfdavOTrA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: Re: [Qemu-arm] [PATCH 9/9] target/arm: Simplify BFXIL expansion
+X-Received-From: 2a00:1450:4864:20::242
+Subject: Re: [Qemu-arm] [PATCH] Added periodic IRQ support for
+ bcm2836_control local timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,55 +112,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	david@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yXU0+WvhcwjN
+X-TUID: YnRbpjN2qRqD
 
-On 3/7/19 3:41 PM, Richard Henderson wrote:
-> The mask implied by the extract is redundant with the one
-> implied by the deposit.  Also, fix spelling of BFXIL.
+Hi,
 
-This spelling fix also help understanding the context!
+Thanks for your answers. If I don't clear the INTENABLE flag, then the
+IRQ would keep firing constantly. This is not how the real hardware
+works: it triggers the IRQ once, and then it inhibits. The timer won't
+trigger the IRQ again until you acknowledge it by writing the INTFLAG
+into the ack register. My solution emulates this behaviour. That's
+what the triggered flag was for in my original patch. Should I bring
+that flag back or is the current solution acceptable knowing this?
 
-> 
-> Cc: qemu-arm@nongnu.org 
-> Cc: Peter Maydell <peter.maydell@linaro.org> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate-a64.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 54fe94c436..39e0512d21 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -4043,8 +4043,8 @@ static void disas_bitfield(DisasContext *s, uint32_t insn)
->              tcg_gen_extract_i64(tcg_rd, tcg_tmp, ri, len);
->              return;
->          }
-> -        /* opc == 1, BXFIL fall through to deposit */
-> -        tcg_gen_extract_i64(tcg_tmp, tcg_tmp, ri, len);
-> +        /* opc == 1, BFXIL fall through to deposit */
-> +        tcg_gen_shri_i64(tcg_tmp, tcg_tmp, ri);
->          pos = 0;
->      } else {
->          /* Handle the ri > si case with a deposit
-> @@ -4062,7 +4062,7 @@ static void disas_bitfield(DisasContext *s, uint32_t insn)
->          len = ri;
->      }
->  
-> -    if (opc == 1) { /* BFM, BXFIL */
-> +    if (opc == 1) { /* BFM, BFXIL */
->          tcg_gen_deposit_i64(tcg_rd, tcg_rd, tcg_tmp, pos, len);
+About keeping the INTFLAG on control write that's to avoid an instant
+IRQ, but that's OK. I'll modify that.
 
-Fall through and use deposit of len indeed. So the previous SHRI is enough.
+Thanks,
+bzt
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-This function uses hardcore optimizations btw, un chef d'oeuvre :)
-
->      } else {
->          /* SBFM or UBFM: We start with zero, and we haven't modified
-> 
+On 3/7/19, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Thu, 7 Mar 2019 at 15:57, bzt <bztemail@gmail.com> wrote:
+>>
+>> Nope. I meant the second patch, sent on 4th Mar, which had all the
+>> things fixed you listed in your review.
+>>
+>> But here's the modification for your latest query. This one controls
+>> the timer depending on ENABLE bit. It sets the INTFLAG even if
+>> INTENABLE is not set, and only raises the IRQ if both are set.
+>
+> Thanks. I've listed a couple of minor things below
+> which I think are not quite handling the flags right,
+> but the rest looks good.
+>
+>> @@ -78,6 +94,17 @@ static void bcm2836_control_update(BCM2836ControlState
+>> *s)
+>>          s->fiqsrc[s->route_gpu_fiq] |= (uint32_t)1 << IRQ_GPU;
+>>      }
+>>
+>> +    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
+>> +    if ((s->local_timer_control & LOCALTIMER_INTENABLE) &&
+>> +        (s->local_timer_control & LOCALTIMER_INTFLAG)) {
+>> +        if (s->route_localtimer & 4) {
+>> +            s->fiqsrc[(s->route_localtimer & 3)] |= (uint32_t)1 <<
+>> IRQ_TIMER;
+>> +        } else {
+>> +            s->irqsrc[(s->route_localtimer & 3)] |= (uint32_t)1 <<
+>> IRQ_TIMER;
+>> +        }
+>> +        s->local_timer_control &= ~LOCALTIMER_INTENABLE;
+>
+> This shouldn't clear the INTENABLE flag.
+>
+>> +    }
+>> +
+>>      for (i = 0; i < BCM2836_NCORES; i++) {
+>>          /* handle local timer interrupts for this core */
+>>          if (s->timerirqs[i]) {
+>> @@ -162,6 +189,55 @@ static void bcm2836_control_set_gpu_fiq(void
+>> *opaque, int irq, int level)
+>>      bcm2836_control_update(s);
+>>  }
+>
+>> +static void bcm2836_control_local_timer_control(void *opaque, uint32_t
+>> val)
+>> +{
+>> +    BCM2836ControlState *s = opaque;
+>> +
+>> +    s->local_timer_control = val & ~LOCALTIMER_INTFLAG;
+>
+> This will clear the LOCALTIMER_INTFLAG if it was already
+> set -- you want to preserve it, something like
+>    s->local_timer_control = (s->local_timer_control & LOCALTIMER_INTFLAG) |
+>      (val & ~LOCALTIMER_INTFLAG);
+>
+>> +    if (val & LOCALTIMER_ENABLE) {
+>> +        bcm2836_control_local_timer_set_next(s);
+>> +    } else {
+>> +        timer_del(&s->timer);
+>> +    }
+>> +}
+>> +
+>> +static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
+>> +{
+>> +    BCM2836ControlState *s = opaque;
+>> +
+>> +    if (val & LOCALTIMER_INTFLAG) {
+>> +        s->local_timer_control |= LOCALTIMER_INTENABLE;
+>> +        s->local_timer_control &= ~LOCALTIMER_INTFLAG;
+>
+> This should just clear the INTFLAG, it doesn't affect INTENABLE.
+>
+>> +    }
+>> +    if ((val & LOCALTIMER_RELOAD) &&
+>> +        (s->local_timer_control & LOCALTIMER_ENABLE)) {
+>> +            bcm2836_control_local_timer_set_next(s);
+>> +    }
+>> +}
+>
+> thanks
+> -- PMM
+>

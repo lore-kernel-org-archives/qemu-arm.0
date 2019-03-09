@@ -1,90 +1,103 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9582025wrx;
-        Sat, 9 Mar 2019 07:25:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwOVGW0G3IanNRl4Orkk3zdnflwg+rsUbiIX6LUje85PjqzjnAYcoQsrbpcclongk5B4nPR
-X-Received: by 2002:a25:d715:: with SMTP id o21mr15290211ybg.121.1552145158583;
-        Sat, 09 Mar 2019 07:25:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552145158; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9714222wrx;
+        Sat, 9 Mar 2019 10:08:40 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzI8iioyYUA0q0fUoe3heMshtDYyR5NS8Zi9yploO8hdytCX47/1KC9TIWEN8f5IXzI90R0
+X-Received: by 2002:a81:3dc8:: with SMTP id k191mr19465247ywa.139.1552154920844;
+        Sat, 09 Mar 2019 10:08:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552154920; cv=none;
         d=google.com; s=arc-20160816;
-        b=bx8B1e3Yp79mmbz3uwsKCSk31hhSzlXM4B0/7pwqiL7xMsptsW37dlNfn3hT0FmxSN
-         JsVvZCVuWi8U8ziwA1iVDloF2wn4yA0jeHwg6IJyp48xVT4o2Ij9P/yIa+4gRMNJ4m5z
-         xmnBkzT4YYHReHUJsw1iXjTFm44si8d3Jn4/F+199Gh+0foFUrDZoHTG09OSe3AmK9t9
-         RCefxz9mVjstaAf3+g5nd5o4Y6hJTOJ2f1dwaQ5TPlVjuhDwLyLiT5rVBV8koewvxkGb
-         /Qx6n093orxUn4xzVZRGLb+kC+04GpGjOXnkk3l/AdhHCEuE9V0YThoGCvWuwD5c9Fux
-         iwFA==
+        b=zxQY9mC2zlJwU9jJV6GVuW1nGfd7mz95RKDC8OAAgMFb3XaYAdWrLJbLrZTAjE5vV/
+         3vrg7nWnir5eaEQslqYdPVc/xhnK+qpT+1m3ab/4BSCLQ9n2ahSosucSY6mhdT1QwF2u
+         vbyCzHB1hiuCWs9yn3KxMc3rDIHhys0cPDhYEw9KiZMaU76ibmFVWDpCXW1tgN8Hinz9
+         dFf10BLng66qfBdFjLMhbd2cZGgxWA0bEec8J6eF+XjlDC+jEVUpBdbNUpWHayEY78Sr
+         ov6TQ3qEhmRXpsvF3hkLgj6LO+HSaxhkjJOuQPT2EW1iSRoceXycaC/iuI5oz7UA6gRE
+         m6DQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from;
-        bh=J0brdJ4p8tnF/0qlQbRIXhib922pqaLPjHWbtxnSoOs=;
-        b=vR7XmvYQQY1E6V5w+Z+PIQbeNWSkPPCrpXsFtJAWj+XIt41VPPS9fM4SNwcDYGFuMd
-         KE1eMl8ZT9pue4lc5Qqi03AAJrQxzURxwJgbCVKmEIoQURUMn1ZGzuhpSQEU/IY0nyR9
-         yvaHGHb9ZSlQpNJUqr6aL56JE4/UeaMWQkp8WzlhLbpw4JE87B18kOIv2EBzPSYgTUG4
-         3uLchBZzwFLCWdYDUW6kKOLfoaiGA2GH43W7hpL1WkdDuPLWUW0t7uMh9qNs2HvYJDKz
-         xaxwCmmah/ZJHsRMR2Iu41AreM1COwQuTyTFxAyKE61Ym1UvfDIysocQpyUBbwGDwHVY
-         mpEg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=QnrXQ34ttK1DBpNNcFgqcFN/lVLGLHrnwgV95ct9gr4=;
+        b=FyF3qIlZOvezaBdkUbbrdHrVQnC4f9jPgk0rdveVjiE92gHh/V4ZCyYMB5hddWHoCa
+         LSnODEi7aZxIK1mbV+XF4Bl1f5JEfPIHevdmQm0s52H/g0PUSwGiB/comnsHGlBT7g5k
+         XGy2U3VixVYxEk/ejXageNPyOtLGKDk21/i2f3T+rozjNDGrHSeO4qSBZpkldkicYSBA
+         JemP3KiEj5VCKHGIGRxpHu3c33Ut8i33OvosD9iQ1xJTSvYqCuZ6/wvIPAxv/Lr+G3V4
+         aFrH7dLSslZ8X1qasyQcpxE6Ko1FRfaB81ig5n2APVCl1itGT2IyJXAFBSkPgBtbdc9B
+         WUHg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si346927ybw.135.2019.03.09.07.25.58
+        by mx.google.com with ESMTPS id l70si560677ybl.187.2019.03.09.10.08.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Mar 2019 07:25:58 -0800 (PST)
+        Sat, 09 Mar 2019 10:08:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60298 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33820 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2drK-0002y5-1r
-	for alex.bennee@linaro.org; Sat, 09 Mar 2019 10:25:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57754)
+	id 1h2gOm-0007Gz-9G
+	for alex.bennee@linaro.org; Sat, 09 Mar 2019 13:08:40 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51825)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h2dr8-0002xD-Gc
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:25:47 -0500
+	(envelope-from <philmd@redhat.com>) id 1h2gOV-0007CC-Po
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 13:08:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h2dr7-0007gx-Ov
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:25:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40058)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1h2dr7-0007fA-IR; Sat, 09 Mar 2019 10:25:45 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 063553E476;
-	Sat,  9 Mar 2019 15:25:37 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
-	[10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 658CF60BE2;
-	Sat,  9 Mar 2019 15:25:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 906FE1138661; Sat,  9 Mar 2019 15:47:36 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1h2gOU-0004TK-QY
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 13:08:23 -0500
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:45978)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h2gOU-0004RY-Gt
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 13:08:22 -0500
+Received: by mail-wr1-f67.google.com with SMTP id o7so756878wrp.12
+	for <qemu-arm@nongnu.org>; Sat, 09 Mar 2019 10:08:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=QnrXQ34ttK1DBpNNcFgqcFN/lVLGLHrnwgV95ct9gr4=;
+	b=nCC4QPFp4mLLz3BNeKxCiog42VPSE4PPyt0f8sfuXFmMSPdfvmmQAE3Za7PKBRwJYJ
+	eJ4I3MytTZ3NvNfnlsO6RQm9gSBIIRU8uhQErBGflDUEkRuAmXCGI+m1UKWpUuJ4biFp
+	LXywHvEXp/Jqc86zh2QE859PWHxQNaq1EwesSn1quqWNt50HcZCfJJhXiXmiwbHkeHNI
+	rcc77R1Cx34zZkWskGbn2yxKuRdlfKnqINM2bfgKzbVh4P4wkG+8qWlD2+W477YSRy2Y
+	9SYtw7/2z8j1feZwn/uUKodEQU/HnSckdgsnfGGlvDV+7mHJLcDlmYF/pqwhnu2tIt9c
+	d6AA==
+X-Gm-Message-State: APjAAAWUlaU+wTob7iS0/WPf06DQZRBvKuRXn/p/QpEt95taz7kVbrNn
+	2C+YfAyW6g5+OFxhOvtWfzg0oQ==
+X-Received: by 2002:adf:8273:: with SMTP id 106mr15670522wrb.34.1552154900973; 
+	Sat, 09 Mar 2019 10:08:20 -0800 (PST)
+Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
+	[88.25.181.43])
+	by smtp.gmail.com with ESMTPSA id u12sm1009513wrt.2.2019.03.09.10.08.18
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Sat, 09 Mar 2019 10:08:19 -0800 (PST)
+To: Eric Blake <eblake@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-8-philmd@redhat.com>
-Date: Sat, 09 Mar 2019 15:47:36 +0100
-In-Reply-To: <20190308013222.12524-8-philmd@redhat.com> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 8 Mar 2019 02:32:11
-	+0100")
-Message-ID: <87imws3y0n.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	<20190308013222.12524-17-philmd@redhat.com>
+	<82e36613-3968-3459-4be7-f0e927faeb5c@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <600d88c2-460a-3e59-f25b-f2ccac38ad6c@redhat.com>
+Date: Sat, 9 Mar 2019 19:08:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.1
 MIME-Version: 1.0
+In-Reply-To: <82e36613-3968-3459-4be7-f0e927faeb5c@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Sat, 09 Mar 2019 15:25:42 +0000 (UTC)
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 07/18] hw/nvram/fw_cfg: Add
- fw_cfg_common_unrealize()
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [PATCH v2 16/18] hw/firmware: Add Edk2Crypto and
+ edk2_add_host_crypto_policy()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,70 +110,118 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Laszlo Ersek <lersek@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lkl0lY0PKt93
+X-TUID: VGdBPNCuk0/e
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+Hi Eric,
 
-> Back in abe147e0ce4 when fw_cfg_add_file() was introduced, there
-> was no QOM design, object where not created and released at runtime.
-> Later 38f3adc34d finished the QOM conversion of the fw_cfg device,
-> adding the fw_cfg_common_realize() method.
-> The time has come to add the equivalent destructor and release the
-> memory allocated for 'files'.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/nvram/fw_cfg.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
->
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index b2dc0a80cb..0fb020edce 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -959,6 +959,13 @@ static void fw_cfg_common_realize(DeviceState *dev, =
-Error **errp)
->      qemu_add_machine_init_done_notifier(&s->machine_ready);
->  }
->=20=20
-> +static void fw_cfg_common_unrealize(DeviceState *dev, Error **errp)
-> +{
-> +    FWCfgState *s =3D FW_CFG(dev);
-> +
-> +    g_free(s->files);
-> +}
-> +
+On 3/8/19 3:16 AM, Eric Blake wrote:
+> On 3/7/19 7:32 PM, Philippe Mathieu-Daudé wrote:
+>> The Edk2Crypto object is used to hold configuration values specific
+>> to EDK2.
+>>
+>> The edk2_add_host_crypto_policy() function loads crypto policies
+>> from the host, and register them as fw_cfg named file items.
+>> So far only the 'https' policy is supported.
+>>
+>> An usercase example is the 'HTTPS Boof' feature of OVMF [*].
+> 
+> s/An/A/ since "user" is a pronounced or hard 'u' (English is funny, but
+> the rule of thumb is you add the consonant only before a soft u, and not
+> a pronounced one; as in "give an umbrella to a unicorn")
 
-Still leaks at least s->entries[0], s->entries[1], s->entry_order,
-doesn't it?
+I appreciate the correction, thanks :)
 
->  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
->                                  AddressSpace *dma_as)
->  {
-> @@ -1127,6 +1134,7 @@ static void fw_cfg_io_class_init(ObjectClass *klass=
-, void *data)
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->=20=20
->      dc->realize =3D fw_cfg_io_realize;
-> +    dc->unrealize =3D fw_cfg_common_unrealize;
->      dc->props =3D fw_cfg_io_properties;
->  }
->=20=20
-> @@ -1190,6 +1198,7 @@ static void fw_cfg_mem_class_init(ObjectClass *klas=
-s, void *data)
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->=20=20
->      dc->realize =3D fw_cfg_mem_realize;
-> +    dc->unrealize =3D fw_cfg_common_unrealize;
->      dc->props =3D fw_cfg_mem_properties;
->  }
+>>
+>> Usage example:
+>>
+>>   $ qemu-system-x86_64 \
+>>       -object edk2_crypto,id=https,\
+> 
+> Might as well use --object (both spellings work for qemu, but since
+> --object is the only spelling for qemu-img/qemu-nbd, being consistent
+> between the lot is useful).
+
+$ git grep -- ' -object ' | wc -l
+83
+
+^ cover various subsystems:
+
+$ git grep -l -- ' -object '
+docs/amd-memory-encryption.txt
+docs/can.txt
+docs/memory-hotplug.txt
+docs/nvdimm.txt
+docs/pr-manager.rst
+docs/pvrdma.txt
+docs/replay.txt
+hw/virtio/vhost-user.c
+include/authz/listfile.h
+include/authz/pamacct.h
+include/authz/simple.h
+include/crypto/secret.h
+include/crypto/tlscredsanon.h
+include/crypto/tlscredsx509.h
+qapi/misc.json
+qemu-doc.texi
+qemu-options.hx
+target/i386/sev_i386.h
+tests/bios-tables-test.c
+tests/qemu-iotests/127
+tests/qemu-iotests/200
+tests/vhost-user-test.c
+
+
+$ git grep -- ' --object ' | wc -l
+252
+
+^ mostly for the block subsystem:
+
+$ git grep -l -- ' --object '
+block/vxhs.c
+include/crypto/tlscredspsk.h
+qemu-doc.texi
+qemu-img.texi
+qemu-io.c
+qemu-nbd.c
+qemu-nbd.texi
+tests/qemu-iotests/049
+tests/qemu-iotests/049.out
+tests/qemu-iotests/087
+tests/qemu-iotests/134
+tests/qemu-iotests/149.out
+tests/qemu-iotests/158
+tests/qemu-iotests/178
+tests/qemu-iotests/188
+tests/qemu-iotests/189
+tests/qemu-iotests/198
+tests/qemu-iotests/233
+
+I'll change, but I'm not sure what is the default we should enforce...
+
+> 
+>>               ciphers=/etc/crypto-policies/back-ends/openssl.config,\
+>>               cacerts=/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+> 
+> (I really should follow through on my threat to teach QemuOpts to ignore
+> whitespace after ','; but for this commit message, it's obvious the
+> indentation has to be stripped for the command line to be valid)
+> 
+>>
+>> (On Fedora these files are provided by the ca-certificates and
+>> crypto-policies packages).
+>>
+>> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---

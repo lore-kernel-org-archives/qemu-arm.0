@@ -1,90 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9567876wrx;
-        Sat, 9 Mar 2019 07:11:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxKbSoiuvS4XzvsNvr49jG32usQk8MHq7mFVVZuE253Nzp3WzDKHed31XxopckFNPuNXolN
-X-Received: by 2002:a25:9241:: with SMTP id e1mr3733636ybo.135.1552144262425;
-        Sat, 09 Mar 2019 07:11:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552144262; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9582025wrx;
+        Sat, 9 Mar 2019 07:25:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwOVGW0G3IanNRl4Orkk3zdnflwg+rsUbiIX6LUje85PjqzjnAYcoQsrbpcclongk5B4nPR
+X-Received: by 2002:a25:d715:: with SMTP id o21mr15290211ybg.121.1552145158583;
+        Sat, 09 Mar 2019 07:25:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552145158; cv=none;
         d=google.com; s=arc-20160816;
-        b=FuVTpQnpMvM3JDme+oxGRrbojLnkt0C0uxmn8gn6RClAsKocKNjGXx0l95ht746TSh
-         CrOWNBmmGqGpFWoNLdeNTPJ5YvUm2e4gEbnEcUBH4aqXMxm/ZkQtaXKZM1XlY9z85TpU
-         cZ56JP8kjLnWmgzpm+YKBjmLGQZHu1kDJ8N3XQvLS6o1qay1nZ+oLUU6MMt+BN4ktcbB
-         d1Wf/Be+2XKwEUTGsvHUDHPN3JVDAYtqwOByejGCr8dfVehRJS59c3PPqjJN9WaQIX08
-         mV45jVB6ysFs4DyTkOxsm0YLjGLiqOSQ2GR2AfeKLvVxA0lODTtf+6awhRV+ESGI6+xx
-         BKQg==
+        b=bx8B1e3Yp79mmbz3uwsKCSk31hhSzlXM4B0/7pwqiL7xMsptsW37dlNfn3hT0FmxSN
+         JsVvZCVuWi8U8ziwA1iVDloF2wn4yA0jeHwg6IJyp48xVT4o2Ij9P/yIa+4gRMNJ4m5z
+         xmnBkzT4YYHReHUJsw1iXjTFm44si8d3Jn4/F+199Gh+0foFUrDZoHTG09OSe3AmK9t9
+         RCefxz9mVjstaAf3+g5nd5o4Y6hJTOJ2f1dwaQ5TPlVjuhDwLyLiT5rVBV8koewvxkGb
+         /Qx6n093orxUn4xzVZRGLb+kC+04GpGjOXnkk3l/AdhHCEuE9V0YThoGCvWuwD5c9Fux
+         iwFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:user-agent:message-id
          :in-reply-to:date:references:to:from;
-        bh=5SHNhpkcsg0BK4U7+bH4qK9CjgxKCK9r+bJaLho6fck=;
-        b=LPo9MD0SFxgilAwxtPTc61nV+OHVhQ+95btm/DJPJZpRicFUnkBDIyvMeqCGtxMF/v
-         STbw6p1spDCcpIDW//TR/CmndMyM0NBqXiYyFUl6B/toKCAPeQF6Zpkd4rEb2Caa+XFD
-         p2sBY26LGLdiPzYruKcZhED6Re9AZfxhW60Aznbaeho+lkrOw/SrJDV3fzEQeQTTtzzS
-         4gK+VDLnn020g34iJVATH1qp7i7P1VYPxsqzgQbwPyVXNMWlWx8Pl0ftJPjCe/n9QQsf
-         oP/kAFqxccAZxhp4IH3SSCtoHtJg3UtEdpH7JzRcmhNnqzRzO53+Sj3ZljH/HoLfAlzP
-         E0MA==
+        bh=J0brdJ4p8tnF/0qlQbRIXhib922pqaLPjHWbtxnSoOs=;
+        b=vR7XmvYQQY1E6V5w+Z+PIQbeNWSkPPCrpXsFtJAWj+XIt41VPPS9fM4SNwcDYGFuMd
+         KE1eMl8ZT9pue4lc5Qqi03AAJrQxzURxwJgbCVKmEIoQURUMn1ZGzuhpSQEU/IY0nyR9
+         yvaHGHb9ZSlQpNJUqr6aL56JE4/UeaMWQkp8WzlhLbpw4JE87B18kOIv2EBzPSYgTUG4
+         3uLchBZzwFLCWdYDUW6kKOLfoaiGA2GH43W7hpL1WkdDuPLWUW0t7uMh9qNs2HvYJDKz
+         xaxwCmmah/ZJHsRMR2Iu41AreM1COwQuTyTFxAyKE61Ym1UvfDIysocQpyUBbwGDwHVY
+         mpEg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 18si322883ybl.347.2019.03.09.07.11.02
+        by mx.google.com with ESMTPS id 8si346927ybw.135.2019.03.09.07.25.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Mar 2019 07:11:02 -0800 (PST)
+        Sat, 09 Mar 2019 07:25:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60147 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:60298 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2dcr-0007ZE-QH
-	for alex.bennee@linaro.org; Sat, 09 Mar 2019 10:11:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55962)
+	id 1h2drK-0002y5-1r
+	for alex.bennee@linaro.org; Sat, 09 Mar 2019 10:25:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57754)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h2dcg-0007YN-DG
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:10:51 -0500
+	(envelope-from <armbru@redhat.com>) id 1h2dr8-0002xD-Gc
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:25:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h2dcf-00048e-Fk
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:10:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52854)
+	(envelope-from <armbru@redhat.com>) id 1h2dr7-0007gx-Ov
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:25:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40058)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1h2dcf-00042v-7F; Sat, 09 Mar 2019 10:10:49 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1h2dr7-0007fA-IR; Sat, 09 Mar 2019 10:25:45 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 47DDA118ECD;
-	Sat,  9 Mar 2019 15:10:44 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 063553E476;
+	Sat,  9 Mar 2019 15:25:37 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
 	[10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 41D02194AF;
-	Sat,  9 Mar 2019 15:10:37 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 658CF60BE2;
+	Sat,  9 Mar 2019 15:25:25 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id CD9251138660; Sat,  9 Mar 2019 16:04:27 +0100 (CET)
+	id 906FE1138661; Sat,  9 Mar 2019 15:47:36 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-14-philmd@redhat.com>
-	<0e007e09-cf54-312b-9563-59f3994209bf@redhat.com>
-Date: Sat, 09 Mar 2019 16:04:27 +0100
-In-Reply-To: <0e007e09-cf54-312b-9563-59f3994209bf@redhat.com> (Eric Blake's
-	message of "Thu, 7 Mar 2019 20:04:09 -0600")
-Message-ID: <875zss3x8k.fsf@dusky.pond.sub.org>
+	<20190308013222.12524-8-philmd@redhat.com>
+Date: Sat, 09 Mar 2019 15:47:36 +0100
+In-Reply-To: <20190308013222.12524-8-philmd@redhat.com> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 8 Mar 2019 02:32:11
+	+0100")
+Message-ID: <87imws3y0n.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Sat, 09 Mar 2019 15:10:44 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Sat, 09 Mar 2019 15:25:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 13/18] hw/nvram/fw_cfg: Add
- QMP 'info fw_cfg' command
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 07/18] hw/nvram/fw_cfg: Add
+ fw_cfg_common_unrealize()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,9 +97,8 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, "Michael
-	S. Tsirkin" <mst@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
@@ -109,143 +108,59 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hEjtNFa60ZKb
+X-TUID: Lkl0lY0PKt93
 
-The subject "Add QMP 'info fw_cfg' command" misspells query-fw_cfg-items
-:)
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Eric Blake <eblake@redhat.com> writes:
+> Back in abe147e0ce4 when fw_cfg_add_file() was introduced, there
+> was no QOM design, object where not created and released at runtime.
+> Later 38f3adc34d finished the QOM conversion of the fw_cfg device,
+> adding the fw_cfg_common_realize() method.
+> The time has come to add the equivalent destructor and release the
+> memory allocated for 'files'.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/nvram/fw_cfg.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index b2dc0a80cb..0fb020edce 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -959,6 +959,13 @@ static void fw_cfg_common_realize(DeviceState *dev, =
+Error **errp)
+>      qemu_add_machine_init_done_notifier(&s->machine_ready);
+>  }
+>=20=20
+> +static void fw_cfg_common_unrealize(DeviceState *dev, Error **errp)
+> +{
+> +    FWCfgState *s =3D FW_CFG(dev);
+> +
+> +    g_free(s->files);
+> +}
+> +
 
-> On 3/7/19 7:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> When debugging a paravirtualized guest firmware, it results very
->> useful to dump the fw_cfg table.
->> Add a QMP command which returns the most useful fields.
->> Since the QMP protocol is not designed for passing stream data,
->> we don't display a fw_cfg item data, only it's size:
->>=20
->> { "execute": "query-fw_cfg-items" }
->> {
->>     "return": [
->>         {
->>             "architecture_specific": false,
->>             "key": 0,
->>             "writeable": false,
->>             "size": 4,
->>             "keyname": "signature"
->
-> You could return a base64-encoded representation of the field (we do
-> that in other interfaces where raw binary can't be passed reliably over
-> JSON).  For 4 bytes, that makes sense,
->
->
->>         {
->>             "architecture_specific": true,
->>             "key": 3,
->>             "writeable": false,
->>             "size": 324,
->>             "keyname": "e820_tables"
->
-> for 324 bytes, it gets a bit long. Still, may be worth it for the added
-> debug visibility.
->
->
->> +++ b/qapi/misc.json
->> @@ -3051,3 +3051,47 @@
->>    'data': 'NumaOptions',
->>    'allow-preconfig': true
->>  }
->> +
->> +##
->> +# @FirmwareConfigurationItem:
->> +#
->> +# Firmware Configuration (fw_cfg) item.
->> +#
->> +# @key: The uint16 selector key.
->> +# @keyname: The stringified name if the selector refers to a well-known
->> +#           numerically defined item.
+Still leaks at least s->entries[0], s->entries[1], s->entry_order,
+doesn't it?
 
-Ignorant questions, I'm afraid...
-
-What determines the possible values of @key?
-
-What's the difference between a "well-known" and a "not well-known"
-value?  Examples?
-
->> +# @architecture_specific: Indicates whether the configuration setting is
->
-> Prefer '-' over '_' in new interfaces.
->
->> +#                         architecture specific.
->> +#                  false: The item is a generic configuration item.
->> +#                  true:  The item is specific to a particular architec=
-ture.
->> +# @writeable: Indicates whether the configuration setting is writeable =
-by
->> +#             the guest.
->
-> writable
->
->> +# @size: The length of @data associated with the item.
->> +# @data: A string representating the firmware configuration data.
->
-> representing
->
->> +#        Note: This field is currently not used.
->
-> Either drop the field until it has a use, or let it be the base64
-> encoding and use it now.
->
->> +# @path: If the key is a 'file', the named file path.
->> +# @order: If the key is a 'file', the named file order.
->> +#
->> +# Since 4.0
->> +##
->> +{ 'struct': 'FirmwareConfigurationItem',
->> +  'data': { 'key': 'uint16',
->> +            '*keyname': 'str',
->> +            'architecture_specific': 'bool',
->> +            'writeable': 'bool',
->> +            '*data': 'str',
->> +            'size': 'int',
->> +            '*path': 'str',
->> +            '*order': 'int' } }
->
-> Is it worth making 'keyname' an enum type, and turning this into a flat
-> union where 'path' and 'order' appear on the branch associated with
-> 'file', and where all other well-known keynames have smaller branches?
-
-Discriminator can't be optional.  Obvious solution: add a suitabable
-enum value for "other" key values.
-
-Leads to something like this (untested):
-
-    { 'union': 'FirmwareConfigurationItem',
-      'base': { 'key': 'uint16',
-                'keyname': 'FirmwareConfigurationKey',
-                ... more members that make sense regardless of @key ... },
-      'discriminator': 'key',
-      'data': {
-                'file': 'FirmwareConfigurationItemFile',
-                ... more variants, if any ... } }
-
-where 'FirmwareConfigurationItemFile' is a struct type containing the
-members that make sense just for 'file'.
-
->> +
->> +
->> +##
->> +# @query-fw_cfg-items:
->
-> That looks weird to mix - and _. Any reason we can't just go with
-> query-firmware-config?
->
->> +#
->> +# Returns the list of Firmware Configuration items.
->> +#
->> +# Returns: A list of @FirmwareConfigurationItem for each entry.
->> +#
->> +# Since 4.0
->> +##
->> +{ 'command': 'query-fw_cfg-items', 'returns': ['FirmwareConfigurationIt=
-em']}
->>=20
+>  FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+>                                  AddressSpace *dma_as)
+>  {
+> @@ -1127,6 +1134,7 @@ static void fw_cfg_io_class_init(ObjectClass *klass=
+, void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>=20=20
+>      dc->realize =3D fw_cfg_io_realize;
+> +    dc->unrealize =3D fw_cfg_common_unrealize;
+>      dc->props =3D fw_cfg_io_properties;
+>  }
+>=20=20
+> @@ -1190,6 +1198,7 @@ static void fw_cfg_mem_class_init(ObjectClass *klas=
+s, void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>=20=20
+>      dc->realize =3D fw_cfg_mem_realize;
+> +    dc->unrealize =3D fw_cfg_common_unrealize;
+>      dc->props =3D fw_cfg_mem_properties;
+>  }

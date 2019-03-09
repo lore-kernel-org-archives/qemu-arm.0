@@ -1,138 +1,90 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9555613wrx;
-        Sat, 9 Mar 2019 06:57:55 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyzPIRRx2qSs0msv7kYNffpA7sLhkfYeM/wcdkeyqG25b86tAqwxqD65PGYoUHGCZ03hh6/
-X-Received: by 2002:a25:56d5:: with SMTP id k204mr11776529ybb.216.1552143475416;
-        Sat, 09 Mar 2019 06:57:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1552143475; cv=none;
+Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp9567876wrx;
+        Sat, 9 Mar 2019 07:11:02 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxKbSoiuvS4XzvsNvr49jG32usQk8MHq7mFVVZuE253Nzp3WzDKHed31XxopckFNPuNXolN
+X-Received: by 2002:a25:9241:: with SMTP id e1mr3733636ybo.135.1552144262425;
+        Sat, 09 Mar 2019 07:11:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1552144262; cv=none;
         d=google.com; s=arc-20160816;
-        b=KkHS/mCgpPx+4yMoEqSK9KPLS2hvCrGUvVW6l2N2kVrpsSp3YYsggSUFYDdhscxNfI
-         3MHd7fbRlVnetRAAtxu/MIQv4+6C54uD+YG8TmAca7Ps9zkw5bQbXd4Rlw4D/dwyPW+q
-         ZXWe0kr32GjyPmAYgnDXsUx8mAb8TRJLRojR2zzU8xknK8V3T3f5dJmuD6zthZMcSTUB
-         aiSMCEZTqR1OhXovDWM0GUmWwHVwCevr0f84IlzNGy2wlE1kIq6ycwv8swClXu8zf1ew
-         yZc5m5IVsaLQbY2Aj65ZHwVfgAgOORyba7g1PB2C//iRGof5p6jD5E2curHfuvlUygP9
-         WJBQ==
+        b=FuVTpQnpMvM3JDme+oxGRrbojLnkt0C0uxmn8gn6RClAsKocKNjGXx0l95ht746TSh
+         CrOWNBmmGqGpFWoNLdeNTPJ5YvUm2e4gEbnEcUBH4aqXMxm/ZkQtaXKZM1XlY9z85TpU
+         cZ56JP8kjLnWmgzpm+YKBjmLGQZHu1kDJ8N3XQvLS6o1qay1nZ+oLUU6MMt+BN4ktcbB
+         d1Wf/Be+2XKwEUTGsvHUDHPN3JVDAYtqwOByejGCr8dfVehRJS59c3PPqjJN9WaQIX08
+         mV45jVB6ysFs4DyTkOxsm0YLjGLiqOSQ2GR2AfeKLvVxA0lODTtf+6awhRV+ESGI6+xx
+         BKQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=uUtt/XjNZp5PY4EwSpEOOgUksjtwIr+usKgmmnedfIM=;
-        b=qY3CcreB9vh/sIi35hGrdI3vbLFqgctfnF+h6bkfQSOgUpIgOnOd8bm9MEhYwH3Yv9
-         qoJzrnNx5zxDQXRa9uyOqLWu5b7g5Cyp2DGMtVAmqT3W1HUM39dRkFPEttGT8IFMsYjN
-         5Gfe7NUA2q7iPKdZUQbWnjBUHiaSZxG5PYYOPp2HOpgfrk0BttY66kQ8L4vCJNrLcFup
-         afmam/SSWc8OIuh/sM/bjxJ3g6efXclz8uRI0ObIe37BwFGzvwIC9VWU9x/O28CrVi6n
-         Cb9IaTaNwXuEDwqKHSp1PVYJYsAfsa415/Rb65xbZe391EHRPN+cWeYuVhirwrouq6BT
-         lvPw==
+         :content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:to:from;
+        bh=5SHNhpkcsg0BK4U7+bH4qK9CjgxKCK9r+bJaLho6fck=;
+        b=LPo9MD0SFxgilAwxtPTc61nV+OHVhQ+95btm/DJPJZpRicFUnkBDIyvMeqCGtxMF/v
+         STbw6p1spDCcpIDW//TR/CmndMyM0NBqXiYyFUl6B/toKCAPeQF6Zpkd4rEb2Caa+XFD
+         p2sBY26LGLdiPzYruKcZhED6Re9AZfxhW60Aznbaeho+lkrOw/SrJDV3fzEQeQTTtzzS
+         4gK+VDLnn020g34iJVATH1qp7i7P1VYPxsqzgQbwPyVXNMWlWx8Pl0ftJPjCe/n9QQsf
+         oP/kAFqxccAZxhp4IH3SSCtoHtJg3UtEdpH7JzRcmhNnqzRzO53+Sj3ZljH/HoLfAlzP
+         E0MA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j139si308764ywg.370.2019.03.09.06.57.55
+        by mx.google.com with ESMTPS id 18si322883ybl.347.2019.03.09.07.11.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 09 Mar 2019 06:57:55 -0800 (PST)
+        Sat, 09 Mar 2019 07:11:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:60008 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:60147 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2dQA-0003UA-Sv
-	for alex.bennee@linaro.org; Sat, 09 Mar 2019 09:57:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53960)
+	id 1h2dcr-0007ZE-QH
+	for alex.bennee@linaro.org; Sat, 09 Mar 2019 10:11:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55962)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2dOl-0002Ut-7J
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 09:56:27 -0500
+	(envelope-from <armbru@redhat.com>) id 1h2dcg-0007YN-DG
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:10:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2dOk-0007QV-BB
-	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 09:56:27 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:33915)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h2dOg-0007NF-MJ; Sat, 09 Mar 2019 09:56:22 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1N5VPg-1gzhXt1dE2-016xL0; Sat, 09 Mar 2019 15:53:55 +0100
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org
+	(envelope-from <armbru@redhat.com>) id 1h2dcf-00048e-Fk
+	for qemu-arm@nongnu.org; Sat, 09 Mar 2019 10:10:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52854)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1h2dcf-00042v-7F; Sat, 09 Mar 2019 10:10:49 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 47DDA118ECD;
+	Sat,  9 Mar 2019 15:10:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
+	[10.36.116.92])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 41D02194AF;
+	Sat,  9 Mar 2019 15:10:37 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id CD9251138660; Sat,  9 Mar 2019 16:04:27 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Blake <eblake@redhat.com>
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-7-philmd@redhat.com>
-	<37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <596ed94c-5121-06d5-e3e4-b4270bdf660b@vivier.eu>
-Date: Sat, 9 Mar 2019 15:53:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	<20190308013222.12524-14-philmd@redhat.com>
+	<0e007e09-cf54-312b-9563-59f3994209bf@redhat.com>
+Date: Sat, 09 Mar 2019 16:04:27 +0100
+In-Reply-To: <0e007e09-cf54-312b-9563-59f3994209bf@redhat.com> (Eric Blake's
+	message of "Thu, 7 Mar 2019 20:04:09 -0600")
+Message-ID: <875zss3x8k.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3LFYYRldEB4QLremQC0nMhuIaGgAWbUcm1dao5lWFxQFin3Kf2V
-	E63KCAUr0O8dl0GN8Am5A6ymAMGRvQoSkeM6LXa/oLFQDr2MyCLvsj8ywXGd3gE2ByxoF2a
-	0Zw1aVX1bdTrmpO6ra9UtirZZ1OWAwIAX7Jqix5jPP5oh1AA4LVhC/onSND1JZ6HOPuVSA/
-	JlA4CsZdvQjbTQoBsoW9g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UGKXZ/BBkdU=:/DPjl3oPjHv3Z+g2f/OflL
-	WX4otcfpYVyss5kvaf9bl5SxQYDK4hbWX2jjoSnFpCHre+kq02X9j2mOFA23z2D9Mb1ZB2ve/
-	H8tQd7N44dDUFrLCwfRkXsAWtoBrAZKDQHk/0XKOzvOj76VIaJu1+zG129MB7ZeCejwUnAsyT
-	d4EqRSNZXzOw2mVURx2KKLo2wV7MJjMaqwsFoVgjFVb4Z40t8DN5rqw0eDnIb4KCWhNVwdaUA
-	T6qReFqUEs2p58oMILWrreDriAMvlTYj0ie4zV/dmI+YRDED+ndtgXM4WvRTxOG+yq+olyzxI
-	cT02rBAUWoo7IOg8rcNbXTscLy+SbxAwxLjHiV0KvYr/Bus/cu+mKLFI3hMChmKTciaQPSjGh
-	0T+9iji5Pl/m6UnJi1yP22xrc0i3cPTKRK+ZjpamtFGkHX2F/EfX9qbdvkZUpBPXJQMfSzZ2u
-	XQPYFPHK9X7EnGdLswduELGYOEUJydcRNA30uG3jDG4FpQwsvbddg6qbG6dxJi1gNZTPAVwGN
-	V9VSHqP7ZGBoRCEyJ+MR4aC3hfI3E2YaOilHjIdHuZJymGbzY6Kw09jgYXqG0EW44ImCUlYLs
-	v55z1f5VIBz4h+co9io3aIGGYr45eey+KqqyASjYfAzuMgD8nlNqZH0Ns72eMnRL6M9xllUj+
-	wFbVM2bm/a+k1HAaB1bx8VgSZcK+KAVaIYP67TfnFSypH/oX31Zg5Ub514HsJiEnT+dxtfa7C
-	vO9F6a9Um7+U7D7srg39ACxYiDKSGCXCgr7zjtfX8dQYlqoad3c2LurxHR0=
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Sat, 09 Mar 2019 15:10:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-arm] [Qemu-trivial] [PATCH v2 06/18] hw/nvram/fw_cfg:
- Remove the unnecessary boot_splash_filedata_size
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 13/18] hw/nvram/fw_cfg: Add
+ QMP 'info fw_cfg' command
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,90 +96,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Markus Armbruster <armbru@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, "Michael
+	S. Tsirkin" <mst@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Richard Henderson <rth@twiddle.net>
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Laszlo Ersek <lersek@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iTYs7wki+219
+X-TUID: hEjtNFa60ZKb
 
-On 08/03/2019 07:49, Thomas Huth wrote:
-> On 08/03/2019 02.32, Philippe Mathieu-Daudé wrote:
->> The 'boot_splash_filedata_size' was introduced as a global variable
->> in 3d3b8303c6f. This variable is used as a 'size' argument to the
->> fw_cfg_add_file(). This function has an interface contract with his
->> 'data' argument, but there is no such contract for 'size' (this is
->> not a referenced pointer).  We can simply remove it.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/nvram/fw_cfg.c       | 5 ++---
->>  include/sysemu/sysemu.h | 1 -
->>  vl.c                    | 1 -
->>  3 files changed, 2 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index 8eb76a382c..b2dc0a80cb 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -217,15 +217,14 @@ static void fw_cfg_bootsplash(FWCfgState *s)
->>          }
->>          g_free(boot_splash_filedata);
->>          boot_splash_filedata = (uint8_t *)file_data;
->> -        boot_splash_filedata_size = file_size;
->>  
->>          /* insert data */
->>          if (file_type == JPG_FILE) {
->>              fw_cfg_add_file(s, "bootsplash.jpg",
->> -                    boot_splash_filedata, boot_splash_filedata_size);
->> +                            boot_splash_filedata, file_size);
->>          } else {
->>              fw_cfg_add_file(s, "bootsplash.bmp",
->> -                    boot_splash_filedata, boot_splash_filedata_size);
->> +                            boot_splash_filedata, file_size);
->>          }
->>          g_free(filename);
->>      }
->> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
->> index 89604a8328..6065d9e420 100644
->> --- a/include/sysemu/sysemu.h
->> +++ b/include/sysemu/sysemu.h
->> @@ -110,7 +110,6 @@ extern int old_param;
->>  extern int boot_menu;
->>  extern bool boot_strict;
->>  extern uint8_t *boot_splash_filedata;
->> -extern size_t boot_splash_filedata_size;
->>  extern bool enable_mlock;
->>  extern bool enable_cpu_pm;
->>  extern QEMUClockType rtc_clock;
->> diff --git a/vl.c b/vl.c
->> index 4c5cc0d8ad..fad6fec38c 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -188,7 +188,6 @@ const char *prom_envs[MAX_PROM_ENVS];
->>  int boot_menu;
->>  bool boot_strict;
->>  uint8_t *boot_splash_filedata;
->> -size_t boot_splash_filedata_size;
->>  bool wakeup_suspend_enabled;
->>  
->>  int icount_align_option;
->>
-> 
-> Nice, one global variable less!
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
+The subject "Add QMP 'info fw_cfg' command" misspells query-fw_cfg-items
+:)
 
-Applied to my trivial-patches branch.
+Eric Blake <eblake@redhat.com> writes:
 
-Thanks,
-Laurent
+> On 3/7/19 7:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> When debugging a paravirtualized guest firmware, it results very
+>> useful to dump the fw_cfg table.
+>> Add a QMP command which returns the most useful fields.
+>> Since the QMP protocol is not designed for passing stream data,
+>> we don't display a fw_cfg item data, only it's size:
+>>=20
+>> { "execute": "query-fw_cfg-items" }
+>> {
+>>     "return": [
+>>         {
+>>             "architecture_specific": false,
+>>             "key": 0,
+>>             "writeable": false,
+>>             "size": 4,
+>>             "keyname": "signature"
+>
+> You could return a base64-encoded representation of the field (we do
+> that in other interfaces where raw binary can't be passed reliably over
+> JSON).  For 4 bytes, that makes sense,
+>
+>
+>>         {
+>>             "architecture_specific": true,
+>>             "key": 3,
+>>             "writeable": false,
+>>             "size": 324,
+>>             "keyname": "e820_tables"
+>
+> for 324 bytes, it gets a bit long. Still, may be worth it for the added
+> debug visibility.
+>
+>
+>> +++ b/qapi/misc.json
+>> @@ -3051,3 +3051,47 @@
+>>    'data': 'NumaOptions',
+>>    'allow-preconfig': true
+>>  }
+>> +
+>> +##
+>> +# @FirmwareConfigurationItem:
+>> +#
+>> +# Firmware Configuration (fw_cfg) item.
+>> +#
+>> +# @key: The uint16 selector key.
+>> +# @keyname: The stringified name if the selector refers to a well-known
+>> +#           numerically defined item.
+
+Ignorant questions, I'm afraid...
+
+What determines the possible values of @key?
+
+What's the difference between a "well-known" and a "not well-known"
+value?  Examples?
+
+>> +# @architecture_specific: Indicates whether the configuration setting is
+>
+> Prefer '-' over '_' in new interfaces.
+>
+>> +#                         architecture specific.
+>> +#                  false: The item is a generic configuration item.
+>> +#                  true:  The item is specific to a particular architec=
+ture.
+>> +# @writeable: Indicates whether the configuration setting is writeable =
+by
+>> +#             the guest.
+>
+> writable
+>
+>> +# @size: The length of @data associated with the item.
+>> +# @data: A string representating the firmware configuration data.
+>
+> representing
+>
+>> +#        Note: This field is currently not used.
+>
+> Either drop the field until it has a use, or let it be the base64
+> encoding and use it now.
+>
+>> +# @path: If the key is a 'file', the named file path.
+>> +# @order: If the key is a 'file', the named file order.
+>> +#
+>> +# Since 4.0
+>> +##
+>> +{ 'struct': 'FirmwareConfigurationItem',
+>> +  'data': { 'key': 'uint16',
+>> +            '*keyname': 'str',
+>> +            'architecture_specific': 'bool',
+>> +            'writeable': 'bool',
+>> +            '*data': 'str',
+>> +            'size': 'int',
+>> +            '*path': 'str',
+>> +            '*order': 'int' } }
+>
+> Is it worth making 'keyname' an enum type, and turning this into a flat
+> union where 'path' and 'order' appear on the branch associated with
+> 'file', and where all other well-known keynames have smaller branches?
+
+Discriminator can't be optional.  Obvious solution: add a suitabable
+enum value for "other" key values.
+
+Leads to something like this (untested):
+
+    { 'union': 'FirmwareConfigurationItem',
+      'base': { 'key': 'uint16',
+                'keyname': 'FirmwareConfigurationKey',
+                ... more members that make sense regardless of @key ... },
+      'discriminator': 'key',
+      'data': {
+                'file': 'FirmwareConfigurationItemFile',
+                ... more variants, if any ... } }
+
+where 'FirmwareConfigurationItemFile' is a struct type containing the
+members that make sense just for 'file'.
+
+>> +
+>> +
+>> +##
+>> +# @query-fw_cfg-items:
+>
+> That looks weird to mix - and _. Any reason we can't just go with
+> query-firmware-config?
+>
+>> +#
+>> +# Returns the list of Firmware Configuration items.
+>> +#
+>> +# Returns: A list of @FirmwareConfigurationItem for each entry.
+>> +#
+>> +# Since 4.0
+>> +##
+>> +{ 'command': 'query-fw_cfg-items', 'returns': ['FirmwareConfigurationIt=
+em']}
+>>=20

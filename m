@@ -1,111 +1,92 @@
-Received: by 2002:a05:6000:188:0:0:0:0 with SMTP id p8csp10306138wrx;
-        Sun, 10 Mar 2019 04:02:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyCq5j8rrzx+nMjqUmqvGLGDl9j++rjHJT4sALEybqONiek+yxVeisNs3qJBVIORnhrvJ5h
-X-Received: by 2002:a25:65d4:: with SMTP id z203mr23027101ybb.370.1552215741884;
-        Sun, 10 Mar 2019 04:02:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552215741; cv=none;
+Received: by 2002:a5d:4c92:0:0:0:0:0 with SMTP id z18csp359221wrs;
+        Sun, 10 Mar 2019 14:05:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKcMqGFdlh5OxYxYN5Vnc5nikTUy7LmP9rU6Fgkac68mwKZ4Mmf9DWdEeW7ZcvHCuJxKGu
+X-Received: by 2002:a25:2d0:: with SMTP id 199mr15671654ybc.494.1552251945050;
+        Sun, 10 Mar 2019 14:05:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552251945; cv=none;
         d=google.com; s=arc-20160816;
-        b=OpQDCdmadGOEL+lTBVtKeFGLad6kmfulNEIs2Zs1j6nJO2VYvVpPrIkehBaYJjwOsR
-         H/6OtMwQSUzrtmaYvJry91mhzuDVfhmsmlSqAZvOprmIit6mvxjOPlANGfwSGErM87RF
-         iNA9cBYmZYoLK7DJs5SUqhfFDXAnCChgDTdJvA/dXqtlKZGB5RTmZYIRpuYMgrvP5RQM
-         6lv5aC6Hs+f7sZxQSXSc1Ohsg22dO6iYCyw65IhbaD0p1jZeQCyfe2nial5bTI9vtocN
-         MtxHYhXW0zEgnBEa+GaF//JmEUpxBPR9VFps9niP5VtReFCFAJUqz4SKoQhtJnbnjDdP
-         qDBQ==
+        b=x57ol13UpZ+GBX+TdN270SjkdTDd/cj2KC/YRb374X2sHx3uQxzDpczbumS4sBMbzD
+         DCGqJSF7CR0F+t/M7rlxRqqxY4R0gI70BynKBY0zrftcbpo/JDWjBK5NxGYxdU6nu7aY
+         VBKOa3SNUMDLqdNv7zPq0ry83Elf3iN9OIXkN98Stqg5uUZiX/78ndEOY9trJ14Bh/iK
+         cchrtqihqQ3MOm1SwN+7y2QY7riQflPbEvmwCzARh+YGqVuHQb1GE26Yr6JVfAMbcwQy
+         56371p9whQTZOJJAG+5sYBbX/LE4f/7uUg3Q54b2RdWKpK/YWFTMgyrvpHyawF7hckso
+         e1hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature;
-        bh=4u3S/cWY4iWmcUUVpnNRwljMx3nbvJzz49Rois43t2w=;
-        b=VqHJht1egRYyF0jpV0mypYkkrjw9Q+KCxhDromjQfrHMXTJEgcQSksJpB2HEzjRXRx
-         fQgiDgpQ8V+C4/iObe4VfA153jOMwcOzFASQW69WQ788c/G3YmsIRqKVVA41mrzOfSb2
-         sbfgYxGfoQ+jO5JBsCmbVkh1AvRIHRjcAl0PJvdXc5BTYpm1f5ApLH0U3g/gzzJyYHj1
-         yhmvVqoP6rvxUm6w4dZk/OGzZ2WQ0uyFXfVcoDJxkxpNWqTUvyX8/8wQPzxnb1xz5Lug
-         z28G3drCi8WLCc960M8QxWJF3ZhKwloAC613PfVVMEZw8cSz/uM5EAHgS7e+EAWgxmTx
-         uI7A==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=qeCqjBRdTwopfC/etF2UfmGgxl5kAe8mMHAh7q/VqU0=;
+        b=0TkOjUT50/mvalqhahtuyrNHEtle5/jGZv3Ppz5pjhOiWTKejWs5y1Ytf2PVTJAT3o
+         kUwGCE9uYrqMlSUlDcpsmEH+GJAxDFGKkh7erjeCztdwqBAl04g/0FjdfcEU7r7jRea8
+         CUkIVJ2s6iJVbTKyOrTYbblpC627KjYPQhG7g9YCNh4RZWk0L0t8Ah7Ul10xPElzisL/
+         xB+0nbrTJmKDP2RueIccmw0mP7COO0Xj9tjbJeiVNprBvAGJxsoTeaARu0ABkeiZWL76
+         fE+UsvA9speHOK6BoADfq3oJC56LJHLjSyf5KDpqwYB7h8nHAoyy+3vCweH6d4wmZrL+
+         l78Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Os5Yd4b7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c186si1488840ybb.94.2019.03.10.04.02.21
+        by mx.google.com with ESMTPS id f68si2078242ywe.211.2019.03.10.14.05.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 10 Mar 2019 04:02:21 -0700 (PDT)
+        Sun, 10 Mar 2019 14:05:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Os5Yd4b7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:43609 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:51021 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h2wDl-0001Il-9a
-	for alex.bennee@linaro.org; Sun, 10 Mar 2019 07:02:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41360)
+	id 1h35dg-00018L-Gn
+	for alex.bennee@linaro.org; Sun, 10 Mar 2019 17:05:44 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43932)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h2wDd-0001IQ-90
-	for qemu-arm@nongnu.org; Sun, 10 Mar 2019 07:02:14 -0400
+	(envelope-from <mst@redhat.com>) id 1h35cX-0008KC-LT
+	for qemu-arm@nongnu.org; Sun, 10 Mar 2019 17:04:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h2wDb-0006wd-Mb
-	for qemu-arm@nongnu.org; Sun, 10 Mar 2019 07:02:13 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:43970)
+	(envelope-from <mst@redhat.com>) id 1h35ML-0004Jo-KO
+	for qemu-arm@nongnu.org; Sun, 10 Mar 2019 16:47:50 -0400
+Received: from mail-qt1-f196.google.com ([209.85.160.196]:46376)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
-	id 1h2wDa-0006vr-VH; Sun, 10 Mar 2019 07:02:11 -0400
-Received: by mail-lf1-x141.google.com with SMTP id g7so295558lfh.10;
-	Sun, 10 Mar 2019 04:02:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=4u3S/cWY4iWmcUUVpnNRwljMx3nbvJzz49Rois43t2w=;
-	b=Os5Yd4b7jvf2Z1CepVsSXqtG4SVOgnbQI6Esd+0UU6TLQyyD5fQJJ7TMD93L0lnoSQ
-	xb8IwjvANTezBCA/fZtEHSU9kuQmNMRqpFKdruob0hymYPqdb8ZrUkMu1jtWIGAQuFwZ
-	SiUuaSfgQf99MrnUsN6brYzN4sn4sKXEPTu6bs2KwORPrGmbtlR2QmKCb+OPOrZlxHej
-	u5YITD0e1RjXPWm7uZxsLB+261aX/RxWruEHcWpbB7OTDIdpKL+0Q7EZn13164Xl4sWG
-	T8tvlMTVgS49ah3lqf2kX0/DwJZKXWVpD3EKT5lxuNgjoC1H0P38Npue7HVSYSTcd01p
-	9hxQ==
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1h35ML-0004JL-Di
+	for qemu-arm@nongnu.org; Sun, 10 Mar 2019 16:47:49 -0400
+Received: by mail-qt1-f196.google.com with SMTP id z25so2904960qti.13
+	for <qemu-arm@nongnu.org>; Sun, 10 Mar 2019 13:47:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=4u3S/cWY4iWmcUUVpnNRwljMx3nbvJzz49Rois43t2w=;
-	b=SNqmPRoRtW6V+PKX4YOmWyl1Ysgo1QN+4gSOQzYFlV3kf4vEMBzg+wPHnA6guu90S6
-	n3imDTBN3pJ2MFuWB48AOb96SD8kd/dteGDhK55D02mArhCQT1e1InPo9ivfE6a7qlN7
-	4xLK5GRpBgCxHHEUOFCr1fob6yfICnQkwEW2kW+JqW1SF3E0oQCUE+sW5BIuzyT0ZKb8
-	KmuB97EzZGZqa5eypuxlk5ftoFLh4CIvnackswts4oK2i+3HtZlIDBk91PDjAzR7TAy3
-	MlszYCVY870przUvtVQNJbt7eCxTbNU+TO8hjsyLKPXBNBS2fDBRa8Go0CECf5lCbHyG
-	gXaQ==
-X-Gm-Message-State: APjAAAXm+33I8mKekaHXqLr92uUjKZOtbcwJ1JrFwCiXDqP0jgX3M8IY
-	axjLqzrlLqzyxlEixRqdBUSwd4ARskaXiJwgP60=
-X-Received: by 2002:a19:8d4f:: with SMTP id p76mr9094226lfd.17.1552215728739; 
-	Sun, 10 Mar 2019 04:02:08 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to;
+	bh=qeCqjBRdTwopfC/etF2UfmGgxl5kAe8mMHAh7q/VqU0=;
+	b=hX2tfMbIwoESFL96zYzt+G58RR7GzM1DL/u1yxIlO8g0BqJKV+o6sudgn3d1r3DxAL
+	l3f0tYymVuJEGRal+m2F1CV/bK1gz2fwTWYBpqxxgPPywaGfDVMOcLvyjYOR+Ajlz43m
+	wq9D/LILcREuCEyiyolqjZsnr74Z/oiN4OMfqIbw3zj8JwWfo7hzJSlGodeO9kboMNKs
+	mF6Cf8hX8Vp8oBnKm1Qm4PuL0LWhCSE+EHEL0TCv+6uVeWJg+Si6SKMVXbfbeyGHNewQ
+	eFbob0RQsY6TqsKFOzhv9h0gObFmxr6Q5k+4n+RbZIlSTiCyTJaNKV46ueeOmyqAcBdd
+	Ne/Q==
+X-Gm-Message-State: APjAAAXtoKjkxUXF5Pz9wiAlsvSg9NoIMqbaXnGEPTGw2M/gvGTwStJs
+	R6I/ClbKrq4R12wlWkly5RGKFQ==
+X-Received: by 2002:aed:3aaa:: with SMTP id o39mr23504954qte.109.1552250868533;
+	Sun, 10 Mar 2019 13:47:48 -0700 (PDT)
+Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
+	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
+	x28sm1515023qta.76.2019.03.10.13.47.46
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sun, 10 Mar 2019 13:47:47 -0700 (PDT)
+Date: Sun, 10 Mar 2019 16:47:45 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <20190310164736-mutt-send-email-mst@kernel.org>
+References: <1552098649-28341-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
-Received: by 2002:a2e:8554:0:0:0:0:0 with HTTP; Sun, 10 Mar 2019 04:02:07
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA8YT4oLWK7gQB44p5UQVHEUR6bFdHy6VcGnGAxFxhWdiQ@mail.gmail.com>
-References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
-	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
-	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
-	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
-	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
-	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
-	<CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
-	<CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
-	<CADYoBw2XWeDUqBHVJBWxJAzQ4f0imosEeLHHoG9AfHfdavOTrA@mail.gmail.com>
-	<CAFEAcA8YT4oLWK7gQB44p5UQVHEUR6bFdHy6VcGnGAxFxhWdiQ@mail.gmail.com>
-From: bzt <bztemail@gmail.com>
-Date: Sun, 10 Mar 2019 12:02:07 +0100
-Message-ID: <CADYoBw1TQMpkYbS8g_OzZ4UeQz=NYO=dugRnCuL2mP4xBxcWMQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::141
-Subject: Re: [Qemu-arm] [PATCH] Added periodic IRQ support for
- bcm2836_control local timer
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1552098649-28341-1-git-send-email-guoheyi@huawei.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.160.196
+Subject: Re: [Qemu-arm] [PATCH v5 0/2] arm/acpi: simplify aml code and
+ enable SHPC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,274 +98,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: anudov9B4sK7
+X-TUID: 7ZKnQH6F0PU4
 
-Hi,
-
-Okay, as you wish. My code works either way and on real hardware as
-well, because I acknowledge the periodic IRQ as soon as possible, so
-good for me.
-
-Sign-off-by: Zolt=C3=A1n Baldaszti <bztemail@gmail.com>
-Subject: [PATCH] Added periodic IRQ support for bcm2836_control local timer
-diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
-index cfa5bc7365..82d2f51ffe 100644
---- a/hw/intc/bcm2836_control.c
-+++ b/hw/intc/bcm2836_control.c
-@@ -7,7 +7,13 @@
-  * This code is licensed under the GNU GPLv2 and later.
-  *
-  * At present, only implements interrupt routing, and mailboxes (i.e.,
-- * not local timer, PMU interrupt, or AXI counters).
-+ * not PMU interrupt, or AXI counters).
-+ *
-+ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
-+ * The IRQ_TIMER support is still very basic, does not provide timer count=
-er
-+ * access and other timer features, it just generates periodic IRQs. But i=
-t
-+ * still requires not only the interrupt enable, but the timer enable bit =
-to
-+ * be set.
-  *
-  * Ref:
-  * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/=
-QA7_rev3.4.pdf
-@@ -18,6 +24,9 @@
- #include "qemu/log.h"
-
- #define REG_GPU_ROUTE           0x0c
-+#define REG_LOCALTIMERROUTING   0x24
-+#define REG_LOCALTIMERCONTROL   0x34
-+#define REG_LOCALTIMERACK       0x38
- #define REG_TIMERCONTROL        0x40
- #define REG_MBOXCONTROL         0x50
- #define REG_IRQSRC              0x60
-@@ -43,6 +52,13 @@
- #define IRQ_TIMER       11
- #define IRQ_MAX         IRQ_TIMER
-
-+#define LOCALTIMER_FREQ      38400000
-+#define LOCALTIMER_INTFLAG   (1 << 31)
-+#define LOCALTIMER_RELOAD    (1 << 30)
-+#define LOCALTIMER_INTENABLE (1 << 29)
-+#define LOCALTIMER_ENABLE    (1 << 28)
-+#define LOCALTIMER_VALUE(x)  ((x) & 0xfffffff)
-+
- static void deliver_local(BCM2836ControlState *s, uint8_t core, uint8_t ir=
-q,
-                           uint32_t controlreg, uint8_t controlidx)
- {
-@@ -78,6 +94,17 @@ static void bcm2836_control_update(BCM2836ControlState *=
-s)
-         s->fiqsrc[s->route_gpu_fiq] |=3D (uint32_t)1 << IRQ_GPU;
-     }
-
-+    /* handle THE local timer interrupt for one of the cores' IRQ/FIQ */
-+    if ((s->local_timer_control & LOCALTIMER_INTENABLE) &&
-+        (s->local_timer_control & LOCALTIMER_INTFLAG)) {
-+        /* note: this will keep firing the IRQ as Peter asked */
-+        if (s->route_localtimer & 4) {
-+            s->fiqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
-IMER;
-+        } else {
-+            s->irqsrc[(s->route_localtimer & 3)] |=3D (uint32_t)1 << IRQ_T=
-IMER;
-+        }
-+    }
-+
-     for (i =3D 0; i < BCM2836_NCORES; i++) {
-         /* handle local timer interrupts for this core */
-         if (s->timerirqs[i]) {
-@@ -162,6 +189,54 @@ static void bcm2836_control_set_gpu_fiq(void
-*opaque, int irq, int level)
-     bcm2836_control_update(s);
- }
-
-+static void bcm2836_control_local_timer_set_next(void *opaque)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+    uint64_t next_event;
-+
-+    assert(LOCALTIMER_VALUE(s->local_timer_control) > 0);
-+
-+    next_event =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+        muldiv64(LOCALTIMER_VALUE(s->local_timer_control),
-+            NANOSECONDS_PER_SECOND, LOCALTIMER_FREQ);
-+    timer_mod(&s->timer, next_event);
-+}
-+
-+static void bcm2836_control_local_timer_tick(void *opaque)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    bcm2836_control_local_timer_set_next(s);
-+
-+    s->local_timer_control |=3D LOCALTIMER_INTFLAG;
-+    bcm2836_control_update(s);
-+}
-+
-+static void bcm2836_control_local_timer_control(void *opaque, uint32_t val=
-)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    s->local_timer_control =3D val;
-+    if (val & LOCALTIMER_ENABLE) {
-+        bcm2836_control_local_timer_set_next(s);
-+    } else {
-+        timer_del(&s->timer);
-+    }
-+}
-+
-+static void bcm2836_control_local_timer_ack(void *opaque, uint32_t val)
-+{
-+    BCM2836ControlState *s =3D opaque;
-+
-+    if (val & LOCALTIMER_INTFLAG) {
-+        s->local_timer_control &=3D ~LOCALTIMER_INTFLAG;
-+    }
-+    if ((val & LOCALTIMER_RELOAD) &&
-+        (s->local_timer_control & LOCALTIMER_ENABLE)) {
-+            bcm2836_control_local_timer_set_next(s);
-+    }
-+}
-+
- static uint64_t bcm2836_control_read(void *opaque, hwaddr offset,
-unsigned size)
- {
-     BCM2836ControlState *s =3D opaque;
-@@ -170,6 +245,12 @@ static uint64_t bcm2836_control_read(void
-*opaque, hwaddr offset, unsigned size)
-         assert(s->route_gpu_fiq < BCM2836_NCORES
-                && s->route_gpu_irq < BCM2836_NCORES);
-         return ((uint32_t)s->route_gpu_fiq << 2) | s->route_gpu_irq;
-+    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
-+        return s->route_localtimer;
-+    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
-+        return s->local_timer_control;
-+    } else if (offset =3D=3D REG_LOCALTIMERACK) {
-+        return 0;
-     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-         return s->timercontrol[(offset - REG_TIMERCONTROL) >> 2];
-     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
-@@ -195,6 +276,12 @@ static void bcm2836_control_write(void *opaque,
-hwaddr offset,
-     if (offset =3D=3D REG_GPU_ROUTE) {
-         s->route_gpu_irq =3D val & 0x3;
-         s->route_gpu_fiq =3D (val >> 2) & 0x3;
-+    } else if (offset =3D=3D REG_LOCALTIMERROUTING) {
-+        s->route_localtimer =3D val & 7;
-+    } else if (offset =3D=3D REG_LOCALTIMERCONTROL) {
-+        bcm2836_control_local_timer_control(s, val);
-+    } else if (offset =3D=3D REG_LOCALTIMERACK) {
-+        bcm2836_control_local_timer_ack(s, val);
-     } else if (offset >=3D REG_TIMERCONTROL && offset < REG_MBOXCONTROL) {
-         s->timercontrol[(offset - REG_TIMERCONTROL) >> 2] =3D val & 0xff;
-     } else if (offset >=3D REG_MBOXCONTROL && offset < REG_IRQSRC) {
-@@ -227,6 +314,10 @@ static void bcm2836_control_reset(DeviceState *d)
-
-     s->route_gpu_irq =3D s->route_gpu_fiq =3D 0;
-
-+    timer_del(&s->timer);
-+    s->route_localtimer =3D 0;
-+    s->local_timer_control =3D 0;
-+
-     for (i =3D 0; i < BCM2836_NCORES; i++) {
-         s->timercontrol[i] =3D 0;
-         s->mailboxcontrol[i] =3D 0;
-@@ -263,11 +354,14 @@ static void bcm2836_control_init(Object *obj)
-     /* outputs to CPU cores */
-     qdev_init_gpio_out_named(dev, s->irq, "irq", BCM2836_NCORES);
-     qdev_init_gpio_out_named(dev, s->fiq, "fiq", BCM2836_NCORES);
-+
-+    /* create a qemu virtual timer */
-+    timer_init_ns(&s->timer, QEMU_CLOCK_VIRTUAL,
-bcm2836_control_local_timer_tick, s);
- }
-
- static const VMStateDescription vmstate_bcm2836_control =3D {
-     .name =3D TYPE_BCM2836_CONTROL,
--    .version_id =3D 1,
-+    .version_id =3D 2,
-     .minimum_version_id =3D 1,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(mailboxes, BCM2836ControlState,
-@@ -277,6 +371,9 @@ static const VMStateDescription vmstate_bcm2836_control=
- =3D {
-         VMSTATE_UINT32_ARRAY(timercontrol, BCM2836ControlState,
-BCM2836_NCORES),
-         VMSTATE_UINT32_ARRAY(mailboxcontrol, BCM2836ControlState,
-                              BCM2836_NCORES),
-+        VMSTATE_TIMER_V(timer, BCM2836ControlState, 2),
-+        VMSTATE_UINT32_V(local_timer_control, BCM2836ControlState, 2),
-+        VMSTATE_UINT8_V(route_localtimer, BCM2836ControlState, 2),
-         VMSTATE_END_OF_LIST()
-     }
- };
-diff --git a/include/hw/intc/bcm2836_control.h
-b/include/hw/intc/bcm2836_control.h
-index 613f3c4186..de061b8929 100644
---- a/include/hw/intc/bcm2836_control.h
-+++ b/include/hw/intc/bcm2836_control.h
-@@ -5,6 +5,9 @@
-  * Rasperry Pi 2 emulation and refactoring Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-+ * ARM Local Timer IRQ Copyright (c) 2019. Zolt=C3=A1n Baldaszti
-+ * Added basic IRQ_TIMER interrupt support
-+ *
-  * This code is licensed under the GNU GPLv2 and later.
-  */
-
-@@ -12,6 +15,7 @@
- #define BCM2836_CONTROL_H
-
- #include "hw/sysbus.h"
-+#include "qemu/timer.h"
-
- /* 4 mailboxes per core, for 16 total */
- #define BCM2836_NCORES 4
-@@ -39,6 +43,11 @@ typedef struct BCM2836ControlState {
-     bool gpu_irq, gpu_fiq;
-     uint8_t timerirqs[BCM2836_NCORES];
-
-+    /* local timer */
-+    QEMUTimer timer;
-+    uint32_t local_timer_control;
-+    uint8_t route_localtimer;
-+
-     /* interrupt source registers, post-routing (also input-derived;
-visible) */
-     uint32_t irqsrc[BCM2836_NCORES];
-     uint32_t fiqsrc[BCM2836_NCORES];
+On Sat, Mar 09, 2019 at 10:30:47AM +0800, Heyi Guo wrote:
+> After the introduction of generic PCIe root port and PCIe-PCI bridge, we will
+> also have SHPC controller on ARM, and we don't support ACPI hot plug, so just
+> enable SHPC native hot plug.
+> 
+> Igor also spotted the store operation outside of bit and/or is not necessary, so
+> simply the code at first.
+> 
+> v5:
+> - Refine commit message of patch 1/2
+> 
+> v4:
+> - Improve the code indention.
+> 
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
 
 
-On 3/9/19, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Sat, 9 Mar 2019 at 01:03, bzt <bztemail@gmail.com> wrote:
->> Thanks for your answers. If I don't clear the INTENABLE flag, then the
->> IRQ would keep firing constantly. This is not how the real hardware
->> works: it triggers the IRQ once, and then it inhibits. The timer won't
->> trigger the IRQ again until you acknowledge it by writing the INTFLAG
->> into the ack register. My solution emulates this behaviour. That's
->> what the triggered flag was for in my original patch. Should I bring
->> that flag back or is the current solution acceptable knowing this?
->
-> Huh. The QA7 spec doc is pretty clear that the IRQ is kept high
-> until the guest acknowledges it (and that is how in general
-> IRQ/FIQ works for Arm -- it is level triggered and it stays high
-> until the guest silences the device):
-> "An interrupt is generated as long as the interrupt flag is set
-> and the interrupt-enable bit is set" and "The user must clear the
-> interrupt flag".
->
->
-> thanks
-> -- PMM
->
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+> 
+> 
+> Heyi Guo (2):
+>   hw/arm/acpi: simplify AML bit and/or statement
+>   hw/arm/acpi: enable SHPC native hot plug
+> 
+>  hw/arm/virt-acpi-build.c | 21 +++++++++++++--------
+>  1 file changed, 13 insertions(+), 8 deletions(-)
+> 
+> -- 
+> 1.8.3.1

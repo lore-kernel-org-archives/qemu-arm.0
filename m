@@ -1,88 +1,89 @@
-Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp989331wrt;
-        Mon, 11 Mar 2019 12:14:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUdBV5ZDARuJu+p+oaGIxMPLYKinFsldQvea0ik+IUxUtWH4lbAniQ++JqreefRn/brX2V
-X-Received: by 2002:a81:1d10:: with SMTP id d16mr25960833ywd.449.1552331641216;
-        Mon, 11 Mar 2019 12:14:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552331641; cv=none;
+Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp990064wrt;
+        Mon, 11 Mar 2019 12:14:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzy+6LbAfk5QWfXhR9TJzJs/ldo4QwWH5bh1fN6SiXTphiiw3casc9SjbFIHOnkQIAUR/n6
+X-Received: by 2002:a0d:cb51:: with SMTP id n78mr27790116ywd.237.1552331693026;
+        Mon, 11 Mar 2019 12:14:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552331693; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vl9133aZ5//rck2shelKaJxm10hA15BBH2zJvV0YKILffQUktXXcBP+r+fsNwmi1Yg
-         k9OZhJESq3DKdNHUyYjh2x7f94ZAx+/dKI3YqhTlky9qWFFmsQcDHVpKaS7P3TfxdndM
-         8gRS5a1TbeUfaeiM8deeydk1eK9B0bRtVWkxmZoJXf0KGR1xTNha2g1OikIjrlZaoFOL
-         PEinGaHgk7+eCyzTimOuU3DcYru7y8UZt6NQ/0dmoy/WRdoZUEhxK36UgBPtDjAiScUx
-         ttpc1YL7x5AniW8rYMmeQs3Tq/3Hj5yhQnpab4dyWS0dRx6y4+KvMAXFwPVmT7i2D84+
-         +EUA==
+        b=Ie/bkCDjKjpef78hsMJNIxVMuBZ56SUzth1zNSGWqv9x1lVoLDME1x4KLoL+gwnhoU
+         t4r0U069ANVU41kRnYQuwkA3lRe/pdwCYi7GXre/4tAxBrYZqudHcUYGlNgV1m2vRl0j
+         xztkX3R6htL6erPC6N9CczVZIRnEoQgx6/861GO3ZzjKZrx0/XXVCiPxxQy508yHjLle
+         cr/8m7vAmhRofB7RyX+kJPihfJlKks06mO53WbkGZk7RdnS1jwmXXijctH5LE90KUdTi
+         xu7BabG973uHixgS1t9RCEr8JunVOjIhVET6oYi44Ti1fAWIZF9dNZma2jqb6cyLNJlx
+         KnjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=VL6Tl0/bCa/1k/4EFLaMeZPASJx4+fQpIpNxJo6e6W4=;
-        b=zrRF1Ons+oyCWzzro3s+yQfyGbaHc2LxkPU3sETuBVlHJMKmJfVmFgQHAf0aLafGY8
-         rjsuzbLOw3RLOjLvpOhkXs0dg3r73+1CFQm9ODhE1edw/7A5GsCQwv+X+fPQU5/DB//m
-         z0vAT7vaMSjPGWOVxl/GXmnlu0ho0d3zIcz8UND+0DX+Oe8yemDEaKnbfd78nsc5ZdaC
-         /tZnkhTYQk3Ve/HagIRLeFiKffGmWDCLIZZb1C6RUcKAkivmhxCtl/LsRK3K2cD9kPVy
-         uZ1efUxkgug+AfG7BImcNJZHsDRN4xcGkSGxoJOAd3NkyV2NQeiSECUs9UGdkqN+SmlY
-         2bZQ==
+        bh=EbXsA7BMnZURaWgnuNM1MrdxZlrYGsjHJkOISq5ojXw=;
+        b=Ppa8Q3mEBzydcAhS0m0LO9Ecy3OXctk1IhO2FvyPdgZE+ihKdLHg5/KlJdLPQ9sjV8
+         xHawTjTOJmoIFNHmLAvkvl+WCjahv4nHmJZoUhp4oGSXUIbr4PcPfbc1e85hi+daoG+O
+         YxIeX7tDs8yBnYZZI6h4rDGlFd3B86C+XOVdd+xhGAacn/BOFHn3RCck1hdgahwopbFE
+         zhoSYxMP1bQNnzxBWsdpt4m6F6EV8iBsPci6k1meQ7mPbDcO1ctqu8PNiS8F7LQXW96c
+         iDDB7Dqzf4OxFA7UU5r8EnyAUKVPTDtiQjMmZLEQUlR/tfozV+pZf0NynMRHWLN5oT7g
+         CyaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w18si3486118ybp.100.2019.03.11.12.14.01
+        by mx.google.com with ESMTPS id z13si3506101ybj.5.2019.03.11.12.14.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Mar 2019 12:14:01 -0700 (PDT)
+        Mon, 11 Mar 2019 12:14:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:38830 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38845 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3QN6-0006X4-JR
-	for alex.bennee@linaro.org; Mon, 11 Mar 2019 15:14:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60003)
+	id 1h3QNw-0007Zi-Eq
+	for alex.bennee@linaro.org; Mon, 11 Mar 2019 15:14:52 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60223)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL0-0005Ht-HB
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:11:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h3QL8-0005Rc-UN
+	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:12:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QKz-0003R3-Pj
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:11:50 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:35901)
+	(envelope-from <laurent@vivier.eu>) id 1h3QL8-0003aJ-Al
+	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:11:58 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:46901)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h3QKz-0003PA-Eh; Mon, 11 Mar 2019 15:11:49 -0400
+	id 1h3QL4-0003Uo-Du; Mon, 11 Mar 2019 15:11:54 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MV6G0-1hSCyc0iqU-00S5WQ; Mon, 11 Mar 2019 20:11:36 +0100
+	id 1MkYkC-1gdPhl2LxW-00m6PW; Mon, 11 Mar 2019 20:11:39 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Date: Mon, 11 Mar 2019 20:11:24 +0100
-Message-Id: <20190311191128.30562-2-laurent@vivier.eu>
+Date: Mon, 11 Mar 2019 20:11:27 +0100
+Message-Id: <20190311191128.30562-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190311191128.30562-1-laurent@vivier.eu>
 References: <20190311191128.30562-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:V3rV00znpLrw2EPDqF8QZ1krrSFLot7j6A2eDzXgF0rILoCbU+U
-	XZ7i9XUUoLPB8A64OD4YwS2bllQxHDP/gom8khwhau+FDP+eXbbnIgFD2OJdn9k7Qm/WoI+
-	+v/LK0pmToMzEbs74NYHQmRV48DN9GN9ftu5m5Xz5omHtthS1U+8k0zZe7QmqUu3kTDgxr0
-	OlF2lK5fsyS1nn+Zv5hIw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:keO88pR/iVE=:HKErR4ObzhAp0fky+vXTD/
-	e+Ob1NGKRRpEYDweZvzmr4341GRfTXb9KWeK8j259ae92cVrvPW9tGSbHjcrvqfK+FhQB5sND
-	QN7pEvZDXTj3mDvvYiL+7Xn6fnBrimwBJMQFPGZpAfV7gzpUWvYAjI2qIyUJyZR99+PFk02G4
-	B99K/bK34XH0qnoL7G3Ubo+xy45CSR+lmurO5Sz+wGqE6mMYDK11iTrTUCGfQJCMsh7vunUjD
-	3D2JEKJZGAnbnvkDsqtyrbkQfGkTcTdFXXJYVDXWtiiAguKMNLwu9z677+lPithZKsN786VNG
-	ZuE6ZcH/7IL6f6N05zpCz2xr/jsJQUzTtv8QsRz4bSKl3mC0//TIFAAsBNeSdA4Bd4PFhXatE
-	3vxT+Up5mT/eheFc53Qm+x9R+dMsCRlsThP0kLcH46CWVbrdldgb5r6BrXpVM7GGqk4lzMd7T
-	iWg7iKoj9wn3V67UGrmvAVYZr/wllU3kJz2sYm2mrlSzeynIH9K0sP2xYlUg/oG1iO8n/Cz+M
-	ZligjUQ/UusyoLHOpWAFicyEwEhlg/8n3sOouerifnqknV6cL9/VVoFPO4th1fukCspFhs/Ow
-	H6HC+FQMVeTwCM+QNLzlIdgmh6A+wns4pw/epyUOVZXrdCwyUNx2UsA+S3y3ReLx+HOEhYO0i
-	e+t3TAghcLfvCKoQ3HClg+GI51hLxIMcU7lE1OwVrstEJIWHCkPe2m2VZToeXMV4kqOj41D16
-	Na+VyLWth8eAGiE2GSyCC7PUuQe60/1mmnykHQ==
+X-Provags-ID: V03:K1:ixxF0H+MoBCgnQiepnZhCOBCG3pviUjJCeH8j2JQGbKgx2eaGVl
+	FfZZ2KOYE8VVbH8sg+C+7FX8I2yC3up0z/7IHObzUu2Mh8DAycUe5luCSvcSG4+Z8BBXdxI
+	4HRxvo+cZNwO87v0ztJAsXSKUZxKPbcIjEK6Sen3N4R3QSGfBrZ3+P9F8b2KfULVZoZDdY3
+	kaBt4sem+ldeMER1yac5w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0mxlzMy3Pso=:LOy2L9wK+lq+U1aevPq0II
+	N8rQyYujvQaOioGRaU35FCGPRpIPhkyaVwWJbvDfNb6QbQzsUjwxNhFb+hSby68y/gthN2ObO
+	TskrqDDJupodKDhfCbMwcznFmpa88ecjL5WdFdKsdFUTkchIUQCuwtUNQzP02gA9UY0jlyuzB
+	DF4uBnw/DUM8vknjm3T1sphTeGVHDfXu27o5Xca1gDRgolEhwkYp3PIIUlf37f4Uu29Txzvhk
+	3ADvMnvuIneTvLSsqTPTa+oRziJbqLZoYEJ7smP3n5x5V/nALydo8kntrStcauTlYuzZTqMuC
+	T5R2X3p3bByV1mMv2mKao2MIm1Kuv9jjqsNcrcvQEvy8x5f0zqOvGPkQnT33MXxmlytSgjPC+
+	9LtdL/Jr/wW9Knb6UZdxP53Sp/1Fdl4AkappQnENYP08h8Nt2EMjr4PYHsDUSXUOwM5+ugm07
+	+g6btYWQRgwxbRFKLcCF29kgAgx8/CTddnVuTo+mLoeXPwk4/sGDSh6rBN4KDulZ0Ljgzrlm+
+	fdrhY4/c4sXUAAj8G/ibjggCT8STomOpYZewczOaIizUfXN0b5MjOeFpL7+YmWyKNy/IBHCiO
+	6JucCkdfaeTkvUs59J9xmEVOI87k2M+dd12uHuhYAGicm6abOAD8Pz4uDgDtHOqtsgMqwzJVQ
+	MosRjL9TyMSuxXZEjlEOqcUHopuO0+bNSmryX+dZC+hEE184ZCUifhpIL72qmJlXQJs1CY4vE
+	osHY/1YYIffyo7RGl1gTMTvHERR149VKOyKz31R30+DED0KYHXUEZUG9Y8k=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-devel] [PULL 1/5] thunk: improve readability of allocation
- loop
+X-Received-From: 217.72.192.74
+Subject: [Qemu-devel] [PULL 4/5] hw/arm/virt: Remove null-check in
+ virt_build_smbios()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,41 +96,50 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
 	Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
-	Aarushi Mehta <mehta.aaru20@gmail.com>
+	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZyRYGffnY686
+X-TUID: DLQVDE3sJkbG
 
-From: Aarushi Mehta <mehta.aaru20@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <a09acf9e093c09a70896bb9886370cf7f049f941.camel@gmail.com>
+Since commit 578f3c7b0835 ("arm: add fw_cfg to "virt" board",
+2014-12-22), the machvirt_init() unconditionally creates the
+fw_cfg object.  Later, commit c30e15658b1b ("smbios: implement
+smbios support for mach-virt", 2015-09-07) added a superfluous
+null-check on it.
+Remove this superfluous check.
+
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190309181920.30553-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- thunk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/virt.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/thunk.c b/thunk.c
-index 17f3d320bb8e..7f31cffe0968 100644
---- a/thunk.c
-+++ b/thunk.c
-@@ -86,7 +86,7 @@ void thunk_register_struct(int id, const char *name, const argtype *types)
- #endif
-     /* now we can alloc the data */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7f66ddad89f6..377e95a4cdb0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1281,10 +1281,6 @@ static void virt_build_smbios(VirtMachineState *vms)
+     size_t smbios_tables_len, smbios_anchor_len;
+     const char *product = "QEMU Virtual Machine";
  
--    for(i = 0;i < 2; i++) {
-+    for (i = 0; i < ARRAY_SIZE(se->field_offsets); i++) {
-         offset = 0;
-         max_align = 1;
-         se->field_offsets[i] = g_new(int, nb_fields);
+-    if (!vms->fw_cfg) {
+-        return;
+-    }
+-
+     if (kvm_enabled()) {
+         product = "KVM Virtual Machine";
+     }
 -- 
 2.20.1
 

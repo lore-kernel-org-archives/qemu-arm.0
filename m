@@ -1,246 +1,272 @@
-Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp400851wrt;
-        Mon, 11 Mar 2019 01:41:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxZw9ttSWeIv9H/eByX50ubuAEM2N+BzxpH+fKNuJjDNqDwk7du2motxmMGn4TzdwLPMUzB
-X-Received: by 2002:a81:2553:: with SMTP id l80mr24075717ywl.146.1552293709860;
-        Mon, 11 Mar 2019 01:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552293709; cv=none;
+Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp570860wrt;
+        Mon, 11 Mar 2019 05:10:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxkSzZruzkAdLXPlesaii3q39ssYtzdhjcOE9thn/39FyUKcZ9CZoOnA0+i1b5u8sCUhF7D
+X-Received: by 2002:a81:e4e:: with SMTP id 75mr25331572ywo.149.1552306252987;
+        Mon, 11 Mar 2019 05:10:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552306252; cv=none;
         d=google.com; s=arc-20160816;
-        b=rqkYhVwCifZS8iFmh4NKifjQ5oMch0JlPpdzCxPibpj3R7btu375bub0lJbrhyhCrn
-         wbTFqch0KsPJndNha0KewalbMP5HvIrEepxNR8dNRzcr+mnk04mbSe6fJdYbqhuKKLij
-         bZFRvGRsWv6Q2gD2+bbBJLdDTQ/JDeHnj7K3VVmcSBeFHG3q5d7fuH2Bp9H0XYB242wv
-         XYCtcqtarqQRrX+bM8COt3bHpJVNrdjqEs0wzjnVP5neEIgjaBOWSzB2LX91JLDfYuBX
-         E1X1RxP9nptT5ipUiBJ7pm82ScUTULNYiVzgliiRbbBvJgpM+4j5LNNVadY80Rnb+fWf
-         phDg==
+        b=Ve3aE6frI23fp/JJFG9cQ993yLTPJIIzbmWddibjdyL3k9tL9At8FuiGZkiVYmkv0E
+         coL+YTTtiIKEIbcMyqH/aDnznuEGXu8D5A4YaJxNuo67inQnODacjD4wFmSxnozSXDIt
+         60WyFJB6VsrKJ7Aue0k4rgU+PsNkLWdSykFUfxTL0qKTaP3Qx8qBe248elWV9a38MF/9
+         PEnuPEzMeqCqtoUj1YWV5qIz5FpO0CCv6EMbBPCd7khwQvG7o1n+/83QXwDm2O5Y0Hq5
+         ySmQD8ZYjY3FYMB6e/NljwEQltlr8/5Q8cUj+DZw47GyEGdn14E5WTm7dTjL35dMSQNP
+         AWvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from;
-        bh=SL/YYeHXIzWm2Joyun53uRJs/LSQBMPq2Ae2g1Jp9XU=;
-        b=TGwD01BzDBAMfKaR+swUXgXwAurJ/uFJV6fZKucl0T76Qap0bf10PhY5W9b1RD4fCw
-         zeT7c2Ce5YCnq0b1ocz5o0woHDWO9yj9sm79wgqgCV6dzVIcSp5kTX7XqeSfo8XazzHo
-         BGwDdX3wpT5Mhc/6ePlOsW+WpsxapPeHY3gRfI/qqpEYMuAOiawdH3t01ldVfP25CmxB
-         IIIvCCcJuc62EHo+tsuUwTrDzqpu+A60hB86xFGNCUi+pWbPzpis8c/D20g53NmeEXPt
-         dCLoWpCBlz9c0bQg/R2/Rp+URlYcveBWQtIhwJRpY8LJX054wrUnPnTLGZJaoN7ZI61E
-         RmTQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=SmKkVQg52oxx7qjZWjqqOqkg+M8xcxKT50JvTZGBNPU=;
+        b=LlHMpWipV4diRxFYYdZoZpAw6yWijetXlaLyAbe4GWAfdmMN6qaItIq1k0RaiIkgsQ
+         MA15Op+nLD1JpR6I2W+17j6ZAhOTK7BrjDH8iEXXieEs/jL2QGdcWAe1/79L+k1PxSyh
+         7jcPNyv9yzp1C5aGOhvzvZr+Hy3/bD4AyeFBwWV6FkWi0sa3lCqa7ZPlduWzuZOi6Eyi
+         pqbQiR2VfnjmlfNKtNKOYS9TlFUaBH3PIVcFw1FUcedEX3mcZ/+ic+weQ0ECubu5n54D
+         vyuEp8SdTfR1QjJ2b+PoJUn8JQwKMctYoqaT4m1dBgDRuvefVGXIUyL4AC5kZwdRhrWc
+         FdkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 135si2603735ywx.342.2019.03.11.01.41.49
+        by mx.google.com with ESMTPS id v7si2139059ybk.352.2019.03.11.05.10.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Mar 2019 01:41:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Mar 2019 05:10:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:57347 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:60859 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3GVJ-0008Uz-AP
-	for alex.bennee@linaro.org; Mon, 11 Mar 2019 04:41:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59781)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h3Jlc-0006XI-CH
+	for alex.bennee@linaro.org; Mon, 11 Mar 2019 08:10:52 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56466)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3GNU-0001pJ-80
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 04:33:45 -0400
+	(envelope-from <imammedo@redhat.com>) id 1h3JlO-0006Wv-Ew
+	for qemu-arm@nongnu.org; Mon, 11 Mar 2019 08:10:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3GEt-0000t3-UE
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 04:24:53 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2246 helo=huawei.com)
+	(envelope-from <imammedo@redhat.com>) id 1h3JlN-0000JI-AN
+	for qemu-arm@nongnu.org; Mon, 11 Mar 2019 08:10:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60798)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1h3GEr-0000o6-TZ; Mon, 11 Mar 2019 04:24:50 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id C3D9C3789C06B3BCD870;
-	Mon, 11 Mar 2019 16:24:40 +0800 (CST)
-Received: from localhost.localdomain (10.143.28.91) by
-	DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server
-	id 14.3.408.0; Mon, 11 Mar 2019 16:24:39 +0800
-From: gengdongjiu <gengdongjiu@huawei.com>
-To: <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Date: Mon, 11 Mar 2019 16:24:39 +0800
-Message-ID: <1552292679-19173-1-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.7.4
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h3JlM-0000IW-Rd; Mon, 11 Mar 2019 08:10:37 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 562C0308425C;
+	Mon, 11 Mar 2019 12:10:35 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DC14E1001DDB;
+	Mon, 11 Mar 2019 12:10:24 +0000 (UTC)
+Date: Mon, 11 Mar 2019 13:10:23 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20190311131023.18849710@redhat.com>
+In-Reply-To: <20190308182053.5487-2-eric.auger@redhat.com>
+References: <20190308182053.5487-1-eric.auger@redhat.com>
+	<20190308182053.5487-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.91]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Mon, 11 Mar 2019 12:10:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-devel] [PATCH] target/arm: change arch timer registers access
- permission
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v4 1/2] nvdimm: Rename AcpiNVDIMMState into
+ NVDIMMState
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: en2DUAVRbMM7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, sbhat@linux.ibm.com,
+	david@redhat.com, richard.henderson@linaro.org,
+	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com, philmd@redhat.com,
+	eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /0HGfT4FkOwe
 
-Some generic arch timer registers are Config-RW in the EL0,
-which means the EL0 exception level can have write permission
-if it is appropriately configured.
+On Fri,  8 Mar 2019 19:20:52 +0100
+Eric Auger <eric.auger@redhat.com> wrote:
 
-When VM access registers, it firstly checks whether they have RW
-permission, then check whether it is appropriately configured.
-If they are defined to Ready only in EL0, even though they have been
-appropriately configured, they still do not have write permission.
-So need to add the write permission according to ARMV8 spec when
-define it.
+> As we intend to migrate the acpi_nvdimm_state into
+> the base machine with a new dimms_state name, let's
+> also rename the datatype.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
----
-When kernel or Hypervisor configures the timer registers to RW in EL0
-user space, it will still have below panic when EL0 user space access
-the timer registers.
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-[INFO ]@(el0_sync:60): UNIMPLEMENTED, esr=2000000
-[INFO ]@(unimpl_exception:88): KERNEL UNIMPLEMENTED EXCEPTION
-[INFO ]@(unimpl_exception:98): FAR=0000000000000000, ESR=02000000 (EC=0x0, IL=0x1, ISS=0x0)
-[INFO ]@(dump_registers:64): KERNEL REGISTERS
-[INFO ]@(dump_registers:68): X0=00000000f52b7d50 X1=00000000040d5040
-[INFO ]@(dump_registers:68): X2=0000004000033e10 X3=0000000000000000
-[INFO ]@(dump_registers:68): X4=000000007fffffff X5=0000000000000020
-[INFO ]@(dump_registers:68): X6=0000000000000020 X7=000000000c00b030
----
- target/arm/helper.c | 30 +++++++++++++++---------------
- 1 file changed, 15 insertions(+), 15 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 2607d39..3db94c6 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2665,7 +2665,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* per-timer control */
-     { .name = "CNTP_CTL", .cp = 15, .crn = 14, .crm = 2, .opc1 = 0, .opc2 = 1,
-       .secure = ARM_CP_SECSTATE_NS,
--      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access,
-       .fieldoffset = offsetoflow32(CPUARMState,
-                                    cp15.c14_timer[GTIMER_PHYS].ctl),
-@@ -2674,7 +2674,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     { .name = "CNTP_CTL_S",
-       .cp = 15, .crn = 14, .crm = 2, .opc1 = 0, .opc2 = 1,
-       .secure = ARM_CP_SECSTATE_S,
--      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access,
-       .fieldoffset = offsetoflow32(CPUARMState,
-                                    cp15.c14_timer[GTIMER_SEC].ctl),
-@@ -2682,14 +2682,14 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTP_CTL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 2, .opc2 = 1,
--      .type = ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_PHYS].ctl),
-       .resetvalue = 0,
-       .writefn = gt_phys_ctl_write, .raw_writefn = raw_write,
-     },
-     { .name = "CNTV_CTL", .cp = 15, .crn = 14, .crm = 3, .opc1 = 0, .opc2 = 1,
--      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_IO | ARM_CP_ALIAS, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_vtimer_access,
-       .fieldoffset = offsetoflow32(CPUARMState,
-                                    cp15.c14_timer[GTIMER_VIRT].ctl),
-@@ -2697,7 +2697,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTV_CTL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 3, .opc2 = 1,
--      .type = ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_vtimer_access,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_VIRT].ctl),
-       .resetvalue = 0,
-@@ -2706,31 +2706,31 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* TimerValue views: a 32 bit downcounting view of the underlying state */
-     { .name = "CNTP_TVAL", .cp = 15, .crn = 14, .crm = 2, .opc1 = 0, .opc2 = 0,
-       .secure = ARM_CP_SECSTATE_NS,
--      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access,
-       .readfn = gt_phys_tval_read, .writefn = gt_phys_tval_write,
-     },
-     { .name = "CNTP_TVAL_S",
-       .cp = 15, .crn = 14, .crm = 2, .opc1 = 0, .opc2 = 0,
-       .secure = ARM_CP_SECSTATE_S,
--      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access,
-       .readfn = gt_sec_tval_read, .writefn = gt_sec_tval_write,
-     },
-     { .name = "CNTP_TVAL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 2, .opc2 = 0,
--      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_ptimer_access, .resetfn = gt_phys_timer_reset,
-       .readfn = gt_phys_tval_read, .writefn = gt_phys_tval_write,
-     },
-     { .name = "CNTV_TVAL", .cp = 15, .crn = 14, .crm = 3, .opc1 = 0, .opc2 = 0,
--      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_vtimer_access,
-       .readfn = gt_virt_tval_read, .writefn = gt_virt_tval_write,
-     },
-     { .name = "CNTV_TVAL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 3, .opc2 = 0,
--      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_R,
-+      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL1_RW | PL0_RW,
-       .accessfn = gt_vtimer_access, .resetfn = gt_virt_timer_reset,
-       .readfn = gt_virt_tval_read, .writefn = gt_virt_tval_write,
-     },
-@@ -2758,7 +2758,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* Comparison value, indicating when the timer goes off */
-     { .name = "CNTP_CVAL", .cp = 15, .crm = 14, .opc1 = 2,
-       .secure = ARM_CP_SECSTATE_NS,
--      .access = PL1_RW | PL0_R,
-+      .access = PL1_RW | PL0_RW,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_ALIAS,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_PHYS].cval),
-       .accessfn = gt_ptimer_access,
-@@ -2766,7 +2766,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTP_CVAL_S", .cp = 15, .crm = 14, .opc1 = 2,
-       .secure = ARM_CP_SECSTATE_S,
--      .access = PL1_RW | PL0_R,
-+      .access = PL1_RW | PL0_RW,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_ALIAS,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC].cval),
-       .accessfn = gt_ptimer_access,
-@@ -2774,14 +2774,14 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTP_CVAL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 2, .opc2 = 2,
--      .access = PL1_RW | PL0_R,
-+      .access = PL1_RW | PL0_RW,
-       .type = ARM_CP_IO,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_PHYS].cval),
-       .resetvalue = 0, .accessfn = gt_ptimer_access,
-       .writefn = gt_phys_cval_write, .raw_writefn = raw_write,
-     },
-     { .name = "CNTV_CVAL", .cp = 15, .crm = 14, .opc1 = 3,
--      .access = PL1_RW | PL0_R,
-+      .access = PL1_RW | PL0_RW,
-       .type = ARM_CP_64BIT | ARM_CP_IO | ARM_CP_ALIAS,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_VIRT].cval),
-       .accessfn = gt_vtimer_access,
-@@ -2789,7 +2789,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     },
-     { .name = "CNTV_CVAL_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 3, .opc2 = 2,
--      .access = PL1_RW | PL0_R,
-+      .access = PL1_RW | PL0_RW,
-       .type = ARM_CP_IO,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_VIRT].cval),
-       .resetvalue = 0, .accessfn = gt_vtimer_access,
--- 
-2.7.4
+> ---
+>  hw/acpi/nvdimm.c        | 18 +++++++++---------
+>  hw/i386/pc.c            |  2 +-
+>  include/hw/i386/pc.h    |  2 +-
+>  include/hw/mem/nvdimm.h | 10 +++++-----
+>  4 files changed, 16 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index e53b2cb681..f73cfb9d90 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -382,7 +382,7 @@ nvdimm_build_structure_caps(GArray *structures, uint3=
+2_t capabilities)
+>      nfit_caps->capabilities =3D cpu_to_le32(capabilities);
+>  }
+> =20
+> -static GArray *nvdimm_build_device_structure(AcpiNVDIMMState *state)
+> +static GArray *nvdimm_build_device_structure(NVDIMMState *state)
+>  {
+>      GSList *device_list =3D nvdimm_get_device_list();
+>      GArray *structures =3D g_array_new(false, true /* clear */, 1);
+> @@ -416,7 +416,7 @@ static void nvdimm_init_fit_buffer(NvdimmFitBuffer *f=
+it_buf)
+>      fit_buf->fit =3D g_array_new(false, true /* clear */, 1);
+>  }
+> =20
+> -static void nvdimm_build_fit_buffer(AcpiNVDIMMState *state)
+> +static void nvdimm_build_fit_buffer(NVDIMMState *state)
+>  {
+>      NvdimmFitBuffer *fit_buf =3D &state->fit_buf;
+> =20
+> @@ -425,12 +425,12 @@ static void nvdimm_build_fit_buffer(AcpiNVDIMMState=
+ *state)
+>      fit_buf->dirty =3D true;
+>  }
+> =20
+> -void nvdimm_plug(AcpiNVDIMMState *state)
+> +void nvdimm_plug(NVDIMMState *state)
+>  {
+>      nvdimm_build_fit_buffer(state);
+>  }
+> =20
+> -static void nvdimm_build_nfit(AcpiNVDIMMState *state, GArray *table_offs=
+ets,
+> +static void nvdimm_build_nfit(NVDIMMState *state, GArray *table_offsets,
+>                                GArray *table_data, BIOSLinker *linker)
+>  {
+>      NvdimmFitBuffer *fit_buf =3D &state->fit_buf;
+> @@ -570,7 +570,7 @@ nvdimm_dsm_no_payload(uint32_t func_ret_status, hwadd=
+r dsm_mem_addr)
+>  #define NVDIMM_QEMU_RSVD_HANDLE_ROOT         0x10000
+> =20
+>  /* Read FIT data, defined in docs/specs/acpi_nvdimm.txt. */
+> -static void nvdimm_dsm_func_read_fit(AcpiNVDIMMState *state, NvdimmDsmIn=
+ *in,
+> +static void nvdimm_dsm_func_read_fit(NVDIMMState *state, NvdimmDsmIn *in,
+>                                       hwaddr dsm_mem_addr)
+>  {
+>      NvdimmFitBuffer *fit_buf =3D &state->fit_buf;
+> @@ -619,7 +619,7 @@ exit:
+>  }
+> =20
+>  static void
+> -nvdimm_dsm_handle_reserved_root_method(AcpiNVDIMMState *state,
+> +nvdimm_dsm_handle_reserved_root_method(NVDIMMState *state,
+>                                         NvdimmDsmIn *in, hwaddr dsm_mem_a=
+ddr)
+>  {
+>      switch (in->function) {
+> @@ -863,7 +863,7 @@ nvdimm_dsm_read(void *opaque, hwaddr addr, unsigned s=
+ize)
+>  static void
+>  nvdimm_dsm_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
+>  {
+> -    AcpiNVDIMMState *state =3D opaque;
+> +    NVDIMMState *state =3D opaque;
+>      NvdimmDsmIn *in;
+>      hwaddr dsm_mem_addr =3D val;
+> =20
+> @@ -925,7 +925,7 @@ void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_dev,=
+ DeviceState *dev)
+>      }
+>  }
+> =20
+> -void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
+> +void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+>                              FWCfgState *fw_cfg, Object *owner)
+>  {
+>      memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
+> @@ -1319,7 +1319,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets=
+, GArray *table_data,
+>  }
+> =20
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+> -                       BIOSLinker *linker, AcpiNVDIMMState *state,
+> +                       BIOSLinker *linker, NVDIMMState *state,
+>                         uint32_t ram_slots)
+>  {
+>      GSList *device_list;
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 42128183e9..0338dbe9da 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -2571,7 +2571,7 @@ static void pc_machine_set_nvdimm_persistence(Objec=
+t *obj, const char *value,
+>                                                 Error **errp)
+>  {
+>      PCMachineState *pcms =3D PC_MACHINE(obj);
+> -    AcpiNVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
+> +    NVDIMMState *nvdimm_state =3D &pcms->acpi_nvdimm_state;
+> =20
+>      if (strcmp(value, "cpu") =3D=3D 0)
+>          nvdimm_state->persistence =3D 3;
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 54222a202d..94fb620d65 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -45,7 +45,7 @@ struct PCMachineState {
+>      OnOffAuto vmport;
+>      OnOffAuto smm;
+> =20
+> -    AcpiNVDIMMState acpi_nvdimm_state;
+> +    NVDIMMState acpi_nvdimm_state;
+> =20
+>      bool acpi_build_enabled;
+>      bool smbus_enabled;
+> diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+> index c5c9b3c7f8..523a9b3d4a 100644
+> --- a/include/hw/mem/nvdimm.h
+> +++ b/include/hw/mem/nvdimm.h
+> @@ -123,7 +123,7 @@ struct NvdimmFitBuffer {
+>  };
+>  typedef struct NvdimmFitBuffer NvdimmFitBuffer;
+> =20
+> -struct AcpiNVDIMMState {
+> +struct NVDIMMState {
+>      /* detect if NVDIMM support is enabled. */
+>      bool is_enabled;
+> =20
+> @@ -141,13 +141,13 @@ struct AcpiNVDIMMState {
+>      int32_t persistence;
+>      char    *persistence_string;
+>  };
+> -typedef struct AcpiNVDIMMState AcpiNVDIMMState;
+> +typedef struct NVDIMMState NVDIMMState;
+> =20
+> -void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
+> +void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+>                              FWCfgState *fw_cfg, Object *owner);
+>  void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+> -                       BIOSLinker *linker, AcpiNVDIMMState *state,
+> +                       BIOSLinker *linker, NVDIMMState *state,
+>                         uint32_t ram_slots);
+> -void nvdimm_plug(AcpiNVDIMMState *state);
+> +void nvdimm_plug(NVDIMMState *state);
+>  void nvdimm_acpi_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev);
+>  #endif
 

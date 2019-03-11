@@ -1,89 +1,88 @@
-Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp812779wrt;
-        Mon, 11 Mar 2019 09:08:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQ5eTLRObDuyUz0wplxysruJgsQUiFYPEcjjjXMC61r9HYHepFxz428NvpVSoDuAk6nZNq
-X-Received: by 2002:a0d:e083:: with SMTP id j125mr9645898ywe.175.1552320531186;
-        Mon, 11 Mar 2019 09:08:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552320531; cv=none;
+Received: by 2002:a5d:610e:0:0:0:0:0 with SMTP id v14csp988330wrt;
+        Mon, 11 Mar 2019 12:12:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4007eFALeiichJHYAug6XgmdGAFhTPfS+SsIp/2JwZJVO+EsmK1rqL5jQ98ElDU+h39if
+X-Received: by 2002:a25:c78e:: with SMTP id w136mr29068360ybe.358.1552331576088;
+        Mon, 11 Mar 2019 12:12:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552331576; cv=none;
         d=google.com; s=arc-20160816;
-        b=b31e85xB0VzHjYu3/r41nJOMm3VS1CcfQb/Z1Q9HUuYUh4KJMM3BiEHiDtvNr6kGls
-         k4aIgYPMSdZAflmX11F11kOe+TRcXh1MPaXbRk3+dEfTEEpYcr6SFhTaUn624l9ZD9vE
-         2Th27ZUuF3j8c64k92vXtUUd0bBTMGoHe6Oaz4+nlx1t9RcjwzbTpgbMxagh8x2QbuyP
-         T4GavIkUHfip3oVCLNFoCcaprpbHxSzU4e1qxBJz84MEKWM//JVXZ2BhZnFN7bIgK45K
-         ppCtepIAIqL3cGbypVgO5B9iVuJVZ6fObp+m96XZsWv43F27vJkSaRi1x6+53xI3oq3X
-         aEEA==
+        b=EvuqhGttgIp7vrCBwt+1AZLaePJWISvRQ2xVTURlvG8M7KZVoA8Vo4wDrHpU+3KqCB
+         dmuwNtcsoukwOBC1ceZxrGKamtSZxZxy7cCIytAYaMhigsXQBys+ddKd7okoO0zKpWpc
+         kBc2kefhEkW/lffDpNQFiofha+i+oy9YKR44PRcwZuoJkbUubl1mu2MvZZcXBHD//vjG
+         jjz19LNVWY6xgYHxo2vFd+UwJT2jU8Q+/CiFipT9slTn5TxvYdyykv58JRv+6ErsM0Tc
+         s4W420+phUmuIxsANQ3E6wwgqfE86Qcq9zMFyiyl0yeZLWH1GM8tBpGHeTntADJ5ef7N
+         Cs2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:content-language
-         :accept-language:in-reply-to:references:date:thread-index
-         :thread-topic:to:from:message-id;
-        bh=zbD/GW8aUtGsNwpnmgwWcbtFoYUhtw5IXpFY00N5eY8=;
-        b=f6Z4UVnTEGkwlsVUhsRuEq0c8+zh8BsyHa8+0YK22Q533ftq1T8ODeCEX8B6Sf4M+Y
-         3Jgb7Q4yeJ57KvjTrmr8Nrv4EBpU3ba82BBcdjInxoyPsqsHB6uxIvByTmR2FAweu6nL
-         H/l8huyqAT+xTECV5MW+h7pu0eiwjIevI1cFFPPwYT4voq+C3yT3RUf3F6yviG4wsfJE
-         u2jURMoQ6Qpkd6+v4tzt13U+yrdXBVdH+ckfDGPWRgdyf7WF6vxc2tIdngrUGB8SNyUe
-         BczQoL2ZIvYXRpgrO8kuTIigE8GSVEBebNFTOATjfEmNa4m5EEfyOXwh5gL+zKMkOriF
-         HFGw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=YXTd9VR0WEK+TViJZemPcvJEpGYCDpiHjuvXF7Kdjz4=;
+        b=hZfOJkOt3v0LwbdIj8fSvmWpyiX5896Qxbm/CAh9s+d1h3IIIvj76v65ka3O/b8agC
+         daSqzktHUJ3FzJ7tI8Xy/O/8efvEpe5Gx/LLDEecOHtX278CsNYLXIBhmlJNH9FWRZYb
+         sBbVrn1imzQbDBeN3/A2ME2MBgsBRC0/fM8Nzz2wTt2t6YE2E2Om7EVYiJEhikiw32WJ
+         t1thbPHk+1koMXd0SDAODgVMwFitchk3MK3lc4sd8oyOLUhZQPDOyUqhKx1EoTEUSWDr
+         QCRoE5mAHkTU7KPGUjLtw0PPi7QxA4ms77LpKQ1W40Uj3Lmsa7LXok3rvNjj4xEGPjH5
+         CdYw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h40si3632776ywk.242.2019.03.11.09.08.51
+        by mx.google.com with ESMTPS id i12si3455324ybp.85.2019.03.11.12.12.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Mar 2019 09:08:51 -0700 (PDT)
+        Mon, 11 Mar 2019 12:12:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Message-ID: <5c868813.1c69fb81.ffaf6.c7daSMTPIN_ADDED_BROKEN@mx.google.com>
-X-Google-Original-Message-ID: C87848E9-4108-4586-B433-BF026017D406
-Received: from localhost ([127.0.0.1]:36007 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38812 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3NTu-0001CO-IT
-	for alex.bennee@linaro.org; Mon, 11 Mar 2019 12:08:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47546)
+	id 1h3QM3-0005PU-CH
+	for alex.bennee@linaro.org; Mon, 11 Mar 2019 15:12:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3NHK-0007Sh-If
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 11:55:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h3QL5-0005NN-CH
+	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:11:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3NHJ-0008QR-1p
-	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 11:55:50 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2489 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1h3NHF-0008M5-VL; Mon, 11 Mar 2019 11:55:46 -0400
-Received: from DGGEMA403-HUB.china.huawei.com (unknown [172.30.72.55])
-	by Forcepoint Email with ESMTP id 3775EAC78FD7007A4C83;
-	Mon, 11 Mar 2019 23:55:38 +0800 (CST)
-Received: from DGGEMA423-HUB.china.huawei.com (10.1.198.156) by
-	DGGEMA403-HUB.china.huawei.com (10.3.20.44) with Microsoft SMTP Server
-	(TLS) id 14.3.408.0; Mon, 11 Mar 2019 23:55:37 +0800
-Received: from DGGEMA523-MBX.china.huawei.com ([169.254.5.115]) by
-	dggema423-hub.china.huawei.com ([10.1.198.156]) with mapi id
-	14.03.0415.000; Mon, 11 Mar 2019 23:55:33 +0800
-From: gengdongjiu <gengdongjiu@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [RESEND PATCH] target/arm: change arch timer registers access
-	permission
-Thread-Index: AdTYGYIM5QqfYxHeRXuAzVojhxHLjQAA1dHA//+BU4CAAIqy0w==
-Date: Mon, 11 Mar 2019 15:55:33 +0000
-References: <0184EA26B2509940AA629AE1405DD7F202153AC7@dggema523-mbx.china.huawei.com>,
-	<CAFEAcA9yr3trFz7ZFsS-P-g=gxe=MX6Eet_dTdcOCSdhW7_J4w@mail.gmail.com>
-In-Reply-To: <CAFEAcA9yr3trFz7ZFsS-P-g=gxe=MX6Eet_dTdcOCSdhW7_J4w@mail.gmail.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
+	(envelope-from <laurent@vivier.eu>) id 1h3QL4-0003W6-L9
+	for qemu-devel@nongnu.org; Mon, 11 Mar 2019 15:11:55 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:49325)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1h3QL2-0003SY-Ix; Mon, 11 Mar 2019 15:11:52 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
+	(Nemesis)
+	id 1Mgek6-1gZaEQ1tJk-00h8LM; Mon, 11 Mar 2019 20:11:38 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Date: Mon, 11 Mar 2019 20:11:26 +0100
+Message-Id: <20190311191128.30562-4-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190311191128.30562-1-laurent@vivier.eu>
+References: <20190311191128.30562-1-laurent@vivier.eu>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:+/7vQYnWzSBZpyc21fQiaX1NhoLlLObmbxfRYYgeqZRGWk36tgV
+	uqMOEowoEasOPODlDJiBTw+tR6WUCf+fyZXmNlY9e5oyUKe22dyBK4OLZhzn3Zo4KZQfOlk
+	+fdtjIaWkjTrpvIISRhXJevtyrK33at/n6TB91gCQp3FayzXxtG4q49X1y9O9bKkvqKx1Yt
+	Vp3llgE7QHshWl8f+1cLw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RNrBHDC5rY8=:St7pIStrAkgi2QCwDbggJT
+	qYwJYS+FveRoBPtFRZb3coEVATExAKb3A9MCbMSXTRq3au8uoROztW7Q0Z7UY8U5XP95VaLxR
+	woQ86ZqWbDnH3f8lvL45AVpDuCNWnUuUlrlzKNs9hT182XwKuFFCRqWOIn6f7Agi72/8VCN8v
+	/fQkWesBktCIkN1I3iBKzalYTCiF791yfpIaLxfFl6eyyEaRG0+JUMvtUtOKokpwudEqTgv+a
+	znDIz79DmvbunB8RNuG1sHiO9FbMxL5UsD3MJgRFruA54df+/35HJo/UUW+UaIL2BhGFP/hl7
+	qSCo++ALCP2f0GifbS9hlMxTdoVrRvi/XDrNk6LJLYTou8uSoD+SzGuWttnmOusG8IB9jfqUE
+	XOalJQIFqzUKK6wNu3jwIJpogQZ0TWQcBocK1VTT7P3znJtqGVLF74mV5UP6KFofsmhI27EhB
+	n2yb4ZG1cS0UBSBEc2bdqEKNy8eNDg1Lz27lpUNfL8vgqqaoUVp7IR2boGjrpLrGFaxoaK9yL
+	fc18OeCgqYIhKbl7OgLLGoHAYbfTgCIpuadcrLV8+GD4ZiReO2C+ZTB+D2Z2fuwWHgccT5gnK
+	xqKZXufG5FzapSKRRxBEYzcTsdkSRlxTNOwIA4jF3kxZKVKKOfqN/8OZ8Ij56fwSS2N1QCKGa
+	5Iz83ZLspo6UPruZ+tqsmZeB4AbWRJULSjwpjfRZGjp/txF2g/Ue4yzzmfAtGLUsLv8IBsYUl
+	vlxrExVSx+PT0rL+ZHZNLRwhOcOezQll1GElg+qQaXZTD69wpI5vhXeisIY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.188
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [RESEND PATCH] target/arm: change arch timer
- registers access permission
+X-Received-From: 217.72.192.73
+Subject: [Qemu-devel] [PULL 3/5] hw/i386: Remove unused include
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,32 +94,40 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XcfAePtOEMqH
+X-TUID: fBFpKWbX2qQY
 
-dW5kZXJzdGFuZCBub3fvvIx0aGFua3MgZm9yIHRoZSBleHBsYWluYXRpb24sIEkgd2lsbCB1cGRh
-dGUgaXQuDQrlj5Hku7bkurrvvJpQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5v
-cmc+DQrmlLbku7bkurrvvJpnZW5nZG9uZ2ppdSA8Z2VuZ2RvbmdqaXVAaHVhd2VpLmNvbT4NCuaK
-hOKAg+mAge+8mnFlbXUtYXJtIDxxZW11LWFybUBub25nbnUub3JnPjtRRU1VIERldmVsb3BlcnMg
-PHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCuaXtumXtO+8mjIwMTktMDMtMTEgMjM6Mzk6MzINCuS4
-u+KAg+mimO+8mlJlOiBbUkVTRU5EIFBBVENIXSB0YXJnZXQvYXJtOiBjaGFuZ2UgYXJjaCB0aW1l
-ciByZWdpc3RlcnMgYWNjZXNzIHBlcm1pc3Npb24NCg0KT24gTW9uLCAxMSBNYXIgMjAxOSBhdCAx
-NToyNCwgZ2VuZ2RvbmdqaXUgPGdlbmdkb25naml1QGh1YXdlaS5jb20+IHdyb3RlOg0KPiBTbyBJ
-ZiBRRU1VIGRlZmluZWQgdGhlIHRpbWVyIHJlZ2lzdGVycyByZWFkIG9ubHkgaW4gUEwwLCBldmVu
-IHRob3VnaCBpdCBoYXMgYmVlbiBjb25maWd1cmVkIHRvIGhhdmUgd3JpdGUgcGVybWlzc2lvbiBp
-biBQTDAgYnkgaGlnaCBQTHgsIHdlIHN0aWxsIGNhbm5vdCBoYXZlDQo+IFdyaXRlIHBlcm1pc3Np
-b24sIGJlY2F1c2UgUUVNVSB3aWxsIGZpcnN0bHkgY2hlY2sgdGhlIGRlZmluZWQgcGVybWlzc2lv
-biBhbmQgdGhlbiBjaGVjayB0aGUgY29uZmlndXJlZCBwZXJtaXNzaW9uIGJ5IGhpZ2ggUEx4Lg0K
-DQpJJ20gYWZyYWlkIEkgZG9uJ3QgdW5kZXJzdGFuZCB3aGF0IHlvdSdyZSB0cnlpbmcgdG8gc2F5
-IGhlcmUuDQoNClllcywgaXQgd2FzIGEgYnVnIHRoYXQgd2UgbWFya2VkIHRoZXNlIHJlZ2lzdGVy
-cyBhcyByZWFkLW9ubHkgZm9yIFBMMCwNCmFuZCB3ZSBzaG91bGQgZml4IGl0Lg0KDQpXaGF0IEkg
-YW0gdHJ5aW5nIHRvIHNheSBpcyB0aGF0DQogLmFjY2VzcyA9IFBMMV9SVyB8IFBMMF9SVw0KDQpp
-cyBleGFjdGx5IGVxdWl2YWxlbnQgdG8NCiAuYWNjZXNzID0gUEwwX1JXDQoNCmFuZCB3ZSBzaG91
-bGQgdXNlIHRoZSBzaW1wbGVyIHZlcnNpb24gb2YgdGhlIGV4cHJlc3Npb24uDQoNCihJZiB5b3Ug
-bG9vayBhdCB0aGUgZGVmaW5pdGlvbnMgb2YgYWxsIHRoZSBQTCpfIGNvbnN0YW50cywNCnlvdSBj
-YW4gc2VlIHRoYXQgUEwwX1cgaW1wbGllcyBQTDFfVzoNCiNkZWZpbmUgUEwwX1cgKDB4MDEgfCBQ
-TDFfVykNCmFuZCBzaW1pbGFybHkgZm9yIFBMMF9SLiBTbyBhbGwgdGhlIGJpdHMgaW4gdGhlIGJp
-dGZpZWxkIHRoYXQgd291bGQgYmUNCnNldCBieSBQTDFfUlcgYXJlIGFsc28gc2V0IGJ5IFBMMF9S
-Vy4pDQoNCnRoYW5rcw0KLS0gUE1NDQo=
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190308013222.12524-3-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/acpi/piix4.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index 8fd25a59269a..7b98121070f6 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -28,7 +28,6 @@
+ #include "sysemu/sysemu.h"
+ #include "qapi/error.h"
+ #include "qemu/range.h"
+-#include "hw/nvram/fw_cfg.h"
+ #include "exec/address-spaces.h"
+ #include "hw/acpi/piix4.h"
+ #include "hw/acpi/pcihp.h"
+-- 
+2.20.1
+

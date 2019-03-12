@@ -1,73 +1,73 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp348069wrs;
-        Tue, 12 Mar 2019 04:06:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx9t9nscQaaMzNcR/43pJntBOyNFNrK68bX8kMzdFw1eQxJ5p+HtgKhQ6jqJiQ++CVeOK9+
-X-Received: by 2002:a81:3989:: with SMTP id g131mr28765821ywa.475.1552388806102;
-        Tue, 12 Mar 2019 04:06:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552388806; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp454766wrs;
+        Tue, 12 Mar 2019 05:53:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1bwWkE70OMMZaJFjdDxr5LSCeDdqbtuIV5hHbReLi/avsg1O56hBSn3tMAdeEMTwthmIW
+X-Received: by 2002:a25:8106:: with SMTP id o6mr30126014ybk.53.1552395219913;
+        Tue, 12 Mar 2019 05:53:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552395219; cv=none;
         d=google.com; s=arc-20160816;
-        b=dw50ZO3tSyuGFxv2Dl2q1WyAg/HJM6SiQ/XTUOFLRuqgWENJ9PiCaJaAUwT0RQGACE
-         Ie18M3syqplydTyFHX/zUzSBcKW5X7XshoCyyspWeCQSMdVIeRQtTuROCs5LEZ9xrCZR
-         yHtGCGPBclVlRUIOcF7w6UfDk1Pv/R2ArnNy4BtcMrwZ6gOxpT0HbX+sgUz0YIz34x/m
-         HpEVQHXwGGizfmyOuA5vAzSMn/w42BCx1PCLxvQIz4kPPfvT7MU3lVpwqo7tKpuQUF7L
-         Wx8qbOBo0Cde8cH2F+HXKcqjNq0aXLEr5XOtAPJCjLhnF6BhgaUxYDpLFQAioPIQlLCp
-         YroA==
+        b=grw2Nv3nW5hGtEOF4d7PyFBYCyBu0DipTD11/bL0LcxEztSdsE9pzaisJLb5ncqEaK
+         WXLYtoxk800OXO/YN5pbVmHjJOn4IcjLZaZe/qVB5mmm9LaANiN5nafGoMsDkma6006g
+         oIoQE2cExN2J5pfYRV7VuXFkGT5mbmZNqvif+qoxc9ZzqDIgJjzXg8ZXXcCe3SoBh/mJ
+         mv7VSXs4BMRVcCflZiXF1YRHcmyRo/PSQAg9rFfEoq9srcKTdMlQeLcrhRv4zo8h3WW5
+         PIAwYLYhk4b+EMjTOWxNZTxzWdebrP1A7dDeWKMWGIlSJLXIQAbiuCqoJ9vNZnezLsqJ
+         cxEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
          :date:to:from;
-        bh=79SbhfXIdAJR0zfQwvtRUzG41Pazrqq1mzzx7O2/SN4=;
-        b=IFtJ+xEbD6tJ1xIciou/V2GY+X5qXM0shT05fg0WKHXlaO0HMDu2HeYumlwKBJvp3N
-         EQedhxlZRkX3i04742m9CHF2vnx9XSjmEM26OPJrGgPyLxyqtND1YCwyB80YOYHn4pio
-         6P3yizA4Y9nLQJbVPQeVV7328UYFjOSa1eqSGW3dJtoMRVRTThMSVtrr2RH9H1QM1kaE
-         NCEjD/I2nIjU5Enw+Dkf5RvltCCQsBTQMwFhGxBOc2vYtrYL8nxMDH2vwdOy41cUV4DF
-         IK1sre+uBLAvkC9E5L64lAbLFAeL8Ab+PFaI5DCML3sOZwm0lCXSYTO0iKE/RNhbc51c
-         oKaA==
+        bh=HmDZgkbqFhqnM3UmuYY4KS+7+xLr9KXeT/XRbq40cdg=;
+        b=bbRtjBz9csEWGbbYRjewbdvMwR2RKzdS7autFfefzVAFgPC9oA5wooXe5jreAoJZvE
+         MA4LQxROWR0liSETAzzjLVteE/Ce4z0JWMfX7jzmfGacMGWoWsYRUWf8IXRIJ2gCiS4/
+         uUNZ97mC5XCcd4YHWAI+Sz3UrspfpMaXCLdmd6tJg5XPx6n7y0LiwceOIquhnEXjciZR
+         rPEVnmJHFbfIsbiNi2YSVbnZpS7ZDwUG0r49Hccord/Pyr8FkTfEFXg+bJoPG7L6TwPn
+         ++gqkEZVumNep5xqUyMTWJKaBSwxD+4n/YeBJiqh17av5XiQywuckYiQo/CTyuLP4B36
+         VT6A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si4503430ybw.250.2019.03.12.04.06.45
+        by mx.google.com with ESMTPS id 5si4688665ybv.98.2019.03.12.05.53.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Mar 2019 04:06:46 -0700 (PDT)
+        Tue, 12 Mar 2019 05:53:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:49887 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51819 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3fF7-0002ZX-DO
-	for alex.bennee@linaro.org; Tue, 12 Mar 2019 07:06:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44663)
+	id 1h3guZ-00076P-Dv
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 08:53:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47077)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3egJ-0007nh-4M
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 06:30:48 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1h3guI-000743-0B
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 08:53:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h3egH-0008H3-Lk
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 06:30:47 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2249 helo=huawei.com)
+	(envelope-from <gengdongjiu@huawei.com>) id 1h3guG-0002zV-61
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 08:53:21 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2191 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1h3egH-0008E4-0a; Tue, 12 Mar 2019 06:30:45 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id DAF3730EDDBBAD0A7F5C;
-	Tue, 12 Mar 2019 18:30:34 +0800 (CST)
+	id 1h3guF-0002nL-FC; Tue, 12 Mar 2019 08:53:20 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id D425ACF5711A91F593F1;
+	Tue, 12 Mar 2019 20:53:06 +0800 (CST)
 Received: from localhost.localdomain (10.143.28.91) by
-	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
-	id 14.3.408.0; Tue, 12 Mar 2019 18:30:24 +0800
-From: gengdongjiu <gengdongjiu@huawei.com>
+	DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server
+	id 14.3.408.0; Tue, 12 Mar 2019 20:52:57 +0800
+From: Dongjiu Geng <gengdongjiu@huawei.com>
 To: <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
 	<qemu-devel@nongnu.org>, <gengdongjiu@huawei.com>
-Date: Tue, 12 Mar 2019 18:30:24 +0800
-Message-ID: <1552386624-10484-1-git-send-email-gengdongjiu@huawei.com>
+Date: Tue, 12 Mar 2019 20:52:57 +0800
+Message-ID: <1552395177-12608-1-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.143.28.91]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-arm] [PATCH V2] target/arm: change arch timer registers
+X-Received-From: 45.249.212.190
+Subject: [Qemu-arm] [PATCH V3] target/arm: change arch timer registers
  access permission
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -80,25 +80,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: wangnan0@huawei.com, chenguoping@huawei.com, wuyuming3@huawei.com,
+	larkin.zhanglixin@huawei.com, linqiangmin@huawei.com, liuyutao2@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a2mzp20bk1sU
-
-From: Dongjiu Geng <gengdongjiu@huawei.com>
+X-TUID: H5k+bW44j9c1
 
 Some generic arch timer registers are Config-RW in the EL0,
 which means the EL0 exception level can have write permission
 if it is appropriately configured.
 
-When VM access registers, it firstly checks whether they have RW
+When VM access registers, QEMU firstly checks whether they have RW
 permission, then check whether it is appropriately configured.
-If they are defined to Ready only in EL0, even though they have been
+If they are defined to read only in EL0, even though they have been
 appropriately configured, they still do not have write permission.
 So need to add the write permission according to ARMV8 spec when
 define it.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
+Change since V2:
+1. Change 'Ready only' to 'read only' in the comments
+
+Change since V1:
+1. Change 'PL1_RW | RL0_RW' to PL0_RW because PL0_RW implied that the higher PLx all have RW permission
+
 When VM kernel or Hypervisor configures the timer registers to RW in EL0
 user space, it will still have below panic when EL0 user space access
 the timer registers.

@@ -1,73 +1,64 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp110708wrs;
-        Mon, 11 Mar 2019 23:10:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzrB3yOdZa3x0Jc1/UulkhtUVSBWzHOxVOX1UnSO9T7M1itLk2p8Piewc5IyMY5DwPbP6Y6
-X-Received: by 2002:a81:66d6:: with SMTP id a205mr17665410ywc.156.1552371059866;
-        Mon, 11 Mar 2019 23:10:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552371059; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rCuCTNU9XFski/RQ/r1SGBHqEzgXR+GfU4wPD+eoTuFT+aRW6YGaoHBol0HeGllswe
-         mksMB5gNtnbRN1ekDdw66gB62EF6UCGQyKLz+Tzg+23/sYfqBd9pBAMWh5IPtEHBQukV
-         hQvHuIYH3P/9nR97MyCeCV8pOJX/Bb0u7BO+ksNIqwlDZMTooNB7CGCNW1gIga9J8Q3a
-         eEksbs3bXWoOvYwD9JL9PibSOJn0C/H/Ud+V08z3EK9AvfNGks1/k+VIZGmNkO3GtpqY
-         PDH5ic84HTw/rqZOLS2iHjfj0Ti+vN3nOdRU+HelmcYMnPTtAOvlT7nbDNz4gY2YH89S
-         TzPg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from;
-        bh=Xp6gTZNEH8x6mzCJkxt7ePeafiB2dGk/rKh2fH0ZR3U=;
-        b=YY/xyN6Xys1a4EZu+5iAxTsZPgo+rxkI+gbV9nU71vN9UxtXDUePd1diI0EKPCsvYY
-         pvc1lBJju3NCZDnwLvODmxpPqJRlWtTbRuEXPVpoRnQz57pB9OeGnSxo1n/gpkdt8crN
-         DcKeyAxwWQKLtCeAyraYOGgWTm85RpJWkb6nTBadYLZr1J3lnr7kVys1E11+KBZKa4uY
-         7HPt9ykzgwasjofyiAE0XrJVqU+8jKvg2Q2uxYo+31htDDsmYvHju2KAyf9+mbx7FCMy
-         kbIjGMN8C94X7gC1WhOUG2bWUpZWBdMg2wlOax0YGPhgJB0S1O17EZl1mvMBDYH6CsXQ
-         /Gsg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp120068wrs;
+        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxJKn41ZT4AM2YQKHVlENq4NcJq06zmHt9Gj+OC1tNBNXpzXR6VcVCASmhfI6BvYz8V0XRw
+X-Received: by 2002:a25:8148:: with SMTP id j8mr29733935ybm.202.1552371788738;
+        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3si4278281ywa.284.2019.03.11.23.10.59
+        by mx.google.com with ESMTPS id 12si4356095ybf.280.2019.03.11.23.23.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Mar 2019 23:10:59 -0700 (PDT)
+        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:45841 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:45938 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3act-0002Gu-AC
-	for alex.bennee@linaro.org; Tue, 12 Mar 2019 02:10:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50112)
+	id 1h3aoe-0004Do-6S
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 02:23:08 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51714)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <guoheyi@huawei.com>) id 1h3ack-0002Ge-RR
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:10:51 -0400
+	(envelope-from <no-reply@patchew.org>) id 1h3aoS-0004DV-Ac
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:22:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <guoheyi@huawei.com>) id 1h3ach-0008Hp-Dm
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:10:50 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2247 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <guoheyi@huawei.com>)
-	id 1h3acg-0008Dh-W1; Tue, 12 Mar 2019 02:10:47 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id A3701D17258761CE2A13;
-	Tue, 12 Mar 2019 14:10:38 +0800 (CST)
-Received: from localhost.localdomain (10.175.104.222) by
-	DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server
-	id 14.3.408.0; Tue, 12 Mar 2019 14:10:30 +0800
-From: Heyi Guo <guoheyi@huawei.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Date: Tue, 12 Mar 2019 14:09:20 +0800
-Message-ID: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
-X-Mailer: git-send-email 1.8.3.1
+	(envelope-from <no-reply@patchew.org>) id 1h3aoP-0005dN-AF
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:22:56 -0400
+Resent-Date: Tue, 12 Mar 2019 02:22:56 -0400
+Resent-Message-Id: <E1h3aoP-0005dN-AF@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21720)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1h3aoP-0005cd-10; Tue, 12 Mar 2019 02:22:53 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1552371748; cv=none; d=zoho.com; s=zohoarc; 
+	b=Is5IzUGvoXdYqr9XPaL9Xd9LZnXucLgioRILEq/3ljKawmICt8MUWS+KswK19or5OxhaNyc2w1EQsUgY4lvMBEoGe+dOYCTRZOHQv4d1E3Oa1BBmAcP/c+Am99jnSo5Stu59FCLXD1xe1vzBmqzO9PkB0Zz5GrRXSG5bHcX7gNs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1552371748;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=7VZU4W172//vVLvoKsZhRsue0UaZPXrzw3LZQqqLTeg=; 
+	b=S7mDabQtAZJnu3MZEYStIPAJYn2rArweGW/yuormtfFGiia35sIsmNQyAiUZ4khTWKgN9dPqobuKRvcNN6eGX7TnPbCCHdGsue0phcfydZ4y9MSU/YGn5qcS7V8BrzA5ZIWBQ0JEA9TwUESr0NEGVQa8H+geNlCliMARrXa69d4=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 15523717464231009.23818893593;
+	Mon, 11 Mar 2019 23:22:26 -0700 (PDT)
+Message-ID: <155237174511.17434.10843082675899599446@6acff2cf482b>
+In-Reply-To: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.175.104.222]
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: guoheyi@huawei.com
+Date: Mon, 11 Mar 2019 23:22:26 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-arm] [RFC] arm/cpu: fix soft lockup panic after resuming from
- stop
+X-Received-From: 135.84.80.218
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC] arm/cpu: fix soft lockup panic
+ after resuming from stop
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,124 +70,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
-	Peter Maydell <peter.maydell@linaro.org>
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, guoheyi@huawei.com, wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ep+f5xR6H+zf
+X-TUID: yo0t9WKhWdkb
 
-When we stop a VM for more than 30 seconds and then resume it, by qemu
-monitor command "stop" and "cont", Linux on VM will complain of "soft
-lockup - CPU#x stuck for xxs!" as below:
-
-[ 2783.809517] watchdog: BUG: soft lockup - CPU#3 stuck for 2395s!
-[ 2783.809559] watchdog: BUG: soft lockup - CPU#2 stuck for 2395s!
-[ 2783.809561] watchdog: BUG: soft lockup - CPU#1 stuck for 2395s!
-[ 2783.809563] Modules linked in...
-
-This is because Guest Linux uses generic timer virtual counter as
-a software watchdog, and CNTVCT_EL0 does not stop when VM is stopped
-by qemu.
-
-This patch is to fix this issue by saving the value of CNTVCT_EL0 when
-stopping and restoring it when resuming.
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Heyi Guo <guoheyi@huawei.com>
----
- target/arm/cpu.c | 65 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 65 insertions(+)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 96f0ff0..7bbba3d 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -896,6 +896,60 @@ static void arm_cpu_finalizefn(Object *obj)
- #endif
- }
- 
-+static int get_vcpu_timer_tick(CPUState *cs, uint64_t *tick_at_pause)
-+{
-+    int err;
-+    struct kvm_one_reg reg;
-+
-+    reg.id = KVM_REG_ARM_TIMER_CNT;
-+    reg.addr = (uintptr_t) tick_at_pause;
-+
-+    err = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    return err;
-+}
-+
-+static int set_vcpu_timer_tick(CPUState *cs, uint64_t tick_at_pause)
-+{
-+    int err;
-+    struct kvm_one_reg reg;
-+
-+    reg.id = KVM_REG_ARM_TIMER_CNT;
-+    reg.addr = (uintptr_t) &tick_at_pause;
-+
-+    err = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    return err;
-+}
-+
-+static void arch_timer_change_state_handler(void *opaque, int running,
-+                                            RunState state)
-+{
-+    static uint64_t hw_ticks_at_paused;
-+    static RunState pre_state = RUN_STATE__MAX;
-+    int err;
-+    CPUState *cs = (CPUState *)opaque;
-+
-+    switch (state) {
-+    case RUN_STATE_PAUSED:
-+        err = get_vcpu_timer_tick(cs, &hw_ticks_at_paused);
-+        if (err) {
-+            error_report("Get vcpu timer tick failed: %d", err);
-+        }
-+        break;
-+    case RUN_STATE_RUNNING:
-+        if (pre_state == RUN_STATE_PAUSED) {
-+            err = set_vcpu_timer_tick(cs, hw_ticks_at_paused);
-+            if (err) {
-+                error_report("Resume vcpu timer tick failed: %d", err);
-+            }
-+        }
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    pre_state = state;
-+}
-+
- static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- {
-     CPUState *cs = CPU(dev);
-@@ -906,6 +960,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     Error *local_err = NULL;
-     bool no_aa32 = false;
- 
-+    /*
-+     * Only add change state handler for arch timer once, for KVM will help to
-+     * synchronize virtual timer of all VCPUs.
-+     */
-+    static bool arch_timer_change_state_handler_added;
-+
-     /* If we needed to query the host kernel for the CPU features
-      * then it's possible that might have failed in the initfn, but
-      * this is the first point where we can report it.
-@@ -1181,6 +1241,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-     init_cpreg_list(cpu);
- 
-+    if (!arch_timer_change_state_handler_added && kvm_enabled()) {
-+        qemu_add_vm_change_state_handler(arch_timer_change_state_handler, cs);
-+        arch_timer_change_state_handler_added = true;
-+    }
-+
- #ifndef CONFIG_USER_ONLY
-     if (cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-         cs->num_ases = 2;
--- 
-1.8.3.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTUyMzcwOTYwLTIwNjEtMS1n
+aXQtc2VuZC1lbWFpbC1ndW9oZXlpQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFp
+bGVkIHRoZSBkb2NrZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0
+ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tl
+ciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0g
+VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1t
+aW5nd0BmZWRvcmEgU0hPV19FTlY9MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5E
+ID09PQoKICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90cmFjZS9nZW5lcmF0ZWQtaGVscGVycy5v
+CiAgQ0MgICAgICBhYXJjaDY0LXNvZnRtbXUvdGFyZ2V0L2FybS90cmFuc2xhdGUtc3ZlLm8KL3Rt
+cC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6IEluIGZ1bmN0aW9uICdnZXRfdmNwdV90
+aW1lcl90aWNrJzoKL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6OTAyOjI0OiBl
+cnJvcjogc3RvcmFnZSBzaXplIG9mICdyZWcnIGlzbid0IGtub3duCiAgICAgc3RydWN0IGt2bV9v
+bmVfcmVnIHJlZzsKICAgICAgICAgICAgICAgICAgICAgICAgXn5+Ci90bXAvcWVtdS10ZXN0L3Ny
+Yy90YXJnZXQvYXJtL2NwdS5jOjkwNDoxNDogZXJyb3I6ICdLVk1fUkVHX0FSTV9USU1FUl9DTlQn
+IHVuZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9uKQogICAgIHJlZy5pZCA9IEtW
+TV9SRUdfQVJNX1RJTUVSX0NOVDsKICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn4K
+L3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6OTA0OjE0OiBub3RlOiBlYWNoIHVu
+ZGVjbGFyZWQgaWRlbnRpZmllciBpcyByZXBvcnRlZCBvbmx5IG9uY2UgZm9yIGVhY2ggZnVuY3Rp
+b24gaXQgYXBwZWFycyBpbgovdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2FybS9jcHUuYzo5MDc6
+MzA6IGVycm9yOiAnS1ZNX0dFVF9PTkVfUkVHJyB1bmRlY2xhcmVkIChmaXJzdCB1c2UgaW4gdGhp
+cyBmdW5jdGlvbikKICAgICBlcnIgPSBrdm1fdmNwdV9pb2N0bChjcywgS1ZNX0dFVF9PTkVfUkVH
+LCAmcmVnKTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+Ci90
+bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkwMjoyNDogZXJyb3I6IHVudXNlZCB2
+YXJpYWJsZSAncmVnJyBbLVdlcnJvcj11bnVzZWQtdmFyaWFibGVdCiAgICAgc3RydWN0IGt2bV9v
+bmVfcmVnIHJlZzsKICAgICAgICAgICAgICAgICAgICAgICAgXn5+Ci90bXAvcWVtdS10ZXN0L3Ny
+Yy90YXJnZXQvYXJtL2NwdS5jOiBJbiBmdW5jdGlvbiAnc2V0X3ZjcHVfdGltZXJfdGljayc6Ci90
+bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkxNDoyNDogZXJyb3I6IHN0b3JhZ2Ug
+c2l6ZSBvZiAncmVnJyBpc24ndCBrbm93bgogICAgIHN0cnVjdCBrdm1fb25lX3JlZyByZWc7CiAg
+ICAgICAgICAgICAgICAgICAgICAgIF5+fgovdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2FybS9j
+cHUuYzo5MTY6MTQ6IGVycm9yOiAnS1ZNX1JFR19BUk1fVElNRVJfQ05UJyB1bmRlY2xhcmVkIChm
+aXJzdCB1c2UgaW4gdGhpcyBmdW5jdGlvbikKICAgICByZWcuaWQgPSBLVk1fUkVHX0FSTV9USU1F
+Ul9DTlQ7CiAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+Ci90bXAvcWVtdS10ZXN0
+L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkxOTozMDogZXJyb3I6ICdLVk1fU0VUX09ORV9SRUcnIHVu
+ZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9uKQogICAgIGVyciA9IGt2bV92Y3B1
+X2lvY3RsKGNzLCBLVk1fU0VUX09ORV9SRUcsICZyZWcpOwogICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBefn5+fn5+fn5+fn5+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1
+LmM6OTE0OjI0OiBlcnJvcjogdW51c2VkIHZhcmlhYmxlICdyZWcnIFstV2Vycm9yPXVudXNlZC12
+YXJpYWJsZV0KICAgICBzdHJ1Y3Qga3ZtX29uZV9yZWcgcmVnOwogICAgICAgICAgICAgICAgICAg
+ICAgICBefn4KY2MxOiBhbGwgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMKCgpUaGUg
+ZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzE1NTIzNzA5
+NjAtMjA2MS0xLWdpdC1zZW5kLWVtYWlsLWd1b2hleWlAaHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tl
+ci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0
+aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3Vy
+IGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 

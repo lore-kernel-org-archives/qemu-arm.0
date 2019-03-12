@@ -1,196 +1,361 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp538040wrs;
-        Tue, 12 Mar 2019 07:12:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzOQ3JO6O9EXZ8Li/Ia7ioZ66I/yL5dCYcR+LUdYt6y62RnDJ1VPnj46xbcRZL9B7hgEScQ
-X-Received: by 2002:ac8:23aa:: with SMTP id q39mr29307438qtq.82.1552399956238;
-        Tue, 12 Mar 2019 07:12:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552399956; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp562733wrs;
+        Tue, 12 Mar 2019 07:36:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyQ68iqy3WQaJTP6qETkPoAwDPp4IpTiEuaH26rfzt80G3qwpgWrSv9J3ht7fuh1iUoCFoy
+X-Received: by 2002:a25:14c1:: with SMTP id 184mr7385167ybu.403.1552401376926;
+        Tue, 12 Mar 2019 07:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552401376; cv=none;
         d=google.com; s=arc-20160816;
-        b=TDdGwAK63gfLI2CsaFFvTLjlCMPyq+wJ6lVafJKkTKcWKuqJM/9rZ+xqadD6/HZW9m
-         oxmG67B1D9R2+ZjFCHvhRc531h9uxoWeLsxB/xaD2fgbaxRSn/xJIkPJHCabKG9BRr0k
-         b/IEh6Pr2y84oem/r44F7B4Qe8fPC/o8J99kRAWZ2BpjfrrTs2uh5gASvX8QkvhJLeYS
-         nFeDUDW/jYROUTOSshI/NyUudoLWOkQglVvj1Q+MDuBb2nN8EocWWMd6Bpbv9uAQNNPr
-         6e7/xm+DPa1Xk2ruTrAeG4D36QpXCOlu43khqUvq5U2U++LrdyaMkZqWy0r4fuNtPy4q
-         6/Eg==
+        b=aqrpRv3kjALhxsQuYW/QLLgUZxUGT36fg6QncFhiJxe9ALcASMuXIHxRZaaGU6uSh/
+         eGqLrEORpKel+DwEE6jloyrsj44d/dE7zt3ok9HVQj/zPrdBV2nClPttLu3wEKdKnbNe
+         vVdvD2r+4kmlkRH1SG85sHmIeQBKXQnyGH1dnzYHr7d6b4W8fE5Jo6lGEVEWb/GDw1YU
+         hYKxHjPt1CgkH5m8apemyMLRUA3ls+p5C6CvBirTDhjrl4GNDF8HE4hCQagVnjrckxAl
+         gwc9osYZ3ZI7n8kD9cmUUdtnaHHd9Vg84ZLG+Sgivtv6djevR0NjdMey1nBZaBuo9XxW
+         QIKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=zJPmY9Mwn5pqVU6kcTtXjtmCsezmhBhdeVdljVg+3OQ=;
-        b=Hm5W62MevR7IfM+7nVGaUF+RtzaH907sN/9YZmMw8o4DIWhl4YZ8xRFzVVrAulr/qn
-         5cqaPJFcNpGjJO7JKFDiSggkG+dtvOktmwADR+PC5A9URte0QbePd91M6BMxfVV+TPYV
-         B2ZwHXcd0YdWM/1uhBQ2s3rMnJB+/c92z6WjhSZXGcFPP/h83oQidBGveWz4pB9Yv5K1
-         SYZH7W6j3Iw1ijKlVqPiiangiiM1nd4n47uDSr4cd4GfFtQ5k3uGA2Y38/bTrNT0dR6i
-         wCuvEBYNtcW42WKOoUWOUOt9Axe1lrCXWEbh89qQIU18TYoHxEAz/8gj4YDfJNFDtO81
-         dXkg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=O1ffliI6JEqBc4koXSaFh4ugAmEABiCgf1RyY15msuQ=;
+        b=NKsCINZnelVhkyeqtOj91UhSs6OiOEeMfG+GHMjos3nTDQ/oeDhcJEvjpODf25pSkw
+         JagkVVPDOPIuJtil1BnJTp2dZH3LUijdw2h5Cn7LEPL+0s0VmhKIcaAHcWq7YAI+zfSs
+         bdOsLAONpG105X3mgJdHlB5FpVWEeEGHqCisr2TdfCRveyNiyG57UXPCHTvZEBnXQ/um
+         bFNuZ+Ju6rQND1kORj5Nv4mV6RXjMl2eQIuiAfA6hw4jTra6wXu4L/NhmkTswJcD+6ui
+         hwO7j9CCT5AZKAlNorDoqF5OlWUwl935YKxOf/I4cdoFKzI/OlJCoDHjs3Jwjq09i0id
+         sShg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id x36si1281243qvf.112.2019.03.12.07.12.35;
-        Tue, 12 Mar 2019 07:12:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i204si5304747ybg.266.2019.03.12.07.36.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 12 Mar 2019 07:36:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 773534A2E5;
-	Tue, 12 Mar 2019 10:12:35 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.201
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=ham
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WM9CKjxlokAw; Tue, 12 Mar 2019 10:12:34 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 44C564A36C;
-	Tue, 12 Mar 2019 10:12:34 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id AD6834A2E5
- for <kvmarm@lists.cs.columbia.edu>; Tue, 12 Mar 2019 10:12:33 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s2IiwROzYoKw for <kvmarm@lists.cs.columbia.edu>;
- Tue, 12 Mar 2019 10:12:32 -0400 (EDT)
-Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com [217.140.101.70])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0BE834A2BE
- for <kvmarm@lists.cs.columbia.edu>; Tue, 12 Mar 2019 10:12:31 -0400 (EDT)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2DF6F165C;
- Tue, 12 Mar 2019 07:12:31 -0700 (PDT)
-Received: from [10.1.196.92] (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
- A46543F71D; Tue, 12 Mar 2019 07:12:29 -0700 (PDT)
-Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
-To: Peter Maydell <peter.maydell@linaro.org>, Heyi Guo <guoheyi@huawei.com>
-References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
- <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
-From: Marc Zyngier <marc.zyngier@arm.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=marc.zyngier@arm.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: ARM Ltd
-Message-ID: <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
-Date: Tue, 12 Mar 2019 14:12:28 +0000
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.5.1
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:53659 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h3iVs-0001lG-Cv
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 10:36:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43370)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1h3iUY-0000k5-Mw
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 10:34:56 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1h3iUX-00014v-6T
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 10:34:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40496)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h3iUW-00013w-RS; Tue, 12 Mar 2019 10:34:53 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 49AB730820E4;
+	Tue, 12 Mar 2019 14:34:51 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 375955DD9B;
+	Tue, 12 Mar 2019 14:34:46 +0000 (UTC)
+Date: Tue, 12 Mar 2019 15:34:45 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190312153445.18384f74@redhat.com>
+In-Reply-To: <5b73e82c-8fb3-6968-0c1b-5ec4378c0143@redhat.com>
+References: <20190308114218.26692-1-shameerali.kolothum.thodi@huawei.com>
+	<20190308114218.26692-7-shameerali.kolothum.thodi@huawei.com>
+	<3c656ef1-a58e-6461-254e-140976b01d4e@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA839304E27@lhreml524-mbb.china.huawei.com>
+	<5b73e82c-8fb3-6968-0c1b-5ec4378c0143@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
-Content-Language: en-US
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Steven Price <Steven.Price@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.47]);
+	Tue, 12 Mar 2019 14:34:51 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 06/11] hw/arm/virt: Add ACPI support for
+ device memory cold-plug
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: Gw0Oivxlw3WV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"sameo@linux.intel.com" <sameo@linux.intel.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Linuxarm <linuxarm@huawei.com>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"xuwei \(O\)" <xuwei5@huawei.com>,
+	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7UwpMBopxoFw
 
-Hi Peter,
+On Mon, 11 Mar 2019 18:58:14 +0100
+Auger Eric <eric.auger@redhat.com> wrote:
 
-On 12/03/2019 10:08, Peter Maydell wrote:
-> On Tue, 12 Mar 2019 at 06:10, Heyi Guo <guoheyi@huawei.com> wrote:
->>
->> When we stop a VM for more than 30 seconds and then resume it, by qemu
->> monitor command "stop" and "cont", Linux on VM will complain of "soft
->> lockup - CPU#x stuck for xxs!" as below:
->>
->> [ 2783.809517] watchdog: BUG: soft lockup - CPU#3 stuck for 2395s!
->> [ 2783.809559] watchdog: BUG: soft lockup - CPU#2 stuck for 2395s!
->> [ 2783.809561] watchdog: BUG: soft lockup - CPU#1 stuck for 2395s!
->> [ 2783.809563] Modules linked in...
->>
->> This is because Guest Linux uses generic timer virtual counter as
->> a software watchdog, and CNTVCT_EL0 does not stop when VM is stopped
->> by qemu.
->>
->> This patch is to fix this issue by saving the value of CNTVCT_EL0 when
->> stopping and restoring it when resuming.
-> 
-> Hi -- I know we have issues with the passage of time in Arm VMs
-> running under KVM when the VM is suspended, but the topic is
-> a tricky one, and it's not clear to me that this is the correct
-> way to fix it. I would prefer to see us start with a discussion
-> on the kvm-arm mailing list about the best approach to the problem.
-> 
-> I've cc'd that list and a couple of the Arm KVM maintainers
-> for their opinion.
-> 
-> QEMU patch left below for context -- the brief summary is that
-> it uses KVM_GET_ONE_REG/KVM_SET_ONE_REG on the timer CNT register
-> to save it on VM pause and write that value back on VM resume.
+> Hi Shameer,
+> On 3/11/19 6:37 PM, Shameerali Kolothum Thodi wrote:
+> >=20
+> >  =20
+> >> -----Original Message-----
+> >> From: Auger Eric [mailto:eric.auger@redhat.com]
+> >> Sent: 11 March 2019 13:32
+> >> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+> >> qemu-devel@nongnu.org; qemu-arm@nongnu.org; imammedo@redhat.com;
+> >> peter.maydell@linaro.org; shannon.zhaosl@gmail.com;
+> >> sameo@linux.intel.com; sebastien.boeuf@intel.com
+> >> Cc: Linuxarm <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>
+> >> Subject: Re: [PATCH v2 06/11] hw/arm/virt: Add ACPI support for device
+> >> memory cold-plug
+> >>
+> >> Hi Shameer,
+> >>
+> >> On 3/8/19 12:42 PM, Shameer Kolothum wrote: =20
+> >>> This adds support to build the aml code so that Guest can see the =20
+> >> s/Guest/the guest =20
+> >>> cold-plugged device memory. =20
+> >>
+> >> Isn't the colplug part only related to acpi_dsdt_add_memory_hotplug()?=
+ I
+> >> understand the patch also adds some hotplug infra? =20
+> >=20
+> > Hmm..build_memory_hotplug_aml() doesn=E2=80=99t do much if io_base addr=
+ess
+> > Is not initialized. So we need the acpi_memory_hotplug_init(). =20
+> Yes that's correct, we need it for cold-plug.
+> >=20
+> > Also, I think acpi_memory_plug_cb() needs to be called for cold-plugged=
+ dimm
+> > otherwise the scan wont detect it. =20
+> You may be right as some MemStatus fields are updated also in coldplug ca=
+se.
+>=20
+> Worth to double check the bare minimal to make cold-plug OK in ACPI mode
+> (without the dt node generation in ACPI mode as suggested by Igor), and
+> augment the commit message with more details.
+from ACPI pov cold- and hot-plug are the the same (at least currently) with
+difference that there is no GPE (GED) event in coldplug case, MMIO interface
+is used tha same way or both.
 
-That's probably good enough for this particular use case, but I think
-there is more. I can get into similar trouble if I suspend my laptop, or
-suspend QEMU. It also has the slightly bizarre effect of skewing time,
-and this will affect timekeeping in the guest in ways that are much more
-subtle than just shouty CPUs.
+> Thanks
+>=20
+> Eric
+>=20
+> >   =20
+> >> Can't you just keerp the dsdt additions here, move the virt-acpi chang=
+es
+> >> in the original patch and move the virt-acpi instantiation in a
+> >> subsequent patch? =20
+> >=20
+> > Ok, will take look if there is any scope for reordering this.
+> >=20
+> > Thanks,
+> > Shameer
+> >   =20
+> >> Thanks
+> >>
+> >> Eric =20
+> >>>
+> >>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> >>> ---
+> >>>  default-configs/arm-softmmu.mak |  1 +
+> >>>  hw/arm/virt-acpi-build.c        |  9 +++++++++
+> >>>  hw/arm/virt-acpi.c              | 23 +++++++++++++++++++++++
+> >>>  hw/arm/virt.c                   | 11 +++++++++++
+> >>>  include/hw/arm/virt.h           |  2 ++
+> >>>  5 files changed, 46 insertions(+)
+> >>>
+> >>> diff --git a/default-configs/arm-softmmu.mak =20
+> >> b/default-configs/arm-softmmu.mak =20
+> >>> index fbc4564..b3bac25 100644
+> >>> --- a/default-configs/arm-softmmu.mak
+> >>> +++ b/default-configs/arm-softmmu.mak
+> >>> @@ -167,3 +167,4 @@ CONFIG_HIGHBANK=3Dy
+> >>>  CONFIG_MUSICPAL=3Dy
+> >>>  CONFIG_MEM_DEVICE=3Dy
+> >>>  CONFIG_DIMM=3Dy
+> >>> +CONFIG_ACPI_MEMORY_HOTPLUG=3Dy
+> >>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >>> index d7e2e48..87d66da 100644
+> >>> --- a/hw/arm/virt-acpi-build.c
+> >>> +++ b/hw/arm/virt-acpi-build.c
+> >>> @@ -40,6 +40,7 @@
+> >>>  #include "hw/loader.h"
+> >>>  #include "hw/hw.h"
+> >>>  #include "hw/acpi/aml-build.h"
+> >>> +#include "hw/acpi/memory_hotplug.h"
+> >>>  #include "hw/pci/pcie_host.h"
+> >>>  #include "hw/pci/pci.h"
+> >>>  #include "hw/arm/virt.h"
+> >>> @@ -49,6 +50,13 @@
+> >>>  #define ARM_SPI_BASE 32
+> >>>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> >>>
+> >>> +static void acpi_dsdt_add_memory_hotplug(Aml *scope, MachineState =20
+> >> *ms) =20
+> >>> +{
+> >>> +    uint32_t nr_mem =3D ms->ram_slots;
+> >>> +
+> >>> +    build_memory_hotplug_aml(scope, nr_mem, "\\_SB", NULL, =20
+> >> AML_SYSTEM_MEMORY); =20
+> >>> +}
+> >>> +
+> >>>  static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+> >>>  {
+> >>>      uint16_t i;
+> >>> @@ -740,6 +748,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker=
+, =20
+> >> VirtMachineState *vms) =20
+> >>>       * the RTC ACPI device at all when using UEFI.
+> >>>       */
+> >>>      scope =3D aml_scope("\\_SB");
+> >>> +    acpi_dsdt_add_memory_hotplug(scope, MACHINE(vms));
+> >>>      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
+> >>>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+> >>>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+> >>> diff --git a/hw/arm/virt-acpi.c b/hw/arm/virt-acpi.c
+> >>> index df8a02b..18ebe94 100644
+> >>> --- a/hw/arm/virt-acpi.c
+> >>> +++ b/hw/arm/virt-acpi.c
+> >>> @@ -26,9 +26,11 @@
+> >>>  #include "hw/arm/virt.h"
+> >>>
+> >>>  #include "hw/acpi/acpi.h"
+> >>> +#include "hw/acpi/memory_hotplug.h"
+> >>>
+> >>>  typedef struct VirtAcpiState {
+> >>>      SysBusDevice parent_obj;
+> >>> +    MemHotplugState memhp_state;
+> >>>  } VirtAcpiState;
+> >>>
+> >>>  #define TYPE_VIRT_ACPI "virt-acpi"
+> >>> @@ -44,6 +46,16 @@ static const VMStateDescription vmstate_acpi =3D {
+> >>>  static void virt_device_plug_cb(HotplugHandler *hotplug_dev,
+> >>>                                  DeviceState *dev, Error **errp)
+> >>>  {
+> >>> +    VirtAcpiState *s =3D VIRT_ACPI(hotplug_dev);
+> >>> +
+> >>> +    if (s->memhp_state.is_enabled &&
+> >>> +        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> >>> +            acpi_memory_plug_cb(hotplug_dev, &s->memhp_state,
+> >>> +                                dev, errp);
+> >>> +    } else {
+> >>> +        error_setg(errp, "virt: device plug request for unsupported =
+=20
+> >> device" =20
+> >>> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> >>> +    }
+> >>>  }
+> >>>
+> >>>  static void virt_device_unplug_request_cb(HotplugHandler *hotplug_de=
+v,
+> >>> @@ -62,6 +74,15 @@ static void virt_send_ged(AcpiDeviceIf *adev, =20
+> >> AcpiEventStatusBits ev) =20
+> >>>
+> >>>  static void virt_device_realize(DeviceState *dev, Error **errp)
+> >>>  {
+> >>> +    VirtMachineState *vms =3D VIRT_MACHINE(qdev_get_machine());
+> >>> +    const MemMapEntry *memmap =3D vms->memmap;
+> >>> +    VirtAcpiState *s =3D VIRT_ACPI(dev);
+> >>> +
+> >>> +    if (s->memhp_state.is_enabled) {
+> >>> +        acpi_memory_hotplug_init(get_system_memory(), OBJECT(dev),
+> >>> +                                 &s->memhp_state,
+> >>> + =20
+> >> memmap[VIRT_PCDIMM_ACPI].base); =20
+> >>> +    }
+> >>>  }
+> >>>
+> >>>  DeviceState *virt_acpi_init(void)
+> >>> @@ -70,6 +91,8 @@ DeviceState *virt_acpi_init(void)
+> >>>  }
+> >>>
+> >>>  static Property virt_acpi_properties[] =3D {
+> >>> +    DEFINE_PROP_BOOL("memory-hotplug-support", VirtAcpiState,
+> >>> +                     memhp_state.is_enabled, true),
+> >>>      DEFINE_PROP_END_OF_LIST(),
+> >>>  };
+> >>>
+> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>> index 40a1273..9427f4f 100644
+> >>> --- a/hw/arm/virt.c
+> >>> +++ b/hw/arm/virt.c
+> >>> @@ -133,6 +133,7 @@ static const MemMapEntry base_memmap[] =3D {
+> >>>      [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
+> >>>      [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
+> >>>      [VIRT_SMMU] =3D               { 0x09050000, 0x00020000 },
+> >>> +    [VIRT_PCDIMM_ACPI] =3D        { 0x09070000, 0x00010000 },
+> >>>      [VIRT_MMIO] =3D               { 0x0a000000, 0x00000200 },
+> >>>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of th=
+at =20
+> >> size */ =20
+> >>>      [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
+> >>> @@ -1648,6 +1649,8 @@ static void machvirt_init(MachineState *machine)
+> >>>
+> >>>      create_platform_bus(vms, pic);
+> >>>
+> >>> +    vms->acpi =3D virt_acpi_init();
+> >>> +
+> >>>      vms->bootinfo.ram_size =3D machine->ram_size;
+> >>>      vms->bootinfo.kernel_filename =3D machine->kernel_filename;
+> >>>      vms->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
+> >>> @@ -1832,11 +1835,19 @@ static void =20
+> >> virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev, =20
+> >>>  static void virt_memory_plug(HotplugHandler *hotplug_dev,
+> >>>                               DeviceState *dev, Error **errp)
+> >>>  {
+> >>> +    HotplugHandlerClass *hhc;
+> >>>      VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> >>>      Error *local_err =3D NULL;
+> >>>
+> >>>      pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
+> >>> +    if (local_err) {
+> >>> +        goto out;
+> >>> +    }
+> >>> +
+> >>> +    hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi);
+> >>> +    hhc->plug(HOTPLUG_HANDLER(vms->acpi), dev, &error_abort);
+> >>>
+> >>> +out:
+> >>>      error_propagate(errp, local_err);
+> >>>  }
+> >>>
+> >>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> >>> index 6076167..e46a051 100644
+> >>> --- a/include/hw/arm/virt.h
+> >>> +++ b/include/hw/arm/virt.h
+> >>> @@ -77,6 +77,7 @@ enum {
+> >>>      VIRT_GPIO,
+> >>>      VIRT_SECURE_UART,
+> >>>      VIRT_SECURE_MEM,
+> >>> +    VIRT_PCDIMM_ACPI,
+> >>>      VIRT_LOWMEMMAP_LAST,
+> >>>  };
+> >>>
+> >>> @@ -132,6 +133,7 @@ typedef struct {
+> >>>      uint32_t iommu_phandle;
+> >>>      int psci_conduit;
+> >>>      hwaddr highest_gpa;
+> >>> +    DeviceState *acpi;
+> >>>  } VirtMachineState;
+> >>>
+> >>>  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : =20
+> >> VIRT_PCIE_ECAM) =20
+> >>> =20
 
-Christoffer and Steve had some stuff regarding Live Physical Time, which
-should cover that, and other cases such as host system suspend, and QEMU
-being suspended.
-
-Thanks,
-
-	M.
--- 
-Jazz is not dead. It just smells funny...
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,88 +1,90 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp695792wrs;
-        Tue, 12 Mar 2019 09:47:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxL4WDXvgQwzqciVabgAfOapMCXT06GZtF79cYryfNXU6Zr6oIv/cNPcgMsbaU3rpWFkGsv
-X-Received: by 2002:a5b:34c:: with SMTP id q12mr32666311ybp.55.1552409228189;
-        Tue, 12 Mar 2019 09:47:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552409228; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp699519wrs;
+        Tue, 12 Mar 2019 09:51:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQwM1A4TJqQlY1J5vHp6X6sLRz9E7nAg7zmX7WIe0Bi2OFba5UI76AYW9/EP5zTbxecEqX
+X-Received: by 2002:a5b:ccc:: with SMTP id e12mr14152232ybr.513.1552409470994;
+        Tue, 12 Mar 2019 09:51:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552409470; cv=none;
         d=google.com; s=arc-20160816;
-        b=DCAK1ZjTJASqNhciGwdlNeolVA2hj+EEZ/ypBD3nmQwZ+Qlpt6MLShcSCYnEAK7LoW
-         optxbjyvWR2hR/5sw2YethpcZ9sMFVv97IbUZWU9zYuWwpMIH3VO28hi5nbkYPiAVpny
-         BDC70thfEq3is+MnuXL1avTbP5s9hAKhdgMJvzlHp2LmOoO0E14g+JC+qVktn1fWLQrk
-         vMyvjGNW0gay3K1R5FZxUcy3h3aTTmXgbn019I4/p+TF0UNBWIDxUvkFhNal+UfIIayF
-         XVd5RK7NjWLIHuouOnrMxHi8VXtUn6Q2AGVTPICcIFwSWRYy0amVJvRV1opzhwFEGRJZ
-         PMGQ==
+        b=wrFf+WM9R1Hn6uSS+a/xS9HEzeL8vcdCR30cmuhyyEsVv4gkp/RDGe0jwUp5X0irZf
+         rSYKkZgVMoLM6CoCbCpxcnZjFwfXF2g7TReNnMg8fAOt+DrJOWFn5Yd4b0uHrFdxEwS1
+         RKDrJhu6NHkHRLz1owgX+p25nt1xjhYeCo1segRpORLe+BjUFWntFwRbIZHjkPA/ky/H
+         9fTXLnpPF+5YpWDWm/Fq/COZVcNzaYr7sLrTUvAExlc7AbLlRlO1JhOuQAZrhR8eDdjo
+         Xb760wtx558eTw5Qy9oSR1TIUYhKpmEmCAjvQYBpiSwoPJ0tPGe1jQ0C8sgTXLcueNCK
+         x9gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=RSIXKBUQLM0FM073QJ0kvjLMqxpSS6w5bDksMR9nq50=;
-        b=VEiGJaGIVfO86q2gGP/RfNWVcPp5kVrPZ4ZRC1e/nPFq89fRPZhFdiu+qTapeiTZkD
-         whekLgUYSXdnSL9tLSpwIR/ZMpcVdHEOVOq2xjR+WwYwTzxn7LRyxCPZsBWqtuHvtIYw
-         SRMnwzDZQNxJPSPLhbodL928v65NAAYAqgWvNwDbF4riGE0w7DC98xRxq3Kv67h9k4y9
-         u2KB530Bb4GPcjyMwhAh0A4YjUSf2eeBR08HXFp8BIcJz78buhGLXo/CZCin67oj7JQ4
-         yQntqTqVBUJTqP4DhLVuN5fiIm07a6BD+EGogRaxygn6jg7I3YDq/B+YCsO5hUQbD7Q5
-         Q8ug==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=tLSRQ+ntxbY3hCoyifgdj5FnojhL/viA5F4VNBfgsOM=;
+        b=bra2hNZUvOhDwiVp1Xug/3hWQ8VIqCYEDhzy2/iO1PTWdowGF2vsBHwpuAPm6r50rk
+         diP2goiiNTWvZlbaQR8lY21xPNTJdFNdasAyB8Cn1fPkf71wIECQKxnJZqGFAseakq0v
+         wNp0STHxyVg8D1VMOlcjLH22laTfuZY+nViUE44bqSdbRp4PyBP3xoP4aW2FPtmqY6sZ
+         yZ2ug6IZAlvdLqf/9hBOPq41cDchY988JQfhnMu2ANtigfo/FONTYHSKRyzJgsfyhgCx
+         CIEyTxkNkKUeaGF1/7CJBPGoIh71/NyKJsknNi0Bngj1ZzVCbNUpfFdk2XNhTrZ7S9Br
+         8RHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d83si5014176ywd.120.2019.03.12.09.47.07
+        by mx.google.com with ESMTPS id l124si5128819ywb.40.2019.03.12.09.51.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Mar 2019 09:47:08 -0700 (PDT)
+        Tue, 12 Mar 2019 09:51:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55714 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:55786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3kYV-0004kL-Kf
-	for alex.bennee@linaro.org; Tue, 12 Mar 2019 12:47:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40690)
+	id 1h3kcQ-0008MQ-D1
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 12:51:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h3kRC-0006JT-K2
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 12:39:37 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1h3kZQ-0005Yo-Qa
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 12:48:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h3kRB-0008TK-BD
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 12:39:34 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45364 helo=huawei.com)
+	(envelope-from <eric.auger@redhat.com>) id 1h3kZO-0005lv-5L
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 12:48:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63495)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h3kRA-0008Rn-Vq; Tue, 12 Mar 2019 12:39:33 -0400
-Received: from lhreml701-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 265F96EC3DD01C724D3E;
-	Tue, 12 Mar 2019 16:39:30 +0000 (GMT)
-Received: from LHREML524-MBB.china.huawei.com ([169.254.3.135]) by
-	lhreml701-cah.china.huawei.com ([10.201.108.42]) with mapi id
-	14.03.0415.000; Tue, 12 Mar 2019 16:39:22 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH v2 08/11] hw/arm/boot: Expose the PC-DIMM
-	nodes in the DT
-Thread-Index: AQHU1aRx9hViP7MrKUKDA7jHJKP06KYGip6AgAGSmyCAAAqwgIAAD+hA
-Date: Tue, 12 Mar 2019 16:39:22 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA839305F81@lhreml524-mbb.china.huawei.com>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h3kZN-0005lY-PP; Tue, 12 Mar 2019 12:48:02 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 03C7030C7CB9;
+	Tue, 12 Mar 2019 16:48:01 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 92DC7600CD;
+	Tue, 12 Mar 2019 16:47:58 +0000 (UTC)
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Igor Mammedov <imammedo@redhat.com>
 References: <20190308114218.26692-1-shameerali.kolothum.thodi@huawei.com>
 	<20190308114218.26692-9-shameerali.kolothum.thodi@huawei.com>
 	<20190311155857.78c6703d@redhat.com>
 	<5FC3163CFD30C246ABAA99954A238FA839305DC1@lhreml524-mbb.china.huawei.com>
 	<640f3fde-5197-ddbc-924e-fba301a142ca@redhat.com>
-In-Reply-To: <640f3fde-5197-ddbc-924e-fba301a142ca@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.84.144]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	<5FC3163CFD30C246ABAA99954A238FA839305F81@lhreml524-mbb.china.huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <90bf7b78-99c2-4950-32db-ebfb9048c76d@redhat.com>
+Date: Tue, 12 Mar 2019 17:47:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA839305F81@lhreml524-mbb.china.huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Tue, 12 Mar 2019 16:48:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 08/11] hw/arm/boot: Expose
  the PC-DIMM nodes in the DT
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,113 +108,181 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XXvWlOsXEhfq
+X-TUID: dVBmgcpycUAq
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogQXVnZXIgRXJpYyBbbWFp
-bHRvOmVyaWMuYXVnZXJAcmVkaGF0LmNvbV0NCj4gU2VudDogMTIgTWFyY2ggMjAxOSAxNTozOA0K
-PiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFsaS5rb2xvdGh1bS50aG9k
-aUBodWF3ZWkuY29tPjsNCj4gSWdvciBNYW1tZWRvdiA8aW1hbW1lZG9AcmVkaGF0LmNvbT4NCj4g
-Q2M6IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgc2FtZW9AbGludXguaW50ZWwuY29tOw0KPiBz
-aGFubm9uLnpoYW9zbEBnbWFpbC5jb207IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgTGludXhhcm0N
-Cj4gPGxpbnV4YXJtQGh1YXdlaS5jb20+OyBxZW11LWFybUBub25nbnUub3JnOyB4dXdlaSAoTykN
-Cj4gPHh1d2VpNUBodWF3ZWkuY29tPjsgc2ViYXN0aWVuLmJvZXVmQGludGVsLmNvbQ0KPiBTdWJq
-ZWN0OiBSZTogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2MiAwOC8xMV0gaHcvYXJtL2Jvb3Q6IEV4cG9z
-ZSB0aGUNCj4gUEMtRElNTSBub2RlcyBpbiB0aGUgRFQNCj4gDQo+IEhpIFNoYW1lZXIsDQo+IA0K
-PiBPbiAzLzEyLzE5IDQ6MTMgUE0sIFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgd3JvdGU6DQo+
-ID4NCj4gPg0KPiA+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiA+PiBGcm9tOiBJZ29y
-IE1hbW1lZG92IFttYWlsdG86aW1hbW1lZG9AcmVkaGF0LmNvbV0NCj4gPj4gU2VudDogMTEgTWFy
-Y2ggMjAxOSAxNDo1OQ0KPiA+PiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVl
-cmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0KPiA+PiBDYzogcWVtdS1kZXZlbEBub25n
-bnUub3JnOyBxZW11LWFybUBub25nbnUub3JnOw0KPiA+PiBlcmljLmF1Z2VyQHJlZGhhdC5jb207
-IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsNCj4gPj4gc2hhbm5vbi56aGFvc2xAZ21haWwuY29t
-OyBzYW1lb0BsaW51eC5pbnRlbC5jb207DQo+ID4+IHNlYmFzdGllbi5ib2V1ZkBpbnRlbC5jb207
-IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsgeHV3ZWkgKE8pDQo+ID4+IDx4dXdlaTVA
-aHVhd2VpLmNvbT4NCj4gPj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiAwOC8xMV0gaHcvYXJtL2Jv
-b3Q6IEV4cG9zZSB0aGUgUEMtRElNTSBub2RlcyBpbg0KPiB0aGUNCj4gPj4gRFQNCj4gPj4NCj4g
-Pj4gT24gRnJpLCA4IE1hciAyMDE5IDExOjQyOjE1ICswMDAwDQo+ID4+IFNoYW1lZXIgS29sb3Ro
-dW0gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT4gd3JvdGU6DQo+ID4+DQo+
-ID4+PiBUaGlzIHBhdGNoIGFkZHMgbWVtb3J5IG5vZGVzIGNvcnJlc3BvbmRpbmcgdG8gUEMtRElN
-TSByZWdpb25zLg0KPiA+Pj4NCj4gPj4+IE5WRElNTSBhbmQgQUNQSV9OVkRJTU0gY29uZmlncyBh
-cmUgbm90IHlldCBzZXQgZm9yIEFSTSBzbyB3ZQ0KPiA+Pj4gZG9uJ3QgbmVlZCB0byBjYXJlIGFi
-b3V0IE5WRElNTSBhdCB0aGlzIHN0YWdlLg0KPiA+Pj4NCj4gPj4+IFNpZ25lZC1vZmYtYnk6IFNo
-YW1lZXIgS29sb3RodW0NCj4gPHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT4N
-Cj4gPj4+IFNpZ25lZC1vZmYtYnk6IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4N
-Cj4gPj4+IC0tLQ0KPiA+Pj4gIGh3L2FybS9ib290LmMgfCA0MiArKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysNCj4gPj4+ICAxIGZpbGUgY2hhbmdlZCwgNDIgaW5zZXJ0
-aW9ucygrKQ0KPiA+Pj4NCj4gPj4+IGRpZmYgLS1naXQgYS9ody9hcm0vYm9vdC5jIGIvaHcvYXJt
-L2Jvb3QuYw0KPiA+Pj4gaW5kZXggYTgzMDY1NS4uNGNhYWY5MSAxMDA2NDQNCj4gPj4+IC0tLSBh
-L2h3L2FybS9ib290LmMNCj4gPj4+ICsrKyBiL2h3L2FybS9ib290LmMNCj4gPj4+IEBAIC0xOSw2
-ICsxOSw3IEBADQo+ID4+PiAgI2luY2x1ZGUgInN5c2VtdS9udW1hLmgiDQo+ID4+PiAgI2luY2x1
-ZGUgImh3L2JvYXJkcy5oIg0KPiA+Pj4gICNpbmNsdWRlICJody9sb2FkZXIuaCINCj4gPj4+ICsj
-aW5jbHVkZSAiaHcvbWVtL21lbW9yeS1kZXZpY2UuaCINCj4gPj4+ICAjaW5jbHVkZSAiZWxmLmgi
-DQo+ID4+PiAgI2luY2x1ZGUgInN5c2VtdS9kZXZpY2VfdHJlZS5oIg0KPiA+Pj4gICNpbmNsdWRl
-ICJxZW11L2NvbmZpZy1maWxlLmgiDQo+ID4+PiBAQCAtNTIyLDYgKzUyMyw0MSBAQCBzdGF0aWMg
-dm9pZCBmZHRfYWRkX3BzY2lfbm9kZSh2b2lkICpmZHQpDQo+ID4+PiAgICAgIHFlbXVfZmR0X3Nl
-dHByb3BfY2VsbChmZHQsICIvcHNjaSIsICJtaWdyYXRlIiwgbWlncmF0ZV9mbik7DQo+ID4+PiAg
-fQ0KPiA+Pj4NCj4gPj4+ICtzdGF0aWMgaW50IGZkdF9hZGRfaG90cGx1Z2dhYmxlX21lbW9yeV9u
-b2Rlcyh2b2lkICpmZHQsDQo+ID4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgdWludDMyX3QgYWNlbGxzLA0KPiA+PiB1aW50MzJfdCBzY2VsbHMpIHsNCj4g
-Pj4+ICsgICAgTWVtb3J5RGV2aWNlSW5mb0xpc3QgKmluZm8sICppbmZvX2xpc3QgPSBxbXBfbWVt
-b3J5X2RldmljZV9saXN0KCk7DQo+ID4+PiArICAgIE1lbW9yeURldmljZUluZm8gKm1pOw0KPiA+
-Pj4gKyAgICBpbnQgcmV0ID0gMDsNCj4gPj4+ICsNCj4gPj4+ICsgICAgZm9yIChpbmZvID0gaW5m
-b19saXN0OyBpbmZvICE9IE5VTEw7IGluZm8gPSBpbmZvLT5uZXh0KSB7DQo+ID4+PiArICAgICAg
-ICBtaSA9IGluZm8tPnZhbHVlOw0KPiA+Pj4gKyAgICAgICAgc3dpdGNoIChtaS0+dHlwZSkgew0K
-PiA+Pj4gKyAgICAgICAgY2FzZSBNRU1PUllfREVWSUNFX0lORk9fS0lORF9ESU1NOg0KPiA+Pj4g
-KyAgICAgICAgew0KPiA+Pj4gKyAgICAgICAgICAgIFBDRElNTURldmljZUluZm8gKmRpID0gbWkt
-PnUuZGltbS5kYXRhOw0KPiA+Pj4gKw0KPiA+Pj4gKyAgICAgICAgICAgIHJldCA9IGZkdF9hZGRf
-bWVtb3J5X25vZGUoZmR0LCBhY2VsbHMsIGRpLT5hZGRyLA0KPiA+Pj4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgc2NlbGxzLCBkaS0+c2l6ZSwgZGktPm5vZGUpOw0KPiA+
-Pj4gKyAgICAgICAgICAgIGlmIChyZXQpIHsNCj4gPj4+ICsgICAgICAgICAgICAgICAgZnByaW50
-ZihzdGRlcnIsDQo+ID4+PiArICAgICAgICAgICAgICAgICAgICAgICAgImNvdWxkbid0IGFkZCBQ
-Q0RJTU0NCj4gL21lbW9yeUAlIlBSSXg2NCINCj4gPj4gbm9kZVxuIiwNCj4gPj4+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICBkaS0+YWRkcik7DQo+ID4+PiArICAgICAgICAgICAgICAgIGdvdG8g
-b3V0Ow0KPiA+Pj4gKyAgICAgICAgICAgIH0NCj4gPj4+ICsgICAgICAgICAgICBicmVhazsNCj4g
-Pj4+ICsgICAgICAgIH0NCj4gPj4+ICsgICAgICAgIGRlZmF1bHQ6DQo+ID4+PiArICAgICAgICAg
-ICAgZnByaW50ZihzdGRlcnIsICIlcyBtZW1vcnkgbm9kZXMgYXJlIG5vdCB5ZXQNCj4gc3VwcG9y
-dGVkXG4iLA0KPiA+Pj4gKyAgICAgICAgICAgICAgICAgICAgTWVtb3J5RGV2aWNlSW5mb0tpbmRf
-c3RyKG1pLT50eXBlKSk7DQo+ID4+PiArICAgICAgICAgICAgcmV0ID0gLUVOT0VOVDsNCj4gPj4+
-ICsgICAgICAgICAgICBnb3RvIG91dDsNCj4gPj4+ICsgICAgICAgIH0NCj4gPj4+ICsgICAgfQ0K
-PiA+Pj4gK291dDoNCj4gPj4+ICsgICAgcWFwaV9mcmVlX01lbW9yeURldmljZUluZm9MaXN0KGlu
-Zm9fbGlzdCk7DQo+ID4+PiArICAgIHJldHVybiByZXQ7DQo+ID4+PiArfQ0KPiA+Pj4gKw0KPiA+
-Pj4gIGludCBhcm1fbG9hZF9kdGIoaHdhZGRyIGFkZHIsIGNvbnN0IHN0cnVjdCBhcm1fYm9vdF9p
-bmZvICpiaW5mbywNCj4gPj4+ICAgICAgICAgICAgICAgICAgIGh3YWRkciBhZGRyX2xpbWl0LCBB
-ZGRyZXNzU3BhY2UgKmFzKQ0KPiA+Pj4gIHsNCj4gPj4+IEBAIC02MjEsNiArNjU3LDEyIEBAIGlu
-dCBhcm1fbG9hZF9kdGIoaHdhZGRyIGFkZHIsIGNvbnN0IHN0cnVjdA0KPiA+PiBhcm1fYm9vdF9p
-bmZvICpiaW5mbywNCj4gPj4+ICAgICAgICAgIH0NCj4gPj4+ICAgICAgfQ0KPiA+Pj4NCj4gPj4+
-ICsgICAgcmMgPSBmZHRfYWRkX2hvdHBsdWdnYWJsZV9tZW1vcnlfbm9kZXMoZmR0LCBhY2VsbHMs
-IHNjZWxscyk7DQo+ID4+IEFjY29yZGluZyB0byBFcmljJ3MgdGVzdCwgZ3Vlc3Qga2VybmVsIHBp
-Y2tzIHRoaXMgdXAuIFNvIGl0IHByb2JhYmx5DQo+ID4+IHNob3VsZCBiZSBhbiBvcHQtaW4gZmVh
-dHVyZSB0byBhdm9pZCBjb25mbGljdCB3aXRoIEFDUEkgZGVmaW5pdGlvbiBpbiBEU0RULg0KPiA+
-DQo+ID4gT2suIE15IHRha2UgYXdheSBmcm9tIHRoYXQgZGlzY3Vzc2lvbiB3YXMgdGhhdCBpZiB3
-ZSBwcm9wZXJseSBkZXNjcmliZSB0aGUNCj4gPiBQTlAwQzgwICh3aGljaCBpcyB3aGF0ICMwNiBv
-ZiB0aGlzIHNlcmllcyBkb2VzKSB0aGVuIHdlIGRvbid0IGhhdmUgdG8gd29ycnkNCj4gPiBhYm91
-dCBEVCBlbnRyaWVzIGFzIEFDUEkgd2lsbCAib3ZlcnJpZGUiIGl0LiAgQnV0IGl0IGxvb2tzIGxp
-a2UgdGhhdCBpcyBub3QgdGhlDQo+IGNhc2UNCj4gPiBhbmQgZGVzY3JpYmluZyBEVCB3aWxsIGFu
-eXdheSBjYXVzZSB0aGUgbWVtb3J5IGJlaW5nIGVuZCB1cCBpbiBVRUZJDQo+ID4gR2VUTWVtb3J5
-TWFwKCkgYW5kIHJlc3VsdHMgaW4gYmVpbmcgdXNlZCBhcyBub3JtYWwgbWVtb3J5IGVhcmx5IGF0
-IGJvb3QuDQo+ID4NCj4gPiBIaSBFcmljLA0KPiA+DQo+ID4gSG93IGRvIHdlIHZlcmlmeSB0aGF0
-IHRoaXMgaXMgYWN0dWFsbHkgaGFwcGVuaW5nPyBJIHRyaWVkIHJ1bm5pbmcgdGhlDQo+IC9wcm9j
-L21lbWluZm8NCj4gPiBvbiBhIFFlbXUgYnVpbGQgdXB0byAjMDYgb2YgdGhpcyBzZXJpZXMsIGFu
-ZCBpdCByZXBvcnRlZCBtZW1vcnkgaW5jbHVkaW5nIHRoZQ0KPiA+IGNvbGQgcGx1Z2dlZCBkaW1t
-IG1lbW9yeS4NCj4gPg0KPiA+IEJ1dCBub3Qgc3VyZSBob3cgdG8gdmVyaWZ5IHRoYXQgdGhpcyBk
-aW1tIG1lbSBpcyBiZWluZyB0cmVhdGVkIGFzIG5vcm1hbA0KPiBtZW0gb24NCj4gPiBib290IHRp
-bWUgb3Igbm90PyBQbGVhc2UgbGV0IG1lIGtub3cuDQo+IA0KPiBBdCB0aGUgdGltZSBJIHRlc3Rl
-ZCBJIGRpZCBub3QgaGF2ZSBQTlAwQzgwIGJ1aWxkLiBJIGNvbmZpcm0gdGhhdCBpZiB5b3UNCj4g
-cmVtb3ZlIHRoZSBkdCBkZXNjcmlwdGlvbiBpbiBBQ1BJIG1vZGUsIC9wcm9jL21lbWluZm8gZG9l
-cyBub3QgcmVwb3J0DQo+IHRoZSBESU1Ncy4gTm93IHRoYXQgeW91IGhhdmUgIzA2LCBpZiB5b3Ug
-cmVtb3ZlIHRoZSBEVCAgaG90cGx1Z2dhYmxlcw0KPiBtZW1vcnkgbW9kZSBnZW5lcmF0aW9uIGlu
-IEFDUEkgbW9kZSwgeW91IHNob3VsZCBzZWUgdGhlbSBhbmQgaWYgSQ0KPiB1bmRlcnN0YW5kIGNv
-cnJlY3RseSB0aGlzIGlzIHdoYXQgeW91IGNvbmZpcm0uIEkgaGF2ZSBub3QgdGVzdGVkDQo+IGFu
-eXRoaW5nIGVsc2UgYXQgdGhlIG1vbWVudC4NCg0KWWVzLCB0aGF0IGlzIHdoYXQgSSBjb25maXJt
-ZWQuIEJ1dCB0aGUgY29uY2VybiBub3cgaXMgaGF2aW5nIERUIG1lbW9yeSBub2RlDQpnZW5lcmF0
-aW9uIHdpbGwgcmVzdWx0IGluIHRoZSBwcm9ibGVtIGRlc2NyaWJlZCBhYm92ZSAtIFVFRkkgR2V0
-TWVtb3J5TWFwKCkuDQoNCkkgd2FzIGxvb2tpbmcgZm9yIGEgd2F5IHRvIGNoZWNrIHRoYXQgaXMg
-YSB2YWxpZCBpc3N1ZSBvciBub3QuIEkgd2lsbCB0cnkgdG8gbG9vayBmb3IgDQphIHdheSB0byB2
-ZXJpZnkgdGhhdC4gUGxlYXNlIHVwZGF0ZSBpZiB5b3UgY29tZSBhY3Jvc3MgYW55dGhpbmcuDQoN
-ClRoYW5rcywNClNoYW1lZXINCg0KPiBUaGFua3MNCj4gDQo+IEVyaWMNCj4gPg0KPiA+IFRoYW5r
-cywNCj4gPiBTaGFtZWVyDQo+ID4NCj4gPg0KPiA+Pj4gKyAgICBpZiAocmMgPCAwKSB7DQo+ID4+
-PiArICAgICAgICBmcHJpbnRmKHN0ZGVyciwgImNvdWxkbid0IGFkZCBob3RwbHVnZ2FibGUgbWVt
-b3J5IG5vZGVzXG4iKTsNCj4gPj4+ICsgICAgICAgIGdvdG8gZmFpbDsNCj4gPj4+ICsgICAgfQ0K
-PiA+Pj4gKw0KPiA+Pj4gICAgICByYyA9IGZkdF9wYXRoX29mZnNldChmZHQsICIvY2hvc2VuIik7
-DQo+ID4+PiAgICAgIGlmIChyYyA8IDApIHsNCj4gPj4+ICAgICAgICAgIHFlbXVfZmR0X2FkZF9z
-dWJub2RlKGZkdCwgIi9jaG9zZW4iKTsNCj4gPg0KPiA+DQo=
+Hi Shameer,
+
+On 3/12/19 5:39 PM, Shameerali Kolothum Thodi wrote:
+> 
+> 
+>> -----Original Message-----
+>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>> Sent: 12 March 2019 15:38
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>> Igor Mammedov <imammedo@redhat.com>
+>> Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
+>> shannon.zhaosl@gmail.com; qemu-devel@nongnu.org; Linuxarm
+>> <linuxarm@huawei.com>; qemu-arm@nongnu.org; xuwei (O)
+>> <xuwei5@huawei.com>; sebastien.boeuf@intel.com
+>> Subject: Re: [Qemu-devel] [PATCH v2 08/11] hw/arm/boot: Expose the
+>> PC-DIMM nodes in the DT
+>>
+>> Hi Shameer,
+>>
+>> On 3/12/19 4:13 PM, Shameerali Kolothum Thodi wrote:
+>>>
+>>>
+>>>> -----Original Message-----
+>>>> From: Igor Mammedov [mailto:imammedo@redhat.com]
+>>>> Sent: 11 March 2019 14:59
+>>>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+>>>> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>>>> eric.auger@redhat.com; peter.maydell@linaro.org;
+>>>> shannon.zhaosl@gmail.com; sameo@linux.intel.com;
+>>>> sebastien.boeuf@intel.com; Linuxarm <linuxarm@huawei.com>; xuwei (O)
+>>>> <xuwei5@huawei.com>
+>>>> Subject: Re: [PATCH v2 08/11] hw/arm/boot: Expose the PC-DIMM nodes in
+>> the
+>>>> DT
+>>>>
+>>>> On Fri, 8 Mar 2019 11:42:15 +0000
+>>>> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+>>>>
+>>>>> This patch adds memory nodes corresponding to PC-DIMM regions.
+>>>>>
+>>>>> NVDIMM and ACPI_NVDIMM configs are not yet set for ARM so we
+>>>>> don't need to care about NVDIMM at this stage.
+>>>>>
+>>>>> Signed-off-by: Shameer Kolothum
+>> <shameerali.kolothum.thodi@huawei.com>
+>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>> ---
+>>>>>  hw/arm/boot.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+>>>>>  1 file changed, 42 insertions(+)
+>>>>>
+>>>>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>>>>> index a830655..4caaf91 100644
+>>>>> --- a/hw/arm/boot.c
+>>>>> +++ b/hw/arm/boot.c
+>>>>> @@ -19,6 +19,7 @@
+>>>>>  #include "sysemu/numa.h"
+>>>>>  #include "hw/boards.h"
+>>>>>  #include "hw/loader.h"
+>>>>> +#include "hw/mem/memory-device.h"
+>>>>>  #include "elf.h"
+>>>>>  #include "sysemu/device_tree.h"
+>>>>>  #include "qemu/config-file.h"
+>>>>> @@ -522,6 +523,41 @@ static void fdt_add_psci_node(void *fdt)
+>>>>>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+>>>>>  }
+>>>>>
+>>>>> +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
+>>>>> +                                             uint32_t acells,
+>>>> uint32_t scells) {
+>>>>> +    MemoryDeviceInfoList *info, *info_list = qmp_memory_device_list();
+>>>>> +    MemoryDeviceInfo *mi;
+>>>>> +    int ret = 0;
+>>>>> +
+>>>>> +    for (info = info_list; info != NULL; info = info->next) {
+>>>>> +        mi = info->value;
+>>>>> +        switch (mi->type) {
+>>>>> +        case MEMORY_DEVICE_INFO_KIND_DIMM:
+>>>>> +        {
+>>>>> +            PCDIMMDeviceInfo *di = mi->u.dimm.data;
+>>>>> +
+>>>>> +            ret = fdt_add_memory_node(fdt, acells, di->addr,
+>>>>> +                                      scells, di->size, di->node);
+>>>>> +            if (ret) {
+>>>>> +                fprintf(stderr,
+>>>>> +                        "couldn't add PCDIMM
+>> /memory@%"PRIx64"
+>>>> node\n",
+>>>>> +                        di->addr);
+>>>>> +                goto out;
+>>>>> +            }
+>>>>> +            break;
+>>>>> +        }
+>>>>> +        default:
+>>>>> +            fprintf(stderr, "%s memory nodes are not yet
+>> supported\n",
+>>>>> +                    MemoryDeviceInfoKind_str(mi->type));
+>>>>> +            ret = -ENOENT;
+>>>>> +            goto out;
+>>>>> +        }
+>>>>> +    }
+>>>>> +out:
+>>>>> +    qapi_free_MemoryDeviceInfoList(info_list);
+>>>>> +    return ret;
+>>>>> +}
+>>>>> +
+>>>>>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>>>>>                   hwaddr addr_limit, AddressSpace *as)
+>>>>>  {
+>>>>> @@ -621,6 +657,12 @@ int arm_load_dtb(hwaddr addr, const struct
+>>>> arm_boot_info *binfo,
+>>>>>          }
+>>>>>      }
+>>>>>
+>>>>> +    rc = fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
+>>>> According to Eric's test, guest kernel picks this up. So it probably
+>>>> should be an opt-in feature to avoid conflict with ACPI definition in DSDT.
+>>>
+>>> Ok. My take away from that discussion was that if we properly describe the
+>>> PNP0C80 (which is what #06 of this series does) then we don't have to worry
+>>> about DT entries as ACPI will "override" it.  But it looks like that is not the
+>> case
+>>> and describing DT will anyway cause the memory being end up in UEFI
+>>> GeTMemoryMap() and results in being used as normal memory early at boot.
+>>>
+>>> Hi Eric,
+>>>
+>>> How do we verify that this is actually happening? I tried running the
+>> /proc/meminfo
+>>> on a Qemu build upto #06 of this series, and it reported memory including the
+>>> cold plugged dimm memory.
+>>>
+>>> But not sure how to verify that this dimm mem is being treated as normal
+>> mem on
+>>> boot time or not? Please let me know.
+>>
+>> At the time I tested I did not have PNP0C80 build. I confirm that if you
+>> remove the dt description in ACPI mode, /proc/meminfo does not report
+>> the DIMMs. Now that you have #06, if you remove the DT  hotpluggables
+>> memory mode generation in ACPI mode, you should see them and if I
+>> understand correctly this is what you confirm. I have not tested
+>> anything else at the moment.
+> 
+> Yes, that is what I confirmed. But the concern now is having DT memory node
+> generation will result in the problem described above - UEFI GetMemoryMap().
+Sorry I don't understand the stated problem. If you remove the call to
+fdt_add_hotpluggable_memory_nodes when running in ACPI mode,  does the
+above GetMemoryMap see the DIMMs?
+
+Thanks
+
+Eric
+> 
+> I was looking for a way to check that is a valid issue or not. I will try to look for 
+> a way to verify that. Please update if you come across anything.
+> 
+> Thanks,
+> Shameer
+> 
+>> Thanks
+>>
+>> Eric
+>>>
+>>> Thanks,
+>>> Shameer
+>>>
+>>>
+>>>>> +    if (rc < 0) {
+>>>>> +        fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
+>>>>> +        goto fail;
+>>>>> +    }
+>>>>> +
+>>>>>      rc = fdt_path_offset(fdt, "/chosen");
+>>>>>      if (rc < 0) {
+>>>>>          qemu_fdt_add_subnode(fdt, "/chosen");
+>>>
+>>>

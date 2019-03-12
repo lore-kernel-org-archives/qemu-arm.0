@@ -1,64 +1,85 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp120068wrs;
-        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxJKn41ZT4AM2YQKHVlENq4NcJq06zmHt9Gj+OC1tNBNXpzXR6VcVCASmhfI6BvYz8V0XRw
-X-Received: by 2002:a25:8148:: with SMTP id j8mr29733935ybm.202.1552371788738;
-        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp156584wrs;
+        Tue, 12 Mar 2019 00:13:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzo/ezs87s3IMw4SttuHONhdC0tuy2GObuOKI1a+ZNvEAn19gKPWzBcqVGStNKhujQSipEB
+X-Received: by 2002:a25:30d:: with SMTP id 13mr30731954ybd.3.1552374807685;
+        Tue, 12 Mar 2019 00:13:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552374807; cv=none;
+        d=google.com; s=arc-20160816;
+        b=hmwaxa9nKr1z9n2a5VxSAIKflpUhJVWPcWBhPn5o/2tg0dqB+OXxpv05Wm1ZmG9Pga
+         UYyxzbbA2pO9ACGANrZb55hT8a4juKawX1rZZLcorm90uzerRx0Y7kk8JrKnyjs7PIJq
+         tQYRcmwfOMfbFrAw6/q9NAF6B9pDttNxo4aSETeT7ct+teWURLpZJxLNNemYIOIo3siD
+         42eeMCpVsc3vO9Kww2PTh8rQR6rKeHqyLRVBnnjIUlVb9PJZebU6h7+nLM0BUs5oIIuF
+         3MtzydRhTINH1MZnqEOLQJbYwLIZVVimBlmKxO8VfjiP0YlF8I0RGspcvlGlgBbkrv4Y
+         bXJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=ssbh/2HTm60sUzudMY6rGl9/OHFpbTj1YnyrZJObVl0=;
+        b=SoIg5wj4gBDIWa9Ee+PJTlSzOXpMmdWYfHvQak1rkuP6lqM8UkH0jXiIlolOHRUjmQ
+         OONv749ypYzc/btuYiOD4WTAzttArURgJ07A0U0J7LaA0nVsNQ21tkFQPq/quwestPTt
+         VJflZ8L3/L1/2c6pF9UQTXt4QqIMNfjjpxA5D2N91Y01IghRIJY9mI+pstMlmDPMLAii
+         NW95RBAHpRbz3BBRvNaN9U99VpE7JiRUDwRH32Rked1swS3RPU3KbVvaRy4y8PLvR7PJ
+         ElmvIOeT8KYbC6FfeqBSXvN/7EBgaTFf52zdrnVB7wsOlWPI5hox6GEmwFCeo0gpmbXR
+         ngpA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 12si4356095ybf.280.2019.03.11.23.23.08
+        by mx.google.com with ESMTPS id 127si490491ybt.246.2019.03.12.00.13.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Mar 2019 23:23:08 -0700 (PDT)
+        Tue, 12 Mar 2019 00:13:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:45938 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:46387 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3aoe-0004Do-6S
-	for alex.bennee@linaro.org; Tue, 12 Mar 2019 02:23:08 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51714)
+	id 1h3bbL-0005YZ-3L
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 03:13:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58338)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1h3aoS-0004DV-Ac
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:22:57 -0400
+	(envelope-from <kraxel@redhat.com>) id 1h3bb3-0005XW-Uz
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 03:13:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1h3aoP-0005dN-AF
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 02:22:56 -0400
-Resent-Date: Tue, 12 Mar 2019 02:22:56 -0400
-Resent-Message-Id: <E1h3aoP-0005dN-AF@eggs.gnu.org>
-Received: from sender-of-o53.zoho.com ([135.84.80.218]:21720)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1h3aoP-0005cd-10; Tue, 12 Mar 2019 02:22:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1552371748; cv=none; d=zoho.com; s=zohoarc; 
-	b=Is5IzUGvoXdYqr9XPaL9Xd9LZnXucLgioRILEq/3ljKawmICt8MUWS+KswK19or5OxhaNyc2w1EQsUgY4lvMBEoGe+dOYCTRZOHQv4d1E3Oa1BBmAcP/c+Am99jnSo5Stu59FCLXD1xe1vzBmqzO9PkB0Zz5GrRXSG5bHcX7gNs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1552371748;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=7VZU4W172//vVLvoKsZhRsue0UaZPXrzw3LZQqqLTeg=; 
-	b=S7mDabQtAZJnu3MZEYStIPAJYn2rArweGW/yuormtfFGiia35sIsmNQyAiUZ4khTWKgN9dPqobuKRvcNN6eGX7TnPbCCHdGsue0phcfydZ4y9MSU/YGn5qcS7V8BrzA5ZIWBQ0JEA9TwUESr0NEGVQa8H+geNlCliMARrXa69d4=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 15523717464231009.23818893593;
-	Mon, 11 Mar 2019 23:22:26 -0700 (PDT)
-Message-ID: <155237174511.17434.10843082675899599446@6acff2cf482b>
-In-Reply-To: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
+	(envelope-from <kraxel@redhat.com>) id 1h3bb2-0006Fr-Pc
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 03:13:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51552)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1h3bb2-0006FH-8j; Tue, 12 Mar 2019 03:13:08 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5B7D5C057F5A;
+	Tue, 12 Mar 2019 07:13:07 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-117-175.ams2.redhat.com
+	[10.36.117.175])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4517A1001E63;
+	Tue, 12 Mar 2019 07:13:01 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id D6174A1E1; Tue, 12 Mar 2019 08:12:50 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 12 Mar 2019 08:12:48 +0100
+Message-Id: <20190312071250.12168-13-kraxel@redhat.com>
+In-Reply-To: <20190312071250.12168-1-kraxel@redhat.com>
+References: <20190312071250.12168-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: guoheyi@huawei.com
-Date: Mon, 11 Mar 2019 23:22:26 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 12 Mar 2019 07:13:07 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.218
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC] arm/cpu: fix soft lockup panic
- after resuming from stop
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 12/14] spiceaudio: port to -audiodev config
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,55 +91,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: fam@euphon.net, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, guoheyi@huawei.com, wanghaibin.wang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?q?Zolt=C3=A1n?= <DirtY.iCE.hu@gmail.com>, Kővágó@redhat.com, libvir-list@redhat.com, Andrzej Zaborowski <balrogg@gmail.com>, Alistair Francis <alistair@alistair23.me>, Markus Armbruster <armbru@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>, Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yo0t9WKhWdkb
+X-TUID: Lpk9cEpAxm2M
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTUyMzcwOTYwLTIwNjEtMS1n
-aXQtc2VuZC1lbWFpbC1ndW9oZXlpQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFp
-bGVkIHRoZSBkb2NrZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0
-ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tl
-ciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0g
-VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1t
-aW5nd0BmZWRvcmEgU0hPV19FTlY9MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5E
-ID09PQoKICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90cmFjZS9nZW5lcmF0ZWQtaGVscGVycy5v
-CiAgQ0MgICAgICBhYXJjaDY0LXNvZnRtbXUvdGFyZ2V0L2FybS90cmFuc2xhdGUtc3ZlLm8KL3Rt
-cC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6IEluIGZ1bmN0aW9uICdnZXRfdmNwdV90
-aW1lcl90aWNrJzoKL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6OTAyOjI0OiBl
-cnJvcjogc3RvcmFnZSBzaXplIG9mICdyZWcnIGlzbid0IGtub3duCiAgICAgc3RydWN0IGt2bV9v
-bmVfcmVnIHJlZzsKICAgICAgICAgICAgICAgICAgICAgICAgXn5+Ci90bXAvcWVtdS10ZXN0L3Ny
-Yy90YXJnZXQvYXJtL2NwdS5jOjkwNDoxNDogZXJyb3I6ICdLVk1fUkVHX0FSTV9USU1FUl9DTlQn
-IHVuZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9uKQogICAgIHJlZy5pZCA9IEtW
-TV9SRUdfQVJNX1RJTUVSX0NOVDsKICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn4K
-L3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1LmM6OTA0OjE0OiBub3RlOiBlYWNoIHVu
-ZGVjbGFyZWQgaWRlbnRpZmllciBpcyByZXBvcnRlZCBvbmx5IG9uY2UgZm9yIGVhY2ggZnVuY3Rp
-b24gaXQgYXBwZWFycyBpbgovdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2FybS9jcHUuYzo5MDc6
-MzA6IGVycm9yOiAnS1ZNX0dFVF9PTkVfUkVHJyB1bmRlY2xhcmVkIChmaXJzdCB1c2UgaW4gdGhp
-cyBmdW5jdGlvbikKICAgICBlcnIgPSBrdm1fdmNwdV9pb2N0bChjcywgS1ZNX0dFVF9PTkVfUkVH
-LCAmcmVnKTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+Ci90
-bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkwMjoyNDogZXJyb3I6IHVudXNlZCB2
-YXJpYWJsZSAncmVnJyBbLVdlcnJvcj11bnVzZWQtdmFyaWFibGVdCiAgICAgc3RydWN0IGt2bV9v
-bmVfcmVnIHJlZzsKICAgICAgICAgICAgICAgICAgICAgICAgXn5+Ci90bXAvcWVtdS10ZXN0L3Ny
-Yy90YXJnZXQvYXJtL2NwdS5jOiBJbiBmdW5jdGlvbiAnc2V0X3ZjcHVfdGltZXJfdGljayc6Ci90
-bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkxNDoyNDogZXJyb3I6IHN0b3JhZ2Ug
-c2l6ZSBvZiAncmVnJyBpc24ndCBrbm93bgogICAgIHN0cnVjdCBrdm1fb25lX3JlZyByZWc7CiAg
-ICAgICAgICAgICAgICAgICAgICAgIF5+fgovdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2FybS9j
-cHUuYzo5MTY6MTQ6IGVycm9yOiAnS1ZNX1JFR19BUk1fVElNRVJfQ05UJyB1bmRlY2xhcmVkIChm
-aXJzdCB1c2UgaW4gdGhpcyBmdW5jdGlvbikKICAgICByZWcuaWQgPSBLVk1fUkVHX0FSTV9USU1F
-Ul9DTlQ7CiAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+Ci90bXAvcWVtdS10ZXN0
-L3NyYy90YXJnZXQvYXJtL2NwdS5jOjkxOTozMDogZXJyb3I6ICdLVk1fU0VUX09ORV9SRUcnIHVu
-ZGVjbGFyZWQgKGZpcnN0IHVzZSBpbiB0aGlzIGZ1bmN0aW9uKQogICAgIGVyciA9IGt2bV92Y3B1
-X2lvY3RsKGNzLCBLVk1fU0VUX09ORV9SRUcsICZyZWcpOwogICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBefn5+fn5+fn5+fn5+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vY3B1
-LmM6OTE0OjI0OiBlcnJvcjogdW51c2VkIHZhcmlhYmxlICdyZWcnIFstV2Vycm9yPXVudXNlZC12
-YXJpYWJsZV0KICAgICBzdHJ1Y3Qga3ZtX29uZV9yZWcgcmVnOwogICAgICAgICAgICAgICAgICAg
-ICAgICBefn4KY2MxOiBhbGwgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMKCgpUaGUg
-ZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzE1NTIzNzA5
-NjAtMjA2MS0xLWdpdC1zZW5kLWVtYWlsLWd1b2hleWlAaHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tl
-ci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0
-aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3Vy
-IGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+From: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
+
+Signed-off-by: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <DirtY.iCE.hu@gmail.com=
+>
+Message-id: 040d1241f29104ecfeecb26b0a14f0d042484fc5.1552083282.git.DirtY=
+.iCE.hu@gmail.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ audio/spiceaudio.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
+index affc3df17f90..4f7873af5afd 100644
+--- a/audio/spiceaudio.c
++++ b/audio/spiceaudio.c
+@@ -373,10 +373,6 @@ static int line_in_ctl (HWVoiceIn *hw, int cmd, ...)
+     return 0;
+ }
+=20
+-static struct audio_option audio_options[] =3D {
+-    { /* end of list */ },
+-};
+-
+ static struct audio_pcm_ops audio_callbacks =3D {
+     .init_out =3D line_out_init,
+     .fini_out =3D line_out_fini,
+@@ -394,7 +390,6 @@ static struct audio_pcm_ops audio_callbacks =3D {
+ static struct audio_driver spice_audio_driver =3D {
+     .name           =3D "spice",
+     .descr          =3D "spice audio driver",
+-    .options        =3D audio_options,
+     .init           =3D spice_audio_init,
+     .fini           =3D spice_audio_fini,
+     .pcm_ops        =3D &audio_callbacks,
+--=20
+2.18.1
 

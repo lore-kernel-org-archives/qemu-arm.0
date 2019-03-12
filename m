@@ -1,34 +1,34 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1041165wrs;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1041169wrs;
         Tue, 12 Mar 2019 16:52:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxlezKLAHTaMDr6ss9su0qVy0QTix3+fLEun/iz0YqrKFuELlSeH5L57XItURxzpv8vfYhE
-X-Received: by 2002:a81:550b:: with SMTP id j11mr12275287ywb.463.1552434779553;
+X-Google-Smtp-Source: APXvYqzaCBSfHGdR239lLbG/JbQ7DLXazQU5wg/PwwXrc1zgnWXF2uAKVhhmIAouHhNPUUtZX00P
+X-Received: by 2002:a0d:e80c:: with SMTP id r12mr32871860ywe.394.1552434779857;
         Tue, 12 Mar 2019 16:52:59 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1552434779; cv=none;
         d=google.com; s=arc-20160816;
-        b=I8VHcT8pqp5N3Df4X5ppbhEyQrM5qRpGgIdUc/E5N0zUeLTPdT3ZbqVOXbaCH/t6v1
-         gQGipfFooHt/XynNB4AjAVos/odckyJhRWFFASeI636YbS2EpWDrFRdtTljJvEGIuiXr
-         NuwcAEefpRr/69DdwbCwZBuFKDXxNXQp2IQs8dRX1umiIdYA1Muf0LuTILgS8JMh5wKE
-         qAcpyygKQPuMVtEMP7jTrKMOcIMeIVDoq6uTB6Iwy9CMyah1AP/6NULZuG1PwyTPl0iR
-         N9f0/s5M0I8ZjQwH0JpCUAwNp2O0sLLgHKC7uP4HTaRubGNbXVwQnZwkVi5vxYWOGa73
-         8nEA==
+        b=UpvN9QEXVdZN0juugTBPcbpm2I0yIn23T48nApi3eNku5QpuXiuIjqb4SyIY30jpXS
+         d0OX4EqDHp4/TDtop1v6MH0HgNAvCtIpz9COgleEWjgCZWkaBbdj1jhwPXAFAg2vKCrb
+         kJ4qouGNMannyqTB0+AXEmz0TsZJSV/maScthjbx/QzHyzySBTSxrnQVBJRfh9sYzkWE
+         JgLccJO16ztE8aqhFm6GP52l4cLonZsyMS4RsGuB/LhvrzDDpZmiB90rwakWRbJNk9zx
+         mg4YK5NviZUX+NHLeqz8npVm0wq04VdRuVw2XmJfOwsG2CbNNocry56LnImYTtU3Ixdz
+         ClQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=m8svK6KAtQkLNuTtpAHeaq+2IbaZl/rztwCdIaLWuhc=;
-        b=OT/1Ym0PCJFS76RbIeDLzukQqvBWbx1kU768Ecc8HWfnUtFnH3ScMAwv5QUVMYeo/V
-         4rw22LO5r4d30rh4vGOckS+PELdBnKUS/2//1d36Nmcl3WMcI+Mv/V3dQavrIkQQ/voO
-         2jHyBR+t++E/qlN7Ff0KBwzG1ZM+q9v3VptnijV1fxvZbVMT6f1oyVjKj7ixLq2s4QTk
-         4KCPI52x+m5OSfB+ibUw0cbsM7mXFd/FYWnLgq86n8wH+y4xB2RNUdqXFMxDJuNdkOwv
-         7M3tdliqJ/+rT8wg0P5b///MlQLzIzu7Hl3JjGuY2hu1bfwK61pLFhzyoqg6kI62vNZr
-         4wtg==
+        bh=RzyJA2Q2cgHRwYKgk3C36tXvIPdfPlicw4QTMzcpBcY=;
+        b=UadLDL3GADQPpC5cOBRzhSpc3DGBPkwP1Wm1aYccLmTyGOCmVTGeJwX2YvLUQCMH93
+         fgpytEvwyAlJ2OPixaidIu0SBDdzT7OgPdwVfnw3Dj4zTmVdEU1yu+h9gH8w62v1Xwpg
+         ukNVRKQtG7CgvXWVftgC0GoOYs3BfneSIT96633CGLuqPDM3+zE15YA4e4EYCg1cJAjJ
+         xXENL8c5fVMqGYL8y5kO735fA0gxFi3E0mNJhjSmabhvlNy81JLSQGgYETUOSUqmkXnB
+         1YJSd8e3K0LDoFKtMIsZDZSaJ9xMxeil32n0DavTYFBTveGhfsc2L8ASlQhV/7gcPNJu
+         X62w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v1si4109486ywa.97.2019.03.12.16.52.59
+        by mx.google.com with ESMTPS id s4si5784582ywg.82.2019.03.12.16.52.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 12 Mar 2019 16:52:59 -0700 (PDT)
@@ -36,49 +36,49 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35202 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:35204 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3rCc-00030w-V5
+	id 1h3rCd-000322-7g
 	for alex.bennee@linaro.org; Tue, 12 Mar 2019 19:52:59 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:56245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h3rCK-0002te-Qw
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 19:52:42 -0400
+	(envelope-from <philmd@redhat.com>) id 1h3rCM-0002te-8q
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 19:52:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h3r5s-0002BF-Ao
-	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 19:46:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49404)
+	(envelope-from <philmd@redhat.com>) id 1h3r5o-00024D-Hv
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 19:45:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33958)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1h3r5s-00029f-3I; Tue, 12 Mar 2019 19:46:00 -0400
+	id 1h3r5o-00022o-Ac; Tue, 12 Mar 2019 19:45:56 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4FF5A3087921;
-	Tue, 12 Mar 2019 23:45:59 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-23.brq.redhat.com [10.40.204.23])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 37C8D1973B;
+	by mx1.redhat.com (Postfix) with ESMTPS id 9887013A4D;
 	Tue, 12 Mar 2019 23:45:55 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-23.brq.redhat.com [10.40.204.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 36DB21973B;
+	Tue, 12 Mar 2019 23:45:51 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org,
 	Cleber Rosa <crosa@redhat.com>
-Date: Wed, 13 Mar 2019 00:45:41 +0100
-Message-Id: <20190312234541.2887-3-philmd@redhat.com>
+Date: Wed, 13 Mar 2019 00:45:40 +0100
+Message-Id: <20190312234541.2887-2-philmd@redhat.com>
 In-Reply-To: <20190312234541.2887-1-philmd@redhat.com>
 References: <20190312234541.2887-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Tue, 12 Mar 2019 23:45:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 12 Mar 2019 23:45:55 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 2/2] Boot Linux Console Test: add a test for
- the Raspberry Pi 2
+Subject: [Qemu-arm] [PATCH v2 1/2] BootLinuxConsoleTest: Let
+ extract_from_deb handle various compressions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,76 +91,58 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RhD4jSam8KN+
+X-TUID: 8O4nWNh2H2os
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Debian binary package format supports various compressions.
 
-Similar to the x86_64/pc test, it boots a Linux kernel on a raspi2
-board and verify the serial is working.
+Per man deb(5):
 
-If ARM is a target being built, "make check-acceptance" will
-automatically include this test by the use of the "arch:arm" tags.
+  NAME
+    deb - Debian binary package format
 
-Alternatively, this test can be run using:
+  FORMAT
+    ...
+    The third, last required member is named data.tar.  It contains the
+    filesystem as a tar archive, either not compressed (supported since
+    dpkg 1.10.24), or compressed with gzip (with .gz extension),
+    xz (with .xz extension, supported since dpkg 1.15.6),
+    bzip2 (with .bz2 extension, supported since dpkg 1.10.24) or
+    lzma (with .lzma extension, supported since dpkg 1.13.25).
 
-    $ avocado run -t arch:arm tests/acceptance
-    $ avocado run -t machine:raspi2 tests/acceptance
+List the archive files to have the 3rd name with the correct extension.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The function avocado.utils.archive.extract() will handle the different
+compression format for us.
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- tests/acceptance/boot_linux_console.py | 29 ++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+v2: Use process.run() (Cleber)
+---
+ tests/acceptance/boot_linux_console.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
 ot_linux_console.py
-index 0936589fd8..dd2733b55f 100644
+index 23fca39422..0936589fd8 100644
 --- a/tests/acceptance/boot_linux_console.py
 +++ b/tests/acceptance/boot_linux_console.py
-@@ -197,6 +197,35 @@ class BootLinuxConsole(Test):
-         console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
-         self.wait_for_console_pattern(console_pattern)
-=20
-+    def test_arm_raspi2(self):
-+        """
-+        The kernel can be rebuilt using the kernel source referenced
-+        and following the instructions on the on:
-+        https://www.raspberrypi.org/documentation/linux/kernel/building.=
-md
-+
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:raspi2
-+        """
-+        deb_url =3D ('http://archive.raspberrypi.org/debian/'
-+                   'pool/main/r/raspberrypi-firmware/'
-+                   'raspberrypi-kernel_1.20190215-1_armhf.deb')
-+        deb_hash =3D 'cd284220b32128c5084037553db3c482426f3972'
-+        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
-+        print("deb_path: ", deb_path)
-+        kernel_path =3D self.extract_from_deb(deb_path, '/boot/kernel7.i=
-mg')
-+        dtb_path =3D self.extract_from_deb(deb_path, '/boot/bcm2709-rpi-=
-2-b.dtb')
-+
-+        self.vm.set_machine('raspi2')
-+        self.vm.set_console()
-+        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=3DttyAMA0')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-append', kernel_command_line)
-+        self.vm.launch()
-+        console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
-+        self.wait_for_console_pattern(console_pattern)
-+
-     def test_s390x_s390_ccw_virtio(self):
+@@ -55,8 +55,9 @@ class BootLinuxConsole(Test):
          """
-         :avocado: tags=3Darch:s390x
+         cwd =3D os.getcwd()
+         os.chdir(self.workdir)
+-        process.run("ar x %s data.tar.gz" % deb)
+-        archive.extract("data.tar.gz", self.workdir)
++        file_path =3D process.run("ar t %s" % deb).stdout_text.split()[2=
+]
++        process.run("ar x %s %s" % (deb, file_path))
++        archive.extract(file_path, self.workdir)
+         os.chdir(cwd)
+         return self.workdir + path
+=20
 --=20
 2.20.1
 

@@ -1,147 +1,178 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp783850wrs;
-        Tue, 12 Mar 2019 11:20:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwtVp2XXLgWNDGRc6AN4RWgdujlU+MePO7zXkcCRmNNCP8jQI8YVtlZ3gLL5xgQiGU+ECuf
-X-Received: by 2002:a25:2c45:: with SMTP id s66mr33963397ybs.432.1552414804544;
-        Tue, 12 Mar 2019 11:20:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552414804; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1003334wrs;
+        Tue, 12 Mar 2019 15:56:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnrQ50NRApnHQuUo4MdtP9298fcsYt6I8aW8ajIFb9u59QHl+y08pcfk6HIOYt6oSB5b+c
+X-Received: by 2002:a81:1b0c:: with SMTP id b12mr22241047ywb.371.1552431416375;
+        Tue, 12 Mar 2019 15:56:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552431416; cv=none;
         d=google.com; s=arc-20160816;
-        b=cwB10Hb0rd9MMFkjiAmOiDyaOVahNWUceungb9jCtoyWyyGHrF/bokhj9OuHU+UiyF
-         eGpZG2Yu1wNBuu9TNa9uRK9uN7/t7i9s75QWTKOI7D6FWsHNYIsWdkwGK+IwdddFuvga
-         HI6ZivDMPhfAbsAWrGGiN821SoB2nG9Hbu+9kpfjQCCjG2TvYxQRKvahp8AusXdo2vjb
-         lv/Coy/0IEfYXYNCN1UGuzWBp1hMzhyxTIYJt2OeQDE6t2XMp1yMoy0/pKtaJeJ54fLL
-         1VdeQzh23KQV31VDn78L+mXghNiHTjcBmpPXbXoHSLV7VzAVDzImIziweGle0LQwrVSs
-         subA==
+        b=YDGAdSFTMdqim9F59j26lG5CW4ITgQpX+lbQ9pjvGSVcoTur02osHbMI10F2HzIUoS
+         4ubdpbdLXxkt+z8dM+GXhQfETqR7UzuBtaoK0Nns/HYMFxPxUCG8+c4EstF6wYds9q8p
+         r9pFAHNK/CN2BttuPzVBUqUVNcTjJDddCRSBO5p7x+DKL/ey1fMMxs45thZx+axeKZAv
+         wacMmp5q3qTWhIXPyIH+ML+bse/ikq3IQF1n1uhx0V5AjqpLVNhJsY9n/l/Smwv8hxfT
+         QRs0dqyG9aARugZQFR2DOjkXjQ82axVbsA1YUvHCINdcL+gIaDCxOEUoKzd+BuhheStO
+         4xyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4htiJ63gEmka+PTvn5qY4c23oXKmq/PeN2xJIA7VOLA=;
-        b=I2cucqZaMNpK4kB988yucuiWzA+AErUndoQtDZdpMOWVNvSYX9UyPcnU2EOm6dN8wd
-         62bIntqzseYNRsAdn6TlWx2sGDeCEVh8r0ODS08B2p6ODDNzvfLas7bYUDaMd+f/yyE2
-         xPlSS23MqM+CR7bTUtGTSKmtIU2poRiB9NeOCpwUxGpE0MioHsVGJnhnUX8VqhETb+fX
-         Q3FcI5w8LCaOGVYGD8y4SwXEJVsbikOoh6rT4GyPUGM5ttJsy/7KApOm0cHVYLwMKhIi
-         +Zjc2s3LbXN1lOYG8FoIf4eiNcHUvecyCLZ+1tiq2YHoSWYcWnHEPgzBSFiHWX+WzgHu
-         CVHQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=XWoPhrONhrWDQyd5g6aPXUoBsT++IxdVPE1FN2SsyY8=;
+        b=o7SZkO5pkQi4yaRciUlCCA6MeoC3qLDBA6+FUj9e1vvKgEcwPcH/KFFTHG1ukGjHo3
+         86XkzFYY1LfOX6wI48PmKE8U+NjqW5zXspeEZg1D+KaFuz/FR1CvlA37qStW35yCWW62
+         BDuraSQUBunQ7rbct0zv0j2ZeiepdGrZBCknd9ofyiKOvon1y1fku5kn1+0hgrhR1pnq
+         Qykic4rstfZqnOwvpqE1VJdrRXI4uyEE1iM7vTvk3KhbJ07aQbLhQGfmon9ej143ib9k
+         Sby5mjbPrAE7eBFH26YaD2fSxV27ey2RSg3IligJVRpMJGseVIimk8UpDc3msFL0LYdy
+         ADcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=poHS++rn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f184si5191240ybb.348.2019.03.12.11.20.04
+        by mx.google.com with ESMTPS id f131si5965591ybc.40.2019.03.12.15.56.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Mar 2019 11:20:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 Mar 2019 15:56:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=poHS++rn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:57239 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:34680 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3m0S-00014d-0d
-	for alex.bennee@linaro.org; Tue, 12 Mar 2019 14:20:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35605)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h3qKN-0001hk-Pz
+	for alex.bennee@linaro.org; Tue, 12 Mar 2019 18:56:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48711)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h3ldg-0005kd-9A
-	for qemu-devel@nongnu.org; Tue, 12 Mar 2019 13:56:33 -0400
+	(envelope-from <philmd@redhat.com>) id 1h3qKG-0001fg-Na
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 18:56:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h3ldf-0002Se-GG
-	for qemu-devel@nongnu.org; Tue, 12 Mar 2019 13:56:32 -0400
-Received: from mail-it1-x142.google.com ([2607:f8b0:4864:20::142]:39818)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h3ldf-0002RR-8p
-	for qemu-devel@nongnu.org; Tue, 12 Mar 2019 13:56:31 -0400
-Received: by mail-it1-x142.google.com with SMTP id l15so5973193iti.4
-	for <qemu-devel@nongnu.org>; Tue, 12 Mar 2019 10:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=4htiJ63gEmka+PTvn5qY4c23oXKmq/PeN2xJIA7VOLA=;
-	b=poHS++rnNmyE8egyNqWcchax51LaSbmyXrRmXioMMe/QYvBl8hHZSEkbRBfWusM5ZI
-	J3eVCTMvEVChcX+BRjiguWQcnlWVf84a3sJHdXmgcmo4kON7sOH7oMKYTPAuXpbFWRwU
-	9KXqynYjxI5hISBAvw63QPGOGniQr08O6PbtlDdxTEfLzDM1qr6IS7KRhOTYSYx6HJSf
-	GF3eT83S3FNLYMiebEG00c+Tg0BuhElGyG3yjZglRoeV7cejbZzBTIWBzSp4o53MTS5Q
-	WwLb+LgIJbOeWhQM5osaWrx/uXtvmCt9pvFi+g/kMsP9AAVjrA93r3hrGreWpj8O8GtB
-	/UyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=4htiJ63gEmka+PTvn5qY4c23oXKmq/PeN2xJIA7VOLA=;
-	b=C20Ben37xcF/VwYO+uBRBppxZFJf/7yICOLs8rKy0YpAgBZM/wgwYpjCYku7tMj4eQ
-	utyGfJ3xQQpUFCtRvi81QOO55tfiFZmMqzlK5LjrtHtI0XcleNRSrmS+3ysgPGXFccne
-	v+36oVmzzcQfCXXeIoCEi+DiEOJnOZ2GzJ/lsb7zEv/4h3uYg9G3nlFNY/RCCk+yAKbl
-	1FjXujqBr2e4xPZ+6zrsYmXTQScJY5MI1QBH+4LpQxBxuPkdh8c56KIu+hX8WbXfB0Fy
-	gvvi+A37UEktS0hNtRlKwOM3NtKSUpBEINQqbZf9q/H67mxpn/mV6DilUm6w9SwgLgUW
-	0XCQ==
-X-Gm-Message-State: APjAAAWiiSHXs658FugOgLtLlFehr12xz82RYvxck7jb4FZYH1cHUUzo
-	SpTk3k8YMJKDedbmTYt26jDBXWj+WikVLJdidtEF8w==
-X-Received: by 2002:a24:4087:: with SMTP id n129mr2712810ita.140.1552413389969;
-	Tue, 12 Mar 2019 10:56:29 -0700 (PDT)
+	(envelope-from <philmd@redhat.com>) id 1h3qKF-0005aW-I5
+	for qemu-arm@nongnu.org; Tue, 12 Mar 2019 18:56:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36928)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1h3qKF-0005Yk-8d; Tue, 12 Mar 2019 18:56:47 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 77F7C3091799;
+	Tue, 12 Mar 2019 22:56:45 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-23.brq.redhat.com [10.40.204.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C0BF660C1B;
+	Tue, 12 Mar 2019 22:56:35 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 12 Mar 2019 23:56:28 +0100
+Message-Id: <20190312225632.29777-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
-	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
-	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
-	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
-	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
-	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
-	<CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
-	<CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
-	<CADYoBw2XWeDUqBHVJBWxJAzQ4f0imosEeLHHoG9AfHfdavOTrA@mail.gmail.com>
-	<CAFEAcA8YT4oLWK7gQB44p5UQVHEUR6bFdHy6VcGnGAxFxhWdiQ@mail.gmail.com>
-	<CADYoBw1TQMpkYbS8g_OzZ4UeQz=NYO=dugRnCuL2mP4xBxcWMQ@mail.gmail.com>
-In-Reply-To: <CADYoBw1TQMpkYbS8g_OzZ4UeQz=NYO=dugRnCuL2mP4xBxcWMQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Mar 2019 17:56:18 +0000
-Message-ID: <CAFEAcA9hWPvGxw3THrsnQAMuQ87gzArGRa+kouF=d9DWsEnLTw@mail.gmail.com>
-To: bzt <bztemail@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::142
-Subject: Re: [Qemu-devel] [PATCH] Added periodic IRQ support for
- bcm2836_control local timer
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.41]);
+	Tue, 12 Mar 2019 22:56:45 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v4 0/4] fw_cfg: Add edk2_add_host_crypto_policy()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9rL5L54T62t/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UXjQKtQrokzi
 
-On Sun, 10 Mar 2019 at 11:02, bzt <bztemail@gmail.com> wrote:
->
-> Hi,
->
-> Okay, as you wish. My code works either way and on real hardware as
-> well, because I acknowledge the periodic IRQ as soon as possible, so
-> good for me.
+Hi,
 
-Thanks; I'll get this version of the patch into git master
-at some point in the next week.
+This series consists of:
+- add fw_cfg_add_file_from_host()
+- add edk2_add_host_crypto_policy() and the Edk2Crypto object
 
-(I happened to have an rpi2 to hand, so I wrote a little test
-program to check what the behaviour of the h/w is, and it does
-indeed not clear the INTEN bit when it signals an IRQ,
-and it doesn't clear the IRQ line until the guest clears the
-interrupt flag: so if your IRQ handler doesn't clear the flag
-by writing to the register then the IRQ will 'scream' (fire
-continually) both on QEMU and on the real hardware. So I think
-the data sheet is correct here, though it certainly has its share
-of errors...)
+The Edk2Crypto object is used to hold configuration values specific
+to EDK2.
 
-thanks
--- PMM
+The edk2_add_host_crypto_policy() function loads crypto policies
+from the host, and register them as fw_cfg named file items.
+
+So far only the 'https' policy is supported.
+
+A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+
+Usage example:
+
+$ qemu-system-x86_64 \
+    --object edk2_crypto,id=3Dhttps,\
+        ciphers=3D/etc/crypto-policies/back-ends/openssl.config,\
+        cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+
+(On Fedora these files are provided by the ca-certificates and
+crypto-policies packages).
+
+[*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+
+Since v3:
+- Addressed Markus' comments (do not care about heap)
+Since v2:
+- Split of
+Since v1:
+- Addressed Michael and Laszlo comments.
+
+Please review,
+
+Phil.
+
+$ git backport-diff -u fw_cfg_edk2_crypto_policies-v3
+Key:
+[####] : number of functional differences between upstream/downstream pat=
+ch
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respec=
+tively
+
+001/4:[0022] [FC] 'hw/nvram/fw_cfg: Add fw_cfg_add_file_from_host()'
+002/4:[0085] [FC] 'hw/firmware: Add Edk2Crypto and edk2_add_host_crypto_p=
+olicy()'
+003/4:[0002] [FC] 'hw/i386: Use edk2_add_host_crypto_policy()'
+004/4:[0002] [FC] 'hw/arm/virt: Use edk2_add_host_crypto_policy()'
+
+v3: https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg02965.html
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg02522.html
+v1: https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01598.html
+
+Philippe Mathieu-Daud=C3=A9 (4):
+  hw/nvram/fw_cfg: Add fw_cfg_add_file_from_host()
+  hw/firmware: Add Edk2Crypto and edk2_add_host_crypto_policy()
+  hw/i386: Use edk2_add_host_crypto_policy()
+  hw/arm/virt: Use edk2_add_host_crypto_policy()
+
+ MAINTAINERS                             |   8 ++
+ hw/Makefile.objs                        |   1 +
+ hw/arm/virt.c                           |   7 +
+ hw/firmware/Makefile.objs               |   1 +
+ hw/firmware/uefi_edk2_crypto_policies.c | 182 ++++++++++++++++++++++++
+ hw/i386/pc.c                            |   7 +
+ hw/nvram/fw_cfg.c                       |  23 +++
+ include/hw/firmware/uefi_edk2.h         |  30 ++++
+ include/hw/nvram/fw_cfg.h               |  25 ++++
+ 9 files changed, 284 insertions(+)
+ create mode 100644 hw/firmware/Makefile.objs
+ create mode 100644 hw/firmware/uefi_edk2_crypto_policies.c
+ create mode 100644 include/hw/firmware/uefi_edk2.h
+
+--=20
+2.20.1
+

@@ -1,86 +1,98 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1491262wrs;
-        Wed, 13 Mar 2019 03:44:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzifWBUo62QzvG7k8W5leVwpXFV26j7gUBtFcVNBFjqyuNXrPdGoCmLDhei9mGg4SeNRAiH
-X-Received: by 2002:a81:7b56:: with SMTP id w83mr6938051ywc.455.1552473894469;
-        Wed, 13 Mar 2019 03:44:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552473894; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1528978wrs;
+        Wed, 13 Mar 2019 04:25:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwLbVOILTdAKcI93yTKvF6VJxGLunKc28i1qEv7GmSaAthtArBEo3av8W9ZwnGLgd9uhjfv
+X-Received: by 2002:a25:73d3:: with SMTP id o202mr36144502ybc.1.1552476329482;
+        Wed, 13 Mar 2019 04:25:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552476329; cv=none;
         d=google.com; s=arc-20160816;
-        b=mDJHItWYeTakqB20zHIETV/dNgrwmJsYWlGj3FXTtRKuI8PsBCMv7jcLka3JdWEzjx
-         WJbn8EsUgk7Kh23b2AYEdyHGy+bm2ObzEk5XIJnLyRzbQ6G1kdL9FOP5YgjSMSLAo13U
-         YcWtf3tpPXU5K/EcI0RVsE3JdKgLqH9jPofcHRPkHgIBQ92qWbUAylFc5GXN/Xn/FEB+
-         Un3EzAoOgyrayZUnX+w0pIZg0DxkD5CYSVY67Xmn6QlsYnbI84VBHM5COnydTomi1St0
-         ggPG5i8pLbME+C9tGknsKCBuREsrWJ01F0qXJXlIiCx9Afx7BYZWHAdIFTqF5ne2FhfA
-         852g==
+        b=WUhK1FS/xWhVYfScInj0X55cb6vl+F7M9QwQYj/3Vp4KeAi7YbCGVNnVPP9zLf2L7e
+         pJ1aGry8ayeGJK7H6ZP7aZTpvois5hm8bmA9i/qrLXBzLCoqQ8yirVD9SCo9dyK/1WFM
+         sOvP15hK8ZKjEAm86dXca5UQvlkiyRshRQ+41+K6HvsDMssq6SnjdvE9bRh/k/K8bra9
+         gFTWMB2sm4q+fCX8/se1UYyjkPqwNpHCOgwKHA2/mj2wSmHfk85uDzStJQc24Is7APyd
+         NxEPhGgg5X1eC+Obyp80v9ArvbSbNlP3Xncj0qXfxUvMHhs0KyNPpilcCGBihCLmJJdt
+         3aLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=qppujVPGmXmp+P+rDvDIyDDSe5qxVJoIsb46MWF5T5M=;
-        b=g1zkXUb9XGI0ndYsHecQ5zG65iGgTvILj+QEtevC0iNgjPc6c9dKiwyLgImuzU/XJM
-         y/aBHgfZ7ocl7Q7bh0MdxUEsK/8W8xAaSH9lMY8nO3GUogemM1bH7O/f2CY3WkIT6tFb
-         t3rR1lav0jZ9vTNir2n+gYXs7DuWjIhoxWiQytGdAIrfRt4jvrGB6KjPs7sQlCYNW93v
-         QdOWhLshgI5/LCjAyVzHKOq5IA6M2Mf2SX6BwSuJEhcucQ+2ca9feyyV3EfkZh0cjYJv
-         PwSqU6hkEPlxsufYZMdkQ9oe5Quv+QTnYVg0TXx38CG/cLu0rHYAGwKLhvvZjQfMTVGE
-         mRzg==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=VfuiJtZqSdlxDKq6dPSmyein3HpHUmDiCDrIFggn8N4=;
+        b=a3RcAffXm6xr0AWueEqs5SnAh3PLXtjeyxGxRMDueVXeC1GsGli49Ka4rUPs9RzDZL
+         LlW5xjOg1It9JK9PvpMqHvjhf4frAKrDFKXulwMzrtjsb3ELKYV34JOFKueWqAoJKRk6
+         0+6dM6fDuaFHMyH7nG6xCQuw9oaztotrsXi00MuHyycvZBmPrWBBejBkwIYpjDY3WmeN
+         G1BeFDZXfcWrMzr1n0r5N5onb7j3WReIZZ4xRlc8+/5ojwk4ilHS1+NWb62arcPlfVPk
+         ZDkev5xGi1upInCUBGPB3m7ZGomBL0dDkIDEEXzDoq5N2rGVQuqa2Mx1f9WadyzUbpFq
+         I07Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e73si6528537ywa.274.2019.03.13.03.44.54
+        by mx.google.com with ESMTPS id v66si289164ybc.283.2019.03.13.04.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 03:44:54 -0700 (PDT)
+        Wed, 13 Mar 2019 04:25:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42132 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:42535 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h41NW-0002lV-0g
-	for alex.bennee@linaro.org; Wed, 13 Mar 2019 06:44:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39983)
+	id 1h420m-0003zw-Ug
+	for alex.bennee@linaro.org; Wed, 13 Mar 2019 07:25:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h41NL-0002kR-FT
-	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 06:44:44 -0400
+	(envelope-from <philmd@redhat.com>) id 1h420d-0003zl-Dk
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 07:25:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1h41NJ-0005I1-Qu
-	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 06:44:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50560)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1h41NJ-0005FG-AI; Wed, 13 Mar 2019 06:44:41 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 47A2F301E142;
-	Wed, 13 Mar 2019 10:44:40 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-225.rdu2.redhat.com
-	[10.10.120.225])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B8E195DD84;
-	Wed, 13 Mar 2019 10:44:31 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+	(envelope-from <philmd@redhat.com>) id 1h420c-0007GU-HD
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 07:25:19 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:44594)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h420c-0007G4-Ay
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 07:25:18 -0400
+Received: by mail-wr1-f65.google.com with SMTP id w2so1536145wrt.11
+	for <qemu-arm@nongnu.org>; Wed, 13 Mar 2019 04:25:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=VfuiJtZqSdlxDKq6dPSmyein3HpHUmDiCDrIFggn8N4=;
+	b=U6EAf1n22EUjh+Qpp5gFx4dXjCDfKj7Ak+HCSySW7a1TRjc4tJCuMmYheEjj9MKiRR
+	jTr8IV1l6CXjQs4tBY2v4lrcDzM7rAfiQ088e2jBEk1uAcR050bHmFr+W2JhbiUHf6oY
+	D42HqWQaJiiWSaKsiyQep9PrKCUxhp9LsFpmWOcXN//yCWkQ3lPF1LVl2o7xTsL4spKa
+	RjO8/Pq4s5FX2dKmWdt2wFVp41oJGWFOEzjNwQ93onmbseXqM3LCQ9Ywl1OjVqCpruNb
+	jkX3cjlGRP9B0k8LZFjXv21lcgTsh/o+KYd/wwUSa2Sy9a4x+tJv5j9hBbq0gjJIHx3j
+	jlcQ==
+X-Gm-Message-State: APjAAAWLrO5Y1Dk2S616lN6y7QnVcGwkpNaL66d1RtOluXi/Y6g8bNgh
+	unx89ngMDSpZ2OUravI3d6Qx7g==
+X-Received: by 2002:a5d:680d:: with SMTP id w13mr25881119wru.196.1552476317144;
+	Wed, 13 Mar 2019 04:25:17 -0700 (PDT)
+Received: from [10.32.224.47] (red-hat-inc.vlan560.asr1.mad1.gblx.net.
+	[159.63.51.90]) by smtp.gmail.com with ESMTPSA id
+	m189sm1742628wmf.7.2019.03.13.04.25.15
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Wed, 13 Mar 2019 04:25:16 -0700 (PDT)
+To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
 References: <20190312225632.29777-1-philmd@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <d0bba5e7-b144-9050-3339-08a55bd4c108@redhat.com>
-Date: Wed, 13 Mar 2019 11:44:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	<d0bba5e7-b144-9050-3339-08a55bd4c108@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <4198665d-a83f-be04-25a1-c8f9a5e4acb8@redhat.com>
+Date: Wed, 13 Mar 2019 12:25:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.1
 MIME-Version: 1.0
-In-Reply-To: <20190312225632.29777-1-philmd@redhat.com>
+In-Reply-To: <d0bba5e7-b144-9050-3339-08a55bd4c108@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Wed, 13 Mar 2019 10:44:40 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+	[fuzzy]
+X-Received-From: 209.85.221.65
 Subject: Re: [Qemu-arm] [PATCH v4 0/4] fw_cfg: Add
  edk2_add_host_crypto_policy()
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,55 +114,59 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PZQU92Xdo/y7
+X-TUID: dTFxZ1O1kw6q
 
-On 03/12/19 23:56, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi,
->=20
-> This series consists of:
-> - add fw_cfg_add_file_from_host()
-> - add edk2_add_host_crypto_policy() and the Edk2Crypto object
->=20
-> The Edk2Crypto object is used to hold configuration values specific
-> to EDK2.
->=20
-> The edk2_add_host_crypto_policy() function loads crypto policies
-> from the host, and register them as fw_cfg named file items.
->=20
-> So far only the 'https' policy is supported.
->=20
-> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
->=20
-> Usage example:
->=20
-> $ qemu-system-x86_64 \
->     --object edk2_crypto,id=3Dhttps,\
->         ciphers=3D/etc/crypto-policies/back-ends/openssl.config,\
->         cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
->=20
-> (On Fedora these files are provided by the ca-certificates and
-> crypto-policies packages).
->=20
-> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
->=20
-> Since v3:
-> - Addressed Markus' comments (do not care about heap)
-> Since v2:
-> - Split of
-> Since v1:
-> - Addressed Michael and Laszlo comments.
->=20
-> Please review,
+On 3/13/19 11:44 AM, Laszlo Ersek wrote:
+> On 03/12/19 23:56, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>> This series consists of:
+>> - add fw_cfg_add_file_from_host()
+>> - add edk2_add_host_crypto_policy() and the Edk2Crypto object
+>>
+>> The Edk2Crypto object is used to hold configuration values specific
+>> to EDK2.
+>>
+>> The edk2_add_host_crypto_policy() function loads crypto policies
+>> from the host, and register them as fw_cfg named file items.
+>>
+>> So far only the 'https' policy is supported.
+>>
+>> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+>>
+>> Usage example:
+>>
+>> $ qemu-system-x86_64 \
+>>     --object edk2_crypto,id=https,\
+>>         ciphers=/etc/crypto-policies/back-ends/openssl.config,\
+>>         cacerts=/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+>>
+>> (On Fedora these files are provided by the ca-certificates and
+>> crypto-policies packages).
+>>
+>> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+>>
+>> Since v3:
+>> - Addressed Markus' comments (do not care about heap)
+>> Since v2:
+>> - Split of
+>> Since v1:
+>> - Addressed Michael and Laszlo comments.
+>>
+>> Please review,
+> 
+> sorry about seeing this just now. My email load has been extreme, and
+> the only way I can deal with it is a *strict* FIFO approach. It gives me
+> unparalleled throughput [*] and acceptable latency, but it does cause me
+> to respond to out-of-date emails on occasion.
+> 
+> [*] "unparalleled" not by other people, but by other workflows I could
+> choose
+> 
+> Nevertheless I think my comments under v3 apply just the same here.
 
-sorry about seeing this just now. My email load has been extreme, and
-the only way I can deal with it is a *strict* FIFO approach. It gives me
-unparalleled throughput [*] and acceptable latency, but it does cause me
-to respond to out-of-date emails on occasion.
+Yes, I'll work on v5 based on your v3 comments.
 
-[*] "unparalleled" not by other people, but by other workflows I could
-choose
+Thanks!
 
-Nevertheless I think my comments under v3 apply just the same here.
-
-Thanks
-Laszlo
+Phil.

@@ -1,128 +1,140 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id l5sm2772172wmi.24.2019.03.13.09.13.34
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Mar 2019 09:13:34 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A9C611FF87;
-	Wed, 13 Mar 2019 16:13:33 +0000 (UTC)
-References: <1552488086-4025-1-git-send-email-amir.charif@cea.fr>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Amir Charif <amir.charif@cea.fr>
-Subject: Re: [Qemu-arm] [PATCH] Re-evaluate SVE vector length everytime ADDVL is executed
-In-reply-to: <1552488086-4025-1-git-send-email-amir.charif@cea.fr>
-Date: Wed, 13 Mar 2019 16:13:33 +0000
-Message-ID: <87y35i4us2.fsf@zen.linaroharston>
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1832354wrs;
+        Wed, 13 Mar 2019 09:18:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy93IsZoKTQTnTDppdam3E+j8I0xbbywa6TO/4XSTJ9NNuDZ2Qp2ob1sZ7WVtYfv2sGmjYf
+X-Received: by 2002:a25:8b01:: with SMTP id i1mr24845169ybl.456.1552493880639;
+        Wed, 13 Mar 2019 09:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552493880; cv=none;
+        d=google.com; s=arc-20160816;
+        b=os5Aa7LWHhyQdKzlBIvLBKi3dNBLXbMoqLCDNFInDIsSz+nSnwqbqE/EN5E59O3dK3
+         4YqZYQy3xvaVBbQGMSWyVfVg9gF7fPkP/tFlXehuyvlWshDKovQTb2wX1meXw682aZsX
+         zJabOPM4qKut7uOs/Z4DvUVV1s8yLpGCu6Pgt/KvJUhwDHzDJLEJQ6wzjwCJlomXoNtH
+         aR5kTwiTW92wqRixnOs0WfH874IJULHXQb2yD0Nu4ul9ClATD8W610B2diBLZ+7OuGuw
+         eypHpPdtpjH7fYZNPfd3DBFWRdEcum0jonjqSoBBG2tX0PQHx2CoRzxn+6zTogTkEETS
+         Ke0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=e4sUoOdi+7bsFgAp/eeEAdYNN5w5uLfRFjEwtIObhog=;
+        b=r+6Odx7WGTCbd7Ij3MEb0yUlmb0tpekwlGU11hzQvHVtIKzAnIga6izJQO/5D1kztI
+         jscvURleK8vPTVrlgwIyiO3D7Gw1H+bj+J9za4zCB8su6CS5ATMUCNPx32WOrQH2ka8t
+         gGFK29x08Ac+pqpv8lh5sRvnxTLcgsBAveJBnUov/65KkRPicqnymqAXx+sr3MHCLdY6
+         iGkd7XLoc5nj9TRsI5fXkTqxMjJr6RMq6iV4GOA2ypsjX/hIfhlbEXcRf77fosUouwA5
+         kSF5AQK7tGV8OYHk9QzN+iF8qykrpeMo2udy0N3JKJi6Ur7/ZVrwgCjidqgIV1kee+SY
+         PDkA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i202si6810265ywa.238.2019.03.13.09.18.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 13 Mar 2019 09:18:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:47475 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h46Zs-0004BL-4y
+	for alex.bennee@linaro.org; Wed, 13 Mar 2019 12:18:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54647)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1h46Zl-0004BD-7T
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 12:17:53 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1h46Zh-0000wb-Cf
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 12:17:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53024)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h46Zg-0000vo-L3; Wed, 13 Mar 2019 12:17:49 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2FB78308CF92;
+	Wed, 13 Mar 2019 16:17:46 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E3BAC19C65;
+	Wed, 13 Mar 2019 16:17:41 +0000 (UTC)
+Date: Wed, 13 Mar 2019 17:17:40 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wei Yang <richard.weiyang@gmail.com>
+Message-ID: <20190313171740.338b43b8@redhat.com>
+In-Reply-To: <20190313132448.4ui2hpxovh76wtgk@master>
+References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
+	<20190313133039.516f3a60@redhat.com>
+	<20190313132448.4ui2hpxovh76wtgk@master>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: WYSZXKPvWfzX
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Wed, 13 Mar 2019 16:17:46 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 0/3] Extract build_mcfg
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+	Wei Yang <richardw.yang@linux.intel.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Pr9ub+au0iUE
 
+On Wed, 13 Mar 2019 13:24:48 +0000
+Wei Yang <richard.weiyang@gmail.com> wrote:
 
-Amir Charif <amir.charif@cea.fr> writes:
+> On Wed, Mar 13, 2019 at 01:30:39PM +0100, Igor Mammedov wrote:
+> >On Wed, 13 Mar 2019 12:42:50 +0800
+> >Wei Yang <richardw.yang@linux.intel.com> wrote:
+> >  
+> >> This patch set tries to generalize MCFG table build process.
+> >> 
+> >> [1]: use acpi_get_mcfg() to get necessary information to build MCFG
+> >> [2]: remove an unnecessary variable mcfg_start
+> >> [3]: Extract build_mcfg to aml-build.c
+> >> 
+> >> Wei Yang (3):
+> >>   hw/arm/virt-acpi-build: use acpi_get_mcfg() to calculate bus number
+> >>   hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
+> >>   hw/acpi: Extract build_mcfg  
+> >
+> >I'd add ano more patch on top
+> >which converts from packed structure to build_append_int_noprefix() API
+> >  
+> 
+> You mean get rid of type AcpiTableMcfg, and write raw data to blob with
+> build_append_int_noprefix()?
+yes,
 
-> In system emulation mode, the kernel may internally use 16-byte vectors.
-> If this size is saved in the DisasContext before entering a userspace app
-> that uses higher SVE sizes, the wrong size may be allocated on the stack
-> resulting in corruption (segfaults in user space).
-> This fix evaluates the vector size at runtime (as opposed to
-> translation time)
+> 
+> I don't get the benefits of doing so.
+see commit 5d7a334f7
 
-This implies we have missed recalculating the vector size on a mode
-transition. We want to ensure that the flags setting of TBFLAG_A64,
-ZCR_LEN is consistent. Is sve_zcr_len_for_el() getting it wrong?
+ 
+> >> 
+> >>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
+> >>  hw/arm/virt-acpi-build.c    | 27 ++++++++++-----------------
+> >>  hw/i386/acpi-build.c        | 36 +-----------------------------------
+> >>  include/hw/acpi/aml-build.h |  6 ++++++
+> >>  4 files changed, 47 insertions(+), 52 deletions(-)
+> >>   
+> >  
+> 
 
-> to always allocate the correct size on the stack (when ADDVL is used).
->
-> Signed-off-by: Amir Charif <amir.charif@cea.fr>
-> ---
->  target/arm/translate-a64.c | 17 +++++++++++++++++
->  target/arm/translate-a64.h |  1 +
->  target/arm/translate-sve.c |  7 +++++--
->  3 files changed, 23 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 1959046..e431f1e 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -45,6 +45,9 @@ static TCGv_i64 cpu_pc;
->  /* Load/store exclusive handling */
->  static TCGv_i64 cpu_exclusive_high;
->
-> +/* Current value of the zcr_el[1] register */
-> +static TCGv_i64 cpu_zcr_el1;
-> +
->  static const char *regnames[] =3D {
->      "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7",
->      "x8", "x9", "x10", "x11", "x12", "x13", "x14", "x15",
-> @@ -103,6 +106,9 @@ void a64_translate_init(void)
->
->      cpu_exclusive_high =3D tcg_global_mem_new_i64(cpu_env,
->          offsetof(CPUARMState, exclusive_high), "exclusive_high");
-> +
-> +    cpu_zcr_el1 =3D tcg_global_mem_new_i64(cpu_env,
-> +        offsetof(CPUARMState, vfp.zcr_el[1]), "zcr_el1");
->  }
->
->  static inline int get_a64_user_mem_index(DisasContext *s)
-> @@ -578,6 +584,17 @@ TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, i=
-nt sf)
->      return v;
->  }
->
-> +/* Get a temporary register containing the current vector length */
-> +TCGv_i64 get_cpu_vec_len(DisasContext *s)
-> +{
-> +    TCGv_i64 v =3D new_tmp_a64(s);
-> +    tcg_gen_mov_i64(v, cpu_zcr_el1);
-> +    tcg_gen_andi_i64(v, v, 0xf);
-> +    tcg_gen_addi_i64(v, v, 1);
-> +    tcg_gen_muli_i64(v, v, 16);
-> +    return v;
-> +}
-> +
->  /* Return the offset into CPUARMState of a slice (from
->   * the least significant end) of FP register Qn (ie
->   * Dn, Sn, Hn or Bn).
-> diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-> index 63d958c..fcfbc90 100644
-> --- a/target/arm/translate-a64.h
-> +++ b/target/arm/translate-a64.h
-> @@ -35,6 +35,7 @@ TCGv_i64 cpu_reg(DisasContext *s, int reg);
->  TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
->  TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
->  TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf);
-> +TCGv_i64 get_cpu_vec_len(DisasContext *s);
->  void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v);
->  TCGv_ptr get_fpstatus_ptr(bool);
->  bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index 3a2eb51..d5ad88b 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -945,7 +945,9 @@ static bool trans_ADDVL(DisasContext *s, arg_ADDVL *a)
->  {
->      TCGv_i64 rd =3D cpu_reg_sp(s, a->rd);
->      TCGv_i64 rn =3D cpu_reg_sp(s, a->rn);
-> -    tcg_gen_addi_i64(rd, rn, a->imm * vec_full_reg_size(s));
-> +    TCGv_i64 ln =3D get_cpu_vec_len(s);
-> +    tcg_gen_muli_i64(ln, ln, a->imm);
-> +    tcg_gen_add_i64(rd, rn, ln);
->      return true;
->  }
->
-> @@ -960,7 +962,8 @@ static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
->  static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
->  {
->      TCGv_i64 reg =3D cpu_reg(s, a->rd);
-> -    tcg_gen_movi_i64(reg, a->imm * vec_full_reg_size(s));
-> +    TCGv_i64 ln =3D get_cpu_vec_len(s);
-> +    tcg_gen_muli_i64(reg, ln, a->imm);
->      return true;
->  }
-
-
---
-Alex Benn=C3=A9e

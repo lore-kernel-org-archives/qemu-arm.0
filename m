@@ -1,240 +1,178 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1224507wrs;
-        Tue, 12 Mar 2019 21:48:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxv9OB6JN3yCEdO0o/6nhRxXacsBRWOFbKrsh088isnRqxFkyCItnLXXoO6Zi0IIlcVQM2Y
-X-Received: by 2002:a5b:344:: with SMTP id q4mr8677091ybp.248.1552452495509;
-        Tue, 12 Mar 2019 21:48:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552452495; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1463410wrs;
+        Wed, 13 Mar 2019 03:11:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw3v+4MreuAj/7UoDqAE/J41vOdCghPRmL2SPsrvupB/hXL9BjS8az058smXU6i1qhnlVv1
+X-Received: by 2002:a37:32d4:: with SMTP id y203mr31414154qky.282.1552471898653;
+        Wed, 13 Mar 2019 03:11:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552471898; cv=none;
         d=google.com; s=arc-20160816;
-        b=rObgTfH5zizI9VnOqlgFo+jjoxEajHpY3Mkb40o7gUzKANBZLEcpuhdyEAlouksO9H
-         vtFP9MZqHh8tRFJblJTs7iuX/DzpWgfAYWpfQxZttu7LxjXhufCl+1RHLDt17QwYNJaB
-         9XKQKiTNqq5oXQBT2GYx0hQ1HKhlghMcvw7gf8sWrhj48h1gLCNpVFI/TP0eGQolk7Ew
-         VCHAn3TeQ1CdItY18RQHHH+Mwuem2gQ7Cg6ya2J4iy7KGz678RwfGd5p2y3z0YHIXQMi
-         drM2ZgpWHmut4Nze0/AU90rWR1IURoi7zCg2HLI5BRZAvBGP01Clhrpundwa/49m0DHN
-         gQLg==
+        b=W90HR8HwFXzpjv3eEQmA5grsg5JpV3Ib2xIrPDtkOAMqsRscer/UuAWJuDvi7T9nW9
+         16lBieBd6vR7eAFrUADGWQrTjMNk1Hy9K8hD3+mJyIJWlVLzKcj4r4NYhn1vWZTVa00Q
+         dD/UAz99ccNv3seKG2Nka7r4TPw6lXerbUkdKDQ2e9O91dyAjapKVH474oZVAuMX/Mrl
+         A8xGoPGlYFyIWJP+Opd7xpYAiTKTzzIQlWvNKbgDFkIir/enG/D98SQgRnIYR7EKrb/0
+         c6x/xuZ6KSJthA7WPH08DzCNp6vvoyRIs15WKFtyYULpPvoT1HD5NOTSspnIMufY7qwK
+         BqDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=CkZjvPpCidol2NUBZ55cxFMf0g3s7EI0q+vERVC3QaY=;
-        b=NkmLfwUe6QPIPTHcwrzP23tm+DTSidqVdkORxB3KgZCB2dw660dH+g0QlKGNj1y7MT
-         zn7S7+BPQ8Qa4V5kZSO2wnmSOl0sKJOFLSLP1inH0DT21vv8qAUyvH13fRdadig6PwIU
-         54YtGR2acB5JjnSxB/JLB4z8dzC4xcLd3U3R62Z838gV/WR9EJLXGaMInOvUlQFzv97m
-         LvHIx8HLWqaPcusdTPYt9etPE4ngffSY11S3cYIA//hYr4RWZe1xkrmLmuZmuQYqHRjB
-         Qni30+ktolXpVW3SpIMNl0LfZ27BIscQqtCpQ9png6rCVQiFerlrNOYF2CKh5Hjb2nUy
-         Z93g==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=mDwGpZRZip5OXPX6ZYC4EBReyAeUCi33ZoF+yaklYdg=;
+        b=BV2nTaktetZs0z3QMea6dg0y2UZJL2JmeiPctwjuNyUKmJ1znN/upYQ2bpg539ytxl
+         eaz6qB37phyrs/nEsbEFKuxCh9wD+xVdsqi/qGmr8LmkG5Dy8IIGKEblIAtroLXCJKLH
+         ko2lT2BByaF2QeXpVocPyO5n0ZtsEl0fsZ+X+FuQPXf8ex8e3gt1OEPEzFNkddxC+xIO
+         uxWeZvslA04/hNIN3izB53rardbfZSoVzQUuYFnpKGBbHRvW9smm7vHDxHXGQ16GGk7B
+         7mr4Xf/+eKO/T7IDqS9GMuJpSYAaRZ/JaNJWhV1GedyfAhY984BRKBiJRZqfqD3g2UkP
+         4F4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 62si5827977ybv.364.2019.03.12.21.48.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Mar 2019 21:48:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id o12si756136qtg.179.2019.03.13.03.11.38;
+        Wed, 13 Mar 2019 03:11:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:38264 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h3voM-0006Is-TU
-	for alex.bennee@linaro.org; Wed, 13 Mar 2019 00:48:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40076)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1h3vkG-0003Ny-PD
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 00:44:02 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1h3vkF-0003cI-3n
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 00:44:00 -0400
-Received: from mga17.intel.com ([192.55.52.151]:13008)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1h3vkE-0003as-PP; Wed, 13 Mar 2019 00:43:59 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	12 Mar 2019 21:43:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,473,1544515200"; d="scan'208";a="131180366"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga008.fm.intel.com with ESMTP; 12 Mar 2019 21:43:56 -0700
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Wed, 13 Mar 2019 12:42:53 +0800
-Message-Id: <20190313044253.31988-4-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190313044253.31988-1-richardw.yang@linux.intel.com>
-References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 53B184A2BE;
+	Wed, 13 Mar 2019 06:11:38 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.201
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L+weLfiVpj9X; Wed, 13 Mar 2019 06:11:36 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 955B94A3BF;
+	Wed, 13 Mar 2019 06:11:36 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id A2C774A331
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 13 Mar 2019 06:11:35 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6qqlcv3-5VJF for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 13 Mar 2019 06:11:34 -0400 (EDT)
+Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com [217.140.101.70])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 47AE24A2BE
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 13 Mar 2019 06:11:34 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 88CA680D;
+ Wed, 13 Mar 2019 03:11:33 -0700 (PDT)
+Received: from [10.1.196.69] (e112269-lin.cambridge.arm.com [10.1.196.69])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 763F33F71D;
+ Wed, 13 Mar 2019 03:11:32 -0700 (PDT)
+Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
+To: Marc Zyngier <marc.zyngier@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Heyi Guo <guoheyi@huawei.com>
+References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
+ <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
+ <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
+From: Steven Price <steven.price@arm.com>
+Message-ID: <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+Date: Wed, 13 Mar 2019 10:11:30 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 192.55.52.151
-Subject: [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract build_mcfg
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
+In-Reply-To: <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
+Content-Language: en-GB
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, shannon.zhaosl@gmail.com,
-	Wei Yang <richardw.yang@linux.intel.com>, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NCIltdo3Htpe
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 3QpXuPE6j7MS
 
-Now we have two identical build_mcfg function.
+On 12/03/2019 14:12, Marc Zyngier wrote:
+> Hi Peter,
+> 
+> On 12/03/2019 10:08, Peter Maydell wrote:
+>> On Tue, 12 Mar 2019 at 06:10, Heyi Guo <guoheyi@huawei.com> wrote:
+>>>
+>>> When we stop a VM for more than 30 seconds and then resume it, by qemu
+>>> monitor command "stop" and "cont", Linux on VM will complain of "soft
+>>> lockup - CPU#x stuck for xxs!" as below:
+>>>
+>>> [ 2783.809517] watchdog: BUG: soft lockup - CPU#3 stuck for 2395s!
+>>> [ 2783.809559] watchdog: BUG: soft lockup - CPU#2 stuck for 2395s!
+>>> [ 2783.809561] watchdog: BUG: soft lockup - CPU#1 stuck for 2395s!
+>>> [ 2783.809563] Modules linked in...
+>>>
+>>> This is because Guest Linux uses generic timer virtual counter as
+>>> a software watchdog, and CNTVCT_EL0 does not stop when VM is stopped
+>>> by qemu.
+>>>
+>>> This patch is to fix this issue by saving the value of CNTVCT_EL0 when
+>>> stopping and restoring it when resuming.
 
-Extract them to aml-build.c.
+An alternative way of fixing this particular issue ("stop"/"cont"
+commands in QEMU) would be to wire up KVM_KVMCLOCK_CTRL for arm to allow
+QEMU to signal to the guest that it was forcibly stopped for a while
+(and so the watchdog timeout can be ignored by the guest).
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
----
- hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c    | 16 ----------------
- hw/i386/acpi-build.c        | 31 +------------------------------
- include/hw/acpi/aml-build.h |  1 +
- 4 files changed, 32 insertions(+), 46 deletions(-)
+>> Hi -- I know we have issues with the passage of time in Arm VMs
+>> running under KVM when the VM is suspended, but the topic is
+>> a tricky one, and it's not clear to me that this is the correct
+>> way to fix it. I would prefer to see us start with a discussion
+>> on the kvm-arm mailing list about the best approach to the problem.
+>>
+>> I've cc'd that list and a couple of the Arm KVM maintainers
+>> for their opinion.
+>>
+>> QEMU patch left below for context -- the brief summary is that
+>> it uses KVM_GET_ONE_REG/KVM_SET_ONE_REG on the timer CNT register
+>> to save it on VM pause and write that value back on VM resume.
+> 
+> That's probably good enough for this particular use case, but I think
+> there is more. I can get into similar trouble if I suspend my laptop, or
+> suspend QEMU. It also has the slightly bizarre effect of skewing time,
+> and this will affect timekeeping in the guest in ways that are much more
+> subtle than just shouty CPUs.
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 555c24f21d..58d3b8f31d 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -25,6 +25,7 @@
- #include "qemu/bswap.h"
- #include "qemu/bitops.h"
- #include "sysemu/numa.h"
-+#include "hw/pci/pcie_host.h"
- 
- static GArray *build_alloc_array(void)
- {
-@@ -1870,3 +1871,32 @@ build_hdr:
-     build_header(linker, tbl, (void *)(tbl->data + fadt_start),
-                  "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
- }
-+
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-+{
-+    AcpiTableMcfg *mcfg;
-+    const char *sig;
-+    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-+
-+    mcfg = acpi_data_push(table_data, len);
-+    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
-+    /* Only a single allocation so no need to play with segments */
-+    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-+    mcfg->allocation[0].start_bus_number = 0;
-+    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
-+
-+    /*
-+     * MCFG is used for ECAM which can be enabled or disabled by guest.
-+     * To avoid table size changes (which create migration issues),
-+     * always create the table even if there are no allocations,
-+     * but set the signature to a reserved value in this case.
-+     * ACPI spec requires OSPMs to ignore such tables.
-+     */
-+    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
-+        /* Reserved signature: ignored by OSPM */
-+        sig = "QEMU";
-+    } else {
-+        sig = "MCFG";
-+    }
-+    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
-+}
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ae7858a79a..92d8fccb00 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -557,22 +557,6 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
-     return true;
- }
- 
--static void
--build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /* GTDT */
- static void
- build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index c5b1c3be99..b537a39d42 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2392,35 +2392,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                  table_data->len - srat_start, 1, NULL, NULL);
- }
- 
--static void
--build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    const char *sig;
--    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
--
--    /* MCFG is used for ECAM which can be enabled or disabled by guest.
--     * To avoid table size changes (which create migration issues),
--     * always create the table even if there are no allocations,
--     * but set the signature to a reserved value in this case.
--     * ACPI spec requires OSPMs to ignore such tables.
--     */
--    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
--        /* Reserved signature: ignored by OSPM */
--        sig = "QEMU";
--    } else {
--        sig = "MCFG";
--    }
--    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
--}
--
- /*
-  * VT-d spec 8.1 DMA Remapping Reporting Structure
-  * (version Oct. 2014 or later)
-@@ -2687,7 +2658,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     }
-     if (acpi_get_mcfg(&mcfg)) {
-         acpi_add_table(table_offsets, tables_blob);
--        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
-+        build_mcfg(tables_blob, tables->linker, &mcfg);
-     }
-     if (x86_iommu_get_default()) {
-         IommuType IOMMUType = x86_iommu_get_type();
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index b63b85d67c..8f2ea3679f 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -423,4 +423,5 @@ void build_slit(GArray *table_data, BIOSLinker *linker);
- 
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id);
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
- #endif
--- 
-2.19.1
+Indeed this is the bigger issue - user space doesn't get an opportunity
+to be involved when suspending/resuming, so saving/restoring (or using
+KVM_KVMCLOCK_CTRL) in user space won't fix these cases.
 
+> Christoffer and Steve had some stuff regarding Live Physical Time, which
+> should cover that, and other cases such as host system suspend, and QEMU
+> being suspended.
+
+Live Physical Time (LPT) is only part of the solution - this handles the
+mess that otherwise would occur when moving to a new host with a
+different clock frequency.
+
+Personally I think what we need is:
+
+* Either a patch like the one from Heyi Guo (save/restore CNTVCT_EL0) or
+alternatively hooking up KVM_KVMCLOCK_CTRL to prevent the watchdog
+firing when user space explicitly stops scheduling the guest for a while.
+
+* KVM itself saving/restoring CNTVCT_EL0 during suspend/resume so the
+guest doesn't see time pass during a suspend.
+
+* Something equivalent to MSR_KVM_WALL_CLOCK_NEW for arm which allows
+the guest to query the wall clock time from the host and provides an
+offset between CNTVCT_EL0 to wall clock time which the KVM can update
+during suspend/resume. This means that during a suspend/resume the guest
+can observe that wall clock time has passed, without having to be
+bothered about CNTVCT_EL0 jumping forwards.
+
+Steve
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

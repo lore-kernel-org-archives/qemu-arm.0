@@ -1,301 +1,188 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1661239wrs;
-        Wed, 13 Mar 2019 06:35:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxRFSBDCJpdZA9+C0Z/PrsjanPNBqlsjJW/Ko9t7nl1ZITePZ02QCsIqaye7DgfXp1s7U15
-X-Received: by 2002:a0d:ef42:: with SMTP id y63mr21055105ywe.26.1552484137114;
-        Wed, 13 Mar 2019 06:35:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552484137; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1684637wrs;
+        Wed, 13 Mar 2019 06:58:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMr2CncK9naN44/MxWLaYXeCdE9tOdqe9+JfoTpSp49GEUpOP9aieDKMDN9sZrtQ3+Eixa
+X-Received: by 2002:a5b:bc6:: with SMTP id c6mr7988280ybr.204.1552485484847;
+        Wed, 13 Mar 2019 06:58:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552485484; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJXWjT0ZJQNCm7dV4CADoyeJong3FyEwC7LW43koh1VLnrMSdh+++ssj1m2xfY1hPH
-         LX/CaS0txSkiAoo9NmExnDLzMPTg0mokKvT1L8IwdCvM8FhclekZM0PMdoerSWCxndae
-         YMrN3YSy8lrUqfvn6i9Dox80XqAS+zEwSH5EjyEBKD0x6dZWx3aZGTM52d9uV32qlpb4
-         Huovkayu7Rj2jTaB0pdbKxPEouVY6IJbM2vrE5hhM0OsnA52HhVErIzZBnpWcWuVtxMN
-         k/tQifvMS8Q1Yi7PevjawAADPC5K2kvXfTz626BUYKdnDh+eYdFTk4uUs9XboWQ0akYy
-         JuKQ==
+        b=VzABm5eVwjWT2Rq6FCvYilCfUiBUqsD+2Q+o3N5I+YNGNaG9fhewfn/mp1qq8ByiYc
+         WKVPVaUoKJdIla1Xdzp2XnxDACaS7QCjSlsMLzVWQzJ+mhD0wTdJH3XrZ6teCN2xJ8df
+         CX+tGMFDkBy2a4e1Bbxc4BVZkfPb5ZZsIA/pr6bzrp86cqFiBK8xIJ+oN4Lbm4xXGgac
+         zWZDR6MQ2OVeZJC/3UAwN4iRRqll4pPCwuLEUd2aOCG7SLnYaatbU89KdAqpHtvjno61
+         /ji1g1BYaua2IOv4RjxUT3lYZT9napdVzMupd1jgq9DoIb/q0qrVpGEC3d6Wm1X/M5l4
+         bzRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :to:from:date:dkim-signature;
-        bh=g7NN5KGGm+rDMLIuE5xieGldkXQ3jZWBOD1dBDhbc/s=;
-        b=1GLYEkDTqaPKriwT/1CQqOLm9HhdX3vfjHoaPZe7svrX+diEpxLlY9ccTCr17LP4Lm
-         A0kteJdmcRXE4/2ptAJ69GhbkLeeqMyFPngIDgZBomBOrwAyg/+oH+g1OuWss2fPJywE
-         V2slMPZXI8ApfQrbaN1zqVkFcMzR5qe9T/yUUB8BhaCK2jSe38Pf/X3xtT22yd0ype5U
-         DRoPDifCQo6ki3zXdYDf/7u3CIiaZwBMVbo+GEpHgmXft3e6rRNcdsL4ZqZoazvvuURx
-         0w5rwT6Z49ouMrd15BS1I8Cjh2aN4xkh6EhUOK4E8J1pZ3zAtJoC4Q7up4O4S7MrKCQe
-         nvng==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=/Tq/V/8qRGDI3s0xFJ2+s2b6EgkLBswv+uHQbdPTMec=;
+        b=qpZ/Ih0vN0j4QsD2hFnA95AMxjCecitggeMCXPyP3+vhS/seYMZvHuRa9VVVfisyC0
+         TBQ3GGLNk6JM4wHtq6nNMvDjnQFTKV4cOuhbM1RS2jyZwkr/m+C8hNXMOC75rEsR+Drw
+         cZjylGfBZLTauxmeRLDHXTZ6WHzEuo4Z2PGAwurnb0TnDc+yUoBHhh8kTSTn+vtIzLV2
+         phsLLoklqjkiuFTaUVPgpChTZMavQHUXjzjO7iqlVxGX1I6VCQc8owjd2nhE2mQBoc3G
+         4vPPUsa9gI3HaNzrPQzFN80HolxxIaq3gOHwRiPNqoNzsLCV4KSp/ZYR1YeiQaq1HQDg
+         ciwA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gtl8dzuo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b134si6577496yba.51.2019.03.13.06.35.36
+        by mx.google.com with ESMTPS id 9si6726046yby.37.2019.03.13.06.58.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 06:35:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Mar 2019 06:58:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gtl8dzuo;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:44723 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:45127 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h442i-0000wZ-GU
-	for alex.bennee@linaro.org; Wed, 13 Mar 2019 09:35:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45160)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h44OS-0003Gp-Ae
+	for alex.bennee@linaro.org; Wed, 13 Mar 2019 09:58:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h441D-0000RK-Pc
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:34:05 -0400
+	(envelope-from <amir.charif@cea.fr>) id 1h43we-0004yF-Bv
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 09:29:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h441C-0005Ry-IW
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:34:03 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:41246)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1h441C-0005RN-74; Wed, 13 Mar 2019 09:34:02 -0400
-Received: by mail-ed1-x541.google.com with SMTP id n14so1518028edv.8;
-	Wed, 13 Mar 2019 06:34:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=g7NN5KGGm+rDMLIuE5xieGldkXQ3jZWBOD1dBDhbc/s=;
-	b=gtl8dzuo9sZvKadpY5xTGRmGkGqP0rug/H0Uv5TJU9DI4ORVLTz532lghyKqH1E20S
-	9tzgzRZ6cpQ+CAqMXcYFWj85Cu7lF9P7H4hx6/1hc7OXBJ+xFmL+HUorINZ5F8soBqaO
-	LMPZ+PmcDfFtFQdQPxdNXRnMtaPxXy5+oKCBUp77N6OVFGNl3nHftPDoPagj3JEglYWp
-	H8OF0qe7OcRpf4YmXtgFnxHngu3AZeRYeWnkrshfwDcyC7qFw6NUOw4YNIM8IYeqnBci
-	8XbmkzFFYyUR/TXPkdmohOjvNhPqSiH5vvXPWGDyG223AYNOquP5VJEmU7waHABEIq50
-	GkKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=g7NN5KGGm+rDMLIuE5xieGldkXQ3jZWBOD1dBDhbc/s=;
-	b=rjzGYIdrnTpLQhqbztUevtuPB5JZXvIXqgsMtp4ixNTX+VBGeuzi5o9VJrj10+WYkk
-	kst0WEJe/hvYwRvMTk8iY6pogf/Aj78DXVLcDkrtHjn71IOVm7TXT+y8CDECdFdKkBfX
-	OHIOaDw7dOJQOeOuB+xKM5zPxUNDWHvW/+29sOk6d+Yya0zFOwS3O6vKlTVlZsnmQORO
-	B08aa1iwRjsArsX1YONijtMB6VHlHjLBsHACiAQtpGXg6jsuro8s20mT+oJAP2P39sZk
-	vOXSjMKGC24YPdnQElaTOF6A3EpIDA1b5W1+Jxfod0sC2EaoI8lJrGk1BqspVHDdxBV5
-	UEnQ==
-X-Gm-Message-State: APjAAAXIXslRUKslLZE+7WptD47hBAOVL1ghKFKVkz7vcyeUDkFf7jq7
-	QiZ1thkL5ENHlmvbCqa8MSey3hMx
-X-Received: by 2002:a17:906:2daa:: with SMTP id
-	g10mr6922122eji.82.1552484040827; 
-	Wed, 13 Mar 2019 06:34:00 -0700 (PDT)
-Received: from localhost ([185.92.221.13])
-	by smtp.gmail.com with ESMTPSA id x3sm593856ede.25.2019.03.13.06.34.00
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 13 Mar 2019 06:34:00 -0700 (PDT)
-Date: Wed, 13 Mar 2019 13:33:59 +0000
-From: Wei Yang <richard.weiyang@gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190313133359.h2njohyijgvkcbtv@master>
-References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
-	<20190313044253.31988-4-richardw.yang@linux.intel.com>
-	<20190313132300.3f56a5ca@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190313132300.3f56a5ca@redhat.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::541
-Subject: Re: [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract build_mcfg
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <amir.charif@cea.fr>) id 1h43rR-0000q2-Qq
+	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 09:23:58 -0400
+Received: from cirse-smtp-out.extra.cea.fr ([132.167.192.148]:43540)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <amir.charif@cea.fr>)
+	id 1h43rQ-0000ef-JG; Wed, 13 Mar 2019 09:23:56 -0400
+Received: from pisaure.intra.cea.fr (pisaure.intra.cea.fr [132.166.88.21])
+	by cirse-sys.extra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0) with
+	ESMTP id x2DDNm7k035939; Wed, 13 Mar 2019 14:23:48 +0100
+Received: from localhost.localdomain (localhost [127.0.0.1])
+	by localhost (Postfix) with ESMTP id BFD5820467F;
+	Wed, 13 Mar 2019 14:23:48 +0100 (CET)
+Received: from pisaure by pisaure with queue id 6965587-2;
+	Wed, 13 Mar 2019 13:23:48 GMT
+Received: from muguet2-smtp-out.intra.cea.fr (muguet2-smtp-out.intra.cea.fr
+	[132.166.192.13])
+	by pisaure.intra.cea.fr (Postfix) with ESMTP id 8C275204480;
+	Wed, 13 Mar 2019 14:23:48 +0100 (CET)
+Received: from amir-VirtualBox.intra.cea.fr (is233176-dock.intra.cea.fr
+	[10.8.35.126])
+	by muguet2-sys.intra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
+	with ESMTP id x2DDNmpL007320; Wed, 13 Mar 2019 14:23:48 +0100
+From: Amir Charif <amir.charif@cea.fr>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 Mar 2019 14:23:46 +0100
+Message-Id: <1552483426-3128-1-git-send-email-amir.charif@cea.fr>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 132.167.192.148
+X-Mailman-Approved-At: Wed, 13 Mar 2019 09:57:53 -0400
+Subject: [Qemu-arm] [PATCH] Re-evaluate SVE vector length everytime
+ ADDVL/RDVL is called
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Wei Yang <richard.weiyang@gmail.com>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
-	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VWUjdktGsL0+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Amir Charif <amir.charif@cea.fr>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aN4IArDQn4uP
 
-On Wed, Mar 13, 2019 at 01:23:00PM +0100, Igor Mammedov wrote:
->On Wed, 13 Mar 2019 12:42:53 +0800
->Wei Yang <richardw.yang@linux.intel.com> wrote:
->
->> Now we have two identical build_mcfg function.
->> 
->> Extract them to aml-build.c.
->> 
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> ---
->>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
->>  hw/arm/virt-acpi-build.c    | 16 ----------------
->>  hw/i386/acpi-build.c        | 31 +------------------------------
->>  include/hw/acpi/aml-build.h |  1 +
->>  4 files changed, 32 insertions(+), 46 deletions(-)
->> 
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 555c24f21d..58d3b8f31d 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->
->I don't like polluting aml-build.c with PCI stuff,
->we have a lot of PCI related code that needs generalizing
->lets create a new file for that, something like
->hw/acpi/pci.c + include/hw/acpi/pci.h
->
->> @@ -25,6 +25,7 @@
->>  #include "qemu/bswap.h"
->>  #include "qemu/bitops.h"
->>  #include "sysemu/numa.h"
->> +#include "hw/pci/pcie_host.h"
->>  
->>  static GArray *build_alloc_array(void)
->>  {
->> @@ -1870,3 +1871,32 @@ build_hdr:
->>      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
->>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->>  }
->> +
->> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->> +{
->> +    AcpiTableMcfg *mcfg;
->> +    const char *sig;
->> +    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->> +
->> +    mcfg = acpi_data_push(table_data, len);
->> +    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
->> +    /* Only a single allocation so no need to play with segments */
->> +    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->> +    mcfg->allocation[0].start_bus_number = 0;
->> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
->
->> +    /*
->> +     * MCFG is used for ECAM which can be enabled or disabled by guest.
->> +     * To avoid table size changes (which create migration issues),
->> +     * always create the table even if there are no allocations,
->> +     * but set the signature to a reserved value in this case.
->> +     * ACPI spec requires OSPMs to ignore such tables.
->> +     */
->> +    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
->> +        /* Reserved signature: ignored by OSPM */
->> +        sig = "QEMU";
->> +    } else {
->> +        sig = "MCFG";
->> +    }
->I'd leave these hack at acpi-build.c, just push it up call chain.
+In system emulation mode, the kernel may internally use 16-byte vectors.
+If this size is saved in the DisasContext before entering a userspace app
+that uses higher SVE sizes, the wrong size may be allocated on the stack
+resulting in corruption (segfaults in user space).
+This fix evaluates the vector size at runtime (as opposed to translation time)
+to always allocate the correct size on the stack (when ADDVL is used).
 
-Assign sig in acpi-build.c and pass it to build_mcfg()?
+Signed-off-by: Amir Charif <amir.charif@cea.fr>
+---
+ target/arm/translate-a64.c | 17 +++++++++++++++++
+ target/arm/translate-a64.h |  1 +
+ target/arm/translate-sve.c |  7 +++++--
+ 3 files changed, 23 insertions(+), 2 deletions(-)
 
->More over we don't really need it since resizeable memory region was introduced.
->
->So we need to keep table_blob size only for legacy usecase (pre resizable)
->and for that just padding table_blob on required size would be sufficient,
->there is no need to create dummy QEMU table.
->As for newer machines (since resizeable memory region) we don't need to
->do even that i.e. just skip table generation altogether if guest disabled it.
->
-
-I am lost at this place.
-
-sig is a part of ACPI table header, you mean the sig is not necessary to
-be set in ACPI table header?
-
-"skip table generation" means remove build_header() in build_mcfg()?
-
->> +    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
->> +}
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index ae7858a79a..92d8fccb00 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -557,22 +557,6 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
->>      return true;
->>  }
->>  
->> -static void
->> -build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->> -{
->> -    AcpiTableMcfg *mcfg;
->> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->> -
->> -    mcfg = acpi_data_push(table_data, len);
->> -    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
->> -    /* Only a single allocation so no need to play with segments */
->> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->> -    mcfg->allocation[0].start_bus_number = 0;
->> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
->> -
->> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
->> -}
->> -
->>  /* GTDT */
->>  static void
->>  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index c5b1c3be99..b537a39d42 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -2392,35 +2392,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
->>                   table_data->len - srat_start, 1, NULL, NULL);
->>  }
->>  
->> -static void
->> -build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->> -{
->> -    AcpiTableMcfg *mcfg;
->> -    const char *sig;
->> -    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
->> -
->> -    mcfg = acpi_data_push(table_data, len);
->> -    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
->> -    /* Only a single allocation so no need to play with segments */
->> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->> -    mcfg->allocation[0].start_bus_number = 0;
->> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
->> -
->> -    /* MCFG is used for ECAM which can be enabled or disabled by guest.
->> -     * To avoid table size changes (which create migration issues),
->> -     * always create the table even if there are no allocations,
->> -     * but set the signature to a reserved value in this case.
->> -     * ACPI spec requires OSPMs to ignore such tables.
->> -     */
->> -    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
->> -        /* Reserved signature: ignored by OSPM */
->> -        sig = "QEMU";
->> -    } else {
->> -        sig = "MCFG";
->> -    }
->> -    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
->> -}
->> -
->>  /*
->>   * VT-d spec 8.1 DMA Remapping Reporting Structure
->>   * (version Oct. 2014 or later)
->> @@ -2687,7 +2658,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
->>      }
->>      if (acpi_get_mcfg(&mcfg)) {
->>          acpi_add_table(table_offsets, tables_blob);
->> -        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
->> +        build_mcfg(tables_blob, tables->linker, &mcfg);
->>      }
->>      if (x86_iommu_get_default()) {
->>          IommuType IOMMUType = x86_iommu_get_type();
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index b63b85d67c..8f2ea3679f 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -423,4 +423,5 @@ void build_slit(GArray *table_data, BIOSLinker *linker);
->>  
->>  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->>                  const char *oem_id, const char *oem_table_id);
->> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
->>  #endif
->
-
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 1959046..ef3db4a 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -45,6 +45,9 @@ static TCGv_i64 cpu_pc;
+ /* Load/store exclusive handling */
+ static TCGv_i64 cpu_exclusive_high;
+ 
++/* Current value of the zcr_el[1] register */
++static TCGv_i64 cpu_zcr_el1;
++
+ static const char *regnames[] = {
+     "x0", "x1", "x2", "x3", "x4", "x5", "x6", "x7",
+     "x8", "x9", "x10", "x11", "x12", "x13", "x14", "x15",
+@@ -103,6 +106,9 @@ void a64_translate_init(void)
+ 
+     cpu_exclusive_high = tcg_global_mem_new_i64(cpu_env,
+         offsetof(CPUARMState, exclusive_high), "exclusive_high");
++        
++    cpu_zcr_el1 = tcg_global_mem_new_i64(cpu_env,
++        offsetof(CPUARMState, vfp.zcr_el[1]), "zcr_el1");
+ }
+ 
+ static inline int get_a64_user_mem_index(DisasContext *s)
+@@ -578,6 +584,17 @@ TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf)
+     return v;
+ }
+ 
++/* Get a temporary register containing the current vector length
++ */
++TCGv_i64 get_cpu_vec_len(DisasContext *s) {
++    TCGv_i64 v = new_tmp_a64(s);
++    tcg_gen_mov_i64(v, cpu_zcr_el1);
++    tcg_gen_andi_i64(v, v, 0xf);
++    tcg_gen_addi_i64(v, v, 1);
++    tcg_gen_muli_i64(v, v, 16);
++    return v;
++}
++
+ /* Return the offset into CPUARMState of a slice (from
+  * the least significant end) of FP register Qn (ie
+  * Dn, Sn, Hn or Bn).
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index 63d958c..fcfbc90 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -35,6 +35,7 @@ TCGv_i64 cpu_reg(DisasContext *s, int reg);
+ TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
+ TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
+ TCGv_i64 read_cpu_reg_sp(DisasContext *s, int reg, int sf);
++TCGv_i64 get_cpu_vec_len(DisasContext *s);
+ void write_fp_dreg(DisasContext *s, int reg, TCGv_i64 v);
+ TCGv_ptr get_fpstatus_ptr(bool);
+ bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 3a2eb51..d5ad88b 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -945,7 +945,9 @@ static bool trans_ADDVL(DisasContext *s, arg_ADDVL *a)
+ {
+     TCGv_i64 rd = cpu_reg_sp(s, a->rd);
+     TCGv_i64 rn = cpu_reg_sp(s, a->rn);
+-    tcg_gen_addi_i64(rd, rn, a->imm * vec_full_reg_size(s));
++    TCGv_i64 ln = get_cpu_vec_len(s);
++    tcg_gen_muli_i64(ln, ln, a->imm);
++    tcg_gen_add_i64(rd, rn, ln);
+     return true;
+ }
+ 
+@@ -960,7 +962,8 @@ static bool trans_ADDPL(DisasContext *s, arg_ADDPL *a)
+ static bool trans_RDVL(DisasContext *s, arg_RDVL *a)
+ {
+     TCGv_i64 reg = cpu_reg(s, a->rd);
+-    tcg_gen_movi_i64(reg, a->imm * vec_full_reg_size(s));
++    TCGv_i64 ln = get_cpu_vec_len(s);
++    tcg_gen_muli_i64(reg, ln, a->imm);
+     return true;
+ }
+ 
 -- 
-Wei Yang
-Help you, Help me
+2.7.4
+

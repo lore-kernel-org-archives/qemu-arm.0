@@ -1,108 +1,106 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1653960wrs;
-        Wed, 13 Mar 2019 06:29:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/lTBiaxZLvAjToNNaBGUW1jQSFk3R1BpyzmtCMfArZc7MyiXvYS012756HzbAOLrcRDcY
-X-Received: by 2002:a81:7ad7:: with SMTP id v206mr19425967ywc.342.1552483782973;
-        Wed, 13 Mar 2019 06:29:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552483782; cv=none;
+Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1658884wrs;
+        Wed, 13 Mar 2019 06:33:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzK5EhIh9jb7qkeVxXeV2ArEeaoQOZalxv0YUruEzYtpLqXCRSyV3Lf9T24sYTr6bGQHhW1
+X-Received: by 2002:a5b:5ca:: with SMTP id w10mr9855013ybp.133.1552484014269;
+        Wed, 13 Mar 2019 06:33:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552484014; cv=none;
         d=google.com; s=arc-20160816;
-        b=GO6fU9+Lr9sM8IbIzb0cazLKfbzi3q9dvkwKmKgKSvHYcfcAxHn/KSkGLjwjv2p27K
-         KMWp56kaw0Aiz4PACk8tvGf90EHBY/2XyEEtjjDdvZYQqk/3GEpfeKPcFHZNa7xKBwc2
-         v4Mayekt+i3COJvr/P3LG6JA+m4SvnQgcFtyHovjDfNv/6stqNql5l2qXtEHrmj7csXb
-         8HYTMXqKRlPln0StilME6J39uDvRBMx3j9MxwZATgqf7mMkdjdTpd+UBGBtwDQU8PkUm
-         URcSCoErf6hcurfQ0E+xgtSRfxqC6hinzm8Fg9gzbTj0KkmRVNThFFHH7054FytsbvA8
-         oZkg==
+        b=sz5fn0ArJJDc+VJv2V4HuicM21yVWG+P7Kdk5vdb7KwGCd5p6YuVm7w8WNBt9KzQxb
+         mEgwYLrnDZFxaoeFNlDQwLMPE8xAG1YWN3nVRPiRtDWAFA18Lz2BsNshkVhaDGK/4VD1
+         vJqX7m+ZBiKpDfF2sd+asbG+Ng0PZB59O26+Ml4FylRRvV3XScvInKkd4iYb0rd9O8wV
+         M/BGlh28B7OH0bYNeQzgaQ2jOLfLuY95T2xLQ51X1kDqdv9xza8+98FW5pYzo5knm2Q9
+         QiQDzqekx083PQknVc4k9SFoKXebLQuQet50EP+gSKihH+JORku9wz4kWSYEW2srAEt0
+         nUkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
          :in-reply-to:content-disposition:mime-version:references:message-id
          :to:from:date:dkim-signature;
-        bh=I1kF3bJmDMi/UvfzM9n0IxL4PkOw1qCuNm5XjC241mM=;
-        b=XCfl/kpUtN+R172ufeOldaJ+8YarL3S305r3iCQS7MlaABwOk6nFNos02a9XrsXksv
-         vXDO4Z0DUMZz++AwNPSNcQpYoH75sarMwzpjW7HAjAAEXjUu89LwuOxI+xMLDRATMqqo
-         ZISmqA8KwDr+kqGO4s039bKEUGmAz1KozKA/Qq30BK4S1dQ+iuloUDrTQURnlF1yks9R
-         ZxrvugH7bSBM7qeWV69GVcNF1n9WzrJ/zjNaPajwo3WrQGPVDAhsbg/R3PypA4mRAn85
-         cfiKZ60+s8PfgI5VDeJCX5aJACw8LJAls24ebbjbB0v/spFI/SpgjSAkoyvHIqR8zxOL
-         DyVA==
+        bh=+QIEF75uO0GLOFqYRwqSPaVuA4mG7wzFnBp9nRMxxBA=;
+        b=FlCL6QAXtVD0nnC26kgP/aWCAzJHlJyM5ma15Ui+Q/gRXBSbCL103Nvdg2n2klWmar
+         ZOcPoMWqy4lMZL6mys/A0QZtPWId/nJ4HmWqjjQeTdALWYb3HsRc7u8rTLYSbpqJga/v
+         zUoaU8ONEb+AIozC+HbID453BraxXoleT/H7XYZJ5NFzy6AfLP9oqVZjh4GGIEyydyhY
+         WFAW3S1t/L3j30Q/jx2ZyhW/l4jccDaRR6id6hVI1aNzLzMG2XoaAgP8SmvnP4rUyiJE
+         3qx1tRDx2fLjJJ62mYWha9J5X4wW40onV0rwXupQxI35ffJy7B+mY/0TAWjCTawWvMUE
+         8A0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q6m+Z5Gy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vDGLZsMG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e124si6777377ywf.460.2019.03.13.06.29.42
+        by mx.google.com with ESMTPS id z186si7362608ywd.307.2019.03.13.06.33.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 06:29:42 -0700 (PDT)
+        Wed, 13 Mar 2019 06:33:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q6m+Z5Gy;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vDGLZsMG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:44611 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:44686 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h43x0-00059U-70
-	for alex.bennee@linaro.org; Wed, 13 Mar 2019 09:29:42 -0400
+	id 1h440j-0007ju-LV
+	for alex.bennee@linaro.org; Wed, 13 Mar 2019 09:33:33 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:43237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h43wT-00054P-Hw
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:29:10 -0400
+	(envelope-from <richard.weiyang@gmail.com>) id 1h43wY-00054P-F3
+	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:29:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h43u0-0001z5-HV
-	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:26:39 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:42010)
+	(envelope-from <richard.weiyang@gmail.com>) id 1h43sK-0001Ji-Uq
+	for qemu-devel@nongnu.org; Wed, 13 Mar 2019 09:24:53 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:36971)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1h43u0-0001yU-0M; Wed, 13 Mar 2019 09:26:36 -0400
-Received: by mail-ed1-x542.google.com with SMTP id j89so1494949edb.9;
-	Wed, 13 Mar 2019 06:26:34 -0700 (PDT)
+	id 1h43sK-0001Hh-1r; Wed, 13 Mar 2019 09:24:52 -0400
+Received: by mail-ed1-x543.google.com with SMTP id m12so1508454edv.4;
+	Wed, 13 Mar 2019 06:24:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=I1kF3bJmDMi/UvfzM9n0IxL4PkOw1qCuNm5XjC241mM=;
-	b=Q6m+Z5Gye4usX9b3jljD1trtMpxaOiGHn04gL9+P7j7lU3cRGok4P+CKFNkQyL9Fe7
-	jxAVLzmM5pYFKwftCY/CDpj6E2mI+gDY5dyPBRaJX/MJ6NQLGshRJ8ZFDKePBmgmAKeA
-	/uieh98dwgzSmDG8UEUakOm8hF5K4TTVCNaauSyoSHtBI9c6weFQpSrSdZsyjBc/euss
-	E+fXPKSF4bLZPaMcDzXPdl9kUBcsp10TsfkM9F/lji598cOZ/p8Hv3nts4MYiU/qlQu8
-	ObC5nD+5RG54eXRHg9ZHAfa4zpZ4s1bW1huTZySkc53o5da18OI76zNORFGMwL8exfb7
-	u3zw==
+	bh=+QIEF75uO0GLOFqYRwqSPaVuA4mG7wzFnBp9nRMxxBA=;
+	b=vDGLZsMGZxQaSbpnnu67gweU8bUxBl4R1qA6chGnQd5lJz9nLJ9FR0vVZHaPW6kky1
+	V6LmKEwUoQYQNHg7jmNOHf8Xx24ci3yrR6Q20coDZf5FTY0ojpDrm5q8jhb88Dk667Fj
+	96s8SK8Fsoylqfe5VNB+bAQOyb+5emFxHl0eXdogy8df6R/awUpM4nWHnzxnuUola9QP
+	3GU/OaImHM0m4o6EPQofsfyTxxpJY9F5canENx3AqToin+mYK8lxeUMJFzQ9QQ8QyzjS
+	2QDqd9FtT9LbPJZ9AF1j5hMJtMrHkL31HsgzGLjSYRZRJ4EkyYrhzxmy3AbtvY4X6z73
+	uA+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
 	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=I1kF3bJmDMi/UvfzM9n0IxL4PkOw1qCuNm5XjC241mM=;
-	b=oQERodD98J7UAnqhf+HWnN/+FddzJAlmYh5VJVborySVR26lbkjWKFsscTLd4kAKcW
-	q5KXrRSAFgLYo4Q4NKPZrm91nc0TmTYVVGhXlY62nurkwo1l0Y17Gjp3uLRgj0F2I/rR
-	ObjNjc9vfY06inFS5YLk3NQSrCkx1G1cNhgwFqmsQOwDTjp3xLmMunbGFvlLrWypi9R0
-	qUHflc0B3sJy7+ZF6e2TAmp/d+rp25aPalNT0w70K7XVB6FE9kXCA76kKxvxXKc/7ZQo
-	w0sl+JMaoSU9u95Cyf6G6Xw2POl8hCnTKEcNtQPaIJ8ALAA7KQvpl8dQWAazPWZZB8IZ
-	n1Wg==
-X-Gm-Message-State: APjAAAUkptUslGylFLoodUlHGPwVjQ/+nh69yS4m49jYiPlLUtScHgnr
-	Erxk/NwomM4q6/2nDZ/IHm0=
-X-Received: by 2002:a17:906:c406:: with SMTP id
-	u6mr28827344ejz.95.1552483593508; 
-	Wed, 13 Mar 2019 06:26:33 -0700 (PDT)
+	bh=+QIEF75uO0GLOFqYRwqSPaVuA4mG7wzFnBp9nRMxxBA=;
+	b=Um2ikfYh2UWsjw6ajdxCFe7EfgbyWkqP2DZrUJmIMAn98a8GRy4jXa2nRDPWHf0qEO
+	EIszZBMHR/Z73+VYL7N9M2HpN3ZdFPJ4DOKwDLYwneRCGe73LTVxab4uPRVaxRTeALCs
+	LD7w3gBed/Lx8uQLUZvqG3FKD7HS45OD4oLDvbGK4Kg/QPrC9jEIKYL+T87+k8J0ljJO
+	k1M4h84cwVsOHOkFOuZEXYECkv5LP11DoeKtpIr1uiwg/cJRDIoVAgUWKaDBFyVCZmH1
+	TSibdHlR1GsVwt8BtmqigF8Lad93ZsoEvI6F5xiu25kc9CKr3ktoxLwhFgdyhBqYOhYz
+	MzzA==
+X-Gm-Message-State: APjAAAXX41p9BmCpXqTFUvJdwb3YHHecZEasoGgEjoNqS/2DVrWx0f5c
+	42ARGgDVhJ4dr/3STgp35R8=
+X-Received: by 2002:a17:906:1e51:: with SMTP id
+	i17mr7528818ejj.195.1552483489945; 
+	Wed, 13 Mar 2019 06:24:49 -0700 (PDT)
 Received: from localhost ([185.92.221.13])
-	by smtp.gmail.com with ESMTPSA id z39sm586101edc.96.2019.03.13.06.26.32
+	by smtp.gmail.com with ESMTPSA id z9sm438385ejg.36.2019.03.13.06.24.48
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 13 Mar 2019 06:26:32 -0700 (PDT)
-Date: Wed, 13 Mar 2019 13:26:32 +0000
+	Wed, 13 Mar 2019 06:24:49 -0700 (PDT)
+Date: Wed, 13 Mar 2019 13:24:48 +0000
 From: Wei Yang <richard.weiyang@gmail.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190313132632.5as5r6ljuc27vdab@master>
+Message-ID: <20190313132448.4ui2hpxovh76wtgk@master>
 References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
-	<20190313044253.31988-2-richardw.yang@linux.intel.com>
-	<20190313130022.34105087@redhat.com>
+	<20190313133039.516f3a60@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190313130022.34105087@redhat.com>
+In-Reply-To: <20190313133039.516f3a60@redhat.com>
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::542
-Subject: Re: [Qemu-devel] [RFC PATCH 1/3] hw/arm/virt-acpi-build: use
- acpi_get_mcfg() to calculate bus number
+X-Received-From: 2a00:1450:4864:20::543
+Subject: Re: [Qemu-devel] [RFC PATCH 0/3] Extract build_mcfg
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,156 +118,39 @@ Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
 	Wei Yang <richardw.yang@linux.intel.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tH/1zQaRwB3l
+X-TUID: /hBn1ACH6etW
 
-On Wed, Mar 13, 2019 at 01:00:22PM +0100, Igor Mammedov wrote:
->On Wed, 13 Mar 2019 12:42:51 +0800
+On Wed, Mar 13, 2019 at 01:30:39PM +0100, Igor Mammedov wrote:
+>On Wed, 13 Mar 2019 12:42:50 +0800
 >Wei Yang <richardw.yang@linux.intel.com> wrote:
 >
->> To build MCFG, two information is necessary:
+>> This patch set tries to generalize MCFG table build process.
 >> 
->>     * bus number
->>     * base address
+>> [1]: use acpi_get_mcfg() to get necessary information to build MCFG
+>> [2]: remove an unnecessary variable mcfg_start
+>> [3]: Extract build_mcfg to aml-build.c
 >> 
->> Abstract these two information to AcpiMcfgInfo so that build_mcfg and
->> build_mcfg_q35 will have the same declaration.
->> 
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> ---
->>  hw/arm/virt-acpi-build.c    | 28 ++++++++++++++++++++--------
->>  hw/i386/acpi-build.c        |  5 -----
->>  include/hw/acpi/aml-build.h |  5 +++++
->>  3 files changed, 25 insertions(+), 13 deletions(-)
->> 
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 57679a89bf..7713c2d809 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -545,23 +545,32 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>                   "SRAT", table_data->len - srat_start, 3, NULL, NULL);
->>  }
->>  
->> -static void
->> -build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->> +static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
->>  {
->> -    AcpiTableMcfg *mcfg;
->> +    VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
->>      const MemMapEntry *memmap = vms->memmap;
->>      int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
->> +
->> +    mcfg->mcfg_base = memmap[ecam_id].base;
->> +    mcfg->mcfg_size = memmap[ecam_id].size;
->> +
->> +    return true;
->> +}
->> +
->> +static void
->> +build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->> +{
->> +    AcpiTableMcfg *mcfg;
->>      int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->>      int mcfg_start = table_data->len;
->>  
->>      mcfg = acpi_data_push(table_data, len);
->> -    mcfg->allocation[0].address = cpu_to_le64(memmap[ecam_id].base);
->> +    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
->>  
->>      /* Only a single allocation so no need to play with segments */
->>      mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->>      mcfg->allocation[0].start_bus_number = 0;
->> -    mcfg->allocation[0].end_bus_number =
->> -        PCIE_MMCFG_BUS(memmap[ecam_id].size - 1);
->> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
->>  
->>      build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
->>                   "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
->> @@ -779,6 +788,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>      GArray *table_offsets;
->>      unsigned dsdt, xsdt;
->> +    AcpiMcfgInfo mcfg;
->>      GArray *tables_blob = tables->table_data;
->>  
->>      table_offsets = g_array_new(false, true /* clear */,
->> @@ -802,8 +812,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->>      acpi_add_table(table_offsets, tables_blob);
->>      build_gtdt(tables_blob, tables->linker, vms);
->>  
->> -    acpi_add_table(table_offsets, tables_blob);
->> -    build_mcfg(tables_blob, tables->linker, vms);
->> +    if ( acpi_get_mcfg(&mcfg)) {
->> +        acpi_add_table(table_offsets, tables_blob);
->> +        build_mcfg(tables_blob, tables->linker, &mcfg);
->> +    }
+>> Wei Yang (3):
+>>   hw/arm/virt-acpi-build: use acpi_get_mcfg() to calculate bus number
+>>   hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
+>>   hw/acpi: Extract build_mcfg
 >
->acpi_get_mcfg used only once and always true so one doesn't need condition
->I'd go for simpler:
->
->diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->index d7e2e4885b..a28e04c249 100644
->--- a/hw/arm/virt-acpi-build.c
->+++ b/hw/arm/virt-acpi-build.c
->@@ -803,8 +803,13 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->     build_gtdt(tables_blob, tables->linker, vms);
-> 
->     acpi_add_table(table_offsets, tables_blob);
->-    build_mcfg(tables_blob, tables->linker, vms);
->-
->+    {
->+        const AcpiTableMcfg mcfg = {
->+           .mcfg_base = vms->memmap[VIRT_ECAM_ID(vms->highmem_ecam)].base;
->+           .mcfg_size = vms->memmap[VIRT_ECAM_ID(vms->highmem_ecam)].size;
->+        };
->+        build_mcfg(tables_blob, tables->linker, &mcfg);
->+    }
->     acpi_add_table(table_offsets, tables_blob);
->     build_spcr(tables_blob, tables->linker, vms);
->
->and get rid of acpi_get_mcfg() helper function
+>I'd add ano more patch on top
+>which converts from packed structure to build_append_int_noprefix() API
 >
 
-That's reasonable.
+You mean get rid of type AcpiTableMcfg, and write raw data to blob with
+build_append_int_noprefix()?
 
->>      acpi_add_table(table_offsets, tables_blob);
->>      build_spcr(tables_blob, tables->linker, vms);
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index 9ecc96dcc7..c5b1c3be99 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -86,11 +86,6 @@
->>  /* Default IOAPIC ID */
->>  #define ACPI_BUILD_IOAPIC_ID 0x0
->>  
->> -typedef struct AcpiMcfgInfo {
->> -    uint64_t mcfg_base;
->> -    uint32_t mcfg_size;
->> -} AcpiMcfgInfo;
->> -
->>  typedef struct AcpiPmInfo {
->>      bool s3_disabled;
->>      bool s4_disabled;
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index 1a563ad756..b63b85d67c 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -223,6 +223,11 @@ struct AcpiBuildTables {
->>      BIOSLinker *linker;
->>  } AcpiBuildTables;
->>  
->> +typedef struct AcpiMcfgInfo {
->> +    uint64_t mcfg_base;
->> +    uint32_t mcfg_size;
->mcfg_ prefix in fields probably isn't necessary.
->
+I don't get the benefits of doing so.
 
-Hmm... I may split this to another patch to address.
-
->> +} AcpiMcfgInfo;
->> +
->>  /**
->>   * init_aml_allocator:
->>   *
+>> 
+>>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
+>>  hw/arm/virt-acpi-build.c    | 27 ++++++++++-----------------
+>>  hw/i386/acpi-build.c        | 36 +-----------------------------------
+>>  include/hw/acpi/aml-build.h |  6 ++++++
+>>  4 files changed, 47 insertions(+), 52 deletions(-)
+>> 
 >
 
 -- 

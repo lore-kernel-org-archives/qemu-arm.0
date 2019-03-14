@@ -1,81 +1,98 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp803709wro;
-        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyeW8P3UkzU5phoH2yMgdxhoCWmm44CNIHcTHXexJ/lAL2gLctXdZ28hf8j+M/Tr/n/0c4
-X-Received: by 2002:a25:9cc6:: with SMTP id z6mr37860614ybo.521.1552567666595;
-        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552567666; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp805844wro;
+        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyLikVdhuhcz/hsqfaFLPnLCt0VwYI8ncyWHjCVIfRbklky9D/c0jDoU0/qbTOv4dhLcspq
+X-Received: by 2002:a25:1e42:: with SMTP id e63mr25587803ybe.485.1552567810865;
+        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552567810; cv=none;
         d=google.com; s=arc-20160816;
-        b=hcfDiQSKudIGJ9rn4tSfCmxbTwyL6f2fUM8ouJ0IFn1dhHXKgcMuH4p2Lcym6xhmSR
-         ddy4p6cLOpu8uFznAJRaCe2Imzb27NoZ2lSsw6Hrar3Gniv6bEo4fwc3x/UeRleqvNYZ
-         SkQITLpw/GXshJ/kRWxIZPkibokypQ3aXniKdgu6ZWDdtr32XaS0H7kLBUrnU8LMESmp
-         APHRuMpQKZJmhBd0pQ9rqpY5KyBjBanK35lY+GsdPJbJcNwfKOGJcrpnetonsBA5vrbc
-         V78pSmuENdtVZ2300QEib9aJvwMoDBWeH0XV9PefC63jOwjAPdAXI7KbK4vM6uHWgr7V
-         XpGQ==
+        b=fc3X/MoEMAs/PD8jb8NddIn8ZdmoZAqx+bvove7tiQH5H38orAfV6h3g8iK68W1mxG
+         g/YpKNWmdSZzn97SpLuobkfohbEQVvy9Fml49SDMIOnfcGaFg3uOH8rw6ISx3Wx/QQly
+         iyJa21r9UiVqGmNnZG5uP02OgYeQ3xvFQMQc/ZO6TgVHGCwC0bf1LytSLb0V6Y1S3x2m
+         9mo35FQxTbo0lD1zyVJpyM2hUAJWvxVf/dEI/RoSyeL9tiyGTPMTQZE45xE9DWXd5gsf
+         /i4sd+zh1OXeT+svaYgah2sAPhBTdx12DngxjJS5WS+nIKasvBO/i4Yz3OWC2ggqxwq+
+         Q8KQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=282Vji3vlhLtxbOsf6KSYzikqMgEaLJmoRKWZDZ1YuY=;
-        b=uEz+5TX+JdNdRgfTpU0iPX76OxuwEmqrTvle+V/DSwdK3k9+KP0m+R04Hea2fcWgrb
-         TpSj5de6wTMju0fodzUcA41bG9YIYd4t4dfi1oaFTbqt5E1kT2zlgbOllq6VBTY8S5Wm
-         bB/tL1FWmbJKyKcjyDfQ6DHpxtthdrvQvcuQ4cO4nNILij2EymZ6ZMyWhQa8AYMOWLDu
-         pIu8qz89UXSI/p5tZgmqzkkCvZ21F5pUD7x2A2skCPHv10/K3U7G4Pm93lv/eGVJDG0n
-         F13fJhpXcoeEkUhMQqKCld0eFRMJ0y/CLqa1BnTEnXeO3mDoCtmYoHPjDf5mJyfSa+80
-         4zmQ==
+        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
+         :to:message-id:date:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
+        b=znDma29+Klp7dhVGARfGTb/Hb2UfQWyNzXOGD4VraNnSnBmrlpQSDbqAtb27CTNRWO
+         felKci+rirRV9qF1c8dsPXzg8A0Z3QlV+dNsuoB5E/sL2kOqbGyA/rgzG3wJU7EEXqAI
+         5HC317CXXXGNMEjwtDV/06nNab/CbqrPXjdiUTwrcJREPBD5vStgZ38CPDrYtqX1sX6X
+         QIlyVW9TlMY3aWK39G/owmV8TTL6FHV+zzdV7U4ilLqdtAmBC8gDmHiHJwiQuibsnkeA
+         Abz5phBa3VIJUTdKJZj7rm8gO7e4bHT/VCWUMXF++fMALhdvtQUTE1bOqPraUDl8vr5n
+         y4HQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=gDa+JJNw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si5871319ybp.402.2019.03.14.05.47.46
+        by mx.google.com with ESMTPS id b75si8501559ywb.52.2019.03.14.05.50.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
+        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=gDa+JJNw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:36257 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36276 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4Ply-0001O6-3a
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 08:47:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39829)
+	id 1h4PoI-0002of-3n
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 08:50:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53606)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h4Pll-0001Nx-DD
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:47:33 -0400
+	(envelope-from <bluecmd@google.com>) id 1h4OLr-0007eT-9J
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:16:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1h4Plk-0001lY-O9
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:47:33 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:51760 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1h4Plk-0001ig-6g; Thu, 14 Mar 2019 08:47:32 -0400
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
-	by Forcepoint Email with ESMTP id 62658F01EEDFA953B163;
-	Thu, 14 Mar 2019 20:47:23 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS410-HUB.china.huawei.com
-	(10.3.19.210) with Microsoft SMTP Server id 14.3.408.0; Thu, 14 Mar 2019
-	20:47:21 +0800
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <93dc7574-cfef-e556-6349-f6976c4bd914@huawei.com>
-	<6d9dee31-6072-8d90-0fce-b4966d5f76c9@huawei.com>
-	<CAFEAcA_+aJfC4LvMM339TO19kcMTH-Dwy2uRNow+sxFkStJPBQ@mail.gmail.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <c5b3bfb3-c3a1-b804-3b16-cc907ad03b5e@huawei.com>
-Date: Thu, 14 Mar 2019 20:47:20 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	(envelope-from <bluecmd@google.com>) id 1h4OKj-0004V3-C4
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:15:34 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:35253)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <bluecmd@google.com>) id 1h4OKi-0004Un-W6
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:15:33 -0400
+Received: by mail-oi1-x241.google.com with SMTP id j132so1030461oib.2
+	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 04:15:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
+	b=gDa+JJNwFsghDxtgP1mwVNNcVRdIgTnhh6i5EkLtZP/9jq6rmKfqdg+sA8g7XHjsmq
+	WfL9tIlyBG7QQryYCmijjempZ3MXddOihbWiY1RtEde9A4JjsKB2FFZ/mo+sbChBW7/Z
+	v9CLqCbdjI7YTxNzd+5btou34iY21351uLc5xmEr4yYuSfKOkG/5czIj/eqIFS1y2vs7
+	Vz8nWla0ZQIHHJCD5WiqDo+i7XN+asUVNsDmddSS9INjJqdwqhcuYseaO62D/l6EVvMM
+	Xs2YECAsC6AKOf70pHNO6BsIUTPwHqf/SRF9hK5j/Kju+lK5f3iVsR5M1AZKCjEconJS
+	XphA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
+	b=JyGe5BJ9iENt4MG6imnrnm5CVDjOrBScmBSvwLriu9FRwXjLoEzv85mQk7pCx0WQ6I
+	fNXWlX6+fHjR3dfP6xJfQj1q3+G9TNVG41kd08b2UrqD9fnuwZTWX7eedJcGf8SQW2tY
+	LnaWAqTNBqs1Dg1B12MSXkisXkyLdYqNpX2k6s1j235BJfB+QyJTjhIfF3bo02f/cDm3
+	Jso3I1g5FeBTRZ+hVmDCAuQFum7pPrqV/M516xllS8qfPvdTasEXuef81RkUATx+lMcW
+	pysp2o+XNjTrJXYBp7XbU+8NpxRR29dnHBXT2TI8nM0md9jwm144MXtg8AcDg1JhD2qs
+	CFdA==
+X-Gm-Message-State: APjAAAX5phUHAHNt9a6gFwyvTvLN2k6y2eC9Yj1I0V5RLIqsoci7kMcS
+	PuvhWjT9Goozrk6P1sVbuMN9QDUQzvSVGzO3/PII1w==
+X-Received: by 2002:aca:b408:: with SMTP id d8mr1615093oif.15.1552562131505;
+	Thu, 14 Mar 2019 04:15:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_+aJfC4LvMM339TO19kcMTH-Dwy2uRNow+sxFkStJPBQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.32
-Subject: Re: [Qemu-arm] About Revert this patch: arm: Allow system registers
- for KVM guests to be changed by QEMU code
+References: <20190314084235.9887-1-clg@kaod.org>
+	<20190314084235.9887-6-clg@kaod.org>
+	<CAFEAcA_5rXmNEW+Yms8BhaFBn3UaJKNYhhO8xf76qWh6-zHj_w@mail.gmail.com>
+In-Reply-To: <CAFEAcA_5rXmNEW+Yms8BhaFBn3UaJKNYhhO8xf76qWh6-zHj_w@mail.gmail.com>
+Date: Thu, 14 Mar 2019 12:15:19 +0100
+Message-ID: <CAEfeXvbki=OyBMd2wYP81Y9di3aLN8ZT7y8THyfT_uLu5RaBRQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000579a8b05840c0a00"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-Mailman-Approved-At: Thu, 14 Mar 2019 08:49:53 -0400
+Subject: Re: [Qemu-arm] [PATCH 5/5] aspeed/timer: Use signed muldiv for
+ timer resets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,18 +104,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+From: Christian Svensson via Qemu-arm <qemu-arm@nongnu.org>
+Reply-To: Christian Svensson <bluecmd@google.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lZ8vd8zPMDky
+X-TUID: nMehaELvILP0
 
-On 2019/3/14 20:43, Peter Maydell wrote:
->> If you think this patch will introduce some issue, we can add one function write_part_cpustate_to_list()[2] to change the specified
->> register instead of all the registers[1].
-> It definitely does introduce an issue, but we need to address
-> it by working out why it breaks something that I wasn't
-> expecting to break. Then we can fix it properly. Looking
-> it this is on my todo list for this week.
-Got it, great, thanks very much to Peter.
+--000000000000579a8b05840c0a00
+Content-Type: text/plain; charset="UTF-8"
 
+Thanks for the feedback,
+
+On Thu, Mar 14, 2019, 11:57 Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> But overall I'm a little sceptical that the aspeed timer is
+> really a special case that needs a signed version of this
+> when no other timer in the system does...
+
+
+I agree, and the v2 of the patch doesn't require it. Happy to submit it
+when you folks think it's a good time to merge it.
+
+If you're curious you can get a sneak peek of the patch in
+https://github.com/u-root/u-bmc/issues/134.
+
+Regards,
+
+--000000000000579a8b05840c0a00
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">Thanks for the feedback,</div><div dir=3D"ltr" class=3D"gmail_=
+attr"><br></div><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 14, 2019,=
+ 11:57 Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" rel=3D=
+"noreferrer noreferrer" target=3D"_blank">peter.maydell@linaro.org</a>&gt; =
+wrote:</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bo=
+rder-left:1px #ccc solid;padding-left:1ex">
+But overall I&#39;m a little sceptical that the aspeed timer is<br>
+really a special case that needs a signed version of this<br>
+when no other timer in the system does...</blockquote></div></div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">I agree, and the v2 of the patch does=
+n&#39;t require it. Happy to submit it when you folks think it&#39;s a good=
+ time to merge it.</div><div dir=3D"auto"><br></div><div dir=3D"auto">If yo=
+u&#39;re curious you can get a sneak peek of the patch in=C2=A0<a href=3D"h=
+ttps://github.com/u-root/u-bmc/issues/134" target=3D"_blank" rel=3D"norefer=
+rer">https://github.com/u-root/u-bmc/issues/134</a>.</div><div dir=3D"auto"=
+><br></div><div dir=3D"auto">Regards,</div><div dir=3D"auto"></div></div>
+
+--000000000000579a8b05840c0a00--

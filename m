@@ -1,87 +1,99 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp618597wro;
-        Thu, 14 Mar 2019 02:35:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyf9NnJ6/ARba3dVmlD80iFstpe/4cszWOvoYBTVE3ArRf2CtmgscHVeiObh+wXelDPASAG
-X-Received: by 2002:a81:a7ca:: with SMTP id e193mr4722342ywh.410.1552556121502;
-        Thu, 14 Mar 2019 02:35:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552556121; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp623053wro;
+        Thu, 14 Mar 2019 02:41:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzx5lEdG/LJWLTXpd5V43lx0AvlzsoW5HRs9/JwqeG9/U05iY5Ph3HG0H6urfIqHqhdHF6t
+X-Received: by 2002:a81:8983:: with SMTP id z125mr10239365ywf.18.1552556476619;
+        Thu, 14 Mar 2019 02:41:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552556476; cv=none;
         d=google.com; s=arc-20160816;
-        b=NRCc7s1MrZEXp+IguzVKrk8ccE2x3z7c1kSYdHMfomhjkcFZEAI2Cdo9gJkNc0rWjh
-         X2Zb0QLueRoxE33IDPZJd/VKVPq8lD8DyPU/UC9bAPpR3DP/EePvXPEkCS2c673JENLa
-         J3ZnsMqp2SahwW8lAPYTS9T3f69GvKYjD+6DYIntfnkQdc7+1YHOobjhyxwzI99snE9i
-         j34NmT/qqx3bA+9Xwl4QV7vDQia9ichKYxXLDIU39MoAt9u95UqzgtpvMtDwxFqqXs0l
-         nw8BfxLqVGyYv6j9uldKlbzxd17VLEgSecDBUQsY9/AJGPIswxjYZTSdaiBsPjaRdbM/
-         XVZg==
+        b=B2ftQ5zUB5Wvq8G0ZOUzGn47UhajBhBHP4SYMvytKqhVZCyxg/msYUNu3RqBKp8ZpZ
+         KYyMqrZlqDKqCc0344cTwq49iyNwkQp9rF8dY7w1iTZAhGsxmbWkJwsu8A53Fimz/IIs
+         Jrmm8cJd7IrRSqPrGNfQtx4mAyVTqDHtkOra/WXjKaO0I6SfA703VCBjxFUtZn2UGYJB
+         SqLvfuVw6N/Zjpa8QKg0SN+EIdckG84WXCWaXpuix+qzmfv0la1E9Tz65vmOEhy9/ttD
+         vQ5Mh4heIiVxuYuejqGBC84Crc7dVJeU+U9pWfn7CMtEKHiwp8e3tYt4VCDo3+x/ZVke
+         92cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=+fP0hJjzivHpq7K6E+jNLd87ulErCt6g+L/OOT/aDkY=;
-        b=nezi1L6mmr8RjHuMeoOIQydnz+pEKYmAfyW2Y7uPn/ck0PFxfK31EttZD98x+3oFYS
-         PqhVFT7AIHdh5rzvxeGIb3MQX1TAMoVN+ky1hpWhQ98i9QfP+tnqLC9jXjhtLr7rP1ei
-         CLkFB5htsxp/l3HmyZcnpJweCGr2x705B2Iijblp0qWYIFlyXBXDQqpDuy+g2lwnvI1D
-         xUZ7VU8RmspBAPr1xS1/DMcQDyjRNQlxRoDhcmV59+A9cAWyUsos9oONdDe0js5hQBh3
-         hIVL5ZBi3C07P5+/JE7CPryoTBEoq/tlf4bk3WN1J5Amurhn3X4bHUPR8OWFX6/KlYD9
-         H+rA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=omOH813TZra6cUDVXASl8GO61bIji4jsWPy8lZw2Gck=;
+        b=onpeJMNfmtvmfrhGa7U15Z9ol3AU34X9w12YdiZJeF2oHbyOR1/acekNod1X89UAZ+
+         j7LiNLnzEnIhUMXjPDiPdBuds1XQtsrn/jqPwAxO3s1HsOBqXim7kEpT2NyLHieVkjp2
+         MUqWQ6AFLBSJhgcFlinVGGy0xrCbknvUGI5dzcqb6/wekiVmZTijoS6rzkJ8ktL/aCpv
+         4CHnOXhSWuBGHfcc+7TEf41E9D/7M0kDNquZv7WjVt7IqCk6vryn2gcLIhCKlVULDxtq
+         K7a6qXEmh8EqmVMkPSHHwydGlhTPHITEJr/+xZYoyhKqMQTMiUprgb/5cXX1OG/usIcn
+         GkhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 205si8325362ywu.63.2019.03.14.02.35.21
+        by mx.google.com with ESMTPS id o3si89463ywe.37.2019.03.14.02.41.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 02:35:21 -0700 (PDT)
+        Thu, 14 Mar 2019 02:41:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:59813 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:60204 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4Mlk-0007X2-TZ
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 05:35:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33316)
+	id 1h4MrQ-0002ui-QB
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 05:41:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h4Mgb-00043U-Up
-	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 05:30:03 -0400
+	(envelope-from <amir.charif@cea.fr>) id 1h4MhR-00050Q-QP
+	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 05:30:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h4MVa-0003vH-2K
-	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 05:18:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46882)
+	(envelope-from <amir.charif@cea.fr>) id 1h4MhI-000355-Gp
+	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 05:30:48 -0400
+Received: from cirse-smtp-out.extra.cea.fr ([132.167.192.148]:33374)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1h4MVY-0003u8-Lj; Thu, 14 Mar 2019 05:18:36 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 902BDC058CAD;
-	Thu, 14 Mar 2019 09:18:35 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D003C4C4;
-	Thu, 14 Mar 2019 09:18:31 +0000 (UTC)
-Date: Thu, 14 Mar 2019 10:18:30 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Wei Yang <richard.weiyang@gmail.com>
-Message-ID: <20190314101830.6e10d4d5@redhat.com>
-In-Reply-To: <20190313213137.acncaz7duosjybnf@master>
-References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
-	<20190313044253.31988-4-richardw.yang@linux.intel.com>
-	<20190313132300.3f56a5ca@redhat.com>
-	<20190313133359.h2njohyijgvkcbtv@master>
-	<20190313170943.5384f5cf@redhat.com>
-	<20190313213137.acncaz7duosjybnf@master>
+	(Exim 4.71) (envelope-from <amir.charif@cea.fr>)
+	id 1h4MhF-00032t-6b; Thu, 14 Mar 2019 05:30:42 -0400
+Received: from pisaure.intra.cea.fr (pisaure.intra.cea.fr [132.166.88.21])
+	by cirse-sys.extra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0) with
+	ESMTP id x2E9UZP4019163; Thu, 14 Mar 2019 10:30:35 +0100
+Received: from pisaure.intra.cea.fr (localhost [127.0.0.1])
+	by localhost (Postfix) with SMTP id A0BC5202921;
+	Thu, 14 Mar 2019 10:30:35 +0100 (CET)
+Received: from muguet1-smtp-out.intra.cea.fr (muguet1-smtp-out.intra.cea.fr
+	[132.166.192.12])
+	by pisaure.intra.cea.fr (Postfix) with ESMTP id 8FFAF200BA8;
+	Thu, 14 Mar 2019 10:30:35 +0100 (CET)
+Received: from excah-b0.intra.cea.fr (excah-b0.intra.cea.fr [132.166.88.85])
+	by muguet1-sys.intra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
+	with ESMTP id x2E9UZYb012939; Thu, 14 Mar 2019 10:30:35 +0100
+Received: from EXDAG0-A1.intra.cea.fr ([fe80::ac4c:b0e6:f68e:69cf]) by
+	excah-b0.intra.cea.fr ([fe80::7542:b9de:5cc1:f613%10]) with mapi id
+	14.03.0415.000; Thu, 14 Mar 2019 10:30:35 +0100
+From: Amir CHARIF <amir.charif@cea.fr>
+To: Richard Henderson <richard.henderson@linaro.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH] Re-evaluate SVE vector length everytime
+	ADDVL is executed
+Thread-Index: AQHU2arYOZpBZ3+C0kSk8L4TcIfQI6YJsTKAgAEjqrA=
+Date: Thu, 14 Mar 2019 09:30:33 +0000
+Message-ID: <82FD2C51B435F943BACD9C947966BF2F0A0E3ACA@EXDAG0-A1.intra.cea.fr>
+References: <1552488086-4025-1-git-send-email-amir.charif@cea.fr>
+	<0d61f67b-26b2-33e0-cf4d-13c7d998eed8@linaro.org>
+In-Reply-To: <0d61f67b-26b2-33e0-cf4d-13c7d998eed8@linaro.org>
+Accept-Language: fr-FR, en-US
+Content-Language: fr-FR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [132.166.88.106]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-23234.003
+x-tm-as-result: No--13.507200-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 14 Mar 2019 09:18:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract build_mcfg
+X-Received-From: 132.167.192.148
+Subject: Re: [Qemu-devel] [PATCH] Re-evaluate SVE vector length everytime
+ ADDVL is executed
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,128 +105,52 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
-	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AH93S8ENZCN5
+X-TUID: x6VtC1pj9TD9
 
-On Wed, 13 Mar 2019 21:31:37 +0000
-Wei Yang <richard.weiyang@gmail.com> wrote:
-
-> On Wed, Mar 13, 2019 at 05:09:43PM +0100, Igor Mammedov wrote:
-> >On Wed, 13 Mar 2019 13:33:59 +0000
-> >Wei Yang <richard.weiyang@gmail.com> wrote:
-> >  
-> >> On Wed, Mar 13, 2019 at 01:23:00PM +0100, Igor Mammedov wrote:  
-> >> >On Wed, 13 Mar 2019 12:42:53 +0800
-> >> >Wei Yang <richardw.yang@linux.intel.com> wrote:
-> >> >    
-> >> >> Now we have two identical build_mcfg function.
-> >> >> 
-> >> >> Extract them to aml-build.c.
-> >> >> 
-> >> >> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> >> >> ---
-> >> >>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
-> >> >>  hw/arm/virt-acpi-build.c    | 16 ----------------
-> >> >>  hw/i386/acpi-build.c        | 31 +------------------------------
-> >> >>  include/hw/acpi/aml-build.h |  1 +
-> >> >>  4 files changed, 32 insertions(+), 46 deletions(-)
-> >> >> 
-> >> >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> >> >> index 555c24f21d..58d3b8f31d 100644
-> >> >> --- a/hw/acpi/aml-build.c
-> >> >> +++ b/hw/acpi/aml-build.c    
-> >> >
-> >> >I don't like polluting aml-build.c with PCI stuff,
-> >> >we have a lot of PCI related code that needs generalizing
-> >> >lets create a new file for that, something like
-> >> >hw/acpi/pci.c + include/hw/acpi/pci.h
-> >> >    
-> >> >> @@ -25,6 +25,7 @@
-> >> >>  #include "qemu/bswap.h"
-> >> >>  #include "qemu/bitops.h"
-> >> >>  #include "sysemu/numa.h"
-> >> >> +#include "hw/pci/pcie_host.h"
-> >> >>  
-> >> >>  static GArray *build_alloc_array(void)
-> >> >>  {
-> >> >> @@ -1870,3 +1871,32 @@ build_hdr:
-> >> >>      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
-> >> >>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
-> >> >>  }
-> >> >> +
-> >> >> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-> >> >> +{
-> >> >> +    AcpiTableMcfg *mcfg;
-> >> >> +    const char *sig;
-> >> >> +    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-> >> >> +
-> >> >> +    mcfg = acpi_data_push(table_data, len);
-> >> >> +    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
-> >> >> +    /* Only a single allocation so no need to play with segments */
-> >> >> +    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-> >> >> +    mcfg->allocation[0].start_bus_number = 0;
-> >> >> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);    
-> >> >    
-> >> >> +    /*
-> >> >> +     * MCFG is used for ECAM which can be enabled or disabled by guest.
-> >> >> +     * To avoid table size changes (which create migration issues),
-> >> >> +     * always create the table even if there are no allocations,
-> >> >> +     * but set the signature to a reserved value in this case.
-> >> >> +     * ACPI spec requires OSPMs to ignore such tables.
-> >> >> +     */
-> >> >> +    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
-> >> >> +        /* Reserved signature: ignored by OSPM */
-> >> >> +        sig = "QEMU";
-> >> >> +    } else {
-> >> >> +        sig = "MCFG";
-> >> >> +    }    
-> >> >I'd leave these hack at acpi-build.c, just push it up call chain.    
-> >> 
-> >> Assign sig in acpi-build.c and pass it to build_mcfg()?  
-> >nope, see more below
-> >
-> >   
-> >> >More over we don't really need it since resizeable memory region was introduced.
-> >> >
-> >> >So we need to keep table_blob size only for legacy usecase (pre resizable)
-> >> >and for that just padding table_blob on required size would be sufficient,
-> >> >there is no need to create dummy QEMU table.
-> >> >As for newer machines (since resizeable memory region) we don't need to
-> >> >do even that i.e. just skip table generation altogether if guest disabled it.
-> >> >    
-> >> 
-> >> I am lost at this place.
-> >> 
-> >> sig is a part of ACPI table header, you mean the sig is not necessary to
-> >> be set in ACPI table header?
-> >> 
-> >> "skip table generation" means remove build_header() in build_mcfg()?  
-> >I mean do not call build_mcfg() at all when you don't have to.
-> >
-> >And when you need to keep table_blob the same size (for old machines)
-> >using acpi_data_push() to reserve space instead of build_mcfg(sig="QEMU")
-> >might just work as well. it's still hack but it can live in x86 specific
-> >acpi_build() keeping build_mcfg() generic.
-> >  
-> 
-> Seems got your idea.
-> 
-> >As for defining what to use as criteria to decide when we need to keep
-> >table_blob size the same, I don't remember history of it, so I'd suggest
-> >to look at commit a1666142, study history of acpi_ram_update() and
-> >legacy_acpi_table_size to figure out since which machine type one doesn't
-> >have to keep table_blob size the same.
-> >  
-> 
-> OK, let me study the history first.
-> 
-> BTW, the legacy here is hardware specification level or qemu software
-> design level?
-it's QEMU only, you need to find a version of QEMU (machine type)
-which didn't have re-sizable MemoryRegion and the next version most likely
-would have a knob somewhere in machine class definition saying that we don't
-care about sizes anymore or care about sizes only for previous machine types.
+SGVsbG8sDQpUaGFua3MgZm9yIHlvdXIgYW5zd2VyLg0KDQpUaGUgd3Jvbmcgc2l6ZSB3YXMgZGVm
+aW5pdGVseSBiZWluZyBzdG9yZWQgaW4gdGhlIFRCLCBhbmQsIGl0IG9ubHkgYWZmZWN0ZWQgQURE
+VkwvUkRWTC9BRERQTCAoaS5lLiBub3QgYWxsIGluc3RydWN0aW9ucyBhcmUgd3JvbmcpLiBIZXJl
+IGlzIHdoYXQgSSB0aGluayB3YXMgaGFwcGVuaW5nOg0KDQotIFRoZSBrZXJuZWwgZGlzYWJsZXMg
+U1ZFIGluIEVMMCAoWkVOPSAwMSkuDQotIFdoZW4gdGhlIHVzZXIgc3BhY2UgYXBwbGljYXRpb24g
+aXMgZW50ZXJlZCwgdGhlIFRCIGNvbnRhaW5pbmcgQUREVkwgaGFzIGl0cyBsZW5ndGggc2V0IHRv
+IDAgKDE2IGJ5dGVzKSwgYXMgd2UgYXJlIGluIEVMMCAoc28gc3ZlX2V4Y2VwdGlvbl9lbCE9MCks
+IGFuZCBGUCBpcyBlbmFibGVkLg0KLSBBRERWTCBpcyBleGVjdXRlZCAod2l0aG91dCB0cmFwcGlu
+Zykgb24gdGhlIGJhc2lzIG9mIHRoZSBjdXJyZW50IGxlbmd0aCAoMTYpLiAoTmVzdGVkIGZ1bmN0
+aW9uIGNhbGxzIGluIHRoZSBzYW1lIGNvbnRleHQgd2lsbCBjYXVzZSBhIHRvbiBvZiBBRERWTCBp
+bnN0cnVjdGlvbnMgdG8gYmUgZXhlY3V0ZWQgd2l0aCBhIHZlY3NpemUgb2YgMTYuKQ0KLSBUaGUg
+bmV4dCBkaWZmZXJlbnQgU1ZFIGluc3RydWN0aW9uIHRyYXBzIGFzIGl0IHNob3VsZCBhbmQgdGhl
+IHNpemUgaXMgYWRqdXN0ZWQgZm9yIHRoZSByZXN0IG9mIHRoZSBleGVjdXRpb24gKGJ1dCB0aGUg
+c3RhY2sgc3BhY2UgdGhhdCB3YXMgaW5pdGlhbGx5IGFsbG9jYXRlZCBpcyB3cm9uZyBzbyBleGVj
+dXRpb24gZmFpbHMpLg0KDQpTbyBhbm90aGVyIGZpeCB3b3VsZCBiZSB0byBhbGxvdyB0aGVzZSBp
+bnN0cnVjdGlvbnMgdG8gdHJhcCBieSBjYWxsaW5nIHN2ZV9hY2Nlc3NfY2hlY2soKSwgYXMgaXMg
+ZG9uZSB3aXRoIHRoZSByZXN0IG9mIFNWRSBpbnN0cnVjdGlvbnMuDQoNCkknbSBub3QgdGhhdCBm
+YW1pbGlhciB3aXRoIHRoZSBpbnN0cnVjdGlvbiBzZXQsIHNvIGNvdWxkIHlvdSBwbGVhc2UgbGV0
+IG1lIGtub3cgaWYgaXQgaXMgY29ycmVjdCB0byBjYWxsIHN2ZV9hY2Nlc3NfY2hlY2soKSBpbiB0
+aGVzZSBpbnN0cnVjdGlvbnMgPw0KDQpUaGFua3MgaW4gYWR2YW5jZSwNCg0KQmVzdCByZWdhcmRz
+LA0KQW1pciANCg0KLS0tLS1NZXNzYWdlIGQnb3JpZ2luZS0tLS0tDQpEZcKgOiBSaWNoYXJkIEhl
+bmRlcnNvbiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz4gDQpFbnZvecOpwqA6IG1lcmNy
+ZWRpIDEzIG1hcnMgMjAxOSAxNzozNQ0Kw4DCoDogQW1pciBDSEFSSUYgPGFtaXIuY2hhcmlmQGNl
+YS5mcj47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KQ2PCoDogcWVtdS1hcm1Abm9uZ251Lm9yZw0K
+T2JqZXTCoDogUmU6IFtRZW11LWRldmVsXSBbUEFUQ0hdIFJlLWV2YWx1YXRlIFNWRSB2ZWN0b3Ig
+bGVuZ3RoIGV2ZXJ5dGltZSBBRERWTCBpcyBleGVjdXRlZA0KDQpPbiAzLzEzLzE5IDc6NDEgQU0s
+IEFtaXIgQ2hhcmlmIHdyb3RlOg0KPiBJbiBzeXN0ZW0gZW11bGF0aW9uIG1vZGUsIHRoZSBrZXJu
+ZWwgbWF5IGludGVybmFsbHkgdXNlIDE2LWJ5dGUgdmVjdG9ycy4NCj4gSWYgdGhpcyBzaXplIGlz
+IHNhdmVkIGluIHRoZSBEaXNhc0NvbnRleHQgYmVmb3JlIGVudGVyaW5nIGEgdXNlcnNwYWNlIA0K
+PiBhcHAgdGhhdCB1c2VzIGhpZ2hlciBTVkUgc2l6ZXMsIHRoZSB3cm9uZyBzaXplIG1heSBiZSBh
+bGxvY2F0ZWQgb24gdGhlIA0KPiBzdGFjayByZXN1bHRpbmcgaW4gY29ycnVwdGlvbiAoc2VnZmF1
+bHRzIGluIHVzZXIgc3BhY2UpLg0KPiBUaGlzIGZpeCBldmFsdWF0ZXMgdGhlIHZlY3RvciBzaXpl
+IGF0IHJ1bnRpbWUgKGFzIG9wcG9zZWQgdG8gDQo+IHRyYW5zbGF0aW9uIHRpbWUpIHRvIGFsd2F5
+cyBhbGxvY2F0ZSB0aGUgY29ycmVjdCBzaXplIG9uIHRoZSBzdGFjayAod2hlbiBBRERWTCBpcyB1
+c2VkKS4NCg0KVGhpcyBpcyB3cm9uZy4NCg0KSW4gcGFydGljdWxhciwgaWYgdGhlIGNvbXB1dGF0
+aW9uIG9mIFZMIGlzIHdyb25nIGZvciBBRERWTCwgaXQgaXMgd3JvbmcgZm9yIGV2ZXJ5IG90aGVy
+IFNWRSBpbnN0cnVjdGlvbiBhcyB3ZWxsLiAgTW9zdCBvZiB3aGljaCBjYW5ub3QgaGF2ZSBWTCBj
+b21wdXRlZCBhdCBydW50aW1lIGxpa2UgdGhpcy4NCg0KVGhhdCBpcyB3aHkgd2UgYnJlYWsgdGhl
+IFRCIGF0IGV2ZXJ5IGNoYW5nZSB0byBWTC4NCg0KV2hlcmUgZG8gd2UgImVudGVyIGEgdXNlcnNw
+YWNlIGFwcCIgd2l0aG91dCBicmVha2luZyB0aGUgVEIgYW5kIHJlY29tcHV0aW5nPw0KQXMgZmFy
+IGFzIEkga25vdyB0aGlzIG11c3QgaGF2ZSBleGVjdXRlZCBhbiBFUkVUIHRvIHJldHVybiBmcm9t
+IEVMMSB0byBFTDAsIHdoaWNoIG1vc3QgZGVmaW5pdGVseSBoYXBwZW5zIGJldHdlZW4gVEJzLCBv
+ciBlbHNlIG5vIHN5c3RlbSBjYWxscyB3b3VsZCB3b3JrIGF0IGFsbC4NCg0KRG8geW91IGhhdmUg
+YW4gZXhhbXBsZSB0aGF0IHByb3Zva2VzIHRoaXMgZmFpbHVyZT8NCg0KDQpyfg0K

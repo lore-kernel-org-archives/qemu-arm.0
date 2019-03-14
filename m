@@ -1,139 +1,146 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1112754wro;
-        Thu, 14 Mar 2019 10:35:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzYZiSrktPe6ZkHxZAzT8QcvP6gMFWgvwLLhmAvJBS91kGRxiC/baYrVndrYGfWUohZYt9C
-X-Received: by 2002:a25:e751:: with SMTP id e78mr42207826ybh.28.1552584923451;
-        Thu, 14 Mar 2019 10:35:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552584923; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1113886wro;
+        Thu, 14 Mar 2019 10:36:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyAry3+bo1L6NBfsUWROqA7OTVRJGyEz3E4uYeMRlysZNsGZ00hNW1vagj3VZOtRvNHWgaf
+X-Received: by 2002:a81:7c45:: with SMTP id x66mr23540340ywc.3.1552584994490;
+        Thu, 14 Mar 2019 10:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552584994; cv=none;
         d=google.com; s=arc-20160816;
-        b=ILZHZt97Jm2uWqYIdaoAgvUxUv0DQPOD0r/kMS6GIq1rImJ+FpBmQseq9r09iRcovs
-         jBCq15k55EStgoyrDn/TwT2R/+QO8LFsvAzyWWhPY//ljInQh7b9pQXeIuXsQfwZupPu
-         F2+yTVOS622zEavxyxWETUeeDRwcwXggywfNb2cOZufQmeqrDLAOoAbEvc+wmKSe9nqp
-         qWjsYsJKdQe/63vfoBnQLoKta2IxE/Pnulsyp89/vLxRvQOfI22mR4gRH00PHVmmRkeS
-         ddLRNGmoOCy370Dnrr0dBYjDH/j9ClvcAHMUc0QI2UkhajiS4qVJGEv6y8CVM1oo4JGa
-         i8vg==
+        b=kDHD9UzJYQNsLgvx3gGMAfprRTl+EK7YHEP+VjVwPe19j8tCIfnvw/u9eW3MdEhZ84
+         oSl0cND0yDrptd7JSPeUNQyw3o04cUMafdjNMgg0MW+IQ7G+txix72cmbs+HIE4lJkuw
+         kotjKA4ZuuNHatJKMoBu/EgFInKdZDhAYrI8NAqKw6J02fBD8Aniv8JlUoX4mulqtwI1
+         oBASg3MaLk8c+Tm1a0+sGb+ZNcgpgR6PAuGenZeeadsc8JvzlQtWTJe9Ue3IISJhCQLf
+         0xkKp8nWZnmN5imayWmZUkrxnHi3TS7Jsbrl1d1XNJIPNup6HbkM9E40iQlbDC5zJbKH
+         LD7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=X87aT48a8x8PkcLyxHQB7JlKocYRm0eVewa5359CJ7A=;
-        b=Ow/8m8JPWSvjhdViAuUuS2YwZrjTCZi6W8dD9SPV5lPZ3y3UHplizUBFiqUT19fgY3
-         +lJm4NFMgBwiG8SOlzkxuYenA8SQhN8MRb9AdZBg14+HWS8dvaohv2U1M9GgGI5AJZQx
-         WLDDsmW8LJ25U8Qe9BaWn2Qmq3PaEh0txvaHhPm5xAGdo7lII30rKw5Ut1xByJa2JAIa
-         G59rpYtzV/WC3kxUX2cKG1C0CSmG83wdB74gXBkYYyKpGPthlsUVazwsJY2wJE2Dcg9a
-         e34vSOJDDbyp1Qq3j96q2J17t/2y6ISyJqDiGxFLfYI11tKMp+XjNn/jQvy2KP2SFvzR
-         1GGg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=kk/F4jiu3qv8riq/x6lSqUR5q+STlEIyY8iPyv7IHxk=;
+        b=RahI4eHbCcBS0OYPLCysTPdDmZQJOV1r4zyaLdvqNHiIhAwVbiH70qMhXd/FKI3o+i
+         YBXslNIpbE5+tNMUl4SrQeyLLVevoNoj+LZeX1PQp+TzAZf2C7eB+d5vs5BlMII2eEhf
+         TPnEVh3u+T/M1v/MsvGaGDMAY0BzCNXQKEZqTDEMDo3fSqabyCIawa1Wj5+TPGHyioe/
+         oMWsyG9h+VmlYQjbWADd65x4WOcuCAhIq/RD3TqPN0Cat9vmeDmdo5mUE87s4UUIn0Em
+         VAqz/MIA1XGLEdXj5U/g1Ej1So6HlTRLuHOdODs8xz+WXu3Jm0uPon5bluwvApYPz296
+         74PA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NZrmLtId;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g7si9467758ybk.264.2019.03.14.10.35.23
+        by mx.google.com with ESMTPS id l81si4420400ybb.487.2019.03.14.10.36.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 10:35:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Mar 2019 10:36:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NZrmLtId;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:42564 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:42614 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4UGI-0006vM-U6
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 13:35:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47807)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h4UHR-0007yV-TR
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 13:36:33 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1h4UFp-0006tr-UW
-	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 13:34:54 -0400
+	(envelope-from <amir.charif@cea.fr>) id 1h4UGi-0007ev-5b
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 13:35:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1h4UFo-0004sI-3Y
-	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 13:34:52 -0400
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e]:45494)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1h4UFn-0004qY-G8
-	for qemu-devel@nongnu.org; Thu, 14 Mar 2019 13:34:51 -0400
-Received: by mail-pg1-x52e.google.com with SMTP id 125so4435687pgc.12
-	for <qemu-devel@nongnu.org>; Thu, 14 Mar 2019 10:34:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=X87aT48a8x8PkcLyxHQB7JlKocYRm0eVewa5359CJ7A=;
-	b=NZrmLtIda4VkKY5OcrQb0dEKOQcdReXk4w2hDN03f7qiJnHIt696ar56wKRDKrvW/0
-	OfTEqn0COuneUPfmAIIoTZdHYMkTMBkWZsIYNNBi4TKnmuhMIc9pFOBOvLLWolNzitH8
-	e6jSIcUBV++GckPFb4jH1V46G+NsQpLIQMMjB1Mp2L5FG4T5Czaiji2oUpHdTX+lFKjK
-	DVQsw4ffCbfC5hiR/MUk9dpDZy35ZR1262EimNfwUbYnagK9YahQyl90c6PCSekf8/sz
-	Jundo1+EzfvRdJAzvCTTIfqn3OeYQEM9h7qoPO5X/59sJ4CsOcZWv1Qllh1RWB81GQgS
-	PLgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=X87aT48a8x8PkcLyxHQB7JlKocYRm0eVewa5359CJ7A=;
-	b=QJ9ola4ex+DA3M0ZH5TwBj88ZFVoYiVoQEuAulci79irYmLlBG4OyFg9Qy4H0DjmiS
-	Nx++AlgNuNXzplGeWh/p1hq/AqQiLly/FjUfciTFsXefwIDYFNTshz9buMr3QGn86auE
-	k8XAIGYGzFPuAgoaKq/9pMY/kqDz5ZL5NRrlRAyNyO1LYkF3XpfU9QA/F+8AaOnlloJZ
-	NZCe9CH2LZlH2AeNqVg1UeXZ4XAMA2bUAOm8vUGmi+rnXtTtUBo/VBChb6gjKbQvi/ZG
-	F1rGsJ/b/MDwtEjFhzYbuXDa5vGR5ujf8c+3HtQrRwB17y8P3mWYbe6Ui/ETN1ZaWGVH
-	u0Yw==
-X-Gm-Message-State: APjAAAUtW702KnbkYWc+9nNp1iF51Eyd4AF1K+XoW3YYsF3ryW5Fnkev
-	KD0ErOO67spt/WDGOYGJIKMiDA==
-X-Received: by 2002:aa7:8750:: with SMTP id g16mr24225386pfo.123.1552584887985;
-	Thu, 14 Mar 2019 10:34:47 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
-	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
-	d16sm23831368pfo.112.2019.03.14.10.34.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Mar 2019 10:34:47 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, Amir Charif <amir.charif@cea.fr>
-References: <1552579248-31025-1-git-send-email-amir.charif@cea.fr>
-	<CAFEAcA8dGr6gPGUcLhMqWKoC7aS40A4NssqFzHiKu0XhRKyE_Q@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <4daad4a8-93bc-05bc-1dfc-5652da3168bd@linaro.org>
-Date: Thu, 14 Mar 2019 10:34:45 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <amir.charif@cea.fr>) id 1h4UGf-0005W9-MT
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 13:35:47 -0400
+Received: from oxalide-smtp-out.extra.cea.fr ([132.168.224.13]:59594)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <amir.charif@cea.fr>)
+	id 1h4UGU-0005Cg-3i; Thu, 14 Mar 2019 13:35:35 -0400
+Received: from pisaure.intra.cea.fr (pisaure.intra.cea.fr [132.166.88.21])
+	by oxalide-sys.extra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
+	with ESMTP id x2EHZGxh156614; Thu, 14 Mar 2019 18:35:16 +0100
+Received: from pisaure.intra.cea.fr (localhost [127.0.0.1])
+	by localhost (Postfix) with SMTP id 23DDA207BF7;
+	Thu, 14 Mar 2019 18:35:16 +0100 (CET)
+Received: from muguet2-smtp-out.intra.cea.fr (muguet2-smtp-out.intra.cea.fr
+	[132.166.192.13])
+	by pisaure.intra.cea.fr (Postfix) with ESMTP id 0FFB02064FA;
+	Thu, 14 Mar 2019 18:35:16 +0100 (CET)
+Received: from EXCAH-A3.intra.cea.fr (excah-a3.intra.cea.fr [132.166.88.77])
+	by muguet2-sys.intra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
+	with ESMTP id x2EHZFvQ029062; Thu, 14 Mar 2019 18:35:16 +0100
+Received: from EXDAG0-A1.intra.cea.fr ([fe80::ac4c:b0e6:f68e:69cf]) by
+	EXCAH-A3.intra.cea.fr ([fe80::60de:a77e:427d:f7e6%10]) with mapi id
+	14.03.0415.000; Thu, 14 Mar 2019 18:35:15 +0100
+From: Amir CHARIF <amir.charif@cea.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: [Qemu-devel] [PATCH for-4.0] target/arm: Add sve_access_check
+	to ADDVL, ADDPL, RDVL
+Thread-Index: AQHU2oOb8BRpE/x/yEuoxO4AJVjEJKYLXNYg///1HICAABEYkA==
+Date: Thu, 14 Mar 2019 17:35:14 +0000
+Message-ID: <82FD2C51B435F943BACD9C947966BF2F0A0E3C00@EXDAG0-A1.intra.cea.fr>
+References: <20190314163259.3058-1-richard.henderson@linaro.org>
+	<82FD2C51B435F943BACD9C947966BF2F0A0E3BBF@EXDAG0-A1.intra.cea.fr>
+	<CAFEAcA8r7sH-Gseo7bwnf332L6602CZOru88YNWxiCJRuK65+A@mail.gmail.com>
+In-Reply-To: <CAFEAcA8r7sH-Gseo7bwnf332L6602CZOru88YNWxiCJRuK65+A@mail.gmail.com>
+Accept-Language: fr-FR, en-US
+Content-Language: fr-FR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [132.166.88.106]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-23234.003
+x-tm-as-result: No--11.593200-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8dGr6gPGUcLhMqWKoC7aS40A4NssqFzHiKu0XhRKyE_Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::52e
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] Check access permission to
- ADDVL/ADDPL/RDVL
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 132.168.224.13
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.0] target/arm: Add
+ sve_access_check to ADDVL, ADDPL, RDVL
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1tWESACghdWP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jDHBxINvqYr5
 
-On 3/14/19 10:21 AM, Peter Maydell wrote:
-> Richard, Amir -- it looks like you both sent exactly the
-> same patch at pretty much exactly the same time. Any
-> preferences for whose version I apply ? :-)
-> 
-> thanks
-> -- PMM
-
-Hah.  Bit of miscommunication there.  Might as well apply Amir's and have my
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+T2theSwgSSB1bmRlc3RhbmQuDQoNClRoYW5rIHlvdSBhbmQgc29ycnkgZm9yIHRoZSBvdmVycmVh
+Y3Rpb24sDQoNCkNoZWVycywNCkFtaXINCg0KLS0tLS1NZXNzYWdlIGQnb3JpZ2luZS0tLS0tDQpE
+ZcKgOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+IA0KRW52b3nDqcKg
+OiBqZXVkaSAxNCBtYXJzIDIwMTkgMTg6MzINCsOAwqA6IEFtaXIgQ0hBUklGIDxhbWlyLmNoYXJp
+ZkBjZWEuZnI+DQpDY8KgOiBSaWNoYXJkIEhlbmRlcnNvbiA8cmljaGFyZC5oZW5kZXJzb25AbGlu
+YXJvLm9yZz47IHFlbXUtYXJtQG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KT2Jq
+ZXTCoDogUmU6IFtRZW11LWRldmVsXSBbUEFUQ0ggZm9yLTQuMF0gdGFyZ2V0L2FybTogQWRkIHN2
+ZV9hY2Nlc3NfY2hlY2sgdG8gQUREVkwsIEFERFBMLCBSRFZMDQoNCk9uIFRodSwgMTQgTWFyIDIw
+MTkgYXQgMTc6MjIsIEFtaXIgQ0hBUklGIDxhbWlyLmNoYXJpZkBjZWEuZnI+IHdyb3RlOg0KPg0K
+PiBJIGRvbid0IHJlYWxseSBrbm93IGhvdyBpdCB1c3VhbGx5IHdvcmtzIGhlcmUgYnV0IG1heSBJ
+IGFzayB3aHkgeW91IGFyZSB0dXJuaW5nIG15IHBhdGNoIGludG8geW91ciBvd24gYW5kIHB1dHRp
+bmcgbWUgYXMgYSByZXBvcnRlciA/IEFyZSB5b3UgYWxsb3dlZCB0byBkbyB0aGF0ID8/DQo+IEkg
+ZGlkIG5vdCBqdXN0IHJlcG9ydCBhIGJ1ZywgSSBhY3R1YWxseSBwcm92aWRlZCB0aGUgZml4IGFu
+ZCBzdWJtaXR0ZWQgYSBwYXRjaCwgeW91IGNhbiBzZWUgaGVyZSB0aGF0IGl0J3MgdGltZXN0YW1w
+ZWQgcHJpb3IgdG8geW91cnMgKGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8gKSwgSSB3YXMgd2Fp
+dGluZyBmb3IgeW91ciByZXBseSB0byBzZW5kIGl0IHRvIHRoZSBtYWlsaW5nIGxpc3QsIHNvIGlz
+IGl0IGZhaXIgdGhhdCB5b3VycyBpcyB0aGUgb25lIGdldHRpbmcgcmV2aWV3ZWQgPw0KDQpZb3Vy
+IGVtYWlscyBjcm9zc2VkIGluIHRoZSBwb3N0LCBzbyB0byBzcGVhayAtLSB5b3VycyBpcyB0aW1l
+c3RhbXBlZCAxNjowMCBidXQgbG9va2luZyBhdCB0aGUgUmVjZWl2ZWQgaGVhZGVycyAjIFJlY2Vp
+dmVkOiBmcm9tIGFtaXItVmlydHVhbEJveC5pbnRyYS5jZWEuZnIgIyAoaXMyMzMxNzYtZG9jay5p
+bnRyYS5jZWEuZnIgWzEwLjguMzUuMTI2XSkgYnkgIyBtdWd1ZXQyLXN5cy5pbnRyYS5jZWEuZnIg
+KDguMTQuNy84LjE0LjcvQ0VBbmV0LUludGVybmV0LW91dC00LjApDQojIHdpdGggRVNNVFAgaWQg
+eDJFR1k5V04wMDMzNjc7IFRodSwgMTQgTWFyIDIwMTkgMTc6MzQ6MDkgKzAxMDANCg0KYW4gZW1h
+aWwgc3lzdGVtIHNhdCBvbiBpdCBmb3IgaGFsZiBhbiBob3VyOyBhbmQgdGhlbiBpdCB0b29rDQox
+MCBvciAxNSBtaW51dGVzIHRvIGdldCB0aHJvdWdoIHRoZSBRRU1VIG1haWxpbmcgbGlzdCBpbmZy
+YXN0cnVjdHVyZSwgc28gYnkgdGhlIHRpbWUgUmljaGFyZCBjb3VsZCBoYXZlIHNlZW4geW91ciBl
+bWFpbCBoZSB3b3VsZCBoYXZlIGFscmVhZHkgc2VudCBoaXMgdmVyc2lvbi4NCg0KVGhpcyBkb2Vz
+IGhhcHBlbiBmcm9tIHRpbWUgdG8gdGltZSwgYmVjYXVzZSBlbWFpbCBpc24ndCBpbnN0YW50YW5l
+b3VzLiBSaWNoYXJkJ3MgaGFwcGVuZWQgdG8gZ2V0IHJldmlldyBmaXJzdCBiZWNhdXNlIGhlIGNj
+J2Qgc29tZSBwZW9wbGUgd2hvIG1pZ2h0IHdhbnQgdG8gcmV2aWV3IGl0LCB3aGljaCB0ZW5kcyB0
+byBicmluZyBpdCB0byB0aGVpciBhdHRlbnRpb24gbW9yZS4NCg0KSSdtIGhhcHB5IHRvIGFwcGx5
+IHlvdXIgdmVyc2lvbi4NCg0KdGhhbmtzDQotLSBQTU0NCg==

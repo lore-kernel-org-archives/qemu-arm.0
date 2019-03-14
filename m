@@ -1,144 +1,107 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp629367wro;
-        Thu, 14 Mar 2019 02:49:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyzSQcOwwJIQxUWSTnaXqPlTEsQx6tmFXoBoMn/jAB1fe+xHGRyOO8+fKI/r4desx7OcVSy
-X-Received: by 2002:a81:53c1:: with SMTP id h184mr4866000ywb.194.1552556973790;
-        Thu, 14 Mar 2019 02:49:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552556973; cv=none;
-        d=google.com; s=arc-20160816;
-        b=v9OUgG7FSUH/iq+LPHWc5L2suLTUkXEU02fez/X9WM+zxRMwbEmQDLsX+Z85jyGYa4
-         caY1/h4bVIi0pGz25865I+/CHbxhsbgizjfZzXg319BGbAbzvlWeflq7M3vXzE+QVUC1
-         zo+YUPCy5F7pwQxy+Ttdp+CsPn/qlHhhQSwqPz4ZumJ9ZiSdXUSSzvK9nr6a2DdG8OxX
-         rRpJkD217FTBXGLgaEVQHjtA9wS3z+E9cOLcZuSj+6jaAnkB/AcjApIKmqdvPxGD4Yhl
-         l7Knqm3mTPwONzWQ3yWpnHFglItwhajZsU+zmHvma3r8wNUrqDXVB0M67isG40a91y9Z
-         OJKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=UOvkh9aRAvaWDAKHXLbvorTduYunnvQF4Yz7CADeFug=;
-        b=dB6sYiFSltmHfPNwGi30wsY2N2Wiv91xCMsxo4e+uVFojLfFJN9+prc+v/xLADTg0O
-         /k3ArX52C09HAf4N2PlW373bLkaeIvARxSECGdZwl5M/dLTkcL3+zCLq1iqMxMCPSvtj
-         B4tDHz7EBZ53e2ou1nkDlpNbT1QLnGQw9V0o7XerlT8cUQ5sTTqfuKfOQoGQ1L2PfAkx
-         mNYCMpp6YP2mS8TP0WtDqz7mqtRgMnWC7/+KrNfCOmepp6Dj0ZvuC9Ovxr8debPOI3sb
-         QAp1QPqL93I7EwiMT5ZfCYV0VcTMc6XkdSiJKrzcpT6TnXec+RWQM180PE1IhozM5EX4
-         rPjA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sF5Dyl+U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t12si7895420ybg.159.2019.03.14.02.49.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 02:49:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sF5Dyl+U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:60733 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4MzV-0005XE-3v
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 05:49:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37109)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4MzH-0005Jq-7I
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:49:19 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4Mwc-00050q-Nm
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:46:35 -0400
-Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141]:56037)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h4Mwc-0004yY-99
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:46:34 -0400
-Received: by mail-it1-x141.google.com with SMTP id z126so794235itd.5
-	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 02:46:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=UOvkh9aRAvaWDAKHXLbvorTduYunnvQF4Yz7CADeFug=;
-	b=sF5Dyl+Uyf+qK70TASvMQtMO/u9cnuSD8mh8VmDA90mEFZhZQMwcoQuTLKudUbQjzG
-	k4D5BHUhnpelj7Deo55v2n49ys9or5+wM3s286FjSh+80TG42EO34FJwykzcCIFNlGxH
-	xtzjojkmzFw/QhmexmgYrcPnmrkDUue1S4dhYxq15+lEyRvCghRvaN7hFyH8gFWIrHIe
-	ruBgc7MAL/D0bzfamHN/XYWhRH8uLMSyS7mJB2zmK/tXcBKYRwNZ9IlEDXJ0Ovc0BVFD
-	AuxtmO72z7+AKZ6MHX9mwY2KyS3qLj76eX1fjroduinD5j6WBv7v89rqLXmk1pE1ykzs
-	SL4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=UOvkh9aRAvaWDAKHXLbvorTduYunnvQF4Yz7CADeFug=;
-	b=HkaZVPMXOqQJT3AiUZCzjm1Q1mbp2xpvl49XevUY4VInRZaYQeeP3RllfWuoLFqQwA
-	+SxzHf+IN3OlDcXmYlCcsbWy3bBmU+NotwCJd8nzzdUY4k0n+SP5AqUMNAdSLXTcIGT6
-	QyFlrma1+Y6XOCRvfgDdWuA9nI6E8nYKMd7k6mYavIiQGrLKYZtpt2+iHb1Vq1A+AeS5
-	mcPIe8L3jBBv6xJ5sVkbe8J2DjTfMmf9Ho+gHrU0IU++F8eoR3PTHPYRFI4cx++A1af4
-	Um7P6T5zG+WzHtwRX0HIR64m3Bdyt+Tag8ivnuwa5FkPhHI2jN9FVIyF2ooZplEoPTZt
-	ByRQ==
-X-Gm-Message-State: APjAAAVbbDvOOeQU6cPuiBMyM+0gxFiPBbXvxI4enPp9S91Irk7YyQTb
-	DxJkLfyhkheX7DoAkzE3zzh9sywN2IJYgnJVmLDXVw==
-X-Received: by 2002:a02:6f49:: with SMTP id b9mr27191490jae.143.1552556789807; 
-	Thu, 14 Mar 2019 02:46:29 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id u8sm1868470wml.22.2019.03.14.03.51.01
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Mar 2019 03:51:01 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id AF97A1FF87;
+	Thu, 14 Mar 2019 10:51:00 +0000 (UTC)
+References: <1552488086-4025-1-git-send-email-amir.charif@cea.fr> <0d61f67b-26b2-33e0-cf4d-13c7d998eed8@linaro.org> <82FD2C51B435F943BACD9C947966BF2F0A0E3ACA@EXDAG0-A1.intra.cea.fr>
+User-agent: mu4e 1.1.0; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, "qemu-arm\@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-devel] [PATCH] Re-evaluate SVE vector length everytime ADDVL is executed
+In-reply-to: <82FD2C51B435F943BACD9C947966BF2F0A0E3ACA@EXDAG0-A1.intra.cea.fr>
+Date: Thu, 14 Mar 2019 10:51:00 +0000
+Message-ID: <87va0l4tm3.fsf@zen.linaroharston>
 MIME-Version: 1.0
-References: <20190312071250.12168-1-kraxel@redhat.com>
-	<20190312071250.12168-5-kraxel@redhat.com>
-In-Reply-To: <20190312071250.12168-5-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Mar 2019 09:46:18 +0000
-Message-ID: <CAFEAcA_04sdrC3vvOAE_=camjFEssdzMArRxTUz4LsgBM4zZLg@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::141
-Subject: Re: [Qemu-arm] [PULL 04/14] audio: -audiodev command line option
- basic implementation
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Kővágó, Zoltán" <dirty.ice.hu@gmail.com>, Michael Roth <mdroth@linux.vnet.ibm.com>, Kővágó@redhat.com, Libvirt <libvir-list@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>, Alistair Francis <alistair@alistair23.me>, QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>, Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2CItBD7Wnq/Z
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 7+MZxn3FqAwk
 
-On Tue, 12 Mar 2019 at 07:13, Gerd Hoffmann <kraxel@redhat.com> wrote:
+
+Amir CHARIF <amir.charif@cea.fr> writes:
+
+> Hello,
+> Thanks for your answer.
 >
-> From: Kővágó, Zoltán <dirty.ice.hu@gmail.com>
+> The wrong size was definitely being stored in the TB, and, it only affect=
+ed ADDVL/RDVL/ADDPL (i.e. not all instructions are wrong). Here is what I t=
+hink was happening:
 >
-> Audio drivers now get an Audiodev * as config paramters, instead of the
-> global audio_option structs.  There is some code in audio/audio_legacy.c
-> that converts the old environment variables to audiodev options (this
-> way backends do not have to worry about legacy options).  It also
-> contains a replacement of -audio-help, which prints out the equivalent
-> -audiodev based config of the currently specified environment variables.
+> - The kernel disables SVE in EL0 (ZEN=3D 01).
+> - When the user space application is entered, the TB containing ADDVL has=
+ its length set to 0 (16 bytes), as we are in EL0 (so sve_exception_el!=3D0=
+), and FP is enabled.
+> - ADDVL is executed (without trapping) on the basis of the current
+> length (16). (Nested function calls in the same context will cause a
+> ton of ADDVL instructions to be executed with a vecsize of 16.)
 
-Hi; Coverity complains (CID 1399706) about this, which isn't
-a change in this patch as such, but the code change has
-probably caused it to reanalyze:
+So this looks like the error. Certainly the pseudo code says:
 
+  CheckSVEEnabled();
+  bits(64) operand1 =3D if n =3D=3D 31 then SP[] else X[n];
+  bits(64) result =3D operand1 + (imm * (VL DIV 8));
+
+  if d =3D=3D 31 then
+      SP[] =3D result;
+  else
+      X[d] =3D result;
+
+so we should trap to the kernel and we won't without sve_access_check()
+
+> - The next different SVE instruction traps as it should and the size is a=
+djusted for the rest of the execution (but the stack space that was initial=
+ly allocated is wrong so execution fails).
 >
->      if (!done) {
->          driver = audio_driver_lookup("none");
-> -        done = !audio_driver_init(s, driver, false);
-> +        done = !audio_driver_init(s, driver, false, dev);
+> So another fix would be to allow these instructions to trap by calling sv=
+e_access_check(), as is done with the rest of SVE instructions.
+>
+> I'm not that familiar with the instruction set, so could you please let m=
+e know if it is correct to call sve_access_check() in these instructions ?
+>
+> Thanks in advance,
+>
+> Best regards,
+> Amir
+>
+> -----Message d'origine-----
+> De : Richard Henderson <richard.henderson@linaro.org>
+> Envoy=C3=A9 : mercredi 13 mars 2019 17:35
+> =C3=80 : Amir CHARIF <amir.charif@cea.fr>; qemu-devel@nongnu.org
+> Cc : qemu-arm@nongnu.org
+> Objet : Re: [Qemu-devel] [PATCH] Re-evaluate SVE vector length everytime =
+ADDVL is executed
+>
+> On 3/13/19 7:41 AM, Amir Charif wrote:
+>> In system emulation mode, the kernel may internally use 16-byte vectors.
+>> If this size is saved in the DisasContext before entering a userspace
+>> app that uses higher SVE sizes, the wrong size may be allocated on the
+>> stack resulting in corruption (segfaults in user space).
+>> This fix evaluates the vector size at runtime (as opposed to
+>> translation time) to always allocate the correct size on the stack (when=
+ ADDVL is used).
+>
+> This is wrong.
+>
+> In particular, if the computation of VL is wrong for ADDVL, it is wrong f=
+or every other SVE instruction as well.  Most of which cannot have VL compu=
+ted at runtime like this.
+>
+> That is why we break the TB at every change to VL.
+>
+> Where do we "enter a userspace app" without breaking the TB and recomputi=
+ng?
+> As far as I know this must have executed an ERET to return from EL1 to EL=
+0, which most definitely happens between TBs, or else no system calls would=
+ work at all.
+>
+> Do you have an example that provokes this failure?
+>
+>
+> r~
 
-Everywhere else we call audio_driver_lookup() we check
-whether the return value is NULL before using it,
-but here we don't. I guess this is a false positive
-because the "none" driver must always exist ?
-If so, I can just silence the warning in the coverity UI.
 
-thanks
--- PMM
+--
+Alex Benn=C3=A9e

@@ -1,256 +1,190 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp746082wro;
-        Thu, 14 Mar 2019 04:54:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqymp8ICSx2QAae+2WElvJA35nZTdTRMoh7T6PnZOcKMYmbOXMABF7M/HhXZ12smRv9mv+ip
-X-Received: by 2002:a81:5d55:: with SMTP id r82mr36737399ywb.213.1552564496313;
-        Thu, 14 Mar 2019 04:54:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552564496; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp943291wro;
+        Thu, 14 Mar 2019 07:55:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzVdPTC3I47YWd2EnLu9SUMzs2RoFvuSifFkPQhdvSHPkeJrpG0Sj5tmJTl8hvhV3byAn2s
+X-Received: by 2002:a0c:c3c7:: with SMTP id p7mr4271119qvi.162.1552575317279;
+        Thu, 14 Mar 2019 07:55:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552575317; cv=none;
         d=google.com; s=arc-20160816;
-        b=WERHz832ijZ2uhG7oMAIf6Ld4RBJ8zk2b1p+KiG30VdPnbpK7il2J93D0nnFHaFu6q
-         OfxZgWj4Y4KPcCQ1Xp8JsfsVnN6A685RlN0dipuNKD3G4IIAthRH71lHPdvvPNUJEMJC
-         SRq5tVkVE3gvQBHLSCmdkZgk6DiJBHS+lLzuNcbO34mkZ2lcMm7kqzadVWf6n7fxCFQq
-         UR9xPFozqDv42RNLP3v+PLHDBV1HNPbnWJx4bbtF8lJeGYgaJas8pWauJxpLKyugxrY6
-         6XBaIMCmHQWpotkeSKPTfrrMRjCgwjjWXUK/0CZgg2q1HvoSYV4bGBjab9czVhrjw8uq
-         MkyA==
+        b=jBYAVjQecO81noHrbBNf9yBQxTZKTNRq3Lv8iTMz2tPsMhn5f3GKI8Ahz/J8Iz9H/i
+         TNYeGVjnl6zcHCMBFORJ9dOxqr1DpEupJEmW/uanXbApkSfjNa3fOpav9uZMhdsGz5Mi
+         a7xwPeaFfzHXA0oqu7Eef9gPECxkjKK/aGo2gkTdxPlIAKvzp7b3FwRiHhnG3Dh7pSqp
+         7RLP6OfrFn8O062Kz7SmpEr5Czwkw9j3pAPL6b5Ju1oRn6Pd8brk92glhj7TN7JdSXLN
+         v1/352GcN5k0sqVjUrAtgy7DFG5uj2R/UhB9Tu3TGiXgYc4eEZnKFrT39bz6SWqIfnUm
+         iC/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :to:from:date:dkim-signature;
-        bh=pMDhj56cul8ZEaobcb4ARXE6mLrQQpCIm/4gjab4UNc=;
-        b=wT9g2COcrmt118G4OcuN0pN1xjejW7qU1aJEnwrP6sLTEDk2Su1LCioe/3DyGJPBo7
-         F3uHFwfiDPtzth5BajB9zvFlf/qOz71D5aBv8s0311er8q1+oW8JsG0geuJoQma5m/O0
-         brUbyRUzlwk8BJq1/QFsUEbATI9x3Xz7uMTQOUETshP6L0FwAuyioeWBa/z2LK1ir7QX
-         KPOi7BoBwr5z2q874dgZvZXLh+nnj42BEkfaqGXffMfJyjiTXcS23cQwXD8a8y742z1l
-         PQmbS/5RN5zEuwvLdRriZv5xf59rN2KzOVcTySx3ItJK2Y0u4nbT7b0TAiVy3Z9tN6Iq
-         CIrw==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=Cqch2AvArspZsCiWpr0PWOkrHHp6BHBa9V1pyeQuuTk=;
+        b=sgh0TIkqorwpbF4SScSgqhXjArc7p8YkC0/HSjsKzGcHW1d6bUPLI8SPnJfZFIftfO
+         wttMmCx04bsmP38nKNknn0PoQQWjewUoZx7gHadrVj4HPx1Zsa9dzUbSzo2P1xgSwkR0
+         GfLU61cT1zu3nWV0xqcQYfN38U2VPeLq5l4C/Ig4lQIl0/9HpdZRkQyLnNB9LWROgYLi
+         bH9fhSHSbFXuWGxXhHUD5NEI5L8q+y/Eh+B1uwAlCUNWlloe6YaHsvNhBTRoQSvd+4yx
+         /zO+G0ItvCy7p7XbSxBqWOjewirBsE6PgTuy91CPcYwuUPh6SfAYPzxfaqHyKIqYE/yd
+         wuoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Z8Vev/Fz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q125si8673337ywd.414.2019.03.14.04.54.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 04:54:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id t4si2916274qtp.131.2019.03.14.07.55.17;
+        Thu, 14 Mar 2019 07:55:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Z8Vev/Fz";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:34914 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4Owp-00069b-Oo
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 07:54:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:32790)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h4OwZ-00066y-Ji
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:54:40 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1h4OwY-0006gZ-IT
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:54:39 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:46854)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1h4OwU-0006cz-SJ; Thu, 14 Mar 2019 07:54:35 -0400
-Received: by mail-ed1-x544.google.com with SMTP id n17so4325713edt.13;
-	Thu, 14 Mar 2019 04:54:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=pMDhj56cul8ZEaobcb4ARXE6mLrQQpCIm/4gjab4UNc=;
-	b=Z8Vev/Fzs8WAfzsxuLk16qBrLgxpiSL75c8QcpwV9R4gKqdiq9IQE0SzxUeBogXgv3
-	pPSUCptXEPQxasqYPNHdTMvHzd+7gnwC7ZZJTvYSyNBofHihwzpYvlr6KFjK83gxsOrU
-	y9vYVNmv51di6XVnVrq5iBEh7L3vaGBWdZYcZ6LihezHmma9cCSWfg6QtGGIsQUKhAnY
-	e3EYZcAwbrtX9VoGD9xVEtsfjXdBTZqqqGZjY+KPqPrC5H7VAJ+RSHFLN2DY5Nz457PD
-	GBOu/XvSSazZ9ME3pIShVmlWxT9IiMZJ7lZJwQhjN8o0F73SQ0/XenyDRnrHS+1DyAR8
-	SSLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=pMDhj56cul8ZEaobcb4ARXE6mLrQQpCIm/4gjab4UNc=;
-	b=E+8rT7BXyStjtGwB6a8Ao7HL5RBjrDIloIo3EV9FQOl1Oa5ziw9XuhbjaWQSV1RSc6
-	189PC6jkoA6E/kiGer+VHkbgBESjTsHXTAQo7JseEH/Y+1Yfy8Takqtbzao3wb24sFvA
-	Ofg+CkuTVUArwKOqVmNJErfbRTwJT1ePjYPcAOFTSOReDFl5JN8B18mh9W0fotjGwSX2
-	J1l1XtAsYV5qwsSnV5oefO1dyb03r7p84bONuL79OgysrhK8UQJPEcwxPblEQeldwtMg
-	MBdXFY+9yu50FRALKXcEEaaCLGcUrYgw+MhhypHW3+1EgObvZQ0u/HOdRI/utPpiCf2X
-	htYw==
-X-Gm-Message-State: APjAAAW3rTahR6BGaZjlTD97lmWuMi0deZTopjQ9wj+cBbERbucwgEec
-	yXS/N+oCt+n++vrSzFm6bHM=
-X-Received: by 2002:a17:906:288d:: with SMTP id
-	o13mr33123748ejd.66.1552564473257; 
-	Thu, 14 Mar 2019 04:54:33 -0700 (PDT)
-Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
-	b46sm1415833edd.18.2019.03.14.04.54.32
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 14 Mar 2019 04:54:32 -0700 (PDT)
-Date: Thu, 14 Mar 2019 11:54:31 +0000
-From: Wei Yang <richard.weiyang@gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190314115431.zila6x374tjfq3mv@master>
-References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
-	<20190313044253.31988-4-richardw.yang@linux.intel.com>
-	<20190313132300.3f56a5ca@redhat.com>
-	<20190313133359.h2njohyijgvkcbtv@master>
-	<20190313170943.5384f5cf@redhat.com>
-	<20190313213137.acncaz7duosjybnf@master>
-	<20190314101830.6e10d4d5@redhat.com>
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id EC3484A430;
+	Thu, 14 Mar 2019 10:55:16 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.098
+X-Spam-Level: 
+X-Spam-Status: No, score=0.098 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_LOW=-0.7,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VuPGDY85-OsD; Thu, 14 Mar 2019 10:55:15 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id EA8E74A41B;
+	Thu, 14 Mar 2019 10:55:15 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 895704A41B
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 14 Mar 2019 10:55:14 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dHI8y3Kpi81a for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 14 Mar 2019 10:55:13 -0400 (EDT)
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2BB024A41A
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 14 Mar 2019 10:55:13 -0400 (EDT)
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 51C9EFA7616796081390;
+ Thu, 14 Mar 2019 22:55:09 +0800 (CST)
+Received: from [127.0.0.1] (10.177.31.55) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.408.0; Thu, 14 Mar 2019
+ 22:55:03 +0800
+Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
+To: Steven Price <steven.price@arm.com>, Marc Zyngier <marc.zyngier@arm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>
+References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
+ <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
+ <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
+ <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+From: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <d04c2f21-8d9c-58fa-3b1f-5efbfa55e6d8@huawei.com>
+Date: Thu, 14 Mar 2019 22:55:01 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190314101830.6e10d4d5@redhat.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::544
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract
- build_mcfg
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+In-Reply-To: <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+X-Originating-IP: [10.177.31.55]
+X-CFilter-Loop: Reflected
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Wei Yang <richard.weiyang@gmail.com>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
-	Wei Yang <richard.weiyang@gmail.com>, shannon.zhaosl@gmail.com,
-	qemu-arm@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ejiEoEmCEk1A
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: /uZymx9604qm
 
-On Thu, Mar 14, 2019 at 10:18:30AM +0100, Igor Mammedov wrote:
->On Wed, 13 Mar 2019 21:31:37 +0000
->Wei Yang <richard.weiyang@gmail.com> wrote:
+Hi Peter and Steven,
+
+
+On 2019/3/13 18:11, Steven Price wrote:
+> On 12/03/2019 14:12, Marc Zyngier wrote:
+>> Hi Peter,
+>>
+>> On 12/03/2019 10:08, Peter Maydell wrote:
+>>> On Tue, 12 Mar 2019 at 06:10, Heyi Guo <guoheyi@huawei.com> wrote:
+>>>> When we stop a VM for more than 30 seconds and then resume it, by qemu
+>>>> monitor command "stop" and "cont", Linux on VM will complain of "soft
+>>>> lockup - CPU#x stuck for xxs!" as below:
+>>>>
+>>>> [ 2783.809517] watchdog: BUG: soft lockup - CPU#3 stuck for 2395s!
+>>>> [ 2783.809559] watchdog: BUG: soft lockup - CPU#2 stuck for 2395s!
+>>>> [ 2783.809561] watchdog: BUG: soft lockup - CPU#1 stuck for 2395s!
+>>>> [ 2783.809563] Modules linked in...
+>>>>
+>>>> This is because Guest Linux uses generic timer virtual counter as
+>>>> a software watchdog, and CNTVCT_EL0 does not stop when VM is stopped
+>>>> by qemu.
+>>>>
+>>>> This patch is to fix this issue by saving the value of CNTVCT_EL0 when
+>>>> stopping and restoring it when resuming.
+> An alternative way of fixing this particular issue ("stop"/"cont"
+> commands in QEMU) would be to wire up KVM_KVMCLOCK_CTRL for arm to allow
+> QEMU to signal to the guest that it was forcibly stopped for a while
+> (and so the watchdog timeout can be ignored by the guest).
 >
->> On Wed, Mar 13, 2019 at 05:09:43PM +0100, Igor Mammedov wrote:
->> >On Wed, 13 Mar 2019 13:33:59 +0000
->> >Wei Yang <richard.weiyang@gmail.com> wrote:
->> >  
->> >> On Wed, Mar 13, 2019 at 01:23:00PM +0100, Igor Mammedov wrote:  
->> >> >On Wed, 13 Mar 2019 12:42:53 +0800
->> >> >Wei Yang <richardw.yang@linux.intel.com> wrote:
->> >> >    
->> >> >> Now we have two identical build_mcfg function.
->> >> >> 
->> >> >> Extract them to aml-build.c.
->> >> >> 
->> >> >> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> >> >> ---
->> >> >>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
->> >> >>  hw/arm/virt-acpi-build.c    | 16 ----------------
->> >> >>  hw/i386/acpi-build.c        | 31 +------------------------------
->> >> >>  include/hw/acpi/aml-build.h |  1 +
->> >> >>  4 files changed, 32 insertions(+), 46 deletions(-)
->> >> >> 
->> >> >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> >> >> index 555c24f21d..58d3b8f31d 100644
->> >> >> --- a/hw/acpi/aml-build.c
->> >> >> +++ b/hw/acpi/aml-build.c    
->> >> >
->> >> >I don't like polluting aml-build.c with PCI stuff,
->> >> >we have a lot of PCI related code that needs generalizing
->> >> >lets create a new file for that, something like
->> >> >hw/acpi/pci.c + include/hw/acpi/pci.h
->> >> >    
->> >> >> @@ -25,6 +25,7 @@
->> >> >>  #include "qemu/bswap.h"
->> >> >>  #include "qemu/bitops.h"
->> >> >>  #include "sysemu/numa.h"
->> >> >> +#include "hw/pci/pcie_host.h"
->> >> >>  
->> >> >>  static GArray *build_alloc_array(void)
->> >> >>  {
->> >> >> @@ -1870,3 +1871,32 @@ build_hdr:
->> >> >>      build_header(linker, tbl, (void *)(tbl->data + fadt_start),
->> >> >>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->> >> >>  }
->> >> >> +
->> >> >> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->> >> >> +{
->> >> >> +    AcpiTableMcfg *mcfg;
->> >> >> +    const char *sig;
->> >> >> +    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->> >> >> +
->> >> >> +    mcfg = acpi_data_push(table_data, len);
->> >> >> +    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
->> >> >> +    /* Only a single allocation so no need to play with segments */
->> >> >> +    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->> >> >> +    mcfg->allocation[0].start_bus_number = 0;
->> >> >> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);    
->> >> >    
->> >> >> +    /*
->> >> >> +     * MCFG is used for ECAM which can be enabled or disabled by guest.
->> >> >> +     * To avoid table size changes (which create migration issues),
->> >> >> +     * always create the table even if there are no allocations,
->> >> >> +     * but set the signature to a reserved value in this case.
->> >> >> +     * ACPI spec requires OSPMs to ignore such tables.
->> >> >> +     */
->> >> >> +    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
->> >> >> +        /* Reserved signature: ignored by OSPM */
->> >> >> +        sig = "QEMU";
->> >> >> +    } else {
->> >> >> +        sig = "MCFG";
->> >> >> +    }    
->> >> >I'd leave these hack at acpi-build.c, just push it up call chain.    
->> >> 
->> >> Assign sig in acpi-build.c and pass it to build_mcfg()?  
->> >nope, see more below
->> >
->> >   
->> >> >More over we don't really need it since resizeable memory region was introduced.
->> >> >
->> >> >So we need to keep table_blob size only for legacy usecase (pre resizable)
->> >> >and for that just padding table_blob on required size would be sufficient,
->> >> >there is no need to create dummy QEMU table.
->> >> >As for newer machines (since resizeable memory region) we don't need to
->> >> >do even that i.e. just skip table generation altogether if guest disabled it.
->> >> >    
->> >> 
->> >> I am lost at this place.
->> >> 
->> >> sig is a part of ACPI table header, you mean the sig is not necessary to
->> >> be set in ACPI table header?
->> >> 
->> >> "skip table generation" means remove build_header() in build_mcfg()?  
->> >I mean do not call build_mcfg() at all when you don't have to.
->> >
->> >And when you need to keep table_blob the same size (for old machines)
->> >using acpi_data_push() to reserve space instead of build_mcfg(sig="QEMU")
->> >might just work as well. it's still hack but it can live in x86 specific
->> >acpi_build() keeping build_mcfg() generic.
->> >  
->> 
->> Seems got your idea.
->> 
->> >As for defining what to use as criteria to decide when we need to keep
->> >table_blob size the same, I don't remember history of it, so I'd suggest
->> >to look at commit a1666142, study history of acpi_ram_update() and
->> >legacy_acpi_table_size to figure out since which machine type one doesn't
->> >have to keep table_blob size the same.
->> >  
->> 
->> OK, let me study the history first.
->> 
->> BTW, the legacy here is hardware specification level or qemu software
->> design level?
->it's QEMU only, you need to find a version of QEMU (machine type)
->which didn't have re-sizable MemoryRegion and the next version most likely
->would have a knob somewhere in machine class definition saying that we don't
->care about sizes anymore or care about sizes only for previous machine types.
+>>> Hi -- I know we have issues with the passage of time in Arm VMs
+>>> running under KVM when the VM is suspended, but the topic is
+>>> a tricky one, and it's not clear to me that this is the correct
+>>> way to fix it. I would prefer to see us start with a discussion
+>>> on the kvm-arm mailing list about the best approach to the problem.
+>>>
+>>> I've cc'd that list and a couple of the Arm KVM maintainers
+>>> for their opinion.
+>>>
+>>> QEMU patch left below for context -- the brief summary is that
+>>> it uses KVM_GET_ONE_REG/KVM_SET_ONE_REG on the timer CNT register
+>>> to save it on VM pause and write that value back on VM resume.
+>> That's probably good enough for this particular use case, but I think
+>> there is more. I can get into similar trouble if I suspend my laptop, or
+>> suspend QEMU. It also has the slightly bizarre effect of skewing time,
+>> and this will affect timekeeping in the guest in ways that are much more
+>> subtle than just shouty CPUs.
+> Indeed this is the bigger issue - user space doesn't get an opportunity
+> to be involved when suspending/resuming, so saving/restoring (or using
+> KVM_KVMCLOCK_CTRL) in user space won't fix these cases.
+>
+>> Christoffer and Steve had some stuff regarding Live Physical Time, which
+>> should cover that, and other cases such as host system suspend, and QEMU
+>> being suspended.
+> Live Physical Time (LPT) is only part of the solution - this handles the
+> mess that otherwise would occur when moving to a new host with a
+> different clock frequency.
+>
+> Personally I think what we need is:
+>
+> * Either a patch like the one from Heyi Guo (save/restore CNTVCT_EL0) or
+> alternatively hooking up KVM_KVMCLOCK_CTRL to prevent the watchdog
+> firing when user space explicitly stops scheduling the guest for a while.
+Per Steven's comments, the above change is still needed even when LPT is implemented, so do it make sense for us to apply this patch first? At least it fixes something and does not cause conflict with future solution. And do you think it is better to use KVM_KVMCLOCK_CTRL?
 
-Ok, let me find when we introduced re-sizable MemoryRegion.
+Thanks,
+Heyi
 
-Seems I still have some uncertain concepts. Let me discover it one by
-one :-)
+>
+> * KVM itself saving/restoring CNTVCT_EL0 during suspend/resume so the
+> guest doesn't see time pass during a suspend.
+>
+> * Something equivalent to MSR_KVM_WALL_CLOCK_NEW for arm which allows
+> the guest to query the wall clock time from the host and provides an
+> offset between CNTVCT_EL0 to wall clock time which the KVM can update
+> during suspend/resume. This means that during a suspend/resume the guest
+> can observe that wall clock time has passed, without having to be
+> bothered about CNTVCT_EL0 jumping forwards.
+>
+> Steve
+>
+> .
+>
 
--- 
-Wei Yang
-Help you, Help me
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

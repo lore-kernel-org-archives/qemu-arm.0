@@ -1,110 +1,77 @@
-Received: by 2002:adf:fd4f:0:0:0:0:0 with SMTP id h15csp1680964wrs;
-        Wed, 13 Mar 2019 06:54:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGvblvIUjh8XGHeGQxUC6LHZTt7UniAgp2r50hp9EpXcxm8ce1UPP85djT20mPxYU9jPSa
-X-Received: by 2002:a81:4b12:: with SMTP id y18mr13322616ywa.55.1552485259054;
-        Wed, 13 Mar 2019 06:54:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552485259; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp511807wro;
+        Thu, 14 Mar 2019 00:16:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytZYr7KDFYqTDXPY+JE4HlGUwuYYEymCTCHAKM/YEsCdDnNglqf5OAY0IiIBKRAThw7wMY
+X-Received: by 2002:a0d:ffc5:: with SMTP id p188mr27603531ywf.40.1552547791051;
+        Thu, 14 Mar 2019 00:16:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552547791; cv=none;
         d=google.com; s=arc-20160816;
-        b=jMIKEUlRnFW+8Oie5j5xg4EYLWt81WcXsaNapLdkOvFwd/1BaTZm7T5go0MSCFdRzR
-         u/Fxc3g+fNukCUKqdtXupYfvkuFxIeflirj5RoUUk8o5OpJaYeCaF+PfgEebkN2rZX2W
-         E0MKLEMJe/jvhc0XCen+jA8fu14FISd9a3sBXnY+2ZXcenFI+/x2hhq/qG5o3V2owrUY
-         qvZtkFRQ04UrcmOd7AMiLTvqECeF0EvExGh41yAh2hAzuk2tqQth6IuAs2/xtClNl4bR
-         danjt1VsEHdhVn7ubTAh5S2qxLnAOAiiYHcvUR7ZzBGobcZLRLT9G1/YzLvkjT/J3aDh
-         aWwg==
+        b=B/MzjZK8ThCZ8vef3k/8BWF+HvHBh7q4hoCoGscwSFWI8/uYKZzD/vtA8Q/XdZdWet
+         mY+j87SumvEfleuRTJtPSxY+x/JU3QtjZZpPH0+ZHcGmJ2d2eEMgCO2SOvaVQAJBnNvn
+         PNGJJp9eKakYqAN33q0DUlJNb2zbyYIdXXMQsSgPFga9sxaC5rVaWuX/lnIevM0v0eF/
+         XTHwO9FNa9pRwv4KWMytvj78lhji06Uk139KpeV1W+O2LJG8cslkqEQqVEQ6qkQJ+ijQ
+         brGgc+JXoi4LXz7k//4n4graZAtRCZkeugeOu9S6Gin3Raaou4sLoxsJatLt7eHpg21T
+         Sjbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=dFtKe7HDjUWUkw+rzORv8E0g+re3fq6Gzh8bwSh6Vzk=;
-        b=fWlIHTT5ciFvyjemxyAFx9A4o+qldhxp1XhKdZupmua0UULRuXvnQyEC8aMR/J2g07
-         t6o/4qhXHPS9F5EQC23OfSziKx0muP/t0JrUqxnf0tUYt/98IpOEMytnmd6x7FE32ZOF
-         6+GbdG9n7nvQC2RLSgYYg1q9U7IpsQdL4JdnLTg2FoEQle9nyy21iGhWuvQlW/B9dO0+
-         IPBgl6AUNGuQH8dzkv3WF4X+EYTGMSS8U8budXCw28GGfh1hpY/UE+NCLLBXNrW7tyGg
-         JCpJrygAHgndE8RTTK6BAVm/GvVbN0btGchcla0UpjKrxQsOE6gfqEppIOsq+2zN1Tx+
-         5++w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=Yvs4vmZpzpmFbqsDg2fs5U6rm8D/Rih74JsUPih7eCE=;
+        b=gLgEPFlM/EaX09YWewcF2gsYQvTzUCVL2bFydCYCgh1U/ZQw3Fh5GWorUV2Daeefct
+         8arfTlVcFGM9tEVEDcLbZSpwUf6BMz9R/8IdK5qJIlK/rXBA3nY5cfz31+AJK/WmgHNW
+         /qVG2D9OCj7sN1UvHA9FujmIoMsjXthUbAtZrf4mUWvvt2Qb8ajAK2enJgMT1RdA8HgI
+         WkxRTIooWUmkjlgQzQVSF5W/znk8AvSTuvXgI9He4ZiVi5oMo+6XxmgRcukppnitnH2L
+         stziNlXKwhFC5Af0sV+ACfM16u2sG+Km8L4XzBdGPtntNir/LNPuWg4C4f/jirfr/eaW
+         bu8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iRZwUWzh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 67si6701660ybs.469.2019.03.13.06.54.18
+        by mx.google.com with ESMTPS id 127si8081113ybb.258.2019.03.14.00.16.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Mar 2019 06:54:19 -0700 (PDT)
+        Thu, 14 Mar 2019 00:16:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iRZwUWzh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:45074 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([127.0.0.1]:58348 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h44Ko-0001os-IR
-	for alex.bennee@linaro.org; Wed, 13 Mar 2019 09:54:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50510)
+	id 1h4KbO-0002uw-Gf
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 03:16:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41927)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h44Kf-0001mg-59
-	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 09:54:09 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1h4KbE-0002um-B2
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 03:16:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bztemail@gmail.com>) id 1h44Ke-0005T5-C4
-	for qemu-arm@nongnu.org; Wed, 13 Mar 2019 09:54:09 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:41651)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bztemail@gmail.com>)
-	id 1h44Ke-0005Qx-2h; Wed, 13 Mar 2019 09:54:08 -0400
-Received: by mail-lj1-x243.google.com with SMTP id z25so1639066ljk.8;
-	Wed, 13 Mar 2019 06:54:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dFtKe7HDjUWUkw+rzORv8E0g+re3fq6Gzh8bwSh6Vzk=;
-	b=iRZwUWzhz+P3isAYoQV0+3Bug1c6h9ix3e/K//YHA4CilMU9QghnfBp6vCwGje+xMF
-	4GG0r2F6rd1b1i4EYBlVqJCiO5o9U1oxyUAVvS4xVEqixEPJOcoNku4794qEZVJVaz1z
-	sfk9yKTPk782wufK3nJDveLJfjGpzalIHGWPN1P50EOQg+RKHjgHLeCJgOjaCQcXTGVm
-	ctxHX53DtGSeNQuUqzZuGHOz2phXnRnROatQdYfph2gdEO26AiQbB+8xWxyHRdtHE0t4
-	4VCLzsw/w+mDSX0XBPPg3RfWX8yxdfR9ls8kcX1MQMQEmyOGCwV45uH3p6oRmYYKoyK+
-	5D/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=dFtKe7HDjUWUkw+rzORv8E0g+re3fq6Gzh8bwSh6Vzk=;
-	b=i8FsrWBpwGaQs+9uNhpIydNsuJipbwMXz85E3ONAW7zar34sUOnPVtwHuo7K+9V10s
-	gfk2Hq/u7Vw2ir88SaCPY0pa2QyGtomgcNPHjjVq9He7bH9RCJ5/4mer/a4K0iMC9fQx
-	G1GZurEwE19ZklU1+1K15V8i5j0skJ6Xf588SK3JtH22cTsjI3M0gyKfHwwR6leYA821
-	Cv9/0sfrcQfIS6pGh8lmmKhA87Jaiuqnjp4LFCNHzxxmr/TZHQgnIj0c1Ntm1WMdH/S3
-	pgz2cDgWsHVf6EDqVsr2ye66pAKWy2C6cKvJonFBbKwD7YinRKR2humDW7rGGv1qUPdv
-	s7fw==
-X-Gm-Message-State: APjAAAVYgSUEhAwB1YlS9n/uoPOGVAxqwXzT+Y4T6S5aKkBhifgdf005
-	1KSgsi1cTEMQnYwsiQngzI0kLb+gRlVhLh2ymXs=
-X-Received: by 2002:a2e:3a02:: with SMTP id h2mr6291043lja.148.1552485246123; 
-	Wed, 13 Mar 2019 06:54:06 -0700 (PDT)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1h4KbD-0006Zv-7x
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 03:16:20 -0400
+Received: from mga18.intel.com ([134.134.136.126]:56151)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1h4KbC-0006Sq-Uw; Thu, 14 Mar 2019 03:16:19 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+	by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	14 Mar 2019 00:16:11 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,477,1544515200"; d="scan'208";a="151588846"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by fmsmga002.fm.intel.com with ESMTP; 14 Mar 2019 00:16:09 -0700
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Thu, 14 Mar 2019 15:15:43 +0800
+Message-Id: <20190314071543.16935-1-richardw.yang@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Received: by 2002:a2e:8554:0:0:0:0:0 with HTTP; Wed, 13 Mar 2019 06:54:05
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA9hWPvGxw3THrsnQAMuQ87gzArGRa+kouF=d9DWsEnLTw@mail.gmail.com>
-References: <CADYoBw1HTzqTjfyDgDbP042AH1EkS1DD7Sf4um8eO7d22t4CDA@mail.gmail.com>
-	<CAFEAcA9UzFdyAFkAuWzcV5x1JDBCTVr=okdLN-MpiduvACt4tw@mail.gmail.com>
-	<CADYoBw3yj9yuxUSFuwCqKbTZNFFDF7Je4Kgxt-Rvd71x3JusQA@mail.gmail.com>
-	<CAFEAcA_N83yo8xV3hCpVPFOhQj+R95+8fVePjEXgxKZtQPUP3w@mail.gmail.com>
-	<CADYoBw00Li2G4srfLvtG4pvBMfyEuDh0AU47wj5BcKOUkfWhKw@mail.gmail.com>
-	<CAFEAcA9Ycm43h8ekoc1uP_K7eLT98Qg+EFqE3Lvu66cjU5c5_A@mail.gmail.com>
-	<CADYoBw1QFQxicJJ9tQa2Ok7PAdWvgtD4MQncdJ0zi4E2vktVhQ@mail.gmail.com>
-	<CAFEAcA-+U75+EQzcpV4kZHw+4xMSbMv3UJ0CV_Q3DVbNx5RbNg@mail.gmail.com>
-	<CADYoBw2XWeDUqBHVJBWxJAzQ4f0imosEeLHHoG9AfHfdavOTrA@mail.gmail.com>
-	<CAFEAcA8YT4oLWK7gQB44p5UQVHEUR6bFdHy6VcGnGAxFxhWdiQ@mail.gmail.com>
-	<CADYoBw1TQMpkYbS8g_OzZ4UeQz=NYO=dugRnCuL2mP4xBxcWMQ@mail.gmail.com>
-	<CAFEAcA9hWPvGxw3THrsnQAMuQ87gzArGRa+kouF=d9DWsEnLTw@mail.gmail.com>
-From: bzt <bztemail@gmail.com>
-Date: Wed, 13 Mar 2019 14:54:05 +0100
-Message-ID: <CADYoBw0bKUVD-xsh-jtsgg5i92eu1nJB=5bjaWHeJ_roBB2seA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::243
-Subject: Re: [Qemu-arm] [PATCH] Added periodic IRQ support for
- bcm2836_control local timer
+X-Received-From: 134.134.136.126
+Subject: [Qemu-arm] [PATCH] hw/acpi: extract acpi_add_rom_blob()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,43 +83,169 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	shannon.zhaosl@gmail.com,
+	Wei Yang <richardw.yang@linux.intel.com>, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 10VJ9Z/3YYSu
+X-TUID: HFAq11Pu3M/R
 
-Hi,
+arm and i386 has almost the same function acpi_add_rom_blob(), except
+giving different FWCfgCallback function.
 
-That's great, thank you! Looking forward to see the patch in the master branch!
+This patch extract acpi_add_rom_blob() to aml-build.c by passing
+FWCfgCallback to it.
 
-Cheers,
-bzt
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+---
+ hw/acpi/aml-build.c         |  8 ++++++++
+ hw/arm/virt-acpi-build.c    | 24 +++++++++---------------
+ hw/i386/acpi-build.c        | 24 +++++++++---------------
+ include/hw/acpi/aml-build.h |  4 ++++
+ 4 files changed, 30 insertions(+), 30 deletions(-)
 
-On 3/12/19, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Sun, 10 Mar 2019 at 11:02, bzt <bztemail@gmail.com> wrote:
->>
->> Hi,
->>
->> Okay, as you wish. My code works either way and on real hardware as
->> well, because I acknowledge the periodic IRQ as soon as possible, so
->> good for me.
->
-> Thanks; I'll get this version of the patch into git master
-> at some point in the next week.
->
-> (I happened to have an rpi2 to hand, so I wrote a little test
-> program to check what the behaviour of the h/w is, and it does
-> indeed not clear the INTEN bit when it signals an IRQ,
-> and it doesn't clear the IRQ line until the guest clears the
-> interrupt flag: so if your IRQ handler doesn't clear the flag
-> by writing to the register then the IRQ will 'scream' (fire
-> continually) both on QEMU and on the real hardware. So I think
-> the data sheet is correct here, though it certainly has its share
-> of errors...)
->
-> thanks
-> -- PMM
->
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 555c24f21d..ed427f8310 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1559,6 +1559,14 @@ void *acpi_data_push(GArray *table_data, unsigned size)
+     return table_data->data + off;
+ }
+ 
++MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
++                                GArray *blob, const char *name,
++                                uint64_t max_size)
++{
++    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
++                        name, update, opaque, NULL, true);
++}
++
+ unsigned acpi_data_len(GArray *table)
+ {
+     assert(g_array_get_element_size(table) == 1);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 57679a89bf..ea4ac68b60 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
+     build_state->patched = false;
+ }
+ 
+-static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+-                                       GArray *blob, const char *name,
+-                                       uint64_t max_size)
+-{
+-    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, virt_acpi_build_update, build_state, NULL, true);
+-}
+-
+ static const VMStateDescription vmstate_virt_acpi_build = {
+     .name = "virt_acpi_build",
+     .version_id = 1,
+@@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
+     virt_acpi_build(vms, &tables);
+ 
+     /* Now expose it all to Guest */
+-    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
+-                                               ACPI_BUILD_TABLE_FILE,
+-                                               ACPI_BUILD_TABLE_MAX_SIZE);
++    build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
++                                              build_state, tables.table_data,
++                                              ACPI_BUILD_TABLE_FILE,
++                                              ACPI_BUILD_TABLE_MAX_SIZE);
+     assert(build_state->table_mr != NULL);
+ 
+     build_state->linker_mr =
+-        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
+-                          "etc/table-loader", 0);
++        acpi_add_rom_blob(virt_acpi_build_update, build_state,
++                          tables.linker->cmd_blob, "etc/table-loader", 0);
+ 
+     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+                     acpi_data_len(tables.tcpalog));
+ 
+-    build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+-                                              ACPI_BUILD_RSDP_FILE, 0);
++    build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
++                                             build_state, tables.rsdp,
++                                             ACPI_BUILD_RSDP_FILE, 0);
+ 
+     qemu_register_reset(virt_acpi_build_reset, build_state);
+     virt_acpi_build_reset(build_state);
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 416da318ae..af2a944dd2 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
+     build_state->patched = 0;
+ }
+ 
+-static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+-                                       GArray *blob, const char *name,
+-                                       uint64_t max_size)
+-{
+-    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+-                        name, acpi_build_update, build_state, NULL, true);
+-}
+-
+ static const VMStateDescription vmstate_acpi_build = {
+     .name = "acpi_build",
+     .version_id = 1,
+@@ -2891,14 +2883,15 @@ void acpi_setup(void)
+     acpi_build(&tables, MACHINE(pcms));
+ 
+     /* Now expose it all to Guest */
+-    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
+-                                               ACPI_BUILD_TABLE_FILE,
+-                                               ACPI_BUILD_TABLE_MAX_SIZE);
++    build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
++                                              build_state, tables.table_data,
++                                              ACPI_BUILD_TABLE_FILE,
++                                              ACPI_BUILD_TABLE_MAX_SIZE);
+     assert(build_state->table_mr != NULL);
+ 
+     build_state->linker_mr =
+-        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
+-                          "etc/table-loader", 0);
++        acpi_add_rom_blob(acpi_build_update, build_state,
++                          tables.linker->cmd_blob, "etc/table-loader", 0);
+ 
+     fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
+                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+@@ -2935,8 +2928,9 @@ void acpi_setup(void)
+         build_state->rsdp_mr = NULL;
+     } else {
+         build_state->rsdp = NULL;
+-        build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+-                                                  ACPI_BUILD_RSDP_FILE, 0);
++        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
++                                                 build_state, tables.rsdp,
++                                                 ACPI_BUILD_RSDP_FILE, 0);
+     }
+ 
+     qemu_register_reset(acpi_build_reset, build_state);
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 1a563ad756..4945aeef5b 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -3,6 +3,7 @@
+ 
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/bios-linker-loader.h"
++#include "hw/loader.h"
+ 
+ /* Reserve RAM space for tables: add another order of magnitude. */
+ #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
+@@ -383,6 +384,9 @@ build_header(BIOSLinker *linker, GArray *table_data,
+              AcpiTableHeader *h, const char *sig, int len, uint8_t rev,
+              const char *oem_id, const char *oem_table_id);
+ void *acpi_data_push(GArray *table_data, unsigned size);
++MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
++                                GArray *blob, const char *name,
++                                uint64_t max_size);
+ unsigned acpi_data_len(GArray *table);
+ void acpi_add_table(GArray *table_offsets, GArray *table_data);
+ void acpi_build_tables_init(AcpiBuildTables *tables);
+-- 
+2.19.1
+

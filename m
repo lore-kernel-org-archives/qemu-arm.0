@@ -1,98 +1,97 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp805844wro;
-        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLikVdhuhcz/hsqfaFLPnLCt0VwYI8ncyWHjCVIfRbklky9D/c0jDoU0/qbTOv4dhLcspq
-X-Received: by 2002:a25:1e42:: with SMTP id e63mr25587803ybe.485.1552567810865;
-        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552567810; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp805850wro;
+        Thu, 14 Mar 2019 05:50:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxoSNXtcF/IJnl3MJCzYyl05dAFQJ6moToLkBG54jQNy5atPy0dqsr+Bafvm2oVZ+XXs1zE
+X-Received: by 2002:a0d:fd47:: with SMTP id n68mr11835742ywf.407.1552567811564;
+        Thu, 14 Mar 2019 05:50:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552567811; cv=none;
         d=google.com; s=arc-20160816;
-        b=fc3X/MoEMAs/PD8jb8NddIn8ZdmoZAqx+bvove7tiQH5H38orAfV6h3g8iK68W1mxG
-         g/YpKNWmdSZzn97SpLuobkfohbEQVvy9Fml49SDMIOnfcGaFg3uOH8rw6ISx3Wx/QQly
-         iyJa21r9UiVqGmNnZG5uP02OgYeQ3xvFQMQc/ZO6TgVHGCwC0bf1LytSLb0V6Y1S3x2m
-         9mo35FQxTbo0lD1zyVJpyM2hUAJWvxVf/dEI/RoSyeL9tiyGTPMTQZE45xE9DWXd5gsf
-         /i4sd+zh1OXeT+svaYgah2sAPhBTdx12DngxjJS5WS+nIKasvBO/i4Yz3OWC2ggqxwq+
-         Q8KQ==
+        b=VMGPseeyl2QEkLSPOf7DAXdQabHWvTmPua51HZSSwFe7nOIIt1Tn88TiSggZJgWk0w
+         OGdf6WjejYcdSIMTpTyzfCVHYBF0th2Rur5RqMLEWGqHWtkBvueVyZagknaa3Xb4FsXW
+         +EV1mpSyHH+rr0bFOZ39pVIqyacOl9m/rXYtRGH4kZ2cR0plmM4tOJnIWGLCqEvRZLuJ
+         kT4mtBLKyyn7/6Zk67r3Ct+tHYS+5Syb9Ni7V5oo9GpBYQ0ZIxg/ScL9QKEonJp0lMC/
+         qRPbGo6HxbAC8a1KhHsUodCq8C8z6YVSJmKMjUJ0HIkBi+yAcddyKw3Nc3JwMPoaJ5lJ
+         P62A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
          :to:message-id:date:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
-        b=znDma29+Klp7dhVGARfGTb/Hb2UfQWyNzXOGD4VraNnSnBmrlpQSDbqAtb27CTNRWO
-         felKci+rirRV9qF1c8dsPXzg8A0Z3QlV+dNsuoB5E/sL2kOqbGyA/rgzG3wJU7EEXqAI
-         5HC317CXXXGNMEjwtDV/06nNab/CbqrPXjdiUTwrcJREPBD5vStgZ38CPDrYtqX1sX6X
-         QIlyVW9TlMY3aWK39G/owmV8TTL6FHV+zzdV7U4ilLqdtAmBC8gDmHiHJwiQuibsnkeA
-         Abz5phBa3VIJUTdKJZj7rm8gO7e4bHT/VCWUMXF++fMALhdvtQUTE1bOqPraUDl8vr5n
-         y4HQ==
+        bh=TYGO+2koI0FGlpeyywjAnSgYBEv5+BWjllHtyfD9pZY=;
+        b=CAdP75r3q3jHoDtCNzrBIujvLFHZRyXTRoBgcgWoayJUhlqizYhpxqL2RptuSoOC0A
+         V3/Pr7jwL8fivxkEVDReCsr0GQ59srQbGKz5oL5hb7JSl9wYI+pu96xCPDCXZxUMaRCx
+         /7imwGongKu5zUoEFLrphZ4KepIrAlazlXBLpdcmSFL7Lb/tmpUt7CuSxk/zhrRvwsEy
+         Zxc1B6r+JzTJXoP+jSMDWZlQDvhVnL5Jxk7X/SgLwXAvoYlqiQCJ4GaBkoBk89KMzkvk
+         pCYVvoo4KO2qNDx3nXDI/W5jQfOMb1s6motTmKA/BnHbbvPXl2BNMcgE56f2nk96T8Hw
+         2HnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gDa+JJNw;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=hKL2vXd4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b75si8501559ywb.52.2019.03.14.05.50.10
+        by mx.google.com with ESMTPS id v13si8634995ybp.189.2019.03.14.05.50.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 05:50:10 -0700 (PDT)
+        Thu, 14 Mar 2019 05:50:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=gDa+JJNw;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=hKL2vXd4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:36276 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36278 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4PoI-0002of-3n
+	id 1h4PoI-0002os-TR
 	for alex.bennee@linaro.org; Thu, 14 Mar 2019 08:50:10 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53606)
+Received: from eggs.gnu.org ([209.51.188.92]:33316)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <bluecmd@google.com>) id 1h4OLr-0007eT-9J
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:16:43 -0400
+	(envelope-from <bluecmd@google.com>) id 1h4MgN-00043U-0N
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:29:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <bluecmd@google.com>) id 1h4OKj-0004V3-C4
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:15:34 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:35253)
+	(envelope-from <bluecmd@google.com>) id 1h4Mag-00072M-Cj
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:23:55 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37856)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <bluecmd@google.com>) id 1h4OKi-0004Un-W6
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:15:33 -0400
-Received: by mail-oi1-x241.google.com with SMTP id j132so1030461oib.2
-	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 04:15:32 -0700 (PDT)
+	(Exim 4.71) (envelope-from <bluecmd@google.com>) id 1h4Maf-00071r-W6
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 05:23:54 -0400
+Received: by mail-oi1-x241.google.com with SMTP id n7so3663552oic.4
+	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 02:23:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
-	b=gDa+JJNwFsghDxtgP1mwVNNcVRdIgTnhh6i5EkLtZP/9jq6rmKfqdg+sA8g7XHjsmq
-	WfL9tIlyBG7QQryYCmijjempZ3MXddOihbWiY1RtEde9A4JjsKB2FFZ/mo+sbChBW7/Z
-	v9CLqCbdjI7YTxNzd+5btou34iY21351uLc5xmEr4yYuSfKOkG/5czIj/eqIFS1y2vs7
-	Vz8nWla0ZQIHHJCD5WiqDo+i7XN+asUVNsDmddSS9INjJqdwqhcuYseaO62D/l6EVvMM
-	Xs2YECAsC6AKOf70pHNO6BsIUTPwHqf/SRF9hK5j/Kju+lK5f3iVsR5M1AZKCjEconJS
-	XphA==
+	:cc; bh=TYGO+2koI0FGlpeyywjAnSgYBEv5+BWjllHtyfD9pZY=;
+	b=hKL2vXd4dyDT1D2KirDWCPP+ncsZKtL3t9ZpA1b4TBfrMs/4qYj3NidqzoAR2z0jsw
+	bzpOJnV1AtU6SojfCznh2GaW6L8Qq6TPRaXx9KFqx3rWHXgkiiq2599aNUBDlbTeFa/6
+	8/MedIekgrSUwpwOVvwxp8AvIKO46n6jdeXI2pSUb3/WjguxflkZBwmmgm5CjNxloCVj
+	tPtLXVfh6wQrs1/UAEHpR59nwTk89Ypd8su9V4F1oWmUXqDl+YT3zbQnyKjqIWO/U8sg
+	zDVmz7ShUV0kcxJ0MiNfXk2yNL9j6Uw6ZBHufoa2RdiE4Wzx0hFiUitcrBgjgibV5oZl
+	+Jgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=wc98OiND2QHY+ImLWaLAaPj5aTUQY3CGUpYRwwbO4Sc=;
-	b=JyGe5BJ9iENt4MG6imnrnm5CVDjOrBScmBSvwLriu9FRwXjLoEzv85mQk7pCx0WQ6I
-	fNXWlX6+fHjR3dfP6xJfQj1q3+G9TNVG41kd08b2UrqD9fnuwZTWX7eedJcGf8SQW2tY
-	LnaWAqTNBqs1Dg1B12MSXkisXkyLdYqNpX2k6s1j235BJfB+QyJTjhIfF3bo02f/cDm3
-	Jso3I1g5FeBTRZ+hVmDCAuQFum7pPrqV/M516xllS8qfPvdTasEXuef81RkUATx+lMcW
-	pysp2o+XNjTrJXYBp7XbU+8NpxRR29dnHBXT2TI8nM0md9jwm144MXtg8AcDg1JhD2qs
-	CFdA==
-X-Gm-Message-State: APjAAAX5phUHAHNt9a6gFwyvTvLN2k6y2eC9Yj1I0V5RLIqsoci7kMcS
-	PuvhWjT9Goozrk6P1sVbuMN9QDUQzvSVGzO3/PII1w==
-X-Received: by 2002:aca:b408:: with SMTP id d8mr1615093oif.15.1552562131505;
-	Thu, 14 Mar 2019 04:15:31 -0700 (PDT)
+	bh=TYGO+2koI0FGlpeyywjAnSgYBEv5+BWjllHtyfD9pZY=;
+	b=hDXGTloe11CrJ2iamyaTE3ZUHrQEjUh6Au86qRGsOxdeki7QZxpabWy75rpsBj4Jaq
+	KfXeIwfjCO6F9CWN3Q8XKYzueySzOGNrFyRcnwGuESqH93r8ziATPDosPTloMBN4Hgsc
+	YRTaipOhrh3y56ZToORWCoBOExjPzXb+XzQbIh28x41x42s29FpGTwc7LdIBe3pGmOCm
+	JDzmahDpaa0QSZHQcptB3FUOfpgE8duwWJUN9lcXuTNrfQez3BwbwPTO0wOAWYFOFxgw
+	WMS5F3AfXyCB2Ih//764n+9Bk6w9FFuVlQIVNq2nDT29J3G2NjHRQYmmFv8Y2koGmnRe
+	wc3w==
+X-Gm-Message-State: APjAAAUM+hOcrVSdb3hGI2ZnJryy4rbp1dWj/hzGIQLpxojjgR+ExZ9N
+	TYonh+s8O9gW3gHGyCXnx9rXkwylZ+sHRztpSFKgpg==
+X-Received: by 2002:aca:3a57:: with SMTP id h84mr1369187oia.162.1552555431575; 
+	Thu, 14 Mar 2019 02:23:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190314084235.9887-1-clg@kaod.org>
-	<20190314084235.9887-6-clg@kaod.org>
-	<CAFEAcA_5rXmNEW+Yms8BhaFBn3UaJKNYhhO8xf76qWh6-zHj_w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_5rXmNEW+Yms8BhaFBn3UaJKNYhhO8xf76qWh6-zHj_w@mail.gmail.com>
-Date: Thu, 14 Mar 2019 12:15:19 +0100
-Message-ID: <CAEfeXvbki=OyBMd2wYP81Y9di3aLN8ZT7y8THyfT_uLu5RaBRQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000579a8b05840c0a00"
+References: <155255399748.14224.8340819987953765086@00e3a2c681c7>
+	<b240943d-9294-6894-1295-6110278e81cb@kaod.org>
+In-Reply-To: <b240943d-9294-6894-1295-6110278e81cb@kaod.org>
+Date: Thu, 14 Mar 2019 10:23:40 +0100
+Message-ID: <CAEfeXva7-cjogOsV3Q3na_i2XZj5376gcFhScFmPZQKXPSpuzQ@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: multipart/alternative; boundary="000000000000ff165305840a7af2"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4864:20::241
 X-Mailman-Approved-At: Thu, 14 Mar 2019 08:49:53 -0400
-Subject: Re: [Qemu-arm] [PATCH 5/5] aspeed/timer: Use signed muldiv for
- timer resets
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/5] aspeed/timer: Fix slowdowns
+ in recent Linux
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,54 +105,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 From: Christian Svensson via Qemu-arm <qemu-arm@nongnu.org>
 Reply-To: Christian Svensson <bluecmd@google.com>
-Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	Joel Stanley <joel@jms.id.au>
+Cc: fam@euphon.net, peter.maydell@linaro.org, Andrew Jeffery <andrew@aj.id.au>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nMehaELvILP0
+X-TUID: OKWR8SkJkytL
 
---000000000000579a8b05840c0a00
+--000000000000ff165305840a7af2
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for the feedback,
+Hi,
 
-On Thu, Mar 14, 2019, 11:57 Peter Maydell <peter.maydell@linaro.org> wrote:
+My apologies, I don't know how I missed those warnings.
+I'll create a new patch.
 
-> But overall I'm a little sceptical that the aspeed timer is
-> really a special case that needs a signed version of this
-> when no other timer in the system does...
+- Chris
 
 
-I agree, and the v2 of the patch doesn't require it. Happy to submit it
-when you folks think it's a good time to merge it.
+On Thu, Mar 14, 2019 at 10:06 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote=
+:
 
-If you're curious you can get a sneak peek of the patch in
-https://github.com/u-root/u-bmc/issues/134.
+> Hello,
+>
+> For the time being, we can drop patch 5 from this series.
+>
+> Thanks,
+>
+> C.
+>
+> On 3/14/19 9:59 AM, no-reply@patchew.org wrote:
+> > Patchew URL:
+> https://patchew.org/QEMU/20190314084235.9887-1-clg@kaod.org/
+> >
+> >
+> >
+> > Hi,
+> >
+> > This series failed the docker-mingw@fedora build test. Please find the
+> testing commands and
+> > their output below. If you have Docker installed, you can probably
+> reproduce it
+> > locally.
+> >
+> > =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> > #!/bin/bash
+> > time make docker-test-mingw@fedora SHOW_ENV=3D1 J=3D14 NETWORK=3D1
+> > =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+> >
+> >   CC      migration/xbzrle.o
+> >   CC      migration/postcopy-ram.o
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c: In function
+> 'aspeed_timer_set_value':
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:19: error: '__int128_t'
+> undeclared (first use in this function); did you mean '__int128'?
+> >                  ((__int128_t)delta * NANOSECONDS_PER_SECOND / rate);
+> >                    ^~~~~~~~~~
+> >                    __int128
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:19: note: each undeclare=
+d
+> identifier is reported only once for each function it appears in
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:30: error: expected ')'
+> before 'delta'
+> >                  ((__int128_t)delta * NANOSECONDS_PER_SECOND / rate);
+> >                  ~            ^~~~~
+> >                               )
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c:276:22: error: unused
+> variable 'rate' [-Werror=3Dunused-variable]
+> >              uint32_t rate =3D calculate_rate(t);
+> >                       ^~~~
+> > /tmp/qemu-test/src/hw/timer/aspeed_timer.c:275:21: error: unused
+> variable 'delta' [-Werror=3Dunused-variable]
+> >              int64_t delta =3D (int64_t) value - (int64_t)
+> calculate_ticks(t, now);
+> >                      ^~~~~
+> > cc1: all warnings being treated as errors
+> >
+> >
+> > The full log is available at
+> >
+> http://patchew.org/logs/20190314084235.9887-1-clg@kaod.org/testing.docker=
+-mingw@fedora/?type=3Dmessage
+> .
+> > ---
+> > Email generated automatically by Patchew [http://patchew.org/].
+> > Please send your feedback to patchew-devel@redhat.com
+> >
+>
+>
 
-Regards,
-
---000000000000579a8b05840c0a00
+--000000000000ff165305840a7af2
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
-"gmail_attr">Thanks for the feedback,</div><div dir=3D"ltr" class=3D"gmail_=
-attr"><br></div><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 14, 2019,=
- 11:57 Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" rel=3D=
-"noreferrer noreferrer" target=3D"_blank">peter.maydell@linaro.org</a>&gt; =
-wrote:</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bo=
-rder-left:1px #ccc solid;padding-left:1ex">
-But overall I&#39;m a little sceptical that the aspeed timer is<br>
-really a special case that needs a signed version of this<br>
-when no other timer in the system does...</blockquote></div></div><div dir=
-=3D"auto"><br></div><div dir=3D"auto">I agree, and the v2 of the patch does=
-n&#39;t require it. Happy to submit it when you folks think it&#39;s a good=
- time to merge it.</div><div dir=3D"auto"><br></div><div dir=3D"auto">If yo=
-u&#39;re curious you can get a sneak peek of the patch in=C2=A0<a href=3D"h=
-ttps://github.com/u-root/u-bmc/issues/134" target=3D"_blank" rel=3D"norefer=
-rer">https://github.com/u-root/u-bmc/issues/134</a>.</div><div dir=3D"auto"=
-><br></div><div dir=3D"auto">Regards,</div><div dir=3D"auto"></div></div>
+<div dir=3D"ltr">Hi,<div><br></div><div>My apologies, I don&#39;t know how =
+I missed those warnings.</div><div>I&#39;ll create a new patch.</div><div><=
+br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_signature" data-smart=
+mail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr">- Chris</di=
+v></div></div></div></div><br></div></div><br><div class=3D"gmail_quote"><d=
+iv dir=3D"ltr" class=3D"gmail_attr">On Thu, Mar 14, 2019 at 10:06 AM C=C3=
+=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt; =
+wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
+px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hello,<br=
+>
+<br>
+For the time being, we can drop patch 5 from this series. <br>
+<br>
+Thanks,<br>
+<br>
+C. <br>
+<br>
+On 3/14/19 9:59 AM, <a href=3D"mailto:no-reply@patchew.org" target=3D"_blan=
+k">no-reply@patchew.org</a> wrote:<br>
+&gt; Patchew URL: <a href=3D"https://patchew.org/QEMU/20190314084235.9887-1=
+-clg@kaod.org/" rel=3D"noreferrer" target=3D"_blank">https://patchew.org/QE=
+MU/20190314084235.9887-1-clg@kaod.org/</a><br>
+&gt; <br>
+&gt; <br>
+&gt; <br>
+&gt; Hi,<br>
+&gt; <br>
+&gt; This series failed the docker-mingw@fedora build test. Please find the=
+ testing commands and<br>
+&gt; their output below. If you have Docker installed, you can probably rep=
+roduce it<br>
+&gt; locally.<br>
+&gt; <br>
+&gt; =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D<br>
+&gt; #!/bin/bash<br>
+&gt; time make docker-test-mingw@fedora SHOW_ENV=3D1 J=3D14 NETWORK=3D1<br>
+&gt; =3D=3D=3D TEST SCRIPT END =3D=3D=3D<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0CC=C2=A0 =C2=A0 =C2=A0 migration/xbzrle.o<br>
+&gt;=C2=A0 =C2=A0CC=C2=A0 =C2=A0 =C2=A0 migration/postcopy-ram.o<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c: In function &#39;aspeed_ti=
+mer_set_value&#39;:<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:19: error: &#39;__int12=
+8_t&#39; undeclared (first use in this function); did you mean &#39;__int12=
+8&#39;?<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ((__int1=
+28_t)delta * NANOSECONDS_PER_SECOND / rate);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^=
+~~~~~~~~~<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 _=
+_int128<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:19: note: each undeclar=
+ed identifier is reported only once for each function it appears in<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c:279:30: error: expected &#3=
+9;)&#39; before &#39;delta&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ((__int1=
+28_t)delta * NANOSECONDS_PER_SECOND / rate);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ~=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^~~~~<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0)<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c:276:22: error: unused varia=
+ble &#39;rate&#39; [-Werror=3Dunused-variable]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 uint32_t rate =3D calc=
+ulate_rate(t);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0^~~~<br>
+&gt; /tmp/qemu-test/src/hw/timer/aspeed_timer.c:275:21: error: unused varia=
+ble &#39;delta&#39; [-Werror=3Dunused-variable]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 int64_t delta =3D (int=
+64_t) value - (int64_t) calculate_ticks(t, now);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 ^~~~~<br>
+&gt; cc1: all warnings being treated as errors<br>
+&gt; <br>
+&gt; <br>
+&gt; The full log is available at<br>
+&gt; <a href=3D"http://patchew.org/logs/20190314084235.9887-1-clg@kaod.org/=
+testing.docker-mingw@fedora/?type=3Dmessage" rel=3D"noreferrer" target=3D"_=
+blank">http://patchew.org/logs/20190314084235.9887-1-clg@kaod.org/testing.d=
+ocker-mingw@fedora/?type=3Dmessage</a>.<br>
+&gt; ---<br>
+&gt; Email generated automatically by Patchew [<a href=3D"http://patchew.or=
+g/" rel=3D"noreferrer" target=3D"_blank">http://patchew.org/</a>].<br>
+&gt; Please send your feedback to <a href=3D"mailto:patchew-devel@redhat.co=
+m" target=3D"_blank">patchew-devel@redhat.com</a><br>
+&gt; <br>
+<br>
+</blockquote></div>
 
---000000000000579a8b05840c0a00--
+--000000000000ff165305840a7af2--

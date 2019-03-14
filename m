@@ -1,102 +1,79 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp688950wro;
-        Thu, 14 Mar 2019 03:58:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwTcwI7fahNibhmmdwsyaQTSwUoJalaSsHUISpMCwvLQC2A2Jg23TKzMkbOKTBaAYSIcKX4
-X-Received: by 2002:a81:7c54:: with SMTP id x81mr37873302ywc.12.1552561081862;
-        Thu, 14 Mar 2019 03:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552561081; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp724313wro;
+        Thu, 14 Mar 2019 04:31:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxl2oHPgnfQkbJYhtE5asrh2VDQPWObk07aC7g8FkTjRJ/HyqGzbx2bgGBpDU++2Pwt+Ujg
+X-Received: by 2002:a81:4b90:: with SMTP id y138mr16755279ywa.80.1552563096677;
+        Thu, 14 Mar 2019 04:31:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552563096; cv=none;
         d=google.com; s=arc-20160816;
-        b=UIqNIKcvL5BXZd8z5YPq3GmzUI5ELfomZLR07ASEE3qlB06h4YfPEbq12h6ns2aPOO
-         /jzQqSSr4B3um6Zs0rAjVo5LBacnTqBDNn26OVWHnMK+e9Sgjaz7WshNsC4jv4eeZ04j
-         pXu0eS/szOCtSPfqaGXgkTtp/P2CmjZcN1XMxobakEYtfrFn+xyMYqZl7Y2Rrx4IYww1
-         exI22u/BIBKThGkHQkcZgcQj+GErioGbnxeyoXL9txgV7d0ZYa8Etq71k+dW1XaD3U0O
-         HNwp/MCRIA0CAlUzDGY7pYK5nXp2TAuGslT7ELsCn+g1X8vqgqZZhKtH8kUiOXJVJ75m
-         Y/ZQ==
+        b=vI+yaT4/jaBYCQ3lHuMvDm6kRuO/I5sgqVIi6q0PIAsSUCaBSqXAceA8E5las1tVmx
+         6bbper0Tdco9G/OiKcI0afgxFvtWJNHVzVNBjSf5o5DREQU32ztuAR/AOKmYyNBX1hia
+         qoHNJm1wIkNEca5m0BcQvnibSuVQ2hzD1SqtUrjuIYhCZGnwxuTXa8PC79uK0E/LFS8o
+         wg2E/ktDhabMbZwr4hHU/j3w2YoayfJ1y5ZWEXkL+XukZCdMC/xv3y56SkPly8cfisl9
+         41Y5iGlZLwZPLNe+6QBDzIJUA+q1KEN6VWY2Vc1F632V5BLGl5kI4CM800xbr4AQ2sTi
+         +Csg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=RsewdT+73fe97clQejY9Co1xlOOg1NaB/DakbfuzrtM=;
-        b=uyB7QMUxJX+azZOrBDUTomV/4Qd9fiVn0KqRn7sk+zVqs+ujemeXr/eyRRn8YtUjgI
-         IxjaTcJ9NXRRy/Nz5ZGHTfZeeEqz+TcevNLysCOnXw5KlpGRgN4Aq3GKZIrTkPoflSPI
-         pgZu5PuSEZIldTBLejJkwBac7pBIa5DLAQYZKr30/8rSlLwurVL0xNNEt54l6Gn5+v4J
-         cmgm78n3i8owbWK61X1VuicJVw2tgTkI9LUC3PZ97oq25QQ9V8TQrKMX6pSU8uSjB/x3
-         RbHG1oE6ajg7BCw2QpC3cIFutqZICUtIWJaMceCaHo+exoxMb2CQiLo6ZnLgJhYUxAUz
-         C04w==
+         :content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:from:to;
+        bh=1dAOFdV19fHWx2cjATtecaE0rPCs11G4NMI3B7wAZHc=;
+        b=xb8ztLu4mkaQrWNpO/yh00Siczr1IbZJ44V4bBgj54ENPt5ZVtEY9/VvY/jOgLT+Sx
+         iAvRszZ8d6Fb4/ZgN/Ivgrg5KfpZI52KcB2WmxoIWTu/3dkFSCKhYW+VyElRYJ3v1s+L
+         k9XTapi4ewIYHM24hFfiuUkZuGCgEFkDgliTfJ6B0ZTrou2874+jdftrMHJIgdOWXIxX
+         Xp0neQsLstYlmec7hnJ9e2haLZwbsbm5tnGWYS1asVkIt4ueT0EMk8QHb0qD0954ekNh
+         tfNlsb3kbMyO8ImDBtA3M644ENjbEpnKHYCl5WMMoXC11HNCKrZfAlR002kKo2aDGWtz
+         yDAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Szu973FZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s196si8454593ywg.441.2019.03.14.03.58.01
+        by mx.google.com with ESMTPS id 130si6628140ybq.293.2019.03.14.04.31.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 03:58:01 -0700 (PDT)
+        Thu, 14 Mar 2019 04:31:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Szu973FZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:34228 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:34702 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4O3l-0004dr-9T
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 06:58:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52081)
+	id 1h4OaG-00079O-5M
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 07:31:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57432)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4O3V-0004c4-O3
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 06:57:46 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1h4Oa6-00077H-LU
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:31:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4O3U-0001Kk-Ux
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 06:57:45 -0400
-Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144]:51218)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h4O3U-0001K3-Kz
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 06:57:44 -0400
-Received: by mail-it1-x144.google.com with SMTP id e24so3922757itl.1
-	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 03:57:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=RsewdT+73fe97clQejY9Co1xlOOg1NaB/DakbfuzrtM=;
-	b=Szu973FZvDpqtqsqkW9kT5+Ryq8ElzKeKyxRHXYqgGilWN0HbwPjWHPi/qLx3RytCH
-	i5xf8e27HGkvdZrOy1zEerjwgpWPQsAQw5iY/xVZEE/3MvhZbeOYSdYvEq+PC2eIwran
-	7PIpfw5yEL5pp0OaXY2je3iJ47ha8f8YggzmIsLFh+kT0NkGoviwUqZK+aJtGrixP1oP
-	Wgf1pNUn9OQeqjcgI2MPnidqbZ/FmAfbvjvBMHq+8nOAXe70sM/JcMwG7VSmoka4Q6nc
-	EUDmVNt/PO4oFb3vAIZcTOdyPGH7RyWwqGbM5Y4CRfjASJFSLfnyzbk8XI6Ah6aBe55t
-	irnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=RsewdT+73fe97clQejY9Co1xlOOg1NaB/DakbfuzrtM=;
-	b=VwE5921VktMPMIifa/m8F05xMI6XM3vgxTLHuQVz2bWKwdrqMwVRdSqZm0TeV/LpjQ
-	9gt/8VFhUaAC6wx5+XjChOZHNH7Z4+DLtMCDB4HHZJJCOi33F+k2FiKkO3b3Ls6awHow
-	5XXkNOxnMb7PmHY6IA7IIJKLDIxnrW6WPq5dN7yT5OoKPhMKX0wGH6gyy8T/88xK0mO7
-	hm7jcMh5SdfGqkaOkjHQ/pNZKraQTf0CXDymcDtf6VDf6Jon3wUgk5B61DVhcurCLsBj
-	3WHkEmskD0x2GBkxlPtLRE+FOcEs6wGY9rijA9zIvZ9lxLAOk6O91lzeUCdekmaL8Hy/
-	efoA==
-X-Gm-Message-State: APjAAAX/UbWx+YdbPvXQyRB212yZF1hIK/yauziOLNaqXjtGu6Jn4+GU
-	HPO7yUfVCmF1vdhWy6o6D64N5vGHbiCHMiSsb06r+g==
-X-Received: by 2002:a24:7d8a:: with SMTP id b132mr1771421itc.66.1552561063515; 
-	Thu, 14 Mar 2019 03:57:43 -0700 (PDT)
+	(envelope-from <gengdongjiu@huawei.com>) id 1h4Oa6-00075O-1F
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 07:31:26 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:42892 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1h4Oa5-000714-HP; Thu, 14 Mar 2019 07:31:25 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 7A530338732DBD1044CD;
+	Thu, 14 Mar 2019 19:31:17 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS405-HUB.china.huawei.com
+	(10.3.19.205) with Microsoft SMTP Server id 14.3.408.0; Thu, 14 Mar 2019
+	19:31:12 +0800
+To: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Eric Auger
+	<eric.auger@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, qemu-arm
+	<qemu-arm@nongnu.org>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <93dc7574-cfef-e556-6349-f6976c4bd914@huawei.com>
+Date: Thu, 14 Mar 2019 19:31:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
 MIME-Version: 1.0
-References: <20190314084235.9887-1-clg@kaod.org>
-	<20190314084235.9887-6-clg@kaod.org>
-In-Reply-To: <20190314084235.9887-6-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Mar 2019 10:57:31 +0000
-Message-ID: <CAFEAcA_5rXmNEW+Yms8BhaFBn3UaJKNYhhO8xf76qWh6-zHj_w@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-Subject: Re: [Qemu-arm] [PATCH 5/5] aspeed/timer: Use signed muldiv for
- timer resets
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] About Revert this patch: arm: Allow system registers for
+ KVM guests to be changed by QEMU code
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,59 +85,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, Christian Svensson <bluecmd@google.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Jx+dGyJrWky
+X-TUID: h5rdhL0e+pPG
 
-On Thu, 14 Mar 2019 at 08:43, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> From: Christian Svensson <bluecmd@google.com>
->
-> If the host decrements the counter register that results in a negative
-> delta. This is then passed to muldiv64 which only handles unsigned
-> numbers resulting in bogus results.
->
-> This fix ensures the data being operated on is signed before it is
-> ultimately casted to the final unsigned value.
->
-> Test case: kexec a kernel using aspeed_timer and it will freeze on the
-> second bootup when the kernel initializes the timer. With this patch
-> that no longer happens and the timer appears to run OK.
->
-> Signed-off-by: Christian Svensson <bluecmd@google.com>
-> [clg: - checkpatch fixes ]
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  hw/timer/aspeed_timer.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> index 9988b8fbbf17..0b16eac8970c 100644
-> --- a/hw/timer/aspeed_timer.c
-> +++ b/hw/timer/aspeed_timer.c
-> @@ -275,7 +275,8 @@ static void aspeed_timer_set_value(AspeedTimerCtrlSta=
-te *s, int timer, int reg,
->              int64_t delta =3D (int64_t) value - (int64_t) calculate_tick=
-s(t, now);
->              uint32_t rate =3D calculate_rate(t);
->
-> -            t->start +=3D muldiv64(delta, NANOSECONDS_PER_SECOND, rate);
-> +            t->start =3D (int64_t)t->start +
-> +                ((__int128_t)delta * NANOSECONDS_PER_SECOND / rate);
->              aspeed_timer_mod(t);
+ Hi   Peter/Eric,
+   I think we should fix the regression issue instead of revert this patch,  I think the reason of
+   this issue is that QEMU modified some unexpected resisters, we should find out.
 
-You can't guarantee that __int128_t exists. If you must
-use it then you need an alternate code path for the ifndef
-CONFIG_INT128 case (which is going to be complicated enough
-that this should really be abstracted away into a
-signed version of muldiv64().)
 
-But overall I'm a little sceptical that the aspeed timer is
-really a special case that needs a signed version of this
-when no other timer in the system does...
+    Revert "arm: Allow system registers for KVM guests to be changed by QEMU code"
 
-thanks
--- PMM
+    This reverts commit 823e1b3818f9b10b824ddcd756983b6e2fa68730,
+    which introduces a regression running EDK2 guest firmware
+    under KVM:
+
+    error: kvm run failed Function not implemented
+     PC=000000013f5a6208 X00=00000000404003c4 X01=000000000000003a
+    X02=0000000000000000 X03=00000000404003c4 X04=0000000000000000
+    X05=0000000096000046 X06=000000013d2ef270 X07=000000013e3d1710
+    X08=09010755ffaf8ba8 X09=ffaf8b9cfeeb5468 X10=feeb546409010756
+    X11=09010757ffaf8b90 X12=feeb50680903068b X13=090306a1ffaf8bc0
+    X14=0000000000000000 X15=0000000000000000 X16=000000013f872da0
+    X17=00000000ffffa6ab X18=0000000000000000 X19=000000013f5a92d0
+    X20=000000013f5a7a78 X21=000000000000003a X22=000000013f5a7ab2
+    X23=000000013f5a92e8 X24=000000013f631090 X25=0000000000000010
+    X26=0000000000000100 X27=000000013f89501b X28=000000013e3d14e0
+    X29=000000013e3d12a0 X30=000000013f5a2518  SP=000000013b7be0b0
+    PSTATE=404003c4 -Z-- EL1t
+
+    with
+    [ 3507.926571] kvm [35042]: load/store instruction decoding not implemented
+    in the host dmesg.
+
+    Revert the change for the moment until we can investigate the
+    cause of the regression.
+
+    Reported-by: Eric Auger <eric.auger@redhat.com>
+    Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+

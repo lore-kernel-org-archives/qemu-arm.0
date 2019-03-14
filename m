@@ -1,97 +1,79 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp799508wro;
-        Thu, 14 Mar 2019 05:43:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzLUeMwOmhe6QNgb+vqYUknx0hWHkqnXWcReD8hjeVER04JyxYvjMD/oQxe39w0hrx+A4rK
-X-Received: by 2002:a81:457:: with SMTP id 84mr38265934ywe.340.1552567420683;
-        Thu, 14 Mar 2019 05:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552567420; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp803709wro;
+        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxyeW8P3UkzU5phoH2yMgdxhoCWmm44CNIHcTHXexJ/lAL2gLctXdZ28hf8j+M/Tr/n/0c4
+X-Received: by 2002:a25:9cc6:: with SMTP id z6mr37860614ybo.521.1552567666595;
+        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552567666; cv=none;
         d=google.com; s=arc-20160816;
-        b=HNY+hfJ4axi6Cs0vPam/chJrN3XFp8Ie5rpPixPCnXebQkL8/MzgZYNiHYAuvTC+A+
-         +76awhIZb4QnJqii/2wLBLnSc/doNI4NXxOu28MT/8HcR9RW1v9bnK9mtMoEG7H/ca0b
-         8M7twJaWkWlMJnCnngKyRAbQkvHGVrJ5qU3XCm7+WAg3AcIkPniW2wXA2UUz+8RPiMhc
-         fcijtfeuWujiw5rlFW1jQGHbpZB1uBTI9vDR1aDJxhPLWGNDiorMPITK3W9INN252tAL
-         8gv+HCRvsZd/nffjgif4SVBTMNbL+7069d3ERkNfGDHUJGSu9sWIK9OHVjlHVysIO3EP
-         paZg==
+        b=hcfDiQSKudIGJ9rn4tSfCmxbTwyL6f2fUM8ouJ0IFn1dhHXKgcMuH4p2Lcym6xhmSR
+         ddy4p6cLOpu8uFznAJRaCe2Imzb27NoZ2lSsw6Hrar3Gniv6bEo4fwc3x/UeRleqvNYZ
+         SkQITLpw/GXshJ/kRWxIZPkibokypQ3aXniKdgu6ZWDdtr32XaS0H7kLBUrnU8LMESmp
+         APHRuMpQKZJmhBd0pQ9rqpY5KyBjBanK35lY+GsdPJbJcNwfKOGJcrpnetonsBA5vrbc
+         V78pSmuENdtVZ2300QEib9aJvwMoDBWeH0XV9PefC63jOwjAPdAXI7KbK4vM6uHWgr7V
+         XpGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=rtT5vdU8vcwApj6YJdhgP9aaPjGqjICO+Y4Jgq7uQO4=;
-        b=Nh/yyQ3yK4wpO8dQxgKxpJiCCvmRASeRuY96Ip4ibCGrKbkeDKUIvqu7fmnXGecEM4
-         9MqYJxI4jujYySI1p3icHbRl9fqYSGocNiIdMcBPE1CuTMLMeeRS5KHX10G20V2Kr4XV
-         UPFks2Y/F3HL0bRWd4wUMPfgtU9IlPDKHAIDpKLc/tPTOL8MOTOoaPOpsk8QUMp3CDry
-         sKzn+BMi/VN0M4HW6OL3yDNEOz1/rQqLrGzAtlb/Ml4xEZLWciDppFL3LngxY4K9xEh7
-         PXYDoGPvCFurSmpqKD6Xsrpe1qfWnfIQWe8ZYlhosDcRMBkAoGm+WG7b4EtdFZsBMYGH
-         2Z7Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=282Vji3vlhLtxbOsf6KSYzikqMgEaLJmoRKWZDZ1YuY=;
+        b=uEz+5TX+JdNdRgfTpU0iPX76OxuwEmqrTvle+V/DSwdK3k9+KP0m+R04Hea2fcWgrb
+         TpSj5de6wTMju0fodzUcA41bG9YIYd4t4dfi1oaFTbqt5E1kT2zlgbOllq6VBTY8S5Wm
+         bB/tL1FWmbJKyKcjyDfQ6DHpxtthdrvQvcuQ4cO4nNILij2EymZ6ZMyWhQa8AYMOWLDu
+         pIu8qz89UXSI/p5tZgmqzkkCvZ21F5pUD7x2A2skCPHv10/K3U7G4Pm93lv/eGVJDG0n
+         F13fJhpXcoeEkUhMQqKCld0eFRMJ0y/CLqa1BnTEnXeO3mDoCtmYoHPjDf5mJyfSa+80
+         4zmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Et6IfTCz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t203si907135ywb.285.2019.03.14.05.43.40
+        by mx.google.com with ESMTPS id a5si5871319ybp.402.2019.03.14.05.47.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 05:43:40 -0700 (PDT)
+        Thu, 14 Mar 2019 05:47:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Et6IfTCz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:36212 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:36257 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4Pi0-0000DQ-7H
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 08:43:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39436)
+	id 1h4Ply-0001O6-3a
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 08:47:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4Pho-00006d-IQ
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:43:29 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1h4Pll-0001Nx-DD
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:47:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h4Phn-0008JK-VU
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:43:28 -0400
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33]:46220)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h4Phn-0008J7-MP
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:43:27 -0400
-Received: by mail-io1-xd33.google.com with SMTP id k21so4870262ior.13
-	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 05:43:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=rtT5vdU8vcwApj6YJdhgP9aaPjGqjICO+Y4Jgq7uQO4=;
-	b=Et6IfTCzvQdGDUFGTeHBAZjSuQnuk072wf/mgB4cUKitxGkAUh2WjAAKReSfeiPYVS
-	Jve592EhaKLex1Sfnfq0bdqB9KsgBbcz3NertvCLXBKWhSJOH7ZCxOVo/hrtlHs8peYG
-	EfoIXkh1Fubye/PqkJWJQJGyFluWWxSmNIeI0l1lETy5bLSy/01eTR0VOVG+SZjHGAqu
-	kOGxfXgce/V1KfY0QSVom/VEOFkqGue0uYrLJhj0+iPf70SVLd2+8Ce/hVfPRgDxViP3
-	ZuCyvXRuX3REMMp1L1myPVqsBr3SeUQdsAM7T6utfemYbe5loHlW3LaNC118MgRkzfI1
-	qowg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=rtT5vdU8vcwApj6YJdhgP9aaPjGqjICO+Y4Jgq7uQO4=;
-	b=E7leXzb1JhR9+f7oO3vMr+RWvqka7K2gBbyNmlRkKI88tHIK2AbkaRBvC9zFgxvJKH
-	haNBbwLjrURzG9BKuigoNrt7eMll5mQGdoXe0ak+nTJm28lqawiJlJneWVhT8PN3rcer
-	Q59FYsP/g/JuxWCH76Cf0WshPFwhTy0O+OZB/62N3wXSxjloHSq5ZZZdl3qCWL3BPmXE
-	YVO0q4jnwEhh5942l+1MdkPjOp8U7QRY7bIcSec00Y7VaLxgV6DAhmEzeOgFqoCej6+c
-	Ly3nY79dGd/KceB82UG1zB6jaobxghXFlXCxSk5y7wqdv2vrEuUMk+BYZ8YeJqQJayVk
-	S/Hg==
-X-Gm-Message-State: APjAAAVFIYhgDe/RMi6uNK69yQcCHp48tLz5kkc/OV4tanqAHyE4MTuN
-	J1klnISFMIf5oW6QHYxJPessmnHgTx/aVeIYVlawDg==
-X-Received: by 2002:a6b:7202:: with SMTP id n2mr12967755ioc.82.1552567406837; 
-	Thu, 14 Mar 2019 05:43:26 -0700 (PDT)
-MIME-Version: 1.0
+	(envelope-from <gengdongjiu@huawei.com>) id 1h4Plk-0001lY-O9
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 08:47:33 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:51760 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1h4Plk-0001ig-6g; Thu, 14 Mar 2019 08:47:32 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 62658F01EEDFA953B163;
+	Thu, 14 Mar 2019 20:47:23 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS410-HUB.china.huawei.com
+	(10.3.19.210) with Microsoft SMTP Server id 14.3.408.0; Thu, 14 Mar 2019
+	20:47:21 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <93dc7574-cfef-e556-6349-f6976c4bd914@huawei.com>
 	<6d9dee31-6072-8d90-0fce-b4966d5f76c9@huawei.com>
-In-Reply-To: <6d9dee31-6072-8d90-0fce-b4966d5f76c9@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Mar 2019 12:43:15 +0000
-Message-ID: <CAFEAcA_+aJfC4LvMM339TO19kcMTH-Dwy2uRNow+sxFkStJPBQ@mail.gmail.com>
-To: gengdongjiu <gengdongjiu@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::d33
+	<CAFEAcA_+aJfC4LvMM339TO19kcMTH-Dwy2uRNow+sxFkStJPBQ@mail.gmail.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <c5b3bfb3-c3a1-b804-3b16-cc907ad03b5e@huawei.com>
+Date: Thu, 14 Mar 2019 20:47:20 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_+aJfC4LvMM339TO19kcMTH-Dwy2uRNow+sxFkStJPBQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.32
 Subject: Re: [Qemu-arm] About Revert this patch: arm: Allow system registers
  for KVM guests to be changed by QEMU code
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,17 +91,14 @@ Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BOfEzT8Iw+hu
+X-TUID: lZ8vd8zPMDky
 
-On Thu, 14 Mar 2019 at 12:24, gengdongjiu <gengdongjiu@huawei.com> wrote:
->
-> If you think this patch will introduce some issue, we can add one function write_part_cpustate_to_list()[2] to change the specified
-> register instead of all the registers[1].
+On 2019/3/14 20:43, Peter Maydell wrote:
+>> If you think this patch will introduce some issue, we can add one function write_part_cpustate_to_list()[2] to change the specified
+>> register instead of all the registers[1].
+> It definitely does introduce an issue, but we need to address
+> it by working out why it breaks something that I wasn't
+> expecting to break. Then we can fix it properly. Looking
+> it this is on my todo list for this week.
+Got it, great, thanks very much to Peter.
 
-It definitely does introduce an issue, but we need to address
-it by working out why it breaks something that I wasn't
-expecting to break. Then we can fix it properly. Looking
-it this is on my todo list for this week.
-
-thanks
--- PMM

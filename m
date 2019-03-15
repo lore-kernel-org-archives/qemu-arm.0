@@ -1,101 +1,103 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1563836wro;
-        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxHkOykeWBTsoZiGZLe/pV417p6acXrOr4PelaSakqyoXT9JqcjrjYgABYgsynPzdWuP9ip
-X-Received: by 2002:adf:f111:: with SMTP id r17mr744546wro.272.1552620902527;
-        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552620902; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1564220wro;
+        Thu, 14 Mar 2019 20:35:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwu1z9HmVpyUejD9h8WdIxhjw+J1wv1KEFWndTqFEREX1IG85JrVbQAbVL0czI2bBiPFxdi
+X-Received: by 2002:a1c:be14:: with SMTP id o20mr506019wmf.110.1552620945228;
+        Thu, 14 Mar 2019 20:35:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552620945; cv=none;
         d=google.com; s=arc-20160816;
-        b=KUnaTzYXz9XbK51zCtOuh2rYIncDqaIoCHignAWUZL7fhlKXEChGOmEqDgCmJ6vMDT
-         cfurBPx5Gp8nteXq6mAM0Cay9zqinMg206GcKAER3tITRdCdWPgNBRRPxCUph4t0x1ut
-         6k0a6Q4VlLM9aTF3LIl9gXTWYfv5c4L5xeKLJ/Tzw7sc2+N2vGkI2iNoKZkVlSzLQCoZ
-         En2mm1GBjpfVzEKQsOlPoe+hXuzIORZkS+Ji3LnSOmD8FNCSYvlBWvCVCcnQiEjQ1mWP
-         RcBDfpLY9s55/Mu0G+Qx4e1lCigD9AevpEnzDMkVIp0b3iGN6VsgAkf7Er/5UF3MAa/6
-         4d/w==
+        b=oGIl/jaDlGnYr15yzJSp+YcZh3gaVdKMiyMX7EiFDw858i+INLEYdqkx0vgPl7RNU9
+         Svm1i1xxfOjgeEyONVL9bpQh52T1sDT1PcCVW8CVM1zJyl3JMXiQicUlkdwcjSHHM0UC
+         s4zg7NStJ6GmBb2sJjEIjgPByCXahHzh7MqKMwGiHH98PoYKOsj4D6c5CE1XOPYvMDgW
+         7BY78q+Wtk4SIpSxmuO5GRgYQFn5pFu645cEkmCNFXQAEfh+5gDb9KOu/IFNBHSVOiC3
+         RT0I4QLSOjLMdVeoWwOY3Ra1H36GL5xhWsfCEGBdxSW0QP5tTKtLbaGCTrlQI78Hw0+d
+         briA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
-        b=VLhcfkWj2wRlyBIcHoYwaDJZro9jGCKTPTg9FdMRoz+coVIubGnoTo81lCEERVO8Ia
-         wcjGENhnWBUZ2vWNw7FIc3pY+yh5BRPmuQU9NFNGMUCWBfJojRplo+TJqmxKQGXA2Im9
-         HikguYhRxcoqo0OwYR6JSUDzPz3pYWNeQrIqZXBcnIJlAcxbXuT8cOVG3QuE5swasrJy
-         7eCjfymOc4LTswqzrOjZ2sleDlBY3S68Tbua5KfizC6pnuKBvhKMuWko3YED3bIRcJYr
-         iBwcG+OAr7MVwm3W5ldeBiM5IY7KP6B1Ncx9w6R2ehe/mJUSWLL6xCvrWySOnuJ2TFAw
-         PZzA==
+        bh=wbb+2FtxbsNv9nDIL4ojxmrs2WISC5sGRSdsm2e7KNc=;
+        b=LWVVM50Z/t4EsknjvrbsAb+pc6PTPIMg5QqSQ1apgGpJtMlEnMR9onP3NUhtWJx8gP
+         6Pq+ZZFk+SjoXUjdoR8kHAqaOsSrd7ltiayrCs4nyMDn33J373ClbVei2BFFHrN6SUvN
+         j0XnXNpwfgEtLKATfCvzmxw7K5rZhK4C9hJHYb1p3r8uRNL8hFzUdxiE+jy9QP+t2eRh
+         qWXaPRuNV8fCmX/faGX5s3VsxzEhDX0grLTN7jwuKarJipWRzzatupx3+s74P5D1OAHS
+         0I1t5nP2h5ch+ZUJ+iAH9x05T3bpO8pZ4ehA7cdZ8fzaMigk45K4ES0xCsC06a4lf+RX
+         Dvgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eJF99u6/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=MpbBVGj6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z18si429724wrt.269.2019.03.14.20.35.02
+        by mx.google.com with ESMTPS id z203si378555wmb.121.2019.03.14.20.35.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
+        Thu, 14 Mar 2019 20:35:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="eJF99u6/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=MpbBVGj6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48660 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48700 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4dcb-0005Ee-Dp
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 23:35:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43629)
+	id 1h4ddI-0005y5-6N
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 23:35:44 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1h4dcI-0004w5-2w
+	(envelope-from <richard.henderson@linaro.org>) id 1h4dcI-0005C3-Oh
 	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:34:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1h4dUq-00039s-EE
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:27:01 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:34789)
+	(envelope-from <richard.henderson@linaro.org>) id 1h4dUo-00036k-1V
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:26:58 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430]:42120)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1h4dUq-00039C-6M
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:27:00 -0400
-Received: by mail-pg1-x542.google.com with SMTP id v12so5434125pgq.1
-	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 20:27:00 -0700 (PDT)
+	id 1h4dUn-00035x-Pu
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:26:57 -0400
+Received: by mail-pf1-x430.google.com with SMTP id r15so2519113pfn.9
+	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 20:26:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
-	b=eJF99u6/rZaaOScD53XGXXKCgukmZZ9pb9QlZIslNjMWQegquM6IvFpFosxLl/lS9P
-	cenvq/ikDD3wTm1IWikdr082lBsOyOArY+Q2HmFug056o+3OvzudaLmmbv1CrqCf+oVp
-	8ZvF45dvX2plSqTVD1a52wWet8b2KMuiIA07cZTIC+Kv3c4ok5RPqqn5XGRaC9g/ZPA4
-	ak21lgbv9uhOLGjllHVH/7cnJRVQ9/xIYS5Ey2DMoIThQAB/n1b9tsrhhy8/4MWg7aQk
-	2iyuG3+H0OMZ0fG0dS2FVDWLSzSPNrq/fNgCDG2t1YHKasnmlPwN1G6+/YV1j0SwrHAG
-	P92w==
+	bh=wbb+2FtxbsNv9nDIL4ojxmrs2WISC5sGRSdsm2e7KNc=;
+	b=MpbBVGj6KrFs2tVEETUExFUhEjqs/GUUqi28oWfBgjJR2MIBDQpuuWcAmXm72g4VB4
+	cT7OFFGEBnx0tpNzD672yvpL7Mh4CYbkC40a5qIfIiY0IJ5UmFFjnhkwHWtmLwi8MEON
+	Kjpf6aR3vr/wmvaPrTfIqDq/NMFtuvvoDsLE05uWyAgmNQJCknUugQbYhicdE9JUoHVj
+	qEW7+7i+pF72dsesyvegmtp0g7K8ZmjxNJFvcyYPABxUO9vXuwP6zU42EnYLGQzwmcTx
+	6gPDIIb1Pmw1BKFDuhJoPf3z3l/7jJQZ2XrTz+502ttXx48AGUNiRwlOeR2IDnq/dO96
+	c0RQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
-	b=G9bCD2qiOuG7zyO9YvCg1wgTaQdHBIUqmc/bCHhkCfJk2cDaTUPdczXEPK50/fqspF
-	4W0t4hs6qqUYBLBj0guwgM+gBlmxsrgeBWBVJV7oOUp9EPEaJ7vOyqgGCR9nbMbLCCey
-	F1OIlUeEX6jtzBLUAQH9lvPOWk7Aa09P0DraRwTFpozgllcO5GkysJHkrmPSqXWiUvBC
-	FEtl7QonkPZuykXbPjuxPUTLYHPKg3vAj47IYElPltCwhe8ncCmcYgxNWGVUF25YEzoZ
-	McOg9cegwRJswySWMfD5kGD8sYPPf4oBijxoqfNg6Ftlp2n0S7ZX3BCY9ifL+o5Vn6qZ
-	Kkfw==
-X-Gm-Message-State: APjAAAX0CbdDd+dSO7W4XiXF6U79sGadB2lERwkWv9uBwadGQQjNPJRQ
-	IAE68rX7EgleanXdIh0L9Ve8MAzcmR8=
-X-Received: by 2002:a65:6546:: with SMTP id a6mr1277968pgw.296.1552620419297; 
-	Thu, 14 Mar 2019 20:26:59 -0700 (PDT)
+	bh=wbb+2FtxbsNv9nDIL4ojxmrs2WISC5sGRSdsm2e7KNc=;
+	b=H5wK3SV6YldhQCyFBIiJlZ8HwSE8LZM5rBJxQPJ0Lmqp0sn+6yTOYW/OSuau0AoPbQ
+	pvEtpAVrlFaVkZ1S2rq1M6wBLVSCIHcXFqavymROh0tyw7Mkzq7fFDILQWUFjBMRhwkc
+	D7iwnnxmk1j7+nxetLG5YrRzXw4Tux8a2hKYSqdP6fYCCvrs4yVwnkS8TOZ5LJAnhYo3
+	LTqa7j9WkxR32N53xvFZ+GkzhgH3AuCEeimbi2bROLkeJYAOZlMvGr2GoLGkzPHh/h7i
+	ka2K4Vvh7qXZEsDOL0LXzONa/5XyfNEjzoZ9utypWv4GlJRTm7mhL+6IrffsaeroMoe8
+	833A==
+X-Gm-Message-State: APjAAAUEQJOfjcEeXdiUjU36XvyS357z/t8ksQXbuOr0QFhbUb0A3Icc
+	AUihYCOb0WpKzdxeLgVqoG+8QQ==
+X-Received: by 2002:a17:902:1125:: with SMTP id
+	d34mr1816140pla.75.1552620416859; 
+	Thu, 14 Mar 2019 20:26:56 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
 	[97.113.188.82])
-	by smtp.gmail.com with ESMTPSA id d26sm690816pfn.86.2019.03.14.20.26.58
+	by smtp.gmail.com with ESMTPSA id d26sm690816pfn.86.2019.03.14.20.26.55
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 14 Mar 2019 20:26:58 -0700 (PDT)
+	Thu, 14 Mar 2019 20:26:56 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 14 Mar 2019 20:26:27 -0700
-Message-Id: <20190315032629.21234-22-richard.henderson@linaro.org>
+Date: Thu, 14 Mar 2019 20:26:25 -0700
+Message-Id: <20190315032629.21234-20-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20190315032629.21234-1-richard.henderson@linaro.org>
 References: <20190315032629.21234-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: [Qemu-arm] [PATCH v3 21/23] target/arm: Implement ARMv8.5-RNG
+X-Received-From: 2607:f8b0:4864:20::430
+Subject: [Qemu-arm] [PATCH v3 19/23] hw/misc/exynos4210_rng: Use
+ qemu_guest_getrandom
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,119 +109,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iDlKli2Xc1wy
+X-TUID: pfWDS10Uk4Jo
+
+The random number is intended for use by the guest.  As such, we should
+honor the -seed argument for reproducibility.
 
 Cc: qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3: Log errors with -d unimp, for lack of a better flag.
----
- target/arm/cpu.h    |  5 +++++
- target/arm/cpu64.c  |  1 +
- target/arm/helper.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 50 insertions(+)
+ hw/misc/exynos4210_rng.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ae2381e222..6a078aa1a0 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3443,6 +3443,11 @@ static inline bool isar_feature_aa64_condm_5(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TS) >= 2;
- }
+diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
+index 4ecbebd2d7..0e70ffb404 100644
+--- a/hw/misc/exynos4210_rng.c
++++ b/hw/misc/exynos4210_rng.c
+@@ -18,10 +18,10 @@
+  */
  
-+static inline bool isar_feature_aa64_rndr(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, RNDR) != 0;
-+}
-+
- static inline bool isar_feature_aa64_jscvt(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, JSCVT) != 0;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 228906f267..835f73cceb 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -310,6 +310,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
-         t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
-+        t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
-         cpu->isar.id_aa64isar0 = t;
- 
-         t = cpu->isar.id_aa64isar1;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7b5d63f894..4a8d2d4481 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -20,6 +20,8 @@
- #include "fpu/softfloat.h"
- #include "qemu/range.h"
- #include "qapi/qapi-commands-target.h"
-+#include "qapi/error.h"
+ #include "qemu/osdep.h"
+-#include "crypto/random.h"
+ #include "hw/sysbus.h"
+ #include "qapi/error.h"
+ #include "qemu/log.h"
 +#include "qemu/guest-random.h"
  
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+ #define DEBUG_EXYNOS_RNG 0
  
-@@ -5717,6 +5719,45 @@ static const ARMCPRegInfo pauth_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, keys.apib.hi) },
-     REGINFO_SENTINEL
- };
-+
-+static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    Error *err = NULL;
-+    uint64_t ret;
-+
-+    /* Success sets NZCV = 0000.  */
-+    env->NF = env->CF = env->VF = 0, env->ZF = 1;
-+
-+    if (qemu_guest_getrandom(&ret, sizeof(ret), &err) < 0) {
-+        /*
-+         * ??? Failed, for unknown reasons in the crypto subsystem.
-+         * The best we can do is log the reason and return the
-+         * timed-out indication to the guest.  There is no reason
-+         * we know to expect this failure to be transitory, so the
-+         * guest may well hang retrying the operation.
-+         */
-+        qemu_log_mask(LOG_UNIMP, "%s: Crypto failure: %s",
-+                      ri->name, error_get_pretty(err));
-+        error_free(err);
-+
-+        env->ZF = 0; /* NZCF = 0100 */
-+        return 0;
-+    }
-+    return ret;
-+}
-+
-+/* We do not support re-seeding, so the two registers operate the same.  */
-+static const ARMCPRegInfo rndr_reginfo[] = {
-+    { .name = "RNDR", .state = ARM_CP_STATE_AA64,
-+      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 0,
-+      .access = PL0_R, .readfn = rndr_readfn },
-+    { .name = "RNDRRS", .state = ARM_CP_STATE_AA64,
-+      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
-+      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 1,
-+      .access = PL0_R, .readfn = rndr_readfn },
-+    REGINFO_SENTINEL
-+};
- #endif
+@@ -109,7 +109,6 @@ static void exynos4210_rng_set_seed(Exynos4210RngState *s, unsigned int i,
+ static void exynos4210_rng_run_engine(Exynos4210RngState *s)
+ {
+     Error *err = NULL;
+-    int ret;
  
- static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -6661,6 +6702,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_pauth, cpu)) {
-         define_arm_cp_regs(cpu, pauth_reginfo);
+     /* Seed set? */
+     if ((s->reg_status & EXYNOS4210_RNG_STATUS_SEED_SETTING_DONE) == 0) {
+@@ -127,13 +126,11 @@ static void exynos4210_rng_run_engine(Exynos4210RngState *s)
      }
-+    if (cpu_isar_feature(aa64_rndr, cpu)) {
-+        define_arm_cp_regs(cpu, rndr_reginfo);
-+    }
- #endif
  
-     /*
+     /* Get randoms */
+-    ret = qcrypto_random_bytes((uint8_t *)s->randr_value,
+-                               sizeof(s->randr_value), &err);
+-    if (!ret) {
++    if (qemu_guest_getrandom(s->randr_value, sizeof(s->randr_value), &err)) {
++        error_report_err(err);
++    } else {
+         /* Notify that PRNG is ready */
+         s->reg_status |= EXYNOS4210_RNG_STATUS_PRNG_DONE;
+-    } else {
+-        error_report_err(err);
+     }
+ 
+ out:
 -- 
 2.17.2
 

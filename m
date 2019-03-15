@@ -1,147 +1,135 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1784714wro;
-        Fri, 15 Mar 2019 01:59:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzv0Nqho0EKOYjztpjezvlLFT++G+d62dgIPOlN4dUL9lAW3vJCUsz0sp9I56MZeIR7FTTf
-X-Received: by 2002:a37:a78b:: with SMTP id q133mr1910002qke.62.1552640395652;
-        Fri, 15 Mar 2019 01:59:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552640395; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1793853wro;
+        Fri, 15 Mar 2019 02:09:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx47FEroa3AViNNeiu1bfUjRecoJx4YYpxV9ILUnvj7UnUfw+FUbZct0onYfGw7tu4Q6fiQ
+X-Received: by 2002:a1c:7610:: with SMTP id r16mr1301546wmc.139.1552640964625;
+        Fri, 15 Mar 2019 02:09:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552640964; cv=none;
         d=google.com; s=arc-20160816;
-        b=rg91nf8FYj7DPwsLY8Oh7M9hwLaRDvrrKcD4h/3dgrfE1Sk7hlDFFwnrAC7X6k6P88
-         MqjZJUCq44zPVoReVivZYVIvReF+sZvSOtP81CRqZCsZ0m7a+LI13TxkR8rdjzSJiOMm
-         cZ2Q1CqzeAqdevBnL0J+ovYiRRA716LXQ7R7pve8R4+BmiZatoNd+WT4kRq76VX5RSnB
-         0YVYDSLBu3E7PoRP5dIO5/BjuQakKLN4wYu5j5OB36diFj/rLS0kWc45URFevrlBpxwa
-         8YLnevofW6JPI0e3IgXtIkRZrp9Rl6IJvHnSaIsBuvv21tfVkPeZwfiK5qarjlaZ0M0i
-         NC8w==
+        b=sjQJvpws9Zfy5e6kMoefqff6/syhj+3T9GRuyxHuluiSxxhziuOAKKhIrMRu4so1Ku
+         r3GdFR0Yeg+jn1F6Ouh5dO/teZKJdRLpN9U/AJW7q6VDc3Is8+xPrFcQ+roDkKtrUp9T
+         drlmHsU6hqpk7BM36+/B4ep6ERS7KMw7HCqD2r5LYaX4CbmAvxDyB2sHmpNEy77GDxSL
+         FD72PSTmFHwhRnZGj+0hHAkC8qqlKPqKp+3qEYcIWKqfegfrJNRzSdIeQo+L/pGRgLlh
+         8Rzl+G+t8THdAyoUuxLujusUDFWDs+yFlMSpDf5Yl3cVzRfaj5FLyGNI2vsC9DZq2Hh6
+         lV7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date;
-        bh=Gmv82QWRJ1sJUWxBErViELLRDG49QuZTVopJjn8oWYc=;
-        b=Lpgg9wEIzabsUVGFPqLs/AMcnIptBRdw+5Vzs7aiqWlR3s6bEYP8Yv+17cCmjHB/3F
-         whuEseDA397H/VWfyy98wfDcTRuScWAeYbLX4A3fjfEwmHa8c5X01zp/ThVDc9YUIFEj
-         ehRlNAKjZlaIulQ1I/psdVb0ymQuh010zbHXFwe7SBQXYjvyi9iI7Ja+CeHwIYkfrxvN
-         3+qIlYvOV9p4wx5L5DrNgDWJGsoGs+lkCGZXvD1lKVbuW3ZrjzJvzaYAxGuLUfM5k+mk
-         CmQCwdf7SyDdtOdReziO8RIgzekvuAYnIfXjxQSoK1k9VQqbTu8eb/IzdiElCR9FHqWX
-         k1sw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=xXxJx005tBeHjvgY47fMN8Plx5Cy+3EXCOnW9dPWF1E=;
+        b=SdqYQqRE2nlkCJL/WRkVLbErAp9w8lMei1mqO++EwPiMs0cq1UtVwUSAmfEATWspik
+         t0JAHUJPm4x+JuDVTjf14sC1ZvVGBpFw66gviSE6AroR0dPM1W39iFUW7C1n6aZcQiXE
+         umVqRH71dO6zxTT9dugSit72ujN9KC45B21M/zmwpBO3ZGTBLuSRtGF2lOSJoMwpmcer
+         8hHFuY4W+VblplzXogfUxf1kFYzo/GnXeRdJ9UHbpvKKIZylbHLaW8easG8NyVwGCB+X
+         WED3wItnM/OSJvdfl6AmKybbssUm5rt4Jw+RcrwTP5eWFhpjzdWk5RX8GBkQgcnw07kE
+         tkSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id s2si863742qts.59.2019.03.15.01.59.55;
-        Fri, 15 Mar 2019 01:59:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i16si957128wrm.381.2019.03.15.02.09.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 15 Mar 2019 02:09:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2F7F34A452;
-	Fri, 15 Mar 2019 04:59:55 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.201
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=unavailable
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7AtfKvlS+0mL; Fri, 15 Mar 2019 04:59:54 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2FC484A44D;
-	Fri, 15 Mar 2019 04:59:54 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id C42FA4A44D
- for <kvmarm@lists.cs.columbia.edu>; Fri, 15 Mar 2019 04:59:52 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cjk8WPYLuytT for <kvmarm@lists.cs.columbia.edu>;
- Fri, 15 Mar 2019 04:59:51 -0400 (EDT)
-Received: from foss.arm.com (foss.arm.com [217.140.101.70])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id A444E4A431
- for <kvmarm@lists.cs.columbia.edu>; Fri, 15 Mar 2019 04:59:51 -0400 (EDT)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 119E7A78;
- Fri, 15 Mar 2019 01:59:51 -0700 (PDT)
-Received: from localhost (e113682-lin.copenhagen.arm.com [10.32.144.41])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 75D2A3F575;
- Fri, 15 Mar 2019 01:59:50 -0700 (PDT)
-Date: Fri, 15 Mar 2019 09:59:48 +0100
-From: Christoffer Dall <christoffer.dall@arm.com>
-To: Steven Price <steven.price@arm.com>
-Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
-Message-ID: <20190315085948.GB10950@e113682-lin.lund.arm.com>
-References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
- <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
- <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
- <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:52150 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h4iqB-0005X7-Mt
+	for alex.bennee@linaro.org; Fri, 15 Mar 2019 05:09:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52855)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <amir.charif@cea.fr>) id 1h4imi-0002nd-Ge
+	for qemu-arm@nongnu.org; Fri, 15 Mar 2019 05:05:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <amir.charif@cea.fr>) id 1h4iXc-00035v-0k
+	for qemu-arm@nongnu.org; Fri, 15 Mar 2019 04:50:12 -0400
+Received: from cirse-smtp-out.extra.cea.fr ([132.167.192.148]:54018)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <amir.charif@cea.fr>)
+	id 1h4iXa-00033b-D8; Fri, 15 Mar 2019 04:50:10 -0400
+Received: from pisaure.intra.cea.fr (pisaure.intra.cea.fr [132.166.88.21])
+	by cirse-sys.extra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0) with
+	ESMTP id x2F8o8S5014653; Fri, 15 Mar 2019 09:50:08 +0100
+Received: from pisaure.intra.cea.fr (localhost [127.0.0.1])
+	by localhost (Postfix) with SMTP id 17081200E39;
+	Fri, 15 Mar 2019 09:50:08 +0100 (CET)
+Received: from muguet2-smtp-out.intra.cea.fr (muguet2-smtp-out.intra.cea.fr
+	[132.166.192.13])
+	by pisaure.intra.cea.fr (Postfix) with ESMTP id 06058200BED;
+	Fri, 15 Mar 2019 09:50:08 +0100 (CET)
+Received: from EXCAH-A0.intra.cea.fr (excah-a0.intra.cea.fr [132.166.88.74])
+	by muguet2-sys.intra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
+	with ESMTP id x2F8o7Mc007528; Fri, 15 Mar 2019 09:50:07 +0100
+Received: from EXDAG0-A1.intra.cea.fr ([fe80::ac4c:b0e6:f68e:69cf]) by
+	EXCAH-A0.intra.cea.fr ([fe80::446e:fe1a:2892:9de1%10]) with mapi id
+	14.03.0415.000; Fri, 15 Mar 2019 09:50:07 +0100
+From: Amir CHARIF <amir.charif@cea.fr>
+To: Eric Blake <eblake@redhat.com>
+Thread-Topic: [Qemu-devel] [Qemu-arm] [PATCH] Check access permission to
+	ADDVL/ADDPL/RDVL
+Thread-Index: AQHU2oPAVV4bhfmSXUy5Fj09QORyA6YLTsyAgAAD1oCAAAKdAIABDYGw
+Date: Fri, 15 Mar 2019 08:50:06 +0000
+Message-ID: <82FD2C51B435F943BACD9C947966BF2F0A0E5CD0@EXDAG0-A1.intra.cea.fr>
+References: <1552579248-31025-1-git-send-email-amir.charif@cea.fr>
+	<CAFEAcA8dGr6gPGUcLhMqWKoC7aS40A4NssqFzHiKu0XhRKyE_Q@mail.gmail.com>
+	<4daad4a8-93bc-05bc-1dfc-5652da3168bd@linaro.org>
+	<6c85b09f-9c72-579a-5e63-7c5624311b18@redhat.com>
+In-Reply-To: <6c85b09f-9c72-579a-5e63-7c5624311b18@redhat.com>
+Accept-Language: fr-FR, en-US
+Content-Language: fr-FR
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [132.166.88.106]
+x-tm-as-product-ver: SMEX-11.0.0.4179-8.100.1062-23234.003
+x-tm-as-result: No--12.344500-0.000000-31
+x-tm-as-user-approved-sender: Yes
+x-tm-as-user-blocked-sender: No
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-Cc: Marc Zyngier <marc.zyngier@arm.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Heyi Guo <guoheyi@huawei.com>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 132.167.192.148
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] Check access permission to
+ ADDVL/ADDPL/RDVL
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: wEQz5V2qZWBL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VjZwm7gbYSwo
 
-Hi Steve,
-
-On Wed, Mar 13, 2019 at 10:11:30AM +0000, Steven Price wrote:
-> 
-> Personally I think what we need is:
-> 
-> * Either a patch like the one from Heyi Guo (save/restore CNTVCT_EL0) or
-> alternatively hooking up KVM_KVMCLOCK_CTRL to prevent the watchdog
-> firing when user space explicitly stops scheduling the guest for a while.
-
-If we save/restore CNTVCT_EL0 and the warning goes away, does the guest
-wall clock timekeeping get all confused and does it figure this out
-automagically somehow?
-
-Does KVM_KVMCLOCK_CTRL solve that problem?
-
-> 
-> * KVM itself saving/restoring CNTVCT_EL0 during suspend/resume so the
-> guest doesn't see time pass during a suspend.
-
-This smells like policy to me so I'd much prefer keeping as much
-functionality in user space as possible.  If we already have the APIs we
-need from KVM, let's use them.
-
-> 
-> * Something equivalent to MSR_KVM_WALL_CLOCK_NEW for arm which allows
-> the guest to query the wall clock time from the host and provides an
-> offset between CNTVCT_EL0 to wall clock time which the KVM can update
-> during suspend/resume. This means that during a suspend/resume the guest
-> can observe that wall clock time has passed, without having to be
-> bothered about CNTVCT_EL0 jumping forwards.
-> 
-
-Isn't the proper Arm architectural solution for this to read the
-physical counter for wall clock time keeping ?
-
-(Yes that will require a trap on physical counter reads after migration
-on current systems, but migration sucks in terms of timekeeping
-already.)
-
-
-Thanks,
-
-    Christoffer
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+VGhhbmtzIEVyaWMsIGhhcHB5IHRvIGpvaW4gXl4gDQoNCi0tLS0tTWVzc2FnZSBkJ29yaWdpbmUt
+LS0tLQ0KRGXCoDogRXJpYyBCbGFrZSA8ZWJsYWtlQHJlZGhhdC5jb20+IA0KRW52b3nDqcKgOiBq
+ZXVkaSAxNCBtYXJzIDIwMTkgMTg6NDQNCsOAwqA6IFJpY2hhcmQgSGVuZGVyc29uIDxyaWNoYXJk
+LmhlbmRlcnNvbkBsaW5hcm8ub3JnPjsgUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5h
+cm8ub3JnPjsgQW1pciBDSEFSSUYgPGFtaXIuY2hhcmlmQGNlYS5mcj4NCkNjwqA6IHFlbXUtYXJt
+IDxxZW11LWFybUBub25nbnUub3JnPjsgUUVNVSBEZXZlbG9wZXJzIDxxZW11LWRldmVsQG5vbmdu
+dS5vcmc+DQpPYmpldMKgOiBSZTogW1FlbXUtZGV2ZWxdIFtRZW11LWFybV0gW1BBVENIXSBDaGVj
+ayBhY2Nlc3MgcGVybWlzc2lvbiB0byBBRERWTC9BRERQTC9SRFZMDQoNCk9uIDMvMTQvMTkgMTI6
+MzQgUE0sIFJpY2hhcmQgSGVuZGVyc29uIHdyb3RlOg0KPiBPbiAzLzE0LzE5IDEwOjIxIEFNLCBQ
+ZXRlciBNYXlkZWxsIHdyb3RlOg0KPj4gUmljaGFyZCwgQW1pciAtLSBpdCBsb29rcyBsaWtlIHlv
+dSBib3RoIHNlbnQgZXhhY3RseSB0aGUgc2FtZSBwYXRjaCANCj4+IGF0IHByZXR0eSBtdWNoIGV4
+YWN0bHkgdGhlIHNhbWUgdGltZS4gQW55IHByZWZlcmVuY2VzIGZvciB3aG9zZSANCj4+IHZlcnNp
+b24gSSBhcHBseSA/IDotKQ0KPj4NCj4+IHRoYW5rcw0KPj4gLS0gUE1NDQo+IA0KPiBIYWguICBC
+aXQgb2YgbWlzY29tbXVuaWNhdGlvbiB0aGVyZS4gIE1pZ2h0IGFzIHdlbGwgYXBwbHkgQW1pcidz
+IGFuZCANCj4gaGF2ZSBteQ0KPiBSZXZpZXdlZC1ieTogUmljaGFyZCBIZW5kZXJzb24gPHJpY2hh
+cmQuaGVuZGVyc29uQGxpbmFyby5vcmc+DQoNCkdyZWF0IG1pbmRzIHRoaW5rIGFsaWtlIQ0KDQpN
+eSBwZXJzb25hbCBwcmVmZXJlbmNlLCBpZiBpdCBjb3VudHMgZm9yIGFueXRoaW5nLCBpcyB0byBh
+cHBseSBBbWlyJ3MgcGF0Y2gsIGJlY2F1c2UgaXQncyBhbHdheXMgbmljZSB0byBoYXZlIGZpcnN0
+LXRpbWUgY29udHJpYnV0b3JzIGFkZGVkIGluIGEgcmVsZWFzZS4gIFdlbGNvbWUgdG8gdGhlIGNv
+bW11bml0eSwgQW1pciENCg0KLS0NCkVyaWMgQmxha2UsIFByaW5jaXBhbCBTb2Z0d2FyZSBFbmdp
+bmVlcg0KUmVkIEhhdCwgSW5jLiAgICAgICAgICAgKzEtOTE5LTMwMS0zMjI2DQpWaXJ0dWFsaXph
+dGlvbjogIHFlbXUub3JnIHwgbGlidmlydC5vcmcNCg==

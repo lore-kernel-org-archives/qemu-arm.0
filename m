@@ -1,114 +1,101 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1477511wro;
-        Thu, 14 Mar 2019 18:15:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxugNd8/qzRDtQi0yCD7sOlofi8CgUKP+FMpev0qxvlB8AKcW6qOwfcfqUYG5izbfO0NfDg
-X-Received: by 2002:adf:ee50:: with SMTP id w16mr441573wro.293.1552612539194;
-        Thu, 14 Mar 2019 18:15:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552612539; cv=none;
+Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp1563836wro;
+        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHkOykeWBTsoZiGZLe/pV417p6acXrOr4PelaSakqyoXT9JqcjrjYgABYgsynPzdWuP9ip
+X-Received: by 2002:adf:f111:: with SMTP id r17mr744546wro.272.1552620902527;
+        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552620902; cv=none;
         d=google.com; s=arc-20160816;
-        b=j436p4yolVxFQwql0sWtmLyF8hMpO4DvjpCogBGgpVkSRFwUwzh4HJhmQi674JgZQF
-         vZqSQo48HIkpPtlpWsexAsOyfn6cVf/QnG6626Hg6NvQ/bezzeSGKK0cA7RNwxy1O407
-         vit03qidCElweiZ0w1fGMOHRTKhwPWIuaDnu7Mpg8LQYGwsGB6t7q827AQkhRug/8q45
-         0PHZcQYvWlPlPQpABuIsZi6KSXVI02C6ChtDXi3WFaphfZoazd4hEYR2dSDTN2Yf1MRE
-         Gb9M+XSF22tAMBetkWEJ8N5EVk+KTJEh/MapgYZJuUP3C28zjYexCTPJvGLsk1Vnu8Ar
-         /0yA==
+        b=KUnaTzYXz9XbK51zCtOuh2rYIncDqaIoCHignAWUZL7fhlKXEChGOmEqDgCmJ6vMDT
+         cfurBPx5Gp8nteXq6mAM0Cay9zqinMg206GcKAER3tITRdCdWPgNBRRPxCUph4t0x1ut
+         6k0a6Q4VlLM9aTF3LIl9gXTWYfv5c4L5xeKLJ/Tzw7sc2+N2vGkI2iNoKZkVlSzLQCoZ
+         En2mm1GBjpfVzEKQsOlPoe+hXuzIORZkS+Ji3LnSOmD8FNCSYvlBWvCVCcnQiEjQ1mWP
+         RcBDfpLY9s55/Mu0G+Qx4e1lCigD9AevpEnzDMkVIp0b3iGN6VsgAkf7Er/5UF3MAa/6
+         4d/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from:dkim-signature;
-        bh=Mks9ZH/pnNVpo5RpUIoEVYw+YqdVdBHuAAEfPmql/8w=;
-        b=RFJ6md/izZ1hABA4VBDgjhLWfxM1uTuOzBJ9bKJqVQKLWJBvBbD8TiQLgeZf2epj/q
-         Q7PE4dMJIS4Hx2EAPQrCQm8cfuDUqLJm/oQxxP8Zfn0Ic6PQoHZN52LPjdUHYwtTE3GV
-         yd0Up7M0IfWYxzhI1ZVBhi44aa3GAakm+g9KwmJjMG4a9nr8f+ZUPVPZxVpJ0PQnCGJb
-         XTqhiUj8qT+CQWQsWEB3QAv5lFfHPYErsHYvv6LO8I2QFea9eP0rfbZP/4D8rGGm+8i4
-         4AurzV5Xa+S8qMFFe273ibMLkfveKondET+7CAAcArD9SWAp1mFFzG5SOs3wMHyAqLb9
-         /HhA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
+        b=VLhcfkWj2wRlyBIcHoYwaDJZro9jGCKTPTg9FdMRoz+coVIubGnoTo81lCEERVO8Ia
+         wcjGENhnWBUZ2vWNw7FIc3pY+yh5BRPmuQU9NFNGMUCWBfJojRplo+TJqmxKQGXA2Im9
+         HikguYhRxcoqo0OwYR6JSUDzPz3pYWNeQrIqZXBcnIJlAcxbXuT8cOVG3QuE5swasrJy
+         7eCjfymOc4LTswqzrOjZ2sleDlBY3S68Tbua5KfizC6pnuKBvhKMuWko3YED3bIRcJYr
+         iBwcG+OAr7MVwm3W5ldeBiM5IY7KP6B1Ncx9w6R2ehe/mJUSWLL6xCvrWySOnuJ2TFAw
+         PZzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uNYr6BQU;
+       dkim=fail header.i=@linaro.org header.s=google header.b="eJF99u6/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b6si294854wrn.82.2019.03.14.18.15.38
+        by mx.google.com with ESMTPS id z18si429724wrt.269.2019.03.14.20.35.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Mar 2019 18:15:39 -0700 (PDT)
+        Thu, 14 Mar 2019 20:35:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uNYr6BQU;
+       dkim=fail header.i=@linaro.org header.s=google header.b="eJF99u6/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:47370 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:48660 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4bRi-0007uO-5Q
-	for alex.bennee@linaro.org; Thu, 14 Mar 2019 21:15:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56437)
+	id 1h4dcb-0005Ee-Dp
+	for alex.bennee@linaro.org; Thu, 14 Mar 2019 23:35:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dirty.ice.hu@gmail.com>) id 1h4bRU-0007so-IV
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 21:15:25 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1h4dcI-0004w5-2w
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:34:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dirty.ice.hu@gmail.com>) id 1h4bPM-0005EJ-Ms
-	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 21:13:13 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41295)
+	(envelope-from <richard.henderson@linaro.org>) id 1h4dUq-00039s-EE
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:27:01 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:34789)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <dirty.ice.hu@gmail.com>)
-	id 1h4bPM-0005Dd-DU; Thu, 14 Mar 2019 21:13:12 -0400
-Received: by mail-wr1-x444.google.com with SMTP id p1so7828272wrs.8;
-	Thu, 14 Mar 2019 18:13:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:subject:to:cc:references:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=Mks9ZH/pnNVpo5RpUIoEVYw+YqdVdBHuAAEfPmql/8w=;
-	b=uNYr6BQUPuBmJ+JjhY3sBnkIXaMzme9ySnbZBomC3bkEAP6RSN4Cks2CyIlhBXJLf+
-	8PNakZDvppFDpe5STbNfKog9OY+0K/FtoTSYKgzPqlCN6y9zBfNrhf6bk1L0EhKZRZ6Z
-	onucP6JHau3zN/BVYIvzoPo18cz9yBA47N08JTeOUGiE1OYgVFkXsJEYf/IB3MH55r9Y
-	zsLw+ctyaDuSfiKZbevptEppdPExtnPEDvA0DstyO1gQ06AOrP/VlyyK13PEMhHycmQD
-	1ZO/QuSiCmt2zTNmS161gYQcW/vwdnxtNfwv6nrJUHQOYMsoj3emDr3GLCpsyhdf8TlC
-	wy1Q==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1h4dUq-00039C-6M
+	for qemu-arm@nongnu.org; Thu, 14 Mar 2019 23:27:00 -0400
+Received: by mail-pg1-x542.google.com with SMTP id v12so5434125pgq.1
+	for <qemu-arm@nongnu.org>; Thu, 14 Mar 2019 20:27:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
+	b=eJF99u6/rZaaOScD53XGXXKCgukmZZ9pb9QlZIslNjMWQegquM6IvFpFosxLl/lS9P
+	cenvq/ikDD3wTm1IWikdr082lBsOyOArY+Q2HmFug056o+3OvzudaLmmbv1CrqCf+oVp
+	8ZvF45dvX2plSqTVD1a52wWet8b2KMuiIA07cZTIC+Kv3c4ok5RPqqn5XGRaC9g/ZPA4
+	ak21lgbv9uhOLGjllHVH/7cnJRVQ9/xIYS5Ey2DMoIThQAB/n1b9tsrhhy8/4MWg7aQk
+	2iyuG3+H0OMZ0fG0dS2FVDWLSzSPNrq/fNgCDG2t1YHKasnmlPwN1G6+/YV1j0SwrHAG
+	P92w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:subject:to:cc:references:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Mks9ZH/pnNVpo5RpUIoEVYw+YqdVdBHuAAEfPmql/8w=;
-	b=BWP6Bztx6Os4AVKlwIjyIaChpfU5WeY0llrwdf/733QWLVMiQQJVRqapYL5xjzozDH
-	2uVsPO6IbqvQbKLc5El9/A/bGUEXyMKPkAIzem1iFmCQGGku3BKE5z/1kWJzE3h63gwT
-	oGeIZX8RAXbc/u5s5nfn5LQ6gcwXvPsq6iPcV/NK4eg/FJVZk+tOJt2hE5Gv5CGFlVaB
-	NMVG24E97KzNB0hCLU4xe3Esbir1+oLRBoAHKV6L4S8P+mQ3WmUZ7Gfg1BghuOtHGNl8
-	eVxLbfMYKTakPwGkl06wp9WsfQgInj5YSXBrhRsICLmrsqFZ/XuewgCGUTWx9Q+Jn5zg
-	6brQ==
-X-Gm-Message-State: APjAAAV197d7QyXkNsUkzO4YU1EeaeMPlj2dEHqDPWM+vb6k1x1/lWOu
-	/Wbr3opu4VeHvDFQ9ZnK0Nk=
-X-Received: by 2002:adf:f9c7:: with SMTP id w7mr439134wrr.311.1552612390322;
-	Thu, 14 Mar 2019 18:13:10 -0700 (PDT)
-Received: from ?IPv6:fd00:835b:d940:d4fc:1::c9?
-	(2a01-036c-0113-6af5-0001-0000-0000-00c9.pool6.digikabel.hu.
-	[2a01:36c:113:6af5:1::c9]) by smtp.gmail.com with ESMTPSA id
-	f196sm754492wme.36.2019.03.14.18.13.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Mar 2019 18:13:09 -0700 (PDT)
-From: "=?UTF-8?B?Wm9sdMOhbiBLxZF2w6Fnw7M=?=" <dirty.ice.hu@gmail.com>
-X-Google-Original-From: =?UTF-8?B?Wm9sdMOhbiBLxZF2w6Fnw7M=?=
-	<DirtY.iCE.hu@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20190312071250.12168-1-kraxel@redhat.com>
-	<20190312071250.12168-5-kraxel@redhat.com>
-	<CAFEAcA_04sdrC3vvOAE_=camjFEssdzMArRxTUz4LsgBM4zZLg@mail.gmail.com>
-Message-ID: <db044760-83f7-a0f6-eeda-4d0d78706deb@gmail.com>
-Date: Fri, 15 Mar 2019 02:13:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_04sdrC3vvOAE_=camjFEssdzMArRxTUz4LsgBM4zZLg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=wUaNiLlnpoO4I9xjlRRq8x+Qys7GOrUiY0x3QzlpWQA=;
+	b=G9bCD2qiOuG7zyO9YvCg1wgTaQdHBIUqmc/bCHhkCfJk2cDaTUPdczXEPK50/fqspF
+	4W0t4hs6qqUYBLBj0guwgM+gBlmxsrgeBWBVJV7oOUp9EPEaJ7vOyqgGCR9nbMbLCCey
+	F1OIlUeEX6jtzBLUAQH9lvPOWk7Aa09P0DraRwTFpozgllcO5GkysJHkrmPSqXWiUvBC
+	FEtl7QonkPZuykXbPjuxPUTLYHPKg3vAj47IYElPltCwhe8ncCmcYgxNWGVUF25YEzoZ
+	McOg9cegwRJswySWMfD5kGD8sYPPf4oBijxoqfNg6Ftlp2n0S7ZX3BCY9ifL+o5Vn6qZ
+	Kkfw==
+X-Gm-Message-State: APjAAAX0CbdDd+dSO7W4XiXF6U79sGadB2lERwkWv9uBwadGQQjNPJRQ
+	IAE68rX7EgleanXdIh0L9Ve8MAzcmR8=
+X-Received: by 2002:a65:6546:: with SMTP id a6mr1277968pgw.296.1552620419297; 
+	Thu, 14 Mar 2019 20:26:59 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
+	[97.113.188.82])
+	by smtp.gmail.com with ESMTPSA id d26sm690816pfn.86.2019.03.14.20.26.58
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 14 Mar 2019 20:26:58 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 14 Mar 2019 20:26:27 -0700
+Message-Id: <20190315032629.21234-22-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20190315032629.21234-1-richard.henderson@linaro.org>
+References: <20190315032629.21234-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: Re: [Qemu-arm] [PULL 04/14] audio: -audiodev command line option
- basic implementation
+X-Received-From: 2607:f8b0:4864:20::542
+Subject: [Qemu-arm] [PATCH v3 21/23] target/arm: Implement ARMv8.5-RNG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,52 +107,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>, Libvirt <libvir-list@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +uMw7KesGZWl
+X-TUID: iDlKli2Xc1wy
 
-On 2019-03-14 10:46, Peter Maydell wrote:
-> On Tue, 12 Mar 2019 at 07:13, Gerd Hoffmann <kraxel@redhat.com> wrote:
->>
->> From: Kővágó, Zoltán <dirty.ice.hu@gmail.com>
->>
->> Audio drivers now get an Audiodev * as config paramters, instead of the
->> global audio_option structs.  There is some code in audio/audio_legacy.c
->> that converts the old environment variables to audiodev options (this
->> way backends do not have to worry about legacy options).  It also
->> contains a replacement of -audio-help, which prints out the equivalent
->> -audiodev based config of the currently specified environment variables.
-> 
-> Hi; Coverity complains (CID 1399706) about this, which isn't
-> a change in this patch as such, but the code change has
-> probably caused it to reanalyze:
-> 
->>
->>      if (!done) {
->>          driver = audio_driver_lookup("none");
->> -        done = !audio_driver_init(s, driver, false);
->> +        done = !audio_driver_init(s, driver, false, dev);
-> 
-> Everywhere else we call audio_driver_lookup() we check
-> whether the return value is NULL before using it,
-> but here we don't. I guess this is a false positive
-> because the "none" driver must always exist ?
-> If so, I can just silence the warning in the coverity UI.
+Cc: qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v3: Log errors with -d unimp, for lack of a better flag.
+---
+ target/arm/cpu.h    |  5 +++++
+ target/arm/cpu64.c  |  1 +
+ target/arm/helper.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 50 insertions(+)
 
-Yes, "none" (implemented in noaudio.c) is currently unconditionally
-compiled in along with "wav".  "none" is used as a fallback when nothing
-else works, so I think it's a bug somewhere else if it doesn't exist.
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ae2381e222..6a078aa1a0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3443,6 +3443,11 @@ static inline bool isar_feature_aa64_condm_5(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, TS) >= 2;
+ }
+ 
++static inline bool isar_feature_aa64_rndr(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64isar0, ID_AA64ISAR0, RNDR) != 0;
++}
++
+ static inline bool isar_feature_aa64_jscvt(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, JSCVT) != 0;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 228906f267..835f73cceb 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -310,6 +310,7 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64ISAR0, DP, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, FHM, 1);
+         t = FIELD_DP64(t, ID_AA64ISAR0, TS, 2); /* v8.5-CondM */
++        t = FIELD_DP64(t, ID_AA64ISAR0, RNDR, 1);
+         cpu->isar.id_aa64isar0 = t;
+ 
+         t = cpu->isar.id_aa64isar1;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7b5d63f894..4a8d2d4481 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -20,6 +20,8 @@
+ #include "fpu/softfloat.h"
+ #include "qemu/range.h"
+ #include "qapi/qapi-commands-target.h"
++#include "qapi/error.h"
++#include "qemu/guest-random.h"
+ 
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+ 
+@@ -5717,6 +5719,45 @@ static const ARMCPRegInfo pauth_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, keys.apib.hi) },
+     REGINFO_SENTINEL
+ };
++
++static uint64_t rndr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    Error *err = NULL;
++    uint64_t ret;
++
++    /* Success sets NZCV = 0000.  */
++    env->NF = env->CF = env->VF = 0, env->ZF = 1;
++
++    if (qemu_guest_getrandom(&ret, sizeof(ret), &err) < 0) {
++        /*
++         * ??? Failed, for unknown reasons in the crypto subsystem.
++         * The best we can do is log the reason and return the
++         * timed-out indication to the guest.  There is no reason
++         * we know to expect this failure to be transitory, so the
++         * guest may well hang retrying the operation.
++         */
++        qemu_log_mask(LOG_UNIMP, "%s: Crypto failure: %s",
++                      ri->name, error_get_pretty(err));
++        error_free(err);
++
++        env->ZF = 0; /* NZCF = 0100 */
++        return 0;
++    }
++    return ret;
++}
++
++/* We do not support re-seeding, so the two registers operate the same.  */
++static const ARMCPRegInfo rndr_reginfo[] = {
++    { .name = "RNDR", .state = ARM_CP_STATE_AA64,
++      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 0,
++      .access = PL0_R, .readfn = rndr_readfn },
++    { .name = "RNDRRS", .state = ARM_CP_STATE_AA64,
++      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
++      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 1,
++      .access = PL0_R, .readfn = rndr_readfn },
++    REGINFO_SENTINEL
++};
+ #endif
+ 
+ static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -6661,6 +6702,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_pauth, cpu)) {
+         define_arm_cp_regs(cpu, pauth_reginfo);
+     }
++    if (cpu_isar_feature(aa64_rndr, cpu)) {
++        define_arm_cp_regs(cpu, rndr_reginfo);
++    }
+ #endif
+ 
+     /*
+-- 
+2.17.2
 
-PS. I think I managed to break something, Thunderbird complained that
-non-ascii characters in email addresses are not supported.  Somehow
-Kővágó@redhat.com ended up on the recipient list.
-
-Regards,
-Zoltan

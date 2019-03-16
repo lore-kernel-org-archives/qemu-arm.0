@@ -1,97 +1,111 @@
-Received: by 2002:adf:f011:0:0:0:0:0 with SMTP id j17csp2529838wro;
-        Fri, 15 Mar 2019 15:28:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw3eAac2iIKE000mmsbxdUAu9T9md/PQyktoHW3cUiRIkajmOFLbEZ8e7MQaJacqhCzRZWd
-X-Received: by 2002:a05:6000:1043:: with SMTP id c3mr3543105wrx.291.1552688882269;
-        Fri, 15 Mar 2019 15:28:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552688882; cv=none;
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp286973wrt;
+        Sat, 16 Mar 2019 03:34:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwbu0icPr7U9socOBUXx6lEyqNZ4hdRBdzIQ3nQ2rATQOFwFqMFoYMocD2VSZkGng+rGe3v
+X-Received: by 2002:a1c:4d:: with SMTP id 74mr4729802wma.129.1552732459733;
+        Sat, 16 Mar 2019 03:34:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552732459; cv=none;
         d=google.com; s=arc-20160816;
-        b=vVdSGHBRyTpUTtblBd1JwMkuju2VMh6+GuIYDqqSegFNEFTzXYRuw8onxDsgn6yP4Z
-         IG1tg5YqDgZmCmI4yBFISbjqlVx89o+VQb1VOQoBGzrUFPiYCfiD3KQEV5WMGHFwJDGI
-         23LilQ/gu03Dv8SgPrFATsv/nYtAgH4umsBEke3iJcUZwjQ6GebwOF2V3JnJO5NqvFpZ
-         qjSLGLewnIFW58NgAZY/V6CqbBzS5FIh2iXlL8bUL+VNGphwdr1BB7wZmB4CIy6KKpSr
-         7P/ATZMpqsg34mEOTie5cw2cUYe0mkDK3vg9DgeiZyBRbBUotVzTqLmDm7U4SLx9tfBk
-         FP+g==
+        b=o9GVAPm6rur2quvqVynfqHd1h5A7iST76Mie+hZ9DHFsl/XSZyEcd2eWOlnlCa/ThZ
+         FqPEH/60fq8g3IFRL7BSkXxms+zAYOapAR1dVDHVCnu/N3ft1hqipgmVJbB/XjJnaTu6
+         8vnJ9sivToliejRengHc8128lIFdoLytB55wgBadI2nE/UN/gNJ7HUvXJ8uwtare5Xkp
+         GHhJvYD23Md5Ho9k/oo+Ar3qy/mSzAxMDVmoOhf6M5l2AJM89oRviRRdExgITbgTyoRO
+         RX2JmBPUdWibSqbjx2kKhNrqxOTOy+g4JjjGfuhFVLC25yivjbs/8itTgmclrPNVXmkB
+         l59w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=X8as6M+3UgxQ04BVOMXINB4DtL5StBNtN8LtaEYPvVY=;
-        b=Lfno1BvmDJY9ccNnBbDW5fy3bMGknbHRSXarJ7oanWpM1lVWcHxLvOVa7Y/Sv0cfAd
-         zzEGtgEKRsZYsLI+D9avDRoa5QYvz+cgRVagUpVJwvrRFUsHepy5MBydVzyIWaFg6NUC
-         PiFEFbAWYwR1e08itwpLgtV+pMe/GMXO41sTR6KlLC6eo1ex9KbRz240vH6TxNTjNpX0
-         WV4Fi3OX0EFhFJcxVc3vn+3WSmNfwUOFS0lXhNpy1nmkYgXRyFNpie2vIa6sJlFUQEA7
-         NKZ+A40bbnrVeKaE1wGTkRI4/GePRM5WL1DWGKHvpEuaVaqEVxk0Gv5Bb/6mnzgRgnmY
-         DCqA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :to:from:date:dkim-signature;
+        bh=Liafo5zMUZ8lkJj3jikSjBJ+azJHuviiLCH257GdK/w=;
+        b=Jk+CPPP4up5SmgcJT6wure8dVt5pzNxrSaZRbDl3tVxva4H8rzi5V6D8tOImvbw3x7
+         RFGK8/kZbtkzZB2MMmBg09RDuXa3oP1fRT6Zyx91wBDJ72srt1ZqT2LoRnxlcKRzA7Pz
+         NLD0o4sycGP0k50SV5WDUOGgsD0zEzSele34gal87l3E1LDPgLZC6401EFoHOWF5Uy1z
+         5tuFQKskKQp8S98dD0CP07v+lx9r5t/PR3Xariu8Q2YlW4ZZoOpOxq8wCw78985gyKDm
+         EDIV3zsBGFzC8hQCUbO4THQqLjhgJxtKCY+rJsxZsD6bKEQtxNJeT88U88RL+LGuhsCU
+         gODg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PN/zt+0W";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cRDn2L4G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10si1939841wrl.69.2019.03.15.15.28.02
+        by mx.google.com with ESMTPS id i14si255737wru.352.2019.03.16.03.34.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Mar 2019 15:28:02 -0700 (PDT)
+        Sat, 16 Mar 2019 03:34:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PN/zt+0W";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cRDn2L4G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:33756 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:39932 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h4vJ3-0006U8-8V
-	for alex.bennee@linaro.org; Fri, 15 Mar 2019 18:28:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38498)
+	id 1h56du-0003WR-MC
+	for alex.bennee@linaro.org; Sat, 16 Mar 2019 06:34:18 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cialdi@gmail.com>) id 1h4vI8-0005wk-Dh
-	for qemu-arm@nongnu.org; Fri, 15 Mar 2019 18:27:06 -0400
+	(envelope-from <richard.weiyang@gmail.com>) id 1h56da-0003Rt-BM
+	for qemu-arm@nongnu.org; Sat, 16 Mar 2019 06:33:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cialdi@gmail.com>) id 1h4v4M-0005md-W7
-	for qemu-arm@nongnu.org; Fri, 15 Mar 2019 18:12:52 -0400
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:33104)
+	(envelope-from <richard.weiyang@gmail.com>) id 1h56bA-0001rU-OL
+	for qemu-arm@nongnu.org; Sat, 16 Mar 2019 06:31:29 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:45740)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <cialdi@gmail.com>) id 1h4v4M-0005mI-Ix
-	for qemu-arm@nongnu.org; Fri, 15 Mar 2019 18:12:50 -0400
-Received: by mail-qt1-x843.google.com with SMTP id k14so6165685qtb.0
-	for <qemu-arm@nongnu.org>; Fri, 15 Mar 2019 15:12:49 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
+	id 1h56b9-0001qD-Bc; Sat, 16 Mar 2019 06:31:27 -0400
+Received: by mail-ed1-x543.google.com with SMTP id m16so3089564edd.12;
+	Sat, 16 Mar 2019 03:31:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=X8as6M+3UgxQ04BVOMXINB4DtL5StBNtN8LtaEYPvVY=;
-	b=PN/zt+0WEH+IW0JlRxxO3GWC2JYEOZPXgzfsvN5/G5KFTboxIs9HqUT3GhFGLpsk7Q
-	8Pxmb3ZXn04KE9pAzqAeCcS0uwf1Nw30MA/JvSYjG1Zt0WDwHG14RxfZFEKHrkCk0QAW
-	IUij1+pOOnE9T38D0AEDZ4DePeME5xgiG3Tm2IeXUPs7OKs9Zy20q85VBWRrQ1hITkqi
-	AKWilLfId/MfwSutDSEtw0IbZMfjgLDjmtmvh1t0DepArJ94d2TUtvONYDfIcBl/iEfC
-	85l9g3C7BKxxQj65a33SW7GabNE7XfYUEWOj1se1xekKhG6dqLpq7LEOcG3A99aosFa5
-	MIOQ==
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=Liafo5zMUZ8lkJj3jikSjBJ+azJHuviiLCH257GdK/w=;
+	b=cRDn2L4GItci0suRFkJiWL8rW8PptcsD+O2kJl4lC9mO3oZkRspN1z4+EizI1ONkoV
+	Xj1lwaDM7TpByxVkPsfCCY/rMnO5+s8DUmY3lKXf2M6dIToPmIU1tStlbY7kXW1AYioh
+	tabjW2o7bP67Cm1z5RG33L/WH5G695viwEMpURPggIOFTBdE2LNb2Puuv8eyYGV8hx5u
+	OtYClBGcegujbwCTVsr8h30CWexdwOe4dvWYDqE6DO3t2DEqTVq2FTmVsvH2wFT0x2EX
+	939geyksJVlVDZBEX1MmOMA4wMrW+I9NfkY5Il/IYsfAx8sORiu8JNnhi4mMFX78UZyM
+	ogWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=X8as6M+3UgxQ04BVOMXINB4DtL5StBNtN8LtaEYPvVY=;
-	b=jE5mfwjNiw6UqEz3PqyALyjO+QkzZmLHuscF8/gkGKjq7UbEICf7UUOt3VpyQkKfF8
-	rud0lv8ynuvpkXGyJGJknOEwF0qm8tNzrsYNDRrG7Psqn6oYyttmXaWBHaQUXa+i+APL
-	i7J9FsPVdEAVDSZV0OOYXLzZ55huEq/gITzggVv4KsteSPfCxUIj3P+Jd/QeS3IQnbcS
-	G+rg63dLu7kR8x6vKuUKakRcQLLbWpMIbaorWMF8cL/YOLMpu+2t6GNHLZcKaaHnvZt9
-	TojJdPr1b7tUyA3zb/2x8kqpO+y2m8r8re98pwL0Ed+8vZHIUiDLiL0hdEZ8wAT6Nhvz
-	vQCQ==
-X-Gm-Message-State: APjAAAVMhdk7qLEP2VfwBuFU/fV1bTzRFTQ1m0NzpLKvoxhWMgUM2FyQ
-	PRn7YxGhlPxnlKN5ZAqU14qO5037F2ImHwYPm2A=
-X-Received: by 2002:ac8:266d:: with SMTP id v42mr4691964qtv.116.1552687969163; 
-	Fri, 15 Mar 2019 15:12:49 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=Liafo5zMUZ8lkJj3jikSjBJ+azJHuviiLCH257GdK/w=;
+	b=XwaohQf9t+yFXonEHkcDVp3KvHeuO0QMXFOWPETYwze62yl1SQiaUg7datD+8Pd9Yy
+	XcwEc1+cF43VyvG/Z2lePDuRzNxyNAEybPhNVi+sMWe4uUyTxqdDaH+YKvUFA2MpZmq4
+	BRhBzG+MM8HEmeYHjQ1+BnWXDRqcGq+OT/9/QD7kNr4zJK0hbsfJZCnZYibL/4AIPN3t
+	RhwjbCuRUyvHV9n6QDX3WgEiAM7zLFsrFXflTQagAmhrl+c78KZTgA8rJNTGPB8NuznO
+	rm1MDcrggaYZZ65xeuaXJSQGZWol6WTpmLFvTM0tpXb44UZ2/O+5g0ZiPwLmMS7Rs7es
+	Lrzw==
+X-Gm-Message-State: APjAAAUkYJLBoyZxjiEFr1t9HSSzPToQSJ5RTAu22/o/zT6EfmfnOtsf
+	Np3NaVTajK2bpGLgDokfRT4=
+X-Received: by 2002:a50:97d5:: with SMTP id f21mr5860378edb.293.1552732285704; 
+	Sat, 16 Mar 2019 03:31:25 -0700 (PDT)
+Received: from localhost ([185.92.221.13])
+	by smtp.gmail.com with ESMTPSA id i9sm992893ejc.67.2019.03.16.03.31.24
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sat, 16 Mar 2019 03:31:24 -0700 (PDT)
+Date: Sat, 16 Mar 2019 10:31:24 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190316103124.qeu4dz67adezijtn@master>
+References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
+	<20190313044253.31988-4-richardw.yang@linux.intel.com>
+	<20190313132300.3f56a5ca@redhat.com>
+	<20190313133359.h2njohyijgvkcbtv@master>
+	<20190313170943.5384f5cf@redhat.com>
+	<20190313213137.acncaz7duosjybnf@master>
+	<20190314101830.6e10d4d5@redhat.com>
 MIME-Version: 1.0
-References: <CABgYhWf=unSbmTksO+gkUuX+UL3g8HvEuDAeDdxBQVbzci05DQ@mail.gmail.com>
-	<CAFEAcA8xqO=iV9oJWWdPHhhDFRmAoegMpwUZQUszXLwG7zS=Hw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8xqO=iV9oJWWdPHhhDFRmAoegMpwUZQUszXLwG7zS=Hw@mail.gmail.com>
-From: Massimiliano Cialdi <cialdi@gmail.com>
-Date: Fri, 15 Mar 2019 23:12:37 +0100
-Message-ID: <CABgYhWdu-H6zfWjwwtJbFK6TJa89tqERtX=djYpFobWjir_C6A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000d95f7505842956b5"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190314101830.6e10d4d5@redhat.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::843
-Subject: Re: [Qemu-arm] QEMU user mode for cortex M
+X-Received-From: 2a00:1450:4864:20::543
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract
+ build_mcfg
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,210 +117,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+	Wei Yang <richard.weiyang@gmail.com>, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hu5Le6IvWKtd
+X-TUID: 3sDhM27M5PVT
 
---000000000000d95f7505842956b5
-Content-Type: text/plain; charset="UTF-8"
-
-I have tried to follow some websites, such as, for example,
-https://gnu-mcu-eclipse.github.io/qemu/options/,
-http://sushihangover.github.io/arm-cortex-m-semihosting-with-qemu/ or
-https://balau82.wordpress.com/2010/11/04/qemu-arm-semihosting/ without
-success
-
-I have my exetutable compiled with
-/opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc -std=gnu11
--mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-d16 -fno-common
--specs=rdimon.specs -Wl,--cref,-Map=main.map main.c -o main.elf
-
-then I try to execute qemu:
-~/Downloads/qemu/qemu-3.1.0/arm-softmmu/qemu-system-arm -d
-unimp,guest_errors -machine virt -monitor null -serial null  -semihosting
--nographic -semihosting-config enable=on,target=native -kernel main.elf
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003fffffc,
-wcycle 0x0 cmd 0x0 value 0x80f7)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffcc,
-wcycle 0x0 cmd 0x0 value 0xa984)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffd4,
-wcycle 0x0 cmd 0x0 value 0x3)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffbc,
-wcycle 0x0 cmd 0x0 value 0x1b368)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffc0,
-wcycle 0x0 cmd 0x0 value 0x1b304)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffc4,
-wcycle 0x0 cmd 0x0 value 0xa6cb)
-pflash_write: Unimplemented flash cmd sequence (offset 000000000001b304,
-wcycle 0x0 cmd 0x0 value 0x1)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff94,
-wcycle 0x0 cmd 0x0 value 0x1b304)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffa4,
-wcycle 0x0 cmd 0x0 value 0xa984)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffac,
-wcycle 0x0 cmd 0x0 value 0xa617)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff6c,
-wcycle 0x0 cmd 0x0 value 0x1b304)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff74,
-wcycle 0x0 cmd 0x0 value 0x1)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff78,
-wcycle 0x0 cmd 0x0 value 0x7ffffb4)
-pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff84,
-wcycle 0x0 cmd 0x0 value 0xa545)
-pflash_write: Unimplemented flash cmd sequence (offset 000000000001aac0,
-wcycle 0x0 cmd 0x0 value 0x18)
-write access to unsupported AArch32 64 bit system register cp:12 opc1: 15
-crm:8 (non-secure)
-
-
-and nothing happend. Where am I wrong? I'm wrong at the compilation stage,
-at the execution stage or both? Is there something wrong with the command
-line parameters? Which one? How do I force a cortex-m4? How can I force the
-Cpu without having to choose any machine?
-
-best regards
-Max
-
-On Fri, Mar 15, 2019 at 11:05 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Thu, 14 Mar 2019 at 22:30, Massimiliano Cialdi <cialdi@gmail.com>
-> wrote:
-> >
-> > hello,
-> > I would like to try some algorithms on cortex M (especially cortex M4).
-> I don't need to emulate the whole machine, I just need the user mode.
-> > To test the feasibility, I wrote the trivial "hello world".
-> >
-> > I can compile it with arm-none-eabi-gcc, but the newlib associated with
-> it does not implement any syscall.
-> > So I tried, on ubuntu, with the cross compiler arm-linux-gnueabihf-gcc
-> and its libc6, but the latter is only distributed for cortex A.
-> >
-> > What do you suggest? Should I recompile the libc6 for cortex M (or do I
-> find it pre-compiled)? Should I implement (and how?) syscalls on newlib?
-> >
-> > In summary, I would need a step-by-step guide to running Cortex M code
-> on QEMU arm user mode.
+On Thu, Mar 14, 2019 at 10:18:30AM +0100, Igor Mammedov wrote:
+>On Wed, 13 Mar 2019 21:31:37 +0000
+>Wei Yang <richard.weiyang@gmail.com> wrote:
 >
-> User-mode in Cortex-M is a weird thing to do, because what QEMU
-> gives you is the A-profile Linux syscalls. It's a hybrid that
-> we only continue to provide because it happens to be used and
-> useful to the gcc folks doing compiler testing. I would
-> recommend against using it, personally.
->
-> System emulation mode will get you something that actually
-> works the way the real hardware does. You can then do
-> output either via the UART or via semihosting (you need to
-> enable the latter on the commandline).
->
-> thanks
-> -- PMM
->
+>> On Wed, Mar 13, 2019 at 05:09:43PM +0100, Igor Mammedov wrote:
+>> >On Wed, 13 Mar 2019 13:33:59 +0000
+>> >Wei Yang <richard.weiyang@gmail.com> wrote:
+>> >  
+>> >> On Wed, Mar 13, 2019 at 01:23:00PM +0100, Igor Mammedov wrote:  
+>> >> >On Wed, 13 Mar 2019 12:42:53 +0800
+>> >> >Wei Yang <richardw.yang@linux.intel.com> wrote:
+>> >> >    
+>> >> >> Now we have two identical build_mcfg function.
+>> >> >> 
+>> >> >> Extract them to aml-build.c.
+>> >> >> 
+>> >> >> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>> >> >> ---
+>> >> >>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
+>> >> >>  hw/arm/virt-acpi-build.c    | 16 ----------------
+>> >> >>  hw/i386/acpi-build.c        | 31 +------------------------------
+>> >> >>  include/hw/acpi/aml-build.h |  1 +
+>> >> >>  4 files changed, 32 insertions(+), 46 deletions(-)
+>> >> >> 
+>> >> >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> >> >> index 555c24f21d..58d3b8f31d 100644
+>> >> >> --- a/hw/acpi/aml-build.c
+>> >> >> +++ b/hw/acpi/aml-build.c    
+>> >> >
 
+[...]
+
+>> >I mean do not call build_mcfg() at all when you don't have to.
+>> >
+>> >And when you need to keep table_blob the same size (for old machines)
+>> >using acpi_data_push() to reserve space instead of build_mcfg(sig="QEMU")
+>> >might just work as well. it's still hack but it can live in x86 specific
+>> >acpi_build() keeping build_mcfg() generic.
+>> >  
+>> 
+>> Seems got your idea.
+>> 
+>> >As for defining what to use as criteria to decide when we need to keep
+>> >table_blob size the same, I don't remember history of it, so I'd suggest
+>> >to look at commit a1666142, study history of acpi_ram_update() and
+>> >legacy_acpi_table_size to figure out since which machine type one doesn't
+>> >have to keep table_blob size the same.
+>> >  
+>> 
+>> OK, let me study the history first.
+>> 
+>> BTW, the legacy here is hardware specification level or qemu software
+>> design level?
+>it's QEMU only, you need to find a version of QEMU (machine type)
+>which didn't have re-sizable MemoryRegion and the next version most likely
+>would have a knob somewhere in machine class definition saying that we don't
+>care about sizes anymore or care about sizes only for previous machine types.
+
+I have got something, but not sure this is correct. So I'd like to
+summarize them here first.
+
+The following commits are ordered in timeline.
+
+1. First we introduced resizable MR.
+
+    a1666142db 2015-01-08 acpi-build: make ROMs RAM blocks resizeable
+    60786ef339 2015-01-08 memory: API to allocate resizeable RAM MR
+
+2. Then acpi_ram_update in introduced
+
+    339240b5cd 2015-04-27 acpi-build: remove dependency from ram_addr.h
+    42d859001d 2015-02-26 acpi-build: fix ACPI RAM management
+
+3. After that we introduce 2.4 machine type
+
+    5cb50e0acc 2015-04-27 pc: add 2.4 machine types
+
+But I don't find a comment stating we don't care about sizes anymore.
+
+Below is my understanding of the dummy table history. 
+
+Before resizable MR was introduced, the dummy table is used to be a
+place holder so that we could add real table in acpi_build_update().
+Othersize the new ACPI table is bigger to be placed into
+build_state->table_mr.
+
+If this is correct, after commit a1666142db ACPI table has the
+capability to expand itself and not necessary to pre-allocate the dummy
+table. Can I say after commit a1666142db, we don't need to put a fake
+table in ACPI?
+
+Another confusion is in the comment of build_mcfg(). In which aspect, it
+relates to migration? Is this before resizable MR introduced?
 
 -- 
-Et nunc, auxilium solis, vincam!
-Oppugnatio solaris!
-VIS!
-
-Massimiliano Cialdi
-cialdi@gmail.com
-
---000000000000d95f7505842956b5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div di=
-r=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"lt=
-r">I have tried to follow some websites, such as, for example, <a href=3D"h=
-ttps://gnu-mcu-eclipse.github.io/qemu/options/">https://gnu-mcu-eclipse.git=
-hub.io/qemu/options/</a>, <a href=3D"http://sushihangover.github.io/arm-cor=
-tex-m-semihosting-with-qemu/">http://sushihangover.github.io/arm-cortex-m-s=
-emihosting-with-qemu/</a> or <a href=3D"https://balau82.wordpress.com/2010/=
-11/04/qemu-arm-semihosting/">https://balau82.wordpress.com/2010/11/04/qemu-=
-arm-semihosting/</a> without success</div><div dir=3D"ltr"><br></div><div>I=
- have my exetutable compiled with</div><div><span style=3D"font-family:mono=
-space,monospace">/opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-g=
-cc -std=3Dgnu11 -mcpu=3Dcortex-m7 -mthumb -mfloat-abi=3Dhard -mfpu=3Dfpv5-d=
-16 -fno-common -specs=3Drdimon.specs -Wl,--cref,-Map=3Dmain.map main.c -o m=
-ain.elf</span></div><div><br></div><div>then I try to execute qemu:</div><d=
-iv><span style=3D"font-family:monospace,monospace">~/Downloads/qemu/qemu-3.=
-1.0/arm-softmmu/qemu-system-arm -d unimp,guest_errors -machine virt -monito=
-r null -serial null=C2=A0 -semihosting -nographic -semihosting-config enabl=
-e=3Don,target=3Dnative -kernel main.elf<br>pflash_write: Unimplemented flas=
-h cmd sequence (offset 0000000003fffffc, wcycle 0x0 cmd 0x0 value 0x80f7)<b=
-r>pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffffcc, =
-wcycle 0x0 cmd 0x0 value 0xa984)<br>pflash_write: Unimplemented flash cmd s=
-equence (offset 0000000003ffffd4, wcycle 0x0 cmd 0x0 value 0x3)<br>pflash_w=
-rite: Unimplemented flash cmd sequence (offset 0000000003ffffbc, wcycle 0x0=
- cmd 0x0 value 0x1b368)<br>pflash_write: Unimplemented flash cmd sequence (=
-offset 0000000003ffffc0, wcycle 0x0 cmd 0x0 value 0x1b304)<br>pflash_write:=
- Unimplemented flash cmd sequence (offset 0000000003ffffc4, wcycle 0x0 cmd =
-0x0 value 0xa6cb)<br>pflash_write: Unimplemented flash cmd sequence (offset=
- 000000000001b304, wcycle 0x0 cmd 0x0 value 0x1)<br>pflash_write: Unimpleme=
-nted flash cmd sequence (offset 0000000003ffff94, wcycle 0x0 cmd 0x0 value =
-0x1b304)<br>pflash_write: Unimplemented flash cmd sequence (offset 00000000=
-03ffffa4, wcycle 0x0 cmd 0x0 value 0xa984)<br>pflash_write: Unimplemented f=
-lash cmd sequence (offset 0000000003ffffac, wcycle 0x0 cmd 0x0 value 0xa617=
-)<br>pflash_write: Unimplemented flash cmd sequence (offset 0000000003ffff6=
-c, wcycle 0x0 cmd 0x0 value 0x1b304)<br>pflash_write: Unimplemented flash c=
-md sequence (offset 0000000003ffff74, wcycle 0x0 cmd 0x0 value 0x1)<br>pfla=
-sh_write: Unimplemented flash cmd sequence (offset 0000000003ffff78, wcycle=
- 0x0 cmd 0x0 value 0x7ffffb4)<br>pflash_write: Unimplemented flash cmd sequ=
-ence (offset 0000000003ffff84, wcycle 0x0 cmd 0x0 value 0xa545)<br>pflash_w=
-rite: Unimplemented flash cmd sequence (offset 000000000001aac0, wcycle 0x0=
- cmd 0x0 value 0x18)<br>write access to unsupported AArch32 64 bit system r=
-egister cp:12 opc1: 15 crm:8 (non-secure)<br></span><br></div><div><br></di=
-v><div>and nothing happend. Where am I wrong? I&#39;m wrong at the compilat=
-ion stage, at the execution stage or both? Is there something wrong with th=
-e command line parameters? Which one? How do I force a cortex-m4? How can I=
- force the Cpu without having to choose any machine?</div><div><br></div><d=
-iv>best regards</div><div>Max<br></div></div></div></div></div></div></div>=
-</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_=
-attr">On Fri, Mar 15, 2019 at 11:05 AM Peter Maydell &lt;<a href=3D"mailto:=
-peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
-left:1px solid rgb(204,204,204);padding-left:1ex">On Thu, 14 Mar 2019 at 22=
-:30, Massimiliano Cialdi &lt;<a href=3D"mailto:cialdi@gmail.com" target=3D"=
-_blank">cialdi@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; hello,<br>
-&gt; I would like to try some algorithms on cortex M (especially cortex M4)=
-. I don&#39;t need to emulate the whole machine, I just need the user mode.=
-<br>
-&gt; To test the feasibility, I wrote the trivial &quot;hello world&quot;.<=
-br>
-&gt;<br>
-&gt; I can compile it with arm-none-eabi-gcc, but the newlib associated wit=
-h it does not implement any syscall.<br>
-&gt; So I tried, on ubuntu, with the cross compiler arm-linux-gnueabihf-gcc=
- and its libc6, but the latter is only distributed for cortex A.<br>
-&gt;<br>
-&gt; What do you suggest? Should I recompile the libc6 for cortex M (or do =
-I find it pre-compiled)? Should I implement (and how?) syscalls on newlib?<=
-br>
-&gt;<br>
-&gt; In summary, I would need a step-by-step guide to running Cortex M code=
- on QEMU arm user mode.<br>
-<br>
-User-mode in Cortex-M is a weird thing to do, because what QEMU<br>
-gives you is the A-profile Linux syscalls. It&#39;s a hybrid that<br>
-we only continue to provide because it happens to be used and<br>
-useful to the gcc folks doing compiler testing. I would<br>
-recommend against using it, personally.<br>
-<br>
-System emulation mode will get you something that actually<br>
-works the way the real hardware does. You can then do<br>
-output either via the UART or via semihosting (you need to<br>
-enable the latter on the commandline).<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature">Et nunc, auxilium solis, vincam!<br>Oppugnatio solaris!<br>=
-VIS!<br><br>Massimiliano Cialdi<br><a href=3D"mailto:cialdi@gmail.com" targ=
-et=3D"_blank">cialdi@gmail.com</a></div>
-
---000000000000d95f7505842956b5--
+Wei Yang
+Help you, Help me

@@ -1,117 +1,126 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id g24sm6047544wmh.45.2019.03.16.05.01.43
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 16 Mar 2019 05:01:43 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 904931FF87;
-	Sat, 16 Mar 2019 12:01:43 +0000 (UTC)
-References: <CABgYhWf=unSbmTksO+gkUuX+UL3g8HvEuDAeDdxBQVbzci05DQ@mail.gmail.com> <CAFEAcA8xqO=iV9oJWWdPHhhDFRmAoegMpwUZQUszXLwG7zS=Hw@mail.gmail.com> <CABgYhWdu-H6zfWjwwtJbFK6TJa89tqERtX=djYpFobWjir_C6A@mail.gmail.com>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [Qemu-arm] QEMU user mode for cortex M
-In-reply-to: <CABgYhWdu-H6zfWjwwtJbFK6TJa89tqERtX=djYpFobWjir_C6A@mail.gmail.com>
-Date: Sat, 16 Mar 2019 12:01:43 +0000
-Message-ID: <87sgvnt4d4.fsf@zen.linaroharston>
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp473582wrt;
+        Sat, 16 Mar 2019 07:06:48 -0700 (PDT)
+X-Received: by 2002:aca:ad82:: with SMTP id w124mr951042oie.33.1552745208863;
+        Sat, 16 Mar 2019 07:06:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552745208; cv=none;
+        d=google.com; s=arc-20160816;
+        b=UTr6CsEu66IUL+fu8gsQtbnllw6YQPIqNOK2H96WUbnozNk5dOVos4SGw4ufVINipc
+         1ler0y5OzXiBCsIzo16hRolniiu/rMKfiSEadcX89lTSUi5BQ3mZE2cw5Ey0eCTRYRPx
+         HWu0cLv+BZYNVzBAFUZs2YV1zhzIeKO0biZ6iD1GiSPDWcuUIf78ROB2tad1J/0TyARJ
+         nHfU9VhMQGyTfjvEz0yG4VWtb5PZceu530UhtUsYqYMHD036T+IFKs1KuJIFkx5qQGHe
+         7otSgwfpbRdd5H+074DKDz+QlIEijtS9B57Qc9I0uF/wJpRYb13XaWGPjY6prTBnHwgp
+         hW6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=BOJAgTz6MvH9VYyX/UnQt2YEknXXqCeCDZhS5uo+fWE=;
+        b=YIfZygpdKPZhmYg/Cb9Cq3Z+0GLnTlHu7y6hCL37wfdUyVWFLh7uLLh2etFtb3GSCN
+         3kEOJgNkMgYyubCHlpUVwMfoKT8lQPgs2eWvjWKd/ARJmiYUs21UEEY/Uqt4Po3BIehz
+         uyEkztcT21ib8c82I9dUvBHXW8L4Z2cbxcfuclPe5S6FKk4X1qKiDFT2ADqX49Gl5Abn
+         x/zpAcMUPdp0MmeDp+8hE0o2A/cZhFf4S+zGEWpZM7tmID11I6HMpeC7L2CKua/912C+
+         d+QhOHBCX2RAYBL1eP8kjubNVE5XUAIPkOTLwp+hQkinZ/HmuoH+jvW9uNdGFzDSjgqv
+         UGbQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Weexd2Ax;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id k203sor2245243oia.146.2019.03.16.07.06.48
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Sat, 16 Mar 2019 07:06:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Weexd2Ax;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=BOJAgTz6MvH9VYyX/UnQt2YEknXXqCeCDZhS5uo+fWE=;
+        b=Weexd2AxJYa4sFm0/CmPfbhlIW3yvSfKn5n0FyVLoyI8BoTN2xULloYPPeK3oRA0is
+         gqjPOgUqGq5ve5txr2jpW/FulApf/MTwoRhuR6bAcHdKQ+JHBNpy1WJhmOk3b29233Sj
+         y4X5ZLdqfDGafgqW/ukQvQWn0A4aqXs2BXhoMLuJdPeP3Yy7vXzHC77c+KIn9/lZUkKk
+         dmedI5wdDgzcH/aAqGANN46WiXCJt9Wtwx0AUmSFN4dpqnzbXji/InO+VlpblDyz64yk
+         THpQZYhV9vamVop31xPzr4tf4yh5d4z/K5rWkGAYJGTixQaYyTVrcJQhw4uqkEng7WfK
+         KQlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=BOJAgTz6MvH9VYyX/UnQt2YEknXXqCeCDZhS5uo+fWE=;
+        b=DH3rOWEjCw5M1Xydw+uEIuoh0bD0QmO8gvHO2LLTQiA4GJlmM//Lww8ASJqxl4w227
+         SStsrEw1dHQuILVPQNshBeGko/qCQdLz4q2uPU48gLQk0/9g/BxViBdHXmCEw2++S9k+
+         rYNIf9ZOQ/CUNQrkEaWlLf0MyobLM7Oh5oBJwBgRs/BHo+lSHn5GVwpROvbLNxh7fng1
+         oaaZHjOQPQ2CfiBAH+8+9NPgXSnzFLm731jYLF/tEXWqLdWzIp2OXNMoUDsNTLFiYgmE
+         ICJ0gv9DgY8cPdTEEsbahEz/XbgM7tvi7kmrO1SXSUZnCb+T53p/mtnWb8RXsG3WJQ5g
+         v1Qg==
+X-Gm-Message-State: APjAAAWWw1gLAp5Bg28561M8mqN1rsm350tOWrz7YZuKpqHjt6ga4ZtS
+	klkJull6SlYUSp7xrZeIdcyCCZgnjEFyQQcL3k8MBXe24oA=
+X-Google-Smtp-Source: APXvYqwK+yiJVLwKm9kX5cMkl0xWJMt1X/kYuUAZDYEL2UbHPXwKLA4ZXhyfLuDCXpyAkq0yjndLtMXrFJQSgARqFXg=
+X-Received: by 2002:aca:d409:: with SMTP id l9mr3988035oig.98.1552745208242;
+ Sat, 16 Mar 2019 07:06:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <CABgYhWf=unSbmTksO+gkUuX+UL3g8HvEuDAeDdxBQVbzci05DQ@mail.gmail.com>
+ <CAFEAcA8xqO=iV9oJWWdPHhhDFRmAoegMpwUZQUszXLwG7zS=Hw@mail.gmail.com>
+ <CABgYhWdu-H6zfWjwwtJbFK6TJa89tqERtX=djYpFobWjir_C6A@mail.gmail.com> <87sgvnt4d4.fsf@zen.linaroharston>
+In-Reply-To: <87sgvnt4d4.fsf@zen.linaroharston>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 16 Mar 2019 14:06:36 +0000
+Message-ID: <CAFEAcA-+8OEymmMZ1Sk6bi9LhVkjDfdAoYSHq4FWvgd7c+5Hkw@mail.gmail.com>
+Subject: Re: [Qemu-arm] QEMU user mode for cortex M
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: tcx2C3FOv37J
+X-TUID: QhnVgpgESyOC
 
-
-Massimiliano Cialdi <cialdi@gmail.com> writes:
-
-> I have tried to follow some websites, such as, for example,
-> https://gnu-mcu-eclipse.github.io/qemu/options/,
-> http://sushihangover.github.io/arm-cortex-m-semihosting-with-qemu/ or
-> https://balau82.wordpress.com/2010/11/04/qemu-arm-semihosting/ without
-> success
+On Sat, 16 Mar 2019 at 12:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Massimiliano Cialdi <cialdi@gmail.com> writes:
+> > then I try to execute qemu:
+> > ~/Downloads/qemu/qemu-3.1.0/arm-softmmu/qemu-system-arm -d
+> > unimp,guest_errors -machine virt -monitor null -serial null  -semihosti=
+ng
+> > -nographic -semihosting-config enable=3Don,target=3Dnative -kernel
+> > main.elf
 >
-> I have my exetutable compiled with
-> /opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc -std=3Dgnu11
-> -mcpu=3Dcortex-m7 -mthumb -mfloat-abi=3Dhard -mfpu=3Dfpv5-d16 -fno-common
-> -specs=3Drdimon.specs -Wl,--cref,-Map=3Dmain.map main.c -o main.elf
+> I don't know what the virt machine defaults to for CPU but I'm fairly
+> sure it's not an m-profile CPU.
 
-I thought you wanted to target a cortex-m4?
+Default is Cortex-A15. "virt" cannot handle M-profile CPUs.
 
-Have a look at how test-armv6m-undef is built. It is the simplest
-dumbest M profile image you can build with a kernel that maps to 0 and a
-simple reset vector at the start of the vector table:
-
+> > write access to unsupported AArch32 64 bit system register cp:12 opc1: =
+15
+> > crm:8 (non-secure)
+> >
+> >
+> > and nothing happend. Where am I wrong? I'm wrong at the compilation sta=
+ge,
+> > at the execution stage or both? Is there something wrong with the comma=
+nd
+> > line parameters? Which one? How do I force a cortex-m4? How can I force=
+ the
+> > Cpu without having to choose any machine?
 >
-> then I try to execute qemu:
-> ~/Downloads/qemu/qemu-3.1.0/arm-softmmu/qemu-system-arm -d
-> unimp,guest_errors -machine virt -monitor null -serial null  -semihosting
-> -nographic -semihosting-config enable=3Don,target=3Dnative -kernel
-> main.elf
-
-I don't know what the virt machine defaults to for CPU but I'm fairly
-sure it's not an m-profile CPU.
-> write access to unsupported AArch32 64 bit system register cp:12 opc1: 15
-> crm:8 (non-secure)
+> It's hard to say without seeing what your test is doing. However I can fo=
+rce
+> a cortex-m4 on a microbit and run the following ok:
 >
->
-> and nothing happend. Where am I wrong? I'm wrong at the compilation stage,
-> at the execution stage or both? Is there something wrong with the command
-> line parameters? Which one? How do I force a cortex-m4? How can I force t=
-he
-> Cpu without having to choose any machine?
+>   ./qemu-system-arm  -monitor none -display none \
+>                      -chardev file,path=3Dtest-armv6m-undef.out,id=3Doutp=
+ut \
+>                      -semihosting -M microbit \
+>                      -cpu cortex-m4 \
+>                      -kernel tests/test-armv6m-undef
+>                      -d in_asm,cpu,nochain
 
-It's hard to say without seeing what your test is doing. However I can force
-a cortex-m4 on a microbit and run the following ok:
+This is also kind of dubious, because the microbit is
+really a Cortex-M0 v6M system. In fact I think it
+is just ignoring the -cpu argument and giving you the M0
+anyway.
 
-  ./qemu-system-arm  -monitor none -display none \
-                     -chardev file,path=3Dtest-armv6m-undef.out,id=3Doutput=
- \
-                     -semihosting -M microbit \
-                     -cpu cortex-m4 \
-                     -kernel tests/test-armv6m-undef
-                     -d in_asm,cpu,nochain
-
-
->
-> best regards
-> Max
->
-> On Fri, Mar 15, 2019 at 11:05 AM Peter Maydell <peter.maydell@linaro.org>
-> wrote:
->
->> On Thu, 14 Mar 2019 at 22:30, Massimiliano Cialdi <cialdi@gmail.com>
->> wrote:
->> >
->> > hello,
->> > I would like to try some algorithms on cortex M (especially cortex M4).
->> I don't need to emulate the whole machine, I just need the user mode.
->> > To test the feasibility, I wrote the trivial "hello world".
->> >
->> > I can compile it with arm-none-eabi-gcc, but the newlib associated with
->> it does not implement any syscall.
->> > So I tried, on ubuntu, with the cross compiler arm-linux-gnueabihf-gcc
->> and its libc6, but the latter is only distributed for cortex A.
->> >
->> > What do you suggest? Should I recompile the libc6 for cortex M (or do I
->> find it pre-compiled)? Should I implement (and how?) syscalls on newlib?
->> >
->> > In summary, I would need a step-by-step guide to running Cortex M code
->> on QEMU arm user mode.
->>
->> User-mode in Cortex-M is a weird thing to do, because what QEMU
->> gives you is the A-profile Linux syscalls. It's a hybrid that
->> we only continue to provide because it happens to be used and
->> useful to the gcc folks doing compiler testing. I would
->> recommend against using it, personally.
->>
->> System emulation mode will get you something that actually
->> works the way the real hardware does. You can then do
->> output either via the UART or via semihosting (you need to
->> enable the latter on the commandline).
->>
->> thanks
->> -- PMM
->>
-
-
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

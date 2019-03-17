@@ -1,240 +1,281 @@
-Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp1262577wrt;
-        Sun, 17 Mar 2019 04:11:03 -0700 (PDT)
-X-Received: by 2002:a0c:be81:: with SMTP id n1mr9206080qvi.226.1552821063756;
-        Sun, 17 Mar 2019 04:11:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552821063; cv=none;
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp1564151wrt;
+        Sun, 17 Mar 2019 10:59:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzfnPKYEZPBCI9TxTzV94OyurIEKZUuls1q+Jdw8hUmm1tsSsbjho22ON7BdZE4iQhA/t69
+X-Received: by 2002:ac8:30d1:: with SMTP id w17mr2577810qta.4.1552845591215;
+        Sun, 17 Mar 2019 10:59:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552845591; cv=none;
         d=google.com; s=arc-20160816;
-        b=oWaM8pk9gIA0nLBWVuAynhFEH8OuqUuEzkxrECmsodHjBBaUetbSuz7mNwGdIgydac
-         srR0Elt0kCI5deBwPsL4oisc5UdhtoMQPFiqV25QeHIbyvMNJFGa1Ry/NfkvD+VpMSUS
-         EVx90X+OQcBvb/pH8RFyaIFimFMIc+J4tWBWgBn1PZsDs7umKA3OuNS4MgQmmyhmoHO2
-         82rmouSHifNqUXr/zQzuu2HuFh81olxzIEWEnE6Ye8gPxjiiQdZNt8AcxlcJaIrGGdvj
-         IgVMHWz8USbKY9V8dzL/gFiHY30N1C03VghUGFclxTmAPZpxyCrgrzGEu0OMsJZXK8fK
-         lN3g==
+        b=yu7G4tiPT7lLXYdMV13e0DKxuB7RFJCZB5w+uF63GoCitrA8rvxaa5E1HWc140twiQ
+         RECqTbvSyUYB4EHDdYfWsXTmKPuIiSqG9saiDs6wsa2Z0tz5YyRTmxJpiOuIssOktobu
+         Kfji1pLdk9rA3mXYYIpp6DtRRkpaDV1tCnSW2h93QZEz9Lm9XAFEY++wiobT2a6MbAb+
+         LDPmZSx2Pj1WvEV11xRc6IRDlFdM2g0FsQYPoRFqyJZ36+LULRaKh+a7DiOlH/Z7ec2g
+         sm8DhRnE+MezqmknesiBYYQtyTQ5w5MbpfNEZApJk84P0/+LfaV6VtLozOAPfuIgoE/S
+         RqJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=IVi6byz+uviuXaPeVKBbGsi7q/NdMyYPPFbxbbb8b58=;
-        b=hvAJNNEVuE5RWFaNNopMuhQlZ/PI9ZgDrthOTAVVXCnL4qL/ABrb6tiOgfmq3e1ee+
-         ZktzBUEZ4WBwX/CGLCKjChtNyvRcSx4lW8JQpOSLgH852J1jx/xgPCuodTSxLpTMIlRw
-         uIBMJ9erVfWNgIM5YJO2LPitlA8ML6U+9PgqMXS+Bqmtj691zuXc6isHSf8waaFM182m
-         iufq2nVDHETYlm8M7x88iqx+5AtalvpZoh23+LJqd0As81R63iBIXqbb8bMep37D6Tka
-         6AhZ5Ffkrw9M8e7CJ/J7XBUqzj/irWDQU4TBW+zWfLYHDAt2rXrNIXl1Fez3eTXJZyAT
-         9AoQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=+Lr7VfDs0K2BFi7GmM8fzfpWol5AEEMHYVr+/XfLVsc=;
+        b=tH3qItqoQlqQdLH/xyx0wjc+OeQuAjtTSPVcse+KVbvzptTT6BDHUFVwlXhBbet8vl
+         LGq1BDEad1b6BWZLfwkIwKEmIp/FMtHLXQV0cEwjpyduNPh6Klwc8Px66J3nVLoqqxDz
+         AqskXZEnucUrlBLJgbiVHms1ONi4Me5TVSo9mdrje5LXy8Olv41bwK9a24jtnAPEXJ2Y
+         3+bN4Oilyuh70fSphuyjjg/Rc4zljbcc8jGieaz0vwPDYlK4HHKDrMgni0wpDN6FVrQ+
+         Ge8Fr0GP2TLOWXZchqU+Fg2Kim6qT7NxJVLzoJZcmpJ2u9117NXCh7amMqfVUZnj0DSe
+         ttxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gyE1Dal1;
-       spf=pass (google.com: domain of cialdi@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=cialdi@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cialdi@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id s25sor6888029qts.34.2019.03.17.04.11.03
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 17 Mar 2019 04:11:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cialdi@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id x192si1260512qka.208.2019.03.17.10.59.50
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Mar 2019 10:59:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gyE1Dal1;
-       spf=pass (google.com: domain of cialdi@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=cialdi@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=IVi6byz+uviuXaPeVKBbGsi7q/NdMyYPPFbxbbb8b58=;
-        b=gyE1Dal1ah/NhcK3dC4lfRO5JPbPGrDAC8RNBoIZRVMFrFCRbjOnNUVU5NuH4alrBR
-         esIPzBAihZjJpTWh0sa9yz3Ql18ZsXgZMxc8GwghiEht3pBaa0JpDid6/eN4K6KPsrVG
-         uM2GNQN6357L0uu8dHf2At2V2EspfgL8fbowxuxbTlWsXNJvd2yZaJS7nB+fu9dZEFas
-         ZD5tRIBwOVyC/5imptOt11bvPetttKn2HKzv7Sp0FWBFC2agVATPGgSMdu/BpS0XJ4H1
-         UQPdp1VqBN+E3er67bqARFeAdYudybQVhHAgVUyIvjd1XwLvzrL0IcSrZR9cZdQnIrfB
-         hODQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=IVi6byz+uviuXaPeVKBbGsi7q/NdMyYPPFbxbbb8b58=;
-        b=QJeDaK+cpS8jV404azpdgGNUEd6cH3E2mvyXKPgaPvX+JFhVZb86qXNjqEvN4GbvJ1
-         Ij6t0tBLC9qe6+/+KThvU5pCeA9dTSvCMcqCE8+TSiVkS53tC+MK3rHEvlpXOK7sHdbF
-         ypQQRw+SwCS5h9z8nA0scCZsWB9qtroyl04eghRAoS9vC/KykiXTa08LA9xC/wMJiOrK
-         1lWMj/CmyIknpW8SWTLJlASD6D8nybBdHGkdMOqnc4sAgeenKKfWCp2453UsU9tY79Yy
-         /Y1L7aLKVCsF6rUbOcEAdnLsre5/W/uSHuA0IVpMzgrAliQvr/3KbE4Ahug0QyGGCnsh
-         SooQ==
-X-Gm-Message-State: APjAAAU7EbIqrCr4oTOHw9z8w8jDd9xS5lTWQg2cipm4s3Hn6KYenywz
-	xWp4dA+yZ6e9Rb4RC0jqi+ENW3046pT75qVmDO4oEO6wP40=
-X-Google-Smtp-Source: APXvYqw7y9SgdauOvzLAqr5VfNk6fUbuHeOVoDzI9K1xdXnQkG2+mw7ftp3GXaGjh5PgEuC16jX7FRbyfYcKl52nQv0=
-X-Received: by 2002:ac8:267c:: with SMTP id v57mr9633305qtv.76.1552821063079;
- Sun, 17 Mar 2019 04:11:03 -0700 (PDT)
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 480B287621;
+	Sun, 17 Mar 2019 17:59:50 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 798593849;
+	Sun, 17 Mar 2019 17:59:48 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH for-4.0?] arm: Allow system registers for KVM
+ guests to be changed by QEMU code
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Dongjiu Geng <gengdongjiu@huawei.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
+References: <20190315143057.20165-1-peter.maydell@linaro.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <a1244fe1-f28d-df10-5f4b-679f248a1987@redhat.com>
+Date: Sun, 17 Mar 2019 18:59:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <CABgYhWf=unSbmTksO+gkUuX+UL3g8HvEuDAeDdxBQVbzci05DQ@mail.gmail.com>
- <CAFEAcA8xqO=iV9oJWWdPHhhDFRmAoegMpwUZQUszXLwG7zS=Hw@mail.gmail.com>
- <CABgYhWdu-H6zfWjwwtJbFK6TJa89tqERtX=djYpFobWjir_C6A@mail.gmail.com>
- <87sgvnt4d4.fsf@zen.linaroharston> <CABgYhWfre7FcfvRZ+gRQi9k_1S_CTBKvMix8zGQdOLK2c-vRNA@mail.gmail.com>
-In-Reply-To: <CABgYhWfre7FcfvRZ+gRQi9k_1S_CTBKvMix8zGQdOLK2c-vRNA@mail.gmail.com>
-From: Massimiliano Cialdi <cialdi@gmail.com>
-Date: Sun, 17 Mar 2019 12:10:51 +0100
-Message-ID: <CABgYhWd6wQqo9XdXWfJkwOjDp_otr8j9eoYp+UL2QofLaTA=Eg@mail.gmail.com>
-Subject: Re: [Qemu-arm] QEMU user mode for cortex M
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2WRAALasCy1i
+In-Reply-To: <20190315143057.20165-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Sun, 17 Mar 2019 17:59:50 +0000 (UTC)
+X-TUID: AGvJzplc+XSA
 
-I did it.
+Hi Peter,
 
-File main.c:
+On 3/15/19 3:30 PM, Peter Maydell wrote:
+> At the moment the Arm implementations of kvm_arch_{get,put}_registers()
+> don't support having QEMU change the values of system registers
+> (aka coprocessor registers for AArch32). This is because although
+> kvm_arch_get_registers() calls write_list_to_cpustate() to
+> update the CPU state struct fields (so QEMU code can read the
+> values in the usual way), kvm_arch_put_registers() does not
+> call write_cpustate_to_list(), meaning that any changes to
+> the CPU state struct fields will not be passed back to KVM.
+> 
+> The rationale for this design is documented in a comment in the
+> AArch32 kvm_arch_put_registers() -- writing the values in the
+> cpregs list into the CPU state struct is "lossy" because the
+> write of a register might not succeed, and so if we blindly
+> copy the CPU state values back again we will incorrectly
+> change register values for the guest. The assumption was that
+> no QEMU code would need to write to the registers.
+> 
+> However, when we implemented debug support for KVM guests, we
+> broke that assumption: the code to handle "set the guest up
+> to take a breakpoint exception" does so by updating various
+> guest registers including ESR_EL1.
+> 
+> Support this by making kvm_arch_put_registers() synchronize
+> CPU state back into the list. We sync only those registers
+> where the initial write succeeds, which should be sufficient.
+> 
+> This commit is the same as commit 823e1b3818f9b10b824ddc which we
+> had to revert in commit 942f99c825fc94c8b1a4, except that the bug
+> which was preventing EDK2 guest firmware running has been fixed:
+> kvm_arm_reset_vcpu() now calls write_list_to_cpustate().
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Tested-by: Eric Auger <eric.auger@redhat.com>
 
---------8<------------------------
-#include <stdio.h>
-#include <stdlib.h>
+With this patch applied on the revert, I don't observe the regression I
+reported earlier. I didn't test the guest debug feature though.
 
-int main(void)
-{
-    printf("Hallo ARM world!\n");
-    exit(0);
-}
---------8<------------------------
+Thanks
 
-compiled with:
-/opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
--std=3Dgnu11 -mcpu=3Dcortex-m4 -mthumb  -fno-common -specs=3Drdimon.specs
--Wl,--cref,-Map=3Dmain.map  -O0 -g3 main.c -o main.elf
+Eric
 
-I run it with qemu user mode, and it works:
-~/Downloads/qemu/qemu-3.1.0/arm-linux-user/qemu-arm -D prova.out -d
-in_asm,cpu,nochain,unimp,guest_errors -cpu cortex-m4 main.elf
-Hallo ARM world!
-
-
-probably works by accident, but I have achieved my goal. Any comment?
-
-best regards
-Max
-
-
-On Sat, Mar 16, 2019 at 9:34 PM Massimiliano Cialdi <cialdi@gmail.com> wrot=
-e:
->
-> On Sat, Mar 16, 2019 at 1:01 PM Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
-> >
-> >
-> > Massimiliano Cialdi <cialdi@gmail.com> writes:
-> >
-> > > I have my exetutable compiled with
-> > > /opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc -std=3Dg=
-nu11
-> > > -mcpu=3Dcortex-m7 -mthumb -mfloat-abi=3Dhard -mfpu=3Dfpv5-d16 -fno-co=
-mmon
-> > > -specs=3Drdimon.specs -Wl,--cref,-Map=3Dmain.map main.c -o main.elf
-> >
-> > I thought you wanted to target a cortex-m4?
-> yes.
-> I tried to compile it like this.:
-> /opt/gcc-arm-none-eabi-8-2018-q4-major/bin/arm-none-eabi-gcc
-> -std=3Dgnu11 -mcpu=3Dcortex-m4 -mthumb  -fno-common -specs=3Drdimon.specs
-> -Wl,--cref,-Map=3Dmain.map -T prova.ld -O0 -g3 main.c -o main.elf
-> The linker script is attached
->
-> I don't know how to compile with arm-linux-gnueabihf-gcc
->
-> >
-> > Have a look at how test-armv6m-undef is built. It is the simplest
-> > dumbest M profile image you can build with a kernel that maps to 0 and =
-a
-> > simple reset vector at the start of the vector table:
-> I don't want to have to deal with interrupt vectors and memory layouts.
-> Just see "hallo world!" on the output.
->
->
->
-> > I don't know what the virt machine defaults to for CPU but I'm fairly
-> > sure it's not an m-profile CPU.
-> I had only tried the machine none and virt... I didn't know which one
-> to choose for cortex M4
->
->
-> > It's hard to say without seeing what your test is doing. However I can =
-force
-> > a cortex-m4 on a microbit and run the following ok:
-> >
-> >   ./qemu-system-arm  -monitor none -display none \
-> >                      -chardev file,path=3Dtest-armv6m-undef.out,id=3Dou=
-tput \
-> >                      -semihosting -M microbit \
-> >                      -cpu cortex-m4 \
-> >                      -kernel tests/test-armv6m-undef
-> >                      -d in_asm,cpu,nochain
->
-> tried with:
-> ~/Downloads/qemu/qemu-3.1.0/arm-softmmu/qemu-system-arm -d
-> in_asm,cpu,nochain,unimp,guest_errors -chardev
-> file,path=3Dprova.out,id=3Doutput -machine microbit -cpu cortex-m4
-> -monitor null -serial null  -semihosting -nographic
-> -semihosting-config enable=3Don,target=3Dnative  -kernel main.elf
-> ----------------
-> IN:
-> 0x00000000:  00000000  andeq    r0, r0, r0
->
-> R00=3D00000000 R01=3D00000000 R02=3D00000000 R03=3D00000000
-> R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000
-> R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000
-> R12=3D00000000 R13=3D00000000 R14=3Dffffffff R15=3D00000000
-> XPSR=3D40000000 -Z-- A priv-thread
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xfffffe0)
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xfffffe4)
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xfffffe8)
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xfffffec)
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xffffff0)
-> nrf51_soc.private: unimplemented device write (size 4, value
-> 0xffffffff, offset 0xffffff4)
-> nrf51_soc.private: unimplemented device write (size 4, value 0x0,
-> offset 0xffffff8)
-> nrf51_soc.private: unimplemented device write (size 4, value
-> 0x40000000, offset 0xffffffc)
-> ----------------
-> IN:
-> 0x00000000:  00000000  andeq    r0, r0, r0
->
-> R00=3D00000000 R01=3D00000000 R02=3D00000000 R03=3D00000000
-> R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000
-> R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000
-> R12=3D00000000 R13=3Dffffffe0 R14=3Dfffffff9 R15=3D00000000
-> XPSR=3D40000003 -Z-- A handler
-> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
->
-> R00=3D00000000 R01=3D00000000 R02=3D00000000 R03=3D00000000
-> R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000
-> R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000
-> R12=3D00000000 R13=3Dffffffe0 R14=3Dfffffff9 R15=3D00000000
-> XPSR=3D40000003 -Z-- A handler
-> FPSCR: 00000000
-> Aborted (core dumped)
->
->
-> still no success
->
-> best regards
-> Max
->
->
-> --
-> Et nunc, auxilium solis, vincam!
-> Oppugnatio solaris!
-> VIS!
->
-> Massimiliano Cialdi
-> cialdi@gmail.com
-
-
-
---=20
-Et nunc, auxilium solis, vincam!
-Oppugnatio solaris!
-VIS!
-
-Massimiliano Cialdi
-cialdi@gmail.com
+> ---
+> Should we try to put this in for rc1? Not sure... Testing
+> definitely appreciated.
+> 
+> ---
+>  target/arm/cpu.h     |  9 ++++++++-
+>  target/arm/helper.c  | 27 +++++++++++++++++++++++++--
+>  target/arm/kvm.c     |  8 ++++++++
+>  target/arm/kvm32.c   | 20 ++------------------
+>  target/arm/kvm64.c   |  2 ++
+>  target/arm/machine.c |  2 +-
+>  6 files changed, 46 insertions(+), 22 deletions(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 5f23c621325..82f40a7ea90 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2559,18 +2559,25 @@ bool write_list_to_cpustate(ARMCPU *cpu);
+>  /**
+>   * write_cpustate_to_list:
+>   * @cpu: ARMCPU
+> + * @kvm_sync: true if this is for syncing back to KVM
+>   *
+>   * For each register listed in the ARMCPU cpreg_indexes list, write
+>   * its value from the ARMCPUState structure into the cpreg_values list.
+>   * This is used to copy info from TCG's working data structures into
+>   * KVM or for outbound migration.
+>   *
+> + * @kvm_sync is true if we are doing this in order to sync the
+> + * register state back to KVM. In this case we will only update
+> + * values in the list if the previous list->cpustate sync actually
+> + * successfully wrote the CPU state. Otherwise we will keep the value
+> + * that is in the list.
+> + *
+>   * Returns: true if all register values were read correctly,
+>   * false if some register was unknown or could not be read.
+>   * Note that we do not stop early on failure -- we will attempt
+>   * reading all registers in the list.
+>   */
+> -bool write_cpustate_to_list(ARMCPU *cpu);
+> +bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
+>  
+>  #define ARM_CPUID_TI915T      0x54029152
+>  #define ARM_CPUID_TI925T      0x54029252
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 2607d39ad1c..554f111ea89 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -265,7 +265,7 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+>      return true;
+>  }
+>  
+> -bool write_cpustate_to_list(ARMCPU *cpu)
+> +bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync)
+>  {
+>      /* Write the coprocessor state from cpu->env to the (index,value) list. */
+>      int i;
+> @@ -274,6 +274,7 @@ bool write_cpustate_to_list(ARMCPU *cpu)
+>      for (i = 0; i < cpu->cpreg_array_len; i++) {
+>          uint32_t regidx = kvm_to_cpreg_id(cpu->cpreg_indexes[i]);
+>          const ARMCPRegInfo *ri;
+> +        uint64_t newval;
+>  
+>          ri = get_arm_cp_reginfo(cpu->cp_regs, regidx);
+>          if (!ri) {
+> @@ -283,7 +284,29 @@ bool write_cpustate_to_list(ARMCPU *cpu)
+>          if (ri->type & ARM_CP_NO_RAW) {
+>              continue;
+>          }
+> -        cpu->cpreg_values[i] = read_raw_cp_reg(&cpu->env, ri);
+> +
+> +        newval = read_raw_cp_reg(&cpu->env, ri);
+> +        if (kvm_sync) {
+> +            /*
+> +             * Only sync if the previous list->cpustate sync succeeded.
+> +             * Rather than tracking the success/failure state for every
+> +             * item in the list, we just recheck "does the raw write we must
+> +             * have made in write_list_to_cpustate() read back OK" here.
+> +             */
+> +            uint64_t oldval = cpu->cpreg_values[i];
+> +
+> +            if (oldval == newval) {
+> +                continue;
+> +            }
+> +
+> +            write_raw_cp_reg(&cpu->env, ri, oldval);
+> +            if (read_raw_cp_reg(&cpu->env, ri) != oldval) {
+> +                continue;
+> +            }
+> +
+> +            write_raw_cp_reg(&cpu->env, ri, newval);
+> +        }
+> +        cpu->cpreg_values[i] = newval;
+>      }
+>      return ok;
+>  }
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 79a79f01905..59956346126 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -497,6 +497,14 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+>          fprintf(stderr, "write_kvmstate_to_list failed\n");
+>          abort();
+>      }
+> +    /*
+> +     * Sync the reset values also into the CPUState. This is necessary
+> +     * because the next thing we do will be a kvm_arch_put_registers()
+> +     * which will update the list values from the CPUState before copying
+> +     * the list values back to KVM. It's OK to ignore failure returns here
+> +     * for the same reason we do so in kvm_arch_get_registers().
+> +     */
+> +    write_list_to_cpustate(cpu);
+>  }
+>  
+>  /*
+> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> index 50327989dcc..327375f6252 100644
+> --- a/target/arm/kvm32.c
+> +++ b/target/arm/kvm32.c
+> @@ -384,24 +384,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>          return ret;
+>      }
+>  
+> -    /* Note that we do not call write_cpustate_to_list()
+> -     * here, so we are only writing the tuple list back to
+> -     * KVM. This is safe because nothing can change the
+> -     * CPUARMState cp15 fields (in particular gdb accesses cannot)
+> -     * and so there are no changes to sync. In fact syncing would
+> -     * be wrong at this point: for a constant register where TCG and
+> -     * KVM disagree about its value, the preceding write_list_to_cpustate()
+> -     * would not have had any effect on the CPUARMState value (since the
+> -     * register is read-only), and a write_cpustate_to_list() here would
+> -     * then try to write the TCG value back into KVM -- this would either
+> -     * fail or incorrectly change the value the guest sees.
+> -     *
+> -     * If we ever want to allow the user to modify cp15 registers via
+> -     * the gdb stub, we would need to be more clever here (for instance
+> -     * tracking the set of registers kvm_arch_get_registers() successfully
+> -     * managed to update the CPUARMState with, and only allowing those
+> -     * to be written back up into the kernel).
+> -     */
+> +    write_cpustate_to_list(cpu, true);
+> +
+>      if (!write_list_to_kvmstate(cpu, level)) {
+>          return EINVAL;
+>      }
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 089af9c5f02..e3ba1492482 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -838,6 +838,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>          return ret;
+>      }
+>  
+> +    write_cpustate_to_list(cpu, true);
+> +
+>      if (!write_list_to_kvmstate(cpu, level)) {
+>          return EINVAL;
+>      }
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index b2925496148..124192bfc26 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -630,7 +630,7 @@ static int cpu_pre_save(void *opaque)
+>              abort();
+>          }
+>      } else {
+> -        if (!write_cpustate_to_list(cpu)) {
+> +        if (!write_cpustate_to_list(cpu, false)) {
+>              /* This should never fail. */
+>              abort();
+>          }
+> 

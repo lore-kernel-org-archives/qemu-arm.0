@@ -1,217 +1,530 @@
-Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp1396945wrt;
-        Sun, 17 Mar 2019 07:13:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzEaVKRtlbqdicbwCWNH/EoS8awsPSdKMRisiao/QrQcJyuw3S3DDtRQe/8nN/LwglXFwx/
-X-Received: by 2002:a1c:ef0c:: with SMTP id n12mr8588822wmh.105.1552832009794;
-        Sun, 17 Mar 2019 07:13:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1552832009; cv=none;
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp1882079wrt;
+        Sun, 17 Mar 2019 19:44:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwPNnF8AX2kdVo59jeyyRUsoDrC7OUK9ZNkUy5gRNlUbTIKmv1+GoYdinjSzWh+E4Z0N/gy
+X-Received: by 2002:adf:dbce:: with SMTP id e14mr9195236wrj.163.1552877095143;
+        Sun, 17 Mar 2019 19:44:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1552877095; cv=none;
         d=google.com; s=arc-20160816;
-        b=kS20+/Q4L7ZR+5+YeduBpqJzI/5I7WrAzpCzTTgIZPDCqALVXM6PoFde7Cr+onivhh
-         8NANkUZHsEA8CnV8+Hh6ejBXlciBvrYLGOrtQLuUo6fc/b7W02qb8j9i+xuHItE3WGCK
-         2JkpY+WS21lRR+wx9b/SbQGwY0GJqgVgN0rwt11hiS05bEHFV2S09hngOBqlZXahI7AM
-         wEf3LhuALM0iZyq0XRKYcskAiWl5RJTyZuvRrMs7QGgdEu6hiUtCdjylPtybe5lsWW1e
-         99KfDVuiOchsQhBk+jVqU9tHdNwUGuU5OoxF6mohUtyEtBOvaU4MYsP2uxGsdBFj1Zzc
-         dsgQ==
+        b=rYC6WcGhGuMsd61DFF62e7eEHHoD9BpqLxI/NMFrW3XJ15h17wsmiPaxWz5XqbnKmn
+         fFQiAHbFhwKUbcr6wt+Wney+I/IkFVhqKar4ulC6GLDZahk1fUxVqKboh/fNU4qCQaIM
+         WARU3TVDXXu1Wc9iJW1aEtH681h2/ttxp3UBbAlHkaT6ziSu4Q1m51IOxb6NBamQQiGZ
+         c+LpjLWuBSzROmD4aPZS7seVvCQM19zSYCt6EUB6TWdhW7Xywlt4mlAMrTbm5+BCUjI5
+         xukt65RW1Yh2mEi6YlzyTNLD2pxF1fWEhIL/tkVLkV1G/jOAuRCZkaieR0FVIvvisujO
+         LkWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=qtZ17DeveKS5xTHm9QnBvdL8f3FGwO7Mt4wXQ5YTmAw=;
-        b=lQsvPWFvKhUuS3/79+D8Zr++58t3ZlVJBh+daL6MlGvux5GH1TVvXDNEUWG+pO6xlT
-         O5x4qEJ3hE8dSYb04Wk2P4mdFbvPdF9SZqtVeRQ7TLcdlc9Wj7Ox6A309WwMJoLOnRmd
-         IhIqVtng69xfKHpB/qmKRL/PSxXijcrhNxPVZT08zPYrmCJR9nUOrBCGUsuItJqUsjUa
-         nkUY0ifa/+J5hpZFcGaGceSaRmNN76k02jFhAmjZcKOKVjUP5PghNlhwKU+fnkWLa4mH
-         G26gkat5gi8DwvtDMEXIwdAUeyZqnT8+aPCzfuj6ob6OQzeKi7PPh3K5MdlVhR14iXnw
-         LLtQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IW7osPrO2YynPqCInrB/OewzSaL5Hv6Yk1OddcGhSJM=;
+        b=eihwmNrj1UhvqazKnZ4fYzjWSBZumKgjmEP0v8vumj2N1e/z/JWru1bUQelAeA1faB
+         NE2h7DN0y8Fg8Xo4J+C//Bf9oUwC5xkRXN4hieWQEBq4HrSmhEPPvEvDOeMhNdY/3hIn
+         PrPqOQDT0tNNl4hWSZdCVEstZl/mvPYM5uyvPBNKCal7SVM0QfR3aZKMIvkYYRS35em2
+         v+W3CFoJUbsUXOqsz3uEXtjXuglCp8tiaLQyqQpye5ClgZyEwExxnuUlHLxhEjwGKTkG
+         sqJjznvpQV3Hqt90HcINEy/Z9n5YaAbG8e/HnmrYQs4ypChoQrTwmCU/hXtNaXWi4kqq
+         AwGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=ie35fuwK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f77si4559957wme.16.2019.03.17.07.13.29
+        by mx.google.com with ESMTPS id s16si1955923wri.176.2019.03.17.19.44.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 17 Mar 2019 07:13:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 17 Mar 2019 19:44:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56154 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ie35fuwK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:34735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h5WXY-0001tB-OT
-	for alex.bennee@linaro.org; Sun, 17 Mar 2019 10:13:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59165)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h5iGk-0000P5-6J
+	for alex.bennee@linaro.org; Sun, 17 Mar 2019 22:44:54 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51776)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h5WXD-0001pk-78
-	for qemu-arm@nongnu.org; Sun, 17 Mar 2019 10:13:10 -0400
+	(envelope-from <hongbo.zhang@linaro.org>) id 1h5iGG-0000HA-KQ
+	for qemu-devel@nongnu.org; Sun, 17 Mar 2019 22:44:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h5WUM-0006fm-U8
-	for qemu-arm@nongnu.org; Sun, 17 Mar 2019 10:10:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36976)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1h5WUM-0006dN-Ig; Sun, 17 Mar 2019 10:10:10 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D933B3DE07;
-	Sun, 17 Mar 2019 14:10:08 +0000 (UTC)
-Received: from localhost.localdomain (unknown [10.36.112.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5088E5C28F;
-	Sun, 17 Mar 2019 14:10:00 +0000 (UTC)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Sun, 17 Mar 2019 15:10:01 +0100
-Message-Id: <20190317141001.3346-1-pbonzini@redhat.com>
+	(envelope-from <hongbo.zhang@linaro.org>) id 1h5iBw-0004c9-RH
+	for qemu-devel@nongnu.org; Sun, 17 Mar 2019 22:39:58 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:45486)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
+	id 1h5iBw-0004aH-6l
+	for qemu-devel@nongnu.org; Sun, 17 Mar 2019 22:39:56 -0400
+Received: by mail-lf1-x143.google.com with SMTP id f16so10486566lfk.12
+	for <qemu-devel@nongnu.org>; Sun, 17 Mar 2019 19:39:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=IW7osPrO2YynPqCInrB/OewzSaL5Hv6Yk1OddcGhSJM=;
+	b=ie35fuwK+0ZrgxK+GRd5tpX7zFsZz81yNQ8rpLfWN7XeQGaZpJAyeePTw334R2cWLC
+	kySJTRiXs9ps8YDjCwhI69+akYZE+rFwerncSCb2B8XLRcb27cebloK29pgU3suIXY68
+	K/HWUGpfPnj64gqi9q0+FW9NEoTQwfEPb5ZeQGGgaY2Dmdg4h2GWP65R1dFcbUqBK8k8
+	OSbJvd1X50lfwL+06AeFyjnhJ718THE+6JQHFqlLjMg/8GpnUaVzSVMUQNNTgouHSO9B
+	NzeGwAfAChcZ+Q/oqW+5DMQdLMc0c+wKAkjfaQq8PLnhOdJo+a8fCVIDU6z67nq7fMsb
+	q1WQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=IW7osPrO2YynPqCInrB/OewzSaL5Hv6Yk1OddcGhSJM=;
+	b=DFwUo7ajVXyh+tSTE3DtM9HQnAnpoQCwG4aydj7ll1Vzi2nuXtsuqzTQPStk4sbRaX
+	09bVv316FmCpzmGMKEQe6Yl9zy3rotdSEINoPVmcmIqxEeadbR47YhSQ9tqJLmB5rYev
+	QOY/3IiY3nnI76Zg0Q3mVcC3bchLu3QLJ2PBZbfq2VZ1QASDpxF2sR8NPhihWszdDeZn
+	qIBaUnVGBKnMjpcWGHaFeclR+zbv4UjH1r/z5p0LwKh6ngTkhcogBOcNrM6q57sjXyfV
+	DRlcs5LcfC1LQzATuXI4jghAj9aQM9NQjBKBcwdVcWAv/vB1I9kgKgM4mVngk2jabI9P
+	1LjQ==
+X-Gm-Message-State: APjAAAXBk2V9N4tDDDs44/Y9tvz1Vnx+jf/5SHynOTl/lEfmrOSofXDD
+	SU2U3HTWXaHn3nfspxV21W3adDQTnm1/NCmeNQfJbahhcZ0=
+X-Received: by 2002:ac2:44d0:: with SMTP id d16mr3902515lfm.164.1552876793456; 
+	Sun, 17 Mar 2019 19:39:53 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Sun, 17 Mar 2019 14:10:09 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2] nrf51_gpio: reflect pull-up/pull-down to IRQs
-X-BeenThere: qemu-arm@nongnu.org
+References: <1552644466-24625-1-git-send-email-hongbo.zhang@linaro.org>
+	<1552644466-24625-2-git-send-email-hongbo.zhang@linaro.org>
+	<CAKv+Gu-aZeYwegzFQ7pPqvm28ySR5xC6rZh8FBvQaWiNykgPEg@mail.gmail.com>
+In-Reply-To: <CAKv+Gu-aZeYwegzFQ7pPqvm28ySR5xC6rZh8FBvQaWiNykgPEg@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Mon, 18 Mar 2019 10:39:40 +0800
+Message-ID: <CAHmQWvD8byf+4=J7+rnU9CiGRKnuA4NnRPHRw1Zki4-m4anwOA@mail.gmail.com>
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::143
+Subject: Re: [Qemu-devel] [PATCH v6 1/2] hw/arm: Add arm SBSA reference
+ machine, skeleton part
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: contrib@steffen-goertz.de, qemu-arm@nongnu.org, stefanha@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2/MmqNHsVhN4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Leif Lindholm <leif.lindholm@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: APzl6+c51u7c
 
-Some drivers do I2C bitbanging by keeping the output to 0 and flipping
-the GPIO direction between input and output (see for example in Linux
-gpio_set_open_drain_value_commit, in drivers/gpio/gpiolib.c).
-When the GPIO is set to input, the pull-up resistor brings the output
-to 1, while when the GPIO is set to output, the output driver brings
-the output to 0.
+On Fri, 15 Mar 2019 at 18:41, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+>
+> On Fri, 15 Mar 2019 at 11:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> >
+> > For the Aarch64, there is one machine 'virt', it is primarily meant to
+> > run on KVM and execute virtualization workloads, but we need an
+> > environment as faithful as possible to physical hardware, for supporting
+> > firmware and OS development for pysical Aarch64 machines.
+> >
+> > This patch introduces new machine type 'sbsa-ref' with main features:
+> >  - Based on 'virt' machine type.
+> >  - A new memory map.
+> >  - CPU type cortex-a57.
+> >  - EL2 and EL3 are enabled.
+> >  - GIC version 3.
+> >  - System bus AHCI controller.
+> >  - System bus EHCI controller.
+>
+> Hello Hongbo,
+>
+> Apologies for bringing this up now, but I seem to remember that the
+> EHCI does not support 64-bit DMA. Did you run into any issues with
+> this? Or was this fixed in QEMU in the mean time?
+>
+Hi Ard,
+Which EHCI do you mean?
+This time I use a newly introduced system bus EHCI, commit 114529f7
+and I only tested USB mouse and key board, didn't test DMA function.
 
-Implement this for the nRF51 GPIO device model.  First, if both input and
-output are floating, and there is a pull-up or pull-down resistor
-configured, do not just set s->in, but also make any devices listening
-on the output qemu_irq receive that value.  Second, if the pin is
-driven both internally (output pin) and externally you don't get a
-short circuit if both sides drive the pin to the same value.
+>
+> >  - CDROM and hard disc on AHCI bus.
+> >  - E1000E ethernet card on PCIE bus.
+> >  - VGA display adaptor on PCIE bus.
+> >  - No virtio deivces.
+> >  - No fw_cfg device.
+> >  - No ACPI table supplied.
+> >  - Only minimal device tree nodes.
+> >
+> > Arm Trusted Firmware and UEFI porting to this are done accordingly, and
+> > it should supply ACPI tables to load OS, the minimal device tree nodes
+> > supplied from this platform are only to pass the dynamic info reflecting
+> > command line input to firmware, not for loading OS.
+> >
+> > To make the review easier, this task is split into two patches, the
+> > fundamental sceleton part and the peripheral devices part, this patch is
+> > the first part.
+> >
+> > Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+> > ---
+> >  default-configs/arm-softmmu.mak |   1 +
+> >  hw/arm/Kconfig                  |   3 +
+> >  hw/arm/Makefile.objs            |   1 +
+> >  hw/arm/sbsa-ref.c               | 303 ++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 308 insertions(+)
+> >  create mode 100644 hw/arm/sbsa-ref.c
+> >
+> > diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> > index 2a7efc1..4fbb6ac 100644
+> > --- a/default-configs/arm-softmmu.mak
+> > +++ b/default-configs/arm-softmmu.mak
+> > @@ -144,6 +144,7 @@ CONFIG_IOH3420=y
+> >  CONFIG_I82801B11=y
+> >  CONFIG_ACPI=y
+> >  CONFIG_ARM_VIRT=y
+> > +CONFIG_SBSA_REF=y
+> >  CONFIG_SMBIOS=y
+> >  CONFIG_ASPEED_SOC=y
+> >  CONFIG_SMBUS_EEPROM=y
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index d298fbd..6654914 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -38,6 +38,9 @@ config PXA2XX
+> >  config REALVIEW
+> >      bool
+> >
+> > +config SBSA_REF
+> > +    bool
+> > +
+> >  config STELLARIS
+> >      bool
+> >
+> > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> > index fa57c7c..fa812ec 100644
+> > --- a/hw/arm/Makefile.objs
+> > +++ b/hw/arm/Makefile.objs
+> > @@ -12,6 +12,7 @@ obj-$(CONFIG_NSERIES) += nseries.o
+> >  obj-$(CONFIG_OMAP) += omap_sx1.o palm.o
+> >  obj-$(CONFIG_PXA2XX) += gumstix.o spitz.o tosa.o z2.o
+> >  obj-$(CONFIG_REALVIEW) += realview.o
+> > +obj-$(CONFIG_SBSA_REF) += sbsa-ref.o
+> >  obj-$(CONFIG_STELLARIS) += stellaris.o
+> >  obj-$(CONFIG_STRONGARM) += collie.o
+> >  obj-$(CONFIG_VERSATILE) += vexpress.o versatilepb.o
+> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > new file mode 100644
+> > index 0000000..b6d31f2
+> > --- /dev/null
+> > +++ b/hw/arm/sbsa-ref.c
+> > @@ -0,0 +1,303 @@
+> > +/*
+> > + * ARM SBSA Reference Platform emulation
+> > + *
+> > + * Copyright (c) 2018 Linaro Limited
+> > + * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify it
+> > + * under the terms and conditions of the GNU General Public License,
+> > + * version 2 or later, as published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope it will be useful, but WITHOUT
+> > + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> > + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+> > + * more details.
+> > + *
+> > + * You should have received a copy of the GNU General Public License along with
+> > + * this program.  If not, see <http://www.gnu.org/licenses/>.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +#include "qapi/error.h"
+> > +#include "qemu/error-report.h"
+> > +#include "qemu/units.h"
+> > +#include "sysemu/numa.h"
+> > +#include "sysemu/sysemu.h"
+> > +#include "exec/address-spaces.h"
+> > +#include "exec/hwaddr.h"
+> > +#include "kvm_arm.h"
+> > +#include "hw/arm/arm.h"
+> > +#include "hw/boards.h"
+> > +#include "hw/intc/arm_gicv3_common.h"
+> > +
+> > +#define RAMLIMIT_GB 8192
+> > +#define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+> > +
+> > +enum {
+> > +    SBSA_FLASH,
+> > +    SBSA_MEM,
+> > +    SBSA_CPUPERIPHS,
+> > +    SBSA_GIC_DIST,
+> > +    SBSA_GIC_REDIST,
+> > +    SBSA_SMMU,
+> > +    SBSA_UART,
+> > +    SBSA_RTC,
+> > +    SBSA_PCIE,
+> > +    SBSA_PCIE_MMIO,
+> > +    SBSA_PCIE_MMIO_HIGH,
+> > +    SBSA_PCIE_PIO,
+> > +    SBSA_PCIE_ECAM,
+> > +    SBSA_GPIO,
+> > +    SBSA_SECURE_UART,
+> > +    SBSA_SECURE_MEM,
+> > +    SBSA_AHCI,
+> > +    SBSA_EHCI,
+> > +};
+> > +
+> > +typedef struct MemMapEntry {
+> > +    hwaddr base;
+> > +    hwaddr size;
+> > +} MemMapEntry;
+> > +
+> > +typedef struct {
+> > +    MachineState parent;
+> > +    struct arm_boot_info bootinfo;
+> > +    const MemMapEntry *memmap;
+> > +    const int *irqmap;
+> > +    int smp_cpus;
+> > +    void *fdt;
+> > +    int fdt_size;
+> > +    int psci_conduit;
+> > +} SBSAMachineState;
+> > +
+> > +#define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
+> > +#define SBSA_MACHINE(obj) \
+> > +    OBJECT_CHECK(SBSAMachineState, (obj), TYPE_SBSA_MACHINE)
+> > +
+> > +static const MemMapEntry sbsa_ref_memmap[] = {
+> > +    /* 512M boot ROM */
+> > +    [SBSA_FLASH] =              {          0, 0x20000000 },
+> > +    /* 512M secure memory */
+> > +    [SBSA_SECURE_MEM] =         { 0x20000000, 0x20000000 },
+> > +    /* Space reserved for CPU peripheral devices */
+> > +    [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
+> > +    [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
+> > +    [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
+> > +    [SBSA_UART] =               { 0x60000000, 0x00001000 },
+> > +    [SBSA_RTC] =                { 0x60010000, 0x00001000 },
+> > +    [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+> > +    [SBSA_SECURE_UART] =        { 0x60030000, 0x00001000 },
+> > +    [SBSA_SMMU] =               { 0x60040000, 0x00020000 },
+> > +    /* Space here reserved for more SMMUs */
+> > +    [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
+> > +    [SBSA_EHCI] =               { 0x60110000, 0x00010000 },
+> > +    /* Space here reserved for other devices */
+> > +    [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
+> > +    /* 256M PCIE ECAM space */
+> > +    [SBSA_PCIE_ECAM] =          { 0x80000000, 0x10000000 },
+> > +    /* 32-bit address PCIE MMIO space */
+> > +    [SBSA_PCIE_MMIO] =          { 0x90000000, 0x70000000 },
+>
+> Can we swap these around? I.e., MMIO first and then ECAM? That way,
+> the MMIO base is aligned to the size of the largest BAR it can support
+> (0x4000_0000), which is a bit cleaner, and less likely to cause
+> problems with PCI resource allocators.
+>
+Yes sure.
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
-        v1->v2: fixed short circuit conditions, reordering the code accor=
-ding
-        to the schematic in the datasheet
----
- hw/gpio/nrf51_gpio.c | 64 +++++++++++++++++++++++++++-----------------
- 1 file changed, 39 insertions(+), 25 deletions(-)
-
-diff --git a/hw/gpio/nrf51_gpio.c b/hw/gpio/nrf51_gpio.c
-index 86e047d649..e061c58dd2 100644
---- a/hw/gpio/nrf51_gpio.c
-+++ b/hw/gpio/nrf51_gpio.c
-@@ -43,6 +43,17 @@ static bool is_connected(uint32_t config, uint32_t lev=
-el)
-     return state;
- }
-=20
-+static int pull_value(uint32_t config)
-+{
-+    int pull =3D extract32(config, 2, 2);
-+    if (pull =3D=3D NRF51_GPIO_PULLDOWN) {
-+        return 0;
-+    } else if (pull =3D=3D NRF51_GPIO_PULLUP) {
-+        return 1;
-+    }
-+    return -1;
-+}
-+
- static void update_output_irq(NRF51GPIOState *s, size_t i,
-                               bool connected, bool level)
- {
-@@ -61,43 +72,46 @@ static void update_output_irq(NRF51GPIOState *s, size=
-_t i,
-=20
- static void update_state(NRF51GPIOState *s)
- {
--    uint32_t pull;
-+    int pull;
-     size_t i;
--    bool connected_out, dir, connected_in, out, input;
-+    bool connected_out, dir, connected_in, out, in, input;
-=20
-     for (i =3D 0; i < NRF51_GPIO_PINS; i++) {
--        pull =3D extract32(s->cnf[i], 2, 2);
-+        pull =3D pull_value(s->cnf[i]);
-         dir =3D extract32(s->cnf[i], 0, 1);
-         connected_in =3D extract32(s->in_mask, i, 1);
-         out =3D extract32(s->out, i, 1);
-+        in =3D extract32(s->in, i, 1);
-         input =3D !extract32(s->cnf[i], 1, 1);
-         connected_out =3D is_connected(s->cnf[i], out) && dir;
-=20
--        update_output_irq(s, i, connected_out, out);
--
--        /* Pin both driven externally and internally */
--        if (connected_out && connected_in) {
--            qemu_log_mask(LOG_GUEST_ERROR, "GPIO pin %zu short circuited=
-\n", i);
--        }
--
--        /*
--         * Input buffer disconnected from internal/external drives, so
--         * pull-up/pull-down becomes relevant
--         */
--        if (!input || (input && !connected_in && !connected_out)) {
--            if (pull =3D=3D NRF51_GPIO_PULLDOWN) {
--                s->in =3D deposit32(s->in, i, 1, 0);
--            } else if (pull =3D=3D NRF51_GPIO_PULLUP) {
--                s->in =3D deposit32(s->in, i, 1, 1);
-+        if (!input) {
-+            if (pull >=3D 0) {
-+                /* Input buffer disconnected from external drives */
-+                s->in =3D deposit32(s->in, i, 1, pull);
-+            }
-+        } else {
-+            if (connected_out && connected_in && out !=3D in) {
-+                /* Pin both driven externally and internally */
-+                qemu_log_mask(LOG_GUEST_ERROR, "GPIO pin %zu short circu=
-ited\n", i);
-+            }
-+            if (!connected_in) {
-+                /*
-+                 * Floating input: the output stimulates IN if connected=
-,
-+                 * otherwise pull-up/pull-down resistors put a value on =
-both
-+                 * IN and OUT.
-+                 */
-+                if (pull >=3D 0 && !connected_out) {
-+                    connected_out =3D true;
-+                    out =3D pull;
-+                }
-+                if (connected_out) {
-+                    s->in =3D deposit32(s->in, i, 1, out);
-+                }
-             }
-         }
--
--        /* Self stimulation through internal output driver */
--        if (connected_out && !connected_in && input) {
--            s->in =3D deposit32(s->in, i, 1, out);
--        }
-+        update_output_irq(s, i, connected_out, out);
-     }
--
- }
-=20
- /*
---=20
-2.20.1
-
+> > +    /* ~1TB PCIE MMIO space (4GB to 1024GB boundary) */
+> > +    [SBSA_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0xFF00000000ULL },
+> > +    [SBSA_MEM] =                { 0x10000000000ULL, RAMLIMIT_BYTES },
+> > +};
+> > +
+> > +static const int sbsa_ref_irqmap[] = {
+> > +    [SBSA_UART] = 1,
+> > +    [SBSA_RTC] = 2,
+> > +    [SBSA_PCIE] = 3, /* ... to 6 */
+> > +    [SBSA_GPIO] = 7,
+> > +    [SBSA_SECURE_UART] = 8,
+> > +    [SBSA_AHCI] = 9,
+> > +    [SBSA_EHCI] = 10,
+> > +};
+> > +
+> > +static void sbsa_ref_init(MachineState *machine)
+> > +{
+> > +    SBSAMachineState *vms = SBSA_MACHINE(machine);
+> > +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> > +    MemoryRegion *sysmem = get_system_memory();
+> > +    MemoryRegion *secure_sysmem = NULL;
+> > +    MemoryRegion *ram = g_new(MemoryRegion, 1);
+> > +    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+> > +    const CPUArchIdList *possible_cpus;
+> > +    int n, sbsa_max_cpus;
+> > +
+> > +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
+> > +        error_report("sbsa-ref: CPU type other than the built-in "
+> > +                     "cortex-a57 not supported");
+> > +        exit(1);
+> > +    }
+> > +
+> > +    if (kvm_enabled()) {
+> > +        error_report("sbsa-ref: KVM is not supported at this machine");
+> > +        exit(1);
+> > +    }
+> > +
+> > +    if (machine->kernel_filename && firmware_loaded) {
+> > +        error_report("sbsa-ref: No fw_cfg device on this machine, "
+> > +                     "so -kernel option is not supported when firmware loaded, "
+> > +                     "please load OS from hard disk instead");
+> > +        exit(1);
+> > +    }
+> > +
+> > +    /*
+> > +     * This machine has EL3 enabled, external firmware should supply PSCI
+> > +     * implementation, so the QEMU's internal PSCI is disabled.
+> > +     */
+> > +    vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
+> > +
+> > +    sbsa_max_cpus = vms->memmap[SBSA_GIC_REDIST].size / GICV3_REDIST_SIZE;
+> > +
+> > +    if (max_cpus > sbsa_max_cpus) {
+> > +        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
+> > +                     "supported by machine 'sbsa-ref' (%d)",
+> > +                     max_cpus, sbsa_max_cpus);
+> > +        exit(1);
+> > +    }
+> > +
+> > +    vms->smp_cpus = smp_cpus;
+> > +
+> > +    if (machine->ram_size > vms->memmap[SBSA_MEM].size) {
+> > +        error_report("sbsa-ref: cannot model more than %dGB RAM", RAMLIMIT_GB);
+> > +        exit(1);
+> > +    }
+> > +
+> > +    secure_sysmem = g_new(MemoryRegion, 1);
+> > +    memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+> > +                       UINT64_MAX);
+> > +    memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
+> > +
+> > +    possible_cpus = mc->possible_cpu_arch_ids(machine);
+> > +    for (n = 0; n < possible_cpus->len; n++) {
+> > +        Object *cpuobj;
+> > +        CPUState *cs;
+> > +
+> > +        if (n >= smp_cpus) {
+> > +            break;
+> > +        }
+> > +
+> > +        cpuobj = object_new(possible_cpus->cpus[n].type);
+> > +        object_property_set_int(cpuobj, possible_cpus->cpus[n].arch_id,
+> > +                                "mp-affinity", NULL);
+> > +
+> > +        cs = CPU(cpuobj);
+> > +        cs->cpu_index = n;
+> > +
+> > +        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
+> > +                          &error_fatal);
+> > +
+> > +        if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+> > +            object_property_set_int(cpuobj, vms->memmap[SBSA_CPUPERIPHS].base,
+> > +                                    "reset-cbar", &error_abort);
+> > +        }
+> > +
+> > +        object_property_set_link(cpuobj, OBJECT(sysmem), "memory",
+> > +                                 &error_abort);
+> > +
+> > +        object_property_set_link(cpuobj, OBJECT(secure_sysmem),
+> > +                                 "secure-memory", &error_abort);
+> > +
+> > +        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
+> > +        object_unref(cpuobj);
+> > +    }
+> > +
+> > +    memory_region_allocate_system_memory(ram, NULL, "sbsa-ref.ram",
+> > +                                         machine->ram_size);
+> > +    memory_region_add_subregion(sysmem, vms->memmap[SBSA_MEM].base, ram);
+> > +
+> > +    vms->bootinfo.ram_size = machine->ram_size;
+> > +    vms->bootinfo.kernel_filename = machine->kernel_filename;
+> > +    vms->bootinfo.nb_cpus = smp_cpus;
+> > +    vms->bootinfo.board_id = -1;
+> > +    vms->bootinfo.loader_start = vms->memmap[SBSA_MEM].base;
+> > +    vms->bootinfo.firmware_loaded = firmware_loaded;
+> > +    arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
+> > +}
+> > +
+> > +static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *vms, int idx)
+> > +{
+> > +    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
+> > +    return arm_cpu_mp_affinity(idx, clustersz);
+> > +}
+> > +
+> > +static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineState *ms)
+> > +{
+> > +    SBSAMachineState *vms = SBSA_MACHINE(ms);
+> > +    int n;
+> > +
+> > +    if (ms->possible_cpus) {
+> > +        assert(ms->possible_cpus->len == max_cpus);
+> > +        return ms->possible_cpus;
+> > +    }
+> > +
+> > +    ms->possible_cpus = g_malloc0(sizeof(CPUArchIdList) +
+> > +                                  sizeof(CPUArchId) * max_cpus);
+> > +    ms->possible_cpus->len = max_cpus;
+> > +    for (n = 0; n < ms->possible_cpus->len; n++) {
+> > +        ms->possible_cpus->cpus[n].type = ms->cpu_type;
+> > +        ms->possible_cpus->cpus[n].arch_id =
+> > +            sbsa_ref_cpu_mp_affinity(vms, n);
+> > +        ms->possible_cpus->cpus[n].props.has_thread_id = true;
+> > +        ms->possible_cpus->cpus[n].props.thread_id = n;
+> > +    }
+> > +    return ms->possible_cpus;
+> > +}
+> > +
+> > +static CpuInstanceProperties
+> > +sbsa_ref_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+> > +{
+> > +    MachineClass *mc = MACHINE_GET_CLASS(ms);
+> > +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
+> > +
+> > +    assert(cpu_index < possible_cpus->len);
+> > +    return possible_cpus->cpus[cpu_index].props;
+> > +}
+> > +
+> > +static int64_t
+> > +sbsa_ref_get_default_cpu_node_id(const MachineState *ms, int idx)
+> > +{
+> > +    return idx % nb_numa_nodes;
+> > +}
+> > +
+> > +static void sbsa_ref_instance_init(Object *obj)
+> > +{
+> > +    SBSAMachineState *vms = SBSA_MACHINE(obj);
+> > +
+> > +    vms->memmap = sbsa_ref_memmap;
+> > +    vms->irqmap = sbsa_ref_irqmap;
+> > +}
+> > +
+> > +static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+> > +{
+> > +    MachineClass *mc = MACHINE_CLASS(oc);
+> > +
+> > +    mc->init = sbsa_ref_init;
+> > +    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
+> > +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
+> > +    mc->max_cpus = 512;
+> > +    mc->pci_allow_0_address = true;
+> > +    mc->minimum_page_bits = 12;
+> > +    mc->block_default_type = IF_IDE;
+> > +    mc->no_cdrom = 1;
+> > +    mc->default_ram_size = 1 * GiB;
+> > +    mc->default_cpus = 4;
+> > +    mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
+> > +    mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
+> > +    mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
+> > +}
+> > +
+> > +static const TypeInfo sbsa_ref_info = {
+> > +    .name          = TYPE_SBSA_MACHINE,
+> > +    .parent        = TYPE_MACHINE,
+> > +    .instance_size = sizeof(SBSAMachineState),
+> > +    .instance_init = sbsa_ref_instance_init,
+> > +    .class_init    = sbsa_ref_class_init,
+> > +};
+> > +
+> > +static void sbsa_ref_machine_init(void)
+> > +{
+> > +    type_register_static(&sbsa_ref_info);
+> > +}
+> > +
+> > +type_init(sbsa_ref_machine_init);
+> > --
+> > 2.7.4
+> >

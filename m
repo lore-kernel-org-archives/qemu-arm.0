@@ -1,165 +1,328 @@
-Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp3614044wrt;
-        Tue, 19 Mar 2019 07:39:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz07memfoXrEDKpteQ91twzxxW6iTfogN3BKZyQ5uXXY4rT07QRzjTYr+3yMu2U2R6QqzW1
-X-Received: by 2002:ac8:464b:: with SMTP id f11mr2341355qto.276.1553006376768;
-        Tue, 19 Mar 2019 07:39:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553006376; cv=none;
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp3846603wrt;
+        Tue, 19 Mar 2019 11:39:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz+ig8pxSaqg52sITKxcBjhMYfwV0ukTOprzncaUtdyGKt0eobx+DEp4jwxRQ8A+2zYgdNK
+X-Received: by 2002:a1c:35c5:: with SMTP id c188mr4683095wma.79.1553020764435;
+        Tue, 19 Mar 2019 11:39:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553020764; cv=none;
         d=google.com; s=arc-20160816;
-        b=yV04EVn2xAAfC44UQLtckPGEKQFuyty9ecTdAncBoAmhgTsKO/wNr59yatCZneyVTq
-         DtXPmWU1BbbubJmARItoCKDjcHaiKB3aTKXMlNxFBfjarxfPJqzgkzZPdDQkrBCBs8DV
-         Y/1pTfMozIaZGSp8PLBHaOe3iBDgbQdtkrNXfBaX/AIVOG150Thk/DN2R7KxFeYDBRYV
-         dj25m1LcxJ6fpkvuT7s8c7rXBQjTTaM8h7CLxlY2aNFML0Vae5CClvcWz2+paUcYMnDv
-         9AnMCh3TQ+bao/oDVHUikuIE2F3Ydm+fwzApphvea9p2KkfSDLBAnczNA2gGwLqXdNBR
-         oDcQ==
+        b=riPqd1iMd7Cjh4oc1R0/0THAlfbslvdw7SJYHKJlrRb7OcEt2okJX2gaOmCy0TlOLh
+         DjqvKSpi6Xv8CuSQuB8JYMSV2VmdP3dRcSKvCuixkyoj589OPN9kRFEh2KCA9Z+z+vaS
+         eyeuoiDEGdNeDeS6SaPJOnQGcfEwCeFbXI/L1klzrP7sdlM3D1kDMF+QsZPbrnVFDDpH
+         AVU2orBmgaCbTkFLaJAZ9dUcqtcSOWP/pgvQ0aqpM9UJ7rqtkRFx569t1xwRsvtLbNJn
+         rV042+pw3n/pMfvM0wmVJHjgvJCvHnh43/y7to7Jy11UYGR7pxB51gbixPeI6DyijBDh
+         PDXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=4Dsxj8BBdtr5gXi9fU7+wCb9UWJYdK8KWnaMiF/Pia0=;
-        b=bCPHMeNG5i8LvfRImFQbDXZRxzCBxDdIMyApaeCUsbgH9pXVZJmF/UjI3c8EiwQvWB
-         9GK60JGMPf30+8+rJjLjvH8DoDhDklRkQFgPedyg5jsnkaF2adH1S/wHttgSwN3YxNcf
-         P+HCRW6MoQQtsM7JRSiO3/OyE5h2AnGO25K1aZ9x3LAuuej8Kdy7adIHOTRQPBy5M0Ah
-         f40fydkgyV4uP/C7ldX+sZvZ6iAKRF3qLDLEsuBhYx/0TjHaZXqBjVa8xOIWeHpk5mxl
-         BH7rIoJTzOu4z07icywIDL6+38fjwOQ2x6EECgkN7y7PWLUP1qKoclOluekA203mH/rz
-         JPeA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:to:from;
+        bh=tWPhyoUG7iZBYSO7kPx3nuPhp3/GK2ckrT7s+pIyGDI=;
+        b=wS872kfkCm8ViaLmBtBlP114qVfVGF8NKbdl8StP8kHor5psPFUJjg1RZarjE3QrgN
+         a+WJ8zBNG7niLQkoo1+JgEEPYWKNP1wiof6AIZOi5MhWtaiFTFDB/E1k5fo4QGuTzToS
+         7TuzadUo6fSeaAZ0zClL9lmWfpWtrpVz8zZqZlYgCbTqWpUaF196CTZ5kZVQtldnwrMz
+         uT0CJwkxYUREvfmSH5kuh7z0WuQYPHoWS0g3huyptYseZlgBsQAmM8qIOe/ZNJn/vRt/
+         KJC7anZ9waCwvrtJLpG08M+7gw8OJYNFLs+JRLXJO7A+MqlLgTpVAIUsABQpTeEQFLGF
+         UxzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id h50si3241246qvd.22.2019.03.19.07.39.36;
-        Tue, 19 Mar 2019 07:39:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x1si4371677wrm.306.2019.03.19.11.39.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 19 Mar 2019 11:39:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 039654A44D;
-	Tue, 19 Mar 2019 10:39:36 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZYbU+bHh2lJq; Tue, 19 Mar 2019 10:39:34 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DE2B44A408;
-	Tue, 19 Mar 2019 10:39:34 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 45DB94A3BF
- for <kvmarm@lists.cs.columbia.edu>; Tue, 19 Mar 2019 10:39:33 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kW8IW-JWmUXI for <kvmarm@lists.cs.columbia.edu>;
- Tue, 19 Mar 2019 10:39:31 -0400 (EDT)
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 8C8F14A3B3
- for <kvmarm@lists.cs.columbia.edu>; Tue, 19 Mar 2019 10:39:31 -0400 (EDT)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 87C0297C5F73C9B021DB;
- Tue, 19 Mar 2019 22:39:27 +0800 (CST)
-Received: from [127.0.0.1] (10.177.31.55) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.408.0; Tue, 19 Mar 2019
- 22:39:26 +0800
-Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
-To: Christoffer Dall <christoffer.dall@arm.com>, Steven Price
- <steven.price@arm.com>
-References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
- <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
- <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
- <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
- <20190315085948.GB10950@e113682-lin.lund.arm.com>
-From: Heyi Guo <guoheyi@huawei.com>
-Message-ID: <ff1db661-13c2-50ff-940e-4a1d71bd0309@huawei.com>
-Date: Tue, 19 Mar 2019 22:39:25 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:33287 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h6Jdz-00058k-Fk
+	for alex.bennee@linaro.org; Tue, 19 Mar 2019 14:39:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36285)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1h6JdK-0004qh-82
+	for qemu-devel@nongnu.org; Tue, 19 Mar 2019 14:38:43 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <armbru@redhat.com>) id 1h6JZe-0001U1-DU
+	for qemu-devel@nongnu.org; Tue, 19 Mar 2019 14:34:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49708)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1h6JZb-0001Ng-SY; Tue, 19 Mar 2019 14:34:52 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 315A630BC648;
+	Tue, 19 Mar 2019 18:34:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-132.ams2.redhat.com
+	[10.36.116.132])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3334F2C230;
+	Tue, 19 Mar 2019 18:34:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 9107211385E4; Tue, 19 Mar 2019 19:34:45 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+References: <87d0mwatbu.fsf@dusky.pond.sub.org>
+Date: Tue, 19 Mar 2019 19:34:45 +0100
+In-Reply-To: <87d0mwatbu.fsf@dusky.pond.sub.org> (Markus Armbruster's message
+	of "Tue, 12 Mar 2019 18:36:05 +0100")
+Message-ID: <875zsed86y.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20190315085948.GB10950@e113682-lin.lund.arm.com>
-X-Originating-IP: [10.177.31.55]
-X-CFilter-Loop: Reflected
-Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.46]);
+	Tue, 19 Mar 2019 18:34:51 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] Maintainers,
+ please tell us how to boot your machines!
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: fLF76prQ1H6k
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>, Alexander Graf <agraf@suse.de>,
+	=?utf-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Paul Durrant <paul.durrant@citrix.com>, Jan Kiszka <jan.kiszka@web.de>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JHBmRtvphZ/I
 
-Hi Christoffer and Steve,
+Markus Armbruster <armbru@redhat.com> writes:
 
+> Dear board code maintainers,
+>
+> This is a (rather late) follow-up to the last QEMU summit.  Minutes[*]:
+>
+>  * Deprecating unmaintained features (devices, targets, backends) in QEMU
+>
+>    QEMU has a mechanism to deprecate features but there remains a lot of
+>    old unmaintained code.  Refactoring is hindered by untested legacy
+>    code, so there is a desire to deprecate unmaintained features more
+>    often.
+>
+>    [...]
+>
+>    We should require at least a minimal test for each board; if nobody
+>    cares enough to come up with one, that board should be deprecated.
+>
+>    [...]
+>
+>    Also see the qemu-devel discussion about deprecating code:
+>    https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg05828.html.
+>
+> That's a link to "Minutes of KVM Forum BoF on deprecating stuff".
+> Quote:
+>
+>  * One obvious class of candidates for removal is machines we don't know
+>    how to boot, or can't boot, say because we lack required firmware
+>    and/or OS.
+>
+>    Of course, "can boot" should be an automated test.  As a first step
+>    towards that, we should at least document how to boot each machine.
+>    We're going to ask machine maintainers to do that.
+>
+> Let's get going on this.
+>
+> I gathered the machine types, mapped them to source files, which I fed
+> to get_maintainer.pl.  Results are appended.  If you're cc'ed,
+> MAINTAINERS fingers you for at least one machine type's source file.
+> Please tell us for all of them how to to a "meaningful" boot test.
+>
+> For now, what's "meaningful" is entirely up to you.  Booting Linux
+> certainly is.
+>
+> Make sure to include a complete QEMU command line.  If your QEMU command
+> line requires resources beyond the QEMU source tree and what we build
+> from it, please detail them, and provide download URLs as far as
+> possible.
+>
+> Goals for this exercise:
+>
+> * Gather information we need to cover more machines in our automated
+>   testing.
+>
+>   Related work:
+>   [PATCH v4 00/19] Acceptance Tests: target architecture support
+>   Message-Id: <20190312121150.8638-1-crosa@redhat.com>
+>   https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg03881.html
+>
+> * Maybe identify a few machines we don't know how to boot anymore.
+>
+> Thanks in advance for your help!
 
-On 2019/3/15 16:59, Christoffer Dall wrote:
-> Hi Steve,
->
-> On Wed, Mar 13, 2019 at 10:11:30AM +0000, Steven Price wrote:
->> Personally I think what we need is:
->>
->> * Either a patch like the one from Heyi Guo (save/restore CNTVCT_EL0) or
->> alternatively hooking up KVM_KVMCLOCK_CTRL to prevent the watchdog
->> firing when user space explicitly stops scheduling the guest for a while.
-> If we save/restore CNTVCT_EL0 and the warning goes away, does the guest
-> wall clock timekeeping get all confused and does it figure this out
-> automagically somehow?
-What's the source for guest wall clock timekeeping in current ARM64 implementation? Is it the value from CNTP_TVAL_EL0? Will guest OS keep track of this? Or is the wall clock simply platform RTC?
+Quite a few maintainers replied, and a few others, too.  Thank you!
 
-I tested the RFC change and did not see anything unusual. Did I miss someting?
+I still have to fully digest the replies, in particular whether there's
+enough detail for me to actually boot a guest.
 
->
-> Does KVM_KVMCLOCK_CTRL solve that problem?
-It seems KVM_KVMCLOCK_CTRL is dedicated for guest pause/resume scenario, but it relies on pvclock both in KVM and Guest and right now only X86 supports it :(
+I'm still lacking information on 26 machines.  If you're cc'ed, you're
+considered a possible source of information.  Please help.
 
-Could Steve provide more insights about the whole thing?
+If you're a supporter or maintainer, but can't help, please consider
+adjusting MAINTAINERS to S: Odd Fixes for the machine.
 
-Thanks,
-Heyi
+Machines with at least one supporter:
 
->
->> * KVM itself saving/restoring CNTVCT_EL0 during suspend/resume so the
->> guest doesn't see time pass during a suspend.
-> This smells like policy to me so I'd much prefer keeping as much
-> functionality in user space as possible.  If we already have the APIs we
-> need from KVM, let's use them.
->
->> * Something equivalent to MSR_KVM_WALL_CLOCK_NEW for arm which allows
->> the guest to query the wall clock time from the host and provides an
->> offset between CNTVCT_EL0 to wall clock time which the KVM can update
->> during suspend/resume. This means that during a suspend/resume the guest
->> can observe that wall clock time has passed, without having to be
->> bothered about CNTVCT_EL0 jumping forwards.
->>
-> Isn't the proper Arm architectural solution for this to read the
-> physical counter for wall clock time keeping ?
->
-> (Yes that will require a trap on physical counter reads after migration
-> on current systems, but migration sucks in terms of timekeeping
-> already.)
->
->
-> Thanks,
->
->      Christoffer
->
-> .
->
+    =3D hw/xenpv/xen_machine_pv.c =3D
+    Stefano Stabellini <sstabellini@kernel.org> (supporter:X86)
+    Anthony Perard <anthony.perard@citrix.com> (supporter:X86)
+    Paul Durrant <paul.durrant@citrix.com> (supporter:X86)
+    xen-devel@lists.xenproject.org (open list:X86)
 
+Machines with no supporter, but at least one maintainer:
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+    =3D hw/arm/integratorcp.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (maintainer:Integrator CP)
+    qemu-arm@nongnu.org (open list:Integrator CP)
+
+    =3D hw/arm/omap_sx1.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (maintainer:OMAP)
+    qemu-arm@nongnu.org (open list:ARM)
+
+    =3D hw/mips/mips_jazz.c =3D
+    "Herv=C3=A9 Poussineau" <hpoussin@reactos.org> (maintainer:Jazz)
+    Aleksandar Rikalo <arikalo@wavecomp.com> (reviewer:Jazz)
+    Aurelien Jarno <aurelien@aurel32.net> (maintainer:MIPS)
+    Aleksandar Markovic <amarkovic@wavecomp.com> (maintainer:MIPS)
+
+    =3D hw/mips/mips_r4k.c =3D
+    Aurelien Jarno <aurelien@aurel32.net> (maintainer:R4000)
+    Aleksandar Rikalo <arikalo@wavecomp.com> (reviewer:R4000)
+    Aleksandar Markovic <amarkovic@wavecomp.com> (maintainer:MIPS)
+
+    =3D hw/moxie/moxiesim.c =3D
+    Anthony Green <green@moxielogic.com> (maintainer:Moxie)
+
+    =3D hw/nios2/10m50_devboard.c =3D
+    Chris Wulff <crwulff@gmail.com> (maintainer:NiosII)
+    Marek Vasut <marex@denx.de> (maintainer:NiosII)
+
+    =3D hw/ppc/virtex_ml507.c =3D
+    "Edgar E. Iglesias" <edgar.iglesias@gmail.com> (odd fixer:virtex_ml507)
+    David Gibson <david@gibson.dropbear.id.au> (maintainer:PowerPC)
+    qemu-ppc@nongnu.org (open list:virtex_ml507)
+
+    =3D hw/tricore/tricore_testboard.c =3D
+    Bastian Koppelmann <kbastian@mail.uni-paderborn.de> (maintainer:TriCore)
+
+    =3D hw/unicore32/puv3.c =3D
+    Guan Xuetao <gxt@mprc.pku.edu.cn> (maintainer:UniCore32)
+
+Machines with no maintainer and no supporter:
+
+    =3D hw/arm/collie.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:Sharp SL-5500 (Co..=
+.)
+    qemu-arm@nongnu.org (open list:Sharp SL-5500 (Co...)
+
+    =3D hw/arm/exynos4_boards.c =3D
+    Igor Mitsyanko <i.mitsyanko@gmail.com> (odd fixer:Exynos)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:Exynos)
+    qemu-arm@nongnu.org (open list:Exynos)
+
+    =3D hw/arm/imx25_pdk.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:i.MX25 PDK)
+    Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:i.MX25 PDK)
+    qemu-arm@nongnu.org (open list:i.MX25 PDK)
+
+    =3D hw/arm/mainstone.c =3D
+    Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
+    qemu-arm@nongnu.org (open list:PXA2XX)
+
+    =3D hw/arm/mcimx6ul-evk.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:MCIMX6UL EVK / i...=
+.)
+    Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:MCIMX6UL EVK / i=
+....)
+    qemu-arm@nongnu.org (open list:MCIMX6UL EVK / i....)
+
+    =3D hw/arm/mcimx7d-sabre.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:MCIMX7D SABRE / i..=
+.)
+    Andrey Smirnov <andrew.smirnov@gmail.com> (reviewer:MCIMX7D SABRE / i..=
+.)
+    qemu-arm@nongnu.org (open list:MCIMX7D SABRE / i...)
+
+    =3D hw/arm/musicpal.c =3D
+    Jan Kiszka <jan.kiszka@web.de> (odd fixer:Musicpal)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:Musicpal)
+    qemu-arm@nongnu.org (open list:Musicpal)
+
+    =3D hw/arm/palm.c =3D
+    Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:Palm)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:Palm)
+    qemu-arm@nongnu.org (open list:Palm)
+
+    =3D hw/arm/sabrelite.c =3D
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:SABRELITE / i.MX6)
+    Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX=
+6)
+    qemu-arm@nongnu.org (open list:SABRELITE / i.MX6)
+
+    =3D hw/arm/spitz.c =3D
+    Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
+    qemu-arm@nongnu.org (open list:PXA2XX)
+
+    =3D hw/arm/tosa.c =3D
+    Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
+    qemu-arm@nongnu.org (open list:PXA2XX)
+
+    =3D hw/arm/z2.c =3D
+    Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
+    Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
+    qemu-arm@nongnu.org (open list:PXA2XX)
+
+    =3D hw/ppc/mpc8544ds.c =3D
+    David Gibson <david@gibson.dropbear.id.au> (odd fixer:mpc8544ds)
+    qemu-ppc@nongnu.org (open list:mpc8544ds)
+    Alexander Graf <agraf@suse.de> (ratted out by David)
+
+    =3D hw/ppc/ppc405_boards.c =3D
+    David Gibson <david@gibson.dropbear.id.au> (odd fixer:ppc4xx)
+    qemu-ppc@nongnu.org (open list:ppc4xx) (ratted out by David)
+
+Machines in danger of being orphaned & deprecated:
+
+    =3D hw/lm32/lm32_boards.c =3D
+    Michael Walle <michael@walle.cc> (maintainer:LM32)
+
+    =3D hw/lm32/milkymist.c =3D
+    Michael Walle <michael@walle.cc> (maintainer:milkymist)
+
+Targets where we have received information for *no* machine so far:
+
+    lm32
+    moxie
+    nios2
+    tricore
+    unicore

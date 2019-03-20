@@ -1,97 +1,72 @@
-Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp3882728wrt;
-        Tue, 19 Mar 2019 12:19:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzRQRWkqER0YsUgMuFuYmi2jaKnUMhr70H8XtKl1wnJD0Side8WLy21eZj07ENohIsE9OhB
-X-Received: by 2002:a7b:cb48:: with SMTP id v8mr4841871wmj.138.1553023175352;
-        Tue, 19 Mar 2019 12:19:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553023175; cv=none;
+Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp655712wrt;
+        Wed, 20 Mar 2019 05:21:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwosZ1kurqwic1vILmb9tGqoeLPiJ/eJ/Yq0XNC6IGPVpqKTJcaI75DgTQXjxJz040PYxiK
+X-Received: by 2002:adf:f68d:: with SMTP id v13mr21600913wrp.6.1553084498709;
+        Wed, 20 Mar 2019 05:21:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553084498; cv=none;
         d=google.com; s=arc-20160816;
-        b=tdvk3JU5hShpwQE9S84nRdlh7vycle2pSEIaXoELBB5rFBdbTrqAm+wcHtyTECHkoJ
-         AW6CStuap29SraHi8GcuntJDFRwudtI1JucEZarQe9pFDmsW6Q44dkVytNmjf6U6mpdW
-         fjqCXw1Bxt+DCXUwJ7x5nIxPGESQYglf5upi4V6pFz8kdvcKrz8byErrkS6NrH7LHcF8
-         +JHKZRO2tkrLYUVIegyXaX2rOhShIewzEnFgf4eC/WkzPaSsMIO6ALikyKV//7x5e8Td
-         yzKK6v9tOXg1j7p5pP7mzQyFTzWrUwzhIFDt1k8W3u21PS0hH389xGYOy7KeEGG3VjTH
-         2J2w==
+        b=TQ0ni/tApA9z1xozjghu2RjS9DuhOKjM93UhsS00UUo2Zs5QcIXfYJk2YchHX9e8by
+         kGIwXwNkNhXt+szAwtjB2QZO5HfeSZv9QH+0HN40+hCaM38DN7VTeMMDPs9tl6DokaCM
+         +UnvLk92cCkDvbLiFluM7UMDbJxV6Z0gOyMuJSkhStT2FynuP9/GkchmMYlqNY2cHqtu
+         1rv/nc3XRbCDCsGD+Mt4RLk+Y2QnuzCCd/wA5nwSkinyL6ca8Sn+DxemRewuRGSPPthG
+         IE6h6P4LzvHNmkIRUM1lQu4M87i8MhirSxGOO8CbAG4YMKJsMqhsdqcFMBTgbuWY9/nP
+         0D6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OgMGJMOr/vlSzFSe/rvPCtmbZxqxH849C5Q8o10dZnI=;
-        b=bO+lpA4xru1wQhnfVoh7aVje4vdwbIPO9ihAEhC3J8No9UA+j/KcP2sK+Q86u8CYR1
-         GRsdgoeH2lQMWyRMFO7AA+FiLeoWAxVPzZCLtvmxuxwLrDP38hUsuAPT36rZIQjPCUfn
-         tF81lRlN7Zq8FhAujBdFssrbQz+OomDTrB+VY2v099nPel7UolSiWKV2u4dEjoxRieuC
-         JTINXYzh/c3Vlduy4/x8RHb0bVh5MBMyjKTHrKrRNYrIoNY4NYbf1dYVo+bXNNXZor/7
-         kHFLzjdntFiyhBGqndh7FHpJ+S50Wv+Z7+1ACzfgbeChyi0EoXpPlg91S8c4S2RZ6ceH
-         wpmQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=ojPoH3wNf44TFOhSQxDlNjMstHoX1oq0WtFz6pPDwGE=;
+        b=RGTsNC55Ni17Otz1Z2G63ppAzUdrH0AzVdhqballePEgSnwmC62yJLTjdmyVs/UgwD
+         btjqAC1Ec3oFNdkEkaXeIKQ3qzxstZ1X595IOjAedoKkJ6zXO6iFztk9HcPD3MzWM3gg
+         V6R0N2F8K2CN+2lphMENcYvafQVfyvFTnjxQ6OIplWDhg8/k0v/JXtUSTUfgz7VzSXbc
+         EK64BHYPGnuV74LsjjynnX9s+FQ+t0SpTBK4IQ0Dbi0zkuCgxKFnJt+PqEnodxdHdmH5
+         U5MeLtgEMhOlyFRZ2X/mqXLuOJ5s26KbojBxB/ave8L2hxaWxvYTw9DxYl0C98rejOPt
+         EDTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D077TAP5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6si2529301wrm.320.2019.03.19.12.19.35
+        by mx.google.com with ESMTPS id 196si1375539wmb.147.2019.03.20.05.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Mar 2019 12:19:35 -0700 (PDT)
+        Wed, 20 Mar 2019 05:21:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D077TAP5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:33645 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:47310 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h6KGs-0003ev-CW
-	for alex.bennee@linaro.org; Tue, 19 Mar 2019 15:19:34 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43412)
+	id 1h6aDx-0007df-MN
+	for alex.bennee@linaro.org; Wed, 20 Mar 2019 08:21:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58940)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h6KGh-0003ef-Nt
-	for qemu-arm@nongnu.org; Tue, 19 Mar 2019 15:19:24 -0400
+	(envelope-from <prvs=9753f2423=anthony.perard@citrix.com>)
+	id 1h6aDk-0007dD-PQ
+	for qemu-arm@nongnu.org; Wed, 20 Mar 2019 08:21:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h6KFc-0006Yj-KM
-	for qemu-arm@nongnu.org; Tue, 19 Mar 2019 15:18:18 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40844)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h6KFc-0006Uy-5q
-	for qemu-arm@nongnu.org; Tue, 19 Mar 2019 15:18:16 -0400
-Received: by mail-ot1-x343.google.com with SMTP id x8so18777184otg.7
-	for <qemu-arm@nongnu.org>; Tue, 19 Mar 2019 12:18:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=OgMGJMOr/vlSzFSe/rvPCtmbZxqxH849C5Q8o10dZnI=;
-	b=D077TAP5DEoIIaAXNFWW9pW1Byr0u9Jr85tm083ToPXs2PYOAaNZnt2JLnQi63uEQm
-	8h5+E2g+U5laLKvWraM/FCdGUt0xCOWFlQM6YN28A395kIckH0afeRLtJxQAtbTazXIQ
-	+1+bZRpyNvcTXiLp7X89pW1l++gwsVgcXW5sPU7hO6Czsk+61ehsAf9sxxsCDanHhIES
-	OescxKVxOwTojRtnxgm/Jhm1RpyKTi/00gcQkuboSVDI2FgZT3GAZipgTUw+I+TKankY
-	yJ5FX/mLrglWdRdubklUmOooioaPE59AvBxCfmDNmGj+f/UmGR0A5sFZjLrazu7trqvH
-	WuKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=OgMGJMOr/vlSzFSe/rvPCtmbZxqxH849C5Q8o10dZnI=;
-	b=fvTi/LkpC3/yueL2hg038/h3DVG5omDwnaaoqGSytTkHA+x5tfeYWtSIn9GHU1KIMb
-	EBlBy8oZU+WPoFYcRVStIbJ/5BipFHyjH/pZlRkqaVqIEvQvtxuvA7aHdbnEimDbhzDC
-	R/fLhEU4mtkJ/AGG6BOaiD9DIbcJyH82IqH/fApFZZjS1dtRC9JLOS5+5z5qM02F5/cY
-	vTPYpfY0AF9aGH7mgltH10rdqkvFfbMf2brIBqPW04kx5Ae1Vvv46Yc2X0YCwm51rF6m
-	tXP2IHWvJG+IKTopmpVE8Gu6TbUqtV/o2TrctifpJt1qBfCXI17IBoCPOvcY/ZFTYLos
-	v9ow==
-X-Gm-Message-State: APjAAAU8IkDyG8vtR9dpyEbnvLFwsXQW/uTg8RbjUZfBmBGsuXlbOoTI
-	FYCR9WsipfmjTqCjLhFg2U5SHCzLQfZ/Yg9ujzgpTA==
-X-Received: by 2002:a9d:6406:: with SMTP id h6mr2826015otl.238.1553023093847; 
-	Tue, 19 Mar 2019 12:18:13 -0700 (PDT)
-MIME-Version: 1.0
+	(envelope-from <prvs=9753f2423=anthony.perard@citrix.com>)
+	id 1h6aDk-0006UV-1u
+	for qemu-arm@nongnu.org; Wed, 20 Mar 2019 08:21:24 -0400
+Received: from smtp03.citrix.com ([162.221.156.55]:48092)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71)
+	(envelope-from <prvs=9753f2423=anthony.perard@citrix.com>)
+	id 1h6aDb-0006Et-MG; Wed, 20 Mar 2019 08:21:17 -0400
+X-IronPort-AV: E=Sophos;i="5.60,248,1549929600"; d="scan'208";a="81114876"
+Date: Wed, 20 Mar 2019 12:21:08 +0000
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20190320122108.GN11621@perard.uk.xensource.com>
 References: <87d0mwatbu.fsf@dusky.pond.sub.org>
 	<875zsed86y.fsf@dusky.pond.sub.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
 In-Reply-To: <875zsed86y.fsf@dusky.pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Mar 2019 19:18:02 +0000
-Message-ID: <CAFEAcA9bEpB3jabnZN4tiNf_VtfkYskyPdyEFcx600KHABNGdw@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mutt/1.11.3 (2019-02-01)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 162.221.156.55
 Subject: Re: [Qemu-arm] Maintainers,
  please tell us how to boot your machines!
 X-BeenThere: qemu-arm@nongnu.org
@@ -105,100 +80,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Anthony Green <green@moxielogic.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Anthony Green <green@moxielogic.com>, qemu-devel@nongnu.org,
 	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>, Alexander Graf <agraf@suse.de>,
-	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	xen-devel@lists.xenproject.org, Andrzej Zaborowski <balrogg@gmail.com>,
 	Paul Durrant <paul.durrant@citrix.com>, Jan Kiszka <jan.kiszka@web.de>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Chris Wulff <crwulff@gmail.com>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b4soTRie6WsJ
+X-TUID: XDUG1MXPiO8p
 
-On Tue, 19 Mar 2019 at 18:34, Markus Armbruster <armbru@redhat.com> wrote:
+On Tue, Mar 19, 2019 at 07:34:45PM +0100, Markus Armbruster wrote:
+>     = hw/xenpv/xen_machine_pv.c =
+>     Stefano Stabellini <sstabellini@kernel.org> (supporter:X86)
+>     Anthony Perard <anthony.perard@citrix.com> (supporter:X86)
+>     Paul Durrant <paul.durrant@citrix.com> (supporter:X86)
+>     xen-devel@lists.xenproject.org (open list:X86)
 
-Here are some command lines from my image zoo. Unfortunately
-typically the images themselves are random accumulations
-from people and I have no idea how to rebuild them (and
-they are thus not redistributable, generally).
+That machine requires Xen to be started and at least one service,
+xenstore.
 
->     = hw/arm/integratorcp.c =
->     Peter Maydell <peter.maydell@linaro.org> (maintainer:Integrator CP)
->     qemu-arm@nongnu.org (open list:Integrator CP)
+In dom0, when it's used to attach more disks to dom0:
 
-${QEMU} \
-  -M integratorcp \
-  -kernel "${TESTDIR}"/zImage.integrator \
-  -initrd "${TESTDIR}"/arm_root.img -serial stdio \
-  -append "console=ttyAMA0"
+$QEMU -M xenpv -xen-domid 0 -xen-attach \
+        -name dom0 -nographic  -daemonize \
+        -monitor /dev/null -serial /dev/null -parallel /dev/null \
+        -nodefaults -no-user-config
 
-(I think this test image and kernel used to be kicking around
-on the QEMU wiki at one point. Provenance unknown, naturally.)
+Communication is then done via xenstore to attach disks, we would use
+`xl block-attach` for that.
 
->     = hw/arm/musicpal.c =
->     Jan Kiszka <jan.kiszka@web.de> (odd fixer:Musicpal)
->     Peter Maydell <peter.maydell@linaro.org> (odd fixer:Musicpal)
->     qemu-arm@nongnu.org (open list:Musicpal)
+Another example, when we start a guest and want to attach qcow disk and
+VNC. Our tool stack (xl / libxl) would first create the domain then
+start QEMU:
 
-${QEMU} \
-  -machine musicpal \
-  -pflash "${TESTDIR}"/musicpal.image -snapshot \
-  -kernel "${TESTDIR}"/u-boot.image -serial stdio
+$QEMU -machine xenpv -xen-domid 6 -xen-attach \
+        -name pv-arch \
+        -chardev socket,id=libxl-cmd,path=/var/run/xen/qmp-libxl-6,server,nowait \
+        -mon chardev=libxl-cmd,mode=control \
+        -no-shutdown -nodefaults -no-user-config \
+        -vnc 0.0.0.0:0,to=99 \
+        -display none -m 1024
 
-I got the test image from Jan ages ago. No idea how to rebuild.
+Is that enough information?
 
->     = hw/arm/sabrelite.c =
->     Peter Maydell <peter.maydell@linaro.org> (odd fixer:SABRELITE / i.MX6)
->     Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX6)
->     qemu-arm@nongnu.org (open list:SABRELITE / i.MX6)
+Also, we do automated tests of QEMU. It is done by `osstest' and the
+results are sent to xen-devel@lists.xenproject.org.
+One example of a test result:
+    https://lists.xenproject.org/archives/html/xen-devel/2019-03/msg01577.html
 
-${QEMU} \
-  -smp 4 -M sabrelite -m 1024M -display none \
-  -no-reboot -kernel "${TESTDIR}"/zImage \
-  -initrd "${TESTDIR}"/rootfs.cpio.gz \
-  -dtb "${TESTDIR}"/imx6q-sabrelite.dtb \
-  -serial null -serial stdio
+Thanks,
 
->
->     = hw/arm/spitz.c =
->     Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
->     Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
->     qemu-arm@nongnu.org (open list:PXA2XX)
-
-${QEMU} -M spitz \
-  -kernel "${TESTDIR}"/zaurus-test/zImage.zaurus \
-  -initrd "${TESTDIR}"/zaurus-test/zaurus_root.img -serial stdio \
-  -append 'console=ttyS0,115200n8 init=/bin/bash'
-
->     = hw/arm/z2.c =
->     Andrzej Zaborowski <balrogg@gmail.com> (odd fixer:PXA2XX)
->     Peter Maydell <peter.maydell@linaro.org> (odd fixer:PXA2XX)
->     qemu-arm@nongnu.org (open list:PXA2XX)
-
-${QEMU} \
-   -M z2 -pflash "${TESTDIR}"/zipit.flash \
-   -sd "${TESTDIR}"/zipit.sd \
-   -show-cursor -serial null -serial null -serial null \
-   -kernel "${TESTDIR}"/uImage \
-   -append "console=tty0 fbcon=rotate:3 root=/dev/mmcblk0 ro rootdelay=3" \
-   -rotate 270
-
->     = hw/lm32/milkymist.c =
->     Michael Walle <michael@walle.cc> (maintainer:milkymist)
-
-${QEMU}  -M milkymist -serial stdio -kernel "${TESTDIR}"/flickernoise
-
-thanks
--- PMM
+-- 
+Anthony PERARD

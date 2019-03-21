@@ -1,64 +1,82 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp111752wrx;
-        Thu, 21 Mar 2019 04:11:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwkMmYhvL3U1ILDS7jFgOJaLcqOTtiv2sSDMGCgF/vYMy+aGbi9NvKpBlGiHI0aoW3Srd9w
-X-Received: by 2002:adf:9c8f:: with SMTP id d15mr2072537wre.309.1553166665547;
-        Thu, 21 Mar 2019 04:11:05 -0700 (PDT)
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp268489wrx;
+        Thu, 21 Mar 2019 06:53:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyuVzUAva5wapaAn/uOAg/iFLDEZoIoMRTSN8y3JqSdfP1HzYbNHAbhEZIhIGiIOECiOXAM
+X-Received: by 2002:adf:c752:: with SMTP id b18mr2703702wrh.105.1553176385120;
+        Thu, 21 Mar 2019 06:53:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553176385; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QqmnbT59GCOS3U9neL0QAKhB9XkxpvmRAr9+HAhsWh+sIAG3vzWiiLXOqcna/G0E+M
+         pm46q+dF631lHZ5njsK24g2xemQ77XZp3Qx9/zXy/VGO5/pIszb/oIAKhwrVzq4NBAlQ
+         Szydlyyg4isNAWWG73VCh+7GNvJqriUdI5GdhNTgo6j+nAD4Q9G8Y22QuU6FErR09Ee5
+         ZGDAP/cQKVU1EynACw3xXCF1HTlIYQ0MAg9sgwJGpnuGPbUoh3W6CN0bU2bNinGeFtJn
+         tu2+IBdhtgRYTe8ukdpEmQBpKC+B7u1UlYxQXVmD1OTVWiPkne90vJaoAJioeEWAI5CT
+         m4Lw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=HiAtssLWtdbeNxdwIAeOiRH29BPRw06zgEybfbx7tHw=;
+        b=zxiTcnGf1Fmtq8FPiyrP7H0qiRiV21STWOG72ZPf7P0XDxV5tZJhcnd+Pme+uKOLWg
+         fWpk2QVIWEB2weQo45cl0VgRfYvu3FNec6jx60ujq1Gv+IS6OQO/rOiTTRESoySrT7Oq
+         /eGWBqCCRcoJqUCgFm4wXaLN2zsSw88h/w0FaHvenMhv7eYsYPQlRH8B6DqHNUY+0HFl
+         FlR8XxwWD016EVCaHgx0its1AWmteMEajMGphbIi1knH7hePqNM7GiSBu5KRXe3zHsxw
+         kT8SdvSH8DjrTmQak54XRya6M+QB1GAyYdxXLGmNRQP1id0OprAW32Ty55p6z9WJ2MvO
+         4tsA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si3006852wmh.116.2019.03.21.04.11.05
+        by mx.google.com with ESMTPS id n3si3360837wma.50.2019.03.21.06.53.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Mar 2019 04:11:05 -0700 (PDT)
+        Thu, 21 Mar 2019 06:53:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:34981 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:37541 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h6vbE-0007QZ-HL
-	for alex.bennee@linaro.org; Thu, 21 Mar 2019 07:11:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50956)
+	id 1h6y80-0007j0-3V
+	for alex.bennee@linaro.org; Thu, 21 Mar 2019 09:53:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59685)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1h6vaw-0007PR-4e
-	for qemu-arm@nongnu.org; Thu, 21 Mar 2019 07:10:49 -0400
+	(envelope-from <imammedo@redhat.com>) id 1h6y7k-0007hX-RX
+	for qemu-arm@nongnu.org; Thu, 21 Mar 2019 09:52:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1h6vXd-0001zv-W8
-	for qemu-arm@nongnu.org; Thu, 21 Mar 2019 07:07:23 -0400
-Resent-Date: Thu, 21 Mar 2019 07:07:23 -0400
-Resent-Message-Id: <E1h6vXd-0001zv-W8@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21127)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1h6vXc-0001qC-1x; Thu, 21 Mar 2019 07:07:20 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1553166400; cv=none; d=zoho.com; s=zohoarc; 
-	b=g5cWmU9yzqlVntDiOH9jBQQPK3wgLiH4UHw2yGDdmdmy9t40DzN1xbfeeVOXdMDbriDPvL75nXGVa3bAB9so1QCVE5ypm3UUxWdTNncrJIqf9ZD3ER/c6yDlUuZmSkcAFsDE4m8ZubLmfIzPITyHrw+S2aWZzvchQOWiW+JJfXY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1553166400;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=hcBMe4XPkmYluUyF/itWPzQUdGcvt/4CV2h00GOVIrw=; 
-	b=MyzS5/wUapkn3w6CoUS33jLHuLGxpRg1xlfIOnIvG7F/jIDAFAn/JtlulB64kDuw4nCWoC7po6g14AKhehV5WRYMZWaCjq7+8A8DNb804QlHrievwFtJnYzl8xfT/z4ep2fEVdsFQJGsUKeX2cGJBsIyNIgbL9w72wAYYKGo9tI=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1553166397501751.3869609078474;
-	Thu, 21 Mar 2019 04:06:37 -0700 (PDT)
-In-Reply-To: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
-Message-ID: <155316639560.24.7094080675698324472@b782c5aab522>
+	(envelope-from <imammedo@redhat.com>) id 1h6y5p-0006Xb-RN
+	for qemu-arm@nongnu.org; Thu, 21 Mar 2019 09:50:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:20954)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1h6y5p-0006UE-9j; Thu, 21 Mar 2019 09:50:49 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5ACD930832EF;
+	Thu, 21 Mar 2019 13:50:47 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A8B7760857;
+	Thu, 21 Mar 2019 13:50:43 +0000 (UTC)
+Date: Thu, 21 Mar 2019 14:50:42 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190321145042.07217056@redhat.com>
+In-Reply-To: <20190321002153.24049-1-richardw.yang@linux.intel.com>
+References: <20190321002153.24049-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: shameerali.kolothum.thodi@huawei.com
-Date: Thu, 21 Mar 2019 04:06:37 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 21 Mar 2019 13:50:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 00/10] ARM virt: ACPI memory
- hotplug support
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v4] hw/acpi: extract acpi_add_rom_blob()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,96 +88,245 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: fam@euphon.net, peter.maydell@linaro.org, sameo@linux.intel.com,
-	shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
-	xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
-	qemu-arm@nongnu.org, imammedo@redhat.com, sebastien.boeuf@intel.com
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P1lbGuav4nbh
+X-TUID: msydV2A32AfZ
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDMyMTEwNDc0NS4yODA2
-OC0xLXNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNl
-cmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0
-IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAxOTAzMjExMDQ3NDUu
-MjgwNjgtMS1zaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20KU3ViamVjdDogW1Fl
-bXUtZGV2ZWxdIFtQQVRDSCB2MyAwMC8xMF0gQVJNIHZpcnQ6IEFDUEkgbWVtb3J5IGhvdHBsdWcg
-c3VwcG9ydApUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jh
-c2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0t
-bG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMg
-VHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0
-cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09
-CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20g
-aHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAgIDYyYTE3MmU2YTcuLjY1
-MzJkY2ViYjYgIG1hc3RlciAgICAgLT4gbWFzdGVyCiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAg
-IHBhdGNoZXcvMTU1MzA5MDg0Ny0xMTMwMC0xLWdpdC1zZW5kLWVtYWlsLWxpemhlbmd1aUBodWF3
-ZWkuY29tIC0+IHBhdGNoZXcvMTU1MzA5MDg0Ny0xMTMwMC0xLWdpdC1zZW5kLWVtYWlsLWxpemhl
-bmd1aUBodWF3ZWkuY29tCiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAgIHBhdGNoZXcvMjAxOTAz
-MTMxNjI4MTIuODg4NS0xLWFybWJydUByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAxOTAzMTMxNjI4
-MTIuODg4NS0xLWFybWJydUByZWRoYXQuY29tCiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAgIHBh
-dGNoZXcvMjAxOTAzMTQxMzEwNDkuMjMxNzUtMS1tYXJjYW5kcmUubHVyZWF1QHJlZGhhdC5jb20g
-LT4gcGF0Y2hldy8yMDE5MDMxNDEzMTA0OS4yMzE3NS0xLW1hcmNhbmRyZS5sdXJlYXVAcmVkaGF0
-LmNvbQogdCBbdGFnIHVwZGF0ZV0gICAgICAgICAgICBwYXRjaGV3LzIwMTkwMzE5MTYzNTUxLjMy
-NDk5LTEtYXJtYnJ1QHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE5MDMxOTE2MzU1MS4zMjQ5OS0x
-LWFybWJydUByZWRoYXQuY29tCiAqIFtuZXcgdGFnXSAgICAgICAgICAgICAgIHBhdGNoZXcvMjAx
-OTAzMjEwODUyMTIuMTA3OTYtMS1sdml2aWVyQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE5MDMy
-MTA4NTIxMi4xMDc5Ni0xLWx2aXZpZXJAcmVkaGF0LmNvbQogKiBbbmV3IHRhZ10gICAgICAgICAg
-ICAgICBwYXRjaGV3LzIwMTkwMzIxMDk0MDEyLjM2NTQxLTEtc2dhcnphcmVAcmVkaGF0LmNvbSAt
-PiBwYXRjaGV3LzIwMTkwMzIxMDk0MDEyLjM2NTQxLTEtc2dhcnphcmVAcmVkaGF0LmNvbQogKiBb
-bmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTkwMzIxMTA0NzQ1LjI4MDY4LTEtc2hh
-bWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tIC0+IHBhdGNoZXcvMjAxOTAzMjExMDQ3
-NDUuMjgwNjgtMS1zaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20KU3dpdGNoZWQg
-dG8gYSBuZXcgYnJhbmNoICd0ZXN0JwoxMjVmNDY3NzBiIGh3L2FybS92aXJ0OiBJbml0IEdFRCBk
-ZXZpY2UgYW5kIGVuYWJsZSBtZW1vcnkgaG90cGx1Zwo4YjNhNTQyMDIxIGh3L2FjcGk6IEFkZCBB
-Q1BJIEdlbmVyaWMgRXZlbnQgRGV2aWNlIFN1cHBvcnQKYmJiNjBiMjlhNSBody9hcm0vYm9vdDog
-RXhwb3NlIHRoZSBQQy1ESU1NIG5vZGVzIGluIHRoZSBEVAo4NjE3ZTQyNTczIGh3L2FybS92aXJ0
-OiBJbnRyb2R1Y2Ugb3B0LWluIGZlYXR1cmUgImZkdCIKOWNkNWRhNjcxYyBody9hcm0vdmlydC1h
-Y3BpLWJ1aWxkOiBBZGQgUEMtRElNTSBpbiBTUkFUCmIyNTM4N2I5ZDMgaHcvYXJtL3ZpcnQ6IEFk
-ZCBBQ1BJIHN1cHBvcnQgZm9yIGRldmljZSBtZW1vcnkgY29sZC1wbHVnCmFiNmQyMzJjNGQgaHcv
-YXJtL3ZpcnQ6IEFkZCBtZW1vcnkgaG90cGx1ZyBmcmFtZXdvcmsKZWE3MWE5MjQyNiBody9hcm0v
-dmlydDogQWRkIHZpcnR1YWwgQUNQSSBkZXZpY2UKZjA5M2UxYWFmMiBody9hY3BpOiBEbyBub3Qg
-Y3JlYXRlIG1lbW9yeSBob3RwbHVnIG1ldGhvZCB3aGVuIGhhbmRsZXIgaXMgbm90IGRlZmluZWQK
-MzdlYjZhNGFiNCBody9hY3BpOiBNYWtlIEFDUEkgSU8gYWRkcmVzcyBzcGFjZSBjb25maWd1cmFi
-bGUKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEvMTAgQ2hlY2tpbmcgY29tbWl0IDM3ZWI2YTRhYjQ5
-MyAoaHcvYWNwaTogTWFrZSBBQ1BJIElPIGFkZHJlc3Mgc3BhY2UgY29uZmlndXJhYmxlKQoyLzEw
-IENoZWNraW5nIGNvbW1pdCBmMDkzZTFhYWYyMWQgKGh3L2FjcGk6IERvIG5vdCBjcmVhdGUgbWVt
-b3J5IGhvdHBsdWcgbWV0aG9kIHdoZW4gaGFuZGxlciBpcyBub3QgZGVmaW5lZCkKV0FSTklORzog
-bGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzMxOiBGSUxFOiBody9hY3BpL21lbW9yeV9ob3RwbHVn
-LmM6NzI2OgorICAgICAgICAgICAgICAgICAgIGFtbF9jYWxsMChNRU1PUllfREVWSUNFU19DT05U
-QUlORVIgIi4iIE1FTU9SWV9TTE9UX1NDQU5fTUVUSE9EKSk7Cgp0b3RhbDogMCBlcnJvcnMsIDEg
-d2FybmluZ3MsIDE2IGxpbmVzIGNoZWNrZWQKClBhdGNoIDIvMTAgaGFzIHN0eWxlIHByb2JsZW1z
-LCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRp
-dmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlO
-VEFJTkVSUy4KMy8xMCBDaGVja2luZyBjb21taXQgZWE3MWE5MjQyNmNjIChody9hcm0vdmlydDog
-QWRkIHZpcnR1YWwgQUNQSSBkZXZpY2UpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVk
-IGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzQyOiAKbmV3IGZpbGUg
-bW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywgMSB3YXJuaW5ncywgMTE1IGxpbmVzIGNoZWNr
-ZWQKClBhdGNoIDMvMTAgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55
-IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBt
-YWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KNC8xMCBDaGVja2luZyBj
-b21taXQgYWI2ZDIzMmM0ZDE2IChody9hcm0vdmlydDogQWRkIG1lbW9yeSBob3RwbHVnIGZyYW1l
-d29yaykKNS8xMCBDaGVja2luZyBjb21taXQgYjI1Mzg3YjlkM2U1IChody9hcm0vdmlydDogQWRk
-IEFDUEkgc3VwcG9ydCBmb3IgZGV2aWNlIG1lbW9yeSBjb2xkLXBsdWcpCjYvMTAgQ2hlY2tpbmcg
-Y29tbWl0IDljZDVkYTY3MWM0OSAoaHcvYXJtL3ZpcnQtYWNwaS1idWlsZDogQWRkIFBDLURJTU0g
-aW4gU1JBVCkKNy8xMCBDaGVja2luZyBjb21taXQgODYxN2U0MjU3Mzg1IChody9hcm0vdmlydDog
-SW50cm9kdWNlIG9wdC1pbiBmZWF0dXJlICJmZHQiKQo4LzEwIENoZWNraW5nIGNvbW1pdCBiYmI2
-MGIyOWE1NzUgKGh3L2FybS9ib290OiBFeHBvc2UgdGhlIFBDLURJTU0gbm9kZXMgaW4gdGhlIERU
-KQo5LzEwIENoZWNraW5nIGNvbW1pdCA4YjNhNTQyMDIxNTYgKGh3L2FjcGk6IEFkZCBBQ1BJIEdl
-bmVyaWMgRXZlbnQgRGV2aWNlIFN1cHBvcnQpCkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVy
-cwojMTI0OiBGSUxFOiBody9hY3BpL2dlbmVyaWNfZXZlbnRfZGV2aWNlLmM6MTE3OgorICAgICAg
-ICAgICAgaWZfY3R4ID0gYW1sX2lmKGFtbF9lcXVhbChhbWxfYW5kKGlycV9zZWwsIGFtbF9pbnQo
-Z2VkX2V2ZW50c1tpXS5zZWxlY3RvciksIE5VTEwpLCBhbWxfaW50KGdlZF9ldmVudHNbaV0uc2Vs
-ZWN0b3IpKSk7Cgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI2OSBsaW5lcyBjaGVja2Vk
-CgpQYXRjaCA5LzEwIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBv
-ZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFp
-bnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgoxMC8xMCBDaGVja2luZyBj
-b21taXQgMTI1ZjQ2NzcwYjM3IChody9hcm0vdmlydDogSW5pdCBHRUQgZGV2aWNlIGFuZCBlbmFi
-bGUgbWVtb3J5IGhvdHBsdWcpCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRl
-ZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRj
-aGV3Lm9yZy9sb2dzLzIwMTkwMzIxMTA0NzQ1LjI4MDY4LTEtc2hhbWVlcmFsaS5rb2xvdGh1bS50
-aG9kaUBodWF3ZWkuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1h
-aWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9y
-Zy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNv
-bQ==
+On Thu, 21 Mar 2019 08:21:53 +0800
+Wei Yang <richardw.yang@linux.intel.com> wrote:
+
+> arm and i386 has almost the same function acpi_add_rom_blob(), except
+> giving different FWCfgCallback function.
+> 
+> This patch moves acpi_add_rom_blob() to utils.c by passing
+> FWCfgCallback to it.
+> 
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> 
+> ---
+> v4:
+>   * extract -> moves
+>   * adjust comment in source to make checkpatch happy
+> v3:
+>   * put acpi_add_rom_blob() to hw/acpi/utils.c
+> v2:
+>   * remove unused header in original source file
+> ---
+>  hw/acpi/Makefile.objs    |  2 +-
+>  hw/acpi/utils.c          | 36 ++++++++++++++++++++++++++++++++++++
+>  hw/arm/virt-acpi-build.c | 26 ++++++++++----------------
+>  hw/i386/acpi-build.c     | 26 ++++++++++----------------
+>  include/hw/acpi/utils.h  |  9 +++++++++
+>  5 files changed, 66 insertions(+), 33 deletions(-)
+>  create mode 100644 hw/acpi/utils.c
+>  create mode 100644 include/hw/acpi/utils.h
+> 
+> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+> index 2d46e3789a..ba93c5b64a 100644
+> --- a/hw/acpi/Makefile.objs
+> +++ b/hw/acpi/Makefile.objs
+> @@ -10,7 +10,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+>  
+>  common-obj-y += acpi_interface.o
+>  common-obj-y += bios-linker-loader.o
+> -common-obj-y += aml-build.o
+> +common-obj-y += aml-build.o utils.o
+>  common-obj-$(CONFIG_TPM) += tpm.o
+>  
+>  common-obj-$(CONFIG_IPMI) += ipmi.o
+> diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
+> new file mode 100644
+> index 0000000000..9747996c8c
+> --- /dev/null
+> +++ b/hw/acpi/utils.c
+> @@ -0,0 +1,36 @@
+> +/*
+> + * Utilities for generating ACPI tables and passing them to Guests
+> + *
+> + * Copyright (C) 2019 Intel Corporation
+> + * Copyright (C) 2019 Red Hat Inc
+> + *
+> + * Author: Wei Yang <richardw.yang@linux.intel.com>
+> + * Author: Igor Mammedov <imammedo@redhat.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+
+> +#include <glib/gprintf.h>
+is it necessary?
+
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/utils.h"
+
+
+> +
+> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
+> +                                GArray *blob, const char *name,
+> +                                uint64_t max_size)
+> +{
+> +    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+> +                        name, update, opaque, NULL, true);
+> +}
+> +
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 57679a89bf..a846f74a14 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -37,9 +37,9 @@
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+> -#include "hw/loader.h"
+>  #include "hw/hw.h"
+>  #include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/utils.h"
+>  #include "hw/pci/pcie_host.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/arm/virt.h"
+> @@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
+>      build_state->patched = false;
+>  }
+>  
+> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+> -                                       GArray *blob, const char *name,
+> -                                       uint64_t max_size)
+> -{
+> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+> -                        name, virt_acpi_build_update, build_state, NULL, true);
+> -}
+> -
+>  static const VMStateDescription vmstate_virt_acpi_build = {
+>      .name = "virt_acpi_build",
+>      .version_id = 1,
+> @@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
+>      virt_acpi_build(vms, &tables);
+>  
+>      /* Now expose it all to Guest */
+> -    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
+> -                                               ACPI_BUILD_TABLE_FILE,
+> -                                               ACPI_BUILD_TABLE_MAX_SIZE);
+> +    build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
+> +                                              build_state, tables.table_data,
+> +                                              ACPI_BUILD_TABLE_FILE,
+> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
+>      assert(build_state->table_mr != NULL);
+>  
+>      build_state->linker_mr =
+> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
+> -                          "etc/table-loader", 0);
+> +        acpi_add_rom_blob(virt_acpi_build_update, build_state,
+> +                          tables.linker->cmd_blob, "etc/table-loader", 0);
+>  
+>      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
+>                      acpi_data_len(tables.tcpalog));
+>  
+> -    build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+> -                                              ACPI_BUILD_RSDP_FILE, 0);
+> +    build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
+> +                                             build_state, tables.rsdp,
+> +                                             ACPI_BUILD_RSDP_FILE, 0);
+>  
+>      qemu_register_reset(virt_acpi_build_reset, build_state);
+>      virt_acpi_build_reset(build_state);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 416da318ae..b17d4a711d 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -37,7 +37,6 @@
+>  #include "hw/acpi/cpu.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+> -#include "hw/loader.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/block/fdc.h"
+>  #include "hw/acpi/memory_hotplug.h"
+> @@ -58,6 +57,7 @@
+>  #include "hw/i386/x86-iommu.h"
+>  
+>  #include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/utils.h"
+>  
+>  #include "qom/qom-qobject.h"
+>  #include "hw/i386/amd_iommu.h"
+> @@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
+>      build_state->patched = 0;
+>  }
+>  
+> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
+> -                                       GArray *blob, const char *name,
+> -                                       uint64_t max_size)
+> -{
+> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
+> -                        name, acpi_build_update, build_state, NULL, true);
+> -}
+> -
+>  static const VMStateDescription vmstate_acpi_build = {
+>      .name = "acpi_build",
+>      .version_id = 1,
+> @@ -2891,14 +2883,15 @@ void acpi_setup(void)
+>      acpi_build(&tables, MACHINE(pcms));
+>  
+>      /* Now expose it all to Guest */
+> -    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
+> -                                               ACPI_BUILD_TABLE_FILE,
+> -                                               ACPI_BUILD_TABLE_MAX_SIZE);
+> +    build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
+> +                                              build_state, tables.table_data,
+> +                                              ACPI_BUILD_TABLE_FILE,
+> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
+>      assert(build_state->table_mr != NULL);
+>  
+>      build_state->linker_mr =
+> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
+> -                          "etc/table-loader", 0);
+> +        acpi_add_rom_blob(acpi_build_update, build_state,
+> +                          tables.linker->cmd_blob, "etc/table-loader", 0);
+>  
+>      fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
+>                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
+> @@ -2935,8 +2928,9 @@ void acpi_setup(void)
+>          build_state->rsdp_mr = NULL;
+>      } else {
+>          build_state->rsdp = NULL;
+> -        build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+> -                                                  ACPI_BUILD_RSDP_FILE, 0);
+> +        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
+> +                                                 build_state, tables.rsdp,
+> +                                                 ACPI_BUILD_RSDP_FILE, 0);
+>      }
+>  
+>      qemu_register_reset(acpi_build_reset, build_state);
+> diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
+> new file mode 100644
+> index 0000000000..5212113b7d
+> --- /dev/null
+> +++ b/include/hw/acpi/utils.h
+> @@ -0,0 +1,9 @@
+> +#ifndef HW_ACPI_UTILS_H
+> +#define HW_ACPI_UTILS_H
+> +
+> +#include "hw/loader.h"
+
+why loader.h and not fw_cfg.h?
+
+> +
+> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
+> +                                GArray *blob, const char *name,
+> +                                uint64_t max_size);
+> +#endif
 

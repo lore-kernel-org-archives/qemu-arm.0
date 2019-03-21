@@ -1,319 +1,402 @@
-Received: by 2002:a5d:4d11:0:0:0:0:0 with SMTP id z17csp172098wrt;
-        Wed, 20 Mar 2019 17:34:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxCqQi+lbiCgSVgFPxC7ngghOOk/5QepHzyVXo46xwcsVIb6WxHaCi1+SgapFKiWCNfE9bC
-X-Received: by 2002:a5d:6b12:: with SMTP id v18mr589395wrw.27.1553128471632;
-        Wed, 20 Mar 2019 17:34:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553128471; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp93771wrx;
+        Thu, 21 Mar 2019 03:51:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzB/gTNlypvyyksCqqNpOTHfCLksrc+KCdzb1UkbB4ygf/jb4Bj1IX7wtFf+YL3K9qx+JEv
+X-Received: by 2002:adf:f5c7:: with SMTP id k7mr1995986wrp.197.1553165478354;
+        Thu, 21 Mar 2019 03:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553165478; cv=none;
         d=google.com; s=arc-20160816;
-        b=OMSM56MGVyg12opB5NxpO+7PPJeVovyocz1vLWwZb+CRLdTxZOXZ/vkwuhZbmJQHf0
-         eYH1Vcb+vIftPfCCzDy6QeKI99a/kipDVYll8V2cBaszsc1BXnUsbt9Pj6D1vtKo3Dh5
-         lxYt1Qk86slUaQKvcc5IjJbsGMFGeIn2O5iLFRcBi/0rBDVm5sqlJwbjLfUdVg+6I0oP
-         gaFOcyaxUw6OpDOBlSlEGIktvG8lPLIdn2W0Wh0S21Xc353ULymngamdP+R+4d4d5QOr
-         9l2TJyhMnZaWqXev5WxqgEwVDfV/AA/WVQXhKiPF93ROCp7O7tQjhyR3QBzK0Zd+jUNq
-         nPfA==
+        b=W2+0LM+II3ywjF+lOJEEsRetHGdvcr61a4euEqbZSRWeFTSsp7/2sZVYcDqH1E84e4
+         NAZWVh5qN9irw4Wv7wMLhoOJ+amsE0AGLfijQ9Av85yC6mGQmZY/L7jV5tJ0gzNWnF7W
+         I96uWHyFowdIMA0o1buxKxE79PexaPBaSv8BFRaW4z436Vv+rwEJcOKAB2f3XUf3S7zP
+         QulBtyvUWXmC2VzUBxZSTI5x+vSxFoTb0bgHxf+Q41SHHireg06b8MUlfWjMU04Xy6Aa
+         dfhmP1g4QkOZJjxng9WGJV2mvJiUZtF5pP21pu6+kN9pBzp4Al6eo3fq0QmbgmbWV8+6
+         k2qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=MVxjkIspmhQhc4Nqh32rnM58WQDWbom8ozadIM8WRIA=;
-        b=B/8sQPOWM6b+cHjrh3F4CU/+IlinXI2EEPdNL6y34ZMoz1TWlHwWpfGcdMqCYEODn/
-         OgInbluFuDOHymb6jRrKL0mwj8TFdys42BPxrJl4m3REXiMPoG9Zx4ipT772Z/OEtdGz
-         6J3hDWV5Fyg2u0kbZ32oYFHvnUETdn2JugNbWzBt0xpvu5aV3mg2H0Yu3ySTIykHZOx6
-         lNQcJep1AAmMB2SVH2iI1Am3nI2gy0OlA6T17gTGySk1ohfP1f4xRPyfoM98fTMdRHoI
-         +9IxUvTNYgTx9oCqc4P1VlbNsvN9zkjY55kgCkamMeVfGkk5jxAySQdDxilr1mIkyT6o
-         3pIw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from;
+        bh=JrTBzc9RmoGclKGvuo614QjQAENvax9yzHS6UlB/Ok8=;
+        b=Hv4Y16Sw1mtwpSYaHD+awvi8CxnPOuMhI1HC5zdAabxTLpOrVS+A8SeSvYWwNymWKC
+         DQmLSz1nFDCrxY1vuq/Y3s279n1HDM2DsQv7oNWxDlh0g4Kbe9fRqhkikyPx1o6Otceh
+         HopzitQxf0/x2PSriekdEgjNBlnXpaMLaQ08FeGbgeJQKjk9JEBw18KMwufwc0CZDBCU
+         +wIaMESJ2ROwxfrk7Aa3gNmJj3wR15pHlO+smnDVYAOZknc3W2LrcCzroKMDv0723jAr
+         l625KuJ/TDcAM5tmgFOM4DaQRDMjIp6naPb5ytGL+XLTLXxgDeIU4yBlSmlJ8mbsYRTO
+         hgFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u16si2250734wri.167.2019.03.20.17.34.31
+        by mx.google.com with ESMTPS id f2si3313244wrg.180.2019.03.21.03.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Mar 2019 17:34:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Mar 2019 03:51:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:57298 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:34686 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h6lfC-0005m7-LG
-	for alex.bennee@linaro.org; Wed, 20 Mar 2019 20:34:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53699)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h6vHu-0004Oy-3k
+	for alex.bennee@linaro.org; Thu, 21 Mar 2019 06:51:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1h6leq-0005Kx-Ct
-	for qemu-arm@nongnu.org; Wed, 20 Mar 2019 20:34:09 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1h6vHP-0004Og-ES
+	for qemu-devel@nongnu.org; Thu, 21 Mar 2019 06:50:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1h6lTd-0006jh-51
-	for qemu-arm@nongnu.org; Wed, 20 Mar 2019 20:22:36 -0400
-Received: from mga18.intel.com ([134.134.136.126]:9102)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1h6vGE-0003ck-RV
+	for qemu-devel@nongnu.org; Thu, 21 Mar 2019 06:49:24 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2197 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1h6lTV-0006Xn-LG; Wed, 20 Mar 2019 20:22:27 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-	by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	20 Mar 2019 17:22:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,250,1549958400"; d="scan'208";a="124442575"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga007.jf.intel.com with ESMTP; 20 Mar 2019 17:22:20 -0700
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Thu, 21 Mar 2019 08:21:53 +0800
-Message-Id: <20190321002153.24049-1-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1h6vGC-0003RC-AB; Thu, 21 Mar 2019 06:49:20 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id E6F44237696FE3E62ADE;
+	Thu, 21 Mar 2019 18:49:17 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+	DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server
+	id 14.3.408.0; Thu, 21 Mar 2019 18:49:07 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+	<imammedo@redhat.com>, <peter.maydell@linaro.org>,
+	<shannon.zhaosl@gmail.com>, <sameo@linux.intel.com>,
+	<sebastien.boeuf@intel.com>
+Date: Thu, 21 Mar 2019 10:47:44 +0000
+Message-ID: <20190321104745.28068-10-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
+References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.126
-Subject: [Qemu-arm] [PATCH v4] hw/acpi: extract acpi_add_rom_blob()
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.190
+Subject: [Qemu-devel] [PATCH v3 09/10] hw/acpi: Add ACPI Generic Event
+ Device Support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
-	shannon.zhaosl@gmail.com,
-	Wei Yang <richardw.yang@linux.intel.com>, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xMEu95rJK0mw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: linuxarm@huawei.com, xuwei5@hisilicon.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xf9B7wWTokAQ
 
-arm and i386 has almost the same function acpi_add_rom_blob(), except
-giving different FWCfgCallback function.
+From: Samuel Ortiz <sameo@linux.intel.com>
 
-This patch moves acpi_add_rom_blob() to utils.c by passing
-FWCfgCallback to it.
+The ACPI Generic Event Device (GED) is a hardware-reduced specific
+device that handles all platform events, including the hotplug ones.
+This patch generates the AML code that defines GEDs.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Platforms need to specify their own GedEvent array to describe what
+kind of events they want to support through GED.  Also this uses a
+a single interrupt for the  GED device, relying on IO memory region
+to communicate the type of device affected by the interrupt. This
+way, we can support up to 32 events with a unique interrupt.
 
+This is in preparation for making use of GED for ARM/virt
+platform and for now supports only memory hotplug.
+
+Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
-v4:
-  * extract -> moves
-  * adjust comment in source to make checkpatch happy
-v3:
-  * put acpi_add_rom_blob() to hw/acpi/utils.c
-v2:
-  * remove unused header in original source file
----
- hw/acpi/Makefile.objs    |  2 +-
- hw/acpi/utils.c          | 36 ++++++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c | 26 ++++++++++----------------
- hw/i386/acpi-build.c     | 26 ++++++++++----------------
- include/hw/acpi/utils.h  |  9 +++++++++
- 5 files changed, 66 insertions(+), 33 deletions(-)
- create mode 100644 hw/acpi/utils.c
- create mode 100644 include/hw/acpi/utils.h
+ hw/acpi/generic_event_device.c         | 200 +++++++++++++++++++++++++++++++++
+ include/hw/acpi/generic_event_device.h |  34 ++++++
+ 2 files changed, 234 insertions(+)
 
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 2d46e3789a..ba93c5b64a 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -10,7 +10,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 0b32fc9..9deaa33 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -23,6 +23,183 @@
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/mem/pc-dimm.h"
  
- common-obj-y += acpi_interface.o
- common-obj-y += bios-linker-loader.o
--common-obj-y += aml-build.o
-+common-obj-y += aml-build.o utils.o
- common-obj-$(CONFIG_TPM) += tpm.o
- 
- common-obj-$(CONFIG_IPMI) += ipmi.o
-diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
-new file mode 100644
-index 0000000000..9747996c8c
---- /dev/null
-+++ b/hw/acpi/utils.c
-@@ -0,0 +1,36 @@
-+/*
-+ * Utilities for generating ACPI tables and passing them to Guests
-+ *
-+ * Copyright (C) 2019 Intel Corporation
-+ * Copyright (C) 2019 Red Hat Inc
-+ *
-+ * Author: Wei Yang <richardw.yang@linux.intel.com>
-+ * Author: Igor Mammedov <imammedo@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
++static hwaddr ged_io_base;
++static GedEvent *ged_events;
++static uint32_t ged_events_size;
 +
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include <glib/gprintf.h>
-+#include "hw/acpi/aml-build.h"
-+#include "hw/acpi/utils.h"
-+
-+MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-+                                GArray *blob, const char *name,
-+                                uint64_t max_size)
++static Aml *ged_event_aml(const GedEvent *event)
 +{
-+    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
-+                        name, update, opaque, NULL, true);
++
++    if (!event) {
++        return NULL;
++    }
++
++    switch (event->event) {
++    case GED_MEMORY_HOTPLUG:
++        /* We run a complete memory SCAN when getting a memory hotplug event */
++        return aml_call0(MEMORY_DEVICES_CONTAINER "." MEMORY_SLOT_SCAN_METHOD);
++    default:
++        break;
++    }
++
++    return NULL;
 +}
 +
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 57679a89bf..a846f74a14 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -37,9 +37,9 @@
- #include "hw/acpi/acpi.h"
- #include "hw/nvram/fw_cfg.h"
- #include "hw/acpi/bios-linker-loader.h"
--#include "hw/loader.h"
- #include "hw/hw.h"
- #include "hw/acpi/aml-build.h"
-+#include "hw/acpi/utils.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
-@@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
-     build_state->patched = false;
++/*
++ * The ACPI Generic Event Device (GED) is a hardware-reduced specific
++ * device[ACPI v6.1 Section 5.6.9] that handles all platform events,
++ * including the hotplug ones. Platforms need to specify their own
++ * GedEvent array to describe what kind of events they want to support
++ * through GED. This routine uses a single interrupt for the GED device,
++ * relying on IO memory region to communicate the type of device
++ * affected by the interrupt. This way, we can support up to 32 events
++ * with a unique interrupt.
++ */
++void build_ged_aml(Aml *table, const char *name, uint32_t ged_irq,
++                   AmlRegionSpace rs)
++{
++    Aml *crs = aml_resource_template();
++    Aml *evt, *field;
++    Aml *dev = aml_device("%s", name);
++    Aml *irq_sel = aml_local(0);
++    Aml *isel = aml_name(AML_GED_IRQ_SEL);
++    uint32_t i;
++
++    if (!ged_io_base || !ged_events || !ged_events_size) {
++        return;
++    }
++
++    /* _CRS interrupt */
++    aml_append(crs, aml_interrupt(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
++                                  AML_EXCLUSIVE, &ged_irq, 1));
++    /*
++     * For each GED event we:
++     * - Add an interrupt to the CRS section.
++     * - Add a conditional block for each event, inside a while loop.
++     *   This is semantically equivalent to a switch/case implementation.
++     */
++    evt = aml_method("_EVT", 1, AML_SERIALIZED);
++    {
++        Aml *ged_aml;
++        Aml *if_ctx;
++
++        /* Local0 = ISEL */
++        aml_append(evt, aml_store(isel, irq_sel));
++
++        /*
++         * Here we want to call a method for each supported GED event type.
++         * The resulting ASL code looks like:
++         *
++         * Local0 = ISEL
++         * If ((Local0 & irq0) == irq0)
++         * {
++         *     MethodEvent0()
++         * }
++         *
++         * If ((Local0 & irq1) == irq1)
++         * {
++         *     MethodEvent1()
++         * }
++         *
++         * If ((Local0 & irq2) == irq2)
++         * {
++         *     MethodEvent2()
++         * }
++         */
++
++        for (i = 0; i < ged_events_size; i++) {
++            ged_aml = ged_event_aml(&ged_events[i]);
++            if (!ged_aml) {
++                continue;
++            }
++
++            /* If ((Local1 == irq))*/
++            if_ctx = aml_if(aml_equal(aml_and(irq_sel, aml_int(ged_events[i].selector), NULL), aml_int(ged_events[i].selector)));
++            {
++                /* AML for this specific type of event */
++                aml_append(if_ctx, ged_aml);
++            }
++
++            /*
++             * We append the first "if" to the "while" context.
++             * Other "ifs" will be "elseifs".
++             */
++            aml_append(evt, if_ctx);
++        }
++    }
++
++    aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0013")));
++    aml_append(dev, aml_name_decl("_UID", aml_string(GED_DEVICE)));
++    aml_append(dev, aml_name_decl("_CRS", crs));
++
++    /* Append IO region */
++    aml_append(dev, aml_operation_region(AML_GED_IRQ_REG, rs,
++               aml_int(ged_io_base + ACPI_GED_IRQ_SEL_OFFSET),
++               ACPI_GED_IRQ_SEL_LEN));
++    field = aml_field(AML_GED_IRQ_REG, AML_DWORD_ACC, AML_NOLOCK,
++                      AML_WRITE_AS_ZEROS);
++    aml_append(field, aml_named_field(AML_GED_IRQ_SEL,
++                                      ACPI_GED_IRQ_SEL_LEN * 8));
++    aml_append(dev, field);
++
++    /* Append _EVT method */
++    aml_append(dev, evt);
++
++    aml_append(table, dev);
++}
++
++/* Memory read by the GED _EVT AML dynamic method */
++static uint64_t ged_read(void *opaque, hwaddr addr, unsigned size)
++{
++    uint64_t val = 0;
++    GEDState *ged_st = opaque;
++
++    switch (addr) {
++    case ACPI_GED_IRQ_SEL_OFFSET:
++        /* Read the selector value and reset it */
++        qemu_mutex_lock(&ged_st->lock);
++        val = ged_st->sel;
++        ged_st->sel = 0;
++        qemu_mutex_unlock(&ged_st->lock);
++        break;
++    default:
++        break;
++    }
++
++    return val;
++}
++
++/* Nothing is expected to be written to the GED memory region */
++static void ged_write(void *opaque, hwaddr addr, uint64_t data,
++                      unsigned int size)
++{
++}
++
++static const MemoryRegionOps ged_ops = {
++    .read = ged_read,
++    .write = ged_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void acpi_ged_event(GEDState *ged_st, uint32_t ged_irq_sel)
++{
++    /*
++     * Set the GED IRQ selector to the expected device type value. This
++     * way, the ACPI method will be able to trigger the right code based
++     * on a unique IRQ.
++     */
++    qemu_mutex_lock(&ged_st->lock);
++    ged_st->sel = ged_irq_sel;
++    qemu_mutex_unlock(&ged_st->lock);
++
++    /* Trigger the event by sending an interrupt to the guest. */
++    qemu_irq_pulse(ged_st->gsi[ged_st->irq]);
++}
++
+ static void virt_device_plug_cb(HotplugHandler *hotplug_dev,
+                                 DeviceState *dev, Error **errp)
+ {
+@@ -40,6 +217,21 @@ static void virt_device_plug_cb(HotplugHandler *hotplug_dev,
+ 
+ static void virt_send_ged(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
++    VirtAcpiState *s = VIRT_ACPI(adev);
++    uint32_t sel;
++
++    if (ev & ACPI_MEMORY_HOTPLUG_STATUS) {
++        sel = ACPI_GED_IRQ_SEL_MEM;
++    } else {
++        /* Unknown event. Return without generating interrupt. */
++        return;
++    }
++
++    /*
++     * We inject the hotplug interrupt. The IRQ selector will make
++     * the difference from the ACPI table.
++     */
++    acpi_ged_event(&s->ged_state, sel);
  }
  
--static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
--                                       GArray *blob, const char *name,
--                                       uint64_t max_size)
--{
--    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
--                        name, virt_acpi_build_update, build_state, NULL, true);
--}
--
- static const VMStateDescription vmstate_virt_acpi_build = {
-     .name = "virt_acpi_build",
-     .version_id = 1,
-@@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
-     virt_acpi_build(vms, &tables);
+ static void virt_device_realize(DeviceState *dev, Error **errp)
+@@ -57,6 +249,11 @@ static Property virt_acpi_properties[] = {
+     DEFINE_PROP_UINT64("memhp_base", VirtAcpiState, memhp_base, 0),
+     DEFINE_PROP_BOOL("memory-hotplug-support", VirtAcpiState,
+                      memhp_state.is_enabled, true),
++    DEFINE_PROP_PTR("gsi", VirtAcpiState, gsi),
++    DEFINE_PROP_UINT64("ged_base", VirtAcpiState, ged_base, 0),
++    DEFINE_PROP_UINT32("ged_irq", VirtAcpiState, ged_irq, 0),
++    DEFINE_PROP_PTR("ged_events", VirtAcpiState, ged_events),
++    DEFINE_PROP_UINT32("ged_events_size", VirtAcpiState, ged_events_size, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
  
-     /* Now expose it all to Guest */
--    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
--                                               ACPI_BUILD_TABLE_FILE,
--                                               ACPI_BUILD_TABLE_MAX_SIZE);
-+    build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
-+                                              build_state, tables.table_data,
-+                                              ACPI_BUILD_TABLE_FILE,
-+                                              ACPI_BUILD_TABLE_MAX_SIZE);
-     assert(build_state->table_mr != NULL);
+@@ -70,6 +267,9 @@ static void virt_acpi_class_init(ObjectClass *class, void *data)
+     dc->props = virt_acpi_properties;
+     dc->realize = virt_device_realize;
  
-     build_state->linker_mr =
--        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
--                          "etc/table-loader", 0);
-+        acpi_add_rom_blob(virt_acpi_build_update, build_state,
-+                          tables.linker->cmd_blob, "etc/table-loader", 0);
- 
-     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-                     acpi_data_len(tables.tcpalog));
- 
--    build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
--                                              ACPI_BUILD_RSDP_FILE, 0);
-+    build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-+                                             build_state, tables.rsdp,
-+                                             ACPI_BUILD_RSDP_FILE, 0);
- 
-     qemu_register_reset(virt_acpi_build_reset, build_state);
-     virt_acpi_build_reset(build_state);
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 416da318ae..b17d4a711d 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -37,7 +37,6 @@
- #include "hw/acpi/cpu.h"
- #include "hw/nvram/fw_cfg.h"
- #include "hw/acpi/bios-linker-loader.h"
--#include "hw/loader.h"
- #include "hw/isa/isa.h"
- #include "hw/block/fdc.h"
- #include "hw/acpi/memory_hotplug.h"
-@@ -58,6 +57,7 @@
- #include "hw/i386/x86-iommu.h"
- 
- #include "hw/acpi/aml-build.h"
-+#include "hw/acpi/utils.h"
- 
- #include "qom/qom-qobject.h"
- #include "hw/i386/amd_iommu.h"
-@@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
-     build_state->patched = 0;
- }
- 
--static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
--                                       GArray *blob, const char *name,
--                                       uint64_t max_size)
--{
--    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
--                        name, acpi_build_update, build_state, NULL, true);
--}
--
- static const VMStateDescription vmstate_acpi_build = {
-     .name = "acpi_build",
-     .version_id = 1,
-@@ -2891,14 +2883,15 @@ void acpi_setup(void)
-     acpi_build(&tables, MACHINE(pcms));
- 
-     /* Now expose it all to Guest */
--    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
--                                               ACPI_BUILD_TABLE_FILE,
--                                               ACPI_BUILD_TABLE_MAX_SIZE);
-+    build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
-+                                              build_state, tables.table_data,
-+                                              ACPI_BUILD_TABLE_FILE,
-+                                              ACPI_BUILD_TABLE_MAX_SIZE);
-     assert(build_state->table_mr != NULL);
- 
-     build_state->linker_mr =
--        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
--                          "etc/table-loader", 0);
-+        acpi_add_rom_blob(acpi_build_update, build_state,
-+                          tables.linker->cmd_blob, "etc/table-loader", 0);
- 
-     fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
-                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-@@ -2935,8 +2928,9 @@ void acpi_setup(void)
-         build_state->rsdp_mr = NULL;
-     } else {
-         build_state->rsdp = NULL;
--        build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
--                                                  ACPI_BUILD_RSDP_FILE, 0);
-+        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
-+                                                 build_state, tables.rsdp,
-+                                                 ACPI_BUILD_RSDP_FILE, 0);
-     }
- 
-     qemu_register_reset(acpi_build_reset, build_state);
-diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
-new file mode 100644
-index 0000000000..5212113b7d
---- /dev/null
-+++ b/include/hw/acpi/utils.h
-@@ -0,0 +1,9 @@
-+#ifndef HW_ACPI_UTILS_H
-+#define HW_ACPI_UTILS_H
++    /* Reason: pointer properties "gsi" and "gde_events" */
++    dc->user_creatable = false;
 +
-+#include "hw/loader.h"
+     hc->plug = virt_device_plug_cb;
+ 
+     adevc->send_event = virt_send_ged;
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index 262ca7d..7f130f3 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -24,11 +24,45 @@
+ #define VIRT_ACPI(obj) \
+     OBJECT_CHECK(VirtAcpiState, (obj), TYPE_VIRT_ACPI)
+ 
++#define ACPI_GED_IRQ_SEL_OFFSET 0x0
++#define ACPI_GED_IRQ_SEL_LEN    0x4
++#define ACPI_GED_IRQ_SEL_MEM    0x1
++#define ACPI_GED_REG_LEN        0x4
 +
-+MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-+                                GArray *blob, const char *name,
-+                                uint64_t max_size);
-+#endif
++#define GED_DEVICE      "GED"
++#define AML_GED_IRQ_REG "IREG"
++#define AML_GED_IRQ_SEL "ISEL"
++
++typedef enum {
++    GED_MEMORY_HOTPLUG = 1,
++} GedEventType;
++
++typedef struct GedEvent {
++    uint32_t     selector;
++    GedEventType event;
++} GedEvent;
++
++typedef struct GEDState {
++    MemoryRegion io;
++    uint32_t     sel;
++    uint32_t     irq;
++    qemu_irq     *gsi;
++    QemuMutex    lock;
++} GEDState;
++
+ typedef struct VirtAcpiState {
+     SysBusDevice parent_obj;
+     MemHotplugState memhp_state;
+     hwaddr memhp_base;
++    void *gsi;
++    hwaddr ged_base;
++    GEDState ged_state;
++    uint32_t ged_irq;
++    void *ged_events;
++    uint32_t ged_events_size;
+ } VirtAcpiState;
+ 
++void build_ged_aml(Aml *table, const char* name, uint32_t ged_irq,
++                   AmlRegionSpace rs);
+ 
+ #endif
 -- 
-2.19.1
+2.7.4
+
 

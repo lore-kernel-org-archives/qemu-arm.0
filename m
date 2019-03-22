@@ -1,120 +1,134 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp899489wrx;
-        Fri, 22 Mar 2019 09:30:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwOU3RzOeEOM3qEkGUW4Cr6Q2cK893cUIf2Bfuot+SYvwkb1euBeADSNKNAE2kA5RHcIhRC
-X-Received: by 2002:a25:6196:: with SMTP id v144mr8871496ybb.361.1553272219485;
-        Fri, 22 Mar 2019 09:30:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553272219; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp902487wrx;
+        Fri, 22 Mar 2019 09:33:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz8PZMeVDFtCHMze52oQtfULjYjgkIwhIPEFadVABADzkPHgCqZ7Ts5kyxEBS3n33jUaaqu
+X-Received: by 2002:a81:3456:: with SMTP id b83mr9326913ywa.492.1553272386573;
+        Fri, 22 Mar 2019 09:33:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553272386; cv=none;
         d=google.com; s=arc-20160816;
-        b=QG/Dn7zXWkEKUc6d7F/O+LbJbZ+xMvqYh6+R6zmPahyd5mukql0GzW8zY+ka03Ymnj
-         +iO2GbhHQnYFQeseDfaKT/bz903tSQTLo6fbPLjuf0QkFDlLvjt0DcG2jYsypPdXUA0B
-         UW7f3oMyXTjUNGO//kC5cwh1vixO+frqoPH/tOxtk4ei5G4ZHwpS2IU4oC7hZnHOTOkc
-         ZMXvuK3XEXl9q6aX0Wc/kYEvClg1e6tud0AfAzfhu/hKBCJguF7QJ+RCKLvmOk3ZixBl
-         M7WljcPAfUL6zVJh8rkkGpHo98SRcTEhFuxW9uUEnWo3Ab4BzjWXXVKPaziN+4qzqp2w
-         aM4w==
+        b=fnn1r5nFOqTZ6uGWzoYaopy+zvBw8oPodi8o+3mRCoNv8FY0iaJzdxJ8SOQeybFey8
+         fD/Fs70ByhqwwB49wRe38ZrLFgdN+l0Yn8gdEAeWgjisBCCinxfuDKGvYz/mGwYJCZ6L
+         cZOfBhigAHOUmSdAjBvFxWEs8ANxPXGdHCnUWBJTdKe60/1vKM7DWkwnbbGFgYhBKxk1
+         KU3exwEtXWBHP324ZHYu0RTEzOPh91xIKhZl/SmzWmP1LSHd3bGeFCq8Tr6NRzbtvFzC
+         INTYvthRJRTkF0zhlULkYWuvVViNWOoKmcbtqvJJWNnYBx5jCWhDV8ulhaqG3NhWb9Bf
+         4PZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=hyfdsRq6+VDgVKblD/NLnjvAR/CL9Ca/SVZi3n9GNE8=;
-        b=FTGGpjVKU/9l/AsnEx7roOGFuULv1+YpsCJrimrl3Z/crH6WKOjpuytEiMuZvtulU2
-         Cg7WSI1TjAzEXgBeInWqwSXgpdPPv3/V/IggCNpKcncbufoUh/5l7TjZ4f1AhtKZC4ZS
-         MIc+av06zyA6THiwzTD6NPi+8XScyC/6qeEVT+awFq7GTUA66loByVJeYGPMOSKmqtqe
-         OQNRxD/JLCNjsFa9/taauZMV9UG4bMR2XeHYPSeJz2aiM4uJ+chpKKm3K51GJsOJ3uOH
-         rUq1AwE0/zw2iH/llH93+KyXDu1b/0xqaTPOQ9DsAFjkVtLHL2HrLc/pZ7VjIC1RUrRb
-         kA/g==
+        bh=qUdub/kkgKaAJz8DbWHi9kMtrfGXcmpTMx0xPGfUYF8=;
+        b=KUkoWjgYJsdd9PDsPNZaiCHAIaHMl/u0AWfG0HLvE8gj1pDIw76/86KOI7pO1HXkF5
+         5ZrNwERgmZEC2KpQBLA/uDhjSKcbpOnbkp6TyJdVfXt+w0pka2FP8EZ3Ejk1FDRtLgOT
+         ov8EqBILbVj+JhV4COoeRxuhfBTkd7uZuSsiNnHTR8rMOjh2xHVaHSE/odfJ3JI86wI8
+         zUMQ+dX5LnLMXDzpj/IYdMMhASnnh3Y4CD//uCgApUbrvRTi/k4FDLjBtW89SX6LnxK2
+         Ik5bAyUDkVwhCGNDDIy3AKTChdI1KCqrh71JxL6cKHEBItnSFGK5/GRlIV7Sh9DFBa6z
+         CK1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8si5182750ybk.65.2019.03.22.09.30.19
+        by mx.google.com with ESMTPS id f66si4952983ybb.336.2019.03.22.09.33.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Mar 2019 09:30:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Mar 2019 09:33:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:59840 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:59887 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h7N3i-0000Fc-QW
-	for alex.bennee@linaro.org; Fri, 22 Mar 2019 12:30:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42425)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h7N6P-0002J8-T8
+	for alex.bennee@linaro.org; Fri, 22 Mar 2019 12:33:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1h7N3U-0000DV-4z
-	for qemu-arm@nongnu.org; Fri, 22 Mar 2019 12:30:04 -0400
+	(envelope-from <drjones@redhat.com>) id 1h7N4b-0001NB-8w
+	for qemu-devel@nongnu.org; Fri, 22 Mar 2019 12:31:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1h7N3B-00044h-KA
-	for qemu-arm@nongnu.org; Fri, 22 Mar 2019 12:29:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34687)
+	(envelope-from <drjones@redhat.com>) id 1h7N4Z-0006zu-Hd
+	for qemu-devel@nongnu.org; Fri, 22 Mar 2019 12:31:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38573)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1h7N3B-0003yI-8y; Fri, 22 Mar 2019 12:29:45 -0400
+	id 1h7N4W-0006su-Gu; Fri, 22 Mar 2019 12:31:08 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 905A4C049E23;
-	Fri, 22 Mar 2019 16:23:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 08FA33086223;
+	Fri, 22 Mar 2019 16:23:39 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6BFFA5D9CC;
-	Fri, 22 Mar 2019 16:23:36 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D7F1E5D9CC;
+	Fri, 22 Mar 2019 16:23:37 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Fri, 22 Mar 2019 17:23:31 +0100
-Message-Id: <20190322162333.17159-2-drjones@redhat.com>
+Date: Fri, 22 Mar 2019 17:23:32 +0100
+Message-Id: <20190322162333.17159-3-drjones@redhat.com>
 In-Reply-To: <20190322162333.17159-1-drjones@redhat.com>
 References: <20190322162333.17159-1-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 22 Mar 2019 16:23:37 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Fri, 22 Mar 2019 16:23:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/3] target/arm: fix crash on pmu register access
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH 2/3] target/arm: cortex-a7 and cortex-a15 have
+ pmus
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, aaron@os.amperecomputing.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zXVOuzY2d0V6
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ck0gmQwhxmhF
 
-Fix a QEMU NULL derefence that occurs when the guest attempts to
-enable PMU counters with a non-v8 cpu model or a v8 cpu model
-which has not configured a PMU.
+cortex-a7 and cortex-a15 have pmus (PMUv2) and they advertise
+them in ID_DFR0. Let's allow them to function. This also enables
+the pmu cpu property to work with these cpu types, i.e. we can
+now do '-cpu cortex-a15,pmu=off' to remove the pmu.
 
-Fixes: 4e7beb0cc0f3 ("target/arm: Add a timer to predict PMU counter overflow")
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/helper.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ target/arm/cpu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c8d3c213b6b7..fc73488f6cc0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1259,6 +1259,10 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-     int el = arm_current_el(env);
-     uint8_t hpmn = env->cp15.mdcr_el2 & MDCR_HPMN;
- 
-+    if (!arm_feature(env, ARM_FEATURE_PMU)) {
-+        return false;
-+    }
-+
-     if (!arm_feature(env, ARM_FEATURE_EL2) ||
-             (counter < hpmn || counter == 31)) {
-         e = env->cp15.c9_pmcr & PMCRE;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 96f0ff0ec727..504a4771fbd3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1109,6 +1109,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+ #endif
+     } else {
+         cpu->id_aa64dfr0 &= ~0xf00;
++        cpu->id_dfr0 &= ~(0xf << 24);
+         cpu->pmceid0 = 0;
+         cpu->pmceid1 = 0;
+     }
+@@ -1744,6 +1745,7 @@ static void cortex_a7_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+     set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A7;
+     cpu->midr = 0x410fc075;
+     cpu->reset_fpsid = 0x41023075;
+@@ -1789,6 +1791,7 @@ static void cortex_a15_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+     set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
++    set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A15;
+     cpu->midr = 0x412fc0f1;
+     cpu->reset_fpsid = 0x410430f0;
 -- 
 2.17.2
 

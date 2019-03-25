@@ -1,142 +1,88 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3846476wrx;
-        Mon, 25 Mar 2019 06:16:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqySctnq/DBOybxqdQ+STAqoXlGRPrxZ3JUbSyO+VtgYLtWqTO2fogd3kHMMqnvsVgdIjQjE
-X-Received: by 2002:a25:9c89:: with SMTP id y9mr20280697ybo.320.1553519778549;
-        Mon, 25 Mar 2019 06:16:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553519778; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3861028wrx;
+        Mon, 25 Mar 2019 06:29:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzyY5PQ5j8JiHe1Ha0TSMEwp9JQUXlw9SABdp3plswwE+zZLkZatoM/kQuGBPcA75oD3TzK
+X-Received: by 2002:a25:4e89:: with SMTP id c131mr20366898ybb.430.1553520546514;
+        Mon, 25 Mar 2019 06:29:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553520546; cv=none;
         d=google.com; s=arc-20160816;
-        b=lnRKNmPq66ibJdA6MgFsEJxajsAXnsf1p4mWd2FaVhWS0+PMcj8mLA+Ten8/LeK2dI
-         w9YfZXKac1MNQQmAKmLygPC4jK8R2pzKyfHscBxK1IaRLy7JiPezvxpke/mT7pqFPkEj
-         yUjLj+RRwHst4T6ilz+BrzJ6kzRHhkOnaDk+rbLFdi2v4Uj24WXS6QL7LmASL0sSRjAc
-         rBq9a1Tn4THV+DEbsgN5D8/rFjYLpJje0OD2tiRm+6MTXRD43z/Wy+9Nl4Ew/bJLuuZU
-         mGeTUdfyV7dI0tQi4L0doMhc4oCITBu7ehvBq/1UdSQVtKtHp5ADi9hqjDTyY+aP+y0Y
-         +FWQ==
+        b=hb24zvgLtPvQQBVJSaJxb1lRo3G/7Tsq7JL9gp6KrBFWP68HkGX2BUBhG4pMiUs7EW
+         1B2rFs+mzbwEGfJjRXGzwkLhbzZDv+grq+TCdEMNQDnmp9DGFvOwJeoJ/tqYBWS9MiF6
+         5ixtk1FlW1ID5EB/ui2bHJDhGH8KzHzS0+VErB08nGvmKptayC4mzQmzH5/Yit+qWxLA
+         PXCB+PK/CiNqy9ib/Goitl/o7ybGdC8mTHqBWmntxZkk1vfKfW2iUddBs6jdBrPtJmbd
+         aRi7bZQtDJz/b9w3NKtKGuOGWSngw+eWGc4OdDtZp+JlxoTyLu7zUWJkeYNlYaspwsKb
+         W9oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=rIHh4AmhGwftdfjky99d5Z0YT5YT0koD0NcnDYZk8Ew=;
-        b=fbNOerG0TR4o384RtuqBcgm7alB7IiH6kSrYAnYNLmT/GHX8aRdoa4+NMAL6hRx8Ou
-         W8hupTKYG8lUuZZCf1wcQwgzt956jPqYyXcDl5q7KoAugsljd69XnS/GEpapDHEO20H1
-         +NyoXwXEbHkMeCz1yJIoCX8RuqA8addJX0ONCrsaXibBaHFjxTSTpIx5gNoOfz2ju3v7
-         0y0eD+1oqKgezs9MqGCl3rQh7FAHT2akZKsGwHBKI4CN1gsWMJxhY4cL1tGfyPlrV2mr
-         9HhKKFkPlbsNVmYRid+h2JFnxHGIPa0vvv76FQGUqrfDhTYd+3BvV8AzchtBI5ZfxPKx
-         SgZg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=dneYWO7Cav1JnBm/4BLe2j2KMeWtgJD4yqE4IbiVfBY=;
+        b=FTrKNXfo+pq+ZGGa6cK3Ex4jP18FPcTF4rUjdu3I16+rDh9k4ePc+2hAW91FzRGJFU
+         tgmBab6wgxJaFVWYA4EJ/Ckfx3iog0CrzEVCB0awu3DO/goQuqXcX8WLlzLZL0vz2UnI
+         YWqJleJlbqWJ9NLvxoe8rZ2xAt06g3kUH6q0wN5K+2k2W9QkNK5/bHdiYe4IdnBDO2og
+         a2oo7uWeOCsxkX8SRwW7bmmTAqKIjQy18rDWhDZIAuPOirkYl0N7xE4kIphsAgTlB3Vo
+         y07DNIiEfhf4QVFfkCIeZf+lxh+zI5V+Dew2VB7PNwv8St9X5T7Kkg566mOBxTexw70R
+         Xa4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si9121968ywa.286.2019.03.25.06.16.18
+        by mx.google.com with ESMTPS id 197si9373999ybl.10.2019.03.25.06.29.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Mar 2019 06:16:18 -0700 (PDT)
+        Mon, 25 Mar 2019 06:29:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42425 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:42598 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8PSb-0002hY-V6
-	for alex.bennee@linaro.org; Mon, 25 Mar 2019 09:16:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56084)
+	id 1h8Pez-00025z-T8
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 09:29:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59111)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h8PSQ-0002eJ-31
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 09:16:06 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1h8Pei-00023a-9D
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 09:28:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h8PSO-0002PO-3e
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 09:16:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41954)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1h8PSK-0002OO-7v; Mon, 25 Mar 2019 09:16:02 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 58F2E3087921;
-	Mon, 25 Mar 2019 13:15:54 +0000 (UTC)
-Received: from [10.32.181.52] (unknown [10.32.181.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 92122601AC;
-	Mon, 25 Mar 2019 13:15:51 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
-References: <20190322163059.9716-1-drjones@redhat.com>
-	<CAFEAcA_2w533fSRaYTPKGceUY2s5_scE=awtKzw3+SvkiUHV7Q@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <9e4187e4-e437-dba4-3c57-cc1da3aa83a4@redhat.com>
-Date: Mon, 25 Mar 2019 14:15:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1h8Peh-0002mT-5n
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 09:28:48 -0400
+Received: from mail-yw1-f68.google.com ([209.85.161.68]:33841)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1h8Pee-0002kG-Fu; Mon, 25 Mar 2019 09:28:44 -0400
+Received: by mail-yw1-f68.google.com with SMTP id x129so6281384ywc.1;
+	Mon, 25 Mar 2019 06:28:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=dneYWO7Cav1JnBm/4BLe2j2KMeWtgJD4yqE4IbiVfBY=;
+	b=cNNmfNX6hq3VnqQKIohCkUA881PcMNK62J8lSEDLmnXavyVI2MufywShFG6pf3TTd3
+	v//kVXVkTViVjEtuB68yzDrRGB9OYT+wi6FzT17O2BwUN5yvR6GBQlD/xPtc3ifnjL/L
+	hgizw32MD/2mqXPs7cpbfPE2YH+k3ps+cYlbZQ5jL1wVGhuWyNuGx0IN/o19drllskYP
+	7iYPoRc+6lONuIrw92GbOGPX5qyUdHAvoyt5NLUglIOV0fvZUyT1lGg8esvtkKtl7rEw
+	jxpdnmwA4fEtzGhbWJAir8XtJbZawFfrA3/gAqppeFUNTIlfyNL7o14ZsQbjHYlnTCe6
+	jwjw==
+X-Gm-Message-State: APjAAAUPYiIsYbA5YZEnNVGkl3FvGmfLu3yvTL1DhP2FRzGeDeiy5HC2
+	N7q13HV3cSScYVMuPBZ7ROl8DTKPxnGB3JqX3R0=
+X-Received: by 2002:a81:5ec5:: with SMTP id
+	s188mr10773247ywb.381.1553520523504; 
+	Mon, 25 Mar 2019 06:28:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_2w533fSRaYTPKGceUY2s5_scE=awtKzw3+SvkiUHV7Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Mon, 25 Mar 2019 13:15:59 +0000 (UTC)
+References: <cover.1553510737.git.damien.hedde@greensocs.com>
+	<c2bf4b5983b8f0bb42208eaf62643aaccc0163a2.1553510737.git.damien.hedde@greensocs.com>
+In-Reply-To: <c2bf4b5983b8f0bb42208eaf62643aaccc0163a2.1553510737.git.damien.hedde@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 25 Mar 2019 14:28:33 +0100
+Message-ID: <CAAdtpL6rX-U2Bh4m1y1Z3OGG8zkFfsn3iFz+4n93VZvEvhm7RA@mail.gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: multipart/alternative; boundary="000000000000f475c20584eb2e45"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH] target/arm: default config
+	[fuzzy]
+X-Received-From: 209.85.161.68
+Subject: Re: [Qemu-arm] [RFC PATCH 15/17] Convert zynq's slcr to 3-phases
+ reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,28 +94,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
+	mark.burton@greensocs.com,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org, alistair.francis@wdc.com,
+	pbonzini@redhat.com, marcandre.lureau@redhat.com,
+	philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rrZRkea4hx9f
+X-TUID: UWYbcTm+p0IC
 
-On 25/03/19 10:49, Peter Maydell wrote:
-> On Fri, 22 Mar 2019 at 16:31, Andrew Jones <drjones@redhat.com> wrote:
->>
->> In the kconfig shuffle arm lost pci-testdev which is used by
->> kvm-unit-tests. Let's add it back.
->>
->> Signed-off-by: Andrew Jones <drjones@redhat.com>
->> ---
->>  default-configs/arm-softmmu.mak | 1 +
-> 
-> 
-> 
-> Applied to target-arm.next (with a tweaked subject line), thanks.
+--000000000000f475c20584eb2e45
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Sounds good, and safer than CONFIG_TEST_DEVICES for 4.0 so I'm okay with
-your call!  Thanks,
+Hi Damien,
 
-Paolo
+Le lun. 25 mars 2019 12:16, Damien Hedde <damien.hedde@greensocs.com> a
+=C3=A9crit :
 
+> Change the legacy reset function into the init phase and test the
+> resetting flag in register accesses.
+>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> ---
+>  hw/misc/zynq_slcr.c | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index baa13d1316..47f43e1d8d 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -180,9 +180,9 @@ typedef struct ZynqSLCRState {
+>      uint32_t regs[ZYNQ_SLCR_NUM_REGS];
+>  } ZynqSLCRState;
+>
+> -static void zynq_slcr_reset(DeviceState *d)
+> +static void zynq_slcr_reset_init(Object *obj, bool cold)
+>  {
+> -    ZynqSLCRState *s =3D ZYNQ_SLCR(d);
+> +    ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
+>      int i;
+>
+>      DB_PRINT("RESET\n");
+> @@ -346,6 +346,10 @@ static uint64_t zynq_slcr_read(void *opaque, hwaddr
+> offset,
+>      offset /=3D 4;
+>      uint32_t ret =3D s->regs[offset];
+>
+> +    if (qdev_is_resetting((DeviceState *) opaque)) {
+> +        return 0;
+> +    }
+> +
+>      if (!zynq_slcr_check_offset(offset, true)) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "zynq_slcr: Invalid read access t=
+o
+> "
+>                        " addr %" HWADDR_PRIx "\n", offset * 4);
+> @@ -361,6 +365,10 @@ static void zynq_slcr_write(void *opaque, hwaddr
+> offset,
+>      ZynqSLCRState *s =3D (ZynqSLCRState *)opaque;
+>      offset /=3D 4;
+>
+> +    if (qdev_is_resetting((DeviceState *) opaque)) {
+> +        return;
+>
+
+I wonder if that could be moved to generic parent, as an abstract method.
+But then I'm not sure we can use a generic read() return value.
+
++    }
+> +
+>      DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx64 "\n", offset *
+> 4, val);
+>
+>      if (!zynq_slcr_check_offset(offset, false)) {
+> @@ -441,7 +449,7 @@ static void zynq_slcr_class_init(ObjectClass *klass,
+> void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->vmsd =3D &vmstate_zynq_slcr;
+> -    dc->reset =3D zynq_slcr_reset;
+> +    dc->reset_phases.init =3D zynq_slcr_reset_init;
+>  }
+>
+>  static const TypeInfo zynq_slcr_info =3D {
+> --
+> 2.21.0
+>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+>
+
+--000000000000f475c20584eb2e45
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div>Hi Damien,<br><br><div class=3D"gmail_quote"><div di=
+r=3D"ltr">Le lun. 25 mars 2019 12:16, Damien Hedde &lt;<a href=3D"mailto:da=
+mien.hedde@greensocs.com">damien.hedde@greensocs.com</a>&gt; a =C3=A9crit=
+=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">Change the legacy reset fun=
+ction into the init phase and test the<br>
+resetting flag in register accesses.<br>
+<br>
+Signed-off-by: Damien Hedde &lt;<a href=3D"mailto:damien.hedde@greensocs.co=
+m" target=3D"_blank" rel=3D"noreferrer">damien.hedde@greensocs.com</a>&gt;<=
+br>
+---<br>
+=C2=A0hw/misc/zynq_slcr.c | 14 +++++++++++---<br>
+=C2=A01 file changed, 11 insertions(+), 3 deletions(-)<br>
+<br>
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c<br>
+index baa13d1316..47f43e1d8d 100644<br>
+--- a/hw/misc/zynq_slcr.c<br>
++++ b/hw/misc/zynq_slcr.c<br>
+@@ -180,9 +180,9 @@ typedef struct ZynqSLCRState {<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t regs[ZYNQ_SLCR_NUM_REGS];<br>
+=C2=A0} ZynqSLCRState;<br>
+<br>
+-static void zynq_slcr_reset(DeviceState *d)<br>
++static void zynq_slcr_reset_init(Object *obj, bool cold)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(d);<br>
++=C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
+=C2=A0 =C2=A0 =C2=A0int i;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0DB_PRINT(&quot;RESET\n&quot;);<br>
+@@ -346,6 +346,10 @@ static uint64_t zynq_slcr_read(void *opaque, hwaddr of=
+fset,<br>
+=C2=A0 =C2=A0 =C2=A0offset /=3D 4;<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t ret =3D s-&gt;regs[offset];<br>
+<br>
++=C2=A0 =C2=A0 if (qdev_is_resetting((DeviceState *) opaque)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0if (!zynq_slcr_check_offset(offset, true)) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_GUEST_ERROR, &quot;zynq=
+_slcr: Invalid read access to &quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0&quot; addr %&quot; HWADDR_PRIx &quot;\n&quot;, offset * 4);<br>
+@@ -361,6 +365,10 @@ static void zynq_slcr_write(void *opaque, hwaddr offse=
+t,<br>
+=C2=A0 =C2=A0 =C2=A0ZynqSLCRState *s =3D (ZynqSLCRState *)opaque;<br>
+=C2=A0 =C2=A0 =C2=A0offset /=3D 4;<br>
+<br>
++=C2=A0 =C2=A0 if (qdev_is_resetting((DeviceState *) opaque)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br></blockquote></div></div><div dir=
+=3D"auto"><br></div><div dir=3D"auto">I wonder if that could be moved to ge=
+neric parent, as an abstract method.=C2=A0</div><div dir=3D"auto">But then =
+I&#39;m not sure we can use a generic read() return value.=C2=A0</div><div =
+dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc =
+solid;padding-left:1ex">
++=C2=A0 =C2=A0 }<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0DB_PRINT(&quot;addr: %08&quot; HWADDR_PRIx &quot; data:=
+ %08&quot; PRIx64 &quot;\n&quot;, offset * 4, val);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (!zynq_slcr_check_offset(offset, false)) {<br>
+@@ -441,7 +449,7 @@ static void zynq_slcr_class_init(ObjectClass *klass, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_zynq_slcr;<br>
+-=C2=A0 =C2=A0 dc-&gt;reset =3D zynq_slcr_reset;<br>
++=C2=A0 =C2=A0 dc-&gt;reset_phases.init =3D zynq_slcr_reset_init;<br>
+=C2=A0}<br>
+<br>
+=C2=A0static const TypeInfo zynq_slcr_info =3D {<br>
+-- <br>
+2.21.0<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"=
+auto">Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@=
+amsat.org">f4bug@amsat.org</a>&gt;<br></div><div dir=3D"auto"><div class=3D=
+"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;=
+border-left:1px #ccc solid;padding-left:1ex"></blockquote></div></div></div=
+>
+
+--000000000000f475c20584eb2e45--

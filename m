@@ -1,106 +1,106 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3724542wrx;
-        Mon, 25 Mar 2019 04:14:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwdUf34fM54wbcUec52aozySBixV6eOEl6KMkdXT07N9B97XJSi9FxCTEn4sCPTADMDVDL1
-X-Received: by 2002:a25:8481:: with SMTP id v1mr14016113ybk.248.1553512486552;
-        Mon, 25 Mar 2019 04:14:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553512486; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3726469wrx;
+        Mon, 25 Mar 2019 04:16:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxmf2uwg9SE6fW/osFzqTWG4cz8lxtgKbpLMZ04eTESrwBlukxEZDG6VJ00JOfzABMRjL3z
+X-Received: by 2002:a25:9a41:: with SMTP id r1mr18719859ybo.295.1553512604075;
+        Mon, 25 Mar 2019 04:16:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553512604; cv=none;
         d=google.com; s=arc-20160816;
-        b=BU4WPB/brso0lN4MMcOcVYG1UIx1xH+ikQUmaffzGapJXyTS9lYPXJ8OFbc4pgfwYw
-         fKXa/oM9TUbdiJaf+7OTS57WzuQuhMwJpA1kbdlou7yPZH8krgHZui5rq1WSm1CbjzFt
-         249p/xbPl88QyTdydqOKkW1X+mFTYbitfSU9m/uNXGtb6Z2Qt8ydys5qBFjG0EDF7WWz
-         l5GN/MTrQ7QWRMFIzWfji7K5q93fqRWYHwTMpSRm8NbfU7vsh9e9PgXB5IwBvVJ3Wg8r
-         h3QOwOcyQxe48eBBxN5O1s6lz8mXXGg4zVnaZdMT/UBDsD9I/5uDzJMjJ0CZkziFjKFs
-         edhQ==
+        b=l/TXAOY7MNYL1bf2aFO+i+ozgs9d54YXs4wo2u33smNCtSUPHxuGt7TzWTxo4Zci0a
+         hFrc3c0gOnor8pEG8emSc2BZeEfgxjlK4TD2pdEYsBglOeqm5g2/xaV6MdSD4LxGw0Bw
+         TKdB0xVfyV/VVbv24b9eh9lQGJkAQlKK/9MAcWi7I97M5QP7Kdl/6GN58Dbj3tDd7GeT
+         Rt8aOTdJXO4jR56KXFUHxuSgbYse2ssUnLMfOZANiLxw1xeUpbIwv/yo5uC3ftrEsd2X
+         zSeOkjgsds9ouu8h/QK++LjsRj3TTCe/yEcfZonnxLmIyTFBF/uH7GadvXanO4Ib1EDf
+         Rk7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=ivzPelEZNrVMwxJDkMZOA9axV0Wi0UndnsFqFY5L6TI=;
-        b=Y+878DSfqgwoUW2jO1GOKhzbiEdwScP2CwelDga4Kg6UIo+pGGAMWvi49JkE/080BG
-         joVDqUEjocNz7pmSglrTvyMj0jjl/k1RsfM+fZZ9lP0zMGsSZrNCSUkHnFQLGuU2Kb5q
-         yG+fzBhsPUVTfIjSCoHcyOf67TGMZ+cdmyWzj8j/3QevGwDE9kU5FvlMbtpwq5+Fgi7L
-         Q5554HJbRE3DhRsgzcTufpZHeJstzgoz1xu1ddB5jzi54RGkX1rPNidn98Y6d9xgkrC0
-         aShajkhrFHlNo060zCsiEQh4cWaKzSVXohqFUxfrDVKNfB4GkBRMmOslD0FJs0kA1aUy
-         gZ1g==
+        bh=Jvm8b9sGdd7QCAcKqZ64dZbRKdE1sBrJSp0DEToNUQM=;
+        b=SrWu3xaLtL1YFBYc9Y1Sx4/SII0NzsY7yKdq/1eLzZyp4IQ/4l8gQjHKgYq2fZLhcW
+         CBnEBD9AIBj/fWMfc3wBsFsblZGYtUOtfa19oa9HXZOjbt6Nbv/+dd4aKCSI9qX88Niv
+         IhZc5BuK6H35XTeBcy7gYT1fZBhQatE8tz/7pmgKuBIsSQS+Ox4YbSeYNxIcys2VDBai
+         xCKM9QXIzMEWNBTvm+MhNPskcWbNLyYER+iX2phaY/Htv6qVNM+/2e/m9TRbj0JSNaJd
+         +OQp9WRHrgpgUzEwcOm3yUhLRESBFr4q8l2sVrf79PkRh/Gn30pWnlminxO+E5Gd05l1
+         rhBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Y9ilEolW;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=BySBMNBb;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=BySBMNBb;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="ZxUC/V9A";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=2WVHL11X;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VmYGWQen;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g81si8780405ywg.364.2019.03.25.04.14.46
+        by mx.google.com with ESMTPS id n132si9833739ywc.126.2019.03.25.04.16.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Mar 2019 04:14:46 -0700 (PDT)
+        Mon, 25 Mar 2019 04:16:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Y9ilEolW;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=BySBMNBb;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=BySBMNBb;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="ZxUC/V9A";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=2WVHL11X;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VmYGWQen;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40665 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40716 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8NYz-0006z0-TY
-	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:14:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58826)
+	id 1h8Nat-00007Z-CA
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:16:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNf-0005Ta-JT
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:03:04 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNf-0005Sr-4f
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:03:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNe-00085y-9c
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNa-00084M-7c
 	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:03:03 -0400
-Received: from greensocs.com ([193.104.36.180]:38413)
+Received: from greensocs.com ([193.104.36.180]:38397)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <damien.hedde@greensocs.com>)
-	id 1h8NNc-0007v1-8N; Mon, 25 Mar 2019 07:03:02 -0400
+	id 1h8NNY-0007tp-3n; Mon, 25 Mar 2019 07:02:58 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id DDAF77D78B4;
-	Mon, 25 Mar 2019 12:02:36 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id 67F497D78AA;
+	Mon, 25 Mar 2019 12:02:35 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511756;
-	bh=q6FilVEc49Ov6DKXMr4Va1XrZ/oFtHx1uhJ+EdQrj6s=;
+	s=mail; t=1553511755;
+	bh=CXfPsIgEUI2b9cUTpOeKXwlJ/nJXiIf/2t9JTSfp3NA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Y9ilEolWHnb4JeC+HnARzGBl5DMctv1OT/vc9uSrJWdS83/JomqumlJCvho3B5qrT
-	/o81bBDaap8SucCq/lw1V4/RlpTzlaEE7qcu4D9kSfldxxB+LJORpxUgWO5A5D28lg
-	9D94xbwf17CVCAs2WQJOFvm55FTqgD6ppxftx36c=
+	b=ZxUC/V9AzY/0fiRIfb2s4zSh4axNMV4l5NEyROhEkamrVgo97RGKZdy2XOwZtwJBZ
+	qmoRbDx1ZhnSRIsZvEavcrsAnz+6Oec/9n/0NCdeGJPxXwnYIVVYh5JEwM0tqEv+wj
+	Q8m4g0pWVDZpFL8tn9Y1eIDtkIy5R9f6EIp5QsOE=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=BySBMNBb;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=BySBMNBb
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=2WVHL11X;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=VmYGWQen
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5G6yfaty7vt5; Mon, 25 Mar 2019 12:02:36 +0100 (CET)
+	with ESMTP id epywVxpu8TSh; Mon, 25 Mar 2019 12:02:34 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 9C77C7D78B3; Mon, 25 Mar 2019 12:02:34 +0100 (CET)
+	id 6AEC97D78AE; Mon, 25 Mar 2019 12:02:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511754;
-	bh=q6FilVEc49Ov6DKXMr4Va1XrZ/oFtHx1uhJ+EdQrj6s=;
+	s=mail; t=1553511753;
+	bh=CXfPsIgEUI2b9cUTpOeKXwlJ/nJXiIf/2t9JTSfp3NA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=BySBMNBbVboWmp3CeulUev72Cb7Gwq78sSccMqIzu9K8sMO/GeQJkvUT5YpJ1rf9m
-	3Y6gf6OSOqHM4eo2d4YoyeD3oYmwaczSnHOlBOXidqG99aSAs8poNq/JlgxlN84FMm
-	PJrXCo0skFrE5MAsOSqs89jijg69FlCxxa8qdgZk=
+	b=2WVHL11XqSsufurGRq6FKbbCiPNR8gqT5IZ56DbbIaUH3+hktVXx0MwwJrq69nq/4
+	byMqCBeyP08YoT4BFPohujZh6UEx83WXF7IdvuUmqZ+oc7Syd+w9aqe9k0Xa2OFnEU
+	CydOBQL3ZkrCi97NkujboW2RRnfJ/7qhURTLO9Vw=
 Received: from kouign-amann.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id ED8537D788E;
-	Mon, 25 Mar 2019 12:02:33 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id E5D1F7D788E;
+	Mon, 25 Mar 2019 12:02:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511754;
-	bh=q6FilVEc49Ov6DKXMr4Va1XrZ/oFtHx1uhJ+EdQrj6s=;
+	s=mail; t=1553511752;
+	bh=CXfPsIgEUI2b9cUTpOeKXwlJ/nJXiIf/2t9JTSfp3NA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=BySBMNBbVboWmp3CeulUev72Cb7Gwq78sSccMqIzu9K8sMO/GeQJkvUT5YpJ1rf9m
-	3Y6gf6OSOqHM4eo2d4YoyeD3oYmwaczSnHOlBOXidqG99aSAs8poNq/JlgxlN84FMm
-	PJrXCo0skFrE5MAsOSqs89jijg69FlCxxa8qdgZk=
+	b=VmYGWQenEkLE+w1Wc9fzSe7x1OZFZYDJuZTHMMVZxBHFXc45G0jmKFyoOLb//sT38
+	KaXHpPFHZKrw5Nmbg0GhT8sQdW6sOux8nNA4VwSYFYBr0UzW8Et2PoEn5hpRIENo3E
+	kztrVmrx7HRXre2KwsmYOUHMGZ03qwfhO8r/wyuY=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 25 Mar 2019 12:02:00 +0100
-Message-Id: <3530c02ee3b1c8c28930a6ff1aff6bf3308714d8.1553510737.git.damien.hedde@greensocs.com>
+Date: Mon, 25 Mar 2019 12:01:58 +0100
+Message-Id: <c2bf4b5983b8f0bb42208eaf62643aaccc0163a2.1553510737.git.damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
 References: <cover.1553510737.git.damien.hedde@greensocs.com>
@@ -108,8 +108,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [RFC PATCH 17/17] Connect the uart reset gpios in the
- zynq platform
+Subject: [Qemu-arm] [RFC PATCH 15/17] Convert zynq's slcr to 3-phases reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -128,89 +127,68 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	pbonzini@redhat.com, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qCoT4XHXq/rl
+X-TUID: nWkah7IDJ3m9
 
-Connect the two uart reset inputs to the slcr corresponding outputs.
+Change the legacy reset function into the init phase and test the
+resetting flag in register accesses.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/arm/xilinx_zynq.c           | 14 ++++++++------
- include/hw/char/cadence_uart.h | 10 +++++++++-
- 2 files changed, 17 insertions(+), 7 deletions(-)
+ hw/misc/zynq_slcr.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index b3b8215759..528d1c42fd 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -166,7 +166,7 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *address_space_mem =3D get_system_memory();
-     MemoryRegion *ext_ram =3D g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram =3D g_new(MemoryRegion, 1);
--    DeviceState *dev;
-+    DeviceState *dev, *slcr;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
-     int n;
-@@ -211,9 +211,9 @@ static void zynq_init(MachineState *machine)
-                           1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2=
-aa,
-                           0);
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index baa13d1316..47f43e1d8d 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -180,9 +180,9 @@ typedef struct ZynqSLCRState {
+     uint32_t regs[ZYNQ_SLCR_NUM_REGS];
+ } ZynqSLCRState;
 =20
--    dev =3D qdev_create(NULL, "xilinx,zynq_slcr");
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8000000);
-+    slcr =3D qdev_create(NULL, "xilinx,zynq_slcr");
-+    qdev_init_nofail(slcr);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
-=20
-     dev =3D qdev_create(NULL, TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", 1);
-@@ -234,8 +234,10 @@ static void zynq_init(MachineState *machine)
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFSET])=
-;
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFSET])=
-;
-=20
--    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
--    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-+    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0),
-+                        slcr, "uart0-rst", 0);
-+    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1),
-+                        slcr, "uart1-rst", 0);
-=20
-     sysbus_create_varargs("cadence_ttc", 0xF8001000,
-             pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], =
-NULL);
-diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uar=
-t.h
-index 118e3f10de..b7489a711f 100644
---- a/include/hw/char/cadence_uart.h
-+++ b/include/hw/char/cadence_uart.h
-@@ -51,7 +51,10 @@ typedef struct {
-=20
- static inline DeviceState *cadence_uart_create(hwaddr addr,
-                                         qemu_irq irq,
--                                        Chardev *chr)
-+                                        Chardev *chr,
-+                                        DeviceState *rst_dev,
-+                                        const char *rst_name,
-+                                        int rst_n)
+-static void zynq_slcr_reset(DeviceState *d)
++static void zynq_slcr_reset_init(Object *obj, bool cold)
  {
-     DeviceState *dev;
-     SysBusDevice *s;
-@@ -63,6 +66,11 @@ static inline DeviceState *cadence_uart_create(hwaddr =
-addr,
-     sysbus_mmio_map(s, 0, addr);
-     sysbus_connect_irq(s, 0, irq);
+-    ZynqSLCRState *s =3D ZYNQ_SLCR(d);
++    ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
+     int i;
 =20
-+    if (rst_dev) {
-+        qdev_connect_gpio_out_named(rst_dev, rst_name, rst_n,
-+                qdev_get_gpio_in_named(dev, "rst", 0));
+     DB_PRINT("RESET\n");
+@@ -346,6 +346,10 @@ static uint64_t zynq_slcr_read(void *opaque, hwaddr =
+offset,
+     offset /=3D 4;
+     uint32_t ret =3D s->regs[offset];
+=20
++    if (qdev_is_resetting((DeviceState *) opaque)) {
++        return 0;
 +    }
 +
-     return dev;
+     if (!zynq_slcr_check_offset(offset, true)) {
+         qemu_log_mask(LOG_GUEST_ERROR, "zynq_slcr: Invalid read access t=
+o "
+                       " addr %" HWADDR_PRIx "\n", offset * 4);
+@@ -361,6 +365,10 @@ static void zynq_slcr_write(void *opaque, hwaddr off=
+set,
+     ZynqSLCRState *s =3D (ZynqSLCRState *)opaque;
+     offset /=3D 4;
+=20
++    if (qdev_is_resetting((DeviceState *) opaque)) {
++        return;
++    }
++
+     DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx64 "\n", offset * =
+4, val);
+=20
+     if (!zynq_slcr_check_offset(offset, false)) {
+@@ -441,7 +449,7 @@ static void zynq_slcr_class_init(ObjectClass *klass, =
+void *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
+     dc->vmsd =3D &vmstate_zynq_slcr;
+-    dc->reset =3D zynq_slcr_reset;
++    dc->reset_phases.init =3D zynq_slcr_reset_init;
  }
 =20
+ static const TypeInfo zynq_slcr_info =3D {
 --=20
 2.21.0
 

@@ -1,106 +1,106 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3711228wrx;
-        Mon, 25 Mar 2019 04:02:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy6c2fmxuMv0DwCpaK2FLeBMvrTclluJtwdffPOrNh97gQu23WucRxkSLrkvXsddafpXpBC
-X-Received: by 2002:a25:d3c3:: with SMTP id e186mr19125623ybf.493.1553511772839;
-        Mon, 25 Mar 2019 04:02:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553511772; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3711335wrx;
+        Mon, 25 Mar 2019 04:02:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyIujoWJAbSlNNG/iwhpoekU8rho+X+T2wxs9LTjGUGQemSxSYQBgfnD/Z0aI29pBRXmu3n
+X-Received: by 2002:a0d:ee42:: with SMTP id x63mr18718417ywe.97.1553511776921;
+        Mon, 25 Mar 2019 04:02:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553511776; cv=none;
         d=google.com; s=arc-20160816;
-        b=FVIDha3lG+hQq/+HqCoJjj7HT8+EB8UnNfgG5qLx54Spu26g07Dm5mJGWJtQYOckzk
-         1kR9B6GLGZHFBa2c7erToc65EJIoZ3Am5RHVYqnaUiWpeOkghQsYonOXlGWSwVDPVWKF
-         EnHWUWFrL7YcS6LBKq2W3saIElM3MZ2UV+X7ZFs9HtBtPjyH/u69isWGOoAYTjr0DZZK
-         PqjwKSWl01hraChBpLOAMloxdy1AgYlfD/KXiqzRtM+KlxtGEKT51C0mQnAWCv6BP6SL
-         INRUPAABTEaZ2w5FatydR6de452tawp6dXdvP+1rXO1Ul0ta54bIi0KMVN753jaC7Ebj
-         rM3A==
+        b=H9U6y7ioR5YmQzLarhQ2VIcJxhXW+jiTIwCL4/p50YCWoXOd9UX80FPJSBdCf2IZz6
+         bJnO449LZulSyrdyNXM47T/9NCzbkIQ/KIOUu76ImEd9CnkNxBszj46eFCeJUiqHnZx4
+         RCAGLZj2pLdehudDvowWt10BTWCJ1VY15ErbdmvnSkm6giq5MefopShfsOS9/1PHzGCl
+         GasAOTyTde1Im3EYasuTmGpRH9X1cKCZzleTEYR/z+lu1Un+mpbsat3gvORR9uXUZ/iV
+         ZJL6nlx69+jahnONuBosbNwbLOmD/Y0weFmC63gATQRibLMkXPH6S8nb34K5PNFwYfKF
+         BClw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=u+3hNPCLda0UyQLHCWI204OoHeYfrp4M3Nw5g2TEBWk=;
-        b=Z+yrOyoTvfrdaTpPUAccPpoT+1H91AwCvGkMPsn/BjXqcJa+0ovws7lhocWhhk64jT
-         LceUCzDCuipOM+7GmQ0LnFfOe5iV0M/wpfzxoFDessVf+LYHXayzU5EXicRTDkFBjp5Y
-         A785kGhuLYM3cxlz/NK0Ix5prSTf4L6tXORmHcmO4eRiZ3Ai5T5DoPEbqfI2XRfF6ZAK
-         y4EeXKwxS9bVaxN1yDOyhJml+WLzUzyex698VHFMKEOt94GlaBvaoxrD+ss1eZk2zxEh
-         VCLvre7dUf5oN2gnjDLmEhDyyXaKU4M02mdje3yZvzYX15c2mE7vNpg1URV14lPZu15r
-         By2A==
+        bh=ZxHHbSrrbfIasdrTBpe+svxOvfr9WVzbiYdx5JJjRlo=;
+        b=w0/c6jhzzCFluZrJpmYp3PopoosgDXo51HVd/RFgbGXq69s17wLQEJIVgSvS5i8ZuZ
+         8608GF9Vs1FUw37C6FwRpG7oTG4PCHyQaH9Vp5tn9kBL6kga8QpD28Mg55MMigpkP1iJ
+         2g8YEAIwI/Z4XW+zAmLV+MHqIC/EblRPkxipLz+TVVL7zTsxonhwAxLX+1G5uIsW/xkb
+         S+YDbx/QfBv9JuG4NNMsE497jswSAQWwpoqU2ICKJDhAA+O30Cb3dFVKpDCxX9wWQ4JR
+         NB+oAYYYkue7p9CLkuknBE3OAmcRMiIZ1DJmt7UjAOIbFeC7zkhXWfZ5uf6bFbVFKQM/
+         maqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DuvN68Z0;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=agz82TQJ;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=agz82TQJ;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=slS6NgWU;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LYUcHioC;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LYUcHioC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si9312328ywd.144.2019.03.25.04.02.52
+        by mx.google.com with ESMTPS id h81si9073811ywh.365.2019.03.25.04.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Mar 2019 04:02:52 -0700 (PDT)
+        Mon, 25 Mar 2019 04:02:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DuvN68Z0;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=agz82TQJ;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=agz82TQJ;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=slS6NgWU;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LYUcHioC;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LYUcHioC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40451 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40456 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8NNU-00057F-A1
-	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:02:52 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58423)
+	id 1h8NNY-00057l-Ai
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:02:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NN9-00056l-TB
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:33 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNA-00056n-Di
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NN8-0007o4-8o
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:31 -0400
-Received: from greensocs.com ([193.104.36.180]:38251)
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NN8-0007oh-LI
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:32 -0400
+Received: from greensocs.com ([193.104.36.180]:38284)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <damien.hedde@greensocs.com>)
-	id 1h8NN7-0007kz-Jw; Mon, 25 Mar 2019 07:02:30 -0400
+	id 1h8NN7-0007m6-Li; Mon, 25 Mar 2019 07:02:30 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 5A6F47D78B3;
-	Mon, 25 Mar 2019 12:02:23 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id B47057D78B4;
+	Mon, 25 Mar 2019 12:02:25 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511743;
-	bh=cBDNrVqzCnOtTlIzkEFIk84dWfLcrkL6ZiPFit50ywU=;
+	s=mail; t=1553511745;
+	bh=4rCBKop/jhXKENgGNrYN0iCn8CMt31D2QPxCOMlalak=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=DuvN68Z0OY3tL9kAAMfiBo2WiFvMxtVYKDyIcQH3TREqDZ9XQs4FsEgGJen0/p57q
-	EQ0GEKYLt+r9wR3LhD7d38g7bRvaHmmKHgaMvbOFfTdRHkOEKCWUaOQAddzzSYuPbM
-	Qj0ImtB9cd+m4RDKUsTaBkhPw+4r3W/RmW2Kwxg8=
+	b=slS6NgWUCZecq97yYoG0EeyD5xJZYL2kyKrzI3BjXpIWxygPSJV9QISwIPtAoHwuz
+	s2+N2tsRk8/I4DGw/BdxfxcLQyqj6bgh9M6E+1XGvcd9d1Qi8KpaVdxmZzhQ6PTyiO
+	n73XxZ+HcFw+Df2zXRuDqVaYo/RTEORmgzLrnv34=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=agz82TQJ;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=agz82TQJ
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=LYUcHioC;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=LYUcHioC
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y6NtFbmKbgHQ; Mon, 25 Mar 2019 12:02:22 +0100 (CET)
+	with ESMTP id UMkDFMeDCjJm; Mon, 25 Mar 2019 12:02:24 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 612377D788E; Mon, 25 Mar 2019 12:02:21 +0100 (CET)
+	id 6FD0E7D78A5; Mon, 25 Mar 2019 12:02:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511741;
-	bh=cBDNrVqzCnOtTlIzkEFIk84dWfLcrkL6ZiPFit50ywU=;
+	s=mail; t=1553511742;
+	bh=4rCBKop/jhXKENgGNrYN0iCn8CMt31D2QPxCOMlalak=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=agz82TQJJzW0VqXNBnQTRbch5BntogXBurtTTH79j9LxOHny78kCqT8ptyla47RoX
-	k8USRz3XisL3w4dDaW0gATWUWRB/IT4bR/PkQRkCYZw1fztMwm0b0o+4rnNIaJoI1z
-	k2SGamHA4cWagVwK/2uCSEx0W9Tdcf3RpBYnd9DI=
+	b=LYUcHioC3epGowhEusABOmhAfvGtmgO0L4yu3RDPuUJSqdl15NEbFg+kZ/oNz48eO
+	IaWqSosIkmy2O/3aquqvs4Y+2yQ8qcSPQc/AVEgOvovioWEivNy1Sgw24wLLCNkhvw
+	HoX0vrVC/ZkqE+D+3iZMiHsK+tCWkAyRdycL1lGg=
 Received: from kouign-amann.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id E63377D7887;
-	Mon, 25 Mar 2019 12:02:20 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id E19647D7887;
+	Mon, 25 Mar 2019 12:02:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511741;
-	bh=cBDNrVqzCnOtTlIzkEFIk84dWfLcrkL6ZiPFit50ywU=;
+	s=mail; t=1553511742;
+	bh=4rCBKop/jhXKENgGNrYN0iCn8CMt31D2QPxCOMlalak=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=agz82TQJJzW0VqXNBnQTRbch5BntogXBurtTTH79j9LxOHny78kCqT8ptyla47RoX
-	k8USRz3XisL3w4dDaW0gATWUWRB/IT4bR/PkQRkCYZw1fztMwm0b0o+4rnNIaJoI1z
-	k2SGamHA4cWagVwK/2uCSEx0W9Tdcf3RpBYnd9DI=
+	b=LYUcHioC3epGowhEusABOmhAfvGtmgO0L4yu3RDPuUJSqdl15NEbFg+kZ/oNz48eO
+	IaWqSosIkmy2O/3aquqvs4Y+2yQ8qcSPQc/AVEgOvovioWEivNy1Sgw24wLLCNkhvw
+	HoX0vrVC/ZkqE+D+3iZMiHsK+tCWkAyRdycL1lGg=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 25 Mar 2019 12:01:45 +0100
-Message-Id: <60e1f016cfd490b733aa649bbdc8723cdd1fd6b1.1553510737.git.damien.hedde@greensocs.com>
+Date: Mon, 25 Mar 2019 12:01:47 +0100
+Message-Id: <bc73ff96bc52397d1992f6f1b67fa8c71382264f.1553510737.git.damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
 References: <cover.1553510737.git.damien.hedde@greensocs.com>
@@ -108,7 +108,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [RFC PATCH 02/17] Create the ResetDomain QOM object
+Subject: [Qemu-arm] [RFC PATCH 04/17] Add local reset methods in Device class
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,225 +127,162 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	pbonzini@redhat.com, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QEdEI4XMwqj9
+X-TUID: j+/D1GKnlcII
 
-ResetDomain is an object implementing the Resettable interface.
-It is a container of several other Resettable and therefore allows to con=
-trol
-reset operation over a group of Resettable.
+Add 3 methods in device class corresponding to the local part of
+the 3-phases reset. This allows specialization classes not to care
+about the ressetting counter and sub-buses. The exit phase method
+is called only if resetting counter hits 0.
 
-Addition and removal in a ResetDomain is done using the functions
-*reset_domain_register_object* and *reset_domain_unregister_object*
+Also, these methods are called in `device_reset`. Specializations can swi=
+tch
+from the single-phase reset to the 3-phases reset with no effects on the
+`device_reset` behavior.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/core/Makefile.objs     |   1 +
- hw/core/reset-domain.c    | 121 ++++++++++++++++++++++++++++++++++++++
- include/hw/reset-domain.h |  49 +++++++++++++++
- 3 files changed, 171 insertions(+)
- create mode 100644 hw/core/reset-domain.c
- create mode 100644 include/hw/reset-domain.h
+ hw/core/qdev.c         | 44 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/qdev-core.h | 17 ++++++++++++++++
+ 2 files changed, 61 insertions(+)
 
-diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index 97007454a8..320f71707c 100644
---- a/hw/core/Makefile.objs
-+++ b/hw/core/Makefile.objs
-@@ -2,6 +2,7 @@
- common-obj-y +=3D qdev.o qdev-properties.o
- common-obj-y +=3D bus.o reset.o
- common-obj-y +=3D resettable.o
-+common-obj-y +=3D reset-domain.o
- common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
- common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
- # irq.o needed for qdev GPIO handling:
-diff --git a/hw/core/reset-domain.c b/hw/core/reset-domain.c
-new file mode 100644
-index 0000000000..b701eb5bdd
---- /dev/null
-+++ b/hw/core/reset-domain.c
-@@ -0,0 +1,121 @@
-+/*
-+ * Reset Domain object.
-+ *
-+ * Copyright (c) 2019 GreenSocs
-+ *
-+ * Authors:
-+ *   Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 98d173f34f..884a49efa4 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -280,21 +280,30 @@ static void device_reset_init_phase(Object *obj, bo=
+ol cold)
+     if (dc->reset) {
+         dc->reset(dev);
+     }
++    if (dc->reset_phases.init) {
++        dc->reset_phases.init(OBJECT(dev), cold);
++    }
+ }
+=20
+ static void device_reset_hold_phase(Object *obj)
+ {
+     DeviceState *dev =3D DEVICE(obj);
++    DeviceClass *dc =3D DEVICE_GET_CLASS(obj);
+     BusState *child;
+=20
+     QLIST_FOREACH(child, &dev->child_bus, sibling) {
+         resettable_hold_phase(OBJECT(child));
+     }
 +
-+#include "qemu/osdep.h"
-+#include "qemu/module.h"
-+#include "hw/reset-domain.h"
++    if (dc->reset_phases.hold) {
++        dc->reset_phases.hold(OBJECT(dev));
++    }
+ }
+=20
+ static void device_reset_exit_phase(Object *obj)
+ {
+     DeviceState *dev =3D DEVICE(obj);
++    DeviceClass *dc =3D DEVICE_GET_CLASS(obj);
+     BusState *child;
+=20
+     QLIST_FOREACH(child, &dev->child_bus, sibling) {
+@@ -303,6 +312,12 @@ static void device_reset_exit_phase(Object *obj)
+=20
+     assert(dev->resetting > 0);
+     dev->resetting -=3D 1;
 +
-+void reset_domain_register_object(ResetDomain *domain, Object *obj)
-+{
-+    struct ResetDomainEntry *rde;
-+
-+    INTERFACE_CHECK(ResettableClass, obj, TYPE_RESETTABLE);
-+
-+    rde =3D g_malloc0(sizeof(*rde));
-+    rde->obj =3D obj;
-+    object_ref(obj);
-+    QLIST_INSERT_HEAD(&domain->members, rde, node);
-+}
-+
-+void reset_domain_unregister_object(ResetDomain *domain, Object *obj)
-+{
-+    struct ResetDomainEntry *rde;
-+
-+    INTERFACE_CHECK(ResettableClass, obj, TYPE_RESETTABLE);
-+
-+    QLIST_FOREACH(rde, &domain->members, node) {
-+        if (rde->obj =3D=3D obj) {
-+            QLIST_REMOVE(rde, node);
-+            object_unref(rde->obj);
-+            g_free(rde);
-+            return;
++    if (dev->resetting =3D=3D 0) {
++        if (dc->reset_phases.exit) {
++            dc->reset_phases.exit(OBJECT(dev));
 +        }
 +    }
-+}
-+
-+static void reset_domain_init_phase(Object *obj, bool cold)
+ }
+=20
+ static int qdev_reset_one(DeviceState *dev, void *opaque)
+@@ -1143,6 +1158,24 @@ void device_class_set_parent_unrealize(DeviceClass=
+ *dc,
+     dc->unrealize =3D dev_unrealize;
+ }
+=20
++void device_class_set_parent_reset_phases(DeviceClass *dc,
++                                   ResettableInitPhase dev_reset_init,
++                                   ResettableHoldPhase dev_reset_hold,
++                                   ResettableExitPhase dev_reset_exit,
++                                   ResettablePhases *parent_phases)
 +{
-+    struct ResetDomainEntry *rde;
-+    ResetDomain *domain =3D RESET_DOMAIN(obj);
-+
-+    QLIST_FOREACH(rde, &domain->members, node) {
-+        resettable_init_phase(rde->obj, cold);
++    *parent_phases =3D dc->reset_phases;
++    if (dev_reset_init) {
++        dc->reset_phases.init =3D dev_reset_init;
++    }
++    if (dev_reset_hold) {
++        dc->reset_phases.hold =3D dev_reset_hold;
++    }
++    if (dev_reset_exit) {
++        dc->reset_phases.exit =3D dev_reset_exit;
 +    }
 +}
 +
-+static void reset_domain_hold_phase(Object *obj)
-+{
-+    struct ResetDomainEntry *rde;
-+    ResetDomain *domain =3D RESET_DOMAIN(obj);
-+
-+    QLIST_FOREACH(rde, &domain->members, node) {
-+        resettable_hold_phase(rde->obj);
+ void device_reset(DeviceState *dev)
+ {
+     DeviceClass *klass =3D DEVICE_GET_CLASS(dev);
+@@ -1150,6 +1183,17 @@ void device_reset(DeviceState *dev)
+     if (klass->reset) {
+         klass->reset(dev);
+     }
++    dev->resetting +=3D 1;
++    if (klass->reset_phases.init) {
++        klass->reset_phases.init(OBJECT(dev), false);
 +    }
-+}
-+
-+static void reset_domain_exit_phase(Object *obj)
-+{
-+    struct ResetDomainEntry *rde;
-+    ResetDomain *domain =3D RESET_DOMAIN(obj);
-+
-+    QLIST_FOREACH(rde, &domain->members, node) {
-+        resettable_exit_phase(rde->obj);
++    if (klass->reset_phases.hold) {
++        klass->reset_phases.hold(OBJECT(dev));
 +    }
-+}
-+
-+static void reset_domain_init(Object *obj)
-+{
-+    ResetDomain *domain =3D RESET_DOMAIN(obj);
-+
-+    QLIST_INIT(&domain->members);
-+}
-+
-+static void reset_domain_finalize(Object *obj)
-+{
-+    ResetDomain *domain =3D RESET_DOMAIN(obj);
-+    struct ResetDomainEntry *rde, *nrde;
-+
-+    QLIST_FOREACH_SAFE(rde, &domain->members, node, nrde) {
-+        QLIST_REMOVE(rde, node);
-+        object_unref(rde->obj);
-+        g_free(rde);
++    dev->resetting -=3D 1;
++    if (klass->reset_phases.exit) {
++        klass->reset_phases.exit(OBJECT(dev));
 +    }
-+}
-+
-+static void reset_domain_class_init(ObjectClass *class, void *data)
-+{
-+    ResettableClass *rc =3D RESETTABLE_CLASS(class);
-+
-+    rc->phases.init =3D reset_domain_init_phase;
-+    rc->phases.hold =3D reset_domain_hold_phase;
-+    rc->phases.exit =3D reset_domain_exit_phase;
-+}
-+
-+static const TypeInfo reset_domain_type_info =3D {
-+    .name =3D TYPE_RESET_DOMAIN,
-+    .parent =3D TYPE_OBJECT,
-+    .instance_size =3D sizeof(ResetDomain),
-+    .instance_init =3D reset_domain_init,
-+    .instance_finalize =3D reset_domain_finalize,
-+    .class_init =3D reset_domain_class_init,
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { TYPE_RESETTABLE },
-+        { }
-+    },
-+};
-+
-+static void reset_register_types(void)
-+{
-+    type_register_static(&reset_domain_type_info);
-+}
-+
-+type_init(reset_register_types)
-diff --git a/include/hw/reset-domain.h b/include/hw/reset-domain.h
-new file mode 100644
-index 0000000000..03b3a981de
---- /dev/null
-+++ b/include/hw/reset-domain.h
-@@ -0,0 +1,49 @@
-+#ifndef HW_RESET_DOMAIN_H
-+#define HW_RESET_DOMAIN_H
-+
-+#include "resettable.h"
-+#include "qemu/queue.h"
-+
-+#define TYPE_RESET_DOMAIN "reset-domain"
-+
-+#define RESET_DOMAIN(obj) OBJECT_CHECK(ResetDomain, (obj), TYPE_RESET_DO=
-MAIN)
-+
+ }
+=20
+ Object *qdev_get_machine(void)
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index f4aa8dbaa2..0ef4d6c920 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -6,6 +6,7 @@
+ #include "qom/object.h"
+ #include "hw/irq.h"
+ #include "hw/hotplug.h"
++#include "hw/resettable.h"
+=20
+ enum {
+     DEV_NVECTORS_UNSPECIFIED =3D -1,
+@@ -110,6 +111,7 @@ typedef struct DeviceClass {
+     DeviceReset reset;
+     DeviceRealize realize;
+     DeviceUnrealize unrealize;
++    ResettablePhases reset_phases;
+=20
+     /* device state */
+     const struct VMStateDescription *vmsd;
+@@ -455,6 +457,21 @@ void device_class_set_parent_unrealize(DeviceClass *=
+dc,
+                                        DeviceUnrealize dev_unrealize,
+                                        DeviceUnrealize *parent_unrealize=
+);
+=20
 +/**
-+ * ResetDomainClass:
-+ * A ResetDomain holds several Resettable objects and implement the Rese=
-ttable
-+ * interface too.
-+ * Doing a reset on it will also reset all objects it contained. Phases =
-of
-+ * every object will be executed in order: init_reset of all objects fir=
-st, etc.
++ * @device_class_set_parent_reset_phases:
++ *
++ * Save @dc current reset phases into @parent_phases and override @dc ph=
+ases
++ * by the given new methods (@dev_reset_init, @dev_reset_hold and
++ * @dev_reset_exit).
++ * Each phase is overriden only if the new one is not NULL allowing to
++ * override a subset of phases.
 + */
-+typedef ObjectClass ResetDomainClass;
++void device_class_set_parent_reset_phases(DeviceClass *dc,
++                                   ResettableInitPhase dev_reset_init,
++                                   ResettableHoldPhase dev_reset_hold,
++                                   ResettableExitPhase dev_reset_exit,
++                                   ResettablePhases *parent_phases);
 +
-+/**
-+ * ResetDomain:
-+ * @members is a list of ResetDomainEntry. Every entry hold a pointer to=
- a
-+ * Resettable object.
-+ * To avoid object to disapear while in the ResetDomain, the ResetDomain
-+ * increases the refcount.
-+ */
-+struct ResetDomainEntry {
-+    Object *obj;
-+    QLIST_ENTRY(ResetDomainEntry) node;
-+};
-+typedef struct ResetDomain {
-+    Object parent_obj;
-+
-+    QLIST_HEAD(, ResetDomainEntry) members;
-+} ResetDomain;
-+
-+/**
-+ * reset_domain_register_objet:
-+ * Register the Resettable object @obj into a ResetDomain @domain.
-+ */
-+void reset_domain_register_object(ResetDomain *domain, Object *obj);
-+
-+/**
-+ * reset_domain_unregister_objet:
-+ * Unregister the Resettable object @obj into a ResetDomain @domain.
-+ */
-+void reset_domain_unregister_object(ResetDomain *domain, Object *obj);
-+
-+#endif
+ const struct VMStateDescription *qdev_get_vmsd(DeviceState *dev);
+=20
+ const char *qdev_fw_name(DeviceState *dev);
 --=20
 2.21.0
 

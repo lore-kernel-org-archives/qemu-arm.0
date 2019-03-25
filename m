@@ -1,73 +1,104 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3903748wrx;
-        Mon, 25 Mar 2019 07:07:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQaw3uyfvDdF/LCoJd2GtbU2eKtOlGvyI4JVybGn93UbWKcufK0cHEh9Wgq+sswqSz5/LI
-X-Received: by 2002:a37:4f04:: with SMTP id d4mr994571qkb.38.1553522864861;
-        Mon, 25 Mar 2019 07:07:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553522864; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3905273wrx;
+        Mon, 25 Mar 2019 07:09:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzSSS8doZTFS+p+MwFSxn/A5w0Wq+xlRtY/Woz0sHmoj6p2zEBVZqrnh1RmHG8neZkdbaZS
+X-Received: by 2002:a81:3a57:: with SMTP id h84mr20558994ywa.284.1553522943164;
+        Mon, 25 Mar 2019 07:09:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553522943; cv=none;
         d=google.com; s=arc-20160816;
-        b=cxCJpUDrcxu85OYCfzZKDmhnukz4c2VANy2P17iwcOaT163yCjtPHxpr923AnoFzXU
-         gZrPS6kzQK9vSriuEo2fr0UY/O8+Tr7Xbqi7fuGHwNJ9jyc35bkd3WN5P6zy7L7d5veT
-         lB8iXDgaeeyrFkQQiVJAFunFrLXSh+dogCOefmjoqmHav+vemSX/TFLGo6ubhlF2DVzf
-         xnyK/5brqnfB9l32jLgJeAIFCEjvz48k1jBLDQkmO2X5QZw2S+0XNOfSAbWWnJV5mgBR
-         gUShZB2QagTOMjBZoNF/XeNxPt9kVIXJFqRG6EhqsrNh7UPfN6OBGpMgZwCYDwMygFe4
-         bT9Q==
+        b=NJGROXOT87LnZCnT2k47ohbIKfRCZ01j8nPSsLQ9UAyj8xcKOXCoYDMDP0IbXG1IKf
+         5XwxnESpukm7LR0oIOUo6ExdBqOpTbU1mKvkWmIG9SrDoNlKyiS+3WfLv2ppzfTk9WxQ
+         CX1oQiDLfJWfE6aLwNTdMgfZDxsTYDJgylwKDt0pyh0GLOJy18IlrhoArSIMVCc4Xbb2
+         AL55BDbRE/vKY6s8KfeaY60VWJQ0ryVgb0QwiZm1PBULfYLsC4UJlR2LBcdWAELrcG1F
+         94XRdLg1FMrtyLP/Cu285xNI3nA8gzSXaaG70vqc3Wq3hI/GoNPuoZ7VoORkCvjFQ/uC
+         A0yQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=YEo+rYYaNqMslSIcXczWUMzIQsmf7Pzqa1kKD8t6grA=;
-        b=z9fAs1f+vQv4p1xbtUz99crSU9/pNkX9yrlrWc6w7nMU+6BNcEdg9kfP8l3umIK5UE
-         x9pP3MnDGmmKKPe4MGdRCURBlK/oMk2AGKP46R064BqT8dcMrO8NUwgOTgT3v52hGLRw
-         fsavaz5BX5ew0PoYZVVvyh1GELZ10d9hEZ3vNVGP0lT1GgZsjKlVm7AZjsXiplaU8+IJ
-         2hDGc9ebemWvw42RFaF4TWEjNS1mJ8z0n8VnQjCRq3CrQZt0g1ed85z5lNtA1waOaLGG
-         4VS9P8pN6EVDkEIDu9vOpzDokEowQFtYlSSJGSp9wwQp4ABfxl1fxeGujMczgpF0EYDV
-         12dQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=xoPB6reVlEiQ7m1rcJOyiXiPhgO3VGLJ+KFXPvFACkQ=;
+        b=WQUHB7NrccE2i2YW+ipH7cNBxlvbpi6nezRBk+XGjl3xQXhiVVwhGmxVjpBmf26WY5
+         0XPqytqYfTitK6TljqhB7MrJKsVRHhW4AdI+n8vTYvaYWsycBX4GOzn1agF+CrV05oGa
+         0pB5oa1uc13aYYFZDfaFTqLndoMSyglQFdFd54bxx+0/ZpKiwxSLltVq/zDHgy0wvr7N
+         30rNWoICr+NlhVuQ9tuSTxHKxbxDIy0in227DokkqOlT05ePQavda5h+8s802ipr1N/U
+         okzfDja0YxKgzURJ9Vf0tzdtQh32F8p875HwMKGXcPmJNFiiEUJkOgMA+KHJAwfkL/lO
+         UTbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <lersek@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id j1si1415934qkl.174.2019.03.25.07.07.44
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Mar 2019 07:07:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i75si9326800ybg.342.2019.03.25.07.09.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 25 Mar 2019 07:09:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B3A348764B;
-	Mon, 25 Mar 2019 14:07:43 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-188.rdu2.redhat.com [10.10.120.188])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F0A671001E69;
-	Mon, 25 Mar 2019 14:07:31 +0000 (UTC)
-Subject: Re: [RFC PATCH] hw/arm/virt: use variable size of flash device to
- save memory
-To: Peter Maydell <peter.maydell@linaro.org>,
- Xiang Zheng <zhengxiang9@huawei.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- wanghaibin.wang@huawei.com, Heyi Guo <guoheyi@huawei.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:43094 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h8QHe-0006GO-Lc
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 10:09:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37359)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <zhengxiang9@huawei.com>) id 1h8QCZ-0002hb-Uv
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 10:03:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <zhengxiang9@huawei.com>) id 1h8QCW-0005nX-Mj
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 10:03:45 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:46908 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+	id 1h8QCW-0005mt-A1; Mon, 25 Mar 2019 10:03:44 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id CC49FB4FD67F49CCCFB4;
+	Mon, 25 Mar 2019 22:03:39 +0800 (CST)
+Received: from [127.0.0.1] (10.177.29.32) by DGGEMS403-HUB.china.huawei.com
+	(10.3.19.203) with Microsoft SMTP Server id 14.3.408.0; Mon, 25 Mar 2019
+	22:03:30 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190325125142.11628-1-zhengxiang9@huawei.com>
- <CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <c3222303-4a88-c53d-e027-c534098cfe37@redhat.com>
-Date: Mon, 25 Mar 2019 15:07:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+	<CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
+From: Zheng Xiang <zhengxiang9@huawei.com>
+Message-ID: <19929558-9f2d-148a-4357-d48b46f8b62b@huawei.com>
+Date: Mon, 25 Mar 2019 22:03:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+	Thunderbird/64.0
 MIME-Version: 1.0
 In-Reply-To: <CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Mon, 25 Mar 2019 14:07:44 +0000 (UTC)
-X-TUID: SRItmg5Ze9D+
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.35
+Subject: Re: [Qemu-arm] [RFC PATCH] hw/arm/virt: use variable size of flash
+ device to save memory
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Heyi Guo <guoheyi@huawei.com>,
+	wanghaibin.wang@huawei.com, Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vsvA8n042yJ8
 
-On 03/25/19 14:11, Peter Maydell wrote:
+Hi Peter,
+
+Thanks for your reply!
+
+On 2019/3/25 21:11, Peter Maydell wrote:
 > On Mon, 25 Mar 2019 at 12:53, Xiang Zheng <zhengxiang9@huawei.com> wrote:
 >>
 >> Currently we fill the VIRT_FLASH space with two 64MB NOR images when
@@ -90,27 +121,7 @@ On 03/25/19 14:11, Peter Maydell wrote:
 > I don't think we should do this. The board should in general
 > create the same hardware visible to the guest, not change
 > it based on subtle things like the size of the image files.
-
-I consider this question/behavior board-specific.
-
-For the "virt" board, I agree with you (Peter), simply because that's
-how the "virt" board has always worked.
-
-(See also the tangentially related series
-
-  [Qemu-devel] [PATCH v8 0/2]
-  pflash: Require backend size to match device, improve errors
-
-at
-
-  http://mid.mail-archive.com/20190319163551.32499-1-armbru@redhat.com
-
-. This series still lets each board decide the question for itself, but
-it improves error detection and reporting.)
-
-Thanks,
-Laszlo
-
+> 
 > The reason why the flash images must be 64MB in size
 > when using -pflash is that they are the backing store
 > for a writable device. Suppose you have 1MB of data in your
@@ -120,6 +131,18 @@ Laszlo
 > stored somewhere, so the file has to be large enough
 > to cover the whole of the flash area.
 > 
-> thanks
-> -- PMM
-> 
+
+Is there any way to support config or limit the size that both
+guest and QEMU are visible?
+
+The original QEMU_EFI.fd has only 2M, but we need to stuff it
+to 64M with 62M unused data. It will consume a large amount of
+memory when running multiple VM simultaneously.
+
+
+-- 
+
+Thanks,
+Xiang
+
+

@@ -1,106 +1,106 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3711787wrx;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3711801wrx;
         Mon, 25 Mar 2019 04:03:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwHktcpDTayR1/ubvSoDXw/ZyeWwfczyYVzkJx5028SPkVtvc8roEtn2/HpTs99l1k4CbKk
-X-Received: by 2002:a5b:4d0:: with SMTP id u16mr20791450ybp.46.1553511800258;
+X-Google-Smtp-Source: APXvYqxya8kYw+zbdWm3VnFtlNPjYO7D9/I0+7bo8tasYWQ+d0DUMfHQJ55hAOQjOdyrumtga2fC
+X-Received: by 2002:a0d:cc12:: with SMTP id o18mr21359734ywd.501.1553511800563;
         Mon, 25 Mar 2019 04:03:20 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1553511800; cv=none;
         d=google.com; s=arc-20160816;
-        b=sh5xo+7Pj43phlp9c++5JM2Efp3TYESqJ8vAbWJupXoC6UlgBBUI6ioIzcMi+t8KJp
-         mC8RTY9AmwIe3n5PBwUWUnxRpDWNXyzY+oBlA0j/De8ihSYgF1bro8IMDuvms0/87+HT
-         Ab+tzC94uluL8G90ryKylBwffBGyh0z6mU72ewDlWn5VGu3G77er3jm8DdDHaatEiWcF
-         2qsdGxawqReN9RSqa1UM2NBWzXy9Mo0yFthi8x3FpbaRZVZEZsqa/FqMqO6iYFYto21Z
-         QTkUK/8Qk0+jlCqOTCqvmaOq88VSfoRYaCU+LUtQhcfvnXf9JIlWLrk8R25tZLohQjxP
-         Elyw==
+        b=BEdp6c6gQqCXB0aE6hZ1g37Hj9ArCIMkpnM+hGQv3lpCL/Z4Yramf9qTf519rQRN0s
+         n28YiVe3fzxdmqXooLtyi26yamK8dtkSg6Yq0ocd0jb422J8wm9IckdlzsejW22UMxVy
+         C1qAWM6cAhMBU6v0Cpo6daqLF4DvsHCXcyAlRQQvQ7klbhBvVeiT18z9jiJPaSz8OKYl
+         cuS3MtlL7y1ahVtSsGBymw19NF6acD5ALyTRfkn4PUBjIjuk2W4NF3HEwIFvkGDMN3qW
+         3Q48uNIZkj6X4rAJ42prGuN8zRnvOtBuRZdI4uKW7AKlM7zzJ4VVSWZ20YtD/tOTFqvK
+         AkSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=xypXkmKUTcoj8eunK5Csi1oTnKQELQ+anH6j7mBdpI4=;
-        b=CwIGrJeDbBNo3Eje3SSSK2ixV8asEXB8wozazjRzKaPNBBwHfmeOuUAPIiFim52O/U
-         nZEw8794bWeWn/DtpRy/GJx/dq/wGLy55aTVK4VoptazSVNtdRxlpS2KWdrUtY4PWKuK
-         ByLVpO4v3UcxVRzYslv3dZdjW3TDtXTSeVRYRAVkE49Jdd4cZDnuzXe4y/ZqDa0fH9fs
-         0dFifMTnUWS1Qk/J0Lr7CY/CGt9Os60Nv4gcI57bj/2v6Nb/DtVm0LGD4kyC/ae6Bvqf
-         GRrtHMwktT5/KxmKT3T/RytlPGgNd/2eTjKO8jCvV2BcwlMAdeARn0/yilb0oP6VJ3E9
-         g9Lw==
+        bh=853HdfIoSb6sP8Lgbl4GIKWbQlsVPuTiBEQFz7vwjno=;
+        b=DGNO+1bkGm90wQXkSbWMwy9GhL7k0/9gUXomDK4yuqOMFPmlJj5PWu97LhEdArRH8K
+         v1SbkobzoKvG3Mjih10Uatdzy8Lea0oKXJhYae5ywBpxnQiM6HRezBtPdtS2yXS7ny3V
+         POFfpElBEg7GaVaXJIkH0NeYjxOURWOJOilmlvvBLMHUCTLMkx5JqYu8OIkzyWLp+Cpv
+         jJwYQ0R75+7cGkDl7/sszHclN2RKhPYgIt0ApcZF+KF3VnyVnVPjY5HOfH0s70r48IMS
+         AixKVvsvztHOAoTNfnF+husNiTJiao2v6AiRkMia1MUmFym+KmOfWdqCTelg89DwiAG+
+         eoYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=1E9Jsi+1;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="7em/qB7v";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kOO+0ut1;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=dyx2YVNI;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="UEWuR/rw";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="UEWuR/rw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15si8552662ywj.371.2019.03.25.04.03.20
+        by mx.google.com with ESMTPS id i62si8864240ybi.399.2019.03.25.04.03.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Mon, 25 Mar 2019 04:03:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=1E9Jsi+1;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="7em/qB7v";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kOO+0ut1;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=dyx2YVNI;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="UEWuR/rw";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="UEWuR/rw";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40471 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40468 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8NNv-0005Qa-Lj
+	id 1h8NNv-0005Q6-SF
 	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:03:19 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58431)
+Received: from eggs.gnu.org ([209.51.188.92]:58454)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNA-00056m-2z
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNA-00056r-L0
 	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NN8-0007oG-Al
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NN8-0007on-Ls
 	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:32 -0400
-Received: from greensocs.com ([193.104.36.180]:38247)
+Received: from greensocs.com ([193.104.36.180]:38266)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <damien.hedde@greensocs.com>)
-	id 1h8NN7-0007kW-Lj; Mon, 25 Mar 2019 07:02:30 -0400
+	id 1h8NN7-0007lT-Jy; Mon, 25 Mar 2019 07:02:30 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 235427D78AE;
-	Mon, 25 Mar 2019 12:02:22 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id 95C797D78AF;
+	Mon, 25 Mar 2019 12:02:24 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511742;
-	bh=fim3p4zmaf3aFDPE3gcaY2aoXqpm/15izlSUkLSkHAQ=;
+	s=mail; t=1553511744;
+	bh=YlmXDRZ1/RrwO+VhpRtYBJW25XnBqeYAw6/iPWTZaEI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=1E9Jsi+1+PYA0IsIz4dITUBE0AkjYVXKmDH/yUdePOy96F/o0ZZwbrOCQbTx/e6rW
-	v0MBGZFRA0I5tX7UuXcTpOtSqmHC7Kqul9tT+859hTKN23DbueBJV6QN+R0mCzII2+
-	qTrh0xQdmuIs3JCW3sbeZ2gmIqO62hyN6X+DZnVQ=
+	b=dyx2YVNIaEmlOf/30wDuvVjYJurhWHMn64fmTIDFfpujym2YAEknUckpqMFi5YeEM
+	0xMlMz+lmsj4KzrdvedAJDWE0XDjOO2OGX45DJyWMKmtEBqdWrbUTQzNmTisf87bsa
+	YtKe7lUl7b60vT9AQlS0txSlXQ2esyB9B1LACJoQ=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7em/qB7v;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=kOO+0ut1
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=UEWuR/rw;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=UEWuR/rw
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rDy1deads57w; Mon, 25 Mar 2019 12:02:21 +0100 (CET)
+	with ESMTP id o8vEj7qFjhdn; Mon, 25 Mar 2019 12:02:23 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 089097D78A0; Mon, 25 Mar 2019 12:02:20 +0100 (CET)
+	id EFC087D78AA; Mon, 25 Mar 2019 12:02:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1553511741;
-	bh=fim3p4zmaf3aFDPE3gcaY2aoXqpm/15izlSUkLSkHAQ=;
+	bh=YlmXDRZ1/RrwO+VhpRtYBJW25XnBqeYAw6/iPWTZaEI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7em/qB7v5iU6nlx8AL2232qhb76gPZ+1KmPjxNlXigSXke2TCMbXlvRpaxIq5YQg+
-	9tya1o0AbSJWFcYmt4bXluvjjFpcNEtvvVNBYBIdaaia7I8j2JJccqlykLMTBsvQuG
-	kk9Lh8r0PfpErsVVxUn8ClEEt0ElyPJuDEEhr09E=
+	b=UEWuR/rwKbG2FEXTXmDoDSDw+f4c1jqgQyLfM77RKIHppk0CyLvcyo+x/t8JA6zTi
+	g8T2mgTtHnY3vl4xtosxcmzaBP+RppWm8CL78cmsQfkQT1Q4vZbTG522xvOrUMcJdQ
+	LNSvVVOi9idkoFxXS/CInC5IXFELQb+aGzdFFn9Q=
 Received: from kouign-amann.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 641E57D788E;
-	Mon, 25 Mar 2019 12:02:20 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id 6166A7D78A5;
+	Mon, 25 Mar 2019 12:02:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511740;
-	bh=fim3p4zmaf3aFDPE3gcaY2aoXqpm/15izlSUkLSkHAQ=;
+	s=mail; t=1553511741;
+	bh=YlmXDRZ1/RrwO+VhpRtYBJW25XnBqeYAw6/iPWTZaEI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=kOO+0ut1cFqycEDJ6vqpimJmGfOG3IYNfzvxVd/Q/82GrLI2Jy+fEzLgt77O8h5Qw
-	nLyhAwhgffBFLMCoatU1s7OwjZP7X2+VaaDsYufpk/o7tEuqBqxyaUnW5iBwltni+t
-	2cr4y7TbAhNJ4s+mTdAyd150N1Kr40h53OIXZv2U=
+	b=UEWuR/rwKbG2FEXTXmDoDSDw+f4c1jqgQyLfM77RKIHppk0CyLvcyo+x/t8JA6zTi
+	g8T2mgTtHnY3vl4xtosxcmzaBP+RppWm8CL78cmsQfkQT1Q4vZbTG522xvOrUMcJdQ
+	LNSvVVOi9idkoFxXS/CInC5IXFELQb+aGzdFFn9Q=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 25 Mar 2019 12:01:44 +0100
-Message-Id: <19e6624397deb68db77526a8d25be42aafb3373e.1553510737.git.damien.hedde@greensocs.com>
+Date: Mon, 25 Mar 2019 12:01:46 +0100
+Message-Id: <d855a49137279273c8e02effc446140b7aa59450.1553510737.git.damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
 References: <cover.1553510737.git.damien.hedde@greensocs.com>
@@ -108,7 +108,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [RFC PATCH 01/17] Create Resettable QOM interface
+Subject: [Qemu-arm] [RFC PATCH 03/17] make Device and Bus Resettable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,213 +127,306 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	pbonzini@redhat.com, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XCJPVyFcT53O
+X-TUID: TE5b/Ovs3c7T
 
-This commit defines an interface allowing multi-phase reset.
-The phases are INIT, HOLD and EXIT.
+This add Resettable interface implementation for both Bus and Device.
+The init phase default implementation is to call the legacy reset
+handler.
 
-The reset of a Resettable is controlled with 2 functions:
-  - resettable_assert_reset which starts the reset operation.
-  - resettable_deassert_reset which ends the reset operation.
-
-There is also a `resettable_reset` helper function which does assert then
-deassert allowing to do a proper reset in one call.
-
-The interface only contains 3 methods, one per phase. Each method should
-handle reset of the object and its sub-elements.
+Add a *resetting* counter in both Device and Bus. This counter allows us =
+to
+handle reentrancy in reset operation. If a device/bus has multiple
+source triggering reset, theses sources do not have to care about the
+current device/bus resetting state. Each source can independantly assert
+and eventually deassert the reset. The device/bus will behave as expected=
+ and
+gets out-of-reset state only when all sources have deasserted the reset.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/core/Makefile.objs   |  1 +
- hw/core/resettable.c    | 69 ++++++++++++++++++++++++++++++++++
- include/hw/resettable.h | 83 +++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 153 insertions(+)
- create mode 100644 hw/core/resettable.c
- create mode 100644 include/hw/resettable.h
+ hw/core/bus.c          | 60 +++++++++++++++++++++++++++++++++++++++++
+ hw/core/qdev.c         | 61 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/qdev-core.h | 30 +++++++++++++++++++++
+ 3 files changed, 151 insertions(+)
 
-diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index a799c83815..97007454a8 100644
---- a/hw/core/Makefile.objs
-+++ b/hw/core/Makefile.objs
-@@ -1,6 +1,7 @@
- # core qdev-related obj files, also used by *-user:
- common-obj-y +=3D qdev.o qdev-properties.o
- common-obj-y +=3D bus.o reset.o
-+common-obj-y +=3D resettable.o
- common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
- common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
- # irq.o needed for qdev GPIO handling:
-diff --git a/hw/core/resettable.c b/hw/core/resettable.c
-new file mode 100644
-index 0000000000..6ea1e5b54a
---- /dev/null
-+++ b/hw/core/resettable.c
-@@ -0,0 +1,69 @@
-+/*
-+ * Resettable interface.
-+ *
-+ * Copyright (c) 2019 GreenSocs SAS
-+ *
-+ * Authors:
-+ *   Damien Hedde
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/module.h"
+diff --git a/hw/core/bus.c b/hw/core/bus.c
+index e09843f6ab..0a60bb4b24 100644
+--- a/hw/core/bus.c
++++ b/hw/core/bus.c
+@@ -21,6 +21,7 @@
+ #include "qemu-common.h"
+ #include "hw/qdev.h"
+ #include "qapi/error.h"
 +#include "hw/resettable.h"
-+
-+#define RESETTABLE_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(ResettableClass, (obj), TYPE_RESETTABLE)
-+
-+void resettable_init_phase(Object *obj, bool cold)
+=20
+ void qbus_set_hotplug_handler(BusState *bus, Object *handler, Error **er=
+rp)
+ {
+@@ -67,6 +68,56 @@ int qbus_walk_children(BusState *bus,
+     return 0;
+ }
+=20
++void qbus_reset(BusState *bus, bool cold)
 +{
-+    ResettableClass *rc =3D RESETTABLE_GET_CLASS(obj);
++    resettable_reset(OBJECT(bus), cold);
++}
 +
-+    if (rc->phases.init) {
-+        rc->phases.init(obj, cold);
++bool qbus_is_resetting(BusState *bus)
++{
++    return (bus->resetting !=3D 0);
++}
++
++static void bus_reset_init_phase(Object *obj, bool cold)
++{
++    BusState *bus =3D BUS(obj);
++    BusClass *bc =3D BUS_GET_CLASS(obj);
++    BusChild *kid;
++
++    QTAILQ_FOREACH(kid, &bus->children, sibling) {
++        resettable_init_phase(OBJECT(kid->child), cold);
++    }
++
++    bus->resetting +=3D 1;
++
++    if (bc->reset) {
++        bc->reset(bus);
 +    }
 +}
 +
-+void resettable_hold_phase(Object *obj)
++static void bus_reset_hold_phase(Object *obj)
 +{
-+    ResettableClass *rc =3D RESETTABLE_GET_CLASS(obj);
++    BusState *bus =3D BUS(obj);
++    BusChild *kid;
 +
-+    if (rc->phases.hold) {
-+        rc->phases.hold(obj);
++    QTAILQ_FOREACH(kid, &bus->children, sibling) {
++        resettable_hold_phase(OBJECT(kid->child));
 +    }
 +}
 +
-+void resettable_exit_phase(Object *obj)
++static void bus_reset_exit_phase(Object *obj)
 +{
-+    ResettableClass *rc =3D RESETTABLE_GET_CLASS(obj);
++    BusState *bus =3D BUS(obj);
++    BusChild *kid;
 +
-+    if (rc->phases.exit) {
-+        rc->phases.exit(obj);
++    QTAILQ_FOREACH(kid, &bus->children, sibling) {
++        resettable_exit_phase(OBJECT(kid->child));
++    }
++
++    assert(bus->resetting > 0);
++    bus->resetting -=3D 1;
++}
++
+ static void qbus_realize(BusState *bus, DeviceState *parent, const char =
+*name)
+ {
+     const char *typename =3D object_get_typename(OBJECT(bus));
+@@ -204,9 +255,14 @@ static char *default_bus_get_fw_dev_path(DeviceState=
+ *dev)
+ static void bus_class_init(ObjectClass *class, void *data)
+ {
+     BusClass *bc =3D BUS_CLASS(class);
++    ResettableClass *rc =3D RESETTABLE_CLASS(class);
+=20
+     class->unparent =3D bus_unparent;
+     bc->get_fw_dev_path =3D default_bus_get_fw_dev_path;
++
++    rc->phases.init =3D bus_reset_init_phase;
++    rc->phases.hold =3D bus_reset_hold_phase;
++    rc->phases.exit =3D bus_reset_exit_phase;
+ }
+=20
+ static void qbus_finalize(Object *obj)
+@@ -225,6 +281,10 @@ static const TypeInfo bus_info =3D {
+     .instance_init =3D qbus_initfn,
+     .instance_finalize =3D qbus_finalize,
+     .class_init =3D bus_class_init,
++    .interfaces =3D (InterfaceInfo[]) {
++        { TYPE_RESETTABLE },
++        { }
++    },
+ };
+=20
+ static void bus_register_types(void)
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index f9b6efe509..98d173f34f 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -37,6 +37,7 @@
+ #include "hw/hotplug.h"
+ #include "hw/boards.h"
+ #include "hw/sysbus.h"
++#include "hw/resettable.h"
+=20
+ bool qdev_hotplug =3D false;
+ static bool qdev_hot_added =3D false;
+@@ -254,6 +255,56 @@ HotplugHandler *qdev_get_hotplug_handler(DeviceState=
+ *dev)
+     return hotplug_ctrl;
+ }
+=20
++void qdev_reset(DeviceState *dev, bool cold)
++{
++    resettable_reset(OBJECT(dev), cold);
++}
++
++bool qdev_is_resetting(DeviceState *dev)
++{
++    return (dev->resetting !=3D 0);
++}
++
++static void device_reset_init_phase(Object *obj, bool cold)
++{
++    DeviceState *dev =3D DEVICE(obj);
++    DeviceClass *dc =3D DEVICE_GET_CLASS(obj);
++    BusState *child;
++
++    QLIST_FOREACH(child, &dev->child_bus, sibling) {
++        resettable_init_phase(OBJECT(child), cold);
++    }
++
++    dev->resetting +=3D 1;
++
++    if (dc->reset) {
++        dc->reset(dev);
 +    }
 +}
 +
-+void resettable_assert_reset(Object *obj, bool cold)
++static void device_reset_hold_phase(Object *obj)
 +{
-+    resettable_init_phase(obj, cold);
-+    resettable_hold_phase(obj);
++    DeviceState *dev =3D DEVICE(obj);
++    BusState *child;
++
++    QLIST_FOREACH(child, &dev->child_bus, sibling) {
++        resettable_hold_phase(OBJECT(child));
++    }
 +}
 +
-+void resettable_deassert_reset(Object *obj)
++static void device_reset_exit_phase(Object *obj)
 +{
-+    resettable_exit_phase(obj);
++    DeviceState *dev =3D DEVICE(obj);
++    BusState *child;
++
++    QLIST_FOREACH(child, &dev->child_bus, sibling) {
++        resettable_exit_phase(OBJECT(child));
++    }
++
++    assert(dev->resetting > 0);
++    dev->resetting -=3D 1;
 +}
 +
-+static const TypeInfo resettable_interface_info =3D {
-+    .name       =3D TYPE_RESETTABLE,
-+    .parent     =3D TYPE_INTERFACE,
-+    .class_size =3D sizeof(ResettableClass),
-+};
+ static int qdev_reset_one(DeviceState *dev, void *opaque)
+ {
+     device_reset(dev);
+@@ -954,6 +1005,7 @@ static void device_initfn(Object *obj)
+=20
+     dev->instance_id_alias =3D -1;
+     dev->realized =3D false;
++    dev->resetting =3D 0;
+=20
+     object_property_add_bool(obj, "realized",
+                              device_get_realized, device_set_realized, N=
+ULL);
+@@ -1049,6 +1101,7 @@ static void device_unparent(Object *obj)
+ static void device_class_init(ObjectClass *class, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(class);
++    ResettableClass *rc =3D RESETTABLE_CLASS(class);
+=20
+     class->unparent =3D device_unparent;
+=20
+@@ -1060,6 +1113,10 @@ static void device_class_init(ObjectClass *class, =
+void *data)
+      */
+     dc->hotpluggable =3D true;
+     dc->user_creatable =3D true;
 +
-+static void reset_register_types(void)
-+{
-+    type_register_static(&resettable_interface_info);
-+}
-+
-+type_init(reset_register_types)
-diff --git a/include/hw/resettable.h b/include/hw/resettable.h
-new file mode 100644
-index 0000000000..15d5bd878d
---- /dev/null
-+++ b/include/hw/resettable.h
-@@ -0,0 +1,83 @@
-+#ifndef HW_RESETTABLE_H
-+#define HW_RESETTABLE_H
-+
-+#include "qom/object.h"
-+
-+#define TYPE_RESETTABLE "resettable"
-+
-+#define RESETTABLE_CLASS(class) \
-+    OBJECT_CLASS_CHECK(ResettableClass, (class), TYPE_RESETTABLE)
-+
-+/*
-+ * ResettableClass:
-+ * Interface for resettable objects.
-+ *
-+ * The reset operation is divided in several phases each represented by =
-a
-+ * method.
-+ *
-+ * @phases.init: should reset local state only. Takes a bool @cold argum=
-ent
-+ * specifying whether the reset is cold or warm. It must not do side-eff=
-ect
-+ * on others objects.
-+ *
-+ * @phases.hold: side-effects action on others objects due to staying in=
- a
-+ * resetting state.
-+ *
-+ * @phases.exit: leave the reset state, may do side-effects action on ot=
-hers
-+ * objects.
-+ *
-+ * "Entering the reset state" corresponds to the init and hold phases.
-+ * "Leaving the reset state" corresponds to the exit phase.
++    rc->phases.init =3D device_reset_init_phase;
++    rc->phases.hold =3D device_reset_hold_phase;
++    rc->phases.exit =3D device_reset_exit_phase;
+ }
+=20
+ void device_class_set_parent_reset(DeviceClass *dc,
+@@ -1117,6 +1174,10 @@ static const TypeInfo device_type_info =3D {
+     .class_init =3D device_class_init,
+     .abstract =3D true,
+     .class_size =3D sizeof(DeviceClass),
++    .interfaces =3D (InterfaceInfo[]) {
++        { TYPE_RESETTABLE },
++        { }
++    },
+ };
+=20
+ static void qdev_register_types(void)
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index 33ed3b8dde..f4aa8dbaa2 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -131,6 +131,8 @@ struct NamedGPIOList {
+ /**
+  * DeviceState:
+  * @realized: Indicates whether the device has been fully constructed.
++ * @resetting: Indicates whether the device is under reset. Also
++ * used to count how many times reset has been initiated on the device.
+  *
+  * This structure should not be accessed directly.  We declare it here
+  * so that it can be embedded in individual device state structures.
+@@ -152,6 +154,7 @@ struct DeviceState {
+     int num_child_bus;
+     int instance_id_alias;
+     int alias_required_for_version;
++    uint32_t resetting;
+ };
+=20
+ struct DeviceListener {
+@@ -198,6 +201,8 @@ typedef struct BusChild {
+ /**
+  * BusState:
+  * @hotplug_handler: link to a hotplug handler associated with bus.
++ * @resetting: Indicates whether the device is under reset. Also
++ * used to count how many times reset has been initiated on the device.
+  */
+ struct BusState {
+     Object obj;
+@@ -209,6 +214,7 @@ struct BusState {
+     int num_children;
+     QTAILQ_HEAD(, BusChild) children;
+     QLIST_ENTRY(BusState) sibling;
++    uint32_t resetting;
+ };
+=20
+ /**
+@@ -378,6 +384,30 @@ int qdev_walk_children(DeviceState *dev,
+                        qdev_walkerfn *post_devfn, qbus_walkerfn *post_bu=
+sfn,
+                        void *opaque);
+=20
++/**
++ * @qdev_reset:
++ * Reset the device @dev, @cold tell whether to do a cold or warm reset.
 + */
-+typedef void (*ResettableInitPhase)(Object *obj, bool cold);
-+typedef void (*ResettableHoldPhase)(Object *obj);
-+typedef void (*ResettableExitPhase)(Object *obj);
-+typedef struct ResettableClass {
-+    InterfaceClass parent_class;
-+
-+    struct ResettablePhases {
-+        ResettableInitPhase init;
-+        ResettableHoldPhase hold;
-+        ResettableExitPhase exit;
-+    } phases;
-+} ResettableClass;
-+typedef struct ResettablePhases ResettablePhases;
-+
-+/*
-+ * Helpers to do a single phase of a Resettable.
-+ * Call the corresponding ResettableClass method if it is not NULL.
-+ */
-+void resettable_init_phase(Object *obj, bool cold);
-+void resettable_hold_phase(Object *obj);
-+void resettable_exit_phase(Object *obj);
++void qdev_reset(DeviceState *dev, bool cold);
 +
 +/**
-+ * resettable_assert_reset:
-+ * Put an object in reset state.
-+ * Each time resettable_assert_reset is called, resettable_deassert_rese=
-t
-+ * must be eventually called once and only once.
-+ *
-+ * @obj object to reset, must implement Resettable interface.
-+ * @cold boolean indicating the type of reset (cold or warm)
++ * @qbus_reset:
++ * Reset the bus @bus, @cold tell whether to do a cold or warm reset.
 + */
-+void resettable_assert_reset(Object *obj, bool cold);
++void qbus_reset(BusState *bus, bool cold);
 +
 +/**
-+ * resettable_deassert_reset:
-+ * End the reset state if an object.
-+ *
-+ * @obj object to reset, must implement Resettable interface.
++ * @qdev_is_resetting:
++ * Tell whether the device @dev is currently under reset.
 + */
-+void resettable_deassert_reset(Object *obj);
++bool qdev_is_resetting(DeviceState *dev);
 +
 +/**
-+ * resettable_reset:
-+ * Calling this function is equivalent to call @assert_reset then
-+ * @deassert_reset.
++ * @qbus_is_resetting:
++ * Tell whether the bus @bus is currently under reset.
 + */
-+static inline void resettable_reset(Object *obj, bool cold)
-+{
-+    resettable_assert_reset(obj, cold);
-+    resettable_deassert_reset(obj);
-+}
++bool qbus_is_resetting(BusState *bus);
 +
-+#endif
+ void qdev_reset_all(DeviceState *dev);
+ void qdev_reset_all_fn(void *opaque);
+=20
 --=20
 2.21.0
 

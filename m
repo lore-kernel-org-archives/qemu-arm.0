@@ -1,356 +1,155 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3658742wrx;
-        Mon, 25 Mar 2019 03:01:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyFHHr95UED/d5awYhyLMs6Icqseyqk0KrHgSTV7JtqLnMJjVMIud0240yy9Vi1C+yMviUi
-X-Received: by 2002:a25:d38c:: with SMTP id e134mr18852008ybf.192.1553508118728;
-        Mon, 25 Mar 2019 03:01:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553508118; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3658974wrx;
+        Mon, 25 Mar 2019 03:02:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzplyjhZZ9XhcVVj3AXKbo/KrkJP7An3VseRIaH1GP/Z/9BF1xy8SsAFwflSEkBKE62lnpx
+X-Received: by 2002:a25:2586:: with SMTP id l128mr19003640ybl.118.1553508130817;
+        Mon, 25 Mar 2019 03:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553508130; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iks9cmqI69QOswFZ37iHctjoodPWfph24D8MSdHDZFrOHlVyaUuDsxk7yM+AbMwBvY
-         Cq3sIqQBcIzDoT+B+Ni9zSjcgKmU/DHbaaIwp3kkZGfSmfQw3w4LVEVOiZ6LB7WM4gGC
-         ZV4FlF1ZCL/aS5dOtrkjjiXyAnvwdb9R0z4a6JEMVyNbadChF5tHtkmKMysqwmHGELpk
-         aKyPHXlOLmmzfScuj5Ztj78RZvshItQ8L8wtlHbCN74/2xoisnGmw1uoArGguEhnCJxa
-         K791U1PZawa/ubT6mlhzOSLQ1idQGjRMqdrMWVt+dxqmH1WH3MHPC8akwXf4AoUItq1/
-         J+qQ==
+        b=1EbgHxvEBAOS8mv/+ZC50AkvUXla77SXlYaqB4XTVLcSSXWuJgLc1bXHfTOov3zIYb
+         q0TeDYcY4p9EScFu35iZwB9I9E0/YEDHh6pJYkTeq2Vy79bCPcrOlZGxbDHrJzfOXP+u
+         lyVF+mo/jWHW/aqgudUSxyYJXRmWlHtRAiu4+hH5Xo7jpjDlbOcb80rU7kdqNEnY0d0U
+         VllgAGijRtu5j9VQ7o9z34L26mvwJkdQolnIBNSzb5tJr8/RzYPG5us9DSD48zAW93u+
+         AzZuOB7CrtnSC9MdwnHHz2A7a0TdCQbxk3Ds1L9syneZsgO7nMWpSx18RkTQ4PnnBoSX
+         AgeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=h7qrVsv1Kby9UmgJmWeGB2RqDH+/tKdrGXDFpfD3m/c=;
-        b=B5gzzCQZMWfKDWOOHwbUEPGdHI9S3HTgb3JWAEpYvKXhNQ+Tq51FwrFrG5uHnDZmcG
-         Tsq6f0FhELwHaHbIuidiBX0HXJiqIi6Wjarb9OXoiEB7zqALYJWfpl/jmr0QSlJzDE4G
-         dishkIzIh9t578UsByCW/X8loKJLsoiWCm76n0PzckoOdoiNlkfATpgzsuwJfbLH4yyq
-         vGncmH5oi3lBEXI/Z4KvYc4sV+bp9aBDb4+H5rqS8k5Pta/tHmADqlnhfSnKXBxQHpI0
-         F/g6aJy4Y0AXnwMj3Yod/9yOn2WCojOHKSJF/hCmQh99WNneNFguiSyUD3sPp0ZePgxV
-         2Olw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6SpsIwAqIed4GUx8E7H4MUyTO0UEaULTBIxYJrnrQ8I=;
+        b=YF5cS1Wha0I0ndqMsRorBfKfFhRNGes1qc8cWUpxPnMXQjEsBxnbmB5cxxpF52EKMv
+         PQHsWQgwSruJbkqy8VqSgPePllfjHT+H0p3dmKMAA8Jz/Vvi+SPoJrfpMr17Ie6Ft3G4
+         01McLDcOgG7uHA2+mQ86C4wblJZ4QAoClOzE2XeQ6+joNo6KoatNSyyl0Bkr0w2MW/lB
+         +gHZF0MKLLmchZi54Xs057qRVwcMHAb4taIUQks0Lv902d2KAd3XyQU+WSC5VLMFqGBr
+         ShqfPrhqsckIXADk/4WYyn2sCxC393LswZmEhrkSEuXHoHjYTpeVb5SZ8vI9k9alF2mm
+         dK/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=pvIUwZ0Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m132si9403473ywc.124.2019.03.25.03.01.58
+        by mx.google.com with ESMTPS id c25si9483448ybe.250.2019.03.25.03.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Mar 2019 03:01:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Mar 2019 03:02:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:39600 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=pvIUwZ0Z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:39596 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8MQX-0003Tl-SD
-	for alex.bennee@linaro.org; Mon, 25 Mar 2019 06:01:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46121)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h8MQk-0003O9-6J
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 06:02:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h8MPq-0003HL-Jf
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 06:01:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1h8MPx-0003HE-TD
+	for qemu-devel@nongnu.org; Mon, 25 Mar 2019 06:01:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1h8MPm-0002re-9t
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 06:01:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54752)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1h8MPm-0002rI-0G; Mon, 25 Mar 2019 06:01:10 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 56DFC3086212;
-	Mon, 25 Mar 2019 09:55:09 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 70A041001DC8;
-	Mon, 25 Mar 2019 09:55:05 +0000 (UTC)
-Date: Mon, 25 Mar 2019 10:55:04 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Wei Yang <richardw.yang@linux.intel.com>
-Message-ID: <20190325105504.171400e2@redhat.com>
-In-Reply-To: <20190325055910.15449-1-richardw.yang@linux.intel.com>
-References: <20190325055910.15449-1-richardw.yang@linux.intel.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1h8MNO-00024u-RU
+	for qemu-devel@nongnu.org; Mon, 25 Mar 2019 05:58:43 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38754)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h8MNO-00024a-Gq
+	for qemu-devel@nongnu.org; Mon, 25 Mar 2019 05:58:42 -0400
+Received: by mail-oi1-x244.google.com with SMTP id w137so6441411oiw.5
+	for <qemu-devel@nongnu.org>; Mon, 25 Mar 2019 02:58:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=6SpsIwAqIed4GUx8E7H4MUyTO0UEaULTBIxYJrnrQ8I=;
+	b=pvIUwZ0ZQ4FyPWKo0A3KB62cqRnwsweLGwxCBd5SCjA/cKJ8AVcMTfHr73Ci+9LgS4
+	69ZzUNMfC8VdUtnB8AcCByoe2socVHhs7f/AWqv5Dh0EZCH1gExKfgaqHLz1jb/lBwhZ
+	9ILUarho3PoOgsBOEVIIDVGmHp9/37v3hJNxBL/zdtjeyzDoLFFMY3vFWOawYS2GflSu
+	NXaOiYb9GOlFNdgM/M3sBuZIXdWzAA3+HCbN/UB8pCuujYbFaknGieFoQal/4NIBbNip
+	sCrzHSZElgiuux7C4dGGZXBgCJp/qndxgE8SegBe1XitMlin1fDwvFRAZ9/G7e0ij/jw
+	oK2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=6SpsIwAqIed4GUx8E7H4MUyTO0UEaULTBIxYJrnrQ8I=;
+	b=GsbqeGh2QTqfzhA3SFg9v8XtBIu9/iGnj+1bGBZiceMPLAEpcpOCiQw7w+damaX2AA
+	gmjddeZfXSsxh7Z5ah8yMk9d+/73kpk66cSf16M4i5FA9FNOlmxaex50NISRBjCiCV6D
+	nBwvKUGySrH5RamCmW+XemWQcP1puToW/HlhUaRowQ+YFW0HNvbjeLqVlOK/7sxWKZJf
+	alm0VBht3RfpkAeCwq5Xon93I16uXhpDhdF5kfLtYIQpDiTORBI7CIKKV31I2r7a3tPl
+	cS/dkq3Z7KvJhg1g/lSuw2i5irz9xjeF1Pt71Rq8SuFr2JhIC+1uXHnaRDbWp5gyCNZj
+	iigQ==
+X-Gm-Message-State: APjAAAVMALZEj+gIc0X6Z5dmc6gkwq+B384OUQF0Yde3GtRTOqYOHsxE
+	m0aJTRlqi56Bc3/83istAJzm3+mTH/YCns3PPSvCv6Di
+X-Received: by 2002:aca:c1c1:: with SMTP id
+	r184mr10527256oif.146.1553507921399; 
+	Mon, 25 Mar 2019 02:58:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Mon, 25 Mar 2019 09:55:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5] hw/acpi: extract acpi_add_rom_blob()
-X-BeenThere: qemu-arm@nongnu.org
+References: <20190322162333.17159-1-drjones@redhat.com>
+In-Reply-To: <20190322162333.17159-1-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Mar 2019 09:58:30 +0000
+Message-ID: <CAFEAcA8k1MUm9yr95anL7=QYt_exLvOVzwpgeS+=sHKncH3pww@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-devel] [PATCH 0/3] target/arm: pmu fixes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
-	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pvk3Ok3fkTV0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Aaron Lindsay <aaron@os.amperecomputing.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V9wMAy99CYTj
 
-On Mon, 25 Mar 2019 13:59:10 +0800
-Wei Yang <richardw.yang@linux.intel.com> wrote:
+On Fri, 22 Mar 2019 at 16:23, Andrew Jones <drjones@redhat.com> wrote:
+>
+> The first two patches fix a regression I found when running
+> the arm (as opposed to arm64) pmu kvm-unit-tests test on tcg,
+>
+>   $ git clone git://git.kernel.org/pub/scm/virt/kvm/kvm-unit-tests.git
+>   $ cd kvm-unit-tests
+>   $ ./configure --arch=arm --cross-prefix=arm-linux-gnu-
+>   $ make -j
+>   $ export QEMU=/path/to/qemu-system-arm or qemu-system-aarch64
+>   $ arm/run arm/pmu.flat
+>
+> After checking the QEMU code I found it's also reproducible with
+> the arm64 test if the PMU is removed,
+>
+>   $ ./configure --arch=arm64 --cross-prefix=aarch64-linux-gnu-
+>   $ make -j
+>   $ export QEMU=/path/to/qemu-system-aarch64
+>   $ arm/run arm/pmu.flat -cpu cortex-a57,pmu=off
+>
+> Those tests used to pass, but now QEMU was crashing. I've broken
+> the fix into two patches because the second patch is a bit of
+> an RFC since I don't know if it's safe to enable all
+> ARM_FEATURE_PMU code for PMUv2. Maybe that feature is only for
+> PMUv3? This patch also enables the pmu cpu property to work with
+> those cpu types, i.e. we can now do '-cpu cortex-a15,pmu=off' to
+> remove the pmu. Although it wasn't clear to me if the PMU is
+> optional (permitted to be removed) on those cpu types from the
+> manuals.
+>
+> The last patch is just a trivial cleanup.
+>
+> Andrew Jones (3):
+>   target/arm: fix crash on pmu register access
+>   target/arm: cortex-a7 and cortex-a15 have pmus
+>   target/arm: make pmccntr_op_start/finish static
+>
 
-> arm and i386 has almost the same function acpi_add_rom_blob(), except
-> giving different FWCfgCallback function.
->=20
-> This patch moves acpi_add_rom_blob() to utils.c by passing
-> FWCfgCallback to it.
->=20
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->=20
-> ---
-> v5:
->   * remove unnecessary header glib/gprintf.h
->   * rearrange include header to make it more suitable
-> v4:
->   * extract -> moves
->   * adjust comment in source to make checkpatch happy
-> v3:
->   * put acpi_add_rom_blob() to hw/acpi/utils.c
-> v2:
->   * remove unused header in original source file
-> ---
->  hw/acpi/Makefile.objs    |  2 +-
->  hw/acpi/utils.c          | 36 ++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c | 26 ++++++++++----------------
->  hw/i386/acpi-build.c     | 26 ++++++++++----------------
->  include/hw/acpi/utils.h  |  9 +++++++++
->  5 files changed, 66 insertions(+), 33 deletions(-)
->  create mode 100644 hw/acpi/utils.c
->  create mode 100644 include/hw/acpi/utils.h
->=20
-> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-> index 2d46e3789a..ba93c5b64a 100644
-> --- a/hw/acpi/Makefile.objs
-> +++ b/hw/acpi/Makefile.objs
-> @@ -10,7 +10,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) +=3D acpi-st=
-ub.o
-> =20
->  common-obj-y +=3D acpi_interface.o
->  common-obj-y +=3D bios-linker-loader.o
-> -common-obj-y +=3D aml-build.o
-> +common-obj-y +=3D aml-build.o utils.o
->  common-obj-$(CONFIG_TPM) +=3D tpm.o
-> =20
->  common-obj-$(CONFIG_IPMI) +=3D ipmi.o
-> diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
-> new file mode 100644
-> index 0000000000..7a890cca06
-> --- /dev/null
-> +++ b/hw/acpi/utils.c
-> @@ -0,0 +1,36 @@
-> +/*
-> + * Utilities for generating ACPI tables and passing them to Guests
-> + *
-> + * Copyright (C) 2019 Intel Corporation
-> + * Copyright (C) 2019 Red Hat Inc
-> + *
-> + * Author: Wei Yang <richardw.yang@linux.intel.com>
-> + * Author: Igor Mammedov <imammedo@redhat.com>
 
-=46rom history it looks like Michael was an original author and
-then Shanon copied approach for ARM.
-So put Michael instead of me.
 
-with that fixed up
+Applied to target-arm.next, thanks.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> +
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> +
-> + * You should have received a copy of the GNU General Public License alo=
-ng
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
-> +#include "hw/loader.h"
-> +
-> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-> +                                GArray *blob, const char *name,
-> +                                uint64_t max_size)
-> +{
-> +    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size,=
- -1,
-> +                        name, update, opaque, NULL, true);
-> +}
-> +
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 57679a89bf..a846f74a14 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -37,9 +37,9 @@
->  #include "hw/acpi/acpi.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "hw/acpi/bios-linker-loader.h"
-> -#include "hw/loader.h"
->  #include "hw/hw.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
->  #include "hw/pci/pcie_host.h"
->  #include "hw/pci/pci.h"
->  #include "hw/arm/virt.h"
-> @@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
->      build_state->patched =3D false;
->  }
-> =20
-> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-> -                                       GArray *blob, const char *name,
-> -                                       uint64_t max_size)
-> -{
-> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size,=
- -1,
-> -                        name, virt_acpi_build_update, build_state, NULL,=
- true);
-> -}
-> -
->  static const VMStateDescription vmstate_virt_acpi_build =3D {
->      .name =3D "virt_acpi_build",
->      .version_id =3D 1,
-> @@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
->      virt_acpi_build(vms, &tables);
-> =20
->      /* Now expose it all to Guest */
-> -    build_state->table_mr =3D acpi_add_rom_blob(build_state, tables.tabl=
-e_data,
-> -                                               ACPI_BUILD_TABLE_FILE,
-> -                                               ACPI_BUILD_TABLE_MAX_SIZE=
-);
-> +    build_state->table_mr =3D acpi_add_rom_blob(virt_acpi_build_update,
-> +                                              build_state, tables.table_=
-data,
-> +                                              ACPI_BUILD_TABLE_FILE,
-> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
->      assert(build_state->table_mr !=3D NULL);
-> =20
->      build_state->linker_mr =3D
-> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-> -                          "etc/table-loader", 0);
-> +        acpi_add_rom_blob(virt_acpi_build_update, build_state,
-> +                          tables.linker->cmd_blob, "etc/table-loader", 0=
-);
-> =20
->      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog-=
->data,
->                      acpi_data_len(tables.tcpalog));
-> =20
-> -    build_state->rsdp_mr =3D acpi_add_rom_blob(build_state, tables.rsdp,
-> -                                              ACPI_BUILD_RSDP_FILE, 0);
-> +    build_state->rsdp_mr =3D acpi_add_rom_blob(virt_acpi_build_update,
-> +                                             build_state, tables.rsdp,
-> +                                             ACPI_BUILD_RSDP_FILE, 0);
-> =20
->      qemu_register_reset(virt_acpi_build_reset, build_state);
->      virt_acpi_build_reset(build_state);
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 416da318ae..b17d4a711d 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -37,7 +37,6 @@
->  #include "hw/acpi/cpu.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "hw/acpi/bios-linker-loader.h"
-> -#include "hw/loader.h"
->  #include "hw/isa/isa.h"
->  #include "hw/block/fdc.h"
->  #include "hw/acpi/memory_hotplug.h"
-> @@ -58,6 +57,7 @@
->  #include "hw/i386/x86-iommu.h"
-> =20
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
-> =20
->  #include "qom/qom-qobject.h"
->  #include "hw/i386/amd_iommu.h"
-> @@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
->      build_state->patched =3D 0;
->  }
-> =20
-> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-> -                                       GArray *blob, const char *name,
-> -                                       uint64_t max_size)
-> -{
-> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size,=
- -1,
-> -                        name, acpi_build_update, build_state, NULL, true=
-);
-> -}
-> -
->  static const VMStateDescription vmstate_acpi_build =3D {
->      .name =3D "acpi_build",
->      .version_id =3D 1,
-> @@ -2891,14 +2883,15 @@ void acpi_setup(void)
->      acpi_build(&tables, MACHINE(pcms));
-> =20
->      /* Now expose it all to Guest */
-> -    build_state->table_mr =3D acpi_add_rom_blob(build_state, tables.tabl=
-e_data,
-> -                                               ACPI_BUILD_TABLE_FILE,
-> -                                               ACPI_BUILD_TABLE_MAX_SIZE=
-);
-> +    build_state->table_mr =3D acpi_add_rom_blob(acpi_build_update,
-> +                                              build_state, tables.table_=
-data,
-> +                                              ACPI_BUILD_TABLE_FILE,
-> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
->      assert(build_state->table_mr !=3D NULL);
-> =20
->      build_state->linker_mr =3D
-> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-> -                          "etc/table-loader", 0);
-> +        acpi_add_rom_blob(acpi_build_update, build_state,
-> +                          tables.linker->cmd_blob, "etc/table-loader", 0=
-);
-> =20
->      fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
->                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-> @@ -2935,8 +2928,9 @@ void acpi_setup(void)
->          build_state->rsdp_mr =3D NULL;
->      } else {
->          build_state->rsdp =3D NULL;
-> -        build_state->rsdp_mr =3D acpi_add_rom_blob(build_state, tables.r=
-sdp,
-> -                                                  ACPI_BUILD_RSDP_FILE, =
-0);
-> +        build_state->rsdp_mr =3D acpi_add_rom_blob(acpi_build_update,
-> +                                                 build_state, tables.rsd=
-p,
-> +                                                 ACPI_BUILD_RSDP_FILE, 0=
-);
->      }
-> =20
->      qemu_register_reset(acpi_build_reset, build_state);
-> diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
-> new file mode 100644
-> index 0000000000..140b4de603
-> --- /dev/null
-> +++ b/include/hw/acpi/utils.h
-> @@ -0,0 +1,9 @@
-> +#ifndef HW_ACPI_UTILS_H
-> +#define HW_ACPI_UTILS_H
-> +
-> +#include "hw/nvram/fw_cfg.h"
-> +
-> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-> +                                GArray *blob, const char *name,
-> +                                uint64_t max_size);
-> +#endif
-
+-- PMM

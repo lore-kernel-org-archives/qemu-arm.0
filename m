@@ -1,106 +1,106 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3719872wrx;
-        Mon, 25 Mar 2019 04:10:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjFbUoMrSDv5AW/BizE1XjVf+HnyMuxgBt5axEdwyCC+LaM2guO11L0Yk9XWZ18JOkLCE3
-X-Received: by 2002:a25:76c5:: with SMTP id r188mr19841633ybc.147.1553512229111;
-        Mon, 25 Mar 2019 04:10:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553512229; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3720223wrx;
+        Mon, 25 Mar 2019 04:10:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQWy1PcKKV+y149RcNr6PPENlhAAuiY9O1Y+rPwu4V3g+aptvQLynDaDezpltxXtI34rLD
+X-Received: by 2002:a25:d882:: with SMTP id p124mr20194684ybg.72.1553512248303;
+        Mon, 25 Mar 2019 04:10:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553512248; cv=none;
         d=google.com; s=arc-20160816;
-        b=yfW/eQxvsgADZnHAVyDmqz+r4FieYuiBvAbFP7FWkTw9lSDJkxCpwp9GsWJ9uc/GHl
-         3fWEKDUob28hx0kjJ1WyxAbL3HwcYJOhEOxYAPwi4J7dV4LjcxaLkM/ll5EQRxxZslhf
-         dnDoHW3h6I/SteSEmcrbs8sSYnUDyCv5HJ2fZbSXxOZNuEV2rGp5RNKlo4RO2FQXpf99
-         TwOjJNpM0sGVTsF7zqklBrie0PuM6cFFb6QDr903sc326yxCMU4elP3iZTi/gPlc+5d1
-         BkMLz9tScDMUjq4AaLJhAnEgQPSYhOQ5JGDntQxf0Pa8mK+1AzEgw2UGcoFyIezpKB0N
-         TP4w==
+        b=xLXbwRQ8P69iL6w3nV1L1zG+Cxln/FRZTb+TQq96HGyMiHf9MH3BSo5Ef/DLGPOaSO
+         ORIRgTAV1PblvV3SJ0zOl3ZVY1KuZRPTNHOEN8QsYYv3tU/WukT05i04Nxs4OvVBzSct
+         IkaG/m7xrLNd8OzQzAaBOByDKWl1/bDmwRpukPJvYM8dPFrUxNDiwBaxFM1b4OA0IDn3
+         VQiIYsqlh5/2XUiWJf4/XXIW+KYh/7NU6nWeUFM9vcL+ROy5h6fMdijAprIqdqGo3cYT
+         gfjBhRHcmwmAf0SUxZxgGjCJfSXANip88f/7pd8DgQ95T6f8SgOgc+QZlCNNZO1/w+lq
+         xdZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=193SyYU/5ic0rPxqvJCGoJrg9LVBs/i5Oj8zPtfrl18=;
-        b=ACQBVVtutOytImIByhGwDbA+O4j5w38A3axGWI03wD6aRIhDvvE0x4I1GGfdLbzY5H
-         RDK4z8P1PtTR45XUBWHVJVj/jEme9d3vXS529b36xmEHhn31LTJfGiipoJOskAv2IjqT
-         w7nAM8mv7DgnSogxqSTV7tNxahqB1AsOds8K5cu/3cTGZc3zxI5NO+fnLvlcRUPcx+/O
-         00+YGhOtumzcVIoGzcUq4SaRrrvyD9ZJyHAH9rT+fUXzLks1wF+j4E6dm+joMACwlyjC
-         CsbfST4meqQU5Q8RJhjk3LJA+V1caUnZ8NKSIhnYfhHYMDtPJuHDWP01hzrcFZf1We5L
-         z9+Q==
+        bh=7wAGmhoCeM6YBemifgdJMgJYmDsBeInNsJBLjsjE2+w=;
+        b=nHOOX2ksRhleKUb2f7+nBSJWPr9ABZDUMLlWLwaieK9p/eRGNA7x75CrFbyDK/HQnq
+         LTqAalD46X6cNdFtT0GV5uAH7FRCpY0NYNtgvIyAGNJvDomvJQTlLDZrqTtsvu26A+Es
+         FnTLc4TsLJL0/XSp0UJnYA5wH/ZVHkZoyxcBO9kaAkOMi531GjzKYZVR/1r1BMvhGTX9
+         rf6eeGFOSi0nzE6eV3Tk2yk8JnxlpECfyb9gcKjzpqZtP70BvusKzpjegPgB2GnFA17r
+         7Nh6bmzXZPBircVs0v/gEkP/PfQw2osuW/hkoUYQY/7p6E9w0LHpvONUMGEImEjmJKmQ
+         qBNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iGxnBKmG;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o3jWwBEl;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o3jWwBEl;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="k/qPQnlk";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=FHy3TTYm;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=FHy3TTYm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 135si9057641ywp.288.2019.03.25.04.10.28
+        by mx.google.com with ESMTPS id x16si9197091ybr.366.2019.03.25.04.10.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Mar 2019 04:10:29 -0700 (PDT)
+        Mon, 25 Mar 2019 04:10:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iGxnBKmG;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o3jWwBEl;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o3jWwBEl;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="k/qPQnlk";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=FHy3TTYm;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=FHy3TTYm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40617 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40623 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8NUq-0003Ya-HF
-	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:10:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58720)
+	id 1h8NV9-0003o2-Hh
+	for alex.bennee@linaro.org; Mon, 25 Mar 2019 07:10:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58757)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNW-0005NR-4o
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:55 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNa-0005QA-6W
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNU-00081y-67
-	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:54 -0400
-Received: from greensocs.com ([193.104.36.180]:38361)
+	(envelope-from <damien.hedde@greensocs.com>) id 1h8NNY-00082v-1R
+	for qemu-arm@nongnu.org; Mon, 25 Mar 2019 07:02:58 -0400
+Received: from greensocs.com ([193.104.36.180]:38354)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <damien.hedde@greensocs.com>)
-	id 1h8NNT-0007oy-5o; Mon, 25 Mar 2019 07:02:52 -0400
+	id 1h8NNU-0007oM-QZ; Mon, 25 Mar 2019 07:02:54 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 38B3D7D78A5;
-	Mon, 25 Mar 2019 12:02:30 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id E767A7D78A2;
+	Mon, 25 Mar 2019 12:02:31 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511750;
-	bh=TViZaoixjVUmZtj2y6Y12CBUXZYUENGeEM/hotObZrU=;
+	s=mail; t=1553511751;
+	bh=rS5NuPH0KWejCxspweaZSHPWSe35AiD/X4xqIKnJC4c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=iGxnBKmG/Bk6Hxvd28mqC23q3DXaeQ6MwZ50YGn61ABAraBEkTrq3QFEhtI3LM30O
-	zzdmECfMKWLR7cebbcdGQA5I2SCxPByoUe1Dc7HJuvluKXug/bNstO068wcEeyV5YW
-	hVk4pT5WqSmlAWe3qUlPGgMWo8+Gf9fJaO6o1vac=
+	b=k/qPQnlkJ+WSN3Kn+OS3zzZhIGG9OT8z/AF6siM5470/Th7NreyGv0QhMSugEIVZY
+	b4kZO4Q9k/njuv3BI7cF9ifT7PN8eiutug1rJBqohXAbt35282CNvpmXFNjY69OLdA
+	YAFdaxLHeuHf9FNFvMTgK4QpVJ2i9CpQfSrowqrY=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=o3jWwBEl;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=o3jWwBEl
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=FHy3TTYm;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=FHy3TTYm
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QBsgpXXUB8Jl; Mon, 25 Mar 2019 12:02:29 +0100 (CET)
+	with ESMTP id AER6rpO7-4eR; Mon, 25 Mar 2019 12:02:30 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id C86997D78BA; Mon, 25 Mar 2019 12:02:28 +0100 (CET)
+	id 7E6FA7D78BB; Mon, 25 Mar 2019 12:02:29 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511748;
-	bh=TViZaoixjVUmZtj2y6Y12CBUXZYUENGeEM/hotObZrU=;
+	s=mail; t=1553511749;
+	bh=rS5NuPH0KWejCxspweaZSHPWSe35AiD/X4xqIKnJC4c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=o3jWwBEl+Fy3LB5y5UuZ3Ou2jZwYB7AtpbFFRuswwTm0X3LamZiKAOmH/9szQCp5x
-	kljrFj5zUeVj8vXFiFkp3wiEfmBVGgroXh0Bpz8vJKjarOlzQpxs2SFSDLPPOp7oCx
-	ueSr3nofnM8oWUPiSqNmxRTbNwWH9fMDsLRpIJOo=
+	b=FHy3TTYmUKxF9JwyHjYXRM9a9W4opoCba8Q7JpI957jCmriCcS3S0fTm3jTQqA3SQ
+	MJT9HZ6TJlMVKHsbFTHU9lssd1hFwJiQOSwxpPe+14eUpbpxrgCb3tEc8g1JRkYSKd
+	iIAETAsXJyqfa3395AKsS4zZkOeC5TCL1TdLkikw=
 Received: from kouign-amann.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id E1C857D78A2;
-	Mon, 25 Mar 2019 12:02:27 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id B43537D788E;
+	Mon, 25 Mar 2019 12:02:28 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1553511748;
-	bh=TViZaoixjVUmZtj2y6Y12CBUXZYUENGeEM/hotObZrU=;
+	s=mail; t=1553511749;
+	bh=rS5NuPH0KWejCxspweaZSHPWSe35AiD/X4xqIKnJC4c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=o3jWwBEl+Fy3LB5y5UuZ3Ou2jZwYB7AtpbFFRuswwTm0X3LamZiKAOmH/9szQCp5x
-	kljrFj5zUeVj8vXFiFkp3wiEfmBVGgroXh0Bpz8vJKjarOlzQpxs2SFSDLPPOp7oCx
-	ueSr3nofnM8oWUPiSqNmxRTbNwWH9fMDsLRpIJOo=
+	b=FHy3TTYmUKxF9JwyHjYXRM9a9W4opoCba8Q7JpI957jCmriCcS3S0fTm3jTQqA3SQ
+	MJT9HZ6TJlMVKHsbFTHU9lssd1hFwJiQOSwxpPe+14eUpbpxrgCb3tEc8g1JRkYSKd
+	iIAETAsXJyqfa3395AKsS4zZkOeC5TCL1TdLkikw=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 25 Mar 2019 12:01:54 +0100
-Message-Id: <b1b153a19e260b36ab8dfe97994196d750b0ecf3.1553510737.git.damien.hedde@greensocs.com>
+Date: Mon, 25 Mar 2019 12:01:55 +0100
+Message-Id: <31208397390bc323ec002cb8a3cb395cbd6fa9b5.1553510737.git.damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
 References: <cover.1553510737.git.damien.hedde@greensocs.com>
@@ -108,7 +108,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [RFC PATCH 11/17] Put orphan buses in system reset domain
+Subject: [Qemu-arm] [RFC PATCH 12/17] Put default sysbus in system reset
+ domain
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,42 +128,29 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	pbonzini@redhat.com, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4VspJqWrighg
+X-TUID: SqCNDhhsD4JH
 
-Switch from the legacy reset handlers to the system reset domain in order=
- to
-use the Resettable interface.
+Switch from reset handler to Resettable interface.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/core/bus.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ vl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/core/bus.c b/hw/core/bus.c
-index 0a60bb4b24..73b215d2bb 100644
---- a/hw/core/bus.c
-+++ b/hw/core/bus.c
-@@ -150,7 +150,7 @@ static void qbus_realize(BusState *bus, DeviceState *=
-parent, const char *name)
-     } else if (bus !=3D sysbus_get_default()) {
-         /* TODO: once all bus devices are qdevified,
-            only reset handler for main_system_bus should be registered h=
-ere. */
--        qemu_register_reset(qbus_reset_all_fn, bus);
-+        qemu_register_system_reset_domain_object(OBJECT(bus));
-     }
- }
+diff --git a/vl.c b/vl.c
+index cf081d5264..e67f6e6c50 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4537,7 +4537,7 @@ int main(int argc, char **argv, char **envp)
 =20
-@@ -169,7 +169,7 @@ static void bus_unparent(Object *obj)
-         bus->parent =3D NULL;
-     } else {
-         assert(bus !=3D sysbus_get_default()); /* main_system_bus is nev=
-er freed */
--        qemu_unregister_reset(qbus_reset_all_fn, bus);
-+        qemu_unregister_system_reset_domain_object(OBJECT(bus));
-     }
- }
+     /* TODO: once all bus devices are qdevified, this should be done
+      * when bus is created by qdev.c */
+-    qemu_register_reset(qbus_reset_all_fn, sysbus_get_default());
++    qemu_register_system_reset_domain_object(OBJECT(sysbus_get_default()=
+));
+     qemu_run_machine_init_done_notifiers();
 =20
+     if (rom_check_and_register_reset() !=3D 0) {
 --=20
 2.21.0
 

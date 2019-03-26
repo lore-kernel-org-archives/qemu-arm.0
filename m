@@ -1,157 +1,192 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5339849wrx;
-        Tue, 26 Mar 2019 10:12:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7z9nmivwlDqRBZHH6DKVu+SlqwSzMGsGbB1YKfchrwQoK6/NQww5Ft3tI9qPoyrbiEfE0
-X-Received: by 2002:a0c:9e68:: with SMTP id z40mr15773059qve.19.1553620329599;
-        Tue, 26 Mar 2019 10:12:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553620329; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5368368wrx;
+        Tue, 26 Mar 2019 10:41:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwIJzZT0dMRwTZGhzmIVYVJvQ8RQZTeZmdZvgNgceC3mM+X8gISkzQ5phETAhGmKu/sJnEF
+X-Received: by 2002:a02:9345:: with SMTP id e5mr23623922jah.29.1553622099929;
+        Tue, 26 Mar 2019 10:41:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553622099; cv=none;
         d=google.com; s=arc-20160816;
-        b=u9N1jO24SCNwV2fMEbs4XXvGplMnzvicVwhr5RQDhIGKLxoNwbFtc5oTb/x2J/M4Vs
-         aqay1mFlJCOp2Gw9A8Vz+GzLjI7/eBR4jImE4FrWaUAvNUypfqmtnQWNkHZSeNi3K0Fa
-         oZakUWfA35+TQMhf/ikt7xGpQAoMiccs1WlryryKV+VPrGdOqB0bhvnd+/u9AHKAilie
-         A266E26DrzT4NPYYlqMBkjWPotO9StZX2u8iIIz4N6NF7IOxFOJUdqObPjE+F4CZLTLf
-         w1Mrjat7Cpf1nn68d7wj/2XNT+YBsPlc/FzaqZWI4Tv/ztHmfDRb/X3lvyDCEdMnk+h/
-         salQ==
+        b=fuAAJdF9GWzFaKl5iKAShcmaVzWaFRl+oSJiY3278hosKuWcpyjllljdQUHdu/kRfT
+         EdznT8395HwIKPqoc4gOST8fliJQX+E1piNgNKO1vYGYP7uUQV1IyaG7W4PlmRTU31de
+         CqgfWQPBMZ1srBMFx02f3xstSjAMLgwRJ6Wzdrtu4ULGrVXDVAEC4Z1FezSMuthdwIqx
+         b1/gX8MSz07I2j3nyUWwrbXlarn8KQuXjBi1IuhnYdfH+nB7+QiYhXrcG1Gt9zQFOTqH
+         8QYM+TQIDet1RMaxaWQVxCGvA/HJDQ/7sYEQmpAADe1jU+I7r6rBv+GXIU8YFYQfcm9z
+         ruDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=1UqDvobUTeFnoWLdaxVhKJzr4AUk4iz4ZpxcvMpsOvA=;
-        b=v5SCZv7FGiWZ/3ewx1imjNm12AWCSBhXbto4qb9fZxeQtClTsshPc4HrDmuOPW1l/8
-         5hrY10EpWeAIYgciCsoObSlyBzEOoJxxE+NbZzXcnXb7WmYdNYHGSBzusDBfegr7HII4
-         X8CgFGEj/IXB8nFT3+teMkTddbGSAeD7iWHXhj6y9WKJqRqg/yW5eRUF4x5yQjdh2Vzd
-         GARejs8Vpx+pDOn/GKfvzFb4JDtfvtHjfeWU7A6Z4g/Rrq2fsW1IuQFWGMp1c1tDpsHv
-         BZDOhWhjUR84t7JbGnoRoCQ/bJgF5W8HXQabxEPClpcQnrLOrgQhPDYAOSjz/IysZ9rs
-         qEkA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:to:from:dkim-signature;
+        bh=nZ2i3iIDtCEA6N6qQbS7jwkbLVHbeuZ2CJ9hAr/U3yE=;
+        b=NRMF8dZMDIC6D6HlxWhkUcqh+7hDnEQsF+vLKkQKB9AkIXcHVAmMdb+Fl9YShEO7aI
+         dNgwX3Fbf2JdIXDjdM5fr3VWU8YzNkfkKduijZdmxEt7WRx6bIqOXvvNm+ol+I5Ncu4m
+         snlCGmKzaK1LL1LcoAsLVBn9+LrkGmoHHViAc+L7A78QYUJ4ciT+R1ARIfCNmo6eU/IC
+         VZonPR4S4t5ptxKr6KypEyNlSAIrW2zMVX/6ATrGzBu1UB9EKuejADfLNA+GxXlT6dVw
+         FdlFZs/mzcUJa+Z5cA2WdEMbF7eviNqDtrLClCNZ1z4zIGxfwXjdp5q3xoyBMsntqJNH
+         kiUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 38si1436988qvk.147.2019.03.26.10.12.09;
-        Tue, 26 Mar 2019 10:12:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=aFFApqeu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 14si2822503itm.24.2019.03.26.10.41.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 26 Mar 2019 10:41:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 189444A3EF;
-	Tue, 26 Mar 2019 13:12:09 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.201
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=unavailable
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id klhStdhW5TBV; Tue, 26 Mar 2019 13:12:07 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DDB534A32E;
-	Tue, 26 Mar 2019 13:12:07 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3CEB04A2BE
- for <kvmarm@lists.cs.columbia.edu>; Tue, 26 Mar 2019 13:12:06 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gtzLLpvtsX96 for <kvmarm@lists.cs.columbia.edu>;
- Tue, 26 Mar 2019 13:12:04 -0400 (EDT)
-Received: from foss.arm.com (foss.arm.com [217.140.101.70])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DDDE04A2B6
- for <kvmarm@lists.cs.columbia.edu>; Tue, 26 Mar 2019 13:12:04 -0400 (EDT)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 159B2374;
- Tue, 26 Mar 2019 10:12:04 -0700 (PDT)
-Received: from [10.1.196.69] (e112269-lin.cambridge.arm.com [10.1.196.69])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id ECB7C3F614;
- Tue, 26 Mar 2019 10:12:02 -0700 (PDT)
-Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
-To: Heyi Guo <guoheyi@huawei.com>, Christoffer Dall <christoffer.dall@arm.com>
-References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
- <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
- <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
- <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
- <20190315085948.GB10950@e113682-lin.lund.arm.com>
- <ff1db661-13c2-50ff-940e-4a1d71bd0309@huawei.com>
- <101c5f17-9811-e2d0-ff3c-a0e64beee921@arm.com>
- <662367df-e702-dd0a-da83-f1b448c5f203@huawei.com>
- <1a315d48-1657-e50b-97ec-ead9c6c459c2@huawei.com>
-From: Steven Price <steven.price@arm.com>
-Message-ID: <0e1f903a-d445-6bef-3dfd-6d9f7f6a5f98@arm.com>
-Date: Tue, 26 Mar 2019 17:12:01 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.5.1
-MIME-Version: 1.0
-In-Reply-To: <1a315d48-1657-e50b-97ec-ead9c6c459c2@huawei.com>
-Content-Language: en-GB
-Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=aFFApqeu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+Received: from localhost ([127.0.0.1]:35744 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h8q4x-0002Na-3m
+	for alex.bennee@linaro.org; Tue, 26 Mar 2019 13:41:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47837)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <aaron@os.amperecomputing.com>) id 1h8q4g-0002KY-6I
+	for qemu-arm@nongnu.org; Tue, 26 Mar 2019 13:41:23 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <aaron@os.amperecomputing.com>) id 1h8q26-0005kb-Bj
+	for qemu-arm@nongnu.org; Tue, 26 Mar 2019 13:38:43 -0400
+Received: from mail-eopbgr780105.outbound.protection.outlook.com
+	([40.107.78.105]:35136
+	helo=NAM03-BY2-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
+	id 1h8q25-0005jI-38; Tue, 26 Mar 2019 13:38:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+	bh=nZ2i3iIDtCEA6N6qQbS7jwkbLVHbeuZ2CJ9hAr/U3yE=;
+	b=aFFApqeuUK/+OBtkYT93SaZ9vVlFUThzqBv++NzMKFDyWpx9MNO0pndXm+WidQlXPgwRkDw5IZLVlnPFfZW3J/CHcRq85qVE2Gf5W41oTNRb4kAXpWXzjSXvImvSBSb2US8vnaTr+06ykRM3b8Lc8p2fiwtMCbPJj2x8TZ9vsvk=
+Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
+	DM6PR01MB5306.prod.exchangelabs.com (20.177.220.83) with Microsoft SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1730.18; Tue, 26 Mar 2019 17:38:37 +0000
+Received: from DM6PR01MB4825.prod.exchangelabs.com
+	([fe80::d048:df23:56d0:cff5]) by DM6PR01MB4825.prod.exchangelabs.com
+	([fe80::d048:df23:56d0:cff5%3]) with mapi id 15.20.1730.013;
+	Tue, 26 Mar 2019 17:38:37 +0000
+From: Aaron Lindsay OS <aaron@os.amperecomputing.com>
+To: Andrew Jones <drjones@redhat.com>
+Thread-Topic: [PATCH 2/3] target/arm: cortex-a7 and cortex-a15 have pmus
+Thread-Index: AQHU4Mud6LNwxyWNvkGkDlrMB9vPFqYeM+0A
+Date: Tue, 26 Mar 2019 17:38:36 +0000
+Message-ID: <20190326173844.GJ28178@quinoa.localdomain>
+References: <20190322162333.17159-1-drjones@redhat.com>
+	<20190322162333.17159-3-drjones@redhat.com>
+In-Reply-To: <20190322162333.17159-3-drjones@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: CY4PR06CA0054.namprd06.prod.outlook.com
+	(2603:10b6:903:13d::16) To DM6PR01MB4825.prod.exchangelabs.com
+	(2603:10b6:5:6b::30)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=aaron@os.amperecomputing.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [216.85.170.153]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: c61007a1-1d77-4eb9-b3da-08d6b211e054
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600127)(711020)(4605104)(2017052603328)(7153060)(7193020);
+	SRVR:DM6PR01MB5306; 
+x-ms-traffictypediagnostic: DM6PR01MB5306:
+x-microsoft-antispam-prvs: <DM6PR01MB53063FB53DC116D2E4AC01228A5F0@DM6PR01MB5306.prod.exchangelabs.com>
+x-forefront-prvs: 09888BC01D
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(396003)(366004)(346002)(376002)(136003)(39840400004)(199004)(189003)(99286004)(66066001)(5660300002)(6436002)(68736007)(86362001)(14444005)(229853002)(105586002)(106356001)(1076003)(97736004)(6116002)(81156014)(71200400001)(256004)(7736002)(6486002)(8676002)(305945005)(81166006)(3846002)(53936002)(9686003)(71190400001)(6512007)(26005)(4326008)(6246003)(102836004)(386003)(6506007)(14454004)(25786009)(54906003)(478600001)(2906002)(8936002)(486006)(6916009)(186003)(52116002)(316002)(476003)(76176011)(33656002)(11346002)(446003);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5306;
+	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
+	PTR:InfoNoRecords; A:0; MX:1; 
+received-spf: None (protection.outlook.com: os.amperecomputing.com does not
+	designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: zjgbKrfJCER5FM2bqWHOZbhTywiZhTJ0JN2loIQgDHtA4Qbc++Fu2WIeIknpWxmPhUdYB4gkQOkC1Ku9F1M6/Oel7ugjjuLoDI8/0W8lZcOQ/N0KcssmrkusSwSpgPOz2lkPWVvkhN2x9Oqdu6yZCuHWWhq5Cd+Ieb4wDDda23OT9VdZi41gBTC2uC8G9YBvuEGDYVuqxBesnbvl8jjxGaYeSLQ2qGN6mXk038SmLORKXKA4rzuugztUXTf36/3pkpSlSpY0+OVPC/LFkA1W5UZBQB4cgBtBYr+q1u99Z1x6CNxkg3O2BfdTg4EqatCb+gteTZukYNklcqbfeJ9Ygtgl/yYf8HAmnLjzUx2god64F/tjSJuoz9WGNlF5brCYvE7BH1gCrqRrquHQULIjKISVUzZxnLPb8divK1dHwMg=
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: Xvmf90gvDvnH
+Content-ID: <FC6F3FE22713A74DA5B6F58F0C4723B9@prod.exchangelabs.com>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c61007a1-1d77-4eb9-b3da-08d6b211e054
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Mar 2019 17:38:37.0131 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5306
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.78.105
+Subject: Re: [Qemu-arm] [PATCH 2/3] target/arm: cortex-a7 and cortex-a15
+ have pmus
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tl/ddAOff6gY
 
-Hi Heyi,
+On Mar 22 17:23, Andrew Jones wrote:
+> cortex-a7 and cortex-a15 have pmus (PMUv2) and they advertise
+> them in ID_DFR0. Let's allow them to function. This also enables
+> the pmu cpu property to work with these cpu types, i.e. we can
+> now do '-cpu cortex-a15,pmu=3Doff' to remove the pmu.
 
-On 26/03/2019 13:53, Heyi Guo wrote:
-> I also tested save/restore operations, and observed that clock in guest
-> would not jump after restoring either. If we consider guest clock not
-> being synchronized with real wall clock as an issue, does it mean
-> save/restore function has the same issue?
+I'm a little nervous about this one, but PMUv2 isn't fresh enough in my
+mind to have a good reason other than that I didn't consider it when
+writing my recent PMU patches. Do you know if this boots a kernel that
+can detect and use the PMU successfully while thinking it's PMUv2?
 
-Basically at the moment when the guest isn't running you have a choice
-of two behaviours:
+-Aaron
 
- 1. Stop (i.e. save/restore) CNTVCT - this means that the guest sees no
-time occur. If the guest needs to have a concept of wall-clock time
-(e.g. it communicates with other systems over a network) then this can
-cause problems (e.g. timeouts might be wrong, certificates might start
-appearing to be in the future etc).
-
- 2. Leave CNTVCT running - the guest sees the time pass but interprets
-the vCPUs as effectively having locked up. Linux will trigger the soft
-lockup warning.
-
-There are two ways of solving this, which match the two behaviours above:
-
- 1. Provide the guest with a view of wall-clock time. The obvious way of
-doing this is with a pvclock implementation like MSR_KVM_WALL_CLOCK_NEW
-for x86.
-
- 2. Inform the guest to ignore the apparent "soft-lockup". There's
-already an ioctl for x86 for this: KVM_KVMCLOCK_CTRL
-
-My preference is for option 1 - as this gives the guest a good view of
-both the time that it is actually executing (useful for internal
-watchdog timers like the soft-lockup one in Linux) and maintains a view
-of wall-clock time (useful when communicating with other external
-services - e.g. the a server on the internet). Your patch to QEMU
-provides the first step of that, but as you mention there's much more to do.
-
-One thing I haven't investigated in great detail is how KVM handles the
-timer during various forms of suspend. In particular for suspend types
-like full hibernation the host's physical counter will jump (quite
-possibly backwards) - I haven't looked in detail how KVM presents this
-to the guest. Hopefully not by making it go backwards!
-
-I'm not sure how much time I'm going to have to look at this in the near
-future, but please keep me in the loop if you decide to tackle any of this.
-
-Thanks,
-
-Steve
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/cpu.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 96f0ff0ec727..504a4771fbd3 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1109,6 +1109,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Err=
+or **errp)
+>  #endif
+>      } else {
+>          cpu->id_aa64dfr0 &=3D ~0xf00;
+> +        cpu->id_dfr0 &=3D ~(0xf << 24);
+>          cpu->pmceid0 =3D 0;
+>          cpu->pmceid1 =3D 0;
+>      }
+> @@ -1744,6 +1745,7 @@ static void cortex_a7_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+>      set_feature(&cpu->env, ARM_FEATURE_EL2);
+>      set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>      cpu->kvm_target =3D QEMU_KVM_ARM_TARGET_CORTEX_A7;
+>      cpu->midr =3D 0x410fc075;
+>      cpu->reset_fpsid =3D 0x41023075;
+> @@ -1789,6 +1791,7 @@ static void cortex_a15_initfn(Object *obj)
+>      set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+>      set_feature(&cpu->env, ARM_FEATURE_EL2);
+>      set_feature(&cpu->env, ARM_FEATURE_EL3);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>      cpu->kvm_target =3D QEMU_KVM_ARM_TARGET_CORTEX_A15;
+>      cpu->midr =3D 0x412fc0f1;
+>      cpu->reset_fpsid =3D 0x410430f0;
+> --=20
+> 2.17.2
+>=20

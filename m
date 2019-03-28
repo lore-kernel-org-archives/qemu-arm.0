@@ -1,87 +1,87 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp962537wrx;
-        Thu, 28 Mar 2019 11:47:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/L8qFGVtI1c8gruBPDO8yS8FEQZXkMBBcj8xvNKvSyl72JZhCq+uGv/y4FXGHUNWjJUmI
-X-Received: by 2002:a6b:440b:: with SMTP id r11mr30379145ioa.48.1553798843642;
-        Thu, 28 Mar 2019 11:47:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553798843; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp967726wrx;
+        Thu, 28 Mar 2019 11:54:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwAUNS6Gqc7Sm1sDjDp3ycRLGviGx1RVnX+I3XQJvLg69vFi6rpATwntWEbr7yVfXCyyhXt
+X-Received: by 2002:a02:9a12:: with SMTP id b18mr32028623jal.45.1553799276929;
+        Thu, 28 Mar 2019 11:54:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553799276; cv=none;
         d=google.com; s=arc-20160816;
-        b=rLNyLpcg72nmTrmjdazofBQe/NwkNZqHa+OC0dUEmY5O9rMbJvfw+zxDA3JKrALBW3
-         4h9Y49HSgc4X+McM+4n1LRi7w1gp3ZwLL4qS+OKetMrmEa4UQ9rY3clm80bdeGZMUHWV
-         +QIeh5v92XDPE6rIN5bhmbPDFW8/V1GT+w0/elcWTmQDlcGMlEnYEMCHsCslA7Z9sv4g
-         0beoiwAhbW2Mh/IIP568YxA8cJ+6OY3xCzCiMxDxC+12FBCiotKfLyu+nI9pOxQFmuWW
-         086Ar0STES3lQNfQSU8/kJ/HmLl1J2jqCDVNP0dpVn1KNss/o+PssUZlY85l5rwswN1R
-         Ek1w==
+        b=LoNEjVtiOAehLjb2uf18Qk13ICIPEEWk1qX4/S/W6RZwGYP9p63rr3JL5+JByxA4XN
+         tGB3ABclOSxWfB14urMTQO8tXIBCQH9xU708g5sQQJ9H5PUz2NJVeKAWL4BTdlb/tBds
+         izS+DLVJAFXlx4rXix4US0+VUYlKqbzTsvq5IrYa93GPO+/42Yvx5o4Q1IVDO3uk1J/h
+         80jY8+2o3Lx2eLDEoHN8w9uqPAjvHvh3bZrRLkQjw11O+MdzLmLhr5ToAq6JYhBl8UpY
+         KsixO/yBDUTEO/q6gAPwXCOf99QGbNXgVRYFgjuNZwLDDwIRMKDLcMk4C2dMdUsHdryY
+         rwFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version;
-        bh=yz38DlH7plfaY2cg4RsGQC45w3HQxDqM4noCj5BCx9I=;
-        b=MGtPIBZvSc8uSQ/QIe42TVys/CaqddQVzN5k4yhUv7j8kGT1AmnF0KOUC7IXKxcNBz
-         3m44IUJmqC95FFw+jcmqvZyhco4WMpihst2vgvAzfZI77N7xUkRB0q8d5CW55N06yilA
-         ulhCveyCu33RZuve/bLwkVErVZQf87Ln7/NkO+4mzTEYcJdg0tO1VPy4cntWjdaIrT4L
-         3KzK/EzuMvQCArTLigOm5a+f3b2cvelG20CWVJH0nRxRdxfHxzlxJqS5EXaEjG2CZTDu
-         Hbdm9DiI1Bdt1/apUd6ojqUuYdR8/IqbsaP53Ee/Usln/BN3mdApMi2bMrdQD7Kxk0ZG
-         g/lw==
+        bh=A4LAx65JwVqjnYc9tkPn4fThktnvCBxPqXTWDYlv0U4=;
+        b=it7Ynb0lZewx25OibIHLwbSPqxCy0LSZiR53PTUy9vJJ9eiLPG6T2I9kfpKd6mbk7m
+         HVLgOl94hoUibB/M/dc1D6WnCpi5NC0i2zZFliF4QooOp4CUvuDjoWf5Y5KilbXZVhrI
+         /4SnBrqmwj7pSes2/gqXCplwl3IbIS+iAUHDpXpV5vxdJ9+ubK+bJ1U5/WU2JnQ9G4kn
+         qPSTZNyYtskzRKbBUq1YfpJ8K5d78GQ7vcOzMNA8CyDpzzJGoyWH03NWCBfP7N9NT6x9
+         IuB/CmiHc1J984YeakUyM86TWFyOhGQkfNBzNNW8I/RAbzEiTjWbFt3/i7BbfjX3FuLJ
+         MtwA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si11448043ioq.62.2019.03.28.11.47.23
+        by mx.google.com with ESMTPS id s16si2226337itk.65.2019.03.28.11.54.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 11:47:23 -0700 (PDT)
+        Thu, 28 Mar 2019 11:54:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40604 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40728 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9a3e-0007lN-Tl
-	for alex.bennee@linaro.org; Thu, 28 Mar 2019 14:47:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49276)
+	id 1h9aAe-0001Em-8J
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 14:54:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50867)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9a3O-0007jn-NI
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:47:08 -0400
+	id 1h9aAW-0001EN-9n
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:54:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9a3N-0003kM-Fj
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:47:06 -0400
-Received: from mail-yb1-f193.google.com ([209.85.219.193]:35034)
+	id 1h9aAV-0006rL-7Z
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:54:28 -0400
+Received: from mail-yw1-f65.google.com ([209.85.161.65]:35202)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9a3N-0003jf-6N; Thu, 28 Mar 2019 14:47:05 -0400
-Received: by mail-yb1-f193.google.com with SMTP id x79so488896ybg.2;
-	Thu, 28 Mar 2019 11:47:05 -0700 (PDT)
+	id 1h9aAU-0006rG-Vz; Thu, 28 Mar 2019 14:54:27 -0400
+Received: by mail-yw1-f65.google.com with SMTP id d132so3109151ywa.2;
+	Thu, 28 Mar 2019 11:54:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=yz38DlH7plfaY2cg4RsGQC45w3HQxDqM4noCj5BCx9I=;
-	b=Djh6dE1B5Vo0isofgFGgqY1mXZDX9a6tOWfMKmmSshlGrnXtJwI4rf0PP2lg2s4aJj
-	ALtYDtci+qxOGrpZaHiCkEnOiuEsZxz50pNvRrKsLg/1pZbmnGQ6zUFPlWjRWMoB+feb
-	qc+nj4eMhf+eNPMUZi8ZaXiKsvTavljzUxqWaQ1PVJ9Pb+oXoogKSWofRBnBwxm7R+Sb
-	1uZ9LFeY3H594aOouehw7Zf3AoLEbw05j1ENy/HFB9ft21V1BN/MwKtaOXb1bVK8cucm
-	nRQ2ZdMZBmy/KDpRNdrdN51S8fJKDroNMjakIFp2ktHwEQEqJ87YR9Hu0Y7DwX9lrO7j
-	DqFQ==
-X-Gm-Message-State: APjAAAUCyRseJUkQsoyT/iItAk8DPXnnmF1uIumjm8T1972AeY39/EtX
-	ZjOgY+mHgOL5hJxGvalciyjMU87STnv13A4FRAA=
-X-Received: by 2002:a25:49c4:: with SMTP id
-	w187mr12857115yba.457.1553798824557; 
-	Thu, 28 Mar 2019 11:47:04 -0700 (PDT)
+	bh=A4LAx65JwVqjnYc9tkPn4fThktnvCBxPqXTWDYlv0U4=;
+	b=cD3lVHYNHU/KIMY2DZlr+CcSiiWLsiY4Vd37Lkn5HB8uFLeGmjKRHG4e4veFMLZLhv
+	XMZqM12kPBLJ9gTEsxrfS52OcCO0GNQhpoc1ZRywRY+yxuw8gjqkptYLeoGvWBHf4Eol
+	v1yPLoDsJ22PozEHu7pwhfIgcXs9ZoroQft8/pKZBPnEl1eon+T88Hq1yagXlJDFj/Ox
+	jSTiEkxjMc55dNJeUyETADFH5lXaaI36l6aBVa9abg5p6ygjlK94m1kjcBFeMXdb93tf
+	XMrAM7J/vCeyXojSAKTABy0WGMrVxYWZbtRi6/8DiObCZJYehhmLk0CsINTuba8+uwH/
+	fkWA==
+X-Gm-Message-State: APjAAAV10Ez+bVnEtHo12KNJrLFh1MK3hCm8vRUfi3H2Q5pUDTO0dR3+
+	WV8dbxetHuC7i1qiSkqmL+pYMhKpRb3J6SIVzM8=
+X-Received: by 2002:a81:5ec5:: with SMTP id
+	s188mr27164321ywb.381.1553799266435; 
+	Thu, 28 Mar 2019 11:54:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190328152944.3199-1-peter.maydell@linaro.org>
-In-Reply-To: <20190328152944.3199-1-peter.maydell@linaro.org>
+References: <20190328143003.16702-1-peter.maydell@linaro.org>
+In-Reply-To: <20190328143003.16702-1-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Thu, 28 Mar 2019 19:46:51 +0100
-Message-ID: <CAAdtpL5z9TN6WWCsvE0ROJ9n1adu3+SMJVjwcz36eTGskNGgDw@mail.gmail.com>
+Date: Thu, 28 Mar 2019 19:54:13 +0100
+Message-ID: <CAAdtpL6ruwtCahrcRW4jugk7pg+cMEve6k5=JP+bvoSp47ymcw@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000fd817005852bfa21"
+Content-Type: multipart/alternative; boundary="00000000000054071f05852c159d"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.219.193
-Subject: Re: [Qemu-arm] [PATCH v2 for-4.1] hw/arm/raspi: Diagnose requests
- for too much RAM
+X-Received-From: 209.85.161.65
+Subject: Re: [Qemu-arm] [PATCH for-4.1] target/arm: Stop using variable
+ length array in dc_zva
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,152 +95,136 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>, patches@linaro.org
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3u3C2l+tPEM3
+X-TUID: toBlos3El+0e
 
---000000000000fd817005852bfa21
+--00000000000054071f05852c159d
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le jeu. 28 mars 2019 16:29, Peter Maydell <peter.maydell@linaro.org> a
+Le jeu. 28 mars 2019 15:30, Peter Maydell <peter.maydell@linaro.org> a
 =C3=A9crit :
 
-> The Raspberry Pi boards have a physical memory map which does
-> not allow for more than 1GB of RAM. Currently if the user tries
-> to ask for more then we fail in a confusing way:
+> Currently the dc_zva helper function uses a variable length
+> array. In fact we know (as the comment above remarks) that
+> the length of this array is bounded because the architecture
+> limits the block size and QEMU limits the target page size.
+> Use a fixed array size and assert that we don't run off it.
 >
-> $ qemu-system-aarch64 --machine raspi3 -m 8G
-> Unexpected error in visit_type_uintN() at qapi/qapi-visit-core.c:164:
-> qemu-system-aarch64: Parameter 'vcram-base' expects uint32_t
-> Aborted (core dumped)
->
-> Catch this earlier and diagnose it with a more friendly message:
-> $ qemu-system-aarch64 --machine raspi3 -m 8G
-> qemu-system-aarch64: Requested ram size is too large for this machine:
-> maximum is 1GB
->
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1794187
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Changes v1->v2: use '>', not '>=3D'...
+> A small move in the direction of "avoid using variable length
+> arrays in QEMU"...
+>
+>  target/arm/helper.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index a36f4b3d699..1b6225cb598 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -1,4 +1,5 @@
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "target/arm/idau.h"
+>  #include "trace.h"
+>  #include "cpu.h"
+> @@ -12412,11 +12413,13 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t
+> vaddr_in)
+>           * same QEMU executable.
+>           */
+>          int maxidx =3D DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
+> -        void *hostaddr[maxidx];
+> +        void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 << TARGET_PAGE_BITS_MIN)]=
+;
 >
 
-Argh I missed this...
+Or g_new()... For 2K nowadays that is fine.
 
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-
->  hw/arm/raspi.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+         int try, i;
+>          unsigned mmu_idx =3D cpu_mmu_index(env, false);
+>          TCGMemOpIdx oi =3D make_memop_idx(MO_UB, mmu_idx);
 >
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 66899c28dc1..fe2bb511b98 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -12,6 +12,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qemu-common.h"
->  #include "cpu.h"
-> @@ -175,6 +176,12 @@ static void raspi_init(MachineState *machine, int
-> version)
->      BusState *bus;
->      DeviceState *carddev;
->
-> +    if (machine->ram_size > 1 * GiB) {
-> +        error_report("Requested ram size is too large for this machine: =
-"
-> +                     "maximum is 1GB");
-> +        exit(1);
-> +    }
+> +        assert(maxidx <=3D sizeof(hostaddr));
 > +
->      object_initialize(&s->soc, sizeof(s->soc),
->                        version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM2836);
->      object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+>          for (try =3D 0; try < 2; try++) {
+>
+>              for (i =3D 0; i < maxidx; i++) {
 > --
 > 2.20.1
 >
 >
+>
 
---000000000000fd817005852bfa21
+--00000000000054071f05852c159d
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"auto"><div><br><div class=3D"gmail_quote"><div dir=3D"ltr">Le j=
-eu. 28 mars 2019 16:29, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@l=
+eu. 28 mars 2019 15:30, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@l=
 inaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><b=
 lockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px =
-#ccc solid;padding-left:1ex">The Raspberry Pi boards have a physical memory=
- map which does<br>
-not allow for more than 1GB of RAM. Currently if the user tries<br>
-to ask for more then we fail in a confusing way:<br>
+#ccc solid;padding-left:1ex">Currently the dc_zva helper function uses a va=
+riable length<br>
+array. In fact we know (as the comment above remarks) that<br>
+the length of this array is bounded because the architecture<br>
+limits the block size and QEMU limits the target page size.<br>
+Use a fixed array size and assert that we don&#39;t run off it.<br>
 <br>
-$ qemu-system-aarch64 --machine raspi3 -m 8G<br>
-Unexpected error in visit_type_uintN() at qapi/qapi-visit-core.c:164:<br>
-qemu-system-aarch64: Parameter &#39;vcram-base&#39; expects uint32_t<br>
-Aborted (core dumped)<br>
-<br>
-Catch this earlier and diagnose it with a more friendly message:<br>
-$ qemu-system-aarch64 --machine raspi3 -m 8G<br>
-qemu-system-aarch64: Requested ram size is too large for this machine: maxi=
-mum is 1GB<br>
-<br>
-Fixes: <a href=3D"https://bugs.launchpad.net/qemu/+bug/1794187" rel=3D"nore=
-ferrer noreferrer" target=3D"_blank">https://bugs.launchpad.net/qemu/+bug/1=
-794187</a><br>
 Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
 " target=3D"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt;<br>
 ---<br>
-Changes v1-&gt;v2: use &#39;&gt;&#39;, not &#39;&gt;=3D&#39;...<br></blockq=
-uote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">Argh I misse=
-d this...</div><div dir=3D"auto"><br></div><div dir=3D"auto">Reviewed-by: P=
-hilippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@ams=
-at.org</a>&gt;<br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><div =
-class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0=
- 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+A small move in the direction of &quot;avoid using variable length<br>
+arrays in QEMU&quot;...<br>
 <br>
-=C2=A0hw/arm/raspi.c | 7 +++++++<br>
-=C2=A01 file changed, 7 insertions(+)<br>
+=C2=A0target/arm/helper.c | 5 ++++-<br>
+=C2=A01 file changed, 4 insertions(+), 1 deletion(-)<br>
 <br>
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c<br>
-index 66899c28dc1..fe2bb511b98 100644<br>
---- a/hw/arm/raspi.c<br>
-+++ b/hw/arm/raspi.c<br>
-@@ -12,6 +12,7 @@<br>
-=C2=A0 */<br>
-<br>
+diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
+index a36f4b3d699..1b6225cb598 100644<br>
+--- a/target/arm/helper.c<br>
++++ b/target/arm/helper.c<br>
+@@ -1,4 +1,5 @@<br>
 =C2=A0#include &quot;qemu/osdep.h&quot;<br>
 +#include &quot;qemu/units.h&quot;<br>
-=C2=A0#include &quot;qapi/error.h&quot;<br>
-=C2=A0#include &quot;qemu-common.h&quot;<br>
+=C2=A0#include &quot;target/arm/idau.h&quot;<br>
+=C2=A0#include &quot;trace.h&quot;<br>
 =C2=A0#include &quot;cpu.h&quot;<br>
-@@ -175,6 +176,12 @@ static void raspi_init(MachineState *machine, int vers=
-ion)<br>
-=C2=A0 =C2=A0 =C2=A0BusState *bus;<br>
-=C2=A0 =C2=A0 =C2=A0DeviceState *carddev;<br>
+@@ -12412,11 +12413,13 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t va=
+ddr_in)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * same QEMU executable.<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int maxidx =3D DIV_ROUND_UP(blocklen, TAR=
+GET_PAGE_SIZE);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *hostaddr[maxidx];<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 &lt;&lt=
+; TARGET_PAGE_BITS_MIN)];<br></blockquote></div></div><div dir=3D"auto"><br=
+></div><div dir=3D"auto">Or g_new()... For 2K nowadays that is fine.</div><=
+div dir=3D"auto"><br></div><div dir=3D"auto">Reviewed-by: Philippe Mathieu-=
+Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt;<b=
+r></div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_q=
+uote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
+eft:1px #ccc solid;padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int try, i;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned mmu_idx =3D cpu_mmu_index(env, f=
+alse);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TCGMemOpIdx oi =3D make_memop_idx(MO_UB, =
+mmu_idx);<br>
 <br>
-+=C2=A0 =C2=A0 if (machine-&gt;ram_size &gt; 1 * GiB) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;Requested ram size is too l=
-arge for this machine: &quot;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0&quot;maximum is 1GB&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);<br>
-+=C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 assert(maxidx &lt;=3D sizeof(hostaddr));<br>
 +<br>
-=C2=A0 =C2=A0 =C2=A0object_initialize(&amp;s-&gt;soc, sizeof(s-&gt;soc),<br=
->
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM2836);<br>
-=C2=A0 =C2=A0 =C2=A0object_property_add_child(OBJECT(machine), &quot;soc&qu=
-ot;, OBJECT(&amp;s-&gt;soc),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (try =3D 0; try &lt; 2; try++) {<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; maxidx=
+; i++) {<br>
 -- <br>
 2.20.1<br>
 <br>
+<br>
 </blockquote></div></div></div>
 
---000000000000fd817005852bfa21--
+--00000000000054071f05852c159d--

@@ -1,149 +1,159 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp661132wrx;
-        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMNn4lkbnG7pZCiGt5cpBG3Oz/pdSzcDpRVopmvzvvTo4gTkosXCLCdTdg/0E4qiv9Ditt
-X-Received: by 2002:a24:9a83:: with SMTP id l125mr100024ite.59.1553781624160;
-        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553781624; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp696626wrx;
+        Thu, 28 Mar 2019 07:30:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw3wFDb8w5P/BswYPNjRhRb4tuDyWp18APiSYxsGUgRe6R6iKHzF5lacB97PLcBeKpdwr1A
+X-Received: by 2002:a24:ac3:: with SMTP id 186mr294340itw.16.1553783422688;
+        Thu, 28 Mar 2019 07:30:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553783422; cv=none;
         d=google.com; s=arc-20160816;
-        b=0lmIH96z96S2wKFGy//hTH2rHfM79IqnYCx+2CvxVNj4Jvrn0xMD2YoI/LSkAXOZMc
-         9vV87OgXZzWRAXGo+OFvUpiwdr48Swt8Q9BiQBZLvL6GQMTc+bbxoFzdW+hEe7AomIVM
-         paQqgnaZYOjJwoVMjHLYi1TAb1fElOGbks9q6SLkMdE5Ki4A9+EmHeaqC0nwsJ4r4W3m
-         WEWpaSE9ygBi2yr3vh+Fk2WDtsyisk2DIuy72/dLabYIZnkpovEowyMV/MW8TP4O7L2V
-         NbqbJFAlpJ1IqViQbCuIPcxY+AW9VijcW+FhJMOjv4aQTrbOxV6XYK1a8WQ7hUweQ8z7
-         eGRg==
+        b=EgVBj3BI0DmATxRKu7QQg1PhMvR/eMd40MFmoQEIL8Qi2o/i3jXrEKRoPz/Y3+5gCG
+         UjWuyOeDlzK20Ur7nOCxfTuvux98Nk3iV7ZgBx14rj/OqQNBjX92+TyFpBSoxqPTzuXb
+         ER6xvNMCZBjitaHBL0Yn1O+eVhBXdvzDpZQksgzy6I1krkmUHxCnf9w4QQpF+wU0HQqr
+         C8jrBz94yOAMcJMHfiq8HKFcHj2JqowX4ylkZHdW1SNlcnZSrpAfN6rfYoLOzhbHT/C3
+         BS5eM1wYTgU5R2Ut63laCOYrNrExy7QUy2LBiMBZeb7vSuuMntMI+jvFUZRcqBBMazpt
+         26/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:mime-version
-         :content-transfer-encoding:references:in-reply-to:to:from:date;
-        bh=ywUmirkAMOleeZKjKgI3BiKBFUfsg33stNjjDjFv3EM=;
-        b=PHMxmfaeGr7948ykEmNC/TF6TJOQqfE6YUeIttvmK4nh/MZJXKDnO2WmkI0JyU9NIY
-         RHskXcvbBcDaJACWbZVy98YbJwadGKnOGj8FyPEp0QY4UyXxfGXsjFugf56sWXtX4jkN
-         aCxxBE1+NsdHU2bds/qP5bAVKlXLL64ZAsUjQtp6TuVib0LKzTJt3uatlrqa4pBU07+e
-         lhHsqo+wNWi3WVoV/WHHbdJaQrECHIeCLaCEJyjROjE3nBOGQjtB2kpsk7Vt9eBINMcb
-         Ad+crukIO2vYIWp/UD7NY6UUEKsOAdy7aXJfqk7K8kP7ieFM+rruf+zGOaRsju9fYraV
-         nMBw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=/J0e1MnZabGGnMQooqkvyJqnQKeiQRnVVCjIZnWojkI=;
+        b=VGi9BYzT/lCjC6Fluizdv7mx2Pmz+4Pm3kfUUsCo0UNokNvaGWpfAYKj0rFseSDPh6
+         Gb9FXtojN6PT68AEZROVi0dZm8dKl0sHb2yulRXLQuZ6aBkEWTyUzYDDf6uo4ca+9arN
+         +jcZMgvAwRJWijTfTpKP//xhy7LDPDvmQG8LdREm4Z1+cVeVpisNy9ZvLxwiJh+JSyu+
+         wn6dWzvWCZrCamKwZHVP+GFp+0YqT3NJz03ieqfAI6vEKTZjYA4I55RER9Cg4Gi3nMZC
+         +hy2ge0rHPYoXiCDtYZhvvDXJQ5bvS+H5GeFigQEuJvlpC4qihesgaal0yrYKMRrMvx5
+         VAQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=sJRkfdGv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u21si1690531itc.140.2019.03.28.07.00.23
+        by mx.google.com with ESMTPS id h12si1749856itb.109.2019.03.28.07.30.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Mar 2019 07:30:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:37056 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=sJRkfdGv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:37440 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9VZv-00034d-GX
-	for alex.bennee@linaro.org; Thu, 28 Mar 2019 10:00:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52942)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h9W2v-0006A1-W6
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 10:30:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57944)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>) id 1h9VYt-0002W2-9m
-	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 09:59:20 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1h9W2l-00066t-Pt
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 10:30:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>) id 1h9VYr-0008S4-SK
-	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 09:59:19 -0400
-Received: from mx9.pku.edu.cn ([162.105.129.172]:48275 helo=pku.edu.cn)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gxt@mprc.pku.edu.cn>)
-	id 1h9VYg-0008KC-AO; Thu, 28 Mar 2019 09:59:06 -0400
-Received: by ajax-webmail-mailfront03 (Coremail) ; Thu, 28 Mar 2019 21:57:06
-	+0800 (GMT+08:00)
-X-Originating-IP: [203.187.182.140]
-Date: Thu, 28 Mar 2019 21:57:06 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Guan Xuetao" <gxt@mprc.pku.edu.cn>
-To: "markus armbruster" <armbru@redhat.com>
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.7b build 20180509(9e2321e9)
-	Copyright (c) 2002-2019 www.mailtech.cn pku
-In-Reply-To: <875zsed86y.fsf@dusky.pond.sub.org>
-References: <87d0mwatbu.fsf@dusky.pond.sub.org>
-	<875zsed86y.fsf@dusky.pond.sub.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <peter.maydell@linaro.org>) id 1h9W2h-0002mf-0P
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 10:30:11 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36750)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h9W2g-0002mN-J7
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 10:30:06 -0400
+Received: by mail-wr1-x442.google.com with SMTP id y13so5473415wrd.3
+	for <qemu-arm@nongnu.org>; Thu, 28 Mar 2019 07:30:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=/J0e1MnZabGGnMQooqkvyJqnQKeiQRnVVCjIZnWojkI=;
+	b=sJRkfdGvGbtRZBj7WqHCNaLKpLHaV3ewkLe05KipuqrRADYIdgqnSKRVLG+7kN+E/1
+	5h7b3mrjsRDsuc0aWZNkJp7BvMzeIV9HEtX78tUH7VDJHJiuZwmkzd4II81i4aQraz5t
+	940hHXGIiFERD0hShAawXK5dLg4QGrVK+QmUMPVJNpuZBdLi+X8YUdozo4d+vRMcRun8
+	1hYbq9ebsrMHRmh4ML/iIfdvmwQ2csfzwUk/SnLjVtPv7856juXVEbQxrTuQxdakxl4A
+	zTHLX1FhrlwHYuf8MKUPD1oernA/EVMas2vpIT/Ecl7v9cnSq/N4okhCw044ocpGIRhO
+	+kTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=/J0e1MnZabGGnMQooqkvyJqnQKeiQRnVVCjIZnWojkI=;
+	b=jb+5cQmXJvmb3A2674W517z89Bh1tlUUIFRNgBN21+qlvn9mNDJagvMcz73OzqWSuC
+	KfaGp4S21H85Kkj5m+gZySVFIL6+UdzHft8RtA0JT2EcaJU/mfCx+vCBTgxw5ss1XjMw
+	n1/SURqkQJbCa1LjlZnywjh7Kd6MQm8cBdFdfRKBMytMUwf48fv9tsZ5Bti3pP0n4bdX
+	DbwRu+JjR7UrYD7jGKpdOKMcADWnwhhKYMEcC+yHRPpR34DXsMGEYBS7j8i9+5Wdxsni
+	MecYqsJWpB6IrzgR9x4BTSfyE82qRZF+1bsssvXl22Rq56NEeyxcmBYUIAq0wtZrWU8r
+	PsZg==
+X-Gm-Message-State: APjAAAUqwR/NqQtzUFoPOZJMCEavVspRDWEAxAvaGd1FFP0/XRR3RUMl
+	zSFPMSMUYb6BKv2SsyCO+yXpxl59bp0=
+X-Received: by 2002:adf:fe4d:: with SMTP id m13mr24137640wrs.267.1553783405307;
+	Thu, 28 Mar 2019 07:30:05 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id t15sm4613824wmt.2.2019.03.28.07.30.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 28 Mar 2019 07:30:04 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 28 Mar 2019 14:30:03 +0000
+Message-Id: <20190328143003.16702-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Message-ID: <2c0bc4bf.2d83.169c4970a80.Coremail.gxt@mprc.pku.edu.cn>
-X-Coremail-Locale: en_US
-X-CM-TRANSID: 84FpogD3_4uy0pxcWFixAA--.4256W
-X-CM-SenderInfo: qqqqliixuslio6sn3hxhgxhubq/1tbiAQEDB1Py8dJ42wAAsl
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
-	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
-	daVFxhVjvjDU=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 162.105.129.172
-Subject: Re: [Qemu-devel] Maintainers,
- please tell us how to boot your machines!
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH for-4.1] target/arm: Stop using variable length
+ array in dc_zva
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter maydell <peter.maydell@linaro.org>,
-	anthony green <green@moxielogic.com>, qemu-devel@nongnu.org,
-	"edgar e. iglesias" <edgar.iglesias@gmail.com>,
-	marek vasut <marex@denx.de>, stefano stabellini <sstabellini@kernel.org>,
-	aleksandar rikalo <arikalo@wavecomp.com>, alexander graf <agraf@suse.de>,
-	=?UTF-8?Q?herv=C3=A9_poussineau?= <hpoussin@reactos.org>,
-	anthony perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	paul durrant <paul.durrant@citrix.com>, jan kiszka <jan.kiszka@web.de>,
-	igor mitsyanko <i.mitsyanko@gmail.com>,
-	bastian koppelmann <kbastian@mail.uni-paderborn.de>,
-	chris wulff <crwulff@gmail.com>,
-	jean-christophe dubois <jcd@tribudubois.net>,
-	andrey smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, aleksandar markovic <amarkovic@wavecomp.com>,
-	aurelien jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NdVVkD5pC9Mj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mJGtPJMNvOuG
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2VzLS0tLS0KPiBGcm9tOiAiTWFya3VzIEFybWJydXN0ZXIi
-IDxhcm1icnVAcmVkaGF0LmNvbT4KPiBTZW50IFRpbWU6IDIwMTktMDMtMjAgMDI6MzQ6NDUgKFdl
-ZG5lc2RheSkKPiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnCj4gQ2M6ICJFZGdhciBFLiBJZ2xl
-c2lhcyIgPGVkZ2FyLmlnbGVzaWFzQGdtYWlsLmNvbT4sICJIZXJ2w6kgUG91c3NpbmVhdSIgPGhw
-b3Vzc2luQHJlYWN0b3Mub3JnPiwgIkFsZWtzYW5kYXIgTWFya292aWMiIDxhbWFya292aWNAd2F2
-ZWNvbXAuY29tPiwgIkFsZWtzYW5kYXIgUmlrYWxvIiA8YXJpa2Fsb0B3YXZlY29tcC5jb20+LCAi
-QWxleGFuZGVyIEdyYWYiIDxhZ3JhZkBzdXNlLmRlPiwgIkFuZHJleSBTbWlybm92IiA8YW5kcmV3
-LnNtaXJub3ZAZ21haWwuY29tPiwgIkFuZHJ6ZWogWmFib3Jvd3NraSIgPGJhbHJvZ2dAZ21haWwu
-Y29tPiwgIkFudGhvbnkgR3JlZW4iIDxncmVlbkBtb3hpZWxvZ2ljLmNvbT4sICJBbnRob255IFBl
-cmFyZCIgPGFudGhvbnkucGVyYXJkQGNpdHJpeC5jb20+LCAiQXVyZWxpZW4gSmFybm8iIDxhdXJl
-bGllbkBhdXJlbDMyLm5ldD4sICJCYXN0aWFuIEtvcHBlbG1hbm4iIDxrYmFzdGlhbkBtYWlsLnVu
-aS1wYWRlcmJvcm4uZGU+LCAiQ2hyaXMgV3VsZmYiIDxjcnd1bGZmQGdtYWlsLmNvbT4sICJHdWFu
-IFh1ZXRhbyIgPGd4dEBtcHJjLnBrdS5lZHUuY24+LCAiSWdvciBNaXRzeWFua28iIDxpLm1pdHN5
-YW5rb0BnbWFpbC5jb20+LCAiSmFuIEtpc3prYSIgPGphbi5raXN6a2FAd2ViLmRlPiwgIkplYW4t
-Q2hyaXN0b3BoZSBEdWJvaXMiIDxqY2RAdHJpYnVkdWJvaXMubmV0PiwgIk1hcmVrIFZhc3V0IiA8
-bWFyZXhAZGVueC5kZT4sICJQYXVsIER1cnJhbnQiIDxwYXVsLmR1cnJhbnRAY2l0cml4LmNvbT4s
-ICJQZXRlciBNYXlkZWxsIiA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPiwgIlN0ZWZhbm8gU3Rh
-YmVsbGluaSIgPHNzdGFiZWxsaW5pQGtlcm5lbC5vcmc+LCBxZW11LWFybUBub25nbnUub3JnLCBx
-ZW11LXBwY0Bub25nbnUub3JnLCB4ZW4tZGV2ZWxAbGlzdHMueGVucHJvamVjdC5vcmcKPiBTdWJq
-ZWN0OiBSZTogTWFpbnRhaW5lcnMsIHBsZWFzZSB0ZWxsIHVzIGhvdyB0byBib290IHlvdXIgbWFj
-aGluZXMhCj4gCj4gWy4uLl0KPiAKPiBNYWNoaW5lcyB3aXRoIG5vIHN1cHBvcnRlciwgYnV0IGF0
-IGxlYXN0IG9uZSBtYWludGFpbmVyOgo+IAo+ICAgICBbLi4uXQo+IAo+ICAgICA9IGh3L3VuaWNv
-cmUzMi9wdXYzLmMgPQo+ICAgICBHdWFuIFh1ZXRhbyA8Z3h0QG1wcmMucGt1LmVkdS5jbj4gKG1h
-aW50YWluZXI6VW5pQ29yZTMyKQo+IAo+IAo+IFRhcmdldHMgd2hlcmUgd2UgaGF2ZSByZWNlaXZl
-ZCBpbmZvcm1hdGlvbiBmb3IgKm5vKiBtYWNoaW5lIHNvIGZhcjoKPiAKPiAgICAgWy4uLl0KPiAg
-ICAgdW5pY29yZQoKSSdtIGhlcmUuIE5vdyBJIGNhbiBmaW5hbGx5IGRlYWwgd2l0aCBteSBlbWFp
-bCBhY2NvdW50IDxneHRAbXByYy5wa3UuZWR1LmNuPiBhZnRlciBzZXZlcmFsIHllYXJzIGNoYW9z
-LgpBbnl3YXksIHNvcnJ5IGZvciBzbyBsYXRlLgoKVG8gYm9vdCB1bmljb3JlMzIgbWFjaGluZSwg
-Zm9sbG93aW5nIGNvbW1hbmRzIGFyZSB0ZXN0ZWQgaW4gYnJhbmNoIHN0YWJsZS0yLjc6CgpUbyBj
-b25maWd1cmUgdW5pY29yZTMyIHRhcmdldDoKIC4vY29uZmlndXJlICAgICAtLXRhcmdldC1saXN0
-PXVuaWNvcmUzMi1zb2Z0bW11ICAgICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAg
-ICAgICAtLWVuYWJsZS1kZWJ1ZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIFwKICAgICAgICAgICAgICAgICAtLWRpc2FibGUtc2RsICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAgICAgICAtLWVuYWJsZS1jdXJzZXMg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAgICAg
-ICAtLWV4dHJhLWNmbGFncz0iLUQgcmVzdHJpY3Q9cmVzdHJpY1QiICAgICAgICAgICAgICAgICAg
-IFwKClRvIHJ1biBhIHNpbXBsZSBidXN5Ym94IGltYWdlIG9uIHFlbXUtZGVmY29uZmlnIGtlcm5l
-bDoKIC4vcWVtdS1zeXN0ZW0tdW5pY29yZTMyIC1jdXJzZXMgLU0gcHV2MyAtbSA1MTIgLWljb3Vu
-dCAwIC1rZXJuZWwgc29tZWRpci96SW1hZ2UKIApQbGVhc2UgY2hlY2sgZ2l0aHViIGZvciBtb3Jl
-IGRldGFpbHM6IGh0dHBzOi8vZ2l0aHViLmNvbS9neHQvVW5pQ29yZTMyCgpUaGFua3MsCkd1YW4g
-WHVldGFvCg==
+Currently the dc_zva helper function uses a variable length
+array. In fact we know (as the comment above remarks) that
+the length of this array is bounded because the architecture
+limits the block size and QEMU limits the target page size.
+Use a fixed array size and assert that we don't run off it.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+A small move in the direction of "avoid using variable length
+arrays in QEMU"...
+
+ target/arm/helper.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index a36f4b3d699..1b6225cb598 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1,4 +1,5 @@
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "target/arm/idau.h"
+ #include "trace.h"
+ #include "cpu.h"
+@@ -12412,11 +12413,13 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
+          * same QEMU executable.
+          */
+         int maxidx = DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
+-        void *hostaddr[maxidx];
++        void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 << TARGET_PAGE_BITS_MIN)];
+         int try, i;
+         unsigned mmu_idx = cpu_mmu_index(env, false);
+         TCGMemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
+ 
++        assert(maxidx <= sizeof(hostaddr));
++
+         for (try = 0; try < 2; try++) {
+ 
+             for (i = 0; i < maxidx; i++) {
+-- 
+2.20.1
+

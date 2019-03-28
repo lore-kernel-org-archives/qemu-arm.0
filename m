@@ -1,105 +1,84 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp422853wrx;
-        Thu, 28 Mar 2019 03:04:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxY6mPf4fDX2d4WDVsH25Di2fI3B8DiqpqnnM8vNX/QN7OjT6KBTgYqhj5Zfv2aQ7gor86u
-X-Received: by 2002:a24:eec1:: with SMTP id b184mr6971531iti.49.1553767460955;
-        Thu, 28 Mar 2019 03:04:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553767460; cv=none;
-        d=google.com; s=arc-20160816;
-        b=QrqDlrPHbBa0jRPwAs13jREiIHGXJtDQma5HEQEv9vCejNxMdPfHl6d/iRrFTtB3QI
-         8lOx9YMAO7bpfCzB3MSicdsrAZqlZTbLWJtt466UV2UMPtvrqtSNXikEygpGd+YTC8hv
-         Rjl0qjxpMgznC4OwOgDpSPGq3f9nbIb6oxG7Fdl8O//lLLzNej4fVx7PEC2JLDVVggjJ
-         6+BDPodheqeUdtXHalqAwMCXPFbv9vcNOlZUBLF2tiIPBuw764Qv7Y1lWDU29Qnv1ZhX
-         0aGUMsgCWk+3+TOjK28djU7E9CzdViLADAx16WEeCutBRefmxH4wcP5vKIm5rFCxReMM
-         yIvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=YeHKWyPP8B+92GniO4g/+lw4RSrgbg3qVWcU8n/OVeQ=;
-        b=vbzZXMWRgWL/zjjVf6WnZYzvdFjoegzPfvtTycGLj9byqOVKw4MqGex9myjDEM/7p2
-         35s7lHwYaxCuYUA36C2XjGTRcrhW2PIQsjrxTy3S5Mz41xLdEsRgJvDGTU2cW7DDhz2K
-         DVZjLyZa9APaGw4PjtCur0AbJt2f/XtWTRQRYUp2092I8MddX1IubygP1aUyT5y6Ajdd
-         4UHkB1714aQyXIS7Egwt4/o3B4SOcm66FIq3L0GaQSFsPoMrAHsjSuKpyDFodFTGI7hJ
-         a3k3pY9vj6Kts6qMekDMFzC76BfR6zUSvnmzVaYfSJTLt7Hgczeo6UYLnJS25HZgNG7R
-         gtCw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XTmTuqa8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp655826wrx;
+        Thu, 28 Mar 2019 06:55:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqypjj+Z6LltT41UBPkdtmvjLTtMhlaLv9596jnkZ50fDkxpxKj05ZOfOSN7fzg0MMCfOwxr
+X-Received: by 2002:a24:703:: with SMTP id f3mr97358itf.164.1553781302378;
+        Thu, 28 Mar 2019 06:55:02 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i189si1477879iti.90.2019.03.28.03.04.20
+        by mx.google.com with ESMTPS id k125si1750936itc.60.2019.03.28.06.55.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 03:04:20 -0700 (PDT)
+        Thu, 28 Mar 2019 06:55:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XTmTuqa8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:33724 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=qfIg8EHw;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:36986 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9RtU-0000UP-7l
-	for alex.bennee@linaro.org; Thu, 28 Mar 2019 06:04:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39436)
+	id 1h9VUj-00014x-OX
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 09:55:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51882)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h9Rsj-0008Uh-U8
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 06:03:37 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1h9VUc-00014q-9t
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 09:54:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h9Rn2-0001MV-LM
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 05:57:41 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:47038)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h9Rn2-0001La-5H
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 05:57:40 -0400
-Received: by mail-wr1-x444.google.com with SMTP id t17so1298440wrw.13
-	for <qemu-arm@nongnu.org>; Thu, 28 Mar 2019 02:57:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=YeHKWyPP8B+92GniO4g/+lw4RSrgbg3qVWcU8n/OVeQ=;
-	b=XTmTuqa8b7yFsWGyBqo5lzqGnV4mo8F6VxXcoTyrSM30BxckhoFwUjwiq4DFDTCIe9
-	OnlIG/jm9IYyqqDjOSPaV3ZJaCxl1d2e9njLD4R1ehnpGNir+STyg6m3wi1AJwj/d84R
-	BfH+WnzWiciCGzjVZpDgEniOoHPdCS1oamjSKNbGUAx9yLUpMqUKOfcy/cpr61GCv9Uf
-	Hnj0EDTzCualq1xxiT0v0UBFF64QqXES79bZHDOVZB2EmdqVNCNi68ydRF1iSs9PxGjK
-	kyhaZf6pS4nFCVVxVQ4L4NT3BEMBrhI3PznDuGs8fvxZV2LOnZv12nQBYcSZuVFPDGcZ
-	phjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=YeHKWyPP8B+92GniO4g/+lw4RSrgbg3qVWcU8n/OVeQ=;
-	b=QvI85o/72iJu488ObyX/YtbasRqnud33dm2oqKgrrP/cPNDxzldx1VHEdJG/qTpSD7
-	EMbz6Kilm0TBFYaY3Cq4Kx+zisMP5K+WyYx5wvmvz486Ojs5GNjQCW0hF86RPpGu2neB
-	SoPYUU2HQj1ruE+hbIJBanWWBJ6HyHRTv/CPaJ75gtyynbFrDmpNMNpG3Sv16lMgD5cX
-	F0fRtTWXus1Mhgwz4XtwmpUjArQQkQ7TWyKnLbyi8O/PGdMUhGPCn+YJg+LwcZMNZ7cS
-	Lfa2UaOULBm7pJvxRJMLt+2CRdnziw5D2EYS9UajO39ss6wTDXcgWE6i5u8/PbbknMY4
-	8e8Q==
-X-Gm-Message-State: APjAAAXsrjAKP4iCVKl0y0cLKdHHxU8C3bAX4tA5njTmdUdAVCw+fdY+
-	PwTTwi+YPwJRHBpzLwsmFYT3tYkEuKY=
-X-Received: by 2002:adf:ec0a:: with SMTP id x10mr10052738wrn.193.1553767058691;
-	Thu, 28 Mar 2019 02:57:38 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	q3sm13867319wrr.75.2019.03.28.02.57.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Mar 2019 02:57:37 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu, 28 Mar 2019 09:57:36 +0000
-Message-Id: <20190328095736.4480-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+	(envelope-from <damien.hedde@greensocs.com>) id 1h9VUW-0006pZ-Ve
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 09:54:53 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:55098)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+	id 1h9VUW-0006nJ-6Q; Thu, 28 Mar 2019 09:54:48 -0400
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 3015896EF0;
+	Thu, 28 Mar 2019 13:54:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1553781280;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	content-type:content-type:
+	content-transfer-encoding:content-transfer-encoding:
+	in-reply-to:in-reply-to:references:references;
+	bh=8C0ZhatGAndARlZsvtOZuBLdpLQC/Tjeu1ygXtIMy08=;
+	b=qfIg8EHwK//D4Furclv9rPxys8I7Yh+2T89Zq8GU/T7bQdcT/JJ/yB7f6lypGw8u78ZzwG
+	LcUYdDpCb93byuHFQYLOjhoam0ygukWg1ZVqfuMNM3eRV85ncmdNcqjRv3LZpGj2g38eOo
+	LCWwqtichx/7ZGI3QgRglzU4BFHW80o=
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <cover.1553510737.git.damien.hedde@greensocs.com>
+	<c2bf4b5983b8f0bb42208eaf62643aaccc0163a2.1553510737.git.damien.hedde@greensocs.com>
+	<CAAdtpL6rX-U2Bh4m1y1Z3OGG8zkFfsn3iFz+4n93VZvEvhm7RA@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <198c899f-ccb1-a8b1-2b4f-63da226a00b4@greensocs.com>
+Date: Thu, 28 Mar 2019 14:54:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.3
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH for-4.0] hw/arm/raspi: Diagnose requests for too
- much RAM
+In-Reply-To: <CAAdtpL6rX-U2Bh4m1y1Z3OGG8zkFfsn3iFz+4n93VZvEvhm7RA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+	s=mail; t=1553781280;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	content-type:content-type:
+	content-transfer-encoding:content-transfer-encoding:
+	in-reply-to:in-reply-to:references:references;
+	bh=8C0ZhatGAndARlZsvtOZuBLdpLQC/Tjeu1ygXtIMy08=;
+	b=M+jb3uOCwlIrVjEqUUU9OUpSBi570HgZ42w27qDJYZqRxsEQ1L84pXzH5idvYUm9MXawdS
+	HxD1QJ9mI++VOLM5FkvwM0PZb8T24kAyWDpLGmFwBbA7OjKligRE87wik+G6IzxOmXM0sl
+	ijQFrzUTF1ZyxLuW9TMmcSs+5Iqe4Tk=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1553781280; a=rsa-sha256; cv=none;
+	b=YVVYWXKF1uKoRRwzLH7wnU1bKUsT/UzQYjaMAg9pV0b2AuaVm/IoJzgbeH+IsBpq9Fu7Mk
+	zBXVMQcnfDbcTmh/ZSVO00/op+APVojXNJWMOqzAEOGtLOhq2Tn3h92ILbvDuEqdS65YxX
+	+lwr6xeJAbe7hTkvsNCnwnw7FYZfojw=
+ARC-Authentication-Results: i=1; ORIGINATING;
+	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [RFC PATCH 15/17] Convert zynq's slcr to 3-phases
+ reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,56 +90,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Andrew.Baumann@microsoft.com, patches@linaro.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
+	mark.burton@greensocs.com,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm@nongnu.org, alistair.francis@wdc.com,
+	pbonzini@redhat.com, marcandre.lureau@redhat.com,
+	philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pUt/dUwR1s/I
+X-TUID: p3yNnvCACv61
 
-The Raspberry Pi boards have a physical memory map which does
-not allow for more than 1GB of RAM. Currently if the user tries
-to ask for more then we fail in a confusing way:
+Hi Philippe,
 
-$ qemu-system-aarch64 --machine raspi3 -m 8G
-Unexpected error in visit_type_uintN() at qapi/qapi-visit-core.c:164:
-qemu-system-aarch64: Parameter 'vcram-base' expects uint32_t
-Aborted (core dumped)
+On 3/25/19 2:28 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Damien,
+>=20
+> Le lun. 25 mars 2019 12:16, Damien Hedde <damien.hedde@greensocs.com
+> <mailto:damien.hedde@greensocs.com>> a =C3=A9crit=C2=A0:
+>=20
+>     Change the legacy reset function into the init phase and test the
+>     resetting flag in register accesses.
+>=20
+>     Signed-off-by: Damien Hedde <damien.hedde@greensocs.com
+>     <mailto:damien.hedde@greensocs.com>>
+>     ---
+>     =C2=A0hw/misc/zynq_slcr.c | 14 +++++++++++---
+>     =C2=A01 file changed, 11 insertions(+), 3 deletions(-)
+> [...]
+>     @@ -346,6 +346,10 @@ static uint64_t zynq_slcr_read(void *opaque,
+>     hwaddr offset,
+>     =C2=A0 =C2=A0 =C2=A0offset /=3D 4;
+>     =C2=A0 =C2=A0 =C2=A0uint32_t ret =3D s->regs[offset];
+>=20
+>     +=C2=A0 =C2=A0 if (qdev_is_resetting((DeviceState *) opaque)) {
+>     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;
+>     +=C2=A0 =C2=A0 }
+>     +
+>     =C2=A0 =C2=A0 =C2=A0if (!zynq_slcr_check_offset(offset, true)) {
+>     =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_GUEST_ERROR, "z=
+ynq_slcr: Invalid read
+>     access to "
+>     =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0" addr %" HWADDR_PRIx "\n", offset * 4);
+>     @@ -361,6 +365,10 @@ static void zynq_slcr_write(void *opaque,
+>     hwaddr offset,
+>     =C2=A0 =C2=A0 =C2=A0ZynqSLCRState *s =3D (ZynqSLCRState *)opaque;
+>     =C2=A0 =C2=A0 =C2=A0offset /=3D 4;
+>=20
+>     +=C2=A0 =C2=A0 if (qdev_is_resetting((DeviceState *) opaque)) {
+>     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;
+>=20
+>=20
+> I wonder if that could be moved to generic parent, as an abstract metho=
+d.=C2=A0
+> But then I'm not sure we can use a generic read() return value.=C2=A0
+>=20
 
-Catch this earlier and diagnose it with a more friendly message:
-$ qemu-system-aarch64 --machine raspi3 -m 8G
-qemu-system-aarch64: Requested ram size is too large for this machine: maximum is 1GB
+I agree it would be better not have to add this kind of test everywhere.
+It is one my unresolved problem but I am not sure what is the best soluti=
+on.
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1794187
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/raspi.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+There is two approachs here I think:
+Either we disable/enable explicitely the memory regions in the reset
+handlers. But then we have to handle the migration of the memory regions
+flags.
+Or the memory region handlers somehow check the resetting state (like
+here) and we have only to handle the resetting state migration.
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 66899c28dc1..c7a18a319bc 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -12,6 +12,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -175,6 +176,12 @@ static void raspi_init(MachineState *machine, int version)
-     BusState *bus;
-     DeviceState *carddev;
- 
-+    if (machine->ram_size >= 1 * GiB) {
-+        error_report("Requested ram size is too large for this machine: "
-+                     "maximum is 1GB");
-+        exit(1);
-+    }
-+
-     object_initialize(&s->soc, sizeof(s->soc),
-                       version == 3 ? TYPE_BCM2837 : TYPE_BCM2836);
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
--- 
-2.20.1
+Memory region are added using the following code in sysbus:
+```
+memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart", 0x1000);
+sysbus_init_mmio(sbd, &s->iomem);
+sysbus_mmio_map(s, mmio_index, addr);
+```
+To intercept the read and write without needing a modification of every
+read/write handlers, I see two options:
+
++ we can either find a way to "override" the read and write handlers of
+the memory regions. For example, this could be done in sysbus_init_mmio,
+or in a dedicated version of the function (eg sysbus_init_mmio_with_reset=
+)
+
++ or we can use the MemoryRegion owner field (here _obj_ in
+memory_region_init_io call) to test if the owner is Resettable and
+whether it is resetting or not before calling the handlers. In that
+case, this will not be limited to sysbus devices.
+
+--
+Thanks
+Damien
+
+
 

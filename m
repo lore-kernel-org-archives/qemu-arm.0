@@ -1,92 +1,81 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5422653wrx;
-        Tue, 26 Mar 2019 11:42:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzSvDf2qiAz2urbqw7THYvgeBDbRyGR0is6lyzeTRGxa4ztbdQWaAhrU0ArHGgNtJYJjsOy
-X-Received: by 2002:a24:dc41:: with SMTP id q62mr333378itg.94.1553625770209;
-        Tue, 26 Mar 2019 11:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553625770; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp661132wrx;
+        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMNn4lkbnG7pZCiGt5cpBG3Oz/pdSzcDpRVopmvzvvTo4gTkosXCLCdTdg/0E4qiv9Ditt
+X-Received: by 2002:a24:9a83:: with SMTP id l125mr100024ite.59.1553781624160;
+        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553781624; cv=none;
         d=google.com; s=arc-20160816;
-        b=SWWexwFT70CEyTOXApX3BYYygGwWfm1+OUFFf0Cza8W7EmNFcYQMEmFWp0UYI7AfDA
-         jIZuOUCAVHMvQScE1a9g1d00EQUSCfCgEiVJesYRvlCaQp8/1NY3tylUrbzIDYqBKORM
-         KRx1t0Fx/qo61Gex1cl/k8zOg7gljAB3qNkeftOJgrU3BTpo5PNvZSt5BJXTwSmcrc60
-         OS9+sQNklIi+ol3GnkTdz7tU863ihuvAR+c8pDVeK+ha7qy9gR5B8+wPulClrzZTFVUs
-         bemgspy5I3/ae42c2vjynHzIXosTVmBwiR2dDCaIHPjteUtEV5dpalb4nU00PRr1RzqB
-         OSQg==
+        b=0lmIH96z96S2wKFGy//hTH2rHfM79IqnYCx+2CvxVNj4Jvrn0xMD2YoI/LSkAXOZMc
+         9vV87OgXZzWRAXGo+OFvUpiwdr48Swt8Q9BiQBZLvL6GQMTc+bbxoFzdW+hEe7AomIVM
+         paQqgnaZYOjJwoVMjHLYi1TAb1fElOGbks9q6SLkMdE5Ki4A9+EmHeaqC0nwsJ4r4W3m
+         WEWpaSE9ygBi2yr3vh+Fk2WDtsyisk2DIuy72/dLabYIZnkpovEowyMV/MW8TP4O7L2V
+         NbqbJFAlpJ1IqViQbCuIPcxY+AW9VijcW+FhJMOjv4aQTrbOxV6XYK1a8WQ7hUweQ8z7
+         eGRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from;
-        bh=M3tEBT/JUmnB8xDjZdI4XRtJhHIh2Qc+mlC8Z7fdHDc=;
-        b=UKkYTFrkGYOlIFuOtX4AcgqZI5VHXdDX7NNl9A4IKwefByCcahywSiMuhF8gJlxk/z
-         piTBqUC2LwGjE6XGIQb5ANAigjUaFvniiwDbHG1XIdioT9yzcPVjEm7yJpSnQ9Nw3Cwl
-         uXtTSrQjFiwPCQSWqaOdhFtOcG4PReDRI02DWhSet0HBgabOCCjPrP0jIHZuApbiPxCQ
-         uwP0WTzEGB0Cbp0Q3Y/k3WZCe/3twFFIsXHn5xxcjZ0i6GtBDJqc+JpL6Uyy3uHRXbUm
-         kM2EUZuPYRFPYXFjmDkNnoRFlXAbW4t8f5Q6Ik8EDCIcJgHJlQOFMb1adW8aKU5StZdo
-         gclg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:mime-version
+         :content-transfer-encoding:references:in-reply-to:to:from:date;
+        bh=ywUmirkAMOleeZKjKgI3BiKBFUfsg33stNjjDjFv3EM=;
+        b=PHMxmfaeGr7948ykEmNC/TF6TJOQqfE6YUeIttvmK4nh/MZJXKDnO2WmkI0JyU9NIY
+         RHskXcvbBcDaJACWbZVy98YbJwadGKnOGj8FyPEp0QY4UyXxfGXsjFugf56sWXtX4jkN
+         aCxxBE1+NsdHU2bds/qP5bAVKlXLL64ZAsUjQtp6TuVib0LKzTJt3uatlrqa4pBU07+e
+         lhHsqo+wNWi3WVoV/WHHbdJaQrECHIeCLaCEJyjROjE3nBOGQjtB2kpsk7Vt9eBINMcb
+         Ad+crukIO2vYIWp/UD7NY6UUEKsOAdy7aXJfqk7K8kP7ieFM+rruf+zGOaRsju9fYraV
+         nMBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t22si8941661itc.99.2019.03.26.11.42.50
+        by mx.google.com with ESMTPS id u21si1690531itc.140.2019.03.28.07.00.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Mar 2019 11:42:50 -0700 (PDT)
+        Thu, 28 Mar 2019 07:00:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36406 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:37056 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h8r29-0008CG-Hd
-	for alex.bennee@linaro.org; Tue, 26 Mar 2019 14:42:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58672)
+	id 1h9VZv-00034d-GX
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 10:00:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52942)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h8r06-0007Ba-R4
-	for qemu-devel@nongnu.org; Tue, 26 Mar 2019 14:40:43 -0400
+	(envelope-from <gxt@mprc.pku.edu.cn>) id 1h9VYt-0002W2-9m
+	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 09:59:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1h8qvw-0000Mf-Vv
-	for qemu-devel@nongnu.org; Tue, 26 Mar 2019 14:36:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59566)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1h8qvv-0000LL-1e; Tue, 26 Mar 2019 14:36:23 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 947EA811AC;
-	Tue, 26 Mar 2019 18:36:21 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2DD0C17595;
-	Tue, 26 Mar 2019 18:36:21 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 81E591138648; Tue, 26 Mar 2019 19:36:19 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-References: <20190325125142.11628-1-zhengxiang9@huawei.com>
-	<CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
-	<19929558-9f2d-148a-4357-d48b46f8b62b@huawei.com>
-	<87va06kvm6.fsf@dusky.pond.sub.org>
-	<59f100b4-f6e9-973d-532b-58fb172a7009@redhat.com>
-	<87imw5fv45.fsf@dusky.pond.sub.org>
-	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
-Date: Tue, 26 Mar 2019 19:36:19 +0100
-In-Reply-To: <abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com> (Laszlo Ersek's
-	message of "Tue, 26 Mar 2019 18:10:36 +0100")
-Message-ID: <8736n9eb4s.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <gxt@mprc.pku.edu.cn>) id 1h9VYr-0008S4-SK
+	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 09:59:19 -0400
+Received: from mx9.pku.edu.cn ([162.105.129.172]:48275 helo=pku.edu.cn)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <gxt@mprc.pku.edu.cn>)
+	id 1h9VYg-0008KC-AO; Thu, 28 Mar 2019 09:59:06 -0400
+Received: by ajax-webmail-mailfront03 (Coremail) ; Thu, 28 Mar 2019 21:57:06
+	+0800 (GMT+08:00)
+X-Originating-IP: [203.187.182.140]
+Date: Thu, 28 Mar 2019 21:57:06 +0800 (GMT+08:00)
+X-CM-HeaderCharset: UTF-8
+From: "Guan Xuetao" <gxt@mprc.pku.edu.cn>
+To: "markus armbruster" <armbru@redhat.com>
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.7b build 20180509(9e2321e9)
+	Copyright (c) 2002-2019 www.mailtech.cn pku
+In-Reply-To: <875zsed86y.fsf@dusky.pond.sub.org>
+References: <87d0mwatbu.fsf@dusky.pond.sub.org>
+	<875zsed86y.fsf@dusky.pond.sub.org>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=UTF-8
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 26 Mar 2019 18:36:21 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable size of
- flash device to save memory
+Message-ID: <2c0bc4bf.2d83.169c4970a80.Coremail.gxt@mprc.pku.edu.cn>
+X-Coremail-Locale: en_US
+X-CM-TRANSID: 84FpogD3_4uy0pxcWFixAA--.4256W
+X-CM-SenderInfo: qqqqliixuslio6sn3hxhgxhubq/1tbiAQEDB1Py8dJ42wAAsl
+X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
+	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
+	daVFxhVjvjDU=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 162.105.129.172
+Subject: Re: [Qemu-devel] Maintainers,
+ please tell us how to boot your machines!
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,42 +87,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Zheng Xiang <zhengxiang9@huawei.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Heyi Guo <guoheyi@huawei.com>,
-	wanghaibin.wang@huawei.com
+Cc: peter maydell <peter.maydell@linaro.org>,
+	anthony green <green@moxielogic.com>, qemu-devel@nongnu.org,
+	"edgar e. iglesias" <edgar.iglesias@gmail.com>,
+	marek vasut <marex@denx.de>, stefano stabellini <sstabellini@kernel.org>,
+	aleksandar rikalo <arikalo@wavecomp.com>, alexander graf <agraf@suse.de>,
+	=?UTF-8?Q?herv=C3=A9_poussineau?= <hpoussin@reactos.org>,
+	anthony perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	paul durrant <paul.durrant@citrix.com>, jan kiszka <jan.kiszka@web.de>,
+	igor mitsyanko <i.mitsyanko@gmail.com>,
+	bastian koppelmann <kbastian@mail.uni-paderborn.de>,
+	chris wulff <crwulff@gmail.com>,
+	jean-christophe dubois <jcd@tribudubois.net>,
+	andrey smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, aleksandar markovic <amarkovic@wavecomp.com>,
+	aurelien jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W7re17mzCW4r
+X-TUID: NdVVkD5pC9Mj
 
-Laszlo Ersek <lersek@redhat.com> writes:
-
-> On 03/26/19 17:39, Markus Armbruster wrote:
->> Laszlo Ersek <lersek@redhat.com> writes:
->
->>> With the dynamic sizing in QEMU (which, IIRC, I had originally
->>> introduced still in the 1MB times, due to the split between the
->>> executable and varstore parts), both the 1MB->2MB switch, and the
->>> 2MB->4MB switch in the firmware caused zero pain in QEMU. And right now,
->>> 4MB looks like a "sweet spot", with some elbow room left.
->> 
->> Explicit configuration would've been exactly as painless.  Even with
->> pflash sizes restricted to powers of two.
->
-> I wrote the patch that ended up as commit 637a5acb46b3 -- with your R-b
-> -- in 2013. I'm unsure if machine type properties existed back then, but
-> even if they did, do you think I knew about them? :)
->
-> You are right, of course; it's just that we can't tell the future.
-
-True!  All we can do is continue to design as well as we can given the
-information, experience and resources we have, and when the inevitable
-design mistakes become apparent, limit their impact.
-
-Some of the things we now consider mistakes we just didn't see.  Others
-we saw (e.g. multiple pflash devices, unlike physical hardware), but
-underestimated their impact.
-
-[...]
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2VzLS0tLS0KPiBGcm9tOiAiTWFya3VzIEFybWJydXN0ZXIi
+IDxhcm1icnVAcmVkaGF0LmNvbT4KPiBTZW50IFRpbWU6IDIwMTktMDMtMjAgMDI6MzQ6NDUgKFdl
+ZG5lc2RheSkKPiBUbzogcWVtdS1kZXZlbEBub25nbnUub3JnCj4gQ2M6ICJFZGdhciBFLiBJZ2xl
+c2lhcyIgPGVkZ2FyLmlnbGVzaWFzQGdtYWlsLmNvbT4sICJIZXJ2w6kgUG91c3NpbmVhdSIgPGhw
+b3Vzc2luQHJlYWN0b3Mub3JnPiwgIkFsZWtzYW5kYXIgTWFya292aWMiIDxhbWFya292aWNAd2F2
+ZWNvbXAuY29tPiwgIkFsZWtzYW5kYXIgUmlrYWxvIiA8YXJpa2Fsb0B3YXZlY29tcC5jb20+LCAi
+QWxleGFuZGVyIEdyYWYiIDxhZ3JhZkBzdXNlLmRlPiwgIkFuZHJleSBTbWlybm92IiA8YW5kcmV3
+LnNtaXJub3ZAZ21haWwuY29tPiwgIkFuZHJ6ZWogWmFib3Jvd3NraSIgPGJhbHJvZ2dAZ21haWwu
+Y29tPiwgIkFudGhvbnkgR3JlZW4iIDxncmVlbkBtb3hpZWxvZ2ljLmNvbT4sICJBbnRob255IFBl
+cmFyZCIgPGFudGhvbnkucGVyYXJkQGNpdHJpeC5jb20+LCAiQXVyZWxpZW4gSmFybm8iIDxhdXJl
+bGllbkBhdXJlbDMyLm5ldD4sICJCYXN0aWFuIEtvcHBlbG1hbm4iIDxrYmFzdGlhbkBtYWlsLnVu
+aS1wYWRlcmJvcm4uZGU+LCAiQ2hyaXMgV3VsZmYiIDxjcnd1bGZmQGdtYWlsLmNvbT4sICJHdWFu
+IFh1ZXRhbyIgPGd4dEBtcHJjLnBrdS5lZHUuY24+LCAiSWdvciBNaXRzeWFua28iIDxpLm1pdHN5
+YW5rb0BnbWFpbC5jb20+LCAiSmFuIEtpc3prYSIgPGphbi5raXN6a2FAd2ViLmRlPiwgIkplYW4t
+Q2hyaXN0b3BoZSBEdWJvaXMiIDxqY2RAdHJpYnVkdWJvaXMubmV0PiwgIk1hcmVrIFZhc3V0IiA8
+bWFyZXhAZGVueC5kZT4sICJQYXVsIER1cnJhbnQiIDxwYXVsLmR1cnJhbnRAY2l0cml4LmNvbT4s
+ICJQZXRlciBNYXlkZWxsIiA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPiwgIlN0ZWZhbm8gU3Rh
+YmVsbGluaSIgPHNzdGFiZWxsaW5pQGtlcm5lbC5vcmc+LCBxZW11LWFybUBub25nbnUub3JnLCBx
+ZW11LXBwY0Bub25nbnUub3JnLCB4ZW4tZGV2ZWxAbGlzdHMueGVucHJvamVjdC5vcmcKPiBTdWJq
+ZWN0OiBSZTogTWFpbnRhaW5lcnMsIHBsZWFzZSB0ZWxsIHVzIGhvdyB0byBib290IHlvdXIgbWFj
+aGluZXMhCj4gCj4gWy4uLl0KPiAKPiBNYWNoaW5lcyB3aXRoIG5vIHN1cHBvcnRlciwgYnV0IGF0
+IGxlYXN0IG9uZSBtYWludGFpbmVyOgo+IAo+ICAgICBbLi4uXQo+IAo+ICAgICA9IGh3L3VuaWNv
+cmUzMi9wdXYzLmMgPQo+ICAgICBHdWFuIFh1ZXRhbyA8Z3h0QG1wcmMucGt1LmVkdS5jbj4gKG1h
+aW50YWluZXI6VW5pQ29yZTMyKQo+IAo+IAo+IFRhcmdldHMgd2hlcmUgd2UgaGF2ZSByZWNlaXZl
+ZCBpbmZvcm1hdGlvbiBmb3IgKm5vKiBtYWNoaW5lIHNvIGZhcjoKPiAKPiAgICAgWy4uLl0KPiAg
+ICAgdW5pY29yZQoKSSdtIGhlcmUuIE5vdyBJIGNhbiBmaW5hbGx5IGRlYWwgd2l0aCBteSBlbWFp
+bCBhY2NvdW50IDxneHRAbXByYy5wa3UuZWR1LmNuPiBhZnRlciBzZXZlcmFsIHllYXJzIGNoYW9z
+LgpBbnl3YXksIHNvcnJ5IGZvciBzbyBsYXRlLgoKVG8gYm9vdCB1bmljb3JlMzIgbWFjaGluZSwg
+Zm9sbG93aW5nIGNvbW1hbmRzIGFyZSB0ZXN0ZWQgaW4gYnJhbmNoIHN0YWJsZS0yLjc6CgpUbyBj
+b25maWd1cmUgdW5pY29yZTMyIHRhcmdldDoKIC4vY29uZmlndXJlICAgICAtLXRhcmdldC1saXN0
+PXVuaWNvcmUzMi1zb2Z0bW11ICAgICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAg
+ICAgICAtLWVuYWJsZS1kZWJ1ZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIFwKICAgICAgICAgICAgICAgICAtLWRpc2FibGUtc2RsICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAgICAgICAtLWVuYWJsZS1jdXJzZXMg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgICAgICAg
+ICAtLWV4dHJhLWNmbGFncz0iLUQgcmVzdHJpY3Q9cmVzdHJpY1QiICAgICAgICAgICAgICAgICAg
+IFwKClRvIHJ1biBhIHNpbXBsZSBidXN5Ym94IGltYWdlIG9uIHFlbXUtZGVmY29uZmlnIGtlcm5l
+bDoKIC4vcWVtdS1zeXN0ZW0tdW5pY29yZTMyIC1jdXJzZXMgLU0gcHV2MyAtbSA1MTIgLWljb3Vu
+dCAwIC1rZXJuZWwgc29tZWRpci96SW1hZ2UKIApQbGVhc2UgY2hlY2sgZ2l0aHViIGZvciBtb3Jl
+IGRldGFpbHM6IGh0dHBzOi8vZ2l0aHViLmNvbS9neHQvVW5pQ29yZTMyCgpUaGFua3MsCkd1YW4g
+WHVldGFvCg==

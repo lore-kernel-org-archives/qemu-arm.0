@@ -1,230 +1,142 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp967726wrx;
-        Thu, 28 Mar 2019 11:54:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwAUNS6Gqc7Sm1sDjDp3ycRLGviGx1RVnX+I3XQJvLg69vFi6rpATwntWEbr7yVfXCyyhXt
-X-Received: by 2002:a02:9a12:: with SMTP id b18mr32028623jal.45.1553799276929;
-        Thu, 28 Mar 2019 11:54:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553799276; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp987570wrx;
+        Thu, 28 Mar 2019 12:14:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw64ugnPObn+TZL9CjH8RjDHB4XN5Gyo9kGXLkEPVEL704f2+30Y1YVcUPL0Att3Pbevnyk
+X-Received: by 2002:a02:1306:: with SMTP id 6mr30285068jaz.124.1553800488177;
+        Thu, 28 Mar 2019 12:14:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553800488; cv=none;
         d=google.com; s=arc-20160816;
-        b=LoNEjVtiOAehLjb2uf18Qk13ICIPEEWk1qX4/S/W6RZwGYP9p63rr3JL5+JByxA4XN
-         tGB3ABclOSxWfB14urMTQO8tXIBCQH9xU708g5sQQJ9H5PUz2NJVeKAWL4BTdlb/tBds
-         izS+DLVJAFXlx4rXix4US0+VUYlKqbzTsvq5IrYa93GPO+/42Yvx5o4Q1IVDO3uk1J/h
-         80jY8+2o3Lx2eLDEoHN8w9uqPAjvHvh3bZrRLkQjw11O+MdzLmLhr5ToAq6JYhBl8UpY
-         KsixO/yBDUTEO/q6gAPwXCOf99QGbNXgVRYFgjuNZwLDDwIRMKDLcMk4C2dMdUsHdryY
-         rwFA==
+        b=z5buktCQmbXwCnPj55Zg2lF/ox1g24oGT7mGATGvbYwUPL57rT11PI0SRySd3uRDkX
+         2WxP70B2Rwear2LuDYS9+Djjn1gQmQDJJqvERuWEPDK3CbsLihziLO6cMdKULxbWV2AJ
+         R4uz8KLf1YOQoUQ/6K6bSQCN8OE4so7bmmQWMeqRhYCDMrP2SflPya6usCzWEIlzsukJ
+         7/q+be3JsOEGzuwHWEq27/7FX6Gqnynz7fSO5VTqbt1x0hSWTnmJOKvXXgyVXv/kKejW
+         ndm2HeIUFFBik3X9XKMuLUKGPEr53OfuSu4fXofVpEwfwM91x2wPspr+89NdhmCCTEbT
+         z4qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=A4LAx65JwVqjnYc9tkPn4fThktnvCBxPqXTWDYlv0U4=;
-        b=it7Ynb0lZewx25OibIHLwbSPqxCy0LSZiR53PTUy9vJJ9eiLPG6T2I9kfpKd6mbk7m
-         HVLgOl94hoUibB/M/dc1D6WnCpi5NC0i2zZFliF4QooOp4CUvuDjoWf5Y5KilbXZVhrI
-         /4SnBrqmwj7pSes2/gqXCplwl3IbIS+iAUHDpXpV5vxdJ9+ubK+bJ1U5/WU2JnQ9G4kn
-         qPSTZNyYtskzRKbBUq1YfpJ8K5d78GQ7vcOzMNA8CyDpzzJGoyWH03NWCBfP7N9NT6x9
-         IuB/CmiHc1J984YeakUyM86TWFyOhGQkfNBzNNW8I/RAbzEiTjWbFt3/i7BbfjX3FuLJ
-         MtwA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=EZ1627dGVx4SjsHIJ5lLB++IMuZtN2ZUbs/HF9l1Z4g=;
+        b=OJp6P+F2BqlS5qP3he2yhWOfjoSxOSzw/dz9CF7X3OnBjJae9cfgly57N8b7ZTK9+B
+         EDixqmgBzfIZEBkoimq4IT/t6bVF37RJiRU32ZwuTsEgov7mIiH6icU4csJy5C2+LOqF
+         VrC3RDyUunni6zstTVHTJNSKDkW9WwOBe9HEemnM3EuCOcgnLTJSlX4W/PSzpEHLFkJg
+         rwUyUDHcbEJ9/kWEhWnIfoSOuqRdF0+CAVqzCXfK/6kkZD1D9anyr5U7EzWfs899fcuf
+         51Gs/4mIeh164shk8mqv+WPMwnRc4hXk8fx4+YNpVL1IqioJV6M+3eRTR8oIAR6+abzb
+         4ocA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="vvw/2Sb0";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16si2226337itk.65.2019.03.28.11.54.36
+        by mx.google.com with ESMTPS id y35si2218509ita.127.2019.03.28.12.14.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 11:54:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Mar 2019 12:14:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40728 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="vvw/2Sb0";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:40980 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9aAe-0001Em-8J
-	for alex.bennee@linaro.org; Thu, 28 Mar 2019 14:54:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50867)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1h9aUB-00011H-Fo
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 15:14:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55322)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9aAW-0001EN-9n
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:54:29 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1h9aTi-00010p-Pl
+	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 15:14:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9aAV-0006rL-7Z
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 14:54:28 -0400
-Received: from mail-yw1-f65.google.com ([209.85.161.65]:35202)
+	(envelope-from <richard.henderson@linaro.org>) id 1h9aTh-0005ye-VH
+	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 15:14:18 -0400
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b]:44374)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1h9aAU-0006rG-Vz; Thu, 28 Mar 2019 14:54:27 -0400
-Received: by mail-yw1-f65.google.com with SMTP id d132so3109151ywa.2;
-	Thu, 28 Mar 2019 11:54:26 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1h9aTg-0005xA-Ew
+	for qemu-devel@nongnu.org; Thu, 28 Mar 2019 15:14:17 -0400
+Received: by mail-pf1-x42b.google.com with SMTP id y13so5666897pfm.11
+	for <qemu-devel@nongnu.org>; Thu, 28 Mar 2019 12:14:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=EZ1627dGVx4SjsHIJ5lLB++IMuZtN2ZUbs/HF9l1Z4g=;
+	b=vvw/2Sb0x3O9Z3IqTHWyefnVs6aJ7iD3KL2oi0+noBSwUUUfCLed57fjn8iFZp4nt6
+	pk3sGzhaUOtd12lvqUdLvw7V6a2/d2dCrHl0mMdgFRRAuQKG9+ZGBRYAoyTUKimkX3v2
+	4m6IldGlN4rznarRi7I15mnjR1mtu/YsVSjuT/7xMd1Sl21B6d0tVB5qbJPEPPgZpBco
+	tjAshIvLx7uY8wv4VdzqENt9LI53updXJAmAyflm2g1pDKtM10qpkTgudkBYn3Unnoe3
+	RnjNh2CkTlnY0MzJHgbuUqC12WEGlVRokr/o/BXe9VrFuO5a5BGws13fAppLm+fSErhb
+	+uHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=A4LAx65JwVqjnYc9tkPn4fThktnvCBxPqXTWDYlv0U4=;
-	b=cD3lVHYNHU/KIMY2DZlr+CcSiiWLsiY4Vd37Lkn5HB8uFLeGmjKRHG4e4veFMLZLhv
-	XMZqM12kPBLJ9gTEsxrfS52OcCO0GNQhpoc1ZRywRY+yxuw8gjqkptYLeoGvWBHf4Eol
-	v1yPLoDsJ22PozEHu7pwhfIgcXs9ZoroQft8/pKZBPnEl1eon+T88Hq1yagXlJDFj/Ox
-	jSTiEkxjMc55dNJeUyETADFH5lXaaI36l6aBVa9abg5p6ygjlK94m1kjcBFeMXdb93tf
-	XMrAM7J/vCeyXojSAKTABy0WGMrVxYWZbtRi6/8DiObCZJYehhmLk0CsINTuba8+uwH/
-	fkWA==
-X-Gm-Message-State: APjAAAV10Ez+bVnEtHo12KNJrLFh1MK3hCm8vRUfi3H2Q5pUDTO0dR3+
-	WV8dbxetHuC7i1qiSkqmL+pYMhKpRb3J6SIVzM8=
-X-Received: by 2002:a81:5ec5:: with SMTP id
-	s188mr27164321ywb.381.1553799266435; 
-	Thu, 28 Mar 2019 11:54:26 -0700 (PDT)
-MIME-Version: 1.0
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=EZ1627dGVx4SjsHIJ5lLB++IMuZtN2ZUbs/HF9l1Z4g=;
+	b=IzDs+2U60jO6mWu1inrOhxTFyzPVTqfF5EOCTYDjOvFJpyv/Ww0hdmzbeFHTB03sbn
+	K17Hl86J0F6Ld/4J1XjopeFP+7H7Cd9FP3X9Nm4iEgZFg1BZSJT2PhSq5dSdCkz0HQq6
+	0M8LXnZM2ZI/lElBvdGQqx2Av4ivXWgfQdu2g7CYtEBHJ922Wxj0Is+LQpZlD25GMG88
+	i1QXxKeoh2qUA4MTkJIW7ifKd+hWm52uQw/Ki0Xl93lakmLyJ3sddYREU/04e/uSuPj+
+	X8LUG+YPqU7wwhv92UG8nxnu3OlXCQt9283e7OMXREZ3FkAQxxQaDk9UhNHSazSZv29k
+	T1Lw==
+X-Gm-Message-State: APjAAAUrMDHhiuaDw+KbX5KH0D/bm1zh7ThoF/E4OwfR2qG5w5W26c4y
+	4Juzc2LX3xLNNC90gUVF2ltbMA==
+X-Received: by 2002:a62:5797:: with SMTP id i23mr42674121pfj.12.1553800454236; 
+	Thu, 28 Mar 2019 12:14:14 -0700 (PDT)
+Received: from [192.168.3.43] (cpe-66-75-72-255.hawaii.res.rr.com.
+	[66.75.72.255]) by smtp.gmail.com with ESMTPSA id
+	l64sm20696249pfj.173.2019.03.28.12.14.12
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 28 Mar 2019 12:14:13 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 References: <20190328143003.16702-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <121a87be-4322-399b-4d5e-c4fb8580794c@linaro.org>
+Date: Thu, 28 Mar 2019 12:14:10 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.1
+MIME-Version: 1.0
 In-Reply-To: <20190328143003.16702-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Thu, 28 Mar 2019 19:54:13 +0100
-Message-ID: <CAAdtpL6ruwtCahrcRW4jugk7pg+cMEve6k5=JP+bvoSp47ymcw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000054071f05852c159d"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.161.65
-Subject: Re: [Qemu-arm] [PATCH for-4.1] target/arm: Stop using variable
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::42b
+Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Stop using variable
  length array in dc_zva
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: toBlos3El+0e
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ntv/Qwi+rmgn
 
---00000000000054071f05852c159d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le jeu. 28 mars 2019 15:30, Peter Maydell <peter.maydell@linaro.org> a
-=C3=A9crit :
-
-> Currently the dc_zva helper function uses a variable length
-> array. In fact we know (as the comment above remarks) that
-> the length of this array is bounded because the architecture
-> limits the block size and QEMU limits the target page size.
-> Use a fixed array size and assert that we don't run off it.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> A small move in the direction of "avoid using variable length
-> arrays in QEMU"...
->
->  target/arm/helper.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a36f4b3d699..1b6225cb598 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -1,4 +1,5 @@
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "target/arm/idau.h"
->  #include "trace.h"
->  #include "cpu.h"
-> @@ -12412,11 +12413,13 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t
-> vaddr_in)
->           * same QEMU executable.
->           */
->          int maxidx =3D DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
+On 3/28/19 7:30 AM, Peter Maydell wrote:
 > -        void *hostaddr[maxidx];
-> +        void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 << TARGET_PAGE_BITS_MIN)]=
-;
->
+> +        void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 << TARGET_PAGE_BITS_MIN)];
 
-Or g_new()... For 2K nowadays that is fine.
+A very fancy way of writing "2".
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>          int try, i;
+>          unsigned mmu_idx = cpu_mmu_index(env, false);
+>          TCGMemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
+>  
+> +        assert(maxidx <= sizeof(hostaddr));
 
-         int try, i;
->          unsigned mmu_idx =3D cpu_mmu_index(env, false);
->          TCGMemOpIdx oi =3D make_memop_idx(MO_UB, mmu_idx);
->
-> +        assert(maxidx <=3D sizeof(hostaddr));
-> +
->          for (try =3D 0; try < 2; try++) {
->
->              for (i =3D 0; i < maxidx; i++) {
-> --
-> 2.20.1
->
->
->
+ARRAY_SIZE(hostaddr).
 
---00000000000054071f05852c159d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto"><div><br><div class=3D"gmail_quote"><div dir=3D"ltr">Le j=
-eu. 28 mars 2019 15:30, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@l=
-inaro.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><b=
-lockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px =
-#ccc solid;padding-left:1ex">Currently the dc_zva helper function uses a va=
-riable length<br>
-array. In fact we know (as the comment above remarks) that<br>
-the length of this array is bounded because the architecture<br>
-limits the block size and QEMU limits the target page size.<br>
-Use a fixed array size and assert that we don&#39;t run off it.<br>
-<br>
-Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
-" target=3D"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt;<br>
----<br>
-A small move in the direction of &quot;avoid using variable length<br>
-arrays in QEMU&quot;...<br>
-<br>
-=C2=A0target/arm/helper.c | 5 ++++-<br>
-=C2=A01 file changed, 4 insertions(+), 1 deletion(-)<br>
-<br>
-diff --git a/target/arm/helper.c b/target/arm/helper.c<br>
-index a36f4b3d699..1b6225cb598 100644<br>
---- a/target/arm/helper.c<br>
-+++ b/target/arm/helper.c<br>
-@@ -1,4 +1,5 @@<br>
-=C2=A0#include &quot;qemu/osdep.h&quot;<br>
-+#include &quot;qemu/units.h&quot;<br>
-=C2=A0#include &quot;target/arm/idau.h&quot;<br>
-=C2=A0#include &quot;trace.h&quot;<br>
-=C2=A0#include &quot;cpu.h&quot;<br>
-@@ -12412,11 +12413,13 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t va=
-ddr_in)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * same QEMU executable.<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int maxidx =3D DIV_ROUND_UP(blocklen, TAR=
-GET_PAGE_SIZE);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *hostaddr[maxidx];<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *hostaddr[DIV_ROUND_UP(2 * KiB, 1 &lt;&lt=
-; TARGET_PAGE_BITS_MIN)];<br></blockquote></div></div><div dir=3D"auto"><br=
-></div><div dir=3D"auto">Or g_new()... For 2K nowadays that is fine.</div><=
-div dir=3D"auto"><br></div><div dir=3D"auto">Reviewed-by: Philippe Mathieu-=
-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt;<b=
-r></div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_q=
-uote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-l=
-eft:1px #ccc solid;padding-left:1ex">
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0int try, i;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned mmu_idx =3D cpu_mmu_index(env, f=
-alse);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0TCGMemOpIdx oi =3D make_memop_idx(MO_UB, =
-mmu_idx);<br>
-<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 assert(maxidx &lt;=3D sizeof(hostaddr));<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (try =3D 0; try &lt; 2; try++) {<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; maxidx=
-; i++) {<br>
--- <br>
-2.20.1<br>
-<br>
-<br>
-</blockquote></div></div></div>
-
---00000000000054071f05852c159d--
+r~

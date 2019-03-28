@@ -1,98 +1,90 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp776115wrx;
-        Thu, 28 Mar 2019 08:41:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxa6SUCgL7s9XIvG5XIWpPtREWTqDzb2b/dW5Hugx+1yANRM5tu3vjSbFvCgXd8d6+xI9ma
-X-Received: by 2002:a6b:3c05:: with SMTP id k5mr954407iob.270.1553787667718;
-        Thu, 28 Mar 2019 08:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553787667; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp777843wrx;
+        Thu, 28 Mar 2019 08:42:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzySmb0xh64d/72PdbIHikXFN9rjbwzicJQ2pc0upxO5OdLdCr4zpPzrEtcnjHWzGz0h/Bv
+X-Received: by 2002:a02:700f:: with SMTP id f15mr32051114jac.139.1553787774195;
+        Thu, 28 Mar 2019 08:42:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553787774; cv=none;
         d=google.com; s=arc-20160816;
-        b=yUUuAytUA29q85Wtabo8kPd2B5MPqGb6hbZ8mt3P4bdbsddgXu+vGhNoncIe/3WL7B
-         D4yUoPMPWI91/RLF/xk7tPSQGvzk6t4C8d6P8fbaKDqfeNir4K+e9aFQNhYhn39L4KAw
-         Cf67FIzGFfI4SiCmL7lyWK+690KtewwstWNv05/mtlhVNEsh1Unwcuw11dz1Tj/5GSNL
-         QZ8z2L/cekYL0PfcoHBC44WpnXpNH04ddxaeWqL1tdu2IDCDW16SOjBACbe4TsGF8T9+
-         6wC5r/xi5P/fZLqWB4LExFhA2m51T01Jp6XIY30ypFtz2FHgKOYyYHqyvRKPIy6bpAsQ
-         0zTw==
+        b=vYD8zNSnA34kOTYOlGRVgxhK2dzhcv752RYLGSMOZbwm7LWW5ytYWRSRk/yunxmVet
+         9ZVfCVmIweEsnJeKKWSrYup364rCYKGq2JGDJkPMFQPx5qqwOhmnX5QMYCrm3+MTSicm
+         Vz0pfazBT6mopLJk5vmz1s2FyK03zDMeq4ZMLmeZAbn1ZBNhEk7Q3V32F7QMLKmDgSBa
+         ryik3XBcp898NbVUZyxb6T1Ep1YoSQtQopbwzf1G8dGm5QVzgr2Nt98ZtpA0t/jTTpUJ
+         RD5l0ILLz33+s4qMjVYsOSUsLukiPPc7flfaYEGU3XMDTumurN+TWfUGzYwmHlmo1EUi
+         ZlnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GHjEFW1a8zgvL8cugYATpjKrPTmKak8dFeLMRwi7Mik=;
-        b=k/fSjKb5RSYtYjOW6dpdgK2kbV3+JQtHdA+rxMtwrhWcuwv3yjWrrq8jnIjEnyy0eN
-         9mhGJLe8UU3NuZHThPHuPUDGpYGOJ2HcMBt8q87rfBxMF/ZywJyiB+ToJjilJV1R53Mm
-         E12DDUxU7k4p9E6Z9ib4xDFmkwxcdFimZWjG5nx33Te6Yux5x8fsdsTJXfazwebsk++v
-         4rvSCnZ6JrrFWN1nljnKopHcUPhP3gZXOK7VonTadhsDG6k1R7P4/VF2IP/7j0VJY7UC
-         4RlWNSw+zVzYt7iexRtDPOUrH9V78RZJHTDFJg3lMRW0wcSYbKWEVCW/1V1JyOtmpJAJ
-         fdCQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:to:from;
+        bh=IG30vbEpxPvdxtOLtjBr5ZMyl2jzcJJNyzuoeANNglQ=;
+        b=NefJw1xFEVr7sMAiMqFIb7XpGDaa5l1Enbb30j6HH9T0Ru4cREn+6jXaYV1J0ExK2X
+         1pM4xkbLidG+Ohi+ERo0Hvi9fiYTGQSWFOXbQYOyO5OhsAOq/agvbkPUYVFeWFaKowbJ
+         HgYVqKKs2fsjeQDdhVFEWXyalWS/gKBxwmQxZWvQ8PDDWvAkNsGqsTXyomPkB5NOOpMQ
+         g/iXUu/g8G8fg/sykxhbgdYVoxMnl6/LwMW8EH12efwWAlhaiw0CkpBiSvTADPSmdxcG
+         AaqG6gk043zndwWG3Co4shCM+WKo0ds9/bw++0yDjGbNXOcuDaXccx376YWsb5Mpq8ZP
+         F1ug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ATAtB1Ve;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p62si1910156itb.123.2019.03.28.08.41.07
+        by mx.google.com with ESMTPS id 6si11306393iob.30.2019.03.28.08.42.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Mar 2019 08:41:07 -0700 (PDT)
+        Thu, 28 Mar 2019 08:42:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ATAtB1Ve;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:38151 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:38182 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9X9O-0002NZ-V0
-	for alex.bennee@linaro.org; Thu, 28 Mar 2019 11:41:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40195)
+	id 1h9XB7-00044B-Ee
+	for alex.bennee@linaro.org; Thu, 28 Mar 2019 11:42:53 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1h9X96-0002LP-R3
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 11:40:49 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1h9X6T-0000Ie-IR
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 11:38:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1h9X93-0007Z4-3S
-	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 11:40:46 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:36641)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1h9X8z-0007Yf-Vy; Thu, 28 Mar 2019 11:40:42 -0400
-Received: by mail-lj1-x243.google.com with SMTP id r24so17008769ljg.3;
-	Thu, 28 Mar 2019 08:40:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=GHjEFW1a8zgvL8cugYATpjKrPTmKak8dFeLMRwi7Mik=;
-	b=ATAtB1VetqiVNUtjxNv0ZfOKGdVz6UVPTtKFYhyQ+S+xhnDvFtDCcb+M54Kfan7r//
-	K/4VQjqgEWY/NYUiuCXuhleByFzWjNEvxgHptJ+aP/tRL0xPoJX0diL8gKo67CRav6vx
-	1psVP/xQvEX0EmQPQHVTd6X5ZX+h2+Q1GG7e3mruijgttA5VrRpcZvaKRa4kcjdZUy0x
-	lohorAkAFLFLh6Bl1OHjSwIkGiwiJ92hBFNIA3tgq4CNV1Y31ilAuxJtUlC37a2uZe76
-	VWu21L+b9XQrVCO2q0t3LA8xw5FnRPbJ0BYWe+TlAj/g3cWIw3wFAF7DlGXnf+0dXgnh
-	h7Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=GHjEFW1a8zgvL8cugYATpjKrPTmKak8dFeLMRwi7Mik=;
-	b=kiq2JyUrIdQdREKVVPFDGowY5Xvb/uKzVZd2QaZP5BaiRbPiFomXaBwrbnEbn9onWM
-	mF9eZm7Ih98ePxWoyn8MvDIrap1+5zZVgf+wYO8Q1n1KfBLziMZf0jxRENiMSJYzCNph
-	ePLn1ogT0CNGWdMwejV1qcv0dhri2BCQBZb9wksxDMNEg2DDrJG7gLGM1HzfHb/IiNzt
-	UcUDBqXKFu6jp+3z7tAv8Df6/TX5+QUS5WmWv6BjH5Lsh34Z1Y7JNxlAjnvCVyFuhOsL
-	SafkohxjaPQp88UHeseOF2dkQYDEQ6YoE84TVajdRv9POWB32TEeGswmj2fv5DSrmEjp
-	MrPg==
-X-Gm-Message-State: APjAAAW52Lgjvax1+LCIQfHQ1Zq9lxc9vlFRuroJ6O9bsPUet2pPi3at
-	RQkpwCu/AV5KrEgm+G5q3X0mmPSmntH+jQ4lzIA=
-X-Received: by 2002:a2e:91d2:: with SMTP id u18mr23919615ljg.161.1553787638342;
-	Thu, 28 Mar 2019 08:40:38 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1h9X6S-00072S-Cj
+	for qemu-arm@nongnu.org; Thu, 28 Mar 2019 11:38:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58340)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1h9X6S-00072L-0q; Thu, 28 Mar 2019 11:38:04 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C652F7C837;
+	Thu, 28 Mar 2019 15:38:02 +0000 (UTC)
+Received: from [10.36.117.163] (ovpn-117-163.ams2.redhat.com [10.36.117.163])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7050D619C4;
+	Thu, 28 Mar 2019 15:37:57 +0000 (UTC)
+From: Auger Eric <eric.auger@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, imammedo@redhat.com,
+	peter.maydell@linaro.org, shannon.zhaosl@gmail.com, sameo@linux.intel.com, 
+	sebastien.boeuf@intel.com
+References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
+	<20190321104745.28068-5-shameerali.kolothum.thodi@huawei.com>
+Message-ID: <dd71b47f-bb96-ce64-85f7-94b782a0f64e@redhat.com>
+Date: Thu, 28 Mar 2019 16:37:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20190328152635.2794-1-peter.maydell@linaro.org>
-In-Reply-To: <20190328152635.2794-1-peter.maydell@linaro.org>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 28 Mar 2019 16:40:25 +0100
-Message-ID: <CAJy5ezqAZKSvOSDnLFPq6i30woRuLr9P4oeYSkKtC+7q_9FtHg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>, 
-	francisco iglesias <frasse.iglesias@gmail.com>
-Content-Type: multipart/alternative; boundary="0000000000003d69ec058529604b"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::243
-Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/ssi/xilinx_spips: Avoid variable
- length array
+In-Reply-To: <20190321104745.28068-5-shameerali.kolothum.thodi@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 28 Mar 2019 15:38:02 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 04/10] hw/arm/virt: Add memory hotplug
+ framework
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,100 +96,141 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair@alistair23.me>, patches@linaro.org
+Cc: linuxarm@huawei.com, xuwei5@hisilicon.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aA4vDydkcmEm
+X-TUID: UMpDiDyZ3aif
 
---0000000000003d69ec058529604b
-Content-Type: text/plain; charset="UTF-8"
+Hi Shameer,
 
-+ Francisco
+On 3/21/19 11:47 AM, Shameer Kolothum wrote:
+> From: Eric Auger <eric.auger@redhat.com>
+> 
+> This patch adds the the memory hot-plug/hot-unplug infrastructure
+s/the the/the (sorry my fault)
+> in machvirt. It is still not enabled as device memory is not yet
+> reported to guest.
+s/ reported to guest / exposed to the guest either through DT or ACPI.
+Note even cold-plug would not work yet.
 
-On Thu, 28 Mar. 2019, 16:26 Peter Maydell, <peter.maydell@linaro.org> wrote:
 
-> In the stripe8() function we use a variable length array; however
-> we know that the maximum length required is MAX_NUM_BUSSES. Use
-> a fixed-length array and an assert instead.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/ssi/xilinx_spips.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-> index 16f88f74029..c615058cc1b 100644
-> --- a/hw/ssi/xilinx_spips.c
-> +++ b/hw/ssi/xilinx_spips.c
-> @@ -429,12 +429,14 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)
->
->  static inline void stripe8(uint8_t *x, int num, bool dir)
->  {
-> -    uint8_t r[num];
-> -    memset(r, 0, sizeof(uint8_t) * num);
-> +    uint8_t r[MAX_NUM_BUSSES];
->      int idx[2] = {0, 0};
->      int bit[2] = {0, 7};
->      int d = dir;
->
-> +    assert(num <= MAX_NUM_BUSSES);
-> +    memset(r, 0, sizeof(uint8_t) * num);
+>  default-configs/arm-softmmu.mak |  3 +++
+>  hw/arm/virt.c                   | 53 ++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 55 insertions(+), 1 deletion(-)
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 2a7efc1..795cb89 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -159,3 +159,6 @@ CONFIG_MUSICPAL=y
+>  
+>  # for realview and versatilepb
+>  CONFIG_LSI_SCSI_PCI=y
 > +
->      for (idx[0] = 0; idx[0] < num; ++idx[0]) {
->          for (bit[0] = 7; bit[0] >= 0; bit[0]--) {
->              r[idx[!d]] |= x[idx[d]] & 1 << bit[d] ? 1 << bit[!d] : 0;
-> --
-> 2.20.1
->
->
+> +CONFIG_MEM_DEVICE=y
+> +CONFIG_DIMM=y
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ce2664a..d0ff20d 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -61,6 +61,8 @@
+>  #include "hw/arm/smmuv3.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "target/arm/internals.h"
+> +#include "hw/mem/pc-dimm.h"
+> +#include "hw/mem/nvdimm.h"
+>  
+>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+> @@ -1806,6 +1808,42 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>      return ms->possible_cpus;
+>  }
+>  
+> +static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> +                                 Error **errp)
+> +{
+> +    const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
+> +
+> +    if (dev->hotplugged) {
+> +        error_setg(errp, "memory hotplug is not supported");
+> +    }
+> +
+> +    if (is_nvdimm) {
+> +        error_setg(errp, "nvdimm is not yet supported");
+> +        return;
+> +    }
+Maybe this patch should be moved at the end since from this patch
+onwards, it becomes possible to instantiate a DIMM slot (with cold-plug
+qemu command line) that won't work properly. Of we simply disable
+cold-plug for PCDIMM as well at the moment?
 
---0000000000003d69ec058529604b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Thanks
 
-<div dir=3D"auto">+ Francisco=C2=A0</div><br><div class=3D"gmail_quote"><di=
-v dir=3D"ltr" class=3D"gmail_attr">On Thu, 28 Mar. 2019, 16:26 Peter Maydel=
-l, &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org=
-</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
-0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">In the stripe8() fu=
-nction we use a variable length array; however<br>
-we know that the maximum length required is MAX_NUM_BUSSES. Use<br>
-a fixed-length array and an assert instead.<br>
-<br>
-Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
-" target=3D"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt;<br>
----<br>
-=C2=A0hw/ssi/xilinx_spips.c | 6 ++++--<br>
-=C2=A01 file changed, 4 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c<br>
-index 16f88f74029..c615058cc1b 100644<br>
---- a/hw/ssi/xilinx_spips.c<br>
-+++ b/hw/ssi/xilinx_spips.c<br>
-@@ -429,12 +429,14 @@ static void xlnx_zynqmp_qspips_reset(DeviceState *d)<=
-br>
-<br>
-=C2=A0static inline void stripe8(uint8_t *x, int num, bool dir)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 uint8_t r[num];<br>
--=C2=A0 =C2=A0 memset(r, 0, sizeof(uint8_t) * num);<br>
-+=C2=A0 =C2=A0 uint8_t r[MAX_NUM_BUSSES];<br>
-=C2=A0 =C2=A0 =C2=A0int idx[2] =3D {0, 0};<br>
-=C2=A0 =C2=A0 =C2=A0int bit[2] =3D {0, 7};<br>
-=C2=A0 =C2=A0 =C2=A0int d =3D dir;<br>
-<br>
-+=C2=A0 =C2=A0 assert(num &lt;=3D MAX_NUM_BUSSES);<br>
-+=C2=A0 =C2=A0 memset(r, 0, sizeof(uint8_t) * num);<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0for (idx[0] =3D 0; idx[0] &lt; num; ++idx[0]) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for (bit[0] =3D 7; bit[0] &gt;=3D 0; bit[=
-0]--) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0r[idx[!d]] |=3D x[idx[d]] &=
-amp; 1 &lt;&lt; bit[d] ? 1 &lt;&lt; bit[!d] : 0;<br>
--- <br>
-2.20.1<br>
-<br>
-</blockquote></div>
-
---0000000000003d69ec058529604b--
+Eric
+> +
+> +    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
+> +}
+> +
+> +static void virt_memory_plug(HotplugHandler *hotplug_dev,
+> +                             DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    Error *local_err = NULL;
+> +
+> +    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
+> +
+> +    error_propagate(errp, local_err);
+> +}
+> +
+> +static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> +                                            DeviceState *dev, Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_memory_pre_plug(hotplug_dev, dev, errp);
+> +    }
+> +}
+> +
+>  static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                          DeviceState *dev, Error **errp)
+>  {
+> @@ -1817,12 +1855,23 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                       SYS_BUS_DEVICE(dev));
+>          }
+>      }
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_memory_plug(hotplug_dev, dev, errp);
+> +    }
+> +}
+> +
+> +static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+> +                                          DeviceState *dev, Error **errp)
+> +{
+> +    error_setg(errp, "device unplug request for unsupported device"
+> +               " type: %s", object_get_typename(OBJECT(dev)));
+>  }
+>  
+>  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>                                                          DeviceState *dev)
+>  {
+> -    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
+> +       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+>  
+> @@ -1886,7 +1935,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->kvm_type = virt_kvm_type;
+>      assert(!mc->get_hotplug_handler);
+>      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+> +    hc->pre_plug = virt_machine_device_pre_plug_cb;
+>      hc->plug = virt_machine_device_plug_cb;
+> +    hc->unplug_request = virt_machine_device_unplug_request_cb;
+>  }
+>  
+>  static void virt_instance_init(Object *obj)
+> 

@@ -1,93 +1,89 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1776131wrx;
-        Fri, 29 Mar 2019 05:04:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwVqoQZUAAJ1+TefqUG5HmnCxC+AlfBwehcGZdUq6m+iTM2uKShSln/foKXsdS6PkWCqNQN
-X-Received: by 2002:a02:5541:: with SMTP id e62mr12832647jab.88.1553861067145;
-        Fri, 29 Mar 2019 05:04:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553861067; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1840252wrx;
+        Fri, 29 Mar 2019 06:04:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHztak89UD/ilsPmrcpr/9sANmUdH+kvUhlglT6f8Oj2s9+xpeCCpSWTxZEDiPDgHzDOpN
+X-Received: by 2002:a6b:d307:: with SMTP id s7mr3161029iob.81.1553864692897;
+        Fri, 29 Mar 2019 06:04:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1553864692; cv=none;
         d=google.com; s=arc-20160816;
-        b=DtyAmBnA5bCpDdBQjaB2Iuccw8Ak2yfy9LadR7eXC86yYcoj5RWXexVVG11gTM4rDG
-         u2/1imF/4gtuXrEndRuwVB/O9ebPpdRuwYSPLA2ZMzpUi4VNjUvZmNZj3NxUo9D92gwm
-         fhPmuY9f8vmD2GlQSlF1ePEadk4ZHBk+RBtthMLrz7hVm3jvos+L2FM3eLDiPUxOZ+Fj
-         CBoWUrjXgtBO16F2DCaaQcSXnd+seBX2wqrhPN/OESKVF2HQ8nBnJW1p2Vr8lcRlOzv1
-         7anjp78rb7WZ2mHuRWC6RgEQ0SwX3Uc6Yp45JFzBz4VCZbG2asV93FYUgZuV7mHHnyjO
-         tgRA==
+        b=ghCxNrHHM+U6g5Zne6uWVUmW8sYr/yDdcxAJckwLGgAH547Oeq+XKcSrpBtzh8VXf7
+         n0dNFvIlYyLaCmN1eM5d/Ag2AEHnpIzPy47uld61uyBmOT73HVg5N6SI3M/n6tqHfrl/
+         1NZ1GgU6fDc1bPe/efEzMxTxBp4k28LS9sibzmS/ZpiypYaSriDtofkuTocp9QNtdTX+
+         r5t+8UFA1AeSj7hIr/JbFz182wOWwx3L8SsFvVgjx8egmDYRmPssEyhisraRPyxKxXoQ
+         WV7RKMijbdPJLnN7wWV4/j8xsA9bqaEGUscL1AQLZIUjNORF14UWx88K252LmFzb/kxc
+         VQeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=ClHztDPW31Ax5kI2kCU1odmMb+NrSqRbCUrd5ptbq80=;
-        b=c8GWK8aFdbo/g05kHqr4iM4x2HIhX71fNtiI3wo2k5rM+x9p4IRgXrK8sHC6zt2oVm
-         wPkQpMLQLTWvwFAK22AXt+ot+erJPrKyMb6f9KCXI/xSid+dE+sbA25RHSj7hRQMEOH7
-         9lRwSFX+XBH3EZGzwwAhHvKMkmY7AJfATG4G6/fcCGFPLH4WQtHrVFZ+kOkaQHlKos0L
-         dUmP7RcDerZS/LkDpdGulDYZ0o7DJ+M2iHtfmkCxzGa/OtQjxqKpgiq94WaXatjW71N3
-         X8XhBvmqBtr25nlRhTvGyuLD8QN72zf2wHYPbd5JLFntBVGhYDwuaMPUOxJnsLYJxq+O
-         3+vQ==
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to;
+        bh=Wf3WZJMwQeRNDnoY+3YvjD22s0umpknghCF07o00sBA=;
+        b=XNQEKsqtTS1eePjUv31dNrFFtkXcrenfX08U9VXOgSh33MCdDl70JDdbre9OjnWMZ5
+         x9dLSwgE8xveOVsv9PWXb+VAUF4sAWjosWq+51VkJ+oHClPKvdUGRrCgs34L542GfEGO
+         OwE8cp9sncOyR7Ywbo2YPdqLRZEutXPjfUUkSjpd4CePiuZBgKUQHkL1afqzWWlJvHBG
+         G2NOE0VPJRAbmv98tiABpCt94LGgwWc82oOBD5EmTcaJFsQFbcE/TPxLa6sgm0i7bGOm
+         K368QNEHVYItlEWAX3Z4kDEXD7MaFXvxWQN+nUWi76MZfxo7CrwdS+65axTbuUgj4qLU
+         mBXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21si959842itk.25.2019.03.29.05.04.26
+        by mx.google.com with ESMTPS id 130si945614jae.111.2019.03.29.06.04.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Mar 2019 05:04:27 -0700 (PDT)
+        Fri, 29 Mar 2019 06:04:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:51975 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:52668 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1h9qFG-0008Oz-EK
-	for alex.bennee@linaro.org; Fri, 29 Mar 2019 08:04:26 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60862)
+	id 1h9rBk-0006Pu-7f
+	for alex.bennee@linaro.org; Fri, 29 Mar 2019 09:04:52 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42761)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h9qEg-0008As-6a
-	for qemu-arm@nongnu.org; Fri, 29 Mar 2019 08:03:51 -0400
+	(envelope-from <wainersm@redhat.com>) id 1h9rBb-0006MV-F8
+	for qemu-arm@nongnu.org; Fri, 29 Mar 2019 09:04:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h9qEa-0006rr-SW
-	for qemu-arm@nongnu.org; Fri, 29 Mar 2019 08:03:48 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45379 helo=huawei.com)
+	(envelope-from <wainersm@redhat.com>) id 1h9rBa-0001U4-BT
+	for qemu-arm@nongnu.org; Fri, 29 Mar 2019 09:04:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46114)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1h9qEY-0006oq-4A; Fri, 29 Mar 2019 08:03:42 -0400
-Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.108])
-	by Forcepoint Email with ESMTP id 6B4072E082FD972A48D8;
-	Fri, 29 Mar 2019 12:03:34 +0000 (GMT)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.165]) by
-	lhreml709-cah.china.huawei.com ([10.201.108.32]) with mapi id
-	14.03.0415.000; Fri, 29 Mar 2019 12:03:25 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "shannon.zhaosl@gmail.com"
-	<shannon.zhaosl@gmail.com>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>, 
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>
-Thread-Topic: [PATCH v3 04/10] hw/arm/virt: Add memory hotplug framework
-Thread-Index: AQHU39O3Mq/+Q2sgSkunbfXy+12bbqYhOMWAgAFV+sA=
-Date: Fri, 29 Mar 2019 12:03:25 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA839338587@lhreml524-mbs.china.huawei.com>
-References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
-	<20190321104745.28068-5-shameerali.kolothum.thodi@huawei.com>
-	<dd71b47f-bb96-ce64-85f7-94b782a0f64e@redhat.com>
-In-Reply-To: <dd71b47f-bb96-ce64-85f7-94b782a0f64e@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(Exim 4.71) (envelope-from <wainersm@redhat.com>)
+	id 1h9rBa-0001To-1z; Fri, 29 Mar 2019 09:04:42 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2324F30718DD;
+	Fri, 29 Mar 2019 13:04:41 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-122-118.rdu2.redhat.com
+	[10.10.122.118])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1E24660852;
+	Fri, 29 Mar 2019 13:04:36 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190328152944.3199-1-peter.maydell@linaro.org>
+	<4eb279f0-be5a-6250-678d-bec430d8473b@redhat.com>
+	<CAFEAcA8S+fo--kRVyDe=rO21Md8ypxCfcVaq5w4iosgM=H7nNg@mail.gmail.com>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <82c97f5e-e92a-7e8c-9754-c9eebc94e6d7@redhat.com>
+Date: Fri, 29 Mar 2019 10:04:28 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <CAFEAcA8S+fo--kRVyDe=rO21Md8ypxCfcVaq5w4iosgM=H7nNg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Fri, 29 Mar 2019 13:04:41 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [PATCH v3 04/10] hw/arm/virt: Add memory hotplug
- framework
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 for-4.1] hw/arm/raspi:
+ Diagnose requests for too much RAM
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,109 +95,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Linuxarm <linuxarm@huawei.com>, "xuwei \(O\)" <xuwei5@huawei.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JTpm5pAAT/gX
+X-TUID: wirH3eGJn2Pb
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogQXVnZXIgRXJpYyBbbWFp
-bHRvOmVyaWMuYXVnZXJAcmVkaGF0LmNvbV0NCj4gU2VudDogMjggTWFyY2ggMjAxOSAxNTozOA0K
-PiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFsaS5rb2xvdGh1bS50aG9k
-aUBodWF3ZWkuY29tPjsNCj4gcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LWFybUBub25nbnUu
-b3JnOyBpbWFtbWVkb0ByZWRoYXQuY29tOw0KPiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IHNo
-YW5ub24uemhhb3NsQGdtYWlsLmNvbTsNCj4gc2FtZW9AbGludXguaW50ZWwuY29tOyBzZWJhc3Rp
-ZW4uYm9ldWZAaW50ZWwuY29tDQo+IENjOiBMaW51eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47
-IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMg
-MDQvMTBdIGh3L2FybS92aXJ0OiBBZGQgbWVtb3J5IGhvdHBsdWcgZnJhbWV3b3JrDQo+IA0KPiBI
-aSBTaGFtZWVyLA0KPiANCj4gT24gMy8yMS8xOSAxMTo0NyBBTSwgU2hhbWVlciBLb2xvdGh1bSB3
-cm90ZToNCj4gPiBGcm9tOiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+ID4N
-Cj4gPiBUaGlzIHBhdGNoIGFkZHMgdGhlIHRoZSBtZW1vcnkgaG90LXBsdWcvaG90LXVucGx1ZyBp
-bmZyYXN0cnVjdHVyZQ0KPiBzL3RoZSB0aGUvdGhlIChzb3JyeSBteSBmYXVsdCkNCj4gPiBpbiBt
-YWNodmlydC4gSXQgaXMgc3RpbGwgbm90IGVuYWJsZWQgYXMgZGV2aWNlIG1lbW9yeSBpcyBub3Qg
-eWV0DQo+ID4gcmVwb3J0ZWQgdG8gZ3Vlc3QuDQo+IHMvIHJlcG9ydGVkIHRvIGd1ZXN0IC8gZXhw
-b3NlZCB0byB0aGUgZ3Vlc3QgZWl0aGVyIHRocm91Z2ggRFQgb3IgQUNQSS4NCj4gTm90ZSBldmVu
-IGNvbGQtcGx1ZyB3b3VsZCBub3Qgd29yayB5ZXQuDQoNCk9rLiANCg0KPiA+DQo+ID4gU2lnbmVk
-LW9mZi1ieTogRXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPg0KPiA+IFNpZ25lZC1v
-ZmYtYnk6IEt3YW5nd29vIExlZSA8a3dhbmd3b28ubGVlQHNrLmNvbT4NCj4gPiBTaWduZWQtb2Zm
-LWJ5OiBTaGFtZWVyIEtvbG90aHVtIDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5j
-b20+DQo+ID4gLS0tDQo+ID4gIGRlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsgfCAgMyAr
-KysNCj4gPiAgaHcvYXJtL3ZpcnQuYyAgICAgICAgICAgICAgICAgICB8IDUzDQo+ICsrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystDQo+ID4gIDIgZmlsZXMgY2hhbmdlZCwg
-NTUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2Rl
-ZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsNCj4gYi9kZWZhdWx0LWNvbmZpZ3MvYXJtLXNv
-ZnRtbXUubWFrDQo+ID4gaW5kZXggMmE3ZWZjMS4uNzk1Y2I4OSAxMDA2NDQNCj4gPiAtLS0gYS9k
-ZWZhdWx0LWNvbmZpZ3MvYXJtLXNvZnRtbXUubWFrDQo+ID4gKysrIGIvZGVmYXVsdC1jb25maWdz
-L2FybS1zb2Z0bW11Lm1haw0KPiA+IEBAIC0xNTksMyArMTU5LDYgQEAgQ09ORklHX01VU0lDUEFM
-PXkNCj4gPg0KPiA+ICAjIGZvciByZWFsdmlldyBhbmQgdmVyc2F0aWxlcGINCj4gPiAgQ09ORklH
-X0xTSV9TQ1NJX1BDST15DQo+ID4gKw0KPiA+ICtDT05GSUdfTUVNX0RFVklDRT15DQo+ID4gK0NP
-TkZJR19ESU1NPXkNCj4gPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0
-LmMNCj4gPiBpbmRleCBjZTI2NjRhLi5kMGZmMjBkIDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS92
-aXJ0LmMNCj4gPiArKysgYi9ody9hcm0vdmlydC5jDQo+ID4gQEAgLTYxLDYgKzYxLDggQEANCj4g
-PiAgI2luY2x1ZGUgImh3L2FybS9zbW11djMuaCINCj4gPiAgI2luY2x1ZGUgImh3L2FjcGkvYWNw
-aS5oIg0KPiA+ICAjaW5jbHVkZSAidGFyZ2V0L2FybS9pbnRlcm5hbHMuaCINCj4gPiArI2luY2x1
-ZGUgImh3L21lbS9wYy1kaW1tLmgiDQo+ID4gKyNpbmNsdWRlICJody9tZW0vbnZkaW1tLmgiDQo+
-ID4NCj4gPiAgI2RlZmluZSBERUZJTkVfVklSVF9NQUNISU5FX0xBVEVTVChtYWpvciwgbWlub3Is
-IGxhdGVzdCkgXA0KPiA+ICAgICAgc3RhdGljIHZvaWQgdmlydF8jI21ham9yIyNfIyNtaW5vciMj
-X2NsYXNzX2luaXQoT2JqZWN0Q2xhc3MgKm9jLCBcDQo+ID4gQEAgLTE4MDYsNiArMTgwOCw0MiBA
-QCBzdGF0aWMgY29uc3QgQ1BVQXJjaElkTGlzdA0KPiAqdmlydF9wb3NzaWJsZV9jcHVfYXJjaF9p
-ZHMoTWFjaGluZVN0YXRlICptcykNCj4gPiAgICAgIHJldHVybiBtcy0+cG9zc2libGVfY3B1czsN
-Cj4gPiAgfQ0KPiA+DQo+ID4gK3N0YXRpYyB2b2lkIHZpcnRfbWVtb3J5X3ByZV9wbHVnKEhvdHBs
-dWdIYW5kbGVyICpob3RwbHVnX2RldiwNCj4gRGV2aWNlU3RhdGUgKmRldiwNCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+ID4gKyAg
-ICBjb25zdCBib29sIGlzX252ZGltbSA9IG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGRldiks
-DQo+IFRZUEVfTlZESU1NKTsNCj4gPiArDQo+ID4gKyAgICBpZiAoZGV2LT5ob3RwbHVnZ2VkKSB7
-DQo+ID4gKyAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCAibWVtb3J5IGhvdHBsdWcgaXMgbm90IHN1
-cHBvcnRlZCIpOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIGlmIChpc19udmRpbW0pIHsN
-Cj4gPiArICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJudmRpbW0gaXMgbm90IHlldCBzdXBwb3J0
-ZWQiKTsNCj4gPiArICAgICAgICByZXR1cm47DQo+ID4gKyAgICB9DQo+IE1heWJlIHRoaXMgcGF0
-Y2ggc2hvdWxkIGJlIG1vdmVkIGF0IHRoZSBlbmQgc2luY2UgZnJvbSB0aGlzIHBhdGNoDQo+IG9u
-d2FyZHMsIGl0IGJlY29tZXMgcG9zc2libGUgdG8gaW5zdGFudGlhdGUgYSBESU1NIHNsb3QgKHdp
-dGggY29sZC1wbHVnDQo+IHFlbXUgY29tbWFuZCBsaW5lKSB0aGF0IHdvbid0IHdvcmsgcHJvcGVy
-bHkuIE9mIHdlIHNpbXBseSBkaXNhYmxlDQo+IGNvbGQtcGx1ZyBmb3IgUENESU1NIGFzIHdlbGwg
-YXQgdGhlIG1vbWVudD8NCg0KT2suIEkgd2lsbCBjaGVjayB0aGlzIGFuZCBjaGFuZ2UgYWNjb3Jk
-aW5nbHkuDQoNClRoYW5rcywNClNoYW1lZXINCg0KPiBUaGFua3MNCj4gDQo+IEVyaWMNCj4gPiAr
-DQo+ID4gKyAgICBwY19kaW1tX3ByZV9wbHVnKFBDX0RJTU0oZGV2KSwgTUFDSElORShob3RwbHVn
-X2RldiksIE5VTEwsDQo+IGVycnApOw0KPiA+ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCB2
-aXJ0X21lbW9yeV9wbHVnKEhvdHBsdWdIYW5kbGVyICpob3RwbHVnX2RldiwNCj4gPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvciAqKmVycnApDQo+
-ID4gK3sNCj4gPiArICAgIFZpcnRNYWNoaW5lU3RhdGUgKnZtcyA9IFZJUlRfTUFDSElORShob3Rw
-bHVnX2Rldik7DQo+ID4gKyAgICBFcnJvciAqbG9jYWxfZXJyID0gTlVMTDsNCj4gPiArDQo+ID4g
-KyAgICBwY19kaW1tX3BsdWcoUENfRElNTShkZXYpLCBNQUNISU5FKHZtcyksICZsb2NhbF9lcnIp
-Ow0KPiA+ICsNCj4gPiArICAgIGVycm9yX3Byb3BhZ2F0ZShlcnJwLCBsb2NhbF9lcnIpOw0KPiA+
-ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCB2aXJ0X21hY2hpbmVfZGV2aWNlX3ByZV9wbHVn
-X2NiKEhvdHBsdWdIYW5kbGVyICpob3RwbHVnX2RldiwNCj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBEZXZpY2VTdGF0ZSAqZGV2LA0KPiBFcnJvciAqKmVy
-cnApDQo+ID4gK3sNCj4gPiArICAgIGlmIChvYmplY3RfZHluYW1pY19jYXN0KE9CSkVDVChkZXYp
-LCBUWVBFX1BDX0RJTU0pKSB7DQo+ID4gKyAgICAgICAgdmlydF9tZW1vcnlfcHJlX3BsdWcoaG90
-cGx1Z19kZXYsIGRldiwgZXJycCk7DQo+ID4gKyAgICB9DQo+ID4gK30NCj4gPiArDQo+ID4gIHN0
-YXRpYyB2b2lkIHZpcnRfbWFjaGluZV9kZXZpY2VfcGx1Z19jYihIb3RwbHVnSGFuZGxlciAqaG90
-cGx1Z19kZXYsDQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBE
-ZXZpY2VTdGF0ZSAqZGV2LCBFcnJvcg0KPiAqKmVycnApDQo+ID4gIHsNCj4gPiBAQCAtMTgxNywx
-MiArMTg1NSwyMyBAQCBzdGF0aWMgdm9pZA0KPiB2aXJ0X21hY2hpbmVfZGV2aWNlX3BsdWdfY2Io
-SG90cGx1Z0hhbmRsZXIgKmhvdHBsdWdfZGV2LA0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgU1lTX0JVU19ERVZJQ0UoZGV2KSk7DQo+ID4gICAgICAgICAgfQ0KPiA+
-ICAgICAgfQ0KPiA+ICsgICAgaWYgKG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGRldiksIFRZ
-UEVfUENfRElNTSkpIHsNCj4gPiArICAgICAgICB2aXJ0X21lbW9yeV9wbHVnKGhvdHBsdWdfZGV2
-LCBkZXYsIGVycnApOw0KPiA+ICsgICAgfQ0KPiA+ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9p
-ZCB2aXJ0X21hY2hpbmVfZGV2aWNlX3VucGx1Z19yZXF1ZXN0X2NiKEhvdHBsdWdIYW5kbGVyDQo+
-ICpob3RwbHVnX2RldiwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgRGV2aWNlU3RhdGUgKmRldiwgRXJyb3INCj4gKiplcnJwKQ0KPiA+ICt7DQo+ID4gKyAg
-ICBlcnJvcl9zZXRnKGVycnAsICJkZXZpY2UgdW5wbHVnIHJlcXVlc3QgZm9yIHVuc3VwcG9ydGVk
-IGRldmljZSINCj4gPiArICAgICAgICAgICAgICAgIiB0eXBlOiAlcyIsIG9iamVjdF9nZXRfdHlw
-ZW5hbWUoT0JKRUNUKGRldikpKTsNCj4gPiAgfQ0KPiA+DQo+ID4gIHN0YXRpYyBIb3RwbHVnSGFu
-ZGxlciAqdmlydF9tYWNoaW5lX2dldF9ob3RwbHVnX2hhbmRsZXIoTWFjaGluZVN0YXRlDQo+ICpt
-YWNoaW5lLA0KPiA+DQo+IERldmljZVN0YXRlICpkZXYpDQo+ID4gIHsNCj4gPiAtICAgIGlmIChv
-YmplY3RfZHluYW1pY19jYXN0KE9CSkVDVChkZXYpLCBUWVBFX1NZU19CVVNfREVWSUNFKSkgew0K
-PiA+ICsgICAgaWYgKG9iamVjdF9keW5hbWljX2Nhc3QoT0JKRUNUKGRldiksIFRZUEVfU1lTX0JV
-U19ERVZJQ0UpIHx8DQo+ID4gKyAgICAgICAob2JqZWN0X2R5bmFtaWNfY2FzdChPQkpFQ1QoZGV2
-KSwgVFlQRV9QQ19ESU1NKSkpIHsNCj4gPiAgICAgICAgICByZXR1cm4gSE9UUExVR19IQU5ETEVS
-KG1hY2hpbmUpOw0KPiA+ICAgICAgfQ0KPiA+DQo+ID4gQEAgLTE4ODYsNyArMTkzNSw5IEBAIHN0
-YXRpYyB2b2lkIHZpcnRfbWFjaGluZV9jbGFzc19pbml0KE9iamVjdENsYXNzDQo+ICpvYywgdm9p
-ZCAqZGF0YSkNCj4gPiAgICAgIG1jLT5rdm1fdHlwZSA9IHZpcnRfa3ZtX3R5cGU7DQo+ID4gICAg
-ICBhc3NlcnQoIW1jLT5nZXRfaG90cGx1Z19oYW5kbGVyKTsNCj4gPiAgICAgIG1jLT5nZXRfaG90
-cGx1Z19oYW5kbGVyID0gdmlydF9tYWNoaW5lX2dldF9ob3RwbHVnX2hhbmRsZXI7DQo+ID4gKyAg
-ICBoYy0+cHJlX3BsdWcgPSB2aXJ0X21hY2hpbmVfZGV2aWNlX3ByZV9wbHVnX2NiOw0KPiA+ICAg
-ICAgaGMtPnBsdWcgPSB2aXJ0X21hY2hpbmVfZGV2aWNlX3BsdWdfY2I7DQo+ID4gKyAgICBoYy0+
-dW5wbHVnX3JlcXVlc3QgPSB2aXJ0X21hY2hpbmVfZGV2aWNlX3VucGx1Z19yZXF1ZXN0X2NiOw0K
-PiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIHZvaWQgdmlydF9pbnN0YW5jZV9pbml0KE9iamVjdCAq
-b2JqKQ0KPiA+DQo=
+
+On 03/29/2019 06:20 AM, Peter Maydell wrote:
+> On Thu, 28 Mar 2019 at 21:29, Wainer dos Santos Moschetta
+> <wainersm@redhat.com> wrote:
+>>
+>> On 03/28/2019 12:29 PM, Peter Maydell wrote:
+>>> The Raspberry Pi boards have a physical memory map which does
+>>> not allow for more than 1GB of RAM. Currently if the user tries
+>>> to ask for more then we fail in a confusing way:
+>>>
+>>> $ qemu-system-aarch64 --machine raspi3 -m 8G
+>>> Unexpected error in visit_type_uintN() at qapi/qapi-visit-core.c:164:
+>>> qemu-system-aarch64: Parameter 'vcram-base' expects uint32_t
+>>> Aborted (core dumped)
+>>>
+>>> Catch this earlier and diagnose it with a more friendly message:
+>>> $ qemu-system-aarch64 --machine raspi3 -m 8G
+>>> qemu-system-aarch64: Requested ram size is too large for this machine: maximum is 1GB
+>>>
+>>> Fixes: https://bugs.launchpad.net/qemu/+bug/1794187
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>> Changes v1->v2: use '>', not '>='...
+>>>
+>>>    hw/arm/raspi.c | 7 +++++++
+>>>    1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+>>> index 66899c28dc1..fe2bb511b98 100644
+>>> --- a/hw/arm/raspi.c
+>>> +++ b/hw/arm/raspi.c
+>>> @@ -12,6 +12,7 @@
+>>>     */
+>>>
+>>>    #include "qemu/osdep.h"
+>>> +#include "qemu/units.h"
+>>>    #include "qapi/error.h"
+>>>    #include "qemu-common.h"
+>>>    #include "cpu.h"
+>>> @@ -175,6 +176,12 @@ static void raspi_init(MachineState *machine, int version)
+>>>        BusState *bus;
+>>>        DeviceState *carddev;
+>>>
+>>> +    if (machine->ram_size > 1 * GiB) {
+>>> +        error_report("Requested ram size is too large for this machine: "
+>>> +                     "maximum is 1GB");
+>> 1GB vs 1GiB... maybe the message should display "GiB" to avoid any
+>> confusion?
+> I don't know why we call our #defined constant GiB -- to me
+> the unit is GB and I think printing anything else in user
+> messages is weird.
+
+Ok, I find it weird as well. But I slightly remember that discussion 
+before so I thought in raising it here too.
+
+Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+
+
+>
+> thanks
+> -- PMM
+>
+

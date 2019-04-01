@@ -1,122 +1,84 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3846007wrx;
-        Sun, 31 Mar 2019 04:14:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwV+kACX4rXZ9hFJD1S2zZ+Sx+7cW0BtDcTqBO2hhpAhTdaHoISHt2FFAEzl/njGaAws0cN
-X-Received: by 2002:a25:a28d:: with SMTP id c13mr13592345ybi.436.1554030898690;
-        Sun, 31 Mar 2019 04:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554030898; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp361348wrx;
+        Mon, 1 Apr 2019 05:58:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx9muY0PfeSO51AT/9HpaD98qREuE4LxWwDHmJs5x+fJJE3fidNc2jM0tIMVEtek65r990j
+X-Received: by 2002:a0d:dc05:: with SMTP id f5mr53014522ywe.406.1554123524879;
+        Mon, 01 Apr 2019 05:58:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554123524; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q5mteEd72QmqtoucEzQCSc4cUGLDbDeJ9v0vBNg9q69abVgUQntwFoFmMohVxsaJox
-         FhOHLHuD97tvxNs+7wnOjhkXNUBX5O2Ravz5k8a3RsHW0dD+wvPbteYtWveeNAx7tbNV
-         1wAemLva/Iie//Cet4Z0NTLfMM8099xe+sPEb76gxq0ZDU93p6aUtFZ82z3G4sfNjpTJ
-         uK5dCglFraLLIEyTT8OFcyMMZNu6fMlE1mJhdRad5sJUiYV7deng7/xFPnj8RVDlfyy1
-         0yFyqiNdfAAhnULVYqdpEhFNuGwxGLzmQbI2F88uA0XYsILtyxTT0I0J1UGkXHcsBIqk
-         8fMw==
+        b=0bcbXjmQerjFiO+ioQd7Q6Vd3loVbtJwGAH63H0BoLx8Qm9z5Ht0FOj4WwxPXNAx0h
+         e0NvQulGT9WK4oEMwYoXwC9juyCAyD4r8vAHCFgXkCJeKhMlrmcwatlZyysi8qcKWOZ7
+         ICSb+9+VGNvnWWDcdMn2BHCaanLykrNAHU4QHSaeTHFiPEbi7decVja1kqpQ/tNyBf9e
+         doUoRFcYgTCP86LLFGDg5wilscI39sb/ZSIr/aF2u5jN32AYhcsAsin6EMigzSUlCA/s
+         PwTE3Q3FEKdPdLYHEp5NGyVNebADRCOyPxwWuPIQd4utEPfgBXYt6G5yT7k8gMg9rOUl
+         LWpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from:dkim-signature;
-        bh=9Os75TrWib+8p+/3z8udTC1ZidrjGnMvRcsF2Y4ikzA=;
-        b=Urr0ve5NSnibMV5wIg4C7wR5uSgrs2OFodlSHvca7oVshsRadeh1m2QHwfdiGJumgG
-         CxuB1dJ7MCLWT0ZJ9CcH4L8c9QIcObF9ArqkOTH2qMpYzA1bUsUqfyMnq+zGZfmAb8KG
-         zd7c180720CN5ey6vvcsDHE2y2PjmqAdk2rWymjiBybXMJN2DwpRGdV4klvl5tFC7Fh/
-         AfWtvnmnAYkY17rIAlRWsOXFkt5eRRCIs0xmGlVC1rBf7WdfjyNXc103Vb3SZkHThuhK
-         DpQwyHsyiFt4VjM7w8U3lShm92kpGrHKLCySV0j0H95dIG3o+hSsOBhIlto+UCXQjYhT
-         3PQw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=Xv8hHqHS5d8jtqpzIWIATIxlLuZVolfnYVX+p8KX0yI=;
+        b=FyV+PUUDInzgAn5A6uc9/B4CeDK8It0lwDfmiLqpdRngPC5dumbC8UavTFgzeOlx6U
+         MMkkgMqOaQQY0hM2h4u23y6iAHQoGxH6sq/YJxd7QkcOr9aQu/3q2xMEZWMrTkC6b8hD
+         j/26zFJAUOrADOqaz7lECB1O0WwkMYMI69/vDxjX0T1AesMv11p6yfQC+nN8S0nvFdOM
+         SU3nwqRR5Vu1B9HocV1DQN27rT4/O0Xx1FANv9qHRxx9DUeSPHBCFJAXxIRR4iwgI8/x
+         8bkweTtiUMdSE0auQzVClVS3KZFiEoT4H5HeiymIOoMmUgZtGLyaThdODpa61onId7r9
+         7mDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@deepvisionio.onmicrosoft.com header.s=selector1-deepvision-io header.b=f5ED+mhF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h81si165613ywh.201.2019.03.31.04.14.58
+        by mx.google.com with ESMTPS id y85si6160860ywy.151.2019.04.01.05.58.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 31 Mar 2019 04:14:58 -0700 (PDT)
+        Mon, 01 Apr 2019 05:58:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@deepvisionio.onmicrosoft.com header.s=selector1-deepvision-io header.b=f5ED+mhF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:56000 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:41438 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hAYQU-0006pf-6F
-	for alex.bennee@linaro.org; Sun, 31 Mar 2019 07:14:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45447)
+	id 1hAwWS-0006gU-8R
+	for alex.bennee@linaro.org; Mon, 01 Apr 2019 08:58:44 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58410)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ratna@deepvision.io>) id 1hAYQL-0006nY-Oj
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:14:50 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hAwWA-0006da-WA
+	for qemu-arm@nongnu.org; Mon, 01 Apr 2019 08:58:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ratna@deepvision.io>) id 1hAYQK-0004Gf-Jx
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:14:49 -0400
-Received: from mail-eopbgr730043.outbound.protection.outlook.com
-	([40.107.73.43]:20480
-	helo=NAM05-DM3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ratna@deepvision.io>) id 1hAYQK-00044w-2y
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:14:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=deepvisionio.onmicrosoft.com; s=selector1-deepvision-io;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=9Os75TrWib+8p+/3z8udTC1ZidrjGnMvRcsF2Y4ikzA=;
-	b=f5ED+mhFFOeSUqzNqkWzYnKdneNRQBrGFamn9YI79Aef97W1E4WVMFdlFbxpiPT3Tu2qHwKDqNL9oyoF1loImWyzDEF/YA8ZskDI6pPGQ2x9wz6p29MmWZ6QCii0BN7pvvK1eQxL+1WoFggZefQc42MGEAwN+bisOKYiAeUhej0=
-Received: from BYAPR04MB5000.namprd04.prod.outlook.com (52.135.233.17) by
-	BYAPR04MB5094.namprd04.prod.outlook.com (52.135.235.28) with Microsoft
-	SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1750.15; Sun, 31 Mar 2019 11:14:31 +0000
-Received: from BYAPR04MB5000.namprd04.prod.outlook.com
-	([fe80::d80a:60fd:9a49:106f]) by
-	BYAPR04MB5000.namprd04.prod.outlook.com
-	([fe80::d80a:60fd:9a49:106f%3]) with mapi id 15.20.1750.017;
-	Sun, 31 Mar 2019 11:14:31 +0000
-From: ratna manoj <ratna@deepvision.io>
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [Qemu-arm] Panic when PCI trying to read secure mem area.
-Thread-Index: AQHU50bHpMHVlXNbqk2jp6ll1fBhLKYlVqyAgACcywA=
-Date: Sun, 31 Mar 2019 11:14:31 +0000
-Message-ID: <4B7E6FD4-D4C7-44FC-BC23-D30D26478E4B@deepvision.io>
-References: <E280E863-EBA4-4011-A4EF-499FBF6219D5@deepvision.io>
-	<CAFEAcA_q6-fTmSTAR-wGp0FSzzTOyQHEzU4VoYtfhgmFShgwaw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_q6-fTmSTAR-wGp0FSzzTOyQHEzU4VoYtfhgmFShgwaw@mail.gmail.com>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=ratna@deepvision.io; 
-x-originating-ip: [202.133.53.230]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5d049e77-78a5-471d-2235-08d6b5ca0c4f
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390118)(7020095)(4652040)(7021145)(8989299)(5600127)(711020)(4605104)(4534185)(7022145)(4603075)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(2017052603328)(7153060)(7193020);
-	SRVR:BYAPR04MB5094; 
-x-ms-traffictypediagnostic: BYAPR04MB5094:
-x-microsoft-antispam-prvs: <BYAPR04MB50943A028215C255E5D97A71AA540@BYAPR04MB5094.namprd04.prod.outlook.com>
-x-forefront-prvs: 0993689CD1
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10009020)(979002)(136003)(396003)(366004)(39830400003)(346002)(376002)(189003)(199004)(6506007)(83716004)(36756003)(71190400001)(26005)(508600001)(2906002)(71200400001)(81156014)(81166006)(106356001)(316002)(8676002)(305945005)(33656002)(86362001)(7736002)(8936002)(3846002)(86152003)(68736007)(6512007)(14454004)(4326008)(6116002)(105586002)(53936002)(11346002)(6436002)(446003)(74482002)(82746002)(229853002)(76176011)(102836004)(256004)(6486002)(476003)(14444005)(99286004)(6246003)(2616005)(486006)(97736004)(66066001)(25786009)(5660300002)(6916009)(186003)(969003)(989001)(999001)(1009001)(1019001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR04MB5094;
-	H:BYAPR04MB5000.namprd04.prod.outlook.com; FPR:; SPF:None;
-	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: deepvision.io does not designate
-	permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: DaCQsfsfAfYZMwuuqozFZM2pdDc3MDR/TJOEdLID9vP4bbhyBUyBN4LiBhOl+30iXW2P+E+DUlgKHIq4Bq3dNbdbWL5mqbsxUsr9NeVzRYybx4QwSZ0cx2GlBz1kqShf3wTGaW5VrFklhwrFSVB0wViJfvq9CKJGmMLO4fRFjDpL23MkRC1RDLhlUySQ6t/777PCiRF6JyFg8tCTw480wBIYj4Ox39a4zVKdOXRpkhONa9ubwkW4kgkQGSeNs3LFYT0MfisNa5AEcQ3O6WX7mW9Zv43De0RTjCL0sdzU/yGao0DTR9JHAR+lqujhRGoJ5ohDcng4/8FPanHlxzFf1yPglXF7Tf/+yNjwPhYw5P5NoSoHohMasnLk80n1zPzT0RM+p/JHW9ohiZjuOR0tK7Hry72oivAfIDIO+gR4igw=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <41CAEEAB7AD91F48A68FA80D042F3A7E@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	(envelope-from <imammedo@redhat.com>) id 1hAwW9-0003VW-J2
+	for qemu-arm@nongnu.org; Mon, 01 Apr 2019 08:58:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54382)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hAwW5-0003PC-T2; Mon, 01 Apr 2019 08:58:23 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7450F368E7;
+	Mon,  1 Apr 2019 12:58:14 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2B3965D9C8;
+	Mon,  1 Apr 2019 12:58:10 +0000 (UTC)
+Date: Mon, 1 Apr 2019 14:58:09 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190401145809.55643fc6@redhat.com>
+In-Reply-To: <20190321104745.28068-2-shameerali.kolothum.thodi@huawei.com>
+References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
+	<20190321104745.28068-2-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-X-OriginatorOrg: deepvision.io
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d049e77-78a5-471d-2235-08d6b5ca0c4f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Mar 2019 11:14:31.3277 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 1acf142f-18b1-451f-9734-4db9cf7f227e
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5094
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.73.43
-Subject: Re: [Qemu-arm] Panic when PCI trying to read secure mem area.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 01 Apr 2019 12:58:14 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 01/10] hw/acpi: Make ACPI IO address space
+ configurable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -128,38 +90,141 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
+	qemu-devel@nongnu.org, xuwei5@hisilicon.com, linuxarm@huawei.com,
+	eric.auger@redhat.com, qemu-arm@nongnu.org, sebastien.boeuf@intel.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uI+4kkt1dWOA
+X-TUID: ExmAfG002Pt2
 
-SSBhbSB1c2luZyBsaW51eCBrZXJuZWwgNC40LjE1LiBVc2luZyBMUEFFIGNvbmZpZ3VyZWQga2Vy
-bmVsIHJlc29sdmVkIHRoZSBpc3N1ZS4gDQpNYXkgYmUgd2UgbmVlZCB0byBzZXQgTFBBRSBpbiBs
-aW51eC9hcmNoL2FybS9jb25maWdzL211bHRpX3Y3X2RlZmNvbmZpZy4NCg0KVGhhbmtzLg0KDQrv
-u79PbiAzMS8wMy8xOSwgMTI6NTMgUE0sICJQZXRlciBNYXlkZWxsIiA8cGV0ZXIubWF5ZGVsbEBs
-aW5hcm8ub3JnPiB3cm90ZToNCg0KICAgIE9uIFN1biwgMzEgTWFyIDIwMTkgYXQgMDU6MjIsIHJh
-dG5hIG1hbm9qIDxyYXRuYUBkZWVwdmlzaW9uLmlvPiB3cm90ZToNCiAgICA+IEkgYW0gZ2V0dGlu
-ZyBhIGtlcm5lbCBwYW5pYyB3aGVuIFBDSSBpcyB0cnlpbmcgdG8gcmVhZCBhdCAweGUwODgwMDAw
-IGluIFZJUlRfU0VDVVJFX01FTSBhcmVhLiAoW1ZJUlRfU0VDVVJFX01FTV0gPSB7IDB4MGUwMDAw
-MDAsIDB4MDEwMDAwMDAgfSkNCiAgICANCiAgICBIaS4gVGhlIGFkZHJlc3MgMHhlMDg4MDAwMCBp
-cyBub3QgaW4gdGhlIHJhbmdlIHN0YXJ0aW5nIGF0DQogICAgICAgICAgICAgICAgICAgIDB4MGUw
-MDAwMDANCiAgICAtLSBJIHN1c3BlY3QgeW91J3ZlIG1pc2NvdW50ZWQgeW91ciB6ZXJvZXMuIFNv
-IHdoYXRldmVyIGlzIGdvaW5nDQogICAgd3JvbmcsIGl0J3MgcHJvYmFibHkgbm90IHRoZSBmYXVs
-dCBvZiB0aGUgVklSVF9TRUNVUkVfTUVNIGJsb2NrLg0KICAgIA0KICAgIEkgc2VlIHlvdSd2ZSBh
-bHJlYWR5IGZpZ3VyZWQgb3V0IHRoYXQgdGhlIGFuc3dlciBpcyB0byBwYXNzDQogICAgLW1hY2hp
-bmUgaGlnaG1lbT1vZmYuIEJ5IGRlZmF1bHQgdGhlIHZpcnQgYm9hcmQgY3JlYXRlcw0KICAgIFBD
-SSB3aW5kb3dzIGluIGFyZWFzIG9mIHBoeXNpY2FsIGFkZHJlc3Mgc3BhY2UgYWJvdmUgdGhlIDRH
-QiBtYXJrDQogICAgYW5kIGFkdmVydGlzZXMgdGhlbSBpbiB0aGUgZGV2aWNlIHRyZWUuIFNvbWUg
-b2xkZXIga2VybmVsIHZlcnNpb25zDQogICAgYXJlIGJ1Z2d5IHdoZW4gY29uZmlndXJlZCB3aXRo
-b3V0IExQQUUgc3VwcG9ydCwgYW5kIGluc3RlYWQgb2YNCiAgICBjb3JyZWN0bHkgaWRlbnRpZnlp
-bmcgdGhhdCB0aGV5IGNhbid0IHJlYWNoIHRoZXNlIFBDSSB3aW5kb3dzDQogICAgYW5kIGlnbm9y
-aW5nIHRoZW0sIHRoZXkgdHJ1bmNhdGUgdGhlIGFkZHJlc3NlcyB0byAzMiBiaXRzIGFuZA0KICAg
-IHRyeSB0byBhY2Nlc3MgUENJIGF0IGJvZ3VzIGFkZHJlc3Nlcy4gVGhlIG90aGVyIHdheXMgdG8g
-Zml4IHRoaXMNCiAgICBhcmUgdG8gYnVpbGQgeW91ciBndWVzdCBrZXJuZWwgd2l0aCBMUEFFIHN1
-cHBvcnQgZW5hYmxlZCwgb3IgdG8NCiAgICB1c2UgYSBuZXcgZW5vdWdoIGtlcm5lbCB0aGF0IGhh
-cyB0aGUgYnVnIGZpeGVkLg0KICAgIA0KICAgIFBTOiBJIHJlY29tbWVuZCBhZ2FpbnN0IHVzaW5n
-ICdzZWN1cmU9b24nIHVubGVzcyB5b3UgaGF2ZSBhDQogICAgc3BlY2lmaWMgc3Ryb25nIHJlYXNv
-biB0byB3YW50IHRvIHJ1biBpbiB0aGUgU2VjdXJlIHdvcmxkLg0KICAgIFRoZSBleHBlY3RlZCBh
-bmQgbW9yZSB0ZXN0ZWQgY29uZmlndXJhdGlvbiBmb3IgIkkganVzdCB3YW50DQogICAgdG8gYm9v
-dCBhIExpbnV4IGd1ZXN0IiBpcyB0aGUgZGVmYXVsdCAoc2VjdXJlPW9mZikuDQogICAgDQogICAg
-dGhhbmtzDQogICAgLS0gUE1NDQogICAgDQoNCg==
+On Thu, 21 Mar 2019 10:47:36 +0000
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> This is in preparation for adding support for ARM64 platforms
+> where it doesn't use port mapped IO for ACPI IO space.
+> 
+> Also move the MEMORY_SLOT_SCAN_METHOD/MEMORY_DEVICES_CONTAINER
+> definitions to header so that other memory hotplug event
+> signalling mechanisms (eg. Generic Event Device on HW-reduced
+> acpi platforms) can use the same from their respective event
+> handler aml code.
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/acpi/memory_hotplug.c         | 24 ++++++++++++++----------
+>  hw/i386/acpi-build.c             |  3 ++-
+>  include/hw/acpi/memory_hotplug.h |  8 ++++++--
+>  3 files changed, 22 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+> index 297812d..80e25f0 100644
+> --- a/hw/acpi/memory_hotplug.c
+> +++ b/hw/acpi/memory_hotplug.c
+> @@ -29,12 +29,10 @@
+>  #define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
+>  #define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
+>  #define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
+> -#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+>  #define MEMORY_HOTPLUG_DEVICE        "MHPD"
+>  #define MEMORY_HOTPLUG_IO_LEN         24
+> -#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+>  
+> -static uint16_t memhp_io_base;
+> +static hwaddr memhp_io_base;
+>  
+>  static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
+>  {
+> @@ -209,7 +207,7 @@ static const MemoryRegionOps acpi_memory_hotplug_ops = {
+>  };
+>  
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t io_base)
+> +                              MemHotplugState *state, hwaddr io_base)
+>  {
+>      MachineState *machine = MACHINE(qdev_get_machine());
+>  
+> @@ -342,7 +340,8 @@ const VMStateDescription vmstate_memory_hotplug = {
+>  
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method)
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs)
+>  {
+>      int i;
+>      Aml *ifctx;
+> @@ -365,14 +364,19 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>              aml_name_decl("_UID", aml_string("Memory hotplug resources")));
+>  
+>          crs = aml_resource_template();
+> -        aml_append(crs,
+> -            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+> -                   MEMORY_HOTPLUG_IO_LEN)
+> -        );
+> +        if (rs == AML_SYSTEM_IO) {
+> +            aml_append(crs,
+> +                aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+> +                       MEMORY_HOTPLUG_IO_LEN)
+> +            );
+> +        } else {
+> +            aml_append(crs, aml_memory32_fixed(memhp_io_base,
+> +                            MEMORY_HOTPLUG_IO_LEN, AML_READ_WRITE));
+> +        }
+>          aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
+>  
+>          aml_append(mem_ctrl_dev, aml_operation_region(
+> -            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
+> +            MEMORY_HOTPLUG_IO_REGION, rs,
+>              aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
+>          );
+>  
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 416da31..6d6de44 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1852,7 +1852,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+>                         "\\_SB.PCI0", "\\_GPE._E02");
+>      }
+> -    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0", "\\_GPE._E03");
+> +    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
+> +                             "\\_GPE._E03", AML_SYSTEM_IO);
+>  
+>      scope =  aml_scope("_GPE");
+>      {
+> diff --git a/include/hw/acpi/memory_hotplug.h b/include/hw/acpi/memory_hotplug.h
+> index 77c6576..f95aa1f 100644
+> --- a/include/hw/acpi/memory_hotplug.h
+> +++ b/include/hw/acpi/memory_hotplug.h
+> @@ -5,6 +5,9 @@
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>  
+> +#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+> +#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+> +
+>  /**
+>   * MemStatus:
+>   * @is_removing: the memory device in slot has been requested to be ejected.
+> @@ -29,7 +32,7 @@ typedef struct MemHotplugState {
+>  } MemHotplugState;
+>  
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t io_base);
+> +                              MemHotplugState *state, hwaddr io_base);
+>  
+>  void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
+>                           DeviceState *dev, Error **errp);
+> @@ -48,5 +51,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st, ACPIOSTInfoList ***list);
+>  
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method);
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs);
+>  #endif
+

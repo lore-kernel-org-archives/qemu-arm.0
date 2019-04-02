@@ -1,105 +1,85 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1344466wrx;
-        Tue, 2 Apr 2019 01:42:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzvgqBMImMsAjMWHggD5ZfkUToUiVisdD4CGHpniKVg/gXj7sarJXSYttgp3eOSyJzQxUYV
-X-Received: by 2002:a0d:ca41:: with SMTP id m62mr5957682ywd.97.1554194568196;
-        Tue, 02 Apr 2019 01:42:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554194568; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1385870wrx;
+        Tue, 2 Apr 2019 02:33:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzZ19XrvIBYxESciiEQK1vnVENVeV6jRBSXMnLgtXhjbyaqug0IYbgz2dPlZl0BHyr1zt/r
+X-Received: by 2002:a25:5c6:: with SMTP id 189mr58469092ybf.100.1554197607313;
+        Tue, 02 Apr 2019 02:33:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554197607; cv=none;
         d=google.com; s=arc-20160816;
-        b=a4xUGwc2KZuBE3yvnFGpdbdzrObN2/NfQKhOI+b4Jmzm3EuBJ6QjgDTEsHwvFoOv7U
-         661a1glULefs2XEjq6V8oUgupXXOxEtf9KW88S16evv7dE1bdMf8nve4cSAtA7CaNxCt
-         CYAg0EASyJbrqjZrNgnfzgXF/vIWVr7qLh4+78GPdPRih6QmHF4HFrWA9VOtCrZ/irQN
-         567i0EdMjhqixgfad8fA+xXBsB9orj+9GeaFjmZ8Hkf9UtIxugn4Hzj6QGqvu6nqW3wa
-         cCXicqb102/Z6ILu0ADoxbb6X69v4MUm81LkPFKEdywEJ/WD5bwF00KXXYW/a03W3t1z
-         FBeQ==
+        b=mg55w/9UztVb3sRay+xyPX3AHXuCjCXwibq0uP74f+TL8L9lFa3+sQCwEt6JY/hXIu
+         R6WGVI3uC+F5aYP8SWcZGKJCrXyIS8MgNqG61BJ6R1XY/HztEIF4Xx+gZuHHnpN0XEOi
+         pY3YUV48rBlAFlA7uLStgi/iABv0W/IstFs3C0BMKEU94rbvi5CTcctpl7oGt4FVEFXR
+         KSV02tWlxJghhbK67kOGd9YdEHIO0AV3iFp7GV1Og+R1ZJr0lu09wJ4J0oZxnTDG5uE2
+         XPW0uV83d7Hsh9G5jKaHRk8zFkseJ5YfEt3kFtuN/PFb49RhqWhAjL7AMky+reg1b74S
+         556Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=pJJR32VT/OsA1C05gK2mNpE7eskQHRAZ1InfxuwWt9A=;
-        b=xWflXmmHy2ejigYTRYtsdNlrf2YdOnJT7/AJNUVrVIq2LwqR8hvuMmJ495ECwjxcbw
-         lbhHeqqluxsB8R9c0AYYAqwwvG3guZmm60zP6bbM5peillHO7UC+eAo+zVLOc76BgJNB
-         CQKZ7fx04abgCy7Qr+kPmvzqSIXIqu1bkefjpLg7VoMJ7WP49O59zwwuI7Zli8Uuh6E8
-         7RXOKPG1NvKK+u+XLN9FVlJD4a3qcRn5JfWcbl7N4CXu9NETL2B3Wnd2l2j4Qs8YjDDq
-         weA/qReOR668yjyQwpjDFqwcjaJrh/okVmAVeJY8P56i4iW+otNpZ+jJbDtk1DCVHrTB
-         mrqQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=UgJHrBsm3fZ4PYWDRLqiN6Nn+zNYLaOeUVsS1HMDDYo=;
+        b=AAmfqYEAIIA6xWM5ShUNiqk/mJeRUjwJZ2JdB9bbChD6ceRWU4zRxzkBN5bjKrZlJ9
+         LNvoAqBwaj6F+kcE4zJ1+tuRw0KqTsk+FbH8wjgGm8elGJTfyEfi4/G9dHNdX/UNtxpX
+         307GmGrP86vb5EuxuIxmQfWMw3uNTLJD4VHDhG6785ZQ32bg1jp1BJOyIwS4SySk9fRf
+         Kga45/Gq+Umw9D35pSspBMzaNqx7uO3ncBsxfIbiE/GnNgFLNIXbXgPTNOCC4WvM1HOv
+         H7QGpZDLuILi1gsk/SI/3AKerYo+XCURw3tadXd2WZxubzYBUBMBk47w2dZKSgI0yDSK
+         qj8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="YZ/NvVak";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o189si3585402yba.162.2019.04.02.01.42.47
+        by mx.google.com with ESMTPS id s9si7946241ybg.63.2019.04.02.02.33.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 01:42:48 -0700 (PDT)
+        Tue, 02 Apr 2019 02:33:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="YZ/NvVak";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:37890 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:50392 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hBF0J-0002zi-Fe
-	for alex.bennee@linaro.org; Tue, 02 Apr 2019 04:42:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49921)
+	id 1hBFnK-0002br-Qf
+	for alex.bennee@linaro.org; Tue, 02 Apr 2019 05:33:26 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36675)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBF00-0002wR-R6
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 04:42:30 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hBFn7-0002bF-S4
+	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 05:33:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBExZ-00063W-P7
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 04:39:58 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45061)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hBExZ-0005xb-G7
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 04:39:57 -0400
-Received: by mail-ot1-x343.google.com with SMTP id e5so11225799otk.12
-	for <qemu-arm@nongnu.org>; Tue, 02 Apr 2019 01:39:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=pJJR32VT/OsA1C05gK2mNpE7eskQHRAZ1InfxuwWt9A=;
-	b=YZ/NvVakPKVHAK33csV9cdn72WBvMynIUp/KFIpoXnlj2l8qcZzLMeG24nmznik6sN
-	iRBwQS12v4nGCKQsM8q2SyqSWx2ZSh1T6FCBvJeQGwuxlZGJ+9VBktGZ6RWqMUhLqqY7
-	jIG8KHSwLQCcmgDOKAkWsm0E/baVglCARFprlQO+VFmnTdXBdBZBuzGSZOKFAP+89Xg1
-	ityluphdmIlvUhlRtJwA5zfhlm0DVaPEqI36KTAifBtl7ykISD2K2Jcr9B96FoomeUWc
-	zGDmkPZKqhMwcL26HyeXaR7nL0i5VYH4Nzt9RJFmxJJwiMFMtH9iZOg0oLIiExAhIq2c
-	qzEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=pJJR32VT/OsA1C05gK2mNpE7eskQHRAZ1InfxuwWt9A=;
-	b=hJLOJm999u2sho+qJjXPLJDp2nW35F8Oy56QomX26UTvqZsOY2dfr9ka9nrvsmu0qk
-	QcG5fYpT3TQlfyffz4GNyc3zdLIrhJRXaPvi9RwLgL/FdCn5ad9rUaJil5givcRj93TR
-	sT0/LUHWN7t1632ldwx0qup9qh7mkG8wiswUJxYRMpCmgdLl4KbCA67srS7neJiInwF9
-	qHGbXxI6R9+m+BeXaADJ413XwaeH6pyd0LYmqBkSD+ckWbBScnASFu6fYwMeyzmHfGGy
-	T9bjPCfLX94BNTKyDIpXN8W+E1XtgGHsOGFnwns6gveaTAOFylZMxZ7u2ZlYBArlbaLH
-	ZwvQ==
-X-Gm-Message-State: APjAAAXqO1xOeflK4x1WEeQ1BsZKHXY0/5ZoJi0bhNV62B9t29TjUwCy
-	HZVJXiwoy5Tirjk2n31GL3En/DOytVhK2gYF+Bji+Q==
-X-Received: by 2002:a05:6830:1cb:: with SMTP id
-	r11mr38560410ota.302.1554194396392; 
-	Tue, 02 Apr 2019 01:39:56 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1hBFn6-00081C-0u
+	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 05:33:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46312)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1hBFn3-0007uQ-T5; Tue, 02 Apr 2019 05:33:10 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0CBEE3006029;
+	Tue,  2 Apr 2019 09:23:12 +0000 (UTC)
+Received: from [10.36.117.163] (ovpn-117-163.ams2.redhat.com [10.36.117.163])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 935F16141;
+	Tue,  2 Apr 2019 09:23:03 +0000 (UTC)
+To: Ernest Esene <eroken1@gmail.com>, qemu-devel@nongnu.org
+References: <20190401181621.GA31851@erokenlabserver>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <aaa7bca9-bb25-5df8-4b69-0cf6bfbed9cc@redhat.com>
+Date: Tue, 2 Apr 2019 11:23:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
-	<20190321104745.28068-8-shameerali.kolothum.thodi@huawei.com>
-	<98c7f0fd-8446-8897-0808-e7615af29670@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA83933836A@lhreml524-mbs.china.huawei.com>
-	<0dcd3f3c-15c4-318f-28bd-4b6706708c0d@redhat.com>
-	<CAKv+Gu_-nRqeCT0s6ZwW+q3=sbGmtazFJ9R=19U5SJ=gSUmJLw@mail.gmail.com>
-	<a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
-In-Reply-To: <a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Apr 2019 08:39:45 +0000
-Message-ID: <CAFEAcA9mf3HxzYkCA1rj8xQVRGo5Nbe72KEPXtQtQgA2GYaHmQ@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce
- opt-in feature "fdt"
+In-Reply-To: <20190401181621.GA31851@erokenlabserver>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Tue, 02 Apr 2019 09:23:12 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 3/3] Categorize devices: iommu
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,54 +91,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "sameo@linux.intel.com" <sameo@linux.intel.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	Laszlo Ersek <lersek@redhat.com>, Leif Lindholm <Leif.Lindholm@arm.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3vPJx32pd+Gv
+X-TUID: To8CP4twnw6r
 
-On Fri, 29 Mar 2019 at 20:56, Auger Eric <eric.auger@redhat.com> wrote:
-> This series:
-> - [PATCH v3 00/10] ARM virt: ACPI memory hotplug support,
-> https://patchwork.kernel.org/cover/10863301/
->
-> aims to introduce PCDIMM support in qemu. In ACPI mode, it builds the
-> SRAT and DSDT parts and relies on GED to trigger the hotplug.
->
-> We noticed that if we build the hotpluggable memory dt nodes on top of
-> the above ACPI tables, the DIMM slots are interpreted as not
-> hotpluggable memory slots (at least we think so).
->
-> We think the EDK2 GetMemoryMap() uses the dt node info and ignores the
-> fact that those slots are exposed as hotpluggable in the SRAT for example.
->
-> So in this series, we are forced to not generate the hotpluggable memory
-> dt nodes if we want the DIMM slots to be effectively recognized as
-> hotpluggable.
->
-> Could you confirm we have a correct understanding of the EDK2 behaviour
-> and if so, would there be any solution for EDK2 to absorb both the DT
-> nodes and the relevant SRAT/DSDT tables and make the slots hotpluggable.
->
-> At qemu level, detecting we are booting in ACPI mode and purposely
-> removing the above mentioned DT nodes does not look straightforward.
+Hi Ernest,
 
-My initial response would be to say that hotpluggable memory
-should be suitably marked up in both the DTB and the ACPI tables
-so that guest software that cares can tell that it is hotplugged
-whether it is choosing to consume the DT or the ACPI tables.
-QEMU should definitely not be reporting the hardware as looking
-different to the guest based on some guess about what guest
-software it is booting.
+On 4/1/19 8:16 PM, Ernest Esene wrote:
+> Set category and description for iommu devices.
+> 
+> Signed-off-by: Ernest Esene <eroken1@gmail.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-thanks
--- PMM
+Thanks
+
+Eric
+
+> 
+> ---
+> v3:
+>   * set category and describe smmuv3 as suggested by Eric
+> v2:
+>   * split into separate patches
+> ---
+>  hw/arm/smmuv3.c       | 2 ++
+>  hw/i386/amd_iommu.c   | 2 ++
+>  hw/i386/intel_iommu.c | 2 ++
+>  3 files changed, 6 insertions(+)
+> 
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 8c4e99fecc..d5a3df047d 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1463,6 +1463,8 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+>      device_class_set_parent_reset(dc, smmu_reset, &c->parent_reset);
+>      c->parent_realize = dc->realize;
+>      dc->realize = smmu_realize;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    dc->desc = "ARM IOMMU (SMMUv3) DMA Remapping device"
+>  }
+>  
+>  static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+> diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+> index 6eabdf9917..4a4e2c7fd4 100644
+> --- a/hw/i386/amd_iommu.c
+> +++ b/hw/i386/amd_iommu.c
+> @@ -1601,6 +1601,8 @@ static void amdvi_class_init(ObjectClass *klass, void* data)
+>      dc_class->int_remap = amdvi_int_remap;
+>      /* Supported by the pc-q35-* machine types */
+>      dc->user_creatable = true;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    dc->desc = "AMD IOMMU (AMD-Vi) DMA Remapping device";
+>  }
+>  
+>  static const TypeInfo amdvi = {
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 055a1e865d..f9781a5d20 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -3727,6 +3727,8 @@ static void vtd_class_init(ObjectClass *klass, void *data)
+>      x86_class->int_remap = vtd_int_remap;
+>      /* Supported by the pc-q35-* machine types */
+>      dc->user_creatable = true;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    dc->desc = "Intel IOMMU (VT-d) DMA Remapping device";
+>  }
+>  
+>  static const TypeInfo vtd_info = {
+> 

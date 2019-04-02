@@ -1,72 +1,68 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1675679wrx;
-        Tue, 2 Apr 2019 07:27:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw3ggAJ/swkx7r6RBluygterdObY8+5dss8Yyq3I2iOEhSzlhqjdHhyrPelnq2IYS2Pj9TN
-X-Received: by 2002:a81:6388:: with SMTP id x130mr58204539ywb.190.1554215250675;
-        Tue, 02 Apr 2019 07:27:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554215250; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1745041wrx;
+        Tue, 2 Apr 2019 08:29:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz3blN5i2vywxpiXUzl/Ddu7ItftLr872xgI+7r+ghrHvvohWSk7HPfmyXu8mf2Ws+uD0Fk
+X-Received: by 2002:a81:6d55:: with SMTP id i82mr59032797ywc.178.1554218963548;
+        Tue, 02 Apr 2019 08:29:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554218963; cv=none;
         d=google.com; s=arc-20160816;
-        b=kvy1vDpjzZvfrNnlDwguDPyHQsUqalg4SELSC5Ijw9bmsql2CEebZ9SKJTOUbmbJ9b
-         VdrajDcz2rPNXRzwhfQaM9kCAp2d2UNDid6lVKebVfJRZfxaAc1Mtqavo8zg2+8Lk8vG
-         ehmAqbNpMNHiwfyknYWhfWXaiD2+sk8t1sGGZT+CK3nDA4CZuvy10Er+KgxqMyl8WnMQ
-         bJYH1x5f3Wj9PJeYdJCOtv8cdVISswsVjYxh6bCls6qZTcpirY7nC33HZp3p7iOrZeYB
-         /G1OPZgR58/E/6vfR0x+F8xdRFm3sckabcAcyg6egRdRprTmJ/+ziNmdgRqOrVOiMwXj
-         EEAA==
+        b=P//eDSP+Avs40PR1rdph/OLPL1y2cYCeBk+GNQljjD8szrFSV92aaYt/y2LF2mUf4B
+         DmCl7i6x8nkK66I37+5Kw8cT+WI7uMPhsn6wwHAdmlW1gsEmx4jH5YazxRqO6hmTucYn
+         BUCRQ4RNlzzg79bhwfenL0Imannby5Znp7mjPVTnoAuaNyE62txc9tSBBLCzbujEV0A1
+         xFwMlXnoNSCYNFmD4ymS5KwtFLXkxepL0detQrQeWh/Vw9yZVMGmhIYSfoGL7d17eG+i
+         mH60MNJ42UCaJIJFCUHwJCAKxEV/irjI9yuUGpNb+8T1ji0M9JBu7VN8d0Pxpc85h667
+         hUyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=pWmIlojTh0d4HFa3RzoxkN9/Pi+eKxBftD6BpMR+qCQ=;
-        b=N5VoxVm05kN+VQTFInBpCffV6QdxKGHJz6RVCsAfSAi0azi5jiqFgdeHRGYlfMsp7m
-         bdMZzTJkE7kVCHrkWQ8ftfVYB3zhSMJi5kqrHY8lyIpxN5cFfxGe6O9Y2R59IekNKpiR
-         tAT/SXCmMID0b8HiI/fiyE1soItJIELm2YCSBKdaPW/Bapax64pitHVf5lijQCdvi/Y3
-         /WBgT5Yk/m1A/2N+eQdw7gx2RuvHm00oZboZb7qCJBzwOuRlwRXFj7t0z6rcWu12vIwJ
-         KGJFLJ3cPOJq7G/xp9pjG4PTKZSfAsqYKHAhaUjdIP4JTshPbyfEE8rXVVbeSLenKOO+
-         qCvA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=rKz38fL6hQVHL83ziKNOJPYvy7/aQChCjt0cHvSbL0k=;
+        b=Cylc0BSJc47kGAlsnTg6BBR8WAhJNTYVDTD0Vy0KkSxxuBI+nhR2TRPBAH8G3ZI67T
+         WQW79h8ZxCjn1tArmWmpzuD3NNUYALWJ38KmXNvr9a552Lif8APJa3xotTqDnNUoxreK
+         UzAryNK7EU3CvGOhDtRIzVqxhf7F8pbiqT0WlEldaf8wCtse81JzCaDJcwOYre4Ai/BC
+         HX0zmcQkueWigJEDk9MnOU5XftwIySC4RRFKH+NeH8kYhwCWh8OCRKqUgGWxAy0zXAZT
+         GE9syMWAHeZTPYI1LykDaMrBibClwyMdxKrfIhnR2OAKj+4nJal3vMoPRxh6FrmaLuPI
+         jnUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 184si7932445ybt.123.2019.04.02.07.27.30
+        by mx.google.com with ESMTPS id c201si4697973ybf.349.2019.04.02.08.29.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 07:27:30 -0700 (PDT)
+        Tue, 02 Apr 2019 08:29:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:46082 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:34701 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hBKNu-00032w-37
-	for alex.bennee@linaro.org; Tue, 02 Apr 2019 10:27:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60018)
+	id 1hBLLm-0005Uf-Vb
+	for alex.bennee@linaro.org; Tue, 02 Apr 2019 11:29:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hBKNf-0002wx-Cm
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 10:27:18 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hBLLc-0005TX-N1
+	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 11:29:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hBKNa-0007na-VV
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 10:27:15 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45385 helo=huawei.com)
+	(envelope-from <eric.auger@redhat.com>) id 1hBLLa-0008Ks-S2
+	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 11:29:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33760)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hBKNa-0007gO-JN; Tue, 02 Apr 2019 10:27:10 -0400
-Received: from LHREML714-CAH.china.huawei.com (unknown [172.18.7.107])
-	by Forcepoint Email with ESMTP id 0ADDFF30D10B862362B4;
-	Tue,  2 Apr 2019 15:26:59 +0100 (IST)
-Received: from LHREML524-MBB.china.huawei.com ([169.254.3.113]) by
-	LHREML714-CAH.china.huawei.com ([10.201.108.37]) with mapi id
-	14.03.0415.000; Tue, 2 Apr 2019 15:26:49 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Laszlo Ersek <lersek@redhat.com>, Auger Eric <eric.auger@redhat.com>,
-	"Ard Biesheuvel" <ard.biesheuvel@linaro.org>
-Thread-Topic: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
-	feature "fdt"
-Thread-Index: AQHU39PgLS6qaIxo3EqaH9uSQe0Wh6YiZMSAgAAFAfCAADi+gIAAAGKAgAALywCABJiAgIABtVkg
-Date: Tue, 2 Apr 2019 14:26:49 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83934970E@lhreml524-mbb.china.huawei.com>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1hBLLa-0008IQ-FZ; Tue, 02 Apr 2019 11:29:10 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 247E03092651;
+	Tue,  2 Apr 2019 15:29:09 +0000 (UTC)
+Received: from [10.36.117.163] (ovpn-117-163.ams2.redhat.com [10.36.117.163])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8AEDC614C;
+	Tue,  2 Apr 2019 15:29:04 +0000 (UTC)
+To: Laszlo Ersek <lersek@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
 	<20190321104745.28068-8-shameerali.kolothum.thodi@huawei.com>
 	<98c7f0fd-8446-8897-0808-e7615af29670@redhat.com>
@@ -75,18 +71,22 @@ References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
 	<CAKv+Gu_-nRqeCT0s6ZwW+q3=sbGmtazFJ9R=19U5SJ=gSUmJLw@mail.gmail.com>
 	<a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
 	<459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
-In-Reply-To: <459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <3de6adf3-30c7-5908-e153-2195bc6879c5@redhat.com>
+Date: Tue, 2 Apr 2019 17:29:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Tue, 02 Apr 2019 15:29:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce
  opt-in feature "fdt"
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,6 +103,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"sameo@linux.intel.com" <sameo@linux.intel.com>,
 	Linuxarm <linuxarm@huawei.com>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
@@ -112,97 +113,214 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	Leif Lindholm <Leif.Lindholm@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3V9DISw5hKCm
+X-TUID: vRArBnas9CbI
 
-SGkgTGFzemxvLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IExhc3ps
-byBFcnNlayBbbWFpbHRvOmxlcnNla0ByZWRoYXQuY29tXQ0KPiBTZW50OiAwMSBBcHJpbCAyMDE5
-IDE0OjA3DQo+IFRvOiBBdWdlciBFcmljIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+OyBBcmQgQmll
-c2hldXZlbA0KPiA8YXJkLmJpZXNoZXV2ZWxAbGluYXJvLm9yZz4NCj4gQ2M6IHBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZzsgc2FtZW9AbGludXguaW50ZWwuY29tOw0KPiBxZW11LWRldmVsQG5vbmdu
-dS5vcmc7IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPHNoYW1lZXJhbGkua29sb3RodW0u
-dGhvZGlAaHVhd2VpLmNvbT47IExpbnV4YXJtDQo+IDxsaW51eGFybUBodWF3ZWkuY29tPjsgc2hh
-bm5vbi56aGFvc2xAZ21haWwuY29tOw0KPiBxZW11LWFybUBub25nbnUub3JnOyB4dXdlaSAoTykg
-PHh1d2VpNUBodWF3ZWkuY29tPjsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbTsgc2ViYXN0aWVuLmJv
-ZXVmQGludGVsLmNvbTsgTGVpZiBMaW5kaG9sbQ0KPiA8TGVpZi5MaW5kaG9sbUBhcm0uY29tPg0K
-PiBTdWJqZWN0OiBSZTogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2MyAwNy8xMF0gaHcvYXJtL3ZpcnQ6
-IEludHJvZHVjZSBvcHQtaW4NCj4gZmVhdHVyZSAiZmR0Ig0KPiANCj4gT24gMDMvMjkvMTkgMTQ6
-NTYsIEF1Z2VyIEVyaWMgd3JvdGU6DQoNClsuLi5dDQoNCj4gPiBTdXJlLCBzb3JyeS4NCj4gPg0K
-PiA+IFRoaXMgc2VyaWVzOg0KPiA+IC0gW1BBVENIIHYzIDAwLzEwXSBBUk0gdmlydDogQUNQSSBt
-ZW1vcnkgaG90cGx1ZyBzdXBwb3J0LA0KPiA+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
-Y292ZXIvMTA4NjMzMDEvDQo+ID4NCj4gPiBhaW1zIHRvIGludHJvZHVjZSBQQ0RJTU0gc3VwcG9y
-dCBpbiBxZW11LiBJbiBBQ1BJIG1vZGUsIGl0IGJ1aWxkcyB0aGUNCj4gPiBTUkFUIGFuZCBEU0RU
-IHBhcnRzIGFuZCByZWxpZXMgb24gR0VEIHRvIHRyaWdnZXIgdGhlIGhvdHBsdWcuDQo+ID4NCj4g
-PiBXZSBub3RpY2VkIHRoYXQgaWYgd2UgYnVpbGQgdGhlIGhvdHBsdWdnYWJsZSBtZW1vcnkgZHQg
-bm9kZXMgb24gdG9wIG9mDQo+ID4gdGhlIGFib3ZlIEFDUEkgdGFibGVzLCB0aGUgRElNTSBzbG90
-cyBhcmUgaW50ZXJwcmV0ZWQgYXMgbm90DQo+ID4gaG90cGx1Z2dhYmxlIG1lbW9yeSBzbG90cyAo
-YXQgbGVhc3Qgd2UgdGhpbmsgc28pLg0KPiA+DQo+ID4gV2UgdGhpbmsgdGhlIEVESzIgR2V0TWVt
-b3J5TWFwKCkgdXNlcyB0aGUgZHQgbm9kZSBpbmZvIGFuZCBpZ25vcmVzIHRoZQ0KPiA+IGZhY3Qg
-dGhhdCB0aG9zZSBzbG90cyBhcmUgZXhwb3NlZCBhcyBob3RwbHVnZ2FibGUgaW4gdGhlIFNSQVQg
-Zm9yIGV4YW1wbGUuDQo+ID4NCj4gPiBTbyBpbiB0aGlzIHNlcmllcywgd2UgYXJlIGZvcmNlZCB0
-byBub3QgZ2VuZXJhdGUgdGhlIGhvdHBsdWdnYWJsZSBtZW1vcnkNCj4gPiBkdCBub2RlcyBpZiB3
-ZSB3YW50IHRoZSBESU1NIHNsb3RzIHRvIGJlIGVmZmVjdGl2ZWx5IHJlY29nbml6ZWQgYXMNCj4g
-PiBob3RwbHVnZ2FibGUuDQo+ID4NCj4gPiBDb3VsZCB5b3UgY29uZmlybSB3ZSBoYXZlIGEgY29y
-cmVjdCB1bmRlcnN0YW5kaW5nIG9mIHRoZSBFREsyIGJlaGF2aW91cg0KPiA+IGFuZCBpZiBzbywg
-d291bGQgdGhlcmUgYmUgYW55IHNvbHV0aW9uIGZvciBFREsyIHRvIGFic29yYiBib3RoIHRoZSBE
-VA0KPiA+IG5vZGVzIGFuZCB0aGUgcmVsZXZhbnQgU1JBVC9EU0RUIHRhYmxlcyBhbmQgbWFrZSB0
-aGUgc2xvdHMgaG90cGx1Z2dhYmxlLg0KPiA+DQo+ID4gQXQgcWVtdSBsZXZlbCwgZGV0ZWN0aW5n
-IHdlIGFyZSBib290aW5nIGluIEFDUEkgbW9kZSBhbmQgcHVycG9zZWx5DQo+ID4gcmVtb3Zpbmcg
-dGhlIGFib3ZlIG1lbnRpb25lZCBEVCBub2RlcyBkb2VzIG5vdCBsb29rIHN0cmFpZ2h0Zm9yd2Fy
-ZC4NCj4gDQo+IFRoZSBmaXJtd2FyZSBpcyBub3QgZW5saWdodGVuZWQgYWJvdXQgdGhlIEFDUEkg
-Y29udGVudCB0aGF0IGNvbWVzIGZyb20NCj4gUUVNVSAvIGZ3X2NmZy4gVGhhdCBBQ1BJIGNvbnRl
-bnQgaXMgKmJsaW5kbHkqIHByb2Nlc3NlZCBieSB0aGUgZmlybXdhcmUsDQo+IGFzIGluc3RydWN0
-ZWQgdGhyb3VnaCB0aGUgQUNQSSBsaW5rZXIvbG9hZGVyIHNjcmlwdCwgaW4gb3JkZXIgdG8gaW5z
-dGFsbA0KPiB0aGUgQUNQSSBjb250ZW50IGZvciB0aGUgT1MuIE5vIGFjdHVhbCBpbmZvcm1hdGlv
-biBpcyBjb25zdW1lZCBieSB0aGUNCj4gZmlybXdhcmUgZnJvbSB0aGUgQUNQSSBwYXlsb2FkIC0t
-IGFuZCB0aGF0J3MgYSBmZWF0dXJlLg0KPiANCj4gVGhlIGZpcm13YXJlIGRvZXMgY29uc3VtZSBE
-VDoNCj4gDQo+IC0gSWYgeW91IHN0YXJ0IFFFTVUgKndpdGgqICItbm8tYWNwaSIsIHRoZW4gdGhl
-IERUIGlzIGJvdGggY29uc3VtZWQgYnkNCj4gdGhlIGZpcm13YXJlIChmb3IgaXRzIG93biBpbmZv
-cm1hdGlvbiBuZWVkcyksIGFuZCBwYXNzZWQgb24gdG8gdGhlIE9TLg0KPiANCj4gLSBJZiB5b3Ug
-c3RhcnQgUUVNVSAqd2l0aG91dCogIi1uby1hY3BpIiAodGhlIGRlZmF1bHQpLCB0aGVuIHRoZSBE
-VCBpcw0KPiBjb25zdW1lZCBvbmx5IGJ5IHRoZSBmaXJtd2FyZSAoZm9yIGl0cyBvd24gaW5mb3Jt
-YXRpb24gbmVlZHMpLCBhbmQgdGhlDQo+IERUIGlzIGhpZGRlbiBmcm9tIHRoZSBPUy4gVGhlIE9T
-IGdldHMgb25seSB0aGUgQUNQSSBjb250ZW50DQo+IChwcm9jZXNzZWQvcHJlcGFyZWQgYXMgZGVz
-Y3JpYmVkIGFib3ZlKS4NCj4gDQo+IA0KPiBJbiB0aGUgZmlybXdhcmUsIHRoZSAiQXJtVmlydFBr
-Zy9IaWdoTWVtRHhlIiBkcml2ZXIgaXRlcmF0ZXMgb3ZlciB0aGUNCj4gYmFzZS9zaXplIHBhaXJz
-IGluIGFsbCB0aGUgbWVtb3J5IG5vZGVzIGluIHRoZSBEVC4gRm9yIGVhY2ggc3VjaCBiYXNlDQo+
-IGFkZHJlc3MgdGhhdCBpcyBjdXJyZW50bHkgdHJhY2tlZCBhcyAibm9uZXhpc3RlbnQiIGluIHRo
-ZSBHQ0QgbWVtb3J5DQo+IHNwYWNlIG1hcCwgdGhlIGRyaXZlciBjdXJyZW50bHkgYWRkcyB0aGUg
-YmFzZS9zaXplIHJhbmdlIGFzICJzeXN0ZW0NCj4gbWVtb3J5Ii4gVGhpcyBpbiB0dXJuIGlzIHJl
-ZmxlY3RlZCBieSB0aGUgVUVGSSBtZW1tYXAgdGhhdCB0aGUgT1MgZ2V0cw0KPiB0byBzZWUgYXMg
-ImNvbnZlbnRpb25hbCBtZW1vcnkiLg0KPiANCj4gSWYgeW91IG5lZWQgc29tZSBtZW1vcnkgcmFu
-Z2VzIHRvIHNob3cgdXAgYXMgInNwZWNpYWwiIGluIHRoZSBVRUZJDQo+IG1lbW1hcCwgdGhlbiB5
-b3UgbmVlZCB0byBkaXN0aW5ndWlzaCB0aGVtIHNvbWVob3cgZnJvbSB0aGUgInJlZ3VsYXIiDQo+
-IG1lbW9yeSBhcmVhcywgaW4gdGhlIERULiBBbmQgdGhlbiBleHRlbmQgIkFybVZpcnRQa2cvSGln
-aE1lbUR4ZSIgaW4gdGhlDQo+IGZpcm13YXJlLCBzbyB0aGF0IGl0IGFjdCB1cG9uIHRoZSBkaXNj
-cmltaW5hdG9yIHRoYXQgeW91IHNldCBpbiB0aGUgRFQuDQo+IA0KPiANCj4gTm93Li4uIGZyb20g
-YSBicmllZiBsb29rIGF0IHRoZSBQbGF0Zm9ybSBJbml0IGFuZCBVRUZJIHNwZWNzLCBteQ0KPiBp
-bXByZXNzaW9uIGlzIHRoYXQgdGhlIGhvdHBsdWdnYWJsZSAoYnV0IHByZXNlbnRseSBub3QgcGx1
-Z2dlZCkgRElNTQ0KPiByYW5nZXMgc2hvdWxkIHNpbXBseSBiZSAqYWJzZW50KiBmcm9tIHRoZSBV
-RUZJIG1lbW1hcDsgaXMgdGhhdCBjb3JyZWN0Pw0KPiAoSSBkaWRuJ3QgY2hlY2sgdGhlIEFDUEkg
-c3BlYywgbWF5YmUgaXQgc3BlY2lmaWVzIHRoZSBleHBlY3RlZCBiZWhhdmlvcg0KPiBpbiBmdWxs
-LikgSWYgbXkgaW1wcmVzc2lvbiBpcyBjb3JyZWN0LCB0aGVuIHR3byBvcHRpb25zIChhbHRlcm5h
-dGl2ZXMpDQo+IGV4aXN0Og0KPiANCj4gKDEpIEhpZGUgdGhlIGFmZmVjdGVkIG1lbW9yeSBub2Rl
-cyAtLSBvciBhdCBsZWFzdCB0aGUgYWZmZWN0ZWQgYmFzZS9zaXplDQo+IHBhaXJzIC0tIGZyb20g
-dGhlIERULCBpbiBjYXNlIHlvdSBib290IHdpdGhvdXQgIi1uby1hY3BpIiBidXQgd2l0aCBhbg0K
-PiBleHRlcm5hbCBmaXJtd2FyZSBsb2FkZWQuIFRoZW4gdGhlIGZpcm13YXJlIHdpbGwgbm90IGV4
-cG9zZSB0aG9zZSByYW5nZXMNCj4gYXMgImNvbnZlbnRpb25hbCBtZW1vcnkiIGluIHRoZSBVRUZJ
-IG1lbW1hcC4gVGhpcyBhcHByb2FjaCByZXF1aXJlcyBubw0KPiBjaGFuZ2VzIHRvIGVkazIuDQo+
-IA0KPiBUaGlzIG9wdGlvbiBpcyBwcmVjaXNlbHkgd2hhdCBFcmljIGRlc2NyaWJlZCB1cC10aHJl
-YWQsIGF0DQo+IDxodHRwOi8vbWlkLm1haWwtYXJjaGl2ZS5jb20vM2YwYTU3OTMtZGQzNS1hNDk3
-LTIyNDgtOGViMGNkM2MzYTE2QHJlZGgNCj4gYXQuY29tPjoNCj4gDQo+ID4gaW4gbWFjaHZpcnRf
-aW5pdCwgdGhlcmUgaXMgZmlybXdhcmVfbG9hZGVkIHRoYXQgdGVsbHMgeW91IHdoZXRoZXIgeW91
-DQo+ID4gaGF2ZSBhIEZXIGltYWdlLiBJZiB0aGlzIG9uZSBpcyBub3Qgc2V0LCB5b3UgY2FuIGlu
-ZHVjZSBkdC4gQnV0IGlmDQo+ID4gdGhlcmUgaXMgYSBGVyBpdCBjYW4gYmUgZWl0aGVyIERUIG9y
-IEFDUEkgYm9vdGVkLiBZb3UgYWxzbyBoYXZlIHRoZQ0KPiA+IGFjcGlfZW5hYmxlZCBrbm9iLg0K
-PiANCj4gKFRoZSAiLW5vLWFjcGkiIGNtZGxpbmUgb3B0aW9uIGNsZWFycyB0aGUgImFjcGlfZW5h
-YmxlZCIgdmFyaWFibGUgaW4NCj4gInZsLmMiKS4NCj4gDQo+IFNvLCB0aGUgY29uZGl0aW9uIGZv
-ciBoaWRpbmcgdGhlIGhvdHBsdWdnYWJsZSBtZW1vcnkgbm9kZXMgaW4gcXVlc3Rpb24NCj4gZnJv
-bSB0aGUgRFQgaXM6DQo+IA0KPiAgIChhYXJjaDY0ICYmIGZpcm13YXJlX2xvYWRlZCAmJiBhY3Bp
-X2VuYWJsZWQpDQoNClRoYW5rcyBmb3IgeW91ciBleHBsYW5hdGlvbiBhbmQgc3VnZ2VzdGlvbnMu
-IEkgaGFkIGEgcXVpY2sgcnVuIHdpdGggdGhlIGFib3ZlDQphbmQgaXQgc2VlbXMgdG8gZG8gdGhl
-IGpvYi4gSSB3aWxsIGRyb3AgdGhpcyBleHRyYSBvcHQtaW4gZmVhdHVyZSBwYXRjaCBmcm9tIHRo
-aXMNCnNlcmllcyBhbmQgaW5zdGVhZCBoYXZlIHRoaXMgY2hlY2suDQoNClRoYW5rcywNClNoYW1l
-ZXINCg0KPiANCj4gDQo+ICgyKSBJbnZlbnQgYW5kIHNldCBhbiAiaWdub3JlIG1lLCBmaXJtd2Fy
-ZSIgcHJvcGVydHkgZm9yIHRoZQ0KPiBob3RwbHVnZ2FibGUgbWVtb3J5IG5vZGVzIGluIHRoZSBE
-VCwgYW5kIHVwZGF0ZSB0aGUgZmlybXdhcmUgdG8gaG9ub3INCj4gdGhhdCBwcm9wZXJ0eS4NCj4g
-DQo+IFRoYW5rcw0KPiBMYXN6bG8NCg==
+Hi Laszlo,
+
+On 4/1/19 3:07 PM, Laszlo Ersek wrote:
+> On 03/29/19 14:56, Auger Eric wrote:
+>> Hi Ard,
+>>
+>> On 3/29/19 2:14 PM, Ard Biesheuvel wrote:
+>>> On Fri, 29 Mar 2019 at 14:12, Auger Eric <eric.auger@redhat.com> wrote:
+>>>>
+>>>> Hi Shameer,
+>>>>
+>>>> On 3/29/19 10:59 AM, Shameerali Kolothum Thodi wrote:
+>>>>>
+>>>>>
+>>>>>> -----Original Message-----
+>>>>>> From: Auger Eric [mailto:eric.auger@redhat.com]
+>>>>>> Sent: 29 March 2019 09:32
+>>>>>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>>>>>> qemu-devel@nongnu.org; qemu-arm@nongnu.org; imammedo@redhat.com;
+>>>>>> peter.maydell@linaro.org; shannon.zhaosl@gmail.com;
+>>>>>> sameo@linux.intel.com; sebastien.boeuf@intel.com
+>>>>>> Cc: Linuxarm <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>;
+>>>>>> Laszlo Ersek <lersek@redhat.com>; Ard Biesheuvel
+>>>>>> <ard.biesheuvel@linaro.org>; Leif Lindholm <Leif.Lindholm@arm.com>
+>>>>>> Subject: Re: [PATCH v3 07/10] hw/arm/virt: Introduce opt-in feature "fdt"
+>>>>>>
+>>>>>> Hi Shameer,
+>>>>>>
+>>>>>> [ + Laszlo, Ard, Leif ]
+>>>>>>
+>>>>>> On 3/21/19 11:47 AM, Shameer Kolothum wrote:
+>>>>>>> This is to disable/enable populating DT nodes in case
+>>>>>>> any conflict with acpi tables. The default is "off".
+>>>>>> The name of the option sounds misleading to me. Also we don't really
+>>>>>> know the scope of the disablement. At the moment this just aims to
+>>>>>> prevent the hotpluggable dt nodes from being added if we boot in ACPI mode.
+>>>>>>
+>>>>>>>
+>>>>>>> This will be used in subsequent patch where cold plug
+>>>>>>> device-memory support is added for DT boot.
+>>>>>> I am concerned about the fact that in dt mode, by default, you won't see
+>>>>>> any PCDIMM nodes.
+>>>>>>>
+>>>>>>> If DT memory node support is added for cold-plugged device
+>>>>>>> memory, those memory will be visible to Guest kernel via
+>>>>>>> UEFI GetMemoryMap() and gets treated as early boot memory.
+>>>>>> Don't we have an issue in UEFI then. Normally the SRAT indicates whether
+>>>>>> the slots are hotpluggable or not. Shouldn't the UEFI code look at this
+>>>>>> info.
+>>>>>
+>>>>> Sorry I missed this part. Yes, that will be a more cleaner solution.
+>>>>>
+>>>>> Also, to be more clear on what happens,
+>>>>>
+>>>>> Guest ACPI boot with "fdt=on" ,
+>>>>>
+>>>>> From kernel log,
+>>>>>
+>>>>> [    0.000000] Early memory node ranges
+>>>>> [    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf5ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bbf60000-0x00000000bbffffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc02ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc030000-0x00000000bc36ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000c0000000-0x00000000ffffffff]  --> This is the hotpluggable memory node from DT.
+>>>>> [    0.000000] Zeroed struct page in unavailable ranges: 1040 pages
+>>>>> [    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000ffffffff]
+>>>>>
+>>>>>
+>>>>> Guest ACPI boot with "fdt=off" ,
+>>>>>
+>>>>> [    0.000000] Movable zone start for each node
+>>>>> [    0.000000] Early memory node ranges
+>>>>> [    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf5ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bbf60000-0x00000000bbffffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc02ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc030000-0x00000000bc36ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+>>>>> [    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+>>>>> [    0.000000] Zeroed struct page in unavailable ranges: 1040 pages
+>>>>> [    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff
+>>>>>
+>>>>> The hotpluggable memory node is absent from early memory nodes here.
+>>>>
+>>>> OK thank you for the example illustrating the concern.
+>>>>>
+>>>>> As you said, it could be possible to detect this node using SRAT in UEFI.
+>>>>
+>>>> Let's wait for EDK2 experts on this.
+>>>>
+>>>
+>>> Happy to chime in, but I need a bit more context here.
+>>>
+>>> What is the problem, how does this path try to solve it, and why is
+>>> that a bad idea?
+>>>
+>> Sure, sorry.
+>>
+>> This series:
+>> - [PATCH v3 00/10] ARM virt: ACPI memory hotplug support,
+>> https://patchwork.kernel.org/cover/10863301/
+>>
+>> aims to introduce PCDIMM support in qemu. In ACPI mode, it builds the
+>> SRAT and DSDT parts and relies on GED to trigger the hotplug.
+>>
+>> We noticed that if we build the hotpluggable memory dt nodes on top of
+>> the above ACPI tables, the DIMM slots are interpreted as not
+>> hotpluggable memory slots (at least we think so).
+>>
+>> We think the EDK2 GetMemoryMap() uses the dt node info and ignores the
+>> fact that those slots are exposed as hotpluggable in the SRAT for example.
+>>
+>> So in this series, we are forced to not generate the hotpluggable memory
+>> dt nodes if we want the DIMM slots to be effectively recognized as
+>> hotpluggable.
+>>
+>> Could you confirm we have a correct understanding of the EDK2 behaviour
+>> and if so, would there be any solution for EDK2 to absorb both the DT
+>> nodes and the relevant SRAT/DSDT tables and make the slots hotpluggable.
+>>
+>> At qemu level, detecting we are booting in ACPI mode and purposely
+>> removing the above mentioned DT nodes does not look straightforward.
+> 
+> The firmware is not enlightened about the ACPI content that comes from
+> QEMU / fw_cfg. That ACPI content is *blindly* processed by the firmware,
+> as instructed through the ACPI linker/loader script, in order to install
+> the ACPI content for the OS. No actual information is consumed by the
+> firmware from the ACPI payload -- and that's a feature.
+> 
+> The firmware does consume DT:
+> 
+> - If you start QEMU *with* "-no-acpi", then the DT is both consumed by
+> the firmware (for its own information needs), and passed on to the OS.
+> 
+> - If you start QEMU *without* "-no-acpi" (the default), then the DT is
+> consumed only by the firmware (for its own information needs), and the
+> DT is hidden from the OS. The OS gets only the ACPI content
+> (processed/prepared as described above).
+> 
+> 
+> In the firmware, the "ArmVirtPkg/HighMemDxe" driver iterates over the
+> base/size pairs in all the memory nodes in the DT. For each such base
+> address that is currently tracked as "nonexistent" in the GCD memory
+> space map, the driver currently adds the base/size range as "system
+> memory". This in turn is reflected by the UEFI memmap that the OS gets
+> to see as "conventional memory".
+> 
+> If you need some memory ranges to show up as "special" in the UEFI
+> memmap, then you need to distinguish them somehow from the "regular"
+> memory areas, in the DT. And then extend "ArmVirtPkg/HighMemDxe" in the
+> firmware, so that it act upon the discriminator that you set in the DT.
+> 
+> 
+> Now... from a brief look at the Platform Init and UEFI specs, my
+> impression is that the hotpluggable (but presently not plugged) DIMM
+> ranges should simply be *absent* from the UEFI memmap; is that correct?
+> (I didn't check the ACPI spec, maybe it specifies the expected behavior
+> in full.) If my impression is correct, then two options (alternatives)
+> exist:
+> 
+> (1) Hide the affected memory nodes -- or at least the affected base/size
+> pairs -- from the DT, in case you boot without "-no-acpi" but with an
+> external firmware loaded. Then the firmware will not expose those ranges
+> as "conventional memory" in the UEFI memmap. This approach requires no
+> changes to edk2.
+> 
+> This option is precisely what Eric described up-thread, at
+> <http://mid.mail-archive.com/3f0a5793-dd35-a497-2248-8eb0cd3c3a16@redhat.com>:
+> 
+>> in machvirt_init, there is firmware_loaded that tells you whether you
+>> have a FW image. If this one is not set, you can induce dt. But if
+>> there is a FW it can be either DT or ACPI booted. You also have the
+>> acpi_enabled knob.
+> 
+> (The "-no-acpi" cmdline option clears the "acpi_enabled" variable in
+> "vl.c").
+> 
+> So, the condition for hiding the hotpluggable memory nodes in question
+> from the DT is:
+
+> 
+>   (aarch64 && firmware_loaded && acpi_enabled)
+
+Thanks a lot for all those inputs!
+
+I don't get why we test aarch64 in above condition (this was useful for
+high ECAM range as the aarch32 FW was not supporting it but here, is it
+still meaningful?)
+
+Thanks
+
+Eric
+
+> 
+> 
+> (2) Invent and set an "ignore me, firmware" property for the
+> hotpluggable memory nodes in the DT, and update the firmware to honor
+> that property.
+> 
+> Thanks
+> Laszlo
+> 

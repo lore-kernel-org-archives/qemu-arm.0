@@ -1,67 +1,68 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1765685wrx;
-        Tue, 2 Apr 2019 08:49:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyqolA7z4N23KgL6D0v7+SOi4D/HWL6iutDb7L4y2T1t964ilLVu6g4O3e7D72FroOt70Zz
-X-Received: by 2002:a81:7058:: with SMTP id l85mr57763139ywc.68.1554220166205;
-        Tue, 02 Apr 2019 08:49:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554220166; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1767937wrx;
+        Tue, 2 Apr 2019 08:51:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyp43AE++L1Smx9pAQWOge6h8w/dS1E3uYJeSTMbKVZZgJ4ITylDg7HhMozm5R6cbj3fA6Y
+X-Received: by 2002:a25:dbcb:: with SMTP id g194mr11872971ybf.446.1554220314895;
+        Tue, 02 Apr 2019 08:51:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554220314; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uxv9vji9tLLoj5GLaDgUJexs6WVT5WsXN9addZPGUc6CyCPEA4ffHyMoOSa+SGRV4O
-         /n0UmL9nI5P8w01WdidBIWBw748hkYJxCjJrvetdGPj81AXyddU2ZDorYn102wQQfUVf
-         Xuh0Pbs7FB2W7ocbz29kX522ly4DRNRrww5QIoqs/3pBNGvUq7c/uVucV+fJ3QCNQUo6
-         fgFt0grHLrDdedAjyv8lOIhKZBF1rjB7a0hObyYAS2KNQ9SXglaaN6bY9r0YJEnXBBs6
-         kWQGMqZSLsYJYWl8Qz9FkayyzYaL+reg2H0d/oDdU9k0DvQxCSaMcQ3W3Ns9KIyjoJvH
-         LC7A==
+        b=OI3nU/kDCe1vYIfW+Eid63IqC4Jj5VZXYVldtPdzc7ydO7bGJLBrUYeqWZOlxmLN/t
+         QiSu6CQIrS+J7vfmmycetjzhid3bGfcTfT45uwKLItvzG97d1DifojXzY8lavM9fvkTO
+         dhpf3TIOSReSgAAffXu+IvSQKkxUdth3M3DpSfp+y9YS9OAIUIuqF5W8YUQyJ0rqGgAw
+         ia+bMkYD6xHYHnXQzTRRRoIGvmDGUVBb5yBaWb3OycRw3G3WbQKUCWTg0ijBeYvvWFEO
+         N4ZiAh4NitasoFcysIr00lC4FP8M8dDxycEB82AZenrw/zINtcDhRJm0M10Vm9oeULXT
+         9OFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=8PrrjtQ9Omemc0lZ4Hf0WgcYCvj4PSwsuXUD+N3R4RI=;
-        b=mIzYi3hCAt8ffaIAQ/ZTPEK5jpAQk4vQkHEf9xdGDtwWPUVOQ2V+6tEBHQmlT0s17k
-         UBLEF5G3K63RuOa6RtbEMATTHsJiHegPwXzaMScAay82lqt+o+JiPpdeEUjfZjm7CQe6
-         Gz5OWIuph1IrES2lTKbmiAEScfhLR0HhryOiSH7MTgAc79bWwvssxDw4jSo73PKUK0uy
-         dBDZZgXynYTiWkCzJ0iey98oLWTn9JC2271K+N47HNU8TajqjMlnwdqb/j0sX6HHcQuY
-         89SK+2Ep6cTbP/X7ju4QqLl1QVP+XYlVJN98JjyOio2CODr7GMevvwtslT0UcOVepwhM
-         p+lg==
+        bh=JAbBBRKW4YNBbR3vL/w4smRtgLuJueyUcJcgJN/yIs8=;
+        b=Y+iWCri2PjhUB+Nk4YTTI6qimmWtnm5mrokuGtskKHnUOnnQ7HZEqVGED9jvVMhM8+
+         yIbb98h7x3FBI4t4TWkIcOiv4KpILCLzuNfgA4YL5FbGuBFFjmAVxnEmO9CGh45Zwzzq
+         f5M1C1KyhE1xv/kHBNJftZkQE3jeUWpZOXuIdR4VpOY5oOrjHcwG/YyPyST3WWmpJZq4
+         lVtlAXfjxEwOxT3HDSH9FmmqFw9x/9OVdiFLOTjcT4FiEeOJ6bbKn2v3WqGKneMyjNeq
+         AuWGE67ep2gQeVHcvth7C2H9N1zEtwgPwl1gmEx/QGUGB28LmNHYIh/nRlLP9bzW4FfP
+         y47g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v138si8343229ywc.138.2019.04.02.08.49.26
+        by mx.google.com with ESMTPS id 189si8218918ywh.272.2019.04.02.08.51.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 08:49:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Apr 2019 08:51:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40055 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40506 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hBLfB-00026x-Kl
-	for alex.bennee@linaro.org; Tue, 02 Apr 2019 11:49:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51330)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hBLha-0003sw-As
+	for alex.bennee@linaro.org; Tue, 02 Apr 2019 11:51:54 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hBLYm-0005qo-Qk
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 11:42:50 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hBLga-0003i3-TP
+	for qemu-devel@nongnu.org; Tue, 02 Apr 2019 11:50:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hBLYk-0005ym-KD
-	for qemu-arm@nongnu.org; Tue, 02 Apr 2019 11:42:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42236)
+	(envelope-from <eric.auger@redhat.com>) id 1hBLgY-000672-JL
+	for qemu-devel@nongnu.org; Tue, 02 Apr 2019 11:50:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60466)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hBLYk-0005wZ-80; Tue, 02 Apr 2019 11:42:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1hBLgS-0005ve-Dw; Tue, 02 Apr 2019 11:50:44 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4CB9981DEB;
-	Tue,  2 Apr 2019 15:42:45 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3CF683091782;
+	Tue,  2 Apr 2019 15:50:43 +0000 (UTC)
 Received: from [10.36.117.163] (ovpn-117-163.ams2.redhat.com [10.36.117.163])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EA96E5C28C;
-	Tue,  2 Apr 2019 15:42:41 +0000 (UTC)
-To: Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 26B8A600C7;
+	Tue,  2 Apr 2019 15:50:39 +0000 (UTC)
+To: Laszlo Ersek <lersek@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
 References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
 	<20190321104745.28068-8-shameerali.kolothum.thodi@huawei.com>
 	<98c7f0fd-8446-8897-0808-e7615af29670@redhat.com>
@@ -70,70 +71,70 @@ References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
 	<CAKv+Gu_-nRqeCT0s6ZwW+q3=sbGmtazFJ9R=19U5SJ=gSUmJLw@mail.gmail.com>
 	<a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
 	<459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
-	<20190402094257.218aa0e5@redhat.com>
-	<9b776e3b-7b1b-239d-bc36-6bbd78f8b67e@redhat.com>
+	<3de6adf3-30c7-5908-e153-2195bc6879c5@redhat.com>
+	<9e939ea4-4be2-a165-dce4-47d8196020b0@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <fed34443-e5b0-41be-21ab-323fb7137163@redhat.com>
-Date: Tue, 2 Apr 2019 17:42:40 +0200
+Message-ID: <ee48aa7c-2c99-8e42-2a4d-ca08d4440ab1@redhat.com>
+Date: Tue, 2 Apr 2019 17:50:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <9b776e3b-7b1b-239d-bc36-6bbd78f8b67e@redhat.com>
+In-Reply-To: <9e939ea4-4be2-a165-dce4-47d8196020b0@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 02 Apr 2019 15:42:45 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Tue, 02 Apr 2019 15:50:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce
- opt-in feature "fdt"
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
+ feature "fdt"
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
 	Linuxarm <linuxarm@huawei.com>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
 	"xuwei \(O\)" <xuwei5@huawei.com>,
+	"imammedo@redhat.com" <imammedo@redhat.com>,
 	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
 	Leif Lindholm <Leif.Lindholm@arm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uk75HCGBb8gt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hdwkBiLcYqe5
 
-Hi Laszlo,
+Laszlo,
 
-On 4/2/19 12:33 PM, Laszlo Ersek wrote:
-> On 04/02/19 09:42, Igor Mammedov wrote:
->> On Mon, 1 Apr 2019 15:07:05 +0200
->> Laszlo Ersek <lersek@redhat.com> wrote:
+On 4/2/19 5:38 PM, Laszlo Ersek wrote:
+> On 04/02/19 17:29, Auger Eric wrote:
+>> Hi Laszlo,
 >>
+>> On 4/1/19 3:07 PM, Laszlo Ersek wrote:
 >>> On 03/29/19 14:56, Auger Eric wrote:
 >>>> Hi Ard,
 >>>>
->>>> On 3/29/19 2:14 PM, Ard Biesheuvel wrote:  
->>>>> On Fri, 29 Mar 2019 at 14:12, Auger Eric <eric.auger@redhat.com> wrote:  
+>>>> On 3/29/19 2:14 PM, Ard Biesheuvel wrote:
+>>>>> On Fri, 29 Mar 2019 at 14:12, Auger Eric <eric.auger@redhat.com> wrote:
 >>>>>>
 >>>>>> Hi Shameer,
 >>>>>>
->>>>>> On 3/29/19 10:59 AM, Shameerali Kolothum Thodi wrote:  
+>>>>>> On 3/29/19 10:59 AM, Shameerali Kolothum Thodi wrote:
 >>>>>>>
->>>>>>>  
+>>>>>>>
 >>>>>>>> -----Original Message-----
 >>>>>>>> From: Auger Eric [mailto:eric.auger@redhat.com]
 >>>>>>>> Sent: 29 March 2019 09:32
@@ -150,25 +151,25 @@ On 4/2/19 12:33 PM, Laszlo Ersek wrote:
 >>>>>>>>
 >>>>>>>> [ + Laszlo, Ard, Leif ]
 >>>>>>>>
->>>>>>>> On 3/21/19 11:47 AM, Shameer Kolothum wrote:  
+>>>>>>>> On 3/21/19 11:47 AM, Shameer Kolothum wrote:
 >>>>>>>>> This is to disable/enable populating DT nodes in case
->>>>>>>>> any conflict with acpi tables. The default is "off".  
+>>>>>>>>> any conflict with acpi tables. The default is "off".
 >>>>>>>> The name of the option sounds misleading to me. Also we don't really
 >>>>>>>> know the scope of the disablement. At the moment this just aims to
 >>>>>>>> prevent the hotpluggable dt nodes from being added if we boot in ACPI mode.
->>>>>>>>  
+>>>>>>>>
 >>>>>>>>>
 >>>>>>>>> This will be used in subsequent patch where cold plug
->>>>>>>>> device-memory support is added for DT boot.  
+>>>>>>>>> device-memory support is added for DT boot.
 >>>>>>>> I am concerned about the fact that in dt mode, by default, you won't see
->>>>>>>> any PCDIMM nodes.  
+>>>>>>>> any PCDIMM nodes.
 >>>>>>>>>
 >>>>>>>>> If DT memory node support is added for cold-plugged device
 >>>>>>>>> memory, those memory will be visible to Guest kernel via
->>>>>>>>> UEFI GetMemoryMap() and gets treated as early boot memory.  
+>>>>>>>>> UEFI GetMemoryMap() and gets treated as early boot memory.
 >>>>>>>> Don't we have an issue in UEFI then. Normally the SRAT indicates whether
 >>>>>>>> the slots are hotpluggable or not. Shouldn't the UEFI code look at this
->>>>>>>> info.  
+>>>>>>>> info.
 >>>>>>>
 >>>>>>> Sorry I missed this part. Yes, that will be a more cleaner solution.
 >>>>>>>
@@ -209,20 +210,20 @@ On 4/2/19 12:33 PM, Laszlo Ersek wrote:
 >>>>>>> [    0.000000] Zeroed struct page in unavailable ranges: 1040 pages
 >>>>>>> [    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff
 >>>>>>>
->>>>>>> The hotpluggable memory node is absent from early memory nodes here.  
+>>>>>>> The hotpluggable memory node is absent from early memory nodes here.
 >>>>>>
->>>>>> OK thank you for the example illustrating the concern.  
+>>>>>> OK thank you for the example illustrating the concern.
 >>>>>>>
->>>>>>> As you said, it could be possible to detect this node using SRAT in UEFI.  
+>>>>>>> As you said, it could be possible to detect this node using SRAT in UEFI.
 >>>>>>
 >>>>>> Let's wait for EDK2 experts on this.
->>>>>>  
+>>>>>>
 >>>>>
 >>>>> Happy to chime in, but I need a bit more context here.
 >>>>>
 >>>>> What is the problem, how does this path try to solve it, and why is
 >>>>> that a bad idea?
->>>>>  
+>>>>>
 >>>> Sure, sorry.
 >>>>
 >>>> This series:
@@ -248,7 +249,7 @@ On 4/2/19 12:33 PM, Laszlo Ersek wrote:
 >>>> nodes and the relevant SRAT/DSDT tables and make the slots hotpluggable.
 >>>>
 >>>> At qemu level, detecting we are booting in ACPI mode and purposely
->>>> removing the above mentioned DT nodes does not look straightforward.  
+>>>> removing the above mentioned DT nodes does not look straightforward.
 >>>
 >>> The firmware is not enlightened about the ACPI content that comes from
 >>> QEMU / fw_cfg. That ACPI content is *blindly* processed by the firmware,
@@ -265,12 +266,6 @@ On 4/2/19 12:33 PM, Laszlo Ersek wrote:
 >>> consumed only by the firmware (for its own information needs), and the
 >>> DT is hidden from the OS. The OS gets only the ACPI content
 >>> (processed/prepared as described above).
-I am confused by the above statement actually. In the above case what
-does happen if you pass the acpi=off in the kernel boot parameters?
-
-Thanks
-
-Eric
 >>>
 >>>
 >>> In the firmware, the "ArmVirtPkg/HighMemDxe" driver iterates over the
@@ -305,69 +300,59 @@ Eric
 >>>> in machvirt_init, there is firmware_loaded that tells you whether you
 >>>> have a FW image. If this one is not set, you can induce dt. But if
 >>>> there is a FW it can be either DT or ACPI booted. You also have the
->>>> acpi_enabled knob.  
+>>>> acpi_enabled knob.
 >>>
 >>> (The "-no-acpi" cmdline option clears the "acpi_enabled" variable in
 >>> "vl.c").
 >>>
 >>> So, the condition for hiding the hotpluggable memory nodes in question
 >>> from the DT is:
+>>
 >>>
 >>>   (aarch64 && firmware_loaded && acpi_enabled)
->> I'd go with this one, though I have a question for firmware side.
->> Let's assume we would want in future to expose hotpluggable & present
->> memory via GetMemoryMap() (like bare-metal does) (guest OS theoretically
->> can avoid using it for Normal zone based on hint from SRAT table early
->> at boot), but what about firmware can it inspect SRAT table and not use
->> hotpluggable ranges for its own use (or at least do not canibalize
->> them permanently)?
+>>
+>> Thanks a lot for all those inputs!
+>>
+>> I don't get why we test aarch64 in above condition (this was useful for
+>> high ECAM range as the aarch32 FW was not supporting it but here, is it
+>> still meaningful?)
 > 
-> This is actually two questions:
+> Sorry, I should have clarified that. Yes, it is meaningful:
 > 
-> (a) Can the firmware inspect SRAT?
+> While UEFI has bindings for both 32-bit and 64-bit ARM, ACPI has a
+> 64-bit-only binding for ARM. (And you can have UEFI without ACPI, but
+> not the reverse, on ARM.) So if you run the 32-bit build of the
+> ArmVirtQemu firmware, you get no ACPI at all; all you can rely on with
+> the OS is the DT.
+
+OK. Thank you for the clarification!
+
+Eric
 > 
-> If the SRAT table structure isn't very complex, this is technically
-> doable, but the wrong thing to do, IMO.
+> This "bitness distinction" is implemented in the firmware already. If
+> you hid the memory nodes from the DT under the condition
 > 
-> First, we've tried hard to avoid enlightening the firmware about the
-> semantics of QEMU's ACPI tables.
+>   (!aarch64 && firmware_loaded && acpi_enabled)
 > 
-> Second, this would introduce an ordering constraint (or callbacks) in
-> the firmware, between the driver that processes & installs the ACPI
-> tables, and the driver that translates the memory nodes of the DT to the
-> memory ranges known to UEFI and the OS.
-> 
-> If we need such hinting, then option (2) below (from earlier context)
-> would be better:
-> - If it's OK to use an arm/aarch64 specific solution, then new DT
-> properties should work.
-> - If it should be arch-independent, then a dedicated fw_cfg file would
-> be better.
-> 
-> (b) Assuming we have the information from some source, can the firmware
-> expose some memory ranges as "usable RAM" to the OS, while staying away
-> from them for its own (firmware) purposes?
-> 
-> After consulting
-> 
->   Table 25. Memory Type Usage before ExitBootServices()
->   Table 26. Memory Type Usage after ExitBootServices()
-> 
-> in UEFI-2.7, I would say that the firmware driver that installs these
-> ranges to the memory (space) map should also allocate the ranges right
-> after, as EfiBootServicesData. This will prevent other drivers /
-> applications in the firmware from allocating chunks out of those areas,
-> and the OS will be at liberty to release and repurpose the ranges after
-> ExitBootServices().
+> then the nodes would not be seen by the OS at all (because
+> "acpi_enabled" is irrelevant for the 32-bit build of ArmVirtQemu, and
+> all the OS can ever get is DT).
 > 
 > Thanks,
 > Laszlo
 > 
+>>
+>> Thanks
+>>
+>> Eric
+>>
+>>>
+>>>
 >>> (2) Invent and set an "ignore me, firmware" property for the
 >>> hotpluggable memory nodes in the DT, and update the firmware to honor
 >>> that property.
 >>>
 >>> Thanks
 >>> Laszlo
->>
+>>>
 > 

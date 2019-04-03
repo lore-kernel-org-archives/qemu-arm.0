@@ -1,97 +1,85 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3858439wrx;
-        Sun, 31 Mar 2019 04:32:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzSSFRNfF1S/YL2wk+x5iWoCmwZCJQ3MzFf0tx9f6RkKbsn0E1y1OJQWLMu/90pECbDEKv5
-X-Received: by 2002:a81:234b:: with SMTP id j72mr47465042ywj.279.1554031968842;
-        Sun, 31 Mar 2019 04:32:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554031968; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp291940wrx;
+        Wed, 3 Apr 2019 07:14:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzR9hy2t1S0KJOtn3Wf0u0TUcgzzSm/4D1upso/ImEwiuh1rKY53ZVsk/wX2a2c+Co9YBDe
+X-Received: by 2002:a25:9241:: with SMTP id e1mr73308ybo.135.1554300847740;
+        Wed, 03 Apr 2019 07:14:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554300847; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDygObG35CzZWI9y1p15vI093tmv61caDeCL4HuGM3eQDD4Yu09S5WHU1gvm8+Oyby
-         NjCplrHawGZ7zhIJozYGd0MJwZeeuAGJJ/T63lpS8qnJIXu+kMGlQdClsm7Uu30j6Cvx
-         opWCGxenHWHQWrsatGKykC4DXwpRQ4aE/B7rk40lyylstYDhrn6PQdmkvEvGPlgUmW2v
-         jXzzjMBEfu5vofQuapr5F4mXa6Vr+JG//j7MNYV382Jra8Mlvi2pezl9yKGie5X7vgw9
-         AckYLbHNLADv9ArFyTflaPHaDTag5aQarEWq8cTnHz8IjV6WLo3AgZtaV/J3l8seWEnW
-         9aKA==
+        b=a8bRUwO6DiuDYqFwwn2YKHpPINPiIGDC2vp/BzIA8AOLxEdx9fqqfPI7JMNgw0cOFv
+         PnaWSpNtg9fgogvsh1mPs0jqiDeyLIp7ww/sLrmZRyd747qvYk4FLf83PorgttaX3GvH
+         oJoC4c6QMsFsR8RJBLyxeUi+EPcUzyHyrcT9dyJho/7ahKz82tP/eDTPPyvbcqfcIJGu
+         hO+Z4lkyKfPPC86lCtux6GHShwElJxjH4Xv1/adCu3E9bYhfTy+Re9sAEnglF10SUZAO
+         iEek33zmHw37F4hZNCYwH7zJOQ8bAZFbi8Qa/D17nLo3pLDDchg0LX1ch+FYUjcDlkzk
+         t++Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=dogQ13Nv7tQIENc2yNRZRCUa+/rqK6Oi0bz4OBdqSqg=;
-        b=g1q7UszXhI6JnntOi7DwHBdyT+F1X0T7ZuUHIUD2pxLlXrOvNJNdMfieGgKmG2DtjK
-         oSoBsHD7sunTP8pC5sdkUD6KAZkp0pTTBnJgMZ9QTLM9bh1/enpDRth67OLqAKEfUXYE
-         DkrwE6Q3qCMWY3oLlamyH/GPhiAuSFHGgdn7T8ocWZ+Z51AmBxKfs7JWHwaiMXy+0uz9
-         3YqL/2YEaX2y5C/a3WmJsoFu9htrXGEar/sabzUeLbaNjapi4ETui0SLWvqzZ4mbOMEY
-         ZXKAm/DVLuv/4nMbvGyxJU2BTr8gwesOKEIjA8eTdC5zlRMGd+mEPg6a1UFwY++js/2/
-         6yaQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=h5dTsW+NxvRuHc2yJuiuwBI8TDdYLkStWLrBv/bxTYQ=;
+        b=jdOCAL/OAM+Zj8qIg6FaqxN3cXwTcpQkcwn5IBeg+Csx0reUImaM1GHmQSOwzMIQeq
+         zwZ8fVCiQ/ByLhmrw04kxJaktW8tXts63K1xbiQvvJmUnBt/f+HhP8DF8rroUuqECoSD
+         ryqkye5BTkxKVhqHLd0pZ2gNKc+m/yxNHfARpaLjrfA8CeCD9UyYH5PgqRJr7LSL7mL5
+         jyWyetRPtTRAPzdPUBQAn0TwWT3QM/mnozQrr9rxSdVYV3JdDTezyOZ2JdchBdapFZim
+         0IKBfkjxFdKdmB+eXP3wAdMRSUUXP3TbGplllG7RwhuK7enMD4oLq4DpzPE5763SnSSL
+         3psw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lujdRPuy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si3404406ybb.51.2019.03.31.04.32.48
+        by mx.google.com with ESMTPS id s12si10092076ybp.245.2019.04.03.07.14.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 31 Mar 2019 04:32:48 -0700 (PDT)
+        Wed, 03 Apr 2019 07:14:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lujdRPuy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:60963 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:35108 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hAYhk-0004DD-Cr
-	for alex.bennee@linaro.org; Sun, 31 Mar 2019 07:32:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47536)
+	id 1hBgeV-0007ms-6x
+	for alex.bennee@linaro.org; Wed, 03 Apr 2019 10:14:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34239)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hAYhX-0004Cy-0G
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:32:35 -0400
+	(envelope-from <zhengxiang9@huawei.com>) id 1hBgeL-0007lf-DE
+	for qemu-arm@nongnu.org; Wed, 03 Apr 2019 10:13:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hAYhU-0003LV-2S
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:32:34 -0400
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b]:38934)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hAYhT-0003KQ-OB
-	for qemu-arm@nongnu.org; Sun, 31 Mar 2019 07:32:31 -0400
-Received: by mail-oi1-x22b.google.com with SMTP id n187so5029167oih.6
-	for <qemu-arm@nongnu.org>; Sun, 31 Mar 2019 04:32:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=dogQ13Nv7tQIENc2yNRZRCUa+/rqK6Oi0bz4OBdqSqg=;
-	b=lujdRPuyy9dH1G6VlFpn3VsQHZO3pDRpUWleoRSqYvkxdWobFU+734pWIBFMQy2aXA
-	b3n03N+U5QiYtc7DLDYjJpzUAjuZJE4sjwGRQoMkOdhby9ZNiutNUP/nrxJHLT8uPSXM
-	HqGS6/Vgnzn3GDTVI6Edxy5gfuM5iYnSlJnmP+Wy9zRT7CY7jWqR9/kIrRhpvn9/YFha
-	h7BKGF5xJh4YZoofIGwU3tlczMnRtnCYgz+NckjUWkmfNPvu4M0S50pjYQi12TSa9Dio
-	AiOud0+yr4HFrC6sFKGdGXqtUsJsxs2uQqgXILg6w8bl11o5z0Z2QdBWj3//pcw4/sSB
-	jnYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=dogQ13Nv7tQIENc2yNRZRCUa+/rqK6Oi0bz4OBdqSqg=;
-	b=QWOmZxcKYfnNNzwNzBpBEuFw5/BEyIGMwws3oDap6VzsMy04P2Y6vLD0D2Xd20eGGm
-	1crDmctPbUYWK/F5P2Qm5rm7ff3WHa7is+wjcogPZh8NBQJcUk22R2y/NKGryOdVNtGU
-	6o/UPQ4LSwVLp+NJ48cvdfeVv4z3uVE1hrX0yIwywAPmE4MRukWITNvLXl0iF+Dxdoj2
-	ycAi3YIlUXxQZXxcIHDC+lyzpEHOSggp7vFaS+mCmCKQcEWld0bnBj+uLksuGSlsIN+k
-	3adMSjh+p4KYGyqEB3Qf1HTJtfIBv6mqFoL0wzvBiWaTnGOCjEhpLVg062wID8L1nknp
-	WK9g==
-X-Gm-Message-State: APjAAAXPRrfMKfzs62/wdpVAt5LOCiBFBLF/wok8CGJfsaM46PQjWX+j
-	119MRvUNouviBWFhkuheF4p7w0teYKhK0YCfGqUdVNj/N2k=
-X-Received: by 2002:aca:c1c1:: with SMTP id r184mr9001251oif.146.1554031949884;
-	Sun, 31 Mar 2019 04:32:29 -0700 (PDT)
+	(envelope-from <zhengxiang9@huawei.com>) id 1hBgeK-0007le-0m
+	for qemu-arm@nongnu.org; Wed, 03 Apr 2019 10:13:57 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2199 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+	id 1hBgeJ-0007XV-82; Wed, 03 Apr 2019 10:13:55 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [10.3.19.209])
+	by Forcepoint Email with ESMTP id E4585D1597BA56E36CAC;
+	Wed,  3 Apr 2019 22:13:44 +0800 (CST)
+Received: from [127.0.0.1] (10.177.29.32) by DGGEMS409-HUB.china.huawei.com
+	(10.3.19.209) with Microsoft SMTP Server id 14.3.408.0; Wed, 3 Apr 2019
+	22:13:37 +0800
+To: Markus Armbruster <armbru@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+References: <20190325125142.11628-1-zhengxiang9@huawei.com>
+	<CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
+	<19929558-9f2d-148a-4357-d48b46f8b62b@huawei.com>
+	<87va06kvm6.fsf@dusky.pond.sub.org>
+	<59f100b4-f6e9-973d-532b-58fb172a7009@redhat.com>
+	<87imw5fv45.fsf@dusky.pond.sub.org>
+	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
+	<8736n9eb4s.fsf@dusky.pond.sub.org>
+From: Xiang Zheng <zhengxiang9@huawei.com>
+Message-ID: <bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
+Date: Wed, 3 Apr 2019 22:12:39 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+	Thunderbird/64.0
 MIME-Version: 1.0
-References: <17F853C4-CF36-4325-AF2F-1B6330EBEAB4@deepvision.io>
-In-Reply-To: <17F853C4-CF36-4325-AF2F-1B6330EBEAB4@deepvision.io>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 31 Mar 2019 11:32:17 +0000
-Message-ID: <CAFEAcA-7ecwVMuUc9E=S5HuKYv+8EO_O5TdgewDd32Txuq+NOw@mail.gmail.com>
-To: ratna manoj <ratna@deepvision.io>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::22b
-Subject: Re: [Qemu-arm] '-M virt -cpu cortex-a7'
+In-Reply-To: <8736n9eb4s.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.29.32]
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.190
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
+ size of flash device to save memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,50 +91,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Heyi Guo <guoheyi@huawei.com>,
+	wanghaibin.wang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dbdAD17mMLNw
+X-TUID: rBBwvEoLglgm
 
-On Sun, 31 Mar 2019 at 18:17, ratna manoj <ratna@deepvision.io> wrote:
->
->
-> Hi,
->
-> $> qemu-3.1.0/build/arm-softmmu/qemu-system-arm -M virt -cpu help|grep cortex-a7
->   cortex-a7
-> $>
->
-> As shown above 'virt' machine type lists 'cortex-a7' as supported processor, but when I try to load a  kernel with -cpu cortext-a7 option it says:
->
-> qemu-system-arm: mach-virt: CPU type cortex-a7-arm-cpu not supported
+Hi Laszlo and Markus,
 
-Yes. The '-cpu help' list lists all the CPUs qemu-system-arm
-supports -- it is not cross-referenced against a supplied machine
-to eliminate CPUs that will not work with that machine.
-(It's a very long standing bug that '-cpu help' on its own will
-not print the list: this is because the "must specify a machine"
-check kicks in before we handle printing various -foo help texts.)
+Thanks for your useful suggestions and comments! :)
 
-> This is because of the check for valid_cpus in hw/arm/virt.c, where cortex-a7 is not listed.
->
-> From hw/arm/virt.c:
-> static const char *valid_cpus[] = {
->     ARM_CPU_TYPE_NAME("cortex-a15"),
->     ARM_CPU_TYPE_NAME("cortex-a53"),
->     ARM_CPU_TYPE_NAME("cortex-a57"),
->     ARM_CPU_TYPE_NAME("cortex-a72"),
->     ARM_CPU_TYPE_NAME("host"),
->     ARM_CPU_TYPE_NAME("max"),
-> };
->
-> If I add   "ARM_CPU_TYPE_NAME("cortex-a7")," to the above array, it works and I get correct CPU type as I see it in /proc/cpuinfo.
->
-> Is my change make sense ?  Thanks.
+On 2019/3/27 2:36, Markus Armbruster wrote:
+> Laszlo Ersek <lersek@redhat.com> writes:
+> 
+>> On 03/26/19 17:39, Markus Armbruster wrote:
+>>> Laszlo Ersek <lersek@redhat.com> writes:
+>>
+>>>> With the dynamic sizing in QEMU (which, IIRC, I had originally
+>>>> introduced still in the 1MB times, due to the split between the
+>>>> executable and varstore parts), both the 1MB->2MB switch, and the
+>>>> 2MB->4MB switch in the firmware caused zero pain in QEMU. And right now,
+>>>> 4MB looks like a "sweet spot", with some elbow room left.
+>>>
+>>> Explicit configuration would've been exactly as painless.  Even with
+>>> pflash sizes restricted to powers of two.
+>>
+>> I wrote the patch that ended up as commit 637a5acb46b3 -- with your R-b
+>> -- in 2013. I'm unsure if machine type properties existed back then, but
+>> even if they did, do you think I knew about them? :)
+>>
+>> You are right, of course; it's just that we can't tell the future.
+> 
+> True!  All we can do is continue to design as well as we can given the
+> information, experience and resources we have, and when the inevitable
+> design mistakes become apparent, limit their impact.
+> 
+> Some of the things we now consider mistakes we just didn't see.  Others
+> we saw (e.g. multiple pflash devices, unlike physical hardware), but
+> underestimated their impact.
+> 
 
-Yes, it would be reasonable for us to allow Cortex-A7 on the virt board.
-It will behave almost identically to cortex-a15, though, so you
-could probably just use that.
+I thought about your comments and wrote the following patch (just for test)
+which uses a file mapping to replace the anonymous mapping. UEFI seems to work
+fine. So why not use a file mapping to read or write a pflash device?
 
-thanks
--- PMM
+Except this way, I don't know how to share the pflash memory among VMs or
+reduce the consumption for resource. :(
+
+---8>---
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ce2664a..12c78f2 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -898,6 +898,7 @@ static void create_one_flash(const char *name, hwaddr flashbase,
+     qdev_prop_set_uint16(dev, "id2", 0x00);
+     qdev_prop_set_uint16(dev, "id3", 0x00);
+     qdev_prop_set_string(dev, "name", name);
++    qdev_prop_set_bit(dev, "prealloc", false);
+     qdev_init_nofail(dev);
+
+     memory_region_add_subregion(sysmem, flashbase,
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 16dfae1..23a85bc 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -92,6 +92,7 @@ struct PFlashCFI01 {
+     void *storage;
+     VMChangeStateEntry *vmstate;
+     bool old_multiple_chip_handling;
++    bool prealloc;
+ };
+
+ static int pflash_post_load(void *opaque, int version_id);
+@@ -731,11 +732,21 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+     }
+     device_len = sector_len_per_device * blocks_per_device;
+
+-    memory_region_init_rom_device(
+-        &pfl->mem, OBJECT(dev),
+-        &pflash_cfi01_ops,
+-        pfl,
+-        pfl->name, total_len, &local_err);
++    if (pfl->blk && !pfl->prealloc) {
++        memory_region_init_rom_device_from_file(
++            &pfl->mem, OBJECT(dev),
++            &pflash_cfi01_ops,
++            pfl,
++            pfl->name, total_len,
++            blk_is_read_only(pfl->blk) ? RAM_SHARED : RAM_PMEM,
++            blk_bs(pfl->blk)->filename, &local_err);
++    } else {
++        memory_region_init_rom_device(
++            &pfl->mem, OBJECT(dev),
++            &pflash_cfi01_ops,
++            pfl,
++            pfl->name, total_len, &local_err);
++    }
+     if (local_err) {
+         error_propagate(errp, local_err);
+         return;
+@@ -899,6 +910,7 @@ static Property pflash_cfi01_properties[] = {
+     DEFINE_PROP_STRING("name", PFlashCFI01, name),
+     DEFINE_PROP_BOOL("old-multiple-chip-handling", PFlashCFI01,
+                      old_multiple_chip_handling, false),
++    DEFINE_PROP_BOOL("prealloc", PFlashCFI01, prealloc, true),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 1625913..1b16d3b 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -804,6 +804,16 @@ void memory_region_init_rom_device_nomigrate(MemoryRegion *mr,
+                                              uint64_t size,
+                                              Error **errp);
+
++void memory_region_init_rom_device_from_file(MemoryRegion *mr,
++                                             struct Object *owner,
++                                             const MemoryRegionOps *ops,
++                                             void *opaque,
++                                             const char *name,
++                                             uint64_t size,
++                                             uint32_t ram_flags,
++                                             const char *path,
++                                             Error **errp);
++
+ /**
+  * memory_region_init_iommu: Initialize a memory region of a custom type
+  * that translates addresses
+diff --git a/memory.c b/memory.c
+index 9fbca52..905956b 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1719,6 +1719,36 @@ void memory_region_init_rom_device_nomigrate(MemoryRegion *mr,
+     }
+ }
+
++void memory_region_init_rom_device_from_file(MemoryRegion *mr,
++                                             Object *owner,
++                                             const MemoryRegionOps *ops,
++                                             void *opaque,
++                                             const char *name,
++                                             uint64_t size,
++                                             uint32_t ram_flags,
++                                             const char *path,
++                                             Error **errp)
++{
++    DeviceState *owner_dev;
++    Error *err = NULL;
++    assert(ops);
++    memory_region_init(mr, owner, name, size);
++    mr->ops = ops;
++    mr->opaque = opaque;
++    mr->terminates = true;
++    mr->rom_device = true;
++    mr->destructor = memory_region_destructor_ram;
++    mr->ram_block = qemu_ram_alloc_from_file(size, mr, ram_flags, path, &err);
++    if (err) {
++        mr->size = int128_zero();
++        object_unparent(OBJECT(mr));
++        error_propagate(errp, err);
++        return ;
++    }
++    owner_dev = DEVICE(owner);
++    vmstate_register_ram(mr, owner_dev);
++}
++
+ void memory_region_init_iommu(void *_iommu_mr,
+                               size_t instance_size,
+                               const char *mrtypename,
+-- 
+1.8.3.1
+
+
+
+
+-- 
+
+Thanks,
+Xiang
+
+

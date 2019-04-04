@@ -1,159 +1,133 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1208878wrx;
-        Thu, 4 Apr 2019 01:28:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwgM8+eM0ZMGBPdEBaW/+G0SHUJGRGSLQgfc9CUaV/1eXN0TjU4IU9yUE+Q6V+ZCvbur42B
-X-Received: by 2002:a25:a445:: with SMTP id f63mr4163634ybi.323.1554366494799;
-        Thu, 04 Apr 2019 01:28:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554366494; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1225005wrx;
+        Thu, 4 Apr 2019 01:48:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz2gigRV0R4IOM4/lM6bE90RQHAtTFwQQjPRrcsY8p3gn7N8fVRWFpUFFi8GLlTSj4EyPqR
+X-Received: by 2002:a0d:ebc7:: with SMTP id u190mr3642190ywe.20.1554367706918;
+        Thu, 04 Apr 2019 01:48:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554367706; cv=none;
         d=google.com; s=arc-20160816;
-        b=yvgjILy8jkiIUOPxT5b/dkr22VsB3OAagIXvDJ8S5UdzBpy3JrNaPNceGOk4QIlsPU
-         JkqfYLyeZZoXkUhgRHAWl1NRooAr7Df5vKcZ1WQEdSyhCvVIcQSGLcUpU5di4JPX9z8Q
-         KDRu97eVNFYlyBpTqQCF5QU/ToHpnzIMCMOtvlQARUNYq6EsBkqgsUa2ZkjQ79Tp5ovL
-         +tgJb7WsnrscXy3CPfRSjVSvrkN92ygmVCMuc7q7g51F6jnNl4kSS4fz18EfnuRCc7u+
-         z4jZ1fMauT5QhMcw8AO3U8UjKGPw+fMFmPG+iLLDSoxw1UZjVrJ5uWfMTNIvOvaFIJ9D
-         cwnw==
+        b=ntIXeYX+a1wfoe9WlTP0vl9TAXuq8lUjd/ARG4g+wPdM2bd/EQYWI2++M/H9TShbOb
+         PV4lT7PWHbGVc/VO7whC4rB4wbfFQeXP8O0W9r7jOwXW33j+MiF3FbSX/QG+m+XL68iM
+         oNYCrBq9ij1vgD6hGUCVgQ3DXtAw9kjXykVWYfVB/SlUBYpdn5i0ydyduMFjjduCWT0a
+         i4CYGJuDPDZNOuWtwCNlV2dhmOHwRNFUJ7/NJNTq56CMLzpgBeM3UP9sv/8uB6b2w6Vq
+         PgtdfhwAuLfnpabgb3Al9dN+iVNTz84+MrQCN8ZrzCGo6yn8TuP8M4TajITcdHZsxvxH
+         5NIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=pqSbY3F2XvdU8E5EG/LyxY2Fv06Bzt0Fm6Gr7BYGaOk=;
-        b=dPTI4Qh5UZwiKYS5+0D9h7yvRXa0viPB2mc3ym9F+R/SMlONsmf70kLr682qi1aWE2
-         9RAkyFzgkZxfCbQF73jRkmsJIKhAHHD7wnv4LwB6LJ5gg7tSfMoq8eBKAsDxi1hJY08h
-         3nO6swrm2tJ60PdLqXkaoUoTEQpEhe6M1TBrRgt+4R9k/vbuhycCM2Sr1On1SepPD8iv
-         tIGQCEwhrGbh6XYW2sapIddXHDvbwa+WSBZG7M6z5Jb72h/W/fm878MsSOmBSlWkkApw
-         fJzPRNX44tOKYn1sjexx/9baGhSdf66HPoLuWP+q+RMzdEvgam6nkntZz2XQQAwCA3Tj
-         wHtw==
+        bh=kUNYE1H4SAKmMgUdAVEfue0XrTkNTpvQir2jVtqq+Uk=;
+        b=ohj59YCOzjeSqjrfa7BCBCnz+rV/3SGF91asu3lfKZnt1DCH8mGRxSBYq5GMw6ikXI
+         po8pATY3qVGShgIh966CCki/fQHm5d8hLNTXxFW7dhIHwNSYxGYF8eLCSNqE2EPPzY57
+         kso8Fo8wBvvZFDmqWv+rRYDLs0Tfy3NcVJUN7Fn8hh30SDstjpSjATPJxBXa7FmD4trl
+         fZj8wDbC4nz1VnhNPUS0yjfUCP+i33yv4EFAyPwFAbXk/hKivw8TxZwrKIRCp9E+TjL9
+         4o3rHNx4vcUZ6V51SAU6uVuwYIuXYcel731i/jK+m+TnzRZUl2zvuU2c4z4IKC1gAGqH
+         xKcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=REdbgBpU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=mNsirA2P;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a127si6656870ywf.255.2019.04.04.01.28.14
+        by mx.google.com with ESMTPS id e124si9804764ybf.0.2019.04.04.01.48.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 Apr 2019 01:28:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Apr 2019 01:48:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=REdbgBpU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=mNsirA2P;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48283 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:48531 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hBxjK-00022d-3w
-	for alex.bennee@linaro.org; Thu, 04 Apr 2019 04:28:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54994)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hBy2s-00026s-FN
+	for alex.bennee@linaro.org; Thu, 04 Apr 2019 04:48:26 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60054)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1hBxj7-000210-2p
-	for qemu-arm@nongnu.org; Thu, 04 Apr 2019 04:28:02 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hBy25-00025B-H3
+	for qemu-devel@nongnu.org; Thu, 04 Apr 2019 04:47:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1hBxj6-0003eg-1k
-	for qemu-arm@nongnu.org; Thu, 04 Apr 2019 04:28:01 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:32782)
+	(envelope-from <peter.maydell@linaro.org>) id 1hBy24-0006Gw-KP
+	for qemu-devel@nongnu.org; Thu, 04 Apr 2019 04:47:37 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:42464)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
-	id 1hBxj5-0003c2-IO
-	for qemu-arm@nongnu.org; Thu, 04 Apr 2019 04:27:59 -0400
-Received: by mail-lf1-x144.google.com with SMTP id v14so1172298lfi.0
-	for <qemu-arm@nongnu.org>; Thu, 04 Apr 2019 01:27:58 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hBy24-0006ET-AH
+	for qemu-devel@nongnu.org; Thu, 04 Apr 2019 04:47:36 -0400
+Received: by mail-oi1-x243.google.com with SMTP id w139so1213252oie.9
+	for <qemu-devel@nongnu.org>; Thu, 04 Apr 2019 01:47:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=pqSbY3F2XvdU8E5EG/LyxY2Fv06Bzt0Fm6Gr7BYGaOk=;
-	b=REdbgBpUmOOzNFBe7EqKcV9zsC+Ys1RsnpxH9EUtN9mqYyIenue6PHq4f/Dzon68H9
-	G0Wy8BYIN3fvg1t0fsX2MWnKTyYdNAmt8XiS98AMbo6xxkuzdlEFHzCS9VzSF+vLzCyq
-	ZkTxh0yhlMB/c4UWPqsPpVuJsbaADCe66fMgHfPWSJ7Ww0eQDGZIY5op0db9ttHaUEKK
-	7FfW/2EnkFBzK3727P7dh/0U5mERZH+2LBTgSCiCrITGtKu5swsTHKIvEat6VcDbGJ1t
-	/C8elvHm1bUTniJlQKbLIDmYeRwvCuwX66DNzE5AK78Vx5y7/JMGqcMrPGxYGEac4N8j
-	mfPA==
+	:cc; bh=kUNYE1H4SAKmMgUdAVEfue0XrTkNTpvQir2jVtqq+Uk=;
+	b=mNsirA2PQFsqXwKQbtxZqL5Iwxr0i8jgHI28WNy/X/CiFC2qWi/HHqYfs0UBDTzAgj
+	GEdIAXjzL7bXsWHaP7W+ftaciRGkM3CGWBhhFziBZfVC8rqn/m2sHIsS4cjUIxCfICX8
+	5tY6OA1BsixyV3/2eP0/e7KSj0LelEtpFstQLpZpK8XQatAS2moGFK+yJDCPqmqSTRGn
+	kRYyO16SS/7nBp71UJfm2wrDkEHMcDwVAfUrIUVDmT7zjVvu6kpRT0zXq5GSH5jzmIYQ
+	Ydv4lD0BNXUREndfRL1AR7s17DrGLGmvDc/enefBkmlql8EACc3GQO/jjf40mh7mplvz
+	UAJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=pqSbY3F2XvdU8E5EG/LyxY2Fv06Bzt0Fm6Gr7BYGaOk=;
-	b=e/GI9MrDxmbdIg3yQmgVYdL+FoQRN4VG2G3W/97sc0uRWd8hOvEnzkRPOyYrhq5zeM
-	+gsCEBWfVimfrh5DzfDCwvhPvllxBEe0SkdeQ1U3qZw4UY51A1ZKmG9WKCWuDq809210
-	t2d4TcICwCYxcoKLGfkGkSyJ3VzyT40sUhYe8TDUBNB6dxXY70heUDKt8kGg7r0xnG6o
-	VZHu42AU0SFPnAeEsQOafmWh4s+7yiKpyxFsqV/jVp/l22LLYkqTmQxNF1LjP2JiIBz0
-	zdPPshpPrsxiUohRZy2DesQuC/qE4xiTb7Lvc23dmLWvj3x2GubatHSEpQBeZZYLhbOR
-	GfzQ==
-X-Gm-Message-State: APjAAAVQfoSjjbfYAWpCpcnnQSkl22QV+IckF/G6YCWtbFdlyKChYoFA
-	2bJmnWjs5RjgFuHXiqnrecjb5Uc3VC1UvUes0KQeOA==
-X-Received: by 2002:ac2:5285:: with SMTP id q5mr2400112lfm.37.1554366477396;
-	Thu, 04 Apr 2019 01:27:57 -0700 (PDT)
+	bh=kUNYE1H4SAKmMgUdAVEfue0XrTkNTpvQir2jVtqq+Uk=;
+	b=hEK5nZob8iwPzg6x0vktIhRG2FXjDoNdDjyIGM1R6nqGjw4pLvIukMHrhZE1noYhQr
+	BGiIKpx2825WlwkucaZHf9d288/pN+jn1ceBV9oqwLnbHRC7Ew4vsoENeyVf8OXiBfPZ
+	TzEjYZBF+MKVKTWbaRubUHAcKn0MhJEpaQQCZK/PlMjDcAHNEo0nIdhPDS5MgOL8hdBC
+	3iIeh6mmYS1AgD1IYkcv0qB0NleYB1z+ik54UrjMEJ6Fayh5gKLPKDs7gDViAiTtZUnm
+	QdbDW6nt2BLRz0zxGbMD+xJf743+9bUkWjDwdxuB998cTwGYK2OGQSKjBFIHax5phm0P
+	A/gw==
+X-Gm-Message-State: APjAAAWhAJrHuSWZmrHC7ZxD7EYRW7/Q+JI78x5NstQy12CnO/0lSIyA
+	5O+kc1YoL1/+bulO/3KIj1+YJCnNLOPgbuAOI2xylg==
+X-Received: by 2002:aca:e054:: with SMTP id x81mr2572192oig.146.1554367655290; 
+	Thu, 04 Apr 2019 01:47:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <1552644466-24625-1-git-send-email-hongbo.zhang@linaro.org>
 	<1552644466-24625-2-git-send-email-hongbo.zhang@linaro.org>
 	<CAKv+Gu-aZeYwegzFQ7pPqvm28ySR5xC6rZh8FBvQaWiNykgPEg@mail.gmail.com>
 	<CAHmQWvD8byf+4=J7+rnU9CiGRKnuA4NnRPHRw1Zki4-m4anwOA@mail.gmail.com>
 	<CAKv+Gu9cWgkH-ZTDQ42_HnN-LfAMoL-k7ysd1Hz07RrP+Pp94g@mail.gmail.com>
-In-Reply-To: <CAKv+Gu9cWgkH-ZTDQ42_HnN-LfAMoL-k7ysd1Hz07RrP+Pp94g@mail.gmail.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Thu, 4 Apr 2019 16:27:43 +0800
-Message-ID: <CAHmQWvArKFj9WPwaLjHs11x75iD0Rk9PBsTRq8mXrhm-LZt7=A@mail.gmail.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+	<CAHmQWvArKFj9WPwaLjHs11x75iD0Rk9PBsTRq8mXrhm-LZt7=A@mail.gmail.com>
+In-Reply-To: <CAHmQWvArKFj9WPwaLjHs11x75iD0Rk9PBsTRq8mXrhm-LZt7=A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Apr 2019 15:47:23 +0700
+Message-ID: <CAFEAcA_gA0Z1+K=TiPHbNz2XaCexujYvuqWBm3BBXHTtip_2Kg@mail.gmail.com>
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::144
-Subject: Re: [Qemu-arm] [PATCH v6 1/2] hw/arm: Add arm SBSA reference
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-devel] [PATCH v6 1/2] hw/arm: Add arm SBSA reference
  machine, skeleton part
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
 	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QMhfXs1Sy/xP
+	Leif Lindholm <leif.lindholm@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t/UzTBKaOGVY
 
-I would like to wait for more days to see if there are any further
-comments, and if no I will send another iteration with memory map
-slightly changed.
+On Thu, 4 Apr 2019 at 15:27, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> I would like to wait for more days to see if there are any further
+> comments, and if no I will send another iteration with memory map
+> slightly changed.
 
-On Wed, 20 Mar 2019 at 18:27, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
->
-> On Mon, 18 Mar 2019 at 03:39, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> >
-> > On Fri, 15 Mar 2019 at 18:41, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> > >
-> > > On Fri, 15 Mar 2019 at 11:08, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> > > >
-> > > > For the Aarch64, there is one machine 'virt', it is primarily meant to
-> > > > run on KVM and execute virtualization workloads, but we need an
-> > > > environment as faithful as possible to physical hardware, for supporting
-> > > > firmware and OS development for pysical Aarch64 machines.
-> > > >
-> > > > This patch introduces new machine type 'sbsa-ref' with main features:
-> > > >  - Based on 'virt' machine type.
-> > > >  - A new memory map.
-> > > >  - CPU type cortex-a57.
-> > > >  - EL2 and EL3 are enabled.
-> > > >  - GIC version 3.
-> > > >  - System bus AHCI controller.
-> > > >  - System bus EHCI controller.
-> > >
-> > > Hello Hongbo,
-> > >
-> > > Apologies for bringing this up now, but I seem to remember that the
-> > > EHCI does not support 64-bit DMA. Did you run into any issues with
-> > > this? Or was this fixed in QEMU in the mean time?
-> > >
-> > Hi Ard,
-> > Which EHCI do you mean?
-> > This time I use a newly introduced system bus EHCI, commit 114529f7
-> > and I only tested USB mouse and key board, didn't test DMA function.
-> >
->
-> The host controller doesn't work without DMA, so if mouse and keyboard
-> worked for you, and no DRAM exists below the 4 GB mark, this has
-> apparently been fixed in QEMU.
+This is on my to-review list, but I've been a bit busy with work for
+the 4.0 release -- sorry I haven't been able to get to this yet. I'll
+try to have at least a first look over the next day or so, but I can't
+promise I'll manage that, so please go ahead and send out your next
+iteration whenever you're ready to do that.
+
+thanks
+-- PMM

@@ -1,131 +1,198 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3612604wrh;
-        Mon, 29 Apr 2019 08:07:53 -0700 (PDT)
-X-Received: by 2002:a1c:5f42:: with SMTP id t63mr16728109wmb.94.1556550473435;
-        Mon, 29 Apr 2019 08:07:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556550473; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2260639wrx;
+        Sun, 7 Apr 2019 01:19:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzA+LQYYt0hUcwEUxkdlR2O21ot2MNgBPJVI2wYU7RGDG2DcT04GA1hSk/Z1MzrxU0DnaUF
+X-Received: by 2002:a05:6000:120c:: with SMTP id e12mr13820741wrx.187.1554625160146;
+        Sun, 07 Apr 2019 01:19:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554625160; cv=none;
         d=google.com; s=arc-20160816;
-        b=SUQ76ZYnBybab9tSgPkpKcJtvuGu65jr9g3e5PXP6nWFm6Q1LDyi5ClMY2ZZCcR+QW
-         tGMFn59IfRc2EYuZNJIaMs+lTnpNZ1nlP1MsgRe3gv9rj2Ji/VqsU70X7qUaclt3DLpH
-         JXOAus5VSHnKWiGU3s5CnFb0UE9/GuV1fU4clXeQPplBgfhzFLdcjt+vh7f8PX7NMe+U
-         0JYpX2xMV2NA2Xg5p95UjwudUWjy9rRUHCMJZYpNbJjXP6j1wrRBeSXbieTW6RM2cMtj
-         5uOSxRkPSKvfQKNLf/Xq0lY4hLeCu2a7dhzdtFEh6YaDSFLVUWEE1azr72qFqiNezp2v
-         hE5Q==
+        b=q6Wpnt4EQxI5FLRm0/g2RjAzMkD0j3X0H175ec0cMo2WC1o9M6g0XfIu/UMd/ut0qg
+         E3I3KxICKlA3z2ehAscdlWpzBvGrIMzqI+zXnziYEuiMx7lXSzwbeYmXJvgE0QcQlgJD
+         couEhlbiglzPCbvJGsuquEHCoh//nbjTiKJ0y56ns1Ti4F+Afnca0Lemb0n117Rf8QNZ
+         Zc3vo9lOsyN/Q7iey+Nfl8G63QvYa9MW0fAPK29xZUPDQcjScsR3nZPxstIrCIl2lNNt
+         esrKLYgf1fzp/Poi8ALgCFlLzTwAm4NzQcB8PyIJOlY/qt6s4vtZgr9vxjVjPkk5Lyxm
+         0jSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=MpDgiLgJ9RRXgUs7sB2muXL9gf9ys+AyRP6KFcSBe2g=;
-        b=qFZ51jyW53z26H2w3fHGCg1Uv7VbKkuh2i3zriCHeYP8OAFj4FPFFgBJb2QSvj62g4
-         w4IdGjjD5fyLJR7Y3IbICAXLgTQYcfxuzvd7kQT7gBZeIb5Rh+e+VE38NCMVkuzgdxdx
-         zPT349GV+pGjjY/7e4XWMpQCdeN2QeftsGmPfTyBw8H6aGUHepCOb1eQanmp6d6SJ/fd
-         lMVX+o0dAh6PmaN3iNAuM45qRZG81DBNi5vfg4Hg/1w+EMs8nW7wlaSKhe4OJhG8ta2U
-         U8BxXKNQijv6m4Yb4DAf+V9hy6gVHb5/tMM0x47gn99j/kq39kJpMoNmgZcgYR1UumtM
-         BhLQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from;
+        bh=OaYSKgyBx78FDdOLQW0M6frPrrJXhIfQkIQMC3Ky57E=;
+        b=EH5Dp6NpBX6aLcix9Lwi+CuAJ6n5iJFzDfXuPZFTFqo1nHxnWF4QCxldXH59sbOkQW
+         c9YW+ncFXu53PAAIWw35EMkT2a01zkLcqbcNvdwbYS8d1DrL8E7BlLK3w4fLZB6i4Zjc
+         mSUPiqoTUsbtoYK0ck8HgpH7R3RyOpwm1qsWUb9ki6/DaV/cIV+zi8p2qZ17ab48ri8A
+         4ZcQhQZJLahIj8fnNb0fhqKVTDeHd4wLWrkhsH2M2feEz5+BBZ8C/bG0p1Hp3X33EX3U
+         3KcnjcqTGftqFz22TZny6PXsf6IAjpzVfLPDV2tpFD6vsxkqRUPsSRozC6o0XuZ8ibID
+         4dAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t4sor2628356wrx.15.2019.04.29.08.07.53
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a1si17153219wrq.7.2019.04.07.01.19.20
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 29 Apr 2019 08:07:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 07 Apr 2019 01:19:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=MpDgiLgJ9RRXgUs7sB2muXL9gf9ys+AyRP6KFcSBe2g=;
-        b=IbmzQRZ6zZRZNsDRKm0VxcUyHeUmrYVWlfNf/fMZMu3xknBd5dPe1AOK+duQs+opl1
-         DCJV529g9oWM9oK9CL98MTrNhVppKk/Y7/Ep3w7jIPmmtTiogRLaG9Wh5eJvssAutoMb
-         fbSuKtpWQmQ0YpXYevXmREGpr6rJIYtQYTHg4bBFSmVZR3i9JFjQFFX5LQcOn1sbqNIO
-         If1/wBfuUUkii2K1OA9RE6uVEffxkMnig5NvFFIXo+qruvML9QPKVWwRraNkXUUnATIQ
-         NRF1n2/DYd8FH3e6y82vcAWMddSHpeRiUhrrIxUDOoywYt2lBn3XFFgS7K+N0S9W7AZ/
-         KpWg==
-X-Gm-Message-State: APjAAAVXaSUgM/8oMD3bZELSvk7sJluNU5fofBsWCz3vyL1KezfEOKnI
-	MoB3HjRmS2Nm5B0UdTFDabkEHg==
-X-Google-Smtp-Source: APXvYqwjTrm88f5VUi+f7MCLkauYaswQp2D7ydZ4HwTVXJDIPPRndQ17lyHzANbbwqmfVbzTqp7ETQ==
-X-Received: by 2002:adf:f749:: with SMTP id z9mr25511737wrp.218.1556550473246;
-        Mon, 29 Apr 2019 08:07:53 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net. [88.21.103.193])
-        by smtp.gmail.com with ESMTPSA id 10sm32295838wmd.23.2019.04.29.08.07.52
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Apr 2019 08:07:52 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
- argument"
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Jim Mussared <jim@groklearning.com>, Julia Suvorova <jusual@mail.ru>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>
-References: <20190103144124.18917-1-stefanha@redhat.com>
- <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
- <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
- <20190426091702.GA2071@stefanha-x1.localdomain>
- <CAFEAcA8OVKO087uiNvwDGObiaxHAPYHwoXLEN1t5Y4v9B43r9A@mail.gmail.com>
- <20190429122819.GB7587@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <738394de-bd75-4ef3-10ef-de8cd07891de@redhat.com>
-Date: Mon, 29 Apr 2019 17:07:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:35929 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hD31J-0001AT-ML
+	for alex.bennee@linaro.org; Sun, 07 Apr 2019 04:19:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34211)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <guoheyi@huawei.com>) id 1hD317-0001AC-To
+	for qemu-arm@nongnu.org; Sun, 07 Apr 2019 04:19:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <guoheyi@huawei.com>) id 1hD316-000727-Ns
+	for qemu-arm@nongnu.org; Sun, 07 Apr 2019 04:19:05 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2257 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <guoheyi@huawei.com>)
+	id 1hD316-0006yN-96; Sun, 07 Apr 2019 04:19:04 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+	by Forcepoint Email with ESMTP id B4069CDBAB1A1E366A48;
+	Sun,  7 Apr 2019 16:18:58 +0800 (CST)
+Received: from linux-wjgadX.huawei.com (10.90.31.46) by
+	DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server
+	id 14.3.408.0; Sun, 7 Apr 2019 16:18:52 +0800
+From: Heyi Guo <guoheyi@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Date: Sun, 7 Apr 2019 16:14:53 +0800
+Message-ID: <1554624893-8363-1-git-send-email-guoheyi@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-In-Reply-To: <20190429122819.GB7587@stefanha-x1.localdomain>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: hkiYsLwLUmt2
+Content-Type: text/plain
+X-Originating-IP: [10.90.31.46]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [RFC] arm/virt: add one more uart for UEFI runtime debug
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
+	Laszlo Ersek <lersek@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fMux+VPBX2NQ
 
+This patch is based on the discussion in TianoCore edk2-devel mailing
+list:
+https://lists.01.org/pipermail/edk2-devel/2019-March/037986.html
 
+The conclusion is that we need an individual UART for UEFI runtime
+services to print debug message at runtime, to avoid conflicting with
+the system UART. We cannot use the secure UART either, for we may both
+have Trusted Firmware and UEFI runtime services running on the VM, and
+it is not easy to keep synchronization between the two components.
 
-On 4/29/19 2:28 PM, Stefan Hajnoczi wrote:
-> On Fri, Apr 26, 2019 at 12:45:37PM +0100, Peter Maydell wrote:
->> On Fri, 26 Apr 2019 at 10:17, Stefan Hajnoczi <stefanha@redhat.com> wrote:
->>> On Thu, Apr 25, 2019 at 08:07:06PM +0200, Philippe Mathieu-Daudé wrote:
->>> Old boards probably want to continue using -kernel.  New boards like
->>> microbit may use just -device loader.  Perhaps there is even a group
->>> that wants both options.
->>>
->>> A solution is to introduce explicit checks so that we can tell the user
->>> the appropriate option for the machine type.  I can work on this if you
->>> like, but probably won't be able to send a patch until Tuesday.
->>
->> But it's difficult to tell how to identify whether there's really
->> any guest code there. For instance the user might want to start
->> QEMU, connect via the gdbstub and load guest code from gdb.
->> Or they might be using the generic-loader device. Or they might
->> really be using -kernel but with a broken guest image which doesn't
->> have a vector table in it, which will result in the same message.
->> I guess you could have a heuristic for "if an M-profile CPU is in reset
->> and the value it loads for the starting PC is zero and the gdb
->> stub is not connected, then print a warning that the guest image
->> is missing or there's no vector table" but I'm not a big fan of
->> heuristics...
-> 
-> I was going to add a function to check kernel_filename and the presence
-> of -device loader.  Then each machine type init function would call the
-> function with flags indicating which modes are allowed:
-> 
->   /* Allow both -kernel and -device loader */
->   check_kernel_loaded(KERNEL_CMDLINE | KERNEL_LOADER);
-> 
->   /* Allow only -kernel */
->   check_kernel_loaded(KERNEL_CMDLINE);
-> 
->   /* Allow only -device loader */
->   check_kernel_loaded(KERNEL_LOADER);
-> 
-> This doesn't support the gdbstub use case you've described though.  No
-> heuristics but a bit inflexible.
-> What do you think?
+To keep backward compatibility, UEFI UART is put behind the secure
+UART when secure world is enabled.
 
-We can check for QEMU_OPTION_gdb/QEMU_OPTION_s, if present display
-warning, else display error? Or no warning at all...
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Laszlo Ersek <lersek@redhat.com>
+Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+---
+ hw/arm/virt.c         | 29 +++++++++++++++++++++++------
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ce2664a..cbc5a66 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -131,6 +131,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
++    [VIRT_UEFI_UART] =          { 0x09070000, 0x00001000 },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -166,6 +167,7 @@ static const int a15irqmap[] = {
+     [VIRT_PCIE] = 3, /* ... to 6 */
+     [VIRT_GPIO] = 7,
+     [VIRT_SECURE_UART] = 8,
++    [VIRT_UEFI_UART] = 9,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -713,13 +715,23 @@ static void create_uart(const VirtMachineState *vms, qemu_irq *pic, int uart,
+     if (uart == VIRT_UART) {
+         qemu_fdt_setprop_string(vms->fdt, "/chosen", "stdout-path", nodename);
+     } else {
++        const char *status_string;
++
++        if (uart == VIRT_SECURE_UART) {
++            status_string = "secure-status";
++        } else {
++            status_string = "uefi-status";
++        }
++
+         /* Mark as not usable by the normal world */
+         qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
+-        qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++        qemu_fdt_setprop_string(vms->fdt, nodename, status_string, "okay");
+ 
+-        qemu_fdt_add_subnode(vms->fdt, "/secure-chosen");
+-        qemu_fdt_setprop_string(vms->fdt, "/secure-chosen", "stdout-path",
+-                                nodename);
++        if (uart == VIRT_SECURE_UART) {
++            qemu_fdt_add_subnode(vms->fdt, "/secure-chosen");
++            qemu_fdt_setprop_string(vms->fdt, "/secure-chosen", "stdout-path",
++                                    nodename);
++        }
+     }
+ 
+     g_free(nodename);
+@@ -1423,6 +1435,7 @@ static void machvirt_init(MachineState *machine)
+     MemoryRegion *ram = g_new(MemoryRegion, 1);
+     bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+     bool aarch64 = true;
++    int uart_index = 0;
+ 
+     /*
+      * In accelerated mode, the memory map is computed earlier in kvm_type()
+@@ -1616,13 +1629,17 @@ static void machvirt_init(MachineState *machine)
+ 
+     fdt_add_pmu_nodes(vms);
+ 
+-    create_uart(vms, pic, VIRT_UART, sysmem, serial_hd(0));
++    create_uart(vms, pic, VIRT_UART, sysmem, serial_hd(uart_index++));
+ 
+     if (vms->secure) {
+         create_secure_ram(vms, secure_sysmem);
+-        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
++        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem,
++                    serial_hd(uart_index++));
+     }
+ 
++    /* Create UART for UEFI runtime services debug */
++    create_uart(vms, pic, VIRT_UEFI_UART, sysmem, serial_hd(uart_index));
++
+     vms->highmem_ecam &= vms->highmem && (!firmware_loaded || aarch64);
+ 
+     create_rtc(vms, pic);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 507517c..565769f 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -77,6 +77,7 @@ enum {
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_UEFI_UART,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+-- 
+1.8.3.1
+

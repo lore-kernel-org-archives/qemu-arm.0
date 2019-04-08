@@ -1,131 +1,179 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3302921wrx;
-        Mon, 8 Apr 2019 02:44:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx80Nf7Qu/vBurjefbkb+nyXFBoY9KMdirPBmJersSjfs4yTEws6pMvxiVjLdhpybGm4SmM
-X-Received: by 2002:a1c:2d45:: with SMTP id t66mr17254001wmt.106.1554716672740;
-        Mon, 08 Apr 2019 02:44:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554716672; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3530423wrx;
+        Mon, 8 Apr 2019 06:45:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyAjZagJuh+pqgzmK6QS6CXooPuVUTvKnUPrZoZY9+WfAMrbo3Oi3ZPCxSsNNW4hN9/u7t7
+X-Received: by 2002:a05:600c:ca:: with SMTP id u10mr18285958wmm.122.1554731101318;
+        Mon, 08 Apr 2019 06:45:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554731101; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+1k67M/3i5Sbd5iLIr28uxQiwhHO5CBtKx+EjiME6hKzj13mXoXPugxQ1F51vrz1X
-         r21Il7riBnoWQLnm9UFFhDLca5tBNYr3tYPBvryfl/bDvlx4+jf6VbwO+e99/w2Qyhng
-         ykDKFNt38B+qof7p5GsBrLMP/QlCISFQv6rJ4rrIyDt9HGe0YMqYel59Yeq3hZWNWvwX
-         nJpSTZmMgrY2PXCzhzyjo2kwL7CkF+qTvMquE7VFhON7mXWCxaWCx1suOLU6adLf8ecX
-         q2JvrZANXO+MavOyhvJHjOB6lRcpka4FuGUM1y/M8hvwE3lATxQilcMGuRDrD6LBPXOt
-         OCfw==
+        b=kdbFgFJrGSUGO6c0Ync1wOWc2o2vnK2jV6idt11CeFcsHc9gAtoxC8Q6M0L3DyjDXE
+         GmkR98cnHO5jOXbf+pZDn1aadnEVOr8GrUY4ZMdITWVJX1zI5bBUcB+kIcjl5iN26Z6V
+         +s2d17QQsReQtR2sH5g5dxpA3JmbJBnqPbJUOaW3/feaCLzvvMVY7Tc4eWcgcY0r6hLc
+         /uSGJ8ni1RHfOwgbozDrKanolM6SearmCuqMMzUgV+JfzSOpp58FuqFivmt5UzEMHnOg
+         uUKaSPGa77sTEYJUyLU67vNGuDKT7NT12T+ywy7R3jN/Gx9Nwdq/sCb4aMWsu00/cSPL
+         Oj1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PEsWYR7q7GCRV0rDY4IjVdUNENI8piFrJ3/uOWByDZw=;
-        b=vMQ+xAq3CXtBBWUsMIHb9FpJWeQxRSmcA/x2VFx4BpZeReFxeoM8YOZ4elLQVHCgDO
-         KkSS3xYzBrFuDR8y4lqlFXh04HuzvJl0s1zXkBZKJweHcHjSV2S0b9jYlxgvq9xMx37/
-         XcGuW8NUr8nsr476koMk6VTEhTEBfbnhxYmkDKmmTbdp8T1qludersRGkn86LaXtaj3U
-         Okc1OFYZBpzxWrZ/ZMzo4nhuJDmuW5m/zG3kQpzL28URokrtAAQ72/uXnC0XE9hhGeaT
-         kg4LsPiMwltmZyUVq0Il4EGmynPLOUVaZO1znuqc/Nb/XHoLL2cRI9G8gVDiauwYmOZd
-         BxmA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=h3kozJmHWAsgEv5GnAJ4NuI2iRVfg0OCBT7d98elJKc=;
+        b=aN4fnWCZzOT2cbRzJYbK7PXDBkOWj+i8A/Qr2rqvI341ECC40u50J05M+bKxhckTFE
+         0uhJm+U+qK5RaKd7Q89qC8ONRPPADIKmiB0atnNlI+AxOyquT3q1B+KDf7osxJOcihM+
+         p7/zA0I7KcISLr1eXeWMiOkxE/+ma38HE7G/6CtjUzwFuW+LKPyd0zVYWOrg5ojzB+d+
+         BT/Vt3ZGhMjIwzmlgwqtH0Hq7uyuOu03Yx10bi9UluB8T7vMAa4XLV+TkjiNfp1c9Gzk
+         RQRc4IvmdbHA2m0u9lg+0zyCyOdrYdaEbOuNhKeZBQX0ZnGHduigQVj7dHHLhCaX2EEH
+         vtXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=b13J3YEY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si18896054wrm.156.2019.04.08.02.44.32
+        by mx.google.com with ESMTPS id a2si6281301wmb.24.2019.04.08.06.45.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Apr 2019 02:44:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Apr 2019 06:45:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=b13J3YEY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:50203 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:53370 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDQpL-0003Tv-Rg
-	for alex.bennee@linaro.org; Mon, 08 Apr 2019 05:44:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45731)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hDUa4-0003tZ-DT
+	for alex.bennee@linaro.org; Mon, 08 Apr 2019 09:45:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45364)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hDQoj-0003Ru-Tl
-	for qemu-devel@nongnu.org; Mon, 08 Apr 2019 05:43:54 -0400
+	(envelope-from <zhengxiang9@huawei.com>) id 1hDUZq-0003ru-EW
+	for qemu-arm@nongnu.org; Mon, 08 Apr 2019 09:44:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hDQoh-0007Rc-5o
-	for qemu-devel@nongnu.org; Mon, 08 Apr 2019 05:43:53 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:40777)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hDQog-0007Qi-PX
-	for qemu-devel@nongnu.org; Mon, 08 Apr 2019 05:43:51 -0400
-Received: by mail-ot1-x342.google.com with SMTP id t8so11393258otp.7
-	for <qemu-devel@nongnu.org>; Mon, 08 Apr 2019 02:43:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=PEsWYR7q7GCRV0rDY4IjVdUNENI8piFrJ3/uOWByDZw=;
-	b=b13J3YEY0pTBgbvWZeKn31y+72rnXbEtx2WzXncQooN7ixv8CBjuyZJW1tf+LIXD+Q
-	YjFhDtF1KFy0tD6wIDkg3cFVBtLnWI/oFOE4QlpOjAHU3ybgxuWd/VtkdqmOnrtob+J3
-	bgx659bkPqX+Y6Qrc2IKCvMlEpKCD+XBXES5Tg26UJcskdd0Oeom8RKTXrYcggbAs2yz
-	pkkMssw8vOHZyjqbkn05Ie0KxYhLEG3JBJwxSvbNJSdvk2YIukptTcmJx4wHwTudHblz
-	2QtuvNmOQ9MQMS8SKrBHmlHjQQn9ANheWs3wE9gmoS1TCuuqKE9rdJ4+XT/WeWRHXPO0
-	dQDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=PEsWYR7q7GCRV0rDY4IjVdUNENI8piFrJ3/uOWByDZw=;
-	b=oI7RD7dTYK2BrJVbGblCFejEtXqLJumf3usvzp7sWZj7Dbs5ZVu+nv2wsu4ryPWnLv
-	dMon+qXR5uBsZXpxaRHnRstX51dWyIsC8fKsgOwJB2QeBAqGMcqC289xsTGyCYTkkRZ2
-	qdc55kZ5KZx/thn8MrZSRt6pR/2BnJqKfZdyIfOvMCsLIc4glpx4vtz184OB63XaDRav
-	96RNb9saPz7F2xb+/tu/1QEfZiXiAocJbEthMsOkDVYNpbAeBvSYuTGwIBVCIBI1+qSE
-	56RXuF4nRPw5S9RXUVc+cQadS5gtefF5YwtLuhZf0v14xjAwjjjCJ8jvHfRAneuKos3J
-	pvaw==
-X-Gm-Message-State: APjAAAVjUXhUsDPrqC/8cGxmug4npqxBkPn8pQDg13bKWXG8wPSmE+SN
-	peeH1KqnUOKShRySrdzlY6HxWLeICrnDLK6adDwXRA==
-X-Received: by 2002:a05:6830:164a:: with SMTP id
-	h10mr19313412otr.323.1554716628848; 
-	Mon, 08 Apr 2019 02:43:48 -0700 (PDT)
+	(envelope-from <zhengxiang9@huawei.com>) id 1hDUZp-00036f-EX
+	for qemu-arm@nongnu.org; Mon, 08 Apr 2019 09:44:46 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:49558 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+	id 1hDUZo-00031v-UO; Mon, 08 Apr 2019 09:44:45 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 28CB08ED5BB8B43211CC;
+	Mon,  8 Apr 2019 21:44:36 +0800 (CST)
+Received: from [127.0.0.1] (10.177.29.32) by DGGEMS411-HUB.china.huawei.com
+	(10.3.19.211) with Microsoft SMTP Server id 14.3.408.0; Mon, 8 Apr 2019
+	21:44:28 +0800
+To: Laszlo Ersek <lersek@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <20190325125142.11628-1-zhengxiang9@huawei.com>
+	<CAFEAcA-O5+A0Q=14k2vrBg3KNM7MmqbcyhBoZZOe=AsyE-UDbw@mail.gmail.com>
+	<19929558-9f2d-148a-4357-d48b46f8b62b@huawei.com>
+	<87va06kvm6.fsf@dusky.pond.sub.org>
+	<59f100b4-f6e9-973d-532b-58fb172a7009@redhat.com>
+	<87imw5fv45.fsf@dusky.pond.sub.org>
+	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
+	<8736n9eb4s.fsf@dusky.pond.sub.org>
+	<bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
+	<c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
+From: Xiang Zheng <zhengxiang9@huawei.com>
+Message-ID: <b107e0c0-1c4c-3f0f-eb78-8929c315ce28@huawei.com>
+Date: Mon, 8 Apr 2019 21:43:46 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+	Thunderbird/64.0
 MIME-Version: 1.0
-References: <1554624893-8363-1-git-send-email-guoheyi@huawei.com>
-	<CAFEAcA-N=y3k41oexvYaQ+tKj1d2tCZh8MhPvdq8Uz7dh-eWWA@mail.gmail.com>
-	<cb3534ef-2bd0-0518-c6ca-01c1f6511199@huawei.com>
-In-Reply-To: <cb3534ef-2bd0-0518-c6ca-01c1f6511199@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Apr 2019 10:43:37 +0100
-Message-ID: <CAFEAcA_7GVwQfiyJi-dRkCaoyGrGJQtCd6DdF1dgJcGPcCDTRw@mail.gmail.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-devel] [RFC] arm/virt: add one more uart for UEFI runtime
- debug
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.35
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
+ size of flash device to save memory
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, qemu-arm <qemu-arm@nongnu.org>,
-	Laszlo Ersek <lersek@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B3p1bT31GaoJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Heyi Guo <guoheyi@huawei.com>,
+	wanghaibin.wang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: If6qhQdmH3Lw
 
-On Mon, 8 Apr 2019 at 02:45, Heyi Guo <guoheyi@huawei.com> wrote:
-> On 2019/4/7 21:16, Peter Maydell wrote:
-> > I don't think it makes much sense to keep adding UARTs for every
-> > bit of the system software stack. We don't have an infinite
-> > supply of UARTs on real hardware either -- how is this handled
-> > there ?
-> As you were in the edk2 mail thread, I supposed you also agreed to add one more UART. What did you mean by "I do still have a todo list item to add a 2nd UART"? How shall we do that?
 
-That would be a simple second UART available to both secure
-and non-secure and advertised in the device tree. It would
-only be created if the user specifically asked for it on
-the QEMU command line. I still need to investigate exactly
-how that ought to work, though.
+On 2019/4/3 23:35, Laszlo Ersek wrote:
+>> I thought about your comments and wrote the following patch (just for test)
+>> which uses a file mapping to replace the anonymous mapping. UEFI seems to work
+>> fine. So why not use a file mapping to read or write a pflash device?
+> Honestly I can't answer "why not do this". Maybe we should.
+> 
+> Regarding "why not do this *exactly as shown below*" -- probably because
+> then we'd have updates to the same underlying regular file via both
+> mmap() and write(), and the interactions between those are really tricky
+> (= best avoided).
+> 
+> One of my favorite questions over the years used to be posting a matrix
+> of possible mmap() and file descriptor r/w/sync interactions, with the
+> outcomes as they were "implied" by POSIX, and then asking at the bottom,
+> "is my understanding correct?" I've never ever received an answer to
+> that. :)
 
-thanks
--- PMM
+In my opinion, it's feasible to r/w/sync the memory devices which use a block
+backend via mmap() and write().
+
+> 
+> Also... although we don't really use them in practice, some QCOW2
+> features for pflash block backends are -- or would be -- nice. (Not the
+> internal snapshots or the live RAM dumps, of course.)
+
+Regarding sparse files, can we read actual backend size data for the read-only
+pflash memory as the following steps shown?
+
+1) Create a sparse file -- QEMU_EFI-test.raw:
+   dd if=/dev/zero of=QEMU_EFI-test.raw bs=1M seek=64 count=0
+
+2) Read from QEMU_EFI.fd and write to QEMU_EFI-test.raw:
+   dd of="QEMU_EFI-test.raw" if="QEMU_EFI.fd" conv=notrunc
+
+3) Use QEMU_EFI-test.raw as the read-only pflash and start qemu with the below
+patch applied:
+
+---8>---
+
+diff --git a/hw/block/block.c b/hw/block/block.c
+index bf56c76..ad18d5e 100644
+--- a/hw/block/block.c
++++ b/hw/block/block.c
+@@ -30,7 +30,7 @@
+ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+                                  Error **errp)
+ {
+-    int64_t blk_len;
++    int64_t blk_len, actual_len;
+     int ret;
+
+     blk_len = blk_getlength(blk);
+@@ -53,7 +53,9 @@ bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwaddr size,
+      * block device and read only on demand.
+      */
+     assert(size <= BDRV_REQUEST_MAX_BYTES);
+-    ret = blk_pread(blk, 0, buf, size);
++    actual_len = bdrv_get_allocated_file_size(blk_bs(blk));
++    ret = blk_pread(blk, 0, buf,
++            (!blk_is_read_only(blk) || actual_len < 0) ? size : actual_len);
+     if (ret < 0) {
+         error_setg_errno(errp, -ret, "can't read block backend");
+         return false;
+-- 
+1.8.3.1
+
+
+-- 
+
+Thanks,
+Xiang
+
+

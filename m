@@ -1,89 +1,100 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3640969wrx;
-        Mon, 8 Apr 2019 08:25:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxcj7O0YpbCmud4bhg9o67OrI5OcC94+qcvH3Y91uNlElgB+8cLtDnqTcmOwZl2VEaQjZF
-X-Received: by 2002:adf:cd06:: with SMTP id w6mr19429263wrm.52.1554737106030;
-        Mon, 08 Apr 2019 08:25:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554737106; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4567372wrx;
+        Tue, 9 Apr 2019 03:43:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw7wC1vFw1rbP7lD6AtrPaZLm9c0X5EMRQ6Qqo2P7sYjkTO1yoqexSpMxxmOQ3CzW813cT2
+X-Received: by 2002:a5d:6a8a:: with SMTP id s10mr23482344wru.66.1554806626060;
+        Tue, 09 Apr 2019 03:43:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554806626; cv=none;
         d=google.com; s=arc-20160816;
-        b=NwZB5JH9TykNGr/vxrkBiPM50mBVTi829JBWFiZpA/dlHzVcIjDUgnLPaQQ4kpW6dt
-         CszdDJpMXK5r2wgPrQSaE+VC35QFvWcHz9FUooF6/gCtqWZBxv+uBqpD4473E12aEirL
-         cArSDeylgYGMx4IFfs7QuHdQHKNTAiGRfA4vsuRx9ESAYSbVSRqECNW5E0308P6Aj+2N
-         hzC7EBBizIL06KTi7MPtfIJhw7qKrvc1Q2ztW7+r9PiYD07Wa+d1iPbRTPb3+UkbE0kr
-         9lVfFUgQzAEtqsiuNxSvJxZWSUqDyqTo1z/DIlwPDn0FZLsQoyVV3pw41U1zhB3tE981
-         M/eg==
+        b=hLyBLLzSRqH19fU1v7PBNABQgqvbRasmKY7nag6SauhtApu63g5tAcTPFZiaKTfGHy
+         UcbUM7QMv1UecAAFnoiwaAqIhAGZ4D/lYaSGhlpVXbKDSIgF4yMJKw7+u8DcOzW31sJr
+         fJedGWPj+ix77dlsG5HEaJxpJBUSi4nvSRjozCXp63A6Jj+DIuuq5B1BW2QmevMU0lDf
+         RGa0JI6O1sRIzgPzzRikZXVnoc2HPmrEtqg45bscbaldn3xA+kum+S+u7IKEiiQG6gbG
+         nJTCLh0Kb5GpjosUqK57AMIiUmWWBuDmKPNG3vsMS5gDzBph9yMxDAgn2YwxXB0UUaJ5
+         IaZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from;
-        bh=0flg58GBVVnpup6yYfeaxqrPI2EBMpCBEPRW4cI+wys=;
-        b=Tf1IT7eWw1WLrJKAaJgr26Q0BU026gbRozmCvXs1LH0/lLedlkGVIuuf4w3GIQfSSM
-         Ztk+kmTS1hUUo5jYYq/hjh2nfWNp4jc/C7p30EPPzPKgmg3mc54ygj9X5HLPoZw4Okqg
-         jnRXnD2VqWQii72eWNcX9ubjffKfIq795GONbx+JB93IG3e9+GVv6V6mpwHofFmnyLQs
-         +fT4RQ9T031yyRGkvU2+84ZEiWmG+tUNY/UixIBQwGxkl+aaaJ7tnkYs3N/c2qAsTUNx
-         UUQGHnNsi2ib+IReEHe3uQ/rvG4mo1fKn+7WUp4o/Z0U7A1BEV65Ag+EeWiIYWt7ceVM
-         NxHQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=bv8qIdMelCtqm2GN/nvo00P6zL25CuaL99/fOkf8iAs=;
+        b=ixKRXa2RmBVD6z65sX4pEXR3pxw5leT6ErbsVGcJohwCLB+nz9DI0yFU0DHe21IERJ
+         WRbOKvgBkuR1gaBvvdUXzETyogtOTqY4Fnt5bgU5+nR22XMBfpM5iSfnVxmQrcQRoRXY
+         Lo4z63lYgjOJkyds0we4HY1xeoI0DYOkFi+s3eZU5y+reFQoo5IFhDzGv6zdJBTsch43
+         KywKdC/3em4bGoMu0AGNXx2oIGjOeEVCFh/drpcRonMQx79XO7r3Dwf/ilgUGM1cIHI7
+         xlMpJ8fMWu5arDPG2ZKd9gfXQF7dTPMlX+dDk27d4Y6Vh0QmgAWBcXmfOSY+ZMvZsqne
+         RyWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t187si6654123wmg.87.2019.04.08.08.25.05
+        by mx.google.com with ESMTPS id e13si20787066wrv.2.2019.04.09.03.43.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 08 Apr 2019 08:25:06 -0700 (PDT)
+        Tue, 09 Apr 2019 03:43:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:54821 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38941 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDW8v-0007vN-3B
-	for alex.bennee@linaro.org; Mon, 08 Apr 2019 11:25:05 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42512)
+	id 1hDoED-0006yX-5R
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:43:45 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hDW74-0006f6-4o
-	for qemu-arm@nongnu.org; Mon, 08 Apr 2019 11:23:11 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDoE2-0006yB-RF
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:43:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hDW73-0000q9-7f
-	for qemu-arm@nongnu.org; Mon, 08 Apr 2019 11:23:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39596)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDoE1-0004nt-SS
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:43:34 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45388 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hDW72-0000nb-Tg; Mon, 08 Apr 2019 11:23:09 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B9A14C05E767;
-	Mon,  8 Apr 2019 15:23:02 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B9265D722;
-	Mon,  8 Apr 2019 15:22:56 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B4D381138648; Mon,  8 Apr 2019 17:22:54 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-References: <20190204231815.29661-1-philmd@redhat.com>
-Date: Mon, 08 Apr 2019 17:22:54 +0200
-In-Reply-To: <20190204231815.29661-1-philmd@redhat.com> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 5 Feb 2019 00:18:04
-	+0100")
-Message-ID: <87d0lwmshd.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDoE1-0004nR-II; Tue, 09 Apr 2019 06:43:33 -0400
+Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.106])
+	by Forcepoint Email with ESMTP id 6A5F8AEE51A49630A611;
+	Tue,  9 Apr 2019 11:43:31 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.229]) by
+	lhreml708-cah.china.huawei.com ([10.201.108.49]) with mapi id
+	14.03.0415.000; Tue, 9 Apr 2019 11:43:25 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Thread-Topic: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
+	feature "fdt"
+Thread-Index: AQHU39PgLS6qaIxo3EqaH9uSQe0Wh6YiZMSAgAAFAfCAADi+gIAAAGKAgAALywCABJiAgIABuf+AgAACnwCAATC0gIAAM+4AgAAJpICAAD95YIAHQ2EAgAHMzWA=
+Date: Tue, 9 Apr 2019 10:43:25 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83935C5D0@lhreml524-mbs.china.huawei.com>
+References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
+	<20190321104745.28068-8-shameerali.kolothum.thodi@huawei.com>
+	<98c7f0fd-8446-8897-0808-e7615af29670@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA83933836A@lhreml524-mbs.china.huawei.com>
+	<0dcd3f3c-15c4-318f-28bd-4b6706708c0d@redhat.com>
+	<CAKv+Gu_-nRqeCT0s6ZwW+q3=sbGmtazFJ9R=19U5SJ=gSUmJLw@mail.gmail.com>
+	<a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
+	<459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
+	<3de6adf3-30c7-5908-e153-2195bc6879c5@redhat.com>
+	<9e939ea4-4be2-a165-dce4-47d8196020b0@redhat.com>
+	<20190403114901.6e4ea653@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA839353082@lhreml524-mbs.china.huawei.com>
+	<ebf745ce-f5bc-be0c-c0ce-3ce25bd7afa9@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA8393564E2@lhreml524-mbs.china.huawei.com>
+	<20190408101132.5d849d1f@redhat.com>
+In-Reply-To: <20190408101132.5d849d1f@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Mon, 08 Apr 2019 15:23:03 +0000 (UTC)
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 00/11] hw: Remove
- "hw/devices.h"
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce
+ opt-in feature "fdt"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,36 +106,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Rob Herring <robh@kernel.org>, qemu-trivial@nongnu.org,
-	Magnus Damm <magnus.damm@gmail.com>, Joel Stanley <joel@jms.id.au>,
-	Richard Henderson <rth@twiddle.net>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>,
-	=?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Philippe =?utf-8?Q?Mathieu-?= =?utf-8?Q?Daud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Aurelien Jarno <aurelien@aurel32.net>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"sameo@linux.intel.com" <sameo@linux.intel.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"xuwei \(O\)" <xuwei5@huawei.com>,
+	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+	Laszlo Ersek <lersek@redhat.com>, Leif Lindholm <Leif.Lindholm@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PM4L7fzctg3u
+X-TUID: haQDFTUrmafK
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> Hi,
->
-> As his first comment describes itself, the "hw/devices.h" contains
-> declarations for "Devices that have nowhere better to go."
-> This series remove it, creating new headers for devices covered there.
-> MAINTAINERS is updated.
-> I also included 2 cleanups while working on this, in "qemu/typedefs.h"
-> and "hw/net/ne2000-isa.h" header guard.
 
-Needs a rebase now.  Apart from that, series
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> -----Original Message-----
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: 08 April 2019 09:12
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: Laszlo Ersek <lersek@redhat.com>; Auger Eric <eric.auger@redhat.com>;
+> Ard Biesheuvel <ard.biesheuvel@linaro.org>; peter.maydell@linaro.org;
+> sameo@linux.intel.com; qemu-devel@nongnu.org; Linuxarm
+> <linuxarm@huawei.com>; shannon.zhaosl@gmail.com;
+> qemu-arm@nongnu.org; xuwei (O) <xuwei5@huawei.com>;
+> sebastien.boeuf@intel.com; Leif Lindholm <Leif.Lindholm@arm.com>
+> Subject: Re: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
+> feature "fdt"
+
+[...]
+=20
+> > > > If the above is correct(with 32-bit variant of UEFI, OS cannot have=
+ ACPI
+> boot),
+> > > > then do we really have the issue of memory becoming non
+> > > hot-un-unpluggable?
+> > > > May be I am missing something.
+> > >
+> > > I think Igor and Peter dislike adding complex logic to QEMU that
+> > > reflects the behavior of a specific firmware. AIUI their objection is=
+n't
+> > > that it wouldn't work, but that it's not the right thing to do, from =
+a
+> > > design perspective.
+> >
+> > Understood. Hope we can converge on something soon.
+> Lets try adding a parameter to memory descriptors in DT that would mark
+> them as hotpluggable.
+
+Just send out v4 incorporating this. Please take a look and let me know.
+
+Thanks,
+Shameer
+=20

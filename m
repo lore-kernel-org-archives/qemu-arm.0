@@ -1,67 +1,67 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4560173wrx;
-        Tue, 9 Apr 2019 03:35:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwpS/u51QEdKxmPgyM5dOHQsQOAANaGGSEE0CmDBp+ZmYfXPrHAvfx3yYOZ6GL1vLKuHyw0
-X-Received: by 2002:a7b:ce84:: with SMTP id q4mr8968664wmj.41.1554806101825;
-        Tue, 09 Apr 2019 03:35:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554806101; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4561613wrx;
+        Tue, 9 Apr 2019 03:36:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx98IBuDhHyAh8TovAilIoI8rj/OHxFCG3/ZU5MtW92lbxVAerxPrsN9tQydCDbokpvpaTM
+X-Received: by 2002:a5d:6101:: with SMTP id v1mr1108905wrt.222.1554806199150;
+        Tue, 09 Apr 2019 03:36:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554806199; cv=none;
         d=google.com; s=arc-20160816;
-        b=d1KMKbxXyBTigwIKpWku4zMgfUbouBsBoAEl9WyAea49VbFEccPq6Ba/Sq1m2jMVd/
-         wn84WKwvTFY6ZPn24Xg9nvCkSoKG2kHIZEy0SE2D9vjUcBnp6dai9pw8Rox/kscHhrbq
-         jeMo24CsDM55sHpguJ1SnbwNcGfbrZy6v2IIk0S8w58G4YBwn/LvZ3iLu8cXvU5IRtb/
-         lHUAxHxBZU43uhVcX3KilRJ/+gSZOL7IOf9wJH67InTgBiyph9jGgS549xR7Yx+GBFXl
-         W16wFIJIp07tGezphwhhcPYZhrUlLcpXoWmW6HFRlvC2B5gg9vRJLZbC5bi1FlQjbBmp
-         rWvQ==
+        b=MERbg5+Jw6os9M6KLsjQ7+G0V2Hbs/QrxWgmMZwwhvqg8ze4CrN/SAneY8X2TEtDsZ
+         qu9dl1Bkf9Kbs2FHIDtN+XxeM5mYLzWUWzkJ8xMvpGPFSyOW8zwFzi5vfVQZhWk5+xrd
+         bzrf00jOk85B0nYzpqZNaPX454XNGVLGdYzpR5cAwJw+S03O+9kIGx2//mfI/zigg1Rc
+         hBbfYcseIjpkY+Rs6cAYU8/Htl+w+iCwcp+ZY+fZ+Q+HRdpEYw5yVA+4aocBm4Gzp817
+         wPSS17J55MkJkDZ/EbswSOJoo2R3QPXR1HFWJ3AhiDu/Z/05qnPa1TEnbk+qkqZkLtU6
+         MfXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=FPMG66c8GhKG/xeS35PU2iBETT+8t4FkX+uKGkul+E4=;
-        b=Kj+mJ4hgG+Crg9qictfwYfenmpp09xz9FnRlxfFHqjzCa3O0/XiOyExoHApcQ2PcCL
-         UUKOmuLx7jMo1qLPsLhrhmBmWe38B3mO2R2ZGq6TeY8zxysqB44JVGwyMvPK9Mqtos+L
-         4zTh/X6DBRgUdBf33tcKI3nSJJTrRY4x2KJpe2vY0aAl2aJcNwGuAqhYyZS3McgE/t04
-         evm01Jp3r+qkhaCFlfgM670809FAA4Cf/UIkwezPvfu8HCVtbmibwyz21pUxm6dZMm+s
-         j4Nsd8gBJ20oDV1cQN2wA48Luhph1v1m06SxE6zGLTxh2oAZtRCUqrVKa/58AX0BUkw3
-         ddLg==
+        bh=EUyAAJ6cYtkMDzOQI/RIVnOfxakfvlGvjFY/8k7eQsg=;
+        b=q3Ugs2QcAHZ+Hv+S+KPVBg4a0OQdzILzymXpO2PrFUeK53hZiv/SYEGGBGI/nvib7I
+         +c6zuBhVV3l1qP0rUkWh4IN4IXsEA2M5SpRQ/J4ZuynGEKy/5Ec/5J7AVU0l1+QKFT9s
+         UAv0ho8MC3hRzmYwX9fE/mPPQIDlNEJLiIGhCqrNYMEEtKJAbmO2CYaZF7A5c7ZW1RBg
+         RSCagcmrVCziaNPnAjzv0nLxJKUZF/Oh1BWqJnkwSA+fq/Jf3GYzay0XENe9V/sm0FBY
+         6HZtOlQLp1nnpzF6TkH1byODiDFZQchZlwJTEApfJ1/zdpNHvxhoQ+P3Udb2o1rqVMdH
+         eifg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r11si8122500wma.32.2019.04.09.03.35.01
+        by mx.google.com with ESMTPS id o12si21228480wru.357.2019.04.09.03.36.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 03:35:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Apr 2019 03:36:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:38754 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38802 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDo5k-0008L9-TY
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:35:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47908)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hDo7E-0001rL-2W
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:36:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47808)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo2C-0006Il-09
-	for qemu-devel@nongnu.org; Tue, 09 Apr 2019 06:31:21 -0400
+	id 1hDo25-0006EL-Ch
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:31:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo2A-0007Oh-Sj
-	for qemu-devel@nongnu.org; Tue, 09 Apr 2019 06:31:19 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2262 helo=huawei.com)
+	id 1hDo23-0007LK-Vb
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:31:13 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:44070 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo26-0007Lz-Vz; Tue, 09 Apr 2019 06:31:15 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id B321B80BFBB013806270;
-	Tue,  9 Apr 2019 18:31:12 +0800 (CST)
+	id 1hDo23-0007KF-8m; Tue, 09 Apr 2019 06:31:11 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id A9B5356529DF89A7538A;
+	Tue,  9 Apr 2019 18:31:07 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
 	DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server
-	id 14.3.408.0; Tue, 9 Apr 2019 18:31:04 +0800
+	id 14.3.408.0; Tue, 9 Apr 2019 18:30:57 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
 	<imammedo@redhat.com>
-Date: Tue, 9 Apr 2019 11:29:34 +0100
-Message-ID: <20190409102935.28292-8-shameerali.kolothum.thodi@huawei.com>
+Date: Tue, 9 Apr 2019 11:29:32 +0100
+Message-ID: <20190409102935.28292-6-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,99 +70,263 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-devel] [PATCH v4 7/8] hw/arm/boot: Add "hotpluggable"
- property to DT memory node
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 45.249.212.35
+Subject: [Qemu-arm] [PATCH v4 5/8] hw/arm/virt: Enable device memory
+ cold/hot plug with ACPI boot
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
 	linuxarm@huawei.com, xuwei5@hisilicon.com,
 	shannon.zhaosl@gmail.com, sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e89K9C3cRpWl
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZP15MWPTT6iF
 
-Currently firmware has no way of differentiating the memory
-nodes and as a result device memory nodes might get exposed
-to Guest Kernel via UEFI GetMemoryMap() as early boot memory
-even if Guest boots with ACPI. This will prevent hot-unplug
-of the device memory. To address this, an additional
-"hotpluggable" property is introduced here similar to
-the MEM_AFFINITY_HOTPLUGGABLE flag used in ACPI SRAT table.
+This initializes the GED device with base memory and irq, configures
+ged memory hotplug event and builds the corresponding aml code. GED
+irq routing to Guest is also enabled. With this, both hot and cold
+plug of device memory is enabled now for Guest with ACPI boot.
 
-Firmware can now check for "hotpluggable" property in the
-memory node and treat them differently.
-
-This is in preparation of exposing device memory nodes in DT.
+Memory cold plug support with Guest DT boot is not yet supported.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- hw/arm/boot.c | 22 +++++++++++++++++++---
- 1 file changed, 19 insertions(+), 3 deletions(-)
+ default-configs/arm-softmmu.mak |  2 ++
+ hw/arm/virt-acpi-build.c        |  9 ++++++
+ hw/arm/virt.c                   | 61 +++++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/virt.h           |  4 +++
+ 4 files changed, 73 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index a830655..8c840ba 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -425,7 +425,7 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 9f4b803..c9a9b34 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -163,3 +163,5 @@ CONFIG_LSI_SCSI_PCI=y
  
- static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-                                uint32_t scells, hwaddr mem_len,
--                               int numa_node_id)
-+                               int numa_node_id, bool hotplug)
+ CONFIG_MEM_DEVICE=y
+ CONFIG_DIMM=y
++CONFIG_ACPI_MEMORY_HOTPLUG=y
++CONFIG_ACPI_HW_REDUCED=y
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index bf9c0bc..1ad394b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -40,6 +40,8 @@
+ #include "hw/loader.h"
+ #include "hw/hw.h"
+ #include "hw/acpi/aml-build.h"
++#include "hw/acpi/memory_hotplug.h"
++#include "hw/acpi/generic_event_device.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/arm/virt.h"
+@@ -727,6 +729,7 @@ static void
+ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  {
-     char *nodename;
-     int ret;
-@@ -444,6 +444,22 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-         ret = qemu_fdt_setprop_cell(fdt, nodename,
-                                     "numa-node-id", numa_node_id);
+     Aml *scope, *dsdt;
++    MachineState *ms = MACHINE(vms);
+     const MemMapEntry *memmap = vms->memmap;
+     const int *irqmap = vms->irqmap;
+ 
+@@ -753,6 +756,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                        (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+     acpi_dsdt_add_power_button(scope);
+ 
++    build_ged_aml(scope, "\\_SB."GED_DEVICE, HOTPLUG_HANDLER(vms->acpi_dev),
++                  irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY);
++
++    build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB", NULL,
++                             AML_SYSTEM_MEMORY);
++
+     aml_append(dsdt, scope);
+ 
+     /* copy AML table into ACPI tables blob and patch header there */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index da516b3..8179b3e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -63,6 +63,7 @@
+ #include "target/arm/internals.h"
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/acpi/generic_event_device.h"
+ 
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -133,6 +134,8 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
++    [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
++    [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_REG_LEN },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -168,6 +171,7 @@ static const int a15irqmap[] = {
+     [VIRT_PCIE] = 3, /* ... to 6 */
+     [VIRT_GPIO] = 7,
+     [VIRT_SECURE_UART] = 8,
++    [VIRT_ACPI_GED] = 9,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+     [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+@@ -183,6 +187,13 @@ static const char *valid_cpus[] = {
+     ARM_CPU_TYPE_NAME("max"),
+ };
+ 
++static GedEvent ged_events[] = {
++    {
++        .selector = ACPI_GED_IRQ_SEL_MEM,
++        .event    = GED_MEMORY_HOTPLUG,
++    },
++};
++
+ static bool cpu_type_valid(const char *cpu)
+ {
+     int i;
+@@ -516,6 +527,26 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
      }
+ }
+ 
++static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
++{
++    DeviceState *dev;
 +
-+    /*
-+     * Firmware has no way of differentiating the memory nodes currently
-+     * and in the case of device memory nodes this is a problem if Guest
-+     * boots with ACPI as these nodes might get exposed to Guest Kernel
-+     * via UEFI GetMemoryMap() as early boot memory. This will prevent
-+     * the memory being hot-unpluggable. To address this, an additional
-+     * "hotpluggable" property is introduced here, similar to the
-+     * MEM_AFFINITY_HOTPLUGGABLE flag used in ACPI SRAT table.
-+     * Firmware can now check for "hotpluggable" property in the memory
-+     * node and treat them differently.
-+     */
++    dev = DEVICE(object_new(TYPE_ACPI_GED));
++    qdev_prop_set_uint64(dev, "memhp-base",
++                         vms->memmap[VIRT_PCDIMM_ACPI].base);
++    qdev_prop_set_ptr(dev, "gsi", vms->gsi);
++    qdev_prop_set_uint64(dev, "ged-base", vms->memmap[VIRT_ACPI_GED].base);
++    qdev_prop_set_uint32(dev, "ged-irq", vms->irqmap[VIRT_ACPI_GED]);
++    qdev_prop_set_ptr(dev, "ged-events", ged_events);
++    qdev_prop_set_uint32(dev, "ged-events-size", ARRAY_SIZE(ged_events));
 +
-+    if (hotplug) {
-+        ret = qemu_fdt_setprop(fdt, nodename, "hotpluggable", NULL, 0);
++    object_property_add_child(qdev_get_machine(), "acpi-ged",
++                              OBJECT(dev), NULL);
++    qdev_init_nofail(dev);
++
++    return dev;
++}
++
+ static void create_its(VirtMachineState *vms, DeviceState *gicdev)
+ {
+     const char *itsclass = its_class_name();
+@@ -555,6 +586,12 @@ static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
+     fdt_add_v2m_gic_node(vms);
+ }
+ 
++static void virt_gsi_handler(void *opaque, int n, int level)
++{
++    qemu_irq *gic_irq = opaque;
++    qemu_set_irq(gic_irq[n], level);
++}
++
+ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+ {
+     /* We create a standalone GIC */
+@@ -670,6 +707,8 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+         pic[i] = qdev_get_gpio_in(gicdev, i);
+     }
+ 
++    vms->gsi = qemu_allocate_irqs(virt_gsi_handler, pic, NUM_IRQS);
++
+     fdt_add_gic_node(vms);
+ 
+     if (type == 3 && vms->its) {
+@@ -1418,7 +1457,7 @@ static void machvirt_init(MachineState *machine)
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+     const CPUArchIdList *possible_cpus;
+-    qemu_irq pic[NUM_IRQS];
++    qemu_irq *pic;
+     MemoryRegion *sysmem = get_system_memory();
+     MemoryRegion *secure_sysmem = NULL;
+     int n, virt_max_cpus;
+@@ -1614,6 +1653,7 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+ 
++    pic = g_new0(qemu_irq, NUM_IRQS);
+     create_gic(vms, pic);
+ 
+     fdt_add_pmu_nodes(vms);
+@@ -1644,6 +1684,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_platform_bus(vms, pic);
+ 
++    vms->acpi_dev = create_acpi_ged(vms);
++
+     vms->bootinfo.ram_size = machine->ram_size;
+     vms->bootinfo.kernel_filename = machine->kernel_filename;
+     vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;
+@@ -1811,21 +1853,34 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+                                  Error **errp)
+ {
+-    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+-        error_setg(errp, "memory cold/hot plug is not yet supported");
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
++
++    if (is_nvdimm) {
++        error_setg(errp, "nvdimm is not yet supported");
+         return;
+     }
+ 
++    if (!vms->acpi_dev) {
++        error_setg(errp, "memory hotplug is not enabled: missing acpi device");
++        return;
 +    }
- out:
-     g_free(nodename);
-     return ret;
-@@ -602,7 +618,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         for (i = 0; i < nb_numa_nodes; i++) {
-             mem_len = numa_info[i].node_mem;
-             rc = fdt_add_memory_node(fdt, acells, mem_base,
--                                     scells, mem_len, i);
-+                                     scells, mem_len, i, false);
-             if (rc < 0) {
-                 fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
-                         mem_base);
-@@ -613,7 +629,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         }
-     } else {
-         rc = fdt_add_memory_node(fdt, acells, binfo->loader_start,
--                                 scells, binfo->ram_size, -1);
-+                                 scells, binfo->ram_size, -1, false);
-         if (rc < 0) {
-             fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
-                     binfo->loader_start);
++
++    hotplug_handler_pre_plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, errp);
++
+     pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
+ }
+ 
+ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+                              DeviceState *dev, Error **errp)
+ {
++    HotplugHandlerClass *hhc;
+     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+ 
+     pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
+ 
++    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
++    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, NULL);
+ }
+ 
+ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 507517c..9c6b0b1 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -77,6 +77,8 @@ enum {
+     VIRT_GPIO,
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
++    VIRT_PCDIMM_ACPI,
++    VIRT_ACPI_GED,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+@@ -132,6 +134,8 @@ typedef struct {
+     uint32_t iommu_phandle;
+     int psci_conduit;
+     hwaddr highest_gpa;
++    DeviceState *acpi_dev;
++    qemu_irq *gsi;
+ } VirtMachineState;
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
 -- 
 2.7.4
 

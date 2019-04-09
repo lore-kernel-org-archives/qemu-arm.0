@@ -1,100 +1,90 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4567372wrx;
-        Tue, 9 Apr 2019 03:43:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7wC1vFw1rbP7lD6AtrPaZLm9c0X5EMRQ6Qqo2P7sYjkTO1yoqexSpMxxmOQ3CzW813cT2
-X-Received: by 2002:a5d:6a8a:: with SMTP id s10mr23482344wru.66.1554806626060;
-        Tue, 09 Apr 2019 03:43:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554806626; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4833225wrx;
+        Tue, 9 Apr 2019 07:54:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw8e7asmhO5e4SBJgFaZQ0eELBARO6axRwZL87+rO3l3/yg6giKTrXcNH2/Sd7a/hRxoaWg
+X-Received: by 2002:adf:f7cc:: with SMTP id a12mr2013846wrq.87.1554821677388;
+        Tue, 09 Apr 2019 07:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554821677; cv=none;
         d=google.com; s=arc-20160816;
-        b=hLyBLLzSRqH19fU1v7PBNABQgqvbRasmKY7nag6SauhtApu63g5tAcTPFZiaKTfGHy
-         UcbUM7QMv1UecAAFnoiwaAqIhAGZ4D/lYaSGhlpVXbKDSIgF4yMJKw7+u8DcOzW31sJr
-         fJedGWPj+ix77dlsG5HEaJxpJBUSi4nvSRjozCXp63A6Jj+DIuuq5B1BW2QmevMU0lDf
-         RGa0JI6O1sRIzgPzzRikZXVnoc2HPmrEtqg45bscbaldn3xA+kum+S+u7IKEiiQG6gbG
-         nJTCLh0Kb5GpjosUqK57AMIiUmWWBuDmKPNG3vsMS5gDzBph9yMxDAgn2YwxXB0UUaJ5
-         IaZQ==
+        b=I1PeMHdJwMLhxqM68BX6H4aWkAJUIhW6Kr/WkBf4hRhwKCkYaHwDuI+jK3DEmv21jq
+         A1LTAazDkqq5TmcavF8e0bWhStVk6EWjK1Tr1XFtMBFP5MBtiSINW71ejTVIzC0mLH5o
+         hVlGDGG4D0ti7D2n2Kwced1Tr4cEyqF94fW0OFjTLPYEYZbr5zD0wotsMGdFKCIH798q
+         0NcBz6iU62yn+UBz1R7kCyxfhmBY6D8+W+/6FrSguclEilXL0GIvjqJbXCu+GpToCh1x
+         eGilxPw3MRfMYG+K+LKJAT1mvFWk0/0Vbpk3UcHs5Ksso65+J7xWpLA3aXmPT5yYzDM7
+         ozsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=bv8qIdMelCtqm2GN/nvo00P6zL25CuaL99/fOkf8iAs=;
-        b=ixKRXa2RmBVD6z65sX4pEXR3pxw5leT6ErbsVGcJohwCLB+nz9DI0yFU0DHe21IERJ
-         WRbOKvgBkuR1gaBvvdUXzETyogtOTqY4Fnt5bgU5+nR22XMBfpM5iSfnVxmQrcQRoRXY
-         Lo4z63lYgjOJkyds0we4HY1xeoI0DYOkFi+s3eZU5y+reFQoo5IFhDzGv6zdJBTsch43
-         KywKdC/3em4bGoMu0AGNXx2oIGjOeEVCFh/drpcRonMQx79XO7r3Dwf/ilgUGM1cIHI7
-         xlMpJ8fMWu5arDPG2ZKd9gfXQF7dTPMlX+dDk27d4Y6Vh0QmgAWBcXmfOSY+ZMvZsqne
-         RyWA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=LOHIciP9bPtfxwFv6upvj9fQgssgf5zPwrUCx9sKtRs=;
+        b=RFZOhP6Whtpg3894G9wur6x+8dmTQyqOJanxWRZK5vdG7vTLx5CgjTPx8fyyz/S3ek
+         sLWYTkdHX3IVCaFOOBwsvy0e4JisNR65ww1mOMaXVYlZMkn09x3KT1d71ex3BPB4XxiH
+         Sb+A+Ojzz0xtg8DGqLf3IkHZrTXNBwuErV/Tht4KpGfofoQ44HB0361W4bJTXFv2gzFf
+         WxCjgPNFrpx9nDDbNy46NFa2v44WncqC6OTNVIfkIW3bVNtGI2iKVcbITg8syRga68Wr
+         QVbRHwGk34H0dD4J3D5pDmXO2vGPkY6RxUOL/Konwk1TBqoWa8LfzRWs9J1ufKGFjHMd
+         +fOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si20787066wrv.2.2019.04.09.03.43.45
+        by mx.google.com with ESMTPS id b184si8453125wmd.17.2019.04.09.07.54.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 03:43:46 -0700 (PDT)
+        Tue, 09 Apr 2019 07:54:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:38941 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:42795 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDoED-0006yX-5R
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:43:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50814)
+	id 1hDs8y-0000r5-Dk
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 10:54:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52819)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDoE2-0006yB-RF
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:43:35 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hDs8q-0000qk-Ag
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 10:54:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDoE1-0004nt-SS
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:43:34 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45388 helo=huawei.com)
+	(envelope-from <imammedo@redhat.com>) id 1hDs8o-0005gQ-Dr
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 10:54:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49348)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDoE1-0004nR-II; Tue, 09 Apr 2019 06:43:33 -0400
-Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 6A5F8AEE51A49630A611;
-	Tue,  9 Apr 2019 11:43:31 +0100 (IST)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.229]) by
-	lhreml708-cah.china.huawei.com ([10.201.108.49]) with mapi id
-	14.03.0415.000; Tue, 9 Apr 2019 11:43:25 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
-	feature "fdt"
-Thread-Index: AQHU39PgLS6qaIxo3EqaH9uSQe0Wh6YiZMSAgAAFAfCAADi+gIAAAGKAgAALywCABJiAgIABuf+AgAACnwCAATC0gIAAM+4AgAAJpICAAD95YIAHQ2EAgAHMzWA=
-Date: Tue, 9 Apr 2019 10:43:25 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83935C5D0@lhreml524-mbs.china.huawei.com>
-References: <20190321104745.28068-1-shameerali.kolothum.thodi@huawei.com>
-	<20190321104745.28068-8-shameerali.kolothum.thodi@huawei.com>
-	<98c7f0fd-8446-8897-0808-e7615af29670@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA83933836A@lhreml524-mbs.china.huawei.com>
-	<0dcd3f3c-15c4-318f-28bd-4b6706708c0d@redhat.com>
-	<CAKv+Gu_-nRqeCT0s6ZwW+q3=sbGmtazFJ9R=19U5SJ=gSUmJLw@mail.gmail.com>
-	<a2c37d40-e2ee-e7aa-3f34-ab39a9a6449d@redhat.com>
-	<459862f9-18f7-0a37-dfb9-b8ca9aa6a2d2@redhat.com>
-	<3de6adf3-30c7-5908-e153-2195bc6879c5@redhat.com>
-	<9e939ea4-4be2-a165-dce4-47d8196020b0@redhat.com>
-	<20190403114901.6e4ea653@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA839353082@lhreml524-mbs.china.huawei.com>
-	<ebf745ce-f5bc-be0c-c0ce-3ce25bd7afa9@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8393564E2@lhreml524-mbs.china.huawei.com>
-	<20190408101132.5d849d1f@redhat.com>
-In-Reply-To: <20190408101132.5d849d1f@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hDs8m-0005eT-F4; Tue, 09 Apr 2019 10:54:26 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 19D4D307EA96;
+	Tue,  9 Apr 2019 14:54:22 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3E9751001E65;
+	Tue,  9 Apr 2019 14:54:20 +0000 (UTC)
+Date: Tue, 9 Apr 2019 16:54:15 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190409165415.2e5df0c6@redhat.com>
+In-Reply-To: <20190405085529.GA24071@richard>
+References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
+	<20190313044253.31988-4-richardw.yang@linux.intel.com>
+	<20190313132300.3f56a5ca@redhat.com>
+	<20190313133359.h2njohyijgvkcbtv@master>
+	<20190313170943.5384f5cf@redhat.com>
+	<20190402035343.GA6527@richard>
+	<20190402081512.6194a58f@redhat.com>
+	<20190405085529.GA24071@richard>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Tue, 09 Apr 2019 14:54:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce
- opt-in feature "fdt"
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract
+ build_mcfg
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,57 +96,175 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	Laszlo Ersek <lersek@redhat.com>, Leif Lindholm <Leif.Lindholm@arm.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, Wei Yang <richard.weiyang@gmail.com>,
+	shannon.zhaosl@gmail.com, wei.w.wang@intel.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: haQDFTUrmafK
+X-TUID: eGQXLTbONTPf
 
+On Fri, 5 Apr 2019 16:55:30 +0800
+Wei Yang <richardw.yang@linux.intel.com> wrote:
 
-
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 08 April 2019 09:12
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: Laszlo Ersek <lersek@redhat.com>; Auger Eric <eric.auger@redhat.com>;
-> Ard Biesheuvel <ard.biesheuvel@linaro.org>; peter.maydell@linaro.org;
-> sameo@linux.intel.com; qemu-devel@nongnu.org; Linuxarm
-> <linuxarm@huawei.com>; shannon.zhaosl@gmail.com;
-> qemu-arm@nongnu.org; xuwei (O) <xuwei5@huawei.com>;
-> sebastien.boeuf@intel.com; Leif Lindholm <Leif.Lindholm@arm.com>
-> Subject: Re: [Qemu-devel] [PATCH v3 07/10] hw/arm/virt: Introduce opt-in
-> feature "fdt"
-
-[...]
-=20
-> > > > If the above is correct(with 32-bit variant of UEFI, OS cannot have=
- ACPI
-> boot),
-> > > > then do we really have the issue of memory becoming non
-> > > hot-un-unpluggable?
-> > > > May be I am missing something.
-> > >
-> > > I think Igor and Peter dislike adding complex logic to QEMU that
-> > > reflects the behavior of a specific firmware. AIUI their objection is=
-n't
-> > > that it wouldn't work, but that it's not the right thing to do, from =
-a
-> > > design perspective.
+> On Tue, Apr 02, 2019 at 08:15:12AM +0200, Igor Mammedov wrote:
+> >On Tue, 2 Apr 2019 11:53:43 +0800
+> >Wei Yang <richardw.yang@linux.intel.com> wrote:
 > >
-> > Understood. Hope we can converge on something soon.
-> Lets try adding a parameter to memory descriptors in DT that would mark
-> them as hotpluggable.
+> >   
+> >> The migration infrastructure has several SaveStateEntry to help migrate
+> >> different elements. The one with name "ram" take charge of RAMBlock. So this
+> >> SaveStateEntry and its ops is the next step for me to investigate. And from
+> >> this to see the effect of different size MemoryRegion during migration.  
+> >I don't think that you need to dig in migration mechanics so deep.
+> >For our purpose of finding QEMU&machine version where migration between
+> >size mismatched MemoryRegions (or RAMBlocks) is fixed is sufficient.
+> >  
+> 
+> ok.
+> 
+> >Aside from trying to grasp how migration works internally, you can try
+> >to simulate[1] problem and bisect it to a commit that fixed it.
+> >It still not easy due to amount of combinations you'd need to try,
+> >but it's probably much easier than trying to figure out issue just
+> >by reading code.
+> >
+> >1) to stimulate you need to recreate conditions for table_mr jumping
+> >from initial padded size to the next padded size after adding bridge
+> >so you'd have reproducer which makes table_mr differ in size.
+> >
+> >If I recall correctly in that time conditions were created by large
+> >amount hotpluggble CPUs (maxcpus - CLI option) and then addidng
+> >PCI bridges.
+> >I'd just hack QEMU to print table_mr size in acpi_build_update()
+> >to find coldplug CLI where we jump to the next padded size and then
+> >use it for bisection with bridge[s] hotplug on source and migrating that
+> >without reboot to target where hotplugged bridges are on CLI (one has to
+> >configure target so it would have all devices that source has including
+> >hotplugged ones)
+> >  
+> 
+> Igor,
+> 
+> I got some confusion on how to re-produce this case. To be specific, how to 
+> expand table_mr from initial padded size to next padded size.
 
-Just send out v4 incorporating this. Please take a look and let me know.
+here is reproducer:
 
-Thanks,
-Shameer
-=20
+$ qemu-system-x86_64-2.2 -M pc-i440fx-2.2 -smp 1,maxcpus=255 -monitor stdio `for i in {1..28}; do echo  "--device pci-bridge,chassis_nr=$i"; done` `for i in {1..24}; do printf --  " --device pci-bridge,bus=pci.1,addr=%x.0,chassis_nr=$i" $i ; done
+
+## hotplug a bridge an migrate to file:
+
+(qemu) device_add pci-bridge,bus=pci.1,addr=19.0,chassis_nr=25
+(qemu) migrate "exec:gzip -c > STATEFILE.gz"
+
+## exit and start destination
+
+qemu-system-x86_64  -M pc-i440fx-2.2 -smp 1,maxcpus=255 -monitor stdio `for i in {1..28}; do echo  "--device pci-bridge,chassis_nr=$i"; done` `for i in {1..25}; do printf --  " --device pci-bridge,bus=pci.1,addr=%x.0,chassis_nr=$i" $i ; done`  -incoming "exec: gzip -c -d STATEFILE.gz"
+
+# in case destination is QEMU-2.2 it will fail with:
+  Length mismatch: /rom@etc/acpi/tables: 0x20000 in != 0x40000
+
+# in case destination is QEMU-2.3 it will work as expected
+
+
+> 
+> Let's see a normal hotplug case first. 
+> 
+>     I did one test to see the how a guest with hot-plug cpu migrate to
+>     destination.  It looks the migration fails if I just do hot-plug at
+>     source. So I have to do hot-plug both at source and at destination. This
+>     will expand the table_mr both at source and destination.
+> 
+> Then let's see the effect of hotplug more devices to exceed original padded
+> size. There are two cases, before re-sizable MemoryRegion and after.
+> 
+> 1) Before re-sizable MemoryRegion introduced
+> 
+>     Before re-sizable MemoryRegion introduced, we just pad table_mr to 4K. And
+>     this size never gets bigger, if I am right. To be accurate, the table_blob
+>     would grow to next padded size if we hot-add more cpus/pci bridge, but we
+>     just copy the original size of MemoryRegion. Even without migration, the
+>     ACPI table is corrupted when we expand to next padded size.
+>     
+>     Is my understanding correct here?
+> 
+> 2) After re-sizable MemoryRegion introduced
+> 
+>     This time both tabl_blob and MemoryRegion grows when it expand to next
+>     padded size. Since we need to hot-add device at both side, ACPI table
+>     grows at the same pace.
+> 
+>     Every thing looks good, until one of it exceed the resizable
+>     MemoryRegion's max size. (Not sure this is possible in reality, while
+>     possible in theory). Actually, this looks like case 1) when resizable
+>     MemoryRegion is not introduced. The too big ACPI table get corrupted.
+> 
+> So if my understanding is correct, the procedure you mentioned "expand from
+> initial padded size to next padded size" only applies to two different max
+> size resizable MemoryRegion. For other cases, the procedure corrupt the ACPI
+> table itself.
+> 
+> Then when we look at
+> 
+>     commit 07fb61760cdea7c3f1b9c897513986945bca8e89
+>     Author: Paolo Bonzini <pbonzini@redhat.com>
+>     Date:   Mon Jul 28 17:34:15 2014 +0200
+>     
+>         pc: hack for migration compatibility from QEMU 2.0
+>     
+> This fix ACPI migration issue before resizable MemoryRegion is
+> introduced(introduced in 2015-01-08). This looks expand to next padded size
+> always corrupt ACPI table at that time. And it make me think expand to next
+> padded size is not the procedure we should do?
+> 
+> And my colleague Wei Wang(in cc) mentioned, to make migration succeed, the
+> MemoryRegion has to be the same size at both side. So I guess the problem
+> doesn't lie in hotplug but in "main table" size difference.
+
+It's true only for pre-resizable MemoryRegion QEMU versions,
+after that size doesn't affect migration anymore.
+
+
+> For example, we have two version of Qemu: v1 and v2. Their "main table" size
+> is:
+> 
+>     v1: 3990
+>     v2: 4020
+> 
+> At this point, their ACPI table all padded to 4k, which is the same.
+> 
+> Then we create a machine with 1 more vcpu by these two versions. This will
+> expand the table to:
+> 
+>     v1: 4095
+>     v2: 4125
+> 
+> After padding, v1's ACPI table size is still 4k but v2's is 8k. Now the
+> migration is broken.
+> 
+> If this analysis is correct, the relationship between migration failure and
+> ACPI table is "the change of ACPI table size". Any size change of any
+you should make distinction between used_length and max_length here.
+Migration puts on wire used_length and that's what matter for keeping migration
+working.
+
+> ACPI table would break migration. While of course, since we pad the table,
+> only some combinations of tables would result in a visible real size change in
+> MemoryRegion.
+> 
+> Then the principle for future ACPI development is to keep all ACPI table size
+> unchanged.
+once again it applies only for QEMU (versions < 2.1) and that was
+the problem (i.e. there always would be configurations that would create
+differently sized tables regardless of arbitrary size we would preallocate)
+resizable MemoryRegions solved.
+ 
+> Now let's back to mcfg table. As the comment mentioned, guest could
+> enable/disable MCFG, so the code here reserve table no matter it is enabled or
+> not. This behavior ensures ACPI table size not changed. So do we need to find
+> the machine type as you suggested before?
+We should be able to drop mcgf 'padding' hack since machine version
+which was introduced in the QEMU version that introduced resizable MemoryRegion
+as well.
+
+I'll send a patch to address that

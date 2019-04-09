@@ -1,67 +1,67 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4559258wrx;
-        Tue, 9 Apr 2019 03:34:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVR81XGAYR5GL0IgR/LV48XafJEAnQp1eJzSnw/tdRcfGphV8MpWkFALPi4ZtBcCutn4Ic
-X-Received: by 2002:a1c:eb18:: with SMTP id j24mr20814862wmh.32.1554806045727;
-        Tue, 09 Apr 2019 03:34:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554806045; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4560173wrx;
+        Tue, 9 Apr 2019 03:35:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwpS/u51QEdKxmPgyM5dOHQsQOAANaGGSEE0CmDBp+ZmYfXPrHAvfx3yYOZ6GL1vLKuHyw0
+X-Received: by 2002:a7b:ce84:: with SMTP id q4mr8968664wmj.41.1554806101825;
+        Tue, 09 Apr 2019 03:35:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554806101; cv=none;
         d=google.com; s=arc-20160816;
-        b=jAE8DU7P9vh0IVY9VsPd0XmB0REqm/H5kBHYHe3X8GvotO30qNpDGr3fyTIhbqPd1U
-         nZhKORTPM9C1kL3wZtsvJTtB2IbaYKSK5anSBiVjtQawa07pK4VKgKq9HuupCGC+uKg7
-         ikk6qEsT1uZ1ecAwbV9LJFGdeNiT6U1r72fCd3uxIfPlXsZpCt93e3iLb90ECYQXni6V
-         JldZlbDTCPfU6iEGDSiLJXHFTAX3jeDMsKUO6WM+MDLH3R9fB52pT4eO/YcFlxk4gI6y
-         nl4SAtw31tDcKFSreCT4yfsu3SNijnmyp0BemSK4kUvXz1OLGpvW6yZwWP+G/H5krARH
-         YT5Q==
+        b=d1KMKbxXyBTigwIKpWku4zMgfUbouBsBoAEl9WyAea49VbFEccPq6Ba/Sq1m2jMVd/
+         wn84WKwvTFY6ZPn24Xg9nvCkSoKG2kHIZEy0SE2D9vjUcBnp6dai9pw8Rox/kscHhrbq
+         jeMo24CsDM55sHpguJ1SnbwNcGfbrZy6v2IIk0S8w58G4YBwn/LvZ3iLu8cXvU5IRtb/
+         lHUAxHxBZU43uhVcX3KilRJ/+gSZOL7IOf9wJH67InTgBiyph9jGgS549xR7Yx+GBFXl
+         W16wFIJIp07tGezphwhhcPYZhrUlLcpXoWmW6HFRlvC2B5gg9vRJLZbC5bi1FlQjbBmp
+         rWvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=5ZdmYIFQNqiBfA0aWLC9LBlObwn+x10LBXv92xrOcy0=;
-        b=U3MXKhJ79XmB1HGxu3ZPBEGqAA0RvKCI4nJx1ChM0SEPb8fbReDmNxRoFc/gsfTEVS
-         Z9Ki42fhcCb9Mach10OR0kESpLJHOgJb6eEkNfjKjz+JW2FUTbSioT/7rjfmTTRgyKWQ
-         Ra4rBjiws0sSaX/SaMdBorERDUQi4+wJjPF2f9RgCVWRsqjReanKqKxzZLxMN/8aGi3f
-         2a6sSlKebBhrdbCGq6o++mXD+ni1rXOeenzN5QBKEC3lwI/U31Uumpd8ancy1iqHRW9a
-         hzvzPyIhpiydwYT5dOL2K36Nv4Z+8Huf/bLwxxadiVb8HD6M0PU8/sk1CK1kwiBqi+xA
-         Ps/w==
+        bh=FPMG66c8GhKG/xeS35PU2iBETT+8t4FkX+uKGkul+E4=;
+        b=Kj+mJ4hgG+Crg9qictfwYfenmpp09xz9FnRlxfFHqjzCa3O0/XiOyExoHApcQ2PcCL
+         UUKOmuLx7jMo1qLPsLhrhmBmWe38B3mO2R2ZGq6TeY8zxysqB44JVGwyMvPK9Mqtos+L
+         4zTh/X6DBRgUdBf33tcKI3nSJJTrRY4x2KJpe2vY0aAl2aJcNwGuAqhYyZS3McgE/t04
+         evm01Jp3r+qkhaCFlfgM670809FAA4Cf/UIkwezPvfu8HCVtbmibwyz21pUxm6dZMm+s
+         j4Nsd8gBJ20oDV1cQN2wA48Luhph1v1m06SxE6zGLTxh2oAZtRCUqrVKa/58AX0BUkw3
+         ddLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y2si20962158wrs.332.2019.04.09.03.34.05
+        by mx.google.com with ESMTPS id r11si8122500wma.32.2019.04.09.03.35.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 03:34:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Apr 2019 03:35:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:38750 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38754 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDo4q-0008A8-NY
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:34:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47761)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hDo5k-0008L9-TY
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:35:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47908)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo21-0006AM-Ci
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:31:10 -0400
+	id 1hDo2C-0006Il-09
+	for qemu-devel@nongnu.org; Tue, 09 Apr 2019 06:31:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo1y-0007Jj-BX
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:31:08 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2201 helo=huawei.com)
+	id 1hDo2A-0007Oh-Sj
+	for qemu-devel@nongnu.org; Tue, 09 Apr 2019 06:31:19 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2262 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hDo1x-0007Ib-Qh; Tue, 09 Apr 2019 06:31:06 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 9C82FEA73BA413BBCD14;
-	Tue,  9 Apr 2019 18:31:02 +0800 (CST)
+	id 1hDo26-0007Lz-Vz; Tue, 09 Apr 2019 06:31:15 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
+	by Forcepoint Email with ESMTP id B321B80BFBB013806270;
+	Tue,  9 Apr 2019 18:31:12 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
 	DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server
-	id 14.3.408.0; Tue, 9 Apr 2019 18:30:54 +0800
+	id 14.3.408.0; Tue, 9 Apr 2019 18:31:04 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
 	<imammedo@redhat.com>
-Date: Tue, 9 Apr 2019 11:29:31 +0100
-Message-ID: <20190409102935.28292-5-shameerali.kolothum.thodi@huawei.com>
+Date: Tue, 9 Apr 2019 11:29:34 +0100
+Message-ID: <20190409102935.28292-8-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,135 +70,99 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-arm] [PATCH v4 4/8] hw/arm/virt: Add memory hotplug framework
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 45.249.212.191
+Subject: [Qemu-devel] [PATCH v4 7/8] hw/arm/boot: Add "hotpluggable"
+ property to DT memory node
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
 	linuxarm@huawei.com, xuwei5@hisilicon.com,
 	shannon.zhaosl@gmail.com, sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yegTNbbpoGTl
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e89K9C3cRpWl
 
-From: Eric Auger <eric.auger@redhat.com>
+Currently firmware has no way of differentiating the memory
+nodes and as a result device memory nodes might get exposed
+to Guest Kernel via UEFI GetMemoryMap() as early boot memory
+even if Guest boots with ACPI. This will prevent hot-unplug
+of the device memory. To address this, an additional
+"hotpluggable" property is introduced here similar to
+the MEM_AFFINITY_HOTPLUGGABLE flag used in ACPI SRAT table.
 
-This patch adds the memory hot-plug/hot-unplug infrastructure
-in machvirt. The device memory is not yet exposed to the Guest
-either though DT or ACPI and hence both cold/hot plug of memory
-is explicitly disabled for now.
+Firmware can now check for "hotpluggable" property in the
+memory node and treat them differently.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+This is in preparation of exposing device memory nodes in DT.
+
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- default-configs/arm-softmmu.mak |  3 +++
- hw/arm/virt.c                   | 45 ++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 47 insertions(+), 1 deletion(-)
+ hw/arm/boot.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 613d19a..9f4b803 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -160,3 +160,6 @@ CONFIG_MUSICPAL=y
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index a830655..8c840ba 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -425,7 +425,7 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
  
- # for realview and versatilepb
- CONFIG_LSI_SCSI_PCI=y
-+
-+CONFIG_MEM_DEVICE=y
-+CONFIG_DIMM=y
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ce2664a..da516b3 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -61,6 +61,8 @@
- #include "hw/arm/smmuv3.h"
- #include "hw/acpi/acpi.h"
- #include "target/arm/internals.h"
-+#include "hw/mem/pc-dimm.h"
-+#include "hw/mem/nvdimm.h"
- 
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -1806,6 +1808,34 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-     return ms->possible_cpus;
- }
- 
-+static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-+                                 Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        error_setg(errp, "memory cold/hot plug is not yet supported");
-+        return;
-+    }
-+
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+}
-+
-+static void virt_memory_plug(HotplugHandler *hotplug_dev,
-+                             DeviceState *dev, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+
-+    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
-+
-+}
-+
-+static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-+                                            DeviceState *dev, Error **errp)
-+{
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_memory_pre_plug(hotplug_dev, dev, errp);
-+    }
-+}
-+
- static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-                                         DeviceState *dev, Error **errp)
+ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+                                uint32_t scells, hwaddr mem_len,
+-                               int numa_node_id)
++                               int numa_node_id, bool hotplug)
  {
-@@ -1817,12 +1847,23 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-                                      SYS_BUS_DEVICE(dev));
+     char *nodename;
+     int ret;
+@@ -444,6 +444,22 @@ static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
+         ret = qemu_fdt_setprop_cell(fdt, nodename,
+                                     "numa-node-id", numa_node_id);
+     }
++
++    /*
++     * Firmware has no way of differentiating the memory nodes currently
++     * and in the case of device memory nodes this is a problem if Guest
++     * boots with ACPI as these nodes might get exposed to Guest Kernel
++     * via UEFI GetMemoryMap() as early boot memory. This will prevent
++     * the memory being hot-unpluggable. To address this, an additional
++     * "hotpluggable" property is introduced here, similar to the
++     * MEM_AFFINITY_HOTPLUGGABLE flag used in ACPI SRAT table.
++     * Firmware can now check for "hotpluggable" property in the memory
++     * node and treat them differently.
++     */
++
++    if (hotplug) {
++        ret = qemu_fdt_setprop(fdt, nodename, "hotpluggable", NULL, 0);
++    }
+ out:
+     g_free(nodename);
+     return ret;
+@@ -602,7 +618,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+         for (i = 0; i < nb_numa_nodes; i++) {
+             mem_len = numa_info[i].node_mem;
+             rc = fdt_add_memory_node(fdt, acells, mem_base,
+-                                     scells, mem_len, i);
++                                     scells, mem_len, i, false);
+             if (rc < 0) {
+                 fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+                         mem_base);
+@@ -613,7 +629,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
          }
-     }
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-+        virt_memory_plug(hotplug_dev, dev, errp);
-+    }
-+}
-+
-+static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
-+                                          DeviceState *dev, Error **errp)
-+{
-+    error_setg(errp, "device unplug request for unsupported device"
-+               " type: %s", object_get_typename(OBJECT(dev)));
- }
- 
- static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-                                                         DeviceState *dev)
- {
--    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
-+       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
-         return HOTPLUG_HANDLER(machine);
-     }
- 
-@@ -1886,7 +1927,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->kvm_type = virt_kvm_type;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
-+    hc->pre_plug = virt_machine_device_pre_plug_cb;
-     hc->plug = virt_machine_device_plug_cb;
-+    hc->unplug_request = virt_machine_device_unplug_request_cb;
- }
- 
- static void virt_instance_init(Object *obj)
+     } else {
+         rc = fdt_add_memory_node(fdt, acells, binfo->loader_start,
+-                                 scells, binfo->ram_size, -1);
++                                 scells, binfo->ram_size, -1, false);
+         if (rc < 0) {
+             fprintf(stderr, "couldn't add /memory@%"PRIx64" node\n",
+                     binfo->loader_start);
 -- 
 2.7.4
 

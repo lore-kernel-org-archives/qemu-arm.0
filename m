@@ -1,79 +1,125 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4909622wrx;
-        Tue, 9 Apr 2019 09:03:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz/4WqpFHIJ2WnGjeXEl15FVcGwBXxD/1Z78iDqVThNVh8NpLPhCws6fRYnljj/3ZciqJ2l
-X-Received: by 2002:adf:ef8e:: with SMTP id d14mr21976360wro.81.1554825804464;
-        Tue, 09 Apr 2019 09:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554825804; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5108405wrx;
+        Tue, 9 Apr 2019 12:18:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzB0cbijIKTLZLUSlc1k0zZuaybhfCsUxd/wPSgNZb8SItjICRv8QWMCmElxoKd3KQQhocv
+X-Received: by 2002:adf:ed90:: with SMTP id c16mr25840662wro.74.1554837500061;
+        Tue, 09 Apr 2019 12:18:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554837500; cv=none;
         d=google.com; s=arc-20160816;
-        b=bH2jbEPzaRrXfd06hgAylt2PPxodoqdsh3nh0T1Vg85jt8H191SOX23w4N1ZjhnAPu
-         GNfN7DrtLVWxdStz6Ulk8LpjE14IDgXjglne6qQ8ag4RUuYGOHtwycGV9dAAPq990ktu
-         3m3MdPSR6Rz4CxZLwUZhXu8M0+zAAuuo4si9JMzXm+WeKaaGx2yvwxvnFlC7Re6I/pea
-         0ohx8qAE+x/uGyf+foQJuSDdJRxQN5Tp5XGcsan1/xYA90DhIRdBGy6N8kbLhgL9FhWz
-         JNsfDb7sygRycGoXaKX8KvyJuxBYQ5Jw1iMQJxw8fkdlEUXZIZEwr4huyBJNG5mDY5Ft
-         GaQA==
+        b=k1Toeef+wa/qar6JHFf3fzSrYmZc8s44qUDmOohXlcvGntJxBLn43jhnRnyzP1amgP
+         kbWCu1l9gHyb1Mfdm8lZUNWzap0vOjtHXdSaARpGsEjC3tXdARrx8rlgcct97xNLzsud
+         A+kuxPvAOkE9SBo4esSahcUf5seVxltIvaA8MEwtqc9xz7SZdzE3edrn00sQfSJk+FuM
+         RKKE/y8nB7fzYDXGiP2MDOsKAqOQ4kL1nQZjz/N0MaUUknYbQ3WK/W535gKZnCkyUtsD
+         mbaBUld387Isx6H1wDPzDwSwTaKi7nXCVIOfImL4QPjB96EEXHQk+ZBPhOdmC8bhquy+
+         ydQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=wvYeVvCer7WuncJWJwmKSq9hxvcKCWuMEhk+tIJxOaY=;
-        b=ZDhnG7V+VJtjdWITVAhOd2KDTdlmbquFVddW5W1mn2mFmJGB36SfgDR/Ater66Os+/
-         hcfxXGbYA9oidPfDpmkjocBVzGHfSe6U1KaH4XXdrMlx9yoMOaJPxeTVowhpCH5D1uq1
-         T6F6Yaij+6mHlpuTWRgKllzz0coLiKmHjixleArDYzRTG+mqk+iPgkz6fb+X5aav+AdN
-         RnnPT4G6LYFaWAXMujxi0xUClDMATT3V1wwdZPol2W1z/Rd6zE8I7gE0WwyYfwwtl1ND
-         r+t8PbqaolmTxZV+GwAprZjCM6lO0BlG9FxTBRL5nTTf80teYSEObbeAFLx9gU+qvorK
-         /dZQ==
+         :content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:autocrypt:openpgp:from:to;
+        bh=Oeb0dcDjftrgDWrpfgS42E/S/fVoVswOcda6XXO8Z/Q=;
+        b=aXX/0wL4qrWqHlaPVq35OLWKAfH5hijz0QyJsNGtYtsJXEpkWv4kOxQ22qvOAVM1Oe
+         gbco/wBJ0BrehWZtQZthsdVxN88OmJx/9CFGcyj2WPY3kbjjbotlov65hbpO1p8PyFHi
+         BD99Ph8vZVLQFD/MRwaMTTiYAk2c8Hka1hubglvu96cIboJx4BKz2+ahg2SEaVCTUsGP
+         P4hXdjzHplfP0fwxWdcxhtoqqN3+qh7CeD8caKL+lvXaYKiCzCE0cLk+G07+90xvFfT/
+         rlaHaVWSyAzMufNEy1ocfXWsm3z/EaKUq4Gr7umiOLPL4aQ+7WB08Z4xme99kR+Z+ZUV
+         qEOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u17si21772987wro.221.2019.04.09.09.03.24
+        by mx.google.com with ESMTPS id r7si21916146wrj.385.2019.04.09.12.18.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 09:03:24 -0700 (PDT)
+        Tue, 09 Apr 2019 12:18:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:45328 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:48000 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDtDX-0005a6-Bt
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 12:03:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53525)
+	id 1hDwGB-0006lT-5A
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 15:18:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hDtCm-0005Et-GW
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 12:02:39 -0400
+	(envelope-from <sw@weilnetz.de>) id 1hDwG0-0006l4-1R
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 15:18:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hDtCk-0008LI-Fb
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 12:02:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55652)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hDtCi-0008Jv-Us; Tue, 09 Apr 2019 12:02:34 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7CE65C0AD1DF;
-	Tue,  9 Apr 2019 16:02:30 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-117-161.ams2.redhat.com [10.36.117.161])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B1A1817CE2;
-	Tue,  9 Apr 2019 16:02:24 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue,  9 Apr 2019 18:02:19 +0200
-Message-Id: <20190409160219.19026-1-eric.auger@redhat.com>
+	(envelope-from <sw@weilnetz.de>) id 1hDwFy-00020d-5Q
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 15:18:07 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:37156
+	helo=v2201612906741603.powersrv.de)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sw@weilnetz.de>)
+	id 1hDwFv-0001vW-Fn; Tue, 09 Apr 2019 15:18:04 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 650A0DA00D5;
+	Tue,  9 Apr 2019 21:12:29 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id Hb193mBw-EAB; Tue,  9 Apr 2019 21:12:28 +0200 (CEST)
+Received: from [192.168.178.24] (p57B42B4A.dip0.t-ipconnect.de [87.180.43.74])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
+	bits)) (No client certificate requested)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 292F8DA006E; 
+	Tue,  9 Apr 2019 21:12:28 +0200 (CEST)
+To: QEMU Developer <qemu-devel@nongnu.org>
+From: Stefan Weil <sw@weilnetz.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=sw@weilnetz.de; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <e61c4a17-910b-0066-92ae-3fabf4a4e3e3@weilnetz.de>
+Date: Tue, 9 Apr 2019 21:12:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 09 Apr 2019 16:02:30 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Language: de-DE
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-4.1] hw/arm/smmuv3: Remove SMMUNotifierNode
+X-Received-From: 37.120.169.71
+Subject: [Qemu-arm] Misaligned memory writes on ARM and other runtime errors
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,133 +131,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peterx@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l5lKkycEUJx/
+X-TUID: OXZXbRol/YVP
 
-The SMMUNotifierNode struct is not necessary and brings extra
-complexity so let's remove it. We now directly track the SMMUDevices
-which have registered IOMMU MR notifiers.
+When QEMU for ARM is compiled with sanitizers
+(--extra-cflags=3D-fsanitize=3Daddress,undefined), I see runtime errors f=
+or
+qemu-arm which indicate misaligned memory writes:
 
-This is inspired from the same transformation on intel-iommu
-done in commit b4a4ba0d68f50f218ee3957b6638dbee32a5eeef
-("intel-iommu: remove IntelIOMMUNotifierNode")
+/qemu/linux-user/fd-trans.c:1389:18: runtime error: store to misaligned
+address 0x42ff4b34 for type 'uint64_t', which requires 8 byte alignment
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/smmu-common.c         |  6 +++---
- hw/arm/smmuv3.c              | 28 +++++++---------------------
- include/hw/arm/smmu-common.h |  8 ++------
- 3 files changed, 12 insertions(+), 30 deletions(-)
+The full sanitizer report is available from
+https://qemu.weilnetz.de/doc/sanitizer.txt. Some of the reported runtime
+errors can easily be fixed, for example by replacing "1 << 31"
+(currently 188 matches) by "1U << 31" (currently only 70 matches).
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index bbf4b8721a..e94be6db6c 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -412,10 +412,10 @@ inline void smmu_inv_notifiers_mr(IOMMUMemoryRegion=
- *mr)
- /* Unmap all notifiers of all mr's */
- void smmu_inv_notifiers_all(SMMUState *s)
- {
--    SMMUNotifierNode *node;
-+    SMMUDevice *sdev;
-=20
--    QLIST_FOREACH(node, &s->notifiers_list, next) {
--        smmu_inv_notifiers_mr(&node->sdev->iommu);
-+    QLIST_FOREACH(sdev, &s->devices_with_notifiers, next) {
-+        smmu_inv_notifiers_mr(&sdev->iommu);
-     }
- }
-=20
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 8c4e99fecc..fd8ec7860e 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -828,10 +828,10 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *m=
-r,
- /* invalidate an asid/iova tuple in all mr's */
- static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t=
- iova)
- {
--    SMMUNotifierNode *node;
-+    SMMUDevice *sdev;
-=20
--    QLIST_FOREACH(node, &s->notifiers_list, next) {
--        IOMMUMemoryRegion *mr =3D &node->sdev->iommu;
-+    QLIST_FOREACH(sdev, &s->devices_with_notifiers, next) {
-+        IOMMUMemoryRegion *mr =3D &sdev->iommu;
-         IOMMUNotifier *n;
-=20
-         trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, iova)=
-;
-@@ -1472,8 +1472,6 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryR=
-egion *iommu,
-     SMMUDevice *sdev =3D container_of(iommu, SMMUDevice, iommu);
-     SMMUv3State *s3 =3D sdev->smmu;
-     SMMUState *s =3D &(s3->smmu_state);
--    SMMUNotifierNode *node =3D NULL;
--    SMMUNotifierNode *next_node =3D NULL;
-=20
-     if (new & IOMMU_NOTIFIER_MAP) {
-         int bus_num =3D pci_bus_num(sdev->bus);
-@@ -1485,22 +1483,10 @@ static void smmuv3_notify_flag_changed(IOMMUMemor=
-yRegion *iommu,
-=20
-     if (old =3D=3D IOMMU_NOTIFIER_NONE) {
-         trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
--        node =3D g_malloc0(sizeof(*node));
--        node->sdev =3D sdev;
--        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
--        return;
--    }
--
--    /* update notifier node with new flags */
--    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
--        if (node->sdev =3D=3D sdev) {
--            if (new =3D=3D IOMMU_NOTIFIER_NONE) {
--                trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
--                QLIST_REMOVE(node, next);
--                g_free(node);
--            }
--            return;
--        }
-+        QLIST_INSERT_HEAD(&s->devices_with_notifiers, sdev, next);
-+    } else if (new =3D=3D IOMMU_NOTIFIER_NONE) {
-+        trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
-+        QLIST_REMOVE(sdev, next);
-     }
- }
-=20
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index b07cadd0ef..2c7fbf4202 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -80,13 +80,9 @@ typedef struct SMMUDevice {
-     AddressSpace       as;
-     uint32_t           cfg_cache_hits;
-     uint32_t           cfg_cache_misses;
-+    QLIST_ENTRY(SMMUDevice) next;
- } SMMUDevice;
-=20
--typedef struct SMMUNotifierNode {
--    SMMUDevice *sdev;
--    QLIST_ENTRY(SMMUNotifierNode) next;
--} SMMUNotifierNode;
--
- typedef struct SMMUPciBus {
-     PCIBus       *bus;
-     SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically al=
-loc */
-@@ -108,7 +104,7 @@ typedef struct SMMUState {
-     GHashTable *iotlb;
-     SMMUPciBus *smmu_pcibus_by_bus_num[SMMU_PCI_BUS_MAX];
-     PCIBus *pci_bus;
--    QLIST_HEAD(, SMMUNotifierNode) notifiers_list;
-+    QLIST_HEAD(, SMMUDevice) devices_with_notifiers;
-     uint8_t bus_num;
-     PCIBus *primary_bus;
- } SMMUState;
---=20
-2.20.1
+The test results are from running "arm-linux-user/qemu-arm
+/usr/bin/scite" on Ubuntu ARM, but running other binaries with qemu-arm
+shows similar runtime errors.
 
+Regards,
+Stefan Weil

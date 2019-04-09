@@ -1,95 +1,75 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4452444wrx;
-        Tue, 9 Apr 2019 01:29:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQFZp6ST7FhXaL6aylsgQq4ygei+Br/Y9mtdc08h9Ho3WKxc9Gidmv6MqOXZyl/3Z6Ty4R
-X-Received: by 2002:a1c:14:: with SMTP id 20mr19969820wma.66.1554798562955;
-        Tue, 09 Apr 2019 01:29:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554798562; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4556403wrx;
+        Tue, 9 Apr 2019 03:31:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytgHBp7ZtqE2orrdW/j8T6/Wro1lFfFj6JCrvcFF12AdiZ277qDv9ys8ayjsru2UpU58xY
+X-Received: by 2002:a5d:4646:: with SMTP id j6mr15220577wrs.56.1554805874871;
+        Tue, 09 Apr 2019 03:31:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554805874; cv=none;
         d=google.com; s=arc-20160816;
-        b=lKqyxqxtoCqu/N0ZtL8lgClulSLcegMJ2dZz6uep2C3F85GSAxnL57XyPip91wySLX
-         kJWP1B+l+ynVHcJ8E/tjFHHxUVZeZjB+LK9h1oDzxUYhz0DB1N3E+Ezerdkd17lu9jfB
-         zZb034RfU7G5UWysY8vyNTebql3fRujhPbtY0/dzgtGl1YySEJjOgLngPpLzqHPxdm2w
-         Y/W8VvFulV1BplAAyAVHGxQfjw0HMBaFOUXYz34wMDZoDwukqgSYNxEyQOcn+zrD/vnz
-         lTJRZIFTftluFu0rlyIjgz8lyqOJoN6JEUlp/yS/94Nqx7ly51MmtfgLS2FxBf5CF9ze
-         SDmQ==
+        b=Vzt9hrBVkhW+ECFLFzR73YAwIrasYhQrZqP2WXhNYpum+EYl0VDhwtG87QgE8HxckW
+         4lA89QrGZ4DvSRdh18+TEKZu1NnGxJMu3bsBjmMg6P84/sIHUC03SjYt+3ZVrsIbL+cs
+         Be4F/UZYEQ8umBNMn5pDv1MRFJ/PA9kxCUck5atp7BgUT36I2of1UphLXgTvuM/ZR6wB
+         5SUXqn0Pn9F7FkQz63LQ3ZGGsobOnhNZV31ZBNBPk70v1Yc1IHHffNOcoJC4Rou2KCQI
+         eG/bUPDQ87o6HrOM7VPiEfYAIDFbRQ/7vwiSVBOZPSKOa2D3XqgIv9paChpV6U3LuNN2
+         UaMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=Htopod/Tl7cBr/bXOvF0MzrKvOyJkRJGFK02LqEBJRM=;
-        b=zA2crDVm8fdWenEapiV3Ow798GZbnWKDF2r9+4V7tZCyxwQX9VeCpL4obMkm5LI35u
-         S2P5iX4AZNaBRVx34G8eseqlH4zWVlA6aAdrS5lzT2mxhouemxhXkSFMH0mSsdBKOhDt
-         XWF3f5FLNQDv/8dOkpUUXL15egd17cvFLwTWTjjbBqmYO2G0w+Jm5rMCPr5wy5/ecnAc
-         wbNF5zE5qjK9b4zlYrLg3XEC37BzsFlXPmJjSorv5YifE3Qk87XCfErk/5brsYuPaDGB
-         rjEDb7cv+MooMyOjPkoNQx5LgV5G3grxYuuKWupv20Z9ShJZ6wUlPXvyb88OpGzxA7PC
-         ANdA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from;
+        bh=kdilPfxWykdeAXVOex3XY9Kif17wCI074OGxw2DnLr4=;
+        b=SWfFmGTtrdyduoHV5Zrm4+DMJEPg5XTpFaxf7FamJRmB2fwJt1XYypHzMgsF49H95+
+         10L3i/e75k1mMM2dtZ61LDcLf3XQddNVke8CxOECAs3I1ZGeBb3JEcfIjwuFz/wvAZ9f
+         tpWR66uPALT7k+zUgZamH639iag3DVeE2cIrjemBn0ZVMVQlk2stOUMUvzT0ALtZOMCM
+         J/ErdO6dZ1vgZc69O+nGIGzSnUaFcpsakmb6eBYLmCSkKqRzMcYijZASTpDNHVx/U44F
+         Jow5wHT7RhviIhMbni0k1gnypELnVag7ZI9/1ZYyk/QaIs9LuZev7pmgAct87uhP40LJ
+         29Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e23si7778510wmh.150.2019.04.09.01.29.22
+        by mx.google.com with ESMTPS id c13si20400040wro.36.2019.04.09.03.31.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 01:29:22 -0700 (PDT)
+        Tue, 09 Apr 2019 03:31:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:37329 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:38696 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDm89-0005On-UL
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 04:29:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43691)
+	id 1hDo25-00062r-RA
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 06:31:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47656)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1hDm7p-0005OO-SA
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 04:29:03 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDo1q-00062J-9B
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:30:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1hDm7o-0005Bu-JA
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 04:29:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:61836)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDo1p-0007G4-02
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 06:30:58 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2258 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1hDm7o-00058m-8m; Tue, 09 Apr 2019 04:29:00 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 02C1EC066473;
-	Tue,  9 Apr 2019 08:28:59 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-202.ams2.redhat.com
-	[10.36.116.202])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5DDD718233;
-	Tue,  9 Apr 2019 08:28:54 +0000 (UTC)
-Date: Tue, 9 Apr 2019 10:28:52 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Message-ID: <20190409082852.GB6610@localhost.localdomain>
-References: <87va06kvm6.fsf@dusky.pond.sub.org>
-	<59f100b4-f6e9-973d-532b-58fb172a7009@redhat.com>
-	<87imw5fv45.fsf@dusky.pond.sub.org>
-	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
-	<8736n9eb4s.fsf@dusky.pond.sub.org>
-	<bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
-	<c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
-	<b107e0c0-1c4c-3f0f-eb78-8929c315ce28@huawei.com>
-	<a8144a1f-364e-cea5-b0a7-05342bdab936@redhat.com>
-	<87bm1fiuo8.fsf@dusky.pond.sub.org>
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hDo1o-0007Bx-GR; Tue, 09 Apr 2019 06:30:56 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 5C57B8640ACF8D4AC4B1;
+	Tue,  9 Apr 2019 18:30:47 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+	DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server
+	id 14.3.408.0; Tue, 9 Apr 2019 18:30:40 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+	<imammedo@redhat.com>
+Date: Tue, 9 Apr 2019 11:29:27 +0100
+Message-ID: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <87bm1fiuo8.fsf@dusky.pond.sub.org>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 09 Apr 2019 08:28:59 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
- size of flash device to save memory
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [PATCH v4 0/8] ARM virt: ACPI memory hotplug support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,178 +81,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
-	Xiang Zheng <zhengxiang9@huawei.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
-	Laszlo Ersek <lersek@redhat.com>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+	linuxarm@huawei.com, xuwei5@hisilicon.com,
+	shannon.zhaosl@gmail.com, sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zSlgPNZmAPEQ
+X-TUID: qIbhHhLd3EA2
 
-Am 09.04.2019 um 08:01 hat Markus Armbruster geschrieben:
-> L=E1szl=F3's last sentence below is "This really needs the attention of=
- the
-> block people."  Cc'ing some.
->=20
-> Laszlo Ersek <lersek@redhat.com> writes:
->=20
-> > On 04/08/19 15:43, Xiang Zheng wrote:
-> >>=20
-> >> On 2019/4/3 23:35, Laszlo Ersek wrote:
-> >>>> I thought about your comments and wrote the following patch (just =
-for test)
-> >>>> which uses a file mapping to replace the anonymous mapping. UEFI s=
-eems to work
-> >>>> fine. So why not use a file mapping to read or write a pflash devi=
-ce?
-> >>> Honestly I can't answer "why not do this". Maybe we should.
-> >>>
-> >>> Regarding "why not do this *exactly as shown below*" -- probably be=
-cause
-> >>> then we'd have updates to the same underlying regular file via both
-> >>> mmap() and write(), and the interactions between those are really t=
-ricky
-> >>> (=3D best avoided).
-> >>>
-> >>> One of my favorite questions over the years used to be posting a ma=
-trix
-> >>> of possible mmap() and file descriptor r/w/sync interactions, with =
-the
-> >>> outcomes as they were "implied" by POSIX, and then asking at the bo=
-ttom,
-> >>> "is my understanding correct?" I've never ever received an answer t=
-o
-> >>> that. :)
-> >>=20
-> >> In my opinion, it's feasible to r/w/sync the memory devices which us=
-e a block
-> >> backend via mmap() and write().
-> >
-> > Maybe. I think that would be a first in QEMU, and you'd likely have t=
-o
-> > describe and follow a semi-formal model between fd actions and mmap()
-> > actions.
-> >
-> > Here's the (unconfirmed) table I referred to earlier.
-> >
-> > +-------------+-----------------------------------------------------+
-> > | change made | change visible via                                  |
-> > | through     +-----------------+-------------+---------------------+
-> > |             | MAP_SHARED      | MAP_PRIVATE | read()              |
-> > +-------------+-----------------+-------------+---------------------+
-> > | MAP_SHARED  | yes             | unspecified | depends on MS_SYNC, |
-> > |             |                 |             | MS_ASYNC, or normal |
-> > |             |                 |             | system activity     |
-> > +-------------+-----------------+-------------+---------------------+
-> > | MAP_PRIVATE | no              | no          | no                  |
-> > +-------------+-----------------+-------------+---------------------+
-> > | write()     | depends on      | unspecified | yes                 |
-> > |             | MS_INVALIDATE,  |             |                     |
-> > |             | or the system's |             |                     |
-> > |             | read/write      |             |                     |
-> > |             | consistency     |             |                     |
-> > +-------------+-----------------+-------------+---------------------+
-> >
-> > Presumably:
-> >
-> > - a write() to some offset range of a regular file should be visible =
-in
-> > a MAP_SHARED mapping of that range after a matching msync(...,
-> > MS_INVALIDATE) call;
-> >
-> > - changes through a MAP_SHARED mapping to a regular file should be
-> > visible via read() after a matching msync(..., MS_SYNC) call returns.
-> >
-> > I sent this table first in 2010 to the Austin Group mailing list, and
-> > received no comments. Then another person (on the same list) asked
-> > basically the same questions in 2013, to which I responded with the
-> > above assumptions / interpretations -- and received no comments from
-> > third parties again.
-> >
-> > But, I'm really out of my depth here -- we're not even discussing
-> > generic read()/write()/mmap()/munmap()/msync() interactions, but how
-> > they would fit into the qemu block layer. And I have no idea.
+This series is an attempt to provide device memory hotplug support 
+on ARM virt platform. This is based on Eric's recent works here[1]
+and carries some of the pc-dimm related patches dropped from his
+series.
 
-There is no infrastructure in the block layer for mmapping image files.
+The kernel support for arm64 memory hot add was added recently by
+Robin and hence the guest kernel should be => 5.0-rc1.
 
-> >>> Also... although we don't really use them in practice, some QCOW2
-> >>> features for pflash block backends are -- or would be -- nice. (Not=
- the
-> >>> internal snapshots or the live RAM dumps, of course.)
-> >>=20
-> >> Regarding sparse files, can we read actual backend size data for the=
- read-only
-> >> pflash memory as the following steps shown?
-> >>=20
-> >> 1) Create a sparse file -- QEMU_EFI-test.raw:
-> >>    dd if=3D/dev/zero of=3DQEMU_EFI-test.raw bs=3D1M seek=3D64 count=3D=
-0
-> >>=20
-> >> 2) Read from QEMU_EFI.fd and write to QEMU_EFI-test.raw:
-> >>    dd of=3D"QEMU_EFI-test.raw" if=3D"QEMU_EFI.fd" conv=3Dnotrunc
-> >>=20
-> >> 3) Use QEMU_EFI-test.raw as the read-only pflash and start qemu with=
- the below
-> >> patch applied:
-> >>=20
-> >> ---8>---
-> >>=20
-> >> diff --git a/hw/block/block.c b/hw/block/block.c
-> >> index bf56c76..ad18d5e 100644
-> >> --- a/hw/block/block.c
-> >> +++ b/hw/block/block.c
-> >> @@ -30,7 +30,7 @@
-> >>  bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwad=
-dr size,
-> >>                                   Error **errp)
-> >>  {
-> >> -    int64_t blk_len;
-> >> +    int64_t blk_len, actual_len;
-> >>      int ret;
-> >>=20
-> >>      blk_len =3D blk_getlength(blk);
-> >> @@ -53,7 +53,9 @@ bool blk_check_size_and_read_all(BlockBackend *blk=
-, void *buf, hwaddr size,
-> >>       * block device and read only on demand.
-> >>       */
-> >>      assert(size <=3D BDRV_REQUEST_MAX_BYTES);
-> >> -    ret =3D blk_pread(blk, 0, buf, size);
-> >> +    actual_len =3D bdrv_get_allocated_file_size(blk_bs(blk));
-> >> +    ret =3D blk_pread(blk, 0, buf,
-> >> +            (!blk_is_read_only(blk) || actual_len < 0) ? size : act=
-ual_len);
-> >>      if (ret < 0) {
-> >>          error_setg_errno(errp, -ret, "can't read block backend");
-> >>          return false;
-> >>=20
-> >
-> > This hunk looks dubious for a general helper function. It seems to
-> > assume that the holes are punched at the end of the file.
-> >
-> > Sorry, this discussion is making me uncomfortable. I don't want to
-> > ignore your questions, but I have no idea about the right answers. Th=
-is
-> > really needs the attention of the block people.
+NVDIM support is not included currently as we still have an unresolved
+issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
+can be included, but not done for now, for keeping it simple.
 
-Yes, this code is wrong. bdrv_get_allocated_file_size() isn't even
-implemented in all block drivers, and when it is implemented it isn't
-necessarily reliable (e.g. return 0 for block devices). It's fine for
-'qemu-img info', but that's it.
+This makes use of GED device to sent hotplug ACPI events to the
+Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
+Sebastien to add the hardware-reduced support to Nemu using GED
+device[3]. (Please shout if I got the author/signed-off wrong for
+those patches or missed any names).
 
-But even if you actually get the correct allocated file size, that's the
-disk space used on the host filesystem, so it doesn't include any holes,
-but it does include image format metadata, the data could possibly be
-compressed etc. In other words, for a guest device it's completely
-meaningless.
+This is sanity tested on a HiSilicon ARM64 platform and appreciate
+any further testing.
 
-I'm not even sure why you would want to do this even in your special
-case of a raw image that is sparse only at the end. Is it an
-optimisation to avoid reading zeros? This ends up basically being
-memset() for sparse blocks, so very quick. And I think you do want to
-zero out the remaining part of the buffer anyway. So it looks to me as
-if it were complicating the code for no use.
+Thanks,
+Shameer
 
-Kevin
+[1] https://patchwork.kernel.org/cover/10837565/
+[2] https://patchwork.kernel.org/cover/10783589/
+[3] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
+
+v3 --> v4
+Addressed comments from Igor and Eric,
+-Renamed "virt-acpi" to "acpi-ged".
+-Changed ged device parent to TYPE_DEVICE.
+-Introduced DT memory node property "hotpluggable" to resolve device
+ memory being treated as early boot memory issue(patch #7).
+-Combined patches #3 and #9 from v3 into #3.
+
+v2 --> v3
+
+Addressed comments from Igor and Eric,
+-Made virt acpi device platform independent and moved
+ to hw/acpi/generic_event_device.c
+-Moved ged specific code into hw/acpi/generic_event_device.c
+-Introduced an opt-in feature "fdt" to resolve device-memory being
+ treated as early boot memory.
+-Dropped patch #1 from v2.
+
+RFC --> v2
+
+-Use GED device instead of GPIO for ACPI hotplug events.
+-Removed NVDIMM support for now.
+-Includes dropped patches from Eric's v9 series.
+
+Eric Auger (1):
+  hw/arm/virt: Add memory hotplug framework
+
+Samuel Ortiz (2):
+  hw/acpi: Do not create memory hotplug method when handler is not
+    defined
+  hw/acpi: Add ACPI Generic Event Device Support
+
+Shameer Kolothum (5):
+  hw/acpi: Make ACPI IO address space configurable
+  hw/arm/virt: Enable device memory cold/hot plug with ACPI boot
+  hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+  hw/arm/boot: Add "hotpluggable" property to DT memory node
+  hw/arm/boot: Expose the PC-DIMM nodes in the DT
+
+ default-configs/arm-softmmu.mak        |   5 +
+ hw/acpi/Kconfig                        |   4 +
+ hw/acpi/Makefile.objs                  |   1 +
+ hw/acpi/generic_event_device.c         | 311 +++++++++++++++++++++++++++++++++
+ hw/acpi/memory_hotplug.c               |  35 ++--
+ hw/arm/boot.c                          |  64 ++++++-
+ hw/arm/virt-acpi-build.c               |  18 ++
+ hw/arm/virt.c                          | 102 ++++++++++-
+ hw/i386/acpi-build.c                   |   3 +-
+ include/hw/acpi/generic_event_device.h | 121 +++++++++++++
+ include/hw/acpi/memory_hotplug.h       |   9 +-
+ include/hw/arm/virt.h                  |   4 +
+ 12 files changed, 654 insertions(+), 23 deletions(-)
+ create mode 100644 hw/acpi/generic_event_device.c
+ create mode 100644 include/hw/acpi/generic_event_device.h
+
+-- 
+2.7.4
+
+

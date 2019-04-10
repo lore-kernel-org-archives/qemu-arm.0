@@ -1,99 +1,83 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5142033wrx;
-        Tue, 9 Apr 2019 12:54:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyF3p7nJ2cn/0kvEbfjcp/H7ezvEDUN7bhAcK+Kg/ADPd6ZGkTxygyEVaUrZZcSub6oGg8L
-X-Received: by 2002:adf:ee01:: with SMTP id y1mr25561924wrn.51.1554839688816;
-        Tue, 09 Apr 2019 12:54:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554839688; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5365538wrx;
+        Tue, 9 Apr 2019 17:26:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnHGsYFOKmDyOvm+fDLxgTtR/1Z8kv2mhf9VQ92ThJcA9GLWJVDGOTH+oQuYk9O8Oqyk1j
+X-Received: by 2002:a1c:988d:: with SMTP id a135mr712924wme.24.1554855993341;
+        Tue, 09 Apr 2019 17:26:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554855993; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQAYeEfB5dSraofxG5XtNZyJipkeUT0PB4LPuVgye+HhZkj9QSd7bd2TdW6QRl/zH/
-         R2fGUy5jxQAJCgkZn82DsNFp8ALpu5aNusr4D59JUCnXQN0J59juYLiPp5xyu/OHtIrz
-         9ja9lZ9+WpzvPeTwwo2IhKKrLvRJryPXznw2OmmV1V5PxAwZ9fQh8uuCDIxPjPCEOqHN
-         UtK0oAqiYT1jeyx/eZDQZKTj9bn6mBbuR4yaGE7WwLZuqI6DU+AaU7+Lq/xLliPzsivg
-         tyZqSRhtJxJgzMtwXzrW/6GoJPDuOik+OSVJllMJ2YbIGb8IThx/dggQvWRtbc4VvQgo
-         03BA==
+        b=O5FB+nwc0qds+a81O8ZDdgA/nXGaJ0VUTbdLP1t3zXFb3dQgTHaHrCp45vcq6TobkG
+         dR+WPTICFIhBpExo6bB4rdPrNBG2xVDmLqE8feDcK1spfuF+b4NMmVj2Zxn0SPGFw7Hw
+         BbAv7bFinezsQzZEe3eFStZwWA/PeIHOJVAbHc9BQzZgiJx+C3WpKZkk5zvtANO3Aq2i
+         vITv45KeogNg68SF7Uvnjy8LUvzwvZLuIA88U1N5wUCpN9tadjHfCmy/4pVU1R1VPd7M
+         QJET+aTOaPrBRrwbpjTh1mS7AI7GLKW2eEyuSXidviV84VGC4z49ubplRoH/8B46HIz8
+         GsPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xkQa98a28VKjTQrGjpPepqcM83CyZTPDKD30JbWI/1Y=;
-        b=N+TYkkdNMbzWOdhuHxoJuY0F85opQDtUOSfjgKo0OkmoAerh8wQQ/4UG6Opi72Qglr
-         DNJkIiIiDMlYU3VQdoM3eLqNQTALaqhGFd5qsxBy1JOu/aH8g4lVMLmIVmBxzHy+4DJ6
-         M+CLM10DqSeaV5lp1xZtknIEioZzd72KIzRbeETiSBS0ksFMeR7ZmXPpxtZrrGjS7T3s
-         gvRz8sNLijc6bMW6SZsex7teBhayAEnq1uRsvOzRKJpSLuMoRLmE0rl3atvMueEbV46S
-         /hlwdQiBL8i3Qp+1teHMtov8AwIf44td0DbVlrPyLnv5eGG3gbCasN+VVYMmUbbaV8yP
-         R9Eg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=oNqqlDUWp/YRWYWgpR5kZsK0CnXF8MoWTONszy7N1oo=;
+        b=ckjS1GmuwVx8SYsYdZJMZfBjzE8uavarenSuBOiJo0l6yaA/8H7UnbsDoGrCwa9S12
+         4CSKmf9TB11/fRTW4/OSB2iSrssv+uM2sO+Bfr6rNchgO6aMzAB0nvNShxVgqAuVcn5+
+         gim7hOQdCnTpeJAiCKvbpdcWi6o7aaQhA2FpDz64gESSSAJCfN6GhCEzGlSlgvlHfdzl
+         2Ga1WMyYdqY98Jed0+0o2kFrKKiEHENaTg9JHVqwi0DvD4bFNcM9dF7RWS91ieavecsf
+         72DyY0PoyHDGuMXZBALbBlALaIEvt6zISR0qgTQraJtOdAykKms+BL2+YKdouLHt86cf
+         3Z9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="l8c8/VYf";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11si43574wma.84.2019.04.09.12.54.48
+        by mx.google.com with ESMTPS id b15si22110365wrq.75.2019.04.09.17.26.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 12:54:48 -0700 (PDT)
+        Tue, 09 Apr 2019 17:26:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="l8c8/VYf";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:48325 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:51088 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hDwpT-00064D-V0
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 15:54:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44925)
+	id 1hE14S-00054U-Fg
+	for alex.bennee@linaro.org; Tue, 09 Apr 2019 20:26:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hDwpB-00062l-5g
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 15:54:32 -0400
+	(envelope-from <peterx@redhat.com>) id 1hE14L-00054D-NL
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 20:26:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hDwp7-00045m-RJ
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 15:54:27 -0400
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:44926)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hDwp4-0003zH-5h
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 15:54:24 -0400
-Received: by mail-ot1-x329.google.com with SMTP id d24so16713045otl.11
-	for <qemu-arm@nongnu.org>; Tue, 09 Apr 2019 12:54:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=xkQa98a28VKjTQrGjpPepqcM83CyZTPDKD30JbWI/1Y=;
-	b=l8c8/VYfMQgQqPIsphW8hwqUPJ99LDAEiJMe9KpNxDIu1EOJLYhbhin1iN3KAA9Kn4
-	5qkxbALwgrob+r0z/zPGWDOl0Dqc0vQtG+kZOXbkrpNVfmJJDkJemykkV36E+r3mbb+o
-	LXTLx8BAYYxe2XNn7uhOEvkjKBj8I0lW72Top+PWvKf4wvOGJyB/0Pn36Z4BF/k2IFzA
-	UvjjdYzxeyXXErO+v+pv2W4sbgvi4GPvlxYYdTPSvn/KJlxIfH2Jo3LbJzlS0/SKaK8s
-	cRBbVF9HR9OGPONs90idRoTuMlVVxq8sva6Zt1Ze7dYX6NrUbehj3p1ActveFCwlZCvV
-	CoDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=xkQa98a28VKjTQrGjpPepqcM83CyZTPDKD30JbWI/1Y=;
-	b=EIL41GK7Cmv0K1axnsUlvjP9F1kyJu5N0bElMzUF3W9A+RxBIph3ZZAXwzOPFDZoAc
-	yYxZzoSm6f876Trs/0sbddeI68qQx57MHUnzUDCnLNzRN4VgRf25xXcC/Vvl7VNvbr9q
-	uYbAlXMVWZHDrO+eHM6LsyC2/X4F61knhKl1sDmS4Bd+SyluVJur+kUMmlCJDGHE3fEf
-	FA/DsSNlrw5EtaqnmW0YYOskpdzHSVN1xM2lcGRybGVae7YnMeu4KkgLpl2PUWwYe0Im
-	hvrfC/f/Oc4smGXWDPk24g3ekLHlV6lsVpgNeM178roUtigOs8Ep8FCj53RGNIEgXUNZ
-	cU3Q==
-X-Gm-Message-State: APjAAAXVlRmWB7eY62G3lTeknj86iK1KOhOvILfzZ8rzmvWCejwqy1eD
-	ViXEweihs+8AQ5gveBEHlUqavHEKhEGsTGNXHtijYQ==
-X-Received: by 2002:a05:6830:1497:: with SMTP id
-	s23mr21786268otq.236.1554839659594; 
-	Tue, 09 Apr 2019 12:54:19 -0700 (PDT)
+	(envelope-from <peterx@redhat.com>) id 1hE14K-0005RR-7d
+	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 20:26:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47816)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peterx@redhat.com>)
+	id 1hE14I-0005M4-Ak; Tue, 09 Apr 2019 20:26:23 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F041C58E22;
+	Wed, 10 Apr 2019 00:16:47 +0000 (UTC)
+Received: from xz-x1 (ovpn-12-79.pek2.redhat.com [10.72.12.79])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C01A118255;
+	Wed, 10 Apr 2019 00:16:43 +0000 (UTC)
+Date: Wed, 10 Apr 2019 08:16:40 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20190410001640.GA25214@xz-x1>
+References: <20190409160219.19026-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <e61c4a17-910b-0066-92ae-3fabf4a4e3e3@weilnetz.de>
-In-Reply-To: <e61c4a17-910b-0066-92ae-3fabf4a4e3e3@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 10 Apr 2019 02:54:11 +0700
-Message-ID: <CAFEAcA-djqczK-BG-NBF3116fmmbxS5GPH94NGfDXWQU3dxoww@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::329
-Subject: Re: [Qemu-arm] Misaligned memory writes on ARM and other runtime
- errors
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20190409160219.19026-1-eric.auger@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 10 Apr 2019 00:16:48 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/arm/smmuv3: Remove
+ SMMUNotifierNode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,39 +89,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eEkV9jXe2nTu
+X-TUID: CTxi95CeglpH
 
-On Wed, 10 Apr 2019 at 02:12, Stefan Weil <sw@weilnetz.de> wrote:
->
-> When QEMU for ARM is compiled with sanitizers
-> (--extra-cflags=-fsanitize=address,undefined), I see runtime errors for
-> qemu-arm which indicate misaligned memory writes:
->
-> /qemu/linux-user/fd-trans.c:1389:18: runtime error: store to misaligned
-> address 0x42ff4b34 for type 'uint64_t', which requires 8 byte alignment
->
-> The full sanitizer report is available from
-> https://qemu.weilnetz.de/doc/sanitizer.txt. Some of the reported runtime
-> errors can easily be fixed, for example by replacing "1 << 31"
-> (currently 188 matches) by "1U << 31" (currently only 70 matches).
+On Tue, Apr 09, 2019 at 06:02:19PM +0200, Eric Auger wrote:
+> The SMMUNotifierNode struct is not necessary and brings extra
+> complexity so let's remove it. We now directly track the SMMUDevices
+> which have registered IOMMU MR notifiers.
+> 
+> This is inspired from the same transformation on intel-iommu
+> done in commit b4a4ba0d68f50f218ee3957b6638dbee32a5eeef
+> ("intel-iommu: remove IntelIOMMUNotifierNode")
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-The shift "errors" are not in fact errors -- we compile with -fwrapv
-to request a dialect of C where left shift of signed integers is
-well-defined and has 2s complement semantics. Some versions
-of the clang sanitizers don't correctly handle that flag as meaning
-that those shifts should no longer generate sanitizer warnings.
-If you're using a clang without that bug fix you can suppress the
-warnings by adding "-fno-sanitize=shift-base" to the --extra-cflags
-you pass to QEMU's configure.
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-The misaligned accesses are definitely bugs. The linux-user code
-unfortunately has quite a lot of code in its data-structure conversion
-code that is pretty fast and loose about accessing fields in
-target-layout data structures.
-
-thanks
--- PMM
+-- 
+Peter Xu

@@ -1,82 +1,170 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7213609wrx;
-        Thu, 11 Apr 2019 06:56:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzCgaK9Jdf2GPDq5xup/LNZPSbzeP2DTqtJBCHlEquwF8iklh4esIzMnoiYL49b3Glew8Zd
-X-Received: by 2002:adf:cd06:: with SMTP id w6mr31931533wrm.52.1554991002958;
-        Thu, 11 Apr 2019 06:56:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554991002; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7232138wrx;
+        Thu, 11 Apr 2019 07:12:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNZm+pBXGd1NoXx1y7s16mPiSgmkM5MJq5tc3FXv/U0+u1UKE3RcFQdL8B64epZfqRz/yy
+X-Received: by 2002:a1c:480b:: with SMTP id v11mr6778416wma.25.1554991929956;
+        Thu, 11 Apr 2019 07:12:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554991929; cv=none;
         d=google.com; s=arc-20160816;
-        b=nLBhaRW9iwtNYu1asBabqR0EbklH3pQmcp7c+saZOXaZRR2r0ohwdTJLFvtpxuXbgm
-         e2niNDHG+oxQAgIckktO+OOEt1z/EZ4upkimwXJHzOgGmP7ncxE1vRcyw7JostYuooKt
-         uc1+U88DOOntY/UPYiro8gWcCRUxUTtNRuuK+LMCrQwrz8AL1UtFl91SnNPqVcLDsof1
-         IpAOHq8M5LE1E31urz7AjAcF7g/rcB/nJKK882QZWv3ICukEeY5Dm/3gNaRytdOoj6Wz
-         aW3KwOX1RZ+VYO5hDf0eBGJD8POSi4XxNhuDx2n5m/g3vnng2XKchiS6r1a/UyyEgdBb
-         h50g==
+        b=RKXhfstTCHwKUl04cQxuwVf3UwndSv92g83Ry/NqOOI9GXVGkYCwjumhPq2+cigH8w
+         yliivs87kGAhtZmJkAmFzCO5UDk5YlcM3qUYXSqa67IujXP+zfv3/bwbOdrEKL7/jt88
+         ZHCV2G8UokC1uNt4yyAN/VS1vtzaI2GrLYVSHM89qhexZZXSvg+0EMh6mINuCEE3vQ/C
+         0EjHBfBQzI1HwqRxspEKbCOD+AlbFi+Bhcjr5tBxOdUq8pmK811rsJLSYCkr/K3dVhi2
+         6UXVZeJtSN9cngkSfdqqCNi5vxByGPKiIIKvmbbecQ3MflbB/FGzYcLop0/dUkU3k2Gc
+         Iv/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from;
-        bh=F84SawSwRsLm2byf4yFzrDLnexV/UYCvJi/EyY/nFik=;
-        b=CI8Etb1phaPfGeG5uIpt69oGkkT0btxkpCS9WT+HFPcilv8ucKCkSb+j2SDZyGMX+e
-         qzfpBUTfRH4t/o/SZ6eP8ST/mPC+A78sfC4rNqwgpqFGXbUYh4uQKZ6YHx+GEOCxaxmw
-         mUYxdSVHioS7d35DIOCcL2rM8/sEVTP3CgBwn3Bj72j+eDmSOLs5pS+oQV18WiV171+j
-         ROtw3ChfEyR5TxFlIHMiIQXSEImpdolOEqoxLf47efOFj9r8car3uXaIOZdGx6BeFkt2
-         8bEYc2vOa1upWvJ6qYzKGZWzRKK4H8a2nKnEjZadHz7hieO//p1U67BO8uydLChK+WqK
-         ABJQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:autocrypt:openpgp:from:references:to;
+        bh=UfHcArRWmwneWa9ZhIb4KeXQThHjlbk6XEdSe9O1z2s=;
+        b=XvQK8QHzhmGuTHMbQri4qXZS8KO0bzJjALr8Qzg+ISAMmonsXe2AdK0BJHS/0rrAIY
+         nPqCQQkD+MbpsPDdatgm206J55foTAk2DCtESZAKyF8tbmzOtpdbtybnohFEVcb+IlST
+         TqYNde6sMMU4+t2sEBLCdNXLXEGz7DbLdrEhq43Z5dsSxnlNvU74aeVmANPvLqNAq5qR
+         4p7dbst+FcvtQqTveIIrrmcd3qJmvrD4F4CmVMu0Xx81MsjWZl7u2P4Ni2S5/QnTIJUy
+         rcb+D1I+IJEsHpvasD02jAe6W4DurCXQZ87s0hPFBK+WwRbz6I9H9zcDvoA0kWFc0/mR
+         AOUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si5912511wru.149.2019.04.11.06.56.42
+        by mx.google.com with ESMTPS id c17si24576463wrw.294.2019.04.11.07.12.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 06:56:42 -0700 (PDT)
+        Thu, 11 Apr 2019 07:12:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49316 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([127.0.0.1]:49502 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEaC1-0001UF-Va
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 09:56:42 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51784)
+	id 1hEaQy-0007Nc-Sg
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 10:12:08 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hEaBV-0001BL-VK
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 09:56:11 -0400
+	(envelope-from <borntraeger@de.ibm.com>) id 1hEaQh-0007Lo-Ag
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:11:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hEaBS-0005gv-Bt
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 09:56:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:17225)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hEaBS-0005fe-0C; Thu, 11 Apr 2019 09:56:06 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 527586DDE8;
-	Thu, 11 Apr 2019 13:56:04 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B49A9608A5;
-	Thu, 11 Apr 2019 13:56:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 4A3CF1132BD3; Thu, 11 Apr 2019 15:56:02 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Thu, 11 Apr 2019 15:56:02 +0200
-Message-Id: <20190411135602.21725-3-armbru@redhat.com>
-In-Reply-To: <20190411135602.21725-1-armbru@redhat.com>
-References: <20190411135602.21725-1-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 11 Apr 2019 13:56:04 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 2/2] hw/arm/virt: Support firmware configuration
- with -blockdev
+	(envelope-from <borntraeger@de.ibm.com>) id 1hEaQf-0004b1-UH
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:11:51 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:42828)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
+	id 1hEaQf-0004Wu-IZ
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:11:49 -0400
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x3BEATmR121861
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 10:11:36 -0400
+Received: from e06smtp01.uk.ibm.com (e06smtp01.uk.ibm.com [195.75.94.97])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2rt686c26k-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 10:11:36 -0400
+Received: from localhost
+	by e06smtp01.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-arm@nongnu.org> from <borntraeger@de.ibm.com>;
+	Thu, 11 Apr 2019 15:11:33 +0100
+Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
+	by e06smtp01.uk.ibm.com (192.168.101.131) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Thu, 11 Apr 2019 15:11:29 +0100
+Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
+	[9.149.105.62])
+	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id x3BEBSxF44564632
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 11 Apr 2019 14:11:28 GMT
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 3B960AE057;
+	Thu, 11 Apr 2019 14:11:28 +0000 (GMT)
+Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id BE6CDAE058;
+	Thu, 11 Apr 2019 14:11:27 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.152.224.131])
+	by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Thu, 11 Apr 2019 14:11:27 +0000 (GMT)
+To: Cornelia Huck <cohuck@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>
+References: <20190411102025.22559-1-cohuck@redhat.com>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+	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
+	syiRa+UVlsKmx1hsEg==
+Date: Thu, 11 Apr 2019 16:11:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190411102025.22559-1-cohuck@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 19041114-4275-0000-0000-00000326C9C9
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19041114-4276-0000-0000-00003835EA90
+Message-Id: <6ba2e458-ba6a-f6f1-f6bb-67555762af38@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-04-11_09:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1904110097
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
+Subject: Re: [Qemu-arm] [qemu-s390x] [PATCH for-4.1] hw: add compat machines
+ for 4.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,365 +176,239 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
-	mreitz@redhat.com, qemu-arm@nongnu.org, lersek@redhat.com
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I1gjwE7sHnNF
+X-TUID: eVVOa2jOZ/UF
 
-The ARM virt machines put firmware in flash memory.  To configure it,
-you use -drive if=pflash,unit=0,... and optionally -drive
-if=pflash,unit=1,...
+s390x parts looks good to me.
 
-Why two -drive?  This permits setting up one part of the flash memory
-read-only, and the other part read/write.  It also makes upgrading
-firmware on the host easier.  Below the hood, we get two separate
-flash devices, because we were too lazy to improve our flash device
-models to support sector protection.
-
-The problem at hand is to do the same with -blockdev somehow, as one
-more step towards deprecating -drive.
-
-We recently solved this problem for x86 PC machines, in commit
-ebc29e1beab.  See the commit message for design rationale.
-
-This commit solves it for ARM virt basically the same way: new machine
-properties pflash0, pflash1 forward to the onboard flash devices'
-properties.  Requires creating the onboard devices in the
-.instance_init() method virt_instance_init().  The existing code to
-pick up drives defined with -drive if=pflash is replaced by code to
-desugar into the machine properties.
-
-There are a few behavioral differences, though:
-
-* The flash devices are always present (x86: only present if
-  configured)
-
-* Flash base addresses and sizes are fixed (x86: sizes depend on
-  images, mapped back to back below a fixed address)
-
-* -bios configures contents of first pflash (x86: -bios configures ROM
-   contents)
-
-* -bios is rejected when first pflash is also configured with -machine
-   pflash0=... (x86: bios is silently ignored then)
-
-* -machine pflash1=... does not require -machine pflash0=... (x86: it
-   does).
-
-The actual code is a bit simpler than for x86 mostly due to the first
-two differences.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- hw/arm/virt.c         | 192 +++++++++++++++++++++++++++---------------
- include/hw/arm/virt.h |   2 +
- 2 files changed, 124 insertions(+), 70 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ce2664a30b..8ce7ecca80 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -30,6 +30,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "qemu/option.h"
- #include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "hw/arm/arm.h"
-@@ -871,25 +872,19 @@ static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
-     }
- }
- 
--static void create_one_flash(const char *name, hwaddr flashbase,
--                             hwaddr flashsize, const char *file,
--                             MemoryRegion *sysmem)
-+#define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
-+
-+static PFlashCFI01 *virt_pflash_create1(VirtMachineState *vms,
-+                                        const char *name,
-+                                        const char *alias_prop_name)
- {
--    /* Create and map a single flash device. We use the same
--     * parameters as the flash devices on the Versatile Express board.
-+    /*
-+     * Create a single flash device.  We use the same parameters as
-+     * the flash devices on the Versatile Express board.
-      */
--    DriveInfo *dinfo = drive_get_next(IF_PFLASH);
-     DeviceState *dev = qdev_create(NULL, TYPE_PFLASH_CFI01);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
--    const uint64_t sectorlength = 256 * 1024;
- 
--    if (dinfo) {
--        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
--                            &error_abort);
--    }
--
--    qdev_prop_set_uint32(dev, "num-blocks", flashsize / sectorlength);
--    qdev_prop_set_uint64(dev, "sector-length", sectorlength);
-+    qdev_prop_set_uint64(dev, "sector-length", VIRT_FLASH_SECTOR_SIZE);
-     qdev_prop_set_uint8(dev, "width", 4);
-     qdev_prop_set_uint8(dev, "device-width", 2);
-     qdev_prop_set_bit(dev, "big-endian", false);
-@@ -898,41 +893,41 @@ static void create_one_flash(const char *name, hwaddr flashbase,
-     qdev_prop_set_uint16(dev, "id2", 0x00);
-     qdev_prop_set_uint16(dev, "id3", 0x00);
-     qdev_prop_set_string(dev, "name", name);
-+    object_property_add_child(OBJECT(vms), name, OBJECT(dev),
-+                              &error_abort);
-+    object_property_add_alias(OBJECT(vms), alias_prop_name,
-+                              OBJECT(dev), "drive", &error_abort);
-+    return PFLASH_CFI01(dev);
-+}
-+
-+static void virt_flash_create(VirtMachineState *vms)
-+{
-+    vms->flash[0] = virt_pflash_create1(vms, "virt.flash0", "pflash0");
-+    vms->flash[1] = virt_pflash_create1(vms, "virt.flash1", "pflash1");
-+}
-+
-+static void virt_flash_map1(PFlashCFI01 *flash,
-+                            hwaddr base, hwaddr size,
-+                            MemoryRegion *sysmem)
-+{
-+    DeviceState *dev = DEVICE(flash);
-+
-+    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
-+    assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
-+    qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
-     qdev_init_nofail(dev);
- 
--    memory_region_add_subregion(sysmem, flashbase,
--                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
--
--    if (file) {
--        char *fn;
--        int image_size;
--
--        if (drive_get(IF_PFLASH, 0, 0)) {
--            error_report("The contents of the first flash device may be "
--                         "specified with -bios or with -drive if=pflash... "
--                         "but you cannot use both options at once");
--            exit(1);
--        }
--        fn = qemu_find_file(QEMU_FILE_TYPE_BIOS, file);
--        if (!fn) {
--            error_report("Could not find ROM image '%s'", file);
--            exit(1);
--        }
--        image_size = load_image_mr(fn, sysbus_mmio_get_region(sbd, 0));
--        g_free(fn);
--        if (image_size < 0) {
--            error_report("Could not load ROM image '%s'", file);
--            exit(1);
--        }
--    }
-+    memory_region_add_subregion(sysmem, base,
-+                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
-+                                                       0));
- }
- 
--static void create_flash(const VirtMachineState *vms,
--                         MemoryRegion *sysmem,
--                         MemoryRegion *secure_sysmem)
-+static void virt_flash_map(VirtMachineState *vms,
-+                           MemoryRegion *sysmem,
-+                           MemoryRegion *secure_sysmem)
- {
--    /* Create two flash devices to fill the VIRT_FLASH space in the memmap.
--     * Any file passed via -bios goes in the first of these.
-+    /*
-+     * Map two flash devices to fill the VIRT_FLASH space in the memmap.
-      * sysmem is the system memory space. secure_sysmem is the secure view
-      * of the system, and the first flash device should be made visible only
-      * there. The second flash device is visible to both secure and nonsecure.
-@@ -941,13 +936,21 @@ static void create_flash(const VirtMachineState *vms,
-      */
-     hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
-     hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-+
-+    virt_flash_map1(vms->flash[0], flashbase, flashsize,
-+                    secure_sysmem);
-+    virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
-+                    sysmem);
-+}
-+
-+static void virt_flash_fdt(VirtMachineState *vms,
-+                           MemoryRegion *sysmem,
-+                           MemoryRegion *secure_sysmem)
-+{
-+    hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
-+    hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-     char *nodename;
- 
--    create_one_flash("virt.flash0", flashbase, flashsize,
--                     bios_name, secure_sysmem);
--    create_one_flash("virt.flash1", flashbase + flashsize, flashsize,
--                     NULL, sysmem);
--
-     if (sysmem == secure_sysmem) {
-         /* Report both flash devices as a single node in the DT */
-         nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
-@@ -959,7 +962,8 @@ static void create_flash(const VirtMachineState *vms,
-         qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
-         g_free(nodename);
-     } else {
--        /* Report the devices as separate nodes so we can mark one as
-+        /*
-+         * Report the devices as separate nodes so we can mark one as
-          * only visible to the secure world.
-          */
-         nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase);
-@@ -982,6 +986,48 @@ static void create_flash(const VirtMachineState *vms,
-     }
- }
- 
-+static bool virt_firmware_init(VirtMachineState *vms,
-+                               MemoryRegion *sysmem,
-+                               MemoryRegion *secure_sysmem)
-+{
-+    BlockBackend *pflash_blk0;
-+
-+    pflash_cfi01_legacy_drive(vms->flash, ARRAY_SIZE(vms->flash));
-+    virt_flash_map(vms, sysmem, secure_sysmem);
-+
-+    pflash_blk0 = pflash_cfi01_get_blk(vms->flash[0]);
-+
-+    if (bios_name) {
-+        char *fname;
-+        MemoryRegion *mr;
-+        int image_size;
-+
-+        if (pflash_blk0) {
-+            error_report("The contents of the first flash device may be "
-+                         "specified with -bios or with -drive if=pflash... "
-+                         "but you cannot use both options at once");
-+            exit(1);
-+        }
-+
-+        /* Fall back to -bios */
-+
-+        fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+        if (!fname) {
-+            error_report("Could not find ROM image '%s'", bios_name);
-+            exit(1);
-+        }
-+        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(vms->flash[0]), 0);
-+        image_size = load_image_mr(fname, mr);
-+        g_free(fname);
-+        if (image_size < 0) {
-+            error_report("Could not load ROM image '%s'", bios_name);
-+            exit(1);
-+        }
-+    }
-+
-+    return pflash_blk0 || bios_name;
-+}
-+
- static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
- {
-     hwaddr base = vms->memmap[VIRT_FW_CFG].base;
-@@ -1421,7 +1467,7 @@ static void machvirt_init(MachineState *machine)
-     MemoryRegion *secure_sysmem = NULL;
-     int n, virt_max_cpus;
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
--    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-+    bool firmware_loaded;
-     bool aarch64 = true;
- 
-     /*
-@@ -1460,6 +1506,27 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
-+    if (vms->secure) {
-+        if (kvm_enabled()) {
-+            error_report("mach-virt: KVM does not support Security extensions");
-+            exit(1);
-+        }
-+
-+        /*
-+         * The Secure view of the world is the same as the NonSecure,
-+         * but with a few extra devices. Create it as a container region
-+         * containing the system memory at low priority; any secure-only
-+         * devices go in at higher priority and take precedence.
-+         */
-+        secure_sysmem = g_new(MemoryRegion, 1);
-+        memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-+                           UINT64_MAX);
-+        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-+    }
-+
-+    firmware_loaded = virt_firmware_init(vms, sysmem,
-+                                         secure_sysmem ?: sysmem);
-+
-     /* If we have an EL3 boot ROM then the assumption is that it will
-      * implement PSCI itself, so disable QEMU's internal implementation
-      * so it doesn't get in the way. Instead of starting secondary
-@@ -1505,23 +1572,6 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
--    if (vms->secure) {
--        if (kvm_enabled()) {
--            error_report("mach-virt: KVM does not support Security extensions");
--            exit(1);
--        }
--
--        /* The Secure view of the world is the same as the NonSecure,
--         * but with a few extra devices. Create it as a container region
--         * containing the system memory at low priority; any secure-only
--         * devices go in at higher priority and take precedence.
--         */
--        secure_sysmem = g_new(MemoryRegion, 1);
--        memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
--                           UINT64_MAX);
--        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
--    }
--
-     create_fdt(vms);
- 
-     possible_cpus = mc->possible_cpu_arch_ids(machine);
-@@ -1610,7 +1660,7 @@ static void machvirt_init(MachineState *machine)
-                                     &machine->device_memory->mr);
-     }
- 
--    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
-+    virt_flash_fdt(vms, sysmem, secure_sysmem);
- 
-     create_gic(vms, pic);
- 
-@@ -1956,6 +2006,8 @@ static void virt_instance_init(Object *obj)
-                                     NULL);
- 
-     vms->irqmap = a15irqmap;
-+
-+    virt_flash_create(vms);
- }
- 
- static const TypeInfo virt_machine_info = {
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 507517c603..424070924e 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -35,6 +35,7 @@
- #include "qemu/notify.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
-+#include "hw/block/flash.h"
- #include "sysemu/kvm.h"
- #include "hw/intc/arm_gicv3_common.h"
- 
-@@ -113,6 +114,7 @@ typedef struct {
-     Notifier machine_done;
-     DeviceState *platform_bus_dev;
-     FWCfgState *fw_cfg;
-+    PFlashCFI01 *flash[2];
-     bool secure;
-     bool highmem;
-     bool highmem_ecam;
--- 
-2.17.2
+On 11.04.19 12:20, Cornelia Huck wrote:
+> Add 4.1 machine types for arm/i440fx/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+> 
+> IIRC, we agreed last time that we want to merge a patch introducing
+> the new compat machines first thing in a new development cycle. So
+> here's that patch for 4.1.
+> 
+> ---
+>  hw/arm/virt.c              |  9 ++++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  9 files changed, 71 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ce2664a30b7f..16ba67f7a768 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1978,10 +1978,17 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+>  
+> +static void virt_machine_4_1_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
+> +
+>  static void virt_machine_4_0_options(MachineClass *mc)
+>  {
+> +    virt_machine_4_1_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(4, 0)
+> +DEFINE_VIRT_MACHINE(4, 0)
+>  
+>  static void virt_machine_3_1_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 743fef28982c..5d046a43e3d2 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -24,6 +24,9 @@
+>  #include "hw/pci/pci.h"
+>  #include "hw/mem/nvdimm.h"
+>  
+> +GlobalProperty hw_compat_4_0[] = {};
+> +const size_t hw_compat_4_0_len = G_N_ELEMENTS(hw_compat_4_0);
+> +
+>  GlobalProperty hw_compat_3_1[] = {
+>      { "pcie-root-port", "x-speed", "2_5" },
+>      { "pcie-root-port", "x-width", "1" },
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index f2c15bf1f2c3..868303cf6427 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -115,6 +115,9 @@ struct hpet_fw_config hpet_cfg = {.count = UINT8_MAX};
+>  /* Physical Address of PVH entry point read from kernel ELF NOTE */
+>  static size_t pvh_start_addr;
+>  
+> +GlobalProperty pc_compat_4_0[] ={};
+> +const size_t pc_compat_4_0_len = G_N_ELEMENTS(pc_compat_4_0);
+> +
+>  GlobalProperty pc_compat_3_1[] = {
+>      { "intel-iommu", "dma-drain", "off" },
+>      { "Opteron_G3" "-" TYPE_X86_CPU, "rdtscp", "off" },
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 8ad8e885c6b1..2a7700b564d3 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -428,13 +428,25 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+>  }
+>  
+> -static void pc_i440fx_4_0_machine_options(MachineClass *m)
+> +static void pc_i440fx_4_1_machine_options(MachineClass *m)
+>  {
+>      pc_i440fx_machine_options(m);
+>      m->alias = "pc";
+>      m->is_default = 1;
+>  }
+>  
+> +DEFINE_I440FX_MACHINE(v4_1, "pc-i440fx-4.1", NULL,
+> +                      pc_i440fx_4_1_machine_options);
+> +
+> +static void pc_i440fx_4_0_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_4_1_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = 0;
+> +    compat_props_add(m->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_0, pc_compat_4_0_len);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v4_0, "pc-i440fx-4.0", NULL,
+>                        pc_i440fx_4_0_machine_options);
+>  
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 372c6b73bebd..37dd350511a9 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -365,12 +365,23 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus = 288;
+>  }
+>  
+> -static void pc_q35_4_0_machine_options(MachineClass *m)
+> +static void pc_q35_4_1_machine_options(MachineClass *m)
+>  {
+>      pc_q35_machine_options(m);
+>      m->alias = "q35";
+>  }
+>  
+> +DEFINE_Q35_MACHINE(v4_1, "pc-q35-4.1", NULL,
+> +                   pc_q35_4_1_machine_options);
+> +
+> +static void pc_q35_4_0_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_4_1_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_0, pc_compat_4_0_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v4_0, "pc-q35-4.0", NULL,
+>                     pc_q35_4_0_machine_options);
+>  
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index b52b82d298ef..8438741ec23c 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4344,15 +4344,26 @@ static const TypeInfo spapr_machine_info = {
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+>  
+> +/*
+> + * pseries-4.1
+> + */
+> +static void spapr_machine_4_1_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(4_1, "4.1", true);
+> +
+>  /*
+>   * pseries-4.0
+>   */
+>  static void spapr_machine_4_0_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_4_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+>  }
+>  
+> -DEFINE_SPAPR_MACHINE(4_0, "4.0", true);
+> +DEFINE_SPAPR_MACHINE(4_0, "4.0", false);
+>  
+>  /*
+>   * pseries-3.1
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index d11069b860b4..02470e78c74d 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -646,14 +646,26 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +static void ccw_machine_4_1_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_4_1_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(4_1, "4.1", true);
+> +
+>  static void ccw_machine_4_0_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_4_1_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_4_0_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_4_1_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+>  }
+> -DEFINE_CCW_MACHINE(4_0, "4.0", true);
+> +DEFINE_CCW_MACHINE(4_0, "4.0", false);
+>  
+>  static void ccw_machine_3_1_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index e231860666a1..fe1885cbffa0 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -293,6 +293,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+>  
+> +extern GlobalProperty hw_compat_4_0[];
+> +extern const size_t hw_compat_4_0_len;
+> +
+>  extern GlobalProperty hw_compat_3_1[];
+>  extern const size_t hw_compat_3_1_len;
+>  
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index ca65ef18afb4..43df7230a22b 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -293,6 +293,9 @@ int e820_add_entry(uint64_t, uint64_t, uint32_t);
+>  int e820_get_num_entries(void);
+>  bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+>  
+> +extern GlobalProperty pc_compat_4_0[];
+> +extern const size_t pc_compat_4_0_len;
+> +
+>  extern GlobalProperty pc_compat_3_1[];
+>  extern const size_t pc_compat_3_1_len;
+>  
+> 
 

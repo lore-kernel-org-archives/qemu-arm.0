@@ -1,341 +1,169 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7589491wrx;
-        Thu, 11 Apr 2019 13:06:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwcrc20gwLD5xxk8XMC4RYtkHUWtP3CWxXrlIiPvx8ZiH2fHhuVJj8R4zQSt5vk0HLeWv0Z
-X-Received: by 2002:adf:e40b:: with SMTP id g11mr31279545wrm.207.1555013211177;
-        Thu, 11 Apr 2019 13:06:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555013211; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7699017wrx;
+        Thu, 11 Apr 2019 15:16:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzEJ2op6liHyglm+tw8qnV10RPu6yAdWVzRhikThjAByfsxzE7kypllgPivP5hlhVr5DTaP
+X-Received: by 2002:a05:6000:2:: with SMTP id h2mr15556081wrx.76.1555020984689;
+        Thu, 11 Apr 2019 15:16:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555020984; cv=none;
         d=google.com; s=arc-20160816;
-        b=a+P8Pf3RpNbCF9In5dAB+waMSrxv1tbSJ+GfyRFAxyAPnQosCFzuiFf1DJVRPs/Ju2
-         udN++vGx6rQGtCX8gwEZzYgEYNqiEb7zvHrDuy2pHt537fx5pXkXjpaqsLPVLcSPDmXt
-         5bd8yEjhsciZog6dRq7yJVolym3ObeDHZDu3PSf2hKyXvXJohPbrQSaZe3KI/Wa3+kNk
-         xsr0+TllIULCR7qN480l5TGOC8V8oecCJJAlPowkXzeHJQT/8cFhyWnzVKqPYj1Atbuj
-         CQSpDkj2NMJ8ysJvglg52Zl028F0dV8yWAXoQmfDZgc3ehDQSsk0YV2P5hD5gczul3PQ
-         btIg==
+        b=yaWij+6+ahCKXwluSF0qCSK19zhZ7BN9/1KFPd08vVafFrk7/ur0UTNHR6ECy7NmI4
+         WS9oR/tQ3tBNOiVMYbzb06e6IBf/SUegrd6+KDWbDPqzNnq6mv+HJVHEZY8Wbj2/q4aK
+         gs7WAmhaJGW5rDwwjLU16hH7IlzuF6HDvmqPT/ARai5E1Kc5Fc19aSOU48C9wgW60vH/
+         xwo8g2qM6KFr2aUbpSCKYeyZsQOOc8FfjU3mYdB5TOMcL+kSda2iOx5eMmLoR92L5d7m
+         bM9w5kL1am46y1VxUyodtnl6yMNG5ag02vym6UEaHz0G4ct7nlxm5ag+HmkQBsRWJYx5
+         MtKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from;
-        bh=OeK3vdwRZiRfOYicw8tZqTbUDyrqbY5YHYOKRlTTpIM=;
-        b=tsLvOOh8yymHFuGdDN67QP+SWsg/vWotiJeAayNw93KMfsNm+wD0D6KJl2IHbEkxYX
-         7I41yU6fnfNvpov3Ps3yjSAWkgQEJanskWGiuSdVK5jQoEmRBvieYdDq403cEfVOEhi0
-         94ISQ/pqsIUUd3cU/hKdBrckCvfAwRjQ/3q9JKOTcnOXIhbtoTB5CjmZphXEO+G+Bdc6
-         cLRs54YJNLSjh2BszqOtcIfQJhG5ZPW+32e5Fuy4qu63MU1SZTA6vUS9Z0bDd6FH2GOq
-         MGphqOe18cSk7eLj5uV2amPU7fynEhgfpLvZOu6udGcogeBOKejXqmMRkhkkKmcor/1z
-         UvpQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version;
+        bh=sGYAYtOgoP53edHEJvrt+xZApFTb6pQnUEk06xmn75E=;
+        b=lD3bCpa7pH/zW5p4Ivsk1/d8CRw2A2QErAQSTwdJg+O/dtLD6jE3yYlv89NFhFrO4A
+         5EmY5Ni7W7rQ+zEKiuOITb7mQmEabyiPp3THgvEvvCiwLJwFRu3uxDSq6EjSi011qVig
+         uE53Ki0SJpBi/JiAQPaEDO2Ejf9dCra5dVvlXeIyCPZ6mgpVP4ygVvkPG6hJOnF7c5zI
+         XHD3Aqpmk7W1QGjPftJGOcKFhtcH0LNuxvjUC1R3mSruTNixEgCgDBPafAMPH5EwJ1xQ
+         a6e3X8/ecDPmmU2TWNgjNtJuC+5ctN1QUwjQmZ5L2Q5Ui0O8aXChvaCmjyMEGvQw9OI9
+         ZrvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si26326280wrm.216.2019.04.11.13.06.50
+        by mx.google.com with ESMTPS id s74si3894828wme.116.2019.04.11.15.16.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 13:06:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Apr 2019 15:16:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:54308 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+Received: from localhost ([127.0.0.1]:55630 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEfyE-00005L-4l
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 16:06:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35812)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1hEfwZ-0007cE-BV
-	for qemu-devel@nongnu.org; Thu, 11 Apr 2019 16:05:10 -0400
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hEhzb-0003xA-NN
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 18:16:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59559)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <daz3@vt.edu>)
+	id 1hEhXu-0005NW-Rx
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 17:47:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1hEfwX-0002tA-Sq
-	for qemu-devel@nongnu.org; Thu, 11 Apr 2019 16:05:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59026)
+	(envelope-from <daz3@vt.edu>) id 1hEhXm-0004ci-13
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 17:47:42 -0400
+Received: from omr2.cc.ipv6.vt.edu ([2607:b400:92:8400:0:33:fb76:806e]:45058
+	helo=omr2.cc.vt.edu)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1hEfwR-0002r1-3K; Thu, 11 Apr 2019 16:04:59 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5D9DE308339D;
-	Thu, 11 Apr 2019 20:04:58 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-126-53.rdu2.redhat.com
-	[10.10.126.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C6D5819C58;
-	Thu, 11 Apr 2019 20:04:54 +0000 (UTC)
-From: Laszlo Ersek <lersek@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <20190411135602.21725-1-armbru@redhat.com>
-	<20190411135602.21725-2-armbru@redhat.com>
-	<0eea5ddb-1efb-8fdf-4a37-9bc2daf86e2b@redhat.com>
-	<03fb5b6f-7d95-3b9b-3172-e37825402036@redhat.com>
-Message-ID: <8d6c1ced-1e7b-9e52-3afb-3fe1197f7a02@redhat.com>
-Date: Thu, 11 Apr 2019 22:04:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(Exim 4.71) (envelope-from <daz3@vt.edu>) id 1hEhXe-0004UE-4D
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 17:47:30 -0400
+Received: from mr1.cc.vt.edu (mr1.cc.ipv6.vt.edu
+	[IPv6:2607:b400:92:8300:0:31:1732:8aa4])
+	by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x3BLlLvw011206
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 17:47:21 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+	[209.85.128.69])
+	by mr1.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x3BLlGG6004628
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 17:47:21 -0400
+Received: by mail-wm1-f69.google.com with SMTP id f67so4989192wme.3
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 14:47:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=sGYAYtOgoP53edHEJvrt+xZApFTb6pQnUEk06xmn75E=;
+	b=Ct5LGtusgEXTiBNwNSaSVMv1/N0d3XdTllP8Jx7WjFTcesHBMrU+0+fzRNMQ6DtwgS
+	hzpj8bsae1oL3pEWKhrYi+IKjyY+cGoIOvwB0+kaZTK/w2zFxfFxj2sRjVSeNIngHo8Z
+	ejMSk/gLF+Cgd5o/wx1+JcReQTPZU68vGkl8aGRokyC/eaKaSlTF5dOyA5Brj+PEQm51
+	SmAUe+H7jrTW9fCupxwPquIoKdfIxJesHMSF09qsGVM5UDLewHHcrZm6xo6a6x6G2NHM
+	7ue8hj66l/ouiylQ88zrl6xD1b4a1CqOrSg+lcFBpaWvDnnKSs8wmYwp++eAe+DLHjRu
+	ctFA==
+X-Gm-Message-State: APjAAAVeCy83ImIFnZfL+ODvg1flgD2TkhxkfKj/jHdcq/iRvV2vzkNw
+	ZAgCqAU99BUaXDbBynV7Xc70s2ufa0RkxS+mvu8irto6UNMxANV8pV5AQSpiCjh8aje8ii4aZT6
+	JokUBznA1RfKJjeDJg4Y1T+oBDmqgMhQ/9ntDnlE=
+X-Received: by 2002:adf:fc47:: with SMTP id e7mr28296656wrs.100.1555019235574; 
+	Thu, 11 Apr 2019 14:47:15 -0700 (PDT)
+X-Received: by 2002:adf:fc47:: with SMTP id e7mr28296637wrs.100.1555019235216; 
+	Thu, 11 Apr 2019 14:47:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <03fb5b6f-7d95-3b9b-3172-e37825402036@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Thu, 11 Apr 2019 20:04:58 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH 1/2] pflash_cfi01: New
- pflash_cfi01_legacy_drive()
-X-BeenThere: qemu-devel@nongnu.org
+From: Da Zhang <daz3@vt.edu>
+Date: Thu, 11 Apr 2019 17:46:39 -0400
+Message-ID: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
+To: qemu-discuss@nongnu.org, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000226d0d0586482186"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2607:b400:92:8400:0:33:fb76:806e
+X-Mailman-Approved-At: Thu, 11 Apr 2019 18:16:06 -0400
+Subject: [Qemu-arm] Ubuntu installation shows "No network interfaces
+ detected"
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	qemu-block@nongnu.org, mreitz@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L7Pfg61S9Pfd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rV77J2TbviTC
 
-On 04/11/19 21:50, Laszlo Ersek wrote:
-> On 04/11/19 21:35, Laszlo Ersek wrote:
->> On 04/11/19 15:56, Markus Armbruster wrote:
->>> Factored out of pc_system_firmware_init() so the next commit can reuse
->>> it in hw/arm/virt.c.
->>>
->>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>> ---
->>>  hw/block/pflash_cfi01.c  | 30 ++++++++++++++++++++++++++++++
->>>  hw/i386/pc_sysfw.c       | 19 ++-----------------
->>>  include/hw/block/flash.h |  1 +
->>>  3 files changed, 33 insertions(+), 17 deletions(-)
->>>
->>> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
->>> index 16dfae14b8..eba01b1447 100644
->>> --- a/hw/block/pflash_cfi01.c
->>> +++ b/hw/block/pflash_cfi01.c
->>> @@ -44,9 +44,12 @@
->>>  #include "qapi/error.h"
->>>  #include "qemu/timer.h"
->>>  #include "qemu/bitops.h"
->>> +#include "qemu/error-report.h"
->>>  #include "qemu/host-utils.h"
->>>  #include "qemu/log.h"
->>> +#include "qemu/option.h"
->>>  #include "hw/sysbus.h"
->>> +#include "sysemu/blockdev.h"
->>>  #include "sysemu/sysemu.h"
->>>  #include "trace.h"
->>>  
->>> @@ -968,6 +971,33 @@ MemoryRegion *pflash_cfi01_get_memory(PFlashCFI01 *fl)
->>>      return &fl->mem;
->>>  }
->>>  
->>> +/*
->>> + * Handle -drive if=pflash for machines that use machine properties.
->>
->> (1) Can we improve readability with quotes? "-drive if=pflash"
->>
->>> + * Map unit#i (0 < i <= @ndev) to @dev[i]'s property "drive".
->>
->> (2) I think you meant (0 <= i < @ndev)
->>
->>> + */
->>> +void pflash_cfi01_legacy_drive(PFlashCFI01 *dev[], int ndev)
->>> +{
->>> +    int i;
->>
->> (3) For utter pedantry, "ndev"  and "i" should have type "size_t" (in
->> particular because we expect the caller to fill "ndev" with ARRAY_SIZE().
->>
->> But, this would go beyond refactoring -- the original "int"s have served
->> us just fine, and we're usually counting up (exclusively) to the huge
->> number... two. :)
->>
->>> +    DriveInfo *dinfo;
->>> +    Location loc;
->>> +
->>> +    for (i = 0; i < ndev; i++) {
->>> +        dinfo = drive_get(IF_PFLASH, 0, i);
->>> +        if (!dinfo) {
->>> +            continue;
->>> +        }
->>> +        loc_push_none(&loc);
->>> +        qemu_opts_loc_restore(dinfo->opts);
->>> +        if (dev[i]->blk) {
->>
->> (4) Is this really identical to the code being removed? The above
->> controlling expression amounts to:
->>
->>   pcms->flash[i]->blk
->>
->> but the original boils down to
->>
->>   pflash_cfi01_get_blk(pcms->flash[i])
->>
->> Hmm... looking at pflash_cfi01_get_blk(), they are the same. Is there a
->> particular reason for not using the wrapper function any longer? As in:
->>
->>   pflash_cfi01_get_blk(dev[i])
->>
->>> +            error_report("clashes with -machine");
->>> +            exit(1);
->>> +        }
->>> +        qdev_prop_set_drive(DEVICE(dev[i]), "drive",
->>> +                            blk_by_legacy_dinfo(dinfo), &error_fatal);
->>> +        loc_pop(&loc);
->>> +    }
->>> +}
->>> +
->>>  static void postload_update_cb(void *opaque, int running, RunState state)
->>>  {
->>>      PFlashCFI01 *pfl = opaque;
->>> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
->>> index c628540774..d58e47184c 100644
->>> --- a/hw/i386/pc_sysfw.c
->>> +++ b/hw/i386/pc_sysfw.c
->>> @@ -269,32 +269,17 @@ void pc_system_firmware_init(PCMachineState *pcms,
->>>  {
->>>      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
->>>      int i;
->>> -    DriveInfo *pflash_drv;
->>>      BlockBackend *pflash_blk[ARRAY_SIZE(pcms->flash)];
->>> -    Location loc;
->>>  
->>>      if (!pcmc->pci_enabled) {
->>>          old_pc_system_rom_init(rom_memory, true);
->>>          return;
->>>      }
->>>  
->>> -    /* Map legacy -drive if=pflash to machine properties */
->>> +    pflash_cfi01_legacy_drive(pcms->flash, ARRAY_SIZE(pcms->flash));
->>> +
->>>      for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
->>>          pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
->>> -        pflash_drv = drive_get(IF_PFLASH, 0, i);
->>> -        if (!pflash_drv) {
->>> -            continue;
->>> -        }
->>> -        loc_push_none(&loc);
->>> -        qemu_opts_loc_restore(pflash_drv->opts);
->>> -        if (pflash_blk[i]) {
->>> -            error_report("clashes with -machine");
->>> -            exit(1);
->>> -        }
->>> -        pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
->>> -        qdev_prop_set_drive(DEVICE(pcms->flash[i]),
->>> -                            "drive", pflash_blk[i], &error_fatal);
->>> -        loc_pop(&loc);
->>>      }
->>
->> (5) I think you deleted too much here. After this loop, post-patch, for
->> all "i", we'll have
->>
->>   pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
->>
->> But pre-patch, for all "i" where the "continue" didn't fire, we'd end up
->> with:
->>
->>   pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
->>
->> IOW the original loop both verifies and *collects*, for the gap check
->> that comes just below.
->>
->> IIRC, this allows for mixing "-drive if=pflash,unit=N" with the machine
->> properties, as long as you have neither conflicts, nor gaps.
->>
->> Post-patch however, this kind of mixing would break, because we'd report
->> gaps for the legacy ("-drive if=pflash") options.
->>
->>
->> In addition, it could break the "use ROM mode" branch below, which is
->> based on pflash_blk[0].
->>
->> I think we should extend pflash_cfi01_legacy_drive() to populate
->> "pflash_blk[0..(ndev-1)]" on output (assuming pflash_blk is not NULL on
->> input).
->>
->> (Because, I'm assuming that qdev_prop_set_drive() -- which now occurs in
->> the factored-out loop *before* the loop that we preserve here -- has no
->> effect on pflash_cfi01_get_blk(pcms->flash[i]).)
-> 
-> Hmmm, that's likely precisely what I'm wrong about. I've now looked at
-> DEFINE_PROP_DRIVE / qdev_prop_drive / set_drive / parse_drive... Does
-> qdev_prop_set_drive() actually *turn* the legacy options into genuine
-> machine type properties?... The removed comment does indicate that:
-> 
->   "Map legacy -drive if=pflash to machine properties"
-> 
-> So I guess the remaining loop is correct after all, but the new comment
-> 
->   "Handle -drive if=pflash for machines that use machine properties"
-> 
-> is less clear to me.
+--000000000000226d0d0586482186
+Content-Type: text/plain; charset="UTF-8"
 
-OK, OK. I'm being dense. I guess the case is that
+Hi guys,
 
-  qdev_prop_set_drive(DEVICE(dev[i]), "drive",
-                      blk_by_legacy_dinfo(dinfo), &error_fatal);
+I am trying to create an Ubuntu ARM disk image for my gem5 ARM experiments.
+The installation always shows "No network interfaces detected".
+This is my command for running qemu:
 
-in the new function basically *assigns* a non-NULL value to
+qemu-system-aarch64 \
+    -cpu host \
+    -device virtio-scsi-device \
+    -device scsi-cd,drive=cdrom \
+    -device virtio-blk-device,drive=hd0 \
+    -drive
+"file=ubuntu-16.04.5-server-arm64.iso,id=cdrom,if=none,media=cdrom" \
+    -drive
+"if=none,format=qcow2,file=ubuntu-16.04.5-server-arm64.img,id=hd0" \
+    -pflash "ubuntu-16.04.5-server-arm64-flash0.img" \
+    -pflash "ubuntu-16.04.5-server-arm64-flash1.img" \
+    -m 1G \
+    -machine virt \
+    -enable-kvm \
+    -nographic \
+    -net nic,netdev=n1 \
+    -netdev user,id=n1 \
+    ;
 
-  dev[i]->blk
+I ran it on a "ROCKPro64 64-bit Hexa-Core Computer" ARM borad with KVM
+enabled. Any suggestions to fix "No network interfaces detected"?
 
-which was checked to be NULL just before.
+best,
+Da Zhang
 
-... This is incredibly non-intuitive, especially given that the
-pre-patch code performed a *similar* assignment explicitly :(
+--000000000000226d0d0586482186
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div di=
+r=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"lt=
+r">Hi guys,<div><br></div><div>I am trying to create an Ubuntu ARM disk ima=
+ge for my gem5 ARM experiments. The installation always shows=C2=A0&quot;No=
+ network interfaces detected&quot;.</div><div>This is my command for runnin=
+g qemu:</div><div><br></div><div><div>qemu-system-aarch64 \</div><div>=C2=
+=A0 =C2=A0 -cpu host \</div><div>=C2=A0 =C2=A0 -device virtio-scsi-device \=
+</div><div>=C2=A0 =C2=A0 -device scsi-cd,drive=3Dcdrom \</div><div>=C2=A0 =
+=C2=A0 -device virtio-blk-device,drive=3Dhd0 \</div><div>=C2=A0 =C2=A0 -dri=
+ve &quot;file=3Dubuntu-16.04.5-server-arm64.iso,id=3Dcdrom,if=3Dnone,media=
+=3Dcdrom&quot; \</div><div>=C2=A0 =C2=A0 -drive &quot;if=3Dnone,format=3Dqc=
+ow2,file=3Dubuntu-16.04.5-server-arm64.img,id=3Dhd0&quot; \</div><div>=C2=
+=A0 =C2=A0 -pflash &quot;ubuntu-16.04.5-server-arm64-flash0.img&quot; \</di=
+v><div>=C2=A0 =C2=A0 -pflash &quot;ubuntu-16.04.5-server-arm64-flash1.img&q=
+uot; \</div><div>=C2=A0 =C2=A0 -m 1G \</div><div>=C2=A0 =C2=A0 -machine vir=
+t \</div><div>=C2=A0 =C2=A0 -enable-kvm \</div><div>=C2=A0 =C2=A0 -nographi=
+c \</div><div>=C2=A0 =C2=A0 -net nic,netdev=3Dn1 \</div><div>=C2=A0 =C2=A0 =
+-netdev user,id=3Dn1 \</div><div>=C2=A0 =C2=A0 ;</div></div><div><br></div>=
+<div>I ran it on a &quot;ROCKPro64 64-bit Hexa-Core Computer&quot; ARM bora=
+d with KVM enabled. Any suggestions to fix &quot;No network interfaces dete=
+cted&quot;?</div><div><br></div><div>best,</div><div>Da Zhang</div><div><br=
+></div></div></div></div></div></div></div></div></div></div>
 
-In other words, we could have written the pre-patch (original) code like
-this:
-
-diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-index c6285407748e..ed6e713d0982 100644
---- a/hw/i386/pc_sysfw.c
-+++ b/hw/i386/pc_sysfw.c
-@@ -291,9 +291,10 @@ void pc_system_firmware_init(PCMachineState *pcms,
-             error_report("clashes with -machine");
-             exit(1);
-         }
--        pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
-         qdev_prop_set_drive(DEVICE(pcms->flash[i]),
--                            "drive", pflash_blk[i], &error_fatal);
-+                            "drive", blk_by_legacy_dinfo(pflash_drv),
-+                            &error_fatal);
-+        pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
-         loc_pop(&loc);
-     }
-
-and the behavior would have been identical.
-
-For the sake of QOM / blk dummies like me, can you please split this
-refactoring to a separate patch, before extracting the new function?
-
-Thanks,
-Laszlo
-
->>
->>>  
->>>      /* Reject gaps */
->>> diff --git a/include/hw/block/flash.h b/include/hw/block/flash.h
->>> index a0f488732a..f6a68c2a4c 100644
->>> --- a/include/hw/block/flash.h
->>> +++ b/include/hw/block/flash.h
->>> @@ -24,6 +24,7 @@ PFlashCFI01 *pflash_cfi01_register(hwaddr base,
->>>                                     int be);
->>>  BlockBackend *pflash_cfi01_get_blk(PFlashCFI01 *fl);
->>>  MemoryRegion *pflash_cfi01_get_memory(PFlashCFI01 *fl);
->>> +void pflash_cfi01_legacy_drive(PFlashCFI01 *dev[], int ndev);
->>>  
->>>  /* pflash_cfi02.c */
->>>  
->>>
->>
-> 
-
+--000000000000226d0d0586482186--

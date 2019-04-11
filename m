@@ -1,272 +1,200 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7317206wrx;
-        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxhEajA4T0OxNWMiLGY/yrcfxzW7Bo7wHlkOfsu+uld7nDwtOHUUN64Auo1nVQc0aCk4Ccn
-X-Received: by 2002:a1c:43c2:: with SMTP id q185mr6771288wma.53.1554996536854;
-        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554996536; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7320572wrx;
+        Thu, 11 Apr 2019 08:31:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz/BGVWyaMfqQc5Qscqw+Ust2sgXIkd+QjRDKwdhdtIjdBpSdt4SLiR7e57sSRRXs1RJzz2
+X-Received: by 2002:ac8:6659:: with SMTP id j25mr30454690qtp.120.1554996708772;
+        Thu, 11 Apr 2019 08:31:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554996708; cv=none;
         d=google.com; s=arc-20160816;
-        b=QWADYB5xBw9oUirKD3sR4pF6JFfqkJQxk+8LPhnjrpzK5SEtuITZVSXCuQigtVf/7y
-         j7v6XQTGVglEUwEJhAvT4ufJe4rml0chhlTtiARWCnBr/VSQFj0sVby181urnC0zdY0j
-         fO8y41tgLDOfP4OWLhKhEw6qb1HA51w5LZW3Kj6RQMDbQs1NmMAdq1zVQcfj64roPGDl
-         wKAeVKq3Xw160ZAn/tGTMkYzflXR3/kLJFC7fIk7BjOPs4EIKi65GcpAr20uusGWc1FV
-         K5n5LV98U7QNLZ0nALSnVL2aBlxrikYgjMxPO6zH4uJOUJJx34COv4fekAvjh/ZNt606
-         dVGg==
+        b=C+7qXJgqT2qSMJ+HfBtqEIlYd2a36Qmhus3Bre4/iQvjS1Cpp7wsksM7CCHxzWPcpu
+         hrCLoPVt6SFai7R5kT6YAQswJOdUEyjebE8P2YtC6h15Jfu0StTXokIq6Q8p7OrdD9mX
+         +v9t2fwSZhhn0k9eYbAqcMcUP0qrl9WdU/DNJ161QXOeAjzYOW+kWf1Q3OxJ50x3jjKu
+         PDEPXWByEPnZML/R59PAUx0QxZH1xmtGdtlOtKhXhKjNbk00+RBOvdCzUji3p+C1BTa5
+         6FxFJryTewjkmQHGXYF34mSSO9Yoa1aeuXXLz0FA13MgWQwV/k1+l1Itoo02wSb8nQV3
+         cK2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
-        b=TrccA6KSm9Qbo9VOu+2kFKrXqIvyGwQxbjDb92iKPUjySCncF6xCrRRjGvYAEHGGck
-         sSxXrcG32NMcfCM8RUYIP19Vx54hlroAX7zeZGLc9VhMF5VXiNVYWyJMQlH1vDnC9ZiP
-         bM9nO+ns63teAUFBV4/mlS9CzeMZAlIaqvsSMhoy2/6ZMB7MszdfG1IfOuJpV2xCP+iy
-         ebZY3ahUS2T5ehDaCQd8v/HvZZgMX65u49cJplP7TOvZtWML7fE9/+2EDmYbnwO/UuUh
-         oFMM1WeK0bXAU7FrgHv2diU4MFgNhLYCeh7mlHZg9CuOiHtE7QmuXcoPM5LPgyv9aE2b
-         Kb5A==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=WbWQ79nBERVHx0nf8/mgDd5mXoziJY+PY8iMT3ghjCA=;
+        b=MyeIjIGXCKjgK7kMR9Gd48dQthxLnMNifmgBSoN+saHrXS+i/QLqQDUhZ2AfxZBF16
+         MIbod+CGN/3zMdh3tqaMZl4s84WH4jwo4NBD269G3j+ruaLQbFwXczO64GGn7ibE0xpG
+         YiXtJ94sR+RWkQbNfkUF4qVET1yG6pd6uebu//AZFMlUodWqJ0QAzJK8hG0I1zkSx64Q
+         GvSUgyfAHozPuUGdc47l5nPN8+24CubB07Kbqkq+ghmI8YDB9buAPZEn6//OkiKEqL6z
+         LTfiGUeHTStZbnUnH4H7mHiH05KEMjWHEwwxaIXBd7auP8f375jiNAM8swPhkNcy/dE4
+         wsgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JWQZZBku;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22si28537218wrd.292.2019.04.11.08.28.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id n74si4249730qka.105.2019.04.11.08.31.48;
+        Thu, 11 Apr 2019 08:31:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JWQZZBku;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:50731 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEbdH-0000I3-R5
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 11:28:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48420)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hEba4-0005p2-UN
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:38 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hEba3-0006pj-0u
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:36 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:35345)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hEba1-0006mC-6D
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:33 -0400
-Received: by mail-ot1-x344.google.com with SMTP id m10so5606986otp.2
-	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 08:25:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
-	b=JWQZZBkugTnSTbu+PoWD1Um+gOfCx+MrUkAVsho2ePCNqtKjn5BYoneEONWlp+ztrd
-	kN8QMjGROLiIhTM72Q3TrvGM6X9aAYS+Fz4ojDmFeqWqOA8QUOEoRHA69/RhFTmPBaVo
-	4XTmhh9sJr2oGikGReQa7GGx8rnQsWXucRXSvT6X4wXVRSw54IeiSDPekGSzYf0rO1Gt
-	DAPdtK16EEfs35yYAPS2EX1cZi+OJ6rmVBsrokUbsN+m4WJ8LNEEqU4yJwEA7qFg5a4w
-	ikQMPeG50Ctq9VtjuMb/lH2IuI254dWVNanxj+jKHztD6MZc9+zySmbH0PHyX2u1Nqtf
-	TBoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
-	b=a8q6ba9ZwnFBiHSchlgO+Jf289iKvw6PGBjrpVvyAGKUTitsRT/xMmbAD/XQYy5CCp
-	ZAjHFyewTHALqE1FrcibKEEc8II9xOecuTee9wGesu6/4OuaW9QepudgAENjXVn4Dnc7
-	k/Tc7+2r6YS16BLJdmK2IXLbJNmEUfvMTV86HJIYL1DIR/a2FCUUq173N9beDENskGsD
-	/L6orvadSkZQRbMh6nC0ua3k7wwze9m724k2l9DbbSM4VHOoJA/NoBQqANa5/duKAgww
-	XaXMLFk0361lBtp9HjHI/2Ef00BM/RD56PimTjjHPhiEcB/MyAyH/ifThr+rkHBOk8+d
-	dRwQ==
-X-Gm-Message-State: APjAAAWY/jORw6hGBOUncFPFMfnG4O+VnUScI5MDiXnligPBXqi/41pM
-	QPeUeMMgDubn8cpbC6GJnNdSxKim5NsYpfQJzuXOag==
-X-Received: by 2002:a05:6830:1044:: with SMTP id
-	b4mr33959922otp.274.1554996331547; 
-	Thu, 11 Apr 2019 08:25:31 -0700 (PDT)
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 712BA4A48B;
+	Thu, 11 Apr 2019 11:31:48 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.201
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.201 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5] autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id N5Y1MYPlPyn4; Thu, 11 Apr 2019 11:31:45 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 934634A48E;
+	Thu, 11 Apr 2019 11:31:45 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 6280D4A46E
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 11 Apr 2019 11:31:44 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id scSwsWUSNJ4q for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 11 Apr 2019 11:31:42 -0400 (EDT)
+Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com [217.140.101.70])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id AB5244A445
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 11 Apr 2019 11:31:42 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 107F980D;
+ Thu, 11 Apr 2019 08:31:42 -0700 (PDT)
+Received: from [10.1.196.69] (e112269-lin.cambridge.arm.com [10.1.196.69])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EDBE83F68F;
+ Thu, 11 Apr 2019 08:31:40 -0700 (PDT)
+Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
+To: Heyi Guo <guoheyi@huawei.com>, Christoffer Dall <christoffer.dall@arm.com>
+References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
+ <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
+ <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
+ <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+ <20190315085948.GB10950@e113682-lin.lund.arm.com>
+ <ff1db661-13c2-50ff-940e-4a1d71bd0309@huawei.com>
+ <101c5f17-9811-e2d0-ff3c-a0e64beee921@arm.com>
+ <662367df-e702-dd0a-da83-f1b448c5f203@huawei.com>
+ <1a315d48-1657-e50b-97ec-ead9c6c459c2@huawei.com>
+ <0e1f903a-d445-6bef-3dfd-6d9f7f6a5f98@arm.com>
+ <3867fef8-15d9-623c-7bd3-2c673dccf745@huawei.com>
+From: Steven Price <steven.price@arm.com>
+Message-ID: <ef3e617e-aa51-88d8-1e06-450febee43a4@arm.com>
+Date: Thu, 11 Apr 2019 16:31:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190328062222.8409-1-joel@jms.id.au>
-	<20190328062222.8409-2-joel@jms.id.au>
-In-Reply-To: <20190328062222.8409-2-joel@jms.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Apr 2019 16:25:20 +0100
-Message-ID: <CAFEAcA_K1Rv1G-s=ndVYX6i_BvWME6ToShL6ZBpB4gnE3zdZdA@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw: timer: Add ASPEED RTC device
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+In-Reply-To: <3867fef8-15d9-623c-7bd3-2c673dccf745@huawei.com>
+Content-Language: en-GB
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2SMe7brNjZey
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: YLZnyoftGJPV
 
-On Thu, 28 Mar 2019 at 06:22, Joel Stanley <joel@jms.id.au> wrote:
->
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  hw/timer/Makefile.objs        |   2 +-
->  hw/timer/aspeed_rtc.c         | 157 ++++++++++++++++++++++++++++++++++
->  hw/timer/trace-events         |   4 +
->  include/hw/timer/aspeed_rtc.h |  31 +++++++
->  4 files changed, 193 insertions(+), 1 deletion(-)
->  create mode 100644 hw/timer/aspeed_rtc.c
->  create mode 100644 include/hw/timer/aspeed_rtc.h
->
-> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index 0e9a4530f848..123d92c9692c 100644
-> --- a/hw/timer/Makefile.objs
-> +++ b/hw/timer/Makefile.objs
-> @@ -41,7 +41,7 @@ obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
->  obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
->
->  common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
-> -common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o
-> +common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
->
->  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
->  common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
-> diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
-> new file mode 100644
-> index 000000000000..daccf00eccdc
-> --- /dev/null
-> +++ b/hw/timer/aspeed_rtc.c
-> @@ -0,0 +1,157 @@
-> +/*
-> + * ASPEED Real Time Clock
-> + * Joel Stanley <joel@jms.id.au>
-> + *
-> + * Copyright 2019 IBM Corp
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu-common.h"
-> +#include "hw/timer/aspeed_rtc.h"
-> +#include "qemu/log.h"
-> +#include "qemu/timer.h"
-> +
-> +#include "trace.h"
-> +
-> +#define COUNTER1        (0x00 / 4)
-> +#define COUNTER2        (0x04 / 4)
-> +#define ALARM           (0x08 / 4)
-> +#define CONTROL         (0x10 / 4)
-> +#define ALARM_STATUS    (0x14 / 4)
-
-Not mandatory, but you might like the REG32() macro in
-hw/registerfields.h which defines A_FOO and R_FOO
-constants for you for the addresses and the indexes.
-
-> +
-> +#define RTC_UNLOCKED    BIT(1)
-> +#define RTC_ENABLED     BIT(0)
-> +
-> +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-> +{
-> +    struct tm tm;
-> +    uint32_t year, cent;
-> +    uint32_t reg1 =3D rtc->reg[COUNTER1];
-> +    uint32_t reg2 =3D rtc->reg[COUNTER2];
-> +
-> +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
-> +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
-> +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
-> +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
-
-Shift by zero ?
-
-Consider using extract32() rather than by-hand shift and mask.
-
-> +
-> +    cent =3D (reg2 >> 16) & 0x1f;
-> +    year =3D (reg2 >> 8) & 0x7f;
-> +    tm.tm_mon =3D ((reg2 >>  0) & 0x0f) - 1;
-> +    tm.tm_year =3D year + (cent * 100) - 1900;
-> +
-> +    rtc->offset =3D qemu_timedate_diff(&tm);
-> +}
-> +
-> +static uint32_t aspeed_rtc_get_counter(AspeedRtcState *rtc, int r)
-> +{
-> +    uint32_t year, cent;
-> +    struct tm now;
-> +
-> +    qemu_get_timedate(&now, rtc->offset);
-> +
-> +    switch (r) {
-> +    case COUNTER1:
-> +        return (now.tm_mday << 24) | (now.tm_hour << 16) |
-> +            (now.tm_min << 8) | now.tm_sec;
-> +    case COUNTER2:
-> +        cent =3D (now.tm_year + 1900) / 100;
-> +        year =3D now.tm_year % 100;
-> +        return ((cent & 0x1f) << 16) | ((year & 0x7f) << 8) |
-> +            ((now.tm_mon + 1) & 0xf);
-> +    default:
-> +        abort();
-
-More usually written g_assert_not_reached().
-
-> +    }
-> +}
-> +
-> +static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
-> +                                unsigned size)
-> +{
-> +    AspeedRtcState *rtc =3D opaque;
-> +    uint64_t val;
-> +    uint32_t r =3D addr >> 2;
-> +
-> +    switch (r) {
-> +    case COUNTER1:
-> +    case COUNTER2:
-> +        if (rtc->reg[CONTROL] & RTC_ENABLED) {
-> +            rtc->reg[r] =3D aspeed_rtc_get_counter(rtc, r);
-> +        }
-
-If this is deliberately going to fall through to the next
-case then it should have a /* fall through */ comment
-(ditto in the write fn).
-
-> +    case ALARM:
-> +    case CONTROL:
-> +    case ALARM_STATUS:
-> +        val =3D rtc->reg[r];
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, a=
-ddr);
-> +        return 0;
-> +    }
-> +
-> +    trace_aspeed_rtc_read(addr, val);
-> +
-> +    return val;
-> +}
-
-> +static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> +
-> +    dc->realize =3D aspeed_rtc_realize;
-
-This is missing a reset function and vmstate.
-
-thanks
--- PMM
+T24gMTEvMDQvMjAxOSAwODoyNywgSGV5aSBHdW8gd3JvdGU6Cj4gSGkgU3RldmUsCj4gCj4gQWZ0
+ZXIgcmVhZGluZyBrZXJuZWwgY29kZSBhYm91dCB0aW1lIGtlZXBpbmcgYW5kIHNvbWV0aGluZyBy
+ZWxhdGVkLCBJJ3ZlCj4gbm90IGdvdCBhIGNsZWFyIHBpY3R1cmUgb2YgaG93IHdlIGNhbiB1c2Ug
+TVNSX0tWTV9XQUxMX0NMT0NLX05FVyB0byBrZWVwCj4gd2FsbCBjbG9jayBpbiBndWVzdCBWTS4K
+PiAKPiAxLiBPbiBYODYsIE1TUl9LVk1fV0FMTF9DTE9DS19ORVcgaXMgb25seSB1c2VkIGJ5IHRo
+ZSBjYWxsYmFjayBvZiBzeXN0ZW0KPiBzdXNwZW5kIGFuZCByZXN1bWU7IEkgZGlkbid0IGZpbmQg
+aXQgdXNlZCBmb3IgcnVudGltZSB3YWxsIGNsb2NrIHJlYWRpbmcuCgpUaGUgTVNSIGlzIG9ubHkg
+dG8gcHJvdmlkZSBhbiBvZmZzZXQgZnJvbSB0aGUgZ3Vlc3QncyB2aWV3IG9mIHN5c3RlbQp0aW1l
+IHRvIHRoZSBhY3R1YWwgd2FsbC1jbG9jayB0aW1lLiBMaWtlIHlvdSBtZW50aW9uIGl0J3MgdXNl
+ZCBvbiByZXN1bWUKdG8gcmVzeW5jaHJvbmlzZSB3aXRoIHdhbGwtY2xvY2sgdGltZS4KCkxvb2tp
+bmcgYXQgdGhpcyBtb3JlIGNhcmVmdWxseSwgSSB0aGluayBJIG1heSBoYXZlIGdvdCBhIGJpdCBj
+b25mdXNlZAp3aXRoIGhvdyB0aGlzIHdvcmtzIG9uIHg4Ni4gQXMgeW91IHNheSBNU1JfS1ZNX1dB
+TExfQ0xPQ0tfTkVXIGlzIG9ubHkKdXNlZCBvbiBib290IChhbmQgc3VzcGVuZC9yZXN1bWUpIHRv
+IHByb3ZpZGUgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUKVFNDIGFuZCB3YWxsLWNsb2NrLgoK
+TVNSX0tWTV9TWVNURU1fVElNRV9ORVcgc2VlbXMgdG8gYmUgdGhlIE1TUiB0aGF0IHByb3ZpZGVz
+IHRoZSBvZmZzZXQKYmV0d2VlbiB0aGUgaG9zdCdzIFRTQyBhbmQgdGhlIGd1ZXN0J3MgdmlldyBv
+ZiB0aW1lLiBJbiBwYXJ0aWN1bGFyIHRoZQpLVk0gcmVxdWVzdCBLVk1fUkVRX0NMT0NLX1VQREFU
+RSBjYXVzZXMgdGhpcyB0byBiZSB1cGRhdGVkLgoKVGhlcmUncyBhIGxvdCBvZiBjb2RlIGluIHRo
+ZXJlIHRvIGRlYWwgd2l0aCBlLmcuIHRoZSBob3N0J3MgVFNDIGdvaW5nCmJhY2t3YXJkcyAoZHVl
+IHRvIGJ1Z2d5IGhhcmR3YXJlLCBidXQgYWxzbyBkdWUgdG8gc3VzcGVuZC9oaWJlcm5hdGUpLgoK
+PiAyLiBUbyB1c2UgdGhlIE1TUiBmb3Igd2FsbCBjbG9jayBzeW5jaHJvbml6YXRpb24sIHNoYWxs
+IHdlIHJlZ2lzdGVyIEtWTQo+IFBWLWNsb2NrIGFzIGEgaGlnaGVyIHJhdGluZyBjbG9jayBzb3Vy
+Y2UsIHNvIHRoYXQgaXQgd2lsbCBiZSBib3VuZCB0bwo+IHRrX2NvcmUudGltZWtlZXBlciBhbmQg
+YmUgcmVhZCBhdCBlYWNoIHRpbWUgb2YgcnVubmluZwo+IHVwZGF0ZV93YWxsX3RpbWUoKSBpbiBl
+YWNoIHRpbWVyIHRpY2s/Cj4KPiAzLiBJZiB0aGUgYWJvdmUgaXMgdHJ1ZSwgaG93IGNhbiB3ZSBr
+ZWVwIHRoZSBwYXJhdmlydHVhbGl6ZWQgd2FsbCBjbG9jawo+IGFsd2F5cyB1cGRhdGVkPyBJcyBp
+dCBhbHdheXMgdHJhcHBlZCB0byB0aGUgaHlwZXJ2aXNvcj8gSSdtIGFmcmFpZCB0aGlzCj4gbWF5
+IGNhdXNlIHBlcmZvcm1hbmNlIGxvc3MuIElmIHRoZXJlIGlzIG5vIHRyYXAgYW5kIHRoZSBkYXRh
+IGlzIHVwZGF0ZWQKPiBieSB0aGUgaHlwZXJ2aXNvciBwZXJpb2RpY2FsbHksIGhvdyBjYW4gd2Ug
+Z3VhcmFudGVlIHRoZSBhY2N1cmFjeT8KCldlIG9idmlvdXNseSBkb24ndCB3YW50IHRvIGJlIG1h
+a2luZyBmcmVxdWVudCBoeXBlcmNhbGxzIChvciBvdGhlcgp0cmFwcykgLSBzbyB0aGUgaWRlYSBp
+cyB0byBwcm92aWRlIHRoZSBndWVzdCB3aXRoIGEgc3RydWN0dXJlIHdoaWNoIGlzCnVwZGF0ZWQg
+d2hlbiB0aGUgaG9zdCBpcyBhd2FyZSBzb21ldGhpbmcgaGFzIGNoYW5nZWQuIFRoZSBndWVzdCB0
+aGVuCnJlYWRzIHRoaXMgc3RydWN0dXJlICh1c2luZyBhIHZlcnNpb24gZmllbGQgdG8gYXZvaWQg
+cmFjZXMgd2l0aCB0aGUKaG9zdCkgYW5kIHVzZXMgaXQgY29tcHV0ZSBpdCdzIG93biB2ZXJzaW9u
+IG9mIHRpbWUuCgo+IE1lYW53aGlsZSBpdCBzZWVtcyBlYXNpZXIgdG8gdXNlIEtWTV9LVk1DTE9D
+S19DVFJMIHRvIGdldCByaWQgb2YgZmFsc2UKPiBwb3NpdGl2ZSBzb2Z0IGxvY2sgcGFuaWMsIGFu
+ZCBndWVzdCBjYW4gcmVseSBvbiBjbnR2Y3QgZm9yIHdhbGwgY2xvY2sKPiB1cGRhdGluZyBhcyBp
+dCBkb2VzIG5vdywgYW5kIGl0IHNlZW1zIG5vdCBkaWZmaWN1bHQgZm9yIHRoZSBoeXBlcnZpc29y
+Cj4gdG8ga2VlcCBjbnR2Y3QgImFsd2F5cyBvbiIgYW5kICJtb25vdG9uaWMiLgo+IAo+IFBsZWFz
+ZSBsZXQgbWUga25vdyBpZiBJIG1pc3Mgc29tZXRoaW5nLgoKWWVzIEknbSBjb21pbmcgYXJvdW5k
+IHRvIHRoYXQgd2F5IG9mIHRoaW5raW5nIC0gYXMgbG9uZyBhcyB0aGUKaHlwZXJ2aXNvciBwcm92
+aWRlcyB0aGUgImFsd2F5cyBvbiIvIm1vbm90b25pYyIgcHJvcGVydGllcyB0aGVuIHJlYWxseQp0
+aGUgb25seSBtaXNzaW5nIGJpdCBpcyBpbmZvcm1pbmcgdGhlIGd1ZXN0IHdoZW4gaXQgd2FzIHBh
+dXNlZCBzbyBpdCBjYW4KImRvIHRoZSByaWdodCB0aGluZyIuIFRoaXMgZG9lcyBhcHBlYXIgdG8g
+YmUgd2hhdCB0aGUgeDg2IGNvZGUgaXMgZG9pbmcsCmJ1dCBJIGhhdmUgdG8gYWRtaXQgSSBzdHJ1
+Z2dsZSB0byBmdWxseSB1bmRlcnN0YW5kIGl0LgoKU3RldmUKCj4gVGhhbmtzLAo+IEhleWkKPiAK
+PiBPbiAyMDE5LzMvMjcgMToxMiwgU3RldmVuIFByaWNlIHdyb3RlOgo+PiBIaSBIZXlpLAo+Pgo+
+PiBPbiAyNi8wMy8yMDE5IDEzOjUzLCBIZXlpIEd1byB3cm90ZToKPj4+IEkgYWxzbyB0ZXN0ZWQg
+c2F2ZS9yZXN0b3JlIG9wZXJhdGlvbnMsIGFuZCBvYnNlcnZlZCB0aGF0IGNsb2NrIGluIGd1ZXN0
+Cj4+PiB3b3VsZCBub3QganVtcCBhZnRlciByZXN0b3JpbmcgZWl0aGVyLiBJZiB3ZSBjb25zaWRl
+ciBndWVzdCBjbG9jayBub3QKPj4+IGJlaW5nIHN5bmNocm9uaXplZCB3aXRoIHJlYWwgd2FsbCBj
+bG9jayBhcyBhbiBpc3N1ZSwgZG9lcyBpdCBtZWFuCj4+PiBzYXZlL3Jlc3RvcmUgZnVuY3Rpb24g
+aGFzIHRoZSBzYW1lIGlzc3VlPwo+PiBCYXNpY2FsbHkgYXQgdGhlIG1vbWVudCB3aGVuIHRoZSBn
+dWVzdCBpc24ndCBydW5uaW5nIHlvdSBoYXZlIGEgY2hvaWNlCj4+IG9mIHR3byBiZWhhdmlvdXJz
+Ogo+Pgo+PiDCoCAxLiBTdG9wIChpLmUuIHNhdmUvcmVzdG9yZSkgQ05UVkNUIC0gdGhpcyBtZWFu
+cyB0aGF0IHRoZSBndWVzdCBzZWVzIG5vCj4+IHRpbWUgb2NjdXIuIElmIHRoZSBndWVzdCBuZWVk
+cyB0byBoYXZlIGEgY29uY2VwdCBvZiB3YWxsLWNsb2NrIHRpbWUKPj4gKGUuZy4gaXQgY29tbXVu
+aWNhdGVzIHdpdGggb3RoZXIgc3lzdGVtcyBvdmVyIGEgbmV0d29yaykgdGhlbiB0aGlzIGNhbgo+
+PiBjYXVzZSBwcm9ibGVtcyAoZS5nLiB0aW1lb3V0cyBtaWdodCBiZSB3cm9uZywgY2VydGlmaWNh
+dGVzIG1pZ2h0IHN0YXJ0Cj4+IGFwcGVhcmluZyB0byBiZSBpbiB0aGUgZnV0dXJlIGV0YykuCj4+
+Cj4+IMKgIDIuIExlYXZlIENOVFZDVCBydW5uaW5nIC0gdGhlIGd1ZXN0IHNlZXMgdGhlIHRpbWUg
+cGFzcyBidXQgaW50ZXJwcmV0cwo+PiB0aGUgdkNQVXMgYXMgZWZmZWN0aXZlbHkgaGF2aW5nIGxv
+Y2tlZCB1cC4gTGludXggd2lsbCB0cmlnZ2VyIHRoZSBzb2Z0Cj4+IGxvY2t1cCB3YXJuaW5nLgo+
+Pgo+PiBUaGVyZSBhcmUgdHdvIHdheXMgb2Ygc29sdmluZyB0aGlzLCB3aGljaCBtYXRjaCB0aGUg
+dHdvIGJlaGF2aW91cnMgYWJvdmU6Cj4+Cj4+IMKgIDEuIFByb3ZpZGUgdGhlIGd1ZXN0IHdpdGgg
+YSB2aWV3IG9mIHdhbGwtY2xvY2sgdGltZS4gVGhlIG9idmlvdXMgd2F5IG9mCj4+IGRvaW5nIHRo
+aXMgaXMgd2l0aCBhIHB2Y2xvY2sgaW1wbGVtZW50YXRpb24gbGlrZSBNU1JfS1ZNX1dBTExfQ0xP
+Q0tfTkVXCj4+IGZvciB4ODYuCj4+Cj4+IMKgIDIuIEluZm9ybSB0aGUgZ3Vlc3QgdG8gaWdub3Jl
+IHRoZSBhcHBhcmVudCAic29mdC1sb2NrdXAiLiBUaGVyZSdzCj4+IGFscmVhZHkgYW4gaW9jdGwg
+Zm9yIHg4NiBmb3IgdGhpczogS1ZNX0tWTUNMT0NLX0NUUkwKPj4KPj4gTXkgcHJlZmVyZW5jZSBp
+cyBmb3Igb3B0aW9uIDEgLSBhcyB0aGlzIGdpdmVzIHRoZSBndWVzdCBhIGdvb2QgdmlldyBvZgo+
+PiBib3RoIHRoZSB0aW1lIHRoYXQgaXQgaXMgYWN0dWFsbHkgZXhlY3V0aW5nICh1c2VmdWwgZm9y
+IGludGVybmFsCj4+IHdhdGNoZG9nIHRpbWVycyBsaWtlIHRoZSBzb2Z0LWxvY2t1cCBvbmUgaW4g
+TGludXgpIGFuZCBtYWludGFpbnMgYSB2aWV3Cj4+IG9mIHdhbGwtY2xvY2sgdGltZSAodXNlZnVs
+IHdoZW4gY29tbXVuaWNhdGluZyB3aXRoIG90aGVyIGV4dGVybmFsCj4+IHNlcnZpY2VzIC0gZS5n
+LiB0aGUgYSBzZXJ2ZXIgb24gdGhlIGludGVybmV0KS4gWW91ciBwYXRjaCB0byBRRU1VCj4+IHBy
+b3ZpZGVzIHRoZSBmaXJzdCBzdGVwIG9mIHRoYXQsIGJ1dCBhcyB5b3UgbWVudGlvbiB0aGVyZSdz
+IG11Y2ggbW9yZQo+PiB0byBkby4KPj4KPj4gT25lIHRoaW5nIEkgaGF2ZW4ndCBpbnZlc3RpZ2F0
+ZWQgaW4gZ3JlYXQgZGV0YWlsIGlzIGhvdyBLVk0gaGFuZGxlcyB0aGUKPj4gdGltZXIgZHVyaW5n
+IHZhcmlvdXMgZm9ybXMgb2Ygc3VzcGVuZC4gSW4gcGFydGljdWxhciBmb3Igc3VzcGVuZCB0eXBl
+cwo+PiBsaWtlIGZ1bGwgaGliZXJuYXRpb24gdGhlIGhvc3QncyBwaHlzaWNhbCBjb3VudGVyIHdp
+bGwganVtcCAocXVpdGUKPj4gcG9zc2libHkgYmFja3dhcmRzKSAtIEkgaGF2ZW4ndCBsb29rZWQg
+aW4gZGV0YWlsIGhvdyBLVk0gcHJlc2VudHMgdGhpcwo+PiB0byB0aGUgZ3Vlc3QuIEhvcGVmdWxs
+eSBub3QgYnkgbWFraW5nIGl0IGdvIGJhY2t3YXJkcyEKPj4KPj4gSSdtIG5vdCBzdXJlIGhvdyBt
+dWNoIHRpbWUgSSdtIGdvaW5nIHRvIGhhdmUgdG8gbG9vayBhdCB0aGlzIGluIHRoZSBuZWFyCj4+
+IGZ1dHVyZSwgYnV0IHBsZWFzZSBrZWVwIG1lIGluIHRoZSBsb29wIGlmIHlvdSBkZWNpZGUgdG8g
+dGFja2xlIGFueSBvZgo+PiB0aGlzLgo+Pgo+PiBUaGFua3MsCj4+Cj4+IFN0ZXZlCj4+Cj4+IC4K
+Pj4KPiAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+Xwo+IGt2bWFybSBtYWlsaW5nIGxpc3QKPiBrdm1hcm1AbGlzdHMuY3MuY29sdW1iaWEuZWR1Cj4g
+aHR0cHM6Ly9saXN0cy5jcy5jb2x1bWJpYS5lZHUvbWFpbG1hbi9saXN0aW5mby9rdm1hcm0KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmt2bWFybSBtYWls
+aW5nIGxpc3QKa3ZtYXJtQGxpc3RzLmNzLmNvbHVtYmlhLmVkdQpodHRwczovL2xpc3RzLmNzLmNv
+bHVtYmlhLmVkdS9tYWlsbWFuL2xpc3RpbmZvL2t2bWFybQo=

@@ -1,103 +1,101 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7390805wrx;
-        Thu, 11 Apr 2019 09:37:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzd6lrmF06HqEl9eLOvoBJEqKAAdSleEhst5/9Qs0u4WtRO73oi1NbybvHisyTNvdIfxquI
-X-Received: by 2002:adf:e790:: with SMTP id n16mr21229264wrm.292.1555000643523;
-        Thu, 11 Apr 2019 09:37:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555000643; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7397591wrx;
+        Thu, 11 Apr 2019 09:43:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwE7dUmAIsUCxe15rhacJPGoQeCOECV8jNkDXOnXvEnKOd8snYCtIgBQT4EueN5IbZhcnK9
+X-Received: by 2002:adf:fc51:: with SMTP id e17mr32993877wrs.243.1555001016534;
+        Thu, 11 Apr 2019 09:43:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555001016; cv=none;
         d=google.com; s=arc-20160816;
-        b=03uhgKmX+PcGOEa5ZhWrkJOY5g71gt3YCc0pHr0j1Yqe0I8qGvuUx94lWSn/2x2WeX
-         9zhksmd9k/jVOdUttuGQpVQw6EoqUfFJccrHPNDMTeKlId5t1E0/pmyLK0F257B0lnmM
-         l7NUAIaQZpC7+jKKKS6ghT8uABzVxlzRWNYt5tg5aR2ZDyZb6flLeVt4bCDj8zxaeimw
-         jH9ZiaWCKU7O17xPeH9KzvfPw2NCwFkW92MxpH+8NMNd0QJt3v/+4uoTFzp2gWmtgrtZ
-         TbocZMhEDb9B5twGa6egHrwE5eOBOZ+YZ560q2srQPRjFcywsjCPLBZZy8J0KAsmlR4z
-         zZSQ==
+        b=aobZqT8ZgtsYAdDhfkvbCvWh+nD/lRBV9M3Q+kG1N4uUhzz0FjQblmq8hgVdgKH1KS
+         mBzlB8JtbcxbvkYG+PeULgme/s7Hr31D4Jp92FYbVQwqnPdNR0XzO9PTFgfV7Nqw7QEe
+         U/0SVCpe1DNxFPorrQ942QuLejd7f2vnlGUzk9/5UzFG4+yx7Zc5+Go6D+1v20MHbF2S
+         bi9RjoC1Hc7HMzEyHJShp6aRkP/SllGyCuikrz4REvN0L/H5/qT49ehaKU/BKUyRaeSz
+         ibF8q9kEZW/WlNb2IuhabA3aq1jL2AaH/hDhN+sUOWhLdlI1RDMOfi0Og7gu5Nj56q54
+         j5pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=ZyFLoI1++MpFhBnNON30ujRs74ugrOO4tJ0VvCZj2ik=;
-        b=1HeFWdst8LouPZxWWl8wfgoUnt34EHTQxjnTbT8R+SUZ20zJt5TsF/hbXV/C8iT5EE
-         NSSt7pTZ8PuSN39XhsmyNkuFK7+G/DG2XSDJNO5BSo0F2b8pyDl6ZqR/ipnbn7wCsu7/
-         qdlnfxC1+pEQvHErOk/ISwLQf0DYs5GCXb/YN6FB78gmSpTpFIUboYyztEg8FVVFGAfV
-         qa6mLuHAMxVmEqakRx3FmkThAQyfjN5EMNNrGWb1OiPCID+9kemSMVxCblEwaTT2Snxy
-         fjvapAe8bl0XcEjzU+srSQIIJ+H5fQ3Id3L3UGNbzI48OAT9hT15C/mUik0aS2mN/GCJ
-         +URQ==
+        bh=2laifWmDG8wtfQGmiPgcbmVfoh9P8BHuu7H59xLapLw=;
+        b=JrthNVnAY1yai9G30Ib9qN4aUBDHFLvBRQywcN6LME6A+znbqfxedin69nb/CpBKTD
+         QeGcy8JEOUObh0Uo+13j3UG6jyO7Y6ySU18R2rjGHM6MGUSdlG6re82d+IS9XK8GpCp3
+         G6IIsEreqG6e87Q4ETpkFf/KaDRjJK3DC/Xdsmidew57RporWS/JUVU0/qI1Ti7MwtNz
+         M4qVqvHzi/n4DZqa38MDexmfiTRaumliscYv6zdpR2n9RG0SFjgNhBeFmM9QUcHltZUB
+         e2FNh8olMQPxk/CcZrpB9fI7ilX6XjearrtPfk5esinxqxZpzXZwBFXiaWjfDs87e8Nu
+         e7Ug==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v12si24968791wrt.374.2019.04.11.09.37.23
+        by mx.google.com with ESMTPS id s1si25155881wrr.158.2019.04.11.09.43.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 09:37:23 -0700 (PDT)
+        Thu, 11 Apr 2019 09:43:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51987 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:52056 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEchW-0005UY-Hp
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 12:37:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39188)
+	id 1hEcnX-000829-JL
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 12:43:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40387)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEchH-0005TX-Vw
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:37:10 -0400
+	(envelope-from <philmd@redhat.com>) id 1hEcnO-000804-3P
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:43:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEchG-0008SU-P6
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:37:07 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:33515)
+	(envelope-from <philmd@redhat.com>) id 1hEcnM-0003Y0-0g
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:43:25 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:54811)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hEchG-0008Rh-Gx
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:37:06 -0400
-Received: by mail-wr1-f67.google.com with SMTP id q1so8262254wrp.0
-	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 09:37:05 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hEcnK-0003Wa-0G
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 12:43:23 -0400
+Received: by mail-wm1-f66.google.com with SMTP id c1so7558168wml.4
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 09:43:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ZyFLoI1++MpFhBnNON30ujRs74ugrOO4tJ0VvCZj2ik=;
-	b=iw8aIbnXKv4YLlyCFEjunKDg8o9tmeOjvvta94ptLuzFsXCnb/vlqQQJwWCPmRNYAY
-	xeL/F+Q9BDNMhDfYO8g9qfHPRfUD2WJS1/PnlpRDK5Z0bf8EbgdnGJmua4bW3DQx4FyM
-	0NItghRumYVaBxapphpcYF6nNcgWEbtPzJiDZurNBKZ2Hs4TPqBV9RmU0+CZI5X7MTSx
-	sgXqh1YNqbMEU0y/2o1QpgSoGycsrfT0dM96nMZ4gbrzWJFP7uvwl5nXkSr9si/PIRWP
-	yuVyHmvAdJ7N2sXrRKGHN8MD+82fXdJTYCy1EbxbMphIJyWAXwgiyz0tMXXYLJQKLPkJ
-	Tueg==
-X-Gm-Message-State: APjAAAUOaZJiuYde+pyxK6S4mnabYgb1W7GRzmM+v+8tgvMiRT10jwkE
-	7SD/3f0MW3JR7+KSosJ8iGR71A==
-X-Received: by 2002:adf:f088:: with SMTP id n8mr33123113wro.112.1555000624992; 
-	Thu, 11 Apr 2019 09:37:04 -0700 (PDT)
+	bh=2laifWmDG8wtfQGmiPgcbmVfoh9P8BHuu7H59xLapLw=;
+	b=gMpRJQDR2eT252ahnDGlxLkZ0YuEIk+YthIoQVqhAi8b5rksMAkkEf15sVgsKmP2k1
+	oNZbdd3L8V4b/cfNegQh4V+/amQGFpEs0uJGsm0iyLa0S/KkjAxz1KR0RMYw0WO3d7QY
+	2wJ0yaU2y6VSOXIn3Aa0IvC8daREPeU6N0I3YxBhydLaGlgJ1cRDpFfJicSWn7da60DO
+	FicZIWxA/8bTb1KJvI+AcqJzxZwYttoqvtv2O2EB4Pd5gJGbDuKMvuuVNyndUSpsOkp2
+	qIfbZaMngF86vysR6sKmCd/4/OI8OAWGFWB7Yf9zttadootxeJ1apN4ynYYj8feNt2Bx
+	IryQ==
+X-Gm-Message-State: APjAAAWHLcavcDSqDqKs7GLDD2bp+y+gM+X0tv0LFlh8iIUxJA1Yxtx8
+	mcE3s6oNYLHc79jCAqbmQj3dLw==
+X-Received: by 2002:a1c:eb18:: with SMTP id j24mr7326501wmh.32.1555000999571; 
+	Thu, 11 Apr 2019 09:43:19 -0700 (PDT)
 Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
 	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	f15sm49672122wru.21.2019.04.11.09.37.03
+	s1sm30479352wrt.43.2019.04.11.09.43.18
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Apr 2019 09:37:04 -0700 (PDT)
+	Thu, 11 Apr 2019 09:43:18 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
-References: <20190328062222.8409-1-joel@jms.id.au>
-	<20190328062222.8409-2-joel@jms.id.au>
-	<CAFEAcA_K1Rv1G-s=ndVYX6i_BvWME6ToShL6ZBpB4gnE3zdZdA@mail.gmail.com>
-	<89438392-9a54-7f43-5dff-6ceeffaf9f3e@kaod.org>
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20190411161013.4514-1-clg@kaod.org>
+	<20190411161013.4514-2-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <8d05734c-2744-290f-0dbc-95f9c2502f21@redhat.com>
-Date: Thu, 11 Apr 2019 18:36:58 +0200
+Message-ID: <0b244f3c-e941-cb2f-f830-1f60badb8bd1@redhat.com>
+Date: Thu, 11 Apr 2019 18:43:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <89438392-9a54-7f43-5dff-6ceeffaf9f3e@kaod.org>
+In-Reply-To: <20190411161013.4514-2-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] hw: timer: Add ASPEED RTC
- device
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/3] aspeed: add a per SoC
+ mapping for the interrupt space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,183 +107,219 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UkzKsFc+Y/8z
+X-TUID: UMYlqrgiRbKJ
 
-Hi Peter,
+Hi Cédric,
 
-On 4/11/19 5:30 PM, Cédric Le Goater wrote:
-> On 4/11/19 5:25 PM, Peter Maydell wrote:
->> On Thu, 28 Mar 2019 at 06:22, Joel Stanley <joel@jms.id.au> wrote:
->>>
->>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>> ---
->>>  hw/timer/Makefile.objs        |   2 +-
->>>  hw/timer/aspeed_rtc.c         | 157 ++++++++++++++++++++++++++++++++++
->>>  hw/timer/trace-events         |   4 +
->>>  include/hw/timer/aspeed_rtc.h |  31 +++++++
->>>  4 files changed, 193 insertions(+), 1 deletion(-)
->>>  create mode 100644 hw/timer/aspeed_rtc.c
->>>  create mode 100644 include/hw/timer/aspeed_rtc.h
->>>
->>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
->>> index 0e9a4530f848..123d92c9692c 100644
->>> --- a/hw/timer/Makefile.objs
->>> +++ b/hw/timer/Makefile.objs
->>> @@ -41,7 +41,7 @@ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
->>>  obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->>>
->>>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
->>> -common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
->>> +common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
->>>
->>>  common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
->>>  common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
->>> diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
->>> new file mode 100644
->>> index 000000000000..daccf00eccdc
->>> --- /dev/null
->>> +++ b/hw/timer/aspeed_rtc.c
->>> @@ -0,0 +1,157 @@
->>> +/*
->>> + * ASPEED Real Time Clock
->>> + * Joel Stanley <joel@jms.id.au>
->>> + *
->>> + * Copyright 2019 IBM Corp
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "qemu-common.h"
->>> +#include "hw/timer/aspeed_rtc.h"
->>> +#include "qemu/log.h"
->>> +#include "qemu/timer.h"
->>> +
->>> +#include "trace.h"
->>> +
->>> +#define COUNTER1        (0x00 / 4)
->>> +#define COUNTER2        (0x04 / 4)
->>> +#define ALARM           (0x08 / 4)
->>> +#define CONTROL         (0x10 / 4)
->>> +#define ALARM_STATUS    (0x14 / 4)
->>
->> Not mandatory, but you might like the REG32() macro in
->> hw/registerfields.h which defines A_FOO and R_FOO
->> constants for you for the addresses and the indexes.
+On 4/11/19 6:10 PM, Cédric Le Goater wrote:
+> This will simplify the definition of new SoCs, like the AST2600 which
+> should use a different CPU and a different IRQ number layout.
 > 
-> Yes. May be we should start using these macros in all our models.
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>  include/hw/arm/aspeed_soc.h |  1 +
+>  hw/arm/aspeed_soc.c         | 93 +++++++++++++++++++++++++++++++++----
+>  2 files changed, 86 insertions(+), 8 deletions(-)
 > 
->>
->>> +
->>> +#define RTC_UNLOCKED    BIT(1)
->>> +#define RTC_ENABLED     BIT(0)
->>> +
->>> +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
->>> +{
->>> +    struct tm tm;
->>> +    uint32_t year, cent;
->>> +    uint32_t reg1 = rtc->reg[COUNTER1];
->>> +    uint32_t reg2 = rtc->reg[COUNTER2];
->>> +
->>> +    tm.tm_mday = (reg1 >> 24) & 0x1f;
->>> +    tm.tm_hour = (reg1 >> 16) & 0x1f;
->>> +    tm.tm_min = (reg1 >> 8) & 0x3f;
->>> +    tm.tm_sec = (reg1 >> 0) & 0x3f;
->>
->> Shift by zero ?
->>
->> Consider using extract32() rather than by-hand shift and mask.
-> 
-> What about the FIELD*() macros in hw/registerfields.h ?
-> 
-> Thanks,
-> 
-> C.
-> 
->>
->>> +
->>> +    cent = (reg2 >> 16) & 0x1f;
->>> +    year = (reg2 >> 8) & 0x7f;
->>> +    tm.tm_mon = ((reg2 >>  0) & 0x0f) - 1;
->>> +    tm.tm_year = year + (cent * 100) - 1900;
->>> +
->>> +    rtc->offset = qemu_timedate_diff(&tm);
->>> +}
->>> +
->>> +static uint32_t aspeed_rtc_get_counter(AspeedRtcState *rtc, int r)
->>> +{
->>> +    uint32_t year, cent;
->>> +    struct tm now;
->>> +
->>> +    qemu_get_timedate(&now, rtc->offset);
->>> +
->>> +    switch (r) {
->>> +    case COUNTER1:
->>> +        return (now.tm_mday << 24) | (now.tm_hour << 16) |
->>> +            (now.tm_min << 8) | now.tm_sec;
->>> +    case COUNTER2:
->>> +        cent = (now.tm_year + 1900) / 100;
->>> +        year = now.tm_year % 100;
->>> +        return ((cent & 0x1f) << 16) | ((year & 0x7f) << 8) |
->>> +            ((now.tm_mon + 1) & 0xf);
->>> +    default:
->>> +        abort();
->>
->> More usually written g_assert_not_reached().
->>
->>> +    }
->>> +}
->>> +
->>> +static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
->>> +                                unsigned size)
->>> +{
->>> +    AspeedRtcState *rtc = opaque;
->>> +    uint64_t val;
->>> +    uint32_t r = addr >> 2;
->>> +
->>> +    switch (r) {
->>> +    case COUNTER1:
->>> +    case COUNTER2:
->>> +        if (rtc->reg[CONTROL] & RTC_ENABLED) {
->>> +            rtc->reg[r] = aspeed_rtc_get_counter(rtc, r);
->>> +        }
->>
->> If this is deliberately going to fall through to the next
->> case then it should have a /* fall through */ comment
->> (ditto in the write fn).
->>
->>> +    case ALARM:
->>> +    case CONTROL:
->>> +    case ALARM_STATUS:
->>> +        val = rtc->reg[r];
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, addr);
->>> +        return 0;
->>> +    }
->>> +
->>> +    trace_aspeed_rtc_read(addr, val);
->>> +
->>> +    return val;
->>> +}
->>
->>> +static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
->>> +{
->>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>> +
->>> +    dc->realize = aspeed_rtc_realize;
->>
->> This is missing a reset function and vmstate.
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 11ec0179db50..b0d266434288 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -57,6 +57,7 @@ typedef struct AspeedSoCInfo {
+>      const char *fmc_typename;
+>      const char **spi_typename;
+>      int wdts_num;
+> +    const int *irqmap;
+>  } AspeedSoCInfo;
+>  
+>  typedef struct AspeedSoCClass {
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index a27233d4876b..5bbd1fb87d18 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -22,6 +22,42 @@
+>  #include "hw/i2c/aspeed_i2c.h"
+>  #include "net/net.h"
+>  
+> +enum {
+> +    ASPEED_IOMEM,
+> +    ASPEED_UART1,
+> +    ASPEED_UART2,
+> +    ASPEED_UART3,
+> +    ASPEED_UART4,
+> +    ASPEED_UART5,
+> +    ASPEED_VUART,
+> +    ASPEED_FMC,
+> +    ASPEED_SPI1,
+> +    ASPEED_SPI2,
+> +    ASPEED_VIC,
+> +    ASPEED_SDMC,
+> +    ASPEED_SCU,
+> +    ASPEED_ADC,
+> +    ASPEED_SRAM,
+> +    ASPEED_GPIO,
+> +    ASPEED_RTC,
+> +    ASPEED_TIMER1,
+> +    ASPEED_TIMER2,
+> +    ASPEED_TIMER3,
+> +    ASPEED_TIMER4,
+> +    ASPEED_TIMER5,
+> +    ASPEED_TIMER6,
+> +    ASPEED_TIMER7,
+> +    ASPEED_TIMER8,
 
-Is vmstate mandatory for new devices?
+You use an enum to define const values. It is recommended to also define
+the value, to avoid problems if someone add/remove a value in the list
+(unlikely, but we never know... imagine someone wants to try this SoC
+with 9 timers and add ASPEED_TIMER9) ;)
 
->>
->> thanks
->> -- PMM
->>
-> 
+> +    ASPEED_WDT,
+> +    ASPEED_PWM,
+> +    ASPEED_LPC,
+> +    ASPEED_IBT,
+> +    ASPEED_I2C,
+> +    ASPEED_ETH1,
+> +    ASPEED_ETH2,
+> +    ASPEED_SDRAM,
+> +};
+> +
+>  #define ASPEED_SOC_UART_5_BASE      0x00184000
+>  #define ASPEED_SOC_IOMEM_SIZE       0x00200000
+>  #define ASPEED_SOC_IOMEM_BASE       0x1E600000
+> @@ -38,12 +74,42 @@
+>  #define ASPEED_SOC_ETH1_BASE        0x1E660000
+>  #define ASPEED_SOC_ETH2_BASE        0x1E680000
+>  
+> -static const int uart_irqs[] = { 9, 32, 33, 34, 10 };
+> -static const int timer_irqs[] = { 16, 17, 18, 35, 36, 37, 38, 39, };
+> +static const int aspeed_soc_ast2400_irqmap[] = {
+> +    [ASPEED_UART1]  = 9,
+> +    [ASPEED_UART2]  = 32,
+> +    [ASPEED_UART3]  = 33,
+> +    [ASPEED_UART4]  = 34,
+> +    [ASPEED_UART5]  = 10,
+> +    [ASPEED_VUART]  = 8,
+> +    [ASPEED_FMC]    = 19,
+> +    [ASPEED_SDMC]   = 0,
+> +    [ASPEED_SCU]    = 21,
+> +    [ASPEED_ADC]    = 31,
+> +    [ASPEED_GPIO]   = 20,
+> +    [ASPEED_RTC]    = 22,
+> +    [ASPEED_TIMER1] = 16,
+> +    [ASPEED_TIMER2] = 17,
+> +    [ASPEED_TIMER3] = 18,
+> +    [ASPEED_TIMER4] = 35,
+> +    [ASPEED_TIMER5] = 36,
+> +    [ASPEED_TIMER6] = 37,
+> +    [ASPEED_TIMER7] = 38,
+> +    [ASPEED_TIMER8] = 39,
+> +    [ASPEED_WDT]    = 27,
+> +    [ASPEED_PWM]    = 28,
+> +    [ASPEED_LPC]    = 8,
+> +    [ASPEED_IBT]    = 8, /* LPC */
+> +    [ASPEED_I2C]    = 12,
+> +    [ASPEED_ETH1]   = 2,
+> +    [ASPEED_ETH2]   = 3,
+> +};
+>  
+>  #define AST2400_SDRAM_BASE       0x40000000
+>  #define AST2500_SDRAM_BASE       0x80000000
+>  
+> +/* AST2500 uses the same IRQs as the AST2400 */
+> +#define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+> +
+>  static const hwaddr aspeed_soc_ast2400_spi_bases[] = { ASPEED_SOC_SPI_BASE };
+>  static const char *aspeed_soc_ast2400_typenames[] = { "aspeed.smc.spi" };
+>  
+> @@ -64,6 +130,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+>          .fmc_typename = "aspeed.smc.fmc",
+>          .spi_typename = aspeed_soc_ast2400_typenames,
+>          .wdts_num     = 2,
+> +        .irqmap       = aspeed_soc_ast2400_irqmap,
+>      }, {
+>          .name         = "ast2400-a1",
+>          .cpu_type     = ARM_CPU_TYPE_NAME("arm926"),
+> @@ -75,6 +142,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+>          .fmc_typename = "aspeed.smc.fmc",
+>          .spi_typename = aspeed_soc_ast2400_typenames,
+>          .wdts_num     = 2,
+> +        .irqmap       = aspeed_soc_ast2400_irqmap,
+>      }, {
+>          .name         = "ast2400",
+>          .cpu_type     = ARM_CPU_TYPE_NAME("arm926"),
+> @@ -86,6 +154,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+>          .fmc_typename = "aspeed.smc.fmc",
+>          .spi_typename = aspeed_soc_ast2400_typenames,
+>          .wdts_num     = 2,
+> +        .irqmap       = aspeed_soc_ast2400_irqmap,
+>      }, {
+>          .name         = "ast2500-a1",
+>          .cpu_type     = ARM_CPU_TYPE_NAME("arm1176"),
+> @@ -97,9 +166,17 @@ static const AspeedSoCInfo aspeed_socs[] = {
+>          .fmc_typename = "aspeed.smc.ast2500-fmc",
+>          .spi_typename = aspeed_soc_ast2500_typenames,
+>          .wdts_num     = 3,
+> +        .irqmap       = aspeed_soc_ast2500_irqmap,
+>      },
+>  };
+>  
+> +static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
+> +{
+> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+> +
+> +    return qdev_get_gpio_in(DEVICE(&s->vic), sc->info->irqmap[ctrl]);
+> +}
+> +
+>  static void aspeed_soc_init(Object *obj)
+>  {
+>      AspeedSoCState *s = ASPEED_SOC(obj);
+> @@ -226,14 +303,14 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, ASPEED_SOC_TIMER_BASE);
+> -    for (i = 0; i < ARRAY_SIZE(timer_irqs); i++) {
+> -        qemu_irq irq = qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs[i]);
+> +    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
+> +        qemu_irq irq = aspeed_soc_get_irq(s, ASPEED_TIMER1 + i);
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
+>      }
+>  
+>      /* UART - attach an 8250 to the IO space as our UART5 */
+>      if (serial_hd(0)) {
+> -        qemu_irq uart5 = qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4]);
+> +        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_UART5);
+>          serial_mm_init(get_system_memory(),
+>                         ASPEED_SOC_IOMEM_BASE + ASPEED_SOC_UART_5_BASE, 2,
+>                         uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+> @@ -247,7 +324,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>      }
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, ASPEED_SOC_I2C_BASE);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->vic), 12));
+> +                       aspeed_soc_get_irq(s, ASPEED_I2C));
+>  
+>      /* FMC, The number of CS is set at the board level */
+>      object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err);
+> @@ -259,7 +336,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
+>                      s->fmc.ctrl->flash_window_base);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->vic), 19));
+> +                       aspeed_soc_get_irq(s, ASPEED_FMC));
+>  
+>      /* SPI */
+>      for (i = 0; i < sc->info->spis_num; i++) {
+> @@ -307,7 +384,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>      }
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1_BASE);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
+> +                       aspeed_soc_get_irq(s, ASPEED_ETH1));
+>  }
+>  
+>  static void aspeed_soc_class_init(ObjectClass *oc, void *data)
 > 

@@ -1,112 +1,181 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5365538wrx;
-        Tue, 9 Apr 2019 17:26:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxnHGsYFOKmDyOvm+fDLxgTtR/1Z8kv2mhf9VQ92ThJcA9GLWJVDGOTH+oQuYk9O8Oqyk1j
-X-Received: by 2002:a1c:988d:: with SMTP id a135mr712924wme.24.1554855993341;
-        Tue, 09 Apr 2019 17:26:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554855993; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp6873617wrx;
+        Thu, 11 Apr 2019 00:27:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzcWK1n5z/ly4gvxDgFVEn6RAUwV8xDt/P7WhOPun/Jt0EL0pK2CJ0I2Hhr/GMHFvZW9216
+X-Received: by 2002:ac8:74d5:: with SMTP id j21mr41453287qtr.232.1554967653246;
+        Thu, 11 Apr 2019 00:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554967653; cv=none;
         d=google.com; s=arc-20160816;
-        b=O5FB+nwc0qds+a81O8ZDdgA/nXGaJ0VUTbdLP1t3zXFb3dQgTHaHrCp45vcq6TobkG
-         dR+WPTICFIhBpExo6bB4rdPrNBG2xVDmLqE8feDcK1spfuF+b4NMmVj2Zxn0SPGFw7Hw
-         BbAv7bFinezsQzZEe3eFStZwWA/PeIHOJVAbHc9BQzZgiJx+C3WpKZkk5zvtANO3Aq2i
-         vITv45KeogNg68SF7Uvnjy8LUvzwvZLuIA88U1N5wUCpN9tadjHfCmy/4pVU1R1VPd7M
-         QJET+aTOaPrBRrwbpjTh1mS7AI7GLKW2eEyuSXidviV84VGC4z49ubplRoH/8B46HIz8
-         GsPQ==
+        b=G/dEIHcJqz6Xn6Buq6ccr+HZFKO18iqSb1C+jxeY6rpTXDmgGr4P+a4ZwxUJCuOs04
+         ajVkOOJ12UbWEj/MS4x9fY96Kou/rAxa+sjZ4eYjmsC+t5QsFdxmYA0vFyndZyQn7j3l
+         1lyWOB+anaH+DM2/r5ELI9w4gptG7X5aARZk1uLFxzHWahWEZRR2sGcfpobCI1K/p7yJ
+         NARSrdCqNkiUy/K3T0TZcFfTmc2341U/urZw/OCqXs+0T6wCClwSgEV+ozcO/3EIIlsU
+         azo4jI1ACpIE5BT/KWHE8ksAkTYVwOO7+N7dsH+GnGLONvy8nKIDmV5o0F+ZKfLRJLR+
+         dP+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=oNqqlDUWp/YRWYWgpR5kZsK0CnXF8MoWTONszy7N1oo=;
-        b=ckjS1GmuwVx8SYsYdZJMZfBjzE8uavarenSuBOiJo0l6yaA/8H7UnbsDoGrCwa9S12
-         4CSKmf9TB11/fRTW4/OSB2iSrssv+uM2sO+Bfr6rNchgO6aMzAB0nvNShxVgqAuVcn5+
-         gim7hOQdCnTpeJAiCKvbpdcWi6o7aaQhA2FpDz64gESSSAJCfN6GhCEzGlSlgvlHfdzl
-         2Ga1WMyYdqY98Jed0+0o2kFrKKiEHENaTg9JHVqwi0DvD4bFNcM9dF7RWS91ieavecsf
-         72DyY0PoyHDGuMXZBALbBlALaIEvt6zISR0qgTQraJtOdAykKms+BL2+YKdouLHt86cf
-         3Z9A==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=yVimAmHsYA7igcNQWJnzRg0TM0nQlm5qcF7xW9kpXNs=;
+        b=sccv1JaTx2W1TEqu/9VXURv0sb4JaBM2HsX/U2Z+W5EK51cSh0yGk+PKbq/b5QXYBN
+         v7uojueJF9bzsTBz5LR17J7jAKWZ3aYkhixEMaj5foF01CUoffvVRp/uspKw9qZy2mPz
+         lK6XHMNyVdpQDqiAIZx1Rf7Lfm88m2uWC1I/naAx6kwdc3q1ij6By91tsLL3OWxFKs/J
+         xDw14SarmEVaJDBr4z1rTqLuutVlbLyB/KfxlYZC9fBF0zQ5bIz+LUCEASa8LXvgi/Fs
+         JeyYWmrp8Gp7+DNNheh85EMA11OpLlHQYlVfg3WIbPPqQswWiTfg5yP0oAuAg/K6aCJc
+         xdrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b15si22110365wrq.75.2019.04.09.17.26.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Apr 2019 17:26:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id m12si106624qtc.102.2019.04.11.00.27.32;
+        Thu, 11 Apr 2019 00:27:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51088 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hE14S-00054U-Fg
-	for alex.bennee@linaro.org; Tue, 09 Apr 2019 20:26:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35219)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1hE14L-00054D-NL
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 20:26:26 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1hE14K-0005RR-7d
-	for qemu-arm@nongnu.org; Tue, 09 Apr 2019 20:26:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47816)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peterx@redhat.com>)
-	id 1hE14I-0005M4-Ak; Tue, 09 Apr 2019 20:26:23 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F041C58E22;
-	Wed, 10 Apr 2019 00:16:47 +0000 (UTC)
-Received: from xz-x1 (ovpn-12-79.pek2.redhat.com [10.72.12.79])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C01A118255;
-	Wed, 10 Apr 2019 00:16:43 +0000 (UTC)
-Date: Wed, 10 Apr 2019 08:16:40 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190410001640.GA25214@xz-x1>
-References: <20190409160219.19026-1-eric.auger@redhat.com>
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 784E64A4BD;
+	Thu, 11 Apr 2019 03:27:32 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wZriCoB3cQnB; Thu, 11 Apr 2019 03:27:31 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 68CF14A477;
+	Thu, 11 Apr 2019 03:27:31 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E642B4A48B
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 11 Apr 2019 03:27:29 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TPpp-POzbsnm for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 11 Apr 2019 03:27:28 -0400 (EDT)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id DE7914A44E
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 11 Apr 2019 03:27:27 -0400 (EDT)
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 4E28ACA5DC07DA2741C5;
+ Thu, 11 Apr 2019 15:27:23 +0800 (CST)
+Received: from [127.0.0.1] (10.177.31.55) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.408.0; Thu, 11 Apr 2019
+ 15:27:17 +0800
+Subject: Re: [RFC] arm/cpu: fix soft lockup panic after resuming from stop
+To: Steven Price <steven.price@arm.com>, Christoffer Dall
+ <christoffer.dall@arm.com>
+References: <1552370960-2061-1-git-send-email-guoheyi@huawei.com>
+ <CAFEAcA-29Q-sTg2wLre0GJJCr2gfu89rg0vuTOf7cW5drE4d7Q@mail.gmail.com>
+ <136f773f-9b08-a39b-3ecb-2c00ff290b49@arm.com>
+ <22f57e8a-bdb0-ffeb-ab78-3e9e41cac66b@arm.com>
+ <20190315085948.GB10950@e113682-lin.lund.arm.com>
+ <ff1db661-13c2-50ff-940e-4a1d71bd0309@huawei.com>
+ <101c5f17-9811-e2d0-ff3c-a0e64beee921@arm.com>
+ <662367df-e702-dd0a-da83-f1b448c5f203@huawei.com>
+ <1a315d48-1657-e50b-97ec-ead9c6c459c2@huawei.com>
+ <0e1f903a-d445-6bef-3dfd-6d9f7f6a5f98@arm.com>
+From: Heyi Guo <guoheyi@huawei.com>
+Message-ID: <3867fef8-15d9-623c-7bd3-2c673dccf745@huawei.com>
+Date: Thu, 11 Apr 2019 15:27:16 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20190409160219.19026-1-eric.auger@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 10 Apr 2019 00:16:48 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/arm/smmuv3: Remove
- SMMUNotifierNode
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+In-Reply-To: <0e1f903a-d445-6bef-3dfd-6d9f7f6a5f98@arm.com>
+X-Originating-IP: [10.177.31.55]
+X-CFilter-Loop: Reflected
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CTxi95CeglpH
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: qvo6YdLGMvMV
 
-On Tue, Apr 09, 2019 at 06:02:19PM +0200, Eric Auger wrote:
-> The SMMUNotifierNode struct is not necessary and brings extra
-> complexity so let's remove it. We now directly track the SMMUDevices
-> which have registered IOMMU MR notifiers.
-> 
-> This is inspired from the same transformation on intel-iommu
-> done in commit b4a4ba0d68f50f218ee3957b6638dbee32a5eeef
-> ("intel-iommu: remove IntelIOMMUNotifierNode")
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Hi Steve,
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+After reading kernel code about time keeping and something related, I've not got a clear picture of how we can use MSR_KVM_WALL_CLOCK_NEW to keep wall clock in guest VM.
 
--- 
-Peter Xu
+1. On X86, MSR_KVM_WALL_CLOCK_NEW is only used by the callback of system suspend and resume; I didn't find it used for runtime wall clock reading.
+2. To use the MSR for wall clock synchronization, shall we register KVM PV-clock as a higher rating clock source, so that it will be bound to tk_core.timekeeper and be read at each time of running update_wall_time() in each timer tick?
+3. If the above is true, how can we keep the paravirtualized wall clock always updated? Is it always trapped to the hypervisor? I'm afraid this may cause performance loss. If there is no trap and the data is updated by the hypervisor periodically, how can we guarantee the accuracy?
+
+Meanwhile it seems easier to use KVM_KVMCLOCK_CTRL to get rid of false positive soft lock panic, and guest can rely on cntvct for wall clock updating as it does now, and it seems not difficult for the hypervisor to keep cntvct "always on" and "monotonic".
+
+Please let me know if I miss something.
+
+Thanks,
+Heyi
+
+On 2019/3/27 1:12, Steven Price wrote:
+> Hi Heyi,
+>
+> On 26/03/2019 13:53, Heyi Guo wrote:
+>> I also tested save/restore operations, and observed that clock in guest
+>> would not jump after restoring either. If we consider guest clock not
+>> being synchronized with real wall clock as an issue, does it mean
+>> save/restore function has the same issue?
+> Basically at the moment when the guest isn't running you have a choice
+> of two behaviours:
+>
+>   1. Stop (i.e. save/restore) CNTVCT - this means that the guest sees no
+> time occur. If the guest needs to have a concept of wall-clock time
+> (e.g. it communicates with other systems over a network) then this can
+> cause problems (e.g. timeouts might be wrong, certificates might start
+> appearing to be in the future etc).
+>
+>   2. Leave CNTVCT running - the guest sees the time pass but interprets
+> the vCPUs as effectively having locked up. Linux will trigger the soft
+> lockup warning.
+>
+> There are two ways of solving this, which match the two behaviours above:
+>
+>   1. Provide the guest with a view of wall-clock time. The obvious way of
+> doing this is with a pvclock implementation like MSR_KVM_WALL_CLOCK_NEW
+> for x86.
+>
+>   2. Inform the guest to ignore the apparent "soft-lockup". There's
+> already an ioctl for x86 for this: KVM_KVMCLOCK_CTRL
+>
+> My preference is for option 1 - as this gives the guest a good view of
+> both the time that it is actually executing (useful for internal
+> watchdog timers like the soft-lockup one in Linux) and maintains a view
+> of wall-clock time (useful when communicating with other external
+> services - e.g. the a server on the internet). Your patch to QEMU
+> provides the first step of that, but as you mention there's much more to do.
+>
+> One thing I haven't investigated in great detail is how KVM handles the
+> timer during various forms of suspend. In particular for suspend types
+> like full hibernation the host's physical counter will jump (quite
+> possibly backwards) - I haven't looked in detail how KVM presents this
+> to the guest. Hopefully not by making it go backwards!
+>
+> I'm not sure how much time I'm going to have to look at this in the near
+> future, but please keep me in the loop if you decide to tackle any of this.
+>
+> Thanks,
+>
+> Steve
+>
+> .
+>
+
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

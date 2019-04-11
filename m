@@ -1,113 +1,121 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7035378wrx;
-        Thu, 11 Apr 2019 03:58:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylf3R3r033FnDNd+UT+t5SdcobWTY0UgCrvzURq8YeACdZO0HG5KpnEXfeeolKHO9ctFkB
-X-Received: by 2002:a5d:684e:: with SMTP id o14mr33210509wrw.138.1554980295841;
-        Thu, 11 Apr 2019 03:58:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554980295; cv=none;
-        d=google.com; s=arc-20160816;
-        b=TuYLUA2tmYMrrh0ccM4wfT+OR4U+E+WRhZIoCjbnRNLedyScpWDe7+7WeVGC8v+bPo
-         ElrdhBo65dHp7Jihlev22QPhriC0TgPVG0STcNkPF9JAV6QfGIGcEvoZLbknnXYY2gtg
-         UDIZja0yyx7uMUhT9ytrYlNm530W9ImZOpb7be80kqYBi3oDKriJ8+KnjfRxT/vKabEs
-         kteKd6MsO/DtXqLiBBBPuNEEiVGs75va+3M0KSxRvFomcEm9rPDHud9KFJrsZXbIMI2A
-         wRWjQT07nB7NDsZiNLoxszNEqYU3K5VhIQwBEI+UfAynvsmXyPN2E3XrvGAOqTkBQNUZ
-         VqBw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=CthvNputu8pbRiOmNrDrSIS8ewjHDeuenQFnsldKBwo=;
-        b=pYlZqAuEHFnrCC3BpeWjn+XymvETeLz6fOEJH8+SoOzv1RrMaZMGFuyRABptFRYUUj
-         7KdhFM2dtsHkUdVIRYsSA/qIDxHaowJjRshumrRiKcShXu+SidYvPUYsWDb+ctK2ghzj
-         b9aKHPZQycCz0/GBouL9tH8keNGb4shpeWqXidD7z9RSdvF95KDyms884nGUcgOeofUZ
-         vuQCJlv3nxAtwO5UywOwUNXSYXAjPbOPor5aRn161Kl/ZpfuLlk2wlEr1JQZelHCoVNT
-         fWH5ULFG2OV6Br7DlC7EkD4L630r56OB5QKgk/8Hip08dfo5gAw8aesQaKLptpaV13Rg
-         RgzQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7036074wrx;
+        Thu, 11 Apr 2019 03:59:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNdJMyS+3zrBsNl/dVeHAzrCCXmDoszLTWA5wegT3J/u2N/m7yeG9J5E5dQXWtawQT1koI
+X-Received: by 2002:adf:edca:: with SMTP id v10mr2205977wro.157.1554980345373;
+        Thu, 11 Apr 2019 03:59:05 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9si22824086wrx.20.2019.04.11.03.58.15
+        by mx.google.com with ESMTPS id n9si24177245wro.307.2019.04.11.03.59.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 03:58:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Apr 2019 03:59:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46282 helo=lists.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:46331 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEXPH-0007ZJ-05
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 06:58:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36350)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hEXQ3-0000Om-GF
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 06:58:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1hEXOR-0007Xd-DP
-	for qemu-devel@nongnu.org; Thu, 11 Apr 2019 06:57:20 -0400
+	(envelope-from <no-reply@patchew.org>) id 1hEWxh-0008Cm-U5
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 06:29:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1hEXOP-0006qz-GT
-	for qemu-devel@nongnu.org; Thu, 11 Apr 2019 06:57:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50336)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1hEXOJ-0004ws-Mk; Thu, 11 Apr 2019 06:57:11 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8418A3082E03;
-	Thu, 11 Apr 2019 10:57:07 +0000 (UTC)
-Received: from gondolin (ovpn-204-124.brq.redhat.com [10.40.204.124])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B36421062225;
-	Thu, 11 Apr 2019 10:56:58 +0000 (UTC)
-Date: Thu, 11 Apr 2019 12:56:55 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: <qemu-devel@nongnu.org>
-Message-ID: <20190411125655.7feab799.cohuck@redhat.com>
-In-Reply-To: <155497852263.12882.17138118894178379111@76452e4e88f2>
-References: <20190411102025.22559-1-cohuck@redhat.com>
-	<155497852263.12882.17138118894178379111@76452e4e88f2>
-Organization: Red Hat GmbH
+	(envelope-from <no-reply@patchew.org>) id 1hEWxg-00009Y-JC
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 06:29:41 -0400
+Resent-Date: Thu, 11 Apr 2019 06:29:41 -0400
+Resent-Message-Id: <E1hEWxg-00009Y-JC@eggs.gnu.org>
+Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21515)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1hEWxY-0008Q4-Nn; Thu, 11 Apr 2019 06:29:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1554978531; cv=none; d=zoho.com; s=zohoarc; 
+	b=KLzm4Y6Rz9lqDLs+RS3RsGP+4e1lsSN2IR4qGAAtSdS7lfgurFdfYf8L0cCQas35zHOzFhcX6r9+JEc6TIW0M5gcm85g/Vg725CDRmwszDrVmYvAfzKQQRPYVghG4qiFXjz9cYHMHjlqdmoyAETR0ta1jHIXben0eOsQAay6/IE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1554978531;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=XYqnnWDIGInqZxEBYUKuZp3tHsFcmdpy7H8CtTLpncQ=; 
+	b=RrSDqjl0naT6UFBb0n5O9THVhJEU9PiW2Unc1oxiXKjGcy9SaBaOXzyBjNr13IVJ4EkKjo491Eu5rlqpXqMy/oc/MwqIxTl5h6wRuFZe/OOYYALoC0QO3XhU3a64x2un/hOJr9I0lLImHY4LjnWeTrk1ImR1TrDqiVxfzoMwMZc=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1554978526210312.8661830096032;
+	Thu, 11 Apr 2019 03:28:46 -0700 (PDT)
+Message-ID: <155497852263.12882.17138118894178379111@76452e4e88f2>
+In-Reply-To: <20190411102025.22559-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 11 Apr 2019 10:57:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: cohuck@redhat.com
+Date: Thu, 11 Apr 2019 03:28:46 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH for-4.1] hw: add compat machines for 4.1
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 136.143.188.55
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1] hw: add compat machines
+ for 4.1
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, ehabkost@redhat.com,
-	mst@redhat.com, david@redhat.com, pasic@linux.ibm.com,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, peter.maydell@linaro.org, cohuck@redhat.com,
+	ehabkost@redhat.com, mst@redhat.com, david@redhat.com,
+	qemu-devel@nongnu.org, pasic@linux.ibm.com,
 	borntraeger@de.ibm.com, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	marcel.apfelbaum@gmail.com, pbonzini@redhat.com,
 	david@gibson.dropbear.id.au, rth@twiddle.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4zBMFdtBxE6D
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zE+ura5Zxbu0
 
-On Thu, 11 Apr 2019 03:28:46 -0700 (PDT)
-no-reply@patchew.org wrote:
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDQxMTEwMjAyNS4yMjU1
+OS0xLWNvaHVja0ByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpNZXNzYWdlLWlkOiAyMDE5MDQxMTEwMjAyNS4yMjU1OS0xLWNvaHVja0ByZWRo
+YXQuY29tClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggZm9yLTQuMV0gaHc6IGFkZCBjb21w
+YXQgbWFjaGluZXMgZm9yIDQuMQpUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9
+PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBk
+aWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9n
+cmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFND
+UklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4
+NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiB0IFt0
+YWcgdXBkYXRlXSAgICAgICAgICAgIHBhdGNoZXcvMjAxOTAzMTUwMzI2MjkuMjEyMzQtMS1yaWNo
+YXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAxOTAzMTUwMzI2MjkuMjEyMzQt
+MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnCiB0IFt0YWcgdXBkYXRlXSAgICAgICAgICAg
+IHBhdGNoZXcvMjAxOTA0MTEwNjM0MDguMzk5OC0xLWNsZ0BrYW9kLm9yZyAtPiBwYXRjaGV3LzIw
+MTkwNDExMDYzNDA4LjM5OTgtMS1jbGdAa2FvZC5vcmcKICogW25ldyB0YWddICAgICAgICAgICAg
+ICAgcGF0Y2hldy8yMDE5MDQxMTA3MTczOS4yMjg4OS0xLXJpY2hhcmR3LnlhbmdAbGludXguaW50
+ZWwuY29tIC0+IHBhdGNoZXcvMjAxOTA0MTEwNzE3MzkuMjI4ODktMS1yaWNoYXJkdy55YW5nQGxp
+bnV4LmludGVsLmNvbQogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTkwNDEx
+MTAyMDI1LjIyNTU5LTEtY29odWNrQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE5MDQxMTEwMjAy
+NS4yMjU1OS0xLWNvaHVja0ByZWRoYXQuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVz
+dCcKNTU3NDZkZGFlOCBodzogYWRkIGNvbXBhdCBtYWNoaW5lcyBmb3IgNC4xCgo9PT0gT1VUUFVU
+IEJFR0lOID09PQpFUlJPUjogc3BhY2VzIHJlcXVpcmVkIGFyb3VuZCB0aGF0ICc9JyAoY3R4Old4
+VikKIzU4OiBGSUxFOiBody9pMzg2L3BjLmM6MTE4OgorR2xvYmFsUHJvcGVydHkgcGNfY29tcGF0
+XzRfMFtdID17fTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBeCgp0b3RhbDogMSBl
+cnJvcnMsIDAgd2FybmluZ3MsIDE2MCBsaW5lcyBjaGVja2VkCgpDb21taXQgNTU3NDZkZGFlOGI2
+IChodzogYWRkIGNvbXBhdCBtYWNoaW5lcyBmb3IgNC4xKSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBs
+ZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMg
+cmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlO
+RVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAx
+CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8y
+MDE5MDQxMTEwMjAyNS4yMjU1OS0xLWNvaHVja0ByZWRoYXQuY29tL3Rlc3RpbmcuY2hlY2twYXRj
+aC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0
+Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRv
+IHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-> === OUTPUT BEGIN ===
-> ERROR: spaces required around that '=' (ctx:WxV)
-> #58: FILE: hw/i386/pc.c:118:
-> +GlobalProperty pc_compat_4_0[] ={};
->                                 ^
-> 
-> total: 1 errors, 0 warnings, 160 lines checked
-
-Yeah; trivial to fix by whoever applies this.

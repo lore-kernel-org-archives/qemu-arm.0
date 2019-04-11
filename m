@@ -1,100 +1,102 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7258189wrx;
-        Thu, 11 Apr 2019 07:35:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVCOrN/Ii7gXjcIq7G9L4Xl7TAdVM/DtGO5fZYYj4zVKv3MntqWmxkpDQVf8jMH3QV9NIp
-X-Received: by 2002:a7b:c147:: with SMTP id z7mr6812654wmi.67.1554993340645;
-        Thu, 11 Apr 2019 07:35:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554993340; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7317206wrx;
+        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxhEajA4T0OxNWMiLGY/yrcfxzW7Bo7wHlkOfsu+uld7nDwtOHUUN64Auo1nVQc0aCk4Ccn
+X-Received: by 2002:a1c:43c2:: with SMTP id q185mr6771288wma.53.1554996536854;
+        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554996536; cv=none;
         d=google.com; s=arc-20160816;
-        b=KdkxoJ5+dND407wpkQ+QANhBO4UegTh9qN+6zpzcNYXVPBCF2KMfvOcX+fl4c0i5wc
-         mvt6jqlibf4LwZABI5w9Wsvy00T0tfjyFSChljP93EdvxSNMS6q1SKOsv8Vy6VC/T2HU
-         RbaPwbomgcBKar22VNGZXhD+2/8F5AwnqEx0PeJ0gX4zFdRV5SnlKU4eVp8gPV1kbbd8
-         9smL5urfiWlxX61t6SfDtWwk6Cb++bV1kjR0fPTQp+EIlHz0KISGn7kemHz6RWJ6Eg5X
-         /SfF6HyGHvkYrXaX0iCxvwVFOVvY0Jerh4jcjyhhUKzYi0bGGZ7EYiA2z/5Ljay2dEUR
-         6nCg==
+        b=QWADYB5xBw9oUirKD3sR4pF6JFfqkJQxk+8LPhnjrpzK5SEtuITZVSXCuQigtVf/7y
+         j7v6XQTGVglEUwEJhAvT4ufJe4rml0chhlTtiARWCnBr/VSQFj0sVby181urnC0zdY0j
+         fO8y41tgLDOfP4OWLhKhEw6qb1HA51w5LZW3Kj6RQMDbQs1NmMAdq1zVQcfj64roPGDl
+         wKAeVKq3Xw160ZAn/tGTMkYzflXR3/kLJFC7fIk7BjOPs4EIKi65GcpAr20uusGWc1FV
+         K5n5LV98U7QNLZ0nALSnVL2aBlxrikYgjMxPO6zH4uJOUJJx34COv4fekAvjh/ZNt606
+         dVGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=cvV3ikNI1mGO0gxgxlOPR4wPd5ri2sJcCEBFBkzNLfo=;
-        b=E8sV5D+Xu2s5PC29IzlqsNMCUyPlRucNrON8U++HTqF7GMp+JD2UGd5OLOk1hHRKAN
-         8YVFvhRN1CRJRAu3Vcx6WtczwwwQ8aT3bzr2Yv18BYtQpSmbLW46yyclZJEmIk7zJSUC
-         x9L2wwsdM9xqThHqaIDRKzi2fQVdD8g4VSR5FN4f74UBJidDWIBDcmNGhqp5C/z/fjPC
-         Lsy1TEMYDWn/zNXZJP4odf1JnuH0NPer9xSi9KOq4nbcAsYbLfT9jd/Vb8y4wkMNdV/e
-         JOoelcVbUqmH/BuBKI90eQXOxegoJZOwp7lrZrIAoBRthsmHGGxWNJ0oFI5PHOlGhF0T
-         pLFA==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
+        b=TrccA6KSm9Qbo9VOu+2kFKrXqIvyGwQxbjDb92iKPUjySCncF6xCrRRjGvYAEHGGck
+         sSxXrcG32NMcfCM8RUYIP19Vx54hlroAX7zeZGLc9VhMF5VXiNVYWyJMQlH1vDnC9ZiP
+         bM9nO+ns63teAUFBV4/mlS9CzeMZAlIaqvsSMhoy2/6ZMB7MszdfG1IfOuJpV2xCP+iy
+         ebZY3ahUS2T5ehDaCQd8v/HvZZgMX65u49cJplP7TOvZtWML7fE9/+2EDmYbnwO/UuUh
+         oFMM1WeK0bXAU7FrgHv2diU4MFgNhLYCeh7mlHZg9CuOiHtE7QmuXcoPM5LPgyv9aE2b
+         Kb5A==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JWQZZBku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z206si3482335wmc.37.2019.04.11.07.35.40
+        by mx.google.com with ESMTPS id j22si28537218wrd.292.2019.04.11.08.28.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 07:35:40 -0700 (PDT)
+        Thu, 11 Apr 2019 08:28:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JWQZZBku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49946 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:50731 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEanj-0003sS-Jo
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 10:35:39 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33922)
+	id 1hEbdH-0000I3-R5
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 11:28:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48420)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEanO-0003o3-Dt
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:35:23 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hEba4-0005p2-UN
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEanM-0004tt-9e
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:35:18 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:37097)
+	(envelope-from <peter.maydell@linaro.org>) id 1hEba3-0006pj-0u
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:36 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:35345)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hEanL-0004t6-VH
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 10:35:16 -0400
-Received: by mail-wr1-f67.google.com with SMTP id w10so7693367wrm.4
-	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 07:35:15 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hEba1-0006mC-6D
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:25:33 -0400
+Received: by mail-ot1-x344.google.com with SMTP id m10so5606986otp.2
+	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 08:25:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
+	b=JWQZZBkugTnSTbu+PoWD1Um+gOfCx+MrUkAVsho2ePCNqtKjn5BYoneEONWlp+ztrd
+	kN8QMjGROLiIhTM72Q3TrvGM6X9aAYS+Fz4ojDmFeqWqOA8QUOEoRHA69/RhFTmPBaVo
+	4XTmhh9sJr2oGikGReQa7GGx8rnQsWXucRXSvT6X4wXVRSw54IeiSDPekGSzYf0rO1Gt
+	DAPdtK16EEfs35yYAPS2EX1cZi+OJ6rmVBsrokUbsN+m4WJ8LNEEqU4yJwEA7qFg5a4w
+	ikQMPeG50Ctq9VtjuMb/lH2IuI254dWVNanxj+jKHztD6MZc9+zySmbH0PHyX2u1Nqtf
+	TBoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=cvV3ikNI1mGO0gxgxlOPR4wPd5ri2sJcCEBFBkzNLfo=;
-	b=gbD004wdNaG49ydnB6vOaQ/F9d8inNTsakAHQz6stvydEq2YkOhlyJs9RwFMS6Uz6m
-	/a+PGcAFrPg1e/IAEPj5PF70Wv5Noe5O1+fVvTjCOK2b4HGSyfOfZOz3TBJnOVjCehXu
-	uLPfBBuU7xe9rL/0pm4eZe2Z6y+3b3Y39NKPtiGUHNWXXhRqKRXBFkJ3S0VfEGmCd3T1
-	EZZnjA359FwuriA7ZVBT0Ex3CIFfyVXdmXW1TMlGmvruBydiUslkFXlj0eER1iXYpWwd
-	GfqT33kY0DZEyaPaV7NGGmfM1bX1bNcPTWJbPIojvErSn1RG9p9eBuYEGV4xOBZV/8Nh
-	ykvw==
-X-Gm-Message-State: APjAAAUa0QYPawvIPcW2cAJ8dDQorIsOhXh4B+LANRYIR6MbZMYt/pe3
-	1xHn1XqPvAhxZDcuWRUnvPmvSg==
-X-Received: by 2002:a5d:6988:: with SMTP id g8mr31965525wru.117.1554993314591; 
-	Thu, 11 Apr 2019 07:35:14 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	a187sm7145485wma.32.2019.04.11.07.35.13
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Apr 2019 07:35:13 -0700 (PDT)
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <20190411135602.21725-1-armbru@redhat.com>
-	<20190411135602.21725-3-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <95f2e6d2-5bd0-a9dc-ab4b-dc172e7f1ad1@redhat.com>
-Date: Thu, 11 Apr 2019 16:35:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=HDFtCH56uiGi4tCfrumOyLEm/C2h4rz47e4WmTFx+Pw=;
+	b=a8q6ba9ZwnFBiHSchlgO+Jf289iKvw6PGBjrpVvyAGKUTitsRT/xMmbAD/XQYy5CCp
+	ZAjHFyewTHALqE1FrcibKEEc8II9xOecuTee9wGesu6/4OuaW9QepudgAENjXVn4Dnc7
+	k/Tc7+2r6YS16BLJdmK2IXLbJNmEUfvMTV86HJIYL1DIR/a2FCUUq173N9beDENskGsD
+	/L6orvadSkZQRbMh6nC0ua3k7wwze9m724k2l9DbbSM4VHOoJA/NoBQqANa5/duKAgww
+	XaXMLFk0361lBtp9HjHI/2Ef00BM/RD56PimTjjHPhiEcB/MyAyH/ifThr+rkHBOk8+d
+	dRwQ==
+X-Gm-Message-State: APjAAAWY/jORw6hGBOUncFPFMfnG4O+VnUScI5MDiXnligPBXqi/41pM
+	QPeUeMMgDubn8cpbC6GJnNdSxKim5NsYpfQJzuXOag==
+X-Received: by 2002:a05:6830:1044:: with SMTP id
+	b4mr33959922otp.274.1554996331547; 
+	Thu, 11 Apr 2019 08:25:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190411135602.21725-3-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] hw/arm/virt: Support
- firmware configuration with -blockdev
+References: <20190328062222.8409-1-joel@jms.id.au>
+	<20190328062222.8409-2-joel@jms.id.au>
+In-Reply-To: <20190328062222.8409-2-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Apr 2019 16:25:20 +0100
+Message-ID: <CAFEAcA_K1Rv1G-s=ndVYX6i_BvWME6ToShL6ZBpB4gnE3zdZdA@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw: timer: Add ASPEED RTC device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,368 +108,165 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
-	mreitz@redhat.com, qemu-arm@nongnu.org, lersek@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bj0tlbRUn36H
+X-TUID: 2SMe7brNjZey
 
-On 4/11/19 3:56 PM, Markus Armbruster wrote:
-> The ARM virt machines put firmware in flash memory.  To configure it,
-> you use -drive if=pflash,unit=0,... and optionally -drive
-> if=pflash,unit=1,...
-> 
-> Why two -drive?  This permits setting up one part of the flash memory
-> read-only, and the other part read/write.  It also makes upgrading
-> firmware on the host easier.  Below the hood, we get two separate
-> flash devices, because we were too lazy to improve our flash device
-> models to support sector protection.
-> 
-> The problem at hand is to do the same with -blockdev somehow, as one
-> more step towards deprecating -drive.
-> 
-> We recently solved this problem for x86 PC machines, in commit
-> ebc29e1beab.  See the commit message for design rationale.
-> 
-> This commit solves it for ARM virt basically the same way: new machine
-> properties pflash0, pflash1 forward to the onboard flash devices'
-> properties.  Requires creating the onboard devices in the
-> .instance_init() method virt_instance_init().  The existing code to
-> pick up drives defined with -drive if=pflash is replaced by code to
-> desugar into the machine properties.
-> 
-> There are a few behavioral differences, though:
-> 
-> * The flash devices are always present (x86: only present if
->   configured)
-> 
-> * Flash base addresses and sizes are fixed (x86: sizes depend on
->   images, mapped back to back below a fixed address)
-> 
-> * -bios configures contents of first pflash (x86: -bios configures ROM
->    contents)
-> 
-> * -bios is rejected when first pflash is also configured with -machine
->    pflash0=... (x86: bios is silently ignored then)
-
-Can we start deprecating the -bios command line option?
-
-Maybe on a per-architecture basis first.
-
-> * -machine pflash1=... does not require -machine pflash0=... (x86: it
->    does).
-> 
-> The actual code is a bit simpler than for x86 mostly due to the first
-> two differences.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+On Thu, 28 Mar 2019 at 06:22, Joel Stanley <joel@jms.id.au> wrote:
+>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->  hw/arm/virt.c         | 192 +++++++++++++++++++++++++++---------------
->  include/hw/arm/virt.h |   2 +
->  2 files changed, 124 insertions(+), 70 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ce2664a30b..8ce7ecca80 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -30,6 +30,7 @@
->  
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
-> +#include "qemu/option.h"
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
->  #include "hw/arm/arm.h"
-> @@ -871,25 +872,19 @@ static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
->      }
->  }
->  
-> -static void create_one_flash(const char *name, hwaddr flashbase,
-> -                             hwaddr flashsize, const char *file,
-> -                             MemoryRegion *sysmem)
-> +#define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
+>  hw/timer/Makefile.objs        |   2 +-
+>  hw/timer/aspeed_rtc.c         | 157 ++++++++++++++++++++++++++++++++++
+>  hw/timer/trace-events         |   4 +
+>  include/hw/timer/aspeed_rtc.h |  31 +++++++
+>  4 files changed, 193 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/timer/aspeed_rtc.c
+>  create mode 100644 include/hw/timer/aspeed_rtc.h
+>
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 0e9a4530f848..123d92c9692c 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -41,7 +41,7 @@ obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
+>  obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
+>
+>  common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
+> -common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o
+> +common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
+>
+>  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+>  common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
+> diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
+> new file mode 100644
+> index 000000000000..daccf00eccdc
+> --- /dev/null
+> +++ b/hw/timer/aspeed_rtc.c
+> @@ -0,0 +1,157 @@
+> +/*
+> + * ASPEED Real Time Clock
+> + * Joel Stanley <joel@jms.id.au>
+> + *
+> + * Copyright 2019 IBM Corp
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
 > +
-> +static PFlashCFI01 *virt_pflash_create1(VirtMachineState *vms,
-> +                                        const char *name,
-> +                                        const char *alias_prop_name)
->  {
-> -    /* Create and map a single flash device. We use the same
-> -     * parameters as the flash devices on the Versatile Express board.
-> +    /*
-> +     * Create a single flash device.  We use the same parameters as
-> +     * the flash devices on the Versatile Express board.
->       */
-> -    DriveInfo *dinfo = drive_get_next(IF_PFLASH);
->      DeviceState *dev = qdev_create(NULL, TYPE_PFLASH_CFI01);
-> -    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> -    const uint64_t sectorlength = 256 * 1024;
->  
-> -    if (dinfo) {
-> -        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-> -                            &error_abort);
-> -    }
-> -
-> -    qdev_prop_set_uint32(dev, "num-blocks", flashsize / sectorlength);
-> -    qdev_prop_set_uint64(dev, "sector-length", sectorlength);
-> +    qdev_prop_set_uint64(dev, "sector-length", VIRT_FLASH_SECTOR_SIZE);
->      qdev_prop_set_uint8(dev, "width", 4);
->      qdev_prop_set_uint8(dev, "device-width", 2);
->      qdev_prop_set_bit(dev, "big-endian", false);
-> @@ -898,41 +893,41 @@ static void create_one_flash(const char *name, hwaddr flashbase,
->      qdev_prop_set_uint16(dev, "id2", 0x00);
->      qdev_prop_set_uint16(dev, "id3", 0x00);
->      qdev_prop_set_string(dev, "name", name);
-> +    object_property_add_child(OBJECT(vms), name, OBJECT(dev),
-> +                              &error_abort);
-> +    object_property_add_alias(OBJECT(vms), alias_prop_name,
-> +                              OBJECT(dev), "drive", &error_abort);
-> +    return PFLASH_CFI01(dev);
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "hw/timer/aspeed_rtc.h"
+> +#include "qemu/log.h"
+> +#include "qemu/timer.h"
+> +
+> +#include "trace.h"
+> +
+> +#define COUNTER1        (0x00 / 4)
+> +#define COUNTER2        (0x04 / 4)
+> +#define ALARM           (0x08 / 4)
+> +#define CONTROL         (0x10 / 4)
+> +#define ALARM_STATUS    (0x14 / 4)
+
+Not mandatory, but you might like the REG32() macro in
+hw/registerfields.h which defines A_FOO and R_FOO
+constants for you for the addresses and the indexes.
+
+> +
+> +#define RTC_UNLOCKED    BIT(1)
+> +#define RTC_ENABLED     BIT(0)
+> +
+> +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
+> +{
+> +    struct tm tm;
+> +    uint32_t year, cent;
+> +    uint32_t reg1 =3D rtc->reg[COUNTER1];
+> +    uint32_t reg2 =3D rtc->reg[COUNTER2];
+> +
+> +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
+> +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
+> +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
+> +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
+
+Shift by zero ?
+
+Consider using extract32() rather than by-hand shift and mask.
+
+> +
+> +    cent =3D (reg2 >> 16) & 0x1f;
+> +    year =3D (reg2 >> 8) & 0x7f;
+> +    tm.tm_mon =3D ((reg2 >>  0) & 0x0f) - 1;
+> +    tm.tm_year =3D year + (cent * 100) - 1900;
+> +
+> +    rtc->offset =3D qemu_timedate_diff(&tm);
 > +}
 > +
-> +static void virt_flash_create(VirtMachineState *vms)
+> +static uint32_t aspeed_rtc_get_counter(AspeedRtcState *rtc, int r)
 > +{
-> +    vms->flash[0] = virt_pflash_create1(vms, "virt.flash0", "pflash0");
-> +    vms->flash[1] = virt_pflash_create1(vms, "virt.flash1", "pflash1");
+> +    uint32_t year, cent;
+> +    struct tm now;
+> +
+> +    qemu_get_timedate(&now, rtc->offset);
+> +
+> +    switch (r) {
+> +    case COUNTER1:
+> +        return (now.tm_mday << 24) | (now.tm_hour << 16) |
+> +            (now.tm_min << 8) | now.tm_sec;
+> +    case COUNTER2:
+> +        cent =3D (now.tm_year + 1900) / 100;
+> +        year =3D now.tm_year % 100;
+> +        return ((cent & 0x1f) << 16) | ((year & 0x7f) << 8) |
+> +            ((now.tm_mon + 1) & 0xf);
+> +    default:
+> +        abort();
+
+More usually written g_assert_not_reached().
+
+> +    }
 > +}
 > +
-> +static void virt_flash_map1(PFlashCFI01 *flash,
-> +                            hwaddr base, hwaddr size,
-> +                            MemoryRegion *sysmem)
+> +static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
+> +                                unsigned size)
 > +{
-> +    DeviceState *dev = DEVICE(flash);
+> +    AspeedRtcState *rtc =3D opaque;
+> +    uint64_t val;
+> +    uint32_t r =3D addr >> 2;
 > +
-> +    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
-> +    assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
-> +    qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
->      qdev_init_nofail(dev);
->  
-> -    memory_region_add_subregion(sysmem, flashbase,
-> -                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
-> -
-> -    if (file) {
-> -        char *fn;
-> -        int image_size;
-> -
-> -        if (drive_get(IF_PFLASH, 0, 0)) {
-> -            error_report("The contents of the first flash device may be "
-> -                         "specified with -bios or with -drive if=pflash... "
-> -                         "but you cannot use both options at once");
-> -            exit(1);
-> -        }
-> -        fn = qemu_find_file(QEMU_FILE_TYPE_BIOS, file);
-> -        if (!fn) {
-> -            error_report("Could not find ROM image '%s'", file);
-> -            exit(1);
-> -        }
-> -        image_size = load_image_mr(fn, sysbus_mmio_get_region(sbd, 0));
-> -        g_free(fn);
-> -        if (image_size < 0) {
-> -            error_report("Could not load ROM image '%s'", file);
-> -            exit(1);
-> -        }
-> -    }
-> +    memory_region_add_subregion(sysmem, base,
-> +                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
-> +                                                       0));
->  }
->  
-> -static void create_flash(const VirtMachineState *vms,
-> -                         MemoryRegion *sysmem,
-> -                         MemoryRegion *secure_sysmem)
-> +static void virt_flash_map(VirtMachineState *vms,
-> +                           MemoryRegion *sysmem,
-> +                           MemoryRegion *secure_sysmem)
->  {
-> -    /* Create two flash devices to fill the VIRT_FLASH space in the memmap.
-> -     * Any file passed via -bios goes in the first of these.
-> +    /*
-> +     * Map two flash devices to fill the VIRT_FLASH space in the memmap.
->       * sysmem is the system memory space. secure_sysmem is the secure view
->       * of the system, and the first flash device should be made visible only
->       * there. The second flash device is visible to both secure and nonsecure.
-> @@ -941,13 +936,21 @@ static void create_flash(const VirtMachineState *vms,
->       */
->      hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
->      hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-> +
-> +    virt_flash_map1(vms->flash[0], flashbase, flashsize,
-> +                    secure_sysmem);
-> +    virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
-> +                    sysmem);
-> +}
-> +
-> +static void virt_flash_fdt(VirtMachineState *vms,
-> +                           MemoryRegion *sysmem,
-> +                           MemoryRegion *secure_sysmem)
-> +{
-> +    hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
-> +    hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
->      char *nodename;
->  
-> -    create_one_flash("virt.flash0", flashbase, flashsize,
-> -                     bios_name, secure_sysmem);
-> -    create_one_flash("virt.flash1", flashbase + flashsize, flashsize,
-> -                     NULL, sysmem);
-> -
->      if (sysmem == secure_sysmem) {
->          /* Report both flash devices as a single node in the DT */
->          nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
-> @@ -959,7 +962,8 @@ static void create_flash(const VirtMachineState *vms,
->          qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
->          g_free(nodename);
->      } else {
-> -        /* Report the devices as separate nodes so we can mark one as
-> +        /*
-> +         * Report the devices as separate nodes so we can mark one as
->           * only visible to the secure world.
->           */
->          nodename = g_strdup_printf("/secflash@%" PRIx64, flashbase);
-> @@ -982,6 +986,48 @@ static void create_flash(const VirtMachineState *vms,
->      }
->  }
->  
-> +static bool virt_firmware_init(VirtMachineState *vms,
-> +                               MemoryRegion *sysmem,
-> +                               MemoryRegion *secure_sysmem)
-> +{
-> +    BlockBackend *pflash_blk0;
-> +
-> +    pflash_cfi01_legacy_drive(vms->flash, ARRAY_SIZE(vms->flash));
-> +    virt_flash_map(vms, sysmem, secure_sysmem);
-> +
-> +    pflash_blk0 = pflash_cfi01_get_blk(vms->flash[0]);
-> +
-> +    if (bios_name) {
-> +        char *fname;
-> +        MemoryRegion *mr;
-> +        int image_size;
-> +
-> +        if (pflash_blk0) {
-> +            error_report("The contents of the first flash device may be "
-> +                         "specified with -bios or with -drive if=pflash... "
-> +                         "but you cannot use both options at once");
-> +            exit(1);
+> +    switch (r) {
+> +    case COUNTER1:
+> +    case COUNTER2:
+> +        if (rtc->reg[CONTROL] & RTC_ENABLED) {
+> +            rtc->reg[r] =3D aspeed_rtc_get_counter(rtc, r);
 > +        }
-> +
-> +        /* Fall back to -bios */
-> +
-> +        fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +        if (!fname) {
-> +            error_report("Could not find ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(vms->flash[0]), 0);
-> +        image_size = load_image_mr(fname, mr);
-> +        g_free(fname);
-> +        if (image_size < 0) {
-> +            error_report("Could not load ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
+
+If this is deliberately going to fall through to the next
+case then it should have a /* fall through */ comment
+(ditto in the write fn).
+
+> +    case ALARM:
+> +    case CONTROL:
+> +    case ALARM_STATUS:
+> +        val =3D rtc->reg[r];
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, a=
+ddr);
+> +        return 0;
 > +    }
 > +
-> +    return pflash_blk0 || bios_name;
+> +    trace_aspeed_rtc_read(addr, val);
+> +
+> +    return val;
 > +}
+
+> +static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
 > +
->  static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
->  {
->      hwaddr base = vms->memmap[VIRT_FW_CFG].base;
-> @@ -1421,7 +1467,7 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *secure_sysmem = NULL;
->      int n, virt_max_cpus;
->      MemoryRegion *ram = g_new(MemoryRegion, 1);
-> -    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-> +    bool firmware_loaded;
->      bool aarch64 = true;
->  
->      /*
-> @@ -1460,6 +1506,27 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
->  
-> +    if (vms->secure) {
-> +        if (kvm_enabled()) {
-> +            error_report("mach-virt: KVM does not support Security extensions");
-> +            exit(1);
-> +        }
-> +
-> +        /*
-> +         * The Secure view of the world is the same as the NonSecure,
-> +         * but with a few extra devices. Create it as a container region
-> +         * containing the system memory at low priority; any secure-only
-> +         * devices go in at higher priority and take precedence.
-> +         */
-> +        secure_sysmem = g_new(MemoryRegion, 1);
-> +        memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-> +                           UINT64_MAX);
-> +        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> +    }
-> +
-> +    firmware_loaded = virt_firmware_init(vms, sysmem,
-> +                                         secure_sysmem ?: sysmem);
-> +
->      /* If we have an EL3 boot ROM then the assumption is that it will
->       * implement PSCI itself, so disable QEMU's internal implementation
->       * so it doesn't get in the way. Instead of starting secondary
-> @@ -1505,23 +1572,6 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
->  
-> -    if (vms->secure) {
-> -        if (kvm_enabled()) {
-> -            error_report("mach-virt: KVM does not support Security extensions");
-> -            exit(1);
-> -        }
-> -
-> -        /* The Secure view of the world is the same as the NonSecure,
-> -         * but with a few extra devices. Create it as a container region
-> -         * containing the system memory at low priority; any secure-only
-> -         * devices go in at higher priority and take precedence.
-> -         */
-> -        secure_sysmem = g_new(MemoryRegion, 1);
-> -        memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-> -                           UINT64_MAX);
-> -        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> -    }
-> -
->      create_fdt(vms);
->  
->      possible_cpus = mc->possible_cpu_arch_ids(machine);
-> @@ -1610,7 +1660,7 @@ static void machvirt_init(MachineState *machine)
->                                      &machine->device_memory->mr);
->      }
->  
-> -    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
-> +    virt_flash_fdt(vms, sysmem, secure_sysmem);
->  
->      create_gic(vms, pic);
->  
-> @@ -1956,6 +2006,8 @@ static void virt_instance_init(Object *obj)
->                                      NULL);
->  
->      vms->irqmap = a15irqmap;
-> +
-> +    virt_flash_create(vms);
->  }
->  
->  static const TypeInfo virt_machine_info = {
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 507517c603..424070924e 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -35,6 +35,7 @@
->  #include "qemu/notify.h"
->  #include "hw/boards.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/block/flash.h"
->  #include "sysemu/kvm.h"
->  #include "hw/intc/arm_gicv3_common.h"
->  
-> @@ -113,6 +114,7 @@ typedef struct {
->      Notifier machine_done;
->      DeviceState *platform_bus_dev;
->      FWCfgState *fw_cfg;
-> +    PFlashCFI01 *flash[2];
->      bool secure;
->      bool highmem;
->      bool highmem_ecam;
-> 
+> +    dc->realize =3D aspeed_rtc_realize;
+
+This is missing a reset function and vmstate.
+
+thanks
+-- PMM

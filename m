@@ -1,90 +1,99 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp5716345wrx;
-        Wed, 10 Apr 2019 01:49:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxurni6eUBk6nRHClmgn3JfV0MmemO9oM9wBRQSiFSvuERwCXRNs6hF1PPfhTY6o8Zo83Oa
-X-Received: by 2002:adf:cf05:: with SMTP id o5mr24908914wrj.8.1554886188765;
-        Wed, 10 Apr 2019 01:49:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554886188; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp6866787wrx;
+        Thu, 11 Apr 2019 00:16:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwTSNQZZVqsr69D+y+fHM8WnhUGSEEL/J6P93TNBj6bD4h0Oiy0d33X4dbUqQkDbK4+gcvX
+X-Received: by 2002:a7b:c3c9:: with SMTP id t9mr5211808wmj.131.1554966982263;
+        Thu, 11 Apr 2019 00:16:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1554966982; cv=none;
         d=google.com; s=arc-20160816;
-        b=qx7BT9NgwzKGGtBNCpUk184RNhrCKWN98owCsYctvafFFPUXwzq6wdYzvEemXOJAJ2
-         Ww8MmaoHKCUmcXH6GvdzvZ1M2aTi5jriOEjCBJnAhj9SD98QC2OWHLfkPSH6vbOKpoAw
-         scbIeZmGg+Huo2dsLAYFemvD+M1VTCIN4n+ckjWy8Gkiy651rMfkGGb+NaIf+4wf4NR0
-         sXO1i6RmldwSPlIMgUyiqfQcoobkERcX9uEktQBYHYuqYzsFducnasa6UzfGMt2htwot
-         13MBtvDnCqCv6xB9RxCnjJJcTwPuikM/geQr1z9GEJ4PCeRh/3bxZkZAUxaG0En+GG75
-         BhZg==
+        b=HJ6sjGChws1jZt855Rgpf0DOWuNU0up2YwQeXWTvhrlW1V6CLMV0QsKhUw9+vUKWJi
+         m66n+fQqZTkyClIW1HCvsA6TMA9y0WfuWKBDGhfodOsYOlCMI1y2S5EhAs5IJh92+MQS
+         xKtFinGTuz5FOrVl5+3KqrpqraC6wfZZH/Eu+6CmbDo/I2Bq8KYz8EnRhx7FeVuM7Usg
+         xA4Y2zh3WQ45/mlK6nLjVRvDnmfcAdYEo5yZ0AIq8lUZ/hT9mn/+24r1ikoo8vNogTun
+         0vIu7OJoQb4IECq6sGbF2ag8D9S8dPYizIEsdG3SJislB+uT1mdCZeKo16AB+jfxPIo9
+         gQfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=ZFyZp382ssmAcFEsHsO5N1aX5/NzMx5fQ5DIXvsctCE=;
-        b=RRaMnI4lhnqvthdYv0LwvXGviJjDrmeI7vOOrVjq9TVtbjgpm1yVPRhjIlqE6eKPwH
-         NmCSEmYMEUTEvHBAqVRFn1B52IEFRuYFIWlo0CqNP0/NZTUDMUVdVBk+LRYwXFULVAT8
-         ZxII5ljE4UkRsCmlkvSTm54Oxf+shBBqSeYD6epEfUksMh8AuNFoeJ4YYVdLcpAnzIAi
-         kH7rMBw5pzIvRUHgYvcavuAMbDrliiaj+3WEv/pVRDRZZeh3WygP4Sl2Ias0KyWdjSKw
-         YcaN9+a2WQIwqFazcPt1vRzZ/W1UcIWVV4PwbX5t/kU80S0zB4O4GDDdBVa+c1me177I
-         Uqgw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:to:from;
+        bh=mHpjXzLCf6+G5bKi5rJ/+MIa+WIcP4XNSTt9odwivCg=;
+        b=VyOXiKyFHt/E6tqaOJMx171aA/yMUPEHWUtjk1bfb40c0enyPLWYqUWrNocno4nQnL
+         dB1T2i+//PmmSK9OhaQ4GQZSaGkdQrF6SZcbFJkv586pfxxxGQhpFf/FDPqCZ61RDSxG
+         WLFuIWIfly9Ei320miUYcRCO/Wb043q05+xU754uQP9W4P1XMK43Hw6BG9FUgAQFDurm
+         diW3603qXGC6R/wxCniskYsl2YDQLL04jquH1kwwBgoOh6yz9qnAmTYU7iF5U7u/uVv+
+         1H7owgMuPf6ifAAubveST599WEFHjSOXT3z4JdMeRiUed2sv2i7dA9hm+pM11SDYGzlS
+         4ngg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f124si1039836wmf.115.2019.04.10.01.49.48
+        by mx.google.com with ESMTPS id g10si24185637wrr.185.2019.04.11.00.16.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Apr 2019 01:49:48 -0700 (PDT)
+        Thu, 11 Apr 2019 00:16:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55905 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:42932 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hE8vT-0005ZB-O8
-	for alex.bennee@linaro.org; Wed, 10 Apr 2019 04:49:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58976)
+	id 1hETwZ-0000ep-3R
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 03:16:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36823)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hE8vD-0005X0-Ek
-	for qemu-arm@nongnu.org; Wed, 10 Apr 2019 04:49:32 -0400
+	(envelope-from <armbru@redhat.com>) id 1hETwN-0000cJ-PB
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 03:16:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hE8vC-0005tJ-38
-	for qemu-arm@nongnu.org; Wed, 10 Apr 2019 04:49:31 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45389 helo=huawei.com)
+	(envelope-from <armbru@redhat.com>) id 1hETwL-0004AT-9p
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 03:16:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51796)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hE8vB-0005sB-NY; Wed, 10 Apr 2019 04:49:30 -0400
-Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.107])
-	by Forcepoint Email with ESMTP id 57EB8246EBB18D93D814;
-	Wed, 10 Apr 2019 09:49:27 +0100 (IST)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.229]) by
-	lhreml709-cah.china.huawei.com ([10.201.108.32]) with mapi id
-	14.03.0415.000; Wed, 10 Apr 2019 09:49:21 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Laszlo Ersek <lersek@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "imammedo@redhat.com"
-	<imammedo@redhat.com>
-Thread-Topic: [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM nodes in the DT
-Thread-Index: AQHU7r+FHRV2RRXA40+Yjk9QZW2DraYz3gyAgAE0oHA=
-Date: Wed, 10 Apr 2019 08:49:20 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83935D360@lhreml524-mbs.china.huawei.com>
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-9-shameerali.kolothum.thodi@huawei.com>
-	<4f3df83f-8d45-09d0-ec9e-0ddf843fd3a4@redhat.com>
-In-Reply-To: <4f3df83f-8d45-09d0-ec9e-0ddf843fd3a4@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1hETwJ-00048p-E8; Thu, 11 Apr 2019 03:16:03 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DC94F2D7EB;
+	Thu, 11 Apr 2019 07:16:01 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
+	[10.36.116.116])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 069201001E66;
+	Thu, 11 Apr 2019 07:15:59 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 8F7B61138648; Thu, 11 Apr 2019 09:15:57 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Xiang Zheng <zhengxiang9@huawei.com>
+References: <87va06kvm6.fsf@dusky.pond.sub.org>
+	<59f100b4-f6e9-973d-532b-58fb172a7009@redhat.com>
+	<87imw5fv45.fsf@dusky.pond.sub.org>
+	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
+	<8736n9eb4s.fsf@dusky.pond.sub.org>
+	<bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
+	<c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
+	<b107e0c0-1c4c-3f0f-eb78-8929c315ce28@huawei.com>
+	<a8144a1f-364e-cea5-b0a7-05342bdab936@redhat.com>
+	<87bm1fiuo8.fsf@dusky.pond.sub.org>
+	<20190409082852.GB6610@localhost.localdomain>
+	<c03c51a7-1bb0-b05b-9027-2364ab00517c@huawei.com>
+Date: Thu, 11 Apr 2019 09:15:57 +0200
+In-Reply-To: <c03c51a7-1bb0-b05b-9027-2364ab00517c@huawei.com> (Xiang Zheng's
+	message of "Wed, 10 Apr 2019 16:36:34 +0800")
+Message-ID: <87ef693tci.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 11 Apr 2019 07:16:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM nodes
- in the DT
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
+ size of flash device to save memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,119 +105,277 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	"xuwei \(O\)" <xuwei5@huawei.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-block@nongnu.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
+	Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mevht5j6QhaX
+X-TUID: /tUku/urnTFC
 
-DQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IExhc3psbyBFcnNlayBbbWFp
-bHRvOmxlcnNla0ByZWRoYXQuY29tXQ0KPiBTZW50OiAwOSBBcHJpbCAyMDE5IDE2OjA5DQo+IFRv
-OiBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1
-YXdlaS5jb20+Ow0KPiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7
-IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsNCj4gaW1hbW1lZG9AcmVkaGF0LmNvbQ0KPiBDYzogcGV0
-ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBzaGFubm9uLnpoYW9zbEBnbWFpbC5jb207DQo+IHNhbWVv
-QGxpbnV4LmludGVsLmNvbTsgc2ViYXN0aWVuLmJvZXVmQGludGVsLmNvbTsgeHV3ZWkgKE8pDQo+
-IDx4dXdlaTVAaHVhd2VpLmNvbT47IGFyZC5iaWVzaGV1dmVsQGxpbmFyby5vcmc7IExpbnV4YXJt
-DQo+IDxsaW51eGFybUBodWF3ZWkuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY0IDgvOF0g
-aHcvYXJtL2Jvb3Q6IEV4cG9zZSB0aGUgUEMtRElNTSBub2RlcyBpbiB0aGUNCj4gRFQNCj4gDQo+
-IE9uIDA0LzA5LzE5IDEyOjI5LCBTaGFtZWVyIEtvbG90aHVtIHdyb3RlOg0KPiA+IFRoaXMgcGF0
-Y2ggYWRkcyBtZW1vcnkgbm9kZXMgY29ycmVzcG9uZGluZyB0byBQQy1ESU1NIHJlZ2lvbnMuDQo+
-ID4gVGhpcyB3aWxsIGVuYWJsZSBzdXBwb3J0IGZvciBjb2xkIHBsdWdnZWQgZGV2aWNlIG1lbW9y
-eSBmb3IgR3Vlc3RzDQo+ID4gd2l0aCBEVCBib290Lg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTog
-U2hhbWVlciBLb2xvdGh1bSA8c2hhbWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0K
-PiA+IFNpZ25lZC1vZmYtYnk6IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4g
-PiAtLS0NCj4gPiAgaHcvYXJtL2Jvb3QuYyB8IDQyICsrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgNDIgaW5zZXJ0aW9ucygrKQ0K
-PiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS9ib290LmMgYi9ody9hcm0vYm9vdC5jDQo+ID4g
-aW5kZXggOGM4NDBiYS4uMTUwZTFlZCAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vYm9vdC5jDQo+
-ID4gKysrIGIvaHcvYXJtL2Jvb3QuYw0KPiA+IEBAIC0xOSw2ICsxOSw3IEBADQo+ID4gICNpbmNs
-dWRlICJzeXNlbXUvbnVtYS5oIg0KPiA+ICAjaW5jbHVkZSAiaHcvYm9hcmRzLmgiDQo+ID4gICNp
-bmNsdWRlICJody9sb2FkZXIuaCINCj4gPiArI2luY2x1ZGUgImh3L21lbS9tZW1vcnktZGV2aWNl
-LmgiDQo+ID4gICNpbmNsdWRlICJlbGYuaCINCj4gPiAgI2luY2x1ZGUgInN5c2VtdS9kZXZpY2Vf
-dHJlZS5oIg0KPiA+ICAjaW5jbHVkZSAicWVtdS9jb25maWctZmlsZS5oIg0KPiA+IEBAIC01Mzgs
-NiArNTM5LDQxIEBAIHN0YXRpYyB2b2lkIGZkdF9hZGRfcHNjaV9ub2RlKHZvaWQgKmZkdCkNCj4g
-PiAgICAgIHFlbXVfZmR0X3NldHByb3BfY2VsbChmZHQsICIvcHNjaSIsICJtaWdyYXRlIiwgbWln
-cmF0ZV9mbik7DQo+ID4gIH0NCj4gPg0KPiA+ICtzdGF0aWMgaW50IGZkdF9hZGRfaG90cGx1Z2dh
-YmxlX21lbW9yeV9ub2Rlcyh2b2lkICpmZHQsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHVpbnQzMl90IGFjZWxscywNCj4gdWludDMyX3Qgc2NlbGxz
-KSB7DQo+ID4gKyAgICBNZW1vcnlEZXZpY2VJbmZvTGlzdCAqaW5mbywgKmluZm9fbGlzdCA9IHFt
-cF9tZW1vcnlfZGV2aWNlX2xpc3QoKTsNCj4gPiArICAgIE1lbW9yeURldmljZUluZm8gKm1pOw0K
-PiA+ICsgICAgaW50IHJldCA9IDA7DQo+ID4gKw0KPiA+ICsgICAgZm9yIChpbmZvID0gaW5mb19s
-aXN0OyBpbmZvICE9IE5VTEw7IGluZm8gPSBpbmZvLT5uZXh0KSB7DQo+ID4gKyAgICAgICAgbWkg
-PSBpbmZvLT52YWx1ZTsNCj4gPiArICAgICAgICBzd2l0Y2ggKG1pLT50eXBlKSB7DQo+ID4gKyAg
-ICAgICAgY2FzZSBNRU1PUllfREVWSUNFX0lORk9fS0lORF9ESU1NOg0KPiA+ICsgICAgICAgIHsN
-Cj4gPiArICAgICAgICAgICAgUENESU1NRGV2aWNlSW5mbyAqZGkgPSBtaS0+dS5kaW1tLmRhdGE7
-DQo+ID4gKw0KPiA+ICsgICAgICAgICAgICByZXQgPSBmZHRfYWRkX21lbW9yeV9ub2RlKGZkdCwg
-YWNlbGxzLCBkaS0+YWRkciwgc2NlbGxzLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGRpLT5zaXplLCBkaS0+bm9kZSwgdHJ1ZSk7DQo+ID4gKyAgICAgICAgICAg
-IGlmIChyZXQpIHsNCj4gPiArICAgICAgICAgICAgICAgIGZwcmludGYoc3RkZXJyLA0KPiA+ICsg
-ICAgICAgICAgICAgICAgICAgICAgICAiY291bGRuJ3QgYWRkIFBDRElNTSAvbWVtb3J5QCUiUFJJ
-eDY0Ig0KPiBub2RlXG4iLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICBkaS0+YWRkcik7
-DQo+ID4gKyAgICAgICAgICAgICAgICBnb3RvIG91dDsNCj4gPiArICAgICAgICAgICAgfQ0KPiA+
-ICsgICAgICAgICAgICBicmVhazsNCj4gPiArICAgICAgICB9DQo+ID4gKyAgICAgICAgZGVmYXVs
-dDoNCj4gPiArICAgICAgICAgICAgZnByaW50ZihzdGRlcnIsICIlcyBtZW1vcnkgbm9kZXMgYXJl
-IG5vdCB5ZXQgc3VwcG9ydGVkXG4iLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgIE1lbW9yeURl
-dmljZUluZm9LaW5kX3N0cihtaS0+dHlwZSkpOw0KPiA+ICsgICAgICAgICAgICByZXQgPSAtRU5P
-RU5UOw0KPiA+ICsgICAgICAgICAgICBnb3RvIG91dDsNCj4gPiArICAgICAgICB9DQo+ID4gKyAg
-ICB9DQo+ID4gK291dDoNCj4gPiArICAgIHFhcGlfZnJlZV9NZW1vcnlEZXZpY2VJbmZvTGlzdChp
-bmZvX2xpc3QpOw0KPiA+ICsgICAgcmV0dXJuIHJldDsNCj4gPiArfQ0KPiA+ICsNCj4gPiAgaW50
-IGFybV9sb2FkX2R0Yihod2FkZHIgYWRkciwgY29uc3Qgc3RydWN0IGFybV9ib290X2luZm8gKmJp
-bmZvLA0KPiA+ICAgICAgICAgICAgICAgICAgIGh3YWRkciBhZGRyX2xpbWl0LCBBZGRyZXNzU3Bh
-Y2UgKmFzKQ0KPiA+ICB7DQo+ID4gQEAgLTYzNyw2ICs2NzMsMTIgQEAgaW50IGFybV9sb2FkX2R0
-Yihod2FkZHIgYWRkciwgY29uc3Qgc3RydWN0DQo+IGFybV9ib290X2luZm8gKmJpbmZvLA0KPiA+
-ICAgICAgICAgIH0NCj4gPiAgICAgIH0NCj4gPg0KPiA+ICsgICAgcmMgPSBmZHRfYWRkX2hvdHBs
-dWdnYWJsZV9tZW1vcnlfbm9kZXMoZmR0LCBhY2VsbHMsIHNjZWxscyk7DQo+ID4gKyAgICBpZiAo
-cmMgPCAwKSB7DQo+ID4gKyAgICAgICAgZnByaW50ZihzdGRlcnIsICJjb3VsZG4ndCBhZGQgaG90
-cGx1Z2dhYmxlIG1lbW9yeSBub2Rlc1xuIik7DQo+ID4gKyAgICAgICAgZ290byBmYWlsOw0KPiA+
-ICsgICAgfQ0KPiA+ICsNCj4gPiAgICAgIHJjID0gZmR0X3BhdGhfb2Zmc2V0KGZkdCwgIi9jaG9z
-ZW4iKTsNCj4gPiAgICAgIGlmIChyYyA8IDApIHsNCj4gPiAgICAgICAgICBxZW11X2ZkdF9hZGRf
-c3Vibm9kZShmZHQsICIvY2hvc2VuIik7DQo+ID4NCj4gDQo+IA0KPiBHaXZlbiBwYXRjaGVzICM3
-IGFuZCAjOCwgYXMgSSB1bmRlcnN0YW5kIHRoZW0sIHRoZSBmaXJtd2FyZSBjYW5ub3QNCj4gZGlz
-dGluZ3Vpc2ggaG90cGx1Z2dhYmxlICYgcHJlc2VudCwgZnJvbSBob3RwbHVnZ2FibGUgJiBhYnNl
-bnQuIFRoZSBmaXJtd2FyZQ0KPiBjYW4gb25seSBza2lwIGJvdGggaG90cGx1Z2dhYmxlIGNhc2Vz
-LiBUaGF0J3MgZmluZSBpbiB0aGF0IHRoZSBmaXJtd2FyZSB3aWxsIGhvZw0KPiBuZWl0aGVyIHR5
-cGUgLS0gYnV0IGlzIHRoYXQgT0sgZm9yIHRoZSBPUyBhcyB3ZWxsLCBmb3IgYm90aCBBQ1BJIGJv
-b3QgYW5kIERUDQo+IGJvb3Q/DQoNClJpZ2h0LiBUaGlzIG9ubHkgaGFuZGxlcyB0aGUgaG90cGx1
-Z2dhYmxlLWFuZC1wcmVzZW50IGNvbmRpdGlvbi4NCg0KPiBDb25zaWRlciBpbiBwYXJ0aWN1bGFy
-IHRoZSAiaG90cGx1Z2dhYmxlICYgcHJlc2VudCwgQUNQSSBib290IiBjYXNlLiBBc3N1bWluZw0K
-PiB3ZSBtb2RpZnkgdGhlIGZpcm13YXJlIHRvIHNraXAgImhvdHBsdWdnYWJsZSIgYWx0b2dldGhl
-ciwgdGhlIFVFRkkgbWVtbWFwDQo+IHdpbGwgbm90IGluY2x1ZGUgdGhlIHJhbmdlIGRlc3BpdGUg
-aXQgYmVpbmcgcHJlc2VudCBhdCBib290LiBQcmVzdW1hYmx5LCBBQ1BJDQo+IHdpbGwgcmVmZXIg
-dG8gdGhlIHJhbmdlIHNvbWVob3csIGhvd2V2ZXIuIFdpbGwgdGhhdCBub3QgY29uZnVzZSB0aGUg
-T1M/DQoNCkZyb20gbXkgdGVzdGluZyBzbyBmYXIsIHdpdGhvdXQgcGF0Y2hlcyAjNyBhbmQgIzgo
-aWUsIG5vIFVFRkkgbWVtbWFwIGVudHJ5KSwNCkFDUEkgYm9vdHMgZmluZS4gSSB0aGluayBBQ1BJ
-IG9ubHkgcmVsaWVzIG9uIGFtbCBhbmQgU1JBVC4gDQogDQo+IFdoZW4gSWdvciByYWlzZWQgdGhp
-cyBlYXJsaWVyLCBJIHN1Z2dlc3RlZCB0aGF0IGhvdHBsdWdnYWJsZS1hbmQtcHJlc2VudA0KPiBz
-aG91bGQgYmUgYWRkZWQgYnkgdGhlIGZpcm13YXJlLCBidXQgYWxzbyBhbGxvY2F0ZWQgaW1tZWRp
-YXRlbHksIGFzDQo+IEVmaUJvb3RTZXJ2aWNlc0RhdGEgdHlwZSBtZW1vcnkuIFRoaXMgd2lsbCBw
-cmV2ZW50IG90aGVyIGRyaXZlcnMgaW4gdGhlDQo+IGZpcm13YXJlIGZyb20gYWxsb2NhdGluZyBB
-Y3BpTlZTIG9yIFJlc2VydmVkIGNodW5rcyBmcm9tIHRoZSBzYW1lIG1lbW9yeQ0KPiByYW5nZSwg
-dGhlIFVFRkkgbWVtbWFwIHdpbGwgY29udGFpbiB0aGUgcmFuZ2UgYXMgRWZpQm9vdFNlcnZpY2Vz
-RGF0YSwgYW5kDQo+IHRoZW4gdGhlIE9TIGNhbiByZWxlYXNlIHRoYXQgYWxsb2NhdGlvbiBpbiBv
-bmUgZ28gZWFybHkgZHVyaW5nIGJvb3QuDQoNCk9rLiBBZ3JlZSB0aGF0IGhvdHBsdWdnYWJsZS1h
-bmQtcHJlc2VudCBjYXNlIGl0IG1heSBtYWtlIHNlbnNlIHRvIG1ha2UgdXNlIG9mDQp0aGF0IG1l
-bW9yeSByYXRoZXIgdGhhbiBqdXN0IGhpZGluZyBpdCBhbHRvZ2V0aGVyLg0KDQpPbiBhbm90aGVy
-IG5vdGUsIERvZXMgaG90cGx1Z2dhYmxlLWFuZC1hYnNlbnQgY2FzZSBtYWtlIGFueSB2YWxpZCB1
-c2UgY2FzZSBmb3INCmEgRFQgYm9vdD8gSSBhbSBub3Qgc3VyZSBob3cgd2UgY2FuIGhvdC1hZGQg
-bWVtb3J5IGluIHRoZSBjYXNlIG9mIERUIGJvb3QgbGF0ZXIuDQpJIGhhdmUgbm90IHZlcmlmaWVk
-IHRoZSBzeXNmcyBwcm9iZSBpbnRlcmZhY2UgeWV0IGFuZCB0aGVyZSBhcmUgZGlzY3Vzc2lvbnMg
-b2YgZHJvcHBpbmcNCnRoYXQgaW50ZXJmYWNlIGFsdG9nZXRoZXIuDQoNCj4gQnV0IHRoaXMgcmVh
-bGx5IGhhcyB0byBiZSBjbGFyaWZpZWQgZnJvbSB0aGUgTGludXgga2VybmVsJ3MgZXhwZWN0YXRp
-b25zLiBQbGVhc2UNCj4gZm9ybWFsaXplIGFsbCBvZiB0aGUgZm9sbG93aW5nIGNhc2VzOg0KDQpT
-dXJlLiBJIHdpbGwgd2FpdCBmb3Igc3VnZ2VzdGlvbnMgaGVyZSBhbmQgd29yayBvbiBpdC4NCg0K
-VGhhbmtzLA0KU2hhbWVlcg0KDQo+IE9TIGJvb3QgKERUL0FDUEkpICBob3RwbHVnZ2FibGUgJiAu
-Li4gIEdldE1lbW9yeU1hcCgpIHNob3VsZCByZXBvcnQgYXMNCj4gRFQvQUNQSSBzaG91bGQgcmVw
-b3J0IGFzDQo+IC0tLS0tLS0tLS0tLS0tLS0tICAtLS0tLS0tLS0tLS0tLS0tLS0gIC0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPiBEVA0K
-PiBwcmVzZW50ICAgICAgICAgICAgID8gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgID8N
-Cj4gRFQNCj4gYWJzZW50ICAgICAgICAgICAgICA/ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICA/DQo+IEFDUEkNCj4gcHJlc2VudCAgICAgICAgICAgICA/ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICA/DQo+IEFDUEkNCj4gYWJzZW50ICAgICAgICAgICAgICA/ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICA/DQo+IA0KPiBBZ2FpbiwgdGhpcyB0YWJsZSBpcyBkaWN0
-YXRlZCBieSBMaW51eC4NCj4gDQo+IFRoYW5rcw0KPiBMYXN6bG8NCg==
+Xiang Zheng <zhengxiang9@huawei.com> writes:
+
+> Hi Kevin,
+>
+> On 2019/4/9 16:28, Kevin Wolf wrote:
+>> Am 09.04.2019 um 08:01 hat Markus Armbruster geschrieben:
+>>> L=C3=A1szl=C3=B3's last sentence below is "This really needs the attent=
+ion of the
+>>> block people."  Cc'ing some.
+>>>
+>>> Laszlo Ersek <lersek@redhat.com> writes:
+>>>
+>>>> On 04/08/19 15:43, Xiang Zheng wrote:
+>>>>>
+>>>>> On 2019/4/3 23:35, Laszlo Ersek wrote:
+>>>>>>> I thought about your comments and wrote the following patch (just f=
+or test)
+>>>>>>> which uses a file mapping to replace the anonymous mapping. UEFI se=
+ems to work
+>>>>>>> fine. So why not use a file mapping to read or write a pflash devic=
+e?
+>>>>>> Honestly I can't answer "why not do this". Maybe we should.
+>>>>>>
+>>>>>> Regarding "why not do this *exactly as shown below*" -- probably bec=
+ause
+>>>>>> then we'd have updates to the same underlying regular file via both
+>>>>>> mmap() and write(), and the interactions between those are really tr=
+icky
+>>>>>> (=3D best avoided).
+>>>>>>
+>>>>>> One of my favorite questions over the years used to be posting a mat=
+rix
+>>>>>> of possible mmap() and file descriptor r/w/sync interactions, with t=
+he
+>>>>>> outcomes as they were "implied" by POSIX, and then asking at the bot=
+tom,
+>>>>>> "is my understanding correct?" I've never ever received an answer to
+>>>>>> that. :)
+>>>>>
+>>>>> In my opinion, it's feasible to r/w/sync the memory devices which use=
+ a block
+>>>>> backend via mmap() and write().
+>>>>
+>>>> Maybe. I think that would be a first in QEMU, and you'd likely have to
+>>>> describe and follow a semi-formal model between fd actions and mmap()
+>>>> actions.
+>>>>
+>>>> Here's the (unconfirmed) table I referred to earlier.
+>>>>
+>>>> +-------------+-----------------------------------------------------+
+>>>> | change made | change visible via                                  |
+>>>> | through     +-----------------+-------------+---------------------+
+>>>> |             | MAP_SHARED      | MAP_PRIVATE | read()              |
+>>>> +-------------+-----------------+-------------+---------------------+
+>>>> | MAP_SHARED  | yes             | unspecified | depends on MS_SYNC, |
+>>>> |             |                 |             | MS_ASYNC, or normal |
+>>>> |             |                 |             | system activity     |
+>>>> +-------------+-----------------+-------------+---------------------+
+>>>> | MAP_PRIVATE | no              | no          | no                  |
+>>>> +-------------+-----------------+-------------+---------------------+
+>>>> | write()     | depends on      | unspecified | yes                 |
+>>>> |             | MS_INVALIDATE,  |             |                     |
+>>>> |             | or the system's |             |                     |
+>>>> |             | read/write      |             |                     |
+>>>> |             | consistency     |             |                     |
+>>>> +-------------+-----------------+-------------+---------------------+
+>>>>
+>>>> Presumably:
+>>>>
+>>>> - a write() to some offset range of a regular file should be visible in
+>>>> a MAP_SHARED mapping of that range after a matching msync(...,
+>>>> MS_INVALIDATE) call;
+>>>>
+>>>> - changes through a MAP_SHARED mapping to a regular file should be
+>>>> visible via read() after a matching msync(..., MS_SYNC) call returns.
+>>>>
+>>>> I sent this table first in 2010 to the Austin Group mailing list, and
+>>>> received no comments. Then another person (on the same list) asked
+>>>> basically the same questions in 2013, to which I responded with the
+>>>> above assumptions / interpretations -- and received no comments from
+>>>> third parties again.
+>>>>
+>>>> But, I'm really out of my depth here -- we're not even discussing
+>>>> generic read()/write()/mmap()/munmap()/msync() interactions, but how
+>>>> they would fit into the qemu block layer. And I have no idea.
+>>=20
+>> There is no infrastructure in the block layer for mmapping image files.
+>>=20
+>>>>>> Also... although we don't really use them in practice, some QCOW2
+>>>>>> features for pflash block backends are -- or would be -- nice. (Not =
+the
+>>>>>> internal snapshots or the live RAM dumps, of course.)
+>>>>>
+>>>>> Regarding sparse files, can we read actual backend size data for the =
+read-only
+>>>>> pflash memory as the following steps shown?
+>>>>>
+>>>>> 1) Create a sparse file -- QEMU_EFI-test.raw:
+>>>>>    dd if=3D/dev/zero of=3DQEMU_EFI-test.raw bs=3D1M seek=3D64 count=
+=3D0
+>>>>>
+>>>>> 2) Read from QEMU_EFI.fd and write to QEMU_EFI-test.raw:
+>>>>>    dd of=3D"QEMU_EFI-test.raw" if=3D"QEMU_EFI.fd" conv=3Dnotrunc
+>>>>>
+>>>>> 3) Use QEMU_EFI-test.raw as the read-only pflash and start qemu with =
+the below
+>>>>> patch applied:
+>>>>>
+>>>>> ---8>---
+>>>>>
+>>>>> diff --git a/hw/block/block.c b/hw/block/block.c
+>>>>> index bf56c76..ad18d5e 100644
+>>>>> --- a/hw/block/block.c
+>>>>> +++ b/hw/block/block.c
+>>>>> @@ -30,7 +30,7 @@
+>>>>>  bool blk_check_size_and_read_all(BlockBackend *blk, void *buf, hwadd=
+r size,
+>>>>>                                   Error **errp)
+>>>>>  {
+>>>>> -    int64_t blk_len;
+>>>>> +    int64_t blk_len, actual_len;
+>>>>>      int ret;
+>>>>>
+>>>>>      blk_len =3D blk_getlength(blk);
+>>>>> @@ -53,7 +53,9 @@ bool blk_check_size_and_read_all(BlockBackend *blk,=
+ void *buf, hwaddr size,
+>>>>>       * block device and read only on demand.
+>>>>>       */
+>>>>>      assert(size <=3D BDRV_REQUEST_MAX_BYTES);
+>>>>> -    ret =3D blk_pread(blk, 0, buf, size);
+>>>>> +    actual_len =3D bdrv_get_allocated_file_size(blk_bs(blk));
+>>>>> +    ret =3D blk_pread(blk, 0, buf,
+>>>>> +            (!blk_is_read_only(blk) || actual_len < 0) ? size : actu=
+al_len);
+>>>>>      if (ret < 0) {
+>>>>>          error_setg_errno(errp, -ret, "can't read block backend");
+>>>>>          return false;
+>>>>>
+>>>>
+>>>> This hunk looks dubious for a general helper function. It seems to
+>>>> assume that the holes are punched at the end of the file.
+>>>>
+>>>> Sorry, this discussion is making me uncomfortable. I don't want to
+>>>> ignore your questions, but I have no idea about the right answers. This
+>>>> really needs the attention of the block people.
+>>=20
+>> Yes, this code is wrong. bdrv_get_allocated_file_size() isn't even
+>> implemented in all block drivers, and when it is implemented it isn't
+>> necessarily reliable (e.g. return 0 for block devices). It's fine for
+>> 'qemu-img info', but that's it.
+>>=20
+>> But even if you actually get the correct allocated file size, that's the
+>> disk space used on the host filesystem, so it doesn't include any holes,
+>> but it does include image format metadata, the data could possibly be
+>> compressed etc. In other words, for a guest device it's completely
+>> meaningless.
+>>=20
+>> I'm not even sure why you would want to do this even in your special
+>> case of a raw image that is sparse only at the end. Is it an
+>> optimisation to avoid reading zeros? This ends up basically being
+>> memset() for sparse blocks, so very quick. And I think you do want to
+>> zero out the remaining part of the buffer anyway. So it looks to me as
+>> if it were complicating the code for no use.
+>
+> The primary target of this discussion is to save the memory allocated
+> for UEFI firmware device. On virtual machine, we split it into two flash
+> devices[1] -- one is read-only in 64MB size and another is read-write in
+> 64MB size. The qemu commandline is:
+>
+>    -drive file=3DQEMU_EFI-pflash.raw,if=3Dpflash,format=3Draw,unit=3D0,re=
+adonly=3Don \
+>    -drive file=3Dempty_VARS.fd,if=3Dpflash,format=3Draw,unit=3D1 \
+>
+> Regarding the read-only one which are created from QEMU_EFI.fd, the origi=
+nal
+> QEMU_EFI.fd is only 2MB in size and we need to stuff it to 64MB with 62MB
+> 'zeros':
+>
+>    dd of=3D"QEMU_EFI-pflash.raw" if=3D"/dev/zero" bs=3D1M count=3D64
+>    dd of=3D"QEMU_EFI-pflash.raw" if=3D"QEMU_EFI.fd" conv=3Dnotrunc
+>
+> For some historical reasons such as compatibility and extensibility[2], we
+> restrict both their size to 64MB -- both UEFI and qemu have cold hard
+> constants.
+
+These reasons aren't historical.  But they're valid, and that's all that
+matters :)
+
+> This will consume a large amount of memory when running multiple VM
+> simultaneously (each guest needs 128MB).
+
+Understood.
+
+> There are accepted ideas proposed by Markus and Laszlo from prior discuss=
+ion[3]:
+>
+> 1) Getting flash memory size from a machine type or property.
+>
+> 2) Map the read-only part so it is shared among guests; Map the read-write
+> part normally.
+>
+> The first idea called explicit configuration which may break migration.
+
+For any configuration that can break migration, the solution is to have
+identical configuration on source and destination.
+
+> For the second idea, the only way I can imagine is using a file mapping to
+> read or write pflash devices so that we can allocate memory on demand. So=
+ I
+> tried to fit mmap() actions into the block layer[4]. However I am not sure
+> that maping image file whether can work fine for block layer.
+
+It adds an odd special case to the block layer.  But then flash devices
+are an odd user of the block layer.
+
+Normal users use the block layer as a *block* layer: to read and write
+blocks.
+
+Our flash devices don't do that.  They are *memory* devices, not *block*
+devices.  Pretty much the only thing the two have in common is
+persistence of data.  The block layer provides persistence, and I figure
+that's why it got pressed into service here.
+
+What the flash devices do is keep the complete image contents in memory,
+with changes written through to disk.
+
+This is pretty much exactly what mmap() does, so using it suggests
+itself.
+
+It's very much *not* what the block layer does.  mmap() is not even
+possible for anything but a file backend.
+
+With mmap(), memory gets faulted in on demand, and sharing read-only
+memory with other VMs should be feasible.  The question is how to use it
+here.  Is there a sane way to use it without rewriting the flash devices
+not to use the block layer?
+
+> On the other hand, Laszlo had mentioned the features of QCOW2 and sparse
+> files which may be nice for pflash block backends. But I am not familiar =
+with
+> it.
+
+Offhand, two QCOW2 features come to mind:
+
+1. Sparse storage even when the storage substrate can't do sparse.  I
+consider this one largely irrelevant.  Any decent file system can do
+sparse.  Archival and network transfer can compress instead.
+
+2. Snapshots to go with disk snapshots.  *Live* snapshots (the ones that
+include memory) already have the flash contents in the memory part, so
+this sems only relevant for "dead" snapshots.
+
+Anything else?
+
+> Till now I still have no idea to get rid of this problem (more properly i=
+t's
+> a optimization).
+>
+>
+> [1]https://lists.nongnu.org/archive/html/qemu-devel/2019-01/msg06606.html
+> [2]https://lists.nongnu.org/archive/html/qemu-devel/2019-03/msg07009.html
+> [3]https://lists.nongnu.org/archive/html/qemu-devel/2019-03/msg07107.html
+> [4]https://lists.nongnu.org/archive/html/qemu-devel/2019-04/msg00719.html

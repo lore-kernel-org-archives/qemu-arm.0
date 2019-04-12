@@ -1,97 +1,96 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp8287wrx;
-        Thu, 11 Apr 2019 19:13:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxltUQEpR52rXHfCkO94Z9ryrrCmC4BekF5lxMRDZtmL1COVjvSV+EUs8RuHuDxXQkmXgtf
-X-Received: by 2002:a5d:60cf:: with SMTP id x15mr33499814wrt.96.1555035238880;
-        Thu, 11 Apr 2019 19:13:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555035238; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp11388wrx;
+        Thu, 11 Apr 2019 19:18:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy22ZPlQ6VG48A5mhop+QpNGtEgmKm8mQ9uFqcOpV5rBW61toZrdJtI0HcSy6twRBawlLnM
+X-Received: by 2002:adf:f68d:: with SMTP id v13mr32748753wrp.6.1555035539323;
+        Thu, 11 Apr 2019 19:18:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555035539; cv=none;
         d=google.com; s=arc-20160816;
-        b=aAX/JkQuZNm+81Wt0Iw/Ot0jpSgC77Vl8ypwqTEiow70eNtIbdY1+JgYlIHIH5cRmn
-         HHDEkvFjs/daBp1/8BBvktVHvIwcb3ZPs8jlcDsi2tUAcEQdwIewuUXJhyVueN8URWwt
-         L02GdK66Npiuv7CY8BDz1vE17DflC1wU4ZPy+ZSlU6EE1NZ2gQMLOXrIiD2EMJKTTOy+
-         J15uh9n3dWbhQHrD47Scv/2TmsrVe/+SnZazv1dpxWIYIlou3oGCgyl67y7E/1+Pq8gj
-         umH6GIC2QewKkWFJgp6i2n0bbLc91M8DRMAurAhSRkp6n7LAC8ErCcp4rFXqAWMwVREc
-         CfYw==
+        b=o13SGtxG3lTAzWVLutTRsIxYYZwrTSBUn0JN5P7o57EkbOaHiSG7Bv8U8UwPPFJE2T
+         qAeXJJOHVkOLCklOXdeLkYRq4WH3YYX5pXmrg0dEhCuExQCVUuNpPv7rpVzBAhIK3/82
+         YkJbpqG4MgNBj4lZoNjgblFrwad+6ddoV+s+gsxaVylhl5szEwup0dWfudzezDxyw6ye
+         yhaa64pvGflRwLhk4NGjECS1ysd/wsjK33vbseTimNQc/gdn+CXp4kvjWnfsE+yfQgv4
+         r5A64r+LKjcgfZaiJmp8+mu4Irc+hLlLCNNJk3WkHH0l6TPR+vRj1GwdvEthIMoKgnqu
+         5EZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=Tj8pyJxNjpOr+pv5EXOpBQDoVitHpGp2jeWgsrxYRE8=;
-        b=NONOxd6JUmgEneGx4Ml8+sOBYhZ0BAB3f3lDejlWw8mtnF+ALKim9lKFED45n7RXis
-         Y8hW9mYG+xTDxXbr5J2Uxvz/Gaz7YcqUMCYq5JmrLRRhZmS1R2eptOg3X6/ZlVeENdAH
-         1/tmAqNb/Im6ZtoxFoMCjOnbkh7+hIfbMMY51z7FFBKMKUwSU1t8getOfSKjKIZXtRu6
-         3jhHY3fLv3Um4mAA50xn3qL++P2P/6b2FpSa6p+UeTgSTjIqnL4trJB/f+6V1eXPH8uA
-         FDMeh4tGQS95P6tXqTIMujYEoJ+B7ooGtrwQV0UNZSfcwTnw0uZ/ltnv6ugJHDNHEurt
-         2qpw==
+        bh=aL+Yylu12gi6XCiKgLJ9IpSKqK7vCbcazrVnKnO4KqI=;
+        b=djD2WI+3PYsuYEifCELucc2Ok+G8kpmxkyUzkDz27itjG55U/IfK4PyR/eb4iDEe9p
+         44kGIHq6Yfw+m2Df7+vS/ZNZ6ZocsM2f469hfLKG58N2D7hy1LZ+/UmYN1EY0PltGJdN
+         KeCb6WHYl4A6jH9+xns/Cx64GUBonphn+TkS5wiIuY+wDmwRC0IAMGwKC20OC5CXmam9
+         IhegWYqGUFfh1PRwBRjiKgrPJs/fbvN9NjLFE5GBWJ/oDVXgypjF6+tBvDNgvrDVJ4yh
+         /za5Vr8z4ay9B7MZPOGUCOKo5XqBTPFJHmrWZGR+t0j7cHklcggaxGGtV1f+wmzFlUpB
+         v0Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=KJ1XGA52;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=fhqadoVY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n17si26052717wrv.24.2019.04.11.19.13.58
+        by mx.google.com with ESMTPS id s8si25327234wro.38.2019.04.11.19.18.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 19:13:58 -0700 (PDT)
+        Thu, 11 Apr 2019 19:18:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=KJ1XGA52;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=fhqadoVY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:57570 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:57617 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hElhV-0007A5-V5
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 22:13:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42738)
+	id 1hElmM-0000HX-EK
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 22:18:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hElhN-00079l-RL
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 22:13:50 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1hElmA-0000HL-2m
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 22:18:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hElhI-00070k-En
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 22:13:49 -0400
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:34942)
+	(envelope-from <joel.stan@gmail.com>) id 1hElm9-0001kW-8i
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 22:18:46 -0400
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842]:45055)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hElhG-00070L-Lr; Thu, 11 Apr 2019 22:13:44 -0400
-Received: by mail-qk1-x741.google.com with SMTP id a71so4785149qkg.2;
-	Thu, 11 Apr 2019 19:13:42 -0700 (PDT)
+	id 1hElm9-0001k8-2v; Thu, 11 Apr 2019 22:18:45 -0400
+Received: by mail-qt1-x842.google.com with SMTP id w5so9516026qtb.11;
+	Thu, 11 Apr 2019 19:18:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=Tj8pyJxNjpOr+pv5EXOpBQDoVitHpGp2jeWgsrxYRE8=;
-	b=KJ1XGA52z1MyTIyR3XCLHnxggMjmhfVxP+HdENUN2KKhQM56mjgxJ553Y19Gr5uHN0
-	D8/O9J2H0Lxh3Vvr6W2XB2XI0evkMpU0NyBnNni0oTPVcTYOq6q8Ssj+ELBGeqg8tjCI
-	Htgbo/ABmeGQnI3+OaoAz1JWuRtXdJg4IEHgM=
+	bh=aL+Yylu12gi6XCiKgLJ9IpSKqK7vCbcazrVnKnO4KqI=;
+	b=fhqadoVYuMYk8lfta/4r02EetdvhHQmtfR+jKFA7VYj1VKZlKuUO1UoEH2Vx2fFIbl
+	Jyj2ezurzO7wuCBPXuv0dwApD/fQxH2bm3vwDBkRj50V20i22QqUxfkCqaHEkaXyU6Zr
+	Ryu6M/Q24E2ooTQOnVryLdKlavsKLj0DFrjFU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Tj8pyJxNjpOr+pv5EXOpBQDoVitHpGp2jeWgsrxYRE8=;
-	b=X5NUF3D93417+WXUjjQQk6uxgL5DQyQ/nLgWf44w7ZN1bZbOoNcgcwbNfrvcQl/idP
-	dKee5DVM4mTWx+MWoaaTtIDMHKxhxlnIvlxFTq9xeswsCNL4NeqQ+uLvSH1epWWDViFO
-	DCljPoN9/mVVza2gwqm44sRoaQ/a4f/6PG+Yj2ZBTH6vmj/LcnL1nECUNk0mltHU2Z4q
-	aETmYlH325HEt5YgeTxuxVjGLyu1Kxclw+TZMJcNkmjnWTNkeAghymUloqrSOQ22mPHt
-	XEFoo1D8G17jI4IxOCD1HclvInnXYcMJC2NKMa/II2huvGww0xMKoTgxfEr18Of2gnEL
-	EENA==
-X-Gm-Message-State: APjAAAUmdlQ9FKkZh7BQrwffanD4RgcxPMBfavLeBmg/ZGs0JEzwlZjp
-	O3UUs8t35WjRYuxTwWS9brqZJZ7JxeU8l0t8YLg=
-X-Received: by 2002:a05:620a:16aa:: with SMTP id
-	s10mr40811395qkj.305.1555035221115; 
-	Thu, 11 Apr 2019 19:13:41 -0700 (PDT)
+	bh=aL+Yylu12gi6XCiKgLJ9IpSKqK7vCbcazrVnKnO4KqI=;
+	b=nlpovfSAoPKJx1TyIx23Z2yFwwwcZReXlRCn2JfjEHr61X3T13YOxVbd2GlJ7NLzqE
+	nmxvzbwXQh/o+OtbTqoBmR4IKqVboxRvutrmSP4LNxUxcLNpj4icYdcyniCmdzKbZ/l2
+	eDSr0ag2PSMEpiGvTSwOpS9ASdtS+pfjgunAam9eRPSpmQndEh9DfOvtnSC2Kg2BVkuZ
+	U7iZzUAonSgWPwhcJIP9Cq1mS5EQJ6D5PoZVyMdS2Bsz4TrU87XDKvdGqSxLiofM8eRm
+	mT4GC/LikpiKBcRMtd6KMaoqQIIIbLff1mSln/G423/lm6ycye4A1MeEHonCHy+Rn7xe
+	a5Ew==
+X-Gm-Message-State: APjAAAUL70uZQRa0H5nUi5ew/fcUuHdalMOAy4LetK9AiyNdS3cpVQ1z
+	nofmgpdEM5ANqYo8BzuVN8re+BuKReaeKLT/X00=
+X-Received: by 2002:ac8:2f85:: with SMTP id l5mr45837720qta.269.1555035523784; 
+	Thu, 11 Apr 2019 19:18:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190411161013.4514-1-clg@kaod.org>
-	<20190411161013.4514-2-clg@kaod.org>
-In-Reply-To: <20190411161013.4514-2-clg@kaod.org>
+	<20190411161013.4514-3-clg@kaod.org>
+In-Reply-To: <20190411161013.4514-3-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 12 Apr 2019 02:13:29 +0000
-Message-ID: <CACPK8XdBo-QLzkh1qmgA8D1_hN7P_7KcUOvwfm3LYqw_Pzzycg@mail.gmail.com>
+Date: Fri, 12 Apr 2019 02:18:32 +0000
+Message-ID: <CACPK8XezRXPFFiiK7_xXLs-ipnfw9400E1dSRHN0XnF2cc4=vA@mail.gmail.com>
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::741
-Subject: Re: [Qemu-arm] [PATCH 1/3] aspeed: add a per SoC mapping for the
- interrupt space
+X-Received-From: 2607:f8b0:4864:20::842
+Subject: Re: [Qemu-arm] [PATCH 2/3] aspeed: add a per SoC mapping for the
+ memory space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,13 +107,28 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s4CsKEWbMSug
+X-TUID: 0ds1L7ci+zaa
 
 On Thu, 11 Apr 2019 at 16:10, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
 > This will simplify the definition of new SoCs, like the AST2600 which
-> should use a different CPU and a different IRQ number layout.
+> should use a slightly different address space and have a different set
+> of controllers.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 5bbd1fb87d18..9b601709e93c 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+
+> +static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
+
+> +static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
+
+Most of these arrays is common. And some of it will stay common in the
+2600. Any ideas how we could avoid duplication?
+
+This is fine for now.
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>

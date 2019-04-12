@@ -1,105 +1,89 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7332562wrx;
-        Thu, 11 Apr 2019 08:43:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWjGTnEnCsQxzGjRR4+brIJy8HwmbdFjJuXw060ThmUqlKQNUaNkmiweEqAis3g9n3U2j6
-X-Received: by 2002:a5d:494c:: with SMTP id r12mr31910127wrs.250.1554997384859;
-        Thu, 11 Apr 2019 08:43:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554997384; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp7860800wrx;
+        Thu, 11 Apr 2019 18:54:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFQjPR8Vn/6euOSG1/CbNMC+eEnAnhaklKgV7wAKutOSSKhcEat6w/6iT2wUtO+erhzHHY
+X-Received: by 2002:a7b:c14c:: with SMTP id z12mr8470780wmi.138.1555034057972;
+        Thu, 11 Apr 2019 18:54:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555034057; cv=none;
         d=google.com; s=arc-20160816;
-        b=nVsxbAgKeNsbaAC3ztlPTCbZgLUQRUp8QWyieTT6DjpjlDa+wXR/KvmhPynqi08aEh
-         9p+/Gyd6n+NxmEcXSVYeVm12GZle3db4qd6OFVrn5jTJyC3rQd2sJNsYJcCDKS7X30uj
-         +6xOXMcmbIAHPqhHTGbj+e9Pnw70Y5+4RUIeEt1AtCsQXFCLci24QNTmjizKeP/KwXHw
-         VCKCX0ZSlRLf3NnH98Dplh3KreXEP6Dyw5zUe/hmgubTASqJ1cGZT4kmma0VLiWdjcIw
-         1whK5Mb/jtIM2facYDXpdZ0mmiJZ0vzAtGtD65WfGK/KgRe/CVoODX+MDJ8hsakU9gdL
-         sPKA==
+        b=glDc+7xP5PSMpb1oW+h2pZK8vf1QS+MMptLqaQwu0UjhiAW78TNGpZ7t8xMnPHGtde
+         VRJOrcg/gz0z5VTvQmYKZoNtK9LWhg8IyKNYNBdv0hFLwgj8+XCaUkFmLqeSVpcLnelJ
+         Ch8Hy1YdZnKfGC8iL8ByDSyb3gLVotKqzrYYKohtYqIxnm5Dnp6E8HOlMD681Jnfjy1I
+         9gOE60vxAVpLLkNlUa0KmZRzZ13zYPEd1LGyf2FSoOyA2phSdWD0KZyQL5DTocQvOk49
+         xhEeHzVODXyGcRe/5d2EXsrY7IzJ+AgssErCnyUC/Klr5ojd5WQUlbH1+TNImUwXiUyx
+         72MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=DCRADAn52YQB0i1Vcag5VquhM34iiUI7ee/x7IVTB+I=;
-        b=L21rPdSsFWOvADgld8FXk2nLfyucZurOIemG1LbP9oqi8E4dML8vIMUuHWDIgN8Dxh
-         ukRhALVY29dlEFC099ZbBFFSoFVPkR2asg7OuFQmgPXqfqwjB3bMjPlppk0FdgAEL8CH
-         9VSDqbKyGFm2CcR1bdRL2GXnY8lyp3W63NMUpm4z6Ow/dA7vQ87L1MLaAGbCU14SFaRP
-         IhJ4OcQZkqzCqE3MsDQ1ZOjC8OZ+OgqwiAzCdfA2AohPID+7/PyIQjdDkXA/kIKnhc2U
-         vjpj95H3c5lIWt9Fz1iSgO85vvX22WUecYRBKb/CTdoxybb9yh9ddREZdBUQ+0j4LGwO
-         77KA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=mD7ceQ0yz0h1aa+Tu8PMS2NKL0tkaHm2R54JLjJb41k=;
+        b=GtDoOvDXlRv90EhGm1HVBG1K8O0X6pW/zKrq31DXHwvYQZbElvA2dcbeNQsvVg3wrf
+         9wvnMZLz74uVMTlVceBxJ9IJyKrZPmCQ2EyV5B8qdEW8SH7qT+ZeYnsYpIal+nLIShQ8
+         CacXdvouHzWz+wEBEnBW7WzEpE7FTiTCFZpV5RXuSwUBPqo76ouQs76n5i4zrqtQNkoK
+         dUVPt4HYMoHpJi+aAVA/3vvbhYORX9IKPDqFQt5umdU0YwA0gk6eeT4ZHSW2wSqxr+qC
+         0TnytmfIPdH2+wckFkZNUoqqS1Gp0sAiL1w9x1vfKtn9kTL5etMxHgnIDXdEycu6UPaT
+         gohg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=w93VzOhj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16si26034578wrp.64.2019.04.11.08.43.04
+        by mx.google.com with ESMTPS id t2si26083871wrp.368.2019.04.11.18.54.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 08:43:04 -0700 (PDT)
+        Thu, 11 Apr 2019 18:54:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=w93VzOhj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:50963 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:57387 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEbqx-0003n9-PT
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 11:43:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52655)
+	id 1hElOT-0001JM-1V
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 21:54:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hEbnn-0001Io-Lh
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:39:50 -0400
+	(envelope-from <zhengxiang9@huawei.com>) id 1hElOD-0001J5-4x
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 21:54:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hEbnm-0008EZ-EB
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:39:47 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41160)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hEbnm-0008E6-43
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 11:39:46 -0400
-Received: by mail-wr1-x444.google.com with SMTP id r4so7947413wrq.8
-	for <qemu-arm@nongnu.org>; Thu, 11 Apr 2019 08:39:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=DCRADAn52YQB0i1Vcag5VquhM34iiUI7ee/x7IVTB+I=;
-	b=w93VzOhjHNXoT40RlJkosHDhMfGSasHqeNuNb1iQ47/8o3D9mWd5aQktuA1FBfqTEX
-	02CK4EMU5HiW4hOi3OYFVbezZWea8HueruYgLo5Fk76TxhuKhGtpKnbr/Sn1OedSCJ0x
-	SalAIq0brIfMWylnXK+K9pRkJl4xPgRCiehFB8Ci5NC2QfQyUhBPeq3CZ6a9ZTNkkY6g
-	/pKjXKRak0fVNlMM9/hpgt5p+ngxYWuTdrf71yI0XqRgLTZ12LsCAOlsMFQi4KzH3Y0C
-	TqwbYtgfeyueWCQwnzsAc8r3Vn7D7p2UBy3dwsNreqIi3y27HQWDGj0CvIRNn4uENni1
-	OTeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=DCRADAn52YQB0i1Vcag5VquhM34iiUI7ee/x7IVTB+I=;
-	b=YorbY8YTT6vJ8bKvQN47Tc36MeTkzosOjUDRLgRYKlhuA049OBVROLCzZkR3IVPNXM
-	qb5CuiwNep3kFrpwh+zPGWauXe4Du3S0c1SWE+JqgnYlQxMMK4jMAA+tJkqRPIZoVtUI
-	OpiVTr83cA3FV/xySdujBsUvoE+erk5VC2rILsutjHcqIM0dFxRLeqVoymNg9yfZc/M4
-	xbVAMbMqPFHm/1n1jOsqtRN5YgpFWK+BqmvKn3iJisCTz6o1EBIYSM8OSxEboRlzJSFv
-	HvBoIPtC56g+tQo1rCUzerQv2Ls7fDz/aV1FgTl4dISOqUlZ6rON9kWzPVDXLt708U2Y
-	IWCw==
-X-Gm-Message-State: APjAAAW5TIS2ba/gycWH29DGoiktAZFMBJ7QGBdMV7GDamKuv/fqkr4t
-	0Xlt270D4Rm6SBWSoT9LNUo8gGPbKrc=
-X-Received: by 2002:adf:f68d:: with SMTP id v13mr31103487wrp.6.1554997184884; 
-	Thu, 11 Apr 2019 08:39:44 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	y132sm6932581wmg.38.2019.04.11.08.39.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Apr 2019 08:39:44 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu, 11 Apr 2019 16:39:42 +0100
-Message-Id: <20190411153942.4533-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+	(envelope-from <zhengxiang9@huawei.com>) id 1hElOB-0004ss-PJ
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 21:54:01 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:54764 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+	id 1hElOB-0004jC-Aq; Thu, 11 Apr 2019 21:53:59 -0400
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 9FFD48AE2E9CB24F1990;
+	Fri, 12 Apr 2019 09:53:49 +0800 (CST)
+Received: from [127.0.0.1] (10.177.29.32) by DGGEMS413-HUB.china.huawei.com
+	(10.3.19.213) with Microsoft SMTP Server id 14.3.408.0; Fri, 12 Apr 2019
+	09:53:40 +0800
+To: Kevin Wolf <kwolf@redhat.com>
+References: <87imw5fv45.fsf@dusky.pond.sub.org>
+	<abe1d9cd-85bb-2ef8-630f-af28cae6378c@redhat.com>
+	<8736n9eb4s.fsf@dusky.pond.sub.org>
+	<bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
+	<c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
+	<b107e0c0-1c4c-3f0f-eb78-8929c315ce28@huawei.com>
+	<a8144a1f-364e-cea5-b0a7-05342bdab936@redhat.com>
+	<87bm1fiuo8.fsf@dusky.pond.sub.org>
+	<20190409082852.GB6610@localhost.localdomain>
+	<c03c51a7-1bb0-b05b-9027-2364ab00517c@huawei.com>
+	<20190411122246.GB5694@linux.fritz.box>
+From: Xiang Zheng <zhengxiang9@huawei.com>
+Message-ID: <0c6c32b7-46f8-cf80-b7a6-1b48995b84e4@huawei.com>
+Date: Fri, 12 Apr 2019 09:52:44 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+	Thunderbird/64.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH] target/arm: Implement NSACR gating of floating
- point
+In-Reply-To: <20190411122246.GB5694@linux.fritz.box>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.35
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
+ size of flash device to save memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,149 +95,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
+	Max Reitz <mreitz@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RSk4sgYeRw3W
+X-TUID: WvmRq2Go9kk9
 
-The NSACR register allows secure code to configure the FPU
-to be inaccessible to non-secure code. If the NSACR.CP10
-bit is set then:
- * NS accesses to the FPU trap as UNDEF (ie to NS EL1 or EL2)
- * CPACR.{CP10,CP11} behave as if RAZ/WI
- * HCPTR.{TCP11,TCP10} behave as if RAO/WI
+On 2019/4/11 20:22, Kevin Wolf wrote:
+> Okay, so your problem is that blk_pread() writes to the whole buffer,
+> writing explicit zeroes for unallocated parts of the image, while you
+> would like to leave those parts of the buffer untouched so that we don't
+> actually allocate the memory, but can just use the shared zero page.
+> 
+> If you just want to read the non-zero parts of the image, that can be
+> done by using a loop that calls bdrv_block_status() and only reads from
+> the image if the BDRV_BLOCK_ZERO bit is clear.
+> 
+> Would this solve your problem?
 
-Note that we do not implement the NSACR.NSASEDIS bit which
-gates only access to Advanced SIMD, in the same way that
-we don't implement the equivalent CPACR.ASEDIS and HCPTR.TASE.
+Sounds good! What if guest tried to read/write the zero parts?
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I noticed we were missing NSACR handling here while looking at
-M profile floating point, but it turns out that M profile NSACR
-isn't really the same, so the two don't share code. This patch
-fixes the A-profile NSACR handling. Note that this only affects
-CPUs with an AArch32 EL3.
-
- target/arm/helper.c | 75 +++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 73 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a0dd1f99974..26105f13e70 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -903,9 +903,36 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         }
-         value &= mask;
-     }
-+
-+    /*
-+     * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-+     * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-+        value &= ~(0xf << 20);
-+        value |= env->cp15.cpacr_el1 & (0xf << 20);
-+    }
-+
-     env->cp15.cpacr_el1 = value;
- }
- 
-+static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /*
-+     * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-+     * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-+     */
-+    uint64_t value = env->cp15.cpacr_el1;
-+
-+    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-+        value &= ~(0xf << 20);
-+    }
-+    return value;
-+}
-+
-+
- static void cpacr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     /* Call cpacr_write() so that we reset with the correct RAO bits set
-@@ -971,7 +998,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-     { .name = "CPACR", .state = ARM_CP_STATE_BOTH, .opc0 = 3,
-       .crn = 1, .crm = 0, .opc1 = 0, .opc2 = 2, .accessfn = cpacr_access,
-       .access = PL1_RW, .fieldoffset = offsetof(CPUARMState, cp15.cpacr_el1),
--      .resetfn = cpacr_reset, .writefn = cpacr_write },
-+      .resetfn = cpacr_reset, .writefn = cpacr_write, .readfn = cpacr_read },
-     REGINFO_SENTINEL
- };
- 
-@@ -4656,6 +4683,36 @@ uint64_t arm_hcr_el2_eff(CPUARMState *env)
-     return ret;
- }
- 
-+static void cptr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                           uint64_t value)
-+{
-+    /*
-+     * For A-profile AArch32 EL3, if NSACR.CP10
-+     * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-+        value &= ~(0x3 << 10);
-+        value |= env->cp15.cptr_el[2] & (0x3 << 10);
-+    }
-+    env->cp15.cptr_el[2] = value;
-+}
-+
-+static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /*
-+     * For A-profile AArch32 EL3, if NSACR.CP10
-+     * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
-+     */
-+    uint64_t value = env->cp15.cptr_el[2];
-+
-+    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-+        value &= ~(0x3 << 10);
-+    }
-+    return value;
-+}
-+
- static const ARMCPRegInfo el2_cp_reginfo[] = {
-     { .name = "HCR_EL2", .state = ARM_CP_STATE_AA64,
-       .type = ARM_CP_IO,
-@@ -4703,7 +4760,8 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-     { .name = "CPTR_EL2", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 2,
-       .access = PL2_RW, .accessfn = cptr_access, .resetvalue = 0,
--      .fieldoffset = offsetof(CPUARMState, cp15.cptr_el[2]) },
-+      .fieldoffset = offsetof(CPUARMState, cp15.cptr_el[2]),
-+      .readfn = cptr_el2_read, .writefn = cptr_el2_write },
-     { .name = "MAIR_EL2", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 4, .crn = 10, .crm = 2, .opc2 = 0,
-       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.mair_el[2]),
-@@ -12804,6 +12862,19 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-         break;
-     }
- 
-+    /*
-+     * The NSACR allows A-profile AArch32 EL3 and M-profile secure mode
-+     * to control non-secure access to the FPU. It doesn't have any
-+     * effect if EL3 is AArch64 or if EL3 doesn't exist at all.
-+     */
-+    if ((arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+         cur_el <= 2 && !arm_is_secure_below_el3(env))) {
-+        if (!extract32(env->cp15.nsacr, 10, 1)) {
-+            /* FP insns act as UNDEF */
-+            return cur_el == 2 ? 2 : 1;
-+        }
-+    }
-+
-     /* For the CPTR registers we don't need to guard with an ARM_FEATURE
-      * check because zero bits in the registers mean "don't trap".
-      */
 -- 
-2.20.1
+
+Thanks,
+Xiang
+
 

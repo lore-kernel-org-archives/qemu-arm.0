@@ -1,108 +1,90 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp118728wrx;
-        Thu, 11 Apr 2019 21:54:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxh4FazQygIuwJsPp8T/hMV2MlgRXNAAOJW5R5WLVN+kct4RvQcTpnrAwEnYRekGG/MMIbi
-X-Received: by 2002:a7b:ce84:: with SMTP id q4mr9537575wmj.41.1555044899491;
-        Thu, 11 Apr 2019 21:54:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555044899; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp154324wrx;
+        Thu, 11 Apr 2019 22:45:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyEEYMDbM23ssh9oeO4I6Euv5TYmeGHSWayKsUeoAN68zECoEVPneF3MCbA5vmKs7VURfeK
+X-Received: by 2002:a1c:4e04:: with SMTP id g4mr9742995wmh.127.1555047952109;
+        Thu, 11 Apr 2019 22:45:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555047952; cv=none;
         d=google.com; s=arc-20160816;
-        b=X8EYlVGeG7d2kb2saR5seMNkyjLKXzj2yhld0NaMBYWqHGlaOGWl4VmH2lukrMEiaB
-         kfwF6hjDUqq3EkR8xwnm35Awgwt6mj79v5mzCjV9ktWpMSTFBhROdiBnNK6SPEihYfj/
-         2+taCk7C7irAoen11Myx/Sqtg324iY7G91jSZuJJScIShSGZwQ3lVtsSUDoWCv9+Ugc7
-         4yoYbyIvxjjZPfH7y4Rg22R+ROtjKevXoDSCkTMHJ2fn0Ebm1frnF5wnX8Qzq39CWgJa
-         WoUOCxrRcgSBgeteYXq2lAgCs0Ez/b7KZYR1QqLd5r3q4vjtSazPIcWY57ImaILBJjtc
-         3C6g==
+        b=FVqllqmAAHq1TDzbyY7LmfpRkz9Xp1CkX5u+Z5xqAK6qrxTn9Auk2NMB+iJhtMpOHT
+         y1NzGbS4dg3kbTVzROYB70Tl+zUQSu4Oelc+mA3o9+ja4fgsL62dKLsoiw5Fjxc42e92
+         dm4eXOdTyktxf9ymmRoiNy0+Ab7R8nf8JuZ7R+ZkZOoFhW4qtU4U1MfHxWfJH/kXHWmA
+         Sp5T09sh4d0GMnoguF50vaZfL+QAs/j1x9Dvf6NHmcz/AsJmIyZEzXbBKvkNDLrZcHvK
+         ++ZlXGehEgGY1KPH3cHkhzUXhnjvuESb5A11gBLcxCERpNiN0vGNmM7/VmqEaYjdy5UC
+         i2bQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=UtwwdswuQTVY78rOrnx+cZ0SUKEyn0jmcL9H2uyrBe0=;
-        b=CTuiqz/iy3CVjzh7J7tyDt5intSvesoKyvPUAa2h1O5F7qF+G9jcphUuSFYcIfQer6
-         XeVCfPQZD8Y7ZuAt6pAqLqJ1VN1GB54cw2T8rzVdhSgJVujHztaCjZ16Kki3eugKW4uB
-         ARva+WfdeJ8fjOtr069hE28QDMzt7JYsXDWgQ3FWty2jJhU2YRLPtSSGTul5Img7ZD6A
-         misLsarE1i3b0+hNC+/j9w/QpMQJzEn2CTd82XEeAMsVfyeXYUWs3B8VUxxDWdOi/ZVK
-         tu8IpxM4U5+N5c4Cbsk12iMq3If9le8gBClI8mkrPQNZda3IQrHleuxAh+a8PeBfTCAl
-         H2Dw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :to:from:date;
+        bh=0Tszx93Oho2x1LwxU+UZmhfkkpoy3rGMK9XgtyndMmM=;
+        b=nZdrDO2sAG9KDlWHc/lYDk0+LBcImVB8L2pzYoUUh5/XrdTcLDgCL5HdkxXIayN+GV
+         ioNTXGN0oBgQMuxDN1QHpjWdlSos9w/WUrivE9WRPWh0ovR8Ol9UuePme/Rjofcnj2v0
+         HClvEgL9y4FBFmJllFqSSf+9Pg8CWwEfG2lMSRoVxtjGmiKcyI6iEfQ/JjNvuSqY+2ag
+         3YiBP1MII44RtEkr/wHlcT0I3+UWBBWuo6dc0g0aGDcEkuq9GTkQjDhQvCBxXamNZg7R
+         Th16ds5JqovpnVMRH673kjE5kxzW8SriWZWAmOsCTMHGeaI30rZ3EeqvcUt30NUbJW1l
+         xLQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iIUMATIj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r193si4362846wmf.61.2019.04.11.21.54.59
+        by mx.google.com with ESMTPS id p16si4544128wmc.49.2019.04.11.22.45.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 21:54:59 -0700 (PDT)
+        Thu, 11 Apr 2019 22:45:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iIUMATIj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:58945 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([127.0.0.1]:59355 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEoDK-0007Bw-Fi
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 00:54:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36410)
+	id 1hEp0Z-0002Sv-5r
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 01:45:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44324)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEoD9-0007Bf-Ja
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:54:49 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hEp0M-0002G1-Pt
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 01:45:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEoD8-00008f-3y
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:54:47 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:43400)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hEoD7-000080-R6; Fri, 12 Apr 2019 00:54:46 -0400
-Received: by mail-pl1-x642.google.com with SMTP id n8so4470830plp.10;
-	Thu, 11 Apr 2019 21:54:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=UtwwdswuQTVY78rOrnx+cZ0SUKEyn0jmcL9H2uyrBe0=;
-	b=iIUMATIjtGtpNcaWt1ZGv3S1QwmliPMi1ZUNNqyONLB53oBjUdDA5yqOAXnzp5kvAB
-	8MsZ4UfSzxcNjwsrgTAf6J2QihSc2tEnNJUvRdNk3eG0f/uLtv56f19iTEorC0uVMth/
-	/QroRXOjYbo5kV17hMunTaMsbP3BeYVp9K078d2zwF7vov9nTT4A3c0j3a7JaK82aGNM
-	Y9P08okE5Rypy/SQfLUktyEHF5CQNmW7fKguXaZs7y45W3qjGXlVkFP4jIRI7Y1ZgxmQ
-	fMWJuqMsqxA7rqtSBv8zRWP/OpF7vtorMsrUj6zIMmGFY1S68QtnfIGGJFdvo0VaqztO
-	thsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=UtwwdswuQTVY78rOrnx+cZ0SUKEyn0jmcL9H2uyrBe0=;
-	b=b4/2kNe/w6oMsA7y+36rh3b2SSlT2bNJj4helnv79S5KWWdUbyBOBvAINIkwo5f3BW
-	FuaA/in2eKOx5mUhl/w7yBjWUnHze/NiZTTFIKXo/CKCJxkU/Y4yIOEu6eVMNkvP8ViK
-	1WKq1pKXZZwOHE8LToF4GzbIduyEcBhUMk13QlT6wzJxnhmmlVh41/b2Bc4+2yujSFYO
-	I1W03CCbANpApyw0D3NflRPFZw+vXeloeIlAwsh7mLD02by6bG0ZXytwxlK9Pfzl8oFg
-	lfBsCHbH/rp3Spnd3FQG/DDtG8HVhtVyrc7s/QgwK01PnlyJoGt0EIUQEzejZEDcbV+6
-	chkg==
-X-Gm-Message-State: APjAAAXeoSwC7KpD0vbO3p5iM1yIlUGhq4z4Ilxu81EaDoyVLxvsBIcx
-	nFNp1PlnCtY3NQ59YOkA1Q0=
-X-Received: by 2002:a17:902:2c01:: with SMTP id
-	m1mr44834140plb.186.1555044884176; 
-	Thu, 11 Apr 2019 21:54:44 -0700 (PDT)
-Received: from voyager.jms.id.au ([36.255.48.244])
-	by smtp.gmail.com with ESMTPSA id
-	x16sm88515747pge.27.2019.04.11.21.54.40
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 11 Apr 2019 21:54:43 -0700 (PDT)
-Received: by voyager.jms.id.au (sSMTP sendmail emulation);
-	Fri, 12 Apr 2019 14:24:37 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>
-Date: Fri, 12 Apr 2019 13:49:32 +0930
-Message-Id: <20190412041933.12264-2-joel@jms.id.au>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190412041933.12264-1-joel@jms.id.au>
-References: <20190412041933.12264-1-joel@jms.id.au>
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hEp0L-0007Yq-Fr
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 01:45:38 -0400
+Received: from mga17.intel.com ([192.55.52.151]:53628)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1hEp0L-0006Mb-3B; Fri, 12 Apr 2019 01:45:37 -0400
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	11 Apr 2019 22:44:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,340,1549958400"; d="scan'208";a="142117065"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by orsmga003.jf.intel.com with ESMTP; 11 Apr 2019 22:44:26 -0700
+Date: Fri, 12 Apr 2019 13:44:07 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190412054407.GA5035@richard>
+References: <20190313044253.31988-1-richardw.yang@linux.intel.com>
+	<20190313044253.31988-4-richardw.yang@linux.intel.com>
+	<20190313132300.3f56a5ca@redhat.com>
+	<20190313133359.h2njohyijgvkcbtv@master>
+	<20190313170943.5384f5cf@redhat.com>
+	<20190402035343.GA6527@richard>
+	<20190402081512.6194a58f@redhat.com>
+	<20190405085529.GA24071@richard>
+	<20190409165415.2e5df0c6@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190409165415.2e5df0c6@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-Subject: [Qemu-arm] [PATCH v2 1/2] hw: timer: Add ASPEED RTC device
+X-Received-From: 192.55.52.151
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 3/3] hw/acpi: Extract
+ build_mcfg
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,279 +96,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, Wei Yang <richard.weiyang@gmail.com>,
+	shannon.zhaosl@gmail.com, wei.w.wang@intel.com,
+	qemu-arm@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vcuXcTwCHCS0
+X-TUID: Fg+h8bh7i0TV
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
-v2:
- Use g_assert_not_reached
- Add vmstate
- Add reset callback
- Annotate fall through cases
+On Tue, Apr 09, 2019 at 04:54:15PM +0200, Igor Mammedov wrote:
+>> 
+>> Let's see a normal hotplug case first. 
+>> 
+>>     I did one test to see the how a guest with hot-plug cpu migrate to
+>>     destination.  It looks the migration fails if I just do hot-plug at
+>>     source. So I have to do hot-plug both at source and at destination. This
+>>     will expand the table_mr both at source and destination.
+>> 
+>> Then let's see the effect of hotplug more devices to exceed original padded
+>> size. There are two cases, before re-sizable MemoryRegion and after.
+>> 
+>> 1) Before re-sizable MemoryRegion introduced
+>> 
+>>     Before re-sizable MemoryRegion introduced, we just pad table_mr to 4K. And
+>>     this size never gets bigger, if I am right. To be accurate, the table_blob
+>>     would grow to next padded size if we hot-add more cpus/pci bridge, but we
+>>     just copy the original size of MemoryRegion. Even without migration, the
+>>     ACPI table is corrupted when we expand to next padded size.
+>>     
+>>     Is my understanding correct here?
+>> 
+>> 2) After re-sizable MemoryRegion introduced
+>> 
+>>     This time both tabl_blob and MemoryRegion grows when it expand to next
+>>     padded size. Since we need to hot-add device at both side, ACPI table
+>>     grows at the same pace.
+>> 
+>>     Every thing looks good, until one of it exceed the resizable
+>>     MemoryRegion's max size. (Not sure this is possible in reality, while
+>>     possible in theory). Actually, this looks like case 1) when resizable
+>>     MemoryRegion is not introduced. The too big ACPI table get corrupted.
+>> 
+>> So if my understanding is correct, the procedure you mentioned "expand from
+>> initial padded size to next padded size" only applies to two different max
+>> size resizable MemoryRegion. For other cases, the procedure corrupt the ACPI
+>> table itself.
+>> 
+>> Then when we look at
+>> 
+>>     commit 07fb61760cdea7c3f1b9c897513986945bca8e89
+>>     Author: Paolo Bonzini <pbonzini@redhat.com>
+>>     Date:   Mon Jul 28 17:34:15 2014 +0200
+>>     
+>>         pc: hack for migration compatibility from QEMU 2.0
+>>     
+>> This fix ACPI migration issue before resizable MemoryRegion is
+>> introduced(introduced in 2015-01-08). This looks expand to next padded size
+>> always corrupt ACPI table at that time. And it make me think expand to next
+>> padded size is not the procedure we should do?
+>> 
+>> And my colleague Wei Wang(in cc) mentioned, to make migration succeed, the
+>> MemoryRegion has to be the same size at both side. So I guess the problem
+>> doesn't lie in hotplug but in "main table" size difference.
+>
+>It's true only for pre-resizable MemoryRegion QEMU versions,
+>after that size doesn't affect migration anymore.
+>
+>
+>> For example, we have two version of Qemu: v1 and v2. Their "main table" size
+>> is:
+>> 
+>>     v1: 3990
+>>     v2: 4020
+>> 
+>> At this point, their ACPI table all padded to 4k, which is the same.
+>> 
+>> Then we create a machine with 1 more vcpu by these two versions. This will
+>> expand the table to:
+>> 
+>>     v1: 4095
+>>     v2: 4125
+>> 
+>> After padding, v1's ACPI table size is still 4k but v2's is 8k. Now the
+>> migration is broken.
+>> 
+>> If this analysis is correct, the relationship between migration failure and
+>> ACPI table is "the change of ACPI table size". Any size change of any
+>you should make distinction between used_length and max_length here.
+>Migration puts on wire used_length and that's what matter for keeping migration
+>working.
+>
+>> ACPI table would break migration. While of course, since we pad the table,
+>> only some combinations of tables would result in a visible real size change in
+>> MemoryRegion.
+>> 
+>> Then the principle for future ACPI development is to keep all ACPI table size
+>> unchanged.
+>once again it applies only for QEMU (versions < 2.1) and that was
+>the problem (i.e. there always would be configurations that would create
+>differently sized tables regardless of arbitrary size we would preallocate)
+>resizable MemoryRegions solved.
+> 
+>> Now let's back to mcfg table. As the comment mentioned, guest could
+>> enable/disable MCFG, so the code here reserve table no matter it is enabled or
+>> not. This behavior ensures ACPI table size not changed. So do we need to find
+>> the machine type as you suggested before?
+>We should be able to drop mcgf 'padding' hack since machine version
+>which was introduced in the QEMU version that introduced resizable MemoryRegion
+>as well.
+>
+>I'll send a patch to address that
 
- hw/timer/Makefile.objs        |   2 +-
- hw/timer/aspeed_rtc.c         | 180 ++++++++++++++++++++++++++++++++++
- hw/timer/trace-events         |   4 +
- include/hw/timer/aspeed_rtc.h |  31 ++++++
- 4 files changed, 216 insertions(+), 1 deletion(-)
- create mode 100644 hw/timer/aspeed_rtc.c
- create mode 100644 include/hw/timer/aspeed_rtc.h
+Hi, Igor,
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 0e9a4530f848..123d92c9692c 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -41,7 +41,7 @@ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
- 
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
--common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
-+common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
- 
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
-diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
-new file mode 100644
-index 000000000000..19f061c846e8
---- /dev/null
-+++ b/hw/timer/aspeed_rtc.c
-@@ -0,0 +1,180 @@
-+/*
-+ * ASPEED Real Time Clock
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * Copyright 2019 IBM Corp
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu-common.h"
-+#include "hw/timer/aspeed_rtc.h"
-+#include "qemu/log.h"
-+#include "qemu/timer.h"
-+
-+#include "trace.h"
-+
-+#define COUNTER1        (0x00 / 4)
-+#define COUNTER2        (0x04 / 4)
-+#define ALARM           (0x08 / 4)
-+#define CONTROL         (0x10 / 4)
-+#define ALARM_STATUS    (0x14 / 4)
-+
-+#define RTC_UNLOCKED    BIT(1)
-+#define RTC_ENABLED     BIT(0)
-+
-+static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-+{
-+    struct tm tm;
-+    uint32_t year, cent;
-+    uint32_t reg1 = rtc->reg[COUNTER1];
-+    uint32_t reg2 = rtc->reg[COUNTER2];
-+
-+    tm.tm_mday = (reg1 >> 24) & 0x1f;
-+    tm.tm_hour = (reg1 >> 16) & 0x1f;
-+    tm.tm_min = (reg1 >> 8) & 0x3f;
-+    tm.tm_sec = (reg1 >> 0) & 0x3f;
-+
-+    cent = (reg2 >> 16) & 0x1f;
-+    year = (reg2 >> 8) & 0x7f;
-+    tm.tm_mon = ((reg2 >>  0) & 0x0f) - 1;
-+    tm.tm_year = year + (cent * 100) - 1900;
-+
-+    rtc->offset = qemu_timedate_diff(&tm);
-+}
-+
-+static uint32_t aspeed_rtc_get_counter(AspeedRtcState *rtc, int r)
-+{
-+    uint32_t year, cent;
-+    struct tm now;
-+
-+    qemu_get_timedate(&now, rtc->offset);
-+
-+    switch (r) {
-+    case COUNTER1:
-+        return (now.tm_mday << 24) | (now.tm_hour << 16) |
-+            (now.tm_min << 8) | now.tm_sec;
-+    case COUNTER2:
-+        cent = (now.tm_year + 1900) / 100;
-+        year = now.tm_year % 100;
-+        return ((cent & 0x1f) << 16) | ((year & 0x7f) << 8) |
-+            ((now.tm_mon + 1) & 0xf);
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
-+                                unsigned size)
-+{
-+    AspeedRtcState *rtc = opaque;
-+    uint64_t val;
-+    uint32_t r = addr >> 2;
-+
-+    switch (r) {
-+    case COUNTER1:
-+    case COUNTER2:
-+        if (rtc->reg[CONTROL] & RTC_ENABLED) {
-+            rtc->reg[r] = aspeed_rtc_get_counter(rtc, r);
-+        }
-+        /* fall through */
-+    case CONTROL:
-+        val = rtc->reg[r];
-+        break;
-+    case ALARM:
-+    case ALARM_STATUS:
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, addr);
-+        return 0;
-+    }
-+
-+    trace_aspeed_rtc_read(addr, val);
-+
-+    return val;
-+}
-+
-+static void aspeed_rtc_write(void *opaque, hwaddr addr,
-+                             uint64_t val, unsigned size)
-+{
-+    AspeedRtcState *rtc = opaque;
-+    uint32_t r = addr >> 2;
-+
-+    switch (r) {
-+    case COUNTER1:
-+    case COUNTER2:
-+        if (!(rtc->reg[CONTROL] & RTC_UNLOCKED)) {
-+            break;
-+        }
-+        /* fall through */
-+    case CONTROL:
-+        rtc->reg[r] = val;
-+        aspeed_rtc_calc_offset(rtc);
-+        break;
-+    case ALARM:
-+    case ALARM_STATUS:
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    }
-+    trace_aspeed_rtc_write(addr, val);
-+}
-+
-+static void aspeed_rtc_reset(DeviceState *d)
-+{
-+    AspeedRtcState *rtc = ASPEED_RTC(d);
-+
-+    rtc->offset = 0;
-+    memset(rtc->reg, 0, sizeof(rtc->reg));
-+}
-+
-+static const MemoryRegionOps aspeed_rtc_ops = {
-+    .read = aspeed_rtc_read,
-+    .write = aspeed_rtc_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static const VMStateDescription vmstate_aspeed_rtc = {
-+    .name = TYPE_ASPEED_RTC,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(reg, AspeedRtcState, 0x18),
-+        VMSTATE_INT32(offset, AspeedRtcState),
-+        VMSTATE_INT32(offset, AspeedRtcState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void aspeed_rtc_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedRtcState *s = ASPEED_RTC(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_rtc_ops, s,
-+                          "aspeed-rtc", 0x18ULL);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_rtc_realize;
-+    dc->vmsd = &vmstate_aspeed_rtc;
-+    dc->reset = aspeed_rtc_reset;
-+}
-+
-+static const TypeInfo aspeed_rtc_info = {
-+    .name          = TYPE_ASPEED_RTC,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedRtcState),
-+    .class_init    = aspeed_rtc_class_init,
-+};
-+
-+static void aspeed_rtc_register_types(void)
-+{
-+    type_register_static(&aspeed_rtc_info);
-+}
-+
-+type_init(aspeed_rtc_register_types)
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index dcaf3d6da6c8..db02a9142cda 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -66,6 +66,10 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- 
-+# hw/timer/aspeed-rtc.c
-+aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+
- # sun4v-rtc.c
- sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
- sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
-diff --git a/include/hw/timer/aspeed_rtc.h b/include/hw/timer/aspeed_rtc.h
-new file mode 100644
-index 000000000000..1f1155a676c1
---- /dev/null
-+++ b/include/hw/timer/aspeed_rtc.h
-@@ -0,0 +1,31 @@
-+/*
-+ * ASPEED Real Time Clock
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * Copyright 2019 IBM Corp
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef ASPEED_RTC_H
-+#define ASPEED_RTC_H
-+
-+#include <stdint.h>
-+
-+#include "hw/hw.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+
-+typedef struct AspeedRtcState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t reg[0x18];
-+    int offset;
-+
-+} AspeedRtcState;
-+
-+#define TYPE_ASPEED_RTC "aspeed.rtc"
-+#define ASPEED_RTC(obj) OBJECT_CHECK(AspeedRtcState, (obj), TYPE_ASPEED_RTC)
-+
-+#endif /* ASPEED_RTC_H */
+We have found the qemu version 2.1 which is with resizable MemoryRegion
+enabled and q35 will stop support version before 2.3. The concern about ACPI
+mcfg table breaking live migration is solved, right?
+
+If so, I would prepare mcfg refactor patch based on your cleanup.
+
 -- 
-2.20.1
-
+Wei Yang
+Help you, Help me

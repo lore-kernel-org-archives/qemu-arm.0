@@ -1,83 +1,82 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp370843wrx;
-        Fri, 12 Apr 2019 03:14:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz+v0p3O/sstIzJ4hG9ILmiMaw9ww9PdtqMHiltQZ3azGaJmkjWpdcHNJFnPuOtnwE/8u1+
-X-Received: by 2002:adf:ce8c:: with SMTP id r12mr15975771wrn.60.1555064095442;
-        Fri, 12 Apr 2019 03:14:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555064095; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp372717wrx;
+        Fri, 12 Apr 2019 03:16:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNajiCDA46F0443D1ogXMPkiPBBA52c+fIdSXoiOwIZpgw6/zP1o2KtVh7EKqlvyxor+hO
+X-Received: by 2002:a1c:96d5:: with SMTP id y204mr10250109wmd.22.1555064210339;
+        Fri, 12 Apr 2019 03:16:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555064210; cv=none;
         d=google.com; s=arc-20160816;
-        b=nIkF4vsZvqenalUWxdDTmrtvHwBBdw36eKwsBfYSqvTGtpqFII4g5tLExf1sot2T2Z
-         43hFlRmrTIFw4Itq2fxdgMG7KNgwxqVHpOCm+60oTm+fZ4s7Pca8D3MSaTHhlrQWSp8i
-         JobRqREEIgms4dQfmMtgUdmS9wWEfZdZEv6GDmlj2ATjFe1vghQYJR8duB/9TYYHZFr6
-         QZ8GI1qJozSktBxq+qwO4jFxCcbnwS4F3O8gt4itjeQ5JN54N1b1a5URAWw0se4tk2Ze
-         XB35HbzgK4fYcZmsGK3iQdoP6Bja/3xmsFjoe14GfDPDDlMk86AEif3Za4FgaVN44QYF
-         Ed6Q==
+        b=pLA8GRQyYDUmChD/3y/+TCtMMnPbVQlBEZQ9pD0jBIDajHAh9NPCcKaaZjWupXYdNd
+         0+aUqGYYdomZDeFl0BQq3aHwXtMZigB3lXBAFmwlLzq2w+z7LVk924q8jdPdOgEaNkPq
+         Xkz4Z5SDJq06i/z8DUgcnWRXvRD9hk6GnY/wv1sYL9Hunj4cbPFq+8WhyLK0kdLDuQJO
+         WN6ORseDaF4o45xUg91v9FJbSZec1GKnnEltzVfJPQ4zV7ZC/CogGPnjbtevSZbQRQcr
+         CSR3pDYXlQNqU14olPI9/3oHjm4L5eiMVkMTIqoCqCaBX1jookQiwsN2cVeLm3PiVtWA
+         yPuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=v8myKEBzxg9ih4dH8FzEC+XxVvS65ML3JjoKdVtkAac=;
-        b=05dpr4rsc/8seOmtPc2GIpVR7+saV6fH2WbKpJNcfZII4ITpRbNtZQUz7XQMCHvOqx
-         BZQNaTXGCEera4pUNXKtLi8wC8mcVfSih+fpcQSdmZavq0X1zEJeoyP1o/GHhQLNDvfl
-         JZuZSYZRulyvMQR2sp914bMl3sKW0nlcFUZ+k1zlXUF0BedxVJ/LvKOmIFWzJJCWu3Rp
-         wg/50o5dtui0yweIHaDCqSeNvmI+UttJbukyyl0BlfJxzHerB+vQqv0IbyaM7O0nDpHe
-         pFIZTQC0vR3T3CLV4TTAzRuaFdWNXo2p4VFkXBDFt6aTbBeh+7eVBkAEVmuk9HCZE2B9
-         ntEg==
+        bh=kLl0XiSlzCiyiMtmW4kLL4rFVem5FC3E+fSydhPMxk0=;
+        b=h26Fd0wIo0bw20mSt9M5OCv7ZfMclJ2J262obFMr/OHsqLzMn2uU8ooU5HjONY0oYL
+         PkK7bOKuu7sUokUpo/ilDy6NDKKxtMAo47CvPsrOcKq1UGpiNKqRCpT93gA8xJ0Aej89
+         zKOsX1pNoLnuDR0ZOusuGkTOmgfk9cEXYkGyqFOh/QZJjIbIeMnigE1ZabLPSnEhVfXy
+         BvaBrpA+IObzC+1H6dbb4FSWH5rP4EGLaF3kASUbispnXulGcBsGoZEF20kwl329LzjZ
+         QAE87gzFVgTdbGOCM8o8QVk2xZVSYALk/yeBrVAmlAC9tfDXFFcsc8kviX+btM/xVQPS
+         XgxA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si27662421wrj.252.2019.04.12.03.14.55
+        by mx.google.com with ESMTPS id k4si26905915wro.353.2019.04.12.03.16.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 03:14:55 -0700 (PDT)
+        Fri, 12 Apr 2019 03:16:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33663 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33721 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEtCw-0001xf-CB
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:14:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38448)
+	id 1hEtEn-0003lP-9l
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:16:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38958)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hEt4T-0002P2-QH
-	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:06:10 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hEt5N-0003Zl-R2
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:07:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hEt4S-0004si-PW
-	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:06:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42224)
+	(envelope-from <eric.auger@redhat.com>) id 1hEt5M-0005ih-NT
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:07:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51702)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hEt4N-0004mP-LD; Fri, 12 Apr 2019 06:06:05 -0400
+	id 1hEt5J-0005d0-O1; Fri, 12 Apr 2019 06:07:02 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4665AC057F47;
-	Fri, 12 Apr 2019 10:06:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 01B4A86658;
+	Fri, 12 Apr 2019 10:07:01 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-161.ams2.redhat.com [10.36.117.161])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CC02819C65;
-	Fri, 12 Apr 2019 10:05:55 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E901119C65;
+	Fri, 12 Apr 2019 10:06:49 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Fri, 12 Apr 2019 12:03:45 +0200
-Message-Id: <20190412100354.6409-19-eric.auger@redhat.com>
+Date: Fri, 12 Apr 2019 12:03:53 +0200
+Message-Id: <20190412100354.6409-27-eric.auger@redhat.com>
 In-Reply-To: <20190412100354.6409-1-eric.auger@redhat.com>
 References: <20190412100354.6409-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 12 Apr 2019 10:06:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 12 Apr 2019 10:07:01 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v3 18/27] hw/vfio/common: Introduce
- hostwin_from_range helper
+Subject: [Qemu-devel] [RFC v3 26/27] vfio-pci: Set up fault regions
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,96 +92,180 @@ Cc: yi.l.liu@intel.com, mst@redhat.com, jean-philippe.brucker@arm.com,
 	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Jnw8Zfb0dRz
+X-TUID: byJkWl5bzrB2
 
-Let's introduce a hostwin_from_range() helper that returns the
-hostwin encapsulating an IOVA range or NULL if non is found.
+We setup two fault regions: the producer fault is read-only from the
+user space perspective. It is composed of the fault queue (mmappable)
+and a header written by the kernel, located in a separate page.
 
-This improves the readibility of callers and removes the usage
-of hostwin_found.
+The consumer fault is write-only from the user-space perspective.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/vfio/common.c | 37 ++++++++++++++++++-------------------
- 1 file changed, 18 insertions(+), 19 deletions(-)
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index cf876d5264..785d9c191c 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -494,6 +494,19 @@ static VFIOGuestIOMMU *vfio_alloc_guest_iommu(VFIOCo=
-ntainer *container,
-     return giommu;
+---
+---
+ hw/vfio/pci.c | 99 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.h |  2 ++
+ 2 files changed, 101 insertions(+)
+
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 91714cea84..89399a290f 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2498,11 +2498,100 @@ int vfio_populate_vga(VFIOPCIDevice *vdev, Error=
+ **errp)
+     return 0;
  }
 =20
-+static VFIOHostDMAWindow *
-+hostwin_from_range(VFIOContainer *container, hwaddr iova, hwaddr end)
++static void vfio_init_fault_regions(VFIOPCIDevice *vdev, Error **errp)
 +{
-+    VFIOHostDMAWindow *hostwin;
++    struct vfio_region_info *fault_region_info =3D NULL;
++    struct vfio_region_info_cap_fault *cap_fault;
++    VFIODevice *vbasedev =3D &vdev->vbasedev;
++    struct vfio_info_cap_header *hdr;
++    char *fault_region_name =3D NULL;
++    uint32_t max_version;
++    ssize_t bytes;
++    int ret;
 +
-+    QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
-+        if (hostwin->min_iova <=3D iova && end <=3D hostwin->max_iova) {
-+            return hostwin;
++    /* Producer Fault Region */
++    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
++                                   VFIO_REGION_TYPE_NESTED,
++                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_PROD=
+,
++                                   &fault_region_info);
++    if (!ret) {
++        hdr =3D vfio_get_region_info_cap(fault_region_info,
++                                       VFIO_REGION_INFO_CAP_PRODUCER_FAU=
+LT);
++        if (!hdr) {
++            error_setg(errp, "failed to retrieve fault ABI max version")=
+;
++            g_free(fault_region_info);
++            return;
++        }
++        cap_fault =3D container_of(hdr, struct vfio_region_info_cap_faul=
+t,
++                                 header);
++        max_version =3D cap_fault->version;
++
++        fault_region_name =3D g_strdup_printf("%s FAULT PROD %d",
++                                            vbasedev->name,
++                                            fault_region_info->index);
++
++        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
++                                &vdev->fault_prod_region,
++                                fault_region_info->index,
++                                fault_region_name);
++        if (ret) {
++            error_setg_errno(errp, -ret,
++                             "failed to setup the fault prod region %d",
++                             fault_region_info->index);
++            goto out;
++        }
++
++        ret =3D vfio_region_mmap(&vdev->fault_prod_region);
++        if (ret) {
++            error_report("Failed to mmap fault queue(%d)", ret);
++        }
++
++        g_free(fault_region_info);
++        g_free(fault_region_name);
++    } else {
++        goto out;
++    }
++
++    /* Consumer Fault Region */
++    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
++                                   VFIO_REGION_TYPE_NESTED,
++                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_CONS=
+,
++                                   &fault_region_info);
++    if (!ret) {
++        fault_region_name =3D g_strdup_printf("%s FAULT CONS %d",
++                                            vbasedev->name,
++                                            fault_region_info->index);
++
++        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
++                                &vdev->fault_cons_region,
++                                fault_region_info->index,
++                                fault_region_name);
++        if (ret) {
++            error_setg_errno(errp, -ret,
++                             "failed to setup the fault cons region %d",
++                             fault_region_info->index);
++        }
++
++        /* Set the chosen fault ABI version in the consume header*/
++        bytes =3D pwrite(vdev->vbasedev.fd, &max_version, 4,
++                       vdev->fault_cons_region.fd_offset);
++        if (bytes !=3D 4) {
++            error_setg(errp,
++                       "Unable to set the chosen fault ABI version (%d)"=
+,
++                       max_version);
 +        }
 +    }
-+    return NULL;
++out:
++    g_free(fault_region_name);
++    g_free(fault_region_info);
 +}
 +
- static void vfio_listener_region_add(MemoryListener *listener,
-                                      MemoryRegionSection *section)
+ static void vfio_populate_device(VFIOPCIDevice *vdev, Error **errp)
  {
-@@ -503,7 +516,6 @@ static void vfio_listener_region_add(MemoryListener *=
-listener,
-     void *vaddr;
-     int ret;
-     VFIOHostDMAWindow *hostwin;
--    bool hostwin_found;
+     VFIODevice *vbasedev =3D &vdev->vbasedev;
+     struct vfio_region_info *reg_info;
+     struct vfio_irq_info irq_info =3D { .argsz =3D sizeof(irq_info) };
++    Error *err =3D NULL;
+     int i, ret =3D -1;
 =20
-     if (vfio_listener_skipped_section(section)) {
-         trace_vfio_listener_region_add_skip(
-@@ -580,15 +592,8 @@ static void vfio_listener_region_add(MemoryListener =
-*listener,
- #endif
+     /* Sanity check device */
+@@ -2566,6 +2655,12 @@ static void vfio_populate_device(VFIOPCIDevice *vd=
+ev, Error **errp)
+         }
      }
 =20
--    hostwin_found =3D false;
--    QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
--        if (hostwin->min_iova <=3D iova && end <=3D hostwin->max_iova) {
--            hostwin_found =3D true;
--            break;
--        }
--    }
--
--    if (!hostwin_found) {
-+    hostwin =3D hostwin_from_range(container, iova, end);
-+    if (!hostwin) {
-         error_report("vfio: IOMMU container %p can't map guest IOVA regi=
-on"
-                      " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx,
-                      container, iova, end);
-@@ -759,16 +764,10 @@ static void vfio_listener_region_del(MemoryListener=
- *listener,
++    vfio_init_fault_regions(vdev, &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
+     irq_info.index =3D VFIO_PCI_ERR_IRQ_INDEX;
 =20
-     if (memory_region_is_ram_device(section->mr)) {
-         hwaddr pgmask;
--        VFIOHostDMAWindow *hostwin;
--        bool hostwin_found =3D false;
-+        VFIOHostDMAWindow *hostwin =3D
-+            hostwin_from_range(container, iova, end);
+     ret =3D ioctl(vdev->vbasedev.fd, VFIO_DEVICE_GET_IRQ_INFO, &irq_info=
+);
+@@ -3070,6 +3165,8 @@ static void vfio_instance_finalize(Object *obj)
 =20
--        QLIST_FOREACH(hostwin, &container->hostwin_list, hostwin_next) {
--            if (hostwin->min_iova <=3D iova && end <=3D hostwin->max_iov=
-a) {
--                hostwin_found =3D true;
--                break;
--            }
--        }
--        assert(hostwin_found); /* or region_add() would have failed */
-+        assert(hostwin); /* or region_add() would have failed */
-=20
-         pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
-         try_unmap =3D !((iova & pgmask) || (int128_get64(llsize) & pgmas=
-k));
+     vfio_display_finalize(vdev);
+     vfio_bars_finalize(vdev);
++    vfio_region_finalize(&vdev->fault_prod_region);
++    vfio_region_finalize(&vdev->fault_cons_region);
+     g_free(vdev->emulated_config_bits);
+     g_free(vdev->rom);
+     /*
+@@ -3090,6 +3187,8 @@ static void vfio_exitfn(PCIDevice *pdev)
+     vfio_unregister_req_notifier(vdev);
+     vfio_unregister_err_notifier(vdev);
+     vfio_unregister_dma_fault_notifier(vdev);
++    vfio_region_exit(&vdev->fault_prod_region);
++    vfio_region_exit(&vdev->fault_cons_region);
+     pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
+     vfio_disable_interrupts(vdev);
+     if (vdev->intx.mmap_timer) {
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 55b14a1ece..24ec43ac81 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -136,6 +136,8 @@ typedef struct VFIOPCIDevice {
+     EventNotifier err_notifier;
+     EventNotifier req_notifier;
+     EventNotifier dma_fault_notifier;
++    VFIORegion fault_prod_region;
++    VFIORegion fault_cons_region;
+     int (*resetfn)(struct VFIOPCIDevice *);
+     uint32_t vendor_id;
+     uint32_t device_id;
 --=20
 2.20.1
 

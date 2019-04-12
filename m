@@ -1,142 +1,123 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp692872wrx;
-        Fri, 12 Apr 2019 08:26:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxo3tAemlvPzcmInY0oyvYejPFHzo320vGrT8S6K/Yv2OHUsIU9atYYfpjfGlvbZwgDfue/
-X-Received: by 2002:a1c:80cd:: with SMTP id b196mr11316123wmd.84.1555082799210;
-        Fri, 12 Apr 2019 08:26:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555082799; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp733091wrx;
+        Fri, 12 Apr 2019 09:05:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbdGBm/tv1dBcM7jf4QGIJtGvr/uPcUObcXmmhWvbE5/sh2zQz2ugD/BNnh9RWTwYUzmhJ
+X-Received: by 2002:adf:f80c:: with SMTP id s12mr29074247wrp.72.1555085120526;
+        Fri, 12 Apr 2019 09:05:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555085120; cv=none;
         d=google.com; s=arc-20160816;
-        b=tvNUYAtPcbw5AB/T54HgemTsxO912yYehfNC4BWGxDJfZw1y+TlhRnqM5PhpkFqvXI
-         VW12TG14D8IS+HbvmgA60Xul8ruYD9dKVq0pXBl/p9KRw+fB0sAGFFFobIVqG0/gcBb0
-         UnzQbDV40MjTu+X5KLCAAdM5MNKUgW+Pja5WCrmnWRqWH8tPJEYftnjD5hRhsvxUwUZv
-         cmDYP7IvreVOCosxOKqXR6LC1s5AHbkSmI/EW9+VMOmuuf9UkhGnaO2kPYmA+Hs/o81J
-         hvl0WcoEEWv/0SdKmMUw44VdlDxFeES5ZTAIHL6moLNdGUwrrnTvE67cFETGvLA4UMaR
-         1HqA==
+        b=SQmmNXvf+I70LD2hm9S0xTMy+a5qEh1sp959ifQKAnaJ1qZnfHuMYXZi7U4vL1xPJs
+         CxPF74LWtKeettkVoQbRMMprDBQkGQwSYn8RbYYRz4V+j8ZO8NcQpw7QCoMTHz30H/K3
+         ilZfkyfKe2w4FErd9qtNcEgc/GWxpln95SzJfIcr8J5ee6hhT/8xz8ucY+FIiRZHL3rk
+         pl+Wgm1fJAkL0mGMnWZOCh5Mlwag4qUMSjiyXYZuYdEYWaUQKh1aQqFjIWxHZayJ8gkK
+         XNmrQ7SZaQiMa96b095rr+81IAWbxaZ4xmuKI91kk0u/SvOncQy93xZ1sK5zI3jwrbpe
+         9Vsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=KFcawnq+vktkYXDlNtwUImESxthMUxE9q7Z5TPKEBc0=;
-        b=eZqu0qrKr/0KIUlZawK/4jKZewYcU6ZThIMNWcf38zgYAN+r1tczvcskUW42y15sJI
-         TvKi7DedKbjuIXD80fg79Xx6AcbbOi8E5t9E988rHU+FwB+MMGds3xk9G+o5+q5kpQGR
-         tIBFWFj2w2B9Aavu+YZZNp/piWt342q0Nd144QpFhqCur1OpPuFQr9m+PSe4mT9bYdF1
-         1mdyR2quqccDRjuPvmP3O02sjBDYGT24DhxmfMBLnt/YfTayaAKmOJaHCXjdJTbLVSHr
-         IJpb9bgFUEUiqhdqoIz7OWsoi8j9klLXdOmLtE01mRBo6PjDziuN1GbRxznwoT8lKkwD
-         QvUQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=payCiHsOuwB/s23xUuaFpesubHn3V5EZoSI/pitSNVU=;
+        b=SJ5dCsW/wJFx+qGS/DzJU7tlHSO4trbaw3sPwr8CpIL5csgb+Kz+JH4FLgWMNKVGPw
+         ArMQNSzIX0QKP0vQRoAqC3dAFLSOQJSOECVK4IduAsABtegVJpXSyUzvLih1XcU5n/FH
+         rmCsRgkBl+n7Q4hrWBhjBaAG3Ifumf+9IhaWN6s2WtBniC2mGaGu6VTTYXbSpXzIHL+J
+         uqcopvNkwVNHG8Kr/OnKcniO3lnyfmHA+Oh6VSxmzETjOTPPpWjJZSL+SQcF75ig1vnR
+         egE43RvmQ7T9bA2Ap3mcnkgmTUdX8fqBVqmYeEwxi2u+QMRm830IRfak8XE0Awr03pu3
+         facA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=kLHNls8R;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6si5263658wmo.109.2019.04.12.08.26.39
+        by mx.google.com with ESMTPS id z2si26866033wrr.246.2019.04.12.09.05.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 08:26:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Apr 2019 09:05:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:38671 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=kLHNls8R;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:39392 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEy4c-0003TR-BO
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 11:26:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33648)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hEyg3-000433-L2
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 12:05:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hEy4V-0003TJ-J8
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 11:26:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hEydl-00031F-6G
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 12:02:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hEy4U-0004OY-J6
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 11:26:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38656)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hEy4U-0004Ny-AD; Fri, 12 Apr 2019 11:26:30 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 87AD020269;
-	Fri, 12 Apr 2019 15:26:29 +0000 (UTC)
-Received: from thuth.com (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DEA431001E7A;
-	Fri, 12 Apr 2019 15:26:24 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Apr 2019 17:26:19 +0200
-Message-Id: <20190412152619.23542-1-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1hEydk-0000Ha-C5
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 12:02:57 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:34790)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hEydk-0000HC-6g
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 12:02:56 -0400
+Received: by mail-ot1-x344.google.com with SMTP id k21so8854334otf.1
+	for <qemu-devel@nongnu.org>; Fri, 12 Apr 2019 09:02:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=payCiHsOuwB/s23xUuaFpesubHn3V5EZoSI/pitSNVU=;
+	b=kLHNls8REg/zihx39ZXOTfpavzsTUM5fCdiNS9LRkphs3EjpJ/boxiS6BaVE3ADOsi
+	7mQ2xqX3K4JQJX0SnY0TGpOC1Bbsi9PVTQtbyDUapk8bu3aDjQgmGdjHhkz+2sKAIA5Y
+	dyI3/ZdkN2G7FvKwgmXyB93BZDA+zEAgbpf1JUsi2ZN0mT3SZUk9CAf5rHkbkfEkvmxn
+	DqnQUsLsYmN003EyCnMKFo3akdl5+XtbcdQ/u3dA6DfpgCRMbwGeOjdQmRJg7rYvDlwP
+	Wi3oU584ASayZG+UtIs0vBjGOkt38GDhlU+8tPilcIZ/yrgB47cWz+6f3ImIjayBnPWs
+	mG/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=payCiHsOuwB/s23xUuaFpesubHn3V5EZoSI/pitSNVU=;
+	b=tmeCUNRPcoGJcPhUPDgv26kUEQMyA8+LNaBL3S9/+RituRgMVpvdAcm9JOnkYiDJVy
+	/c5T+uv5WDVHGoDN767sMq86QXaiJSyDQxTJcddaVAMr0SaebiB/rY7LUYWUSk0maaye
+	DE7lLS4h1V9fYN5PB6f7mtqXUqYyAd10G31BAy9Kf5BF78+to9qBNH7ahX8QnZnJhFVf
+	5BavsPaAub/3oNt1m4gTJtdOhfoGIpyKTOSTyDjCGPVjFZrMUFL4ha/25iY+sPHf6TBl
+	StUXyUwAWHMgJqXUbh7BKXlf2lVmvp7dsg9vlxDOxcACuJjcnUVyE+qY+8EqyeWGFM02
+	FVyA==
+X-Gm-Message-State: APjAAAUZiTz1W8wX+PtgwPxVHOEG2tVuYB2ia9V2/+vRRMD9Q205+aLh
+	GtQJTqI+3YsqFUTisdyyvwFaiGOHNMDPOZC4wPnung==
+X-Received: by 2002:a9d:3b44:: with SMTP id z62mr38722152otb.319.1555084974604;
+	Fri, 12 Apr 2019 09:02:54 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Fri, 12 Apr 2019 15:26:29 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-4.1] hw/arm/nseries: Deprecate the n800 and
- n810 machines
-X-BeenThere: qemu-arm@nongnu.org
+References: <20190412152619.23542-1-thuth@redhat.com>
+In-Reply-To: <20190412152619.23542-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Apr 2019 17:02:43 +0100
+Message-ID: <CAFEAcA9kXdUH3vkGLfEe+CFuD=S9XFEaWGNETre7gYOx5epFpQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-devel] [PATCH for-4.1] hw/arm/nseries: Deprecate the n800
+ and n810 machines
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: libvir-list@redhat.com, Markus Armbruster <armbru@redhat.com>,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oikeo3Xshs0U
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Libvirt <libvir-list@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gj9N3KXoYK1Z
 
-These machines depend on the deprecated bluetooth subsystem. In case we
-finally decide to remove the bluetooth subsystem, we likely need to
-remove the n800 and n810 machines, too, so mark them now as deprecated.
+On Fri, 12 Apr 2019 at 16:26, Thomas Huth <thuth@redhat.com> wrote:
+>
+> These machines depend on the deprecated bluetooth subsystem. In case we
+> finally decide to remove the bluetooth subsystem, we likely need to
+> remove the n800 and n810 machines, too, so mark them now as deprecated.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/nseries.c     | 3 +++
- qemu-deprecated.texi | 6 ++++++
- 2 files changed, 9 insertions(+)
+...we could just remove the bluetooth devices from the boards?
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 906b7ca22d..66e50b850c 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -1309,6 +1309,9 @@ static void n8x0_init(MachineState *machine,
-     struct n800_s *s =3D (struct n800_s *) g_malloc0(sizeof(*s));
-     int sdram_size =3D binfo->ram_size;
-=20
-+    warn_report("The n800 and n810 machines are deprecated. Please use a=
- "
-+                "different Arm machine instead.");
-+
-     s->mpu =3D omap2420_mpu_init(sysmem, sdram_size, machine->cpu_type);
-=20
-     /* Setup peripherals
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index 2219386769..4de7452fac 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -145,6 +145,12 @@ This machine type uses an unmaintained firmware, bro=
-ken in lots of ways,
- and unable to start post-2004 operating systems. 40p machine type should=
- be
- used instead.
-=20
-+@subsection n800 and n810 (Arm) (since 4.1)
-+
-+These machines depend on the deprecated bluetooth subsystem. When the
-+bluetooth subsystem will be removed, the n800 and n810 machines will be
-+deleted, too. If possible, use a different Arm board instead.
-+
- @section Device options
-=20
- @subsection Block device options
---=20
-2.21.0
-
+thanks
+-- PMM

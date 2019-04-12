@@ -1,105 +1,85 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp95770wrx;
-        Thu, 11 Apr 2019 21:20:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwW9rzHM6Ed1qd+57a+YNAWh30kxWniYJucDxvinoY7cCNWX9qUSAJj3nJY8vHEJnsvTyHo
-X-Received: by 2002:adf:ee91:: with SMTP id b17mr31485799wro.234.1555042801172;
-        Thu, 11 Apr 2019 21:20:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555042801; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp107714wrx;
+        Thu, 11 Apr 2019 21:37:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzmKrbkr7Waj4qCjZqqgm3ziCp+gR0rtoq44A81XwV4EYJU/3OjVvODw96/G8FWszt4267I
+X-Received: by 2002:adf:f30a:: with SMTP id i10mr33237474wro.111.1555043838096;
+        Thu, 11 Apr 2019 21:37:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555043838; cv=none;
         d=google.com; s=arc-20160816;
-        b=L1O3lH6v0le6WVrNQ6JIitTyVb3OBl79lRP8ZOR5gML67lYEWpCdP8yWwksugbVRox
-         +q+JLtN364JWouVOUAlUeLZ3oYXIjMT7jOSkVkag6JulbU1/s2I/0a8h9nXpNewG0qXd
-         oeXM/cjgco50VYDYxsUoyzR26JJxgu2XpYZyxDG4pL0wroBSSbh/BCRfYaxYx8+HvzbX
-         NvoygY7FSzzvvWKA7qUh2wD7VxcwcDeMLMej5al/jNXTvlfdinGuHQRw1t9X6Zj3rw3g
-         cVIt0ylW5HUIKyw4BoSq3skIVuauvb2BFT8H25u/4Ld/2BszMBsnKSqeurz38Ieo6Oup
-         nAtw==
+        b=iev52lcMAsK+c+Pm7zKvQEIi1Lrun+Lp57GsmFT1P8dIpaDTqYPj82CspaSUa5/S3v
+         Q9q/i437vHvkRV7ejTrk1AmMwIzoPeLeAa4PkHjCuDh/cg02+aK1is6I+2VQKXQ/ZLtJ
+         4hGG8dXBPSQvTXrRqvBXAz5vSOCNjw6hNddUSSB4a4b2g0QQVA1r73P0oqd8Hd6/RFUY
+         kppNkeHUBYerbCeXVg0hRyM0mzRpxePvkt+fOrhqxcqaHbemTW4QPHojz3dbqMOThilJ
+         432Ii7tvUEToB19hKkSW614WkLP6ZBl71+nk+e+JC22L1QtMlxM5VTBcR+wnRwZb1Ehv
+         EANQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=YIqMqtEzrgSvWYDYEAl/QC/5QT6B2u4URO5jB7ldbP0=;
-        b=yvjp46q1usxWghIJkYThenrYG4WR2IPv3XhyzYwiYla54HbVcMsyg5J1Cub+UvrVSp
-         tXPgKqiod0awEGZ7TTCuklQo52yJl1Fk/zjeSFue0yTO9lXO64J2j7xXO8Gaor1/2//k
-         YL7hhdoHqiLW66ATGCcIu+xZ11K7jC3LfFEfNb84u2J1Z5T03yZBRCdmXWVtt4FtbB7x
-         WSQOwQK80HW7bdwdubHcK18zqk45ObqRiYkciV7EzoRxaoXjBBsacinKtCq8ybqEWAVv
-         gtQ9GKsbWfCz1IK4rRN+kZVxssY/29smASvI4MGig5YF1uQqSYl2lkDF3HpmMZpdwsyw
-         bZLg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=6I0iWXeMPfm16++nyYmy+Jnh4ZLGI0mmLUzTZtPXfV4=;
+        b=T71SBuW63r3uN55oN1Z4/CHze8r1DU+WiP0mIVeS0oVxjn/IqcS8QSD8jH6RSYDQLC
+         TZXJWw/3WugVSLFKxRQYj/+KCgtSAcxqqmYx+qpG/4QF8XrSNc3Jc9dkXH2ce+NDruzw
+         rYe+lqE4ttswrMpe3AHLtGBLVFlvTmvAyMB3A8Qm1OsbYUEhDV4Owkx2GytJ0SCWTolb
+         MSo00Pf6n0TPO0Ai/m4bVmlhQXBHZrQZ9N1lf+gxIA7oZW063mv+zY+XqMcVv6qf2+42
+         uY9foWnAgoYSrzNdWIYTVdxaEzx8CdIkUcd6q4Gwd39dFijGAOfgqXJYsNgP9RIuddKW
+         PfZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aDtK6uEr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h10si25410274wre.404.2019.04.11.21.20.01
+        by mx.google.com with ESMTPS id g1si4306422wmc.163.2019.04.11.21.37.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 21:20:01 -0700 (PDT)
+        Thu, 11 Apr 2019 21:37:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aDtK6uEr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:58634 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58834 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEnfU-0006YH-86
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 00:20:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59937)
+	id 1hEnwD-0003Q6-7Y
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 00:37:17 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34120)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEnfJ-0006Xv-7j
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:19:51 -0400
+	(envelope-from <clg@kaod.org>) id 1hEnw0-0003Pl-3x
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:37:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEnfI-0005Cv-9J
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:19:49 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:37893)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hEnfH-0005CY-Vf; Fri, 12 Apr 2019 00:19:48 -0400
-Received: by mail-pf1-x443.google.com with SMTP id 10so4488572pfo.5;
-	Thu, 11 Apr 2019 21:19:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=YIqMqtEzrgSvWYDYEAl/QC/5QT6B2u4URO5jB7ldbP0=;
-	b=aDtK6uErx+iRnBMvRL+uxaQbXT8Z1xgKYjqlOY0ogkAdxGjEFUMFOyySa3Iem8tr2m
-	EXFBlMQwUpBEzqe9FjyP+EBGXbdFK118S+iyKyWGwstZfp+u0GaMuOZZpD+7fnlv0vu4
-	3+nxIi+nwsv0EBFGLATqrGP2GYZC/vVcCfKm7jq84TVWT55X2NS23KiSgJnTNXCqx6Yr
-	/TDoZcqxn00j4i5HDqvcDdwxvLM3lkZpaWFo/NW/yamvrLC8U/bAXJPCI2y44HVSTgD0
-	SO7m6aA/z9ovZjFeg4QvjRssgSDtM2oc6J5jprNCRr5ICrTknnb93Fk669ZuuvnFquO1
-	aVSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=YIqMqtEzrgSvWYDYEAl/QC/5QT6B2u4URO5jB7ldbP0=;
-	b=K0mEc0cUcUpuluRpXY2p3YkOUcktBAhN0i12/8uQ5+XhZK4qU5Hvfc+rjreJXehCQ3
-	tZ56ineUhZQG5Ph1QwtYK81mVJUkH8U8wpMANmsWAYqIYwvTwIKAjaIznpK7ycebn+hv
-	DZzjR5pL6TEy7WNW2TyeE5rPCzpv0Td5O8IzXEvt00ucpog5sQ8kiE7FAn3r0YrXsg6x
-	3Y1nUHYLHwRLvzPuZfuPTU+9UPELd8f1Kcz0vIICTbLBlM0QWhOjOCi2lX0Z9GLYmoFY
-	LkIBuvu8mwXKFG+b1hf0M+X/RJYU3FzTyrLDD3KPmGHLr+ihZac9YJPFm3CoiAXN1zxa
-	Xr5Q==
-X-Gm-Message-State: APjAAAXu8Op3QPaSxaNYO+xyp2IYD4bBMQMmtoh99iK+Sj3trMzmvfNA
-	SAW844U5DcDSKNvMYWT2cFg=
-X-Received: by 2002:a63:6907:: with SMTP id e7mr42890931pgc.209.1555042785929; 
-	Thu, 11 Apr 2019 21:19:45 -0700 (PDT)
-Received: from voyager.jms.id.au ([36.255.48.244])
-	by smtp.gmail.com with ESMTPSA id
-	p14sm40590727pfa.26.2019.04.11.21.19.42
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 11 Apr 2019 21:19:45 -0700 (PDT)
-Received: by voyager.jms.id.au (sSMTP sendmail emulation);
-	Fri, 12 Apr 2019 13:49:38 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>
-Date: Fri, 12 Apr 2019 13:49:31 +0930
-Message-Id: <20190412041933.12264-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.20.1
+	(envelope-from <clg@kaod.org>) id 1hEnvy-00075q-HF
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:37:03 -0400
+Received: from 19.mo7.mail-out.ovh.net ([178.33.251.118]:47756)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hEnvy-00073E-70
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 00:37:02 -0400
+Received: from player799.ha.ovh.net (unknown [10.109.143.225])
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 6B1B210E8FB
+	for <qemu-arm@nongnu.org>; Fri, 12 Apr 2019 06:36:59 +0200 (CEST)
+Received: from kaod.org (lfbn-tou-1-40-22.w86-201.abo.wanadoo.fr
+	[86.201.133.22]) (Authenticated sender: clg@kaod.org)
+	by player799.ha.ovh.net (Postfix) with ESMTPSA id 06BBD4ADE0E4;
+	Fri, 12 Apr 2019 04:36:53 +0000 (UTC)
+To: Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>
+References: <20190411161013.4514-1-clg@kaod.org>
+	<20190411161013.4514-3-clg@kaod.org>
+	<CACPK8XezRXPFFiiK7_xXLs-ipnfw9400E1dSRHN0XnF2cc4=vA@mail.gmail.com>
+	<c007d615-4dbf-4525-9fb0-6e4feb28c344@www.fastmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e9c90082-5312-5707-539b-3ab3c2e7d885@kaod.org>
+Date: Fri, 12 Apr 2019 06:36:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-Subject: [Qemu-arm] [PATCH v2 0/2] arm: aspeed: Add RTC Model
+In-Reply-To: <c007d615-4dbf-4525-9fb0-6e4feb28c344@www.fastmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1579356097962150720
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrvddtgdekfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 178.33.251.118
+Subject: Re: [Qemu-arm] [PATCH 2/3] aspeed: add a per SoC mapping for the
+ memory space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,37 +91,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SjNBjS1Bq76N
+X-TUID: ZYN46bls9l0+
 
-v2: Minor fixes, added vmstate and reset, and rebased on Cédric's series
+On 4/12/19 5:24 AM, Andrew Jeffery wrote:
+>=20
+>=20
+> On Fri, 12 Apr 2019, at 11:48, Joel Stanley wrote:
+>> On Thu, 11 Apr 2019 at 16:10, C=C3=A9dric Le Goater <clg@kaod.org> wro=
+te:
+>>>
+>>> This will simplify the definition of new SoCs, like the AST2600 which
+>>> should use a slightly different address space and have a different se=
+t
+>>> of controllers.
+>>>
+>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>
+>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>>> index 5bbd1fb87d18..9b601709e93c 100644
+>>> --- a/hw/arm/aspeed_soc.c
+>>> +++ b/hw/arm/aspeed_soc.c
+>>
+>>> +static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
+>>
+>>> +static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
+>>
+>> Most of these arrays is common. And some of it will stay common in the
+>> 2600. Any ideas how we could avoid duplication?
+>=20
+> I dunno, I feel that any attempt to create some "common" layout concept=
+ is
+> more distracting than having soc-specific, complete layouts described.
 
-Based-on: 20190411161013.4514-4-clg@kaod.org
-[PATCH 3/3] aspeed: use sysbus_init_child_obj() to initialize children
+yes. I rather duplicate some values and see in one glance the full=20
+address space.
 
-A model for the ASPEED BMC real time clock (RTC). The model is sufficient
-for running the guest Linux kernel driver, and ticks in time with the
-host when programmed.
+Thanks,
 
-It does not implement the alarm functionality, which includes the
-interrupt.
-
-Joel Stanley (2):
-  hw: timer: Add ASPEED RTC device
-  hw/arm/aspeed: Add RTC to SoC
-
- hw/arm/aspeed_soc.c           |  13 +++
- hw/timer/Makefile.objs        |   2 +-
- hw/timer/aspeed_rtc.c         | 180 ++++++++++++++++++++++++++++++++++
- hw/timer/trace-events         |   4 +
- include/hw/arm/aspeed_soc.h   |   2 +
- include/hw/timer/aspeed_rtc.h |  31 ++++++
- 6 files changed, 231 insertions(+), 1 deletion(-)
- create mode 100644 hw/timer/aspeed_rtc.c
- create mode 100644 include/hw/timer/aspeed_rtc.h
-
--- 
-2.20.1
+C.
+ =20
+>=20
+> There's no reason why they're common beyond coincidence (i.e. it's at
+> ASPEED's whim). I think this is fine.
+>=20
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+>=20
+>>
+>> This is fine for now.
+>>
+>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>
 

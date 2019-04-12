@@ -1,216 +1,310 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp785947wrx;
-        Fri, 12 Apr 2019 09:59:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyMmCg8ZMSD0jT+euf34D+11SazR4H2FAoO33ub1fg459IdH5quDAYe0PiQEaqMBsaDWUUB
-X-Received: by 2002:a5d:6406:: with SMTP id z6mr13838799wru.266.1555088350668;
-        Fri, 12 Apr 2019 09:59:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555088350; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp786449wrx;
+        Fri, 12 Apr 2019 09:59:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwSI0Ejyo9Bz1srMX04IJTo90gtZ8YZIDgvGjRY6I88+T2fI5gqgo6RiSNRjmPTkZICckG0
+X-Received: by 2002:a1c:dc43:: with SMTP id t64mr12602129wmg.19.1555088384045;
+        Fri, 12 Apr 2019 09:59:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555088384; cv=none;
         d=google.com; s=arc-20160816;
-        b=aLHdar1zieUxpMOMagFE8RjpzBFjuXIOgoYOzn1ag0DURwprb9gfVdKrmD/SCMWO2h
-         Ui/swYzAG+uNJKU8UPJ+9tBfqhKWhzYb6kTQjuGOKuu6IE5moRFMIyNWJNuW/01NineF
-         9/zOnI8QmQbhVl4Ts4V/1eLbPCLW01f4xXKuhr60lcSf/2Oz3/gsxjDBMwnGaGNxcdke
-         8aeiVR0oTlu7pEHOnlhSHDaWxWjaDWADct0LzFgR+2/VfxqEzuo2TC832D2n1YhqvZL3
-         Mkk/5+nkS2y4HmaGW1D8wKac6NNPq/ivpTylUgLcv3vIsVTGVOMpasa/UiyeSUpC8XLl
-         gELg==
+        b=GCU+/FCgzBbi5E0w2lcbkIvOh80H6esAl6nN3f5nNU5aB2e3wNYqugLbMz+Fttq+jq
+         WEEJlRQtksjBXKlIQAi3Vqc3NQxRfvxE4qz9oXXujuvfxPTXaUpVIQNOSTI8K9ARyBd8
+         6kBMd4k3rLqGto9bj/Ufu2LaQ2U9bVpj74EC/anGf0LbTkExNJ9pV78uIVMNiEL8nNfO
+         Yd/Js4igLTgi6C76dx16TIvbRxPsjxhs3tBwWnqzCCgid5/ktktU/73viRgkUNPBewbN
+         gZ7Zr6uESxQefuuy+MipwIxQC7J2GW9KS2wUCiCxuQRACiIyj1g1eYDqYixy2WZ4/iWT
+         Jkwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=zvspjr+HVb6++R/6RoE2XxJHv7cx+yx4lugmNxF/JXg=;
-        b=uULI5rVSpRJBxEhOLInNk/P31VX8VmXsbTaeY8ASAMI444Uf4yfTPaW1lsBzzM3f7e
-         DVbn4p+BKZ5UgXkeg5nnsXbJoW2M8nbmFJYMq92FPrDB2NmsjLeiiweoAB+9gTV0/QkD
-         2hEt++MurQanDO8cfnax4DQN9QUPu+tjUZmSiXXiYdVn03+UwIxsRCgy5mEfFhFYMSK4
-         q2xn/t1m4lb0yCCK0QsujNG5oGxseOT9Ip2bMnvPrNWstdI+/dJoSxZ81BP8FEMRQhLe
-         woOebB4K9G7Sg2kkiXa4LMjkO9ftUG8s1DHFSHxdFX65yL6Gas951yTiVU7I04cwP/xt
-         nrIA==
+        bh=eMnWuBSPOTN42kS+PlxL/GdVBDPmFqVbaBD+3Xqj69I=;
+        b=Fh7W159jkEDy7OFBqMHcxoeYowSoVDCgPX+1hJAmJZ+2GnW13l9vMT5Hq9h8LTUjQK
+         /YZYa1t8+xfNpuQ57ZDFLxiyqklqMB/1WKiNVw2VYqVt/0L9HTOMQyMkdoAKzI3owmiq
+         mEhjAJiO7Eiu/0f5LdYswmdDkI8g1oYlMQj2vV7KRxqYI5gJXQL8rqctMgatZe4C493N
+         O8EUhB7lfughSW34s1I6Qz9AU3kWjbj/RI29MPuEOgzvVBs+zpo660uX/QI5CzIcyhVB
+         QwDwRP1BoxlfXYUj0neIhX+D9MiCkpt8pB89/DN84SVf341xIg00lhbVaU2PdTGqbpw3
+         0hcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si26539416wrp.32.2019.04.12.09.59.10
+        by mx.google.com with ESMTPS id o4si27631779wrn.211.2019.04.12.09.59.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 09:59:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Apr 2019 09:59:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40106 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40104 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEzW9-0005CN-JQ
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 12:59:09 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54391)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hEzWh-0005An-1g
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 12:59:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEzRw-000143-G2
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 12:54:49 -0400
+	(envelope-from <philmd@redhat.com>) id 1hEzS4-0001CC-GJ
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 12:54:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hEzRu-0007Bk-Gi
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 12:54:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:63093)
+	(envelope-from <philmd@redhat.com>) id 1hEzS2-0007US-HI
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 12:54:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34436)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hEzRs-00075N-Jk; Fri, 12 Apr 2019 12:54:44 -0400
+	id 1hEzRy-0007JM-GZ; Fri, 12 Apr 2019 12:54:50 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A2DF0C0495BF;
-	Fri, 12 Apr 2019 16:54:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7A3C8308FBAF;
+	Fri, 12 Apr 2019 16:54:49 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-66.brq.redhat.com [10.40.204.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DA7460BEC;
-	Fri, 12 Apr 2019 16:54:38 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1718160BEC;
+	Fri, 12 Apr 2019 16:54:46 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org,
 	Markus Armbruster <armbru@redhat.com>
-Date: Fri, 12 Apr 2019 18:54:10 +0200
-Message-Id: <20190412165416.7977-7-philmd@redhat.com>
+Date: Fri, 12 Apr 2019 18:54:12 +0200
+Message-Id: <20190412165416.7977-9-philmd@redhat.com>
 In-Reply-To: <20190412165416.7977-1-philmd@redhat.com>
 References: <20190412165416.7977-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Fri, 12 Apr 2019 16:54:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.43]);
+	Fri, 12 Apr 2019 16:54:49 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 06/12] hw/devices: Move CBus declarations into
- a new header
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v3 08/12] hw/devices: Move TI touchscreen
+ declarations into a new header
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
-	Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8OurzdEyB37A
+	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fVLO3DQvEnFM
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Since uWireSlave is only used in this new header, there is no
+need to expose it via "qemu/typedefs.h".
+
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS            |  1 +
- hw/arm/nseries.c       |  1 +
- hw/misc/cbus.c         |  2 +-
- include/hw/devices.h   | 14 --------------
- include/hw/misc/cbus.h | 32 ++++++++++++++++++++++++++++++++
- 5 files changed, 35 insertions(+), 15 deletions(-)
- create mode 100644 include/hw/misc/cbus.h
+v3:
+ Drop "TI 4/8-wire resistive touch screen converters" comment (Markus)
+---
+ MAINTAINERS                |  2 ++
+ hw/arm/nseries.c           |  2 +-
+ hw/arm/palm.c              |  2 +-
+ hw/input/tsc2005.c         |  2 +-
+ hw/input/tsc210x.c         |  4 ++--
+ include/hw/arm/omap.h      |  6 +-----
+ include/hw/devices.h       | 15 ---------------
+ include/hw/input/tsc2xxx.h | 36 ++++++++++++++++++++++++++++++++++++
+ include/qemu/typedefs.h    |  1 -
+ 9 files changed, 44 insertions(+), 26 deletions(-)
+ create mode 100644 include/hw/input/tsc2xxx.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index e1e30b071ee..041c939952f 100644
+index e7c3d282a0a..b31260189ec 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -669,6 +669,7 @@ F: hw/input/tsc2005.c
  F: hw/misc/cbus.c
  F: hw/timer/twl92230.c
  F: include/hw/display/blizzard.h
-+F: include/hw/misc/cbus.h
++F: include/hw/input/tsc2xxx.h
+ F: include/hw/misc/cbus.h
 =20
  Palm
- M: Andrzej Zaborowski <balrogg@gmail.com>
+@@ -678,6 +679,7 @@ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+ F: hw/arm/palm.c
+ F: hw/input/tsc210x.c
++F: include/hw/input/tsc2xxx.h
+=20
+ Raspberry Pi
+ M: Peter Maydell <peter.maydell@linaro.org>
 diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index ef09b3bf79f..6889f13d699 100644
+index 6889f13d699..303f7a31e1c 100644
 --- a/hw/arm/nseries.c
 +++ b/hw/arm/nseries.c
-@@ -32,6 +32,7 @@
+@@ -30,8 +30,8 @@
+ #include "ui/console.h"
+ #include "hw/boards.h"
  #include "hw/i2c/i2c.h"
- #include "hw/devices.h"
+-#include "hw/devices.h"
  #include "hw/display/blizzard.h"
-+#include "hw/misc/cbus.h"
++#include "hw/input/tsc2xxx.h"
+ #include "hw/misc/cbus.h"
  #include "hw/misc/tmp105.h"
  #include "hw/block/flash.h"
- #include "hw/hw.h"
-diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
-index 25e337ea77a..16ee704bcaa 100644
---- a/hw/misc/cbus.c
-+++ b/hw/misc/cbus.c
-@@ -23,7 +23,7 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
+diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+index 285f43709dd..139d27d1cc0 100644
+--- a/hw/arm/palm.c
++++ b/hw/arm/palm.c
+@@ -26,7 +26,7 @@
+ #include "hw/arm/omap.h"
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
 -#include "hw/devices.h"
-+#include "hw/misc/cbus.h"
- #include "sysemu/sysemu.h"
++#include "hw/input/tsc2xxx.h"
+ #include "hw/loader.h"
+ #include "exec/address-spaces.h"
+ #include "cpu.h"
+diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
+index 2b9108a1932..f82771e7a7c 100644
+--- a/hw/input/tsc2005.c
++++ b/hw/input/tsc2005.c
+@@ -23,7 +23,7 @@
+ #include "hw/hw.h"
+ #include "qemu/timer.h"
+ #include "ui/console.h"
+-#include "hw/devices.h"
++#include "hw/input/tsc2xxx.h"
+ #include "trace.h"
 =20
- //#define DEBUG
+ #define TSC_CUT_RESOLUTION(value, p)	((value) >> (16 - (p ? 12 : 10)))
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+index 41731619bb6..f94cb4683bf 100644
+--- a/hw/input/tsc210x.c
++++ b/hw/input/tsc210x.c
+@@ -24,8 +24,8 @@
+ #include "audio/audio.h"
+ #include "qemu/timer.h"
+ #include "ui/console.h"
+-#include "hw/arm/omap.h"	/* For I2SCodec and uWireSlave */
+-#include "hw/devices.h"
++#include "hw/arm/omap.h"            /* For I2SCodec */
++#include "hw/input/tsc2xxx.h"
+=20
+ #define TSC_DATA_REGISTERS_PAGE		0x0
+ #define TSC_CONTROL_REGISTERS_PAGE	0x1
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index e7fbd340f37..9de867daa46 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -20,6 +20,7 @@
+ #include "exec/memory.h"
+ # define hw_omap_h		"omap.h"
+ #include "hw/irq.h"
++#include "hw/input/tsc2xxx.h"
+ #include "target/arm/cpu-qom.h"
+ #include "qemu/log.h"
+=20
+@@ -679,11 +680,6 @@ qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s);
+ void omap_mpuio_out_set(struct omap_mpuio_s *s, int line, qemu_irq handl=
+er);
+ void omap_mpuio_key(struct omap_mpuio_s *s, int row, int col, int down);
+=20
+-struct uWireSlave {
+-    uint16_t (*receive)(void *opaque);
+-    void (*send)(void *opaque, uint16_t data);
+-    void *opaque;
+-};
+ struct omap_uwire_s;
+ void omap_uwire_attach(struct omap_uwire_s *s,
+                 uWireSlave *slave, int chipselect);
 diff --git a/include/hw/devices.h b/include/hw/devices.h
-index 77d66113021..e400f9eac09 100644
+index 7a630da47f7..ba9034050b4 100644
 --- a/include/hw/devices.h
 +++ b/include/hw/devices.h
-@@ -29,18 +29,4 @@ void tsc2005_set_transform(void *opaque, MouseTransfor=
-mInfo *info);
- /* stellaris_input.c */
- void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
+@@ -4,7 +4,6 @@
+ /* Devices that have nowhere better to go.  */
 =20
--/* cbus.c */
--typedef struct {
--    qemu_irq clk;
--    qemu_irq dat;
--    qemu_irq sel;
--} CBus;
--CBus *cbus_init(qemu_irq dat_out);
--void cbus_attach(CBus *bus, void *slave_opaque);
+ #include "hw/hw.h"
+-#include "ui/console.h"
+=20
+ /* smc91c111.c */
+ void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
+@@ -12,18 +11,4 @@ void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
+ /* lan9118.c */
+ void lan9118_init(NICInfo *, uint32_t, qemu_irq);
+=20
+-/* tsc210x.c */
+-uWireSlave *tsc2102_init(qemu_irq pint);
+-uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav);
+-I2SCodec *tsc210x_codec(uWireSlave *chip);
+-uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len);
+-void tsc210x_set_transform(uWireSlave *chip,
+-                MouseTransformInfo *info);
+-void tsc210x_key_event(uWireSlave *chip, int key, int down);
 -
--void *retu_init(qemu_irq irq, int vilma);
--void *tahvo_init(qemu_irq irq, int betty);
--
--void retu_key_event(void *retu, int state);
+-/* tsc2005.c */
+-void *tsc2005_init(qemu_irq pintdav);
+-uint32_t tsc2005_txrx(void *opaque, uint32_t value, int len);
+-void tsc2005_set_transform(void *opaque, MouseTransformInfo *info);
 -
  #endif
-diff --git a/include/hw/misc/cbus.h b/include/hw/misc/cbus.h
+diff --git a/include/hw/input/tsc2xxx.h b/include/hw/input/tsc2xxx.h
 new file mode 100644
-index 00000000000..c899943e035
+index 00000000000..dbfe5c55c1f
 --- /dev/null
-+++ b/include/hw/misc/cbus.h
-@@ -0,0 +1,32 @@
++++ b/include/hw/input/tsc2xxx.h
+@@ -0,0 +1,36 @@
 +/*
-+ * CBUS three-pin bus and the Retu / Betty / Tahvo / Vilma / Avilma /
-+ * Hinku / Vinku / Ahne / Pihi chips used in various Nokia platforms.
-+ * Based on reverse-engineering of a linux driver.
++ * TI touchscreen controller
 + *
++ * Copyright (c) 2006 Andrzej Zaborowski
 + * Copyright (C) 2008 Nokia Corporation
-+ * Written by Andrzej Zaborowski
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or la=
 ter.
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#ifndef HW_MISC_CBUS_H
-+#define HW_MISC_CBUS_H
++#ifndef HW_INPUT_TSC2XXX_H
++#define HW_INPUT_TSC2XXX_H
 +
 +#include "hw/irq.h"
++#include "ui/console.h"
 +
-+typedef struct {
-+    qemu_irq clk;
-+    qemu_irq dat;
-+    qemu_irq sel;
-+} CBus;
++typedef struct uWireSlave {
++    uint16_t (*receive)(void *opaque);
++    void (*send)(void *opaque, uint16_t data);
++    void *opaque;
++} uWireSlave;
 +
-+CBus *cbus_init(qemu_irq dat_out);
-+void cbus_attach(CBus *bus, void *slave_opaque);
++/* tsc210x.c */
++uWireSlave *tsc2102_init(qemu_irq pint);
++uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav);
++I2SCodec *tsc210x_codec(uWireSlave *chip);
++uint32_t tsc210x_txrx(void *opaque, uint32_t value, int len);
++void tsc210x_set_transform(uWireSlave *chip, MouseTransformInfo *info);
++void tsc210x_key_event(uWireSlave *chip, int key, int down);
 +
-+void *retu_init(qemu_irq irq, int vilma);
-+void *tahvo_init(qemu_irq irq, int betty);
-+
-+void retu_key_event(void *retu, int state);
++/* tsc2005.c */
++void *tsc2005_init(qemu_irq pintdav);
++uint32_t tsc2005_txrx(void *opaque, uint32_t value, int len);
++void tsc2005_set_transform(void *opaque, MouseTransformInfo *info);
 +
 +#endif
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index e4a0a656d1c..fcdaae58c44 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -99,7 +99,6 @@ typedef struct RAMBlock RAMBlock;
+ typedef struct Range Range;
+ typedef struct SHPCDevice SHPCDevice;
+ typedef struct SSIBus SSIBus;
+-typedef struct uWireSlave uWireSlave;
+ typedef struct VirtIODevice VirtIODevice;
+ typedef struct Visitor Visitor;
+ typedef void SaveStateHandler(QEMUFile *f, void *opaque);
 --=20
 2.20.1
 

@@ -1,99 +1,79 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp281956wrx;
-        Fri, 12 Apr 2019 01:33:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxlssO1t8W6gV9rwjKouSIr1qe4Y21gg8HUu1h7/zrMTR9+kTuIMoORhd2czlE8CeiPSUjN
-X-Received: by 2002:adf:f3ce:: with SMTP id g14mr33875404wrp.129.1555058017189;
-        Fri, 12 Apr 2019 01:33:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555058017; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp359517wrx;
+        Fri, 12 Apr 2019 03:04:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyoRiAX1u1mSWaXJZG1ieIF1aXMhclFQ3qSuDTtz496ZMSh1K63Ii0mKuQkqou4g9rmtXWE
+X-Received: by 2002:a1c:e085:: with SMTP id x127mr10082253wmg.87.1555063469601;
+        Fri, 12 Apr 2019 03:04:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555063469; cv=none;
         d=google.com; s=arc-20160816;
-        b=xLSt0XMFARunT+F1pBzdieEjl0FFQSXjnLhx4yxIkN1SHGRTpiCSeDh+0C+2/1FrG0
-         UDl0RbmyPzyPhlPzz9KXO/bZwq/k/V1WUPsE8q1ZowQjBO5/ujiV3Q5A/F3ie5BCPALF
-         wASSrm3qaS6BVxbLzYRETZtHnVMyiJDjGxkuUhnmuD19tv2uu6uZ3767aPXWpIPKH+Pg
-         ITJJJMxdqeCXsv+3IxwV6ddP7EANbVXBLdP7uvEf+ppzd4pw3NrVWv1DOe/hX3eyqI0i
-         oU9RR5Z68JrW3pH0dLmgJfeu9SrYYlUVpD67qMT7T/2uQYaM6LiPNaSsQli3hps7fkTw
-         aKhw==
+        b=qAmwjm27DFqfaOlhbaqIMpYDQXSNvnPl7a7Xt+exe82Y3bz0NA65aVy4B6cQfizFjJ
+         06sILadObM0uZNxqWZ66voPLARPNYrfJfKU4l1Vq2zeDKLixwkRV5yAuWBpiigz1L2I7
+         OrL9WbG17M8CJ/fzH/RUW9mNiqJOIp3nFB3Nu+4dypSDtzxyMUZH6HORyrdaWllXFgMs
+         83a9hiGD9mchbRGNFagaqgl4bo+bv5owi89XGeNnUDlKqhhczCIOPCKOqH5RSVLgH+aW
+         q1FS9OjI/vZoBCyaYpCTJpLS3AmbCaRucjcZSSpzLQNSswUWyUfwm1NUuQ9fxSKa/C97
+         wOfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=5Kpo5adyFixlUGIM6m6ndorhrikg3t7PotjxeaE/lxA=;
-        b=BzM3FVlkswoAD8Y4NCSWgw9JFmRmeFdpm40lM7c/nZqJTdO3pQuHBAzj1NBuhT9+JB
-         ZAlIIA1FIYhCEn7/qN2FlV09chxENZIJNx013qwTMe7TpY0I2Z9Zg0tir1PS8eJMmQnU
-         aYApHXGUG9jN4xCPdnURgmne+P9Ju+MwubKsjoRMCWRQTObH6JcpGVWJ8GnbrN2G99hz
-         5GUoR3ASmARCFPDKTWaOG5jQNgLvRUpXtt+E0HFKl/e1K+pwGp0oEzF5ml+E68IGKPaD
-         kDyIy6X9Mnwvyfp6yf2euaZ/4AlCnYELkY1dYAKZoqksIAGztFAHpAPazqkOnVA1OfNw
-         H1JQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=UwBwo+mC1UXVABsuH9uLkv68F5F11w1OOxJF3Lzey7A=;
+        b=YqA6m2My2XvgXq/R//c6UeVhpGiibfPx35qOyldFzJfS4V1+CC1id7SjOC968k2QaD
+         2xA2E8BbKnpA8+OkFB2IivapRjqURSTx17YjGIhpIwqCIq16D9xS7WIFyKR+Xl7gyUNd
+         /rcBjPKXbyttYAEwBoAaLGBZSmwoIDBoHhSiSqAtL49tvGz27gyhgWaXCKpNigbd1dKt
+         xZBT4/8KZhlE6Co59aZM94CWT48KL701NaDbeqJ8KrUaQnQy71DHoi9/5yJd1mtPwi/R
+         39SkK3f47dPYFHCC1BBvn5drTpyhuqzMF8L0p4RsYAZNbgyU7ILs04VQoaBBwAGjMimP
+         jLiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=r2VpJ3D8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s80si4909052wme.55.2019.04.12.01.33.37
+        by mx.google.com with ESMTPS id t10si4934426wmh.8.2019.04.12.03.04.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 01:33:37 -0700 (PDT)
+        Fri, 12 Apr 2019 03:04:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=r2VpJ3D8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:60832 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:33468 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hErcu-0000h1-94
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 04:33:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46707)
+	id 1hEt2q-0000fA-If
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:04:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37610)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hErcg-0000d3-1U
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 04:33:25 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hEt2i-0000d4-1O
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 06:04:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hErcc-0002T1-2S
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 04:33:21 -0400
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a]:34653)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hErcZ-0002P0-Be
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 04:33:15 -0400
-Received: by mail-ot1-x32a.google.com with SMTP id k21so7713575otf.1
-	for <qemu-arm@nongnu.org>; Fri, 12 Apr 2019 01:33:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=5Kpo5adyFixlUGIM6m6ndorhrikg3t7PotjxeaE/lxA=;
-	b=r2VpJ3D8077Vw5YXT6diyH00n6+ZUYUYRQJykGHrTyRm8FPLDbDbiptneFVwC5lsLD
-	or6skTPjg6y1KNFWM+08beNUDoVJxLOax0h2R9QNiIL7a3Soedv5YrKUaGj1EbwIWHlS
-	tYqAYtlolWo72/vTquFdPWPwtMlzGp2vQ6D05p/dMyOTWUnuQEK7p13dUCMTi8/67cFi
-	tbd+swVoQBZjC0aHSSLxDD0KuBrglMBnXd27W2xGfReKzMyXUzF++n3J8t91TTFTc7S0
-	e/a59ZTp2MP6jCJvfCLNPeaMThZL37+RFNZ6X/WscwaaJW3/Ya6u4qolik7NWAVzNMsy
-	1AnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=5Kpo5adyFixlUGIM6m6ndorhrikg3t7PotjxeaE/lxA=;
-	b=gWyZB/wQfOm2MKNcejNvlxx+9/SJD+d8p556r9mztWD+aicHS9udn2h7JkInrSyhY8
-	jZcEt8kmDeBTu+W9nnglrxa8rjPyBfTTdUsjxNtQNRg2tcsXC0T3ny8i6A9AAdkk4VCy
-	LE5L87VGjTp4ZihuayiBQ9WB1uyMyaWwkcOt0g8S3ycbz88SIlooB3meyiAguNJ8mFl7
-	d/HtE4+opxQi39WLSDAUaTrxuo7rfNIGy/QHmBtFO8rMafChhMKiNXXBnoPR4dqN7XZn
-	lNroPz3KujDFR6pHJRM+lpQFX/2+Ats30EdZhCKbz+vvlG6MhlErZEp/4dLkxldcs1sW
-	9Ppw==
-X-Gm-Message-State: APjAAAUSCD7PqNOXQRSkUVUZ5pd0km/k5h21ZYTv2I6RIo3qJRMCbEeJ
-	oBvZNC99x7DMRK/B0RIUepEn4TmY+IoAbtjgCWfY4Q==
-X-Received: by 2002:a05:6830:1cb:: with SMTP id
-	r11mr30510453ota.302.1555057992430; 
-	Fri, 12 Apr 2019 01:33:12 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1hEt2f-0003Pl-Gb
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 06:04:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63017)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1hEt2f-0003OM-4m; Fri, 12 Apr 2019 06:04:17 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7AA27104D78;
+	Fri, 12 Apr 2019 10:04:14 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-117-161.ams2.redhat.com [10.36.117.161])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C4E9619C65;
+	Fri, 12 Apr 2019 10:03:58 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Fri, 12 Apr 2019 12:03:27 +0200
+Message-Id: <20190412100354.6409-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
-In-Reply-To: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Apr 2019 09:33:01 +0100
-Message-ID: <CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
-To: Da Zhang <daz3@vt.edu>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::32a
-Subject: Re: [Qemu-arm] Ubuntu installation shows "No network interfaces
- detected"
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 12 Apr 2019 10:04:14 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v3 00/27] vSMMUv3/pSMMUv3 2 stage VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,51 +85,157 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
+Cc: yi.l.liu@intel.com, mst@redhat.com, jean-philippe.brucker@arm.com,
+	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: URGUq2q0yzz/
+X-TUID: fmjy71Is66eH
 
-On Thu, 11 Apr 2019 at 23:16, Da Zhang <daz3@vt.edu> wrote:
->
-> Hi guys,
->
-> I am trying to create an Ubuntu ARM disk image for my gem5 ARM experiments. The installation always shows "No network interfaces detected".
-> This is my command for running qemu:
->
-> qemu-system-aarch64 \
->     -cpu host \
->     -device virtio-scsi-device \
->     -device scsi-cd,drive=cdrom \
->     -device virtio-blk-device,drive=hd0 \
->     -drive "file=ubuntu-16.04.5-server-arm64.iso,id=cdrom,if=none,media=cdrom" \
->     -drive "if=none,format=qcow2,file=ubuntu-16.04.5-server-arm64.img,id=hd0" \
->     -pflash "ubuntu-16.04.5-server-arm64-flash0.img" \
->     -pflash "ubuntu-16.04.5-server-arm64-flash1.img" \
->     -m 1G \
->     -machine virt \
->     -enable-kvm \
->     -nographic \
->     -net nic,netdev=n1 \
->     -netdev user,id=n1 \
->     ;
+Up to now vSMMUv3 has not been integrated with VFIO. VFIO
+integration requires to program the physical IOMMU consistently
+with the guest mappings. However, as opposed to VTD, SMMUv3 has
+no "Caching Mode" which allows easy trapping of guest mappings.
+This means the vSMMUV3 cannot use the same VFIO integration as VTD.
 
-This command line doesn't specify any ethernet device
-interfaces, which is why you have no networking.
-I would recommend
- -netdev user,id=mynet -device virtio-net-pci,netdev=mynet
+However SMMUv3 has 2 translation stages. This was devised with
+virtualization use case in mind where stage 1 is "owned" by the
+guest whereas the host uses stage 2 for VM isolation.
 
-though other kinds of network device will work too,
-like the rtl8139 that Narcis suggests. virtio-net will
-give the best performance.
+This series sets up this nested translation stage. It only works
+if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
+other words, it does not work if there is a physical SMMUv2).
 
-PS: I have suggested virtio-net-pci because we recommend
-the PCI virtio over the virtio-mmio that your command
-line is using for virtio-blk. Your guest OS will need to
-have the PCI support enabled, though. There is also a
-virtio-net-device which will use virtio-mmio. If PCI
-works for you I would suggest switching your virtio-blk-device
-use to virtio-blk-pci, and similarly for virtio-scsi-pci.
+The series uses a new kernel user API [1], still under definition.
 
-thanks
--- PMM
+- We force the host to use stage 2 instead of stage 1, when we
+  detect a vSMMUV3 is behind a VFIO device. For a VFIO device
+  without any virtual IOMMU, we still use stage 1 as many existing
+  SMMUs expect this behavior.
+- We introduce new IOTLB "config" notifiers, requested to notify
+  changes in the config of a given iommu memory region. So now
+  we have notifiers for IOTLB changes and config changes.
+- vSMMUv3 calls config notifiers when STE (Stream Table Entries)
+  are updated by the guest.
+- We implement a specific UNMAP notifier that conveys guest
+  IOTLB invalidations to the host
+- We implement a new MAP notifiers only used for MSI IOVAs so
+  that the host can build a nested stage translation for MSI IOVAs
+- As the legacy MAP notifier is not called anymore, we must make
+  sure stage 2 mappings are set. This is achieved through another
+  memory listener.
+- Physical SMMUs faults are reported to the guest via en eventfd
+  mechanism and reinjected into this latter.
+
+Note: The 2 first patches were sent separately.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.0.0-rc2-2stage-rfcv3
+
+Compatible with kernel series:
+[PATCH v7 00/23] SMMUv3 Nested Stage Setup
+https://github.com/eauger/linux/tree/v5.1-rc3-2stage-v7
+
+History:
+v2 -> v3:
+- rework fault handling
+- MSI binding registration done in vfio-pci. MSI binding tear down called
+  on container cleanup path
+- leaf parameter propagated
+
+v1 -> v2:
+- Fixed dual assignment (asid now correctly propagated on TLB invalidatio=
+ns)
+- Integrated fault reporting
+
+Next Steps:
+- Mature the user API with people involved in SVA work (KVM forum may be =
+a
+  good opportunity to meet)
+- Submit the IOMMU cfg notifier changes and some VFIO changes separately,=
+ to
+  progress independently on the kernel dependency
+
+
+Eric Auger (27):
+  hw/arm/smmuv3: Remove SMMUNotifierNode
+  vfio/common: Introduce vfio_set_irq_signaling helper
+  update-linux-headers: Import iommu.h
+  header update against 5.1-rc3 and IOMMU/VFIO nested stage APIs
+  memory: add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
+  memory: add IOMMU_ATTR_MSI_TRANSLATE IOMMU memory region attribute
+  hw/arm/smmuv3: Advertise VFIO_NESTED and MSI_TRANSLATE attributes
+  hw/vfio/common: Force nested if iommu requires it
+  memory: Prepare for different kinds of IOMMU MR notifiers
+  memory: Add IOMMUConfigNotifier
+  memory: Add arch_id and leaf fields in IOTLBEntry
+  hw/arm/smmuv3: Store the PASID table GPA in the translation config
+  hw/arm/smmuv3: Implement dummy replay
+  hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
+  hw/arm/smmuv3: Fill the IOTLBEntry leaf field on NH_VA invalidation
+  hw/arm/smmuv3: Notify on config changes
+  hw/vfio/common: Introduce vfio_alloc_guest_iommu helper
+  hw/vfio/common: Introduce hostwin_from_range helper
+  hw/vfio/common: Introduce helpers to DMA map/unap a RAM section
+  hw/vfio/common: Setup nested stage mappings
+  hw/vfio/common: Register a MAP notifier for MSI binding
+  vfio-pci: Expose MSI stage 1 bindings to the host
+  memory: Introduce IOMMU Memory Region inject_faults API
+  hw/arm/smmuv3: Implement fault injection
+  vfio-pci: register handler for iommu fault
+  vfio-pci: Set up fault regions
+  vfio-pci: Implement the DMA fault handler
+
+ exec.c                                        |  12 +-
+ hw/arm/smmu-common.c                          |  16 +-
+ hw/arm/smmuv3.c                               | 212 +++++--
+ hw/arm/trace-events                           |   3 +-
+ hw/i386/amd_iommu.c                           |   2 +-
+ hw/i386/intel_iommu.c                         |  25 +-
+ hw/misc/tz-mpc.c                              |   8 +-
+ hw/ppc/spapr_iommu.c                          |   2 +-
+ hw/s390x/s390-pci-inst.c                      |   4 +-
+ hw/vfio/common.c                              | 548 ++++++++++++++----
+ hw/vfio/pci.c                                 | 469 +++++++++------
+ hw/vfio/pci.h                                 |   4 +
+ hw/vfio/platform.c                            |  55 +-
+ hw/vfio/trace-events                          |   6 +-
+ hw/virtio/vhost.c                             |  14 +-
+ include/exec/memory.h                         | 159 ++++-
+ include/hw/arm/smmu-common.h                  |   9 +-
+ include/hw/vfio/vfio-common.h                 |  10 +
+ .../infiniband/hw/vmw_pvrdma/pvrdma_dev_api.h |  15 +-
+ include/standard-headers/drm/drm_fourcc.h     |  63 ++
+ include/standard-headers/linux/ethtool.h      |  33 +-
+ .../linux/input-event-codes.h                 |   2 +
+ include/standard-headers/linux/input.h        |   6 +-
+ include/standard-headers/linux/pci_regs.h     |   2 +
+ .../standard-headers/linux/virtio_config.h    |   6 +
+ include/standard-headers/linux/virtio_ring.h  |  10 -
+ .../standard-headers/rdma/vmw_pvrdma-abi.h    |   1 +
+ linux-headers/asm-arm/unistd-common.h         |  22 +
+ linux-headers/asm-arm64/unistd.h              |   2 +
+ linux-headers/asm-generic/unistd.h            | 158 +++--
+ linux-headers/asm-mips/unistd_n32.h           |  20 +
+ linux-headers/asm-mips/unistd_o32.h           |  30 +
+ linux-headers/asm-powerpc/kvm.h               |   2 +
+ linux-headers/asm-powerpc/unistd_32.h         |  30 +
+ linux-headers/asm-powerpc/unistd_64.h         |  11 +
+ linux-headers/asm-s390/unistd_32.h            |  33 ++
+ linux-headers/asm-s390/unistd_64.h            |  14 +
+ linux-headers/asm-x86/unistd_32.h             |  34 ++
+ linux-headers/asm-x86/unistd_64.h             |   4 +
+ linux-headers/asm-x86/unistd_x32.h            |   4 +
+ linux-headers/linux/iommu.h                   | 240 ++++++++
+ linux-headers/linux/vfio.h                    | 107 ++++
+ memory.c                                      |  69 ++-
+ scripts/update-linux-headers.sh               |   2 +-
+ 44 files changed, 1965 insertions(+), 513 deletions(-)
+ create mode 100644 linux-headers/linux/iommu.h
+
+--=20
+2.20.1
+

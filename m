@@ -1,82 +1,83 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp376185wrx;
-        Fri, 12 Apr 2019 03:20:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNLsPvGhu8jdttFmf95oiLpJpe3+BrvOBE2imoFEg7rKiKSv+zw8sTazP1FCR5WRTLAzW/
-X-Received: by 2002:a1c:1903:: with SMTP id 3mr4896268wmz.103.1555064429576;
-        Fri, 12 Apr 2019 03:20:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555064429; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp378598wrx;
+        Fri, 12 Apr 2019 03:23:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwAHk5aksiJ/XlqmYZLSTNaVD1Zzwdr2JnIoxdpZ58+KvXXjq3RpjCCKjl+PtGGVmifugf0
+X-Received: by 2002:a1c:7dd7:: with SMTP id y206mr10398500wmc.81.1555064593774;
+        Fri, 12 Apr 2019 03:23:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555064593; cv=none;
         d=google.com; s=arc-20160816;
-        b=Quib16TxvqV+iYtPQINxQsGm9Gh1KqqzjhgpIIG/Q6yKH44BUe/FPMY3bimXIYl6Jw
-         X8rdKufJMQL8Mubf9nq7ql/6erFVZGLVYZ77QueFl1dTUbwH6xad3rfXB0/2En22ZWoD
-         Gv3ZUzhcOMMi4W2V85W+qwmEToeIZ0TsU/USOWyl9mrnDnrWnqjXJlzhqDNEX9Zllmkr
-         sNYirCFaM3oGbbm5RtlAYknz1rZ4nHhwSs1jI4DCia1xf3o2zYiSUM5cSx4908W+P3va
-         GSPMWzJtdnrUiRiqnGsD2c3N6QSV6gH0Y0LkNOomXEqFNCDqRGJO2mYWL/YwQLyJIna3
-         V8VA==
+        b=usxROTXfGwYGZe14QD2XcS1UDvs8/God6IMQm5iNGCPgDUZFE7xv/hRuDysFjor3s5
+         bQshaL7Tv18MEVpq+BPjo4yO3V14QZkczOebDNDdBIMOTkTCsOTZZV9j9qsxpK/ougMO
+         h4POn/JqvesHhr1suR7wL/7ws51hizC/FHEQmzcZRLgOo+GrDCei95uJDnLtyiUGG89D
+         IpIbiQQufOlcfgoMGdmbPR7T7QjJb3t0O9xm2g9jjtGsHG3vCXO+iOf+8c3jvXtwkk2J
+         /BTNCqhfaIJ/HGvHvFzcxPd6ifLE4kJoKWVdR+G4MrCnw6d+Y/OeY8DQL/6SdTtGGERA
+         mX6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=sNIYqmv4HFFf4wmyb49QRQrVMw4+Om4Rf/MDuEX7LuY=;
-        b=WWD/a7nhEDgDCP3T7YCbVSnR9whoTAmvMzmDXxNsX6EGeWlyQZ31cmb4XczWWq3TL+
-         k0P3ALvAKXrByyJx+M71doIyRdJjJhUClUqMw7b1B8iOxK0b+qH5ebqMC2TUXc//+pQL
-         XLAx3nYLun9aW3nifMrcR1DqJGIDVvt3Pl2wEsFtgolhV5A1ZwF12fBfMFvBCl5EVQlV
-         mux6zNQH6lKwWqRnUwxhCx4H8Tw1eWoShi1Arx10cf78AWsUOwX+iy1CJ9vmlxFtThpf
-         DQgD4+YRSpEb2ovaCaWk057Xgeoz/YySwJ7jpsnzGTNvfL5WVUlnfow0h8fLGlra48tb
-         tGvA==
+        bh=XvFt0gqGZwcs0Cs8Dw555uycVw+C3YCWKJxTvVMZgA0=;
+        b=fq8PklSyXiwusVPdFKPgp3OuZLil0elUO+J8Rb1msabcx6N+cZxheWno4a+r+UPCzn
+         sxwQShpRiG81S253kMUea8YXkQGmWFGvmp+wjfXjbKwhOuv9zmejPILE4kBK6ZYdkviz
+         cm+51GFtCPWI215c36QvuSiszfN4z2fxIS40SNVo2ZJ3EWNl8/6sDrA/OD/YDCadZRgQ
+         x/SJcsmmbM0lCl3fYMWOZ8cKbEYR4pYiEdS3RE6wx7lMz+MTPRJ86Ew9290coGMdM2Fo
+         QrBN/K8uVukBGg3KQBVWPJcVJdq/sNqaHuVYVOtkaJq9zUtMiGmm33RwqKICym80jdwi
+         vaJg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si5002456wmd.39.2019.04.12.03.20.29
+        by mx.google.com with ESMTPS id i12si25659271wrx.443.2019.04.12.03.23.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 03:20:29 -0700 (PDT)
+        Fri, 12 Apr 2019 03:23:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33760 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33821 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEtIK-0006c8-Hr
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:20:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38310)
+	id 1hEtKy-0001go-Nx
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:23:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38566)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hEt4A-000223-Sf
-	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:05:53 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hEt4d-0002kk-UB
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:06:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hEt49-0004bc-9q
-	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:05:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59132)
+	(envelope-from <eric.auger@redhat.com>) id 1hEt4c-0004zT-Fl
+	for qemu-devel@nongnu.org; Fri, 12 Apr 2019 06:06:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56314)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hEt45-0004ZU-4F; Fri, 12 Apr 2019 06:05:45 -0400
+	id 1hEt4Y-0004wP-PS; Fri, 12 Apr 2019 06:06:15 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 620D381E1B;
-	Fri, 12 Apr 2019 10:05:44 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0E021308FBB1;
+	Fri, 12 Apr 2019 10:06:14 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-161.ams2.redhat.com [10.36.117.161])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C637419C65;
-	Fri, 12 Apr 2019 10:05:41 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8555219C65;
+	Fri, 12 Apr 2019 10:06:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Fri, 12 Apr 2019 12:03:43 +0200
-Message-Id: <20190412100354.6409-17-eric.auger@redhat.com>
+Date: Fri, 12 Apr 2019 12:03:47 +0200
+Message-Id: <20190412100354.6409-21-eric.auger@redhat.com>
 In-Reply-To: <20190412100354.6409-1-eric.auger@redhat.com>
 References: <20190412100354.6409-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 12 Apr 2019 10:05:44 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.43]);
+	Fri, 12 Apr 2019 10:06:14 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v3 16/27] hw/arm/smmuv3: Notify on config changes
+Subject: [Qemu-devel] [RFC v3 20/27] hw/vfio/common: Setup nested stage
+ mappings
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,171 +93,265 @@ Cc: yi.l.liu@intel.com, mst@redhat.com, jean-philippe.brucker@arm.com,
 	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pi1ZxumulVEN
+X-TUID: LyObYQPPi3LI
 
-In case IOMMU config notifiers are attached to the
-IOMMU memory region, we execute them, passing as argument
-the iommu_pasid_table_config struct updated with the new
-viommu translation config. Config notifiers are called on
-STE changes. At physical level, they translate into
-CMD_CFGI_STE_* commands.
+In nested mode, legacy vfio_iommu_map_notify cannot be used as
+there is no "caching" mode and we do not trap on map.
+
+On Intel, vfio_iommu_map_notify was used to DMA map the RAM
+through the host single stage.
+
+With nested mode, we need to setup the stage 2 and the stage 1
+separately. This patch introduces a prereg_lsitener to setup
+the stage 2 mapping.
+
+The stage 1 mapping, owned by the guest, is passed to the host
+when the guest invalidates the stage 1 configuration, through
+a dedicated config IOMMU notifier. Guest IOTLB invalidations
+are cascaded downto the host through another IOMMU MR UNMAP
+notifier.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
+
 v2 -> v3:
-- adapt to pasid_cfg field changes. Use local variable
-- add trace event
-- set version fields
-- use CONFIG_PASID
+- use VFIO_IOMMU_ATTACH_PASID_TABLE
+- new user API
+- handle leaf
 
 v1 -> v2:
-- do not notify anymore on CD change. Anyway the smmuv3 linux
-  driver is not sending any CD invalidation commands. If we were
-  to propagate CD invalidation commands, we would use the
-  CACHE_INVALIDATE VFIO ioctl.
-- notify a precise config flags to prepare for addition of new
-  flags
+- adapt to uapi changes
+- pass the asid
+- pass IOMMU_NOTIFIER_S1_CFG when initializing the config notifier
 ---
- hw/arm/smmuv3.c     | 72 ++++++++++++++++++++++++++++++++++-----------
- hw/arm/trace-events |  1 +
- 2 files changed, 56 insertions(+), 17 deletions(-)
+ hw/vfio/common.c | 147 +++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 136 insertions(+), 11 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index f2f3724686..2574989f2e 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -16,6 +16,8 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
-=20
-+#include "linux/iommu.h"
-+
- #include "qemu/osdep.h"
- #include "hw/boards.h"
- #include "sysemu/sysemu.h"
-@@ -847,6 +849,57 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, =
-int asid,
-     }
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index cb541330d7..e9b729a503 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -428,6 +428,67 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, voi=
+d **vaddr,
+     return true;
  }
 =20
-+static void smmuv3_notify_config_change(SMMUState *bs, uint32_t sid)
++/* Pass the guest stage 1 config to the host */
++static void vfio_iommu_nested_notify(IOMMUNotifier *n, IOMMUConfig *cfg)
 +{
-+    IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
-+    SMMUEventInfo event =3D {.type =3D SMMU_EVT_NONE, .sid =3D sid};
-+    SMMUTransCfg *cfg;
-+    SMMUDevice *sdev;
++    VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
++    VFIOContainer *container =3D giommu->container;
++    struct vfio_iommu_type1_attach_pasid_table info;
++    int ret;
 +
-+    if (!mr) {
-+        return;
-+    }
++    info.argsz =3D sizeof(info);
++    info.flags =3D 0;
++    memcpy(&info.config, &cfg->pasid_cfg, sizeof(cfg->pasid_cfg));
 +
-+    sdev =3D container_of(mr, SMMUDevice, iommu);
-+
-+    /* flush QEMU config cache */
-+    smmuv3_flush_config(sdev);
-+
-+    if (mr->iommu_notify_flags & IOMMU_NOTIFIER_CONFIG_PASID) {
-+        /* force a guest RAM config structure decoding */
-+        cfg =3D smmuv3_get_config(sdev, &event);
-+
-+        if (cfg) {
-+            IOMMUConfig iommu_config =3D {
-+                .pasid_cfg.version =3D PASID_TABLE_CFG_VERSION_1,
-+                .pasid_cfg.format =3D IOMMU_PASID_FORMAT_SMMUV3,
-+                .pasid_cfg.base_ptr =3D cfg->s1ctxptr,
-+                .pasid_cfg.smmuv3.version =3D PASID_TABLE_SMMUV3_CFG_VER=
-SION_1,
-+            };
-+
-+            if (cfg->disabled || cfg->bypassed) {
-+                iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_BYP=
-ASS;
-+            } else if (cfg->aborted) {
-+                iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_ABO=
-RT;
-+            } else {
-+                iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_TRA=
-NSLATE;
-+            }
-+
-+            trace_smmuv3_notify_config_change(mr->parent_obj.name,
-+                                              iommu_config.pasid_cfg.con=
-fig,
-+                                              iommu_config.pasid_cfg.bas=
-e_ptr);
-+
-+            memory_region_config_notify_iommu(mr, 0,
-+                                              IOMMU_NOTIFIER_CONFIG_PASI=
-D,
-+                                              &iommu_config);
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s error decoding the configuration for iommu=
- mr=3D%s\n",
-+                         __func__, mr->parent_obj.name);
-+        }
++    ret =3D ioctl(container->fd, VFIO_IOMMU_ATTACH_PASID_TABLE, &info);
++    if (ret) {
++        error_report("%p: failed to pass S1 config to the host (%d)",
++                     container, ret);
 +    }
 +}
 +
- static int smmuv3_cmdq_consume(SMMUv3State *s)
++/* Propagate a guest IOTLB invalidation to the host (nested mode) */
++static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iot=
+lb)
++{
++    VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
++    hwaddr start =3D iotlb->iova + giommu->iommu_offset;
++
++    VFIOContainer *container =3D giommu->container;
++    struct vfio_iommu_type1_cache_invalidate ustruct;
++    size_t size =3D iotlb->addr_mask + 1;
++    int ret;
++
++    assert(iotlb->perm =3D=3D IOMMU_NONE);
++
++    ustruct.argsz =3D sizeof(ustruct);
++    ustruct.flags =3D 0;
++    ustruct.info.version =3D IOMMU_CACHE_INVALIDATE_INFO_VERSION_1;
++
++    if (size <=3D 0x10000) {
++        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
++        ustruct.info.granularity =3D IOMMU_INV_GRANU_ADDR;
++        ustruct.info.addr_info.flags =3D IOMMU_INV_ADDR_FLAGS_PASID;
++        if (iotlb->leaf) {
++            ustruct.info.addr_info.flags |=3D IOMMU_INV_ADDR_FLAGS_LEAF;
++        }
++        ustruct.info.addr_info.pasid =3D iotlb->arch_id;
++        ustruct.info.addr_info.addr =3D start;
++        ustruct.info.addr_info.granule_size =3D size;
++        ustruct.info.addr_info.nb_granules =3D 1;
++    } else {
++        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
++        ustruct.info.granularity =3D IOMMU_INV_GRANU_PASID;
++        ustruct.info.pasid =3D iotlb->arch_id;
++    }
++
++    ret =3D ioctl(container->fd, VFIO_IOMMU_CACHE_INVALIDATE, &ustruct);
++    if (ret) {
++        error_report("%p: failed to invalidate CACHE for 0x%"PRIx64
++                     " mask=3D0x%"PRIx64" (%d)",
++                     container, start, iotlb->addr_mask, ret);
++    }
++}
++
+ static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb=
+)
  {
-     SMMUState *bs =3D ARM_SMMU(s);
-@@ -897,22 +950,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_CFGI_STE:
-         {
-             uint32_t sid =3D CMD_SID(&cmd);
--            IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
--            SMMUDevice *sdev;
+     VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
+@@ -611,6 +672,32 @@ static void vfio_dma_unmap_ram_section(VFIOContainer=
+ *container,
+     }
+ }
 =20
-             if (CMD_SSEC(&cmd)) {
-                 cmd_error =3D SMMU_CERROR_ILL;
-                 break;
-             }
++static void vfio_prereg_listener_region_add(MemoryListener *listener,
++                                            MemoryRegionSection *section=
+)
++{
++    VFIOContainer *container =3D
++        container_of(listener, VFIOContainer, prereg_listener);
++
++    if (!memory_region_is_ram(section->mr)) {
++        return;
++    }
++
++    vfio_dma_map_ram_section(container, section);
++
++}
++static void vfio_prereg_listener_region_del(MemoryListener *listener,
++                                     MemoryRegionSection *section)
++{
++    VFIOContainer *container =3D
++        container_of(listener, VFIOContainer, prereg_listener);
++
++    if (!memory_region_is_ram(section->mr)) {
++        return;
++    }
++
++    vfio_dma_unmap_ram_section(container, section);
++}
++
+ static void vfio_listener_region_add(MemoryListener *listener,
+                                      MemoryRegionSection *section)
+ {
+@@ -722,21 +809,40 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
 =20
--            if (!mr) {
--                break;
--            }
+         offset =3D section->offset_within_address_space -
+                     section->offset_within_region;
+-        giommu =3D vfio_alloc_guest_iommu(container, iommu_mr, offset);
 -
-             trace_smmuv3_cmdq_cfgi_ste(sid);
--            sdev =3D container_of(mr, SMMUDevice, iommu);
--            smmuv3_flush_config(sdev);
--
-+            smmuv3_notify_config_change(bs, sid);
-             break;
+         llend =3D int128_add(int128_make64(section->offset_within_region=
+),
+                            section->size);
+         llend =3D int128_sub(llend, int128_one());
+         iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
+                                                        MEMTXATTRS_UNSPEC=
+IFIED);
+-        iommu_iotlb_notifier_init(&giommu->n, vfio_iommu_map_notify,
+-                                  IOMMU_NOTIFIER_IOTLB_ALL,
+-                                  section->offset_within_region,
+-                                  int128_get64(llend),
+-                                  iommu_idx);
+-        QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+=20
+-        memory_region_register_iommu_notifier(section->mr, &giommu->n);
++        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
++            /* Config notifier to propagate guest stage 1 config changes=
+ */
++            giommu =3D vfio_alloc_guest_iommu(container, iommu_mr, offse=
+t);
++            iommu_config_notifier_init(&giommu->n, vfio_iommu_nested_not=
+ify,
++                                       IOMMU_NOTIFIER_CONFIG_PASID, iomm=
+u_idx);
++            QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_ne=
+xt);
++            memory_region_register_iommu_notifier(section->mr, &giommu->=
+n);
++
++            /* IOTLB unmap notifier to propagate guest IOTLB invalidatio=
+ns */
++            giommu =3D vfio_alloc_guest_iommu(container, iommu_mr, offse=
+t);
++            iommu_iotlb_notifier_init(&giommu->n, vfio_iommu_unmap_notif=
+y,
++                                      IOMMU_NOTIFIER_IOTLB_UNMAP,
++                                      section->offset_within_region,
++                                      int128_get64(llend),
++                                      iommu_idx);
++            QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_ne=
+xt);
++            memory_region_register_iommu_notifier(section->mr, &giommu->=
+n);
++        } else {
++            /* MAP/UNMAP IOTLB notifier */
++            giommu =3D vfio_alloc_guest_iommu(container, iommu_mr, offse=
+t);
++            iommu_iotlb_notifier_init(&giommu->n, vfio_iommu_map_notify,
++                                      IOMMU_NOTIFIER_IOTLB_ALL,
++                                      section->offset_within_region,
++                                      int128_get64(llend),
++                                      iommu_idx);
++            QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_ne=
+xt);
++            memory_region_register_iommu_notifier(section->mr, &giommu->=
+n);
++        }
+         memory_region_iommu_replay(giommu->iommu, &giommu->n);
+=20
+         return;
+@@ -833,15 +939,21 @@ static void vfio_listener_region_del(MemoryListener=
+ *listener,
+     }
+ }
+=20
+-static const MemoryListener vfio_memory_listener =3D {
++static MemoryListener vfio_memory_listener =3D {
+     .region_add =3D vfio_listener_region_add,
+     .region_del =3D vfio_listener_region_del,
+ };
+=20
++static MemoryListener vfio_memory_prereg_listener =3D {
++    .region_add =3D vfio_prereg_listener_region_add,
++    .region_del =3D vfio_prereg_listener_region_del,
++};
++
+ static void vfio_listener_release(VFIOContainer *container)
+ {
+     memory_listener_unregister(&container->listener);
+-    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU) {
++    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU ||
++        container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
+         memory_listener_unregister(&container->prereg_listener);
+     }
+ }
+@@ -1337,6 +1449,19 @@ static int vfio_connect_container(VFIOGroup *group=
+, AddressSpace *as,
          }
-         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
-@@ -929,14 +974,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             trace_smmuv3_cmdq_cfgi_ste_range(start, end);
-=20
-             for (i =3D start; i <=3D end; i++) {
--                IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, i);
--                SMMUDevice *sdev;
--
--                if (!mr) {
--                    continue;
--                }
--                sdev =3D container_of(mr, SMMUDevice, iommu);
--                smmuv3_flush_config(sdev);
-+                smmuv3_notify_config_change(bs, i);
-             }
-             break;
-         }
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 3809005cba..741e645ae2 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -52,4 +52,5 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV=
- for sid %d"
- smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iom=
-mu mr=3D%s"
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iom=
-mu mr=3D%s"
- smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova=
-) "iommu mr=3D%s asid=3D%d iova=3D0x%"PRIx64
-+smmuv3_notify_config_change(const char *name, uint8_t config, uint64_t s=
-1ctxptr) "iommu mr=3D%s config=3D%d s1ctxptr=3D0x%"PRIx64
-=20
+         vfio_host_win_add(container, 0, (hwaddr)-1, info.iova_pgsizes);
+         container->pgsizes =3D info.iova_pgsizes;
++
++        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
++            container->prereg_listener =3D vfio_memory_prereg_listener;
++            memory_listener_register(&container->prereg_listener,
++                                     &address_space_memory);
++            if (container->error) {
++                memory_listener_unregister(&container->prereg_listener);
++                ret =3D container->error;
++                error_setg(errp, "RAM memory listener initialization fai=
+led "
++                          " for container");
++                goto free_container_exit;
++            }
++        }
+         break;
+     }
+     case VFIO_SPAPR_TCE_v2_IOMMU:
 --=20
 2.20.1
 

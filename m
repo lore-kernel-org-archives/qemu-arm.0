@@ -1,69 +1,67 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp507847wrx;
-        Fri, 12 Apr 2019 05:35:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwqc2F5EZnZ5T1vrl8WwnpF5YRHfV525XUcq0ey7so1FK9aVlodcO5Ftx0hr9PlZpOOPOIU
-X-Received: by 2002:adf:b458:: with SMTP id v24mr35480906wrd.46.1555072526039;
-        Fri, 12 Apr 2019 05:35:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555072526; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp519976wrx;
+        Fri, 12 Apr 2019 05:47:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydJ7MbmyvWWcdTYMvZtugB0uEXjJamwzPuXyqAjl5AfRxXw6Ei/eA9xs5KlXTrZLKvsIdp
+X-Received: by 2002:a5d:4987:: with SMTP id r7mr17825167wrq.280.1555073242383;
+        Fri, 12 Apr 2019 05:47:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555073242; cv=none;
         d=google.com; s=arc-20160816;
-        b=GfqcNNK/39rpX6H/VO3YBRHpPOVWmBYDFX+E8vsQ0o7w+lTf5fxSor9lGVbpC8T/IT
-         JPQXE4ks8fHlXkkK7LW1qChg8SM7xl6tfaeABgKnSoAw1nu28SrhV9sV/v/je6lR6t/i
-         akpnoUSN1ZKx0GXKJUx1MONhLBwLdV1WtD9BsXSEnaqOVD+seu3bterj+q09hi71JUKL
-         VYCkKuSlg+PLL1I0wIPLEODK5GcIJJPeivo2HnE/4rrv+ReUib8BMxnLR+8/H4m7vML5
-         n/fxDsekpZZmwfjeQOB6S0GYEUcFP5aNc6qJbQHIozv9EdUHEOjR6IsBvyzC0Dw0T2Xv
-         80rQ==
+        b=CJOwO9zYEkVY0AeQrkj/RhvOCNYC0UgL3R/oPUwz+6J1sCLIjfmUzTVZXeE4PmTwqR
+         Hx5UdSKdV88K+xpnvvdt8ADdaslzB2As3r55mDodm/18Sg2ywcGN25sOUSV+rfux0oae
+         +EQa9rw5QffBE++0DUKIDphgtAfRu62GNVCTVSl10s0vqNhSwoCJCHgj0TR3gnABpWM5
+         NyZ6zyW5ulqNpmlWe6gZyj5LhtikvGlck/vqfEfVu2ebyDxPSecCpyb+elKVZOIH+t2e
+         wUyXa8nw4jKpurR5QeDcVI/X4ZZY6FVm+4E/qLxoPq1kK/1FilTIK/yFf/+EEWhg1/gO
+         Q83Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from;
-        bh=/hS/CIeJqPqYbwPvA/nV+bhsiR5rZohroaVGJxryuF8=;
-        b=fAZb8aOLKwLm+BO7yjmuvYUwITOwTcuS7ceKKYDuh63oGRAFBK/ITqZZWvTp1xXNSp
-         lj5ExZJL7LjO6alijvsf2gWgrIkL830Tao4XMv4IZzZTSiVt3LuZ/hJWqZFMlgyMuXKi
-         wqPvtUGWgb2t3H73+LpKZYLzeYnaKY/UT/H4uRewsdhKZ3ZyyU/M+ObvIe1hKWXjdxzk
-         xBPlwD/5FoiIz4Z84r3B2QIYNfkeI9pE031Z8aEOOjXzL2fDzcI2SG+/m+OQpRVsVH7w
-         d2rsLbjXzBVGDdp3ZPOou028BPdcQYG1w53LjxihvLbgEKGzyCfjNdpLonPTntiZ626m
-         E97w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=2wr6+m9MFIm8MR8/5Bzmg6FhU7F9C5eGGrwtY0lSZfg=;
+        b=IUx7JVHY/KIh5lz1IYMEgPvbdxvJmx9EjYtb2IkqfVkFTFUPnHJsNUmFyrhrbyIKrA
+         EieTtAtR8UehXkfpwM29dSFOx3dF9cpu5OCfH9Kg1CRDLakyWQs72Z6p7f7puuP6QU6u
+         vKV0hN1NW5yJJO3NfxplwIidun7w3DYbWUYZ17NHWczgA7Hyg7/uhRNTUQSG8xbYN67v
+         ciTwnhITUHWetKMwm+BTKJ+BoB8ldIqn5WuLP/QUEaL7PdtCFuOo1ZEZOVrQsE90T9bY
+         IX+7pSmcbw8Z/B21jJ2K1fuy6bvquQhf/aTpvxcMt0J1yujl/WXhFqI2eUUvEmyATCC9
+         NKxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si27027853wrn.71.2019.04.12.05.35.25
+        by mx.google.com with ESMTPS id r17si5092343wmh.87.2019.04.12.05.47.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 05:35:26 -0700 (PDT)
+        Fri, 12 Apr 2019 05:47:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35752 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:35966 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEvOv-0003GF-2J
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 08:35:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39142)
+	id 1hEvaT-0006er-A0
+	for alex.bennee@linaro.org; Fri, 12 Apr 2019 08:47:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hEvFt-0002ZB-Vc
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 08:26:07 -0400
+	(envelope-from <lersek@redhat.com>) id 1hEvMd-0001TX-Ou
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 08:33:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hEvFs-0002e4-RK
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 08:26:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50478)
+	(envelope-from <lersek@redhat.com>) id 1hEvMY-0008Fg-Tc
+	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 08:33:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53352)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hEvFs-0002dJ-G8; Fri, 12 Apr 2019 08:26:04 -0400
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1hEvMY-0008F5-DH; Fri, 12 Apr 2019 08:32:58 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BAAA23088B80;
-	Fri, 12 Apr 2019 12:26:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D3245D6A9;
-	Fri, 12 Apr 2019 12:26:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E40EA1138648; Fri, 12 Apr 2019 14:26:01 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C519308621C;
+	Fri, 12 Apr 2019 12:32:57 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-65.rdu2.redhat.com
+	[10.10.120.65])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AAB7B5D707;
+	Fri, 12 Apr 2019 12:32:55 +0000 (UTC)
 To: Markus Armbruster <armbru@redhat.com>
 References: <20190411135602.21725-1-armbru@redhat.com>
 	<20190411135602.21725-2-armbru@redhat.com>
@@ -71,17 +69,20 @@ References: <20190411135602.21725-1-armbru@redhat.com>
 	<03fb5b6f-7d95-3b9b-3172-e37825402036@redhat.com>
 	<8d6c1ced-1e7b-9e52-3afb-3fe1197f7a02@redhat.com>
 	<87bm1br788.fsf@dusky.pond.sub.org>
-Date: Fri, 12 Apr 2019 14:26:01 +0200
-In-Reply-To: <87bm1br788.fsf@dusky.pond.sub.org> (Markus Armbruster's message
-	of "Fri, 12 Apr 2019 09:52:07 +0200")
-Message-ID: <87tvf3o1eu.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <601610b3-b2cc-853c-6ce9-f44b5d7302ef@redhat.com>
+Date: Fri, 12 Apr 2019 14:32:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain
+In-Reply-To: <87bm1br788.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.42]);
-	Fri, 12 Apr 2019 12:26:03 +0000 (UTC)
+	Fri, 12 Apr 2019 12:32:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] pflash_cfi01: New
@@ -98,16 +99,358 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
-	qemu-devel@nongnu.org, mreitz@redhat.com, qemu-arm@nongnu.org,
-	Laszlo Ersek <lersek@redhat.com>
+	qemu-devel@nongnu.org, mreitz@redhat.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aXdyrdGElzk6
+X-TUID: /wF4hLQdM/KE
 
-Markus Armbruster <armbru@redhat.com> writes:
-
+On 04/12/19 09:52, Markus Armbruster wrote:
 > Laszlo Ersek <lersek@redhat.com> writes:
-[...]
+> 
+>> On 04/11/19 21:50, Laszlo Ersek wrote:
+>>> On 04/11/19 21:35, Laszlo Ersek wrote:
+>>>> On 04/11/19 15:56, Markus Armbruster wrote:
+>>>>> Factored out of pc_system_firmware_init() so the next commit can reuse
+>>>>> it in hw/arm/virt.c.
+>>>>>
+>>>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>>>> ---
+>>>>>  hw/block/pflash_cfi01.c  | 30 ++++++++++++++++++++++++++++++
+>>>>>  hw/i386/pc_sysfw.c       | 19 ++-----------------
+>>>>>  include/hw/block/flash.h |  1 +
+>>>>>  3 files changed, 33 insertions(+), 17 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+>>>>> index 16dfae14b8..eba01b1447 100644
+>>>>> --- a/hw/block/pflash_cfi01.c
+>>>>> +++ b/hw/block/pflash_cfi01.c
+>>>>> @@ -44,9 +44,12 @@
+>>>>>  #include "qapi/error.h"
+>>>>>  #include "qemu/timer.h"
+>>>>>  #include "qemu/bitops.h"
+>>>>> +#include "qemu/error-report.h"
+>>>>>  #include "qemu/host-utils.h"
+>>>>>  #include "qemu/log.h"
+>>>>> +#include "qemu/option.h"
+>>>>>  #include "hw/sysbus.h"
+>>>>> +#include "sysemu/blockdev.h"
+>>>>>  #include "sysemu/sysemu.h"
+>>>>>  #include "trace.h"
+>>>>>  
+>>>>> @@ -968,6 +971,33 @@ MemoryRegion *pflash_cfi01_get_memory(PFlashCFI01 *fl)
+>>>>>      return &fl->mem;
+>>>>>  }
+>>>>>  
+>>>>> +/*
+>>>>> + * Handle -drive if=pflash for machines that use machine properties.
+>>>>
+>>>> (1) Can we improve readability with quotes? "-drive if=pflash"
+> 
+> Sure.
+> 
+>>>>> + * Map unit#i (0 < i <= @ndev) to @dev[i]'s property "drive".
+>>>>
+>>>> (2) I think you meant (0 <= i < @ndev)
+> 
+> You're right, of course.
+> 
+>>>>> + */
+>>>>> +void pflash_cfi01_legacy_drive(PFlashCFI01 *dev[], int ndev)
+>>>>> +{
+>>>>> +    int i;
+>>>>
+>>>> (3) For utter pedantry, "ndev"  and "i" should have type "size_t" (in
+>>>> particular because we expect the caller to fill "ndev" with ARRAY_SIZE().
+>>>>
+>>>> But, this would go beyond refactoring -- the original "int"s have served
+>>>> us just fine, and we're usually counting up (exclusively) to the huge
+>>>> number... two. :)
+> 
+> Exactly!
+> 
+>>>>> +    DriveInfo *dinfo;
+>>>>> +    Location loc;
+>>>>> +
+>>>>> +    for (i = 0; i < ndev; i++) {
+>>>>> +        dinfo = drive_get(IF_PFLASH, 0, i);
+>>>>> +        if (!dinfo) {
+>>>>> +            continue;
+>>>>> +        }
+>>>>> +        loc_push_none(&loc);
+>>>>> +        qemu_opts_loc_restore(dinfo->opts);
+>>>>> +        if (dev[i]->blk) {
+>>>>
+>>>> (4) Is this really identical to the code being removed? The above
+>>>> controlling expression amounts to:
+>>>>
+>>>>   pcms->flash[i]->blk
+>>>>
+>>>> but the original boils down to
+>>>>
+>>>>   pflash_cfi01_get_blk(pcms->flash[i])
+>>>>
+>>>> Hmm... looking at pflash_cfi01_get_blk(), they are the same. Is there a
+>>>> particular reason for not using the wrapper function any longer? As in:
+>>>>
+>>>>   pflash_cfi01_get_blk(dev[i])
+> 
+> I don't see the benefit in abstracting from the member access.
+> 
+> If I could have ->blk outside pflash_cfi01.c without having to expose
+> all of PFlashCFI01, and have it read-only, I would.  But this is C, so I
+> get to write yet another accessor function.
+> 
+>>>>> +            error_report("clashes with -machine");
+>>>>> +            exit(1);
+>>>>> +        }
+>>>>> +        qdev_prop_set_drive(DEVICE(dev[i]), "drive",
+>>>>> +                            blk_by_legacy_dinfo(dinfo), &error_fatal);
+>>>>> +        loc_pop(&loc);
+>>>>> +    }
+>>>>> +}
+>>>>> +
+>>>>>  static void postload_update_cb(void *opaque, int running, RunState state)
+>>>>>  {
+>>>>>      PFlashCFI01 *pfl = opaque;
+>>>>> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+>>>>> index c628540774..d58e47184c 100644
+>>>>> --- a/hw/i386/pc_sysfw.c
+>>>>> +++ b/hw/i386/pc_sysfw.c
+>>>>> @@ -269,32 +269,17 @@ void pc_system_firmware_init(PCMachineState *pcms,
+>>>>>  {
+>>>>>      PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
+>>>>>      int i;
+>>>>> -    DriveInfo *pflash_drv;
+>>>>>      BlockBackend *pflash_blk[ARRAY_SIZE(pcms->flash)];
+>>>>> -    Location loc;
+>>>>>  
+>>>>>      if (!pcmc->pci_enabled) {
+>>>>>          old_pc_system_rom_init(rom_memory, true);
+>>>>>          return;
+>>>>>      }
+>>>>>  
+>>>>> -    /* Map legacy -drive if=pflash to machine properties */
+>>>>> +    pflash_cfi01_legacy_drive(pcms->flash, ARRAY_SIZE(pcms->flash));
+>>>>> +
+>>>>>      for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+>>>>>          pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>>>>> -        pflash_drv = drive_get(IF_PFLASH, 0, i);
+>>>>> -        if (!pflash_drv) {
+>>>>> -            continue;
+>>>>> -        }
+>>>>> -        loc_push_none(&loc);
+>>>>> -        qemu_opts_loc_restore(pflash_drv->opts);
+>>>>> -        if (pflash_blk[i]) {
+>>>>> -            error_report("clashes with -machine");
+>>>>> -            exit(1);
+>>>>> -        }
+>>>>> -        pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
+>>>>> -        qdev_prop_set_drive(DEVICE(pcms->flash[i]),
+>>>>> -                            "drive", pflash_blk[i], &error_fatal);
+>>>>> -        loc_pop(&loc);
+>>>>>      }
+>>>>
+>>>> (5) I think you deleted too much here. After this loop, post-patch, for
+>>>> all "i", we'll have
+>>>>
+>>>>   pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>>>>
+>>>> But pre-patch, for all "i" where the "continue" didn't fire, we'd end up
+>>>> with:
+>>>>
+>>>>   pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
+>>>>
+>>>> IOW the original loop both verifies and *collects*, for the gap check
+>>>> that comes just below.
+>>>>
+>>>> IIRC, this allows for mixing "-drive if=pflash,unit=N" with the machine
+>>>> properties, as long as you have neither conflicts, nor gaps.
+>>>>
+>>>> Post-patch however, this kind of mixing would break, because we'd report
+>>>> gaps for the legacy ("-drive if=pflash") options.
+>>>>
+>>>>
+>>>> In addition, it could break the "use ROM mode" branch below, which is
+>>>> based on pflash_blk[0].
+>>>>
+>>>> I think we should extend pflash_cfi01_legacy_drive() to populate
+>>>> "pflash_blk[0..(ndev-1)]" on output (assuming pflash_blk is not NULL on
+>>>> input).
+>>>>
+>>>> (Because, I'm assuming that qdev_prop_set_drive() -- which now occurs in
+>>>> the factored-out loop *before* the loop that we preserve here -- has no
+>>>> effect on pflash_cfi01_get_blk(pcms->flash[i]).)
+>>>
+>>> Hmmm, that's likely precisely what I'm wrong about. I've now looked at
+>>> DEFINE_PROP_DRIVE / qdev_prop_drive / set_drive / parse_drive... Does
+>>> qdev_prop_set_drive() actually *turn* the legacy options into genuine
+>>> machine type properties?... The removed comment does indicate that:
+>>>
+>>>   "Map legacy -drive if=pflash to machine properties"
+>>>
+>>> So I guess the remaining loop is correct after all, but the new comment
+>>>
+>>>   "Handle -drive if=pflash for machines that use machine properties"
+>>>
+>>> is less clear to me.
+> 
+> In my defense, the complete new comment is
+> 
+>     /*
+>      * Handle -drive if=pflash for machines that use machine properties.
+>      * Map unit#i (0 < i <= @ndev) to @dev[i]'s property "drive".
+>      */
+> 
+>> OK, OK. I'm being dense. I guess the case is that
+>>
+>>   qdev_prop_set_drive(DEVICE(dev[i]), "drive",
+>>                       blk_by_legacy_dinfo(dinfo), &error_fatal);
+>>
+>> in the new function basically *assigns* a non-NULL value to
+>>
+>>   dev[i]->blk
+>>
+>> which was checked to be NULL just before.
+> 
+> Correct!
+> 
+> Aside: the workings of qdev_prop_set_drive() used to be reasonably
+> obvious until we rebased qdev onto QOM.  Since then it involves a
+> conversion to string, a detour through QOM infrastructure, which (among
+> other things) converts the string right back.  Progress!
+> 
+>> ... This is incredibly non-intuitive, especially given that the
+>> pre-patch code performed a *similar* assignment explicitly :(
+> 
+> So, here's my thinking process that led to this patch.
+> 
+> To make ARM virt work, I gave myself permission to copy code from x86
+> without thinking about code duplication.  Once it worked, I checked what
+> I actually copied.  Just this loop:
+> 
+>     /* Map legacy -drive if=pflash to machine properties */
+>     for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+>         pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>         pflash_drv = drive_get(IF_PFLASH, 0, i);
+>         if (!pflash_drv) {
+>             continue;
+>         }
+>         loc_push_none(&loc);
+>         qemu_opts_loc_restore(pflash_drv->opts);
+>         if (pflash_blk[i]) {
+>             error_report("clashes with -machine");
+>             exit(1);
+>         }
+>         pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
+>         qdev_prop_set_drive(DEVICE(pcms->flash[i]),
+>                             "drive", pflash_blk[i], &error_fatal);
+>         loc_pop(&loc);
+>     }
+> 
+> The easy de-dupe is to put it in a fuction like this (just for
+> illustration, not even compile-tested):
+> 
+>     void pflash_cfi01_legacy_drive(PFlashCFI01 *dev[], int ndev,
+>                                    BlockBackend blk[])
+>     {
+>         int i;
+>         DriveInfo *dinfo;
+>         Location loc;
+> 
+>         // the original loop with pcms->flash replaced by dev,
+>         // pflash_blk by blk, pflash_cfi01_get_blk(dev[i]) by
+>         // dev[i]->blk, and (for good measure) pflash_drv by
+>         // dinfo:
+>         for (i = 0; i < ndev; i++) {
+>             blk[i] = dev[i]->blk;
+>             dinfo = drive_get(IF_PFLASH, 0, i);
+>             if (!dinfo) {
+>                 continue;
+>             }
+>             loc_push_none(&loc);
+>             qemu_opts_loc_restore(dinfo->opts);
+>             if (blk[i]) {
+>                 error_report("clashes with -machine");
+>                 exit(1);
+>             }
+>             blk[i] = blk_by_legacy_dinfo(dinfo);
+>             qdev_prop_set_drive(DEVICE(dev[i]),
+>                                 "drive", blk[i], &error_fatal);
+>             loc_pop(&loc);
+>         }
+>     }
+> 
+> Called like
+> 
+>         pflash_cfi01_legacy_drive(pcms->flash, ARRAY_SIZE(pcms->flash),
+>                                   pflash_blk);
+> 
+> The last parameter is awkward.  If you doubt me, try writing a contract.
+> Further evidence: the ARM virt caller only ever uses blk[0].
+> 
+> The awkwardness is cause by the original loop doing two things: map
+> legacy -drive to properties, and collect all the BlockBackends for use
+> after the loop.
+> 
+> Better factor just the former out of the loop:
+> 
+>         pflash_cfi01_legacy_drive(pcms->flash, ARRAY_SIZE(pcms->flash));
+> 
+>         for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+>             pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>         }
+> 
+> Now transform pflash_cfi01_legacy_drive().  First step: replace the last
+> parameter by a local variable:
+> 
+>         BlockBackend *blk[ndev];
+> 
+> Variable length array, no good.  But since its only use is blk[i] in the
+> loop, we can collapse it to just
+> 
+>         BlockBackend *blk;
+> 
+> used like this:
+> 
+>         for (i = 0; i < ndev; i++) {
+>             blk = dev[i]->blk;
+>             dinfo = drive_get(IF_PFLASH, 0, i);
+>             if (!dinfo) {
+>                 continue;
+>             }
+>             loc_push_none(&loc);
+>             qemu_opts_loc_restore(dinfo->opts);
+>             if (blk) {
+>                 error_report("clashes with -machine");
+>                 exit(1);
+>             }
+>             blk = blk_by_legacy_dinfo(dinfo);
+>             qdev_prop_set_drive(DEVICE(dev[i]),
+>                                 "drive", blk, &error_fatal);
+>             loc_pop(&loc);
+>         }
+> 
+> Note that each of the two assignments to blk is used just once.  Meh.
+> Eliminate the variable:
+> 
+>         for (i = 0; i < ndev; i++) {
+>             dinfo = drive_get(IF_PFLASH, 0, i);
+>             if (!dinfo) {
+>                 continue;
+>             }
+>             loc_push_none(&loc);
+>             qemu_opts_loc_restore(dinfo->opts);
+>             if (dev[i]->blk) {
+>                 error_report("clashes with -machine");
+>                 exit(1);
+>             }
+>             qdev_prop_set_drive(DEVICE(dev[i]), "drive",
+>                                 blk_by_legacy_dinfo(dinfo), &error_fatal);
+>             loc_pop(&loc);
+>         }
+> 
+> And this is exactly what's in my patch.
+> 
 >> In other words, we could have written the pre-patch (original) code like
 >> this:
 >>
@@ -132,35 +475,28 @@ Markus Armbruster <armbru@redhat.com> writes:
 >>
 >> For the sake of QOM / blk dummies like me, can you please split this
 >> refactoring to a separate patch, before extracting the new function?
->
+> 
 > If you think a preparatory patch is called for, I'll create one.
->
+> 
 > I'd have difficulties coming up with a commit message for the one you
 > proposed.
->
+> 
 > I append a patch I can describe.  Would it work for you?
->
->
->
+> 
+> 
+> 
 > pc: Split pc_system_firmware_init()'s legacy -drive loop
->
+> 
 > The loop does two things: map legacy -drive to properties, and collect
 > all the backends for use after the loop.  The next patch will factor
 > out the former for reuse in hw/arm/virt.c.  To make that easier, do
 > each thing in its own loop.
-
-Inserting here:
-
-  Note that the first loop updates pcms->flash[i]->blk for -drive
-  if=pflash with qdev_prop_set_drive().  The second loop gets the
-  (possibly updated) value from pflash_cfi01_get_blk().
-
->
+> 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
 >  hw/i386/pc_sysfw.c | 14 +++++++++-----
 >  1 file changed, 9 insertions(+), 5 deletions(-)
->
+> 
 > diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
 > index c628540774..90db9b57a4 100644
 > --- a/hw/i386/pc_sysfw.c
@@ -201,10 +537,25 @@ Inserting here:
 > +    for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
 > +        pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
 
-Uh, this should be pflash_cfi01_get_blk(pcms->flash[i]) instead.
+[*]
 
 > +    }
 > +
 >      /* Reject gaps */
 >      for (i = 1; i < ARRAY_SIZE(pcms->flash); i++) {
 >          if (pflash_blk[i] && !pflash_blk[i - 1]) {
+> 
+
+Yes, this is a huge boost to readability, as far as I'm concerned --
+primarily because it kills the *second* "pflash_blk[i]" assignment in
+the original loop body. Please do include this patch, and append, at once:
+
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+
+... BTW: you are assigning "blk" once, and reading it once. You might as
+well drop "blk" and substitute "pflash_cfi01_get_blk(pcms->flash[i])".
+
+[*] Yes, I'm seeing your update down-thread. :)
+
+Thanks,
+Laszlo

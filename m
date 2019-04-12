@@ -1,98 +1,118 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp52297wrx;
-        Thu, 11 Apr 2019 20:18:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUVXQPin2PJXQwuGEnh8166LUyONS3eAS8wys13yJ447WCoaBB//vDAgIFRhec5d+KKU2e
-X-Received: by 2002:adf:b6a4:: with SMTP id j36mr32784344wre.55.1555039088002;
-        Thu, 11 Apr 2019 20:18:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555039087; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp57189wrx;
+        Thu, 11 Apr 2019 20:25:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwyo45YGEjITrGOcP+gGl3e+b+dc9/sCMd4mx2f+Z7qos+QXyDwuCuQDheE6Kc//1oqOq3C
+X-Received: by 2002:a1c:1b10:: with SMTP id b16mr9546395wmb.90.1555039509933;
+        Thu, 11 Apr 2019 20:25:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555039509; cv=none;
         d=google.com; s=arc-20160816;
-        b=yfiePh2Rca32mkb+QB3Tj97LRxzHC2RtBJ6ysiLwJ5EVA2QlsontCyiq9Ue2bVc2hD
-         rBEoyh94qPuvxdBgV7OdiA9kMokav3xNmE4V0mvb5T5sh9QAk2Zn2uq/jPr/6AFaywdM
-         J/6groa0eRHLm1V1QF0airHfVWtK3aYuYjjJ0h2kaasembnohvslP9mRWIbQ7H8xKoe3
-         Gxlwx4wQOaDNqjJUkpAoC0UEQVxG0kA/5zqhOFrrUZFqaQyIQfDU7io/Hbpym6zS0L1I
-         wVEv4maIlEm9gO1OwHceLo2sZ4RJdIerxcIdGuoSUoa4+5yQAlC4a+EiI/p6L8Bw5iXQ
-         Mylg==
+        b=tqwFNggXodWw4WMrknsSXpcX2+AVXY742ZdUVLZbMa4lfRpvw4zYONAYiYuQf+dTGk
+         DoF51m1H0/MoPcLa1M3mkvd+ICoITSoBYlUs5jbgPwm+8ETCLx8O/SXxiwEkgczMpCeU
+         jTTZm8IziL0rgPUbT5og9O4qk/0BIbfPc+ZrH8qgM3AYzsWpWfk0f4fVhwKQ/4wcQb5H
+         uNCtbR7/4OUrqK8tJ0sED7cbwcSxYM3dC8yWLVh+fCyqXpuqxuPpO87r2xq9DNb0Uolo
+         hJw1IA7kb364h+mGaqmFSFQvUzF9vbNk7hcLB3hq+HqBvw+mqz/qn53+QYl7TyBUdDGn
+         gUDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=FITGN5swjy/EtOZE38wbT6LXFNI+WfrZjFaG31fVn8o=;
-        b=DAIQa390VQT5ObzRQNQlpcQvlnHo1Ifr2tHY0s06paIdUry1/UlLG+iko8j6paiZXp
-         bRNGKEChY+jrALPMzrR/+ee7GcWCjMCGrBLEvwqK9ff9PiICyDLRTXK0afsp9xbLC0YT
-         DFbCVuIF4n6RDlcJuOpW11d9j+x0venpSzqnb6ZiGmYavimwaTHtJvYcTHFUmR330tYB
-         4dmZkZDu2keQY3RknE/xmlFPpW+QxCJTmtEWVQDqyi5dCZS/bn2+5ZKUbFO6ydLPiZ9S
-         QQvSO3QMIBye6mKdyyqGeegIvFFWSLttEzTgsk+qtkIeaiK27/K5CYs0na1Z44drfprm
-         7TaQ==
+         :content-transfer-encoding:to:from:date:references:in-reply-to
+         :message-id:mime-version:user-agent:dkim-signature:dkim-signature;
+        bh=PCNysLiKHb8gXJxsYRLbY1zjZ1t3f8jiZOl7tebbhq0=;
+        b=Zr0ukPOjihJ9h8v1kgLJv33Lg6nQ1/Dbbp3vf4ySgcUEn3KSUe6iqca9MPrXW7uGCF
+         Fvj7eIJ399sCRZlTEczGsGFrOD9QIMqJ/hGHMXrmsIqZSCEXtd+/TvFbidsB9pm5YWLS
+         7ddelIcqdMU4M311dnunB67pj1jJ2JCrTAc3axF7JdW+carc6y+jszDl41ItBLLl/GAF
+         lKQaeLNrgczLs+wCUE5/5XauQB2ccZavQ69MlPCrAB5MB6AkzYOlcYG3Gal7+pHITd43
+         RKtOnx4GClfWZFU9DwqJG9SBNWU+J17gTLGfBV3a3+M9dIahHk/EewOBQKbfeC/TYRKY
+         zOHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="l7679q/q";
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=NPnRO1WJ;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=02d9UTIg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 60si26175957wrn.159.2019.04.11.20.18.07
+        by mx.google.com with ESMTPS id h2si25818433wrv.238.2019.04.11.20.25.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Apr 2019 20:18:07 -0700 (PDT)
+        Thu, 11 Apr 2019 20:25:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="l7679q/q";
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=NPnRO1WJ;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=02d9UTIg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:58124 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58189 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEmhb-0008JG-3c
-	for alex.bennee@linaro.org; Thu, 11 Apr 2019 23:18:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51079)
+	id 1hEmoP-0001qx-1P
+	for alex.bennee@linaro.org; Thu, 11 Apr 2019 23:25:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52139)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEmhQ-0008Hq-HI
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 23:17:57 -0400
+	(envelope-from <andrew@aj.id.au>) id 1hEmoH-0001qr-Ki
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 23:25:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hEmhP-0000ia-GH
-	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 23:17:56 -0400
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:41774)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hEmhN-0000hO-FW; Thu, 11 Apr 2019 23:17:55 -0400
-Received: by mail-qk1-x742.google.com with SMTP id o129so4822703qke.8;
-	Thu, 11 Apr 2019 20:17:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=FITGN5swjy/EtOZE38wbT6LXFNI+WfrZjFaG31fVn8o=;
-	b=l7679q/qLMUsK7xqziDWk2TLx+lVzQjbTE9Shr5pyvIl8aqY/1gmj3H35EACvyArqh
-	qCvGBCoCdUbDkqqjoONR3uG7Az9sR7cugSvbfnF1A6e0dpl/WOKVTVgPbdCz+1yl+kkj
-	JJRWY3/QPfrI7RLXZgyPmWBHhqwC158MiQiMM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=FITGN5swjy/EtOZE38wbT6LXFNI+WfrZjFaG31fVn8o=;
-	b=sG63ybX8vFiyMztCkgjMy34N+OOVq35iB2LL5a6kIsYPWqMDQY/YujegCU0ugOFzud
-	gJgqIgYMLBSi3gCf0CiqbmGnNrEhVBOtRUFfL7y9M8pKKwCEfYJXUkzU7+djuTtNJB4W
-	KQlDpgpwxUzVHQdJT9S4P5g6N/SER6YhbWsxanefVAiWqEfzdmNoSO6G6kZDi5cjlDZs
-	NcEGqK/3jPdlvtANH1DfEivJUCHjV00Dn4Reca3XESZ/DMj+RD3dB6gRfcOh43W2ZoWk
-	FQzDDGUFT01ecFo7CuQde+7Kscu9qehE9X3VVvDJV45DqMfC+JAVrU+Sr4giHu9KZDuM
-	VMpA==
-X-Gm-Message-State: APjAAAVjuvAIVqr+53AzzD0zWmFwBkypdlKGNgiUQdYzkW9tU+wCiwJb
-	fNBW5GLmtopNaCE68h9dGRO9r1EC75dGz/ifyrg=
-X-Received: by 2002:a05:620a:16aa:: with SMTP id
-	s10mr40991424qkj.305.1555039072463; 
-	Thu, 11 Apr 2019 20:17:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190328062222.8409-1-joel@jms.id.au>
-	<20190328062222.8409-2-joel@jms.id.au>
-	<CAFEAcA_K1Rv1G-s=ndVYX6i_BvWME6ToShL6ZBpB4gnE3zdZdA@mail.gmail.com>
-	<89438392-9a54-7f43-5dff-6ceeffaf9f3e@kaod.org>
-In-Reply-To: <89438392-9a54-7f43-5dff-6ceeffaf9f3e@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 12 Apr 2019 03:17:40 +0000
-Message-ID: <CACPK8Xc_WeP3xuimjTBFRArteecikin9Qj8ZoCW-J2qBY4C=5g@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+	(envelope-from <andrew@aj.id.au>) id 1hEmoF-0004T6-MV
+	for qemu-arm@nongnu.org; Thu, 11 Apr 2019 23:25:00 -0400
+Received: from out4-smtp.messagingengine.com ([66.111.4.28]:41541)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
+	id 1hEmoD-0004RR-PD; Thu, 11 Apr 2019 23:24:57 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 68C1221FE5;
+	Thu, 11 Apr 2019 23:24:56 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+	by compute4.internal (MEProxy); Thu, 11 Apr 2019 23:24:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+	mime-version:message-id:in-reply-to:references:date:from:to:cc
+	:subject:content-type:content-transfer-encoding; s=fm2; bh=PCNys
+	LiKHb8gXJxsYRLbY1zjZ1t3f8jiZOl7tebbhq0=; b=NPnRO1WJU+RUejyXKITAF
+	Cr2Feye2tGe05qg70QkDBcg5MP8feKmKtFn9exEFB3DXxCxpoTv7EXwulnmEVAzm
+	Y7es5BMlpheTCkY/5j/3xKLIO5f5ea0Rp6svmwKY1Spk8mxSEByi8r/UAK4MBFZc
+	IH42d19shMTsVQy41REH9mu8AglIDW1scNsmCSsZpNwna3hTAsrQR6Y6saYlVAs5
+	61IfPA9eAMCu0n5/a9gHmk9juf7c5YB4R8+dgQXemyJf4VGFa5fd2rt4fULkKUoW
+	uUn1K5/le1OzOXzTId4HCyMwn9chOW3SAos2yGQKWP/lgbjQwFLtPnrB4ag5mo4Z
+	w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm2; bh=PCNysLiKHb8gXJxsYRLbY1zjZ1t3f8jiZOl7tebbh
+	q0=; b=02d9UTIgfzGojXk6T8v3NymqGEpHXW60p4l3bQxsy+r8QHOuv3gE8GBo8
+	fw31ITSjC7V26h9V8Mi6yyi9pBhCRnZXlF0riwZV5zv4xCcnIiMZok1NcO3pioiW
+	ld/PkzVxEPqGtDeYl5MYRkezKfwss1CJFrFpSx/gVJONwFuzeoNXoorU2yKNtTrT
+	UrUtdV+0IqExMYjaAdCv2cQYI2i8LqLEvMQ5slUhwqNSh3pXT4Af4WJuxjri25Rb
+	6XtWwaGMEwPNKM8JotIGSUPhhCfndmFgc/F4/J9J4zmOa5frW8K1RrwQe2eiv+mW
+	iSRqsjUZGqOEMyV61xGNSKU/iyPlA==
+X-ME-Sender: <xms:BwWwXLlZOq9GgSimlNOhcZsikVfT1z4wuzpG5GLIHSemh67WSvcDrg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduuddrvddtgdeijecutefuodetggdotefrodftvf
+	curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+	uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+	fjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdetnhgu
+	rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurfgrrh
+	grmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgv
+	rhfuihiivgeptd
+X-ME-Proxy: <xmx:BwWwXMNBHon_kB65J70yWjBYPj599iyGxgx7pJ7s3-5wGMC132MfNA>
+	<xmx:BwWwXI-pvSMpWOfmvUBJgkfHJXfGfzW15mpIHoQf8oZ1vUA6pKjNQA>
+	<xmx:BwWwXOEUrINGJER_ZT-D8gKCmFHmp6Sa12uhmwR4rSy41MS3b1KYDQ>
+	<xmx:CAWwXLEuHBaK7yCppythJyVO16s8pq15yien6AqZZ_883AbDR-PGXw>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 18D397C132; Thu, 11 Apr 2019 23:24:55 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.6-329-gf4aae99-fmstable-20190329v1
+Mime-Version: 1.0
+X-Me-Personality: 52947553
+Message-Id: <c007d615-4dbf-4525-9fb0-6e4feb28c344@www.fastmail.com>
+In-Reply-To: <CACPK8XezRXPFFiiK7_xXLs-ipnfw9400E1dSRHN0XnF2cc4=vA@mail.gmail.com>
+References: <20190411161013.4514-1-clg@kaod.org>
+	<20190411161013.4514-3-clg@kaod.org>
+	<CACPK8XezRXPFFiiK7_xXLs-ipnfw9400E1dSRHN0XnF2cc4=vA@mail.gmail.com>
+Date: Thu, 11 Apr 2019 23:24:54 -0400
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Joel Stanley" <joel@jms.id.au>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain;charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::742
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw: timer: Add ASPEED RTC device
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 66.111.4.28
+Subject: Re: [Qemu-arm] [PATCH 2/3] aspeed: add a per SoC mapping for the
+ memory space
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,89 +124,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fkuP7EeOdRTj
+X-TUID: WliEEeKXSZo/
 
-Thanks for the review Peter and Cedric.
 
-On Thu, 11 Apr 2019 at 15:30, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> On 4/11/19 5:25 PM, Peter Maydell wrote:
-> >> +
-> >> +#define COUNTER1        (0x00 / 4)
-> >> +#define COUNTER2        (0x04 / 4)
-> >> +#define ALARM           (0x08 / 4)
-> >> +#define CONTROL         (0x10 / 4)
-> >> +#define ALARM_STATUS    (0x14 / 4)
+
+On Fri, 12 Apr 2019, at 11:48, Joel Stanley wrote:
+> On Thu, 11 Apr 2019 at 16:10, C=C3=A9dric Le Goater <clg@kaod.org> wro=
+te:
 > >
-> > Not mandatory, but you might like the REG32() macro in
-> > hw/registerfields.h which defines A_FOO and R_FOO
-> > constants for you for the addresses and the indexes.
->
-> Yes. May be we should start using these macros in all our models.
-
-I don't like them as you can no longer jump between the definition and
-the use of the defines.
-
->
+> > This will simplify the definition of new SoCs, like the AST2600 whic=
+h
+> > should use a slightly different address space and have a different s=
+et
+> > of controllers.
 > >
-> >> +
-> >> +#define RTC_UNLOCKED    BIT(1)
-> >> +#define RTC_ENABLED     BIT(0)
-> >> +
-> >> +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-> >> +{
-> >> +    struct tm tm;
-> >> +    uint32_t year, cent;
-> >> +    uint32_t reg1 =3D rtc->reg[COUNTER1];
-> >> +    uint32_t reg2 =3D rtc->reg[COUNTER2];
-> >> +
-> >> +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
-> >> +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
-> >> +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
-> >> +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
-> >
-> > Shift by zero ?
-> >
-> > Consider using extract32() rather than by-hand shift and mask.
+> > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>=20
+> > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> > index 5bbd1fb87d18..9b601709e93c 100644
+> > --- a/hw/arm/aspeed_soc.c
+> > +++ b/hw/arm/aspeed_soc.c
+>=20
+> > +static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
+>=20
+> > +static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
+>=20
+> Most of these arrays is common. And some of it will stay common in the=
 
-I looked at these and found them more confusing than writing what was
-actually happening.
+> 2600. Any ideas how we could avoid duplication?
 
-This code came from the Linux kernel driver, which I wrote, so I know
-it's correct. The shift by zero is there to follow the pattern of the
-code proceeding it, again to stop mistakes.
+I dunno, I feel that any attempt to create some "common" layout concept =
+is
+more distracting than having soc-specific, complete layouts described.
 
-If we require using these helper macros then I can make the change. If
-it's optional then I would prefer to leave it as is.
+There's no reason why they're common beyond coincidence (i.e. it's at
+ASPEED's whim). I think this is fine.
 
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+
+>=20
+> This is fine for now.
+>=20
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
 >
-> What about the FIELD*() macros in hw/registerfields.h ?
->
-
-> >> +static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
-> >> +{
-> >> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >> +
-> >> +    dc->realize =3D aspeed_rtc_realize;
-> >
-> > This is missing a reset function and vmstate.
-
-Ok, I can add those.
-
-vmstate and migration is a foreign concept for the small ARM machines.
-As well as being a developer, I am an end user of Qemu for them (the
-aspeeds, microbit), and the use case is to boot up a firmware and
-check that it does correct thing. I've never considered saving the
-state and resming it, and can't think of a situation where that would
-be done.
-
-If we're adding it for consistency then I understand. I don't think it
-sees any testing though.
-
-Cheers,
-
-Joel

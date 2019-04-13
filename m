@@ -1,92 +1,113 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp408831wrx;
-        Fri, 12 Apr 2019 03:58:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzEr8124Tru2LL26EamHujwykcg9H26JiNb7muHXlq0ch8MqxRMJ/mLVad2a3iTyHTtaw49
-X-Received: by 2002:a5d:4a4d:: with SMTP id v13mr36305826wrs.169.1555066708240;
-        Fri, 12 Apr 2019 03:58:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555066708; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp390250wrx;
+        Sat, 13 Apr 2019 00:08:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxs3hNT/X7kiTw1ovoP6VQKnj2AieG+SGHbjblq0CwWEQ3vNYooPGuB3SuzWyDDQZxDVFeY
+X-Received: by 2002:a1c:7a03:: with SMTP id v3mr14803380wmc.58.1555139289291;
+        Sat, 13 Apr 2019 00:08:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555139289; cv=none;
         d=google.com; s=arc-20160816;
-        b=GpvOD30gB42NGDiSpX/qvU6eBTvNEfNVQ3I7uPHODzoN69zH+G/UcVueRiJzELSSPk
-         RKy/oC3VoKH4P4h5W2W+1elUe4CgHDj+b7N8DJV1uhxNy317avXj1obFCO+UE6HDICn1
-         UJ1gUkksCPy85VqHsj+hNG+Zkr46RYbkltenY7l3NW2etbp5Aj7Jje3aDEBucpm8CxVk
-         jaAim8AuiZDe9ez3DKX4kcqIP8CU1ds6xErUnqxbUYYIq3LlBL8DgnlW8dspM5NV7tre
-         aRk6LzqSeqKN2h/MGGoneST+VJ/kEIZJESZbBdXVCXqUkf8RYhu0J9ij+F3LgeodNmyN
-         8HSw==
+        b=Rvg31rkjzY6i+oLJ/MPrF6GNZsdqyEEyygxV+Zsgcy2dAt1m8qMIAR6fhXg1Pdi1GI
+         /R4RP3733804hZUeUmHrvJ1wi+PYVdQS4+OMbMpgYgbQcFR3IHU0gjAhFRz6QvkMyMgo
+         5nwB1sDx+8eN45AXoWW2r8dmKEHmYn8xqH+AZxMrnvALXe7Qd7vAyaKyGfr/0ygpNANh
+         JOVdzg6jtHlju1QpqNp5W65UDWlf6mpgyNr2l0PmECUSsQ01sDrmD5cExbRyxFiVcpZk
+         lkwUkZs2aPSe4ka65rHxZ8WGp9yVrt8QLBI7ueV45zJNSjZvJIx16tHAg4NfLZYDxzW4
+         o/hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=p9Ucbnmcu4B6Bg+HCkwnxdeCjK1GNLt633vmHB2z0T0=;
-        b=oC8ZOSG8+rj+VVIME58YMznypstLM4Cna6g9bGYgdToikjAWktnkeGYRuSGGreKEOI
-         WB9m5XHEO0FxaIDVKu04kFi5i7ab9zyWOk+dJQVkNOgAYkXIoKU8M1Z+0GFNspsl4ocB
-         efu3veEq07DkryF/AfgvTf9OKsj2Evuz1gVMceFQEKDjjFW4eVlSRVIqd35Rtl6JoqMG
-         CJPEm+JPGfwFtgMhGZouYwW3dukc24FyUoFMG5ra7Fv1wp5v4eE16Tgtlok35V0Uc90E
-         Fl+53ryIUKGkXgdc0IX7/d5If7e1r0iKdlogIIn3z0Sx5MZn5QepBqUEUtEYUxIVH5+8
-         +wFg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=k8oI1rFy3E518WcT6RKAmVFWvu5AL2jlh6i6AvLckA8=;
+        b=uPhknBSmmlqbwJqkpZ6q8hJB4YC5TV7LsfxFXjxpzL0OTHS9kb480qZDviXCwqvC28
+         RVTQvixbjlUQ22ZIm4lLwUbhrg213Q0eQQ0iQ6OudedUd5e6vOw7mSNo2v3kSsStI1F1
+         J5gK+yUAMmF39WInF6+CqX96axJlxqa3N6qnD16KWJdxQ0/ryJS535OD1voguaaCnkxE
+         dmtKkA5N48ol5H4KAG0sd1HwOym40tvY3qsEaGHXG5+J1mbK34eyVrsTqhJghnTyd1Uu
+         x7pW74c37x8jShq73JpFF04TmlO/Ndm0E9cW5M5Jdcb+alz/+Ic7+aItOS/uy1+4QB/Z
+         gVmA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BnbTQl3f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si26918931wrr.282.2019.04.12.03.58.28
+        by mx.google.com with ESMTPS id w7si28789519wrs.314.2019.04.13.00.08.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 Apr 2019 03:58:28 -0700 (PDT)
+        Sat, 13 Apr 2019 00:08:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BnbTQl3f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34270 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:47794 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hEtt5-0007cS-D8
-	for alex.bennee@linaro.org; Fri, 12 Apr 2019 06:58:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50890)
+	id 1hFClk-0003OP-B6
+	for alex.bennee@linaro.org; Sat, 13 Apr 2019 03:08:08 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54493)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1hEtsx-0007aK-IR
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 06:58:20 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1hFClY-0003Nc-QB
+	for qemu-arm@nongnu.org; Sat, 13 Apr 2019 03:07:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1hEtst-0001zB-ES
-	for qemu-arm@nongnu.org; Fri, 12 Apr 2019 06:58:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41384)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1hEtsq-0001fZ-Nt; Fri, 12 Apr 2019 06:58:13 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 755373007C2A;
-	Fri, 12 Apr 2019 10:57:43 +0000 (UTC)
-Received: from linux.fritz.box (unknown [10.36.118.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A915860C97;
-	Fri, 12 Apr 2019 10:57:38 +0000 (UTC)
-Date: Fri, 12 Apr 2019 12:57:37 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Xiang Zheng <zhengxiang9@huawei.com>
-Message-ID: <20190412105737.GC4522@linux.fritz.box>
-References: <bf2decd3-b3cb-08eb-3449-b66f023b084a@huawei.com>
-	<c57135ae-41a9-ed7b-976b-bf8fe43596a2@redhat.com>
-	<b107e0c0-1c4c-3f0f-eb78-8929c315ce28@huawei.com>
-	<a8144a1f-364e-cea5-b0a7-05342bdab936@redhat.com>
-	<87bm1fiuo8.fsf@dusky.pond.sub.org>
-	<20190409082852.GB6610@localhost.localdomain>
-	<c03c51a7-1bb0-b05b-9027-2364ab00517c@huawei.com>
-	<20190411122246.GB5694@linux.fritz.box>
-	<0c6c32b7-46f8-cf80-b7a6-1b48995b84e4@huawei.com>
-	<355cd139-2084-e282-9a60-3574fe0746bd@huawei.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1hFClX-0004Kv-S2
+	for qemu-arm@nongnu.org; Sat, 13 Apr 2019 03:07:56 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b]:40573)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1hFClW-0004K6-TU
+	for qemu-arm@nongnu.org; Sat, 13 Apr 2019 03:07:55 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id d31so6219360pgl.7
+	for <qemu-arm@nongnu.org>; Sat, 13 Apr 2019 00:07:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=k8oI1rFy3E518WcT6RKAmVFWvu5AL2jlh6i6AvLckA8=;
+	b=BnbTQl3fPWg+RSTy2OfF/4IG85cIIP3yI9nICmj1uSSsWNocOMVV0r6pSfZryxMpmh
+	gAO6iMB7JF5OpMIdn0w+1mr34Aqb8IN67U+JEiz3G/eQuPSaDZgAWBdnqj/YyauqbI8h
+	9o0th2vK5aHIl4+2oGejlyjeiYEoSo30E7yZqg1ZMfhTr4BHpAWvSXg/TLHfmBLzK0tv
+	VEDG8qj1DlrLhJ71LppbxMZCbSE2KsrapbCfUyvAMn4clVymsLHE8K1WHRe/UU55cCt0
+	Er8wWToEZ0uKXIZqHcZcMZ4p2dUd3q9gtL7qkVUyBBPMHOhkrUWsyxbOgBb14eyjmlnI
+	Eh/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=k8oI1rFy3E518WcT6RKAmVFWvu5AL2jlh6i6AvLckA8=;
+	b=gAc5azU+QWgYL0abmXIobKV7iSofLvmhOkrBqh6rC5y3sejZZEEVskTikznuEr4dAl
+	tIer+49XtHeTutBk+sulWmO7g/wFX5BOglW8y4AyUsZdtop4uota9yesR+LxEhWczqqe
+	K3ORQBvf/4GqeeEay7SyLcPIteCF59Kafu6Wx7D7Fs9oMI6YieenJi+50ATkRaHl8DsJ
+	kQxm44kCXuyPrZgxtD2sDMuCXNbMrtmg7d85JcfWOjfVwZVZRYuO8eq2xYb9Bn7qEhXf
+	hkFQA/BtVLS/XrAt7BxMC2DC1wMEXTefWs2kG7I6ArkB2S4Cr0dHnmMezS2YSmOWJHmP
+	WRsQ==
+X-Gm-Message-State: APjAAAUp1DtWnxoe/6W6YdOVoREkzYDiLJi3zM5lXpgP6eWTsNnfShUL
+	SOPilvkoi+skdGVKjCUe0aHXOQ==
+X-Received: by 2002:a63:195f:: with SMTP id 31mr58273279pgz.116.1555139273200; 
+	Sat, 13 Apr 2019 00:07:53 -0700 (PDT)
+Received: from [172.20.98.58] (rrcs-173-197-98-123.west.biz.rr.com.
+	[173.197.98.123]) by smtp.gmail.com with ESMTPSA id
+	q5sm12946064pff.97.2019.04.13.00.07.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 13 Apr 2019 00:07:52 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20190411153942.4533-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <53930e87-3bb1-fdd5-a8fe-8603c0adecc2@linaro.org>
+Date: Fri, 12 Apr 2019 21:07:48 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <355cd139-2084-e282-9a60-3574fe0746bd@huawei.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Fri, 12 Apr 2019 10:57:43 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable
- size of flash device to save memory
+In-Reply-To: <20190411153942.4533-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::52b
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Implement NSACR
+ gating of floating point
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,130 +119,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Heyi Guo <guoheyi@huawei.com>, wanghaibin.wang@huawei.com,
-	Max Reitz <mreitz@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T6expybIk0Ih
+X-TUID: NobG5B6Ef/uZ
 
-Am 12.04.2019 um 11:50 hat Xiang Zheng geschrieben:
-> 
-> On 2019/4/12 9:52, Xiang Zheng wrote:
-> > On 2019/4/11 20:22, Kevin Wolf wrote:
-> >> Okay, so your problem is that blk_pread() writes to the whole buffer,
-> >> writing explicit zeroes for unallocated parts of the image, while you
-> >> would like to leave those parts of the buffer untouched so that we don't
-> >> actually allocate the memory, but can just use the shared zero page.
-> >>
-> >> If you just want to read the non-zero parts of the image, that can be
-> >> done by using a loop that calls bdrv_block_status() and only reads from
-> >> the image if the BDRV_BLOCK_ZERO bit is clear.
-> >>
-> >> Would this solve your problem?
-> > 
-> > Sounds good! What if guest tried to read/write the zero parts?
-> > 
-> 
-> I wrote the below patch (refer to bdrv_make_zero()) for test, it seems
-> that everything is OK and the memory is also exactly allocated on demand.
-> 
-> This requires pflash devices to use sparse files backend. Thus I have to
-> create images like:
-> 
->    dd of="QEMU_EFI-pflash.raw" if="/dev/zero" bs=1M seek=64 count=0
->    dd of="QEMU_EFI-pflash.raw" if="QEMU_EFI.fd" conv=notrunc
-> 
->    dd of="empty_VARS.fd" if="/dev/zero" bs=1M seek=64 count=0
-> 
-> 
-> ---8>---
-> 
-> diff --git a/block/block-backend.c b/block/block-backend.c
-> index f78e82a..ed8ca87 100644
-> --- a/block/block-backend.c
-> +++ b/block/block-backend.c
-> @@ -1379,6 +1379,12 @@ BlockAIOCB *blk_aio_pwrite_zeroes(BlockBackend *blk, int64_t offset,
->                          flags | BDRV_REQ_ZERO_WRITE, cb, opaque);
->  }
-> 
-> +int blk_pread_nonzeroes(BlockBackend *blk, void *buf)
+On 4/11/19 5:39 AM, Peter Maydell wrote:
+> +static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
 > +{
-> +    int ret = bdrv_pread_nonzeroes(blk->root, buf);
-> +    return ret;
-> +}
+> +    /*
+> +     * For A-profile AArch32 EL3, if NSACR.CP10
+> +     * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
+> +     */
+> +    uint64_t value = env->cp15.cptr_el[2];
+> +
+> +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+> +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
+> +        value &= ~(0x3 << 10);
 
-I don't think this deserves a place in the public block layer interface,
-as it's only a single device that makes use of it.
+Read as 1, and yet you're clearing the value?  Cut-n-paste error from CPACR?
+Surely better to do nothing on read, but set on write (to either HCPTR or NSACR).
 
-Maybe you wrote things this way because there is no blk_block_status(),
-but you can get the BlockDriverState with blk_bs(blk) and then implement
-everything inside hw/block/block.c.
-
->  int blk_pread(BlockBackend *blk, int64_t offset, void *buf, int count)
->  {
->      int ret = blk_prw(blk, offset, buf, count, blk_read_entry, 0);
-> diff --git a/block/io.c b/block/io.c
-> index dfc153b..83e5ea7 100644
-> --- a/block/io.c
-> +++ b/block/io.c
-> @@ -882,6 +882,38 @@ int bdrv_pwrite_zeroes(BdrvChild *child, int64_t offset,
->                          BDRV_REQ_ZERO_WRITE | flags);
->  }
-> 
-> +int bdrv_pread_nonzeroes(BdrvChild *child, void *buf)
+> +static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
 > +{
-> +    int ret;
-> +    int64_t target_size, bytes, offset = 0;
-> +    BlockDriverState *bs = child->bs;
+> +    /*
+> +     * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
+> +     * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
+> +     */
+> +    uint64_t value = env->cp15.cpacr_el1;
 > +
-> +    target_size = bdrv_getlength(bs);
-> +    if (target_size < 0) {
-> +        return target_size;
+> +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+> +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
+> +        value &= ~(0xf << 20);
 > +    }
-> +
-> +    for (;;) {
-> +        bytes = MIN(target_size - offset, BDRV_REQUEST_MAX_BYTES);
-> +        if (bytes <= 0) {
-> +            return 0;
-> +        }
-> +        ret = bdrv_block_status(bs, offset, bytes, &bytes, NULL, NULL);
-> +        if (ret < 0) {
-> +            return ret;
-> +        }
-> +        if (ret & BDRV_BLOCK_ZERO) {
-> +            offset += bytes;
-> +            continue;
-> +        }
-> +        ret = bdrv_pread(child, offset, buf, bytes);
-> +        if (ret < 0) {
-> +            return ret;
-> +        }
-> +        offset += bytes;
 
-I think the code becomes simpler the other way round:
+This one does do the right thing, but better to clear the bits on write to
+NSACR.  This lets you avoid the change to fp_exception_el, and the missing
+change to sve_exception_el.
 
-    if (!(ret & BDRV_BLOCK_ZERO)) {
-        ret = bdrv_pread(child, offset, buf, bytes);
-        if (ret < 0) {
-            return ret;
-        }
-    }
-    offset += bytes;
 
-You don't increment buf, so if you have a hole in the file, this will
-corrupt the buffer. You need to either increment buf, too, or use
-(uint8_t*) buf + offset for the bdrv_pread() call.
-
-> +    }
-> +}
-> +
->  /*
->   * Completely zero out a block device with the help of bdrv_pwrite_zeroes.
->   * The operation is sped up by checking the block status and only writing
-
-Kevin
+r~

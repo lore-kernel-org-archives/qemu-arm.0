@@ -1,152 +1,165 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2651430wrx;
-        Mon, 15 Apr 2019 06:03:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGmfFCEwzOlCd3IklmOlwdB60pA1HqeDA4DIhLAP7Kexz3WVPFjcjwZukOGPQif3pEwsL3
-X-Received: by 2002:a1c:39d7:: with SMTP id g206mr20596782wma.99.1555333409499;
-        Mon, 15 Apr 2019 06:03:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555333409; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2712659wrx;
+        Mon, 15 Apr 2019 07:01:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzVWI8GRrocUe/9+BxIdnUJbuKYm6n7cMP37fFrb6VgN5T5VWlwqbHrxMD/+bqFr6h5T/Qq
+X-Received: by 2002:adf:afe1:: with SMTP id y33mr49558667wrd.288.1555336862430;
+        Mon, 15 Apr 2019 07:01:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555336862; cv=none;
         d=google.com; s=arc-20160816;
-        b=A1ym1qFslEwLd5MLYnfsIBjOe499dQVTjbwNRSCRKUkcFCI85pSTE7VlJhPpB/Oo9m
-         kZmfBsaJiNIZiNc9RCuHMM/13PFHac9fCqMRFX6NOIuN7zOzJNqm9be9y8iP9Gdn3DmA
-         6F/xXgPEEl74ScyV2gQOkIRjI8rfAbB/vD+6ZBcnlRhj6mhpD9kfWDOFNo+1mnTZB3FS
-         siXSK4CZwcZTnv/uZ7dyM7u2vAN/yxzHnXEDsKB+J5yLqZbsEtCpE2zbALLNyVsYK1s1
-         g2WPKbEP9ymeu6dN6KmFuodtSOrGSH09XLyzE4qTMGXf5pBfaW+ShY1mE760dM274g5O
-         lVIA==
+        b=kkvmXja20ZvzBlT1fmWwr+A732IRavsqdTY+OAheTFtjWovgbRgsp95Afe7jOYXqNk
+         FuXPTHLV41jr9ZSn9D2Ztd4zyC7ofx/TpfjBbE0rsCbgCPkono7aljjAQP0DMoFK9N2d
+         C4d7TdthXpsonheEnpK+3E5ygGZ289HdILMtqEzWtTx9gxAPf1wzIK1hj2umUidObuMT
+         aMAcFVtTCP9dd/NKXdv4hvvomMx4Ig2zsIe3FPIRhuDGH+lZVWiJ8slr4gMqLzmXQjcI
+         EN/QIDgC604WEER9GZs2V9N7OMYsorQBAWb+i/dzd09WumHAblJFkfeCQpO6mdAhJe/t
+         t65g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=4Zpb98NN9UpmgwbN/OmilnYPFoUa7Uafq0ZGYEx6/Qk=;
-        b=zTJqEjhmiMCuAzmKuFmHgpcpm/sHYKYnNCQaHJfZwXeEnyGxBiY+izkWiPESNJjWKl
-         fVTKD1VVJySvigBUqjfcm5Kt0na6WTJFp5yGdpDmQtw0Tgz284oKKEebWT1QR1pYu18b
-         LO7Qs5E5YXBzTWkqzhgxqHotAxWht45yZQ+h3oXAeepLKza8LvyiR1QhRAoylvCFfwDz
-         bSTKYN9FKz/h7yk/mo/dvMBwIeBczsLO0MBx212b78vk6aTpnUe0pnVEb8LBE9qPctZp
-         dV0H+7bC+83hEjlBUD5mm2y35Iungf+9/UYCiI6CTqmzrl8mzax6gv9xBiJwdZCxSAmJ
-         FvWQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=ct3fXQ8yh1bJnvoSg8fHpChx6r5JAbAiVM2L1mychDo=;
+        b=X75BuPsMgjYm5kYYDcgCvWuWQyaXy/YqM5IbaY/jKY4Fww3VOvbeKSZMVat7/JGD2v
+         Yk+UHiLluNpPqKmzLB+TJr4lt4BsQpYNV84TjpXnsPtcILfewzLGu78mp+A54N9KbOXX
+         e7bcIV4ZkiD8Mit5lGS9pe6bPBkwSllBAicss1gVyM3jJlfVeWYSvVXSFUKLauYxRGFG
+         4dQ5n3Zs2+2kmGxW9GXdumTWtgAqpSxvc6Tx/atJs65J4hKAudp9WHDNAsRKRcxsWHuZ
+         7gpK5pVChCZ9771Oj/6bjwmzii4DvxLzOk+VMBpW9ypQmbmkcqdMgAJQS/iPVI9GKZat
+         AYvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f10si11108308wmg.105.2019.04.15.06.03.29
+        by mx.google.com with ESMTPS id r185si11884183wma.22.2019.04.15.07.01.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Apr 2019 06:03:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Apr 2019 07:01:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49910 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50666 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hG1Gi-0004Ir-LG
-	for alex.bennee@linaro.org; Mon, 15 Apr 2019 09:03:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37620)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hG2AP-0007Mp-J3
+	for alex.bennee@linaro.org; Mon, 15 Apr 2019 10:01:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49118)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hG1G0-0004Hi-1q
-	for qemu-devel@nongnu.org; Mon, 15 Apr 2019 09:02:45 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hG2A7-0007KO-9H
+	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 10:00:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hG1Ft-0004zL-C1
-	for qemu-devel@nongnu.org; Mon, 15 Apr 2019 09:02:43 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:45840)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hG1Fp-0004ir-M2
-	for qemu-devel@nongnu.org; Mon, 15 Apr 2019 09:02:35 -0400
-Received: by mail-wr1-f65.google.com with SMTP id s15so21810999wra.12
-	for <qemu-devel@nongnu.org>; Mon, 15 Apr 2019 06:02:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=4Zpb98NN9UpmgwbN/OmilnYPFoUa7Uafq0ZGYEx6/Qk=;
-	b=bIjU2pMhOM4a/tOXIRojaOqS99TSQ8ZQ6uol5iRd25qphtUpjk5WFJ4h/g/hJkx+1l
-	hbkHaarnLVUhNuhJYPwuGfF0fwC/CXq9IJP1mZgFkZh4JSCv2RWI4GuhWC9UwW206aOK
-	Ujbv/Ipc6QG2oJvLoTJiP7z2sZN10T7vHUvv+ozOjhU9hm9mCer83BtiYHpS6dfWdhZa
-	ZfrVZ5vP++cFpuZrkRAjP5973gty1bFnK5B7vTW5s8ukB/Y415E6PvjxHOioyMZbsMid
-	olEl7Pz5BhoyUD2CTC0CcmtWL7FhAThpb4K6zr3S3D6ITXVDWttqnUx51LcZpz6WjasJ
-	QbVg==
-X-Gm-Message-State: APjAAAVR5NJlraK34KNm9L6vCXgc3xLKdamKubasZAiIdctgQr2evS5a
-	gdWEg7Xu1Kf7xrS1kSq7lnmXeA==
-X-Received: by 2002:a5d:5192:: with SMTP id k18mr12899757wrv.171.1555333341718;
-	Mon, 15 Apr 2019 06:02:21 -0700 (PDT)
-Received: from [10.1.5.6] (206.red-80-28-210.staticip.rima-tde.net.
-	[80.28.210.206]) by smtp.gmail.com with ESMTPSA id
-	v6sm64000555wrt.56.2019.04.15.06.02.20
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Apr 2019 06:02:21 -0700 (PDT)
-To: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
+	(envelope-from <imammedo@redhat.com>) id 1hG2A6-0000r4-8V
+	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 10:00:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54402)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hG2A5-0000qa-W4; Mon, 15 Apr 2019 10:00:42 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2F79D307D932;
+	Mon, 15 Apr 2019 14:00:41 +0000 (UTC)
+Received: from Igors-MacBook-Pro.local (ovpn-112-37.ams2.redhat.com
+	[10.36.112.37])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C6B1A177AC;
+	Mon, 15 Apr 2019 14:00:38 +0000 (UTC)
+Date: Mon, 15 Apr 2019 16:00:36 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190415160036.53bed360@Igors-MacBook-Pro.local>
+In-Reply-To: <20190415070307.13668-3-richardw.yang@linux.intel.com>
 References: <20190415070307.13668-1-richardw.yang@linux.intel.com>
-	<20190415070307.13668-2-richardw.yang@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <d4d6f1d4-9df8-a73e-4086-6c43e5ba7b4a@redhat.com>
-Date: Mon, 15 Apr 2019 15:02:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	<20190415070307.13668-3-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190415070307.13668-2-richardw.yang@linux.intel.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.48]);
+	Mon, 15 Apr 2019 14:00:41 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-devel] [PATCH v2 1/4] hw/arm/virt-acpi-build: remove
- unnecessary variable mcfg_start
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 2/4] i386,
+ acpi: remove mcfg_ prefix in AcpiMcfgInfo members
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, imammedo@redhat.com,
-	shannon.zhaosl@gmail.com, mst@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EZ4ewk5UJSNs
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r0xv9fr9COxD
 
-On 4/15/19 9:03 AM, Wei Yang wrote:
-> mcfg_start points to the start of MCFG table and is used in
-> build_header. While this information could be derived from mcfg.
+On Mon, 15 Apr 2019 15:03:05 +0800
+Wei Yang <richardw.yang@linux.intel.com> wrote:
+
+> This is obvious the member in AcpiMcfgInfo describe MCFG's property.
 > 
-> This patch removes the unnecessary variable mcfg_start.
+> Remove the mcfg_ prefix.
 > 
 > Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->  hw/arm/virt-acpi-build.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+>  hw/i386/acpi-build.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 857989362a..e09e7eff8d 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -552,7 +552,6 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      const MemMapEntry *memmap = vms->memmap;
->      int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
->      int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-> -    int mcfg_start = table_data->len;
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index d009176072..f0d27bffd6 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -87,8 +87,8 @@
+>  #define ACPI_BUILD_IOAPIC_ID 0x0
+>  
+>  typedef struct AcpiMcfgInfo {
+> -    uint64_t mcfg_base;
+> -    uint32_t mcfg_size;
+> +    uint64_t base;
+> +    uint32_t size;
+>  } AcpiMcfgInfo;
+>  
+>  typedef struct AcpiPmInfo {
+> @@ -2404,11 +2404,11 @@ build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+>      int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
 >  
 >      mcfg = acpi_data_push(table_data, len);
->      mcfg->allocation[0].address = cpu_to_le64(memmap[ecam_id].base);
-> @@ -563,8 +562,7 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      mcfg->allocation[0].end_bus_number =
->          PCIE_MMCFG_BUS(memmap[ecam_id].size - 1);
+> -    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
+> +    mcfg->allocation[0].address = cpu_to_le64(info->base);
+>      /* Only a single allocation so no need to play with segments */
+>      mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+>      mcfg->allocation[0].start_bus_number = 0;
+> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
+> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
 >  
-> -    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-> -                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
-> +    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+>      build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
 >  }
+> @@ -2577,15 +2577,15 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+>      if (!o) {
+>          return false;
+>      }
+> -    mcfg->mcfg_base = qnum_get_uint(qobject_to(QNum, o));
+> +    mcfg->base = qnum_get_uint(qobject_to(QNum, o));
+>      qobject_unref(o);
+> -    if (mcfg->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
+> +    if (mcfg->base == PCIE_BASE_ADDR_UNMAPPED) {
+>          return false;
+>      }
 >  
->  /* GTDT */
-> 
+>      o = object_property_get_qobject(pci_host, PCIE_HOST_MCFG_SIZE, NULL);
+>      assert(o);
+> -    mcfg->mcfg_size = qnum_get_uint(qobject_to(QNum, o));
+> +    mcfg->size = qnum_get_uint(qobject_to(QNum, o));
+>      qobject_unref(o);
+>      return true;
+>  }
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

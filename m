@@ -1,98 +1,86 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2283650wrx;
-        Sun, 14 Apr 2019 22:28:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz+QS3Nwsbq8K3Vman8g8fvOTkUCrpGJCnvwjTCJdye91DeE2NdelwR1T4mhm/InB0iZAL5
-X-Received: by 2002:adf:cf05:: with SMTP id o5mr44341196wrj.8.1555306081840;
-        Sun, 14 Apr 2019 22:28:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555306081; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2314833wrx;
+        Sun, 14 Apr 2019 23:14:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz2gUhlAApyuBOorYbSLD58v2U+JPrCMnTxVUdk2Gw2aZj9YBDHT1wLbcFVesYFTlGsaATF
+X-Received: by 2002:a1c:9d8f:: with SMTP id g137mr21364551wme.26.1555308848695;
+        Sun, 14 Apr 2019 23:14:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555308848; cv=none;
         d=google.com; s=arc-20160816;
-        b=TNcJKCMf2MRoeV5BCQALQScAiO//a8dkTRDeCKnITblkpjLVLLeTddtxbX4lGvd+LQ
-         laTSytM3criKpYHjyij6JNLtATMGb+6lq+p1WfKuDYAmLMNnSDRNkzSC8fjrkphzcBCf
-         MHBOC5j4drIQ7v5C6PzMFTtMEYSmXtqp7E3F/TTSAWrsQ78ZTZIXglVITO4/j5E7xes3
-         Hra04QhZilf8SPOw2KNSoiA4pwBrwUOCi5oRnO/fcq5bk1vw56XNaa6EEnwQwcs4xeiL
-         nHmkIwwIEVqYLBQfs0xJsS1IBJ/9lmEtvLA6syQ+AhAMuGkhwjbD8q4AdWgxCTEmYOc4
-         bW5A==
+        b=a1zmPN8fvKt7210tgxD4tAIeVRU8CaRqLjCi0uy4O+MwUquUJr7fTkPQsjtGWBjoe9
+         nq7Ke5peoXuVGxgTFyMXJRyVt0LZMPvH8yEVYVvA0imPIOhZOIyxtnS+hLbIUExqnB/A
+         IRSutEbEnk6HjSzrdUbJuVXijsM3BXbHonQ0cJzuruetl3SfjcVu9q8MSQluD0VRf0w/
+         9QuohLDkxyWDu36XN5wrJe/qvze2cwKbFUA4QodI5Kk4o9jxMw57QOnhHZS2RScEAymx
+         +gGjuZNNDRK88qruwWDhxBRgUIt18lGoY1L5cEklaG9O+xpz974z45rNyxsM+6Rd5LCY
+         5Ulw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=Iw5MubQBB2FURn+e+mUH0InHOL/iXyKZ0mTdXGHe7QU=;
-        b=LDAqxIuyu48DwUeoi0jBYWf0gYpLFftYo33Sag6ZG6dYWse5I4XMkQrbAgCVtUkohE
-         HRJwCL91cYHOx3y9l5rV1QRXv7ICWacLAMMcoyiW4MirdvihQWAG9Z+hlSojyZ1BXE9c
-         tX4yDVX/eL3dxxu6QQVHO6i9i+XtXnXSr3dgBt6k24bw6cxCFv1M0BjZSqa10Au9E/be
-         tCWdEV0ievqwhZ1nJqjFOq/VPD1+slFvhuExt4D+WfDtW4sOJC1PoCiQCzp/AJ3zOnSa
-         SfCApnR4NY0NdHo7mlqeYMV7d3DI6k79qecy2VEFe2Kh3IiqawvveXn51Uy6DjBTN882
-         KwbQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=gcmYgLjjOsEcztErvS/Wf4aH24vN0C35kzm+7nBRdJc=;
+        b=OGLBZHc3O6/8+IlteCCfw4RXpygKs2QlMwOT0EUjwqMSMYey0iXpemH+ua63XKshV5
+         pc11/cRfpQ2VjsySgGXf675vte9t4WQqVy9Wc8x+tDTVmYVyoMt6BPhDBeL9zSq8jqUP
+         S6g/rbzX3ueKIVC9AgoU0QyaxcL4SQOtXSsB0Chd6lwahFTT9bpfAKoFDZaHwUlnWPn7
+         CRm+Hrswi7yRchsPDU+DVjbfa8wg8gpNYLmbkAe5aoRiAdkUX02bKru2WlJjFai9ovPd
+         yVOMGrF3yDVSlSs++JzHMkGc2B3wOvAelXEdJwkBpIMlEnelAMGVbpiB2n6IKa8BsPj1
+         Lxfg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si33229424wrm.263.2019.04.14.22.28.01
+        by mx.google.com with ESMTPS id a26si10003328wmg.46.2019.04.14.23.14.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 14 Apr 2019 22:28:01 -0700 (PDT)
+        Sun, 14 Apr 2019 23:14:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
-Received: from localhost ([127.0.0.1]:44927 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:45402 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hFu9w-00087q-TU
-	for alex.bennee@linaro.org; Mon, 15 Apr 2019 01:28:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37021)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <daz3@vt.edu>)
-	id 1hFu9p-00085g-9j
-	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 01:27:54 -0400
+	id 1hFusZ-0008Nb-Nl
+	for alex.bennee@linaro.org; Mon, 15 Apr 2019 02:14:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45293)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <clg@kaod.org>) id 1hFusP-0008N0-5n
+	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 02:13:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <daz3@vt.edu>) id 1hFu9o-0000gJ-4l
-	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 01:27:53 -0400
-Received: from omr2.cc.ipv6.vt.edu ([2607:b400:92:8400:0:33:fb76:806e]:49896
-	helo=omr2.cc.vt.edu)
+	(envelope-from <clg@kaod.org>) id 1hFusN-0006vI-S8
+	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 02:13:57 -0400
+Received: from 3.mo68.mail-out.ovh.net ([46.105.58.60]:47694)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <daz3@vt.edu>) id 1hFu9n-0000dG-UG
-	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 01:27:52 -0400
-Received: from mr3.cc.vt.edu (mr3.cc.ipv6.vt.edu
-	[IPv6:2607:b400:92:8500:0:7f:b804:6b0a])
-	by omr2.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x3F5RhGB006674
-	for <qemu-arm@nongnu.org>; Mon, 15 Apr 2019 01:27:43 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
-	[209.85.128.72])
-	by mr3.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x3F5Rbsq025843
-	for <qemu-arm@nongnu.org>; Mon, 15 Apr 2019 01:27:43 -0400
-Received: by mail-wm1-f72.google.com with SMTP id f11so13702963wmc.8
-	for <qemu-arm@nongnu.org>; Sun, 14 Apr 2019 22:27:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=Iw5MubQBB2FURn+e+mUH0InHOL/iXyKZ0mTdXGHe7QU=;
-	b=WQ1bUPsuFh2saY5Yni9ggoTKIpZA+YGaslik06fVPww/k/MxlARxhLzTP1TfTMvLLi
-	6FhUTUDKj50WwWaRzrA88DEIez/fIwhGZM+MP6YfkuOGQaQOH0hGS2PnmIj4bTBNm1k+
-	HGY5SUcqwLKyuXlQuzmJr4f07MIsddnFXwr46lpEE+cnK7SyukTqaydZyYBskmqjEpV3
-	cUIZFBlcYatfiRYA0ozPnwx1lwysQWwLnDJJzt/wu363CMXd1NBAaa23Ug2ZxcC65oxk
-	v6mNe39vofoFd1hL7F4vxZjayvuorWQlf3sB4Ne5TdBjT4fjTa06RGvh0IMO7Sm3YtRs
-	TO9Q==
-X-Gm-Message-State: APjAAAW8HUurgMBc/FXzszVuza/bojSgbIOkItyGJXEATeUoWHstjZMl
-	BK8jaAnjOTaIR6aJOKeCJ50qss4uQWC9+SirOycA+QfiKpXvde4/ehAVywSmHQSDl2XXVJzmqSG
-	cXp4PgWXsR69XPw/w5qo2Jc/RGaGVpM99mbVMn8U=
-X-Received: by 2002:a1c:ac07:: with SMTP id v7mr21655300wme.49.1555306057565; 
-	Sun, 14 Apr 2019 22:27:37 -0700 (PDT)
-X-Received: by 2002:a1c:ac07:: with SMTP id v7mr21655278wme.49.1555306057190; 
-	Sun, 14 Apr 2019 22:27:37 -0700 (PDT)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hFusN-0006rL-Gb
+	for qemu-arm@nongnu.org; Mon, 15 Apr 2019 02:13:55 -0400
+Received: from player798.ha.ovh.net (unknown [10.109.159.154])
+	by mo68.mail-out.ovh.net (Postfix) with ESMTP id 91B951218D5
+	for <qemu-arm@nongnu.org>; Mon, 15 Apr 2019 08:13:46 +0200 (CEST)
+Received: from kaod.org (lfbn-tou-1-40-22.w86-201.abo.wanadoo.fr
+	[86.201.133.22]) (Authenticated sender: clg@kaod.org)
+	by player798.ha.ovh.net (Postfix) with ESMTPSA id A2A4C4D9E7E3;
+	Mon, 15 Apr 2019 06:13:40 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+References: <20190328062222.8409-1-joel@jms.id.au>
+	<20190328062222.8409-2-joel@jms.id.au>
+	<CAFEAcA_K1Rv1G-s=ndVYX6i_BvWME6ToShL6ZBpB4gnE3zdZdA@mail.gmail.com>
+	<89438392-9a54-7f43-5dff-6ceeffaf9f3e@kaod.org>
+	<CACPK8Xc_WeP3xuimjTBFRArteecikin9Qj8ZoCW-J2qBY4C=5g@mail.gmail.com>
+	<CAFEAcA9t+GUG8PK623gb4v6ZBEhDX_7coOPcgLHDnUXTsrcrvg@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <c287ed71-59e8-3d7a-f835-1421cba7f6d9@kaod.org>
+Date: Mon, 15 Apr 2019 08:13:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
-	<CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
-From: Da Zhang <daz3@vt.edu>
-Date: Mon, 15 Apr 2019 01:27:01 -0400
-Message-ID: <CANY2w+0ZULuVgJTu3M+--rC01biqS=y1V4tAbgjHfyKRd6X79A@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000000e67e505868ae925"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2607:b400:92:8400:0:33:fb76:806e
-Subject: Re: [Qemu-arm] Ubuntu installation shows "No network interfaces
- detected"
+In-Reply-To: <CAFEAcA9t+GUG8PK623gb4v6ZBEhDX_7coOPcgLHDnUXTsrcrvg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 2385218956401478464
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -51
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrvdekgddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegoufhushhpvggtthffohhmrghinhculdegledm
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 46.105.58.60
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw: timer: Add ASPEED RTC device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,135 +92,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L83LvlsCtu8g
+X-TUID: LBbvauyv7fCZ
 
---0000000000000e67e505868ae925
-Content-Type: text/plain; charset="UTF-8"
+On 4/12/19 1:55 PM, Peter Maydell wrote:
+> On Fri, 12 Apr 2019 at 04:17, Joel Stanley <joel@jms.id.au> wrote:
+>> vmstate and migration is a foreign concept for the small ARM machines.
+>> As well as being a developer, I am an end user of Qemu for them (the
+>> aspeeds, microbit), and the use case is to boot up a firmware and
+>> check that it does correct thing. I've never considered saving the
+>> state and resming it, and can't think of a situation where that would
+>> be done.
+> 
+> It's a really useful debugging tool:
+>  https://translatedcode.wordpress.com/2015/07/06/tricks-for-debugging-qemu-savevm-snapshots/
 
-Thanks for the suggestions. Unfortunately, neither virtio-net-pci nor
-rtl8139 works for me. Yet, I haven't figured it out why. But, I found
-that virtio-net-device works for me.
+yes.  Our Aspeed machines migrate quite well today and, who knows,
+we might want one day to run Aspeed VMs on the "cloud". I doubt it 
+but, anyway, it's really not complex to do either.
 
 Thanks,
--- Da
 
-On Fri, Apr 12, 2019 at 4:33 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Thu, 11 Apr 2019 at 23:16, Da Zhang <daz3@vt.edu> wrote:
-> >
-> > Hi guys,
-> >
-> > I am trying to create an Ubuntu ARM disk image for my gem5 ARM
-> experiments. The installation always shows "No network interfaces detected".
-> > This is my command for running qemu:
-> >
-> > qemu-system-aarch64 \
-> >     -cpu host \
-> >     -device virtio-scsi-device \
-> >     -device scsi-cd,drive=cdrom \
-> >     -device virtio-blk-device,drive=hd0 \
-> >     -drive
-> "file=ubuntu-16.04.5-server-arm64.iso,id=cdrom,if=none,media=cdrom" \
-> >     -drive
-> "if=none,format=qcow2,file=ubuntu-16.04.5-server-arm64.img,id=hd0" \
-> >     -pflash "ubuntu-16.04.5-server-arm64-flash0.img" \
-> >     -pflash "ubuntu-16.04.5-server-arm64-flash1.img" \
-> >     -m 1G \
-> >     -machine virt \
-> >     -enable-kvm \
-> >     -nographic \
-> >     -net nic,netdev=n1 \
-> >     -netdev user,id=n1 \
-> >     ;
->
-> This command line doesn't specify any ethernet device
-> interfaces, which is why you have no networking.
-> I would recommend
->  -netdev user,id=mynet -device virtio-net-pci,netdev=mynet
->
-> though other kinds of network device will work too,
-> like the rtl8139 that Narcis suggests. virtio-net will
-> give the best performance.
->
-> PS: I have suggested virtio-net-pci because we recommend
-> the PCI virtio over the virtio-mmio that your command
-> line is using for virtio-blk. Your guest OS will need to
-> have the PCI support enabled, though. There is also a
-> virtio-net-device which will use virtio-mmio. If PCI
-> works for you I would suggest switching your virtio-blk-device
-> use to virtio-blk-pci, and similarly for virtio-scsi-pci.
->
-> thanks
-> -- PMM
->
-
---0000000000000e67e505868ae925
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Thanks for the suggestions. Unfortunately=
-, neither virtio-net-pci nor rtl8139 works for me. Yet, I haven&#39;t figur=
-ed it out why. But, I found that=C2=A0virtio-net-device works for me.</div>=
-<div dir=3D"ltr"><br></div><div>Thanks,</div><div>-- Da</div></div><br><div=
- class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Apr 12=
-, 2019 at 4:33 AM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">On Thu, 11 Apr 2019 at 23:16, Da Zhang &lt;<a =
-href=3D"mailto:daz3@vt.edu" target=3D"_blank">daz3@vt.edu</a>&gt; wrote:<br=
->
-&gt;<br>
-&gt; Hi guys,<br>
-&gt;<br>
-&gt; I am trying to create an Ubuntu ARM disk image for my gem5 ARM experim=
-ents. The installation always shows &quot;No network interfaces detected&qu=
-ot;.<br>
-&gt; This is my command for running qemu:<br>
-&gt;<br>
-&gt; qemu-system-aarch64 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-cpu host \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-device virtio-scsi-device \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-device scsi-cd,drive=3Dcdrom \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-device virtio-blk-device,drive=3Dhd0 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-drive &quot;file=3Dubuntu-16.04.5-server-arm64.iso=
-,id=3Dcdrom,if=3Dnone,media=3Dcdrom&quot; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-drive &quot;if=3Dnone,format=3Dqcow2,file=3Dubuntu=
--16.04.5-server-arm64.img,id=3Dhd0&quot; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-pflash &quot;ubuntu-16.04.5-server-arm64-flash0.im=
-g&quot; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-pflash &quot;ubuntu-16.04.5-server-arm64-flash1.im=
-g&quot; \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-m 1G \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-machine virt \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-enable-kvm \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-net nic,netdev=3Dn1 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0-netdev user,id=3Dn1 \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0;<br>
-<br>
-This command line doesn&#39;t specify any ethernet device<br>
-interfaces, which is why you have no networking.<br>
-I would recommend<br>
-=C2=A0-netdev user,id=3Dmynet -device virtio-net-pci,netdev=3Dmynet<br>
-<br>
-though other kinds of network device will work too,<br>
-like the rtl8139 that Narcis suggests. virtio-net will<br>
-give the best performance.<br>
-<br>
-PS: I have suggested virtio-net-pci because we recommend<br>
-the PCI virtio over the virtio-mmio that your command<br>
-line is using for virtio-blk. Your guest OS will need to<br>
-have the PCI support enabled, though. There is also a<br>
-virtio-net-device which will use virtio-mmio. If PCI<br>
-works for you I would suggest switching your virtio-blk-device<br>
-use to virtio-blk-pci, and similarly for virtio-scsi-pci.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000000e67e505868ae925--
+C. 

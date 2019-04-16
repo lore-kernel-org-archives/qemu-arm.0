@@ -1,109 +1,100 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4075252wrx;
-        Tue, 16 Apr 2019 08:42:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzBOe0M8h1gOia5uCZNQb6XvOd8mMMCQ4JSCGv5yF6hTr3O7rRKcJ40uvadofLeP4o2fvxq
-X-Received: by 2002:a1c:a9d7:: with SMTP id s206mr28114207wme.126.1555429367557;
-        Tue, 16 Apr 2019 08:42:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555429367; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4200286wrx;
+        Tue, 16 Apr 2019 10:39:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzhZB+6FaC0eHEH0onOZwutn0JDiYMlfceLTtqW7m1gJn5hocdrNanlZCwW4NrutsFVLVW5
+X-Received: by 2002:adf:ce8c:: with SMTP id r12mr3768842wrn.60.1555436363227;
+        Tue, 16 Apr 2019 10:39:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555436363; cv=none;
         d=google.com; s=arc-20160816;
-        b=XR82GpFcAVwrNHhaAjRmgDwU5MIH8xe8WiAQ46vExqIsbMQHH+5+vM1wrRyM8JWcdl
-         fBsAVnhtpOn/tnUKMiBntIRpiVIBpva5jiq4wUMeoAcKf50O5n2qrrcY0iYFBu55yBF2
-         VZyhmc38RMvAgTp/uSwFCpQKkndX6QrBGDGTVy621JKEW9Mhbqx5byzrlOeGh8nVn4jO
-         5PlPisbVRWBPbSkcXMVuaWhgAfMZxV8fLKRQ27Pvcg6RHv08bAQyxf0SpApRBCqGOeP2
-         cLvswAlKFnDvGtwtcSLLAXHajOGPINayA7GJlO1uSjngcWXgrbdggkJEwFduVmJvMsix
-         v6dQ==
+        b=sDYTTvzvbbCTwGUqfYo7Li/PQOPR1X6Ev+8+ZpG55qClzHDLM9MUPDl63nZkND79Tc
+         1YirTFmLV3gTSAW6IVWRkMLjgSOI+wQpHvhZjRfzV/Wg+uAms6l7okWFzKezJUyTjtTd
+         exOychO81nPCgmWGQe4p2wNr50QAmWfI1B3KvvySRTPU6u+yXPwg4tgxHu784y4udlTU
+         4nC9F9bLkM9q9ShkmQbzGDIzBasESCNWehGVkpuDlWDuu3vdpcYKQ/emfOqDGOY7a52Q
+         9VzZWEBTnWS1Z5BrEoQaTJ5L8KQeUuJC7EFF4ytjci4gYvLTcL+0W77TlbnCG7sWhx/j
+         zrUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=Fjj+unwBFrb6LtNpSdIvB/YQ4y98VQu49FxiiSxxOY8=;
-        b=NFq/BZPYjt7uq1cyMoEBp+d9keQ1PXwJy4vIFn801LvZZmsqaGqx8edDuxz/Tt5FeJ
-         ZdpOAgiboZRJuANfGvtFNiRPozXkuDFLyqP0L/MkaGNlASepCKY8+dqCFYUBrVfqU2yf
-         8Wf091hYAFggFh4ooqRDbF0e38RPW4ZATAp9lbXfRT1rvMKNVqMdD+y4F1iebICw3k5k
-         qNny3/U5tqlehVmj0K5anrmlQLELPJuP/cKw5uF3huLxgMfeZ99a4byK5uooE0xtSAA0
-         PrmOhC8BAcp6QQp9fNwfZdoiYs3x0/OHKT4Z5rRbXSBlCBx7dNstRGk1tbrqVfUg2CQX
-         BpYg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=gSUCcgG6wPa0hvMtI0TJYrUwX5y+E+Fsm3WwCaySzdY=;
+        b=eh0ynuuanTi7nX8FhO5iNY6roCf3+aevN8knnjeDDbx12qTKCed0OLypfEHywDGaJ8
+         rq/PLAsNPl8dzFpmvcQndrWZ1p5U1LD9Yi5UtMDurjHZjyoV2jUIplyj5wS7sL7IpeWT
+         d6x+/JPsACQ+10BDVuGCAu8fEx1MptLUqJOw8YAXgysDH/2uXQnQB8x9OuCWKwFMKccS
+         u+QFHKjsKgNU91FxAFVI+vDaLLKwuE1hdXqOv+RYp186UnmcANONE/D+4b7lbD2xVxZ2
+         00uwT5ifhj3kovAkzR3Oh25rGed5lC/zgK82zKk7tIY70NNm3UwS2HZ+W6TzyCf2zR+k
+         T59A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ywiT50tP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si36670456wrm.306.2019.04.16.08.42.47
+        by mx.google.com with ESMTPS id b5si46820wmd.39.2019.04.16.10.39.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Apr 2019 08:42:47 -0700 (PDT)
+        Tue, 16 Apr 2019 10:39:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ywiT50tP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:38671 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:40184 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hGQEQ-0006k4-LI
-	for alex.bennee@linaro.org; Tue, 16 Apr 2019 11:42:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42751)
+	id 1hGS3G-0008Ez-B5
+	for alex.bennee@linaro.org; Tue, 16 Apr 2019 13:39:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39569)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hGQEF-0006jv-C8
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 11:42:36 -0400
+	(envelope-from <philmd@redhat.com>) id 1hGS2s-00089N-2w
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 13:38:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hGQED-0002wa-Fx
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 11:42:35 -0400
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:34051)
+	(envelope-from <philmd@redhat.com>) id 1hGS2i-0006UD-RI
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 13:38:56 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:37303)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hGQED-0002vl-7L
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 11:42:33 -0400
-Received: by mail-oi1-x233.google.com with SMTP id v10so17384974oib.1
-	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 08:42:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=Fjj+unwBFrb6LtNpSdIvB/YQ4y98VQu49FxiiSxxOY8=;
-	b=ywiT50tPQff4vjYJAzLazcT0yjGaiaWy6Tyo1xlUmPr/rWuXtpwLWWKLtQoK8Nx8m8
-	Xmgg2yqx8KDvzZncCNlzWXYtUF0B6QDYu1tP2KgBY1R7s5rybhULdLCbDX+VK7s2U1xH
-	4QGw7+oGF3nLJVLGAAVwij/qzGVoB1YcccysKiCoX3wJm8/4o/+C9H/9ZFzCa8tikjvG
-	MKRq0ghmXhiPH5VNlNv5d7o/oc52WvgJOyt1UuSyQQ89c3DwYVWtSHkNSIA8K2YuO7vC
-	DG6eL2j3FX6sIm+TJUWTk8Z5SO7OYzr3HP+hDbNiwokgyw6GSQNi7Z3MeK5S5XalPjur
-	Iw1A==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hGS2i-0006Sc-1g
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 13:38:48 -0400
+Received: by mail-wm1-f68.google.com with SMTP id v14so67193wmf.2
+	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 10:38:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Fjj+unwBFrb6LtNpSdIvB/YQ4y98VQu49FxiiSxxOY8=;
-	b=NBUQz9WHWPNTtz0lczbvHJfVlXOey5Rqv/0+OiIOUmBN5DeZVyz1mffyGXZkS/MNvI
-	gSLyp9Aq2GW0MDgkhvqwufvwuPcdmy/D40oZhyxXaWtZIWPclWczHdQKIPDW+MHV2Hd6
-	OA2k5D0tS+7/r6XEIWgfYma2eAyeeR8pNdaUmVYs6xWHoyw1pSutreO+iTiSNY+D4k4H
-	auH2HpcDwCJhZDGHrjO1w1haocGC7KbYzRJ8070hivquyaWFhRtpgAKVNb8KVbVA7j84
-	xR6OMgYfjUex6a19BdTNjYnFuzLVhmn+R7OZ11ZgFLlsehJGV7ePFNQFxgeB61pVD6t9
-	aAxA==
-X-Gm-Message-State: APjAAAUl0TjmRIIVYwkqXBdKljQQkdgooBwnpZl/rdUKI35AhkJnifEk
-	Cc/qwG6cwTaLDXTNFQeHeB3by5k5MUi5Xu3A97IV7Q==
-X-Received: by 2002:aca:e054:: with SMTP id x81mr23173230oig.146.1555429352199;
-	Tue, 16 Apr 2019 08:42:32 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=gSUCcgG6wPa0hvMtI0TJYrUwX5y+E+Fsm3WwCaySzdY=;
+	b=U6PPQtCDYvXw720Y5LDHFGgxMPu17Cw/VIqF1QIYxr7YsNHXdpvTy8I3M3LeHwRbZX
+	0w5WEVaCI5Z47Yx54llIcJpZI0hTEPtjU0n3Horv8UR81iheJSorNyfqFC/AJ5+SQYf3
+	OwYbJjGUWrAXEdpTx1eGXoozKOxWSB4AgUMyHYHfDUZM+H2XcgiRx08iSPcX/g5rSnps
+	ITlCB7TgDyA/MCU/zikIF4syNqH3sCDKzvDrW9ILtV83NpYBdvkJe/uLRtia/umOwiJz
+	Ce2gIMYfJRc3yraSZs3hpl625oHjKEVSltcinkPcBh1dg0hnY8JCZuOyhz703YEzXygz
+	E9cA==
+X-Gm-Message-State: APjAAAUQv9BMhppNkAl7UcJ4kaKz7e8DoQLub//k+LqT/NVmqd19sfAt
+	KRwH6FuAoEmHb07jveRuoH02bw==
+X-Received: by 2002:a7b:c1cf:: with SMTP id a15mr26572360wmj.44.1555436326157; 
+	Tue, 16 Apr 2019 10:38:46 -0700 (PDT)
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	z18sm79910257wrr.90.2019.04.16.10.38.45
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 16 Apr 2019 10:38:45 -0700 (PDT)
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20190416091348.26075-1-armbru@redhat.com>
+	<20190416091348.26075-2-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <ae1c979b-9cb2-cbaa-584c-b70dbf97d1e4@redhat.com>
+Date: Tue, 16 Apr 2019 19:38:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
-	<CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
-	<CANY2w+0ZULuVgJTu3M+--rC01biqS=y1V4tAbgjHfyKRd6X79A@mail.gmail.com>
-	<CAFEAcA9zP8OateFNU+Ea1thk4NkYgcee5ykEscaguC=hAhXfag@mail.gmail.com>
-	<CANY2w+3qJgQ_HVai6trQ_gDXxPLruj1-L6LaTkcUZQbtQBofpg@mail.gmail.com>
-	<CAFEAcA9gciZ3_zY-XMoC8o0P4ffvHhC0w=ZDA6biXyovx_H2cQ@mail.gmail.com>
-	<CANY2w+1UhFKHOfgVEmPDGwMsH8o3nWi7VsNFRkx2Yw3N5nO5dQ@mail.gmail.com>
-	<CAFEAcA_r2MTgVA-e1ozP0ySNzWWYTu2sKk52sk5a3_Hd__KO9A@mail.gmail.com>
-	<CANY2w+2Wz-5CRcOf3Xn8WF0o-j3o2RNtS-drqBQ-QSKXYOJdAg@mail.gmail.com>
-In-Reply-To: <CANY2w+2Wz-5CRcOf3Xn8WF0o-j3o2RNtS-drqBQ-QSKXYOJdAg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Apr 2019 16:42:21 +0100
-Message-ID: <CAFEAcA-Xp5rEC+ZNVQ6dLqQx6h269EWtpLyDjBcZHFmW5zbRfQ@mail.gmail.com>
-To: Da Zhang <daz3@vt.edu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::233
-Subject: Re: [Qemu-arm] Ubuntu installation shows "No network interfaces
- detected"
+In-Reply-To: <20190416091348.26075-2-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-arm] [PATCH v2 1/3] pc: Rearrange
+ pc_system_firmware_init()'s legacy -drive loop
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,51 +106,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
+Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
+	mreitz@redhat.com, qemu-arm@nongnu.org, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A5hIupHGT8HW
+X-TUID: BrsfQJgnlfaO
 
-On Tue, 16 Apr 2019 at 16:33, Da Zhang <daz3@vt.edu> wrote:
-> This is my gem5 simulation output. My goal is using qemu-system-aarch64 t=
-o create an ARM disk image for my gem5 simulations, since qemu provides a b=
-etter solution to modify the image (e.g., apt-get install) for different pu=
-rposes.
->
-> Firstly, I created a qcow2 image and used the qemu-system-aarch64 command=
- shown in the previous emails to install Ubuntu.
-> Secondly, I converted the qcow2 disk image to raw format and rebooted fro=
-m the raw disk image via qemu-system-aarch64 (without cdrom) again to make =
-sure the Ubuntu system work.
-> Thirdly, I put gem5's m5 executable in the guest system's /sbin/ and crea=
-te gem5.service, and reran qemu to make sure the disk image still work afte=
-r modifications.
-> Finally, I ran my gem5 simulation using the disk image and encountered th=
-e kernel panic. The linux kernel used in my gem5 simulation was built from =
-repository "https://gem5.googlesource.com/arm/linux" branch gem5/v4.4 for l=
-inux kernel version 4.4.
->
-> I am not sure if gem5 support vda or not. Since both our X86 disk image a=
-nd the official ARM disk image used sda, I thought I might give it a quick =
-try. That's why I asked how to run qemu-system-aarch64 with sda. I tried -h=
-da and -cdrom, but qemu-system-aarch64 didn't recognize the disk image and =
-the iso. I also tried to use device like scsi-hd, but qemu complained about=
- no SCSI bus.
+On 4/16/19 11:13 AM, Markus Armbruster wrote:
+> The loop does two things: map legacy -drive to properties, and collect
+> all the backends for use after the loop.  The next patch will factor
+> out the former for reuse in hw/arm/virt.c.  To make that easier,
+> rearrange the loop so it does the first thing first, and the second
+> thing second.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/i386/pc_sysfw.c | 24 +++++++++++-------------
+>  1 file changed, 11 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+> index c628540774..75925f5d3f 100644
+> --- a/hw/i386/pc_sysfw.c
+> +++ b/hw/i386/pc_sysfw.c
+> @@ -280,21 +280,19 @@ void pc_system_firmware_init(PCMachineState *pcms,
+>  
+>      /* Map legacy -drive if=pflash to machine properties */
+>      for (i = 0; i < ARRAY_SIZE(pcms->flash); i++) {
+> -        pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>          pflash_drv = drive_get(IF_PFLASH, 0, i);
+> -        if (!pflash_drv) {
+> -            continue;
+> +        if (pflash_drv) {
+> +            loc_push_none(&loc);
+> +            qemu_opts_loc_restore(pflash_drv->opts);
+> +            if (pflash_cfi01_get_blk(pcms->flash[i])) {
+> +                error_report("clashes with -machine");
+> +                exit(1);
+> +            }
+> +            qdev_prop_set_drive(DEVICE(pcms->flash[i]), "drive",
+> +                                blk_by_legacy_dinfo(pflash_drv), &error_fatal);
+> +            loc_pop(&loc);
+>          }
+> -        loc_push_none(&loc);
+> -        qemu_opts_loc_restore(pflash_drv->opts);
+> -        if (pflash_blk[i]) {
+> -            error_report("clashes with -machine");
+> -            exit(1);
+> -        }
+> -        pflash_blk[i] = blk_by_legacy_dinfo(pflash_drv);
+> -        qdev_prop_set_drive(DEVICE(pcms->flash[i]),
+> -                            "drive", pflash_blk[i], &error_fatal);
+> -        loc_pop(&loc);
+> +        pflash_blk[i] = pflash_cfi01_get_blk(pcms->flash[i]);
+>      }
+>  
+>      /* Reject gaps */
+> 
 
-
-Now I'm really confused. Why have you put a gem5 executable
-into the *guest* system's filesystem?
-
-Anyway, it sounds like:
- * QEMU is working fine
- * you've created a disk image
- * you're trying to run GEM5 with that disk image and some other
-   kernel, but it isn't doing what you expect
-
-If so, then you'd be better off asking GEM5 people what the right
-GEM5 command line is to pass a disk image to it. This will be
-completely unrelated to what QEMU command line options you need
-to get QEMU to treat a disk image as scsi vs virtio.
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

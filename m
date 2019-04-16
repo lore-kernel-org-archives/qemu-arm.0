@@ -1,228 +1,143 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3919905wrx;
-        Tue, 16 Apr 2019 06:20:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy0iZHEOVVGrXW3mxKFT5yJCTk+PnXt7+aTdfLklDRBd9RnFh2Iasof5hEUGyLROiMCwDAt
-X-Received: by 2002:adf:f088:: with SMTP id n8mr53861297wro.112.1555420831303;
-        Tue, 16 Apr 2019 06:20:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555420831; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3924912wrx;
+        Tue, 16 Apr 2019 06:25:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzD62QaxNnocLkCPz0b0EjrBg8D4PpQtzfcthJKBTd+8tMMzNF6bI3uYQ3+N/eOf7Y/RBAE
+X-Received: by 2002:a1c:720a:: with SMTP id n10mr25732617wmc.107.1555421110621;
+        Tue, 16 Apr 2019 06:25:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555421110; cv=none;
         d=google.com; s=arc-20160816;
-        b=hGrugiYuDWg7bjmf5LolCVtXK0cfn0OG8W4k3OVBLzHqbAc5kZiNihHtBY/NcANkS9
-         wec2f64cKIs8uYF3H/b18VRaFeSGEUffrTLf8qfEd7wUguaZfWy9W5neJPg5Gpdb/VuQ
-         NbB+jpG23vegC+2DYjp86F59P5GO/ldDFxXIlpphW1Yee3J7dKB1JCiykCsXlVwNjOK0
-         3TftFkXon0mgjQ2/VwlZ4Y1xwNzjEZQNjYZRmgKU7GKhL6lA8CNxaGPQMzQLf+MVhGhz
-         VH0eMpP2u1s5tv8bzvxhArNF6YZh3IMzUXpUA+p3thfcCVYATPQ4xWk3d2PM21O98hI7
-         /P6g==
+        b=ns54E6Pre+dLF024I/ZDqCDH60mu72RJkZB3i0sPmNawdhYTbW0NWCbGQIUFRL4ndj
+         iKkQEufTsS/9hmnSFw0mO9H0HNr946ckbYQadC5Qp/JfYh1CVQULwaiJprv/9vs2NIXo
+         pVFo50Pa7ajnDXfaHyMdafDaWJ+EnbioXiXWlY64Lef1OeJmHcY6Fzn5wm+PtFVfgcQR
+         3n3kb08KgPekUvx39VDUM+9vrnlG0NeQZAQDOCxz/ARI1OfE6UN6mOEz6WN4JnO27eMx
+         H+cBLX5ymDB6/3aMgC/fGtvcMpRyn80XWoaojcfDRmlddG2Np5BJOYgCJjGeFbdS8z2r
+         Oyjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=qLgEBtxDMPEzuBe7c1di3k/rR2yFAimlmfsizuzN9Vs=;
-        b=y92CQXCZX+fDPjoZCdf5zS114em+z3edk8PRbwHPLVMFxajVIuz0mw8VPDcgc6hLyy
-         2E5FXlB19EB+ViRiGdFkWWdFBOZaY+yHjXfGCpsyRyoDo1fviwLbPmi2OeMcl9mZvq3S
-         xK9bzoadgXby7RZ/wVt4Zz8LGzrUhQjqBgE5x2ojjnz1JKSrZrPV1lyXjqF5YeEy6ORH
-         JCVVB39rnQjX5FOuOYY4sPkzvudAIZCIENC6Jq02ca5sDu52qz1YxFuZ82Gv1cR2h0D5
-         zDcfn07n0YdsicLRp+zlNMzPHovc6qGj2LWLX41BVzy6RBF+Q5u0zM4Yk4lfRJDkequg
-         wawA==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=hh0ZPxOKeSeyN7YuFh7x4B2S24u9ez/mPUNSIzcUnLk=;
+        b=TbMz+YZh5gts/kDL6QEoBVxZg3TA/UYkYd9npXZmbt3ekOsfw1AqsAyhe6PyJOzLVQ
+         yiLmrQk0aBQpRaqsaikV622k4rN+OWVrA9Ufbo7s1Apg2fqddlbxk0r4R2y/zDS9Tvz4
+         QfLSrQbPd5Lz4Jp9XJ+kFnN0CrXLOh3XlBDZ39/SHFzfu/qdIBNrvyESgeN58E+E1hco
+         6/ArbLNhVe+tIt0jFcOwpV7jmRLAmX/c+0Ng7qW5pRiuhHYd6MiNcKwJfX9VyEeldEfN
+         e5ZOATFPWmIW9NG42urp3iqb/+VpkoBacEGWQS3snrTYyvnY1/XDgu4j2EXu8aCdoRhA
+         9Rbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pCeWDVg5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=pJNejMZl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11si34818344wro.150.2019.04.16.06.20.31
+        by mx.google.com with ESMTPS id n18si35342328wru.187.2019.04.16.06.25.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Apr 2019 06:20:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Apr 2019 06:25:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pCeWDVg5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=pJNejMZl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:36639 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36772 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hGO0k-0005Mp-CP
-	for alex.bennee@linaro.org; Tue, 16 Apr 2019 09:20:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34975)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hGO5F-0000ul-Mu
+	for alex.bennee@linaro.org; Tue, 16 Apr 2019 09:25:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36091)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hGNfc-0005BH-Qs
-	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 08:58:42 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hGNjT-00009r-Cj
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 09:02:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hGNfa-0001Yo-Qg
-	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 08:58:40 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40147)
+	(envelope-from <peter.maydell@linaro.org>) id 1hGNjS-0004Vz-95
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 09:02:39 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:35006)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hGNfY-0001UY-OM
-	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 08:58:38 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id h4so26944892wre.7
-	for <qemu-devel@nongnu.org>; Tue, 16 Apr 2019 05:58:34 -0700 (PDT)
+	id 1hGNjS-0004VK-21
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 09:02:38 -0400
+Received: by mail-ot1-x342.google.com with SMTP id m10so17517320otp.2
+	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 06:02:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:subject:date:message-id:in-reply-to:references:mime-version
-	:content-transfer-encoding;
-	bh=qLgEBtxDMPEzuBe7c1di3k/rR2yFAimlmfsizuzN9Vs=;
-	b=pCeWDVg5cXABpoyA+GQjCY8a5j7WcYkOlSG2rQ3THyez8WUJWQ0B9oF0m7rm5pHc73
-	RhUYoJDo4hfE30a+Snh6b8FM5fXwiQMxX2VkBddhuG6ZYcyLqGEvlVLpZZ+ZSJEws+Dk
-	7qaf94da/NfAICDDJHEBflfWtthoHU6dRJ1K1bddVoy8aprPHGEQtDLwpymWR5oUheGA
-	heoTdV+lH8LjzcL/j7l8LYz6XWjrs7hqkcI05Vktp8zImgnXit+EzntrkHKeIjZ+6O8V
-	LZ1NZO3cDPRgPphuVoSWDTs2h4FMARG8IVRiS2dGleZiD/7EbhPqmG74+pgUtmMmYyN8
-	oFcw==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=hh0ZPxOKeSeyN7YuFh7x4B2S24u9ez/mPUNSIzcUnLk=;
+	b=pJNejMZlZYmUFKuuP68RMGGErMf4jt7GbjaCoLe716ze2GYYU8pr0gnInrq3HWAMZR
+	bCYt6nmXzYN5O3rs9rPvMk4jEUOS2QnF7jerTjLIJ+UhuNOsdZmLbPDj332zQH+gYc3a
+	ouEyjVkVVZls3uwsLeJ/a+B/HNuOxfDjuIDFuyMcjSRcVvGPVCMCgK7M/I60A0X7Cqh4
+	4+Aa7eHPZeffciUtA1/M/jMcGSYZv35dZxI0Ye7sXHpTn/rtTWJtbYDxtaEa4wbghFEp
+	Dx2immZblnwyBWq+V3jQ42o8ZSu11ecFST9f6kOLsxrZ8zHV3CWetq/hBTq2TXXC4rPJ
+	4gHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=qLgEBtxDMPEzuBe7c1di3k/rR2yFAimlmfsizuzN9Vs=;
-	b=Az6waESSeiZiOr0OaLbCsJB+vZ3mFFfkEZ8kvDQ9mpH7zMFkJZOEu0ot4BkV3JiSBA
-	/ncWFnwtqOM1GV8pI77+xj451ZtXivIyHAR0ZNXa4LBqobMjuGIKqIANiYiuZf3jd9Ij
-	y3kqcK+ATLomRGxXs6xsK4oFO4HB0gRFOZFiTdUoX9unZqXtTUE4RJ4+rE1RF/G8oWJo
-	D21tdD+ZZrjvn7OhOVuXBUbMgGS8hkIUoVJu9QqLj5U9OOnBaSkqW+PLSJpiXoiqewMq
-	HmoF1khVIH3GNDtHb0v9eZA8RRnqWdTEH39fubeuC74LFPwA9hjqOuFGtMGZnWFY0Yy3
-	SyOw==
-X-Gm-Message-State: APjAAAVwQ8eQ4/RCesGtGuKqsL9c8N6puB6onJ+NiNNdfwBgIkwQeVdh
-	XoqoAqScvrpJJOA2NgvHaxwCcA==
-X-Received: by 2002:adf:ce8f:: with SMTP id r15mr49993536wrn.90.1555419513913; 
-	Tue, 16 Apr 2019 05:58:33 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	v184sm39476572wma.6.2019.04.16.05.58.32
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 16 Apr 2019 05:58:33 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 16 Apr 2019 13:57:43 +0100
-Message-Id: <20190416125744.27770-26-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190416125744.27770-1-peter.maydell@linaro.org>
-References: <20190416125744.27770-1-peter.maydell@linaro.org>
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=hh0ZPxOKeSeyN7YuFh7x4B2S24u9ez/mPUNSIzcUnLk=;
+	b=GnS0q+DHEwTKXIdimJFXMtBejN0PNUrjosmHUQTszXBxvM1V5oNlDCFyOSv/4s7Lm0
+	Q5M8NbWKfWqRPzqaFYhJolGJBCRXeulG0uD0xDOHkvo/Y/U5aJjscBKWYRWqhjmCL/C5
+	SWFDI8Yc4sxH9oGCoAg6F/EGIfKIOPUocTYEftzn1s1ngnxowCJYcwNC/a859ahhII86
+	lLtn4euo2i6ybVCyVPHarYQzbBj1wekTN5CjMqV+oqpTniozNIGemeK7njFL5i6+E3ou
+	38Gmilds781fwGMHlKPZWAxTRbPNdq9GVtakZRCKyvcHv53IoLhyBBJxSI6PFXoFjAGL
+	Bjcw==
+X-Gm-Message-State: APjAAAUlMbr4xQeINyDhTjJBIMfuXJV753U4XsetSZx7Q+EwMVItUydn
+	3WqZiZ4Sxvj/G43ABO53wrSxfNGVvpXV47tGLeVLPQ==
+X-Received: by 2002:a9d:3b44:: with SMTP id z62mr52959129otb.319.1555419755535;
+	Tue, 16 Apr 2019 06:02:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
+	<CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
+	<CANY2w+0ZULuVgJTu3M+--rC01biqS=y1V4tAbgjHfyKRd6X79A@mail.gmail.com>
+	<CAFEAcA9zP8OateFNU+Ea1thk4NkYgcee5ykEscaguC=hAhXfag@mail.gmail.com>
+	<CANY2w+3qJgQ_HVai6trQ_gDXxPLruj1-L6LaTkcUZQbtQBofpg@mail.gmail.com>
+In-Reply-To: <CANY2w+3qJgQ_HVai6trQ_gDXxPLruj1-L6LaTkcUZQbtQBofpg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Apr 2019 14:02:23 +0100
+Message-ID: <CAFEAcA9gciZ3_zY-XMoC8o0P4ffvHhC0w=ZDA6biXyovx_H2cQ@mail.gmail.com>
+To: Da Zhang <daz3@vt.edu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::42a
-Subject: [Qemu-devel] [PATCH 25/26] target/arm: Implement VLLDM for v7M CPUs
- with an FPU
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-arm] Ubuntu installation shows "No network interfaces
+ detected"
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ioACRzlNb+K0
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2GX6qwj1rA56
 
-Implement the VLLDM instruction for v7M for the FPU present cas.
+On Tue, 16 Apr 2019 at 13:53, Da Zhang <daz3@vt.edu> wrote:
+>
+> The qemu-system-aarch64 options support vda partition for the ubuntu inst=
+allation. How to setup the options to support sda partition?
+> I was trying to use the image for my gem5 experiment but it gave me "[ en=
+d Kernel panic - not syncing: No working init found.  Try passing init=3D o=
+ption to kernel. See Linux Documentation/admin-guide/init.rst for guidance.=
+". One difference I did notice is that all gem5 disk images (ARM and X86) I=
+ used are using /dev/sda. So, I want to try it and see if the problem fixed=
+.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.h    |  1 +
- target/arm/helper.c    | 54 ++++++++++++++++++++++++++++++++++++++++++
- target/arm/translate.c |  2 +-
- 3 files changed, 56 insertions(+), 1 deletion(-)
+You'll get 'sda' if QEMU exposes the disks to the
+guest as IDE or SCSI. 'vda' is for virtio block
+devices. 'vda' should work so I would recommend
+finding out why not rather than getting sidetracked
+into a different kind of guest disk setup that might
+not work either.
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 62051ae6d51..50cb036378b 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -72,6 +72,7 @@ DEF_HELPER_3(v7m_tt, i32, env, i32, i32)
- DEF_HELPER_1(v7m_preserve_fp_state, void, env)
- 
- DEF_HELPER_2(v7m_vlstm, void, env, i32)
-+DEF_HELPER_2(v7m_vlldm, void, env, i32)
- 
- DEF_HELPER_2(v8m_stackcheck, void, env, i32)
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ad049b2d9bc..4b680c379dc 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7395,6 +7395,12 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
-     g_assert_not_reached();
- }
- 
-+void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
-+{
-+    /* translate.c should never generate calls here in user-only mode */
-+    g_assert_not_reached();
-+}
-+
- uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
- {
-     /* The TT instructions can be used by unprivileged code, but in
-@@ -8479,6 +8485,54 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
-     env->v7m.control[M_REG_S] &= ~R_V7M_CONTROL_FPCA_MASK;
- }
- 
-+void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
-+{
-+    /* fptr is the value of Rn, the frame pointer we load the FP regs from */
-+    assert(env->v7m.secure);
-+
-+    if (!(env->v7m.control[M_REG_S] & R_V7M_CONTROL_SFPA_MASK)) {
-+        return;
-+    }
-+
-+    /* Check access to the coprocessor is permitted */
-+    if (!v7m_cpacr_pass(env, true, arm_current_el(env) != 0)) {
-+        raise_exception_ra(env, EXCP_NOCP, 0, 1, GETPC());
-+    }
-+
-+    if (env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_LSPACT_MASK) {
-+        /* State in FP is still valid */
-+        env->v7m.fpccr[M_REG_S] &= ~R_V7M_FPCCR_LSPACT_MASK;
-+    } else {
-+        bool ts = env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_TS_MASK;
-+        int i;
-+        uint32_t fpscr;
-+
-+        if (fptr & 7) {
-+            raise_exception_ra(env, EXCP_UNALIGNED, 0, 1, GETPC());
-+        }
-+
-+        for (i = 0; i < (ts ? 32 : 16); i += 2) {
-+            uint32_t slo, shi;
-+            uint64_t dn;
-+            uint32_t faddr = fptr + 4 * i;
-+
-+            if (i >= 16) {
-+                faddr += 8; /* skip the slot for the FPSCR */
-+            }
-+
-+            slo = cpu_ldl_data(env, faddr);
-+            shi = cpu_ldl_data(env, faddr + 4);
-+
-+            dn = (uint64_t) shi << 32 | slo;
-+            *aa32_vfp_dreg(env, i / 2) = dn;
-+        }
-+        fpscr = cpu_ldl_data(env, fptr + 0x40);
-+        vfp_set_fpscr(env, fpscr);
-+    }
-+
-+    env->v7m.control[M_REG_S] |= R_V7M_CONTROL_FPCA_MASK;
-+}
-+
- static bool v7m_push_stack(ARMCPU *cpu)
- {
-     /* Do the "set up stack frame" part of exception entry,
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index db478b779a9..5ad9923715e 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -11822,7 +11822,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                     TCGv_i32 fptr = load_reg(s, rn);
- 
-                     if (extract32(insn, 20, 1)) {
--                        /* VLLDM */
-+                        gen_helper_v7m_vlldm(cpu_env, fptr);
-                     } else {
-                         gen_helper_v7m_vlstm(cpu_env, fptr);
-                     }
--- 
-2.20.1
+If you post a link to the full boot up log then that
+will have enough information to tell whether the problem
+is that your guest kernel doesn't have virtio support
+built in or if something's wrong with your guest disk image.
 
+thanks
+-- PMM

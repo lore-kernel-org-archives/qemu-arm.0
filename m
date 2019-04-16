@@ -1,88 +1,102 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3931045wrx;
-        Tue, 16 Apr 2019 06:31:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzVoBVGSG9nauYXXcTfVR5k718Jjk/AdU4eksllZYxPs7y8M3pAR5nrSkrlHBpj+PLOk2l+
-X-Received: by 2002:a1c:d1c5:: with SMTP id i188mr25704522wmg.8.1555421460875;
-        Tue, 16 Apr 2019 06:31:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555421460; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp3990830wrx;
+        Tue, 16 Apr 2019 07:24:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw+GyXBbhlDUks8s6bs4zC291q6FgJeqTN3Q71qNhhBsEfbYWk+04MMExKtCOpY4XDnqUVX
+X-Received: by 2002:adf:cd90:: with SMTP id q16mr33394232wrj.75.1555424698039;
+        Tue, 16 Apr 2019 07:24:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555424698; cv=none;
         d=google.com; s=arc-20160816;
-        b=bUI8U8XUuj1IcUp6iBrTQcMftIWd9WKTZGYoBw/r8k3L0+mksrIIl5NfThEh4B+Gja
-         jEgZ7FHzwEREu+sSsiljxz1uY1eLMjg2vZOdyIpGyY792FcXet8r83u7W3fh/QfSSeZx
-         piELiayNMI1yaHKWLdFtXJgDHYHx+HpJbyyv1XMIwaKorGt0VJpit5rArSfrdnNoH1WI
-         zF/uRceYrlbS0akpvOuB5mZ59xGMnuWSBa1DhWMpedoi8QinhNPSR3IGht9H3JJIs+fm
-         rTQEliYXsntucNZBajpoIkyFP6MFDUzHAt0RkgY7fEdNcVmP99BeOA2pMHQXf96UrTjv
-         YeWQ==
+        b=mCsaVX+jYW3fNaS2OkYx/OFtlbj5sZc509x0e6kIZTVqg1s36e/H9NNajYrgoGLf0X
+         5yQYHlj710HwzQYbTNlaxlRdkQ8ZJD6b04chFX+PanEbrCsg/SWdaKunmrIi9lEELmN0
+         XpGQLXyA8fnbsmLk3DRYyl4gqPsp+necz+L1608cwqqKjdKyiXLHRXi0cpbDe1MUjxXB
+         5yA7mDd+3NqdbWQP0nOvuKCJur5R+A/hkZb+tia39CKgfFvISK5PyHDt7ZUImfDlcoVy
+         ziusu/Qp9VwrCjWHHVrWV0/3/Pc56WM8PAHbbSPAaLzvLVEC7nU9ciawV+xPYFjBFZw5
+         960w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=oRvux9FLpWRNe1b8NX/ljLICEroe0BXnjMIPaLoujdA=;
-        b=m5OQk9q+d5XQK4Z+TkfsQB0KBq4RyHgBIYdp/7++1FiKTOZ2G+KJCVgA+mzpZO7jRd
-         6Pf6zkrXdDCSZOTjGKIljk5QLGNuw1829C0auWvUSQI/jHvc1vTuHC9UP3SDaqFOEFpr
-         hKtYGuLvwt50nlkD4AQoc+RQhEb2USUyVYBgV+EAo5wkfny/LT9Ftjyo8mBSKXDr4i5G
-         Fj7hBhEd1SijYeSxENxZH/Nex9d+5Ly5tQUAv/1Ui7AoShdyhmHLKSoZGqRifALiN0Bv
-         Ghx8H2yoFmh2EjvFKSBAF9CUqlMlcPftj51gxFLxzcTVu5j8axMFmh1qxaHS5W60Z9WM
-         d7Ew==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=FpDhBDqBcXrpbP30zUFaXCOrWLgNGg59onjzZ9Y/Tf0=;
+        b=PEtiRQ9XZ8Im8S19tFStQEM8cpgsXuYUBAgEvE3PrfngLv/I1Chv+4mr4JH9uFzJz+
+         Tddr49V8YOKsQOaYX//Bsyl4lTFnNAOIjezE1pmCjnhHg/kUT/m4dxgq5w1c/Ncfgzfv
+         oV5hoHceoahBAkAsFWXy/6h808396v4nnqm2ht89Vid4aIUk+3AY6PoJdWaWa878Quwt
+         bpzomABoE+0OKa16qtXN9vTWq6eOaDASLBE/D9v+0+PW5YrsW/pYOAAOVMCHPpd58OwS
+         51aFNblKUn9OiTXH+UY0T39RUJuAMU6SFdgFo6FrVYmQDWlPR3ewnp3ovthdKHVsyU4r
+         hg5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l1si13105750wme.81.2019.04.16.06.31.00
+        by mx.google.com with ESMTPS id b130si13086721wmc.91.2019.04.16.07.24.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Apr 2019 06:31:00 -0700 (PDT)
+        Tue, 16 Apr 2019 07:24:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36979 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=vt.edu
+Received: from localhost ([127.0.0.1]:37682 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hGOAt-0005cA-RW
-	for alex.bennee@linaro.org; Tue, 16 Apr 2019 09:30:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42328)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1hGO6j-0002I4-Op
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 09:26:43 -0400
+	id 1hGP17-0007lD-2Y
+	for alex.bennee@linaro.org; Tue, 16 Apr 2019 10:24:57 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55151)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <daz3@vt.edu>)
+	id 1hGP0u-0007kE-PH
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 10:24:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1hGO6g-0007Rx-5r
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 09:26:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59876)
+	(envelope-from <daz3@vt.edu>) id 1hGP0s-0000wt-VJ
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 10:24:44 -0400
+Received: from omr1.cc.ipv6.vt.edu ([2607:b400:92:8300:0:c6:2117:b0e]:46268
+	helo=omr1.cc.vt.edu)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1hGO6f-0007RG-Qx; Tue, 16 Apr 2019 09:26:38 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 008DA309267B;
-	Tue, 16 Apr 2019 13:26:37 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-171.rdu2.redhat.com
-	[10.10.120.171])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8D3E2608C2;
-	Tue, 16 Apr 2019 13:26:32 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <20190416091348.26075-1-armbru@redhat.com>
-	<20190416091348.26075-4-armbru@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <43811161-397d-0e3e-c618-516d54daa517@redhat.com>
-Date: Tue, 16 Apr 2019 15:26:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(Exim 4.71) (envelope-from <daz3@vt.edu>) id 1hGP0s-0000vn-MD
+	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 10:24:42 -0400
+Received: from mr5.cc.vt.edu (mr5.cc.ipv6.vt.edu
+	[IPv6:2607:b400:92:8400:0:72:232:758b])
+	by omr1.cc.vt.edu (8.14.4/8.14.4) with ESMTP id x3GEOdZt024881
+	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 10:24:40 -0400
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+	[209.85.221.71])
+	by mr5.cc.vt.edu (8.14.7/8.14.7) with ESMTP id x3GEOYbv018775
+	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 10:24:39 -0400
+Received: by mail-wr1-f71.google.com with SMTP id x9so19226852wrw.20
+	for <qemu-arm@nongnu.org>; Tue, 16 Apr 2019 07:24:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=FpDhBDqBcXrpbP30zUFaXCOrWLgNGg59onjzZ9Y/Tf0=;
+	b=Yq3/0T48kMNVjVsB2QGlMt1+KYtYUvFAmHgoVP2DDAGG7y9QoMYwIyvRLL6vno9MxZ
+	vTSf0rtQkGKsFpj2t6DvApEp1z48/L8MPiUAdP0H1nkHkoBtbfmF5MzKglTYIM1w7NlH
+	hXE3d0Gi5Yi9wNdCAw5qMO7l8/ZPo+j7tD7cxolsBy//WEqy/rgACkqr4AEVNpUThHsu
+	3RCmlIxXhaK2cW9ih4aB6jaeGV9SToAL632mxsudtqtrodMCeb+aiuxJUT3cP5J+VvhH
+	an1kjokSJj+LOj7iyNRsdX2MITa5iR+Tx/QneVU9QRfCuVrx+btUTsree5hA9sDzVGdZ
+	xnCw==
+X-Gm-Message-State: APjAAAV24jtoZm0ICD8VgNGqFWrL5tMyr5rH2hyob/yyaJkN0Q+Oc+rp
+	pTI9ubKQdt5L+8b1lEeDcyx2+90EAeBCanPDdBgLo+g/W7DfEt+0Y6+trVc1bMtwBqGmDtUWLdo
+	WSkKyHoHvL+UVVOh9INjqokp5WND9pObzF2lhzSQ=
+X-Received: by 2002:a5d:5284:: with SMTP id c4mr33726246wrv.281.1555424673672; 
+	Tue, 16 Apr 2019 07:24:33 -0700 (PDT)
+X-Received: by 2002:a5d:5284:: with SMTP id c4mr33726216wrv.281.1555424673238; 
+	Tue, 16 Apr 2019 07:24:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190416091348.26075-4-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Tue, 16 Apr 2019 13:26:37 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 3/3] hw/arm/virt: Support firmware
- configuration with -blockdev
+References: <CANY2w+3iU1m9exqE2qMJj+OXcHThm2Q3jxFdDn9FWwKC6JhKUg@mail.gmail.com>
+	<CAFEAcA9B-7j9ws-vaChqx1uZOA_QDzQYPixNeGDmonLXeZ9vNQ@mail.gmail.com>
+	<CANY2w+0ZULuVgJTu3M+--rC01biqS=y1V4tAbgjHfyKRd6X79A@mail.gmail.com>
+	<CAFEAcA9zP8OateFNU+Ea1thk4NkYgcee5ykEscaguC=hAhXfag@mail.gmail.com>
+	<CANY2w+3qJgQ_HVai6trQ_gDXxPLruj1-L6LaTkcUZQbtQBofpg@mail.gmail.com>
+	<CAFEAcA9gciZ3_zY-XMoC8o0P4ffvHhC0w=ZDA6biXyovx_H2cQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9gciZ3_zY-XMoC8o0P4ffvHhC0w=ZDA6biXyovx_H2cQ@mail.gmail.com>
+From: Da Zhang <daz3@vt.edu>
+Date: Tue, 16 Apr 2019 10:23:57 -0400
+Message-ID: <CANY2w+1UhFKHOfgVEmPDGwMsH8o3nWi7VsNFRkx2Yw3N5nO5dQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000001fc6990586a6877b"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2607:b400:92:8300:0:c6:2117:b0e
+Subject: Re: [Qemu-arm] Ubuntu installation shows "No network interfaces
+ detected"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,506 +108,242 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
-	mreitz@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ffxXyylseTnm
+X-TUID: rkfJ1A+Bs1Tf
 
-comparing this with v1...
+--0000000000001fc6990586a6877b
+Content-Type: text/plain; charset="UTF-8"
 
-On 04/16/19 11:13, Markus Armbruster wrote:
-> The ARM virt machines put firmware in flash memory.  To configure it,
-> you use -drive if=3Dpflash,unit=3D0,... and optionally -drive
-> if=3Dpflash,unit=3D1,...
->=20
-> Why two -drive?  This permits setting up one part of the flash memory
-> read-only, and the other part read/write.  It also makes upgrading
-> firmware on the host easier.  Below the hood, we get two separate
-> flash devices, because we were too lazy to improve our flash device
-> models to support sector protection.
->=20
-> The problem at hand is to do the same with -blockdev somehow, as one
-> more step towards deprecating -drive.
->=20
-> We recently solved this problem for x86 PC machines, in commit
-> ebc29e1beab.  See the commit message for design rationale.
->=20
-> This commit solves it for ARM virt basically the same way: new machine
-> properties pflash0, pflash1 forward to the onboard flash devices'
-> properties.  Requires creating the onboard devices in the
-> .instance_init() method virt_instance_init().  The existing code to
-> pick up drives defined with -drive if=3Dpflash is replaced by code to
-> desugar into the machine properties.
->=20
-> There are a few behavioral differences, though:
->=20
-> * The flash devices are always present (x86: only present if
->   configured)
->=20
-> * Flash base addresses and sizes are fixed (x86: sizes depend on
->   images, mapped back to back below a fixed address)
->=20
-> * -bios configures contents of first pflash (x86: -bios configures ROM
->    contents)
->=20
-> * -bios is rejected when first pflash is also configured with -machine
->    pflash0=3D... (x86: bios is silently ignored then)
->=20
-> * -machine pflash1=3D... does not require -machine pflash0=3D... (x86: =
-it
->    does).
->=20
-> The actual code is a bit simpler than for x86 mostly due to the first
-> two differences.
->=20
-> Before the patch, all the action is in create_flash(), called from the
-> machine's .init() method machvirt_init():
->=20
->     main()
->         machine_run_board_init()
->             machvirt_init()
->                 create_flash()
->                     create_one_flash() for flash[0]
->                         create
->                         configure
->                             includes obeying -drive if=3Dpflash,unit=3D=
-0
->                         realize
->                         map
->                         fall back to -bios
->                     create_one_flash() for flash[1]
->                         create
->                         configure
->                             includes obeying -drive if=3Dpflash,unit=3D=
-1
->                         realize
->                         map
->                     update FDT
->=20
-> To make the machine properties work, we need to move device creation
-> to its .instance_init() method virt_instance_init().
->=20
-> Another complication is machvirt_init()'s computation of
-> @firmware_loaded: it predicts what create_flash() will do.  Instead of
-> predicting what create_flash()'s replacement virt_firmware_init() will
-> do, I decided to have virt_firmware_init() return what it did.
-> Requires calling it a bit earlier.
->=20
-> Resulting call tree:
->=20
->     main()
->         current_machine =3D object_new()
->             ...
->                 virt_instance_init()
->                     virt_flash_create()
->                         virt_flash_create1() for flash[0]
->                             create
->                             configure: set defaults
->                             become child of machine [NEW]
->                             add machine prop pflash0 as alias for drive=
- [NEW]
->                         virt_flash_create1() for flash[1]
->                             create
->                             configure: set defaults
->                             become child of machine [NEW]
->                             add machine prop pflash1 as alias for drive=
- [NEW]
->         for all machine props from the command line: machine_set_proper=
-ty()
->             ...
->                 property_set_alias() for machine props pflash0, pflash1
->                     ...
->                         set_drive() for cfi.pflash01 prop drive
->                             this is how -machine pflash0=3D... etc set
->         machine_run_board_init(current_machine);
->             virt_firmware_init()
->                 pflash_cfi01_legacy_drive()
->                     legacy -drive if=3Dpflash,unit=3D0 and =3D1 [NEW]
->                 virt_flash_map()
->                     virt_flash_map1() for flash[0]
->                         configure: num-blocks
->                         realize
->                         map
->                     virt_flash_map1() for flash[1]
->                         configure: num-blocks
->                         realize
->                         map
->                 fall back to -bios
->             virt_flash_fdt()
->                 update FDT
+[    2.361820] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    2.375346] igb: Intel(R) Gigabit Ethernet Network Driver - version
+5.4.0-k
+[    2.390986] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    2.403596] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver -
+version 5.1.0-k
+[    2.420739] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[    2.437883] ixgbevf: Intel(R) 10 Gigabit PCI Express Virtual Function
+Network Driver - version 4.1.0-k
+[    2.458697] ixgbevf: Copyright (c) 2009 - 2015 Intel Corporation.
+[    2.481761] i40e: Intel(R) Ethernet Connection XL710 Network Driver -
+version 2.1.14-k
+[    2.534027] i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+[    2.547185] ata1.00: ATA-7: M5 IDE Disk, , max UDMA/66
+[    2.547188] ata1.00: 16777216 sectors, multi 0: LBA
+[    2.614939] ata1.00: configured for UDMA/33
+[    2.624506] ixgb: Intel(R) PRO/10GbE Network Driver - version
+1.0.135-k2-NAPI
+[    2.624508] ixgb: Copyright (c) 1999-2008 Intel Corporation.
+[    2.624531] i40evf: Intel(R) 40-10 Gigabit Virtual Function Network
+Driver - version 3.0.0-k
+[    2.624532] Copyright (c) 2013 - 2015 Intel Corporation.
+[    2.640898] usbcore: registered new interface driver usb-storage
+[    2.641296] mousedev: PS/2 mouse device common for all mice
+[    2.641483] IR NEC protocol handler initialized
+[    2.641485] IR RC5(x/sz) protocol handler initialized
+[    2.641486] IR RC6 protocol handler initialized
+[    2.641487] IR JVC protocol handler initialized
+[    2.641488] IR Sony protocol handler initialized
+[    2.641490] IR SANYO protocol handler initialized
+[    2.641491] IR Sharp protocol handler initialized
+[    2.641493] IR MCE Keyboard/mouse protocol handler initialized
+[    2.641494] IR XMP protocol handler initialized
+[    2.641819] gem5 DVFS handler is disabled
+[    2.641822] gem5-energy-ctrl loaded at ffffff800899e000
+[    2.641825] gem5_energy_ctrl_mc: gem5_mc_init: DVFS handler in energy
+controller is disabled,                         ARM gem5 multi-cluster
+cpufreq driver                         will not be registered
+[    2.642190] usbcore: registered new interface driver usbhid
+[    2.642191] usbhid: USB HID core driver
+[    2.642322] NET: Registered protocol family 17
+[    2.916496] scsi 0:0:0:0: Direct-Access     ATA      M5 IDE Disk
+n/a  PQ: 0 ANSI: 5
+[    2.935127] sd 0:0:0:0: [sda] 16777216 512-byte logical blocks: (8.59
+GB/8.00 GiB)
+[    2.952327] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[    2.964648] sd 0:0:0:0: [sda] Write Protect is off
+[    2.975518] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00
+[    2.986957] sd 0:0:0:0: [sda] Write cache: disabled, read cache:
+enabled, doesn't support DPO or FUA
+[    3.101444]  sda: sda1 sda2 sda3
+[    3.109804] sd 0:0:0:0: [sda] Attached SCSI disk
+[    3.452824] VFS: Mounted root (vfat filesystem) on device 8:1.
+[    3.466085] devtmpfs: error mounting -2
+[    3.475091] Freeing unused kernel memory: 384K
+[    3.485519] Kernel panic - not syncing: No working init found.  Try
+passing init= option to kernel. See Linux
+Documentation/admin-guide/init.rst for guidance.
+[    3.516805] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.14.0+ #2
+[    3.530257] Hardware name: V2P-CA15 (DT)
+[    3.539161] Call trace:
+[    3.544930] [<ffffff8008088250>] dump_backtrace+0x0/0x370
+[    3.557065] [<ffffff80080885d4>] show_stack+0x14/0x20
+[    3.568513] [<ffffff800863ffe8>] dump_stack+0x8c/0xac
+[    3.579903] [<ffffff80080b7338>] panic+0x11c/0x274
+[    3.590712] [<ffffff8008652244>] kernel_init+0xec/0x100
+[    3.602463] [<ffffff8008084348>] ret_from_fork+0x10/0x18
+[    3.614433] Kernel Offset: disabled
+[    3.622386] CPU features: 0x002000
+[    3.630153] Memory Limit: 1024 MB
+[    3.637726] ---[ end Kernel panic - not syncing: No working init found.
+Try passing init= option to kernel. See Linux
+Documentation/admin-guide/init.rst for guidance.
 
-Thanks for elaborating the call tree in even more detail :)
+This is my ARM/gem5.fast simulation output. The following is my gem5
+command:
 
->=20
-> You have L=C3=A1szl=C3=B3 to thank for making me explain this in detail=
-.
+build/ARM/gem5.fast --listener-mode=on -d /home/rock64/tmp/arm_
+configs/example/fs.py --machine-type=VExpress_GEM5_V1
+--kernel=vmlinux.arm.4.4 --disk-image=ubuntu-16.04.5-server-arm64.img
+--mem-size=1GB --cpu-type=ArmV8KvmCPU --generate-dtb -n 1
 
-... as long as it's not s/thank/curse/ ;)
 
->=20
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Acked-by: Laszlo Ersek <lersek@redhat.com>
-> ---
->  hw/arm/virt.c         | 198 +++++++++++++++++++++++++++---------------
->  include/hw/arm/virt.h |   2 +
->  2 files changed, 130 insertions(+), 70 deletions(-)
->=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ce2664a30b..3b7b5eb429 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -30,6 +30,7 @@
-> =20
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
-> +#include "qemu/option.h"
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
->  #include "hw/arm/arm.h"
-> @@ -871,25 +872,19 @@ static void create_virtio_devices(const VirtMachi=
-neState *vms, qemu_irq *pic)
->      }
->  }
-> =20
-> -static void create_one_flash(const char *name, hwaddr flashbase,
-> -                             hwaddr flashsize, const char *file,
-> -                             MemoryRegion *sysmem)
-> +#define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
-> +
-> +static PFlashCFI01 *virt_flash_create1(VirtMachineState *vms,
+best,
+Da
 
-OK, I'm noticing the rename from "virt_pflash_create1".
+On Tue, Apr 16, 2019 at 9:02 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
-> +                                        const char *name,
-> +                                        const char *alias_prop_name)
->  {
-> -    /* Create and map a single flash device. We use the same
-> -     * parameters as the flash devices on the Versatile Express board.
-> +    /*
-> +     * Create a single flash device.  We use the same parameters as
-> +     * the flash devices on the Versatile Express board.
->       */
-> -    DriveInfo *dinfo =3D drive_get_next(IF_PFLASH);
->      DeviceState *dev =3D qdev_create(NULL, TYPE_PFLASH_CFI01);
-> -    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-> -    const uint64_t sectorlength =3D 256 * 1024;
-> =20
-> -    if (dinfo) {
-> -        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-> -                            &error_abort);
-> -    }
-> -
-> -    qdev_prop_set_uint32(dev, "num-blocks", flashsize / sectorlength);
-> -    qdev_prop_set_uint64(dev, "sector-length", sectorlength);
-> +    qdev_prop_set_uint64(dev, "sector-length", VIRT_FLASH_SECTOR_SIZE)=
-;
->      qdev_prop_set_uint8(dev, "width", 4);
->      qdev_prop_set_uint8(dev, "device-width", 2);
->      qdev_prop_set_bit(dev, "big-endian", false);
-> @@ -898,41 +893,41 @@ static void create_one_flash(const char *name, hw=
-addr flashbase,
->      qdev_prop_set_uint16(dev, "id2", 0x00);
->      qdev_prop_set_uint16(dev, "id3", 0x00);
->      qdev_prop_set_string(dev, "name", name);
-> +    object_property_add_child(OBJECT(vms), name, OBJECT(dev),
-> +                              &error_abort);
-> +    object_property_add_alias(OBJECT(vms), alias_prop_name,
-> +                              OBJECT(dev), "drive", &error_abort);
-> +    return PFLASH_CFI01(dev);
-> +}
-> +
-> +static void virt_flash_create(VirtMachineState *vms)
-> +{
-> +    vms->flash[0] =3D virt_flash_create1(vms, "virt.flash0", "pflash0"=
-);
-> +    vms->flash[1] =3D virt_flash_create1(vms, "virt.flash1", "pflash1"=
-);
-> +}
-> +
-> +static void virt_flash_map1(PFlashCFI01 *flash,
-> +                            hwaddr base, hwaddr size,
-> +                            MemoryRegion *sysmem)
-> +{
-> +    DeviceState *dev =3D DEVICE(flash);
-> +
-> +    assert(size % VIRT_FLASH_SECTOR_SIZE =3D=3D 0);
-> +    assert(size / VIRT_FLASH_SECTOR_SIZE <=3D UINT32_MAX);
-> +    qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_S=
-IZE);
->      qdev_init_nofail(dev);
-> =20
-> -    memory_region_add_subregion(sysmem, flashbase,
-> -                                sysbus_mmio_get_region(SYS_BUS_DEVICE(=
-dev), 0));
-> -
-> -    if (file) {
-> -        char *fn;
-> -        int image_size;
-> -
-> -        if (drive_get(IF_PFLASH, 0, 0)) {
-> -            error_report("The contents of the first flash device may b=
-e "
-> -                         "specified with -bios or with -drive if=3Dpfl=
-ash... "
-> -                         "but you cannot use both options at once");
-> -            exit(1);
-> -        }
-> -        fn =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, file);
-> -        if (!fn) {
-> -            error_report("Could not find ROM image '%s'", file);
-> -            exit(1);
-> -        }
-> -        image_size =3D load_image_mr(fn, sysbus_mmio_get_region(sbd, 0=
-));
-> -        g_free(fn);
-> -        if (image_size < 0) {
-> -            error_report("Could not load ROM image '%s'", file);
-> -            exit(1);
-> -        }
-> -    }
-> +    memory_region_add_subregion(sysmem, base,
-> +                                sysbus_mmio_get_region(SYS_BUS_DEVICE(=
-dev),
-> +                                                       0));
->  }
-> =20
-> -static void create_flash(const VirtMachineState *vms,
-> -                         MemoryRegion *sysmem,
-> -                         MemoryRegion *secure_sysmem)
-> +static void virt_flash_map(VirtMachineState *vms,
-> +                           MemoryRegion *sysmem,
-> +                           MemoryRegion *secure_sysmem)
->  {
-> -    /* Create two flash devices to fill the VIRT_FLASH space in the me=
-mmap.
-> -     * Any file passed via -bios goes in the first of these.
-> +    /*
-> +     * Map two flash devices to fill the VIRT_FLASH space in the memma=
-p.
->       * sysmem is the system memory space. secure_sysmem is the secure =
-view
->       * of the system, and the first flash device should be made visibl=
-e only
->       * there. The second flash device is visible to both secure and no=
-nsecure.
-> @@ -941,13 +936,21 @@ static void create_flash(const VirtMachineState *=
-vms,
->       */
->      hwaddr flashsize =3D vms->memmap[VIRT_FLASH].size / 2;
->      hwaddr flashbase =3D vms->memmap[VIRT_FLASH].base;
-> +
-> +    virt_flash_map1(vms->flash[0], flashbase, flashsize,
-> +                    secure_sysmem);
-> +    virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
-> +                    sysmem);
-> +}
-> +
-> +static void virt_flash_fdt(VirtMachineState *vms,
-> +                           MemoryRegion *sysmem,
-> +                           MemoryRegion *secure_sysmem)
-> +{
-> +    hwaddr flashsize =3D vms->memmap[VIRT_FLASH].size / 2;
-> +    hwaddr flashbase =3D vms->memmap[VIRT_FLASH].base;
->      char *nodename;
-> =20
-> -    create_one_flash("virt.flash0", flashbase, flashsize,
-> -                     bios_name, secure_sysmem);
-> -    create_one_flash("virt.flash1", flashbase + flashsize, flashsize,
-> -                     NULL, sysmem);
-> -
->      if (sysmem =3D=3D secure_sysmem) {
->          /* Report both flash devices as a single node in the DT */
->          nodename =3D g_strdup_printf("/flash@%" PRIx64, flashbase);
-> @@ -959,7 +962,8 @@ static void create_flash(const VirtMachineState *vm=
-s,
->          qemu_fdt_setprop_cell(vms->fdt, nodename, "bank-width", 4);
->          g_free(nodename);
->      } else {
-> -        /* Report the devices as separate nodes so we can mark one as
-> +        /*
-> +         * Report the devices as separate nodes so we can mark one as
->           * only visible to the secure world.
->           */
->          nodename =3D g_strdup_printf("/secflash@%" PRIx64, flashbase);
-> @@ -982,6 +986,54 @@ static void create_flash(const VirtMachineState *v=
-ms,
->      }
->  }
-> =20
-> +static bool virt_firmware_init(VirtMachineState *vms,
-> +                               MemoryRegion *sysmem,
-> +                               MemoryRegion *secure_sysmem)
-> +{
-> +    int i;
-> +    BlockBackend *pflash_blk0;
-> +
-> +    /* Map legacy -drive if=3Dpflash to machine properties */
-> +    for (i =3D 0; i < ARRAY_SIZE(vms->flash); i++) {
-> +        pflash_cfi01_legacy_drive(vms->flash[i],
-> +                                  drive_get(IF_PFLASH, 0, i));
-> +    }
+> On Tue, 16 Apr 2019 at 13:53, Da Zhang <daz3@vt.edu> wrote:
+> >
+> > The qemu-system-aarch64 options support vda partition for the ubuntu
+> installation. How to setup the options to support sda partition?
+> > I was trying to use the image for my gem5 experiment but it gave me "[
+> end Kernel panic - not syncing: No working init found.  Try passing init=
+> option to kernel. See Linux Documentation/admin-guide/init.rst for
+> guidance.". One difference I did notice is that all gem5 disk images (ARM
+> and X86) I used are using /dev/sda. So, I want to try it and see if the
+> problem fixed.
+>
+> You'll get 'sda' if QEMU exposes the disks to the
+> guest as IDE or SCSI. 'vda' is for virtio block
+> devices. 'vda' should work so I would recommend
+> finding out why not rather than getting sidetracked
+> into a different kind of guest disk setup that might
+> not work either.
+>
+> If you post a link to the full boot up log then that
+> will have enough information to tell whether the problem
+> is that your guest kernel doesn't have virtio support
+> built in or if something's wrong with your guest disk image.
+>
+> thanks
+> -- PMM
+>
 
-And this v1->v2 update is due to the pflash_cfi01_legacy_drive()
-contract change in v2 (i.e. the last two patches in this series).
+--0000000000001fc6990586a6877b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-No other changes that I can see. My ACK stands.
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div>[=C2=A0 =C2=A0 2.36=
+1820] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.</div><div>[=C2=A0=
+ =C2=A0 2.375346] igb: Intel(R) Gigabit Ethernet Network Driver - version 5=
+.4.0-k</div><div>[=C2=A0 =C2=A0 2.390986] igb: Copyright (c) 2007-2014 Inte=
+l Corporation.</div><div>[=C2=A0 =C2=A0 2.403596] ixgbe: Intel(R) 10 Gigabi=
+t PCI Express Network Driver - version 5.1.0-k</div><div>[=C2=A0 =C2=A0 2.4=
+20739] ixgbe: Copyright (c) 1999-2016 Intel Corporation.</div><div>[=C2=A0 =
+=C2=A0 2.437883] ixgbevf: Intel(R) 10 Gigabit PCI Express Virtual Function =
+Network Driver - version 4.1.0-k</div><div>[=C2=A0 =C2=A0 2.458697] ixgbevf=
+: Copyright (c) 2009 - 2015 Intel Corporation.</div><div>[=C2=A0 =C2=A0 2.4=
+81761] i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.=
+1.14-k</div><div>[=C2=A0 =C2=A0 2.534027] i40e: Copyright (c) 2013 - 2014 I=
+ntel Corporation.</div><div>[=C2=A0 =C2=A0 2.547185] ata1.00: ATA-7: M5 IDE=
+ Disk, , max UDMA/66</div><div>[=C2=A0 =C2=A0 2.547188] ata1.00: 16777216 s=
+ectors, multi 0: LBA</div><div>[=C2=A0 =C2=A0 2.614939] ata1.00: configured=
+ for UDMA/33</div><div>[=C2=A0 =C2=A0 2.624506] ixgb: Intel(R) PRO/10GbE Ne=
+twork Driver - version 1.0.135-k2-NAPI</div><div>[=C2=A0 =C2=A0 2.624508] i=
+xgb: Copyright (c) 1999-2008 Intel Corporation.</div><div>[=C2=A0 =C2=A0 2.=
+624531] i40evf: Intel(R) 40-10 Gigabit Virtual Function Network Driver - ve=
+rsion 3.0.0-k</div><div>[=C2=A0 =C2=A0 2.624532] Copyright (c) 2013 - 2015 =
+Intel Corporation.</div><div>[=C2=A0 =C2=A0 2.640898] usbcore: registered n=
+ew interface driver usb-storage</div><div>[=C2=A0 =C2=A0 2.641296] mousedev=
+: PS/2 mouse device common for all mice</div><div>[=C2=A0 =C2=A0 2.641483] =
+IR NEC protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641485] IR R=
+C5(x/sz) protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641486] IR=
+ RC6 protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641487] IR JVC=
+ protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641488] IR Sony pr=
+otocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641490] IR SANYO prot=
+ocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641491] IR Sharp protoc=
+ol handler initialized</div><div>[=C2=A0 =C2=A0 2.641493] IR MCE Keyboard/m=
+ouse protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641494] IR XMP=
+ protocol handler initialized</div><div>[=C2=A0 =C2=A0 2.641819] gem5 DVFS =
+handler is disabled</div><div>[=C2=A0 =C2=A0 2.641822] gem5-energy-ctrl loa=
+ded at ffffff800899e000</div><div>[=C2=A0 =C2=A0 2.641825] gem5_energy_ctrl=
+_mc: gem5_mc_init: DVFS handler in energy controller is disabled,=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0ARM gem5 multi-cluster cpufreq driver=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0will not be regi=
+stered</div><div>[=C2=A0 =C2=A0 2.642190] usbcore: registered new interface=
+ driver usbhid</div><div>[=C2=A0 =C2=A0 2.642191] usbhid: USB HID core driv=
+er</div><div>[=C2=A0 =C2=A0 2.642322] NET: Registered protocol family 17</d=
+iv><div>[=C2=A0 =C2=A0 2.916496] scsi 0:0:0:0: Direct-Access=C2=A0 =C2=A0 =
+=C2=A0ATA=C2=A0 =C2=A0 =C2=A0 M5 IDE Disk=C2=A0 =C2=A0 =C2=A0 n/a=C2=A0 PQ:=
+ 0 ANSI: 5</div><div>[=C2=A0 =C2=A0 2.935127] sd 0:0:0:0: [sda] 16777216 51=
+2-byte logical blocks: (8.59 GB/8.00 GiB)</div><div>[=C2=A0 =C2=A0 2.952327=
+] sd 0:0:0:0: Attached scsi generic sg0 type 0</div><div>[=C2=A0 =C2=A0 2.9=
+64648] sd 0:0:0:0: [sda] Write Protect is off</div><div>[=C2=A0 =C2=A0 2.97=
+5518] sd 0:0:0:0: [sda] Mode Sense: 00 3a 00 00</div><div>[=C2=A0 =C2=A0 2.=
+986957] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn=
+&#39;t support DPO or FUA</div><div>[=C2=A0 =C2=A0 3.101444]=C2=A0 sda: sda=
+1 sda2 sda3</div><div>[=C2=A0 =C2=A0 3.109804] sd 0:0:0:0: [sda] Attached S=
+CSI disk</div><div>[=C2=A0 =C2=A0 3.452824] VFS: Mounted root (vfat filesys=
+tem) on device 8:1.</div><div>[=C2=A0 =C2=A0 3.466085] devtmpfs: error moun=
+ting -2</div><div>[=C2=A0 =C2=A0 3.475091] Freeing unused kernel memory: 38=
+4K</div><div>[=C2=A0 =C2=A0 3.485519] Kernel panic - not syncing: No workin=
+g init found.=C2=A0 Try passing init=3D option to kernel. See Linux Documen=
+tation/admin-guide/init.rst for guidance.</div><div>[=C2=A0 =C2=A0 3.516805=
+] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.14.0+ #2</div><div>[=C2=A0 =
+=C2=A0 3.530257] Hardware name: V2P-CA15 (DT)</div><div>[=C2=A0 =C2=A0 3.53=
+9161] Call trace:</div><div>[=C2=A0 =C2=A0 3.544930] [&lt;ffffff8008088250&=
+gt;] dump_backtrace+0x0/0x370</div><div>[=C2=A0 =C2=A0 3.557065] [&lt;fffff=
+f80080885d4&gt;] show_stack+0x14/0x20</div><div>[=C2=A0 =C2=A0 3.568513] [&=
+lt;ffffff800863ffe8&gt;] dump_stack+0x8c/0xac</div><div>[=C2=A0 =C2=A0 3.57=
+9903] [&lt;ffffff80080b7338&gt;] panic+0x11c/0x274</div><div>[=C2=A0 =C2=A0=
+ 3.590712] [&lt;ffffff8008652244&gt;] kernel_init+0xec/0x100</div><div>[=C2=
+=A0 =C2=A0 3.602463] [&lt;ffffff8008084348&gt;] ret_from_fork+0x10/0x18</di=
+v><div>[=C2=A0 =C2=A0 3.614433] Kernel Offset: disabled</div><div>[=C2=A0 =
+=C2=A0 3.622386] CPU features: 0x002000</div><div>[=C2=A0 =C2=A0 3.630153] =
+Memory Limit: 1024 MB</div><div>[=C2=A0 =C2=A0 3.637726] ---[ end Kernel pa=
+nic - not syncing: No working init found.=C2=A0 Try passing init=3D option =
+to kernel. See Linux Documentation/admin-guide/init.rst for guidance.</div>=
+<div><br></div><div>This is my ARM/gem5.fast simulation output. The followi=
+ng is my gem5 command:</div><div><br></div><div>build/ARM/gem5.fast --liste=
+ner-mode=3Don -d /home/rock64/tmp/arm_ configs/example/fs.py --machine-type=
+=3DVExpress_GEM5_V1 --kernel=3Dvmlinux.arm.4.4 --disk-image=3Dubuntu-16.04.=
+5-server-arm64.img --mem-size=3D1GB --cpu-type=3DArmV8KvmCPU --generate-dtb=
+ -n 1<br></div><div><br></div><div><br></div><div>best,</div><div>Da</div><=
+/div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Tue, Apr 16, 2019 at 9:02 AM Peter Maydell &lt;<a href=3D"mai=
+lto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a=
+>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
+ 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On =
+Tue, 16 Apr 2019 at 13:53, Da Zhang &lt;<a href=3D"mailto:daz3@vt.edu" targ=
+et=3D"_blank">daz3@vt.edu</a>&gt; wrote:<br>
+&gt;<br>
+&gt; The qemu-system-aarch64 options support vda partition for the ubuntu i=
+nstallation. How to setup the options to support sda partition?<br>
+&gt; I was trying to use the image for my gem5 experiment but it gave me &q=
+uot;[ end Kernel panic - not syncing: No working init found.=C2=A0 Try pass=
+ing init=3D option to kernel. See Linux Documentation/admin-guide/init.rst =
+for guidance.&quot;. One difference I did notice is that all gem5 disk imag=
+es (ARM and X86) I used are using /dev/sda. So, I want to try it and see if=
+ the problem fixed.<br>
+<br>
+You&#39;ll get &#39;sda&#39; if QEMU exposes the disks to the<br>
+guest as IDE or SCSI. &#39;vda&#39; is for virtio block<br>
+devices. &#39;vda&#39; should work so I would recommend<br>
+finding out why not rather than getting sidetracked<br>
+into a different kind of guest disk setup that might<br>
+not work either.<br>
+<br>
+If you post a link to the full boot up log then that<br>
+will have enough information to tell whether the problem<br>
+is that your guest kernel doesn&#39;t have virtio support<br>
+built in or if something&#39;s wrong with your guest disk image.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
 
-Thank you!
-Laszlo
-
-> +
-> +    virt_flash_map(vms, sysmem, secure_sysmem);
-> +
-> +    pflash_blk0 =3D pflash_cfi01_get_blk(vms->flash[0]);
-> +
-> +    if (bios_name) {
-> +        char *fname;
-> +        MemoryRegion *mr;
-> +        int image_size;
-> +
-> +        if (pflash_blk0) {
-> +            error_report("The contents of the first flash device may b=
-e "
-> +                         "specified with -bios or with -drive if=3Dpfl=
-ash... "
-> +                         "but you cannot use both options at once");
-> +            exit(1);
-> +        }
-> +
-> +        /* Fall back to -bios */
-> +
-> +        fname =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +        if (!fname) {
-> +            error_report("Could not find ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +        mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(vms->flash[0]), 0=
-);
-> +        image_size =3D load_image_mr(fname, mr);
-> +        g_free(fname);
-> +        if (image_size < 0) {
-> +            error_report("Could not load ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +    }
-> +
-> +    return pflash_blk0 || bios_name;
-> +}
-> +
->  static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressS=
-pace *as)
->  {
->      hwaddr base =3D vms->memmap[VIRT_FW_CFG].base;
-> @@ -1421,7 +1473,7 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *secure_sysmem =3D NULL;
->      int n, virt_max_cpus;
->      MemoryRegion *ram =3D g_new(MemoryRegion, 1);
-> -    bool firmware_loaded =3D bios_name || drive_get(IF_PFLASH, 0, 0);
-> +    bool firmware_loaded;
->      bool aarch64 =3D true;
-> =20
->      /*
-> @@ -1460,6 +1512,27 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
-> =20
-> +    if (vms->secure) {
-> +        if (kvm_enabled()) {
-> +            error_report("mach-virt: KVM does not support Security ext=
-ensions");
-> +            exit(1);
-> +        }
-> +
-> +        /*
-> +         * The Secure view of the world is the same as the NonSecure,
-> +         * but with a few extra devices. Create it as a container regi=
-on
-> +         * containing the system memory at low priority; any secure-on=
-ly
-> +         * devices go in at higher priority and take precedence.
-> +         */
-> +        secure_sysmem =3D g_new(MemoryRegion, 1);
-> +        memory_region_init(secure_sysmem, OBJECT(machine), "secure-mem=
-ory",
-> +                           UINT64_MAX);
-> +        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, =
--1);
-> +    }
-> +
-> +    firmware_loaded =3D virt_firmware_init(vms, sysmem,
-> +                                         secure_sysmem ?: sysmem);
-> +
->      /* If we have an EL3 boot ROM then the assumption is that it will
->       * implement PSCI itself, so disable QEMU's internal implementatio=
-n
->       * so it doesn't get in the way. Instead of starting secondary
-> @@ -1505,23 +1578,6 @@ static void machvirt_init(MachineState *machine)
->          exit(1);
->      }
-> =20
-> -    if (vms->secure) {
-> -        if (kvm_enabled()) {
-> -            error_report("mach-virt: KVM does not support Security ext=
-ensions");
-> -            exit(1);
-> -        }
-> -
-> -        /* The Secure view of the world is the same as the NonSecure,
-> -         * but with a few extra devices. Create it as a container regi=
-on
-> -         * containing the system memory at low priority; any secure-on=
-ly
-> -         * devices go in at higher priority and take precedence.
-> -         */
-> -        secure_sysmem =3D g_new(MemoryRegion, 1);
-> -        memory_region_init(secure_sysmem, OBJECT(machine), "secure-mem=
-ory",
-> -                           UINT64_MAX);
-> -        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, =
--1);
-> -    }
-> -
->      create_fdt(vms);
-> =20
->      possible_cpus =3D mc->possible_cpu_arch_ids(machine);
-> @@ -1610,7 +1666,7 @@ static void machvirt_init(MachineState *machine)
->                                      &machine->device_memory->mr);
->      }
-> =20
-> -    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
-> +    virt_flash_fdt(vms, sysmem, secure_sysmem);
-> =20
->      create_gic(vms, pic);
-> =20
-> @@ -1956,6 +2012,8 @@ static void virt_instance_init(Object *obj)
->                                      NULL);
-> =20
->      vms->irqmap =3D a15irqmap;
-> +
-> +    virt_flash_create(vms);
->  }
-> =20
->  static const TypeInfo virt_machine_info =3D {
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 507517c603..424070924e 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -35,6 +35,7 @@
->  #include "qemu/notify.h"
->  #include "hw/boards.h"
->  #include "hw/arm/arm.h"
-> +#include "hw/block/flash.h"
->  #include "sysemu/kvm.h"
->  #include "hw/intc/arm_gicv3_common.h"
-> =20
-> @@ -113,6 +114,7 @@ typedef struct {
->      Notifier machine_done;
->      DeviceState *platform_bus_dev;
->      FWCfgState *fw_cfg;
-> +    PFlashCFI01 *flash[2];
->      bool secure;
->      bool highmem;
->      bool highmem_ecam;
->=20
-
+--0000000000001fc6990586a6877b--

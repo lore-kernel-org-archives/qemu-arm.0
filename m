@@ -1,91 +1,106 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4297361wrx;
-        Tue, 16 Apr 2019 12:23:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQUjqjuNSoi78mC7V1562ljG8LSje+nButsupJB2M88K1tl6lLBr/CXixns3t4uOz4Ot48
-X-Received: by 2002:a05:6000:1209:: with SMTP id e9mr31450472wrx.35.1555442585488;
-        Tue, 16 Apr 2019 12:23:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555442585; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4413597wrx;
+        Tue, 16 Apr 2019 14:42:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy02yhfnAIx3i8LAzRj+4U2eb/MxD1/Ctl9NgVA5y9UjQA7WeBEMZ1q6IUf9C28e/safHA8
+X-Received: by 2002:a5d:4f89:: with SMTP id d9mr34094522wru.195.1555450955692;
+        Tue, 16 Apr 2019 14:42:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555450955; cv=none;
         d=google.com; s=arc-20160816;
-        b=iEYxHTJr0D2u2nPOOw3zAVulComtfeiZPKsa/0iuJO1X6Qu1Mf8jUiJykgpQxvpAG2
-         Z7VYrfPa3esAe4iPAwDDpspYxZdq5/QOprwC+loYNAP5KkgZWptgh9BxbBGH01u9wmwq
-         8JXtfuMDg5ocpPY1wQR+0Vh7KWVLApADhu8t0pj2b45Dju1prVRTedUWMOGHT7ArD2jZ
-         FxluY3MACjAWWVVe5gdkOcyb2eAJmBvd+33e7xO7XaDhNa+1sMbMF8zyImZimrvTO9r0
-         pN5Om8Rujav8OzdXi2CZzb4l7mdJ4pb32RkcuQEkRKvAsfTG2Usjw7io/CcrwoSQdCmm
-         2Tbw==
+        b=NqRaRaagul0VYHdK8wvDO/8KzDgUNHojxP0ZO1rLoW2AUNGj5zbIWFjPmuXYTS9wFz
+         TxO65b8wQQstUDn5vWJAAo4QXTS6lXX59tCGNsXoMUFyETAA+MSCslJfVTe0rdWgNcvi
+         ibiISQ1lI+mOQehZrSdqEi7Gm7U474e/IVm/5zdjmm5TKN2QDUvbO7QgBog6kWXophxV
+         +fVZB//8JeWNQKxuiPnx0DVSUzHzlcyxebhXJIFBNGuMi5lH1sVCpxlH0ijgZ1mjxKiY
+         EU/iuxy/TIIgTgMh41VtdvD92irBl3aMp69wE1LWYD/lD2+lk+OX/HXHBf9RO4fd03j2
+         A9jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from;
-        bh=LI8OKbNXZHAXbr/rM6HoMoXG/jhlKHo3nx9RIZIfu8Q=;
-        b=ZDN1H2BPXtedyQHhe15ByP89hMChncfeYoIrzny3UMGJb1asV+tNNyOjCRRwh7InAQ
-         or6IKjNpQ4AtcwXhZvd2rTOv7y21s7xCGOHjMkor9A1JpmB56qHHglGyfoUmjZNGqDaW
-         3EFxRmpJoemQPsmM4fMp8M69l6wE63ecP2XPKQDSeGPgLyZnOEdu1ZrlJyNicnQGYgig
-         xt0dWoZntITyph+1BSdCDaS+X2Kq/QWukBh4u7/cXjuHs+9rw50ZP2vu2GQB2R8T2r0T
-         Sh/gDZywObBTunH6h8HY95KEdrNi13vksTmQ+LURpa50dLSi6Z/FrAHDn129SoMTGOx8
-         dp2Q==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :to:from:date:dkim-signature;
+        bh=qUEDJGwSrYwsqBxSefIcWIJzesINdB4Oqr61Yv8Gd5U=;
+        b=ZfjUQaT28X9CXHGy/G+72nF5RI2wtnfV5r4NoGSaVbpl2uLuWX+2JpCoqFRqlgKV64
+         0drGIeVENLr4N0RmSeUQWKoiR2hKH6tdSbQ8TBKvmPJYSlbdxPecE72xIIjzA0K1Apz+
+         k9Q7cdJVZLKDk1RiZsfXsSgO+qDmdbytNavubQvklCFspK4BZVpbcoREh5GKZCxspSTV
+         0hbm8WYOKrSo4B3gwJNIl+Sk1ADYTeM52ZQH7cWpsDHms9I7v2+HavOEcbmyPQDy3Y4n
+         yDodPt7LrVzcMeFFLdsbmIL1WN/ewZSeeVkF+/KSOWSu2NWCWdQK2OKdseXjyyIwVjtr
+         44uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WPbnVuEY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d4si35545128wrx.449.2019.04.16.12.23.05
+        by mx.google.com with ESMTPS id y21si381527wmc.201.2019.04.16.14.42.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Apr 2019 12:23:05 -0700 (PDT)
+        Tue, 16 Apr 2019 14:42:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WPbnVuEY;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41537 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:43209 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hGTfc-00042S-DQ
-	for alex.bennee@linaro.org; Tue, 16 Apr 2019 15:23:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35147)
+	id 1hGVqc-00006b-PE
+	for alex.bennee@linaro.org; Tue, 16 Apr 2019 17:42:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hGTdR-0002s1-RT
-	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 15:20:50 -0400
+	(envelope-from <richard.weiyang@gmail.com>) id 1hGVpZ-0008FV-LW
+	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 17:41:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hGTdQ-0004fB-Rb
-	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 15:20:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48900)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hGTdL-0004bn-FI; Tue, 16 Apr 2019 15:20:43 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 64322308792A;
-	Tue, 16 Apr 2019 19:20:41 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C8E1819C67;
-	Tue, 16 Apr 2019 19:20:38 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 9B2891138648; Tue, 16 Apr 2019 21:20:37 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-References: <20190416091348.26075-1-armbru@redhat.com>
-	<20190416091348.26075-3-armbru@redhat.com>
-	<03ecf4b0-c665-9677-b166-4d68f50cd70b@redhat.com>
-Date: Tue, 16 Apr 2019 21:20:37 +0200
-In-Reply-To: <03ecf4b0-c665-9677-b166-4d68f50cd70b@redhat.com> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue,
-	16 Apr 2019 19:44:38 +0200")
-Message-ID: <87o9553gfu.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <richard.weiyang@gmail.com>) id 1hGVpX-0000E4-No
+	for qemu-devel@nongnu.org; Tue, 16 Apr 2019 17:41:29 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:46757)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
+	id 1hGVpV-00005E-Hj; Tue, 16 Apr 2019 17:41:25 -0400
+Received: by mail-ed1-x541.google.com with SMTP id d1so19175813edd.13;
+	Tue, 16 Apr 2019 14:41:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=qUEDJGwSrYwsqBxSefIcWIJzesINdB4Oqr61Yv8Gd5U=;
+	b=WPbnVuEYuf0fmuEukZd+j7mRVwnjHga95ARfoJWg/LrCZBHNoHIZN5FxTgInwjVGb3
+	pA2zF1J6DdeA7uMkNA8RpcjPsmtgtawxKafEis7AaYVTMez9+md/7x3Vw9dQdTJtlURZ
+	O8XAEfG9/LjqMaqMrYw74ItNr2b1E8tWYzA2+nxYRSthJ8FRQFeW0DDIM9s5lylCmj5A
+	QuuIaU6o5KZYR8NHE4cwrFiaEH/vXNdOJ2kFMfi5MORSojtbMhFva4dCNN3ZeMoVAN4T
+	tfCDhsQXlcmNXNwPDjT4SArGFwNEWFLZia+UGJ/OaYM1b9WyN9iS5YeM71dyWv9R6q3P
+	xZOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=qUEDJGwSrYwsqBxSefIcWIJzesINdB4Oqr61Yv8Gd5U=;
+	b=CwfI5RczneI8kaWrjn+/dvoKMLbUZyvvrS6+HKbxWKVTF+bs1bJ/GvIkB6eHeZBerR
+	7LqWHv/suz48eUcnt7xfG7qn2tHYv+iVbrspd19EdQDdOnW9oEn9czKS3MjRdxhFoxZj
+	D0IVzpl0GSywxkP9Yt03rDDeaC5WqSQIiREYu41Gqde+F0p8eSLldv723EnAvjg1qTyb
+	6Z0GbKNpUYiNCdVVE/MZV9yyLw5lkcrbLH9vRcMi4ULR7Xdsl4yJLiMvLSFwUDpwJz64
+	rIn7c1apywutouswYBDqFkk1kituVT2pJsAGhSr4LoJsFyIAHgfnNW0hglnymV0xjHWs
+	0wDQ==
+X-Gm-Message-State: APjAAAWriFsuZy7KRokba9i+LL8KwqPpk4nbGhkHd6TQ2dDZs+1rto7r
+	Bpx9mU5AeiSAF1n/Ew6xH7c=
+X-Received: by 2002:a50:e718:: with SMTP id a24mr37881968edn.63.1555450879958; 
+	Tue, 16 Apr 2019 14:41:19 -0700 (PDT)
+Received: from localhost ([185.92.221.13])
+	by smtp.gmail.com with ESMTPSA id a9sm223876edm.14.2019.04.16.14.41.18
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 16 Apr 2019 14:41:19 -0700 (PDT)
+Date: Tue, 16 Apr 2019 21:41:18 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Philippe Mathieu-Daud?? <philmd@redhat.com>
+Message-ID: <20190416214118.6gzdjgexqbamzodt@master>
+References: <20190415070307.13668-1-richardw.yang@linux.intel.com>
+	<20190415070307.13668-5-richardw.yang@linux.intel.com>
+	<c791df00-77fb-81b4-d351-58cf8fead676@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Tue, 16 Apr 2019 19:20:41 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v2 2/3] pflash_cfi01: New
- pflash_cfi01_legacy_drive()
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c791df00-77fb-81b4-d351-58cf8fead676@redhat.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::541
+Subject: Re: [Qemu-devel] [PATCH v2 4/4] hw/acpi: Extract build_mcfg to pci.c
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,105 +112,250 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, peter.maydell@linaro.org, qemu-block@nongnu.org,
-	qemu-devel@nongnu.org, mreitz@redhat.com, qemu-arm@nongnu.org,
-	lersek@redhat.com
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+	imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lQ2WMG2twlXX
+X-TUID: vh2I2pofbAra
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
-> On 4/16/19 11:13 AM, Markus Armbruster wrote:
->> Factored out of pc_system_firmware_init() so the next commit can reuse
->> it in hw/arm/virt.c.
->>=20
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+On Mon, Apr 15, 2019 at 03:01:28PM +0200, Philippe Mathieu-Daud?? wrote:
+>Hi Wei,
+>
+>On 4/15/19 9:03 AM, Wei Yang wrote:
+>> Now we have two identical build_mcfg function.
+>> 
+>> Extract them to pci.c.
+>> 
+>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>> 
 >> ---
->>  hw/block/pflash_cfi01.c  | 28 ++++++++++++++++++++++++++++
->>  hw/i386/pc_sysfw.c       | 16 ++--------------
->>  include/hw/block/flash.h |  1 +
->>  3 files changed, 31 insertions(+), 14 deletions(-)
->>=20
->> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
->> index 16dfae14b8..333b736277 100644
->> --- a/hw/block/pflash_cfi01.c
->> +++ b/hw/block/pflash_cfi01.c
->> @@ -44,9 +44,12 @@
->>  #include "qapi/error.h"
->>  #include "qemu/timer.h"
->>  #include "qemu/bitops.h"
->> +#include "qemu/error-report.h"
->>  #include "qemu/host-utils.h"
->>  #include "qemu/log.h"
->> +#include "qemu/option.h"
->>  #include "hw/sysbus.h"
->> +#include "sysemu/blockdev.h"
->>  #include "sysemu/sysemu.h"
->>  #include "trace.h"
->>=20=20
->> @@ -968,6 +971,31 @@ MemoryRegion *pflash_cfi01_get_memory(PFlashCFI01 *=
-fl)
->>      return &fl->mem;
->>  }
->>=20=20
+>> v2:
+>>   * put it to dedicated file pci.c
+>> ---
+>>  default-configs/arm-softmmu.mak  |  1 +
+>>  default-configs/i386-softmmu.mak |  1 +
+>>  hw/acpi/Kconfig                  |  4 +++
+>>  hw/acpi/Makefile.objs            |  1 +
+>>  hw/acpi/pci.c                    | 46 ++++++++++++++++++++++++++++++++
+>>  hw/arm/virt-acpi-build.c         | 18 +------------
+>>  hw/i386/acpi-build.c             | 19 ++-----------
+>>  include/hw/acpi/pci.h            |  5 ++++
+>>  8 files changed, 61 insertions(+), 34 deletions(-)
+>>  create mode 100644 hw/acpi/pci.c
+>>  create mode 100644 include/hw/acpi/pci.h
+>> 
+>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+>> index 613d19a06d..8f2796e195 100644
+>> --- a/default-configs/arm-softmmu.mak
+>> +++ b/default-configs/arm-softmmu.mak
+>> @@ -144,6 +144,7 @@ CONFIG_XIO3130=y
+>>  CONFIG_IOH3420=y
+>>  CONFIG_I82801B11=y
+>>  CONFIG_ACPI=y
+>> +CONFIG_ACPI_PCI=y
+>>  CONFIG_ARM_VIRT=y
+>>  CONFIG_SMBIOS=y
+>>  CONFIG_ASPEED_SOC=y
+>> diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
+>> index ba3fb3ff50..cd5ea391e8 100644
+>> --- a/default-configs/i386-softmmu.mak
+>> +++ b/default-configs/i386-softmmu.mak
+>> @@ -25,3 +25,4 @@
+>>  CONFIG_ISAPC=y
+>>  CONFIG_I440FX=y
+>>  CONFIG_Q35=y
+>> +CONFIG_ACPI_PCI=y
+>> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+>> index eca3beed75..7265843cc3 100644
+>> --- a/hw/acpi/Kconfig
+>> +++ b/hw/acpi/Kconfig
+>> @@ -23,6 +23,10 @@ config ACPI_NVDIMM
+>>      bool
+>>      depends on ACPI
+>>  
+>> +config ACPI_PCI
+>> +    bool
+>> +    depends on ACPI
+>> +
+>>  config ACPI_VMGENID
+>>      bool
+>>      default y
+>> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+>> index ba93c5b64a..9bb2101e3b 100644
+>> --- a/hw/acpi/Makefile.objs
+>> +++ b/hw/acpi/Makefile.objs
+>> @@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+>>  common-obj-y += acpi_interface.o
+>>  common-obj-y += bios-linker-loader.o
+>>  common-obj-y += aml-build.o utils.o
+>> +common-obj-$(CONFIG_ACPI_PCI) += pci.o
+>>  common-obj-$(CONFIG_TPM) += tpm.o
+>>  
+>>  common-obj-$(CONFIG_IPMI) += ipmi.o
+>> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+>> new file mode 100644
+>> index 0000000000..fa0fa30bb9
+>> --- /dev/null
+>> +++ b/hw/acpi/pci.c
+>> @@ -0,0 +1,46 @@
 >> +/*
->> + * Handle -drive if=3Dpflash for machines that use properties.
->> + * If @dinfo is null, do nothing.
->> + * Else if @fl's property "drive" is already set, fatal error.
->> + * Else set it to the BlockBackend with @dinfo.
+>> + * Support for generating PCI related ACPI tables and passing them to Guests
+>> + *
+>> + * Copyright (C) 2006 Fabrice Bellard
+>> + * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
+>> + * Copyright (C) 2013-2019 Red Hat Inc
+>> + * Copyright (C) 2019 Intel Corporation
+>> + *
+>> + * Author: Wei Yang <richardw.yang@linux.intel.com>
+>> + * Author: Michael S. Tsirkin <mst@redhat.com>
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License as published by
+>> + * the Free Software Foundation; either version 2 of the License, or
+>> + * (at your option) any later version.
+>> +
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> +
+>> + * You should have received a copy of the GNU General Public License along
+>> + * with this program; if not, see <http://www.gnu.org/licenses/>.
 >> + */
->> +void pflash_cfi01_legacy_drive(PFlashCFI01 *fl, DriveInfo *dinfo)
+>
+>Here you correctly added the copyright boilerplate, ...
+>
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "hw/acpi/aml-build.h"
+>> +#include "hw/acpi/pci.h"
+>> +#include "hw/pci/pcie_host.h"
+>> +
+>> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
 >> +{
->> +    Location loc;
+>> +    AcpiTableMcfg *mcfg;
+>> +    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
 >> +
->> +    if (!dinfo) {
->> +        return;
->> +    }
+>> +    mcfg = acpi_data_push(table_data, len);
+>> +    mcfg->allocation[0].address = cpu_to_le64(info->base);
 >> +
->> +    loc_push_none(&loc);
->> +    qemu_opts_loc_restore(dinfo->opts);
->> +    if (fl->blk) {
->> +        error_report("clashes with -machine");
->> +        exit(1);
->> +    }
->> +    qdev_prop_set_drive(DEVICE(fl), "drive",
->> +                        blk_by_legacy_dinfo(dinfo), &error_fatal);
->> +    loc_pop(&loc);
+>> +    /* Only a single allocation so no need to play with segments */
+>> +    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+>> +    mcfg->allocation[0].start_bus_number = 0;
+>> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+>> +
+>> +    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
 >> +}
 >> +
->>  static void postload_update_cb(void *opaque, int running, RunState stat=
-e)
->>  {
->>      PFlashCFI01 *pfl =3D opaque;
->> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
->> index 75925f5d3f..751fcafa12 100644
->> --- a/hw/i386/pc_sysfw.c
->> +++ b/hw/i386/pc_sysfw.c
->> @@ -269,9 +269,7 @@ void pc_system_firmware_init(PCMachineState *pcms,
->>  {
->>      PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
->>      int i;
->> -    DriveInfo *pflash_drv;
->>      BlockBackend *pflash_blk[ARRAY_SIZE(pcms->flash)];
->> -    Location loc;
->>=20=20
->>      if (!pcmc->pci_enabled) {
->>          old_pc_system_rom_init(rom_memory, true);
->> @@ -280,18 +278,8 @@ void pc_system_firmware_init(PCMachineState *pcms,
->>=20=20
->>      /* Map legacy -drive if=3Dpflash to machine properties */
->>      for (i =3D 0; i < ARRAY_SIZE(pcms->flash); i++) {
->> -        pflash_drv =3D drive_get(IF_PFLASH, 0, i);
->> -        if (pflash_drv) {
->> -            loc_push_none(&loc);
->> -            qemu_opts_loc_restore(pflash_drv->opts);
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 7350f207b5..e3353de9e4 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -40,6 +40,7 @@
+>>  #include "hw/hw.h"
+>>  #include "hw/acpi/aml-build.h"
+>>  #include "hw/acpi/utils.h"
+>> +#include "hw/acpi/pci.h"
+>>  #include "hw/pci/pcie_host.h"
+>>  #include "hw/pci/pci.h"
+>>  #include "hw/arm/virt.h"
+>> @@ -545,23 +546,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>                   "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+>>  }
+>>  
+>> -static void
+>> -build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+>> -{
+>> -    AcpiTableMcfg *mcfg;
+>> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
+>> -
+>> -    mcfg = acpi_data_push(table_data, len);
+>> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
+>> -
+>> -    /* Only a single allocation so no need to play with segments */
+>> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+>> -    mcfg->allocation[0].start_bus_number = 0;
+>> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+>> -
+>> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+>> -}
+>> -
+>>  /* GTDT */
+>>  static void
+>>  build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>> index 7613b245cf..29980bb3f4 100644
+>> --- a/hw/i386/acpi-build.c
+>> +++ b/hw/i386/acpi-build.c
+>> @@ -58,6 +58,7 @@
+>>  
+>>  #include "hw/acpi/aml-build.h"
+>>  #include "hw/acpi/utils.h"
+>> +#include "hw/acpi/pci.h"
+>>  
+>>  #include "qom/qom-qobject.h"
+>>  #include "hw/i386/amd_iommu.h"
+>> @@ -2392,22 +2393,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>>                   table_data->len - srat_start, 1, NULL, NULL);
+>>  }
+>>  
+>> -static void
+>> -build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+>> -{
+>> -    AcpiTableMcfg *mcfg;
+>> -    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
+>> -
+>> -    mcfg = acpi_data_push(table_data, len);
+>> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
+>> -    /* Only a single allocation so no need to play with segments */
+>> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+>> -    mcfg->allocation[0].start_bus_number = 0;
+>> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+>> -
+>> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+>> -}
+>> -
+>>  /*
+>>   * VT-d spec 8.1 DMA Remapping Reporting Structure
+>>   * (version Oct. 2014 or later)
+>> @@ -2677,7 +2662,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>>      }
+>>      if (acpi_get_mcfg(&mcfg)) {
+>>          acpi_add_table(table_offsets, tables_blob);
+>> -        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
+>> +        build_mcfg(tables_blob, tables->linker, &mcfg);
+>>      }
+>>      if (x86_iommu_get_default()) {
+>>          IommuType IOMMUType = x86_iommu_get_type();
+>> diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+>> new file mode 100644
+>> index 0000000000..6f94ac4926
+>> --- /dev/null
+>> +++ b/include/hw/acpi/pci.h
+>> @@ -0,0 +1,5 @@
+>> +#ifndef HW_ACPI_PCI_H
+>> +#define HW_ACPI_PCI_H
 >
-> You can now remove the '#include "qemu/option.h"' in this file.
+>But here you missed it :(
+>
 
-Nice.
+Ah, ok, I will add the copyright. Thanks :-)
 
-> With that:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> +
+>> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
+>> +#endif
+>> 
+>
+>With the same copyright notice in the header:
+>Reviewed-by: Philippe Mathieu-Daud?? <philmd@redhat.com>
+>
+>Regards,
+>
+>Phil.
 
-Thanks!
+-- 
+Wei Yang
+Help you, Help me

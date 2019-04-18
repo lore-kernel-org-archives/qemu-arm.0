@@ -1,103 +1,100 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp581993wrx;
-        Thu, 18 Apr 2019 05:30:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw3JmjIJD9MeYye4naCD8W1XZclqcpWGaTwXRRv1htbRBijtvGvqamJ+wTL6AGK6BzH3MY2
-X-Received: by 2002:a5d:46c8:: with SMTP id g8mr3027346wrs.134.1555590625775;
-        Thu, 18 Apr 2019 05:30:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555590625; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp587799wrx;
+        Thu, 18 Apr 2019 05:36:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQUyIKpupxJ7DSDm+ngT3vw1fcc9SzR+DUoZcrBtzYJJp3qIDXtMaKoQJ1zGWwvTr1f0f3
+X-Received: by 2002:a1c:4e04:: with SMTP id g4mr2862869wmh.127.1555590968927;
+        Thu, 18 Apr 2019 05:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555590968; cv=none;
         d=google.com; s=arc-20160816;
-        b=zTwnkO7zu4d0+F7uTgMnYm6C8g+bt12br94GHiv6BHbsLfYgSgl5dP1b/oozuJFPNy
-         MCYW/K96RH579EuhRzz4ZaKwyHpHudz3XFjsIjI+7Zq1spEGJYL9eAC1q5NEdLRrTeQb
-         BYivu2zNPU2HsMLu0TFkUv7fKgdOBuX3GJLQpj/Pt1vk20nYu/UVsv2gDfmu/Krsjwmk
-         g2uVC6AJeotv8lPsEooxUXT10fJe7Zv9H12spoKtDES+WjnqDvOoUb/xlQkQxEp90i4V
-         U4jJlQRtR492Fp1acfwgtfS1BK12Qrbe06BFBsYZvoQ5h3djUtfWzNi7SWllUSYdIXof
-         8nqQ==
+        b=jhfXDoIMLrT8T5UUe+9WuOk7Om7OlFmyW5XR8RqET5aevjJWrWWaCEq7/O32JHnjf7
+         gzWbv9Ym/M6f95YjjnunbX4ZMO4oUxMjeOkMnzKD5ZS5++kHroLUa+7hKGFfPjazmKxA
+         ieArfhnKlFNlnk3DQCLuaFiJnuWsIUosvhMDlgBRysDUilec62jz9VldmGZYiuR9NwD0
+         nb3JaocJjYCTUK1Ro6Id3ufK/KBvXufk4lfRdka4GneUk5iUhxKT+l2XwiGZKFiuB1yw
+         DYyuRGORSzZ/hTXRVJWIuiiPCi6NW/+3dQtmYyodEhEMswzwvVl+HfolzN7fRK/lh4aK
+         Ws2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=Ig2LvWykN6ZD97/sREGGIKZnghPcjvbydVqaXU/nJgM=;
-        b=Ba6M/FbTQoXgYxnCkicWvnlH2uoSp7N8BF8iOPcDSxGCXfwzTYarjJzxnBPdirgkc1
-         k0d0u7TzDep0BBLYEkDBCjmIPPGPfAd5fOMKHq8FAZfj9C498zvW4Zs4WBuG5KGE10cT
-         QbtuI8kbJtaJ/O73sGk1b0Y+gDXOZM+PLIcqogqdOhabRbxGZzrS7JAsHzzHN5V7DAuO
-         9GdSyhwjl5TMWyxu2LauRkU4C0WOPA+lk/LJLG/0ct9HYY2GwCYFa5hzkvIq9FagwCpo
-         /N2JpDHvfk4s7Gwv0dE//AfGbX5LlQlM/MKOUZzc+fu2K03o1J8azz5uzhEKlAB3upD/
-         cFEw==
+        bh=zQwBempIzIUrribaiGB/Mp746QSFxAZdfJjAET/MPqg=;
+        b=qZv+O7fOKJv1PIRqxPMJnnaOkvKQg/xEjPHPFtFbzTCfQphD352OxMq7H2sVw2nQ/t
+         6vkX6V4mytp+YDqKh7YFOLG45worvUukPuovA3wL5POQcTU3bpw7AGVMkHuBQpsUIZfn
+         JLQlzsUfqg4fMv9fVDqViY+OoGno1YgHBuaiet0AlaGG+LwAOwKfXm2nOmjnSlm17pt6
+         XyOOx1B9syhY4nEwdwaMvlv0e1H6Wr9JuKZNQs6bQxrXidPXPqbY7lzAu33i10fd9ZD3
+         h51woQiMljrEk9xQWN4e6eK5FyLmzbfivx5az/4vcBdHWlqkS7RHB1H5/4pFYu/wZcV+
+         PeOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x81si1409601wmg.167.2019.04.18.05.30.25
+        by mx.google.com with ESMTPS id p2si1639947wrs.180.2019.04.18.05.36.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Apr 2019 05:30:25 -0700 (PDT)
+        Thu, 18 Apr 2019 05:36:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40873 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40923 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hH6BM-000258-TL
-	for alex.bennee@linaro.org; Thu, 18 Apr 2019 08:30:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34075)
+	id 1hH6Gt-0003tH-Sa
+	for alex.bennee@linaro.org; Thu, 18 Apr 2019 08:36:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hH6BC-00024y-8Q
-	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:30:15 -0400
+	(envelope-from <philmd@redhat.com>) id 1hH6Ga-0003p5-Bo
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:35:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hH6BB-0002DD-1R
-	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:30:14 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:51857)
+	(envelope-from <philmd@redhat.com>) id 1hH6GX-0007Pl-Il
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:35:48 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:34466)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hH6BA-0002C5-Qg
-	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:30:12 -0400
-Received: by mail-wm1-f65.google.com with SMTP id 4so2574371wmf.1
-	for <qemu-arm@nongnu.org>; Thu, 18 Apr 2019 05:30:12 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hH6GX-0007Oj-7j
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 08:35:45 -0400
+Received: by mail-wr1-f67.google.com with SMTP id w16so2812045wrl.1
+	for <qemu-arm@nongnu.org>; Thu, 18 Apr 2019 05:35:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=Ig2LvWykN6ZD97/sREGGIKZnghPcjvbydVqaXU/nJgM=;
-	b=rQTQgLtaS9MzPiM7SkDvJl4Njqm6MmSpr2J52O/QN2ghp3lXeKk4z0P/9lLdsREJN3
-	qXiJOioN8rnDzVkwKopIS0hTa25MkOWvUDz2IB9HMWC4TBbVjStDgTipNzx97La1GYZw
-	KVDr0GaqZvM9rDnFcaxBkavgKIcUvs1tiVjEVRfImqWbeqHNeziClWYtPx7y8XqxXdXz
-	nP1DHUAw61gYf6ddYAGJQeqHJX4HiO6/iznRxN7G8MWrY7nhSbsI1RSNoWsqDFsVGosO
-	gTB2mTHQWUmyKPyMcn19Z52j5ZKP+QQEvUclbjzwm6+igruNVIUCWpUjJCtSO9uzWE8a
-	7Grw==
-X-Gm-Message-State: APjAAAWLhw7o4R5LWuxcLmAe+WqPO5nfcQgKD0S23fySabsyzPdkiOJ7
-	bqAP4sXQ7xns0BOqsM1wJqba4UG1ALM=
-X-Received: by 2002:a05:600c:2055:: with SMTP id
-	p21mr3069508wmg.118.1555590611790; 
-	Thu, 18 Apr 2019 05:30:11 -0700 (PDT)
+	bh=zQwBempIzIUrribaiGB/Mp746QSFxAZdfJjAET/MPqg=;
+	b=YiIHvJiQYEGB41+gWh8Q/SyiwTT9h9qj7i5QAQBBpCEuVMCLwKKpiM/OktvSy8WSLE
+	OJp014yP2qQ8RnQtBqAb67r19gxt+U3FzOzKX2/v1VZVRNqHAUznFJOYEhqQGg/Z3lYu
+	FRvx/gAk5kG46JdvKjpzVPL570AQ8yeiSoL1T1mDKjA4cjWLHsE1I20p71pKEc8JqClg
+	QaC/beU0fM4Jni5ZIwDoZ2B6jZB29WOXhUXjvhk32bhm+kpL0Z4l3BgaztC05sgu7tIm
+	YoiAtsKU+s8pl6pPUhE2Rj8PfbennogCnxxc0WR9Dyc6DXW+HMDf4KNeRrfraSE7jKFf
+	ERMw==
+X-Gm-Message-State: APjAAAXTmTv9Td0JjZntOKTiYYij9MvviXrIj+cHxtrn/hiNIrhNGUjS
+	KTVy0rtArXmfwK71VtbZddiUig==
+X-Received: by 2002:adf:c18d:: with SMTP id x13mr55857467wre.246.1555590944057;
+	Thu, 18 Apr 2019 05:35:44 -0700 (PDT)
 Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
 	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	z140sm3063601wmc.27.2019.04.18.05.30.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 18 Apr 2019 05:30:11 -0700 (PDT)
-To: Igor Mammedov <imammedo@redhat.com>,
-	Wei Yang <richardw.yang@linux.intel.com>
-References: <20190417014038.26018-1-richardw.yang@linux.intel.com>
-	<20190417014038.26018-7-richardw.yang@linux.intel.com>
-	<20190418130241.635b2e97@redhat.com>
+	z84sm2797702wmg.24.2019.04.18.05.35.43
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Thu, 18 Apr 2019 05:35:43 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+References: <20190418111019.4080-1-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <fb85c756-d3ba-2244-478c-814aaea436af@redhat.com>
-Date: Thu, 18 Apr 2019 14:30:10 +0200
+Message-ID: <6bd7dd96-cd2c-22aa-5533-ae341f942a5c@redhat.com>
+Date: Thu, 18 Apr 2019 14:35:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190418130241.635b2e97@redhat.com>
+In-Reply-To: <20190418111019.4080-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-arm] [PATCH v3 6/6] acpi: pci: use build_append_foo() API
- to construct MCFG
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/usb/hcd-ohci: Move PCI-related
+ code into a separate file
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,109 +106,755 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
-	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
-	qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com
+Cc: Yang Zhong <yang.zhong@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n6zVNPQC4brS
+X-TUID: 9eN8bJx0vLRl
 
-On 4/18/19 1:02 PM, Igor Mammedov wrote:
-> On Wed, 17 Apr 2019 09:40:38 +0800
-> Wei Yang <richardw.yang@linux.intel.com> wrote:
-> 
->> build_append_foo() API doesn't need explicit endianness conversions
->> which eliminates a source of errors and it makes build_mcfg() look like
->> declarative definition of MCFG table in ACPI spec, which makes it easy
->> to review.
->>
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> Thanks for nice cleanup!
-> 
-> with comment fixed up:
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> 
->> ---
->>  hw/acpi/pci.c               | 30 ++++++++++++++++++------------
->>  include/hw/acpi/acpi-defs.h | 18 ------------------
->>  2 files changed, 18 insertions(+), 30 deletions(-)
->>
->> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
->> index fa0fa30bb9..05050fa087 100644
->> --- a/hw/acpi/pci.c
->> +++ b/hw/acpi/pci.c
->> @@ -30,17 +30,23 @@
->>  
->>  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->>  {
->> -    AcpiTableMcfg *mcfg;
->> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->> -
->> -    mcfg = acpi_data_push(table_data, len);
->> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
->> -
->> -    /* Only a single allocation so no need to play with segments */
->> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->> -    mcfg->allocation[0].start_bus_number = 0;
->> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
->> -
->> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
->> +    int mcfg_start = table_data->len;
->> +
->> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
->> +
->> +    /* PCI fw r3.0 MCFG table. */
-> It would be better to put spec name as is here so simple search
-> could immediately point to it.
-> 
-> like: PCI Firmware Specification, Revision 3.0
->       4.1.2 MCFG Table Description
+Hi Thomas,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+On 4/18/19 1:10 PM, Thomas Huth wrote:
+> Some machines (like the pxa2xx-based ARM machines) only have a sysbus
+> OHCI controller, but no PCI. With the new Kconfig-style build system,
+> it will soon be possible to create QEMU binaries that only contain
+> such PCI-less machines. However, the two OHCI controllers, for sysbus
+> and for PCI, are currently both located in one file, so the PCI code
+> is still required for linking here. Move the OHCI-PCI device code
+> into a separate file, so that it is possible to use the sysbus OHCI
+> device also without the PCI dependency.
+> 
+> Apart from moving code to a new file (and a new header), this patch
+> might also fix one subtle bug: The ohci_die() function always assumed
+> to be running with a OHCI-PCI controller and called some PCI-specific
+> functions - but if I got the code right, ohci_die() might also get
+> called for the sysbus-OHCI device, so it likely failed in that case.
+> I've changed this part of the code now, so that there are two ohci_die()
+> implementations now, one for sysbus and one for PCI.
 
->> +    /* Base address, processor-relative */
->> +    build_append_int_noprefix(table_data, info->base, 8);
->> +    /* PCI segment group number */
->> +    build_append_int_noprefix(table_data, 0, 2);
->> +    /* Starting PCI Bus number */
->> +    build_append_int_noprefix(table_data, 0, 1);
->> +    /* Final PCI Bus number */
->> +    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
->> +    /* Reserved */
->> +    build_append_int_noprefix(table_data, 0, 4);
->> +
->> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
->> +                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
->>  }
->>  
->> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
->> index f9aa4bd398..57a3f58b0c 100644
->> --- a/include/hw/acpi/acpi-defs.h
->> +++ b/include/hw/acpi/acpi-defs.h
->> @@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
->>  
->>  typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
->>  
->> -/* PCI fw r3.0 MCFG table. */
->> -/* Subtable */
->> -struct AcpiMcfgAllocation {
->> -    uint64_t address;                /* Base address, processor-relative */
->> -    uint16_t pci_segment;            /* PCI segment group number */
->> -    uint8_t start_bus_number;       /* Starting PCI Bus number */
->> -    uint8_t end_bus_number;         /* Final PCI Bus number */
->> -    uint32_t reserved;
->> -} QEMU_PACKED;
->> -typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
->> -
->> -struct AcpiTableMcfg {
->> -    ACPI_TABLE_HEADER_DEF;
->> -    uint8_t reserved[8];
->> -    AcpiMcfgAllocation allocation[0];
->> -} QEMU_PACKED;
->> -typedef struct AcpiTableMcfg AcpiTableMcfg;
->> -
->>  /*
->>   * TCPA Description Table
->>   *
+Can this be done in 2 patches?
+
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/usb/Kconfig        |   6 +-
+>  hw/usb/Makefile.objs  |   1 +
+>  hw/usb/hcd-ohci-pci.c | 166 ++++++++++++++++++++++++++++
+>  hw/usb/hcd-ohci.c     | 244 +++---------------------------------------
+>  hw/usb/hcd-ohci.h     | 132 +++++++++++++++++++++++
+>  5 files changed, 321 insertions(+), 228 deletions(-)
+>  create mode 100644 hw/usb/hcd-ohci-pci.c
+>  create mode 100644 hw/usb/hcd-ohci.h
+> 
+> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+> index a1b7acb12a..564305e283 100644
+> --- a/hw/usb/Kconfig
+> +++ b/hw/usb/Kconfig
+> @@ -8,10 +8,14 @@ config USB_UHCI
+>      select USB
+>  
+>  config USB_OHCI
+> +    bool
+> +    select USB
+> +
+> +config USB_OHCI_PCI
+>      bool
+>      default y if PCI_DEVICES
+>      depends on PCI
+> -    select USB
+> +    select USB_OHCI
+>  
+>  config USB_EHCI
+>      bool
+> diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
+> index 2b929649ac..81688f6e70 100644
+> --- a/hw/usb/Makefile.objs
+> +++ b/hw/usb/Makefile.objs
+> @@ -5,6 +5,7 @@ common-obj-$(CONFIG_USB) += desc.o desc-msos.o
+>  # usb host adapters
+>  common-obj-$(CONFIG_USB_UHCI) += hcd-uhci.o
+>  common-obj-$(CONFIG_USB_OHCI) += hcd-ohci.o
+> +common-obj-$(CONFIG_USB_OHCI_PCI) += hcd-ohci-pci.o
+>  common-obj-$(CONFIG_USB_EHCI) += hcd-ehci.o hcd-ehci-pci.o
+>  common-obj-$(CONFIG_USB_EHCI_SYSBUS) += hcd-ehci.o hcd-ehci-sysbus.o
+>  common-obj-$(CONFIG_USB_XHCI) += hcd-xhci.o
+> diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
+> new file mode 100644
+> index 0000000000..e972df35c9
+> --- /dev/null
+> +++ b/hw/usb/hcd-ohci-pci.c
+> @@ -0,0 +1,166 @@
+> +/*
+> + * QEMU USB OHCI Emulation
+> + * Copyright (c) 2004 Gianni Tedesco
+> + * Copyright (c) 2006 CodeSourcery
+> + * Copyright (c) 2006 Openedhand Ltd.
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2.1 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/hw.h"
+> +#include "qapi/error.h"
+> +#include "qemu/timer.h"
+> +#include "hw/usb.h"
+> +#include "hw/pci/pci.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/qdev-dma.h"
+> +#include "trace.h"
+> +#include "hcd-ohci.h"
+> +
+> +#define TYPE_PCI_OHCI "pci-ohci"
+> +#define PCI_OHCI(obj) OBJECT_CHECK(OHCIPCIState, (obj), TYPE_PCI_OHCI)
+> +
+> +typedef struct {
+> +    /*< private >*/
+> +    PCIDevice parent_obj;
+> +    /*< public >*/
+> +
+> +    OHCIState state;
+> +    char *masterbus;
+> +    uint32_t num_ports;
+> +    uint32_t firstport;
+> +} OHCIPCIState;
+> +
+> +/**
+> + * A typical O/EHCI will stop operating, set itself into error state
+> + * (which can be queried by MMIO) and will set PERR in its config
+> + * space to signal that it got an error
+> + */
+> +static void ohci_pci_die(OHCIState *ohci)
+> +{
+> +    OHCIPCIState *dev = container_of(ohci, OHCIPCIState, state);
+> +
+> +    trace_usb_ohci_die();
+> +
+> +    ohci_set_interrupt(ohci, OHCI_INTR_UE);
+> +    ohci_bus_stop(ohci);
+> +    pci_set_word(dev->parent_obj.config + PCI_STATUS,
+> +                 PCI_STATUS_DETECTED_PARITY);
+> +}
+> +
+> +static void usb_ohci_realize_pci(PCIDevice *dev, Error **errp)
+> +{
+> +    Error *err = NULL;
+> +    OHCIPCIState *ohci = PCI_OHCI(dev);
+> +
+> +    dev->config[PCI_CLASS_PROG] = 0x10; /* OHCI */
+> +    dev->config[PCI_INTERRUPT_PIN] = 0x01; /* interrupt pin A */
+> +
+> +    usb_ohci_init(&ohci->state, DEVICE(dev), ohci->num_ports, 0,
+> +                  ohci->masterbus, ohci->firstport,
+> +                  pci_get_address_space(dev), ohci_pci_die, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    ohci->state.irq = pci_allocate_irq(dev);
+> +    pci_register_bar(dev, 0, 0, &ohci->state.mem);
+> +}
+> +
+> +static void usb_ohci_exit(PCIDevice *dev)
+> +{
+> +    OHCIPCIState *ohci = PCI_OHCI(dev);
+> +    OHCIState *s = &ohci->state;
+> +
+> +    trace_usb_ohci_exit(s->name);
+> +    ohci_bus_stop(s);
+> +
+> +    if (s->async_td) {
+> +        usb_cancel_packet(&s->usb_packet);
+> +        s->async_td = 0;
+> +    }
+> +    ohci_stop_endpoints(s);
+> +
+> +    if (!ohci->masterbus) {
+> +        usb_bus_release(&s->bus);
+> +    }
+> +
+> +    timer_del(s->eof_timer);
+> +    timer_free(s->eof_timer);
+> +}
+> +
+> +static void usb_ohci_reset_pci(DeviceState *d)
+> +{
+> +    PCIDevice *dev = PCI_DEVICE(d);
+> +    OHCIPCIState *ohci = PCI_OHCI(dev);
+> +    OHCIState *s = &ohci->state;
+> +
+> +    ohci_hard_reset(s);
+> +}
+> +
+> +static Property ohci_pci_properties[] = {
+> +    DEFINE_PROP_STRING("masterbus", OHCIPCIState, masterbus),
+> +    DEFINE_PROP_UINT32("num-ports", OHCIPCIState, num_ports, 3),
+> +    DEFINE_PROP_UINT32("firstport", OHCIPCIState, firstport, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static const VMStateDescription vmstate_ohci = {
+> +    .name = "ohci",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_PCI_DEVICE(parent_obj, OHCIPCIState),
+> +        VMSTATE_STRUCT(state, OHCIPCIState, 1, vmstate_ohci_state, OHCIState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void ohci_pci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+> +
+> +    k->realize = usb_ohci_realize_pci;
+> +    k->exit = usb_ohci_exit;
+> +    k->vendor_id = PCI_VENDOR_ID_APPLE;
+> +    k->device_id = PCI_DEVICE_ID_APPLE_IPID_USB;
+> +    k->class_id = PCI_CLASS_SERIAL_USB;
+> +    set_bit(DEVICE_CATEGORY_USB, dc->categories);
+> +    dc->desc = "Apple USB Controller";
+> +    dc->props = ohci_pci_properties;
+> +    dc->hotpluggable = false;
+> +    dc->vmsd = &vmstate_ohci;
+> +    dc->reset = usb_ohci_reset_pci;
+> +}
+> +
+> +static const TypeInfo ohci_pci_info = {
+> +    .name          = TYPE_PCI_OHCI,
+> +    .parent        = TYPE_PCI_DEVICE,
+> +    .instance_size = sizeof(OHCIPCIState),
+> +    .class_init    = ohci_pci_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> +        { },
+> +    },
+> +};
+> +
+> +static void ohci_pci_register_types(void)
+> +{
+> +    type_register_static(&ohci_pci_info);
+> +}
+> +
+> +type_init(ohci_pci_register_types)
+> diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+> index 81cf5ab7a5..343816d561 100644
+> --- a/hw/usb/hcd-ohci.c
+> +++ b/hw/usb/hcd-ohci.c
+> @@ -30,86 +30,19 @@
+>  #include "qapi/error.h"
+>  #include "qemu/timer.h"
+>  #include "hw/usb.h"
+> -#include "hw/pci/pci.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/qdev-dma.h"
+>  #include "trace.h"
+> +#include "hcd-ohci.h"
+>  
+>  /* This causes frames to occur 1000x slower */
+>  //#define OHCI_TIME_WARP 1
+>  
+> -/* Number of Downstream Ports on the root hub.  */
+> -
+> -#define OHCI_MAX_PORTS 15
+> -
+>  #define ED_LINK_LIMIT 32
+>  
+>  static int64_t usb_frame_time;
+>  static int64_t usb_bit_time;
+>  
+> -typedef struct OHCIPort {
+> -    USBPort port;
+> -    uint32_t ctrl;
+> -} OHCIPort;
+> -
+> -typedef struct {
+> -    USBBus bus;
+> -    qemu_irq irq;
+> -    MemoryRegion mem;
+> -    AddressSpace *as;
+> -    uint32_t num_ports;
+> -    const char *name;
+> -
+> -    QEMUTimer *eof_timer;
+> -    int64_t sof_time;
+> -
+> -    /* OHCI state */
+> -    /* Control partition */
+> -    uint32_t ctl, status;
+> -    uint32_t intr_status;
+> -    uint32_t intr;
+> -
+> -    /* memory pointer partition */
+> -    uint32_t hcca;
+> -    uint32_t ctrl_head, ctrl_cur;
+> -    uint32_t bulk_head, bulk_cur;
+> -    uint32_t per_cur;
+> -    uint32_t done;
+> -    int32_t done_count;
+> -
+> -    /* Frame counter partition */
+> -    uint16_t fsmps;
+> -    uint8_t fit;
+> -    uint16_t fi;
+> -    uint8_t frt;
+> -    uint16_t frame_number;
+> -    uint16_t padding;
+> -    uint32_t pstart;
+> -    uint32_t lst;
+> -
+> -    /* Root Hub partition */
+> -    uint32_t rhdesc_a, rhdesc_b;
+> -    uint32_t rhstatus;
+> -    OHCIPort rhport[OHCI_MAX_PORTS];
+> -
+> -    /* PXA27x Non-OHCI events */
+> -    uint32_t hstatus;
+> -    uint32_t hmask;
+> -    uint32_t hreset;
+> -    uint32_t htest;
+> -
+> -    /* SM501 local memory offset */
+> -    dma_addr_t localmem_base;
+> -
+> -    /* Active packets.  */
+> -    uint32_t old_ctl;
+> -    USBPacket usb_packet;
+> -    uint8_t usb_buf[8192];
+> -    uint32_t async_td;
+> -    bool async_complete;
+> -
+> -} OHCIState;
+> -
+>  /* Host Controller Communications Area */
+>  struct ohci_hcca {
+>      uint32_t intr[32];
+> @@ -122,7 +55,6 @@ struct ohci_hcca {
+>  #define ED_WBACK_OFFSET offsetof(struct ohci_ed, head)
+>  #define ED_WBACK_SIZE   4
+>  
+> -static void ohci_bus_stop(OHCIState *ohci);
+>  static void ohci_async_cancel_device(OHCIState *ohci, USBDevice *dev);
+>  
+>  /* Bitfields for the first word of an Endpoint Desciptor.  */
+> @@ -229,16 +161,6 @@ struct ohci_iso_td {
+>  #define OHCI_STATUS_OCR       (1<<3)
+>  #define OHCI_STATUS_SOC       ((1<<6)|(1<<7))
+>  
+> -#define OHCI_INTR_SO          (1U<<0) /* Scheduling overrun */
+> -#define OHCI_INTR_WD          (1U<<1) /* HcDoneHead writeback */
+> -#define OHCI_INTR_SF          (1U<<2) /* Start of frame */
+> -#define OHCI_INTR_RD          (1U<<3) /* Resume detect */
+> -#define OHCI_INTR_UE          (1U<<4) /* Unrecoverable error */
+> -#define OHCI_INTR_FNO         (1U<<5) /* Frame number overflow */
+> -#define OHCI_INTR_RHSC        (1U<<6) /* Root hub status change */
+> -#define OHCI_INTR_OC          (1U<<30) /* Ownership change */
+> -#define OHCI_INTR_MIE         (1U<<31) /* Master Interrupt Enable */
+> -
+>  #define OHCI_HCCA_SIZE        0x100
+>  #define OHCI_HCCA_MASK        0xffffff00
+>  
+> @@ -302,25 +224,9 @@ struct ohci_iso_td {
+>  
+>  #define OHCI_HRESET_FSBIR       (1 << 0)
+>  
+> -static void ohci_die(OHCIState *ohci);
+> -
+> -/* Update IRQ levels */
+> -static inline void ohci_intr_update(OHCIState *ohci)
+> +static inline void ohci_die(OHCIState *ohci)
+>  {
+> -    int level = 0;
+> -
+> -    if ((ohci->intr & OHCI_INTR_MIE) &&
+> -        (ohci->intr_status & ohci->intr))
+> -        level = 1;
+> -
+> -    qemu_set_irq(ohci->irq, level);
+> -}
+> -
+> -/* Set an interrupt */
+> -static inline void ohci_set_interrupt(OHCIState *ohci, uint32_t intr)
+> -{
+> -    ohci->intr_status |= intr;
+> -    ohci_intr_update(ohci);
+> +    ohci->ohci_die(ohci);
+>  }
+>  
+>  /* Attach or detach a device on a root hub port.  */
+> @@ -426,7 +332,7 @@ static USBDevice *ohci_find_device(OHCIState *ohci, uint8_t addr)
+>      return NULL;
+>  }
+>  
+> -static void ohci_stop_endpoints(OHCIState *ohci)
+> +void ohci_stop_endpoints(OHCIState *ohci)
+>  {
+>      USBDevice *dev;
+>      int i, j;
+> @@ -498,7 +404,7 @@ static void ohci_soft_reset(OHCIState *ohci)
+>      ohci->lst = OHCI_LS_THRESH;
+>  }
+>  
+> -static void ohci_hard_reset(OHCIState *ohci)
+> +void ohci_hard_reset(OHCIState *ohci)
+>  {
+>      ohci_soft_reset(ohci);
+>      ohci->ctl = 0;
+> @@ -1372,7 +1278,7 @@ static int ohci_bus_start(OHCIState *ohci)
+>  }
+>  
+>  /* Stop sending SOF tokens on the bus */
+> -static void ohci_bus_stop(OHCIState *ohci)
+> +void ohci_bus_stop(OHCIState *ohci)
+>  {
+>      trace_usb_ohci_stop(ohci->name);
+>      timer_del(ohci->eof_timer);
+> @@ -1852,15 +1758,16 @@ static USBPortOps ohci_port_ops = {
+>  static USBBusOps ohci_bus_ops = {
+>  };
+>  
+> -static void usb_ohci_init(OHCIState *ohci, DeviceState *dev,
+> -                          uint32_t num_ports, dma_addr_t localmem_base,
+> -                          char *masterbus, uint32_t firstport,
+> -                          AddressSpace *as, Error **errp)
+> +void usb_ohci_init(OHCIState *ohci, DeviceState *dev, uint32_t num_ports,
+> +                   dma_addr_t localmem_base, char *masterbus,
+> +                   uint32_t firstport, AddressSpace *as,
+> +                   void (*ohci_die_func)(OHCIState *ohci), Error **errp)
+>  {
+>      Error *err = NULL;
+>      int i;
+>  
+>      ohci->as = as;
+> +    ohci->ohci_die = ohci_die_func;
+>  
+>      if (num_ports > OHCI_MAX_PORTS) {
+>          error_setg(errp, "OHCI num-ports=%u is too big (limit is %u ports)",
+> @@ -1919,85 +1826,16 @@ static void usb_ohci_init(OHCIState *ohci, DeviceState *dev,
+>                                     ohci_frame_boundary, ohci);
+>  }
+>  
+> -#define TYPE_PCI_OHCI "pci-ohci"
+> -#define PCI_OHCI(obj) OBJECT_CHECK(OHCIPCIState, (obj), TYPE_PCI_OHCI)
+> -
+> -typedef struct {
+> -    /*< private >*/
+> -    PCIDevice parent_obj;
+> -    /*< public >*/
+> -
+> -    OHCIState state;
+> -    char *masterbus;
+> -    uint32_t num_ports;
+> -    uint32_t firstport;
+> -} OHCIPCIState;
+> -
+> -/** A typical O/EHCI will stop operating, set itself into error state
+> - * (which can be queried by MMIO) and will set PERR in its config
+> - * space to signal that it got an error
+> +/**
+> + * A typical O/EHCI will stop operating, set itself into error state
+> + * (which can be queried by MMIO) to signal that it got an error
+>   */
+> -static void ohci_die(OHCIState *ohci)
+> +static void ohci_sysbus_die(OHCIState *ohci)
+>  {
+> -    OHCIPCIState *dev = container_of(ohci, OHCIPCIState, state);
+> -
+>      trace_usb_ohci_die();
+>  
+>      ohci_set_interrupt(ohci, OHCI_INTR_UE);
+>      ohci_bus_stop(ohci);
+> -    pci_set_word(dev->parent_obj.config + PCI_STATUS,
+> -                 PCI_STATUS_DETECTED_PARITY);
+> -}
+> -
+> -static void usb_ohci_realize_pci(PCIDevice *dev, Error **errp)
+> -{
+> -    Error *err = NULL;
+> -    OHCIPCIState *ohci = PCI_OHCI(dev);
+> -
+> -    dev->config[PCI_CLASS_PROG] = 0x10; /* OHCI */
+> -    dev->config[PCI_INTERRUPT_PIN] = 0x01; /* interrupt pin A */
+> -
+> -    usb_ohci_init(&ohci->state, DEVICE(dev), ohci->num_ports, 0,
+> -                  ohci->masterbus, ohci->firstport,
+> -                  pci_get_address_space(dev), &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> -    }
+> -
+> -    ohci->state.irq = pci_allocate_irq(dev);
+> -    pci_register_bar(dev, 0, 0, &ohci->state.mem);
+> -}
+> -
+> -static void usb_ohci_exit(PCIDevice *dev)
+> -{
+> -    OHCIPCIState *ohci = PCI_OHCI(dev);
+> -    OHCIState *s = &ohci->state;
+> -
+> -    trace_usb_ohci_exit(s->name);
+> -    ohci_bus_stop(s);
+> -
+> -    if (s->async_td) {
+> -        usb_cancel_packet(&s->usb_packet);
+> -        s->async_td = 0;
+> -    }
+> -    ohci_stop_endpoints(s);
+> -
+> -    if (!ohci->masterbus) {
+> -        usb_bus_release(&s->bus);
+> -    }
+> -
+> -    timer_del(s->eof_timer);
+> -    timer_free(s->eof_timer);
+> -}
+> -
+> -static void usb_ohci_reset_pci(DeviceState *d)
+> -{
+> -    PCIDevice *dev = PCI_DEVICE(d);
+> -    OHCIPCIState *ohci = PCI_OHCI(dev);
+> -    OHCIState *s = &ohci->state;
+> -
+> -    ohci_hard_reset(s);
+>  }
+>  
+>  #define TYPE_SYSBUS_OHCI "sysbus-ohci"
+> @@ -2023,7 +1861,7 @@ static void ohci_realize_pxa(DeviceState *dev, Error **errp)
+>  
+>      usb_ohci_init(&s->ohci, dev, s->num_ports, s->dma_offset,
+>                    s->masterbus, s->firstport,
+> -                  &address_space_memory, &err);
+> +                  &address_space_memory, ohci_sysbus_die, &err);
+>      if (err) {
+>          error_propagate(errp, err);
+>          return;
+> @@ -2040,13 +1878,6 @@ static void usb_ohci_reset_sysbus(DeviceState *dev)
+>      ohci_hard_reset(ohci);
+>  }
+>  
+> -static Property ohci_pci_properties[] = {
+> -    DEFINE_PROP_STRING("masterbus", OHCIPCIState, masterbus),
+> -    DEFINE_PROP_UINT32("num-ports", OHCIPCIState, num_ports, 3),
+> -    DEFINE_PROP_UINT32("firstport", OHCIPCIState, firstport, 0),
+> -    DEFINE_PROP_END_OF_LIST(),
+> -};
+> -
+>  static const VMStateDescription vmstate_ohci_state_port = {
+>      .name = "ohci-core/port",
+>      .version_id = 1,
+> @@ -2075,7 +1906,7 @@ static const VMStateDescription vmstate_ohci_eof_timer = {
+>      },
+>  };
+>  
+> -static const VMStateDescription vmstate_ohci_state = {
+> +const VMStateDescription vmstate_ohci_state = {
+>      .name = "ohci-core",
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+> @@ -2122,46 +1953,6 @@ static const VMStateDescription vmstate_ohci_state = {
+>      }
+>  };
+>  
+> -static const VMStateDescription vmstate_ohci = {
+> -    .name = "ohci",
+> -    .version_id = 1,
+> -    .minimum_version_id = 1,
+> -    .fields = (VMStateField[]) {
+> -        VMSTATE_PCI_DEVICE(parent_obj, OHCIPCIState),
+> -        VMSTATE_STRUCT(state, OHCIPCIState, 1, vmstate_ohci_state, OHCIState),
+> -        VMSTATE_END_OF_LIST()
+> -    }
+> -};
+> -
+> -static void ohci_pci_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+> -
+> -    k->realize = usb_ohci_realize_pci;
+> -    k->exit = usb_ohci_exit;
+> -    k->vendor_id = PCI_VENDOR_ID_APPLE;
+> -    k->device_id = PCI_DEVICE_ID_APPLE_IPID_USB;
+> -    k->class_id = PCI_CLASS_SERIAL_USB;
+> -    set_bit(DEVICE_CATEGORY_USB, dc->categories);
+> -    dc->desc = "Apple USB Controller";
+> -    dc->props = ohci_pci_properties;
+> -    dc->hotpluggable = false;
+> -    dc->vmsd = &vmstate_ohci;
+> -    dc->reset = usb_ohci_reset_pci;
+> -}
+> -
+> -static const TypeInfo ohci_pci_info = {
+> -    .name          = TYPE_PCI_OHCI,
+> -    .parent        = TYPE_PCI_DEVICE,
+> -    .instance_size = sizeof(OHCIPCIState),
+> -    .class_init    = ohci_pci_class_init,
+> -    .interfaces = (InterfaceInfo[]) {
+> -        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> -        { },
+> -    },
+> -};
+> -
+>  static Property ohci_sysbus_properties[] = {
+>      DEFINE_PROP_STRING("masterbus", OHCISysBusState, masterbus),
+>      DEFINE_PROP_UINT32("num-ports", OHCISysBusState, num_ports, 3),
+> @@ -2190,7 +1981,6 @@ static const TypeInfo ohci_sysbus_info = {
+>  
+>  static void ohci_register_types(void)
+>  {
+> -    type_register_static(&ohci_pci_info);
+>      type_register_static(&ohci_sysbus_info);
+>  }
+>  
+> diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h
+> new file mode 100644
+> index 0000000000..481ceba7ff
+> --- /dev/null
+> +++ b/hw/usb/hcd-ohci.h
+> @@ -0,0 +1,132 @@
+> +/*
+> + * QEMU USB OHCI Emulation
+> + * Copyright (c) 2004 Gianni Tedesco
+> + * Copyright (c) 2006 CodeSourcery
+> + * Copyright (c) 2006 Openedhand Ltd.
+> + *
+> + * This library is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU Lesser General Public
+> + * License as published by the Free Software Foundation; either
+> + * version 2.1 of the License, or (at your option) any later version.
+> + *
+> + * This library is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> + * Lesser General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU Lesser General Public
+> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef HCD_OHCI_H
+> +#define HCD_OHCI_H
+> +
+> +#include "sysemu/dma.h"
+> +
+> +/* Number of Downstream Ports on the root hub: */
+> +#define OHCI_MAX_PORTS 15
+> +
+> +typedef struct OHCIPort {
+> +    USBPort port;
+> +    uint32_t ctrl;
+> +} OHCIPort;
+> +
+> +typedef struct OHCIState {
+> +    USBBus bus;
+> +    qemu_irq irq;
+> +    MemoryRegion mem;
+> +    AddressSpace *as;
+> +    uint32_t num_ports;
+> +    const char *name;
+> +
+> +    QEMUTimer *eof_timer;
+> +    int64_t sof_time;
+> +
+> +    /* OHCI state */
+> +    /* Control partition */
+> +    uint32_t ctl, status;
+> +    uint32_t intr_status;
+> +    uint32_t intr;
+> +
+> +    /* memory pointer partition */
+> +    uint32_t hcca;
+> +    uint32_t ctrl_head, ctrl_cur;
+> +    uint32_t bulk_head, bulk_cur;
+> +    uint32_t per_cur;
+> +    uint32_t done;
+> +    int32_t done_count;
+> +
+> +    /* Frame counter partition */
+> +    uint16_t fsmps;
+> +    uint8_t fit;
+> +    uint16_t fi;
+> +    uint8_t frt;
+> +    uint16_t frame_number;
+> +    uint16_t padding;
+> +    uint32_t pstart;
+> +    uint32_t lst;
+> +
+> +    /* Root Hub partition */
+> +    uint32_t rhdesc_a, rhdesc_b;
+> +    uint32_t rhstatus;
+> +    OHCIPort rhport[OHCI_MAX_PORTS];
+> +
+> +    /* PXA27x Non-OHCI events */
+> +    uint32_t hstatus;
+> +    uint32_t hmask;
+> +    uint32_t hreset;
+> +    uint32_t htest;
+> +
+> +    /* SM501 local memory offset */
+> +    dma_addr_t localmem_base;
+> +
+> +    /* Active packets.  */
+> +    uint32_t old_ctl;
+> +    USBPacket usb_packet;
+> +    uint8_t usb_buf[8192];
+> +    uint32_t async_td;
+> +    bool async_complete;
+> +
+> +    void (*ohci_die)(struct OHCIState *ohci);
+> +} OHCIState;
+> +
+> +extern const VMStateDescription vmstate_ohci_state;
+> +
+> +#define OHCI_INTR_SO          (1U << 0)   /* Scheduling overrun */
+> +#define OHCI_INTR_WD          (1U << 1)   /* HcDoneHead writeback */
+> +#define OHCI_INTR_SF          (1U << 2)   /* Start of frame */
+> +#define OHCI_INTR_RD          (1U << 3)   /* Resume detect */
+> +#define OHCI_INTR_UE          (1U << 4)   /* Unrecoverable error */
+> +#define OHCI_INTR_FNO         (1U << 5)   /* Frame number overflow */
+> +#define OHCI_INTR_RHSC        (1U << 6)   /* Root hub status change */
+> +#define OHCI_INTR_OC          (1U << 30)  /* Ownership change */
+> +#define OHCI_INTR_MIE         (1U << 31)  /* Master Interrupt Enable */
+> +
+> +/* Update IRQ levels */
+> +static inline void ohci_intr_update(OHCIState *ohci)
+> +{
+> +    int level = 0;
+> +
+> +    if ((ohci->intr & OHCI_INTR_MIE) &&
+> +        (ohci->intr_status & ohci->intr))
+> +        level = 1;
+> +
+> +    qemu_set_irq(ohci->irq, level);
+> +}
+> +
+> +/* Set an interrupt */
+> +static inline void ohci_set_interrupt(OHCIState *ohci, uint32_t intr)
+> +{
+> +    ohci->intr_status |= intr;
+> +    ohci_intr_update(ohci);
+> +}
+> +
+> +void usb_ohci_init(OHCIState *ohci, DeviceState *dev, uint32_t num_ports,
+> +                   dma_addr_t localmem_base, char *masterbus,
+> +                   uint32_t firstport, AddressSpace *as,
+> +                   void (*ohci_die_func)(OHCIState *ohci), Error **errp);
+> +void ohci_hard_reset(OHCIState *ohci);
+> +void ohci_bus_stop(OHCIState *ohci);
+> +void ohci_stop_endpoints(OHCIState *ohci);
+> +
+> +#endif
 > 

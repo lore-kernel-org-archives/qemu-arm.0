@@ -1,81 +1,99 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp4590404wrx;
-        Tue, 16 Apr 2019 18:46:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwsdXCwfPPu0FxFtCfuZNe3RwqxNkbstDWzrF/WdhH81d4mxNU5d4P/vHndJ1FCnc3HaNcv
-X-Received: by 2002:a1c:f606:: with SMTP id w6mr27956186wmc.130.1555465618085;
-        Tue, 16 Apr 2019 18:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555465618; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp180719wrx;
+        Wed, 17 Apr 2019 21:05:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz5h7AsvGIGUel3U+c3f5cvq309XpiW5sBc9JeAYos/w8zYkpdtyHMzly6TjKZTetVLqBkY
+X-Received: by 2002:a1c:43c2:: with SMTP id q185mr1316674wma.53.1555560331834;
+        Wed, 17 Apr 2019 21:05:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555560331; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5Z7CyTuXqTZUd4g7w5Sc3MElywOhToZdiPzvmv47ywDoXAfaf8V4pfuZnb9aoqWj/
-         ++LR++3+GDg5AiKcqpeptNBvBSn45d8tVmnp/lShXrJeGvW17KLWRNpJN+Cee/BtWkjq
-         PSx6atk/w1t83LKERZZSI3wpWQtdcN7rXVHQwlL4uJ4PKApH4+6Dv+iKMqIskTxwVa7M
-         eWLNDvhhTuWu7tRMYEZ0cdsfx/vPUqB0p5fhf71lcylUvEcn7ExrdiUjlQym8LRIX8Xg
-         Fy4cAiJIV+bFlQ4/93cDn4V6pKdGS+5HPeG/AK2f6i41pBRYn2k8rdr6zM5meD/z0LDN
-         D6ew==
+        b=R1WOAjLiJbcCjSdssrc3nNpzj2zDPH2qYJkBGc76Vucgl2u5U4oXLW4WQ1X3+FRXtJ
+         QzlWKWpyxCrsBuLEk435rb0kOLfZQQ/cxSw7ropPSQKSISwWnhYudjpDTBEvuc8k1tCj
+         AWQZTSRzq8DZ76VxUjcGYcc0aXgnJsp0R8T2I30teo19+Baxk3GO6X3HAE8kOGu4SzjF
+         z+wC8RiRu66fhQeN2AsU2xaQ+/8lboj59fsdsMHnJ7lgK1XHIQMgVAiQvTP8RhliQm7v
+         KsDJMRmSJKGMjtFJZdp+Vh29cUAzoxsLzYd8uXjY6zKLxCOOq13lfr5M0QzvoRmVheSI
+         ZHxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=5TV/B5ixEIHDwfb7R8931dYgL2Dbla2e8vt4u+YU6c4=;
-        b=ITv2OTbfj/03Vc5wPiC87IDANwK9cZH/nsjGNthVkdi6UizM+vUSlDDIf62HbYVRYB
-         5QCzv09RbV3gGPEekNdwA7uxyhap9xeK6Uej0Hw1z/rfeYbInxeTMK9SIaBkCbbyn8jd
-         z4bG019iChRLTH2c4FWvwaLMCQxqqQ1qk2b9X4B+r70txBh+jU4kPzdMSI2y89ktIafW
-         hsaQBnf3/73eDthRrli+0RHvBq0tnQQZn97G3tqRNtOConQDxMNgS3NOZwMF7B4ACAaq
-         J1GJYp9l+EAgGtEUbsQIiM2wo1pfDgiqSFsxgBSa8vrS4DBR8X0FllSb1sCaFP8/VxCS
-         OgNg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=ipCTowXe446W73k2Vwrsnaf0r5pLUqeNQXv5HiqvNbk=;
+        b=GroHvMR8mbsd9D0H0I53qTGWhnvAxH0i6D6bZwYQv+oqEnRkiKQW4xTFsfECgiAyyl
+         6vKh6ICBqnWC69v5K5sLgv80ffZVOWq6vvjX4Os4m6TEJ83PL1lPaLwTxlGIflBwtZpK
+         WIftEf2W5uFktjTr0K2n4cFFFlG2tEbpmoyCNh4BKYXcEHar0UeWTMe9q39YZXx9i/nq
+         iLEv1QP0JDI/zDbg7kqG9Htrxk5fCj1mFCwPjewJdqt7pl6n+MiglgPA7OvkNU5kNhVR
+         9pein5f6K9qyN944GcDultxty19MrwKfcg+lvsAUsOPu03uByNf08r/F0tVgbsBnsor4
+         QAEw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=x1fbTxBp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si338254wrl.36.2019.04.16.18.46.57
+        by mx.google.com with ESMTPS id h15si632306wrx.148.2019.04.17.21.05.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Apr 2019 18:46:58 -0700 (PDT)
+        Wed, 17 Apr 2019 21:05:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=x1fbTxBp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:45326 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:35241 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hGZf7-0001zy-7x
-	for alex.bennee@linaro.org; Tue, 16 Apr 2019 21:46:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47853)
+	id 1hGyIk-00023J-M3
+	for alex.bennee@linaro.org; Thu, 18 Apr 2019 00:05:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hGZZq-0006XO-Sw
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 21:41:31 -0400
+	(envelope-from <hongbo.zhang@linaro.org>) id 1hGyIV-00021q-6h
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 00:05:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hGZZp-0006N6-S0
-	for qemu-arm@nongnu.org; Tue, 16 Apr 2019 21:41:30 -0400
-Received: from mga01.intel.com ([192.55.52.88]:47710)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hGZZp-0006LW-FN; Tue, 16 Apr 2019 21:41:29 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	16 Apr 2019 18:41:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,360,1549958400"; d="scan'208";a="338161195"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga006.fm.intel.com with ESMTP; 16 Apr 2019 18:41:26 -0700
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-devel@nongnu.org,
+	(envelope-from <hongbo.zhang@linaro.org>) id 1hGyIS-0001pt-CL
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 00:05:15 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:45781)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
+	id 1hGyIR-0001mG-UU
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 00:05:12 -0400
+Received: by mail-pg1-x543.google.com with SMTP id y3so529752pgk.12
+	for <qemu-arm@nongnu.org>; Wed, 17 Apr 2019 21:05:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=ipCTowXe446W73k2Vwrsnaf0r5pLUqeNQXv5HiqvNbk=;
+	b=x1fbTxBp2La9EgVubLuqRwSWaJwdPyG2p+Eimg/8XdAFB7iFLkDn3tcNgfu2dUZprF
+	N+IWduh4UUNW3BKCE2tYSKZkG2dvMIoMAUwxXZWtc/I//xV8/ytNpX4Y3I7+P9d+qt9+
+	Pc1R53vDtFB+ab3NbN0TlmUKSSBtALeurPhHCFuAsDFyYH1M5hxXihzZ1UR5XIvLmnsd
+	n78bsXLbJoULmzBPI+p2xyGJBLbyzFxXe+cWB6j7vO6K3U79zGjI9fBSM7hTFUSLhNNi
+	RvJUYROBVt1B6eyLljPrJeQq8E95T7Yr29joF5yOI2z0TCYs8Bzin6u2LWDH7hTWH7xr
+	fwHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=ipCTowXe446W73k2Vwrsnaf0r5pLUqeNQXv5HiqvNbk=;
+	b=Q1plAix6mrsv+TxYLuMZ7EKZBPj1tXxTxsUGy8jgc2bb1Ypunk6ua99L/tkLwSRkEf
+	sxg5jW6T/IfrSGo7BSa17m+NGR5jsEt+npP3K3EyKGOFSvfDSPMba5dX4st/BUWc4fzz
+	Osf6ciZOJ6dldUUmxbobN+i7twdyewoPerfRHvN5wkIBUtm5GOOAo2aAEm0A7XhhT22I
+	JurBqxSplbHyDg7iM4f9gupM80yvKak9+VcbZ0sHC74Z5aObbsGqIhktthpGBnMQMBZa
+	P/yeMYM+mEpibF53Pd2DGjjAeJjLdPHnhlKczm4Ug2aShvBVGewZfREU7F4ZBS/NKRrQ
+	4HMA==
+X-Gm-Message-State: APjAAAXbcV+mQwnDV4BbicYqHVPQ98jYjZZk1qMbosaMWmmxAhsiWRDl
+	L5FZWBwJhpGmlaBk9QWg9PkY2w==
+X-Received: by 2002:a63:5c56:: with SMTP id n22mr74890116pgm.108.1555560309080;
+	Wed, 17 Apr 2019 21:05:09 -0700 (PDT)
+Received: from localhost.localdomain ([38.106.11.25])
+	by smtp.gmail.com with ESMTPSA id h8sm910688pfo.149.2019.04.17.21.05.03
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 17 Apr 2019 21:05:08 -0700 (PDT)
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+To: peter.maydell@linaro.org,
+	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Wed, 17 Apr 2019 09:40:38 +0800
-Message-Id: <20190417014038.26018-7-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190417014038.26018-1-richardw.yang@linux.intel.com>
-References: <20190417014038.26018-1-richardw.yang@linux.intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Thu, 18 Apr 2019 12:04:49 +0800
+Message-Id: <1555560291-3415-1-git-send-email-hongbo.zhang@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.88
-Subject: [Qemu-arm] [PATCH v3 6/6] acpi: pci: use build_append_foo() API to
- construct MCFG
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: [Qemu-arm] [PATCH v7 0/2] Add Arm SBSA Reference Machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,94 +105,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
-	shannon.zhaosl@gmail.com, Wei Yang <richardw.yang@linux.intel.com>,
-	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, radoslaw.biernacki@linaro.org,
+	leif.lindholm@linaro.org, ard.biesheuvel@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1NNs7hQmX2C3
+X-TUID: nMar2mwCzyOE
 
-build_append_foo() API doesn't need explicit endianness conversions
-which eliminates a source of errors and it makes build_mcfg() look like
-declarative definition of MCFG table in ACPI spec, which makes it easy
-to review.
+For the Aarch64, there is one machine 'virt', it is primarily meant to
+run on KVM and execute virtualization workloads, but we need an
+environment as faithful as possible to physical hardware,  to support
+firmware and OS development for pysical Aarch64 machines.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/acpi/pci.c               | 30 ++++++++++++++++++------------
- include/hw/acpi/acpi-defs.h | 18 ------------------
- 2 files changed, 18 insertions(+), 30 deletions(-)
+This machine comes with:
+ - Re-designed memory map.
+ - CPU cortex-a57.
+ - EL2 and EL3 enabled.
+ - GIC version 3.
+ - System bus AHCI controller.
+ - System bus XHCI controller.
+ - CDROM and hard disc on AHCI bus.
+ - E1000E ethernet card on PCIE bus.
+ - VGA display adaptor on PCIE bus.
+ - Only minimal device tree nodes.
+And without:
+ - virtio deivces.
+ - fw_cfg device.
+ - ACPI tables.
 
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-index fa0fa30bb9..05050fa087 100644
---- a/hw/acpi/pci.c
-+++ b/hw/acpi/pci.c
-@@ -30,17 +30,23 @@
- 
- void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
- {
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-+    int mcfg_start = table_data->len;
-+
-+    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-+
-+    /* PCI fw r3.0 MCFG table. */
-+    /* Base address, processor-relative */
-+    build_append_int_noprefix(table_data, info->base, 8);
-+    /* PCI segment group number */
-+    build_append_int_noprefix(table_data, 0, 2);
-+    /* Starting PCI Bus number */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    /* Final PCI Bus number */
-+    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+
-+    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-+                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
- }
- 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index f9aa4bd398..57a3f58b0c 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
- 
- typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
- 
--/* PCI fw r3.0 MCFG table. */
--/* Subtable */
--struct AcpiMcfgAllocation {
--    uint64_t address;                /* Base address, processor-relative */
--    uint16_t pci_segment;            /* PCI segment group number */
--    uint8_t start_bus_number;       /* Starting PCI Bus number */
--    uint8_t end_bus_number;         /* Final PCI Bus number */
--    uint32_t reserved;
--} QEMU_PACKED;
--typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
--
--struct AcpiTableMcfg {
--    ACPI_TABLE_HEADER_DEF;
--    uint8_t reserved[8];
--    AcpiMcfgAllocation allocation[0];
--} QEMU_PACKED;
--typedef struct AcpiTableMcfg AcpiTableMcfg;
--
- /*
-  * TCPA Description Table
-  *
+Arm Trusted Firmware and UEFI porting to this are done accordingly, and
+it should supply ACPI tables to load OS, the minimal device tree nodes
+supplied from this platform are only to pass the dynamic info reflecting
+command line input to firmware, not for loading OS.
+
+v7 changes:
+ - edit memory map for PCIE slightly
+ - add another secure UART which can be used for RAS and MM from EL0.
+
+v6 changes:
+ - rebased to the latest QEMU tree
+ - rechecked all the header files included
+ - added the newly introduced system bus EHCI controller
+ - removed the machine_done callback due to commit 5614ca80
+ - updated block comments styles according to checkpatch.pl
+ - use Kconfig to add new file
+ - use private SBSA* types defination instead of VIRT* in virt.h
+   since nobody else using them so they are in the .c file instead
+   of a new .h file
+
+v5 changes:
+ - removed more lines derived from virt.c
+ - designed a new memory map
+ - splitted former one patch into two for easier review
+ - cancled previous EHCI and new HXCI coming later separately
+
+V4 changes:
+ - rebased to v3.0.0
+ - removed timer, uart, rtc, *hci device tree nodes
+   (others were removerd in v3)
+ - other minore codes clean up, mainly unsed header files, comments etc.
+
+V3 changes:
+ - rename the platform 'sbsa-ref'
+ - move all the codes to a separate file sbsa-ref.c
+ - remove paravirtualized fw_cfg device
+ - do not supply ACPI tables, since firmware will do it
+ - supply only necessary DT nodes
+ - and other minor code clean up
+
+Hongbo Zhang (2):
+  hw/arm: Add arm SBSA reference machine, skeleton part
+  hw/arm: Add arm SBSA reference machine, devices part
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Kconfig                  |   3 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/sbsa-ref.c               | 757 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 762 insertions(+)
+ create mode 100644 hw/arm/sbsa-ref.c
+
 -- 
-2.19.1
+2.7.4
 

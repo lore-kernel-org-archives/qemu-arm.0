@@ -1,98 +1,98 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2234101wrx;
-        Fri, 19 Apr 2019 14:27:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyT35Tp9lOcUr8P4JmSFbJj9djSscgUiLLIhyHi0qk8C5K0vQqoHWDMgV9IZPc00W+GFgyH
-X-Received: by 2002:a5d:6681:: with SMTP id l1mr4570972wru.186.1555709275094;
-        Fri, 19 Apr 2019 14:27:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555709275; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2234301wrx;
+        Fri, 19 Apr 2019 14:28:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCiAOCJGhDHdFngW5u0e5jAXNed93HctzYo78pPhVVe2UGFNhKpTAxCxw/Qkj6fqtarZFQ
+X-Received: by 2002:a1c:a9cb:: with SMTP id s194mr3579734wme.62.1555709293170;
+        Fri, 19 Apr 2019 14:28:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555709293; cv=none;
         d=google.com; s=arc-20160816;
-        b=StQWIImEa/CEttRgFtdYp6H5xKZYd4YSuxrYBByLSQ4DuagYa5G93PefebsV1r33ux
-         0AAK9bSj5BYXNe6bE58vQTAHESlSQivtgKgARm6/mxJS/dLzKrsEZj775zEvo8Iu5dwE
-         NNbQIO+3P+ibL0dSPWTQyHK5xYquKpaBcKPVt5FEQcOfMqcBiV+UUpMtdk628rYprKFC
-         +7L4eUvuUS28vztHHw3oXjBvHN6rXsB7l/c7u20C3esmxYYlr2606H3uMlDNWi6GxjML
-         5mvjfVB2nYIpUI4JOpzIF0FEGwLt7wvZSwifZCH3BX9BSVKzSeaMfglxLA9jWaipFJ95
-         4ovQ==
+        b=kDRYD/L+QDoZLkuuiNgE5KNSIq9ytIIBSnWTRGe6Oi4Mrdt8/FbvEhgV7iLOxSSFh4
+         f9/J1Djli+ISNedWdTx6LWO5IyrufUR+giKZIGQf/HLvlpBYLhkJ60Gzkmi9D61eK2G/
+         6DoPln9JHdJNdSUYfF4taW1zKdk381KP9lSo7sP9GwyOcrWFAfA18DpiZRMJDjwky3on
+         uIiwPlq6EHgjlom3uELcJ/G2QbQMUfamdCkSOPa7EwnsrXJkhEQL9mHQTjgAyP/TC0zG
+         cs82EBQbJVpeWF4UBt4SdV3cl1k5Fp+zdefRTMfezT7o9eJDZOHkP1RheiGDovEYPkEQ
+         XrTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=eb5DEXGoCSsZ7cnYJcHMgq+7a4adPduEpTVlJLKF0ZE=;
-        b=lfWXcIcfwZCforz6baDNP8Vwui9gvtUGOMnxQMnNcHj+CaqJL3uOLW7fBHckjptjJK
-         Fbd8eiirZmhNH8DvN3cY13dp7PANI0H9SNf2BO6QdOf7sCbPJc/6rfezGTBm5oNRY4G/
-         eLdNnaRiWwKL1Nc+p+ZRax8HKYpFrZfCS7GnRVMYRXtARIAn9luSoYvDYrB39TBB7xrv
-         3yGUHv1+NEG2K7T5O4Ool+/lLxKg/74Ed5XH5BAre3mvzyqU0xH1t/4nM7+gzZy4VRFK
-         xnk5pybawGKi4RbauBymEeB3xnSCN1lqPB2M+9OJBqf6Jxe6G28yUqz9/68PE/6eyxZ9
-         bCYQ==
+        bh=+aKxKnKb7ZcgKc8QDdoeGMCgP5CFxqd0kerv4gVEqc4=;
+        b=U70ytaRIn9f4qD24sLWFZdLICcw0fhsnUp2Iu6EF0LROKmeTw6v5knfR0/8TlqeInw
+         9H2WnZMl/asHfNYYUV2taMwxvZ7wiXfIT1MALy4Nd5abQx+Xo+yi30FMrSoRwhB4sU9m
+         ga/L2RSBvicwHhCN58GgQxL5XOSens3iE+y0KjRcwXxKuci9X6L8sT9TQa8iKAVtPe2B
+         kF2KA3Y1GeutGhYeL80f8n8qOzMixb6IZHVp5QOMaWsLkPRp60Nvp/NdkU9vdohtHt8A
+         LFPoOOAv/btRQXHG4+LTB4n8xw1SIuUvJ60wuYMunHnOBba4yJs816P97T+DKZKz4ciu
+         voJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eroCTibE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zls6RsCz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p137si4412623wme.72.2019.04.19.14.27.54
+        by mx.google.com with ESMTPS id z5si4640470wrq.16.2019.04.19.14.28.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Apr 2019 14:27:55 -0700 (PDT)
+        Fri, 19 Apr 2019 14:28:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eroCTibE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zls6RsCz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:33431 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33447 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hHb34-00012L-6g
-	for alex.bennee@linaro.org; Fri, 19 Apr 2019 17:27:54 -0400
+	id 1hHb3M-0001I1-8I
+	for alex.bennee@linaro.org; Fri, 19 Apr 2019 17:28:12 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:54716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hHb2T-0000ey-Ph
-	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:27:18 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hHb2S-0000ey-PV
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:27:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hHaoX-0007i1-Mf
-	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:12:55 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:38470)
+	(envelope-from <alistair23@gmail.com>) id 1hHap6-0007wQ-P3
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:13:29 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:36821)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hHaoR-0007gF-58; Fri, 19 Apr 2019 17:12:47 -0400
-Received: by mail-lj1-x244.google.com with SMTP id p14so5585175ljg.5;
-	Fri, 19 Apr 2019 14:12:47 -0700 (PDT)
+	id 1hHap4-0007uk-HO; Fri, 19 Apr 2019 17:13:26 -0400
+Received: by mail-lf1-x143.google.com with SMTP id u17so4835259lfi.3;
+	Fri, 19 Apr 2019 14:13:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=eb5DEXGoCSsZ7cnYJcHMgq+7a4adPduEpTVlJLKF0ZE=;
-	b=eroCTibEcr5RzSXC6xFT6ttJsSa+N3NwR4MAMpnr80ZvOlHt+KWSsqxwpFNe2tl6M3
-	JY0L41odnroutgDJ8uADcD6Zk7EqPmQMu+Z2QsRhTnBQOWIFfwSVcRWJ5cxb4fwe8h5T
-	ZkU4qakDNTiR7Gkgs/gkzKo0otpL8Iggjm6WeRiuU9AXbp+XGB7rUU7DoBuqd1lQkSRA
-	H+MMtdiFIJEZ83xnmm1llowjSoMdcRATsUoyLmZGlhTCmD4ApjdLXcJVEsNqXnD2gnZ0
-	+H94LqDdkPoXqeUcbvAtBK+NoKb6pYXrpnw0+NybJD+dVRXNesj6K3wCjzrZajFfD0rj
-	kJog==
+	:cc; bh=+aKxKnKb7ZcgKc8QDdoeGMCgP5CFxqd0kerv4gVEqc4=;
+	b=Zls6RsCz2fsfOm8bhOEj61sRoISMZu6Mi9Inwnr8h06LUpsT66+Hiwb2trywOKeJnT
+	J71YyF+s0KKK5hxN0rm91MU8MY8U2+lmriE3962TpXLmu930Slcdpr87dbtJ8lT470fi
+	+hl1gdyElJz0/mQifPu0zNq6+XqHHebkt+pB6A9PNZZruIpWCrTXGg/b3lE1kn++JWvG
+	65Km28mL/lHWkVV5j2SVnd4FfxeCL4vLScQfcUJi/oifgW67o1ux9hNVFB2a2bQ8BU9B
+	OYjPHKwp1sAXngpsbaq0L/6nGLUex0FLiouhtiJ1YG/iIIeqwK+wFiVY91KydGQ47glG
+	33hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=eb5DEXGoCSsZ7cnYJcHMgq+7a4adPduEpTVlJLKF0ZE=;
-	b=QR6zmR4air5GP70gagu4RfarxTyk+abOZuEQUNYh+bYzEhQw6cna19z3bKlyanegvS
-	ZUdtkhp/xWRoSvJTx76HEMYeLWI8lTdFZdGo5/jB8E7XDDqgvAznrV/r0xIGWOo1njg7
-	Ac2ydSvMRGN+y/7GQMbkrbolTm851lY4udCCKYSN9G0ghC6bGCPGppZCgdV/ltOG8gYx
-	KlanrTW45h/FK2ne2m3sLpfQymVqTjwy296m3G3wSBzsdln/JUIv0j6aajROueeKEisH
-	ZtqIJRrmV1jwWOaniVefqbhrq6gFeCYgJdRgCF5gPHqFlsnQgfmlRaqj8CrOq/9zDArC
-	U2kQ==
-X-Gm-Message-State: APjAAAUd9t22Vi0/omG7MxJdshHIRn3T8lXIoAqw+y216ulWEa6wiPel
-	17iVfXS9KgxCY74/akI8uAoyqy+gVNgG+PdlK0Y=
-X-Received: by 2002:a2e:9ed3:: with SMTP id h19mr3375143ljk.129.1555708366068; 
-	Fri, 19 Apr 2019 14:12:46 -0700 (PDT)
+	bh=+aKxKnKb7ZcgKc8QDdoeGMCgP5CFxqd0kerv4gVEqc4=;
+	b=YsyxIZrhueX77GPYU0/plwYQwQA4fnALxbpM0v95yqtUN70wSUz5kReaulCKRRqzF6
+	wh3s9r56C6G+GHM/ys3VXnN09ILxlIDEC1OnfEmBvz/EwFlLnYOxOfeI7A9VHKM8nqr+
+	A6Lps4SDV68YDiuzhwO1bgjYoWwAuCnrBopAsvPoFwMhVBi9uxChKZIPoLHbCtUBhFfJ
+	Xe42y5iTnP1BeKFlH7Gl0nEiCcelScefTSlO9U5DbIcmgipWfbZEab2+h/TSWTOuPvqw
+	Ma0glwQmRs4YnMRStPz5R58Y+YGavzj7foPtdEat4vLHvnKKNG/XgWAv3+pK0tSWnmOB
+	9gLw==
+X-Gm-Message-State: APjAAAVMg+Kq+ikILF0hmxlfEYtHQYa244vgK8+pqUEKSqXasPtlPVpP
+	EHNbIUWL/G7RCsc9sIBjbr1zQ9aDbz5vxgz5e25vRb/R9w8=
+X-Received: by 2002:a19:4b84:: with SMTP id y126mr3258572lfa.15.1555708405250; 
+	Fri, 19 Apr 2019 14:13:25 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-27-thuth@redhat.com>
-In-Reply-To: <20190418180057.3593-27-thuth@redhat.com>
+	<20190418180057.3593-21-thuth@redhat.com>
+In-Reply-To: <20190418180057.3593-21-thuth@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 19 Apr 2019 14:12:19 -0700
-Message-ID: <CAKmqyKM-G06FAJ1AJ4Cp0MRV+0oYPbpAbLtZPM9xWFuZ9MBQQA@mail.gmail.com>
+Date: Fri, 19 Apr 2019 14:12:58 -0700
+Message-ID: <CAKmqyKMk-346_m5=9Tbk7e_WFHkMe5EdiBX2efGASoQcsWBpTw@mail.gmail.com>
 To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 26/29] hw/arm:
- Express dependencies of the ZynqMP zcu102 machine with Kconfig
+X-Received-From: 2a00:1450:4864:20::143
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 20/29] hw/arm:
+ Express dependencies of the raspi machines with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,11 +122,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XVZlZKXt2xOp
+X-TUID: JbTYunsISF+W
 
-On Thu, Apr 18, 2019 at 11:15 AM Thomas Huth <thuth@redhat.com> wrote:
+On Thu, Apr 18, 2019 at 11:25 AM Thomas Huth <thuth@redhat.com> wrote:
 >
-> This cleans up most settings in default-configs/aarch64-softmmu.mak.
+> Most of the code is directly controlled by the CONFIG_RASPI switch,
+> so not much to add here additionally.
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
@@ -135,59 +136,44 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  default-configs/aarch64-softmmu.mak |  4 ----
->  hw/arm/Kconfig                      | 11 +++++++++++
->  hw/display/Kconfig                  |  1 +
->  3 files changed, 12 insertions(+), 4 deletions(-)
+>  default-configs/arm-softmmu.mak | 4 +---
+>  hw/arm/Kconfig                  | 3 +++
+>  2 files changed, 4 insertions(+), 3 deletions(-)
 >
-> diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
-> index 4ea9add003..3a4b15e7e8 100644
-> --- a/default-configs/aarch64-softmmu.mak
-> +++ b/default-configs/aarch64-softmmu.mak
-> @@ -3,10 +3,6 @@
->  # We support all the 32 bit boards so need all their config
->  include arm-softmmu.mak
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 31d31d3f4a..22bff20b32 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -31,15 +31,13 @@ CONFIG_COLLIE=y
+>  CONFIG_ASPEED_SOC=y
+>  CONFIG_NETDUINO2=y
+>  CONFIG_MPS2=y
+> +CONFIG_RASPI=y
 >
-> -CONFIG_AUX=y
-> -CONFIG_DDC=y
-> -CONFIG_DPCD=y
-> -CONFIG_XLNX_ZYNQMP=y
->  CONFIG_XLNX_ZYNQMP_ARM=y
->  CONFIG_XLNX_VERSAL=y
->  CONFIG_ARM_SMMUV3=y
+>  CONFIG_VGA=y
+>  CONFIG_SSI_M25P80=y
+>  CONFIG_IMX_FEC=y
+>
+> -CONFIG_FRAMEBUFFER=y
+> -
+>  CONFIG_DIGIC=y
+> -CONFIG_RASPI=y
+>  CONFIG_NRF51_SOC=y
+>
+>  CONFIG_FSL_IMX6=y
 > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 708eae19e5..32e4cc50e5 100644
+> index 466b143fdf..e68a29ca2b 100644
 > --- a/hw/arm/Kconfig
 > +++ b/hw/arm/Kconfig
-> @@ -277,6 +277,17 @@ config STM32F205_SOC
+> @@ -257,6 +257,9 @@ config ALLWINNER_A10
 >
->  config XLNX_ZYNQMP_ARM
+>  config RASPI
 >      bool
-> +    select AHCI
-> +    select ARM_GIC
-> +    select CADENCE
-> +    select DDC
-> +    select DPCD
+> +    select FRAMEBUFFER
+> +    select PL011 # UART
 > +    select SDHCI
-> +    select SSI
-> +    select SSI_M25P80
-> +    select XILINX_AXI
-> +    select XILINX_SPIPS
-> +    select XLNX_ZYNQMP
 >
->  config XLNX_VERSAL
->      bool
-> diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-> index 0577e68c8e..bb95f8d6a4 100644
-> --- a/hw/display/Kconfig
-> +++ b/hw/display/Kconfig
-> @@ -108,6 +108,7 @@ config VIRTIO_VGA
->
->  config DPCD
->      bool
-> +    select AUX
->
->  config ATI_VGA
+>  config STM32F205_SOC
 >      bool
 > --
 > 2.21.0

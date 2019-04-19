@@ -1,71 +1,71 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1262073wrx;
-        Thu, 18 Apr 2019 17:43:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxd34rL839q7f/9myTcyQoOwhN1p/7a2Imn6UhJ9OEYBVRlePhfIW6qPnPZxtke4qEXh+w0
-X-Received: by 2002:adf:dd82:: with SMTP id x2mr679888wrl.214.1555634612844;
-        Thu, 18 Apr 2019 17:43:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555634612; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1262311wrx;
+        Thu, 18 Apr 2019 17:43:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwRxoZV3iOK2FWjgbHL2O2jlvc9wPLJfGr4+Do3bfNVGtIFvWcGD2GIo9ccrSXXtqR+MEJn
+X-Received: by 2002:a1c:7e10:: with SMTP id z16mr684809wmc.117.1555634631791;
+        Thu, 18 Apr 2019 17:43:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555634631; cv=none;
         d=google.com; s=arc-20160816;
-        b=cNJSd7oi3Vf+MkMNdojbIijcj1SC2z9/t+TVkX+Wg5VBZ6cLx1qYYsvYJvwh4y0oko
-         4pfVtkN/ST3WpTfBooP6YPlLoYYG4HTUv/CbFLTcjDJ8RGhh7AwEzIeZya1+o5gE3eOW
-         0h80xMfWHB26BtuKATezmpsGlbNpInvWN6aXtFzmCtH7ie4jgynKcNdm1Y6uDr36EKOD
-         4aKPN10INFBzQOkkIsSQ817WliFnEDxrwKip715wSDOo9RFaeLE8dGxaWwu7n8LzHO3u
-         hC6Ruw0bY9qEiucLu5eE8o3iKThPaXweVftuKJGiIJcgLrxkcMhSwSmreXQCr7F4gYHy
-         49Ew==
+        b=AeZ2ocmZsAc/RtdVUlTdw1hrK+Xh9+uEoyvtTGeWG7poN9hJJozXWBzDiRN/BaK+I7
+         0ZKtQ8WhBq/5dNF4RC2cxMisF+W77cQx9HypA/rvHR77L3iiXcQx9IQTi6i8xwTLrSie
+         ED0k0v7OikMVIvoVgO6umccnM876G+GjDdcMlH7KjmtWrjUd/6J6KI2W+Z0oXfpN4ru0
+         KwysTXGlfJL4b4T3YB+x7nHmuLF5XF64qeJBx1NUFxSCX/L7ux20oMrIPyLDerfJcemL
+         1Lwl43kSEHRLSBP4e7PSrMAplZWpIBBr3aiaMeyT4wyF0FEWc+/V0KMctT3zbuIsIXaD
+         Sbfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=/YpJEgO5pF3blDibwdwzbpyfENFzcXS3GATfet2WXog=;
-        b=BllT+Xc5gexbqWjWM+khn0tGdN3G/WMebnx748JJE4xSgfNwGLTR5QKC6gzcFIzFGH
-         xXAMffD+UegWVlyq3EoXtf47cAaGmLtzIP5tIEFAbfjmQoqYLXua6axA3i64RMadr3WU
-         DjN/RCh6w5GcKotdx8rhod173BndTvQaExX4/0apFpd64hkWKJi0VhA3D4bBN/ZpAxpa
-         VbpBVQDcHLf+uoMuxvJ0COSOjnRag00vMQ4SdqAiecrzebtpBEsbqfpsKVFXgLrFmkUL
-         sfKYtQXrVaTCvmjPVkltEISw1GFEd9nn2RfzZg8TPLXnalNwTZluqfQpwIL6RLK7aXBv
-         0GGg==
+        bh=0Bu2Ct7gV2VQxZ40I0BfxmpikhBN6Sg7MI7msmIsBXE=;
+        b=CNkDn9uBzfE93gfPIb0bFljdfrZ1kxzVoXoN1SkEA8pxZCtlFwfJu/L5LfI5bFKxr/
+         BoFri30CUH8xH0o2Fbm9ZdBI8sjXBN7lLiRuW2t1pTmybcnR7LlE/PP0/IE5+YorLRpX
+         Ri2MERoJrBE8oTf93CFzGhklK2JGenBGpMhBZBFphoOUq8iBYBDtUl2puzsp1Tm9JJTn
+         AZkLAb5YV7p89BC1pJr4hzG90Pjf8Z+soFo3znGl4RU05kBDNveTtjtUX1S/OSNOuXpi
+         6iqvGt7fpgJahXvsRISIWdyOZOqPeqaF9RobZCJm/2IYiNaxPD+P34Wlf985NlALzzuN
+         CXNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8si2850995wro.154.2019.04.18.17.43.32
+        by mx.google.com with ESMTPS id n16si2452367wmc.120.2019.04.18.17.43.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Apr 2019 17:43:32 -0700 (PDT)
+        Thu, 18 Apr 2019 17:43:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:49231 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49233 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hHHcp-0008LU-TJ
-	for alex.bennee@linaro.org; Thu, 18 Apr 2019 20:43:31 -0400
+	id 1hHHd8-0000AT-S5
+	for alex.bennee@linaro.org; Thu, 18 Apr 2019 20:43:50 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:35712)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hHHc1-0007cN-5q
-	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 20:42:42 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hHHc5-0007cN-56
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 20:42:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hHHRK-0005vs-Be
-	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 20:31:39 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hHHRH-0005tZ-DM
+	for qemu-arm@nongnu.org; Thu, 18 Apr 2019 20:31:36 -0400
 Received: from mga18.intel.com ([134.134.136.126]:3686)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hHHRK-0005og-3w; Thu, 18 Apr 2019 20:31:38 -0400
+	id 1hHHRH-0005og-3c; Thu, 18 Apr 2019 20:31:35 -0400
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
 	by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	18 Apr 2019 17:31:37 -0700
+	18 Apr 2019 17:31:32 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,367,1549958400"; d="scan'208";a="163163360"
+X-IronPort-AV: E=Sophos;i="5.60,367,1549958400"; d="scan'208";a="163163331"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga004.fm.intel.com with ESMTP; 18 Apr 2019 17:31:35 -0700
+	by fmsmga004.fm.intel.com with ESMTP; 18 Apr 2019 17:31:31 -0700
 From: Wei Yang <richardw.yang@linux.intel.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Fri, 19 Apr 2019 08:30:53 +0800
-Message-Id: <20190419003053.8260-7-richardw.yang@linux.intel.com>
+Date: Fri, 19 Apr 2019 08:30:51 +0800
+Message-Id: <20190419003053.8260-5-richardw.yang@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190419003053.8260-1-richardw.yang@linux.intel.com>
 References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
@@ -75,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 134.134.136.126
-Subject: [Qemu-arm] [PATCH v4 6/6] acpi: pci: use build_append_foo() API to
- construct MCFG
+Subject: [Qemu-arm] [PATCH v4 4/6] hw/arm/virt-acpi-build: pass AcpiMcfgInfo
+ to build_mcfg()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,94 +93,147 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
 	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PoiRJxkNq8TJ
+X-TUID: mSVU8y9LBXVC
 
-build_append_foo() API doesn't need explicit endianness conversions
-which eliminates a source of errors and it makes build_mcfg() look like
-declarative definition of MCFG table in ACPI spec, which makes it easy
-to review.
+To build MCFG, two information is necessary:
+
+    * bus number
+    * base address
+
+Abstract these two information to AcpiMcfgInfo so that build_mcfg and
+build_mcfg_q35 will have the same declaration.
 
 Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/acpi/pci.c               | 33 +++++++++++++++++++++------------
- include/hw/acpi/acpi-defs.h | 18 ------------------
- 2 files changed, 21 insertions(+), 30 deletions(-)
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-index fa0fa30bb9..341805e786 100644
---- a/hw/acpi/pci.c
-+++ b/hw/acpi/pci.c
-@@ -30,17 +30,26 @@
- 
- void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
- {
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-+    int mcfg_start = table_data->len;
-+
-+    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-+
-+    /*
-+     * PCI Firmware Specification, Revision 3.0
-+     * 4.1.2 MCFG Table Description.
-+     */
-+    /* Base address, processor-relative */
-+    build_append_int_noprefix(table_data, info->base, 8);
-+    /* PCI segment group number */
-+    build_append_int_noprefix(table_data, 0, 2);
-+    /* Starting PCI Bus number */
-+    build_append_int_noprefix(table_data, 0, 1);
-+    /* Final PCI Bus number */
-+    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 4);
-+
-+    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-+                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
+---
+v3:
+  * move AcpiMcfgInfo to pci.h
+v2:
+  * for arm platform, construct a AcpiMcfgInfo directly
+---
+ hw/arm/virt-acpi-build.c | 18 +++++++++++-------
+ hw/i386/acpi-build.c     |  6 +-----
+ include/hw/acpi/pci.h    | 33 +++++++++++++++++++++++++++++++++
+ 3 files changed, 45 insertions(+), 12 deletions(-)
+ create mode 100644 include/hw/acpi/pci.h
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index e09e7eff8d..ebddcde596 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -40,6 +40,7 @@
+ #include "hw/hw.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
++#include "hw/acpi/pci.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/arm/virt.h"
+@@ -546,21 +547,18 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  }
  
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index f9aa4bd398..57a3f58b0c 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
+ static void
+-build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+ {
+     AcpiTableMcfg *mcfg;
+-    const MemMapEntry *memmap = vms->memmap;
+-    int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
+     int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
  
- typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
+     mcfg = acpi_data_push(table_data, len);
+-    mcfg->allocation[0].address = cpu_to_le64(memmap[ecam_id].base);
++    mcfg->allocation[0].address = cpu_to_le64(info->base);
  
--/* PCI fw r3.0 MCFG table. */
--/* Subtable */
--struct AcpiMcfgAllocation {
--    uint64_t address;                /* Base address, processor-relative */
--    uint16_t pci_segment;            /* PCI segment group number */
--    uint8_t start_bus_number;       /* Starting PCI Bus number */
--    uint8_t end_bus_number;         /* Final PCI Bus number */
--    uint32_t reserved;
--} QEMU_PACKED;
--typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
+     /* Only a single allocation so no need to play with segments */
+     mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+     mcfg->allocation[0].start_bus_number = 0;
+-    mcfg->allocation[0].end_bus_number =
+-        PCIE_MMCFG_BUS(memmap[ecam_id].size - 1);
++    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+ 
+     build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+ }
+@@ -801,7 +799,13 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     build_gtdt(tables_blob, tables->linker, vms);
+ 
+     acpi_add_table(table_offsets, tables_blob);
+-    build_mcfg(tables_blob, tables->linker, vms);
++    {
++        AcpiMcfgInfo mcfg = {
++           .base = vms->memmap[VIRT_ECAM_ID(vms->highmem_ecam)].base,
++           .size = vms->memmap[VIRT_ECAM_ID(vms->highmem_ecam)].size,
++        };
++        build_mcfg(tables_blob, tables->linker, &mcfg);
++    }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index f0d27bffd6..c2de7f4b01 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -58,6 +58,7 @@
+ 
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
++#include "hw/acpi/pci.h"
+ 
+ #include "qom/qom-qobject.h"
+ #include "hw/i386/amd_iommu.h"
+@@ -86,11 +87,6 @@
+ /* Default IOAPIC ID */
+ #define ACPI_BUILD_IOAPIC_ID 0x0
+ 
+-typedef struct AcpiMcfgInfo {
+-    uint64_t base;
+-    uint32_t size;
+-} AcpiMcfgInfo;
 -
--struct AcpiTableMcfg {
--    ACPI_TABLE_HEADER_DEF;
--    uint8_t reserved[8];
--    AcpiMcfgAllocation allocation[0];
--} QEMU_PACKED;
--typedef struct AcpiTableMcfg AcpiTableMcfg;
--
- /*
-  * TCPA Description Table
-  *
+ typedef struct AcpiPmInfo {
+     bool s3_disabled;
+     bool s4_disabled;
+diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+new file mode 100644
+index 0000000000..124af7d32a
+--- /dev/null
++++ b/include/hw/acpi/pci.h
+@@ -0,0 +1,33 @@
++/*
++ * Support for generating PCI related ACPI tables and passing them to Guests
++ *
++ * Copyright (C) 2006 Fabrice Bellard
++ * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
++ * Copyright (C) 2013-2019 Red Hat Inc
++ * Copyright (C) 2019 Intel Corporation
++ *
++ * Author: Wei Yang <richardw.yang@linux.intel.com>
++ * Author: Michael S. Tsirkin <mst@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef HW_ACPI_PCI_H
++#define HW_ACPI_PCI_H
++
++typedef struct AcpiMcfgInfo {
++    uint64_t base;
++    uint32_t size;
++} AcpiMcfgInfo;
++
++#endif
 -- 
 2.19.1
 

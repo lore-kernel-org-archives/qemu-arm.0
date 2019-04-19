@@ -1,212 +1,128 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1403900wrx;
-        Thu, 18 Apr 2019 21:10:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwH6x0HrA14PdHMBK8TW2c6NupoilftG3ndveuzNZkvN78ZN8Qox0cwoWXy8XFq2HSeTsS7
-X-Received: by 2002:a1c:244:: with SMTP id 65mr1088495wmc.42.1555647038023;
-        Thu, 18 Apr 2019 21:10:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555647038; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1489584wrx;
+        Thu, 18 Apr 2019 23:20:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWiJkgPZmeCDspaQCzQXlY3rBELl6cecCWyfR1NPP8vWT6VUqQJ9eV77EP24CCiXACyJU5
+X-Received: by 2002:adf:ea45:: with SMTP id j5mr1560250wrn.89.1555654826182;
+        Thu, 18 Apr 2019 23:20:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555654826; cv=none;
         d=google.com; s=arc-20160816;
-        b=E7CU39b9kcGwdwvUKiDhIrNY8p7L0PvXxeRqUwCPQsRcf47NY0QXs1iKQsXeqKR7O4
-         up7NgdyzzsECH51FxrjE//hoHVZvd8ld+Sfei/wtUyUvMDA979AF2w/nFO6JvrsUqNOS
-         BFNtS9sWNaWXGrLkH6IW0Kczt6e5RrAJGGf5KDp0ey3LfsDjzlFrSrlMf6uV73MzyN8b
-         fdjiEg0NOBtLTW9q+E6pJHN109nEKHVmk4261dwaDjUR9inULqRaqTqyCdSnYvKerjtr
-         su9Bpe+NzqEmuhsC4G087TA121ayC0aCIAMr1lNDUWByjDdrwdegYmuwvHrZEpfihIxP
-         Q/Yw==
+        b=RuOeeR4z5lsjAhK2xGgQOH4WJ2+mSEbMpp014Sb1ANiDvia4QKVOzyGF0onzHn6DSi
+         OkbUy+EDpr0uLPHIFToMwmjxpDF19ZYRLRnp2MPGlsskPQOAUgkpQgIQHDWRYv4ZtW6R
+         9gUWge6hPZLbki8POXi+C7scMB3uh+ecSJO1iTDDF1iQNOZ1NfPcY0VPxTCcjkSqseJL
+         SoDGsp/IHaB/fo15buRKWQ/11v+ODWvPFNL9jaI8N2sG7wVC/IpTz06FSG7XON9eKl1Q
+         PxBU8zoq9VkF73jTGafuirIVc4ruudDFbjnKyT3f+j6JCHU4j7fOvdOSgrCY06eO1SAH
+         Vuag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from:dkim-signature:ironport-phdr:dkim-signature;
-        bh=47TcUOXX+GQ2jL0Vio6fMmM9NZP1iOctFD5d/FVYB2c=;
-        b=tan0i3KTmIqnRrg2FX9NaqD5LToQf+z9LN08p47E45H0hNaWBYoCQo2nhMEOfcQjzg
-         Xdh7XtvIFo6O0AkzPrBs8crMUC0fP1M77AWAaVoCMlPI6AKgDM35iiSqOLNUaBuF3y9H
-         nADLjji7l0ZrEUIkltUETtk9cLK1SOZmghmr9Lm6UqPVB28EsJN1OjvAf+SBLMCMitLX
-         zNFwd4kYG7c+4ZkTEQ2isgImd73kVTg/gKXa7nU6coM7rySfnKRwXmR9OO+pkRJy4rx0
-         fIHjIeiL0Ee05iBo757fxuO5zDktLDDg5pAAFD2blgta6FbWLIg2OXFGa4r6tYADsEn3
-         ZCXA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=2nmovvxNflWsPJvGTHaZ6uFoJ8EUaBVgZv8nPalC2jY=;
+        b=PLpnA2FRlnCaZy5X5heN3h6BPivMRqBnFOzTr0jp5rjLG60A4hMWP33hiQGdfn+Vkv
+         7Hps33lxgBukVce2rf2C99+tkBkoq622Nz56esO4w8lXaQhpJKbIa9wVVdl30TYIbym1
+         PAC0URfNEZjoJWI3afRbSZRQkdstiZqxRTSFgYSgTjaFUmNeoPBiDn6FjpeE6eoS2VNf
+         GrwtgTzWsh7YZKlZRSmnqPdT3pTlhg2uqQjH05dws0YwAendl8mi5OIq3zZRZDxttSL2
+         q16UkP7HQj53hdibqhzMRRub0Q4Tw0MkNE+sWLz1huLLmzGO54mBMX4H846EtzBGOzGS
+         JwiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=oebltQu8;
-       dkim=fail header.i=@CSIROAU.onmicrosoft.com header.s=selector1-data61-csiro-au header.b=uPV2JB+J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si3066634wrn.382.2019.04.18.21.10.37
+        by mx.google.com with ESMTPS id c126si2968817wma.181.2019.04.18.23.20.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Apr 2019 21:10:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Apr 2019 23:20:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=oebltQu8;
-       dkim=fail header.i=@CSIROAU.onmicrosoft.com header.s=selector1-data61-csiro-au header.b=uPV2JB+J;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:50944 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:51928 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hHKrF-0002DY-2f
-	for alex.bennee@linaro.org; Fri, 19 Apr 2019 00:10:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37861)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hHMsr-0001eb-53
+	for alex.bennee@linaro.org; Fri, 19 Apr 2019 02:20:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=005e97291=Peter.Chubb@data61.csiro.au>)
-	id 1hHKph-0001Pb-Jn
-	for qemu-devel@nongnu.org; Fri, 19 Apr 2019 00:09:29 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hHMnM-0005nh-4v
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 02:14:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prvs=005e97291=Peter.Chubb@data61.csiro.au>)
-	id 1hHKfb-0000h0-48
-	for qemu-devel@nongnu.org; Thu, 18 Apr 2019 23:58:36 -0400
-Received: from act-mtaout4.csiro.au ([2405:b000:e00:257::7:41]:8391)
+	(envelope-from <ehabkost@redhat.com>) id 1hHMnL-000557-5v
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 02:14:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40426)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71)
-	(envelope-from <prvs=005e97291=Peter.Chubb@data61.csiro.au>)
-	id 1hHKfX-0000aa-Rm; Thu, 18 Apr 2019 23:58:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-	d=data61.csiro.au; i=@data61.csiro.au; q=dns/txt;
-	s=dkim; t=1555646311; x=1587182311;
-	h=from:to:cc:subject:date:message-id:references:
-	in-reply-to:content-id:content-transfer-encoding: mime-version;
-	bh=KNTIRV2KeUddD45ESVK//XYwfqeyqxBcrZ+UhmXqFYs=;
-	b=oebltQu8Zrg2Va54Z524A8B9lnGcr8cpBUioW9Afb9gk78hQDhBgDtTv
-	vxGflr1n1vfk4fXBRXIgO4EZ5TNkmAt2nHF0WaOGm5gG4tAi1ylubNqe+
-	jvCqsIUAo59TTBnVO8zxYHuZ/l6NxHDfY7kH9XqU1yFDdTzDpIUQiS2Un g=;
-X-SBRS: 4.0
-IronPort-PHdr: =?us-ascii?q?9a23=3ALkZ5tBA0zhEF8DmpsMaGUyQJPHJ1sqjoPgMT9p?=
-	=?us-ascii?q?ssgq5PdaLm5Zn5IUjD/qo13kTRU9Dd7PRJw6rNvqbsVHZIwK7JsWtKMfkuHw?=
-	=?us-ascii?q?QAld1QmgUhBMCfDkiuFPP2YjZ8N8RfXlVN83inOBYMXs3lZkfV5HSvvnYf?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A+FTAQAGR7lcjACwBSSYiIBxAISUgiR?=
-	=?us-ascii?q?mHgEGBwaBUQkLAYE9UFoRVSAEMwqHSwOPFUqaV4E/PA8BHw4CgQKCFIEoAoY?=
-	=?us-ascii?q?aIzQJDgEDAQEFAQEBAQICAhABAQEmTAyDRTkxAQEBAQEBAQEBAQEBAQEBAQE?=
-	=?us-ascii?q?BAQEBAQEBAQEBAQEBAQEBAQEBAQUCMwU5AwNAAQE3AQ8CAQgOLQsQIiUCBA4?=
-	=?us-ascii?q?FgyIBgWkDGwEBAgKcewKKFIIggnkBAQV1hA4Ygg0JCQGBKAGLSYIWEn+DEj6?=
-	=?us-ascii?q?ERIVhjQKFVpN4BwEBAoIGhg6MGhuBe5MPkjOKMYNLAgQCBAUCDgEBBYFPN4F?=
-	=?us-ascii?q?YHU+DQAmCBRodgXKBRopTcgGBKI4oAYEgAQE?=
-X-IPAS-Result: =?us-ascii?q?A+FTAQAGR7lcjACwBSSYiIBxAISUgiRmHgEGBwaBUQkLA?=
-	=?us-ascii?q?YE9UFoRVSAEMwqHSwOPFUqaV4E/PA8BHw4CgQKCFIEoAoYaIzQJDgEDAQEFA?=
-	=?us-ascii?q?QEBAQICAhABAQEmTAyDRTkxAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA?=
-	=?us-ascii?q?QEBAQEBAQEBAQUCMwU5AwNAAQE3AQ8CAQgOLQsQIiUCBA4FgyIBgWkDGwEBA?=
-	=?us-ascii?q?gKcewKKFIIggnkBAQV1hA4Ygg0JCQGBKAGLSYIWEn+DEj6ERIVhjQKFVpN4B?=
-	=?us-ascii?q?wEBAoIGhg6MGhuBe5MPkjOKMYNLAgQCBAUCDgEBBYFPN4FYHU+DQAmCBRodg?=
-	=?us-ascii?q?XKBRopTcgGBKI4oAYEgAQE?=
-Received: from exch4-mel.nexus.csiro.au ([IPv6:2405:b000:302:71::85:124])
-	by act-ironport-int.csiro.au with ESMTP/TLS/AES256-SHA;
-	19 Apr 2019 13:58:19 +1000
-Received: from exch1-mel.nexus.csiro.au (2405:b000:302:71::85:121) by
-	exch4-mel.nexus.csiro.au (2405:b000:302:71::85:124) with Microsoft SMTP
-	Server (TLS) id 15.0.1395.4; Fri, 19 Apr 2019 13:58:19 +1000
-Received: from exedge2.csiro.au (150.229.64.34) by exch1-mel.nexus.csiro.au
-	(138.194.85.121) with Microsoft SMTP Server (TLS) id 15.0.1395.4 via
-	Frontend Transport; Fri, 19 Apr 2019 13:58:19 +1000
-Received: from AUS01-SY3-obe.outbound.protection.outlook.com (104.47.117.55)
-	by exedge2.csiro.au (150.229.64.34) with Microsoft SMTP Server (TLS) id
-	15.0.1395.4; Fri, 19 Apr 2019 13:58:11 +1000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=CSIROAU.onmicrosoft.com; s=selector1-data61-csiro-au;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=47TcUOXX+GQ2jL0Vio6fMmM9NZP1iOctFD5d/FVYB2c=;
-	b=uPV2JB+JoIvGcChkR0EWFZGxnFM1fAHNiMwMfN+CaGHcQl0fc+ySTvK3g/Tw0SNdg2yoLZP443Hs6biPtAGlXNL4FlCRgXqlux0JKQUWwn2AGKhiy/8jgoPeprccH315tSl/YEAEU7YAHjccF8+c6OlSRUKFC67voqz5W1Q6crI=
-Received: from MEAPR01MB3734.ausprd01.prod.outlook.com (52.134.217.84) by
-	MEASPR01MB0009.ausprd01.prod.outlook.com (20.178.177.215) with
-	Microsoft SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1813.12; Fri, 19 Apr 2019 03:58:18 +0000
-Received: from MEAPR01MB3734.ausprd01.prod.outlook.com
-	([fe80::7c08:1847:9eed:49e4]) by
-	MEAPR01MB3734.ausprd01.prod.outlook.com
-	([fe80::7c08:1847:9eed:49e4%4]) with mapi id 15.20.1813.011;
-	Fri, 19 Apr 2019 03:58:18 +0000
-From: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-To: Thomas Huth <thuth@redhat.com>
-Thread-Topic: [PATCH for-QEMU-4.1 v5 07/29] hw/arm: Express dependencies of
-	the fsl-imx31 machine with Kconfig
-Thread-Index: AQHU9hDfK3IokJEEzkKHsws0zFJQiqZC3BcA
-Date: Fri, 19 Apr 2019 03:58:17 +0000
-Message-ID: <8436melk89.wl-Peter.Chubb@data61.csiro.au>
-References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-8-thuth@redhat.com>
-In-Reply-To: <20190418180057.3593-8-thuth@redhat.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Peter.Chubb@data61.csiro.au; 
-x-originating-ip: [221.199.209.40]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ccad084c-937c-4cde-2031-08d6c47b41a4
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(2017052603328)(7193020);
-	SRVR:MEASPR01MB0009; 
-x-ms-traffictypediagnostic: MEASPR01MB0009:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <MEASPR01MB0009169E06D4264C234B4AE5BB270@MEASPR01MB0009.ausprd01.prod.outlook.com>
-x-forefront-prvs: 0012E6D357
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10009020)(366004)(136003)(376002)(346002)(396003)(39850400004)(199004)(189003)(6246003)(186003)(966005)(7736002)(478600001)(53936002)(6306002)(99286004)(8936002)(68736007)(6512007)(7416002)(5660300002)(229853002)(72206003)(76116006)(66946007)(4744005)(305945005)(2906002)(54906003)(4326008)(14454004)(6116002)(102836004)(86372001)(86362001)(316002)(97736004)(8676002)(446003)(71190400001)(81166006)(6916009)(25786009)(81156014)(71200400001)(6486002)(74482002)(76176011)(26005)(256004)(3846002)(6506007)(66066001)(66476007)(6436002)(64756008)(11346002)(2616005)(73956011)(476003)(486006)(66556008)(66446008)(91956017);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:MEASPR01MB0009;
-	H:MEAPR01MB3734.ausprd01.prod.outlook.com; FPR:; SPF:None;
-	LANG:en; PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: SnjnOnC0tfQERfsS56t0dHQjuXii5SgahkFpSy/2SkznhFTmbsn7TC6r2J4sU3miukgHfR6DS2tRe5a05CCdqLAgQQ4lnwmvuQj2vvcpQJGAndtjCMktb7s+RR1DVjYYhd2zSg0r1BCI2ZwJK54SYJt+ujWWJxDvKd0hhlD96q8TD+ZpjtsoocOB6rN89FsQFT7611kPER9I3yDeaWO4Np8529zCivnVm1J3/0W73aroitPn7qRCG7IfXIGWGAGQTACW04lT084ehU5jLPWpTtXa1uI3s/uMpJC0au0SN1AZoP3Xe1T5t/lVs/zeLY6VqOlXhhUSGILN//xdonfbIkrpTVRe9OqtE3vEtNpY3tTaEZ+Mr2xhYpJjrCBEqcxeJsof8IclNIYXCnxsxI9QKQgct0wIYn29+YDIp9Krn88=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-ID: <D4F06FF565C66F488BAC81E136EC975E@ausprd01.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: ccad084c-937c-4cde-2031-08d6c47b41a4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Apr 2019 03:58:17.9579 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0fe05593-19ac-4f98-adbf-0375fce7f160
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MEASPR01MB0009
-X-OriginatorOrg: data61.csiro.au
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2405:b000:e00:257::7:41
-Subject: Re: [Qemu-devel] [PATCH for-QEMU-4.1 v5 07/29] hw/arm: Express
- dependencies of the fsl-imx31 machine with Kconfig
-X-BeenThere: qemu-devel@nongnu.org
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hHMnL-00054q-0Q; Fri, 19 Apr 2019 02:14:43 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 44B2588ABB;
+	Fri, 19 Apr 2019 06:14:42 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CAD46600C1;
+	Fri, 19 Apr 2019 06:14:41 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 19 Apr 2019 03:14:26 -0300
+Message-Id: <20190419061429.17695-5-ehabkost@redhat.com>
+In-Reply-To: <20190419061429.17695-1-ehabkost@redhat.com>
+References: <20190419061429.17695-1-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 19 Apr 2019 06:14:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 4/7] arm: Remove special case for "any" CPU model
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	"yang.zhong@intel.com" <yang.zhong@intel.com>,
-	Rob Herring <robh@kernel.org>,
-	"qemu-block@nongnu.org" <qemu-block@nongnu.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>, Joel Stanley <joel@jms.id.au>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Cedric Le Goater <clg@kaod.org>,
-	John Snow <jsnow@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
-	Philippe Mathieu-Daude <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XjMPO9pkio17
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bA+EysdGjZmZ
 
->>>>> "Thomas" =3D=3D Thomas Huth <thuth@redhat.com> writes:
+We already have an entry for "any" at arm_cpus[], which makes a
+"any-arm-cpu" QOM type be registered.  This means the regular QOM
+type name lookup code already works and there's no need for a
+special case.
 
-Thomas> Add Kconfig dependencies for the fsl-imx31 / kzm machine.
-Thomas> This patch is slightly based on earlier work by =C1kos Kov=E1cs
-Thomas> (i.e.  his "hw/arm/Kconfig: Add ARM Kconfig" patch).
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+---
+ target/arm/cpu.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-Thomas> Signed-off-by: Thomas Huth <thuth@redhat.com>=20
-Reviewed-by: Peter Chubb <peter.chubb@data61.csiro.au>
---
-Dr Peter Chubb         Tel: +61 2 9490 5852      http://ts.data61.csiro.au/
-Trustworthy Systems Group                     Data61, CSIRO (formerly NICTA=
-)=
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 6848d9c94d..dcc65093d9 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1213,14 +1213,6 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+     ObjectClass *oc;
+     char *typename;
+ 
+-#ifdef CONFIG_USER_ONLY
+-    /* For backwards compatibility usermode emulation allows "-cpu any",
+-     * which has the same semantics as "-cpu max".
+-     */
+-    if (!strcmp(cpu_model, "any")) {
+-        cpu_model = "max";
+-    }
+-#endif
+     typename = g_strdup_printf(ARM_CPU_TYPE_NAME("%s"), cpu_model);
+     oc = object_class_by_name(typename);
+     g_free(typename);
+-- 
+2.18.0.rc1.1.g3f1ff2140
+

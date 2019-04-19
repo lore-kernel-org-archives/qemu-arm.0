@@ -1,117 +1,113 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2223040wrx;
-        Fri, 19 Apr 2019 14:11:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxYm9SskhGSHVZRlU5LqStUwoe4jPf4albvTgV/WE4Hlkm4ijRlH+BEvkJZKfENGypbSFKl
-X-Received: by 2002:a1c:544f:: with SMTP id p15mr3838969wmi.65.1555708265210;
-        Fri, 19 Apr 2019 14:11:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555708265; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2234045wrx;
+        Fri, 19 Apr 2019 14:27:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzu7xrCfD06WQAKdw+0eL7smJMBV2/5+OfZXPGAkBkTSOCVVw/H4gfwPhzz+96ywnDSKoNa
+X-Received: by 2002:a5d:4d49:: with SMTP id a9mr4742569wru.227.1555709270742;
+        Fri, 19 Apr 2019 14:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555709270; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYaHaAQ1UPg32vjSF0WRg5tV2d/9homTMFDSY4fVQbnBP2MbctkiAnFB4nIUItap9v
-         5RVXCQMsa7plVCi8g6NsDCCuPdVVjJn81Rm4tlEoSHjOn+3/+MUcyIFoFsYylQIgPMyC
-         UAfdD02Pui/m5m1RJEo+F2B4BV+asfAJDcPC2MdaMvTOjXu6MuMyQyJBj/XMPv1Vc0Pt
-         nST8F0P1pW17Ea6Fp3QaijJ7XXvgdCpne6jSb/M5JrMG2i6taqP7LRxhUBjodEJVmH06
-         znCU0xYD70/Vftng3koT7J30Q1YI+nGvI+/Ji9ZSOj05wss2zjnlVx9BSP0Cut6E9l1I
-         68wg==
+        b=AG6TyxWMywjssCwcGRh+GtCT+/ZUDqnkHdehqHPxzSM30vC/FxQjwuIY5/r2w6r3/p
+         //JjMQ609kJkzwDJS82MV2fO82DvI2KNPXgzqunNDXf0lE3E2/gblKZzVsf2CPqJu1Di
+         VuPGlbKBe6vZ57RC9411RuZ+m4RL3BWt0ij2PumAL266ZctHvI3GPN/xBvfrW4bU8zT+
+         Hz7p+up7YbPp5QBxrNpEDAMyGwWZPn1gtRWOKVvy7ZObMbXxbvCOqHDq6DtypC5LdlXy
+         /+G1trFZBxTLv1vjzIpyYqrErFS/wHKJFXsHmkLkv8AtMt4Gs66TEqNgrN4NTSTmGUnM
+         +1xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=8y3JnOn2sysVarRFf8sASNkXiG0BxOMAm2gvZWbagI0=;
-        b=SYuRsshW1qCPvUR88nYVg/17Fy2Ejr7UNKsUrDj/mBS7n0f9d+zijsByvbABcKmEO8
-         Ek4i3KO68XMBdRqmd+x5UBJaCby9AmzOmyy1DRthgWtO/STRmFEp7Ii5iC8q8UwZo0o4
-         AYULIQBhZmhnXFtEdJZUjO/gX5k1Lea5SwoLGiFfvASDZo2+fZVoIEzJ4NfCmf4KRCd8
-         5AYJVvMN5wbU7F+hJ8IuDlcDj6ZtLjrpLBrDAuxGmamzzsH7CDI47OaSzoa7H1CbBwHa
-         WJ+Hg7YIb8biUkD01yZnXyyEVvQiXVFyvW14Pu2PIY8We+B7o/EwC19RRM3kMjskzFO4
-         zKnw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=2tubYGVGC+zztlt6H1UAeONkKsPTLRYswJfNrPrC5Zc=;
+        b=uKA5+Kg2IFpJ7emNEqyZKnRBGkFFQTtjRy1xzmMNGMBqrazDYWrHuDzHSVFumU+oM+
+         8ZnvHg+/0tAU6MEIQ2oDoCoOPvTtrJgXCDxDJjt6lmXwEq5K+RXUshNr1HhaQe6se6OV
+         PhT8oOPU8+AlyARkfJ38lyNDGqFPd+cbBbuS3vGDykWyMAhfLtb3QuseLL9C1eyb9TVd
+         Ud7okQzOdslhkn/fM3WC7bMOThcS4vchhlBkvTSkCDZtHKGxGIR7r/HmkIYYCThxGoBr
+         uj5gn6fiXSJdiCU09/z7oAGm1N0bD+z6XNkU+WtG+YydWxWdIoHvwDAruhkXQzPiCi06
+         NTFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LZjpbA6f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LpUvNhUm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w129si4440012wmb.180.2019.04.19.14.11.05
+        by mx.google.com with ESMTPS id f191si4537093wmf.103.2019.04.19.14.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Apr 2019 14:11:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Apr 2019 14:27:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LZjpbA6f;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LpUvNhUm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:33292 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33425 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hHamm-00074X-B5
-	for alex.bennee@linaro.org; Fri, 19 Apr 2019 17:11:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51971)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hHb2z-0000xB-Pl
+	for alex.bennee@linaro.org; Fri, 19 Apr 2019 17:27:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54598)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hHalo-0006fr-4l
-	for qemu-devel@nongnu.org; Fri, 19 Apr 2019 17:10:05 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hHb2R-0000bE-EL
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:27:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hHaln-0006ad-4v
-	for qemu-devel@nongnu.org; Fri, 19 Apr 2019 17:10:04 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:42289)
+	(envelope-from <alistair23@gmail.com>) id 1hHaq6-0008Kn-N6
+	for qemu-arm@nongnu.org; Fri, 19 Apr 2019 17:14:31 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:38475)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hHalm-0006aA-Tn; Fri, 19 Apr 2019 17:10:03 -0400
-Received: by mail-lj1-x244.google.com with SMTP id v22so5559562lje.9;
-	Fri, 19 Apr 2019 14:10:02 -0700 (PDT)
+	id 1hHaq4-0008JL-5y; Fri, 19 Apr 2019 17:14:28 -0400
+Received: by mail-lj1-x241.google.com with SMTP id p14so5587217ljg.5;
+	Fri, 19 Apr 2019 14:14:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=8y3JnOn2sysVarRFf8sASNkXiG0BxOMAm2gvZWbagI0=;
-	b=LZjpbA6f062KcgcjmSdk853IYlk071eXrP37ONYNMvqGCPsg00bRd9lG99WV+iyaSn
-	0fcz8TPCFrxfmYqqfW/uP18wdYgcJEGZKiFzISgrYxDqmw9JEsnWPY61mO/X4kZ3Sl5G
-	/otapp+3jI5QLPinz74i3PQXpeTwQ81WEmrsy1Smzp6bEz+MEGHg8f7iXZBhpGBpidrV
-	VyJxnrmWiCuVmH/ZXTd4Xaos8xfu24lMR1+Gor99+QnS12Qb0qZhLUgElkkHYONKoJJ8
-	fFz79ShQCp2jPt+k+eo44An5Kmo0K9yyG3TBfd9MnhiT2FBL/+TSLyyFkQQ0yut0Tne9
-	qRbQ==
+	:cc; bh=2tubYGVGC+zztlt6H1UAeONkKsPTLRYswJfNrPrC5Zc=;
+	b=LpUvNhUmOQX3fz46wwSsfI9LqQRXqt2Je5AW90smgfQ2bc20skwxySvSvMZIcD7HwX
+	p0cxPaNUzIkTGI48kxmCgRpGCMI0leEhqy84JT2floiTBO3l4dBdy9nwF6qXl8qk83mY
+	kR0ojbgsxX0RtB+hNI9+DtzmYXI/ItFiKXjYDE4p+ZgK7clTAhAMGWFbk/WCYTq5KFFd
+	emMPmQcn6GekW0FkwKo+3nrp6VpvqyeT9Rc6ajcTrNskiIhPWBYTqDtKLAiH9iPyvjfj
+	nBHdmfHdscfAc3ylt7FI0MoOQufsLodwOhAN3v7cqPdYXEdXLCYQ+EwUJKCjDk77bAC2
+	SB/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=8y3JnOn2sysVarRFf8sASNkXiG0BxOMAm2gvZWbagI0=;
-	b=nos08m/L4A5nx9Bze+mSTzgZ8acQOd0kpavNiayy1Gryfljrz8ljDGtmjL9fwHcJHF
-	KFwYJTux2Z2PClNPfLX7n/g5iII2HsGkpk7+3vXW5fJE+uPgZKnEZhTOdZcaH87oqWXs
-	ClhhTZNfdEEI1vDW4PkfYAyXvdgooi/OQZhFshcpzyelc7cQfzZnmx69tPxM7v5n9379
-	nLrO7CjH0oIP3MoA6TcjbKZhAH6TeI1AYLPNEaon79JhF1+8UywEw0Ox7iVRUQSlF+c4
-	ImqISsZTYMAfeYLHg638IuwJm5FQxpLeISku2CSHtawR2tc/Oun+ens5vnEvEwHFK5AJ
-	L/sQ==
-X-Gm-Message-State: APjAAAXgzo72/IcVFQ8TbPI0/sRwzYSGXmWom7U/ozm547YiSmkrJ75E
-	YcRnZydhFhmO6GpOx+VmOYab6DJocmPl1bNT0I8=
-X-Received: by 2002:a2e:895a:: with SMTP id b26mr3259208ljk.89.1555708201361; 
-	Fri, 19 Apr 2019 14:10:01 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=2tubYGVGC+zztlt6H1UAeONkKsPTLRYswJfNrPrC5Zc=;
+	b=j8z3ocq7v2AiLdF9AgQgST36p+2nf14RRYYyu6xOZipiy5P1A9vzPHgk8tZTsjogc1
+	MJ8rn2/Jt6JIbVd2xhanbcI6Dj5wR5C85DtNwHfPlNANsL1XMlvovBrFQfxpAeqPQuLE
+	I3DUfikWL2M7r/rGmcOtPsnOPYNPadEHHbrQ9V9mfbPRl2CHDJg00HDrKIlSNrPhkPXQ
+	TdvzjcfooJar+nIoJyU8H9HfH4OsV8oEiDLD9uX7fbMYwTIwj5fw/mU57mn7sh5K6flt
+	5Yb6uOzl1T9YmTbOSaL+K47XpwCOZHfrkLIwxU7qJFM3tB5Z658AB5nhTG/nlVwGJ8Jz
+	/o+Q==
+X-Gm-Message-State: APjAAAWoXdcgqoKcqIUSUmObmN+WnzrViG9ud8dTGEY9sJNyWcsmb7Vl
+	Sm4xnTSjrXUieLBoIJ7pWNf4VrtQ1qRFu8t25qM=
+X-Received: by 2002:a2e:974d:: with SMTP id f13mr3377594ljj.140.1555708466431; 
+	Fri, 19 Apr 2019 14:14:26 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-14-thuth@redhat.com>
-In-Reply-To: <20190418180057.3593-14-thuth@redhat.com>
+	<20190418180057.3593-26-thuth@redhat.com>
+In-Reply-To: <20190418180057.3593-26-thuth@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 19 Apr 2019 14:09:34 -0700
-Message-ID: <CAKmqyKObGO3+s6QsF7TQBTxEx4DRm-GjM9gorv+tvJzC=YsTqQ@mail.gmail.com>
+Date: Fri, 19 Apr 2019 14:13:59 -0700
+Message-ID: <CAKmqyKM4ZtUmT6U-9Nv=S_3KMVnPzogOkNPrtyqvKz=b+u1AYQ@mail.gmail.com>
 To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH for-QEMU-4.1 v5 13/29] hw/arm: Express
- dependencies of xilinx-zynq with Kconfig
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 25/29] hw/arm:
+ Express dependencies of the microbit / nrf51 machine with Kconfig
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	Yang Zhong <yang.zhong@intel.com>, Rob Herring <robh@kernel.org>,
 	Qemu-block <qemu-block@nongnu.org>,
@@ -124,15 +120,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
 	Andrew Jeffery <andrew@aj.id.au>, Philippe Mathieu-Daude <f4bug@amsat.org>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uj0NVWAOH1UZ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bTlzK15N+S6n
 
-On Thu, Apr 18, 2019 at 11:18 AM Thomas Huth <thuth@redhat.com> wrote:
+On Thu, Apr 18, 2019 at 11:23 AM Thomas Huth <thuth@redhat.com> wrote:
 >
-> Add Kconfig dependencies for the xilinx-zynq-a9 board.
-> This patch is based on earlier work by =C3=81kos Kov=C3=A1cs (i.e.
-> his "hw/arm/Kconfig: Add ARM Kconfig" patch).
+> Add Kconfig dependencies for the NRF51 / microbit machine.
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
@@ -141,71 +135,65 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  default-configs/arm-softmmu.mak |  7 +------
->  hw/arm/Kconfig                  | 12 ++++++++++++
->  2 files changed, 13 insertions(+), 6 deletions(-)
+>  default-configs/arm-softmmu.mak | 3 +--
+>  hw/arm/Kconfig                  | 6 ++++++
+>  hw/arm/Makefile.objs            | 3 ++-
+>  3 files changed, 9 insertions(+), 3 deletions(-)
 >
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-> index f39a854f2e..af78e7c892 100644
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 6dc388c43e..233937f394 100644
 > --- a/default-configs/arm-softmmu.mak
 > +++ b/default-configs/arm-softmmu.mak
-> @@ -19,6 +19,7 @@ CONFIG_STELLARIS=3Dy
->  CONFIG_REALVIEW=3Dy
->  CONFIG_VERSATILE=3Dy
->  CONFIG_VEXPRESS=3Dy
-> +CONFIG_ZYNQ=3Dy
->  CONFIG_MAINSTONE=3Dy
->  CONFIG_GUMSTIX=3Dy
->  CONFIG_SPITZ=3Dy
-> @@ -38,16 +39,11 @@ CONFIG_VIRTIO_MMIO=3Dy
+> @@ -35,11 +35,10 @@ CONFIG_RASPI=y
+>  CONFIG_DIGIC=y
+>  CONFIG_SABRELITE=y
+>  CONFIG_EMCRAFT_SF2=y
+> +CONFIG_MICROBIT=y
 >
->  CONFIG_NETDUINO2=3Dy
+>  CONFIG_VGA=y
 >
-> -CONFIG_PL330=3Dy
-> -CONFIG_CADENCE=3Dy
->  CONFIG_FRAMEBUFFER=3Dy
-> -CONFIG_XILINX_SPIPS=3Dy
-> -CONFIG_ZYNQ_DEVCFG=3Dy
->
->  CONFIG_DIGIC=3Dy
->  CONFIG_MPS2=3Dy
->  CONFIG_RASPI=3Dy
-> -CONFIG_ZYNQ=3Dy
->  CONFIG_STM32F2XX_TIMER=3Dy
->  CONFIG_STM32F2XX_USART=3Dy
->  CONFIG_STM32F2XX_SYSCFG=3Dy
-> @@ -100,7 +96,6 @@ CONFIG_SMBUS_EEPROM=3Dy
->  CONFIG_GPIO_KEY=3Dy
->  CONFIG_MSF2=3Dy
->  CONFIG_FW_CFG_DMA=3Dy
-> -CONFIG_XILINX_AXI=3Dy
->  CONFIG_PCI_EXPRESS_DESIGNWARE=3Dy
->
->  CONFIG_STRONGARM=3Dy
+> -CONFIG_NRF51_SOC=y
+> -
+>  CONFIG_FSL_IMX25=y
+>  CONFIG_FSL_IMX7=y
+>  CONFIG_FSL_IMX6UL=y
 > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 101de74260..785e383411 100644
+> index 58439c492a..708eae19e5 100644
 > --- a/hw/arm/Kconfig
 > +++ b/hw/arm/Kconfig
-> @@ -201,6 +201,18 @@ config VEXPRESS
+> @@ -347,8 +347,14 @@ config FSL_IMX6UL
+>      select IMX_I2C
+>      select SDHCI
 >
->  config ZYNQ
+> +config MICROBIT
+> +    bool
+> +    select NRF51_SOC
+> +
+>  config NRF51_SOC
 >      bool
-> +    select A9MPCORE
-> +    select CADENCE # UART
-> +    select PFLASH_CFI02
-> +    select PL330
-> +    select SDHCI
-> +    select SSI_M25P80
-> +    select USB_EHCI_SYSBUS
-> +    select XILINX # UART
-> +    select XILINX_AXI
-> +    select XILINX_SPI
-> +    select XILINX_SPIPS
-> +    select ZYNQ_DEVCFG
+> +    select I2C
+> +    select ARM_V7M
 >
->  config ARM_V7M
+>  config EMCRAFT_SF2
 >      bool
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index eae9f6c442..994e67dd0d 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -8,6 +8,7 @@ obj-$(CONFIG_EMCRAFT_SF2) += msf2-som.o
+>  obj-$(CONFIG_HIGHBANK) += highbank.o
+>  obj-$(CONFIG_INTEGRATOR) += integratorcp.o
+>  obj-$(CONFIG_MAINSTONE) += mainstone.o
+> +obj-$(CONFIG_MICROBIT) += microbit.o
+>  obj-$(CONFIG_MUSICPAL) += musicpal.o
+>  obj-$(CONFIG_NETDUINO2) += netduino2.o
+>  obj-$(CONFIG_NSERIES) += nseries.o
+> @@ -48,4 +49,4 @@ obj-$(CONFIG_ARMSSE) += armsse.o
+>  obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
+>  obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
+>  obj-$(CONFIG_FSL_IMX6UL) += fsl-imx6ul.o mcimx6ul-evk.o
+> -obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o microbit.o
+> +obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
 > --
 > 2.21.0
 >

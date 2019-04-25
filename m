@@ -1,103 +1,102 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1784934wrx;
-        Thu, 25 Apr 2019 06:19:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwyei0QNcWC8eFoTF7neI/LGTCyHQCpiw2IqPrRDtE7pPZ7kfAm8AgYmN5GVmsbkaC54I17
-X-Received: by 2002:a1c:3cc2:: with SMTP id j185mr3647501wma.26.1556198393142;
-        Thu, 25 Apr 2019 06:19:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556198393; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1836369wrx;
+        Thu, 25 Apr 2019 07:07:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxSbCAd/lm7JWi479SE0GmbPxd3e8XJACqlcU2K+/ePpmY5RR/TBzHzrYGj8WrSky4x9j7
+X-Received: by 2002:a1c:cf0b:: with SMTP id f11mr3766267wmg.26.1556201231917;
+        Thu, 25 Apr 2019 07:07:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556201231; cv=none;
         d=google.com; s=arc-20160816;
-        b=sONgiBllwfV0l0ngjRfdzXMD6iv+0tGN4Voln3apx6F9VzNWji2gCGNQGOej3sEAvv
-         WWfsbYFVC/MDTc8g6ButNoBDVhoXPyktdu9cokNlPuINwDezuwI1W5uoMGpJjRtIWNLq
-         jfXPzdh/DFpnmwdIScwkl83DnhPGHfxIaN68RK6jvN1lenNNa9KCfrpHdcHwGt/hRtU0
-         pxiGie8LdQ30QDUJhVdyN64/cm33BPFesCyPf0VX5rIkZXkfoxtowM+xmaQeMCck7aAl
-         0c5kiC36dS/jslxLlt52l23H4dKK6+F1fQtohs4+q9tGeNs6ou/YAMCfuUnhWmjOQTlN
-         I19Q==
+        b=RGHIwlKBEHiL+T8RzGeAlfF1L/7Zbd+UZG9UEQEBs3G2NEonl8Smup8CBxdm36iOfT
+         BiL6hn6+QV92P5TuZT+E4dD45KQ0KWrsS0l2AQz3Gbw6ajvdZjc6haP10gKBVpfuB/1x
+         8e1gJMo7drEWfQV3Ptl7tm+oxnK79HHP4wb/gI1t8K3sJmQEpf1Ee3+3/INNnJgVVdmt
+         NxqG4ssi8iwuk9fpwUEf+HNtN5h8icIGsA7PMeFDRWudu0F1zPFHO+VRs37LptKyyQ5x
+         qbyV7AOAjWtOiTBGtKqR0JKIdtep3AUBd0Kgxrice36XXVLFe5dAB0vL+966b+YVtKop
+         EpxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:to:from;
-        bh=o6G3SSPdCjH99oZB80vEaOpCCos0mBuC1H9vt+CMlQI=;
-        b=DXW2maKQjTf9iOHdlyZYxsWk7CvFNra9M1oYuqSrdWaJHmLE3cLw2pLVieg5MlrnAZ
-         UNo39fjrSU9EOwRuT5lZKAHu49lcCLjuxV11qe3wwy/owta4HG6o+LqQWHKbcUpD4wIQ
-         OcK6WlsIkijEBeR7TAoTvtHBZtA8LalMnS4/+0c/EXov7QEsXCUtT2rr3i7Re0GXfCXA
-         AIi1wxeDZl4DPZCQNr/5dR+ehowsIi9EQH6FWBPep0QTM7x8Uqkn9NhsIli3ruqim31F
-         sinvd2X8BTa2pTOUCIBv7XA1WzJcpu7dCFwHfUp6IzVRmDXghN5bpdp3TNPqaGz3u92Q
-         3RDg==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=++1XX3+8k55A2Ila7MS9KJPTa3AUixyAgpwW0iiITRU=;
+        b=D/cvNQ5m/DJROc4xHjjYFJvk4IZt7PjcM7p9T0SU7RDcq3BghKdt3BjmFl1tLekybo
+         Mtd5eyJ4+NHHOlUWJI98/K9SnZWoZfeylDl246sVyF/Xv19jAFG53Eqvli44C6gKB+vz
+         ecinIejnHmfECLP5O6ahb+/eELTi7RCTKr2Kz4AyyNJjLgUxRUKAtVxq3i/EVS0xA1rZ
+         DE5tbFoZzm9lGtIGmaFU5tDqOYDRkodWOFtY7NEe0f3fRVNrNUeNBRRZ4N4XNUe/nuEE
+         RzljarhYXGfu9FB+QMWgN7WmPEMiuxeU/BEAtpj1Vp5uDS9wVsCKUDpsx2xXdb8JW3dV
+         O2Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14si5941935wrg.174.2019.04.25.06.19.53
+        by mx.google.com with ESMTPS id u5si16224055wrp.255.2019.04.25.07.07.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Apr 2019 06:19:53 -0700 (PDT)
+        Thu, 25 Apr 2019 07:07:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:57001 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58082 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hJeI4-0001nJ-4g
-	for alex.bennee@linaro.org; Thu, 25 Apr 2019 09:19:52 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57706)
+	id 1hJf1q-00082p-RX
+	for alex.bennee@linaro.org; Thu, 25 Apr 2019 10:07:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJeHi-0001mQ-29
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 09:19:31 -0400
+	(envelope-from <philmd@redhat.com>) id 1hJf1Z-000816-Jz
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:06:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJeHh-0001wZ-0k
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 09:19:30 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:52564)
+	(envelope-from <philmd@redhat.com>) id 1hJf1X-0006AT-GF
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:06:52 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:40209)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJeHg-0001vl-Qp
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 09:19:28 -0400
-Received: by mail-wm1-f68.google.com with SMTP id j13so9333403wmh.2
-	for <qemu-arm@nongnu.org>; Thu, 25 Apr 2019 06:19:28 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJf1W-00068G-KI
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:06:50 -0400
+Received: by mail-wr1-f67.google.com with SMTP id h4so30523966wre.7
+	for <qemu-arm@nongnu.org>; Thu, 25 Apr 2019 07:06:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=o6G3SSPdCjH99oZB80vEaOpCCos0mBuC1H9vt+CMlQI=;
-	b=cYThTwWVhg7TKONEqMbFlqprMViQaxnVxoAUiuY4ptRU+VV3mftm0++0NASKV6y6ig
-	q9YoowbfA25huxdRzWfgOuqvJbuwEYj6m/ENy+5dJ92vUA0Knt4w8wNqXir6Nhhqk/jZ
-	4CTvvF8HT86aBzoVRqz2VskDquAmWwnnr4+qV+WbAZ3nUfMWY2HZUolPzt5IfWU1QZIJ
-	VVWd7IIXLle5VCISqXjKMFvth2JDS7pOdxTnjkJayjxLEoipScbptgukcyMqifvtLW5O
-	8S61z0b0QV4/RNTAD8XAEUQ9U3B0bDlnzniPRWOv0TfUIgwN1d6pZLtQb+qq9aXrc68g
-	6uKA==
-X-Gm-Message-State: APjAAAU3chQ6Ew6lVTfYmOUxVLTOXM95oAwhbxB5z9MQZWJel8WAapX+
-	+arklxwudcmShYq5hw9MpSRAgA==
-X-Received: by 2002:a1c:2ed7:: with SMTP id u206mr3444913wmu.5.1556198366310; 
-	Thu, 25 Apr 2019 06:19:26 -0700 (PDT)
+	bh=++1XX3+8k55A2Ila7MS9KJPTa3AUixyAgpwW0iiITRU=;
+	b=N18f/iSfLo9ki3m6IcD1ksm/lKOqSojRF3mTvdiyQRQfCM8p988pe0j35xP6lnc7az
+	yMI2gP0zUxmejLq5/810TnSckwt0GRDR+N7Jpwc3k3lknyc9JsFbJ2UJ/sef7Sv95wb1
+	ncH2S7/hv9L4h08QLl4zsoe7K2RjtXcneau5HrPzuD8juLvSVkzQBWGZuvLGPy+5MSf2
+	oHrovUZY+NoYnUiXUhjdiv3fqR8igYvgETaFaoiNvnitJkun6fMn/XdLWm8IJuxOTdlP
+	5bYx4zRyGLU91dAajxm3AVVDRYcRA8uhgbjAEhFUTNiaHqp/tMe4r3kVcCJzHHv3q1EM
+	1MbA==
+X-Gm-Message-State: APjAAAVOPb+68reUnnTLN36mNWZ9AXG5MZw+JIJ4TfP7BMNtlh6HpU6W
+	cxtxkIuQXstzINpFFP/nA/5LCg==
+X-Received: by 2002:a5d:4d49:: with SMTP id a9mr28576571wru.227.1556201208083; 
+	Thu, 25 Apr 2019 07:06:48 -0700 (PDT)
 Received: from [192.168.1.25] (abayonne-654-1-209-122.w109-222.abo.wanadoo.fr.
 	[109.222.216.122]) by smtp.gmail.com with ESMTPSA id
-	17sm17044344wrk.91.2019.04.25.06.19.24
+	62sm28308476wrm.18.2019.04.25.07.06.46
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 25 Apr 2019 06:19:25 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+	Thu, 25 Apr 2019 07:06:47 -0700 (PDT)
 To: Thomas Huth <thuth@redhat.com>, yang.zhong@intel.com,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	pbonzini@redhat.com
 References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-3-thuth@redhat.com>
-	<9f1355f2-3508-3f0a-512b-8b97fbda9ae1@redhat.com>
+	<20190418180057.3593-2-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ca065ba9-45b4-2272-538b-67ad0b6df3a3@redhat.com>
-Date: Thu, 25 Apr 2019 15:19:23 +0200
+Message-ID: <7d4fdf95-f3b9-786a-9869-fdfca87d6a59@redhat.com>
+Date: Thu, 25 Apr 2019 16:06:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <9f1355f2-3508-3f0a-512b-8b97fbda9ae1@redhat.com>
+In-Reply-To: <20190418180057.3593-2-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 02/29]
- hw/ide/ahci: Add a Kconfig switch for the AHDI-ICH9 device
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 01/29]
+ hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci stubs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,29 +123,42 @@ Cc: Rob Herring <robh@kernel.org>, Jan Kiszka <jan.kiszka@web.de>,
 	John Snow <jsnow@redhat.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uoM11yFf1mdb
+X-TUID: tLjNqFfrkIjZ
 
-On 4/20/19 12:31 PM, Philippe Mathieu-Daudé wrote:
-> On 4/18/19 8:00 PM, Thomas Huth wrote:
->> Some of our machines (like the ARM cubieboard) use CONFIG_AHCI for an AHCI
->> sysbus device, but do not use CONFIG_PCI since they do not feature a PCI
->> bus. With CONFIG_AHCI but without CONFIG_PCI, currently linking fails:
->>
->>     ../hw/ide/ich.o: In function `pci_ich9_ahci_realize':
->>     hw/ide/ich.c:124: undefined reference to `pci_allocate_irq'
->>     hw/ide/ich.c:126: undefined reference to `pci_register_bar'
->>     hw/ide/ich.c:128: undefined reference to `pci_register_bar'
->>     hw/ide/ich.c:131: undefined reference to `pci_add_capability'
->>     hw/ide/ich.c:147: undefined reference to `msi_init'
->>     ../hw/ide/ich.o: In function `pci_ich9_uninit':
->>     hw/ide/ich.c:158: undefined reference to `msi_uninit'
->>     ../hw/ide/ich.o:(.data.rel+0x50): undefined reference to `vmstate_pci_device'
->>
->> We must only compile ich.c if CONFIG_PCI is available, too, so introduce a
->> new config switch for this device.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 4/18/19 8:00 PM, Thomas Huth wrote:
+> Some machines have an AHCI adapter, but no PCI. To be able to
+> compile hw/ide/ahci.c without CONFIG_PCI, we still need the two
+> functions msi_enabled() and msi_notify() for linking.
+> This is required for the new Kconfig-like build system, if a user
+> wants to compile a QEMU binary with just one machine that has AHCI,
+> but no PCI, like the ARM "cubieboard" for example.
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/pci/pci-stub.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
+> index b941a0e842..c04a5df651 100644
+> --- a/hw/pci/pci-stub.c
+> +++ b/hw/pci/pci-stub.c
+> @@ -53,3 +53,14 @@ uint16_t pci_requester_id(PCIDevice *dev)
+>      g_assert(false);
+>      return 0;
+>  }
+> +
+> +/* Required by ahci.c */
+> +bool msi_enabled(const PCIDevice *dev)
+> +{
+> +    return false;
+> +}
+> +
+> +void msi_notify(PCIDevice *dev, unsigned int vector)
+> +{
+> +    g_assert_not_reached();
+> +}
+> 
 
-Oops, "AHCI" in patch subject (D -> C).
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>

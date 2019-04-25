@@ -1,173 +1,180 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2285135wrx;
-        Thu, 25 Apr 2019 14:48:37 -0700 (PDT)
-X-Received: by 2002:a1c:2e45:: with SMTP id u66mr3376401wmu.111.1556228917619;
-        Thu, 25 Apr 2019 14:48:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556228917; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2321352wrx;
+        Thu, 25 Apr 2019 15:33:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx0d1Xqd2Un/igPNxNDGQYXjwM6FeKemiTY9rZDmD43nVuuupxHCnxiCwquzd/RTVNnd1B7
+X-Received: by 2002:adf:fc47:: with SMTP id e7mr29164170wrs.100.1556231593980;
+        Thu, 25 Apr 2019 15:33:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556231593; cv=none;
         d=google.com; s=arc-20160816;
-        b=viel9uTYsv8PJUlZvAIb9Qi68MvofMm311+sr6WAv/59qbvtHHEMjqVaglEy46bj7p
-         pQ0qDMUNRsmNuBgLF6vw88t2TLk9ZQ2/VPDcLytDltIrJuSJVh7nJVHhFy/bAhV4g7rQ
-         pO5fFYcTZ2bF2/cxLivzsvjtPXEdMXBoZZncH/oGYow+uHL+iJPaQRl0uliAH00RaRyM
-         Jh1bI/Pd+WW8FfFzl8VuZW3DikpHgJ0U21Aig5VO1Yu9xYOtd9vq8UqTcsbWkH0vljXo
-         HYaTWNIe1Viv0NeVhVxrJfjiqNV6mgremUb0L17uQufQo5ks2euPOkcE5fqJ7KQgFeLX
-         eC5g==
+        b=pAxQZ1dX6/IAHZjih4UhDqaeqV0X5ypm9nBCSfjrZI8Orlsv7nLR7AnQNZCPlYjqR7
+         fS2FAyEvTfVOvWTxBc4UXmTB2N/k/x3YFiUnEWT3me7hb2TnOzexyo4YnUDPo9m8aBU2
+         MBo2aarvJl2nwdIlftPeclPcv0U+k2wB3T7mgTGlzLOSfUYTcpapbbgcGiruJ5JNWuYw
+         b3/mjSCaZHNPSkGjw23t6I2yFuqz8qH8+KvsWA7Zjuwg2zptkdBpJePsxpzrIV+7WKvw
+         9RQmYueis/5xowyyHn1KVqvPfns+RPXCSk2ZRySqHOacaLMAxEGsQp+FK+HVCjT9tyOR
+         F+Rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:cc:to:from:subject;
-        bh=hJatKdPVxanwTTmFXYxtRR78VeW99Db8Ei/S5bsheSU=;
-        b=eyzNy8AFpCpqHpikhAhMBvkoQhmNnBKhF7PSQ8+URN8h/mnQbDjlNwRLvPwMlpphNG
-         njgMtiwMjVsOcb6TewH3Q4uK9GvDEgLjG9fJ/5SMHKC/0KILf0uNaepNxCjMBl1S2H5b
-         oSuwUX8+MZ1ZOIxHaBKYFnENliklskX3qsHHg6+z6XyLOZsMUH+MNEsAWBGBj8dKd1t+
-         8vYYuuTSorMVC86stpATOOjFI+aIc91GgT9a0h9X/M4cR1RGMvf63Vo6fGE2bZ/+jWr1
-         AstPG0cwPP/0g7eRXnhR4QrHMOMzPu7In0OjatMEZVjZRZSrAkf0XNHmAzHfgp28jYav
-         KKlA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:sensitivity:importance
+         :date:to:from:message-id:mime-version:dkim-signature;
+        bh=RuEJFIRQ2i7/ahMQtYNtQGKtWspDv6i3GrE7BMGYUbw=;
+        b=Eie4uZpQzHYW6Sy/ns8qrdYAchzRk52VH7LTtGTf1jKMWQFkqaQP8Tr0+9aTpoWZr6
+         QOAOKlj7XFp/WOv9VO1uhVuB3KlVDr4yJFXiwRrt2M7ac9W4+Qt4F02lGpkLHCRygV7I
+         /9eqq4W5qNok27jGSwBFDnTLC/G0CwkiKqgTXqYZ5srAOqKcUt4XWV+2n/egC82Ld9ay
+         8CwzboZE81oztYxpQlD3x2y4r3RrQs9revAumULZxeTV1QHhbZR3BswVDILtzIX5gW9k
+         05nRe5+1zzmHLDJcBlU3MFYFSLa+h8J7aPHnBZ3jqSjeLMlFqNI4TYhXw/PxI5avcL8C
+         RcSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f187sor10100059wme.18.2019.04.25.14.48.37
+       dkim=fail header.i=@web.de header.s=dbaedf251592 header.b=OWWLALOu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u138si6476700wmu.59.2019.04.25.15.33.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 25 Apr 2019 14:48:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 25 Apr 2019 15:33:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=hJatKdPVxanwTTmFXYxtRR78VeW99Db8Ei/S5bsheSU=;
-        b=W95vbP2tpZUO1Y41zRnNRd0KivOyIfH6r69tvOF+TaYxowupXv53gakmdLLGhmvLmX
-         50EfSQoc0QucNoOke6yNn3aIhMj2mKx6brtVB+sqdQRa5jrCLXxmyRh2Jgt2cha+Cwcz
-         YYIdHKvjJpLqt9T9U46TaAyVJaGjahUz2D12BUI+d9MULNfwq/khhc+vQE4lq429LQCV
-         Ls0bYSMxl0r1GKbkNDt6O9tVVAUo/vssv+AcNF9lKXKfOrX61QwQ433H3eHguHqDZZ4Z
-         zLQ/pxShH/s2xYIly6qTJVMs+4deWrRoV9cUgqMMtQmCQQ7HMYJ3DRDiC7+acOh8oSt3
-         Bxjg==
-X-Gm-Message-State: APjAAAX59JlTg54qyYqPHgFLOwF1jhiZ9qujuNyHP3HtGgzUz7caBZEr
-	Ef7hjV+3dqgFggxw4/drNn/bEK9VjBZc1Q==
-X-Google-Smtp-Source: APXvYqxfpTEvMrYqi1gROtQzpjxoeuoz6SMSQOyPeRxZqt0O+Njk7hjmI9my4KIiK4Pc7MpfeqgDLw==
-X-Received: by 2002:a1c:6c17:: with SMTP id h23mr5046170wmc.122.1556228917367;
-        Thu, 25 Apr 2019 14:48:37 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.25] (abayonne-654-1-209-122.w109-222.abo.wanadoo.fr. [109.222.216.122])
-        by smtp.gmail.com with ESMTPSA id r16sm19186256wrx.37.2019.04.25.14.48.35
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Apr 2019 14:48:36 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
- argument"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Jim Mussared <jim@groklearning.com>, Julia Suvorova <jusual@mail.ru>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>
-References: <20190103144124.18917-1-stefanha@redhat.com>
- <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
- <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <9f20517f-dea4-cbc9-86ad-bab5c66d2d5c@redhat.com>
-Date: Thu, 25 Apr 2019 23:48:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+       dkim=fail header.i=@web.de header.s=dbaedf251592 header.b=OWWLALOu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:36017 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hJmvY-0001Ze-TA
+	for alex.bennee@linaro.org; Thu, 25 Apr 2019 18:33:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45913)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Bjoern.M.Haase@web.de>) id 1hJiso-0003QY-6c
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <Bjoern.M.Haase@web.de>) id 1hJism-0002Y3-LR
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:06 -0400
+Received: from mout.web.de ([212.227.15.14]:35225)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <Bjoern.M.Haase@web.de>)
+	id 1hJism-0002UQ-AY
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+	s=dbaedf251592; t=1556216041;
+	bh=RuEJFIRQ2i7/ahMQtYNtQGKtWspDv6i3GrE7BMGYUbw=;
+	h=X-UI-Sender-Class:From:To:Subject:Date;
+	b=OWWLALOu+aptJoNuD4qnPr4aGZzBxknvOHawMEifr8ddD9tmeLrfLyTcGkCr5rrFM
+	q66BPNrDa42rpKKs/FAmz+LOjMLs/EMieuwUJu5jZQAtu76jbBekwvCFlaEaVjqVwh
+	kPllrIP0X15GkptzWQkrpklmJq9RbCeFF5KrGtc0=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [109.90.240.132] ([109.90.240.132]) by web-mail.web.de
+	(3c-app-webde-bs13.server.lan [172.19.170.13]) (via HTTP);
+	Thu, 25 Apr 2019 20:14:01 +0200
 MIME-Version: 1.0
-In-Reply-To: <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: pmglBn3WKnW1
+Message-ID: <trinity-1f7e0bc4-e787-4b8e-9ba2-9e458d88c7ca-1556216041544@3c-app-webde-bs13>
+From: =?UTF-8?Q?=22Bj=C3=B6rn_Haase=22?= <Bjoern.M.Haase@web.de>
+To: qemu-arm@nongnu.org
+Content-Type: text/html; charset=UTF-8
+Date: Thu, 25 Apr 2019 20:14:01 +0200
+Importance: normal
+Sensitivity: Normal
+X-Priority: 3
+X-Provags-ID: V03:K1:wBxKDibmTnCe8d7/aAfI5vnINLCIYsO2FGH7SjMgEBufYN3Sn+7NtIQwH2/nyDM8AFfeU
+	Ytzcbju1VtzFu03xwW6vanyqomOVPxnYKIi3b1Gzzi8LMYLxy3oqrMoFga9QzlA7xigy1+MDpTsc
+	Opge1+laDgn3ehWmTcVP74Dezoah+3t6eqsK7To2TsNWRX6Mrp4iI0AOylauI8cBSjWGdxrmE2yt
+	nAXRWmHVTw8z22Kh051yr4Cm7us5vhsNeZPajz4sPdmNrq4pUnyJUlGXBvSJ9j9kg2aTwGitMWVQ
+	to=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:SdTdgJPXQzo=:Yn62tvzud+tFGXibRWMRbt
+	V7dgGcWet+tLgdWo+RQBMJqi06OpEqZUtHnmcD6te290wqLpSlXkTqSGJx+rH0vXQpL+ryK/K
+	m+D5C0RDcGfjpC0d6tbbO/Tq0kNaR0boYWsNzFrqJ6iVk+pHNblVpIEiYvZIUXHy5UNejruR4
+	qiuFWQZ0wjdxGGM8PgW/61p//lvMR6dUNhtFpVEhvM3wDCu+MYgHbLGnykdA0pLub+lsXtl37
+	E23k+KmgI16dtJoDL2WBUYGPc8iSHUODhHR7ZPZszi7Vxj2IjwGSXhO/Cwj8WLb+iORLO1EXz
+	HP3+0fil/6i3YiI9h8BFOQXkXOkMLERNkrLfrl9lqrIMZ8/81GjNzDtK+USYep6IvXXHBayVt
+	zl42ydkuYiPBLGk4tdXASP95yEnhOK+7/AQDFM7S0Ay+MYsP1bhGACQz0MsDlkoUw7sf9WfkD
+	zuuMoL8c57c+m9ZhIFa8q/QIYP2ac+EZBoqtOaLF6Sf3QQIn9If3lv9vgOy6go6m2nhKbUt6M
+	1RPHTUhCJyeaiuVrdtFSfVxztfVF0pJPRkuIDGwoa3PvyI3/jq0zagmP6egZ+O6oXTWouzHz+
+	oRMeKeagQUlOjvp0gtTlPkfCfMT5DawV7HyKDYYR7148DxrRREqFouAA==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.15.14
+X-Mailman-Approved-At: Thu, 25 Apr 2019 18:32:50 -0400
+Subject: [Qemu-arm] Regression tests for Assembly libraries for Cortex-M:
+ More recent qemu versions core-dump or fail with warnings
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ALpUs7cbK/Qr
 
-On 4/25/19 8:07 PM, Philippe Mathieu-Daudé wrote:
-> Hi Peter, Stefan,
-> 
-> On 1/4/19 4:16 PM, Peter Maydell wrote:
->> On Thu, 3 Jan 2019 at 14:41, Stefan Hajnoczi <stefanha@redhat.com> wrote:
->>>
->>> This reverts commit 01fd41ab3fb69971c24a69ed49cde96086d81278.
->>>
->>> The generic loader device (-device loader,file=kernel.bin) can be used
->>> to load a kernel instead of the -kernel option.  Some boards have flash
->>> memory (pflash) that is set via the -pflash or -drive options.
->>>
->>> Allow starting QEMU without the -kernel option to accommodate these
->>> scenarios.
->>>
->>> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
->>> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> 
-> Previous to this commit (v3.1), we have:
-> 
-> $ qemu-system-aarch64 -M netduino2
-> qemu-system-aarch64: Guest image must be specified (using -kernel)
-> 
-> Now (v4.0) we get:
-> 
-> $ qemu-system-aarch64 -M netduino2
-> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
-> 
-> R00=00000000 R01=00000000 R02=00000000 R03=00000000
-> R04=00000000 R05=00000000 R06=00000000 R07=00000000
-> R08=00000000 R09=00000000 R10=00000000 R11=00000000
-> R12=00000000 R13=ffffffe0 R14=fffffff9 R15=00000000
-> XPSR=40000003 -Z-- A handler
-> FPSCR: 00000000
-> Aborted (core dumped)
+<html><head></head><body><div style="font-family: Verdana;font-size: 12.0px;"><div>Hello to all,</div>
 
-(gdb) bt
-#0  0x00007fd14f39457f in raise () at /lib64/libc.so.6
-#1  0x00007fd14f37e895 in abort () at /lib64/libc.so.6
-#2  0x000056286da2695c in cpu_abort (cpu=0x5628705c43c0,
-fmt=0x56286dfdc450 "Lockup: can't escalate %d to HardFault (current
-priority %d)\n") at /source/qemu/exec.c:1282
-#3  0x000056286dada4ea in do_armv7m_nvic_set_pending
-(opaque=0x5628705a5030, irq=3, secure=false, derived=false) at
-/source/qemu/hw/intc/armv7m_nvic.c:632
-#4  0x000056286dada568 in armv7m_nvic_set_pending
-(opaque=0x5628705a5030, irq=6, secure=false) at
-/source/qemu/hw/intc/armv7m_nvic.c:650
-#5  0x000056286db3ae1b in arm_v7m_cpu_do_interrupt (cs=0x5628705c43c0)
-at /source/qemu/target/arm/helper.c:8822
-#6  0x000056286dad2e9e in cpu_handle_exception (cpu=0x5628705c43c0,
-ret=0x7fd13d9fbe2c) at /source/qemu/accel/tcg/cpu-exec.c:504
-#7  0x000056286dad350a in cpu_exec (cpu=0x5628705c43c0) at
-/source/qemu/accel/tcg/cpu-exec.c:709
-#8  0x000056286da77497 in tcg_cpu_exec (cpu=0x5628705c43c0) at
-/source/qemu/cpus.c:1431
-#9  0x000056286da77caf in qemu_tcg_cpu_thread_fn (arg=0x5628705c43c0) at
-/source/qemu/cpus.c:1735
-#10 0x000056286deb5dce in qemu_thread_start (args=0x5628705ea850) at
-/source/qemu/util/qemu-thread-posix.c:502
-#11 0x00007fd14f52a58e in start_thread () at /lib64/libpthread.so.0
-#12 0x00007fd14f459683 in clone () at /lib64/libc.so.6
+<div>&nbsp;</div>
 
-Running with -d in_asm,int:
-----------------
-IN:
-0x00000000:  00000000  andeq    r0, r0, r0
+<div>I&#39;d appreciate some advice on how to</div>
 
-Taking exception 18 [v7M INVSTATE UsageFault]
-...BusFault with BFSR.STKERR
-...taking pending nonsecure exception 3
-----------------
-IN:
-0x00000000:  00000000  andeq    r0, r0, r0
+<div>- simulate a ARM Cortex-M4 system with large amount of RAM</div>
 
-Taking exception 18 [v7M INVSTATE UsageFault]
-qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
+<div>- together with semihosting (stdin, stdout and files) on the host CPU.</div>
 
-Since I didn't provided anything to bootstrap the guest, the bootvector
-in flash is obviously empty.
+<div>&nbsp;</div>
 
-> 
-> This is confusing.
-> 
-> (same happens with emcraft-sf2, microbit, musca-*)
-> 
-> Regards,
-> 
-> Phil.
-> 
+<div>The background of my question is a bit different from the conventional QEMU use-case for full-system simulation:</div>
+
+<div>&nbsp;</div>
+
+<div>I am working on CC0 crypto libraries for the Arm Cortex-M series (see e.g. https://github.com/BjoernMHaase/fe25519). There is a lot of assembly optimization and assembly code-generators behind the scenes which need extensive tests. I&#39;d like to publish my code together with a regression test library running on Qemu (specifically regarding the asm stuff). The regression tests best have access to files and need to be executed without the code-size-restriction and memory constraints of the tiny embedded targets (which might not even allow for stl containers, e.g.).</div>
+
+<div>&nbsp;</div>
+
+<div>The problem is that the regression suite code is too big to fit onto any embedded target. I.e. I&#39;d need to simulate a cortex-m4 system with, e.g. 256 MByte RAM and with file access using the semihosting support. So just running on the embedded target is not an option :-(. The use case is, thus, not to simulate real-world CPUs but to simulate CPUs that are not available in the real world.</div>
+
+<div>&nbsp;</div>
+
+<div>With the older versions of QEMU, I succeeded with using</div>
+
+<div>&nbsp;</div>
+
+<div>qemu-system-arm -nographic -monitor null -serial null -semihosting -cpu cortex-m4 -m 256M -M integratorcp -kernel ./test_naclM4</div>
+
+<div>&nbsp;</div>
+
+<div>where I have used a combination of an ARM9 machine together with the &quot;-cpu cortex-m4&quot; switch. This worked perfectly. When compiling the testsuite with arm-none-eabi-gcc with -lrdimon and -lc and the corresponding linker specs, I was able to use the semihosting, just as for the integratorcp simulation.</div>
+
+<div>&nbsp;</div>
+
+<div>Unfortunately the more recent versions of QEMU either core-dump or give warnings.</div>
+
+<div>
+<div>On Qemo 4.0 I get the result &quot;qemu-system-arm: This board cannot be used with Cortex-M CPUs&quot;.</div>
+I did some attempts using e.g. the lm3s811evb targets. However, I constantly get failures such as</div>
+
+<div>&nbsp;</div>
+
+<div>&quot;qemu-system-arm: Trying to execute code outside RAM or ROM&quot;</div>
+
+<div>&nbsp;</div>
+
+<div>most surely since qemu checks for the limitations of this specific microcontroller memory sizes, which I want to exceed intentionally!</div>
+
+<div>&nbsp;</div>
+
+<div>Also I believe that semihosting will not be supported on any of the native cortex-m machines? Any advice would be very appreciated.</div>
+
+<div>&nbsp;</div>
+
+<div>- Would it be necessary to add a separate &quot;cortex-m-semihosting&quot; target to the qemu code or is there possibly another way to proceed?</div>
+
+<div>- Is there some documentation on how to add a new machine to the qemu code? I did not actually find the place where e.g. the lm3s811evb configuration is stored within the source trees.</div>
+
+<div>&nbsp;</div>
+
+<div>Any feedback would be appreciated.</div>
+
+<div>&nbsp;</div>
+
+<div>Yours,</div>
+
+<div>&nbsp;</div>
+
+<div>Bj&ouml;rn.</div></div></body></html>

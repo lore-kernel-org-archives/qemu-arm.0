@@ -1,103 +1,102 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1853760wrx;
-        Thu, 25 Apr 2019 07:22:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGmEjLvCOoP0LCckDuEkkZCipr08W82nC6Vhf3/PB4RxBUCIImvJ/EdGdlPYXP6XRlhCdm
-X-Received: by 2002:a5d:63c7:: with SMTP id c7mr11228525wrw.199.1556202154932;
-        Thu, 25 Apr 2019 07:22:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556202154; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1855665wrx;
+        Thu, 25 Apr 2019 07:24:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwTWl5x8goeqamaWMSHAy4/xNc/5XRobVUy/yD8NHDfeH6yjVOm1cWjBdBtaKhEei6is8Pt
+X-Received: by 2002:a1c:185:: with SMTP id 127mr3626896wmb.145.1556202264898;
+        Thu, 25 Apr 2019 07:24:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556202264; cv=none;
         d=google.com; s=arc-20160816;
-        b=vxvWqe2BC+B4KIkaOzVCEfwQwcaesvfSXzuXYjluW8muy0L/lEdsSRVEwM9obKJMel
-         VxgVlCA9gd7xFIzetNQfan6gtRzwZ5LM+3vbOPcPHfma/51GbUxsPvKmO+Sgs7SpH9hx
-         7ySX+72u56wXeKjQuZAk09S4TdrBwVQIJkfWEdlY6YlYeg116CCxf3JR7J5eeck+9TD/
-         M4g502kmJe1EgrT3mb5hbybjxCFb8gLoh55nFSuMzkma94OaJlITG/AY/dMPD4+Jvwkp
-         h/UCVC1L0vNHXVPd/TQTzLmVtlEK/h3c3V8DxMpOnZ9XtSzE+ZB/yO2Rnf7L+uNXHZso
-         AYxQ==
+        b=dYrNOs2hrdkGPzsZP6yWOsO2LE+/KIGH7gFjZd0ylZ/G0hBnRj2e6wLQ2wHqYr3bTI
+         1W8MeX+b/zvgasWw6xUlf4hD8mWC0MpkBQhPN0q2G4MzjkrRAKhV7XaFqgkRIwvEgM3J
+         hoGIwk4Id+aiMjF5sU8juJdQ8vKPimWO/g1FTrLaGa/FhjaVdj9Byy+rMumgi/Vfgb2a
+         Su1K3sEphXDgANj0jzoAfQEBZhzUpEYxkzbhgshzW/MUB9d77DZiLqJardrwwFFdeTrn
+         PvdTEkjK7vauS+cTurUDAi6jx9TMacC6zuPIK1d8EA+H8JxTVV+u6OD9tPlcIP/dQ/KO
+         cc3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:to:from;
-        bh=oN1gTjcDDn35eS9dJ/AKEVa5Nwz7Po5+FmnnWoiCwqA=;
-        b=kH+zsDrgYvfGe7mOQ8D/cjE9MO6hlNUS8nFZu2/NhDJgWyimi9oJ39Ol7fTjAHQ14t
-         q/8zcTBSVwELqm/yI2vIPG88HMbu6Az4fAWbq651tFG8cbgPPwOBtK3gEkogG9Ke3h/O
-         Y74hTcuzGEy+Ol1RqoWyGXhdit8/3cgS+CGDGQhyr14+6HmL8wwh9ecDGSaHpTxlcq2q
-         niPZ5F2ot8rua0lwjZUKkH1z366NiyfEzEqGS/NSQkzD5f2fdTpO8oNF29pjo+J0KM6U
-         Enp/76+Puo4Zlh3kj7LanWwNQLRAl44o+sQT/Gx7bpDhBdtmG21qe3tb8NBx0tX+ZgcV
-         LnOQ==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=o9qYZ+xKjARwGj9xJtPZr6yjVKvTFK44iOwXMsFiPv0=;
+        b=Oe94V3El3QzX47cRQmvQAOm/A7hyjY3AZwFxVyyDqxSN5/B5cHzO43xj4rpXvCDHOl
+         SoCBweby3/Gfrkof99NUJUFZ1GnBYSCbhYVMTElGowuCMum5nbBcEEXVZ68eI1ixjIeS
+         NOzPTwucTf/Va9FpgDuphF/fmT7FfbxSIYZUx+MREgixqVmnus0NsRtMP4x0EMboewuI
+         9roG0AORfWMvCK/oCzu1LvFcFD7GPeN1H/YFW8msd1IgbnQzws4rlFeV4VsiBE5Mvxl7
+         vyv569HkcXHB1ceyiicSyOk5KaohdqPDhHTj0rEA8dJEO0tgdn5nnn25dE0swGWMml7X
+         wbig==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o1si16139517wrm.383.2019.04.25.07.22.34
+        by mx.google.com with ESMTPS id q2si2603098wrj.249.2019.04.25.07.24.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Apr 2019 07:22:34 -0700 (PDT)
+        Thu, 25 Apr 2019 07:24:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:58426 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:58445 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hJfGk-0008IE-2d
-	for alex.bennee@linaro.org; Thu, 25 Apr 2019 10:22:34 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49047)
+	id 1hJfIW-0000gg-0f
+	for alex.bennee@linaro.org; Thu, 25 Apr 2019 10:24:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49551)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJfGL-00089j-KS
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:22:13 -0400
+	(envelope-from <philmd@redhat.com>) id 1hJfIB-0000Yp-MP
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:24:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJfGK-0002q1-Fr
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:22:09 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:36047)
+	(envelope-from <philmd@redhat.com>) id 1hJfIA-0004P8-Im
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:24:03 -0400
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:34935)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJfGK-0002pQ-9g
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:22:08 -0400
-Received: by mail-wr1-f67.google.com with SMTP id b1so19265046wru.3
-	for <qemu-arm@nongnu.org>; Thu, 25 Apr 2019 07:22:08 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJfIA-0004Nw-Bx
+	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 10:24:02 -0400
+Received: by mail-wm1-f65.google.com with SMTP id y197so10901934wmd.0
+	for <qemu-arm@nongnu.org>; Thu, 25 Apr 2019 07:24:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=oN1gTjcDDn35eS9dJ/AKEVa5Nwz7Po5+FmnnWoiCwqA=;
-	b=RmLzzUE1C56UTTl8wsay76BCF8V8UAS+NuKrNJop/4CeYSD0iVxlrFIp3CGZNRaZTl
-	mQjlC6fJmkvLr72XtMeD2WdDhM4lENoZ7raIyScoVZo7mxoN93R0PqIr+QCWL9P2yv6M
-	D4ikcefuC0EAPOYQ+YR6QHHh68I0LkINjcpFOmhWMcqruV0hE8GJFGeVihuf/dN2jQYu
-	YbBaK5kb8MCxe2vSFXmi+upbvfLTrw+/UMhWjsOidoX3zZEWAw1soSfFbgUXx43ZVAwJ
-	NhgGlOxSsVn0MndiNknXsndmlxYQHy9HVhWLKDsCDLeBfCtH9ad+LUuCcb4tTdy3X3+Q
-	tibw==
-X-Gm-Message-State: APjAAAWK4kUjmaLzhAPLOPiCtpXe2KyipDqSJgWryN+COwfoA3JD+2C7
-	mByu0k7Ohw74rmL1HMFgYxNVPw==
-X-Received: by 2002:a5d:6646:: with SMTP id f6mr12258776wrw.68.1556202127195; 
-	Thu, 25 Apr 2019 07:22:07 -0700 (PDT)
+	bh=o9qYZ+xKjARwGj9xJtPZr6yjVKvTFK44iOwXMsFiPv0=;
+	b=JZ7IZD7Ib/CeCWivh+eqh2d5dqbxN7PjJsON4GRRvO8GBKY4nYmn1X3n+AXI5RM+9b
+	3x84UdtW2Cdc2F/3sC6Y1D/g4qzllDoT3YXa19IOUiPZ8lZ3vTPrbH3kWVoBY86wcH38
+	i4ukmF/JZ2i9dYICLMKqoaYRP4qaKTHDL7M3n40r73zP3/QNJQ+nn9vxLSk4P/OKyWkJ
+	VYFmT87rJ6TAnyurX50fo1cJ/8tjthhRH5DqGTg4Bpz6qbNW7uMcgiOz6DOtjw4hgpLV
+	2IgWsVTBkLrePm0up5xRoERACvvl7XqcXQdRjcnlUfakdzTx35x29fXy8VWcP0Xy45TR
+	3JTA==
+X-Gm-Message-State: APjAAAU9dFeRaveHOsOt5Nh1ER4HW2jLAOzUxMAAVKshb60UavzNupjj
+	r9Ji4kFfy3aXTCbuor9RBSZhkw==
+X-Received: by 2002:a1c:7610:: with SMTP id r16mr3573859wmc.21.1556202241157; 
+	Thu, 25 Apr 2019 07:24:01 -0700 (PDT)
 Received: from [192.168.1.25] (abayonne-654-1-209-122.w109-222.abo.wanadoo.fr.
-	[109.222.216.122]) by smtp.gmail.com with ESMTPSA id
-	n18sm18853950wrt.16.2019.04.25.07.22.03
+	[109.222.216.122])
+	by smtp.gmail.com with ESMTPSA id y4sm2483703wrt.34.2019.04.25.07.23.59
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 25 Apr 2019 07:22:06 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+	Thu, 25 Apr 2019 07:24:00 -0700 (PDT)
 To: Thomas Huth <thuth@redhat.com>, yang.zhong@intel.com,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	pbonzini@redhat.com
 References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-7-thuth@redhat.com>
-	<cf39902b-267a-ea7e-c513-fa0c9abf639c@redhat.com>
+	<20190418180057.3593-5-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f362864d-b8f7-687d-1397-03769202cd4f@redhat.com>
-Date: Thu, 25 Apr 2019 16:22:03 +0200
+Message-ID: <356b0ed3-31c3-b210-f98e-c0df97e48fa1@redhat.com>
+Date: Thu, 25 Apr 2019 16:23:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <cf39902b-267a-ea7e-c513-fa0c9abf639c@redhat.com>
+In-Reply-To: <20190418180057.3593-5-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 06/29] hw/arm:
- Express dependencies of integratorcp with Kconfig
+X-Received-From: 209.85.128.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 04/29] hw/arm:
+ Express dependencies of the exynos machines with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,110 +123,131 @@ Cc: Rob Herring <robh@kernel.org>, Jan Kiszka <jan.kiszka@web.de>,
 	John Snow <jsnow@redhat.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GZtmq0rbbz18
+X-TUID: WTbBSPmfbkVN
 
-On 4/25/19 4:14 PM, Philippe Mathieu-Daudé wrote:
-> Hi Thomas,
+On 4/18/19 8:00 PM, Thomas Huth wrote:
+> Add Kconfig dependencies for the Exynos-related boards (nuri and
+> smdkc210).
+> This patch is slightly based on earlier work by Ákos Kovács (i.e.
+> his "hw/arm/Kconfig: Add ARM Kconfig" patch).
 > 
-> On 4/18/19 8:00 PM, Thomas Huth wrote:
->> This patch is slightly based on earlier work by Ákos Kovács (i.e.
->> his "hw/arm/Kconfig: Add ARM Kconfig" patch).
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  default-configs/arm-softmmu.mak | 8 +-------
->>  hw/arm/Kconfig                  | 8 ++++++++
->>  hw/display/Kconfig              | 1 +
->>  3 files changed, 10 insertions(+), 7 deletions(-)
->>
->> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->> index 50a4be3cad..6195b75f48 100644
->> --- a/default-configs/arm-softmmu.mak
->> +++ b/default-configs/arm-softmmu.mak
->> @@ -9,6 +9,7 @@ CONFIG_PCI_TESTDEV=y
->>  
->>  CONFIG_EXYNOS4=y
->>  CONFIG_HIGHBANK=y
->> +CONFIG_INTEGRATOR=y
->>  
->>  CONFIG_VGA=y
->>  CONFIG_NAND=y
->> @@ -33,7 +34,6 @@ CONFIG_ADS7846=y
->>  CONFIG_MAX111X=y
->>  CONFIG_SSI_SD=y
->>  CONFIG_SSI_M25P80=y
->> -CONFIG_SMC91C111=y
->>  CONFIG_ALLWINNER_EMAC=y
->>  CONFIG_IMX_FEC=y
->>  CONFIG_FTGMAC100=y
->> @@ -50,10 +50,7 @@ CONFIG_ARM11MPCORE=y
->>  CONFIG_NETDUINO2=y
->>  
->>  CONFIG_PL041=y
->> -CONFIG_PL050=y
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  default-configs/arm-softmmu.mak | 17 ++++++-----------
+>  hw/arm/Kconfig                  | 10 ++++++++++
+>  2 files changed, 16 insertions(+), 11 deletions(-)
 > 
-> You remove this device but it is used by the realview/versatile/vexpress
-> (you add it to these machines later in patch 11).
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 613d19a06d..2a11e76cc7 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -1,8 +1,14 @@
+>  # Default configuration for arm-softmmu
+>  
+> +# TODO: ARM_V7M is currently always required - make this more flexible!
+> +CONFIG_ARM_V7M=y
+> +
+>  CONFIG_PCI=y
+>  CONFIG_PCI_DEVICES=y
+>  CONFIG_PCI_TESTDEV=y
+> +
+> +CONFIG_EXYNOS4=y
+> +
+>  CONFIG_VGA=y
+>  CONFIG_NAND=y
+>  CONFIG_ECC=y
+> @@ -26,7 +32,6 @@ CONFIG_ADS7846=y
+>  CONFIG_MAX111X=y
+>  CONFIG_SSI_SD=y
+>  CONFIG_SSI_M25P80=y
+> -CONFIG_LAN9118=y
+>  CONFIG_SMC91C111=y
+>  CONFIG_ALLWINNER_EMAC=y
+>  CONFIG_IMX_FEC=y
+> @@ -36,21 +41,15 @@ CONFIG_PFLASH_CFI01=y
+>  CONFIG_PFLASH_CFI02=y
+>  CONFIG_MICRODRIVE=y
+>  CONFIG_USB_MUSB=y
+> -CONFIG_USB_EHCI_SYSBUS=y
+>  CONFIG_PLATFORM_BUS=y
+>  CONFIG_VIRTIO_MMIO=y
+>  
+>  CONFIG_ARM11MPCORE=y
+> -CONFIG_A9MPCORE=y
+>  CONFIG_A15MPCORE=y
+>  
+> -CONFIG_ARM_V7M=y
+>  CONFIG_NETDUINO2=y
+>  
+> -CONFIG_ARM_GIC=y
+>  CONFIG_ARM_TIMER=y
+> -CONFIG_ARM_MPTIMER=y
+> -CONFIG_A9_GTIMER=y
+>  CONFIG_PL011=y
+>  CONFIG_PL022=y
+>  CONFIG_PL031=y
+> @@ -61,11 +60,9 @@ CONFIG_PL080=y
+>  CONFIG_PL110=y
+>  CONFIG_PL181=y
+>  CONFIG_PL190=y
+> -CONFIG_PL310=y
+>  CONFIG_PL330=y
+>  CONFIG_CADENCE=y
+>  CONFIG_XGMAC=y
+> -CONFIG_EXYNOS4=y
+>  CONFIG_PXA2XX=y
+>  CONFIG_BITBANG_I2C=y
+>  CONFIG_FRAMEBUFFER=y
+> @@ -73,7 +70,6 @@ CONFIG_XILINX_SPIPS=y
+>  CONFIG_ZYNQ_DEVCFG=y
+>  
+>  CONFIG_ARM11SCU=y
+> -CONFIG_A9SCU=y
+>  CONFIG_DIGIC=y
+>  CONFIG_MARVELL_88W8618=y
+>  CONFIG_OMAP=y
+> @@ -123,7 +119,6 @@ CONFIG_VERSATILE_I2C=y
+>  CONFIG_PCI_EXPRESS=y
+>  CONFIG_PCI_EXPRESS_GENERIC_BRIDGE=y
+>  
+> -CONFIG_SDHCI=y
+>  CONFIG_INTEGRATOR=y
+>  CONFIG_INTEGRATOR_DEBUG=y
+>  
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index d298fbdc89..acd07b2add 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -8,7 +8,13 @@ config DIGIC
+>  
+>  config EXYNOS4
+>      bool
+> +    select A9MPCORE
+> +    select I2C
+> +    select LAN9118
+> +    select PL310 # cache controller
+>      select PTIMER
+> +    select SDHCI
+> +    select USB_EHCI_SYSBUS
 
-My worry is the unlikely event of someone checking out a new branch
-after this patch and before patch 11, and disable CONFIG_INTEGRATOR,
-then these 3 machines would fail to build.
+Same comment here, you disable selectors that are required by other
+machines (That would fail to build if disable EXYNOS4).
 
-Since it is very unlikely:
+Since you add them to each machine later,
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
+>  
+>  config HIGHBANK
+>      bool
+> @@ -104,6 +110,10 @@ config ZAURUS
+>  
+>  config A9MPCORE
+>      bool
+> +    select A9_GTIMER
+> +    select A9SCU       # snoop control unit
+> +    select ARM_GIC
+> +    select ARM_MPTIMER
+>  
+>  config A15MPCORE
+>      bool
 > 
->>  CONFIG_PL080=y
->> -CONFIG_PL110=y
-> 
-> Ditto,
-> 
->> -CONFIG_PL181=y
-> 
-> Ditto.
-> 
->>  CONFIG_PL190=y
->>  CONFIG_PL330=y
->>  CONFIG_CADENCE=y
->> @@ -113,9 +110,6 @@ CONFIG_VERSATILE_I2C=y
->>  CONFIG_PCI_EXPRESS=y
->>  CONFIG_PCI_EXPRESS_GENERIC_BRIDGE=y
->>  
->> -CONFIG_INTEGRATOR=y
->> -CONFIG_INTEGRATOR_DEBUG=y
->> -
->>  CONFIG_ALLWINNER_A10_PIT=y
->>  CONFIG_ALLWINNER_A10_PIC=y
->>  CONFIG_ALLWINNER_A10=y
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index 0ba377ac18..ad3b1f9b40 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -32,6 +32,14 @@ config HIGHBANK
->>  
->>  config INTEGRATOR
->>      bool
->> +    select ARM_TIMER
->> +    select INTEGRATOR_DEBUG
->> +    select PL011 # UART
->> +    select PL031 # RTC
->> +    select PL050 # keyboard/mouse
->> +    select PL110 # pl111 LCD controller
->> +    select PL181 # display
->> +    select SMC91C111
->>  
->>  config MAINSTONE
->>      bool
->> diff --git a/hw/display/Kconfig b/hw/display/Kconfig
->> index 72be57a403..a11815c9af 100644
->> --- a/hw/display/Kconfig
->> +++ b/hw/display/Kconfig
->> @@ -21,6 +21,7 @@ config JAZZ_LED
->>  
->>  config PL110
->>      bool
->> +    select FRAMEBUFFER
->>  
->>  config SII9022
->>      bool
->>

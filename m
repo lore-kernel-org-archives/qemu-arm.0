@@ -1,138 +1,124 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp1409949wrx;
-        Sun, 21 Apr 2019 07:17:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMSgc2qscrawIeAfjWeN3f6V4uwztt7xo9SYYeSgLCrrZzBsVLAy32bv9XUAsb7Q+WX3/c
-X-Received: by 2002:a5d:52ce:: with SMTP id r14mr10489151wrv.224.1555856241046;
-        Sun, 21 Apr 2019 07:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1555856241; cv=none;
+Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2092591wrx;
+        Thu, 25 Apr 2019 11:07:08 -0700 (PDT)
+X-Received: by 2002:a5d:4b4e:: with SMTP id w14mr22404551wrs.15.1556215628623;
+        Thu, 25 Apr 2019 11:07:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556215628; cv=none;
         d=google.com; s=arc-20160816;
-        b=oxQ9fhUPmrWXlqel7byNsDWMFh/SB1i2+iQGrvzmgR3S7ocjKa5A5qm5G55GvNaMhH
-         fzvDOGg3abDMl9vPaOZkEYp45VEt7/ve2QG4sSA9COT5oC3gFwR2gdCpMKDSCFfNv0Qi
-         3vvM3zjkV6FSUiLy7Byw8EKbAgOjzfCPIssaZN5rZpYNmJZcxoyvkXDS4Fp7xgej322d
-         kC6B9W4JYCjkk/Wivb1eBvcA1ydenf59kAwBVIzujtN2jOIduop7+ky6cV9KpN0O3iIJ
-         Ubw367WnSxeYn4VB3/i3NPbnqBOQDYtJiQ6OlEjB4ZgAGvBYrKKPlu78+bSMQeRiSseS
-         9yuA==
+        b=DM07z4eD9+WMzogMFLuLvKu0muNEAW5NsTwUCZZNP2TmHuTbSNwDtW3KvcKO6X0cRw
+         N8BFpDbG1wNRJl/gk8wOMwy5U7kHlKCDEi5idwU4EJdTZ4TC6jvPMhYTPa6h6bCgwBTl
+         6+STfoM5GDh80MnWcvWPQae2vAYe5fCpbREJKYxowQxN9FLcNrRqAI2670YqHrFR5hlS
+         U4PdcmIY3PNN/rGhVJk2ujcbw6e7MNlyoxD3FYm2UzeakX9FDhQ5hgCg6bNPmEn+rYIa
+         ieOseimAeMI8BBV/na42BUflYWeUnhawOuXwa2QYUzB9HRURRa4mySapPQEPWnNUnUGV
+         vrEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GgvLl3SMdVmFgavsFLTZLOjwiFNnZxcIFitbAzi1Csg=;
-        b=dNzqO+73xMq77rREkBloA4hOfKx7vvXpHTTISUQoP4BJvyBvHrQZgzemKlFY2P5rSH
-         ozch4I1x7ee8Uv7V3nRRjT4FGsSzIvrVl7d7PEXmCx38szizfkbidtgPKjCtgR/j+Es4
-         GxYLqCSvIm6fU18E7SLMfZVMiL9nmbxoSGE7Q0Uvjj7THZy7aQjfxuSbvJIQfyQqf/mV
-         JAVf267SeWdJS/sFDammA2iCbSOg6tw45R2UGV9wFhuq6djiTIzVX695PfOhURNflU+m
-         aKAZ2VzTaRjXWhyGqx/MtNIrkqkW7cKu7S0PEyQ3pEwq2LtA0pu36hKMvP81d0O5Dlis
-         LsHg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=UxMNW3v3XkJRw4c3jaxUPZIB89NNTNyXaxEAjyuDd60=;
+        b=weFCpezHrRDqWAr5ylbDrWKa0JX86lI1u18a4V9jeg/B6Ktv4GSJiy0Y/nQ7jOfwjc
+         szODj/aQTZZpJIO/huLPokwklBYuRWdc48C5xSvOja8xO68UaJQ2RZG7gh+/fgAQOEfc
+         6XtA2T97PaQrEY5AJWrsvBd9TXzPoFET0JrWiQ2v9ES3UkzOes4vrOctje9jrOOIta66
+         lRTpdhIdtB3A5tbjDttpScWxlBnYgdIweJUdjk90NeouoBHejjGrXu6MAX57p7LJY7cr
+         AhvusGDC49bAkcfQ8PfkC8Cl4J0GZS6BgyjxctRwpWavvlfoeikZ/JVAMemK/mwxtH9p
+         LXYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yBcLcrfB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si8052564wrm.70.2019.04.21.07.17.20
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id k7sor5452431wrx.32.2019.04.25.11.07.08
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Apr 2019 07:17:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 25 Apr 2019 11:07:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yBcLcrfB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:53626 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hIDHU-0003z0-57
-	for alex.bennee@linaro.org; Sun, 21 Apr 2019 10:17:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34786)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hIDHD-0003sQ-4m
-	for qemu-arm@nongnu.org; Sun, 21 Apr 2019 10:17:03 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hIDED-0002c4-Ij
-	for qemu-arm@nongnu.org; Sun, 21 Apr 2019 10:13:58 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:47075)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hIDED-0002bH-D8
-	for qemu-arm@nongnu.org; Sun, 21 Apr 2019 10:13:57 -0400
-Received: by mail-oi1-x242.google.com with SMTP id x188so6871723oia.13
-	for <qemu-arm@nongnu.org>; Sun, 21 Apr 2019 07:13:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=GgvLl3SMdVmFgavsFLTZLOjwiFNnZxcIFitbAzi1Csg=;
-	b=yBcLcrfBUypNcNzFZ0w7/Bz+R9fnyjSYpOHlzmtUay0jvKZqo6rRodLROlA/uD+Nre
-	lTcOzdBR3CAIq2yLFaFelFxXCtf7Eha38Dr463fDI+iboeIE1eoSoSwL3uj9TJzG0eQW
-	O+04nVSQS+uId7aJCg0oThjtUUkezu+QbvcsZsZOyVaF3B9MaiZyjztuJETg0E4ECBIh
-	oT+/uSpH/SeNnh//JC2FCLMDiwEPglhr0Zr3i8uKE3r2STIN338J7pAWoxhv0q1UMcp6
-	zgYzFWPyM1amCp8up/PJVd+9bgOc4TM2/OiP687xMIvPyM6lDKPCs8Vq7h9/Q+LGHexg
-	gF+w==
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=GgvLl3SMdVmFgavsFLTZLOjwiFNnZxcIFitbAzi1Csg=;
-	b=XLavhFjEGH+gCtpO3lkxfO4MJ1Axit9dLuvfbfo6rxafR6nCmmPsyIdjUy/bRJ0JVG
-	dm/JolVGYZ5wQuq+SvXMsH9ttRtbDyDKPs4nNnMKsLuvpmxdFLDwk33uagKRDDhsv/J6
-	JnHpFgPXgW2mMQtRg/G5vRV7NLjF5jLGSkGHYgdNrxOKgLqmW6IPzRCNbT8mRh9i4WGA
-	S1LKHTpJWzp6APwGjTJhTMYJWUi8ui1iYniFxmEUBBbQo/SFyc1YACzhAoIeEYNWDLsB
-	Yqkpnaz1clBsxR/DElZ34fc305OqDsEY64N4N//uPy7NSBEPgyjgrrGksk29yjAInUFW
-	KZsw==
-X-Gm-Message-State: APjAAAVum3rvv0bX0rwqWjB24XDsHmyLQCgqiMF1Trcj0vC/V5vv25Bm
-	GjwaLroQyDgyaRfPxctlnQAvtPtbrYpjPe4lLCqerQ==
-X-Received: by 2002:aca:e054:: with SMTP id x81mr4172420oig.146.1555856035931; 
-	Sun, 21 Apr 2019 07:13:55 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=UxMNW3v3XkJRw4c3jaxUPZIB89NNTNyXaxEAjyuDd60=;
+        b=CYVOs/16oSCWvOwXJBs/N33vGg5wERoZw9mw6NkdL53mUOniVaqon1LO7uLCkKMlYi
+         r86A4+I/7QyiSXWOjzoVed2O4CD+V0B3tekUe1bKSokhywDrfO1eiqAR3tvFAYfW1pmF
+         vG7ELT7Ar1olVICweWNCfHqsfbvbU7ufQ2sEb/pNTPAIz21Zw9HQwc5WnfXmsYXRtgsG
+         mkl5rPxTpmteNeMz9ybI4r6+wsSDwssk8WY16i2qDEa9wcqBxuTtnjS6TrEFUKE2YUK0
+         Zkoaia47wbNmjhcH2A5HVl0AgUc5KZSM9fSqrPLJ1417InjLSLdfVKFXtkCbNW5FmybM
+         yg9w==
+X-Gm-Message-State: APjAAAUPB7v9MwZznxjbqZS/80u+st/Ot+AE5iyCae+25Kv4o/BtB5kb
+	Riv5A5Mo8OLammfdvlpDW/NxHg==
+X-Google-Smtp-Source: APXvYqxFbWrwazF8P3W52byqzrxEbZhvyUO79ej+ZkbdKbAhuRV13PFUwRDMJvRqjeU5lovcC74zPw==
+X-Received: by 2002:a5d:4942:: with SMTP id r2mr6149415wrs.159.1556215628402;
+        Thu, 25 Apr 2019 11:07:08 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.25] (abayonne-654-1-209-122.w109-222.abo.wanadoo.fr. [109.222.216.122])
+        by smtp.gmail.com with ESMTPSA id u6sm42307131wrg.72.2019.04.25.11.07.07
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Apr 2019 11:07:07 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
+ argument"
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Jim Mussared <jim@groklearning.com>, Julia Suvorova <jusual@mail.ru>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Thomas Huth <thuth@redhat.com>
+References: <20190103144124.18917-1-stefanha@redhat.com>
+ <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
+Date: Thu, 25 Apr 2019 20:07:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <150c2e0d.9e6.16a3df81f26.Coremail.sohu0106@126.com>
-In-Reply-To: <150c2e0d.9e6.16a3df81f26.Coremail.sohu0106@126.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 21 Apr 2019 15:13:44 +0100
-Message-ID: <CAFEAcA9sGXmuTwgZrnGj4OF_Bq1cMwzfO8-NF03N_U=9KicEjg@mail.gmail.com>
-To: sohu0106 <sohu0106@126.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] arbitrarily address wirte in pxa2xx_pm_write
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, secalert <secalert@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E+eieAXBjfdB
+In-Reply-To: <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 0JRWrrJOZ8xs
 
-On Sun, 21 Apr 2019 at 04:37, sohu0106 <sohu0106@126.com> wrote:
->
->
-> in function pxa2xx_pm_write()[hw/arm/pxa2xx.c] with qemu version under 4.0-rc4 do not check the addr rang in the default case, it will lead
-> to arbitrarily address write in guest.
->
->
->  137     default:    /* Read-write registers */
->  138         if (!(addr & 3)) {
->  139             s->pm_regs[addr >> 2] = value;
->  140             break;
->  141         }
+Hi Peter, Stefan,
 
-Have you found a test case where this can happen?
-The pm_regs array is size 0x40, and the memory
-region ops are registered with
+On 1/4/19 4:16 PM, Peter Maydell wrote:
+> On Thu, 3 Jan 2019 at 14:41, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+>>
+>> This reverts commit 01fd41ab3fb69971c24a69ed49cde96086d81278.
+>>
+>> The generic loader device (-device loader,file=kernel.bin) can be used
+>> to load a kernel instead of the -kernel option.  Some boards have flash
+>> memory (pflash) that is set via the -pflash or -drive options.
+>>
+>> Allow starting QEMU without the -kernel option to accommodate these
+>> scenarios.
+>>
+>> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-    memory_region_init_io(&s->pm_iomem, NULL, &pxa2xx_pm_ops, s,
-"pxa2xx-pm", 0x100);
+Previous to this commit (v3.1), we have:
 
-(using a size of 0x100), so don't I think that it's
-possible for the size parameter in this function to
-be 0x100 or larger, and so addr >> 2 should always
-be within the array bounds. Have I missed something ?
+$ qemu-system-aarch64 -M netduino2
+qemu-system-aarch64: Guest image must be specified (using -kernel)
 
-thanks
--- PMM
+Now (v4.0) we get:
+
+$ qemu-system-aarch64 -M netduino2
+qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
+
+R00=00000000 R01=00000000 R02=00000000 R03=00000000
+R04=00000000 R05=00000000 R06=00000000 R07=00000000
+R08=00000000 R09=00000000 R10=00000000 R11=00000000
+R12=00000000 R13=ffffffe0 R14=fffffff9 R15=00000000
+XPSR=40000003 -Z-- A handler
+FPSCR: 00000000
+Aborted (core dumped)
+
+This is confusing.
+
+(same happens with emcraft-sf2, microbit, musca-*)
+
+Regards,
+
+Phil.

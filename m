@@ -1,180 +1,133 @@
-Received: by 2002:a05:6000:88:0:0:0:0 with SMTP id m8csp2321352wrx;
-        Thu, 25 Apr 2019 15:33:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx0d1Xqd2Un/igPNxNDGQYXjwM6FeKemiTY9rZDmD43nVuuupxHCnxiCwquzd/RTVNnd1B7
-X-Received: by 2002:adf:fc47:: with SMTP id e7mr29164170wrs.100.1556231593980;
-        Thu, 25 Apr 2019 15:33:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556231593; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp373345wrh;
+        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqykYaNPBB+p/zI8gnVOTuKPPSPmkv78xcEE+Yxg6SBr/bQ6PxdRkbP8+SvTs+vXKyBUdLc+
+X-Received: by 2002:a37:b441:: with SMTP id d62mr15363719qkf.259.1556270229827;
+        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556270229; cv=none;
         d=google.com; s=arc-20160816;
-        b=pAxQZ1dX6/IAHZjih4UhDqaeqV0X5ypm9nBCSfjrZI8Orlsv7nLR7AnQNZCPlYjqR7
-         fS2FAyEvTfVOvWTxBc4UXmTB2N/k/x3YFiUnEWT3me7hb2TnOzexyo4YnUDPo9m8aBU2
-         MBo2aarvJl2nwdIlftPeclPcv0U+k2wB3T7mgTGlzLOSfUYTcpapbbgcGiruJ5JNWuYw
-         b3/mjSCaZHNPSkGjw23t6I2yFuqz8qH8+KvsWA7Zjuwg2zptkdBpJePsxpzrIV+7WKvw
-         9RQmYueis/5xowyyHn1KVqvPfns+RPXCSk2ZRySqHOacaLMAxEGsQp+FK+HVCjT9tyOR
-         F+Rg==
+        b=DhB6mxi27KRlMgK4p9liVgnGWTiQzP9Gjb1+cAwB4XPCKauLtIabEUIU/oe1fakUaf
+         BkUC5hrTDi1LJ5+eXOE0OPnRWuweabP04sLvvJpbL6ANokXufG2EuQgo8Dspv2rAEXKK
+         HXBSinuMwKW7KNB3529KoL4KKDU2nNVEGR8JmW5Koob/fW0pNTWpVYAtFeQea4o8kEOo
+         nKmjH6b0eouGaO1FWfq0I6cgztVHfLZbkEClQDsTN9ZZwCReH5VdwjSZJtD5Lnm3PWhO
+         uz8ByxMz7K/W7a7hhE6jcJuLhOVmaraGN3ME0BqaZBbtDsP8AN8X7wuB15admoOwgW5Q
+         J1ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:sensitivity:importance
-         :date:to:from:message-id:mime-version:dkim-signature;
-        bh=RuEJFIRQ2i7/ahMQtYNtQGKtWspDv6i3GrE7BMGYUbw=;
-        b=Eie4uZpQzHYW6Sy/ns8qrdYAchzRk52VH7LTtGTf1jKMWQFkqaQP8Tr0+9aTpoWZr6
-         QOAOKlj7XFp/WOv9VO1uhVuB3KlVDr4yJFXiwRrt2M7ac9W4+Qt4F02lGpkLHCRygV7I
-         /9eqq4W5qNok27jGSwBFDnTLC/G0CwkiKqgTXqYZ5srAOqKcUt4XWV+2n/egC82Ld9ay
-         8CwzboZE81oztYxpQlD3x2y4r3RrQs9revAumULZxeTV1QHhbZR3BswVDILtzIX5gW9k
-         05nRe5+1zzmHLDJcBlU3MFYFSLa+h8J7aPHnBZ3jqSjeLMlFqNI4TYhXw/PxI5avcL8C
-         RcSA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=WqxIJSJiH4/sw4d7C24Qkwpatobf77xcNVR8oEABn3c=;
+        b=xODhelC4I6XJwhyAnqcjPPauGtReyfZJjbWexxnREM8vunRBcOvB2QA9eSQkTYPvcu
+         IbTGXE5Q/i4yUzYqlsh0HBODpcZY3xXe/6hcnuwfm+nXf6IW3cCdyo2Uzvsl1I5WpA4q
+         7tMZP6hhP6Uw8XS0UV8R82tbkgW/9EaFldDm8tafGHkYFi3RQWD6OB/3T8tFuy3YKRCQ
+         Lyy2NXL20s1A/pG9goXqOjiKfRK8OK4StYCHFfWle0Z0ow5iMg3lMDhiFbSuKla8KE9b
+         kqfxI6/4TGHQrh/7v5tw1d+/AweiVqZ7NOEQCgCY6nMXMYQsFqY2K3rg24vY3UdrgxF2
+         3BWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@web.de header.s=dbaedf251592 header.b=OWWLALOu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u138si6476700wmu.59.2019.04.25.15.33.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Apr 2019 15:33:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <stefanha@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id h51si4841972qth.340.2019.04.26.02.17.09
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@web.de header.s=dbaedf251592 header.b=OWWLALOu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:36017 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hJmvY-0001Ze-TA
-	for alex.bennee@linaro.org; Thu, 25 Apr 2019 18:33:12 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45913)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Bjoern.M.Haase@web.de>) id 1hJiso-0003QY-6c
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:07 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Bjoern.M.Haase@web.de>) id 1hJism-0002Y3-LR
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:06 -0400
-Received: from mout.web.de ([212.227.15.14]:35225)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <Bjoern.M.Haase@web.de>)
-	id 1hJism-0002UQ-AY
-	for qemu-arm@nongnu.org; Thu, 25 Apr 2019 14:14:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
-	s=dbaedf251592; t=1556216041;
-	bh=RuEJFIRQ2i7/ahMQtYNtQGKtWspDv6i3GrE7BMGYUbw=;
-	h=X-UI-Sender-Class:From:To:Subject:Date;
-	b=OWWLALOu+aptJoNuD4qnPr4aGZzBxknvOHawMEifr8ddD9tmeLrfLyTcGkCr5rrFM
-	q66BPNrDa42rpKKs/FAmz+LOjMLs/EMieuwUJu5jZQAtu76jbBekwvCFlaEaVjqVwh
-	kPllrIP0X15GkptzWQkrpklmJq9RbCeFF5KrGtc0=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [109.90.240.132] ([109.90.240.132]) by web-mail.web.de
-	(3c-app-webde-bs13.server.lan [172.19.170.13]) (via HTTP);
-	Thu, 25 Apr 2019 20:14:01 +0200
+       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C73D83091761;
+	Fri, 26 Apr 2019 09:17:08 +0000 (UTC)
+Received: from localhost (ovpn-117-222.ams2.redhat.com [10.36.117.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A03411001E81;
+	Fri, 26 Apr 2019 09:17:03 +0000 (UTC)
+Date: Fri, 26 Apr 2019 10:17:02 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jim Mussared <jim@groklearning.com>,
+	Julia Suvorova <jusual@mail.ru>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Steffen Gortz <qemu.ml@steffen-goertz.de>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
+ argument"
+Message-ID: <20190426091702.GA2071@stefanha-x1.localdomain>
+References: <20190103144124.18917-1-stefanha@redhat.com>
+ <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
+ <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
 MIME-Version: 1.0
-Message-ID: <trinity-1f7e0bc4-e787-4b8e-9ba2-9e458d88c7ca-1556216041544@3c-app-webde-bs13>
-From: =?UTF-8?Q?=22Bj=C3=B6rn_Haase=22?= <Bjoern.M.Haase@web.de>
-To: qemu-arm@nongnu.org
-Content-Type: text/html; charset=UTF-8
-Date: Thu, 25 Apr 2019 20:14:01 +0200
-Importance: normal
-Sensitivity: Normal
-X-Priority: 3
-X-Provags-ID: V03:K1:wBxKDibmTnCe8d7/aAfI5vnINLCIYsO2FGH7SjMgEBufYN3Sn+7NtIQwH2/nyDM8AFfeU
-	Ytzcbju1VtzFu03xwW6vanyqomOVPxnYKIi3b1Gzzi8LMYLxy3oqrMoFga9QzlA7xigy1+MDpTsc
-	Opge1+laDgn3ehWmTcVP74Dezoah+3t6eqsK7To2TsNWRX6Mrp4iI0AOylauI8cBSjWGdxrmE2yt
-	nAXRWmHVTw8z22Kh051yr4Cm7us5vhsNeZPajz4sPdmNrq4pUnyJUlGXBvSJ9j9kg2aTwGitMWVQ
-	to=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SdTdgJPXQzo=:Yn62tvzud+tFGXibRWMRbt
-	V7dgGcWet+tLgdWo+RQBMJqi06OpEqZUtHnmcD6te290wqLpSlXkTqSGJx+rH0vXQpL+ryK/K
-	m+D5C0RDcGfjpC0d6tbbO/Tq0kNaR0boYWsNzFrqJ6iVk+pHNblVpIEiYvZIUXHy5UNejruR4
-	qiuFWQZ0wjdxGGM8PgW/61p//lvMR6dUNhtFpVEhvM3wDCu+MYgHbLGnykdA0pLub+lsXtl37
-	E23k+KmgI16dtJoDL2WBUYGPc8iSHUODhHR7ZPZszi7Vxj2IjwGSXhO/Cwj8WLb+iORLO1EXz
-	HP3+0fil/6i3YiI9h8BFOQXkXOkMLERNkrLfrl9lqrIMZ8/81GjNzDtK+USYep6IvXXHBayVt
-	zl42ydkuYiPBLGk4tdXASP95yEnhOK+7/AQDFM7S0Ay+MYsP1bhGACQz0MsDlkoUw7sf9WfkD
-	zuuMoL8c57c+m9ZhIFa8q/QIYP2ac+EZBoqtOaLF6Sf3QQIn9If3lv9vgOy6go6m2nhKbUt6M
-	1RPHTUhCJyeaiuVrdtFSfVxztfVF0pJPRkuIDGwoa3PvyI3/jq0zagmP6egZ+O6oXTWouzHz+
-	oRMeKeagQUlOjvp0gtTlPkfCfMT5DawV7HyKDYYR7148DxrRREqFouAA==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.15.14
-X-Mailman-Approved-At: Thu, 25 Apr 2019 18:32:50 -0400
-Subject: [Qemu-arm] Regression tests for Assembly libraries for Cortex-M:
- More recent qemu versions core-dump or fail with warnings
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ALpUs7cbK/Qr
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="G4iJoqBmSsgzjUCe"
+Content-Disposition: inline
+In-Reply-To: <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Fri, 26 Apr 2019 09:17:08 +0000 (UTC)
+X-TUID: owBzRcdE04Zm
 
-<html><head></head><body><div style="font-family: Verdana;font-size: 12.0px;"><div>Hello to all,</div>
 
-<div>&nbsp;</div>
+--G4iJoqBmSsgzjUCe
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-<div>I&#39;d appreciate some advice on how to</div>
+On Thu, Apr 25, 2019 at 08:07:06PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> On 1/4/19 4:16 PM, Peter Maydell wrote:
+> > On Thu, 3 Jan 2019 at 14:41, Stefan Hajnoczi <stefanha@redhat.com> wrot=
+e:
+> >>
+> >> This reverts commit 01fd41ab3fb69971c24a69ed49cde96086d81278.
+> >>
+> >> The generic loader device (-device loader,file=3Dkernel.bin) can be us=
+ed
+> >> to load a kernel instead of the -kernel option.  Some boards have flash
+> >> memory (pflash) that is set via the -pflash or -drive options.
+> >>
+> >> Allow starting QEMU without the -kernel option to accommodate these
+> >> scenarios.
+> >>
+> >> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> >> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+>=20
+> Previous to this commit (v3.1), we have:
+>=20
+> $ qemu-system-aarch64 -M netduino2
+> qemu-system-aarch64: Guest image must be specified (using -kernel)
+>=20
+> Now (v4.0) we get:
+>=20
+> $ qemu-system-aarch64 -M netduino2
+> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
 
-<div>- simulate a ARM Cortex-M4 system with large amount of RAM</div>
+A user-friendly error message is needed here.  The check for -kernel was
+too specific and is not desirable for microbit where we use -device
+loader.
 
-<div>- together with semihosting (stdin, stdout and files) on the host CPU.</div>
+Old boards probably want to continue using -kernel.  New boards like
+microbit may use just -device loader.  Perhaps there is even a group
+that wants both options.
 
-<div>&nbsp;</div>
+A solution is to introduce explicit checks so that we can tell the user
+the appropriate option for the machine type.  I can work on this if you
+like, but probably won't be able to send a patch until Tuesday.
 
-<div>The background of my question is a bit different from the conventional QEMU use-case for full-system simulation:</div>
+Stefan
 
-<div>&nbsp;</div>
+--G4iJoqBmSsgzjUCe
+Content-Type: application/pgp-signature; name="signature.asc"
 
-<div>I am working on CC0 crypto libraries for the Arm Cortex-M series (see e.g. https://github.com/BjoernMHaase/fe25519). There is a lot of assembly optimization and assembly code-generators behind the scenes which need extensive tests. I&#39;d like to publish my code together with a regression test library running on Qemu (specifically regarding the asm stuff). The regression tests best have access to files and need to be executed without the code-size-restriction and memory constraints of the tiny embedded targets (which might not even allow for stl containers, e.g.).</div>
+-----BEGIN PGP SIGNATURE-----
 
-<div>&nbsp;</div>
+iQEcBAEBAgAGBQJcwsyOAAoJEJykq7OBq3PIxrQH/RvZOjp//Ku7wHbPSH6LRX1g
+z7Fhi7/66tL7IDgjvybqRnwV+cH3hIU7bDyOPLK5ec/GHsDrqUlt0FPRXCQZksuo
+AeazNW0YoqO+zI+M/JDZ6JXHMUSjnybtCDkC2ZbYpEKAJ0miSlrjIiKKjbKFPGc0
+WHNsdPz5/KHvxPyD0lmI+7/MHE6B5YpanYr7V+2kDYW+/WhXT6AU99Ge3LxO4VNn
+qC8FP0yRuC5FKHDlhaXw+GldH8sQvv+TUyqODXuBJZY4PF+3DFLhPI7tMizNBERs
+yEgn6jGdtxXveA3RCbVkCfmUi9q9RjOY3n7ubxgCM/49EAztdzxNpT73OYr6od0=
+=WxRV
+-----END PGP SIGNATURE-----
 
-<div>The problem is that the regression suite code is too big to fit onto any embedded target. I.e. I&#39;d need to simulate a cortex-m4 system with, e.g. 256 MByte RAM and with file access using the semihosting support. So just running on the embedded target is not an option :-(. The use case is, thus, not to simulate real-world CPUs but to simulate CPUs that are not available in the real world.</div>
-
-<div>&nbsp;</div>
-
-<div>With the older versions of QEMU, I succeeded with using</div>
-
-<div>&nbsp;</div>
-
-<div>qemu-system-arm -nographic -monitor null -serial null -semihosting -cpu cortex-m4 -m 256M -M integratorcp -kernel ./test_naclM4</div>
-
-<div>&nbsp;</div>
-
-<div>where I have used a combination of an ARM9 machine together with the &quot;-cpu cortex-m4&quot; switch. This worked perfectly. When compiling the testsuite with arm-none-eabi-gcc with -lrdimon and -lc and the corresponding linker specs, I was able to use the semihosting, just as for the integratorcp simulation.</div>
-
-<div>&nbsp;</div>
-
-<div>Unfortunately the more recent versions of QEMU either core-dump or give warnings.</div>
-
-<div>
-<div>On Qemo 4.0 I get the result &quot;qemu-system-arm: This board cannot be used with Cortex-M CPUs&quot;.</div>
-I did some attempts using e.g. the lm3s811evb targets. However, I constantly get failures such as</div>
-
-<div>&nbsp;</div>
-
-<div>&quot;qemu-system-arm: Trying to execute code outside RAM or ROM&quot;</div>
-
-<div>&nbsp;</div>
-
-<div>most surely since qemu checks for the limitations of this specific microcontroller memory sizes, which I want to exceed intentionally!</div>
-
-<div>&nbsp;</div>
-
-<div>Also I believe that semihosting will not be supported on any of the native cortex-m machines? Any advice would be very appreciated.</div>
-
-<div>&nbsp;</div>
-
-<div>- Would it be necessary to add a separate &quot;cortex-m-semihosting&quot; target to the qemu code or is there possibly another way to proceed?</div>
-
-<div>- Is there some documentation on how to add a new machine to the qemu code? I did not actually find the place where e.g. the lm3s811evb configuration is stored within the source trees.</div>
-
-<div>&nbsp;</div>
-
-<div>Any feedback would be appreciated.</div>
-
-<div>&nbsp;</div>
-
-<div>Yours,</div>
-
-<div>&nbsp;</div>
-
-<div>Bj&ouml;rn.</div></div></body></html>
+--G4iJoqBmSsgzjUCe--

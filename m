@@ -1,183 +1,158 @@
-Received: by 2002:adf:db01:0:0:0:0:0 with SMTP id s1csp665322wri;
-        Thu, 7 Nov 2019 01:00:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzorgi6jzQ09nIkBNP3ID/z93Fp5oF+pzxgloCf3YAEy6aeThpeeRoc1XIrGv6myKcBV7CI
-X-Received: by 2002:a37:4f10:: with SMTP id d16mr1750140qkb.80.1573117214626;
-        Thu, 07 Nov 2019 01:00:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1573117214; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp893794wrh;
+        Fri, 26 Apr 2019 11:20:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNAxAEIUEa1y3iUoMcJhwIx/osaNEnLdDMQ/uxYuFaXG1N6L2ijl97Y3a0m3V6mevlHgCc
+X-Received: by 2002:a5d:6386:: with SMTP id p6mr10018448wru.306.1556302823064;
+        Fri, 26 Apr 2019 11:20:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556302823; cv=none;
         d=google.com; s=arc-20160816;
-        b=IGLK6GLp4yXXuo5iqwhlepcWZbKMRzU/C1mwPzGowzebMduGWPkGcmKtSLy6UQkbjf
-         FCCNJAiGT+3wyw8tl1b8Fwd4DXiDtW78R69ZjV2SEKsVyP4ZnjVJJdK18MjmJagVDA8V
-         kp7KG5WwUNcN1bOkOHEsQBTzNpTAm5NeeVXqNwgrFqW5iYc6qW6+W1kqDQbohwZ58egm
-         g5rIEJPsIDhct0Nj1Tr4Es5yJDRDcod0kTLQP0hhz4odY9a5wervo+U0s3G9xPvZ2VKx
-         E1O+sqhJwaHdqPDCF0ySCjxQU8axe53B5NyF9EltlBlcGnCo2OnyRrVLDsO2iMvQFqVl
-         uAEw==
+        b=M4hGdl/EpVXrIbBoV9fE2Cbp853jtUUwf/eQVdeOTaSfHPoexud6Q93oUejAH1iSJl
+         XUfyhs2Cd5sC+1d8Nwt1k5IJ7P2Do9KS/qic0y0+Ak2zTTPeX/+G0lQc5npcy6tNttZh
+         lSkgJqHhshYNYTDtE3xVD+mFtQ6HBiQomyX84nwATpK8+iFJGrXqo2UIpFYP2wLkfqBJ
+         /dVJpmI3fYGRksuAFgST//4gEEn9O8XzOigNqowVv2kGc5Mjclu5YxNKhB6gV5kBRoCF
+         bDFFpk5P20Js5S6uzVje7CTP9zsNX/AflA+d55zzSS75POsAvpsWtYq3HpLOgKmw6nW9
+         6OJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date;
-        bh=QncuxsSnXpZblvSAjpStc0tmPfEmXDJTLIpR6QnQ6b8=;
-        b=sE+nMnP14LiVhTKiaWMHv/ptpUBTBZImUrGP76gLW0L1wVQT0KAAmGIUFcf2cju+ty
-         SFSxP1AggsdnLFC1bwMYEMuZzx9M2Ay0PiXmnwJiItJpyp7ptkqkEeOff6desqSReouE
-         VU/qTiDrjhDbfqBK1WQmXWs5mkSezKiSzUprfhBXaq+uGfqEJbNqFKGR5U9cSj0v8SFd
-         bQP8/Iskjk5rwgF+yMaxcypP8xfw7l77vX6Yp1KQ+ZvOsNgqlIUGD1kWwOd3HG3L0ECT
-         WGT7OBvPYYn1xXnKTn/J8BrC/IiAs1IWH5MYBHFc/hywXfxSBDNr/z1QoXbJ2RoTurLP
-         isTw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :sensitivity:importance:date:to:from:message-id:mime-version
+         :dkim-signature;
+        bh=EJrbwx88PcHaRiAoZ/3/TlwmqMHkDJkjC5ZO/Bzg9Dk=;
+        b=v7xjZxEJe184SZ1OMzKnBvobz2G6GPYmDrHIZ0orTvBbUjEqJOHJXPIbQ6RgEVgLq+
+         8D1P9sTzVcO5ANChcSud9rBfa7dJNrg7ypfn9kkUqhbnHk+QL0cCHFJYipaz22fRXPI0
+         PPz5bbQfljrzkJH2yQp8a4KQ+VBUU8cXbfF/kvrcPrTgFE6Ez3sxecwItTBhMuk6ntkS
+         78PbeHuDWF1+7sYOL4o5qV+Uo2WDuKVgkmhhZ1n8lFbwzb7w5/66ocIULWsQSs5WCAcn
+         D071TVG28wMozjSSClNUIcrppg4gA+5qSzpfHeOM39Ls9tZkJZ6Fw1TLDBY9N2j7rMW+
+         btXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=pEuzu33q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p22si894087qtk.174.2019.11.07.01.00.14
+        by mx.google.com with ESMTPS id l7si6379931wmc.194.2019.04.26.11.20.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2019 01:00:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 26 Apr 2019 11:20:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39910 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iSdeG-0005hb-NJ
-	for alex.bennee@linaro.org; Thu, 07 Nov 2019 04:00:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53670)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iSdbu-0004Yf-3B
- for qemu-devel@nongnu.org; Thu, 07 Nov 2019 03:57:47 -0500
+       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=pEuzu33q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:50512 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hK5SQ-00059m-6e
+	for alex.bennee@linaro.org; Fri, 26 Apr 2019 14:20:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58997)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <Bjoern.M.Haase@web.de>) id 1hK5SE-000598-VS
+	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 14:20:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iSdbr-0007pO-Qu
- for qemu-devel@nongnu.org; Thu, 07 Nov 2019 03:57:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48272)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iSdbr-0007jp-Hz
- for qemu-devel@nongnu.org; Thu, 07 Nov 2019 03:57:43 -0500
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B016B4E832
- for <qemu-devel@nongnu.org>; Thu,  7 Nov 2019 08:57:42 +0000 (UTC)
-Received: by mail-qk1-f200.google.com with SMTP id q125so1489216qka.1
- for <qemu-devel@nongnu.org>; Thu, 07 Nov 2019 00:57:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=QncuxsSnXpZblvSAjpStc0tmPfEmXDJTLIpR6QnQ6b8=;
- b=ZdMmu0LpPhBI6cuS428n0iD/FfcXi5Nkvem0/X8HylCG5h39l3EF20wZYKaxa/H0SH
- +4KH6JGsuF0nQCjRtIcSeaKtS180ekEgXBJh7Q64bK4ELqSLVgz0eg3rw+INMRxHqjsB
- D7PzFky98/OoWdhvzofWbergZKfC+yArUEwtqzjrYVMq5sq28ss1EmxNHEQWke7nfDtC
- qNc62+JQB6m5kDK5zEq7AsxaSy8Zs4JRFFvQC42GtaMg5gt/rq6mOnAEcOGqrb7APsfK
- Tx2uT/+kRx0JPYsLrFvp5DR91bZvzhzlxr4AySJfRpkYsycu4BD4nulSTMp7+R/eJ6W5
- dS9A==
-X-Gm-Message-State: APjAAAV38aazseHtVusFszH+eBf/mU4CoNoBcjA/PHnFNoCrGaZ77+7u
- SQY/T1WXH/m17Hn2mSMakapTagfLG0Khih21vqjD92AeKKrzemWoAOxm5s8WIrrVJTBsjdJc1Wn
- dGxzRptZKkkkhECw=
-X-Received: by 2002:a0c:ee26:: with SMTP id l6mr2333907qvs.71.1573117061959;
- Thu, 07 Nov 2019 00:57:41 -0800 (PST)
-X-Received: by 2002:a0c:ee26:: with SMTP id l6mr2333884qvs.71.1573117061677;
- Thu, 07 Nov 2019 00:57:41 -0800 (PST)
-Received: from redhat.com (bzq-79-178-12-128.red.bezeqint.net. [79.178.12.128])
- by smtp.gmail.com with ESMTPSA id u4sm820380qkd.105.2019.11.07.00.57.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Nov 2019 00:57:40 -0800 (PST)
-Date: Thu, 7 Nov 2019 03:57:35 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Guoheyi <guoheyi@huawei.com>
-Subject: Re: [RFC v2 11/14] linux-headers/kvm.h: add capability to forward
- hypercall
-Message-ID: <20191107035624-mutt-send-email-mst@kernel.org>
-References: <20191105091056.9541-1-guoheyi@huawei.com>
- <20191105091056.9541-12-guoheyi@huawei.com>
- <20191106185524.0fe51c50.cohuck@redhat.com>
- <4dbcbd18-0e6c-f985-c36d-96df65331d11@huawei.com>
+	(envelope-from <Bjoern.M.Haase@web.de>) id 1hK5SD-0004cx-Vy
+	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 14:20:10 -0400
+Received: from mout.web.de ([212.227.17.11]:40873)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <Bjoern.M.Haase@web.de>)
+	id 1hK5SD-0004b2-JC
+	for qemu-arm@nongnu.org; Fri, 26 Apr 2019 14:20:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+	s=dbaedf251592; t=1556302805;
+	bh=EJrbwx88PcHaRiAoZ/3/TlwmqMHkDJkjC5ZO/Bzg9Dk=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=pEuzu33qA6drly/o1T9jB2WE2+GgQ0uyNcowAnG7Qm1ev/7Omgw4iVbJgGoKNBjvr
+	Y7loPeGcx7z0jddmnv3+Ps4DglHBQ8zZqM+06Ov5eAz5AA45xP5aculG1u+RBDuymD
+	EasuTBK1VMSk91SJg+rbaPHm4xSo2s+nid0tvYC0=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [109.90.240.132] ([109.90.240.132]) by web-mail.web.de
+	(3c-app-webde-bap58.server.lan [172.19.172.145]) (via HTTP); Fri, 26 Apr
+	2019 20:20:05 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4dbcbd18-0e6c-f985-c36d-96df65331d11@huawei.com>
+Message-ID: <trinity-d1a9db92-6382-4db0-bbdd-1732d86106f3-1556302805332@3c-app-webde-bap58>
+From: =?UTF-8?Q?=22Bj=C3=B6rn_Haase=22?= <Bjoern.M.Haase@web.de>
+To: "Peter Maydell" <peter.maydell@linaro.org>
+Content-Type: text/html; charset=UTF-8
+Date: Fri, 26 Apr 2019 20:20:05 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CAFEAcA_bS_Oz+shCU1U5rN_DMP9_osQXXmh470OP1r-9GQ4=ag@mail.gmail.com>
+References: <trinity-1f7e0bc4-e787-4b8e-9ba2-9e458d88c7ca-1556216041544@3c-app-webde-bs13>
+	<CAFEAcA_bS_Oz+shCU1U5rN_DMP9_osQXXmh470OP1r-9GQ4=ag@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:HkEk69s+LWWC0w2xGSchGT8JTtLGR7U3DIf65qLLIgJlcyDXENXV7LbcflQVrj0ivt88c
+	41zsQDfR5jcRBSAUn2ykrWcNdpl5xW+lE60StLmmbRumSZ1rx4Ov10pthoWtArKcAdyMPV3ts3oo
+	kLXMYjnBOPOUxL5TTCFNiFarD4q2pXmuiEotIbthF3aoaDp5hHmndavpro8uIvnSi2ZW9Nvc+Gop
+	LwM25Oj1ux7plYcl5HGh3Kt2GqyMib9hNtUDJ1ysJGTekigrljf7hJeoou58/vcTLv5Fg+WiK7hM
+	ek=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:VxO1vNu2bGU=:Ftc93xNqLM2USTnqi40+1j
+	jVVeucU5Wc7FqDWoiNIKUobTqIrKXZx5OXalaUaDIQlCiD4kyr2UTfEvlxXkLf7Eqy1BhVzWj
+	dl2AzHHlycRZuelxtxHm341ABwqO/0W1292P4KnDnjnAJgFjyIsQ/W8UQJHnI+V0XudK47nbT
+	TpB+I79o7eCSw5iCGGJb8cqAMImjVmn4LZERk5Oste5aGoyICO/ToLJbZFKa+8XTtwEzqC/7g
+	dQkjeS1yX0J/htozGYT9thsb/KLA1RNDyITIaustGs0/qebqUkMYDo31hiZrEX7HX2BSVzjI0
+	J50C6Ru4tRd7Yy2d0mY0CHksrhgZbgCoMAGdBZQxhGKcCSjr/3Gj83zAb3cHO7JZml4PgkADP
+	m5cb3nm0zjY+ccBl+CIcYQO4wwHsi31MtV4yR4h3YB4dSAV2KdP3Z/GGCPhU4VQDRRiYOPSS2
+	fEFKmAnG8sl/yzv4bb2Px/mkpx0P9dKAve8QgZx7B9y9Ak9IcwkoAEaBaWHHO5sDywj2nFXuP
+	/g/adTc79bs31Ndu7i2mMiU0yuWxyjy4ysdNcYUgXtz620D+pFSJxAvGEHkkM0sWHhkG4oz9S
+	gtIed/ZHbVYgKguTNCpqWDzPGHyLoK5f1nNz4ERQQ8YA6PbRXL76kzkQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Received-From: 212.227.17.11
+Subject: Re: [Qemu-arm] Regression tests for Assembly libraries for
+ Cortex-M: More recent qemu versions core-dump or fail with warnings
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- James Morse <james.morse@arm.com>, Paolo Bonzini <pbonzini@redhat.com>,
- wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XwjbNhi/FbyF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0LpFCseuxitb
 
-On Thu, Nov 07, 2019 at 09:44:36AM +0800, Guoheyi wrote:
-> 
-> 
-> On 2019/11/7 1:55, Cornelia Huck wrote:
-> > On Tue, 5 Nov 2019 17:10:53 +0800
-> > Heyi Guo <guoheyi@huawei.com> wrote:
-> > 
-> > > To keep backward compatibility, we add new KVM capability
-> > > "KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
-> > > hypercall to userspace.
-> > > 
-> > > The capability should be enabled explicitly, for we don't want user
-> > > space application to deal with unexpected hypercall exits. After
-> > > enabling this cap, all HVC calls unhandled by kvm will be forwarded to
-> > > user space.
-> > > 
-> > > Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> > > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > > Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> > > Cc: Cornelia Huck <cohuck@redhat.com>
-> > > Cc: Paolo Bonzini <pbonzini@redhat.com>
-> > > Cc: Dave Martin <Dave.Martin@arm.com>
-> > > Cc: Marc Zyngier <marc.zyngier@arm.com>
-> > > Cc: Mark Rutland <mark.rutland@arm.com>
-> > > Cc: James Morse <james.morse@arm.com>
-> > > ---
-> > >   linux-headers/linux/kvm.h |  1 +
-> > >   target/arm/sdei.c         | 16 ++++++++++++++++
-> > >   target/arm/sdei.h         |  2 ++
-> > >   3 files changed, 19 insertions(+)
-> > > 
-> > > diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> > > index 3d9b18f7f8..36c9b3859f 100644
-> > > --- a/linux-headers/linux/kvm.h
-> > > +++ b/linux-headers/linux/kvm.h
-> > > @@ -1000,6 +1000,7 @@ struct kvm_ppc_resize_hpt {
-> > >   #define KVM_CAP_PMU_EVENT_FILTER 173
-> > >   #define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
-> > >   #define KVM_CAP_HYPERV_DIRECT_TLBFLUSH 175
-> > > +#define KVM_CAP_FORWARD_HYPERCALL 176
-> > >   #ifdef KVM_CAP_IRQ_ROUTING
-> > Is this cap upstream already? I would have thought your header sync
-> > would have brought it in, then. (Saying this, that header sync looks
-> > awfully small.)
-> > 
-> > If it is not upstream yet, please split off this hunk into a separate
-> > patch -- it's a bit annoying, but makes life easier for merging.
-> No, it is not upstream yet. The whole framework and interfaces between KVM
-> and qemu are still under discussion. I'll keep in mind of this when moving
-> forward to next steps...
-> 
-> Thanks,
-> HG
+<html><head></head><body><div style="font-family: Verdana;font-size: 12.0px;"><div>&nbsp;
+<div>
+<div>Thank you peter for your helpful reply!</div>
 
-It's best to add it in some other place meanwhile.
-Then we can drop it when it's in an upstream header.
+<div>&nbsp;</div>
 
+<div>
+<div name="quoted-content">Maybe I could make some effort of trying to boil down the testsuite code to 16 MByte of memory and use a linker script for one of the larger Cortex-M3 sytems.</div>
 
-> > 
-> > 
-> > .
-> > 
-> 
+<div name="quoted-content">&nbsp;</div>
+</div>
+
+<div>
+<div name="quoted-content">&gt;&gt; Also I believe that semihosting will not be supported on any of the native cortex-m machines? Any advice would be very appreciated.<br/>
+&gt;<br/>
+&gt;All the cortex-m systems support semihosting. (Note<br/>
+&gt;that the ABI for M-profile semihosting is not quite<br/>
+&gt;the same as the A-profile ABI -- it uses a breakpoint<br/>
+&gt;insn, rather than an SVC insn.) You need to enable<br/>
+&gt;it with the -semihosting option, and you can&#39;t use<br/>
+&gt;it from non-privileged code (this is the same as the<br/>
+&gt;A-profile semihosting).</div>
+
+<div name="quoted-content">&nbsp;</div>
+
+<div>You don&#39;t actually know whether someby has actually used this together with the syscall implementations in newlib/libgloss? I somehow fear that my older implementation only did work because it was using the SWI interface ...&nbsp; However, I have seen that libgloss seems to provide different versions of the &quot;Angel&quot; interface. One of these also seems to use a breakpoint instruction.</div>
+
+<div>&nbsp;</div>
+
+<div>Do you know of any publicly available target project that actually uses semihosting on a Cortex-M? This might be a good starting point for analysis.</div>
+</div>
+
+<div>&nbsp;</div>
+
+<div>Thanks again for your advice!</div>
+&nbsp;
+
+<div>Yours,</div>
+
+<div>&nbsp;</div>
+
+<div>Bj&ouml;rn.</div>
+</div>
+</div></div></body></html>

@@ -1,133 +1,142 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp373345wrh;
-        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqykYaNPBB+p/zI8gnVOTuKPPSPmkv78xcEE+Yxg6SBr/bQ6PxdRkbP8+SvTs+vXKyBUdLc+
-X-Received: by 2002:a37:b441:: with SMTP id d62mr15363719qkf.259.1556270229827;
-        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556270229; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp497855wrh;
+        Fri, 26 Apr 2019 04:45:49 -0700 (PDT)
+X-Received: by 2002:a05:6830:1115:: with SMTP id w21mr27967583otq.179.1556279148982;
+        Fri, 26 Apr 2019 04:45:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556279148; cv=none;
         d=google.com; s=arc-20160816;
-        b=DhB6mxi27KRlMgK4p9liVgnGWTiQzP9Gjb1+cAwB4XPCKauLtIabEUIU/oe1fakUaf
-         BkUC5hrTDi1LJ5+eXOE0OPnRWuweabP04sLvvJpbL6ANokXufG2EuQgo8Dspv2rAEXKK
-         HXBSinuMwKW7KNB3529KoL4KKDU2nNVEGR8JmW5Koob/fW0pNTWpVYAtFeQea4o8kEOo
-         nKmjH6b0eouGaO1FWfq0I6cgztVHfLZbkEClQDsTN9ZZwCReH5VdwjSZJtD5Lnm3PWhO
-         uz8ByxMz7K/W7a7hhE6jcJuLhOVmaraGN3ME0BqaZBbtDsP8AN8X7wuB15admoOwgW5Q
-         J1ng==
+        b=LWU3bFMfbmdEgrb895OK0wAta7iFmFUL03Ue+zk60dNpNSSrJ70oYnB9mva7EcNFoM
+         zsd4hKktuFcnJ5GLruOFDXKzvBvQCLe2T0DxfhRe/So+GZa61EMoxgGVoCAYfmeoXcEc
+         7sURoLtd+Yu117ifh/PIJytCql1qHhZzuqrP/TB1Yq/ljFG8KgPa6Kf8UuhC7Fuu8IQF
+         fhunxDeKLgaJX1A3l4TbjHdY0wq4LNecuv/xumNWPR+0cYRWDEFqnqVJFGS0EqBVN7No
+         l3IjBWKrk4puLZ1DAKocA1PTnzGXIXKwOMLCqN3sWX3fb3Y43QTx+EZC/c081vLGTJKS
+         m2vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=WqxIJSJiH4/sw4d7C24Qkwpatobf77xcNVR8oEABn3c=;
-        b=xODhelC4I6XJwhyAnqcjPPauGtReyfZJjbWexxnREM8vunRBcOvB2QA9eSQkTYPvcu
-         IbTGXE5Q/i4yUzYqlsh0HBODpcZY3xXe/6hcnuwfm+nXf6IW3cCdyo2Uzvsl1I5WpA4q
-         7tMZP6hhP6Uw8XS0UV8R82tbkgW/9EaFldDm8tafGHkYFi3RQWD6OB/3T8tFuy3YKRCQ
-         Lyy2NXL20s1A/pG9goXqOjiKfRK8OK4StYCHFfWle0Z0ow5iMg3lMDhiFbSuKla8KE9b
-         kqfxI6/4TGHQrh/7v5tw1d+/AweiVqZ7NOEQCgCY6nMXMYQsFqY2K3rg24vY3UdrgxF2
-         3BWg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=m7BZyzZEm1Sa8d1x8Kn6h8VRaLuD2mj6Ndp0Mi/JUHs=;
+        b=jdzgrvvoxxNNo0OImvAVdjHQCwdqi7oPScuLlN7s1MqXAcdtLRBWdNUS4iMSxPIsD8
+         2eq+mklQtHbdjpPqi2kbC5ahewGk7KAhm+IMHvWx9lxrn+N4TeFf96kezJCOcy3eBI2o
+         9teYsDSLoLy/U9MtJ/pmVfhgXOM93R+BPYmQ7ZJuVYVFeermuH/fcSAklj2k6TWb4Sgg
+         0gmZl4J3F6iLZsbQ4EPKptrzl3NH6Iy2A7ijWXlFpnkSQM97EiyCfme+BEhNKwq8SKNQ
+         0PkLow08/O2CCQU+BL55uM6LBsJFwvq79n3XieewQlbZbQmw4slz5tvL7YqC0QsByrro
+         7V5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <stefanha@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id h51si4841972qth.340.2019.04.26.02.17.09
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Apr 2019 02:17:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aJlwDUpl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id n124sor10951659oib.60.2019.04.26.04.45.48
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 26 Apr 2019 04:45:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of stefanha@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=stefanha@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C73D83091761;
-	Fri, 26 Apr 2019 09:17:08 +0000 (UTC)
-Received: from localhost (ovpn-117-222.ams2.redhat.com [10.36.117.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A03411001E81;
-	Fri, 26 Apr 2019 09:17:03 +0000 (UTC)
-Date: Fri, 26 Apr 2019 10:17:02 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Jim Mussared <jim@groklearning.com>,
-	Julia Suvorova <jusual@mail.ru>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Steffen Gortz <qemu.ml@steffen-goertz.de>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
- argument"
-Message-ID: <20190426091702.GA2071@stefanha-x1.localdomain>
-References: <20190103144124.18917-1-stefanha@redhat.com>
- <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
- <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aJlwDUpl;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=m7BZyzZEm1Sa8d1x8Kn6h8VRaLuD2mj6Ndp0Mi/JUHs=;
+        b=aJlwDUplnPOieEl6zfs52jk0/IGfCQ7N3PF1Q+lAQ0HOlCErPlxC489nHk+Hf2y74g
+         h8yuQHlOpDpg9VeKxxSJM5jBxY+qAjG9mMPbLMpfBI3fQWx8JwXvm5UW8lIgZqh/u0hG
+         R1BHpyY/gxAGTK98rzB38DFX9x8XrqNmWWg+ScOTLk0JD0ZDAQSuGu3oU3Sqx+Rmglmk
+         0URPZiCAKq/rAbAiJEDVtxmGF/blaYIGvTW5c+T+2kePEwKwuAFWcxw/0/Qj1PCoBSwE
+         ibEHsxuqCGyHa4V0rsrkAxDpXf0aztGMIFHLvtXhiE/X1Ztlo13cv2/KxcV7PvNUM37J
+         Vlcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=m7BZyzZEm1Sa8d1x8Kn6h8VRaLuD2mj6Ndp0Mi/JUHs=;
+        b=mrNl6Yhf/8122uvxMq7MOFp8ZvKi2gI+PBGZHqOJi5lZzpDyw12Ah0MfNUwKAh9qw3
+         kM8VzuRSknYuaESC/DqqU1DM3WVNFgDRntZfMs5x2dXz0TtpQwwx3QHzD5tIj45KMUNA
+         X0Sw2x/+zdIt+X4N/+bSaKK5K/9kifqFgcAAXJgktsgWHKotk4OQ2kyV9qmf7akFuiPM
+         abdFyWu6ne34xCsuD0D5mn42Yn9hL7SPnNlTAKQA7S2SZuqiLEwu/PU2NvkS4yHL2qB6
+         H2Zr2mXZaBpi0N/+F2w6CwYi3g0zQRr4z9oSvbS8AkvgSSkVOQM3QJBKVVaYgaeK9cYm
+         2frw==
+X-Gm-Message-State: APjAAAUfTDxTCMii3C7kG7dPwOK9Xxc0blLPaSPURH8Ux9DEChlksaNG
+	b//7EbvisEoXt7EKEllycAcpN+kYRhXBgi92jHKLVwJxu88=
+X-Google-Smtp-Source: APXvYqzdFU7FLe9mstikFRuLQZPxOGasyGi18lBVHM2byTosx7R6I6sPFObEJBlsIDLwdG/e6iB3JckEwatzDqJ8X0A=
+X-Received: by 2002:aca:c7d3:: with SMTP id x202mr6143556oif.48.1556279148335;
+ Fri, 26 Apr 2019 04:45:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="G4iJoqBmSsgzjUCe"
-Content-Disposition: inline
-In-Reply-To: <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Fri, 26 Apr 2019 09:17:08 +0000 (UTC)
-X-TUID: owBzRcdE04Zm
-
-
---G4iJoqBmSsgzjUCe
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+References: <20190103144124.18917-1-stefanha@redhat.com> <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
+ <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com> <20190426091702.GA2071@stefanha-x1.localdomain>
+In-Reply-To: <20190426091702.GA2071@stefanha-x1.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Apr 2019 12:45:37 +0100
+Message-ID: <CAFEAcA8OVKO087uiNvwDGObiaxHAPYHwoXLEN1t5Y4v9B43r9A@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel argument"
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	Jim Mussared <jim@groklearning.com>, Julia Suvorova <jusual@mail.ru>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Steffen Gortz <qemu.ml@steffen-goertz.de>, 
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-TUID: nwHDg5q+E7pY
 
-On Thu, Apr 25, 2019 at 08:07:06PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> On 1/4/19 4:16 PM, Peter Maydell wrote:
-> > On Thu, 3 Jan 2019 at 14:41, Stefan Hajnoczi <stefanha@redhat.com> wrot=
-e:
-> >>
-> >> This reverts commit 01fd41ab3fb69971c24a69ed49cde96086d81278.
-> >>
-> >> The generic loader device (-device loader,file=3Dkernel.bin) can be us=
-ed
-> >> to load a kernel instead of the -kernel option.  Some boards have flash
-> >> memory (pflash) that is set via the -pflash or -drive options.
-> >>
-> >> Allow starting QEMU without the -kernel option to accommodate these
-> >> scenarios.
-> >>
-> >> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> >> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
->=20
-> Previous to this commit (v3.1), we have:
->=20
-> $ qemu-system-aarch64 -M netduino2
-> qemu-system-aarch64: Guest image must be specified (using -kernel)
->=20
-> Now (v4.0) we get:
->=20
-> $ qemu-system-aarch64 -M netduino2
-> qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
+On Fri, 26 Apr 2019 at 10:17, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+>
+> On Thu, Apr 25, 2019 at 08:07:06PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > Previous to this commit (v3.1), we have:
+> >
+> > $ qemu-system-aarch64 -M netduino2
+> > qemu-system-aarch64: Guest image must be specified (using -kernel)
+> >
+> > Now (v4.0) we get:
+> >
+> > $ qemu-system-aarch64 -M netduino2
+> > qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1=
+)
+>
+> A user-friendly error message is needed here.  The check for -kernel was
+> too specific and is not desirable for microbit where we use -device
+> loader.
 
-A user-friendly error message is needed here.  The check for -kernel was
-too specific and is not desirable for microbit where we use -device
-loader.
+It's consistent with how many of our other board models work.
+If you try to run them without providing any guest code
+in any way, then they just do something not very useful.
+(For A-profile this used to often be "die with the 'execution
+from something not ROM or RAM' message" and is now "just steam
+through executing garbage and/or taking exceptions in a tight loop.")
+This is how real hardware also works :-)
 
-Old boards probably want to continue using -kernel.  New boards like
-microbit may use just -device loader.  Perhaps there is even a group
-that wants both options.
+(Strictly speaking this message appearing is a defect in
+QEMU's emulation -- the 'lockup' state behaviour is architecturally
+well-defined and is supposed to cause the CPU to sit there doing
+continual instruction fetches from a specific (non-valid) address
+until either the system is reset or an NMI handler kicks in which
+might be able to rescue it. We don't bother to emulate this detail
+because lockup is pretty much always a guest bug and the only thing
+I've seen using the lockup behaviour and expecting to recover from it
+is test code.)
 
-A solution is to introduce explicit checks so that we can tell the user
-the appropriate option for the machine type.  I can work on this if you
-like, but probably won't be able to send a patch until Tuesday.
+> Old boards probably want to continue using -kernel.  New boards like
+> microbit may use just -device loader.  Perhaps there is even a group
+> that wants both options.
+>
+> A solution is to introduce explicit checks so that we can tell the user
+> the appropriate option for the machine type.  I can work on this if you
+> like, but probably won't be able to send a patch until Tuesday.
 
-Stefan
+But it's difficult to tell how to identify whether there's really
+any guest code there. For instance the user might want to start
+QEMU, connect via the gdbstub and load guest code from gdb.
+Or they might be using the generic-loader device. Or they might
+really be using -kernel but with a broken guest image which doesn't
+have a vector table in it, which will result in the same message.
+I guess you could have a heuristic for "if an M-profile CPU is in reset
+and the value it loads for the starting PC is zero and the gdb
+stub is not connected, then print a warning that the guest image
+is missing or there's no vector table" but I'm not a big fan of
+heuristics...
 
---G4iJoqBmSsgzjUCe
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcwsyOAAoJEJykq7OBq3PIxrQH/RvZOjp//Ku7wHbPSH6LRX1g
-z7Fhi7/66tL7IDgjvybqRnwV+cH3hIU7bDyOPLK5ec/GHsDrqUlt0FPRXCQZksuo
-AeazNW0YoqO+zI+M/JDZ6JXHMUSjnybtCDkC2ZbYpEKAJ0miSlrjIiKKjbKFPGc0
-WHNsdPz5/KHvxPyD0lmI+7/MHE6B5YpanYr7V+2kDYW+/WhXT6AU99Ge3LxO4VNn
-qC8FP0yRuC5FKHDlhaXw+GldH8sQvv+TUyqODXuBJZY4PF+3DFLhPI7tMizNBERs
-yEgn6jGdtxXveA3RCbVkCfmUi9q9RjOY3n7ubxgCM/49EAztdzxNpT73OYr6od0=
-=WxRV
------END PGP SIGNATURE-----
-
---G4iJoqBmSsgzjUCe--
+thanks
+-- PMM

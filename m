@@ -1,73 +1,73 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3677163wrh;
-        Mon, 29 Apr 2019 09:08:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwOl93rDFM2nd0g1tc/javx1r4yEClyVPhIF3MqAZKrVB/uo9qbam1OiECbT0xAP9FN0y4
-X-Received: by 2002:a1c:dc84:: with SMTP id t126mr17168215wmg.143.1556554114342;
-        Mon, 29 Apr 2019 09:08:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556554114; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3681598wrh;
+        Mon, 29 Apr 2019 09:12:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxl0T3BjfARHKDj7ONDrS1vj6oTi+Cb8JsO4LXcMbLn9WsT0BBCmugEvt192z9MyfOU/2L6
+X-Received: by 2002:a1c:3945:: with SMTP id g66mr219179wma.147.1556554341349;
+        Mon, 29 Apr 2019 09:12:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556554341; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCZN5yafa4zbkvTJI43Ln/pYj8ueVn4mmhpMiNxnbohBgocB/NfarLQIsJiD1y/U6i
-         lwWdfKjOkjviahlRe2dgVaLgprZlfFfIMmbDcPSnpsB8HxzhiLiCBXeiQC9qOSq4Fpmi
-         2t/AIBrIGZ3KbZBuUOblmEbgg/HSdBSXUNWyGUGbQBmQhJ5/wqDnOGPptX9L/XB73GtF
-         bJ3s7k3Fsno3Nuozj4EtBBL1Z1WbhBTYtexXjx2lfQv/PTAF0VR3oS/fWMp+yLc26yu0
-         lE5sOQabd0duN7t2blbgpKYA/Xkgi7+gLRrU+q/ZaQr6lwoxSHnofj3OAKdZuSXZ9rrw
-         /ZKg==
+        b=QXJr0hj/sh2uQB+GkB5fyrMnm0qGTcN8JsEnho2CPkj0feDkGEnmzpV26IqW+MYLk2
+         efHNQGPv2RHpSzC7JN/JdMQl0yNUsuobwgiKiBAW8HXxDa2z//0YXzepKXCMp2od19yy
+         QpU3AUweeFZc+fSSd4pvJfFT1u1KhzQsHRhbM6B3C/g9hOg7dyxcDvEb5CCb5zM8DrEb
+         L4ulUhyOxDB6OLQOQNYZ9A7+KWPGB9YHZj7ezn+Km4KwyAXed/oOtS6X8/8xZe7LUmpD
+         1xy+a7ldXYR2xCFKcSMgAMA9NFjLFC36LHBZOMv6rzLEMHgD0FL+y9lHKbIJNe++0jyi
+         Xdiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=474dT/wFk03dlCTfI8Ryt1P6hcy2v/j9pvxFJQN4LOM=;
-        b=TQMOBFNDeTsHpEavhlKFVSPr/gBkz9jqyKcIPcPmhYV/X8JinRHhoCUcWNeUVbXcmQ
-         kS2biDae47d+j/HNBW3fFLRcsy0rE2oX6VanRd8X2q9+jdWkHcf4R4knzRzpTlsstb1v
-         NKKB+TA3UXzLoXhJhVnGLhiVRE9lGIYJFVuvj2mhctG6/87Y4A6C3h4VUryvaqJbAYWD
-         4LMiuc6fRzv4C5SsJ6yOS0OemKa4lFBVRZX+gwzNFROYPfEN6NdRrlH3c+xBrW//AIAE
-         X/sliRsXFsqTHzxlepbPv3XpPkEyTrgHEyHYUVvZpsoq/n8SbnBWPNfAT/7pSd07RvbV
-         V03g==
+        bh=f6UlUw8JZxo2gxUQRnvSAMSzm3LlUhO7WObH6JOA7Cc=;
+        b=r0vupOluu5sRkuwiDD+8wvGxsidEBUXRQXvdJpkkk4EXtySgKSLmn1UWd1X4xPZnw2
+         q+6p2nMnoW56KrBRCBZujtRVBrD/vahJy9TOAtkS7Ijq4nV0ZXLK9iXBGOGX6BEsP7RP
+         pGmpqBn9KUGWyP9LsJdTGFvbGBd0+4i0nFx4gnbqy5CFoMbRiZoaPKes6Lf1URa99+eK
+         u302M3pQHrIOjwSyp9WyXBDMIzHZcBJZ/gIWBouSsZa0z0C8oGEUBcFu1n7GFQoOxolB
+         D8Y8f0FW4OJfwx6uYj8Wmqw+pjqAiWKmrY7qlK4yWK1GQwXTztlZ53zhe7quL58D0sLJ
+         2WJg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 78si22668003wma.102.2019.04.29.09.08.34
+        by mx.google.com with ESMTPS id d5si1451791wru.388.2019.04.29.09.12.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 09:08:34 -0700 (PDT)
+        Mon, 29 Apr 2019 09:12:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60006 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:60076 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hL8pV-0007uE-9I
-	for alex.bennee@linaro.org; Mon, 29 Apr 2019 12:08:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45837)
+	id 1hL8tA-00025W-9z
+	for alex.bennee@linaro.org; Mon, 29 Apr 2019 12:12:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49939)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hL8k9-00047F-OK
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:03:06 -0400
+	(envelope-from <thuth@redhat.com>) id 1hL8sv-000233-O9
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:12:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hL8k8-0005gx-MU
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:03:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42836)
+	(envelope-from <thuth@redhat.com>) id 1hL8su-0005AP-A7
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:12:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36244)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hL8k8-0005dS-De; Mon, 29 Apr 2019 12:03:00 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1hL8su-00052m-0d; Mon, 29 Apr 2019 12:12:04 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DBC942D7ED;
-	Mon, 29 Apr 2019 16:02:56 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 752833007C43;
+	Mon, 29 Apr 2019 16:11:53 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-111.ams2.redhat.com [10.36.116.111])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B7A3260BE0;
-	Mon, 29 Apr 2019 16:02:43 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9F69228D08;
+	Mon, 29 Apr 2019 16:11:03 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	yang.zhong@intel.com, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, pbonzini@redhat.com
 References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-17-thuth@redhat.com>
-	<98855a34-ff5a-896f-7959-480b89d62833@redhat.com>
-	<b78d5517-5f23-6028-6726-b60f916f22fd@redhat.com>
-	<CAFEAcA8xWTwbU6RSBbQkF2j5OfozEq9g3Pq83KyYG_J1CqGM-A@mail.gmail.com>
+	<20190418180057.3593-23-thuth@redhat.com>
+	<b042daff-8b05-08e7-5386-1b89f05ad984@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -113,23 +113,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <3f8cad24-3eb9-4c05-063e-196e27184f90@redhat.com>
-Date: Mon, 29 Apr 2019 18:02:42 +0200
+Message-ID: <7559b0e3-f752-09a5-2e8d-a40d0ade23e1@redhat.com>
+Date: Mon, 29 Apr 2019 18:11:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8xWTwbU6RSBbQkF2j5OfozEq9g3Pq83KyYG_J1CqGM-A@mail.gmail.com>
+In-Reply-To: <b042daff-8b05-08e7-5386-1b89f05ad984@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 29 Apr 2019 16:02:57 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.40]);
+	Mon, 29 Apr 2019 16:11:53 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 16/29] hw/arm:
- Express dependencies of the virt machine with Kconfig
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 22/29] hw/arm:
+ Express dependencies of sabrelite with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,55 +141,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Yang Zhong <yang.zhong@intel.com>, Rob Herring <robh@kernel.org>,
-	Qemu-block <qemu-block@nongnu.org>,
+Cc: Rob Herring <robh@kernel.org>, Jan Kiszka <jan.kiszka@web.de>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-block@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Cedric Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
-	Andrew Jeffery <andrew@aj.id.au>, Philippe Mathieu-Daude <f4bug@amsat.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Philippe Mathieu-Daude <f4bug@amsat.org>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+	Beniamino Galvani <b.galvani@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
+	Cedric Le Goater <clg@kaod.org>, qemu-arm@nongnu.org,
+	Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	John Snow <jsnow@redhat.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1HvxqyJpDfu3
+X-TUID: pUCaL6F3QP9t
 
-On 29/04/2019 17.53, Peter Maydell wrote:
-> On Mon, 29 Apr 2019 at 16:34, Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 25/04/2019 17.53, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Hi Thomas,
->>>
->>> On 4/18/19 8:00 PM, Thomas Huth wrote:
->>>> Dependencies have been determined by looking at hw/arm/virt.c
->>>>
->>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>> ---
->>>>  default-configs/arm-softmmu.mak | 11 +----------
->>>>  hw/arm/Kconfig                  | 19 +++++++++++++++++++
->>>>  hw/arm/Makefile.objs            |  3 ++-
->>>>  3 files changed, 22 insertions(+), 11 deletions(-)
+On 25/04/2019 18.43, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Thomas,
 >=20
->>> Without -nodefaults I get:
->>> qemu-system-aarch64: Unsupported NIC model: virtio-net-pci
->>> This is expected.
+> On 4/18/19 8:00 PM, Thomas Huth wrote:
+>> Add Kconfig dependencies for the Sabrelite / iMX6 machine.
 >>
->> Yes, it should still work with "-nic none" or "-nodefaults".
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  default-configs/arm-softmmu.mak | 4 +---
+>>  hw/arm/Kconfig                  | 7 +++++++
+>>  hw/arm/Makefile.objs            | 3 ++-
+>>  3 files changed, 10 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-sof=
+tmmu.mak
+>> index 76508e3910..ef7dd7156a 100644
+>> --- a/default-configs/arm-softmmu.mak
+>> +++ b/default-configs/arm-softmmu.mak
+>> @@ -33,6 +33,7 @@ CONFIG_NETDUINO2=3Dy
+>>  CONFIG_MPS2=3Dy
+>>  CONFIG_RASPI=3Dy
+>>  CONFIG_DIGIC=3Dy
+>> +CONFIG_SABRELITE=3Dy
+>> =20
+>>  CONFIG_VGA=3Dy
+>>  CONFIG_SSI_M25P80=3Dy
+>> @@ -40,13 +41,10 @@ CONFIG_IMX_FEC=3Dy
+>> =20
+>>  CONFIG_NRF51_SOC=3Dy
+>> =20
+>> -CONFIG_FSL_IMX6=3Dy
+>>  CONFIG_FSL_IMX25=3Dy
+>>  CONFIG_FSL_IMX7=3Dy
+>>  CONFIG_FSL_IMX6UL=3Dy
+>> =20
+>> -CONFIG_IMX_I2C=3Dy
+>> -
+>>  CONFIG_PCIE_PORT=3Dy
+>>  CONFIG_XIO3130=3Dy
+>>  CONFIG_IOH3420=3Dy
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index 059fb8282c..065c7acf1b 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -177,6 +177,10 @@ config REALVIEW
+>>      select DS1338 # I2C RTC+NVRAM
+>>      select USB_OHCI
+>> =20
+>> +config SABRELITE
+>> +    bool
+>> +    select FSL_IMX6
 >=20
-> Er, if you need either -nic none or -nodefaults after this
-> patch then this would be a change in behaviour, which seems
-> wrong to me.
+> This one crashes:
+>=20
+> $ qemu-system-aarch64 -display none -M sabrelite
+> ERROR:/source/qemu/qom/object.c:454:object_initialize_with_type:
+> assertion failed: (type !=3D NULL)
+> Aborted (core dumped)
 
-No worry, this only applies to compiling builds where you run "configure
- --without-default-devices". For normal builds, virtio-net should still
-be included fine. ... at least I hope this is what Philippe was talking
-about ... but for me it's working fine when I run "configure" normally.
+Weird, I was pretty sure to have tested all boards individually ... I
+must accidentally have skipped this one. Thanks a lot for testing, I'll
+fix it in v6.
 
  Thomas
-

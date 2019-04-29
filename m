@@ -1,101 +1,99 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3771893wrh;
-        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyubyKrk7gOP5m3AyRjb2nRSDrb6f4ibHveGfarmSypx7vWQPR+DbfdxZvzYy8r5jO8m2KW
-X-Received: by 2002:adf:dd46:: with SMTP id u6mr3853632wrm.228.1556559700777;
-        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556559700; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3809560wrh;
+        Mon, 29 Apr 2019 11:19:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwnO3QMUZ2PCIen6yoru1tPN21yiwaOuNEfAP302b26v4jimYT6rNRjwuuliDN/MItVCC9X
+X-Received: by 2002:a1c:2090:: with SMTP id g138mr257547wmg.117.1556561996848;
+        Mon, 29 Apr 2019 11:19:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556561996; cv=none;
         d=google.com; s=arc-20160816;
-        b=M5svPZTSHGuylhFBTPuQuLJllevYchUPZ0Ra5OmZvyzo0gdRxI+FzQiQpnznMK6HAh
-         9wJ50sX3s5Dyi+uopUhmB/0TsO0ztCxIyDkmCmtdszyU0QO2u+qbjyrate8N0e/kQQ61
-         Kaj/kf/BA1pH+WrkfKwClS3h7R9NJJGLwoAREgo2jS6vF9sCUfBVkVIxZWjJApm1YKs7
-         vxK3dFdytpdlBop7xKG5wfSoqyPe2sM3nQwiTnt8jqDl+o7teUR/J7pwh3AdZ36NXmLr
-         RyFs23MqD/KCb+DV+B8FIN0CGzS8LDtRTpmE418TkH+No3onF9dMsH5Ars/nitqr8Kcw
-         l/ww==
+        b=Xett/xzZYN3Qv+Dlt1CKjAVkN6pLUUvyhrm3ANPpqrY4jCAoTv4Wg9DDFRrl69yoJc
+         81mZnburg8tOoXS+knli6mv/htEhn+MyRM7Hm6hsGjqqPezbO0HSEhTIflaVOb/u9cdS
+         D/Wtlr+dbw9ISUQiFtRWeun/bIf7wZeDkjkit+G3J2/S58Wk3h1VdKsHBRluwFmRnoEQ
+         JF7E6YDhpHzLQFgC2V/LftYdmxQqstsiLCGJ1ub3jPoq2VwgEVidfcep/ovvalC/jJNf
+         YYnUYXLr44BkDRwK91iYWuUebke+NFpdYRliS11oXJjvDFApncGgzqsfZ6rx/J42fDi7
+         v6YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
-        b=OPaV540EJ8MGr7xXVJ08zW9/MaT+YAmuAAbiGVgK7QIhgSQ3uF5WqtDsOKOZ0CezBk
-         MO5ZO+eWuPxR2ffyazGTL4N4sZt+gOYV9s3E2BXnPyo/b7v84wDhu1I8jHInAgUkaQpb
-         8au09uQbRFiX7PgOUe01QAAJ2bHJOgtnh5lN4ppCERnhOT6RAu9zh39dpGBPYgV5yLZb
-         0Ct+kiw13tl0B91DVZyP2fFddgYRXs/Trmk68v7VKi4F2dDiTAHzi1MvucgS9+3MT4E+
-         Cw9wUQTooebVUAfD8gWx6/kMVQPyOhqOKQcHZWzPE1f4YYx2xGb6fdofk4B+UI051S27
-         0+QA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=b8JrVvmhx3q26IahqjD6E/5G69SfIzP3Kim3EOowCVU=;
+        b=U8alS5y4kmuk0v+x43Zx5E9vwcmq2Re0T+zLH0b/Zm7hi1DqCiZt2OJD+sDNMvKwxZ
+         pyCZ7UgWnqGlhRYNsy6xBiWYCSksAIBY84Z70xJU9xX5XUWyrSZaeNF4Kv7gY4k148lr
+         lqkqxipoLXqMwxih63XdbqSVt/65ATzww2T3Wk8CobRlwjRsHEMrSi2KSD3/LZCwfras
+         Cvl4XPmxjG5I3ChAiBoUTCsPFHqHdrgRNs96KVhVtRIGU9ileDtvpExNiR+SkeN4OJlh
+         e+TGsqvzBUvTc4MtjqCJ+G0l+6TPVYJ1RVbPa9LpVC6b2Pk0eHNMU/xjO34Rzva2coDR
+         fYCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gFoKaeSq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m62si98083wme.23.2019.04.29.10.41.40
+        by mx.google.com with ESMTPS id j14si136073wme.178.2019.04.29.11.19.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
+        Mon, 29 Apr 2019 11:19:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gFoKaeSq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:32977 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:33423 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLAHb-0006WM-RT
-	for alex.bennee@linaro.org; Mon, 29 Apr 2019 13:41:39 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41645)
+	id 1hLAsd-0006UE-Ca
+	for alex.bennee@linaro.org; Mon, 29 Apr 2019 14:19:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLA5i-0004RA-0m
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:29:22 -0400
+	(envelope-from <philmd@redhat.com>) id 1hLAsO-0006TZ-Fo
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 14:19:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLA5h-00069l-6P
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:29:22 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:46677)
+	(envelope-from <philmd@redhat.com>) id 1hLAsN-000177-KW
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 14:19:40 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:41733)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hLA5g-000699-VZ; Mon, 29 Apr 2019 13:29:21 -0400
-Received: by mail-lj1-x242.google.com with SMTP id h21so10092400ljk.13;
-	Mon, 29 Apr 2019 10:29:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
-	b=gFoKaeSqqjjUIfHjdi1V2wL1DTbZocQbM+iMoydPFobJyCX4QOGfKyEzHalbfAhjJ/
-	dKcVa+3jzEnBXATmT2hH3xNVuPDPShGAzqbI3ZD3Ynv6iyyu3pCi7mZJR7+sFdfRcVaC
-	qkgcVSyTVnGvh1MnlFfZp+Mywd4WzcaElsqor1NEzMLwWuk+6JGILYNYodytP3ZxhZEN
-	3j2VCZTXyZ1EhhsKD68CzRFFAHFWOhcAPklJBQ5TXjM9uE+wSKjQZP/Z3uGNunEH6zWH
-	Y21b9FjGypkJTfS060SrlxvymIcOtq/icBZYRC0sMbDFAuymvKwg+NpTWE2sUWEX3cPj
-	rffg==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hLAsN-00016t-7n
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 14:19:39 -0400
+Received: by mail-wr1-f66.google.com with SMTP id c12so17412415wrt.8
+	for <qemu-arm@nongnu.org>; Mon, 29 Apr 2019 11:19:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
-	b=mRPzG9wrgiHq8cqEOuNzkmIp35/SFpGueDsfTZSyiKYrt9iOEzEgGPhmwNRnVtNtdM
-	nDEg7QIqV0GuBlBribqUCEKVIP/tsYRpcWw4FLrH0Jds3CPejZMnKH2h6Bj524oZ9ZeX
-	RJvMVgbrkn3thbOqlvj0by7lW74QYfwthFg1uWStBQnoYUWKvaJwamkwrYY2Jy2uUxwL
-	z3XFG8MlSGPT0TS2tET4FHOLmWbO9+lRvxQkngF56VQBeMzpbmq2aGlVcci5HIKtYiSN
-	WIfrGEsx2fCrKOhNbTpXsDvmufBLXK5fB4x5uKSHn0KW/kRe0JUnQUbRdUgsEVVt1j0n
-	q0GA==
-X-Gm-Message-State: APjAAAWqyMwoVrtdhCu53rIVXj5vk4bdTmBN+8oqQp9e2RBtfq8JiAEm
-	Nkq4+HTdShDhl4tqIXOBlLhGf4+appEJbNUv7nc=
-X-Received: by 2002:a2e:5b97:: with SMTP id m23mr4739150lje.99.1556558958689; 
-	Mon, 29 Apr 2019 10:29:18 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=b8JrVvmhx3q26IahqjD6E/5G69SfIzP3Kim3EOowCVU=;
+	b=m9UWVywijBdOdjmLIxuYofYVQWmI0MsPD3RycavIz/IPHSeoli+ptHXoo3OMs1/cW7
+	Fi8UF8/ki28W1YSAeAn2ZM3+7VriyUZZhoUWbLsFM/oIRiLIoVm4aNa6TG5tFCILz+PP
+	3w9HYe91wdI/3qpVZQEFiNGKYgy2/y3AubCmiz/oBhcOGrncXdmOEtlanJia6dcCJ+Xa
+	2zBn+ZvtEk9AdJmsfjJB6s7fkR/6yRoJpYjawqUxDNo0mWS1jywMVZRibzo/LfNy0TzT
+	0XccLkGPhe4IAFTcLOm4NO4nbzk+NSFj78oQrCaDM658R4MVQ99HR5XscZvOpcnJ0c11
+	Gxiw==
+X-Gm-Message-State: APjAAAVKy2xfgV9yWXtIriIu3FFa8rFkwMgJkD0WaMOBizrMlAA8xGeo
+	qDRQs/8HRTGe03vHFpQQmfcElA==
+X-Received: by 2002:adf:b64e:: with SMTP id i14mr19509426wre.72.1556561978272; 
+	Mon, 29 Apr 2019 11:19:38 -0700 (PDT)
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	e6sm25705557wrc.96.2019.04.29.11.19.37
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 29 Apr 2019 11:19:37 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190412165416.7977-1-philmd@redhat.com>
+	<CAFEAcA90Pv=zEqaonGV=c022T=CYMo11nkqNwBnGgocESnBNmA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <f56687f4-434e-0e6d-77a8-fec6c33c9a62@redhat.com>
+Date: Mon, 29 Apr 2019 20:19:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190427141459.19728-1-philmd@redhat.com>
-	<20190427141459.19728-2-philmd@redhat.com>
-In-Reply-To: <20190427141459.19728-2-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Apr 2019 10:28:49 -0700
-Message-ID: <CAKmqyKOESUfmvHY73k6NsnZ0Gr9LXuHwOUDSn2vXQGXRfmWkOA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::242
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/3] hw/Kconfig: Move the
- generic XLNX_ZYNQMP to the root hw/Kconfig
+In-Reply-To: <CAFEAcA90Pv=zEqaonGV=c022T=CYMo11nkqNwBnGgocESnBNmA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-arm] [PATCH v3 00/12] hw: Remove "hw/devices.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,57 +105,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zNuk6Sjg7yrT
+X-TUID: +gYlUq4rrV0B
 
-On Sat, Apr 27, 2019 at 7:15 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> The XLNX_ZYNQMP config is used in multiple subdirectories
-> (timer, intc). Move it to the root hw/Kconfig.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On 4/29/19 6:51 PM, Peter Maydell wrote:
+> On Fri, 12 Apr 2019 at 17:55, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> Hi,
+>>
+>> As his first comment describes itself, the "hw/devices.h" contains
+>> declarations for "Devices that have nowhere better to go."
+>> This series remove it, creating new headers for devices covered there.
+>> MAINTAINERS is updated.
+>> I also included 2 cleanups while working on this, in "qemu/typedefs.h"
+>> and "hw/net/ne2000-isa.h" header guard.
+>>
+>> v3:
+>> - rebased
+>> - added 2 patches suggested by Markus
+>> - addressed Markus review comments
+>> - added Markus's R-b
+> 
+> Since these are almost all arm devices I'll take this via the
+> target-arm tree (I'm going to make a pullreq later today).
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
->  hw/Kconfig       | 3 +++
->  hw/timer/Kconfig | 3 ---
->  2 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/Kconfig b/hw/Kconfig
-> index 88b9f150070..c3c78f43eb5 100644
-> --- a/hw/Kconfig
-> +++ b/hw/Kconfig
-> @@ -72,3 +72,6 @@ config XILINX
->  config XILINX_AXI
->      bool
->      select PTIMER # for hw/dma/xilinx_axidma.c
-> +
-> +config XLNX_ZYNQMP
-> +    bool
-> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-> index 51921eb63f1..eefc95f35ec 100644
-> --- a/hw/timer/Kconfig
-> +++ b/hw/timer/Kconfig
-> @@ -34,9 +34,6 @@ config TWL92230
->      bool
->      depends on I2C
->
-> -config XLNX_ZYNQMP
-> -    bool
-> -
->  config ALTERA_TIMER
->      bool
->      select PTIMER
-> --
-> 2.20.1
->
->
+Thanks Peter!

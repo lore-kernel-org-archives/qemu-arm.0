@@ -1,103 +1,102 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3661206wrh;
-        Mon, 29 Apr 2019 08:54:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz/LNGqo9ElF1tT7b69cPokuJopGXVEF3SZcbrOGoC7Ic7STnTSHGhkEyRZeBudpe7orMtc
-X-Received: by 2002:adf:9364:: with SMTP id 91mr19964394wro.56.1556553259690;
-        Mon, 29 Apr 2019 08:54:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556553259; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3675153wrh;
+        Mon, 29 Apr 2019 09:06:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxbqSFkNIPV1GPjRZa+2cijXwbLQws3+a3ECEkub8TGTyRQP9n9KY4x9C0hTrfSRhDBs5YS
+X-Received: by 2002:adf:b641:: with SMTP id i1mr449484wre.288.1556554011699;
+        Mon, 29 Apr 2019 09:06:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556554011; cv=none;
         d=google.com; s=arc-20160816;
-        b=dbRzhuUfjO8/x/demtd5I50L6BeOBveMOhXFVF3K4sEW+inW0LZ7jCP8QvLYj6R1Qk
-         FrXkxg2kom63BOpVMNuRd1hrSSYq5PIb4J8C+pH1NEh+kidxzlAlWJJK/kvtk55v31Ir
-         LCwaEkzaweeF8S+hT1Yg7jLVGuvi3fJs47rHd1Co9T36WchKqVbEL0FN/cLcDPkoFf8L
-         fR5WuEslfc6ApTTEiSWmnuj88s2x/zjDOY8D2Z2qKnbORhVFf3tkMt0c2NkaC+Mqb6IH
-         j5rb/3xNkfBak73IWboC4auf/hr0APHuxAyJB10y0SHlhSI586XWtiDAMkLViStSbgo3
-         sqrA==
+        b=uRF649CCr1OeuLjNScSH+vuRwtWmN9n4tP4ASAXLjFXpJn29ukShDoU9yTr0Kg3e69
+         CM3wjnZTpAGWmJCmvq38n33TnoRQMB1XFpYDKgdMZIUg+wbCQC3+eCM0JH2CXeopxluq
+         9Kx9Wd1dupDf+12zsE+D9Qh+ZwI9h6YX36IayLOUcazwo9nya+7T/kfG9Mm5WjeEjT9J
+         ejp04bb0RLwcpFn0meXW+apfgpKyk5PXLFb5JSA8hD5Gr9nAcn8B3xTQbSoTfgYx/pXx
+         MIUCbflgS8kDrr2cBt4pTct9+iYz881CAvYvBVgISRuWsyrl2hdt6lDeSWb6BiyVZuP5
+         4jOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=PNjaz5jmGqscrk5EWGZMQ4X+yWZT9bb9jB43XJMl6i4=;
-        b=jXjmngsKdIBlJUPYQZiWjmc0RU5R5yJngDB9FbJQ7GcrTkEjyZyYgvtsLfjY+mM+hN
-         Bm+5uTtykB9lc6vUoqVcgyRiVReeJBC/VEqfzUTiIShOVORfX9WJN0T7KQVXSFxOMLue
-         OSF5D7W31/E4YYIC0RndAmrsO9VeB+dqMriglstijoua81vswiIblPmdWzO99WFMvmMw
-         0vQhM1r3su5ez/53nud26Hx7W3TV9t1mI+WWYVeah2SI7rrbHpH+Xtgir7M9HjSOFgzE
-         4LtezaY1HWiLfsGBHzhUD387snsMjXHSH/n1AZGSbNXQucWmq9GQra/5BoVOc65LdTOK
-         jM2Q==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=TMYY+oUbqasXkRpsVOksYkBugkZpbpTbPgd076eEaNI=;
+        b=DrHFmjnuOTjtJYcyd1sCZ3nDW1dq6LNJJ6nD7Bo0OI5gLz9OKk5J0kK+fMyqH1QRJG
+         xB6jnPFDDOkciz/0t6bIhJ0NUSmmykuEVSdB2LU8SAlwQFcFhYHmUYy/qsETh9QD7rGT
+         sOPZJopvWQfqD9iTXcGA+RI6EVYnsVXKkxKtSwB2xnx6UQC/uz4hw3p0TeOkQDbczRab
+         WoouTczKfzLKmXGLgxaopLhs1rQpPonvV4KZui0tsj/mAI+I5FsN0GWWwHAfuA8u8njL
+         sS8BX6DwbX1iKf3jJqTPBDZSAU77OzoX6RFAosqoQHEAPd7WxjYHiHGPQRLswamPr+Ze
+         a/Rw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N9SkNCEX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si7892742wru.324.2019.04.29.08.54.19
+        by mx.google.com with ESMTPS id j16si24030052wrp.168.2019.04.29.09.06.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 08:54:19 -0700 (PDT)
+        Mon, 29 Apr 2019 09:06:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N9SkNCEX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:59569 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:59987 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hL8bi-0006Yu-Qj
-	for alex.bennee@linaro.org; Mon, 29 Apr 2019 11:54:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38217)
+	id 1hL8nq-0006kP-My
+	for alex.bennee@linaro.org; Mon, 29 Apr 2019 12:06:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47106)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hL8bU-0006YF-KS
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 11:54:05 -0400
+	(envelope-from <philmd@redhat.com>) id 1hL8nb-0006iW-LO
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:06:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hL8bS-0006Uf-Ph
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 11:54:04 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:36843)
+	(envelope-from <philmd@redhat.com>) id 1hL8nX-00007f-JF
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:06:35 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:37778)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hL8bR-0006TM-SU
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 11:54:02 -0400
-Received: by mail-oi1-x241.google.com with SMTP id l203so8722169oia.3
-	for <qemu-arm@nongnu.org>; Mon, 29 Apr 2019 08:53:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=PNjaz5jmGqscrk5EWGZMQ4X+yWZT9bb9jB43XJMl6i4=;
-	b=N9SkNCEXnJyG3qIRNwg52YwUMfr8FENlIX4wsjmzWMm2mJ2veacFrSB5J1zDv/cbeD
-	YvXOPRkBjG/AA9Mt/Yk9ftgDIt+LrDf4aIoqYSkFFg9Izm8hFzzAgGBClIflq16M5g4o
-	HPsPVOq4JofISRHa3+QNXlU0sMv0nJXBVd2aE31WluSNjpuyVPtAU5ImW1o28lsqVvAw
-	NX1Axb1d+EDbTCEVbCV2r0KLDsPaspQV0QP+QkkczN6a1eA8vvWRZ4BxqHiYVNPn2slC
-	zLGmZU6bxgMCAI+Go0brbMMffsC4VMIVR/54T7ksYpdTOucXuSEHlVcP6/3NVn10ksOw
-	37vg==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hL8nX-000078-B0
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 12:06:31 -0400
+Received: by mail-wr1-f68.google.com with SMTP id r6so16874291wrm.4
+	for <qemu-arm@nongnu.org>; Mon, 29 Apr 2019 09:06:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=PNjaz5jmGqscrk5EWGZMQ4X+yWZT9bb9jB43XJMl6i4=;
-	b=YfR7xlYZgkjP2Huxe7VdVBqPDii0txVQQG2YOzi92gzJ8W85u0FofHi41fNHBsqq2u
-	gCjUmGmI5+FQ2UKOQ9XCO9DH5O6r5aiG6kKrA0QwFPX8Ov9Een6IejJGLqrdR1pYP7HA
-	R17wL/7MHLCVGyLPBNuxXblKkghkIOtxXxzFaX0r49yAxwiy3d7PRDvlMnDIj9BDZDUx
-	zdTvNC0NNMsrlLg4qpG3Lf+0vZzESyp8E0TlyjE5XUz2vmPcCeJ3XZufN7H0tV4YGlCF
-	8tCDK3MN++GTrBXUTnN4hkYCZQtluqCf4Dpq6dM9mkeevvq7itObwJn65X2/jBkeJZV2
-	3zRQ==
-X-Gm-Message-State: APjAAAUO9B3lAAIWrfPgJ6w5hA7NFBjGYwklmFUh+DnrSv6JCglr16Tm
-	SIm/OlVUPrgybcoBwXy8RrfwUdCdPHPLvJQrd/f0Rg==
-X-Received: by 2002:aca:4c88:: with SMTP id
-	z130mr16675548oia.170.1556553238956; 
-	Mon, 29 Apr 2019 08:53:58 -0700 (PDT)
-MIME-Version: 1.0
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=TMYY+oUbqasXkRpsVOksYkBugkZpbpTbPgd076eEaNI=;
+	b=XZ9RUZtbrttaqMqSgMKH73KyQYbFxNSGCRP8QanSSiJxrLXfv/uzAAk/zTfOKXqtm+
+	ZSZmLPd7nQYIHqz1nANP6+JdodZO+5falEGlwKd5TYhoCevziivmYuEvp6lGWrDkn47n
+	X6ImH0ZUeVXyyxzqUnw/SK3HrXjfXrAh8w4tR0f29MHHzQ/oY/Tha5oNG/CmzCT8o2Na
+	8abkI9cOuD0uO3Hp+1GXN8dqW2dlJWh/HHqtBqZRijrFJvKEBFbQMk0mqLW9EDxCekZs
+	EAzrI9F1LqHM4AJDcEvAIGSDgs6L7B/VCf/2WE9j3oGvlQnNUK4Jameg7lDUHpPY64vy
+	wirA==
+X-Gm-Message-State: APjAAAUZH964+DUloaNckHrNSSTOHE4oxPIZdnbwTR7OnSaw+YasOmBa
+	jtxsxLTMmGCNopwyu6uIH7evHg==
+X-Received: by 2002:a5d:4ec2:: with SMTP id s2mr26535966wrv.160.1556553990335; 
+	Mon, 29 Apr 2019 09:06:30 -0700 (PDT)
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	a12sm12008034wrh.46.2019.04.29.09.06.28
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 29 Apr 2019 09:06:29 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20190418180057.3593-1-thuth@redhat.com>
 	<20190418180057.3593-17-thuth@redhat.com>
 	<98855a34-ff5a-896f-7959-480b89d62833@redhat.com>
 	<b78d5517-5f23-6028-6726-b60f916f22fd@redhat.com>
-In-Reply-To: <b78d5517-5f23-6028-6726-b60f916f22fd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Apr 2019 16:53:48 +0100
-Message-ID: <CAFEAcA8xWTwbU6RSBbQkF2j5OfozEq9g3Pq83KyYG_J1CqGM-A@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+	<CAFEAcA8xWTwbU6RSBbQkF2j5OfozEq9g3Pq83KyYG_J1CqGM-A@mail.gmail.com>
+	<3f8cad24-3eb9-4c05-063e-196e27184f90@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <399a3be9-332e-fe3a-570b-4c1e43cbe2d9@redhat.com>
+Date: Mon, 29 Apr 2019 18:06:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <3f8cad24-3eb9-4c05-063e-196e27184f90@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.68
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 16/29] hw/arm:
  Express dependencies of the virt machine with Kconfig
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,43 +116,52 @@ Cc: Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>,
 	Yang Zhong <yang.zhong@intel.com>, Rob Herring <robh@kernel.org>,
 	Qemu-block <qemu-block@nongnu.org>,
 	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-	Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
+	Antony Pavlov <antonynpavlov@gmail.com>, Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	Peter Chubb <peter.chubb@nicta.com.au>,
 	Cedric Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
-	Andrew Jeffery <andrew@aj.id.au>, Philippe Mathieu-Daude <f4bug@amsat.org>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Philippe Mathieu-Daude <f4bug@amsat.org>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
+	Andrew Jeffery <andrew@aj.id.au>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0puold5Lt8lH
+X-TUID: oA20/hnS11k5
 
-On Mon, 29 Apr 2019 at 16:34, Thomas Huth <thuth@redhat.com> wrote:
->
-> On 25/04/2019 17.53, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Hi Thomas,
-> >
-> > On 4/18/19 8:00 PM, Thomas Huth wrote:
-> >> Dependencies have been determined by looking at hw/arm/virt.c
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >> ---
-> >>  default-configs/arm-softmmu.mak | 11 +----------
-> >>  hw/arm/Kconfig                  | 19 +++++++++++++++++++
-> >>  hw/arm/Makefile.objs            |  3 ++-
-> >>  3 files changed, 22 insertions(+), 11 deletions(-)
+On 4/29/19 6:02 PM, Thomas Huth wrote:
+> On 29/04/2019 17.53, Peter Maydell wrote:
+>> On Mon, 29 Apr 2019 at 16:34, Thomas Huth <thuth@redhat.com> wrote:
+>>>
+>>> On 25/04/2019 17.53, Philippe Mathieu-Daudé wrote:
+>>>> Hi Thomas,
+>>>>
+>>>> On 4/18/19 8:00 PM, Thomas Huth wrote:
+>>>>> Dependencies have been determined by looking at hw/arm/virt.c
+>>>>>
+>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>> ---
+>>>>>  default-configs/arm-softmmu.mak | 11 +----------
+>>>>>  hw/arm/Kconfig                  | 19 +++++++++++++++++++
+>>>>>  hw/arm/Makefile.objs            |  3 ++-
+>>>>>  3 files changed, 22 insertions(+), 11 deletions(-)
+>>
+>>>> Without -nodefaults I get:
+>>>> qemu-system-aarch64: Unsupported NIC model: virtio-net-pci
+>>>> This is expected.
+>>>
+>>> Yes, it should still work with "-nic none" or "-nodefaults".
+>>
+>> Er, if you need either -nic none or -nodefaults after this
+>> patch then this would be a change in behaviour, which seems
+>> wrong to me.
+> 
+> No worry, this only applies to compiling builds where you run "configure
+>  --without-default-devices". For normal builds, virtio-net should still
+> be included fine. ... at least I hope this is what Philippe was talking
+> about ... but for me it's working fine when I run "configure" normally.
 
-> > Without -nodefaults I get:
-> > qemu-system-aarch64: Unsupported NIC model: virtio-net-pci
-> > This is expected.
->
-> Yes, it should still work with "-nic none" or "-nodefaults".
-
-Er, if you need either -nic none or -nodefaults after this
-patch then this would be a change in behaviour, which seems
-wrong to me.
-
-thanks
--- PMM
+Yes, I tested both cases, without --without-default-devices it works as
+expected (no behaviour change). With --without-default-devices (this is
+a new configure switch) it is probably required to run QEMU with
+-nodefaults.

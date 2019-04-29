@@ -1,544 +1,295 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id a2sm7778741wrg.69.2019.05.28.02.59.47
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 May 2019 02:59:47 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3BD1E1FFA6;
-	Tue, 28 May 2019 10:49:55 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PULL 20/28] tests/tcg/multiarch: expand system memory test to cover more
-Date: Tue, 28 May 2019 10:49:45 +0100
-Message-Id: <20190528094953.14898-21-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190528094953.14898-1-alex.bennee@linaro.org>
-References: <20190528094953.14898-1-alex.bennee@linaro.org>
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3308536wrh;
+        Mon, 29 Apr 2019 02:36:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyUy+w7sIK6cEKdUz4a9JYP94J96FUcDzHCDS9chF8dfkbaslhhgkoO9l1tZota/fLZecKS
+X-Received: by 2002:a05:6000:145:: with SMTP id r5mr2531763wrx.19.1556530601487;
+        Mon, 29 Apr 2019 02:36:41 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k9si22178703wmj.93.2019.04.29.02.36.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 29 Apr 2019 02:36:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=hM05rltD;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:54799 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hL2iG-0005If-FI
+	for alex.bennee@linaro.org; Mon, 29 Apr 2019 05:36:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41103)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>) id 1hL2hz-0005Fk-6y
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 05:36:24 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>) id 1hL2hx-0002Gz-G9
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 05:36:23 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:52236)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+	id 1hL2hw-0002EQ-Tk; Mon, 29 Apr 2019 05:36:21 -0400
+Received: from [172.16.11.119] (unknown [172.16.11.119])
+	by beetle.greensocs.com (Postfix) with ESMTPSA id A34CE96EF5;
+	Mon, 29 Apr 2019 09:36:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1556530576;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	content-type:content-type:
+	content-transfer-encoding:content-transfer-encoding:
+	in-reply-to:in-reply-to:references:references;
+	bh=6gAS3z2legQvPM0Yx3NPLWicOne8yXXV0O4yESMftqk=;
+	b=hM05rltDUjzrC0e0WxHJ1P1lx+drlmkzCBaJ51fgv/HgS3XN6m6Mg0CuvnlZvy4qoqAxOD
+	LQTBy4DhZGCkoX6lY3N8M3xcjjqNGu359hmox2I5AyNiW5sn1QfDt+TIL469dRkDT6bOej
+	dlBb+HmdvaOcXVHXjHZq5oZpydILMbE=
+To: qemu-devel@nongnu.org
+References: <cover.1553510737.git.damien.hedde@greensocs.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <bf7dcbc7-5dc6-6269-87e9-44f027946cd9@greensocs.com>
+Date: Mon, 29 Apr 2019 11:36:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: /fZxovQHmJFX
+In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+	s=mail; t=1556530576;
+	h=from:from:sender:reply-to:subject:subject:date:date:
+	message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	content-type:content-type:
+	content-transfer-encoding:content-transfer-encoding:
+	in-reply-to:in-reply-to:references:references;
+	bh=6gAS3z2legQvPM0Yx3NPLWicOne8yXXV0O4yESMftqk=;
+	b=EjC8WjUJiBTRf35LXOH9eUPAOnPf9r3zIykBENsv+dZCSRwQ4VzIjTM+Be/EnEdTEFqd38
+	/CgSOyQbTq+nSfuojQwWW3KgPzx0xon3NXt836RdeXrkOD8kjLpYMRGsSnQAff5pV7PwtL
+	thXeOWt1xEGZm/4iwAvWCkXzcQz0OKk=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1556530576; a=rsa-sha256; cv=none;
+	b=FfJhbFlGwBKMmww58HVHRrT1QW6JeXqgi/jECpSK1xUk/+umU8IGpX+xoexr0R9qWcyYWu
+	WlhZSn+guSqMf5gMHM48D3ooLvBp77ybhJ91pQHHTgNLZT0XIK677200hR47aad7V5H331
+	JTB33DJra6KZeOr493wDmjrwZvMCeCk=
+ARC-Authentication-Results: i=1; ORIGINATING;
+	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 00/17] multi-phase reset mechanism
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
+	mark.burton@greensocs.com, qemu-arm@nongnu.org,
+	alistair.francis@wdc.com, pbonzini@redhat.com,
+	marcandre.lureau@redhat.com, philmd@redhat.com, luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yiRqcmhZOOKt
 
-Expand the memory test to cover move of the softmmu code. Specifically
-we:
+Hi All,
 
-  - improve commentary
-  - add some helpers (for later BE support)
-  - reduce boiler plate into helpers
-  - add signed reads at various sizes/offsets
-  - required -DCHECK_UNALIGNED
+Any comment about this ?
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks,
+Damien
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index cdb836f7e1e..2e560e4d08e 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -28,5 +28,7 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
- 
-+memory: CFLAGS+=-DCHECK_UNALIGNED=1
-+
- # Running
- QEMU_OPTS+=-M virt -cpu max -display none -semihosting-config enable=on,target=native,chardev=output -kernel
-diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
-index c31bbbf39a7..e1f98177aa5 100644
---- a/tests/tcg/i386/Makefile.softmmu-target
-+++ b/tests/tcg/i386/Makefile.softmmu-target
-@@ -42,5 +42,7 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
- 
-+memory: CFLAGS+=-DCHECK_UNALIGNED=1
-+
- # Running
- QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
-diff --git a/tests/tcg/multiarch/system/memory.c b/tests/tcg/multiarch/system/memory.c
-index a7a0a8e9784..dc1d8a98ff2 100644
---- a/tests/tcg/multiarch/system/memory.c
-+++ b/tests/tcg/multiarch/system/memory.c
-@@ -5,18 +5,33 @@
-  * behave across normal and unaligned accesses across several pages.
-  * We are not replicating memory tests for stuck bits and other
-  * hardware level failures but looking for issues with different size
-- * accesses when:
--
-+ * accesses when access is:
-  *
-+ *   - unaligned at various sizes (if -DCHECK_UNALIGNED set)
-+ *   - spanning a (softmmu) page
-+ *   - sign extension when loading
-  */
- 
- #include <inttypes.h>
-+#include <stdbool.h>
- #include <minilib.h>
- 
--#define TEST_SIZE (4096 * 4)  /* 4 pages */
-+#ifndef CHECK_UNALIGNED
-+# error "Target does not specify CHECK_UNALIGNED"
-+#endif
-+
-+#define PAGE_SIZE 4096             /* nominal 4k "pages" */
-+#define TEST_SIZE (PAGE_SIZE * 4)  /* 4 pages */
- 
-+#define ARRAY_SIZE(x) ((sizeof(x) / sizeof((x)[0])))
-+
-+__attribute__((aligned(PAGE_SIZE)))
- static uint8_t test_data[TEST_SIZE];
- 
-+typedef void (*init_ufn) (int offset);
-+typedef bool (*read_ufn) (int offset);
-+typedef bool (*read_sfn) (int offset, bool nf);
-+
- static void pdot(int count)
- {
-     if (count % 128 == 0) {
-@@ -24,17 +39,26 @@ static void pdot(int count)
-     }
- }
- 
-+/*
-+ * Helper macros for shift/extract so we can keep our endian handling
-+ * in one place.
-+ */
-+#define BYTE_SHIFT(b, pos) ((uint64_t)b << (pos * 8))
-+#define BYTE_EXTRACT(b, pos) ((b >> (pos * 8)) & 0xff)
- 
- /*
-- * Fill the data with ascending value bytes. As x86 is a LE machine we
-- * write in ascending order and then read and high byte should either
-- * be zero or higher than the lower bytes.
-+ * Fill the data with ascending value bytes.
-+ *
-+ * Currently we only support Little Endian machines so write in
-+ * ascending address order. When we read higher address bytes should
-+ * either be zero or higher than the lower bytes.
-  */
- 
--static void init_test_data_u8(void)
-+static void init_test_data_u8(int unused_offset)
- {
-     uint8_t count = 0, *ptr = &test_data[0];
-     int i;
-+    (void)(unused_offset);
- 
-     ml_printf("Filling test area with u8:");
-     for (i = 0; i < TEST_SIZE; i++) {
-@@ -44,62 +68,112 @@ static void init_test_data_u8(void)
-     ml_printf("done\n");
- }
- 
-+/*
-+ * Full the data with alternating positive and negative bytes. This
-+ * should mean for reads larger than a byte all subsequent reads will
-+ * stay either negative or positive. We never write 0.
-+ */
-+
-+static inline uint8_t get_byte(int index, bool neg)
-+{
-+    return neg ? (0xff << (index % 7)) : (0xff >> ((index % 6) + 1));
-+}
-+
-+static void init_test_data_s8(bool neg_first)
-+{
-+    uint8_t top, bottom, *ptr = &test_data[0];
-+    int i;
-+
-+    ml_printf("Filling test area with s8 pairs (%s):",
-+              neg_first ? "neg first" : "pos first");
-+    for (i = 0; i < TEST_SIZE / 2; i++) {
-+        *ptr++ = get_byte(i, neg_first);
-+        *ptr++ = get_byte(i, !neg_first);
-+        pdot(i);
-+    }
-+    ml_printf("done\n");
-+}
-+
-+/*
-+ * Zero the first few bytes of the test data in preparation for
-+ * new offset values.
-+ */
-+static void reset_start_data(int offset)
-+{
-+    uint32_t *ptr = (uint32_t *) &test_data[0];
-+    int i;
-+    for (i = 0; i < offset; i++) {
-+        *ptr++ = 0;
-+    }
-+}
-+
- static void init_test_data_u16(int offset)
- {
-     uint8_t count = 0;
--    uint16_t word, *ptr = (uint16_t *) &test_data[0];
-+    uint16_t word, *ptr = (uint16_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u16 (offset %d):", offset);
-+    ml_printf("Filling test area with u16 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint16_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t high, low;
--        low = count++;
--        high = count++;
--        word = (high << 8) | low;
-+        uint8_t low = count++, high = count++;
-+        word = BYTE_SHIFT(high, 1) | BYTE_SHIFT(low, 0);
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
- static void init_test_data_u32(int offset)
- {
-     uint8_t count = 0;
--    uint32_t word, *ptr = (uint32_t *) &test_data[0];
-+    uint32_t word, *ptr = (uint32_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u32 (offset %d):", offset);
-+    ml_printf("Filling test area with u32 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint32_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t b1, b2, b3, b4;
--        b4 = count++;
--        b3 = count++;
--        b2 = count++;
--        b1 = count++;
--        word = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 3) | BYTE_SHIFT(b2, 2) | BYTE_SHIFT(b3, 1) | b4;
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
-+static void init_test_data_u64(int offset)
-+{
-+    uint8_t count = 0;
-+    uint64_t word, *ptr = (uint64_t *) &test_data[offset];
-+    const int max = (TEST_SIZE - offset) / sizeof(word);
-+    int i;
-+
-+    ml_printf("Filling test area with u64 (offset %d, %p):", offset, ptr);
- 
--static int read_test_data_u16(int offset)
-+    reset_start_data(offset);
-+
-+    for (i = 0; i < max; i++) {
-+        uint8_t b8 = count++, b7 = count++;
-+        uint8_t b6 = count++, b5 = count++;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 7) | BYTE_SHIFT(b2, 6) | BYTE_SHIFT(b3, 5) |
-+               BYTE_SHIFT(b4, 4) | BYTE_SHIFT(b5, 3) | BYTE_SHIFT(b6, 2) |
-+               BYTE_SHIFT(b7, 1) | b8;
-+        *ptr++ = word;
-+        pdot(i);
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+}
-+
-+static bool read_test_data_u16(int offset)
- {
-     uint16_t word, *ptr = (uint16_t *)&test_data[offset];
-     int i;
-@@ -114,17 +188,17 @@ static int read_test_data_u16(int offset)
-         low = word & 0xff;
-         if (high < low && high != 0) {
-             ml_printf("Error %d < %d\n", high, low);
--            return 1;
-+            return false;
-         } else {
-             pdot(i);
-         }
- 
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
--static int read_test_data_u32(int offset)
-+static bool read_test_data_u32(int offset)
- {
-     uint32_t word, *ptr = (uint32_t *)&test_data[offset];
-     int i;
-@@ -145,16 +219,16 @@ static int read_test_data_u32(int offset)
-             (b2 < b3 && b2 != 0) ||
-             (b3 < b4 && b3 != 0)) {
-             ml_printf("Error %d, %d, %d, %d", b1, b2, b3, b4);
--            return 2;
-+            return false;
-         } else {
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
--static int read_test_data_u64(int offset)
-+static bool read_test_data_u64(int offset)
- {
-     uint64_t word, *ptr = (uint64_t *)&test_data[offset];
-     int i;
-@@ -184,60 +258,192 @@ static int read_test_data_u64(int offset)
-             (b7 < b8 && b7 != 0)) {
-             ml_printf("Error %d, %d, %d, %d, %d, %d, %d, %d",
-                       b1, b2, b3, b4, b5, b6, b7, b8);
--            return 2;
-+            return false;
-         } else {
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
- /* Read the test data and verify at various offsets */
--int do_reads(void)
-+read_ufn read_ufns[] = { read_test_data_u16,
-+                         read_test_data_u32,
-+                         read_test_data_u64 };
-+
-+bool do_unsigned_reads(void)
- {
--    int r = 0;
--    int off = 0;
-+    int i;
-+    bool ok = true;
- 
--    while (r == 0 && off < 8) {
--        r = read_test_data_u16(off);
--        r |= read_test_data_u32(off);
--        r |= read_test_data_u64(off);
--        off++;
-+    for (i = 0; i < ARRAY_SIZE(read_ufns) && ok; i++) {
-+#if CHECK_UNALIGNED
-+        int off;
-+        for (off = 0; off < 8 && ok; off++) {
-+            ok = read_ufns[i](off);
-+        }
-+#else
-+        ok = read_ufns[i](0);
-+#endif
-     }
- 
--    return r;
-+    return ok;
- }
- 
--int main(void)
-+static bool do_unsigned_test(init_ufn fn)
- {
--    int i, r = 0;
-+#if CHECK_UNALIGNED
-+    bool ok = true;
-+    int i;
-+    for (i = 0; i < 8 && ok; i++) {
-+        fn(i);
-+        ok = do_unsigned_reads();
-+    }
-+#else
-+    fn(0);
-+    return do_unsigned_reads();
-+#endif
-+}
-+
-+/*
-+ * We need to ensure signed data is read into a larger data type to
-+ * ensure that sign extension is working properly.
-+ */
-+
-+static bool read_test_data_s8(int offset, bool neg_first)
-+{
-+    int8_t *ptr = (int8_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / 2;
-+
-+    ml_printf("Reading s8 pairs from %#lx (offset %d):", ptr, offset);
-+
-+    for (i = 0; i < max; i++) {
-+        int16_t first, second;
-+        bool ok;
-+        first = *ptr++;
-+        second = *ptr++;
-+
-+        if (neg_first && first < 0 && second > 0) {
-+            pdot(i);
-+        } else if (!neg_first && first > 0 && second < 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c %d\n", first, neg_first ? '<' : '>', second);
-+            return false;
-+        }
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
-+
-+static bool read_test_data_s16(int offset, bool neg_first)
-+{
-+    int16_t *ptr = (int16_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(*ptr));
-+
-+    ml_printf("Reading s16 from %#lx (offset %d, %s):", ptr,
-+              offset, neg_first ? "neg" : "pos");
- 
-+    for (i = 0; i < max; i++) {
-+        int32_t data = *ptr++;
- 
--    init_test_data_u8();
--    r = do_reads();
--    if (r) {
--        return r;
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return false;
-+        }
-     }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
-+
-+static bool read_test_data_s32(int offset, bool neg_first)
-+{
-+    int32_t *ptr = (int32_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(int32_t));
- 
--    for (i = 0; i < 8; i++) {
--        init_test_data_u16(i);
-+    ml_printf("Reading s32 from %#lx (offset %d, %s):",
-+              ptr, offset, neg_first ? "neg" : "pos");
- 
--        r = do_reads();
--        if (r) {
--            return r;
-+    for (i = 0; i < max; i++) {
-+        int64_t data = *ptr++;
-+
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return false;
-         }
-     }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
- 
--    for (i = 0; i < 8; i++) {
--        init_test_data_u32(i);
-+/*
-+ * Read the test data and verify at various offsets
-+ *
-+ * For everything except bytes all our reads should be either positive
-+ * or negative depending on what offset we are reading from. Currently
-+ * we only handle LE systems.
-+ */
-+read_sfn read_sfns[] = { read_test_data_s8,
-+                         read_test_data_s16,
-+                         read_test_data_s32 };
- 
--        r = do_reads();
--        if (r) {
--            return r;
-+bool do_signed_reads(bool neg_first)
-+{
-+    int i;
-+    bool ok = true;
-+
-+    for (i = 0; i < ARRAY_SIZE(read_sfns) && ok; i++) {
-+#if CHECK_UNALIGNED
-+        int off;
-+        for (off = 0; off < 8 && ok; off++) {
-+            bool nf = i == 0 ? neg_first ^ (off & 1) : !(neg_first ^ (off & 1));
-+            ok = read_sfns[i](off, nf);
-         }
-+#else
-+        ok = read_sfns[i](0, i == 0 ? neg_first : !neg_first);
-+#endif
-+    }
-+
-+    return ok;
-+}
-+
-+init_ufn init_ufns[] = { init_test_data_u8,
-+                         init_test_data_u16,
-+                         init_test_data_u32,
-+                         init_test_data_u64 };
-+
-+int main(void)
-+{
-+    int i;
-+    bool ok = true;
-+
-+    /* Run through the unsigned tests first */
-+    for (i = 0; i < ARRAY_SIZE(init_ufns) && ok; i++) {
-+        ok = do_unsigned_test(init_ufns[i]);
-+    }
-+
-+    if (ok) {
-+        init_test_data_s8(false);
-+        ok = do_signed_reads(false);
-+    }
-+
-+    if (ok) {
-+        init_test_data_s8(true);
-+        ok = do_signed_reads(true);
-     }
- 
--    ml_printf("Test complete: %s\n", r == 0 ? "PASSED" : "FAILED");
--    return r;
-+    ml_printf("Test complete: %s\n", ok ? "PASSED" : "FAILED");
-+    return ok ? 0 : -1;
- }
--- 
-2.20.1
+On 3/25/19 12:01 PM, Damien Hedde wrote:
+> Hi all,
+> 
+> This series is a proposal to implement the multi-phase reset we've discussed
+> here (https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg00310.html) and
+> more recently there
+> (https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg00081.html).
+> 
+> To summarize, we need a multi-phase reset to allow for a more complex
+> initialization of a platform. In particular we need to "propagate" a clock
+> tree, but we have to ensure that every device is initialized first.
+> 
+> To solve this problem, the following 3-phases reset mechanism is proposed (I've
+> removed the 4th given our last discussion).
+> 
+> #DESCRIPTION
+> 
+> INIT PHASE: Reset the object internal state, put a resetting flag and do the
+>     same for the reset subtree. No side effect on other devices to guarantee
+>     that, in a reset domain, everything get initialized first. This corresponds
+>     mostly to what is currently done in the device/bus reset method.
+> 
+> HOLD PHASE: This phase allows to control a reset with a I/O. When a I/O control
+>     a reset procedure based on the I/O level (not edge), we may need to assert
+>     the reset, wait some time, and finally de-assert the reset. The consequence
+>     is that such a device can stay in a "resetting state" and may need to show
+>     this state to other devices through its outputs. For example, a clock
+>     controller will typically shutdown its clocks when it is in resetting state.
+> 
+> EXIT PHASE (previously named 'release'): This phase sets outputs to state after
+>      reset. For a clock controller it starts the clocks. It also clears the
+>      "resetting" flag. A device should not react to inputs until this flag has
+>      been cleared. During this phase, outputs are propagated in the reset domain
+>      (and outside the reset domain).
+> 
+> To implement this, this series add a Resettable interface containing 3 methods:
+> one for each phase. The init phase's method takes a boolean argument allowing to
+> distinguish cold and warm resets.
+> 
+> In this series, Device and Bus implement the interface. A vmstate description
+> subsection is added to allow migration of reset related state for device.
+> 3 methods (one per phase) are also added in Device's class. They correspond to
+> the local part (see the code example below) of the reset. They avoid device
+> specialization to have to handle the sub-domain part and "resetting" state.
+> 
+> Functions to add gpio control over the reset are added. It is possible to add
+> an active low/high reset pin to control the warm reset and an active low/high
+> power gating pin to control the cold reset.
+> 
+> The bus/device reset tree is converted to this 3-phases mechanism. I also
+> added a new ResetDomain object which is just a Resettable container. It is
+> used to have a global "system reset domain" to handle main 3-phases reset and
+> replace the current single-phase-reset handler mechanism.
+> 
+> As an example, in the xilinx_zynq machine, I've converted the slcr (the resets
+> and clocks controller device) and the uart peripheral to this 3-phases reset
+> mechanism. Gpio are added between the devices to transmit reset control from
+> the slcr to the uarts.
+> 
+> All changes have been made so that existing reset behavior is not modified.
+> 
+> #INTERFACE CHOICE
+> 
+> To be honest, I have some doubt about the interface. I've kept it minimal and
+> the consequence is implementation is complex (and kind of duplicated in every
+> base implementation like Device or Bus). One of the problem is the `resetting`
+> flag, which in practical must be a counter to handle reset "reentrance".
+> Indeed nothing forbids to reset some device that is already held in "resetting"
+> state by some other means. As an example, in the zynq machine, there can be 
+> a global/system reset while an uart is reset by the slcr. It it also possible
+> to cold and warm resets triggered concurrently.
+> 
+> The Resettable methods implementation have to looks this (methods are called
+> with iothread locked):
+> ```
+> void init_phase(Device *dev, bool cold)
+> {
+>     /* call sub-resettable init phases */
+> 
+>     dev->resetting += 1;
+>     /* do local init phase (eg: state reset) */
+> }
+> void hold_phase(Device *dev)
+> {
+>     /* call sub-resettable hold phases */
+> 
+>     /* do local hold phase (eg: set some I/O level) */
+> }
+> void exit_phase(Device *dev)
+> {
+>     /* call sub-resettable exit phases (independently of resetting value since,
+>        every resettable have its own resetting counter) */
+>    
+>     dev->resetting -= 1;
+>     if (dev->resetting == 0) {
+>         /* do local exit phase (eg: set some I/O level) only if the device is
+>            really leaving the resetting state */
+>     }
+> }
+> ```
+> Since I don't think specialization should care about sub-resettable and the
+> resetting counter, I've added the local init/hold/exit phases as DeviceClass
+> methods.
+> Otherwise, I see two other solutions:
+> + keep the interface as it is
+> + add some state knowledge in the interface (with some kind of get_state method)
+>   so that resetting counter and some kind of sub-resettable list are handled in
+>   the common code in the interface. The 3 methods will then handle only the local
+>   actions.
+> + have 6 methods in the interface, one for the local actions, one for the
+>   sub-resettable so that sub-resettable is not handled in the common code. And we
+>   need also a get_resetting method to access/update the counter.
+> 
+> #DEVICE RESET CHOICE
+> 
+> The Device is a special case, it has 2 reset entry point: `qdev_reset_all` and
+> `device_reset`. The latter doing a device reset only, while the former also
+> reset all buses hierarchy under the device.
+> 
+> I choose the put the sub-buses into the device reset domain, so that the
+> behavior of the resettable interface on Device is the same as qdev_reset_all.
+> I don't know if `device_reset` has some real meaning (resetting only the
+> Device). It is not often used and I think every time it is used there is no
+> sub-buses so the behavior is the same for both functions.
+> 
+> If I am mistaken about putting buses into device reset domain, it is possible
+> to make a special bus-hierarchy-reset-domain for every Device/Bus that differs
+> from the Resettable interface on Device/Bus.
+> 
+> # SYSBUS SUPPORT
+> 
+> Regarding the sysbus support Edgar mentioned in the prevous discussion: In this
+> series, there is no support in sysbus base class for disabling memory regions.
+> Having each sysbus device specialization, in every memory region handler, to
+> check if `resetting` is set or not is not user-friendly. But for we can't 
+> modify memory region `enabled` flags since devices may already set/unset them.
+> Maybe we could have some kind of super-switch to disable all memory regions in
+> a sysbus device but I don't know how this could be done.
+> 
+> The series is organised as follow:
+> Patches 1 and 2 adds Resettable interface and ResetDomain object.
+> Patches 3 to 7 converts Device and Bus to Resettable.
+> Patches 8 to 12 handles the global system reset domain
+> Patches 13 to 17 do the zynq implementation (patch 13 is an already-reviewed
+> patch from the clock api patch series)
+> 
+> Thank you for your feedback,
+> Damien
+> 
+> Damien Hedde (17):
+>   Create Resettable QOM interface
+>   Create the ResetDomain QOM object
+>   make Device and Bus Resettable
+>   Add local reset methods in Device class
+>   add vmstate description for device reset state
+>   Add function to control reset with gpio inputs
+>   convert qdev/bus_reset_all to Resettable
+>   Add a global ResetDomain object for system emulation
+>   global ResetDomain support for legacy reset handlers
+>   Delete the system ResetDomain at the end of emulation
+>   Put orphan buses in system reset domain
+>   Put default sysbus in system reset domain
+>   hw/misc/zynq_slcr: use standard register definition
+>   convert cadence_uart to 3-phases reset
+>   Convert zynq's slcr to 3-phases reset
+>   Add uart reset support in zynq_slcr
+>   Connect the uart reset gpios in the zynq platform
+> 
+>  hw/arm/xilinx_zynq.c           |  14 +-
+>  hw/char/cadence_uart.c         |  48 ++-
+>  hw/core/Makefile.objs          |   3 +
+>  hw/core/bus.c                  |  64 +++-
+>  hw/core/qdev-vmstate.c         |  27 ++
+>  hw/core/qdev.c                 | 166 ++++++++++-
+>  hw/core/reset-domain.c         | 121 ++++++++
+>  hw/core/reset.c                | 149 +++++++++-
+>  hw/core/resettable.c           |  69 +++++
+>  hw/misc/zynq_slcr.c            | 515 ++++++++++++++++++---------------
+>  include/hw/char/cadence_uart.h |  10 +-
+>  include/hw/qdev-core.h         |  97 +++++++
+>  include/hw/reset-domain.h      |  49 ++++
+>  include/hw/resettable.h        |  83 ++++++
+>  include/sysemu/reset.h         |  47 +++
+>  vl.c                           |   3 +-
+>  16 files changed, 1195 insertions(+), 270 deletions(-)
+>  create mode 100644 hw/core/qdev-vmstate.c
+>  create mode 100644 hw/core/reset-domain.c
+>  create mode 100644 hw/core/resettable.c
+>  create mode 100644 include/hw/reset-domain.h
+>  create mode 100644 include/hw/resettable.h
+> 

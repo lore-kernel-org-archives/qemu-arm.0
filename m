@@ -1,101 +1,101 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3769010wrh;
-        Mon, 29 Apr 2019 10:38:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwL0BNlI/eUQ5UCY1lqrn9beVB3huCUM5owjyFj5LOVk0bWiSJnuTticFbuo+D11Q5rx1Rl
-X-Received: by 2002:adf:de0c:: with SMTP id b12mr18912169wrm.297.1556559513262;
-        Mon, 29 Apr 2019 10:38:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556559513; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3771893wrh;
+        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyubyKrk7gOP5m3AyRjb2nRSDrb6f4ibHveGfarmSypx7vWQPR+DbfdxZvzYy8r5jO8m2KW
+X-Received: by 2002:adf:dd46:: with SMTP id u6mr3853632wrm.228.1556559700777;
+        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556559700; cv=none;
         d=google.com; s=arc-20160816;
-        b=0lW3bVzbbAiOkKfo62JQfyRjvbO1CeUICTtyQkkkvKLrE1YsmW7Nvnth5owBy2ib8Z
-         UPaz0lRJMrArSvvp2qAifkh+y2R4sopljaHqQ4/CbTvcfVcdMVoMtoNxxdftfEcnsIDX
-         bpC/vsgkvFrDxfHvh0PdZ788Iz4DET2LYO6lqLeb0lG0FKO6eHleUht5zsRGBjab5PHl
-         EsDsCZp8Liu5OWb05Mo9ApR4Z888pZa6Fnhz6LH8w6BIWrtX62JsCHk6OsvuGaLbpDXR
-         OyBdpZndmVoJBITrXr2On2Vfbc1ipn9WqHqWTAjXNJja9EXrmN0cZlPR90ItE7hxAMGB
-         +JkQ==
+        b=M5svPZTSHGuylhFBTPuQuLJllevYchUPZ0Ra5OmZvyzo0gdRxI+FzQiQpnznMK6HAh
+         9wJ50sX3s5Dyi+uopUhmB/0TsO0ztCxIyDkmCmtdszyU0QO2u+qbjyrate8N0e/kQQ61
+         Kaj/kf/BA1pH+WrkfKwClS3h7R9NJJGLwoAREgo2jS6vF9sCUfBVkVIxZWjJApm1YKs7
+         vxK3dFdytpdlBop7xKG5wfSoqyPe2sM3nQwiTnt8jqDl+o7teUR/J7pwh3AdZ36NXmLr
+         RyFs23MqD/KCb+DV+B8FIN0CGzS8LDtRTpmE418TkH+No3onF9dMsH5Ars/nitqr8Kcw
+         l/ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=D0CsyVuEeijjtNrn3BRdbHVTNz74u9iotAEhTxxMyXM=;
-        b=fZQ1qmRNHlPw3qxDUIHXDK9QRgYRnBS2zeeQzp9mV4L+gfWTHZJvTU0oWlHKfkEVnE
-         4DUxWpi83QbAyZUROhnrpVTTV4aiircN/ZP77T3zHutWC3Aa6Y2kCwMf0PHcfENTeQzv
-         kLmNOghihX4qb2bM13Cdcza/IJFqiQj7eyR3JzRQb4RhN4NYnBtFGCE91rfLfPb+YHqm
-         KgGjDwIjbTWvghcOnrc0wBPudjeFVjF7xhsLhfNzajAqPhnOTbGCx0jTeDYoQj1Rmyra
-         Y9G4Zryk+4s87UtaZP53K0kddfrphae+zbhKD5P7iwMvwT2ndOAd+XjrVa+OwnN7czYA
-         BXWw==
+        bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
+        b=OPaV540EJ8MGr7xXVJ08zW9/MaT+YAmuAAbiGVgK7QIhgSQ3uF5WqtDsOKOZ0CezBk
+         MO5ZO+eWuPxR2ffyazGTL4N4sZt+gOYV9s3E2BXnPyo/b7v84wDhu1I8jHInAgUkaQpb
+         8au09uQbRFiX7PgOUe01QAAJ2bHJOgtnh5lN4ppCERnhOT6RAu9zh39dpGBPYgV5yLZb
+         0Ct+kiw13tl0B91DVZyP2fFddgYRXs/Trmk68v7VKi4F2dDiTAHzi1MvucgS9+3MT4E+
+         Cw9wUQTooebVUAfD8gWx6/kMVQPyOhqOKQcHZWzPE1f4YYx2xGb6fdofk4B+UI051S27
+         0+QA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uYus/O/J";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gFoKaeSq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m3si6209223wrs.340.2019.04.29.10.38.33
+        by mx.google.com with ESMTPS id m62si98083wme.23.2019.04.29.10.41.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 10:38:33 -0700 (PDT)
+        Mon, 29 Apr 2019 10:41:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="uYus/O/J";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gFoKaeSq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:32917 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:32977 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLAEa-0003rn-8F
-	for alex.bennee@linaro.org; Mon, 29 Apr 2019 13:38:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42053)
+	id 1hLAHb-0006WM-RT
+	for alex.bennee@linaro.org; Mon, 29 Apr 2019 13:41:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLA72-0005hK-OM
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:30:45 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hLA5i-0004RA-0m
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:29:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLA71-0006ki-SZ
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:30:44 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:40418)
+	(envelope-from <alistair23@gmail.com>) id 1hLA5h-00069l-6P
+	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 13:29:22 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:46677)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hLA71-0006k7-LP; Mon, 29 Apr 2019 13:30:43 -0400
-Received: by mail-lj1-x244.google.com with SMTP id t10so9102007ljg.7;
-	Mon, 29 Apr 2019 10:30:43 -0700 (PDT)
+	id 1hLA5g-000699-VZ; Mon, 29 Apr 2019 13:29:21 -0400
+Received: by mail-lj1-x242.google.com with SMTP id h21so10092400ljk.13;
+	Mon, 29 Apr 2019 10:29:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=D0CsyVuEeijjtNrn3BRdbHVTNz74u9iotAEhTxxMyXM=;
-	b=uYus/O/JfNBTN/acpE1d/z1mxuuuypqXzI7iegKxHMRGiUhFfMJ+iQehbIK2KRO5qk
-	NJe8Lvr+0bj98gF4ww0qMwRG7FIJnw3pULMkPVFZypDLBPATY2HTiT2y9LzYwuvicn83
-	CVPDHiv2E+Awgn5Qkii/kC3cgZxR+SU1xSs+60FRpiz8LgW3VjcSBv0zaW4Qj3Kx3uHe
-	S0OSRcusH1imkaoCgFLOVFXd6OnJ4cuz05szWixL0uRzyEA+Q13dntbz/9QxXsk6vBjK
-	6tRLKGaZcfjap6MnOWhrJwLSiogND1A9gp4zHXKMupIQyhj1moDhEnppbpVfEpXlsxOO
-	SW2w==
+	bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
+	b=gFoKaeSqqjjUIfHjdi1V2wL1DTbZocQbM+iMoydPFobJyCX4QOGfKyEzHalbfAhjJ/
+	dKcVa+3jzEnBXATmT2hH3xNVuPDPShGAzqbI3ZD3Ynv6iyyu3pCi7mZJR7+sFdfRcVaC
+	qkgcVSyTVnGvh1MnlFfZp+Mywd4WzcaElsqor1NEzMLwWuk+6JGILYNYodytP3ZxhZEN
+	3j2VCZTXyZ1EhhsKD68CzRFFAHFWOhcAPklJBQ5TXjM9uE+wSKjQZP/Z3uGNunEH6zWH
+	Y21b9FjGypkJTfS060SrlxvymIcOtq/icBZYRC0sMbDFAuymvKwg+NpTWE2sUWEX3cPj
+	rffg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=D0CsyVuEeijjtNrn3BRdbHVTNz74u9iotAEhTxxMyXM=;
-	b=mRvZ0GDoIKnsWNlNgE06zY4IwjGE4YOG0wSV3H4L38+Yx/ut2blsMTxMX1HfntzTr0
-	OSJhwIkm05AlH8RTcAidLC4tqf1/Z6JNlV+PuWBFHfgOBJ0TpA5GrFBchG4mdA37DkAe
-	La+UW0YI3A2lHSA0XXQanXfrUUreZuewpYFBkgldOhluxwcHpm2zShpL9LHKV9yyCp5y
-	g2oBtmLm9SOG4yEohM3WXD1aB46nypM4ILtsz6RrVRLsoj/rUH+o3F7NKsC+iF07Lpc9
-	skdOKmNJjsnIOlwp44xYDGgIFYdcpE+fswZ9t9ScZRKI/cugQqHDT7+yNHgylQ++cV9w
-	hLIg==
-X-Gm-Message-State: APjAAAWSftElRvP0smBOWuwf4s6eAMkpY8eMoWviEDZjBKThBuU2BVEe
-	O81as/BGTLikMAc2fXXKcWX/+z2NJSBDejNK5g5WIX91
-X-Received: by 2002:a2e:824b:: with SMTP id j11mr6798990ljh.197.1556559042610; 
-	Mon, 29 Apr 2019 10:30:42 -0700 (PDT)
+	bh=gLS9I0ngHrnn3Ujgur6YQTjnpkUCsdPWux+YrreoIwE=;
+	b=mRPzG9wrgiHq8cqEOuNzkmIp35/SFpGueDsfTZSyiKYrt9iOEzEgGPhmwNRnVtNtdM
+	nDEg7QIqV0GuBlBribqUCEKVIP/tsYRpcWw4FLrH0Jds3CPejZMnKH2h6Bj524oZ9ZeX
+	RJvMVgbrkn3thbOqlvj0by7lW74QYfwthFg1uWStBQnoYUWKvaJwamkwrYY2Jy2uUxwL
+	z3XFG8MlSGPT0TS2tET4FHOLmWbO9+lRvxQkngF56VQBeMzpbmq2aGlVcci5HIKtYiSN
+	WIfrGEsx2fCrKOhNbTpXsDvmufBLXK5fB4x5uKSHn0KW/kRe0JUnQUbRdUgsEVVt1j0n
+	q0GA==
+X-Gm-Message-State: APjAAAWqyMwoVrtdhCu53rIVXj5vk4bdTmBN+8oqQp9e2RBtfq8JiAEm
+	Nkq4+HTdShDhl4tqIXOBlLhGf4+appEJbNUv7nc=
+X-Received: by 2002:a2e:5b97:: with SMTP id m23mr4739150lje.99.1556558958689; 
+	Mon, 29 Apr 2019 10:29:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190427141459.19728-1-philmd@redhat.com>
-	<20190427141459.19728-4-philmd@redhat.com>
-In-Reply-To: <20190427141459.19728-4-philmd@redhat.com>
+	<20190427141459.19728-2-philmd@redhat.com>
+In-Reply-To: <20190427141459.19728-2-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Apr 2019 10:30:12 -0700
-Message-ID: <CAKmqyKN=WFU3fGDM_t1tnwH6E7dPSpHBUBoWSzZiLe7tf7p8FA@mail.gmail.com>
+Date: Mon, 29 Apr 2019 10:28:49 -0700
+Message-ID: <CAKmqyKOESUfmvHY73k6NsnZ0Gr9LXuHwOUDSn2vXQGXRfmWkOA@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] hw/dma: Do not build the
- xlnx_dpdma device for the MicroBlaze machines
+X-Received-From: 2a00:1450:4864:20::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/3] hw/Kconfig: Move the
+ generic XLNX_ZYNQMP to the root hw/Kconfig
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,14 +113,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PaZk2CMPAp1C
+X-TUID: zNuk6Sjg7yrT
 
 On Sat, Apr 27, 2019 at 7:15 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> The xlnx_dpdma device is only used by the ZynqMP AArch64 machine
-> (not the MicroBlaze PMU). Remove it from the ZynqMP generic objects.
-> (Note, this entry was duplicated for the AArch64).
+> The XLNX_ZYNQMP config is used in multiple subdirectories
+> (timer, intc). Move it to the root hw/Kconfig.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -129,21 +128,35 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/dma/Makefile.objs | 1 -
->  1 file changed, 1 deletion(-)
+>  hw/Kconfig       | 3 +++
+>  hw/timer/Kconfig | 3 ---
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/hw/dma/Makefile.objs b/hw/dma/Makefile.objs
-> index 79affecc390..a5b1276f52a 100644
-> --- a/hw/dma/Makefile.objs
-> +++ b/hw/dma/Makefile.objs
-> @@ -8,7 +8,6 @@ common-obj-$(CONFIG_XILINX_AXI) +=3D xilinx_axidma.o
->  common-obj-$(CONFIG_ZYNQ_DEVCFG) +=3D xlnx-zynq-devcfg.o
->  common-obj-$(CONFIG_ETRAXFS) +=3D etraxfs_dma.o
->  common-obj-$(CONFIG_STP2000) +=3D sparc32_dma.o
-> -obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx_dpdma.o
->  obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx_dpdma.o
->  common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) +=3D xlnx-zdma.o
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index 88b9f150070..c3c78f43eb5 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -72,3 +72,6 @@ config XILINX
+>  config XILINX_AXI
+>      bool
+>      select PTIMER # for hw/dma/xilinx_axidma.c
+> +
+> +config XLNX_ZYNQMP
+> +    bool
+> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+> index 51921eb63f1..eefc95f35ec 100644
+> --- a/hw/timer/Kconfig
+> +++ b/hw/timer/Kconfig
+> @@ -34,9 +34,6 @@ config TWL92230
+>      bool
+>      depends on I2C
 >
+> -config XLNX_ZYNQMP
+> -    bool
+> -
+>  config ALTERA_TIMER
+>      bool
+>      select PTIMER
 > --
 > 2.20.1
 >

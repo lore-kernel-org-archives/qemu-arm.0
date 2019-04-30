@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id w2sm27140431wrm.74.2019.04.30.09.52.35
+        by smtp.gmail.com with ESMTPSA id i30sm4336117wrc.8.2019.04.30.09.52.36
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 30 Apr 2019 09:52:37 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id C971F1FF93;
+	by zen.linaroharston (Postfix) with ESMTP id D4C581FF96;
 	Tue, 30 Apr 2019 17:52:34 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,380 +12,536 @@ Cc: qemu-arm@nongnu.org,
 	mark.cave-ayland@ilande.co.uk,
 	cota@braap.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v5 06/15] tests/tcg/multiarch: expand system memory test to cover more
-Date: Tue, 30 Apr 2019 17:52:25 +0100
-Message-Id: <20190430165234.32272-7-alex.bennee@linaro.org>
+Subject: [PATCH  v5 07/15] accel/tcg: demacro cputlb
+Date: Tue, 30 Apr 2019 17:52:26 +0100
+Message-Id: <20190430165234.32272-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190430165234.32272-1-alex.bennee@linaro.org>
 References: <20190430165234.32272-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0gn4ggrR2XkL
+X-TUID: utV2fQ6VXC6F
 
-Expand the memory test to cover move of the softmmu code. Specifically
-we:
-
-  - improve commentary
-  - add some helpers (for later BE support)
-  - reduce boiler plate into helpers
-  - add signed reads at various sizes/offsets
+Instead of expanding a series of macros to generate the load/store
+helpers we move stuff into common functions and rely on the compiler
+to eliminate the dead code for each variant.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/multiarch/system/memory.c | 254 ++++++++++++++++++++++++----
- 1 file changed, 219 insertions(+), 35 deletions(-)
 
-diff --git a/tests/tcg/multiarch/system/memory.c b/tests/tcg/multiarch/system/memory.c
-index a7a0a8e978..5befbb36bb 100644
---- a/tests/tcg/multiarch/system/memory.c
-+++ b/tests/tcg/multiarch/system/memory.c
-@@ -5,16 +5,21 @@
-  * behave across normal and unaligned accesses across several pages.
-  * We are not replicating memory tests for stuck bits and other
-  * hardware level failures but looking for issues with different size
-- * accesses when:
--
-+ * accesses when access is:
-  *
-+ *   - unaligned at various sizes
-+ *   - spanning a (softmmu) page
-+ *   - sign extension when loading
-  */
- 
- #include <inttypes.h>
-+#include <stdbool.h>
- #include <minilib.h>
- 
--#define TEST_SIZE (4096 * 4)  /* 4 pages */
-+#define PAGE_SIZE 4096             /* nominal 4k "pages" */
-+#define TEST_SIZE (PAGE_SIZE * 4)  /* 4 pages */
- 
-+__attribute__((aligned(PAGE_SIZE)))
- static uint8_t test_data[TEST_SIZE];
- 
- static void pdot(int count)
-@@ -24,11 +29,19 @@ static void pdot(int count)
-     }
+---
+v5
+  - merged rth's fixes:
+    - cast to uint64_t instead of tcg_target_ulong
+    - make haddr void * instead of uintptr_t (reduce casting)
+    - common & size_mask
+---
+ accel/tcg/cputlb.c | 478 ++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 452 insertions(+), 26 deletions(-)
+
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index f2f618217d..12f21865ee 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1168,26 +1168,421 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
  }
  
-+/*
-+ * Helper macros for shift/extract so we can keep our endian handling
-+ * in one place.
-+ */
-+#define BYTE_SHIFT(b, pos) ((uint64_t)b << (pos * 8))
-+#define BYTE_EXTRACT(b, pos) ((b >> (pos * 8)) & 0xff)
+ #ifdef TARGET_WORDS_BIGENDIAN
+-# define TGT_BE(X)  (X)
+-# define TGT_LE(X)  BSWAP(X)
++#define NEED_BE_BSWAP 0
++#define NEED_LE_BSWAP 1
+ #else
+-# define TGT_BE(X)  BSWAP(X)
+-# define TGT_LE(X)  (X)
++#define NEED_BE_BSWAP 1
++#define NEED_LE_BSWAP 0
+ #endif
  
- /*
-- * Fill the data with ascending value bytes. As x86 is a LE machine we
-- * write in ascending order and then read and high byte should either
-- * be zero or higher than the lower bytes.
-+ * Fill the data with ascending value bytes.
+-#define MMUSUFFIX _mmu
++/*
++ * Byte Swap Helper
 + *
-+ * Currently we only support Little Endian machines so write in
-+ * ascending address order. When we read higher address bytes should
-+ * either be zero or higher than the lower bytes.
-  */
- 
- static void init_test_data_u8(void)
-@@ -44,60 +57,109 @@ static void init_test_data_u8(void)
-     ml_printf("done\n");
- }
- 
-+/*
-+ * Full the data with alternating positive and negative bytes. This
-+ * should mean for reads larger than a byte all subsequent reads will
-+ * stay either negative or positive. We never write 0.
++ * This should all dead code away depending on the build host and
++ * access type.
 + */
-+
-+static inline uint8_t get_byte(int index, bool neg)
+ 
+-#define DATA_SIZE 1
+-#include "softmmu_template.h"
++static inline uint64_t handle_bswap(uint64_t val, int size, bool big_endian)
 +{
-+    return neg ? ( 0xff << (index % 7)) : ( 0xff >> ((index % 6) + 1));
-+}
-+
-+static void init_test_data_s8(bool neg_first)
-+{
-+    uint8_t top, bottom, *ptr = &test_data[0];
-+    int i;
-+
-+    ml_printf("Filling test area with s8 pairs (%s):", neg_first ? "neg first":"pos first");
-+    for (i = 0; i < TEST_SIZE / 2; i++) {
-+        *ptr++ = get_byte(i, neg_first);
-+        *ptr++ = get_byte(i, !neg_first);
-+        pdot(i);
-+    }
-+    ml_printf("done\n");
-+}
-+
-+/*
-+ * Zero the first few bytes of the test data in preparation for
-+ * new offset values.
-+ */
-+static void reset_start_data(int offset)
-+{
-+    uint32_t *ptr = (uint32_t *) &test_data[0];
-+    int i;
-+    for (i = 0; i < offset; i++) {
-+        *ptr++ = 0;
-+    }
-+}
-+
- static void init_test_data_u16(int offset)
- {
-     uint8_t count = 0;
--    uint16_t word, *ptr = (uint16_t *) &test_data[0];
-+    uint16_t word, *ptr = (uint16_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u16 (offset %d):", offset);
-+    ml_printf("Filling test area with u16 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint16_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t high, low;
--        low = count++;
--        high = count++;
--        word = (high << 8) | low;
-+        uint8_t low = count++, high = count++;
-+        word = BYTE_SHIFT(high, 1) | BYTE_SHIFT(low, 0);
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
- static void init_test_data_u32(int offset)
- {
-     uint8_t count = 0;
--    uint32_t word, *ptr = (uint32_t *) &test_data[0];
-+    uint32_t word, *ptr = (uint32_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u32 (offset %d):", offset);
-+    ml_printf("Filling test area with u32 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint32_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t b1, b2, b3, b4;
--        b4 = count++;
--        b3 = count++;
--        b2 = count++;
--        b1 = count++;
--        word = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 3) | BYTE_SHIFT(b2, 2) | BYTE_SHIFT(b3, 1) | b4;
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
-+static void init_test_data_u64(int offset)
-+{
-+    uint8_t count = 0;
-+    uint64_t word, *ptr = (uint64_t *) &test_data[offset];
-+    const int max = (TEST_SIZE - offset) / sizeof(word);
-+    int i;
-+
-+    ml_printf("Filling test area with u64 (offset %d, %p):", offset, ptr);
-+
-+    reset_start_data(offset);
-+
-+    for (i = 0; i < max; i++) {
-+        uint8_t b8 = count++, b7 = count++;
-+        uint8_t b6 = count++, b5 = count++;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 7) | BYTE_SHIFT(b2, 6) | BYTE_SHIFT(b3, 5) |
-+               BYTE_SHIFT(b4, 4) | BYTE_SHIFT(b5, 3) | BYTE_SHIFT(b6, 2) |
-+               BYTE_SHIFT(b7, 1) | b8;
-+        *ptr++ = word;
-+        pdot(i);
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+}
- 
- static int read_test_data_u16(int offset)
- {
-@@ -120,7 +182,7 @@ static int read_test_data_u16(int offset)
-         }
- 
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
-     return 0;
- }
- 
-@@ -150,7 +212,7 @@ static int read_test_data_u32(int offset)
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
-     return 0;
- }
- 
-@@ -189,7 +251,7 @@ static int read_test_data_u64(int offset)
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
-     return 0;
- }
- 
-@@ -209,6 +271,110 @@ int do_reads(void)
-     return r;
- }
- 
-+/*
-+ * We need to ensure signed data is read into a larger data type to
-+ * ensure that sign extension is working properly.
-+ */
-+
-+static int read_test_data_s8(int offset, bool neg_first)
-+{
-+    int8_t *ptr = (int8_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / 2;
-+
-+    ml_printf("Reading s8 pairs from %#lx (offset %d):", ptr, offset);
-+
-+    for (i = 0; i < max; i++) {
-+        int16_t first, second;
-+        bool ok;
-+        first = *ptr++;
-+        second = *ptr++;
-+
-+        if (neg_first && first < 0 && second > 0) {
-+            pdot(i);
-+        } else if (!neg_first && first > 0 && second < 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c %d\n", first, neg_first ? '<' : '>', second);
-+            return 1;
++    if ((big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)) {
++        switch (size) {
++        case 1: return val;
++        case 2: return bswap16(val);
++        case 4: return bswap32(val);
++        case 8: return bswap64(val);
++        default:
++            g_assert_not_reached();
 +        }
++    } else {
++        return val;
 +    }
-+    ml_printf("done @ %p\n", ptr);
-+    return 0;
 +}
-+
-+static int read_test_data_s16(int offset, bool neg_first)
-+{
-+    int16_t *ptr = (int16_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(*ptr));
-+
-+    ml_printf("Reading s16 from %#lx (offset %d, %s):",
-+              ptr, offset, neg_first ? "neg":"pos");
-+
-+    for (i = 0; i < max; i++) {
-+        int32_t data = *ptr++;
-+
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return 1;
-+        }
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+    return 0;
-+}
-+
-+static int read_test_data_s32(int offset, bool neg_first)
-+{
-+    int32_t *ptr = (int32_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(int32_t));
-+
-+    ml_printf("Reading s32 from %#lx (offset %d, %s):",
-+              ptr, offset, neg_first ? "neg":"pos");
-+
-+    for (i = 0; i < max; i++) {
-+        int64_t data = *ptr++;
-+
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return 1;
-+        }
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+    return 0;
-+}
-+
+ 
+-#define DATA_SIZE 2
+-#include "softmmu_template.h"
 +/*
-+ * Read the test data and verify at various offsets
++ * Load Helpers
 + *
-+ * For everything except bytes all our reads should be either positive
-+ * or negative depending on what offset we are reading from. Currently
-+ * we only handle LE systems.
++ * We support two different access types. SOFTMMU_CODE_ACCESS is
++ * specifically for reading instructions from system memory. It is
++ * called by the translation loop and in some helpers where the code
++ * is disassembled. It shouldn't be called directly by guest code.
 + */
-+int do_signed_reads(bool neg_first)
+ 
+-#define DATA_SIZE 4
+-#include "softmmu_template.h"
++static uint64_t load_helper(CPUArchState *env, target_ulong addr,
++                            TCGMemOpIdx oi, uintptr_t retaddr,
++                            size_t size, bool big_endian,
++                            bool code_read)
 +{
-+    int r = 0;
-+    int off = 0;
++    uintptr_t mmu_idx = get_mmuidx(oi);
++    uintptr_t index = tlb_index(env, mmu_idx, addr);
++    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
++    target_ulong tlb_addr = code_read ? entry->addr_code : entry->addr_read;
++    const size_t tlb_off = code_read ?
++        offsetof(CPUTLBEntry, addr_code) : offsetof(CPUTLBEntry, addr_read);
++    unsigned a_bits = get_alignment_bits(get_memop(oi));
++    void *haddr;
++    uint64_t res;
 +
-+    while (r == 0 && off < 8) {
-+        r = read_test_data_s8(off, neg_first ^ (off & 1));
-+        r |= read_test_data_s16(off, !(neg_first ^ (off & 1)));
-+        r |= read_test_data_s32(off, !(neg_first ^ (off & 1)));
-+        off++;
++    /* Handle CPU specific unaligned behaviour */
++    if (addr & ((1 << a_bits) - 1)) {
++        cpu_unaligned_access(ENV_GET_CPU(env), addr,
++                             code_read ? MMU_INST_FETCH : MMU_DATA_LOAD,
++                             mmu_idx, retaddr);
++    }
+ 
+-#define DATA_SIZE 8
+-#include "softmmu_template.h"
++    /* If the TLB entry is for a different page, reload and try again.  */
++    if (!tlb_hit(tlb_addr, addr)) {
++        if (!victim_tlb_hit(env, mmu_idx, index, tlb_off,
++                            addr & TARGET_PAGE_MASK)) {
++            tlb_fill(ENV_GET_CPU(env), addr, size,
++                     code_read ? MMU_INST_FETCH : MMU_DATA_LOAD,
++                     mmu_idx, retaddr);
++            index = tlb_index(env, mmu_idx, addr);
++            entry = tlb_entry(env, mmu_idx, addr);
++        }
++        tlb_addr = code_read ? entry->addr_code : entry->addr_read;
 +    }
 +
-+    return r;
++    /* Handle an IO access.  */
++    if (unlikely(tlb_addr & ~TARGET_PAGE_MASK)) {
++        CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
++        uint64_t tmp;
++
++        if ((addr & (size - 1)) != 0) {
++            goto do_unaligned_access;
++        }
++
++        tmp = io_readx(env, iotlbentry, mmu_idx, addr, retaddr,
++                       tlb_addr & TLB_RECHECK,
++                       code_read ? MMU_INST_FETCH : MMU_DATA_LOAD, size);
++        return handle_bswap(tmp, size, big_endian);
++    }
++
++    /* Handle slow unaligned access (it spans two pages or IO).  */
++    if (size > 1
++        && unlikely((addr & ~TARGET_PAGE_MASK) + size - 1
++                    >= TARGET_PAGE_SIZE)) {
++        target_ulong addr1, addr2;
++        tcg_target_ulong r1, r2;
++        unsigned shift;
++    do_unaligned_access:
++        addr1 = addr & ~(size - 1);
++        addr2 = addr1 + size;
++        r1 = load_helper(env, addr1, oi, retaddr, size, big_endian, code_read);
++        r2 = load_helper(env, addr2, oi, retaddr, size, big_endian, code_read);
++        shift = (addr & (size - 1)) * 8;
++
++        if (big_endian) {
++            /* Big-endian combine.  */
++            res = (r1 << shift) | (r2 >> ((size * 8) - shift));
++        } else {
++            /* Little-endian combine.  */
++            res = (r1 >> shift) | (r2 << ((size * 8) - shift));
++        }
++        return res & MAKE_64BIT_MASK(0, size * 8);
++    }
++
++    haddr = (void *)((uintptr_t)addr + entry->addend);
++
++    switch (size) {
++    case 1:
++        res = ldub_p(haddr);
++        break;
++    case 2:
++        if (big_endian) {
++            res = lduw_be_p(haddr);
++        } else {
++            res = lduw_le_p(haddr);
++        }
++        break;
++    case 4:
++        if (big_endian) {
++            res = (uint32_t)ldl_be_p(haddr);
++        } else {
++            res = (uint32_t)ldl_le_p(haddr);
++        }
++        break;
++    case 8:
++        if (big_endian) {
++            res = ldq_be_p(haddr);
++        } else {
++            res = ldq_le_p(haddr);
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    return res;
 +}
 +
- int main(void)
- {
-     int i, r = 0;
-@@ -238,6 +404,24 @@ int main(void)
-         }
-     }
- 
-+    for (i = 0; i < 8; i++) {
-+        init_test_data_u64(i);
++/*
++ * For the benefit of TCG generated code, we want to avoid the
++ * complication of ABI-specific return type promotion and always
++ * return a value extended to the register size of the host. This is
++ * tcg_target_long, except in the case of a 32-bit host and 64-bit
++ * data, and for that we always have uint64_t.
++ *
++ * We don't bother with this widened value for SOFTMMU_CODE_ACCESS.
++ */
 +
-+        r = do_reads();
-+        if (r) {
-+            return r;
++tcg_target_ulong __attribute__((flatten))
++helper_ret_ldub_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                    uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 1, false, false);
++}
++
++tcg_target_ulong __attribute__((flatten))
++helper_le_lduw_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 2, false, false);
++}
++
++tcg_target_ulong __attribute__((flatten))
++helper_be_lduw_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 2, true, false);
++}
++
++tcg_target_ulong __attribute__((flatten))
++helper_le_ldul_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 4, false, false);
++}
++
++tcg_target_ulong __attribute__((flatten))
++helper_be_ldul_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 4, true, false);
++}
++
++uint64_t __attribute__((flatten))
++helper_le_ldq_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                  uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 8, false, false);
++}
++
++uint64_t __attribute__((flatten))
++helper_be_ldq_mmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                  uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 8, true, false);
++}
++
++/*
++ * Provide signed versions of the load routines as well.  We can of course
++ * avoid this for 64-bit data, or for 32-bit data on 32-bit host.
++ */
++
++
++tcg_target_ulong helper_ret_ldsb_mmu(CPUArchState *env, target_ulong addr,
++                                     TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    return (int8_t)helper_ret_ldub_mmu(env, addr, oi, retaddr);
++}
++
++tcg_target_ulong helper_le_ldsw_mmu(CPUArchState *env, target_ulong addr,
++                                    TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    return (int16_t)helper_le_lduw_mmu(env, addr, oi, retaddr);
++}
++
++tcg_target_ulong helper_be_ldsw_mmu(CPUArchState *env, target_ulong addr,
++                                    TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    return (int16_t)helper_be_lduw_mmu(env, addr, oi, retaddr);
++}
++
++tcg_target_ulong helper_le_ldsl_mmu(CPUArchState *env, target_ulong addr,
++                                    TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    return (int32_t)helper_le_ldul_mmu(env, addr, oi, retaddr);
++}
++
++tcg_target_ulong helper_be_ldsl_mmu(CPUArchState *env, target_ulong addr,
++                                    TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    return (int32_t)helper_be_ldul_mmu(env, addr, oi, retaddr);
++}
++
++/*
++ * Store Helpers
++ */
++
++static void store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
++                         TCGMemOpIdx oi, uintptr_t retaddr, size_t size,
++                         bool big_endian)
++{
++    uintptr_t mmu_idx = get_mmuidx(oi);
++    uintptr_t index = tlb_index(env, mmu_idx, addr);
++    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
++    target_ulong tlb_addr = tlb_addr_write(entry);
++    const size_t tlb_off = offsetof(CPUTLBEntry, addr_write);
++    unsigned a_bits = get_alignment_bits(get_memop(oi));
++    void *haddr;
++
++    /* Handle CPU specific unaligned behaviour */
++    if (addr & ((1 << a_bits) - 1)) {
++        cpu_unaligned_access(ENV_GET_CPU(env), addr, MMU_DATA_STORE,
++                             mmu_idx, retaddr);
++    }
++
++    /* If the TLB entry is for a different page, reload and try again.  */
++    if (!tlb_hit(tlb_addr, addr)) {
++        if (!victim_tlb_hit(env, mmu_idx, index, tlb_off,
++            addr & TARGET_PAGE_MASK)) {
++            tlb_fill(ENV_GET_CPU(env), addr, size, MMU_DATA_STORE,
++                     mmu_idx, retaddr);
++            index = tlb_index(env, mmu_idx, addr);
++            entry = tlb_entry(env, mmu_idx, addr);
 +        }
++        tlb_addr = tlb_addr_write(entry) & ~TLB_INVALID_MASK;
 +    }
 +
-+    init_test_data_s8(false);
-+    r = do_signed_reads(false);
-+    if (r) {
-+        return r;
++    /* Handle an IO access.  */
++    if (unlikely(tlb_addr & ~TARGET_PAGE_MASK)) {
++        CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
++
++        if ((addr & (size - 1)) != 0) {
++            goto do_unaligned_access;
++        }
++
++        io_writex(env, iotlbentry, mmu_idx,
++                  handle_bswap(val, size, big_endian),
++                  addr, retaddr, tlb_addr & TLB_RECHECK, size);
++        return;
 +    }
 +
-+    init_test_data_s8(true);
-+    r = do_signed_reads(true);
++    /* Handle slow unaligned access (it spans two pages or IO).  */
++    if (size > 1
++        && unlikely((addr & ~TARGET_PAGE_MASK) + size - 1
++                     >= TARGET_PAGE_SIZE)) {
++        int i;
++        uintptr_t index2;
++        CPUTLBEntry *entry2;
++        target_ulong page2, tlb_addr2;
++    do_unaligned_access:
++        /*
++         * Ensure the second page is in the TLB.  Note that the first page
++         * is already guaranteed to be filled, and that the second page
++         * cannot evict the first.
++         */
++        page2 = (addr + size) & TARGET_PAGE_MASK;
++        index2 = tlb_index(env, mmu_idx, page2);
++        entry2 = tlb_entry(env, mmu_idx, page2);
++        tlb_addr2 = tlb_addr_write(entry2);
++        if (!tlb_hit_page(tlb_addr2, page2)
++            && !victim_tlb_hit(env, mmu_idx, index2, tlb_off,
++                               page2 & TARGET_PAGE_MASK)) {
++            tlb_fill(ENV_GET_CPU(env), page2, size, MMU_DATA_STORE,
++                     mmu_idx, retaddr);
++        }
 +
-     ml_printf("Test complete: %s\n", r == 0 ? "PASSED" : "FAILED");
-     return r;
- }
++        /*
++         * XXX: not efficient, but simple.
++         * This loop must go in the forward direction to avoid issues
++         * with self-modifying code in Windows 64-bit.
++         */
++        for (i = 0; i < size; ++i) {
++            uint8_t val8;
++            if (big_endian) {
++                /* Big-endian extract.  */
++                val8 = val >> (((size - 1) * 8) - (i * 8));
++            } else {
++                /* Little-endian extract.  */
++                val8 = val >> (i * 8);
++            }
++            store_helper(env, addr + i, val8, oi, retaddr, 1, big_endian);
++        }
++        return;
++    }
++
++    haddr = (void *)((uintptr_t)addr + entry->addend);
++
++    switch (size) {
++    case 1:
++        stb_p(haddr, val);
++        break;
++    case 2:
++        if (big_endian) {
++            stw_be_p(haddr, val);
++        } else {
++            stw_le_p(haddr, val);
++        }
++        break;
++    case 4:
++        if (big_endian) {
++            stl_be_p(haddr, val);
++        } else {
++            stl_le_p(haddr, val);
++        }
++        break;
++    case 8:
++        if (big_endian) {
++            stq_be_p(haddr, val);
++        } else {
++            stq_le_p(haddr, val);
++        }
++        break;
++    default:
++        g_assert_not_reached();
++        break;
++    }
++}
++
++void __attribute__((flatten))
++helper_ret_stb_mmu(CPUArchState *env, target_ulong addr, uint8_t val,
++                   TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 1, false);
++}
++
++void __attribute__((flatten))
++helper_le_stw_mmu(CPUArchState *env, target_ulong addr, uint16_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 2, false);
++}
++
++void __attribute__((flatten))
++helper_be_stw_mmu(CPUArchState *env, target_ulong addr, uint16_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 2, true);
++}
++
++void __attribute__((flatten))
++helper_le_stl_mmu(CPUArchState *env, target_ulong addr, uint32_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 4, false);
++}
++
++void __attribute__((flatten))
++helper_be_stl_mmu(CPUArchState *env, target_ulong addr, uint32_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 4, true);
++}
++
++void __attribute__((flatten))
++helper_le_stq_mmu(CPUArchState *env, target_ulong addr, uint64_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 8, false);
++}
++
++void __attribute__((flatten))
++helper_be_stq_mmu(CPUArchState *env, target_ulong addr, uint64_t val,
++                  TCGMemOpIdx oi, uintptr_t retaddr)
++{
++    store_helper(env, addr, val, oi, retaddr, 8, true);
++}
+ 
+ /* First set of helpers allows passing in of OI and RETADDR.  This makes
+    them callable from other helpers.  */
+@@ -1248,20 +1643,51 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+ 
+ /* Code access functions.  */
+ 
+-#undef MMUSUFFIX
+-#define MMUSUFFIX _cmmu
+-#undef GETPC
+-#define GETPC() ((uintptr_t)0)
+-#define SOFTMMU_CODE_ACCESS
++uint8_t __attribute__((flatten))
++helper_ret_ldb_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                    uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 1, false, true);
++}
+ 
+-#define DATA_SIZE 1
+-#include "softmmu_template.h"
++uint16_t __attribute__((flatten))
++helper_le_ldw_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 2, false, true);
++}
+ 
+-#define DATA_SIZE 2
+-#include "softmmu_template.h"
++uint16_t __attribute__((flatten))
++helper_be_ldw_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 2, true, true);
++}
+ 
+-#define DATA_SIZE 4
+-#include "softmmu_template.h"
++uint32_t __attribute__((flatten))
++helper_le_ldl_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 4, false, true);
++}
+ 
+-#define DATA_SIZE 8
+-#include "softmmu_template.h"
++uint32_t __attribute__((flatten))
++helper_be_ldl_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 4, true, true);
++}
++
++uint64_t __attribute__((flatten))
++helper_le_ldq_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 8, false, true);
++}
++
++uint64_t __attribute__((flatten))
++helper_be_ldq_cmmu(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
++                   uintptr_t retaddr)
++{
++    return load_helper(env, addr, oi, retaddr, 8, true, true);
++}
 -- 
 2.20.1

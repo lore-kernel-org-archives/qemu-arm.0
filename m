@@ -1,161 +1,136 @@
-Received: by 2002:ad4:54c3:0:0:0:0:0 with SMTP id j3csp2251688qvx;
-        Tue, 2 Feb 2021 02:32:05 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwXuQCs+N/0O+w0XXk+SLBqOrlh/OHfxOg87+isee+APZDBheKSrkQyUlu7uKVMpxJp4Fjr
-X-Received: by 2002:a25:ba13:: with SMTP id t19mr32175586ybg.129.1612261925421;
-        Tue, 02 Feb 2021 02:32:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612261925; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp5097201wrh;
+        Tue, 30 Apr 2019 12:27:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzCfSFZxlIX2Db8qTW3bE98zGYjMkdbUcchkdlW5+jlBvhm1pncNmM+Vn7RKzjqI3FB+FIH
+X-Received: by 2002:adf:e288:: with SMTP id v8mr10114181wri.7.1556652434954;
+        Tue, 30 Apr 2019 12:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556652434; cv=none;
         d=google.com; s=arc-20160816;
-        b=hr8DCM8oHsUHkZ0d0kpF0BMAIbbaxWgbuQrqebH0hciYDSEFKgQ3NognRwRRaFmfL5
-         SLYqM52MiVwTLsky1uNscRRnSYpsQTEbtaLCNkxpYUyrutWrQ9jdi23xiGCgwAw24XHb
-         PCQWLrxXty7WJkEOmK88sYOwLK31rAHw7TQqX6qDk/w0ordkXs7LLDrSpa13f2thVOiI
-         V2tja7FR/3aNyFSlvD7xGFysMmx0Y/+E7XIR+WzUw8dOqhUNkGHBueq9bPmAFZdcQA+7
-         j09321y1FZnl04s+qAtGpbSH0EUeOMMBdmnq4kM/Rs9vUyP+cyns9yrtI3P6j03y3YXo
-         z4qA==
+        b=k4OOUpyteLFwOSbEWmVlU4iN7S3rvZasP9zg7/jI4nzfflO0LwvB6cC2QFyAJIyBR2
+         +djoEfyGwhPVUUfdBml90g1GJnIZYVFoxzJnQHxEmieYy9s4zkfOvAWb0ji55RNBrEKj
+         9QB0pWKRiz7hXQYg3/grYzaoj0uItrY0OBdSZT8czVGP5enLUVq3DECoqwYCzS7hIb2W
+         VgiBsJRDXaLKDOfDp/jfVn/UtRsPqCq7ur/bETYjNy4i6G2FUPhdw8arSuqcA5lqM4Nj
+         YjghLawk+NbMcEjmFlFtMPhFiN7Pp5ZdT2o/7Lms4rbnMst79bNGT/kgNjjDNdoJh5hL
+         MdUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
-        b=YnymzC8S4+se29I9ayyMTx9H74Fs31TpUXtfz677lm7JQxenmz3fRq8s/17DK143p5
-         okq8g5XojXrgSMwZkMr2otOxt+DyeuadIdBewMILdmLWV8Ppp6KSnocdYX1pt22lYlX6
-         dMiAfhT5o+4fFQW4ISjveSnSLOaMfN1POb80ysW0xIyvMM1vLsvzmL4xy3kyVhvakH2R
-         H6kHAZI3CqruQ8SeudPzpSvavY0kFEMw3hpvySQHy91Y4bPeuLUnuupJKY6SxdAq77sS
-         r2dGZ1+NieGyImv6N94GpY9t0Bmdu7qaRYwtHKMMBJvhdXWksBkM4MTZunEbrv9JoKmH
-         rr1w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=2RDFs8S85oa4FrDYgpGFvUVS8sKHDV8ZSoNqkO72bts=;
+        b=0nKtxknV9aXUD0vWlsSgAxUJu4pGbCTnMs5SLvSMaRsqbXNL5k3i3clD7MEfdH4caF
+         p/5OfPcbuo8pTSt8OhmGosUAUpGUzcfNRjpIhx8zcOMVbK2DJiiw2y6JKExTHchUGX1X
+         DX/pKSm2Mfml0Nah0PXNok/cyy92AwJ3hFWM8lKajiC6+7FQNdSUyyWiAc9TNoyP+i4b
+         qAVcjyIn2Mxe2E5oF+qSFKAmJINWM6TbhCsiz4lLrLFzrVD6JxtB0saQR17M5sAtG16R
+         vvQ+VFQF2wXI+T1EK0XWWcv+AfzbV5UIqbSyW5n04G/+ZPQTOZCbTfFpZUhoHWUGxlSX
+         YxPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=en+Uk6F8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p82si3501586yba.351.2021.02.02.02.31.41
+        by mx.google.com with ESMTPS id b74si2097402wmd.29.2019.04.30.12.27.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 02:32:05 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 30 Apr 2019 12:27:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=en+Uk6F8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45312 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:52193 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6syC-0004P3-T9
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 05:31:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50214)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6sy4-0004Oq-3p
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:31:32 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:46810)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6sy1-0004K4-Hz
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 05:31:31 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id rv9so29083342ejb.13
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 02:31:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
- b=en+Uk6F81I9FDa10oTKmhrwCJQAi87Vw1pGPK3c4pVl6YmWxXG2r6ij+WAsxwDBvbZ
- ThY1dNCmLuSTC0SxxqrekuCzPo08QDhOj2Yk5gh0LSi7ER0+nDAAkjiFRB7oCy8HS3er
- d329DHQV//iUrRfO0nVcX5fJA1NwoZfyeUOx/pjqsVMKvc+LVDrsvg1Y0j/IpPLlVWMy
- YKGQRaqXQcwgab9DI/ifuui27AAhfDvlSyYzZcG9g5K67tC3NwJzJfppPe0ekx13kUoS
- cgeOEKr5rIA7AIPtt3hVav+/EMhrI3CDNz+2f+GgDzDVa9ISvaKwVENEpNbFZyh5e5rQ
- ZCxA==
+	id 1hLYPJ-0005XL-Dt
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 15:27:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40973)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1hLYNG-0003W9-38
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:25:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1hLYAl-0004d9-GX
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:12:12 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:54346)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hLYAl-0004cb-At
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:12:11 -0400
+Received: by mail-wm1-f67.google.com with SMTP id b10so5016080wmj.4
+	for <qemu-arm@nongnu.org>; Tue, 30 Apr 2019 12:12:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Nn73uSUVH5yPYti5eVa0hD1TrkgyKYCxhklx9OwkBLM=;
- b=j8cQvcBLpcuN2UO9+AV+NG5x+0e8wqlPP7jeXcM0XsyuhL7w0Xznth3NdyS+ouzVSv
- +rSdSKJ83LeEkbblinPNKpV/gnUjbcm4tJrysuIOMrAli5Dv2oHoIo7dWrZCBUH8EfdC
- onp6nFKr3mTC7I+FBC6VFjQK4iA+QTD+50mqczTrLK9MSKcOQVHUPjOuIRX/BIbFomMb
- UVOcHHg+Ipl7txY44QppD8dMzwW3+x4HcwMyH6e+psnXqPL6597pRmho2QWVcuUzFi8n
- EwUqQZIOYjJfqP4NpUQfkVsSjDy+VN69zyAeGPKEJiiMbSo4yFDxTdqmTaeQMWCYkPOS
- anwg==
-X-Gm-Message-State: AOAM533KoxkOixT7ATLH+ZP/P8xa7Vdd2mVsPe5CaoXtKBoJ4T+CDUYX
- gHbQwOFJTwZBC910gx1pBrDSfOQ96pKolfQPZ9k1Cg==
-X-Received: by 2002:a17:906:494c:: with SMTP id
- f12mr22057746ejt.56.1612261888209; 
- Tue, 02 Feb 2021 02:31:28 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=2RDFs8S85oa4FrDYgpGFvUVS8sKHDV8ZSoNqkO72bts=;
+	b=rNqm+SrkuW8RTJAecrE05Va6a0603kN5cuKbMI7OFlyq5WLIqKf0oEj6i5bcdBM11S
+	//HVGIK3AIWJY0m6ppzq08sO9om75W9WOtA0Zgv6WXFkqLXzwxB6CYEpIHNNhgtYxpu2
+	ej6GtscrVM+JzIxnJUNtbjjEbrewti0QTEnVFOl8WeZVRjOQ7bQMFQwJGoN0T8pIySs2
+	TaRocNctJbsnobd4JjzuvLW+FxLnzR1rFnhKCm2qr3N6cETOp+vtgz2ENYHRm1GLRKnB
+	R+FfyuRbdBRqtWpYm2LSImeo0lwJiQiZ15J/FNu4kJ7THKZnJO/BYjj8hEy+BVqNH/1U
+	8AKA==
+X-Gm-Message-State: APjAAAWRpqW6tFuyvwC3VS7hW8gamikh3Jl+q9LoO3yE+ME3wXAJP0Va
+	TCyu92zr+jngIkUPc5jw43SZasQcQ2c=
+X-Received: by 2002:a1c:44d7:: with SMTP id r206mr3996708wma.129.1556651529913;
+	Tue, 30 Apr 2019 12:12:09 -0700 (PDT)
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	u17sm4256862wmu.36.2019.04.30.12.12.09
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 30 Apr 2019 12:12:09 -0700 (PDT)
+To: Cao Jiaxi <driver1998@foxmail.com>, qemu-devel@nongnu.org,
+	qemu-arm <qemu-arm@nongnu.org>
+References: <20190430181326.1314-1-driver1998@foxmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <c794f5a4-470a-3f49-c5df-bd37d97d711a@redhat.com>
+Date: Tue, 30 Apr 2019 21:12:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20210124025306.3949-1-leif@nuviainc.com>
- <20210124025306.3949-5-leif@nuviainc.com>
-In-Reply-To: <20210124025306.3949-5-leif@nuviainc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 10:31:16 +0000
-Message-ID: <CAFEAcA-j8TeozQLSTSK1ueVFKZ4J6tTCjMBNJMQTLQCeAnKkpw@mail.gmail.com>
-Subject: Re: [RFC PATCH 4/4] hw/intc: make gicv3_idreg() distinguish between
- gicv3/gicv4
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
+In-Reply-To: <20190430181326.1314-1-driver1998@foxmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/4] util/cacheinfo.c: Use
+ uintptr_t instead of unsigned long in AArch64 arch_cache_info()
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GjnFBnsbRnMH
+X-TUID: vChwkU6Jjl9e
 
-On Sun, 24 Jan 2021 at 02:53, Leif Lindholm <leif@nuviainc.com> wrote:
->
-> Make gicv3_idreg() able to return either gicv3 or gicv4 data.
-> Add a parameter to specify gic version.
->
-> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+On 4/30/19 8:13 PM, Cao Jiaxi wrote:
+> Windows ARM64 uses LLP64 model, which breaks current assumptions.
+> 
+> Signed-off-by: Cao Jiaxi <driver1998@foxmail.com>
 > ---
->  hw/intc/arm_gicv3_dist.c   |  2 +-
->  hw/intc/arm_gicv3_redist.c |  2 +-
->  hw/intc/gicv3_internal.h   | 12 ++++++++++--
->  3 files changed, 12 insertions(+), 4 deletions(-)
-
-> -static inline uint32_t gicv3_idreg(int regoffset)
-> +static inline uint32_t gicv3_idreg(int regoffset, int revision)
-
-I would prefer to pass in the GICv3State* and let the function
-look at s->revision.
-
+>  util/cacheinfo.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/util/cacheinfo.c b/util/cacheinfo.c
+> index 3cd080b83d..ce6f0dbf6a 100644
+> --- a/util/cacheinfo.c
+> +++ b/util/cacheinfo.c
+> @@ -107,7 +107,7 @@ static void sys_cache_info(int *isize, int *dsize)
+>  static void arch_cache_info(int *isize, int *dsize)
 >  {
->      /* Return the value of the CoreSight ID register at the specified
->       * offset from the first ID register (as found in the distributor
-> @@ -331,7 +331,15 @@ static inline uint32_t gicv3_idreg(int regoffset)
->      static const uint8_t gicd_ids[] = {
->          0x44, 0x00, 0x00, 0x00, 0x92, 0xB4, 0x3B, 0x00, 0x0D, 0xF0, 0x05, 0xB1
->      };
-> -    return gicd_ids[regoffset / 4];
-> +    static const uint8_t gicdv4_ids[] = {
-> +        0x44, 0x00, 0x00, 0x00, 0x92, 0xB4, 0x4B, 0x00, 0x0D, 0xF0, 0x05, 0xB1
-> +    };
-> +
-> +    if (revision == 3) {
-> +        return gicd_ids[regoffset / 4];
-> +    } else {
-> +        return gicdv4_ids[regoffset / 4];
-> +    }
->  }
+>      if (*isize == 0 || *dsize == 0) {
+> -        unsigned long ctr;
+> +        uintptr_t ctr;
+>  
+>          /* The real cache geometry is in CCSIDR_EL1/CLIDR_EL1/CSSELR_EL1,
+>             but (at least under Linux) these are marked protected by the
+> 
 
-Updating the comment "These values indicate an ARM implementation of a GICv3"
-to add a note about what the new values are indicating would be nice.
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

@@ -1,103 +1,104 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3952107wrh;
-        Mon, 29 Apr 2019 13:56:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqywco0To5DNJzyfcJPQ4EHEq32xd4nc4r0f/ReGztAIRAhTPtg9kMbrmYyuK7925Ykts9o2
-X-Received: by 2002:a5d:408e:: with SMTP id o14mr9281522wrp.318.1556571380731;
-        Mon, 29 Apr 2019 13:56:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556571380; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4295562wrh;
+        Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyy2TzC+NpIm3YeICOa8oAYQ14imgvXmbJ1VD13mdlpJqv0MscQNoFoR6hfCSUOHtBm7EVx
+X-Received: by 2002:a5d:4445:: with SMTP id x5mr21362310wrr.120.1556599266702;
+        Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556599266; cv=none;
         d=google.com; s=arc-20160816;
-        b=iCqjnLl/2o4RVhiCcBW/cG4rKWS3LxnJz+38riflpraJKHmjgPekLJF3wireXGInEX
-         3dfDmEiQDdl72nID1QWyxVGSh36gVilD9cOmaQS6Yw1C80x+X/9BXUAty0CHJz5wNuRi
-         OgeXC+1+ujx1wP7beX6hshONQ6zq0nYCqjZNH/6q6B/lTcxVG9l7TVpAqOYrKTqPhKtM
-         LFfS+Hoc1v7hYwnz+TqP2U4lj1dTQcfEKIAPiYcANadPfP/cZauyiT9qjM4xiYcYYTel
-         x0VLnlddjWgGWPG4jKvXc9WU8YDcocfW2FfojEcy5NBex//UtalX6bZe7rjyDqrA6khL
-         Bltg==
+        b=z/YAk+8VQYEwstGSz03j552qN/NIpuQAQrXzqh7elCObs+ccGf3bztj1pO5qXXZdzQ
+         nWS9vJ6qj6bDw2ChOeZJ36ifa9UtCYJFgn3V30xS6PxU3CiIngQF4lyMsdq+lLiHRqhB
+         cTVTjb/iDlUcKr8+TjLS6goUiw+0fsGjHaula3vCQBq1/GH5WlL9sPUAy8rGfBM1agSM
+         dRdb36NyEbjOJuYPgOPADmB6SEiiJ2zACJthhD5hq0FR/oOTPoTWIPoHbxo2aFuUeN1X
+         pVHOfKDoR6B90UGgFK7bPcl0N6yyDRPLVirMXvaZhR4Zqqlw7VPRt/baTf3Zd8LFh7qt
+         3Cpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=BEMr4HbLOWMg3VTbSJU5yEbI0WrJuAavWVGkqW17nUg=;
-        b=hYWU58zLbH57fyVrqmdjChQaqB6EXXELfme4ffUFqdw8gKr8JvM5zM2mDHhcnHV6ab
-         fqRDFy84ztIBVoTUY9GEQu86/MelQGHwhZJkkjo0K9dJXdIcTXpBq3+juRlq/OmDXgkF
-         1nlzGIqVzLpOzx9n3D0bytVUvsx97XJhieWfMsj10HNpfhRGkutOarP2l5jMdP8iXIO9
-         qW3N+bcLaIGDoESMLOhm0okDGvl96cgdU9wyrb2/hUfJ9mC0puDkdRWeJEOn1pwiNq/w
-         POjqqUFG7rfh2myy6O5aRy9i1ITD3bo/CcgAyToHHibqBrfmjbUcfjPfKb2gdqPEPT7C
-         iQgQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=gFbCi86uIEW652j72gzX8jjTJZ5WmXcv260laN5+gkQ=;
+        b=X9aNtCD/NazDM8v2f2egGlTHmYut5r4r1SCevoMQotVJpq7gr0g4AXUqb7/rOdZHKd
+         hmiyyu6tOllvCOaNa1q0sd+sUI0iXet+yXFxPp6FWPBlHim+9NVxRG6AFcHSlSbVmwAh
+         h33YPZKUgkX85KHB5Bfvf/NflxgovGKTZBEcglCyDcBtI/Mlqs5zT12go7+U6MgwZV/6
+         AoV9/JZb976BNAE/tgTl0iNWjDbTImELIFNz1FixwsK0vpxOdDGO8tjM/W9dCVgYHp0c
+         2Th9SyPmKOyFLJ/WnnfCeP7pla+XJwg5tEtYSQkl3QR430NT7CfFHoWF5HZlBkkRRF2a
+         3wlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nsA8ij/7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 64si10033248wro.27.2019.04.29.13.56.20
+        by mx.google.com with ESMTPS id x10si14453698wrw.333.2019.04.29.21.41.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 13:56:20 -0700 (PDT)
+        Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35284 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nsA8ij/7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:39001 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLDJz-0002xA-RM
-	for alex.bennee@linaro.org; Mon, 29 Apr 2019 16:56:19 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53369)
+	id 1hLKZl-0006cb-Pr
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 00:41:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLDJp-0002wq-4T
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 16:56:10 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1hLKZa-0006bd-CN
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:40:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLDJo-0006kE-3T
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 16:56:09 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:55260)
+	(envelope-from <joel.stan@gmail.com>) id 1hLKZZ-0002bH-HY
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:40:54 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:45215)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hLDJn-0006jc-Tc
-	for qemu-arm@nongnu.org; Mon, 29 Apr 2019 16:56:08 -0400
-Received: by mail-wm1-f68.google.com with SMTP id b10so1020365wmj.4
-	for <qemu-arm@nongnu.org>; Mon, 29 Apr 2019 13:56:07 -0700 (PDT)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1hLKZZ-0002aq-9G; Tue, 30 Apr 2019 00:40:53 -0400
+Received: by mail-pg1-x544.google.com with SMTP id i21so2788250pgi.12;
+	Mon, 29 Apr 2019 21:40:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=gFbCi86uIEW652j72gzX8jjTJZ5WmXcv260laN5+gkQ=;
+	b=nsA8ij/7y8hg+m8GN0iqRVa7Zh9WGVvC1rb1lC0CUVbrmNuM/1CbSjtPJ9a3UCT+iM
+	/2/l3cYO7ctzW0OT5aHjjxjZn1ob/Z/KrRYv9azK9DoLppERS4NP4xBPV2HbndBcc5rr
+	HwIzpIV2sLtGyGFciBN/U+BkrGSGGQhvFw2MhCLYO50ydFzzzFU00Q/ucNN6eAgxW5Iu
+	NN7BzpJmYDyiWlvD/Y4HwyoYqHHuJKslFBYNtuHBTXlERmtBbG6rUhN+pherr6UBb4ng
+	nW1iVYw1tsWEEHidffFxIXXzioDkz+bbMWTsk6kCLe6T2hK5fnuBpcj9Wfa6QbD7HM/d
+	iJWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=BEMr4HbLOWMg3VTbSJU5yEbI0WrJuAavWVGkqW17nUg=;
-	b=BBEw7aR5PBs2uAfclha5iRZrhmEUf/tzaYB3b/B7t70UCBZmKTTd9W0bzVFXGpk5wN
-	RcRj6gT4XBWSLdPJ5PiFV3sRu3o/+Ng85xBlz1f2QUVMbWRiWkUtmBRpjGgPRNpTy4i6
-	MxXoJbhaH1Q3C8SrolB4fnSwBrQk9dSl4wQBkmy1Yd89M9gmoUD8BORw5ewHxkWBa/hQ
-	uZi2J+b3gesmU4Er0M0cMVMYIZLvSPKJp2b9KHTcGNjJ2+C+At9OUqBKUs4T4NDHIU8h
-	36zSC4FQFwIkpeCe0lWmPa5xW2OIIFiGFLWQflEyGhyRWR6YxoS+4wtRx9/Ty6SQNimW
-	ofOw==
-X-Gm-Message-State: APjAAAXxY9LEDARqaQW1fjBjeLmrKj0XzgJcPKhh+u+qWJ5Wk4LE87FK
-	kIZW7seBBKSh44kPojydcwEk6w==
-X-Received: by 2002:a1c:f901:: with SMTP id x1mr671049wmh.136.1556571366678;
-	Mon, 29 Apr 2019 13:56:06 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	r29sm3417914wra.56.2019.04.29.13.56.04
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 Apr 2019 13:56:05 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-devel@nongnu.org, pbonzini@redhat.com
-References: <20190418180057.3593-1-thuth@redhat.com>
-	<20190418180057.3593-11-thuth@redhat.com>
-	<377a2033-504b-a84d-0eb0-765de81af730@redhat.com>
-	<fe977ebc-3ec7-fbf5-7a72-c9418286f0f1@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <d06a1288-277f-050e-e16f-e62b82a284c9@redhat.com>
-Date: Mon, 29 Apr 2019 22:56:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=gFbCi86uIEW652j72gzX8jjTJZ5WmXcv260laN5+gkQ=;
+	b=AJxkrbe855VjyoXqhLk16BS3g8JEDkXdErpYvNbKuk+slx7TDyRJhQaZ61hxWHRvbX
+	Kx9o9prx2/9OeaBaoAX1ogjCXd03BkmbV5+GjMdQb69MJ60V0Y8AUVFQpk+GvT0Y3Ko2
+	mYR9tkxosFAy3w5KWuAPvJfPRQVLWDkiK6ZOovcmf0SEs3Dd3TJVqw40PyXImLQKMV57
+	04cz3NIHCOR9cI6BN3fko5CbAiSwKgZM2EXgM5aDI7mtIK0QLulCkXKO9tCGaHVwK2Ii
+	w24Fn4F1Z2GXaNonq7fNElxB7vRVmwf5WImyJA/UTKsOYAVyU7IN58k+qVKGHXrYGu2e
+	5/UQ==
+X-Gm-Message-State: APjAAAUOiHp9cqO9IDFJYqQkoFAqaWh6zoEwKaiaeXvCzwFajRgX7MaB
+	/ktzdEcYMTsdiqc3HmC5wXo=
+X-Received: by 2002:a63:117:: with SMTP id 23mr34286pgb.34.1556599251288;
+	Mon, 29 Apr 2019 21:40:51 -0700 (PDT)
+Received: from voyager.jms.id.au ([45.124.203.18])
+	by smtp.gmail.com with ESMTPSA id
+	e11sm25312107pfd.151.2019.04.29.21.40.47
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 29 Apr 2019 21:40:50 -0700 (PDT)
+Received: by voyager.jms.id.au (sSMTP sendmail emulation);
+	Tue, 30 Apr 2019 14:10:44 +0930
+From: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Date: Tue, 30 Apr 2019 14:10:33 +0930
+Message-Id: <20190430044036.1144-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <fe977ebc-3ec7-fbf5-7a72-c9418286f0f1@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-QEMU-4.1 v5 10/29] hw/arm:
- Express dependencies of stellaris with Kconfig
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: [Qemu-arm] [PATCH v3 0/2] arm: aspeed: Add RTC Model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,99 +110,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Jan Kiszka <jan.kiszka@web.de>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-block@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Philippe Mathieu-Daude <f4bug@amsat.org>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	Beniamino Galvani <b.galvani@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
-	Cedric Le Goater <clg@kaod.org>, qemu-arm@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>, Gerd Hoffmann <kraxel@redhat.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	John Snow <jsnow@redhat.com>, Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f8qBY0uTtJta
+X-TUID: Tk2I8cA0QNlg
 
-On 4/29/19 9:25 PM, Thomas Huth wrote:
-> On 25/04/2019 23.41, Philippe Mathieu-Daudé wrote:
->> Hi Thomas,
->>
->> On 4/18/19 8:00 PM, Thomas Huth wrote:
->>> This patch is slightly based on earlier work by Ákos Kovács (i.e.
->>> his "hw/arm/Kconfig: Add ARM Kconfig" patch).
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  default-configs/arm-softmmu.mak |  7 +------
->>>  hw/arm/Kconfig                  | 10 ++++++++++
->>>  2 files changed, 11 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->>> index b7ed3c530b..3f82d635e4 100644
->>> --- a/default-configs/arm-softmmu.mak
->>> +++ b/default-configs/arm-softmmu.mak
->>> @@ -16,6 +16,7 @@ CONFIG_MUSCA=y
->>>  CONFIG_CHEETAH=y
->>>  CONFIG_SX1=y
->>>  CONFIG_NSERIES=y
->>> +CONFIG_STELLARIS=y
->>>  
->>>  CONFIG_VGA=y
->>>  CONFIG_NAND=y
->>> @@ -24,16 +25,10 @@ CONFIG_SERIAL=y
->>>  CONFIG_MAX7310=y
->>>  CONFIG_TMP421=y
->>>  CONFIG_PCA9552=y
->>> -CONFIG_STELLARIS=y
->>> -CONFIG_STELLARIS_INPUT=y
->>> -CONFIG_STELLARIS_ENET=y
->>> -CONFIG_SSD0303=y
->>> -CONFIG_SSD0323=y
->>>  CONFIG_DDC=y
->>>  CONFIG_SII9022=y
->>>  CONFIG_ADS7846=y
->>>  CONFIG_MAX111X=y
->>> -CONFIG_SSI_SD=y
->>>  CONFIG_SSI_M25P80=y
->>>  CONFIG_ALLWINNER_EMAC=y
->>>  CONFIG_IMX_FEC=y
->>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>> index 71126254ff..b91503f5a6 100644
->>> --- a/hw/arm/Kconfig
->>> +++ b/hw/arm/Kconfig
->>> @@ -91,6 +91,16 @@ config REALVIEW
->>>  
->>>  config STELLARIS
->>>      bool
->>> +    select ARM_V7M
->>> +    select I2C
->>> +    select PL011 # UART
->>> +    select PL022 # Serial port
->>> +    select PL061 # GPIO
->>> +    select SSD0303 # OLED display
->>> +    select SSD0323 # OLED display
->>> +    select SSI_SD
->>> +    select STELLARIS_INPUT
->>> +    select STELLARIS_ENET # ethernet
->>
->> This one misses CMSDK_APB_WATCHDOG:
->>
->> $ qemu-system-aarch64 -M lm3s811evb
->> qemu-system-aarch64: Unknown device 'luminary-watchdog' for default sysbus
->> Aborted (core dumped)
-> 
-> Oh, well, looks like this has just been added recently in commit
-> 566528f823d1a2e9e, likely after I assembled and tested the initial
-> version of this patch...
+v3: Add some commit messages, resend as v2 didn't send properly
+v2: Minor fixes, added vmstate and reset, and rebased on Cédric's series
 
-Ah yes, correct! This happens when we take too long to review a series,
-and since this one is huge, I was keeping procrastinating...
+Based-on: 20190411161013.4514-4-clg@kaod.org
+[PATCH 3/3] aspeed: use sysbus_init_child_obj() to initialize children
 
-> Thanks for catching it, I'll apply your fix in v6!
-> 
->  Thomas
-> 
+A model for the ASPEED BMC real time clock (RTC). The model is sufficient
+for running the guest Linux kernel driver, and ticks in time with the
+host when programmed.
+
+It does not implement the alarm functionality, which includes the
+interrupt.
+
+Joel Stanley (2):
+  hw: timer: Add ASPEED RTC device
+  hw/arm/aspeed: Add RTC to SoC
+
+ hw/arm/aspeed_soc.c           |  13 +++
+ hw/timer/Makefile.objs        |   2 +-
+ hw/timer/aspeed_rtc.c         | 180 ++++++++++++++++++++++++++++++++++
+ hw/timer/trace-events         |   4 +
+ include/hw/arm/aspeed_soc.h   |   2 +
+ include/hw/timer/aspeed_rtc.h |  31 ++++++
+ 6 files changed, 231 insertions(+), 1 deletion(-)
+ create mode 100644 hw/timer/aspeed_rtc.c
+ create mode 100644 include/hw/timer/aspeed_rtc.h
+
+-- 
+2.20.1
+

@@ -1,95 +1,97 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4295685wrh;
-        Mon, 29 Apr 2019 21:41:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz8UuBw2C8qqbC/zVJEnBwuC3IWc8qxnJPryUaCvKc7u6H35hUTKVefzX0Pifcw9dB9XBrc
-X-Received: by 2002:adf:9364:: with SMTP id 91mr21735684wro.56.1556599279513;
-        Mon, 29 Apr 2019 21:41:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556599279; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4296831wrh;
+        Mon, 29 Apr 2019 21:43:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx/RdOIhU5Rmw4FxAV+xkz41T3ZXmDOidBnBhC5oI4jkbyImD5eHwqmejBUVMPZSnqr++h8
+X-Received: by 2002:a1c:2b41:: with SMTP id r62mr1498406wmr.94.1556599393973;
+        Mon, 29 Apr 2019 21:43:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556599393; cv=none;
         d=google.com; s=arc-20160816;
-        b=EBtVKv58wnM+SRnkyt9OGO9UjIbzvGVi47o1hsYq5MkEQSTROx7b+0DBfavZjQfb07
-         iI86q6P5075XGZrf5rN0DFGTqV8ttXTx4cgoFZ7VcE85py2aVfcQgKvQLsZxBfjiHZFa
-         UfPURnuQz8hOpHyUumXNrkoOIEUbeaIRTiw+qmSBdwTx7+6qbAi/KJeof47pc3M74OeN
-         epPfmxWDms+aHzgXHyKDQBhVV4Rjg5gmeChr+y7Q7511/IigNECA3wOadUyizvPQYTox
-         YDkqnKRPNVP6s4c5ASg6wbN40+8lc4fWsli7ZFmBA3F+NSmEbrAhQZqVHUvDQp9DeyyZ
-         ImRw==
+        b=qOQDJuj/KGGqCS2g5v/GfILptniVeXGaMTTW3Ul0Yt5KDS4hhQhi/rkft6ge6CY8IX
+         Hjh6XSr5/6hYksoFaMAI5O0S+b9CvOysz556rjyV+bOm6FZD1mSI+DLmWxooIxZnmz0P
+         Zm6z4O5hdFMISbOvdqbFZH00i1InG5Fp3inp5ApbNVxFhFUJIDrExGP2rGWGbGhkN7+q
+         m6LJo+lcIKqfYldqVfLXhTcgM0b2W9RKfL+GQzLPOuZ6CI6Y9+6vOogS6WO18CfaJOsg
+         URt1DyzBFQXKxJO310kRS7aX04jsGq88XGe+DkmOHfLvjx24TmVMt3UQBxSLjI16+5SW
+         5ccA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=Hg8GeLeh6ssTCo6sGWbRAYZzQgIQhW085DD28eXrhko=;
-        b=HhLNr920w4IJKWqk4wsvOKc7QmN1WRFPFg/QGUs9Fo33C4BJ2IutzWAo4VedyJiO4/
-         1YHDxH6qrHUMtd6fJOHUWRCQGtK6KGI7DR8NaJRhXODZf65xBvAA50/TCupyILkRqK4Y
-         fV1/7M05OWaCj9yf2MsIl8cts/use9aV2p98nALxNSI5Ud2l4Vil8c8tB/xd7bIXCmM7
-         lK5WEzKZNhpaF95hQ62hQ/vF3n1g24gLht14PGadPIeh8Dr9seYoS5ikPllozb8RWUcz
-         cNwYB7NN926ncMY85DIcthf6wpLQHtBtaKB+4lamHJ9hgF8t+VwSiRx7HolDunDENN0u
-         Re+A==
+        bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
+        b=ovnTurPBBFil3jrj+nMYfhioTp6AucB/rm87vTskCYyVaPT+jgVORnYae3PlWwp0rD
+         C+G543J19WaVphueAiHKBydKaCab2PfPO+sFFAWdk+ijF9Nse66dOtZ9PuDyK8I54aKY
+         EHo6uktNAEKLl+Fzv30fDRE8BwYebKCVwX2OoIQjoRUVtKww1NMHQTYSZWbLIkkXvN8y
+         kNgmKI8Xp2xdRbvXs+35Lv6JfHJOhT3GfRm16QYWW4hVrwpXuENSHfXRGpROpXNqiNSL
+         4nI5bK7/ZdJ3C0UMLgf7TzP9LmTM9cwcy0G62hAI2DwusMALhsJmMPSX/jXO/AQW9aJ6
+         zfJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kIXCyrDE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FMNy+O1q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14si2990609wrp.44.2019.04.29.21.41.19
+        by mx.google.com with ESMTPS id v7si24811917wrw.367.2019.04.29.21.43.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 21:41:19 -0700 (PDT)
+        Mon, 29 Apr 2019 21:43:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kIXCyrDE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FMNy+O1q;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:39007 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:39025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLKZy-0006jS-IK
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 00:41:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60586)
+	id 1hLKbp-00089N-5K
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 00:43:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLKZi-0006iP-L3
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:05 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1hLKZr-0006oo-RK
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLKZg-0002df-Tg
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:02 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:41998)
+	(envelope-from <joel.stan@gmail.com>) id 1hLKZp-0002i5-UT
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:11 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37703)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hLKZg-0002dA-LB; Tue, 30 Apr 2019 00:41:00 -0400
-Received: by mail-pg1-x541.google.com with SMTP id p6so6229905pgh.9;
-	Mon, 29 Apr 2019 21:41:00 -0700 (PDT)
+	id 1hLKZo-0002fr-38; Tue, 30 Apr 2019 00:41:08 -0400
+Received: by mail-pl1-x641.google.com with SMTP id z8so6152932pln.4;
+	Mon, 29 Apr 2019 21:41:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Hg8GeLeh6ssTCo6sGWbRAYZzQgIQhW085DD28eXrhko=;
-	b=kIXCyrDERyBvOBYtfVUZ9qMQODT4JaBGSN/45MaVu4m1PzVcHY4kfjgRcoFFdPVCJp
-	/tEiiiWS07HyXS682LeT81nOqq5SxFehcxZ6KNG4ggHzLP4eMyVoG/iOkBeNbfm9omGC
-	CCrPx0lhLAdfvXGnXPBgbQElqrssSCOmjDfCZSbQSRMoCMoqyRKtciG8O9ZvWmmZxwch
-	ZmRMZraSVgXHkXQKMR+RS8POK3JeGCQiSZMCDN8JufG87nxUbxmlIZm3u3MzReMvAB8/
-	qyGtAVrJRhkJGXxvoHUUQ1Lf2zcupVEGJ8h/Qy1lvYwEKtROPwy61RwTx3SuNQ++6t5s
-	FgNw==
+	bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
+	b=FMNy+O1qySsuJAVz3CQRoGWAKXFpdv1X6ytiDGe1oy245bXcMChEys5ecET2cQ6eTp
+	GHDtrUhncGDOBvC6sVtmueEh5oM05SrWB1qcMH1/2e/vFJDyTnwx/9iBYWZhCQ+X3GJS
+	1rJ0o8iR8gcSenxcUNpUgUxUy60nbQLJ75yOleCBfLjOB5e71lf708wN4nOvCXttLrTv
+	XW9LHhe493v+6wgOBinKa4HPv4HU/D4bSqofOcK154suuqNcdYZgYWp/xt8hnLb5Qor+
+	PsU1SOyv0S0xFyUzaO/cw9Y6zgy1z8WQd1Q/ldMvk7iP6G4wV9e4X+eMCKil1TJpXb1T
+	TSiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Hg8GeLeh6ssTCo6sGWbRAYZzQgIQhW085DD28eXrhko=;
-	b=PdAmmzLE6+hUGbgKj9wri70U/BDZqYmQl165O5Rke9X+4c3fVtO+uJHCvnfJmdCAJf
-	JCQMdmmun/7P0FuNF+LBdbEmb0ztrHdjLXYS4z+1wwEgB18h3CDFgHn1ORUXT+Rx2L79
-	lWQl6qthXKKDXLhRmf7nN0VWQPjV+OPN1OT7byEuyIN6beIuDAKrmfzij3qZW2fgBFgP
-	en23DOG73lJc6MBobebfd52locRxK7EgxBnvGA9oqa8dY/ds97I1rlT9tMGskw9YFAXT
-	IKq4h6LqnwtK3rqagm0CbI51p1ic0NuarG6XKWxke1YOn8EtaLKcbhuDU2Ju4pJIpHOS
-	3+MQ==
-X-Gm-Message-State: APjAAAXcNTQlgs/mc0QanH23LK0fDVwbbMr3Lu6dA2MfgSTohly/yQgm
-	LOre7heeuce0KGlvYFHzQNQ=
-X-Received: by 2002:a65:4247:: with SMTP id d7mr19127757pgq.114.1556599258962; 
-	Mon, 29 Apr 2019 21:40:58 -0700 (PDT)
+	bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
+	b=B5AA3kfI3+GIvyWpk056m49+izV28gft6Bz0iARdfwN/TAWkFC/BFObQ6uzU9TzSKX
+	2EvR6YHelqxuACXJ76lvLXOLpnmVHIgOykEVVhb33n3luOpYnaKT3+C1HUxpKSOMOdpA
+	9ARdzb+v2VUGsjISNAIeQITtJmRA4/VkaBEaGywitbUuOPanFkEifIhEOoDrJmjknFua
+	CypyLK1jIftSlE8Tah8EYlJXhb4ty54bYk6n8hwqOn3QnaJ6+QsEBc25G6AOUhw4aDXj
+	uIN8yKB+gJNJsJ7O2JVU2g/1DFT7thpqqQ+wpzUI9Ux8w++j/049zaCCg9NXAJwK/thj
+	pj3Q==
+X-Gm-Message-State: APjAAAVqtcb4fAwr9rQZudLOxKA9daGNh1Nv86Evvc0FCYz30b4ABMG5
+	u831VaV5zkW2UFo3kza6rgo=
+X-Received: by 2002:a17:902:822:: with SMTP id
+	31mr65976607plk.41.1556599266736; 
+	Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
 Received: from voyager.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id y3sm11699580pfe.9.2019.04.29.21.40.54
+	by smtp.gmail.com with ESMTPSA id
+	d5sm14411227pgb.33.2019.04.29.21.41.02
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 29 Apr 2019 21:40:58 -0700 (PDT)
+	Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
 Received: by voyager.jms.id.au (sSMTP sendmail emulation);
-	Tue, 30 Apr 2019 14:10:51 +0930
+	Tue, 30 Apr 2019 14:10:59 +0930
 From: Joel Stanley <joel@jms.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Tue, 30 Apr 2019 14:10:34 +0930
-Message-Id: <20190430044036.1144-2-joel@jms.id.au>
+Date: Tue, 30 Apr 2019 14:10:35 +0930
+Message-Id: <20190430044036.1144-3-joel@jms.id.au>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190430044036.1144-1-joel@jms.id.au>
 References: <20190430044036.1144-1-joel@jms.id.au>
@@ -97,8 +99,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-Subject: [Qemu-arm] [PATCH v3 1/2] hw: timer: Add ASPEED RTC device
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: [Qemu-arm] [PATCH v3 2/2] hw/arm/aspeed: Add RTC to SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,283 +116,73 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R6mB3mV1WATw
+X-TUID: 48p10BEKoXXH
 
-The RTC is modeled to provide time and date functionality. It is
-initialised at zero to match the hardware.
+All systems have an RTC.
 
-There is no modelling of the alarm functionality, which includes the IRQ
-line. As there is no guest code to exercise this function that is
-acceptable for now.
+The IRQ is hooked up but the model does not use it at this stage. There
+is no guest code that uses it, so this limitation is acceptable.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
 v3: Add commit message
-v2:
- Use g_assert_not_reached
- Add vmstate
- Add reset callback
- Annotate fall through cases
+v2: Rebase on Cedric's patches (20190411161013.4514-4-clg@kaod.org)
 ---
- hw/timer/Makefile.objs        |   2 +-
- hw/timer/aspeed_rtc.c         | 180 ++++++++++++++++++++++++++++++++++
- hw/timer/trace-events         |   4 +
- include/hw/timer/aspeed_rtc.h |  31 ++++++
- 4 files changed, 216 insertions(+), 1 deletion(-)
- create mode 100644 hw/timer/aspeed_rtc.c
- create mode 100644 include/hw/timer/aspeed_rtc.h
+ hw/arm/aspeed_soc.c         | 13 +++++++++++++
+ include/hw/arm/aspeed_soc.h |  2 ++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 0e9a4530f848..123d92c9692c 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -41,7 +41,7 @@ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 110956828c44..ea9700c35bc4 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -229,6 +229,9 @@ static void aspeed_soc_init(Object *obj)
+     sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
+                           TYPE_ASPEED_VIC);
  
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
--common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
-+common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
- 
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
-diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
-new file mode 100644
-index 000000000000..19f061c846e8
---- /dev/null
-+++ b/hw/timer/aspeed_rtc.c
-@@ -0,0 +1,180 @@
-+/*
-+ * ASPEED Real Time Clock
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * Copyright 2019 IBM Corp
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++    sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
++                          TYPE_ASPEED_RTC);
 +
-+#include "qemu/osdep.h"
-+#include "qemu-common.h"
+     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+                           sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
+     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+@@ -315,6 +318,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
+                        qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
+ 
++    /* RTC */
++    object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, sc->info->memmap[ASPEED_RTC]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_RTC));
++
+     /* Timer */
+     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &err);
+     if (err) {
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index eda9094660b5..d124674f25d8 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -17,6 +17,7 @@
+ #include "hw/misc/aspeed_scu.h"
+ #include "hw/misc/aspeed_sdmc.h"
+ #include "hw/timer/aspeed_timer.h"
 +#include "hw/timer/aspeed_rtc.h"
-+#include "qemu/log.h"
-+#include "qemu/timer.h"
-+
-+#include "trace.h"
-+
-+#define COUNTER1        (0x00 / 4)
-+#define COUNTER2        (0x04 / 4)
-+#define ALARM           (0x08 / 4)
-+#define CONTROL         (0x10 / 4)
-+#define ALARM_STATUS    (0x14 / 4)
-+
-+#define RTC_UNLOCKED    BIT(1)
-+#define RTC_ENABLED     BIT(0)
-+
-+static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-+{
-+    struct tm tm;
-+    uint32_t year, cent;
-+    uint32_t reg1 = rtc->reg[COUNTER1];
-+    uint32_t reg2 = rtc->reg[COUNTER2];
-+
-+    tm.tm_mday = (reg1 >> 24) & 0x1f;
-+    tm.tm_hour = (reg1 >> 16) & 0x1f;
-+    tm.tm_min = (reg1 >> 8) & 0x3f;
-+    tm.tm_sec = (reg1 >> 0) & 0x3f;
-+
-+    cent = (reg2 >> 16) & 0x1f;
-+    year = (reg2 >> 8) & 0x7f;
-+    tm.tm_mon = ((reg2 >>  0) & 0x0f) - 1;
-+    tm.tm_year = year + (cent * 100) - 1900;
-+
-+    rtc->offset = qemu_timedate_diff(&tm);
-+}
-+
-+static uint32_t aspeed_rtc_get_counter(AspeedRtcState *rtc, int r)
-+{
-+    uint32_t year, cent;
-+    struct tm now;
-+
-+    qemu_get_timedate(&now, rtc->offset);
-+
-+    switch (r) {
-+    case COUNTER1:
-+        return (now.tm_mday << 24) | (now.tm_hour << 16) |
-+            (now.tm_min << 8) | now.tm_sec;
-+    case COUNTER2:
-+        cent = (now.tm_year + 1900) / 100;
-+        year = now.tm_year % 100;
-+        return ((cent & 0x1f) << 16) | ((year & 0x7f) << 8) |
-+            ((now.tm_mon + 1) & 0xf);
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t aspeed_rtc_read(void *opaque, hwaddr addr,
-+                                unsigned size)
-+{
-+    AspeedRtcState *rtc = opaque;
-+    uint64_t val;
-+    uint32_t r = addr >> 2;
-+
-+    switch (r) {
-+    case COUNTER1:
-+    case COUNTER2:
-+        if (rtc->reg[CONTROL] & RTC_ENABLED) {
-+            rtc->reg[r] = aspeed_rtc_get_counter(rtc, r);
-+        }
-+        /* fall through */
-+    case CONTROL:
-+        val = rtc->reg[r];
-+        break;
-+    case ALARM:
-+    case ALARM_STATUS:
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, addr);
-+        return 0;
-+    }
-+
-+    trace_aspeed_rtc_read(addr, val);
-+
-+    return val;
-+}
-+
-+static void aspeed_rtc_write(void *opaque, hwaddr addr,
-+                             uint64_t val, unsigned size)
-+{
-+    AspeedRtcState *rtc = opaque;
-+    uint32_t r = addr >> 2;
-+
-+    switch (r) {
-+    case COUNTER1:
-+    case COUNTER2:
-+        if (!(rtc->reg[CONTROL] & RTC_UNLOCKED)) {
-+            break;
-+        }
-+        /* fall through */
-+    case CONTROL:
-+        rtc->reg[r] = val;
-+        aspeed_rtc_calc_offset(rtc);
-+        break;
-+    case ALARM:
-+    case ALARM_STATUS:
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    }
-+    trace_aspeed_rtc_write(addr, val);
-+}
-+
-+static void aspeed_rtc_reset(DeviceState *d)
-+{
-+    AspeedRtcState *rtc = ASPEED_RTC(d);
-+
-+    rtc->offset = 0;
-+    memset(rtc->reg, 0, sizeof(rtc->reg));
-+}
-+
-+static const MemoryRegionOps aspeed_rtc_ops = {
-+    .read = aspeed_rtc_read,
-+    .write = aspeed_rtc_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
-+
-+static const VMStateDescription vmstate_aspeed_rtc = {
-+    .name = TYPE_ASPEED_RTC,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(reg, AspeedRtcState, 0x18),
-+        VMSTATE_INT32(offset, AspeedRtcState),
-+        VMSTATE_INT32(offset, AspeedRtcState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void aspeed_rtc_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedRtcState *s = ASPEED_RTC(dev);
-+
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_rtc_ops, s,
-+                          "aspeed-rtc", 0x18ULL);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static void aspeed_rtc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_rtc_realize;
-+    dc->vmsd = &vmstate_aspeed_rtc;
-+    dc->reset = aspeed_rtc_reset;
-+}
-+
-+static const TypeInfo aspeed_rtc_info = {
-+    .name          = TYPE_ASPEED_RTC,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedRtcState),
-+    .class_init    = aspeed_rtc_class_init,
-+};
-+
-+static void aspeed_rtc_register_types(void)
-+{
-+    type_register_static(&aspeed_rtc_info);
-+}
-+
-+type_init(aspeed_rtc_register_types)
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index dcaf3d6da6c8..db02a9142cda 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -66,6 +66,10 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- 
-+# hw/timer/aspeed-rtc.c
-+aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+
- # sun4v-rtc.c
- sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
- sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
-diff --git a/include/hw/timer/aspeed_rtc.h b/include/hw/timer/aspeed_rtc.h
-new file mode 100644
-index 000000000000..1f1155a676c1
---- /dev/null
-+++ b/include/hw/timer/aspeed_rtc.h
-@@ -0,0 +1,31 @@
-+/*
-+ * ASPEED Real Time Clock
-+ * Joel Stanley <joel@jms.id.au>
-+ *
-+ * Copyright 2019 IBM Corp
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef ASPEED_RTC_H
-+#define ASPEED_RTC_H
-+
-+#include <stdint.h>
-+
-+#include "hw/hw.h"
-+#include "hw/irq.h"
-+#include "hw/sysbus.h"
-+
-+typedef struct AspeedRtcState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t reg[0x18];
-+    int offset;
-+
-+} AspeedRtcState;
-+
-+#define TYPE_ASPEED_RTC "aspeed.rtc"
-+#define ASPEED_RTC(obj) OBJECT_CHECK(AspeedRtcState, (obj), TYPE_ASPEED_RTC)
-+
-+#endif /* ASPEED_RTC_H */
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+@@ -33,6 +34,7 @@ typedef struct AspeedSoCState {
+     ARMCPU cpu;
+     MemoryRegion sram;
+     AspeedVICState vic;
++    AspeedRtcState rtc;
+     AspeedTimerCtrlState timerctrl;
+     AspeedI2CState i2c;
+     AspeedSCUState scu;
 -- 
 2.20.1
 

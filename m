@@ -1,106 +1,80 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4296831wrh;
-        Mon, 29 Apr 2019 21:43:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx/RdOIhU5Rmw4FxAV+xkz41T3ZXmDOidBnBhC5oI4jkbyImD5eHwqmejBUVMPZSnqr++h8
-X-Received: by 2002:a1c:2b41:: with SMTP id r62mr1498406wmr.94.1556599393973;
-        Mon, 29 Apr 2019 21:43:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556599393; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4401373wrh;
+        Tue, 30 Apr 2019 00:14:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwpcpZCnXPw2F4jOwLzeI+AHgWNuHp3kRrr11zTGZNX25/+6FX8UC/+rZgMKTJHVWkiiE9F
+X-Received: by 2002:a1c:2317:: with SMTP id j23mr2007015wmj.80.1556608484441;
+        Tue, 30 Apr 2019 00:14:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556608484; cv=none;
         d=google.com; s=arc-20160816;
-        b=qOQDJuj/KGGqCS2g5v/GfILptniVeXGaMTTW3Ul0Yt5KDS4hhQhi/rkft6ge6CY8IX
-         Hjh6XSr5/6hYksoFaMAI5O0S+b9CvOysz556rjyV+bOm6FZD1mSI+DLmWxooIxZnmz0P
-         Zm6z4O5hdFMISbOvdqbFZH00i1InG5Fp3inp5ApbNVxFhFUJIDrExGP2rGWGbGhkN7+q
-         m6LJo+lcIKqfYldqVfLXhTcgM0b2W9RKfL+GQzLPOuZ6CI6Y9+6vOogS6WO18CfaJOsg
-         URt1DyzBFQXKxJO310kRS7aX04jsGq88XGe+DkmOHfLvjx24TmVMt3UQBxSLjI16+5SW
-         5ccA==
+        b=HMREAg6yqwAJaX2djThYUzP81CW1dwt3IpYn1ITR6RexlXZMqJzt4K27xy84ot6JGa
+         ZAPH/kFS/tvbJICnPGrh2z6sT2pWHY1k+/V2XvtHtbUZsw2vWF+wJNYpiMwQ0l4H0Kbc
+         bdWDwDR03FicTSjdmPfKt/FQUGfPJQBwbgxp8sKfwWR8uP1iuOBzKYg+NyDJh+SecXnB
+         Hx+Typ4g5OCiGwnq7qwUtQRN+bXbKJVcZInHjM0FUcGGQyqaCf9JrzQdImmT4IzuJH2a
+         uESgMVr5RL4GI9jumJeCtcLvhy72iKMbLjVhgt2jTyL1M9NlRMBEkNbn+05UKxfvUiyC
+         Bqfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
-        b=ovnTurPBBFil3jrj+nMYfhioTp6AucB/rm87vTskCYyVaPT+jgVORnYae3PlWwp0rD
-         C+G543J19WaVphueAiHKBydKaCab2PfPO+sFFAWdk+ijF9Nse66dOtZ9PuDyK8I54aKY
-         EHo6uktNAEKLl+Fzv30fDRE8BwYebKCVwX2OoIQjoRUVtKww1NMHQTYSZWbLIkkXvN8y
-         kNgmKI8Xp2xdRbvXs+35Lv6JfHJOhT3GfRm16QYWW4hVrwpXuENSHfXRGpROpXNqiNSL
-         4nI5bK7/ZdJ3C0UMLgf7TzP9LmTM9cwcy0G62hAI2DwusMALhsJmMPSX/jXO/AQW9aJ6
-         zfJw==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=NVSD4Hynm1Ge9/OHz/2NaQlMXS5e+jmvnxRIDB3VUfg=;
+        b=JSsIq5dajHqkUCHHxWUuaFDfRqq2DvaBvVY6pdV4/nb6eL9wCS5mwl92wxvVWVlfH3
+         3O2BvzWh5/NCyuwOEol4VUYedkNV52Dk6I4Gvelcf8VxFJ8sBbr89w/XLUF0dO3qouxE
+         GztZB01jYv4zo9RCeNtxdu9r74GvzA3ni0jKsCsHNXVgdyP/bANL0ZbJaZwU14WpQe4y
+         qBivMiBEHJRqwTK8cVNUoRwe5UD4gGCbqsrCHB3V9h8zL2sVgOiC+0IEik9Lkz5mtf5A
+         nBs/QArVqUrFEVmPe+/Fn2RsNcklJfKTF+3kycfPlgHXwXpbe5QIVk028ahQKfAT04g6
+         RVvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FMNy+O1q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7si24811917wrw.367.2019.04.29.21.43.13
+        by mx.google.com with ESMTPS id y4si4229169wrm.330.2019.04.30.00.14.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Apr 2019 21:43:13 -0700 (PDT)
+        Tue, 30 Apr 2019 00:14:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FMNy+O1q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:39025 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:40266 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLKbp-00089N-5K
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 00:43:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60613)
+	id 1hLMyR-0005OP-D3
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 03:14:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54681)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLKZr-0006oo-RK
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1hLMyD-0005N3-7N
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 03:14:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLKZp-0002i5-UT
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 00:41:11 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37703)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hLKZo-0002fr-38; Tue, 30 Apr 2019 00:41:08 -0400
-Received: by mail-pl1-x641.google.com with SMTP id z8so6152932pln.4;
-	Mon, 29 Apr 2019 21:41:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
-	b=FMNy+O1qySsuJAVz3CQRoGWAKXFpdv1X6ytiDGe1oy245bXcMChEys5ecET2cQ6eTp
-	GHDtrUhncGDOBvC6sVtmueEh5oM05SrWB1qcMH1/2e/vFJDyTnwx/9iBYWZhCQ+X3GJS
-	1rJ0o8iR8gcSenxcUNpUgUxUy60nbQLJ75yOleCBfLjOB5e71lf708wN4nOvCXttLrTv
-	XW9LHhe493v+6wgOBinKa4HPv4HU/D4bSqofOcK154suuqNcdYZgYWp/xt8hnLb5Qor+
-	PsU1SOyv0S0xFyUzaO/cw9Y6zgy1z8WQd1Q/ldMvk7iP6G4wV9e4X+eMCKil1TJpXb1T
-	TSiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=MI5nCh4/5B0Sz0tu7042172x5DdKFcjyfCPFDvMLqR4=;
-	b=B5AA3kfI3+GIvyWpk056m49+izV28gft6Bz0iARdfwN/TAWkFC/BFObQ6uzU9TzSKX
-	2EvR6YHelqxuACXJ76lvLXOLpnmVHIgOykEVVhb33n3luOpYnaKT3+C1HUxpKSOMOdpA
-	9ARdzb+v2VUGsjISNAIeQITtJmRA4/VkaBEaGywitbUuOPanFkEifIhEOoDrJmjknFua
-	CypyLK1jIftSlE8Tah8EYlJXhb4ty54bYk6n8hwqOn3QnaJ6+QsEBc25G6AOUhw4aDXj
-	uIN8yKB+gJNJsJ7O2JVU2g/1DFT7thpqqQ+wpzUI9Ux8w++j/049zaCCg9NXAJwK/thj
-	pj3Q==
-X-Gm-Message-State: APjAAAVqtcb4fAwr9rQZudLOxKA9daGNh1Nv86Evvc0FCYz30b4ABMG5
-	u831VaV5zkW2UFo3kza6rgo=
-X-Received: by 2002:a17:902:822:: with SMTP id
-	31mr65976607plk.41.1556599266736; 
-	Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
-Received: from voyager.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id
-	d5sm14411227pgb.33.2019.04.29.21.41.02
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 29 Apr 2019 21:41:06 -0700 (PDT)
-Received: by voyager.jms.id.au (sSMTP sendmail emulation);
-	Tue, 30 Apr 2019 14:10:59 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Tue, 30 Apr 2019 14:10:35 +0930
-Message-Id: <20190430044036.1144-3-joel@jms.id.au>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190430044036.1144-1-joel@jms.id.au>
-References: <20190430044036.1144-1-joel@jms.id.au>
+	(envelope-from <thuth@redhat.com>) id 1hLMyB-00041J-Tf
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 03:14:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41348)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hLMyB-00040s-Lr; Tue, 30 Apr 2019 03:14:27 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1115D3091785;
+	Tue, 30 Apr 2019 07:14:26 +0000 (UTC)
+Received: from thuth.com (ovpn-116-190.ams2.redhat.com [10.36.116.190])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A08871001E85;
+	Tue, 30 Apr 2019 07:14:13 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: yang.zhong@intel.com, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org, pbonzini@redhat.com
+Date: Tue, 30 Apr 2019 09:13:35 +0200
+Message-Id: <20190430071405.16714-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-Subject: [Qemu-arm] [PATCH v3 2/2] hw/arm/aspeed: Add RTC to SoC
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.41]);
+	Tue, 30 Apr 2019 07:14:26 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v6 00/30] Kconfig dependencies for ARM machines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,77 +86,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Rob Herring <robh@kernel.org>, qemu-block@nongnu.org,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	Jan Kiszka <jan.kiszka@web.de>, Cedric Le Goater <clg@kaod.org>,
+	John Snow <jsnow@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Philippe Mathieu-Daude <f4bug@amsat.org>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Andrew Jeffery <andrew@aj.id.au>, Peter Chubb <peter.chubb@nicta.com.au>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 48p10BEKoXXH
+X-TUID: ITSzoqQAmVBK
 
-All systems have an RTC.
+This series reworks the default-configs/arm-softmmu.mak and
+default-configs/aarch64-softmmu.mak files to use the new Kconfig-style
+dependencies instead.
 
-The IRQ is hooked up but the model does not use it at this stage. There
-is no guest code that uses it, so this limitation is acceptable.
+Some of the patches are slightly based on the work by =C3=81kos Kov=C3=A1=
+cs:
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-v3: Add commit message
-v2: Rebase on Cedric's patches (20190411161013.4514-4-clg@kaod.org)
----
- hw/arm/aspeed_soc.c         | 13 +++++++++++++
- include/hw/arm/aspeed_soc.h |  2 ++
- 2 files changed, 15 insertions(+)
+ https://lists.nongnu.org/archive/html/qemu-devel/2013-08/msg03730.html
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 110956828c44..ea9700c35bc4 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -229,6 +229,9 @@ static void aspeed_soc_init(Object *obj)
-     sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
-                           TYPE_ASPEED_VIC);
- 
-+    sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
-+                          TYPE_ASPEED_RTC);
-+
-     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
-                           sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
-     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
-@@ -315,6 +318,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
-                        qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
- 
-+    /* RTC */
-+    object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, sc->info->memmap[ASPEED_RTC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_RTC));
-+
-     /* Timer */
-     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &err);
-     if (err) {
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index eda9094660b5..d124674f25d8 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -17,6 +17,7 @@
- #include "hw/misc/aspeed_scu.h"
- #include "hw/misc/aspeed_sdmc.h"
- #include "hw/timer/aspeed_timer.h"
-+#include "hw/timer/aspeed_rtc.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/watchdog/wdt_aspeed.h"
-@@ -33,6 +34,7 @@ typedef struct AspeedSoCState {
-     ARMCPU cpu;
-     MemoryRegion sram;
-     AspeedVICState vic;
-+    AspeedRtcState rtc;
-     AspeedTimerCtrlState timerctrl;
-     AspeedI2CState i2c;
-     AspeedSCUState scu;
--- 
-2.20.1
+The other patches have been created by looking at the sources and finding
+out the dependencies the hard way via trial-and-error (i.e. by enabling
+only one machine at a time and checking whether it can be compiled and
+started).
+
+v6:
+ - Addressed the review feedback from Phillipe in v5
+ - Added Reviewed-bys and Tested-bys
+ - Use the "split" ohci patches instead of the single big one
+
+v5:
+ - Rebased the series to the current master branch
+ - Added "hw/usb/hcd-ohci: Move PCI-related code into a separate file"
+   patch and got rid of unneeded dependencies to CONFIG_PCI in the
+   ARM machines that do not have a PCI bus
+
+v4:
+ - Rebased the series to Paolo's latest kconfig tree
+
+v3:
+ - Addressed review feedback from v2
+ - Included patches to clean up the PCI dependencies of AHCI and SDHCI
+   (so CONFIG_AHCI and CONFIG_SDHCI do not depend on CONFIG_PCI anymore)
+ - Added an additional patch for the new "musca" machines
+
+v2: Adressed review-feedback from v1
+ - CONFIG_SDHCI and CONFIG_AHCI now select CONFIG_PCI
+ - Added switches for MICROBIT and EMCRAFT_SF2
+
+Thomas Huth (30):
+  hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci stubs
+  hw/ide/ahci: Add a Kconfig switch for the AHCI-ICH9 device
+  hw/usb/hcd-ohci: Do not use PCI functions with sysbus devices in
+    ohci_die()
+  hw/usb/hcd-ohci: Move PCI-related code into a separate file
+  hw/arm: Express dependencies of the exynos machines with Kconfig
+  hw/arm: Express dependencies of the highbank machines with Kconfig
+  hw/arm: Express dependencies of integratorcp with Kconfig
+  hw/arm: Express dependencies of the fsl-imx31 machine with Kconfig
+  hw/arm: Express dependencies of musicpal with Kconfig
+  hw/arm: Express dependencies of the OMAP machines with Kconfig
+  hw/arm: Express dependencies of stellaris with Kconfig
+  hw/arm: Express dependencies of realview, versatile and vexpress with
+    Kconfig
+  hw/arm: Express dependencies of the PXA2xx machines with Kconfig
+  hw/arm: Express dependencies of xilinx-zynq with Kconfig
+  hw/arm: Express dependencies of collie with Kconfig
+  hw/arm: Express dependencies of the aspeed boards with Kconfig
+  hw/arm: Express dependencies of the virt machine with Kconfig
+  hw/arm: Express dependencies of netduino / stm32f2xx with Kconfig
+  hw/arm: Express dependencies of allwinner / cubieboard with Kconfig
+  hw/arm: Express dependencies of the MPS2 boards with Kconfig
+  hw/arm: Express dependencies of the raspi machines with Kconfig
+  hw/arm: Express dependencies of canon-a1100 with Kconfig
+  hw/arm: Express dependencies of sabrelite with Kconfig
+  hw/arm: Express dependencies of the MSF2 / EMCRAFT_SF2 machine with
+    Kconfig
+  hw/arm: Express dependencies of the remaining IMX boards with Kconfig
+  hw/arm: Express dependencies of the microbit / nrf51 machine with
+    Kconfig
+  hw/arm: Express dependencies of the ZynqMP zcu102 machine with Kconfig
+  hw/arm: Express dependencies of the xlnx-versal-virt machine with
+    Kconfig
+  hw/arm: Express dependencies of the musca machines with Kconfig
+  hw/arm: Remove hard-enablement of the remaining PCI devices
+
+ default-configs/aarch64-softmmu.mak |   5 -
+ default-configs/arm-softmmu.mak     | 179 +++-------------
+ hw/arm/Kconfig                      | 317 +++++++++++++++++++++++++++-
+ hw/arm/Makefile.objs                |  25 ++-
+ hw/display/Kconfig                  |   3 +
+ hw/i2c/Kconfig                      |   2 +-
+ hw/ide/Kconfig                      |   6 +-
+ hw/ide/Makefile.objs                |   2 +-
+ hw/misc/Kconfig                     |   2 +
+ hw/pci/pci-stub.c                   |  11 +
+ hw/sh4/Kconfig                      |   2 +-
+ hw/usb/Kconfig                      |   6 +-
+ hw/usb/Makefile.objs                |   1 +
+ hw/usb/hcd-ohci-pci.c               | 163 ++++++++++++++
+ hw/usb/hcd-ohci.c                   | 219 ++-----------------
+ hw/usb/hcd-ohci.h                   | 104 +++++++++
+ 16 files changed, 676 insertions(+), 371 deletions(-)
+ create mode 100644 hw/usb/hcd-ohci-pci.c
+ create mode 100644 hw/usb/hcd-ohci.h
+
+--=20
+2.21.0
 

@@ -1,81 +1,142 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp5095865wrh;
-        Tue, 30 Apr 2019 12:25:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzKGtPVqBquh4ceWGvoyvua9HKrFblOHncdD72aMWaW4iNeJqzcTLH7o8nrao+/76TK2cI8
-X-Received: by 2002:adf:f847:: with SMTP id d7mr15479150wrq.64.1556652333848;
-        Tue, 30 Apr 2019 12:25:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556652333; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp5121616wrh;
+        Tue, 30 Apr 2019 12:56:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXqTo+KLcVf6iAS04KGqm6lSJGd4Rcaqshe3sez+gWPxp//PRIeJOIeivxtKXJbkPBozGf
+X-Received: by 2002:a1c:f702:: with SMTP id v2mr4505356wmh.0.1556654176378;
+        Tue, 30 Apr 2019 12:56:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556654176; cv=none;
         d=google.com; s=arc-20160816;
-        b=J/UI1phpJamO6SfMn/7dwAm4x5fr7lPZdT9tcoga1FAgx1O+/0J/EaMOYv3unxkzax
-         u/x1rUlIc5wvh4Urr0F2txTu/gWasR22QX+zDFW1m50kPlFahI7u6XYoOldM6+vdrz7e
-         MB+o70wnh76rl+jcNaXXKvvH+db5WajcFRU54+Vwjni8TM9uZvlcK3tzCvujLw4WU1uC
-         1paDxozcfhTS3ZEkAZwjiEgtWBne8Q+pe2Svyuj2969tBd0VDIBrXuz/XPqIdnj0em6N
-         Gl96vgKBTtuXdW1mziQpU8z4c31X372UxytAJxfBevpIWH+ssix4LVeM3NTSfGQje3tB
-         X2jg==
+        b=RKh26mLicROraaHCLy548+TQ5V+2Xgbb7SlIpZAAyrQb+in8Sr2akmcUsDQZrvT+Xt
+         uKlt3xwatIhCrDVC2QHbQLcnp5y2LM+51Sl1ikLtzhBae0xpLYWAB8s+ATeCHgqpre6S
+         Z/ytPtUaxvNCcjloQIDNXLs1icRX/N0nObMlTx5KCGKzHRaTo5jqPRUZQsTK+TDmls3g
+         pY1evAvvOoUkUpF2gknG0EjTHOTtvhTYHbQGGGMpxnDlGdYd4Io59v4G3fE9FSQ6gZYD
+         OfBatxLYBtU1pmHeDWdxOrmDgv2kjHfSgxaP5xlz/gAryelmRSZ0K0+l50+N2tuq+BIh
+         R4Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=NgcyEQFoptONutMa2lpZ20imP+puEer/MqZRYE0uf1k=;
-        b=PyrsoGA0Et9kQrBn9N+PipzwhBGCsUjHfrD/7wbGQhUDsB2WMY+iez2cE/QDgnSsBf
-         KbeP2burHOjEfa1QkVvc9ITJBMtwLRmqGkV8/CuO90dIX6KRSuxxhdJFG+EhHWyo93a8
-         yjntv2cuOuqVnpUBidmlPSB+0EMunA8AZuSD1AGU1nsI77ih/CP959AyMS5WL4QS+LiI
-         OGkV1ttDrkFE8IQVjj+f70E64EdciLxq5+yf9z7slXUpnzMC1zdygv9JR9CAxVQRMULk
-         bClhY8L1s3kVaM0iljEvZPjNkGtNCRhC1HSAuJFQiHTSOu/r+U4SjhNCqCn65tAYZfKV
-         4aMA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
+        bh=JulQYkAVUbiZt2CE5eo9vmv4EJhzAzZRMh/g0a0IGiA=;
+        b=kTLJhJkNQRht9vVwstQxxVLCE1de4o/hVs3R1hPUKNu+1wWLqsFkAGtlxit+flRMmf
+         ga/KiefKDxYEOf1tuge8wVzjUOaAteCkQ1NhCM6ZB31mCkc39MuLZkq0cycj5xfZRzdZ
+         L84UrwVzf8WwMHpk3y10Ik0DryS+e7h0FzLj8GarimPKkWj1tTAdhFYzGpp9C25xABZx
+         lF9uUASR8sZDZ2kWGoCmbUcwH1YBPAWE2JW7509/Eukti9CO/o/iVmPUyD1JMnUoB2DI
+         DAsMF5pUaOnQDjC69cZyOMsx2xWhw5+tDdd4gfwhCEDR0801ubeDx3jvthGriSeQR2B5
+         ri3A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c193si1941210wma.194.2019.04.30.12.25.33
+        by mx.google.com with ESMTPS id d3si26121117wrj.85.2019.04.30.12.56.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Apr 2019 12:25:33 -0700 (PDT)
+        Tue, 30 Apr 2019 12:56:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:52162 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:52496 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLYNg-0003uO-Sm
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 15:25:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40721)
+	id 1hLYrP-0005SQ-Fa
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 15:56:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hLYN5-0003AH-5P
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:24:58 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1hLYr9-0005Qo-Qk
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:56:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hLYEV-0006tv-UO
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:16:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44672)
+	(envelope-from <pbonzini@redhat.com>) id 1hLYqZ-0006hc-11
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 15:55:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54054)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hLYEU-0006t1-P7; Tue, 30 Apr 2019 15:16:03 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1hLYqX-0006fB-Ew; Tue, 30 Apr 2019 15:55:22 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E4F2230842A1;
-	Tue, 30 Apr 2019 19:16:01 +0000 (UTC)
-Received: from thuth.com (ovpn-116-21.ams2.redhat.com [10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 33861438A;
-	Tue, 30 Apr 2019 19:15:55 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org
-Date: Tue, 30 Apr 2019 21:15:52 +0200
-Message-Id: <20190430191552.4027-1-thuth@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 495FC3092674;
+	Tue, 30 Apr 2019 19:55:18 +0000 (UTC)
+Received: from [10.36.112.20] (ovpn-112-20.ams2.redhat.com [10.36.112.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C1F976CDCB;
+	Tue, 30 Apr 2019 19:55:13 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20190427141459.19728-1-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
+Message-ID: <dadba93d-fdf3-25b8-b3e2-5b43a4618292@redhat.com>
+Date: Tue, 30 Apr 2019 21:55:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20190427141459.19728-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Tue, 30 Apr 2019 19:16:02 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.43]);
+	Tue, 30 Apr 2019 19:55:18 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2] hw/pci-host: Use object_initialize_child for
- correct reference counting
+Subject: Re: [Qemu-arm] [PATCH 0/3] hw/microblaze: Kconfig cleanup
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,110 +148,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paul Burton <pburton@wavecomp.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jeDBzrd7+afJ
+X-TUID: zlBggf0kZG4u
 
-Both functions, object_initialize() and object_property_add_child() incre=
-ase
-the reference counter of the new object, so one of the references has to =
-be
-dropped afterwards to get the reference counting right. Otherwise the chi=
-ld
-object might not be properly cleaned up when the parent gets destroyed.
-Some functions of the pci-host devices miss to drop one of the references=
-.
-Fix it by using object_initialize_child() instead, which takes care of
-calling object_initialize(), object_property_add_child() and object_unref=
-()
-in the right order.
+On 27/04/19 16:14, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Edgar, Peter,
+>=20
+> Few fixes while cleaning Kconfig, trying to optimize builds.
+>=20
+> Regards,
+>=20
+> Phil.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   hw/Kconfig: Move the generic XLNX_ZYNQMP to the root hw/Kconfig
+>   hw/intc: Only build the xlnx-iomod-intc device for the MicroBlaze PMU
+>   hw/dma: Do not build the xlnx_dpdma device for the MicroBlaze machine=
+s
+>=20
+>  hw/Kconfig            | 3 +++
+>  hw/dma/Makefile.objs  | 1 -
+>  hw/intc/Makefile.objs | 2 +-
+>  hw/timer/Kconfig      | 3 ---
+>  4 files changed, 4 insertions(+), 5 deletions(-)
+>=20
 
-Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Added missing &error_abort parameter in xilinx-pcie.c
+Queued, thanks.
 
- hw/pci-host/designware.c  | 4 ++--
- hw/pci-host/gpex.c        | 5 +++--
- hw/pci-host/q35.c         | 4 ++--
- hw/pci-host/xilinx-pcie.c | 4 ++--
- 4 files changed, 9 insertions(+), 8 deletions(-)
-
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 29ea313798..64ad21d295 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -721,8 +721,8 @@ static void designware_pcie_host_init(Object *obj)
-     DesignwarePCIEHost *s =3D DESIGNWARE_PCIE_HOST(obj);
-     DesignwarePCIERoot *root =3D &s->root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_DESIGNWARE_PCIE_ROOT);
--    object_property_add_child(obj, "root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "root",  root, sizeof(*root),
-+                            TYPE_DESIGNWARE_PCIE_ROOT, &error_abort, NUL=
-L);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index 2583b151a4..1bafffcc34 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -29,6 +29,7 @@
-  * http://www.firmware.org/1275/practice/imap/imap0_9d.pdf
-  */
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/pci-host/gpex.h"
-=20
-@@ -120,8 +121,8 @@ static void gpex_host_initfn(Object *obj)
-     GPEXHost *s =3D GPEX_HOST(obj);
-     GPEXRootState *root =3D &s->gpex_root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_GPEX_ROOT_DEVICE);
--    object_property_add_child(obj, "gpex_root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "gpex_root",  root, sizeof(*root),
-+                            TYPE_GPEX_ROOT_DEVICE, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 7b871b5734..960939f5ed 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -216,8 +216,8 @@ static void q35_host_initfn(Object *obj)
-     memory_region_init_io(&phb->data_mem, obj, &pci_host_data_le_ops, ph=
-b,
-                           "pci-conf-data", 4);
-=20
--    object_initialize(&s->mch, sizeof(s->mch), TYPE_MCH_PCI_DEVICE);
--    object_property_add_child(OBJECT(s), "mch", OBJECT(&s->mch), NULL);
-+    object_initialize_child(OBJECT(s), "mch",  &s->mch, sizeof(s->mch),
-+                            TYPE_MCH_PCI_DEVICE, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(&s->mch), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(&s->mch), "multifunction", false);
-     /* mch's object_initialize resets the default value, set it again */
-diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-index 60309afe9e..ceb00e23e6 100644
---- a/hw/pci-host/xilinx-pcie.c
-+++ b/hw/pci-host/xilinx-pcie.c
-@@ -149,8 +149,8 @@ static void xilinx_pcie_host_init(Object *obj)
-     XilinxPCIEHost *s =3D XILINX_PCIE_HOST(obj);
-     XilinxPCIERoot *root =3D &s->root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_XILINX_PCIE_ROOT);
--    object_property_add_child(obj, "root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "root",  root, sizeof(*root),
-+                            TYPE_XILINX_PCIE_ROOT, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
---=20
-2.21.0
-
+Paolo

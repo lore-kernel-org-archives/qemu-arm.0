@@ -1,97 +1,98 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4715317wrh;
-        Tue, 30 Apr 2019 06:17:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz/6BZ8ZepD1Ydil3ecFir6u4sXatkgCm5pDcK/uBFY/t2xATLmjhO0KtwWZdGdwfyQxNC5
-X-Received: by 2002:adf:c788:: with SMTP id l8mr14573141wrg.143.1556630246110;
-        Tue, 30 Apr 2019 06:17:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556630246; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4716453wrh;
+        Tue, 30 Apr 2019 06:18:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxTfIJ5MGoDeSrSEILNcqbczT9Mf41Zy+XjjXmpn70/BPdOx4X4szE7wOY1LD+LOqID/FYX
+X-Received: by 2002:adf:c993:: with SMTP id f19mr4077025wrh.246.1556630308866;
+        Tue, 30 Apr 2019 06:18:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556630308; cv=none;
         d=google.com; s=arc-20160816;
-        b=iW9jYy2C5itCfPHzkVloyiARzGmmLF2kdpOU4cUT3babfxXcWtukApgHNGBl+s+tce
-         UR8UdQh3hEKc9qxlRF4bkAWsBxQYvXeYDID1frYC/jefXe3wiLa8U2v3UM2F1Mb8k/r7
-         QlkO99oc6kH+WykV8mcaw64cj6sDQ283QGqOt+Kl951jDlQrf1X+kaYOGUM6NU0XzDxB
-         NrVs8NGsto+wOxcarjIQ9gArxwgajvHlOjW4KMFAhnQAzocAfWvOe/iwh0WIu4HbBzNZ
-         wegRVRDKMBBNrTKRDGtYmjQnNvdhbhkjE9aKpTnuxbQYL8DI1QlES6b7b0Xz3jO0Bhfp
-         mvFQ==
+        b=Ez3B65O1fKjqwbZIt9XZ7d/xSgEYBQPBxBoiSjFZbASDEmM8o75M/gStlZRdaObXfq
+         KXDjlaYNdHBHtyIaukaIj/FNRY9u3ZHxOLTt0CD/o8iLcOwUlSgLnkvsyiSwwHlYuMlm
+         Sq1t04omRrt8WVCc1oWCwxo2Eh1pVQlv8C+cOAtrMczNNnVei6DrbLBICl+DzFGLfAeX
+         f+3kIvK56ZydRVenC9ZuviZ8ft9w5+hFgKqaQgBL4gMRbr0L3Hvm9yq2Ze0LHiGUCXnT
+         UzxZPSJmu27MPfKlJXGRydHN8bcwe0PcrP5ooYOnbvOmrT8zUsXAVkoaRS8VlnowUl66
+         L81w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=I770HJlrpYyPcn2fSD+8YRmqIqI0uc6EiRRpIG177mg=;
-        b=Qyv5D28J+z3zigfmicDm3bQT1kTtQgwBLsdapozscgJHsDsophodLxF9bKf7u9NzkS
-         SM9vuE6Yn1/u1NoI4VIG+dpXu3n6SidVhbCOgJvbri2ZTkBv2e7WHZZX4SLhGixpE6Wt
-         /YRWR1hJbJYmnDXeXASvEUZ76hfnHzmKonAPAajOVIEBeq6BlmIshzOeOjroUtZuf6RU
-         yQlO7lPzmwgINSWwL3OyQzoABLptvINa5IlIvfCmK3Brf+bhgs443sY4UqwsM+U/mude
-         mpC7RUyogwW8tWexMc3eMnjoFLzLROYpDhEWu7BDO1DfXsx+8OhPWEpvZimCdt/bnqpQ
-         iMsA==
+        bh=KjnNslhjeAVB43ev2plnZmB2mvGNvdHo3ozswBo1758=;
+        b=YmQxPg6SQ/ycb7mUYpzJo6pl0xmAq0szIK7DFHJMfSdhyKpK04SUu8ycLwEPOx+Ga8
+         /kbMpemP3aF5pcObGOn37xqJexIy5vhmQfspeZmCEuDWn6sq06DYOj0S0qEnMfG53If2
+         E1REMBMfs7y5XGbmFV0s4wSwY4DegvvJ9UA7sR1QmeO2vXKIZlul/2cNQtaB495QfyhN
+         Yy5A7UQ7TNWY/fQUd/oWAueTFG2XWbGDcrT5dgV3Ma/IMISlUhgruz4/i8e4lgDrv15P
+         Djyrrdx4VTaIwaURFGxsx8pSGxF5x13zPKsyuLzmrMN6mLcENsToL4MwMLz+kaQXPraD
+         xIdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tOP8JPe0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=HsV1RfBX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3si2723387wrm.229.2019.04.30.06.17.25
+        by mx.google.com with ESMTPS id u5si93281wrp.223.2019.04.30.06.18.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Apr 2019 06:17:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Apr 2019 06:18:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tOP8JPe0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=HsV1RfBX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:47151 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:47167 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLSdR-0002Xc-3u
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 09:17:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44567)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hLSeR-0003xC-Q4
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 09:18:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hLSat-00011F-22
-	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 09:14:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hLSau-00012x-UT
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 09:14:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hLSas-0002Ci-4n
-	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 09:14:47 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38670)
+	(envelope-from <peter.maydell@linaro.org>) id 1hLSat-0002E1-SK
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 09:14:48 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35340)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hLSar-0002C6-Uz
-	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 09:14:46 -0400
-Received: by mail-wr1-x444.google.com with SMTP id k16so20992206wrn.5
-	for <qemu-devel@nongnu.org>; Tue, 30 Apr 2019 06:14:45 -0700 (PDT)
+	id 1hLSat-0002DT-MG
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 09:14:47 -0400
+Received: by mail-wr1-x443.google.com with SMTP id f7so12462466wrs.2
+	for <qemu-arm@nongnu.org>; Tue, 30 Apr 2019 06:14:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:subject:date:message-id:in-reply-to:references:mime-version
 	:content-transfer-encoding;
-	bh=I770HJlrpYyPcn2fSD+8YRmqIqI0uc6EiRRpIG177mg=;
-	b=tOP8JPe0OmsP842zlxFqCldEBPL0wNOborCn+ovfk/7S+Xd1RatiuCilvKb4cpCr8D
-	I8xMDb4DgZNAzBj4dgTceIqmmu/20I5CiKx4mG99HrL6K3f0ewrogSAdidxAs4kad27X
-	jP46n2MjKk2doK6Vx7viTlfe4ZvsPri/R7nwKujiz86JBMGyTh9EXcEJfG8VIAH3XHic
-	0Vgg89Aj1Mo4sVARzd+w4bEzFLSVwYfmhLZeTWyWjjyo2tKC/drwpeK+BJi3xoWrSqRb
-	Y91jnfi6DoL4jm+D636KoZg+x7J0CZexxMOANrXu71IDF3Pq+umgW7hofG+DXcIo3kdn
-	19/w==
+	bh=KjnNslhjeAVB43ev2plnZmB2mvGNvdHo3ozswBo1758=;
+	b=HsV1RfBXMD1XBjZGomeprBuZWd2xYzlQWf1PoS+CplVCmcJVGdNJSYodcPJRrXcKgf
+	pzinhIMtpePedJDmTHjGn1qOG4fjlqH3J80si0jFhzjZFwsxISkHEfuVjHIED4p9wLL+
+	qOtg5Q0mvkVe0ji8YcKen1yDA73rJ8wGPIbilXpYbdMzuN1sM81cAIm57FKq0VlIHqmF
+	sTGY1Rbr33CbktlWwjbnmrTZ+qtu5a4hvtf1QpQpWM76nQrvMnGJ2u7/pyV36Jvr6rsC
+	ECubcTtARpa7NwZvN7rjAnqzO6dGcA8hfXe/Itd3gyrOQOKHdgbJzR/xnjYzMPDIZdOl
+	QLRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=I770HJlrpYyPcn2fSD+8YRmqIqI0uc6EiRRpIG177mg=;
-	b=QvsYRGxLHQqX9M52V7YjfhQGxyA1+dsYiO0xwLzvO44rNdZpqsIlvYMih2KnLzl6h/
-	KvjHqXOLP02eW/LP/sfTZnDNIzRw2EXCqAYYkpQ+/XacmshuNaXwuluydPMev9zQz9sa
-	lKL+25hh2vVb2XRRTxS/PlSDE6C423MGSxOiQJZRGsGUZe67mKKY0VWFhUYF3yKIOWTs
-	AR7ZTlzavb/WwjYcqirYEaKhTlsVDfAQ0yL3O5ovYfa8VD2qbbJY1xT5y/y50+j4Vgab
-	LxM07FsGp5hIqEieXVOkFGSAlVutf7vX8H0u2SXc5pGbeQ7Ccq2h3a/iU7fhP38Bo3kr
-	bwpA==
-X-Gm-Message-State: APjAAAUby5jh3ciqlVe9h3vN9yBwhOg4uhdjAvS0rb4I+KFzqJzIvPyB
-	PmXcIAFlWncxpUgZGjZjhanVZN4hlSg=
-X-Received: by 2002:adf:b611:: with SMTP id f17mr21213990wre.162.1556630085112;
-	Tue, 30 Apr 2019 06:14:45 -0700 (PDT)
+	bh=KjnNslhjeAVB43ev2plnZmB2mvGNvdHo3ozswBo1758=;
+	b=Fht8bOUk6UbfDqopF6keOK1Lfl2tQOK2qIWInjl0icL8il9Zb5Cx6z4ALkHWcDNkX7
+	HznsCL5lYCATDuQftZuFjcNt71RlLkUt8vdExfoaVH9J++ZVR22+1ZU7uuWAJQnA7mIW
+	wI5COKGn3vSkqf8S615WOwxwzgFeXtwN73YUH1Mw+0wJ/Y6csJqh2CUgrrGH0ucpdvi7
+	6Irt/8Cc5gwiHljOMK35uaudYMbq9QoO85kwhZ1tRCGuA/c/8VMG7kcrGMhVIwcM9MYG
+	nmdue4H4lLhwOHjb5jTRZQNPoF4Alu3gfkiIyfp4gDS5tGuz/yQ085HLHbDnHp81emXe
+	zebA==
+X-Gm-Message-State: APjAAAV/HRneByt6dT3h4fsQ9oM9jFulIHgAmK9hyY7an06h8t9vFyp3
+	KHkGbqlI50FWjHb2N9HCTJ6Y+NB5WEo=
+X-Received: by 2002:a05:6000:11ce:: with SMTP id
+	i14mr16693110wrx.37.1556630086557; 
+	Tue, 30 Apr 2019 06:14:46 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	a12sm16557460wrh.46.2019.04.30.06.14.44
+	a12sm16557460wrh.46.2019.04.30.06.14.45
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 Apr 2019 06:14:44 -0700 (PDT)
+	Tue, 30 Apr 2019 06:14:45 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 30 Apr 2019 14:14:38 +0100
-Message-Id: <20190430131439.25251-4-peter.maydell@linaro.org>
+Date: Tue, 30 Apr 2019 14:14:39 +0100
+Message-Id: <20190430131439.25251-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190430131439.25251-1-peter.maydell@linaro.org>
 References: <20190430131439.25251-1-peter.maydell@linaro.org>
@@ -99,55 +100,101 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-devel] [PATCH 3/4] hw/intc/armv7m_nvic: Don't enable
- ARMV7M_EXCP_DEBUG from reset
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::443
+Subject: [Qemu-arm] [PATCH 4/4] target/arm: Implement XPSR GE bits
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qrs7iapFy2eR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w2DVCBu/p/vU
 
-The M-profile architecture specifies that the DebugMonitor exception
-should be initially disabled, not enabled. It should be controlled
-by the DEMCR register's MON_EN bit, but we don't implement that
-register yet (like most of the debug architecture for M-profile).
-
-Note that BKPT instructions will still work, because they
-will be escalated to HardFault.
+In the M-profile architecture, if the CPU implements the DSP extension
+then the XPSR has GE bits, in the same way as the A-profile CPSR. When
+we added DSP extension support we forgot to add support for reading
+and writing the GE bits, which are stored in env->GE. We did put in
+the code to add XPSR_GE to the mask of bits to update in the v7m_msr
+helper, but forgot it in v7m_mrs. We also must not allow the XPSR we
+pull off the stack on exception return to set the nonexistent GE bits.
+Correct these errors:
+ * read and write env->GE in xpsr_read() and xpsr_write()
+ * only set GE bits on exception return if DSP present
+ * read GE bits for MRS if DSP present
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ target/arm/cpu.h    |  4 ++++
+ target/arm/helper.c | 12 ++++++++++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 15cba63c964..3a346a682a3 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2491,10 +2491,12 @@ static void armv7m_nvic_reset(DeviceState *dev)
-      * the System Handler Control register
-      */
-     s->vectors[ARMV7M_EXCP_SVC].enabled = 1;
--    s->vectors[ARMV7M_EXCP_DEBUG].enabled = 1;
-     s->vectors[ARMV7M_EXCP_PENDSV].enabled = 1;
-     s->vectors[ARMV7M_EXCP_SYSTICK].enabled = 1;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 22bc6e00ab9..2ae1b36eaee 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1285,6 +1285,7 @@ static inline uint32_t xpsr_read(CPUARMState *env)
+         | (env->CF << 29) | ((env->VF & 0x80000000) >> 3) | (env->QF << 27)
+         | (env->thumb << 24) | ((env->condexec_bits & 3) << 25)
+         | ((env->condexec_bits & 0xfc) << 8)
++        | (env->GE << 16)
+         | env->v7m.exception;
+ }
  
-+    /* DebugMonitor is enabled via DEMCR.MON_EN */
-+    s->vectors[ARMV7M_EXCP_DEBUG].enabled = 0;
+@@ -1300,6 +1301,9 @@ static inline void xpsr_write(CPUARMState *env, uint32_t val, uint32_t mask)
+     if (mask & XPSR_Q) {
+         env->QF = ((val & XPSR_Q) != 0);
+     }
++    if (mask & XPSR_GE) {
++        env->GE = (val & XPSR_GE) >> 16;
++    }
+     if (mask & XPSR_T) {
+         env->thumb = ((val & XPSR_T) != 0);
+     }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 81a92ab4911..59ee5ee7c4a 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8704,7 +8704,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
+     uint32_t excret;
+-    uint32_t xpsr;
++    uint32_t xpsr, xpsr_mask;
+     bool ufault = false;
+     bool sfault = false;
+     bool return_to_sp_process;
+@@ -9156,8 +9156,13 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+         }
+         *frame_sp_p = frameptr;
+     }
 +
-     resetprio = arm_feature(&s->cpu->env, ARM_FEATURE_V8) ? -4 : -3;
-     s->vectors[ARMV7M_EXCP_RESET].prio = resetprio;
-     s->vectors[ARMV7M_EXCP_NMI].prio = -2;
++    xpsr_mask = ~(XPSR_SPREALIGN | XPSR_SFPA);
++    if (!arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
++        xpsr_mask &= ~XPSR_GE;
++    }
+     /* This xpsr_write() will invalidate frame_sp_p as it may switch stack */
+-    xpsr_write(env, xpsr, ~(XPSR_SPREALIGN | XPSR_SFPA));
++    xpsr_write(env, xpsr, xpsr_mask);
+ 
+     if (env->v7m.secure) {
+         bool sfpa = xpsr & XPSR_SFPA;
+@@ -12642,6 +12647,9 @@ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+         }
+         if (!(reg & 4)) {
+             mask |= XPSR_NZCV | XPSR_Q; /* APSR */
++            if (arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
++                mask |= XPSR_GE;
++            }
+         }
+         /* EPSR reads as zero */
+         return xpsr_read(env) & mask;
 -- 
 2.20.1
 

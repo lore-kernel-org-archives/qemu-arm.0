@@ -1,169 +1,208 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4457631wrh;
-        Tue, 30 Apr 2019 01:35:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVA6GbvCWWS8mTa/n2BLWfmWDXLGnPeXiY7sCc+14jGanhFSrzQbwDbmEf6Ped0BYbuDVN
-X-Received: by 2002:a7b:c5ce:: with SMTP id n14mr2421420wmk.18.1556613309859;
-        Tue, 30 Apr 2019 01:35:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556613309; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4468989wrh;
+        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySXk2eZ0LZiXdXJEqIBdXmj+0/g6AX0Pd0H5G7u2N8x5oV7fPqHPNC0V8PJmRIrikRCU4x
+X-Received: by 2002:adf:fb11:: with SMTP id c17mr16664038wrr.237.1556614361083;
+        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556614361; cv=none;
         d=google.com; s=arc-20160816;
-        b=nZ6bGOP1P5drbTpJU5b1dIvWaVQyLQx+akHyt1A4KS14pTnIDoC912xEJvkjWcIWe/
-         prjXjKidW5AxccCvwpKBBxpcvlX6vr6xTjU45IWFjQSVVJYluvTFAyYr6C8AVp+kb8x2
-         EPIvSvFY5hq0YjywCtMqJAjvS5snaTrDC5cSpfFBKgMfVMJ2JcXLE/gD3yTMY+ToBdfZ
-         z8lsbQ0ROORh2ElhdY0XuaNUkFeMHh+1z+LGVwb2yMEQ8RMv/Y+4DloZK+kAk1WvQubh
-         dHt1A4XY+4Gmzgui0ZuGWPs4Na1Hz7cepNj8PvpseUo/dQYclN1cqRoN7SOJzar8hzPC
-         58BA==
+        b=wU1J6NS2EVcqQZy91M369NghnNjEoKG0nZdXXGEThiwB6yLejezDnrUkqSUmT9FbFe
+         VhRwQS1TWcy6CpU+9NYMpvjg+ve/5kO0+dQwWHdocDLRxBUSxyX2AQa+zvWgvKX0KZLR
+         rlMQ881Gv9Njj3D7SUmbRHEtBBtmttZ8KE0dWAFcrnFVuLeUqJH+hIM5Rh5vnjJXkCjL
+         Ojz5tWD+ZNS6B52cHANDRzmwj1P7AZ4n7paclWiL7WUpBtdMPpu76KPm2qp7Twegx0CH
+         nEUkIs0HqTy+P05+aNPtIRWMOF69Ug+dATN3a2AC/IbMS1emUPJPqbcO7Pw6jGFmprTM
+         EIAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=QwgUtUJ3XYWzienweeDVQJWjW7OyoxRiZprCa9xXUFg=;
-        b=JviaRwZucqX7wCcAvCAvN1tSvIsz854coW5O7REdd3XRNtAWx6owIHDSevpa2W221n
-         7Lq9cCdtcycFJSXPWFB9Zu1vz9sMBqFM/mfxpeJtHQZ349Nlq4fLnWL4gRrEdvdsHEEH
-         SgBuSUUc1QZNpwKaIeGJ1dCkYgeVIr1jb04MQbSbRyfvvxQ8ZLoyXNpyUqAMWTFc4hbr
-         v9XGwOujRT66t+5eS1IWJy0PFz7YqJwQsvqlkGcd2ZuEMbVqRF2ba+dbhr1kdrdm/yDB
-         GTXOofbvs7tkjpQwd/WXutkE9wgROQvpHW7qMQTYqPqORpAy6EglQcV0HEjS6hMOlHW6
-         wzEw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=02xSXlA4/Gd6KZQntE+66tue8TEkZ9fLqtEmZRuo3Pg=;
+        b=t6rJrgHRdwkEfcSbp8my96w7WwZi0+I+rkZDwJLo2yrKQj3/TENVfY2litTlR0J9Zt
+         7Say9Zxg4sf2lvnJ1n+U+BQEukmXi6MUTehWdLsUczeWQoXpI1A1dJElew8vLRSAxEFT
+         ml47QcN1y2ZRUtwiyCymXhJS7FI/ObnBa716695dhQpOtubIIYcouNGpZMje3g6BcH8H
+         wgQzSkbxCYIFLLVlOJKLO1qVo+YU2Gt+NFy24g9tr2NNE7XrL+la5ubwldODikicgcaI
+         HuUQaUI1aO8gBKaN4HIQb4wpSpPxVA5kJe6C4OTp2tUougLhnPlTIsikQ3mou5wz/bw/
+         ydmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r143si74631wme.0.2019.04.30.01.35.09
+        by mx.google.com with ESMTPS id p4si6049469wrs.232.2019.04.30.01.52.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Apr 2019 01:35:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41515 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([127.0.0.1]:41740 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLOEG-0002SB-WD
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 04:35:09 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44711)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hLOVE-0000Wg-8m
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 04:52:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47910)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLOE0-0002Rw-HK
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 04:34:53 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hLOUs-0000WV-MZ
+	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 04:52:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLODz-0007xv-Fp
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 04:34:52 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:38903)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hLODz-0007xQ-9A
-	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 04:34:51 -0400
-Received: by mail-wr1-f68.google.com with SMTP id k16so19978943wrn.5
-	for <qemu-arm@nongnu.org>; Tue, 30 Apr 2019 01:34:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=QwgUtUJ3XYWzienweeDVQJWjW7OyoxRiZprCa9xXUFg=;
-	b=I/vs5eMZgxd/K5kkTLzil32ysiXk3MrygK+69e20t3RqbxrSzaxAmo0RaEJjiYIEx7
-	27Uiq7VbBZ3UeJyIMY/mh4gjXij5KmfFnbMtJJh9YHQE15UILsLxRYtCc+mDWfSvBNGY
-	Fy+GyjQzqcx4QNOq+9G2n/41qoUzPhnn1s2ZT5mMUJ4tjKByo8dNx6Zub8esPTH47AYX
-	oOSpfYMfvFQTx4lpyjSn+OcWwqqzWj3/UG508xolsHz3/QzYk7LJyInw/2KIZVjjQxF9
-	O/+sd3Faxe06bmxekNUhuAd8p+6OtT8xuccck7I5bokrxoiSG9IcHP91QJ1TNDsAnapW
-	eJXw==
-X-Gm-Message-State: APjAAAUbZ2ZFKIvXiPw8CtLY47N1Vpmd5e169V7eN4v7mWfox5rd+iFD
-	vnuIrfxcJ8XLg4L27mfjQKJq+g==
-X-Received: by 2002:a5d:698b:: with SMTP id g11mr42588747wru.65.1556613290118; 
-	Tue, 30 Apr 2019 01:34:50 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	r8sm11646671wrg.22.2019.04.30.01.34.47
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 Apr 2019 01:34:49 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, yang.zhong@intel.com,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	pbonzini@redhat.com, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, Paul Burton
-	<pburton@wavecomp.com>, David Gibson <david@gibson.dropbear.id.au>
-References: <20190430071405.16714-1-thuth@redhat.com>
-	<20190430071405.16714-31-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <53e321c9-5ce9-14ef-9f55-b5ee1fa3f0e9@redhat.com>
-Date: Tue, 30 Apr 2019 10:34:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <20190430071405.16714-31-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 30/30] hw/arm: Remove
- hard-enablement of the remaining PCI devices
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <like.xu@linux.intel.com>) id 1hLOUr-0006MC-DC
+	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 04:52:18 -0400
+Received: from mga12.intel.com ([192.55.52.136]:63395)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hLOUk-0006ID-UU; Tue, 30 Apr 2019 04:52:11 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	30 Apr 2019 01:52:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,413,1549958400"; d="scan'208";a="295728798"
+Received: from xulike-server.sh.intel.com ([10.239.48.134])
+	by orsmga004.jf.intel.com with ESMTP; 30 Apr 2019 01:52:07 -0700
+From: Like Xu <like.xu@linux.intel.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 30 Apr 2019 16:50:40 +0800
+Message-Id: <1556614240-36369-1-git-send-email-like.xu@linux.intel.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.136
+Subject: [Qemu-devel] [PATCH] hw/arm/fsl-imx: move cpus initialization to
+ realize time after smp_cpus check
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Philippe Mathieu-Daude <f4bug@amsat.org>,
-	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Cedric Le Goater <clg@kaod.org>, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>, John Snow <jsnow@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Antony Pavlov <antonynpavlov@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: illnQYvlz4uC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZbQulPTk3v4/
 
-On 4/30/19 9:14 AM, Thomas Huth wrote:
-> The PCI devices should be pulled in by default if PCI_DEVICES
-> is set, so there is no need anymore to enforce them in the configs
-> file.
-> 
-> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  default-configs/arm-softmmu.mak | 8 --------
->  1 file changed, 8 deletions(-)
-> 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 233937f394..f23ecfd5c5 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -36,14 +36,6 @@ CONFIG_DIGIC=y
->  CONFIG_SABRELITE=y
->  CONFIG_EMCRAFT_SF2=y
->  CONFIG_MICROBIT=y
-> -
-> -CONFIG_VGA=y
+If "smp_cpus> FSL_IMX6_NUM_CPUS" fails in *_realize(), there is no need to
+initialize the CPUs in *_init(). So it could be better to create all cpus
+after the validity in *_realize(). On the other hand, it makes the usages
+of global variable smp_cpus more centrally for maintenance.
 
-OK for this one.
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Like Xu <like.xu@linux.intel.com>
+---
+ hw/arm/fsl-imx6.c   | 13 +++++++------
+ hw/arm/fsl-imx6ul.c | 12 ++++++------
+ hw/arm/fsl-imx7.c   | 15 +++++++--------
+ 3 files changed, 20 insertions(+), 20 deletions(-)
 
-> -
->  CONFIG_FSL_IMX25=y
->  CONFIG_FSL_IMX7=y
->  CONFIG_FSL_IMX6UL=y
-> -
-> -CONFIG_PCIE_PORT=y
-> -CONFIG_XIO3130=y
-> -CONFIG_IOH3420=y
-> -CONFIG_I82801B11=y
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 7b7b97f..14015a1 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -37,12 +37,6 @@ static void fsl_imx6_init(Object *obj)
+     char name[NAME_SIZE];
+     int i;
+ 
+-    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
+-        snprintf(name, NAME_SIZE, "cpu%d", i);
+-        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+-                                "cortex-a9-" TYPE_ARM_CPU, &error_abort, NULL);
+-    }
+-
+     sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore, sizeof(s->a9mpcore),
+                           TYPE_A9MPCORE_PRIV);
+ 
+@@ -95,6 +89,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ {
+     FslIMX6State *s = FSL_IMX6(dev);
+     uint16_t i;
++    char name[NAME_SIZE];
+     Error *err = NULL;
+ 
+     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
+@@ -103,6 +98,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
++        snprintf(name, NAME_SIZE, "cpu%d", i);
++        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
++            sizeof(s->cpu[i]), "cortex-a9-" TYPE_ARM_CPU, &error_abort, NULL);
++    }
++
+     for (i = 0; i < smp_cpus; i++) {
+ 
+         /* On uniprocessor, the CBAR is set to 0 */
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 4b56bfa..7f30eb7 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -32,12 +32,6 @@ static void fsl_imx6ul_init(Object *obj)
+     char name[NAME_SIZE];
+     int i;
+ 
+-    for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
+-        snprintf(name, NAME_SIZE, "cpu%d", i);
+-        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+-                                "cortex-a7-" TYPE_ARM_CPU, &error_abort, NULL);
+-    }
+-
+     /*
+      * A7MPCORE
+      */
+@@ -167,6 +161,12 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
++        snprintf(name, NAME_SIZE, "cpu%d", i);
++        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
++            sizeof(s->cpu[i]), "cortex-a7-" TYPE_ARM_CPU, &error_abort, NULL);
++    }
++
+     for (i = 0; i < smp_cpus; i++) {
+         Object *o = OBJECT(&s->cpu[i]);
+ 
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 7663ad6..2580348 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -34,14 +34,6 @@ static void fsl_imx7_init(Object *obj)
+     char name[NAME_SIZE];
+     int i;
+ 
+-
+-    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
+-        snprintf(name, NAME_SIZE, "cpu%d", i);
+-        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+-                                ARM_CPU_TYPE_NAME("cortex-a7"), &error_abort,
+-                                NULL);
+-    }
+-
+     /*
+      * A7MPCORE
+      */
+@@ -167,6 +159,13 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
++        snprintf(name, NAME_SIZE, "cpu%d", i);
++        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
++            sizeof(s->cpu[i]), ARM_CPU_TYPE_NAME("cortex-a7"),
++            &error_abort, NULL);
++    }
++
+     for (i = 0; i < smp_cpus; i++) {
+         o = OBJECT(&s->cpu[i]);
+ 
+-- 
+1.8.3.1
 
-Since I don't understand the extent of commit 4681867544f0, I'll let
-David/Edgar/Alistair review it.
-
-Regards,
-
-Phil.

@@ -1,208 +1,129 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4468989wrh;
-        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqySXk2eZ0LZiXdXJEqIBdXmj+0/g6AX0Pd0H5G7u2N8x5oV7fPqHPNC0V8PJmRIrikRCU4x
-X-Received: by 2002:adf:fb11:: with SMTP id c17mr16664038wrr.237.1556614361083;
-        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556614361; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4489977wrh;
+        Tue, 30 Apr 2019 02:19:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwhNxPzaYQ5/osnhMoAXNAYlg2nRSeB9eXDCU9yOWrNfDUDi0q4DeFa/16hRUaHQ+TTPUX8
+X-Received: by 2002:a1c:4d04:: with SMTP id o4mr2424289wmh.126.1556615945944;
+        Tue, 30 Apr 2019 02:19:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556615945; cv=none;
         d=google.com; s=arc-20160816;
-        b=wU1J6NS2EVcqQZy91M369NghnNjEoKG0nZdXXGEThiwB6yLejezDnrUkqSUmT9FbFe
-         VhRwQS1TWcy6CpU+9NYMpvjg+ve/5kO0+dQwWHdocDLRxBUSxyX2AQa+zvWgvKX0KZLR
-         rlMQ881Gv9Njj3D7SUmbRHEtBBtmttZ8KE0dWAFcrnFVuLeUqJH+hIM5Rh5vnjJXkCjL
-         Ojz5tWD+ZNS6B52cHANDRzmwj1P7AZ4n7paclWiL7WUpBtdMPpu76KPm2qp7Twegx0CH
-         nEUkIs0HqTy+P05+aNPtIRWMOF69Ug+dATN3a2AC/IbMS1emUPJPqbcO7Pw6jGFmprTM
-         EIAg==
+        b=D3KmzIf7TUPYUk64WyauLnV8yZ9djwvwEBukTgX9prkaH68ZuY+992tbfd+ytxeIWV
+         2dWqN9rqPoBbfi4aZ1VH1QdylR+UeFFQV5ccBMliVLtBA7SQCvBjGsiOWNsbvWT+GmYn
+         VRl65z5hsuUkd9Nq6IsM/3jpXO6WUKayiRJ7N9GA/kdiZvLz7sxahWcTUzxb0CcRR8Aj
+         jW8FyU9fIfqrc3rdc1Oj2GrYRCt7L8Bx7ISIBEm9joBoV+7Z7mV9p7k8D3iuHpNhl4sS
+         /STByJwV9PEf93/N3ixGQOGIQpyN0jzmiIN13WqyJQyP3FG/1K6bDxhXs8HPUCjFvM3E
+         po+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=02xSXlA4/Gd6KZQntE+66tue8TEkZ9fLqtEmZRuo3Pg=;
-        b=t6rJrgHRdwkEfcSbp8my96w7WwZi0+I+rkZDwJLo2yrKQj3/TENVfY2litTlR0J9Zt
-         7Say9Zxg4sf2lvnJ1n+U+BQEukmXi6MUTehWdLsUczeWQoXpI1A1dJElew8vLRSAxEFT
-         ml47QcN1y2ZRUtwiyCymXhJS7FI/ObnBa716695dhQpOtubIIYcouNGpZMje3g6BcH8H
-         wgQzSkbxCYIFLLVlOJKLO1qVo+YU2Gt+NFy24g9tr2NNE7XrL+la5ubwldODikicgcaI
-         HuUQaUI1aO8gBKaN4HIQb4wpSpPxVA5kJe6C4OTp2tUougLhnPlTIsikQ3mou5wz/bw/
-         ydmA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=AippH7xrGuSrR1A+ImmCYCJ5URYBDU6FLhOh1qpyWNY=;
+        b=09CPIdZe7koeulynngS5Bywuzlo4aJ/MumIATTSqMY/KE7t16WG3/wjSHmZ2Veyxff
+         4Fscb6wrFNiM0fWuvI8phqTHHeyUpwZ8Rk7mt7CQUnHFqRLCpNsAiiLwREE7aVuI3lQS
+         u5ZaEPBwjgkTc8iqh4S5aC4L1KMkQUqjT7AJEWnhbTRt91NtzmRN0SlZCNT3re9POhmp
+         b8fbGmmggRf5qJCTbv8rNC0Ain5jHZDgVg91DLIkZgReoe46sNp4Y7iMiOukW5Tzp+wX
+         gQ4hZHyobwNlJk/4s5W2uAD2P80pLYK8EEVRHyvGLxEODHG2BI2Klwn+NzFlbWnPnA26
+         kbBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=jncnwjbh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p4si6049469wrs.232.2019.04.30.01.52.40
+        by mx.google.com with ESMTPS id y15si1246151wrt.67.2019.04.30.02.19.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Apr 2019 01:52:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Apr 2019 02:19:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:41740 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=jncnwjbh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:41971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLOVE-0000Wg-8m
-	for alex.bennee@linaro.org; Tue, 30 Apr 2019 04:52:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47910)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hLOun-0006Lo-1p
+	for alex.bennee@linaro.org; Tue, 30 Apr 2019 05:19:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hLOUs-0000WV-MZ
-	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 04:52:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hLOuY-0006Kh-8U
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 05:18:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hLOUr-0006MC-DC
-	for qemu-devel@nongnu.org; Tue, 30 Apr 2019 04:52:18 -0400
-Received: from mga12.intel.com ([192.55.52.136]:63395)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1hLOUk-0006ID-UU; Tue, 30 Apr 2019 04:52:11 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	30 Apr 2019 01:52:08 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,413,1549958400"; d="scan'208";a="295728798"
-Received: from xulike-server.sh.intel.com ([10.239.48.134])
-	by orsmga004.jf.intel.com with ESMTP; 30 Apr 2019 01:52:07 -0700
-From: Like Xu <like.xu@linux.intel.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 30 Apr 2019 16:50:40 +0800
-Message-Id: <1556614240-36369-1-git-send-email-like.xu@linux.intel.com>
-X-Mailer: git-send-email 1.8.3.1
+	(envelope-from <peter.maydell@linaro.org>) id 1hLOuX-00079Y-Fq
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 05:18:50 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:46409)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hLOuX-000795-A0
+	for qemu-arm@nongnu.org; Tue, 30 Apr 2019 05:18:49 -0400
+Received: by mail-oi1-x241.google.com with SMTP id d62so4795770oib.13
+	for <qemu-arm@nongnu.org>; Tue, 30 Apr 2019 02:18:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=AippH7xrGuSrR1A+ImmCYCJ5URYBDU6FLhOh1qpyWNY=;
+	b=jncnwjbheqcuaBZP6rga5Rm7yaSF3ZWi/jLvRoR+W9e9cGdd6JjE5HI9CUS9agQerU
+	AMgaABu5MduU/jATV+kUitUK6Tz3DohMTBACcKuRQAs9+BnDPoFjZ6fYphhN6VGbiJKr
+	zuNtqz7DbqB+gkiHhJ7If7yFBwCLbdVFCxU8jtVkdDolM5Nruyz1gjB8LPyJ3dc0PszN
+	KMHqPE64nylR+S8zHYOd7Rwap5U6qcIJAqUti2uLrY7aHlRhENfX3CLH3A7Y10Wjt5v6
+	jgJorM96YeiTStH+PR39bMGL+r5HURVb6fhMZ516AOLO1rGsGRqyaApu9YY7v5FuPFPm
+	k8jQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=AippH7xrGuSrR1A+ImmCYCJ5URYBDU6FLhOh1qpyWNY=;
+	b=lj5m0hrP0N3yyS7GIZ1jR6W2af0yDMzn759aSTaQ0sAaHOHoaU6057GfHGGZFW/rgq
+	ep0qR1t0z9tvrMbNRMIya2YyGjLDRfbo8sLcJ33FdmzgStPm1rkZSIr9wTd6OAZ/t6vz
+	lVzZ4g+UVXhxCWYeh4O85E2dJZAHc7FTg3wnJQ8SWJ99X08kDaL9Z3TRjBllHCaFp0ub
+	4oz7j45HHZvbD5YUN/BOcoZCh6FgrhPz4ILKLbVy+3ESDt1l4uSEgR5bif5QqRGHIFre
+	SNzVoF54FQPVhSae31+ezwX5S0xJNk+hTF5lndNaLG9sDzOy7t6PgFHs3qROAflfuKJn
+	GrOg==
+X-Gm-Message-State: APjAAAV/TNusTA2osM+qY37kjazVS1xGcly6hUz+IafJ7601hhiWE3F/
+	sb/i05DaEhYjMTW3rKjtAm/QPJSsoJMHdQFidpxi8w==
+X-Received: by 2002:aca:ab12:: with SMTP id u18mr2138249oie.48.1556615928276; 
+	Tue, 30 Apr 2019 02:18:48 -0700 (PDT)
+MIME-Version: 1.0
+References: <1556614240-36369-1-git-send-email-like.xu@linux.intel.com>
+In-Reply-To: <1556614240-36369-1-git-send-email-like.xu@linux.intel.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Apr 2019 10:18:37 +0100
+Message-ID: <CAFEAcA-SFrcbQMdv19tJw_baGR8c_ngR2CtsgZKVXMALOo=zoA@mail.gmail.com>
+To: Like Xu <like.xu@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.136
-Subject: [Qemu-devel] [PATCH] hw/arm/fsl-imx: move cpus initialization to
- realize time after smp_cpus check
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/fsl-imx: move cpus
+ initialization to realize time after smp_cpus check
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mammedov <imammedo@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
 	Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZbQulPTk3v4/
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l4bRgd2EprXt
 
-If "smp_cpus> FSL_IMX6_NUM_CPUS" fails in *_realize(), there is no need to
-initialize the CPUs in *_init(). So it could be better to create all cpus
-after the validity in *_realize(). On the other hand, it makes the usages
-of global variable smp_cpus more centrally for maintenance.
+On Tue, 30 Apr 2019 at 09:52, Like Xu <like.xu@linux.intel.com> wrote:
+>
+> If "smp_cpus> FSL_IMX6_NUM_CPUS" fails in *_realize(), there is no need to
+> initialize the CPUs in *_init(). So it could be better to create all cpus
+> after the validity in *_realize(). On the other hand, it makes the usages
+> of global variable smp_cpus more centrally for maintenance.
 
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Like Xu <like.xu@linux.intel.com>
----
- hw/arm/fsl-imx6.c   | 13 +++++++------
- hw/arm/fsl-imx6ul.c | 12 ++++++------
- hw/arm/fsl-imx7.c   | 15 +++++++--------
- 3 files changed, 20 insertions(+), 20 deletions(-)
+I'm not a great fan of this. I think that where possible
+we should init child objects in the parent's init
+function, and realize them in the realize function.
+There are a few cases where we're forced to do the
+child init in realize, but this doesn't seem like one of them.
 
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index 7b7b97f..14015a1 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -37,12 +37,6 @@ static void fsl_imx6_init(Object *obj)
-     char name[NAME_SIZE];
-     int i;
- 
--    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
--        snprintf(name, NAME_SIZE, "cpu%d", i);
--        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
--                                "cortex-a9-" TYPE_ARM_CPU, &error_abort, NULL);
--    }
--
-     sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore, sizeof(s->a9mpcore),
-                           TYPE_A9MPCORE_PRIV);
- 
-@@ -95,6 +89,7 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
- {
-     FslIMX6State *s = FSL_IMX6(dev);
-     uint16_t i;
-+    char name[NAME_SIZE];
-     Error *err = NULL;
- 
-     if (smp_cpus > FSL_IMX6_NUM_CPUS) {
-@@ -103,6 +98,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
-+        snprintf(name, NAME_SIZE, "cpu%d", i);
-+        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
-+            sizeof(s->cpu[i]), "cortex-a9-" TYPE_ARM_CPU, &error_abort, NULL);
-+    }
-+
-     for (i = 0; i < smp_cpus; i++) {
- 
-         /* On uniprocessor, the CBAR is set to 0 */
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index 4b56bfa..7f30eb7 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -32,12 +32,6 @@ static void fsl_imx6ul_init(Object *obj)
-     char name[NAME_SIZE];
-     int i;
- 
--    for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
--        snprintf(name, NAME_SIZE, "cpu%d", i);
--        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
--                                "cortex-a7-" TYPE_ARM_CPU, &error_abort, NULL);
--    }
--
-     /*
-      * A7MPCORE
-      */
-@@ -167,6 +161,12 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
-+        snprintf(name, NAME_SIZE, "cpu%d", i);
-+        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
-+            sizeof(s->cpu[i]), "cortex-a7-" TYPE_ARM_CPU, &error_abort, NULL);
-+    }
-+
-     for (i = 0; i < smp_cpus; i++) {
-         Object *o = OBJECT(&s->cpu[i]);
- 
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-index 7663ad6..2580348 100644
---- a/hw/arm/fsl-imx7.c
-+++ b/hw/arm/fsl-imx7.c
-@@ -34,14 +34,6 @@ static void fsl_imx7_init(Object *obj)
-     char name[NAME_SIZE];
-     int i;
- 
--
--    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
--        snprintf(name, NAME_SIZE, "cpu%d", i);
--        object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
--                                ARM_CPU_TYPE_NAME("cortex-a7"), &error_abort,
--                                NULL);
--    }
--
-     /*
-      * A7MPCORE
-      */
-@@ -167,6 +159,13 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
-+        snprintf(name, NAME_SIZE, "cpu%d", i);
-+        object_initialize_child(OBJECT(dev), name, &s->cpu[i],
-+            sizeof(s->cpu[i]), ARM_CPU_TYPE_NAME("cortex-a7"),
-+            &error_abort, NULL);
-+    }
-+
-     for (i = 0; i < smp_cpus; i++) {
-         o = OBJECT(&s->cpu[i]);
- 
--- 
-1.8.3.1
-
+thanks
+-- PMM

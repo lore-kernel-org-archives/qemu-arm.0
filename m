@@ -1,109 +1,38 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y6sm3798986wra.24.2019.05.01.07.57.54
+        by smtp.gmail.com with ESMTPSA id r2sm15739134wrr.65.2019.05.01.08.10.12
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2019 07:57:54 -0700 (PDT)
+        Wed, 01 May 2019 08:10:12 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 048651FF87;
-	Wed,  1 May 2019 15:57:54 +0100 (BST)
-References: <20190430165234.32272-1-alex.bennee@linaro.org> <20190430165234.32272-4-alex.bennee@linaro.org> <83e4f91b-a590-2a2a-bf5f-14b99c5aa0fc@linaro.org>
+	by zen.linaroharston (Postfix) with ESMTP id 4DA111FF87;
+	Wed,  1 May 2019 16:10:12 +0100 (BST)
+References: <20190430165234.32272-1-alex.bennee@linaro.org> <20190430165234.32272-10-alex.bennee@linaro.org> <357d799d-898f-3e1e-d4cb-beeac89cb528@linaro.org>
 User-agent: mu4e 1.3.1; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mark.cave-ayland@ilande.co.uk, cota@braap.org
-Subject: Re: [Qemu-devel] [PATCH v5 03/15] tests/tcg/aarch64: add system boot.S
-In-reply-to: <83e4f91b-a590-2a2a-bf5f-14b99c5aa0fc@linaro.org>
-Date: Wed, 01 May 2019 15:57:53 +0100
-Message-ID: <871s1i6x3i.fsf@zen.linaroharston>
+Subject: Re: [Qemu-devel] [PATCH v5 09/15] accel/tcg: remove softmmu_template.h
+In-reply-to: <357d799d-898f-3e1e-d4cb-beeac89cb528@linaro.org>
+Date: Wed, 01 May 2019 16:10:12 +0100
+Message-ID: <87zho65hyj.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: jlI9uYvZtUi9
+X-TUID: dqUJKOyAiunA
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
 > On 4/30/19 9:52 AM, Alex Benn=C3=A9e wrote:
->> +.error:
->> +	.string "Terminated by exception.\n"
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  accel/tcg/softmmu_template.h | 454 -----------------------------------
+>>  1 file changed, 454 deletions(-)
+>>  delete mode 100644 accel/tcg/softmmu_template.h
 >
-> Put it in .rodata just because we can?
+> Why is this separate from patch 7?
 
-Sure.
-
->
->> +        /* Page table setup (identity mapping).  */
->> +	adrp	x0, ttb
->> +	add	x0, x0, :lo12:ttb
->
-> You are in control of the layout of the executable,
-> and adr has a 1MB range.  Why use adrp+add?
-
-Ok.
-
->
->> +        /* Create some (big) pages */
->> +	adr	x1, .				/* phys address */
->> +	bic	x1, x1, #(1 << 30) - 1		/* 1GB block alignment */
->
-> Do you really want 1GB pages?  You'll pretty much only be able to test va=
-lid
-> memory operations with that.  Which is also true until there's something =
-other
-> than an exit for the exception vector... but ya know what I mean.
-
-Yeah we can do better here. I mainly went with what libgloss had setup
-because I was finding it hard to get find a nice summary of the various
-page table formats. I want big enough that I don't have to futz around
-create multiple page entries and ideally have some fault-able regions as
-well.
-
-
->
->> +        /* Setup some stack space and enter the test code.
->> +         * Assume everthing except the return value is garbage when we
->> +	 * return, we won't need it.
->> +         */
->> +	adrp	x0, stack
->> +	add	x0, x0, :lo12:stack
->> +        mov      sp, x0
->
-> You need a pointer to the end of the stack, not the beginning.
-> Again, I think this could be just
->
-> 	adr	sp, stack_end
-
-lol, I guess the page table was being crapped over....
-
->
-> Also, there's tab/space confusion all through this file.
-> IMO, this is assembly, so it *should* be tabs.
-
-That will probably be my editor getting confused because .S implies cpp
-
->
->> @@ -0,0 +1,22 @@
->> +ENTRY(__start)
->> +
->> +SECTIONS
->> +{
->> +    /* virt machine, RAM starts at 1gb */
->> +    . =3D (1 << 30);
->> +    .text : {
->> +        *(.text)
->> +    }
->> +    .data : {
->> +        *(.data)
->> +    }
->> +    .rodata : {
->> +        *(.rodata)
->> +    }
->
-> If you ever wanted to make this read-only, swap .rodata before .data, so =
-that
-> it's next to .text.
-
-OK
+No particular reason, we can certainly merge them.
 
 >
 >

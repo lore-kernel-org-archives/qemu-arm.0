@@ -1,140 +1,152 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6060304wrh;
-        Wed, 1 May 2019 09:23:19 -0700 (PDT)
-X-Received: by 2002:a24:90a:: with SMTP id 10mr8097197itm.131.1556727799001;
-        Wed, 01 May 2019 09:23:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556727798; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6062571wrh;
+        Wed, 1 May 2019 09:25:54 -0700 (PDT)
+X-Received: by 2002:a05:660c:712:: with SMTP id l18mr2712994itk.27.1556727954457;
+        Wed, 01 May 2019 09:25:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556727954; cv=none;
         d=google.com; s=arc-20160816;
-        b=zkadGcapmWD6U6MtA1xyz6FO3nDiCe7njWObAUFadeMKxdrtMlG/OsQzDXcYlAlgsR
-         hdtlM8MYcjhm6cfhbFzkFtvOSWwmOmktiDzn1GsblOTXM/Pc1Rl5ed+SL0UJqGxgBxAw
-         9R3OVV6NqQsl3gEl3TH4UUrMRlz7TzQmiAIiLkuowx4pPOKvsb3Y2nknPTB2VxoAZ1sX
-         478S8bAD2b8AVLE3+71SLJrMts4JGJPgD/2rIRhh4cyzwK/YI2CEEGY0i8Dcliv07JQ/
-         zeCLkJfzS80F1aKOWoRsUtrMXYYyFzWLbaj6f6FRhfwr9Mi1DiNpWCOh78KjyXEzjEUO
-         GEjg==
+        b=AJjx/zH7UzxFhXyxUcFizVlvjBhoaWJ+UF9ZODXaD9bS6CHM2rGRw1c9U88c68jl5f
+         SEIYsstlOgEVJH22WSNWPtNsfLrjvzAwmBM3wKL5zxCQYJfKdX6FfKxWCiMwI2BCpftY
+         T1rDhIp7NbsIs0p2D8ZHd93d4uLqlBW8j0L1UO9Cs0gOCtlnQTp1Krpbd/LRBmiJp0BF
+         Tvq5YZ/EKI6kmWC+sbb2/wOQ+W3pInL2VJZMmkTatjMoGYy955gPd/j+bgW7sEzgVNtl
+         JzkPzCMvW3wni+t38TpXI54/wEXPEuj4aQQwYn+qb9oJrW4wdoj473x6uJ6iEd9Iji0C
+         1h7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=F6wCBjdtZU+Hpe3vcFv+cXZg8wyzq3WAKXl6VPVrI8A=;
-        b=Bj+VYJb0pvb49tn0GbRgm3eyUAoAYYTu0opD+DSeb/zI15IhNmc8hx0V2vNgjNEe0v
-         w5RUz2/mjvROTR0w/Cc4qRDt3YtduDYdRUE5AihyoqGoclbH3PU/Mxaru2EKUsjX4gVa
-         jg996CV0vS7DugFYfY8ndbX24AlaRPF6uxdCJu1UhCwf9YfwnDZWysXMNUITkTj4HRZJ
-         J8mR64BG6+itPZi46RNu9AzJaRBRfH2Czpe2ZWQqiE04F46PIQpic61nYcY6xph1SUym
-         /JZu8a7e05det7RDydruhtoxagX8HqCp3GCtCho1lCV0NyhXblddFt3F6crVKed7jxB9
-         MN9w==
+        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
+        b=lQAcup9z8E71U5di/qRxckLMHcnYtLWIb4M8kKfa/nSCo1PbKX4qd0rqO1hKgBOBJA
+         XKxGYC1jypPUqWzxk9F1mofrIZBiAW6mZZcQip0wja6lpiWEdSbNbxj2ckllg6vVU659
+         Ech/pUZcbyinGndurv9yQ4KxQ47+01ZdEotm1twdX8dFMmJd5oEB/M1+/qZRytlDQsfn
+         J0S6QZHqIbYdgeHjH+89QEEAjv77p7LpKFVZO5+C8MJSYnT+Hndd9vYz/tsl9Dd6IiM2
+         u6zxU3UT7sm08T+xaUtPRJx3wpAKJflDVxVfgJkY3ffwKuoXiRGvkXyDNG0ueMEMgSHi
+         447w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s07KVMt3;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q24Kwylr;
        spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <stefanha@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m23sor15754652iob.40.2019.05.01.09.23.18
+        by mx.google.com with SMTPS id x10sor8818478itb.30.2019.05.01.09.25.54
         (Google Transport Security);
-        Wed, 01 May 2019 09:23:18 -0700 (PDT)
+        Wed, 01 May 2019 09:25:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=s07KVMt3;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q24Kwylr;
        spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:user-agent;
-        bh=F6wCBjdtZU+Hpe3vcFv+cXZg8wyzq3WAKXl6VPVrI8A=;
-        b=s07KVMt3ev/pqPADn2hCUj9ZkwemeBCHbUfziSJXSocVrj+y64K/MKqDAb4qpQ5KZL
-         25jb2u3cfUaLACDAhWEgTxxwZPMoIWaFXsPg9B3X8+7vatU2Y+Tuv27kMcw8KY0MEQ8O
-         kieYhs5EEEEzuZOZLm7xWddw5N9A2uRQV1bFLnwE/47Vv9uaXOg+hmKo+gjWZeLWUA7e
-         I3Z1DqmDF+yQjm5LobGbjcnyKlwP6z/ku25TmonCcNX+6S2GZTgFiELW5zA4iGcjb6ae
-         IcyEzU15DRRg+yZc75o+f1fFWH0MKJhrOgdEH0S7+D9T+fvQZnm4c57yTy6jYQdJ+mPz
-         Mu3w==
+        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
+        b=Q24KwylrvZJBZWneHzfgD72TIgfWL7+m3r5rSuLMYd1+yI6QZ49YhhSiHgjBXD6t+c
+         CCGqeYeY/jx8yUz8RYlGYruBgnHOzGAje9pKeSpMsu5sHiQ3oA8SJO6F4xU86Y8vlZDd
+         9xfQFCj8ecRRxn1sEr5d5fyy+azQTKtjQr3a/5wDBUVfzf/WWEVvIVqlUCY7kIYtYn8R
+         j4ZhyPFNJuDJbc2xWshOxHI4wR84egslpRqmbRvpfeKG0klGUjplylalpaP76jaTqBqP
+         RSSJZDNL4Aq1FNcir3vz3HZnes99hDPLWGpGIEfKGckeIAhO95UPClGO6AUE8grcCFWC
+         Z01g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=F6wCBjdtZU+Hpe3vcFv+cXZg8wyzq3WAKXl6VPVrI8A=;
-        b=osus7zfwfZFd60yvRRedVLhYZemNlz3LjxUGO+a9/I1JJb3V5gyykP9UPQYPPg0BlK
-         Q/cPrStOr/w4Vl+vwoeItsNXaN2vJjUqmIeWJjopcMjdPEtlPsgHMS22x47gwj4RTlq4
-         a60UabfaHBBzchtQUYewF6+Bgg+aJs3XDyhLy8gA/WDy56Ka4KfT+G6KQGjdrfq2oToN
-         oGE2qcoVBNXrX/MW6EovnBrrmEfZc3iGvAhz1AMjP1fzKDqC6E6I45MLPjP+abFHhsVD
-         peG99E0mg0wiA7gR0E3HIj1DTHk8Qkd0M22h6UL/+xFTgDNBLzxCt5fd/avtGYhsEdg1
-         dFHw==
-X-Gm-Message-State: APjAAAVb/LTgby4UgCoZddbC9qa+Em/nExygylwq4YpjHGDHP7GHfken
-	LxfSoB4hwB4uvM7QOPRXMYI=
-X-Google-Smtp-Source: APXvYqwXhdnSo9wHhf69j7J9wrdaaacVlpWYrz1S1VbNzoUDzGZM3u20roLzpKIu9p/Huejxiz+pTQ==
-X-Received: by 2002:a5d:91c1:: with SMTP id k1mr605145ior.180.1556727798668;
-        Wed, 01 May 2019 09:23:18 -0700 (PDT)
+        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
+        b=aqfrlWulODVlwVtgJvGqAb3kQwdIhFzaBmQ07b9STR9LoMw5tC98Vev39981Vpji4T
+         nxj5zR3QV0/n70vdnn3R6Y0RAq8Ze1tVK739FNQtPdUb/gmiacu3ZNRSiPFDMN6hHq5j
+         rhZ1l3VSxYnooR3/QzVEOsDt6gqIMsi44OAy2n/S4jz2yy6/VX7yy5uNxc7BPFhXOF2w
+         qMDqJN3OvyLCsfM1OHK2oBEiYIaFKDUUdyBMCnElGLQVpEjxEwcNG/3MHMU8R4e+IVpd
+         YakQDFJq2hgquw8DtU0za2g4j8yGMmIjn/5EZUN0bJmqOK+IHaQBn+iGiV2m6v9p5pYS
+         Dnew==
+X-Gm-Message-State: APjAAAX9j+3XFyV2oy/Nup1Gzum201NPvW3dCJRDx+w9sW+PGhEY3WUM
+	/tUyCMjp+EeUbiCMLSep0L/0rbaH
+X-Google-Smtp-Source: APXvYqxq/NkEUQGk2G852nhgWiUKVYBBNR49BNJTFybzzQqN5o/7xe1Nj3Ho8pafl+FrIoS3BYyuVw==
+X-Received: by 2002:a24:c685:: with SMTP id j127mr9364720itg.21.1556727953812;
+        Wed, 01 May 2019 09:25:53 -0700 (PDT)
 Return-Path: <stefanha@gmail.com>
 Received: from localhost (CPE64777d5479c3-CM64777d5479c0.cpe.net.cable.rogers.com. [99.228.64.175])
-        by smtp.gmail.com with ESMTPSA id w81sm3091062itf.23.2019.05.01.09.23.17
+        by smtp.gmail.com with ESMTPSA id n184sm3324333itc.28.2019.05.01.09.25.52
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2019 09:23:17 -0700 (PDT)
-Date: Wed, 1 May 2019 12:23:16 -0400
+        Wed, 01 May 2019 09:25:52 -0700 (PDT)
+Date: Wed, 1 May 2019 12:25:51 -0400
 From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Joel Stanley <joel@jms.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Stefan Hajnoczi <stefanha@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
 	Jim Mussared <jim@groklearning.com>,
 	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Julia Suvorova <jusual@mail.ru>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Steffen Gortz <qemu.ml@steffen-goertz.de>,
-	qemu-arm <qemu-arm@nongnu.org>, Thomas Huth <thuth@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Thomas Huth <thuth@redhat.com>, Julia Suvorova <jusual@mail.ru>
 Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
  argument"
-Message-ID: <20190501162316.GD21155@stefanha-x1.localdomain>
+Message-ID: <20190501162551.GE21155@stefanha-x1.localdomain>
 References: <20190103144124.18917-1-stefanha@redhat.com>
  <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
  <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
  <20190426091702.GA2071@stefanha-x1.localdomain>
- <CACPK8Xc5KgiaYCTs=8ceRu_hV=vC3M6pGV0=7jJNsbuz2a6LDA@mail.gmail.com>
+ <CAFEAcA8OVKO087uiNvwDGObiaxHAPYHwoXLEN1t5Y4v9B43r9A@mail.gmail.com>
+ <20190429122819.GB7587@stefanha-x1.localdomain>
+ <CAFEAcA9_=a72BAmyb0eJhLF_nYLhRb_O7e=__MPazQ0nLC9Tmw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="n/aVsWSeQ4JHkrmm"
+	protocol="application/pgp-signature"; boundary="WK3l2KTTmXPVedZ6"
 Content-Disposition: inline
-In-Reply-To: <CACPK8Xc5KgiaYCTs=8ceRu_hV=vC3M6pGV0=7jJNsbuz2a6LDA@mail.gmail.com>
+In-Reply-To: <CAFEAcA9_=a72BAmyb0eJhLF_nYLhRb_O7e=__MPazQ0nLC9Tmw@mail.gmail.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
-X-TUID: h0+UTWZ5K8Xb
+X-TUID: KUuAmv9qc1KE
 
 
---n/aVsWSeQ4JHkrmm
+--WK3l2KTTmXPVedZ6
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 29, 2019 at 12:53:48PM +0000, Joel Stanley wrote:
-> On Fri, 26 Apr 2019 at 09:17, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+On Mon, Apr 29, 2019 at 01:58:46PM +0100, Peter Maydell wrote:
+> On Mon, 29 Apr 2019 at 13:28, Stefan Hajnoczi <stefanha@redhat.com> wrote:
 > >
-> > A user-friendly error message is needed here.  The check for -kernel was
-> > too specific and is not desirable for microbit where we use -device
-> > loader.
+> > On Fri, Apr 26, 2019 at 12:45:37PM +0100, Peter Maydell wrote:
+> > I was going to add a function to check kernel_filename and the presence
+> > of -device loader.  Then each machine type init function would call the
+> > function with flags indicating which modes are allowed:
 > >
-> > Old boards probably want to continue using -kernel.  New boards like
-> > microbit may use just -device loader.  Perhaps there is even a group
-> > that wants both options.
+> >   /* Allow both -kernel and -device loader */
+> >   check_kernel_loaded(KERNEL_CMDLINE | KERNEL_LOADER);
+> >
+> >   /* Allow only -kernel */
+> >   check_kernel_loaded(KERNEL_CMDLINE);
+> >
+> >   /* Allow only -device loader */
+> >   check_kernel_loaded(KERNEL_LOADER);
 >=20
-> FWIW, I used -kernel exclusively when working on the microbit model.
-> Other users may chose to use the device loader/hex file.
->=20
-> I am all for usability, but getting rid of the ability to use -kernel
-> on some machine types would be a step in the wrong direction.
+> Every machine should permit -device loader: the point
+> of it is that it is entirely generic and works the same
+> way on every machine.
 
--kernel doesn't support the .hex file format that is most commonly used
-for micro:bit programs.  Are you loading ELFs?
+It seems every person has a slightly different preference :).  Can we
+reach a consensus?
+
+1. Should QEMU print a readable error message when launched without a
+   kernel?
+
+If yes:
+
+2. What checks are sensible?
 
 Stefan
 
---n/aVsWSeQ4JHkrmm
+--WK3l2KTTmXPVedZ6
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAlzJx/QACgkQnKSrs4Gr
-c8hpZggAukJnmfzU1WV5yz34v06vaJnRghdLQe54TmxuZRJiTjwhsVwfcTwTEsTe
-4SgJ9LRi4dGz7+F4IvNUjLzePJX9dpcJ7SKFFoFUxAN1SvgPMTY26na56a4wJPNj
-2ATUZsujzI4z9W4tl55U+iaxUTv5jSMwyGl3k4BsHHe5o25Ce97YNfd8fpoLBU0R
-+fCGsjkebSSnSXARnLvy2hKefxwW7dlhQC0THL7pISY7rX6btRnuNzbe2eJvOvhG
-kFtbEfaNrkObhVEqL+oz/s1+Xyo4lcLijm5Sxi95V4F6zmHMPHbVe+3GXGtABNoY
-xp3NsWSV5Da4mY6HWloAQOjBIHixsA==
-=W2f4
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAlzJyI8ACgkQnKSrs4Gr
+c8hBDQgAtG/Dxap2gsiS1yWR1zi3RCHdY8hzRGJ1Sp/514jLWc/nWTfBRM+nIkd0
+Um+NzuJwoX+M0eeECmfMJOrhmimHIHS1P3fZChGWzucj7eQb0RDV741Ahs+olxJk
+ri+N0mNQMtHn3RUURRDDSeHrJedLPYvLZSYsUpIeVxywyWv1wmnRn+yE7GrBKi3L
+WprN/VWQZiduVLlm7/eMjsbcJ5AIalTowuNJoCtXRc0YxjHwcOlAfrtDL9vkE0Ln
+mdHCxbHy+oRBerkH4ziudOj7galnyjRLZJ8jVqgwN/FVGuMv3WJlKWtMsGqUlWrh
+Zcy4zMSeom55p74grZ+MDxZmjUceeA==
+=q6kg
 -----END PGP SIGNATURE-----
 
---n/aVsWSeQ4JHkrmm--
+--WK3l2KTTmXPVedZ6--

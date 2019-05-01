@@ -1,152 +1,109 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6062571wrh;
-        Wed, 1 May 2019 09:25:54 -0700 (PDT)
-X-Received: by 2002:a05:660c:712:: with SMTP id l18mr2712994itk.27.1556727954457;
-        Wed, 01 May 2019 09:25:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556727954; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6171651wrh;
+        Wed, 1 May 2019 11:35:21 -0700 (PDT)
+X-Received: by 2002:a65:6210:: with SMTP id d16mr74036614pgv.110.1556735721667;
+        Wed, 01 May 2019 11:35:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556735721; cv=none;
         d=google.com; s=arc-20160816;
-        b=AJjx/zH7UzxFhXyxUcFizVlvjBhoaWJ+UF9ZODXaD9bS6CHM2rGRw1c9U88c68jl5f
-         SEIYsstlOgEVJH22WSNWPtNsfLrjvzAwmBM3wKL5zxCQYJfKdX6FfKxWCiMwI2BCpftY
-         T1rDhIp7NbsIs0p2D8ZHd93d4uLqlBW8j0L1UO9Cs0gOCtlnQTp1Krpbd/LRBmiJp0BF
-         Tvq5YZ/EKI6kmWC+sbb2/wOQ+W3pInL2VJZMmkTatjMoGYy955gPd/j+bgW7sEzgVNtl
-         JzkPzCMvW3wni+t38TpXI54/wEXPEuj4aQQwYn+qb9oJrW4wdoj473x6uJ6iEd9Iji0C
-         1h7A==
+        b=jYRN4YQfFAFwauOTcAGyoWQCUHVmd+Gm8zvzP+sqAnLPakdsLZhW7V0cz9Qk1XVgTi
+         SualSJmScca0Uq6B9qSTz4bnDpBNJavisT32mLXmxpIbr22AU0Tplk4bLSH3cRtrIyJB
+         lnbpi2LHyMCo/fqRIItMBNNO+dSCOwUJJc3/Z5eg1VXo5mCT6ND5+TaQKNDjvvQJ0i3n
+         2zWxn6xfxf5k7TGVZfuMh7DDD9rcccTUcbi/Kf65YE0SlXGXJ9sX/wSKzha0TzkY6RNB
+         dGsW1Z65x05kS/ZB288dJf15Zq+9pP0C3aqKfLk12qrMvQpMnpPZnaPCW0vgZEOBqwCr
+         Ts3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
-        b=lQAcup9z8E71U5di/qRxckLMHcnYtLWIb4M8kKfa/nSCo1PbKX4qd0rqO1hKgBOBJA
-         XKxGYC1jypPUqWzxk9F1mofrIZBiAW6mZZcQip0wja6lpiWEdSbNbxj2ckllg6vVU659
-         Ech/pUZcbyinGndurv9yQ4KxQ47+01ZdEotm1twdX8dFMmJd5oEB/M1+/qZRytlDQsfn
-         J0S6QZHqIbYdgeHjH+89QEEAjv77p7LpKFVZO5+C8MJSYnT+Hndd9vYz/tsl9Dd6IiM2
-         u6zxU3UT7sm08T+xaUtPRJx3wpAKJflDVxVfgJkY3ffwKuoXiRGvkXyDNG0ueMEMgSHi
-         447w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=/JQSbGM/O19FqjA8tccpETQvPRZf58W19j52MJxDAkE=;
+        b=RJwx5ygTxfW6TDGgLhuJLVwqhUffuL1gKzAyqUpJ9iXtFQNMptTpoYvl/KnqIwVPME
+         JO3eTimyV37DTAq3t0twoLKIHiiO7Uc24jpNPjHCCSgNcCf8LzhtqNCGaCwGWRFX6kSk
+         9RfEOigm3rsNcB+QY87X5qDAZRBtc3g6vICJGmZoTTtYEBzbojcmyniYvWMX1Q7G3e8z
+         F9+KJp9YL8qY60rAYWMeJHrRKGc+wV0finnAEFDO9bCEzi9LjmRzwo+lUQDW+E6d7mSQ
+         EcQl2ZAlT+bcI8FUhdbTPAcGe5sWNxH5YcBEOpkvOEtAUZwn42FMB4sGmGzl2IvO/S1E
+         l7UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q24Kwylr;
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <stefanha@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x10sor8818478itb.30.2019.05.01.09.25.54
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ip6IYdHK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id v9sor15831291pgs.55.2019.05.01.11.35.21
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 01 May 2019 09:25:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 01 May 2019 11:35:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Q24Kwylr;
-       spf=pass (google.com: domain of stefanha@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=stefanha@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ip6IYdHK;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
-        b=Q24KwylrvZJBZWneHzfgD72TIgfWL7+m3r5rSuLMYd1+yI6QZ49YhhSiHgjBXD6t+c
-         CCGqeYeY/jx8yUz8RYlGYruBgnHOzGAje9pKeSpMsu5sHiQ3oA8SJO6F4xU86Y8vlZDd
-         9xfQFCj8ecRRxn1sEr5d5fyy+azQTKtjQr3a/5wDBUVfzf/WWEVvIVqlUCY7kIYtYn8R
-         j4ZhyPFNJuDJbc2xWshOxHI4wR84egslpRqmbRvpfeKG0klGUjplylalpaP76jaTqBqP
-         RSSJZDNL4Aq1FNcir3vz3HZnes99hDPLWGpGIEfKGckeIAhO95UPClGO6AUE8grcCFWC
-         Z01g==
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=/JQSbGM/O19FqjA8tccpETQvPRZf58W19j52MJxDAkE=;
+        b=Ip6IYdHKykjavxxak7ouh2KLbvcSxTYCb1KNrElaglbEF7FYYRI8xBgVmO6JrZcUVD
+         YT6LzMxOZf7Jd0UvLeqbgSwi24iHQrpsQcMK5sevIeVG+fxvWM0HC17RKLPVAjAcrdk3
+         /g+m9hsGqwxknPle515lXpkdqdOP7/ComJM2U+gWMfAKkgR3cSxUCLCg250Ckaqix9Xu
+         MnrZ3UmrhQwNYDw/b/l8c8Bec9zLMbYf62vgU1OJ3HXE7XnxjW5xHoXHVXAIdI4z33Oz
+         D3a11N3nTrx+67uC7X9rTD0PaDCmd2gfgKNrqXRjw9YQ8wvrG+xiC3RMZFEIVILUQu5L
+         mFZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=7y7T5IhOFv7uW/nPm1YBGwfS4GWdswk4MeV+DNzF0y4=;
-        b=aqfrlWulODVlwVtgJvGqAb3kQwdIhFzaBmQ07b9STR9LoMw5tC98Vev39981Vpji4T
-         nxj5zR3QV0/n70vdnn3R6Y0RAq8Ze1tVK739FNQtPdUb/gmiacu3ZNRSiPFDMN6hHq5j
-         rhZ1l3VSxYnooR3/QzVEOsDt6gqIMsi44OAy2n/S4jz2yy6/VX7yy5uNxc7BPFhXOF2w
-         qMDqJN3OvyLCsfM1OHK2oBEiYIaFKDUUdyBMCnElGLQVpEjxEwcNG/3MHMU8R4e+IVpd
-         YakQDFJq2hgquw8DtU0za2g4j8yGMmIjn/5EZUN0bJmqOK+IHaQBn+iGiV2m6v9p5pYS
-         Dnew==
-X-Gm-Message-State: APjAAAX9j+3XFyV2oy/Nup1Gzum201NPvW3dCJRDx+w9sW+PGhEY3WUM
-	/tUyCMjp+EeUbiCMLSep0L/0rbaH
-X-Google-Smtp-Source: APXvYqxq/NkEUQGk2G852nhgWiUKVYBBNR49BNJTFybzzQqN5o/7xe1Nj3Ho8pafl+FrIoS3BYyuVw==
-X-Received: by 2002:a24:c685:: with SMTP id j127mr9364720itg.21.1556727953812;
-        Wed, 01 May 2019 09:25:53 -0700 (PDT)
-Return-Path: <stefanha@gmail.com>
-Received: from localhost (CPE64777d5479c3-CM64777d5479c0.cpe.net.cable.rogers.com. [99.228.64.175])
-        by smtp.gmail.com with ESMTPSA id n184sm3324333itc.28.2019.05.01.09.25.52
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2019 09:25:52 -0700 (PDT)
-Date: Wed, 1 May 2019 12:25:51 -0400
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>,
-	Jim Mussared <jim@groklearning.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Steffen Gortz <qemu.ml@steffen-goertz.de>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Thomas Huth <thuth@redhat.com>, Julia Suvorova <jusual@mail.ru>
-Subject: Re: [Qemu-devel] [PATCH] Revert "armv7m: Guard against no -kernel
- argument"
-Message-ID: <20190501162551.GE21155@stefanha-x1.localdomain>
-References: <20190103144124.18917-1-stefanha@redhat.com>
- <CAFEAcA-B_T9E3ezWFXg-wp3RotMjv3-z3qY7hSJZEoqFBqCWnQ@mail.gmail.com>
- <62b29bc1-cc78-cd64-4377-fc4007ba7189@redhat.com>
- <20190426091702.GA2071@stefanha-x1.localdomain>
- <CAFEAcA8OVKO087uiNvwDGObiaxHAPYHwoXLEN1t5Y4v9B43r9A@mail.gmail.com>
- <20190429122819.GB7587@stefanha-x1.localdomain>
- <CAFEAcA9_=a72BAmyb0eJhLF_nYLhRb_O7e=__MPazQ0nLC9Tmw@mail.gmail.com>
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=/JQSbGM/O19FqjA8tccpETQvPRZf58W19j52MJxDAkE=;
+        b=Z1Xf0zOstKAYgcz5MLcrogYHWF8jjLHPpjyjyPG7eTsSw/WFQCiVZNgCu59tMz7eM/
+         JaryDyKe+30nt1vLsm4EUfWzY6gGUK5wvDKe5fiDwBIWMPY7PdtRwkFkaGCK7Cj8NtG5
+         yIKpDuCjeR8Tx90pz4ruYvnceVmr6Fg+yE5yqWKVIrzVpszou9Dv2p3dL+oOVXyinzqH
+         8Kabvh/Oq6gxCzFsuqFmDTt8DfPjsnt1mwyxXYaMnyRYIKGOmX+OOpSIZMGlp1t4cPnf
+         JLyVfK8eoZodA7kPoyiC0qrOPZTGGcAE+NVVhvy8Eq0fXThHfomYiOiGPrs/ofXojUfl
+         6WYA==
+X-Gm-Message-State: APjAAAXqLcTfx/ebzyHU8J4Xy6SS0UUQUzyqSvoND1veIZatAf9rDayi
+	8t1sCvnGJJMFCNZBMM+oAtXS7/q02aeghg==
+X-Google-Smtp-Source: APXvYqxNBQzlIm1ZGaYSLhe1PHkFnvh8szrv3LWygBa74uFdNdrP829aFQZR8doOED3iwg+jBauAfQ==
+X-Received: by 2002:a63:d908:: with SMTP id r8mr42526024pgg.268.1556735720714;
+        Wed, 01 May 2019 11:35:20 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
+        by smtp.gmail.com with ESMTPSA id g13sm13384891pgr.63.2019.05.01.11.35.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 01 May 2019 11:35:19 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v5 01/15] tests/tcg/multiarch: add support
+ for multiarch system tests
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, mark.cave-ayland@ilande.co.uk, cota@braap.org
+References: <20190430165234.32272-1-alex.bennee@linaro.org>
+ <20190430165234.32272-2-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <0ef0d685-ddb1-850e-9478-e9c88da8ebb0@linaro.org>
+Date: Wed, 1 May 2019 11:35:17 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="WK3l2KTTmXPVedZ6"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9_=a72BAmyb0eJhLF_nYLhRb_O7e=__MPazQ0nLC9Tmw@mail.gmail.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-TUID: KUuAmv9qc1KE
+In-Reply-To: <20190430165234.32272-2-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: GCwFrZ8x5xJ0
+
+On 4/30/19 9:52 AM, Alex Bennée wrote:
+> We can certainly support some common tests for system emulation that
+> make use of our minimal defined boot.S support. It will still be up to
+> individual architectures to ensure they build so we provide a
+> MULTIARCH_TESTS variable that they can tack onto TESTS themselves.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  tests/tcg/Makefile                                 |  1 +
+>  tests/tcg/multiarch/system/Makefile.softmmu-target | 14 ++++++++++++++
+>  2 files changed, 15 insertions(+)
+>  create mode 100644 tests/tcg/multiarch/system/Makefile.softmmu-target
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
---WK3l2KTTmXPVedZ6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+r~
 
-On Mon, Apr 29, 2019 at 01:58:46PM +0100, Peter Maydell wrote:
-> On Mon, 29 Apr 2019 at 13:28, Stefan Hajnoczi <stefanha@redhat.com> wrote:
-> >
-> > On Fri, Apr 26, 2019 at 12:45:37PM +0100, Peter Maydell wrote:
-> > I was going to add a function to check kernel_filename and the presence
-> > of -device loader.  Then each machine type init function would call the
-> > function with flags indicating which modes are allowed:
-> >
-> >   /* Allow both -kernel and -device loader */
-> >   check_kernel_loaded(KERNEL_CMDLINE | KERNEL_LOADER);
-> >
-> >   /* Allow only -kernel */
-> >   check_kernel_loaded(KERNEL_CMDLINE);
-> >
-> >   /* Allow only -device loader */
-> >   check_kernel_loaded(KERNEL_LOADER);
->=20
-> Every machine should permit -device loader: the point
-> of it is that it is entirely generic and works the same
-> way on every machine.
-
-It seems every person has a slightly different preference :).  Can we
-reach a consensus?
-
-1. Should QEMU print a readable error message when launched without a
-   kernel?
-
-If yes:
-
-2. What checks are sensible?
-
-Stefan
-
---WK3l2KTTmXPVedZ6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAlzJyI8ACgkQnKSrs4Gr
-c8hBDQgAtG/Dxap2gsiS1yWR1zi3RCHdY8hzRGJ1Sp/514jLWc/nWTfBRM+nIkd0
-Um+NzuJwoX+M0eeECmfMJOrhmimHIHS1P3fZChGWzucj7eQb0RDV741Ahs+olxJk
-ri+N0mNQMtHn3RUURRDDSeHrJedLPYvLZSYsUpIeVxywyWv1wmnRn+yE7GrBKi3L
-WprN/VWQZiduVLlm7/eMjsbcJ5AIalTowuNJoCtXRc0YxjHwcOlAfrtDL9vkE0Ln
-mdHCxbHy+oRBerkH4ziudOj7galnyjRLZJ8jVqgwN/FVGuMv3WJlKWtMsGqUlWrh
-Zcy4zMSeom55p74grZ+MDxZmjUceeA==
-=q6kg
------END PGP SIGNATURE-----
-
---WK3l2KTTmXPVedZ6--

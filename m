@@ -1,103 +1,63 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp5572872wrh;
-        Tue, 30 Apr 2019 23:18:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwqypyruTd9kWs4FR3qWPDEngh4Vc7JDHxx+clykKnjoD4Q9h1u6nR/Hx9EZbnQcCrJZmel
-X-Received: by 2002:a5d:4b43:: with SMTP id w3mr3388849wrs.140.1556691537549;
-        Tue, 30 Apr 2019 23:18:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556691537; cv=none;
-        d=google.com; s=arc-20160816;
-        b=kG+NWhdGgk26Cnc/JXJvyDspPBtfipUaRFoQErvHR0LlGpjIcyQb8htuhk/gLX6ek8
-         L/Pxe5kHAl9Jj2CXLKA0a5wLtnWtcdSGyeYO9RFZ8SDFx7UdhDOfzw2zj0TnpvWzWWa5
-         5evOK3OK6UbuXfUMmVTx6SWShg7GCaUJOOBlyXcF+OGVpy8drixIe7Wt52UcjUSOPAmJ
-         p0w5XZUu+IgWD97M4u0aTmrGZUdVYlaktiZ9RKsa6huFYivUr1RDRiCtOrkb1ac8Hcwc
-         Dk+v/C5uGezcb+z29lQHbW4JJzm2NiE2FMtnlzEKXvHpbcGlN4xVRLXYuyI34LDu1wW8
-         phMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=YQNY3Qs9SDZ8Rf6rl1MztV5ckrSsadpmpli/FQdnH7Q=;
-        b=SW+lUEYkVkeJ1LL67OP2BLPQ182kRO0QHcxEyX9dfMTuIIHw/qsze8JFU4KUmabifO
-         Jr8vJzAkkHKOyaB9v1Ev1IIDUUD1UGMauQleRh7Jx8st/hTl46DQZ3XC58SjtRj/NjsA
-         TLeGMIgdKwseWexIYnjotVsC1j5Yv47VbRWP4Rq8qxs0FdTIlFKnU0EFffbvjwq0ihj5
-         4PVQMHrbHMTeaI7+TF68zoZoLecy4KUOnTbEmJUvnHeGBeX10Yt8PG5FolHOGOYOdJNy
-         +REgKUCVNuvVMdqEkXkE8I8VXO6oB4KPauO3qz2Bl0gJ8cI+wJdsodxoBRQzT4cYJ/jM
-         4HAg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S1emp6tb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp5575494wrh;
+        Tue, 30 Apr 2019 23:23:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxd2BepFHgVHy7PQBLmz7MS496R+Ve/i4nIxl7of3K6FYMgUrgrZfRWMyOXdQYA3vFv/kLB
+X-Received: by 2002:a5d:4b92:: with SMTP id b18mr24045344wrt.11.1556691783663;
+        Tue, 30 Apr 2019 23:23:03 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o82si2686630wmo.86.2019.04.30.23.18.56
+        by mx.google.com with ESMTPS id n3si639990wmh.70.2019.04.30.23.23.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Apr 2019 23:18:57 -0700 (PDT)
+        Tue, 30 Apr 2019 23:23:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S1emp6tb;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:37563 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:37650 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hLiZz-0002Tg-RA
-	for alex.bennee@linaro.org; Wed, 01 May 2019 02:18:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49041)
+	id 1hLidy-0003jZ-NL
+	for alex.bennee@linaro.org; Wed, 01 May 2019 02:23:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLiZp-0002T2-Et
-	for qemu-arm@nongnu.org; Wed, 01 May 2019 02:18:48 -0400
+	(envelope-from <no-reply@patchew.org>) id 1hLidi-0003jA-6j
+	for qemu-arm@nongnu.org; Wed, 01 May 2019 02:22:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1hLiZl-0001vJ-Hf
-	for qemu-arm@nongnu.org; Wed, 01 May 2019 02:18:45 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:38637)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1hLiZk-0001t8-4t; Wed, 01 May 2019 02:18:41 -0400
-Received: by mail-pg1-x543.google.com with SMTP id j26so7932988pgl.5;
-	Tue, 30 Apr 2019 23:18:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=YQNY3Qs9SDZ8Rf6rl1MztV5ckrSsadpmpli/FQdnH7Q=;
-	b=S1emp6tb/VZEYJ8wuDErCvzW81PNOhPmcr7smdEKSJ1O1Z+ocdAeZUC6NX1YF2xZjg
-	Fk7eIg3HsZf0yq+EJNKrLsxNZWoOmMht0TQs/zaJhaxzj+yDtgFj3540ruxGSUlrV/tE
-	6U+EKPqIE1ZND3toxV8vt1yTabZkVVmB6qy8MPNhR3w1izm96v9O1XXtjBP1cjzAH9kT
-	doQH5sC3lkkJ1hh1+P0P46zZFWYGDcxN7olsI2jRUYytLmEHLmAT/TaEUcyMQKEHiRZv
-	NzR3tKGFE+0Mok6oiWQz8l2gpfs11jwAMvHrSoknoPuooV39t3jF/KrgbmGyUjtJsFsR
-	90BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=YQNY3Qs9SDZ8Rf6rl1MztV5ckrSsadpmpli/FQdnH7Q=;
-	b=peGVVIzpk6NRzoqWxPivGRIQ66Mp2LeLXLBa1XdoYCn+CoR4IpjGMhKa3Ze+kbq00R
-	Au2CMalh+yXyelpJQuAqIOeRe4zFbCejD0FaFSy4k6rLchkMKUM1W8CrReDR25EjVaxY
-	+CQoKHb0kg6VCh4QmH1gc9sOwRHCYaTcYH99oxroYPAMz4XdlSHOc9SdtaaoCP4l//xw
-	hCpgJurB/W93Jj7TUB8ueG+bCTsH7IHkYzjrnu10stxw3HVktJJaA6+VzMaCphNE/P96
-	r6bj0u8u2fJOcm9vpKM9T+RsHbW2lnT3IfqJg8/meaPE9OpMX5DrACQR6sVSs+4y21rm
-	Kqhg==
-X-Gm-Message-State: APjAAAUn5iyCnf5xZIZHOWmGls6YuKk+e4KcwjUiL8NAn4voEWbJGhbs
-	SVf7sAmUGQMuXhJJMGtxMbU=
-X-Received: by 2002:aa7:8008:: with SMTP id j8mr48207854pfi.120.1556691516017; 
-	Tue, 30 Apr 2019 23:18:36 -0700 (PDT)
-Received: from voyager.jms.id.au ([36.255.48.244])
-	by smtp.gmail.com with ESMTPSA id
-	s7sm24493837pfb.38.2019.04.30.23.18.32
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 30 Apr 2019 23:18:35 -0700 (PDT)
-Received: by voyager.jms.id.au (sSMTP sendmail emulation);
-	Wed, 01 May 2019 15:48:29 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Wed,  1 May 2019 15:48:27 +0930
-Message-Id: <20190501061827.23080-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.20.1
+	(envelope-from <no-reply@patchew.org>) id 1hLide-0004Ow-3F
+	for qemu-arm@nongnu.org; Wed, 01 May 2019 02:22:45 -0400
+Resent-Date: Wed, 01 May 2019 02:22:45 -0400
+Resent-Message-Id: <E1hLide-0004Ow-3F@eggs.gnu.org>
+Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21572)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1hLidd-0004Ob-Rg; Wed, 01 May 2019 02:22:42 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1556691732; cv=none; d=zoho.com; s=zohoarc; 
+	b=lTlPPtyujC0PEK/DzXfVZN1eXsZXfGcxVugCOYNpuVGuvf0gHfptqnhoVFzYYgICVWBE4YIm4DraAl6F1lQMAXdipEPM7q3UM9WvIDmuRAso96kJqe+a0ldF62WeRWlRJqQjRzIRbvQU3TDqYJUovrJluLyQrMowsnDcqrO6V/E=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1556691732;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=lzhb5O74uroTm9pjumBK9Cj+dvEcSJDcnyGVYxmZBas=; 
+	b=QygFcNBh+gapsCJsSloiHAo3+DSovj/kqF03lN9EygB/p4jfMXOB3w5TDokHHmxiMQ4OeYY7vkm1GcyKF+78yuzXtgsT2Y6XPT38DQeYuRAb+UrFumoWEtVEaBiBd9YjOqiaOOOAbO6BGW/CE9ukmk/xUsGuFaLKwXCdMZ4laJ8=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1556691730704842.6348589274439;
+	Tue, 30 Apr 2019 23:22:10 -0700 (PDT)
+In-Reply-To: <20190501061827.23080-1-joel@jms.id.au>
+Message-ID: <155669172936.10667.6797708380388498579@c2072b67cc0c>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::543
-Subject: [Qemu-arm] [PATCH] arm: aspeed: Set SDRAM size
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: joel@jms.id.au
+Date: Tue, 30 Apr 2019 23:22:10 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 136.143.188.55
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] arm: aspeed: Set SDRAM size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,80 +69,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, peter.maydell@linaro.org, andrew@aj.id.au,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E7QhedIB+YWx
+X-TUID: sdnwNmIpKf0J
 
-We currently use Qemu's default of 128MB. As we know how much ram each
-machine ships with, make it easier on users by setting a default.
-
-It can still be overridden with -m on the command line.
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/arm/aspeed.c         | 6 ++++++
- include/hw/arm/aspeed.h | 1 +
- 2 files changed, 7 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 1c23ebd99252..3f3d4162b3c5 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -331,6 +331,8 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->no_parallel = 1;
-+    if (board->ram)
-+        mc->default_ram_size = board->ram;
-     amc->board = board;
- }
- 
-@@ -352,6 +354,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .spi_model = "mx25l25635e",
-         .num_cs    = 1,
-         .i2c_init  = palmetto_bmc_i2c_init,
-+        .ram       = 256 << 20,
-     }, {
-         .name      = MACHINE_TYPE_NAME("ast2500-evb"),
-         .desc      = "Aspeed AST2500 EVB (ARM1176)",
-@@ -361,6 +364,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .spi_model = "mx25l25635e",
-         .num_cs    = 1,
-         .i2c_init  = ast2500_evb_i2c_init,
-+        .ram       = 512 << 20,
-     }, {
-         .name      = MACHINE_TYPE_NAME("romulus-bmc"),
-         .desc      = "OpenPOWER Romulus BMC (ARM1176)",
-@@ -370,6 +374,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .spi_model = "mx66l1g45g",
-         .num_cs    = 2,
-         .i2c_init  = romulus_bmc_i2c_init,
-+        .ram       = 512 << 20,
-     }, {
-         .name      = MACHINE_TYPE_NAME("witherspoon-bmc"),
-         .desc      = "OpenPOWER Witherspoon BMC (ARM1176)",
-@@ -379,6 +384,7 @@ static const AspeedBoardConfig aspeed_boards[] = {
-         .spi_model = "mx66l1g45g",
-         .num_cs    = 2,
-         .i2c_init  = witherspoon_bmc_i2c_init,
-+        .ram       = 512 << 20,
-     },
- };
- 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 325c091d09e4..02073a6b4d61 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -22,6 +22,7 @@ typedef struct AspeedBoardConfig {
-     const char *spi_model;
-     uint32_t num_cs;
-     void (*i2c_init)(AspeedBoardState *bmc);
-+    uint32_t ram;
- } AspeedBoardConfig;
- 
- #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
--- 
-2.20.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDUwMTA2MTgyNy4yMzA4
+MC0xLWpvZWxAam1zLmlkLmF1LwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUgc29t
+ZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5mb3Jt
+YXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTA1MDEwNjE4MjcuMjMwODAtMS1q
+b2VsQGptcy5pZC5hdQpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIXSBhcm06IGFzcGVlZDog
+U2V0IFNEUkFNIHNpemUKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0
+IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVj
+a3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRh
+dGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6
+Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFnXSAgICAgICAgICAg
+ICAgIHBhdGNoZXcvMjAxOTA1MDEwNjE4MjcuMjMwODAtMS1qb2VsQGptcy5pZC5hdSAtPiBwYXRj
+aGV3LzIwMTkwNTAxMDYxODI3LjIzMDgwLTEtam9lbEBqbXMuaWQuYXUKU3dpdGNoZWQgdG8gYSBu
+ZXcgYnJhbmNoICd0ZXN0JwozMmUwZjU5YzVkIGFybTogYXNwZWVkOiBTZXQgU0RSQU0gc2l6ZQoK
+PT09IE9VVFBVVCBCRUdJTiA9PT0KRVJST1I6IGJyYWNlcyB7fSBhcmUgbmVjZXNzYXJ5IGZvciBh
+bGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojMjM6IEZJTEU6IGh3L2FybS9hc3BlZWQuYzozMzQ6
+CisgICAgaWYgKGJvYXJkLT5yYW0pClsuLi5dCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3Ms
+IDQzIGxpbmVzIGNoZWNrZWQKCkNvbW1pdCAzMmUwZjU5YzVkOTAgKGFybTogYXNwZWVkOiBTZXQg
+U0RSQU0gc2l6ZSkgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
+IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
+dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09
+CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFp
+bGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA1MDEwNjE4MjcuMjMwODAtMS1q
+b2VsQGptcy5pZC5hdS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWls
+IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcv
+XS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 

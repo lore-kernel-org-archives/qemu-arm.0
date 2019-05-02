@@ -1,113 +1,193 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6174710wrh;
-        Wed, 1 May 2019 11:39:29 -0700 (PDT)
-X-Received: by 2002:a62:5994:: with SMTP id k20mr24699784pfj.150.1556735969591;
-        Wed, 01 May 2019 11:39:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556735969; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6709293wrh;
+        Thu, 2 May 2019 00:24:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQBea0gBpVrSFX3pqSkyzp02vE54OziRBi98HbPo/fOQJDj57WwvbpwmBhjyaDlYMLCcRz
+X-Received: by 2002:a1c:c703:: with SMTP id x3mr1122291wmf.127.1556781850905;
+        Thu, 02 May 2019 00:24:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556781850; cv=none;
         d=google.com; s=arc-20160816;
-        b=azNgHy5nz1pB1iEEh1DIDsgfxXXg38FabralrtOz0+H1X0r/Iposa1MIgpDUmxOgMM
-         NCrg5GkvacbGeoR/1Gvqe19wXfXAHN1H8/7k9chUjSYV19y1/DoXGOI/sqgd4WyMbwuw
-         367fjsKZuPg76aoxnXf8Ln/0l9ee16NeyD7zf4vDcWmcCKTtRm89BEj72nQ4mCzJxwai
-         yaXESWH7rT2eL8huIoSX6rsnR/tFAD4u3iVvlXOxEkWIcq2K+zPN0qgIO5D2uwkFiMr3
-         dLTp2lOmkUQn60B1xOFdNUBgDD2adEeRbR4g2/055p8DNCKu/WEpnUDQwThO+IpmAdEt
-         56wA==
+        b=wTHwM7a9RXrj8GwvQ/bfKhkbgCJstKusryKvpJSXaSUh6/P4M2RCFF4zUfsxJqkxq1
+         7lnEcD5G2uKHoZf2EBYFo9B2yLuviLsTY/+nl7lvF6BCc849Vyt3rv7jSEBzFUDfxs8Q
+         Hnx3I5A+Qas5UWVCT4XOoDmLUA+s+Z5dm263vCe+duyKzQC6mvK5SdD59y3VRF7eLC09
+         3atwo52ON3gUxcOv35xR2Wz8967zLtIu08/6zFUeSBueqqhLZkCdC0HKK81uwjhOEDAu
+         e+WH2xhTYP5biIhk2ybID6V5NupkRTQrSfmWqozp1dDQ05ngkyH2HwgcVcuHLdYtczSs
+         nz2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Kj0keHvXRKBv5NJEBu8JraLrYMQq/S0KTlYv84qVXxA=;
-        b=KLPd6hSlDa6+cuVqfTV2ZZ2ZgHqxyheLYz3YiIA1TL8WWk6r1Ifzb404IkJoFLfqWA
-         QlcUmpNKExX7FVBqYuMcrcB3xP2N5vhaeu0ca+MEtenCVh6DcN3HgwbuRl5cswSVuj6O
-         AcXo0SDVBHM/dGXBloL5Yp7viC4L1O886FHhLKnG8gi9YC1DNTYw0CxFHdwEK3y1UGsD
-         TRytZ8uYJ5zJEXsvOpcMkS0QRkHOTIMBKrnVk2DRlOlc6qHbj44ZD4bRbVGsyqSBoiuc
-         HxNELWTIjkQPeqbjjBNFeBm/Z87wMdIfgCHg/JbzLSV8cNgoAx/YrdBaaFgNwpq1TEY1
-         ufMQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
+        b=uWh5Gl70MM3q0ZlXAY80RotE97IfUEDQONAZmRQIM7cHypeKBh2x3LARQMLtSE3dAG
+         el3Ae47BA3nIHjtdQnNgRNLP6zJlGd/kGONLxTfEM1p2k6491e7tiZV54WWHYBmb+Jxc
+         rsIBtN3JIq3LdzFYaSWt4SPVKGlNLj89yOdpQKz+lFOOiN3PJwNz5PFuq1c2I9wIAXbk
+         lmVxtYUa1kRdzAJefl2SQe+5/kU5eQ9ihR9lKjX5hNXRIjA9+qENkFkZRepfXcz3pS5N
+         HzSL+5ieUiwRQiPZwBHNP/4/DFsgLiOQVMbLanI0Jarl42u0MS2eZGTGrGQD9+UsK7NN
+         soRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vGN4JRgn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p10sor16333396pff.13.2019.05.01.11.39.29
+       dkim=fail header.i=@linaro.org header.s=google header.b=IKpY2YTc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s16si24462046wrn.369.2019.05.02.00.24.10
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 01 May 2019 11:39:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 02 May 2019 00:24:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vGN4JRgn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Kj0keHvXRKBv5NJEBu8JraLrYMQq/S0KTlYv84qVXxA=;
-        b=vGN4JRgnQuhs/tknmZkgyeM1T+BF7qTB15kOQuwB8voBKgqkWR5xIJKKN00tVytHoS
-         p+EXE3CSczUjaleeGdO5B2MGNjHXxuwryBki7KSIzfYfNvXq+DcUkmLRpBZUTnDU7XYg
-         CZ9fRf6x2aUaGmsswwAp23OffSlekrS7hAymQaYmE7EDLdTFjFzLuYbGtmAQEFTSdyD7
-         oJo6VTm6ZxWG7kV9pELCK63MANL6pPKRrcaZf7AmYU6iL/oceCRaw+aU7zf55auqJbud
-         hA7mRLa6qW0rWI3zlPeHd7Gxlnt5A8k+67JylZKOvxd7JscFSGYn/hPtJPqTHNTfHL8W
-         m8+A==
+       dkim=fail header.i=@linaro.org header.s=google header.b=IKpY2YTc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:46454 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hM64f-0002C9-Vf
+	for alex.bennee@linaro.org; Thu, 02 May 2019 03:24:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58301)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1hM63h-0001oT-Ei
+	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:23:10 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <ard.biesheuvel@linaro.org>) id 1hM63d-0005jS-GM
+	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:23:07 -0400
+Received: from mail-it1-x143.google.com ([2607:f8b0:4864:20::143]:53280)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
+	id 1hM63V-0005cQ-4U
+	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:22:59 -0400
+Received: by mail-it1-x143.google.com with SMTP id l10so1612312iti.3
+	for <qemu-devel@nongnu.org>; Thu, 02 May 2019 00:22:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
+	b=IKpY2YTcOTrzlxBQJKUNt7GCQ2Ep3NOb9rGyBUpgtqR8YnnPbUg2SBep4dYSPGHW5T
+	UiQyQWnZMifOGsmXt+sgepQ3dfjWnHvV3nqDLETHBnNSe0KFLTET6ujEuqA2TCOWc6wY
+	ZNFfYGeUZdN/wJjZ2uIOaUT1G4DWL6ZHyucxuIuL9qrCh1crc27P2n5y9+dGPchbkjdF
+	iqm8eLH9oPdC3jHHnXp2xL55DYqwARjHwMW5ZbmV1jweUjuA7ruR++4VWhBsddIMXX6r
+	3tbrWfH09OzuVSvSpCAH3MFXLtVJlIU5Y/lM9DHbQZZGpWkFeY78Y02XIWIYe46YAVvY
+	7Mvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Kj0keHvXRKBv5NJEBu8JraLrYMQq/S0KTlYv84qVXxA=;
-        b=BwC4AtOCH4BR7Xk7egJVxoKoS6VsjcsCHv062pBWBmrudPV7JpGHEcwomuVlslabWm
-         CEU8n2OMu/20Jf1bAIBvg5YKCicxtHUS79II+2YUHrIHOjjNzO18J29UuyC8OyVGmUdd
-         gXWuTQQOsBzL5hftppPXEkyavdju3fqRLuXY18FWEHu4CvntyEjA8y+ov++dM8Bvika3
-         9R7QEM95hk0T8onrzoNKdat16DqUvYu6ahTuD+gi/kl3UhVjxCfOcWLfbhKM14XiZ7fw
-         1k0dQRwmbiwv3XcAPlEErd0gx5TzTU3FHtUe2nyzzEDPOyo7xBqQ0gWOwhXsWLuDY92F
-         PcOw==
-X-Gm-Message-State: APjAAAULzB8k1mYyWeB+qBhx+mRC9JTL/eCJzldLr/Hzn49R9IvFic58
-	TBnGzIPhxXoquP1lYacmf3s/5en82cxSKA==
-X-Google-Smtp-Source: APXvYqzgK9FKeWfUTvMLiTEetR43z2xqnoPWIJl8rxsgLEvlGpT0K0iOZovy+1s4e/OEaGSSj/qu5w==
-X-Received: by 2002:a62:6086:: with SMTP id u128mr81330484pfb.148.1556735969184;
-        Wed, 01 May 2019 11:39:29 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
-        by smtp.gmail.com with ESMTPSA id b1sm45452573pgq.15.2019.05.01.11.39.27
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 May 2019 11:39:28 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v5 00/15] demacro softmmu (plus
- tests/coverage)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, mark.cave-ayland@ilande.co.uk, cota@braap.org
-References: <20190430165234.32272-1-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <9a538ea2-358a-dc61-b2f3-f8155c1a2283@linaro.org>
-Date: Wed, 1 May 2019 11:39:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
+	b=Um28/1fsn01WQo2+wBADV82s4xabLVnfwETXRkVVC98P7ERbhvhkSiezSuXd9vqPM5
+	9g8starhYW8k0JfqL+tTNGDdpjim/QgMoGWRqaDVwhMZJ+HAnzLRQ8U/7ygFN5SCVHIv
+	QGrG1V9wH0200ierMpU3q9hKg2QWoERlihMXRWeO1wgU7WwSNtCKUbdvXccSNefdY8zF
+	0ZhGwsVpZRPj3p4+EPJdzrbTvMcpGA8guixRtQOxkv3VJnPWPsoNnFoUAhmzxNY9B3+U
+	UoMXcUOR58qt45d1UjsKpKflz0+R+IlSya3bKfbzb31UxaCD8oQkMo2ZfvQKoSdfgR9Z
+	M6dg==
+X-Gm-Message-State: APjAAAXO0Fed2xffeuBJhg8IG4zxmEUitmR/aLDxkcZMyMSMYqRU1F3x
+	YIycVmDWHzcnTCvEi1b3I9zEwzcVUU5FttV7eHrT4Q==
+X-Received: by 2002:a24:b342:: with SMTP id z2mr1138315iti.121.1556781768611; 
+	Thu, 02 May 2019 00:22:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190430165234.32272-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: qYU+vxOZsSGO
+References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
+	<20190409102935.28292-4-shameerali.kolothum.thodi@huawei.com>
+	<CAKv+Gu_guvAydmCZDeVnj0NR_WyTHeCmwh4tK9WKUBY6cy-4Pg@mail.gmail.com>
+	<5FC3163CFD30C246ABAA99954A238FA83F137685@lhreml524-mbs.china.huawei.com>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F137685@lhreml524-mbs.china.huawei.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Thu, 2 May 2019 09:22:35 +0200
+Message-ID: <CAKv+Gu9yw6s=N+LkKmQ+0d5ZQBJ+5tE0_cKtZAYHh_cTXnjyCQ@mail.gmail.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::143
+Subject: Re: [Qemu-devel] [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event
+ Device Support
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"sameo@linux.intel.com" <sameo@linux.intel.com>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	"xuwei \(O\)" <xuwei5@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
+	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+	Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +OZyCV8Ry9Gn
 
-On 4/30/19 9:52 AM, Alex Bennée wrote:
-> I've also moved the existing system memory test and made it multiarch
-> and added the bootstrapping for aarch64 system tests. I would like to
-> add support for Big Endian as well but I didn't want to delay the
-> posting of the series. It would also be nice to exercise the
-> ioread/write paths and other handling but I leave this as an exercise
-> for later.
+On Wed, 1 May 2019 at 13:25, Shameerali Kolothum Thodi
+<shameerali.kolothum.thodi@huawei.com> wrote:
+>
+> Hi Ard,
+>
+> > -----Original Message-----
+> > From: Ard Biesheuvel [mailto:ard.biesheuvel@linaro.org]
+> > Sent: 01 May 2019 12:10
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > Cc: QEMU Developers <qemu-devel@nongnu.org>; qemu-arm
+> > <qemu-arm@nongnu.org>; Auger Eric <eric.auger@redhat.com>; Igor
+> > Mammedov <imammedo@redhat.com>; Peter Maydell
+> > <peter.maydell@linaro.org>; shannon.zhaosl@gmail.com;
+> > sameo@linux.intel.com; sebastien.boeuf@intel.com; xuwei (O)
+> > <xuwei5@huawei.com>; Laszlo Ersek <lersek@redhat.com>; Linuxarm
+> > <linuxarm@huawei.com>
+> > Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Support
+> >
+> > On Tue, 9 Apr 2019 at 12:31, Shameer Kolothum
+> > <shameerali.kolothum.thodi@huawei.com> wrote:
+> > >
+> > > From: Samuel Ortiz <sameo@linux.intel.com>
+> > >
+> > > The ACPI Generic Event Device (GED) is a hardware-reduced specific
+> > > device[ACPI v6.1 Section 5.6.9] that handles all platform events,
+> > > including the hotplug ones.This patch generates the AML code that
+> > > defines GEDs.
+> > >
+> > > Platforms need to specify their own GedEvent array to describe what
+> > > kind of events they want to support through GED.  Also this uses a
+> > > a single interrupt for the  GED device, relying on IO memory region
+> > > to communicate the type of device affected by the interrupt. This
+> > > way, we can support up to 32 events with a unique interrupt.
+> > >
+> > > This supports only memory hotplug for now.
+> > >
+> > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> > > Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
+> > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> >
+> > Apologies if this question has been raised before, but do we really
+> > need a separate device for this? We already handle the power button
+> > via _AEI/_Exx on the GPIO device, and I think we should be able to add
+> > additional events using that interface, rather than have two event
+> > signalling methods/devices on the same platform.
+>
+> Right. The initial RFC was based on GPIO device[1] and later Igor commented
+> here[2] that,
+>
+> " ARM boards were first to use ACPI hw-reduced profile so they picked up
+> available back then GPIO based way to deliver hotplug event, later spec
+> introduced Generic Event Device for that means to use with hw-reduced
+> profile, which NEMU implemented[1], so I'd use that rather than ad-hoc
+> GPIO mapping. I'd guess it will more compatible with various contemporary
+> guests and we could reuse the same code for both x86/arm virt boards) "
+>
 
-Somewhere in there you're adding
+On mach-virt, we already use the GPIO controller for the ACPI event
+involving the power button, so by aligning with virt-x86, we end up in
+the opposite situation for mach-virt.
 
-  -chardev file,path=hello.out,id=output
+The problem with the GED device is that it only supports GSI
+interrupts, while the GPIO device supports arbitrary interrupts (such
+as GPIO signalled ones). This means that mach-virt will be stuck with
+having two different methods of signalling ACPI events, unless we
+rewire the power button not to use a GPIO interrupt but use a GSI
+directly.
 
-but there's no corresponding use of the chardev.
-Which, somehow doesn't seem to matter to your aarch64
-testcase, but when I try this for alpha I truly get
-no output at all.  I needed
-
-  -serial chardev:output
-
-to populate the file.
-
-
-r~
+In general, I think the ACPI event delivery mechanism doesn't really
+have to be aligned: the ACPI event is ultimately converted into a AML
+notification to the right device, and how we end up there can remain
+platform specific.

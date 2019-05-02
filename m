@@ -1,190 +1,221 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp7136187wrh;
-        Thu, 2 May 2019 08:24:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzEyv6IRI67dFztey4hOx9ALKEzX5h20m18m1WWZlA41KW9tz8yjrImnADvV4uy38GtlOvi
-X-Received: by 2002:a7b:c301:: with SMTP id k1mr2731460wmj.37.1556810691440;
-        Thu, 02 May 2019 08:24:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556810691; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp7196520wrh;
+        Thu, 2 May 2019 09:21:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbS0Y/ke5pOBxNLATHxGjItN+SPfz1a+nDFNzKLIWHWS7hhDpH/tjHhpvqWdN4JgU4ofT1
+X-Received: by 2002:a1c:cc15:: with SMTP id h21mr2955506wmb.85.1556814100042;
+        Thu, 02 May 2019 09:21:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556814100; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tj5ddcpc4AGL0TKZr2NdP1QslPfQ06mU6O4u08SBCA1pp/ngSZENZjkOB3ncLSHWmk
-         8w4jsheyy6JMTvmVGj3cQbWL7DAaVUXDJms45D3sjXi3u2c0aOmc7VnkdWM8xXsEtXg/
-         sis/JFSHMA1g7ASq430ViJDg+udGl1EX+hcdaf1Ys9sxx2AF1LScLLPe6KAx9zebg/vw
-         Kt4KDlUHgjMBEQvLRQ60DLVJocrGxArNR12QWfKOHM2DrgbINOVejAneAvW/ZfSRW9pc
-         Zq9iM/38FKdOU0oeMpcrW1z+2S9P0tQX9DN6G8Tk54FCpP58P1A609uDL2vWK+GJ/Wkb
-         LV5A==
+        b=zWLSxUrj2bEFYbSoYtsad9KIhUZ9kSzmi2hQegQ9zFA1DGQlX6D5aq4loYzECeNhHe
+         Ql2RmEZPjo8+1JWceQCSNhb2FOm81hatXU6A1Mvis00wgSBzeBS3naoIXxZBGCgHdHAs
+         oY67F1M8nl4ugq6I+TGfK47nX6R4gl7CLRu994U1QgunEUDaggF+JA5/sCtRz22ggOOK
+         CUvr4ONWpDD8NUHgxBk9uf2f9GhTAwc9FgpMSNEzuCN3WCBS/rLRgeBS0Yc+7rBIEysH
+         7zFR3XJ0vdnNQgMKjCQQ3RRdyqq04lgfwrqHGBoxRo4QDMP2vZ4pD7oc9YjpVfDBgVfD
+         ckgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=6yWA2iLeOR23NjYvy7b/S4UgKGliK5MSB01HF0JAV+I=;
-        b=KYSA5PW+pDY50VapB+zd5EUZv6kIvHp+Dh5+3o8u1IOGtiRfqp36yqcMFrN/jKQWi9
-         Zn0Sms0x6dpd2a9fd5aoJ5yQqHD+4XazvngM+S1CsWAlU20+4Jbs1zKzQ474P5TOIObM
-         hmEzuEOxhErWiabdgyu+zpJinVze1FyuhPorDMTURWuvYzARA/8TPp1GQzIW1X845SAV
-         /6uCMSGqSXCCpXbZZnw3eV6xxRl1Lt5MoLZ7zeb1kyrHeOHRyPb1426M1PHRTAzEHD7v
-         M6FX7KnAjfw8SlCXLvjrOohOm9CMNGQk3OO/wsumv5Huw3W0LVHV+bLylbmPBR4AJLel
-         XbBA==
+        bh=p17fEpyRoPT9sdDd0RX9jKOBipoXrYAhKuGsi1qc23M=;
+        b=d+91iM4oXjkilUfnG9GiWKaadI0F9NNEC7XhXDfH2SyAmSoeo1xfxDg/2OuM9HG+MF
+         XtaZNJbdlI6QGbGhWABUrY5qy3u1JGe/X/Bk8nmD5CBAwoZ7Y/9pw/zxo5rRV0Ax3hsx
+         ypjZYH85SHTQwtHUB7GXMc+f13DegzQlbR67LiVtdo0xHlUTaxnePWVEpBzCFoHxkUKh
+         +L8ZsinRQpdMlNQClqoJA9wsCjGn9BLyTqc6vJ0mKyI6CmQCb10suQJA4NGUFO/co/l9
+         uWkww7bJDPCtnbnwGhqMrRKRYY/QyBx3rrGzMjUWHSEOxStO3sNG+UMnqHjMPovXkjys
+         oTKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h14si7562342wrp.44.2019.05.02.08.24.51
+        by mx.google.com with ESMTPS id x5si3708347wro.379.2019.05.02.09.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 May 2019 08:24:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 May 2019 09:21:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:53094 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:54120 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMDZq-0005yh-E2
-	for alex.bennee@linaro.org; Thu, 02 May 2019 11:24:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59639)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hMESp-0002hk-3o
+	for alex.bennee@linaro.org; Thu, 02 May 2019 12:21:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hMDZa-0005wp-4x
-	for qemu-arm@nongnu.org; Thu, 02 May 2019 11:24:35 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hMERe-0002NM-1v
+	for qemu-devel@nongnu.org; Thu, 02 May 2019 12:20:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hMDZY-0008Dp-S9
-	for qemu-arm@nongnu.org; Thu, 02 May 2019 11:24:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43077)
+	(envelope-from <imammedo@redhat.com>) id 1hMERV-00078F-4k
+	for qemu-devel@nongnu.org; Thu, 02 May 2019 12:20:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44026)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1hMDZW-00084A-Ui; Thu, 02 May 2019 11:24:31 -0400
+	id 1hMEQz-0006Mg-Pw; Thu, 02 May 2019 12:19:46 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC33130917AA;
-	Thu,  2 May 2019 15:24:29 +0000 (UTC)
-Received: from Igors-MacBook-Pro (unknown [10.40.205.168])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 61CF517A67;
-	Thu,  2 May 2019 15:24:24 +0000 (UTC)
-Date: Thu, 2 May 2019 17:24:18 +0200
+	by mx1.redhat.com (Postfix) with ESMTPS id 081E287627;
+	Thu,  2 May 2019 16:19:44 +0000 (UTC)
+Received: from Igors-MacBook-Pro (ovpn-204-72.brq.redhat.com [10.40.204.72])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0F74CA221;
+	Thu,  2 May 2019 16:19:34 +0000 (UTC)
+Date: Thu, 2 May 2019 18:19:29 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Message-ID: <20190502172418.2b7d6d84@Igors-MacBook-Pro>
-In-Reply-To: <CAKv+Gu9yw6s=N+LkKmQ+0d5ZQBJ+5tE0_cKtZAYHh_cTXnjyCQ@mail.gmail.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190502181929.0bad1fb5@Igors-MacBook-Pro>
+In-Reply-To: <20190409102935.28292-5-shameerali.kolothum.thodi@huawei.com>
 References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-4-shameerali.kolothum.thodi@huawei.com>
-	<CAKv+Gu_guvAydmCZDeVnj0NR_WyTHeCmwh4tK9WKUBY6cy-4Pg@mail.gmail.com>
-	<5FC3163CFD30C246ABAA99954A238FA83F137685@lhreml524-mbs.china.huawei.com>
-	<CAKv+Gu9yw6s=N+LkKmQ+0d5ZQBJ+5tE0_cKtZAYHh_cTXnjyCQ@mail.gmail.com>
+	<20190409102935.28292-5-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Thu, 02 May 2019 15:24:29 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Thu, 02 May 2019 16:19:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 3/8] hw/acpi: Add ACPI
- Generic Event Device Support
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v4 4/8] hw/arm/virt: Add memory hotplug
+ framework
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	Auger Eric <eric.auger@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RI9zo+MJd4Y9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
+	ard.biesheuvel@linaro.org, qemu-devel@nongnu.org,
+	xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+	qemu-arm@nongnu.org, sebastien.boeuf@intel.com, lersek@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: alC4OelaQ2VF
 
-On Thu, 2 May 2019 09:22:35 +0200
-Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+On Tue, 9 Apr 2019 11:29:31 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> On Wed, 1 May 2019 at 13:25, Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com> wrote:
-> >
-> > Hi Ard,
-> >
-> > > -----Original Message-----
-> > > From: Ard Biesheuvel [mailto:ard.biesheuvel@linaro.org]
-> > > Sent: 01 May 2019 12:10
-> > > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > > Cc: QEMU Developers <qemu-devel@nongnu.org>; qemu-arm
-> > > <qemu-arm@nongnu.org>; Auger Eric <eric.auger@redhat.com>; Igor
-> > > Mammedov <imammedo@redhat.com>; Peter Maydell
-> > > <peter.maydell@linaro.org>; shannon.zhaosl@gmail.com;
-> > > sameo@linux.intel.com; sebastien.boeuf@intel.com; xuwei (O)
-> > > <xuwei5@huawei.com>; Laszlo Ersek <lersek@redhat.com>; Linuxarm
-> > > <linuxarm@huawei.com>
-> > > Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Support
-> > >
-> > > On Tue, 9 Apr 2019 at 12:31, Shameer Kolothum
-> > > <shameerali.kolothum.thodi@huawei.com> wrote:
-> > > >
-> > > > From: Samuel Ortiz <sameo@linux.intel.com>
-> > > >
-> > > > The ACPI Generic Event Device (GED) is a hardware-reduced specific
-> > > > device[ACPI v6.1 Section 5.6.9] that handles all platform events,
-> > > > including the hotplug ones.This patch generates the AML code that
-> > > > defines GEDs.
-> > > >
-> > > > Platforms need to specify their own GedEvent array to describe what
-> > > > kind of events they want to support through GED.  Also this uses a
-> > > > a single interrupt for the  GED device, relying on IO memory region
-> > > > to communicate the type of device affected by the interrupt. This
-> > > > way, we can support up to 32 events with a unique interrupt.
-> > > >
-> > > > This supports only memory hotplug for now.
-> > > >
-> > > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> > > > Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
-> > > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > >
-> > > Apologies if this question has been raised before, but do we really
-> > > need a separate device for this? We already handle the power button
-> > > via _AEI/_Exx on the GPIO device, and I think we should be able to add
-> > > additional events using that interface, rather than have two event
-> > > signalling methods/devices on the same platform.
-> >
-> > Right. The initial RFC was based on GPIO device[1] and later Igor commented
-> > here[2] that,
-> >
-> > " ARM boards were first to use ACPI hw-reduced profile so they picked up
-> > available back then GPIO based way to deliver hotplug event, later spec
-> > introduced Generic Event Device for that means to use with hw-reduced
-> > profile, which NEMU implemented[1], so I'd use that rather than ad-hoc
-> > GPIO mapping. I'd guess it will more compatible with various contemporary
-> > guests and we could reuse the same code for both x86/arm virt boards) "
-> >
+> From: Eric Auger <eric.auger@redhat.com>
 > 
-> On mach-virt, we already use the GPIO controller for the ACPI event
-> involving the power button, so by aligning with virt-x86, we end up in
-> the opposite situation for mach-virt.
+> This patch adds the memory hot-plug/hot-unplug infrastructure
+> in machvirt. The device memory is not yet exposed to the Guest
+> either though DT or ACPI and hence both cold/hot plug of memory
+s/though/through/
+
+> is explicitly disabled for now.
 > 
-> The problem with the GED device is that it only supports GSI
-> interrupts, while the GPIO device supports arbitrary interrupts (such
-> as GPIO signalled ones). This means that mach-virt will be stuck with
-> having two different methods of signalling ACPI events, unless we
-> rewire the power button not to use a GPIO interrupt but use a GSI
-> directly.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  default-configs/arm-softmmu.mak |  3 +++
+>  hw/arm/virt.c                   | 45 ++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 47 insertions(+), 1 deletion(-)
+> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 613d19a..9f4b803 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -160,3 +160,6 @@ CONFIG_MUSICPAL=y
+>  
+>  # for realview and versatilepb
+>  CONFIG_LSI_SCSI_PCI=y
+> +
+> +CONFIG_MEM_DEVICE=y
+> +CONFIG_DIMM=y
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ce2664a..da516b3 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -61,6 +61,8 @@
+>  #include "hw/arm/smmuv3.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "target/arm/internals.h"
+> +#include "hw/mem/pc-dimm.h"
+> +#include "hw/mem/nvdimm.h"
+>  
+>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+> @@ -1806,6 +1808,34 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>      return ms->possible_cpus;
+>  }
+>  
+> +static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> +                                 Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        error_setg(errp, "memory cold/hot plug is not yet supported");
+> +        return;
+> +    }
+add comment here why it's needed.
 
-we can rewire power button then.
+> +
+> +    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
+maybe before calling this there probably should be check if acpi is enabled.
 
+not sure if arm/virt board honors -no-acpi CLI option.
 
-> In general, I think the ACPI event delivery mechanism doesn't really
-> have to be aligned: the ACPI event is ultimately converted into a AML
-> notification to the right device, and how we end up there can remain
-> platform specific.
+> +}
+> +
+> +static void virt_memory_plug(HotplugHandler *hotplug_dev,
+> +                             DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +
+> +    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
+> +
+> +}
+> +
+> +static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> +                                            DeviceState *dev, Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_memory_pre_plug(hotplug_dev, dev, errp);
+> +    }
+> +}
+> +
+>  static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                          DeviceState *dev, Error **errp)
+>  {
+> @@ -1817,12 +1847,23 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                       SYS_BUS_DEVICE(dev));
+>          }
+>      }
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_memory_plug(hotplug_dev, dev, errp);
+> +    }
+> +}
+> +
+> +static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+> +                                          DeviceState *dev, Error **errp)
+> +{
+> +    error_setg(errp, "device unplug request for unsupported device"
+> +               " type: %s", object_get_typename(OBJECT(dev)));
+>  }
+>  
+>  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>                                                          DeviceState *dev)
+>  {
+> -    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
+> +       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
+>          return HOTPLUG_HANDLER(machine);
+>      }
+>  
+> @@ -1886,7 +1927,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->kvm_type = virt_kvm_type;
+>      assert(!mc->get_hotplug_handler);
+>      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+> +    hc->pre_plug = virt_machine_device_pre_plug_cb;
+>      hc->plug = virt_machine_device_plug_cb;
+> +    hc->unplug_request = virt_machine_device_unplug_request_cb;
+>  }
+>  
+>  static void virt_instance_init(Object *obj)
 
-Reasoning for using GED is to reduce code duplication with x86
-and not creating zoo of different approached (if it could be avoided).

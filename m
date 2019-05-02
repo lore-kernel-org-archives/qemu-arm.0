@@ -1,193 +1,188 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp6709293wrh;
-        Thu, 2 May 2019 00:24:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQBea0gBpVrSFX3pqSkyzp02vE54OziRBi98HbPo/fOQJDj57WwvbpwmBhjyaDlYMLCcRz
-X-Received: by 2002:a1c:c703:: with SMTP id x3mr1122291wmf.127.1556781850905;
-        Thu, 02 May 2019 00:24:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556781850; cv=none;
-        d=google.com; s=arc-20160816;
-        b=wTHwM7a9RXrj8GwvQ/bfKhkbgCJstKusryKvpJSXaSUh6/P4M2RCFF4zUfsxJqkxq1
-         7lnEcD5G2uKHoZf2EBYFo9B2yLuviLsTY/+nl7lvF6BCc849Vyt3rv7jSEBzFUDfxs8Q
-         Hnx3I5A+Qas5UWVCT4XOoDmLUA+s+Z5dm263vCe+duyKzQC6mvK5SdD59y3VRF7eLC09
-         3atwo52ON3gUxcOv35xR2Wz8967zLtIu08/6zFUeSBueqqhLZkCdC0HKK81uwjhOEDAu
-         e+WH2xhTYP5biIhk2ybID6V5NupkRTQrSfmWqozp1dDQ05ngkyH2HwgcVcuHLdYtczSs
-         nz2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
-        b=uWh5Gl70MM3q0ZlXAY80RotE97IfUEDQONAZmRQIM7cHypeKBh2x3LARQMLtSE3dAG
-         el3Ae47BA3nIHjtdQnNgRNLP6zJlGd/kGONLxTfEM1p2k6491e7tiZV54WWHYBmb+Jxc
-         rsIBtN3JIq3LdzFYaSWt4SPVKGlNLj89yOdpQKz+lFOOiN3PJwNz5PFuq1c2I9wIAXbk
-         lmVxtYUa1kRdzAJefl2SQe+5/kU5eQ9ihR9lKjX5hNXRIjA9+qENkFkZRepfXcz3pS5N
-         HzSL+5ieUiwRQiPZwBHNP/4/DFsgLiOQVMbLanI0Jarl42u0MS2eZGTGrGQD9+UsK7NN
-         soRg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IKpY2YTc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16si24462046wrn.369.2019.05.02.00.24.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 02 May 2019 00:24:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IKpY2YTc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:46454 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hM64f-0002C9-Vf
-	for alex.bennee@linaro.org; Thu, 02 May 2019 03:24:10 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58301)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ard.biesheuvel@linaro.org>) id 1hM63h-0001oT-Ei
-	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:23:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ard.biesheuvel@linaro.org>) id 1hM63d-0005jS-GM
-	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:23:07 -0400
-Received: from mail-it1-x143.google.com ([2607:f8b0:4864:20::143]:53280)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
-	id 1hM63V-0005cQ-4U
-	for qemu-devel@nongnu.org; Thu, 02 May 2019 03:22:59 -0400
-Received: by mail-it1-x143.google.com with SMTP id l10so1612312iti.3
-	for <qemu-devel@nongnu.org>; Thu, 02 May 2019 00:22:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
-	b=IKpY2YTcOTrzlxBQJKUNt7GCQ2Ep3NOb9rGyBUpgtqR8YnnPbUg2SBep4dYSPGHW5T
-	UiQyQWnZMifOGsmXt+sgepQ3dfjWnHvV3nqDLETHBnNSe0KFLTET6ujEuqA2TCOWc6wY
-	ZNFfYGeUZdN/wJjZ2uIOaUT1G4DWL6ZHyucxuIuL9qrCh1crc27P2n5y9+dGPchbkjdF
-	iqm8eLH9oPdC3jHHnXp2xL55DYqwARjHwMW5ZbmV1jweUjuA7ruR++4VWhBsddIMXX6r
-	3tbrWfH09OzuVSvSpCAH3MFXLtVJlIU5Y/lM9DHbQZZGpWkFeY78Y02XIWIYe46YAVvY
-	7Mvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=N7NSxJr5uDvgcq3djMQ2v1/6rgL3Lq/qkCZV7efUj7I=;
-	b=Um28/1fsn01WQo2+wBADV82s4xabLVnfwETXRkVVC98P7ERbhvhkSiezSuXd9vqPM5
-	9g8starhYW8k0JfqL+tTNGDdpjim/QgMoGWRqaDVwhMZJ+HAnzLRQ8U/7ygFN5SCVHIv
-	QGrG1V9wH0200ierMpU3q9hKg2QWoERlihMXRWeO1wgU7WwSNtCKUbdvXccSNefdY8zF
-	0ZhGwsVpZRPj3p4+EPJdzrbTvMcpGA8guixRtQOxkv3VJnPWPsoNnFoUAhmzxNY9B3+U
-	UoMXcUOR58qt45d1UjsKpKflz0+R+IlSya3bKfbzb31UxaCD8oQkMo2ZfvQKoSdfgR9Z
-	M6dg==
-X-Gm-Message-State: APjAAAXO0Fed2xffeuBJhg8IG4zxmEUitmR/aLDxkcZMyMSMYqRU1F3x
-	YIycVmDWHzcnTCvEi1b3I9zEwzcVUU5FttV7eHrT4Q==
-X-Received: by 2002:a24:b342:: with SMTP id z2mr1138315iti.121.1556781768611; 
-	Thu, 02 May 2019 00:22:48 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id j71sm3175966wmj.44.2019.05.02.09.07.42
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 02 May 2019 09:07:42 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 1E7921FF87;
+	Thu,  2 May 2019 17:07:42 +0100 (BST)
+References: <20190501050536.15580-1-richard.henderson@linaro.org> <20190501050536.15580-24-richard.henderson@linaro.org>
+User-agent: mu4e 1.3.1; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v2 23/29] target/arm: Use tcg_gen_abs_i64 and tcg_gen_gvec_abs
+In-reply-to: <20190501050536.15580-24-richard.henderson@linaro.org>
+Date: Thu, 02 May 2019 17:07:42 +0100
+Message-ID: <87zho44z75.fsf@zen.linaroharston>
 MIME-Version: 1.0
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-4-shameerali.kolothum.thodi@huawei.com>
-	<CAKv+Gu_guvAydmCZDeVnj0NR_WyTHeCmwh4tK9WKUBY6cy-4Pg@mail.gmail.com>
-	<5FC3163CFD30C246ABAA99954A238FA83F137685@lhreml524-mbs.china.huawei.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F137685@lhreml524-mbs.china.huawei.com>
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Date: Thu, 2 May 2019 09:22:35 +0200
-Message-ID: <CAKv+Gu9yw6s=N+LkKmQ+0d5ZQBJ+5tE0_cKtZAYHh_cTXnjyCQ@mail.gmail.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::143
-Subject: Re: [Qemu-devel] [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event
- Device Support
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>, Igor Mammedov <imammedo@redhat.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +OZyCV8Ry9Gn
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: z+NWg7Gd7+n6
 
-On Wed, 1 May 2019 at 13:25, Shameerali Kolothum Thodi
-<shameerali.kolothum.thodi@huawei.com> wrote:
->
-> Hi Ard,
->
-> > -----Original Message-----
-> > From: Ard Biesheuvel [mailto:ard.biesheuvel@linaro.org]
-> > Sent: 01 May 2019 12:10
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: QEMU Developers <qemu-devel@nongnu.org>; qemu-arm
-> > <qemu-arm@nongnu.org>; Auger Eric <eric.auger@redhat.com>; Igor
-> > Mammedov <imammedo@redhat.com>; Peter Maydell
-> > <peter.maydell@linaro.org>; shannon.zhaosl@gmail.com;
-> > sameo@linux.intel.com; sebastien.boeuf@intel.com; xuwei (O)
-> > <xuwei5@huawei.com>; Laszlo Ersek <lersek@redhat.com>; Linuxarm
-> > <linuxarm@huawei.com>
-> > Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Support
-> >
-> > On Tue, 9 Apr 2019 at 12:31, Shameer Kolothum
-> > <shameerali.kolothum.thodi@huawei.com> wrote:
-> > >
-> > > From: Samuel Ortiz <sameo@linux.intel.com>
-> > >
-> > > The ACPI Generic Event Device (GED) is a hardware-reduced specific
-> > > device[ACPI v6.1 Section 5.6.9] that handles all platform events,
-> > > including the hotplug ones.This patch generates the AML code that
-> > > defines GEDs.
-> > >
-> > > Platforms need to specify their own GedEvent array to describe what
-> > > kind of events they want to support through GED.  Also this uses a
-> > > a single interrupt for the  GED device, relying on IO memory region
-> > > to communicate the type of device affected by the interrupt. This
-> > > way, we can support up to 32 events with a unique interrupt.
-> > >
-> > > This supports only memory hotplug for now.
-> > >
-> > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> > > Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
-> > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> >
-> > Apologies if this question has been raised before, but do we really
-> > need a separate device for this? We already handle the power button
-> > via _AEI/_Exx on the GPIO device, and I think we should be able to add
-> > additional events using that interface, rather than have two event
-> > signalling methods/devices on the same platform.
->
-> Right. The initial RFC was based on GPIO device[1] and later Igor commented
-> here[2] that,
->
-> " ARM boards were first to use ACPI hw-reduced profile so they picked up
-> available back then GPIO based way to deliver hotplug event, later spec
-> introduced Generic Event Device for that means to use with hw-reduced
-> profile, which NEMU implemented[1], so I'd use that rather than ad-hoc
-> GPIO mapping. I'd guess it will more compatible with various contemporary
-> guests and we could reuse the same code for both x86/arm virt boards) "
->
 
-On mach-virt, we already use the GPIO controller for the ACPI event
-involving the power button, so by aligning with virt-x86, we end up in
-the opposite situation for mach-virt.
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-The problem with the GED device is that it only supports GSI
-interrupts, while the GPIO device supports arbitrary interrupts (such
-as GPIO signalled ones). This means that mach-virt will be stuck with
-having two different methods of signalling ACPI events, unless we
-rewire the power button not to use a GPIO interrupt but use a GSI
-directly.
+> Cc: qemu-arm@nongnu.org
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-In general, I think the ACPI event delivery mechanism doesn't really
-have to be aligned: the ACPI event is ultimately converted into a AML
-notification to the right device, and how we end up there can remain
-platform specific.
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  target/arm/helper.h        |  2 --
+>  target/arm/neon_helper.c   |  5 -----
+>  target/arm/translate-a64.c | 41 +++++---------------------------------
+>  target/arm/translate.c     | 11 +++-------
+>  4 files changed, 8 insertions(+), 51 deletions(-)
+>
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index 50cb036378..132aa1682e 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -352,8 +352,6 @@ DEF_HELPER_2(neon_ceq_u8, i32, i32, i32)
+>  DEF_HELPER_2(neon_ceq_u16, i32, i32, i32)
+>  DEF_HELPER_2(neon_ceq_u32, i32, i32, i32)
+>
+> -DEF_HELPER_1(neon_abs_s8, i32, i32)
+> -DEF_HELPER_1(neon_abs_s16, i32, i32)
+>  DEF_HELPER_1(neon_clz_u8, i32, i32)
+>  DEF_HELPER_1(neon_clz_u16, i32, i32)
+>  DEF_HELPER_1(neon_cls_s8, i32, i32)
+> diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
+> index ed1c6fc41c..4259056723 100644
+> --- a/target/arm/neon_helper.c
+> +++ b/target/arm/neon_helper.c
+> @@ -1228,11 +1228,6 @@ NEON_VOP(ceq_u16, neon_u16, 2)
+>  NEON_VOP(ceq_u32, neon_u32, 1)
+>  #undef NEON_FN
+>
+> -#define NEON_FN(dest, src, dummy) dest =3D (src < 0) ? -src : src
+> -NEON_VOP1(abs_s8, neon_s8, 4)
+> -NEON_VOP1(abs_s16, neon_s16, 2)
+> -#undef NEON_FN
+> -
+>  /* Count Leading Sign/Zero Bits.  */
+>  static inline int do_clz8(uint8_t x)
+>  {
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 9dcc5ff3a3..b7c5a928b4 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -9468,11 +9468,7 @@ static void handle_2misc_64(DisasContext *s, int o=
+pcode, bool u,
+>          if (u) {
+>              tcg_gen_neg_i64(tcg_rd, tcg_rn);
+>          } else {
+> -            TCGv_i64 tcg_zero =3D tcg_const_i64(0);
+> -            tcg_gen_neg_i64(tcg_rd, tcg_rn);
+> -            tcg_gen_movcond_i64(TCG_COND_GT, tcg_rd, tcg_rn, tcg_zero,
+> -                                tcg_rn, tcg_rd);
+> -            tcg_temp_free_i64(tcg_zero);
+> +            tcg_gen_abs_i64(tcg_rd, tcg_rn);
+>          }
+>          break;
+>      case 0x2f: /* FABS */
+> @@ -12366,11 +12362,12 @@ static void disas_simd_two_reg_misc(DisasContex=
+t *s, uint32_t insn)
+>          }
+>          break;
+>      case 0xb:
+> -        if (u) { /* NEG */
+> +        if (u) { /* ABS, NEG */
+>              gen_gvec_fn2(s, is_q, rd, rn, tcg_gen_gvec_neg, size);
+> -            return;
+> +        } else {
+> +            gen_gvec_fn2(s, is_q, rd, rn, tcg_gen_gvec_abs, size);
+>          }
+> -        break;
+> +        return;
+>      }
+>
+>      if (size =3D=3D 3) {
+> @@ -12438,17 +12435,6 @@ static void disas_simd_two_reg_misc(DisasContext=
+ *s, uint32_t insn)
+>                          gen_helper_neon_qabs_s32(tcg_res, cpu_env, tcg_o=
+p);
+>                      }
+>                      break;
+> -                case 0xb: /* ABS, NEG */
+> -                    if (u) {
+> -                        tcg_gen_neg_i32(tcg_res, tcg_op);
+> -                    } else {
+> -                        TCGv_i32 tcg_zero =3D tcg_const_i32(0);
+> -                        tcg_gen_neg_i32(tcg_res, tcg_op);
+> -                        tcg_gen_movcond_i32(TCG_COND_GT, tcg_res, tcg_op,
+> -                                            tcg_zero, tcg_op, tcg_res);
+> -                        tcg_temp_free_i32(tcg_zero);
+> -                    }
+> -                    break;
+>                  case 0x2f: /* FABS */
+>                      gen_helper_vfp_abss(tcg_res, tcg_op);
+>                      break;
+> @@ -12561,23 +12547,6 @@ static void disas_simd_two_reg_misc(DisasContext=
+ *s, uint32_t insn)
+>                      tcg_temp_free_i32(tcg_zero);
+>                      break;
+>                  }
+> -                case 0xb: /* ABS, NEG */
+> -                    if (u) {
+> -                        TCGv_i32 tcg_zero =3D tcg_const_i32(0);
+> -                        if (size) {
+> -                            gen_helper_neon_sub_u16(tcg_res, tcg_zero, t=
+cg_op);
+> -                        } else {
+> -                            gen_helper_neon_sub_u8(tcg_res, tcg_zero, tc=
+g_op);
+> -                        }
+> -                        tcg_temp_free_i32(tcg_zero);
+> -                    } else {
+> -                        if (size) {
+> -                            gen_helper_neon_abs_s16(tcg_res, tcg_op);
+> -                        } else {
+> -                            gen_helper_neon_abs_s8(tcg_res, tcg_op);
+> -                        }
+> -                    }
+> -                    break;
+>                  case 0x4: /* CLS, CLZ */
+>                      if (u) {
+>                          if (size =3D=3D 0) {
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index b25781554f..dd053c80d6 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -8120,6 +8120,9 @@ static int disas_neon_data_insn(DisasContext *s, ui=
+nt32_t insn)
+>                  case NEON_2RM_VNEG:
+>                      tcg_gen_gvec_neg(size, rd_ofs, rm_ofs, vec_size, vec=
+_size);
+>                      break;
+> +                case NEON_2RM_VABS:
+> +                    tcg_gen_gvec_abs(size, rd_ofs, rm_ofs, vec_size, vec=
+_size);
+> +                    break;
+>
+>                  default:
+>                  elementwise:
+> @@ -8225,14 +8228,6 @@ static int disas_neon_data_insn(DisasContext *s, u=
+int32_t insn)
+>                              }
+>                              tcg_temp_free_i32(tmp2);
+>                              break;
+> -                        case NEON_2RM_VABS:
+> -                            switch(size) {
+> -                            case 0: gen_helper_neon_abs_s8(tmp, tmp); br=
+eak;
+> -                            case 1: gen_helper_neon_abs_s16(tmp, tmp); b=
+reak;
+> -                            case 2: tcg_gen_abs_i32(tmp, tmp); break;
+> -                            default: abort();
+> -                            }
+> -                            break;
+>                          case NEON_2RM_VCGT0_F:
+>                          {
+>                              TCGv_ptr fpstatus =3D get_fpstatus_ptr(1);
+
+
+--
+Alex Benn=C3=A9e

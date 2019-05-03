@@ -1,126 +1,339 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp571130wrh;
-        Fri, 3 May 2019 06:35:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxkWvIiRdTn1ryqZkUrHrF5/U1H2U01XJ4fDSBW0UTFBX6sMfTjeAtaqWzYz/XXgk672dvW
-X-Received: by 2002:a5d:6912:: with SMTP id t18mr2034463wru.17.1556890528650;
-        Fri, 03 May 2019 06:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556890528; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp573238wrh;
+        Fri, 3 May 2019 06:37:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytH8jqTIRuz3gIm5Gt4bCRStHf/3EQVFc+u1kWbIL2fK6c0UzkNC9yH6o0NHdxgAHwGPov
+X-Received: by 2002:adf:9427:: with SMTP id 36mr7302997wrq.177.1556890650678;
+        Fri, 03 May 2019 06:37:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556890650; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nd0GKy6Zbi5T75XB5fabr9HP7TGkSZIhT2wqiaSr8G0BaITsEPfFE1s2/LqydOhkj9
-         cMzDfbQY1y9oMJhje0GRDbTNjJf/JTbfrCGv/Zke1h/qwJOfQVzk91cJGPRlarTMkeZQ
-         ChtEXrwlDZqbz5ZNmgPrr0B4iWXWIbty/00W5JiLXZc2Bim/UA1D6D4BvsMCtSIfqOWr
-         xT/5NGx5o1FG0bScDO/uzK8OSkLdie8mQti+vLWZQpsUbUIhFTfWyzCd/1nfIWdIWeX7
-         xm89FVJ1j65hOffy3avcBhibQ8FOtXSgAqM+atQULT4k4RbTEblxdSgxd+jX2dlUHZbq
-         qZhg==
+        b=TUwQ0dVCSwyR3LbGbYHdxjPugt+aZu92RE6jE06Pkz8fyBXmEcdT5MjDicBM1Oh+5I
+         KKEzjnE0LbGuwz/HxjZepHUu1fuIMP0sazjGilKlxp0NdvlRq2vz0YQEKwWZW3GXjEhZ
+         YxoDrP3t3n6cmPHQgPm+wQMQFr6g4LeQiN8lj8kQ/dunamTqs48yNLGBfoPQYvS1bT9v
+         JtwL74Ofaiqoj+qV14FFkJFOjLXrETsIPhfZAbxuAq5UPy8oqoEXYsDdGleq72VfE6H4
+         nT6QhDQtFY1y3OKwtnYpNCnJkICunZWCi4k5MnRNRx93S/uuV/oHMuaGS5bX6cECDjAl
+         Volw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mY5efbqDzo/n4wJM/Lt0T5LWk5kSu8VSWtK1bUhM3xY=;
-        b=TAzDvkP7IcnKSXm2d9O8iVtKUwZIBjDPDh5Ns/udMZ6WHMpS6bT7kq0B+xWl+RjnjU
-         ODi8HjVk6XLreyQslYY1CtOKYmvxAlf60tYEKa1y/wvuPWNS6O/1Ciy03sktf7hNwwyb
-         tzGKlsIqVBSK7wlUdBwsPnYeEccznxVbpi5bmoLZ45SWNnoMkuK11JJP3XYEJrDgF3hm
-         YdCz4cTAy2XOpOGLFUTUbrf/j6sxDO64sPmQGcD1I4MVGHcxzoo0AZWuF7J19MGT9aqG
-         oS1xFUEdfH6cGWLAay35DX5gHNGABjoqQRnGjfnWlfpKqJNyZc1XC6O0LYJsuIG6oJET
-         DRZA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=LKtVz/UQMByo8KA/gUyDBAbPJu9AxB/6ItJjsdbuDxA=;
+        b=uvAO7trqRBHAtAh0KD8j9Oy8E13e3ylkyI94ID0BSwyLkybMZ5TqXcr4/T4hViFmtc
+         4O/eQZ0FwBzaiwRlFfgtcs8SfUrNRwd7lMyhLMPrXNaGwgjq4GCnJm/kEn4zP5WDhjxk
+         wBCbIy/QvtgSzHsMA+9f6gt0Ki+FmnVBf65hGfmnEZ7onSlYBDqHCKx8Ns+mWKwJq2eA
+         H3TNMjf0OQBXvsiEHAN4ScV6m+Dk+vD+8yZD+wvJryQy59RAQ2A/CQniCCDH1BRZyKGI
+         /yIieZkHdxnntkGQNIiKRSLTl7dOIZEHxPkqlpXIv/PzXT4FCZz1fd1Mwv554nMFPPh2
+         WJGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XnqNLL7A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7si1629589wri.426.2019.05.03.06.35.28
+        by mx.google.com with ESMTPS id h11si1302170wme.76.2019.05.03.06.37.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 May 2019 06:35:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 May 2019 06:37:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XnqNLL7A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:40842 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:40871 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMYLX-0002c6-Nb
-	for alex.bennee@linaro.org; Fri, 03 May 2019 09:35:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34412)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hMYNV-00048f-Kn
+	for alex.bennee@linaro.org; Fri, 03 May 2019 09:37:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMYLL-0002Y2-4P
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:35:16 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hMYLw-00037e-5d
+	for qemu-devel@nongnu.org; Fri, 03 May 2019 09:35:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMYLK-0003et-6o
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:35:15 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41798)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hMYLK-0003e6-1l
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:35:14 -0400
-Received: by mail-oi1-x242.google.com with SMTP id v23so4404169oif.8
-	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 06:35:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=mY5efbqDzo/n4wJM/Lt0T5LWk5kSu8VSWtK1bUhM3xY=;
-	b=XnqNLL7AycVu5qukZW08bPeAlse+7XDSf8V1Bs2grziJ3bnwWQnOYc7BSspYHnN0WN
-	KNy7hXjpjz1ti/Kt01WV/8BUuzqkKG6W6ZX+Oxxfo4A5eSqzXg6y/U3e5XYf5rCug+xu
-	aQgIaWC6VmqjoDy6ZphkFnLHtT9qifhvjoovjW0rg4nIGhfYUjDAiYyT+Mk5KWMlc21T
-	Y5vqSb6HC3ot5hrzPn4sxi/As/G83Tjf3+4KYheGknrFWKgt24UC5Au6D2MMcennNfcC
-	omjtFJUA+/ZqoRgwSUj6+/VXciZ4+MJaUSc+/uLlvJtTG9acW50kIYWRT/oiZT7Bsh2X
-	V6Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=mY5efbqDzo/n4wJM/Lt0T5LWk5kSu8VSWtK1bUhM3xY=;
-	b=O9m1Jy/9ERPVRLnTtPze1Cq+LFzo8p6qB49ndX9ZCD5HK0VE1BfloaCC5Iy1EgP8kn
-	BAXloBHoFuSOzSZHpcm3D02NfZAU6PrDFD86MsYNOE7X99XyTlXL5PI0CBM8XZ+rlZYe
-	Q+G+Fnu1HibN5guvAnol9rRBRZBdUq4n5iaF972QCeRLP31FMyqzJ/TZu9/Qyb60Q7yQ
-	WGDMXD9YlSDWYkKoIgrvQGCyn/xZsp/TQzTjvwHQ1Wt/13OUXnsJQaBIfBncwnnteaPx
-	a9FS2lsoVp/B3Enx1nY3+GhZwsrgzpoTeHlc1G3OHFYgjlMT/smu3mWN4s8+tDOQE5O6
-	TSCg==
-X-Gm-Message-State: APjAAAVu02gvlq01eqsVWjl9qcXJYC70QR0tm5AK/iC9WNxQpycfwUMr
-	+kVMr3ISnEehnRkdV6vhFUrpIxeeZLacK2qmEa8iGA==
-X-Received: by 2002:aca:ab12:: with SMTP id u18mr5538127oie.48.1556890513381; 
-	Fri, 03 May 2019 06:35:13 -0700 (PDT)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hMYLu-0004IJ-9i
+	for qemu-devel@nongnu.org; Fri, 03 May 2019 09:35:52 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45398 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hMYLq-0004DH-Cg; Fri, 03 May 2019 09:35:46 -0400
+Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.106])
+	by Forcepoint Email with ESMTP id DE5AFDA193E2EFDDB8ED;
+	Fri,  3 May 2019 14:35:43 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.137]) by
+	lhreml708-cah.china.huawei.com ([10.201.108.49]) with mapi id
+	14.03.0415.000; Fri, 3 May 2019 14:35:33 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Laszlo Ersek <lersek@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "imammedo@redhat.com"
+	<imammedo@redhat.com>
+Thread-Topic: [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM nodes in the DT
+Thread-Index: AQHU7r+FHRV2RRXA40+Yjk9QZW2DraYz3gyAgAE0oHCAJHCRsA==
+Date: Fri, 3 May 2019 13:35:33 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1B0B26@lhreml524-mbs.china.huawei.com>
+References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
+	<20190409102935.28292-9-shameerali.kolothum.thodi@huawei.com>
+	<4f3df83f-8d45-09d0-ec9e-0ddf843fd3a4@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA83935D360@lhreml524-mbs.china.huawei.com>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83935D360@lhreml524-mbs.china.huawei.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20190430044036.1144-1-joel@jms.id.au>
-	<20190430044036.1144-3-joel@jms.id.au>
-In-Reply-To: <20190430044036.1144-3-joel@jms.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 May 2019 14:35:02 +0100
-Message-ID: <CAFEAcA9HsxWxRoNVy+fpm_PYdiB+Ei6k7bbLeG-qG+KXkG8vkg@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] [PATCH v3 2/2] hw/arm/aspeed: Add RTC to SoC
-X-BeenThere: qemu-arm@nongnu.org
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-devel] [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM
+ nodes in the DT
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0O0AA63xr99W
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"sameo@linux.intel.com" <sameo@linux.intel.com>,
+	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+	Linuxarm <linuxarm@huawei.com>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+	"xuwei \(O\)" <xuwei5@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EZ+G9qhF7U84
 
-On Tue, 30 Apr 2019 at 05:41, Joel Stanley <joel@jms.id.au> wrote:
->
-> All systems have an RTC.
->
-> The IRQ is hooked up but the model does not use it at this stage. There
-> is no guest code that uses it, so this limitation is acceptable.
->
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-thanks
--- PMM
+> -----Original Message-----
+> From: Linuxarm [mailto:linuxarm-bounces@huawei.com] On Behalf Of
+> Shameerali Kolothum Thodi
+> Sent: 10 April 2019 09:49
+> To: Laszlo Ersek <lersek@redhat.com>; qemu-devel@nongnu.org;
+> qemu-arm@nongnu.org; eric.auger@redhat.com; imammedo@redhat.com
+> Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
+> ard.biesheuvel@linaro.org; Linuxarm <linuxarm@huawei.com>;
+> shannon.zhaosl@gmail.com; sebastien.boeuf@intel.com; xuwei (O)
+> <xuwei5@huawei.com>
+> Subject: RE: [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM nodes in the
+> DT
+>=20
+>=20
+> > -----Original Message-----
+> > From: Laszlo Ersek [mailto:lersek@redhat.com]
+> > Sent: 09 April 2019 16:09
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+> > qemu-devel@nongnu.org; qemu-arm@nongnu.org; eric.auger@redhat.com;
+> > imammedo@redhat.com
+> > Cc: peter.maydell@linaro.org; shannon.zhaosl@gmail.com;
+> > sameo@linux.intel.com; sebastien.boeuf@intel.com; xuwei (O)
+> > <xuwei5@huawei.com>; ard.biesheuvel@linaro.org; Linuxarm
+> > <linuxarm@huawei.com>
+> > Subject: Re: [PATCH v4 8/8] hw/arm/boot: Expose the PC-DIMM nodes in th=
+e
+> > DT
+> >
+> > On 04/09/19 12:29, Shameer Kolothum wrote:
+> > > This patch adds memory nodes corresponding to PC-DIMM regions.
+> > > This will enable support for cold plugged device memory for Guests
+> > > with DT boot.
+> > >
+> > > Signed-off-by: Shameer Kolothum
+> <shameerali.kolothum.thodi@huawei.com>
+> > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > > ---
+> > >  hw/arm/boot.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+> > >  1 file changed, 42 insertions(+)
+> > >
+> > > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > > index 8c840ba..150e1ed 100644
+> > > --- a/hw/arm/boot.c
+> > > +++ b/hw/arm/boot.c
+> > > @@ -19,6 +19,7 @@
+> > >  #include "sysemu/numa.h"
+> > >  #include "hw/boards.h"
+> > >  #include "hw/loader.h"
+> > > +#include "hw/mem/memory-device.h"
+> > >  #include "elf.h"
+> > >  #include "sysemu/device_tree.h"
+> > >  #include "qemu/config-file.h"
+> > > @@ -538,6 +539,41 @@ static void fdt_add_psci_node(void *fdt)
+> > >      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> > >  }
+> > >
+> > > +static int fdt_add_hotpluggable_memory_nodes(void *fdt,
+> > > +                                             uint32_t acells,
+> > uint32_t scells) {
+> > > +    MemoryDeviceInfoList *info, *info_list =3D qmp_memory_device_lis=
+t();
+> > > +    MemoryDeviceInfo *mi;
+> > > +    int ret =3D 0;
+> > > +
+> > > +    for (info =3D info_list; info !=3D NULL; info =3D info->next) {
+> > > +        mi =3D info->value;
+> > > +        switch (mi->type) {
+> > > +        case MEMORY_DEVICE_INFO_KIND_DIMM:
+> > > +        {
+> > > +            PCDIMMDeviceInfo *di =3D mi->u.dimm.data;
+> > > +
+> > > +            ret =3D fdt_add_memory_node(fdt, acells, di->addr, scell=
+s,
+> > > +                                      di->size, di->node, true);
+> > > +            if (ret) {
+> > > +                fprintf(stderr,
+> > > +                        "couldn't add PCDIMM
+> /memory@%"PRIx64"
+> > node\n",
+> > > +                        di->addr);
+> > > +                goto out;
+> > > +            }
+> > > +            break;
+> > > +        }
+> > > +        default:
+> > > +            fprintf(stderr, "%s memory nodes are not yet supported\n=
+",
+> > > +                    MemoryDeviceInfoKind_str(mi->type));
+> > > +            ret =3D -ENOENT;
+> > > +            goto out;
+> > > +        }
+> > > +    }
+> > > +out:
+> > > +    qapi_free_MemoryDeviceInfoList(info_list);
+> > > +    return ret;
+> > > +}
+> > > +
+> > >  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+> > >                   hwaddr addr_limit, AddressSpace *as)
+> > >  {
+> > > @@ -637,6 +673,12 @@ int arm_load_dtb(hwaddr addr, const struct
+> > arm_boot_info *binfo,
+> > >          }
+> > >      }
+> > >
+> > > +    rc =3D fdt_add_hotpluggable_memory_nodes(fdt, acells, scells);
+> > > +    if (rc < 0) {
+> > > +        fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
+> > > +        goto fail;
+> > > +    }
+> > > +
+> > >      rc =3D fdt_path_offset(fdt, "/chosen");
+> > >      if (rc < 0) {
+> > >          qemu_fdt_add_subnode(fdt, "/chosen");
+> > >
+> >
+> >
+> > Given patches #7 and #8, as I understand them, the firmware cannot
+> > distinguish hotpluggable & present, from hotpluggable & absent. The
+> firmware
+> > can only skip both hotpluggable cases. That's fine in that the firmware=
+ will
+> hog
+> > neither type -- but is that OK for the OS as well, for both ACPI boot a=
+nd DT
+> > boot?
+>=20
+> Right. This only handles the hotpluggable-and-present condition.
+>=20
+> > Consider in particular the "hotpluggable & present, ACPI boot" case.
+> Assuming
+> > we modify the firmware to skip "hotpluggable" altogether, the UEFI memm=
+ap
+> > will not include the range despite it being present at boot. Presumably=
+, ACPI
+> > will refer to the range somehow, however. Will that not confuse the OS?
+>=20
+> From my testing so far, without patches #7 and #8(ie, no UEFI memmap entr=
+y),
+> ACPI boots fine. I think ACPI only relies on aml and SRAT.
+>=20
+> > When Igor raised this earlier, I suggested that hotpluggable-and-presen=
+t
+> > should be added by the firmware, but also allocated immediately, as
+> > EfiBootServicesData type memory. This will prevent other drivers in the
+> > firmware from allocating AcpiNVS or Reserved chunks from the same memor=
+y
+> > range, the UEFI memmap will contain the range as EfiBootServicesData, a=
+nd
+> > then the OS can release that allocation in one go early during boot.
+>=20
+> Ok. Agree that hotpluggable-and-present case it may make sense to make us=
+e
+> of
+> that memory rather than just hiding it altogether.
+>=20
+> On another note, Does hotpluggable-and-absent case make any valid use cas=
+e
+> for
+> a DT boot? I am not sure how we can hot-add memory in the case of DT boot
+> later.
+> I have not verified the sysfs probe interface yet and there are discussio=
+ns of
+> dropping
+> that interface altogether.
+>=20
+> > But this really has to be clarified from the Linux kernel's expectation=
+s. Please
+> > formalize all of the following cases:
+>=20
+> Sure. I will wait for suggestions here and work on it.
+
+To continue the discussion on this, this is my proposal,
+
+OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as  DT/=
+ACPI should report as
+-----------------  ------------------  -------------------------------  ---=
+---------------------
+DT                present           Normal memory             Report as nor=
+mal DT memory node
+
+DT                absent            Not reported                  Not repor=
+ted.
+
+ACPI              present            EfiBootServicesData memory  SRAT speci=
+fies the memory region
+                                                               and device m=
+emory discovered
+                                                               during Guest=
+ boot up through AML.
+
+ACPI              absent             Not reported               SRAT specif=
+ies the memory region.
+                                                               Supports hot=
+ add later.
+
+Not sure I got all the scenarios correct here, please take a look and let m=
+e know.
+
+Thanks,
+Shameer
+
+>=20
+> Thanks,
+> Shameer
+>=20
+> > OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as
+> > DT/ACPI should report as
+> > -----------------  ------------------  ------------------------------- =
+ ------------------------
+> > DT
+> > present             ?                                ?
+> > DT
+> > absent              ?                                ?
+> > ACPI
+> > present             ?                                ?
+> > ACPI
+> > absent              ?                                ?
+> >
+> > Again, this table is dictated by Linux.
+> >
+> > Thanks
+> > Laszlo
+> _______________________________________________
+> Linuxarm mailing list
+> Linuxarm@huawei.com
+> http://hulk.huawei.com/mailman/listinfo/linuxarm

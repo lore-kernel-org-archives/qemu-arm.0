@@ -1,125 +1,151 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp486043wrh;
-        Fri, 3 May 2019 05:12:23 -0700 (PDT)
-X-Received: by 2002:a9d:7616:: with SMTP id k22mr6055643otl.51.1556885543473;
-        Fri, 03 May 2019 05:12:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556885543; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp809756wrh;
+        Fri, 3 May 2019 10:14:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGXXrdQsxkYNlDbqvflVDWJ7edclr8fektwsouqgDrfAiC9+aS7GFF/Sbekp2q1vFP2aTK
+X-Received: by 2002:adf:f50e:: with SMTP id q14mr8088070wro.48.1556903682014;
+        Fri, 03 May 2019 10:14:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556903682; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMeqoSX6PVJ0jSGH0lkCD9/ZWAPOB0a7ceCe2+ivBjgYPGHFNaW7YDwgvrqkRN8YuK
-         ShsqEtKAzRGUfyw8RG5ecgv+JLV4bwVuTEhzBG/zR4i/SHLMSnvrDfGNp4X4C3bxS8r/
-         GdtrpAoIiMz1aeoON3/bHZYipNNLTNtLC9VfMx2bEtOZ2SZ0RJLuGr0020loA6rbmfeC
-         2gb1LW8/HGXZZqUTwOn9MrYyWgqYtol4/XCQpzmDEYXcO5ju5JSNIQtQjWSQY7iMV73M
-         S82wGyYjYmxYVF9C1pKiIqXWuRZhJCTlTJKZ3103V8cnyksUBKhlqW2R1WIZq4oL5jBl
-         JEmQ==
+        b=sLX2dQ8BQKA6R7YusNJGeVvitUWURSYr7cUeWLhIMStGBQPqsQmVN4bsaw04Eu1pl0
+         /WOHQtTKJipvIz+3yptkk+ORiYOpcMr43y03sfUUAwwyb7Zl0C6Gc9S3g855XmZsd4/Y
+         F6jCHuNX5maOPYBBLQm6meomj7dkHeHz+E71fTUtrKjXOfpVHXm+UuKBvJX0XXoP3H5R
+         hju3+dlqTOA+mHHqqwjYszD1jdrCyj+570xwPSePYgKIH0g1BsLiuHde+PdSD1s6LLrr
+         yLGGacdiqYlXWB3lWpWXgwLxlzCJza5rnituf4iAH0R2wFKvMpenwgo4QOx7A9+z6LiP
+         xbUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xY4c6NQjMMrKGjoUgDqOaSKuTDDWLkPb/all4IGS2jc=;
-        b=v+VGF6nM/Ell3mNsmrEgH8w9sugF4oo6UXaLFTUZ4jilizNveJ+S/Ii3g3W2K+lCZ1
-         Hbq2bWpvpqniJ1m+ZkJ9MjnivhIQyr92acOrg902SsthhT5YTjOlCIl6w/bK9+Osr7hA
-         GHgt6PmxD2tvSDK7CvcbycJH+gNAZCXBdaYDtu71XkzSuBKmfffhBVRSYD1+WYyOtYXV
-         /xXtUKj68P5I9rQ7zAFc/JAq+TLVyfgwZAbpYckp+tot46EVSXMRBcnUPfE6ua7JTHch
-         qjGYh8m0yWeTX353wJjab5S+DeC/8My26CC6z17kh9F2+3w6I6aa3t57OE/gXvkJNCd6
-         BWIg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=gxn73yHrkMnhu3Hh5HOdigs39onYkcXmr918feAXYD0=;
+        b=Ko5UwYIBjVXCFSBjnJQ3BCaAJATrbb8fxH7T/sG3ALr5Y6lF04CiQEUDcW8iiSPIJv
+         F3W/vmZz31toa7DjehXhKT/jAkNwkm0j6yo9brkmAUlRwRttqJpf/xZrz6Y/FsY6fbKG
+         l9wpV1XZ1agr6J+eM2NdUnALxFp7DdQkMlBwZY569afb9MV0vJm6CnHQ9FPWuXpDAPzw
+         /YKwhRnaxj+1kgEDA2R6zWsgK/SyeriGn2Hs+zCJ6lIwn0LR4hHDv161hinlL5Wp0bD1
+         60vEPOgCYPzhPcs8VWl1xdn4gEE0iojBn2vKvKFprLMy4v5eTY5HFwNe73Dm3/phCF3y
+         Iibw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=daBevHAB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g4sor800542oif.125.2019.05.03.05.12.23
+       dkim=fail header.i=@linaro.org header.s=google header.b=QahufIIK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w10si1930833wrn.233.2019.05.03.10.14.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 May 2019 05:12:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 03 May 2019 10:14:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=daBevHAB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=xY4c6NQjMMrKGjoUgDqOaSKuTDDWLkPb/all4IGS2jc=;
-        b=daBevHABE5he1oZESthBSkjMDnCRJBbZo94xf+lOhRKR6NY0UGoc10nv1/LzuM+ThS
-         Uv9iM3QxiTtacaUJD9n8cjEntG9uQX8gzAOEP/co3Xqw5p35p87ZHYuA4WrrwjU30Huk
-         lqqM0T8hYeRSwTFZf7h8XTvehPXGC3EYLUhyHTj/6KvcXTPDJfVGAqKqCZ3xs2bDsd9N
-         yunlEgG0yLTAdy3ox/5epC8yzPqRdu37jOzbJBpeR37dDS+k9rMGtL0cn0TuGn1CWbzN
-         RNDl4FNEBT3PBXRm7agD5Z0op1Oc8Ra5XjOgZTT37yr1t7WQbxTMhkBzSpULFUZGch0D
-         c91w==
+       dkim=fail header.i=@linaro.org header.s=google header.b=QahufIIK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:44893 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hMblh-0007Hw-1h
+	for alex.bennee@linaro.org; Fri, 03 May 2019 13:14:41 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34092)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hMbku-0006aL-MN
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:13:53 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hMbkt-00012Y-Hd
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:13:52 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35528)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hMbkt-00011F-96
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:13:51 -0400
+Received: by mail-wr1-x443.google.com with SMTP id h15so3070833wrb.2
+	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 10:13:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=gxn73yHrkMnhu3Hh5HOdigs39onYkcXmr918feAXYD0=;
+	b=QahufIIKjmZm06ldWfS9a9TJaafGGew9iKqqUBgijAzO7WZTUvnIJJxmDct5205stW
+	uKQ+4dwvgEz1dSWmI7nEabVqMpY5YiJOtw+WV8aQhmLWQDj2inGgLQEhPS58709MPlFm
+	/9x9L4lk9PFArFdng/aH+q/NNvdj8c3J/ytGqaEib2Puu7IdLgzsZ8O0eBe7D/xoyIjE
+	ELaMSFkIt7nEG+jkPSmHxpx7HN0CXI66Db0gtCPdD//MN5cvIIFWcmnrOPwesNAp5pKk
+	QgThaS1tX0zWAMHcSFHPPzpdkF6HVYhSBvouVdF5lbAX6SD4EdnnOq/couwG3D9eaJM+
+	8sfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=xY4c6NQjMMrKGjoUgDqOaSKuTDDWLkPb/all4IGS2jc=;
-        b=AuGBd1zHCKLZigyKUSBLhATNXqjjTUYm4mpogj591w26R0OpKUimTVDqnP/EGg8dNQ
-         AUEztsWuzoEJxRNHE/2HfsPymb0ekJYup+L6NyRp/p31gy+l7nwEH7gVBXsl5vuAPvhc
-         aWL/pV7Pi1U4Z9CRgCu/J1wkZo5iSk/QSdiHi9IHQQJ64HLlW6G93tfy5DYGoIoa84Lk
-         t0mYYtIusBmWIzMLIpOpd6R1imYCYPco8f/lnQBuEOeTygw0AuTDKHbigTku1zz8+ELI
-         ++m/2EqD8LOTwwt9f3ArmPV12P/qlz80XASxq7b5V4OemZmpFAAMKwg5Fs5dagmpOvs3
-         A1jQ==
-X-Gm-Message-State: APjAAAXBU6p7SrEzgach+/T7CxXLvBdbVw3nk8A/jGHC0xnmSq/HO4xI
-	weqKDxBPeYlUTDs2FhLgqGVRDZMc2x/gMhJbAcOumJ9xejxblw==
-X-Google-Smtp-Source: APXvYqznBDqv2ujVNsqrz4w/CrWOOXV5WBLhCQncNPWtsD8CQe6/ps/pNkqEtiLCs4xG0CXi6iG1l+zkseXdL4bwvLo=
-X-Received: by 2002:aca:ab12:: with SMTP id u18mr5314971oie.48.1556885542950;
- Fri, 03 May 2019 05:12:22 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190315143057.20165-1-peter.maydell@linaro.org>
- <87sgvkw4vp.fsf@zen.linaroharston> <CAFEAcA_n2MvRfCdydianR9EgDxdP093+Fi-Co2WRa0ncAF=Pgg@mail.gmail.com>
-In-Reply-To: <CAFEAcA_n2MvRfCdydianR9EgDxdP093+Fi-Co2WRa0ncAF=Pgg@mail.gmail.com>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=gxn73yHrkMnhu3Hh5HOdigs39onYkcXmr918feAXYD0=;
+	b=DZFO/+MPOlM60w1LfLDS3jA4fGOrCuqQ2s6AIIdFQBYZnMsgIVhtjn77SQPj7yfYBK
+	4WzjFl+WzRCQ0u8xOxtk0m7mvV6m7H3oh4PJuIsovEJQRyZOpGu58rxj8b9LV0a5uX54
+	NMFOBQOKG3gbzgOVO2GaMs+72CbG7th8WVjLZEhlrExxVwVlqQqE/m9NQA+ui7BNf0lN
+	q2AqZ80d2RQDYv+Ug4GFMd21vU/V6Idpy5RruUq0lBDDY/yrMgoE/ssgrAG2OGVcf4Zj
+	6CpDmy8o9HoT8N9jQIsbhYXVzekLk8hefTyBOJwvLcozDpmVTJbcJP7//YJ5tMchyX9F
+	0JKA==
+X-Gm-Message-State: APjAAAXIfhGkIhwGFtdIo2bWhWAEbztWOZVxMdUKrTiZ3DGoTZwiSEE8
+	kDSRGrIn4hm2DXLp44P/Kp+0mxRLKXs=
+X-Received: by 2002:a5d:464f:: with SMTP id j15mr7875159wrs.265.1556903629942; 
+	Fri, 03 May 2019 10:13:49 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id e5sm1717671wrh.79.2019.05.03.10.13.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 03 May 2019 10:13:49 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 May 2019 13:12:11 +0100
-Message-ID: <CAFEAcA88dHzePhpOBdKFXr4HpF3J40FqY6qdwFpNhyBgxbehkQ@mail.gmail.com>
-Subject: Re: [PATCH for-4.0?] arm: Allow system registers for KVM guests to be
- changed by QEMU code
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Dongjiu Geng <gengdongjiu@huawei.com>, 
-	Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 6ArjikNQx4H+
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri,  3 May 2019 18:13:45 +0100
+Message-Id: <20190503171347.13747-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: [Qemu-arm] [PATCH 0/2] hw/arm/boot: handle large Images more
+ gracefully
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: olIO3O6B3FGU
 
-On Mon, 25 Mar 2019 at 10:25, Peter Maydell <peter.maydell@linaro.org> wrot=
-e:
->
-> On Mon, 18 Mar 2019 at 15:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
-> >
-> >
-> > Peter Maydell <peter.maydell@linaro.org> writes:
-[...]
-> > > Support this by making kvm_arch_put_registers() synchronize
-> > > CPU state back into the list. We sync only those registers
-> > > where the initial write succeeds, which should be sufficient.
-> > >
-> > > This commit is the same as commit 823e1b3818f9b10b824ddc which we
-> > > had to revert in commit 942f99c825fc94c8b1a4, except that the bug
-> > > which was preventing EDK2 guest firmware running has been fixed:
-> > > kvm_arm_reset_vcpu() now calls write_list_to_cpustate().
+This patchset attempts to fix https://bugs.launchpad.net/qemu/+bug/1823998
+which reports that we don't handle kernels larger than 128MB
+correctly, because we allow the initrd to be placed over the
+tail end of the kernel. AArch64 kernel Image files (since v3.17)
+report the total size they require (including any BSS area that
+isn't in the Image itself), so we can use that to be sure we
+place the initrd sufficiently far into the RAM.
 
-> > > Should we try to put this in for rc1? Not sure... Testing
-> > > definitely appreciated.
->
-> > Hmm so running my testcase:
-> >
-> >  * gdbstub enabled with an active sw or hw breakpoint
-> >  * run userspace program in guest:
-> >    - sw breakpoint works fine
-> >    - hw breakpoint never triggers because guest segs
->
-> Further testing from Alex suggests this is some unrelated
-> bug or regression (ie not caused by this patch), but:
-> since the only in-tree use for this patch is to get nested
-> debugging working and it would be broken for this other
-> reason even with this patch, I'm going to postpone applying
-> this patch until the start of the 4.1 cycle.
+Patch 1 in this series adjusts our "where do we put the initrd"
+heuristic so that it always places it at least after whatever
+our best guess at the kernel size is. (This might still not
+be right for images like self-decompressing 32-bit kernels, where
+there's no way to know how big the kernel will be after
+decompression.) Patch 2 makes load_aarch64_image() return the
+kernel size as indicated in the Image file header, so that for
+the specific case of AArch64 Image files we will definitely not
+put the initrd on top of them.
 
-Since we're now in the 4.1 cycle I'm going to apply this
-patch, as I suggested above -- I'm putting it into my
-target-arm.next queue to go in in my next pullreq.
-
-We should make sure we investigate the debugging-KVM
-breakage Alex described at some point this cycle too.
+I've given this a quick smoke test but I don't have a very large
+Image kernel to hand, so testing appreciated.
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  hw/arm/boot: Avoid placing the initrd on top of the kernel
+  hw/arm/boot: Honour image size field in AArch64 Image format kernels
+
+ hw/arm/boot.c | 51 +++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 35 insertions(+), 16 deletions(-)
+
+-- 
+2.20.1
+

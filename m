@@ -1,113 +1,99 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp708463wrh;
-        Fri, 3 May 2019 08:41:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyDseUIwf3zjTVOUzxqj7MbwZCBKq20E1S9YqW2H1aSK3op5m4kE/NP6CdrtHWSB6MoRppB
-X-Received: by 2002:a1c:980a:: with SMTP id a10mr7027882wme.150.1556898072367;
-        Fri, 03 May 2019 08:41:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556898072; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp731879wrh;
+        Fri, 3 May 2019 09:03:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyVkZcr+xId6SrLdb6aibYQsKHZ4SGt/V96ryP2WxhTEehtRabwbXSX/PAbKO1c3Yq/oqiJ
+X-Received: by 2002:adf:db05:: with SMTP id s5mr7480900wri.247.1556899436547;
+        Fri, 03 May 2019 09:03:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556899436; cv=none;
         d=google.com; s=arc-20160816;
-        b=FgPh6BLSO3o5biimMJyFwFeJuuHjEPBU42XQ/ZS2EUdJRfdyCAbOgOEF0Pu/X7RSC/
-         xx0ik/vGobbjtLiumLXs9yqEf1N1hw7TNYb7Na8ZPpf2AhLG3tOYpKtw3C5L/2DTxut5
-         +R9B5G7XdGveYiz2lHkcB95/ccA3BWkJZUwlM9vMOlsuUnGddes0vlOYo2meoZ46tNKS
-         sxCky/0q9E+JCNteLCYrFxYZF1O2g2N4idYpNbJN49Nf6JxACVuuCNsrKYy2MMe6mUmL
-         Yl6aB75W3JZfR43o+fxhaePHH6UcSBIonK71Sth4i6KmY47uKfPkiQr46XkzQnoQQvBI
-         YFbw==
+        b=doK+mGlCh6qC2HPG0Cjdckdn+KrL/5XAmi3BAdqOMCUsppa1anwIlw+rPvS3ExWIKO
+         WD5DSPpAfICwM/n2bgFu08mAByfyiRpur7QAcUNNrSYouIG2S+3uGeyVCbAStmf2xjZe
+         fB9j16t9quuLWjzG1QcjWOf9oaPMYeezjRZOrp+YUu+UdJxbTA9NKBeBAWZtnuxZB3jR
+         ENPpPyt0nExQLmcGO8SQzlWLP4rHTltBarOLvVzfu+UQvfa0zxEEVvLnvIxQDV/OJ5Gm
+         n0lzbSfEW0ihNfmCfLFM91JCCAuMR3RDlALaHGgDChk+8pfYC+zOsM/8yjweaheJL1+g
+         Jp2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=J8NH6j4wRJjl9tnNHFWrJAzQEwCw/Ua6k8E4+tIFN8I=;
-        b=hbeBn/rP07353QvNcDUBePEBtRyRxDXfrmO55qpgOgrscSeauXkt3kOeowJIQ0S+r7
-         S8PrWbIlPDBzWdfos5nTq6fbhf72qskawdk0tArk9P9xQFtkM1Pp8owY4v7hTCraihgC
-         C8LavZDRkHDcWvOGf1FFq/tV+oiigFn/4kZMSP9S1gMZ2tW/Mz0L4k2l77sTDJpGQ4HC
-         gCnDcF8KYeXnCiUSyODiiIj7ZVxTIsWrpBGzaTv03gfXvc2lMd7olzfDuRyl/H+bv4GE
-         78Hvp9qexkD4dxkUtfG+EDnvfwth1tkHAqEuNgzv7b35+ycrRROLhcb66uWwBPyhkL/V
-         elFA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UryPuS+KNZtgHQBCrWBR74q8kdkTnuRZE+e5Ns822Pg=;
+        b=IW0zAw6mA/VjpcnU8C8leb6nOFtAVGCeLNVre8hclisVDeLT/fEEKyTJkhsxzdOnm8
+         WbJH8b7RXq4gQwdchG+0c79oRBJtZ3gEcREb/B1cFyJF0vvKd9A45entizPkX7NvF+RH
+         vdIW6g+a3vatypqpd041I744a3b0kkqS3BKrVib+aZybKCQp5QgYbnqd1Y8O4IbETx4I
+         Q/okUy6U3Uno9eRV3p+hktT+6B7XzBrA9QSKcMq0h6bN3s6cIBwBZYq6n3RrY4R2MPyB
+         UK8rAVU1YDpgcOm4NMs085aHkooP1gHnMYVgpKvYrYaldBssah0981E8gkbKPKBprJRV
+         klog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZCD2Gb7T;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QQzpLuqo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v189si611353wme.189.2019.05.03.08.41.12
+        by mx.google.com with ESMTPS id c16si1736362wrs.240.2019.05.03.09.03.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 May 2019 08:41:12 -0700 (PDT)
+        Fri, 03 May 2019 09:03:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZCD2Gb7T;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QQzpLuqo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:42385 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:42861 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMaJD-0005ZI-Cr
-	for alex.bennee@linaro.org; Fri, 03 May 2019 11:41:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34649)
+	id 1hMafD-0003Mr-Gz
+	for alex.bennee@linaro.org; Fri, 03 May 2019 12:03:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40271)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hMaJ2-0005Yx-QW
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 11:41:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hMac4-0000Rm-Ua
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 12:00:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hMaJ1-0004Cg-Tw
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 11:41:00 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:45144)
+	(envelope-from <peter.maydell@linaro.org>) id 1hMac2-0003Al-UQ
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 12:00:40 -0400
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b]:38882)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hMaJ1-0004Ae-MU
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 11:40:59 -0400
-Received: by mail-pg1-x542.google.com with SMTP id i21so2887258pgi.12
-	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 08:40:59 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hMac1-00038d-8m
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 12:00:38 -0400
+Received: by mail-oi1-x22b.google.com with SMTP id t70so4807639oif.5
+	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 09:00:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=J8NH6j4wRJjl9tnNHFWrJAzQEwCw/Ua6k8E4+tIFN8I=;
-	b=ZCD2Gb7TeyIsuZHHdN+RSGiZB5L5YGQzxjPwZX6aKPjb0sTEJPm1zDEojwmdUntFNW
-	CwGa0kr9IOIg4APBP5TgkV2zrc6jtW26ZP/nPMTFawI2Rn8mDMoCx9yjoaQKrtck1aPn
-	Di6Usb4LrhksfRUWWAoZaODBZJyn12l+UMJ6p0c0koxp38/aS7yhlgiNT7z+gcs0UUZZ
-	CihrWp72OqgXts+7Yn6HzyZZbZmKfKCUIAjw3PkBoIW5HTZqKaP+FaxQ7cy0+//HI5m6
-	3km+1C1bnCx0TStBT4wYWBmL3DDnLHpO9RxfN0e1f/pjtjST0PxW3NnbQ9zSEIMjaBrj
-	CvcA==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=UryPuS+KNZtgHQBCrWBR74q8kdkTnuRZE+e5Ns822Pg=;
+	b=QQzpLuqo2xP+Gk/ZNBmJ5URCiJPPjjnPJ+Q5zziIhJPbC5JcHaSeA3ta87udIG1xZW
+	3X8KkkkmdSc8iAMkx4dJoSjzyd9N3B8gU8tJIzFbnfKxdMlcOyzDjtPrQL/kKQbb6eTv
+	MkGZBVxumkmRno/bdQndGesV/QKHz4zSiAK1fW6utkAaUqTdDjwTvIDjxePoS3ICMAb4
+	gxQxVRMWlYQaHrt5f+XsGzDN/irPmvQMocG5bo9lsC4/ua8wE9R05gyqspn+Sd6mxEmZ
+	OWqWqdp/WR1wHtNoi8r6cx8Rb/8D3aT7Y63wOODS6vkrsUn1FscWlGr6004XSUECkmvc
+	OWMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=J8NH6j4wRJjl9tnNHFWrJAzQEwCw/Ua6k8E4+tIFN8I=;
-	b=dKQAtFnVkc6Iv+s/LpMSNTbPGb33AsXN7Rgntsnah8yvlHNrQJ/wKyD8GtPPS9k0UD
-	JAjXBnjGWGjhgmozis+mj3Uk7yRrfYEH+mbtc2BMBGZwp7/Ri52zsfFEILWea6iuLzUs
-	UA2v4uGeit/AN08VHHNKOXi0aHtGDWOO9JNoD0zpMoMKbIqXW0EfOMGAHVd7vTURyDeA
-	kZmy0lyg/m0W5jqA0N4pYeKC4lnGmiZjXN57Sntk3ErzwfaorCltk5QfBxVoTHub2Yzs
-	lxtQzChaAnH8BaVpkbCEqmzQB8fnHg9bTBAdLaSMAxRFoU6RUwB0o9ETMpzJF8196eza
-	3odA==
-X-Gm-Message-State: APjAAAXdSqV85xm3iIsiOGOHD65jPZK1NwbSWLisBncyo8PwbBKxHoQk
-	PrKHu7KxsyIxbV+q10QK9K6a/Q==
-X-Received: by 2002:a63:5b58:: with SMTP id l24mr10800728pgm.139.1556898058437;
-	Fri, 03 May 2019 08:40:58 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
-	by smtp.gmail.com with ESMTPSA id
-	f14sm2966898pgn.77.2019.05.03.08.40.57
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 03 May 2019 08:40:57 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20190503120448.13385-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <6aa00050-1856-b96d-a5d6-ece2f794ef08@linaro.org>
-Date: Fri, 3 May 2019 08:40:54 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=UryPuS+KNZtgHQBCrWBR74q8kdkTnuRZE+e5Ns822Pg=;
+	b=WMezxSgcadqw9lbgCPKXHwe35clXkZsbWVxvJQOj18IFuShM5YUdkq714egeA3JG0h
+	AO+t5gUvSw7izijN/GMAiN4c5pfSiI1e+LT5MpArEJLuh0aHnTMk/6eBod6H9H7I2aJ2
+	udLsB1Ch/D7LqKFLnNhj63BA/EXVIhe1llbvRomPNVB9w1PpxXKUEecTWkfCIK8DLQil
+	VZAsFNxdonvza3jGXXssi8y9pQ85PnYUz4HrvWcnHeKr6+gI/bGBvfO/2tkqaZ1ABmJE
+	UGJYQLYdRz7p3OVtWqiQ9JJXBOURRJFsngqz2SiR+Rdt5HljLOLTYo/IA7c8zo10Sw3q
+	PAcw==
+X-Gm-Message-State: APjAAAWkmBwGW02NZYzKQeA/UP2O4zbRmjEakMOnGhDFgFewh71IHF07
+	MszP0xUj1j+1TI9Bem0zMHOI+0a1RH53A9gvB6wLiw==
+X-Received: by 2002:aca:ab12:: with SMTP id u18mr5951214oie.48.1556899235809; 
+	Fri, 03 May 2019 09:00:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190503120448.13385-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <cover.1553510737.git.damien.hedde@greensocs.com>
+	<bf7dcbc7-5dc6-6269-87e9-44f027946cd9@greensocs.com>
+	<CAFEAcA8e9Ua8p4LQ=VFkZE69_vr+-EW-bjKX9W-LmgZmvho7Sw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8e9Ua8p4LQ=VFkZE69_vr+-EW-bjKX9W-LmgZmvho7Sw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 May 2019 17:00:24 +0100
+Message-ID: <CAFEAcA-TrYPeESbxOjpd49F+iZHWSrwwpRwai21_jhmZJ0Xonw@mail.gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: Re: [Qemu-arm] [PATCH v2] target/arm: Stop using variable length
- array in dc_zva
+X-Received-From: 2607:f8b0:4864:20::22b
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 00/17] multi-phase reset mechanism
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,29 +105,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ea48vNFo6wVj
+X-TUID: ImbVPVHT4duf
 
-On 5/3/19 5:04 AM, Peter Maydell wrote:
-> Currently the dc_zva helper function uses a variable length
-> array. In fact we know (as the comment above remarks) that
-> the length of this array is bounded because the architecture
-> limits the block size and QEMU limits the target page size.
-> Use a fixed array size and assert that we don't run off it.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Changes v1->v2:
->  * use ARRAY_SIZE() instead of sizeof()
->  * add a comment to make it a bit clearer that the
->    expected size of hostaddr[] is only 2 entries
-> ---
->  target/arm/helper.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
+On Mon, 29 Apr 2019 at 10:41, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Mon, 29 Apr 2019 at 10:36, Damien Hedde <damien.hedde@greensocs.com> wrote:
+> >
+> > Hi All,
+> >
+> > Any comment about this ?
+>
+> Sorry we haven't got to this yet. This is on my to-review list,
+> but so are 23 other series, and I've been on holiday for the
+> past week or so. I will try to get to it this week.
 
+I made a start on this, but it's going to take me some time
+to wrap my head around the design and the issues you raise
+in the cover letter. Given the bank holiday on Monday and
+some other commitments I have on Tuesday I think it's going
+to be the second half of next week at best before I can
+do a proper response.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+In general I like the code (though as you say we may not
+have got the interface quite right -- I had not appreciated
+some of the nested-reset cases when I proposed it I think).
 
-r~
+I think we could use a document (which would eventually live
+in docs/devel) that describes the reset system and provides some
+how-to style documentation for
+ * what you need to do if you're writing a device
+ * what you need to do if you are an external user of
+   a device model and you want to reset it
+plus some notes on whatever we still have left over as
+remnants of the old reset scheme and any intended transitions
+to try to remove those remnants. I'll have a go at writing
+something because I think that will help me personally in
+trying to understand the problem domain and what the new
+design is doing.
+
+thanks
+-- PMM

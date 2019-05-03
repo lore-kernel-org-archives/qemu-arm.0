@@ -1,87 +1,99 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp519344wrh;
-        Fri, 3 May 2019 05:48:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz12TFDTxs8A9D9b8znIc/me7TKfm4QXGH+mcSucRbYYKr6uoDUHGYpfj+BTeGYx/He0K1d
-X-Received: by 2002:a1c:f117:: with SMTP id p23mr1258553wmh.123.1556887699770;
-        Fri, 03 May 2019 05:48:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556887699; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp547289wrh;
+        Fri, 3 May 2019 06:13:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx4yNB5a4cA4wjFwrPcDD7EYAgK5MVVUaYDkaZp6QREfUhYJdTPim/PDUjmWW05b/NiNF0e
+X-Received: by 2002:adf:cc8a:: with SMTP id p10mr7218470wrj.34.1556889217248;
+        Fri, 03 May 2019 06:13:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556889217; cv=none;
         d=google.com; s=arc-20160816;
-        b=p0TdqhSSggQMOotbvg4XGOOAELZSy4ai2afruXXY9c9j1h4b9A6hLHiGA7NFxRoN5H
-         rZFKIUNXOuLFlJNPWgTOmtsmYK83OvsAogPE37bvCdYOdXnaVp2lIGcoC6xEEBseNH3l
-         OSbgXg3c6JDhO/Az/L+xpHP2ThmwDMGvlwgcy6euhtv7cp3cd3mF1UFzKP8xKJqWy0ps
-         VvZ0aI3nisXIluyXa0Kq5/YWAiCzTMhS/QnFl1KAez9Ktx8jJx2OA8cGloqCstusV/aO
-         YJsEmL96urK70f+psc5KCSzJXJ6RGkWzowc9PDI1FK82JuvM5JsiOUech13U9NwAVD2w
-         psRw==
+        b=E0WAK9ERMMljRDnPyYiITukyqNxo6xOsQwiNAGeK5CSorq9sKUdD7rpPBU8yJFbbIQ
+         oQdE+PVEK60Bysl2VwlJu7WhWL0xr44nkra6pq6iKxF2ao10NUKXmvdq8OaQa9xybCjN
+         DsdsOdttL5gYJiGpemlCTeC+18xwkUbgs1Bo1sKiRm2VnhXHRcjAb6N6ZtpQI46CH+LL
+         PH8xniNx2HVmWMs6KdFgcLxCD4MLiZWOqBNwt6eppy64q1Q/fcPIahBZd346ZFlXGkIz
+         T9ryvX7cEfJFfmn7JZyC2EL1uCvAURWcMyVs8nHJJkEZZlVMtHm0RehoE8oqHo1KU17X
+         bj8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=TUAY2DK8mMAC4COXRTfixlyGZgxu5KurW+13fhWJEno=;
-        b=EJMrqG2WEO9jhxXFXSK+9roVX07GzM1PrkOGVBnN79MdoPnuvi88x9uvXowEd8U7Js
-         9OS8MiD7wx7BJ221+usX/Kh+VfWSiVm6hzkCO0Xw+UZNDxxbV5gp9fziKKZvcwaav2ou
-         O2tVofQN4Lapw7/HJHCs7R9PsFZ2xcXSuErP5AqQzfYhrbYB0dfs3lU1giUQbY7ajlZX
-         OYseh6VuYowHf1/3ubZwcIJW2UU07bXkSs/e3DKWqSQu0WzHzh5TpWWKJG9n6ye3F7Gi
-         hQ8aQQosjpIF3b9+c/FtH2877YAW+NRpRUExo7QRkGFNro8bDE/acpP4ZP/v3e/hyK1R
-         HdKw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
+        b=dwcZFY3gapomcE2fZSPN/FbKvZRMFKYm6GiAvcv97Al3VF74H05VDADKNnQ/5EBY1d
+         VtTcOlJsdmmJNzLWeLexNaUFBFwAiAsQOByzHNJtMOejkr5EvZQJI7rAv5GWLPZ11aiy
+         IuUkDB9oCGs8E42GIsA0ZaujjLNSue0Ie5XqpfR+Ury6HuDdpmlpjSClNns920GgRA58
+         r2TDWMIxmRnWYfY7EwiFvFX75Q9fvlwZwhFwLs4nT9V7Ao9f9bJQzx9reODroDI9CTZz
+         +5u6EAv/v8gc4FShxGUo9tMJJ2ge3a4O29d9odt3SMNXUfxhT9XrvAT8kSpkyRumnaRB
+         wMTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="IP/mrDxj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z142si1309978wmc.9.2019.05.03.05.48.19
+        by mx.google.com with ESMTPS id m18si1525107wrw.339.2019.05.03.06.13.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 May 2019 05:48:19 -0700 (PDT)
+        Fri, 03 May 2019 06:13:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:40263 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="IP/mrDxj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:40635 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMXbu-00074q-RI
-	for alex.bennee@linaro.org; Fri, 03 May 2019 08:48:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53551)
+	id 1hMY0O-0004U8-8m
+	for alex.bennee@linaro.org; Fri, 03 May 2019 09:13:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hMXbc-00073K-NC
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 08:48:02 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hMY0D-0004To-0O
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hMXbb-0006xB-8v
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 08:48:00 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45397 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hMXba-0006wj-Vq; Fri, 03 May 2019 08:47:59 -0400
-Received: from lhreml704-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 638FEAC295BB53F9F1BE;
-	Fri,  3 May 2019 13:47:57 +0100 (IST)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.137]) by
-	lhreml704-cah.china.huawei.com ([10.201.108.45]) with mapi id
-	14.03.0415.000; Fri, 3 May 2019 13:47:51 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [PATCH v4 4/8] hw/arm/virt: Add memory hotplug framework
-Thread-Index: AQHU7r9hpSQT1rMAlkOED/ex743ihqZYF2CAgAFnhfA=
-Date: Fri, 3 May 2019 12:47:50 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1B09C7@lhreml524-mbs.china.huawei.com>
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-5-shameerali.kolothum.thodi@huawei.com>
-	<20190502181929.0bad1fb5@Igors-MacBook-Pro>
-In-Reply-To: <20190502181929.0bad1fb5@Igors-MacBook-Pro>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <peter.maydell@linaro.org>) id 1hMY0C-000696-3J
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:24 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:32914)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hMY0B-000686-Nr
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:24 -0400
+Received: by mail-oi1-x241.google.com with SMTP id l1so4380819oib.0
+	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 06:13:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
+	b=IP/mrDxjZv20KF5baFr3Rf5fAVUTVlzct53Wg9APwLo71jLRMfg1c2sciWvAhE1MK3
+	CTfp8972gg0oFm5OnB37jsyY6nu7lbBD0MuuHWSVOk5eWzhywPe4Ic4pZvYU2GMCxobJ
+	IJoTwbeNR9iD+KIrFf+3I/Q4FMeFvrokByZzNQEe3RTWnbjOCqo5mbPJaOFZ2TnPo+sS
+	LITZ8sG6UIKQrNGxu9TNd421tL8iwm2ELEpGhIPIMqtRH5PJsDuXoEcR9odbZjsNUDjp
+	q/G9YzJR2xRcp7AIPXjAAOn93nV/M4GRFpWX2yMvzxzxg21Awsdk0DkhIMiFvF/gJvHH
+	Kg6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
+	b=FdJrPB5Vq8MIvKcou7JYiOb5/ZkloshLDw6HX+G7MdnvINrAJ0TllsQvVs1GkWNhNW
+	8nr+IpBtlhvE+MOJbwSWTaik2Kn1Qt/QoF89fTsCA3bWdy+apyZ1LY36Lt22g8aFld0a
+	mEmK2mf66Duwmm3Lq/RxMtU8zXo6AMojPbfj7YigaetR79VpEWbknk6ktTecPSz7h4Rm
+	h0tHW4qJxie5Zq9JZwRLHk2KV4UdPWiGumOrlvdv4kSRQRqVsMffSaRgvmZ4+8NLflxj
+	WMgpnevt0slZfdbHT56GOU4tMVkzkOK7amkXjO6Pvc9KXIoMirzCbitbsMWG/yNJJ23I
+	tmnQ==
+X-Gm-Message-State: APjAAAXbd+KUtv5HXlX9ojwyTi8Xhyyosv8rhDfRosx1+h5kZGal7Bne
+	hJLHer5htYODhLUEpIV8h0wWxUT8tOn4+wVmWdUOGA==
+X-Received: by 2002:aca:ab12:: with SMTP id u18mr5473345oie.48.1556889202462; 
+	Fri, 03 May 2019 06:13:22 -0700 (PDT)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [PATCH v4 4/8] hw/arm/virt: Add memory hotplug
- framework
+References: <20190411153942.4533-1-peter.maydell@linaro.org>
+	<53930e87-3bb1-fdd5-a8fe-8603c0adecc2@linaro.org>
+In-Reply-To: <53930e87-3bb1-fdd5-a8fe-8603c0adecc2@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 May 2019 14:13:11 +0100
+Message-ID: <CAFEAcA_GZPJj7OQ-jK1TX4wKS4hO6OR43OG0Y3eCuxVdiUtsnQ@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Implement NSACR
+ gating of floating point
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,178 +105,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	"lersek@redhat.com" <lersek@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yaNO3BU/5nL5
+X-TUID: Rjg1MhS++bEr
 
-
-
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 02 May 2019 17:19
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org;
-> shannon.zhaosl@gmail.com; sameo@linux.intel.com;
-> sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
-> lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
-> <linuxarm@huawei.com>
-> Subject: Re: [PATCH v4 4/8] hw/arm/virt: Add memory hotplug framework
->=20
-> On Tue, 9 Apr 2019 11:29:31 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > From: Eric Auger <eric.auger@redhat.com>
-> >
-> > This patch adds the memory hot-plug/hot-unplug infrastructure
-> > in machvirt. The device memory is not yet exposed to the Guest
-> > either though DT or ACPI and hence both cold/hot plug of memory
-> s/though/through/
-
-Sure.
-
-> > is explicitly disabled for now.
-> >
-> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> >  default-configs/arm-softmmu.mak |  3 +++
-> >  hw/arm/virt.c                   | 45
-> ++++++++++++++++++++++++++++++++++++++++-
-> >  2 files changed, 47 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/default-configs/arm-softmmu.mak
-> b/default-configs/arm-softmmu.mak
-> > index 613d19a..9f4b803 100644
-> > --- a/default-configs/arm-softmmu.mak
-> > +++ b/default-configs/arm-softmmu.mak
-> > @@ -160,3 +160,6 @@ CONFIG_MUSICPAL=3Dy
-> >
-> >  # for realview and versatilepb
-> >  CONFIG_LSI_SCSI_PCI=3Dy
-> > +
-> > +CONFIG_MEM_DEVICE=3Dy
-> > +CONFIG_DIMM=3Dy
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index ce2664a..da516b3 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -61,6 +61,8 @@
-> >  #include "hw/arm/smmuv3.h"
-> >  #include "hw/acpi/acpi.h"
-> >  #include "target/arm/internals.h"
-> > +#include "hw/mem/pc-dimm.h"
-> > +#include "hw/mem/nvdimm.h"
-> >
-> >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> >      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> > @@ -1806,6 +1808,34 @@ static const CPUArchIdList
-> *virt_possible_cpu_arch_ids(MachineState *ms)
-> >      return ms->possible_cpus;
-> >  }
-> >
-> > +static void virt_memory_pre_plug(HotplugHandler *hotplug_dev,
-> DeviceState *dev,
-> > +                                 Error **errp)
+On Sat, 13 Apr 2019 at 08:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 4/11/19 5:39 AM, Peter Maydell wrote:
+> > +static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
 > > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        error_setg(errp, "memory cold/hot plug is not yet supported");
-> > +        return;
+> > +    /*
+> > +     * For A-profile AArch32 EL3, if NSACR.CP10
+> > +     * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
+> > +     */
+> > +    uint64_t value = env->cp15.cptr_el[2];
+> > +
+> > +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+> > +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
+> > +        value &= ~(0x3 << 10);
+>
+> Read as 1, and yet you're clearing the value?  Cut-n-paste error from CPACR?
+> Surely better to do nothing on read, but set on write (to either HCPTR or NSACR).
+>
+> > +static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> > +{
+> > +    /*
+> > +     * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
+> > +     * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
+> > +     */
+> > +    uint64_t value = env->cp15.cpacr_el1;
+> > +
+> > +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+> > +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
+> > +        value &= ~(0xf << 20);
 > > +    }
-> add comment here why it's needed.
+>
+> This one does do the right thing, but better to clear the bits on write to
+> NSACR.  This lets you avoid the change to fp_exception_el, and the missing
+> change to sve_exception_el.
 
-Ok.
+Hi Richard -- I was just going through the review comments on this
+patchset, and I saw this bit. Could you clarify what you mean by
+"the missing change to sve_exception_el" ? Since SVE is AArch64 only,
+there can't be any configs where we have SVE and EL3 is AArch32,
+so I don't think these two features should be able to interact.
 
->=20
-> > +
-> > +    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL,
-> errp);
-> maybe before calling this there probably should be check if acpi is enabl=
-ed.
->=20
-> not sure if arm/virt board honors -no-acpi CLI option.
-
-Ok. I will check this
-
-Thanks,
-Shameer
-=20
-> > +}
-> > +
-> > +static void virt_memory_plug(HotplugHandler *hotplug_dev,
-> > +                             DeviceState *dev, Error **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +
-> > +    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
-> > +
-> > +}
-> > +
-> > +static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_de=
-v,
-> > +                                            DeviceState *dev,
-> Error **errp)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_memory_pre_plug(hotplug_dev, dev, errp);
-> > +    }
-> > +}
-> > +
-> >  static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-> >                                          DeviceState *dev, Error
-> **errp)
-> >  {
-> > @@ -1817,12 +1847,23 @@ static void
-> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-> >                                       SYS_BUS_DEVICE(dev));
-> >          }
-> >      }
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_memory_plug(hotplug_dev, dev, errp);
-> > +    }
-> > +}
-> > +
-> > +static void virt_machine_device_unplug_request_cb(HotplugHandler
-> *hotplug_dev,
-> > +                                          DeviceState *dev, Error
-> **errp)
-> > +{
-> > +    error_setg(errp, "device unplug request for unsupported device"
-> > +               " type: %s", object_get_typename(OBJECT(dev)));
-> >  }
-> >
-> >  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
-> *machine,
-> >
-> DeviceState *dev)
-> >  {
-> > -    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
-> > +       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
-> >          return HOTPLUG_HANDLER(machine);
-> >      }
-> >
-> > @@ -1886,7 +1927,9 @@ static void virt_machine_class_init(ObjectClass
-> *oc, void *data)
-> >      mc->kvm_type =3D virt_kvm_type;
-> >      assert(!mc->get_hotplug_handler);
-> >      mc->get_hotplug_handler =3D virt_machine_get_hotplug_handler;
-> > +    hc->pre_plug =3D virt_machine_device_pre_plug_cb;
-> >      hc->plug =3D virt_machine_device_plug_cb;
-> > +    hc->unplug_request =3D virt_machine_device_unplug_request_cb;
-> >  }
-> >
-> >  static void virt_instance_init(Object *obj)
-
+thanks
+-- PMM

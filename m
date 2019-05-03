@@ -1,99 +1,97 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp547289wrh;
-        Fri, 3 May 2019 06:13:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4yNB5a4cA4wjFwrPcDD7EYAgK5MVVUaYDkaZp6QREfUhYJdTPim/PDUjmWW05b/NiNF0e
-X-Received: by 2002:adf:cc8a:: with SMTP id p10mr7218470wrj.34.1556889217248;
-        Fri, 03 May 2019 06:13:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556889217; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp567822wrh;
+        Fri, 3 May 2019 06:32:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyNgdbdQIeRa+wNm4lJ7C6U2x6mkDs97S7y+yvEQCxBffQmVmKDS8qBG8OcoUoNEDYJ5h6o
+X-Received: by 2002:adf:f50e:: with SMTP id q14mr7240532wro.48.1556890349438;
+        Fri, 03 May 2019 06:32:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1556890349; cv=none;
         d=google.com; s=arc-20160816;
-        b=E0WAK9ERMMljRDnPyYiITukyqNxo6xOsQwiNAGeK5CSorq9sKUdD7rpPBU8yJFbbIQ
-         oQdE+PVEK60Bysl2VwlJu7WhWL0xr44nkra6pq6iKxF2ao10NUKXmvdq8OaQa9xybCjN
-         DsdsOdttL5gYJiGpemlCTeC+18xwkUbgs1Bo1sKiRm2VnhXHRcjAb6N6ZtpQI46CH+LL
-         PH8xniNx2HVmWMs6KdFgcLxCD4MLiZWOqBNwt6eppy64q1Q/fcPIahBZd346ZFlXGkIz
-         T9ryvX7cEfJFfmn7JZyC2EL1uCvAURWcMyVs8nHJJkEZZlVMtHm0RehoE8oqHo1KU17X
-         bj8w==
+        b=YBKzYDsVHQ0FYra0ihZ7s9N/+l5Rg1KDlaohXle/bahymLShJLaEHsggPY0tFW9BcD
+         fGL8PJb4iuXdyXboHH5dYuGnb0JLSKKNF9jKIbQOkOKH08kz5vbdPoHHMWZMJ9xzw7Vr
+         ddG2tj/hpKK6i5rwKuBt4ODLmIhIoQYuB6l3CNHZtU3YgPwL/97BdhLRmKT0pG+/IsJm
+         mUUnqzGHVx9m9YJeNIUiQeG9CG6xskJPcwbmryODqWFsbgGeDteTsSaKWq4MsvRrUI0s
+         d/5dg+pHqj1Goe1hBJrx0acmYmp6utXnIL9D2qIenSaXlpAH788mU2Ku9+pHr4XfL9dV
+         zZ1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
-        b=dwcZFY3gapomcE2fZSPN/FbKvZRMFKYm6GiAvcv97Al3VF74H05VDADKNnQ/5EBY1d
-         VtTcOlJsdmmJNzLWeLexNaUFBFwAiAsQOByzHNJtMOejkr5EvZQJI7rAv5GWLPZ11aiy
-         IuUkDB9oCGs8E42GIsA0ZaujjLNSue0Ie5XqpfR+Ury6HuDdpmlpjSClNns920GgRA58
-         r2TDWMIxmRnWYfY7EwiFvFX75Q9fvlwZwhFwLs4nT9V7Ao9f9bJQzx9reODroDI9CTZz
-         +5u6EAv/v8gc4FShxGUo9tMJJ2ge3a4O29d9odt3SMNXUfxhT9XrvAT8kSpkyRumnaRB
-         wMTQ==
+        bh=OA/eCiV4/Br9WIY15LkCNmcRYoJM+/C5INnekXkEn2s=;
+        b=aOGB0qJiHqS16sTmgM3UiYT56fce0TTJ6zSySFY1h8/CdG199O1OjS8Dq505bpSMFA
+         hcC4qm9b6CasiWt54Z9ouBFaI3qwEo3cml9M2+F5I2/CGmJC3JO8pdAFk0BfKqlyPtH2
+         D1OKayKQwozumAwlExGk6lwoDhND6RTNog0CibtvE3ZHvzxBMuAN1DQaTK6SWDEtUW/t
+         DYpj78D8Ivovukj897aDm4JIFfH0PmdrGdF2y5SOFKnaBOOXSDfvI6LYiAp++ResZrBi
+         ZIGmDFcgoyCifqrGXtAf5AT57xMEUKJ0zVUP5+Mi9d2DHBp5l4ZUkyha+7pj2mRdObR6
+         P4EA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="IP/mrDxj";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Uf2ntE0g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m18si1525107wrw.339.2019.05.03.06.13.37
+        by mx.google.com with ESMTPS id y15si1575486wru.14.2019.05.03.06.32.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 May 2019 06:13:37 -0700 (PDT)
+        Fri, 03 May 2019 06:32:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="IP/mrDxj";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Uf2ntE0g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:40635 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:40800 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMY0O-0004U8-8m
-	for alex.bennee@linaro.org; Fri, 03 May 2019 09:13:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58832)
+	id 1hMYIe-0000qU-Hf
+	for alex.bennee@linaro.org; Fri, 03 May 2019 09:32:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMY0D-0004To-0O
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hMYIU-0000qE-Dh
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:32:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMY0C-000696-3J
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:24 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:32914)
+	(envelope-from <peter.maydell@linaro.org>) id 1hMYIT-0007Z8-Bj
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:32:18 -0400
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f]:39761)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hMY0B-000686-Nr
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:13:24 -0400
-Received: by mail-oi1-x241.google.com with SMTP id l1so4380819oib.0
-	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 06:13:23 -0700 (PDT)
+	id 1hMYIT-0007Ws-60
+	for qemu-arm@nongnu.org; Fri, 03 May 2019 09:32:17 -0400
+Received: by mail-oi1-x22f.google.com with SMTP id w130so3983829oie.6
+	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 06:32:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
-	b=IP/mrDxjZv20KF5baFr3Rf5fAVUTVlzct53Wg9APwLo71jLRMfg1c2sciWvAhE1MK3
-	CTfp8972gg0oFm5OnB37jsyY6nu7lbBD0MuuHWSVOk5eWzhywPe4Ic4pZvYU2GMCxobJ
-	IJoTwbeNR9iD+KIrFf+3I/Q4FMeFvrokByZzNQEe3RTWnbjOCqo5mbPJaOFZ2TnPo+sS
-	LITZ8sG6UIKQrNGxu9TNd421tL8iwm2ELEpGhIPIMqtRH5PJsDuXoEcR9odbZjsNUDjp
-	q/G9YzJR2xRcp7AIPXjAAOn93nV/M4GRFpWX2yMvzxzxg21Awsdk0DkhIMiFvF/gJvHH
-	Kg6Q==
+	:cc; bh=OA/eCiV4/Br9WIY15LkCNmcRYoJM+/C5INnekXkEn2s=;
+	b=Uf2ntE0g/g17eZvrRRSns/CIuJqC9yEv7m5cE9N8lwMPacq2Fb6rfm/YHXnnO8Lp2s
+	5eRorjvgLSgfO5k8aUbzXGCUYR7EBAG9JbKW6iqEDTQpJJgYz+nlDL/ytyRvNXAzIwee
+	fdnrqo1jJL3N5/lTFS/ijJq9ZXdXzopFdfQACbbuhN1c9JZ9HnoNYrjlrfonGJfdNjSb
+	oFrkAoflhBjdDT8sBPR3A4AG71SnvLE73YxjgbKVYxZcvTvploVqo/Evv8V7d/tBzJRk
+	IN71ZT8JJPf89jEG7MceWgB9GcK+OqbQDej4qkWVF++TGFwl7oll51Jkn84sNNc+lpV+
+	aNyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=RzxudKemH3AI7iqLcMcMxSNiWjSkEogCcEQ8KwqH6ak=;
-	b=FdJrPB5Vq8MIvKcou7JYiOb5/ZkloshLDw6HX+G7MdnvINrAJ0TllsQvVs1GkWNhNW
-	8nr+IpBtlhvE+MOJbwSWTaik2Kn1Qt/QoF89fTsCA3bWdy+apyZ1LY36Lt22g8aFld0a
-	mEmK2mf66Duwmm3Lq/RxMtU8zXo6AMojPbfj7YigaetR79VpEWbknk6ktTecPSz7h4Rm
-	h0tHW4qJxie5Zq9JZwRLHk2KV4UdPWiGumOrlvdv4kSRQRqVsMffSaRgvmZ4+8NLflxj
-	WMgpnevt0slZfdbHT56GOU4tMVkzkOK7amkXjO6Pvc9KXIoMirzCbitbsMWG/yNJJ23I
-	tmnQ==
-X-Gm-Message-State: APjAAAXbd+KUtv5HXlX9ojwyTi8Xhyyosv8rhDfRosx1+h5kZGal7Bne
-	hJLHer5htYODhLUEpIV8h0wWxUT8tOn4+wVmWdUOGA==
-X-Received: by 2002:aca:ab12:: with SMTP id u18mr5473345oie.48.1556889202462; 
-	Fri, 03 May 2019 06:13:22 -0700 (PDT)
+	bh=OA/eCiV4/Br9WIY15LkCNmcRYoJM+/C5INnekXkEn2s=;
+	b=YAsFAH4a/PiJGhspDDMzmn4N5MDCnlchFVUHUFugV+4U1uaHATJO2gi//LZPQJmN6I
+	5iHVUCcwsOGQ7ZSdfHTgOv3fPEzQSisjI4DTNXRZjL5AixSKE6ap+rTHrLi7ed9g1pB5
+	foNbozqgtWyB/+9AYJSqnDtkhwt1SRimU67hd+3ae1G2E7S96cs5xNBP273RUZ12loDD
+	UZ8wreR+73iAEI4uPxZBIwOqir6SO7XIEr5CsbnzoJezIbm0yZpEPJ9TAhkmeV/Vq24N
+	jY81UsISX0z4nt2skwLy01CKZv910VQ//ygiRTHM4T2R2MZbI0kfZCYTnygC3nM9fCEy
+	JDWg==
+X-Gm-Message-State: APjAAAXIbGTp+SOxk2ZSrpS4cfrHdQwlmMseUg2G8M/gj6iRQhitvNic
+	P2DbaAKX8Ma2nPpLjzcPcZE83guc5PdZ4PGoyv89Sg==
+X-Received: by 2002:aca:110f:: with SMTP id 15mr1642459oir.163.1556890335654; 
+	Fri, 03 May 2019 06:32:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190411153942.4533-1-peter.maydell@linaro.org>
-	<53930e87-3bb1-fdd5-a8fe-8603c0adecc2@linaro.org>
-In-Reply-To: <53930e87-3bb1-fdd5-a8fe-8603c0adecc2@linaro.org>
+References: <20190503022958.1394-1-joel@jms.id.au>
+In-Reply-To: <20190503022958.1394-1-joel@jms.id.au>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 May 2019 14:13:11 +0100
-Message-ID: <CAFEAcA_GZPJj7OQ-jK1TX4wKS4hO6OR43OG0Y3eCuxVdiUtsnQ@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Fri, 3 May 2019 14:32:04 +0100
+Message-ID: <CAFEAcA_yYvV-WmeicEo_EYBFp=0987fFORaqcv3tucX=Db=Hbg@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm: Implement NSACR
- gating of floating point
+X-Received-From: 2607:f8b0:4864:20::22f
+Subject: Re: [Qemu-arm] [PATCH v2] arm: aspeed: Set SDRAM size
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,52 +103,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Rjg1MhS++bEr
+X-TUID: /OxByGNMsrpH
 
-On Sat, 13 Apr 2019 at 08:07, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 3 May 2019 at 03:30, Joel Stanley <joel@jms.id.au> wrote:
 >
-> On 4/11/19 5:39 AM, Peter Maydell wrote:
-> > +static uint64_t cptr_el2_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> > +{
-> > +    /*
-> > +     * For A-profile AArch32 EL3, if NSACR.CP10
-> > +     * is 0 then HCPTR.{TCP11,TCP10} ignore writes and read as 1.
-> > +     */
-> > +    uint64_t value = env->cp15.cptr_el[2];
-> > +
-> > +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-> > +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-> > +        value &= ~(0x3 << 10);
+> We currently use Qemu's default of 128MB. As we know how much ram each
+> machine ships with, make it easier on users by setting a default.
 >
-> Read as 1, and yet you're clearing the value?  Cut-n-paste error from CPACR?
-> Surely better to do nothing on read, but set on write (to either HCPTR or NSACR).
+> It can still be overridden with -m on the command line.
 >
-> > +static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-> > +{
-> > +    /*
-> > +     * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-> > +     * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-> > +     */
-> > +    uint64_t value = env->cp15.cpacr_el1;
-> > +
-> > +    if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-> > +        !arm_is_secure(env) && !extract32(env->cp15.nsacr, 10, 1)) {
-> > +        value &= ~(0xf << 20);
-> > +    }
->
-> This one does do the right thing, but better to clear the bits on write to
-> NSACR.  This lets you avoid the change to fp_exception_el, and the missing
-> change to sve_exception_el.
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-Hi Richard -- I was just going through the review comments on this
-patchset, and I saw this bit. Could you clarify what you mean by
-"the missing change to sve_exception_el" ? Since SVE is AArch64 only,
-there can't be any configs where we have SVE and EL3 is AArch32,
-so I don't think these two features should be able to interact.
 
-thanks
+
+Applied to target-arm.next, thanks.
+
 -- PMM

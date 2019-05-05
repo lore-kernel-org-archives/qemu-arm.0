@@ -1,130 +1,133 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1448863wrh;
-        Sun, 5 May 2019 07:20:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxFg0iqiPGxtRuxAqG4msZbfIhZLbA5WeAT5oURzgZyRr71xR4o1d6xmNailk9fog70K2n2
-X-Received: by 2002:a7b:c415:: with SMTP id k21mr1477632wmi.29.1557066015702;
-        Sun, 05 May 2019 07:20:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557066015; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1509533wrh;
+        Sun, 5 May 2019 08:33:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwT4f7mF0YhO5BFym9FW7H1RDwshEI3WKqDlVjYQ1Ttq4hXoyiQeMo4ucJB+k765aitWnso
+X-Received: by 2002:adf:ef02:: with SMTP id e2mr1662911wro.280.1557070437176;
+        Sun, 05 May 2019 08:33:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557070437; cv=none;
         d=google.com; s=arc-20160816;
-        b=cXS38cnSJjdlz1OuDshFH+vsICyl4bHDbkK+f13Dv33cX6filcrwT0VnFUrgoP13/R
-         ptAJPyWIOHgbvgvEQCg/Ac4C8Tr+Od/r/lUf2STVAUabm8o3vM/WeOT7fMUkglHqndP3
-         JCQEryZbuzQbw7hDr8/QLrquoUs5V/vkDH/EzarQ90GNz8lHeo7BIp/p/0lwq1X81+u2
-         i7gTR7++NvFuEcMv4l5rcHS12dL39ARV67s+YzQpUyoweBvS27uLKoKGdpPOsozQCd3s
-         SBr/6K9r5d2FMbqunU7BGc3azOq0pBUpY7ylJPnHY/CL/oARxRi14sd+MKAMV0T9xsRE
-         pjyg==
+        b=u9FMSPn7p6lN33KBlM3fsOJoOplZVt7W/HZM7e79GTwPUgbsVIlKlpVGBtMPE4lpkq
+         2D5y2T7tuuOjB18pWC29+byHFRCI/grL6+sJ/s8UMMpz55qTujrHuUZqvCrqZwdHjXm5
+         8uRJCNr6IjkKcWKplSPjb+X3CxMq+Fv8/s3Q7ALCA/gRoCx0mmAZ4rREdMYqjZyWMREo
+         JlPBNgaMnsJ9NqByVEEirwzxl5rwYtuXwD8k9aOEPFTVX958BwCpdGungLn+7RcrUNNr
+         VUkeSmY5IOEKhBQFIasHD/t+MN9lqyexZmPauutvMOe411S6EwZuluHzV8IdSYEg8quk
+         K1jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=7/tV10etgLk5/QwRV+UcFbarepj6U+o5ZgvC+grDtok=;
-        b=ZAv2Rs/SsM6vzl0N2wQx+b65eU4KtAhMsQxdlwvjZCaeXBKMAm//4up+czCT0Xk4Xt
-         gZSlCIomNas0VDspvXwl+otIjLST6XYBI1S4bosSjMDt5Sk4XVXWdoXT1pGBoYVmB4IA
-         575w6pHNTP0OGw2S3Co/a7eqsGO+IhpRklFLYTiuluVJ4EqH3arCLrzyS0iiFockYLEZ
-         38AGLGpva+hD163EdMF+D129eeBaGxEVuVj+VO7f9oS+cggoV+BaPvJ84AJHT7QosUES
-         a0+3Nt6xuYsKPR8R1nNHOqqp1kAvg1c3Pb++WXpFyLc45905Ld+xsIXC5+0FiRVsp/Ol
-         pu8A==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=yZA//yKboVF/o1NlHhWCIer4wuOolNU3QH8fQ3xmRFc=;
+        b=l8cDCzQcuz47W5GIdUcipTWv9NBb3p6rkhN3aQ/YC9lB/jismIYqr7kHWk84qgW26i
+         tt48Xtwm0ESjhqr8+G9sbyRK8PrS93ZFszV7Yf9mi2jTnupv83NTr9gAwre5S34CB/eT
+         N9IB3uZb3zz/S70jtliQJBgTWsCaOIwMdSYV5FFdTgy4aNrsuFZlOqJpFTmmm1h5LnAm
+         Do7yvwubWEI2ThzyKZJRzwzud9uL7ZDHt+bXUF6siLyqYaMOZNbnHjHRkNyj4swfeDqU
+         YLrenQDLld3AF6LpRwvLum6xL63vwGT3P3KT190ZUVChWuX9pbhHgxR2Osq5nERzBLgd
+         y4pA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rs+tcfgu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13si5944359wrq.126.2019.05.05.07.20.15
+        by mx.google.com with ESMTPS id j17si5216079wmh.161.2019.05.05.08.33.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 05 May 2019 07:20:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 May 2019 08:33:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:41715 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rs+tcfgu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:42640 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNHzy-0006TG-QD
-	for alex.bennee@linaro.org; Sun, 05 May 2019 10:20:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56326)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hNJ9I-0003XY-AS
+	for alex.bennee@linaro.org; Sun, 05 May 2019 11:33:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46472)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNHeW-0004hO-Fn
-	for qemu-devel@nongnu.org; Sun, 05 May 2019 09:58:05 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hNJ6p-000270-8y
+	for qemu-arm@nongnu.org; Sun, 05 May 2019 11:31:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNHeV-00055s-M1
-	for qemu-devel@nongnu.org; Sun, 05 May 2019 09:58:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43148)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hNHeT-00051u-95; Sun, 05 May 2019 09:58:01 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4F5D28553F;
-	Sun,  5 May 2019 13:57:59 +0000 (UTC)
-Received: from thuth.com (ovpn-116-27.ams2.redhat.com [10.36.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 46AFE60C47;
-	Sun,  5 May 2019 13:57:58 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Date: Sun,  5 May 2019 15:57:14 +0200
-Message-Id: <20190505135714.11277-29-thuth@redhat.com>
-In-Reply-To: <20190505135714.11277-1-thuth@redhat.com>
-References: <20190505135714.11277-1-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1hNJ6o-0005IS-4m
+	for qemu-arm@nongnu.org; Sun, 05 May 2019 11:31:23 -0400
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a]:39852)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hNJ6n-0005Gg-VD
+	for qemu-arm@nongnu.org; Sun, 05 May 2019 11:31:22 -0400
+Received: by mail-oi1-x22a.google.com with SMTP id x16so1947183oic.6
+	for <qemu-arm@nongnu.org>; Sun, 05 May 2019 08:31:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=yZA//yKboVF/o1NlHhWCIer4wuOolNU3QH8fQ3xmRFc=;
+	b=Rs+tcfguCwi04Vhm26LL8kg6MwF6H3KjSKsZfGVxgksrb+bB54wIwYtGOs9LktNAHz
+	95qo85DoSZmedMmzEtqKlVyT6w+T8dn4i6Ikohdt1FG2l1LqOke49zZ+2CxCYezAKgOW
+	T6gv6BXzRw5r+mnwwtd/X8CyRtEWq4QRJqXNtNPYbafyL5lHBaa7qIGbqn820+144H8d
+	JQ4NQ4zw4xQkoZxs5uFmO3d+EbnUK4hXOglLQ2DJDCvUfENmC9jxBVOnywI5JNYk/arI
+	CTWYyRefT4W2AWSnPLY7GcLLp6HefrfR5vgAAt7/TkeShBcckRaxYxs/3lnMFwzP1RWj
+	8A3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=yZA//yKboVF/o1NlHhWCIer4wuOolNU3QH8fQ3xmRFc=;
+	b=ONRXGrN2Vm2itlykoUMsSbAbfnwYggBa9hTz/Ltrs7sf8PpwsH6PSPdmSIfTov6sBI
+	JepkBmMJKPwcx3lYz5PVPXmq7JWunHPpB/S4xPJ0rhDLlUMaTBueaL1HRw52s9CnlMfk
+	BwJQe8LDz95MVeC9/YjoBO7eqVkeuzMYfHr+CHp+p0sJe2QExAZe4UaBAkGPf9n8FRBD
+	KI8ft0oEJXWjXLIRdZLUamCUjCrLZLy1hRE5kBYSRVpK3VX7zzhChq0NegH26Hz9Ldwg
+	OXF68XIsue1tlNv6LdLrj2RMSSvW1B3i8fPIm2XiLwP0RrSE5j+LU/iz8F4DzKmw8rkU
+	NZSA==
+X-Gm-Message-State: APjAAAVtGPc/3X58wKIuojaJt0b6ZliZZkhx6AsK6+PcDihS7CVA21+5
+	/igvlzD86MGeUreQuCIk4+0nRiG3YXcT8lJ76mqyVA==
+X-Received: by 2002:aca:b3c2:: with SMTP id c185mr5787264oif.98.1557070279548; 
+	Sun, 05 May 2019 08:31:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Sun, 05 May 2019 13:57:59 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL 28/28] hw/arm: Remove hard-enablement of the
- remaining PCI devices
-X-BeenThere: qemu-devel@nongnu.org
+References: <CAAVaN8zqOM4Fz3NfJ1gL9-G8WCBQyBt+p+Fgnrj3kgUwx2cKiA@mail.gmail.com>
+In-Reply-To: <CAAVaN8zqOM4Fz3NfJ1gL9-G8WCBQyBt+p+Fgnrj3kgUwx2cKiA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 5 May 2019 16:31:08 +0100
+Message-ID: <CAFEAcA_YU-MdnrCcSTyL3b93wTCCDzN0GcbSRe28ZPh14FPB6A@mail.gmail.com>
+To: Andy Ng <andreas2025@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::22a
+Subject: Re: [Qemu-arm] qemu-system-arm with GPU support for QT with OpenGL
+ on
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dAyWlz6k3w5m
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zMiaLOTh6Hmg
 
-The PCI devices should be pulled in by default if PCI_DEVICES
-is set, so there is no need anymore to enforce them in the configs
-file.
+On Sat, 4 May 2019 at 21:42, Andy Ng <andreas2025@gmail.com> wrote:
+> I have tried to create Cortex-A9 images based on vexpress, however
+> qemu will complain about the PCI. I have tried to use -M virt, but
+> this one brings up cortex-A15, compatibility issue.
+>
+> Any ideas what would it be the best way forward to make it run on
+> Qemu?   Do you know what is the best -M type that I have to use.
 
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- default-configs/arm-softmmu.mak | 8 --------
- 1 file changed, 8 deletions(-)
+Our recommendation is to use "virt":
+https://wiki.qemu.org/Documentation/Platforms/ARM#Guidelines_for_choosing_a_QEMU_machine
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 233937f394..f23ecfd5c5 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -36,14 +36,6 @@ CONFIG_DIGIC=3Dy
- CONFIG_SABRELITE=3Dy
- CONFIG_EMCRAFT_SF2=3Dy
- CONFIG_MICROBIT=3Dy
--
--CONFIG_VGA=3Dy
--
- CONFIG_FSL_IMX25=3Dy
- CONFIG_FSL_IMX7=3Dy
- CONFIG_FSL_IMX6UL=3Dy
--
--CONFIG_PCIE_PORT=3Dy
--CONFIG_XIO3130=3Dy
--CONFIG_IOH3420=3Dy
--CONFIG_I82801B11=3Dy
---=20
-2.21.0
+> realview-pbx-a9 ? I do not want to recompile the code in different
+> architecture of CPU model.
 
+Cortex-A9 and -A15 are very close -- any application level
+code built for the A9 should run fine on QEMU's A15 model.
+The kernel will obviously need to be built with "virt" board
+support and Cortex-A15 support enabled, but you need to
+build a kernel that works for the board model you select anyway.
+
+thanks
+-- PMM

@@ -1,85 +1,86 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3315459wrh;
-        Tue, 7 May 2019 00:25:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxakG20afCTZPMCJjqwrdVCo565xfIU6VIZtFa19AK+xSxqsI49ZakTfkNzviuWbc8kaihX
-X-Received: by 2002:a7b:c301:: with SMTP id k1mr19312591wmj.37.1557213945414;
-        Tue, 07 May 2019 00:25:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557213945; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2894824wrh;
+        Mon, 6 May 2019 14:42:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwf+CxhEzRilxi5e+hccHj4xSwdW0Xs3E9RyKlGsncJJoVD/GXHKsetLBhvvk6kKIhd+A+M
+X-Received: by 2002:a05:600c:114e:: with SMTP id z14mr3562304wmz.92.1557178932527;
+        Mon, 06 May 2019 14:42:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557178932; cv=none;
         d=google.com; s=arc-20160816;
-        b=EZ4M9zxJTPDY54sN8maQ+9QeGYbf9L6U8dipGfsw4O/XnhAmCvVuaPCH4ei1Auf9kf
-         +64/9bLawa7zotvrqvZxVVHzGWnNgiTQqpytntt296P90qvXS40otX/MLOU7FDIRiqki
-         Ec5+QlH/nPxUrIPYPhUHp9uElKPxK+OZXr/3xnqK8JHHw3hluwe6o2HjrADMctRWLdU2
-         B8lrip21lrHdmXFTOnsp1wdcmfCAabclhkURT9Zg9FZ7LF3Ru4ZZfAronRmkN8KQAMCW
-         rKvMpQt9psQKC6KpwKeuebvvQaa52PhPFqhk3u0r2uTSjxadkQN9WHH2qt5Iz1LinR9c
-         95qw==
+        b=vuqZwI5+Pb1W9I22Ppt0QfJX/WGIrlJBZulmExBpPeYNgpLYtJiZQdl7NgdABMhaQN
+         RrP4mxpxG1S6oAmii8rew6ykN5ysTKoHZtBghp+0F1sXFcs2dxGgjZ4HIRpFnbasqxew
+         fq8vA5y7G4WKJearma2DWYZkWPCtU1sy+BkeVtsqPK+Rqnv7NMJ/xO8iq5F9vjlOJSJQ
+         brjye0Y8EN354SOZIWtB0jImWMBufxZmk9vlcjt9CPrsMgGtDhj3vm0c1TFdDg5dl/+s
+         WKd/9UaDPMahF+UDQ4jJOU0uDXr70uFqBuSipQyxtSPtesgyOS19TOPZ7xT+szA274o8
+         fScw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=NM79fwX99+KGp5VrIgsIGkpgiJxgbqYUCnCJE92h0SQ=;
-        b=J+8MF3+s+fX7EqtnAzliI1mbZRAZIitNsIaNTjzyKTDHr0rwDslfjtXwEZhN1ZDIEd
-         GZs6T9ZYyJjPDQ9FQCEZLYn+HY8EYsno5eU10JeFP/2bZrDhTls7tGA/zBP7DL4dsyR1
-         Q6qsuzjABcHaDPKlExBPOl37J1I2T+XkgcsbeyOyLNq/HBXne+qpZampl3tt1IvqDCC1
-         c0zDRHF34uKOeDK2LASPvQIyNMpE9ndqnO/8XGTY1nISHPGbdSSz//lxCgMMvIQuiQ6P
-         ywNiMgxXafs4aSLL2kuVPYsmHQ27NW010Z2EHXbnYRFNvsA9g3sP/wyQpkQLZCxuPkWR
-         NtnA==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=bhzIWh/jGUZ92LkS5Pm6x9c/lxDAB8vYUy4BXlpiieE=;
+        b=rVIPakzEPu5G04O3qTfwywY5GEGCUVakKpJtPGFUU9m+Y4+LskAR/dFhvN0LycbQcH
+         YyLbFL7oRxvDGk9dLQ1FXWPTKsjfJyKLY4GLCc+Av668N0D9LEealU1dum3n4iEaS5At
+         pIwizvQbMLtxfHfV4ozucHuWAWWdQoDr6go0EsKNSD1O2bB4v2JiglsjClzUfjYMgi2R
+         VzJNWB7VcjkKpcORlINAnL2bUepGFj6QxIJg/Hm8uUeKUiVokvljN5ZTzZcb5MQEWsar
+         ntzjUTbO5/6U6Z6jYXFTx1U1h9MeavhgOuKvra1b/3g59iNgJ2hyKqm+4Z9GGvm+iqvS
+         NQRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3si8889414wrf.212.2019.05.07.00.25.45
+        by mx.google.com with ESMTPS id 19si7477964wmo.88.2019.05.06.14.42.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 00:25:45 -0700 (PDT)
+        Mon, 06 May 2019 14:42:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:41398 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:34341 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNuTw-0007sI-EE
-	for alex.bennee@linaro.org; Tue, 07 May 2019 03:25:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47649)
+	id 1hNlND-0004Bv-Ke
+	for alex.bennee@linaro.org; Mon, 06 May 2019 17:42:11 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37318)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hNuTf-0007od-0G
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 03:25:28 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hNlN2-0004Bn-Vi
+	for qemu-arm@nongnu.org; Mon, 06 May 2019 17:42:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hNuTd-00076h-FS
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 03:25:26 -0400
-Received: from 2.mo178.mail-out.ovh.net ([46.105.39.61]:52350)
+	(envelope-from <ehabkost@redhat.com>) id 1hNlN1-0001Ro-Vh
+	for qemu-arm@nongnu.org; Mon, 06 May 2019 17:42:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60928)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hNuTd-000765-9x
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 03:25:25 -0400
-Received: from player787.ha.ovh.net (unknown [10.109.159.35])
-	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 6958D5E5D1
-	for <qemu-arm@nongnu.org>; Tue,  7 May 2019 09:25:22 +0200 (CEST)
-Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
-	(Authenticated sender: clg@kaod.org)
-	by player787.ha.ovh.net (Postfix) with ESMTPSA id 776695945E56;
-	Tue,  7 May 2019 07:25:16 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20190506142042.28096-1-clg@kaod.org>
-	<20190506142042.28096-2-clg@kaod.org>
-	<9e9e4978-f010-f1ba-330c-ae51e7e65f0a@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <52d028d6-d5b4-1c9b-b5ab-7a03e1b30466@kaod.org>
-Date: Tue, 7 May 2019 09:25:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hNlN1-0001RM-Qa; Mon, 06 May 2019 17:41:59 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1F6DD81E0D;
+	Mon,  6 May 2019 21:41:59 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9CEFA5DA99;
+	Mon,  6 May 2019 21:41:56 +0000 (UTC)
+Date: Mon, 6 May 2019 18:41:55 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190506214155.GI28722@habkost.net>
+References: <20190312234541.2887-1-philmd@redhat.com>
+	<d5d84efd-ef8c-4e0d-d48a-6996d91832e7@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <9e9e4978-f010-f1ba-330c-ae51e7e65f0a@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 3666493049215028179
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrjeelgdduudelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <d5d84efd-ef8c-4e0d-d48a-6996d91832e7@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 06 May 2019 21:41:59 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.39.61
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/3] aspeed: add a per SoC
- mapping for the interrupt space
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 0/2] Acceptance Tests: Test the Raspberry
+ Pi 2 board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,263 +92,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P5JWJakkfNqn
+X-TUID: 5X95M1zF7vl5
 
-On 5/6/19 4:47 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi C=C3=A9dric,
+On Sat, May 04, 2019 at 01:52:51PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> On 3/13/19 12:45 AM, Philippe Mathieu-Daud=E9 wrote:
+> > Add the raspi2 to the list of boards tested by the
+> > boot_linux_console Avocado test.
+> >=20
+> > Based on "Acceptance Tests: target architecture support" v5:
+> > https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg04111.html
+> > Based-on: <20190312171824.5134-1-crosa@redhat.com>
+> >=20
+> > Philippe Mathieu-Daud=E9 (2):
+> >   BootLinuxConsoleTest: Let extract_from_deb handle various compressi=
+ons
+> >   Boot Linux Console Test: add a test for the Raspberry Pi 2
+> >=20
+> >  tests/acceptance/boot_linux_console.py | 34 ++++++++++++++++++++++++=
+--
+> >  1 file changed, 32 insertions(+), 2 deletions(-)
 >=20
-> On 5/6/19 4:20 PM, C=C3=A9dric Le Goater wrote:
->> This will simplify the definition of new SoCs, like the AST2600 which
->> should use a different CPU and a different IRQ number layout.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>
->>  Changes since v1:
->>
->>  - moved enum defining the Aspeed controller names under aspeed_soc.h
->> =20
->>  include/hw/arm/aspeed_soc.h | 37 ++++++++++++++++++++++++
->>  hw/arm/aspeed_soc.c         | 57 +++++++++++++++++++++++++++++++-----=
--
->>  2 files changed, 86 insertions(+), 8 deletions(-)
->>
->> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
->> index 11ec0179db50..2dd968092c69 100644
->> --- a/include/hw/arm/aspeed_soc.h
->> +++ b/include/hw/arm/aspeed_soc.h
->> @@ -57,6 +57,7 @@ typedef struct AspeedSoCInfo {
->>      const char *fmc_typename;
->>      const char **spi_typename;
->>      int wdts_num;
->> +    const int *irqmap;
->>  } AspeedSoCInfo;
->> =20
->>  typedef struct AspeedSoCClass {
->> @@ -69,4 +70,40 @@ typedef struct AspeedSoCClass {
->>  #define ASPEED_SOC_GET_CLASS(obj)                               \
->>      OBJECT_GET_CLASS(AspeedSoCClass, (obj), TYPE_ASPEED_SOC)
->> =20
->> +enum {
->> +    ASPEED_IOMEM,
->> +    ASPEED_UART1,
->> +    ASPEED_UART2,
->> +    ASPEED_UART3,
->> +    ASPEED_UART4,
->> +    ASPEED_UART5,
->> +    ASPEED_VUART,
->> +    ASPEED_FMC,
->> +    ASPEED_SPI1,
->> +    ASPEED_SPI2,
->> +    ASPEED_VIC,
->> +    ASPEED_SDMC,
->> +    ASPEED_SCU,
->> +    ASPEED_ADC,
->> +    ASPEED_SRAM,
->> +    ASPEED_GPIO,
->> +    ASPEED_RTC,
->> +    ASPEED_TIMER1,
->> +    ASPEED_TIMER2,
->> +    ASPEED_TIMER3,
->> +    ASPEED_TIMER4,
->> +    ASPEED_TIMER5,
->> +    ASPEED_TIMER6,
->> +    ASPEED_TIMER7,
->> +    ASPEED_TIMER8,
->> +    ASPEED_WDT,
->> +    ASPEED_PWM,
->> +    ASPEED_LPC,
->> +    ASPEED_IBT,
->> +    ASPEED_I2C,
->> +    ASPEED_ETH1,
->> +    ASPEED_ETH2,
->> +    ASPEED_SDRAM,
->=20
-> I'd add ...:
->=20
->        ASPEED_IRQMAP_COUNT /* keep last */
->=20
->> +};
->> +
->>  #endif /* ASPEED_SOC_H */
->> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->> index a27233d4876b..29bce5c9188c 100644
->> --- a/hw/arm/aspeed_soc.c
->> +++ b/hw/arm/aspeed_soc.c
->> @@ -38,12 +38,42 @@
->>  #define ASPEED_SOC_ETH1_BASE        0x1E660000
->>  #define ASPEED_SOC_ETH2_BASE        0x1E680000
->> =20
->> -static const int uart_irqs[] =3D { 9, 32, 33, 34, 10 };
->> -static const int timer_irqs[] =3D { 16, 17, 18, 35, 36, 37, 38, 39, }=
-;
->> +static const int aspeed_soc_ast2400_irqmap[] =3D {
->=20
-> ... and use it here:
->=20
-> static const int aspeed_soc_ast2400_irqmap[ASPEED_IRQMAP_COUNT] =3D {
->=20
-> because you define ASPEED_SDRAM, and if some code access
-> aspeed_soc_ast2400_irqmap[ASPEED_SDRAM] it would be uninitialized.
+> I was hoping this series would be included in "Acceptance Tests: target
+> architecture support" by Eduardo (removing the 'print' debug line) but =
+I
+> just realized I forgot to Cc him :S
 
-The ASPEED_SDRAM should be initialized in the next patch.
+Problem solved: queued on python-next (after removing the print
+statement from patch 2/2).  :)
 
-> Specifying the array size, the uninitialized entries are
-> zero-initialized (not sure this is the default you expect although).
-
-I am not sure to understand the problem you are describing. I think
-the compiler should catch any severe issues.  no ?=20
-
-Thanks,
-
-C.
-
->=20
->> +    [ASPEED_UART1]  =3D 9,
->> +    [ASPEED_UART2]  =3D 32,
->> +    [ASPEED_UART3]  =3D 33,
->> +    [ASPEED_UART4]  =3D 34,
->> +    [ASPEED_UART5]  =3D 10,
->> +    [ASPEED_VUART]  =3D 8,
->> +    [ASPEED_FMC]    =3D 19,
->> +    [ASPEED_SDMC]   =3D 0,
->> +    [ASPEED_SCU]    =3D 21,
->> +    [ASPEED_ADC]    =3D 31,
->> +    [ASPEED_GPIO]   =3D 20,
->> +    [ASPEED_RTC]    =3D 22,
->> +    [ASPEED_TIMER1] =3D 16,
->> +    [ASPEED_TIMER2] =3D 17,
->> +    [ASPEED_TIMER3] =3D 18,
->> +    [ASPEED_TIMER4] =3D 35,
->> +    [ASPEED_TIMER5] =3D 36,
->> +    [ASPEED_TIMER6] =3D 37,
->> +    [ASPEED_TIMER7] =3D 38,
->> +    [ASPEED_TIMER8] =3D 39,
->> +    [ASPEED_WDT]    =3D 27,
->> +    [ASPEED_PWM]    =3D 28,
->> +    [ASPEED_LPC]    =3D 8,
->> +    [ASPEED_IBT]    =3D 8, /* LPC */
->> +    [ASPEED_I2C]    =3D 12,
->> +    [ASPEED_ETH1]   =3D 2,
->> +    [ASPEED_ETH2]   =3D 3,
->> +};
->> =20
->>  #define AST2400_SDRAM_BASE       0x40000000
->>  #define AST2500_SDRAM_BASE       0x80000000
->> =20
->> +/* AST2500 uses the same IRQs as the AST2400 */
->> +#define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
->> +
->>  static const hwaddr aspeed_soc_ast2400_spi_bases[] =3D { ASPEED_SOC_S=
-PI_BASE };
->>  static const char *aspeed_soc_ast2400_typenames[] =3D { "aspeed.smc.s=
-pi" };
->> =20
->> @@ -64,6 +94,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->>          .fmc_typename =3D "aspeed.smc.fmc",
->>          .spi_typename =3D aspeed_soc_ast2400_typenames,
->>          .wdts_num     =3D 2,
->> +        .irqmap       =3D aspeed_soc_ast2400_irqmap,
->>      }, {
->>          .name         =3D "ast2400-a1",
->>          .cpu_type     =3D ARM_CPU_TYPE_NAME("arm926"),
->> @@ -75,6 +106,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->>          .fmc_typename =3D "aspeed.smc.fmc",
->>          .spi_typename =3D aspeed_soc_ast2400_typenames,
->>          .wdts_num     =3D 2,
->> +        .irqmap       =3D aspeed_soc_ast2400_irqmap,
->>      }, {
->>          .name         =3D "ast2400",
->>          .cpu_type     =3D ARM_CPU_TYPE_NAME("arm926"),
->> @@ -86,6 +118,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->>          .fmc_typename =3D "aspeed.smc.fmc",
->>          .spi_typename =3D aspeed_soc_ast2400_typenames,
->>          .wdts_num     =3D 2,
->> +        .irqmap       =3D aspeed_soc_ast2400_irqmap,
->>      }, {
->>          .name         =3D "ast2500-a1",
->>          .cpu_type     =3D ARM_CPU_TYPE_NAME("arm1176"),
->> @@ -97,9 +130,17 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->>          .fmc_typename =3D "aspeed.smc.ast2500-fmc",
->>          .spi_typename =3D aspeed_soc_ast2500_typenames,
->>          .wdts_num     =3D 3,
->> +        .irqmap       =3D aspeed_soc_ast2500_irqmap,
->>      },
->>  };
->> =20
->> +static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
->> +{
->> +    AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
->> +
->> +    return qdev_get_gpio_in(DEVICE(&s->vic), sc->info->irqmap[ctrl]);
->> +}
->> +
->>  static void aspeed_soc_init(Object *obj)
->>  {
->>      AspeedSoCState *s =3D ASPEED_SOC(obj);
->> @@ -226,14 +267,14 @@ static void aspeed_soc_realize(DeviceState *dev,=
- Error **errp)
->>          return;
->>      }
->>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->timerctrl), 0, ASPEED_SOC_TIME=
-R_BASE);
->> -    for (i =3D 0; i < ARRAY_SIZE(timer_irqs); i++) {
->> -        qemu_irq irq =3D qdev_get_gpio_in(DEVICE(&s->vic), timer_irqs=
-[i]);
->> +    for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
->> +        qemu_irq irq =3D aspeed_soc_get_irq(s, ASPEED_TIMER1 + i);
->>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->>      }
->> =20
->>      /* UART - attach an 8250 to the IO space as our UART5 */
->>      if (serial_hd(0)) {
->> -        qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_irq=
-s[4]);
->> +        qemu_irq uart5 =3D aspeed_soc_get_irq(s, ASPEED_UART5);
->>          serial_mm_init(get_system_memory(),
->>                         ASPEED_SOC_IOMEM_BASE + ASPEED_SOC_UART_5_BASE=
-, 2,
->>                         uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDI=
-AN);
->> @@ -247,7 +288,7 @@ static void aspeed_soc_realize(DeviceState *dev, E=
-rror **errp)
->>      }
->>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->i2c), 0, ASPEED_SOC_I2C_BASE);
->>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->i2c), 0,
->> -                       qdev_get_gpio_in(DEVICE(&s->vic), 12));
->> +                       aspeed_soc_get_irq(s, ASPEED_I2C));
->> =20
->>      /* FMC, The number of CS is set at the board level */
->>      object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err)=
-;
->> @@ -259,7 +300,7 @@ static void aspeed_soc_realize(DeviceState *dev, E=
-rror **errp)
->>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->fmc), 1,
->>                      s->fmc.ctrl->flash_window_base);
->>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->fmc), 0,
->> -                       qdev_get_gpio_in(DEVICE(&s->vic), 19));
->> +                       aspeed_soc_get_irq(s, ASPEED_FMC));
->> =20
->>      /* SPI */
->>      for (i =3D 0; i < sc->info->spis_num; i++) {
->> @@ -307,7 +348,7 @@ static void aspeed_soc_realize(DeviceState *dev, E=
-rror **errp)
->>      }
->>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1=
-_BASE);
->>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
->> -                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
->> +                       aspeed_soc_get_irq(s, ASPEED_ETH1));
->>  }
->> =20
->>  static void aspeed_soc_class_init(ObjectClass *oc, void *data)
->>
->=20
-> With the array explicit size:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
-
+--=20
+Eduardo

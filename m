@@ -1,187 +1,124 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2143710wrh;
-        Mon, 6 May 2019 01:07:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzpNiKbRxxgy8ekawuezXwPPM9hY828sE9DPaMVecp/ne1H8Hee6KHBtUpYQYrvPgG9cKR
-X-Received: by 2002:a5d:49c1:: with SMTP id t1mr3044422wrs.247.1557130074170;
-        Mon, 06 May 2019 01:07:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557130074; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2337046wrh;
+        Mon, 6 May 2019 05:17:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyQwEKsDkGPgelUT02JPVSfsDvRdX9fCEu35fKcbGPYuYuJOvuPTx4klPUGrrAh80Qs1PR5
+X-Received: by 2002:a05:600c:1002:: with SMTP id c2mr8947430wmc.138.1557145067286;
+        Mon, 06 May 2019 05:17:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557145067; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZGkIbi3ieLdDq22YSmCtwq/iCoO7FljObGWg6jUHgrlXz1Z9nJCCrfBK/9wM4bhL1
-         Qy5wzmB0HZwosTEqJYF5q9xftRVTzsMilPWzUkxhpQAf6Q4tJyHCdUkMi+HUtuiGY39b
-         h8YKpEBvvYWRSYKgQJFIYiy1wFH+3lv28MMivtJcsLaDA+K1qmDNGTmSvAuY1TJ8Oiu7
-         xVXyI3IbsT8u7dxFxscEbEDXW9YmWURGArTqa/CMvVFcN4QXDb5d4/W+T9ACI8BqjtMC
-         vPbtc9QVyKHNRMp872ebbxzsbeWckX8M3VkFqRGPk+AkM/ZmoiQmUf3jSykDyflKwF4B
-         xIZg==
+        b=Te2y6morERCDr8lCMKs5Ze+18NwjLWRgKgWfoCKAGnxmuJTE4FjE8YJTQyCXl6eFRH
+         9tbOgvp6v1wW6+3S9I1+bTn1uG4c+oswl45g4ASGLx5B8sMaMy3+joJMnzz720NwfWL1
+         +hXgEI+pX33S9EBKgPzHwCSM62Zir/I2UUMYW1rJOMX3g/i5fO94dhLEWHRivjnvmZRC
+         GKP7eQHGqv+W5UiULV4x4Ks8UYF6zvogom2iQHNoRwjAK7XXHJfxSfb88bQdU4VlOZFk
+         f9XvAkWFQMVA4eN5kxPYr0f2y4C/4I10qb88jbC9qoU10/kqiiiNixOliYmhka6jiI88
+         yZHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=kQHvt/xxDanBYyt85LcmxkRedLVpXr1l/7j3kfOCYKQ=;
-        b=ms3Em5/7KoYdkwfPk/N8vc/dpnNVzbOv3SpuL7j10Xz/FHTKejFgaY2EwhNd6mTsKK
-         sHH8m91TAmyDBfe+Xh1UMl/+cUqti+m8+EkV+HR0JSaw0oxtGddQzDNqPORpFlY67X2G
-         CezhM7s6OFg3iuor0GTkPLAYC12aLss3LzSGuxBk+lwlIzbahqeb/nSq8ooOQriA4av4
-         ONnEyP7OxwvcoMo53pqNn4RYW+Ag6qY/q25jHthTxWgqTgpCpFrCG4lqYU2rt5WbsLY9
-         aISFP/bmv3H7yltkjACgXlkq1djLmklDQ/gS1k381jXrl3c6eaRXr5CUXcc6f9jNbBBt
-         f0sw==
+         :user-agent:date:message-id:from:references:to;
+        bh=GPcpdg8QV058H1GLa55vX9skNIwpcet8Bz69ksAuJTs=;
+        b=EaIRkBjWbe4jvMWhqJEO9+074XFQreAZI6CowI8HdxoATmBX0R0BA8JiAQpJPCbDEH
+         K5xJsGgs1Q0Rmnj9sUsp+T2yeGHMjsiPWD9FQZxVCKj9nxhlV6J6ehduf4of6k4glLXt
+         lOs8c6dU+1Rw4AZ1CdeZswp//Xmay7FpJigGhioAaB1rKwaoo4/Id8u0tnbQ1J8e/jbM
+         W/VbPIuFfFvzrz3MOTlpsmWYphu90xUVtejIeMl97Nj/hmgH3DOG7HDYPrWq9zOW4qA8
+         la2zVck8BjmGR3aePN2ylVJIxeeY0JddXdyPfYMdkDZgQEUUHvq/+28hBM70kmADI/Zq
+         6vYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si6372050wmf.108.2019.05.06.01.07.54
+        by mx.google.com with ESMTPS id o14si3522806wre.368.2019.05.06.05.17.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 May 2019 01:07:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 May 2019 05:17:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:52116 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:55795 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNYfB-0001WC-8g
-	for alex.bennee@linaro.org; Mon, 06 May 2019 04:07:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46289)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hNcZ0-0004ZI-D9
+	for alex.bennee@linaro.org; Mon, 06 May 2019 08:17:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47763)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNYeA-000142-Hk
-	for qemu-devel@nongnu.org; Mon, 06 May 2019 04:06:51 -0400
+	(envelope-from <clg@kaod.org>) id 1hNcYn-0004Z8-DT
+	for qemu-arm@nongnu.org; Mon, 06 May 2019 08:17:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNYe9-0007eI-IF
-	for qemu-devel@nongnu.org; Mon, 06 May 2019 04:06:50 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:39320)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNYe9-0007dt-C4
-	for qemu-devel@nongnu.org; Mon, 06 May 2019 04:06:49 -0400
-Received: by mail-wm1-f68.google.com with SMTP id n25so13940427wmk.4
-	for <qemu-devel@nongnu.org>; Mon, 06 May 2019 01:06:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=kQHvt/xxDanBYyt85LcmxkRedLVpXr1l/7j3kfOCYKQ=;
-	b=gVSUFKgjGKAn4za7QTxZclIZryO/kzu3M1b7f037fSCC9A5zmKGWpi9vsThRbVU5Yb
-	NAxlL4QawNB7/PjmjHr0EMyRxPufVe3weu6rJpplEBhD4JocNwb5v9fS31BaLYagM+EA
-	mfTeabiZeCqOYR9FnzL3/WTN0U5iII8wDPF3lthxbwL5pUEigSaukb0TUwpfjGkgQIkA
-	41kjOEYAK2lAcS936a+Wd6ZRvn2xbR+JIx+Va7ogA3E8IWJJFQwnBWW3gTuQefioCUvI
-	8sJy4IWyO4vfNKANYmgiglC2xQq8QUergp2mVPTcr7nF7O6pDmxQxa/I4f8YBVvIA2li
-	PBqQ==
-X-Gm-Message-State: APjAAAWH90Xnq0JwOuxYni1aL/Siohiigkpzn/2y3HJQeSd7E4SsTveS
-	mWkfD51Hv9bFFlGPbSnVYhtl3Q==
-X-Received: by 2002:a05:600c:2206:: with SMTP id
-	z6mr16433120wml.80.1557130008365; 
-	Mon, 06 May 2019 01:06:48 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193])
-	by smtp.gmail.com with ESMTPSA id f1sm8671989wrc.93.2019.05.06.01.06.47
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 May 2019 01:06:47 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20190505180719.31913-1-philmd@redhat.com>
-	<02ce0766-4464-2c71-6085-7e164d4405af@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ffaa93ed-f790-8aba-3683-d1e11e2ac59c@redhat.com>
-Date: Mon, 6 May 2019 10:06:46 +0200
+	(envelope-from <clg@kaod.org>) id 1hNcYm-0002Gm-9Q
+	for qemu-arm@nongnu.org; Mon, 06 May 2019 08:17:33 -0400
+Received: from 7.mo2.mail-out.ovh.net ([188.165.48.182]:33767)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hNcYm-0002Ac-3i
+	for qemu-arm@nongnu.org; Mon, 06 May 2019 08:17:32 -0400
+Received: from player729.ha.ovh.net (unknown [10.109.160.54])
+	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 064B2191D52
+	for <qemu-arm@nongnu.org>; Mon,  6 May 2019 14:17:22 +0200 (CEST)
+Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
+	(Authenticated sender: clg@kaod.org)
+	by player729.ha.ovh.net (Postfix) with ESMTPSA id 66B9559A73EE;
+	Mon,  6 May 2019 12:17:17 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+References: <20190430044036.1144-1-joel@jms.id.au>
+	<CAFEAcA9qyzHiEY-OudwBUDzCia-jSQ7CkY_L7oC0t4Nu_665uA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d5f88bee-1873-d985-b926-17c159464e53@kaod.org>
+Date: Mon, 6 May 2019 14:17:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <02ce0766-4464-2c71-6085-7e164d4405af@redhat.com>
+In-Reply-To: <CAFEAcA9qyzHiEY-OudwBUDzCia-jSQ7CkY_L7oC0t4Nu_665uA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 2725240725283769152
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrjeejgdehfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-devel] [PATCH] hw/timer: Compile devices not
- target-dependent as common objects
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 188.165.48.182
+Subject: Re: [Qemu-arm] [PATCH v3 0/2] arm: aspeed: Add RTC Model
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JoWYpf63fU46
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kejhYaxXmWNd
 
-On 5/6/19 6:10 AM, Thomas Huth wrote:
-> On 05/05/2019 20.07, Philippe Mathieu-Daudé wrote:
->> All these devices do not contain any target-specific code. While
->> most of them are arch-specific, they are shared between different
->> targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
->> multiple endianess, ...).
->> Put them into common-obj-y to compile them once for all targets.
+On 5/3/19 3:36 PM, Peter Maydell wrote:
+> On Tue, 30 Apr 2019 at 05:40, Joel Stanley <joel@jms.id.au> wrote:
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/timer/Makefile.objs | 22 +++++++++++-----------
->>  1 file changed, 11 insertions(+), 11 deletions(-)
+>> v3: Add some commit messages, resend as v2 didn't send properly
+>> v2: Minor fixes, added vmstate and reset, and rebased on C=C3=A9dric's=
+ series
 >>
->> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
->> index 0e9a4530f84..a92e22938cb 100644
->> --- a/hw/timer/Makefile.objs
->> +++ b/hw/timer/Makefile.objs
->> @@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
->>  common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
->>  common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
->>  
->> -obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
->> -obj-$(CONFIG_OMAP) += omap_gptimer.o
->> -obj-$(CONFIG_OMAP) += omap_synctimer.o
->> -obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
->> -obj-$(CONFIG_SH4) += sh_timer.o
->> -obj-$(CONFIG_DIGIC) += digic-timer.o
->> -obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
->> +common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
->> +common-obj-$(CONFIG_OMAP) += omap_gptimer.o
->> +common-obj-$(CONFIG_OMAP) += omap_synctimer.o
->> +common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
->> +common-obj-$(CONFIG_SH4) += sh_timer.o
->> +common-obj-$(CONFIG_DIGIC) += digic-timer.o
->> +common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
->>  
->>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
->>  
->> -obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->> +common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->>  
->>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
->>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
-> 
-> I've checked
-> 
->  grep -r TARGET hw/timer/
-> 
-> and this looks good to me, so:
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-> By the way, I was surprised to see TARGET_FMT_plx there, since I first
-> thought that this would be a target-specific define, too. But apparently
-> it is not. Very confusing. I'd suggest to rename that to HWADDR_FMT_plx
-> instead, what do you think?
+>> Based-on: 20190411161013.4514-4-clg@kaod.org
+>> [PATCH 3/3] aspeed: use sysbus_init_child_obj() to initialize children
+>>
+>> A model for the ASPEED BMC real time clock (RTC). The model is suffici=
+ent
+>> for running the guest Linux kernel driver, and ticks in time with the
+>> host when programmed.
+>>
+>> It does not implement the alarm functionality, which includes the
+>> interrupt.
+>=20
+> Hi -- I've reviewed this series, but can't apply it yet as
+> it's based on Cedric's patchset which needs a respin. If
+> I forget to apply this when I apply the respin of that one,
+> please ping me...
 
-I'd rather use HWADDR_PRIx and slowly kill TARGET_FMT_plx...
+I will work on a fix ASAP.
+
+Thanks,
+
+C.

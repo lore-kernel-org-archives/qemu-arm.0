@@ -1,84 +1,84 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3833401wrh;
-        Tue, 7 May 2019 09:35:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw84j5wPY1ARjnhghHk2j+H8g+6oibAwrw60RJy5BIoVAhtluA6OnzPwluFSRH+J3VTjSHA
-X-Received: by 2002:a5d:68cb:: with SMTP id p11mr22378636wrw.167.1557246959290;
-        Tue, 07 May 2019 09:35:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557246959; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3833764wrh;
+        Tue, 7 May 2019 09:36:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzIIBldxgDfaAWDZHVbzWE4HRHXIJlqqOCaepQtSWZ2s3fjSck6Au3nWVau1GK/CdHrqgYm
+X-Received: by 2002:adf:a28b:: with SMTP id s11mr23626037wra.16.1557246980355;
+        Tue, 07 May 2019 09:36:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557246980; cv=none;
         d=google.com; s=arc-20160816;
-        b=J3n0zxWCMwYvFeyU1GU+Q/RLOMPeynh9Ga1g1ycRaexSbbLowWx1j3zS7Mmh3BD7EY
-         XTeGUDByd5rAcILZEilt9jsRZcUq4bum2DLCoEkpmGCfQ4zEkBdRcoHhUPBqMnmYyS3d
-         5KxwbRxirkg811fSE3K8+lX1Vix4eVxLToSyGhKvnPNmPtCJkyYlDGUhRoe2JZnL1BJ/
-         vUmpVy4h6vRbLv2iVRpe/buZ67RvPmIu/AA8z2RoUtBxzqkV3cPfgt6CaOgh8PeJ8ewR
-         v+/eV3BdPdPJlOx6pgaSjXE80VhBNLudE/6scEf/kOhqjHED6lW+uyeDIffzZ6n5WiuV
-         HacQ==
+        b=zeOHHFK8ukM6xdVBYlccO8hPHFe2dIqTPvAH+4xvauurSanLPbCmPJxvcj3QcvvqZ0
+         lGd5Xj4BEWljZmVsVSAmdmiP02oyp+fpLXeEkzzO7wfrQzgY20bM1eudswbcMnyc9Kgm
+         6vGXc5I67vepZI4XWW2cSdPNEfGKye7jLJdbROK/pYzEEpWA9ib5peAOWYP14MepUjwq
+         OW/08/StauwLDhTPGba0LmP2OpPJX1agJvWMWjAD+wbR2TjvdPejjbQsYG0KIgxi5Bvb
+         JP73eGOoMyTYRJUFuCKSelIW6lY/OlxGf8OH4NsMBBNzg7v7Aw1n+Lhp9McPZHsLkm1N
+         SiMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=dhzoBQGLP/V6cvvKFvr0YUBVPualQmgEmoMLAJhCWtE=;
-        b=OKbpZqOJFjtst+ntqOwh4luqyxbmia2kmOm/s5n/VkvF292cOsWUVB1Vfnyxus/nOK
-         ng5TbbHoTP8yBF+FSuJtBE2KySTumlHc9sfpEvSB4oOKt80nkHWthDhh8ffvE1k0VpBI
-         xTLipDtLqYiG2iVGP5tYxNsOFVOTcKDOtj+ILvxxVA5dZxHmBFDxeXDcBjmyKgyIXU+o
-         lCFuW+9N5I/WO9Uxp9c5lJJjQ88KTM0TRNKNSGosLqXc/7+CNt6JDnyV/aJmu29YfVOv
-         mbOSfD1l5qgYVEpWUkPZJvZs9CoScDvKjzdKkRMS5/NZd9z8VOtnSVX/H2/swlRoiNMf
-         Q2iA==
+        bh=x1nvXz2HS0tY/Niq+SJo5GtehoxW4/Rn6xXZrMRo7bU=;
+        b=Gg/V8Zo4Hcki+Pz72AyehbXVAzr4fsk4OAqRBnSRfb6XjCwJElsB8/lnFPcCHzUKU5
+         /ORSdeVMbEo6q7+5IQdnWyIwTugOUNLMdlTw3Jg0Mfo4HpqqbU9MOYQFNZW/Ixuetfbt
+         aL4r8JN7WSr8k4heuTvLXDrraYKKUiqOIMnmbFXSXbbbm/14yu73g/aeUaJDHoXIPcaZ
+         a6pRxicohPMGM047jFeV95xcPaG547UobsrUnS9aBXMM6mDKIIABWIy19Y8KaKjIjhSm
+         fXBIOFZpGa6v9yVoV5aDfWVNqzP4BVv0CbSIdbIWUCgSCb7S9ggvWZXGC5V+7qSNjSs5
+         Nk3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si9810700wrs.219.2019.05.07.09.35.59
+        by mx.google.com with ESMTPS id l16si3382207wro.331.2019.05.07.09.36.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 09:35:59 -0700 (PDT)
+        Tue, 07 May 2019 09:36:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49778 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hO34Q-000198-87
-	for alex.bennee@linaro.org; Tue, 07 May 2019 12:35:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50746)
+	id 1hO34l-0001XU-CK
+	for alex.bennee@linaro.org; Tue, 07 May 2019 12:36:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50902)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO33l-0000gZ-PS
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:18 -0400
+	(envelope-from <philmd@redhat.com>) id 1hO34D-0001Cn-Fv
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO33j-0001BT-UT
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52226)
+	(envelope-from <philmd@redhat.com>) id 1hO34B-0001kI-Ic
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63008)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hO33j-00018W-Mf; Tue, 07 May 2019 12:35:15 -0400
+	id 1hO349-0001hH-HT; Tue, 07 May 2019 12:35:43 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 46E2C3082E57;
-	Tue,  7 May 2019 16:35:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AF4CD308793E;
+	Tue,  7 May 2019 16:35:39 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-58.brq.redhat.com [10.40.204.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6B2898162;
-	Tue,  7 May 2019 16:35:04 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B1C273DA5;
+	Tue,  7 May 2019 16:35:27 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Date: Tue,  7 May 2019 18:34:03 +0200
-Message-Id: <20190507163416.24647-4-philmd@redhat.com>
+Date: Tue,  7 May 2019 18:34:05 +0200
+Message-Id: <20190507163416.24647-6-philmd@redhat.com>
 In-Reply-To: <20190507163416.24647-1-philmd@redhat.com>
 References: <20190507163416.24647-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Tue, 07 May 2019 16:35:13 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.45]);
+	Tue, 07 May 2019 16:35:39 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 03/16] hw/virtio: Use object_initialize_child
- for correct reference counting
+Subject: [Qemu-arm] [PATCH v2 05/16] hw/arm/bcm2835: Use object_initialize()
+ on PL011State
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,82 +109,74 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vcs6XFgJxzjq
+X-TUID: lMEdWHlGdwsr
 
-As explained in commit aff39be0ed97:
+To be coherent with the other peripherals contained in the
+BCM2835PeripheralState structure, directly allocate the PL011State
+(instead of using the pl011 uart as a pointer to a SysBusDevice).
 
-  Both functions, object_initialize() and object_property_add_child()
-  increase the reference counter of the new object, so one of the
-  references has to be dropped afterwards to get the reference
-  counting right. Otherwise the child object will not be properly
-  cleaned up when the parent gets destroyed.
-  Thus let's use now object_initialize_child() instead to get the
-  reference counting here right.
+Initialize the PL011State with object_initialize() instead of
+object_new().
 
-This patch was generated using the following Coccinelle script:
-
- @use_object_initialize_child@
- expression parent_obj;
- expression child_ptr;
- expression child_name;
- expression child_type;
- expression child_size;
- expression errp;
- @@
- (
- -   object_initialize(child_ptr, child_size, child_type);
- +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
-ze,
- +                           child_type, &error_abort, NULL);
-     ... when !=3D parent_obj
- -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
- NULL);
-     ...
- ?-  object_unref(OBJECT(child_ptr));
- |
- -   object_initialize(child_ptr, child_size, child_type);
- +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
-ze,
- +                            child_type, errp, NULL);
-     ... when !=3D parent_obj
- -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
- errp);
-     ...
- ?-  object_unref(OBJECT(child_ptr));
- )
-
-While the object_initialize() function doesn't take an
-'Error *errp' argument, the object_initialize_child() does.
-Since this code is used when a machine is created (and is not
-yet running), we deliberately choose to use the &error_abort
-argument instead of ignoring errors if an object creation failed.
-
-Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-Inspired-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/virtio/virtio.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/arm/bcm2835_peripherals.c         | 14 +++++++-------
+ include/hw/arm/bcm2835_peripherals.h |  2 +-
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-index 2626a895cbb..f2462ce0152 100644
---- a/hw/virtio/virtio.c
-+++ b/hw/virtio/virtio.c
-@@ -2267,9 +2267,8 @@ void virtio_instance_init_common(Object *proxy_obj,=
- void *data,
- {
-     DeviceState *vdev =3D data;
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 7ffb51b6927..2931a82a25a 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -46,9 +46,9 @@ static void bcm2835_peripherals_init(Object *obj)
+     qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
 =20
--    object_initialize(vdev, vdev_size, vdev_name);
--    object_property_add_child(proxy_obj, "virtio-backend", OBJECT(vdev),=
- NULL);
--    object_unref(OBJECT(vdev));
-+    object_initialize_child(proxy_obj, "virtio-backend", vdev, vdev_size=
-,
-+                            vdev_name, &error_abort, NULL);
-     qdev_alias_all_properties(vdev, proxy_obj);
- }
+     /* UART0 */
+-    s->uart0 =3D SYS_BUS_DEVICE(object_new(TYPE_PL011));
+-    object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
+-    qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
++    object_initialize(&s->uart0, sizeof(s->uart0), TYPE_PL011);
++    object_property_add_child(obj, "uart0", OBJECT(&s->uart0), NULL);
++    qdev_set_parent_bus(DEVICE(&s->uart0), sysbus_get_default());
 =20
+     /* AUX / UART1 */
+     object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
+@@ -166,16 +166,16 @@ static void bcm2835_peripherals_realize(DeviceState=
+ *dev, Error **errp)
+     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
+=20
+     /* UART0 */
+-    qdev_prop_set_chr(DEVICE(s->uart0), "chardev", serial_hd(0));
+-    object_property_set_bool(OBJECT(s->uart0), true, "realized", &err);
++    qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
++    object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
+=20
+     memory_region_add_subregion(&s->peri_mr, UART0_OFFSET,
+-                                sysbus_mmio_get_region(s->uart0, 0));
+-    sysbus_connect_irq(s->uart0, 0,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart0), 0));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart0), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_UART));
+     /* AUX / UART1 */
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm283=
+5_peripherals.h
+index 959508d57dd..e79c21771fe 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -38,7 +38,7 @@ typedef struct BCM2835PeripheralState {
+     MemoryRegion ram_alias[4];
+     qemu_irq irq, fiq;
+=20
+-    SysBusDevice *uart0;
++    PL011State uart0;
+     BCM2835AuxState aux;
+     BCM2835FBState fb;
+     BCM2835DMAState dma;
 --=20
 2.20.1
 

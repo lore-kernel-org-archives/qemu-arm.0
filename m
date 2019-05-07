@@ -1,165 +1,142 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp32808lfo;
-        Tue, 2 Feb 2021 03:30:09 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxlhoxiVa9xo8kGAk4yqEsInlR/jm4WVrTdeIu3ePqZ5BULP/loUTfqPcTl37OYqlr0nluO
-X-Received: by 2002:a25:414d:: with SMTP id o74mr16273652yba.471.1612265409370;
-        Tue, 02 Feb 2021 03:30:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612265409; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4177100wrh;
+        Tue, 7 May 2019 16:06:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyLmU8EEdCeA7Jvbrj5ZbATrs+2uEgJAkx3TFJpPM9+4nmI/3tWMqBGM5pqRpFXeuAfMP1U
+X-Received: by 2002:adf:da4a:: with SMTP id r10mr24074142wrl.216.1557270412480;
+        Tue, 07 May 2019 16:06:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557270412; cv=none;
         d=google.com; s=arc-20160816;
-        b=p7g9OKmdlqqLfhvg0bA2S0PRTac17ZY4WJ0UVzLB6+OzQoSARz92WssRTWNuJNwOqs
-         3e78O1ezJUrw5ueMIICdxkyDdb3A3w+8wP/hrga0jCr1Lfwigw6cJmcmPkR0Sj7bRrdq
-         OYO3xiV/6fL7LHSsI9xTsv1HlqvPx0bmyYtamYG3/qiL5h5WUE3IsFPUeIEQfXTk930+
-         kKykCh6z2uaDuy9OgffD3/o8+dtGBZz5YEsxznV6jQghfa3eKUOLFogcApp7ZmhmtGkl
-         4bshnlcdRodNmPfaKeLDVuLo26RJisDxU1DzbRLR7gjhrhCVS1t7+66CShlik2uiewrO
-         aPKg==
+        b=cJP5ccdTkx2EvIDA+gLPdKnhB95qJWQFg0D8+B0fPHPi6afvyYRq/vO/xvdQRTj1Q8
+         Uk6UZ3PHMXLqP/ZoolylGqqNwgL4vH82bj621ns+TfvtoBkXRATwC/l2ioxJMYPxaWJL
+         opc5lXRNoEQFLD0oDFSzc76wR+tcBbiNlC7AplUM+rTXZzRd/nMnJOReBFJyhpx6dhxT
+         K3omIg+1jyZHqa2f66KpQqCucnEcVvFuLWRhIm2kEdkDnM7HUD6Ns6OQxldeZ47tNgIt
+         qvfjr8u7LZAWZTnrOh2OxGf7xJFxFfNeoS4fTvVCKm8y+l3TjoNeOT6wzmKb7z/NsG25
+         NrtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zALBmpnGgo0d/DDiUZKTAM0QqzlB5QbytAECdBFd0RQ=;
-        b=y5/dkUQFXvLlXQRxIqzSsfhSQ7B8+ig5XiRupkzAAMusShQVkXLPK4T+f07RyoaARr
-         OGga0d8b9CYW50tTgzICLiJD54O/jNRh/c78JL02ET3vSj1vz/9zbWX5pCrCTxvvE+se
-         oXJlKrhx2FOFsGBxDJk8osQxZpdsS8u1UkGXDqbcd50gsUPh10iWlavtrNAFwHx52XOQ
-         gNiSGBb2SZcJDYI13/j2C4wJm0rA66lwzCGeonWeKBcNHp9SQW3X+/zpY0In0e0sZDUu
-         7k8LYFmzbz7lz2+aZj146TjJm0hr4kjx1eUPBzeawZuw/oqfrTjzEHDAf90NCPoYzQBb
-         1uJg==
+        bh=v59+G3txdigVLPUAwnTR2jZ/wtpRLqd7Qu9iELG8Wt0=;
+        b=c8OXTNUAdqWyfx2AUsXPS96/yIjGQWf9hFURWjAHumXH7z+R3HojowECVNAd6c+ErW
+         OoLhyvwQVwN9oPsdd+iXSHvS0y3/blqlEPTxWCiGa6zm3Tmy++KHmttk33XVGyA6+nHi
+         rrtTLFd8Xsh76gjE64XN8lBtwdPuodYTwdEFe6GwwuaZ6hWohx/Upg6+qT448CCiCJO8
+         CjZeDvxc4jpZ/OzbyvZZW7DlsrMKeSe8AEn6APtSCYCldo5MDNW5oDSP3sMR1d9O2ab7
+         kc5YF6//x72ujlNq107d+p7+y7QPZ0LzhcfI5q1TrWa2UZjlMd8wA8w5SLmD7ebe6GKL
+         MMtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tyeD8txQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VJS0Pl+g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si23209586ybh.74.2021.02.02.03.30.09
+        by mx.google.com with ESMTPS id f201si258900wme.177.2019.05.07.16.06.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 03:30:09 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 07 May 2019 16:06:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tyeD8txQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VJS0Pl+g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54272 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+Received: from localhost ([127.0.0.1]:55937 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6tsm-0006Qd-Py
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 06:30:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33202)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6tsP-0006Bz-PM
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 06:29:45 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534]:44553)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6tsN-0006hL-0t
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 06:29:45 -0500
-Received: by mail-ed1-x534.google.com with SMTP id c2so22444357edr.11
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 03:29:42 -0800 (PST)
+	id 1hO9Ah-0003Bx-H1
+	for alex.bennee@linaro.org; Tue, 07 May 2019 19:06:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59518)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hO9AW-0003AV-3B
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 19:06:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hO9AU-0003Y5-7D
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 19:06:40 -0400
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329]:37271)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hO9AS-0003LO-Gb
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 19:06:38 -0400
+Received: by mail-ot1-x329.google.com with SMTP id u3so11181850otq.4
+	for <qemu-arm@nongnu.org>; Tue, 07 May 2019 16:06:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zALBmpnGgo0d/DDiUZKTAM0QqzlB5QbytAECdBFd0RQ=;
- b=tyeD8txQZtiDMk6lY0q9mMzIHAMQP0GTH41WWyItVXIkzjPmlKG26ZYrCWLjkRSJS+
- WBf3eg8hSKdEEJ0FAbPT5xTmhnyCpN18lhPjs9wpojzCroitW43rX3d6Ag3qlyPPTdHV
- BhpiUW1N+zZ3anEyU7EtqG2oy16/NJ1B3BGnzf5XXprtjCeC9JT5/dV7R8aBlMX8Qt4P
- vJ0XShlZrhF9X7G6q88bUTpiLJemDyKOKvrbMKMR5Cn0rRBVpZyS52Z7hNxhrXQBXf5j
- pYR0H9O/UhCIj8xMt1FNyEb6aq5CTQDG9cjCtbhXS6naBJbLGvXi7PaGCiaYAF7arZh/
- Sy/w==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=v59+G3txdigVLPUAwnTR2jZ/wtpRLqd7Qu9iELG8Wt0=;
+	b=VJS0Pl+gUSpEmmG9UbUJcGH/d8zAS92qUWKUJ63mhnCSTJYJ6zqmfnhQQjnZ+rwd37
+	dh2G9giUSxHjkPz0smV3n65lKP3cDeptFTbb+yPBh2E9k8GQBLR80RiToMwh8X+7FFhl
+	Dt9zZ5rmlVwjFw1Fhrh70qEHVbDAvGQq09rIpUisZG3FOZlhqBidsHtkXtHRkitoTG07
+	I7y2+It1Lj+EkseBduwjMU5HE/CDolfbrIo3LaAE5R0UYEP81+DwdNUbzB+Jtza05Sb6
+	qEeMygDVBQiw+7+ukC/e6G+n8s+HDJ/r3CujHoi+cNvFcdMs6ZTqFDosCBcLXJUKZswO
+	vR+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zALBmpnGgo0d/DDiUZKTAM0QqzlB5QbytAECdBFd0RQ=;
- b=B9KzE3Ks5Or/G7IELM2Pj1U3wTuRs/YhDO1gf8b2TioBg9V/MhU53uubuB+aSoOy8h
- /++wjgzYMJahwzM8Qp++z9/v308aaciJef0WpGxG28d48W/gM5EFaL7QO+phtPuuf8L7
- K2YHUtYlTlXY0Z5ibvehHRy1yc1LRylbw+Se3dPlPfdHoj95xiXwiYE+5DbCivi2JHVH
- BuwF1gSBMolE8bkw5FBdeomQJO+fAY2kEbvd0QEDEZUUmLXh7pUhK0VqEzYGsai8IEGs
- sbWSEga1Jgggffs9B4fAy7WMy/MMB29tTW3wUvDVu9liuAywP9qkiDUoXqS2CwniR/zg
- Zv4Q==
-X-Gm-Message-State: AOAM5323grdJYIRhDRETTw5IPo8MXjqyG/MNZLSYIRV6Tlym1ztB8c21
- oJV/HPIKo6nDSh+811gLksfd9aHa3hLSevNCYNTPmA==
-X-Received: by 2002:a05:6402:3494:: with SMTP id
- v20mr15242663edc.146.1612265381036; 
- Tue, 02 Feb 2021 03:29:41 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=v59+G3txdigVLPUAwnTR2jZ/wtpRLqd7Qu9iELG8Wt0=;
+	b=gugp95gi+kkrIwy+NB0OhOyeIChIKR/5f7wZbKxTu0NR2ezFk01tmNyTDZpNyWRWCP
+	VbT67/C2ITHix33kChXvic7deCh12LBJaDVGhYK+nk2HvNi39wVFAJx3pimmFag+Joh8
+	cBuflboXUcxde99Clya18priDwjEYq2wqm6a7iXYeM8JGTOzbziSBQXirLZJBwsckGG/
+	UW5DJgUc5Shxv05+GC54nu7HsM20kw4vSv1C1jUpo2UAc8iH2+MQUozB6ECVRzhJgJCY
+	p9BogIn01XoSHBzNI9EoaTwSCEW67ek4LMiICELlk5ReUaiUibcFI87zeiSV4Wt7sSWy
+	p+Dw==
+X-Gm-Message-State: APjAAAWiND4CNiaKfNfH/Flr3kyYc2jVVWgoFoSeDhVbnZqEgadhgLHq
+	AB47obumkVH3Q6z5dt1YLZwBt6CZ98BSLQELnsQfkQ==
+X-Received: by 2002:a9d:61c6:: with SMTP id h6mr23206628otk.316.1557270394584; 
+	Tue, 07 May 2019 16:06:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
- <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
-In-Reply-To: <20210128143102.7834-2-michael.nawrocki@gtri.gatech.edu>
+References: <20190507081946.19264-1-kraxel@redhat.com>
+In-Reply-To: <20190507081946.19264-1-kraxel@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 11:29:29 +0000
-Message-ID: <CAFEAcA9Wi+jSPEZa2Thft1Q899VW0YyHB8Cb+U86m+WbB-Ns=w@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: Add raw_writefn to SCR_EL3 register
-To: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
+Date: Wed, 8 May 2019 00:06:23 +0100
+Message-ID: <CAFEAcA_c8pc01K7hyjJHzyjJ1JGCpi_Nf1iSwOt1Q9GwWs-i=Q@mail.gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::329
+Subject: Re: [Qemu-arm] [PULL 0/8] Vga 20190507 patches
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FTAaq4fV3JbS
+X-TUID: rz4Y0b4bS4Hs
 
-On Thu, 28 Jan 2021 at 14:31, Mike Nawrocki
-<michael.nawrocki@gtri.gatech.edu> wrote:
+On Tue, 7 May 2019 at 09:19, Gerd Hoffmann <kraxel@redhat.com> wrote:
 >
-> Fixes an issue in migration where the reset value of SCR and the value
-> produced by scr_write via the writefn for SCR_EL3 mismatch.
+> The following changes since commit a6ae23831b05a11880b40f7d58e332c45a6b04f7:
 >
-> Signed-off-by: Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-> ---
->  target/arm/helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>   Merge remote-tracking branch 'remotes/ehabkost/tags/python-next-pull-request' into staging (2019-05-03 15:26:09 +0100)
 >
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index d2ead3fcbd..e3c4fe76cb 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5785,7 +5785,7 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
->      { .name = "SCR_EL3", .state = ARM_CP_STATE_AA64,
->        .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 0,
->        .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.scr_el3),
-> -      .resetvalue = 0, .writefn = scr_write },
-> +      .resetvalue = 0, .writefn = scr_write, .raw_writefn = raw_write },
->      { .name = "SCR",  .type = ARM_CP_ALIAS | ARM_CP_NEWEL,
->        .cp = 15, .opc1 = 0, .crn = 1, .crm = 1, .opc2 = 0,
->        .access = PL1_RW, .accessfn = access_trap_aa32s_el1,
-> --
+> are available in the Git repository at:
+>
+>   git://git.kraxel.org/qemu tags/vga-20190507-pull-request
+>
+> for you to fetch changes up to 6306cae275c7091aa4e785809d956b475bfedab4:
+>
+>   i2c-ddc: move it to hw/display (2019-05-07 09:56:10 +0200)
+>
+> ----------------------------------------------------------------
+> vga: bugfixes for qxl, cirrus, ati.
+> vga: add "-vga help" support.
+> vga: move i2c-ddc to display.
+>
+> ----------------------------------------------------------------
+>
 
-I think the problem here is not the lack of a raw_writefn,
-but that we're not handling the RES1 bits [5:4] in SCR_EL3 correctly.
-Specifically:
+Applied, thanks.
 
- * if the CPU is AArch64-only then the resetvalue for SCR_EL3 should
-   not be 0, but 0x30 (but if the CPU has AArch32 at all then it should
-   still be 0)
- * scr_write() should not be saying "force the FW and AW bits to 1 if
-   written as an AArch64 register". It can, but is not obliged to,
-   do this if the CPU is AArch64-only; it must not if the CPU has
-   AArch32, even if the register is being accessed via its AArch64 form.
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.1
+for any user-visible changes.
 
-This is because RES1 has some complicated semantics for bits like
-this which are "RES1 only in some architectural contexts" (this is all
-defined in the Glossary entry in the v8A Arm ARM), which basically
-means that if AArch32 is supported then the bit has to be reads-as-written
-from the AArch64 side.
-
-thanks
 -- PMM

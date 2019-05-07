@@ -1,81 +1,84 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3832727wrh;
-        Tue, 7 May 2019 09:35:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxDjFRrdRqvnv5Luw9Gmt/Usgcy8qXWxKeERT528hPUmAwh4ojSsft4rUagrHbQxt7vPKoD
-X-Received: by 2002:adf:e5cb:: with SMTP id a11mr5222387wrn.128.1557246926685;
-        Tue, 07 May 2019 09:35:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557246926; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3833038wrh;
+        Tue, 7 May 2019 09:35:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwX3jfZS1blOFT9EUlZe2tMR4nbh3Bx8xdMGUgeQMuF0p53J12EhMYYZQfduWMOXIV/8rHW
+X-Received: by 2002:adf:f508:: with SMTP id q8mr5324475wro.225.1557246940851;
+        Tue, 07 May 2019 09:35:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557246940; cv=none;
         d=google.com; s=arc-20160816;
-        b=aTe5g8KWJrJ0S6Gpm4VVlgL2wVbK8cATgCgBKxV+VJfdj9LMSIlVjuZPgSU0qFdrly
-         iiAMjuIhAGb6lFw0tPsuVtWQRFFwwQHdT4L4LsRUnKTqeZTLCVu0jlM9WbaIqBhgPdS6
-         GmP4sq1vddTsK3lco2WEXXCcoWjMDgZdQ/UqfcRNrZYwxUr9uu2srg91DXUjigjBTyfb
-         hg1fNiHMdDthknNCA70lQhbgqbl3VBoqe1sQ6/dq/zblm7DgmMl+rmYJqgIKej6c7iQx
-         d+elEdR/cwmxr8nMMKdqWEvdKFw8hULvGpKbdrVHeLD0nswetvoVmH7LPmZM/19/x9OO
-         N20g==
+        b=Y+X49UBnWazFtryhjBoeiYeagLGxJB6Ass0QRGzRQ4e1rxIx9uNoZk7sXhYohbWv2m
+         Zi/UEJKjf/X/MVr9z0YkWLSQOWp9W+MMf5Y1pzg+fIm9qbkXFoH+NN0JhUXq9glCPfpx
+         nOs71p/94gTxN5+QUFX7Xa6YN1IY6ZDM+Fwg9igdMsWA+DI7PE5r/Q3ptS/jg1HZXkNh
+         fje/w+Aee84+1k4hGw2S4JVlWN+9WKWS3wWGQ+EsmbXEN6UP5Q5t6JYIUyuq0kHd2R8q
+         A/PlkY/nwlKnBkjLAda/K2j1W5HgSS6casokIRJAyX7pAGYm3w47joanquU7Tu1j3b+m
+         I/GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=XeZiOo+yjrkFuqKXr6QCfCgEko3Vt3mwEkD8m60aMf4=;
-        b=ewFJoEq1LO6Kh5s7vym3+MpejdbjVnA08mZzqtAfcxzhTYUVI42ZEd6IyNNYrEpKw3
-         QO1t0ueCPxOH8BVatE40W1cOD5cWYsyU1PxbDqzsdwCs0UxxS1PcxIx35z18tu0gQP/7
-         h0N4YxG13n2pvopZ/u8SnY6BHsQ9nC2/k3BvrG1Q30KjNzKg5qMN/Ypi/tFjb/8r/zZA
-         9NCl6T2EjxtuVoA/Ra83OZeGpdTrJb/b3Mck5/yR213NZILEuUBvRMOgLVAKIFivaoRc
-         E51OEIXV1POGAzqdQkpkjTIgzxKZ2OGSrVgWeKmTejKkwfaj80YB7oBpBDSnttDyfdCt
-         sTxw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=TKHKLqQ1vjMqPkNIpzyeaawVh6Vdr5BibekERPOguGg=;
+        b=OBL+y6ikYDUXeoKN7LDvlDh8CvRdWUVK6T9buKwUAuR4+Lvq65LmgRvYV9O+WEK15O
+         cxzWfGnfJntyahmeTcRFhLHmRLJQ1WAU+iNHPnhq5x+htsaB/oQhBf51GJ+EJ1l5ulVy
+         FHH29hT2Ke/xAL9/QHvVKgWKzJZTdA0PRqs/YhjL2y9yZczmKcj/R5AcmTXwwAvn+YSH
+         W/jv3ou4d1JGjX7rpZYBwUA1/yLRPwKIa75HrJwprOXpAhUsiRlY0MM8UZTlKr2XyMr6
+         UUCyuidolN1dk6d+LINzoz8GcPs8Vw4Fc/VFn/wGVl8LJZvyNrYHSnxqK3dWK8KqBTtD
+         Oc8w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v189si8786301wme.189.2019.05.07.09.35.26
+        by mx.google.com with ESMTPS id o7si9336545wmo.145.2019.05.07.09.35.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 09:35:26 -0700 (PDT)
+        Tue, 07 May 2019 09:35:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49767 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49772 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hO33t-0000Ty-Kk
-	for alex.bennee@linaro.org; Tue, 07 May 2019 12:35:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50561)
+	id 1hO347-0000lH-Oz
+	for alex.bennee@linaro.org; Tue, 07 May 2019 12:35:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50685)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO33K-0008SS-0O
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:34:51 -0400
+	(envelope-from <philmd@redhat.com>) id 1hO33c-0000P9-OC
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO33I-0000e7-3j
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:34:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46462)
+	(envelope-from <philmd@redhat.com>) id 1hO33a-0000xd-L4
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:35:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55396)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hO33E-0000VY-VH; Tue, 07 May 2019 12:34:46 -0400
+	id 1hO33Y-0000v5-M7; Tue, 07 May 2019 12:35:05 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 39E373001829;
-	Tue,  7 May 2019 16:34:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AC04D81E1D;
+	Tue,  7 May 2019 16:35:03 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-58.brq.redhat.com [10.40.204.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C25208162;
-	Tue,  7 May 2019 16:34:19 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB8008160;
+	Tue,  7 May 2019 16:34:46 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Date: Tue,  7 May 2019 18:34:00 +0200
-Message-Id: <20190507163416.24647-1-philmd@redhat.com>
+Date: Tue,  7 May 2019 18:34:02 +0200
+Message-Id: <20190507163416.24647-3-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-1-philmd@redhat.com>
+References: <20190507163416.24647-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Tue, 07 May 2019 16:34:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 07 May 2019 16:35:04 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 00/16] hw: Use object_initialize_child for
- correct reference counting
+Subject: [Qemu-arm] [PATCH v2 02/16] hw/misc/macio: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,77 +109,105 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4rOR0+QW9OtQ
+X-TUID: o66kITn4z8hi
 
-Hi,
+As explained in commit aff39be0ed97:
 
-This series looks at Eduardo suggestions from [1]
-and Thomas commit aff39be0ed97 to replace various
-object_initialize + qdev_set_parent_bus calls by
-sysbus_init_child_obj().
+  Both functions, object_initialize() and object_property_add_child()
+  increase the reference counter of the new object, so one of the
+  references has to be dropped afterwards to get the reference
+  counting right. Otherwise the child object will not be properly
+  cleaned up when the parent gets destroyed.
+  Thus let's use now object_initialize_child() instead to get the
+  reference counting here right.
 
-Important comment from Eduardo:
+This patch was generated using the following Coccinelle script
+(with a bit of manual fix-up for overly long lines):
 
-  It's possible, but we need a volunteer to review each
-  hunk because the existing code might be (correctly)
-  calling object_unref() (either immediately or when
-  parent is finalized).
+ @use_object_initialize_child@
+ expression parent_obj;
+ expression child_ptr;
+ expression child_name;
+ expression child_type;
+ expression child_size;
+ expression errp;
+ @@
+ (
+ -   object_initialize(child_ptr, child_size, child_type);
+ +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+ +                           child_type, &error_abort, NULL);
+     ... when !=3D parent_obj
+ -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ NULL);
+     ...
+ ?-  object_unref(OBJECT(child_ptr));
+ |
+ -   object_initialize(child_ptr, child_size, child_type);
+ +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+ +                            child_type, errp, NULL);
+     ... when !=3D parent_obj
+ -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ errp);
+     ...
+ ?-  object_unref(OBJECT(child_ptr));
+ )
 
-I tried to split it enough to make the review process
-easier.
+While the object_initialize() function doesn't take an
+'Error *errp' argument, the object_initialize_child() does.
+Since this code is used when a machine is created (and is not
+yet running), we deliberately choose to use the &error_abort
+argument instead of ignoring errors if an object creation failed.
 
-Regards,
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Inspired-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/misc/macio/macio.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Phil.
-
-[*] https://patchwork.ozlabs.org/patch/943333/#1953608
-v1: https://lists.gnu.org/archive/html/qemu-devel/2019-02/msg05931.html
-
-Philippe Mathieu-Daud=C3=A9 (16):
-  hw/ppc/pnv: Use object_initialize_child for correct reference counting
-  hw/misc/macio: Use object_initialize_child for correct ref. counting
-  hw/virtio: Use object_initialize_child for correct reference counting
-  hw/arm/bcm2835: Use TYPE_PL011 instead of hardcoded string
-  hw/arm/bcm2835: Use object_initialize() on PL011State
-  hw/arm/bcm2835: Use object_initialize_child for correct ref. counting
-  hw/arm/aspeed: Use object_initialize_child for correct ref. counting
-  hw/arm: Use object_initialize_child for correct reference counting
-  hw/mips: Use object_initialize() on MIPSCPSState
-  hw/mips: Use object_initialize_child for correct reference counting
-  hw/microblaze/zynqmp: Move the IPI state into the PMUSoC state
-  hw/microblaze/zynqmp: Let the SoC manage the IPI devices
-  hw/microblaze/zynqmp: Use object_initialize_child for correct ref.
-    counting
-  hw/microblaze/zynqmp: Use object_initialize_child for correct ref.
-    counting
-  hw/arm/mps2: Use object_initialize_child for correct reference
-    counting
-  hw/intc/nvic: Use object_initialize_child for correct reference
-    counting
-
- hw/arm/aspeed.c                      |  6 +--
- hw/arm/aspeed_soc.c                  | 50 +++++++++--------------
- hw/arm/bcm2835_peripherals.c         | 61 +++++++++++-----------------
- hw/arm/digic.c                       | 17 +++-----
- hw/arm/imx25_pdk.c                   |  5 +--
- hw/arm/kzm.c                         |  5 +--
- hw/arm/mps2-tz.c                     |  8 ++--
- hw/arm/mps2.c                        |  8 ++--
- hw/arm/raspi.c                       |  7 ++--
- hw/arm/sabrelite.c                   |  5 +--
- hw/arm/xlnx-zcu102.c                 |  5 +--
- hw/arm/xlnx-zynqmp.c                 |  8 ++--
- hw/intc/armv7m_nvic.c                |  6 +--
- hw/microblaze/xlnx-zynqmp-pmu.c      | 45 ++++++++++----------
- hw/mips/boston.c                     | 25 ++++++------
- hw/mips/cps.c                        | 20 ++++-----
- hw/mips/mips_malta.c                 | 17 ++++----
- hw/misc/macio/macio.c                |  8 ++--
- hw/ppc/pnv.c                         | 12 ++----
- hw/virtio/virtio.c                   |  5 +--
- include/hw/arm/bcm2835_peripherals.h |  3 +-
- 21 files changed, 140 insertions(+), 186 deletions(-)
-
+diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+index 94da85c8d7d..b726c73022c 100644
+--- a/hw/misc/macio/macio.c
++++ b/hw/misc/macio/macio.c
+@@ -346,12 +346,12 @@ static void macio_newworld_realize(PCIDevice *d, Er=
+ror **errp)
+         object_property_set_bool(OBJECT(&ns->gpio), true, "realized", &e=
+rr);
+=20
+         /* PMU */
+-        object_initialize(&s->pmu, sizeof(s->pmu), TYPE_VIA_PMU);
++        object_initialize_child(OBJECT(s), "pmu", &s->pmu, sizeof(s->pmu=
+),
++                                TYPE_VIA_PMU, &error_abort, NULL);
+         object_property_set_link(OBJECT(&s->pmu), OBJECT(sysbus_dev), "g=
+pio",
+                                  &error_abort);
+         qdev_prop_set_bit(DEVICE(&s->pmu), "has-adb", ns->has_adb);
+         qdev_set_parent_bus(DEVICE(&s->pmu), BUS(&s->macio_bus));
+-        object_property_add_child(OBJECT(s), "pmu", OBJECT(&s->pmu), NUL=
+L);
+=20
+         object_property_set_bool(OBJECT(&s->pmu), true, "realized", &err=
+);
+         if (err) {
+@@ -365,9 +365,9 @@ static void macio_newworld_realize(PCIDevice *d, Erro=
+r **errp)
+                                     sysbus_mmio_get_region(sysbus_dev, 0=
+));
+     } else {
+         /* CUDA */
+-        object_initialize(&s->cuda, sizeof(s->cuda), TYPE_CUDA);
++        object_initialize_child(OBJECT(s), "cuda", &s->cuda, sizeof(s->c=
+uda),
++                                TYPE_CUDA, &error_abort, NULL);
+         qdev_set_parent_bus(DEVICE(&s->cuda), BUS(&s->macio_bus));
+-        object_property_add_child(OBJECT(s), "cuda", OBJECT(&s->cuda), N=
+ULL);
+         qdev_prop_set_uint64(DEVICE(&s->cuda), "timebase-frequency",
+                              s->frequency);
+=20
 --=20
 2.20.1
 

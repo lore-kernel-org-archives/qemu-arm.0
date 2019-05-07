@@ -1,84 +1,84 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3844497wrh;
-        Tue, 7 May 2019 09:47:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzsR1cPQX1HAAXUYFJcgyW9IQH0J3u2mqbph4TFbeDRK9aQuphGOV2Ww5UglMkMNITZ/GH
-X-Received: by 2002:adf:9c87:: with SMTP id d7mr17692922wre.68.1557247646198;
-        Tue, 07 May 2019 09:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557247646; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3845343wrh;
+        Tue, 7 May 2019 09:48:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1QkrIwkC65HeYfAsWSCACirfr4oioBXoffYhuEJaNWxxrE3Sy6au4CCygNFBRihDVSvn9
+X-Received: by 2002:a7b:c411:: with SMTP id k17mr21838186wmi.68.1557247705232;
+        Tue, 07 May 2019 09:48:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557247705; cv=none;
         d=google.com; s=arc-20160816;
-        b=KULFXqEdTqoyAMq3kglbsWknu9u5LJbF0g4kDDpLVNVQgDRLDyJ/wy+puBhcj5oleQ
-         Y07g/Cs3kEeyhm205XrQhui+HMGmkMKuD3o30dlkMUVnplkZSwbZIXEuoc0h3dUZPyPY
-         GytuWZesnVlvShNPkfSnzgPWtbZllgpAzkvx2BfBL5d2f5Nw0+2mbBr1WYjTCtM/lv24
-         uZQWrKuuv7V6DoBa5ArExO6HPl5Hyu/8QjZoyJgmwDkUHRrNn4JsMdDsZ6X+sQdpeJg1
-         alo/ErE0uQuBgA8CL0QqvzPtyoJCpEH+N/wf20JdRU2q1+tO+9cJH+VpY2HXruAQz2Bo
-         d35w==
+        b=UQim5xqnaG0lADlC8hpZFEBbqRNgYOtjdDxFOZom2/EQFrbpoZ98pgMfLoGxJkm7Fa
+         XXtNR8erBA4pICz4G545y5nptQZFbqZea0l4d2qD8cHMVXSY0+KikFMvDXyLFVs0cc4A
+         oWTZOcj/fq3Ntplxn4AXr7+iQM2puxbV1ijQOYJeBLtPH8+jmE+A/6pMGMxAD4TQctnr
+         WeZmfzNM0Kt5CspGf26wty8W2v9+8TsYF7rnG+Bg8A/pQxRHWqIaKDbQjWY2YhgAZH1a
+         veffDvhcTJ7gyQhOK+Mpnfa37rJbdb0mhoUzjMNGewlyaKg8AzrVsFSMSwG29L4vTTh/
+         9HHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=msqtcWHcyQkPO8z1vmEZN97GSBDFoKe4iiLjyWHRDd8=;
-        b=Sg5L5rbToJHbXwrOEj8sQG2L0/GEtZKV9BcN4fzGb1ROiStErTUV7IyVFfnFS1Nfdy
-         VlCruUxEBSkLryOwCsZr+o+zA7vDdto2LXJnXB0oA6bM2AH5zClXZwKmBqNjXj+SunTP
-         iEMlmcbX0t823Vhimux6T+h/h2nymCBRIhszuq6LYBR3tbeUIij8QoqO5WGm5Ll7jF0s
-         dXspRItPVCi4aBO3Wa+XW+CEz6DaQIzgjQWSPH2GBLABKiaiJJYfBCMeZfqjCevFjTxa
-         E3FM5vHMoNClUSyRGXeoeyL5XAZNJal1KVZMs9+FHamNR4h/sfqBhWMCIH/v5Ff0w9J6
-         yOPQ==
+        bh=PESXrcem7W2GKQsggvpLW6kmiq6pTgsb7Kza3cVrd74=;
+        b=mSL9Qo1KeuVF1O4NZr+FanwJ02/23MnOTKIIY7AkrFOsE9ssn30ZsMTwUMVoHD9qL8
+         GkW7vPBAceqJ6V2JJZ6u6NGKfv6g9iPSSEbjxjxd08nwXHeXa3c/24U8FBwr35aCza8D
+         fa/GqX0/GIzkHlcNDAdOOtupH0ePo+nrSuHXDvsfR787pzd5KQANYni+z+DjxL9u+ix5
+         bYGj89RgygwPrHnD8M2C9SytJbDdJ1GQ4VZrunladl1wDIfPFL7prQu8tt/P9OwzDYtX
+         F/6M17cJ9uz/pcKEFcMts1/CrEgtAsUb9JrnU9aKERGGiRdFrEbbE+sGvvknEziEp66v
+         eQFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o17si9967570wrw.346.2019.05.07.09.47.25
+        by mx.google.com with ESMTPS id m18si9973281wrw.339.2019.05.07.09.48.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 May 2019 09:47:26 -0700 (PDT)
+        Tue, 07 May 2019 09:48:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:50004 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50013 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hO3FV-0004Bj-86
-	for alex.bennee@linaro.org; Tue, 07 May 2019 12:47:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51317)
+	id 1hO3GS-0004m5-Cq
+	for alex.bennee@linaro.org; Tue, 07 May 2019 12:48:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO35K-0002dy-5O
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:36:55 -0400
+	(envelope-from <philmd@redhat.com>) id 1hO374-0004S6-Ix
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:38:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hO35I-0003XU-MA
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:36:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47711)
+	(envelope-from <philmd@redhat.com>) id 1hO373-0005W3-55
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 12:38:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:30748)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hO35I-0003Wt-Ec; Tue, 07 May 2019 12:36:52 -0400
+	id 1hO372-0005UU-U5; Tue, 07 May 2019 12:38:41 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8F5F6307D91F;
-	Tue,  7 May 2019 16:36:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8387D30B96D1;
+	Tue,  7 May 2019 16:38:37 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-58.brq.redhat.com [10.40.204.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7ED6D8165;
-	Tue,  7 May 2019 16:36:41 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B896C8166;
+	Tue,  7 May 2019 16:37:59 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-Date: Tue,  7 May 2019 18:34:08 +0200
-Message-Id: <20190507163416.24647-9-philmd@redhat.com>
+Date: Tue,  7 May 2019 18:34:14 +0200
+Message-Id: <20190507163416.24647-15-philmd@redhat.com>
 In-Reply-To: <20190507163416.24647-1-philmd@redhat.com>
 References: <20190507163416.24647-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Tue, 07 May 2019 16:36:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Tue, 07 May 2019 16:38:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 08/16] hw/arm: Use object_initialize_child for
- correct reference counting
+Subject: [Qemu-arm] [PATCH v2 14/16] hw/microblaze/zynqmp: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,7 +109,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 60PcAmSwQQf7
+X-TUID: M3I33hSwWAzz
 
 As explained in commit aff39be0ed97:
 
@@ -141,7 +141,7 @@ ze,
  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
  NULL);
      ...
- ?-  object_unref(OBJECT(child_ptr));
+?-   object_unref(OBJECT(child_ptr));
  |
  -   object_initialize(child_ptr, child_size, child_type);
  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
@@ -151,34 +151,7 @@ ze,
  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
  errp);
      ...
- ?-  object_unref(OBJECT(child_ptr));
- )
-
- @use_sysbus_init_child_obj@
- expression parent_obj;
- expression dev;
- expression child_ptr;
- expression child_name;
- expression child_type;
- expression child_size;
- expression errp;
- @@
- (
- -   object_initialize_child(parent_obj, child_name, child_ptr, child_siz=
-e,
- -                           child_type, errp, NULL);
- +   sysbus_init_child_obj(parent_obj, child_name, child_ptr, child_size,
- +                         child_type);
-     ...
- -   qdev_set_parent_bus(DEVICE(child_ptr), sysbus_get_default());
- |
- -   object_initialize_child(parent_obj, child_name, child_ptr, child_siz=
-e,
- -                           child_type, errp, NULL);
- +   sysbus_init_child_obj(parent_obj, child_name, child_ptr, child_size,
- +                         child_type);
- -   dev =3D DEVICE(child_ptr);
- -   qdev_set_parent_bus(dev, sysbus_get_default());
+?-   object_unref(OBJECT(child_ptr));
  )
 
 While the object_initialize() function doesn't take an
@@ -186,191 +159,36 @@ While the object_initialize() function doesn't take an
 Since this code is used when a machine is created (and is not
 yet running), we deliberately choose to use the &error_abort
 argument instead of ignoring errors if an object creation failed.
-This choice also matches when using sysbus_init_child_obj(),
-since its code is:
-
-  void sysbus_init_child_obj(Object *parent,
-                             const char *childname, void *child,
-                             size_t childsize, const char *childtype)
-  {
-      object_initialize_child(parent, childname, child, childsize,
-                              childtype, &error_abort, NULL);
-
-      qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
-  }
 
 Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 Inspired-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-v2:
- - Tweaked cocci to improve digic_init (Thomas)
- - Described new use of &error_abort (Markus)
----
- hw/arm/digic.c       | 17 ++++++-----------
- hw/arm/imx25_pdk.c   |  5 ++---
- hw/arm/kzm.c         |  5 ++---
- hw/arm/raspi.c       |  7 +++----
- hw/arm/sabrelite.c   |  5 ++---
- hw/arm/xlnx-zcu102.c |  5 ++---
- hw/arm/xlnx-zynqmp.c |  8 ++++----
- 7 files changed, 21 insertions(+), 31 deletions(-)
+ hw/microblaze/xlnx-zynqmp-pmu.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/arm/digic.c b/hw/arm/digic.c
-index 726abb9b485..6ef26c6bac3 100644
---- a/hw/arm/digic.c
-+++ b/hw/arm/digic.c
-@@ -32,27 +32,22 @@
- static void digic_init(Object *obj)
- {
-     DigicState *s =3D DIGIC(obj);
--    DeviceState *dev;
-     int i;
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-=
+pmu.c
+index 0948b1fd5f2..df6c0048aa6 100644
+--- a/hw/microblaze/xlnx-zynqmp-pmu.c
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -176,9 +176,9 @@ static void xlnx_zynqmp_pmu_init(MachineState *machin=
+e)
+                                 pmu_ram);
 =20
--    object_initialize(&s->cpu, sizeof(s->cpu), "arm946-" TYPE_ARM_CPU);
--    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
-+    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
-+                            "arm946-" TYPE_ARM_CPU, &error_abort, NULL);
-=20
-     for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
- #define DIGIC_TIMER_NAME_MLEN    11
-         char name[DIGIC_TIMER_NAME_MLEN];
-=20
--        object_initialize(&s->timer[i], sizeof(s->timer[i]), TYPE_DIGIC_=
-TIMER);
--        dev =3D DEVICE(&s->timer[i]);
--        qdev_set_parent_bus(dev, sysbus_get_default());
-         snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
--        object_property_add_child(obj, name, OBJECT(&s->timer[i]), NULL)=
-;
-+        sysbus_init_child_obj(obj, name, &s->timer[i], sizeof(s->timer[i=
-]),
-+                              TYPE_DIGIC_TIMER);
-     }
-=20
--    object_initialize(&s->uart, sizeof(s->uart), TYPE_DIGIC_UART);
--    dev =3D DEVICE(&s->uart);
--    qdev_set_parent_bus(dev, sysbus_get_default());
--    object_property_add_child(obj, "uart", OBJECT(&s->uart), NULL);
-+    sysbus_init_child_obj(obj, "uart", &s->uart, sizeof(s->uart),
-+                          TYPE_DIGIC_UART);
- }
-=20
- static void digic_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-index 9f3ee147390..eef1b184b0d 100644
---- a/hw/arm/imx25_pdk.c
-+++ b/hw/arm/imx25_pdk.c
-@@ -72,9 +72,8 @@ static void imx25_pdk_init(MachineState *machine)
-     unsigned int alias_offset;
-     int i;
-=20
--    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX25);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+     /* Create the PMU device */
+-    object_initialize(pmu, sizeof(XlnxZynqMPPMUSoCState), TYPE_XLNX_ZYNQ=
+MP_PMU_SOC);
+-    object_property_add_child(OBJECT(machine), "pmu", OBJECT(pmu),
 -                              &error_abort);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
-oc),
-+                            TYPE_FSL_IMX25, &error_abort, NULL);
++    object_initialize_child(OBJECT(machine), "pmu", pmu,
++                            sizeof(XlnxZynqMPPMUSoCState),
++                            TYPE_XLNX_ZYNQMP_PMU_SOC, &error_abort, NULL=
+);
+     object_property_set_bool(OBJECT(pmu), true, "realized", &error_fatal=
+);
 =20
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_f=
-atal);
-=20
-diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-index 139934c4ecf..44cba8782bf 100644
---- a/hw/arm/kzm.c
-+++ b/hw/arm/kzm.c
-@@ -71,9 +71,8 @@ static void kzm_init(MachineState *machine)
-     unsigned int alias_offset;
-     unsigned int i;
-=20
--    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX31);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
--                              &error_abort);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
-oc),
-+                            TYPE_FSL_IMX31, &error_abort, NULL);
-=20
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_f=
-atal);
-=20
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 66899c28dc1..0a6244096cc 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -175,10 +175,9 @@ static void raspi_init(MachineState *machine, int ve=
-rsion)
-     BusState *bus;
-     DeviceState *carddev;
-=20
--    object_initialize(&s->soc, sizeof(s->soc),
--                      version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM2836);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
--                              &error_abort);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
-oc),
-+                            version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM28=
-36,
-+                            &error_abort, NULL);
-=20
-     /* Allocate and map RAM */
-     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram"=
-,
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index ee140e5d9eb..f1b00de2294 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -55,9 +55,8 @@ static void sabrelite_init(MachineState *machine)
-         exit(1);
-     }
-=20
--    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX6);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
--                              &error_abort);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
-oc),
-+                            TYPE_FSL_IMX6, &error_abort, NULL);
-=20
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &err);
-     if (err !=3D NULL) {
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index b6bc6a93b89..c802f26fbdf 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -91,9 +91,8 @@ static void xlnx_zcu102_init(MachineState *machine)
-     memory_region_allocate_system_memory(&s->ddr_ram, NULL, "ddr-ram",
-                                          ram_size);
-=20
--    object_initialize(&s->soc, sizeof(s->soc), TYPE_XLNX_ZYNQMP);
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
--                              &error_abort);
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
-oc),
-+                            TYPE_XLNX_ZYNQMP, &error_abort, NULL);
-=20
-     object_property_set_link(OBJECT(&s->soc), OBJECT(&s->ddr_ram),
-                          "ddr-ram", &error_abort);
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 4f8bc41d9d4..6e991903022 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -191,10 +191,10 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState =
-*s, const char *boot_cpu,
-     for (i =3D 0; i < num_rpus; i++) {
-         char *name;
-=20
--        object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
--                          "cortex-r5f-" TYPE_ARM_CPU);
--        object_property_add_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
--                                  OBJECT(&s->rpu_cpu[i]), &error_abort);
-+        object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
-+                                &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
-+                                "cortex-r5f-" TYPE_ARM_CPU, &error_abort=
-,
-+                                NULL);
-=20
-         name =3D object_get_canonical_path_component(OBJECT(&s->rpu_cpu[=
-i]));
-         if (strcmp(name, boot_cpu)) {
+     /* Load the kernel */
 --=20
 2.20.1
 

@@ -1,101 +1,81 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3239537wrh;
-        Mon, 6 May 2019 22:46:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxnb3i2uOr/vqZTxInxY8FJRUc8dUSko3MoTRQdcjmlGwDV9I5U3zQiK3pun4VM6Xc55HdO
-X-Received: by 2002:adf:f548:: with SMTP id j8mr3646006wrp.171.1557207990968;
-        Mon, 06 May 2019 22:46:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557207990; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp3357064wrh;
+        Tue, 7 May 2019 01:20:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyVfqsooRRN29JyF1pKYpIiyFZYt3H3/qOwh2ucVXAlOuS7BHMPX3DPqu86qnNj77dGsmq+
+X-Received: by 2002:a05:600c:224d:: with SMTP id a13mr19191585wmm.25.1557217216896;
+        Tue, 07 May 2019 01:20:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557217216; cv=none;
         d=google.com; s=arc-20160816;
-        b=gVAMLzZQ7Jp/iDOyel4lf1YR/vNSxCmdOL5VCzlN5ACZp9uTwQ5eohcwjqjac6htbo
-         OT+9c1jADEmbEqaUaXy7Y0cF07AOhCildOLRLrjsT0FWgusJJVyLFUsKYdfr+Q0OpBwj
-         iyzc2999ig4Fx/0N5z20ljy8aSlidNt/YK2zxFQ3oVjoe50yeKuUOGzCeOdXl/AaF+k+
-         gKtlWUYeTfxKj4MZYwkLEI34kgPvKt2NTDIIl/NOvQx8Fj4BhutjHCqrod0V81nzr1Nc
-         e2/I0dA1BJovdl5eaSL09kNZloAx3yPils4LZZI8aca1Tld+7t6gNvRC5cRSR7fCF5Ka
-         pv9w==
+        b=z1b/8pytlMxmJZc89bnUBVpam4lWyDf33xzT3u0lqnu5S/rlC7J0Kwsx9AsVtRDoxv
+         Edt7DFsP5pG7A4ymq+2+9sOwPKlg0F3roPc6OCm2gkEcRLZxsfQurxf3C9DiXnHGE6IR
+         qnRqdbgfNLAcVFKnxpMafT81ZD2WOnU02irteMlHoyn0ytLEQLBTd/OhHdSyqtmI+j+j
+         oo8lNXLgQ3dUSa/xWOBiFdcC139kQDWb1j8ufelp/LGmUiCQWDjxcBE4eStgTezIYBab
+         ZRHQVugESnTR/4G69cQ6pACekAYaUnQZ/8m8negpxiR798hYon2MpvUtGkkfzHcW9W8+
+         DLSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=X6FuCssFlQh7pMhHf4MFiyuPR7kYecNTo54TamMBiUc=;
-        b=uvsZyuKaoWPnypQUC/PYDJHHsyfwnSAt4HMR3M9/sf20ec0GNFmM/faILfwWjRSc2D
-         4eWSrEqwsf3TIdN7HJEYCmjpaFAayUFNqiGes3CZjaaDArojW70E8T3lDQMowwSQlkcJ
-         nhHIxIj1YxrsiRpPu3l8FCjClA2bqo80oZi/vYsM+zhc9YPPYEcAWvHr5RrpnVoIOo+q
-         b5sh+7Kj90xCCuVW+fBLVrEDllyYmGQO1VcjWaDR9G52cId2JY2EiB8BHwMtJnpqbsU0
-         HQH8iG1uofawLa1H94iO9sqcADO4lb/lRV5UmVT4uSTPrX+HN1Y9rpo3nxwlkCh1X6m7
-         L+vQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=TKe64jQwheMAS31A430hSQOy+ZwUNyZ3U9yJ3MEawpA=;
+        b=rMUtoRPkJD9kaa7JoZ5Zs5+RRzC/uYony4lpVyIimykQjL14ik95BuLAzG4C2/v87R
+         wcjO/vmewZIKfis0RrDOs1YGCmgwguZaBf32xfcsvO6wJD5MC1K3rKeEMZYzEd1+lziT
+         wVTcHJ3h5wp/FEoTpV9qRZQuck13vXcrWGVHDuuTj9d9jeADKMnw/+/ywBmc/h636eKU
+         PhvXspLOzuQaGS9LONkvvir1WX9flbmRWNRVLxr7+T9hP6RezuGrlaT0wRz0T/E3rno1
+         09tKSZjuAPD4rfJ14wOFfUtiqMsA72HscicCEC6pXPkowMatGDECoJDso1KT07ZZyLFG
+         SUZA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184si8356849wma.141.2019.05.06.22.46.30
+        by mx.google.com with ESMTPS id u11si8370095wmj.5.2019.05.07.01.20.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 May 2019 22:46:30 -0700 (PDT)
+        Tue, 07 May 2019 01:20:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:40414 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:42003 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hNsvu-0001SP-0K
-	for alex.bennee@linaro.org; Tue, 07 May 2019 01:46:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60095)
+	id 1hNvKh-0000eG-SG
+	for alex.bennee@linaro.org; Tue, 07 May 2019 04:20:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57845)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNsvb-0001H7-Gj
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 01:46:13 -0400
+	(envelope-from <kraxel@redhat.com>) id 1hNvKJ-0000cW-Ow
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 04:19:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNsva-0003y9-6m
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 01:46:11 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:42313)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNsva-0003xh-0O
-	for qemu-arm@nongnu.org; Tue, 07 May 2019 01:46:10 -0400
-Received: by mail-wr1-f68.google.com with SMTP id l2so20386806wrb.9
-	for <qemu-arm@nongnu.org>; Mon, 06 May 2019 22:46:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=X6FuCssFlQh7pMhHf4MFiyuPR7kYecNTo54TamMBiUc=;
-	b=R5g2QtnUgVCIbpS57DSOI1h5E1AOWHVqbvHYf+geaygAqE24Ug0vYgxePbf4fOs/Il
-	YEKpGGGcCqlcJxDvAKX6wjDmQqDbRlbezt/EWNjy/5GL0SIgn1vUB6IU2dwcNbLcJ5Pr
-	Ld09wNIH8X8J07Fvp17OcsHl2xzYYasWULrND2d9n610Fka+5dIjWDyx6SejRV4eFl1l
-	/4TCF95EBdEiZsJgwb89IovOg6e8xwzTrjBet0pe0JBKNgHBvbAnRkhHRyhXaLnTC2dC
-	kq2u5vhExZydaUZM7EuNlIvqAwwGw0Dj8F2oooRntuBeifD0KLfi+spS4SV5KzGJsAN2
-	IfPg==
-X-Gm-Message-State: APjAAAUV1ofDe1O/WUhzIUTlsZ7aUFF4eyhinb1+7Ykuf4ymclqI/IhF
-	RHXUlfkvtJKGILJckaZgSEtrTw==
-X-Received: by 2002:adf:eb0e:: with SMTP id s14mr11463465wrn.158.1557207968991;
-	Mon, 06 May 2019 22:46:08 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	z7sm16255682wme.26.2019.05.06.22.46.08
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 May 2019 22:46:08 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20190506142042.28096-1-clg@kaod.org>
-	<20190506142042.28096-4-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <4f7131a7-9099-f506-035f-abc584bf56b0@redhat.com>
-Date: Tue, 7 May 2019 07:46:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <20190506142042.28096-4-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <kraxel@redhat.com>) id 1hNvKI-00087I-Sc
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 04:19:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46226)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1hNvKI-00086v-Nc; Tue, 07 May 2019 04:19:50 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F3C313097025;
+	Tue,  7 May 2019 08:19:49 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-45.ams2.redhat.com
+	[10.36.116.45])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 931E6171F1;
+	Tue,  7 May 2019 08:19:47 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 801431750B; Tue,  7 May 2019 10:19:46 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  7 May 2019 10:19:39 +0200
+Message-Id: <20190507081946.19264-2-kraxel@redhat.com>
+In-Reply-To: <20190507081946.19264-1-kraxel@redhat.com>
+References: <20190507081946.19264-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Tue, 07 May 2019 08:19:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/3] aspeed: use
- sysbus_init_child_obj() to initialize children
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 1/8] qxl: check release info object
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,116 +87,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Prasad J Pandit <pjp@fedoraproject.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PE/pmqg8Bmuw
+X-TUID: iDFGRUBxzjGd
 
-Hi Cédric,
+From: Prasad J Pandit <pjp@fedoraproject.org>
 
-On 5/6/19 4:20 PM, Cédric Le Goater wrote:
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  hw/arm/aspeed_soc.c | 50 ++++++++++++++++++---------------------------
->  1 file changed, 20 insertions(+), 30 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index bd83618ceba9..4b705afd096a 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -172,12 +172,11 @@ static void aspeed_soc_init(Object *obj)
->      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->      int i;
->  
-> -    object_initialize(&s->cpu, sizeof(s->cpu), sc->info->cpu_type);
-> -    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
-> +    object_initialize_child(obj, "cpu", OBJECT(&s->cpu), sizeof(s->cpu),
-> +                            sc->info->cpu_type, &error_abort, NULL);
->  
-> -    object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
-> -    object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "scu", OBJECT(&s->scu), sizeof(s->scu),
-> +                          TYPE_ASPEED_SCU);
+When releasing spice resources in release_resource() routine,
+if release info object 'ext.info' is null, it leads to null
+pointer dereference. Add check to avoid it.
 
-A similar patch (although better described IMO) was posted here:
-https://lists.gnu.org/archive/html/qemu-devel/2019-02/msg05931.html
+Reported-by: Bugs SysSec <bugs-syssec@rub.de>
+Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
+Message-id: 20190425063534.32747-1-ppandit@redhat.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/display/qxl.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-However you improved it by using sysbus_init_child_obj(). If you don't
-mind I'll respin addressing Markus comment and using your improvement.
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index c8ce5781e037..632923add239 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -777,6 +777,9 @@ static void interface_release_resource(QXLInstance *sin,
+     QXLReleaseRing *ring;
+     uint64_t *item, id;
+ 
++    if (!ext.info) {
++        return;
++    }
+     if (ext.group_id == MEMSLOT_GROUP_HOST) {
+         /* host group -> vga mode update request */
+         QXLCommandExt *cmdext = (void *)(intptr_t)(ext.info->id);
+-- 
+2.18.1
 
->      qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
->                           sc->info->silicon_rev);
->      object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
-> @@ -187,36 +186,29 @@ static void aspeed_soc_init(Object *obj)
->      object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
->                                "hw-prot-key", &error_abort);
->  
-> -    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
-> -    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
-> +                          TYPE_ASPEED_VIC);
->  
-> -    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
-> -    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), NULL);
-> +    sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
-> +                          sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
->      object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
->                                     OBJECT(&s->scu), &error_abort);
-> -    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
->  
-> -    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
-> -    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
-> +                          TYPE_ASPEED_I2C);
->  
-> -    object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
-> -    object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->fmc), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "fmc", OBJECT(&s->fmc), sizeof(s->fmc),
-> +                          sc->info->fmc_typename);
->      object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs",
->                                &error_abort);
->  
->      for (i = 0; i < sc->info->spis_num; i++) {
-> -        object_initialize(&s->spi[i], sizeof(s->spi[i]),
-> -                          sc->info->spi_typename[i]);
-> -        object_property_add_child(obj, "spi[*]", OBJECT(&s->spi[i]), NULL);
-> -        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "spi[*]", OBJECT(&s->spi[i]),
-> +                              sizeof(s->spi[i]), sc->info->spi_typename[i]);
->      }
->  
-> -    object_initialize(&s->sdmc, sizeof(s->sdmc), TYPE_ASPEED_SDMC);
-> -    object_property_add_child(obj, "sdmc", OBJECT(&s->sdmc), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
-> +                          TYPE_ASPEED_SDMC);
->      qdev_prop_set_uint32(DEVICE(&s->sdmc), "silicon-rev",
->                           sc->info->silicon_rev);
->      object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
-> @@ -225,16 +217,14 @@ static void aspeed_soc_init(Object *obj)
->                                "max-ram-size", &error_abort);
->  
->      for (i = 0; i < sc->info->wdts_num; i++) {
-> -        object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
-> -        object_property_add_child(obj, "wdt[*]", OBJECT(&s->wdt[i]), NULL);
-> -        qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
-> +                              sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
->          qdev_prop_set_uint32(DEVICE(&s->wdt[i]), "silicon-rev",
->                                      sc->info->silicon_rev);
->      }
->  
-> -    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC100);
-> -    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "ftgmac100", OBJECT(&s->ftgmac100),
-> +                          sizeof(s->ftgmac100), TYPE_FTGMAC100);
->  }
->  
->  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> 

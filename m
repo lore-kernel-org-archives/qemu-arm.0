@@ -1,133 +1,208 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4770274wrh;
-        Wed, 8 May 2019 05:29:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz3uXy6WUMIIMyHjYEfyugh/bxIy0B/c6/q0KdLmwQLoH/nJaX/mFks8EdtW7KXFqlcts61
-X-Received: by 2002:a1c:f70e:: with SMTP id v14mr3049786wmh.74.1557318596108;
-        Wed, 08 May 2019 05:29:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557318596; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4790121wrh;
+        Wed, 8 May 2019 05:50:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyTL2om1FNzlxa6Xpk48ZRiD67kjd/iU7+U5zJUmNu2BywiL0lgcRqadf1BZEOU3xyTsyXV
+X-Received: by 2002:a17:902:100c:: with SMTP id b12mr24388364pla.230.1557319844470;
+        Wed, 08 May 2019 05:50:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557319844; cv=none;
         d=google.com; s=arc-20160816;
-        b=1Je83IF5ZQzmB23FuPK8XGY0oIFqcXaepl+ORDQAH3VmHi06cxxmH37SMv5IgG6mq4
-         Lt4yIADJI9v5hkDNuclQR8IaPWW9ew28m7WprfJ0ElHkCR3qky3eBkTkOHUDz/TfuNFq
-         etGGD6zgRpjuL1GQbjLztSewvREXZ6GE58pwiJ2grt2TxIC33Ct/p6SRz5f0vqZy5nYh
-         EA5YnG2Cdvf1edpoqHUOIYa4fI4pexpyXRiyjY2YoaO4DVYMhZcopdNtO3+kUfV8/He3
-         74lTIGzEuA1UKZLNrvEotD+ocWGLEdJf9kbo8Fs5XESoR7yzmbm51N2EXlCKyH8UpSN4
-         lgUg==
+        b=IyI+qCgsYMZ7qJPPkWWiTnOXX4EOi5wYTLdQdT3bsXxuZ6NqmCNZ3QNUI1Wis8JUZi
+         Z6bcewniNbJ8jlafVzF9Aqi/r8mFx8WBaAh4sBwGFwIXoObV9nfnevC0gRPgp3Zi8/12
+         wWr0XcwotOYGqAWFR09sP76y1fl5+FoFlUp6FxeVLDXgva5L/C5yCfiiWUkbPljWC/8e
+         7/xu0b5U7qXxowTjkAtaxOMGABxcuCTm8Xxv2WQn8RU0bixg0MrwGj2MbhMt+HtvJWlD
+         7Q+UxKmMHschEcOeS/c3VnOa9Tf1pne4BiCLtBkIEaOOAyvzTJUphYvSmJXDhQpfk9g1
+         5rsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=JfFuS75QZH+ohLsy6LXoom87KOz5yO8X4rzQoE26WdM=;
-        b=YE5ZjH4MUKwTcn8r3q3Qe3mElT5ie2kgmcXHJKyvWFEluY7f4vfRwpOlLDJx2A0OJD
-         wB6HH9WsabS4LXakU3fG15gVUJ3i3d1KvfhIIcMK0QBM97tAYmt6krvyfm5c3B+3+1zN
-         /jk2o/tNmNFdnT4Rc5bgC0vwqk9ckeytmj0s3p7TvBKXJjG4gRWTmzLf522ixgCXME6X
-         IwGuR1KqubLNXYkUOe9kuY0N17ZHCpsyqQk+38jDmAE9ptu2sYKw3fUE8orDn/4BlBiY
-         WnBUa9XeaAiIilhzwrpwkXT2LxsGMpABXiqNa2NKN92ozQvAis4DxvvbDtRtLS1dAKF/
-         7IWA==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:content-language:in-reply-to:mime-version:user-agent
+         :date:message-id:from:references:to:subject:dkim-signature;
+        bh=AntwtAUSCs2zLag/Aqec0jg2WX6zXM4WDQDHb9929WU=;
+        b=GpwAg7QhTsibJpQMx0H/sM/pcOBEZjTlk4oQxSFcg8BHTO9yqXwrO3LzI2BTrznZEh
+         b+flSr5sQcQTPHXHp1a5odgXZL2dvq44JZlDvYMswDUfaHvjuYGUVWUQxGrqAcmxuDfc
+         EvSE15mjbTUgaFipJTSS7qDJ8Q7rw9skKMZcZQlf1YVeTnru4dAi1qHL2KzA7/01UXdj
+         XqvUK+sOoAPiK25kkOycx8MV8w7h3t0itWgFuulTyJPLS8qOE23WyFUaBLxo8EC9GGA5
+         92lp6BYS8dGMHXfXj2zpwpPRW5oenRlnWH57ZI8UusbtElK3uA82wmcp0WYIj+xpnPyc
+         8t2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13si11975629wri.224.2019.05.08.05.29.55
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=h48vuanM;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id z6si19716360pgp.35.2019.05.08.05.50.44
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 May 2019 05:29:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 May 2019 05:50:44 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36273 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOLhr-0001I6-6F
-	for alex.bennee@linaro.org; Wed, 08 May 2019 08:29:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51341)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOLhe-0001Hp-Tc
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 08:29:43 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOLhd-00084m-W4
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 08:29:42 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:54571)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOLhd-00084C-Ps
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 08:29:41 -0400
-Received: by mail-wm1-f68.google.com with SMTP id b203so1882697wmb.4
-	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 05:29:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=JfFuS75QZH+ohLsy6LXoom87KOz5yO8X4rzQoE26WdM=;
-	b=umJLQZy5kTVyqwj5TRpSFh0Fc8WUDbpURhjUxZA8JQescrOWc2PXEF8cw3oqJt/D2t
-	pAJalMM1LiX6fZY0/fBuqdUqio6nyuK/Oh7un8vhxnAB9SLTsFSRG4OR6me3O6N6s+ir
-	G7p6RdjgXyskO8xHJ7PU942ZPanGclr2knETeVGZJCWlmbnPxCKXFL7E4uxhefQwfgAs
-	xtvknKJlXZI+mQzJUSbSWGCWkD46cTI3SUjmHOsK+aM12HhV9xH75+6/mTKFR5iJugs7
-	qsy4WRfIqNgCGMF2K0MmSFOxwRbhMscxdk9gFV6P8RLbfzRU8v+OPVTdU559svOndlUZ
-	b3RQ==
-X-Gm-Message-State: APjAAAXcJ4wp2uN0+8WZfViYrFcKh3v9Sx2Vh0K2b/7pIjYHbpAN8m7x
-	vh1WrlWxpBRBXDwQwY934RWEHA==
-X-Received: by 2002:a1c:7005:: with SMTP id l5mr2906265wmc.149.1557318580720; 
-	Wed, 08 May 2019 05:29:40 -0700 (PDT)
-Received: from [10.201.49.229] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
-	by smtp.gmail.com with ESMTPSA id
-	n2sm35418726wra.89.2019.05.08.05.29.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 May 2019 05:29:38 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20190505180719.31913-1-philmd@redhat.com>
-	<02ce0766-4464-2c71-6085-7e164d4405af@redhat.com>
-	<ffaa93ed-f790-8aba-3683-d1e11e2ac59c@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <63fc48d2-2d33-c6b6-0e22-b8b2578b75ac@redhat.com>
-Date: Wed, 8 May 2019 14:29:36 +0200
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=h48vuanM;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=AntwtAUSCs2zLag/Aqec0jg2WX6zXM4WDQDHb9929WU=; b=h48vuanMXRO2LUNk8GmsAZdK3
+	LW56+mRQI/oKRXjzw7r0NPmRcCEBfKKBKkS4t8uNQH2UGowZ0x6fJJl0hIXfG2OGnncsCbmqtzviS
+	JYLTEQpDBlBzZ0vPW5eCWz4nCQDqcrdGngevuGpC75v98YkTGCXuDiZKWk6K2Vzlmy3fmGOA+nRBI
+	wuLNM0Y8F/ytK2oetCzY5iNZM65CeTUe93GgoG2NN7w4t+icOcoHn51aMoDg+ePHcPXGOMLnlY5tM
+	/YKOgSDHhW7S2oJouypeD59cc9q7xaAzrDfoqeD5ha5ZGeS9qo7BxlFEwlvlXnUJOfzwFsheF/VTE
+	RmyMSd/SA==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+	id 1hOM1x-0003r0-Mv; Wed, 08 May 2019 12:50:41 +0000
+Received: from foss.arm.com ([217.140.101.70])
+ by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hOM1t-0003qK-Fd
+ for linux-arm-kernel@lists.infradead.org; Wed, 08 May 2019 12:50:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A6F5380D;
+ Wed,  8 May 2019 05:50:33 -0700 (PDT)
+Received: from [10.1.196.75] (e110467-lin.cambridge.arm.com [10.1.196.75])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2459A3F575;
+ Wed,  8 May 2019 05:50:30 -0700 (PDT)
+Subject: Re: [Question] Memory hotplug clarification for Qemu ARM/virt
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "will.deacon@arm.com" <will.deacon@arm.com>,
+ Catalin Marinas <Catalin.Marinas@arm.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mm <linux-mm@kvack.org>
+References: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <ca5f7231-6924-0720-73a5-766eb13ee331@arm.com>
+Date: Wed, 8 May 2019 13:50:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <ffaa93ed-f790-8aba-3683-d1e11e2ac59c@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [PATCH] hw/timer: Compile devices not
- target-dependent as common objects
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
+Content-Language: en-GB
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190508_055037_536781_2BC80550 
+X-CRM114-Status: GOOD (  29.06  )
+X-Spam-Score: -5.0 (-----)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-5.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [217.140.101.70 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ShPIYJmJUF+j
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: E6LqSGUMe3dB
 
-On 06/05/19 03:06, Philippe Mathieu-Daudé wrote:
->> By the way, I was surprised to see TARGET_FMT_plx there, since I first
->> thought that this would be a target-specific define, too. But apparently
->> it is not. Very confusing. I'd suggest to rename that to HWADDR_FMT_plx
->> instead, what do you think?
-> I'd rather use HWADDR_PRIx and slowly kill TARGET_FMT_plx...
+Hi Shameer,
 
-Right, either that or rename it to HWADDR_PRI0x.
+On 08/05/2019 11:15, Shameerali Kolothum Thodi wrote:
+> Hi,
+> 
+> This series here[0] attempts to add support for PCDIMM in QEMU for
+> ARM/Virt platform and has stumbled upon an issue as it is not clear(at least
+> from Qemu/EDK2 point of view) how in physical world the hotpluggable
+> memory is handled by kernel.
+> 
+> The proposed implementation in Qemu, builds the SRAT and DSDT parts
+> and uses GED device to trigger the hotplug. This works fine.
+> 
+> But when we added the DT node corresponding to the PCDIMM(cold plug
+> scenario), we noticed that Guest kernel see this memory during early boot
+> even if we are booting with ACPI. Because of this, hotpluggable memory
+> may end up in zone normal and make it non-hot-un-pluggable even if Guest
+> boots with ACPI.
+> 
+> Further discussions[1] revealed that, EDK2 UEFI has no means to interpret the
+> ACPI content from Qemu(this is designed to do so) and uses DT info to
+> build the GetMemoryMap(). To solve this, introduced "hotpluggable" property
+> to DT memory node(patches #7 & #8 from [0]) so that UEFI can differentiate
+> the nodes and exclude the hotpluggable ones from GetMemoryMap().
+> 
+> But then Laszlo rightly pointed out that in order to accommodate the changes
+> into UEFI we need to know how exactly Linux expects/handles all the
+> hotpluggable memory scenarios. Please find the discussion here[2].
+> 
+> For ease, I am just copying the relevant comment from Laszlo below,
+> 
+> /******
+> "Given patches #7 and #8, as I understand them, the firmware cannot distinguish
+>   hotpluggable & present, from hotpluggable & absent. The firmware can only
+>   skip both hotpluggable cases. That's fine in that the firmware will hog neither
+>   type -- but is that OK for the OS as well, for both ACPI boot and DT boot?
+> 
+> Consider in particular the "hotpluggable & present, ACPI boot" case. Assuming
+> we modify the firmware to skip "hotpluggable" altogether, the UEFI memmap
+> will not include the range despite it being present at boot. Presumably, ACPI
+> will refer to the range somehow, however. Will that not confuse the OS?
+> 
+> When Igor raised this earlier, I suggested that hotpluggable-and-present should
+> be added by the firmware, but also allocated immediately, as EfiBootServicesData
+> type memory. This will prevent other drivers in the firmware from allocating AcpiNVS
+> or Reserved chunks from the same memory range, the UEFI memmap will contain
+> the range as EfiBootServicesData, and then the OS can release that allocation in
+> one go early during boot.
+> 
+> But this really has to be clarified from the Linux kernel's expectations. Please
+> formalize all of the following cases:
+> 
+> OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as  DT/ACPI should report as
+> -----------------  ------------------  -------------------------------  ------------------------
+> DT                 present             ?                                ?
+> DT                 absent              ?                                ?
+> ACPI               present             ?                                ?
+> ACPI               absent              ?                                ?
+> 
+> Again, this table is dictated by Linux."
+> 
+> ******/
+> 
+> Could you please take a look at this and let us know what is expected here from
+> a Linux kernel view point.
 
-Paolo
+For arm64, so far we've not even been considering DT-based hotplug - as 
+far as I'm aware there would still be a big open question there around 
+notification mechanisms and how to describe them. The DT stuff so far 
+has come from the PowerPC folks, so it's probably worth seeing what 
+their ideas are.
+
+ACPI-wise I've always assumed/hoped that hotplug-related things should 
+be sufficiently well-specified in UEFI that "do whatever x86/IA-64 do" 
+would be enough for us.
+
+Robin.
+
+> (Hi Laszlo/Igor/Eric, please feel free to add/change if I have missed any valid
+> points above).
+> 
+> Thanks,
+> Shameer
+> [0] https://patchwork.kernel.org/cover/10890919/
+> [1] https://patchwork.kernel.org/patch/10863299/
+> [2] https://patchwork.kernel.org/patch/10890937/
+> 
+> 
+
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel

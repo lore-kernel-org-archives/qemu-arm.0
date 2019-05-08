@@ -1,100 +1,100 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4696377wrh;
-        Wed, 8 May 2019 04:09:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy6K3YQBSIqO+hvpbkYmclDVH9bjqpJlfc7x+I/lLdhgd1fWOMADZYbjGmUyEiffZ+xu52p
-X-Received: by 2002:a1c:ed12:: with SMTP id l18mr2807345wmh.13.1557313796455;
-        Wed, 08 May 2019 04:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557313796; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4696778wrh;
+        Wed, 8 May 2019 04:10:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzOiJkYouYVNdTFilDBNGWALJ0iS8WaPMz4wGeHtMHx+CwsCg3Trut4CfxBXhag5S0UfSfB
+X-Received: by 2002:a1c:ef18:: with SMTP id n24mr2507289wmh.94.1557313820411;
+        Wed, 08 May 2019 04:10:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557313820; cv=none;
         d=google.com; s=arc-20160816;
-        b=F90NNJWgu4I0K+cNHgngJM7QUyqFNJSxB0XAER/rktb++WnT1Y9qukFmwuj2/CZOhD
-         eZQtp6hFPIbaDj7/rMY8cAsfp8osjx2AX9RO0QpE93Y4EPHjRm75KHwdiu/2NGUVYADl
-         jVyUAISlsS3ESDVdNhjss+U345/6LIzpCDm126+SiFM7ogKgMmqoHNkHTylBUifiPk3r
-         D76C3x4UUf0Pe3sU0hMv5GtUjKHW9mAeAaaxqYSy+bMvV6I8LNSxCHoz/VFhASuX65Hp
-         xQwwhl7EA8vyLVelRKIa4alPrWQW5OiOGN73JO6u0j/6E5Astc9wRD8nJtaW4MYKJ2KI
-         WMTA==
+        b=fhwH5Sd16pY/bw+JYcT4DxTtXP+dIpWu0ySDYsC+bIHehO2s3PQIKSnPEy2eNL3GWe
+         a3vU4BEA0xUU5N+nmz/qwXzocFU2xCercKSLJm/1DLE2/fNpj7jQHNMxsFIu3FL1ReTj
+         RSYuXweh+uJeiay5fHpanknBQbzbfowh/tx9OT0lmIaItAjxxtzq6gVNid+pC+Ff/bBr
+         9cz10JIyDEoUu4b0zklIOuC2FzDpEW8n7QtECM5XoVvEx/IxcxRrMI9A1L3CX/rSaHPQ
+         AaCK/i4RwcA3govYLkDM+CbENTaIe56ufERWfuJzznSbtv2mNRSsEAoevwvkhNNjyqw6
+         TMTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=wr0k0q7FKcI6IsoL0WjH9SOSxiIfGfF8JyhCKV2olgE=;
-        b=O6oIaMguwTLWEkzKtO7pchTlGGlh1u5V2btKJFOdKLQC7TmjS1VwCH8HZfLr2nP2gE
-         lZARrJpgR1f+6PiGqHHTwEnTrlv7fU/Y2xWWTyOFkSYrtl261zgCyrD1WyeHU/qK24oh
-         spSffylakVjVQ+3eKCDwUC1BS80ciPmdY/atVdeNgNXOSdQPccJFHEenHzDyahLgMp4O
-         kbnAKp7l0ta/IwY2Udv+rKKdWek1v1EeOWlRgl8WAPNAlRFvL5Hrfe0gQn/sBvzuH1qS
-         eY71jKRgaEBl3blqHsOetbqU4HFzvQTmFvVhj/BXA6vaLQtImWMdB/QFC6Q8ef+lHZM9
-         OrEg==
+        bh=kTeDAeJHTbTbhAf6Au5D/u+567YefQgAfLgDokL+9fI=;
+        b=CLJS17/YGwgp25v0LMBVqt8HAAQWTLEG4zvSZReqa6MRf1x0I8zVzrRhEdlVt1+haO
+         L++8Ehf4rsiIaqHgGOGTsaWrARbK/LIrceminvg9G7fpzp7bFh6/9WEtBuPn6cIDrJ40
+         O+EU/nDBB/3hqmAvydnzx/h5+5CU6gnyCYbPQ5JlIm7Z9NsTpCUnaMLZN8mkdX/GNprD
+         tYqdA2wb91klgvl1ziZuoucjyPjc41Z6q47uxVzY79g7B32QoPcrlFAqn/U2qgccDkQ+
+         hU9/VvjCoKfObcwoNWgjO6cNpBHfX85zF+TJ/pfxEGnNt37O+zoRP+JnbgG2xwAECzUO
+         Cv+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l25si1284256wmj.160.2019.05.08.04.09.56
+        by mx.google.com with ESMTPS id n125si1359701wme.48.2019.05.08.04.10.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 May 2019 04:09:56 -0700 (PDT)
+        Wed, 08 May 2019 04:10:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34866 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34870 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOKSR-0000Dl-HH
-	for alex.bennee@linaro.org; Wed, 08 May 2019 07:09:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36113)
+	id 1hOKSm-0000OF-EX
+	for alex.bennee@linaro.org; Wed, 08 May 2019 07:10:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36163)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKSD-0000DC-9G
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:42 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1hOKST-0000Md-04
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKSC-0007b5-Cl
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:41 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:34191)
+	(envelope-from <pbonzini@redhat.com>) id 1hOKSN-0007fX-EO
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:53 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:34578)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKSC-0007aF-0e
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:40 -0400
-Received: by mail-wm1-f66.google.com with SMTP id m20so1668460wmg.1
-	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 04:09:38 -0700 (PDT)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKSN-0007eT-6z
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:51 -0400
+Received: by mail-wr1-f67.google.com with SMTP id f7so16330381wrq.1
+	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 04:09:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=wr0k0q7FKcI6IsoL0WjH9SOSxiIfGfF8JyhCKV2olgE=;
-	b=BjXqIaQTMbqaMqszxuVG6rxmUx145WUQaG/rn4m1PGeByLyRemD6nBrUKxdhwy6yq2
-	sjk4HroYHI+F/W/Et7+SKgu6wSsD8nWEuFMs/MUG5AbTQ0UlOTMXPUs5L1L6EpGXglj9
-	FxNaKyRBi2PXVe/WuGVUctmNGfLA/EHH73sATgpVuNAVQ4238vOwi+cipOYy9EtFNCqr
-	C80gyFDLPCwHBZoOBn/tF7TWW/V15GRADQG7uTOlzmpAipre3+yt19JQ1V3E0MNScog+
-	b1yedGKo87lYA0klOMjW5xtw/MxQB1FIqQwumx+jOE4nv99PCAYNyaGN5IMPRynC5fhq
-	PE0A==
-X-Gm-Message-State: APjAAAW/xY5ojmwu0TOl+Gs01rHyh7tISkKS9RigEo/4oBV+vL31pPD2
-	LaoANUp8qUahgwVjKodaKw3TyQ==
-X-Received: by 2002:a1c:988b:: with SMTP id a133mr2036763wme.89.1557313777401; 
-	Wed, 08 May 2019 04:09:37 -0700 (PDT)
+	bh=kTeDAeJHTbTbhAf6Au5D/u+567YefQgAfLgDokL+9fI=;
+	b=UaoPcMe8V3CRYnpu6BeHY10aCRcD4XIB57YqzOtS8DRTdvWEMrGo4d72EQVSAthGa4
+	170A0FDIE7JQQ/zL8YjHQcxMcA2liE7grLtEcCxPDIKnPFoHmlQd+UbhwTsqz4O2J+aK
+	sx9mVLKZYb6BpzN+CypmcQRINOkl0iQ7XY8mwYujWR2Lw9w+q2IXNfPJJCreuvADrwgO
+	5WgDT5f97UCz3iwh1c9GY8L8fNNsEl9kXzfiuQb5l63JNYWTDDAlFAOc1YuOWxQkOuCe
+	CPQ4jRybL/6O27+B3D0QMRY9ZqbDadgPbN4EQfKNFZed4RtQLetqyVGFjVxDQuc03xcs
+	yIZQ==
+X-Gm-Message-State: APjAAAXoxF7XqW1Jujd/Nn3B6ubDElShqmXrDU08HQ8fsPkTqzQK4TVt
+	iMlOs4c5SfWjxE1H7++E6rCD1g==
+X-Received: by 2002:a5d:4e46:: with SMTP id r6mr7888937wrt.290.1557313788236; 
+	Wed, 08 May 2019 04:09:48 -0700 (PDT)
 Received: from [10.201.49.229] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
 	by smtp.gmail.com with ESMTPSA id
-	b10sm2905437wme.25.2019.05.08.04.09.35
+	s10sm2224950wrt.66.2019.05.08.04.09.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 May 2019 04:09:36 -0700 (PDT)
+	Wed, 08 May 2019 04:09:47 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>, 
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
 References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-5-philmd@redhat.com>
+	<20190507163416.24647-6-philmd@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <a261e867-ff96-d9f7-cf99-6f08e50b20f8@redhat.com>
-Date: Wed, 8 May 2019 13:09:34 +0200
+Message-ID: <b88c1846-5490-8468-dfd5-1c35ac6a640f@redhat.com>
+Date: Wed, 8 May 2019 13:09:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190507163416.24647-5-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 04/16] hw/arm/bcm2835: Use
- TYPE_PL011 instead of hardcoded string
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 05/16] hw/arm/bcm2835: Use
+ object_initialize() on PL011State
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,40 +123,73 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7gTf9hzr1pwn
+X-TUID: pZvXjt6fAS4U
 
 On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
+> To be coherent with the other peripherals contained in the
+> BCM2835PeripheralState structure, directly allocate the PL011State
+> (instead of using the pl011 uart as a pointer to a SysBusDevice).
+> 
+> Initialize the PL011State with object_initialize() instead of
+> object_new().
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/arm/bcm2835_peripherals.c         | 2 +-
->  include/hw/arm/bcm2835_peripherals.h | 1 +
->  2 files changed, 2 insertions(+), 1 deletion(-)
+>  hw/arm/bcm2835_peripherals.c         | 14 +++++++-------
+>  include/hw/arm/bcm2835_peripherals.h |  2 +-
+>  2 files changed, 8 insertions(+), 8 deletions(-)
 > 
 > diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 6be7660e8cb..7ffb51b6927 100644
+> index 7ffb51b6927..2931a82a25a 100644
 > --- a/hw/arm/bcm2835_peripherals.c
 > +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -46,7 +46,7 @@ static void bcm2835_peripherals_init(Object *obj)
+> @@ -46,9 +46,9 @@ static void bcm2835_peripherals_init(Object *obj)
 >      qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
 >  
 >      /* UART0 */
-> -    s->uart0 = SYS_BUS_DEVICE(object_new("pl011"));
-> +    s->uart0 = SYS_BUS_DEVICE(object_new(TYPE_PL011));
->      object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
->      qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
+> -    s->uart0 = SYS_BUS_DEVICE(object_new(TYPE_PL011));
+> -    object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
+> -    qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
+> +    object_initialize(&s->uart0, sizeof(s->uart0), TYPE_PL011);
+> +    object_property_add_child(obj, "uart0", OBJECT(&s->uart0), NULL);
+> +    qdev_set_parent_bus(DEVICE(&s->uart0), sysbus_get_default());
 >  
+>      /* AUX / UART1 */
+>      object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
+> @@ -166,16 +166,16 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>      sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
+>  
+>      /* UART0 */
+> -    qdev_prop_set_chr(DEVICE(s->uart0), "chardev", serial_hd(0));
+> -    object_property_set_bool(OBJECT(s->uart0), true, "realized", &err);
+> +    qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
+> +    object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
+>      if (err) {
+>          error_propagate(errp, err);
+>          return;
+>      }
+>  
+>      memory_region_add_subregion(&s->peri_mr, UART0_OFFSET,
+> -                                sysbus_mmio_get_region(s->uart0, 0));
+> -    sysbus_connect_irq(s->uart0, 0,
+> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart0), 0));
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart0), 0,
+>          qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+>                                 INTERRUPT_UART));
+>      /* AUX / UART1 */
 > diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-> index f5b193f6707..959508d57dd 100644
+> index 959508d57dd..e79c21771fe 100644
 > --- a/include/hw/arm/bcm2835_peripherals.h
 > +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -13,6 +13,7 @@
+> @@ -38,7 +38,7 @@ typedef struct BCM2835PeripheralState {
+>      MemoryRegion ram_alias[4];
+>      qemu_irq irq, fiq;
 >  
->  #include "qemu-common.h"
->  #include "hw/sysbus.h"
-> +#include "hw/char/pl011.h"
->  #include "hw/char/bcm2835_aux.h"
->  #include "hw/display/bcm2835_fb.h"
->  #include "hw/dma/bcm2835_dma.h"
+> -    SysBusDevice *uart0;
+> +    PL011State uart0;
+>      BCM2835AuxState aux;
+>      BCM2835FBState fb;
+>      BCM2835DMAState dma;
 > 
 
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>

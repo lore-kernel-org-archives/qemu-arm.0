@@ -1,150 +1,246 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp39989lfo;
-        Tue, 2 Feb 2021 03:41:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz2xQp2p8wmdpfrOidU9Kyft8Ien7eOV/Ny00ZXOUVvZhtvXWMulK+RKDWyHuPyAaKq6YM9
-X-Received: by 2002:a5b:34e:: with SMTP id q14mr31541213ybp.291.1612266063882;
-        Tue, 02 Feb 2021 03:41:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612266063; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4275471wrh;
+        Tue, 7 May 2019 18:24:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzr55cRXjigTwanEQs/WQ+qqY9tSaQlg0SJfAcl6TYtuPIQ+tgBhwQjxn3Sc+ZknsrHAz8H
+X-Received: by 2002:a5d:4245:: with SMTP id s5mr15088760wrr.147.1557278654868;
+        Tue, 07 May 2019 18:24:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557278654; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8qhTBCfPwtjKngVMyFRXD46KtYJkEv2AbTqp9R0PAfADky3b5wNrpUyPU5fajedzT
-         6aqWQyFisNx3g4xVxGRlOyV14S5AW31rKLX6itPSfeoicAbdHXdQI0zcRvL52E/b+V83
-         xaoW4WMEJAFyGpL3YUIkmPmtIVcP4zCcGGoCyJjF4R7nUMGbAjvWgzOLjcfHkzjoiwiQ
-         LxyDyzkYRsCG1krSN0MUWC07n/44ARyMIf9o8/W5bh3SZk0XjWBQoWJ8ApxvaChwYWB9
-         c4+gAUSjbHS7QW1HwVRZHj99OV/FsUNM28DUIH2KKjKjKlEd6+X6E3tsL7g4iphKIdWQ
-         sESQ==
+        b=diVISJrUdPwJanxjAGErDdSu47ffoFR5o2henXnZV/2LFPvTloC0ZS4GplUNawk7p8
+         ONN0iGBViA/jpnBQsiktbIVlPdipegEJCKRxChIhjgNgMHe5HubJxugPwBvojymCNF1T
+         e8peJ/DHKPtwbeUjmEcrScHRaiyFqr1XK4QEPVaGEslbIJVd85caOt9KbJkjXcKim2PX
+         94KEG0A0nlsfg71ocD0CggrG0Kvq8Srb/n3JSxYtkp+AHjOm2dKb2Cb0GyhWCrjihWGq
+         ot/2be9EM3vcv9qYHhFmcu+sOg+l0mIrJqIR985+eXPOS27D5FpfzLBDZSVrQlC+qJtq
+         5HHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=J1gMHfjh9hU54RASq2J68fBTn/Px5+qIYgit7RlS7xQ=;
-        b=jkgostsP+04Ar2m6Pt1RboNEp5sL/bDE6Qikwdx83SIgctwoqwRzSMP27RsyWzKOaP
-         sx173ZadzKNMvHIAAQXuEzQsF4xCWnFUDQw8EiAllKFo84L+uRoWrd63YoTuCs25ESPa
-         GponmPoz/OfEBZudVNrAe0Q5q+TSr4UcMVe0MeSmSTHD6wYbeHw5gHGMpNhXtn8U36L2
-         U+cosSL2sIaO+0z8dHxaKQ5RpadATUXjI4OINkTjMK+Bt5LgC+VE2qGRz0iFFUI2nw6e
-         rnj+4WAdomITogdCrR3ToI0XY0Ey9+SSLdmkKjBavO0PzR7czpXUlblX4iSodZ+PdpWE
-         3S9A==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=kX9q7HdWRyOAm1UydD960sT7CpP25sMFjWjlSDxCaqk=;
+        b=gwQaO5i3Sr4c0E6Rn1/jLnzGgjkB4G0HF7Uj1hFSPsEVmv1Zz3RcyCPJcykFSFyv68
+         HWSC6AAJXjkchhPMZv4A3uhdc6HI/xUgBYNayoJj5uJAGGC6/UuIqG2M8zGB63IdsVvj
+         YUfn/ZpQU+jPv+XupsU66wyH6QExQv2kx1ZVSyd1RtR2QKYDcwX3zhWLkCbZ40zaO/Qw
+         rSRFtMbJqnA5BLNX/Oltudz9x5Lzjj0s+6MPHgIp/h7Z1shctnMT6IpvwubhmysSDxW/
+         0F5VV7m5v4W5gnnnvjlS5oF/aVDHFx12Snqavjyncbhk5Hnnoe5etlNQscCs4M4bq1w8
+         qIoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hYmDg6TM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Z9KrCCdc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m74si2512631ybm.439.2021.02.02.03.41.03
+        by mx.google.com with ESMTPS id z3si10936259wrm.230.2019.05.07.18.24.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 03:41:03 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 07 May 2019 18:24:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hYmDg6TM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39844 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Z9KrCCdc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:57212 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6u3K-0004Pr-Tc
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 06:41:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35668)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6u2J-0004PT-CW
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 06:39:59 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:35409)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6u2H-0003FC-FO
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 06:39:59 -0500
-Received: by mail-ej1-x630.google.com with SMTP id a9so11064851ejr.2
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 03:39:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=J1gMHfjh9hU54RASq2J68fBTn/Px5+qIYgit7RlS7xQ=;
- b=hYmDg6TMVzJOPj43EPSDdCv7fg7tXmkikPqj0g4vz+dLOmu+3tEwI1Qyk8hyXvJhU3
- 735FAltTISSRRN9sZBfsL+c7GSWunEo22aKxIex0ccOZxOUK5jik8M4Mvctpp49bb/jf
- NzMxQhmONOmPbkNVS1lflHdpslCEceSsQRnf8bD4Ux74IGZP41O2TpugZTLWsP9BbRgT
- GdhIoB5f8g4sd/QMxBYUSHK4S+ZHLqgwFwyBrkaaxi2tUMuNMJsIIK62zqpPSLiXSBMH
- a1ZAXDP19sgGSu3yqUxSHd1xX4s6a7dJ7rb7vXdBNIHS5FkT2oPFe5qA1fD3Igv04Euy
- jKgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=J1gMHfjh9hU54RASq2J68fBTn/Px5+qIYgit7RlS7xQ=;
- b=brxAhZH5LG0lIuJT3aBe4RRZXF0RtDN+PkFlzp6wJooeyHU+suQlSc8/mdeWrEG4iD
- T5W6r6x4NgnrYOUtgOoaMbDP2FEx5YX5OZzXf1ycLXndpgV277UzCZeObjDJaSYwl7cN
- CDG1QVm/uBW7VynVKVpQ+373a87lW99PLaDej0oXrggOQbi9/ETvqQGLkG3d/ADTUz4d
- tJK5L/nEbPR6MEJDlpoNfMOcDsD7fe3xhPtdsLhBoUXnjmSzRtFA6s9Icsi0kpFGxa17
- wsKorEYpkAdC6zGI7s0aLNePaY3uPWRDfr6aB4tQipI6BmrbZBsSBPjrIpcy+0aijhHI
- 60rQ==
-X-Gm-Message-State: AOAM533lCymc28GblIafrzPXfGd98YoDd7YrlVfisK42Tb1x0odH8vVc
- /KexEDjslddHzsJjiGTK9oI9jQE1hoRVYj9WBKQzAA==
-X-Received: by 2002:a17:906:1d51:: with SMTP id
- o17mr1417364ejh.85.1612265995655; 
- Tue, 02 Feb 2021 03:39:55 -0800 (PST)
+	id 1hOBJd-0006SM-Rg
+	for alex.bennee@linaro.org; Tue, 07 May 2019 21:24:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53192)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <dgibson@ozlabs.org>) id 1hOBJS-0006Rz-7S
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 21:24:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <dgibson@ozlabs.org>) id 1hOBJQ-0001Dj-VF
+	for qemu-arm@nongnu.org; Tue, 07 May 2019 21:24:02 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:40977 helo=ozlabs.org)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1hOBJP-00010e-LU; Tue, 07 May 2019 21:24:00 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 44zJf235Rsz9s3l; Wed,  8 May 2019 11:23:54 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1557278634;
+	bh=0fBnanrGf7xKhTU3enoxcHjF+pVmxBK7EFPrGpZJHkI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Z9KrCCdcle8BKVsK+Dw0JVEK/rmDRlQYyqMSrvXFY72qoF1dd66ZKEEsT13pNUmUr
+	i55nbHpXoOLFEGGt3Eqbhs8voybUCT5IS7dsPr8IVNofnuKJsk59zVY2MSatB7LVb5
+	bjgnrD9f7mlmVHSLYrRQtlf6x4Ud28PgSWf0qNZg=
+Date: Wed, 8 May 2019 11:23:45 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190508012345.GN7073@umbus.fritz.box>
+References: <20190507163416.24647-1-philmd@redhat.com>
+	<20190507163416.24647-3-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20210129132323.30946-1-bmeng.cn@gmail.com>
-In-Reply-To: <20210129132323.30946-1-bmeng.cn@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 11:39:43 +0000
-Message-ID: <CAFEAcA9sDSre3k7YGgwzFBCc22sg2FOuBqVwekQx=fLiFvcevg@mail.gmail.com>
-Subject: Re: [PATCH v9 00/10] hw/ssi: imx_spi: Fix various bugs in the imx_spi
- model
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Zbynv6TNPa9FrOf6"
+Content-Disposition: inline
+In-Reply-To: <20190507163416.24647-3-philmd@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-arm] [PATCH v2 02/16] hw/misc/macio: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Paul Burton <pburton@wavecomp.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Aleksandar Rikalo <arikalo@wavecomp.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, Joel Stanley <joel@jms.id.au>,
+	Antony Pavlov <antonynpavlov@gmail.com>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dyce98GWArqj
+X-TUID: 3H7xHSnXalvj
 
-On Fri, 29 Jan 2021 at 13:23, Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> From: Bin Meng <bin.meng@windriver.com>
->
-> Starting from v8, the series is based on the following 2 versions:
->
-> - v5 series sent from Bin
->   http://patchwork.ozlabs.org/project/qemu-devel/list/?series=223919
-> - v7 series sent from Philippe
->   http://patchwork.ozlabs.org/project/qemu-devel/list/?series=224612
->
-> This series fixes a bunch of bugs in current implementation of the imx
-> spi controller, including the following issues:
->
-> - remove imx_spi_update_irq() in imx_spi_reset()
-> - chip select signal was not lower down when spi controller is disabled
-> - round up the tx burst length to be multiple of 8
-> - transfer incorrect data when the burst length is larger than 32 bit
-> - spi controller tx and rx fifo endianness is incorrect
-> - remove pointless variable (s->burst_length) initialization (Philippe)
-> - rework imx_spi_reset() to keep CONREG register value (Philippe)
-> - rework imx_spi_read() to handle block disabled (Philippe)
-> - rework imx_spi_write() to handle block disabled (Philippe)
->
-> Tested with upstream U-Boot v2020.10 (polling mode) and VxWorks 7
-> (interrupt mode).
 
-Applied to target-arm.next, thanks.
+--Zbynv6TNPa9FrOf6
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- PMM
+On Tue, May 07, 2019 at 06:34:02PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> As explained in commit aff39be0ed97:
+>=20
+>   Both functions, object_initialize() and object_property_add_child()
+>   increase the reference counter of the new object, so one of the
+>   references has to be dropped afterwards to get the reference
+>   counting right. Otherwise the child object will not be properly
+>   cleaned up when the parent gets destroyed.
+>   Thus let's use now object_initialize_child() instead to get the
+>   reference counting here right.
+>=20
+> This patch was generated using the following Coccinelle script
+> (with a bit of manual fix-up for overly long lines):
+>=20
+>  @use_object_initialize_child@
+>  expression parent_obj;
+>  expression child_ptr;
+>  expression child_name;
+>  expression child_type;
+>  expression child_size;
+>  expression errp;
+>  @@
+>  (
+>  -   object_initialize(child_ptr, child_size, child_type);
+>  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+>  +                           child_type, &error_abort, NULL);
+>      ... when !=3D parent_obj
+>  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ NULL);
+>      ...
+>  ?-  object_unref(OBJECT(child_ptr));
+>  |
+>  -   object_initialize(child_ptr, child_size, child_type);
+>  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+>  +                            child_type, errp, NULL);
+>      ... when !=3D parent_obj
+>  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ errp);
+>      ...
+>  ?-  object_unref(OBJECT(child_ptr));
+>  )
+>=20
+> While the object_initialize() function doesn't take an
+> 'Error *errp' argument, the object_initialize_child() does.
+> Since this code is used when a machine is created (and is not
+> yet running), we deliberately choose to use the &error_abort
+> argument instead of ignoring errors if an object creation failed.
+>=20
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Inspired-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  hw/misc/macio/macio.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+> index 94da85c8d7d..b726c73022c 100644
+> --- a/hw/misc/macio/macio.c
+> +++ b/hw/misc/macio/macio.c
+> @@ -346,12 +346,12 @@ static void macio_newworld_realize(PCIDevice *d, Er=
+ror **errp)
+>          object_property_set_bool(OBJECT(&ns->gpio), true, "realized", &e=
+rr);
+> =20
+>          /* PMU */
+> -        object_initialize(&s->pmu, sizeof(s->pmu), TYPE_VIA_PMU);
+> +        object_initialize_child(OBJECT(s), "pmu", &s->pmu, sizeof(s->pmu=
+),
+> +                                TYPE_VIA_PMU, &error_abort, NULL);
+>          object_property_set_link(OBJECT(&s->pmu), OBJECT(sysbus_dev), "g=
+pio",
+>                                   &error_abort);
+>          qdev_prop_set_bit(DEVICE(&s->pmu), "has-adb", ns->has_adb);
+>          qdev_set_parent_bus(DEVICE(&s->pmu), BUS(&s->macio_bus));
+> -        object_property_add_child(OBJECT(s), "pmu", OBJECT(&s->pmu), NUL=
+L);
+> =20
+>          object_property_set_bool(OBJECT(&s->pmu), true, "realized", &err=
+);
+>          if (err) {
+> @@ -365,9 +365,9 @@ static void macio_newworld_realize(PCIDevice *d, Erro=
+r **errp)
+>                                      sysbus_mmio_get_region(sysbus_dev, 0=
+));
+>      } else {
+>          /* CUDA */
+> -        object_initialize(&s->cuda, sizeof(s->cuda), TYPE_CUDA);
+> +        object_initialize_child(OBJECT(s), "cuda", &s->cuda, sizeof(s->c=
+uda),
+> +                                TYPE_CUDA, &error_abort, NULL);
+>          qdev_set_parent_bus(DEVICE(&s->cuda), BUS(&s->macio_bus));
+> -        object_property_add_child(OBJECT(s), "cuda", OBJECT(&s->cuda), N=
+ULL);
+>          qdev_prop_set_uint64(DEVICE(&s->cuda), "timebase-frequency",
+>                               s->frequency);
+> =20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--Zbynv6TNPa9FrOf6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlzSL6EACgkQbDjKyiDZ
+s5Kw6hAA2Hc5Y6SadB7mco+ruDYrj68fUlTO3GB4S7saegyCbbMVOHq9sxr9hj7b
+LVk5Yu1+eY/TcuyqhdVDqOpGOWLKhx8LPIvvHwe1tiYakqV+qaIPgS0+U61cxaKg
+B7dXBRIz60Xo/8cx39bK5V7akI4MfxSUl4/kDqGgjuoY/bTruk5pMyTTuUghYGM7
+1T2Oct9EQFBLNYTZz30cv7bYNGLAgvic+8A9mO69qaugaGFX7WHtPex7c1CROLmC
+7ATAyKGEZ7ROGy5gIi64udSwVZEK864aGu2ihFDsUIySu/O6eBvs9rwJjmqb5/Gs
+U8JdU+DGwOBHPhkbF+Mj1jWeEzTgykvyIg31Gf5XcReah8PFDHl0GhECc0XJwC9P
+oDVzKEgEPkyYA9ShAd2THrkaNlPLxSsxfYExpleHcsa0azkLlRTztoRqlmbcsN4f
+zHnAqvfOc0civsyALWRXDRvQPbNCw2xbjgCjk4B7JUpHFbDowNTJr+jDs1HYdiL6
+pShSWI6qiJYFcSLIhWdBrJNP0yl1vhwOtuTZNS7hA/z1QG8GZADaJ76CDHqoPK4E
+izK4SndlH2p3itZOD6rDcOv4HZpfSFmQJrEwyvQWILzasCpFlauuyRfmua+xdcFe
+YEIwt8OJEvLyaCQNKVsIvJTsjWMod446XSQB+oWHxqo0sKefdHo=
+=8tJh
+-----END PGP SIGNATURE-----
+
+--Zbynv6TNPa9FrOf6--

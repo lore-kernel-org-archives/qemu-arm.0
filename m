@@ -1,111 +1,110 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4709797wrh;
-        Wed, 8 May 2019 04:24:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyopbyo6+vcxrH7tW5uI+ltvp5n9HZFffxoh3pKAGjZbamHkiVHz18LKbzUrUVvHA1ayIpF
-X-Received: by 2002:a7b:cf17:: with SMTP id l23mr2739946wmg.51.1557314679556;
-        Wed, 08 May 2019 04:24:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557314679; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4712939wrh;
+        Wed, 8 May 2019 04:28:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4jUEMqWM2ukuyFg4+lkpOXN/nWsN3Cu+KCRGJ76CFmwG5i15NZYw87XzlIdXuatc4gEF6
+X-Received: by 2002:a5d:4712:: with SMTP id y18mr25668363wrq.23.1557314913047;
+        Wed, 08 May 2019 04:28:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557314913; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xkf+q4LzJFny+2zPQL6iZJzddYpLe18GuZTtXtXuelTgsyXhEazsSMXpTWuuQa+UxI
-         87dspWLnO0RZCQxLPjCJqDYoXyxNQ0Q+HeGCT1kCAZG4f58zsaDvxkW2bYXJQOaKCSVE
-         C1h2nog0fVKZ5GLOas4DfmQF3OehQeGmw/yCvDN7nCWdjCGTuiDS6IabQ4lGRuODuTxI
-         Mf1i5eKp1cJzc6XcdsOiKMpkdeD0RVgC30W4s/Yd9aiQkUh+Emfvu/08D/pPJvmyyOMb
-         1G0ahFhRph1M6qp44j8nTTnsjDSjK8xUkv5kg/7DREWCHyaAuaWthzFcUAXdS9Xbs8yK
-         33Jg==
+        b=xdaKSGSFmhN9OUp/NmBQyugREfbi08CnVnMi97tn9V/sloi+SEOSexKUABuD4wa4EW
+         WCxcxG2BnfV75empsklaeCrB0sq7SCOob0GOGny2qyhONrmK2IHDnrdWhxNJj8yUK0nZ
+         GB5HLMC8k8ATEEqWcVeV6uZM4JiN2YmkwUGFomKGTbHLmMJThnBDib4NHLNS5J1Cill0
+         PZtb6X0fhIGYnEZeNSl4A+GIGLBuc+Hfy7rs+9qubSii6EhK3+dJO9N4foJE+EfMvIIY
+         QLF5DYCDodmQhqCtsXLz6rDVyD5w0ChGdLIhFPxlOSztiArQ9cuTFyU9mB7dL43GQuQQ
+         m66A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=oiEVdit+cpH2GuKWB0ff/Ty4GRLoY1rtT38uhw2uAB4=;
-        b=myIDvFHi53ZktAswp2PpSd3RTVN5oqOK+GfNduPlz4nN2OubUdkkiVyhoJdCtUsEsc
-         bMWcDMjiYOGLX1PeRUKHLbamWQWbw2x8lJrsfBTpGy/t64FCUKtOk29uiXvWUvTB2Omx
-         WTlXZnzi6P2FEqWFzp7SomabQM/QCAtmdaIh5KfCmbNym7Fy934PbX0JCQJOdN+eAX/n
-         kWndGq6tG+sHVKT8ApdaU9P//OaKv1ugpLOP7EF2NxbHM1GWXgqVldJNj+ACcr5Z0Yf6
-         9SIR8DQOaJtTm2y0sqrzWoifaszRQ36m2f4m3aqbhx6Zs0sfX8I96hGu21Nt/az/Dg2y
-         LxZw==
+        bh=OSkIv40KGNgEnH+eUeMOVT6Y1cBfn7KPAxfBLJYU9Q4=;
+        b=B4l3U8crMqGsAdM59wy42e1bc7kqX59JPIHHzpzE0oDQblIZ2aDxRadoKjILSLYTf8
+         ZTaWisNFBHXEHnxFbCrqNwZEqxu1yx772dvFcvikvAMeqD/oGLX5dkTFjkK6MZbvu+O3
+         4TUNJgCEBY7kPtvZuh2ibRILMab7G4rSmkv2/IA1qleUWkgvZNmznv71NB4rmMnhXHy2
+         OjamKtkZZorHlO4l5CdTdPv0XP8glAW8Q8SBM6vtbYYRDBMTj9z0t/uz5mHncpCiLFlO
+         ihPkRy1KuYrxBOD0/CvNLt52ucMDwxdGa6Uw0e2+vqkIGXMpK/j1NOw553pSBI7rOzxA
+         Ih7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i14si981573wmg.195.2019.05.08.04.24.39
+        by mx.google.com with ESMTPS id i1si903128wmb.10.2019.05.08.04.28.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 May 2019 04:24:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 May 2019 04:28:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:35108 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:35177 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOKgg-0003cP-GY
-	for alex.bennee@linaro.org; Wed, 08 May 2019 07:24:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38654)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hOKkS-0006qa-3B
+	for alex.bennee@linaro.org; Wed, 08 May 2019 07:28:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKd3-0000kZ-MK
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:20:54 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1hOKdV-0001Kf-Ul
+	for qemu-devel@nongnu.org; Wed, 08 May 2019 07:21:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKd2-00079h-JU
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:20:53 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:36666)
+	(envelope-from <pbonzini@redhat.com>) id 1hOKdU-0007Sg-JW
+	for qemu-devel@nongnu.org; Wed, 08 May 2019 07:21:21 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:43893)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKd2-000795-Ch
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:20:52 -0400
-Received: by mail-wr1-f66.google.com with SMTP id o4so26705157wra.3
-	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 04:20:52 -0700 (PDT)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKdU-0007Rr-CY
+	for qemu-devel@nongnu.org; Wed, 08 May 2019 07:21:20 -0400
+Received: by mail-wr1-f65.google.com with SMTP id r4so11386635wro.10
+	for <qemu-devel@nongnu.org>; Wed, 08 May 2019 04:21:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=oiEVdit+cpH2GuKWB0ff/Ty4GRLoY1rtT38uhw2uAB4=;
-	b=ScDTPemlmM9ahsDWwMn97XgjJYEYW+dsW0chaB36AzYvFE7wqfLloCfpy/h1gAzh26
-	X7eSE86MfFDNc5qwy2DuMvrmLui4+3sNWmyLlhDyecYPjRCtvUllzAtnFVYgFYvipr7/
-	822jjDIj7B0pFROeB6eAmDYWvH7MAwaieLSJXYRDruiKDh9mCGa51lwNeQaUX1hVqv4z
-	rIVHFM2x0v4pjC8dBYXGZIrTvnFlW/o3zzOVRk05mtscTivW92+8SyPrJLvof+0GfX6b
-	m7vfDK0Z0Omjd9TrDJ+pK/7qGwSBAYDHNyZtbD3nMsfJQSKA1E/SX6v4elV/wUh/2kPK
-	NT8w==
-X-Gm-Message-State: APjAAAURzyE6Fhkcbq6UmtYvQY/vf0ZFsm/txX9Yuw4pXvz/oAgQ22gj
-	FhjWq7eJ60aINPNQdNtk7VAEEg==
-X-Received: by 2002:adf:f70a:: with SMTP id r10mr26000670wrp.96.1557314451276; 
-	Wed, 08 May 2019 04:20:51 -0700 (PDT)
+	bh=OSkIv40KGNgEnH+eUeMOVT6Y1cBfn7KPAxfBLJYU9Q4=;
+	b=biJW6mnbHYDjpkTqyc8fyVVQohs1lFJvFzchYmj7YNcLPLIC4LueuGUian0OpyqPNJ
+	718/ees0E9Tbsts6RJSLqvSlNp+lSCxn97WyDzU79NEJsCAIQjCli6u8KczBYqa2DBlB
+	TlYLv4hIWcElQ95i8cm0XxlehaxkOH8CAuDw5VibzSXdK3XZfq+MRL5Ehsl4nHEKa6C5
+	gDrrRs9UFuyoob/uK9zdEoyw75Ow+T8Ng5Foo5TKI+G84TenhzmabtxQHe4VPqQeQcgg
+	zLWaJtNPsAZ6KJH4O7ypX4RvZab1xHv1gTURqq0UWW56a5LeptA9mB2ZfB9rz0H1npiV
+	yAAw==
+X-Gm-Message-State: APjAAAUoiflliaIKwhXHFvEKnD0fpAl/gwMjQ2xIxwdaqIY3bfxIwgD9
+	z1eeL5x/Ca4wFmcIelaCPMd3Kg==
+X-Received: by 2002:adf:e546:: with SMTP id z6mr20803268wrm.287.1557314479439; 
+	Wed, 08 May 2019 04:21:19 -0700 (PDT)
 Received: from [10.201.49.229] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
-	by smtp.gmail.com with ESMTPSA id
-	h16sm33014229wrb.31.2019.05.08.04.20.48
+	by smtp.gmail.com with ESMTPSA id a5sm3364716wrt.10.2019.05.08.04.21.16
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 May 2019 04:20:50 -0700 (PDT)
+	Wed, 08 May 2019 04:21:18 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>, 
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
 References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-17-philmd@redhat.com>
+	<20190507163416.24647-16-philmd@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <b08740c8-96fc-e336-78cd-66d595d6be98@redhat.com>
-Date: Wed, 8 May 2019 13:20:48 +0200
+Message-ID: <e2029e72-f8dc-caee-4db9-277041fba5f1@redhat.com>
+Date: Wed, 8 May 2019 13:21:16 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190507163416.24647-17-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-16-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 16/16] hw/intc/nvic: Use
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-devel] [PATCH v2 15/16] hw/arm/mps2: Use
  object_initialize_child for correct reference counting
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paul Burton <pburton@wavecomp.com>, Andrew Jeffery <andrew@aj.id.au>,
 	Alistair Francis <alistair@alistair23.me>,
@@ -118,12 +117,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Antony Pavlov <antonynpavlov@gmail.com>,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Peter Chubb <peter.chubb@nicta.com.au>,
 	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
 	Aurelien Jarno <aurelien@aurel32.net>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: it74V1RgdyEf
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pNXY9kuAEZDz
 
 On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
 > As explained in commit aff39be0ed97:
@@ -151,7 +151,7 @@ On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
 >  +   sysbus_init_child_obj(OBJECT(PARENT_OBJ), "CHILD_NAME", child_ptr,
 >  +                         child_size, child_type);
 > 
-> We let NVIC adopt the SysTick timer.
+> We let the MPS2 boards adopt the cpu core, the FPGA and the SCC children.
 > 
 > While the object_initialize() function doesn't take an
 > 'Error *errp' argument, the object_initialize_child() does.
@@ -175,30 +175,65 @@ On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
 > Inspired-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/intc/armv7m_nvic.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  hw/arm/mps2-tz.c | 8 ++++----
+>  hw/arm/mps2.c    | 8 ++++----
+>  2 files changed, 8 insertions(+), 8 deletions(-)
 > 
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index fff6e694e60..2334fe51426 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2568,9 +2568,9 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->           * as we didn't know then if the CPU had the security extensions;
->           * so we have to do it here.
->           */
-> -        object_initialize(&s->systick[M_REG_S], sizeof(s->systick[M_REG_S]),
-> -                          TYPE_SYSTICK);
-> -        qdev_set_parent_bus(DEVICE(&s->systick[M_REG_S]), sysbus_get_default());
-> +        sysbus_init_child_obj(OBJECT(dev), "systick-reg-s",
-> +                              &s->systick[M_REG_S],
-> +                              sizeof(s->systick[M_REG_S]), TYPE_SYSTICK);
+> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+> index 7832408bb70..82dce1a7b38 100644
+> --- a/hw/arm/mps2-tz.c
+> +++ b/hw/arm/mps2-tz.c
+> @@ -214,9 +214,9 @@ static MemoryRegion *make_scc(MPS2TZMachineState *mms, void *opaque,
+>      DeviceState *sccdev;
+>      MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
 >  
->          object_property_set_bool(OBJECT(&s->systick[M_REG_S]), true,
->                                   "realized", &err);
+> -    object_initialize(scc, sizeof(mms->scc), TYPE_MPS2_SCC);
+> +    sysbus_init_child_obj(OBJECT(mms), "scc", scc,
+> +                          sizeof(mms->scc), TYPE_MPS2_SCC);
+>      sccdev = DEVICE(scc);
+> -    qdev_set_parent_bus(sccdev, sysbus_get_default());
+>      qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
+>      qdev_prop_set_uint32(sccdev, "scc-aid", 0x00200008);
+>      qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
+> @@ -229,8 +229,8 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
+>  {
+>      MPS2FPGAIO *fpgaio = opaque;
+>  
+> -    object_initialize(fpgaio, sizeof(mms->fpgaio), TYPE_MPS2_FPGAIO);
+> -    qdev_set_parent_bus(DEVICE(fpgaio), sysbus_get_default());
+> +    sysbus_init_child_obj(OBJECT(mms), "fpgaio", fpgaio,
+> +                          sizeof(mms->fpgaio), TYPE_MPS2_FPGAIO);
+>      object_property_set_bool(OBJECT(fpgaio), true, "realized", &error_fatal);
+>      return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
+>  }
+> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+> index 54b7395849f..ecb8ae3c14c 100644
+> --- a/hw/arm/mps2.c
+> +++ b/hw/arm/mps2.c
+> @@ -174,9 +174,9 @@ static void mps2_common_init(MachineState *machine)
+>          g_assert_not_reached();
+>      }
+>  
+> -    object_initialize(&mms->armv7m, sizeof(mms->armv7m), TYPE_ARMV7M);
+> +    sysbus_init_child_obj(OBJECT(mms), "armv7m", &mms->armv7m,
+> +                          sizeof(mms->armv7m), TYPE_ARMV7M);
+>      armv7m = DEVICE(&mms->armv7m);
+> -    qdev_set_parent_bus(armv7m, sysbus_get_default());
+>      switch (mmc->fpga_type) {
+>      case FPGA_AN385:
+>          qdev_prop_set_uint32(armv7m, "num-irq", 32);
+> @@ -308,9 +308,9 @@ static void mps2_common_init(MachineState *machine)
+>                         qdev_get_gpio_in(armv7m, 10));
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&mms->dualtimer), 0, 0x40002000);
+>  
+> -    object_initialize(&mms->scc, sizeof(mms->scc), TYPE_MPS2_SCC);
+> +    sysbus_init_child_obj(OBJECT(mms), "scc", &mms->scc,
+> +                          sizeof(mms->scc), TYPE_MPS2_SCC);
+>      sccdev = DEVICE(&mms->scc);
+> -    qdev_set_parent_bus(sccdev, sysbus_get_default());
+>      qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
+>      qdev_prop_set_uint32(sccdev, "scc-aid", 0x00200008);
+>      qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
 > 
-
-Nice, the M_REG_NS is already using sysbus_init_child_obj. :)
 
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-
-Paolo

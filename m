@@ -1,98 +1,99 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4697064wrh;
-        Wed, 8 May 2019 04:10:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyZ+OHve9j4DXcV4tm1dg17xXJYZo25BLIyaLgXvvJYnziBqAE74SrNyxK4ujWdJT++cR0e
-X-Received: by 2002:a7b:c649:: with SMTP id q9mr2625492wmk.2.1557313839118;
-        Wed, 08 May 2019 04:10:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557313839; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4700691wrh;
+        Wed, 8 May 2019 04:14:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxv4mzfE/kyOK+v2ve0NHRiiNIzxBx4jJNrTyslsT694ZrdbwRWzIgU6fxOr4CagCagPQoa
+X-Received: by 2002:a1c:f702:: with SMTP id v2mr2792174wmh.0.1557314072694;
+        Wed, 08 May 2019 04:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557314072; cv=none;
         d=google.com; s=arc-20160816;
-        b=bdnmSi4nDqI36sDGxm3CK5K0v+nx5zh6JW5Qh7KEtBHMMc9colmdnN6TZrNJvQfup4
-         xTaJTUmJyqX7pBM++LPqT0+ibUAcwlVrT1o+6EWWju2quQEIfoOYmCSvW+gMWWqMruEm
-         YEtVCS+zNryd5rTzvQzLVlz7Ka/xz5Pz/AOcj50MTYfKatBItOF4CBS5uasj8q3YCoDQ
-         g9UP9wakS/5d9bm2Sd2SLW/UcxhfxKYb9eqnm8zdw1TmTF1xWlf75ovyVMyk4y5ygUay
-         I05/hY2T7Xd1b/j0sWSFjwu3D3PwY+hw5ay2mT2F8NFHuUP5BkL4yFJJYGaZtKP74D4R
-         EUMA==
+        b=xbtoRxs/7VG4cdV8BUTtDJUugYa3+dRcu2PwdWCBkia+4QL5DvOmjzv7t1xOxkrD0X
+         2n+P7AlnR1MdgzkX14E1KVYgXu1HwunCUOPjidmgahBCZWgT6kQtr24cAbIa9TdcsR82
+         rfr2vxREErjKBTuxYmoXxZ4M+X8SedQtc2ogzIksYaXEKS5vlfQIrp0BI7YS+s0UwvS8
+         p3oCWBOTcEjgH2BHVZuyc4hQq/r8zhGPtPTy5TnlqAuymGEy4An1iwCEpR7RQRP1eOEQ
+         pWOaPA2vprGkI29HWx2+VUN3QL9DE1tcxdCcEQ15BaZB7/lDnC16wwRodRbwtkfd85RK
+         SXlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=kfVn3PcHbJJyc67HYE+LAqAbpidfU5TEawPfmSHoBB4=;
-        b=H9v0xjyt5QkGrIP4/VUsEFb3u2tEy6Hk+7SwpRkHW1qKGEQbr4bH48rDPeUdNAtjTU
-         6IK5EG7nR2MtOpWgjZfV5ULdtEAc3HKghvmLU08TZF029ySAvM3iZU/pekKie21rjcEE
-         V1YbkglYNra6wmJmJcao1vlsK9KnaA2Y3yHjOEzQCD34HhiQmNDj2EyRBm0eVqFj3C8M
-         6H28B68j93P48hB7K6N54oFVhJVYUVBySVn7tr1doYkp0AOmNJlJW6Sl0YF09CP/vNXx
-         jmf58F+DFQn9k0ZAY1dA4fKeNs5I1KlGbtdBWIDbCPPi/bw5jiDh/ElBa598GwuXjmZ8
-         KMuQ==
+        bh=gi2t/D+HFQZhqVZHaJbMYThMZKmupvT3IdYeQtCc4Uk=;
+        b=NW9vEkv2ApqWBkOXbFRtomBZnbtO5nQJ2fHgXFH3uvgFIiIk/bZOU6HAHRiueGrby4
+         Drq/IF3royaBNmdXihan8TjL7u2o1mSL+s4Z2huzB27hxCyXaxhJWWX5LspJ1GX83N27
+         uDSW9khXd17Byo9U+lKjMA6UFaa0b5Ov5JM9CItMi+Cd0t7vtpYXLbVp/0L+jAB4KkPF
+         U6d0pLa2vzxIZs/T1faM0jEFH/SUQulEGR2QuwxUfAFAIQD/ZNoqoRuC+wjv8VZ7SP8n
+         No01LhnJmXECfVPAU/+sWtE6qhBQ+lztH+d/52lOl+AX6Or10Sf7NBz9nR3mVil6Ajtg
+         OWgw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c17si1345715wmb.25.2019.05.08.04.10.38
+        by mx.google.com with ESMTPS id s22si1332494wmh.187.2019.05.08.04.14.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 May 2019 04:10:39 -0700 (PDT)
+        Wed, 08 May 2019 04:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:34908 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:34937 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOKT8-0000jA-33
-	for alex.bennee@linaro.org; Wed, 08 May 2019 07:10:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36211)
+	id 1hOKWt-0003oc-M1
+	for alex.bennee@linaro.org; Wed, 08 May 2019 07:14:31 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36967)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKSb-0000UK-F0
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:10:07 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1hOKWJ-0003Wt-LF
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:13:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hOKSX-0007ja-4u
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:10:05 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:35652)
+	(envelope-from <pbonzini@redhat.com>) id 1hOKWI-0001AI-2h
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:13:55 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:35701)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKSU-0007h0-Km
-	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:09:59 -0400
-Received: by mail-wr1-f68.google.com with SMTP id w12so13193697wrp.2
-	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 04:09:55 -0700 (PDT)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hOKWH-00019M-Qn
+	for qemu-arm@nongnu.org; Wed, 08 May 2019 07:13:54 -0400
+Received: by mail-wm1-f67.google.com with SMTP id y197so2745641wmd.0
+	for <qemu-arm@nongnu.org>; Wed, 08 May 2019 04:13:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=kfVn3PcHbJJyc67HYE+LAqAbpidfU5TEawPfmSHoBB4=;
-	b=QjHt7A87p3YMBQhUcCq4+ICW+OHH85BiByWklPxMH8TUunyhGOGcKugzO3XH/nN/8f
-	oET5h9YPtEedL+skezMv1dV/qMyDrMgctFc4m5z411QgpdL/qhwT6U3mYhqOhj8x6ZIS
-	WfgCHCv4IdEOG/zHCEycNW7IKRSUUeTRIhjB/TXURIIyfks0Xb3XWO7ktpW9sVKYDRUt
-	f1snRYHc3yczl9YMGGBAxK8PCvdhAxM+sTZ25u4fi+7wNMKfYQsFFk3CXTvAigLVuxmJ
-	4o65/xey3P28i3bVpab/pCiUUp2njC+WG5/9Dq3/ghSvK0VFqkgkbGLC+zvUli7Oq3M4
-	/GuQ==
-X-Gm-Message-State: APjAAAXfpEaQEe8ZFL/uTCGELoAStVYM6tuxlmrSnAx+nhNhKfmmitIE
-	B7RYJXb8uQPFMie/xBbnQnXi6vhO7FFKzg==
-X-Received: by 2002:adf:e845:: with SMTP id d5mr3647661wrn.154.1557313795010; 
-	Wed, 08 May 2019 04:09:55 -0700 (PDT)
+	bh=gi2t/D+HFQZhqVZHaJbMYThMZKmupvT3IdYeQtCc4Uk=;
+	b=syJ3HPxC7PmhfWRGapN8lcqPIo2sLfm/ij9umbNhZkCGTWsgRrCf5VKotS6LxWLMpj
+	79AGX/sEW9nf5/Zgl7hbfVXLxF+riwHHDsqjgYutXYCdEoh4uAgY0TiFbU2EkpCCCNrI
+	VSG2yxqhGXYCf20iKsdgfVAjI8NDGCRlTXpo81gR3xbMrzcCD14C6n9j8D8t76XFXgWd
+	zUCuMjqdPQWA5t15M0hrvfaf07u5XGp55BIV3vRgiUeRKfDS7MXNKfRiLgSzUYkuxUhl
+	0ya2RNd256eOp7hTY7u2H6m/pG7Os65rPcXwQ1ZIGmj2D60Q7jGKXoj+f3kmC4WOCryf
+	BoEA==
+X-Gm-Message-State: APjAAAVJ21NIOdf2iXGvjyAdG84mmWDP43i+rxiTICDk5salfIhif9mR
+	5Fs0R9nQE/P1PTt8zCh4ZZoSlQ==
+X-Received: by 2002:a1c:f909:: with SMTP id x9mr2765196wmh.18.1557314032646;
+	Wed, 08 May 2019 04:13:52 -0700 (PDT)
 Received: from [10.201.49.229] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
-	by smtp.gmail.com with ESMTPSA id a4sm2520109wmf.45.2019.05.08.04.09.52
+	by smtp.gmail.com with ESMTPSA id
+	p18sm25405249wrp.38.2019.05.08.04.13.50
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 08 May 2019 04:09:54 -0700 (PDT)
+	Wed, 08 May 2019 04:13:52 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>, 
 	qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
 References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-7-philmd@redhat.com>
+	<20190507163416.24647-8-philmd@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <fa64aca9-b72e-6f0d-d7f3-f9e68b2487b7@redhat.com>
-Date: Wed, 8 May 2019 13:09:52 +0200
+Message-ID: <075c122b-ffcf-9dda-4f1f-dae23bde4191@redhat.com>
+Date: Wed, 8 May 2019 13:13:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190507163416.24647-7-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-8-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 06/16] hw/arm/bcm2835: Use
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 07/16] hw/arm/aspeed: Use
  object_initialize_child for correct ref. counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -122,7 +123,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DpKcG0ka0mNd
+X-TUID: 9fxDmhDtwLp+
 
 On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
 > As explained in commit aff39be0ed97:
@@ -210,112 +211,126 @@ On 07/05/19 11:34, Philippe Mathieu-Daudé wrote:
 > Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 > Inspired-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
 > ---
->  hw/arm/bcm2835_peripherals.c | 53 ++++++++++++++----------------------
->  1 file changed, 20 insertions(+), 33 deletions(-)
+> v2:
+>  - Described new use of &error_abort (Markus)
+>  - Added Cédric S-o-b (he sent the same 'hw/arm/aspeed_soc.c' patch)
+>  - Added Joel R-b of Cédric patch
+> ---
+>  hw/arm/aspeed.c     |  6 +++---
+>  hw/arm/aspeed_soc.c | 50 ++++++++++++++++++---------------------------
+>  2 files changed, 23 insertions(+), 33 deletions(-)
 > 
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 2931a82a25a..0fb54c7964e 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -41,44 +41,36 @@ static void bcm2835_peripherals_init(Object *obj)
->                         MBOX_CHAN_COUNT << MBOX_AS_CHAN_SHIFT);
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 1c23ebd9925..f700b7e4fe0 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -159,9 +159,9 @@ static void aspeed_board_init(MachineState *machine,
+>      ram_addr_t max_ram_size;
 >  
->      /* Interrupt Controller */
-> -    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
-> -    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
+>      bmc = g_new0(AspeedBoardState, 1);
+> -    object_initialize(&bmc->soc, (sizeof(bmc->soc)), cfg->soc_name);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&bmc->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
+> +                            (sizeof(bmc->soc)), cfg->soc_name, &error_abort,
+> +                            NULL);
 >  
->      /* UART0 */
-> -    object_initialize(&s->uart0, sizeof(s->uart0), TYPE_PL011);
-> -    object_property_add_child(obj, "uart0", OBJECT(&s->uart0), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->uart0), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "uart0", &s->uart0, sizeof(s->uart0),
-> +                          TYPE_PL011);
+>      sc = ASPEED_SOC_GET_CLASS(&bmc->soc);
 >  
->      /* AUX / UART1 */
-> -    object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
-> -    object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "aux", &s->aux, sizeof(s->aux),
-> +                          TYPE_BCM2835_AUX);
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index a27233d4876..faff42b84ad 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -106,12 +106,11 @@ static void aspeed_soc_init(Object *obj)
+>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+>      int i;
 >  
->      /* Mailboxes */
-> -    object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
-> -    object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "mbox", &s->mboxes, sizeof(s->mboxes),
-> +                          TYPE_BCM2835_MBOX);
+> -    object_initialize(&s->cpu, sizeof(s->cpu), sc->info->cpu_type);
+> -    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
+> +    object_initialize_child(obj, "cpu", OBJECT(&s->cpu), sizeof(s->cpu),
+> +                            sc->info->cpu_type, &error_abort, NULL);
 >  
->      object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
->                                     OBJECT(&s->mbox_mr), &error_abort);
+> -    object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
+> -    object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "scu", OBJECT(&s->scu), sizeof(s->scu),
+> +                          TYPE_ASPEED_SCU);
+>      qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
+>                           sc->info->silicon_rev);
+>      object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
+> @@ -121,36 +120,29 @@ static void aspeed_soc_init(Object *obj)
+>      object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
+>                                "hw-prot-key", &error_abort);
 >  
->      /* Framebuffer */
-> -    object_initialize(&s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
-> -    object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
-> +    sysbus_init_child_obj(obj, "fb", &s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
->      object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-size",
+> -    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
+> -    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
+> +                          TYPE_ASPEED_VIC);
+>  
+> -    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
+> -    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), NULL);
+> +    sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+> +                          sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
+>      object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+>                                     OBJECT(&s->scu), &error_abort);
+> -    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
+>  
+> -    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
+> -    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
+> +                          TYPE_ASPEED_I2C);
+>  
+> -    object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
+> -    object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->fmc), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "fmc", OBJECT(&s->fmc), sizeof(s->fmc),
+> +                          sc->info->fmc_typename);
+>      object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs",
 >                                &error_abort);
-> -    qdev_set_parent_bus(DEVICE(&s->fb), sysbus_get_default());
 >  
->      object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr), &error_abort);
+>      for (i = 0; i < sc->info->spis_num; i++) {
+> -        object_initialize(&s->spi[i], sizeof(s->spi[i]),
+> -                          sc->info->spi_typename[i]);
+> -        object_property_add_child(obj, "spi[*]", OBJECT(&s->spi[i]), NULL);
+> -        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
+> +        sysbus_init_child_obj(obj, "spi[*]", OBJECT(&s->spi[i]),
+> +                              sizeof(s->spi[i]), sc->info->spi_typename[i]);
+>      }
 >  
->      /* Property channel */
-> -    object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PROPERTY);
-> -    object_property_add_child(obj, "property", OBJECT(&s->property), NULL);
-> +    sysbus_init_child_obj(obj, "property", &s->property, sizeof(s->property),
-> +                          TYPE_BCM2835_PROPERTY);
->      object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
->                                "board-rev", &error_abort);
-> -    qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
+> -    object_initialize(&s->sdmc, sizeof(s->sdmc), TYPE_ASPEED_SDMC);
+> -    object_property_add_child(obj, "sdmc", OBJECT(&s->sdmc), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->sdmc), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "sdmc", OBJECT(&s->sdmc), sizeof(s->sdmc),
+> +                          TYPE_ASPEED_SDMC);
+>      qdev_prop_set_uint32(DEVICE(&s->sdmc), "silicon-rev",
+>                           sc->info->silicon_rev);
+>      object_property_add_alias(obj, "ram-size", OBJECT(&s->sdmc),
+> @@ -159,16 +151,14 @@ static void aspeed_soc_init(Object *obj)
+>                                "max-ram-size", &error_abort);
 >  
->      object_property_add_const_link(OBJECT(&s->property), "fb",
->                                     OBJECT(&s->fb), &error_abort);
-> @@ -86,32 +78,27 @@ static void bcm2835_peripherals_init(Object *obj)
->                                     OBJECT(&s->gpu_bus_mr), &error_abort);
+>      for (i = 0; i < sc->info->wdts_num; i++) {
+> -        object_initialize(&s->wdt[i], sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
+> -        object_property_add_child(obj, "wdt[*]", OBJECT(&s->wdt[i]), NULL);
+> -        qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus_get_default());
+> +        sysbus_init_child_obj(obj, "wdt[*]", OBJECT(&s->wdt[i]),
+> +                              sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
+>          qdev_prop_set_uint32(DEVICE(&s->wdt[i]), "silicon-rev",
+>                                      sc->info->silicon_rev);
+>      }
 >  
->      /* Random Number Generator */
-> -    object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
-> -    object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "rng", &s->rng, sizeof(s->rng),
-> +                          TYPE_BCM2835_RNG);
+> -    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC100);
+> -    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
+> +    sysbus_init_child_obj(obj, "ftgmac100", OBJECT(&s->ftgmac100),
+> +                          sizeof(s->ftgmac100), TYPE_FTGMAC100);
+>  }
 >  
->      /* Extended Mass Media Controller */
-> -    object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
-> -    object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sdhci", &s->sdhci, sizeof(s->sdhci),
-> +                          TYPE_SYSBUS_SDHCI);
->  
->      /* SDHOST */
-> -    object_initialize(&s->sdhost, sizeof(s->sdhost), TYPE_BCM2835_SDHOST);
-> -    object_property_add_child(obj, "sdhost", OBJECT(&s->sdhost), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->sdhost), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sdhost", &s->sdhost, sizeof(s->sdhost),
-> +                          TYPE_BCM2835_SDHOST);
->  
->      /* DMA Channels */
-> -    object_initialize(&s->dma, sizeof(s->dma), TYPE_BCM2835_DMA);
-> -    object_property_add_child(obj, "dma", OBJECT(&s->dma), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->dma), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "dma", &s->dma, sizeof(s->dma),
-> +                          TYPE_BCM2835_DMA);
->  
->      object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr), &error_abort);
->  
->      /* GPIO */
-> -    object_initialize(&s->gpio, sizeof(s->gpio), TYPE_BCM2835_GPIO);
-> -    object_property_add_child(obj, "gpio", OBJECT(&s->gpio), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->gpio), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
-> +                          TYPE_BCM2835_GPIO);
->  
->      object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
->                                     OBJECT(&s->sdhci.sdbus), &error_abort);
+>  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
 > 
 
 Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>

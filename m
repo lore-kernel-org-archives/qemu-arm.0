@@ -1,122 +1,110 @@
 Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id f6sm2582543wmq.33.2021.02.02.04.13.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Feb 2021 04:13:52 -0800 (PST)
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id u11sm33738623wrg.35.2019.05.08.10.45.22
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 May 2019 10:45:22 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 5FF831FF7E;
-	Tue,  2 Feb 2021 12:13:51 +0000 (GMT)
-References: <20210129181319.2992-1-alex.bennee@linaro.org>
- <CAFEAcA9M+J3X1hS6dPrTM-QxGVfLSrP2=VE7cpdJZPovCuzuJg@mail.gmail.com>
-User-agent: mu4e 1.5.7; emacs 28.0.50
+	by zen.linaroharston (Postfix) with ESMTP id 300701FF87;
+	Wed,  8 May 2019 18:45:22 +0100 (BST)
+References: <20190430165234.32272-1-alex.bennee@linaro.org> <20190430165234.32272-4-alex.bennee@linaro.org> <83e4f91b-a590-2a2a-bf5f-14b99c5aa0fc@linaro.org>
+User-agent: mu4e 1.3.1; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Anders Roxell <anders.roxell@linaro.org>, Aurelien Jarno
- <aurelien@aurel32.net>
-Subject: Re: [PATCH] docs/system: document an example booting the
- versatilepb machine
-Date: Tue, 02 Feb 2021 12:11:09 +0000
-In-reply-to: <CAFEAcA9M+J3X1hS6dPrTM-QxGVfLSrP2=VE7cpdJZPovCuzuJg@mail.gmail.com>
-Message-ID: <87pn1iu0ow.fsf@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mark.cave-ayland@ilande.co.uk, cota@braap.org
+Subject: Re: [Qemu-devel] [PATCH v5 03/15] tests/tcg/aarch64: add system boot.S
+In-reply-to: <83e4f91b-a590-2a2a-bf5f-14b99c5aa0fc@linaro.org>
+Date: Wed, 08 May 2019 18:45:22 +0100
+Message-ID: <87sgto4z7x.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: +2cTiKZp1kP9
+X-TUID: Y1EVmGSvBLam
 
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Richard Henderson <richard.henderson@linaro.org> writes:
 
-> On Fri, 29 Jan 2021 at 18:13, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->>
->> There is a bit more out there including Aurelien's excellent write up
->> and older Debian images here:
->>
->>   https://www.aurel32.net/info/debian_arm_qemu.php
->>   https://people.debian.org/~aurel32/qemu/armel/
->>
->> However the web is transitory and git is forever so lets add something
->> to the fine manual.
->>
->> Cc: Anders Roxell <anders.roxell@linaro.org>
->> Cc: Aurelien Jarno <aurelien@aurel32.net>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  docs/system/arm/versatile.rst | 32 ++++++++++++++++++++++++++++++++
->>  1 file changed, 32 insertions(+)
->>
->> diff --git a/docs/system/arm/versatile.rst b/docs/system/arm/versatile.r=
-st
->> index 51221c30a4..d16f20ccae 100644
->> --- a/docs/system/arm/versatile.rst
->> +++ b/docs/system/arm/versatile.rst
->> @@ -27,3 +27,35 @@ The Arm Versatile baseboard is emulated with the foll=
-owing devices:
->>     devices.
->>
->>  -  PL181 MultiMedia Card Interface with SD card.
->> +
->> +Booting a Linux kernel
->> +----------------------
->> +
->> +Building a current Linux kernel with ``versatile_defconfig`` should be
->> +enough to get something running.
->> +
->> +.. code-block:: bash
->> +
->> +  $ export ARCH=3Darm
->> +  $ export CROSS_COMPILE=3Darm-linux-gnueabihf-
->> +  $ make versatile_defconfig
->> +  $ make
+> On 4/30/19 9:52 AM, Alex Benn=C3=A9e wrote:
+>> +.error:
+>> +	.string "Terminated by exception.\n"
 >
-> same remarks as for other patch.
+> Put it in .rodata just because we can?
 >
-> Does the 'make' make the right dtb automatically, by the way?
-> (I have some notes where I had to tell the kernel to build the
-> dtb explicitly, but maybe they are out of date.)
+>> +        /* Page table setup (identity mapping).  */
+>> +	adrp	x0, ttb
+>> +	add	x0, x0, :lo12:ttb
+>
+> You are in control of the layout of the executable,
+> and adr has a 1MB range.  Why use adrp+add?
 
-I didn't do anything special and it was there in the build directory. Do
-your notes pre-date 2013:
+Well I have to now as I've aligned .data with:
 
-commit cc8e9ad88487004372cae87718ff593d0a2fdc3a
-Author: Rob Herring <rob.herring@calxeda.com>
-Date:   Wed Mar 13 21:31:42 2013 -0500
-
-    ARM: versatile: add versatile dtbs to dtbs target
-
-    Add the versatile platform dtbs to the dtbs make rule.
-
-    Signed-off-by: Rob Herring <rob.herring@calxeda.com>
+    /* align r/w section to next 2mb */
+    . =3D ALIGN(1 << 21);
 
 >
->> +
->> +You may want to enable some additional modules if you want to boot
->> +something from the SCSI interface::
->> +
->> +  CONFIG_PCI=3Dy
->> +  CONFIG_PCI_VERSATILE=3Dy
+>> +        /* Create some (big) pages */
+>> +	adr	x1, .				/* phys address */
+>> +	bic	x1, x1, #(1 << 30) - 1		/* 1GB block alignment */
 >
-> It's a bit daft that these aren't in the defconfig, but hey.
+> Do you really want 1GB pages?  You'll pretty much only be able to test va=
+lid
+> memory operations with that.  Which is also true until there's something =
+other
+> than an exit for the exception vector... but ya know what I mean.
+
+Not using it for testing but I'm trying to set-up a 2 stage translation
+so we get:
+
+  1gb->1gb+2mb =3D .text/.rodata
+  1gb+2mb->1gb+4mb =3D .data/.bss
+
 >
->> +  CONFIG_SCSI=3Dy
->> +  CONFIG_SCSI_SYM53C8XX_2=3Dy
->> +
->> +You can then boot with a command line like:
->> +
->> +.. code-block:: bash
->> +
->> +  $ qemu-system-arm -machine type=3Dversatilepb \
->> +      -serial mon:stdio \
->> +      -drive if=3Dscsi,driver=3Dfile,filename=3Ddebian-buster-armel-roo=
-tfs.ext4 \
->> +      -kernel zImage \
->> +      -dtb versatile-pb.dtb  \
->> +      -append "console=3DttyAMA0 ro root=3D/dev/sda"
+>> +        /* Setup some stack space and enter the test code.
+>> +         * Assume everthing except the return value is garbage when we
+>> +	 * return, we won't need it.
+>> +         */
+>> +	adrp	x0, stack
+>> +	add	x0, x0, :lo12:stack
+>> +        mov      sp, x0
 >
-> thanks
-> -- PMM
+> You need a pointer to the end of the stack, not the beginning.
+> Again, I think this could be just
+>
+> 	adr	sp, stack_end
+>
+> Also, there's tab/space confusion all through this file.
+> IMO, this is assembly, so it *should* be tabs.
+
+I'm adding an entry to editorconfig and fixing up the damage.
+
+>
+>> @@ -0,0 +1,22 @@
+>> +ENTRY(__start)
+>> +
+>> +SECTIONS
+>> +{
+>> +    /* virt machine, RAM starts at 1gb */
+>> +    . =3D (1 << 30);
+>> +    .text : {
+>> +        *(.text)
+>> +    }
+>> +    .data : {
+>> +        *(.data)
+>> +    }
+>> +    .rodata : {
+>> +        *(.rodata)
+>> +    }
+>
+> If you ever wanted to make this read-only, swap .rodata before .data, so =
+that
+> it's next to .text.
+
+done.
+
+>
+>
+> r~
 
 
---=20
+--
 Alex Benn=C3=A9e

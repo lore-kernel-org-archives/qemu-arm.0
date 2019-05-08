@@ -1,162 +1,195 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp34199lfo;
-        Tue, 2 Feb 2021 03:32:03 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzHJ+PMc8lxvKsEX95f+X5nAv9wrnnNFAr/kp4q94ZQlrGPCpnBTrLrVmTVaclvDqiv73oI
-X-Received: by 2002:a25:76ce:: with SMTP id r197mr10790880ybc.11.1612265523198;
-        Tue, 02 Feb 2021 03:32:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612265523; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp4652617wrh;
+        Wed, 8 May 2019 03:16:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx4nxfyHf7c4WOsTf6e7Fvt7w5ynL1F82uTESgo3UygiO/Rq2u7EdsqyqXXBzxLyDjUl9Sc
+X-Received: by 2002:a63:a08:: with SMTP id 8mr1275344pgk.46.1557310574741;
+        Wed, 08 May 2019 03:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557310574; cv=none;
         d=google.com; s=arc-20160816;
-        b=BOU+nVFRJB6jnk5aBRQa9fJjdELPIZCtvDvdtF2fvR195r/3DmYtxvuAu3gRSf3xk5
-         GesPWJ/m/wUol8CtoIxMrl4NrLlinnvZsww229Agnxn1gC4SOZy9knq6xKnbHTRmqVLO
-         Crhj+dFoTfXJsaa+u8DANcyFVsAXrqkfXrqWxky5+nPSk6bdzFEIGtbHQfvn6GtRlaQI
-         zZrE2fOzGLfQzeMUgJUHpBSr08vuq6qMhAuwrVMaYFM3QugKj2OCLQPa831sIRcunssw
-         /95bW19+7iB4po6amzPeWMWM5rwlNPfCqdg1LsTdZWBSk+ChqpEHVcLKBKGIYEXG9W8V
-         k1Bg==
+        b=jQp81GSKtH66EubvIQ/wPMz0Zllyapqih+rqMIyJNIiENWoibSpOHnRPNLJgU3H6rA
+         cd86qRK10Zsnff9ob3dh4iyOv0MVojtXfxetQbHSu7TPbiECcwp/1tSGWzJWl3YG1ZEL
+         82ZN1UuexZU3iE2RdVJ561OZhBbkazlbyoC/J2s68JuwvA8BpxrrxC1fOaw6iLXBslnB
+         a1xpE83a5x5xrHJX4Wd0mqO4XzJ+nKkQJWEOIBGOZLXQ0o6pXHIpyMq18e+0sCZoe8cI
+         ooUv1hYOa+mTtEvpFMWC4zAkpjS+8GmAj9fvok72PE/tEE4+ONSYsR4W5S5myDTVovxy
+         aXpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
-        b=W2YTl1Rbf+eyU+5NO70NvPjCdNppY8eT+Rt3WzgC+DpTDBIluKzgz9r15p+h9EenpA
-         ISARvSv4u2Oor41rxfvtxYi6BfdMMLd+X5G8WQjZFXc5nUEe/FOs1x9m8EhWdNrb0rmQ
-         9v/lVE/SyY+j+w9x89RcVc9UJ1LrbMGRvVjaCWC5P3GpmOjWj0w7CfpblO1HxcQrJxDb
-         q0UwjxUTMbHccLzK+t4mxy5eIs/mtwJ4UXet/JuTMcI/rjKGkgKpEFwihWSESKGRpnWR
-         lonZe6q22N19zOZdwFQDQzruNZHhbw6Eh+3PIFzVpZ7XfTihJT0tzXK5DEd4Zvdt5FR0
-         rXjg==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:mime-version:content-language:accept-language:message-id
+         :date:thread-index:thread-topic:subject:to:from:dkim-signature;
+        bh=ZPqlzHKR+1wakk7fyZmW5SyluDDuHCfZ5gdSQOMIGxE=;
+        b=RFU1N/yP+ZY5EVfqL1T0IMCr3Mva6HauzaOBGqGfaM7eMC1Za8xLixGIky1KGtgXGD
+         kWqyPvahrGa+NP1Ebm2loKQhKmL55CM0ilxIrmoYnRn4qEd6s4tOEQNIqFXlZXM6WrZq
+         5UpIhbmtNsnp9k6IUgCZRuY0FJP8awTzn9U1Cun7A+TYRst9MS0tQV2R8VqnHDb/4Jnx
+         keECJyTnprZUBBec/ljhn06xzVrtUl+t3Vkq53mQjKrWDy07K1szvkFS4mEF3W6I5bQn
+         jRnk1vTAwF0MQTz2B8v+cuOP+a6AY5kGZM5BXHL0Mjp0DgJzo8ZQucsJul8tYdsNCsaJ
+         3t3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FbQclkpb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p82si3638548yba.351.2021.02.02.03.32.03
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b="bksOCt0/";
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id h24si21247808pgg.226.2019.05.08.03.16.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 03:32:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 May 2019 03:16:14 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FbQclkpb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57340 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6tuc-0007nR-IB
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 06:32:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33496)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6ttL-0006rU-K6
- for qemu-devel@nongnu.org; Tue, 02 Feb 2021 06:30:46 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530]:38535)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6ttJ-0007A3-Ad
- for qemu-devel@nongnu.org; Tue, 02 Feb 2021 06:30:43 -0500
-Received: by mail-ed1-x530.google.com with SMTP id s11so22511087edd.5
- for <qemu-devel@nongnu.org>; Tue, 02 Feb 2021 03:30:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
- b=FbQclkpbyhTlruUmwTiRuEC7hTtMoWc/BAdokeOqyz6CSj3upu9Xk/0NIoAZFQutFF
- GE/9JlvCOEovrTl0qtZXPNoVMxNLzts1JLa0cs7Pmt6HW+glJnSZ6vh6UEPFcKtTQx+x
- UTsMv6jjPt6ohtDGVM2gsnfiaLFonkzTEnsaIddwtmE0P5j9oMYYQnw6iS2dLMLUs/TJ
- 8bOazObtYnJSZcwaDmM/3CaYusaM1XOu6CEUidcAwodZ98OiXhlQMM6o2DgK6hf5Mu3q
- 6/PYI1ztE3OSgQcIFNyuAOoxpwfesWZco2AVfVrk3YAH4uzIEIVL3HkrppkVeelXoFEp
- AdQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Bt+dYY2pkiqPZWPFbHC8cz9MZjZKp5MQ/pRCU/SrHOs=;
- b=s71TSyBG73I3iiK1jjatXNP53L6QRT+HLcxn14bovrGrYt7iD4cbkmLg5Kkd5lM23k
- Ym2DvlDSXUYuYszb1zCEFykvjzqHH8P7yQBP7sHVCurR3prQX7JqGy/nESH7/ZScmg3f
- YWfEVsJlJCKQgoYGAxL8it9ljKdH5DrCMJwAq/V8fAUYmIxUU9i8NkOlwWq5kCfRkPuV
- 8qauWt2Z/50aB1Qi9VMz6LklTfbZScBWI8jTy9//ksOOpEv7408b8uG1AEJt0UX7qu/8
- ZCwb0jjeGmQ+zCqrOOKfbl5FB2dJCdH1rbCHAvrITHxmkDaLqlqt3WX1qSnNkesfJWQL
- SSTw==
-X-Gm-Message-State: AOAM531LZEYyZYcWao6nwjlzGRfYfB1ZrLo3b/W80+he6+SbQOW96UWE
- 12PAqYBTJ6709HrHIB+CGr9ewuxLzUEJMN92PLQFvt+hpeM=
-X-Received: by 2002:a05:6402:5107:: with SMTP id
- m7mr22976255edd.52.1612265440060; 
- Tue, 02 Feb 2021 03:30:40 -0800 (PST)
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b="bksOCt0/";
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZPqlzHKR+1wakk7fyZmW5SyluDDuHCfZ5gdSQOMIGxE=; b=bksOCt0/6IVK5/
+	DHS4jugko4c13JehuB8AyDG06Hz/180i47gxp8fv3qu645tT1looGiaFlDveN2a1QML1C8tbHvrrd
+	gAAYDxrgkCTPZSP2VjSb5KCBgSUsf1rF3lx+oWTAMThKuxBmrehCUaOYH/SSOPHrLaOulGXHfPWo3
+	frc4/nJOF1LIP6qza0EHTjHrCXa1lAhr/eSMT1hdtU+5wnIWFi/ebvyuWzkiUgojEU73UcxFsHbBe
+	wbX2wuqJ4q8awk7w/sLk3z7FGOmMY7q/8OygYsPjPKlbMUktrXgsPfSq3r6xcGQbOM5/1w59aVzCX
+	Dwp8m6CwSDHN2GRYaKOg==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+	id 1hOJcR-0002UO-Ta; Wed, 08 May 2019 10:16:11 +0000
+Received: from lhrrgout.huawei.com ([185.176.76.210] helo=huawei.com)
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hOJcN-0002U0-FP
+ for linux-arm-kernel@lists.infradead.org; Wed, 08 May 2019 10:16:09 +0000
+Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 1AD5B8EA87B25B67F17B;
+ Wed,  8 May 2019 11:16:01 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.137]) by
+ lhreml703-cah.china.huawei.com ([10.201.108.44]) with mapi id 14.03.0415.000; 
+ Wed, 8 May 2019 11:15:51 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "robin.murphy@arm.com" <robin.murphy@arm.com>, "will.deacon@arm.com"
+ <will.deacon@arm.com>, Catalin Marinas <Catalin.Marinas@arm.com>, "Anshuman
+ Khandual" <anshuman.khandual@arm.com>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mm <linux-mm@kvack.org>
+Subject: [Question] Memory hotplug clarification for Qemu ARM/virt 
+Thread-Topic: [Question] Memory hotplug clarification for Qemu ARM/virt 
+Thread-Index: AdUFf3K/4T6J1HYjRj6wDE9hxn3APQ==
+Date: Wed, 8 May 2019 10:15:50 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
 MIME-Version: 1.0
-References: <20210130043220.1345-1-yuzenghui@huawei.com>
-In-Reply-To: <20210130043220.1345-1-yuzenghui@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 11:30:28 +0000
-Message-ID: <CAFEAcA_eKjhj1262WV-cKGC6dN2JSYsVGME05VFjjj21HgL+Nw@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm/smmuv3: Fix addr_mask for range-based
- invalidation
-To: Zenghui Yu <yuzenghui@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
+X-CFilter-Loop: Reflected
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190508_031607_663143_3C72FEDD 
+X-CRM114-Status: GOOD (  13.45  )
+X-Spam-Score: -2.3 (--)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-2.3 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [185.176.76.210 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, wanghaibin.wang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z+lO5Zm4GVty
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: 4Ucor2YsPZwC
 
-On Sat, 30 Jan 2021 at 04:32, Zenghui Yu <yuzenghui@huawei.com> wrote:
->
-> When handling guest range-based IOTLB invalidation, we should decode the TG
-> field into the corresponding translation granule size so that we can pass
-> the correct invalidation range to backend. Set @granule to (tg * 2 + 10) to
-> properly emulate the architecture.
->
-> Fixes: d52915616c05 ("hw/arm/smmuv3: Get prepared for range invalidation")
-> Signed-off-by: Zenghui Yu <yuzenghui@huawei.com>
-> ---
-> * From v1:
->   - Fix the compilation error
->
->  hw/arm/smmuv3.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index bbca0e9f20..98b99d4fe8 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -801,7 +801,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->  {
->      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->      IOMMUTLBEvent event;
-> -    uint8_t granule = tg;
-> +    uint8_t granule;
->
->      if (!tg) {
->          SMMUEventInfo event = {.inval_ste_allowed = true};
-> @@ -821,6 +821,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->              return;
->          }
->          granule = tt->granule_sz;
-> +    } else {
-> +        granule = tg * 2 + 10;
->      }
->
->      event.type = IOMMU_NOTIFIER_UNMAP;
+Hi,
+
+This series here[0] attempts to add support for PCDIMM in QEMU for
+ARM/Virt platform and has stumbled upon an issue as it is not clear(at least
+from Qemu/EDK2 point of view) how in physical world the hotpluggable
+memory is handled by kernel.
+
+The proposed implementation in Qemu, builds the SRAT and DSDT parts
+and uses GED device to trigger the hotplug. This works fine.
+
+But when we added the DT node corresponding to the PCDIMM(cold plug
+scenario), we noticed that Guest kernel see this memory during early boot
+even if we are booting with ACPI. Because of this, hotpluggable memory
+may end up in zone normal and make it non-hot-un-pluggable even if Guest
+boots with ACPI.
+
+Further discussions[1] revealed that, EDK2 UEFI has no means to interpret the
+ACPI content from Qemu(this is designed to do so) and uses DT info to
+build the GetMemoryMap(). To solve this, introduced "hotpluggable" property
+to DT memory node(patches #7 & #8 from [0]) so that UEFI can differentiate
+the nodes and exclude the hotpluggable ones from GetMemoryMap().
+
+But then Laszlo rightly pointed out that in order to accommodate the changes
+into UEFI we need to know how exactly Linux expects/handles all the 
+hotpluggable memory scenarios. Please find the discussion here[2].
+
+For ease, I am just copying the relevant comment from Laszlo below,
+
+/******
+"Given patches #7 and #8, as I understand them, the firmware cannot distinguish
+ hotpluggable & present, from hotpluggable & absent. The firmware can only
+ skip both hotpluggable cases. That's fine in that the firmware will hog neither
+ type -- but is that OK for the OS as well, for both ACPI boot and DT boot?
+
+Consider in particular the "hotpluggable & present, ACPI boot" case. Assuming
+we modify the firmware to skip "hotpluggable" altogether, the UEFI memmap
+will not include the range despite it being present at boot. Presumably, ACPI
+will refer to the range somehow, however. Will that not confuse the OS?
+
+When Igor raised this earlier, I suggested that hotpluggable-and-present should
+be added by the firmware, but also allocated immediately, as EfiBootServicesData
+type memory. This will prevent other drivers in the firmware from allocating AcpiNVS
+or Reserved chunks from the same memory range, the UEFI memmap will contain
+the range as EfiBootServicesData, and then the OS can release that allocation in
+one go early during boot.
+
+But this really has to be clarified from the Linux kernel's expectations. Please
+formalize all of the following cases:
+
+OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as  DT/ACPI should report as
+-----------------  ------------------  -------------------------------  ------------------------
+DT                 present             ?                                ?
+DT                 absent              ?                                ?
+ACPI               present             ?                                ?
+ACPI               absent              ?                                ?
+
+Again, this table is dictated by Linux."
+
+******/
+
+Could you please take a look at this and let us know what is expected here from
+a Linux kernel view point.
+
+(Hi Laszlo/Igor/Eric, please feel free to add/change if I have missed any valid
+points above).
+
+Thanks,
+Shameer
+[0] https://patchwork.kernel.org/cover/10890919/
+[1] https://patchwork.kernel.org/patch/10863299/
+[2] https://patchwork.kernel.org/patch/10890937/
 
 
 
-Applied to target-arm.next, thanks.
-
--- PMM
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel

@@ -1,267 +1,152 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b2sm3085172wrt.20.2019.05.09.10.05.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 10:05:23 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 77E941FFAA;
-	Thu,  9 May 2019 17:59:14 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org (open list:Block layer core)
-Subject: [PATCH  v1 22/23] tests/qemu-iotests: re-format output to for make check-block
-Date: Thu,  9 May 2019 17:59:10 +0100
-Message-Id: <20190509165912.10512-23-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190509165912.10512-1-alex.bennee@linaro.org>
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1055047wrh;
+        Thu, 9 May 2019 10:40:10 -0700 (PDT)
+X-Received: by 2002:a5d:55cc:: with SMTP id i12mr4162009wrw.179.1557423610407;
+        Thu, 09 May 2019 10:40:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557423610; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uRdkqs0w/rQq5YWm8wM2zDBXhAIEZ5+tCoTKfMGrjJ6nR9G30CrZxkyvAYTDxFZjcD
+         hxrcGSRYyQZXeitCF0QBZPporEU6nLSrIdHwFQIx2ZXISNEKcg6F7QIo66nfv29SP6O8
+         yk3vyc7ccbKhjfhmD+TmzDgXD+VgH02jPMjOKZ7fyVVNWk9OzseT2irI2NjRXgPK4l/V
+         ctHkJcqPqiFG7Zd+l55vtsvzPZNlqqoamoRj908FZgrQ/Etn+yAsxZqJQw9502aYghMh
+         BlK5sNIwcx/5VqeRVJRcfpizrLlrSMCAtaUa1leJ+LRY1g5Je/hBk/+lGX55DqLuq5lt
+         arTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=fevb3l/p5zVEWGTm7Zi/zkky6bCKPzqheYXEJdK+uUA=;
+        b=AtG7itWLPRa/xeVVgNFWlMG/SGt0iTkUSEnPK/pyfsNaBIoDlzBlA42CS3OFOREiLM
+         VovEyirmmky4iOaj9iODD9egDNmVYgGB42i6h9r7aLx4m9QbEZmwlUs+5Ayv6Ebf3Pth
+         zb/7t7P8DslTJ2C9eZLb7NO0UYt5uWgOJlsMsmgmZUp37VbB30HUdSKt4qTN/5cG9/EW
+         c98/ObANt8m6q8X6oRlPy3l8YTk2LBL60i82z7M3AZB1Na1DFqZ+z9vrb5ZlL7mp3yWH
+         /LSWL2+IpQeED6g4OxPajQYq8xDvsNmJuN1bppj5vb7ooD1bVNY746Uh+CAuP1174/Se
+         vQMQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m21sor1767725wmg.13.2019.05.09.10.40.10
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 09 May 2019 10:40:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=fevb3l/p5zVEWGTm7Zi/zkky6bCKPzqheYXEJdK+uUA=;
+        b=Lhb/+/syP1Jipx/hIsvyLZgqXvyCFb3kIBBn8fSjJdfCx16ngSDlm+JU6BxiAQg0y3
+         7bKZxqKomMOkP2F0nbYE53ADZ+aUwy9kvAYnqTDFzKAxvG/ydBXCKIIqpR9nK9nbRZpB
+         HB9DPH9unTb7XL9WpCmyJhhR8Lg5Re3/txgy+dcwxmYxSJz7+ym9aoUHK+sdYO0930wc
+         UCbanEEaVmyLFp52Wej/sqayI49QcdX/NQ0ysctMjgBPk+sVjeVZZqRdhOf6U8AGO4Hv
+         e9vkDFVEGJfDF+NbaK99PMkyLgQuJBWww0b3dAn7xayz7zfqRQGwmzhubGaKmnEhDJrj
+         aNIw==
+X-Gm-Message-State: APjAAAWU2b0wtOvSJS+t3CHGfpIjGbEpaN0dfxIV++9x5Hg/vKrf6RdW
+	Kzxfd30LD+kmYhJ8GR7EgpjG9w==
+X-Google-Smtp-Source: APXvYqxo9tb18hOiu2nizx1mU2PxBMC9v4YJIlPg148ZlOJyCi4eWAJ3a/nELO2XiYhT1dekEilZzA==
+X-Received: by 2002:a1c:7518:: with SMTP id o24mr3815304wmc.42.1557423610191;
+        Thu, 09 May 2019 10:40:10 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net. [88.21.103.193])
+        by smtp.gmail.com with ESMTPSA id h12sm1674857wrq.95.2019.05.09.10.40.09
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 May 2019 10:40:09 -0700 (PDT)
+Subject: Re: [PATCH v1 02/23] tests/docker: Test more components on the Fedora
+ default image
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
+ <20190509165912.10512-3-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <089bf7b5-8461-699b-4c9a-30c4d735282e@redhat.com>
+Date: Thu, 9 May 2019 19:40:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20190509165912.10512-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: gTo/b6ddWXMd
+X-TUID: Xv0a2B/DbW4t
 
-This attempts to clean-up the output to better match the output of the
-rest of the QEMU check system. This includes:
+On 5/9/19 6:58 PM, Alex Bennée wrote:
+> From: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> Install optional dependencies of QEMU to get better coverage.
+> 
+> The following components are now enabled:
+> 
+>   $ ./configure
+>   ...
+>   Multipath support yes
+>   VNC SASL support  yes
+>   RDMA support      yes
+>   PVRDMA support    yes
+>   libiscsi support  yes
+>   seccomp support   yes
+>   libpmem support   yes
+>   libudev           yes
+> 
+> Note: The udev-devel package is provided by systemd-devel.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-  - formatting as "  TEST    iotest: nnn"
-  - calculating time diff at the end
-  - only dumping config on failure
+Acked-by: Marcel Apfelbaum<marcel.apfelbaum@gmail.com>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20190503143904.31211-1-alex.bennee@linaro.org>
----
- tests/qemu-iotests/check | 101 +++++++++++++++++++++++----------------
- 1 file changed, 61 insertions(+), 40 deletions(-)
-
-diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
-index 922c5d1d3d3..fb239967a32 100755
---- a/tests/qemu-iotests/check
-+++ b/tests/qemu-iotests/check
-@@ -27,6 +27,7 @@ bad=""
- notrun=""
- casenotrun=""
- interrupt=true
-+pretty=false
- 
- # by default don't output timestamps
- timestamp=${TIMESTAMP:=false}
-@@ -88,6 +89,22 @@ _full_platform_details()
-     echo "$os/$platform $host $kernel"
- }
- 
-+_full_env_details()
-+{
-+    cat <<EOF
-+QEMU          -- "$QEMU_PROG" $QEMU_OPTIONS
-+QEMU_IMG      -- "$QEMU_IMG_PROG" $QEMU_IMG_OPTIONS
-+QEMU_IO       -- "$QEMU_IO_PROG" $QEMU_IO_OPTIONS
-+QEMU_NBD      -- "$QEMU_NBD_PROG" $QEMU_NBD_OPTIONS
-+IMGFMT        -- $FULL_IMGFMT_DETAILS
-+IMGPROTO      -- $IMGPROTO
-+PLATFORM      -- $FULL_HOST_DETAILS
-+TEST_DIR      -- $TEST_DIR
-+SOCKET_SCM_HELPER -- $SOCKET_SCM_HELPER
-+
-+EOF
-+}
-+
- # $1 = prog to look for
- set_prog_path()
- {
-@@ -256,6 +273,7 @@ other options
-     -o options          -o options to pass to qemu-img create/convert
-     -T                  output timestamps
-     -c mode             cache mode
-+    -pretty             pretty print output for make check
- 
- testlist options
-     -g group[,group...]        include tests from these groups
-@@ -403,7 +421,10 @@ testlist options
-                 command -v xxdiff >/dev/null 2>&1 && diff=xxdiff
-             fi
-             ;;
--
-+        -pretty)   # pretty print output
-+            pretty=true
-+            xpand=false
-+            ;;
-         -n)        # show me, don't do it
-             showme=true
-             xpand=false
-@@ -633,12 +654,6 @@ _wallclock()
-     date "+%H %M %S" | awk '{ print $1*3600 + $2*60 + $3 }'
- }
- 
--_timestamp()
--{
--    now=$(date "+%T")
--    printf %s " [$now]"
--}
--
- _wrapup()
- {
-     if $showme
-@@ -704,23 +719,25 @@ END        { if (NR > 0) {
- 
- trap "_wrapup; exit \$status" 0 1 2 3 15
- 
-+# Report the test result, optionally pretty printing the result
-+# args: sequence, results
-+_report_test_result()
-+{
-+    if $pretty; then
-+        echo "  TEST    iotest: $1 $2"
-+    else
-+        echo "$1 $2"
-+    fi
-+}
-+
- [ -f $TIMESTAMP_FILE ] || touch $TIMESTAMP_FILE
- 
- FULL_IMGFMT_DETAILS=$(_full_imgfmt_details)
- FULL_HOST_DETAILS=$(_full_platform_details)
- 
--cat <<EOF
--QEMU          -- "$QEMU_PROG" $QEMU_OPTIONS
--QEMU_IMG      -- "$QEMU_IMG_PROG" $QEMU_IMG_OPTIONS
--QEMU_IO       -- "$QEMU_IO_PROG" $QEMU_IO_OPTIONS
--QEMU_NBD      -- "$QEMU_NBD_PROG" $QEMU_NBD_OPTIONS
--IMGFMT        -- $FULL_IMGFMT_DETAILS
--IMGPROTO      -- $IMGPROTO
--PLATFORM      -- $FULL_HOST_DETAILS
--TEST_DIR      -- $TEST_DIR
--SOCKET_SCM_HELPER -- $SOCKET_SCM_HELPER
--
--EOF
-+if ! $pretty; then
-+    _full_env_details
-+fi
- 
- seq="check"
- 
-@@ -728,8 +745,10 @@ seq="check"
- 
- for seq in $list
- do
--    err=false
--    printf %s "$seq"
-+    err=false     # error flag
-+    reason=""     # reason for error
-+    results=""    # results for non-error/skip
-+
-     if [ -n "$TESTS_REMAINING_LOG" ] ; then
-         sed -e "s/$seq//" -e 's/  / /' -e 's/^ *//' $TESTS_REMAINING_LOG > $TESTS_REMAINING_LOG.tmp
-         mv $TESTS_REMAINING_LOG.tmp $TESTS_REMAINING_LOG
-@@ -738,7 +757,6 @@ do
- 
-     if $showme
-     then
--        echo
-         continue
-     elif [ -f expunged ] && $expunge && egrep "^$seq([         ]|\$)" expunged >/dev/null
-     then
-@@ -753,17 +771,11 @@ do
-         # really going to try and run this one
-         #
-         rm -f $seq.out.bad
--        lasttime=$(sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE)
--        if [ "X$lasttime" != X ]; then
--                printf %s " ${lasttime}s ..."
--        else
--                printf "        "        # prettier output with timestamps.
--        fi
-         rm -f core $seq.notrun
-         rm -f $seq.casenotrun
- 
-         start=$(_wallclock)
--        $timestamp && printf %s "        [$(date "+%T")]"
-+        $timestamp && echo -n "$seq [$(date "+%T")] ->"
- 
-         if [ "$(head -n 1 "$source_iotests/$seq")" == "#!/usr/bin/env python" ]; then
-             run_command="$PYTHON $seq"
-@@ -781,26 +793,24 @@ do
-                     $run_command >$tmp.out 2>&1)
-         fi
-         sts=$?
--        $timestamp && _timestamp
-+        $timestamp && echo " [$(date "+%T")]"
-         stop=$(_wallclock)
- 
-         if [ -f core ]
-         then
--            printf " [dumped core]"
-             mv core $seq.core
-+            reason="[dumped core] $seq.core"
-             err=true
-         fi
- 
-         if [ -f $seq.notrun ]
-         then
--            $timestamp || printf " [not run] "
--            $timestamp && echo " [not run]" && printf %s "        $seq -- "
--            cat $seq.notrun
--            notrun="$notrun $seq"
-+            # overwrites timestamp output
-+            results="[not run] $(cat $seq.notrun)"
-         else
-             if [ $sts -ne 0 ]
-             then
--                printf %s " [failed, exit status $sts]"
-+                reason=$(printf %s "[failed, exit status $sts]")
-                 err=true
-             fi
- 
-@@ -821,22 +831,29 @@ do
- 
-             if [ ! -f "$reference" ]
-             then
--                echo " - no qualified output"
-+                reason=" - no qualified output"
-                 err=true
-             else
-                 if diff -w "$reference" $tmp.out >/dev/null 2>&1
-                 then
--                    echo ""
-                     if $err
-                     then
-                         :
-                     else
--                        echo "$seq $(expr $stop - $start)" >>$tmp.time
-+                        lasttime=$(sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE)
-+                        thistime=$(expr $stop - $start)
-+                        echo "$seq $thistime" >>$tmp.time
-+
-+                        if [ "X$lasttime" != X ]; then
-+                            results="${results}${thistime}s (last ${lasttime}s)"
-+                        else
-+                            results="${results}${thistime}s"
-+                        fi
-                     fi
-                 else
--                    echo " - output mismatch (see $seq.out.bad)"
-                     mv $tmp.out $seq.out.bad
-                     $diff -w "$reference" "$PWD"/$seq.out.bad
-+                    reason=" - output mismatch (see $seq.out.bad)"
-                     err=true
-                 fi
-             fi
-@@ -852,9 +869,13 @@ do
-     #
-     if $err
-     then
-+        _report_test_result $seq "FAILED $reason"
-+        _full_env_details
-         bad="$bad $seq"
-         n_bad=$(expr $n_bad + 1)
-         quick=false
-+    else
-+        _report_test_result $seq "$results"
-     fi
-     [ -f $seq.notrun ] || try=$(expr $try + 1)
- 
--- 
-2.20.1
+> Message-Id: <20190504055440.20406-1-philmd@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  tests/docker/dockerfiles/fedora.docker | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+> index 69d4a7f5d75..afbba29adaa 100644
+> --- a/tests/docker/dockerfiles/fedora.docker
+> +++ b/tests/docker/dockerfiles/fedora.docker
+> @@ -8,6 +8,7 @@ ENV PACKAGES \
+>      bzip2-devel \
+>      ccache \
+>      clang \
+> +    cyrus-sasl-devel \
+>      device-mapper-multipath-devel \
+>      findutils \
+>      flex \
+> @@ -23,13 +24,17 @@ ENV PACKAGES \
+>      libaio-devel \
+>      libasan \
+>      libattr-devel \
+> +    libblockdev-mpath-devel \
+>      libcap-devel \
+>      libcap-ng-devel \
+>      libcurl-devel \
+>      libfdt-devel \
+> +    libiscsi-devel \
+>      libjpeg-devel \
+> +    libpmem-devel \
+>      libpng-devel \
+>      librbd-devel \
+> +    libseccomp-devel \
+>      libssh2-devel \
+>      libubsan \
+>      libusbx-devel \
+> @@ -74,10 +79,12 @@ ENV PACKAGES \
+>      pixman-devel \
+>      python3 \
+>      PyYAML \
+> +    rdma-core-devel \
+>      SDL2-devel \
+>      snappy-devel \
+>      sparse \
+>      spice-server-devel \
+> +    systemd-devel \
+>      systemtap-sdt-devel \
+>      tar \
+>      usbredir-devel \
+> 

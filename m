@@ -1,271 +1,235 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp905670wrh;
-        Thu, 9 May 2019 08:20:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyu8AuE5/4/J2Hxg/Pt8/u8wjznttvf06/gYIq2Xybm5mC0EVRmWCaBqt+GGvDxbJ3n03fI
-X-Received: by 2002:a5d:4449:: with SMTP id x9mr3498835wrr.277.1557415245878;
-        Thu, 09 May 2019 08:20:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557415245; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp987996wrh;
+        Thu, 9 May 2019 09:35:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzPI9zIZBx3lgjcXN52vRW3SESxdpAUrfH/EDKcpVAZqDl2YR56SWL5KsjfiD/T9JSC9kFB
+X-Received: by 2002:a17:902:e48e:: with SMTP id cj14mr3951433plb.299.1557419741141;
+        Thu, 09 May 2019 09:35:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557419741; cv=none;
         d=google.com; s=arc-20160816;
-        b=RJ/scVs1kb15TttaG7XgLsnR2ynthtUzaVTlLlnmE8IGyawChtn1cKIpPso2r15UNi
-         Oz8tIuqHNVTK1YaQNQLTb8ya2EJjwfRaqX350P0vgk3YKi7DdK3+GfrMiKXItmCNfZRj
-         tC+eEm2LEwA/7Z53UkHraWrr6KHYdW1AU/O4yAqahzI/4UktyQBdWo1OnL1CYagNQsbD
-         o1SoKUsrI6NmXT+DTK5/zlvTqAjyRLah222FB3wL65hy8nFOAl07QeZUg8QnH08ukmjb
-         uhbHHwjbpiE4zYh7XFRqB5Ix6NwpsrJoyKUY/5pJXtNNeIE84Yg8zMVuskOQ52Mak6+c
-         a+Cg==
+        b=JdLNnjiqDTj2X94GacXtuY8czABk38sqXiaCuoZTgZ634YZpXf/jXae5sHt2MLqmUd
+         5v5uHo5fi+BlqKM3vNUs2Zb4fV2ylumFFgbLJOeDyHE22W7ltopOUmIgXnWmIfhijCJJ
+         8yIkudHazUXadda3u6WCs+dvCRkGMQY+PMVqb46FizRCEPbL/7xzbplkNQ2SvFhaAmkn
+         mNCt1UKQutiG2118EWAHClLIZ6etHCYHZfu2+l1VaidavTucrTAn9LKT1/gHXfdFU4UO
+         7QiLf/3TKxXXfSxSKTR/E/PsDDnizrTQb2Z76wAAs6Rf4ukUNESW13Ydfq3WCX5bT3Cg
+         oVRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=D4xrCpFH4cARb5DLkxnN46TXxHQoM1QLlE2XlPxmS8w=;
-        b=sQYsvwvLTGwhnHnecEQe/IoWidTKNAZtYYoTBcG4MTNgM/RfT8AG2OPLwVBDzVFLVv
-         NMjxwEMFB0HTIbWxWLdW61Be348j1O7WL2iko2MkM7BNeQJMqS9ZsxAQ6lVnU7l4kpGh
-         qG0+EQKw2GGtvi3GQ5e++cMwHsUFkYvtxWZsHBbZaX+rxbTwMhtpfuC/stBGniqyZxFf
-         ojKAgtkJjG8vNoQJ02AWLKvhbV6hTZvELDDokwic4lbkn0D98sHqgm+c88LAUnD7fnj6
-         cuZYjLMgSWhMLQmwU3ZrN/u61s9Nh8pTQuWrRjddzrkpChHvJ8uBOtuzeyzzHe8JShxD
-         EVGA==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:mime-version:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=4Gc02GQJ0RYkyeoYcfl1qekusQUN9Af0/dIOclE9Im0=;
+        b=R1MnwLxEpWUtpJUl6xQ7e9dIV9aWekyNIyLRVKGn6LzG1uDnOornOCmDctCT9rLSk8
+         Ltgn/Qj2j5qvnz7LlSiOF37mulgKN0uMIMrGvnhOtTId1ABqODNC0QcwKzhf0MGDdmDu
+         AdG2W4FB2SdOxF/4L9kJbSM84f9nk/VqAHLDDmmqQoqcTQ22erY/5PgKtvVI1Ur7TYU8
+         dLZJZoGu6brNdvNasfjCq5VzGuQ3YyPSMznoqZXqSGw17d9UDd9kUFI1Vm5FxqVQqu0C
+         aocXMeM2uMtbgxzQ/hyM0jOUDi59VdEbA1+WBmk0gpj2gOShtt0cyLXTNaCPj5XubFpI
+         gE/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=r1mts9ZF;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si1401345wru.81.2019.05.09.08.20.45
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id j16si3504267pfn.225.2019.05.09.09.35.40
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 May 2019 08:20:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 09 May 2019 09:35:41 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=r1mts9ZF;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:56415 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hOkqi-0005ML-Sy
-	for alex.bennee@linaro.org; Thu, 09 May 2019 11:20:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46659)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hOkqV-0005Kd-60
-	for qemu-arm@nongnu.org; Thu, 09 May 2019 11:20:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hOkqT-0006DK-UH
-	for qemu-arm@nongnu.org; Thu, 09 May 2019 11:20:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33786)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1hOkqT-0006CQ-M5; Thu, 09 May 2019 11:20:29 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AE58C18DF7C;
-	Thu,  9 May 2019 15:20:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4Gc02GQJ0RYkyeoYcfl1qekusQUN9Af0/dIOclE9Im0=; b=r1mts9ZFv7PJIY
+	bQamd7EzARMUFeiwm4do5j1DSN8VGlTU5MtXmCXuw53k09N9GwLKmoWiTw8O4B/dYptXFW4Nk5pXy
+	k5JxiyUjkiMWPs3+eCrBF1T2zfnIh4S8OuggBqAVIsMSBlYUoOKtonF05Yg4HAjvJS8ok6VWmMUEa
+	Nbru4AmPTfiHZk3GBeIhhCSv/Kn+V0QXNCK7UCGKrLeTTy4l4eT2ygrBYUZ6oCYJIu6YOCDlQ/eh2
+	5GG85qhUfNLpV4eryMoLzRmKxx0bhayB7USC1ezLZ3fTXi0UWxWmmEiZByX5riQ3BvhGNgbHIWHr8
+	r7JTWrnKIinZh4ItqxQg==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+	id 1hOm1C-0000nL-FK; Thu, 09 May 2019 16:35:38 +0000
+Received: from mx1.redhat.com ([209.132.183.28])
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hOm19-0000mx-I7
+ for linux-arm-kernel@lists.infradead.org; Thu, 09 May 2019 16:35:37 +0000
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 630CB308FC5E;
+ Thu,  9 May 2019 16:35:32 +0000 (UTC)
 Received: from Igors-MacBook-Pro (ovpn-204-72.brq.redhat.com [10.40.204.72])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 14ED817F41;
-	Thu,  9 May 2019 15:20:08 +0000 (UTC)
-Date: Thu, 9 May 2019 17:20:02 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9E91A5B680;
+ Thu,  9 May 2019 16:35:26 +0000 (UTC)
+Date: Thu, 9 May 2019 18:35:20 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190509172002.5f65f78c@Igors-MacBook-Pro>
-In-Reply-To: <20190409102935.28292-6-shameerali.kolothum.thodi@huawei.com>
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-6-shameerali.kolothum.thodi@huawei.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Subject: Re: [Question] Memory hotplug clarification for Qemu ARM/virt
+Message-ID: <20190509183520.6dc47f2e@Igors-MacBook-Pro>
+In-Reply-To: <190831a5-297d-addb-ea56-645afb169efb@redhat.com>
+References: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
+ <ca5f7231-6924-0720-73a5-766eb13ee331@arm.com>
+ <190831a5-297d-addb-ea56-645afb169efb@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 09 May 2019 15:20:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 5/8] hw/arm/virt: Enable
- device memory cold/hot plug with ACPI boot
-X-BeenThere: qemu-arm@nongnu.org
+ (mx1.redhat.com [10.5.110.43]); Thu, 09 May 2019 16:35:32 +0000 (UTC)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190509_093535_638028_1EED33C0 
+X-CRM114-Status: GOOD (  33.14  )
+X-Spam-Score: -5.0 (-----)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-5.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
+ high trust [209.132.183.28 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
-	shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
-	xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
-	qemu-arm@nongnu.org, sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yZNrzUR3v6sG
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "xuwei \(O\)" <xuwei5@huawei.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ Catalin Marinas <Catalin.Marinas@arm.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "will.deacon@arm.com" <will.deacon@arm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Linuxarm <linuxarm@huawei.com>, linux-mm <linux-mm@kvack.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: tmoVoii0rpkq
 
-On Tue, 9 Apr 2019 11:29:32 +0100
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-
-> This initializes the GED device with base memory and irq, configures
-> ged memory hotplug event and builds the corresponding aml code. GED
-> irq routing to Guest is also enabled. With this, both hot and cold
-> plug of device memory is enabled now for Guest with ACPI boot.
-> 
-> Memory cold plug support with Guest DT boot is not yet supported.
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  default-configs/arm-softmmu.mak |  2 ++
->  hw/arm/virt-acpi-build.c        |  9 ++++++
->  hw/arm/virt.c                   | 61 +++++++++++++++++++++++++++++++++++++++--
->  include/hw/arm/virt.h           |  4 +++
->  4 files changed, 73 insertions(+), 3 deletions(-)
-> 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 9f4b803..c9a9b34 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -163,3 +163,5 @@ CONFIG_LSI_SCSI_PCI=y
->  
->  CONFIG_MEM_DEVICE=y
->  CONFIG_DIMM=y
-> +CONFIG_ACPI_MEMORY_HOTPLUG=y
-> +CONFIG_ACPI_HW_REDUCED=y
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index bf9c0bc..1ad394b 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -40,6 +40,8 @@
->  #include "hw/loader.h"
->  #include "hw/hw.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/memory_hotplug.h"
-> +#include "hw/acpi/generic_event_device.h"
->  #include "hw/pci/pcie_host.h"
->  #include "hw/pci/pci.h"
->  #include "hw/arm/virt.h"
-> @@ -727,6 +729,7 @@ static void
->  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
->      Aml *scope, *dsdt;
-> +    MachineState *ms = MACHINE(vms);
->      const MemMapEntry *memmap = vms->memmap;
->      const int *irqmap = vms->irqmap;
->  
-> @@ -753,6 +756,12 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
->      acpi_dsdt_add_power_button(scope);
->  
-> +    build_ged_aml(scope, "\\_SB."GED_DEVICE, HOTPLUG_HANDLER(vms->acpi_dev),
-> +                  irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY);
-> +
-> +    build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB", NULL,
-> +                             AML_SYSTEM_MEMORY);
->
-are you sure we should add these parts if acpi_device not present or ms->ram_slots == 0 ?
-
->      aml_append(dsdt, scope);
->  
->      /* copy AML table into ACPI tables blob and patch header there */
-
-[...]
-
-> +
->  static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->  {
->      /* We create a standalone GIC */
-> @@ -670,6 +707,8 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->          pic[i] = qdev_get_gpio_in(gicdev, i);
->      }
->  
-> +    vms->gsi = qemu_allocate_irqs(virt_gsi_handler, pic, NUM_IRQS);
-
-Why do we need this "gsi" to begin with?
-
-> +
->      fdt_add_gic_node(vms);
->  
->      if (type == 3 && vms->its) {
-> @@ -1418,7 +1457,7 @@ static void machvirt_init(MachineState *machine)
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
->      MachineClass *mc = MACHINE_GET_CLASS(machine);
->      const CPUArchIdList *possible_cpus;
-> -    qemu_irq pic[NUM_IRQS];
-> +    qemu_irq *pic;
->      MemoryRegion *sysmem = get_system_memory();
->      MemoryRegion *secure_sysmem = NULL;
->      int n, virt_max_cpus;
-> @@ -1614,6 +1653,7 @@ static void machvirt_init(MachineState *machine)
->  
->      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
->  
-> +    pic = g_new0(qemu_irq, NUM_IRQS);
->      create_gic(vms, pic);
->  
->      fdt_add_pmu_nodes(vms);
-> @@ -1644,6 +1684,8 @@ static void machvirt_init(MachineState *machine)
->  
->      create_platform_bus(vms, pic);
->  
-> +    vms->acpi_dev = create_acpi_ged(vms);
-
-what if we start QEMU with -no-acpi?
-
->      vms->bootinfo.ram_size = machine->ram_size;
->      vms->bootinfo.kernel_filename = machine->kernel_filename;
->      vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;
-> @@ -1811,21 +1853,34 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->  static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->                                   Error **errp)
->  {
-> -    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> -        error_setg(errp, "memory cold/hot plug is not yet supported");
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-> +
-> +    if (is_nvdimm) {
-> +        error_setg(errp, "nvdimm is not yet supported");
->          return;
->      }
->  
-> +    if (!vms->acpi_dev) {
-> +        error_setg(errp, "memory hotplug is not enabled: missing acpi device");
-> +        return;
-> +    }
-> +
-> +    hotplug_handler_pre_plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, errp);
-> +
->      pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
->  }
->  
->  static void virt_memory_plug(HotplugHandler *hotplug_dev,
->                               DeviceState *dev, Error **errp)
->  {
-> +    HotplugHandlerClass *hhc;
->      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
->  
->      pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
->  
-> +    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-> +    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, NULL);
->  }
->  
->  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 507517c..9c6b0b1 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -77,6 +77,8 @@ enum {
->      VIRT_GPIO,
->      VIRT_SECURE_UART,
->      VIRT_SECURE_MEM,
-> +    VIRT_PCDIMM_ACPI,
-> +    VIRT_ACPI_GED,
->      VIRT_LOWMEMMAP_LAST,
->  };
->  
-> @@ -132,6 +134,8 @@ typedef struct {
->      uint32_t iommu_phandle;
->      int psci_conduit;
->      hwaddr highest_gpa;
-> +    DeviceState *acpi_dev;
-> +    qemu_irq *gsi;
->  } VirtMachineState;
->  
->  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
-
+T24gV2VkLCA4IE1heSAyMDE5IDIyOjI2OjEyICswMjAwCkxhc3psbyBFcnNlayA8bGVyc2VrQHJl
+ZGhhdC5jb20+IHdyb3RlOgoKPiBPbiAwNS8wOC8xOSAxNDo1MCwgUm9iaW4gTXVycGh5IHdyb3Rl
+Ogo+ID4gSGkgU2hhbWVlciwKPiA+IAo+ID4gT24gMDgvMDUvMjAxOSAxMToxNSwgU2hhbWVlcmFs
+aSBLb2xvdGh1bSBUaG9kaSB3cm90ZToKPiA+PiBIaSwKPiA+Pgo+ID4+IFRoaXMgc2VyaWVzIGhl
+cmVbMF0gYXR0ZW1wdHMgdG8gYWRkIHN1cHBvcnQgZm9yIFBDRElNTSBpbiBRRU1VIGZvcgo+ID4+
+IEFSTS9WaXJ0IHBsYXRmb3JtIGFuZCBoYXMgc3R1bWJsZWQgdXBvbiBhbiBpc3N1ZSBhcyBpdCBp
+cyBub3QgY2xlYXIoYXQKPiA+PiBsZWFzdAo+ID4+IGZyb20gUWVtdS9FREsyIHBvaW50IG9mIHZp
+ZXcpIGhvdyBpbiBwaHlzaWNhbCB3b3JsZCB0aGUgaG90cGx1Z2dhYmxlCj4gPj4gbWVtb3J5IGlz
+IGhhbmRsZWQgYnkga2VybmVsLgo+ID4+Cj4gPj4gVGhlIHByb3Bvc2VkIGltcGxlbWVudGF0aW9u
+IGluIFFlbXUsIGJ1aWxkcyB0aGUgU1JBVCBhbmQgRFNEVCBwYXJ0cwo+ID4+IGFuZCB1c2VzIEdF
+RCBkZXZpY2UgdG8gdHJpZ2dlciB0aGUgaG90cGx1Zy4gVGhpcyB3b3JrcyBmaW5lLgo+ID4+Cj4g
+Pj4gQnV0IHdoZW4gd2UgYWRkZWQgdGhlIERUIG5vZGUgY29ycmVzcG9uZGluZyB0byB0aGUgUENE
+SU1NKGNvbGQgcGx1Zwo+ID4+IHNjZW5hcmlvKSwgd2Ugbm90aWNlZCB0aGF0IEd1ZXN0IGtlcm5l
+bCBzZWUgdGhpcyBtZW1vcnkgZHVyaW5nIGVhcmx5IGJvb3QKPiA+PiBldmVuIGlmIHdlIGFyZSBi
+b290aW5nIHdpdGggQUNQSS4gQmVjYXVzZSBvZiB0aGlzLCBob3RwbHVnZ2FibGUgbWVtb3J5Cj4g
+Pj4gbWF5IGVuZCB1cCBpbiB6b25lIG5vcm1hbCBhbmQgbWFrZSBpdCBub24taG90LXVuLXBsdWdn
+YWJsZSBldmVuIGlmIEd1ZXN0Cj4gPj4gYm9vdHMgd2l0aCBBQ1BJLgo+ID4+Cj4gPj4gRnVydGhl
+ciBkaXNjdXNzaW9uc1sxXSByZXZlYWxlZCB0aGF0LCBFREsyIFVFRkkgaGFzIG5vIG1lYW5zIHRv
+Cj4gPj4gaW50ZXJwcmV0IHRoZQo+ID4+IEFDUEkgY29udGVudCBmcm9tIFFlbXUodGhpcyBpcyBk
+ZXNpZ25lZCB0byBkbyBzbykgYW5kIHVzZXMgRFQgaW5mbyB0bwo+ID4+IGJ1aWxkIHRoZSBHZXRN
+ZW1vcnlNYXAoKS4gVG8gc29sdmUgdGhpcywgaW50cm9kdWNlZCAiaG90cGx1Z2dhYmxlIgo+ID4+
+IHByb3BlcnR5Cj4gPj4gdG8gRFQgbWVtb3J5IG5vZGUocGF0Y2hlcyAjNyAmICM4IGZyb20gWzBd
+KSBzbyB0aGF0IFVFRkkgY2FuCj4gPj4gZGlmZmVyZW50aWF0ZQo+ID4+IHRoZSBub2RlcyBhbmQg
+ZXhjbHVkZSB0aGUgaG90cGx1Z2dhYmxlIG9uZXMgZnJvbSBHZXRNZW1vcnlNYXAoKS4KPiA+Pgo+
+ID4+IEJ1dCB0aGVuIExhc3psbyByaWdodGx5IHBvaW50ZWQgb3V0IHRoYXQgaW4gb3JkZXIgdG8g
+YWNjb21tb2RhdGUgdGhlCj4gPj4gY2hhbmdlcwo+ID4+IGludG8gVUVGSSB3ZSBuZWVkIHRvIGtu
+b3cgaG93IGV4YWN0bHkgTGludXggZXhwZWN0cy9oYW5kbGVzIGFsbCB0aGUKPiA+PiBob3RwbHVn
+Z2FibGUgbWVtb3J5IHNjZW5hcmlvcy4gUGxlYXNlIGZpbmQgdGhlIGRpc2N1c3Npb24gaGVyZVsy
+XS4KPiA+Pgo+ID4+IEZvciBlYXNlLCBJIGFtIGp1c3QgY29weWluZyB0aGUgcmVsZXZhbnQgY29t
+bWVudCBmcm9tIExhc3psbyBiZWxvdywKPiA+Pgo+ID4+IC8qKioqKioKPiA+PiAiR2l2ZW4gcGF0
+Y2hlcyAjNyBhbmQgIzgsIGFzIEkgdW5kZXJzdGFuZCB0aGVtLCB0aGUgZmlybXdhcmUgY2Fubm90
+Cj4gPj4gZGlzdGluZ3Vpc2gKPiA+PiDCoCBob3RwbHVnZ2FibGUgJiBwcmVzZW50LCBmcm9tIGhv
+dHBsdWdnYWJsZSAmIGFic2VudC4gVGhlIGZpcm13YXJlIGNhbgo+ID4+IG9ubHkKPiA+PiDCoCBz
+a2lwIGJvdGggaG90cGx1Z2dhYmxlIGNhc2VzLiBUaGF0J3MgZmluZSBpbiB0aGF0IHRoZSBmaXJt
+d2FyZSB3aWxsCj4gPj4gaG9nIG5laXRoZXIKPiA+PiDCoCB0eXBlIC0tIGJ1dCBpcyB0aGF0IE9L
+IGZvciB0aGUgT1MgYXMgd2VsbCwgZm9yIGJvdGggQUNQSSBib290IGFuZCBEVAo+ID4+IGJvb3Q/
+Cj4gPj4KPiA+PiBDb25zaWRlciBpbiBwYXJ0aWN1bGFyIHRoZSAiaG90cGx1Z2dhYmxlICYgcHJl
+c2VudCwgQUNQSSBib290IiBjYXNlLgo+ID4+IEFzc3VtaW5nCj4gPj4gd2UgbW9kaWZ5IHRoZSBm
+aXJtd2FyZSB0byBza2lwICJob3RwbHVnZ2FibGUiIGFsdG9nZXRoZXIsIHRoZSBVRUZJIG1lbW1h
+cAo+ID4+IHdpbGwgbm90IGluY2x1ZGUgdGhlIHJhbmdlIGRlc3BpdGUgaXQgYmVpbmcgcHJlc2Vu
+dCBhdCBib290Lgo+ID4+IFByZXN1bWFibHksIEFDUEkKPiA+PiB3aWxsIHJlZmVyIHRvIHRoZSBy
+YW5nZSBzb21laG93LCBob3dldmVyLiBXaWxsIHRoYXQgbm90IGNvbmZ1c2UgdGhlIE9TPwo+ID4+
+Cj4gPj4gV2hlbiBJZ29yIHJhaXNlZCB0aGlzIGVhcmxpZXIsIEkgc3VnZ2VzdGVkIHRoYXQKPiA+
+PiBob3RwbHVnZ2FibGUtYW5kLXByZXNlbnQgc2hvdWxkCj4gPj4gYmUgYWRkZWQgYnkgdGhlIGZp
+cm13YXJlLCBidXQgYWxzbyBhbGxvY2F0ZWQgaW1tZWRpYXRlbHksIGFzCj4gPj4gRWZpQm9vdFNl
+cnZpY2VzRGF0YQo+ID4+IHR5cGUgbWVtb3J5LiBUaGlzIHdpbGwgcHJldmVudCBvdGhlciBkcml2
+ZXJzIGluIHRoZSBmaXJtd2FyZSBmcm9tCj4gPj4gYWxsb2NhdGluZyBBY3BpTlZTCj4gPj4gb3Ig
+UmVzZXJ2ZWQgY2h1bmtzIGZyb20gdGhlIHNhbWUgbWVtb3J5IHJhbmdlLCB0aGUgVUVGSSBtZW1t
+YXAgd2lsbAo+ID4+IGNvbnRhaW4KPiA+PiB0aGUgcmFuZ2UgYXMgRWZpQm9vdFNlcnZpY2VzRGF0
+YSwgYW5kIHRoZW4gdGhlIE9TIGNhbiByZWxlYXNlIHRoYXQKPiA+PiBhbGxvY2F0aW9uIGluCj4g
+Pj4gb25lIGdvIGVhcmx5IGR1cmluZyBib290Lgo+ID4+Cj4gPj4gQnV0IHRoaXMgcmVhbGx5IGhh
+cyB0byBiZSBjbGFyaWZpZWQgZnJvbSB0aGUgTGludXgga2VybmVsJ3MKPiA+PiBleHBlY3RhdGlv
+bnMuIFBsZWFzZQo+ID4+IGZvcm1hbGl6ZSBhbGwgb2YgdGhlIGZvbGxvd2luZyBjYXNlczoKPiA+
+Pgo+ID4+IE9TIGJvb3QgKERUL0FDUEkpwqAgaG90cGx1Z2dhYmxlICYgLi4uwqAgR2V0TWVtb3J5
+TWFwKCkgc2hvdWxkIHJlcG9ydAo+ID4+IGFzwqAgRFQvQUNQSSBzaG91bGQgcmVwb3J0IGFzCj4g
+Pj4gLS0tLS0tLS0tLS0tLS0tLS3CoCAtLS0tLS0tLS0tLS0tLS0tLS3CoAo+ID4+IC0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS3CoCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiA+PiBE
+VMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHByZXNlbnTCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgP8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgID8KPiA+PiBEVMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IGFic2VudMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgID/CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/Cj4gPj4gQUNQScKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcHJlc2VudMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgPwo+ID4+IEFDUEnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGFic2VudMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgID/CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/Cj4gPj4KPiA+PiBBZ2FpbiwgdGhpcyB0YWJs
+ZSBpcyBkaWN0YXRlZCBieSBMaW51eC4iCj4gPj4KPiA+PiAqKioqKiovCj4gPj4KPiA+PiBDb3Vs
+ZCB5b3UgcGxlYXNlIHRha2UgYSBsb29rIGF0IHRoaXMgYW5kIGxldCB1cyBrbm93IHdoYXQgaXMg
+ZXhwZWN0ZWQKPiA+PiBoZXJlIGZyb20KPiA+PiBhIExpbnV4IGtlcm5lbCB2aWV3IHBvaW50Lgo+
+ID4gCj4gPiBGb3IgYXJtNjQsIHNvIGZhciB3ZSd2ZSBub3QgZXZlbiBiZWVuIGNvbnNpZGVyaW5n
+IERULWJhc2VkIGhvdHBsdWcgLSBhcwo+ID4gZmFyIGFzIEknbSBhd2FyZSB0aGVyZSB3b3VsZCBz
+dGlsbCBiZSBhIGJpZyBvcGVuIHF1ZXN0aW9uIHRoZXJlIGFyb3VuZAo+ID4gbm90aWZpY2F0aW9u
+IG1lY2hhbmlzbXMgYW5kIGhvdyB0byBkZXNjcmliZSB0aGVtLiBUaGUgRFQgc3R1ZmYgc28gZmFy
+Cj4gPiBoYXMgY29tZSBmcm9tIHRoZSBQb3dlclBDIGZvbGtzLCBzbyBpdCdzIHByb2JhYmx5IHdv
+cnRoIHNlZWluZyB3aGF0Cj4gPiB0aGVpciBpZGVhcyBhcmUuCj4gPiAKPiA+IEFDUEktd2lzZSBJ
+J3ZlIGFsd2F5cyBhc3N1bWVkL2hvcGVkIHRoYXQgaG90cGx1Zy1yZWxhdGVkIHRoaW5ncyBzaG91
+bGQKPiA+IGJlIHN1ZmZpY2llbnRseSB3ZWxsLXNwZWNpZmllZCBpbiBVRUZJIHRoYXQgImRvIHdo
+YXRldmVyIHg4Ni9JQS02NCBkbyIKPiA+IHdvdWxkIGJlIGVub3VnaCBmb3IgdXMuCj4gCj4gQXMg
+ZmFyIGFzIEkgY2FuIHNlZSBpbiBVRUZJIHYyLjggLS0gYW5kIEkgaGFkIGNoZWNrZWQgdGhlIHNw
+ZWMgYmVmb3JlCj4gZHVtcGluZyB0aGUgdGFibGUgd2l0aCB0aGUgbWFueSBxdWVzdGlvbiBtYXJr
+cyBvbiBTaGFtZWVyIC0tLCBhbGwgdGhlCj4gaG90LXBsdWcgbGFuZ3VhZ2UgaW4gdGhlIHNwZWMg
+cmVmZXJzIHRvIFVTQiBhbmQgUENJIGhvdC1wbHVnIGluIHRoZQo+IHByZWJvb3QgZW52aXJvbm1l
+bnQuIFRoZXJlIGlzIG5vdCBhIHNpbmdsZSB3b3JkIGFib3V0IGhvdC1wbHVnIGF0IE9TCj4gcnVu
+dGltZSAocmVnYXJkaW5nIGFueSBkZXZpY2Ugb3IgY29tcG9uZW50IHR5cGUpLCBub3IgYWJvdXQg
+bWVtb3J5Cj4gaG90LXBsdWcgKGF0IGFueSB0aW1lKS4KPgo+IExvb2tpbmcgdG8geDg2IGFwcGVh
+cnMgdmFsaWQgLS0gc28gd2hhdCBkb2VzIHRoZSBMaW51eCBrZXJuZWwgZXhwZWN0IG9uCj4gdGhh
+dCBhcmNoaXRlY3R1cmUsIGluIHRoZSAiQUNQSSIgcm93cyBvZiB0aGUgdGFibGU/CgpJIGNvdWxk
+IG9ubHkgYW5zd2VyIGZyb20gUUVNVSB4ODYgcGVyc3BlY3RpdmUuClFFTVUgZm9yIHg4NiBndWVz
+dHMgY3VycmVudGx5IGRvZXNuJ3QgYWRkIGhvdC1wbHVnZ2FibGUgUkFNIGludG8gRTgyMApiZWNh
+dXNlIG9mIGRpZmZlcmVudCBsaW51eCBndWVzdHMgdGVuZCB0byBjYW5uaWJhbGl6ZSBpdCwgbWFr
+aW5nIGl0IG5vbgp1bnBsdWdnYWJsZS4gVGhlIGxhc3QgY3VscHJpdCBJIHJlY2FsbCB3YXMgS0FT
+TFIuCgpTbyBJJ2QgcmVmcmFpbiBmcm9tIHJlcG9ydGluZyBob3RwbHVnZ2FibGUgUkFNIGluIEdl
+dE1lbW9yeU1hcCgpIGlmCml0J3MgcG9zc2libGUgKGl0J3MgcHJvYmFibHkgaGFjayAoc3BlYyBk
+ZW9zbid0IHNheSBhbnl0aGluZyBhYm91dCBpdCkKYnV0IGl0IG1vc3RseSB3b3JrcyBmb3IgTGlu
+dXggKHBsdWcvdW5wbHVnKSBhbmQgV2luZG93cyBndWVzdCBhbHNvCmZpbmUgd2l0aCBwbHVnIHBh
+cnQgKG5vIHVucGx1ZyB0aGVyZSkpLgoKQXMgZm9yIHBoeXNpY2FsIHN5c3RlbXMsIHRoZXJlIGFy
+ZSBvdXQgdGhlcmUgb25lcyB0aGF0IGRvIHJlcG9ydApob3RwbHVnZ2FibGUgUkFNIGluIEdldE1l
+bW9yeU1hcCgpLgoKPiBTaGFtZWVyOiBpZiB5b3UgKEh1YXdlaSkgYXJlIHJlcHJlc2VudGVkIG9u
+IHRoZSBVU1dHIC8gQVNXRywgSSBzdWdnZXN0Cj4gcmUtcmFpc2luZyB0aGUgcXVlc3Rpb24gb24g
+dGhvc2UgbGlzdHMgdG9vOyBhdCBsZWFzdCB0aGUgIkFDUEkiIHJvd3Mgb2YKPiB0aGUgdGFibGUu
+Cj4gCj4gVGhhbmtzIQo+IExhc3psbwo+IAo+ID4gCj4gPiBSb2Jpbi4KPiA+IAo+ID4+IChIaSBM
+YXN6bG8vSWdvci9FcmljLCBwbGVhc2UgZmVlbCBmcmVlIHRvIGFkZC9jaGFuZ2UgaWYgSSBoYXZl
+IG1pc3NlZAo+ID4+IGFueSB2YWxpZAo+ID4+IHBvaW50cyBhYm92ZSkuCj4gPj4KPiA+PiBUaGFu
+a3MsCj4gPj4gU2hhbWVlcgo+ID4+IFswXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL2Nv
+dmVyLzEwODkwOTE5Lwo+ID4+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNo
+LzEwODYzMjk5Lwo+ID4+IFsyXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzEw
+ODkwOTM3Lwo+ID4+Cj4gPj4KPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2Vy
+bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==

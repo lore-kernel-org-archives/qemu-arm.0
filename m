@@ -1,83 +1,73 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r10sm1822250wml.10.2019.05.09.09.59.15
+        by smtp.gmail.com with ESMTPSA id a4sm4293424wmf.45.2019.05.09.09.59.14
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 09:59:18 -0700 (PDT)
+        Thu, 09 May 2019 09:59:17 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 018251FF9B;
-	Thu,  9 May 2019 17:59:13 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 9EE0A1FF96;
+	Thu,  9 May 2019 17:59:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: [PATCH  v1 11/23] tests/tcg/alpha: add system boot.S
-Date: Thu,  9 May 2019 17:58:59 +0100
-Message-Id: <20190509165912.10512-12-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 07/23] tests/tcg/aarch64: add system boot.S
+Date: Thu,  9 May 2019 17:58:55 +0100
+Message-Id: <20190509165912.10512-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190509165912.10512-1-alex.bennee@linaro.org>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 28bzv6o3lPYn
-
-From: Richard Henderson <richard.henderson@linaro.org>
+X-TUID: UFB/VN3XydXq
 
 This provides the bootstrap and low level helper functions for an
-alpha kernel.  We use direct access to the DP264 serial port for
-test output, and hard machine halt to exit the emulation.
+aarch64 kernel. We use semihosting to handle test output and exiting
+the emulation. semihosting's parameter passing is a little funky so we
+end up using the stack and pointing to that as the parameter block.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20190501184306.15208-1-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- MAINTAINERS                             |   1 +
- tests/tcg/alpha/Makefile.softmmu-target |  32 ++
- tests/tcg/alpha/system/boot.S           | 511 ++++++++++++++++++++++++
- tests/tcg/alpha/system/kernel.ld        |  30 ++
- 4 files changed, 574 insertions(+)
- create mode 100644 tests/tcg/alpha/Makefile.softmmu-target
- create mode 100644 tests/tcg/alpha/system/boot.S
- create mode 100644 tests/tcg/alpha/system/kernel.ld
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 66ddbda9c95..eb3058f8e76 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -470,6 +470,7 @@ M: Richard Henderson <rth@twiddle.net>
- S: Maintained
- F: hw/alpha/
- F: hw/isa/smc37c669-superio.c
-+F: tests/tcg/alpha/system/
- 
- ARM Machines
- ------------
-diff --git a/tests/tcg/alpha/Makefile.softmmu-target b/tests/tcg/alpha/Makefile.softmmu-target
+---
+v2
+  - fix tabs
+  - 2 stage table lookup with ro and nx sections
+  - set stack to back
+  - moar comments
+---
+ tests/tcg/aarch64/Makefile.softmmu-target |  32 +++
+ tests/tcg/aarch64/system/boot.S           | 239 ++++++++++++++++++++++
+ tests/tcg/aarch64/system/kernel.ld        |  24 +++
+ 3 files changed, 295 insertions(+)
+ create mode 100644 tests/tcg/aarch64/Makefile.softmmu-target
+ create mode 100644 tests/tcg/aarch64/system/boot.S
+ create mode 100644 tests/tcg/aarch64/system/kernel.ld
+
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
 new file mode 100644
-index 00000000000..9f4b199258f
+index 00000000000..cdb836f7e1e
 --- /dev/null
-+++ b/tests/tcg/alpha/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
 @@ -0,0 +1,32 @@
 +#
-+# Alpha system tests
++# Aarch64 system tests
 +#
 +
-+ALPHA_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/alpha/system
-+VPATH+=$(ALPHA_SYSTEM_SRC)
++AARCH64_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/aarch64/system
++VPATH+=$(AARCH64_SYSTEM_SRC)
 +
 +# These objects provide the basic boot code and helper functions for all tests
 +CRT_OBJS=boot.o
 +
-+ALPHA_TEST_SRCS=$(wildcard $(ALPHA_SYSTEM_SRC)/*.c)
-+ALPHA_TESTS = $(patsubst $(ALPHA_SYSTEM_SRC)/%.c, %, $(ALPHA_TEST_SRCS))
++AARCH64_TEST_SRCS=$(wildcard $(AARCH64_SYSTEM_SRC)/*.c)
++AARCH64_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.c, %, $(AARCH64_TEST_SRCS))
 +
-+CRT_PATH=$(ALPHA_SYSTEM_SRC)
-+LINK_SCRIPT=$(ALPHA_SYSTEM_SRC)/kernel.ld
++CRT_PATH=$(AARCH64_SYSTEM_SRC)
++LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
 +LDFLAGS=-Wl,-T$(LINK_SCRIPT)
-+TESTS+=$(ALPHA_TESTS) $(MULTIARCH_TESTS)
-+CFLAGS+=-nostdlib -g -O1 -mcpu=ev6 $(MINILIB_INC)
++TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
++CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
 +LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
 +
 +# building head blobs
@@ -91,559 +81,281 @@ index 00000000000..9f4b199258f
 +	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 +
 +# Running
-+QEMU_OPTS+=-serial chardev:output -kernel
-diff --git a/tests/tcg/alpha/system/boot.S b/tests/tcg/alpha/system/boot.S
++QEMU_OPTS+=-M virt -cpu max -display none -semihosting-config enable=on,target=native,chardev=output -kernel
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
 new file mode 100644
-index 00000000000..9791b1ef7c8
+index 00000000000..b14e94f332d
 --- /dev/null
-+++ b/tests/tcg/alpha/system/boot.S
-@@ -0,0 +1,511 @@
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -0,0 +1,239 @@
 +/*
-+ * Minimal Alpha system boot code.
++ * Minimal AArch64 system boot code.
 + *
 + * Copyright Linaro Ltd 2019
++ *
++ * Loosely based on the newlib/libgloss setup stubs. Using semihosting
++ * for serial output and exit functions.
 + */
-+
-+	.set	noat
-+	.set	nomacro
-+	.arch	ev6
-+	.text
-+
-+.macro load_pci_io reg
-+	/* For typhoon, this is
-+	 *   0xfffffc0000000000  -- kseg identity map
-+	 * +      0x10000000000  -- typhoon pio base
-+	 * +        0x1fc000000  -- typhoon pchip0 pci base
-+	 * = 0xfffffd01fc000000
-+	 */
-+	ldah	\reg, -3		/* ff..fd0000 */
-+	lda	\reg, 0x1fc(\reg)	/* ff..fd01fc */
-+	sll	\reg, 24, \reg
-+.endm
-+
-+#define com1Rbr 0x3f8
-+#define com1Thr 0x3f8
-+#define com1Ier 0x3f9
-+#define com1Iir 0x3fa
-+#define com1Lcr 0x3fb
-+#define com1Mcr 0x3fc
-+#define com1Lsr 0x3fd
-+#define com1Msr 0x3fe
-+#define com1Scr 0x3ff
-+#define com1Dll 0x3f8
-+#define com1Dlm 0x3f9
-+
-+#define PAL_halt    0
-+#define PAL_wrent  52
-+#define PAL_wrkgp  55
-+
-+	.text
-+	.p2align 4
-+	.globl	_start
-+	.ent	_start
-+_start:
-+	br	$gp, .+4
-+	ldah	$gp, 0($gp)		!gpdisp!1
-+	lda	$gp, 0($gp)		!gpdisp!1
-+
-+	ldah	$sp, $stack_end($gp)	!gprelhigh
-+	lda	$sp, $stack_end($sp)	!gprellow
-+
-+	/* Install kernel gp for exception handlers.  */
-+	mov	$gp, $16
-+	call_pal PAL_wrkgp
-+
-+	/* Install exception handlers.  */
-+	ldah	$16, entInt($gp)	!gprelhigh
-+	lda	$16, entInt($16)	!gprellow
-+	lda	$17, 0
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entArith($gp)	!gprelhigh
-+	lda	$16, entArith($16)	!gprellow
-+	lda	$17, 1
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entMM($gp)		!gprelhigh
-+	lda	$16, entMM($16)		!gprellow
-+	lda	$17, 2
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entIF($gp)		!gprelhigh
-+	lda	$16, entIF($16)		!gprellow
-+	lda	$17, 3
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entUna($gp)	!gprelhigh
-+	lda	$16, entUna($16)	!gprellow
-+	lda	$17, 4
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entSys($gp)	!gprelhigh
-+	lda	$16, entSys($16)	!gprellow
-+	lda	$17, 5
-+	call_pal PAL_wrent
-+
-+	/*
-+	 * Initialize COM1.
-+	 */
-+	load_pci_io $1
-+	lda	$2, 0x87		/* outb(0x87, com1Lcr); */
-+	stb	$2, com1Lcr($1)
-+	stb	$31, com1Dlm($1)	/* outb(0, com1Dlm); */
-+	lda	$2, 3			/* baudconst 3 => 56000 */
-+	stb	$2, com1Dll($1)		/* outb(baudconst, com1Dll); */
-+	lda	$2, 0x07
-+	stb	$2, com1Lcr($1)		/* outb(0x07, com1Lcr) */
-+	lda	$2, 0x0f
-+	stb	$2, com1Mcr($1)		/* outb(0x0f, com1Mcr) */
-+
-+	bsr	$26, main		!samegp
-+
-+	/* fall through to _exit */
-+	.end	_start
-+
-+	.globl	_exit
-+	.ent	_exit
-+_exit:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	/* We cannot return an error code.  */
-+	call_pal PAL_halt
-+	.end	_exit
 +
 +/*
-+ * We have received an exception that we don't handle.  Log and exit.
++ * Semihosting interface on ARM AArch64
++ * See "Semihosting for AArch32 and AArch64 Relase 2.0" by ARM
++ * w0 - semihosting call number
++ * x1 - semihosting parameter
 + */
-+	.ent	log_exit
-+log_exit:
-+entInt:
-+entArith:
-+entMM:
-+entIF:
-+entUna:
-+entSys:
-+	ldah	$16, $errormsg($gp)	!gprelhigh
-+	lda	$16, $errormsg($16)	!gprellow
-+	bsr	$26, __sys_outs		!samegp
-+	bsr	$26, _exit		!samegp
-+	.end	log_exit
++#define semihosting_call hlt 0xf000
++#define SYS_WRITEC	0x03	/* character to debug channel */
++#define SYS_WRITE0	0x04	/* string to debug channel */
++#define SYS_EXIT	0x18
++
++	.align	12
++
++	.macro	ventry	label
++	.align	7
++	b	\label
++	.endm
++
++vector_table:
++	/* Current EL with SP0.	 */
++	ventry	curr_sp0_sync		/* Synchronous	*/
++	ventry	curr_sp0_irq		/* Irq/vIRQ  */
++	ventry	curr_sp0_fiq		/* Fiq/vFIQ  */
++	ventry	curr_sp0_serror		/* SError/VSError  */
++
++	/* Current EL with SPx.	 */
++	ventry	curr_spx_sync		/* Synchronous	*/
++	ventry	curr_spx_irq		/* IRQ/vIRQ  */
++	ventry	curr_spx_fiq		/* FIQ/vFIQ  */
++	ventry	curr_spx_serror		/* SError/VSError  */
++
++	/* Lower EL using AArch64.  */
++	ventry	lower_a64_sync		/* Synchronous	*/
++	ventry	lower_a64_irq		/* IRQ/vIRQ  */
++	ventry	lower_a64_fiq		/* FIQ/vFIQ  */
++	ventry	lower_a64_serror	/* SError/VSError  */
++
++	/* Lower EL using AArch32.  */
++	ventry	lower_a32_sync		/* Synchronous	*/
++	ventry	lower_a32_irq		/* IRQ/vIRQ  */
++	ventry	lower_a32_fiq		/* FIQ/vFIQ  */
++	ventry	lower_a32_serror	/* SError/VSError  */
++
++	.text
++	.align 4
++
++	/* Common vector handling for now */
++curr_sp0_sync:
++curr_sp0_irq:
++curr_sp0_fiq:
++curr_sp0_serror:
++curr_spx_sync:
++curr_spx_irq:
++curr_spx_fiq:
++curr_spx_serror:
++lower_a64_sync:
++lower_a64_irq:
++lower_a64_fiq:
++lower_a64_serror:
++lower_a32_sync:
++lower_a32_irq:
++lower_a32_fiq:
++lower_a32_serror:
++	mov	x0, SYS_WRITE0
++	adr	x1, .error
++	semihosting_call
++	mov	x0, SYS_EXIT
++	mov	x1, 1
++	semihosting_call
++	/* never returns */
 +
 +	.section .rodata
-+$errormsg:
++.error:
 +	.string "Terminated by exception.\n"
-+	.previous
++
++	.text
++	.align 4
++	.global __start
++__start:
++	/* Installs a table of exception vectors to catch and handle all
++	   exceptions by terminating the process with a diagnostic.  */
++	adr	x0, vector_table
++	msr	vbar_el1, x0
++
++	/* Page table setup (identity mapping). */
++	adrp	x0, ttb
++	add	x0, x0, :lo12:ttb
++	msr	ttbr0_el1, x0
++
++	/*
++	 * Setup a flat address mapping page-tables. Stage one simply
++	 * maps RAM to the first Gb. The stage2 tables have two 2mb
++	 * translation block entries covering a series of adjacent
++	 * 4k pages.
++	*/
++
++	/* Stage 1 entry: indexed by IA[38:30] */
++	adr	x1, .				/* phys address */
++	bic	x1, x1, #(1 << 30) - 1		/* 1GB alignment*/
++	add	x2, x0, x1, lsr #(30 - 3)	/* offset in l1 page table */
++
++	/* point to stage 2 table [47:12] */
++	adrp	x0, ttb_stage2
++	orr 	x1, x0, #3 			/* ptr to stage 2 */
++	str	x1, [x2]
++
++	/* Stage 2 entries: indexed by IA[29:21] */
++	ldr	x5, =(((1 << 9) - 1) << 21)
++
++	/* First block: .text/RO/execute enabled */
++	adr	x1, .				/* phys address */
++	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment	*/
++	and	x4, x1, x5			/* IA[29:21] */
++	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
++	ldr	x3, =0x401			/* attr(AF, block) */
++	orr	x1, x1, x3
++	str	x1, [x2]			/* 1st 2mb (.text & rodata) */
++
++	/* Second block: .data/RW/no execute */
++	adrp	x1, .data
++	add	x1, x1, :lo12:.data
++	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment */
++	and	x4, x1, x5			/* IA[29:21] */
++	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
++	ldr	x3, =(3 << 53) | 0x401		/* attr(AF, NX, block) */
++	orr	x1, x1, x3
++	str	x1, [x2]			/* 2nd 2mb (.data & .bss)*/
++
++	/* Setup/enable the MMU.  */
++
++	/*
++	 * TCR_EL1 - Translation Control Registers
++	 *
++	 * IPS[34:32] = 40-bit PA, 1TB
++	 * TG0[14:15] = b00 => 4kb granuale
++	 * ORGN0[11:10] = Outer: Normal, WB Read-Alloc No Write-Alloc Cacheable
++	 * IRGN0[9:8] = Inner: Normal, WB Read-Alloc No Write-Alloc Cacheable
++	 * T0SZ[5:0]  = 2^(64 - 25)
++	 *
++	 * The size of T0SZ controls what the initial lookup level. It
++	 * would be nice to start at level 2 but unfortunatly for a
++	 * flat-mapping on the virt machine we need to handle IA's
++	 * with at least 1gb range to see RAM. So we start with a
++	 * level 1 lookup.
++	 */
++	ldr	x0, = (2 << 32) | 25 | (3 << 10) | (3 << 8)
++	msr	tcr_el1, x0
++
++	mov	x0, #0xee			/* Inner/outer cacheable WB */
++	msr	mair_el1, x0
++	isb
++
++	/*
++	 * SCTLR_EL1 - System Control Register
++	 *
++	 * WXN[19] = 0 = no effect, Write does not imply XN (execute never)
++	 * I[12] = Instruction cachability control
++	 * SA[3] = SP alignment check
++	 * C[2] = Data cachability control
++	 * M[0] = 1, enable stage 1 address translation for EL0/1
++	 */
++	mrs	x0, sctlr_el1
++	ldr	x1, =0x100d			/* bits I(12) SA(3) C(2) M(0) */
++	bic	x0, x0, #(1 << 1)		/* clear bit A(1) */
++	bic	x0, x0, #(1 << 19)		/* clear WXN */
++	orr	x0, x0, x1			/* set bits */
++
++	dsb	sy
++	msr	sctlr_el1, x0
++	isb
++
++	/*
++	 * Enable FP registers. The standard C pre-amble will be
++	 * saving these and A-profile compilers will use AdvSIMD
++	 * registers unless we tell it not to.
++	*/
++	mrs	x0, cpacr_el1
++	orr	x0, x0, #(3 << 20)
++	msr	cpacr_el1, x0
++
++	/* Setup some stack space and enter the test code.
++	 * Assume everthing except the return value is garbage when we
++	 * return, we won't need it.
++	 */
++	adrp	x0, stack_end
++	add	x0, x0, :lo12:stack_end
++	mov	sp, x0
++	bl	main
++
++	/* pass return value to sys exit */
++	mov    x1, x0
++	ldr    x0, =0x20026 /* ADP_Stopped_ApplicationExit */
++	stp    x0, x1, [sp, #-16]!
++	mov    x1, sp
++	mov    x0, SYS_EXIT
++	semihosting_call
++	/* never returns */
 +
 +	/*
 +	 * Helper Functions
-+	 */
++	*/
 +
 +	/* Output a single character to serial port */
 +	.global __sys_outc
-+	.ent	__sys_outc
 +__sys_outc:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	load_pci_io $1
-+
-+	/* 
-+	 * while ((inb(com1Lsr) & 0x20) == 0)
-+	 *       continue;
-+	 */
-+1:	ldbu	$0, com1Lsr($1)
-+	and	$0, 0x20, $0
-+	beq	$0, 1b
-+
-+	/* outb(c, com1Thr); */
-+	stb	$16, com1Thr($1)
++	stp x0, x1, [sp, #-16]!
++	/* pass address of c on stack */
++	mov x1, sp
++	mov x0, SYS_WRITEC
++	semihosting_call
++	ldp x0, x1, [sp], #16
 +	ret
-+	.end	__sys_outc
-+
-+	/* Output a nul-terminated string to serial port */
-+	.global	__sys_outs
-+	.ent	__sys_outs
-+__sys_outs:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	load_pci_io $1
-+
-+	ldbu	$2, 0($16)
-+	beq	$2, 9f
-+
-+	/* 
-+	 * while ((inb(com1Lsr) & 0x20) == 0)
-+	 *       continue;
-+	 */
-+1:	ldbu	$0, com1Lsr($1)
-+	and	$0, 0x20, $0
-+	beq	$0, 1b
-+
-+	/* outb(c, com1Thr); */
-+	stb	$2, com1Thr($1)
-+
-+	addq	$16, 1, $16
-+	ldbu	$2, 0($16)
-+	bne	$2, 1b
-+
-+9:	ret
-+	.end	__sys_outs
-+
-+/*
-+ * Division routines that are normally in libc.
-+ *
-+ * These do not follow the C calling convention.  Arguments are in $24+$25,
-+ * the result is in $27.  Register $28 may be clobbered; everything else
-+ * must be saved.
-+ *
-+ * We store the remainder in $28, so that we can share code.
-+ *
-+ * We do not signal divide by zero.
-+ */
-+
-+/*
-+ * Unsigned 64-bit division.
-+ */
-+
-+	.globl	__divqu
-+	.ent	__divqu
-+__divqu:
-+	.frame	$sp, 48, $23
-+	subq	$sp, 48, $sp
-+	stq	$0, 0($sp)
-+	stq	$1, 8($sp)
-+	stq	$2, 16($sp)
-+	stq	$3, 24($sp)
-+	stq	$4, 32($sp)
-+	.prologue 0
-+
-+#define mask     $0
-+#define divisor  $1
-+#define compare  $2
-+#define tmp1     $3
-+#define tmp2     $4
-+#define quotient $27
-+#define modulus  $28
-+
-+	mov	$24, modulus
-+	mov	$25, divisor
-+	mov	$31, quotient
-+	mov	1, mask
-+	beq	$25, 9f
-+
-+	/* Shift left until divisor >= modulus.  */
-+1:	cmpult	divisor, modulus, compare
-+	blt	divisor, 2f
-+	addq	divisor, divisor, divisor
-+	addq	mask, mask, mask
-+	bne	compare, 1b
-+
-+2:	addq	quotient, mask, tmp2
-+	srl	mask, 1, mask
-+	cmpule	divisor, modulus, compare
-+	subq	modulus, divisor, tmp1
-+	cmovne	compare, tmp2, quotient
-+	srl	divisor, 1, divisor
-+	cmovne	compare, tmp1, modulus
-+	bne	mask, 2b
-+
-+9:	ldq	$0, 0($sp)
-+	ldq	$1, 8($sp)
-+	ldq	$2, 16($sp)
-+	ldq	$3, 24($sp)
-+	ldq	$4, 32($sp)
-+	addq	$sp, 48, $sp
-+	ret	$31, ($23), 1
-+
-+#undef mask
-+#undef divisor
-+#undef compare
-+#undef tmp1
-+#undef tmp2
-+#undef quotient
-+#undef modulus
-+
-+	.end	__divqu
-+
-+/*
-+ * Unsigned 64-bit remainder.
-+ * Note that __divqu above leaves the result in $28.
-+ */
-+
-+	.globl	__remqu
-+	.ent	__remqu
-+__remqu:
-+	.frame	$sp, 16, $23
-+	subq	$sp, 16, $sp
-+	stq	$23, 0($sp)
-+	.prologue 0
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	mov	$28, $27
-+	addq	$sp, 16, $sp
-+	ret	$31, ($23), 1
-+	.end	__remqu
-+
-+/*
-+ * Signed 64-bit division.
-+ */
-+
-+	.globl	__divqs
-+	.ent	__divqs
-+__divqs:
-+	.prologue 0
-+
-+	/* Common case: both arguments are positive.  */
-+	bis	$24, $25, $28
-+	bge	$28, __divqu
-+
-+	/* At least one argument is negative.  */
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* -a / b = a / -b = -(a / b) */
-+	subq	$31, $27, $23
-+	xor	$24, $25, $28
-+	cmovlt	$28, $23, $27
-+
-+	ldq	$23, 0($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divqs
-+
-+/*
-+ * Signed 64-bit remainder.
-+ */
-+
-+	.globl	__remqs
-+	.ent	__remqs
-+__remqs:
-+	.prologue 0
-+
-+	/* Common case: both arguments are positive.  */
-+	bis	$24, $25, $28
-+	bge	$28, __remqu
-+
-+	/* At least one argument is negative.  */
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* -a % b = -(a % b); a % -b = a % b.  */
-+	subq	$31, $28, $27
-+	cmovge	$24, $28, $27
-+
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remqs
-+
-+/*
-+ * Unsigned 32-bit division.
-+ */
-+
-+	.globl	__divlu
-+	.ent	__divlu
-+__divlu:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Zero extend and use the 64-bit routine.  */
-+	zap	$24, 0xf0, $24
-+	zap	$25, 0xf0, $25
-+	bsr	$23, __divqu
-+
-+	addl	$27, 0, $27
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divlu
-+
-+/*
-+ * Unsigned 32-bit remainder.
-+ */
-+
-+	.globl	__remlu
-+	.ent	__remlu
-+__remlu:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Zero extend and use the 64-bit routine.  */
-+	zap	$24, 0xf0, $24
-+	zap	$25, 0xf0, $25
-+	bsr	$23, __divqu
-+
-+	/* Recall that the remainder is returned in $28.  */
-+	addl	$28, 0, $27
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remlu
-+
-+/*
-+ * Signed 32-bit division.
-+ */
-+
-+	.globl	__divls
-+	.ent	__divls
-+__divls:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Sign extend.  */
-+	addl	$24, 0, $24
-+	addl	$25, 0, $25
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* Negate the unsigned result, if necessary.  */
-+	xor	$24, $25, $28
-+	subl	$31, $27, $23
-+	addl	$27, 0, $27
-+	addl	$28, 0, $28
-+	cmovlt	$28, $23, $27
-+
-+	ldq	$23, 0($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divls
-+
-+/*
-+ * Signed 32-bit remainder.
-+ */
-+
-+	.globl	__remls
-+	.ent	__remls
-+__remls:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Sign extend.  */
-+	addl	$24, 0, $24
-+	addl	$25, 0, $25
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* Negate the unsigned result, if necessary.  */
-+	subl	$31, $28, $27
-+	addl	$28, 0, $28
-+	cmovge	$24, $28, $27
-+
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remls
 +
 +	.data
-+	.p2align 4
++	.align	12
++
++	/* Translation table
++	 * @4k granuale: 9 bit lookup, 512 entries
++	*/
++ttb:
++	.space	4096, 0
++
++	.align	12
++ttb_stage2:
++	.space	4096, 0
++
++	.align	12
 +stack:
-+	.skip	65536
-+$stack_end:
-+	.type	stack,@object
-+	.size	stack, . - stack
-diff --git a/tests/tcg/alpha/system/kernel.ld b/tests/tcg/alpha/system/kernel.ld
++	.space 65536, 0
++stack_end:
+diff --git a/tests/tcg/aarch64/system/kernel.ld b/tests/tcg/aarch64/system/kernel.ld
 new file mode 100644
-index 00000000000..d2ac6ecfeb8
+index 00000000000..7b3a76dcbf3
 --- /dev/null
-+++ b/tests/tcg/alpha/system/kernel.ld
-@@ -0,0 +1,30 @@
-+ENTRY(_start)
++++ b/tests/tcg/aarch64/system/kernel.ld
+@@ -0,0 +1,24 @@
++ENTRY(__start)
 +
 +SECTIONS
 +{
-+    /* Linux kernel legacy start address.  */
-+    . = 0xfffffc0000310000;
-+    _text = .;
++    /* virt machine, RAM starts at 1gb */
++    . = (1 << 30);
 +    .text : {
 +        *(.text)
 +    }
 +    .rodata : {
 +        *(.rodata)
 +    }
-+    _etext = .;
-+
-+    . = ALIGN(8192);
-+    _data = .;
-+    .got : {
-+        *(.got)
-+    }
++    /* align r/w section to next 2mb */
++    . = ALIGN(1 << 21);
 +    .data : {
-+	*(.sdata)
 +        *(.data)
 +    }
-+    _edata = .;
 +    .bss : {
 +        *(.bss)
 +    }
-+    _end = .;
++    /DISCARD/ : {
++        *(.ARM.attributes)
++    }
 +}
 -- 
 2.20.1

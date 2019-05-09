@@ -1,129 +1,267 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1015602wrh;
-        Thu, 9 May 2019 10:03:20 -0700 (PDT)
-X-Received: by 2002:a63:6fcf:: with SMTP id k198mr7001432pgc.158.1557421400595;
-        Thu, 09 May 2019 10:03:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557421400; cv=none;
-        d=google.com; s=arc-20160816;
-        b=d1Dq0SfI1ZSMcc978TuYG7MY05G7PJSiqZJaycKeLiksLHtFUt8DPgo2th8BiC9Ba8
-         Uyz3bvodXoj+OfIbdJN+LMVP11WdDXE6hasobb1rINIAA4H2jDhnior6EwSBw0VGluup
-         H33eMPC7ZV4uiwRFqQh3ccz9uiTRYFciKV5mQIYscwyjpgUPmvfUEbkFoW807vrVZehb
-         My8mNjHap6p4T2B1lw02W1yvQWjXLNE3ZOWcvl4RwoKbY2+MV6llp7vzSVZdTftzDxiG
-         efzMQOQSqtYu4EHIa9zAxn/YU0/QjND8utmm3AlgXUxGnUhYP4E+rxZCKDso9udZnNa8
-         JOiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject:sender:dkim-signature;
-        bh=IIuO5kDuhc+1kljyLHIpwp4aYnt0QxoweXrTUyYLx0E=;
-        b=UB24wfMBXznJw6p+dw3T9dQDY1T6LnMY1jvt8q0vbflM7QeGqecGRhajuxNw5TXP3q
-         vfZu+9M7AyXBAkUInCpWMujWUJDwUKc2ic/n218/5DEYvzGzYNAVtYgBx+9PS74lPuPh
-         jgdcRIK5clOXrqsMrEoFAtKug1IATH7sAIth38/JQ5AM2bFIsaw8rs3dHLaSr4xbJG2+
-         z4MhFjD4e/9Ji07r3lb16L43qrOZY/cMt+wZh06Zt/EbQgNysGOSsxKom512lKIqTKfW
-         cGpRNeX5lr0NVBRMyrh06ICLgYoVlZeoMm2P2Jn7DKB6jKj4R7cSesqQNWwEzkUHc/+T
-         xl7g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ze0YLmR0;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f3sor2861375pgv.57.2019.05.09.10.03.20
-        (Google Transport Security);
-        Thu, 09 May 2019 10:03:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ze0YLmR0;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=IIuO5kDuhc+1kljyLHIpwp4aYnt0QxoweXrTUyYLx0E=;
-        b=Ze0YLmR0td2vHu0oL1PM56kdXJiChCcmAr9bKQzUXjxZSo6y2BmN60KKXsy6b6gdFM
-         sNid6lrruXvFIR4q4DQamak1F+1Trc+fIQBdmHfZe7m1KQv5HTKBbpf/sDf4/H4TC8K4
-         GljQvm40WkC/9+f75fT5C7oCD79dK4LSv/qSijvmgIlLYRztsc2rhqLLWniUeFbm7l3n
-         mj2LHbTIGO64Y/joaswwZPNB7HNordRPMDwcVDEVSnlzOVzO/DBcraqV1yc539sMgbdv
-         fZkofFVii272dxIs2/jGRDqnfIlBgEiPyygESv27TzcEbXCTKF7H/TIYwnrNd2JUj+U/
-         TDJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=IIuO5kDuhc+1kljyLHIpwp4aYnt0QxoweXrTUyYLx0E=;
-        b=dWKpi70ro8/bZ4CE1UW3qmkr65Yql/Hj7ujuydv2RjZufwCF/jT4pLy7H+C6quHL9D
-         cUXrrn9zxigDyeXpEV1s2Cct903V0FlGeVPkt8rd3t6glt2o7uLAL43+tggiD6fTuGF0
-         J1oWxQpPeAbcsYn8ryC4XBmR5f1VpHPushxxVzBp7cWmuTt/Rhrv8kJm/h7NJIyvfhMB
-         ofT4SGaTAem+XX6Sw3KE1WjS7nTES2ET5Nv/dKGwDtsDPpMzUapOyCT0y1CFsp/IiQgY
-         5unX5DKCHnEC+wddHQZY2tE3V6TWyEgsBkta/sbPfcvW6KW83qfobxGFV7T6XaG3i941
-         ufSA==
-X-Gm-Message-State: APjAAAVEy87vV8HYmkQ7FcrIDBIriP0Q63Rdd/CXD97DENCUJaUKCGNN
-	LbxZo5pJllo0xKu5ZFxii8I=
-X-Google-Smtp-Source: APXvYqylwXxRxLhEqHkAQ2znYIVqOrIGWyH/7aK/puSfE3RASjQK1Jkqm7HoXMdzVptvOnVcpLr0Zw==
-X-Received: by 2002:a63:b1d:: with SMTP id 29mr6993073pgl.103.1557421399819;
-        Thu, 09 May 2019 10:03:19 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from [172.31.99.192] (50-248-210-99-static.hfc.comcastbusiness.net. [50.248.210.99])
-        by smtp.googlemail.com with ESMTPSA id l9sm2886206pgq.48.2019.05.09.10.03.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 May 2019 10:03:18 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH v1 10/23] tests/tcg/multiarch: expand system memory test
- to cover more
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b2sm3085172wrt.20.2019.05.09.10.05.22
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 09 May 2019 10:05:23 -0700 (PDT)
+Received: from zen.linaroharston. (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 77E941FFAA;
+	Thu,  9 May 2019 17:59:14 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	qemu-block@nongnu.org (open list:Block layer core)
+Subject: [PATCH  v1 22/23] tests/qemu-iotests: re-format output to for make check-block
+Date: Thu,  9 May 2019 17:59:10 +0100
+Message-Id: <20190509165912.10512-23-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190509165912.10512-1-alex.bennee@linaro.org>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
- <20190509165912.10512-11-alex.bennee@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
- mQENBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
- n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
- rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
- Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
- n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
- AAG0I1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+iQFBBBMBAgArAhsDBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
- cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
- Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
- eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
- LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
- Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVuQENBFGuLC8BCACyEx3x
- 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
- 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
- I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
- VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
- +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAGJASUEGAECAA8CGwwF
- AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
- Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
- prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
- /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
- jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
- VcROBqvtH3ecaIL9iw==
-Message-ID: <fa94b57f-12e1-62c4-e67c-f83667adea59@twiddle.net>
-Date: Thu, 9 May 2019 10:03:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190509165912.10512-11-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Zy1gGbwUr03e
+X-TUID: gTo/b6ddWXMd
 
-On 5/9/19 9:58 AM, Alex Bennée wrote:
-> +memory: CFLAGS+=-DCHECK_UNALIGNED
+This attempts to clean-up the output to better match the output of the
+rest of the QEMU check system. This includes:
 
-I suggest -DCHECK_UNALIGNED=1 here, and elsewhere -DCHECK_UNALIGNED=0, and then
+  - formatting as "  TEST    iotest: nnn"
+  - calculating time diff at the end
+  - only dumping config on failure
 
-#ifndef CHECK_UNALIGNED
-# error "Target does not specify CHECK_UNALIGNED"
-#endif
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20190503143904.31211-1-alex.bennee@linaro.org>
+---
+ tests/qemu-iotests/check | 101 +++++++++++++++++++++++----------------
+ 1 file changed, 61 insertions(+), 40 deletions(-)
 
-Then you don't need conditional compilation within the tests as well.
-
-
-r~
+diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
+index 922c5d1d3d3..fb239967a32 100755
+--- a/tests/qemu-iotests/check
++++ b/tests/qemu-iotests/check
+@@ -27,6 +27,7 @@ bad=""
+ notrun=""
+ casenotrun=""
+ interrupt=true
++pretty=false
+ 
+ # by default don't output timestamps
+ timestamp=${TIMESTAMP:=false}
+@@ -88,6 +89,22 @@ _full_platform_details()
+     echo "$os/$platform $host $kernel"
+ }
+ 
++_full_env_details()
++{
++    cat <<EOF
++QEMU          -- "$QEMU_PROG" $QEMU_OPTIONS
++QEMU_IMG      -- "$QEMU_IMG_PROG" $QEMU_IMG_OPTIONS
++QEMU_IO       -- "$QEMU_IO_PROG" $QEMU_IO_OPTIONS
++QEMU_NBD      -- "$QEMU_NBD_PROG" $QEMU_NBD_OPTIONS
++IMGFMT        -- $FULL_IMGFMT_DETAILS
++IMGPROTO      -- $IMGPROTO
++PLATFORM      -- $FULL_HOST_DETAILS
++TEST_DIR      -- $TEST_DIR
++SOCKET_SCM_HELPER -- $SOCKET_SCM_HELPER
++
++EOF
++}
++
+ # $1 = prog to look for
+ set_prog_path()
+ {
+@@ -256,6 +273,7 @@ other options
+     -o options          -o options to pass to qemu-img create/convert
+     -T                  output timestamps
+     -c mode             cache mode
++    -pretty             pretty print output for make check
+ 
+ testlist options
+     -g group[,group...]        include tests from these groups
+@@ -403,7 +421,10 @@ testlist options
+                 command -v xxdiff >/dev/null 2>&1 && diff=xxdiff
+             fi
+             ;;
+-
++        -pretty)   # pretty print output
++            pretty=true
++            xpand=false
++            ;;
+         -n)        # show me, don't do it
+             showme=true
+             xpand=false
+@@ -633,12 +654,6 @@ _wallclock()
+     date "+%H %M %S" | awk '{ print $1*3600 + $2*60 + $3 }'
+ }
+ 
+-_timestamp()
+-{
+-    now=$(date "+%T")
+-    printf %s " [$now]"
+-}
+-
+ _wrapup()
+ {
+     if $showme
+@@ -704,23 +719,25 @@ END        { if (NR > 0) {
+ 
+ trap "_wrapup; exit \$status" 0 1 2 3 15
+ 
++# Report the test result, optionally pretty printing the result
++# args: sequence, results
++_report_test_result()
++{
++    if $pretty; then
++        echo "  TEST    iotest: $1 $2"
++    else
++        echo "$1 $2"
++    fi
++}
++
+ [ -f $TIMESTAMP_FILE ] || touch $TIMESTAMP_FILE
+ 
+ FULL_IMGFMT_DETAILS=$(_full_imgfmt_details)
+ FULL_HOST_DETAILS=$(_full_platform_details)
+ 
+-cat <<EOF
+-QEMU          -- "$QEMU_PROG" $QEMU_OPTIONS
+-QEMU_IMG      -- "$QEMU_IMG_PROG" $QEMU_IMG_OPTIONS
+-QEMU_IO       -- "$QEMU_IO_PROG" $QEMU_IO_OPTIONS
+-QEMU_NBD      -- "$QEMU_NBD_PROG" $QEMU_NBD_OPTIONS
+-IMGFMT        -- $FULL_IMGFMT_DETAILS
+-IMGPROTO      -- $IMGPROTO
+-PLATFORM      -- $FULL_HOST_DETAILS
+-TEST_DIR      -- $TEST_DIR
+-SOCKET_SCM_HELPER -- $SOCKET_SCM_HELPER
+-
+-EOF
++if ! $pretty; then
++    _full_env_details
++fi
+ 
+ seq="check"
+ 
+@@ -728,8 +745,10 @@ seq="check"
+ 
+ for seq in $list
+ do
+-    err=false
+-    printf %s "$seq"
++    err=false     # error flag
++    reason=""     # reason for error
++    results=""    # results for non-error/skip
++
+     if [ -n "$TESTS_REMAINING_LOG" ] ; then
+         sed -e "s/$seq//" -e 's/  / /' -e 's/^ *//' $TESTS_REMAINING_LOG > $TESTS_REMAINING_LOG.tmp
+         mv $TESTS_REMAINING_LOG.tmp $TESTS_REMAINING_LOG
+@@ -738,7 +757,6 @@ do
+ 
+     if $showme
+     then
+-        echo
+         continue
+     elif [ -f expunged ] && $expunge && egrep "^$seq([         ]|\$)" expunged >/dev/null
+     then
+@@ -753,17 +771,11 @@ do
+         # really going to try and run this one
+         #
+         rm -f $seq.out.bad
+-        lasttime=$(sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE)
+-        if [ "X$lasttime" != X ]; then
+-                printf %s " ${lasttime}s ..."
+-        else
+-                printf "        "        # prettier output with timestamps.
+-        fi
+         rm -f core $seq.notrun
+         rm -f $seq.casenotrun
+ 
+         start=$(_wallclock)
+-        $timestamp && printf %s "        [$(date "+%T")]"
++        $timestamp && echo -n "$seq [$(date "+%T")] ->"
+ 
+         if [ "$(head -n 1 "$source_iotests/$seq")" == "#!/usr/bin/env python" ]; then
+             run_command="$PYTHON $seq"
+@@ -781,26 +793,24 @@ do
+                     $run_command >$tmp.out 2>&1)
+         fi
+         sts=$?
+-        $timestamp && _timestamp
++        $timestamp && echo " [$(date "+%T")]"
+         stop=$(_wallclock)
+ 
+         if [ -f core ]
+         then
+-            printf " [dumped core]"
+             mv core $seq.core
++            reason="[dumped core] $seq.core"
+             err=true
+         fi
+ 
+         if [ -f $seq.notrun ]
+         then
+-            $timestamp || printf " [not run] "
+-            $timestamp && echo " [not run]" && printf %s "        $seq -- "
+-            cat $seq.notrun
+-            notrun="$notrun $seq"
++            # overwrites timestamp output
++            results="[not run] $(cat $seq.notrun)"
+         else
+             if [ $sts -ne 0 ]
+             then
+-                printf %s " [failed, exit status $sts]"
++                reason=$(printf %s "[failed, exit status $sts]")
+                 err=true
+             fi
+ 
+@@ -821,22 +831,29 @@ do
+ 
+             if [ ! -f "$reference" ]
+             then
+-                echo " - no qualified output"
++                reason=" - no qualified output"
+                 err=true
+             else
+                 if diff -w "$reference" $tmp.out >/dev/null 2>&1
+                 then
+-                    echo ""
+                     if $err
+                     then
+                         :
+                     else
+-                        echo "$seq $(expr $stop - $start)" >>$tmp.time
++                        lasttime=$(sed -n -e "/^$seq /s/.* //p" <$TIMESTAMP_FILE)
++                        thistime=$(expr $stop - $start)
++                        echo "$seq $thistime" >>$tmp.time
++
++                        if [ "X$lasttime" != X ]; then
++                            results="${results}${thistime}s (last ${lasttime}s)"
++                        else
++                            results="${results}${thistime}s"
++                        fi
+                     fi
+                 else
+-                    echo " - output mismatch (see $seq.out.bad)"
+                     mv $tmp.out $seq.out.bad
+                     $diff -w "$reference" "$PWD"/$seq.out.bad
++                    reason=" - output mismatch (see $seq.out.bad)"
+                     err=true
+                 fi
+             fi
+@@ -852,9 +869,13 @@ do
+     #
+     if $err
+     then
++        _report_test_result $seq "FAILED $reason"
++        _full_env_details
+         bad="$bad $seq"
+         n_bad=$(expr $n_bad + 1)
+         quick=false
++    else
++        _report_test_result $seq "$results"
+     fi
+     [ -f $seq.notrun ] || try=$(expr $try + 1)
+ 
+-- 
+2.20.1

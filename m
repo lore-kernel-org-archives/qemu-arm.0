@@ -1,167 +1,103 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p24sm1748448wma.18.2019.05.09.10.05.22
+        by smtp.gmail.com with ESMTPSA id g10sm3400523wrw.80.2019.05.09.10.05.23
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 10:05:23 -0700 (PDT)
+        Thu, 09 May 2019 10:05:24 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 8F2D71FFAB;
-	Thu,  9 May 2019 17:59:14 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 8F13C1FFA5;
+	Thu,  9 May 2019 17:59:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v1 23/23] tests: Run the iotests during "make check" again
-Date: Thu,  9 May 2019 17:59:11 +0100
-Message-Id: <20190509165912.10512-24-alex.bennee@linaro.org>
+	Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>,
+	qemu-block@nongnu.org (open list:Block layer core)
+Subject: [PATCH  v1 18/23] tests/qemu-iotests: Do not hard-code the path to bash
+Date: Thu,  9 May 2019 17:59:06 +0100
+Message-Id: <20190509165912.10512-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190509165912.10512-1-alex.bennee@linaro.org>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: KN9JCDb41L1+
+X-TUID: BlFt5pN3pK2R
 
 From: Thomas Huth <thuth@redhat.com>
 
-People often forget to run the iotests before submitting patches or
-pull requests - this is likely due to the fact that we do not run the
-tests during our mandatory "make check" tests yet. Now that we've got
-a proper "auto" group of iotests that should be fine to run in every
-environment, we can enable the iotests during "make check" again by
-running the "auto" tests by default from the check-block.sh script.
+bash is installed in a different directory on non-Linux systems like
+FreeBSD. Do not hard-code /bin/bash here so that the tests can run
+there, too.
 
-Some cases still need to be checked first, though: iotests need bash
-and GNU sed (otherwise they fail), and if gprof is enabled, it spoils
-the output of some test cases causing them to fail. So if we detect
-that one of the required programs is missing or that gprof is enabled,
-we still have to skip the iotests to avoid failures.
-
-And finally, since we are using check-block.sh now again, this patch also
-removes the qemu-iotests-quick.sh script since we do not need that anymore
-(and having two shell wrapper scripts around the block tests seem
-rather confusing than helpful).
-
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190502084506.8009-8-thuth@redhat.com>
-[AJB: add -pretty to check-block.sh]
+Message-Id: <20190502084506.8009-4-thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/Makefile.include      |  8 +++----
- tests/check-block.sh        | 44 ++++++++++++++++++++++++++++---------
- tests/qemu-iotests-quick.sh |  8 -------
- 3 files changed, 38 insertions(+), 22 deletions(-)
- delete mode 100755 tests/qemu-iotests-quick.sh
+ tests/qemu-iotests/239 | 2 +-
+ tests/qemu-iotests/240 | 2 +-
+ tests/qemu-iotests/241 | 2 +-
+ tests/qemu-iotests/243 | 2 +-
+ tests/qemu-iotests/244 | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 60de085ee1f..e865daaa897 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -140,7 +140,7 @@ check-unit-y += tests/test-uuid$(EXESUF)
- check-unit-y += tests/ptimer-test$(EXESUF)
- check-unit-y += tests/test-qapi-util$(EXESUF)
- 
--check-block-$(CONFIG_POSIX) += tests/qemu-iotests-quick.sh
-+check-block-$(CONFIG_POSIX) += tests/check-block.sh
- 
- # All QTests for now are POSIX-only, but the dependencies are
- # really in libqtest, not in the testcases themselves.
-@@ -1077,8 +1077,8 @@ clean-tcg: $(CLEAN_TCG_TARGET_RULES)
- 
- QEMU_IOTESTS_HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) = tests/qemu-iotests/socket_scm_helper$(EXESUF)
- 
--.PHONY: check-tests/qemu-iotests-quick.sh
--check-tests/qemu-iotests-quick.sh: tests/qemu-iotests-quick.sh qemu-img$(EXESUF) qemu-io$(EXESUF) qemu-nbd$(EXESUF) $(QEMU_IOTESTS_HELPERS-y)
-+.PHONY: check-tests/check-block.sh
-+check-tests/check-block.sh: tests/check-block.sh qemu-img$(EXESUF) qemu-io$(EXESUF) qemu-nbd$(EXESUF) $(QEMU_IOTESTS_HELPERS-y)
- 	$<
- 
- .PHONY: $(patsubst %, check-%, $(check-qapi-schema-y))
-@@ -1152,7 +1152,7 @@ check-acceptance: check-venv $(TESTS_RESULTS_DIR)
- check-qapi-schema: $(patsubst %,check-%, $(check-qapi-schema-y)) check-tests/qapi-schema/doc-good.texi
- check-qtest: $(patsubst %,check-qtest-%, $(QTEST_TARGETS))
- check-block: $(patsubst %,check-%, $(check-block-y))
--check: check-qapi-schema check-unit check-softfloat check-qtest check-decodetree
-+check: check-qapi-schema check-unit check-softfloat check-qtest check-decodetree check-block
- check-clean:
- 	rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS_HELPERS-y)
- 	rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_LIST), $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
-diff --git a/tests/check-block.sh b/tests/check-block.sh
-index f3d12fd602d..9f636feccb2 100755
---- a/tests/check-block.sh
-+++ b/tests/check-block.sh
-@@ -1,24 +1,48 @@
- #!/bin/sh
- 
--FORMAT_LIST="raw qcow2 qed vmdk vpc"
-+# Honor the SPEED environment variable, just like we do it for the qtests.
-+if [ "$SPEED" = "slow" ]; then
-+    format_list="raw qcow2"
-+    group=
-+elif [ "$SPEED" = "thorough" ]; then
-+    format_list="raw qcow2 qed vmdk vpc"
-+    group=
-+else
-+    format_list=qcow2
-+    group="-g auto"
-+fi
-+
- if [ "$#" -ne 0 ]; then
--    FORMAT_LIST="$@"
-+    format_list="$@"
-+fi
-+
-+if grep -q "TARGET_GPROF=y" *-softmmu/config-target.mak 2>/dev/null ; then
-+    echo "GPROF is enabled ==> Not running the qemu-iotests."
-+    exit 0
- fi
- 
--export QEMU_PROG="$PWD/x86_64-softmmu/qemu-system-x86_64"
--export QEMU_IMG_PROG="$PWD/qemu-img"
--export QEMU_IO_PROG="$PWD/qemu-io"
-+if [ -z "$(find . -name 'qemu-system-*' -print)" ]; then
-+    echo "No qemu-system binary available ==> Not running the qemu-iotests."
-+    exit 0
-+fi
-+
-+if ! command -v bash >/dev/null 2>&1 ; then
-+    echo "bash not available ==> Not running the qemu-iotests."
-+    exit 0
-+fi
- 
--if [ ! -x $QEMU_PROG ]; then
--    echo "'make check-block' requires qemu-system-x86_64"
--    exit 1
-+if ! (sed --version | grep 'GNU sed') > /dev/null 2>&1 ; then
-+    if ! command -v gsed >/dev/null 2>&1; then
-+        echo "GNU sed not available ==> Not running the qemu-iotests."
-+        exit 0
-+    fi
- fi
- 
- cd tests/qemu-iotests
- 
- ret=0
--for FMT in $FORMAT_LIST ; do
--    ./check -T -nocache -$FMT || ret=1
-+for fmt in $format_list ; do
-+    ./check -pretty -$fmt $group || ret=1
- done
- 
- exit $ret
-diff --git a/tests/qemu-iotests-quick.sh b/tests/qemu-iotests-quick.sh
-deleted file mode 100755
-index 0e554bb9724..00000000000
---- a/tests/qemu-iotests-quick.sh
-+++ /dev/null
-@@ -1,8 +0,0 @@
--#!/bin/sh
--
--cd tests/qemu-iotests
--
--ret=0
--TEST_DIR=${TEST_DIR:-/tmp/qemu-iotests-quick-$$} ./check -T -qcow2 -g quick || ret=1
--
--exit $ret
+diff --git a/tests/qemu-iotests/239 b/tests/qemu-iotests/239
+index 6f085d573da..b0991ffe594 100755
+--- a/tests/qemu-iotests/239
++++ b/tests/qemu-iotests/239
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #
+ # Test case for dmg
+ #
+diff --git a/tests/qemu-iotests/240 b/tests/qemu-iotests/240
+index 65cc3b39b13..d3e663ed65c 100755
+--- a/tests/qemu-iotests/240
++++ b/tests/qemu-iotests/240
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #
+ # Test hot plugging and unplugging with iothreads
+ #
+diff --git a/tests/qemu-iotests/241 b/tests/qemu-iotests/241
+index 017a736aaba..58b64ebf41f 100755
+--- a/tests/qemu-iotests/241
++++ b/tests/qemu-iotests/241
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #
+ # Test qemu-nbd vs. unaligned images
+ #
+diff --git a/tests/qemu-iotests/243 b/tests/qemu-iotests/243
+index 5838c6e89cb..e563761307d 100755
+--- a/tests/qemu-iotests/243
++++ b/tests/qemu-iotests/243
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #
+ # Test qcow2 preallocation
+ #
+diff --git a/tests/qemu-iotests/244 b/tests/qemu-iotests/244
+index d8e71223058..13978f93d24 100755
+--- a/tests/qemu-iotests/244
++++ b/tests/qemu-iotests/244
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ #
+ # Test qcow2 with external data files
+ #
 -- 
 2.20.1

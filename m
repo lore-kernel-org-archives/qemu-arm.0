@@ -1,48 +1,41 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id z5sm7894192wre.70.2019.05.09.09.59.16
+        by smtp.gmail.com with ESMTPSA id u8sm1605915wmc.14.2019.05.09.09.59.14
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 09:59:18 -0700 (PDT)
+        Thu, 09 May 2019 09:59:17 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 26F8E1FF9D;
-	Thu,  9 May 2019 17:59:13 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id B0FDA1FF98;
+	Thu,  9 May 2019 17:59:12 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH  v1 13/23] Makefile: fix coverage-report reference to BUILD_DIR
-Date: Thu,  9 May 2019 17:59:01 +0100
-Message-Id: <20190509165912.10512-14-alex.bennee@linaro.org>
+Subject: [PATCH  v1 08/23] tests/tcg/multiarch: move the system memory test
+Date: Thu,  9 May 2019 17:58:56 +0100
+Message-Id: <20190509165912.10512-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190509165912.10512-1-alex.bennee@linaro.org>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xtK0ElKEb3ez
+X-TUID: gn8qJ2BaAqu2
 
-Commit 337f2311f actually claimed to do this in the commit log but
-didn't actually. Oops.
+There is nothing inherently architecture specific about the memory
+test although we may have to manage different restrictions of
+unaligned access across architectures.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/{i386 => multiarch}/system/memory.c | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename tests/tcg/{i386 => multiarch}/system/memory.c (100%)
 
-diff --git a/Makefile b/Makefile
-index a971247cac8..78d83244849 100644
---- a/Makefile
-+++ b/Makefile
-@@ -995,7 +995,7 @@ $(filter %.1 %.7 %.8,$(DOCS)): scripts/texi2pod.pl
- %/coverage-report.html:
- 	@mkdir -p $*
- 	$(call quiet-command,\
--		gcovr -r $(SRC_PATH) --object-directory $(BUILD_PATH) \
-+		gcovr -r $(SRC_PATH) --object-directory $(BUILD_DIR) \
- 		-p --html --html-details -o $@, \
- 		"GEN", "coverage-report.html")
- 
+diff --git a/tests/tcg/i386/system/memory.c b/tests/tcg/multiarch/system/memory.c
+similarity index 100%
+rename from tests/tcg/i386/system/memory.c
+rename to tests/tcg/multiarch/system/memory.c
 -- 
 2.20.1

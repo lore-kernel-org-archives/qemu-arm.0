@@ -1,34 +1,34 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1055047wrh;
-        Thu, 9 May 2019 10:40:10 -0700 (PDT)
-X-Received: by 2002:a5d:55cc:: with SMTP id i12mr4162009wrw.179.1557423610407;
-        Thu, 09 May 2019 10:40:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557423610; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1056488wrh;
+        Thu, 9 May 2019 10:41:40 -0700 (PDT)
+X-Received: by 2002:adf:f686:: with SMTP id v6mr4341558wrp.246.1557423700733;
+        Thu, 09 May 2019 10:41:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557423700; cv=none;
         d=google.com; s=arc-20160816;
-        b=uRdkqs0w/rQq5YWm8wM2zDBXhAIEZ5+tCoTKfMGrjJ6nR9G30CrZxkyvAYTDxFZjcD
-         hxrcGSRYyQZXeitCF0QBZPporEU6nLSrIdHwFQIx2ZXISNEKcg6F7QIo66nfv29SP6O8
-         yk3vyc7ccbKhjfhmD+TmzDgXD+VgH02jPMjOKZ7fyVVNWk9OzseT2irI2NjRXgPK4l/V
-         ctHkJcqPqiFG7Zd+l55vtsvzPZNlqqoamoRj908FZgrQ/Etn+yAsxZqJQw9502aYghMh
-         BlK5sNIwcx/5VqeRVJRcfpizrLlrSMCAtaUa1leJ+LRY1g5Je/hBk/+lGX55DqLuq5lt
-         arTA==
+        b=XNG0q88aMgLst0WUjSBCI3aQUzeWmoVNpzBfoBv/d1hIUKCSLKtR5kqESbL3hhSAUZ
+         tUoDN7AR+zDUAxvHQz7DxqFuYSk/oXPcr87vQp1lj8LJSd1i7cBmrH7M7eiyiUARYq98
+         aEbY//7HBB0uR7JYW1ZCvhuFScuMrv850rB1v4hQzTqUeQpXXnZGHPwwy8xFcFITtom6
+         5BmfD6OzB0fGq82H46It5QwHPmoU22EkPZ44JdwwyFQ4v+NPhVpOmSdeBfOFl7PupzUD
+         q4OHkvlKu6F/dFYCflo3OkvE/qs5/D84zKrgjL3IzX+BFq6P/+mPtxYpx5Fy3aBxOKoJ
+         B08Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=fevb3l/p5zVEWGTm7Zi/zkky6bCKPzqheYXEJdK+uUA=;
-        b=AtG7itWLPRa/xeVVgNFWlMG/SGt0iTkUSEnPK/pyfsNaBIoDlzBlA42CS3OFOREiLM
-         VovEyirmmky4iOaj9iODD9egDNmVYgGB42i6h9r7aLx4m9QbEZmwlUs+5Ayv6Ebf3Pth
-         zb/7t7P8DslTJ2C9eZLb7NO0UYt5uWgOJlsMsmgmZUp37VbB30HUdSKt4qTN/5cG9/EW
-         c98/ObANt8m6q8X6oRlPy3l8YTk2LBL60i82z7M3AZB1Na1DFqZ+z9vrb5ZlL7mp3yWH
-         /LSWL2+IpQeED6g4OxPajQYq8xDvsNmJuN1bppj5vb7ooD1bVNY746Uh+CAuP1174/Se
-         vQMQ==
+        bh=yBWqIVlYzQPBJGo2C/fDVtzjo9zv+2KOatBDLPbG498=;
+        b=fP9IRSef4E+kRKnEPS2jby8EcAHu0ZtExojifLhvRGWl5D9/MDm8QDHdu05wVHlTHZ
+         Fa+Q45Pg1hWRwGmSLltx4DB8SlQMaUQfr+/onib3OeLlhl3wUWDBR8hal4pBDP9EifTy
+         HM8hX5Yw9Lu9a4IA1DEfMBrQ3d2IcWYrVCK4VKF3xUnagIa1cKhP7HMunvJaGqL0Cp8Z
+         Bhomr4QaQi62i9yP4NeAtnB9sCAUATlXs/FT66ciYh+REV4XglaPycztxdVXdJhsJxxX
+         Px3GegZoeTSR83b8yQkUvfR8EYFgupw6ZnzyJAhIxy7TQ6uLT/Wo76VjGgTFTEExFlf8
+         lFnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m21sor1767725wmg.13.2019.05.09.10.40.10
+        by mx.google.com with SMTPS id q26sor1784385wmf.1.2019.05.09.10.41.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 09 May 2019 10:40:10 -0700 (PDT)
+        Thu, 09 May 2019 10:41:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -38,115 +38,124 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=fevb3l/p5zVEWGTm7Zi/zkky6bCKPzqheYXEJdK+uUA=;
-        b=Lhb/+/syP1Jipx/hIsvyLZgqXvyCFb3kIBBn8fSjJdfCx16ngSDlm+JU6BxiAQg0y3
-         7bKZxqKomMOkP2F0nbYE53ADZ+aUwy9kvAYnqTDFzKAxvG/ydBXCKIIqpR9nK9nbRZpB
-         HB9DPH9unTb7XL9WpCmyJhhR8Lg5Re3/txgy+dcwxmYxSJz7+ym9aoUHK+sdYO0930wc
-         UCbanEEaVmyLFp52Wej/sqayI49QcdX/NQ0ysctMjgBPk+sVjeVZZqRdhOf6U8AGO4Hv
-         e9vkDFVEGJfDF+NbaK99PMkyLgQuJBWww0b3dAn7xayz7zfqRQGwmzhubGaKmnEhDJrj
-         aNIw==
-X-Gm-Message-State: APjAAAWU2b0wtOvSJS+t3CHGfpIjGbEpaN0dfxIV++9x5Hg/vKrf6RdW
-	Kzxfd30LD+kmYhJ8GR7EgpjG9w==
-X-Google-Smtp-Source: APXvYqxo9tb18hOiu2nizx1mU2PxBMC9v4YJIlPg148ZlOJyCi4eWAJ3a/nELO2XiYhT1dekEilZzA==
-X-Received: by 2002:a1c:7518:: with SMTP id o24mr3815304wmc.42.1557423610191;
-        Thu, 09 May 2019 10:40:10 -0700 (PDT)
+        bh=yBWqIVlYzQPBJGo2C/fDVtzjo9zv+2KOatBDLPbG498=;
+        b=cbW3/sWJuqjGhB8TW/roTwjrnPpjeAt1+vzHkZBs1MUDBdFPCiefgTamtHZXEMav/1
+         GKq3dMF7xtbibswIh97x944S7BkGeQhaIkGU8/L6ViBonGzCkdZAhIY8L8jHMVYWiE7N
+         UDmNvdBjcO7mm7zubO+LhS79Bse3b0Kn5ZcTy4YwHBphr1UNOovGyoKIzf1EPU4NCHpL
+         6/OrWFIp/AJlo0gJuaWem81zM0dbbsNa2pdTntib2n1901ehSESHInMEdf+05PkFrN7G
+         lx/33IlfQHi5plynpLuDoI5VU5caV1P2BQlsB38aV2R2+VtKVW7z19uMTyKA9RvY7zrE
+         L5Zw==
+X-Gm-Message-State: APjAAAUD8TaKlgnAzyk4oYvxjvdjcvOziojsLA4Rd0msVL7YbNwTwVwn
+	z1WdaGMQhZ440uimBxynTiVI1w==
+X-Google-Smtp-Source: APXvYqxgqOYxuQT1Wd1mIbBcZdP8Uu97209LlfieXlZXkhSccxuGuqaFpBeg8VUD//bONAUjGZB13w==
+X-Received: by 2002:a1c:cc15:: with SMTP id h21mr3817090wmb.85.1557423700509;
+        Thu, 09 May 2019 10:41:40 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net. [88.21.103.193])
-        by smtp.gmail.com with ESMTPSA id h12sm1674857wrq.95.2019.05.09.10.40.09
+        by smtp.gmail.com with ESMTPSA id y6sm1877103wrw.60.2019.05.09.10.41.39
         (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 May 2019 10:40:09 -0700 (PDT)
-Subject: Re: [PATCH v1 02/23] tests/docker: Test more components on the Fedora
- default image
+        Thu, 09 May 2019 10:41:39 -0700 (PDT)
+Subject: Re: [PATCH v1 01/23] tests/docker: add ubuntu 18.04
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>
+Cc: qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Fam Zheng <fam@euphon.net>
 References: <20190509165912.10512-1-alex.bennee@linaro.org>
- <20190509165912.10512-3-alex.bennee@linaro.org>
+ <20190509165912.10512-2-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <089bf7b5-8461-699b-4c9a-30c4d735282e@redhat.com>
-Date: Thu, 9 May 2019 19:40:08 +0200
+Message-ID: <90a1309d-7e93-1023-773f-ef23db0c7438@redhat.com>
+Date: Thu, 9 May 2019 19:41:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190509165912.10512-3-alex.bennee@linaro.org>
+In-Reply-To: <20190509165912.10512-2-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: Xv0a2B/DbW4t
+X-TUID: +O2PSpBAU+fp
 
 On 5/9/19 6:58 PM, Alex Bennée wrote:
-> From: Philippe Mathieu-Daudé <philmd@redhat.com>
+> From: Gerd Hoffmann <kraxel@redhat.com>
 > 
-> Install optional dependencies of QEMU to get better coverage.
+> Based on the ubuntu.docker file.
+> Used to reproduce the build failure Peter was seeing.
+> Others might find this useful too ;)
 > 
-> The following components are now enabled:
-> 
->   $ ./configure
->   ...
->   Multipath support yes
->   VNC SASL support  yes
->   RDMA support      yes
->   PVRDMA support    yes
->   libiscsi support  yes
->   seccomp support   yes
->   libpmem support   yes
->   libudev           yes
-> 
-> Note: The udev-devel package is provided by systemd-devel.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 
-Acked-by: Marcel Apfelbaum<marcel.apfelbaum@gmail.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> Message-Id: <20190504055440.20406-1-philmd@redhat.com>
+> Message-Id: <20190503070241.24786-1-kraxel@redhat.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  tests/docker/dockerfiles/fedora.docker | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  tests/docker/dockerfiles/ubuntu1804.docker | 57 ++++++++++++++++++++++
+>  1 file changed, 57 insertions(+)
+>  create mode 100644 tests/docker/dockerfiles/ubuntu1804.docker
 > 
-> diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-> index 69d4a7f5d75..afbba29adaa 100644
-> --- a/tests/docker/dockerfiles/fedora.docker
-> +++ b/tests/docker/dockerfiles/fedora.docker
-> @@ -8,6 +8,7 @@ ENV PACKAGES \
->      bzip2-devel \
->      ccache \
->      clang \
-> +    cyrus-sasl-devel \
->      device-mapper-multipath-devel \
->      findutils \
->      flex \
-> @@ -23,13 +24,17 @@ ENV PACKAGES \
->      libaio-devel \
->      libasan \
->      libattr-devel \
-> +    libblockdev-mpath-devel \
->      libcap-devel \
->      libcap-ng-devel \
->      libcurl-devel \
->      libfdt-devel \
-> +    libiscsi-devel \
->      libjpeg-devel \
-> +    libpmem-devel \
->      libpng-devel \
->      librbd-devel \
-> +    libseccomp-devel \
->      libssh2-devel \
->      libubsan \
->      libusbx-devel \
-> @@ -74,10 +79,12 @@ ENV PACKAGES \
->      pixman-devel \
->      python3 \
->      PyYAML \
-> +    rdma-core-devel \
->      SDL2-devel \
->      snappy-devel \
->      sparse \
->      spice-server-devel \
-> +    systemd-devel \
->      systemtap-sdt-devel \
->      tar \
->      usbredir-devel \
+> diff --git a/tests/docker/dockerfiles/ubuntu1804.docker b/tests/docker/dockerfiles/ubuntu1804.docker
+> new file mode 100644
+> index 00000000000..2e2900150b0
+> --- /dev/null
+> +++ b/tests/docker/dockerfiles/ubuntu1804.docker
+> @@ -0,0 +1,57 @@
+> +FROM ubuntu:18.04
+> +ENV PACKAGES flex bison \
+> +    ccache \
+> +    clang \
+> +    gcc \
+> +    gettext \
+> +    git \
+> +    glusterfs-common \
+> +    libaio-dev \
+> +    libattr1-dev \
+> +    libbluetooth-dev \
+> +    libbrlapi-dev \
+> +    libbz2-dev \
+> +    libcacard-dev \
+> +    libcap-dev \
+> +    libcap-ng-dev \
+> +    libcurl4-gnutls-dev \
+> +    libdrm-dev \
+> +    libepoxy-dev \
+> +    libfdt-dev \
+> +    libgbm-dev \
+> +    libgtk-3-dev \
+> +    libibverbs-dev \
+> +    libiscsi-dev \
+> +    libjemalloc-dev \
+> +    libjpeg-turbo8-dev \
+> +    liblzo2-dev \
+> +    libncurses5-dev \
+> +    libncursesw5-dev \
+> +    libnfs-dev \
+> +    libnss3-dev \
+> +    libnuma-dev \
+> +    libpixman-1-dev \
+> +    librados-dev \
+> +    librbd-dev \
+> +    librdmacm-dev \
+> +    libsasl2-dev \
+> +    libsdl2-dev \
+> +    libseccomp-dev \
+> +    libsnappy-dev \
+> +    libspice-protocol-dev \
+> +    libspice-server-dev \
+> +    libssh2-1-dev \
+> +    libusb-1.0-0-dev \
+> +    libusbredirhost-dev \
+> +    libvdeplug-dev \
+> +    libvte-2.91-dev \
+> +    libxen-dev \
+> +    make \
+> +    python-yaml \
+> +    sparse \
+> +    texinfo \
+> +    xfslibs-dev
+> +RUN apt-get update && \
+> +    apt-get -y install $PACKAGES
+> +RUN dpkg -l $PACKAGES | sort > /packages.txt
+> +ENV FEATURES clang pyyaml sdl2
 > 

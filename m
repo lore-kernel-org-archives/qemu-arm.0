@@ -1,261 +1,368 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1275836wrh;
-        Thu, 9 May 2019 14:48:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqya6xk2F3mG0HxhHltSj5T/jG/qsYcPYBT25UYg+3j8XBib0egSpVfo8y9uSXIoS5y9APYx
-X-Received: by 2002:a17:902:2a2b:: with SMTP id i40mr8351454plb.170.1557438510461;
-        Thu, 09 May 2019 14:48:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557438510; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1308675wrh;
+        Thu, 9 May 2019 15:26:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy9RX/ZwNyd1z0ujCBI5o/38hHygYQk2trJPzK0tWT95xl3FlPXoz9nmHF6V5x6kA0dJUvB
+X-Received: by 2002:a1c:f909:: with SMTP id x9mr4708269wmh.18.1557440817223;
+        Thu, 09 May 2019 15:26:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557440817; cv=none;
         d=google.com; s=arc-20160816;
-        b=w3dkVWCaqWz1XyJiZOMxwZ0sRke3wyKmeNIufSYjAbwBioK1x9/TN4Jxl/eYNQFDZ3
-         ecaTGa5yHpckjDgw82qnt00Sv9edlKWbLZlijPZIfbpXyZrvVof/IUux6rWHpG+b4q+x
-         2C06R3F/31NNzskzTD+22fb6anxW/nlRq3LyEZabo5T1brA7d52IwhtS+NE0/aya8zx2
-         oWbZNa/jJ1THzO9hgCYB9sAy3uVg/zmmz9gxr+thvhHFcmkBf4zo1hGtMuKo7r6CHMdH
-         e+EppDP4asQnIctSVugRxvixDZc2QhyvRCjnUY/A4B2F87RBIDqwWOdGbF5PQNsy8ZFs
-         lIhg==
+        b=VOFhvOZfKOlyV6jXM/T4B0rqJenTQuKr47QykWw/KmQQiLA8c0XTRiBY/N/dSCk+UI
+         4/L+HbnDzXPIOjiB8rVkmgwlMUEc1v58k+5aAMejyru7iYJvPQ8pCt0pI+KpnPSzsjOJ
+         CZo25gQ3ia4Ia3+GMbFGuezoMhRDXha1eejyyxGtQsgMaOZXuhlpOcvdxrzzncHjRd6J
+         1mq+utojfFgK39A3VZ+2Q97d9dGq6bgQG2zK55zU0plDS22Fo1MzGTOu7Pj2XdjDwbfK
+         pbXWMPDxI+vikvVUA+iFa9dF2jgg72/ytWpWvSrDDKRH5XKGXZ/KQePTJhQoQjBwjS52
+         tLdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
-         :list-help:list-post:list-archive:list-unsubscribe:list-id
-         :precedence:content-language:in-reply-to:mime-version:user-agent
-         :date:message-id:from:references:to:subject:dkim-signature;
-        bh=wHuwu8p98Y6PXdIP1UofEvgr8Pb4I/6eHixgEKMm3dM=;
-        b=aR96X0VteN7b/eqC2vtQ43+8/bkwSwSGlKzY/cKlcT2KNIbQOKIj94NkyOG82EODAV
-         WB+Upt7KKngz5tp64uoaHQ7zRS/uT+jGEGrm+ABePmVkcnRSjah6xZwNZZ+0k7F/sbe2
-         FacE8AxBSiDMQKB5ExmyKaasSbdjduyAKkgGQgdfQgI2MiJaHoXlaR7QdvbNrQi6+SWQ
-         zHQ/oZlrv3PrwBtvP8iA/huW89fbTqkWUINqwPpq4R4YVRw0B5QJnAsTmvGxtPAWB4qe
-         fYWy97EsHaG7rIvJwuyq3+lYQGi/j+rQM/GXYAPZMDRAehSk7x7GH6TrmUuvf7+XqhFN
-         ggSA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=HvxWFIl5ESd8k7Qsj0PgQnqNr4PAJyQFVyC1Otdr98A=;
+        b=k4yMrvhWRqa2TURNzwcxOnpsbX0CwBCEn3SuedjVobIA0auruy/3zZTEezStwAum4g
+         MZA58PJDB8z3bGZGPN1e5kMxZLwd1syLtoUgGu2NUuh5nM6//E7kVp5xZpSx/WxSF5Ko
+         lHNkknYiPY4KDPdKQNu1T75jLdA9W7JQDZ7/uHKunKO+QDCcYHPDVLhofMSP/ha7nBxd
+         Ck5QYf8actQfS8cXX9tq/4YKWYFOMxEimZb0E3B04iPi/SjRxzsA47b1wcAf/zWBZ6Id
+         wei8vlN7s3r0GFiEFL3oeyaM5olyoAYtvxFONpgDFlDd3Y9WmMQgoWxeB0gsB6cM7+Jx
+         k1/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=kWNNILsR;
-       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
-Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
-        by mx.google.com with ESMTPS id v30si4827070pgk.295.2019.05.09.14.48.30
+       dkim=fail header.i=@linaro.org header.s=google header.b=gUfTxFzh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h5si2917065wrw.101.2019.05.09.15.26.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 14:48:30 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 09 May 2019 15:26:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=kWNNILsR;
-       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wHuwu8p98Y6PXdIP1UofEvgr8Pb4I/6eHixgEKMm3dM=; b=kWNNILsRGy/HfD
-	FbfGIhphAoL9+iaIUqAgDKOG/Mtok8k1IRqy6qHJ8K3mlTQfHNy6++h+5MXANy1wE/xCu1TYvUJJJ
-	MElKnlksZS3zRfXNEkn0BSQLsZSDzx0IiKZYxn/BE266SZfY80caaA38HE1boey4/XlqrMKOawM2G
-	PhlEXd9/nyfhRgysihT0x/PCT1zgNfiqZRMxQesISh2a/Z78zn+R3Q26XsH6GLuWyaoqhMCPFHBbE
-	iWOlge2OkzkQxV54eWmap3bDc/6gRlgnQCUI2KLoI0cFdWxX7rC68y7mjTCVlU9hImmUYAk1iqJU7
-	jBT6yzyZE1vkyrXOpZJg==;
-Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
-	id 1hOqtv-0003kY-Kf; Thu, 09 May 2019 21:48:27 +0000
-Received: from mx1.redhat.com ([209.132.183.28])
- by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
- id 1hOqtr-0003k0-2Z
- for linux-arm-kernel@lists.infradead.org; Thu, 09 May 2019 21:48:24 +0000
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1E63A81112;
- Thu,  9 May 2019 21:48:22 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-234.rdu2.redhat.com
- [10.10.120.234])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 14BC65DF49;
- Thu,  9 May 2019 21:48:15 +0000 (UTC)
-Subject: Re: [Question] Memory hotplug clarification for Qemu ARM/virt
-To: Igor Mammedov <imammedo@redhat.com>
-References: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
- <ca5f7231-6924-0720-73a5-766eb13ee331@arm.com>
- <190831a5-297d-addb-ea56-645afb169efb@redhat.com>
- <20190509183520.6dc47f2e@Igors-MacBook-Pro>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <cd2aa867-5367-b470-0a2b-33897697c23f@redhat.com>
-Date: Thu, 9 May 2019 23:48:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <20190509183520.6dc47f2e@Igors-MacBook-Pro>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.28]); Thu, 09 May 2019 21:48:22 +0000 (UTC)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190509_144823_154284_46C31CF2 
-X-CRM114-Status: GOOD (  30.48  )
-X-Spam-Score: -5.0 (-----)
-X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
- Content analysis details:   (-5.0 points)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -5.0 RCVD_IN_DNSWL_HI       RBL: Sender listed at https://www.dnswl.org/,
- high trust [209.132.183.28 listed in list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
-X-BeenThere: linux-arm-kernel@lists.infradead.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=gUfTxFzh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:33436 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hOrV9-0007aU-IK
+	for alex.bennee@linaro.org; Thu, 09 May 2019 18:26:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:32839)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1hOrUu-0007Vy-Ok
+	for qemu-arm@nongnu.org; Thu, 09 May 2019 18:26:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1hOrUt-0005Nl-BL
+	for qemu-arm@nongnu.org; Thu, 09 May 2019 18:26:40 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:33123)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1hOrUt-0005NV-3K
+	for qemu-arm@nongnu.org; Thu, 09 May 2019 18:26:39 -0400
+Received: by mail-pf1-x442.google.com with SMTP id z28so2061238pfk.0
+	for <qemu-arm@nongnu.org>; Thu, 09 May 2019 15:26:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=HvxWFIl5ESd8k7Qsj0PgQnqNr4PAJyQFVyC1Otdr98A=;
+	b=gUfTxFzhaXQuV8dwJ0wkQ0p2Qe6zBoOtZ2neNzDUcc9sBktcQ59QT7PqqRhe6YtaFI
+	KyDUe9S23v4Fi3ZrbwEtPmmXCz9UmWF76QeiK9kTDSHMO7zgKKmBwIF1lBzWB/N2zkR7
+	bNHdjnyvL2r8JoWjNgvbxBhYw/6wU78u2ttwaWhFlmzAvpBO2YY26PNi3qRM3Tp2+C8z
+	O4/f/X4FJ9A3yDLJ2r+u8y6uUet4dLI1Zw0WP8WdXG5O/aASkv4XN86J0ylm2DctXw7L
+	NQBLihdIOxREE5wQohbOdWny+Vvsupbhbh7b00FrKcOdS629NWBq0325wfxDs6jXmf3y
+	H9gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=HvxWFIl5ESd8k7Qsj0PgQnqNr4PAJyQFVyC1Otdr98A=;
+	b=kX9v2mKT7DgEZoaq9zL1FiGC76Ql3Jebc4ULtNAQFSyt5pSfsqI+xS89uqilv8RpON
+	F0VZC7Q5QeXl23A5YO9l3WggyRgkr1nSIMz1uo8tmrNr+9bIMnbdz8zoX4TxQKiqNt7T
+	OnqLslR3VdUsvYsXo7fhUsUJyH72upafOi4eLjNKDnnnKhcYdMzbNwwX9HDbcAGKIGdT
+	h6SwCyWCL+VKDkgbQMggD91Ga6e4Xac52h+OISCE7R6b0pnxccdfIUr3Xd0WAqQNFleR
+	35AbNvLoIIrorQvpcsbfTtcXl5LIPWK3JRuANhyY2e3XAvgxw/Ie6z2SaCMRZxyzRBv1
+	7XjA==
+X-Gm-Message-State: APjAAAXEURF9AyhON/N2AXm5y4dbA0gw7Mhe9SlK+lliLWbnH2wmI1V9
+	ZW7SrtIVBqCMKYsbB+Fk2uXBFg==
+X-Received: by 2002:a63:445d:: with SMTP id t29mr8960638pgk.303.1557440798060; 
+	Thu, 09 May 2019 15:26:38 -0700 (PDT)
+Received: from localhost.localdomain (97-113-13-231.tukw.qwest.net.
+	[97.113.13.231])
+	by smtp.gmail.com with ESMTPSA id m2sm4490521pfi.24.2019.05.09.15.26.36
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 09 May 2019 15:26:37 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu,  9 May 2019 15:26:07 -0700
+Message-Id: <20190509222631.14271-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190509222631.14271-1-richard.henderson@linaro.org>
+References: <20190509222631.14271-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: [Qemu-arm] [PATCH v3 03/27] target/arm: Convert to
+ CPUClass::tlb_fill
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <linux-arm-kernel.lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "xuwei \(O\)" <xuwei5@huawei.com>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Catalin Marinas <Catalin.Marinas@arm.com>,
- "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
- "will.deacon@arm.com" <will.deacon@arm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Linuxarm <linuxarm@huawei.com>, linux-mm <linux-mm@kvack.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Robin Murphy <robin.murphy@arm.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
-X-TUID: 8wN54eBxvet5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OmNRN7zQb0kE
 
-T24gMDUvMDkvMTkgMTg6MzUsIElnb3IgTWFtbWVkb3Ygd3JvdGU6Cj4gT24gV2VkLCA4IE1heSAy
-MDE5IDIyOjI2OjEyICswMjAwCj4gTGFzemxvIEVyc2VrIDxsZXJzZWtAcmVkaGF0LmNvbT4gd3Jv
-dGU6Cj4gCj4+IE9uIDA1LzA4LzE5IDE0OjUwLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4+PiBIaSBT
-aGFtZWVyLAo+Pj4KPj4+IE9uIDA4LzA1LzIwMTkgMTE6MTUsIFNoYW1lZXJhbGkgS29sb3RodW0g
-VGhvZGkgd3JvdGU6Cj4+Pj4gSGksCj4+Pj4KPj4+PiBUaGlzIHNlcmllcyBoZXJlWzBdIGF0dGVt
-cHRzIHRvIGFkZCBzdXBwb3J0IGZvciBQQ0RJTU0gaW4gUUVNVSBmb3IKPj4+PiBBUk0vVmlydCBw
-bGF0Zm9ybSBhbmQgaGFzIHN0dW1ibGVkIHVwb24gYW4gaXNzdWUgYXMgaXQgaXMgbm90IGNsZWFy
-KGF0Cj4+Pj4gbGVhc3QKPj4+PiBmcm9tIFFlbXUvRURLMiBwb2ludCBvZiB2aWV3KSBob3cgaW4g
-cGh5c2ljYWwgd29ybGQgdGhlIGhvdHBsdWdnYWJsZQo+Pj4+IG1lbW9yeSBpcyBoYW5kbGVkIGJ5
-IGtlcm5lbC4KPj4+Pgo+Pj4+IFRoZSBwcm9wb3NlZCBpbXBsZW1lbnRhdGlvbiBpbiBRZW11LCBi
-dWlsZHMgdGhlIFNSQVQgYW5kIERTRFQgcGFydHMKPj4+PiBhbmQgdXNlcyBHRUQgZGV2aWNlIHRv
-IHRyaWdnZXIgdGhlIGhvdHBsdWcuIFRoaXMgd29ya3MgZmluZS4KPj4+Pgo+Pj4+IEJ1dCB3aGVu
-IHdlIGFkZGVkIHRoZSBEVCBub2RlIGNvcnJlc3BvbmRpbmcgdG8gdGhlIFBDRElNTShjb2xkIHBs
-dWcKPj4+PiBzY2VuYXJpbyksIHdlIG5vdGljZWQgdGhhdCBHdWVzdCBrZXJuZWwgc2VlIHRoaXMg
-bWVtb3J5IGR1cmluZyBlYXJseSBib290Cj4+Pj4gZXZlbiBpZiB3ZSBhcmUgYm9vdGluZyB3aXRo
-IEFDUEkuIEJlY2F1c2Ugb2YgdGhpcywgaG90cGx1Z2dhYmxlIG1lbW9yeQo+Pj4+IG1heSBlbmQg
-dXAgaW4gem9uZSBub3JtYWwgYW5kIG1ha2UgaXQgbm9uLWhvdC11bi1wbHVnZ2FibGUgZXZlbiBp
-ZiBHdWVzdAo+Pj4+IGJvb3RzIHdpdGggQUNQSS4KPj4+Pgo+Pj4+IEZ1cnRoZXIgZGlzY3Vzc2lv
-bnNbMV0gcmV2ZWFsZWQgdGhhdCwgRURLMiBVRUZJIGhhcyBubyBtZWFucyB0bwo+Pj4+IGludGVy
-cHJldCB0aGUKPj4+PiBBQ1BJIGNvbnRlbnQgZnJvbSBRZW11KHRoaXMgaXMgZGVzaWduZWQgdG8g
-ZG8gc28pIGFuZCB1c2VzIERUIGluZm8gdG8KPj4+PiBidWlsZCB0aGUgR2V0TWVtb3J5TWFwKCku
-IFRvIHNvbHZlIHRoaXMsIGludHJvZHVjZWQgImhvdHBsdWdnYWJsZSIKPj4+PiBwcm9wZXJ0eQo+
-Pj4+IHRvIERUIG1lbW9yeSBub2RlKHBhdGNoZXMgIzcgJiAjOCBmcm9tIFswXSkgc28gdGhhdCBV
-RUZJIGNhbgo+Pj4+IGRpZmZlcmVudGlhdGUKPj4+PiB0aGUgbm9kZXMgYW5kIGV4Y2x1ZGUgdGhl
-IGhvdHBsdWdnYWJsZSBvbmVzIGZyb20gR2V0TWVtb3J5TWFwKCkuCj4+Pj4KPj4+PiBCdXQgdGhl
-biBMYXN6bG8gcmlnaHRseSBwb2ludGVkIG91dCB0aGF0IGluIG9yZGVyIHRvIGFjY29tbW9kYXRl
-IHRoZQo+Pj4+IGNoYW5nZXMKPj4+PiBpbnRvIFVFRkkgd2UgbmVlZCB0byBrbm93IGhvdyBleGFj
-dGx5IExpbnV4IGV4cGVjdHMvaGFuZGxlcyBhbGwgdGhlCj4+Pj4gaG90cGx1Z2dhYmxlIG1lbW9y
-eSBzY2VuYXJpb3MuIFBsZWFzZSBmaW5kIHRoZSBkaXNjdXNzaW9uIGhlcmVbMl0uCj4+Pj4KPj4+
-PiBGb3IgZWFzZSwgSSBhbSBqdXN0IGNvcHlpbmcgdGhlIHJlbGV2YW50IGNvbW1lbnQgZnJvbSBM
-YXN6bG8gYmVsb3csCj4+Pj4KPj4+PiAvKioqKioqCj4+Pj4gIkdpdmVuIHBhdGNoZXMgIzcgYW5k
-ICM4LCBhcyBJIHVuZGVyc3RhbmQgdGhlbSwgdGhlIGZpcm13YXJlIGNhbm5vdAo+Pj4+IGRpc3Rp
-bmd1aXNoCj4+Pj4gwqAgaG90cGx1Z2dhYmxlICYgcHJlc2VudCwgZnJvbSBob3RwbHVnZ2FibGUg
-JiBhYnNlbnQuIFRoZSBmaXJtd2FyZSBjYW4KPj4+PiBvbmx5Cj4+Pj4gwqAgc2tpcCBib3RoIGhv
-dHBsdWdnYWJsZSBjYXNlcy4gVGhhdCdzIGZpbmUgaW4gdGhhdCB0aGUgZmlybXdhcmUgd2lsbAo+
-Pj4+IGhvZyBuZWl0aGVyCj4+Pj4gwqAgdHlwZSAtLSBidXQgaXMgdGhhdCBPSyBmb3IgdGhlIE9T
-IGFzIHdlbGwsIGZvciBib3RoIEFDUEkgYm9vdCBhbmQgRFQKPj4+PiBib290Pwo+Pj4+Cj4+Pj4g
-Q29uc2lkZXIgaW4gcGFydGljdWxhciB0aGUgImhvdHBsdWdnYWJsZSAmIHByZXNlbnQsIEFDUEkg
-Ym9vdCIgY2FzZS4KPj4+PiBBc3N1bWluZwo+Pj4+IHdlIG1vZGlmeSB0aGUgZmlybXdhcmUgdG8g
-c2tpcCAiaG90cGx1Z2dhYmxlIiBhbHRvZ2V0aGVyLCB0aGUgVUVGSSBtZW1tYXAKPj4+PiB3aWxs
-IG5vdCBpbmNsdWRlIHRoZSByYW5nZSBkZXNwaXRlIGl0IGJlaW5nIHByZXNlbnQgYXQgYm9vdC4K
-Pj4+PiBQcmVzdW1hYmx5LCBBQ1BJCj4+Pj4gd2lsbCByZWZlciB0byB0aGUgcmFuZ2Ugc29tZWhv
-dywgaG93ZXZlci4gV2lsbCB0aGF0IG5vdCBjb25mdXNlIHRoZSBPUz8KPj4+Pgo+Pj4+IFdoZW4g
-SWdvciByYWlzZWQgdGhpcyBlYXJsaWVyLCBJIHN1Z2dlc3RlZCB0aGF0Cj4+Pj4gaG90cGx1Z2dh
-YmxlLWFuZC1wcmVzZW50IHNob3VsZAo+Pj4+IGJlIGFkZGVkIGJ5IHRoZSBmaXJtd2FyZSwgYnV0
-IGFsc28gYWxsb2NhdGVkIGltbWVkaWF0ZWx5LCBhcwo+Pj4+IEVmaUJvb3RTZXJ2aWNlc0RhdGEK
-Pj4+PiB0eXBlIG1lbW9yeS4gVGhpcyB3aWxsIHByZXZlbnQgb3RoZXIgZHJpdmVycyBpbiB0aGUg
-ZmlybXdhcmUgZnJvbQo+Pj4+IGFsbG9jYXRpbmcgQWNwaU5WUwo+Pj4+IG9yIFJlc2VydmVkIGNo
-dW5rcyBmcm9tIHRoZSBzYW1lIG1lbW9yeSByYW5nZSwgdGhlIFVFRkkgbWVtbWFwIHdpbGwKPj4+
-PiBjb250YWluCj4+Pj4gdGhlIHJhbmdlIGFzIEVmaUJvb3RTZXJ2aWNlc0RhdGEsIGFuZCB0aGVu
-IHRoZSBPUyBjYW4gcmVsZWFzZSB0aGF0Cj4+Pj4gYWxsb2NhdGlvbiBpbgo+Pj4+IG9uZSBnbyBl
-YXJseSBkdXJpbmcgYm9vdC4KPj4+Pgo+Pj4+IEJ1dCB0aGlzIHJlYWxseSBoYXMgdG8gYmUgY2xh
-cmlmaWVkIGZyb20gdGhlIExpbnV4IGtlcm5lbCdzCj4+Pj4gZXhwZWN0YXRpb25zLiBQbGVhc2UK
-Pj4+PiBmb3JtYWxpemUgYWxsIG9mIHRoZSBmb2xsb3dpbmcgY2FzZXM6Cj4+Pj4KPj4+PiBPUyBi
-b290IChEVC9BQ1BJKcKgIGhvdHBsdWdnYWJsZSAmIC4uLsKgIEdldE1lbW9yeU1hcCgpIHNob3Vs
-ZCByZXBvcnQKPj4+PiBhc8KgIERUL0FDUEkgc2hvdWxkIHJlcG9ydCBhcwo+Pj4+IC0tLS0tLS0t
-LS0tLS0tLS0twqAgLS0tLS0tLS0tLS0tLS0tLS0twqAKPj4+PiAtLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0twqAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+Pj4gRFTCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwcmVzZW50wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgID/C
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCA/Cj4+Pj4gRFTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBhYnNlbnTCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPwo+Pj4+IEFDUEnCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHByZXNlbnTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgP8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgID8KPj4+
-PiBBQ1BJwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBhYnNlbnTCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCA/wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgPwo+Pj4+Cj4+Pj4gQWdhaW4sIHRoaXMgdGFibGUgaXMgZGljdGF0
-ZWQgYnkgTGludXguIgo+Pj4+Cj4+Pj4gKioqKioqLwo+Pj4+Cj4+Pj4gQ291bGQgeW91IHBsZWFz
-ZSB0YWtlIGEgbG9vayBhdCB0aGlzIGFuZCBsZXQgdXMga25vdyB3aGF0IGlzIGV4cGVjdGVkCj4+
-Pj4gaGVyZSBmcm9tCj4+Pj4gYSBMaW51eCBrZXJuZWwgdmlldyBwb2ludC4KPj4+Cj4+PiBGb3Ig
-YXJtNjQsIHNvIGZhciB3ZSd2ZSBub3QgZXZlbiBiZWVuIGNvbnNpZGVyaW5nIERULWJhc2VkIGhv
-dHBsdWcgLSBhcwo+Pj4gZmFyIGFzIEknbSBhd2FyZSB0aGVyZSB3b3VsZCBzdGlsbCBiZSBhIGJp
-ZyBvcGVuIHF1ZXN0aW9uIHRoZXJlIGFyb3VuZAo+Pj4gbm90aWZpY2F0aW9uIG1lY2hhbmlzbXMg
-YW5kIGhvdyB0byBkZXNjcmliZSB0aGVtLiBUaGUgRFQgc3R1ZmYgc28gZmFyCj4+PiBoYXMgY29t
-ZSBmcm9tIHRoZSBQb3dlclBDIGZvbGtzLCBzbyBpdCdzIHByb2JhYmx5IHdvcnRoIHNlZWluZyB3
-aGF0Cj4+PiB0aGVpciBpZGVhcyBhcmUuCj4+Pgo+Pj4gQUNQSS13aXNlIEkndmUgYWx3YXlzIGFz
-c3VtZWQvaG9wZWQgdGhhdCBob3RwbHVnLXJlbGF0ZWQgdGhpbmdzIHNob3VsZAo+Pj4gYmUgc3Vm
-ZmljaWVudGx5IHdlbGwtc3BlY2lmaWVkIGluIFVFRkkgdGhhdCAiZG8gd2hhdGV2ZXIgeDg2L0lB
-LTY0IGRvIgo+Pj4gd291bGQgYmUgZW5vdWdoIGZvciB1cy4KPj4KPj4gQXMgZmFyIGFzIEkgY2Fu
-IHNlZSBpbiBVRUZJIHYyLjggLS0gYW5kIEkgaGFkIGNoZWNrZWQgdGhlIHNwZWMgYmVmb3JlCj4+
-IGR1bXBpbmcgdGhlIHRhYmxlIHdpdGggdGhlIG1hbnkgcXVlc3Rpb24gbWFya3Mgb24gU2hhbWVl
-ciAtLSwgYWxsIHRoZQo+PiBob3QtcGx1ZyBsYW5ndWFnZSBpbiB0aGUgc3BlYyByZWZlcnMgdG8g
-VVNCIGFuZCBQQ0kgaG90LXBsdWcgaW4gdGhlCj4+IHByZWJvb3QgZW52aXJvbm1lbnQuIFRoZXJl
-IGlzIG5vdCBhIHNpbmdsZSB3b3JkIGFib3V0IGhvdC1wbHVnIGF0IE9TCj4+IHJ1bnRpbWUgKHJl
-Z2FyZGluZyBhbnkgZGV2aWNlIG9yIGNvbXBvbmVudCB0eXBlKSwgbm9yIGFib3V0IG1lbW9yeQo+
-PiBob3QtcGx1ZyAoYXQgYW55IHRpbWUpLgo+Pgo+PiBMb29raW5nIHRvIHg4NiBhcHBlYXJzIHZh
-bGlkIC0tIHNvIHdoYXQgZG9lcyB0aGUgTGludXgga2VybmVsIGV4cGVjdCBvbgo+PiB0aGF0IGFy
-Y2hpdGVjdHVyZSwgaW4gdGhlICJBQ1BJIiByb3dzIG9mIHRoZSB0YWJsZT8KPiAKPiBJIGNvdWxk
-IG9ubHkgYW5zd2VyIGZyb20gUUVNVSB4ODYgcGVyc3BlY3RpdmUuCj4gUUVNVSBmb3IgeDg2IGd1
-ZXN0cyBjdXJyZW50bHkgZG9lc24ndCBhZGQgaG90LXBsdWdnYWJsZSBSQU0gaW50byBFODIwCj4g
-YmVjYXVzZSBvZiBkaWZmZXJlbnQgbGludXggZ3Vlc3RzIHRlbmQgdG8gY2FubmliYWxpemUgaXQs
-IG1ha2luZyBpdCBub24KPiB1bnBsdWdnYWJsZS4gVGhlIGxhc3QgY3VscHJpdCBJIHJlY2FsbCB3
-YXMgS0FTTFIuCj4gCj4gU28gSSdkIHJlZnJhaW4gZnJvbSByZXBvcnRpbmcgaG90cGx1Z2dhYmxl
-IFJBTSBpbiBHZXRNZW1vcnlNYXAoKSBpZgo+IGl0J3MgcG9zc2libGUgKGl0J3MgcHJvYmFibHkg
-aGFjayAoc3BlYyBkZW9zbid0IHNheSBhbnl0aGluZyBhYm91dCBpdCkKPiBidXQgaXQgbW9zdGx5
-IHdvcmtzIGZvciBMaW51eCAocGx1Zy91bnBsdWcpIGFuZCBXaW5kb3dzIGd1ZXN0IGFsc28KPiBm
-aW5lIHdpdGggcGx1ZyBwYXJ0IChubyB1bnBsdWcgdGhlcmUpKS4KCkkgY2FuIGFjY2VwdCB0aGlz
-IGFzIGEgcGVyZmVjdGx5IHZhbGlkIGRlc2lnbi4gV2hpY2ggd291bGQgbWVhbiwgUUVNVSBzaG91
-bGQgbWFyayBlYWNoIGhvdHBsdWdnYWJsZSBSQU0gcmFuZ2UgaW4gdGhlIERUQiBmb3IgdGhlIGZp
-cm13YXJlIHdpdGggdGhlIHNwZWNpYWwgbmV3IHByb3BlcnR5LCByZWdhcmRsZXNzIG9mIGl0cyBp
-bml0aWFsICgiY29sZCIpIHBsdWdnZWQtbmVzcywgYW5kIHRoZW4gdGhlIGZpcm13YXJlIHdpbGwg
-bm90IGV4cG9zZSB0aGUgcmFuZ2UgaW4gdGhlIEdDRCBtZW1vcnkgc3BhY2UgbWFwLCBhbmQgY29u
-c2VxdWVudGx5IGluIHRoZSBVRUZJIG1lbW1hcCBlaXRoZXIuCgpJT1csIG91ciB0YWJsZSBpcywg
-dGh1cyBmYXI6CgpPUyBib290IChEVC9BQ1BJKSAgaG90cGx1Z2dhYmxlICYgLi4uICBHZXRNZW1v
-cnlNYXAoKSBzaG91bGQgcmVwb3J0IGFzICBEVC9BQ1BJIHNob3VsZCByZXBvcnQgYXMKLS0tLS0t
-LS0tLS0tLS0tLS0gIC0tLS0tLS0tLS0tLS0tLS0tLSAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLSAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkRUICAgICAgICAgICAgICAgICBwcmVz
-ZW50ICAgICAgICAgICAgIEFCU0VOVCAgICAgICAgICAgICAgICAgICAgICAgICAgID8KRFQgICAg
-ICAgICAgICAgICAgIGFic2VudCAgICAgICAgICAgICAgQUJTRU5UICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgPwpBQ1BJICAgICAgICAgICAgICAgcHJlc2VudCAgICAgICAgICAgICBBQlNFTlQg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBQUkVTRU5UCkFDUEkgICAgICAgICAgICAgICBhYnNl
-bnQgICAgICAgICAgICAgIEFCU0VOVCAgICAgICAgICAgICAgICAgICAgICAgICAgIEFCU0VOVAoK
-SW4gdGhlIGZpcm13YXJlLCBJIG9ubHkgbmVlZCB0byBjYXJlIGFib3V0IHRoZSBHZXRNZW1vcnlN
-YXAoKSBjb2x1bW4sIHNvIEkgY2FuIHdvcmsgd2l0aCB0aGlzLiBDYW4gc29tZW9uZSBwbGVhc2Ug
-ZmlsZSBhIGZlYXR1cmUgcmVxdWVzdCBhdCA8aHR0cHM6Ly9idWd6aWxsYS50aWFub2NvcmUub3Jn
-Lz4sIGZvciB0aGUgQXJtVmlydFBrZyBQYWNrYWdlLCB3aXRoIHRoZXNlIGRldGFpcz8KClRoYW5r
-cwpMYXN6bG8KCj4gCj4gQXMgZm9yIHBoeXNpY2FsIHN5c3RlbXMsIHRoZXJlIGFyZSBvdXQgdGhl
-cmUgb25lcyB0aGF0IGRvIHJlcG9ydAo+IGhvdHBsdWdnYWJsZSBSQU0gaW4gR2V0TWVtb3J5TWFw
-KCkuCj4gCj4+IFNoYW1lZXI6IGlmIHlvdSAoSHVhd2VpKSBhcmUgcmVwcmVzZW50ZWQgb24gdGhl
-IFVTV0cgLyBBU1dHLCBJIHN1Z2dlc3QKPj4gcmUtcmFpc2luZyB0aGUgcXVlc3Rpb24gb24gdGhv
-c2UgbGlzdHMgdG9vOyBhdCBsZWFzdCB0aGUgIkFDUEkiIHJvd3Mgb2YKPj4gdGhlIHRhYmxlLgo+
-Pgo+PiBUaGFua3MhCj4+IExhc3psbwo+Pgo+Pj4KPj4+IFJvYmluLgo+Pj4KPj4+PiAoSGkgTGFz
-emxvL0lnb3IvRXJpYywgcGxlYXNlIGZlZWwgZnJlZSB0byBhZGQvY2hhbmdlIGlmIEkgaGF2ZSBt
-aXNzZWQKPj4+PiBhbnkgdmFsaWQKPj4+PiBwb2ludHMgYWJvdmUpLgo+Pj4+Cj4+Pj4gVGhhbmtz
-LAo+Pj4+IFNoYW1lZXIKPj4+PiBbMF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9jb3Zl
-ci8xMDg5MDkxOS8KPj4+PiBbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8x
-MDg2MzI5OS8KPj4+PiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMDg5
-MDkzNy8KPj4+Pgo+Pj4+Cj4+Cj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtl
-cm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v2: Reword a comment to match the new interface.
+---
+ target/arm/internals.h | 10 +++--
+ target/arm/cpu.c       | 22 +---------
+ target/arm/helper.c    | 98 ++++++++++++++++++++++++++----------------
+ target/arm/op_helper.c | 29 ++-----------
+ 4 files changed, 73 insertions(+), 86 deletions(-)
+
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 587a1ddf58..5a02f458f3 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -761,10 +761,12 @@ static inline bool arm_extabort_type(MemTxResult result)
+     return result != MEMTX_DECODE_ERROR;
+ }
+ 
+-/* Do a page table walk and add page to TLB if possible */
+-bool arm_tlb_fill(CPUState *cpu, vaddr address,
+-                  MMUAccessType access_type, int mmu_idx,
+-                  ARMMMUFaultInfo *fi);
++bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
++                      MMUAccessType access_type, int mmu_idx,
++                      bool probe, uintptr_t retaddr);
++
++void arm_deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
++                       int mmu_idx, ARMMMUFaultInfo *fi) QEMU_NORETURN;
+ 
+ /* Return true if the stage 1 translation regime is using LPAE format page
+  * tables */
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a181fa8dc1..bb8e824c3e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2133,23 +2133,6 @@ static Property arm_cpu_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+-#ifdef CONFIG_USER_ONLY
+-static int arm_cpu_handle_mmu_fault(CPUState *cs, vaddr address, int size,
+-                                    int rw, int mmu_idx)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-
+-    env->exception.vaddress = address;
+-    if (rw == 2) {
+-        cs->exception_index = EXCP_PREFETCH_ABORT;
+-    } else {
+-        cs->exception_index = EXCP_DATA_ABORT;
+-    }
+-    return 1;
+-}
+-#endif
+-
+ static gchar *arm_gdb_arch_name(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -2182,9 +2165,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->synchronize_from_tb = arm_cpu_synchronize_from_tb;
+     cc->gdb_read_register = arm_cpu_gdb_read_register;
+     cc->gdb_write_register = arm_cpu_gdb_write_register;
+-#ifdef CONFIG_USER_ONLY
+-    cc->handle_mmu_fault = arm_cpu_handle_mmu_fault;
+-#else
++    cc->tlb_fill = arm_cpu_tlb_fill;
++#ifndef CONFIG_USER_ONLY
+     cc->do_interrupt = arm_cpu_do_interrupt;
+     cc->do_unaligned_access = arm_cpu_do_unaligned_access;
+     cc->do_transaction_failed = arm_cpu_do_transaction_failed;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 1e6eb0d0f3..f1a2b94ddb 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -12596,43 +12596,6 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
+     }
+ }
+ 
+-/* Walk the page table and (if the mapping exists) add the page
+- * to the TLB. Return false on success, or true on failure. Populate
+- * fsr with ARM DFSR/IFSR fault register format value on failure.
+- */
+-bool arm_tlb_fill(CPUState *cs, vaddr address,
+-                  MMUAccessType access_type, int mmu_idx,
+-                  ARMMMUFaultInfo *fi)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
+-    hwaddr phys_addr;
+-    target_ulong page_size;
+-    int prot;
+-    int ret;
+-    MemTxAttrs attrs = {};
+-
+-    ret = get_phys_addr(env, address, access_type,
+-                        core_to_arm_mmu_idx(env, mmu_idx), &phys_addr,
+-                        &attrs, &prot, &page_size, fi, NULL);
+-    if (!ret) {
+-        /*
+-         * Map a single [sub]page. Regions smaller than our declared
+-         * target page size are handled specially, so for those we
+-         * pass in the exact addresses.
+-         */
+-        if (page_size >= TARGET_PAGE_SIZE) {
+-            phys_addr &= TARGET_PAGE_MASK;
+-            address &= TARGET_PAGE_MASK;
+-        }
+-        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
+-                                prot, mmu_idx, page_size);
+-        return 0;
+-    }
+-
+-    return ret;
+-}
+-
+ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+                                          MemTxAttrs *attrs)
+ {
+@@ -13111,6 +13074,67 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+ 
+ #endif
+ 
++bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
++                      MMUAccessType access_type, int mmu_idx,
++                      bool probe, uintptr_t retaddr)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++
++#ifdef CONFIG_USER_ONLY
++    cpu->env.exception.vaddress = address;
++    if (access_type == MMU_INST_FETCH) {
++        cs->exception_index = EXCP_PREFETCH_ABORT;
++    } else {
++        cs->exception_index = EXCP_DATA_ABORT;
++    }
++    cpu_loop_exit_restore(cs, retaddr);
++#else
++    hwaddr phys_addr;
++    target_ulong page_size;
++    int prot, ret;
++    MemTxAttrs attrs = {};
++    ARMMMUFaultInfo fi = {};
++
++    /*
++     * Walk the page table and (if the mapping exists) add the page
++     * to the TLB.  On success, return true.  Otherwise, if probing,
++     * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
++     * register format, and signal the fault.
++     */
++    ret = get_phys_addr(&cpu->env, address, access_type,
++                        core_to_arm_mmu_idx(&cpu->env, mmu_idx),
++                        &phys_addr, &attrs, &prot, &page_size, &fi, NULL);
++    if (likely(!ret)) {
++        /*
++         * Map a single [sub]page. Regions smaller than our declared
++         * target page size are handled specially, so for those we
++         * pass in the exact addresses.
++         */
++        if (page_size >= TARGET_PAGE_SIZE) {
++            phys_addr &= TARGET_PAGE_MASK;
++            address &= TARGET_PAGE_MASK;
++        }
++        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
++                                prot, mmu_idx, page_size);
++        return true;
++    } else if (probe) {
++        return false;
++    } else {
++        /* now we have a real cpu fault */
++        cpu_restore_state(cs, retaddr, true);
++        arm_deliver_fault(cpu, address, access_type, mmu_idx, &fi);
++    }
++#endif
++}
++
++#ifndef CONFIG_USER_ONLY
++void tlb_fill(CPUState *cs, target_ulong addr, int size,
++              MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++{
++    arm_cpu_tlb_fill(cs, addr, size, access_type, mmu_idx, false, retaddr);
++}
++#endif
++
+ void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
+ {
+     /* Implement DC ZVA, which zeroes a fixed-length block of memory.
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 8698b4dc83..8ee15a4bd4 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -126,8 +126,8 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+     return syn;
+ }
+ 
+-static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
+-                          int mmu_idx, ARMMMUFaultInfo *fi)
++void arm_deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
++                       int mmu_idx, ARMMMUFaultInfo *fi)
+ {
+     CPUARMState *env = &cpu->env;
+     int target_el;
+@@ -179,27 +179,6 @@ static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
+     raise_exception(env, exc, syn, target_el);
+ }
+ 
+-/* try to fill the TLB and return an exception if error. If retaddr is
+- * NULL, it means that the function was called in C code (i.e. not
+- * from generated code or from helper.c)
+- */
+-void tlb_fill(CPUState *cs, target_ulong addr, int size,
+-              MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
+-{
+-    bool ret;
+-    ARMMMUFaultInfo fi = {};
+-
+-    ret = arm_tlb_fill(cs, addr, access_type, mmu_idx, &fi);
+-    if (unlikely(ret)) {
+-        ARMCPU *cpu = ARM_CPU(cs);
+-
+-        /* now we have a real cpu fault */
+-        cpu_restore_state(cs, retaddr, true);
+-
+-        deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
+-    }
+-}
+-
+ /* Raise a data fault alignment exception for the specified virtual address */
+ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+                                  MMUAccessType access_type,
+@@ -212,7 +191,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+     cpu_restore_state(cs, retaddr, true);
+ 
+     fi.type = ARMFault_Alignment;
+-    deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
++    arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
+ }
+ 
+ /* arm_cpu_do_transaction_failed: handle a memory system error response
+@@ -233,7 +212,7 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+ 
+     fi.ea = arm_extabort_type(response);
+     fi.type = ARMFault_SyncExternal;
+-    deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
++    arm_deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
+ }
+ 
+ #endif /* !defined(CONFIG_USER_ONLY) */
+-- 
+2.17.1
+

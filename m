@@ -1,125 +1,415 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp54950wrg;
-        Fri, 10 May 2019 10:02:54 -0700 (PDT)
-X-Received: by 2002:aca:6086:: with SMTP id u128mr5398828oib.79.1557507774704;
-        Fri, 10 May 2019 10:02:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557507774; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pvr8rFg3kj6pH0p7FgMC9G3rPpRnfEvDHboD7NkrPwd2sgNFaugu0KFlfZzebwoVpY
-         a30e548CZPDS4U9apxL4TkuMKuaSJmhlTr9zrPwuk3HBwRTpS4IuKrmFvlGxNAAEl5OY
-         bqSLoSYjZdOUV+uV6yA7n7pUwDcdKEQZgWXnLPruMw1P+DSw5Zhe3vCJk9pQ4NzfBXB9
-         5lAgwHztaPZnfUIva+I/1pgznK7ZjVjdNZcG5bfR6mrHVZRnomiXx38VolH8j50QsMnG
-         lmhmDFgr18lZJHDAWTHLSlELcOBbKcLhFmX80DmyykwAaAFx7OGm2k+M8bXrI1ZFLrIr
-         E57w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Lwb8/s+ZRAgW4o7G5yBzAhEgsy57ve9R3odI5NEksVM=;
-        b=O5ErwvVZJLlt025kT04VtHne99fInQiddD3b0n7QyVhC3MqhkEkUcXalL2lu4c/vey
-         3yThzpji18R9RfyVYp1Ze0UVqoRK7iZ4qo72Mk2j27OZ98AZvjzIehA8XFNDQlXtOd4h
-         007Scg2rplzgWjL8wp9dIxtYungza1gY5HWg1z/EX7t1HBNNd8hxzH4kzsoI2ESGfVaO
-         gVos0iZRcZDYzdwQzCYfn/Qi2rsuVbqHKSLuWUhMLEF4KEIwZB629gaqXTluUVFgRK5o
-         l2/mNEtnC8Pl8PsOmnXpbMFxSNBh5xQaWYOAXEiCKOA568ZyjtaPK57Khy3kw8fo7Sub
-         H3CA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FRVq/0d2";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id s130sor655156oie.27.2019.05.10.10.02.54
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 May 2019 10:02:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="FRVq/0d2";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Lwb8/s+ZRAgW4o7G5yBzAhEgsy57ve9R3odI5NEksVM=;
-        b=FRVq/0d2OWudKcgGt/fwF5FuPlFdT89dGrPZUnody3iSnNZBv+o5ZFOESVtciZgfgN
-         CGuLGz1ZorNSTAyugGlJ3uu02tO2UuXe+0oWp2qMBWba0KuqIkh9UYJ7CspS2BUTUlXb
-         ttVBt1cxAySrZ6r8B6mI+PYcIyObW0A6GVOvi09CvY2sX897XTfDPrbxHkVuQirgKmFK
-         0LvInelV2GTpSvgJL0ylMbAAecq93OsAR3Dl8H3SzkpnfXMv41lW0s8tnMyMKsXj7zHo
-         FxvlNpbSNbMOqiu/Uo236d9XoHE/cdXe+iyqbT4D1aHRhoYTqwDHuGYJZ+4sbDwhWnG8
-         HoOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Lwb8/s+ZRAgW4o7G5yBzAhEgsy57ve9R3odI5NEksVM=;
-        b=JacpKBBu9f3Fc8OCdFZzijk8jF6+7CDq+mbPKy0F6Tg3B/JzcBN9WKNP+y/RaFrZUa
-         3rstCgCssRjQWk91Y368u8MXDAvhr1HVpWQunDaP6cv56zd6O3EYYAA7yPJimOTK+QGq
-         I9ZT0k2ZJZOHNDAGL2st8isxDlEx7vc245AqGabo3PxB4Bz1B2jK1XuoB/RZOEKfzNOv
-         rbFJc5yRlVNGy82k90G0BLAQS0Wf+QNygHP33oqmsCK5tG/HLFXvceXMIrlHKQ9OSCnY
-         QpuYlbABbUdGBJWpomLtrsMvoxRMxbk2+30s9BPl6dlEqnpwECMz5rMopXKHA8KA8OII
-         SOHQ==
-X-Gm-Message-State: APjAAAXc2r2BfVl57o9tmJEXXj8QfCJ3UbL7ZpZ6sxxJP/0kUsA23xjo
-	oiqoAybGVDD8KIPlKjXPO8qsTdTG5/Pb329aNL2sIMrPSMRu3Q==
-X-Google-Smtp-Source: APXvYqzWWfDdz5gck8Ho+Ubc7sSSwhCxkNHeGJmSea02sR58JCWLUVlX2SL/OWIV4TdrcCUcLy3oq2FNg8chbbj1qY8=
-X-Received: by 2002:aca:110f:: with SMTP id 15mr5833455oir.163.1557507774085;
- Fri, 10 May 2019 10:02:54 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id n4sm11300720wmb.22.2019.05.10.12.10.57
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 10 May 2019 12:10:57 -0700 (PDT)
+Received: from zen.linaroharston. (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 35D331FF87;
+	Fri, 10 May 2019 20:10:57 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [RFC PATCH] target/arm: semihosting docs, formatting and return clean-ups
+Date: Fri, 10 May 2019 20:10:50 +0100
+Message-Id: <20190510191051.5973-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190509165912.10512-1-alex.bennee@linaro.org>
- <20190509165912.10512-6-alex.bennee@linaro.org> <CAFEAcA8Dsdp2rnORnzqemWspfFxfhVwkAz=2EXdupo8iDj_=Hw@mail.gmail.com>
- <87tve2b5z2.fsf@zen.linaroharston>
-In-Reply-To: <87tve2b5z2.fsf@zen.linaroharston>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 May 2019 18:02:42 +0100
-Message-ID: <CAFEAcA9q9n24wZF9nRM=norAK+tPv9LL4LM4-8gwH8F+0D0umw@mail.gmail.com>
-Subject: Re: [PATCH v1 05/23] semihosting: enable chardev backed output
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: xPQQomWgpEwv
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: mQDU8cM4EWqP
 
-On Fri, 10 May 2019 at 17:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Thu, 9 May 2019 at 17:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
-> >>
-> >> For running system tests we want to be able to re-direct output to a
-> >> file like we do with serial output. This does the wiring to allow us
-> >> to treat semihosting like just another character output device.
-> >>
-> >> diff --git a/qemu-options.hx b/qemu-options.hx
-> >> index 51802cbb266..6aa3a08c2fb 100644
-> >> --- a/qemu-options.hx
-> >> +++ b/qemu-options.hx
-> >> @@ -3975,12 +3975,12 @@ STEXI
-> >>  Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II only).
-> >>  ETEXI
-> >>  DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
-> >> -    "-semihosting-config [enable=3Don|off][,target=3Dnative|gdb|auto]=
-[,arg=3Dstr[,...]]\n" \
-> >> +    "-semihosting-config [enable=3Don|off][,target=3Dnative|gdb|auto]=
-[,chardev=3Did][,arg=3Dstr[,...]]\n" \
-> >>      "                semihosting configuration\n",
-> >>  QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
-> >>  QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
-> >
-> > As you can see in the docs here, semihosting is supported on
-> > five guest architectures, so we should implement this new
-> > feature for all of them, not just arm.
->
-> As I've introduced this for testing I see no reason not to add support
-> for other architectures. However I was hoping this is something that
-> could be done organically as other system tests get enabled.
+This is a clean-up of the semihosting calls after reading ver 2.0 of
+the specification. There are a number of small fixes that seemed too
+insignificant to split into smaller patches:
 
-IME transitions done "organically" really means "slowly, and
-nobody ever gets round to actually completing them".
-Semihosting is a user-facing feature, so if we want to add
-the user feature of allowing output to go to a chardev we
-should add it properly, I think.
+  - add reference to the ARM semihosting spec
+  - add some additional commentary on return values
+  - fixup block comments as per standard
+  - audit return values, return 0xdeadbeef for corrupted values
+  - fix up leaks from early returns with lock_user_string
+  - return bytes not written/read instead of -1
+  - add LOG_UNIMP for missing functionality
 
-thanks
--- PMM
+This is very much a Friday patch. It might be worth splitting up if
+coming back for a more concerted clean-up series for semihosting as
+the asynchronous gdb calls probably need more attention.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/arm-semi.c | 180 +++++++++++++++++++++++++-----------------
+ 1 file changed, 109 insertions(+), 71 deletions(-)
+
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 4c326fdc2fb..8deaed2807c 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -2,6 +2,7 @@
+  *  Arm "Angel" semihosting syscalls
+  *
+  *  Copyright (c) 2005, 2007 CodeSourcery.
++ *  Copyright (c) 2019 Linaro
+  *  Written by Paul Brook.
+  *
+  *  This program is free software; you can redistribute it and/or modify
+@@ -15,13 +16,19 @@
+  *  GNU General Public License for more details.
+  *
+  *  You should have received a copy of the GNU General Public License
+- *  along with this program; if not, see <http://www.gnu.org/licenses/>.
++ *  along with this program; if not, see
++ *  <http://www.gnu.org/licenses/>.
++ *
++ *  ARM Semihosting is documented in:
++ *     Semihosting for AArch32 and AArch64 Release 2.0
++ *     https://static.docs.arm.com/100863/0200/semihosting.pdf
+  */
+ 
+ #include "qemu/osdep.h"
+ 
+ #include "cpu.h"
+ #include "exec/semihost.h"
++#include "exec/log.h"
+ #ifdef CONFIG_USER_ONLY
+ #include "qemu.h"
+ 
+@@ -241,13 +248,18 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
+      put_user_u64(val, args + (n) * 8) :                \
+      put_user_u32(val, args + (n) * 4))
+ 
++/*
++ * Do a semihosting call. Returns the "RETURN REGISTER" which is
++ * documented as corrupted for some calls. In this case we use the
++ * venerable 0xdeadbeef.
++ */
+ target_ulong do_arm_semihosting(CPUARMState *env)
+ {
+     ARMCPU *cpu = arm_env_get_cpu(env);
+     CPUState *cs = CPU(cpu);
+     target_ulong args;
+     target_ulong arg0, arg1, arg2, arg3;
+-    char * s;
++    char *s;
+     int nr;
+     uint32_t ret;
+     uint32_t len;
+@@ -273,9 +285,9 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         GET_ARG(2);
+         s = lock_user_string(arg0);
+         if (!s) {
+-            /* FIXME - should this error code be -TARGET_EFAULT ? */
+             return (uint32_t)-1;
+         }
++        /* check for invalid open mode */
+         if (arg1 >= 12) {
+             unlock_user(s, arg0, 0);
+             return (uint32_t)-1;
+@@ -287,7 +299,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         }
+         if (use_gdb_syscalls()) {
+             ret = arm_gdb_syscall(cpu, arm_semi_cb, "open,%s,%x,1a4", arg0,
+-                                  (int)arg2+1, gdb_open_modeflags[arg1]);
++                                  (int) arg2 + 1, gdb_open_modeflags[arg1]);
+         } else {
+             ret = set_swi_errno(ts, open(s, open_modeflags[arg1], 0644));
+         }
+@@ -301,48 +313,51 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return set_swi_errno(ts, close(arg0));
+         }
+     case TARGET_SYS_WRITEC:
+-        {
+-          char c;
+-
+-          if (get_user_u8(c, args))
+-              /* FIXME - should this error code be -TARGET_EFAULT ? */
+-              return (uint32_t)-1;
+-          /* Write to debug console.  stderr is near enough.  */
+-          if (use_gdb_syscalls()) {
++    {
++        char c;
++        if (!get_user_u8(c, args)) {
++            /* Write to debug console.  stderr is near enough.  */
++            if (use_gdb_syscalls()) {
+                 return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,1", args);
+-          } else {
++            } else {
+ #ifdef CONFIG_SOFTMMU
+-              Chardev *chardev = semihosting_get_chardev();
+-              if (chardev) {
+-                  return qemu_chr_write_all(chardev, (uint8_t *) &c, 1);
+-              } else
++                Chardev *chardev = semihosting_get_chardev();
++                if (chardev) {
++                    return qemu_chr_write_all(chardev, (uint8_t *) &c, 1);
++                }
+ #endif
+-              {
+-                  return write(STDERR_FILENO, &c, 1);
+-              }
+-          }
++                return write(STDERR_FILENO, &c, 1);
++            }
++        } else {
++            /* return register is corrupted */
++            return 0xdeadbeef;
+         }
++    }
+     case TARGET_SYS_WRITE0:
+-        if (!(s = lock_user_string(args)))
+-            /* FIXME - should this error code be -TARGET_EFAULT ? */
+-            return (uint32_t)-1;
+-        len = strlen(s);
+-        if (use_gdb_syscalls()) {
+-            return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,%x",
+-                                   args, len);
+-        } else {
++    {
++        s = lock_user_string(args);
++        if (s) {
++            len = strlen(s);
++            if (use_gdb_syscalls()) {
++                arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,%x",
++                                args, len);
++            } else {
+ #ifdef CONFIG_SOFTMMU
+-            Chardev *chardev = semihosting_get_chardev();
+-            if (chardev) {
+-                ret = qemu_chr_write_all(chardev, (uint8_t *) s, len);
+-            } else
++                Chardev *chardev = semihosting_get_chardev();
++                if (chardev) {
++                    qemu_chr_write_all(chardev, (uint8_t *) s, len);
++                } else
+ #endif
+-            {
+-                ret = write(STDERR_FILENO, s, len);
++                {
++                    /* result ignored */
++                    ret = write(STDERR_FILENO, s, len);
++                }
+             }
+         }
+         unlock_user(s, args, 0);
+-        return ret;
++        /* return register is corrupted */
++        return 0xdeadbeef;
++    }
+     case TARGET_SYS_WRITE:
+         GET_ARG(0);
+         GET_ARG(1);
+@@ -355,13 +370,15 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         } else {
+             s = lock_user(VERIFY_READ, arg1, len, 1);
+             if (!s) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
++                /* Return bytes not written on error */
++                return len;
+             }
+             ret = set_swi_errno(ts, write(arg0, s, len));
+             unlock_user(s, arg1, 0);
+-            if (ret == (uint32_t)-1)
+-                return -1;
++            if (ret == (uint32_t)-1) {
++                ret = 0;
++            }
++            /* Return bytes not written */
+             return len - ret;
+         }
+     case TARGET_SYS_READ:
+@@ -376,26 +393,33 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         } else {
+             s = lock_user(VERIFY_WRITE, arg1, len, 0);
+             if (!s) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
++                /* return bytes not read */
++                return len;
+             }
+             do {
+                 ret = set_swi_errno(ts, read(arg0, s, len));
+             } while (ret == -1 && errno == EINTR);
+             unlock_user(s, arg1, len);
+-            if (ret == (uint32_t)-1)
+-                return -1;
++            if (ret == (uint32_t)-1) {
++                ret = 0;
++            }
++            /* Return bytes not read */
+             return len - ret;
+         }
+     case TARGET_SYS_READC:
+-       /* XXX: Read from debug console. Not implemented.  */
++        qemu_log_mask(LOG_UNIMP, "%s: TARGET_SYS_READC not implemented",
++                      __func__);
+         return 0;
+     case TARGET_SYS_ISTTY:
+         GET_ARG(0);
+         if (use_gdb_syscalls()) {
+             return arm_gdb_syscall(cpu, arm_semi_cb, "isatty,%x", arg0);
+         } else {
+-            return isatty(arg0);
++            if (isatty(arg0)) {
++                return 1;
++            } else {
++                return (errno == EBADF ? -1 : 0);
++            }
+         }
+     case TARGET_SYS_SEEK:
+         GET_ARG(0);
+@@ -405,8 +429,9 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+                                    arg0, arg1);
+         } else {
+             ret = set_swi_errno(ts, lseek(arg0, arg1, SEEK_SET));
+-            if (ret == (uint32_t)-1)
+-              return -1;
++            if (ret == (uint32_t)-1) {
++                return -1;
++            }
+             return 0;
+         }
+     case TARGET_SYS_FLEN:
+@@ -417,28 +442,30 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         } else {
+             struct stat buf;
+             ret = set_swi_errno(ts, fstat(arg0, &buf));
+-            if (ret == (uint32_t)-1)
++            if (ret == (uint32_t)-1) {
+                 return -1;
++            }
+             return buf.st_size;
+         }
+     case TARGET_SYS_TMPNAM:
+-        /* XXX: Not implemented.  */
++        qemu_log_mask(LOG_UNIMP, "%s: TARGET_SYS_TMPNAM not implemented",
++                      __func__);
+         return -1;
+     case TARGET_SYS_REMOVE:
+         GET_ARG(0);
+         GET_ARG(1);
+         if (use_gdb_syscalls()) {
+             ret = arm_gdb_syscall(cpu, arm_semi_cb, "unlink,%s",
+-                                  arg0, (int)arg1+1);
++                                  arg0, (int)arg1 + 1);
+         } else {
+             s = lock_user_string(arg0);
+             if (!s) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
++                return -EIO;
+             }
+-            ret =  set_swi_errno(ts, remove(s));
++            ret = set_swi_errno(ts, remove(s));
+             unlock_user(s, arg0, 0);
+         }
++        /* 0 on success or host-specific error code */
+         return ret;
+     case TARGET_SYS_RENAME:
+         GET_ARG(0);
+@@ -447,20 +474,23 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         GET_ARG(3);
+         if (use_gdb_syscalls()) {
+             return arm_gdb_syscall(cpu, arm_semi_cb, "rename,%s,%s",
+-                                   arg0, (int)arg1+1, arg2, (int)arg3+1);
++                                   arg0, (int)arg1 + 1, arg2, (int)arg3 + 1);
+         } else {
+             char *s2;
+             s = lock_user_string(arg0);
+             s2 = lock_user_string(arg2);
+-            if (!s || !s2)
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                ret = (uint32_t)-1;
+-            else
++            if (s && s2) {
+                 ret = set_swi_errno(ts, rename(s, s2));
+-            if (s2)
++            } else {
++                ret = -EIO;
++            }
++            if (s2) {
+                 unlock_user(s2, arg2, 0);
+-            if (s)
++            }
++            if (s) {
+                 unlock_user(s, arg0, 0);
++            }
++            /* 0 on success or host-specific error code */
+             return ret;
+         }
+     case TARGET_SYS_CLOCK:
+@@ -472,7 +502,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         GET_ARG(1);
+         if (use_gdb_syscalls()) {
+             return arm_gdb_syscall(cpu, arm_semi_cb, "system,%s",
+-                                   arg0, (int)arg1+1);
++                                   arg0, (int)arg1 + 1);
+         } else {
+             s = lock_user_string(arg0);
+             if (!s) {
+@@ -527,14 +557,16 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+ 
+             output_size = ts->info->arg_end - ts->info->arg_start;
+             if (!output_size) {
+-                /* We special-case the "empty command line" case (argc==0).
+-                   Just provide the terminating 0. */
++                /*
++                 * We special-case the "empty command line" case (argc==0).
++                 * Just provide the terminating 0.
++                 */
+                 output_size = 1;
+             }
+ #endif
+ 
+             if (output_size > input_size) {
+-                 /* Not enough space to store command-line arguments.  */
++                /* Not enough space to store command-line arguments.  */
+                 return -1;
+             }
+ 
+@@ -588,8 +620,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             GET_ARG(0);
+ 
+ #ifdef CONFIG_USER_ONLY
+-            /* Some C libraries assume the heap immediately follows .bss, so
+-               allocate it using sbrk.  */
++            /*
++             * Some C libraries assume the heap immediately follows .bss, so
++             * allocate it using sbrk.
++             */
+             if (!ts->heap_limit) {
+                 abi_ulong ret;
+ 
+@@ -637,7 +671,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         }
+     case TARGET_SYS_EXIT:
+         if (is_a64(env)) {
+-            /* The A64 version of this call takes a parameter block,
++            /*
++             * The A64 version of this call takes a parameter block,
+              * so the application-exit type can return a subcode which
+              * is the exit status code from the application.
+              */
+@@ -650,14 +685,17 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+                 ret = 1;
+             }
+         } else {
+-            /* ARM specifies only Stopped_ApplicationExit as normal
+-             * exit, everything else is considered an error */
++            /*
++             * ARM specifies only Stopped_ApplicationExit as normal
++             * exit, everything else is considered an error
++             */
+             ret = (args == ADP_Stopped_ApplicationExit) ? 0 : 1;
+         }
+         gdb_exit(env, ret);
+         exit(ret);
+     case TARGET_SYS_SYNCCACHE:
+-        /* Clean the D-cache and invalidate the I-cache for the specified
++        /*
++         * Clean the D-cache and invalidate the I-cache for the specified
+          * virtual address range. This is a nop for us since we don't
+          * implement caches. This is only present on A64.
+          */
+-- 
+2.20.1

@@ -1,100 +1,100 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp252121wrg;
-        Fri, 10 May 2019 13:51:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzOVbRKCoaXAu9wXL8pJXukXwxW4uQWCWir8zfWLIh01tEWqjnkKi605c9gO63z5dcwOolJ
-X-Received: by 2002:aa7:c483:: with SMTP id m3mr13787376edq.161.1557521507515;
-        Fri, 10 May 2019 13:51:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557521507; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp252734wrg;
+        Fri, 10 May 2019 13:52:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxiJKJMUgD0qGJNaoBOqbnzMlWnqpNZbxptOTL+k+znaWvm7uSK62rfJTVfzwJRNjAZSCV+
+X-Received: by 2002:a17:906:110c:: with SMTP id h12mr10666204eja.215.1557521562590;
+        Fri, 10 May 2019 13:52:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557521562; cv=none;
         d=google.com; s=arc-20160816;
-        b=UP5P0Yxd5xKOXQwQDoek4RB+HdDjftliQ3JFDWmmg+hlpCtHshO97fvRCgeTMEIQxG
-         wvV6SFTEQrnN+Tnwf79g/3QPlTGkZ5BKm8ggZqd9gUTGBzoqhDgkCMtkjjKaNQh0BL8M
-         SvEkbhj3Wbs5n79FS4qhCBBeEVoOhxVDbgyIbdwhivO9K04+AeqMNPeSIx8Wk2B89Il3
-         fCWHN5Z681KCSN4O6+tqskLcSahWsFgsEmEpRGIyd3N+StN3YDEYR4Kjy+lbyhi0wqAc
-         +kNjJNIKVl3/rWcZcg1dOl4hiCX5MDc1q5LwfqNlWvSKWChKOgUb2ZYRcxz4lffIm0Bf
-         4XWg==
+        b=lw8rdujQm8iaiqK0I+BKqT3VkOUGtQZlpMMHJiPaChCcSGsMo1aKRRQdX4u2gCOBqC
+         bDZWQA6eWrc1dT2jjmd4RUAeBKVx578F0tgbFU1tNex0aoY6TZGiSCJhsKgj3jkVqmxs
+         J+eGIzHIJMqbvz6rCCpPI1/99fBBuoI80Fb0oVuZw5agDpRHXIC18uZVpcTERlejJz7v
+         gU+0ntPxBVYj1x/7nE/ele+VNuLdZulYw3xbQ9cHHE37d7kVCQXPxVka3+vO2SP8UtIP
+         Q8C/l9j+p8QjNH3sL15xLfa3rpOelQ2hx48nPR1jcvRCGeTaJBiv+FlfO47Ugv8T86CN
+         IoJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=YFs8tYIB4fQU4YmAVX+dhWe0qPrL6tFDfZQQKGjfLRQ=;
-        b=U0vNv0FsVGXNWhrTD7h8gRuAekLYcCkomdAr4DfFg+zHhA3X2VrM4Zk4aNvNljVG5L
-         uhfqdIjHIngfNBXLe4vNZvGCAb6SpGcQMuqBQsTpzcmgCnu/wAz5KZZYSijjl1HqDMdL
-         gFKbC30utmZq+Fjh1GjLcVVIXe7QGDFl+TntHMfMlZx+RqIzk2O8m3quUzR4dV2y8rFc
-         seozLE8icyIGByC/uzieRVhykxsgg9+kka2su+V7LSS2qUSFW/mRhY20BJ+e1V0Wnzld
-         Njo4lQjWtxzV37K68SKk0n93mb9DmFLLpkekeKh8vgWJ7mT3nfZHClY4U9eWDGWntPe8
-         EAMA==
+        bh=6fAiRzgNXrfYcpso+96yNIf18bf+QqR1W7fdgjYw+40=;
+        b=sGS1oH1zpzwdG8atR81GJV3kfvxkxTmwt9JuthVB0OUnfCidJ+9vZ5aWbUxxKSJQ6T
+         sLE4gwkYqAmZSQebdhiluuJZF8+rpdnIB/h0NorwN2inHXXa3OT6tPuutYKFXOy9S4fT
+         cIv4bjBEA/ZE3ryXbtKBYIMWqTCcYGfgxoxfgnWpv+C+30mXcRpl6R9OCLyOzaCrUKVA
+         bn337EZgruAtMZUp3c6bn0E/s4iOEId2gUgcm41+Ln2QT0Udnwyl8BJ49o0W4NgGaAbW
+         zqZ0cstopPkUuT7KOJnRJRQ3FSJma4q1wD/lUfXb8rgzUtzaxUkqdb+XzxfUjXC7inx3
+         8yew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kc5oWC7z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QZdKudUD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si2715551eje.110.2019.05.10.13.51.47
+        by mx.google.com with ESMTPS id a6si4877460edm.208.2019.05.10.13.52.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 13:51:47 -0700 (PDT)
+        Fri, 10 May 2019 13:52:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kc5oWC7z;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QZdKudUD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:49788 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49798 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hPCUc-0000Q3-Gv
-	for alex.bennee@linaro.org; Fri, 10 May 2019 16:51:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41716)
+	id 1hPCVV-0001f9-I2
+	for alex.bennee@linaro.org; Fri, 10 May 2019 16:52:41 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41839)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPCTb-0008TF-R7
-	for qemu-devel@nongnu.org; Fri, 10 May 2019 16:50:45 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hPCU1-0000td-3y
+	for qemu-devel@nongnu.org; Fri, 10 May 2019 16:51:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPCTa-0002NJ-OJ
-	for qemu-devel@nongnu.org; Fri, 10 May 2019 16:50:43 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:34098)
+	(envelope-from <alistair23@gmail.com>) id 1hPCTz-0002tx-UD
+	for qemu-devel@nongnu.org; Fri, 10 May 2019 16:51:09 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:37476)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hPCTa-0002L6-Fw; Fri, 10 May 2019 16:50:42 -0400
-Received: by mail-lf1-x141.google.com with SMTP id v18so5088894lfi.1;
-	Fri, 10 May 2019 13:50:42 -0700 (PDT)
+	id 1hPCTz-0002rJ-Kw; Fri, 10 May 2019 16:51:07 -0400
+Received: by mail-lj1-x242.google.com with SMTP id n4so6197613ljg.4;
+	Fri, 10 May 2019 13:51:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=YFs8tYIB4fQU4YmAVX+dhWe0qPrL6tFDfZQQKGjfLRQ=;
-	b=Kc5oWC7zin00jQBVMwoE4WVSpxpoM8yMCe2FONFZExwoxUwrry8CP6XytnCCq/l6Q0
-	ethpVRvd3R4AkzmD5GJOdlYI06LLAvvvB2+Vctab2ihDuRipsk9dErNFTmTX/o982HD9
-	/3F8FGknDTi/GrJhz8zLu0BO/kZVCLwKwmKnGLw+BExFfSVYb1ydyZdlZfCzu0kHarQw
-	xHGqKyz4xZrZDsqbxhIrkW9pqgj+LiJ4JcM4bePkoDrSIA3qWA8OWOmdmsp8IasecRDL
-	1mJsRImTkavf4MeW9RhONitWKmAjr9Vl/CZQotApAhacMlRpXRRcdln95CztWdfSdfas
-	r5IQ==
+	bh=6fAiRzgNXrfYcpso+96yNIf18bf+QqR1W7fdgjYw+40=;
+	b=QZdKudUDnx8QPMQ9C8TnAsOaWpOVIpo1VsEymgjQHuf0KsrmRMg7FVd85G1KP3j5zn
+	jivqqyzJCqjy/zwcUKDO4n9A/zrfSrrl5gdx6MhyU/1W6rWo4wSNzUUzGvzd5Xkp8nk4
+	s3OhwBMic7GV5M7b9RKnDKyVwJEJbywImdMbLlzOpFXHZNrVpXbwj0nK2XSjz3ldJ4IK
+	YshcEl0QNHVDadMBrxvR5oEeksEnbj47/1Q0r9oXZQV33OpmPzk2V7K7qT2qVy/c1YE+
+	/lPyh3Fxqp3lxc7R4s8j1znyjyd/NCpOARhKlP6DFFQAh6LFvl2e9PqOixK8Ry93CstV
+	UbDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=YFs8tYIB4fQU4YmAVX+dhWe0qPrL6tFDfZQQKGjfLRQ=;
-	b=H+ZIaGyqni31vgptZaPb6/P0Re1eLi27p+rLkvnYTNrGZHEe/9uXXVOjVEN1hmTYN3
-	QQVpIS78xiycWPs6pVAoc3r32hIoE7JY2WmBMfw85IjmJOWCwiUAKLH0e5wCYBkXpKSX
-	+somtoTr/cqYaJ1kpKiMfsyYzd+ne06kRr10dbXsjaMLJ6ee2qWl7NIAdw3P6UVktIhf
-	NRqfOgJE+eD4jwKeLfQkcrOhrKZhtIXZvfkEdFlqxkY7k9CLfGkjZXXDu4Qko5khr4Vd
-	YzBK01xVCizNwJKRJfe3OuZRU6RTgMyK42Jm13toUq3Ka6YbmvZ3iaa+1IPgjkjk0fwA
-	l9GA==
-X-Gm-Message-State: APjAAAWG/f1ZCThAbV5zpuYNZlQc6gIbJOpFJYvtvX9SHVGNcAD0s/8i
-	OKcgQ0HF0/O2M4gJekW0HvIFnLR3fsjFk6Kqoa8=
-X-Received: by 2002:a19:189:: with SMTP id 131mr6941969lfb.74.1557521440933;
-	Fri, 10 May 2019 13:50:40 -0700 (PDT)
+	bh=6fAiRzgNXrfYcpso+96yNIf18bf+QqR1W7fdgjYw+40=;
+	b=EyTiSi73Rx/jiPmSnxy34REe/fpKFim/CvnowCcb2nQqulqw0spmV33aBvmFBpmBSu
+	0XcFMh0I3N8firDJioJJFU48xRbOZrvZi2LdaOqJJodng5qPBYDLlEbgPQP6/l0pOc+o
+	E6RBE+H62JfGwGQaeOhJxGr1qKHoAc+HzL6Qn9SN1jG0KZiuKq8y5n/DIOHXEgIKeFFD
+	AaI25/u2IVLMZCw9lUg/toZ9mp/hTTEwTMrP9OnD81WeSsxEni2dznFarXhrm1fD6L4q
+	GLrWlpQip0IjK26DvAu1Xn4nquoE46l1PU5neMAN8wFVGVQxvpugEM13P9J8h1gGXBa0
+	nAxA==
+X-Gm-Message-State: APjAAAUjUnTOwl3mYIv4fIA9+ki0owU7DHpzNFXsEzNPubrWJkXBCKQR
+	PYy3PQp4K9ff+/49XVt0ad7W7cVK3UhX015FqJc=
+X-Received: by 2002:a2e:8988:: with SMTP id c8mr2966973lji.99.1557521466373;
+	Fri, 10 May 2019 13:51:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-14-philmd@redhat.com>
-In-Reply-To: <20190507163416.24647-14-philmd@redhat.com>
+	<20190507163416.24647-15-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-15-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 10 May 2019 13:48:32 -0700
-Message-ID: <CAKmqyKPbx5YhWfpSBS=nWp+cPAPPGbz+-Rjm=Wcn_RrNhjjfJQ@mail.gmail.com>
+Date: Fri, 10 May 2019 13:48:57 -0700
+Message-ID: <CAKmqyKMkQR6FTXSo=zLm48mD8L-66g1iTiU0uupejTe4V0fmYA@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::141
-Subject: Re: [Qemu-devel] [PATCH v2 13/16] hw/microblaze/zynqmp: Use
+X-Received-From: 2a00:1450:4864:20::242
+Subject: Re: [Qemu-devel] [PATCH v2 14/16] hw/microblaze/zynqmp: Use
  object_initialize_child for correct ref. counting
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -130,9 +130,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NUUTk2kTVoFz
+X-TUID: Lfo0m+iIT+yw
 
-On Tue, May 7, 2019 at 9:46 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Tue, May 7, 2019 at 9:52 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om> wrote:
 >
 > As explained in commit aff39be0ed97:
@@ -146,40 +146,43 @@ om> wrote:
 >   reference counting here right.
 >
 > This patch was generated using the following Coccinelle script
-> (then manually modified to use numbered IPI name)
+> (with a bit of manual fix-up for overly long lines):
 >
->  @use_sysbus_init_child_obj_missing_parent@
+>  @use_object_initialize_child@
+>  expression parent_obj;
 >  expression child_ptr;
+>  expression child_name;
 >  expression child_type;
 >  expression child_size;
+>  expression errp;
 >  @@
+>  (
 >  -   object_initialize(child_ptr, child_size, child_type);
+>  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+>  +                           child_type, &error_abort, NULL);
+>      ... when !=3D parent_obj
+>  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ NULL);
 >      ...
->  -   qdev_set_parent_bus(DEVICE(child_ptr), sysbus_get_default());
+> ?-   object_unref(OBJECT(child_ptr));
+>  |
+>  -   object_initialize(child_ptr, child_size, child_type);
+>  +   object_initialize_child(parent_obj, child_name,  child_ptr, child_si=
+ze,
+>  +                            child_type, errp, NULL);
+>      ... when !=3D parent_obj
+>  -   object_property_add_child(parent_obj, child_name, OBJECT(child_ptr),=
+ errp);
 >      ...
->  ?-  object_unref(OBJECT(child_ptr));
->  +   sysbus_init_child_obj(OBJECT(PARENT_OBJ), "CHILD_NAME", child_ptr,
->  +                         child_size, child_type);
->
-> We let the SoC adopt the IPI children.
+> ?-   object_unref(OBJECT(child_ptr));
+>  )
 >
 > While the object_initialize() function doesn't take an
 > 'Error *errp' argument, the object_initialize_child() does.
 > Since this code is used when a machine is created (and is not
 > yet running), we deliberately choose to use the &error_abort
 > argument instead of ignoring errors if an object creation failed.
-> This choice also matches when using sysbus_init_child_obj(),
-> since its code is:
->
->   void sysbus_init_child_obj(Object *parent,
->                              const char *childname, void *child,
->                              size_t childsize, const char *childtype)
->   {
->       object_initialize_child(parent, childname, child, childsize,
->                               childtype, &error_abort, NULL);
->
->       qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
->   }
 >
 > Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 > Inspired-by: Thomas Huth <thuth@redhat.com>
@@ -190,29 +193,31 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/microblaze/xlnx-zynqmp-pmu.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+>  hw/microblaze/xlnx-zynqmp-pmu.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >
 > diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-=
 pmu.c
-> index 20e973edf5f..0948b1fd5f2 100644
+> index 0948b1fd5f2..df6c0048aa6 100644
 > --- a/hw/microblaze/xlnx-zynqmp-pmu.c
 > +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-> @@ -71,9 +71,10 @@ static void xlnx_zynqmp_pmu_soc_init(Object *obj)
+> @@ -176,9 +176,9 @@ static void xlnx_zynqmp_pmu_init(MachineState *machin=
+e)
+>                                  pmu_ram);
 >
->      /* Create the IPI device */
->      for (int i =3D 0; i < XLNX_ZYNQMP_PMU_NUM_IPIS; i++) {
-> -        object_initialize(&s->ipi[i], sizeof(XlnxZynqMPIPI),
-> -                          TYPE_XLNX_ZYNQMP_IPI);
-> -        qdev_set_parent_bus(DEVICE(&s->ipi[i]), sysbus_get_default());
-> +        char *name =3D g_strdup_printf("ipi%d", i);
-> +        sysbus_init_child_obj(obj, name, &s->ipi[i],
-> +                              sizeof(XlnxZynqMPIPI), TYPE_XLNX_ZYNQMP_IP=
-I);
-> +        g_free(name);
->      }
->  }
+>      /* Create the PMU device */
+> -    object_initialize(pmu, sizeof(XlnxZynqMPPMUSoCState), TYPE_XLNX_ZYNQ=
+MP_PMU_SOC);
+> -    object_property_add_child(OBJECT(machine), "pmu", OBJECT(pmu),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "pmu", pmu,
+> +                            sizeof(XlnxZynqMPPMUSoCState),
+> +                            TYPE_XLNX_ZYNQMP_PMU_SOC, &error_abort, NULL=
+);
+>      object_property_set_bool(OBJECT(pmu), true, "realized", &error_fatal=
+);
 >
+>      /* Load the kernel */
 > --
 > 2.20.1
 >

@@ -1,101 +1,98 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2158193wrh;
-        Fri, 10 May 2019 08:24:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwMkDNj39gsNmH6uUtjtBAPMQ3bJEH435yIwHs18G8K8fERRbqFFx+zsPqMjJeKcPKBYRTb
-X-Received: by 2002:a17:906:1dd5:: with SMTP id v21mr9133730ejh.142.1557501840378;
-        Fri, 10 May 2019 08:24:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557501840; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2204846wrh;
+        Fri, 10 May 2019 09:05:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyUPsCU+Cw+cnarn/XH0T6k2iOwRNu5kylD9ZQYByEjHyuUq1mCl1CsqUbWhygft0kUtc5E
+X-Received: by 2002:a17:906:6b01:: with SMTP id q1mr9447899ejr.34.1557504355912;
+        Fri, 10 May 2019 09:05:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557504355; cv=none;
         d=google.com; s=arc-20160816;
-        b=vRcHpNUDScfho8B/LGOk9aY0SO0q/WAUHKqy/bduP43TJRsG7Ka1ezz/HI5/0Uv54V
-         rF7c6Cs7HnPmzJIb6zQZaBOilVps1xD3Ay6PdEldOykcAeXZRB0AuGWG6b2GNZR8plSX
-         Qhiq3P8jA2jbSXDmN7r/vnYPJ2klmtn46wafhCzErP/JPjsAQfuedUm5eOSgWPZonC2T
-         s3uVwEBta9nonnXsiAiVGAvWavft/HQvndRiMZFonnEA6Hvvm6KBTij3TMkNuaei5gdp
-         yKVza4wTBDmnbYgUxM4gz7VMXdfU3xnR4jzDhZezBnECwg17+ueigpJtigULyBIwid2T
-         uJtw==
+        b=N52s21qDOIHLzYusvdPlhS7bETtiUFnzy4xcL/5MSnEk29DUt/5XutLuz3gcsjUbjO
+         J279YbrkdbSTCgHyLfIiY+uLZP05uAeROaDDlb9eqKSiKoWM2nFZHWxQ9kFJoj07rvkB
+         /PXm8dyfKwfvcas4xIrf1u6j+oks+i6Ja6gCRVKVIyFDLbnbn/L9iil0HI1kIXuBijIk
+         CkvK3KouIiw108pBQ84C1IpNAmlteR5FjrV1K4khDd0SbIlPEvRZtdAXQygo1u575yX0
+         f9vtju6PXkVnHSLQJxTTW+OSVHunIacHe0WLkfZk7AoaLsSgZRwJAvYrhivQMZJGDJoQ
+         Kwig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=arkTudclBbivAZzWnq6ClicZUzHEE3qicGPLMaqemkE=;
-        b=L4YN1Yt816q41j9JMH2Fm/M0foyrvnknGlGBGp/Qy8ZBQDnNUTDIksyru2S+rcytY7
-         O8xoQeMedxZ6U65EsQ5+82NiNRWw68JXuqBY4i2QJd+3AtPP39BYIaP5oDiLlBNmBl/0
-         ehuUjLYmNUykugtVVj136+oeu/xMComgJlLN327J8j6fxKxFC/VEBE5GtrgXndasSE6i
-         tW3+uYRWrsiMj0HYlxxeE2YAReh6pyM+oTnQriJTt1RATu5SoAOmFS1yN10ti8cKquEG
-         A6ZuLL1JaJ1AkfTicm1+veRgyaY2jxiE18EGPgBNDBqy8HrO/ssHY8KPGCxcsyqXKhJ7
-         9V9g==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Dy8EhEUL2zVhXDJiWFjxCwIcgr3gV584fPxJ19AkQfE=;
+        b=rRlpUuYQ9rSvcqAaRx3YVUQ1TSgSY+YC4Vx8OmTDQn95J/K4Kk2SwEXJ/dra094JQc
+         jyc0gPH0mtlIJgMs9d6oYblfTIzRUWzmJMSF8MWbEjgF5lGP72zVAobjh71PLthWVVAe
+         +ulnJ2yFrBNaUSUS1JLjkLWwDTAHTcTPVIvJlnPBDx40m/E0xaKw+uK3lf1AWd2jlTgT
+         /ib8594FFISkmtHwJPx/jqxbVfR3Rccv6HxforzI453fMHADHjWjIwz06Ji0WlxtrUgH
+         Y/ZWLuH20jm95G0D6UOE0AvKc9o+2qSFzQ+G6CpMyc0nAE2t34Q9J2BvDT79vG+zY95V
+         6AGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o1bcK7Y/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TJlQqWMu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si3966994eda.111.2019.05.10.08.24.00
+        by mx.google.com with ESMTPS id dt1si3245397ejb.95.2019.05.10.09.05.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 08:24:00 -0700 (PDT)
+        Fri, 10 May 2019 09:05:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o1bcK7Y/";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TJlQqWMu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:45014 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:45930 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hP7NP-0002tR-8O
-	for alex.bennee@linaro.org; Fri, 10 May 2019 11:23:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55988)
+	id 1hP81z-00065Z-0k
+	for alex.bennee@linaro.org; Fri, 10 May 2019 12:05:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hP7JR-0007Pn-Oq
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 11:19:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hP7xU-00036r-FH
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 12:01:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hP7JP-0008Ei-SJ
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 11:19:53 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:43111)
+	(envelope-from <peter.maydell@linaro.org>) id 1hP7xT-0004M9-Ha
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 12:01:16 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37509)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hP7JP-0008E3-KG
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 11:19:51 -0400
-Received: by mail-pg1-x543.google.com with SMTP id t22so3171829pgi.10
-	for <qemu-arm@nongnu.org>; Fri, 10 May 2019 08:19:51 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hP7xT-0004LH-9s
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 12:01:15 -0400
+Received: by mail-ot1-x342.google.com with SMTP id r10so5296871otd.4
+	for <qemu-arm@nongnu.org>; Fri, 10 May 2019 09:01:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=arkTudclBbivAZzWnq6ClicZUzHEE3qicGPLMaqemkE=;
-	b=o1bcK7Y/KLk+oCtZu68b5QuVTg94gZkj8VRibWyLTLLXRmh2ll/RD0yD7QGWhtmkg9
-	o8p/SB4r4veWG6WsRvAYRyZDBh+/cR9eG8k2vvALN5Z/YAOpq4l828/Kbd1zxsT8qiDv
-	dz9B0CIhtb1/paoaNDmBes0moxLeLHHDDr/4z91lNfJIqC1fbpd4iXHxBb5QCqzDHMFx
-	EDRSY5P9dlu/k35/xBTcH7wYQ49/1s+Hakmx0r2/de4Uq8zXZVx4DAYGYP8lTq1XzF/i
-	bh2rpmTZ9oeknwUK93SeAJfVnFB8lpZoUp1MaT8SnC2pVsUzGepNUjbnC0v0NXdYTytr
-	+q9A==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=Dy8EhEUL2zVhXDJiWFjxCwIcgr3gV584fPxJ19AkQfE=;
+	b=TJlQqWMuDb8BYcqOW6x39cfka8o0a8zS7/dVoGofIqyfy6bZm21Okfw5YbQ05kVxb/
+	J6De+Tj/9hnaX8WUbxLBpZ7fvz4Hr8AxS2xwPp5iYxmNPpDOCNno29nqQwiyFgd88NkZ
+	7AZJaW+3N5o51mLvvV4foxsDeashWN7qCnAu1ONBwwTCl2UUaHhf1Krht9QmCoS3Qo16
+	/A5yrMoX3x0Sa4Lg3wJEXZl2rmghTWdIiBxOR+hjRB/AObuD1YY7+eem7WE4Rpxl+Xaw
+	PZkpBjkqUWisw3Sf3Rnb9bQMqS+LpTZLnw9RjeBUYG5G93uqUnUlq8mzQikfnlEK0Hct
+	V8AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=arkTudclBbivAZzWnq6ClicZUzHEE3qicGPLMaqemkE=;
-	b=by/tNTnmzp5ThEBfILdcxPt7xOsWelHAyittRE0/8dMt1XymhG1jmSH+FBktS6sytV
-	q5AMWvvZry4GWJ3I79YV7Q7FxB0g252MjgBCu82yI/EvfhDNW4dqfsF4Yld44bmN4DCy
-	6V9MNdS0N/9/I9N2EBbxvPiJP11JCRoAK6mFCn8QwlUG62up6pCsKYWCIhYLF9qKFfaT
-	xShTDgxVDwMcPGzRkv67PnluDHFoBguc96dKFo1F+E3uOfeaOVCCweJotIT1GJaGczLQ
-	UawrySHiBb36W1ShxedJAhYGaA7ZG/LvR7rIgDhqySorhXwYWnqG+rggK3dGQmiq8JmI
-	YAEA==
-X-Gm-Message-State: APjAAAXk00OyGLhYjEEvl0JX+QD+mTbaot2VWtm6ctUkB49B51nmHfoV
-	7rRK6nN4/Dj9YBSbZy5o3CwgFQ==
-X-Received: by 2002:a63:af45:: with SMTP id s5mr14259077pgo.420.1557501590462; 
-	Fri, 10 May 2019 08:19:50 -0700 (PDT)
-Received: from localhost.localdomain (97-113-13-231.tukw.qwest.net.
-	[97.113.13.231])
-	by smtp.gmail.com with ESMTPSA id 19sm5920517pgz.24.2019.05.10.08.19.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 10 May 2019 08:19:49 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 10 May 2019 08:19:20 -0700
-Message-Id: <20190510151944.22981-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190510151944.22981-1-richard.henderson@linaro.org>
-References: <20190510151944.22981-1-richard.henderson@linaro.org>
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=Dy8EhEUL2zVhXDJiWFjxCwIcgr3gV584fPxJ19AkQfE=;
+	b=Djo+KX8OQ7bsbI/7Fm9hEmIhWiQQumU/Jsj5CV0itTi8hCA0OOLbXbmabXjHfUUjng
+	7I7lFf5byTTnzwjHLJONxxY21hXZZwciOBJwWh/bHhUqtPLvOe8klrrhJx9SWmT+29WC
+	8X8G1P/Ar4RDk2sOyLO2Nv2te9emPLucX18JGAtoGPq/6ReitZ9isfE3rXz8vy+0uHnh
+	yJjxBYeJq/Rmr/e0iCwBqLrSNsZmFalB1CYrxf5ICm7b1HQfAzhrjpEztDpUnh3V1btx
+	RtS6PyY3awOTl/nW0CV9Wl2qsBxbXUZnuFihQ1/hRAVdxDfdKruQhjh98dqbJCm2jJWS
+	P6UA==
+X-Gm-Message-State: APjAAAWEFdU9xGHF6QQIeXOGzG6IFv8NThr1z6qRcOkAwcjiE+T/GuKz
+	Ou77P1r35DJf+v3wHii5kYQOzqGhcMXn3yUp7IuXCRs66OY=
+X-Received: by 2002:a9d:4793:: with SMTP id b19mr2871763otf.238.1557504074140; 
+	Fri, 10 May 2019 09:01:14 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190510012458.22706-1-richard.henderson@linaro.org>
+	<20190510012458.22706-23-richard.henderson@linaro.org>
+In-Reply-To: <20190510012458.22706-23-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 May 2019 17:01:03 +0100
+Message-ID: <CAFEAcA9uwaev+Q=BgLBz+fgO6C7VGmw4Nxcozg2vm6TOm+LJww@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::543
-Subject: [Qemu-arm] [PULL 03/27] target/arm: Convert to CPUClass::tlb_fill
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-arm] [PATCH v5 22/24] target/arm: Implement ARMv8.5-RNG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,259 +104,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mUq5qEzR/53j
+X-TUID: lkslg4zrMb3i
 
-Cc: qemu-arm@nongnu.org
+On Fri, 10 May 2019 at 02:25, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Cc: qemu-arm@nongnu.org
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v3: Log errors with -d unimp, for lack of a better flag.
+> ---
+>  target/arm/cpu.h    |  5 +++++
+>  target/arm/cpu64.c  |  1 +
+>  target/arm/helper.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 50 insertions(+)
+
+> +/* We do not support re-seeding, so the two registers operate the same.  */
+> +static const ARMCPRegInfo rndr_reginfo[] = {
+> +    { .name = "RNDR", .state = ARM_CP_STATE_AA64,
+> +      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 0,
+> +      .access = PL0_R, .readfn = rndr_readfn },
+> +    { .name = "RNDRRS", .state = ARM_CP_STATE_AA64,
+> +      .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END,
+> +      .opc0 = 3, .opc1 = 3, .crn = 2, .crm = 4, .opc2 = 1,
+> +      .access = PL0_R, .readfn = rndr_readfn },
+
+Don't these need to be marked ARM_CP_IO for the benefit
+of -icount ?
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h | 10 +++--
- target/arm/cpu.c       | 22 +---------
- target/arm/helper.c    | 98 ++++++++++++++++++++++++++----------------
- target/arm/op_helper.c | 29 ++-----------
- 4 files changed, 73 insertions(+), 86 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 587a1ddf58..5a02f458f3 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -761,10 +761,12 @@ static inline bool arm_extabort_type(MemTxResult result)
-     return result != MEMTX_DECODE_ERROR;
- }
- 
--/* Do a page table walk and add page to TLB if possible */
--bool arm_tlb_fill(CPUState *cpu, vaddr address,
--                  MMUAccessType access_type, int mmu_idx,
--                  ARMMMUFaultInfo *fi);
-+bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-+                      MMUAccessType access_type, int mmu_idx,
-+                      bool probe, uintptr_t retaddr);
-+
-+void arm_deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
-+                       int mmu_idx, ARMMMUFaultInfo *fi) QEMU_NORETURN;
- 
- /* Return true if the stage 1 translation regime is using LPAE format page
-  * tables */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a181fa8dc1..bb8e824c3e 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2133,23 +2133,6 @@ static Property arm_cpu_properties[] = {
-     DEFINE_PROP_END_OF_LIST()
- };
- 
--#ifdef CONFIG_USER_ONLY
--static int arm_cpu_handle_mmu_fault(CPUState *cs, vaddr address, int size,
--                                    int rw, int mmu_idx)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    env->exception.vaddress = address;
--    if (rw == 2) {
--        cs->exception_index = EXCP_PREFETCH_ABORT;
--    } else {
--        cs->exception_index = EXCP_DATA_ABORT;
--    }
--    return 1;
--}
--#endif
--
- static gchar *arm_gdb_arch_name(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -2182,9 +2165,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
-     cc->synchronize_from_tb = arm_cpu_synchronize_from_tb;
-     cc->gdb_read_register = arm_cpu_gdb_read_register;
-     cc->gdb_write_register = arm_cpu_gdb_write_register;
--#ifdef CONFIG_USER_ONLY
--    cc->handle_mmu_fault = arm_cpu_handle_mmu_fault;
--#else
-+    cc->tlb_fill = arm_cpu_tlb_fill;
-+#ifndef CONFIG_USER_ONLY
-     cc->do_interrupt = arm_cpu_do_interrupt;
-     cc->do_unaligned_access = arm_cpu_do_unaligned_access;
-     cc->do_transaction_failed = arm_cpu_do_transaction_failed;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1e6eb0d0f3..f1a2b94ddb 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12596,43 +12596,6 @@ static bool get_phys_addr(CPUARMState *env, target_ulong address,
-     }
- }
- 
--/* Walk the page table and (if the mapping exists) add the page
-- * to the TLB. Return false on success, or true on failure. Populate
-- * fsr with ARM DFSR/IFSR fault register format value on failure.
-- */
--bool arm_tlb_fill(CPUState *cs, vaddr address,
--                  MMUAccessType access_type, int mmu_idx,
--                  ARMMMUFaultInfo *fi)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    hwaddr phys_addr;
--    target_ulong page_size;
--    int prot;
--    int ret;
--    MemTxAttrs attrs = {};
--
--    ret = get_phys_addr(env, address, access_type,
--                        core_to_arm_mmu_idx(env, mmu_idx), &phys_addr,
--                        &attrs, &prot, &page_size, fi, NULL);
--    if (!ret) {
--        /*
--         * Map a single [sub]page. Regions smaller than our declared
--         * target page size are handled specially, so for those we
--         * pass in the exact addresses.
--         */
--        if (page_size >= TARGET_PAGE_SIZE) {
--            phys_addr &= TARGET_PAGE_MASK;
--            address &= TARGET_PAGE_MASK;
--        }
--        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
--                                prot, mmu_idx, page_size);
--        return 0;
--    }
--
--    return ret;
--}
--
- hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-                                          MemTxAttrs *attrs)
- {
-@@ -13111,6 +13074,67 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
- 
- #endif
- 
-+bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-+                      MMUAccessType access_type, int mmu_idx,
-+                      bool probe, uintptr_t retaddr)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+#ifdef CONFIG_USER_ONLY
-+    cpu->env.exception.vaddress = address;
-+    if (access_type == MMU_INST_FETCH) {
-+        cs->exception_index = EXCP_PREFETCH_ABORT;
-+    } else {
-+        cs->exception_index = EXCP_DATA_ABORT;
-+    }
-+    cpu_loop_exit_restore(cs, retaddr);
-+#else
-+    hwaddr phys_addr;
-+    target_ulong page_size;
-+    int prot, ret;
-+    MemTxAttrs attrs = {};
-+    ARMMMUFaultInfo fi = {};
-+
-+    /*
-+     * Walk the page table and (if the mapping exists) add the page
-+     * to the TLB.  On success, return true.  Otherwise, if probing,
-+     * return false.  Otherwise populate fsr with ARM DFSR/IFSR fault
-+     * register format, and signal the fault.
-+     */
-+    ret = get_phys_addr(&cpu->env, address, access_type,
-+                        core_to_arm_mmu_idx(&cpu->env, mmu_idx),
-+                        &phys_addr, &attrs, &prot, &page_size, &fi, NULL);
-+    if (likely(!ret)) {
-+        /*
-+         * Map a single [sub]page. Regions smaller than our declared
-+         * target page size are handled specially, so for those we
-+         * pass in the exact addresses.
-+         */
-+        if (page_size >= TARGET_PAGE_SIZE) {
-+            phys_addr &= TARGET_PAGE_MASK;
-+            address &= TARGET_PAGE_MASK;
-+        }
-+        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
-+                                prot, mmu_idx, page_size);
-+        return true;
-+    } else if (probe) {
-+        return false;
-+    } else {
-+        /* now we have a real cpu fault */
-+        cpu_restore_state(cs, retaddr, true);
-+        arm_deliver_fault(cpu, address, access_type, mmu_idx, &fi);
-+    }
-+#endif
-+}
-+
-+#ifndef CONFIG_USER_ONLY
-+void tlb_fill(CPUState *cs, target_ulong addr, int size,
-+              MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
-+{
-+    arm_cpu_tlb_fill(cs, addr, size, access_type, mmu_idx, false, retaddr);
-+}
-+#endif
-+
- void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
- {
-     /* Implement DC ZVA, which zeroes a fixed-length block of memory.
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 8698b4dc83..8ee15a4bd4 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -126,8 +126,8 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-     return syn;
- }
- 
--static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
--                          int mmu_idx, ARMMMUFaultInfo *fi)
-+void arm_deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
-+                       int mmu_idx, ARMMMUFaultInfo *fi)
- {
-     CPUARMState *env = &cpu->env;
-     int target_el;
-@@ -179,27 +179,6 @@ static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
-     raise_exception(env, exc, syn, target_el);
- }
- 
--/* try to fill the TLB and return an exception if error. If retaddr is
-- * NULL, it means that the function was called in C code (i.e. not
-- * from generated code or from helper.c)
-- */
--void tlb_fill(CPUState *cs, target_ulong addr, int size,
--              MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
--{
--    bool ret;
--    ARMMMUFaultInfo fi = {};
--
--    ret = arm_tlb_fill(cs, addr, access_type, mmu_idx, &fi);
--    if (unlikely(ret)) {
--        ARMCPU *cpu = ARM_CPU(cs);
--
--        /* now we have a real cpu fault */
--        cpu_restore_state(cs, retaddr, true);
--
--        deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
--    }
--}
--
- /* Raise a data fault alignment exception for the specified virtual address */
- void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-                                  MMUAccessType access_type,
-@@ -212,7 +191,7 @@ void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
-     cpu_restore_state(cs, retaddr, true);
- 
-     fi.type = ARMFault_Alignment;
--    deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
-+    arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
- }
- 
- /* arm_cpu_do_transaction_failed: handle a memory system error response
-@@ -233,7 +212,7 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
- 
-     fi.ea = arm_extabort_type(response);
-     fi.type = ARMFault_SyncExternal;
--    deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
-+    arm_deliver_fault(cpu, addr, access_type, mmu_idx, &fi);
- }
- 
- #endif /* !defined(CONFIG_USER_ONLY) */
--- 
-2.17.1
-
+thanks
+-- PMM

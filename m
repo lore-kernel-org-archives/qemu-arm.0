@@ -1,102 +1,101 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp231633wrg;
-        Fri, 10 May 2019 13:23:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzHbfb4PYkLnUILJaIq0jSIRDI8j3oV0XkojAdDQiPUOs6O8E8bdZXi+1AXDFu92z45STkH
-X-Received: by 2002:a50:982f:: with SMTP id g44mr13685804edb.278.1557519784413;
-        Fri, 10 May 2019 13:23:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557519784; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp249199wrg;
+        Fri, 10 May 2019 13:47:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyCLcay9teG0Eox/338+TSpVRm2SzlxCnNqzcb3raXP4vY8SxC5nrEThtL0RxhoyKaMan7C
+X-Received: by 2002:a17:906:1596:: with SMTP id k22mr10747029ejd.162.1557521246174;
+        Fri, 10 May 2019 13:47:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557521246; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dFobMQvZlrnnV50tFjNGnthkgRVL4LeZqyCHm2dqneerstxzdX+79W/KX/inVmMd2
-         WyFuXB9XZUfNh13VQK6NhKbOL25oN1AvgYH30BOGx6kXh1SLaQYzTyykcnn8JwqCFZm4
-         hGWvXXyKA/FVXuRHqcu580KWCn3XNIqXpNS1gI89UvTcNDDvBXUdVg93jMmgCWD4rEW8
-         +B/Xhnvabx2da2uxyZo3rOlC6Yb9idDAmVEKPETyG0y1Cz0rXvRaQdpyrwOT8KsToyOc
-         1ROz1PePbfAmVGSFGtHerc+hNpXx+zxXs2KPTODW8p+/e7Du/dHNbYEHzyYvri+5xjj1
-         3N8w==
+        b=DnqyrImTq3/8tbFDZoSoGzXuKCVgs3l8wY6/XwAwFoly1w5OEkI5qCKBFhsfOpg025
+         fnyXvgUpNBNpUCoBXmv6DPCzvF9kHKoiaICO7/LRKBCeRPbKcTm2vpkAyk/p0cccJbtT
+         0j+zcHPoJtjnOo2fVpdcUCs3++j3T4xYuBX2Tz4SaVhbDhu94rS1eTKiBHOuh+lhTCt8
+         I7mRP2tkPeO86t/juzvAr6hjYW+ecOimoieT3hwv9yfobMzeAI2UftQALzRbZO23tIlQ
+         7E56D0R9/L11e8WRrYz9S8imDZqoYA/obTjDYzW8ZuicPuyhSKpuERbLLyNAlu7KovxC
+         K66A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=dG+5XkjYpfb31n9hDGIgexMD8T01cWAi4HgH6rmltFg=;
-        b=lOamlkgs0egAb72X9fnFKZMvKYRl4+t1yuvh3nWU3v9gVO7GXJ+P+k7JlH00CkbxKU
-         76fJg8JwH/kYH1QQWWRgy84dHvLf4wrS7jw/EutrOMZLrzkCjOmhrIF7Q9A1R4M4JV0/
-         MxeWB/w+9lpye5KHomCxTGURwEHTD5wBlb+ltdh+k0iRN1YsuwBDfBuUBiM5fhz6vCdu
-         vPtKsRmWgEE7ByI/rJtyp5bDhYDY+8nL7lLF2ph12F//2WIMxAX7IdRyUUY3d5aUlHl1
-         GniSZFdu+d/oPaslAKykCrBZdvJ/78MVZ5j6e6Qm/TAJ3C5zqYgH7zKnnboGYVU3DC4O
-         VYmg==
+        bh=UVkrA+yZxM5eUicTpGAnPTCbWprivFcVAHXVqoYE3mc=;
+        b=nLgF+EvQupqDKatcIJ7AKjq7QRCd8btrvn9r5zwTMzXv4l9uVtaDY0ksuBezxVbZR/
+         emMj97kQsptnHTg59YyVEkaLFOrkhbLBX9jvFWSxU9fzCiY6yXMRxMC5v+vscc95mrZE
+         llqPXu76/qXwY8ERWDmdjMJSZHRl3AiXirqrYMBtkISA96ZogIjntvo0TYm7V0KRAyLh
+         F02l5yHwbFXuAl8icwdcMei6BkdFXG/47X168KvRZMDvt2acr3hCQCznFfAldOzbr+2t
+         fvU938xf+2DZ5uGeEEqJGWXn2NjOdzYv9yGBihQ7dV84hcMaxJtQ6FfR6p+XVvpNchS2
+         DXuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hTUNia0D;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=syE0Tz9z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h28si1150552edh.128.2019.05.10.13.23.04
+        by mx.google.com with ESMTPS id k11si547779edd.242.2019.05.10.13.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 13:23:04 -0700 (PDT)
+        Fri, 10 May 2019 13:47:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hTUNia0D;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=syE0Tz9z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:49473 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49721 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hPC2p-0004q4-DP
-	for alex.bennee@linaro.org; Fri, 10 May 2019 16:23:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37378)
+	id 1hPCQP-0005fW-74
+	for alex.bennee@linaro.org; Fri, 10 May 2019 16:47:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPC2X-0004ou-Gf
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:22:46 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hPCQ6-0005e2-I5
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:47:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPC2U-0002Db-Lr
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:22:44 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:42146)
+	(envelope-from <alistair23@gmail.com>) id 1hPCQ4-00065X-Nv
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:47:06 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:43586)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hPC2Q-0001vD-7U; Fri, 10 May 2019 16:22:38 -0400
-Received: by mail-lf1-x141.google.com with SMTP id w23so5009593lfc.9;
-	Fri, 10 May 2019 13:22:37 -0700 (PDT)
+	id 1hPCQ0-0005r1-GZ; Fri, 10 May 2019 16:47:00 -0400
+Received: by mail-lf1-x142.google.com with SMTP id u27so5040135lfg.10;
+	Fri, 10 May 2019 13:46:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=dG+5XkjYpfb31n9hDGIgexMD8T01cWAi4HgH6rmltFg=;
-	b=hTUNia0DyFa9Mzgppxdw3wd9VxM9XFmeXnTMH5XttnariS+eZ737S034QlZxGbC+SN
-	RH0vYgWRQeenA751UrG/aLsqgYyGpjpf7R6X/IwOJ/V5QBglRR7kP1mJCUMIvQ3UdNP9
-	veb8cCD0NgafeD758q2i7IK0RnM6uoIm93nuElenn5O2PWiJaEBjaehIL8ge6o2Ls9ps
-	y/UmQF9P4tFNv7aL+zfOHHrb2Zcl/P2adi1H3vEvqwCnK2z6R+k5z9Z69c0pc/H+pGI2
-	ASqaIuwrWqMiu1TZ9/eZIZhEjPBQFLfh2ykW540oFcMIxKBpJC4BGvKDx7054EQWAfs9
-	IMlQ==
+	bh=UVkrA+yZxM5eUicTpGAnPTCbWprivFcVAHXVqoYE3mc=;
+	b=syE0Tz9z1g4pJwVwOEMKONGAunATkQVmld6EMuWakiiR75vAo6W7B6wBMgqO89sgLO
+	3DWrA1GaSVflZAsl/4AYC98UF/Zv1xZ4IR6sP7HmoWBDZcwRiyO91X2W2r5pdgdoFayN
+	BRHKIQ2YvWitKOfmIyCJLXp3hMxtYRo4EGDqtYZdASjyCrhSRTqSfbg/UWkoJ9wYIunZ
+	a1x9eC/ep5obCjgXFRy6G1SJVpyym87IKemlG1hp0/7pw9ckKuO3yP+jiDJ1FH+gx/3W
+	t3ISwQfGjCLQ+282AAa/OEEANnOyTYnUNwQLC8yffLTz8cf45dfU7J7KCXOlwVch9u+s
+	pkqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=dG+5XkjYpfb31n9hDGIgexMD8T01cWAi4HgH6rmltFg=;
-	b=fyNhuQXZK9U0PsYakwYk90lz/h45TjfthM6G9w5N3VCf+ItWnHcgiPxog9TgrwHNNg
-	TBmZiqzOTTUOLNqh6cFlzqYdbILkdnbbN89iucNJNrvGgdKuFmQ+7knw0R0rRsLCXq0T
-	xyVDMIQhHC7YSoncy6G+bkY9YloTStQArPHkerJU94oZEhmomYNrkwy45JAICkhgbXvJ
-	YsLwNo1BObiF/+Il+ac73utB/PMAgfoYnC+4NOV0aAS7nzSpxjGM5ynTU/5HpP9NKLeA
-	Tfb5ESuYGVNwm3AeOnhTPOvECKN8Gt0ijSBcvjgIvY3nztVzEXwKcKdtJ0sWsRHCRr74
-	AchA==
-X-Gm-Message-State: APjAAAXly2VMBy+Ek7ouZizmDFiUZHi5uLK4g1nhDa0UI0wCE8xwB9Hz
-	tZSsEHTlWuFoZSNx7ObqzRsirSYCc5c4kcGpfxA=
-X-Received: by 2002:a05:6512:309:: with SMTP id
-	t9mr6967971lfp.103.1557519756228; 
-	Fri, 10 May 2019 13:22:36 -0700 (PDT)
+	bh=UVkrA+yZxM5eUicTpGAnPTCbWprivFcVAHXVqoYE3mc=;
+	b=ZZoJviEg+/OP0cuCvxSLISzToc6xmbRwQd2mU52TgVUzZlUb8KI4BATfS3JqjqMCOa
+	OFwdMGpHvi06tCAruUCzs3Ils1Uh6rZXnSDa9pTS04JBoWzG2LPBvM0GvQfkM5JBfdvh
+	0OCgoQ0BuFAZ39swLK8h7NbYfPBIAu/lnL8vqwAq9XcruWvpb1SG60o0YmWzUHYDhCLM
+	SSy2VTfK6O4nTJbikQHlq0aTwfc8+Y6vonJm3ehBYoTVXpy5JJm83M8zEfdm7m7ZWut+
+	gNEmOPLcW/IUCSqLbEbS5hYyc3nQ8wSyODfPDnMXsTIHJwjeF9q+vvzT/fQqRj6DVjf9
+	VEJw==
+X-Gm-Message-State: APjAAAVitfdrpS91TCbagj08D7HLn7TDwL/Z52WX5PSmaE7mrr09INSb
+	Y7GZJRnq3kL9bPbQNWjp79tdvmYgbiX+XzxrE3Q=
+X-Received: by 2002:a19:a40f:: with SMTP id q15mr6529493lfc.121.1557521218123; 
+	Fri, 10 May 2019 13:46:58 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-7-philmd@redhat.com>
-In-Reply-To: <20190507163416.24647-7-philmd@redhat.com>
+	<20190507163416.24647-9-philmd@redhat.com>
+In-Reply-To: <20190507163416.24647-9-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 10 May 2019 13:20:28 -0700
-Message-ID: <CAKmqyKNYHOiHX-Eh6EYm4ZYYhSQAMLqwkHiUs1pwDYFZY0Kfcw@mail.gmail.com>
+Date: Fri, 10 May 2019 13:44:49 -0700
+Message-ID: <CAKmqyKOSDqLz-nPB17jk+03ZwLnhU0aiEixtj3RT_aJH8uuDQw@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::141
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 06/16] hw/arm/bcm2835: Use
- object_initialize_child for correct ref. counting
+X-Received-From: 2a00:1450:4864:20::142
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 08/16] hw/arm: Use
+ object_initialize_child for correct reference counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -130,9 +129,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KEJKcdBBLGIg
+X-TUID: 0ssYpQ5/ofAq
 
-On Tue, May 7, 2019 at 9:36 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Tue, May 7, 2019 at 9:47 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om> wrote:
 >
 > As explained in commit aff39be0ed97:
@@ -232,122 +231,174 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/bcm2835_peripherals.c | 53 ++++++++++++++----------------------
->  1 file changed, 20 insertions(+), 33 deletions(-)
+> v2:
+>  - Tweaked cocci to improve digic_init (Thomas)
+>  - Described new use of &error_abort (Markus)
+> ---
+>  hw/arm/digic.c       | 17 ++++++-----------
+>  hw/arm/imx25_pdk.c   |  5 ++---
+>  hw/arm/kzm.c         |  5 ++---
+>  hw/arm/raspi.c       |  7 +++----
+>  hw/arm/sabrelite.c   |  5 ++---
+>  hw/arm/xlnx-zcu102.c |  5 ++---
+>  hw/arm/xlnx-zynqmp.c |  8 ++++----
+>  7 files changed, 21 insertions(+), 31 deletions(-)
 >
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 2931a82a25a..0fb54c7964e 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -41,44 +41,36 @@ static void bcm2835_peripherals_init(Object *obj)
->                         MBOX_CHAN_COUNT << MBOX_AS_CHAN_SHIFT);
+> diff --git a/hw/arm/digic.c b/hw/arm/digic.c
+> index 726abb9b485..6ef26c6bac3 100644
+> --- a/hw/arm/digic.c
+> +++ b/hw/arm/digic.c
+> @@ -32,27 +32,22 @@
+>  static void digic_init(Object *obj)
+>  {
+>      DigicState *s =3D DIGIC(obj);
+> -    DeviceState *dev;
+>      int i;
 >
->      /* Interrupt Controller */
-> -    object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
-> -    object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM2835=
-_IC);
+> -    object_initialize(&s->cpu, sizeof(s->cpu), "arm946-" TYPE_ARM_CPU);
+> -    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
+> +    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
+> +                            "arm946-" TYPE_ARM_CPU, &error_abort, NULL);
 >
->      /* UART0 */
-> -    object_initialize(&s->uart0, sizeof(s->uart0), TYPE_PL011);
-> -    object_property_add_child(obj, "uart0", OBJECT(&s->uart0), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->uart0), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "uart0", &s->uart0, sizeof(s->uart0),
-> +                          TYPE_PL011);
+>      for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
+>  #define DIGIC_TIMER_NAME_MLEN    11
+>          char name[DIGIC_TIMER_NAME_MLEN];
 >
->      /* AUX / UART1 */
-> -    object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
-> -    object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "aux", &s->aux, sizeof(s->aux),
-> +                          TYPE_BCM2835_AUX);
->
->      /* Mailboxes */
-> -    object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
-> -    object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "mbox", &s->mboxes, sizeof(s->mboxes),
-> +                          TYPE_BCM2835_MBOX);
->
->      object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
->                                     OBJECT(&s->mbox_mr), &error_abort);
->
->      /* Framebuffer */
-> -    object_initialize(&s->fb, sizeof(s->fb), TYPE_BCM2835_FB);
-> -    object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
-> +    sysbus_init_child_obj(obj, "fb", &s->fb, sizeof(s->fb), TYPE_BCM2835=
-_FB);
->      object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-=
-size",
->                                &error_abort);
-> -    qdev_set_parent_bus(DEVICE(&s->fb), sysbus_get_default());
->
->      object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr), &error_abort)=
+> -        object_initialize(&s->timer[i], sizeof(s->timer[i]), TYPE_DIGIC_=
+TIMER);
+> -        dev =3D DEVICE(&s->timer[i]);
+> -        qdev_set_parent_bus(dev, sysbus_get_default());
+>          snprintf(name, DIGIC_TIMER_NAME_MLEN, "timer[%d]", i);
+> -        object_property_add_child(obj, name, OBJECT(&s->timer[i]), NULL)=
 ;
+> +        sysbus_init_child_obj(obj, name, &s->timer[i], sizeof(s->timer[i=
+]),
+> +                              TYPE_DIGIC_TIMER);
+>      }
 >
->      /* Property channel */
-> -    object_initialize(&s->property, sizeof(s->property), TYPE_BCM2835_PR=
-OPERTY);
-> -    object_property_add_child(obj, "property", OBJECT(&s->property), NUL=
-L);
-> +    sysbus_init_child_obj(obj, "property", &s->property, sizeof(s->prope=
-rty),
-> +                          TYPE_BCM2835_PROPERTY);
->      object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
->                                "board-rev", &error_abort);
-> -    qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
+> -    object_initialize(&s->uart, sizeof(s->uart), TYPE_DIGIC_UART);
+> -    dev =3D DEVICE(&s->uart);
+> -    qdev_set_parent_bus(dev, sysbus_get_default());
+> -    object_property_add_child(obj, "uart", OBJECT(&s->uart), NULL);
+> +    sysbus_init_child_obj(obj, "uart", &s->uart, sizeof(s->uart),
+> +                          TYPE_DIGIC_UART);
+>  }
 >
->      object_property_add_const_link(OBJECT(&s->property), "fb",
->                                     OBJECT(&s->fb), &error_abort);
-> @@ -86,32 +78,27 @@ static void bcm2835_peripherals_init(Object *obj)
->                                     OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
+>  static void digic_realize(DeviceState *dev, Error **errp)
+> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+> index 9f3ee147390..eef1b184b0d 100644
+> --- a/hw/arm/imx25_pdk.c
+> +++ b/hw/arm/imx25_pdk.c
+> @@ -72,9 +72,8 @@ static void imx25_pdk_init(MachineState *machine)
+>      unsigned int alias_offset;
+>      int i;
 >
->      /* Random Number Generator */
-> -    object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
-> -    object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "rng", &s->rng, sizeof(s->rng),
-> +                          TYPE_BCM2835_RNG);
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX25);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            TYPE_FSL_IMX25, &error_abort, NULL);
 >
->      /* Extended Mass Media Controller */
-> -    object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
-> -    object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sdhci", &s->sdhci, sizeof(s->sdhci),
-> +                          TYPE_SYSBUS_SDHCI);
+>      object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_f=
+atal);
 >
->      /* SDHOST */
-> -    object_initialize(&s->sdhost, sizeof(s->sdhost), TYPE_BCM2835_SDHOST=
-);
-> -    object_property_add_child(obj, "sdhost", OBJECT(&s->sdhost), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->sdhost), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sdhost", &s->sdhost, sizeof(s->sdhost),
-> +                          TYPE_BCM2835_SDHOST);
+> diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
+> index 139934c4ecf..44cba8782bf 100644
+> --- a/hw/arm/kzm.c
+> +++ b/hw/arm/kzm.c
+> @@ -71,9 +71,8 @@ static void kzm_init(MachineState *machine)
+>      unsigned int alias_offset;
+>      unsigned int i;
 >
->      /* DMA Channels */
-> -    object_initialize(&s->dma, sizeof(s->dma), TYPE_BCM2835_DMA);
-> -    object_property_add_child(obj, "dma", OBJECT(&s->dma), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->dma), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "dma", &s->dma, sizeof(s->dma),
-> +                          TYPE_BCM2835_DMA);
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX31);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            TYPE_FSL_IMX31, &error_abort, NULL);
 >
->      object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
+>      object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_f=
+atal);
 >
->      /* GPIO */
-> -    object_initialize(&s->gpio, sizeof(s->gpio), TYPE_BCM2835_GPIO);
-> -    object_property_add_child(obj, "gpio", OBJECT(&s->gpio), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->gpio), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
-> +                          TYPE_BCM2835_GPIO);
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 66899c28dc1..0a6244096cc 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -175,10 +175,9 @@ static void raspi_init(MachineState *machine, int ve=
+rsion)
+>      BusState *bus;
+>      DeviceState *carddev;
 >
->      object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
->                                     OBJECT(&s->sdhci.sdbus), &error_abort=
-);
+> -    object_initialize(&s->soc, sizeof(s->soc),
+> -                      version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM2836);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            version =3D=3D 3 ? TYPE_BCM2837 : TYPE_BCM28=
+36,
+> +                            &error_abort, NULL);
+>
+>      /* Allocate and map RAM */
+>      memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram"=
+,
+> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+> index ee140e5d9eb..f1b00de2294 100644
+> --- a/hw/arm/sabrelite.c
+> +++ b/hw/arm/sabrelite.c
+> @@ -55,9 +55,8 @@ static void sabrelite_init(MachineState *machine)
+>          exit(1);
+>      }
+>
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX6);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            TYPE_FSL_IMX6, &error_abort, NULL);
+>
+>      object_property_set_bool(OBJECT(&s->soc), true, "realized", &err);
+>      if (err !=3D NULL) {
+> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> index b6bc6a93b89..c802f26fbdf 100644
+> --- a/hw/arm/xlnx-zcu102.c
+> +++ b/hw/arm/xlnx-zcu102.c
+> @@ -91,9 +91,8 @@ static void xlnx_zcu102_init(MachineState *machine)
+>      memory_region_allocate_system_memory(&s->ddr_ram, NULL, "ddr-ram",
+>                                           ram_size);
+>
+> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_XLNX_ZYNQMP);
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(&s->soc),
+> -                              &error_abort);
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            TYPE_XLNX_ZYNQMP, &error_abort, NULL);
+>
+>      object_property_set_link(OBJECT(&s->soc), OBJECT(&s->ddr_ram),
+>                           "ddr-ram", &error_abort);
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 4f8bc41d9d4..6e991903022 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -191,10 +191,10 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState =
+*s, const char *boot_cpu,
+>      for (i =3D 0; i < num_rpus; i++) {
+>          char *name;
+>
+> -        object_initialize(&s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+> -                          "cortex-r5f-" TYPE_ARM_CPU);
+> -        object_property_add_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
+> -                                  OBJECT(&s->rpu_cpu[i]), &error_abort);
+> +        object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
+> +                                &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+> +                                "cortex-r5f-" TYPE_ARM_CPU, &error_abort=
+,
+> +                                NULL);
+>
+>          name =3D object_get_canonical_path_component(OBJECT(&s->rpu_cpu[=
+i]));
+>          if (strcmp(name, boot_cpu)) {
 > --
 > 2.20.1
 >

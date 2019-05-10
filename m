@@ -1,101 +1,104 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp253377wrg;
-        Fri, 10 May 2019 13:53:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzr18Xa42WIceVXB+6AzmdgxcTX9n0aXu3F+Tp5Lx39fhwZHx3jMY9BZRJqgt3AwI2CSiK/
-X-Received: by 2002:a50:b18e:: with SMTP id m14mr13349387edd.234.1557521625816;
-        Fri, 10 May 2019 13:53:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557521625; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp277231wrg;
+        Fri, 10 May 2019 14:22:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzTBtDTUO0WDvb163zUZSYPRVaQzYA6ckN2hyq6YJvoK6hRWDdyA1vywcwtBnt9FfqPggwc
+X-Received: by 2002:a50:aa76:: with SMTP id p51mr14178272edc.62.1557523358438;
+        Fri, 10 May 2019 14:22:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557523358; cv=none;
         d=google.com; s=arc-20160816;
-        b=xlt0vk1KqEYcoTKy7a1s73TfpMNy6lFjCz5E+fc9WQUSuAJa/68BLqNP5AgpsyMDPL
-         G7nql9xtvKBpBxDxvzMZXTZGwiAHXQepd09LcNfcpT151VJO+TVL6pJY93ALzSal5RQD
-         b72/OyVb/F8MT4hks50jFC9v+Uv+ZLjNv2MVzQsCOAUAHIEoIvk2JZ6/aGKcB13Lm8JZ
-         0Iy6pWcAV1f8zt4bB4ATfMtGCeOtNlY1mUadpjDv22KCpZFBsGmTqRXKP2IGplVVUE6+
-         68dOGksvFM6sc4vl/E+L0xuymcMrd0aeb7ArGzFP8SloxQN7WDILI1jaEsMrzey6u6hO
-         1dng==
+        b=QFyyo66b6ULuTMxavo2zdFi9NxaM6XKUkhyp53IMCiZgM35dxX5cDT6ov0w3SUg2Tj
+         3TyStYLOz/35KmyVLjSFho9VV9czq64WZ8V87YxSzuYT7j6HBwzDNsdVCgaTR7HyAinz
+         t5b+vMagB0JNrP3CvZxyvWOztmZuN8N6CIDsftNsfini3D+lDrXS+ORpeUWnvoo2XshB
+         8h2G3Tezm38xV+/rVgjvmyLWEMzkTFEt4kbLr0KAwOuVanaaqApMQ/ejo7QMp7zJYKZZ
+         YAwxEFS5gQ9opSTASKy1Y/lQU840IcQq3//oEQUbfdochs8XR55zdUq0wPqEF1ULJ9WZ
+         I0/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=V4FO/4vDfUYXhv0hUf0VkpD2C+NuA0Nhc2FW6S1ZLPE=;
-        b=QUIUOltuadAzNsntGbksch5O5+JXXdHZkPpUnRcKT0K8ZK0pdmFbx6tptQmUogd0rO
-         q+o/yYv5PEeow0NsY6MQlCliiql7XgvYLb5kRf7UPOvSJN2e5bo0Zp2X3SOn2q5H5M0Y
-         9x1cZbEtprGqjiNkXh0q6VuY5hKnvjd647/jdpFk2q7iaKK5r5NxkbRZyyplOl4xDsAi
-         frcy974aDFPpoIJEOCo6jnytjDk2ijCqmtysuegcmu6uY/UEl5C2gM6eST/gTXiSWrNg
-         fZITApG/Y+CXrs9rn+7W9cNF9OXSYIPeilQLeU6xCKgbdu15M0kIr4kEyhTwjtmRImZe
-         jXWQ==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-disposition:mime-version:references:message-id
+         :to:from:date:dkim-signature;
+        bh=pO692Vr35EFtke8/sxOhlgDHZvkq3DDBZKK4hO0zEv0=;
+        b=FEM7gPzCDbjd/mA8HyejVAg6Lvbrwf4UynLRUIPqD3BGPmAVLVRinf+Sswe6edOBNn
+         NCU2z9YXIck6MDSO8g2wb45eJInc4Xcqw7aAIiq3IoIdzVw/43U4PFTpVkvEcw93CgAp
+         BvVNpZ8Srh/Kk0xlMcZrMkNsOzQx97vy93pnti7DzGuP5k3JoezQndgP0DaZQkzu4+87
+         3+xIj3Y7tqLLlDK+0+ne0/RHTG42TQu5sJCkfBHP817mzBLtYgyK4e2fxdfry5elsZL1
+         t3hoZL81is0oNr/SBSDXqw5viPOMt/Kog6cMGe3wmiojQScdG7I+s2YD1NkS4Qzr7CQ6
+         3P1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBviLL1L;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JTaBVWTy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si382325ede.239.2019.05.10.13.53.45
+        by mx.google.com with ESMTPS id i41si4835124ede.444.2019.05.10.14.22.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 13:53:45 -0700 (PDT)
+        Fri, 10 May 2019 14:22:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBviLL1L;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JTaBVWTy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:49823 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:50181 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hPCWW-0002qv-M3
-	for alex.bennee@linaro.org; Fri, 10 May 2019 16:53:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42012)
+	id 1hPCyT-0008Pu-H7
+	for alex.bennee@linaro.org; Fri, 10 May 2019 17:22:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48069)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPCUr-0001jr-V1
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:52:02 -0400
+	(envelope-from <richard.weiyang@gmail.com>) id 1hPCyE-0008OY-Pw
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 17:22:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hPCUq-00046y-PJ
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 16:52:01 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:37477)
+	(envelope-from <richard.weiyang@gmail.com>) id 1hPCyD-0000Xm-R4
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 17:22:22 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:33019)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hPCUo-000425-8T; Fri, 10 May 2019 16:51:58 -0400
-Received: by mail-lj1-x241.google.com with SMTP id n4so6199091ljg.4;
-	Fri, 10 May 2019 13:51:58 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
+	id 1hPCy8-0000U0-Cn; Fri, 10 May 2019 17:22:17 -0400
+Received: by mail-ed1-x543.google.com with SMTP id n17so6943639edb.0;
+	Fri, 10 May 2019 14:22:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=V4FO/4vDfUYXhv0hUf0VkpD2C+NuA0Nhc2FW6S1ZLPE=;
-	b=aBviLL1LffFjlUPTlOrkIPYWamZFF+z40+aaxA5agV21Oab4LKj6j/QP414LyoH6J8
-	kEjmQtOfuoFzbUfjXSHEPli4sU/6FA2KIHc47EHeCL4X7bovL23/J30Th7/6fRqhYdVu
-	dWnJUoIL0vJXe3qFbftHWuD93+hLNXGHsRjqd8AdRjfoT7AxZeFfftrsa7jLx9IvGNDI
-	SazUqTnmrGIu6uMxbh+vethmsCX8uTHVfscpRatqKrBtg6sZ6Yhgqiu8ju8jiyF5PVkE
-	WbudynB54437gSjYKL/ZDbH0iu6eELb4fW+b/dH2XwridFZeyln1dyIzSh6//Rvz0S76
-	4ACA==
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=pO692Vr35EFtke8/sxOhlgDHZvkq3DDBZKK4hO0zEv0=;
+	b=JTaBVWTy1H1uvZbe3OJrG5G8U2Yt4ZSOMKoNP18yJHDboSay9b6Wa66yAE/+gJuy9n
+	5j6DL5+5chFR7rXEkqITtWa6Do14FWqPl8nlfcDInhEbp7Gvmj8yDmDgcQGTb6dXegmC
+	NnzbsXaJn1jBshM8EBrqMhWR5HEd0fDIBoTUiHkr0mAiIXr1cIh/d9tPnCqQHgx6oCgT
+	Jn2+tZbjLkCU7FsGpm6u96kZPib3XE3yDRqYwHB2rpibO7plBTHZRMXdawM+9Gh6cbw/
+	gM2DkAV8rQRXi+BgHSPwK3D5uso7lIzp8Gj7+v4xfo7Mt4L3Iq4LRas0RIRvI8UcA25B
+	jHcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=V4FO/4vDfUYXhv0hUf0VkpD2C+NuA0Nhc2FW6S1ZLPE=;
-	b=DPc7vAE0JmeR86K3J2UzhVH1UdZKR0o4lRIRpWZcJfml9rP7psg9Y/x4woPHqqS3IO
-	SyMVsKpdLZCHQ/PT7CvbdtCLSowBTswx6FTxAqBmAvOY97aQcNN87EGa5VV5qI6KojCF
-	3M1ISZqMcUgoJUAOnu4oyDKGUoPZ9mP8eO7JHAtJPdGreKyPAOJIwx72ZrE4DY7e3OLO
-	amaaH0AUgFL+BU2ji0c8/dA02F+KwtH+NnBKLCm4UBnTxIX5z17zdOwxVGfP8S1iKJ/I
-	5Fmri5XYQ9xyuDTVi5ZdDN0zZg4Zgm3muocp594BjDpsOBjI5ohThZ1G2pHpG0G4RpEp
-	yJDg==
-X-Gm-Message-State: APjAAAVUsmrEUSBoT3gxEOXN/VgFfHkuNkWMRE4g2p/QNY8sOW3hyISn
-	vgqR3hvR1E4MRlc0HJi/Z2snH20zfWNZd2Z7ZRM=
-X-Received: by 2002:a2e:824b:: with SMTP id j11mr6832502ljh.197.1557521516851; 
-	Fri, 10 May 2019 13:51:56 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=pO692Vr35EFtke8/sxOhlgDHZvkq3DDBZKK4hO0zEv0=;
+	b=oLTzB+mVQg3LpFkogngftkJFCXhKkPYHQAb27NOryM/jNMPKbmor60fGfV/fJtSlIy
+	vv0gbx2nvCSt2J7+g6LQS6VsQidjRszCPxqAK1cj4SHAJLd3+1izxwroVg3onDPyza2v
+	FQeAMHVBOKImXaBUg2k/2e+u2D1O2nnJLm9STQWPXILAueB0YahSWIaJw1aDptCqoVtf
+	AJZvvgcG3s4RGw1UP2oG+tTqvTLWFjd2kfvCEiDR2nDvWWgq7hL0Ca3ZkMY7U97a2Jv0
+	LLrGpDVzxZfvZtSAaOD8+Ir/J3vN9i/j8gVXf9l9WRdN4F6GDYSdafhOoAmr9Frt9DRb
+	YPow==
+X-Gm-Message-State: APjAAAUCVptl1LcGZHVQ2dAM4ZQzQhodaIx631KnSKWMRbznnJGkfJyY
+	DHiWw0RmVOV4hFg9CL77pB4=
+X-Received: by 2002:a50:b343:: with SMTP id r3mr13870142edd.53.1557523333887; 
+	Fri, 10 May 2019 14:22:13 -0700 (PDT)
+Received: from localhost ([185.92.221.13])
+	by smtp.gmail.com with ESMTPSA id 96sm300260edq.68.2019.05.10.14.22.10
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 10 May 2019 14:22:10 -0700 (PDT)
+Date: Fri, 10 May 2019 21:22:10 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190510212210.4ao2zoikky7jivwc@master>
+References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-References: <20190507163416.24647-1-philmd@redhat.com>
-	<20190507163416.24647-17-philmd@redhat.com>
-In-Reply-To: <20190507163416.24647-17-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 10 May 2019 13:49:48 -0700
-Message-ID: <CAKmqyKN_rKoPCf4Lk+v4Ly0P0gvp0gJYJSqm-ivWdE5+wFXy4w@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190419003053.8260-1-richardw.yang@linux.intel.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 16/16] hw/intc/nvic: Use
- object_initialize_child for correct reference counting
+X-Received-From: 2a00:1450:4864:20::543
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/6] Extract build_mcfg
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,113 +110,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Paul Burton <pburton@wavecomp.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Markus Armbruster <armbru@redhat.com>, Joel Stanley <joel@jms.id.au>,
-	Antony Pavlov <antonynpavlov@gmail.com>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Jean-Christophe Dubois <jcd@tribudubois.net>,
-	"open list:New World" <qemu-ppc@nongnu.org>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, mst@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, imammedo@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z65ldneMXnUu
+X-TUID: tcuV6Iq+JdAS
 
-On Tue, May 7, 2019 at 9:48 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> As explained in commit aff39be0ed97:
->
->   Both functions, object_initialize() and object_property_add_child()
->   increase the reference counter of the new object, so one of the
->   references has to be dropped afterwards to get the reference
->   counting right. Otherwise the child object will not be properly
->   cleaned up when the parent gets destroyed.
->   Thus let's use now object_initialize_child() instead to get the
->   reference counting here right.
->
-> This patch was generated using the following Coccinelle script:
->
->  @use_sysbus_init_child_obj_missing_parent@
->  expression child_ptr;
->  expression child_type;
->  expression child_size;
->  @@
->  -   object_initialize(child_ptr, child_size, child_type);
->      ...
->  -   qdev_set_parent_bus(DEVICE(child_ptr), sysbus_get_default());
->      ...
->  ?-  object_unref(OBJECT(child_ptr));
->  +   sysbus_init_child_obj(OBJECT(PARENT_OBJ), "CHILD_NAME", child_ptr,
->  +                         child_size, child_type);
->
-> We let NVIC adopt the SysTick timer.
->
-> While the object_initialize() function doesn't take an
-> 'Error *errp' argument, the object_initialize_child() does.
-> Since this code is used when a machine is created (and is not
-> yet running), we deliberately choose to use the &error_abort
-> argument instead of ignoring errors if an object creation failed.
-> This choice also matches when using sysbus_init_child_obj(),
-> since its code is:
->
->   void sysbus_init_child_obj(Object *parent,
->                              const char *childname, void *child,
->                              size_t childsize, const char *childtype)
->   {
->       object_initialize_child(parent, childname, child, childsize,
->                               childtype, &error_abort, NULL);
->
->       qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
->   }
->
-> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-> Inspired-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi, Igor
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+You would take this one? Or what should I do next?
 
-Alistair
+On Fri, Apr 19, 2019 at 08:30:47AM +0800, Wei Yang wrote:
+>This patch set tries to generalize MCFG table build process. And it is
+>based on one un-merged patch from Igor, which is included in this serials.
+>
+>v3->v4:
+>    * adjust comment to give more information about MCFG table
+>
+>v2->v3:
+>    * Includes the un-merged patch from Igor
+>    * use build_append_foo() API to construct MCFG
+>
+>Igor Mammedov (1):
+>  q35: acpi: do not create dummy MCFG table
+>
+>Wei Yang (5):
+>  hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
+>  i386, acpi: remove mcfg_ prefix in AcpiMcfgInfo members
+>  hw/arm/virt-acpi-build: pass AcpiMcfgInfo to build_mcfg()
+>  hw/acpi: Consolidate build_mcfg to pci.c
+>  acpi: pci: use build_append_foo() API to construct MCFG
+>
+> default-configs/arm-softmmu.mak  |  1 +
+> default-configs/i386-softmmu.mak |  1 +
+> hw/acpi/Kconfig                  |  4 +++
+> hw/acpi/Makefile.objs            |  1 +
+> hw/acpi/pci.c                    | 55 ++++++++++++++++++++++++++++++++
+> hw/arm/virt-acpi-build.c         | 31 +++++-------------
+> hw/i386/acpi-build.c             | 44 ++++---------------------
+> include/hw/acpi/acpi-defs.h      | 18 -----------
+> include/hw/acpi/pci.h            | 34 ++++++++++++++++++++
+> 9 files changed, 111 insertions(+), 78 deletions(-)
+> create mode 100644 hw/acpi/pci.c
+> create mode 100644 include/hw/acpi/pci.h
+>
+>-- 
+>2.19.1
+>
 
-> ---
->  hw/intc/armv7m_nvic.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index fff6e694e60..2334fe51426 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2568,9 +2568,9 @@ static void armv7m_nvic_realize(DeviceState *dev, E=
-rror **errp)
->           * as we didn't know then if the CPU had the security extensions=
-;
->           * so we have to do it here.
->           */
-> -        object_initialize(&s->systick[M_REG_S], sizeof(s->systick[M_REG_=
-S]),
-> -                          TYPE_SYSTICK);
-> -        qdev_set_parent_bus(DEVICE(&s->systick[M_REG_S]), sysbus_get_def=
-ault());
-> +        sysbus_init_child_obj(OBJECT(dev), "systick-reg-s",
-> +                              &s->systick[M_REG_S],
-> +                              sizeof(s->systick[M_REG_S]), TYPE_SYSTICK)=
-;
->
->          object_property_set_bool(OBJECT(&s->systick[M_REG_S]), true,
->                                   "realized", &err);
-> --
-> 2.20.1
->
->
+-- 
+Wei Yang
+Help you, Help me

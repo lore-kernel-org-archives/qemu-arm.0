@@ -1,106 +1,107 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2085778wrh;
-        Fri, 10 May 2019 07:21:27 -0700 (PDT)
-X-Received: by 2002:aca:5d86:: with SMTP id r128mr5269396oib.135.1557498086881;
-        Fri, 10 May 2019 07:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557498086; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp2086938wrh;
+        Fri, 10 May 2019 07:22:29 -0700 (PDT)
+X-Received: by 2002:a05:6830:16ce:: with SMTP id l14mr6829641otr.108.1557498149798;
+        Fri, 10 May 2019 07:22:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557498149; cv=none;
         d=google.com; s=arc-20160816;
-        b=DZHLbS5A9E126wgBPYJm92SAAUT2Nn21eQQWIoetnKvXKVVBNenjdm8J8B4/CV7jln
-         1GaKZAXyLyzaXf2otoSljTk5H3EVWQWjXoevxPz5vYeVOhYyOdGo9Q3Ra0iARSaeiBDq
-         8fgeYWHTZxd4kE2SGrG0aF+KWFT7VXr9rgN6GI+8CPF6U32IoqBQZ7AuSbCbqEZKJ0aB
-         R8SDvVEIpE18PZ1J3py6MD0hUHQof1ub1A5OgKRfo8OXMLce6Hq1vGYF7pP93iFqGtTw
-         ztee/9XF0Q8wqPltxM9aUcO93ltGuV9oP6tUsQpqI2H0vIZTxgpNEivXX+TU4WwE8CmB
-         7vHg==
+        b=fA04MYzFd2KvGhscrdVHW6e3U2kYSwf7FS8p6F3hKCsPOxEYO6VfPOjkBZ/mhAGZQl
+         F5veRSqoyiGtfnE4twxC3DFtoORWbZYIRxh8s73SmRIAKuo8MW/2//TUAyLBtqa2L4li
+         80av4AFdh3jZ0n/V+ltz6BWiZZOpmCQJUPIYai5z4V++JGtZnUBpWPv1Sg6LyFF7gNyG
+         v1A8ZBSCujU11JhB0sYVrtN+jovY7Dm56lQyR7vJkdoSxbtoeiy4rdl+O9YR6Q92e5oE
+         ZIV41SgwtIrw0fcjkvSdyDCo2dlrvq/55hqWY1XTRVahb536bcVthVFX6yPNVsbLKAnn
+         y7xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=dFaoTsiJTSzJWMVHdKu/z6BrzGtnGzTphxT8juCWe/Q=;
-        b=k/4C7eGsBdyhFgjqn3+Fnct3GOjt3XblbZK5I993CR4ZqOZSpTIGNMGtHlM35rncOU
-         gLbCiJNPXSG9JixXrTzPT8knNkQ75NHghYLgfuLGzsCxc2cxsiyouCAVeX6ULzCdlj7W
-         CXcn0Rp7lnmkSeVrEDkYTX6brziH9xrGSC2FlTHPe0dchE0/RNNsxIIPWlioaO8UrAXu
-         oouy4DZlqIV/RwSSEZgAxmMRAxOGxpmLzfjWleI5wNOSqXFqlKY79dwwJiJ6zymp3N8b
-         cwPskDqfxPrrt/Vt2O2uF/a6Gnk/a4fMdYFBAGwY0rQDgVOUIL952UeWkUg91hxXyJnm
-         1aYw==
+        bh=SnOzh2ahj3YiiDODmURqcGg1qqqpBwipaak6Ip4l7LI=;
+        b=DvghLx3o9OqJbcdgBLNutzHOwNGlwROE1XvztiDdkjLNNkjh2h/eHa1IgE97ldkQZX
+         uXHuJk/j9o92Z3aWNoyB/85kn6W9JstloSVm3w5OreyTiofgCQZURjnVjQMNPytuDFYH
+         DckgsumWwcwBzVK7HOR9um50NcwPmDy9Q1SwNh2AoX1E+ncp2nufBmo8tSdNNyDK9Fay
+         sjS3p+ntVU1gRDBeNksQYl/2Irbfis6LSgHmojMOTCNYnnVwYLzVvKEBz8niWOIlNoKU
+         SrkBPODRh+jXcEwIHRcFnB/bARdVMPksMhTRH3BnG8S6Hlt8tUYAYHztzTeIMt/gbQjY
+         Niaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=niae1qW6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jEoVbXin;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id w130sor2519667oif.139.2019.05.10.07.21.26
+        by mx.google.com with SMTPS id o4sor2376143oia.24.2019.05.10.07.22.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 10 May 2019 07:21:26 -0700 (PDT)
+        Fri, 10 May 2019 07:22:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=niae1qW6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jEoVbXin;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=dFaoTsiJTSzJWMVHdKu/z6BrzGtnGzTphxT8juCWe/Q=;
-        b=niae1qW6HR9HPA+K3s39bKRUbolClb006ghPXPKOFkSuaG73k0YYg6OhfPGzH80W0L
-         JA8CueMsg0UVyN+st6D2XttVWCb4pe+NujnKCqOD9D7LeD7ij2SSxZD+biNPyMyk+9PK
-         u7J2j5kRUqhsRYznTLT3rUdkdDyBsUI8MVxwb/0mLRYO+Ql+Q0sqVxnz8XONWFR7A5+o
-         puouLXbzJOT1bDhrdDx91AmYnqxpgSrVwzhXe686dHGMzXzL7mA/G3FtWB+ZiQ6Ag7zz
-         ylZDSSBl3nvbLexvBwkePUcTFna6kF8G/91LP2O6++NhjoZnR46Xh/qjOsmhdn8lbiTT
-         vmww==
+        bh=SnOzh2ahj3YiiDODmURqcGg1qqqpBwipaak6Ip4l7LI=;
+        b=jEoVbXinaFORcXOIeFHISNbuKPkyftnZ1TmoNWu1EN05JIYXGNslgULptfdjXV2aJk
+         xxePc5qHgD89GvpwViADqEINU48CxYS8UDbX8RfLgzxKsXTMBmWvgNJIG39UkCeXEKcH
+         NMytkO0EEJPa+Qw5bVrgH8Wmi0XAnS+caE6mqOyx/4YCcdE2lhXXPdg7Xv1JY2Mrwtp/
+         4mZnG1W4DLbk+yg5NabgcurfIEJd4Q4rYR7iiLzTLANhVXiK9NE/QNkrT37XcUPQjHs0
+         yxK7HJE7tAtAs9MKMYptPgAhWHawKIuO5MvFlx4rqjTezjpIFnVgo2MtFQ1iqVmLLg7z
+         ejBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=dFaoTsiJTSzJWMVHdKu/z6BrzGtnGzTphxT8juCWe/Q=;
-        b=uWKt7deI9gQkQatPkM5DPXDdUbfswf/3LgS4ZXHs9Fc2tlIUxyH9AzG0xX+NmSRcCf
-         5hUOWB4deKD96LueQmJoEUC/gttETFUaEQ+fL94nylb0fjiUe83RiPAi0OUnDlkw3hmn
-         THfE9rYqFwJojghssBADo8urTZE9qgAHMx7zLMdC5OwhKT1iTk2B0W3A2kV5fQN1fWhm
-         AwXMrqDaQjVzuwK78Cbi+bRUF+TQ3QNmUjQ02Xr/7HdQEmogYYUsuYNTZG/ryiA+USre
-         MmSVhdWa8ycIeXLnBDSBXK1PIPQe5MA7TVCsG9dPLTIKuE7EVGVZJRrwTqq34EtDBKWC
-         VFMw==
-X-Gm-Message-State: APjAAAX6wvC70kNIjkBMdQ+8e2Hq/wqNFH+AdAM+ZhslP1UuqLqlc97t
-	xxNcuRQ5dC5K05aTLaxhXUF2hBc8owrUOEaTILtyAALbxLvFfw==
-X-Google-Smtp-Source: APXvYqzVwdUVuEULloKDhUnHyrj1uENXg09eSrEUk07p+9dPbuzfUC830Qnyak5NbQ0kK37uokj995M3kK/+AXjwUTc=
-X-Received: by 2002:aca:4e42:: with SMTP id c63mr5376574oib.170.1557498085561;
- Fri, 10 May 2019 07:21:25 -0700 (PDT)
+        bh=SnOzh2ahj3YiiDODmURqcGg1qqqpBwipaak6Ip4l7LI=;
+        b=aJaLdi8X0HXJVndh2xuG3YoohvK0y0XuMuBbTXUk7bPbINMC7GVmt/uUQPglS07bCZ
+         wlhcz6QLwihUsXJvzGXeyVVVk4IuSOUnZbuXTmw6rcdNZF/R51Rk9uYZHQajMYv1Jyve
+         rqVkjbd+HnJqd68mlqzPKWmzPwefE6uvPbSxMtrHPxcB+mkZnka5CDRAPvptFEL2/Oyx
+         gc36AoHTuBQGVI465UFHsVqKhVdqthbsCq2l8nI5ZGmRuKvQ2lELy1r92O0LgKjBQk6H
+         1vXw/R8Q4+BvzW9velro0iiEpLJNrqgzN3IHW7FlrzZJvALX7pRT81f9lVFZydHMkD1M
+         3jDw==
+X-Gm-Message-State: APjAAAX25UpdT9fsNJ+rxXk3CIaRHBPN4nxqEzHoL5BNPgCUXlX9JZc/
+	5/2un8mlEhDfrBVBaU8azavTv1kOXKblMBpvSK3MxLXGkr28bA==
+X-Google-Smtp-Source: APXvYqzY05TNMKEMuju3VfTTUPwLbVg3TWvpHUHWDklHZE85H+Cs8DbkHKUIfjhrBXlpprnOsOj/6e8w4G1FOUb6QkQ=
+X-Received: by 2002:aca:b3c2:: with SMTP id c185mr5563521oif.98.1557498149188;
+ Fri, 10 May 2019 07:22:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190509165912.10512-1-alex.bennee@linaro.org>
- <20190509165912.10512-6-alex.bennee@linaro.org> <252a5c4b-6ba7-6fa7-8792-fe597e766757@linaro.org>
- <87pnoq4x4o.fsf@zen.linaroharston> <f6abf67c-94af-22a6-c648-2fdbfe73974d@linaro.org>
- <87v9yibe13.fsf@zen.linaroharston>
-In-Reply-To: <87v9yibe13.fsf@zen.linaroharston>
+References: <20190509165912.10512-1-alex.bennee@linaro.org> <20190509165912.10512-6-alex.bennee@linaro.org>
+In-Reply-To: <20190509165912.10512-6-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 May 2019 15:21:14 +0100
-Message-ID: <CAFEAcA-Y7Jx-qyGZYzvP4mtTsi47rb9rBqd2r27hGarNLWpkVg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v1 05/23] semihosting: enable chardev backed output
+Date: Fri, 10 May 2019 15:22:18 +0100
+Message-ID: <CAFEAcA8Dsdp2rnORnzqemWspfFxfhVwkAz=2EXdupo8iDj_=Hw@mail.gmail.com>
+Subject: Re: [PATCH v1 05/23] semihosting: enable chardev backed output
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: L2kXdj20A2IG
+X-TUID: vtCzbynNS9zX
 
-On Fri, 10 May 2019 at 15:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> Only for the first one though.. that said I'm sure the write string is
-> leaking when we do gdb output with whatever lock_user_string is trying
-> to achieve.
+On Thu, 9 May 2019 at 17:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+> For running system tests we want to be able to re-direct output to a
+> file like we do with serial output. This does the wiring to allow us
+> to treat semihosting like just another character output device.
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 51802cbb266..6aa3a08c2fb 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -3975,12 +3975,12 @@ STEXI
+>  Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II only).
+>  ETEXI
+>  DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
+> -    "-semihosting-config [enable=3Don|off][,target=3Dnative|gdb|auto][,a=
+rg=3Dstr[,...]]\n" \
+> +    "-semihosting-config [enable=3Don|off][,target=3Dnative|gdb|auto][,c=
+hardev=3Did][,arg=3Dstr[,...]]\n" \
+>      "                semihosting configuration\n",
+>  QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
+>  QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
 
-Yes, there looks like there's a leak there. (The fix is
-complicated because we need to check whether the string
-buffer is required to hang around until the asynchronous
-gdb operation is finished and the arm_semi_cb is invoked,
-or whether we can free it as soon as arm_gdb_syscall() returns.)
-
-lock_user_string is basically "give me a host pointer to the
-string at this address in guest memory":
- * on softmmu, the 'lock' operation copies the contents of
-   guest memory into a local buffer, and 'unlock' then frees
-   the buffer (possibly copying the updated local buffer
-   contents back to the guest)
- * on linux-user, 'lock' does the guest-addr-to-host-addr
-   conversion, and if DEBUG_REMAP is defined then it will
-   also copy it into a separate buffer (and unlock will
-   copy it back)
+As you can see in the docs here, semihosting is supported on
+five guest architectures, so we should implement this new
+feature for all of them, not just arm.
 
 thanks
 -- PMM

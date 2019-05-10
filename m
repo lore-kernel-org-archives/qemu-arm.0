@@ -1,406 +1,327 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1787848wrh;
-        Fri, 10 May 2019 02:15:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4uPXQ/DhlE/rg2BbW9UREgSOzJQMGwMOrAzBuuWIgnIVPSWmlmQyZZAClY1dmqjrArdgG
-X-Received: by 2002:a1c:f310:: with SMTP id q16mr6493791wmq.102.1557479757694;
-        Fri, 10 May 2019 02:15:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557479757; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1796874wrh;
+        Fri, 10 May 2019 02:27:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyFLDCHEXldHWzTf49FpR2UiW5ehJFLJLigerOpCyjB7t1mRNgUoc03gUbYsk8mTsE/phqB
+X-Received: by 2002:a17:902:860c:: with SMTP id f12mr11791210plo.127.1557480461620;
+        Fri, 10 May 2019 02:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557480461; cv=none;
         d=google.com; s=arc-20160816;
-        b=CfJtTsq7JwpxNFl2gDSxIzZRWtFy4razEF9kFjqWrkErYJF+xvGKWVy60YHQ0401v9
-         h4VvR4gXYcC+wkPtJ2eYvikoqmMbvLbtmc+sPQLBe3bxuE2WbaxVrd73BbVNYqm1GUYw
-         v0ZbMdYD6Gj0V+Z19LoykmYdI3wYPny/Dimw255RubfdLIg+BiFQOrCVIr7+c0ncIhpM
-         xKkRpzIjDRpaTwnIZuedQ0LWQTTv29z/EDh/VlzZCr7j88KSlnRh1o8T3fqiPFziUtd2
-         +y8cQ4SklSWx2HgbqWoUi+dQjX7JKvvYoPIO7zHYrVitOp/ndFjjWvYYs/litnhDNaDk
-         fq8A==
+        b=xrXaK7aQPsqUv0OGnZuCy1ZkB4KekQbmv77AtpuVxJO5ENFCdQFg1dh13WDs5feRAX
+         z8UNUA0bYulNn2Sm9Hreogx6qGIoj9xhipvDwdzGGnc5jXKWwa+dP1oVkZbLHl3p673p
+         vL69VjMwXeqjQvLA71HIZG/M79bkGXjCeVMjvf6aOGo2Du6UgD0oghaV1L663mSMnW2c
+         My5WGLd/1cji4j8HeTmGtth5DcjjuI6yhqIaO7fmhQwTgL2VM/yW3aXJMjLX9hBEplQJ
+         1SY0dgp6kaha9LgT0xPEL2jBXLCbaavXPxy9vYca9wbQnNVyiPiY3o9rWFDs+NNzwRTQ
+         JQUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=HEK+aK7HcOfRqID0GEaFdMaAmVnOxAz5szWiEbKwp2Q=;
-        b=NqQFMoPHJFbxEf8g+9enNHW47MjS1eqGEHTtKMSvzmwkwEIaHzrzCoX0p2EIeS1bMR
-         41gWaX5gRw43rS+bSMA+zfB/NcX6cj1HOBwJacRvGm7/SUb119+agKRUpp2nhRn6uasX
-         43VTTnSG7seAwYZXOD7osKd/omoT+Cpb9uQ8AWRPLaZxEl/VCEfkXr77VOToMiygTreh
-         QhafR5AI2YdUrKlbKLWtTjAAncwboTyEkixDO1/NZZVC9YBaxmy4QR8jiKtfwjQPOGvx
-         bDe7Y2yAA7O2v2mFBnQqKf6Qpq1bB4mftDvOnYIeTLia+hhHAYr/7waf8TeMDzFlbBZW
-         O/tg==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:mime-version:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=pdjQyVQybwsvCqTUV45JDbv5/eQHzfM/Jm/GqZYZ6lA=;
+        b=ZsNnaIFkTLldeZYp6hIQ84IsxdrAIwE6jRZpuQo69N20Mp9QTb0C0FfWYSPqGzjNWD
+         iXWy3cCPb4S167adAdCVkeF+ZABdMOIVTc9TImbhnDrT8aWwUbfv0SISPjvPXBP1rmNp
+         XDOUAjyk83OAv2F9imRmvq0nZ+EZs/m8LbFhSTolytRUbq5uLbQKcVjo7YJ1qaaXQ/ii
+         2QKx1AaKmZ/SxHLV6w+r4O3UkxkA9pAdaI9evsrN9NHlHsBfHKgV6TYtO9w3nMi2Ydh0
+         HCWnHLfYDM3s19DyNELQ0QVpq3LGAE3imyQX9Qk4twk5CSMWS/mtGWAv2zN301nGTXNV
+         UxlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si504618wrq.443.2019.05.10.02.15.57
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=oDcS2hq0;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id a11si6765275pgv.157.2019.05.10.02.27.41
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 02:15:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 10 May 2019 02:27:41 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:39447 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hP1dE-0002vv-Ku
-	for alex.bennee@linaro.org; Fri, 10 May 2019 05:15:56 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43300)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hP1d4-0002vg-BD
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 05:15:48 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hP1d0-0008IS-Gy
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 05:15:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40236)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hP1d0-0008Gc-2E; Fri, 10 May 2019 05:15:42 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 27CB730832CF;
-	Fri, 10 May 2019 09:15:39 +0000 (UTC)
-Received: from [10.36.116.17] (ovpn-116-17.ams2.redhat.com [10.36.116.17])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6369960FE6;
-	Fri, 10 May 2019 09:15:35 +0000 (UTC)
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=oDcS2hq0;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pdjQyVQybwsvCqTUV45JDbv5/eQHzfM/Jm/GqZYZ6lA=; b=oDcS2hq0VUHZMf
+	iAq+3fP7FY3jmZMb3Hchm+BVw8SVPFIoNs3inaNnBRaf/j7FnjV5wRifKwKfGMDX2EJHjFwF2m07D
+	D3o88HgorrPxDG8eELzHENRCgquJ7NRo3h+NCWp+QaHFxuF1jvZyNYVGNQ4R5BKOmjv84PEcUwoBt
+	zDFYdPuxXw9zI7r4hFih1+zh+dUfSDgjudFRNNM8ViAYef++1iS61PXL05WfhgR0oNvi0G5oj3fXq
+	3RgLaiGOyAihgqjKF0iAvQvcaHtl+WeXkA4ht7YYNXyzUTtDX2EWZBHFznvg9a5e8AjzWIm56d9F6
+	1GygmLxOvwfrYFnTBhAA==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.90_1 #2 (Red Hat Linux))
+	id 1hP1oW-0003Qn-83; Fri, 10 May 2019 09:27:36 +0000
+Received: from lhrrgout.huawei.com ([185.176.76.210] helo=huawei.com)
+ by bombadil.infradead.org with esmtps (Exim 4.90_1 #2 (Red Hat Linux))
+ id 1hP1oR-0003QL-Qg
+ for linux-arm-kernel@lists.infradead.org; Fri, 10 May 2019 09:27:34 +0000
+Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 16FBCB6005D2E981FB78;
+ Fri, 10 May 2019 10:27:29 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.137]) by
+ lhreml703-cah.china.huawei.com ([10.201.108.44]) with mapi id 14.03.0415.000; 
+ Fri, 10 May 2019 10:27:21 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Auger Eric <eric.auger@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+ "Igor Mammedov" <imammedo@redhat.com>
+Subject: RE: [Qemu-devel] [Question] Memory hotplug clarification for Qemu
+ ARM/virt
+Thread-Topic: [Qemu-devel] [Question] Memory hotplug clarification for Qemu
+ ARM/virt
+Thread-Index: AQHVBZyqsUtUKaKFrky+uGhe7FD3haZhnJEAgAFR1ACAAFdrgIAAw4ww///8foCAABEHYA==
+Date: Fri, 10 May 2019 09:27:20 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1DE1C0@lhreml524-mbs.china.huawei.com>
 References: <5FC3163CFD30C246ABAA99954A238FA83F1B6A66@lhreml524-mbs.china.huawei.com>
-	<ca5f7231-6924-0720-73a5-766eb13ee331@arm.com>
-	<190831a5-297d-addb-ea56-645afb169efb@redhat.com>
-	<20190509183520.6dc47f2e@Igors-MacBook-Pro>
-	<cd2aa867-5367-b470-0a2b-33897697c23f@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA83F1DDFE5@lhreml524-mbs.china.huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <499f2bc5-da85-72b2-4f7b-32f2d25d842b@redhat.com>
-Date: Fri, 10 May 2019 11:15:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F1DDFE5@lhreml524-mbs.china.huawei.com>
-Content-Type: text/plain; charset=utf-8
+ <ca5f7231-6924-0720-73a5-766eb13ee331@arm.com>
+ <190831a5-297d-addb-ea56-645afb169efb@redhat.com>
+ <20190509183520.6dc47f2e@Igors-MacBook-Pro>
+ <cd2aa867-5367-b470-0a2b-33897697c23f@redhat.com>
+ <5FC3163CFD30C246ABAA99954A238FA83F1DDFE5@lhreml524-mbs.china.huawei.com>
+ <499f2bc5-da85-72b2-4f7b-32f2d25d842b@redhat.com>
+In-Reply-To: <499f2bc5-da85-72b2-4f7b-32f2d25d842b@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Fri, 10 May 2019 09:15:39 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [Question] Memory hotplug clarification
- for Qemu ARM/virt
-X-BeenThere: qemu-arm@nongnu.org
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190510_022732_165973_7B7FE1F0 
+X-CRM114-Status: GOOD (  33.02  )
+X-Spam-Score: -2.3 (--)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-2.3 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [185.176.76.210 listed in list.dnswl.org]
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
-	Catalin Marinas <Catalin.Marinas@arm.com>,
-	Anshuman Khandual <anshuman.khandual@arm.com>,
-	"will.deacon@arm.com" <will.deacon@arm.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>, linux-mm <linux-mm@kvack.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>,
-	Robin Murphy <robin.murphy@arm.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +narJ4LAETG2
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>, Catalin
+ Marinas <Catalin.Marinas@arm.com>,
+ Anshuman Khandual <anshuman.khandual@arm.com>,
+ "will.deacon@arm.com" <will.deacon@arm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, linux-mm <linux-mm@kvack.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: kWNzi+oeXehS
 
-Hi Shameer,
-
-On 5/10/19 10:34 AM, Shameerali Kolothum Thodi wrote:
->=20
->=20
->> -----Original Message-----
->> From: Laszlo Ersek [mailto:lersek@redhat.com]
->> Sent: 09 May 2019 22:48
->> To: Igor Mammedov <imammedo@redhat.com>
->> Cc: Robin Murphy <robin.murphy@arm.com>; Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; will.deacon@arm.com; Catalin
->> Marinas <Catalin.Marinas@arm.com>; Anshuman Khandual
->> <anshuman.khandual@arm.com>; linux-arm-kernel@lists.infradead.org;
->> linux-mm <linux-mm@kvack.org>; qemu-devel@nongnu.org;
->> qemu-arm@nongnu.org; eric.auger@redhat.com; peter.maydell@linaro.org;
->> Linuxarm <linuxarm@huawei.com>; ard.biesheuvel@linaro.org; Jonathan
->> Cameron <jonathan.cameron@huawei.com>; xuwei (O) <xuwei5@huawei.com>
->> Subject: Re: [Question] Memory hotplug clarification for Qemu ARM/virt
->>
->> On 05/09/19 18:35, Igor Mammedov wrote:
->>> On Wed, 8 May 2019 22:26:12 +0200
->>> Laszlo Ersek <lersek@redhat.com> wrote:
->>>
->>>> On 05/08/19 14:50, Robin Murphy wrote:
->>>>> Hi Shameer,
->>>>>
->>>>> On 08/05/2019 11:15, Shameerali Kolothum Thodi wrote:
->>>>>> Hi,
->>>>>>
->>>>>> This series here[0] attempts to add support for PCDIMM in QEMU for
->>>>>> ARM/Virt platform and has stumbled upon an issue as it is not clea=
-r(at
->>>>>> least
->>>>>> from Qemu/EDK2 point of view) how in physical world the hotpluggab=
-le
->>>>>> memory is handled by kernel.
->>>>>>
->>>>>> The proposed implementation in Qemu, builds the SRAT and DSDT part=
-s
->>>>>> and uses GED device to trigger the hotplug. This works fine.
->>>>>>
->>>>>> But when we added the DT node corresponding to the PCDIMM(cold plu=
-g
->>>>>> scenario), we noticed that Guest kernel see this memory during ear=
-ly
->> boot
->>>>>> even if we are booting with ACPI. Because of this, hotpluggable me=
-mory
->>>>>> may end up in zone normal and make it non-hot-un-pluggable even if
->> Guest
->>>>>> boots with ACPI.
->>>>>>
->>>>>> Further discussions[1] revealed that, EDK2 UEFI has no means to
->>>>>> interpret the
->>>>>> ACPI content from Qemu(this is designed to do so) and uses DT info=
- to
->>>>>> build the GetMemoryMap(). To solve this, introduced "hotpluggable"
->>>>>> property
->>>>>> to DT memory node(patches #7 & #8 from [0]) so that UEFI can
->>>>>> differentiate
->>>>>> the nodes and exclude the hotpluggable ones from GetMemoryMap().
->>>>>>
->>>>>> But then Laszlo rightly pointed out that in order to accommodate t=
-he
->>>>>> changes
->>>>>> into UEFI we need to know how exactly Linux expects/handles all th=
-e
->>>>>> hotpluggable memory scenarios. Please find the discussion here[2].
->>>>>>
->>>>>> For ease, I am just copying the relevant comment from Laszlo below=
-,
->>>>>>
->>>>>> /******
->>>>>> "Given patches #7 and #8, as I understand them, the firmware canno=
-t
->>>>>> distinguish
->>>>>> =C2=A0 hotpluggable & present, from hotpluggable & absent. The fir=
-mware
->> can
->>>>>> only
->>>>>> =C2=A0 skip both hotpluggable cases. That's fine in that the firmw=
-are will
->>>>>> hog neither
->>>>>> =C2=A0 type -- but is that OK for the OS as well, for both ACPI bo=
-ot and DT
->>>>>> boot?
->>>>>>
->>>>>> Consider in particular the "hotpluggable & present, ACPI boot" cas=
-e.
->>>>>> Assuming
->>>>>> we modify the firmware to skip "hotpluggable" altogether, the UEFI
->> memmap
->>>>>> will not include the range despite it being present at boot.
->>>>>> Presumably, ACPI
->>>>>> will refer to the range somehow, however. Will that not confuse th=
-e OS?
->>>>>>
->>>>>> When Igor raised this earlier, I suggested that
->>>>>> hotpluggable-and-present should
->>>>>> be added by the firmware, but also allocated immediately, as
->>>>>> EfiBootServicesData
->>>>>> type memory. This will prevent other drivers in the firmware from
->>>>>> allocating AcpiNVS
->>>>>> or Reserved chunks from the same memory range, the UEFI memmap wil=
-l
->>>>>> contain
->>>>>> the range as EfiBootServicesData, and then the OS can release that
->>>>>> allocation in
->>>>>> one go early during boot.
->>>>>>
->>>>>> But this really has to be clarified from the Linux kernel's
->>>>>> expectations. Please
->>>>>> formalize all of the following cases:
->>>>>>
->>>>>> OS boot (DT/ACPI)=C2=A0 hotpluggable & ...=C2=A0 GetMemoryMap() sh=
-ould report
->>>>>> as=C2=A0 DT/ACPI should report as
->>>>>> -----------------=C2=A0 ------------------
->>>>>> -------------------------------=C2=A0 ------------------------
->>>>>>
->> DT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 present=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ?
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 ?
->>>>>>
->> DT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 absent=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ?
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 ?
->>>>>>
->> ACPI=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 present=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 ?
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 ?
->>>>>>
->> ACPI=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 absent=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ?
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 ?
->>>>>>
->>>>>> Again, this table is dictated by Linux."
->>>>>>
->>>>>> ******/
->>>>>>
->>>>>> Could you please take a look at this and let us know what is expec=
-ted
->>>>>> here from
->>>>>> a Linux kernel view point.
->>>>>
->>>>> For arm64, so far we've not even been considering DT-based hotplug =
-- as
->>>>> far as I'm aware there would still be a big open question there aro=
-und
->>>>> notification mechanisms and how to describe them. The DT stuff so f=
-ar
->>>>> has come from the PowerPC folks, so it's probably worth seeing what
->>>>> their ideas are.
->>>>>
->>>>> ACPI-wise I've always assumed/hoped that hotplug-related things sho=
-uld
->>>>> be sufficiently well-specified in UEFI that "do whatever x86/IA-64 =
-do"
->>>>> would be enough for us.
->>>>
->>>> As far as I can see in UEFI v2.8 -- and I had checked the spec befor=
-e
->>>> dumping the table with the many question marks on Shameer --, all th=
-e
->>>> hot-plug language in the spec refers to USB and PCI hot-plug in the
->>>> preboot environment. There is not a single word about hot-plug at OS
->>>> runtime (regarding any device or component type), nor about memory
->>>> hot-plug (at any time).
->>>>
->>>> Looking to x86 appears valid -- so what does the Linux kernel expect=
- on
->>>> that architecture, in the "ACPI" rows of the table?
->>>
->>> I could only answer from QEMU x86 perspective.
->>> QEMU for x86 guests currently doesn't add hot-pluggable RAM into E820
->>> because of different linux guests tend to cannibalize it, making it n=
-on
->>> unpluggable. The last culprit I recall was KASLR.
->>>
->>> So I'd refrain from reporting hotpluggable RAM in GetMemoryMap() if
->>> it's possible (it's probably hack (spec deosn't say anything about it=
-)
->>> but it mostly works for Linux (plug/unplug) and Windows guest also
->>> fine with plug part (no unplug there)).
->>
->> I can accept this as a perfectly valid design. Which would mean, QEMU =
-should
->> mark each hotpluggable RAM range in the DTB for the firmware with the
->> special new property, regardless of its initial ("cold") plugged-ness,=
- and then
->> the firmware will not expose the range in the GCD memory space map, an=
-d
->> consequently in the UEFI memmap either.
->>
->> IOW, our table is, thus far:
->>
->> OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as
->> DT/ACPI should report as
->> -----------------  ------------------  -------------------------------=
-  ------------------------
->> DT                 present
->> ABSENT                           ?
->> DT                 absent
->> ABSENT                           ?
->> ACPI               present             ABSENT
->> PRESENT
->> ACPI               absent              ABSENT
->> ABSENT
->> In the firmware, I only need to care about the GetMemoryMap() column, =
-so I
->> can work with this.
->=20
-> Thank you all for the inputs.
->=20
-> I assume we will still report the DT cold plug case to kernel(hotplugga=
-ble & present).
-> so the table will be something like this,
->=20
-> OS boot (DT/ACPI)  hotpluggable & ...  GetMemoryMap() should report as =
- DT/ACPI should report as
-> -----------------  ------------------  ------------------------------- =
- ------------------------
-> DT                 present             ABSENT                          =
- PRESENT
-> DT                 absent              ABSENT                          =
- ABSENT
-With DT boot, how does the OS get to know if thehotpluggable memory is
-present or absent? Or maybe I misunderstand the last column.
-
-Thanks
-
-Eric
-> ACPI               present             ABSENT                          =
- PRESENT
-> ACPI               absent              ABSENT                          =
- ABSENT=20
->=20
->=20
->  Can someone please file a feature request at
->> <https://bugzilla.tianocore.org/>, for the ArmVirtPkg Package, with th=
-ese
->> detais?
->=20
-> Ok. I will do that.
->=20
-> Thanks,
-> Shameer
->=20
->> Thanks
->> Laszlo
->>
->>>
->>> As for physical systems, there are out there ones that do report
->>> hotpluggable RAM in GetMemoryMap().
->>>
->>>> Shameer: if you (Huawei) are represented on the USWG / ASWG, I sugge=
-st
->>>> re-raising the question on those lists too; at least the "ACPI" rows=
- of
->>>> the table.
->>>>
->>>> Thanks!
->>>> Laszlo
->>>>
->>>>>
->>>>> Robin.
->>>>>
->>>>>> (Hi Laszlo/Igor/Eric, please feel free to add/change if I have mis=
-sed
->>>>>> any valid
->>>>>> points above).
->>>>>>
->>>>>> Thanks,
->>>>>> Shameer
->>>>>> [0] https://patchwork.kernel.org/cover/10890919/
->>>>>> [1] https://patchwork.kernel.org/patch/10863299/
->>>>>> [2] https://patchwork.kernel.org/patch/10890937/
->>>>>>
->>>>>>
->>>>
->>>
->=20
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBBdWdlciBF
+cmljIFttYWlsdG86ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50OiAxMCBNYXkgMjAxOSAx
+MDoxNg0KPiBUbzogU2hhbWVlcmFsaSBLb2xvdGh1bSBUaG9kaSA8c2hhbWVlcmFsaS5rb2xvdGh1
+bS50aG9kaUBodWF3ZWkuY29tPjsNCj4gTGFzemxvIEVyc2VrIDxsZXJzZWtAcmVkaGF0LmNvbT47
+IElnb3IgTWFtbWVkb3YNCj4gPGltYW1tZWRvQHJlZGhhdC5jb20+DQo+IENjOiBwZXRlci5tYXlk
+ZWxsQGxpbmFyby5vcmc7IHh1d2VpIChPKSA8eHV3ZWk1QGh1YXdlaS5jb20+OyBBbnNodW1hbg0K
+PiBLaGFuZHVhbCA8YW5zaHVtYW4ua2hhbmR1YWxAYXJtLmNvbT47IENhdGFsaW4gTWFyaW5hcw0K
+PiA8Q2F0YWxpbi5NYXJpbmFzQGFybS5jb20+OyBhcmQuYmllc2hldXZlbEBsaW5hcm8ub3JnOw0K
+PiB3aWxsLmRlYWNvbkBhcm0uY29tOyBxZW11LWRldmVsQG5vbmdudS5vcmc7IExpbnV4YXJtDQo+
+IDxsaW51eGFybUBodWF3ZWkuY29tPjsgbGludXgtbW0gPGxpbnV4LW1tQGt2YWNrLm9yZz47DQo+
+IHFlbXUtYXJtQG5vbmdudS5vcmc7IEpvbmF0aGFuIENhbWVyb24NCj4gPGpvbmF0aGFuLmNhbWVy
+b25AaHVhd2VpLmNvbT47IFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5QGFybS5jb20+Ow0KPiBs
+aW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4gU3ViamVjdDogUmU6IFtRZW11
+LWRldmVsXSBbUXVlc3Rpb25dIE1lbW9yeSBob3RwbHVnIGNsYXJpZmljYXRpb24gZm9yIFFlbXUN
+Cj4gQVJNL3ZpcnQNCj4gDQo+IEhpIFNoYW1lZXIsDQo+IA0KPiBPbiA1LzEwLzE5IDEwOjM0IEFN
+LCBTaGFtZWVyYWxpIEtvbG90aHVtIFRob2RpIHdyb3RlOg0KPiA+DQo+ID4NCj4gPj4gLS0tLS1P
+cmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPj4gRnJvbTogTGFzemxvIEVyc2VrIFttYWlsdG86bGVy
+c2VrQHJlZGhhdC5jb21dDQo+ID4+IFNlbnQ6IDA5IE1heSAyMDE5IDIyOjQ4DQo+ID4+IFRvOiBJ
+Z29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29tPg0KPiA+PiBDYzogUm9iaW4gTXVycGh5
+IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT47IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPj4g
+PHNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47IHdpbGwuZGVhY29uQGFybS5j
+b207IENhdGFsaW4NCj4gPj4gTWFyaW5hcyA8Q2F0YWxpbi5NYXJpbmFzQGFybS5jb20+OyBBbnNo
+dW1hbiBLaGFuZHVhbA0KPiA+PiA8YW5zaHVtYW4ua2hhbmR1YWxAYXJtLmNvbT47IGxpbnV4LWFy
+bS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZzsNCj4gPj4gbGludXgtbW0gPGxpbnV4LW1tQGt2
+YWNrLm9yZz47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gPj4gcWVtdS1hcm1Abm9uZ251Lm9y
+ZzsgZXJpYy5hdWdlckByZWRoYXQuY29tOw0KPiBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7DQo+
+ID4+IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsgYXJkLmJpZXNoZXV2ZWxAbGluYXJv
+Lm9yZzsgSm9uYXRoYW4NCj4gPj4gQ2FtZXJvbiA8am9uYXRoYW4uY2FtZXJvbkBodWF3ZWkuY29t
+PjsgeHV3ZWkgKE8pDQo+IDx4dXdlaTVAaHVhd2VpLmNvbT4NCj4gPj4gU3ViamVjdDogUmU6IFtR
+dWVzdGlvbl0gTWVtb3J5IGhvdHBsdWcgY2xhcmlmaWNhdGlvbiBmb3IgUWVtdSBBUk0vdmlydA0K
+PiA+Pg0KPiA+PiBPbiAwNS8wOS8xOSAxODozNSwgSWdvciBNYW1tZWRvdiB3cm90ZToNCj4gPj4+
+IE9uIFdlZCwgOCBNYXkgMjAxOSAyMjoyNjoxMiArMDIwMA0KPiA+Pj4gTGFzemxvIEVyc2VrIDxs
+ZXJzZWtAcmVkaGF0LmNvbT4gd3JvdGU6DQo+ID4+Pg0KPiA+Pj4+IE9uIDA1LzA4LzE5IDE0OjUw
+LCBSb2JpbiBNdXJwaHkgd3JvdGU6DQo+ID4+Pj4+IEhpIFNoYW1lZXIsDQo+ID4+Pj4+DQo+ID4+
+Pj4+IE9uIDA4LzA1LzIwMTkgMTE6MTUsIFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgd3JvdGU6
+DQo+ID4+Pj4+PiBIaSwNCj4gPj4+Pj4+DQo+ID4+Pj4+PiBUaGlzIHNlcmllcyBoZXJlWzBdIGF0
+dGVtcHRzIHRvIGFkZCBzdXBwb3J0IGZvciBQQ0RJTU0gaW4gUUVNVSBmb3INCj4gPj4+Pj4+IEFS
+TS9WaXJ0IHBsYXRmb3JtIGFuZCBoYXMgc3R1bWJsZWQgdXBvbiBhbiBpc3N1ZSBhcyBpdCBpcyBu
+b3QgY2xlYXIoYXQNCj4gPj4+Pj4+IGxlYXN0DQo+ID4+Pj4+PiBmcm9tIFFlbXUvRURLMiBwb2lu
+dCBvZiB2aWV3KSBob3cgaW4gcGh5c2ljYWwgd29ybGQgdGhlIGhvdHBsdWdnYWJsZQ0KPiA+Pj4+
+Pj4gbWVtb3J5IGlzIGhhbmRsZWQgYnkga2VybmVsLg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IFRoZSBw
+cm9wb3NlZCBpbXBsZW1lbnRhdGlvbiBpbiBRZW11LCBidWlsZHMgdGhlIFNSQVQgYW5kIERTRFQg
+cGFydHMNCj4gPj4+Pj4+IGFuZCB1c2VzIEdFRCBkZXZpY2UgdG8gdHJpZ2dlciB0aGUgaG90cGx1
+Zy4gVGhpcyB3b3JrcyBmaW5lLg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IEJ1dCB3aGVuIHdlIGFkZGVk
+IHRoZSBEVCBub2RlIGNvcnJlc3BvbmRpbmcgdG8gdGhlIFBDRElNTShjb2xkDQo+IHBsdWcNCj4g
+Pj4+Pj4+IHNjZW5hcmlvKSwgd2Ugbm90aWNlZCB0aGF0IEd1ZXN0IGtlcm5lbCBzZWUgdGhpcyBt
+ZW1vcnkgZHVyaW5nIGVhcmx5DQo+ID4+IGJvb3QNCj4gPj4+Pj4+IGV2ZW4gaWYgd2UgYXJlIGJv
+b3Rpbmcgd2l0aCBBQ1BJLiBCZWNhdXNlIG9mIHRoaXMsIGhvdHBsdWdnYWJsZQ0KPiBtZW1vcnkN
+Cj4gPj4+Pj4+IG1heSBlbmQgdXAgaW4gem9uZSBub3JtYWwgYW5kIG1ha2UgaXQgbm9uLWhvdC11
+bi1wbHVnZ2FibGUgZXZlbiBpZg0KPiA+PiBHdWVzdA0KPiA+Pj4+Pj4gYm9vdHMgd2l0aCBBQ1BJ
+Lg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IEZ1cnRoZXIgZGlzY3Vzc2lvbnNbMV0gcmV2ZWFsZWQgdGhh
+dCwgRURLMiBVRUZJIGhhcyBubyBtZWFucyB0bw0KPiA+Pj4+Pj4gaW50ZXJwcmV0IHRoZQ0KPiA+
+Pj4+Pj4gQUNQSSBjb250ZW50IGZyb20gUWVtdSh0aGlzIGlzIGRlc2lnbmVkIHRvIGRvIHNvKSBh
+bmQgdXNlcyBEVCBpbmZvIHRvDQo+ID4+Pj4+PiBidWlsZCB0aGUgR2V0TWVtb3J5TWFwKCkuIFRv
+IHNvbHZlIHRoaXMsIGludHJvZHVjZWQgImhvdHBsdWdnYWJsZSINCj4gPj4+Pj4+IHByb3BlcnR5
+DQo+ID4+Pj4+PiB0byBEVCBtZW1vcnkgbm9kZShwYXRjaGVzICM3ICYgIzggZnJvbSBbMF0pIHNv
+IHRoYXQgVUVGSSBjYW4NCj4gPj4+Pj4+IGRpZmZlcmVudGlhdGUNCj4gPj4+Pj4+IHRoZSBub2Rl
+cyBhbmQgZXhjbHVkZSB0aGUgaG90cGx1Z2dhYmxlIG9uZXMgZnJvbSBHZXRNZW1vcnlNYXAoKS4N
+Cj4gPj4+Pj4+DQo+ID4+Pj4+PiBCdXQgdGhlbiBMYXN6bG8gcmlnaHRseSBwb2ludGVkIG91dCB0
+aGF0IGluIG9yZGVyIHRvIGFjY29tbW9kYXRlIHRoZQ0KPiA+Pj4+Pj4gY2hhbmdlcw0KPiA+Pj4+
+Pj4gaW50byBVRUZJIHdlIG5lZWQgdG8ga25vdyBob3cgZXhhY3RseSBMaW51eCBleHBlY3RzL2hh
+bmRsZXMgYWxsIHRoZQ0KPiA+Pj4+Pj4gaG90cGx1Z2dhYmxlIG1lbW9yeSBzY2VuYXJpb3MuIFBs
+ZWFzZSBmaW5kIHRoZSBkaXNjdXNzaW9uIGhlcmVbMl0uDQo+ID4+Pj4+Pg0KPiA+Pj4+Pj4gRm9y
+IGVhc2UsIEkgYW0ganVzdCBjb3B5aW5nIHRoZSByZWxldmFudCBjb21tZW50IGZyb20gTGFzemxv
+IGJlbG93LA0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IC8qKioqKioNCj4gPj4+Pj4+ICJHaXZlbiBwYXRj
+aGVzICM3IGFuZCAjOCwgYXMgSSB1bmRlcnN0YW5kIHRoZW0sIHRoZSBmaXJtd2FyZSBjYW5ub3QN
+Cj4gPj4+Pj4+IGRpc3Rpbmd1aXNoDQo+ID4+Pj4+PiDCoCBob3RwbHVnZ2FibGUgJiBwcmVzZW50
+LCBmcm9tIGhvdHBsdWdnYWJsZSAmIGFic2VudC4gVGhlIGZpcm13YXJlDQo+ID4+IGNhbg0KPiA+
+Pj4+Pj4gb25seQ0KPiA+Pj4+Pj4gwqAgc2tpcCBib3RoIGhvdHBsdWdnYWJsZSBjYXNlcy4gVGhh
+dCdzIGZpbmUgaW4gdGhhdCB0aGUgZmlybXdhcmUgd2lsbA0KPiA+Pj4+Pj4gaG9nIG5laXRoZXIN
+Cj4gPj4+Pj4+IMKgIHR5cGUgLS0gYnV0IGlzIHRoYXQgT0sgZm9yIHRoZSBPUyBhcyB3ZWxsLCBm
+b3IgYm90aCBBQ1BJIGJvb3QgYW5kIERUDQo+ID4+Pj4+PiBib290Pw0KPiA+Pj4+Pj4NCj4gPj4+
+Pj4+IENvbnNpZGVyIGluIHBhcnRpY3VsYXIgdGhlICJob3RwbHVnZ2FibGUgJiBwcmVzZW50LCBB
+Q1BJIGJvb3QiIGNhc2UuDQo+ID4+Pj4+PiBBc3N1bWluZw0KPiA+Pj4+Pj4gd2UgbW9kaWZ5IHRo
+ZSBmaXJtd2FyZSB0byBza2lwICJob3RwbHVnZ2FibGUiIGFsdG9nZXRoZXIsIHRoZSBVRUZJDQo+
+ID4+IG1lbW1hcA0KPiA+Pj4+Pj4gd2lsbCBub3QgaW5jbHVkZSB0aGUgcmFuZ2UgZGVzcGl0ZSBp
+dCBiZWluZyBwcmVzZW50IGF0IGJvb3QuDQo+ID4+Pj4+PiBQcmVzdW1hYmx5LCBBQ1BJDQo+ID4+
+Pj4+PiB3aWxsIHJlZmVyIHRvIHRoZSByYW5nZSBzb21laG93LCBob3dldmVyLiBXaWxsIHRoYXQg
+bm90IGNvbmZ1c2UgdGhlDQo+IE9TPw0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IFdoZW4gSWdvciByYWlz
+ZWQgdGhpcyBlYXJsaWVyLCBJIHN1Z2dlc3RlZCB0aGF0DQo+ID4+Pj4+PiBob3RwbHVnZ2FibGUt
+YW5kLXByZXNlbnQgc2hvdWxkDQo+ID4+Pj4+PiBiZSBhZGRlZCBieSB0aGUgZmlybXdhcmUsIGJ1
+dCBhbHNvIGFsbG9jYXRlZCBpbW1lZGlhdGVseSwgYXMNCj4gPj4+Pj4+IEVmaUJvb3RTZXJ2aWNl
+c0RhdGENCj4gPj4+Pj4+IHR5cGUgbWVtb3J5LiBUaGlzIHdpbGwgcHJldmVudCBvdGhlciBkcml2
+ZXJzIGluIHRoZSBmaXJtd2FyZSBmcm9tDQo+ID4+Pj4+PiBhbGxvY2F0aW5nIEFjcGlOVlMNCj4g
+Pj4+Pj4+IG9yIFJlc2VydmVkIGNodW5rcyBmcm9tIHRoZSBzYW1lIG1lbW9yeSByYW5nZSwgdGhl
+IFVFRkkgbWVtbWFwDQo+IHdpbGwNCj4gPj4+Pj4+IGNvbnRhaW4NCj4gPj4+Pj4+IHRoZSByYW5n
+ZSBhcyBFZmlCb290U2VydmljZXNEYXRhLCBhbmQgdGhlbiB0aGUgT1MgY2FuIHJlbGVhc2UgdGhh
+dA0KPiA+Pj4+Pj4gYWxsb2NhdGlvbiBpbg0KPiA+Pj4+Pj4gb25lIGdvIGVhcmx5IGR1cmluZyBi
+b290Lg0KPiA+Pj4+Pj4NCj4gPj4+Pj4+IEJ1dCB0aGlzIHJlYWxseSBoYXMgdG8gYmUgY2xhcmlm
+aWVkIGZyb20gdGhlIExpbnV4IGtlcm5lbCdzDQo+ID4+Pj4+PiBleHBlY3RhdGlvbnMuIFBsZWFz
+ZQ0KPiA+Pj4+Pj4gZm9ybWFsaXplIGFsbCBvZiB0aGUgZm9sbG93aW5nIGNhc2VzOg0KPiA+Pj4+
+Pj4NCj4gPj4+Pj4+IE9TIGJvb3QgKERUL0FDUEkpwqAgaG90cGx1Z2dhYmxlICYgLi4uwqAgR2V0
+TWVtb3J5TWFwKCkgc2hvdWxkDQo+IHJlcG9ydA0KPiA+Pj4+Pj4gYXPCoCBEVC9BQ1BJIHNob3Vs
+ZCByZXBvcnQgYXMNCj4gPj4+Pj4+IC0tLS0tLS0tLS0tLS0tLS0twqAgLS0tLS0tLS0tLS0tLS0t
+LS0tDQo+ID4+Pj4+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0twqAgLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tDQo+ID4+Pj4+Pg0KPiA+PiBEVMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIHByZXNlbnTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPw0KPiA+PiDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCA/DQo+ID4+Pj4+Pg0KPiA+PiBEVMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIGFic2VudMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgID8NCj4gPj4g
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/DQo+ID4+Pj4+Pg0KPiA+PiBBQ1BJwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwcmVzZW50wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgID8N
+Cj4gPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPw0KPiA+Pj4+Pj4NCj4gPj4gQUNQScKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYWJzZW50wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgPw0KPiA+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA/DQo+ID4+Pj4+Pg0KPiA+Pj4+
+Pj4gQWdhaW4sIHRoaXMgdGFibGUgaXMgZGljdGF0ZWQgYnkgTGludXguIg0KPiA+Pj4+Pj4NCj4g
+Pj4+Pj4+ICoqKioqKi8NCj4gPj4+Pj4+DQo+ID4+Pj4+PiBDb3VsZCB5b3UgcGxlYXNlIHRha2Ug
+YSBsb29rIGF0IHRoaXMgYW5kIGxldCB1cyBrbm93IHdoYXQgaXMgZXhwZWN0ZWQNCj4gPj4+Pj4+
+IGhlcmUgZnJvbQ0KPiA+Pj4+Pj4gYSBMaW51eCBrZXJuZWwgdmlldyBwb2ludC4NCj4gPj4+Pj4N
+Cj4gPj4+Pj4gRm9yIGFybTY0LCBzbyBmYXIgd2UndmUgbm90IGV2ZW4gYmVlbiBjb25zaWRlcmlu
+ZyBEVC1iYXNlZCBob3RwbHVnIC0gYXMNCj4gPj4+Pj4gZmFyIGFzIEknbSBhd2FyZSB0aGVyZSB3
+b3VsZCBzdGlsbCBiZSBhIGJpZyBvcGVuIHF1ZXN0aW9uIHRoZXJlIGFyb3VuZA0KPiA+Pj4+PiBu
+b3RpZmljYXRpb24gbWVjaGFuaXNtcyBhbmQgaG93IHRvIGRlc2NyaWJlIHRoZW0uIFRoZSBEVCBz
+dHVmZiBzbyBmYXINCj4gPj4+Pj4gaGFzIGNvbWUgZnJvbSB0aGUgUG93ZXJQQyBmb2xrcywgc28g
+aXQncyBwcm9iYWJseSB3b3J0aCBzZWVpbmcgd2hhdA0KPiA+Pj4+PiB0aGVpciBpZGVhcyBhcmUu
+DQo+ID4+Pj4+DQo+ID4+Pj4+IEFDUEktd2lzZSBJJ3ZlIGFsd2F5cyBhc3N1bWVkL2hvcGVkIHRo
+YXQgaG90cGx1Zy1yZWxhdGVkIHRoaW5ncw0KPiBzaG91bGQNCj4gPj4+Pj4gYmUgc3VmZmljaWVu
+dGx5IHdlbGwtc3BlY2lmaWVkIGluIFVFRkkgdGhhdCAiZG8gd2hhdGV2ZXIgeDg2L0lBLTY0IGRv
+Ig0KPiA+Pj4+PiB3b3VsZCBiZSBlbm91Z2ggZm9yIHVzLg0KPiA+Pj4+DQo+ID4+Pj4gQXMgZmFy
+IGFzIEkgY2FuIHNlZSBpbiBVRUZJIHYyLjggLS0gYW5kIEkgaGFkIGNoZWNrZWQgdGhlIHNwZWMg
+YmVmb3JlDQo+ID4+Pj4gZHVtcGluZyB0aGUgdGFibGUgd2l0aCB0aGUgbWFueSBxdWVzdGlvbiBt
+YXJrcyBvbiBTaGFtZWVyIC0tLCBhbGwgdGhlDQo+ID4+Pj4gaG90LXBsdWcgbGFuZ3VhZ2UgaW4g
+dGhlIHNwZWMgcmVmZXJzIHRvIFVTQiBhbmQgUENJIGhvdC1wbHVnIGluIHRoZQ0KPiA+Pj4+IHBy
+ZWJvb3QgZW52aXJvbm1lbnQuIFRoZXJlIGlzIG5vdCBhIHNpbmdsZSB3b3JkIGFib3V0IGhvdC1w
+bHVnIGF0IE9TDQo+ID4+Pj4gcnVudGltZSAocmVnYXJkaW5nIGFueSBkZXZpY2Ugb3IgY29tcG9u
+ZW50IHR5cGUpLCBub3IgYWJvdXQgbWVtb3J5DQo+ID4+Pj4gaG90LXBsdWcgKGF0IGFueSB0aW1l
+KS4NCj4gPj4+Pg0KPiA+Pj4+IExvb2tpbmcgdG8geDg2IGFwcGVhcnMgdmFsaWQgLS0gc28gd2hh
+dCBkb2VzIHRoZSBMaW51eCBrZXJuZWwgZXhwZWN0IG9uDQo+ID4+Pj4gdGhhdCBhcmNoaXRlY3R1
+cmUsIGluIHRoZSAiQUNQSSIgcm93cyBvZiB0aGUgdGFibGU/DQo+ID4+Pg0KPiA+Pj4gSSBjb3Vs
+ZCBvbmx5IGFuc3dlciBmcm9tIFFFTVUgeDg2IHBlcnNwZWN0aXZlLg0KPiA+Pj4gUUVNVSBmb3Ig
+eDg2IGd1ZXN0cyBjdXJyZW50bHkgZG9lc24ndCBhZGQgaG90LXBsdWdnYWJsZSBSQU0gaW50byBF
+ODIwDQo+ID4+PiBiZWNhdXNlIG9mIGRpZmZlcmVudCBsaW51eCBndWVzdHMgdGVuZCB0byBjYW5u
+aWJhbGl6ZSBpdCwgbWFraW5nIGl0IG5vbg0KPiA+Pj4gdW5wbHVnZ2FibGUuIFRoZSBsYXN0IGN1
+bHByaXQgSSByZWNhbGwgd2FzIEtBU0xSLg0KPiA+Pj4NCj4gPj4+IFNvIEknZCByZWZyYWluIGZy
+b20gcmVwb3J0aW5nIGhvdHBsdWdnYWJsZSBSQU0gaW4gR2V0TWVtb3J5TWFwKCkgaWYNCj4gPj4+
+IGl0J3MgcG9zc2libGUgKGl0J3MgcHJvYmFibHkgaGFjayAoc3BlYyBkZW9zbid0IHNheSBhbnl0
+aGluZyBhYm91dCBpdCkNCj4gPj4+IGJ1dCBpdCBtb3N0bHkgd29ya3MgZm9yIExpbnV4IChwbHVn
+L3VucGx1ZykgYW5kIFdpbmRvd3MgZ3Vlc3QgYWxzbw0KPiA+Pj4gZmluZSB3aXRoIHBsdWcgcGFy
+dCAobm8gdW5wbHVnIHRoZXJlKSkuDQo+ID4+DQo+ID4+IEkgY2FuIGFjY2VwdCB0aGlzIGFzIGEg
+cGVyZmVjdGx5IHZhbGlkIGRlc2lnbi4gV2hpY2ggd291bGQgbWVhbiwgUUVNVQ0KPiBzaG91bGQN
+Cj4gPj4gbWFyayBlYWNoIGhvdHBsdWdnYWJsZSBSQU0gcmFuZ2UgaW4gdGhlIERUQiBmb3IgdGhl
+IGZpcm13YXJlIHdpdGggdGhlDQo+ID4+IHNwZWNpYWwgbmV3IHByb3BlcnR5LCByZWdhcmRsZXNz
+IG9mIGl0cyBpbml0aWFsICgiY29sZCIpIHBsdWdnZWQtbmVzcywgYW5kIHRoZW4NCj4gPj4gdGhl
+IGZpcm13YXJlIHdpbGwgbm90IGV4cG9zZSB0aGUgcmFuZ2UgaW4gdGhlIEdDRCBtZW1vcnkgc3Bh
+Y2UgbWFwLCBhbmQNCj4gPj4gY29uc2VxdWVudGx5IGluIHRoZSBVRUZJIG1lbW1hcCBlaXRoZXIu
+DQo+ID4+DQo+ID4+IElPVywgb3VyIHRhYmxlIGlzLCB0aHVzIGZhcjoNCj4gPj4NCj4gPj4gT1Mg
+Ym9vdCAoRFQvQUNQSSkgIGhvdHBsdWdnYWJsZSAmIC4uLiAgR2V0TWVtb3J5TWFwKCkgc2hvdWxk
+IHJlcG9ydCBhcw0KPiA+PiBEVC9BQ1BJIHNob3VsZCByZXBvcnQgYXMNCj4gPj4gLS0tLS0tLS0t
+LS0tLS0tLS0gIC0tLS0tLS0tLS0tLS0tLS0tLSAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLSAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4+IERUICAgICAgICAgICAgICAgICBw
+cmVzZW50DQo+ID4+IEFCU0VOVCAgICAgICAgICAgICAgICAgICAgICAgICAgID8NCj4gPj4gRFQg
+ICAgICAgICAgICAgICAgIGFic2VudA0KPiA+PiBBQlNFTlQgICAgICAgICAgICAgICAgICAgICAg
+ICAgICA/DQo+ID4+IEFDUEkgICAgICAgICAgICAgICBwcmVzZW50ICAgICAgICAgICAgIEFCU0VO
+VA0KPiA+PiBQUkVTRU5UDQo+ID4+IEFDUEkgICAgICAgICAgICAgICBhYnNlbnQgICAgICAgICAg
+ICAgIEFCU0VOVA0KPiA+PiBBQlNFTlQNCj4gPj4gSW4gdGhlIGZpcm13YXJlLCBJIG9ubHkgbmVl
+ZCB0byBjYXJlIGFib3V0IHRoZSBHZXRNZW1vcnlNYXAoKSBjb2x1bW4sIHNvDQo+IEkNCj4gPj4g
+Y2FuIHdvcmsgd2l0aCB0aGlzLg0KPiA+DQo+ID4gVGhhbmsgeW91IGFsbCBmb3IgdGhlIGlucHV0
+cy4NCj4gPg0KPiA+IEkgYXNzdW1lIHdlIHdpbGwgc3RpbGwgcmVwb3J0IHRoZSBEVCBjb2xkIHBs
+dWcgY2FzZSB0byBrZXJuZWwoaG90cGx1Z2dhYmxlICYNCj4gcHJlc2VudCkuDQo+ID4gc28gdGhl
+IHRhYmxlIHdpbGwgYmUgc29tZXRoaW5nIGxpa2UgdGhpcywNCj4gPg0KPiA+IE9TIGJvb3QgKERU
+L0FDUEkpICBob3RwbHVnZ2FibGUgJiAuLi4gIEdldE1lbW9yeU1hcCgpIHNob3VsZCByZXBvcnQg
+YXMNCj4gRFQvQUNQSSBzaG91bGQgcmVwb3J0IGFzDQo+ID4gLS0tLS0tLS0tLS0tLS0tLS0gIC0t
+LS0tLS0tLS0tLS0tLS0tLSAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAgLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4gRFQgICAgICAgICAgICAgICAgIHByZXNlbnQgICAgICAg
+ICAgICAgQUJTRU5UDQo+IFBSRVNFTlQNCj4gPiBEVCAgICAgICAgICAgICAgICAgYWJzZW50ICAg
+ICAgICAgICAgICBBQlNFTlQNCj4gQUJTRU5UDQo+IFdpdGggRFQgYm9vdCwgaG93IGRvZXMgdGhl
+IE9TIGdldCB0byBrbm93IGlmIHRoZWhvdHBsdWdnYWJsZSBtZW1vcnkgaXMNCj4gcHJlc2VudCBv
+ciBhYnNlbnQ/IE9yIG1heWJlIEkgbWlzdW5kZXJzdGFuZCB0aGUgbGFzdCBjb2x1bW4uDQoNCkl0
+IGRvZXNuJ3QuIEZvciBob3RwbHVnZ2FibGUgJiBwcmVzZW50IGNhc2UgaXQgd2lsbCBiZSBqdXN0
+IGxpa2Ugbm9ybWFsIG1lbW9yeSBhbmQNCmZvciBhYnNlbnQgY2FzZSBubyBtZW1vcnkgbm9kZSho
+b3RwbHVhZ2dibGUpIGlzIHBvcHVsYXRlZCBpbiBEVC4gSXMgdGhpcyBhY2NlcHRhYmxlPw0KDQpP
+biBhbm90aGVyIG5vdGUsIGlmIHRoZXJlIGFyZSBubyBzdHJvbmcgY2FzZSBmb3IgRFQgY29sZCBw
+bHVnIGZvciBQQ0RJTU0gd2UgY2FuIGRyb3ANCml0IGFsdG9nZXRoZXIgd2hpY2ggd2lsbCBtYWtl
+IGV2ZXJ5dGhpbmcgbXVjaCBzaW1wbGVyIGFuZCBubyBjaGFuZ2UgcmVxdWlyZWQgZm9yDQpVRUZJ
+IGFzIHdlbGwuDQoNClRoYW5rcywNClNoYW1lZXINCg0KDQo+IFRoYW5rcw0KPiANCj4gRXJpYw0K
+PiA+IEFDUEkgICAgICAgICAgICAgICBwcmVzZW50ICAgICAgICAgICAgIEFCU0VOVA0KPiBQUkVT
+RU5UDQo+ID4gQUNQSSAgICAgICAgICAgICAgIGFic2VudCAgICAgICAgICAgICAgQUJTRU5UDQo+
+IEFCU0VOVA0KPiA+DQo+ID4NCj4gPiAgQ2FuIHNvbWVvbmUgcGxlYXNlIGZpbGUgYSBmZWF0dXJl
+IHJlcXVlc3QgYXQNCj4gPj4gPGh0dHBzOi8vYnVnemlsbGEudGlhbm9jb3JlLm9yZy8+LCBmb3Ig
+dGhlIEFybVZpcnRQa2cgUGFja2FnZSwgd2l0aCB0aGVzZQ0KPiA+PiBkZXRhaXM/DQo+ID4NCj4g
+PiBPay4gSSB3aWxsIGRvIHRoYXQuDQo+ID4NCj4gPiBUaGFua3MsDQo+ID4gU2hhbWVlcg0KPiA+
+DQo+ID4+IFRoYW5rcw0KPiA+PiBMYXN6bG8NCj4gPj4NCj4gPj4+DQo+ID4+PiBBcyBmb3IgcGh5
+c2ljYWwgc3lzdGVtcywgdGhlcmUgYXJlIG91dCB0aGVyZSBvbmVzIHRoYXQgZG8gcmVwb3J0DQo+
+ID4+PiBob3RwbHVnZ2FibGUgUkFNIGluIEdldE1lbW9yeU1hcCgpLg0KPiA+Pj4NCj4gPj4+PiBT
+aGFtZWVyOiBpZiB5b3UgKEh1YXdlaSkgYXJlIHJlcHJlc2VudGVkIG9uIHRoZSBVU1dHIC8gQVNX
+RywgSQ0KPiBzdWdnZXN0DQo+ID4+Pj4gcmUtcmFpc2luZyB0aGUgcXVlc3Rpb24gb24gdGhvc2Ug
+bGlzdHMgdG9vOyBhdCBsZWFzdCB0aGUgIkFDUEkiIHJvd3Mgb2YNCj4gPj4+PiB0aGUgdGFibGUu
+DQo+ID4+Pj4NCj4gPj4+PiBUaGFua3MhDQo+ID4+Pj4gTGFzemxvDQo+ID4+Pj4NCj4gPj4+Pj4N
+Cj4gPj4+Pj4gUm9iaW4uDQo+ID4+Pj4+DQo+ID4+Pj4+PiAoSGkgTGFzemxvL0lnb3IvRXJpYywg
+cGxlYXNlIGZlZWwgZnJlZSB0byBhZGQvY2hhbmdlIGlmIEkgaGF2ZSBtaXNzZWQNCj4gPj4+Pj4+
+IGFueSB2YWxpZA0KPiA+Pj4+Pj4gcG9pbnRzIGFib3ZlKS4NCj4gPj4+Pj4+DQo+ID4+Pj4+PiBU
+aGFua3MsDQo+ID4+Pj4+PiBTaGFtZWVyDQo+ID4+Pj4+PiBbMF0gaHR0cHM6Ly9wYXRjaHdvcmsu
+a2VybmVsLm9yZy9jb3Zlci8xMDg5MDkxOS8NCj4gPj4+Pj4+IFsxXSBodHRwczovL3BhdGNod29y
+ay5rZXJuZWwub3JnL3BhdGNoLzEwODYzMjk5Lw0KPiA+Pj4+Pj4gWzJdIGh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTA4OTA5MzcvDQo+ID4+Pj4+Pg0KPiA+Pj4+Pj4NCj4gPj4+
+Pg0KPiA+Pj4NCj4gPg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtYXJtLWtlcm5lbAo=

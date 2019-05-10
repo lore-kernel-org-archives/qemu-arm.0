@@ -1,69 +1,68 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1724220wrh;
-        Fri, 10 May 2019 00:53:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxB4l1ofsIGFX8YTvIRiODJpf2ryNYWisg/Yu5SVwiD+WY2SyKQlWqsslKJM86/w4lk0L2A
-X-Received: by 2002:adf:c611:: with SMTP id n17mr6184332wrg.101.1557474780697;
-        Fri, 10 May 2019 00:53:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557474780; cv=none;
+Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp1753117wrh;
+        Fri, 10 May 2019 01:30:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxoZSmBWSJGX9Xf/C2Q2RNCj3geD21ppUEZnXj3y8jBoyNgtlM+rYY/D6qd9kMTVBUwUe+h
+X-Received: by 2002:a5d:50c2:: with SMTP id f2mr6736807wrt.253.1557477046956;
+        Fri, 10 May 2019 01:30:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557477046; cv=none;
         d=google.com; s=arc-20160816;
-        b=1JnkYvMHkXR6XW5aiFNgu/5imz3sSMDPOXUDAmuTUjx4iFykMhNXZlInHN5/sZ26Xl
-         twZ3MoNahMzxY5SGQVkunYj6sIQ2qzwJWvGoaltm75D1UNwdxD0GcbRyR8VTyQ837Ntp
-         ILN0gZozkMCrtkL+e1QNzCd/jxXIfGccQBZYGyIJuaFSxDy6/LMUx39px3jEp4JuF237
-         druFuG3ryk87GESJ9eX6ZKECLGKC+V3AOLLpNdvznls+R6z1ZGnJUCYR3hX2E6oviLvy
-         1hyt70OgZJdJPEG3I2VQj0rQLyX9qI+rQmg/vJe4IEBtRqKyW33PgPcIC43pLpn0HFg6
-         jRhA==
+        b=Yq+t/JxgNMnY7PhBKBEZr20J/bqXX4EQwmD2CwoR7KmMQra9+zv9krqT2t031JSoro
+         dh6EVA9X2vzmQxj99TH8z7euhjVPKRC17bnQvfnthOw6iqp/PMMiE/TwG04t7kYsOQ0u
+         ePgX9u8X0UaiwNCPd9Shf0EJsDxlsdhBj9cZCtOpTd6qwTgTZFx2bL1Xcg0yWIAprw76
+         xce/19gp+2NLXfv9iwgpd/jKdK/Bb15imetbfFKCoG34/3VWr6uSkjSm4XW6mBaPMQgm
+         cYa7TSr58+xXhnjXtlb1tEnpj945k4RN+AOsPDZ9rbKPGMEmJV+cMRAVHmuSxRwjyRXI
+         RikA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=1o5mOxq3tln0W7/HK4X6LYYWeV3r1ENm2SyYbqHmPTU=;
-        b=XFr8nJLhgtaWW3QI9ghJEBEcQa80zEFaaQUQrns2HeZR/EzGKPv4c9x/GwlyYgflUG
-         RuCKRo33V6DYcaQUAuvdst/fDWssdT9NifCSypPWhcDDl4Xje5W0Dpqc3M3jBXAHFa0e
-         +GsvCk3BoWSTIqZYeXl0X9u5dx1UNvqiJ7jIKcD2h7HF+bGMTzp5UrMrGiUD5bwr0zOs
-         8MXfD+xebicyOZzqN9NXLQbJwIQfLBWw0f4n7gzXM7vSPzvY1g5047VJMc9M4UC4h4Q9
-         aP6Y1Jmv7Ttrl6vcw0GaA2ygy4Y/hoBAyPO16ZEjHjy+vdX/rCbyzI6zxyonRDD9LgCe
-         nmDQ==
+        bh=JrgLOTWtOoOgB6RtRdEMgPuN1crPygMdAksxdN68mV4=;
+        b=Wd6K+lnTG2JrRP2NAfdcZ5m4g7WC61OJnPk/uBLncr3NrXvoeoTb+9CT3GDp74YBdl
+         1SNS/hcxdxNsvyxdSJsHX1iYPR6/DzYvjmvcHWsursR45055Ws5BWTsRm+QP4ayofbjX
+         oADwO4D9VGIqO5vDINM1drRzRAIre0hRyluDyOl4qMNxd7UaAmhn90vo0+7Gj+TKhPT8
+         Lks1Xn33PdI6aQVTNLY4DC2rjjTf8txa4YwDGNjXa0MJHAAOM0R4XSN1V0kTfwZfi3ht
+         xpcEH6jja8pmhLW6yknINOVVblSZYtcGxBWhZOaD4kq0IXcvdhzoiqu6VfVpGArYhegH
+         45eQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190si3290815wmj.115.2019.05.10.00.53.00
+        by mx.google.com with ESMTPS id v9si3580567wrs.255.2019.05.10.01.30.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 10 May 2019 00:53:00 -0700 (PDT)
+        Fri, 10 May 2019 01:30:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:38508 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38925 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hP0Kx-0003K2-MO
-	for alex.bennee@linaro.org; Fri, 10 May 2019 03:52:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54154)
+	id 1hP0vW-0006YJ-1a
+	for alex.bennee@linaro.org; Fri, 10 May 2019 04:30:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hP0Kh-0003I9-8Q
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 03:52:46 -0400
+	(envelope-from <thuth@redhat.com>) id 1hP0vK-0006Y2-2f
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 04:30:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hP0Kg-0005b4-AF
-	for qemu-arm@nongnu.org; Fri, 10 May 2019 03:52:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44362)
+	(envelope-from <thuth@redhat.com>) id 1hP0vJ-0005Dn-4c
+	for qemu-arm@nongnu.org; Fri, 10 May 2019 04:30:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47026)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hP0Kg-0005am-2z; Fri, 10 May 2019 03:52:42 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1hP0vI-0005CP-TE; Fri, 10 May 2019 04:30:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 699E13082AED;
-	Fri, 10 May 2019 07:52:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 26D57308FC20;
+	Fri, 10 May 2019 08:30:32 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-72.ams2.redhat.com [10.36.116.72])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 633CF600C7;
-	Fri, 10 May 2019 07:52:33 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5941360C81;
+	Fri, 10 May 2019 08:30:25 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190507134521.31044-1-thuth@redhat.com>
 	<CAFEAcA-j+wQXjPW+puxk=foi2T8O=MzXHtxdWJ6E5P7o89WQSg@mail.gmail.com>
 	<c0cda8fc-cc68-eadd-0750-cc9eeca094a4@redhat.com>
@@ -113,19 +112,19 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <a5711506-3f6a-bc5e-f991-9d730d2f7dee@redhat.com>
-Date: Fri, 10 May 2019 09:52:32 +0200
+Message-ID: <11e209d5-047a-d066-5995-18f46ff5382e@redhat.com>
+Date: Fri, 10 May 2019 10:30:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
 In-Reply-To: <CAFEAcA8RoJ-ZSsn3Lhzj5hd3oYOE7Uxy8MvUUWrzhNfBmD=AWQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Fri, 10 May 2019 07:52:40 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.43]);
+	Fri, 10 May 2019 08:30:32 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PULL v2 00/28] Kconfig for Arm machines
@@ -142,10 +141,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-arm <qemu-arm@nongnu.org>, John Snow <jsnow@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lrFDD4rqOKPA
+X-TUID: 2FqHmJJD0KQ+
 
 On 09/05/2019 18.54, Peter Maydell wrote:
 > On Wed, 8 May 2019 at 16:33, Thomas Huth <thuth@redhat.com> wrote:
@@ -161,31 +161,18 @@ On 09/05/2019 18.54, Peter Maydell wrote:
 >>
 >> Very weird. What is running before the "make clean"? Could you provide
 >> me with the content of i386-softmmu/config-devices.mak please?
->=20
+> 
 > Nothing runs before make clean -- my scripts effectively just do
 > a git merge, then make clean, then make, then make check.
 
-I tried to reproduce it for a while, but for me, switching between
-master and the kconfig-for-arm tree always triggers a "configure" run
-and thus the dependencies get regenerated right...
-
-> I notice that "make clean" does not delete config-devices.mak,
-> and "make" doesn't cause anything to update it, either.
-
-They are only removed during "distclean", but not for "clean" (which is
-what we want, IMHO).
+By the way, I think you should do "make clean" first, before the merge,
+in case something changed in the "clean" rules.
 
 > Further, if I "touch hw/i386/Kconfig" and then run make, nothing
 > is rebuilt at all, so something seems to be wrong with our
 > makefile dependencies somewhere.
 
-Now that's a good hint. There is definitely something wrong with the
-dependencies here. I can see that I've got a file called
-"x86_64-softmmu-config.devices.mak.d" in my build directory, but
-apparently the Makefile tries to include
-x86_64-softmmu/config-devices.mak.d via the SUBDIR_DEVICES_MAK_DEP
-variable instead. Since that file does not exist, the dependencies are
-completely ignored... Paolo, what was the intention here? Should the
-dependencies always be generated in the *softmmu folders instead?
+I've sent a patch now, please have a look at "Makefile: Fix inclusion of
+the config-devices.mak.d Kconfig dependencies".
 
  Thomas

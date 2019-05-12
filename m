@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1640851wrg;
-        Sun, 12 May 2019 01:36:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4+VPjT2md2HHdlbsceITEoUqjOzAr/S8Dzi5osmrVx4jAImtFhQWDgpL27ZBkhLhPLxFJ
-X-Received: by 2002:ac8:8fb:: with SMTP id y56mr18173872qth.160.1557650199461;
-        Sun, 12 May 2019 01:36:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650199; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1640901wrg;
+        Sun, 12 May 2019 01:36:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4Qhtc/99NQSdpOTP4S4HKyCHRrsQiVDAxbZ/z+LCVxJvaO7rOgCcaXJEPP+3QZnRbnvxA
+X-Received: by 2002:ae9:ef4c:: with SMTP id d73mr2531277qkg.325.1557650203760;
+        Sun, 12 May 2019 01:36:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557650203; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQSYAC2N5EOo4lb+FV8eKg/jGhZMWyNx8T3ecXz1c/6YSsJ4pODqfIdcGVXMEdUAhq
-         dbn7+iaXVKCrC9EvBwZVfg2X8zoDNTY9yoEG7DyNbsYPWTvvr6oAxvGKzSt4muO2SFJ0
-         9E6fHirzydu27eUknMzY0RBGotRfdPa98/WBybr/U8883IH7hk8djBrPQVOL/gpQg027
-         et1fid/WeJ8JtucqOe0yiFDSW2DXTviJ/e7ErM/OzQQ16tIUYvN1D4Gj9t93jZeYWNFv
-         nd4utcaM+PIlXx1fNfxR7dqooG2v4LWxw38IK/qcwBBIHfOiVfoFMVVJVP/sCKJGCbtj
-         5hlA==
+        b=yMid6LeXZJ37rmHTxj5R+UUjS5YVFNeGbtK8gDe8rtplGwCt+KoP+isaSooVhSpm4j
+         n4oDCZrGxq0rw6GkTm7zNjKRssUnK9sHxP0HILLwq9qU9LuCgY2NexZHRHxP/H7WOw67
+         njG4oDtznYtZuST7V6K8bn8Me8HGtwfYdOQiqwqoG6CQlBdzt8ZkiY9SCHchBbDZhPrB
+         TIA+2iX7YJ3hpPUVltT15fx+kTFgGJ2PlzdMyn6Z1pYjYnB9W4ykfcK9odktjZRNpE2Z
+         9enc3ylThLn8PpoGxcbwnj0QfVZu0yoZwOYxNXQgjREhHx4vuxFjwBA0kGcIvylxkGZ2
+         O8vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=hUHv+EyXHU4A/hCNnUtfZz+qUv9gSLkbVfBWxfAaHYA=;
-        b=MSk6lXn4vJyF1oskBR+Wj5geBoevhqRogMfgeGTD90nWs8e/SKEO9O4RyoyovJOQ4D
-         QBga2bgEMlRzRjQwz0cDVbGbmhl6Pr7U9o7JlqzMJxiX2FIlYulw8pUWvyMXm7wO9woW
-         Pd1vEz7QdIlKd9FvB8ukRVh4tYc1nZurmRa4/HKz6sDqFUfJHfwK/9aAOen63MLW02mx
-         zl57a02o9Sv2e8OXS00yZ8dIZaP25oSeegzrxMB7RE0Y0QSRV1RFCpi6YsbzSRScL4gH
-         35OJH5y0NZ6V9JcHNvuXCgyxr5t8AZ5SFLcb9PFIAXaJcBRRqbIQEXg1x6x2+nF8RXK6
-         8VYw==
+        bh=7gJWASQd9R5dvaLGxLmljQz1myPVvQcYJSTcIsyU8BA=;
+        b=VuqIWm4FjrvBJ357zaPypicvR6zFHVTdQsln29IL4+vbh5C5D0cvbWrtmw/yZyiwz7
+         oEGw004xTMKjJljzBrIQaQ9gPcJRivJ/yD5z4BniGXdGX2dhaE3jnbTh51bLBaTbseHT
+         4wgyTGRDa5xS57JldAbD8vipweDUqXfl2boqVRCAIWCeHm5aLJ+4023krQwr/5MhSOKK
+         9l9aPDnvZBBmctstNxQpXkETZ9Das4el1QTBtTgh/fCwknAgF4Eg8cJo+CB51TgFbJP6
+         qi5qw962Vu/2KD3u4VtEs6A5MnbLGhhbiUfJF+TwVYuGZ69fvSkGQTtrT0QxsWJWqebI
+         w4qw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b19si1098383qtq.251.2019.05.12.01.36.38
+        by mx.google.com with ESMTPS id o22si6068263qtp.5.2019.05.12.01.36.43
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:36:39 -0700 (PDT)
+        Sun, 12 May 2019 01:36:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 40A748667B;
-	Sun, 12 May 2019 08:36:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D0F633081244;
+	Sun, 12 May 2019 08:36:42 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 03F115D706;
-	Sun, 12 May 2019 08:36:33 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id ADB865D706;
+	Sun, 12 May 2019 08:36:38 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -51,45 +51,35 @@ Cc: peter.maydell@linaro.org,
 	eblake@redhat.com,
 	Dave.Martin@arm.com,
 	abologna@redhat.com
-Subject: [PATCH 01/13] target/arm/kvm64: fix error returns
-Date: Sun, 12 May 2019 10:36:12 +0200
-Message-Id: <20190512083624.8916-2-drjones@redhat.com>
+Subject: [PATCH 02/13] update-linux-headers: Add sve_context.h to asm-arm64
+Date: Sun, 12 May 2019 10:36:13 +0200
+Message-Id: <20190512083624.8916-3-drjones@redhat.com>
 In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Sun, 12 May 2019 08:36:38 +0000 (UTC)
-X-TUID: yBClpdPNhCR6
-
-A couple return -EINVAL's forget their '-'s.
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Sun, 12 May 2019 08:36:42 +0000 (UTC)
+X-TUID: S3yaxFG1CD+Y
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/kvm64.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/update-linux-headers.sh | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index e3ba1492482f..ba232b27a6d3 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -841,7 +841,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     write_cpustate_to_list(cpu, true);
+diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
+index c3819d2b983d..e1fce54f8aa3 100755
+--- a/scripts/update-linux-headers.sh
++++ b/scripts/update-linux-headers.sh
+@@ -99,6 +99,9 @@ for arch in $ARCHLIST; do
+         cp "$tmpdir/include/asm/$header" "$output/linux-headers/asm-$arch"
+     done
  
-     if (!write_list_to_kvmstate(cpu, level)) {
--        return EINVAL;
-+        return -EINVAL;
-     }
- 
-     kvm_arm_sync_mpstate_to_kvm(cpu);
-@@ -982,7 +982,7 @@ int kvm_arch_get_registers(CPUState *cs)
-     }
- 
-     if (!write_kvmstate_to_list(cpu)) {
--        return EINVAL;
-+        return -EINVAL;
-     }
-     /* Note that it's OK to have registers which aren't in CPUState,
-      * so we can ignore a failure return here.
++    if [ $arch = arm64 ]; then
++        cp "$tmpdir/include/asm/sve_context.h" "$output/linux-headers/asm-arm64/"
++    fi
+     if [ $arch = mips ]; then
+         cp "$tmpdir/include/asm/sgidefs.h" "$output/linux-headers/asm-mips/"
+         cp "$tmpdir/include/asm/unistd_o32.h" "$output/linux-headers/asm-mips/"
 -- 
 2.20.1

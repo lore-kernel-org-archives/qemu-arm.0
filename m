@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1641359wrg;
-        Sun, 12 May 2019 01:37:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzjm7rt6aFhmQQWmPHp7cegPH1koCVXkFlpfHmBEoPlR5XBisymBWo0DwNIQFcpcXabs37F
-X-Received: by 2002:a0c:d2b0:: with SMTP id q45mr10015476qvh.185.1557650246372;
-        Sun, 12 May 2019 01:37:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650246; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1641418wrg;
+        Sun, 12 May 2019 01:37:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzMl8HGw1oLzMf3FdE8f+5PH5qgmEevyJ2WD5H7RhW29GsHHUlWLg0RlIVuQB7iw7bAlxfE
+X-Received: by 2002:ac8:25d9:: with SMTP id f25mr18073526qtf.249.1557650251562;
+        Sun, 12 May 2019 01:37:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557650251; cv=none;
         d=google.com; s=arc-20160816;
-        b=iKJiASxCCgSJsnz2pIMqLRV4HRAmcpN4pMJ89HdzzCD8VSwH4+wNu/RWoYrby/mWsd
-         H5RxQaU9ECh5RshNvXypco6nTIhH0HV7EY0m11Gbb6AvIICrzObnE3/LVxYzf71XUcGI
-         uh3wbNLxnR+38DOW3iIAujUY9IF65nxzbX30alytrMsZVMWVTR0EbJUc6BSPd6kS5/gr
-         5XBuMNKCTn8BE3dgaLaiBjEFczpQO0nLKlYF4K2szYD6Ry5Vp1mxjP7qEq7eLg2o7c+d
-         l2jzYhgwpuOD6cOLKNFY8UD0Xk0i76FfyRIWXmZqv5k66AL4CZ73MY2Kcv21N3XjWEtf
-         hrYA==
+        b=kZywS8Fy2aMhmaYamch/FlfjJjPyBRRKyvnaNci0b9kIvqRhuUznyq0pUEdO4jRhls
+         9xlqewxA+FNibQvz7gsAByzL6OZgYWVb1GME8KNBPp4k05J8bSErnNMXPKqJEWL+V0n4
+         UYq4U41YmVWde+aLO/5GhtsGYeMr5oUjCWXqHvp72aTzaxl9LWjCs37sbMExsFfRYglX
+         gM4qprUQsgSeaW45Ix27+Y+AoN2ApWWC+myH12K07+qT598frOxkJ9aC1mnxZuxTjSNv
+         L4msApbUsAes4CntMbvyhMkpq9fDoCPbwgVEo4VJxijmxARAc60oi6uDa3oRHhWbzdSv
+         jgUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=DJG2MCFVNubmLgPbhh0i3Lw8LDDAXfJoqGP3uI+Yn+g=;
-        b=A/zvAl3rk2yjSuFCBT65SaXsM0AUuaIMfiNmpYsWmxN+YVV5R6aKXGw9NjXXPMCvJ8
-         HU1PLlR3/DWQ/JioiPFKRfeyWpfIWSNRUN10EXAlzHamkTxf5hP0+XrmBaEXjzFoMIh3
-         F2gfwzKgbh5Vp71dcqWkDNXbzIStno5keRecCjc8dlMTwxfSpP9WWgqD833zxABAvMDM
-         DswtvZkKqWM4Ascu5NgradIBQZGfNfk335uKNCC2tJYazZ54ZmAZ2+S1gSn2A/169M3k
-         Aj1ln/4dU7G7xdLjBmZQMtXQ33bZhU07mXmWpIs6fGhDO5ueNalKk880ZhyXRaLQmRAL
-         acXQ==
+        bh=L5i8wpTTm3voVOgGfd+6IZq7a5rq1Jc4JhXgOdmkkzk=;
+        b=1BKcGY8Ptwgp/icDe+t57xuAJGxQ8W17F0skLK4PqU5KH0dbBeln+NoJJBgzX8X7+w
+         DI0Svx0tn6bpiQ1HrRBTqq2kgR131Hj115/OL89nvw1xs4VaozNTMHO32toNKxSuvjax
+         AqrghFlNP6v1MWKqGJ6vIQnu6P8p88JUaMA00EnFA96xconmVbGuLyoLo8magH0dQldI
+         cQ/JweYpoi3H7QTK6tIo+vX0VfHuWXutwWvnV/oL90u/JbOFu4jpZDk5LDnA/tMFBiFE
+         csKcn0291vVvxXkNNT0RdovYfEsc1suix5NAg10/pjnaVTssnAhb7dux0TZbrjxk83MI
+         NNcA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id p19si6152164qkk.85.2019.05.12.01.37.26
+        by mx.google.com with ESMTPS id c25si1784389qta.234.2019.05.12.01.37.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:37:26 -0700 (PDT)
+        Sun, 12 May 2019 01:37:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 75341308427E;
-	Sun, 12 May 2019 08:37:25 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 91DED3082E4C;
+	Sun, 12 May 2019 08:37:30 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 077FA5D706;
-	Sun, 12 May 2019 08:37:21 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3D26D5D706;
+	Sun, 12 May 2019 08:37:25 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -51,207 +51,136 @@ Cc: peter.maydell@linaro.org,
 	eblake@redhat.com,
 	Dave.Martin@arm.com,
 	abologna@redhat.com
-Subject: [PATCH 11/13] target/arm/cpu64: max cpu: Introduce sve-vls-map
-Date: Sun, 12 May 2019 10:36:22 +0200
-Message-Id: <20190512083624.8916-12-drjones@redhat.com>
+Subject: [PATCH 12/13] target/arm/kvm: max cpu: Add support for sve-vls-map
+Date: Sun, 12 May 2019 10:36:23 +0200
+Message-Id: <20190512083624.8916-13-drjones@redhat.com>
 In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Sun, 12 May 2019 08:37:25 +0000 (UTC)
-X-TUID: mzAzp95YYl8W
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.46]); Sun, 12 May 2019 08:37:30 +0000 (UTC)
+X-TUID: 7FWotXAxHgU3
 
-Introduce another cpu property to control SVE vector lengths,
-sve-vls-map, which allows the user to explicitly select the
-set of vector lengths the guest can use. The map must conform
-to QEMU's limits and architectural constraints, checked when
-the property is set. Inconsistencies with sve-max-vq are also
-checked. The bit number of a set bit in the map represents the
-allowed vector length in number of quadwords.
-
-Note, as the map is implemented with a single 64-bit word we
-currently only support up to 8192-bit vectors. As QEMU and
-KVM only support up to 2048-bit vectors then this sufficient
-now, and probably for some time. Extending the bitmap beyond
-a single word will likely require changing the property to
-a string and adding yet another parser to QEMU.
+The max cpu type can have its SVE vector lengths explicitly set
+with the sve-vls-map property. This patch allows that property
+to work when KVM is in use. The map must conform to additional
+constraints for KVM which are checked at vcpu init.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/cpu.c     |  4 +++
- target/arm/cpu.h     |  3 ++
- target/arm/cpu64.c   | 70 +++++++++++++++++++++++++++++++++++++++++---
- target/arm/helper.c  | 10 ++++++-
- target/arm/monitor.c |  9 ++++--
- 5 files changed, 88 insertions(+), 8 deletions(-)
+ target/arm/cpu64.c |  7 +++---
+ target/arm/kvm64.c | 56 +++++++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 56 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a181fa8dc1a7..ea0e24bba8b6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1188,6 +1188,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         set_feature(env, ARM_FEATURE_VBAR);
-     }
- 
-+    if (!kvm_enabled() && !cpu->sve_vls_map) {
-+        cpu->sve_vls_map = BIT_MASK(cpu->sve_max_vq) - 1;
-+    }
-+
-     register_cp_regs_for_features(cpu);
-     arm_cpu_register_gdb_regs_for_features(cpu);
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8292d547e8f9..f0d0ce759ba8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -920,6 +920,9 @@ struct ARMCPU {
- 
-     /* Used to set the maximum vector length the cpu will support.  */
-     uint32_t sve_max_vq;
-+
-+    /* Each bit represents a supported vector length of (bitnum * 16) bytes */
-+    uint64_t sve_vls_map;
- };
- 
- static inline ARMCPU *arm_env_get_cpu(CPUARMState *env)
 diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 3756e7e2a3e5..9ac702d54136 100644
+index 9ac702d54136..94f3dd5b51e5 100644
 --- a/target/arm/cpu64.c
 +++ b/target/arm/cpu64.c
-@@ -273,14 +273,73 @@ static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
- 
-     visit_type_uint32(v, name, &cpu->sve_max_vq, &err);
- 
--    if (!err && (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ)) {
--        error_setg(&err, "unsupported SVE vector length");
--        error_append_hint(&err, "Valid sve-max-vq in range [1-%d]\n",
--                          ARM_MAX_VQ);
-+    if (!err) {
-+        if (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ) {
-+            error_setg(&err, "unsupported SVE vector length");
-+            error_append_hint(&err, "Valid sve-max-vq in range [1-%d]\n",
-+                              ARM_MAX_VQ);
-+        } else if (cpu->sve_vls_map &&
-+                   cpu->sve_max_vq != arm_cpu_fls64(cpu->sve_vls_map)) {
-+            error_setg(&err, "sve-vls-map and sve-max-vq are inconsistent");
-+        }
-     }
-     error_propagate(errp, err);
- }
- 
-+static void cpu_get_sve_vls_map(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    visit_type_uint64(v, name, &cpu->sve_vls_map, errp);
-+}
-+
-+static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    Error *err = NULL;
-+    uint64_t mask = ~(BIT_MASK(ARM_MAX_VQ - 1) - 1);
-+    int i;
-+
-+    visit_type_uint64(v, name, &cpu->sve_vls_map, errp);
-+
-+    if (!err) {
-+        if (cpu->sve_vls_map == 0) {
-+            error_setg(&err, "SVE vector length map cannot be zero");
-+        } else if (cpu->sve_vls_map & mask) {
-+            error_setg(&err, "SVE vector length map has unsupported lengths");
-+            error_append_hint(&err, "Valid vector lengths in range [1-%d]\n",
-+                              ARM_MAX_VQ);
-+        } else if (cpu->sve_max_vq != ARM_MAX_VQ &&
-+                   cpu->sve_max_vq != arm_cpu_fls64(cpu->sve_vls_map)) {
-+            /*
-+             * If the user provides both sve-max-vq and sve-vls-map, with
-+             * sve-max-vq first, then, unless ARM_MAX_VQ is selected for
-+             * sve-max-vq, we can catch inconsistencies. If ARM_MAX_VQ was
-+             * selected then sve-max-vq will get silently overwritten with
-+             * the max sve-vls-map provides. This is the best we can do
-+             * without initially setting sve-max-vq to -1 like we do for KVM.
-+             */
-+            error_setg(&err, "sve-vls-map and sve-max-vq are inconsistent");
-+        } else {
-+            cpu->sve_max_vq = arm_cpu_fls64(cpu->sve_vls_map);
-+            mask = 0;
-+            for (i = 1; i < cpu->sve_max_vq; ++i) {
-+                if (is_power_of_2(i)) {
-+                    mask |= BIT_MASK(i - 1);
-+                }
-+            }
-+            if ((cpu->sve_vls_map & mask) != mask) {
-+                error_setg(&err, "SVE vector length map is missing lengths");
-+                error_append_hint(&err, "All power-of-2 vector lengths up to "
-+                                  "the max supported length are required.\n");
-+            }
-+        }
-+    }
-+
-+    error_propagate(errp, err);
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -374,6 +433,9 @@ static void aarch64_max_initfn(Object *obj)
+@@ -310,7 +310,7 @@ static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
+             error_setg(&err, "SVE vector length map has unsupported lengths");
+             error_append_hint(&err, "Valid vector lengths in range [1-%d]\n",
+                               ARM_MAX_VQ);
+-        } else if (cpu->sve_max_vq != ARM_MAX_VQ &&
++        } else if (cpu->sve_max_vq != ARM_MAX_VQ && cpu->sve_max_vq != -1 &&
+                    cpu->sve_max_vq != arm_cpu_fls64(cpu->sve_vls_map)) {
+             /*
+              * If the user provides both sve-max-vq and sve-vls-map, with
+@@ -433,13 +433,12 @@ static void aarch64_max_initfn(Object *obj)
  #endif
  
          cpu->sve_max_vq = ARM_MAX_VQ;
-+
-+        object_property_add(obj, "sve-vls-map", "uint64", cpu_get_sve_vls_map,
-+                            cpu_set_sve_vls_map, NULL, NULL, &error_fatal);
+-
+-        object_property_add(obj, "sve-vls-map", "uint64", cpu_get_sve_vls_map,
+-                            cpu_set_sve_vls_map, NULL, NULL, &error_fatal);
      }
  
      object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1e6eb0d0f360..bedec1ea0b27 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5254,12 +5254,20 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
- static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                       uint64_t value)
- {
-+    ARMCPU *cpu = arm_env_get_cpu(env);
-     int cur_el = arm_current_el(env);
-     int old_len = sve_zcr_len_for_el(env, cur_el);
-     int new_len;
+                         cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
++    object_property_add(obj, "sve-vls-map", "uint64", cpu_get_sve_vls_map,
++                        cpu_set_sve_vls_map, NULL, NULL, &error_fatal);
+ }
  
-     /* Bits other than [3:0] are RAZ/WI.  */
--    raw_write(env, ri, value & 0xf);
-+    value &= 0xf;
-+
-+    if (value && !(BIT_MASK(value) & cpu->sve_vls_map)) {
-+        uint64_t map = cpu->sve_vls_map & (BIT_MASK(value) - 1);
-+        value = arm_cpu_fls64(map) - 1;
-+    }
-+
-+    raw_write(env, ri, value);
- 
-     /*
-      * Because we arrived here, we know both FP and SVE are enabled;
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index 3e13dd7c7b7a..192012659e36 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -133,9 +133,12 @@ static SVEVectorLengths *qmp_sve_vls_get(void)
+ struct ARMCPUInfo {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 11c6334a7c08..5506f019c190 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -685,9 +685,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     } else {
+         unset_feature(&env->features, ARM_FEATURE_PMU);
+     }
+-    if (cpu->sve_max_vq) {
++    if (cpu->sve_max_vq || cpu->sve_vls_map) {
+         if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SVE)) {
+-            if (cpu->sve_max_vq == -1) {
++            if (cpu->sve_max_vq == -1 && !cpu->sve_vls_map) {
+                 cpu->sve_max_vq = 0;
+             } else {
+                 error_report("This KVM host does not support SVE");
+@@ -704,12 +704,62 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         return ret;
      }
  
-     for (i = 1; i <= cpu->sve_max_vq; ++i) {
--        *v = g_new0(intList, 1);
--        (*v)->value = i;
--        v = &(*v)->next;
-+        int bitval = (cpu->sve_vls_map >> (i - 1)) & 1;
-+        if (bitval) {
-+            *v = g_new0(intList, 1);
-+            (*v)->value = i;
-+            v = &(*v)->next;
+-    if (cpu->sve_max_vq) {
++    if (cpu->sve_max_vq || cpu->sve_vls_map) {
+         uint64_t sve_vls[KVM_ARM64_SVE_VLS_WORDS];
+         ret = kvm_arm_get_sve_vls(cs, sve_vls);
+         if (ret < 0) {
+             return ret;
+         }
++        if (cpu->sve_vls_map) {
++            uint64_t ovls;
++            int i;
++
++            /*
++             * We currently only support a single VLS word, as that should
++             * be sufficient for some time (vq=64 means a 8192-bit vector
++             * and KVM currently only supports up to 2048-bit vectors).
++             * The choice to only support a single word for now is due to
++             * the need to input it on the command line. It's much simpler
++             * to input a word as a cpu property than an array of words.
++             * So for now just warn if we detect our assumption was wrong.
++             */
++            for (i = 1; i < KVM_ARM64_SVE_VLS_WORDS; ++i) {
++                if (sve_vls[i]) {
++                    warn_report("KVM supports vector lengths larger than "
++                                "sve-vls-map can select");
++                    sve_vls[i] = 0;
++                }
++            }
++
++            ovls = sve_vls[0];
++            sve_vls[0] = cpu->sve_vls_map;
++
++            if (cpu->sve_vls_map & ~ovls) {
++                error_report("sve-vls-map=0x%lx is not valid on this host "
++                             "which supports 0x%lx", cpu->sve_vls_map, ovls);
++                return -EINVAL;
++            }
++
++            i = arm_cpu_fls64(cpu->sve_vls_map);
++            if (cpu->sve_max_vq && cpu->sve_max_vq != -1 &&
++                cpu->sve_max_vq != i) {
++                error_report("sve-vls-map and sve-max-vq are inconsistent");
++                return -EINVAL;
++            }
++            cpu->sve_max_vq = i;
++
++            /*
++             * sve-vls-map must have all the same vector lengths up to its
++             * max vq that the host supports.
++             */
++            if (cpu->sve_vls_map != (ovls & (BIT_MASK(cpu->sve_max_vq) - 1))) {
++                error_report("sve-vls-map=0x%lx is not valid on this host "
++                             "which supports 0x%lx", cpu->sve_vls_map, ovls);
++                error_printf("All host vector lengths up to %d must also "
++                             "be selected.\n", cpu->sve_max_vq);
++                return -EINVAL;
++            }
 +        }
-     }
- 
-     return vls;
+         if (cpu->sve_max_vq == -1) {
+             cpu->sve_max_vq = ret;
+         } else if (cpu->sve_max_vq > ret) {
 -- 
 2.20.1

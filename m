@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1641147wrg;
-        Sun, 12 May 2019 01:37:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZb/91F324pgaN2MVtN2GSxj+5QQPBM7ouS0HbxP7/4af9OClx7OETu3sIFzo5LEryn64y
-X-Received: by 2002:a0c:d442:: with SMTP id r2mr17578327qvh.9.1557650225729;
-        Sun, 12 May 2019 01:37:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650225; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1641205wrg;
+        Sun, 12 May 2019 01:37:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy2nG4uclU1g6gF1kbZIPebWqQb2Ml8ewC42XwoUZTwbqL6mMi16lKlWVHepKEpqudzuneL
+X-Received: by 2002:aed:2582:: with SMTP id x2mr18595377qtc.350.1557650230569;
+        Sun, 12 May 2019 01:37:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557650230; cv=none;
         d=google.com; s=arc-20160816;
-        b=c5aELS89PAXWECktEs8mpEFe+436fvvgme8nNkiPs9CmiHI8CKWfOmg/RFczc+fDdv
-         RQNRMjgOaJrHeBMHGbEoz+cg+h+fupi3MhKJMy4PaFRA39H/QFAu6F84/i1rmcmwNRp0
-         mxY+sGs9PMUZPYcTtZCk3j8cc5CCSpvI5982nIjqrVpMf8TReJyOGQB4DXZyhcxb2zvj
-         J5/CtdRXM/WHD6eAQm6WG3sTR7mJyKz/j172Oba941cFO7h/yFws5W1ooy/6n6Vvhtwe
-         FSKemrXK33vKz/P/LMnxB0kA0b8PLcr+z6yeNkPfQVI5Q0RvdpzVeiwVDlNj/6gJTUpb
-         OD+w==
+        b=SGHxFWFfUxP7EtBblx5T7J8ItX38FWoQwkgCGkXFqnFF1BBGc+Olf7JooUpqWQZAyF
+         5qaQUtIbiJSpGufjmsf9mv1cjbRsV/SWni83Z7w8Gz5MRDOemX9vpCndXtYomK9KJEEK
+         S0Y2Lr9vrvS+h05xbEBgrDAD0VkayuEu7zi7YPSqARUPaIj2888194XszEqpJsQnsJk0
+         KbQwLqIJRDqvwVM+ELZYb+6w9VoT74JmmKJntc5+HAPlbmyW0PR6dDWf6ccvDL3ktiTO
+         8mJWl7OcjOdAbjP/6kn2yBZBdbeVmF8tjxpDHudWDbUW5nnvvY63xBjw1rFVCbP7sxGN
+         IbBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=/rMsfJ4v0rswHa3VC7M59WzabzRAsls46QDSruWXX9g=;
-        b=0XrOR7QJYjG2ozM7SvfEjCkkiITI5f/jDlsgQS3tZB48gxelX0JZHDqcvWQmcDFoDb
-         bpPWm3bQ6G9dgvrBLZ9SD8zWW7NB2qYGsvDYkX12Bi73niHIfwKJVQDbdNjyNTIA5bTw
-         CvrA4qULnEHWhySlQJEvzYvm0y0uQqYy+3t0l5CZRsDzBB4F1xXosBPvXrMWUyEy4EE7
-         Psv9VClipAIAwLEUoEt4BR+TSQcidfxdyTaiihVjg02lccrh3b6UL69giQG59nwQ/nY8
-         4ddssrfi4Qod6Vy8Iwe5zOt0y+s7JOpeDd6+U9u7uAUa6D8dahENWNG4UP0lNB0uhaxE
-         suTA==
+        bh=M4ixteysOpeZd5KQ9DDfGpcTUxzZlR1W2JQ4rn2B2+E=;
+        b=Zf/4ZY4a4JcJ5NfPY5uhjoYzltNTkFuJf+/DWUalj8yC0/WvlROqNX5B654NLX0gcw
+         850wNTVJmaPN00nY07SDhqBLd0sf9zfLdDvFSfT+4JOBdzacGm1YCRB9OeU7M52AqhhU
+         dK2Isu15NqIgCPIrEz6jpYCY6Nur+KNcgLrfvB66YpGsXpo+THB2fk1tOszP6f0GH5gF
+         ZyoBByzJfJdIu0+E4qzGhFG4Vgj3aKjDjnzu76sV/GSEND8tkhxDe8y5THLexlmZFA1f
+         PksmkjLCItpxu3+rvWGU6W/Re77uyqeNZLNNqyoqyPbqixNZacUFEcSDLkvAxgLu1BTE
+         LvVA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id t14si906686qvh.116.2019.05.12.01.37.05
+        by mx.google.com with ESMTPS id z12si3998204qtz.124.2019.05.12.01.37.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:37:05 -0700 (PDT)
+        Sun, 12 May 2019 01:37:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D7F50DC8EF;
-	Sun, 12 May 2019 08:37:04 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AB1753092662;
+	Sun, 12 May 2019 08:37:09 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 237625D706;
-	Sun, 12 May 2019 08:37:00 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5168E5D706;
+	Sun, 12 May 2019 08:37:05 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -51,181 +51,166 @@ Cc: peter.maydell@linaro.org,
 	eblake@redhat.com,
 	Dave.Martin@arm.com,
 	abologna@redhat.com
-Subject: [PATCH 07/13] target/arm/kvm: max cpu: Allow sve max vector length setting
-Date: Sun, 12 May 2019 10:36:18 +0200
-Message-Id: <20190512083624.8916-8-drjones@redhat.com>
+Subject: [PATCH 08/13] target/arm/monitor: Add query-sve-vector-lengths
+Date: Sun, 12 May 2019 10:36:19 +0200
+Message-Id: <20190512083624.8916-9-drjones@redhat.com>
 In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Sun, 12 May 2019 08:37:04 +0000 (UTC)
-X-TUID: UQ2EywDLv7qM
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.43]); Sun, 12 May 2019 08:37:09 +0000 (UTC)
+X-TUID: zh5zrQjBAydO
 
-Allow the cpu type 'max' sve-max-vq property to work with kvm
-too. If the property is not specified then the maximum kvm
-supports is used. If it is specified we check that kvm supports
-that exact length or error out if it doesn't.
+Provide a QMP interface to query the supported SVE vector lengths.
+A migratable guest will need to explicitly specify a valid set of
+lengths on the command line and that set can be obtained from the
+list returned with this QMP command.
+
+This patch only introduces the QMP command with the TCG implementation.
+The result may not yet be correct for KVM. Following patches ensure
+the KVM result is correct.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/cpu.h   |  4 +++
- target/arm/cpu64.c |  7 ++--
- target/arm/kvm64.c | 80 ++++++++++++++++++++++++++++++++++++++++++++--
- 3 files changed, 86 insertions(+), 5 deletions(-)
+ qapi/target.json     | 34 ++++++++++++++++++++++++
+ target/arm/monitor.c | 62 ++++++++++++++++++++++++++++++++++++++++++++
+ tests/qmp-cmd-test.c |  1 +
+ 3 files changed, 97 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 733b840a7127..8292d547e8f9 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3122,6 +3122,10 @@ static inline uint64_t arm_sctlr(CPUARMState *env, int el)
-     }
+diff --git a/qapi/target.json b/qapi/target.json
+index 1d4d54b6002e..ca1e85254780 100644
+--- a/qapi/target.json
++++ b/qapi/target.json
+@@ -397,6 +397,40 @@
+ { 'command': 'query-gic-capabilities', 'returns': ['GICCapability'],
+   'if': 'defined(TARGET_ARM)' }
+ 
++##
++# @SVEVectorLengths:
++#
++# The struct contains a list of integers where each integer is a valid
++# SVE vector length for a KVM guest on this host. The vector lengths
++# are in quadword (128-bit) units, e.g. '4' means 512 bits (64 bytes).
++#
++# @vls:      list of vector lengths in quadwords.
++#
++# Since: 4.1
++##
++{ 'struct': 'SVEVectorLengths',
++  'data': { 'vls': ['int'] },
++  'if': 'defined(TARGET_ARM)' }
++
++##
++# @query-sve-vector-lengths:
++#
++# This command is ARM-only. It will return a list of SVEVectorLengths
++# objects. The list describes all valid SVE vector length sets.
++#
++# Returns: a list of SVEVectorLengths objects
++#
++# Since: 4.1
++#
++# -> { "execute": "query-sve-vector-lengths" }
++# <- { "return": [ { "vls": [ 1 ] },
++#                  { "vls": [ 1, 2 ] },
++#                  { "vls": [ 1, 2, 4 ] } ] }
++#
++##
++{ 'command': 'query-sve-vector-lengths', 'returns': ['SVEVectorLengths'],
++  'if': 'defined(TARGET_ARM)' }
++
+ ##
+ # @CpuModelExpansionInfo:
+ #
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index 41b32b94b258..8b2afa255c92 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -24,6 +24,7 @@
+ #include "hw/boards.h"
+ #include "kvm_arm.h"
+ #include "qapi/qapi-commands-target.h"
++#include "monitor/hmp-target.h"
+ 
+ static GICCapability *gic_cap_new(int version)
+ {
+@@ -82,3 +83,64 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+ 
+     return head;
  }
- 
-+static inline int arm_cpu_fls64(uint64_t v)
++
++static SVEVectorLengths *qmp_sve_vls_get(void)
 +{
-+    return !v ? 0 : 64 - clz64(v);
-+}
- 
- /* Return true if the processor is in big-endian mode. */
- static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 6c19ef6837d5..3756e7e2a3e5 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -292,7 +292,7 @@ static void aarch64_max_initfn(Object *obj)
- 
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
--        cpu->sve_max_vq = ARM_MAX_VQ;
-+        cpu->sve_max_vq = -1; /* set in kvm_arch_init_vcpu() */
-     } else {
-         uint64_t t;
-         uint32_t u;
-@@ -374,9 +374,10 @@ static void aarch64_max_initfn(Object *obj)
- #endif
- 
-         cpu->sve_max_vq = ARM_MAX_VQ;
--        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
--                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
-     }
-+
-+    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-+                        cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
- }
- 
- struct ARMCPUInfo {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index c2d92df75353..0c666e405357 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -446,6 +446,59 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
-     }
- }
- 
-+static int kvm_arm_get_sve_vls(CPUState *cs, uint64_t sve_vls[])
-+{
-+    struct kvm_one_reg reg = {
-+        .id = KVM_REG_ARM64_SVE_VLS,
-+        .addr = (uint64_t)&sve_vls[0],
-+    };
-+    int i, ret;
-+
-+    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    ret = 0;
-+    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
-+        if (sve_vls[i]) {
-+            ret = arm_cpu_fls64(sve_vls[i]) + i * 64;
-+            break;
-+        }
-+    }
-+
-+    return ret;
-+}
-+
-+static int kvm_arm_set_sve_vls(CPUState *cs, uint64_t sve_vls[], int max_vq)
-+{
-+    struct kvm_one_reg reg = {
-+        .id = KVM_REG_ARM64_SVE_VLS,
-+        .addr = (uint64_t)&sve_vls[0],
-+    };
++    CPUArchState *env = mon_get_cpu_env();
++    ARMCPU *cpu = arm_env_get_cpu(env);
++    SVEVectorLengths *vls = g_new(SVEVectorLengths, 1);
++    intList **v = &vls->vls;
 +    int i;
 +
-+    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
-+        if (sve_vls[i]) {
-+            int vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
-+            while (vq > max_vq) {
-+                sve_vls[i] &= ~BIT_MASK(vq - 1);
-+                vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
-+            }
-+            if (vq < max_vq) {
-+                error_report("sve-max-vq=%d is not a valid length", max_vq);
-+                error_printf("next lowest is %d\n", vq);
-+                return -EINVAL;
-+            }
-+            if (vq == max_vq) {
-+                break;
-+            }
++    if (cpu->sve_max_vq == 0) {
++        *v = g_new0(intList, 1); /* one vl of 0 means none supported */
++        return vls;
++    }
++
++    for (i = 1; i <= cpu->sve_max_vq; ++i) {
++        *v = g_new0(intList, 1);
++        (*v)->value = i;
++        v = &(*v)->next;
++    }
++
++    return vls;
++}
++
++static SVEVectorLengths *qmp_sve_vls_dup_and_truncate(SVEVectorLengths *vls)
++{
++    SVEVectorLengths *trunc_vls;
++    intList **v, *p = vls->vls;
++
++    if (!p->next) {
++        return NULL;
++    }
++
++    trunc_vls = g_new(SVEVectorLengths, 1);
++    v = &trunc_vls->vls;
++
++    for (; p->next; p = p->next) {
++        *v = g_new0(intList, 1);
++        (*v)->value = p->value;
++        v = &(*v)->next;
++    }
++
++    return trunc_vls;
++}
++
++SVEVectorLengthsList *qmp_query_sve_vector_lengths(Error **errp)
++{
++    SVEVectorLengthsList *vls_list = g_new0(SVEVectorLengthsList, 1);
++    SVEVectorLengths *vls = qmp_sve_vls_get();
++
++    while (vls) {
++        vls_list->value = vls;
++        vls = qmp_sve_vls_dup_and_truncate(vls);
++        if (vls) {
++            SVEVectorLengthsList *next = vls_list;
++            vls_list = g_new0(SVEVectorLengthsList, 1);
++            vls_list->next = next;
 +        }
 +    }
 +
-+    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++    return vls_list;
 +}
-+
- static inline void set_feature(uint64_t *features, int feature)
- {
-     *features |= 1ULL << feature;
-@@ -605,7 +658,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
- 
-     if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
-         !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
--        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
-+        error_report("KVM is not supported for this guest CPU type");
-         return -EINVAL;
-     }
- 
-@@ -631,7 +684,12 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     }
-     if (cpu->sve_max_vq) {
-         if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SVE)) {
--            cpu->sve_max_vq = 0;
-+            if (cpu->sve_max_vq == -1) {
-+                cpu->sve_max_vq = 0;
-+            } else {
-+                error_report("This KVM host does not support SVE");
-+                return -EINVAL;
-+            }
-         } else {
-             cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
-         }
-@@ -644,6 +702,24 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     }
- 
-     if (cpu->sve_max_vq) {
-+        uint64_t sve_vls[KVM_ARM64_SVE_VLS_WORDS];
-+        ret = kvm_arm_get_sve_vls(cs, sve_vls);
-+        if (ret < 0) {
-+            return ret;
-+        }
-+        if (cpu->sve_max_vq == -1) {
-+            cpu->sve_max_vq = ret;
-+        } else if (cpu->sve_max_vq > ret) {
-+            error_report("This KVM host does not support SVE vectors "
-+                         "of length %d quadwords (%d bytes)",
-+                         cpu->sve_max_vq, cpu->sve_max_vq * 16);
-+            return -EINVAL;
-+        } else {
-+            ret = kvm_arm_set_sve_vls(cs, sve_vls, cpu->sve_max_vq);
-+            if (ret < 0) {
-+                return ret;
-+            }
-+        }
-         ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
-         if (ret) {
-             return ret;
+diff --git a/tests/qmp-cmd-test.c b/tests/qmp-cmd-test.c
+index 9f5228cd9951..3d714dbc6a4a 100644
+--- a/tests/qmp-cmd-test.c
++++ b/tests/qmp-cmd-test.c
+@@ -90,6 +90,7 @@ static bool query_is_blacklisted(const char *cmd)
+         /* Success depends on target arch: */
+         "query-cpu-definitions",  /* arm, i386, ppc, s390x */
+         "query-gic-capabilities", /* arm */
++        "query-sve-vector-lengths", /* arm */
+         /* Success depends on target-specific build configuration: */
+         "query-pci",              /* CONFIG_PCI */
+         /* Success depends on launching SEV guest */
 -- 
 2.20.1

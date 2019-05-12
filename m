@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1640901wrg;
-        Sun, 12 May 2019 01:36:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4Qhtc/99NQSdpOTP4S4HKyCHRrsQiVDAxbZ/z+LCVxJvaO7rOgCcaXJEPP+3QZnRbnvxA
-X-Received: by 2002:ae9:ef4c:: with SMTP id d73mr2531277qkg.325.1557650203760;
-        Sun, 12 May 2019 01:36:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650203; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1640956wrg;
+        Sun, 12 May 2019 01:36:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw7yxC5yP9xFCZ1xg2q/YRkuVC1IZ03Ho7j+LC/lQ8sqn8X6fty7qAMniCMOKqd2OH+9nmJ
+X-Received: by 2002:a0c:8ae9:: with SMTP id 38mr17487998qvw.157.1557650208163;
+        Sun, 12 May 2019 01:36:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557650208; cv=none;
         d=google.com; s=arc-20160816;
-        b=yMid6LeXZJ37rmHTxj5R+UUjS5YVFNeGbtK8gDe8rtplGwCt+KoP+isaSooVhSpm4j
-         n4oDCZrGxq0rw6GkTm7zNjKRssUnK9sHxP0HILLwq9qU9LuCgY2NexZHRHxP/H7WOw67
-         njG4oDtznYtZuST7V6K8bn8Me8HGtwfYdOQiqwqoG6CQlBdzt8ZkiY9SCHchBbDZhPrB
-         TIA+2iX7YJ3hpPUVltT15fx+kTFgGJ2PlzdMyn6Z1pYjYnB9W4ykfcK9odktjZRNpE2Z
-         9enc3ylThLn8PpoGxcbwnj0QfVZu0yoZwOYxNXQgjREhHx4vuxFjwBA0kGcIvylxkGZ2
-         O8vw==
+        b=GynvnN2MT01KWSvKrA+OjRHnvMciEVWcTQoOwMHq/WajjxJVOojuW5gCfNsgyZLQUR
+         XjDhEVC7xz2qN47BJumrUW2DjmpsSNgxG+e+9KDBGwH9kqf1LokQg0hUz5PDw01V525q
+         lBaf9uJL89kv0J1QVo0ShsOmlqBY4ffz8FnnNUgJV3ffmyJE7yxuk3l20pyivyDm1J1A
+         6Ny1zsad2lnoy5cN301isOQdDEtyiLOgEuWAeeDkFP62XMtueyJzM7zut11btosz4z0D
+         rs4bVHudP70qDu1EptP2ryyBOa3eF5tmub70p+Mb7/d30NUOGGZEJIP3YBgaa6ye6jLu
+         dy+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=7gJWASQd9R5dvaLGxLmljQz1myPVvQcYJSTcIsyU8BA=;
-        b=VuqIWm4FjrvBJ357zaPypicvR6zFHVTdQsln29IL4+vbh5C5D0cvbWrtmw/yZyiwz7
-         oEGw004xTMKjJljzBrIQaQ9gPcJRivJ/yD5z4BniGXdGX2dhaE3jnbTh51bLBaTbseHT
-         4wgyTGRDa5xS57JldAbD8vipweDUqXfl2boqVRCAIWCeHm5aLJ+4023krQwr/5MhSOKK
-         9l9aPDnvZBBmctstNxQpXkETZ9Das4el1QTBtTgh/fCwknAgF4Eg8cJo+CB51TgFbJP6
-         qi5qw962Vu/2KD3u4VtEs6A5MnbLGhhbiUfJF+TwVYuGZ69fvSkGQTtrT0QxsWJWqebI
-         w4qw==
+        bh=4CGvaGBXPX36DVrue9uTkOEF0mW4r3liwV26rxlMNNU=;
+        b=EKb8XUwjou1iCX4+KMPRjXvITxIvNhI0J3rveCcZU1+0MUzZvKZW5FVtdiFzae0/dq
+         jRYEWsOB312T2NZFY+QkLH3T5/AvDZy0E7GJfxmbEjhvZOg+ydzxR9WCeuscDFX0reXp
+         spRDH8aJ4/SA0IsiNuJrG9dKwroQmAnC5kPhopgdoHY25e75Q64yjqSk2pV/IMYcwnUT
+         m3VrDAGN/Y+Bh9nWrV00eQvJzGI6akS5tqB2B7gixsh4ad0p3VR0DbPoo6UQ/Sw98mkP
+         U/YCISvrfmROYlrieGpel+SG5EH/nU/hfCrJ+3iBiPXyfq0A+yaN3UT8Vtq4XrcuuvlU
+         MvCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id o22si6068263qtp.5.2019.05.12.01.36.43
+        by mx.google.com with ESMTPS id m63si1185384qkb.95.2019.05.12.01.36.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:36:43 -0700 (PDT)
+        Sun, 12 May 2019 01:36:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D0F633081244;
-	Sun, 12 May 2019 08:36:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 23A4C3086201;
+	Sun, 12 May 2019 08:36:47 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ADB865D706;
-	Sun, 12 May 2019 08:36:38 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A0D535D706;
+	Sun, 12 May 2019 08:36:43 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -51,35 +51,178 @@ Cc: peter.maydell@linaro.org,
 	eblake@redhat.com,
 	Dave.Martin@arm.com,
 	abologna@redhat.com
-Subject: [PATCH 02/13] update-linux-headers: Add sve_context.h to asm-arm64
-Date: Sun, 12 May 2019 10:36:13 +0200
-Message-Id: <20190512083624.8916-3-drjones@redhat.com>
+Subject: [PATCH 03/13] HACK: linux header update
+Date: Sun, 12 May 2019 10:36:14 +0200
+Message-Id: <20190512083624.8916-4-drjones@redhat.com>
 In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Sun, 12 May 2019 08:36:42 +0000 (UTC)
-X-TUID: S3yaxFG1CD+Y
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.42]); Sun, 12 May 2019 08:36:47 +0000 (UTC)
+X-TUID: l0VSGku6jzWc
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- scripts/update-linux-headers.sh | 3 +++
- 1 file changed, 3 insertions(+)
+ linux-headers/asm-arm64/kvm.h         | 41 +++++++++++++++++++++
+ linux-headers/asm-arm64/sve_context.h | 53 +++++++++++++++++++++++++++
+ linux-headers/linux/kvm.h             |  5 +++
+ 3 files changed, 99 insertions(+)
+ create mode 100644 linux-headers/asm-arm64/sve_context.h
 
-diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
-index c3819d2b983d..e1fce54f8aa3 100755
---- a/scripts/update-linux-headers.sh
-+++ b/scripts/update-linux-headers.sh
-@@ -99,6 +99,9 @@ for arch in $ARCHLIST; do
-         cp "$tmpdir/include/asm/$header" "$output/linux-headers/asm-$arch"
-     done
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+index e6a98c14c848..3e73a4c67b67 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -35,6 +35,7 @@
+ #include <linux/psci.h>
+ #include <linux/types.h>
+ #include <asm/ptrace.h>
++#include <asm/sve_context.h>
  
-+    if [ $arch = arm64 ]; then
-+        cp "$tmpdir/include/asm/sve_context.h" "$output/linux-headers/asm-arm64/"
-+    fi
-     if [ $arch = mips ]; then
-         cp "$tmpdir/include/asm/sgidefs.h" "$output/linux-headers/asm-mips/"
-         cp "$tmpdir/include/asm/unistd_o32.h" "$output/linux-headers/asm-mips/"
+ #define __KVM_HAVE_GUEST_DEBUG
+ #define __KVM_HAVE_IRQ_LINE
+@@ -102,6 +103,7 @@ struct kvm_regs {
+ #define KVM_ARM_VCPU_EL1_32BIT		1 /* CPU running a 32bit VM */
+ #define KVM_ARM_VCPU_PSCI_0_2		2 /* CPU uses PSCI v0.2 */
+ #define KVM_ARM_VCPU_PMU_V3		3 /* Support guest PMUv3 */
++#define KVM_ARM_VCPU_SVE		4 /* enable SVE for this CPU */
+ 
+ struct kvm_vcpu_init {
+ 	__u32 target;
+@@ -226,6 +228,45 @@ struct kvm_vcpu_events {
+ 					 KVM_REG_ARM_FW | ((r) & 0xffff))
+ #define KVM_REG_ARM_PSCI_VERSION	KVM_REG_ARM_FW_REG(0)
+ 
++/* SVE registers */
++#define KVM_REG_ARM64_SVE		(0x15 << KVM_REG_ARM_COPROC_SHIFT)
++
++/* Z- and P-regs occupy blocks at the following offsets within this range: */
++#define KVM_REG_ARM64_SVE_ZREG_BASE	0
++#define KVM_REG_ARM64_SVE_PREG_BASE	0x400
++#define KVM_REG_ARM64_SVE_FFR_BASE	0x600
++
++#define KVM_ARM64_SVE_NUM_ZREGS		__SVE_NUM_ZREGS
++#define KVM_ARM64_SVE_NUM_PREGS		__SVE_NUM_PREGS
++
++#define KVM_ARM64_SVE_MAX_SLICES	32
++
++#define KVM_REG_ARM64_SVE_ZREG(n, i)					\
++	(KVM_REG_ARM64 | KVM_REG_ARM64_SVE | KVM_REG_ARM64_SVE_ZREG_BASE | \
++	 KVM_REG_SIZE_U2048 |						\
++	 (((n) & (KVM_ARM64_SVE_NUM_ZREGS - 1)) << 5) |			\
++	 ((i) & (KVM_ARM64_SVE_MAX_SLICES - 1)))
++
++#define KVM_REG_ARM64_SVE_PREG(n, i)					\
++	(KVM_REG_ARM64 | KVM_REG_ARM64_SVE | KVM_REG_ARM64_SVE_PREG_BASE | \
++	 KVM_REG_SIZE_U256 |						\
++	 (((n) & (KVM_ARM64_SVE_NUM_PREGS - 1)) << 5) |			\
++	 ((i) & (KVM_ARM64_SVE_MAX_SLICES - 1)))
++
++#define KVM_REG_ARM64_SVE_FFR(i)					\
++	(KVM_REG_ARM64 | KVM_REG_ARM64_SVE | KVM_REG_ARM64_SVE_FFR_BASE | \
++	 KVM_REG_SIZE_U256 |						\
++	 ((i) & (KVM_ARM64_SVE_MAX_SLICES - 1)))
++
++#define KVM_ARM64_SVE_VQ_MIN __SVE_VQ_MIN
++#define KVM_ARM64_SVE_VQ_MAX __SVE_VQ_MAX
++
++/* Vector lengths pseudo-register: */
++#define KVM_REG_ARM64_SVE_VLS		(KVM_REG_ARM64 | KVM_REG_ARM64_SVE | \
++					 KVM_REG_SIZE_U512 | 0xffff)
++#define KVM_ARM64_SVE_VLS_WORDS	\
++	((KVM_ARM64_SVE_VQ_MAX - KVM_ARM64_SVE_VQ_MIN) / 64 + 1)
++
+ /* Device Control API: ARM VGIC */
+ #define KVM_DEV_ARM_VGIC_GRP_ADDR	0
+ #define KVM_DEV_ARM_VGIC_GRP_DIST_REGS	1
+diff --git a/linux-headers/asm-arm64/sve_context.h b/linux-headers/asm-arm64/sve_context.h
+new file mode 100644
+index 000000000000..1d0e3e1d0950
+--- /dev/null
++++ b/linux-headers/asm-arm64/sve_context.h
+@@ -0,0 +1,53 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
++/* Copyright (C) 2017-2018 ARM Limited */
++
++/*
++ * For use by other UAPI headers only.
++ * Do not make direct use of header or its definitions.
++ */
++
++#ifndef __ASM_SVE_CONTEXT_H
++#define __ASM_SVE_CONTEXT_H
++
++#include <linux/types.h>
++
++#define __SVE_VQ_BYTES		16	/* number of bytes per quadword */
++
++#define __SVE_VQ_MIN		1
++#define __SVE_VQ_MAX		512
++
++#define __SVE_VL_MIN		(__SVE_VQ_MIN * __SVE_VQ_BYTES)
++#define __SVE_VL_MAX		(__SVE_VQ_MAX * __SVE_VQ_BYTES)
++
++#define __SVE_NUM_ZREGS		32
++#define __SVE_NUM_PREGS		16
++
++#define __sve_vl_valid(vl)			\
++	((vl) % __SVE_VQ_BYTES == 0 &&		\
++	 (vl) >= __SVE_VL_MIN &&		\
++	 (vl) <= __SVE_VL_MAX)
++
++#define __sve_vq_from_vl(vl)	((vl) / __SVE_VQ_BYTES)
++#define __sve_vl_from_vq(vq)	((vq) * __SVE_VQ_BYTES)
++
++#define __SVE_ZREG_SIZE(vq)	((__u32)(vq) * __SVE_VQ_BYTES)
++#define __SVE_PREG_SIZE(vq)	((__u32)(vq) * (__SVE_VQ_BYTES / 8))
++#define __SVE_FFR_SIZE(vq)	__SVE_PREG_SIZE(vq)
++
++#define __SVE_ZREGS_OFFSET	0
++#define __SVE_ZREG_OFFSET(vq, n) \
++	(__SVE_ZREGS_OFFSET + __SVE_ZREG_SIZE(vq) * (n))
++#define __SVE_ZREGS_SIZE(vq) \
++	(__SVE_ZREG_OFFSET(vq, __SVE_NUM_ZREGS) - __SVE_ZREGS_OFFSET)
++
++#define __SVE_PREGS_OFFSET(vq) \
++	(__SVE_ZREGS_OFFSET + __SVE_ZREGS_SIZE(vq))
++#define __SVE_PREG_OFFSET(vq, n) \
++	(__SVE_PREGS_OFFSET(vq) + __SVE_PREG_SIZE(vq) * (n))
++#define __SVE_PREGS_SIZE(vq) \
++	(__SVE_PREG_OFFSET(vq, __SVE_NUM_PREGS) - __SVE_PREGS_OFFSET(vq))
++
++#define __SVE_FFR_OFFSET(vq) \
++	(__SVE_PREGS_OFFSET(vq) + __SVE_PREGS_SIZE(vq))
++
++#endif /* ! _UAPI__ASM_SVE_CONTEXT_H */
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index b53ee5974802..1a639ae0ceed 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -988,6 +988,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_ARM_VM_IPA_SIZE 165
+ #define KVM_CAP_MANUAL_DIRTY_LOG_PROTECT 166
+ #define KVM_CAP_HYPERV_CPUID 167
++#define KVM_CAP_ARM_SVE 168
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
+@@ -1145,6 +1146,7 @@ struct kvm_dirty_tlb {
+ #define KVM_REG_SIZE_U256	0x0050000000000000ULL
+ #define KVM_REG_SIZE_U512	0x0060000000000000ULL
+ #define KVM_REG_SIZE_U1024	0x0070000000000000ULL
++#define KVM_REG_SIZE_U2048	0x0080000000000000ULL
+ 
+ struct kvm_reg_list {
+ 	__u64 n; /* number of regs */
+@@ -1440,6 +1442,9 @@ struct kvm_enc_region {
+ /* Available with KVM_CAP_HYPERV_CPUID */
+ #define KVM_GET_SUPPORTED_HV_CPUID _IOWR(KVMIO, 0xc1, struct kvm_cpuid2)
+ 
++/* Available with KVM_CAP_ARM_SVE */
++#define KVM_ARM_VCPU_FINALIZE	  _IOW(KVMIO,  0xc2, int)
++
+ /* Secure Encrypted Virtualization command */
+ enum sev_cmd_id {
+ 	/* Guest initialization commands */
 -- 
 2.20.1

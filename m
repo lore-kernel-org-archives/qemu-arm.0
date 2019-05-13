@@ -1,148 +1,165 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2525369lfc;
-        Fri, 5 Jun 2020 07:56:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypOYhTrUflWU9yqqxfZgN3VhXl/x+5HUNt3fCRSbVRV/Ka+T1l2UW15lJZe/EWrcYrfiYN
-X-Received: by 2002:a25:4408:: with SMTP id r8mr16343420yba.146.1591368960700;
-        Fri, 05 Jun 2020 07:56:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591368960; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2765878wrg;
+        Mon, 13 May 2019 05:52:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcoVoxI1lpulguOlghZrbTnzNwrn9unTjrxOJJsrY/bHnEfvLAyg7yJJHO5kxQlQ5Qx8RN
+X-Received: by 2002:a63:c54d:: with SMTP id g13mr30968732pgd.376.1557751940730;
+        Mon, 13 May 2019 05:52:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557751940; cv=none;
         d=google.com; s=arc-20160816;
-        b=wbd96sBu5AF0QEaBggALkNFaQyDaq0VhwDI8gTaAYLbmwG2xFK7Ubj103iqVT0FoMw
-         g2z9nLueW9NsCXtp0/19B/fzUsJtscl3hnwmF0m9ZGwJhnybXZnb7fKdQzv0qwIPx7c4
-         +YFIwzwU40jJkWpRvXGGTiLN3bC7uaIa39Ptb1GESmTCFSBtIgMVEX9u09y8zo8zXp3d
-         a7EyratHV2epjanCHiPqdmj4KK/dac2xVyyz+xkvs/0Dq+6xnEskmQZmOiTLhqc9SYOV
-         PqyR3Bzb+oXbok71ZXRux42AKsBX7xzqh9RSLW6+U1+u6ZbUYOHk5OER/8ryLlr7fhw0
-         Fq4A==
+        b=BHFul4iXDedLKo/lUL8tkYP3K0vVw4+ApwKQav4gDzmlRxZL/6UMXAtl8yyVTqBTRi
+         BAIyfmfSMOnbv4I/zXGOfM0iaZ9RDvf7C7eEJuu9Rtdp7UfXGIyGvno/uuS4FxZ3XCli
+         tzaOnQ+z/epJ2BrFxDxeIeD3pFtrtNucKJVMevnp4QcUeQiXLyYaICSD9RNAxGyuP3lJ
+         PAqZcCoOha9QTdq8R3wMqD5/mghSuDtFFrncrEHLjt95s0dOgnm+CIeqyjLGIdmvNMgU
+         PyQAy8u6DSX7OXL3Um7WeS6ydhQAy7I/QL7h0O6Ph7UBRJwGDHR0IlzQTvZG9juHUE6R
+         OtMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=GZMFFAclHg59tgW9VXfOg5RyQlIFb2LPuSM0z2FR28Y=;
-        b=CjFk2TpgPmksbSWvRswjxJyUnn9wceh1RYFCfNEVIYng7IVqNEJ+W7W96PZuOtq4Bd
-         fFh7W7X/rdjG+UJjIZCe50zLR+MAPcQ8+0dao9LKmldFqpYwIHMP/mQ9CgU8yeuGrk6T
-         yrZao/oDSOm7ggDN+1nEz6vRyzKt9TsqkZ3srUuI83FZr6PIO1D4jjItH0EDD3Qq9XsQ
-         S0XM3W/vgXYzWiVKSDHxD9e74xapGA5FP3dCxyTu3lf3+px4TGhx9ml/nSzCmorFtR3A
-         Uu+1R5bKjxMbMOxE0pqm5jOLt+ISDOE6NuqPwFvWzKzQcPwS0mMwx2CsGoyg1OqUSmW6
-         NquQ==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=/h7YDU+P6MUHl6sVj0WLp+MoxyBRTBEzmvX8oGYQxPw=;
+        b=nXyk6GVbA+sbf/Qp4QYI0NrXxlChdHNFH8dwrUD/ixk/ZFyg58KFU+cn8kt4/wgMw5
+         PgOWV3JXrXy+Rc2b67xYfzJjhVwCMXNYuROP56I2TqyJjw/cLoKja+szv6knWXwd3ygk
+         X02081M3HlRSR16L/LP77F+KQgVkESd2mNt3y5WaiyUcC3+DoyhjXMtEKo74MPufG6SE
+         ebFBemqsQ6miYxWuw56POMVjRtizA+QisWGsrwTaZlQsvl9OmfxEeQ4FikUGxm9wef1i
+         Gk4w0CG1YysnwBGZHq0+9cCYwyJ4mJnA0b28+xzWgxvNOZmbMifPxT0H6J2HK/nJ80oh
+         v4jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OcMKFbbu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u1si6836904ybg.412.2020.06.05.07.56.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jun 2020 07:56:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HIV6Xgt0;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id r130si6977351pgr.509.2019.05.13.05.52.20;
+        Mon, 13 May 2019 05:52:20 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OcMKFbbu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59880 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jhDlI-0002xL-4b
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 10:56:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50738)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jhDlB-0002wC-7Z
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 10:55:53 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40985
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jhDl9-0007Lv-1A
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 10:55:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591368950;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GZMFFAclHg59tgW9VXfOg5RyQlIFb2LPuSM0z2FR28Y=;
- b=OcMKFbbuwPr5tkUkqoQKMFCMWezVPY4uj0D7sBJ5nY3bJtYgPIJWWDPUp8G67yhIoN3yLx
- IIVD7Yk4f11d4FIACXrJHwgK0aGPIZ+lC/JiUn4EmODowtFdOvljZHLvB92+F50twNrmzR
- EKSqWDIw1gb7CIm6WUU3pQ99pUQaJ8k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-507-ecE1WF52Mgi2PHeeydAEkw-1; Fri, 05 Jun 2020 10:55:48 -0400
-X-MC-Unique: ecE1WF52Mgi2PHeeydAEkw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4464FEC1A4;
- Fri,  5 Jun 2020 14:55:47 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2A9EC60C05;
- Fri,  5 Jun 2020 14:55:29 +0000 (UTC)
-Date: Fri, 5 Jun 2020 16:55:28 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [RFC 3/6] tests/acpi: Ignore TPM2.tis and DSDT.tis
-Message-ID: <20200605165528.6673bbeb@redhat.com>
-In-Reply-To: <20200601102113.1207-4-eric.auger@redhat.com>
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-4-eric.auger@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=HIV6Xgt0;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1729962AbfEMMwT (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Mon, 13 May 2019 08:52:19 -0400
+Received: from mail-ot1-f68.google.com ([209.85.210.68]:38665 "EHLO
+        mail-ot1-f68.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1729572AbfEMMwT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 13 May 2019 08:52:19 -0400
+Received: by mail-ot1-f68.google.com with SMTP id s19so11584994otq.5
+        for <kvm@vger.kernel.org>; Mon, 13 May 2019 05:52:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/h7YDU+P6MUHl6sVj0WLp+MoxyBRTBEzmvX8oGYQxPw=;
+        b=HIV6Xgt0hlwXHD88KEhJy0PqeRJraTxBfxR2EpWUqn7bD/MeMl+qPLfovJYIfQlXUH
+         BKJMP7+97uiq3Sr1Jp5kVTSvFBqmtBv8vKN9ijEX0gtHlHTaOPcxijD/NevmbmDRkp54
+         hsj5T93JiqUv5kV0a2dNDqrk7iUOHjoOYjT36htvtDJUwnyrqR2ew0OiHD7YtdZSQ0o/
+         NVC+WITkg5D1YjYGKsfgnWdj9YvqukCY4z4QKhdpKiaLiekXV1oc07yjdUahfPkf2N08
+         Y9ojpNQiS5gvxBxhv+ysFu3dXqPbJddhbNScx/bcQ70HfiU0IfoCQcBhQSb24S4Pg0BH
+         BGyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/h7YDU+P6MUHl6sVj0WLp+MoxyBRTBEzmvX8oGYQxPw=;
+        b=Sf+xVch3yezck0oM0qzD9LoRy8cMLKhUd7Lj/uD3gX0+mRcF6dThksxx+vQwKaSO7X
+         +aG4/GwzUibVZWDwdf6FjSB5/ZXvBbRYN/N+CunD5hK6iN3iuq1yUsybHC59Vm5votf3
+         SwxuT/UaaQtzrEFcEQZdp2zpQiRTQkvd/5GpbcdUB7/xo5orDUm3JB9jOpcrQc8pxEck
+         hT6rAokMPWvM+N9d5S/4o95cu23m1yhNGDfWyfaQNp4MCOJrbyY7WIzWPrNll6r/Dx/t
+         RYD/H8wQ8untTw0ieNx3fpOvbi6xBLoGb9dLUL9IJqSAd7l5nzM0vKP5rI1o3GBUMFt4
+         7LVQ==
+X-Gm-Message-State: APjAAAXN4I9HGiXMcyItM9kpBpOeMJ2OoQzwWgVg4uTZ5eQF1yXqBz/9
+        hTnYpKJ6VbmkEk8Ai1cJCQsGhT7d5lg6QkoxgWGvOw==
+X-Received: by 2002:a9d:4793:: with SMTP id b19mr12407690otf.238.1557751938700;
+ Mon, 13 May 2019 05:52:18 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=imammedo@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/05 03:07:04
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- philmd@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcandre.lureau@redhat.com, eric.auger.pro@gmail.com,
- lersek@redhat.com, ardb@kernel.org, stefanb@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hv8AsTK/KGJC
+References: <1557751388-27063-1-git-send-email-gengdongjiu@huawei.com> <1557751388-27063-11-git-send-email-gengdongjiu@huawei.com>
+In-Reply-To: <1557751388-27063-11-git-send-email-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Mon, 13 May 2019 13:52:07 +0100
+Message-ID: <CAFEAcA81nMkHdCvQTcv2ixNB7sg+3Qx+9mpNgF0XLaBPY7-PNQ@mail.gmail.com>
+Subject: Re: [PATCH v16 10/10] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1Y0BEStwFJT5
 
-On Mon,  1 Jun 2020 12:21:10 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+On Mon, 13 May 2019 at 13:46, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>
+> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> translates the host VA delivered by host to guest PA, then fill this PA
+> to guest APEI GHES memory, then notify guest according to the SIGBUS type.
+>
+> If guest accesses the poisoned memory, it generates Synchronous External
+> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
+> to unmapped the affected page for the guest's stage 2, finally return
+> to guest.
+>
+> Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
+> then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
+> error address into guest APEI GHES memory and notify guest using
+> Synchronous-External-Abort(SEA).
+>
+> Suggested-by: James Morse <james.morse@arm.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 
-> Subsequent patches will alter the content of TPM2.tis
-> and DSDT.tis so let's ignore them until the references
-> are generated.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(c);
+> +    CPUARMState *env = &cpu->env;
+> +    ram_addr_t ram_addr;
+> +    hwaddr paddr;
+> +
+> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> +
+> +    if (addr) {
+> +        ram_addr = qemu_ram_addr_from_host(addr);
+> +        if (ram_addr != RAM_ADDR_INVALID &&
+> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> +            kvm_hwpoison_page_add(ram_addr);
+> +            /* Asynchronous signal will be masked by main thread, so
+> +             * only handle synchronous signal.
+> +             */
+> +            if (code == BUS_MCEERR_AR) {
+> +                kvm_cpu_synchronize_state(c);
+> +                if (GHES_CPER_FAIL != ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
+> +                    kvm_inject_arm_sea(c);
+> +                } else {
+> +                    fprintf(stderr, "failed to record the error\n");
+> +                }
+> +            }
+> +            return;
+> +        }
+> +        fprintf(stderr, "Hardware memory error for memory used by "
+> +                "QEMU itself instead of guest system!\n");
+> +    }
+> +
+> +    if (code == BUS_MCEERR_AR) {
+> +        fprintf(stderr, "Hardware memory error!\n");
+> +        exit(1);
+> +    }
+> +}
 
-> ---
->  tests/qtest/bios-tables-test-allowed-diff.h | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..a2a45d1d31 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1 +1,3 @@
->  /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/q35/DSDT.tis",
-> +"tests/data/acpi/q35/TPM2.tis",
+This code appears to still be unconditionally trying to
+notify the guest of the error via the ACPI tables without
+checking whether those ACPI tables even exist. I told you
+about this in a previous round of review :-(
 
+thanks
+-- PMM

@@ -1,103 +1,134 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3128613wrg;
-        Mon, 13 May 2019 11:19:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+hQh7QFa5vRWfQyDDeB8WXyePyN0V9cB7Ji2v6oBPENYxvQ4c0Ewsl19UYGwrHkiJZ0zn
-X-Received: by 2002:a37:6ec3:: with SMTP id j186mr23486851qkc.148.1557771555675;
-        Mon, 13 May 2019 11:19:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557771555; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3154221wrg;
+        Mon, 13 May 2019 11:46:32 -0700 (PDT)
+X-Received: by 2002:aa7:881a:: with SMTP id c26mr28169021pfo.254.1557773192822;
+        Mon, 13 May 2019 11:46:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557773192; cv=none;
         d=google.com; s=arc-20160816;
-        b=bKkEdJUcnz9v1yc3iyU3/ZhvbXboeBJSRzofcLl774RnG3B9TtH324Y/ITIb92eaiY
-         CdhuDPXe86ylgWT/col6Obs1Gxu01I0UhjXP5TEFUM9C3Kb41LIXj3mX+CMCGMFxcnsS
-         P2pJtdI7TvAnHX2vOfZaJwNApm9DoMkFK6wBgiP45v4J4HKYoNAy0+floTGz03y1Vr9k
-         j3zjN4yQGjSL31kKFZUE3YKc3L7ielJVVpX4qSeF5FbAeFCXHFkLfumX3oomvk70KMRO
-         t11gpKsLawhzN9A1l1+WGA9cveOyWqgTEWTlPNCXxT7dyZFgwkPBftXbflqZxclmq7S1
-         I0aw==
+        b=BFNf4GHVVMDZR4qtjRfRRn0c16QtQPBbNYP8DU23j+iCORlb1mt36zEVRYXrBkGLQK
+         PoYgrzPK0UcUKkatbjaDaoxnOBTbZyQoP4ZoBvFri5Krw6BBmmfdO5inOWR2vnpyah8y
+         vGpoJfzsoac2IXFy62MufLdSTjZs02UQPF/wa0cYAezoGQUbIeCwS2juwMxBqXC4SHlt
+         bRcPglLa5Q2hk9iRBgICfazs7unQHNW73HwM8ULybPKNhuuq6RR1wAd+4xLlMyVMrK9B
+         /BPn1PrHMMkKu5MSlKAjXO40jstNkynFaTGElXv123K42BKCJYLAnryRU4MA2T1iHH1j
+         12aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=ZFOcACzQh3g40SNp2Z+r9BletY6tSmUsfOs+9i6tBNY=;
-        b=pXD831UAIcpF2w4kjDHTh+uhioJILVS07eBd7Qu9mMpUyEUTC9lCkLK6t4+P6w4ETw
-         /oD+pJe31rqtuUWQu5SgeTI3+798LohvolFPryDcPanYpdGjZbHyRCSE1muv4U/Pt7T2
-         Z2cBFna0v1nMLobOF5tXyATFB+uAH+pEdpxj6BypqULcL+eZpiT90Chhnv7OTpMUrNeh
-         BX42UlMCLeco9ZxScMttve0P+8N/vmmeS0cYW7XzbiL/rjKcfOQ6Ocj8mi9NnrwnPRDx
-         DjFT01yWQ3wHb8mZ6272Z6S0inZpWORl7hzWmbGQRqVEwuloFZebKCVvdvd5PiD65VH8
-         PbFA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=mfztUT8HThQnL4EPiJVtdwKXVUVQdkxXqoa2KIl4nV4=;
+        b=SRNvGeHhbT7QsNFJSs3rBlLwgOFHogkZpwM9Yg0VKTQvp4rvQHdJPCiUAjr1VPXLcK
+         4V8e3yTUjcbbAddU976uo+VPqR5jDTxXxA9ojrTOjSnSCDgSntCz28nUIRzH6LY3ND7Z
+         V2R7p76JkmNzuFMAuvF1j5boZRLAX6g5Q3DzyC8KMAWcHsmj5mWrXmKTWUlpiO9UUtru
+         GYyGHqQ73cuRonZh0ecFwIGBDICL5bmzMQ9BTdW1q2wO8rgwO9einRtFCJSiqPzoGgDM
+         xIsCXCkw3P6rcaUSA3I3fe0JgJdPtQcQ3mY2PtJ8IAPtuM4m39nPbuaQPjqsF/QJfIGd
+         A2Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x11si1479024qkn.40.2019.05.13.11.19.15
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 May 2019 11:19:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b="i/VFDbkM";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 2sor15228931pga.27.2019.05.13.11.46.32
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 13 May 2019 11:46:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C7E2F307D863;
-	Mon, 13 May 2019 18:19:14 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 158125D706;
-	Mon, 13 May 2019 18:19:11 +0000 (UTC)
-Date: Mon, 13 May 2019 20:19:08 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	abologna@redhat.com, armbru@redhat.com, alex.bennee@linaro.org,
-	Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH 07/13] target/arm/kvm: max cpu: Allow sve
- max vector length setting
-Message-ID: <20190513181908.cpep23i7x77gsgai@kamzik.brq.redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="i/VFDbkM";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=mfztUT8HThQnL4EPiJVtdwKXVUVQdkxXqoa2KIl4nV4=;
+        b=i/VFDbkMoQMJoX6pEeyVAe8gvd+PLxjrK9EEd0yaRjTN19LXINYNbiLCOdA4oN1sxF
+         4I/Li3TAC0YQu3sRb82FoCTfA5CXvhZz5CYmv+U7Zoy/BSE8f30eCfv/q0dZies4KDHH
+         Hnta+8WoZTWbXmD7Ck4605xo0No7Qg/VxbrnarbwFh+V4Otv4mQP/VrOpLgf6DIDEnTD
+         J5VGAd9FrnDxp5MTrcPVTpT7gnMzmbjn4QAjz1fDowvAzDtxVG1lJ6M0rjOshkxoTfZP
+         +viWE3s1xcV6yo+tfIKDjrBlUoospK/HggGXGO1fsdDRcVlWXgXSoJTcFujtBvbQJqWc
+         KXjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=mfztUT8HThQnL4EPiJVtdwKXVUVQdkxXqoa2KIl4nV4=;
+        b=ZtYHZSERRxlUAIWSZSFMFnsIy4Ubi7sNhK1i/mPcp5FamK446ordmsYnguDdBN0G9o
+         fT4OGMxSZZR62QlFwoT2zlydrYwMtXwVshf5zdeTcnqJWfqBDP6GIp5C5LKbyKGiGk5Z
+         8rzQ6bzySD3/SwSrbZWFFDnGs0KRPihf2XB4IDgrXkuSjnijTInDNn+R/Uxjqi+lp16+
+         lh0wjABukNQBCXI8/xv1c3Ne6dlH4upZPibV/qmoNAPRd14uA32r2HSxD+ZSpp+0dnI9
+         1iAj9Wfoe/Ap+PMBDz+olDhUBdC3kcAlTf6UVdfEYy/j6rYDOYbP0mj6hKEFTnYvBRAq
+         hd5w==
+X-Gm-Message-State: APjAAAXeQN6SMcWR6k9X3UoUo8mf8Fa8Kq/pB6zL6jnMnXyujAhUmae0
+	AKzuAze6lq9Y0+fla0Jsb2W9VPQH8k2lCQ==
+X-Google-Smtp-Source: APXvYqzeGm6Y0Hi9OkOkxhjsX58wH4dH6UD4wYD+cmmIFZU3uyMZVni2lFc2S3lh5plE/x6eVCwdOw==
+X-Received: by 2002:a63:1a42:: with SMTP id a2mr32676995pgm.358.1557773191927;
+        Mon, 13 May 2019 11:46:31 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-13-231.tukw.qwest.net. [97.113.13.231])
+        by smtp.gmail.com with ESMTPSA id m123sm25519294pfm.39.2019.05.13.11.46.30
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 11:46:31 -0700 (PDT)
+Subject: Re: [PATCH 00/13] target/arm/kvm: enable SVE in guests
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
+ eblake@redhat.com, Dave.Martin@arm.com, abologna@redhat.com
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-8-drjones@redhat.com>
- <50d07a50-d780-2c73-d9d8-f6eeff6a17c8@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <fa220ee2-b4bc-cdfa-ddde-90206e417cf3@linaro.org>
+Date: Mon, 13 May 2019 11:46:29 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <50d07a50-d780-2c73-d9d8-f6eeff6a17c8@linaro.org>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Mon, 13 May 2019 18:19:14 +0000 (UTC)
-X-TUID: JGEOO7lVS7hz
+In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 5yTZw81VaZ2N
 
-On Mon, May 13, 2019 at 10:19:25AM -0700, Richard Henderson wrote:
-> On 5/12/19 1:36 AM, Andrew Jones wrote:
-> > @@ -292,7 +292,7 @@ static void aarch64_max_initfn(Object *obj)
-> >  
-> >      if (kvm_enabled()) {
-> >          kvm_arm_set_cpu_features_from_host(cpu);
-> > -        cpu->sve_max_vq = ARM_MAX_VQ;
-> > +        cpu->sve_max_vq = -1; /* set in kvm_arch_init_vcpu() */
-> 
-> Perhaps a better comment is "unspecified, to be finalized in ..."
+On 5/12/19 1:36 AM, Andrew Jones wrote:
+>    CPU type | accel | sve-max-vq | sve-vls-map
+>    -------------------------------------------
+>  1)     max | tcg   |  $MAX_VQ   |  $VLS_MAP
+>  2)     max | kvm   |  $MAX_VQ   |  $VLS_MAP
+>  3)    host | kvm   |  N/A       |  $VLS_MAP
 
-OK
+This doesn't seem right.  Why is -cpu host not whatever the host supports?  It
+certainly has been so far.  I really don't see how -cpu max makes any sense for
+kvm.
 
-> 
-> > +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-> > +                        cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
-> 
-> as one can set it here, via the command-line.
-> 
-> > @@ -644,6 +702,24 @@ int kvm_arch_init_vcpu(CPUState *cs)
-> >      }
-> >  
-> >      if (cpu->sve_max_vq) {
-> > +        uint64_t sve_vls[KVM_ARM64_SVE_VLS_WORDS];
-> > +        ret = kvm_arm_get_sve_vls(cs, sve_vls);
-> > +        if (ret < 0) {
-> > +            return ret;
-> > +        }
-> > +        if (cpu->sve_max_vq == -1) {
-> > +            cpu->sve_max_vq = ret;
-> 
-> You still cannot set a value larger than ARM_MAX_VQ, as that is the fixed
-> amount of space allocated within the cpu structure.
->
 
-Good point. I should check against ARM_MAX_VQ here.
+> The QMP query returns a list of valid vq lists. For example, if
+> a guest can use vqs 1, 2, 3, and 4, then the following list will
+> be returned
+> 
+>  [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ] ]
+> 
+> Another example might be 1, 2, 4, as the architecture states 3
+> is optional. In that case the list would be
+> 
+>  [ [ 1 ], [ 1, 2 ], [ 1, 2, 4 ] ]
+> 
+> This may look redundant, but it's necessary to provide a future-
+> proof query, because while KVM currently requires vector sets to
+> be strict truncations of the full valid vector set, that may change
+> at some point.
 
-Thanks,
-drew 
+How and why would that make sense?
+
+Real hardware is going to support one set of vector lengths.  Whether VQ=3 is
+valid or not is not going to depend on the maximum VQ, surely.
+
+I'll also note that if we want to support the theoretical
+beyond-current-architecture maximum VQ=512, such that migration works
+seemlessly with current hardware, then we're going to have to change the
+migration format.
+
+So far I'm supporting only the current architecture maximum VQ=16.  Which
+seemed plenty, given that the first round of hardware only supports VQ=4.
+
+
+
+r~

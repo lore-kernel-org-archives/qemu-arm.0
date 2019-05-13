@@ -1,283 +1,92 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3139361wrg;
-        Mon, 13 May 2019 11:30:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyJjF04mqtOTfVGezymlKU8hfff412YoOXWuTIX/G0ShR8JkDQDowF30Lk+nr9PxcwHSbl1
-X-Received: by 2002:a37:508a:: with SMTP id e132mr23550153qkb.281.1557772236996;
-        Mon, 13 May 2019 11:30:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557772236; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3140033wrg;
+        Mon, 13 May 2019 11:31:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNEpXODKz8LBMbUyWRXEhVRM/7wAmGJxRV7wFsBnD+kFpi+jil3YY6LN8h4evcbbFFqutB
+X-Received: by 2002:ac8:164f:: with SMTP id x15mr25406251qtk.149.1557772273822;
+        Mon, 13 May 2019 11:31:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557772273; cv=none;
         d=google.com; s=arc-20160816;
-        b=WlMkIpgQstG09zOzJWXt3f0wrrTI6zvWlsTga1aSInKUGTFkEgHqFbzys3DPQm1Gne
-         w5sQGWxd4vL15jImJYZlkWudBWXRCy0WlzFHefBAiPXYvdcX0fB1UnTnpGMC/XMTYGyz
-         9jY9fKg07TJtKe+OW4Ex5mgWZFf6KAK66Vg7v2xZ/OXhWRi4aC1bweJUdXrL2h1JFE08
-         6YHODcjA8bnD0/GugtdZpzSX8VHtD5ZAHuamBTQqdI5P/q7QOK9czvalomPO1eTb4ABH
-         vEuf817ZC2YJE6s7pr5IFyaOxO1RgiMMcBrLguCLDfshq7zLpN6nlqINm8zgzqZESvpb
-         pxgQ==
+        b=S542GaG5mBRXIMH7xFfyKLgvuk6wChZeW9Wd/aQv0Hx8DXq2BAEZRGPeI/TMcrmggi
+         UcO3Ex3LTmwYHytJrRJTxQg615GEzV/7i4T0jOVlUw391bDGP11VoCGIZwM1wb3TiPpV
+         4bnKe4iO5QqR0SmZ0J4Tn2VJIlDLQWz+AEk85pIefbWNWdew+lmC1xJIWZW475FMbFNj
+         FG9JCuUMQ4aHj47fxZnDoJade3XQSnDYgneiWSgBWVbFVFy90WLqs/9nYOrNLutYAYfy
+         p+Y1kpkNBeAEwXEc3tjz/zEtW4/qJSvit25Z6VufCP3PYFTHlqsqFH753QpNd14weDZn
+         Ru/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=F8u26LvoaWpJJ5rFkq3q8n8Uidsdn13BhW3qz9jiVg0=;
-        b=jDMGT9YL9mNDIwtBB6DJEA40TlpaHigLrEhjzEFRNdcRMscc61ELRbtD5/oxF+yT4M
-         IRdJOSLqqg6mDimlZwLxswfyCn7cdZTFH2OKjYJB1J7RaIjAi49sd5jhxTVlaHFB/nVb
-         SDm3eWhAsMZSzivebX34pDV47sppMHaz7RPCQRTzBmRmPbkWoprR+NhfZ4SXHbjdGQ54
-         iVFW5pruQeiJhiM5jB19FStY1xXE2KASdRgdWVwMtgMClQmn22aFMyh6tsz6Z8L2HVey
-         RheL3s3cROr15rPa8D5KlAu5K5SB1DM5e3sj5r52t+O8OksnU2TfFoY7cxmwTlNKFodV
-         OnJw==
+        bh=m9J7PZPscWZeRdAQhZgjjGRFXd6MbcPGEoGr+4I1AYk=;
+        b=ZVwMdOFmzeTXAA1euGNnkmMvczD44P4GPo487nyPyKeB5M68UCsruDF29GJ+XbYi5j
+         3nEJoySHdhUF3ZBlzoiuoSXp1JfnLqr2x8ehBONDxXPyohNVE9SLPl+RxNKbaLxTWwu9
+         +yt2DXlOBxoJPPpNzLBrQHZtg8TLKskRIAb0jIAy1pef8CPW26rdFMVkBG2F4s2ZIBt1
+         WNRkTRwZ+50VpA26ZjC8YqNI0WH4D5dOZP++zhSMAYksnpD0r7bJ3/08mzbW/HU95FvB
+         bsteIVIzLBf+z9KjMsqisH1mjk05BD1FWqcGExpjwDGUuJMXSt8x6XVSz2oZr83cwZDc
+         6O2g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b128si3091113qkf.62.2019.05.13.11.30.36
+        by mx.google.com with ESMTPS id r14si735947qvc.178.2019.05.13.11.31.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 May 2019 11:30:36 -0700 (PDT)
+        Mon, 13 May 2019 11:31:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E95062C976E;
-	Mon, 13 May 2019 18:30:35 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 04BA23087942;
+	Mon, 13 May 2019 18:31:13 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D71A10018E0;
-	Mon, 13 May 2019 18:30:33 +0000 (UTC)
-Date: Mon, 13 May 2019 20:30:30 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 687405C1B4;
+	Mon, 13 May 2019 18:31:10 +0000 (UTC)
+Date: Mon, 13 May 2019 20:31:07 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	richard.henderson@linaro.org, abologna@redhat.com,
 	alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH 08/13] target/arm/monitor: Add
- query-sve-vector-lengths
-Message-ID: <20190513183030.aap4gsxm7rbbkrbj@kamzik.brq.redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 11/13] target/arm/cpu64: max cpu: Introduce
+ sve-vls-map
+Message-ID: <20190513183107.7lsndkyp2p7yhra5@kamzik.brq.redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-9-drjones@redhat.com>
- <87ftpie3k9.fsf@dusky.pond.sub.org>
+ <20190512083624.8916-12-drjones@redhat.com>
+ <875zqefkbg.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87ftpie3k9.fsf@dusky.pond.sub.org>
+In-Reply-To: <875zqefkbg.fsf@dusky.pond.sub.org>
 User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Mon, 13 May 2019 18:30:36 +0000 (UTC)
-X-TUID: QXyGo3kShrYF
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Mon, 13 May 2019 18:31:13 +0000 (UTC)
+X-TUID: fPoDKdhqjwmY
 
-On Mon, May 13, 2019 at 06:12:38PM +0200, Markus Armbruster wrote:
+On Mon, May 13, 2019 at 05:25:23PM +0200, Markus Armbruster wrote:
 > Andrew Jones <drjones@redhat.com> writes:
 > 
-> > Provide a QMP interface to query the supported SVE vector lengths.
-> > A migratable guest will need to explicitly specify a valid set of
-> > lengths on the command line and that set can be obtained from the
-> > list returned with this QMP command.
+> > Introduce another cpu property to control SVE vector lengths,
+> > sve-vls-map, which allows the user to explicitly select the
+> > set of vector lengths the guest can use. The map must conform
+> > to QEMU's limits and architectural constraints, checked when
+> > the property is set. Inconsistencies with sve-max-vq are also
+> > checked. The bit number of a set bit in the map represents the
+> > allowed vector length in number of quadwords.
 > >
-> > This patch only introduces the QMP command with the TCG implementation.
-> > The result may not yet be correct for KVM. Following patches ensure
-> > the KVM result is correct.
+> > Note, as the map is implemented with a single 64-bit word we
+> > currently only support up to 8192-bit vectors. As QEMU and
+> > KVM only support up to 2048-bit vectors then this sufficient
+> > now, and probably for some time. Extending the bitmap beyond
+> > a single word will likely require changing the property to
+> > a string and adding yet another parser to QEMU.
 > >
 > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  qapi/target.json     | 34 ++++++++++++++++++++++++
-> >  target/arm/monitor.c | 62 ++++++++++++++++++++++++++++++++++++++++++++
-> >  tests/qmp-cmd-test.c |  1 +
-> >  3 files changed, 97 insertions(+)
-> >
-> > diff --git a/qapi/target.json b/qapi/target.json
-> > index 1d4d54b6002e..ca1e85254780 100644
-> > --- a/qapi/target.json
-> > +++ b/qapi/target.json
-> > @@ -397,6 +397,40 @@
-> >  { 'command': 'query-gic-capabilities', 'returns': ['GICCapability'],
-> >    'if': 'defined(TARGET_ARM)' }
-> >  
-> > +##
-> > +# @SVEVectorLengths:
-> > +#
-> > +# The struct contains a list of integers where each integer is a valid
 > 
-> Suggest to s/The struct contains/Contains/.
+> Please add an example of how the new property should be used on the
+> command line to your commit message.  I'd ask for a documentation update
+> as well if we had any to update.
 
-OK
-
-> 
-> > +# SVE vector length for a KVM guest on this host. The vector lengths
-> > +# are in quadword (128-bit) units, e.g. '4' means 512 bits (64 bytes).
-> 
-> Any particular reason for counting quad-words instead of bytes, or
-> perhaps bits?
-
-It can be considered just bits here, but when set in sve-vls-map those
-bits are chosen to mean quadwords as that allows us to get up to 8192-bit
-vectors with a single 64-bit word. Maybe I should write more of that here
-to clarify.
-
-> 
-> > +#
-> > +# @vls:      list of vector lengths in quadwords.
-> > +#
-> > +# Since: 4.1
-> > +##
-> > +{ 'struct': 'SVEVectorLengths',
-> > +  'data': { 'vls': ['int'] },
-> > +  'if': 'defined(TARGET_ARM)' }
-> > +
-> > +##
-> > +# @query-sve-vector-lengths:
-> > +#
-> > +# This command is ARM-only. It will return a list of SVEVectorLengths
-> 
-> No other target-specific command documents its target-specificness like
-> this.  Suggest
-
-Well, it's pretty similar to query-gic-capabilities, which is what I used
-as a template, but I'm happy to change it to whatever you suggest :)
-
-> 
->    # Query valid SVE vector length sets.
-> 
-> > +# objects. The list describes all valid SVE vector length sets.
-> > +#
-> > +# Returns: a list of SVEVectorLengths objects
-> > +#
-> > +# Since: 4.1
-> > +#
-> > +# -> { "execute": "query-sve-vector-lengths" }
-> > +# <- { "return": [ { "vls": [ 1 ] },
-> > +#                  { "vls": [ 1, 2 ] },
-> > +#                  { "vls": [ 1, 2, 4 ] } ] }
-> > +#
-> > +##
-> > +{ 'command': 'query-sve-vector-lengths', 'returns': ['SVEVectorLengths'],
-> > +  'if': 'defined(TARGET_ARM)' }
-> > +
-
-Yup, will do
-
-> >  ##
-> >  # @CpuModelExpansionInfo:
-> >  #
-> > diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-> > index 41b32b94b258..8b2afa255c92 100644
-> > --- a/target/arm/monitor.c
-> > +++ b/target/arm/monitor.c
-> > @@ -24,6 +24,7 @@
-> >  #include "hw/boards.h"
-> >  #include "kvm_arm.h"
-> >  #include "qapi/qapi-commands-target.h"
-> > +#include "monitor/hmp-target.h"
-> 
-> Uh, hmp-target.h when the patch is supposedly about QMP only...
-> 
-> >  
-> >  static GICCapability *gic_cap_new(int version)
-> >  {
-> > @@ -82,3 +83,64 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
-> >  
-> >      return head;
-> >  }
-> > +
-> > +static SVEVectorLengths *qmp_sve_vls_get(void)
-> > +{
-> > +    CPUArchState *env = mon_get_cpu_env();
-> 
-> Aha, you need it for mon_get_cpu_env().
-> 
-> mon_get_cpu_env() returns the current monitor's current CPU.  This is an
-> HMP thing, QMP commands should never access it.
-> 
-> Looks like you use it to find one of the CPUs, so you can access its
-> ->sve_max_vq.
-> 
-> "One of the CPUs" smells odd: what if they aren't all the same?  Perhaps
-> that can't happen.  I don't know, you tell me :)
-> 
-> If any CPU will do, what about simply using first_cpu?
-
-first_cpu will work. We currently only allow the same vector length set
-for all cpus. I'll change it and drop the HMP things.
-
-> 
-> > +    ARMCPU *cpu = arm_env_get_cpu(env);
-> > +    SVEVectorLengths *vls = g_new(SVEVectorLengths, 1);
-> > +    intList **v = &vls->vls;
-> > +    int i;
-> > +
-> > +    if (cpu->sve_max_vq == 0) {
-> > +        *v = g_new0(intList, 1); /* one vl of 0 means none supported */
-> > +        return vls;
-> > +    }
-> > +
-> > +    for (i = 1; i <= cpu->sve_max_vq; ++i) {
-> > +        *v = g_new0(intList, 1);
-> > +        (*v)->value = i;
-> > +        v = &(*v)->next;
-> > +    }
-> 
-> What this loop does is not immediately obvious.  I think you could use a
-> function comment.
-
-OK
-
-> 
-> > +
-> > +    return vls;
-> > +}
-> > +
-> > +static SVEVectorLengths *qmp_sve_vls_dup_and_truncate(SVEVectorLengths *vls)
-> > +{
-> > +    SVEVectorLengths *trunc_vls;
-> > +    intList **v, *p = vls->vls;
-> > +
-> > +    if (!p->next) {
-> > +        return NULL;
-> > +    }
-> > +
-> > +    trunc_vls = g_new(SVEVectorLengths, 1);
-> > +    v = &trunc_vls->vls;
-> > +
-> > +    for (; p->next; p = p->next) {
-> > +        *v = g_new0(intList, 1);
-> > +        (*v)->value = p->value;
-> > +        v = &(*v)->next;
-> > +    }
-> > +
-> > +    return trunc_vls;
-> > +}
-> 
-> More so.
-
-More OK :)
-
-> 
-> > +
-> > +SVEVectorLengthsList *qmp_query_sve_vector_lengths(Error **errp)
-> > +{
-> > +    SVEVectorLengthsList *vls_list = g_new0(SVEVectorLengthsList, 1);
-> > +    SVEVectorLengths *vls = qmp_sve_vls_get();
-> > +
-> > +    while (vls) {
-> > +        vls_list->value = vls;
-> > +        vls = qmp_sve_vls_dup_and_truncate(vls);
-> > +        if (vls) {
-> > +            SVEVectorLengthsList *next = vls_list;
-> > +            vls_list = g_new0(SVEVectorLengthsList, 1);
-> > +            vls_list->next = next;
-> > +        }
-> > +    }
-> > +
-> > +    return vls_list;
-> > +}
-> > diff --git a/tests/qmp-cmd-test.c b/tests/qmp-cmd-test.c
-> > index 9f5228cd9951..3d714dbc6a4a 100644
-> > --- a/tests/qmp-cmd-test.c
-> > +++ b/tests/qmp-cmd-test.c
-> > @@ -90,6 +90,7 @@ static bool query_is_blacklisted(const char *cmd)
-> >          /* Success depends on target arch: */
-> >          "query-cpu-definitions",  /* arm, i386, ppc, s390x */
-> >          "query-gic-capabilities", /* arm */
-> > +        "query-sve-vector-lengths", /* arm */
-> >          /* Success depends on target-specific build configuration: */
-> >          "query-pci",              /* CONFIG_PCI */
-> >          /* Success depends on launching SEV guest */
+Will do.
 
 Thanks,
 drew

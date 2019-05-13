@@ -1,149 +1,184 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2753225wrg;
-        Mon, 13 May 2019 05:39:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxCz+m5QctBRu5o/AedmfheaxvSPoNVD59uifp2YqnfrXnXTiwNOzfQAnP4KGasnY5Y2R+1
-X-Received: by 2002:a37:b3c5:: with SMTP id c188mr22290374qkf.97.1557751144392;
-        Mon, 13 May 2019 05:39:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557751144; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2755566wrg;
+        Mon, 13 May 2019 05:41:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyD0FV38P2GZq0kUqtlrMFpQkegbXUog5WUfKPVcNGbQPXXr031nRZOSfkg4iK5RgpdiLi8
+X-Received: by 2002:a50:f9cc:: with SMTP id a12mr29408941edq.272.1557751291664;
+        Mon, 13 May 2019 05:41:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557751291; cv=none;
         d=google.com; s=arc-20160816;
-        b=OaIs0/faWwauEuypoa8ybQc9uZLRux6TzabgvixYbkkZyJG140hXUbMYWOUEh38TED
-         l5ut2TcODmk7YYxY/X32uJowgxEag4zjm2kvBusOBJhYz0wbbYVPYHo7Vl9IOMs7X/eO
-         x82t7BnD/XCZMpDpNq1PXBd4dL1+2cjkjHJPLdkxrIC6FFlUO/jEkOolihKNn0Zf5HMM
-         tL64jTPP+NZg5+pbwoIi7DP698O8TJlGMgU/ZVtAnzH0TTenlpmUwFFIEr/jS4QNby6w
-         T+mHx6F2qVuiTTdAUAVzA3eRnOI+Fc4zrkHae26d+lugqvWeVz0/CEjhVByWzwaqnK+Z
-         18GA==
+        b=Ry/8waoUUKGMBcfb4cp0NfBhVzacLU8JYdUBHSQhK+KE6cC9924akpV4M0+oKYqUMV
+         P4sKWo9hUcOQRzXdZr5bDr08xwesxjt9HfgrEC54pKHaXWNCu/bcP96+wzOslcGZ05Rj
+         igwJvtONyuOi+46BjuwoZLIWeGQnzpKbe/Qh76gQrSlDYG9aO2fADnIw+2xTxPvlIODr
+         aJxn3owAx77E/H1gYB2HVITAxv25huisPuMu4bDDS0YIps2pCp/drZfBzblrFKveVmD/
+         Jky+3Agvf+SidQHmv0e1F/h+MS1U4bAQ6WnIfMzWQmyFYvfXzIJK+d/L9yEvCr9G5r52
+         m0kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=RT1N5iRmPS2HVu8zpJqJD4aoplArRyG/2fXwdtv7y2s=;
-        b=O09KiDJbo46ghj17Ln6GJhKRqoAoHwya6OrGdekuXzQPqG7AWEAVxV0Au6yiXUqDWr
-         P2kq7I2wliRKupAJCjC+cODLEeoEBqCsNkMbMto4bu9ZL1SY6hujqmbmaxoGDPD1eGo2
-         c61FK1FU9swJ494owwHVR4i3ZMcbfrinwlxRhnoLqMRFmLHoGAIiHFqVWBY4LWFMj6gU
-         RKEkcb+3gEGe5tTWWoL8MI22KLkcjrdZagZ35n7S+ahYziA8+sbKWuKpqntABti9CfnZ
-         IhpsnL8P9qoevdBTupTxHyVDSjrNGZBXS9gdcQBUn6BXbXeb8V992gtkVKXMD11b6Wwt
-         kGoQ==
+        bh=5CpmQacZ2dvsTbpXWxPzs2RTDe8vpxEVIUmsBjfDNd4=;
+        b=0bIRFwTRfTqIw6h9eCG42UB9EnUVRLhK1zEtoeG54oMkYTW4zgHJ7/9jbR3KPJCU41
+         VF7M9kHGWByHZoRtDN+TnWXQrDVrwN3EBGOue1L3wjLJD1OPNWQSYE2SjQAohZTWWmRL
+         NSsgPR3lX7qaVYNLAAC9ekpY7Kz5lxZ3YrccM/SMNvgxHLDBMXmbJlFegWoGZh+Syb+r
+         kiz+KcXZrNwRI8nzOpzc0wmFYlmjKLl+7vIWvyuQi2Ck+UAmv60d3Dei5xtgD+6PuhXp
+         HJhwC6y3Is/8MRF28QJCkW38ZIS/iH5K02W9CpxMTowTll2kQhKCQt9nFgbYNyVyfS2a
+         S6YA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id n66si1489653qkc.251.2019.05.13.05.39.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 May 2019 05:39:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com. [217.140.101.70])
+        by mx.google.com with ESMTP id j20si1620843ejt.169.2019.05.13.05.41.31;
+        Mon, 13 May 2019 05:41:31 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7C40C30821FF;
-	Mon, 13 May 2019 12:39:03 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 86F2D1001E7D;
-	Mon, 13 May 2019 12:39:00 +0000 (UTC)
-Date: Mon, 13 May 2019 14:38:57 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: Andrea Bolognani <abologna@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+       spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 618D780D;
+	Mon, 13 May 2019 05:41:30 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DAAC03F6C4;
+	Mon, 13 May 2019 05:41:28 -0700 (PDT)
+Date: Mon, 13 May 2019 13:41:26 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Andrew Jones <drjones@redhat.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"armbru@redhat.com" <armbru@redhat.com>,
-	"eblake@redhat.com" <eblake@redhat.com>
-Subject: Re: [PATCH 00/13] target/arm/kvm: enable SVE in guests
-Message-ID: <20190513123857.xjgwnkdlizdunlpz@kamzik.brq.redhat.com>
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"abologna@redhat.com" <abologna@redhat.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH 11/13] target/arm/cpu64: max cpu: Introduce
+ sve-vls-map
+Message-ID: <20190513124126.GF28398@e103592.cambridge.arm.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
- <20190513111555.GC28398@e103592.cambridge.arm.com>
+ <20190512083624.8916-12-drjones@redhat.com>
+ <20190513112635.GD28398@e103592.cambridge.arm.com>
+ <20190513123023.h4q5sihktqctkgml@kamzik.brq.redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190513111555.GC28398@e103592.cambridge.arm.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Mon, 13 May 2019 12:39:03 +0000 (UTC)
-X-TUID: bC19hBMbMCZk
+In-Reply-To: <20190513123023.h4q5sihktqctkgml@kamzik.brq.redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: xkvVRCsd7WRD
 
-On Mon, May 13, 2019 at 12:15:56PM +0100, Dave Martin wrote:
-> On Mon, May 13, 2019 at 10:32:46AM +0100, Andrea Bolognani wrote:
-> > On Sun, 2019-05-12 at 10:36 +0200, Andrew Jones wrote:
+On Mon, May 13, 2019 at 01:30:23PM +0100, Andrew Jones wrote:
+> On Mon, May 13, 2019 at 12:26:36PM +0100, Dave Martin wrote:
+> > On Sun, May 12, 2019 at 09:36:22AM +0100, Andrew Jones wrote:
+> > > Introduce another cpu property to control SVE vector lengths,
+> > > sve-vls-map, which allows the user to explicitly select the
+> > > set of vector lengths the guest can use. The map must conform
+> > > to QEMU's limits and architectural constraints, checked when
+> > > the property is set. Inconsistencies with sve-max-vq are also
+> > > checked. The bit number of a set bit in the map represents the
+> > > allowed vector length in number of quadwords.
+> > > 
+> > > Note, as the map is implemented with a single 64-bit word we
+> > > currently only support up to 8192-bit vectors. As QEMU and
+> > > KVM only support up to 2048-bit vectors then this sufficient
+> > > now, and probably for some time. Extending the bitmap beyond
+> > > a single word will likely require changing the property to
+> > > a string and adding yet another parser to QEMU.
+> > > 
+> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > ---
+> > >  target/arm/cpu.c     |  4 +++
+> > >  target/arm/cpu.h     |  3 ++
+> > >  target/arm/cpu64.c   | 70 +++++++++++++++++++++++++++++++++++++++++---
+> > >  target/arm/helper.c  | 10 ++++++-
+> > >  target/arm/monitor.c |  9 ++++--
+> > >  5 files changed, 88 insertions(+), 8 deletions(-)
+> > > 
+> > 
 > > [...]
-> > >    CPU type | accel | sve-max-vq | sve-vls-map
-> > >    -------------------------------------------
-> > >  1)     max | tcg   |  $MAX_VQ   |  $VLS_MAP
-> > >  2)     max | kvm   |  $MAX_VQ   |  $VLS_MAP
-> > >  3)    host | kvm   |  N/A       |  $VLS_MAP
-> > > 
-> > > Where for (1) $MAX_VQ sets the maximum vq and smaller vqs are
-> > > all supported when $VLS_MAP is zero, or when the vqs are selected
-> > > in $VLS_MAP.
 > > 
-> > I'm a bit confused by the nomenclature here. VL clearly stands for
-> > Vector Length, but what does VQ stand for? You seem to be using the
-> > two terms pretty much interchangeably throughout the cover letter.
-> 
-> From the Linux end, "vector length" or VL refers to the size of a vector
-> register, either in no particular unit or in bytes.
-> 
-> "VQ" refers specifically to the vector length in 128-bit quadwords.
-> 
-> In some situations, neither terminology is obviously better than the
-> other, such as in the way KVM_REG_ARM64_SVE_VLS is encoded.
-> 
-> > [...]
-> > > There is never any need to provide both properties, but if both
-> > > are provided then they are checked for consistency.
+> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > > index 8292d547e8f9..f0d0ce759ba8 100644
+> > > --- a/target/arm/cpu.h
+> > > +++ b/target/arm/cpu.h
+> > > @@ -920,6 +920,9 @@ struct ARMCPU {
+> > >  
+> > >      /* Used to set the maximum vector length the cpu will support.  */
+> > >      uint32_t sve_max_vq;
+> > > +
+> > > +    /* Each bit represents a supported vector length of (bitnum * 16) bytes */
+> > > +    uint64_t sve_vls_map;
 > > 
-> > I would personally just error out when both are provided.
+> > Just to be clear, the representation here is different from the
+> > representation in KVM_REG_ARM64_SVE_VLS?
 > > 
-> > > The QMP query returns a list of valid vq lists. For example, if
-> > > a guest can use vqs 1, 2, 3, and 4, then the following list will
-> > > be returned
-> > > 
-> > >  [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ] ]
-> > > 
-> > > Another example might be 1, 2, 4, as the architecture states 3
-> > > is optional. In that case the list would be
-> > > 
-> > >  [ [ 1 ], [ 1, 2 ], [ 1, 2, 4 ] ]
-> > 
-> > I think the proposed QMP command is problematic, because it reports
-> > the valid vector lengths for either KVM or TCG based on which
-> > accelerator is currently enabled: it should report all information
-> > at all times instead, similarly to how query-gic-capabilities does
-> > it.
+> > In the latter, bit n represents vector length ((n + 1) * 16) bytes.
 > 
-> I wonder if this is premature flexibility?
-> 
-> The size of these lists is going to get cumbersome if the architecture
-> is ever extended.  Even today, we might need over 100 items in this
-> (nested) list.  If this is to be presented to the user this will be
-> far from friendly, it could get much worse if the architecutre changes
-> in future to allow larger vectors or more flexible virtualisation.
-> 
-> Could we just have a list of supported vector lengths and a possibly
-> empty list of additional capabilities that describe what kinds of
-> flexibility are allowed?
-> 
-> So, for example, we might support vector lengths of 1, 2, 4 and 8
-> quadwords, with the the ability to clamp the max vector length the
-> guest sees: the kernel ABI guarantees that you can do this, even
-> if you can't disable/enable each individual vector length independently.
-> 
-> So, [ 1, 2, 4, 8 ] seems sufficient to describe this in a forwards
-> compatible way.
-> 
-> Some day, we might report { "independent", [ 1, 2, 4, 8, 16, 32, ... ] }
-> 
-> I'm guessing about the data representation here.
-> 
+> KVM also uses bitnum * 16. bitnum is the the bit number, not the shift.
 
-I think that could work, and something along those lines even crossed my
-mind. Let's see what libvirt folk say. I'm not overly concerned about
-user friendless here though, as users aren't running QMP commands and
-parsing json by hand too much.
+Can you point to the relevant kernel code?  This isn't what I thought I
+wrote...
 
-Thanks,
-drew
+> So you can't have bitnum=0. 'n' must be a shift, as it would need to
+> allow zero in order to represent KVM_ARM64_SVE_VQ_MIN.
+
+[...]
+
+> > > +static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
+> > > +                                void *opaque, Error **errp)
+> > > +{
+> > > +    ARMCPU *cpu = ARM_CPU(obj);
+> > > +    Error *err = NULL;
+> > > +    uint64_t mask = ~(BIT_MASK(ARM_MAX_VQ - 1) - 1);
+> > > +    int i;
+> > > +
+> > > +    visit_type_uint64(v, name, &cpu->sve_vls_map, errp);
+> > > +
+> > > +    if (!err) {
+> > > +        if (cpu->sve_vls_map == 0) {
+> > > +            error_setg(&err, "SVE vector length map cannot be zero");
+> > 
+> > Maybe say "empty" here, since the map represents a set?
+> 
+> Empty does sound better when considering the map represents a set, but
+> the user will be inputting a number for the map, so zero will be what
+> they attempted to input.
+
+If the user is inputting the encoded number directly, I guess it makes
+sense to describe the empty set as "zero".
+
+> > (But it this is just for debug rather than reporting errors to the user,
+> > it probably doesn't matter much.)
+> 
+> I'm also not too worried about which term we use, so I'm happy to change
+> it if you'd like.
+
+I guess I don't have a strong opinion.
+
+[...]
+
+> > > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > > index 1e6eb0d0f360..bedec1ea0b27 100644
+> > > --- a/target/arm/helper.c
+> > > +++ b/target/arm/helper.c
+> > > @@ -5254,12 +5254,20 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
+> > >  static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> > >                        uint64_t value)
+> > >  {
+> > > +    ARMCPU *cpu = arm_env_get_cpu(env);
+> > >      int cur_el = arm_current_el(env);
+> > >      int old_len = sve_zcr_len_for_el(env, cur_el);
+> > >      int new_len;
+> > >  
+> > >      /* Bits other than [3:0] are RAZ/WI.  */
+> > > -    raw_write(env, ri, value & 0xf);
+> > > +    value &= 0xf;
+> > 
+> > You might want to sanity-check that the max vq you configured for the
+> > vcpu is <= 16 here.
+> 
+> It's already checked by the cpu property set function at input time.
+
+The check is in one place, but the assumptions based on it are
+potentially all over the place -- it may be tricky to track them
+all down if you ever add support for >8192-bit vectors.
+
+(Not a big deal from my point of view, but I'd migration to larger
+vectors to be as smooth as reasonably possible if we ever find we have
+to do it.)
+ 
+Cheers
+---Dave

@@ -1,184 +1,98 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2755566wrg;
-        Mon, 13 May 2019 05:41:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyD0FV38P2GZq0kUqtlrMFpQkegbXUog5WUfKPVcNGbQPXXr031nRZOSfkg4iK5RgpdiLi8
-X-Received: by 2002:a50:f9cc:: with SMTP id a12mr29408941edq.272.1557751291664;
-        Mon, 13 May 2019 05:41:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557751291; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2757777wrg;
+        Mon, 13 May 2019 05:44:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzEgUB3qRd8ZxkmtH2bhOenV4o/Djp8JeL2jC7v01WmiqcDNwhhcHQJgcH8K8schjD4+9er
+X-Received: by 2002:a50:8bbb:: with SMTP id m56mr29541957edm.230.1557751441802;
+        Mon, 13 May 2019 05:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557751441; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ry/8waoUUKGMBcfb4cp0NfBhVzacLU8JYdUBHSQhK+KE6cC9924akpV4M0+oKYqUMV
-         P4sKWo9hUcOQRzXdZr5bDr08xwesxjt9HfgrEC54pKHaXWNCu/bcP96+wzOslcGZ05Rj
-         igwJvtONyuOi+46BjuwoZLIWeGQnzpKbe/Qh76gQrSlDYG9aO2fADnIw+2xTxPvlIODr
-         aJxn3owAx77E/H1gYB2HVITAxv25huisPuMu4bDDS0YIps2pCp/drZfBzblrFKveVmD/
-         Jky+3Agvf+SidQHmv0e1F/h+MS1U4bAQ6WnIfMzWQmyFYvfXzIJK+d/L9yEvCr9G5r52
-         m0kg==
+        b=vo7Q59DXQOjFII5spsFY7ynLmFLA2NVIHQvEn6rm80TXfLyoNgJws22bgjYtukKBwQ
+         JT1p61BUkZrBTWhoHXVYtKuPPy3frFw5IUhCQLIVZFziEx33kFxTX6vVwcjTJf5OaKHZ
+         reOFfk3t5jtH3lZ0DmkkuEyyPIWQvDwA7xy6H7Yx/vdUCWp9P/8F+xUZK2+t6UJNy2Og
+         OFapWr/5NXPvfLv2rC3+9jE251I79Fb/6CAMAW5i3149FsHK98kzUC2cpkeNT8lLjCzi
+         /a7890hu1eXfP3oUDrd9AX1/ALKIJuDEAscwc0xQAslnscAiDs8fCjz86640+o1LaBwM
+         h6wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=5CpmQacZ2dvsTbpXWxPzs2RTDe8vpxEVIUmsBjfDNd4=;
-        b=0bIRFwTRfTqIw6h9eCG42UB9EnUVRLhK1zEtoeG54oMkYTW4zgHJ7/9jbR3KPJCU41
-         VF7M9kHGWByHZoRtDN+TnWXQrDVrwN3EBGOue1L3wjLJD1OPNWQSYE2SjQAohZTWWmRL
-         NSsgPR3lX7qaVYNLAAC9ekpY7Kz5lxZ3YrccM/SMNvgxHLDBMXmbJlFegWoGZh+Syb+r
-         kiz+KcXZrNwRI8nzOpzc0wmFYlmjKLl+7vIWvyuQi2Ck+UAmv60d3Dei5xtgD+6PuhXp
-         HJhwC6y3Is/8MRF28QJCkW38ZIS/iH5K02W9CpxMTowTll2kQhKCQt9nFgbYNyVyfS2a
-         S6YA==
+        bh=rtX0c6XRTCpj6kwf/+8yNwSfCFdLlHh0nLHTEOsN4Ag=;
+        b=Di1bp4bYddKBZlSYuBwuKkuZcehUgTlGXePJ+Om7oJ0ojjfXoZsYSpmrFixKktX05L
+         CA1RWnO14WEdU4+V/PNJCRC99sA5+ADpxbMoyTWBloRGouk2KaJTjQq6vrLXdsDqEBFJ
+         SXrib4icuy9Vh8ayl9qboevaGRqR94pZS1bOMc3P3e9kpEZUrUCqdiEPopNm0wT9YCVn
+         uJlqfkPcSoY2flIe45jA41nkTKtOQPStW3q0iF58ar+wBiByqXuNlkPjZWMb3olYRN//
+         yIu+pYS0vWk/RjkDvZGH64k68hWWzaEaKU5S9pkOPsdxwqRbI/mbJIMoDJl6Ct5cPj0W
+         +epQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
 Return-Path: <Dave.Martin@arm.com>
 Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id j20si1620843ejt.169.2019.05.13.05.41.31;
-        Mon, 13 May 2019 05:41:31 -0700 (PDT)
+        by mx.google.com with ESMTP id r3si4597405ejj.99.2019.05.13.05.44.01;
+        Mon, 13 May 2019 05:44:01 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 618D780D;
-	Mon, 13 May 2019 05:41:30 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B77C380D;
+	Mon, 13 May 2019 05:44:00 -0700 (PDT)
 Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DAAC03F6C4;
-	Mon, 13 May 2019 05:41:28 -0700 (PDT)
-Date: Mon, 13 May 2019 13:41:26 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1719F3F6C4;
+	Mon, 13 May 2019 05:43:58 -0700 (PDT)
+Date: Mon, 13 May 2019 13:43:56 +0100
 From: Dave Martin <Dave.Martin@arm.com>
 To: Andrew Jones <drjones@redhat.com>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"abologna@redhat.com" <abologna@redhat.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH 11/13] target/arm/cpu64: max cpu: Introduce
- sve-vls-map
-Message-ID: <20190513124126.GF28398@e103592.cambridge.arm.com>
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"abologna@redhat.com" <abologna@redhat.com>
+Subject: Re: [PATCH 05/13] target/arm/kvm: Add kvm_arch_get/put_sve
+Message-ID: <20190513124356.GG28398@e103592.cambridge.arm.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-12-drjones@redhat.com>
- <20190513112635.GD28398@e103592.cambridge.arm.com>
- <20190513123023.h4q5sihktqctkgml@kamzik.brq.redhat.com>
+ <20190512083624.8916-6-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190513123023.h4q5sihktqctkgml@kamzik.brq.redhat.com>
+In-Reply-To: <20190512083624.8916-6-drjones@redhat.com>
 User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: xkvVRCsd7WRD
+X-TUID: X3/ZTGeUJFgu
 
-On Mon, May 13, 2019 at 01:30:23PM +0100, Andrew Jones wrote:
-> On Mon, May 13, 2019 at 12:26:36PM +0100, Dave Martin wrote:
-> > On Sun, May 12, 2019 at 09:36:22AM +0100, Andrew Jones wrote:
-> > > Introduce another cpu property to control SVE vector lengths,
-> > > sve-vls-map, which allows the user to explicitly select the
-> > > set of vector lengths the guest can use. The map must conform
-> > > to QEMU's limits and architectural constraints, checked when
-> > > the property is set. Inconsistencies with sve-max-vq are also
-> > > checked. The bit number of a set bit in the map represents the
-> > > allowed vector length in number of quadwords.
-> > > 
-> > > Note, as the map is implemented with a single 64-bit word we
-> > > currently only support up to 8192-bit vectors. As QEMU and
-> > > KVM only support up to 2048-bit vectors then this sufficient
-> > > now, and probably for some time. Extending the bitmap beyond
-> > > a single word will likely require changing the property to
-> > > a string and adding yet another parser to QEMU.
-> > > 
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > ---
-> > >  target/arm/cpu.c     |  4 +++
-> > >  target/arm/cpu.h     |  3 ++
-> > >  target/arm/cpu64.c   | 70 +++++++++++++++++++++++++++++++++++++++++---
-> > >  target/arm/helper.c  | 10 ++++++-
-> > >  target/arm/monitor.c |  9 ++++--
-> > >  5 files changed, 88 insertions(+), 8 deletions(-)
-> > > 
-> > 
-> > [...]
-> > 
-> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > > index 8292d547e8f9..f0d0ce759ba8 100644
-> > > --- a/target/arm/cpu.h
-> > > +++ b/target/arm/cpu.h
-> > > @@ -920,6 +920,9 @@ struct ARMCPU {
-> > >  
-> > >      /* Used to set the maximum vector length the cpu will support.  */
-> > >      uint32_t sve_max_vq;
-> > > +
-> > > +    /* Each bit represents a supported vector length of (bitnum * 16) bytes */
-> > > +    uint64_t sve_vls_map;
-> > 
-> > Just to be clear, the representation here is different from the
-> > representation in KVM_REG_ARM64_SVE_VLS?
-> > 
-> > In the latter, bit n represents vector length ((n + 1) * 16) bytes.
+On Sun, May 12, 2019 at 09:36:16AM +0100, Andrew Jones wrote:
+> These are the SVE equivalents to kvm_arch_get/put_fpsimd.
 > 
-> KVM also uses bitnum * 16. bitnum is the the bit number, not the shift.
-
-Can you point to the relevant kernel code?  This isn't what I thought I
-wrote...
-
-> So you can't have bitnum=0. 'n' must be a shift, as it would need to
-> allow zero in order to represent KVM_ARM64_SVE_VQ_MIN.
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/kvm64.c | 127 +++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 123 insertions(+), 4 deletions(-)
 
 [...]
 
-> > > +static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
-> > > +                                void *opaque, Error **errp)
-> > > +{
-> > > +    ARMCPU *cpu = ARM_CPU(obj);
-> > > +    Error *err = NULL;
-> > > +    uint64_t mask = ~(BIT_MASK(ARM_MAX_VQ - 1) - 1);
-> > > +    int i;
-> > > +
-> > > +    visit_type_uint64(v, name, &cpu->sve_vls_map, errp);
-> > > +
-> > > +    if (!err) {
-> > > +        if (cpu->sve_vls_map == 0) {
-> > > +            error_setg(&err, "SVE vector length map cannot be zero");
-> > 
-> > Maybe say "empty" here, since the map represents a set?
-> 
-> Empty does sound better when considering the map represents a set, but
-> the user will be inputting a number for the map, so zero will be what
-> they attempted to input.
+> +static int kvm_arch_put_sve(CPUState *cs)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +    struct kvm_one_reg reg;
+> +    int n, ret;
+> +
+> +    for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
+> +        uint64_t *q = aa64_vfp_qreg(env, n);
+> +#ifdef HOST_WORDS_BIGENDIAN
+> +        uint64_t d[ARM_MAX_VQ * 2];
+> +        int i;
+> +        for (i = 0; i < cpu->sve_max_vq * 2; i++) {
+> +            d[i] = q[cpu->sve_max_vq * 2 - 1 - i];
+> +        }
+> +        reg.addr = (uintptr_t)d;
+> +#else
+> +        reg.addr = (uintptr_t)q;
+> +#endif
+> +        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
 
-If the user is inputting the encoded number directly, I guess it makes
-sense to describe the empty set as "zero".
-
-> > (But it this is just for debug rather than reporting errors to the user,
-> > it probably doesn't matter much.)
-> 
-> I'm also not too worried about which term we use, so I'm happy to change
-> it if you'd like.
-
-I guess I don't have a strong opinion.
+Will this silently go wrong if more than one slice is required (i.e.,
+the register size grows beyond 8192 bits?)
 
 [...]
 
-> > > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > > index 1e6eb0d0f360..bedec1ea0b27 100644
-> > > --- a/target/arm/helper.c
-> > > +++ b/target/arm/helper.c
-> > > @@ -5254,12 +5254,20 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
-> > >  static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> > >                        uint64_t value)
-> > >  {
-> > > +    ARMCPU *cpu = arm_env_get_cpu(env);
-> > >      int cur_el = arm_current_el(env);
-> > >      int old_len = sve_zcr_len_for_el(env, cur_el);
-> > >      int new_len;
-> > >  
-> > >      /* Bits other than [3:0] are RAZ/WI.  */
-> > > -    raw_write(env, ri, value & 0xf);
-> > > +    value &= 0xf;
-> > 
-> > You might want to sanity-check that the max vq you configured for the
-> > vcpu is <= 16 here.
-> 
-> It's already checked by the cpu property set function at input time.
-
-The check is in one place, but the assumptions based on it are
-potentially all over the place -- it may be tricky to track them
-all down if you ever add support for >8192-bit vectors.
-
-(Not a big deal from my point of view, but I'd migration to larger
-vectors to be as smooth as reasonably possible if we ever find we have
-to do it.)
- 
 Cheers
 ---Dave

@@ -1,168 +1,170 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp245276wrg;
-        Tue, 14 May 2019 23:49:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwOeT9kTnILqHq8uk5yrOvVNy7ccmnjO6VOSZsJ6/mLmY+A1APhnrKs2blcKFubq9L+1na
-X-Received: by 2002:a17:906:fc0d:: with SMTP id ov13mr11730747ejb.25.1557902973302;
-        Tue, 14 May 2019 23:49:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557902973; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2541600wrg;
+        Mon, 13 May 2019 01:30:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzsP+hgZanCHtLDtW82HqCJ2ojniTIwQv96QmUXADImt4qLTj333IkeQcab+W54JLMusGPa
+X-Received: by 2002:a17:906:1596:: with SMTP id k22mr21269089ejd.162.1557736205733;
+        Mon, 13 May 2019 01:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557736205; cv=none;
         d=google.com; s=arc-20160816;
-        b=lstgJ5+qOHXjIanTzUZcpy+urmUkiOjdXtIeCbKzIroaKHpwwN94ErYAi0KiUWn2u6
-         XbPB9tOLVwBlPXqAssd5yvBs1CGuE3EH3NiwUKx7cBUaY+k14yTFXjRTHno/ioMT3fht
-         StA4ZHsALqGoA+8VSgBFUXzrbV0eBwj/kXQHlaF6gyj01ON+BJxs1s4WJA/q5PDRjtAD
-         CQP1K6rcIhTWB4AaBwGigCYlxJoDHBRIbhFhmJw4UMQ6Bo9uL8rv0T+wMPeVTDK9C6aJ
-         J3b8qW9ZBon6n2bwS/rWBOw6NISV0EJQ5f+e7ZWycDpWF51b6tz+3aHbLotluYIkCvAB
-         2K3g==
+        b=pTtdE/IegH/UC3+Wk00AWIu6j0mSb5hXzJb3rJc/xX4CdDPaEUgu6O93fBb0ahUzuR
+         nxTY/ObyIhb/qnnebK5y0FydR8h8vVKBQtAUvRLew1Kk+e/AhhVNFroy2hGZKNNLwlJ9
+         DbS4DjGweTGt50NlGEZtZj6cftxWhTYXCVi1t8OZH9hXGJllK/H08JReZxMc7u3tEk7f
+         gTq69IRHe6rUf9qGMKjw11CD+OUMArKHiTt8meQQ3uKEVcuDQieVkYMMHACp7r2LShVE
+         C1u2qyiyLbAUkuK4ctlB01WdR0NUcsJ2WCHiTmek55kdrqVjgO5HOKz6Su97bzkWdg/O
+         BKOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=U6hSEAt7kVlfX2ACvICmMavT/g6i3LH1gfXC2Uu3Pcg=;
-        b=lTdsL5KtU3PZ+HdEiWtz6UxYzr8bLZzhMN51xZS00XUgomH3+l8YasIXknQAeFIIYJ
-         r/ivWllsopoG4HJefJt3Xk5SvlJ4w+R2xCmoSGeYe+kUEewA918iT8vYNH4KEQoUCHyI
-         +nMZNnXtt2FXQaQNmc557M48HYkfpMhDguhr60uCpy4BlYeakdHc/7/AhIMqK3cKhbAI
-         Ov8jyrMqmQaYAhTXdcKCTsRupVoU+I9bggshLArmtpiZFFD9zE8BLoPFH+yQBXi7Vp/6
-         rhvJSKpi3BN1QGQ+3mltVcixeWSzq/tkvI+ahM135N9jWTbq+3pvmh9Zxr7FRr10Al1y
-         gnRA==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=i2WxpAPzM3rWKf97nVSpl5HeyL7ud+EtWa0NAIJitD4=;
+        b=kp9+QHUHoWXE3njz4aJnEYn91ZuB5eOyEMyiTgOW2eNJYNZdHDHSFsUsnXNlwWPNpK
+         3VonODl5S/skU5R7lQrnD8PG3CTXoQBc7aWZsHWEd8c7hQaPbonG4bsZah8s4rfhH036
+         d89OMW81ZVQT+dfFF5qG5Iz1GRX87nWz0Pr5OJCI9pESZH6NnVEkSjJnY4aHMD+sQN3E
+         OzVT6wIJnn6IiMiOGx45Fnf224WEHlPvbQh4C7mt2IoM+Q5XCCqIgOgDqfCGhYk4G2kM
+         IhK1r9jaB+0Abs/BzAOZ5geqyUU6CYF+J2tMO5WGLKOOyT3KRk4bbe7HK88GeZl64V3Y
+         0ZCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s24si738703eju.328.2019.05.14.23.49.33
+        by mx.google.com with ESMTPS id r6si3243943ejz.218.2019.05.13.01.30.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 May 2019 23:49:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 May 2019 01:30:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:60503 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:53093 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQnjI-0001Xk-AM
-	for alex.bennee@linaro.org; Wed, 15 May 2019 02:49:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50628)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hQ6LU-0005PK-QN
+	for alex.bennee@linaro.org; Mon, 13 May 2019 04:30:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQniP-0001Dk-D2
-	for qemu-devel@nongnu.org; Wed, 15 May 2019 02:48:38 -0400
+	(envelope-from <thuth@redhat.com>) id 1hQ6LI-0005OI-Md
+	for qemu-arm@nongnu.org; Mon, 13 May 2019 04:29:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQnds-0005RW-K5
-	for qemu-devel@nongnu.org; Wed, 15 May 2019 02:43:57 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:36552)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hQndr-0005Lx-SP
-	for qemu-devel@nongnu.org; Wed, 15 May 2019 02:43:56 -0400
-Received: by mail-wr1-f67.google.com with SMTP id s17so1281095wru.3
-	for <qemu-devel@nongnu.org>; Tue, 14 May 2019 23:43:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=U6hSEAt7kVlfX2ACvICmMavT/g6i3LH1gfXC2Uu3Pcg=;
-	b=oFiCTvabyZaVBWNKOY2/hjWvW/ZOYcvd2YMlskQuAwYkq85K5X8BGbGkR5ezI66cyI
-	VMWvrrsxwKmqaELEkXLyIs4zoRpbUgNqAryFzGbVPtnbRHTpclZvQQjFPLP5L5xX1XA5
-	ufktjDigw/GeDyrCy8EKVYj39mfuYun6fqkcwFDMkFk0uUZCHcIlO+P/5OIET6kxdnEq
-	9CmtHK+euQKDNLQfZoVyVHbqYLdY6FS/Vfi0YVERB1YGquCzebcV0Rn7XD+LPi6D58LT
-	VpBGtIC9CmiWeYQLKZvNSz+C4AYwr6NZE/8B68dELWpLTDAwKVsEJx3h4vQdL5K/YWn/
-	iy2w==
-X-Gm-Message-State: APjAAAVhD3LvEzGKUmWjl51/9pT1Uo82kDYYXZnh2QdFAps2HXnZWtW6
-	f1M2nf6iTAx/MSuuNkJM298WGw==
-X-Received: by 2002:adf:dbcc:: with SMTP id e12mr220759wrj.134.1557902634382; 
-	Tue, 14 May 2019 23:43:54 -0700 (PDT)
-Received: from [192.168.1.43] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193])
-	by smtp.gmail.com with ESMTPSA id o8sm947625wrx.50.2019.05.14.23.43.53
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 May 2019 23:43:53 -0700 (PDT)
-To: Alistair Francis <Alistair.Francis@wdc.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <78cf484c4d991e899d0065b2dab3a2e204ce8723.1557879499.git.alistair.francis@wdc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f3b0b9a8-2e25-6054-8893-377c30a83579@redhat.com>
-Date: Wed, 15 May 2019 08:43:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <thuth@redhat.com>) id 1hQ6LC-0005No-4C
+	for qemu-arm@nongnu.org; Mon, 13 May 2019 04:29:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41760)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hQ6LB-0005NB-Cv; Mon, 13 May 2019 04:29:45 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3B512C057F2E;
+	Mon, 13 May 2019 08:29:44 +0000 (UTC)
+Received: from thuth.com (ovpn-116-122.ams2.redhat.com [10.36.116.122])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5BDED6A97B;
+	Mon, 13 May 2019 08:29:43 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Date: Mon, 13 May 2019 10:29:38 +0200
+Message-Id: <20190513082940.30295-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <78cf484c4d991e899d0065b2dab3a2e204ce8723.1557879499.git.alistair.francis@wdc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Mon, 13 May 2019 08:29:44 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH v2 1/1] target/arm: Fix vector operation
- segfault
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL v3 00/29] Kconfig for Arm
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alistair23@gmail.com" <alistair23@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: //4Lx00YCg5d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QuzorcLqWxiG
 
-On 5/15/19 2:21 AM, Alistair Francis wrote:
-> Commit 89e68b575 "target/arm: Use vector operations for saturation"
-> causes this abort() when booting QEMU ARM with a Cortex-A15:
-> 
-> 0  0x00007ffff4c2382f in raise () at /usr/lib/libc.so.6
-> 1  0x00007ffff4c0e672 in abort () at /usr/lib/libc.so.6
-> 2  0x00005555559c1839 in disas_neon_data_insn (insn=<optimized out>, s=<optimized out>) at ./target/arm/translate.c:6673
-> 3  0x00005555559c1839 in disas_neon_data_insn (s=<optimized out>, insn=<optimized out>) at ./target/arm/translate.c:6386
-> 4  0x00005555559cd8a4 in disas_arm_insn (insn=4081107068, s=0x7fffe59a9510) at ./target/arm/translate.c:9289
-> 5  0x00005555559cd8a4 in arm_tr_translate_insn (dcbase=0x7fffe59a9510, cpu=<optimized out>) at ./target/arm/translate.c:13612
-> 6  0x00005555558d1d39 in translator_loop (ops=0x5555561cc580 <arm_translator_ops>, db=0x7fffe59a9510, cpu=0x55555686a2f0, tb=<optimized out>, max_insns=<optimized out>) at ./accel/tcg/translator.c:96
-> 7  0x00005555559d10d4 in gen_intermediate_code (cpu=cpu@entry=0x55555686a2f0, tb=tb@entry=0x7fffd7840080 <code_gen_buffer+126091347>, max_insns=max_insns@entry=512) at ./target/arm/translate.c:13901
-> 8  0x00005555558d06b9 in tb_gen_code (cpu=cpu@entry=0x55555686a2f0, pc=3067096216, cs_base=0, flags=192, cflags=-16252928, cflags@entry=524288) at ./accel/tcg/translate-all.c:1736
-> 9  0x00005555558ce467 in tb_find (cf_mask=524288, tb_exit=1, last_tb=0x7fffd783e640 <code_gen_buffer+126084627>, cpu=0x1) at ./accel/tcg/cpu-exec.c:407
-> 10 0x00005555558ce467 in cpu_exec (cpu=cpu@entry=0x55555686a2f0) at ./accel/tcg/cpu-exec.c:728
-> 11 0x000055555588b0cf in tcg_cpu_exec (cpu=0x55555686a2f0) at ./cpus.c:1431
-> 12 0x000055555588d223 in qemu_tcg_cpu_thread_fn (arg=0x55555686a2f0) at ./cpus.c:1735
-> 13 0x000055555588d223 in qemu_tcg_cpu_thread_fn (arg=arg@entry=0x55555686a2f0) at ./cpus.c:1709
-> 14 0x0000555555d2629a in qemu_thread_start (args=<optimized out>) at ./util/qemu-thread-posix.c:502
-> 15 0x00007ffff4db8a92 in start_thread () at /usr/lib/libpthread.
-> 
-> This patch ensures that we don't hit the abort() in the second switch
-> case in disas_neon_data_insn() as we will return from the first case.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-> ---
->  target/arm/translate.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index dd053c80d6..298c262825 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -6598,13 +6598,13 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
->              tcg_gen_gvec_4(rd_ofs, offsetof(CPUARMState, vfp.qc),
->                             rn_ofs, rm_ofs, vec_size, vec_size,
->                             (u ? uqadd_op : sqadd_op) + size);
-> -            break;
-> +            return 0;
->  
->          case NEON_3R_VQSUB:
->              tcg_gen_gvec_4(rd_ofs, offsetof(CPUARMState, vfp.qc),
->                             rn_ofs, rm_ofs, vec_size, vec_size,
->                             (u ? uqsub_op : sqsub_op) + size);
-> -            break;
-> +            return 0;
->  
->          case NEON_3R_VMUL: /* VMUL */
->              if (u) {
-> 
+ Hi Peter,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+the following changes since commit efb4f3b62c69383a7308d7b739a3193e7c0cca=
+e8:
+
+  Merge remote-tracking branch 'remotes/stefanha/tags/block-pull-request'=
+ into staging (2019-05-10 14:49:36 +0100)
+
+are available in the Git repository at:
+
+  https://gitlab.com/huth/qemu.git tags/pull-request-2019-05-13
+
+for you to fetch changes up to 704d9892561d3b7ac4728296240a1b3ccfa2045a:
+
+  hw/arm: Remove hard-enablement of the remaining PCI devices (2019-05-13=
+ 09:36:32 +0200)
+
+----------------------------------------------------------------
+Kconfig settings for the Arm machines
+(v3: Added the config-devices.mak.d patch to fix the dependencies)
+----------------------------------------------------------------
+
+Thomas Huth (29):
+      hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci stub=
+s
+      Makefile: Fix inclusion of the config-devices.mak.d Kconfig depende=
+ncies
+      hw/ide/ahci: Add a Kconfig switch for the AHCI-ICH9 device
+      hw/arm: Express dependencies of the exynos machines with Kconfig
+      hw/arm: Express dependencies of the highbank machines with Kconfig
+      hw/arm: Express dependencies of integratorcp with Kconfig
+      hw/arm: Express dependencies of the fsl-imx31 machine with Kconfig
+      hw/arm: Express dependencies of musicpal with Kconfig
+      hw/arm: Express dependencies of the OMAP machines with Kconfig
+      hw/arm: Express dependencies of stellaris with Kconfig
+      hw/arm: Express dependencies of realview, versatile and vexpress wi=
+th Kconfig
+      hw/arm: Express dependencies of the PXA2xx machines with Kconfig
+      hw/arm: Express dependencies of xilinx-zynq with Kconfig
+      hw/arm: Express dependencies of collie with Kconfig
+      hw/arm: Express dependencies of the aspeed boards with Kconfig
+      hw/arm: Express dependencies of the virt machine with Kconfig
+      hw/arm: Express dependencies of netduino / stm32f2xx with Kconfig
+      hw/arm: Express dependencies of allwinner / cubieboard with Kconfig
+      hw/arm: Express dependencies of the MPS2 boards with Kconfig
+      hw/arm: Express dependencies of the raspi machines with Kconfig
+      hw/arm: Express dependencies of canon-a1100 with Kconfig
+      hw/arm: Express dependencies of sabrelite with Kconfig
+      hw/arm: Express dependencies of the MSF2 / EMCRAFT_SF2 machine with=
+ Kconfig
+      hw/arm: Express dependencies of the remaining IMX boards with Kconf=
+ig
+      hw/arm: Express dependencies of the microbit / nrf51 machine with K=
+config
+      hw/arm: Express dependencies of the ZynqMP zcu102 machine with Kcon=
+fig
+      hw/arm: Express dependencies of the xlnx-versal-virt machine with K=
+config
+      hw/arm: Express dependencies of the musca machines with Kconfig
+      hw/arm: Remove hard-enablement of the remaining PCI devices
+
+ Makefile                            |   2 +-
+ configure                           |   2 +-
+ default-configs/aarch64-softmmu.mak |   5 -
+ default-configs/arm-softmmu.mak     | 179 ++++----------------
+ docs/devel/kconfig.rst              |   2 +-
+ hw/arm/Kconfig                      | 317 ++++++++++++++++++++++++++++++=
++++++-
+ hw/arm/Makefile.objs                |  25 ++-
+ hw/display/Kconfig                  |   3 +
+ hw/i2c/Kconfig                      |   2 +-
+ hw/i386/Kconfig                     |   2 +-
+ hw/ide/Kconfig                      |   6 +-
+ hw/ide/Makefile.objs                |   2 +-
+ hw/misc/Kconfig                     |   2 +
+ hw/pci/pci-stub.c                   |  11 ++
+ 14 files changed, 387 insertions(+), 173 deletions(-)

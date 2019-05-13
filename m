@@ -1,124 +1,122 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3140307wrg;
-        Mon, 13 May 2019 11:31:30 -0700 (PDT)
-X-Received: by 2002:a62:54c7:: with SMTP id i190mr13879806pfb.87.1557772290020;
-        Mon, 13 May 2019 11:31:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557772290; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3142377wrg;
+        Mon, 13 May 2019 11:33:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzo1kKqnHTnrHehvDqeLBY+MooU4JTznjjD+wbP/FgWYVCAtGmxhv3F5DHEN0vAJbtVMmIA
+X-Received: by 2002:a0c:c3d0:: with SMTP id p16mr24134976qvi.229.1557772415170;
+        Mon, 13 May 2019 11:33:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557772415; cv=none;
         d=google.com; s=arc-20160816;
-        b=xm25kDTyfCVVHVM0H4uLm0lhfuCmy4vkMGwdBCmwEAsY92KMLCFn+m1HF48W9a8RZ5
-         oOF1ribRMKzoAXfIajDUSQ5NjAnjgh2zkst0myg6UKQZgN+w/NDpf838zJOa/vMTNUXH
-         jjFiC0RmIP39RSR30hjGZIWJV2wMunSmlHhr+WEttJXxICJgPS+TPjHh28/swPCESpXg
-         dy2xb89lzK55mUb3TrZsNxpDH4sJhozEEYjixwsuoI158OK8t79xTayzXM2ROla1XHwp
-         hal15bDWqRUtSJP/35RWZ+3V/YR0LH77P5EaNcQHIEtssE0sPWxemVSUsMtGTR6MYJx9
-         yKeQ==
+        b=zGRuKzl8VPs8WTbT9EYIg9W4MU89vvYGRXEdiPF7emecUNZFd34O1M0O0wnP4pOYxE
+         00zDG2Ty5fSrrXOuF0j3bwLMzRttOflqkuVpyCmwXDVxI/vW4anrMSmewNCp3VsJ5v4D
+         sXb/0m6GBPhSqg4yH5Ft3cQN2l4c7L421ThipKrowDYDX0l3G26/u2tDnkFDiAshMiQW
+         Su4AYg4Jbj/ucZJv6Uqb66C81+2alpmhUb2kR7Z33+qXaqwMInAcCsleehtSrXNuyrhR
+         qc741O+gevaS6HTcNlb/i/nEInQsttf/Am/eJozjApBnnq9EnXPyAaiyoH9OrRphFmJF
+         IUvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=xb2WBROopJ6wexUXZZHUN0JJtLxExXrH+yhRAr3GUuY=;
-        b=h1Ib88BtbJZubqFQeYlQg0R9XGJZaxxOV663FbB1rffeVtmxxqGrwjHKAjzYoBxh4x
-         LVjFt5WFlgfZE1OZyFVbMlbNqutyIGMRlZa2ZpKD7v8l5y/qzp+9vnY/UQRwYf7UwxzL
-         Tn3wbMmNKYZ4SyGWGLizU6sdJyEXn4qdVpi2RTLytn2A4rIQSgwX6HWAsqqPqpz8u1la
-         H0EBZv6g0+BzcNH8es3YmBgE5fdijItLoOPrGT1+ibqIr0hdStFDE2YKjOWladCny665
-         0lZEdA3jg4j8cMfKukgrgHK5LP5RWKdQXDAZiwYR8GMnpwytF+SUY6H7qfyKcPkWHEMJ
-         DraQ==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date;
+        bh=d0MJsI/oQb6T1gDnDRwf3ovSJvU7HwYFVMIviXX8ekw=;
+        b=QMxB9PO4vz7wySXvDwBTS4Ptcna0ZMvoBh1b4BscVOjc8zp1gwVZ2kWDUCXkZh2qMw
+         VXB7ypQ/LrEsKx6jTiyeBTJrZKZlohRQRaU7aoUr56ATBOHd/JO7i5h2iutR2Rsw4mnt
+         O/GTzSJQoL4MS9fcQ0QU4CeCLe2QPDR3j+Qce+RqnAgtGOUu/Buc4y8GAsT5+GGJyY8Z
+         J2DrL6Hs6aps81JdfwbD5XnM32/QkpukT1W3uLvMOrKPBu+4Um2/jGbYrwgJ9MXCUNPg
+         PwIlxIa2DSGE4T+luNXvF+KvY+5RpDNzkJW85vDvFLwcsA/V90T9Wx1wC/1L7sk+04KS
+         MyZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UaDXf4i1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a20sor17449348pfh.35.2019.05.13.11.31.29
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 May 2019 11:31:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UaDXf4i1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=xb2WBROopJ6wexUXZZHUN0JJtLxExXrH+yhRAr3GUuY=;
-        b=UaDXf4i1tJOOAPIbuzmFrK3xERze9I6dyyuNScD5+M+7gdvI3/WOIc259lt+4+/8C4
-         vDtA3HHzv+SaFE3qe5JVNiTg3FI6LLNjLHuJxh3GPeLRuZ4AaXxxnAsqbTcgCZHCPNKn
-         /b5NZyp6+0upv9akWf4cRH/kBAW0tSsXwnRIAHadhUVNQmrxORD8j5pQKUJofgMS7yVt
-         OSSANfZm87Crg5Mv6DFcYtfR8rJaGJRLLKW87eV7eScGYGQEVH+JGSTwQkJ8z4mmVgj8
-         JlwFUv+NDIC8nww0paFKkoyqJ+OAuX+YKd4iniY+2y7bYQl0/UAoiY80Z33gMiwtdPS7
-         D5Jw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=xb2WBROopJ6wexUXZZHUN0JJtLxExXrH+yhRAr3GUuY=;
-        b=N9R2mm+Of273p+4JS5m3DbtB52sNSt5KQ2jrasbCtZCqr25VMlzAGE4nCsHzwmC3lJ
-         Wc4dlk5PcA1lbUqGlji5Z8QQTMRfBAUV+++2PW5jgNfjMsXMITlmCOqVk9uLYn6Z8oVw
-         oJ83EJCMf0/q2lIVoI9o8KgaMWoroGJlBdLWcSxXN75yqsWletnYI6SdlddA5BEAIkZ5
-         2MbWZnbpe/Wd4luLNvi4pyHk+IzzFNn8KlVi7ih7Snh4XbdttB+XheUiXfnsOw1lAdKk
-         84e5o7LE04EU9xXvccWos3IXZap3Uj/rhsSgc5apl7xKJwOglkC5DId4F9fY2qGL2+fE
-         p3cA==
-X-Gm-Message-State: APjAAAXeBnN723iv6RD5+MUsyCb1pd83Yu1PV++2MIbvHYteeTldO+6X
-	oWRELDLNbn4nRnGSjfQVwmNLCYkd
-X-Google-Smtp-Source: APXvYqxwpzIvhEdABMcaogDbt70BjGIJn8JMPJPOxYazEhMtn5w4y7bLMqA9B0aiKBBPUbdw4U7BPA==
-X-Received: by 2002:a62:5ec2:: with SMTP id s185mr36494250pfb.16.1557772289275;
-        Mon, 13 May 2019 11:31:29 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-13-231.tukw.qwest.net. [97.113.13.231])
-        by smtp.gmail.com with ESMTPSA id n27sm24000524pfb.129.2019.05.13.11.31.27
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id z2si1397030qve.196.2019.05.13.11.33.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 May 2019 11:31:28 -0700 (PDT)
-Subject: Re: [PATCH 05/13] target/arm/kvm: Add kvm_arch_get/put_sve
-To: Andrew Jones <drjones@redhat.com>
-Cc: Dave Martin <Dave.Martin@arm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "eblake@redhat.com" <eblake@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>
+        Mon, 13 May 2019 11:33:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 398CFC0568FE;
+	Mon, 13 May 2019 18:33:34 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9BA2A9060;
+	Mon, 13 May 2019 18:33:31 +0000 (UTC)
+Date: Mon, 13 May 2019 20:33:28 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, abologna@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH 13/13] target/arm/kvm: host cpu: Add support
+ for sve-vls-map
+Message-ID: <20190513183328.vhhi5ikyg3r5hpiw@kamzik.brq.redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-6-drjones@redhat.com>
- <20190513123110.GE28398@e103592.cambridge.arm.com>
- <e35ba07e-2844-fe2d-ca4a-0f795a1485b1@linaro.org>
- <20190513181421.g25e2zqlkks7ntxb@kamzik.brq.redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <9ac95348-54c0-3213-e971-959136241ac7@linaro.org>
-Date: Mon, 13 May 2019 11:31:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ <20190512083624.8916-14-drjones@redhat.com>
+ <87tvdye57e.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <20190513181421.g25e2zqlkks7ntxb@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: DRu6yV+2INdZ
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87tvdye57e.fsf@dusky.pond.sub.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Mon, 13 May 2019 18:33:34 +0000 (UTC)
+X-TUID: 7yb0jVnT3pzB
 
-On 5/13/19 11:14 AM, Andrew Jones wrote:
->> Indeed, to me this seems to be the wrong kind of swabbing here.  Exactly what
->> format is KVM expecting?  Surely it should be the one used by the unpredicated
->> LDR/STR instructions.  Anything else would seem to be working against the
->> architecture.
->>
->> If so, the format is, architecturally, a stream of bytes in index order, which
->> corresponds to a little-endian stream of words.  So the loop I'd expect to see
->> here is
->>
->>     for (i = 0, n = cpu->sve_max_vq; i < n; ++i) {
->>         d[i] = bswap64(q[i]);
->>     }
+On Mon, May 13, 2019 at 05:37:09PM +0200, Markus Armbruster wrote:
+> Andrew Jones <drjones@redhat.com> writes:
 > 
-> That's the opposite of what we do for fpsimd registers though. I'm
-> fine with doing whatever KVM/TCG needs, but so far I was just following
-> the same pattern we already have.
+> > Allow the host cpu type to enable SVE in guests with the sve-vls-map
+> > cpu property.
+> >
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  target/arm/cpu.c   |  1 +
+> >  target/arm/cpu.h   |  2 ++
+> >  target/arm/cpu64.c | 12 +++++++++---
+> >  3 files changed, 12 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index ea0e24bba8b6..a5c01ff42c78 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -2222,6 +2222,7 @@ static void arm_host_initfn(Object *obj)
+> >      ARMCPU *cpu = ARM_CPU(obj);
+> >  
+> >      kvm_arm_set_cpu_features_from_host(cpu);
+> > +    aarch64_add_sve_vls_map_property(obj);
+> >      arm_cpu_post_init(obj);
+> >  }
+> >  
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index f0d0ce759ba8..13731ccb39f3 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -976,11 +976,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+> >  void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+> >  void aarch64_sve_change_el(CPUARMState *env, int old_el,
+> >                             int new_el, bool el0_a64);
+> > +void aarch64_add_sve_vls_map_property(Object *obj);
+> >  #else
+> >  static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
+> >  static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+> >                                           int n, bool a)
+> >  { }
+> > +void aarch64_add_sve_vls_map_property(Object *obj) { }
+> 
+> qemu/target/arm/cpu.h:985:6: error: no previous prototype for ‘aarch64_add_sve_vls_map_property’ [-Werror=missing-prototypes]
+>  void aarch64_add_sve_vls_map_property(Object *obj) { }
+>       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Did you forget static inline?
 
-The behaviour of the hardware is different for LDR of fpsimd registers.
+I sure did. Thanks for finding this!
 
-FP&SIMD LDR operates on datasize (8, 16, 32, 64, 128 bits).
-SVE LDR always operates on bytes.
+drew
 
-
-r~
+> 
+> >  #endif
+> >  
+> >  target_ulong do_arm_semihosting(CPUARMState *env);
+> [...]

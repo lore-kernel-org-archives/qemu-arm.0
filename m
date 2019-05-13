@@ -1,238 +1,196 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2706214wrg;
-        Mon, 13 May 2019 04:54:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwdnvvqXSCWJ+XQoIpSAi54dw9kMnAfBOZA60yu98UnhsiY2V6Xr0DduEDFkE1A62cUgXwv
-X-Received: by 2002:a17:906:4cd6:: with SMTP id q22mr21989522ejt.14.1557748446380;
-        Mon, 13 May 2019 04:54:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557748446; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2744053wrg;
+        Mon, 13 May 2019 05:30:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZX6gK7BYRN696YIBixdVXEtzS8MPrUmqqBFNC9ESpOjyL7vJzJnmakDks3tpkhcETTF8v
+X-Received: by 2002:ac8:1985:: with SMTP id u5mr21786434qtj.389.1557750632223;
+        Mon, 13 May 2019 05:30:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557750632; cv=none;
         d=google.com; s=arc-20160816;
-        b=gPzCg9cLTZdxqygKzGJkz4vwXj6vXI7Fw1FlywyhnRoxhMaIvc3RoBYUW0za4f9Pzv
-         aBRVAuBO2klbdriBZ878qTRF6dwsIew+GmTnTT3/kTTNt6kNLxRwozKKCIQJXOveln4N
-         gkJLZVtA+F0mXNAy+BxDmxMFe34RYlTUJtCZ3CvPE2XOt2b0+zQtNffl4VkkBGkzNdck
-         STZHQz8yD3gGQEAdO1D1R5WHFN4ozu+eyC6aHhx9rZfJubSdbdodUO+5gF61ohN7NOrG
-         x2tMtjCvlRNg0S6XAUonn5KgbXUU3rV0BXNxFMSmKcPVpF9vv2gcVjPnoPUlRe08H6k3
-         ICTQ==
+        b=nTlUn6zLWZoeKdDYIhPuVdQM324K+QOYf4tq7iuNrwJGcbqWRnp/wG475VtsRsq16s
+         4rsRvWg57ImhX1J/X8JQa2JZodbALLQU4XHo9hzC6/m37MlfiScGkhWL/Sie2ZWs3ODx
+         BS3Xl8y59xfLH4rus4hKoWLOhbz3KvyYukw9+2nNxe1JXeCdv0ixQQMc4gA9BJ2H6Rkh
+         YyM99g/nfHdQgHNNQz28EEE5deTkne6IjWHywcPnbdgHb5ID1/FF/0Ku7WM1RmT1o06Y
+         SoHYV5zCFFgcpbWCIFynfzMWOnYnxtjbuAtTDuIuSny6uCZBz461pV9E6ulnLbCuydlF
+         LtTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :references:message-id:date:thread-index:thread-topic:to:from;
-        bh=+dlG16od3GRQDHEYmYX0oAlj6Qdiw46MamUWZtnLJT0=;
-        b=gEIzml+EvOl9I5ibFtcbIezm7mMpTmLrzTnE7aJUZ4zGdhsQ4DAIdbBdCI4demPcbT
-         qlHzGXrwM9Ci+mthKzLg1AFF9IP3eKbQA+5Y48rWMMumA/iazedvpgkj/b3R7uuO0xL5
-         uVKRP5t8bsbym2XBd8D6cLm+7/kldk1lYPh1gvH4vuZo/jdcwfG/c7LuHDPsKUM6cu3+
-         c6U4Y8odRU7EBQzMVe3BqGw2jiICfdzRj9ykimqubYkYVqf3SsueQcZAsDieV/O/49iU
-         LxVioRoG3aZ8e0AWctREEBd55mhjqh8r++p2JwI3O+lMIan+XQf7TxG+fecalSgFZ9nV
-         7Keg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=GNkCVE7IIfOv5k+frYaUJ4oKmJcnKtTyWZjfBSwlcWo=;
+        b=pLhciTPbpQTHXtDSED3HUNugb+DaOEaytsRUlthLMKCeq4DvOuoM7n3wL61W+XMEKH
+         X6DJB9OclkRhpBPY/R7EtlvcxwnTT27j5TxZt4+yKcfG7NwBNRf8pVEHAeDxPry0iQOz
+         p3U7Md2wJnHqvQbWhWvII5TnNZnot7ZgeLWJnhybLj1+F92szryKEeKLhC2MO5sKSe6h
+         QJgQo2QSXV5wa4MYZmWKowcBAbpIr97gCl/2HaziZVhv5a+u0v+v0letnkAHHfu7K6Rx
+         +JFIs5DKPWN2HP4eUx31fCQPWZtDb5zvqFppd+ZtFQQ4+n9FE410UTUHMRXXbJueWxNN
+         eVhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f34si9162631edf.38.2019.05.13.04.54.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 May 2019 04:54:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id b16si1639qvi.107.2019.05.13.05.30.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 05:30:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55621 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQ9Wv-0000lo-Em
-	for alex.bennee@linaro.org; Mon, 13 May 2019 07:54:05 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38665)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQ9Wm-0000l5-Tb
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 07:53:58 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQ9Wl-0007VR-IX
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 07:53:56 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45404 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQ9Wl-0007Rh-CO; Mon, 13 May 2019 07:53:55 -0400
-Received: from lhreml702-cah.china.huawei.com (unknown [172.18.7.108])
-	by Forcepoint Email with ESMTP id F2AF5D19BB61ED46F936;
-	Mon, 13 May 2019 12:53:47 +0100 (IST)
-Received: from LHREML524-MBB.china.huawei.com ([169.254.3.57]) by
-	lhreml702-cah.china.huawei.com ([10.201.108.43]) with mapi id
-	14.03.0415.000; Mon, 13 May 2019 12:53:39 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Support
-Thread-Index: AQHU7r9fDZwDNe9r+EiYOfOuYN+yBqZYFYcAgAFHvsCAD8XcEA==
-Date: Mon, 13 May 2019 11:53:38 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1EF349@lhreml524-mbb.china.huawei.com>
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-4-shameerali.kolothum.thodi@huawei.com>
-	<20190502181252.2e3ae0d4@Igors-MacBook-Pro> 
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event
- Device Support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B7EAE87629;
+	Mon, 13 May 2019 12:30:30 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 580F75D72E;
+	Mon, 13 May 2019 12:30:25 +0000 (UTC)
+Date: Mon, 13 May 2019 14:30:23 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Dave Martin <Dave.Martin@arm.com>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
-	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"armbru@redhat.com" <armbru@redhat.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"xuwei \(O\)" <xuwei5@huawei.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	"lersek@redhat.com" <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bT+1pG37bpBt
+	"abologna@redhat.com" <abologna@redhat.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH 11/13] target/arm/cpu64: max cpu: Introduce
+ sve-vls-map
+Message-ID: <20190513123023.h4q5sihktqctkgml@kamzik.brq.redhat.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
+ <20190512083624.8916-12-drjones@redhat.com>
+ <20190513112635.GD28398@e103592.cambridge.arm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190513112635.GD28398@e103592.cambridge.arm.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Mon, 13 May 2019 12:30:31 +0000 (UTC)
+X-TUID: Rpmud8mnQZkM
 
-Hi Igor,
+On Mon, May 13, 2019 at 12:26:36PM +0100, Dave Martin wrote:
+> On Sun, May 12, 2019 at 09:36:22AM +0100, Andrew Jones wrote:
+> > Introduce another cpu property to control SVE vector lengths,
+> > sve-vls-map, which allows the user to explicitly select the
+> > set of vector lengths the guest can use. The map must conform
+> > to QEMU's limits and architectural constraints, checked when
+> > the property is set. Inconsistencies with sve-max-vq are also
+> > checked. The bit number of a set bit in the map represents the
+> > allowed vector length in number of quadwords.
+> > 
+> > Note, as the map is implemented with a single 64-bit word we
+> > currently only support up to 8192-bit vectors. As QEMU and
+> > KVM only support up to 2048-bit vectors then this sufficient
+> > now, and probably for some time. Extending the bitmap beyond
+> > a single word will likely require changing the property to
+> > a string and adding yet another parser to QEMU.
+> > 
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  target/arm/cpu.c     |  4 +++
+> >  target/arm/cpu.h     |  3 ++
+> >  target/arm/cpu64.c   | 70 +++++++++++++++++++++++++++++++++++++++++---
+> >  target/arm/helper.c  | 10 ++++++-
+> >  target/arm/monitor.c |  9 ++++--
+> >  5 files changed, 88 insertions(+), 8 deletions(-)
+> > 
+> 
+> [...]
+> 
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 8292d547e8f9..f0d0ce759ba8 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -920,6 +920,9 @@ struct ARMCPU {
+> >  
+> >      /* Used to set the maximum vector length the cpu will support.  */
+> >      uint32_t sve_max_vq;
+> > +
+> > +    /* Each bit represents a supported vector length of (bitnum * 16) bytes */
+> > +    uint64_t sve_vls_map;
+> 
+> Just to be clear, the representation here is different from the
+> representation in KVM_REG_ARM64_SVE_VLS?
+> 
+> In the latter, bit n represents vector length ((n + 1) * 16) bytes.
 
-> -----Original Message-----
-> From: Shameerali Kolothum Thodi
-> Sent: 03 May 2019 13:46
-> To: 'Igor Mammedov' <imammedo@redhat.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org;
-> shannon.zhaosl@gmail.com; sameo@linux.intel.com;
-> sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
-> lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
-> <linuxarm@huawei.com>
-> Subject: RE: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Suppor=
-t
->=20
-> Hi Igor,
->=20
-> > -----Original Message-----
-> > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > Sent: 02 May 2019 17:13
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org;
-> > shannon.zhaosl@gmail.com; sameo@linux.intel.com;
-> > sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
-> > lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
-> > <linuxarm@huawei.com>
-> > Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Supp=
-ort
-> >
+KVM also uses bitnum * 16. bitnum is the the bit number, not the shift.
+So you can't have bitnum=0. 'n' must be a shift, as it would need to
+allow zero in order to represent KVM_ARM64_SVE_VQ_MIN.
 
-[...]
+> 
+> (QEMU is free to choose its own internal representation, naturally.)
+> 
+> [...]
+> 
+> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> 
+> [...]
+> 
+> > +static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
+> > +                                void *opaque, Error **errp)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(obj);
+> > +    Error *err = NULL;
+> > +    uint64_t mask = ~(BIT_MASK(ARM_MAX_VQ - 1) - 1);
+> > +    int i;
+> > +
+> > +    visit_type_uint64(v, name, &cpu->sve_vls_map, errp);
+> > +
+> > +    if (!err) {
+> > +        if (cpu->sve_vls_map == 0) {
+> > +            error_setg(&err, "SVE vector length map cannot be zero");
+> 
+> Maybe say "empty" here, since the map represents a set?
 
-> > > +}
-> > > +
-> > > +static Property acpi_ged_properties[] =3D {
-> > > +    /*
-> > > +     * Memory hotplug base address is a property of GED here,
-> > > +     * because GED handles memory hotplug event and
-> > MEMORY_HOTPLUG_DEVICE
-> > > +     * gets initialized when GED device is realized.
-> > > +     */
-> > > +    DEFINE_PROP_UINT64("memhp-base", AcpiGedState, memhp_base,
-> > 0),
-> > > +    DEFINE_PROP_BOOL("memory-hotplug-support", AcpiGedState,
-> > > +                     memhp_state.is_enabled, true),
-> > > +    DEFINE_PROP_PTR("gsi", AcpiGedState, gsi),
-> >
-> > PTR shouldn't be used in new code, look at object_property_add_link() &=
- co
->=20
-> Ok. I will take a look at that.
+Empty does sound better when considering the map represents a set, but
+the user will be inputting a number for the map, so zero will be what
+they attempted to input.
 
-I attempted to remove _PROP_PTR for "ged-events" and use _PROP_LINK and
-_set_link(),
+> 
+> (But it this is just for debug rather than reporting errors to the user,
+> it probably doesn't matter much.)
 
+I'm also not too worried about which term we use, so I'm happy to change
+it if you'd like.
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.=
-c
-index 856ca04c01..978c8e088e 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -268,7 +268,8 @@ static Property acpi_ged_properties[] =3D {
-     DEFINE_PROP_PTR("gsi", AcpiGedState, gsi),
-     DEFINE_PROP_UINT64("ged-base", AcpiGedState, ged_base, 0),
-     DEFINE_PROP_UINT32("ged-irq", AcpiGedState, ged_irq, 0),
--    DEFINE_PROP_PTR("ged-events", AcpiGedState, ged_events),
-+    DEFINE_PROP_LINK("ged-events", AcpiGedState, ged_events, TYPE_ACPI_GED=
-,
-+                     GedEvent *),
-     DEFINE_PROP_UINT32("ged-events-size", AcpiGedState, ged_events_size, 0=
-),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 8179b3e511..c89b7b7120 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -537,7 +537,8 @@ static inline DeviceState *create_acpi_ged(VirtMachineS=
-tate *vms)
-     qdev_prop_set_ptr(dev, "gsi", vms->gsi);
-     qdev_prop_set_uint64(dev, "ged-base", vms->memmap[VIRT_ACPI_GED].base)=
-;
-     qdev_prop_set_uint32(dev, "ged-irq", vms->irqmap[VIRT_ACPI_GED]);
--    qdev_prop_set_ptr(dev, "ged-events", ged_events);
-+    object_property_set_link(OBJECT(dev), OBJECT(ged_events), "ged-events"=
-,
-+                             &error_abort);
-     qdev_prop_set_uint32(dev, "ged-events-size", ARRAY_SIZE(ged_events));
-=20
-     object_property_add_child(qdev_get_machine(), "acpi-ged",
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/gener=
-ic_event_device.h
-index 9c840d8064..588f4ecfba 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -111,7 +111,7 @@ typedef struct AcpiGedState {
-     hwaddr ged_base;
-     GEDState ged_state;
-     uint32_t ged_irq;
--    void *ged_events;
-+    GedEvent *ged_events;
-     uint32_t ged_events_size;
- } AcpiGedState;
+> 
+> [...]
+> 
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index 1e6eb0d0f360..bedec1ea0b27 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -5254,12 +5254,20 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
+> >  static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> >                        uint64_t value)
+> >  {
+> > +    ARMCPU *cpu = arm_env_get_cpu(env);
+> >      int cur_el = arm_current_el(env);
+> >      int old_len = sve_zcr_len_for_el(env, cur_el);
+> >      int new_len;
+> >  
+> >      /* Bits other than [3:0] are RAZ/WI.  */
+> > -    raw_write(env, ri, value & 0xf);
+> > +    value &= 0xf;
+> 
+> You might want to sanity-check that the max vq you configured for the
+> vcpu is <= 16 here.
 
+It's already checked by the cpu property set function at input time.
 
-And with this I get,
-
-Segmentation fault      (core dumped) ./qemu-system-aarch64-ged-v5
--machine virt, -cpu cortex-a57 -machine type=3Dvirt -nographic -smp 1 -m
-4G,maxmem=3D8G,slots=3D10 -drive if=3Dnone,file=3Dubuntu-est-5.0,id=3Dfs -d=
-evice
-virtio-blk-device,drive=3Dfs -kernel Image_memhp_remove -bios
-QEMU_EFI_Release.fd -object memory-backend-ram,id=3Dmem1,size=3D1G -device
-pc-dimm,id=3Ddimm1,memdev=3Dmem1 -numa node,nodeid=3D0 -append
-"console=3DttyAMA0 root=3D/dev/vda rw acpi=3Dforce movable_node"
-
-It looks like struct pointer cannot be used directly and has to make a QOM =
-object
-for DEFINE_PROP_LINK use. Not sure there is an easy way for setting ptr pro=
-perty
-using link() functions. Please let me know if there any reference implement=
-ation I
-can take a look.
-
-Appreciate your help,
+> 
+> > +
+> > +    if (value && !(BIT_MASK(value) & cpu->sve_vls_map)) {
+> > +        uint64_t map = cpu->sve_vls_map & (BIT_MASK(value) - 1);
+> > +        value = arm_cpu_fls64(map) - 1;
+> > +    }
+> > +
+> > +    raw_write(env, ri, value);
+> 
+> [...]
+> 
+> Cheers
+> ---Dave
+> 
 
 Thanks,
-Shameer
-
+drew

@@ -1,119 +1,84 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2889182wrg;
-        Mon, 13 May 2019 07:39:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxPjI2fNF1ntty4EDFKTPNAxn7QRnf8NrkAQpZA9e/NHMCM6U+4Js2xRtxyntxuHDb4FWt1
-X-Received: by 2002:a17:906:d20a:: with SMTP id w10mr23029879ejz.219.1557758375043;
-        Mon, 13 May 2019 07:39:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557758375; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2943010wrg;
+        Mon, 13 May 2019 08:25:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyY+tyPYIakmBV75QE/bGbK9KIErAp4TNJXsoQhIkRWPe3lOcJOqFVUhOLJH8Q1VUuIS5RA
+X-Received: by 2002:a05:6214:24a:: with SMTP id k10mr23254260qvt.121.1557761127000;
+        Mon, 13 May 2019 08:25:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557761126; cv=none;
         d=google.com; s=arc-20160816;
-        b=bYxoYO/DD3G6sGAms2DMvbtfh57u33X+Lr7y4Euo3JjLWaNrel86jV5hq9kY6Id1Nz
-         //XUFOBbWzGgX5Q1tdBHeKbp/QxzmebRjVlIBQ0L3p/oNJLprQEmEs4mnRuetThkPo9O
-         9/USsTVI9okp/DaH5huX9KbWtT4pJWZ3Ztm67SmwRs99aOLBrBKbzTDm3McocdcLYZPQ
-         kvqOL6v28Nvt7b4PeFpdYRdFGYWiw+yloH8bQjhJ31AMBylzA4aOG9kOhyk2Htexcpbj
-         I+5shDQlfigWFr5TIcbM0uo4gj3JMDEWNET07DXpdNyqfZwlRigRnUTL+CI02OBvHYdZ
-         Ptkg==
+        b=IBAguygAzY86FZfE227uw9DmKR1sPs1OyJ+/TGyfLd1hPye8S1Qp18sZ8Y3ijwGBvK
+         im6Iy0ZFLXOQi2FyVt9NcC4I1VE7gQzfQXnBOB/7/fPA8+Lcg/qDokPiJT+FQt5vZfiw
+         zhsHrPgrzoNyf21UzmNxi6I0AAdV5Z5l/tVhlRnSZNBM8K/MaJov+xUMaX+yPUsKX2hZ
+         DYfhecaDWCZba021QhMMoWxJjLcWmRpXzAkoqZQ1FUMPHU5wUL4/b0y9nW7vcjdxGAS9
+         oYsIos5qkaVS8BF52LszwZBlBYfDJ+qxrzWiCFrum9sbg6Zy/5Az+5Ogfipv6PXjoKV7
+         RjOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=4QC4zApypkhkGwum8n1ab7Qp4H69PWq7U4oT7gDxeWY=;
-        b=0Vc2Xdeyil6niVnzGLPki1I2DiQd3HVeW02/TqTDF1OfHPUyWWsD6hosu+eMoG3lUV
-         v+qsv68lvGtFvxzn5SQCkT9pcBeFXJnDA2SBPyahlLADCQeAynfKExBAVfrjzOpyEJFh
-         7XrXOGqr2rgAjoDVdK5+B4UJcOXxlQKq26O7yPtqC+EVfi5b2QKcQfEBICrPObt8oVvI
-         zv+n/ut2Q8hGSB2lkkDIDUoJtDLUgaEdL54zyIO+FnfmEECznfgGR7WfWXZUrMl4yI7I
-         haI+VN3YjrIETYMwlb9AGHXxOoMHJouIV43kw30DkXa2vROYOOHeM1yduVxd2foEKlgf
-         H4Aw==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from;
+        bh=H/fg2DP+HHdTjg4UBvFVqSdlDOXP7SHdLrn/6ON1WgY=;
+        b=UcWNk0w3Hud0mNYf6MCkyYWXc++P8IeFXEAWQox/87TurwfEUbTMc/vcAfLShaXiaN
+         C/OVZ6T8F/YVM/yaYZutc9T/Y659+le+KolaJp596Hd88FoqLr+8g+06Cl/wl957j1T7
+         qs4xnWS5nTWzdYDTmaWOlacCDPJKJJ28FIwTjM+sMxuTxWgXSiGeewb3ugSbm5NFhHWy
+         RCPK5/sK8jwsXXlmRjkYThjQl1N7DwA8MMJniPnk6gMkuJToMMv6tqCx4VxSs7SOrbzV
+         J3Sw/8XvgwDS18lrXCB+W96PSHNHyryYlwHUcH2S42uAPj9iLt15FsqLwlTaxw41nDFn
+         RpnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (usa-sjc-mx-foss1.foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id u46si1536333edm.404.2019.05.13.07.39.34;
-        Mon, 13 May 2019 07:39:35 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
+       spf=pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id h90si931784qtd.353.2019.05.13.08.25.26
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 08:25:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 06430341;
-	Mon, 13 May 2019 07:39:34 -0700 (PDT)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7F6073F71E;
-	Mon, 13 May 2019 07:39:32 -0700 (PDT)
-Date: Mon, 13 May 2019 15:39:30 +0100
-From: Dave Martin <Dave.Martin@arm.com>
+       spf=pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2690F59451;
+	Mon, 13 May 2019 15:25:26 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com [10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C59666A490;
+	Mon, 13 May 2019 15:25:25 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 42ADE11385E4; Mon, 13 May 2019 17:25:23 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
 To: Andrew Jones <drjones@redhat.com>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"abologna@redhat.com" <abologna@redhat.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH 05/13] target/arm/kvm: Add
- kvm_arch_get/put_sve
-Message-ID: <20190513143929.GK28398@e103592.cambridge.arm.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  peter.maydell@linaro.org,  richard.henderson@linaro.org,  abologna@redhat.com,  alex.bennee@linaro.org,  Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH 11/13] target/arm/cpu64: max cpu: Introduce sve-vls-map
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-6-drjones@redhat.com>
- <20190513124356.GG28398@e103592.cambridge.arm.com>
- <20190513140726.vpmenrfw4uocmtnc@kamzik.brq.redhat.com>
+	<20190512083624.8916-12-drjones@redhat.com>
+Date: Mon, 13 May 2019 17:25:23 +0200
+In-Reply-To: <20190512083624.8916-12-drjones@redhat.com> (Andrew Jones's
+	message of "Sun, 12 May 2019 10:36:22 +0200")
+Message-ID: <875zqefkbg.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190513140726.vpmenrfw4uocmtnc@kamzik.brq.redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: B7hPiGuMHmo4
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Mon, 13 May 2019 15:25:26 +0000 (UTC)
+X-TUID: tmtmTq4wJEx1
 
-On Mon, May 13, 2019 at 03:07:26PM +0100, Andrew Jones wrote:
-> On Mon, May 13, 2019 at 01:43:56PM +0100, Dave Martin wrote:
-> > On Sun, May 12, 2019 at 09:36:16AM +0100, Andrew Jones wrote:
-> > > These are the SVE equivalents to kvm_arch_get/put_fpsimd.
-> > > 
-> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > ---
-> > >  target/arm/kvm64.c | 127 +++++++++++++++++++++++++++++++++++++++++++--
-> > >  1 file changed, 123 insertions(+), 4 deletions(-)
-> > 
-> > [...]
-> > 
-> > > +static int kvm_arch_put_sve(CPUState *cs)
-> > > +{
-> > > +    ARMCPU *cpu = ARM_CPU(cs);
-> > > +    CPUARMState *env = &cpu->env;
-> > > +    struct kvm_one_reg reg;
-> > > +    int n, ret;
-> > > +
-> > > +    for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
-> > > +        uint64_t *q = aa64_vfp_qreg(env, n);
-> > > +#ifdef HOST_WORDS_BIGENDIAN
-> > > +        uint64_t d[ARM_MAX_VQ * 2];
-> > > +        int i;
-> > > +        for (i = 0; i < cpu->sve_max_vq * 2; i++) {
-> > > +            d[i] = q[cpu->sve_max_vq * 2 - 1 - i];
-> > > +        }
-> > > +        reg.addr = (uintptr_t)d;
-> > > +#else
-> > > +        reg.addr = (uintptr_t)q;
-> > > +#endif
-> > > +        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
-> > 
-> > Will this silently go wrong if more than one slice is required (i.e.,
-> > the register size grows beyond 8192 bits?)
-> 
-> Yeah, I could probably implement the slice loop now and add a
-> function that returns 1 (for now) like your vcpu_sve_slices()
-> function in KVM. I'll do that for v2.
+Andrew Jones <drjones@redhat.com> writes:
 
-Or just add a sanity check that the vector length is <= 2048 bits.
+> Introduce another cpu property to control SVE vector lengths,
+> sve-vls-map, which allows the user to explicitly select the
+> set of vector lengths the guest can use. The map must conform
+> to QEMU's limits and architectural constraints, checked when
+> the property is set. Inconsistencies with sve-max-vq are also
+> checked. The bit number of a set bit in the map represents the
+> allowed vector length in number of quadwords.
+>
+> Note, as the map is implemented with a single 64-bit word we
+> currently only support up to 8192-bit vectors. As QEMU and
+> KVM only support up to 2048-bit vectors then this sufficient
+> now, and probably for some time. Extending the bitmap beyond
+> a single word will likely require changing the property to
+> a string and adding yet another parser to QEMU.
+>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 
-Support for larger vectors is untestable for now, since the kernel
-doesn't support that and would never expose it.
-
-
-On that point, could TCG easily be made to expose a larger vector length
-to the kernel?  I'd be interested to see what happened.
-
-The kernel should warn and hide the larger vector lengths from KVM,
-but I've not been able to test that.
-
-It's only worth trying this out if the hacks to QEMU to enable testing
-this were pretty trivial, though.
-
-Cheers
----Dave
+Please add an example of how the new property should be used on the
+command line to your commit message.  I'd ask for a documentation update
+as well if we had any to update.

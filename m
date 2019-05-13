@@ -1,48 +1,48 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2760601wrg;
-        Mon, 13 May 2019 05:46:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxfCEffQT8xmBjRYNV30gViBGyBwDEhJZNyBLEPnaZo8QOQiIkVzcegRnCPdOq0UW1Zu8HL
-X-Received: by 2002:a62:3605:: with SMTP id d5mr12143947pfa.28.1557751614256;
-        Mon, 13 May 2019 05:46:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557751614; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2760684wrg;
+        Mon, 13 May 2019 05:46:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyRJ5OUXgnh9Olba3esYi87N7bM/YjaAgHs0p0a+HtkwMP1mdFI8/5l4NLNFWlgkzAx0Knp
+X-Received: by 2002:a17:902:be0e:: with SMTP id r14mr12662410pls.152.1557751618458;
+        Mon, 13 May 2019 05:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557751618; cv=none;
         d=google.com; s=arc-20160816;
-        b=CpWDoARX6Gf94Mo8A3swTubX1WUZAistMryJiaqtLXodt1AE8xkUNpn2tfC2yBjfYQ
-         O1GhXNzA7VcNsIIENxpVS5vZkx1epxZtResxF5/Qi0nCdV+Vt6YyA/P5J+9qsZajc06S
-         1soUOt5vRhMsQzUMlizD+X8HkWWD7lVF6Z1iQaMmAEE0qxOamhBqIvC/Ir+ddvzWfDii
-         NWIWU0I3cu1lRGwvMViFF8juwedAJ7BbZyVqwQcIDT7kgBPuwOMEwoQHLmp1M2+RFG/O
-         XQc3vV4WemD1+UZTnFXEQFR61ItkgmCAnWX6Nrpcxg6yQFxxokenuhSilNNBVmZk2e1o
-         2Jcg==
+        b=sqOx2ZU4TZT/NmGLVkHvgntTwgkPeyET+DcnyMYFxnEUgipCU9fg3YRxWxVNLNQvcO
+         8pGpCjKtpp3FAB5vQ/k/9CwQsBbQvvOuGe0bbRaQh9pyETpLHSoSAYt8H3qR2sdTR79n
+         gftGRdKgg6j3cGvYCctVgDDNUNhZsqQILgaAYtaAMp4OD6u0hLzemcd5482CS9KUsLzW
+         ny1Imel1/5bMEIJ3073FHaH1pFrYvMVtco/Hu6EyqFx3TWnEm3QY27JjK19eyePZwbXd
+         MvNQsLyIg+gP3BVvJBurGxjYpMQa/pxpXtk2UNQT2v3wTpDz3ka1ldxAHEYZlJ/A/2xn
+         rEHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=UuRTjlYlQwTTBkItyuAZg+5GRaGHAbpezfGmUQBEkvc=;
-        b=AS3rbmUZPMypRTADV26BHrH4a1QaMl8v5b3idHsZmQaSQl5W7KrX0PwyPKsHPtA1tV
-         GXcyjx8+AK/IRydMSScr7eKxzieiTdoyOYwZMoMvFJF8yG5fUeju+huVeMmHxLv+6MxA
-         i2jkUhBZQR7Rf/AZTq/dTqG27ZiBZetMy/H+k9Mwh3d9mPpVgE3KAqnh5rbS5FXx1D+m
-         McdMFtYUXzP9OhbcdOtIk939PzbU2D06rl6LVVoJC/KJRFKWsidGVdpv/mPBeEHkNL0H
-         DodFmbydKCKJHeyk3LJdac7Ihct7Z0UK+t6aBQiftRRqmQPxbvxzjSx7txcSKvkSnHJ3
-         RjVA==
+        bh=Gra9/SavN5KAfAYkjvBDFVh1/Coh5UNAWwWkSTbKzEw=;
+        b=QTtQHF6Ja931LkkzPESgC73KmqjF4JR+iOAI2tcpLNWFaWb2uq+Jcd7GOq7810t4P9
+         df25phQvh87qk7aQTELoCjf+5wL/Avrx/Rxj6ezeXGWjNvjB80w1cFCc+Ap08JBvV97G
+         uX7+iMFofj89dUrFhO8XAj7GQyH8ZAVFmpdtATnQwoELVm57D+1ytAqbJF7V/APOIbx+
+         U+7yVExjYx2EjMMbpd+kaktxpQklV2nhLaod7M7R+gN1lQo4amGzym6923aeVDfFU2Je
+         5BU9SrB3rr1uCQ8o6YRTTXbsL5kgLkjJoHwaQOJJzhSLvoHn4HJwELGllOEkS8V/D04B
+         H9Vg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id s23si16032343pga.580.2019.05.13.05.46.53;
-        Mon, 13 May 2019 05:46:54 -0700 (PDT)
+        by mx.google.com with ESMTP id s23si16032343pga.580.2019.05.13.05.46.58;
+        Mon, 13 May 2019 05:46:58 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729977AbfEMMqx (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Mon, 13 May 2019 08:46:53 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:7637 "EHLO huawei.com"
+        id S1729925AbfEMMq5 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Mon, 13 May 2019 08:46:57 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:7638 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1729961AbfEMMqw (ORCPT <rfc822;kvm@vger.kernel.org>);
+        id S1729955AbfEMMqw (ORCPT <rfc822;kvm@vger.kernel.org>);
         Mon, 13 May 2019 08:46:52 -0400
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 7628658FDE34E46A89B2;
+        by Forcepoint Email with ESMTP id 85D0D5AC91A39AB06236;
         Mon, 13 May 2019 20:46:48 +0800 (CST)
 Received: from ros.huawei.com (10.143.28.118) by
  DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Mon, 13 May 2019 20:46:41 +0800
+ 14.3.439.0; Mon, 13 May 2019 20:46:39 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
@@ -52,9 +52,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
         <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: [PATCH v16 10/10] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
-Date:   Mon, 13 May 2019 05:43:08 -0700
-Message-ID: <1557751388-27063-11-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH v16 08/10] KVM: Move related hwpoison page functions to accel/kvm/ folder
+Date:   Mon, 13 May 2019 05:43:06 -0700
+Message-ID: <1557751388-27063-9-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1557751388-27063-1-git-send-email-gengdongjiu@huawei.com>
 References: <1557751388-27063-1-git-send-email-gengdongjiu@huawei.com>
@@ -66,319 +66,171 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: bLJZZg2QHsSV
+X-TUID: ZVPYXl2Wwa+v
 
-Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-translates the host VA delivered by host to guest PA, then fill this PA
-to guest APEI GHES memory, then notify guest according to the SIGBUS type.
+kvm_hwpoison_page_add() and kvm_unpoison_all() will be used both
+by X86 and ARM platforms, so move these functions to a common
+accel/kvm/ folder to avoid duplicate code.
 
-If guest accesses the poisoned memory, it generates Synchronous External
-Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
-to unmapped the affected page for the guest's stage 2, finally return
-to guest.
-
-Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
-then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
-error address into guest APEI GHES memory and notify guest using
-Synchronous-External-Abort(SEA).
-
-Suggested-by: James Morse <james.morse@arm.com>
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
- hw/acpi/acpi_ghes.c         | 177 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/acpi/acpi_ghes.h |   6 +-
- include/sysemu/kvm.h        |   2 +-
- target/arm/kvm64.c          |  40 ++++++++++
- 4 files changed, 223 insertions(+), 2 deletions(-)
+ accel/kvm/kvm-all.c     | 33 +++++++++++++++++++++++++++++++++
+ include/exec/ram_addr.h | 24 ++++++++++++++++++++++++
+ target/arm/kvm.c        |  3 +++
+ target/i386/kvm.c       | 34 +---------------------------------
+ 4 files changed, 61 insertions(+), 33 deletions(-)
 
-diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-index d03e797..06b7374 100644
---- a/hw/acpi/acpi_ghes.c
-+++ b/hw/acpi/acpi_ghes.c
-@@ -26,6 +26,101 @@
- #include "sysemu/sysemu.h"
- #include "qemu/error-report.h"
- 
-+/* UEFI 2.6: N.2.5 Memory Error Section */
-+static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
-+{
-+    /*
-+     * Memory Error Record
-+     */
-+    build_append_int_noprefix(table,
-+                 (1UL << 14) | /* Type Valid */
-+                 (1UL << 1) /* Physical Address Valid */,
-+                 8);
-+    /* Memory error status information */
-+    build_append_int_noprefix(table, 0, 8);
-+    /* The physical address at which the memory error occurred */
-+    build_append_int_noprefix(table, error_physical_addr, 8);
-+    build_append_int_noprefix(table, 0, 48);
-+    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
-+    build_append_int_noprefix(table, 0, 7);
-+}
-+
-+static int ghes_record_mem_error(uint64_t error_block_address,
-+                                    uint64_t error_physical_addr)
-+{
-+    GArray *block;
-+    uint64_t current_block_length;
-+    uint32_t data_length;
-+    /* Memory section */
-+    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
-+                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
-+                                0x83, 0xB1};
-+    uint8_t fru_id[16] = {0};
-+    uint8_t fru_text[20] = {0};
-+
-+    /* Generic Error Status Block
-+     * | +---------------------+
-+     * | |     block_status    |
-+     * | +---------------------+
-+     * | |    raw_data_offset  |
-+     * | +---------------------+
-+     * | |    raw_data_length  |
-+     * | +---------------------+
-+     * | |     data_length     |
-+     * | +---------------------+
-+     * | |   error_severity    |
-+     * | +---------------------+
-+     */
-+    block = g_array_new(false, true /* clear */, 1);
-+
-+    /* Get the length of the Generic Error Data Entries */
-+    cpu_physical_memory_read(error_block_address +
-+        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
-+
-+    /* The current whole length of the generic error status block */
-+    current_block_length = sizeof(AcpiGenericErrorStatus) + le32_to_cpu(data_length);
-+
-+    /* This is the length if adding a new generic error data entry*/
-+    data_length += GHES_DATA_LENGTH;
-+    data_length += GHES_MEM_CPER_LENGTH;
-+
-+    /* Check whether it will run out of the preallocated memory if adding a new
-+     * generic error data entry
-+     */
-+    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
-+        error_report("Record CPER out of boundary!!!");
-+        return GHES_CPER_FAIL;
-+    }
-+
-+    /* Build the new generic error status block header */
-+    build_append_ghes_generic_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
-+        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
-+
-+    /* Write back above generic error status block header to guest memory */
-+    cpu_physical_memory_write(error_block_address, block->data,
-+                              block->len);
-+
-+    /* Add a new generic error data entry */
-+
-+    data_length = block->len;
-+    /* Build this new generic error data entry header */
-+    build_append_ghes_generic_data(block, mem_section_id_le,
-+                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
-+                    cpu_to_le32(80)/* the total size of Memory Error Record */, fru_id,
-+                    fru_text, 0);
-+
-+    /* Build the memory section CPER for above new generic error data entry */
-+    build_append_mem_cper(block, error_physical_addr);
-+
-+    /* Write back above this new generic error data entry to guest memory */
-+    cpu_physical_memory_write(error_block_address + current_block_length,
-+                    block->data + data_length, block->len - data_length);
-+
-+    g_array_free(block, true);
-+
-+    return GHES_CPER_OK;
-+}
-+
- /* Build table for the hardware error fw_cfg blob */
- void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker)
- {
-@@ -169,3 +264,85 @@ void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
-     fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
-         &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
- }
-+
-+bool ghes_record_errors(uint32_t notify, uint64_t physical_address)
-+{
-+    uint64_t error_block_addr, read_ack_register_addr;
-+    int read_ack_register = 0, loop = 0;
-+    uint64_t start_addr = le32_to_cpu(ges.ghes_addr_le);
-+    bool ret = GHES_CPER_FAIL;
-+    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff,
-+                                        0xff, 0xff, 0xff, 0, 1};
-+
-+    /*
-+     * | +---------------------+ ges.ghes_addr_le
-+     * | |error_block_address0 |
-+     * | +---------------------+ --+--
-+     * | |    .............    | GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | |error_block_addressN |
-+     * | +---------------------+
-+     * | | read_ack_register0  |
-+     * | +---------------------+ --+--
-+     * | |   .............     | GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | | read_ack_registerN  |
-+     * | +---------------------+ --+--
-+     * | |      CPER           |   |
-+     * | |      ....           | GHES_MAX_RAW_DATA_LENGT
-+     * | |      CPER           |   |
-+     * | +---------------------+ --+--
-+     * | |    ..........       |
-+     * | +---------------------+
-+     * | |      CPER           |
-+     * | |      ....           |
-+     * | |      CPER           |
-+     * | +---------------------+
-+     */
-+    if (physical_address && notify < ACPI_HEST_NOTIFY_RESERVED) {
-+        /* Find and check the source id for this new CPER */
-+        if (error_source_id[notify] != 0xff) {
-+            start_addr += error_source_id[notify] * GHES_ADDRESS_SIZE;
-+        } else {
-+            goto out;
-+        }
-+
-+        cpu_physical_memory_read(start_addr, &error_block_addr,
-+                                    GHES_ADDRESS_SIZE);
-+
-+        read_ack_register_addr = start_addr +
-+                        ACPI_HEST_ERROR_SOURCE_COUNT * GHES_ADDRESS_SIZE;
-+retry:
-+        cpu_physical_memory_read(read_ack_register_addr,
-+                                 &read_ack_register, GHES_ADDRESS_SIZE);
-+
-+        /* zero means OSPM does not acknowledge the error */
-+        if (!read_ack_register) {
-+            if (loop < 3) {
-+                usleep(100 * 1000);
-+                loop++;
-+                goto retry;
-+            } else {
-+                error_report("OSPM does not acknowledge previous error,"
-+                    " so can not record CPER for current error, forcibly acknowledge"
-+                    " previous error to avoid blocking next time CPER record! Exit");
-+                read_ack_register = 1;
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, GHES_ADDRESS_SIZE);
-+            }
-+        } else {
-+            if (error_block_addr) {
-+                read_ack_register = 0;
-+                /* Clear the Read Ack Register, OSPM will write it to 1 when
-+                 * acknowledge this error.
-+                 */
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, GHES_ADDRESS_SIZE);
-+                ret = ghes_record_mem_error(error_block_addr, physical_address);
-+            }
-+        }
-+    }
-+
-+out:
-+    return ret;
-+}
-diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
-index 38fd87c..6b38097 100644
---- a/include/hw/acpi/acpi_ghes.h
-+++ b/include/hw/acpi/acpi_ghes.h
-@@ -32,11 +32,14 @@
- #define GHES_ADDRESS_SIZE           8
- 
- #define GHES_DATA_LENGTH            72
--#define GHES_CPER_LENGTH            80
-+#define GHES_MEM_CPER_LENGTH        80
- 
- #define ReadAckPreserve             0xfffffffe
- #define ReadAckWrite                0x1
- 
-+#define GHES_CPER_OK                1
-+#define GHES_CPER_FAIL              0
-+
- /* The max size in bytes for one error block */
- #define GHES_MAX_RAW_DATA_LENGTH        0x1000
- /* Now only have GPIO-Signal and ARMv8 SEA notification types error sources
-@@ -76,4 +79,5 @@ void build_apei_hest(GArray *table_data, GArray *hardware_error,
- 
- void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker);
- void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
-+bool ghes_record_errors(uint32_t notify, uint64_t error_physical_addr);
- #endif
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index a6d1cd1..1d1a7a8 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -377,7 +377,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
--#ifdef TARGET_I386
-+#if defined(TARGET_I386) || defined(TARGET_AARCH64)
- #define KVM_HAVE_MCE_INJECTION 1
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index c7bdc6a..6e5341d 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -27,6 +27,9 @@
- #include "kvm_arm.h"
- #include "internals.h"
- #include "hw/arm/arm.h"
-+#include "exec/ram_addr.h"
-+#include "hw/acpi/acpi-defs.h"
-+#include "hw/acpi/acpi_ghes.h"
- 
- static bool have_guest_debug;
- 
-@@ -1029,6 +1032,43 @@ int kvm_arch_get_registers(CPUState *cs)
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 524c4dd..b9f9f29 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -625,6 +625,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
      return ret;
  }
  
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+{
-+    ARMCPU *cpu = ARM_CPU(c);
-+    CPUARMState *env = &cpu->env;
++typedef struct HWPoisonPage {
 +    ram_addr_t ram_addr;
-+    hwaddr paddr;
++    QLIST_ENTRY(HWPoisonPage) list;
++} HWPoisonPage;
 +
-+    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
++static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
++    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
 +
-+    if (addr) {
-+        ram_addr = qemu_ram_addr_from_host(addr);
-+        if (ram_addr != RAM_ADDR_INVALID &&
-+            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_hwpoison_page_add(ram_addr);
-+            /* Asynchronous signal will be masked by main thread, so
-+             * only handle synchronous signal.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                kvm_cpu_synchronize_state(c);
-+                if (GHES_CPER_FAIL != ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
-+                    kvm_inject_arm_sea(c);
-+                } else {
-+                    fprintf(stderr, "failed to record the error\n");
-+                }
-+            }
-+            return;
-+        }
-+        fprintf(stderr, "Hardware memory error for memory used by "
-+                "QEMU itself instead of guest system!\n");
-+    }
++void kvm_unpoison_all(void *param)
++{
++    HWPoisonPage *page, *next_page;
 +
-+    if (code == BUS_MCEERR_AR) {
-+        fprintf(stderr, "Hardware memory error!\n");
-+        exit(1);
++    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
++        QLIST_REMOVE(page, list);
++        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
++        g_free(page);
 +    }
 +}
 +
- /* C6.6.29 BRK instruction */
- static const uint32_t brk_insn = 0xd4200000;
++void kvm_hwpoison_page_add(ram_addr_t ram_addr)
++{
++    HWPoisonPage *page;
++
++    QLIST_FOREACH(page, &hwpoison_page_list, list) {
++        if (page->ram_addr == ram_addr) {
++            return;
++        }
++    }
++    page = g_new(HWPoisonPage, 1);
++    page->ram_addr = ram_addr;
++    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
++}
++
+ static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
+ {
+ #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+index 139ad79..193b0a7 100644
+--- a/include/exec/ram_addr.h
++++ b/include/exec/ram_addr.h
+@@ -116,6 +116,30 @@ void qemu_ram_free(RAMBlock *block);
  
+ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
+ 
++/**
++ * kvm_hwpoison_page_add:
++ *
++ * Parameters:
++ *  @ram_addr: the address in the RAM for the poisoned page
++ *
++ * Add a poisoned page to the list
++ *
++ * Return: None.
++ */
++void kvm_hwpoison_page_add(ram_addr_t ram_addr);
++
++/**
++ * kvm_unpoison_all:
++ *
++ * Parameters:
++ *  @param: some data may be passed to this function
++ *
++ * Free and remove all the poisoned pages in the list
++ *
++ * Return: None.
++ */
++void kvm_unpoison_all(void *param);
++
+ #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+ #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 5995634..6d3b25b 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -29,6 +29,7 @@
+ #include "exec/address-spaces.h"
+ #include "hw/boards.h"
+ #include "qemu/log.h"
++#include "exec/ram_addr.h"
+ 
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+@@ -187,6 +188,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+ 
+     cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+ 
++    qemu_register_reset(kvm_unpoison_all, NULL);
++
+     return 0;
+ }
+ 
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 3b29ce5..9bdb879 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -46,6 +46,7 @@
+ #include "migration/blocker.h"
+ #include "exec/memattrs.h"
+ #include "trace.h"
++#include "exec/ram_addr.h"
+ 
+ //#define DEBUG_KVM
+ 
+@@ -467,39 +468,6 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+ }
+ 
+ 
+-typedef struct HWPoisonPage {
+-    ram_addr_t ram_addr;
+-    QLIST_ENTRY(HWPoisonPage) list;
+-} HWPoisonPage;
+-
+-static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+-    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+-
+-static void kvm_unpoison_all(void *param)
+-{
+-    HWPoisonPage *page, *next_page;
+-
+-    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+-        QLIST_REMOVE(page, list);
+-        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+-        g_free(page);
+-    }
+-}
+-
+-static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+-{
+-    HWPoisonPage *page;
+-
+-    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+-        if (page->ram_addr == ram_addr) {
+-            return;
+-        }
+-    }
+-    page = g_new(HWPoisonPage, 1);
+-    page->ram_addr = ram_addr;
+-    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+-}
+-
+ static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
+                                      int *max_banks)
+ {
 -- 
 1.8.3.1

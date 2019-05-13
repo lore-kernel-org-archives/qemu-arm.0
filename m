@@ -1,115 +1,138 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2601938wrg;
-        Mon, 13 May 2019 02:52:17 -0700 (PDT)
-X-Received: by 2002:aca:e8c5:: with SMTP id f188mr12322626oih.132.1557741137677;
-        Mon, 13 May 2019 02:52:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557741137; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2587866wrg;
+        Mon, 13 May 2019 02:32:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjUjgkhSsu7hys+diRJ8IDNR1xJhhba5wCLJU5l73WRoFNPEtRAwlhiRUcVECDldUOs4Mk
+X-Received: by 2002:a37:4c04:: with SMTP id z4mr4973159qka.195.1557739972993;
+        Mon, 13 May 2019 02:32:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557739972; cv=none;
         d=google.com; s=arc-20160816;
-        b=nYovJwSJLpJb2TKckR22IKFevB5FycSlHQkqnOAH45ynE8/uIIJf+hoIjiWZzraUxO
-         SaseCbRBaM9Heaf4EA49vPDlR59h3Ix7dOcu7FKUzABZYEcUWuh39HdKosLyYqZ3vzBM
-         wk4Wx8XpXMhGirAEzzfN/e26IALgaOoS0sXFEIikqwSEE719bPBw/2bQ6LoNxXbEq7J9
-         RfhIG+As/+THp77T61ZskE9z20lUJFF3qg7glvZd0l2QzsNIATTNgoaTj4noNzEmJp0u
-         UIxtFqqk9S/nsSvPgRIZ1PCQfKY/tjXukIyPHxIEWxZ4PQy54C0/oSPXZFfNXwGjD+DT
-         83og==
+        b=Dk19Dw+QOxs5kDKioMtY95nt3sOL5c2jyEl/htoRE6SG+cHC8tSHYKvS2jZ9wUl0Mr
+         iEtTbcjFyGRCk4lN4JdOdfO5/WKu/h93H+AnAf7hJHYT9OwcQ1fUZwBKsgIsA38C3UMN
+         f9LDKUtpWScAgm5nat+lozmb+Rok6L9vGsJlB5AVwhrOAs+4oApJ+QitLUmwff94Ojek
+         E5J8H+8uwRxZSs5zijOc6YstP+shcZ2xuBcFEX/2iiSDzRm3iufmgFYOM15+rOIcjotn
+         eKhvlBZIaEnGfi2zOQ+HZNDWp0ZEMQscOz5mH014XmPzDR2rqe9eDBS4HuPBW8NY0n5l
+         vsMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=PYvG6NjDQGH3CIQ0F+yQtd6Ko0eXE8yTWncx9BJJ49I=;
-        b=aGphdk7d17HLyhb9oP2jdNWUJcvlmddsAXEgBpAqyyHAztWpAq3NENlT5dOTibosoN
-         qZAmKOvBJL9e6p0sQLd8p69YPRW/FdXYsok6txGTg37PEy3azHUb0ngDWcLe5kF2uvQA
-         UkN7W5GtWTmXxNjJ4kDAbYcx2cJlAXwnYpFlYOfw3EuSZIXHOEqUpsaJpF5bci9WVXd6
-         nGzAqacsBrxrRCbNO0MDT4UspSu7L7hPRwiof9sePQFc/AYg8mBkdIj2vCPIh0QPs2VL
-         AM7aF1RnYMJcLbt2rGdXU/VAqCW4QuE5bsZrH+tuWG9sL5PqiAS3OsayMKPV2CBRK95v
-         D/Rg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id;
+        bh=eF9Z3cqI4i44k/psAZlWHRyyJmaB4FE9xLj1dWepB+Q=;
+        b=uns1uwU5oihNDoEgatt9P/nV6GCO/5IUY9ItV4rS/4ned/ZsbDLNp3lCPJ2jUluuiL
+         ORYmQwOUehWsSKxnwLQDwI88L7ill53gOnuLwR2GJB3rhzw0h2Ek+YK6FtRHO2DKKmAo
+         hBOYE0fo/ecKf8PKt20eZSI/n6B7beZ+klxjBJqSCNVTZaPA2M39W6JBeBWnq6bvVoWb
+         PrVNjrH5wPwSotZv/6MuonXwHe4hM/7e8BOssrVlkzts8V9SU1HNEnFDG81Dd69lWcTo
+         nkyUnHfzm4/RO4rtdbqt88+P6+vyHVkN5FFxOoVwC6qqeL0X10P+AzWSh27DGYy2Wvkv
+         IYPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="CMMcrm/A";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id i186sor5497487oih.32.2019.05.13.02.52.17
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 13 May 2019 02:52:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=abologna@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <abologna@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id g6si288652qvn.86.2019.05.13.02.32.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 02:32:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="CMMcrm/A";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=PYvG6NjDQGH3CIQ0F+yQtd6Ko0eXE8yTWncx9BJJ49I=;
-        b=CMMcrm/A8vdWYtGmanPD8GeVL74Mrtfem9uLPz2QNHON5ldw08ReuLpK1zD8nQsn6r
-         hfClK/h1hMdbJNxCZqZizBnjnXbBy/0dQW3RyR3rFgbmwgkONGz39YVbynhbEE1TRJgF
-         ziJeNdHWFhmmScC19FBIhLmUBeYkVjPhUCr/2laZ7CMcAHpIKtgO66gsvyw+gWBL+hma
-         96Kj3/VBPtsmn4gCbkl/AYqU3kTNDDE5nWjclsbeC3kh3h+C/pGu1IAgW/+7+QUCq5mb
-         WAKZeB2VfOUEZDxwLbWO56EfTiQn8MUxOAbFmZOMTXYK4/SBX7p9v+leayehvgXgAiMS
-         sDZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=PYvG6NjDQGH3CIQ0F+yQtd6Ko0eXE8yTWncx9BJJ49I=;
-        b=Dut5/GzTMegAXWOFf0273naV2G7EStGWYEOa+v9w7HbNVShSedHPsF8+WXPWF+OnXw
-         ANsitHCj7tnE3/5XZHkGHLScDP0EXYXUgTxhouPhTt4RiRUVVU6FkJL/U/Mw9f9Vz3KI
-         rVUVYb4ugsjaCg27AtdDXJY4icTowIqLyOSNCvW0Z50VP4GREFJZrYDm5LNPFqtBNktw
-         buss2HHsTQCOyigSB/0/1+L3Ap/a4VVkXulvISFB+jvvni+MTVKzk8P1NM15iY4sL7BH
-         MRGuLznEWW8+Q6ZyCFY4Ziq5A0IqKiDOoWKrg9J/zZKuUX0xFr4AATpfX0qTwBa+BWhr
-         BlkQ==
-X-Gm-Message-State: APjAAAWwBViQcwuEIzU6g2ktONU7FlAyCtORLu6cbi886ySkDpMTzArd
-	4YeL5MdYD3AEwBDeP4/YQZ3IGKwPuFDAQlz70NLqGAPa
-X-Google-Smtp-Source: APXvYqzyhkhEJnU7/HDVMAM217XpSdW0vYjlzq8vaJPV+PyQAnCmN+UZgweYJKgygbvpKJ2PQcdeIcTRO+sQ71mjyZY=
-X-Received: by 2002:aca:845:: with SMTP id 66mr3172404oii.163.1557741137334;
- Mon, 13 May 2019 02:52:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190512083624.8916-1-drjones@redhat.com>
-In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 May 2019 10:52:06 +0100
-Message-ID: <CAFEAcA8vY7WVws3rOqKxsaNTDSboecOeS4DM5rdsEZHt4Lkv-A@mail.gmail.com>
+       spf=pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=abologna@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0E23E3092648;
+	Mon, 13 May 2019 09:32:52 +0000 (UTC)
+Received: from kinshicho (unknown [10.43.2.73])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 041EF19C68;
+	Mon, 13 May 2019 09:32:47 +0000 (UTC)
+Message-ID: <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
 Subject: Re: [PATCH 00/13] target/arm/kvm: enable SVE in guests
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	Dave P Martin <Dave.Martin@arm.com>, Andrea Bolognani <abologna@redhat.com>
+From: Andrea Bolognani <abologna@redhat.com>
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org, 
+ alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
+ Dave.Martin@arm.com
+Date: Mon, 13 May 2019 11:32:46 +0200
+In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: 28r4F0CPfMb4
+User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.43]); Mon, 13 May 2019 09:32:52 +0000 (UTC)
+X-TUID: P5KSEPaYSV6/
 
-On Sun, 12 May 2019 at 09:36, Andrew Jones <drjones@redhat.com> wrote:
->
-> With the recent KVM guest SVE support pull request [1] KVM will be
-> ready for guests with SVE. This series provides the QEMU bits for
-> that enablement. The series starts with the bits needed for the KVM
-> SVE ioctls. Then it enables the arm 'max'cpu type, which with TCG
-> already supports SVE, to also support SVE when using KVM. Next
-> a new QMP query is added that allows users to ask which vector
-> lengths are supported by the host, allowing them to select a valid
-> set of vectors for the guest. In order to select those vectors a
-> new property 'sve-vls-map' is added to the 'max' cpu type, and then
-> also to the 'host' cpu type. The table below shows the resulting user
-> interfaces.
->
+On Sun, 2019-05-12 at 10:36 +0200, Andrew Jones wrote:
+[...]
 >    CPU type | accel | sve-max-vq | sve-vls-map
 >    -------------------------------------------
 >  1)     max | tcg   |  $MAX_VQ   |  $VLS_MAP
 >  2)     max | kvm   |  $MAX_VQ   |  $VLS_MAP
 >  3)    host | kvm   |  N/A       |  $VLS_MAP
->
+> 
 > Where for (1) $MAX_VQ sets the maximum vq and smaller vqs are
 > all supported when $VLS_MAP is zero, or when the vqs are selected
 > in $VLS_MAP.
->
-> (2) is the same as (1) except KVM has the final say on what
-> vqs are valid.
->
-> (3) doesn't accept sve-max-vq because a guest that uses this
-> property without sve-vls-map cannot be safely migrated.
 
-Is this "migrated between two hosts with the same host CPU
-type but with different kernel versions which expose different
-subsets of the host's permitted vector lengths" ?
+I'm a bit confused by the nomenclature here. VL clearly stands for
+Vector Length, but what does VQ stand for? You seem to be using the
+two terms pretty much interchangeably throughout the cover letter.
 
-thanks
--- PMM
+[...]
+> There is never any need to provide both properties, but if both
+> are provided then they are checked for consistency.
+
+I would personally just error out when both are provided.
+
+> The QMP query returns a list of valid vq lists. For example, if
+> a guest can use vqs 1, 2, 3, and 4, then the following list will
+> be returned
+> 
+>  [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ] ]
+> 
+> Another example might be 1, 2, 4, as the architecture states 3
+> is optional. In that case the list would be
+> 
+>  [ [ 1 ], [ 1, 2 ], [ 1, 2, 4 ] ]
+
+I think the proposed QMP command is problematic, because it reports
+the valid vector lengths for either KVM or TCG based on which
+accelerator is currently enabled: it should report all information
+at all times instead, similarly to how query-gic-capabilities does
+it.
+
+[...]
+> And now for what might be a bit more controversial; how we input
+> the valid vector set with sve-vls-map. Well, sve-vls-map is a
+> 64-bit bitmap, which is admittedly not user friendly and also not
+> the same size as KVM's vls bitmap (which is 8 64-bit words). Here's
+> the justification:
+> 
+>  1) We want to use the QEMU command line in order for the information
+>     to be migrated without needing to add more VM state.
+>  2) It's not easy/pretty to input arrays on the QEMU command line.
+>  3) We already need to use the QMP query to get a valid set, which
+>     isn't user friendly either, meaning we're already in libvirt
+>     territory.
+>  4) A 64-bit map (supporting up to 8192-bit vectors) is likely big
+>     enough for quite some time (currently KVM and TCG only support
+>     2048-bit vectors).
+>  5) If user friendliness is needed more than migratability then
+>     the 'max' cpu type can be used with the sve-max-vq property.
+>  6) It's possible to probe the full valid vector set from the
+>     command line by using something like sve-vls-map=0xffff and
+>     then, when it fails, the error message will state the correct
+>     map, e.g. 0xb.
+
+I don't have a problem with having to use a bitmap internally,
+though libvirt will clearly want to expose a more approachable
+interface to users.
+
+However, QMP reporting the information in the current format means
+we'd have to build an additional parser on top of the bitmap handling
+and conversion routines we'll clearly need to make this work; plus it
+just feels weird that the information reported by QMP can't be used
+on the command line without going through some tranformation first.
+
+Wouldn't it make more sense to both accept and report bitmaps?
+
+-- 
+Andrea Bolognani / Red Hat / Virtualization

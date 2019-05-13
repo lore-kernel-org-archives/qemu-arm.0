@@ -1,281 +1,118 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3049408wrg;
-        Mon, 13 May 2019 10:00:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTmt14sDuCiQPMtLVqHgm0BTgHyW3DZ3jio6srYVv5Umryjmb61g1jHDjvf/HST+VCFzlm
-X-Received: by 2002:a50:ab1d:: with SMTP id s29mr30686682edc.56.1557766852823;
-        Mon, 13 May 2019 10:00:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557766852; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3123846wrg;
+        Mon, 13 May 2019 11:14:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNq1vhuy3q03SqILxGDh1gX6U9P+gYByHkwWvB3kkAjOrX4KjUXWp2OBIlYZNlSvXlqXNn
+X-Received: by 2002:ad4:534b:: with SMTP id v11mr24166347qvs.31.1557771269091;
+        Mon, 13 May 2019 11:14:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557771269; cv=none;
         d=google.com; s=arc-20160816;
-        b=iBxm2WxlzIiRgYRnXKAZjbqZvUZ52c2KcUlEtsEiRkWVRYKZ/DCjohjj+XVqCcNqEy
-         c25Z0+S9bwJusErFZWIhc9UF29t+UxWboIGoser+ylUIFnmtuCrp2XHTkRwvZg/Qmvs8
-         mPx4p9MxB48/cDeNJU+5DxzgDdreDDHDlJivaSsVQS8GxmVcUkF7hK+l/WR8xKfOUkp8
-         GNUcYW1neoK2G2ErocS/+Qw+r6ei43FwKctNm3CyGJMtvJd2lB/pFZbZ+Ro3Y/dajLlA
-         HaTOR8n/I7sA42mtqWbX+1KPGbSD1A8DE6n93RUScmHrZ+TUd6DrDNE4HhIDunP+uayU
-         s1kg==
+        b=xXVW91vMmn+0J9tKyvJRc/AC8uwbUJljs848PtvKapTrbpFp6IEUdGDHbHViLRGw0k
+         J5lGPI5RlenVSs1EtBAxkp0/KPook6cPeHrcmpCGI7F90Hb11h+z78LIgWmfR3CvDeio
+         G9Nv4HmXGTOEGcrlNCdO4L8z5z14CK0E1vx6C6GmSE/qHHz0xqiuW2THSVUG3wOXu6M1
+         EGppJU40XzEOeeuSrqOP9dvNcmOVZOTi38mumifYcHmZcyIsERkyMCK/OKK08l8xH1sM
+         iuOPq8DhaXKGm7e47uB+PB/wfw97ojIQgR3qpsJq/xT9gNKMDeAV4+4DH+O0PJaWzDrs
+         psEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=PdbfAW+vAHCEPptfTrsdl0++7QQWNbFCZ+SKZm1o+Gw=;
-        b=kxKGhfZBBiTcrx85jN2JWATJVyBObK6hx9r0pR6Hkxb0+oXHjhCOp9Ed1eIR/+ddbD
-         JzfN6UoiboyG8RNv+scmWcMdYO+HIWppmDJtzUunMFvnB/d8GLbAAiA6f4+XG3mMdrB7
-         Ou0A6HeOjSZ7TWQw0xCdKGqeI2dxL8rf5BrTxC9tXJXwPV8aea8g/92ksSBrvshTumP0
-         58hcjlEqoKTTW9KpEcdpKGKcfOW+/zk5FDjr89doYvqIltx95332lLUlScYR+CXatZRH
-         smeEU1/T8tWnRCuatWROivaxCzY6k73cxb84E/OONFzZsSZxo5wKVd3UXtVLcrTWNteq
-         n6og==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=ueDqCdaY1c9w8sLq7XUWzqkllZwlUoixm6pZh7pBOU0=;
+        b=enAyUZ6f5AhfQTGigbWFSfrjV2woZJM3sWgbXPy6CGg2XFoYeJFGHtFPC3ql8OS1GC
+         N5VoKYidQYCzgyzqkE7nqQuypqp13DdMFDQPotB42T7QwE8jzXiDs7LmuUFxk+NXkBje
+         /oASAR4UVfZrOYgjnTI3jyL2FUbxdVTsHGcVlntHGhc1Q2xorOAWtrIYrcF93mkoDiAS
+         GW63Yo95bnfeACfAKRAqEDDhIADMiGkUr4SyURFGIpEbAtWnyx6of8nTwNq/XYbMw5SV
+         ITkfP2sMX0HD742Z+RqfLiLUlgLSoyuSNXBVqiHbGpLwcQj+/rjFw7jYUIne9JdGOM4o
+         AjIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h58si1085021eda.50.2019.05.13.10.00.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 May 2019 10:00:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id k28si2346621qvf.36.2019.05.13.11.14.28
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 11:14:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:60572 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQEJn-000403-NQ
-	for alex.bennee@linaro.org; Mon, 13 May 2019 13:00:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40447)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQEJN-0003xq-VN
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 13:00:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQEJL-00040t-Qq
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 13:00:25 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45405 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1hQEJL-0003x4-3a; Mon, 13 May 2019 13:00:23 -0400
-Received: from LHREML712-CAH.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id 280EEB014FD4D9AA97E0;
-	Mon, 13 May 2019 18:00:19 +0100 (IST)
-Received: from LHREML524-MBB.china.huawei.com ([169.254.3.57]) by
-	LHREML712-CAH.china.huawei.com ([10.201.108.35]) with mapi id
-	14.03.0415.000; Mon, 13 May 2019 18:00:13 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Support
-Thread-Index: AQHU7r9fDZwDNe9r+EiYOfOuYN+yBqZYFYcAgAFHvsCAD8XcEIAAWT3w
-Date: Mon, 13 May 2019 17:00:13 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F1F0EB5@lhreml524-mbb.china.huawei.com>
-References: <20190409102935.28292-1-shameerali.kolothum.thodi@huawei.com>
-	<20190409102935.28292-4-shameerali.kolothum.thodi@huawei.com>
-	<20190502181252.2e3ae0d4@Igors-MacBook-Pro>
-	<5FC3163CFD30C246ABAA99954A238FA83F1EF349@lhreml524-mbb.china.huawei.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F1EF349@lhreml524-mbb.china.huawei.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event
- Device Support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"sameo@linux.intel.com" <sameo@linux.intel.com>,
-	"ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 736273082B55;
+	Mon, 13 May 2019 18:14:27 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (ovpn-116-151.ams2.redhat.com [10.36.116.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A3FB060C4D;
+	Mon, 13 May 2019 18:14:24 +0000 (UTC)
+Date: Mon, 13 May 2019 20:14:21 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Dave Martin <Dave.Martin@arm.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "xuwei
-	\(O\)" <xuwei5@huawei.com>,
-	"sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
-	"lersek@redhat.com" <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5uu9KTtRlqMJ
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"abologna@redhat.com" <abologna@redhat.com>
+Subject: Re: [PATCH 05/13] target/arm/kvm: Add kvm_arch_get/put_sve
+Message-ID: <20190513181421.g25e2zqlkks7ntxb@kamzik.brq.redhat.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
+ <20190512083624.8916-6-drjones@redhat.com>
+ <20190513123110.GE28398@e103592.cambridge.arm.com>
+ <e35ba07e-2844-fe2d-ca4a-0f795a1485b1@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e35ba07e-2844-fe2d-ca4a-0f795a1485b1@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Mon, 13 May 2019 18:14:27 +0000 (UTC)
+X-TUID: /FqT33U8JIxP
 
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 13 May 2019 17:25
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device Suppor=
-t
->=20
-> On Mon, 13 May 2019 11:53:38 +0000
-> Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > Hi Igor,
-> >
-> > > -----Original Message-----
-> > > From: Shameerali Kolothum Thodi
-> > > Sent: 03 May 2019 13:46
-> > > To: 'Igor Mammedov' <imammedo@redhat.com>
-> > > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> > > eric.auger@redhat.com; peter.maydell@linaro.org;
-> > > shannon.zhaosl@gmail.com; sameo@linux.intel.com;
-> > > sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
-> > > lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
-> > > <linuxarm@huawei.com>
-> > > Subject: RE: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device
-> Support
-> > >
-> > > Hi Igor,
-> > >
-> > > > -----Original Message-----
-> > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > Sent: 02 May 2019 17:13
-> > > > To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>
-> > > > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> > > > eric.auger@redhat.com; peter.maydell@linaro.org;
-> > > > shannon.zhaosl@gmail.com; sameo@linux.intel.com;
-> > > > sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
-> > > > lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
-> > > > <linuxarm@huawei.com>
-> > > > Subject: Re: [PATCH v4 3/8] hw/acpi: Add ACPI Generic Event Device
-> Support
-> > > >
-> >
+On Mon, May 13, 2019 at 09:40:29AM -0700, Richard Henderson wrote:
+> On 5/13/19 5:31 AM, Dave Martin wrote:
+> > On Sun, May 12, 2019 at 09:36:16AM +0100, Andrew Jones wrote:
+> >> These are the SVE equivalents to kvm_arch_get/put_fpsimd.
+> >>
+> >> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> >> ---
+> >>  target/arm/kvm64.c | 127 +++++++++++++++++++++++++++++++++++++++++++--
+> >>  1 file changed, 123 insertions(+), 4 deletions(-)
+> > 
 > > [...]
-> >
-> > > > > +}
-> > > > > +
-> > > > > +static Property acpi_ged_properties[] =3D {
-> > > > > +    /*
-> > > > > +     * Memory hotplug base address is a property of GED here,
-> > > > > +     * because GED handles memory hotplug event and
-> > > > MEMORY_HOTPLUG_DEVICE
-> > > > > +     * gets initialized when GED device is realized.
-> > > > > +     */
-> > > > > +    DEFINE_PROP_UINT64("memhp-base", AcpiGedState,
-> memhp_base,
-> > > > 0),
-> > > > > +    DEFINE_PROP_BOOL("memory-hotplug-support", AcpiGedState,
-> > > > > +                     memhp_state.is_enabled, true),
-> > > > > +    DEFINE_PROP_PTR("gsi", AcpiGedState, gsi),
-> > > >
-> > > > PTR shouldn't be used in new code, look at object_property_add_link=
-() &
-> co
-> > >
-> > > Ok. I will take a look at that.
-> >
-> > I attempted to remove _PROP_PTR for "ged-events" and use _PROP_LINK
-> and
-> > _set_link(),
-> >
-> >
-> > diff --git a/hw/acpi/generic_event_device.c
-> b/hw/acpi/generic_event_device.c
-> > index 856ca04c01..978c8e088e 100644
-> > --- a/hw/acpi/generic_event_device.c
-> > +++ b/hw/acpi/generic_event_device.c
-> > @@ -268,7 +268,8 @@ static Property acpi_ged_properties[] =3D {
-> >      DEFINE_PROP_PTR("gsi", AcpiGedState, gsi),
-> >      DEFINE_PROP_UINT64("ged-base", AcpiGedState, ged_base, 0),
-> >      DEFINE_PROP_UINT32("ged-irq", AcpiGedState, ged_irq, 0),
-> > -    DEFINE_PROP_PTR("ged-events", AcpiGedState, ged_events),
-> > +    DEFINE_PROP_LINK("ged-events", AcpiGedState, ged_events,
-> TYPE_ACPI_GED,
-> > +                     GedEvent *),
-> >      DEFINE_PROP_UINT32("ged-events-size", AcpiGedState,
-> ged_events_size, 0),
-> >      DEFINE_PROP_END_OF_LIST(),
-> >  };
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 8179b3e511..c89b7b7120 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -537,7 +537,8 @@ static inline DeviceState
-> *create_acpi_ged(VirtMachineState *vms)
-> >      qdev_prop_set_ptr(dev, "gsi", vms->gsi);
-> >      qdev_prop_set_uint64(dev, "ged-base",
-> vms->memmap[VIRT_ACPI_GED].base);
-> >      qdev_prop_set_uint32(dev, "ged-irq", vms->irqmap[VIRT_ACPI_GED]);
-> > -    qdev_prop_set_ptr(dev, "ged-events", ged_events);
-> > +    object_property_set_link(OBJECT(dev), OBJECT(ged_events),
-> "ged-events",
-> > +                             &error_abort);
-> >      qdev_prop_set_uint32(dev, "ged-events-size",
-> ARRAY_SIZE(ged_events));
-> >
-> >      object_property_add_child(qdev_get_machine(), "acpi-ged",
-> > diff --git a/include/hw/acpi/generic_event_device.h
-> b/include/hw/acpi/generic_event_device.h
-> > index 9c840d8064..588f4ecfba 100644
-> > --- a/include/hw/acpi/generic_event_device.h
-> > +++ b/include/hw/acpi/generic_event_device.h
-> > @@ -111,7 +111,7 @@ typedef struct AcpiGedState {
-> >      hwaddr ged_base;
-> >      GEDState ged_state;
-> >      uint32_t ged_irq;
-> > -    void *ged_events;
-> > +    GedEvent *ged_events;
-> >      uint32_t ged_events_size;
-> >  } AcpiGedState;
-> >
-> >
-> > And with this I get,
-> >
-> > Segmentation fault      (core dumped) ./qemu-system-aarch64-ged-v5
-> > -machine virt, -cpu cortex-a57 -machine type=3Dvirt -nographic -smp 1 -=
-m
-> > 4G,maxmem=3D8G,slots=3D10 -drive if=3Dnone,file=3Dubuntu-est-5.0,id=3Df=
-s -device
-> > virtio-blk-device,drive=3Dfs -kernel Image_memhp_remove -bios
-> > QEMU_EFI_Release.fd -object memory-backend-ram,id=3Dmem1,size=3D1G
-> -device
-> > pc-dimm,id=3Ddimm1,memdev=3Dmem1 -numa node,nodeid=3D0 -append
-> > "console=3DttyAMA0 root=3D/dev/vda rw acpi=3Dforce movable_node"
-> >
-> > It looks like struct pointer cannot be used directly and has to make a =
-QOM
-> object
-> > for DEFINE_PROP_LINK use. Not sure there is an easy way for setting ptr
-> property
-> > using link() functions. Please let me know if there any reference
-> implementation I
-> > can take a look.
->=20
-> Simple 'struct' won't work with link, it has to be QOM object.
->=20
-> Question is do we still need GedEvent array?
-> We handle only 1 irq and several event types, why not replace GedEvent
-> with with a 32bit bitmap (1 bit per event type) and pass that to
-> ged device from machine as 'int' property?
+> > 
+> >> +static int kvm_arch_put_sve(CPUState *cs)
+> >> +{
+> >> +    ARMCPU *cpu = ARM_CPU(cs);
+> >> +    CPUARMState *env = &cpu->env;
+> >> +    struct kvm_one_reg reg;
+> >> +    int n, ret;
+> >> +
+> >> +    for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
+> >> +        uint64_t *q = aa64_vfp_qreg(env, n);
+> >> +#ifdef HOST_WORDS_BIGENDIAN
+> >> +        uint64_t d[ARM_MAX_VQ * 2];
+> >> +        int i;
+> >> +        for (i = 0; i < cpu->sve_max_vq * 2; i++) {
+> >> +            d[i] = q[cpu->sve_max_vq * 2 - 1 - i];
+> >> +        }
+> > 
+> > Out of interest, why do all this swabbing?  It seems expensive.
+> 
+> Indeed, to me this seems to be the wrong kind of swabbing here.  Exactly what
+> format is KVM expecting?  Surely it should be the one used by the unpredicated
+> LDR/STR instructions.  Anything else would seem to be working against the
+> architecture.
+> 
+> If so, the format is, architecturally, a stream of bytes in index order, which
+> corresponds to a little-endian stream of words.  So the loop I'd expect to see
+> here is
+> 
+>     for (i = 0, n = cpu->sve_max_vq; i < n; ++i) {
+>         d[i] = bswap64(q[i]);
+>     }
 
-Right. That might solve the ged_events ptr issue. But we need to set the ir=
-q as
-well for the GED device. Is there a way to set the irq directly for a TYPE_=
-DEVICE
-object?=20
-
-(I think Eric mentioned a way of setting it directly earlier but that time =
-GED was=20
-a TYPE_SYS_BUS_DEVICE. May be that is a reason to go back to SYS_BUS_DEVICE=
- )
+That's the opposite of what we do for fpsimd registers though. I'm
+fine with doing whatever KVM/TCG needs, but so far I was just following
+the same pattern we already have.
 
 Thanks,
-Shameer
-
-> >
-> > Appreciate your help,
-> >
-> > Thanks,
-> > Shameer
-> >
+drew

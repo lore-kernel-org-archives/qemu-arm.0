@@ -1,48 +1,48 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3879458wrg;
-        Tue, 14 May 2019 04:22:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwfOyJqdmdNsOshzq1bydLbb3LAeex7PubqbFDOLI3paeFjv7gqCA0rdXCws5thLXgGu1w3
-X-Received: by 2002:a17:902:8a4:: with SMTP id 33mr9798585pll.19.1557832933236;
-        Tue, 14 May 2019 04:22:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557832933; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3879483wrg;
+        Tue, 14 May 2019 04:22:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyYAb3JnX1QWRDrwjsuPAnIXiHlfiQ4SFFFcwskekPisA2ldyQe5meN5gbcmmA4mWGIJFGl
+X-Received: by 2002:aa7:99dd:: with SMTP id v29mr41457511pfi.252.1557832934595;
+        Tue, 14 May 2019 04:22:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557832934; cv=none;
         d=google.com; s=arc-20160816;
-        b=IJxpBfWuFTr1mZPM/faVRGrUHvE603qO1s1SsVAR0R6nMqH/qigJLEshUWZeSWMML7
-         4f6mbJ6PL+AjM8S5AplJXq7q5RERhXveEl/sYws4E00N7QmoAZ92ImHRtyis5+ZTzeO5
-         gkyBY0VgKI4rjnTkeV06A95ozSlGtpUfpWBNxTThzSJdA9SnmpcaHBeukgmR0YQqvA0P
-         HS9AKHbns+TTOgnOvUq3Qaem1NB7sMc/ZyaqYDw2R+0pJzkL2QRkSE53Gi93BJYwSKrR
-         rrd+6bvA2GeXyNUmH/9d1c3zKRq50D03/MnzUDzt5i2Xo726i8eptzriGmpLxF17hZL/
-         ws5A==
+        b=DhVrjBG0+6QVJLD60KAbEU8eXzuQCAAXzJ1uO+fhPyxumOn1idW9ChfPphALnPkULM
+         MTL0KrVxr+vqMKv+8R7Q9Eu5MR58vjLcupIkrg/4RmXlkLZYr8OaZI8KZd4//3H8ZhwB
+         zZvW8SAkoCa4ixxB98JmaSk60rtAcziUd1uVo2GILYSP2gYfUiQgVzAJTOg8NIcVmaN9
+         O11YOOGFfm/OKBlqvCHeS3KE408vi68Apq/22zIkrg6IG/ERn6dardEN3deFscqslvog
+         Ebb7PqR2S8YlGhbi7kNBGY1Vj4ydl+lds3UiQ9N0O5YWNfIlWXQ0cOoWjbqdsv1Mxie9
+         unTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=qapzenOGreaDitxTOg43001wTBKi9+y3Bs2GK236WG0=;
-        b=jg8KK4IhrzkSvqGXTUml2JdHB92UIvV6TPXJYeIyxx6Cp54cMQvsgb4KKAhJRYrGVd
-         FI/RtfiQOFpvhJ9q3t7J3aH++270+ZKdmlYA9y74TVl0Mtv3cuNYErH1rNL+n/U768B5
-         Z32YoE6l8vePJkKEa9g0BUvHCjRvwzVxPagfHBBYfQ6UeSAV2+f3u59POpVZpEbKQakg
-         NDBwQg1Hu8aYRk8nqiuyyIuotvL9s+UV8oUATYTYE1mbOflichHXKVppJPFg1iz2L9tX
-         xdxqtF7pU/6y2rfNhq4QmEFcy2CnaNOt1aTWpy6gOP6SfXKFy8ex3RpC4MNnjKKhs3G/
-         Vltw==
+        bh=8GpOIZJ+22epmPDM+ain2r7rEQu7xs1sJiYe5oUPSnQ=;
+        b=yjP9fP65eCoUubTBFmAGQi5cw1mFLeU0IoOefEzPbXk+We8E7z5QAUwUeW13GNE4nz
+         LXRqw2kG4MqwKi3hMhJ7N2vX9ynJ6GP18wfO1YrawC0nc62jNLwz5R0W4m5AuFsXgiaJ
+         iP5/MlA55IgpmjOX4lv+S4e3d15E/u99Gmhj+agbzfZJ1UiLIHAaYMyw/5/7xBs8hiEa
+         LRZbP4vHt/HH3MsD3SHAleZlpQPKHhuLwph2rTruNTB4eecmNpo91lySEH4fVkt2Er5c
+         30D55vnKirDK3GALO+OfqNttOQAPOT9IhNCItg4yGl/UU5ySaJ8I7/Aj/hEdNVGp/7TO
+         J/UA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 202si20024040pgh.575.2019.05.14.04.22.13;
-        Tue, 14 May 2019 04:22:13 -0700 (PDT)
+        by mx.google.com with ESMTP id 202si20024040pgh.575.2019.05.14.04.22.14;
+        Tue, 14 May 2019 04:22:14 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726369AbfENLWC (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 14 May 2019 07:22:02 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:44108 "EHLO huawei.com"
+        id S1726568AbfENLWN (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 14 May 2019 07:22:13 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:44496 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726338AbfENLWC (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 14 May 2019 07:22:02 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 3F83D18CFD8C6B38241D;
-        Tue, 14 May 2019 19:22:00 +0800 (CST)
+        id S1726424AbfENLWH (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 14 May 2019 07:22:07 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id C7B803012A4F42748010;
+        Tue, 14 May 2019 19:22:05 +0800 (CST)
 Received: from ros.huawei.com (10.143.28.118) by
  DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 14 May 2019 19:21:50 +0800
+ 14.3.439.0; Tue, 14 May 2019 19:21:57 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
@@ -52,9 +52,9 @@ To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
         <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
         <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: [PATCH v17 02/10] ACPI: add some GHES structures and macros definition
-Date:   Tue, 14 May 2019 04:18:15 -0700
-Message-ID: <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH v17 09/10] target-arm: kvm64: inject synchronous External Abort
+Date:   Tue, 14 May 2019 04:18:22 -0700
+Message-ID: <1557832703-42620-10-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
 References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
@@ -66,86 +66,104 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 6w7ZXepC8LZ/
+X-TUID: 7QrJ8inYYWfP
 
-Add Generic Error Status Block structures and some macros
-definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
-HEST table generation and CPER record will use them.
+Add synchronous external abort injection logic, setup
+exception type and syndrome value. When switch to guest,
+it will jump to the synchronous external abort vector
+table entry.
+
+The ESR_ELx.DFSC is set to synchronous external abort(0x10),
+and ESR_ELx.FnV is set to not valid(0x1), which will tell
+guest that FAR is not valid and hold an UNKNOWN value.
+These value will be set to KVM register structures through
+KVM_SET_ONE_REG IOCTL.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
- include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ target/arm/internals.h |  5 +++--
+ target/arm/kvm64.c     | 34 ++++++++++++++++++++++++++++++++++
+ target/arm/op_helper.c |  2 +-
+ 3 files changed, 38 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index f9aa4bd..d1996fb 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -224,6 +224,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
- #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 587a1dd..4d67a91 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -451,13 +451,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
+ }
  
- /*
-+ * Values for Hardware Error Notification Type field
-+ */
-+enum AcpiHestNotifyType {
-+    ACPI_HEST_NOTIFY_POLLED = 0,
-+    ACPI_HEST_NOTIFY_EXTERNAL = 1,
-+    ACPI_HEST_NOTIFY_LOCAL = 2,
-+    ACPI_HEST_NOTIFY_SCI = 3,
-+    ACPI_HEST_NOTIFY_NMI = 4,
-+    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
-+    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
-+    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
-+};
-+
-+/*
-  * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
-  */
- #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
-@@ -400,6 +419,39 @@ struct AcpiSystemResourceAffinityTable {
- } QEMU_PACKED;
- typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+-static inline uint32_t syn_data_abort_no_iss(int same_el,
++static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
+                                              int ea, int cm, int s1ptw,
+                                              int wnr, int fsc)
+ {
+     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
+            | ARM_EL_IL
+-           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
++           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
++           | (wnr << 6) | fsc;
+ }
  
-+/*
-+ * Generic Error Status Block
-+ */
-+struct AcpiGenericErrorStatus {
-+    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
-+    uint32_t block_status;
-+    uint32_t raw_data_offset;
-+    uint32_t raw_data_length;
-+    uint32_t data_length;
-+    uint32_t error_severity;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
+ static inline uint32_t syn_data_abort_with_iss(int same_el,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index e3ba149..c7bdc6a 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -697,6 +697,40 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+     return KVM_PUT_RUNTIME_STATE;
+ }
+ 
++/* Inject synchronous external abort */
++static void kvm_inject_arm_sea(CPUState *c)
++{
++    ARMCPU *cpu = ARM_CPU(c);
++    CPUARMState *env = &cpu->env;
++    CPUClass *cc = CPU_GET_CLASS(c);
++    uint32_t esr;
++    bool same_el;
 +
-+/*
-+ * Masks for block_status flags above
-+ */
-+#define ACPI_GEBS_UNCORRECTABLE         1
++    /**
++     * set the exception type to synchronous data abort
++     * and the target exception Level to EL1.
++     */
++    c->exception_index = EXCP_DATA_ABORT;
++    env->exception.target_el = 1;
 +
-+/*
-+ * Values for error_severity field above
-+ */
-+enum AcpiGenericErrorSeverity {
-+    ACPI_CPER_SEV_RECOVERABLE,
-+    ACPI_CPER_SEV_FATAL,
-+    ACPI_CPER_SEV_CORRECTED,
-+    ACPI_CPER_SEV_NONE,
-+};
++    /*
++     * Set the DFSC to synchronous external abort and set FnV to not valid,
++     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
++     */
 +
-+/*
-+ * Generic Hardware Error Source version 2
-+ */
-+#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
++    /* This exception comes from lower or current exception level. */
++    same_el = arm_current_el(env) == env->exception.target_el;
++    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
 +
- #define ACPI_SRAT_PROCESSOR_APIC     0
- #define ACPI_SRAT_MEMORY             1
- #define ACPI_SRAT_PROCESSOR_x2APIC   2
++    env->exception.syndrome = esr;
++
++    /**
++     * The vcpu thread already hold BQL, so no need hold again when
++     * calling do_interrupt
++     */
++    cc->do_interrupt(c);
++}
++
+ #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 8698b4d..d43134a 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -109,7 +109,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+      * ISV field.
+      */
+     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
+-        syn = syn_data_abort_no_iss(same_el,
++        syn = syn_data_abort_no_iss(same_el, 0,
+                                     ea, 0, s1ptw, is_write, fsc);
+     } else {
+         /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
 -- 
 1.8.3.1

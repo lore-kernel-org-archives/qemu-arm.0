@@ -1,146 +1,195 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3372402wrg;
-        Mon, 13 May 2019 16:17:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxZ909YRZe1fuL4+MGOGeygrYEMpPQumUDrSsJw/tLJbIaErXXyak7MYg+hSS3OdQKLYhUM
-X-Received: by 2002:a50:b78b:: with SMTP id h11mr32023417ede.134.1557789457749;
-        Mon, 13 May 2019 16:17:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557789457; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3613413wrg;
+        Mon, 13 May 2019 22:32:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyG+1/4O0Vn5ccpv2hOW0gQ7PHnT2Z/TrmxwljQba1J+tULwuMqHk4XXGGT36jcOm1GpX6W
+X-Received: by 2002:ac8:2f35:: with SMTP id j50mr26719786qta.378.1557811970483;
+        Mon, 13 May 2019 22:32:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557811970; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZjjiP1h7V1NRca8+qZx043vqiivCp4iZeC6OqPEfk5pieRhPMrB11PsLmXuDzXLuQi
-         +uvBq+aNXxMxpNYVmLKV8teNIfgdcCadToGzrz2WB8BQ04594PdKj5arjpavfqYhZEbp
-         dlif0+eQO+QiiNj0GiKmc150ElYywQUFrJdvNfUTsgj7jNpkpylH3nepvy6q1yfI8RQa
-         CcQaOY7caRY5dw2fsdTMzsizM3Jld+M9MLCD06HFfOcd51zytSOx9cq3HY4l+EII8hxL
-         n7KkJnjj9z2I3qeYJL+8trxvWufYbElD5WXzTSElBoUUTw+c5g0W0467k7yUiCKJDs3B
-         LGGw==
+        b=PlkSwsMOLDCtV8y5HB/o1gO0ClVeDphZlPC7hWNYkcwlCsksHSuc+0oQYKBc4ofeUW
+         XjAFFKxo9nGPYToIZVCIK0/vjBUAtN5zJi8muQ/gDvfwPG4XoKLwL7HO6THzDDiQXXYb
+         p6udqV1t3y3jTkw5/lL7+/CudYtMYHl51qUTtcJDXK3Sfzx7fNAqOpjLbLaxTpdJW3jE
+         Y4qc0q5zv8labI9PPEGm/pzAWrW6ABWlRkmYZGAry4A+3j6lUsckIhcCbV/wZSlbmplR
+         2rkK7qaCVpBs+eFxc6InMOxnvJfDjl2sbM73ibFGaDRMfZDUmPQcMB7xnAFBeexECI+A
+         APDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2vHz03zI+JINIBclxZbsNHslHVrte/25NIt2rGtgjnY=;
-        b=TogPKct8YwkXIO/N2cvIXt5a/CrOYxSlPyU9keIy2UkX5D8xKjEfMNxOndA8c6oMsG
-         Tc1X0hS0nGa6S+tb4t0+DNjunPP0n/K0Ly7wGvaLNu+RkzTGCsabz8h45FSrBDMUvl8i
-         NoTQGwEQeY3ybLQQlCML0HtvWkEQSLHG9FulE95nv1Thqf37W1G6n2hs/NfD3i5hr5l0
-         tJiMGp8Er3sCUmn0uLbzSGiTjqZ31vrd6d5ZJP/9lEWJr+CeWU6rvlu85SLfXPua+IIQ
-         DEDbvgX5sfgqxFEUDFB8zfNQye/f1cmQfS3N1oNnOTemKID5BTZTs4Yi9ENCcKIJ0XWS
-         nqcA==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from;
+        bh=uJ1T7i6hvsK2RsAVO5+VGJ29ekhySz0E0dvR0Kq2QSM=;
+        b=faOeHUmWCgb/BJDC5K5LjsJ8vzzO+vtYVCo2qWJvmBWga7+6jswWxAmAmTSFg9zvf4
+         imw5a/mAwW4OKEAAB9/fck07RZyf3/MU2TK7FumkQfEsK+y74OeqXyzZ7vlrWAo2/5Qf
+         SGuvfTzRMBMbpPGEEucYgGuP7tnphVy4OzetwVcoPzpwW38oc4RJrK/B2PfNm+D8igci
+         cMKbpkQI7sPJHl3j4Y5UsYSvoWxRQ5+azor2j8c/ENoC7g0YeqxWrrrsKE0VQyYh10zr
+         8hLZUesngx2r0xqYNJShDFfptaU6iiiq/gumVLYWh+GT9fCJTCSThrquELGyYorPiPbx
+         78uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m02C9uQK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ay4si2319471ejb.102.2019.05.13.16.17.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 May 2019 16:17:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id v10si1011166qvs.190.2019.05.13.22.32.50
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 22:32:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m02C9uQK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:36228 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQKCO-0002le-Ru
-	for alex.bennee@linaro.org; Mon, 13 May 2019 19:17:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56085)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hQKBo-0002cX-Mn
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 19:17:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hQK2Y-0003R0-5q
-	for qemu-arm@nongnu.org; Mon, 13 May 2019 19:08:17 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:45696)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hQK1s-0001o5-QM; Mon, 13 May 2019 19:06:45 -0400
-Received: by mail-lf1-x143.google.com with SMTP id n22so10278305lfe.12;
-	Mon, 13 May 2019 16:06:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=2vHz03zI+JINIBclxZbsNHslHVrte/25NIt2rGtgjnY=;
-	b=m02C9uQKsPUfSqGCArA4wK/5F6UU3CfAIGYxLypeEoOu+3okHBZJ8XtmJL6TPAewhb
-	2K5ifoC/Joq40zaTdtMigjvmExlPrM24WDenpNQA0pOVR2+Q2tqfgEftzywYDtJqx6VX
-	Q/qjjD+zl8MDtTd5zfZOQeYa6pOKe4mT1AkrUkEhzSLCIPE92DONAgdPsJCAF3CZ5uNv
-	McVz1jZ7+rpVE6hw+nv24lBC2Eu77qfaC+P5Z8qrjkFFNbVtK3tnSI3A3ulua4ZPJFpr
-	/HeMMw377ahsGkfxo6UdZK8UYmTQvSsXu3ykoa8qyvjn4KYF4hLCHpXUVVT++TTftrs9
-	aGUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=2vHz03zI+JINIBclxZbsNHslHVrte/25NIt2rGtgjnY=;
-	b=EMfkbFrEX2+sG6Vd4HnyOMPDqsQdoGE7DIXPJKtWlLPJlSW+yyUg0bSvr5XF0budk3
-	KxP4a34xCLCL966mra5p8VQ7bBrUqADveiS9mXPRuhazovo2NM0g6qsasI/z1vhC/7g4
-	OJx2dRccrokd1mo2ynrKixdBWRXl9WNKpQu2lCWwF+8xQfp+IA6WTrT06mHcsl5SMDFY
-	iZiEIeNO7ufIYTW/5U+9Mndv1YLvP9KdamhWIrnqadmHKjyrDAdFspMS6wCCL78Cj6hW
-	vOrRctybanysj7JbCZ5inehEjvEcN/S0GwCSOeAwFpaaktFk9UgQvyWQQQIbG8wDObMU
-	WPOQ==
-X-Gm-Message-State: APjAAAUMeiuhTQqgm6Ilj3V7x+931OFdD9ESgAa3nb90fMEZBCosOFIU
-	vyjqbyycx8I7U/tz5HSgKDQHCAlGg3U2kzgzY6A=
-X-Received: by 2002:a05:6512:309:: with SMTP id
-	t9mr14617630lfp.103.1557788799792; 
-	Mon, 13 May 2019 16:06:39 -0700 (PDT)
+       spf=pass (google.com: domain of armbru@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 56BAC308AA12;
+	Tue, 14 May 2019 05:32:49 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com [10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EAD155D706;
+	Tue, 14 May 2019 05:32:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 43AD911385E4; Tue, 14 May 2019 07:32:47 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Cc: peter.maydell@linaro.org,  richard.henderson@linaro.org,  qemu-devel@nongnu.org,  abologna@redhat.com,  qemu-arm@nongnu.org,  alex.bennee@linaro.org,  Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH 08/13] target/arm/monitor: Add query-sve-vector-lengths
+References: <20190512083624.8916-1-drjones@redhat.com>
+	<20190512083624.8916-9-drjones@redhat.com>
+	<87ftpie3k9.fsf@dusky.pond.sub.org>
+	<20190513183030.aap4gsxm7rbbkrbj@kamzik.brq.redhat.com>
+Date: Tue, 14 May 2019 07:32:47 +0200
+In-Reply-To: <20190513183030.aap4gsxm7rbbkrbj@kamzik.brq.redhat.com> (Andrew
+	Jones's message of "Mon, 13 May 2019 20:30:30 +0200")
+Message-ID: <874l5xa9ds.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20190513194328.11045-1-jonathan@fintelia.io>
-In-Reply-To: <20190513194328.11045-1-jonathan@fintelia.io>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 May 2019 16:04:26 -0700
-Message-ID: <CAKmqyKNGXrvnJSuBN-BqtoyjE6FQ3niNMkWpwv1w2e1GN8ESHg@mail.gmail.com>
-To: Jonathan Behrens <jonathan@fintelia.io>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::143
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] cadence_gem: Don't define
- GEM_INT_Q1_MASK twice
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Jonathan Behrens <fintelia@gmail.com>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WTnFmzPlR578
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Tue, 14 May 2019 05:32:49 +0000 (UTC)
+X-TUID: Nm/b9lL2H7Fg
 
-On Mon, May 13, 2019 at 12:57 PM Jonathan Behrens <jonathan@fintelia.io> wrote:
+Andrew Jones <drjones@redhat.com> writes:
+
+> On Mon, May 13, 2019 at 06:12:38PM +0200, Markus Armbruster wrote:
+>> Andrew Jones <drjones@redhat.com> writes:
+>> 
+>> > Provide a QMP interface to query the supported SVE vector lengths.
+>> > A migratable guest will need to explicitly specify a valid set of
+>> > lengths on the command line and that set can be obtained from the
+>> > list returned with this QMP command.
+>> >
+>> > This patch only introduces the QMP command with the TCG implementation.
+>> > The result may not yet be correct for KVM. Following patches ensure
+>> > the KVM result is correct.
+>> >
+>> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+>> > ---
+>> >  qapi/target.json     | 34 ++++++++++++++++++++++++
+>> >  target/arm/monitor.c | 62 ++++++++++++++++++++++++++++++++++++++++++++
+>> >  tests/qmp-cmd-test.c |  1 +
+>> >  3 files changed, 97 insertions(+)
+>> >
+>> > diff --git a/qapi/target.json b/qapi/target.json
+>> > index 1d4d54b6002e..ca1e85254780 100644
+>> > --- a/qapi/target.json
+>> > +++ b/qapi/target.json
+>> > @@ -397,6 +397,40 @@
+>> >  { 'command': 'query-gic-capabilities', 'returns': ['GICCapability'],
+>> >    'if': 'defined(TARGET_ARM)' }
+>> >  
+>> > +##
+>> > +# @SVEVectorLengths:
+>> > +#
+>> > +# The struct contains a list of integers where each integer is a valid
+>> 
+>> Suggest to s/The struct contains/Contains/.
 >
-> Signed-off-by: Jonathan Behrens <jonathan@fintelia.io>
-
-Good find. Thanks for the patch!
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Can this go via your tree Jason?
-
-Alistair
-
-> ---
->  hw/net/cadence_gem.c | 1 -
->  1 file changed, 1 deletion(-)
+> OK
 >
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 7f63411430..37cb8a4e5c 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -146,7 +146,6 @@
->  #define GEM_DESCONF7      (0x00000298/4)
+>> 
+>> > +# SVE vector length for a KVM guest on this host. The vector lengths
+>> > +# are in quadword (128-bit) units, e.g. '4' means 512 bits (64 bytes).
+>> 
+>> Any particular reason for counting quad-words instead of bytes, or
+>> perhaps bits?
 >
->  #define GEM_INT_Q1_STATUS               (0x00000400 / 4)
-> -#define GEM_INT_Q1_MASK                 (0x00000640 / 4)
+> It can be considered just bits here, but when set in sve-vls-map those
+> bits are chosen to mean quadwords as that allows us to get up to 8192-bit
+> vectors with a single 64-bit word. Maybe I should write more of that here
+> to clarify.
+
+Please do.
+
+In general, QMP prefers the plain units over arbitrary multiples,
+e.g. Byte, not Mebibyte.  Sadly, many violations of this rule have crept
+in.
+
+More complete documentation should help us determine the unit we want
+here.
+
+>> > +#
+>> > +# @vls:      list of vector lengths in quadwords.
+>> > +#
+>> > +# Since: 4.1
+>> > +##
+>> > +{ 'struct': 'SVEVectorLengths',
+>> > +  'data': { 'vls': ['int'] },
+>> > +  'if': 'defined(TARGET_ARM)' }
+>> > +
+>> > +##
+>> > +# @query-sve-vector-lengths:
+>> > +#
+>> > +# This command is ARM-only. It will return a list of SVEVectorLengths
+>> 
+>> No other target-specific command documents its target-specificness like
+>> this.  Suggest
 >
->  #define GEM_TRANSMIT_Q1_PTR             (0x00000440 / 4)
->  #define GEM_TRANSMIT_Q7_PTR             (GEM_TRANSMIT_Q1_PTR + 6)
-> --
-> 2.20.1
+> Well, it's pretty similar to query-gic-capabilities, which is what I used
+> as a template, but I'm happy to change it to whatever you suggest :)
+
+Here's the documentation we generate for query-gic-capabilities:
+
+ -- Command: query-gic-capabilities
+
+     This command is ARM-only.  It will return a list of GICCapability
+     objects that describe its capability bits.
+
+     Returns: a list of GICCapability objects.
+
+     Since: 2.6
+
+     Example:
+          -> { "execute": "query-gic-capabilities" }
+          <- { "return": [{ "version": 2, "emulated": true, "kernel": false },
+                          { "version": 3, "emulated": false, "kernel": true } ] }
+
+     If: 'defined(TARGET_ARM)'
+
+The "If:" line is generated from the schema's condition.  It's not as
+readable as I'd like it to be, but it's there, and it always matches the
+code.
+
+"This command is ARM-only" is redundant.  Escaped review.  A patch to
+drop it would be welcome.
+
+>>    # Query valid SVE vector length sets.
+>> 
+>> > +# objects. The list describes all valid SVE vector length sets.
+>> > +#
+>> > +# Returns: a list of SVEVectorLengths objects
+>> > +#
+>> > +# Since: 4.1
+>> > +#
+>> > +# -> { "execute": "query-sve-vector-lengths" }
+>> > +# <- { "return": [ { "vls": [ 1 ] },
+>> > +#                  { "vls": [ 1, 2 ] },
+>> > +#                  { "vls": [ 1, 2, 4 ] } ] }
+>> > +#
+>> > +##
+>> > +{ 'command': 'query-sve-vector-lengths', 'returns': ['SVEVectorLengths'],
+>> > +  'if': 'defined(TARGET_ARM)' }
+>> > +
 >
+> Yup, will do
+
+Took me a few seconds to connect this to my "# Query valid SVE vector
+length sets." line %-}
+
+>> >  ##
+>> >  # @CpuModelExpansionInfo:
+>> >  #
+[...]

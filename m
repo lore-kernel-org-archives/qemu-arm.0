@@ -1,96 +1,99 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3814408wrg;
-        Tue, 14 May 2019 03:08:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxYNx7jQTk2EFlJfnWRV8ySG/Dz+iEO/+oGiRyPiLTeL0EIF74GDlQV9GowFHFABeHRPK4e
-X-Received: by 2002:a17:906:a4d9:: with SMTP id cc25mr22216359ejb.298.1557828483287;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3814420wrg;
+        Tue, 14 May 2019 03:08:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxapNYBElgrHjHx/8xo+DMaNaEBLiJP74fUUHsIzpDo2Cf1RCaVaKMYOCjbEChmZtLFM58
+X-Received: by 2002:a17:906:4244:: with SMTP id r4mr12122828ejl.211.1557828483982;
         Tue, 14 May 2019 03:08:03 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1557828483; cv=none;
         d=google.com; s=arc-20160816;
-        b=nGJiQnN+DUvF/uLt96ywlat591JgrbTdelzE6FT5CJG3uSPjEMuHX2p0FUonmXRK6Y
-         Q81dtUXKsXWdkfrTMaPq77W58mTQFFJsntg6OTigtdjpMdphj741bwVCvPW0f/LOYErI
-         lFK0Zf4RY2ApjEydwb6mITfVC8PAPHi34bf1tByoP2HqwzenMe6yv4fnQTx7TBZLJeia
-         2Yam+bEANUYZkIcC4HgretIU/nUH9JHz1HReanmP5Rl2pBTtR6k1mLOoIiAvuU5JF740
-         7wHmDHO/mNUNMz6y3+ZGSmuj2xdVdfcuk/Fxiqlg1seYbBp9BcdLBpXbwx32xHDg/H3J
-         18Rw==
+        b=Zs6LGdbEAf1tYp5zHVGRlVlkf3YbZfy6A6W3wZqL3qOBJ75yqPRd0WqzUc5vpwSAuv
+         pV07XrjrZA25Y+G8t4lL6QaefxEGfg6XCAOnGqgtBDTL4R97kSXHVTTA0eJclNNGbBNi
+         mp2CIBL+cubHF0m/x7TL99yKEzrOfyuH+6uIm+yfMk1xngrKaOnst9GGp7xGkW0rT7Mw
+         Jpr/HbM97z+wjRt5IC7tDU3THUvg2lyyORp6Vm0JM17CU59mBp/Dzrc4rRCjZphbbOxk
+         LaWSEAxEpX3L7TRCk0CaHflmc6X+3MbglwmH+9YG0OuChXJqaeBAXNMOOispFrpAN0cw
+         MqTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=chIQv9D9N4cd7WaO9xjFgQmQm3EB1lvib6fmJ39p2nI=;
-        b=Hqk2OpN78Z+8TThMhUu+kRtjMBqSVaO70VEXwsc/YAOsT26mWwg78rLJrKeR5E6L9D
-         tIThbldeSkkJpuTVcX5Z4gQHnc/A39EJQJoGK420eB5ZJ8dguilVxfYyz3kUvN0jGlGV
-         6ZW+Oq3DfBRT8REbfuRgTTskyx5cR5RQdB0WoHfgfEyvzEBsQHQzq+bY/DLVt95PXnO+
-         D3ez2o+zAQzw+zjOWMEJEkUjohFm0UkjEXG8amk17kX4Hr+UJTgvVWRds5FZ4bp5UiOe
-         oNH65YmpojdjmTenxHrYkMrp8BfSFiXfmH+DcfvsHnuBfVepkoNWY4eVs02IhlgwRx3V
-         WToQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7tU1y6cgDjkQulfnQj1uO3ZTQRYqn7MfRQezNbpW6lI=;
+        b=dgvsy/715I5c2qwBTIBYn37VyJ5VEXd2W66wMBQnlcPwdqdx6t+7EwiCqxF2r3sBOm
+         Uz1ycPgj4eViFyUmJ6mWHp6CYzDlfm6NrwCMQL964hXkYox9ZDC5YtG4sqjuRdkti/UQ
+         pmG2Y9HiBVf8krWpFh2WfNC2K7d0+Epuvzii1N/4eFh/4GTpmExzYTaAjzTA0N6GnD3L
+         8smxKgSrQO9BWrYXERAGVEWrx0TcYtLWvPgFGiplGiEwV/PnwG5jyXyEDczRYnHW8feP
+         xNjFV2rymSe9b53mPsNGBYbhjArRt8PB9SDjeVxxmNCLWhVAfJIEr84+sJmg6/9np5Vq
+         pmuA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gczBr28G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ly4si2402223ejb.306.2019.05.14.03.08.03
+        by mx.google.com with ESMTPS id y22si3670752ejr.184.2019.05.14.03.08.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 14 May 2019 03:08:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gczBr28G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:44656 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:44662 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQULq-0003KB-9e
-	for alex.bennee@linaro.org; Tue, 14 May 2019 06:08:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51779)
+	id 1hQULr-0003Km-0v
+	for alex.bennee@linaro.org; Tue, 14 May 2019 06:08:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51701)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hQULD-00033L-FS
-	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hQUKz-0002to-El
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hQULB-0008TB-Lq
-	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:22 -0400
-Received: from mail-ot1-f67.google.com ([209.85.210.67]:41758)
+	(envelope-from <peter.maydell@linaro.org>) id 1hQUKy-00089T-EY
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:09 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:34035)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hQULB-0008SC-GF
-	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:21 -0400
-Received: by mail-ot1-f67.google.com with SMTP id g8so14650239otl.8
-	for <qemu-arm@nongnu.org>; Tue, 14 May 2019 03:07:21 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hQUKy-000803-8D
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:07:08 -0400
+Received: by mail-ot1-x344.google.com with SMTP id l17so14696504otq.1
+	for <qemu-arm@nongnu.org>; Tue, 14 May 2019 03:07:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=7tU1y6cgDjkQulfnQj1uO3ZTQRYqn7MfRQezNbpW6lI=;
+	b=gczBr28G3EVkNl4b5DarsJhVdC84KqN522VaCrnetnuMGTqQiDKnpKktIs5SJWUQgW
+	gKGI5G33Y/j9c6V/QsFNZjoecs6RdYOG/k/rh6WbM810+BE2a2t+AeFpdiDfumjrwrZk
+	oHzTIx1UiaywFc2fTgtJxiVQpyXqpbp26lmffxY5UmH7UZvLwTDJjqLpH+9mreqN73DZ
+	0ZqWnddodozaF3MrbJ/LQfA2HaHh4yFTTIoR898vxIz8qPjW0kE1UbyyUJp31Pe8I7nn
+	LVJPFFjivj4c6FLoQ4lPKzA2p/D4fQ/cUF1dLYs+VaZPRtod3lIvgNik+cG13h1YjJBW
+	fOoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=chIQv9D9N4cd7WaO9xjFgQmQm3EB1lvib6fmJ39p2nI=;
-	b=lj9ZPXfwI0+ZzItbvCFEfgwpBklXRV2oEv5QXJ3mWjHUBidwuFbyZVi4u+DmrR/7/8
-	RMmQxiUaVl7cbBhlcUYBNLmH+5TDP4/8xXIQ8C+G8jIPn2yPnCrnmMjCsyl2PPc3khHI
-	/Bm8O0NmvhCsJl+XY6iHh7OYYoOmbxDxb+6QvpawtR83NgQtlz+giWkEaQbQ2mCEboJB
-	terzxKF8BgQyZhWscIxlIPujcwmQuMKvqqP2hT7BlUCLd5RJVBBv/Nlw2edlIWYWsonP
-	Orj9bMJOejyr0oLOMKrG7UhMcyTx4bjohxzKTqbjwfrCWS6ql+CwgUWXz/BECerYfDrQ
-	LLjQ==
-X-Gm-Message-State: APjAAAWQ7chkzrht/UfBNOR96uOVf7JQjfKI2m0G6O0lHZ9m7Sdli/O2
-	MOBDvk1oJmqNx9HmErKRDWKfNw==
-X-Received: by 2002:a9d:64:: with SMTP id 91mr3449996ota.19.1557828440213;
-	Tue, 14 May 2019 03:07:20 -0700 (PDT)
-Received: from [172.20.7.146] ([12.187.203.94])
-	by smtp.gmail.com with ESMTPSA id
-	z20sm5532532otm.33.2019.05.14.03.07.19
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 May 2019 03:07:19 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <20190514100019.13263-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <6fdd74ed-f226-1c69-6afe-6b1f2c88c59a@redhat.com>
-Date: Tue, 14 May 2019 12:07:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=7tU1y6cgDjkQulfnQj1uO3ZTQRYqn7MfRQezNbpW6lI=;
+	b=ZjUNGKCZ+Z4wkL9r8hsMQzAUoNVVlsAkIV6R8QfmcYBA6XqpgKzF7eKifiitygf/k+
+	5cg6cYPQVsTz1XcTU/LDzYvYbwtEw0zfMIFFLuaE9w+vtZrJoxoGaOSYIs9XGIVSTJ6y
+	y3OtbrL1A8suSdARjW7szyoFuF634XjW3bEeeMAx7CU9KpALzK3+RWqeN7BeLG+atByc
+	7lH55Rct+ULE2Er5FeJNBdVkoOwD568YUdjOykyeEnAzslipqN9QI7UAOldMFwUFkoRy
+	XnMnhBcjNCRmPtMEhfmvqsyOLSc7GqynnBM+qjKVB5yLmZxz6zF2SbcscXosL+NPc7td
+	h5WQ==
+X-Gm-Message-State: APjAAAWAsPANMF2b45vJuOxzO15zpG+7vNn1skme8Od43lFxWZ/teMnh
+	7BVrTWAHpjmbCJQZ28BszB5pZW5KRfRk91vhbbT8Wg==
+X-Received: by 2002:a9d:5e07:: with SMTP id d7mr18983749oti.21.1557828425254; 
+	Tue, 14 May 2019 03:07:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190514100019.13263-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.210.67
-Subject: Re: [Qemu-arm] [PATCH 0/4] Kconfig switches for core / misc devices
+References: <20190514100019.13263-1-thuth@redhat.com>
+	<20190514100019.13263-3-thuth@redhat.com>
+In-Reply-To: <20190514100019.13263-3-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 May 2019 11:06:54 +0100
+Message-ID: <CAFEAcA9bGr1249Ofx=TXLK3JNs1KMWTnRR+-FexKr__0AJAipQ@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH 2/4] hw/core: Add a config switch for the
+ "or-irq" device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,34 +105,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, philmd@redhat.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2KZoqlg0ezsz
+X-TUID: dgGNw1Wgpw1a
 
-On 14/05/19 12:00, Thomas Huth wrote:
-> Here are some more Kconfig patches that introduce proper config
-> switches for some devices in the hw/core and hw/misc directories.
-> 
-> Thomas Huth (4):
->   hw/core: Add a config switch for the "register" device
->   hw/core: Add a config switch for the "or-irq" device
->   hw/core: Add a config switch for the "split-irq" device
->   hw/misc: Add a config switch for the "unimplemented" device
-> 
->  hw/arm/Kconfig        | 12 ++++++++++++
->  hw/core/Kconfig       |  9 +++++++++
->  hw/core/Makefile.objs |  6 +++---
->  hw/dma/Kconfig        |  1 +
->  hw/microblaze/Kconfig |  1 +
->  hw/misc/Kconfig       |  3 +++
->  hw/misc/Makefile.objs |  2 +-
->  hw/pci-host/Kconfig   |  3 ++-
->  hw/sparc64/Kconfig    |  1 +
->  hw/timer/Kconfig      |  1 +
->  10 files changed, 34 insertions(+), 5 deletions(-)
-> 
+On Tue, 14 May 2019 at 11:00, Thomas Huth <thuth@redhat.com> wrote:
+>
+> The "or-irq" device is only used by certain machines. Let's add
+> a proper config switch for it so that it only gets compiled when we
+> really need it.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/arm/Kconfig        | 2 ++
+>  hw/core/Kconfig       | 3 +++
+>  hw/core/Makefile.objs | 2 +-
+>  hw/pci-host/Kconfig   | 3 ++-
+>  4 files changed, 8 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index af8cffde9c..0bb3bbe9d3 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -277,6 +277,7 @@ config RASPI
+>  config STM32F205_SOC
+>      bool
+>      select ARM_V7M
+> +    select OR_IRQ
+>      select STM32F2XX_TIMER
+>      select STM32F2XX_USART
+>      select STM32F2XX_SYSCFG
+> @@ -424,6 +425,7 @@ config ARMSSE
+>      select IOTKIT_SECCTL
+>      select IOTKIT_SYSCTL
+>      select IOTKIT_SYSINFO
+> +    select OR_IRQ
+>      select TZ_MPC
+>      select TZ_MSC
+>      select TZ_PPC
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+In cases like this where a device is used both by
+an SoC and also directly by the board code that uses
+that SoC, should we put the select OR_IRQ only in
+the SoC's config, or also in the board model's config
+(ie, in "config MPS2" as well as "config ARMSSE") ?
 
-Paolo
+thanks
+-- PMM

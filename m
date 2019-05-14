@@ -1,137 +1,89 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3766127wrg;
-        Tue, 14 May 2019 02:06:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzrOeo9F2q0mCbhqCi8gwJr1UN9y9nckc5UlYsqaYjzc3tZ/dYmrW+ZU5X93Qf+Wz9/9Pih
-X-Received: by 2002:aa7:c403:: with SMTP id j3mr584267edq.144.1557824794574;
-        Tue, 14 May 2019 02:06:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557824794; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3769300wrg;
+        Tue, 14 May 2019 02:10:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy24Wg9HxRrecdeZFH9FTVyoRF+nwUUuUrjaujXYsl49uytEPx2pwlJcPud6BwG1C7c3Pvs
+X-Received: by 2002:a50:a535:: with SMTP id y50mr35267248edb.249.1557825013280;
+        Tue, 14 May 2019 02:10:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557825013; cv=none;
         d=google.com; s=arc-20160816;
-        b=JAsoVE6TfojSdD+aUJZi/s4/8IThzXYpD5i7MAxg453SVqHF3eaDbjU+MZTBpTYl0w
-         ZlLdV9Blj8Relu+EqRGd9MRrc3VDpPsDQ8q3IprCXoKw75xytp8hcFKcTxc0iHrQkAxd
-         DaWSnQxCQP0Gpfff5dFRf1HIPPSSq6zW1poAuZNB65QWGj6rwaPSDhUi7SygtCE8FGlM
-         pf9lW2F1/HhuXL+EwA/jBRre3oAg9dbtsbRDgpF/IxT2a4ZeaokHBTUx2YpdcAWCG1qg
-         QjQIVvzaBlz+z03nVQaByFlW7BRdeXpgcmb/ROlOmutpbuLDZG/rJ87TJmcyyajff5eo
-         uGHQ==
+        b=glwYZmnGYQjWO6fYV1C6ScY1st4Q4xkluEMCHgYHcO79L1a03Stm4wW3xINnOrUKxN
+         5OAjG3R8Sl3YO5d8A8WPrsJaTK4EWEY/ZNG6QE2xYEiR4QOZ4fZ0BLCVZ4XWjT8cFrfH
+         L1w2FRSw5JRotxo8a1te9pQqT+F0n5HoLMcEqFwDAavJPN9REyETZWOY3uowJkwwCZpg
+         xyIdtFu5S12gKk2oPz29RBCFVdbXhqjhp6qzzpEY7qTiJv8wKVspwxGXyBs3vjbNiIOF
+         n3BaihlW0myBlGRZk68L2ilK9T8lpz1Z5wQsUMYeHRQwM51pyjIs3hQ1DTJbnA3/zEzN
+         /xrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=npa3QAVRn4TLgu6ikRWrfw8hEYktXFq50xCvlagqQf0=;
-        b=uJemF4AnHPH0Ph+ki1hMF8fTRK4Buj3re7N99DsqUvJW/c700XzPjXqQXkM8KQQHkW
-         9QBUY8v105fgFrCcyxCACoc4aqzd2dd+M8bNAREp9baaOpNCvbaH2J8vLR90U3Xt8D8m
-         BPEEZ2/cc6nH219oApTHvca9t0hXNwhjzhhisfUZAFwRX+fMnNnidvuDIi7i/wLHsFNe
-         e7e0+pJGgxhFnPupWXfhSf1OwV6BoiwSslS9Lpyz6mjGYGqbdTZj9IcDbpMLCfe/Vz7I
-         TFyXp6BLB++0Apt0/hP+AKdAUW5P0DgEVCbOsjUOQ6PYEcQ35N1SdihV97Ndu0aE5RUi
-         N/pg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=w6L8HWRn/mzh/XLhBJ8gFqy2xT1h3LpExtKpKfx2S3I=;
+        b=wfVT2OcsQV35lDMMKaaCYo8IEp3I7wmjw4/sBIpIRDe8hiJxQTc5Ttiu66e8zfO+0v
+         f/11omEULh29PByxYsavvql6MGnUsbarDjAKwkTVy9Gc2lJRkHY/Y7SQLta+/dUwxwlf
+         WnIvRmSZ6sYV/Q/gnFdy3+GrvfIwZe5cSk1jVWCt5QV4pGPvnJFBJzMXBAfmzTEqsgxe
+         avFHW6nCwQ3+4wWsOwGv03HzHqbdipzyoUc6TRzjn+AC36oxxRvncHTI6cpwXbmvCbfm
+         MGHiO4NPsyVpaiK2HEGxLS1FAZil9jB6hkIMdUpmuLc7IJhj2sNON5+S39WjrI0TfV4R
+         FtNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i10si6466817ejj.258.2019.05.14.02.06.34
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 May 2019 02:06:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by mx.google.com with ESMTP id f27si5642195edb.255.2019.05.14.02.10.12;
+        Tue, 14 May 2019 02:10:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:43477 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQTOL-0003Jf-LF
-	for alex.bennee@linaro.org; Tue, 14 May 2019 05:06:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57849)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQTNJ-0003Fx-VT
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 05:05:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQTNI-000512-J2
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 05:05:29 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:42465)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hQTNI-0004zB-8u
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 05:05:28 -0400
-Received: by mail-wr1-f67.google.com with SMTP id l2so18253361wrb.9
-	for <qemu-devel@nongnu.org>; Tue, 14 May 2019 02:05:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=npa3QAVRn4TLgu6ikRWrfw8hEYktXFq50xCvlagqQf0=;
-	b=ZfuXaHhBad7iVnpMVGY2lXK48N9IHD/zzqv0hzP0bO67pu0YMjZWOExKkzwitqk8WS
-	KF1mZo9xmQov2Iah9BzYmP05VgVv7NDLm3WGZZoCiTMYE8yrMYhoix2k/4Y2lJf+Is72
-	zoD0zNwjxFu45ptzLwvKiGXwe1IzrKcy94oHQBQEAVh+bAwJDoKp6nPywSaP+KpehiJN
-	maHi16Ub8WJ9K3RSDGMWPsyMPoHTEjFe9h/SwZ5zzymwZoDzT1NeVftkn2Em0k5j7aOQ
-	oIT60RBEdM5JAkW23cbaQNJ/2i88av5u5Qrjbtq7LW5Vv+IH5oiA1AGGAHolcRVRNJ7D
-	2iEg==
-X-Gm-Message-State: APjAAAWUVK2Hu83vJd/CWTb0Ajo3AeQjY7q7HcM1un4Cx6o/Fm0EpLv9
-	jLcRcCsy97zar5ZmFQdwjIGJiQ==
-X-Received: by 2002:a5d:68cf:: with SMTP id p15mr20862802wrw.105.1557824727226;
-	Tue, 14 May 2019 02:05:27 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	a22sm2292454wma.41.2019.05.14.02.05.26
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 May 2019 02:05:26 -0700 (PDT)
-To: Jonathan Behrens <jonathan@fintelia.io>, qemu-devel@nongnu.org
-References: <20190513194328.11045-1-jonathan@fintelia.io>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <bc2e8bd3-e2d1-5a20-301e-023dcdc677a4@redhat.com>
-Date: Tue, 14 May 2019 11:05:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1B911374;
+	Tue, 14 May 2019 02:10:12 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 94ED23F71E;
+	Tue, 14 May 2019 02:10:10 -0700 (PDT)
+Date: Tue, 14 May 2019 10:10:08 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Andrew Jones <drjones@redhat.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"abologna@redhat.com" <abologna@redhat.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH 05/13] target/arm/kvm: Add
+ kvm_arch_get/put_sve
+Message-ID: <20190514091005.GN28398@e103592.cambridge.arm.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
+ <20190512083624.8916-6-drjones@redhat.com>
+ <20190513124356.GG28398@e103592.cambridge.arm.com>
+ <20190513140726.vpmenrfw4uocmtnc@kamzik.brq.redhat.com>
+ <20190513143929.GK28398@e103592.cambridge.arm.com>
+ <956f9bc9-1024-b02a-e792-98b01d016ef4@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20190513194328.11045-1-jonathan@fintelia.io>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH] cadence_gem: Don't define GEM_INT_Q1_MASK
- twice
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Jonathan Behrens <fintelia@gmail.com>,
-	"open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UOZHhqryhkGV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <956f9bc9-1024-b02a-e792-98b01d016ef4@linaro.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: bwk4eRzeIK2A
 
-On 5/13/19 9:43 PM, Jonathan Behrens wrote:
-> Signed-off-by: Jonathan Behrens <jonathan@fintelia.io>
-> ---
->  hw/net/cadence_gem.c | 1 -
->  1 file changed, 1 deletion(-)
+On Mon, May 13, 2019 at 05:58:59PM +0100, Richard Henderson wrote:
+> On 5/13/19 7:39 AM, Dave Martin wrote:
+> > On that point, could TCG easily be made to expose a larger vector length
+> > to the kernel?  I'd be interested to see what happened.
 > 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 7f63411430..37cb8a4e5c 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -146,7 +146,6 @@
->  #define GEM_DESCONF7      (0x00000298/4)
->  
->  #define GEM_INT_Q1_STATUS               (0x00000400 / 4)
-> -#define GEM_INT_Q1_MASK                 (0x00000640 / 4)
->  
->  #define GEM_TRANSMIT_Q1_PTR             (0x00000440 / 4)
->  #define GEM_TRANSMIT_Q7_PTR             (GEM_TRANSMIT_Q1_PTR + 6)
+> It would be easy enough to extend the maximum vector length within TCG.
 > 
+> Increase ARM_MAX_VQ.  Alter the couple of places where we manipulate ZCR.LEN to
+> extend the current 4-bit mask.
+> 
+> How large do you need the max to be, for testing?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Anything upwards of 256 bytes is interesting.
+
+The architecture reserves space for it to grow up to 9 bits, though it's
+unlikely it would ever get that large in reality.
+
+So if you wanted to go crazy, you might be able to go up to 8192 bytes.
+
+This is just for fun, since it goes outside the architecture and Linux
+officially doesn't support it today in any case.  So definitely not a
+priority!
+
+Cheers
+---Dave

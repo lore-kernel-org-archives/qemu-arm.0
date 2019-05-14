@@ -1,164 +1,124 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3848926wrg;
-        Tue, 14 May 2019 03:48:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxEz6BL16+PselBI3JabLanxnhQd+Mfc+nXaMjbGDTcCZiM1r4JzJorLchp6Z6fw6+gLkHH
-X-Received: by 2002:a17:906:65d2:: with SMTP id z18mr7988077ejn.68.1557830934212;
-        Tue, 14 May 2019 03:48:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557830934; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3879303wrg;
+        Tue, 14 May 2019 04:22:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyyOiYew8gy5vtwswcQrJWqLhVoz13o8Hi+smPx+4PYIv4QYRxJ5nbM9RruWpWh+xiUefpy
+X-Received: by 2002:a17:902:248:: with SMTP id 66mr28134231plc.185.1557832923538;
+        Tue, 14 May 2019 04:22:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557832923; cv=none;
         d=google.com; s=arc-20160816;
-        b=wTiaTJUBG1pNLCrkIERiZRKg2pALe5RpQjHRfB0e1dglkkLbM2NGXQvaTXp26XAltV
-         ftWwNpmt8nfheGJNDt8rWLQoKguvwJ+FTyYforSladE/GQgYd2jZfNXIy3PdEkh5mtWJ
-         AX1xXK3SDMN4bSLQb3p1gis4QeEv6yLUkMoNvAxQSVfz+VixXzc+el2NMPwvLF5lk2oy
-         uhApt9UeViYfAiLKCAuh7sh677Pzdb34VNdSIgpZ960vC/vhFokdrZ8LyoBSbw6T1YJi
-         VZsz139GfJ9BL6vl3hpF5scYxu9vcHB00HYBe36J+akpO8glTA1IORMNukqvQXJ+AFs1
-         bvEQ==
+        b=q/NO51FL7OcLjOZcnm0tAlFd1NW1FpwGCZHRwL5Z5cK80u7kac2+GyDPvPs7Vp/+9R
+         ZNYbeAO9DbU+z7Ik/ZFwjNZBCxgpfq17krt4GxdJSPy5ViJR3oKRQbZkuT6Wj3xqxPDW
+         XH/S7+cSYqdCiwLAtDneZiwlRPWX8DYJksWKSSqqCygQd7aD8IP+D7x3cP1gL61w9i6W
+         6fexiRuV75RrcYhNHKSJmZ/hK+73nqmojxTJnVInwwgRAVZOQ+klcH3Vc6vzvq9pVmvn
+         3UN0vUHyvkJ44ZO6Zj42cWL6eOUi3G/SftI5xQsfBXsdrwGIYwminMU6pRmSYwdREP99
+         LlHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=2y96/CJ+pYaj7fBKEham+qsGpqkSMXqxPa1MXm51blM=;
-        b=BWAKqSbdV/Vjljoy2Oqb4agg7NhY9QnLTh5hzzoLL8LB9i4OPUcQYHyHVLHs7zSfoh
-         oW4ijqTBEI3OpZXLldUpqqwHtZy0tTgX2+a3gk2nE9zQSzzkpI9SV+IYGNvmuDL7fRw2
-         9DMCWnI/TfDY5V5YFMZfH6Tf4bTaTsm6W7jNopa/9XYv6fBzrIRm8GLcreAXNIxgIUB9
-         4Fxa2HtBxu28ko6H4PLOe2hDGBhWdSbsEEKVn96MSV3q0JE9SiLYMidmiBu5G/5aQkjQ
-         QX9I9qgede2NPUAEx45iwjrqE8Clfrb0kZLxZQ/dfoMtQu6KE+3dIFywCaYiekLPzesF
-         OwOA==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from;
+        bh=wXfNUKzBVjVyxD7hoIYLWfcz/ruM+61t8MI7ZgW3f20=;
+        b=kaQFku/TgOxwNqIqDtCC/rra/RA80Q/3KpMHkxg0l6b3vJ648x/9Gg0mQvvNi0zTjX
+         53cFlpiSGE33qUWLfaUxxOAcx37sE2Ict9ZvQ0wYYWNOWtuq1VWvgZtwzfqIijLEfe8T
+         KlTwsg9S6sMJvjvW+YQ+dsoiLOoGFh9eYS0Zkq8smPY3sF3WS7N7hHAqepZVkAAa979o
+         7OHkBN/kqnYBjIAvc43ES5CghQJAyegz7ywnBtyLYdlGCw7u8k/ioLzk4GY0XE/TaIlf
+         qSFMpuopQCbAhlH+mX57uDLWIrrjpyvsi8EkH0Z/FOYcHOlWVtyC5tgCxD+mN/2h7SnG
+         Xnww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si2585690ejd.366.2019.05.14.03.48.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 May 2019 03:48:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 202si20024040pgh.575.2019.05.14.04.22.03;
+        Tue, 14 May 2019 04:22:03 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:45276 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQUzN-000260-73
-	for alex.bennee@linaro.org; Tue, 14 May 2019 06:48:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35240)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQUrD-0004YD-G4
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 06:40:28 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQUd9-0005UZ-Fu
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 06:25:56 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:36442)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hQUd9-0005O7-9y
-	for qemu-devel@nongnu.org; Tue, 14 May 2019 06:25:55 -0400
-Received: by mail-wr1-f68.google.com with SMTP id s17so2099208wru.3
-	for <qemu-devel@nongnu.org>; Tue, 14 May 2019 03:25:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=2y96/CJ+pYaj7fBKEham+qsGpqkSMXqxPa1MXm51blM=;
-	b=Asu2xG6RGuTGnGaKq2aVHblIG0Y636jnaekzVusGJltp88eC99zzoXUiY8ciPtgqcF
-	B0uRf8dmz2StBdn8FgashpQrzQ37YOhUMk2c0M8OJEEVSpjeKm4jQBlxsgAgNi7sCFh+
-	nADkIEDCBAOB5ZMcFa2YDx24gm9GVh/Z3LK1NK5LMT5tWAYCVqUUOZYWOr6M4QCGvUZI
-	Or5LltHteiq6HpF/86ZA68/hV7gjSpGRPKEWgryUmsZrEu0nwsFnHJtcj9qLvUrND69c
-	U6PMJ8eBwnycz6/KftUm4Gn7QzH0DY3nb23APtIXovrAtEAckfAQiyHkulKouRz2Ecv1
-	IXew==
-X-Gm-Message-State: APjAAAW1Ea9AuVl84fg1IbkTBuSkYGXusMvZBOWIVjXa9FgRXURKI61Y
-	dnol+lrBIFEeqvwSybT099/8dQ==
-X-Received: by 2002:a5d:5401:: with SMTP id g1mr21145084wrv.25.1557829553965; 
-	Tue, 14 May 2019 03:25:53 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	q24sm2076120wmc.18.2019.05.14.03.25.53
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 May 2019 03:25:53 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-References: <20190514100019.13263-1-thuth@redhat.com>
-	<20190514100019.13263-3-thuth@redhat.com>
-	<CAFEAcA9bGr1249Ofx=TXLK3JNs1KMWTnRR+-FexKr__0AJAipQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <41876537-aa47-6d13-5298-a3af03d11b8a@redhat.com>
-Date: Tue, 14 May 2019 12:25:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726422AbfENLWC (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 14 May 2019 07:22:02 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:7643 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726362AbfENLWC (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 14 May 2019 07:22:02 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 6B7BAB2814CF99DB80C7;
+        Tue, 14 May 2019 19:22:00 +0800 (CST)
+Received: from ros.huawei.com (10.143.28.118) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 14 May 2019 19:21:53 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+Subject: [PATCH v17 05/10] acpi: add build_append_ghes_generic_status() helper for Generic Error Status Block
+Date:   Tue, 14 May 2019 04:18:18 -0700
+Message-ID: <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9bGr1249Ofx=TXLK3JNs1KMWTnRR+-FexKr__0AJAipQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 2/4] hw/core: Add a config
- switch for the "or-irq" device
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FWtRxHipTzd2
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.118]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: DG1v1PRmk9lH
 
-On 5/14/19 12:06 PM, Peter Maydell wrote:
-> On Tue, 14 May 2019 at 11:00, Thomas Huth <thuth@redhat.com> wrote:
->>
->> The "or-irq" device is only used by certain machines. Let's add
->> a proper config switch for it so that it only gets compiled when we
->> really need it.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  hw/arm/Kconfig        | 2 ++
->>  hw/core/Kconfig       | 3 +++
->>  hw/core/Makefile.objs | 2 +-
->>  hw/pci-host/Kconfig   | 3 ++-
->>  4 files changed, 8 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index af8cffde9c..0bb3bbe9d3 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -277,6 +277,7 @@ config RASPI
->>  config STM32F205_SOC
->>      bool
->>      select ARM_V7M
->> +    select OR_IRQ
->>      select STM32F2XX_TIMER
->>      select STM32F2XX_USART
->>      select STM32F2XX_SYSCFG
->> @@ -424,6 +425,7 @@ config ARMSSE
->>      select IOTKIT_SECCTL
->>      select IOTKIT_SYSCTL
->>      select IOTKIT_SYSINFO
->> +    select OR_IRQ
->>      select TZ_MPC
->>      select TZ_MSC
->>      select TZ_PPC
-> 
-> In cases like this where a device is used both by
-> an SoC and also directly by the board code that uses
-> that SoC, should we put the select OR_IRQ only in
-> the SoC's config, or also in the board model's config
-> (ie, in "config MPS2" as well as "config ARMSSE") ?
+It will help to add Generic Error Status Block to ACPI tables
+without using packed C structures and avoid endianness
+issues as API doesn't need explicit conversion.
 
-Someone should be able to work on the board without having to look at
-the SoC code/config, so both :) The idea of Kconfig is you only worry
-about a specific device, and the qgraph sort the rest out.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+ hw/acpi/aml-build.c         | 14 ++++++++++++++
+ include/hw/acpi/aml-build.h |  6 ++++++
+ 2 files changed, 20 insertions(+)
 
-So having in both place is safer, and helps to visualize dependencies in
-the graph tree (I'm slowly working on this feature to help new-comer to
-understand model dependencies).
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 102a288..ce90970 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
+         build_append_int_noprefix(table, error_threshold_window, 4);
+ }
+ 
++/* Generic Error Status Block
++ * ACPI 4.0: 17.3.2.6.1 Generic Error Data
++ */
++void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
++                      uint32_t raw_data_offset, uint32_t raw_data_length,
++                      uint32_t data_length, uint32_t error_severity)
++{
++    build_append_int_noprefix(table, block_status, 4);
++    build_append_int_noprefix(table, raw_data_offset, 4);
++    build_append_int_noprefix(table, raw_data_length, 4);
++    build_append_int_noprefix(table, data_length, 4);
++    build_append_int_noprefix(table, error_severity, 4);
++}
++
+ /* Generic Error Data Entry
+  * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+  */
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index a71db2f..1ec7e1b 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -425,6 +425,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
+                                     uint32_t error_data_length, uint8_t *fru_id,
+                                     uint8_t *fru_text, uint64_t time_stamp);
+ 
++void
++build_append_ghes_generic_status(GArray *table, uint32_t block_status,
++                                 uint32_t raw_data_offset,
++                                 uint32_t raw_data_length,
++                                 uint32_t data_length, uint32_t error_severity);
++
+ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+                        uint64_t len, int node, MemoryAffinityFlags flags);
+ 
+-- 
+1.8.3.1

@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp350922wrg;
-        Wed, 15 May 2019 02:15:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwXJIgvEGcXaBXSV9Le6JbGCyG6nye975gZhcE3kEww2xyPy7AdXBvNXW6ptYqqhIhS7WWw
-X-Received: by 2002:ae9:ea15:: with SMTP id f21mr4039206qkg.138.1557911727812;
-        Wed, 15 May 2019 02:15:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557911727; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3963805wrg;
+        Tue, 14 May 2019 05:53:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwFnJvzcRNqrL2KwCKtGI0txPWHmYSG7UdeLS4uU/VnAUChfx8stF7eJzRMKZdKONl4u1AQ
+X-Received: by 2002:ac8:5409:: with SMTP id b9mr29012697qtq.326.1557838417863;
+        Tue, 14 May 2019 05:53:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557838417; cv=none;
         d=google.com; s=arc-20160816;
-        b=XBUbfWK8go+HmQBgLgK1LVXmljvQnDdTc0kXckV0jkCnpahVFu4e8Xoz+FiLfTTSC2
-         c3ebTPMl2GO13yOQlRW1E5XH6cuoIJXhrTgry1gXLr5bNeFEtmqiYBnPFy8DfzJIAIcZ
-         VdwFW50ImZYrrTK/g7/fjudVuORz8brQe6+KOYuJIkX3XzdYId7yv6GlSuYlCesZFPJa
-         NexQOKjLyzyCmE0kmwEAipTNoG4+X5xN/Toq0CQC5EW3a33S6HkpuMJ1xv7yHU/7Zm3U
-         WpNzKz0ACa0jbj0VryjwfPGJD4s87brxjwbgN+o1nha100nzIYaFgAotdyi3VkDdxYz6
-         hY8g==
+        b=gwmUL7k6dSzKfx3lO5D1hszzhozRPXnlfo/DmLVUEpR47Ya1hffLjKUeh13D/7dGvL
+         RtRJvVjHEmCs6yPQSHJa44AlVANtfe+FZdSol26tmxGmLn51rN8Qe5lNJZ+M27W3zMtF
+         dz5NPPG5A8Yrc0ExswOIu8LeuQslBlTzhpV27iWMTyAgyBFsl+Q2SOSWBJWt2/hlbM7m
+         mALFtUkq3cS6rr9Gze/nWxG0eai8z4Dc1LKIz0FXLG5igpGllpQEliM8/V8HsnyQhpi7
+         eBt9B80U2M+H58eEwRJ+6+BS/qM3u8g+TkiyYWNH9NJKxVLeSib2bymi5eMloOYEvQHe
+         9atQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=ledJz/4BBUI4Wq39eYnWG+/z+Al8gd8QyGvXAxSU/0E=;
-        b=Fcy16eRU7JrlrnyK2pWgXppC9xVOHmnmo8yILmpda9voHJMFs2/s+wzDEXMpe8cjhn
-         s0LW7yvKmC7oDRIsPVFpws/o28v42A1d13YWLKwO9wuZS2lb+bKpYx3roBCNqQohtZE8
-         wN2ZSVKx+1vyNCftMMw0SAC+gsEr8lYM1aEMNFAB33PyFoMyKeAfDdpaDWyny4JtuzTh
-         TcWx5fsfAaloAx86CA7bjQGRiVOpw1NlwJSzksg2undLnJHAN9r0vSxC9c0FXb+CiBzn
-         qJqjrrScubpCahIMs6dMamlJt6foV04UMI9oyPmjUsZ2MzsSNPDiRyZdKHyC9eepgyPl
-         hGUQ==
+        bh=uohK+mT6Te5bRQ/YgzUkzQITpKyNISyai2pQhF4HiLQ=;
+        b=WooilCD6gX/1YqgfLXpV96okgLNPHEO6OSyldi6BVeBRZ2WHW50MDEbKRtY41e2PSq
+         Le/2fayqFltVhUwWyyuUl/03LK17LDnGpQAAHpruxlDr++4hohVaOqi2Ik3OvjhM+Nnm
+         LJ82wK8h5uCDS7qUaQPQAg/du99ZR2PIvziKYLJW87hqmGCidddthpBszPlduErITGd3
+         VtrdJ3a2FeNgrPaKj21QcJwg9ooZ/rlJqPKKCuRPbIkGZBqbDsjKdOi/XsIKC3w4/mia
+         yALknFrCO0kwluZYF9NOgTl7ZmI2WaEE4+/Hd8KqzEa2t91vglnCgmbAjjC0UOy2ATGo
+         B+XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id s13si1025422qts.59.2019.05.15.02.15.27
+        by mx.google.com with ESMTPS id h58si2950897qvd.153.2019.05.14.05.53.37
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 May 2019 02:15:27 -0700 (PDT)
+        Tue, 14 May 2019 05:53:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,77 +36,166 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EBD3F8552E;
-	Wed, 15 May 2019 09:15:26 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 13BD910021B2;
-	Wed, 15 May 2019 09:15:24 +0000 (UTC)
-Date: Wed, 15 May 2019 11:15:22 +0200
+	by mx1.redhat.com (Postfix) with ESMTPS id 8A254308795B;
+	Tue, 14 May 2019 12:53:36 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.205.198])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 449B910027CD;
+	Tue, 14 May 2019 12:53:34 +0000 (UTC)
+Date: Tue, 14 May 2019 14:53:29 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Andrea Bolognani <abologna@redhat.com>
 Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
 	qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
 	alex.bennee@linaro.org, Dave.Martin@arm.com
 Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
-Message-ID: <20190515091522.xomdryr24oc7qki5@kamzik.brq.redhat.com>
+Message-ID: <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
  <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
  <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
  <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
- <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
- <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
+In-Reply-To: <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
 User-Agent: NeoMutt/20180716
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Wed, 15 May 2019 09:15:27 +0000 (UTC)
-X-TUID: WPTlxhtP+nx2
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Tue, 14 May 2019 12:53:36 +0000 (UTC)
+X-TUID: frElEAKGq8lt
 
-On Tue, May 14, 2019 at 06:03:09PM +0200, Andrea Bolognani wrote:
-> I thought about it a bit more and perhaps the simplified design is
-> better after all.
-> 
-> Whatever the interface looks like on the QEMU side, we're going to
-> want to offer libvirt users two options for configuring vector
-> lengths: listing all desired vector lengths explicitly (basically
-> sev-vl-map but more verbose and readable) and providing just the
-> biggest desired vector length (like in sev-max-vq).
-> 
-> In the latter case, we'll want to expand the user-provided value
-> into an explicit list anyway in order to guarantee guest ABI
-> stability, and doing so when a single bitmap has been obtained via
-> QMP seems like it would be more manageable.
-> 
-> Sorry for the flip-flop, but after all isn't this exactly what
-> upstream design discussion is supposed to be all about? :)
-
-Yup, no problem. I'm actually liking the idea of the single map plus
-flags. We won't need two implementations (QEMU and libvirt), we'll
-only need one (libvirt). The QEMU QMP side will only need to state
-what should be implemented using the flags. Also, as we already
-agreed, we need TCG and KVM flags anyway, so we're already in flag
-land.
-
-> 
-> [...]
-> > > If the size of the bitmap on the KVM side is 512 bits, why don't we
-> > > just make it that size on the QEMU side too from the start?
+On Tue, May 14, 2019 at 02:29:51PM +0200, Andrea Bolognani wrote:
+> On Mon, 2019-05-13 at 14:36 +0200, Andrew Jones wrote:
+> > On Mon, May 13, 2019 at 11:32:46AM +0200, Andrea Bolognani wrote:
+> > > On Sun, 2019-05-12 at 10:36 +0200, Andrew Jones wrote:
+> > > [...]
+> > > >    CPU type | accel | sve-max-vq | sve-vls-map
+> > > >    -------------------------------------------
+> > > >  1)     max | tcg   |  $MAX_VQ   |  $VLS_MAP
+> > > >  2)     max | kvm   |  $MAX_VQ   |  $VLS_MAP
+> > > >  3)    host | kvm   |  N/A       |  $VLS_MAP
+> > > > 
+> > > > Where for (1) $MAX_VQ sets the maximum vq and smaller vqs are
+> > > > all supported when $VLS_MAP is zero, or when the vqs are selected
+> > > > in $VLS_MAP.
+> > > 
+> > > I'm a bit confused by the nomenclature here. VL clearly stands for
+> > > Vector Length, but what does VQ stand for? You seem to be using the
+> > > two terms pretty much interchangeably throughout the cover letter.
 > > 
-> > I'd still only want to input 64-bits on the command line, otherwise
-> > we get into inputting arrays, which isn't easy. KVM's interface is
-> > meant for expansion, but it won't be using most of those bits for
-> > quite some time either.
+> > As Dave pointed out, they're both lengths, but VQ specifically points
+> > out that the unit is 'Q'uadwords. We could use VQS instead of VLS,
+> > "Vector Lengths" sounds better.
 > 
-> I'm probably missing something entirely obvious, but couldn't you
-> just have a single, possibly fairly massive (up to 128 hex digits if
-> I'm not mistaken) value on the command line and just work with that
-> one, no arrays necessary?
->
+> Alright, it makes sense - once you've managed to figure out what
+> exactly a "quadword" is, at least :)
+> 
+> Since we expect management applications to use QMP to discover what
+> vector lengths are supported and then provide an explicit map, I
+> think it's fair to say that the ability to specify a single maximum
+> vector length is going to be exclusively used as a convenience for
+> command line users.
+> 
+> In that light, I think it would be reasonable for the usage to look
+> along the lines of
+> 
+>   -cpu host,sve-vl-map=0xd # machine-friendly variant
+>   -cpu max,sve-vl-max=512  # user-friendly variant
 
-We could, and I like the idea. It just hadn't crossed my mind due to
-implementation tunnel vision.
+We already have sve-max-vq, so I'm not sure we want to rename it.
+
+> 
+> with documentation clearly pointing out that the two options expect
+> completely different formats - but that was the case even before,
+> so we would have had to document that anyway.
+> 
+> > > > The QMP query returns a list of valid vq lists. For example, if
+> > > > a guest can use vqs 1, 2, 3, and 4, then the following list will
+> > > > be returned
+> > > > 
+> > > >  [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ] ]
+> > > > 
+> > > > Another example might be 1, 2, 4, as the architecture states 3
+> > > > is optional. In that case the list would be
+> > > > 
+> > > >  [ [ 1 ], [ 1, 2 ], [ 1, 2, 4 ] ]
+> > > 
+> > > I think the proposed QMP command is problematic, because it reports
+> > > the valid vector lengths for either KVM or TCG based on which
+> > > accelerator is currently enabled: it should report all information
+> > > at all times instead, similarly to how query-gic-capabilities does
+> > > it.
+> > 
+> > OK, and then with a flag stating which is when then.
+> 
+> Correct.
+> 
+> > Dave points out
+> > we may want to reduce the list to a single set and then add flags
+> > to indicate what can be done with it in order to derive other sets.
+> > What do you think about that?
+> 
+> So right now all that can be done is truncating the list by removing
+> an arbitrary number of elements from the end, right? Eg. if you have
+> [ 1, 2, 4 ] you can use either that or [ 1, 2 ] or [ 1 ]. But in the
+> future you might also be able to mask single elements in the middle
+> of the list, thus enabling things like [ 1, 4 ].
+> 
+> That doesn't sound very complicated to support in libvirt, though I
+> have to say that I'm not a big fan of this proposal because as far as
+> I can see it basically means implementing the very same logic twice,
+> once in QEMU and then once more in libvirt.
+
+So if big tables of bits aren't a problem for QMP queries, then I'll
+just leave the design as it is.
+
+> 
+> > > [...]
+> > > > And now for what might be a bit more controversial; how we input
+> > > > the valid vector set with sve-vls-map. Well, sve-vls-map is a
+> > > > 64-bit bitmap, which is admittedly not user friendly and also not
+> > > > the same size as KVM's vls bitmap (which is 8 64-bit words). Here's
+> > > > the justification:
+> > > > 
+> > > >  1) We want to use the QEMU command line in order for the information
+> > > >     to be migrated without needing to add more VM state.
+> > > >  2) It's not easy/pretty to input arrays on the QEMU command line.
+> > > >  3) We already need to use the QMP query to get a valid set, which
+> > > >     isn't user friendly either, meaning we're already in libvirt
+> > > >     territory.
+> > > >  4) A 64-bit map (supporting up to 8192-bit vectors) is likely big
+> > > >     enough for quite some time (currently KVM and TCG only support
+> > > >     2048-bit vectors).
+> > > >  5) If user friendliness is needed more than migratability then
+> > > >     the 'max' cpu type can be used with the sve-max-vq property.
+> > > >  6) It's possible to probe the full valid vector set from the
+> > > >     command line by using something like sve-vls-map=0xffff and
+> > > >     then, when it fails, the error message will state the correct
+> > > >     map, e.g. 0xb.
+> > > 
+> > > I don't have a problem with having to use a bitmap internally,
+> > > though libvirt will clearly want to expose a more approachable
+> > > interface to users.
+> > > 
+> > > However, QMP reporting the information in the current format means
+> > > we'd have to build an additional parser on top of the bitmap handling
+> > > and conversion routines we'll clearly need to make this work; plus it
+> > > just feels weird that the information reported by QMP can't be used
+> > > on the command line without going through some tranformation first.
+> > > 
+> > > Wouldn't it make more sense to both accept and report bitmaps?
+> > 
+> > If we eventually need more than one word for the bitmap then it'll
+> > require parsing and bitmap composition code in libvirt anyway. I
+> > was thinking by pointing out each bit separately that we could
+> > boundlessly grow the list without having to change anything in
+> > libvirt later.
+> 
+> If the size of the bitmap on the KVM side is 512 bits, why don't we
+> just make it that size on the QEMU side too from the start?
+
+I'd still only want to input 64-bits on the command line, otherwise
+we get into inputting arrays, which isn't easy. KVM's interface is
+meant for expansion, but it won't be using most of those bits for
+quite some time either.
 
 Thanks,
 drew

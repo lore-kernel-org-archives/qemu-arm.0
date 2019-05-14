@@ -1,119 +1,202 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp461648wrg;
-        Wed, 15 May 2019 04:28:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqynvN2ReIrxk81nMAIYsDE3A1KwPZj61xWP4wGFIvAbkR4cH2Ljkhx/BRyuoORkebjiLjK4
-X-Received: by 2002:a37:a894:: with SMTP id r142mr32833322qke.37.1557919704491;
-        Wed, 15 May 2019 04:28:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557919704; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3842934wrg;
+        Tue, 14 May 2019 03:40:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwYJ71dHg0lx8KjzY90ZI1TdkPRxxo8l1/y8uYxBeEbQf9XLGSFOxNI9YX+IU1VwAj8Fxvr
+X-Received: by 2002:a17:906:a852:: with SMTP id dx18mr26347781ejb.210.1557830441740;
+        Tue, 14 May 2019 03:40:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557830441; cv=none;
         d=google.com; s=arc-20160816;
-        b=h2FY15W5bV5ld4KbYdYAQduehKjDcQkd6SPlbuHPVHUKHJg+KGo4poRXCE1k6D4vtQ
-         tWynbPZHT6TktnUIkIXIWlcdk9oZxnWCQY74Ldo3LIi+cP487CDmNN8OSGONB+VK6sG5
-         qKG8r0KD2gmT3i//2DfdG3Q49leHfSQ+h+Cbn7SVMv1x/OHkzb9D6+TEDuJCWUnFCXZp
-         MSlab4VbreW9Qho7GuKlhaYYKFBVbILQxNVHbStLjLbCCaflq/1kAfNC/O553E/8tXi3
-         pjO03X52Dn2v9eFHLhBoOVOw4NUHFpZq2vgDqY4nRl5W+Wfibu9CsbO0rN+asQMaykmw
-         A3ug==
+        b=fILkXpwIKmI9PJyRbVILSO0bxDhIICLYi1v465CSsxr2aSekaZ9gQOe+GLBsv2EoF0
+         y7JP88nExGYki4GYDV4unSyX7w40EuOu/aHY+reOxzjLGDBWUielAbhm7r5fsDyhMdDm
+         EBtXwSDNf1m9Vb3uUGK1VVayiEiqIRSYsXgreRAVR+qbbBFGlsT5HLfrRKFX0/SQeLnU
+         FfvnqCbcpX3H3+EAiL9/9AHzWGYjgHlQAQAtiTQ7/+JURqg2ECjxr6/8yuaE1KifUXkO
+         OdDa+EHsrJKU/f99T3fTi0fqLJdS3xSLi9RJXsWmG6kX5SEg1R/Ypui++B+eAb7Rw9sW
+         RDmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id;
-        bh=UX28lJXwk+FKYSsZW+UNood18BkhFwJkGzGcJv/qmMI=;
-        b=sXJhmzoqzB4oW3lDx5SyRc5yDUZAE7lYebSDrRpi6Tv0vP319aCIY/Q3/OwWz2uQ1+
-         sgRz1ZAUAIj/k8ud1vbqgwURxRCHVPcSV01q+pz6Nhm+p6PkQ2oZil2pI/MSJVIGVANg
-         YWF8ekN01If/r+SoSzipr3ZBggJxYKubKp0j8Mbihz/JqUDLQ4iemrEQdFoDumEsV4tZ
-         uTXIur1OT+JaG4DOLVgTWP8TxdZwXD/aYi5nHBbRC9PQcSjITAGPk50bERuI5iS5ka41
-         JMARuItS8nNV4XjIPHqp+weOA3k4OUFHw7mK7FhJWIOM07r+ZdyoDLFeHHfaD+qC/VuH
-         xL3A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=AvZz2boiOyn1jxg9k+PTTSIfZy9Lh9NxEB+0LdQsDSI=;
+        b=Gnp6ZrouiaBqQnvsKLUVYaq5DOGGTAhcqs8VeNNd07dSAjFTvPsT/kooIEhMi/B/yQ
+         GBLIyN7ySxzX5nwujZIoz+YEwd1p8TO6ctzFwsyo12trjoWkF6RySZMuO2+LU6zL15a9
+         vymTSw+dVxZlO3AJEJw3OuAzv+Q9ir3WmmkzgPE+RkorPvu6dA7PBlC4Ng7p/N4O6KHf
+         tiO/mmP7jgasHqUImnjgVd10/A1FlGlRCAOqMa1bsKeQm7uTraWb663nzCeuDDp8pCrd
+         ya5PhD/NrjkofZiABzN1fspbMOtD9j6SjRfVAq6ivZeeqboYBhj7XfAWV9yJyKBaRLXV
+         4YxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=abologna@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <abologna@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id p8si1105013qkg.103.2019.05.15.04.28.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 15 May 2019 04:28:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m1si1145519edd.428.2019.05.14.03.40.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 14 May 2019 03:40:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of abologna@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=abologna@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:45102 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hQUrQ-0004Qs-L9
+	for alex.bennee@linaro.org; Tue, 14 May 2019 06:40:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34872)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1hQUqo-0004Gz-RZ
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:40:04 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1hQUnT-0007zi-E3
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 06:36:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50750)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hQUnT-0007ph-6H; Tue, 14 May 2019 06:36:35 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 845C93078AD9;
-	Wed, 15 May 2019 11:28:23 +0000 (UTC)
-Received: from kinshicho (unknown [10.43.2.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CEBD65D9DE;
-	Wed, 15 May 2019 11:28:21 +0000 (UTC)
-Message-ID: <6ab7415d80419a7d9ac832b9194bf2d944696cd9.camel@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
-From: Andrea Bolognani <abologna@redhat.com>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, Andrew Jones
- <drjones@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>,  "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "armbru@redhat.com" <armbru@redhat.com>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "alex.bennee@linaro.org"
- <alex.bennee@linaro.org>
-Date: Wed, 15 May 2019 13:28:20 +0200
-In-Reply-To: <20190515111420.GR28398@e103592.cambridge.arm.com>
-References: <20190512083624.8916-1-drjones@redhat.com>
-	 <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
-	 <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
-	 <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
-	 <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
-	 <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
-	 <1cd94ba6-2bfa-645e-1034-dd05e8a77000@linaro.org>
-	 <a24b6d34b99835ea38b021896a57c7af8bf4747c.camel@redhat.com>
-	 <20190515111420.GR28398@e103592.cambridge.arm.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+	by mx1.redhat.com (Postfix) with ESMTPS id 363A4C05242C;
+	Tue, 14 May 2019 10:36:33 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-85.ams2.redhat.com [10.36.116.85])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D45C15C206;
+	Tue, 14 May 2019 10:36:28 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20190514100019.13263-1-thuth@redhat.com>
+	<20190514100019.13263-3-thuth@redhat.com>
+	<CAFEAcA9bGr1249Ofx=TXLK3JNs1KMWTnRR+-FexKr__0AJAipQ@mail.gmail.com>
+	<41876537-aa47-6d13-5298-a3af03d11b8a@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <81dfd1a7-529b-1f1f-ced9-2f5db267e7d2@redhat.com>
+Date: Tue, 14 May 2019 12:36:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Wed, 15 May 2019 11:28:23 +0000 (UTC)
-X-TUID: zpmrz06GvquA
+In-Reply-To: <41876537-aa47-6d13-5298-a3af03d11b8a@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 14 May 2019 10:36:33 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 2/4] hw/core: Add a config switch for the
+ "or-irq" device
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yfkb88GsRMGj
 
-On Wed, 2019-05-15 at 12:14 +0100, Dave Martin wrote:
-> On Wed, May 15, 2019 at 09:03:58AM +0100, Andrea Bolognani wrote:
-> > On Tue, 2019-05-14 at 13:14 -0700, Richard Henderson wrote:
-> > > Why is =4 less user-friendly than =512?
-> > > 
-> > > I don't actually see "total bits in vector" as more user-friendly than "number
-> > > of quadwords" when it comes to non-powers-of-2 like =7 vs =896 or =13 vs =1664.
-> > 
-> > I would wager most people are intimately familiar with bits, bytes
-> > and multiples due to having to work with them daily. Quadwords, not
-> > so much.
-> 
-> Generally I tend to agree.  For kvmtool I leaned torward quadwords
-> purely because
-> 
-> 	16,32,48,64,80,96,112,128,144,160,176,192,208
-> 
-> is a big pain to type compared with
-> 
-> 	1,2,3,4,5,6,7,8,9,10,11,12,13
-> 
-> Even though I prefer to specify vector lengths in bytes everywhere else
-> in the Linux user API (precisely to avoid the confusion you object to).
-> 
-> This isn't finalised yet for kvmtool -- I need to rework the patches
-> and may not include it at all initially: kvmtool doesn't support
-> migration, which is the main usecase for being able to specify an exact
-> set of vector lengths AFAICT.
-> 
-> Since this is otherwise only useful for migration, experimentation or
-> machine-driven configuration, a bitmask
-> 
-> 	0x1fff
-> 
-> as some have suggested may well be a pragmatic alternative for kvmtool.
+On 14/05/2019 12.25, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 5/14/19 12:06 PM, Peter Maydell wrote:
+>> On Tue, 14 May 2019 at 11:00, Thomas Huth <thuth@redhat.com> wrote:
+>>>
+>>> The "or-irq" device is only used by certain machines. Let's add
+>>> a proper config switch for it so that it only gets compiled when we
+>>> really need it.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  hw/arm/Kconfig        | 2 ++
+>>>  hw/core/Kconfig       | 3 +++
+>>>  hw/core/Makefile.objs | 2 +-
+>>>  hw/pci-host/Kconfig   | 3 ++-
+>>>  4 files changed, 8 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>>> index af8cffde9c..0bb3bbe9d3 100644
+>>> --- a/hw/arm/Kconfig
+>>> +++ b/hw/arm/Kconfig
+>>> @@ -277,6 +277,7 @@ config RASPI
+>>>  config STM32F205_SOC
+>>>      bool
+>>>      select ARM_V7M
+>>> +    select OR_IRQ
+>>>      select STM32F2XX_TIMER
+>>>      select STM32F2XX_USART
+>>>      select STM32F2XX_SYSCFG
+>>> @@ -424,6 +425,7 @@ config ARMSSE
+>>>      select IOTKIT_SECCTL
+>>>      select IOTKIT_SYSCTL
+>>>      select IOTKIT_SYSINFO
+>>> +    select OR_IRQ
+>>>      select TZ_MPC
+>>>      select TZ_MSC
+>>>      select TZ_PPC
+>>
+>> In cases like this where a device is used both by
+>> an SoC and also directly by the board code that uses
+>> that SoC, should we put the select OR_IRQ only in
+>> the SoC's config, or also in the board model's config
+>> (ie, in "config MPS2" as well as "config ARMSSE") ?
+>=20
+> Someone should be able to work on the board without having to look at
+> the SoC code/config, so both :) The idea of Kconfig is you only worry
+> about a specific device, and the qgraph sort the rest out.
 
-Just to be clear, I have suggested using bits (or bytes or megabytes
-depending on the exact value) only for the command-line-user-oriented
-sve-vl-max option, which would take a single value.
+I don't have a strong opinion here, but likely is safer indeed to put
+the switch into both sections in this case - so if one of the two ever
+gets changed, the config switch is still there for the other one that
+still requires it. I'll send a v2.
 
-For interoperation with the management layer, on the other hand,
-using a bitmap is perfectly fine, and whether the values encoded
-within are expressed in quadwords or whatever other format is largely
-irrelevant, so long as it it's properly documented of course.
-
--- 
-Andrea Bolognani / Red Hat / Virtualization
+ Thomas

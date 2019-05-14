@@ -1,105 +1,232 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id e8sm38762850wrc.34.2019.05.14.08.53.02
+        by smtp.gmail.com with ESMTPSA id g127sm3836628wme.21.2019.05.14.08.53.02
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 14 May 2019 08:53:02 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D48841FF87;
-	Tue, 14 May 2019 16:53:01 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 310991FF8F;
+	Tue, 14 May 2019 16:53:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH  00/11] semihosting cleanup and re-factor
-Date: Tue, 14 May 2019 16:52:50 +0100
-Message-Id: <20190514155301.16123-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH  02/11] semihosting: introduce CONFIG_SEMIHOSTING
+Date: Tue, 14 May 2019 16:52:52 +0100
+Message-Id: <20190514155301.16123-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190514155301.16123-1-alex.bennee@linaro.org>
+References: <20190514155301.16123-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: KdyTZ3WDmNFx
+X-TUID: xHzs/rhDQhBL
 
+There isn't much point building semihosting for platforms that don't
+support it. Introduce a new symbol and enable it only for the softmmu
+targets that need it.
 
-Hi,
-
-This collects together some fixes from last weeks RFC clean-up patch
-as well as a generalised version of the chardev console tweak I made
-last week for testing/next. As it happens it only really made sense
-for ARM and MIPs logging semihost calls but there is certainly scope
-for handling all the semihost syscalls in a more common way. I didn't
-make the changes to xtensa as that already has a bi-directional
-console-via-chardev setup and that would be quite a bit of extra work
-to support.
-
-I've added myself to the MAINTAINERS section for the common code but
-my focus at the moment is really just to improve the use of
-semihosting in our expanding system tests. Hopefully this is enough to
-ensure future enhancements (common open/read/write/close?) can be done
-and easily enabled for all semihost targets.
-
-Please review.
-
-
-Alex Bennée (11):
-  semihosting: move semihosting configuration into its own directory
-  semihosting: introduce CONFIG_SEMIHOSTING
-  semihosting: implement a semihosting console
-  semihosting: enable chardev backed output for console
-  target/arm: fixup some of the commentary for arm-semi
-  target/arm: use the common interface for WRITE0/WRITEC in arm-semi
-  target/arm: add LOG_UNIMP messages to arm-semi
-  target/arm: correct return values for WRITE/READ in arm-semi
-  target/mips: only build mips-semi for softmmu
-  target/mips: convert UHI_plog to use common semihosting code
-  MAINTAINERS: update for semihostings new home
-
- MAINTAINERS                                 |   7 +
- default-configs/arm-softmmu.mak             |   1 +
- default-configs/lm32-softmmu.mak            |   2 +
- default-configs/m68k-softmmu.mak            |   2 +
- default-configs/mips-softmmu-common.mak     |   1 +
- default-configs/nios2-softmmu.mak           |   2 +
- default-configs/xtensa-softmmu.mak          |   2 +
- gdbstub.c                                   |   7 +-
- hw/Kconfig                                  |   1 +
- hw/Makefile.objs                            |   1 +
- hw/mips/mips_malta.c                        |   2 +-
- hw/semihosting/Kconfig                      |   3 +
- hw/semihosting/Makefile.objs                |   2 +
- hw/semihosting/config.c                     | 186 ++++++++++++++++++++
- hw/semihosting/console.c                    |  77 ++++++++
- include/exec/gdbstub.h                      |  11 ++
- include/hw/semihosting/console.h            |  38 ++++
- include/{exec => hw/semihosting}/semihost.h |  17 +-
- include/sysemu/sysemu.h                     |   1 +
- linux-user/Makefile.objs                    |   2 +
- linux-user/arm/semihost.c                   |  24 +++
- qemu-options.hx                             |   6 +-
- stubs/Makefile.objs                         |   1 +
- stubs/semihost.c                            |  70 ++++++++
- target/arm/arm-semi.c                       |  98 ++++++-----
- target/arm/helper.c                         |   2 +-
- target/arm/translate-a64.c                  |   2 +-
- target/arm/translate.c                      |   2 +-
- target/lm32/helper.c                        |   2 +-
- target/m68k/op_helper.c                     |   2 +-
- target/mips/Makefile.objs                   |   3 +-
- target/mips/helper.h                        |   2 +
- target/mips/mips-semi.c                     |  14 +-
- target/mips/translate.c                     |  10 +-
- target/nios2/helper.c                       |   2 +-
- target/xtensa/translate.c                   |   2 +-
- target/xtensa/xtensa-semi.c                 |   2 +-
- vl.c                                        | 128 +-------------
- 38 files changed, 545 insertions(+), 192 deletions(-)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ default-configs/arm-softmmu.mak         |  1 +
+ default-configs/lm32-softmmu.mak        |  2 +
+ default-configs/m68k-softmmu.mak        |  2 +
+ default-configs/mips-softmmu-common.mak |  1 +
+ default-configs/nios2-softmmu.mak       |  2 +
+ default-configs/xtensa-softmmu.mak      |  2 +
+ hw/Kconfig                              |  1 +
+ hw/semihosting/Kconfig                  |  3 ++
+ hw/semihosting/Makefile.objs            |  2 +-
+ stubs/Makefile.objs                     |  1 +
+ stubs/semihost.c                        | 66 +++++++++++++++++++++++++
+ 11 files changed, 82 insertions(+), 1 deletion(-)
  create mode 100644 hw/semihosting/Kconfig
- create mode 100644 hw/semihosting/Makefile.objs
- create mode 100644 hw/semihosting/config.c
- create mode 100644 hw/semihosting/console.c
- create mode 100644 include/hw/semihosting/console.h
- rename include/{exec => hw/semihosting}/semihost.h (78%)
- create mode 100644 linux-user/arm/semihost.c
  create mode 100644 stubs/semihost.c
 
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index f23ecfd5c58..1f2e0e7fdeb 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -39,3 +39,4 @@ CONFIG_MICROBIT=y
+ CONFIG_FSL_IMX25=y
+ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
++CONFIG_SEMIHOSTING=y
+diff --git a/default-configs/lm32-softmmu.mak b/default-configs/lm32-softmmu.mak
+index 6d259665d60..115b3e34c98 100644
+--- a/default-configs/lm32-softmmu.mak
++++ b/default-configs/lm32-softmmu.mak
+@@ -4,6 +4,8 @@
+ #
+ #CONFIG_MILKYMIST_TMU2=n        # disabling it actually causes compile-time failures
+ 
++CONFIG_SEMIHOSTING=y
++
+ # Boards:
+ #
+ CONFIG_LM32=y
+diff --git a/default-configs/m68k-softmmu.mak b/default-configs/m68k-softmmu.mak
+index e17495e2a0b..4049a8f2ba9 100644
+--- a/default-configs/m68k-softmmu.mak
++++ b/default-configs/m68k-softmmu.mak
+@@ -1,5 +1,7 @@
+ # Default configuration for m68k-softmmu
+ 
++CONFIG_SEMIHOSTING=y
++
+ # Boards:
+ #
+ CONFIG_AN5206=y
+diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
+index 8e54a74b7a5..e10ac4b20c0 100644
+--- a/default-configs/mips-softmmu-common.mak
++++ b/default-configs/mips-softmmu-common.mak
+@@ -35,6 +35,7 @@ CONFIG_MIPS_CPS=y
+ CONFIG_MIPS_ITU=y
+ CONFIG_R4K=y
+ CONFIG_MALTA=y
++CONFIG_SEMIHOSTING=y
+ CONFIG_PCNET_PCI=y
+ CONFIG_MIPSSIM=y
+ CONFIG_ACPI_SMBUS=y
+diff --git a/default-configs/nios2-softmmu.mak b/default-configs/nios2-softmmu.mak
+index e130d024e62..1bc4082ea99 100644
+--- a/default-configs/nios2-softmmu.mak
++++ b/default-configs/nios2-softmmu.mak
+@@ -1,5 +1,7 @@
+ # Default configuration for nios2-softmmu
+ 
++CONFIG_SEMIHOSTING=y
++
+ # Boards:
+ #
+ CONFIG_NIOS2_10M50=y
+diff --git a/default-configs/xtensa-softmmu.mak b/default-configs/xtensa-softmmu.mak
+index 7e4d1cc0979..3aa20a47a7f 100644
+--- a/default-configs/xtensa-softmmu.mak
++++ b/default-configs/xtensa-softmmu.mak
+@@ -1,5 +1,7 @@
+ # Default configuration for Xtensa
+ 
++CONFIG_SEMIHOSTING=y
++
+ # Boards:
+ #
+ CONFIG_XTENSA_SIM=y
+diff --git a/hw/Kconfig b/hw/Kconfig
+index 88b9f150070..195f541e50c 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -29,6 +29,7 @@ source pci/Kconfig
+ source rdma/Kconfig
+ source scsi/Kconfig
+ source sd/Kconfig
++source semihosting/Kconfig
+ source smbios/Kconfig
+ source ssi/Kconfig
+ source timer/Kconfig
+diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
+new file mode 100644
+index 00000000000..efe0a30734c
+--- /dev/null
++++ b/hw/semihosting/Kconfig
+@@ -0,0 +1,3 @@
++
++config SEMIHOSTING
++       bool
+diff --git a/hw/semihosting/Makefile.objs b/hw/semihosting/Makefile.objs
+index 546954f4ff4..09c19bf19ed 100644
+--- a/hw/semihosting/Makefile.objs
++++ b/hw/semihosting/Makefile.objs
+@@ -1 +1 @@
+-common-obj-$(CONFIG_SOFTMMU) += config.o
++obj-$(CONFIG_SEMIHOSTING) += config.o
+diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+index 269dfa58326..e0d4f11b348 100644
+--- a/stubs/Makefile.objs
++++ b/stubs/Makefile.objs
+@@ -39,3 +39,4 @@ stub-obj-y += xen-hvm.o
+ stub-obj-y += pci-host-piix.o
+ stub-obj-y += ram-block.o
+ stub-obj-y += ramfb.o
++stub-obj-$(CONFIG_SOFTMMU) += semihost.o
+diff --git a/stubs/semihost.c b/stubs/semihost.c
+new file mode 100644
+index 00000000000..1a4e88e5326
+--- /dev/null
++++ b/stubs/semihost.c
+@@ -0,0 +1,66 @@
++/*
++ * Semihosting Stubs for SoftMMU
++ *
++ * Copyright (c) 2019 Linaro Ltd
++ *
++ * Stubs for SoftMMU targets that don't actually do semihosting.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/option.h"
++#include "qemu/error-report.h"
++#include "hw/semihosting/semihost.h"
++
++/* Empty config */
++QemuOptsList qemu_semihosting_config_opts = {
++    .name = "",
++    .head = QTAILQ_HEAD_INITIALIZER(qemu_semihosting_config_opts.head),
++    .desc = {
++        { /* end of list */ }
++    },
++};
++
++/* Queries to config status default to off */
++bool semihosting_enabled(void)
++{
++    return false;
++}
++
++SemihostingTarget semihosting_get_target(void)
++{
++    return SEMIHOSTING_TARGET_AUTO;
++}
++
++/*
++ * All the rest are empty subs. We could g_assert_not_reached() but
++ * that adds extra weight to the final binary. Waste not want not.
++ */
++void qemu_semihosting_enable(void)
++{
++}
++
++int qemu_semihosting_config_options(const char *optarg)
++{
++    return 1;
++}
++
++const char *semihosting_get_arg(int i)
++{
++    return NULL;
++}
++
++int semihosting_get_argc(void)
++{
++    return 0;
++}
++
++const char *semihosting_get_cmdline(void)
++{
++    return NULL;
++}
++
++void semihosting_arg_fallback(const char *file, const char *cmd)
++{
++}
 -- 
 2.20.1

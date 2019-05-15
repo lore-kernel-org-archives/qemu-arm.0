@@ -1,81 +1,83 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp328758wrg;
-        Wed, 15 May 2019 01:47:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwgaJWCOkkuC5ak0hJWwUQAWE0Y2wnUZxHKtmrCi3lzLz9ndTXENjlN7PV3u+e4gOJWXTdh
-X-Received: by 2002:a05:6402:648:: with SMTP id u8mr41025978edx.176.1557910041218;
-        Wed, 15 May 2019 01:47:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557910041; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp333570wrg;
+        Wed, 15 May 2019 01:54:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxTGaJJNkMxPCbd6wjMHgbtqsGZDrsOqqSqtd9ZNFA+1bTEcex7sAAgnzWMDQTYAQ7VPG5h
+X-Received: by 2002:a17:906:4482:: with SMTP id y2mr27159757ejo.201.1557910473459;
+        Wed, 15 May 2019 01:54:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557910473; cv=none;
         d=google.com; s=arc-20160816;
-        b=dDJAOnoqsbKsYlvAOcw7Zk/Zmy4t2Bw24WtqWlWnY2T5AuA55LhX5E09WGYtpiESH1
-         i3EhREOIEXyHKFTHbtlk6Nz5fcaMbH5y1vk9KJwEZkPnHoqRZNhUKYlS4qGK5q/f7QTs
-         5jkz9K31mDI/pZRZZGLGmtCS/SR6KAbnqRIsfnhBuFXusQopQukQK3CrX1wFWkPEU5SD
-         RA/4fpwuXIS43BxjkwuvvRAQG8BpxJdSKu0T6MWIvM281xoYWJ3wEmKWrywl1xA/pOkE
-         Ff0pV4m/ZAjlXNNUq8wTAwxsaU5DA7V/DX9wdFEzbTyo1ijVg0KJAifKihp7fjfJ2o79
-         wF2Q==
+        b=zi7ou/IbXPjC+kpnKy9YqvneitG86p9kCRuydJVkfnPSCptlYKsxNrbPuhV7IUmJSc
+         mJmCnRNowcDbfuw3vNYuuMg4jntakqt4ehDfWWX8C6dHodRT7hhu4RI7KqSsG3R0ovNe
+         ZqE3PhLoe1Mt0hmjiqntIR5SHCFUfT92Q6b1XTz9Q37qe7kpImoauXb+aEjokTHxwQkt
+         Qe3Jb16mHgywKKN31gqe3Byo4JzU1KRJgQhk7SLHFuSJo2pDPQu9mqbVyFcagNT1g7NZ
+         wbdYDd6JxCzSio8LbFbRrkrlanICvExBAYNJ0hsBwKxs3W4XoB8sFawdlmb0CAwnWc1N
+         UwWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
          :in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:to:from:date;
-        bh=QQWRS+/yKLj6d13Gv2DvH6lZfSQqLEc6WllAoF/olGc=;
-        b=eQeAAhquQBk1WpeM0G/xQ0I7lWVWZ2J5s0gOYRHmay1rOXEUNAKdmXP2rH8gCsvOyj
-         ensBmjZqsHvoRYO1FQdyjNxaXY+RUFy79ZNRg/EfrqJ9eqgZ9HduuuMODiOVo6KHMUTM
-         FRiCV/XXD24w6p4BU4FlGhAYU+QBu+pSpaPixw2I46j/aN6R4YaktZKPFoiYbJbTyPnX
-         cSIpNNz5Da7tFvFyXgQpwxUPaxep/1IiTQkU2q7va2Kttf62n8lJdIFVaJB5mvWZ83Fk
-         aVsyg3+Rb6MSG5CNAKdrM7McFZR9QwAZPevdAINQYiUyvC+TezzEIxgdilf2WJsnHISi
-         Cbjw==
+        bh=Cqi0eMy29/EuW1P1g5i3ol5PjUD2DgenrtohARlVd2o=;
+        b=q3sVb5jBEwCgXTPTBDvNrEsV+sMO45ZCqXrd1uo1g4RHA6kBoPu/wH6tzk62xZ8+uB
+         ElSrfwCiUNr/2mx1A6+lVWU1E/j3xRAdiCMJ3H1GVhzC7fcKEZacxuGQc/6g+GeMJIPv
+         SjmFmDPwVOD9xluICR1jF6XccMjh77X1SFrLHfdLYBo/mAFvlUUNMF5ESZpYIb+c2RCh
+         Xeqw7slnOTdKtlgrDEL9H3UwZxDGQrvOucsp/6y1J3UpfIVKbUYDu0v3+y8C3Dpc7FZ6
+         ubu2gcY35WqXxw1jFSKwgnU7yXwtFzDNW1rTlMUYIT/j4irXf+s0zd1cmV6vSoh8DaOC
+         2JRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si958960ejk.332.2019.05.15.01.47.21
+        by mx.google.com with ESMTPS id t48si1007248edd.240.2019.05.15.01.54.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 May 2019 01:47:21 -0700 (PDT)
+        Wed, 15 May 2019 01:54:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:33529 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:33578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQpZG-0001ro-QH
-	for alex.bennee@linaro.org; Wed, 15 May 2019 04:47:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43001)
+	id 1hQpgG-0003hw-Jh
+	for alex.bennee@linaro.org; Wed, 15 May 2019 04:54:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44276)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpZ3-0001rT-HI
-	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:47:06 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpg5-0003he-Sz
+	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:54:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpZ2-0007hE-MS
-	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:47:05 -0400
-Received: from mga03.intel.com ([134.134.136.65]:58716)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpg4-0007pZ-GQ
+	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:54:21 -0400
+Received: from mga12.intel.com ([192.55.52.136]:24024)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hQpZ2-0007eA-ES; Wed, 15 May 2019 04:47:04 -0400
-X-Amp-Result: UNSCANNABLE
+	id 1hQpg4-0007nF-6G; Wed, 15 May 2019 04:54:20 -0400
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	15 May 2019 01:47:02 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	15 May 2019 01:54:17 -0700
 X-ExtLoop1: 1
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga007.jf.intel.com with ESMTP; 15 May 2019 01:47:00 -0700
-Date: Wed, 15 May 2019 16:46:29 +0800
+	by orsmga008.jf.intel.com with ESMTP; 15 May 2019 01:54:15 -0700
+Date: Wed, 15 May 2019 16:53:44 +0800
 From: Wei Yang <richardw.yang@linux.intel.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20190515084629.GA31136@richard>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190515085344.GB31136@richard>
 References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
 	<20190419003053.8260-7-richardw.yang@linux.intel.com>
 	<20190514211015-mutt-send-email-mst@kernel.org>
+	<d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190514211015-mutt-send-email-mst@kernel.org>
+In-Reply-To: <d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.65
+X-Received-From: 192.55.52.136
 Subject: Re: [Qemu-arm] [PATCH v4 6/6] acpi: pci: use build_append_foo() API
  to construct MCFG
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,31 +92,132 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-To: Wei Yang <richardw.yang@linux.intel.com>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
 	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
 	Wei Yang <richardw.yang@linux.intel.com>,
-	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
+	marcel.apfelbaum@gmail.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1R8UCzSsPY6p
+X-TUID: yZj5Y4Nn0tIq
 
-On Tue, May 14, 2019 at 09:10:34PM -0400, Michael S. Tsirkin wrote:
->On Fri, Apr 19, 2019 at 08:30:53AM +0800, Wei Yang wrote:
->> build_append_foo() API doesn't need explicit endianness conversions
->> which eliminates a source of errors and it makes build_mcfg() look like
->> declarative definition of MCFG table in ACPI spec, which makes it easy
->> to review.
+On Wed, May 15, 2019 at 07:29:17AM +0200, Philippe Mathieu-Daudé wrote:
+>On 5/15/19 3:10 AM, Michael S. Tsirkin wrote:
+>> On Fri, Apr 19, 2019 at 08:30:53AM +0800, Wei Yang wrote:
+>>> build_append_foo() API doesn't need explicit endianness conversions
+>>> which eliminates a source of errors and it makes build_mcfg() look like
+>>> declarative definition of MCFG table in ACPI spec, which makes it easy
+>>> to review.
+>>>
+>>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>>> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >> 
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> Causes a regression with an invalid MCFG produced.
+>> Dropped.
+>> 
+>>> ---
+>>>  hw/acpi/pci.c               | 33 +++++++++++++++++++++------------
+>>>  include/hw/acpi/acpi-defs.h | 18 ------------------
+>>>  2 files changed, 21 insertions(+), 30 deletions(-)
+>>>
+>>> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+>>> index fa0fa30bb9..341805e786 100644
+>>> --- a/hw/acpi/pci.c
+>>> +++ b/hw/acpi/pci.c
+>>> @@ -30,17 +30,26 @@
+>>>  
+>>>  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+>>>  {
+>>> -    AcpiTableMcfg *mcfg;
+>>> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
+>>> -
+>>> -    mcfg = acpi_data_push(table_data, len);
+>>> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
+>>> -
+>>> -    /* Only a single allocation so no need to play with segments */
+>>> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+>>> -    mcfg->allocation[0].start_bus_number = 0;
+>>> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+>>> -
+>>> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+>>> +    int mcfg_start = table_data->len;
+>>> +
+>>> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
 >
->Causes a regression with an invalid MCFG produced.
->Dropped.
+>Ah, it seems we missed AcpiTableMcfg.reserved[8]...:
+>
+>        build_append_int_noprefix(table_data, 0, 8);
 >
 
-Any more information about this regression? How to reproduce it?
+Hmm... you are right. Shame on me.
+
+>>> +
+>>> +    /*
+>>> +     * PCI Firmware Specification, Revision 3.0
+>>> +     * 4.1.2 MCFG Table Description.
+>>> +     */
+>>> +    /* Base address, processor-relative */
+>>> +    build_append_int_noprefix(table_data, info->base, 8);
+>>> +    /* PCI segment group number */
+>>> +    build_append_int_noprefix(table_data, 0, 2);
+>>> +    /* Starting PCI Bus number */
+>>> +    build_append_int_noprefix(table_data, 0, 1);
+>>> +    /* Final PCI Bus number */
+>>> +    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
+>>> +    /* Reserved */
+>>> +    build_append_int_noprefix(table_data, 0, 4);
+>>> +
+>>> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
+>>> +                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
+>>>  }
+>>>  
+>>> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+>>> index f9aa4bd398..57a3f58b0c 100644
+>>> --- a/include/hw/acpi/acpi-defs.h
+>>> +++ b/include/hw/acpi/acpi-defs.h
+>>> @@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
+>>>  
+>>>  typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
+>>>  
+>>> -/* PCI fw r3.0 MCFG table. */
+>>> -/* Subtable */
+>>> -struct AcpiMcfgAllocation {
+>>> -    uint64_t address;                /* Base address, processor-relative */
+>>> -    uint16_t pci_segment;            /* PCI segment group number */
+>>> -    uint8_t start_bus_number;       /* Starting PCI Bus number */
+>>> -    uint8_t end_bus_number;         /* Final PCI Bus number */
+>>> -    uint32_t reserved;
+>>> -} QEMU_PACKED;
+>>> -typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
+>>> -
+>>> -struct AcpiTableMcfg {
+>>> -    ACPI_TABLE_HEADER_DEF;
+>>> -    uint8_t reserved[8];
+>
+>           --------^
+>
+>Thanks Michael for testing...
+>
+>Wei, can you add a MCFG test in tests/bios-tables-test.c?
+>
+
+Sure, let me prepare the test.
+
+>Regards,
+>
+>Phil.
+>
+>>> -    AcpiMcfgAllocation allocation[0];
+>>> -} QEMU_PACKED;
+>>> -typedef struct AcpiTableMcfg AcpiTableMcfg;
+>>> -
+>>>  /*
+>>>   * TCPA Description Table
+>>>   *
+>>> -- 
+>>> 2.19.1
 
 -- 
 Wei Yang

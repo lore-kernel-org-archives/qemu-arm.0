@@ -1,136 +1,37 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3882161wrg;
-        Tue, 14 May 2019 04:25:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/uXA6uDE5CjWUNs3F3flq38EajTWWsQKgOo3VAtJtGIrN24jYbxXHcK3wv5HfZ9t4cVvp
-X-Received: by 2002:a65:4907:: with SMTP id p7mr37438650pgs.288.1557833136239;
-        Tue, 14 May 2019 04:25:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557833136; cv=none;
-        d=google.com; s=arc-20160816;
-        b=aj9V0edinUuHoBguRKkQMLeRYfjWl7wVhMQMnMBrk61zdRXh0UbbUXbB7p/kCK4khe
-         zKOlOhgcSk1N3cdcULRX/eo8SR3yk0BI693AsijPii2QWPWZVE5GpBiQJ0LluXb5TUnH
-         JDT+Nq96A+dt9FEsqdBPaz6ufOaSnUrYejQrlEd5dzM5RnckUM9xXqHsoioUCW7gESKf
-         Yyeim+bNagC+aCl2ecMSzsWlmc0xQ/k2FOCATyXrCevrWxjrzcBHAlNCJFFVE4ec7iPy
-         a5otgCYbpGgyi2tF4lLPIqvRF5uYX7j4sX69vp3rFnIyUEnzii4n4h4UsOXTq6gS3YUu
-         R2NQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=vSu+7T37Y1SbLhYIAILdMyn6HDIvhHbNSZ55saRUPv8=;
-        b=Ufo36ygGVGrh2KYc4AjtsevTkcmWGtIiaO3NK+3jSJr0wnFYwuWFrtBQ63Wrg6Fl4G
-         aPdPQ7THrAI05oyPBrXiMVW2PMZRAWIXmylCucwqerknL6W5BiNYbiGeO4z1VjzaSVSZ
-         M8w6v8VNJNE3nduMBRvrKxeZf/DJVFyb486R7CMiHEcOa3BM+8zgyDJ7s6JTPc5mxalo
-         iuFmgXRtG/rCnKXgmlad53lYhMOh0PlCm4zcakUIjGiWdWB+PVBhyTEwO0y4MHCIB0Tc
-         aDa9NIUPJjFlSjVHCciap3PuLN5orig3lqNTjOG/AMVSb+GyuWgznwfUP71Kcke7aYve
-         AeHQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q14si19756522pls.327.2019.05.14.04.25.36;
-        Tue, 14 May 2019 04:25:36 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726283AbfENLZf (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 14 May 2019 07:25:35 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:55308 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725893AbfENLZe (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 14 May 2019 07:25:34 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 381A0BE33AB50F181077;
-        Tue, 14 May 2019 19:25:33 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 14 May 2019
- 19:25:22 +0800
-Subject: Re: [PATCH v16 10/10] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Richard Henderson" <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        "Zheng Xiang" <zhengxiang9@huawei.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>
-References: <1557751388-27063-1-git-send-email-gengdongjiu@huawei.com>
- <1557751388-27063-11-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA81nMkHdCvQTcv2ixNB7sg+3Qx+9mpNgF0XLaBPY7-PNQ@mail.gmail.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <d23719b7-65e4-1136-ffb4-f58de774d8cd@huawei.com>
-Date:   Tue, 14 May 2019 19:25:20 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id x22sm2670420wmi.4.2019.05.15.06.11.03
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 May 2019 06:11:03 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 7A3431FF87;
+	Wed, 15 May 2019 14:11:03 +0100 (BST)
+References: <78cf484c4d991e899d0065b2dab3a2e204ce8723.1557879499.git.alistair.francis@wdc.com>
+User-agent: mu4e 1.3.1; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: "qemu-devel\@nongnu.org" <qemu-devel@nongnu.org>, "peter.maydell\@linaro.org" <peter.maydell@linaro.org>, Alistair Francis <Alistair.Francis@wdc.com>, "richard.henderson\@linaro.org" <richard.henderson@linaro.org>, "alistair23\@gmail.com" <alistair23@gmail.com>
+Subject: Re: [Qemu-arm] [PATCH v2 1/1] target/arm: Fix vector operation segfault
+In-reply-to: <78cf484c4d991e899d0065b2dab3a2e204ce8723.1557879499.git.alistair.francis@wdc.com>
+Date: Wed, 15 May 2019 14:11:03 +0100
+Message-ID: <87tvdvn9qw.fsf@zen.linaroharston>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA81nMkHdCvQTcv2ixNB7sg+3Qx+9mpNgF0XLaBPY7-PNQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: QJpBAC6bLeGT
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jOV3k1iQzkfG
 
 
-> 
->> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->> +{
->> +    ARMCPU *cpu = ARM_CPU(c);
->> +    CPUARMState *env = &cpu->env;
->> +    ram_addr_t ram_addr;
->> +    hwaddr paddr;
->> +
->> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->> +
->> +    if (addr) {
->> +        ram_addr = qemu_ram_addr_from_host(addr);
->> +        if (ram_addr != RAM_ADDR_INVALID &&
->> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
->> +            kvm_hwpoison_page_add(ram_addr);
->> +            /* Asynchronous signal will be masked by main thread, so
->> +             * only handle synchronous signal.
->> +             */
->> +            if (code == BUS_MCEERR_AR) {
->> +                kvm_cpu_synchronize_state(c);
->> +                if (GHES_CPER_FAIL != ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
->> +                    kvm_inject_arm_sea(c);
->> +                } else {
->> +                    fprintf(stderr, "failed to record the error\n");
->> +                }
->> +            }
->> +            return;
->> +        }
->> +        fprintf(stderr, "Hardware memory error for memory used by "
->> +                "QEMU itself instead of guest system!\n");
->> +    }
->> +
->> +    if (code == BUS_MCEERR_AR) {
->> +        fprintf(stderr, "Hardware memory error!\n");
->> +        exit(1);
->> +    }
->> +}
-> 
-> This code appears to still be unconditionally trying to
-> notify the guest of the error via the ACPI tables without
-> checking whether those ACPI tables even exist. I told you
-> about this in a previous round of review :-(
+Alistair Francis <Alistair.Francis@wdc.com> writes:
 
-Thanks very much for the comments, and sorry for my forgetting
-I added the ACPI checking in the new V17 version.
+> Commit 89e68b575 "target/arm: Use vector operations for saturation"
+> causes this abort() when booting QEMU ARM with a Cortex-A15:
 
-> 
-> thanks
-> -- PMM
-> .
-> 
+You may want to check your email settings because when I tried to apply
+this patch it failed because the message is base64 encoded which choked git=
+-am:
+
+  Content-Type: text/plain; charset=3D"utf-8"
+  Content-Transfer-Encoding: base64
+
+--
+Alex Benn=C3=A9e

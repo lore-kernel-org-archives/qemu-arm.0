@@ -1,224 +1,112 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp333570wrg;
-        Wed, 15 May 2019 01:54:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTGaJJNkMxPCbd6wjMHgbtqsGZDrsOqqSqtd9ZNFA+1bTEcex7sAAgnzWMDQTYAQ7VPG5h
-X-Received: by 2002:a17:906:4482:: with SMTP id y2mr27159757ejo.201.1557910473459;
-        Wed, 15 May 2019 01:54:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557910473; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp350922wrg;
+        Wed, 15 May 2019 02:15:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwXJIgvEGcXaBXSV9Le6JbGCyG6nye975gZhcE3kEww2xyPy7AdXBvNXW6ptYqqhIhS7WWw
+X-Received: by 2002:ae9:ea15:: with SMTP id f21mr4039206qkg.138.1557911727812;
+        Wed, 15 May 2019 02:15:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557911727; cv=none;
         d=google.com; s=arc-20160816;
-        b=zi7ou/IbXPjC+kpnKy9YqvneitG86p9kCRuydJVkfnPSCptlYKsxNrbPuhV7IUmJSc
-         mJmCnRNowcDbfuw3vNYuuMg4jntakqt4ehDfWWX8C6dHodRT7hhu4RI7KqSsG3R0ovNe
-         ZqE3PhLoe1Mt0hmjiqntIR5SHCFUfT92Q6b1XTz9Q37qe7kpImoauXb+aEjokTHxwQkt
-         Qe3Jb16mHgywKKN31gqe3Byo4JzU1KRJgQhk7SLHFuSJo2pDPQu9mqbVyFcagNT1g7NZ
-         wbdYDd6JxCzSio8LbFbRrkrlanICvExBAYNJ0hsBwKxs3W4XoB8sFawdlmb0CAwnWc1N
-         UwWw==
+        b=XBUbfWK8go+HmQBgLgK1LVXmljvQnDdTc0kXckV0jkCnpahVFu4e8Xoz+FiLfTTSC2
+         c3ebTPMl2GO13yOQlRW1E5XH6cuoIJXhrTgry1gXLr5bNeFEtmqiYBnPFy8DfzJIAIcZ
+         VdwFW50ImZYrrTK/g7/fjudVuORz8brQe6+KOYuJIkX3XzdYId7yv6GlSuYlCesZFPJa
+         NexQOKjLyzyCmE0kmwEAipTNoG4+X5xN/Toq0CQC5EW3a33S6HkpuMJ1xv7yHU/7Zm3U
+         WpNzKz0ACa0jbj0VryjwfPGJD4s87brxjwbgN+o1nha100nzIYaFgAotdyi3VkDdxYz6
+         hY8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:to:from:date;
-        bh=Cqi0eMy29/EuW1P1g5i3ol5PjUD2DgenrtohARlVd2o=;
-        b=q3sVb5jBEwCgXTPTBDvNrEsV+sMO45ZCqXrd1uo1g4RHA6kBoPu/wH6tzk62xZ8+uB
-         ElSrfwCiUNr/2mx1A6+lVWU1E/j3xRAdiCMJ3H1GVhzC7fcKEZacxuGQc/6g+GeMJIPv
-         SjmFmDPwVOD9xluICR1jF6XccMjh77X1SFrLHfdLYBo/mAFvlUUNMF5ESZpYIb+c2RCh
-         Xeqw7slnOTdKtlgrDEL9H3UwZxDGQrvOucsp/6y1J3UpfIVKbUYDu0v3+y8C3Dpc7FZ6
-         ubu2gcY35WqXxw1jFSKwgnU7yXwtFzDNW1rTlMUYIT/j4irXf+s0zd1cmV6vSoh8DaOC
-         2JRQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=ledJz/4BBUI4Wq39eYnWG+/z+Al8gd8QyGvXAxSU/0E=;
+        b=Fcy16eRU7JrlrnyK2pWgXppC9xVOHmnmo8yILmpda9voHJMFs2/s+wzDEXMpe8cjhn
+         s0LW7yvKmC7oDRIsPVFpws/o28v42A1d13YWLKwO9wuZS2lb+bKpYx3roBCNqQohtZE8
+         wN2ZSVKx+1vyNCftMMw0SAC+gsEr8lYM1aEMNFAB33PyFoMyKeAfDdpaDWyny4JtuzTh
+         TcWx5fsfAaloAx86CA7bjQGRiVOpw1NlwJSzksg2undLnJHAN9r0vSxC9c0FXb+CiBzn
+         qJqjrrScubpCahIMs6dMamlJt6foV04UMI9oyPmjUsZ2MzsSNPDiRyZdKHyC9eepgyPl
+         hGUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t48si1007248edd.240.2019.05.15.01.54.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 15 May 2019 01:54:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id s13si1025422qts.59.2019.05.15.02.15.27
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 15 May 2019 02:15:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:33578 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hQpgG-0003hw-Jh
-	for alex.bennee@linaro.org; Wed, 15 May 2019 04:54:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44276)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpg5-0003he-Sz
-	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:54:22 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hQpg4-0007pZ-GQ
-	for qemu-arm@nongnu.org; Wed, 15 May 2019 04:54:21 -0400
-Received: from mga12.intel.com ([192.55.52.136]:24024)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hQpg4-0007nF-6G; Wed, 15 May 2019 04:54:20 -0400
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	15 May 2019 01:54:17 -0700
-X-ExtLoop1: 1
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga008.jf.intel.com with ESMTP; 15 May 2019 01:54:15 -0700
-Date: Wed, 15 May 2019 16:53:44 +0800
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190515085344.GB31136@richard>
-References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
-	<20190419003053.8260-7-richardw.yang@linux.intel.com>
-	<20190514211015-mutt-send-email-mst@kernel.org>
-	<d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EBD3F8552E;
+	Wed, 15 May 2019 09:15:26 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 13BD910021B2;
+	Wed, 15 May 2019 09:15:24 +0000 (UTC)
+Date: Wed, 15 May 2019 11:15:22 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Andrea Bolognani <abologna@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
+Message-ID: <20190515091522.xomdryr24oc7qki5@kamzik.brq.redhat.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
+ <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
+ <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
+ <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
+ <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
+ <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 192.55.52.136
-Subject: Re: [Qemu-arm] [PATCH v4 6/6] acpi: pci: use build_append_foo() API
- to construct MCFG
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Wei Yang <richardw.yang@linux.intel.com>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	marcel.apfelbaum@gmail.com, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yZj5Y4Nn0tIq
+In-Reply-To: <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Wed, 15 May 2019 09:15:27 +0000 (UTC)
+X-TUID: WPTlxhtP+nx2
 
-On Wed, May 15, 2019 at 07:29:17AM +0200, Philippe Mathieu-Daudé wrote:
->On 5/15/19 3:10 AM, Michael S. Tsirkin wrote:
->> On Fri, Apr 19, 2019 at 08:30:53AM +0800, Wei Yang wrote:
->>> build_append_foo() API doesn't need explicit endianness conversions
->>> which eliminates a source of errors and it makes build_mcfg() look like
->>> declarative definition of MCFG table in ACPI spec, which makes it easy
->>> to review.
->>>
->>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->>> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
->>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> 
->> Causes a regression with an invalid MCFG produced.
->> Dropped.
->> 
->>> ---
->>>  hw/acpi/pci.c               | 33 +++++++++++++++++++++------------
->>>  include/hw/acpi/acpi-defs.h | 18 ------------------
->>>  2 files changed, 21 insertions(+), 30 deletions(-)
->>>
->>> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
->>> index fa0fa30bb9..341805e786 100644
->>> --- a/hw/acpi/pci.c
->>> +++ b/hw/acpi/pci.c
->>> @@ -30,17 +30,26 @@
->>>  
->>>  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
->>>  {
->>> -    AcpiTableMcfg *mcfg;
->>> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->>> -
->>> -    mcfg = acpi_data_push(table_data, len);
->>> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
->>> -
->>> -    /* Only a single allocation so no need to play with segments */
->>> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->>> -    mcfg->allocation[0].start_bus_number = 0;
->>> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
->>> -
->>> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
->>> +    int mcfg_start = table_data->len;
->>> +
->>> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
->
->Ah, it seems we missed AcpiTableMcfg.reserved[8]...:
->
->        build_append_int_noprefix(table_data, 0, 8);
+On Tue, May 14, 2019 at 06:03:09PM +0200, Andrea Bolognani wrote:
+> I thought about it a bit more and perhaps the simplified design is
+> better after all.
+> 
+> Whatever the interface looks like on the QEMU side, we're going to
+> want to offer libvirt users two options for configuring vector
+> lengths: listing all desired vector lengths explicitly (basically
+> sev-vl-map but more verbose and readable) and providing just the
+> biggest desired vector length (like in sev-max-vq).
+> 
+> In the latter case, we'll want to expand the user-provided value
+> into an explicit list anyway in order to guarantee guest ABI
+> stability, and doing so when a single bitmap has been obtained via
+> QMP seems like it would be more manageable.
+> 
+> Sorry for the flip-flop, but after all isn't this exactly what
+> upstream design discussion is supposed to be all about? :)
+
+Yup, no problem. I'm actually liking the idea of the single map plus
+flags. We won't need two implementations (QEMU and libvirt), we'll
+only need one (libvirt). The QEMU QMP side will only need to state
+what should be implemented using the flags. Also, as we already
+agreed, we need TCG and KVM flags anyway, so we're already in flag
+land.
+
+> 
+> [...]
+> > > If the size of the bitmap on the KVM side is 512 bits, why don't we
+> > > just make it that size on the QEMU side too from the start?
+> > 
+> > I'd still only want to input 64-bits on the command line, otherwise
+> > we get into inputting arrays, which isn't easy. KVM's interface is
+> > meant for expansion, but it won't be using most of those bits for
+> > quite some time either.
+> 
+> I'm probably missing something entirely obvious, but couldn't you
+> just have a single, possibly fairly massive (up to 128 hex digits if
+> I'm not mistaken) value on the command line and just work with that
+> one, no arrays necessary?
 >
 
-Hmm... you are right. Shame on me.
+We could, and I like the idea. It just hadn't crossed my mind due to
+implementation tunnel vision.
 
->>> +
->>> +    /*
->>> +     * PCI Firmware Specification, Revision 3.0
->>> +     * 4.1.2 MCFG Table Description.
->>> +     */
->>> +    /* Base address, processor-relative */
->>> +    build_append_int_noprefix(table_data, info->base, 8);
->>> +    /* PCI segment group number */
->>> +    build_append_int_noprefix(table_data, 0, 2);
->>> +    /* Starting PCI Bus number */
->>> +    build_append_int_noprefix(table_data, 0, 1);
->>> +    /* Final PCI Bus number */
->>> +    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
->>> +    /* Reserved */
->>> +    build_append_int_noprefix(table_data, 0, 4);
->>> +
->>> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
->>> +                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
->>>  }
->>>  
->>> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
->>> index f9aa4bd398..57a3f58b0c 100644
->>> --- a/include/hw/acpi/acpi-defs.h
->>> +++ b/include/hw/acpi/acpi-defs.h
->>> @@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
->>>  
->>>  typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
->>>  
->>> -/* PCI fw r3.0 MCFG table. */
->>> -/* Subtable */
->>> -struct AcpiMcfgAllocation {
->>> -    uint64_t address;                /* Base address, processor-relative */
->>> -    uint16_t pci_segment;            /* PCI segment group number */
->>> -    uint8_t start_bus_number;       /* Starting PCI Bus number */
->>> -    uint8_t end_bus_number;         /* Final PCI Bus number */
->>> -    uint32_t reserved;
->>> -} QEMU_PACKED;
->>> -typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
->>> -
->>> -struct AcpiTableMcfg {
->>> -    ACPI_TABLE_HEADER_DEF;
->>> -    uint8_t reserved[8];
->
->           --------^
->
->Thanks Michael for testing...
->
->Wei, can you add a MCFG test in tests/bios-tables-test.c?
->
-
-Sure, let me prepare the test.
-
->Regards,
->
->Phil.
->
->>> -    AcpiMcfgAllocation allocation[0];
->>> -} QEMU_PACKED;
->>> -typedef struct AcpiTableMcfg AcpiTableMcfg;
->>> -
->>>  /*
->>>   * TCPA Description Table
->>>   *
->>> -- 
->>> 2.19.1
-
--- 
-Wei Yang
-Help you, Help me
+Thanks,
+drew

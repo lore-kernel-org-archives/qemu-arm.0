@@ -1,130 +1,117 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1037358wrv;
-        Wed, 17 Jul 2019 08:44:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxdTVf30iPKfN6xNzdDkf3O7SpAnTr+yZSTv+2cyRSCQK6d2oMgLP6p7XrQEwuzX3IoASuP
-X-Received: by 2002:a37:dcc7:: with SMTP id v190mr27608331qki.169.1563378250725;
-        Wed, 17 Jul 2019 08:44:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563378250; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp536489wrg;
+        Wed, 15 May 2019 05:47:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz8JvvrevIiljtzbEJ8d7+l0qCo9kh1CWK1AlFmxQhSofQ6ZU5doDIDhEz/fWrv85HCxkcS
+X-Received: by 2002:a05:6402:1610:: with SMTP id f16mr43451502edv.171.1557924436683;
+        Wed, 15 May 2019 05:47:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557924436; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZvSqf1qHt338ozaYOtNKvrokX3lotSSz0kvpcPwqXlu9vgJWI5uzUOLRim1N9/UAUL
-         aKerHZmQoOwKIOpd3N0eaxWOYVGz3626Vqdh1M330LE0qXRl7XDOqAfeIHTnZhNatTgX
-         O0itNJg3xEgDMUlKfc1kl3ld32MVgnzJ3HsQaaoab2T0OmJwmPvRG5vGpaAhhx2+EZsq
-         qz/mYJiTE21XgMnRSSOyAuNsqZaEOLTEBNTMwlT5yl5I3tT8QjSVD+q4vK2zh4aZjcGk
-         COVyVTGezZWHu+4ns9zsGbM0cv01g0aSfXJ+Fhxe5bCNOlQAVRj7D2zvoN2ixVvYKtOO
-         Ot+g==
+        b=f4OBKoITE4cKRGBLK6CXppDwHa75MQ79G9TkK33HDBaYuZ55R3CZ/xUfPWxtFlBMGA
+         HQJeh/OaxIDFkIUj71ByPZGjOqi12mXdSYjn1fC4tLuiBoXQTq5ZgZyROs9xrG2vTvJy
+         rqo3JFESdNuEC3vzdssiVE+OPUPwpcwA+dD3gWuOUzljENlA6xmslvviduoMMJn0zWLo
+         2c4i1L5htm47KzLxg08g8bkC3PK2D4i4oyxQlEr5ss+0LwyBkwROn2fldkaiS5Sp4PBY
+         qaHEkALIYIqivcd1r1WrAA2Eq/fozsczZhUmllYCTQ/mh8gRYdoUXnFXs1CFuP7WF8yu
+         A9Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=YBajB0t3oT7ylbtUxTiwtOjq8C1tHcn9hcpU20aSGpA=;
-        b=sgHdL92Zy6Pk2eTFn3W9/MghXrSdwWt4WW9Sn+rLjSjuD83FDuLDRv8f1Cjl9pwuht
-         GN0fZvMud5yS20D1SsGhYXNYMdC50DDRzTTyzyXY2WPcnJloS8cemsTpf4V65vXOlE4F
-         KZ4tERN0XM9m4UEEdWIg7vvh3muwCKNzayEa4H7xMNrDBDlU8fd2ji8UW6pCB5pdrLcG
-         JtRZbuVeND8grDTxkCJ7m3UDCRJqUPnMi+VVQHxrOW9H0lvzcrsRaJrNusBFjVjLjY/O
-         Xcty2JhzfKxY8vpKTa9Up73JbTrWtNeIKOAa9Jsm4YXSuZ7Xh9qFydU+z18WduZT33qN
-         oa6w==
+        bh=02NO1j4nk0RzwTtpmL/WNUZk+y9Cx3zVxgO8fKelPgY=;
+        b=doHoK3/XRDwgkVgEyL5hgNg0yzP+GDO9HjKWUTwmDcgNEYqcfDwm3rOX/M5FiirXku
+         hDBGJ+dJy33eKFYK2B5iLLTCH1Z9Qy8HnuPIYvIytTbkClMjxuvC2YBHa1QH20RT6L3y
+         MptwZh+BsFVX+rnnIgoC+1VXXIgVGiScLk2HBdnwXjfFycyNeuy77V+rpxN1A/AIHeGm
+         FB9/zkd0b2xrMufZrDqpw9bkb2VwzwHoFqvJyqv+jZTHm9fRJTb5l7bkVJftwOj1H27y
+         CppW4M2vu+N5ibxBy4qpsq212lP2ZTuvzLDTuhJABFJJPluGB6WIP1GP/2zOfgGspB4h
+         dzzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id t42si17260411qtc.163.2019.07.17.08.44.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Jul 2019 08:44:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
+        by mx.google.com with ESMTP id s53si1376941eda.46.2019.05.15.05.47.16;
+        Wed, 15 May 2019 05:47:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 81571307154A;
-	Wed, 17 Jul 2019 15:44:09 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 584AC6013A;
-	Wed, 17 Jul 2019 15:43:59 +0000 (UTC)
-Date: Wed, 17 Jul 2019 17:43:56 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
-	alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v2 06/14] target/arm: Allow SVE to be
- disabled via a CPU property
-Message-ID: <20190717154356.luttlbxudf2pz7ny@kamzik.brq.redhat.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-7-drjones@redhat.com>
- <c794d810-fbaf-ff81-9833-3e40fb5a951d@linaro.org>
- <20190626135244.2jt6alr7lh2v43nu@kamzik.brq.redhat.com>
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9914D374;
+	Wed, 15 May 2019 05:47:15 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1EBC03F71E;
+	Wed, 15 May 2019 05:47:13 -0700 (PDT)
+Date: Wed, 15 May 2019 13:47:11 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Andrea Bolognani <abologna@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	Andrew Jones <drjones@redhat.com>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
+Message-ID: <20190515124711.GS28398@e103592.cambridge.arm.com>
+References: <20190512083624.8916-1-drjones@redhat.com>
+ <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
+ <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
+ <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
+ <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
+ <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
+ <1cd94ba6-2bfa-645e-1034-dd05e8a77000@linaro.org>
+ <a24b6d34b99835ea38b021896a57c7af8bf4747c.camel@redhat.com>
+ <20190515111420.GR28398@e103592.cambridge.arm.com>
+ <6ab7415d80419a7d9ac832b9194bf2d944696cd9.camel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190626135244.2jt6alr7lh2v43nu@kamzik.brq.redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Wed, 17 Jul 2019 15:44:09 +0000 (UTC)
-X-TUID: kF0/bdAIg2Nc
+In-Reply-To: <6ab7415d80419a7d9ac832b9194bf2d944696cd9.camel@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: XKsPCzTHBd8x
 
-On Wed, Jun 26, 2019 at 03:52:44PM +0200, Andrew Jones wrote:
-> On Wed, Jun 26, 2019 at 12:20:29PM +0200, Richard Henderson wrote:
-> > On 6/21/19 6:34 PM, Andrew Jones wrote:
-> > > Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
-> > > a CPU property") we can disable the 'max' cpu model's VFP and neon
-> > > features, but there's no way to disable SVE. Add the 'sve=on|off'
-> > > property to give it that flexibility. We also rename
-> > > cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
-> > > to follow the typical *_get/set_<property-name> pattern.
+On Wed, May 15, 2019 at 12:28:20PM +0100, Andrea Bolognani wrote:
+> On Wed, 2019-05-15 at 12:14 +0100, Dave Martin wrote:
+> > On Wed, May 15, 2019 at 09:03:58AM +0100, Andrea Bolognani wrote:
+> > > On Tue, 2019-05-14 at 13:14 -0700, Richard Henderson wrote:
+> > > > Why is =4 less user-friendly than =512?
+> > > > 
+> > > > I don't actually see "total bits in vector" as more user-friendly than "number
+> > > > of quadwords" when it comes to non-powers-of-2 like =7 vs =896 or =13 vs =1664.
+> > > 
+> > > I would wager most people are intimately familiar with bits, bytes
+> > > and multiples due to having to work with them daily. Quadwords, not
+> > > so much.
 > > 
-> > I think perhaps the new property should not be overloaded on cpu->sve_max_vq.
+> > Generally I tend to agree.  For kvmtool I leaned torward quadwords
+> > purely because
 > > 
-> > At present you are generating an error for
+> > 	16,32,48,64,80,96,112,128,144,160,176,192,208
 > > 
-> >     -cpu max,sve=off,sve_max_vq=2
+> > is a big pain to type compared with
 > > 
-> > but not for
+> > 	1,2,3,4,5,6,7,8,9,10,11,12,13
 > > 
-> >     -cpu max,sve_max_vq=2,sve=off
+> > Even though I prefer to specify vector lengths in bytes everywhere else
+> > in the Linux user API (precisely to avoid the confusion you object to).
 > > 
-> > and then there's the issue of
+> > This isn't finalised yet for kvmtool -- I need to rework the patches
+> > and may not include it at all initially: kvmtool doesn't support
+> > migration, which is the main usecase for being able to specify an exact
+> > set of vector lengths AFAICT.
 > > 
-> >     -cpu max,sve_max_vq=2,sve=off,sve=on
+> > Since this is otherwise only useful for migration, experimentation or
+> > machine-driven configuration, a bitmask
 > > 
-> > discarding the earlier sve_max_vq setting.
+> > 	0x1fff
+> > 
+> > as some have suggested may well be a pragmatic alternative for kvmtool.
 > 
-> Yeah, it might be best to add a new boolean in order for that last example
-> to work as expected. At least my expectation would be that we'd set the
-> max vq to 2, when sve is disabled nothing happens to it, but then when sve
-> is reenabled we'll still have that max vq 2. I'm guessing you're expecting
-> that too, since you brought it up. I think the other two examples above
-> are behaving as I'd expect them to.
+> Just to be clear, I have suggested using bits (or bytes or megabytes
+> depending on the exact value) only for the command-line-user-oriented
+> sve-vl-max option, which would take a single value.
 > 
-> > 
-> > 
-> > > @@ -1129,6 +1129,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-> > >          cpu->isar.mvfr0 = u;
-> > >      }
-> > >  
-> > > +    if (!cpu->sve_max_vq) {
-> > > +        uint64_t t;
-> > > +
-> > > +        t = cpu->isar.id_aa64pfr0;
-> > > +        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 0);
-> > > +        cpu->isar.id_aa64pfr0 = t;
-> > > +    }
-> > 
-> > 
-> > I suppse the isar bits are initialized too late for you to be able to re-use
-> > the ID_AA64PFR0.SVE field *as* the property?
-> 
-> Hmm, that's probably worth trying. Also reworking vfp and neon to use the
-> fields as the properties, putting the sanity checks directly in the
-> property set accessor may work too. pmu and aarch64 could work like that
-> too, but those still have ARM_FEATURE_* bits, so they're not really the
-> same [yet].
+> For interoperation with the management layer, on the other hand,
+> using a bitmap is perfectly fine, and whether the values encoded
+> within are expressed in quadwords or whatever other format is largely
+> irrelevant, so long as it it's properly documented of course.
 
-I played with this for the PMU, i.e. I removed 'has_pmu' and used its bits
-in id_aa64dfr0. Everything worked, so it's possible. I think the changes
-to convert the PMU, VFP, and NEON are too far outside the scope of this
-series to do them now, but I'll attempt to add a has-sve boolean without
-adding a "has_sve" boolean in this series by using id_aa64pfr0.
+Seems fair.
 
-Thanks,
-drew
+Cheers
+---Dave

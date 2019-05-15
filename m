@@ -1,113 +1,203 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4395549wrg;
-        Tue, 14 May 2019 13:14:58 -0700 (PDT)
-X-Received: by 2002:a63:e550:: with SMTP id z16mr40237692pgj.329.1557864898847;
-        Tue, 14 May 2019 13:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557864898; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp26733wrg;
+        Tue, 14 May 2019 18:11:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqweaZR40Lm7BeO+q4pS7j+ZavSUTCVa4wZIvTVS8rWn33s29Ne4S2iCiRYOrYmipF8qfkqp
+X-Received: by 2002:a17:906:2acf:: with SMTP id m15mr15570632eje.31.1557882660951;
+        Tue, 14 May 2019 18:11:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557882660; cv=none;
         d=google.com; s=arc-20160816;
-        b=gxTzFhua9HRnpWiJOlAN8Av/9yCOZYYInNcELYQ2OW74gWehIrGv9WSo9I/AL5HtRl
-         UMwCH+K0KZoQDyraXAZna+o8FlpFQ+EXJInBBKpxMSUmvFMVmPnVaG/JaxJ39Qg4Fm3Y
-         IZ9k8oIAaqemy4hz0L1o8Qg1AjDT24IBSoSnZ67EqYrD2wfeIGPA53Bkk4B/c7I0AOcI
-         jxSi5DS9piMGS0j+pFX4hZgNte99B+E6g+X/nBDrEhEnHwZsXhZRhqg7I2vcrNWQp/0v
-         xiy3dyfoC8tzVFcsvN0gT4amKVYxb6mjIGkFNlAE/l9X0+aeULNNGvp1/CsTm/uFrD4I
-         wFZQ==
+        b=SodeDw10YPLJb1yVE/OLJTbzd5T8akUhO3B/JMymfvC7E6KImFWEgR5wtV6CFQC6zZ
+         M9bChoRKeJ5XAeft4kqqMEvpF8dkdNJlbFYU5TrBsoLocclJW+xNXc9y5D1370ihVr9J
+         rPAaGdZyYZBi47Rv7ueP2RCiZXPSlDQqoE20YmpLb5duiAd2Hrv3kQXLNm7+vbc68Bn6
+         e6nkiK2gorUg2F0tCzNKyHobc7nVCYzDVXqKpXgU6ojmR4JRLRrzOvMzC52hX4L2GNs4
+         zmZv7PbVn4ZpG4JpGEj6AqUz1zfW0EqfALCgZTPrKNrPZPPypK8GPwIapJQZVkZrSG7F
+         llbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=LUOl7Aa8oTxi3OWMpOoCWP+3n8pVS5vMOJqGBVgPMS4=;
-        b=vZzqPY88NSsoVz5TT1lIQIRJfnM9UlQqKSmX2oxOV3rk5Nc27I8Eu32JxaN8jXJYSU
-         kGoq+IIGelcgy1B2hXq0incjwSZXaitLr9ssNAMrc1s6aMk1Dx0VC83zEN5ONvzJhqdC
-         oexsAFeR1nXOa3gDVez06CGQsLQihY5MXeOvV68tWsI/xmVMixGex9az++cdN5Rb8BH5
-         TjQQD59Be09oQMYm98qYYdLErqv3cGnWiWoe1D+bua7Pm4Ewwvf67YtvrtD0GvJIhLSE
-         wVrwOJD4jKn5mP69+w2/SXg3LZ0jV0aHY0nwh4KJ5s/XJlYHQoL6+im8P+X+190Q5r91
-         M/RQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:to:from:date;
+        bh=PU0ahnnz2Yw+Drru1xrR3apQ5vSXutrP8LiQj6IFiPg=;
+        b=lIDJtpgOW68XRuMIjIC+JCacc7jG/d+FFHwGY8zpI5PGtE9Ku4/yi2C+azcbF9tRP6
+         AultwNMLlIK5TJeuJJD5/JuyIhmtEZ5lBhBfOXCehdaj3C0LBfkWGpn1O92aZL3ZlaY5
+         2ypkBc5xLbRKiDstibX6lK3WFvbzXh5epA49A29Qzd8iDqv4/arOw+01Urj5PhyUgVhE
+         JdVeY7bVZAs0mo8vUXvPXS4+ts3NWC6sccetv56PsU0gb8qNNvz/9xVmKCpXJrQCuC0t
+         62FINqoujJpwulxCY4If7HfDVb0YuQgtmel8yXSj/fOoXK4mctZiEAHA3LvhKhFoSo6/
+         vuEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ougrnLSG;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u12sor18979897pgo.62.2019.05.14.13.14.58
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s1si261616edd.227.2019.05.14.18.11.00
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 May 2019 13:14:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 14 May 2019 18:11:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ougrnLSG;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=LUOl7Aa8oTxi3OWMpOoCWP+3n8pVS5vMOJqGBVgPMS4=;
-        b=ougrnLSG3PyQRkAX8A4JaGP7yc2Km4TL474VywuvtZuGk1+AaO4q9O63GDUQ90IhOs
-         FRsaFVWtoRLFRwHq5Qy6q0MrLll/nh0kALOdKiYd/UqFxlNx2K0DMhTDG3wtlOVuv3NG
-         QRGHlBaAS7G9tG7Sc9SozB1JoSsOFOJvoYwEp9U1WKYvgOJHVmN8KTliV4MYc4MLP8AN
-         ERFQ/G/fDqrv++1cgavRNL+xVGEcyS3oY2gr/FHtoWdGDwQKC8kjiJ9/5A+sQK+zJH6B
-         EgSVQc134fT5MeuIaj3CcRYgdMVi1URubl9FK8EUoNE0Dy90l4iwpi/eVoYTtiYmPdww
-         h89w==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:57277 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hQiRg-0003SZ-17
+	for alex.bennee@linaro.org; Tue, 14 May 2019 21:11:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55404)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1hQiRP-0003Rf-IM
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 21:10:44 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1hQiRO-0006lX-GN
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 21:10:43 -0400
+Received: from mail-qt1-f195.google.com ([209.85.160.195]:40955)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hQiRO-0006it-Am
+	for qemu-arm@nongnu.org; Tue, 14 May 2019 21:10:42 -0400
+Received: by mail-qt1-f195.google.com with SMTP id k24so1394832qtq.7
+	for <qemu-arm@nongnu.org>; Tue, 14 May 2019 18:10:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=LUOl7Aa8oTxi3OWMpOoCWP+3n8pVS5vMOJqGBVgPMS4=;
-        b=TQ/OakQd5QztfuKaCA4rlXqk/UTU47POWO6rlswoFHC2ygpHoGBa79d/fCO02tnCW8
-         rmDLInpDia41/CVYjvWZvgryQdD6MYPB7AnfZRfRicig/fq8bp3AEiif3dlakVYqOsYk
-         FlUq2I+PIKeBMhBs6rr03pfLePJ7zeD/o2QAIydfGH+phSnIgArJBGDljNLOdsf1SwZS
-         U+B0Ob6QCK1hcs6wj3F/IkRPORx+Fz/AZ/tfQQ1aEI0VT7sZ40sPkzuVsRmRUB+W79LP
-         +oM2Q4cVfmeemuCDOswjE6pbj7EwlHOAja7TQRNZ9QUswOTu+SXcqjyksoRyya5hxoKs
-         iq8Q==
-X-Gm-Message-State: APjAAAULPdM/kgicCnQv6BX3K79tinxFufl/KR8lE0RAGYNn3Ddhtxs5
-	pERFNfITHieqhQLUiV/lvhV2zqjV
-X-Google-Smtp-Source: APXvYqwlWY0f/6uOfFGLZRJxSRd2xpO5gsjvQ7kbAU4M0+MEKc8QhdrPsEZqnLOLK9MzUpCT8TfKPQ==
-X-Received: by 2002:a63:db10:: with SMTP id e16mr39990150pgg.142.1557864898126;
-        Tue, 14 May 2019 13:14:58 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-13-231.tukw.qwest.net. [97.113.13.231])
-        by smtp.gmail.com with ESMTPSA id n9sm2540875pfq.53.2019.05.14.13.14.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 May 2019 13:14:57 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
-To: Andrea Bolognani <abologna@redhat.com>, Andrew Jones <drjones@redhat.com>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, armbru@redhat.com,
- qemu-arm@nongnu.org, alex.bennee@linaro.org, Dave.Martin@arm.com
-References: <20190512083624.8916-1-drjones@redhat.com>
- <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
- <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
- <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
- <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
- <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <1cd94ba6-2bfa-645e-1034-dd05e8a77000@linaro.org>
-Date: Tue, 14 May 2019 13:14:54 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:content-transfer-encoding
+	:in-reply-to;
+	bh=PU0ahnnz2Yw+Drru1xrR3apQ5vSXutrP8LiQj6IFiPg=;
+	b=Y0bHvq+bc9zEUKoSx4f3Q154oq0wI7x1vYU0WEIEVXeJ5G60I29mCJFRAPew5VRo57
+	1Ii0Vd2snSpbzocZUMZl2K85IJhk/PBRVNO1C4L6JWiNSBbmIAEYcircRQDexc5kQg5L
+	recNcCJAcP//EenD4YAxFjFoNRCbYNFPBQrEV6lrwYoSgzR3nTV4CiV27FjdXucSAk6y
+	WSU4VMzhKGMQp7AQgN3jRxp67ohqf2MV0C8yb8LGqy0C5akHmKpAAqafVaCIMdNUKjKy
+	OZ6iGNuhl0FsrhTezSep2KzK+SBvGWjShuqSEmQWS0DOrG5UKQBpk4S/qNk59n36Gne4
+	v9yg==
+X-Gm-Message-State: APjAAAVAR3R193LsDiqTqGuiryGvr8U2EwvpVF/LAeTF2I3nTl4Nmbs+
+	JTRLz+8tvUMiRxxIfmufPdjOaA==
+X-Received: by 2002:ac8:2af4:: with SMTP id c49mr14230189qta.83.1557882640602; 
+	Tue, 14 May 2019 18:10:40 -0700 (PDT)
+Received: from redhat.com ([185.54.206.10])
+	by smtp.gmail.com with ESMTPSA id v22sm551377qtj.29.2019.05.14.18.10.37
+	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+	Tue, 14 May 2019 18:10:39 -0700 (PDT)
+Date: Tue, 14 May 2019 21:10:34 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190514211015-mutt-send-email-mst@kernel.org>
+References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
+	<20190419003053.8260-7-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: vxtNeqiug3En
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190419003053.8260-7-richardw.yang@linux.intel.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.160.195
+Subject: Re: [Qemu-arm] [PATCH v4 6/6] acpi: pci: use build_append_foo() API
+ to construct MCFG
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ugvYOCZg/pM7
 
-On 5/14/19 9:03 AM, Andrea Bolognani wrote:
-> On Tue, 2019-05-14 at 14:53 +0200, Andrew Jones wrote:
->> We already have sve-max-vq, so I'm not sure we want to rename it.
+On Fri, Apr 19, 2019 at 08:30:53AM +0800, Wei Yang wrote:
+> build_append_foo() API doesn't need explicit endianness conversions
+> which eliminates a source of errors and it makes build_mcfg() look like
+> declarative definition of MCFG table in ACPI spec, which makes it easy
+> to review.
 > 
-> Oh, I didn't realize that was the case. And of course it already
-> takes a number of quadwords as argument, I suppose? That's pretty
-> unfortunate :(
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Causes a regression with an invalid MCFG produced.
+Dropped.
+
+> ---
+>  hw/acpi/pci.c               | 33 +++++++++++++++++++++------------
+>  include/hw/acpi/acpi-defs.h | 18 ------------------
+>  2 files changed, 21 insertions(+), 30 deletions(-)
 > 
-> Perhaps we could consider deprecating it in favor of a user-friendly
-> variant that's actually suitable for regular humans, like the one I
-> suggest above?
-
-Why is =4 less user-friendly than =512?
-
-I don't actually see "total bits in vector" as more user-friendly than "number
-of quadwords" when it comes to non-powers-of-2 like =7 vs =896 or =13 vs =1664.
-
-
-r~
+> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+> index fa0fa30bb9..341805e786 100644
+> --- a/hw/acpi/pci.c
+> +++ b/hw/acpi/pci.c
+> @@ -30,17 +30,26 @@
+>  
+>  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+>  {
+> -    AcpiTableMcfg *mcfg;
+> -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
+> -
+> -    mcfg = acpi_data_push(table_data, len);
+> -    mcfg->allocation[0].address = cpu_to_le64(info->base);
+> -
+> -    /* Only a single allocation so no need to play with segments */
+> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+> -    mcfg->allocation[0].start_bus_number = 0;
+> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+> -
+> -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+> +    int mcfg_start = table_data->len;
+> +
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /*
+> +     * PCI Firmware Specification, Revision 3.0
+> +     * 4.1.2 MCFG Table Description.
+> +     */
+> +    /* Base address, processor-relative */
+> +    build_append_int_noprefix(table_data, info->base, 8);
+> +    /* PCI segment group number */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +    /* Starting PCI Bus number */
+> +    build_append_int_noprefix(table_data, 0, 1);
+> +    /* Final PCI Bus number */
+> +    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
+> +    /* Reserved */
+> +    build_append_int_noprefix(table_data, 0, 4);
+> +
+> +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
+> +                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
+>  }
+>  
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index f9aa4bd398..57a3f58b0c 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
+>  
+>  typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
+>  
+> -/* PCI fw r3.0 MCFG table. */
+> -/* Subtable */
+> -struct AcpiMcfgAllocation {
+> -    uint64_t address;                /* Base address, processor-relative */
+> -    uint16_t pci_segment;            /* PCI segment group number */
+> -    uint8_t start_bus_number;       /* Starting PCI Bus number */
+> -    uint8_t end_bus_number;         /* Final PCI Bus number */
+> -    uint32_t reserved;
+> -} QEMU_PACKED;
+> -typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
+> -
+> -struct AcpiTableMcfg {
+> -    ACPI_TABLE_HEADER_DEF;
+> -    uint8_t reserved[8];
+> -    AcpiMcfgAllocation allocation[0];
+> -} QEMU_PACKED;
+> -typedef struct AcpiTableMcfg AcpiTableMcfg;
+> -
+>  /*
+>   * TCPA Description Table
+>   *
+> -- 
+> 2.19.1

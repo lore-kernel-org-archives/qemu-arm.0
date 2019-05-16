@@ -1,95 +1,107 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp588383wrg;
-        Thu, 16 May 2019 05:44:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxeZbDsEQx1ftXNSM3xcbYN4CnedYdrzRFvtbj8IzetnuAvTICE/uHZq0Rwc1dHhuo+WXzn
-X-Received: by 2002:a50:b513:: with SMTP id y19mr51099733edd.100.1558010641357;
-        Thu, 16 May 2019 05:44:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558010641; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp858865wrg;
+        Thu, 16 May 2019 09:39:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyieeMvYImS55IHqOUtM/+RlLunllnIyq+jPx79NxNahpsAxAUF85jOd879VTb77QzLNOoS
+X-Received: by 2002:a17:906:e0c5:: with SMTP id gl5mr40099133ejb.212.1558024767345;
+        Thu, 16 May 2019 09:39:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558024767; cv=none;
         d=google.com; s=arc-20160816;
-        b=0525Y5X5NRxD0+YnUADz54yUE0EpVlXar8t7HZBNBkc6yWRtIqbgrSpbuXHgpnC9+g
-         3ehhr9uOhZOUejZ2EFDtaf+dV+8YxM5zp2h0RbJBmwnkuFTSYT+DgrZLpkfjX2UZ39UF
-         7Co1z1d97gYTgMCGjnNILXKyL+No3OtAyZ54HKKv75XmynPEndPxkpa2Omz24rD+fybR
-         jWYk6L7Ze76Bw448bWVmoP/2J80rzdFG+0DNjZwaeLOLkzKTDOk08XXvyDLe7qyh4mVl
-         yB+7XXQkdJ+0wI0lUVdycp672gFQHKZHqikKS+wbyk4yW5rsx7ai5DZRdNr17r5nVqGr
-         bkRQ==
+        b=cCLovw8aFHiYYN+1A2tb7Qr9HIehYIUKRH/pJCUMB/69lY36bfclqVRIDoVm+YVNRp
+         Per7VcElHr2nkVnmnHGcRhKD5mvooGb9USCkEc0sWv3e6+eIP7vlTC4MX8kyntELtJLV
+         7JY8jHh0fVlZoenS52ExWk9IQtFtUSIjpuONMja0coC372gb033XC7HXsEQttNKq8mok
+         1GSmvCUbCle3OS7AQseWxNunyHT/NfPs/8GitQr4Yp5YnnPGERShib6opuXoTaHyHDgs
+         0+EDJLWoX7ZpFdrIecQQ6HyzDNlqmmfXsjHWMR8cqg565ceGvUl1hzZ3LGId0f7ICjdn
+         HnQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date;
-        bh=I6cJTLcWEw/XJp6IFKQiIeuBX7M9vB64h4Zd8MlI/4k=;
-        b=cUDBcyq7BdxS8YjtCh+JzFwsL/1NpRYaK5hNjEREzFDY+X8DuyRaLh4sL/0N7slnKw
-         7xAvw0spnGK2R5z5jc2chF9uSLR0vvnz/JjX13fnP/FQLFHGDOUgFZ+iARUppRO0due3
-         /5WRPqyfKd1673K7kG+RGbdPZtyEEkwhPMbOzFyjCauLGhgCVhbN+XgxDKErIz8Tr0tZ
-         5Ln/aT4FarNrrNIacPKFfDz615qS30qijmIUg5fobD+M6pGmRPbimXBjWzSFI1svqISp
-         rXF7pOeJwxWdOwKCUV7E4JDTXvjGLXZis/oXLmZiwAI2QZtYh0phDFBzFIn0qtktvmY8
-         wLZA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
+        b=dFkBDm+jbYAl2XEheR161unaGgs1UufqRkGoQ0CVRpVfYgThOku4ij53v/tzv4ky3K
+         70SyFwlfe+5Svvig7A3YocaYaUsAw3ZgPs0OwNR94Hz9p+voNt4ivePbxYPLE7gMHYy4
+         aMXowwbGklJOQg7Ddh2eELxd50DRO/j1Uvox8EYQ9YQqKv8PPzu4OPL1Ko6gR4CA4kuO
+         57ZebIPs4l+TXMenlgud0nWQHtNmKfLctlgqqS1HHs5DOY1XfmnV4nrkgMkLE0XNCtcS
+         urjeuh2dB6GR3nISvNLjWWBTDrhLcDDmgXsadUtIaHqLCrgGDL/rLcVZSYlnZHJkw67A
+         TkiA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="o6jd/+Gs";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si470280eja.247.2019.05.16.05.44.01
+        by mx.google.com with ESMTPS id v36si2804625edm.47.2019.05.16.09.39.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 May 2019 05:44:01 -0700 (PDT)
+        Thu, 16 May 2019 09:39:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="o6jd/+Gs";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:54258 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:60883 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hRFjs-0004jm-BS
-	for alex.bennee@linaro.org; Thu, 16 May 2019 08:44:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48996)
+	id 1hRJPi-0004P9-Cx
+	for alex.bennee@linaro.org; Thu, 16 May 2019 12:39:26 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51802)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hRFMZ-0000uN-CI
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 08:19:58 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hRJPO-0004Mh-Er
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hRFMW-0002DT-Ba
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 08:19:55 -0400
-Received: from mail-qk1-f195.google.com ([209.85.222.195]:34573)
+	(envelope-from <peter.maydell@linaro.org>) id 1hRJPM-0002lE-M5
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:06 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:37250)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hRFMW-0002DD-8a
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 08:19:52 -0400
-Received: by mail-qk1-f195.google.com with SMTP id j20so2093713qke.1
-	for <qemu-arm@nongnu.org>; Thu, 16 May 2019 05:19:52 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hRJPM-0002kO-F5
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:04 -0400
+Received: by mail-wm1-x342.google.com with SMTP id 7so4160211wmo.2
+	for <qemu-arm@nongnu.org>; Thu, 16 May 2019 09:39:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+	:content-transfer-encoding;
+	bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
+	b=o6jd/+Gs9y7gWf13CEZM2I1rtlAnUdRfDeIApuFBZfH208KiYixdXQXbnV0qksdLF1
+	OpyCFjX6CiN8sT6sUlrqtFdpkIGrEmwR3Gxj9praVLupRqxtTUyhV1rOiJlSuEUsGgU9
+	gyMTRcpzbADkFBqJElCrr2jxgS08VLejeS6orLPvjUIvJ2btZbB0ykrYLMeHlihVhv0w
+	e9KNbZhlfBeEAHlmriiNNjw38ceCwJzSWlyYc/UffnCErPw/1mzcJ1XSa59jb+F/EwX2
+	OSwr2RDDWaGhMT8JVOJqNJ1OinPspweKIFSSrW1tIWR7pRzD2hyrC4kNGwd+ZnyPzTuF
+	uS4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to;
-	bh=I6cJTLcWEw/XJp6IFKQiIeuBX7M9vB64h4Zd8MlI/4k=;
-	b=mJLtTZ4JsAtq0pPJ9hDcUqOXTDO7nKgtvVl3c2gQnRqEKr79oY3wSFWZEMTmdwyXFl
-	a8FBJHY7SqvgrPI7pAn+KxVe1kO32MjdZ31wdPXlIVZ3F6ThT0SlSSQ/VIeIOfwHDPai
-	2eUvcWsFGMPOhZCnDKCSxqubl/XSqqTtnWi1JHcszNCJE259ptOw1cssRAWQKTRx3738
-	lQxExUYG4B0m8EAg+P4Z97ARm9vIPosxfMwH5kKWOLxOeBZmA0oh3rotc/+doTolRJNS
-	eTUqZcfF6KpUOunb1G3b5XCTCmPnSQa/7GINmL8ZWUu6G0NkXSuQ4ABGDUDJ9uGgs9jE
-	CCEg==
-X-Gm-Message-State: APjAAAX6yKkU6MuqAsCbpF2s55wL2umbE6BlIPMi7lAPclOsOakbdtu3
-	Pe3Uf9q28ImoWp2sIbgA3rSMIQ==
-X-Received: by 2002:a37:7002:: with SMTP id l2mr38745692qkc.227.1558009191653; 
-	Thu, 16 May 2019 05:19:51 -0700 (PDT)
-Received: from redhat.com ([185.54.206.10]) by smtp.gmail.com with ESMTPSA id
-	e131sm2283331qkb.80.2019.05.16.05.19.41
-	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-	Thu, 16 May 2019 05:19:50 -0700 (PDT)
-Date: Thu, 16 May 2019 08:19:34 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20190419003053.8260-6-richardw.yang@linux.intel.com>
-References: <20190515121146.7248-1-mst@redhat.com>
+	h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
+	b=FnmRlcvXRfpum2xJEqHBEChfi+00vllDv9KkRYWf5SAPJzX/4x4NLY4+fvYHvcIgem
+	aoTdj0ZRNT8E3cBzovjBBOPRTgYuFY4nU+CCQReBDa/f0SbIqKmEg9/AC7WtLbB0eOFi
+	mp7YhmE7qBuxUbL/TZHc6sImytakf+R0bzLNK8srzDiO5szZ4KvmzxqWwtUuqyKeYA/Y
+	G4JUZM2nZHw+rAuzFespnEEtx9ZVbGWR+coIsEuoEUmiCLC72Q8TiT+FKfa+qbXyzSYE
+	bhxaprfArULfj49F/MBH07vE1ZyTWypBOQGX3vq6pdAGKzfoBs4lWf8cwG7BxHTUor3p
+	9Acg==
+X-Gm-Message-State: APjAAAVwaQYsNMcVHCNzY7QKqClZX01PADA2ldEudwiH9At3FI5ne58A
+	CUIBhewdLCV5QK0790frupl2VDxRoEw=
+X-Received: by 2002:a1c:e386:: with SMTP id a128mr22153654wmh.69.1558024742219;
+	Thu, 16 May 2019 09:39:02 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id
+	y130sm6702844wmc.44.2019.05.16.09.39.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 16 May 2019 09:39:01 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 16 May 2019 17:38:55 +0100
+Message-Id: <20190516163857.6430-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190516163857.6430-1-peter.maydell@linaro.org>
+References: <20190516163857.6430-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190515121146.7248-1-mst@redhat.com>
-X-Mailer: git-send-email 2.17.1.1206.gb667731e2e.dirty
-X-Mutt-Fcc: =sent
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.222.195
-Subject: [Qemu-arm] [PULL 19/37] hw/acpi: Consolidate build_mcfg to pci.c
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH 1/3] arm: Move system_clock_scale to
+ armv7m_systick.h
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,218 +113,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Vd1wucOQwqI
-Message-ID: <20190516121934.crMvGw0TmUJ_FXx-nSycHcxOxRALz7s98dIx4Z5AGx4@z>
+X-TUID: 2yD79tDWLh2p
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+The system_clock_scale global is used only by the armv7m systick
+device; move the extern declaration to the armv7m_systick.h header,
+and expand the comment to explain what it is and that it should
+ideally be replaced with a different approach.
 
-Now we have two identical build_mcfg functions.
-
-Consolidate them in acpi/pci.c.
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-Message-Id: <20190419003053.8260-6-richardw.yang@linux.intel.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- default-configs/arm-softmmu.mak  |  1 +
- default-configs/i386-softmmu.mak |  1 +
- include/hw/acpi/pci.h            |  1 +
- hw/acpi/pci.c                    | 46 ++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c         | 17 ------------
- hw/i386/acpi-build.c             | 18 +------------
- hw/acpi/Kconfig                  |  4 +++
- hw/acpi/Makefile.objs            |  1 +
- 8 files changed, 55 insertions(+), 34 deletions(-)
- create mode 100644 hw/acpi/pci.c
+ include/hw/arm/arm.h              |  4 ----
+ include/hw/timer/armv7m_systick.h | 22 ++++++++++++++++++++++
+ 2 files changed, 22 insertions(+), 4 deletions(-)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 613d19a06d..8f2796e195 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -144,6 +144,7 @@ CONFIG_XIO3130=y
- CONFIG_IOH3420=y
- CONFIG_I82801B11=y
- CONFIG_ACPI=y
-+CONFIG_ACPI_PCI=y
- CONFIG_ARM_VIRT=y
- CONFIG_SMBIOS=y
- CONFIG_ASPEED_SOC=y
-diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
-index ba3fb3ff50..cd5ea391e8 100644
---- a/default-configs/i386-softmmu.mak
-+++ b/default-configs/i386-softmmu.mak
-@@ -25,3 +25,4 @@
- CONFIG_ISAPC=y
- CONFIG_I440FX=y
- CONFIG_Q35=y
-+CONFIG_ACPI_PCI=y
-diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-index 124af7d32a..8bbd32cf45 100644
---- a/include/hw/acpi/pci.h
-+++ b/include/hw/acpi/pci.h
-@@ -30,4 +30,5 @@ typedef struct AcpiMcfgInfo {
-     uint32_t size;
- } AcpiMcfgInfo;
+diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+index ffed39252d8..ba3a9b41422 100644
+--- a/include/hw/arm/arm.h
++++ b/include/hw/arm/arm.h
+@@ -167,8 +167,4 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
+                                             const struct arm_boot_info *info,
+                                             hwaddr mvbar_addr);
  
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
- #endif
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-new file mode 100644
-index 0000000000..fa0fa30bb9
---- /dev/null
-+++ b/hw/acpi/pci.c
-@@ -0,0 +1,46 @@
+-/* Multiplication factor to convert from system clock ticks to qemu timer
+-   ticks.  */
+-extern int system_clock_scale;
+-
+ #endif /* HW_ARM_H */
+diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
+index cca04defd8e..25e5ceacc85 100644
+--- a/include/hw/timer/armv7m_systick.h
++++ b/include/hw/timer/armv7m_systick.h
+@@ -31,4 +31,26 @@ typedef struct SysTickState {
+     qemu_irq irq;
+ } SysTickState;
+ 
 +/*
-+ * Support for generating PCI related ACPI tables and passing them to Guests
++ * Multiplication factor to convert from system clock ticks to qemu timer
++ * ticks. This should be set (by board code, usually) to a value
++ * equal to NANOSECONDS_PER_SECOND / frq, where frq is the clock frequency
++ * in Hz of the CPU.
 + *
-+ * Copyright (C) 2006 Fabrice Bellard
-+ * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
-+ * Copyright (C) 2013-2019 Red Hat Inc
-+ * Copyright (C) 2019 Intel Corporation
++ * This value is used by the systick device when it is running in
++ * its "use the CPU clock" mode (ie when SYST_CSR.CLKSOURCE == 1) to
++ * set how fast the timer should tick.
 + *
-+ * Author: Wei Yang <richardw.yang@linux.intel.com>
-+ * Author: Michael S. Tsirkin <mst@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ * TODO: we should refactor this so that rather than using a global
++ * we use a device property or something similar. This is complicated
++ * because (a) the property would need to be plumbed through from the
++ * board code down through various layers to the systick device
++ * and (b) the property needs to be modifiable after realize, because
++ * the stellaris board uses this to implement the behaviour where the
++ * guest can reprogram the PLL registers to downclock the CPU, and the
++ * systick device needs to react accordingly. Possibly this should
++ * be deferred until we have a good API for modelling clock trees.
 + */
++extern int system_clock_scale;
 +
-+#include "qemu/osdep.h"
-+#include "hw/acpi/aml-build.h"
-+#include "hw/acpi/pci.h"
-+#include "hw/pci/pcie_host.h"
-+
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-+{
-+    AcpiTableMcfg *mcfg;
-+    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-+
-+    mcfg = acpi_data_push(table_data, len);
-+    mcfg->allocation[0].address = cpu_to_le64(info->base);
-+
-+    /* Only a single allocation so no need to play with segments */
-+    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-+    mcfg->allocation[0].start_bus_number = 0;
-+    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
-+
-+    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-+}
-+
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index e7c96d658e..4a64f9985c 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -546,23 +546,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
- }
- 
--static void
--build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /* GTDT */
- static void
- build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index dbd3a6cac2..2fecccb13f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2393,22 +2393,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                  table_data->len - srat_start, 1, NULL, NULL);
- }
- 
--static void
--build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /*
-  * VT-d spec 8.1 DMA Remapping Reporting Structure
-  * (version Oct. 2014 or later)
-@@ -2678,7 +2662,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     }
-     if (acpi_get_mcfg(&mcfg)) {
-         acpi_add_table(table_offsets, tables_blob);
--        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
-+        build_mcfg(tables_blob, tables->linker, &mcfg);
-     }
-     if (x86_iommu_get_default()) {
-         IommuType IOMMUType = x86_iommu_get_type();
-diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index eca3beed75..7265843cc3 100644
---- a/hw/acpi/Kconfig
-+++ b/hw/acpi/Kconfig
-@@ -23,6 +23,10 @@ config ACPI_NVDIMM
-     bool
-     depends on ACPI
- 
-+config ACPI_PCI
-+    bool
-+    depends on ACPI
-+
- config ACPI_VMGENID
-     bool
-     default y
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 2d46e3789a..661a9b8c2f 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
- common-obj-y += acpi_interface.o
- common-obj-y += bios-linker-loader.o
- common-obj-y += aml-build.o
-+common-obj-$(CONFIG_ACPI_PCI) += pci.o
- common-obj-$(CONFIG_TPM) += tpm.o
- 
- common-obj-$(CONFIG_IPMI) += ipmi.o
+ #endif
 -- 
-MST
+2.20.1
 

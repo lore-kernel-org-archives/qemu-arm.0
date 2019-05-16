@@ -1,117 +1,136 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp536489wrg;
-        Wed, 15 May 2019 05:47:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz8JvvrevIiljtzbEJ8d7+l0qCo9kh1CWK1AlFmxQhSofQ6ZU5doDIDhEz/fWrv85HCxkcS
-X-Received: by 2002:a05:6402:1610:: with SMTP id f16mr43451502edv.171.1557924436683;
-        Wed, 15 May 2019 05:47:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557924436; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp315535wrg;
+        Thu, 16 May 2019 00:41:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy5lrx+8qkyrVsBmL4A1vgy+72gYO/ybz9DL3rQfNxCfvRm/0s2sLMaTDEpCGenFmIRTjqq
+X-Received: by 2002:a50:fa90:: with SMTP id w16mr48065195edr.184.1557992517492;
+        Thu, 16 May 2019 00:41:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557992517; cv=none;
         d=google.com; s=arc-20160816;
-        b=f4OBKoITE4cKRGBLK6CXppDwHa75MQ79G9TkK33HDBaYuZ55R3CZ/xUfPWxtFlBMGA
-         HQJeh/OaxIDFkIUj71ByPZGjOqi12mXdSYjn1fC4tLuiBoXQTq5ZgZyROs9xrG2vTvJy
-         rqo3JFESdNuEC3vzdssiVE+OPUPwpcwA+dD3gWuOUzljENlA6xmslvviduoMMJn0zWLo
-         2c4i1L5htm47KzLxg08g8bkC3PK2D4i4oyxQlEr5ss+0LwyBkwROn2fldkaiS5Sp4PBY
-         qaHEkALIYIqivcd1r1WrAA2Eq/fozsczZhUmllYCTQ/mh8gRYdoUXnFXs1CFuP7WF8yu
-         A9Zw==
+        b=HQIr7Kthz67s3HJxnY6JCdDHqDTcpRSC3Jo9Y0Tl1RAT7Mqi3JSUoIkiC1g2OnZPk6
+         zSm7a33N/l49BArxpC5oR2IhL6AniDWytP2rYBTvXCg48PqDbMgXIHyLsc/o0U0PQFDX
+         S4wX9AUnklOMHQsCsm54/Vdwdv4IYk93jhTvk09xmH+C5bAgVFXc7qFuRbxZN04FcsAA
+         vXjAYsoMMrP7IIRtagou5s3A2Vl9BxD8L+jMB5xwt2U/HAsry59CByrE9WXfEjdpLVLH
+         GIIveYfnWuGvT9bc6YgFajfUmC6/qn6Lla4O7RG8QVyZ0oHfAfmYp/aoN5cDHw3Qev0p
+         zrmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=02NO1j4nk0RzwTtpmL/WNUZk+y9Cx3zVxgO8fKelPgY=;
-        b=doHoK3/XRDwgkVgEyL5hgNg0yzP+GDO9HjKWUTwmDcgNEYqcfDwm3rOX/M5FiirXku
-         hDBGJ+dJy33eKFYK2B5iLLTCH1Z9Qy8HnuPIYvIytTbkClMjxuvC2YBHa1QH20RT6L3y
-         MptwZh+BsFVX+rnnIgoC+1VXXIgVGiScLk2HBdnwXjfFycyNeuy77V+rpxN1A/AIHeGm
-         FB9/zkd0b2xrMufZrDqpw9bkb2VwzwHoFqvJyqv+jZTHm9fRJTb5l7bkVJftwOj1H27y
-         CppW4M2vu+N5ibxBy4qpsq212lP2ZTuvzLDTuhJABFJJPluGB6WIP1GP/2zOfgGspB4h
-         dzzg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:to:from:date;
+        bh=vqfVYvMJnl9UvLHO9g2Yy2flwHB/FpkEofeDyUFy4hk=;
+        b=CozuOm82dfqv/72zuwzg/gxZxzvlcFJSSbGIabBN8tcWYYw3v8VSjI1o7eYXwxlHvI
+         OWrlXxApFywn2RgflvJcA43B8WHwUK+1MLKPsmKHQlU0BpiusHlxGO7oi4bdviiajx4X
+         hbslD28obcXXMRCbl4R1y9hS7Bmk66YAAOZH3KZzG1eRVg0Vd3RKkXxa66tnzuupRWnK
+         3wKA0ueFTgJDQZa1bCu4iSKLo7Q8xQW1dXnZng94uGCZE9rl1728rZnYdYmrycUpHus8
+         thMeAzm/tcDUlVyh1tE3VEtLpZvJRco3PznT9LPAHJD11yjySCEDugQ3dLcNBZ/HcB9N
+         ztRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.101.70])
-        by mx.google.com with ESMTP id s53si1376941eda.46.2019.05.15.05.47.16;
-        Wed, 15 May 2019 05:47:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) client-ip=217.140.101.70;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b7si3037120ejb.160.2019.05.16.00.41.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 16 May 2019 00:41:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.101.70 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9914D374;
-	Wed, 15 May 2019 05:47:15 -0700 (PDT)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1EBC03F71E;
-	Wed, 15 May 2019 05:47:13 -0700 (PDT)
-Date: Wed, 15 May 2019 13:47:11 +0100
-From: Dave Martin <Dave.Martin@arm.com>
-To: Andrea Bolognani <abologna@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Jones <drjones@redhat.com>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH 00/13] target/arm/kvm: enable SVE in guests
-Message-ID: <20190515124711.GS28398@e103592.cambridge.arm.com>
-References: <20190512083624.8916-1-drjones@redhat.com>
- <9f57bfa56715b3128c1823150457ddb866e6054c.camel@redhat.com>
- <20190513123656.6iu7ebu7zucn5mxt@kamzik.brq.redhat.com>
- <e38aac8cb33c5782499b4ca0356c43267f05dc5e.camel@redhat.com>
- <20190514125329.mi7ctaoujirwm6gs@kamzik.brq.redhat.com>
- <1857a74ef586a4e41d93b184498cfcf6c2927cec.camel@redhat.com>
- <1cd94ba6-2bfa-645e-1034-dd05e8a77000@linaro.org>
- <a24b6d34b99835ea38b021896a57c7af8bf4747c.camel@redhat.com>
- <20190515111420.GR28398@e103592.cambridge.arm.com>
- <6ab7415d80419a7d9ac832b9194bf2d944696cd9.camel@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([127.0.0.1]:50165 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hRB1Y-0003Bf-KM
+	for alex.bennee@linaro.org; Thu, 16 May 2019 03:41:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53290)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hRB1Q-0003BV-C9
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 03:41:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hRB1P-0001qN-EV
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 03:41:48 -0400
+Received: from mga14.intel.com ([192.55.52.115]:21552)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1hRB1P-0001nM-6h; Thu, 16 May 2019 03:41:47 -0400
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	16 May 2019 00:41:44 -0700
+X-ExtLoop1: 1
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by orsmga003.jf.intel.com with ESMTP; 16 May 2019 00:41:41 -0700
+Date: Thu, 16 May 2019 15:41:10 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190516074110.GA11938@richard>
+References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
+	<20190419003053.8260-7-richardw.yang@linux.intel.com>
+	<20190514211015-mutt-send-email-mst@kernel.org>
+	<d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <6ab7415d80419a7d9ac832b9194bf2d944696cd9.camel@redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: XKsPCzTHBd8x
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.115
+Subject: Re: [Qemu-arm] [PATCH v4 6/6] acpi: pci: use build_append_foo() API
+ to construct MCFG
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+	Wei Yang <richardw.yang@linux.intel.com>,
+	marcel.apfelbaum@gmail.com, imammedo@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UBh4VSMBCQl6
 
-On Wed, May 15, 2019 at 12:28:20PM +0100, Andrea Bolognani wrote:
-> On Wed, 2019-05-15 at 12:14 +0100, Dave Martin wrote:
-> > On Wed, May 15, 2019 at 09:03:58AM +0100, Andrea Bolognani wrote:
-> > > On Tue, 2019-05-14 at 13:14 -0700, Richard Henderson wrote:
-> > > > Why is =4 less user-friendly than =512?
-> > > > 
-> > > > I don't actually see "total bits in vector" as more user-friendly than "number
-> > > > of quadwords" when it comes to non-powers-of-2 like =7 vs =896 or =13 vs =1664.
-> > > 
-> > > I would wager most people are intimately familiar with bits, bytes
-> > > and multiples due to having to work with them daily. Quadwords, not
-> > > so much.
-> > 
-> > Generally I tend to agree.  For kvmtool I leaned torward quadwords
-> > purely because
-> > 
-> > 	16,32,48,64,80,96,112,128,144,160,176,192,208
-> > 
-> > is a big pain to type compared with
-> > 
-> > 	1,2,3,4,5,6,7,8,9,10,11,12,13
-> > 
-> > Even though I prefer to specify vector lengths in bytes everywhere else
-> > in the Linux user API (precisely to avoid the confusion you object to).
-> > 
-> > This isn't finalised yet for kvmtool -- I need to rework the patches
-> > and may not include it at all initially: kvmtool doesn't support
-> > migration, which is the main usecase for being able to specify an exact
-> > set of vector lengths AFAICT.
-> > 
-> > Since this is otherwise only useful for migration, experimentation or
-> > machine-driven configuration, a bitmask
-> > 
-> > 	0x1fff
-> > 
-> > as some have suggested may well be a pragmatic alternative for kvmtool.
-> 
-> Just to be clear, I have suggested using bits (or bytes or megabytes
-> depending on the exact value) only for the command-line-user-oriented
-> sve-vl-max option, which would take a single value.
-> 
-> For interoperation with the management layer, on the other hand,
-> using a bitmap is perfectly fine, and whether the values encoded
-> within are expressed in quadwords or whatever other format is largely
-> irrelevant, so long as it it's properly documented of course.
+On Wed, May 15, 2019 at 07:29:17AM +0200, Philippe Mathieu-Daudé wrote:
+>
+>Thanks Michael for testing...
+>
+>Wei, can you add a MCFG test in tests/bios-tables-test.c?
+>
 
-Seems fair.
+I took a look into the test, current q35 has already has a reference MCFG in 
+tests/data/acpi/q35/MCFG.
 
-Cheers
----Dave
+And there would be a warning message when reserved[8] is missed.
+
+    /x86_64/acpi/q35/bridge: acpi-test: Warning! MCFG mismatch.
+
+Is this enough? Or what more information prefer to add?
+
+>Regards,
+>
+>Phil.
+>
+>>> -    AcpiMcfgAllocation allocation[0];
+>>> -} QEMU_PACKED;
+>>> -typedef struct AcpiTableMcfg AcpiTableMcfg;
+>>> -
+>>>  /*
+>>>   * TCPA Description Table
+>>>   *
+>>> -- 
+>>> 2.19.1
+
+-- 
+Wei Yang
+Help you, Help me

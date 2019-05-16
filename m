@@ -1,97 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp858865wrg;
-        Thu, 16 May 2019 09:39:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyieeMvYImS55IHqOUtM/+RlLunllnIyq+jPx79NxNahpsAxAUF85jOd879VTb77QzLNOoS
-X-Received: by 2002:a17:906:e0c5:: with SMTP id gl5mr40099133ejb.212.1558024767345;
-        Thu, 16 May 2019 09:39:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558024767; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp858896wrg;
+        Thu, 16 May 2019 09:39:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxxPS0eTn4KSxvAowl4z5y8xv5krctRnZ/131EtD8W033TPCGDeqBm5f0eg3vj9RkFtz0t0
+X-Received: by 2002:a05:6402:180b:: with SMTP id g11mr52029835edy.268.1558024769186;
+        Thu, 16 May 2019 09:39:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558024769; cv=none;
         d=google.com; s=arc-20160816;
-        b=cCLovw8aFHiYYN+1A2tb7Qr9HIehYIUKRH/pJCUMB/69lY36bfclqVRIDoVm+YVNRp
-         Per7VcElHr2nkVnmnHGcRhKD5mvooGb9USCkEc0sWv3e6+eIP7vlTC4MX8kyntELtJLV
-         7JY8jHh0fVlZoenS52ExWk9IQtFtUSIjpuONMja0coC372gb033XC7HXsEQttNKq8mok
-         1GSmvCUbCle3OS7AQseWxNunyHT/NfPs/8GitQr4Yp5YnnPGERShib6opuXoTaHyHDgs
-         0+EDJLWoX7ZpFdrIecQQ6HyzDNlqmmfXsjHWMR8cqg565ceGvUl1hzZ3LGId0f7ICjdn
-         HnQw==
+        b=yKCd0Hlz2S0pC3OF0bXGUX0ivPcPsIS6flg1P0cEOQZh+lu2+gUUW3rGghv1fFxf6y
+         Sc/Bh5T79zwymu8nVHnz9az/EIEzWnQ2lupVQZibmoIpsadTcauN/Az/NMX4JEKsu84N
+         43LEgBJZGMXb+21dE6y9rALGnyVvpAPvKtL81B8VHDjF12owj5l5ul65jYKzihNatBmp
+         M+v4EqWy959Q0Ct+28WoQuioMflCfgOFFDZzZkUumy0oR+pUnVYaIY5x0btjda9um8Ep
+         JK482mtspUbDC0LQRN0Z35LRI3Q8g/hoF1x9kg+ZufTdLBmaA4DbHp9IaV07aF93S+XX
+         uJsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
-        b=dFkBDm+jbYAl2XEheR161unaGgs1UufqRkGoQ0CVRpVfYgThOku4ij53v/tzv4ky3K
-         70SyFwlfe+5Svvig7A3YocaYaUsAw3ZgPs0OwNR94Hz9p+voNt4ivePbxYPLE7gMHYy4
-         aMXowwbGklJOQg7Ddh2eELxd50DRO/j1Uvox8EYQ9YQqKv8PPzu4OPL1Ko6gR4CA4kuO
-         57ZebIPs4l+TXMenlgud0nWQHtNmKfLctlgqqS1HHs5DOY1XfmnV4nrkgMkLE0XNCtcS
-         urjeuh2dB6GR3nISvNLjWWBTDrhLcDDmgXsadUtIaHqLCrgGDL/rLcVZSYlnZHJkw67A
-         TkiA==
+        bh=EHWFkbuw1ciTuYhMY21VSgxzzXPrQYdg2HxcH0sKDA8=;
+        b=doBY5H5T11w0xYNyUV+BiLYPxBpTGNEZLZiUogHQSWoiEJqd7224wwSefXQpZhGTGt
+         eTlDrraWcOeQD3/r5CMOK+HDCJF+BKe8rhbSlvdIFYQdCA/Kv1hOI67cyaIVCVKuRFm4
+         2QXu3YWzAxIoJewO+bVJDX6aVBTbAb7KnIIvjUfbjd8zbTLQt1DqYSOcuW6WZlwphhIJ
+         0u9JeEUzg09mdeONJ/260iK592zdDJTLXCb7AfujF/nqSmLIl8wVAc1SKYhAIoipvSh8
+         i9wSSp372AMnrHK/uZSXM07nPjVsdTPL7Jn3H8LOewqAFxk5O9J0Jw5t+bSKFhMFhZDj
+         ierA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o6jd/+Gs";
+       dkim=fail header.i=@linaro.org header.s=google header.b=q+TOHrkT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v36si2804625edm.47.2019.05.16.09.39.27
+        by mx.google.com with ESMTPS id q2si4213075edg.63.2019.05.16.09.39.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 May 2019 09:39:27 -0700 (PDT)
+        Thu, 16 May 2019 09:39:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o6jd/+Gs";
+       dkim=fail header.i=@linaro.org header.s=google header.b=q+TOHrkT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:60883 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:60885 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hRJPi-0004P9-Cx
-	for alex.bennee@linaro.org; Thu, 16 May 2019 12:39:26 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51802)
+	id 1hRJPk-0004QR-7H
+	for alex.bennee@linaro.org; Thu, 16 May 2019 12:39:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hRJPO-0004Mh-Er
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:07 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hRJPP-0004NU-4W
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hRJPM-0002lE-M5
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:06 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:37250)
+	(envelope-from <peter.maydell@linaro.org>) id 1hRJPN-0002lj-MT
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:07 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38633)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hRJPM-0002kO-F5
-	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:04 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 7so4160211wmo.2
-	for <qemu-arm@nongnu.org>; Thu, 16 May 2019 09:39:03 -0700 (PDT)
+	id 1hRJPN-0002kr-GH
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 12:39:05 -0400
+Received: by mail-wm1-x341.google.com with SMTP id t5so2795716wmh.3
+	for <qemu-arm@nongnu.org>; Thu, 16 May 2019 09:39:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:subject:date:message-id:in-reply-to:references:mime-version
 	:content-transfer-encoding;
-	bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
-	b=o6jd/+Gs9y7gWf13CEZM2I1rtlAnUdRfDeIApuFBZfH208KiYixdXQXbnV0qksdLF1
-	OpyCFjX6CiN8sT6sUlrqtFdpkIGrEmwR3Gxj9praVLupRqxtTUyhV1rOiJlSuEUsGgU9
-	gyMTRcpzbADkFBqJElCrr2jxgS08VLejeS6orLPvjUIvJ2btZbB0ykrYLMeHlihVhv0w
-	e9KNbZhlfBeEAHlmriiNNjw38ceCwJzSWlyYc/UffnCErPw/1mzcJ1XSa59jb+F/EwX2
-	OSwr2RDDWaGhMT8JVOJqNJ1OinPspweKIFSSrW1tIWR7pRzD2hyrC4kNGwd+ZnyPzTuF
-	uS4g==
+	bh=EHWFkbuw1ciTuYhMY21VSgxzzXPrQYdg2HxcH0sKDA8=;
+	b=q+TOHrkT0BeTNHQYLV/vZj9BA4rrv7GtykA/Z1BxO55nCHUviQneVDAOS+RMzyjFl/
+	OUwm0u+x3TmWRzCJ5oEXMmy2M0i5GmgTaZOi7jj2E7BThxXLrFGHwmnlDiNCa9EIYZaz
+	BSiXcEadsXcgIb5GGXDLlJECSefAmr+INQDqQ2dJo0ENK3ezbnQCK8s2LqRQS49BzcmS
+	CCI3RxwQXjAZvZBu6l04nJCCRJiTNxDjJc9w4o9syBevrd978rZDNw+Y/kF5rRgPV1yl
+	docNZ1WzLTnOdAui8IX6pxf0kOo+lYXPjSyZ4A7cJpQwMfRGkupaNJ8aMa7jsp25QWw5
+	nktg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=E+qwMGfCSf91iO1z7UbAq1hPniFkDTxXyjWu6BBesrM=;
-	b=FnmRlcvXRfpum2xJEqHBEChfi+00vllDv9KkRYWf5SAPJzX/4x4NLY4+fvYHvcIgem
-	aoTdj0ZRNT8E3cBzovjBBOPRTgYuFY4nU+CCQReBDa/f0SbIqKmEg9/AC7WtLbB0eOFi
-	mp7YhmE7qBuxUbL/TZHc6sImytakf+R0bzLNK8srzDiO5szZ4KvmzxqWwtUuqyKeYA/Y
-	G4JUZM2nZHw+rAuzFespnEEtx9ZVbGWR+coIsEuoEUmiCLC72Q8TiT+FKfa+qbXyzSYE
-	bhxaprfArULfj49F/MBH07vE1ZyTWypBOQGX3vq6pdAGKzfoBs4lWf8cwG7BxHTUor3p
-	9Acg==
-X-Gm-Message-State: APjAAAVwaQYsNMcVHCNzY7QKqClZX01PADA2ldEudwiH9At3FI5ne58A
-	CUIBhewdLCV5QK0790frupl2VDxRoEw=
-X-Received: by 2002:a1c:e386:: with SMTP id a128mr22153654wmh.69.1558024742219;
-	Thu, 16 May 2019 09:39:02 -0700 (PDT)
+	bh=EHWFkbuw1ciTuYhMY21VSgxzzXPrQYdg2HxcH0sKDA8=;
+	b=VixhHJvrGhynPzYL4LhZyIye8bL02vL7xosvOnRkv7bxWXluj6LDPFHm/MfaOHcbGo
+	B2u8h2yH+V2iEGDZSjBIRKiWed6bmuB6mucqf/2SoYJR4UR2IHIA4GF0+iDb/GlrZok2
+	i7uewvQAlz2r85QxsfsZUq9YR68dIZZWc61mWaGQJ6+NV5my8T2RWrOFdSq0z343VB3F
+	PVsTRP1sUrAThQotldni/DWr03RyR2uLLE8xrkR8fappAClIjmBj89KFXbCPinIGkPxg
+	bfElUYZqBO5RlTjlkvijB7BYOIFXhHiU6/8wxec+GOU+QluzzBzJvq4SoaQXMBYfcDCY
+	RlHw==
+X-Gm-Message-State: APjAAAWUUs8YRq2eLi4XTCyOCY3MQcjuJ7zjyuJwFPSlIBlrdPsNce/Z
+	UR9LbGZx3UhjqJyBdsDs0lHGFQ01dhI=
+X-Received: by 2002:a1c:eb07:: with SMTP id j7mr27300676wmh.138.1558024743333; 
+	Thu, 16 May 2019 09:39:03 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	y130sm6702844wmc.44.2019.05.16.09.39.01
+	y130sm6702844wmc.44.2019.05.16.09.39.02
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 16 May 2019 09:39:01 -0700 (PDT)
+	Thu, 16 May 2019 09:39:02 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 16 May 2019 17:38:55 +0100
-Message-Id: <20190516163857.6430-2-peter.maydell@linaro.org>
+Date: Thu, 16 May 2019 17:38:56 +0100
+Message-Id: <20190516163857.6430-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190516163857.6430-1-peter.maydell@linaro.org>
 References: <20190516163857.6430-1-peter.maydell@linaro.org>
@@ -99,9 +99,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH 1/3] arm: Move system_clock_scale to
- armv7m_systick.h
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-arm] [PATCH 2/3] arm: Remove unnecessary includes of
+ hw/arm/arm.h
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,63 +115,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2yD79tDWLh2p
+X-TUID: JEC8E21JFuAd
 
-The system_clock_scale global is used only by the armv7m systick
-device; move the extern declaration to the armv7m_systick.h header,
-and expand the comment to explain what it is and that it should
-ideally be replaced with a different approach.
+The hw/arm/arm.h header now only includes declarations relating
+to boot.c code, so it is only needed by Arm board or SoC code.
+Remove some unnecessary inclusions of it from target/arm files
+and from hw/intc/armv7m_nvic.c.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/arm.h              |  4 ----
- include/hw/timer/armv7m_systick.h | 22 ++++++++++++++++++++++
- 2 files changed, 22 insertions(+), 4 deletions(-)
+ hw/intc/armv7m_nvic.c | 1 -
+ target/arm/arm-semi.c | 1 -
+ target/arm/cpu.c      | 1 -
+ target/arm/cpu64.c    | 1 -
+ target/arm/kvm.c      | 1 -
+ target/arm/kvm32.c    | 1 -
+ target/arm/kvm64.c    | 1 -
+ 7 files changed, 7 deletions(-)
 
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index ffed39252d8..ba3a9b41422 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -167,8 +167,4 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
-                                             const struct arm_boot_info *info,
-                                             hwaddr mvbar_addr);
- 
--/* Multiplication factor to convert from system clock ticks to qemu timer
--   ticks.  */
--extern int system_clock_scale;
--
- #endif /* HW_ARM_H */
-diff --git a/include/hw/timer/armv7m_systick.h b/include/hw/timer/armv7m_systick.h
-index cca04defd8e..25e5ceacc85 100644
---- a/include/hw/timer/armv7m_systick.h
-+++ b/include/hw/timer/armv7m_systick.h
-@@ -31,4 +31,26 @@ typedef struct SysTickState {
-     qemu_irq irq;
- } SysTickState;
- 
-+/*
-+ * Multiplication factor to convert from system clock ticks to qemu timer
-+ * ticks. This should be set (by board code, usually) to a value
-+ * equal to NANOSECONDS_PER_SECOND / frq, where frq is the clock frequency
-+ * in Hz of the CPU.
-+ *
-+ * This value is used by the systick device when it is running in
-+ * its "use the CPU clock" mode (ie when SYST_CSR.CLKSOURCE == 1) to
-+ * set how fast the timer should tick.
-+ *
-+ * TODO: we should refactor this so that rather than using a global
-+ * we use a device property or something similar. This is complicated
-+ * because (a) the property would need to be plumbed through from the
-+ * board code down through various layers to the systick device
-+ * and (b) the property needs to be modifiable after realize, because
-+ * the stellaris board uses this to implement the behaviour where the
-+ * guest can reprogram the PLL registers to downclock the CPU, and the
-+ * systick device needs to react accordingly. Possibly this should
-+ * be deferred until we have a good API for modelling clock trees.
-+ */
-+extern int system_clock_scale;
-+
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 3a346a682a3..815e720cfab 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -16,7 +16,6 @@
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "qemu/timer.h"
+-#include "hw/arm/arm.h"
+ #include "hw/intc/armv7m_nvic.h"
+ #include "target/arm/cpu.h"
+ #include "exec/exec-all.h"
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 8b5fd7bc6e3..ddb94e0aba0 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -29,7 +29,6 @@
+ #else
+ #include "qemu-common.h"
+ #include "exec/gdbstub.h"
+-#include "hw/arm/arm.h"
+ #include "qemu/cutils.h"
  #endif
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index a181fa8dc1a..6e421271580 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -30,7 +30,6 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/loader.h"
+ #endif
+-#include "hw/arm/arm.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/hw_accel.h"
+ #include "kvm_arm.h"
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 228906f2678..37a57c4f60b 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -25,7 +25,6 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/loader.h"
+ #endif
+-#include "hw/arm/arm.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+ #include "kvm_arm.h"
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 59956346126..fe4f461d4ef 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -23,7 +23,6 @@
+ #include "cpu.h"
+ #include "trace.h"
+ #include "internals.h"
+-#include "hw/arm/arm.h"
+ #include "hw/pci/pci.h"
+ #include "exec/memattrs.h"
+ #include "exec/address-spaces.h"
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 327375f6252..4e54e372a66 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -20,7 +20,6 @@
+ #include "sysemu/kvm.h"
+ #include "kvm_arm.h"
+ #include "internals.h"
+-#include "hw/arm/arm.h"
+ #include "qemu/log.h"
+ 
+ static inline void set_feature(uint64_t *features, int feature)
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index e3ba1492482..998d21f399f 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -26,7 +26,6 @@
+ #include "sysemu/kvm.h"
+ #include "kvm_arm.h"
+ #include "internals.h"
+-#include "hw/arm/arm.h"
+ 
+ static bool have_guest_debug;
+ 
 -- 
 2.20.1
 

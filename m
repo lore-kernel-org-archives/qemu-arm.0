@@ -1,264 +1,167 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp586707wrg;
-        Thu, 16 May 2019 05:42:10 -0700 (PDT)
-X-Received: by 2002:a9d:4b17:: with SMTP id q23mr6253920otf.130.1558010530740;
-        Thu, 16 May 2019 05:42:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558010530; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp728930wrg;
+        Thu, 16 May 2019 07:47:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzCjpyz61Sk42ef68wCZjHAvlvrS0uph5WvF1mnpsGjpYHIfd0f8BCSSl3QArlvMLr5B/3x
+X-Received: by 2002:a05:6402:1644:: with SMTP id s4mr6996931edx.182.1558018079437;
+        Thu, 16 May 2019 07:47:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558018079; cv=none;
         d=google.com; s=arc-20160816;
-        b=yMdTd60Qvno9ooGaG6gp9tWnsmmxQ7jewvAJBLUHJsjji3zGqGLcEZLvJVD7RGxC5N
-         q86OTcQRxfTVrH0DfBog9vcJ16pSUH7R5r+t13K03pJcSvzIL6L7MZv2itfBv91IZM27
-         4mly/CSFl/amHJ2a1qs32wmUJfovnY+h1am1JTCX8NynbPkEJb9+2P/rzn2HMFv6JT0L
-         MnKDDtev3ANvdoqyf0Qp2LRCfSh8jIVsq7u48ucSEErMh5M+gScNdj8kpyUcGrkXUqsh
-         DLybPLpXBDPiCuWFh5d74Hhx5LAj9qO7SvSXNXOVPvLCxGCLtNiZexMmvv7FQFsERUfg
-         7jOA==
+        b=O2o/85ozs1cQ6Zm4vW+WmCfUdC8Po75MsRJnCzjlk5uvDdLpmHKDr17Iu5mPVB4ISb
+         cMKzpAKfXG46CTN/rhDxEkZIRUTxN4G4d3SlLENhE8zgBCIWm3vCCwP3/DWys50/b6ap
+         OFLRY7/EoKyF5esj68GSnRJ1cA7Vo/LMcRZkpmMgW9LAmADiBkMNoiZ8ZJxBhgzzLLrx
+         b61SYw9Q7M6KLHochmu00HsmWmZJhQFWP900Z8w0EeQx876dPRyrrlnVrPHHxe2He+fk
+         Dp4hSg7ZE9J6D8cXmwzHvX+2yg+IKRQhHy6HY4mzBELnjUC5SYdGdiwmiSvvA/Edmpdb
+         fy/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Mu+5BpM2hOtGtd/f/dn1CGFFMve5wBCOhTGy3vRJJRM=;
-        b=PWCZ2YNhMfX/jT9MMAYsx0+pYQGI9B2Ugpc01c1gU4eVxtl5OUyq3ZItcjSgXpDy0y
-         2XE4AZArI+8UI1ZLQqVTJbebF9Ndfq+g2aS6ZRJbHfs+1u8nzbuljTC9196DpTlJJv6b
-         yl+SmU4G3A7B2B3zI3oNmx7Pth1hw7wxg0uTtDH/srnCR66DbxcjViP1EAiMq+nFQQJN
-         oarAp0wqFuypTRyYelDgRlkOoIQ9tgAOhvIbY7olSXHVe1U24NCfw9OFgIgYYPY6+PEZ
-         zxShFOTCjatSFqRdUUsCuyyFVVuAEls4zzMK9u+JJjcHj92cuzoy14k6RKS0iPNVEvzm
-         nlVw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=fdK5c58nnMRXpbn7bDsZcFXFZe6V1MTgfq5dHpHbPUU=;
+        b=FVkD2CwUxkIbQL+HUtdjka4jk8a6H6w815aZqvgi0l+9/J9j0gKWPZxcGnnXDA/UNG
+         V75QXMcfoEHmtq21+ZBbA/O+m0g8Slyc9mYl5vwqde9PXVL1zXJSiqR+vbbATvbDOlAA
+         f+cbmYvHsjmCVG+zyIHVTqXsV2wImlBJCybEBfDyvSKPHs8sX3NW6eURirVFu5glQsyv
+         m6zCTAKjZleruQKtcBiL59zIpGJnFPPkVyluX6HxJvOMydH6JAoQnLPdboFks1bMaHL/
+         otpKvPSNIUZX+w3ZnLbJBKxaqEZifCX4BTf/gEtjK7LAGVdM5n9EAA/qMWDl9rwNGvs4
+         UU8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YpEuoXq1;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v129sor2331806oig.36.2019.05.16.05.42.10
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y863flIN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j41si1820179ede.401.2019.05.16.07.47.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 16 May 2019 05:42:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 16 May 2019 07:47:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YpEuoXq1;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Mu+5BpM2hOtGtd/f/dn1CGFFMve5wBCOhTGy3vRJJRM=;
-        b=YpEuoXq18fl6WyjFA0C8qRb2qdzVqe35xizuilWGkl5H/kN9eBAqejuSUaUdvnCOgq
-         ND4F2C5Aw7eozSL1k/6sjuZNxBqZNPUDbO+AYjGcgpoTCmgYswYaY7nbzM8Ee1hde7QW
-         KZecfVJ6lhGrw4awhIKgEkHw2uFe2GXyXXmbKMVek0RtzAiYmEiF/nmUq43OucipcPc4
-         0MoetXD67AdAZ9g6+f0IpFGn7MRdncI/Fi3OVUbYavIGbVOOlaKcQ4C+Up8zb8mhuJgk
-         yQ1X/yzAYHxQigKfp0UrN2D1D7mAMNZX0jBYlWOQBrWHR5O57vo2kEirHkP0FE8mBH1l
-         c/aQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=Y863flIN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:59409 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hRHfq-0002by-Gj
+	for alex.bennee@linaro.org; Thu, 16 May 2019 10:47:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58852)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hRHfX-0002Zb-6a
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 10:47:40 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hRHfV-0008Dq-Tv
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 10:47:39 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35537)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hRHfV-0008Bn-Gy
+	for qemu-arm@nongnu.org; Thu, 16 May 2019 10:47:37 -0400
+Received: by mail-wr1-x444.google.com with SMTP id m3so3568472wrv.2
+	for <qemu-arm@nongnu.org>; Thu, 16 May 2019 07:47:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=fdK5c58nnMRXpbn7bDsZcFXFZe6V1MTgfq5dHpHbPUU=;
+	b=Y863flINpkjnHg8eEMKgNUbADagVXogPOlbLeGJ9smdp1s43kvQLWXTq4vYxCTht5e
+	CA9AhJFMD8xGPw/mCN6g/NgxAANqX1J3RJR1Xd/UBiekM6I1MEnOCexemWRAjYObotEV
+	eYZKllxuzznoFPpmWjhY3O3PHEQFDOt815OaTkqt+oE8xr+Ad6H4qn7nUCSoWRQ/4P4v
+	Ys9NhaKnLcbZwkAKgO8hba00bjBF7L3Mx9/B1p6ZJnUXnJTXat2qjt2zx67n3HoiyIRX
+	ldoKrIHGSKUJv+PWvs9Utms/SeZ6N31I85JC4KEcrTUMWVfrDNtbhtPaECRxbbbutHES
+	m85A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Mu+5BpM2hOtGtd/f/dn1CGFFMve5wBCOhTGy3vRJJRM=;
-        b=CShdq//HpyfgRwn8F/QJI+TSb2AyfXf1iaoxoVs190ySqpgDMS0zsR5L9mTY3s2YXr
-         WeDPdts3mFD+HhrzM4VTsHfXM10JMwOAfXcfTmd1SwWlCsJGCNLKYY1FMFVBJlm8h5H5
-         G9y8TBaDTT0Q45FBGHetJktZ/ru9WA32LRYUTy9U0VwPJGSVGoUuJU6KuEiFk+R0Kwja
-         1eIn845eUU/WlMrMiM1Vxms5US9wdGvj/6HkuJDyxwN3o4HrtqNvGkVJAGwq4Cdz/f9U
-         pxQZoCUbpP72mZmHXqsv1vYbqB7cVIbtQ3T/PWd7bW+UpsNks3Hir0BYmLlJPWnexm8h
-         xHrQ==
-X-Gm-Message-State: APjAAAXzKgW7moZl5J+IfKr2zrp0nVscSyt4IQq6m9T0Gmhfokg3fa+8
-	Uk1XKBBhvm5HNXIUvRp3FaQK1++jQI+TGuO97nGeQ6ZXqk25rQ==
-X-Google-Smtp-Source: APXvYqxxia1y0LA+nmPcez615hPQ+Vuwl6lmuaHQR9Dtb7O/chx0c8uu6vtZF1QegpprISskB/xz4ohmtNABhzfALUM=
-X-Received: by 2002:aca:4e42:: with SMTP id c63mr10313014oib.170.1558010530123;
- Thu, 16 May 2019 05:42:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1553510737.git.damien.hedde@greensocs.com>
-In-Reply-To: <cover.1553510737.git.damien.hedde@greensocs.com>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=fdK5c58nnMRXpbn7bDsZcFXFZe6V1MTgfq5dHpHbPUU=;
+	b=nWaG8N+AXHI5UEaEpX10oFghSQTIuNuNyODineQf5xypPrQLG/k/UfioaF6q8kPnTX
+	wqXi9ymBz6mKyDwYJES7Im5IyT92WCthYfmI3M4KbZyYKzNv6Z59iXtDmhNn7ysRcf5i
+	B/4FRvdaXzkRkUwwvSXYpnOMgX49ahP6kkVoj+2ToSOWOIRqIAY5rfS/7IFZ3GJkot52
+	4M4PCKKj/ZdtxAnL/pm0lMHYcXjW7g65jElur98+dgzlhb1l52QyeK0z45X3Mf8i7y1l
+	gQPdgGb4tP6hdUCJdTtOoI4A/adx3X1LXQ35e/zGhS7wJtoGyndHWR42Y51r3vSiGAeo
+	L7PQ==
+X-Gm-Message-State: APjAAAUsCeskidUKfymVDNLTGa7xE14a1cqie68mFlTM8lmzf8KplXgf
+	ESTbr4wlTwgx67id4ubqDBVbfCHzRt0=
+X-Received: by 2002:adf:f8ce:: with SMTP id f14mr2333588wrq.110.1558018055916; 
+	Thu, 16 May 2019 07:47:35 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id o8sm7629018wra.4.2019.05.16.07.47.34
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 16 May 2019 07:47:34 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 May 2019 13:41:59 +0100
-Message-ID: <CAFEAcA-84KBmZhRqugQzmEkWVcFBuSAdLtp_HGjRxLeVj1SLXA@mail.gmail.com>
-Subject: Re: [RFC 00/17] multi-phase reset mechanism
-To: Damien Hedde <damien.hedde@greensocs.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Mark Burton <mark.burton@greensocs.com>, 
-	Luc Michel <luc.michel@greensocs.com>, Edgar Iglesias <edgar.iglesias@xilinx.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	Alistair Francis <alistair.francis@wdc.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 0oyPc6rLCCQ1
-
-On Mon, 25 Mar 2019 at 11:02, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Hi all,
->
-> This series is a proposal to implement the multi-phase reset we've discussed
-> here (https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg00310.html) and
-> more recently there
-> (https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg00081.html).
->
-> To summarize, we need a multi-phase reset to allow for a more complex
-> initialization of a platform. In particular we need to "propagate" a clock
-> tree, but we have to ensure that every device is initialized first.
-
-Hi; I finally managed to get my thoughts about reset coherent
-enough to write down in an email.
-
-
-OVERVIEW
-
-I had a read through the patchset and spent a while trying to
-understand what we currently have.
-
-Our current (device) reset model is:
- * single-phase
-    -- there is only one 'reset' method
- * implicit
-    -- devices don't need to be explicitly registered anywhere
-       in a "reset hierarchy"; instead they are reset by virtue
-       of being in the bus heirarchy they are already in
- * bus-based
-    -- sysbus reset is registered in vl.c; free-floating other buses[*]
-       (ie those with a NULL parent) have a reset registered in qbus_realize;
-       buses with parents (ie anything with a non-NULL parent passed to
-       qbus_create() or qbus_create_inplace()) will get traversed by
-       the recursive traversal of whatever bus their parent is on.
- * not exhaustive
-    -- any devices not put on a bus, or put on a bus whose parent device
-       is not on a bus, will not get reset
- * not modelling GPIO reset signal lines
-
-[*] It turns out we actually don't have any of these any more, so
-we can remove the code that deals with them. The only parentless bus
-is the main system bus, which is the root of the "reset hierarchy".
-
-This patchset is trying to address:
- * changing to multi-phase
- * modelling of GPIO reset signal lines
-
-It leaves reset as bus-based: currently we do this via qbus_walk_children/
-qdev_walk_children, which traverse the bus->children and dev->child_bus
-lists, and in the patchset's implementation of Resettable for qdev/qbus
-the methods iterate through those.
-
-I think this is reasonable -- we don't want to try to tackle every
-reset related problem at once. The two issues the patchset is looking
-at fit well together, because the GPIO-reset-lines are a motivation
-for switching to multiphase (you need to handle both entering and
-leaving reset).
-
-("not exhaustive" is the thing we should really try to
-fix at some point, but I have no good ideas for how to do this.)
-
-API DESIGN
-
-On what the right APIs should be: I think we should separate
-"the API that's nice for devices to implement" from "the API that's
-nice for callers wanting to reset a device". Here's my suggestion
-for doing that:
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 16 May 2019 15:47:29 +0100
+Message-Id: <20190516144733.32399-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH v2 0/4] hw/arm/boot: handle large Images more
+ gracefully
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WaJk8mvhm5NE
 
 
-Have the Resettable interface be:
- * init
- * hold
- * exit
- * get_reset_count
- * increment_reset_count (returns previous count)
- * decrement_reset_count (returns new count)
- * some method for "iterate over any Resettable child objects"
-   (probably a "call this callback for each child" type API)
+This patchset attempts to fix https://bugs.launchpad.net/qemu/+bug/1823998
+which reports that we don't handle kernels larger than 128MB
+correctly, because we allow the initrd to be placed over the
+tail end of the kernel. AArch64 kernel Image files (since v3.17)
+report the total size they require (including any BSS area that
+isn't in the Image itself), so we can use that to be sure we
+place the initrd sufficiently far into the RAM.
 
-Individual devices implement init/hold/exit
-Device base class implements the reset_count methods
-Device base class implements a default 'init' method that calls dc->reset
-  and default hold/exit that are no-ops
-Device base class has a new vmstate subsection which migrates the
-  reset count, subsection's needed function says "only send
-  if reset count is non-zero". Back-compat here should be fine
-  as current machines don't implement any way that a device in
-  the system can be being held in reset at the point where a
-  migration happens. If future changes add features to a
-  machine model that permit that, the migration is forwards-compatible.
-Device base class implements the iterate-over-children method to
- iterate over the dev->child_bus buses
-Bus base class implements reset_count methods
-Bus base class implements default no-op init/hold/exit
-Bus base class implements the iterate-over-children method to
- iterate over the bus->children devices
-Handling migration of the bus base class reset count is a little
- awkward -- we'll need to put it in a vmstate subsection which
- is part of the vmstate of the device which owns the bus.
- (I talked to David Gilbert on IRC about this and have some
- possibilities for how to do it, but will postpone writing them
- out until we've decided whether we like the APIs.)
+Patches 1 and 2 are new since v1; patches 3 and 4 are the old
+patches 1 and 2 (and are basically unchanged since v1).
 
-The "API for devices to implement" is then the init/hold/exit
-methods of the Resettable interface -- they don't need to worry
-about these methods possibly being called multiple times, and
-they don't need to handle the reference count or passing on
-the calling of the phase methods to their children. They
-just need to implement the correct behaviour for their device
-for this phase.
-
-The "API for callers wanting to reset a device" is a set of
-helper functions that take a pointer to a Resettable object.
-It's these that deal with the reset count and children:
-
-resettable_assert_reset(Resettable *r)
-{
-   if (r->increment_reset_count() == 0) {
-       r->init();
-       r->foreach_child(do_call_init);
-       r->hold();
-       r->foreach_child(do_call_hold);
-   }
-}
-
-resettable_deassert_reset(Resettable *r)
-{
-   if (r->decrement_reset_count() == 0) {
-      r->foreach_child(do_call_exit);
-      r->exit();
-   }
-}
-
-plus a utility function for "call assert then deassert",
-and maybe one that wraps the get_reset_count method.
-So callers that want to reset devices (or buses) don't need
-to care about phases, they just assert and then deassert reset.
-
-Do you think that works ?
-
-
-API TRANSITIONS
-
-The other issue here is API transitions: the patchset essentially
-obsoletes the old DeviceClass::reset function, for instance. I think
-we should be clear about what the old and new APIs here are, and
-what our plans for transitioning to the new ones are. In some cases
-there are really very few users of the old API -- for instance the
-patchset makes qbus_reset_all(bus) a synonym for qbus_reset(bus, false),
-but there are only a dozen or so users of qbus_reset_all(). I think
-we should just go ahead and convert them all. (For purposes of
-structuring the patchset starting with a patch that says "reimplement
-qbus_reset_all() in terms of qbus_reset()" is OK, but then we should
-fix up the callers afterwards.) There are of course a lot more
-implementations of DeviceState::reset so transitioning away from
-that is a lot trickier, but we could look at a coccinelle script
-that could automate it.
-
-If you could describe in the cover letter of the next version of
-the patchseries all the old APIs being deprecated and the new
-ones that replace them, I think that would be very helpful.
-
-
-MISCELLANEOUS MINOR POINTS
-
-I know I suggested the idea of a ResetDomain object, but in the
-series as it stands I'm not sure it's serving very much purpose;
-perhaps we should drop it for the moment (just leaving the legacy
-reset handlers and sysbus reset the way they are) ? We can come back
-to it later as a concept.
-
-The "support reset via GPIO line" patch looks generally OK, but
-you can't just add fields to the DeviceState vmstate struct -- you'll
-break migration from older QEMU versions. The new fields need to
-go in a vmstate subsection with an appropriate 'needed' function.
-
-We should definitely make sure we have good documentation for
-what device authors should do to implement reset.
+Patches 1 and 2 in this series are new. Patch 1 fixes bugs
+in the existing code where we were assuming that we could
+treat info->ram_size as the address of the end of RAM, which
+isn't true if the RAM doesn't start at address 0. (This
+generally went unnoticed thanks to the magic of unsigned integer
+underflow turning end-start calculations into very large max_size
+values for load_ramdisk_as() and friends.)
+Patch 2 adds some explicit checks that we don't try to put things
+entirely off the end of RAM (which avoids those accidental
+underflows).
+Patch 3 in this series adjusts our "where do we put the initrd"
+heuristic so that it always places it at least after whatever
+our best guess at the kernel size is. (This might still not
+be right for images like self-decompressing 32-bit kernels, where
+there's no way to know how big the kernel will be after
+decompression.)
+Patch 4 makes load_aarch64_image() return the
+kernel size as indicated in the Image file header, so that for
+the specific case of AArch64 Image files we will definitely not
+put the initrd on top of them.
 
 thanks
 -- PMM
+
+Peter Maydell (4):
+  hw/arm/boot: Don't assume RAM starts at address zero
+  hw/arm/boot: Diagnose layouts that put initrd or DTB off the end of
+    RAM
+  hw/arm/boot: Avoid placing the initrd on top of the kernel
+  hw/arm/boot: Honour image size field in AArch64 Image format kernels
+
+ hw/arm/boot.c | 83 ++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 62 insertions(+), 21 deletions(-)
+
+-- 
+2.20.1
+

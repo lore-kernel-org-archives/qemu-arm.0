@@ -1,559 +1,388 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1556476wrg;
-        Fri, 17 May 2019 01:01:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwkaouTCRHKe/BwpUBGrJ7vG5wM/8RVhAzcEMSMy/bGuzmPsUesFETakWjY3LYyt1ogrgJX
-X-Received: by 2002:a17:906:7c10:: with SMTP id t16mr31950684ejo.161.1558080069939;
-        Fri, 17 May 2019 01:01:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558080069; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1662593wrg;
+        Fri, 17 May 2019 03:14:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHzBWoU92iX38JP6PiN3yaD3Gj5A8T42orfkxLQZR8nXXaPZGSh1vk0NjR3tsNsBtdn/Ey
+X-Received: by 2002:a17:906:6086:: with SMTP id t6mr37406671ejj.114.1558088095744;
+        Fri, 17 May 2019 03:14:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558088095; cv=none;
         d=google.com; s=arc-20160816;
-        b=xGpR5CaaW6Ei75EKzbfXeoD241C18ugtZQZvGc23mBafOqPnRaGLesY+e0yeTcdcl0
-         xIsdytXUNSBVYoNkgUr1dD+GlGLqK47RZ5kke1CJshyyvG8Vug9OVVJ1IVwN/koB4sNJ
-         W3qQtG420i5rN9kFJMPb3NTzN8varQjFplHnefsB8rHISrmFpDY96EraSMiWcviL2EC1
-         SE3CMYvrKgmnvYGjKgUZk7FJaizJnrjm4AsLlcNrDVNnPYJ6Ut/j9+BWpHJBuGEj0fQy
-         zha2ZM2IpA1ZblpEiZYlgtCCopmsdKEr1vOavE3lI3qsZLJE8IDypTrCI82XUF1yw3O+
-         Qkaw==
+        b=itxoKBtNoecp746JKhINkwUiiYJCwANl76JZlSbZsZutcs1x/HM0/LHfi/MuKu2SY+
+         fBfcNJl5IaFxqnPgBQGyc6/rwqCuIsXSSvmzbVhwSQ+xhaSD4xgE7jqfo9cQfXhzv2QB
+         YG5yR01vthI0ySJAQvi+JIrB7ry7yolE2S2KGpStpP59JpxuG0btr39uOTcc5QqoPIzj
+         05zPXKYA7PCW4XTcy4U+U17rFRnpOyeQswjoVWu037xElSsR4EZ98jUWBsAVz34VM3nE
+         O0cdvdCJq1YzPNIXMvvlYRNmfsbGvZEwBkc2f8rYkZ8WpSIaSKpd9cri8a0ph64WvBf7
+         9wxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from:dkim-signature;
-        bh=eK32PG2oslASve83mQgd2mZgaUQaVXOkvc1Gt3bmZyc=;
-        b=imrRBbWQi09U/oJ0nBHXB7UxZhhlgS01bw0fnpsL9xAiJwwmiYhdrRARc/C0q2e7eL
-         J+KdH/iuRsT1mq747Kzj4mG/TKImIUXA03kQ2bNCzdc6ki2Krw2vSuZc/obVSnYi93sY
-         hHSF+ylBVrHYgT3sZbXDXJHR+wnBuBecuw7c9viZjPvVgnMkuPKEPSOdUjSGbEDhJ26o
-         0gva6qiCZmVAmQOz6FmyhvCWjWonv7dKuFk98RfyBCOm/2HUYzp/HdsXjh/W4onQL89X
-         8RiyGuDj/wqFHzdjDl9TlaofmfeYe8BiM8qNWbOFy82i6I70dCJnsUH+eX6SXz+Sr9F/
-         /gAg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=t607cFx7mJT4EcAfCqd9V1hsK5azBKAm1qctHr137K8=;
+        b=oacVmDOkQzYekxTtlXfZegO8TxAZcIIkNJay/cKTDX0ryH1nPct+9xbIbMv7/JyQHP
+         KmJgGh9H5TX2mkNH2TZFlTjbJ6O/A4RfsyrsNHnzKsQcQfkoZVpeVVqDSr/586tBZGpS
+         4Mv7gDAy/9A0CA5SR7UEVn7/GXcKWYMTz5SZhRwDEZlN/X6Tr4IsbMeniT0KbpH2Os7o
+         RmM/yqp1mjonrpzsuRROpFMv/62UE+fhgpzsRlLeidH2Jbi5LD8v/wIGOpe6fkWoz6Yw
+         BelgSrlkWWDYck8QBzkLv3PTqX9B7l61tHSroQMHkrr+zXJyW/v/HIlKffQBqEzdWztn
+         2LAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=RpwnGuZK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si4583948ejn.380.2019.05.17.01.01.09
+        by mx.google.com with ESMTPS id gr23si5065042ejb.188.2019.05.17.03.14.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 May 2019 01:01:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 17 May 2019 03:14:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=RpwnGuZK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
-Received: from localhost ([127.0.0.1]:44035 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:45707 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hRXng-00014F-Sx
-	for alex.bennee@linaro.org; Fri, 17 May 2019 04:01:08 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53002)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hRZt8-0003LJ-Kg
+	for alex.bennee@linaro.org; Fri, 17 May 2019 06:14:54 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44894)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hRXmo-00013e-5Y
-	for qemu-devel@nongnu.org; Fri, 17 May 2019 04:00:19 -0400
+	(envelope-from <clg@kaod.org>) id 1hRZnH-0006Xm-PY
+	for qemu-arm@nongnu.org; Fri, 17 May 2019 06:08:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hRXmm-0001u1-Lh
-	for qemu-devel@nongnu.org; Fri, 17 May 2019 04:00:14 -0400
-Received: from cpsmtpb-ews07.kpnxchange.com ([213.75.39.10]:62103)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>)
-	id 1hRXml-0001o0-TF; Fri, 17 May 2019 04:00:12 -0400
-Received: from cpsps-ews25.kpnxchange.com ([10.94.84.191]) by
-	cpsmtpb-ews07.kpnxchange.com with Microsoft SMTPSVC(7.5.7601.17514); 
-	Fri, 17 May 2019 09:47:04 +0200
-X-Brand: 7Ljiz6bi2A==
-X-KPN-SpamVerdict: e1=0;e2=0;e3=0;e4=(e4=10;e1=10;e3=10;e2=11);EVW:Whi
-	te;BM:NotScanned;FinalVerdict:Clean
-X-CMAE-Analysis: v=2.3 cv=RugU0xuK c=1 sm=1 tr=0 cx=a_idp_e
-	a=dZ5u/0G9QtS9WKCcNUBnHQ==:117 a=dZ5u/0G9QtS9WKCcNUBnHQ==:17
-	a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=eIHzyqS2sMcA:10 a=xqWC_Br6kY4A:10
-	a=E5NmQfObTbMA:10 a=X5F7dNyOAAAA:8 a=aow-egSQAAAA:8
-	a=T2qGinoh8z3atOZns1kA:9 a=wPNLvfGTeEIA:10 a=90inoWJPefa_d6n_ja4A:9
-	a=B2y7HmGcmWMA:10 a=pS7LufLo7ZPxIL5li5Lt:22 a=gFNbaldVC-z-bsjSTzMo:22
-X-CM-AcctID: kpn@feedback.cloudmark.com
-Received: from smtp.kpnmail.nl ([195.121.84.13]) by cpsps-ews25.kpnxchange.com
-	over TLS secured channel with Microsoft SMTPSVC(8.5.9600.16384);
-	Fri, 17 May 2019 09:47:04 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=kpnmail.nl; s=kpnmail01;
-	h=mime-version:content-type:message-id:date:subject:to:from;
-	bh=eK32PG2oslASve83mQgd2mZgaUQaVXOkvc1Gt3bmZyc=;
-	b=RpwnGuZKWiBqRkFt5hv5ZmgnuYdjCT22zncbKMPhpld0L7J69Fn/52z6ctOpUvmneEmAHmI5KMkuk
-	qAcWVrDSaraJPfSPAhJup17IjTQXtwC2VO4/DyChRZwY/esh+K+dWI18phyZaIANxk+sbBxJ0jzvpD
-	ZN21zvnDohb6JJfU=
-Received: from Eltsrv03.Eltan.local (unknown [84.85.114.86])
-	by smtp.kpnmail.nl (Halon) with ESMTPS
-	id f66c8bd2-7877-11e9-89e3-005056998788;
-	Fri, 17 May 2019 09:47:04 +0200 (CEST)
-Received: from Eltsrv03.Eltan.local (192.168.100.3) by Eltsrv03.Eltan.local
-	(192.168.100.3) with Microsoft SMTP Server (TLS) id 15.0.847.32;
-	Fri, 17 May 2019 09:46:29 +0200
-Received: from Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8]) by
-	Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8%12]) with mapi id
-	15.00.0847.040; Fri, 17 May 2019 09:46:10 +0200
-From: Wim Vervoorn <wvervoorn@eltan.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>
-Thread-Topic: aspeed qemu question
-Thread-Index: AdULwnm8cADYiO1ZRNGvxixzeWIzuQAJZaCAACbA8VA=
-Date: Fri, 17 May 2019 07:46:10 +0000
-Message-ID: <108c97d2eee749da8f75c69f06e25072@Eltsrv03.Eltan.local>
+	(envelope-from <clg@kaod.org>) id 1hRZnF-0003c3-GK
+	for qemu-arm@nongnu.org; Fri, 17 May 2019 06:08:51 -0400
+Received: from 15.mo4.mail-out.ovh.net ([91.121.62.11]:54229)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hRZn8-0003PY-RQ
+	for qemu-arm@nongnu.org; Fri, 17 May 2019 06:08:45 -0400
+Received: from player159.ha.ovh.net (unknown [10.109.160.217])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 98FFB1E4AC1
+	for <qemu-arm@nongnu.org>; Fri, 17 May 2019 12:08:34 +0200 (CEST)
+Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
+	(Authenticated sender: clg@kaod.org)
+	by player159.ha.ovh.net (Postfix) with ESMTPSA id 6AF655C64376;
+	Fri, 17 May 2019 10:08:28 +0000 (UTC)
+To: Wim Vervoorn <wvervoorn@eltan.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <d0fea426e8b245769f3022dad121c17e@Eltsrv03.Eltan.local>
 	<eb815dd0-f056-d733-f017-bba56b907231@kaod.org>
-In-Reply-To: <eb815dd0-f056-d733-f017-bba56b907231@kaod.org>
-Accept-Language: nl-NL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.100.108]
-Content-Type: multipart/mixed;
-	boundary="_002_108c97d2eee749da8f75c69f06e25072Eltsrv03Eltanlocal_"
+	<108c97d2eee749da8f75c69f06e25072@Eltsrv03.Eltan.local>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <3ee8eb5a-d38c-9570-3da5-a055e9f147e5@kaod.org>
+Date: Fri, 17 May 2019 12:08:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-X-OriginalArrivalTime: 17 May 2019 07:47:04.0434 (UTC)
-	FILETIME=[B8498520:01D50C84]
-X-RcptDomain: nongnu.org
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 213.75.39.10
-Subject: Re: [Qemu-devel] aspeed qemu question
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <108c97d2eee749da8f75c69f06e25072@Eltsrv03.Eltan.local>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+X-Ovh-Tracer-Id: 9809402940787034897
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddtvddgvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 91.121.62.11
+Subject: Re: [Qemu-arm] aspeed qemu question
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ywn3aIKrZetH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6PE+e3TLZS3w
 
---_002_108c97d2eee749da8f75c69f06e25072Eltsrv03Eltanlocal_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Hello Win,
 
-Hello Cedr=EDc,
-
-Thanks for your response. I created and attached the patch. You are right t=
-he code snipped turns out unreadable.
-
-In the patch I enable the MAC's depending on the value in hwstrap1 just as =
-in the real hardware. In the Palmetto both nics will be enabled (just as in=
- the real palmetto).=20
-
-I added a 2nd AST2400 BMC the Eltan Piestewa Peak. Here I enabled the 2nd N=
-IC only.
-
-What I see is that when I use Palmetto I get an assert in net/net.c line 25=
-6, this is in the "qemu_net_client_setup()". I assume I have to prepare som=
-ething regarding the host side of the network implementation but I this poi=
-nt I have no clue what and I have a hard time figuring out how the networki=
-ng architecture really works.=20
-
-If you could point me in the right direction I would really appreciate it.
-
-Best Regards,
-Wim Vervoorn
-
-Eltan B.V.
-Ambachtstraat 23
-5481 SM Schijndel
-The Netherlands
-
-T : +31-(0)73-594 46 64
-E : wvervoorn@eltan.com
-W : http://www.eltan.com
-
-
------Original Message-----
-From: C=E9dric Le Goater [mailto:clg@kaod.org]=20
-Sent: Thursday, May 16, 2019 5:06 PM
-To: Wim Vervoorn <wvervoorn@eltan.com>
-Subject: Re: aspeed qemu question
-
-Hello Wim,
-
-On 5/16/19 10:46 AM, Wim Vervoorn wrote:
-> Hello C=E9dric,
+On 5/17/19 9:46 AM, Wim Vervoorn wrote:
+> Hello Cedr=EDc,
 >=20
-> =A0
+> Thanks for your response. I created and attached the patch. You are rig=
+ht the code snipped turns out unreadable.
+
+You should try to send the patch directly and not attached. Checkout=20
+the git send-email commands for it. See also :
+
+https://wiki.qemu.org/Contribute/SubmitAPatch
+
+> In the patch I enable the MAC's depending on the value in hwstrap1 just=
+ as in the real hardware. In the Palmetto both nics will be enabled (just=
+ as in the real palmetto).=20
 >=20
-> I noticed you are responsible for most of the Aspeed additions to Qemu pe=
-rhaps you can help me.
-
-Sure,
-
-> =A0
+> I added a 2nd AST2400 BMC the Eltan Piestewa Peak. Here I enabled the 2=
+nd NIC only.
 >=20
-> I am trying to add support for the 2^nd NIC on the Aspeed SoC.
+> What I see is that when I use Palmetto I get an assert in net/net.c lin=
+e 256, this is in the "qemu_net_client_setup()". I assume I have to prepa=
+re something regarding the host side of the network implementation but I =
+this point I have no clue what and I have a hard time figuring out how th=
+e networking architecture really works.=20
 
-ok. This should be possible.=20
+Did you define two nics on the command line  ?
 
-> This seemed not that hard. Basically I added a 2^nd structure for the dev=
-ice and initialized that. I included the code below.
+more comments below.
 
-hmm. This is difficult for me to read. Do you know how to send patches ? =20
+[ ... ]=20
 
-It would be good to send a patch to the QEMU devel and the QEMU ARM mailing=
- list so that we can discuss openly.
+> From bbf9392b84f38531b89e4ea39e06210b99ec7a0c Mon Sep 17 00:00:00 2001
+> Message-Id: <bbf9392b84f38531b89e4ea39e06210b99ec7a0c.1558078463.git.wv=
+ervoorn@eltan.com>
+> From: Wim Vervoorn <wvervoorn@eltan.com>
+> Date: Fri, 17 May 2019 09:26:16 +0200
+> Subject: [PATCH] ASPEED BMC: Add support for 2nd NIC
+>=20
+> Add support for 2nd NIC.
+>=20
+> This solution is using the hwstrap1 value to enable disable the
+> controllers.
 
-I can help you doing that.=20
+OK. Let see how this shows in the code.
 
-=20
-Cheers,
+> The Palmetto leaves both NICs enabled while the Piestewa Peak only
+> enables one.
+
+You should send two different patches, one for the NIC, one for Piestewa=20
+Peak machine.=20
+
+> The Palmetto asserts in net/net.c line 256 when qemu starts so somethin=
+g
+> must be missing to support the 2nd nic.
+
+You need a "signed-off-by:" tag here
+
+> ---
+>  hw/arm/aspeed.c             | 26 ++++++++++++++++++++++
+>  hw/arm/aspeed_soc.c         | 54 ++++++++++++++++++++++++++++++++-----=
+--------
+>  include/hw/arm/aspeed_soc.h |  2 +-
+>  3 files changed, 66 insertions(+), 16 deletions(-)
+>=20
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> old mode 100644
+> new mode 100755
+> index 0203642..f957a5b
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -43,6 +43,23 @@ struct AspeedBoardState {
+>          SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |     =
+  \
+>          SCU_HW_STRAP_VGA_CLASS_CODE |                                 =
+  \
+>          SCU_HW_STRAP_LPC_RESET_PIN |                                  =
+  \
+> +        SCU_HW_STRAP_MAC0_RGMII |                                     =
+  \
+> +        SCU_HW_STRAP_MAC1_RGMII |                                     =
+  \
+> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |              =
+  \
+> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2=
+_1) | \
+> +        SCU_HW_STRAP_SPI_WIDTH |                                      =
+  \
+> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                     =
+  \
+> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+> +
+> +/* Piestewa Peak hardware value:  */
+> +#define ELTANPWP_BMC_HW_STRAP1 (                                      =
+  \
+> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |             =
+  \
+> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=3D6, CWL=3D=
+5 */) | \
+> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                               =
+  \
+> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |     =
+  \
+> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                 =
+  \
+> +        SCU_HW_STRAP_LPC_RESET_PIN |                                  =
+  \
+> +        SCU_HW_STRAP_MAC1_RGMII |                                     =
+  \
+>          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |              =
+  \
+>          SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2=
+_1) | \
+>          SCU_HW_STRAP_SPI_WIDTH |                                      =
+  \
+> @@ -423,6 +440,15 @@ static const AspeedBoardConfig aspeed_boards[] =3D=
+ {
+>          .num_cs    =3D 1,
+>          .i2c_init  =3D palmetto_bmc_i2c_init,
+>      }, {
+> +        .name      =3D MACHINE_TYPE_NAME("eltanpwp-bmc"),
+> +        .desc      =3D "Eltan Piestewa Peak BMC (ARM926EJ-S)",
+> +        .soc_name  =3D "ast2400-a1",
+> +        .hw_strap1 =3D ELTANPWP_BMC_HW_STRAP1,
+> +        .fmc_model =3D "n25q256a",
+> +        .spi_model =3D "mx25l25635e",
+
+Are these the correct flash models for your board ?=20
+
+> +        .num_cs    =3D 1,
+> +        .i2c_init  =3D palmetto_bmc_i2c_init,
+> +    }, {
+>          .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
+>          .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
+>          .soc_name  =3D "ast2500-a1",
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> old mode 100644
+> new mode 100755
+> index 0f6e5be..8ed7902
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -184,9 +184,13 @@ static void aspeed_soc_init(Object *obj)
+>                                         OBJECT(&s->scu), &error_abort);
+>      }
+> =20
+> -    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC=
+100);
+> -    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100),=
+ NULL);
+> -    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
+> +    object_initialize(&s->ftgmac100[0], sizeof(s->ftgmac100), TYPE_FTG=
+MAC100);
+> +    object_property_add_child(obj, "ftgmac100[0]", OBJECT(&s->ftgmac10=
+0[0]), NULL);
+> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[0]), sysbus_get_default()=
+);
+> +
+> +    object_initialize(&s->ftgmac100[1], sizeof(s->ftgmac100), TYPE_FTG=
+MAC100);
+> +    object_property_add_child(obj, "ftgmac100[1]", OBJECT(&s->ftgmac10=
+0[1]), NULL);
+> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[1]), sysbus_get_default()=
+);
+
+using a loop would be better. The future Aspeed SoCs might have more than=
+ two
+MACs.
+> =20
+>      object_initialize(&s->ibt, sizeof(s->ibt), TYPE_ASPEED_IBT);
+>      object_property_add_child(obj, "bt", OBJECT(&s->ibt), NULL);
+> @@ -384,19 +388,39 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+>                          ASPEED_SOC_WDT_BASE + i * 0x20);
+>      }
+> =20
+> -    /* Net */
+> -    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
+> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &e=
+rr);
+> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
+> -                             &local_err);
+> -    error_propagate(&err, local_err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> +    /* Net LAN 0*/
+> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[0]), &nd_table[0]=
+);
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true, "aspe=
+ed", &err);
+
+This is not the correct indentation. Please run checkpatch.pl on the patc=
+h.
+
+> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC0_RGMII) {
+> +        qemu_log("%s: LAN0 enabled\n", __func__);
+
+we don't need this kind of information.
+
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true, "real=
+ized",
+> +                                &local_err);
+> +        error_propagate(&err, local_err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0, ASPEED_SO=
+C_ETH1_BASE);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0,
+> +                        qdev_get_gpio_in(DEVICE(&s->vic), 2));
+> +    }
+> +
+> +    /* Net LAN 1*/
+> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[1]), &nd_table[1]=
+);
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "aspe=
+ed", &err);
+> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC1_RGMII) {
+> +        qemu_log("%s: LAN1 enabled\n", __func__);
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "real=
+ized",
+> +                                &local_err);
+> +        error_propagate(&err, local_err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0, ASPEED_SO=
+C_ETH2_BASE);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0,
+> +                        qdev_get_gpio_in(DEVICE(&s->vic), 3));
+
+I would use a loop such as :=20
+
+    for (i =3D 0; i < nb_nics; i++) {
+        NICInfo *nd =3D &nd_table[i];
+
+  	/* test SCU ... */
+
+  	...
+    }
+
+to realize the NICs.
+
+>      }
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1_=
+BASE);
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
+> =20
+>      /* iBT */
+>      object_property_set_bool(OBJECT(&s->ibt), true, "realized", &err);
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> old mode 100644
+> new mode 100755
+> index 623223d..0799d61
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -47,7 +47,7 @@ typedef struct AspeedSoCState {
+>      AspeedSMCState spi[ASPEED_SPIS_NUM];
+>      AspeedSDMCState sdmc;
+>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
+> -    FTGMAC100State ftgmac100;
+> +    FTGMAC100State ftgmac100[2];
+
+2 needs a macro.
+
+
+I have a patchset currently being reviewed which should help you
+to define the different addresses, interrupt numbers of the MACS.
+Let me ping you when this is merge and then you can rebase.=20
+
+However, you can send a patch for your board definition. There
+should not be any conflicts with this addition.
+
+Thanks,
 
 C.
 
-> The code is building fine no problem about that.
->=20
-> =A0
->=20
-> The issue is that I get an assert net.c line 256, this only happens if I =
-realize both NICs if I realize only one all works as expected. My question =
-is, am I overlooking something here? Do I need to take more actions to be a=
-ble to support the 2^nd NIC? If you could point me in the right direction o=
-r know where I can find more information on the qemu architecture I would r=
-eally appreciate it.
->=20
-> =A0
->=20
-> =A0
->=20
-> =A0
->=20
-> staticvoidqemu_net_client_setup(NetClientState *nc,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0 NetClientInfo *info,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0 NetClientState *peer,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0 constchar*model,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0 constchar*name,
->=20
-> =A0=A0=A0=A0=A0=A0 =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0NetClientDestructor *destructor)
->=20
-> {
->=20
-> =A0=A0=A0 nc->info=3D info;
->=20
-> =A0=A0=A0 nc->model=3D g_strdup(model);
->=20
-> =A0=A0=A0 if(name) {
->=20
-> =A0=A0=A0=A0=A0=A0=A0 nc->name=3D g_strdup(name);
->=20
-> =A0=A0=A0 } else{
->=20
-> =A0=A0=A0=A0=A0=A0=A0 nc->name=3D assign_name(nc, model);
->=20
-> =A0=A0=A0 }
->=20
-> =A0
->=20
-> =A0=A0=A0 if(peer) {
->=20
-> =E0>=A0=A0=A0=A0 assert(!peer->peer);
->=20
-> =A0=A0=A0=A0=A0=A0=A0 nc->peer=3D peer;
->=20
-> =A0=A0=A0=A0=A0=A0=A0 peer->peer=3D nc;
->=20
-> =A0=A0=A0 }
->=20
-> =A0
->=20
-> =A0
->=20
-> =A0=A0=A0 object_initialize(&s->ftgmac100[0], sizeof(s->ftgmac100),=20
-> TYPE_FTGMAC100);
->=20
-> =A0=A0=A0 object_property_add_child(obj, "ftgmac100[0]",=20
-> OBJECT(&s->ftgmac100[0]), NULL);
->=20
-> =A0=A0=A0 qdev_set_parent_bus(DEVICE(&s->ftgmac100[0]),=20
-> sysbus_get_default());
->=20
-> =A0
->=20
-> =A0=A0=A0 object_initialize(&s->ftgmac100[1], sizeof(s->ftgmac100),=20
-> TYPE_FTGMAC100);
->=20
-> =A0=A0=A0 object_property_add_child(obj, "ftgmac100[1]",=20
-> OBJECT(&s->ftgmac100[1]), NULL);
->=20
-> =A0=A0=A0 qdev_set_parent_bus(DEVICE(&s->ftgmac100[1]),=20
-> sysbus_get_default());
->=20
-> =A0
->=20
-> =A0
->=20
-> =A0
->=20
-> /* Net LAN 0*/
->=20
-> =A0=A0=A0 #if(0)
->=20
-> =A0=A0=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: LAN0\n", __func__);
->=20
-> =A0=A0=A0 qdev_set_nic_properties(DEVICE(&s->ftgmac100[0]), &nd_table[0])=
-;
->=20
-> =A0=A0=A0 object_property_set_bool(OBJECT(&s->ftgmac100[0]), true, "aspee=
-d",=20
-> &err);
->=20
-> =A0=A0=A0 object_property_set_bool(OBJECT(&s->ftgmac100[0]), true,=20
-> "realized",
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0 &local_err);
->=20
-> =A0=A0=A0 error_propagate(&err, local_err);
->=20
-> =A0=A0=A0 if (err) {
->=20
-> =A0=A0=A0=A0=A0=A0=A0 error_propagate(errp, err);
->=20
-> =A0=A0=A0=A0=A0=A0=A0 return;
->=20
-> =A0=A0=A0 }
->=20
-> =A0=A0=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0,=20
-> ASPEED_SOC_ETH1_BASE);
->=20
-> =A0=A0=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 qdev_g=
-et_gpio_in(DEVICE(&s->vic), 2));
->=20
-> =A0=A0=A0 #endif
->=20
-> =A0
->=20
-> =A0=A0=A0 /* Net LAN 1*/
->=20
-> =A0=A0=A0 #if(1)
->=20
-> =A0=A0=A0 qemu_log_mask(LOG_GUEST_ERROR, "%s: LAN1\n", __func__);
->=20
-> =A0=A0=A0 qdev_set_nic_properties(DEVICE(&s->ftgmac100[1]), &nd_table[1])=
-;
->=20
-> =A0=A0=A0 object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "aspee=
-d",=20
-> &err);
->=20
-> =A0=A0=A0 object_property_set_bool(OBJECT(&s->ftgmac100[1]), true,=20
-> "realized",
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0 &local_err);
->=20
-> =A0=A0=A0 error_propagate(&err, local_err);
->=20
-> =A0=A0=A0 if(err) {
->=20
-> =A0=A0=A0=A0=A0=A0=A0 error_propagate(errp, err);
->=20
-> =A0=A0=A0=A0=A0=A0=A0 return;
->=20
-> =A0=A0=A0 }
->=20
-> =A0=A0=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0,=20
-> ASPEED_SOC_ETH2_BASE);
->=20
-> =A0=A0=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0,
->=20
-> =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 qdev_g=
-et_gpio_in(DEVICE(&s->vic), 3));
->=20
-> =A0=A0=A0 #endif
->=20
-> =A0
->=20
-> =A0
->=20
-> Best Regards,
->=20
-> Wim Vervoorn
->=20
-> =A0
->=20
-> Eltan B.V.
->=20
-> Ambachtstraat 23
->=20
-> 5481 SM Schijndel
->=20
-> The Netherlands
->=20
-> =A0
->=20
-> T : +31-(0)73-594 46 64
->=20
-> E : wvervoorn@eltan.com
->=20
-> W : http://www.eltan.com <http://www.eltan.com/>
->=20
-> =A0
->=20
-> =A0
->=20
-> "THIS MESSAGE CONTAINS CONFIDENTIAL INFORMATION. UNLESS YOU ARE THE=20
-> INTENDED RECIPIENT OF THIS MESSAGE, ANY USE OF THIS MESSAGE IS STRICTLY P=
-ROHIBITED. IF YOU HAVE RECEIVED THIS MESSAGE IN ERROR, PLEASE IMMEDIATELY N=
-OTIFY THE SENDER BY TELEPHONE +31-(0)73-5944664 OR REPLY EMAIL, AND IMMEDIA=
-TELY DELETE THIS MESSAGE AND ALL COPIES."
->=20
-> =A0
->=20
 
 
 
-
---_002_108c97d2eee749da8f75c69f06e25072Eltsrv03Eltanlocal_
-Content-Type: application/octet-stream;
-	name="0002-ASPEED-BMC-Add-support-for-2nd-NIC.patch"
-Content-Description: 0002-ASPEED-BMC-Add-support-for-2nd-NIC.patch
-Content-Disposition: attachment;
-	filename="0002-ASPEED-BMC-Add-support-for-2nd-NIC.patch"; size=7278;
-	creation-date="Fri, 17 May 2019 07:43:06 GMT";
-	modification-date="Fri, 17 May 2019 07:34:23 GMT"
-Content-Transfer-Encoding: base64
-
-RnJvbSBiYmY5MzkyYjg0ZjM4NTMxYjg5ZTRlYTM5ZTA2MjEwYjk5ZWM3YTBjIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpNZXNzYWdlLUlkOiA8YmJmOTM5MmI4NGYzODUzMWI4OWU0ZWEzOWUwNjIx
-MGI5OWVjN2EwYy4xNTU4MDc4NDYzLmdpdC53dmVydm9vcm5AZWx0YW4uY29tPgpGcm9tOiBXaW0g
-VmVydm9vcm4gPHd2ZXJ2b29ybkBlbHRhbi5jb20+CkRhdGU6IEZyaSwgMTcgTWF5IDIwMTkgMDk6
-MjY6MTYgKzAyMDAKU3ViamVjdDogW1BBVENIXSBBU1BFRUQgQk1DOiBBZGQgc3VwcG9ydCBmb3Ig
-Mm5kIE5JQwoKQWRkIHN1cHBvcnQgZm9yIDJuZCBOSUMuCgpUaGlzIHNvbHV0aW9uIGlzIHVzaW5n
-IHRoZSBod3N0cmFwMSB2YWx1ZSB0byBlbmFibGUgZGlzYWJsZSB0aGUKY29udHJvbGxlcnMuCgpU
-aGUgUGFsbWV0dG8gbGVhdmVzIGJvdGggTklDcyBlbmFibGVkIHdoaWxlIHRoZSBQaWVzdGV3YSBQ
-ZWFrIG9ubHkKZW5hYmxlcyBvbmUuCgpUaGUgUGFsbWV0dG8gYXNzZXJ0cyBpbiBuZXQvbmV0LmMg
-bGluZSAyNTYgd2hlbiBxZW11IHN0YXJ0cyBzbyBzb21ldGhpbmcKbXVzdCBiZSBtaXNzaW5nIHRv
-IHN1cHBvcnQgdGhlIDJuZCBuaWMuCi0tLQogaHcvYXJtL2FzcGVlZC5jICAgICAgICAgICAgIHwg
-MjYgKysrKysrKysrKysrKysrKysrKysrKwogaHcvYXJtL2FzcGVlZF9zb2MuYyAgICAgICAgIHwg
-NTQgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tCiBpbmNsdWRl
-L2h3L2FybS9hc3BlZWRfc29jLmggfCAgMiArLQogMyBmaWxlcyBjaGFuZ2VkLCA2NiBpbnNlcnRp
-b25zKCspLCAxNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9ody9hcm0vYXNwZWVkLmMgYi9o
-dy9hcm0vYXNwZWVkLmMKb2xkIG1vZGUgMTAwNjQ0Cm5ldyBtb2RlIDEwMDc1NQppbmRleCAwMjAz
-NjQyLi5mOTU3YTViCi0tLSBhL2h3L2FybS9hc3BlZWQuYworKysgYi9ody9hcm0vYXNwZWVkLmMK
-QEAgLTQzLDYgKzQzLDIzIEBAIHN0cnVjdCBBc3BlZWRCb2FyZFN0YXRlIHsKICAgICAgICAgU0NV
-X0FTVDI0MDBfSFdfU1RSQVBfU0VUX0NMS19TT1VSQ0UoQVNUMjQwMF9DTEtfNDhNX0lOKSB8ICAg
-ICAgIFwKICAgICAgICAgU0NVX0hXX1NUUkFQX1ZHQV9DTEFTU19DT0RFIHwgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIFwKICAgICAgICAgU0NVX0hXX1NUUkFQX0xQQ19SRVNFVF9Q
-SU4gfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0hX
-X1NUUkFQX01BQzBfUkdNSUkgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IFwKKyAgICAgICAgU0NVX0hXX1NUUkFQX01BQzFfUkdNSUkgfCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0hXX1NUUkFQX1NQSV9NT0RFKFNDVV9I
-V19TVFJBUF9TUElfTV9TX0VOKSB8ICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0FTVDI0
-MDBfSFdfU1RSQVBfU0VUX0NQVV9BSEJfUkFUSU8oQVNUMjQwMF9DUFVfQUhCX1JBVElPXzJfMSkg
-fCBcCisgICAgICAgIFNDVV9IV19TVFJBUF9TUElfV0lEVEggfCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBcCisgICAgICAgIFNDVV9IV19TVFJBUF9WR0FfU0laRV9TRVQo
-VkdBXzE2TV9EUkFNKSB8ICAgICAgICAgICAgICAgICAgICAgICBcCisgICAgICAgIFNDVV9BU1Qy
-NDAwX0hXX1NUUkFQX0JPT1RfTU9ERShBU1QyNDAwX1NQSV9CT09UKSkKKworLyogUGllc3Rld2Eg
-UGVhayBoYXJkd2FyZSB2YWx1ZTogICovCisjZGVmaW5lIEVMVEFOUFdQX0JNQ19IV19TVFJBUDEg
-KCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCisgICAgICAgIFNDVV9B
-U1QyNDAwX0hXX1NUUkFQX0RSQU1fU0laRShEUkFNX1NJWkVfMjU2TUIpIHwgICAgICAgICAgICAg
-ICBcCisgICAgICAgIFNDVV9BU1QyNDAwX0hXX1NUUkFQX0RSQU1fQ09ORklHKDIgLyogRERSMyB3
-aXRoIENMPTYsIENXTD01ICovKSB8IFwKKyAgICAgICAgU0NVX0FTVDI0MDBfSFdfU1RSQVBfQUNQ
-SV9ESVMgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0FT
-VDI0MDBfSFdfU1RSQVBfU0VUX0NMS19TT1VSQ0UoQVNUMjQwMF9DTEtfNDhNX0lOKSB8ICAgICAg
-IFwKKyAgICAgICAgU0NVX0hXX1NUUkFQX1ZHQV9DTEFTU19DT0RFIHwgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0hXX1NUUkFQX0xQQ19SRVNFVF9QSU4g
-fCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKKyAgICAgICAgU0NVX0hXX1NU
-UkFQX01BQzFfUkdNSUkgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwK
-ICAgICAgICAgU0NVX0hXX1NUUkFQX1NQSV9NT0RFKFNDVV9IV19TVFJBUF9TUElfTV9TX0VOKSB8
-ICAgICAgICAgICAgICAgIFwKICAgICAgICAgU0NVX0FTVDI0MDBfSFdfU1RSQVBfU0VUX0NQVV9B
-SEJfUkFUSU8oQVNUMjQwMF9DUFVfQUhCX1JBVElPXzJfMSkgfCBcCiAgICAgICAgIFNDVV9IV19T
-VFJBUF9TUElfV0lEVEggfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBc
-CkBAIC00MjMsNiArNDQwLDE1IEBAIHN0YXRpYyBjb25zdCBBc3BlZWRCb2FyZENvbmZpZyBhc3Bl
-ZWRfYm9hcmRzW10gPSB7CiAgICAgICAgIC5udW1fY3MgICAgPSAxLAogICAgICAgICAuaTJjX2lu
-aXQgID0gcGFsbWV0dG9fYm1jX2kyY19pbml0LAogICAgIH0sIHsKKyAgICAgICAgLm5hbWUgICAg
-ICA9IE1BQ0hJTkVfVFlQRV9OQU1FKCJlbHRhbnB3cC1ibWMiKSwKKyAgICAgICAgLmRlc2MgICAg
-ICA9ICJFbHRhbiBQaWVzdGV3YSBQZWFrIEJNQyAoQVJNOTI2RUotUykiLAorICAgICAgICAuc29j
-X25hbWUgID0gImFzdDI0MDAtYTEiLAorICAgICAgICAuaHdfc3RyYXAxID0gRUxUQU5QV1BfQk1D
-X0hXX1NUUkFQMSwKKyAgICAgICAgLmZtY19tb2RlbCA9ICJuMjVxMjU2YSIsCisgICAgICAgIC5z
-cGlfbW9kZWwgPSAibXgyNWwyNTYzNWUiLAorICAgICAgICAubnVtX2NzICAgID0gMSwKKyAgICAg
-ICAgLmkyY19pbml0ICA9IHBhbG1ldHRvX2JtY19pMmNfaW5pdCwKKyAgICB9LCB7CiAgICAgICAg
-IC5uYW1lICAgICAgPSBNQUNISU5FX1RZUEVfTkFNRSgiYXN0MjUwMC1ldmIiKSwKICAgICAgICAg
-LmRlc2MgICAgICA9ICJBc3BlZWQgQVNUMjUwMCBFVkIgKEFSTTExNzYpIiwKICAgICAgICAgLnNv
-Y19uYW1lICA9ICJhc3QyNTAwLWExIiwKZGlmZiAtLWdpdCBhL2h3L2FybS9hc3BlZWRfc29jLmMg
-Yi9ody9hcm0vYXNwZWVkX3NvYy5jCm9sZCBtb2RlIDEwMDY0NApuZXcgbW9kZSAxMDA3NTUKaW5k
-ZXggMGY2ZTViZS4uOGVkNzkwMgotLS0gYS9ody9hcm0vYXNwZWVkX3NvYy5jCisrKyBiL2h3L2Fy
-bS9hc3BlZWRfc29jLmMKQEAgLTE4NCw5ICsxODQsMTMgQEAgc3RhdGljIHZvaWQgYXNwZWVkX3Nv
-Y19pbml0KE9iamVjdCAqb2JqKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgT0JKRUNUKCZzLT5zY3UpLCAmZXJyb3JfYWJvcnQpOwogICAgIH0KIAotICAgIG9iamVjdF9p
-bml0aWFsaXplKCZzLT5mdGdtYWMxMDAsIHNpemVvZihzLT5mdGdtYWMxMDApLCBUWVBFX0ZUR01B
-QzEwMCk7Ci0gICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9jaGlsZChvYmosICJmdGdtYWMxMDAiLCBP
-QkpFQ1QoJnMtPmZ0Z21hYzEwMCksIE5VTEwpOwotICAgIHFkZXZfc2V0X3BhcmVudF9idXMoREVW
-SUNFKCZzLT5mdGdtYWMxMDApLCBzeXNidXNfZ2V0X2RlZmF1bHQoKSk7CisgICAgb2JqZWN0X2lu
-aXRpYWxpemUoJnMtPmZ0Z21hYzEwMFswXSwgc2l6ZW9mKHMtPmZ0Z21hYzEwMCksIFRZUEVfRlRH
-TUFDMTAwKTsKKyAgICBvYmplY3RfcHJvcGVydHlfYWRkX2NoaWxkKG9iaiwgImZ0Z21hYzEwMFsw
-XSIsIE9CSkVDVCgmcy0+ZnRnbWFjMTAwWzBdKSwgTlVMTCk7CisgICAgcWRldl9zZXRfcGFyZW50
-X2J1cyhERVZJQ0UoJnMtPmZ0Z21hYzEwMFswXSksIHN5c2J1c19nZXRfZGVmYXVsdCgpKTsKKwor
-ICAgIG9iamVjdF9pbml0aWFsaXplKCZzLT5mdGdtYWMxMDBbMV0sIHNpemVvZihzLT5mdGdtYWMx
-MDApLCBUWVBFX0ZUR01BQzEwMCk7CisgICAgb2JqZWN0X3Byb3BlcnR5X2FkZF9jaGlsZChvYmos
-ICJmdGdtYWMxMDBbMV0iLCBPQkpFQ1QoJnMtPmZ0Z21hYzEwMFsxXSksIE5VTEwpOworICAgIHFk
-ZXZfc2V0X3BhcmVudF9idXMoREVWSUNFKCZzLT5mdGdtYWMxMDBbMV0pLCBzeXNidXNfZ2V0X2Rl
-ZmF1bHQoKSk7CiAKICAgICBvYmplY3RfaW5pdGlhbGl6ZSgmcy0+aWJ0LCBzaXplb2Yocy0+aWJ0
-KSwgVFlQRV9BU1BFRURfSUJUKTsKICAgICBvYmplY3RfcHJvcGVydHlfYWRkX2NoaWxkKG9iaiwg
-ImJ0IiwgT0JKRUNUKCZzLT5pYnQpLCBOVUxMKTsKQEAgLTM4NCwxOSArMzg4LDM5IEBAIHN0YXRp
-YyB2b2lkIGFzcGVlZF9zb2NfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvciAqKmVycnAp
-CiAgICAgICAgICAgICAgICAgICAgICAgICBBU1BFRURfU09DX1dEVF9CQVNFICsgaSAqIDB4MjAp
-OwogICAgIH0KIAotICAgIC8qIE5ldCAqLwotICAgIHFkZXZfc2V0X25pY19wcm9wZXJ0aWVzKERF
-VklDRSgmcy0+ZnRnbWFjMTAwKSwgJm5kX3RhYmxlWzBdKTsKLSAgICBvYmplY3RfcHJvcGVydHlf
-c2V0X2Jvb2woT0JKRUNUKCZzLT5mdGdtYWMxMDApLCB0cnVlLCAiYXNwZWVkIiwgJmVycik7Ci0g
-ICAgb2JqZWN0X3Byb3BlcnR5X3NldF9ib29sKE9CSkVDVCgmcy0+ZnRnbWFjMTAwKSwgdHJ1ZSwg
-InJlYWxpemVkIiwKLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmxvY2FsX2Vycik7Ci0g
-ICAgZXJyb3JfcHJvcGFnYXRlKCZlcnIsIGxvY2FsX2Vycik7Ci0gICAgaWYgKGVycikgewotICAg
-ICAgICBlcnJvcl9wcm9wYWdhdGUoZXJycCwgZXJyKTsKLSAgICAgICAgcmV0dXJuOworICAgIC8q
-IE5ldCBMQU4gMCovCisgICAgICAgIHFkZXZfc2V0X25pY19wcm9wZXJ0aWVzKERFVklDRSgmcy0+
-ZnRnbWFjMTAwWzBdKSwgJm5kX3RhYmxlWzBdKTsKKyAgICAgICAgb2JqZWN0X3Byb3BlcnR5X3Nl
-dF9ib29sKE9CSkVDVCgmcy0+ZnRnbWFjMTAwWzBdKSwgdHJ1ZSwgImFzcGVlZCIsICZlcnIpOwor
-ICAgIGlmIChzLT5zY3UuaHdfc3RyYXAxICYgU0NVX0hXX1NUUkFQX01BQzBfUkdNSUkpIHsKKyAg
-ICAgICAgcWVtdV9sb2coIiVzOiBMQU4wIGVuYWJsZWRcbiIsIF9fZnVuY19fKTsKKyAgICAgICAg
-b2JqZWN0X3Byb3BlcnR5X3NldF9ib29sKE9CSkVDVCgmcy0+ZnRnbWFjMTAwWzBdKSwgdHJ1ZSwg
-InJlYWxpemVkIiwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmxvY2FsX2Vycik7
-CisgICAgICAgIGVycm9yX3Byb3BhZ2F0ZSgmZXJyLCBsb2NhbF9lcnIpOworICAgICAgICBpZiAo
-ZXJyKSB7CisgICAgICAgICAgICBlcnJvcl9wcm9wYWdhdGUoZXJycCwgZXJyKTsKKyAgICAgICAg
-ICAgIHJldHVybjsKKyAgICAgICAgfQorICAgICAgICBzeXNidXNfbW1pb19tYXAoU1lTX0JVU19E
-RVZJQ0UoJnMtPmZ0Z21hYzEwMFswXSksIDAsIEFTUEVFRF9TT0NfRVRIMV9CQVNFKTsKKyAgICAg
-ICAgc3lzYnVzX2Nvbm5lY3RfaXJxKFNZU19CVVNfREVWSUNFKCZzLT5mdGdtYWMxMDBbMF0pLCAw
-LAorICAgICAgICAgICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihERVZJQ0UoJnMtPnZp
-YyksIDIpKTsKKyAgICB9CisKKyAgICAvKiBOZXQgTEFOIDEqLworICAgICAgICBxZGV2X3NldF9u
-aWNfcHJvcGVydGllcyhERVZJQ0UoJnMtPmZ0Z21hYzEwMFsxXSksICZuZF90YWJsZVsxXSk7Cisg
-ICAgICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9vbChPQkpFQ1QoJnMtPmZ0Z21hYzEwMFsxXSks
-IHRydWUsICJhc3BlZWQiLCAmZXJyKTsKKyAgICBpZiAocy0+c2N1Lmh3X3N0cmFwMSAmIFNDVV9I
-V19TVFJBUF9NQUMxX1JHTUlJKSB7CisgICAgICAgIHFlbXVfbG9nKCIlczogTEFOMSBlbmFibGVk
-XG4iLCBfX2Z1bmNfXyk7CisgICAgICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9vbChPQkpFQ1Qo
-JnMtPmZ0Z21hYzEwMFsxXSksIHRydWUsICJyZWFsaXplZCIsCisgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICZsb2NhbF9lcnIpOworICAgICAgICBlcnJvcl9wcm9wYWdhdGUoJmVyciwg
-bG9jYWxfZXJyKTsKKyAgICAgICAgaWYgKGVycikgeworICAgICAgICAgICAgZXJyb3JfcHJvcGFn
-YXRlKGVycnAsIGVycik7CisgICAgICAgICAgICByZXR1cm47CisgICAgICAgIH0KKyAgICAgICAg
-c3lzYnVzX21taW9fbWFwKFNZU19CVVNfREVWSUNFKCZzLT5mdGdtYWMxMDBbMV0pLCAwLCBBU1BF
-RURfU09DX0VUSDJfQkFTRSk7CisgICAgICAgIHN5c2J1c19jb25uZWN0X2lycShTWVNfQlVTX0RF
-VklDRSgmcy0+ZnRnbWFjMTAwWzFdKSwgMCwKKyAgICAgICAgICAgICAgICAgICAgICAgIHFkZXZf
-Z2V0X2dwaW9faW4oREVWSUNFKCZzLT52aWMpLCAzKSk7CiAgICAgfQotICAgIHN5c2J1c19tbWlv
-X21hcChTWVNfQlVTX0RFVklDRSgmcy0+ZnRnbWFjMTAwKSwgMCwgQVNQRUVEX1NPQ19FVEgxX0JB
-U0UpOwotICAgIHN5c2J1c19jb25uZWN0X2lycShTWVNfQlVTX0RFVklDRSgmcy0+ZnRnbWFjMTAw
-KSwgMCwKLSAgICAgICAgICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihERVZJQ0UoJnMt
-PnZpYyksIDIpKTsKIAogICAgIC8qIGlCVCAqLwogICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9v
-bChPQkpFQ1QoJnMtPmlidCksIHRydWUsICJyZWFsaXplZCIsICZlcnIpOwpkaWZmIC0tZ2l0IGEv
-aW5jbHVkZS9ody9hcm0vYXNwZWVkX3NvYy5oIGIvaW5jbHVkZS9ody9hcm0vYXNwZWVkX3NvYy5o
-Cm9sZCBtb2RlIDEwMDY0NApuZXcgbW9kZSAxMDA3NTUKaW5kZXggNjIzMjIzZC4uMDc5OWQ2MQot
-LS0gYS9pbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmgKKysrIGIvaW5jbHVkZS9ody9hcm0vYXNw
-ZWVkX3NvYy5oCkBAIC00Nyw3ICs0Nyw3IEBAIHR5cGVkZWYgc3RydWN0IEFzcGVlZFNvQ1N0YXRl
-IHsKICAgICBBc3BlZWRTTUNTdGF0ZSBzcGlbQVNQRUVEX1NQSVNfTlVNXTsKICAgICBBc3BlZWRT
-RE1DU3RhdGUgc2RtYzsKICAgICBBc3BlZWRXRFRTdGF0ZSB3ZHRbQVNQRUVEX1dEVFNfTlVNXTsK
-LSAgICBGVEdNQUMxMDBTdGF0ZSBmdGdtYWMxMDA7CisgICAgRlRHTUFDMTAwU3RhdGUgZnRnbWFj
-MTAwWzJdOwogICAgIEFzcGVlZElCVFN0YXRlIGlidDsKICAgICBBc3BlZWRHUElPU3RhdGUgZ3Bp
-bzsKICAgICBBc3BlZWRQV01TdGF0ZSBwd207Ci0tIAoyLjcuNAoK
-
---_002_108c97d2eee749da8f75c69f06e25072Eltsrv03Eltanlocal_--
+>      AspeedIBTState ibt;
+>      AspeedGPIOState gpio;
+>      AspeedPWMState pwm;
+> --=20
+> 2.7.4
+>=20

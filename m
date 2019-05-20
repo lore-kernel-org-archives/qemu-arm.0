@@ -1,77 +1,80 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4359020wrg;
-        Sun, 19 May 2019 18:01:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjYhUWcWNknTdR4gq2yj8xj8lHC1tOeaSPTwWTpnYr9ytQ+iYE1qyPJSM4OtkweHMBkS9I
-X-Received: by 2002:a17:906:5a08:: with SMTP id p8mr39525826ejq.276.1558314064599;
-        Sun, 19 May 2019 18:01:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558314064; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4359085wrg;
+        Sun, 19 May 2019 18:01:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyj3E595zYc5lpVJhFQAAQ8LLx7/1plXo7segS9AptJAZVSVUuw1BKkiKPKg/nFpCmlN1dC
+X-Received: by 2002:a17:906:4911:: with SMTP id b17mr49570848ejq.3.1558314068770;
+        Sun, 19 May 2019 18:01:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558314068; cv=none;
         d=google.com; s=arc-20160816;
-        b=RPkOIKPV9hSpAhFgaNxw1RtNn9aBV0TnfaxN4D2WFje3jkSeIiP2EfmWVbYgdPzufO
-         fOdeC0b9hBfYITV+JTN9gBJ8864XlJ/Lv9aH9vjlO6qS+cgQUChW6v9XorEs2Bi+ZEs2
-         9kbSxCKhW1tiBHml8YNAWpZSho5ITv0B4ctSvmjrSt0+y3oNqbfpW0uomEweVIx6TZyT
-         0dXLWo1LS4BdmvBh2hQpzJiel5rhHHJA86nz+uxhyjgqiWA9lV+9skeK/OvPzXL8qeRa
-         pLZnsjWVqZ4iSFDMqTg4tVX28XdLAlwpF0wOw7l8SwN/AOFpHjNGInkpPbTzi0Dfcb3z
-         LP5w==
+        b=v5Gv3kSWcI/UTY6TSG+BcC+bEJ9s+3tgyvQKzZgFSn8PRjY3MiWDNVSTZis9f3PJml
+         M26JbNlLxFKK5Chb3h2iNBBgxKevU0bOvVq+AspmbRNwl9/4uKsXDe7buhf5J8mVvFxz
+         vG8kYSnmyTCwivTLb1FPCJs+JquySveE/qgHC7MsgKUdgzYyFDLqX4V2JI6nhImis0TP
+         Mez7n1eMh74aSKT+HxpHSKRIx1IBatrjTWYrnA5mX1yT9MaspJtrPoBXDXm8fqhcYRmI
+         QT1FqegIWt23VI8algJ7pf2DdSPcIBmDjq9kdXdbZhxVRWSoFgsutQnoiYpXCp/D5gqi
+         SidQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=PiVI3iPCShxLHwHXqwrT7rSHv8mLhrVDC4OPBTLzsX0=;
-        b=bpFI4GymuP6O6Cdv6TWlfsp1FD1kZXW776P1VbL1GxZX7720ty5AeJlTR+L6ReEq4b
-         2OstzPkohlepfbI6Xxhu2s0GNxUWa/2NknAaMHEgrC63lSjiJluiRi5KAM9bA1MFAR6t
-         NrFFCfE6f8M16cPQ4b09QopeSpRgyriyjsljEcR75dx88gY2zd9iZH9E7q1hHq/eOrsG
-         Ga9CERwVefbWMsUX/0G7uWLnCqKoNxISVD2N6GSQ3xNk5bLhgxYycXIqMxrdyR0oyQte
-         6vAvBddY6Q8ySG51dX4NZbpArLG7ISnBJeSE6Woa6HDk8JRiHL7lW2MbRMZWhxQKQDoG
-         rbOA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=au1CgXkiKkQOWuI13qLSzWwq2SQAAjPuBV90e5SAFTQ=;
+        b=x+q1lk7h7XhBnTI+YzgMueFz6OyNL4/lpW2V6DrXJaV/pyNY0XDRKP8/yJlkaRA4i6
+         qdW9bNd6xV7nT7dj68zK8hOBOHsO0W3KlBv1lV3SDx98HvP/dFoCoB4PLD7cYf+LfZnW
+         n9pzsoWhS/1fIPjqyYBWWpvD4JnHb4QniVtF2g1ovD5oZQU8iacgHJcGak9BPZWl8zqm
+         Hgux7hThmGIhWaQeCTJOePp14vWKJ6oErE3NVM0+ANomEX6pUr8yKx8KDJBzoqSdAHlR
+         vKGgeSASU/btm1uEURzrE+iOvqAqy1lmR9SoR69nekw0MrTPiM/iXUxrlY2gitr3TuXQ
+         UIBA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18si9158884ejd.195.2019.05.19.18.01.04
+        by mx.google.com with ESMTPS id w10si5082846ejz.129.2019.05.19.18.01.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 19 May 2019 18:01:04 -0700 (PDT)
+        Sun, 19 May 2019 18:01:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:55695 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:55701 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSWfn-0000cA-KG
-	for alex.bennee@linaro.org; Sun, 19 May 2019 21:01:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59488)
+	id 1hSWfr-0000gw-Qd
+	for alex.bennee@linaro.org; Sun, 19 May 2019 21:01:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hSWfZ-0000aa-Qp
-	for qemu-arm@nongnu.org; Sun, 19 May 2019 21:00:50 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hSWfb-0000bR-VP
+	for qemu-arm@nongnu.org; Sun, 19 May 2019 21:00:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hSWfY-0006aN-Ik
-	for qemu-arm@nongnu.org; Sun, 19 May 2019 21:00:49 -0400
-Received: from mga17.intel.com ([192.55.52.151]:52449)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1hSWfa-0006bL-T2
+	for qemu-arm@nongnu.org; Sun, 19 May 2019 21:00:51 -0400
+Received: from mga04.intel.com ([192.55.52.120]:13790)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hSWfY-0006Zf-AQ; Sun, 19 May 2019 21:00:48 -0400
+	id 1hSWfa-0006aZ-Kk; Sun, 19 May 2019 21:00:50 -0400
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	19 May 2019 18:00:45 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 May 2019 18:00:48 -0700
 X-ExtLoop1: 1
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga007.jf.intel.com with ESMTP; 19 May 2019 18:00:43 -0700
+	by orsmga008.jf.intel.com with ESMTP; 19 May 2019 18:00:46 -0700
 From: Wei Yang <richardw.yang@linux.intel.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Mon, 20 May 2019 08:59:51 +0800
-Message-Id: <20190520005957.6953-1-richardw.yang@linux.intel.com>
+Date: Mon, 20 May 2019 08:59:52 +0800
+Message-Id: <20190520005957.6953-2-richardw.yang@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190520005957.6953-1-richardw.yang@linux.intel.com>
+References: <20190520005957.6953-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.151
-Subject: [Qemu-arm] [PATCH v5 0/6] Extract build_mcfg
+X-Received-From: 192.55.52.120
+Subject: [Qemu-arm] [PATCH v5 1/6] q35: acpi: do not create dummy MCFG table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,47 +92,71 @@ Cc: yang.zhong@intel.com, peter.maydell@linaro.org, thuth@redhat.com,
 	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3l7pG/ACb0Fi
+X-TUID: 7v2iZgF8Y0jr
 
-This patch set tries to generalize MCFG table build process. And it is
-based on one un-merged patch from Igor, which is included in this serials.
+From: Igor Mammedov <imammedo@redhat.com>
 
-v4->v5:
-    * ACPI_PCI depends on both ACPI and PCI
-    * rebase on latest master, adjust arm Kconfig
-    * miss the reserved[8] of MCFG, add it back
-    * make sure bios-tables-test all OK
+Dummy table (with signature "QEMU") creation came from original SeaBIOS
+codebase. And QEMU would have to keep it around if there were Q35 machine
+that depended on keeping ACPI tables blob constant size. Luckily there
+were no versioned Q35 machine types before commit:
+  (since 2.3) a1666142db acpi-build: make ROMs RAM blocks resizeable
+which obsoleted need to keep ACPI tables blob the same size on source/destination.
 
-v3->v4:
-    * adjust comment to give more information about MCFG table
+Considering the 1st versioned machine is pc-q35-2.4, the dummy table
+is not really necessary and it's safe to drop it without breaking
+cross version migration in both directions unconditionally.
 
-v2->v3:
-    * Includes the un-merged patch from Igor
-    * use build_append_foo() API to construct MCFG
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/i386/acpi-build.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
 
-Igor Mammedov (1):
-  q35: acpi: do not create dummy MCFG table
-
-Wei Yang (5):
-  hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
-  i386, acpi: remove mcfg_ prefix in AcpiMcfgInfo members
-  hw/arm/virt-acpi-build: pass AcpiMcfgInfo to build_mcfg()
-  hw/acpi: Consolidate build_mcfg to pci.c
-  acpi: pci: use build_append_foo() API to construct MCFG
-
- default-configs/i386-softmmu.mak |  1 +
- hw/acpi/Kconfig                  |  4 +++
- hw/acpi/Makefile.objs            |  1 +
- hw/acpi/pci.c                    | 57 ++++++++++++++++++++++++++++++++
- hw/arm/Kconfig                   |  1 +
- hw/arm/virt-acpi-build.c         | 31 +++++------------
- hw/i386/acpi-build.c             | 44 ++++--------------------
- include/hw/acpi/acpi-defs.h      | 18 ----------
- include/hw/acpi/pci.h            | 34 +++++++++++++++++++
- 9 files changed, 113 insertions(+), 78 deletions(-)
- create mode 100644 hw/acpi/pci.c
- create mode 100644 include/hw/acpi/pci.h
-
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index b4ec14e349..4fb6184cbc 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2413,7 +2413,6 @@ static void
+ build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+ {
+     AcpiTableMcfg *mcfg;
+-    const char *sig;
+     int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
+ 
+     mcfg = acpi_data_push(table_data, len);
+@@ -2423,19 +2422,7 @@ build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+     mcfg->allocation[0].start_bus_number = 0;
+     mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
+ 
+-    /* MCFG is used for ECAM which can be enabled or disabled by guest.
+-     * To avoid table size changes (which create migration issues),
+-     * always create the table even if there are no allocations,
+-     * but set the signature to a reserved value in this case.
+-     * ACPI spec requires OSPMs to ignore such tables.
+-     */
+-    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
+-        /* Reserved signature: ignored by OSPM */
+-        sig = "QEMU";
+-    } else {
+-        sig = "MCFG";
+-    }
+-    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
++    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+ }
+ 
+ /*
+@@ -2604,6 +2591,9 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+     }
+     mcfg->mcfg_base = qnum_get_uint(qobject_to(QNum, o));
+     qobject_unref(o);
++    if (mcfg->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
++        return false;
++    }
+ 
+     o = object_property_get_qobject(pci_host, PCIE_HOST_MCFG_SIZE, NULL);
+     assert(o);
 -- 
 2.19.1
 

@@ -1,173 +1,174 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp29354wrg;
-        Mon, 20 May 2019 04:09:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwuwgK40WUyjnSieN5suvGgFU3hhCKPzsCUdwzywwTe12dp4mP/Yg6A03VC3v+vtD6RvX0J
-X-Received: by 2002:a17:906:4482:: with SMTP id y2mr52879338ejo.201.1558350596485;
-        Mon, 20 May 2019 04:09:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558350596; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp148421wrg;
+        Mon, 20 May 2019 06:12:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydr1CuxEJskWjBn0kC2j/I+cnFSvy6zZ50VtpcnAzPC44XntXT2JfPJxxx1ijmeJvrmCbC
+X-Received: by 2002:a50:8e1e:: with SMTP id 30mr75795218edw.283.1558357936305;
+        Mon, 20 May 2019 06:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558357936; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDUtLGZdmna7o4FGLmEcnoylEHlMzsYEwciCkyweC4i3ZEqqz6gej1LDT6ymXH/GpI
-         v2BSLoki9F0PZuie0llb2hujMvrtGOBBPqlAcXwf0BZFdwtbB7ZRGVC7vWsGgviMKzC3
-         qtFX44Z9pHI74KEuBkUiXJ6U6iZWB4EM84Q6uwhWaFB3JYmow1gJf925Aznp9gcaEqqc
-         AWMQYeyTd2uP+0y3DTEK4MG8kDJHzi73zGJnZkNkb48S2JWTfTCo6dPw7ryMeLEOekek
-         oNmfKDLSBAUL7eDX2lp6l0UBAgwPQSP/NnfLbsVup4Ltv8PZ3bxU4nOAXaCJaU82u1QX
-         O6hw==
+        b=P4iPRTbrNaYd2uzOmKdwyiBct9SByUeiU288/SLn99fG7uc3UTOKVL9F7U0h3xQLyb
+         A4nN9hi+5b9Z07qUgf1RL2JEJsuAZfhtay7A2C2YIucF6e6Ch0zltiGGbZHuxdXzWish
+         97ZV/Hb4K6tDlDCDPBjqocd4mUHv57rpgvFJxWehkovQXcZ0cBtEiyvoKjVu/XXLMnkK
+         G8zKdNCmwNKuJZC0nMFuZOOP1lOqeEefmDIyWZdwiucIpWiF2GitcOEXkPe1dapR4pBr
+         HPZp+BTvwVskcI9NFZIJ2zWQus25hIjowcrZYUfyYeYIUUIV7ABqSEQlB/2owBCzF63+
+         iUkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=Fi9JkrAxVjZQtxgJ9kWkUXilTWmZw7lNfIgiEeQhb0Q=;
-        b=iq+7GX2WL6CvBPni9849dtrMFcqHh+iWmrJBqpo1sW1la6TWXvKkE/eygeDDi0IzP7
-         jG6khFnU0S7u1Cq0V4ghyKb1g5WfokbXaNa+kvq6y43gDXbbPJs5BoTt9MC7YeciA5tu
-         OVQ4RRhaeq7+owKAZutXyBBGCdB4AsE3wCBCEM+8GfH8Sa8j0kVbjftAHUkLj6MpivYF
-         1wRF7qhGJPWlkgG+CZF7Gm6EA0v3TbAFDtrcw4rMYpclZ1fIM/4cIA0eCAvD0D2TJTo7
-         UVoC9O6gOslQRpbXTWrYUde2S0zH1K3q3MFBAh0VrzAJOaCTTfEu2MCPuJZeRvEhn5K3
-         b5VA==
+         :user-agent:date:message-id:from:references:to;
+        bh=9jDT2IgbqGdmPe8qELH+y/h2O76klpD1QoU4jF+40Jc=;
+        b=YvBV08tDMTe+4KKkyRjzMm6igZaZmGfebXBhaqsMN50UO/e3eryj8GsT0iLkq0Xyhp
+         3L2rfRWfV2qTfUqzAhauuwOkeght9c4/C2PSKya/YBhmwqzKTiyARZpEAu+vildRS7m7
+         T/jzbJTHe+CWOfWsEK21ESFCX+XRvsMOIyT5I5bDnmn/2ckQWv0lqWhnezeeYmEuf70I
+         jqfO37+RBCaxlld1cVrWaDumb05X0RFDrG9Vf8dONKMdwaN26Ykz2FoHI3PUQ4Z+XJ9K
+         6ELYMdKlF3ro0VccNvdxRpZlbNls7D/oR7FniUGcmQyG7swYd9Tvhf5++Nff5PsaukSC
+         iCqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gs4si8259349ejb.206.2019.05.20.04.09.56
+        by mx.google.com with ESMTPS id c18si2367809ejf.102.2019.05.20.06.12.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 04:09:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 May 2019 06:12:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:33454 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:35538 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSgB1-0003Mo-GK
-	for alex.bennee@linaro.org; Mon, 20 May 2019 07:09:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46283)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hSi5P-0003Hk-AT
+	for alex.bennee@linaro.org; Mon, 20 May 2019 09:12:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50667)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hSgAr-0003Mb-E9
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 07:09:46 -0400
+	(envelope-from <clg@kaod.org>) id 1hSi4g-0003Fz-Pq
+	for qemu-devel@nongnu.org; Mon, 20 May 2019 09:11:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hSgAq-0006KH-Fb
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 07:09:45 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:50240)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hSgAq-0006Im-9D
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 07:09:44 -0400
-Received: by mail-wm1-f68.google.com with SMTP id f204so12861138wme.0
-	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 04:09:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Fi9JkrAxVjZQtxgJ9kWkUXilTWmZw7lNfIgiEeQhb0Q=;
-	b=bAxevcHbzgcwBugbncesUkaTAFbBRYD6Q/QBn2ZCUOrztYXTy/0KJRGfbUGqoVz7+7
-	uszKvVZC9SW2nf+t8iNtJPJYtZO7daM8jO/67ui8qbkGKTdlvbr/N+kAryYmPUKTD1yT
-	FZ78g2M8kF2jAkcgFf2IbKde274HYyzT5wZkcIRl5Ql9ZC64SwziJL6Q++8GoGhD57Tx
-	j49EBIjoPw1nVK5YUV3CRJ69PunAOb/bAkmi8PRsXjZBc95YVrcL25/mkXQiVMFjJDRt
-	X7sb5Z9QUpqTIx8zzRO4kft2UCPN4HqAlHNQDsza5Itd2DHsy4rs/bat6dGjaK+q4RVm
-	muyQ==
-X-Gm-Message-State: APjAAAUN+Rfgy393zw97/4rFxdWTuIK1h/vOa4cSgfAR3a9xRpbncFVP
-	DSgmgmMPAQBa6+5qWpsSKL9uDA==
-X-Received: by 2002:a1c:ca0b:: with SMTP id a11mr41833907wmg.52.1558350583228; 
-	Mon, 20 May 2019 04:09:43 -0700 (PDT)
-Received: from [192.168.1.38] (228.red-83-52-173.dynamicip.rima-tde.net.
-	[83.52.173.228]) by smtp.gmail.com with ESMTPSA id
-	t15sm15489459wmt.2.2019.05.20.04.09.42
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 May 2019 04:09:42 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	(envelope-from <clg@kaod.org>) id 1hSi4f-0001mn-OB
+	for qemu-devel@nongnu.org; Mon, 20 May 2019 09:11:30 -0400
+Received: from 3.mo179.mail-out.ovh.net ([178.33.251.175]:38452)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hSi4f-0001lx-IU
+	for qemu-devel@nongnu.org; Mon, 20 May 2019 09:11:29 -0400
+Received: from player694.ha.ovh.net (unknown [10.109.160.153])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id D0498131FD9
+	for <qemu-devel@nongnu.org>; Mon, 20 May 2019 15:11:26 +0200 (CEST)
+Received: from kaod.org (deibp9eh1--blueice1n0.emea.ibm.com [195.212.29.162])
+	(Authenticated sender: clg@kaod.org)
+	by player694.ha.ovh.net (Postfix) with ESMTPSA id 2D9B65E1CF44;
+	Mon, 20 May 2019 13:11:19 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <20190506142042.28096-1-clg@kaod.org>
 	<b12201c8-7d5f-2108-6666-75543c38f243@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f1ca56fd-c83d-8ad6-29c9-a8fc6af4531c@redhat.com>
-Date: Mon, 20 May 2019 13:09:41 +0200
+	<f1ca56fd-c83d-8ad6-29c9-a8fc6af4531c@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <270e510b-687a-6b43-8cd6-c1eb1aea41e6@kaod.org>
+Date: Mon, 20 May 2019 15:11:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <b12201c8-7d5f-2108-6666-75543c38f243@kaod.org>
+In-Reply-To: <f1ca56fd-c83d-8ad6-29c9-a8fc6af4531c@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 12069084054961687467
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddtkedgiedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [PATCH v2 0/3] aspeed: cleanups and extensions
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 178.33.251.175
+Subject: Re: [Qemu-devel] [PATCH v2 0/3] aspeed: cleanups and extensions
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZLaim3Xbub4q
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LoHYqE9YHAEr
 
-On 5/20/19 9:47 AM, Cédric Le Goater wrote:
-> Hello,
-> 
-> On 5/6/19 4:20 PM, Cédric Le Goater wrote:
+Hello,
+
+On 5/20/19 1:09 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 5/20/19 9:47 AM, C=C3=A9dric Le Goater wrote:
 >> Hello,
 >>
->> Here is a series adding a couple of cleanups to the Aspeed SoCs to
->> prepare ground for extensions and new SoCs.
+>> On 5/6/19 4:20 PM, C=C3=A9dric Le Goater wrote:
+>>> Hello,
+>>>
+>>> Here is a series adding a couple of cleanups to the Aspeed SoCs to
+>>> prepare ground for extensions and new SoCs.
+>>>
+>>> Thanks,
+>>>
+>>> C.
+>>>
+>>> Changes since v1:
+>>>
+>>>  - moved enum defining the Aspeed controller names under aspeed_soc.h
+>>>  - removed AspeedSoCInfo 'sdram_base' field
+>>>  - fixed clang compilation
+>>>
+>>> C=C3=A9dric Le Goater (3):
+>>>   aspeed: add a per SoC mapping for the interrupt space
+>>>   aspeed: add a per SoC mapping for the memory space
 >>
->> Thanks,
+>> I think these two patches are fine to go even if Philippe's comments=20
+>> are not addressed. There are valid but not a blocker to me. =20
+>=20
+> OK, so:
+>=20
+> patches 1 & 2:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20
+> Peter, can you apply them?
+>=20
 >>
->> C.
+>>>   aspeed: use sysbus_init_child_obj() to initialize children
 >>
->> Changes since v1:
->>
->>  - moved enum defining the Aspeed controller names under aspeed_soc.h
->>  - removed AspeedSoCInfo 'sdram_base' field
->>  - fixed clang compilation
->>
->> Cédric Le Goater (3):
->>   aspeed: add a per SoC mapping for the interrupt space
->>   aspeed: add a per SoC mapping for the memory space
-> 
-> I think these two patches are fine to go even if Philippe's comments 
-> are not addressed. There are valid but not a blocker to me.  
+>> Philippe has taken over this patch in a larger series which will go=20
+>> through Eduardo's tree, if I understood well the emails. When merged,=20
+>> we can try to re-merge the RTC patchset from Joel. I think we made=20
+>> things a little more complex than they should have been.=20
+>=20
+> Sorry if I made things more complex. I went on PTO after sending
 
-OK, so:
+PTO ?
 
-patches 1 & 2:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> "hw/arm: Use object_initialize_child for correct reference counting" [*=
+]
+> then was slow to address Thomas/Markus comments.
+> Then maybe I should start pinging maintainer more aggressively when my
+> series are reviewed but not merged, to not delay further developments.
 
-Peter, can you apply them?
+Well, I don't know if there is a good method for transversal patchsets=20
+like this one. I guess it depends on the area.=20
 
-> 
->>   aspeed: use sysbus_init_child_obj() to initialize children
-> 
-> Philippe has taken over this patch in a larger series which will go 
-> through Eduardo's tree, if I understood well the emails. When merged, 
-> we can try to re-merge the RTC patchset from Joel. I think we made 
-> things a little more complex than they should have been. 
+The overall merging process became more complex that expected after our=20
+three simple patchsets (Yours, Joel's and mine) collided.=20
+=20
+> I took note of your comment and will try to keep things simple the next
+> time.
 
-Sorry if I made things more complex. I went on PTO after sending
-"hw/arm: Use object_initialize_child for correct reference counting" [*]
-then was slow to address Thomas/Markus comments.
-Then maybe I should start pinging maintainer more aggressively when my
-series are reviewed but not merged, to not delay further developments.
+It's not a big issue. We have time to provide fixes before 4.1 is out.=20
+Let's put some energy to move on and get code merged.
 
-I took note of your comment and will try to keep things simple the next
-time.
+Peter,=20
 
-Regards,
+do you want me to resend with only the two first patches and include=20
+Joel's in the same series ? I would leave out the part Philippe is=20
+covering in his object_initialize_child() patchset.
 
-Phil.
+Thanks,
 
-> 
-> Thanks,
-> 
-> C.
+C.
 

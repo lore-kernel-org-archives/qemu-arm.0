@@ -1,101 +1,91 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp707263wrg;
-        Mon, 20 May 2019 15:38:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvoChrQyjOFW8LERPvaUjb8q3uJwvCCmXxaTuBq/Nth2abqEhWg0WDtD0KQp+6/f0kwWx7
-X-Received: by 2002:a50:be42:: with SMTP id b2mr80637229edi.228.1558391896569;
-        Mon, 20 May 2019 15:38:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558391896; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp720726wrg;
+        Mon, 20 May 2019 15:56:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwo5wchmEe0tIEfs4qkCEHeTBYLilUH6yxNxRnYHq5YUegnKHqasD/UwJLjrTeNC3S3RuFl
+X-Received: by 2002:a17:906:f12:: with SMTP id z18mr61962532eji.234.1558392986513;
+        Mon, 20 May 2019 15:56:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558392986; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmQmQrbPRmQWs+OhmT516W1r9VZpRYvjMYOwJ7DgXEadbJyYJs9KIf47ebJm6/rM1U
-         n5qbLP/sskKT88rroNL3ueBhKdgWBbtekpVpqJHa9ipzTPUFxkAkCsCwDaUX8jzZm8P2
-         z/kkQBJ0qBH9oA0e8cdP/86asxsuaK0g8nRcDIdTkEvk7q8fGCWnwodJchJjrlcbMxvd
-         dvqSs8nwzancl2qAdBAlj6GN8MNdAYjPxRaL3UQoDjGJIXCTv2sO3Jt5HYXf7pYZBiUx
-         s3iN/n6k5AZMpoyByrKqzj+85J6I9yWYp7AtPEca5ih12lj33wXwbbJzWHierhfxWQQN
-         GT8A==
+        b=xKXrxMuMTuSEYAj3UFr4pppKSK627hQxfH83QN9CEacY+tNzzuI28vEY2bBl/fLSsd
+         ZvFdQuZIXSzOADRU2nROMRSEqJOsQolXgBW9eWz4fgr58xe+uZiDLSoQpadihen8T3x8
+         VwTZdTN7phXbuzxQUQdbT8JgnWbFWdTJ95jkw7f86keNHgV59I9fHGjOHyExmLuU3kWf
+         9j9f2jOHjkQFF5jvIwktK3jH7WfwALFsgngV22mCMAxSENHEsI7TdZrkgVhcYTukNPDj
+         yDDhoeI40zr+RTzhtejzcE9maxhrryYw8EGrZJb8o2UBDdFcpCEDBK1zSmtqgIgpA/SI
+         isMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=PY+CsTSh8GPctl9g5Hg+Op4ObYrj5XAFUZbl6/vgehY=;
-        b=Zan2QkZLHJQvM5jWafgHlhR7lGxrFbnPmPGUkuJBvQmyYTK2RBDtcKiYBDLa9hb3uj
-         VRrC2zfoZgkvOQjcuxqdJz4ibMCDgD7LgCpCuZFSZdB7T5bjqM4iSkRVMNK4chhnoPr4
-         xA+VlhOfcRivoH/sQkKG70l6V/4C1EsV/Kg8tKVdXiTczRDY/1/OJuP6pzToCG23hUBG
-         Qi0DGSElxpPqrxatWv9Uvp45FJVQnohqcBEQdx+kIzpai286HhXTGRS/ai/oRNDR2bTM
-         +TY6vM+bwN+Ygf3ostiGZ1ae0KV74ACLy7wJdOcRwYHHed3epxtMA2R7i5uyHS9HSL0A
-         C25g==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=GkKH3srfLOfkbuG17YwZEDhkPkMS2JTDDH9PJ0Iz6m4=;
+        b=Md4zr3nXQtrVvF1VPYs212hFXo/WA07+w46f0w9WnqiBLWEnYKwtfqdDJDMCNPWkOc
+         Z6pr45kgpziu+gH1ru40RIZ6QJsT1XqKiCh8a4gy7FZX5H6I8Q0nsKG1K9+2gnUwASPM
+         P1Rsb2vkuQe68D6Pq1jX1OvlqvEyZKhZnUGfJw5wNNUp8f61j1UIJhS74dWX/XkmiIic
+         vw/4imasPdkpHrEaKpE6oOgCdKgFqQlxAesKG6NnBBgluwObq/lNF6as9V1gUgQ/ye5x
+         0O5RZNC+TTjYtVSZAYI4YlyCFV9gRrUrExTPMAnPaoHKGP/sQVulFo5OjXCAcxR2TnFX
+         nnbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q7yrwjEj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y36si2066354edb.207.2019.05.20.15.38.16
+        by mx.google.com with ESMTPS id dv25si1499100ejb.383.2019.05.20.15.56.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 15:38:16 -0700 (PDT)
+        Mon, 20 May 2019 15:56:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q7yrwjEj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:42986 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:43170 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSqv5-0003t1-II
-	for alex.bennee@linaro.org; Mon, 20 May 2019 18:38:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39229)
+	id 1hSrCj-0001EY-Hf
+	for alex.bennee@linaro.org; Mon, 20 May 2019 18:56:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hSquo-0003pk-BH
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:37:55 -0400
+	(envelope-from <mst@redhat.com>) id 1hSrCZ-0001EO-0Y
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hSqun-0001tW-7U
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:37:54 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:40709)
+	(envelope-from <mst@redhat.com>) id 1hSrCX-0000O0-S2
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:14 -0400
+Received: from mail-qt1-f195.google.com ([209.85.160.195]:33541)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hSquk-0001pe-Hq; Mon, 20 May 2019 18:37:50 -0400
-Received: by mail-lf1-x142.google.com with SMTP id h13so11516104lfc.7;
-	Mon, 20 May 2019 15:37:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=PY+CsTSh8GPctl9g5Hg+Op4ObYrj5XAFUZbl6/vgehY=;
-	b=Q7yrwjEjcsduDgJCtw54glcG/sGGBm0t3Zxfc0dSesXxtHPDmNUdfXrEHCLj/2xOgF
-	sdwFijhvQ4pHFXvgUn/+KNm87pnEAoNhMab5wiY8PH2lSCc/By8/RVyQBrGnmmJ0BaRb
-	SdQiesyVH7MJc/uqMFagRb+oFhrPbiqsquVHV3xJ0PSAIb9NcqfPDUnfJ5eqDNL7KtSM
-	V8tRvetyucO7x+k92wVZrseCNh3qW26m+0D4Dw4rjk2Zp9jdJBM+VGhasTaTnqJTInDC
-	Z5dw2sdmLmZqjcl3CULi/3Cby6GGysIGtJsJqh7vlcF/OCAp+JGCmPsPHEvlkt0pASfv
-	jwpA==
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hSrCX-0000DH-Ly
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:13 -0400
+Received: by mail-qt1-f195.google.com with SMTP id m32so18368382qtf.0
+	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 15:55:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=PY+CsTSh8GPctl9g5Hg+Op4ObYrj5XAFUZbl6/vgehY=;
-	b=WSSeCqVIvw6aYmnGHHbYqq2KkOnSFmtZmZxH/pl4iAdJ9AwwftfX7JvxuA1etlKQCt
-	7WFiFsCCTs+IEgPfcjDh3kKF/93WQJPYMudPq6tgG2EDBPexz+dFZt5iH0KUe14iCKOb
-	8p/KxL7kHj29muhItkAlpfv9Y6Sv0XOskM1zGb0N24UAzIrstizExtIHVVR/5LtNX0aG
-	fjJkzHgEHuBcGwo2q9F/TTHjSxu0tPyBoTZB5wsJfM7cApF34tTnNeO9+eAQ0hCwUWJ9
-	O2ni2fDq5s3LILAjw+nyWIa2PhwVbU2o6aSIJpBsCox7hT8Xb6ie2ca9xgjRUl5iJsGP
-	/Uiw==
-X-Gm-Message-State: APjAAAX6PyFgj0RfwuaP2FRhyY4o8JQUBmuXEuN4J0T7DHI7jGcd38KP
-	X9Ym4ZcLNnS/Zzf3NYz3Xxnn2Zo+Nht6JnNq1qI=
-X-Received: by 2002:a19:4bd1:: with SMTP id y200mr39051168lfa.25.1558391868543;
-	Mon, 20 May 2019 15:37:48 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to;
+	bh=GkKH3srfLOfkbuG17YwZEDhkPkMS2JTDDH9PJ0Iz6m4=;
+	b=UFMnrk67Miv+QRlGQTA0pY5pkpVz7mCxu4FxchReXViUL4XLl5zrv1hWqiP50vSsez
+	iss3r+K4mvfR00Na55N9e+UgzEpHDJjWaT+PUe9EZ8wmDv3vQOcdRSJOCfTG6Ghcym//
+	xO3bacEbcSHQjkCdZ0/3RLmBaamIry+TnFPa6w5ZU2IEq9tmDBfiUSXFtVtYgAysA9tm
+	qD0j6O8M2YLt6VJN0S5cFOHL62ibQT8lVgHh1NJV3f16dJ2ZRy24NktzTrE4Eg21CbKt
+	8Wa92tT8lvfq82cuiUR3jUpvaQ/7sy5HbSwz2tVNnvk1QoGBxiBeyQHhjHME4KRHF/l3
+	tUDw==
+X-Gm-Message-State: APjAAAUB882uRw8m1Gl7bYeYoCKlgmb/VP8knGv7abdzxj95zYCHwW4Z
+	9/le2DfQvz+IS4S5dAAVfz191g==
+X-Received: by 2002:ac8:3598:: with SMTP id k24mr64667758qtb.46.1558392956921; 
+	Mon, 20 May 2019 15:55:56 -0700 (PDT)
+Received: from redhat.com (pool-173-76-105-71.bstnma.fios.verizon.net.
+	[173.76.105.71]) by smtp.gmail.com with ESMTPSA id
+	x3sm10466098qtk.75.2019.05.20.15.55.54
+	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+	Mon, 20 May 2019 15:55:55 -0700 (PDT)
+Date: Mon, 20 May 2019 18:55:53 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Message-ID: <20190520185508-mutt-send-email-mst@kernel.org>
+References: <20190520005957.6953-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-References: <20190520220635.10961-1-f4bug@amsat.org>
-	<20190520220635.10961-3-f4bug@amsat.org>
-In-Reply-To: <20190520220635.10961-3-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 20 May 2019 15:35:33 -0700
-Message-ID: <CAKmqyKMsVgy-f4oPZ9UaFZHqt5Q+D7=2sr=5tFqY_eU-Jws2Jg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::142
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] BootLinuxConsoleTest: Test
- the SmartFusion2 board
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190520005957.6953-1-richardw.yang@linux.intel.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.160.195
+Subject: Re: [Qemu-arm] [PATCH v5 0/6] Extract build_mcfg
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,87 +97,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Cleber Rosa <crosa@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Caio Carrara <ccarrara@redhat.com>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, thuth@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
+	imammedo@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M8YXD1X8LoAv
+X-TUID: YwFkxPoCtedA
 
-On Mon, May 20, 2019 at 3:09 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Similar to the x86_64/pc test, it boots a Linux kernel on an
-> Emcraft board and verify the serial is working.
->
-> If ARM is a target being built, "make check-acceptance" will
-> automatically include this test by the use of the "arch:arm" tags.
->
-> Alternatively, this test can be run using:
->
->   $ avocado run -t arch:arm tests/acceptance
->   $ avocado run -t machine:emcraft-sf2 tests/acceptance
->
-> Based on the recommended test setup from Subbaraya Sundeep:
-> https://lists.gnu.org/archive/html/qemu-devel/2017-05/msg03810.html
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Mon, May 20, 2019 at 08:59:51AM +0800, Wei Yang wrote:
+> This patch set tries to generalize MCFG table build process. And it is
+> based on one un-merged patch from Igor, which is included in this serials.
+> 
+> v4->v5:
+>     * ACPI_PCI depends on both ACPI and PCI
+>     * rebase on latest master, adjust arm Kconfig
+>     * miss the reserved[8] of MCFG, add it back
+>     * make sure bios-tables-test all OK
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+So I am merging 1-4 now - they are unchanged from previous iterations.
+You just need to repost 5-6.
 
-Alistair
-
-> ---
->  tests/acceptance/boot_linux_console.py | 27 ++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
->
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
-ot_linux_console.py
-> index f593f3858e..844cb80bb5 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -178,6 +178,33 @@ class BootLinuxConsole(Test):
->          console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
->          self.wait_for_console_pattern(console_pattern)
->
-> +    def test_arm_emcraft_sf2(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:emcraft-sf2
-> +        :avocado: tags=3Dendian:little
-> +        """
-> +        uboot_url =3D ('https://raw.githubusercontent.com/'
-> +                     'Subbaraya-Sundeep/qemu-test-binaries/'
-> +                     'fa030bd77a014a0b8e360d3b7011df89283a2f0b/u-boot')
-> +        uboot_hash =3D 'abba5d9c24cdd2d49cdc2a8aa92976cf20737eff'
-> +        uboot_path =3D self.fetch_asset(uboot_url, asset_hash=3Duboot_ha=
-sh)
-> +        spi_url =3D ('https://raw.githubusercontent.com/'
-> +                   'Subbaraya-Sundeep/qemu-test-binaries/'
-> +                   'fa030bd77a014a0b8e360d3b7011df89283a2f0b/spi.bin')
-> +        spi_hash =3D '85f698329d38de63aea6e884a86fbde70890a78a'
-> +        spi_path =3D self.fetch_asset(spi_url, asset_hash=3Dspi_hash)
-> +
-> +        self.vm.set_machine('emcraft-sf2')
-> +        self.vm.set_console()
-> +        kernel_command_line =3D self.KERNEL_COMMON_COMMAND_LINE
-> +        self.vm.add_args('-kernel', uboot_path,
-> +                         '-append', kernel_command_line,
-> +                         '-drive', 'file=3D' + spi_path + ',if=3Dmtd,for=
-mat=3Draw',
-> +                         '-no-reboot')
-> +        self.vm.launch()
-> +        self.wait_for_console_pattern('init started: BusyBox')
-> +
->      def test_s390x_s390_ccw_virtio(self):
->          """
->          :avocado: tags=3Darch:s390x
-> --
+> v3->v4:
+>     * adjust comment to give more information about MCFG table
+> 
+> v2->v3:
+>     * Includes the un-merged patch from Igor
+>     * use build_append_foo() API to construct MCFG
+> 
+> Igor Mammedov (1):
+>   q35: acpi: do not create dummy MCFG table
+> 
+> Wei Yang (5):
+>   hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
+>   i386, acpi: remove mcfg_ prefix in AcpiMcfgInfo members
+>   hw/arm/virt-acpi-build: pass AcpiMcfgInfo to build_mcfg()
+>   hw/acpi: Consolidate build_mcfg to pci.c
+>   acpi: pci: use build_append_foo() API to construct MCFG
+> 
+>  default-configs/i386-softmmu.mak |  1 +
+>  hw/acpi/Kconfig                  |  4 +++
+>  hw/acpi/Makefile.objs            |  1 +
+>  hw/acpi/pci.c                    | 57 ++++++++++++++++++++++++++++++++
+>  hw/arm/Kconfig                   |  1 +
+>  hw/arm/virt-acpi-build.c         | 31 +++++------------
+>  hw/i386/acpi-build.c             | 44 ++++--------------------
+>  include/hw/acpi/acpi-defs.h      | 18 ----------
+>  include/hw/acpi/pci.h            | 34 +++++++++++++++++++
+>  9 files changed, 113 insertions(+), 78 deletions(-)
+>  create mode 100644 hw/acpi/pci.c
+>  create mode 100644 include/hw/acpi/pci.h
+> 
+> -- 
 > 2.19.1
->
->

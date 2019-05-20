@@ -1,91 +1,102 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp720726wrg;
-        Mon, 20 May 2019 15:56:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwo5wchmEe0tIEfs4qkCEHeTBYLilUH6yxNxRnYHq5YUegnKHqasD/UwJLjrTeNC3S3RuFl
-X-Received: by 2002:a17:906:f12:: with SMTP id z18mr61962532eji.234.1558392986513;
-        Mon, 20 May 2019 15:56:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558392986; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp728442wrg;
+        Mon, 20 May 2019 16:05:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCUo+VTh0KnYOrd6DcMJYgh3EPCE+/XkoZZt9ciT9GnwVyjvGmTwgCWChuQ+1sYH5j1yCH
+X-Received: by 2002:a50:b662:: with SMTP id c31mr80026183ede.252.1558393503324;
+        Mon, 20 May 2019 16:05:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558393503; cv=none;
         d=google.com; s=arc-20160816;
-        b=xKXrxMuMTuSEYAj3UFr4pppKSK627hQxfH83QN9CEacY+tNzzuI28vEY2bBl/fLSsd
-         ZvFdQuZIXSzOADRU2nROMRSEqJOsQolXgBW9eWz4fgr58xe+uZiDLSoQpadihen8T3x8
-         VwTZdTN7phXbuzxQUQdbT8JgnWbFWdTJ95jkw7f86keNHgV59I9fHGjOHyExmLuU3kWf
-         9j9f2jOHjkQFF5jvIwktK3jH7WfwALFsgngV22mCMAxSENHEsI7TdZrkgVhcYTukNPDj
-         yDDhoeI40zr+RTzhtejzcE9maxhrryYw8EGrZJb8o2UBDdFcpCEDBK1zSmtqgIgpA/SI
-         isMQ==
+        b=UVQmRRWjwa44F4cpmKnjwFsgx0rsYOC34TPub0WyS4ARHV7Cs+LoRB1pU4HZJTZh5u
+         ms9uem78FYwCEkOvM1EHVtgKCngxHMHbgh858S95P8OONdz9L2Wjeir8rwyrzYT8LBY8
+         cp53fTUna/6/VV4SamngIB0QwUwlOglOnhJRb+YRH9RHieQmnaWXk2kejITu8dI7msPE
+         ytRXAzhfBJOPaVW43GDdRDVvioGp1Ly3weeZ0J+4imYpsgWeaMrO+icFtedfNmz/BRDm
+         H5JwdZBxz6Oqh86JGTYLtLgyuiSIzosTsX5kJYMU+fZfHJ5rD0y8xeSfob1Pnwxl72Hu
+         Druw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=GkKH3srfLOfkbuG17YwZEDhkPkMS2JTDDH9PJ0Iz6m4=;
-        b=Md4zr3nXQtrVvF1VPYs212hFXo/WA07+w46f0w9WnqiBLWEnYKwtfqdDJDMCNPWkOc
-         Z6pr45kgpziu+gH1ru40RIZ6QJsT1XqKiCh8a4gy7FZX5H6I8Q0nsKG1K9+2gnUwASPM
-         P1Rsb2vkuQe68D6Pq1jX1OvlqvEyZKhZnUGfJw5wNNUp8f61j1UIJhS74dWX/XkmiIic
-         vw/4imasPdkpHrEaKpE6oOgCdKgFqQlxAesKG6NnBBgluwObq/lNF6as9V1gUgQ/ye5x
-         0O5RZNC+TTjYtVSZAYI4YlyCFV9gRrUrExTPMAnPaoHKGP/sQVulFo5OjXCAcxR2TnFX
-         nnbQ==
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:to:from:date;
+        bh=/FpleUe2HMMNa9Jbdwt1FroyJe/Y2dPsv4pkqvdEldk=;
+        b=BBXgotNkphMRmy2ED5c0swhuCZBfy2bav9vy3bZ4sXsiGOHSm9vgNcASZ5Bs9xq/Zp
+         kLDShRs+Hh2k9zjlAZfIlluXblbTVSpwF6qXD93BGfeyuZY+7IyIlIV5Sh+tjXmri0FV
+         CWqJkGxZZbJrwjf4ZNU9u5c0bGYZWm3Mo46iNXoBgWJ2P1YEWAD0ADfnleHsCDRfj7Ce
+         RGwrJ3/JkTPUa2MaY9wBMDvxiMz0zi+CdC7VPEmDVzf7fdhl22ywpSDPc7gGtRy4SK8p
+         LqE0+yVblQ9n+FGMqKx09QPGLrquqbOm+yeOlzc7BggENvtrsM8Ce3gAqfCOPEh5RGe5
+         PePA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dv25si1499100ejb.383.2019.05.20.15.56.26
+        by mx.google.com with ESMTPS id y19si4628088edb.436.2019.05.20.16.05.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 15:56:26 -0700 (PDT)
+        Mon, 20 May 2019 16:05:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:43170 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:43244 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSrCj-0001EY-Hf
-	for alex.bennee@linaro.org; Mon, 20 May 2019 18:56:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42244)
+	id 1hSrL4-0004z2-Co
+	for alex.bennee@linaro.org; Mon, 20 May 2019 19:05:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hSrCZ-0001EO-0Y
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:16 -0400
+	(envelope-from <mst@redhat.com>) id 1hSrKq-0004xZ-Fg
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 19:04:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hSrCX-0000O0-S2
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:14 -0400
-Received: from mail-qt1-f195.google.com ([209.85.160.195]:33541)
+	(envelope-from <mst@redhat.com>) id 1hSrKm-0005AN-1h
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 19:04:45 -0400
+Received: from mail-qk1-f193.google.com ([209.85.222.193]:42358)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hSrCX-0000DH-Ly
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 18:56:13 -0400
-Received: by mail-qt1-f195.google.com with SMTP id m32so18368382qtf.0
-	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 15:55:57 -0700 (PDT)
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hSrKf-00055q-6j
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 19:04:38 -0400
+Received: by mail-qk1-f193.google.com with SMTP id d4so9889743qkc.9
+	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 16:04:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=GkKH3srfLOfkbuG17YwZEDhkPkMS2JTDDH9PJ0Iz6m4=;
-	b=UFMnrk67Miv+QRlGQTA0pY5pkpVz7mCxu4FxchReXViUL4XLl5zrv1hWqiP50vSsez
-	iss3r+K4mvfR00Na55N9e+UgzEpHDJjWaT+PUe9EZ8wmDv3vQOcdRSJOCfTG6Ghcym//
-	xO3bacEbcSHQjkCdZ0/3RLmBaamIry+TnFPa6w5ZU2IEq9tmDBfiUSXFtVtYgAysA9tm
-	qD0j6O8M2YLt6VJN0S5cFOHL62ibQT8lVgHh1NJV3f16dJ2ZRy24NktzTrE4Eg21CbKt
-	8Wa92tT8lvfq82cuiUR3jUpvaQ/7sy5HbSwz2tVNnvk1QoGBxiBeyQHhjHME4KRHF/l3
-	tUDw==
-X-Gm-Message-State: APjAAAUB882uRw8m1Gl7bYeYoCKlgmb/VP8knGv7abdzxj95zYCHwW4Z
-	9/le2DfQvz+IS4S5dAAVfz191g==
-X-Received: by 2002:ac8:3598:: with SMTP id k24mr64667758qtb.46.1558392956921; 
-	Mon, 20 May 2019 15:55:56 -0700 (PDT)
+	:mime-version:content-disposition:content-transfer-encoding
+	:in-reply-to;
+	bh=/FpleUe2HMMNa9Jbdwt1FroyJe/Y2dPsv4pkqvdEldk=;
+	b=kOkuVyXr11aKKM/G2msj5v5MhJti4AYKJHaNqq9YgzYAvOoCo+YOv4fVcCoq+K0kuo
+	Z+SKmk1cbnw3QyuDU2HaCM9Lsb699j0w/AwvKaYeVpwECB5S/b64BmihCpobch4mhPRQ
+	BKXtMd6MjffQu8Q/4UkoXEZFK+u7EHRi1DmMwfnUz9CiD6yk7SYeJ404sbIBG/g4naQq
+	wRyCQzhWartMY8Ooe39hrlek7N0xJcjT2cx5mfAMNfXGyYjGan5u8VWeRLJGUaUU85fQ
+	KFs3AKmuaNNPjAf1jzsP6IyNAlKULMbBu9pSgqT0Jf67mbzUKQI54fw0gash3XtgN0fa
+	ATHQ==
+X-Gm-Message-State: APjAAAU1n4mxgYLVvI1HfMfo4X3lIB5payGl2fjvczuUiMD82Qk77mh9
+	tZNid/3eJlE/WFGexKyrGUhDug==
+X-Received: by 2002:a05:620a:1116:: with SMTP id
+	o22mr59569418qkk.23.1558393472000; 
+	Mon, 20 May 2019 16:04:32 -0700 (PDT)
 Received: from redhat.com (pool-173-76-105-71.bstnma.fios.verizon.net.
 	[173.76.105.71]) by smtp.gmail.com with ESMTPSA id
-	x3sm10466098qtk.75.2019.05.20.15.55.54
+	r16sm6502126qkk.36.2019.05.20.16.04.30
 	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-	Mon, 20 May 2019 15:55:55 -0700 (PDT)
-Date: Mon, 20 May 2019 18:55:53 -0400
+	Mon, 20 May 2019 16:04:30 -0700 (PDT)
+Date: Mon, 20 May 2019 19:04:29 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Wei Yang <richardw.yang@linux.intel.com>
-Message-ID: <20190520185508-mutt-send-email-mst@kernel.org>
-References: <20190520005957.6953-1-richardw.yang@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190520185944-mutt-send-email-mst@kernel.org>
+References: <20190419003053.8260-1-richardw.yang@linux.intel.com>
+	<20190419003053.8260-7-richardw.yang@linux.intel.com>
+	<20190514211015-mutt-send-email-mst@kernel.org>
+	<d9d265e1-1052-9d8d-c749-5d1e5901f567@redhat.com>
+	<20190516074110.GA11938@richard>
+	<CAP+75-XHpLkekrmSxK8FFGkpPJQH=V0+2d6RonQTyJNcSHGaEg@mail.gmail.com>
+	<20190516190033.6c8d382f@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20190520005957.6953-1-richardw.yang@linux.intel.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190516190033.6c8d382f@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.160.195
-Subject: Re: [Qemu-arm] [PATCH v5 0/6] Extract build_mcfg
+X-Received-From: 209.85.222.193
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 6/6] acpi: pci: use
+ build_append_foo() API to construct MCFG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,56 +108,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, thuth@redhat.com,
-	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
-	qemu-arm@nongnu.org, marcel.apfelbaum@gmail.com,
-	imammedo@redhat.com, philmd@redhat.com
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Wei Yang <richardw.yang@linux.intel.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YwFkxPoCtedA
+X-TUID: 6bp/PmBXPFD9
 
-On Mon, May 20, 2019 at 08:59:51AM +0800, Wei Yang wrote:
-> This patch set tries to generalize MCFG table build process. And it is
-> based on one un-merged patch from Igor, which is included in this serials.
+On Thu, May 16, 2019 at 07:00:33PM +0200, Igor Mammedov wrote:
+> On Thu, 16 May 2019 13:01:31 +0200
+> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
 > 
-> v4->v5:
->     * ACPI_PCI depends on both ACPI and PCI
->     * rebase on latest master, adjust arm Kconfig
->     * miss the reserved[8] of MCFG, add it back
->     * make sure bios-tables-test all OK
+> > On Thu, May 16, 2019 at 9:41 AM Wei Yang <richardw.yang@linux.intel.com> wrote:
+> > >
+> > > On Wed, May 15, 2019 at 07:29:17AM +0200, Philippe Mathieu-Daudé wrote:  
+> > > >
+> > > >Thanks Michael for testing...
+> > > >
+> > > >Wei, can you add a MCFG test in tests/bios-tables-test.c?
+> > > >  
+> > >
+> > > I took a look into the test, current q35 has already has a reference MCFG in
+> > > tests/data/acpi/q35/MCFG.
+> > >
+> > > And there would be a warning message when reserved[8] is missed.
+> > >
+> > >     /x86_64/acpi/q35/bridge: acpi-test: Warning! MCFG mismatch.
+> > >
+> > > Is this enough? Or what more information prefer to add?  
+> > 
+> > Well, the test has to fail for any mismatch (not a simple warning).
+> > 
+> > A mismatch failure seems to be enough IMHO.
+> Warning is sufficient, we do not fail ACPI tests on mismatch.
+> It was a policy decision for APCI tests as far as I remember.
+> We might reconsider it in the future but it shouldn't affect this patch.
 
-So I am merging 1-4 now - they are unchanged from previous iterations.
-You just need to repost 5-6.
+Yes. And the reason is that conflicts in binary expected files are
+impossible to resolve. So it's important that we can
+fix expected files after a patch that changes them.
 
-> v3->v4:
->     * adjust comment to give more information about MCFG table
+I actually have an idea for a better way to fix this:
+a special list of "warn on mismatch" files.
+
+A patch changing tables will add the changed tables to the list.
+Then maintainer knows to inspec the diff manually
+and re-generate expected files, and remove the
+changed tables from the list.
+
+
+
+Another thing we should do is drop dependency on IASL:
+
+if IASL is present we should use it to show diff to simplify debugging
+but at this point a verbatim difference is good enough if IASL is not
+installed.
+
+
+And I agree 100%: all this is a subject for a separate patch(set).
+
+
+
 > 
-> v2->v3:
->     * Includes the un-merged patch from Igor
->     * use build_append_foo() API to construct MCFG
-> 
-> Igor Mammedov (1):
->   q35: acpi: do not create dummy MCFG table
-> 
-> Wei Yang (5):
->   hw/arm/virt-acpi-build: remove unnecessary variable mcfg_start
->   i386, acpi: remove mcfg_ prefix in AcpiMcfgInfo members
->   hw/arm/virt-acpi-build: pass AcpiMcfgInfo to build_mcfg()
->   hw/acpi: Consolidate build_mcfg to pci.c
->   acpi: pci: use build_append_foo() API to construct MCFG
-> 
->  default-configs/i386-softmmu.mak |  1 +
->  hw/acpi/Kconfig                  |  4 +++
->  hw/acpi/Makefile.objs            |  1 +
->  hw/acpi/pci.c                    | 57 ++++++++++++++++++++++++++++++++
->  hw/arm/Kconfig                   |  1 +
->  hw/arm/virt-acpi-build.c         | 31 +++++------------
->  hw/i386/acpi-build.c             | 44 ++++--------------------
->  include/hw/acpi/acpi-defs.h      | 18 ----------
->  include/hw/acpi/pci.h            | 34 +++++++++++++++++++
->  9 files changed, 113 insertions(+), 78 deletions(-)
->  create mode 100644 hw/acpi/pci.c
->  create mode 100644 include/hw/acpi/pci.h
-> 
-> -- 
-> 2.19.1
+> > 
+> > > >>> -    AcpiMcfgAllocation allocation[0];
+> > > >>> -} QEMU_PACKED;
+> > > >>> -typedef struct AcpiTableMcfg AcpiTableMcfg;
+> > > >>> -
+> > > >>>  /*
+> > > >>>   * TCPA Description Table
+> > > >>>   *
+> > > >>> --
+> > > >>> 2.19.1  
+> > >
+> > > --
+> > > Wei Yang
+> > > Help you, Help me  
+> > 

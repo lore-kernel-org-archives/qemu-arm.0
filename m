@@ -1,99 +1,101 @@
-Received: by 2002:adf:9061:0:0:0:0:0 with SMTP id h88csp830707wrh;
-        Fri, 3 May 2019 10:34:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxW7bOXQm442XwdDzKXJmLNbyf2Ermlm8cneuWvnNQyeI5cTocTVoOZQfgJ6tALmQSEiUo
-X-Received: by 2002:adf:f390:: with SMTP id m16mr7969515wro.25.1556904854258;
-        Fri, 03 May 2019 10:34:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1556904854; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp445180wrg;
+        Mon, 20 May 2019 10:39:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwkeaRofPvqpvx2m8QXaNvRGWEML0v4eyji/5yEvP70QLMJ/S8fsHAeUgiaruNqHr2+30Kb
+X-Received: by 2002:a17:906:58d:: with SMTP id 13mr44011409ejn.36.1558373972483;
+        Mon, 20 May 2019 10:39:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558373972; cv=none;
         d=google.com; s=arc-20160816;
-        b=qiaOrUziAOpAVhUlyJJle8Veq9vpHqfo7BCuE0pZXNEjQcwhfhewHZvhR/x4Opj78U
-         NUAnbA41afcsmibkYv5m/eG+VzWawvL4iARN3ReUPtG1FS6gY8CvPXhPlkpNXLHzAL6i
-         G0j7Nq1Av5rAFFJ/gnj9TTE2WgQeaFFw2FkCxKoen6r4FsZmXH0dt4cFFuqHhF4C7rpH
-         rMWipoyFd8sid6IpkQDm/FgcUw+znMwLvGqnbRkNj8MdQTIrVsdR3jYnQrNa50NdC4X2
-         1TXu74HzUiZPCPwQ8EdlkKaWKYCoviBxQinucb/Q8MzxZNKiETwyDnl/wRqtM4aHaGJ9
-         4yFA==
+        b=gd7qVqfKZs5tOhufOKQPUkLPdZ2yjj3+7r7qwCkykmh3aEKOtywiHrVVZMDGAXUlvK
+         qb9jv3Qwfd9X/fuS4lFpb/vuF/RlaeDKPMNU2EDTYf4ypKK0Q+hfzaJ50wb2JovqlOUZ
+         oa1LuBZjMmzZGu+gFWauLRdvbMeKp2H5KwLsTPT4vK9ZSRZthRQP86z2d7SvpUYwX5yB
+         wqsrqTR/l2mhZPjxxqaCdL0NFfJMRgWR2JsdRNrc69p3SfvbYclLHxKHrQNBYLpXkhd5
+         /oxQ/LbE2uujPMqCD7vACAK3dgEFptc+gVBLSOQWpE2Jr31/D9BOYcb8A8Du0GGZye4z
+         K6gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fAbaWIprqYabI26Q7gG1BG024NYmOUIooaRDhTV5jkw=;
-        b=CFaw64TyZ8k0ovfjnCqegySO77c71iqWahFOYPnSS9yazAwwKN0jKL+7sSHZPqMmZU
-         ktHHLIDR42CCdDA2euLbTCHPvyIaCR4eppvuhv4l65+iHxzBsDnVsKVjofU7JJL4DSCi
-         b5120hLQh2fnB0vpTjlk7vOkL2QQoStEGDTQe46/2U4M8hvgpVOWtov/coBS4zM2bVQL
-         LmD0asCK/hUHmkFMrr+QUfmugK4+lF2Bu1AGVChILziLvCMwj9C7F9wYLkor/GgHqiTE
-         /ceXv5QFosCPthV68iQNH++SW5yG38cml7WGlBT34D3gr/Hyac9zQVuMf0CN//orbUCQ
-         YWxA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=Z3bIzp7bNN8LqmaeDZr/a8qvIyz/8zh6J2BdewSw5zQ=;
+        b=eAqbI+ctDZcrooFw1Xq/GpOo4XhiM4kUpXda5evjkyqt1BjNYZqh4Idb+OZmKP5eSD
+         28+BaCKNbVZyOqiQm2n918RC/h2cXz8Fy5VBEg8LNYTV6FAEABQU40Y6L6uz3E3KX/cA
+         oVyZnaHnNkj8EVHLQJs/BrYcCDJ7olkM+qYdHVrpqExcu1B/Dy/kLOSGdg5M6Px8Fc/+
+         i9Ar5dwtRjAebMAsYjExwG/H6t4j65iJBfOyyolrJntrflpuSXInqG8VeWwAbhAS3uco
+         b5q6Cuj2UgheQng45k8EuKh5HOyqWczyFvadTFtnBB3v27CUqXlCbZeM/zb+KyljvJbv
+         ny+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hMJWQdl5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e1si2002607wrj.264.2019.05.03.10.34.14
+        by mx.google.com with ESMTPS id w16si2728842edb.109.2019.05.20.10.39.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 May 2019 10:34:14 -0700 (PDT)
+        Mon, 20 May 2019 10:39:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hMJWQdl5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:45139 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:39357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hMc4b-0002SL-AX
-	for alex.bennee@linaro.org; Fri, 03 May 2019 13:34:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38763)
+	id 1hSmG3-0005Ij-5y
+	for alex.bennee@linaro.org; Mon, 20 May 2019 13:39:31 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59381)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMc4F-0002Ph-OF
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:33:52 -0400
+	(envelope-from <philmd@redhat.com>) id 1hSm1d-0001qo-3z
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 13:24:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hMc4E-0003DY-MV
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:33:51 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36637)
+	(envelope-from <philmd@redhat.com>) id 1hSm1b-0005Pg-Lw
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 13:24:36 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:54989)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hMc4E-0003D3-Hh
-	for qemu-arm@nongnu.org; Fri, 03 May 2019 13:33:50 -0400
-Received: by mail-ot1-x341.google.com with SMTP id b18so6008604otq.3
-	for <qemu-arm@nongnu.org>; Fri, 03 May 2019 10:33:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=fAbaWIprqYabI26Q7gG1BG024NYmOUIooaRDhTV5jkw=;
-	b=hMJWQdl5epKcK1EIaeGCRoLGcC4jEEdqIWLiAZ4S+JW2Vk2twX630DCwuFyxrYyC9s
-	Lx+WPCXJ9i2t6D2c6uJqZJoBCALjX2BSte0Tu3AdGXgw0+rCmdT9tavpdiD7oAo1OzMQ
-	853DjzfZzNsXcg5PEnwH5Yp5XG7rPDQTjrLIG5JBQtUceTW+1Ad1inuHTHTmytS3WvWf
-	o7/ZAkgjRSRzZg+uI20ko4w/qVQnFxkFjBI3uqUEvEyJTcRssIVTgdvM/a/Tjhdmk1HN
-	ndgBVXEbnsRXrj+BsvvYaANWez8yOe1Wxcv/kXwg+gSFLruOWeyN8Y2+obD4EPV3cddU
-	Dr1Q==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hSm1b-0005Ol-Fv
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 13:24:35 -0400
+Received: by mail-wm1-f66.google.com with SMTP id i3so159129wml.4
+	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 10:24:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=fAbaWIprqYabI26Q7gG1BG024NYmOUIooaRDhTV5jkw=;
-	b=rmhByRnJXHl8UPHYZ3LsWmN1nRdk6W9Eg0eYDT2toH/i31bnyVx05+/HaBuU9Ea05b
-	HkmE+w/oAcg7wlEZo/tP82ySVOGyxqDoVj2MGEu8Mn+uDkfa74oTQE2Ui1mUFXcemPnE
-	3jo11KxAXuWmHBQpmgeKOT8eY5xNV2/e0gDG4gw/M4iWk9yLKOaXqb2F7pnR2NL2xDJI
-	Oq0MUrztoZTgH46EQFZWt616x5Fc5RqUMbWfVirVorjiy5YLEq6uSX89CfgQ3rCAtScE
-	WxYZw1d3njCA9brgP+1FPeRCctBYMfcwrZ37Sb5gjnecvJyq4Pxrm1fuJmzSo2AGCsJ9
-	0fUw==
-X-Gm-Message-State: APjAAAXw9xBRuPqCJ3hO6z87LJw1GsZEPpI37N8xpW3qv/tIqjj2Wpbf
-	dCPU98steoyep/9FTyMaf+XrSCbEFFBSaI7BGqRZ8MinPTo=
-X-Received: by 2002:a9d:6d19:: with SMTP id o25mr6789007otp.151.1556904829239; 
-	Fri, 03 May 2019 10:33:49 -0700 (PDT)
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Z3bIzp7bNN8LqmaeDZr/a8qvIyz/8zh6J2BdewSw5zQ=;
+	b=kpZToFtdjqolY/g6woWPk5KPPh0Cni0mM9oTfLovCOakDIIz8K0p26jiD7ZYjvHbWd
+	hE+y8Z9SlWUPtUwOxr08BRDiQGKCLNb7eCO+rxpmPboiotLhNB0rofUAzCuje91CW0jk
+	etsEyfIYXGNGDzNB9Sfp2AZXH5T0z0Bjv3B6Wr1kYqp7KTBTc4eOwffua/7K45E2MYkU
+	qA2+wWKjjinCUf6ZlbN/xrcJCYsqObB4yNkmrn7q3zzgDdyGJ0KZvOG7rJnKuinFrBpC
+	6AyrX4hfunbqZtFcudgmQiYvLU0n9Rq3HBadWsV3q3o9TqRJFHNEj3ahtbhFPZtHbOYr
+	cloQ==
+X-Gm-Message-State: APjAAAV8Yg6rNHYnJHDmWqVVzo46Y2uC4MwHW3DJJxs8b/wpb4E6nONN
+	R8X1VunUx93VkAoZ4/jxsY8gtQ==
+X-Received: by 2002:a1c:2245:: with SMTP id i66mr166605wmi.19.1558373073452;
+	Mon, 20 May 2019 10:24:33 -0700 (PDT)
+Received: from [192.168.1.43] (228.red-83-52-173.dynamicip.rima-tde.net.
+	[83.52.173.228]) by smtp.gmail.com with ESMTPSA id
+	e8sm42662114wrc.34.2019.05.20.10.24.32
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 20 May 2019 10:24:33 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20190520162809.2677-1-peter.maydell@linaro.org>
+	<20190520162809.2677-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <dc232ab2-5a8d-1df7-074e-0e7eed1b2960@redhat.com>
+Date: Mon, 20 May 2019 19:24:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190503171347.13747-1-peter.maydell@linaro.org>
-	<20190503171347.13747-2-peter.maydell@linaro.org>
-In-Reply-To: <20190503171347.13747-2-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 May 2019 18:33:38 +0100
-Message-ID: <CAFEAcA8cG_hd=6+zeYDG5o68Z-62rmXfK4SBLWUz2tVvgPobpw@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/arm/boot: Avoid placing the initrd on
- top of the kernel
+In-Reply-To: <20190520162809.2677-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/4] hw/intc/arm_gicv3: Fix
+ decoding of ID register range
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,85 +107,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TzKe+RV9Gm1s
+X-TUID: 8G5MH4122GZc
 
-On Fri, 3 May 2019 at 18:13, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> We currently put the initrd at the smaller of:
->  * 128MB into RAM
->  * halfway into the RAM
-> (with the dtb following it).
->
-> However for large kernels this might mean that the kernel
-> overlaps the initrd. For some kinds of kernel (self-decompressing
-> 32-bit kernels, and ELF images with a BSS section at the end)
-> we don't know the exact size, but even there we have a
-> minimum size. Put the initrd at least further into RAM than
-> that. For image formats that can give us an exact kernel size, this
-> will mean that we definitely avoid overlaying kernel and initrd.
->
+On 5/20/19 6:28 PM, Peter Maydell wrote:
+> The GIC ID registers cover an area 0x30 bytes in size
+> (12 registers, 4 bytes each). We were incorrectly decoding
+> only the first 0x20 bytes.
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+"8.1.13 Identification registers" OK.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 > ---
->  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
->  1 file changed, 20 insertions(+), 14 deletions(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index a830655e1af..7c978fedde4 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -998,20 +998,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
->      if (info->nb_cpus == 0)
->          info->nb_cpus = 1;
->
-> -    /*
-> -     * We want to put the initrd far enough into RAM that when the
-> -     * kernel is uncompressed it will not clobber the initrd. However
-> -     * on boards without much RAM we must ensure that we still leave
-> -     * enough room for a decent sized initrd, and on boards with large
-> -     * amounts of RAM we must avoid the initrd being so far up in RAM
-> -     * that it is outside lowmem and inaccessible to the kernel.
-> -     * So for boards with less  than 256MB of RAM we put the initrd
-> -     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> -     * the initrd at 128MB.
-> -     */
-> -    info->initrd_start = info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> -
->      /* Assume that raw images are linux kernels, and ELF images are not.  */
->      kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
->                                 &elf_high_addr, elf_machine, as);
-> @@ -1056,6 +1042,26 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
->          exit(1);
+>  hw/intc/arm_gicv3_dist.c   | 2 +-
+>  hw/intc/arm_gicv3_redist.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+> index 53c55c57291..335386ff3ac 100644
+> --- a/hw/intc/arm_gicv3_dist.c
+> +++ b/hw/intc/arm_gicv3_dist.c
+> @@ -533,7 +533,7 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+>          }
+>          return MEMTX_OK;
 >      }
->      info->entry = entry;
-> +
-> +    /*
-> +     * We want to put the initrd far enough into RAM that when the
-> +     * kernel is uncompressed it will not clobber the initrd. However
-> +     * on boards without much RAM we must ensure that we still leave
-> +     * enough room for a decent sized initrd, and on boards with large
-> +     * amounts of RAM we must avoid the initrd being so far up in RAM
-> +     * that it is outside lowmem and inaccessible to the kernel.
-> +     * So for boards with less  than 256MB of RAM we put the initrd
-> +     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> +     * the initrd at 128MB.
-> +     * We also refuse to put the initrd somewhere that will definitely
-> +     * overlay the kernel we just loaded, though for kernel formats which
-> +     * don't tell us their exact size (eg self-decompressing 32-bit kernels)
-> +     * we might still make a bad choice here.
-> +     */
-> +    info->initrd_start = info->loader_start +
-> +        MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
-> +    info->initrd_start = TARGET_PAGE_ALIGN(info->initrd_start);
-> +
-
-I belatedly realized that we should probably check here whether
-this is off the end of the ram, as otherwise following code
-will get an underflow in "info->ram_size - info->initrd_start"
-which is unlikely to result in useful behaviour.
-
-thanks
--- PMM
+> -    case GICD_IDREGS ... GICD_IDREGS + 0x1f:
+> +    case GICD_IDREGS ... GICD_IDREGS + 0x2f:
+>          /* ID registers */
+>          *data = gicv3_idreg(offset - GICD_IDREGS);
+>          return MEMTX_OK;
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index 3b0ba6de1ab..9bb11423382 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -233,7 +233,7 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
+>          }
+>          *data = cs->gicr_nsacr;
+>          return MEMTX_OK;
+> -    case GICR_IDREGS ... GICR_IDREGS + 0x1f:
+> +    case GICR_IDREGS ... GICR_IDREGS + 0x2f:
+>          *data = gicv3_idreg(offset - GICR_IDREGS);
+>          return MEMTX_OK;
+>      default:
+> 

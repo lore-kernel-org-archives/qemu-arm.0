@@ -1,225 +1,161 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp666853wrg;
-        Mon, 20 May 2019 14:48:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzRrGtW7OYkjbBY5P6IInv0WNJkAIeDPldWz7jVI/Dezz8v1xCmHPg9IkbqqUThHXcXeaLN
-X-Received: by 2002:a50:893d:: with SMTP id e58mr74750152ede.244.1558388919901;
-        Mon, 20 May 2019 14:48:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558388919; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp668235wrg;
+        Mon, 20 May 2019 14:50:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzi/Phy518hmAxxpKDuQAyPaeAoa63wXN5Bc3YLmtWxw4hEJ52DgIYhRzH7Xi0WdiT9Y63w
+X-Received: by 2002:a17:906:7206:: with SMTP id m6mr62209900ejk.39.1558389047077;
+        Mon, 20 May 2019 14:50:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558389047; cv=none;
         d=google.com; s=arc-20160816;
-        b=B4KvJcKwgZ4wn63FVgAVWmlCLrhgwy3HFy/166kT8tsaX9IB/M29eaCZ47aWIUkmpH
-         PNyb+xYYoDMTrxQYLbh8hbraH+dbV1j4a72ex4+OqvkCytatq8cvj+bgG1kno6M54bqT
-         YBr0yaVkFb2f+zolB+vqLQQCgL/KimF2EdVOSDZCICtVOdI2wKoT6Kw8zOXQeBFtwf2y
-         lpFVyDcYS/3RAead/4RFhIBB2yZ/jovsBw/c0mbIJ0x7EkDMWltXHMuIcgNkfu1QAYD4
-         LTJTpdJOgp5DLF1+QbJdyfblfWiV+fwGuxxhBQi43hNvfVFA92Vf8b9ygAoRi6PHv0e/
-         zINw==
+        b=LR5mdN6SmcwAzFyGQusSEBzIVpv/4jtQQa2ugxD7jZS5vCIkmq7qVh1C1c5YXrflfd
+         lC5R5obYvXdGQMrM0/OQeka4db56c0Vwwo3w1r9xuGIaJFN6wLp7MgpaEqYlfrP2djOb
+         OOcpRP3q+VilFuYyCYZOoRwwqbn80w+YwcX1KVMHM1HWQI3ufY+suVKB0m6L7oitcDfK
+         dqBcuKH2iRpt4PYtUuj2eXAJ8/2TI2z1m1xvo2BJss24ssdkjeoVzvXHI7evFs4KC2KO
+         fT0w7XfIpIKCfB5Wc4rEsoKPkQQ7u4abBjVbUWs1b3O5AfBV59/+kCdJ8Lf6WnmxMYMT
+         eCFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=t43OENVR4obMrRcvlgCh7UeKPxoDm64MUIhRm/dnleA=;
-        b=XzgdHLYgD9rfkX6WsDlT20NZPohgCpKmsSiOnYdOcgFU4LPelMJ7ylr23QScAHWB3q
-         JZTu2GGkrGse4WCBszcNROZBXpxpBXF0w59dYTKXwTrOIVso/tQaYf5yVH2gieurEsgk
-         biceWoOmrdDKvX54kxNqsjiVrZsdsPery45E6kybcsibmySqTTQs1oFS8cQKUgUUGlMh
-         utRbK0CoQ1fQYEtfPzuT5SjU1ahG9E2OmMIhvaIyrVzzePz0fKLbo0oTD916XBNtM5Px
-         +eHctMDFkLv1Pp8ecC1zNVLNT6lSCsitSAm4T+vae+R3wQdhA+6yhfQ+m3KL+QlNtfP0
-         Ea0A==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=x7r9XNYB2o5vMYWmRzZIat+sN5wAmUA6kVuz3xo43fs=;
+        b=b66TzhrFL1EF3hcr7iEae+zIRTOwx1jLTbTpFMjId+NcPW3j2TC7UpupyIQm56Hn5h
+         MR+QuqpDgM95oTbgrRPOeOmNXNy+V1IDaodimv1j6g1W9wSOdClMln5Mij/ZC8Wf0i0y
+         Csn+KhbZtNTtu6tPd8l7Oo30vF5SQhKamvlgx5EGNOnfbV7ii+CDXW1qx+SwFYpATG9I
+         XJxJcOc17O1cZXAIIpkPvX0lWRBgY6hzwlgWvt6dbXunTaPMsaH+Mk142tb34zrvbTpU
+         gpfb5wPXUXsWsgOIvzthSo/ZVaAL/WsNVuIXTvAv4cHNBfpH2tu2Xf3aVH+STFi1DFll
+         o8Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q84M+lnH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c8si6483062eds.136.2019.05.20.14.48.39
+        by mx.google.com with ESMTPS id y46si2800175edc.298.2019.05.20.14.50.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 14:48:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 May 2019 14:50:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:42401 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q84M+lnH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:42456 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSq98-0001lh-S6
-	for alex.bennee@linaro.org; Mon, 20 May 2019 17:48:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57920)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hSqBC-0003o8-5B
+	for alex.bennee@linaro.org; Mon, 20 May 2019 17:50:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59517)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hSq4v-0007j2-Rz
-	for qemu-devel@nongnu.org; Mon, 20 May 2019 17:44:18 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hSqAt-0003m5-5k
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 17:50:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hSq4u-0000QN-H7
-	for qemu-devel@nongnu.org; Mon, 20 May 2019 17:44:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58226)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hSq4r-0000M7-Vc; Mon, 20 May 2019 17:44:14 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D29B980F6D;
-	Mon, 20 May 2019 21:44:10 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-28.brq.redhat.com [10.40.204.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CD6481001E6C;
-	Mon, 20 May 2019 21:44:03 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 20 May 2019 23:43:42 +0200
-Message-Id: <20190520214342.13709-5-philmd@redhat.com>
-In-Reply-To: <20190520214342.13709-1-philmd@redhat.com>
-References: <20190520214342.13709-1-philmd@redhat.com>
+	(envelope-from <alistair23@gmail.com>) id 1hSqAs-00064q-At
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 17:50:27 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:36800)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1hSqAq-000632-5U; Mon, 20 May 2019 17:50:24 -0400
+Received: by mail-lj1-x243.google.com with SMTP id z1so13931345ljb.3;
+	Mon, 20 May 2019 14:50:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=x7r9XNYB2o5vMYWmRzZIat+sN5wAmUA6kVuz3xo43fs=;
+	b=q84M+lnHopdfZVKExtjtdcrV1vDZiW0c0DeMXwrUcaSGUnH2O2HfQP9fPKZG1FQ4fn
+	25sVYshWZd0vlShdwN0RRKqzhkfRv2/ekKrw8lDBSKfb4ntK8wFUrse5l1FuFdmom4In
+	NVrFaVWwAooqXtf2CpSLF8etTDNboOUL3CV60KBcc09+ddoQBfpuv7n4NtoOmXVZ/3ig
+	/fLxSmOkDDrYisABEPqk7fiDv+ZniCIqQaAiG7XXnLrFBSv4O5o3lz9OO8xEoL8Oyust
+	KI8YHvQEyPb4StTpuLEnP5rXbjm54mGbcSKAzNyh5koS4HQXKL2sq+XPtdFZV5mXwpOw
+	5Y0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=x7r9XNYB2o5vMYWmRzZIat+sN5wAmUA6kVuz3xo43fs=;
+	b=cMAR1SVAlGkk6EZID4j93rzlKmUHrroHBXVdIFPTN/PJpW6UkIxv3QscZ7h4ygY9tc
+	PLUjT9jceCdmhzVIhFCjmMOTwWy6S4bLjqyZ9CT9NMKfU2PrqUXs/vr5mgHBVl1WtSaa
+	IMxg59NLBkVbA1wvXspAnGwArAUPGzPzvCoKb6DbItT3/bADcOfhd/E9KhuAdp8Q+G64
+	11hiaEcGCWSlFMDaDp+NaMf6T9tpeAP8UDx7NX+bkRPMHxBeQVgsenK95RP+qL5TTw/N
+	m8LD+1BR+5qKN6Ptnkd47t4wlock2F7Ixh8s/hFdAT5wbiNbArXezsfZaDbUQQ3/881a
+	AOCw==
+X-Gm-Message-State: APjAAAXdQdBimzlWjkkEdJ9oTorWbPzDRJV22J0Rjatw65ej4AX5+q9X
+	16QxjbmBjREU1EChucFi2wvsLhvcXl+qqoHzQ9Q=
+X-Received: by 2002:a2e:597:: with SMTP id 145mr11316838ljf.127.1558389023036; 
+	Mon, 20 May 2019 14:50:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 20 May 2019 21:44:10 +0000 (UTC)
+References: <20190520214342.13709-1-philmd@redhat.com>
+	<20190520214342.13709-3-philmd@redhat.com>
+In-Reply-To: <20190520214342.13709-3-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 20 May 2019 14:48:08 -0700
+Message-ID: <CAKmqyKMwbwvAyQ=u0SgaphHiP_HFFnL2npSTYum+G5V60F7kBw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 4/4] hw/arm/exynos4210: QOM'ify the Exynos4210
- SoC
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/4] hw/arm/exynos4: Use the IEC
+ binary prefix definitions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6hdnAPAjJ5mY
+	Alistair Francis <alistair@alistair23.me>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AtkoStJGOhw7
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/arm/exynos4210.c         | 26 +++++++++++++++++++++++---
- hw/arm/exynos4_boards.c     |  9 ++++++---
- include/hw/arm/exynos4210.h |  9 +++++++--
- 3 files changed, 36 insertions(+), 8 deletions(-)
+On Mon, May 20, 2019 at 2:48 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> It eases code review, unit is explicit.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 19009b76e7c..0b09129eff8 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -178,9 +178,10 @@ static void pl330_create(uint32_t base, qemu_irq irq=
-, int nreq)
-     sysbus_connect_irq(busdev, 0, irq);
- }
-=20
--Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
-+static void exynos4210_realize(DeviceState *socdev, Error **errp)
- {
--    Exynos4210State *s =3D g_new0(Exynos4210State, 1);
-+    Exynos4210State *s =3D EXYNOS4210_SOC(socdev);
-+    MemoryRegion *system_mem =3D get_system_memory();
-     qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
-     SysBusDevice *busdev;
-     DeviceState *dev;
-@@ -435,6 +436,25 @@ Exynos4210State *exynos4210_init(MemoryRegion *syste=
-m_mem)
-                  qemu_irq_invert(s->irq_table[exynos4210_get_irq(36, 1)]=
-), 32);
-     pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
-                  qemu_irq_invert(s->irq_table[exynos4210_get_irq(34, 1)]=
-), 1);
-+}
-+
-+static void exynos4210_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-=20
--    return s;
-+    dc->realize =3D exynos4210_realize;
- }
-+
-+static const TypeInfo exynos4210_info =3D {
-+    .name =3D TYPE_EXYNOS4210_SOC,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(Exynos4210State),
-+    .class_init =3D exynos4210_class_init,
-+};
-+
-+static void exynos4210_register_types(void)
-+{
-+    type_register_static(&exynos4210_info);
-+}
-+
-+type_init(exynos4210_register_types)
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index f824eef0d36..700e90d6671 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -45,7 +45,7 @@ typedef enum Exynos4BoardType {
- } Exynos4BoardType;
-=20
- typedef struct Exynos4BoardState {
--    Exynos4210State *soc;
-+    Exynos4210State soc;
-     MemoryRegion dram0_mem;
-     MemoryRegion dram1_mem;
- } Exynos4BoardState;
-@@ -130,7 +130,10 @@ exynos4_boards_init_common(MachineState *machine,
-     exynos4_boards_init_ram(s, get_system_memory(),
-                             exynos4_board_ram_size[board_type]);
-=20
--    s->soc =3D exynos4210_init(get_system_memory());
-+    object_initialize(&s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
-+    qdev_set_parent_bus(DEVICE(&s->soc), sysbus_get_default());
-+    object_property_set_bool(OBJECT(&s->soc), true, "realized",
-+                             &error_fatal);
-=20
-     return s;
- }
-@@ -148,7 +151,7 @@ static void smdkc210_init(MachineState *machine)
-                                                       EXYNOS4_BOARD_SMDK=
-C210);
-=20
-     lan9215_init(SMDK_LAN9118_BASE_ADDR,
--            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(37, 1)]=
-));
-+            qemu_irq_invert(s->soc.irq_table[exynos4210_get_irq(37, 1)])=
-);
-     arm_load_kernel(ARM_CPU(first_cpu), &exynos4_board_binfo);
- }
-=20
-diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
-index 098a69ec73d..27c684e851d 100644
---- a/include/hw/arm/exynos4210.h
-+++ b/include/hw/arm/exynos4210.h
-@@ -85,6 +85,9 @@ typedef struct Exynos4210Irq {
- } Exynos4210Irq;
-=20
- typedef struct Exynos4210State {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    /*< public >*/
-     ARMCPU *cpu[EXYNOS4210_NCPUS];
-     Exynos4210Irq irqs;
-     qemu_irq *irq_table;
-@@ -98,11 +101,13 @@ typedef struct Exynos4210State {
-     I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
- } Exynos4210State;
-=20
-+#define TYPE_EXYNOS4210_SOC "exynos4210"
-+#define EXYNOS4210_SOC(obj) \
-+    OBJECT_CHECK(Exynos4210State, obj, TYPE_EXYNOS4210_SOC)
-+
- void exynos4210_write_secondary(ARMCPU *cpu,
-         const struct arm_boot_info *info);
-=20
--Exynos4210State *exynos4210_init(MemoryRegion *system_mem);
--
- /* Initialize exynos4210 IRQ subsystem stub */
- qemu_irq *exynos4210_init_irq(Exynos4210Irq *env);
-=20
---=20
-2.20.1
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+Alistair
+
+> ---
+>  hw/arm/exynos4_boards.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+> index f0c24b7992e..f824eef0d36 100644
+> --- a/hw/arm/exynos4_boards.c
+> +++ b/hw/arm/exynos4_boards.c
+> @@ -22,6 +22,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu-common.h"
+> @@ -60,8 +61,8 @@ static int exynos4_board_smp_bootreg_addr[EXYNOS4_NUM_O=
+F_BOARDS] =3D {
+>  };
+>
+>  static unsigned long exynos4_board_ram_size[EXYNOS4_NUM_OF_BOARDS] =3D {
+> -    [EXYNOS4_BOARD_NURI]     =3D 0x40000000,
+> -    [EXYNOS4_BOARD_SMDKC210] =3D 0x40000000,
+> +    [EXYNOS4_BOARD_NURI]     =3D 1 * GiB,
+> +    [EXYNOS4_BOARD_SMDKC210] =3D 1 * GiB,
+>  };
+>
+>  static struct arm_boot_info exynos4_board_binfo =3D {
+> --
+> 2.20.1
+>
+>

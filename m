@@ -1,87 +1,79 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp308584wrg;
-        Mon, 20 May 2019 08:29:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxxyBKufNt7v3KMk3fC7GKuq9wQdJQ+hS6+twt/BRm8c1633a1K12kFOSg6dgpNEpExZ+iY
-X-Received: by 2002:a50:ba6e:: with SMTP id 43mr75306773eds.201.1558366191614;
-        Mon, 20 May 2019 08:29:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558366191; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp308849wrg;
+        Mon, 20 May 2019 08:30:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNq6rlmDQbpm9v2lluydmo/AlaKhHJNUnJdmhz6Zxpp/zggH1cKrcSAex2koT7977kGJw0
+X-Received: by 2002:a50:b797:: with SMTP id h23mr67598773ede.197.1558366205385;
+        Mon, 20 May 2019 08:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558366205; cv=none;
         d=google.com; s=arc-20160816;
-        b=apxKre5/rENSEk4DaWz35VWAXJDQCtrJOxQ/P+kIZoAuYoirGEWoX7u4w47kQuCiSF
-         5In4wkBmKdZckJt2pPoidA/dg6cuaci/QvH2E/D6CHrSaB9NlZFfzvc04fRXOPlJh3lB
-         oyxzY9OVHQijrcZi4YRZDdSDhyJU1db2XFJnMEio3EbZymo1AG2YiriWsg7H5Xwy5Bj7
-         R8lVEV7jZ2AAjd6VOuALRuNNk+nk7Ie8hmD2f5/WY/lpYJyU8ijAPz3TcTrUgo6nFoNC
-         cJVa9n+cJoeqiFbWTSpauvxmPtFdRhrktFuKSQb7QaEbtsMFEOMutlP8hM92jwW9Vget
-         KQHQ==
+        b=Tiw9uNQvpJXh1Y1Xn5iA4wHrG7dLeBfh8R229NtCL/I8uehTGty79MTrkp5AKrDsSx
+         sEx7jFHpD2J8ZcL8ekaZs5bl5LPUq/xQ6mg0UFu2ALnb+CLDCAc6REKaP/N8+6aEE3mE
+         7LhroQv++YH/U5lLBwx11ln6GNrtPc/3XyqyZRKRga5G+/Mh9sA3Xu8L9E+0NYST53sa
+         IUjcWA7AXVDtsDa5VK4gUwXIhE3kMj4VKmpmqjVYAI+wFASY1MDW1H14Gy2t9/3vRYps
+         +06qLvm9KDY8MEc4Sogjl1foFX3U6fCIxyu6XvT649Ftyd78o92/7vCEjH0w5rh6b5J9
+         zCeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=WPfGbLYPnfCWncQqF1d9VgFzNLlVer6iBvIP55UxiHE=;
-        b=SWaDF3OIT5Zn1Ff7Q7VcnDz4zEiwKpMA05jiePfpctzdSZjCzVXSJ+t6JgPNZ0UxbP
-         wSIIDdVkFTflTKBolvqjW6ixhL9PCu/2X+/zx5n6KN3ZgCfm9lcUp8/w1QIhHgUuclRV
-         0tERtn0dh/XJL2sl+wYCd1tkRlb9bx6i696NCYP3hlXsXC4pMVDe+J8GF9qU3YNyNyA1
-         rXFPvd9azJzTaYDXBSvGeU/EOjad1JhQyeJhhHC2U1QO9wkMlmqxG3QvcRTa56IVPcRV
-         NqSac0ck3im7ARvMSdevgAL8FtPGd5ICioomyF6tA9cqXK0FvoYPmivafIrN40OClUXa
-         LpSQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=C++gch5+PTKE4I/wDsrfL7X6jGFa+HevsnMQ/RPYofM=;
+        b=lzZg84LaXZPoPOU13k6ZmvWqwJFr6DzZ9AsISJn3ijtQIeOKtRf5P5FBqHWV6b7stx
+         dPb0Hk1sE/3dgBeRgbhbcf2YXNHE7PjPEQuSAD7uTvPpi/MCaZDwduvhKCJucuH0ADaq
+         YJtcjWEKlxThCpUsmP9K5QpUzF6t5MZdePIy9ITc7A2YfnHbl6K3XH9xfbw21Eyb7UiA
+         HKCEFfQm5xFEcqLMeuJ63PCfIjJrLDfDn4emdyEesPRybaQALIvhSr2ukkS2uJdWTiPH
+         ROAqFt8fdr95kK8008B+YjK/w5gfsvZKZdM9Qp8r0LgtHbNMKV0VPpWB96dCxxS9LIjV
+         GY7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si10760121eje.348.2019.05.20.08.29.51
+        by mx.google.com with ESMTPS id v1si456407ejk.50.2019.05.20.08.30.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 08:29:51 -0700 (PDT)
+        Mon, 20 May 2019 08:30:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:37214 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:37218 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSkEY-0000pG-J3
-	for alex.bennee@linaro.org; Mon, 20 May 2019 11:29:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53191)
+	id 1hSkEm-00012I-AB
+	for alex.bennee@linaro.org; Mon, 20 May 2019 11:30:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hSkED-0000mz-1f
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 11:29:31 -0400
+	(envelope-from <lvivier@redhat.com>) id 1hSkEG-0000oW-Qw
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 11:29:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hSkEA-0004SU-L3
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 11:29:29 -0400
-Received: from 7.mo68.mail-out.ovh.net ([46.105.63.230]:36437)
+	(envelope-from <lvivier@redhat.com>) id 1hSkEF-0004W2-Qj
+	for qemu-arm@nongnu.org; Mon, 20 May 2019 11:29:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43586)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hSkE9-0004QQ-EN
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 11:29:26 -0400
-Received: from player776.ha.ovh.net (unknown [10.108.54.156])
-	by mo68.mail-out.ovh.net (Postfix) with ESMTP id 6997D12E54C
-	for <qemu-arm@nongnu.org>; Mon, 20 May 2019 17:29:22 +0200 (CEST)
-Received: from kaod.org (deibp9eh1--blueice1n0.emea.ibm.com [195.212.29.162])
-	(Authenticated sender: clg@kaod.org)
-	by player776.ha.ovh.net (Postfix) with ESMTPSA id 3D3AA5F03391;
-	Mon, 20 May 2019 15:29:15 +0000 (UTC)
-To: Wim Vervoorn <wvervoorn@eltan.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <d0fea426e8b245769f3022dad121c17e@Eltsrv03.Eltan.local>
-	<3ee8eb5a-d38c-9570-3da5-a055e9f147e5@kaod.org>
-	<e1f87ee13d164655ae568b2d22f68128@Eltsrv03.Eltan.local>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <a2f73f2e-31bd-9585-1206-49e5a26f2de0@kaod.org>
-Date: Mon, 20 May 2019 17:29:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1hSkEF-0004Uw-Ki; Mon, 20 May 2019 11:29:31 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 480375D61E;
+	Mon, 20 May 2019 15:29:25 +0000 (UTC)
+Received: from thinkpad.redhat.com (unknown [10.40.205.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CA42219C68;
+	Mon, 20 May 2019 15:29:22 +0000 (UTC)
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 20 May 2019 17:29:21 +0200
+Message-Id: <20190520152921.15959-1-lvivier@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <e1f87ee13d164655ae568b2d22f68128@Eltsrv03.Eltan.local>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 14398570961849846545
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddtkedgkeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Mon, 20 May 2019 15:29:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.63.230
-Subject: Re: [Qemu-arm] aspeed qemu question
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] numa: improve cpu hotplug error message with a
+ wrong node-id
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,371 +85,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QAetmbknVyZ8
+X-TUID: 6o/ERGNJl4JF
 
-Hello Wim,
+On pseries, core-ids are strongly binded to a node-id by the command
+line option. If a user tries to add a CPU to the wrong node, he has
+an error but it is not really helpful:
 
-On 5/20/19 9:42 AM, Wim Vervoorn wrote:
-> Hello C=C3=A9dric,
->=20
-> It was not yet my intention to have this patch included in the qemu rep=
-o so I didn't pay attention to checking the indentation etc. So I misunde=
-rstood your suggestion. I am sorry about that.
->=20
-> I will address your remarks in a new patch.
->=20
-> Besides this I have another question.
->=20
-> First of all I don't think qemu should assert due to a lacking NIC defi=
-nition on the commandline so that is why I think I am missing something.
+  qemu-system-ppc64 ... -smp 1,maxcpus=3D64,cores=3D1,threads=3D1,sockets=
+=3D1 \
+                        -numa node,nodeid=3D0 -numa node,nodeid=3D1 ...
 
-I think there is another problem.=20
+  (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=3D30,node-id=3D1
+  Error: node-id=3D1 must match numa node specified with -numa option
 
-In hw/net/ftgmac100.c, this line in ftgmac100_realize() should be removed=
- :
+This patch improves this error message by giving to the user the good
+node-id to use with the core-id he's providing:
 
-	s->conf.peers.ncs[0] =3D nd_table[0].netdev;
+  Error: core-id 30 can only be plugged into node-id 0
 
-I will send a fix.
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+ numa.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-
-> Secondly I have started qemu with various attempts to define a 2nd NIC =
-all with the same result (an assert). The issue with this is that I am no=
-t 100% sure I am defining the NICs in the correct way. If you could provi=
-de me with a commandline that is known to be correct I can use that for t=
-esting.
-
-You could use two devices such as :=20
-
- -net nic,macaddr=3DC0:FF:EE:00:00:02,model=3Dftgmac100 -net user,id=3Dne=
-tdev0=20
- -net nic,macaddr=3DC0:FF:EE:00:00:04,model=3Dftgmac100 -net user,id=3Dne=
-tdev1
-
-Providing you have the correct DT, you should see something like :
-
-[    3.628410] libphy: Fixed MDIO Bus: probed
-[    3.631462] ftgmac100 1e660000.ethernet: Read MAC address c0:ff:ee:00:=
-00:02 from chip
-[    3.631835] ftgmac100 1e660000.ethernet: Using NCSI interface
-[    3.646027] ftgmac100 1e660000.ethernet eth0: irq 19, mapped at (ptrva=
-l)
-[    3.647308] ftgmac100 1e680000.ethernet: Read MAC address c0:ff:ee:00:=
-00:04 from chip
-[    4.120223] libphy: ftgmac100_mdio: probed
-[    4.121590] RTL8211E Gigabit Ethernet 1e680000.ethernet--1:00: attache=
-d PHY driver [RTL8211E Gigabit Ethernet] (mii_bus:phy_addr=3D1e680000.eth=
-ernet--1:00, irq=3DPOLL)
-[    4.134884] ftgmac100 1e680000.ethernet eth1: irq 20, mapped at (ptrva=
-l)
-
-Regards,
-
-C.
-
-
-
-> Thanks for you patience.
->=20
-> Best Regards,
-> Wim Vervoorn
->=20
->=20
-> -----Original Message-----
-> From: C=C3=A9dric Le Goater [mailto:clg@kaod.org]=20
-> Sent: Friday, May 17, 2019 12:08 PM
-> To: Wim Vervoorn <wvervoorn@eltan.com>; qemu-devel@nongnu.org; qemu-arm=
-@nongnu.org; Joel Stanley <joel@jms.id.au>; Andrew Jeffery <andrew@aj.id.=
-au>; Peter Maydell <peter.maydell@linaro.org>
-> Subject: Re: aspeed qemu question
->=20
-> Hello Win,
->=20
-> On 5/17/19 9:46 AM, Wim Vervoorn wrote:
->> Hello Cedr=C3=ADc,
->>
->> Thanks for your response. I created and attached the patch. You are ri=
-ght the code snipped turns out unreadable.
->=20
-> You should try to send the patch directly and not attached. Checkout th=
-e git send-email commands for it. See also :
->=20
-> https://wiki.qemu.org/Contribute/SubmitAPatch
->=20
->> In the patch I enable the MAC's depending on the value in hwstrap1 jus=
-t as in the real hardware. In the Palmetto both nics will be enabled (jus=
-t as in the real palmetto).=20
->>
->> I added a 2nd AST2400 BMC the Eltan Piestewa Peak. Here I enabled the =
-2nd NIC only.
->>
->> What I see is that when I use Palmetto I get an assert in net/net.c li=
-ne 256, this is in the "qemu_net_client_setup()". I assume I have to prep=
-are something regarding the host side of the network implementation but I=
- this point I have no clue what and I have a hard time figuring out how t=
-he networking architecture really works.=20
->=20
-> Did you define two nics on the command line  ?
->=20
-> more comments below.
->=20
-> [ ... ]=20
->=20
->> From bbf9392b84f38531b89e4ea39e06210b99ec7a0c Mon Sep 17 00:00:00 2001
->> Message-Id:=20
->> <bbf9392b84f38531b89e4ea39e06210b99ec7a0c.1558078463.git.wvervoorn@elt
->> an.com>
->> From: Wim Vervoorn <wvervoorn@eltan.com>
->> Date: Fri, 17 May 2019 09:26:16 +0200
->> Subject: [PATCH] ASPEED BMC: Add support for 2nd NIC
->>
->> Add support for 2nd NIC.
->>
->> This solution is using the hwstrap1 value to enable disable the=20
->> controllers.
->=20
-> OK. Let see how this shows in the code.
->=20
->> The Palmetto leaves both NICs enabled while the Piestewa Peak only=20
->> enables one.
->=20
-> You should send two different patches, one for the NIC, one for Piestew=
-a Peak machine.=20
->=20
->> The Palmetto asserts in net/net.c line 256 when qemu starts so=20
->> something must be missing to support the 2nd nic.
->=20
-> You need a "signed-off-by:" tag here
->=20
->> ---
->>  hw/arm/aspeed.c             | 26 ++++++++++++++++++++++
->>  hw/arm/aspeed_soc.c         | 54 ++++++++++++++++++++++++++++++++----=
----------
->>  include/hw/arm/aspeed_soc.h |  2 +-
->>  3 files changed, 66 insertions(+), 16 deletions(-)
->>
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c old mode 100644 new=20
->> mode 100755 index 0203642..f957a5b
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -43,6 +43,23 @@ struct AspeedBoardState {
->>          SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |    =
-   \
->>          SCU_HW_STRAP_VGA_CLASS_CODE |                                =
-   \
->>          SCU_HW_STRAP_LPC_RESET_PIN |                                 =
-   \
->> +        SCU_HW_STRAP_MAC0_RGMII |                                    =
-   \
->> +        SCU_HW_STRAP_MAC1_RGMII |                                    =
-   \
->> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |             =
-   \
->> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_=
-2_1) | \
->> +        SCU_HW_STRAP_SPI_WIDTH |                                     =
-   \
->> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                    =
-   \
->> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
->> +
->> +/* Piestewa Peak hardware value:  */
->> +#define ELTANPWP_BMC_HW_STRAP1 (                                     =
-   \
->> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |            =
-   \
->> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=3D6, CWL=3D=
-5 */) | \
->> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                              =
-   \
->> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |    =
-   \
->> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                =
-   \
->> +        SCU_HW_STRAP_LPC_RESET_PIN |                                 =
-   \
->> +        SCU_HW_STRAP_MAC1_RGMII |                                    =
-   \
->>          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |             =
-   \
->>          SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_=
-2_1) | \
->>          SCU_HW_STRAP_SPI_WIDTH |                                     =
-   \
->> @@ -423,6 +440,15 @@ static const AspeedBoardConfig aspeed_boards[] =3D=
- {
->>          .num_cs    =3D 1,
->>          .i2c_init  =3D palmetto_bmc_i2c_init,
->>      }, {
->> +        .name      =3D MACHINE_TYPE_NAME("eltanpwp-bmc"),
->> +        .desc      =3D "Eltan Piestewa Peak BMC (ARM926EJ-S)",
->> +        .soc_name  =3D "ast2400-a1",
->> +        .hw_strap1 =3D ELTANPWP_BMC_HW_STRAP1,
->> +        .fmc_model =3D "n25q256a",
->> +        .spi_model =3D "mx25l25635e",
->=20
-> Are these the correct flash models for your board ?=20
->=20
->> +        .num_cs    =3D 1,
->> +        .i2c_init  =3D palmetto_bmc_i2c_init,
->> +    }, {
->>          .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
->>          .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
->>          .soc_name  =3D "ast2500-a1",
->> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c old mode 100644=
+diff --git a/numa.c b/numa.c
+index 3875e1efda3a..c419c5b5b8ee 100644
+--- a/numa.c
++++ b/numa.c
+@@ -470,8 +470,9 @@ void numa_cpu_pre_plug(const CPUArchId *slot, DeviceS=
+tate *dev, Error **errp)
+                                     "node-id", errp);
+         }
+     } else if (node_id !=3D slot->props.node_id) {
+-        error_setg(errp, "node-id=3D%d must match numa node specified "
+-                   "with -numa option", node_id);
++        error_setg(errp,
++                   "core-id %"PRId64" can only be plugged into node-id %=
+"PRId64,
++                   slot->props.core_id, slot->props.node_id);
+     }
+ }
 =20
->> new mode 100755 index 0f6e5be..8ed7902
->> --- a/hw/arm/aspeed_soc.c
->> +++ b/hw/arm/aspeed_soc.c
->> @@ -184,9 +184,13 @@ static void aspeed_soc_init(Object *obj)
->>                                         OBJECT(&s->scu), &error_abort)=
-;
->>      }
->> =20
->> -    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMA=
-C100);
->> -    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100)=
-, NULL);
->> -    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
->> +    object_initialize(&s->ftgmac100[0], sizeof(s->ftgmac100), TYPE_FT=
-GMAC100);
->> +    object_property_add_child(obj, "ftgmac100[0]", OBJECT(&s->ftgmac1=
-00[0]), NULL);
->> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[0]),=20
->> + sysbus_get_default());
->> +
->> +    object_initialize(&s->ftgmac100[1], sizeof(s->ftgmac100), TYPE_FT=
-GMAC100);
->> +    object_property_add_child(obj, "ftgmac100[1]", OBJECT(&s->ftgmac1=
-00[1]), NULL);
->> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[1]),=20
->> + sysbus_get_default());
->=20
-> using a loop would be better. The future Aspeed SoCs might have more th=
-an two MACs.
->> =20
->>      object_initialize(&s->ibt, sizeof(s->ibt), TYPE_ASPEED_IBT);
->>      object_property_add_child(obj, "bt", OBJECT(&s->ibt), NULL); @@=20
->> -384,19 +388,39 @@ static void aspeed_soc_realize(DeviceState *dev, Er=
-ror **errp)
->>                          ASPEED_SOC_WDT_BASE + i * 0x20);
->>      }
->> =20
->> -    /* Net */
->> -    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
->> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &=
-err);
->> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
->> -                             &local_err);
->> -    error_propagate(&err, local_err);
->> -    if (err) {
->> -        error_propagate(errp, err);
->> -        return;
->> +    /* Net LAN 0*/
->> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[0]), &nd_table[0=
-]);
->> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true,=20
->> + "aspeed", &err);
->=20
-> This is not the correct indentation. Please run checkpatch.pl on the pa=
-tch.
->=20
->> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC0_RGMII) {
->> +        qemu_log("%s: LAN0 enabled\n", __func__);
->=20
-> we don't need this kind of information.
->=20
->> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true, "rea=
-lized",
->> +                                &local_err);
->> +        error_propagate(&err, local_err);
->> +        if (err) {
->> +            error_propagate(errp, err);
->> +            return;
->> +        }
->> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0, ASPEED_S=
-OC_ETH1_BASE);
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0,
->> +                        qdev_get_gpio_in(DEVICE(&s->vic), 2));
->> +    }
->> +
->> +    /* Net LAN 1*/
->> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[1]), &nd_table[1=
-]);
->> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "asp=
-eed", &err);
->> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC1_RGMII) {
->> +        qemu_log("%s: LAN1 enabled\n", __func__);
->> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "rea=
-lized",
->> +                                &local_err);
->> +        error_propagate(&err, local_err);
->> +        if (err) {
->> +            error_propagate(errp, err);
->> +            return;
->> +        }
->> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0, ASPEED_S=
-OC_ETH2_BASE);
->> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0,
->> +                        qdev_get_gpio_in(DEVICE(&s->vic), 3));
->=20
-> I would use a loop such as :=20
->=20
->     for (i =3D 0; i < nb_nics; i++) {
->         NICInfo *nd =3D &nd_table[i];
->=20
->   	/* test SCU ... */
->=20
->   	...
->     }
->=20
-> to realize the NICs.
->=20
->>      }
->> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1=
-_BASE);
->> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
->> -                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
->> =20
->>      /* iBT */
->>      object_property_set_bool(OBJECT(&s->ibt), true, "realized",=20
->> &err); diff --git a/include/hw/arm/aspeed_soc.h=20
->> b/include/hw/arm/aspeed_soc.h old mode 100644 new mode 100755 index=20
->> 623223d..0799d61
->> --- a/include/hw/arm/aspeed_soc.h
->> +++ b/include/hw/arm/aspeed_soc.h
->> @@ -47,7 +47,7 @@ typedef struct AspeedSoCState {
->>      AspeedSMCState spi[ASPEED_SPIS_NUM];
->>      AspeedSDMCState sdmc;
->>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
->> -    FTGMAC100State ftgmac100;
->> +    FTGMAC100State ftgmac100[2];
->=20
-> 2 needs a macro.
->=20
->=20
-> I have a patchset currently being reviewed which should help you to def=
-ine the different addresses, interrupt numbers of the MACS.
-> Let me ping you when this is merge and then you can rebase.=20
->=20
-> However, you can send a patch for your board definition. There should n=
-ot be any conflicts with this addition.
->=20
-> Thanks,
->=20
-> C.
->=20
->=20
->=20
->=20
->>      AspeedIBTState ibt;
->>      AspeedGPIOState gpio;
->>      AspeedPWMState pwm;
->> --
->> 2.7.4
->>
->=20
->=20
+--=20
+2.20.1
 

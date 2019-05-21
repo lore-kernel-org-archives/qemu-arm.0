@@ -1,79 +1,118 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1057790wrg;
-        Mon, 20 May 2019 23:49:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyCnb30JiVZrtnxTrslGeojLWfV/x/ShZ8eqYCya9QoNVl23d+/uPxIVcHflW/9cNdZhnE6
-X-Received: by 2002:a50:97ed:: with SMTP id f42mr80943056edb.141.1558421392536;
-        Mon, 20 May 2019 23:49:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558421392; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1085875wrg;
+        Tue, 21 May 2019 00:27:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzGcsWOyUvTtkidn8xxmLe/Vl0oHfe61E7axI1p3SEAAsCYP9yJJrFQUiHjY3+J1/z23k4W
+X-Received: by 2002:a50:982f:: with SMTP id g44mr81439692edb.278.1558423658864;
+        Tue, 21 May 2019 00:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558423658; cv=none;
         d=google.com; s=arc-20160816;
-        b=R18/xMVkkf4wtrYV8lLSKLZh14aO3q5diSKq99t2maqSD3sRDUEg3FbD2CMplU0Kib
-         Dg2zXInDKxcqMkTPvE9yNOtFfTOVJnfH/aYjReaZC7I5EWCxWUcYgP0gih3EhG7oHwZa
-         oE8t9kRa0mrhVHMYerqAEFmCHuL7viaHU3zkOi/QmAW1log1BR3Bqhnq+P3ilD6w4NF+
-         RkQHRrxUQmIT8xCUzOeLSV6uJidDOFifv/9fb/a6r6bRhWblTa1N6FCTQWosfXgB49rB
-         uLcv0nePJRKYdHAa3Re2uXvB6rRq+f7NW+fhCEBCLMt2uVH3OtdnV0pop+9PIfv6jj8Q
-         0QkQ==
+        b=esHqInvdrXqNUeFumNiHFGf9V81xPWiXlOIKSN1rwOLcjpv+9e4FJVqFxN+x6eNX+7
+         Z3WCNHCFswu2viNmCb4v8BjSL81hqYXarqtQrVz/ZTFldpk0O8wN+88DRfkwapobxYe4
+         m4e+TZRNPeF4ag3dp+JabTIYzw1pafJ9eCNQgnnd9jdLuoY6Jn/i7dNzv16SfRorgw3u
+         LK17JwZa0GA1AtqZsGG7bc2jKc5wPOVyJ2bS2ZFuVwDlAAgXp00v+wbL/RMHathg07y8
+         4ktg3IqpJiUUukS96t4nRiii7614zTak2ZNHy66LgBxdEEksfYdg2SuWnDB88MdLovzR
+         /05Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=iCPsXr8Yxg2rG31o7MBquwwLXP5pEEzkmFuCv8NgQvM=;
-        b=hWe9Ps99uWJkq0vh1ul0RFuImkfm0E4VeK2h6P4C082qXEFcpHwFNKdlUl2EIilExl
-         kMoUY5/8DtaecdqQUznT6zqP8Xe4p8HfY9B/X4E67tAez/7ZAPvCg+vlaKLZkcOkwBy1
-         tWMd37khCpJmNSSCZL6kdLtLrojh7heKis8MPosJrWyrgv9CGGGt4SsGppLUAcysRcDg
-         VFcf86BjttpVkVZyGGh/gftl5LEgmLTU3YOZROmNqsNbrtWMQ6a/hTey1oKAd6te3qE7
-         H0DKafVOwjR4CwvKzEuEKcMrP+5Vnt8d7EKYKGYAVU1LgZLja3I2tUO8LvrFC3CX+50+
-         dSAg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from:dkim-signature;
+        bh=CzT8Co39mEFzGYDt/cuJo1yardRv23aflTQ4l2JQRWk=;
+        b=t7+ZDnSopGy9+fxKbcB9pbmh/Rlkh8m4AgwvqZFpaFhyv7Bbanx6BuN85dchw75Iep
+         GZwr0Y/HEr4hf1B9b4QL/P+L4gjJWO2jnDJ1aPD5j3DP/qdwLYxDNe9rfsvPw1Z0Jc+5
+         pqyyhAS2BsxiCTE7D2paWn6OmxTWg2iW9X9WJp4XxhskJIz/5kH7e6DXQcIzHFNTSkvb
+         Ssy0xHwKa37uKYQSSQbFVy/9PcAxuqwKIaySzOeo00WW2ESmqyRVVwp+dOVwGuzdggYC
+         ZS74VXAp83aWKeiNDzYsovRofpAf81noRWF8qVL2X8GRUTzRbE+aptH4j3CGSJJ2E5wg
+         BKmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=T4ovA8nu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f49si14500733eda.354.2019.05.20.23.49.52
+        by mx.google.com with ESMTPS id y3si3024568ejq.153.2019.05.21.00.27.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 23:49:52 -0700 (PDT)
+        Tue, 21 May 2019 00:27:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=T4ovA8nu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([127.0.0.1]:47618 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
+Received: from localhost ([127.0.0.1]:48175 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSyat-0006t2-F3
-	for alex.bennee@linaro.org; Tue, 21 May 2019 02:49:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49146)
+	id 1hSzBR-0004js-V2
+	for alex.bennee@linaro.org; Tue, 21 May 2019 03:27:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34110)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hSyHi-00068v-Mx
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 02:30:04 -0400
+	(envelope-from <wvervoorn@eltan.com>) id 1hSzBI-0004ix-9U
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:27:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1hSyHh-0008Cs-3P
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 02:30:02 -0400
-Received: from mga09.intel.com ([134.134.136.24]:50783)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1hSyHg-0008AJ-Lp; Tue, 21 May 2019 02:30:01 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	20 May 2019 23:29:58 -0700
-X-ExtLoop1: 1
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga001.jf.intel.com with ESMTP; 20 May 2019 23:29:55 -0700
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Tue, 21 May 2019 14:28:35 +0800
-Message-Id: <20190521062836.6541-2-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190521062836.6541-1-richardw.yang@linux.intel.com>
-References: <20190521062836.6541-1-richardw.yang@linux.intel.com>
+	(envelope-from <wvervoorn@eltan.com>) id 1hSzBH-0007B4-6z
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:27:28 -0400
+Received: from cpsmtpb-ews01.kpnxchange.com ([213.75.39.4]:59494)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <wvervoorn@eltan.com>)
+	id 1hSzBC-00077J-H2; Tue, 21 May 2019 03:27:23 -0400
+Received: from cpsps-ews26.kpnxchange.com ([10.94.84.192]) by
+	cpsmtpb-ews01.kpnxchange.com with Microsoft SMTPSVC(7.5.7601.17514); 
+	Tue, 21 May 2019 09:27:18 +0200
+X-Brand: 7abm2Q==
+X-KPN-SpamVerdict: e1=0;e2=0;e3=0;e4=(e4=10;e1=10;e3=10;e2=11);EVW:Whi
+	te;BM:NotScanned;FinalVerdict:Clean
+X-CMAE-Analysis: v=2.3 cv=RugU0xuK c=1 sm=1 tr=0 cx=a_idp_e
+	a=WB5lYbMG1jvHJ1f8o08CVQ==:117 a=WB5lYbMG1jvHJ1f8o08CVQ==:17
+	a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=eIHzyqS2sMcA:10 a=IkcTkHD0fZMA:10
+	a=xqWC_Br6kY4A:10 a=E5NmQfObTbMA:10 a=aow-egSQAAAA:8 a=20KFwNOVAAAA:8
+	a=KKAkSRfTAAAA:8 a=X5F7dNyOAAAA:8 a=69wJf7TsAAAA:8
+	a=rz7K1-tS9dIF2Q5L5vwA:9 a=Qi8iTSwQ1jAtfPGZ:21 a=dNiXiHrTzfZl5jbE:21
+	a=QEXdDO2ut3YA:10 a=gFNbaldVC-z-bsjSTzMo:22 a=cvBusfyB2V15izCimMoJ:22
+	a=pS7LufLo7ZPxIL5li5Lt:22 a=Fg1AiH1G6rFz08G2ETeA:22
+X-CM-AcctID: kpn@feedback.cloudmark.com
+Received: from smtp.kpnmail.nl ([195.121.84.14]) by cpsps-ews26.kpnxchange.com
+	over TLS secured channel with Microsoft SMTPSVC(8.5.9600.16384);
+	Tue, 21 May 2019 09:27:18 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=kpnmail.nl; s=kpnmail01;
+	h=mime-version:content-type:message-id:date:subject:to:from;
+	bh=CzT8Co39mEFzGYDt/cuJo1yardRv23aflTQ4l2JQRWk=;
+	b=T4ovA8nurR1ieWeuQV35O66Q93VyE9kPEAQomE048eSrjEjAwG8M3SRrYUnQfkWZzpsRHA1OLky0Q
+	NRuBbDL3FnoowVLfeX9frSBumZKnlVn5E32+81GIIC0F254dia8kjhl4F2tDDlFfAKHmrsSQ78jA0a
+	0TWFvA1W4/IMewfU=
+Received: from Eltsrv03.Eltan.local (unknown [84.85.114.86])
+	by smtp.kpnmail.nl (Halon) with ESMTPS
+	id dd01405b-7b99-11e9-aeb7-00505699d6e5;
+	Tue, 21 May 2019 09:27:18 +0200 (CEST)
+Received: from Eltsrv03.Eltan.local (192.168.100.3) by Eltsrv03.Eltan.local
+	(192.168.100.3) with Microsoft SMTP Server (TLS) id 15.0.847.32;
+	Tue, 21 May 2019 09:27:11 +0200
+Received: from Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8]) by
+	Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8%12]) with mapi id
+	15.00.0847.040; Tue, 21 May 2019 09:26:54 +0200
+From: Wim Vervoorn <wvervoorn@eltan.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Jason Wang
+	<jasowang@redhat.com>
+Thread-Topic: [PATCH] ftgmac100: do not link to netdev
+Thread-Index: AQHVDzeM3eYrciCzgECTQUdGproJhqZ1Ll9Q
+Date: Tue, 21 May 2019 07:26:53 +0000
+Message-ID: <ce3a871593c44d248a30320febd649fd@Eltsrv03.Eltan.local>
+References: <20190520181111.20407-1-clg@kaod.org>
+In-Reply-To: <20190520181111.20407-1-clg@kaod.org>
+Accept-Language: nl-NL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.168.100.108]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.24
-Subject: [Qemu-arm] [PATCH v6 1/2] hw/acpi: Consolidate build_mcfg to pci.c
+X-OriginalArrivalTime: 21 May 2019 07:27:18.0226 (UTC)
+	FILETIME=[9EE78B20:01D50FA6]
+X-RcptDomain: nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
+X-Received-From: 213.75.39.4
+Subject: Re: [Qemu-arm] [PATCH] ftgmac100: do not link to netdev
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,211 +124,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, thuth@redhat.com,
-	mst@redhat.com, shannon.zhaosl@gmail.com,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	marcel.apfelbaum@gmail.com, imammedo@redhat.com, philmd@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EOYDFswHTb+3
+X-TUID: SysOjBXHSL8P
 
-Now we have two identical build_mcfg functions.
-
-Consolidate them in acpi/pci.c.
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-
-v4:
-  * ACPI_PCI depends on both ACPI and PCI
-  * rebase on latest master, adjust arm Kconfig
-v3:
-  * adjust changelog based on Igor's suggestion
----
- default-configs/i386-softmmu.mak |  1 +
- hw/acpi/Kconfig                  |  4 +++
- hw/acpi/Makefile.objs            |  1 +
- hw/acpi/pci.c                    | 46 ++++++++++++++++++++++++++++++++
- hw/arm/Kconfig                   |  1 +
- hw/arm/virt-acpi-build.c         | 17 ------------
- hw/i386/acpi-build.c             | 18 +------------
- include/hw/acpi/pci.h            |  1 +
- 8 files changed, 55 insertions(+), 34 deletions(-)
- create mode 100644 hw/acpi/pci.c
-
-diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
-index ba3fb3ff50..cd5ea391e8 100644
---- a/default-configs/i386-softmmu.mak
-+++ b/default-configs/i386-softmmu.mak
-@@ -25,3 +25,4 @@
- CONFIG_ISAPC=y
- CONFIG_I440FX=y
- CONFIG_Q35=y
-+CONFIG_ACPI_PCI=y
-diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index eca3beed75..7c59cf900b 100644
---- a/hw/acpi/Kconfig
-+++ b/hw/acpi/Kconfig
-@@ -23,6 +23,10 @@ config ACPI_NVDIMM
-     bool
-     depends on ACPI
- 
-+config ACPI_PCI
-+    bool
-+    depends on ACPI && PCI
-+
- config ACPI_VMGENID
-     bool
-     default y
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 2d46e3789a..661a9b8c2f 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
- common-obj-y += acpi_interface.o
- common-obj-y += bios-linker-loader.o
- common-obj-y += aml-build.o
-+common-obj-$(CONFIG_ACPI_PCI) += pci.o
- common-obj-$(CONFIG_TPM) += tpm.o
- 
- common-obj-$(CONFIG_IPMI) += ipmi.o
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-new file mode 100644
-index 0000000000..fa0fa30bb9
---- /dev/null
-+++ b/hw/acpi/pci.c
-@@ -0,0 +1,46 @@
-+/*
-+ * Support for generating PCI related ACPI tables and passing them to Guests
-+ *
-+ * Copyright (C) 2006 Fabrice Bellard
-+ * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
-+ * Copyright (C) 2013-2019 Red Hat Inc
-+ * Copyright (C) 2019 Intel Corporation
-+ *
-+ * Author: Wei Yang <richardw.yang@linux.intel.com>
-+ * Author: Michael S. Tsirkin <mst@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/aml-build.h"
-+#include "hw/acpi/pci.h"
-+#include "hw/pci/pcie_host.h"
-+
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-+{
-+    AcpiTableMcfg *mcfg;
-+    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-+
-+    mcfg = acpi_data_push(table_data, len);
-+    mcfg->allocation[0].address = cpu_to_le64(info->base);
-+
-+    /* Only a single allocation so no need to play with segments */
-+    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-+    mcfg->allocation[0].start_bus_number = 0;
-+    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
-+
-+    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-+}
-+
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index af8cffde9c..9aced9d54d 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -19,6 +19,7 @@ config ARM_VIRT
-     select PLATFORM_BUS
-     select SMBIOS
-     select VIRTIO_MMIO
-+    select ACPI_PCI
- 
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index e7c96d658e..4a64f9985c 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -546,23 +546,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
- }
- 
--static void
--build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /* GTDT */
- static void
- build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 0d78d73894..85dc1640bc 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2405,22 +2405,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                  table_data->len - srat_start, 1, NULL, NULL);
- }
- 
--static void
--build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /*
-  * VT-d spec 8.1 DMA Remapping Reporting Structure
-  * (version Oct. 2014 or later)
-@@ -2690,7 +2674,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     }
-     if (acpi_get_mcfg(&mcfg)) {
-         acpi_add_table(table_offsets, tables_blob);
--        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
-+        build_mcfg(tables_blob, tables->linker, &mcfg);
-     }
-     if (x86_iommu_get_default()) {
-         IommuType IOMMUType = x86_iommu_get_type();
-diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-index 124af7d32a..8bbd32cf45 100644
---- a/include/hw/acpi/pci.h
-+++ b/include/hw/acpi/pci.h
-@@ -30,4 +30,5 @@ typedef struct AcpiMcfgInfo {
-     uint32_t size;
- } AcpiMcfgInfo;
- 
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
- #endif
--- 
-2.19.1
-
+SGVsbG8gQ8OpZHJpYywNCg0KVGhhbmtzIGEgbG90IGZvciB5b3VyIGhlbHAuIEl0IGlzIHdvcmtp
+bmcgbm93IQ0KDQpCZXN0IFJlZ2FyZHMsDQpXaW0gVmVydm9vcm4NCg0KDQoNCiJUSElTIE1FU1NB
+R0UgQ09OVEFJTlMgQ09ORklERU5USUFMIElORk9STUFUSU9OLiBVTkxFU1MgWU9VIEFSRSBUSEUg
+SU5URU5ERUQgUkVDSVBJRU5UIE9GIFRISVMgTUVTU0FHRSwgQU5ZIFVTRSBPRiBUSElTIE1FU1NB
+R0UgSVMgU1RSSUNUTFkgUFJPSElCSVRFRC4gSUYgWU9VIEhBVkUgUkVDRUlWRUQgVEhJUyBNRVNT
+QUdFIElOIEVSUk9SLCBQTEVBU0UgSU1NRURJQVRFTFkgTk9USUZZIFRIRSBTRU5ERVIgQlkgVEVM
+RVBIT05FICszMS0oMCk3My01OTQ0NjY0IE9SIFJFUExZIEVNQUlMLCBBTkQgSU1NRURJQVRFTFkg
+REVMRVRFIFRISVMgTUVTU0FHRSBBTkQgQUxMIENPUElFUy4iwqANCg0KLS0tLS1PcmlnaW5hbCBN
+ZXNzYWdlLS0tLS0NCkZyb206IEPDqWRyaWMgTGUgR29hdGVyIFttYWlsdG86Y2xnQGthb2Qub3Jn
+XSANClNlbnQ6IE1vbmRheSwgTWF5IDIwLCAyMDE5IDg6MTEgUE0NClRvOiBKYXNvbiBXYW5nIDxq
+YXNvd2FuZ0ByZWRoYXQuY29tPg0KQ2M6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGlu
+YXJvLm9yZz47IFdpbSBWZXJ2b29ybiA8d3ZlcnZvb3JuQGVsdGFuLmNvbT47IEFuZHJldyBKZWZm
+ZXJ5IDxhbmRyZXdAYWouaWQuYXU+OyBKb2VsIFN0YW5sZXkgPGpvZWxAam1zLmlkLmF1PjsgcWVt
+dS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBDw6lkcmljIExlIEdvYXRl
+ciA8Y2xnQGthb2Qub3JnPg0KU3ViamVjdDogW1BBVENIXSBmdGdtYWMxMDA6IGRvIG5vdCBsaW5r
+IHRvIG5ldGRldg0KDQpxZGV2X3NldF9uaWNfcHJvcGVydGllcygpIGlzIGFscmVhZHkgdXNlZCBp
+biB0aGUgQXNwZWVkIFNvQyBsZXZlbCB0byBiaW5kIHRoZSBmdGdtYWMxMDAgZGV2aWNlIHRvIHRo
+ZSBuZXRkZXYuDQoNClRoaXMgaXMgZml4aW5nIHN1cHBvcnQgZm9yIG11bHRpcGxlIG5ldCBkZXZp
+Y2VzLg0KDQpTaWduZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0K
+LS0tDQogaHcvbmV0L2Z0Z21hYzEwMC5jIHwgMiAtLQ0KIDEgZmlsZSBjaGFuZ2VkLCAyIGRlbGV0
+aW9ucygtKQ0KDQpkaWZmIC0tZ2l0IGEvaHcvbmV0L2Z0Z21hYzEwMC5jIGIvaHcvbmV0L2Z0Z21h
+YzEwMC5jIGluZGV4IDc5MDQzMDM0NmI1MS4uZDk5ODZjNmJhYTkyIDEwMDY0NA0KLS0tIGEvaHcv
+bmV0L2Z0Z21hYzEwMC5jDQorKysgYi9ody9uZXQvZnRnbWFjMTAwLmMNCkBAIC0xMDE2LDggKzEw
+MTYsNiBAQCBzdGF0aWMgdm9pZCBmdGdtYWMxMDBfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBF
+cnJvciAqKmVycnApDQogICAgIHN5c2J1c19pbml0X2lycShzYmQsICZzLT5pcnEpOw0KICAgICBx
+ZW11X21hY2FkZHJfZGVmYXVsdF9pZl91bnNldCgmcy0+Y29uZi5tYWNhZGRyKTsNCiANCi0gICAg
+cy0+Y29uZi5wZWVycy5uY3NbMF0gPSBuZF90YWJsZVswXS5uZXRkZXY7DQotDQogICAgIHMtPm5p
+YyA9IHFlbXVfbmV3X25pYygmbmV0X2Z0Z21hYzEwMF9pbmZvLCAmcy0+Y29uZiwNCiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIG9iamVjdF9nZXRfdHlwZW5hbWUoT0JKRUNUKGRldikpLCBERVZJ
+Q0UoZGV2KS0+aWQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBzKTsNCi0tDQoyLjIwLjEN
+Cg0KDQoNCg==

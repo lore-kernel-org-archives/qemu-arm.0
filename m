@@ -1,79 +1,145 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1091444wrg;
-        Tue, 21 May 2019 00:34:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx8TfI9g6eC7/wMuOBvAtLtKVLKVUgovo7n614DnZVDmzOhKTb+GDMB8nS/XPlm7qmYatFq
-X-Received: by 2002:a17:906:5048:: with SMTP id e8mr7349606ejk.91.1558424085526;
-        Tue, 21 May 2019 00:34:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558424085; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1174574wrg;
+        Tue, 21 May 2019 02:23:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyqiNsFitgFedVfUH3IH0wLQV9+bFqJw9kJF1oXIfzXX2LHxn4qMDlIPGZ8sfpoUdjXJAYB
+X-Received: by 2002:a50:fa90:: with SMTP id w16mr81335860edr.184.1558430594777;
+        Tue, 21 May 2019 02:23:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558430594; cv=none;
         d=google.com; s=arc-20160816;
-        b=jIkQiaFBzu6R3RqPUrPs2F2eTblfgV+ktscqXbxPX3poAhjEz8Yxt6W/LaPEi5k+M/
-         SAKy2kEGh5TTrVL+FAK4xmQ/YFjpvL1dYMjdQjoeKuCE8LJsXXZBpY8p5ggMhOuUhBvb
-         sJ1avv5etWnLgJEypMORAatC7luptAzbdpkpHKJ347ai1G+B3p8LZW7a5hf4tMIQcpyA
-         poWN7bdbDWaagek9ulxp5wWxkxFf4ELDR7tDCrl57oNUEK61fDgOY4PvC40P6MfOVmT5
-         GkWW2Q9C2GC0OBBjr8XeBepuE6EwldWN/UAUrBu0tWmZefjwmGF61ciy42/DucC3333U
-         PEZQ==
+        b=0ueF3qlmiCcvX21uB2S9yB9yO0utyoC/NXuT0NB2oU+PJKqVU4HcmyWwDAa3UvMhCJ
+         azgrNYgz1/R3TwIrhvPNXJD2xLZSkLPl9/AzcZHmEq6WDl3KslRLGC1jTlBTOlg6VWkm
+         9P7q7anXMEwxaR6g3cRrH6OcmD+gieXVvrncZvX5e1lbVyfyWVxupS5qnFZr8GhBQs/n
+         7QdTVFyUwQf7mdGCiNMLuY/ukl4K+ugoiXc4UCKz6HpsKbDMd9eUWinfE8LoQ76jgRLC
+         2tvVEA/mzS8Ydyg9OsY7Fatgs08JtV7fViDPV9y5QfDbj7sArJ0grjeEZaJAyNHUtjZh
+         UqcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=+WaH4SO5SMJoFoYxfLmng7WoLuQbUpVRQzVhedHZfYQ=;
-        b=U5GX59r6itsLUVjO1qZkbYLkJ6hyEDe3FDWswGJzct2P84vsNhPnPe7xbEu2ySAeHc
-         ySiT/2BWbAQtXXcIyeVrxAY+GeuYb2bcHoYR4HF2fhbxxSWDdm8QxSt/H+nCsHk/abe2
-         y1xd2VqsQH52/f8HmuVyIHUtFefQsKu8ijiXPwrC2l8+kT1Z/s2bTJaBSU5X7gn1b63M
-         1nv/xfKCQdeQHut+Yd0FSApo0nobRuu6A2RB28T3XdhgOPTmVf76wlsi6aSW2wLgLxr0
-         zY3zuCGzPIcppmPrGwAT/FZWoay4QRVA/p2WQvdvrjPQ/FjXt//H1QA7p3XxjYe7v4Lx
-         a4ew==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from:dkim-signature;
+        bh=YlblJNkMn5MjaXo/R2ltSJBXT1bMXlFgqBD3cZkU6Gw=;
+        b=dlp5yrmxLySk0GQsu6WTOnP6+oQ0G5/RSA3r0fvAfwaFNuD6C7z/4vUvHdFBnNDnVP
+         35zg3dtll3ACNMqKG5rPoOygxP7gIN2s/AexUz/NyT+I/MBA8MvVVn56qK3NN39gls/9
+         sdlPFZzEx3XeiQQqpZJY/5tMOsHeqUOzGkw05ZaEDSN4+nzR5Hd8wAUZOGYcM/8ZkJM1
+         IU13yiDqEdygqF3ti+gkyejVSBMz0IHPJhd7AlQAXYgdgZ1iP2DkfZ+0TgvRjhNvtirR
+         yTTrKq59wSAeyRzm/qOCUAQiuPy10XBvG3iw396xHiYTKuqlwqZW6j/H1bhwqE7mzrU0
+         /B1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@st.com header.s=STMicroelectronics header.b=ZTLpZkt9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y55si4075659edc.231.2019.05.21.00.34.45
+        by mx.google.com with ESMTPS id o14si3773048ejz.221.2019.05.21.02.23.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 May 2019 00:34:45 -0700 (PDT)
+        Tue, 21 May 2019 02:23:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:48243 helo=lists.gnu.org)
+       dkim=fail header.i=@st.com header.s=STMicroelectronics header.b=ZTLpZkt9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:49994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSzIK-0006zV-I0
-	for alex.bennee@linaro.org; Tue, 21 May 2019 03:34:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35429)
+	id 1hT0zJ-0007vk-NE
+	for alex.bennee@linaro.org; Tue, 21 May 2019 05:23:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37051)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1hSzI3-0006oi-Hf
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:34:28 -0400
+	(envelope-from <torbjorn.svensson@st.com>) id 1hT0yj-0007i6-I9
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 05:22:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1hSzI2-0002rO-Gr
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:34:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39962)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1hSzI2-0002ZJ-BJ; Tue, 21 May 2019 03:34:26 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6844D7FDC9;
-	Tue, 21 May 2019 07:33:55 +0000 (UTC)
-Received: from thinkpad.redhat.com (unknown [10.40.205.57])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BDD621001E6F;
-	Tue, 21 May 2019 07:33:49 +0000 (UTC)
-From: Laurent Vivier <lvivier@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 21 May 2019 09:33:48 +0200
-Message-Id: <20190521073348.29657-1-lvivier@redhat.com>
+	(envelope-from <torbjorn.svensson@st.com>) id 1hT0yi-00005r-I4
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 05:22:37 -0400
+Received: from mx08-00178001.pphosted.com ([91.207.212.93]:14510
+	helo=mx07-00178001.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <torbjorn.svensson@st.com>)
+	id 1hT0yf-0008SV-HX; Tue, 21 May 2019 05:22:34 -0400
+Received: from pps.filterd (m0046660.ppops.net [127.0.0.1])
+	by mx08-00178001.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x4L97hIw017771; Tue, 21 May 2019 11:22:25 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=st.com;
+	h=from : to : cc : subject
+	: date : message-id : references : in-reply-to : content-type :
+	content-transfer-encoding : mime-version; s=STMicroelectronics;
+	bh=YlblJNkMn5MjaXo/R2ltSJBXT1bMXlFgqBD3cZkU6Gw=;
+	b=ZTLpZkt9n+fyjouJQJmeyMAHQqufnwAZgbXmdxBRIkezCECAFucas6AQHDJTwdd3OAtu
+	ZIxVhC95M7LveV7Go4QiakgAk7RhMjAoz3Ih6f5c91M8A9Spuxgcz3G969ZH1AOkPd5r
+	AWhiAAITx/wu0stJMrhrnlHBptkLdZLmmD9zE073M/DRhv4tgxFD7EcUFDTS4fOyFFkx
+	VfW99+exwvTTIWihsMqYwFAwCibeD4sCoe64FrpPHzN05RSdmu7DBl5931y2QIYeJy09
+	j9wrjWmGR5jm+O5X+GuxPPztMn6XvwT9q8du8k+SRcT9mhlLf+ZyISvZanXVw3QFPq0W
+	3A== 
+Received: from eur01-db5-obe.outbound.protection.outlook.com
+	(mail-db5eur01lp2055.outbound.protection.outlook.com [104.47.2.55])
+	by mx08-00178001.pphosted.com with ESMTP id 2sj7740shm-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+	Tue, 21 May 2019 11:22:06 +0200
+Received: from AM6PR10MB2504.EURPRD10.PROD.OUTLOOK.COM (20.177.116.145) by
+	AM6SPR01MB0039.EURPRD10.PROD.OUTLOOK.COM (20.178.86.10) with Microsoft
+	SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1900.18; Tue, 21 May 2019 09:21:47 +0000
+Received: from AM6PR10MB2504.EURPRD10.PROD.OUTLOOK.COM
+	([fe80::9435:11d7:741e:719a]) by
+	AM6PR10MB2504.EURPRD10.PROD.OUTLOOK.COM
+	([fe80::9435:11d7:741e:719a%6]) with mapi id 15.20.1900.020;
+	Tue, 21 May 2019 09:21:46 +0000
+From: Torbjorn SVENSSON <torbjorn.svensson@st.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: [Qemu-arm] [PATCH] target/arm: Fix broken VQADD and VQSUB
+	causing abort
+Thread-Index: AdUMxY0RShgfpEqqTEGIfg5CjmaqVAAB2h+AALpcmHA=
+Date: Tue, 21 May 2019 09:21:46 +0000
+Message-ID: <AM6PR10MB2504E67988D276CB7C070F7781070@AM6PR10MB2504.EURPRD10.PROD.OUTLOOK.COM>
+References: <VI1PR10MB204723BF7D62501F0339242A810B0@VI1PR10MB2047.EURPRD10.PROD.OUTLOOK.COM>
+	<CAFEAcA9_oe2NTnyb9ce_hH5jaaTt=V4-iOzC3a5Un8k1TUWHzw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9_oe2NTnyb9ce_hH5jaaTt=V4-iOzC3a5Un8k1TUWHzw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [165.225.76.71]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 2bed480a-fcd5-4e15-f061-08d6ddcdbf77
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(2017052603328)(7193020);
+	SRVR:AM6SPR01MB0039; 
+x-ms-traffictypediagnostic: AM6SPR01MB0039:
+x-ms-exchange-purlcount: 1
+x-microsoft-antispam-prvs: <AM6SPR01MB00393DCF043C24B8BCAD8C6481070@AM6SPR01MB0039.EURPRD10.PROD.OUTLOOK.COM>
+x-ms-oob-tlc-oobclassifiers: OLM:1284;
+x-forefront-prvs: 0044C17179
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10009020)(346002)(366004)(136003)(396003)(39860400002)(376002)(189003)(51914003)(13464003)(199004)(6916009)(76176011)(55016002)(9686003)(316002)(86362001)(74316002)(7696005)(102836004)(55236004)(99286004)(68736007)(54906003)(6306002)(6506007)(53546011)(4326008)(53936002)(6246003)(25786009)(966005)(478600001)(2906002)(14454004)(3846002)(6116002)(71200400001)(71190400001)(446003)(11346002)(256004)(73956011)(66476007)(66556008)(66446008)(66946007)(64756008)(33656002)(76116006)(476003)(5660300002)(186003)(66066001)(52536014)(26005)(8936002)(6436002)(229853002)(81166006)(81156014)(486006)(7736002)(305945005)(8676002);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:AM6SPR01MB0039;
+	H:AM6PR10MB2504.EURPRD10.PROD.OUTLOOK.COM; FPR:; SPF:None;
+	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: st.com does not designate
+	permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: OCZyl+p6lCM7rsGqfxUABtQkNMCNmT0zCtG44+LxG++6hdst8oSXSEx52kc1f8Awtd9G/AN/G4rqxgX8xuM0ZOIE2KgHoGH+CGJz1yOV9RQ7OnNUkx3Q09lSlWSC2oFv4DRs7IyRM2PXlvd6zyso4ynkftfkZleBYUTdLTEWyahUGmcs4cC/ljh9WkOH9HfoZp3sFgpoqJnfi7wn7vig/+q3symOdP5Mc0AR7xs1nERPa5OKxTC8I8OG2bcuDYf05B87FnfQNOcb4IA2l5lBnWF0TwNTWieNA2HaoIOLKhad1Wn8tagCyULnSDk/KqOcH4fe+O90Vaek1KZhONGiuIozTmMSVTOSeS0nwUuHrS982ubWRMP8b7HYXYl98DaLYBq1Um35zeZx/kL35T+c6O2l+icr9Qn4jfYtYA9zdRo=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 21 May 2019 07:34:10 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2] numa: improve cpu hotplug error message with
- a wrong node-id
+X-OriginatorOrg: ST.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2bed480a-fcd5-4e15-f061-08d6ddcdbf77
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2019 09:21:46.8737 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6SPR01MB0039
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-05-21_01:, , signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+	priorityscore=1501 malwarescore=0
+	suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+	lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999
+	adultscore=0
+	classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+	definitions=main-1905210059
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 91.207.212.93
+Subject: Re: [Qemu-arm] [PATCH] target/arm: Fix broken VQADD and VQSUB
+ causing abort
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,93 +151,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Samuel HULTGREN <samuel.hultgren@st.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g47pXfzfmFTf
+X-TUID: CrmddFhU/HZ/
 
-On pseries, core-ids are strongly binded to a node-id by the command
-line option. If an user tries to add a CPU to the wrong node, he has
-an error but it is not really helpful:
-
-  qemu-system-ppc64 ... -smp 1,maxcpus=3D64,cores=3D1,threads=3D1,sockets=
-=3D1 \
-                        -numa node,nodeid=3D0 -numa node,nodeid=3D1 ...
-
-  (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=3D30,node-id=3D1
-  Error: node-id=3D1 must match numa node specified with -numa option
-
-This patch improves this error message by giving to the user the good
-topology information (node-id, socket-id and thread-id if they are
-available) to use with the core-id he's providing:
-
-  Error: core-id 30 can only be plugged into node-id 0
-
-Signed-off-by: Laurent Vivier <lvivier@redhat.com>
----
-
-Notes:
-    v2: display full topology in the error message
-
- numa.c | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
-
-diff --git a/numa.c b/numa.c
-index 3875e1efda3a..7413f821e2bb 100644
---- a/numa.c
-+++ b/numa.c
-@@ -458,6 +458,27 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **err=
-p)
-     set_numa_options(MACHINE(qdev_get_machine()), cmd, errp);
- }
-=20
-+static char *cpu_topology_to_string(const CPUArchId *cpu)
-+{
-+    GString *s =3D g_string_new(NULL);
-+    if (cpu->props.has_socket_id) {
-+        g_string_append_printf(s, "socket-id %"PRId64, cpu->props.socket=
-_id);
-+    }
-+    if (cpu->props.has_node_id) {
-+        if (s->len) {
-+            g_string_append_printf(s, ", ");
-+        }
-+        g_string_append_printf(s, "node-id %"PRId64, cpu->props.node_id)=
-;
-+    }
-+    if (cpu->props.has_thread_id) {
-+        if (s->len) {
-+            g_string_append_printf(s, ", ");
-+        }
-+        g_string_append_printf(s, "thread-id %"PRId64, cpu->props.thread=
-_id);
-+    }
-+    return g_string_free(s, false);
-+}
-+
- void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **=
-errp)
- {
-     int node_id =3D object_property_get_int(OBJECT(dev), "node-id", &err=
-or_abort);
-@@ -470,8 +491,11 @@ void numa_cpu_pre_plug(const CPUArchId *slot, Device=
-State *dev, Error **errp)
-                                     "node-id", errp);
-         }
-     } else if (node_id !=3D slot->props.node_id) {
--        error_setg(errp, "node-id=3D%d must match numa node specified "
--                   "with -numa option", node_id);
-+        char *topology =3D cpu_topology_to_string(slot);
-+        error_setg(errp,
-+                   "core-id %"PRId64" can only be plugged into %s",
-+                   slot->props.core_id, topology);
-+        g_free(topology);
-     }
- }
-=20
---=20
-2.20.1
-
+SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgdGhlIGZhc3QgcmVzcG9uc2UhDQpHcmVhdCB0byBoZWFy
+IHRoYXQgYSBwYXRjaCBmb3IgdGhlIGlzc3VlIGlzIG9uIGl0cyB3YXkgaW50byBtYXN0ZXIuIA0K
+DQpLaW5kIHJlZ2FyZHMsDQpUb3JiasO2cm4NCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0N
+CkZyb206IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4gDQpTZW50OiBk
+ZW4gMTcgbWFqIDIwMTkgMTg6MjQNClRvOiBUb3Jiam9ybiBTVkVOU1NPTiA8dG9yYmpvcm4uc3Zl
+bnNzb25Ac3QuY29tPg0KQ2M6IHFlbXUtYXJtQG5vbmdudS5vcmc7IFNhbXVlbCBIVUxUR1JFTiA8
+c2FtdWVsLmh1bHRncmVuQHN0LmNvbT47IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KU3ViamVjdDog
+UmU6IFtRZW11LWFybV0gW1BBVENIXSB0YXJnZXQvYXJtOiBGaXggYnJva2VuIFZRQUREIGFuZCBW
+UVNVQiBjYXVzaW5nIGFib3J0DQoNCk9uIEZyaSwgMTcgTWF5IDIwMTkgYXQgMTc6MDQsIFRvcmJq
+b3JuIFNWRU5TU09OIDx0b3Jiam9ybi5zdmVuc3NvbkBzdC5jb20+IHdyb3RlOg0KPg0KPiBJbiBj
+b21taXQgODllNjhiNTc1ZTEzOGQwYWYxNDM1ZjExYThmZmNkODc3OWMyMzdiZCwgdGhlIGhhbmRs
+aW5nIG9mIA0KPiBWUUFERCBhbmQgVlFTVUIgd2FzIGNoYW5nZWQgZm9yIENvcnRleC1BIGFuZCB0
+aGUgbmV3IGhhbmRsaW5nIGRvZXMgbm90IA0KPiByZXR1cm4gcHJvcGVybHkgYWZ0ZXIgY2FsbGlu
+ZyB0Y2dfZ2VuX2d2ZWNfNCgpLCB0aHVzIHRoZSBjb2RlIGFmdGVyIGlzIA0KPiBleGVjdXRlZCBh
+bmQgdGhhdCBkb2VzIG5vdCBrbm93IGFib3V0IHRoZSBWUUFERCBvciBWUVNVQiBpbnN0cnVjdGlv
+bnMgDQo+IGFuZCBjYWxscyBhYm9ydC4NCj4NCj4gRGV0ZWN0ZWQgcnVubmluZyBHQ0MgdGVzdHN1
+aXRlIGZvciBDb3J0ZXgtQTcgYW5kIGV4ZWN1dGluZyB0aGUgdGVzdHMgDQo+IGluIFFFTVUgdXNp
+bmcgQ29ydGV4LUExNSBzaW5jZSBDb3J0ZXgtQTcgYW5kIENvcnRleC1BMTUgaGF2ZSBzaW1pbGFy
+IA0KPiBpbnN0cnVjdGlvbiBzZXQuDQo+DQo+IFNpZ25lZC1vZmYtYnk6IFRvcmJqw7ZybiBTVkVO
+U1NPTiA8dG9yYmpvcm4uc3ZlbnNzb25Ac3QuY29tPg0KDQpIaSBUb3Jiam9ybjsgdGhhbmtzIGZv
+ciB0aGlzIHBhdGNoLiBBcyBpdCBoYXBwZW5zIHRoZXJlJ3MgYWxyZWFkeSBhIGZpeCBmb3IgdGhp
+cyBvbiBsaXN0Og0KIGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0Y2gvMTEwMDY0NS8N
+CnNvIGl0IHNob3VsZCBnZXQgaW50byBnaXQgbWFzdGVyIHNvbWUgdGltZSBuZXh0IHdlZWsuDQoN
+CnRoYW5rcw0KLS0gUE1NDQo=

@@ -1,118 +1,79 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1085875wrg;
-        Tue, 21 May 2019 00:27:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGcsWOyUvTtkidn8xxmLe/Vl0oHfe61E7axI1p3SEAAsCYP9yJJrFQUiHjY3+J1/z23k4W
-X-Received: by 2002:a50:982f:: with SMTP id g44mr81439692edb.278.1558423658864;
-        Tue, 21 May 2019 00:27:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558423658; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1091444wrg;
+        Tue, 21 May 2019 00:34:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8TfI9g6eC7/wMuOBvAtLtKVLKVUgovo7n614DnZVDmzOhKTb+GDMB8nS/XPlm7qmYatFq
+X-Received: by 2002:a17:906:5048:: with SMTP id e8mr7349606ejk.91.1558424085526;
+        Tue, 21 May 2019 00:34:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558424085; cv=none;
         d=google.com; s=arc-20160816;
-        b=esHqInvdrXqNUeFumNiHFGf9V81xPWiXlOIKSN1rwOLcjpv+9e4FJVqFxN+x6eNX+7
-         Z3WCNHCFswu2viNmCb4v8BjSL81hqYXarqtQrVz/ZTFldpk0O8wN+88DRfkwapobxYe4
-         m4e+TZRNPeF4ag3dp+JabTIYzw1pafJ9eCNQgnnd9jdLuoY6Jn/i7dNzv16SfRorgw3u
-         LK17JwZa0GA1AtqZsGG7bc2jKc5wPOVyJ2bS2ZFuVwDlAAgXp00v+wbL/RMHathg07y8
-         4ktg3IqpJiUUukS96t4nRiii7614zTak2ZNHy66LgBxdEEksfYdg2SuWnDB88MdLovzR
-         /05Q==
+        b=jIkQiaFBzu6R3RqPUrPs2F2eTblfgV+ktscqXbxPX3poAhjEz8Yxt6W/LaPEi5k+M/
+         SAKy2kEGh5TTrVL+FAK4xmQ/YFjpvL1dYMjdQjoeKuCE8LJsXXZBpY8p5ggMhOuUhBvb
+         sJ1avv5etWnLgJEypMORAatC7luptAzbdpkpHKJ347ai1G+B3p8LZW7a5hf4tMIQcpyA
+         poWN7bdbDWaagek9ulxp5wWxkxFf4ELDR7tDCrl57oNUEK61fDgOY4PvC40P6MfOVmT5
+         GkWW2Q9C2GC0OBBjr8XeBepuE6EwldWN/UAUrBu0tWmZefjwmGF61ciy42/DucC3333U
+         PEZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from:dkim-signature;
-        bh=CzT8Co39mEFzGYDt/cuJo1yardRv23aflTQ4l2JQRWk=;
-        b=t7+ZDnSopGy9+fxKbcB9pbmh/Rlkh8m4AgwvqZFpaFhyv7Bbanx6BuN85dchw75Iep
-         GZwr0Y/HEr4hf1B9b4QL/P+L4gjJWO2jnDJ1aPD5j3DP/qdwLYxDNe9rfsvPw1Z0Jc+5
-         pqyyhAS2BsxiCTE7D2paWn6OmxTWg2iW9X9WJp4XxhskJIz/5kH7e6DXQcIzHFNTSkvb
-         Ssy0xHwKa37uKYQSSQbFVy/9PcAxuqwKIaySzOeo00WW2ESmqyRVVwp+dOVwGuzdggYC
-         ZS74VXAp83aWKeiNDzYsovRofpAf81noRWF8qVL2X8GRUTzRbE+aptH4j3CGSJJ2E5wg
-         BKmQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=+WaH4SO5SMJoFoYxfLmng7WoLuQbUpVRQzVhedHZfYQ=;
+        b=U5GX59r6itsLUVjO1qZkbYLkJ6hyEDe3FDWswGJzct2P84vsNhPnPe7xbEu2ySAeHc
+         ySiT/2BWbAQtXXcIyeVrxAY+GeuYb2bcHoYR4HF2fhbxxSWDdm8QxSt/H+nCsHk/abe2
+         y1xd2VqsQH52/f8HmuVyIHUtFefQsKu8ijiXPwrC2l8+kT1Z/s2bTJaBSU5X7gn1b63M
+         1nv/xfKCQdeQHut+Yd0FSApo0nobRuu6A2RB28T3XdhgOPTmVf76wlsi6aSW2wLgLxr0
+         zY3zuCGzPIcppmPrGwAT/FZWoay4QRVA/p2WQvdvrjPQ/FjXt//H1QA7p3XxjYe7v4Lx
+         a4ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=T4ovA8nu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si3024568ejq.153.2019.05.21.00.27.38
+        by mx.google.com with ESMTPS id y55si4075659edc.231.2019.05.21.00.34.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 May 2019 00:27:38 -0700 (PDT)
+        Tue, 21 May 2019 00:34:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=T4ovA8nu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
-Received: from localhost ([127.0.0.1]:48175 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:48243 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hSzBR-0004js-V2
-	for alex.bennee@linaro.org; Tue, 21 May 2019 03:27:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34110)
+	id 1hSzIK-0006zV-I0
+	for alex.bennee@linaro.org; Tue, 21 May 2019 03:34:44 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35429)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hSzBI-0004ix-9U
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:27:29 -0400
+	(envelope-from <lvivier@redhat.com>) id 1hSzI3-0006oi-Hf
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:34:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hSzBH-0007B4-6z
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:27:28 -0400
-Received: from cpsmtpb-ews01.kpnxchange.com ([213.75.39.4]:59494)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>)
-	id 1hSzBC-00077J-H2; Tue, 21 May 2019 03:27:23 -0400
-Received: from cpsps-ews26.kpnxchange.com ([10.94.84.192]) by
-	cpsmtpb-ews01.kpnxchange.com with Microsoft SMTPSVC(7.5.7601.17514); 
-	Tue, 21 May 2019 09:27:18 +0200
-X-Brand: 7abm2Q==
-X-KPN-SpamVerdict: e1=0;e2=0;e3=0;e4=(e4=10;e1=10;e3=10;e2=11);EVW:Whi
-	te;BM:NotScanned;FinalVerdict:Clean
-X-CMAE-Analysis: v=2.3 cv=RugU0xuK c=1 sm=1 tr=0 cx=a_idp_e
-	a=WB5lYbMG1jvHJ1f8o08CVQ==:117 a=WB5lYbMG1jvHJ1f8o08CVQ==:17
-	a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=eIHzyqS2sMcA:10 a=IkcTkHD0fZMA:10
-	a=xqWC_Br6kY4A:10 a=E5NmQfObTbMA:10 a=aow-egSQAAAA:8 a=20KFwNOVAAAA:8
-	a=KKAkSRfTAAAA:8 a=X5F7dNyOAAAA:8 a=69wJf7TsAAAA:8
-	a=rz7K1-tS9dIF2Q5L5vwA:9 a=Qi8iTSwQ1jAtfPGZ:21 a=dNiXiHrTzfZl5jbE:21
-	a=QEXdDO2ut3YA:10 a=gFNbaldVC-z-bsjSTzMo:22 a=cvBusfyB2V15izCimMoJ:22
-	a=pS7LufLo7ZPxIL5li5Lt:22 a=Fg1AiH1G6rFz08G2ETeA:22
-X-CM-AcctID: kpn@feedback.cloudmark.com
-Received: from smtp.kpnmail.nl ([195.121.84.14]) by cpsps-ews26.kpnxchange.com
-	over TLS secured channel with Microsoft SMTPSVC(8.5.9600.16384);
-	Tue, 21 May 2019 09:27:18 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=kpnmail.nl; s=kpnmail01;
-	h=mime-version:content-type:message-id:date:subject:to:from;
-	bh=CzT8Co39mEFzGYDt/cuJo1yardRv23aflTQ4l2JQRWk=;
-	b=T4ovA8nurR1ieWeuQV35O66Q93VyE9kPEAQomE048eSrjEjAwG8M3SRrYUnQfkWZzpsRHA1OLky0Q
-	NRuBbDL3FnoowVLfeX9frSBumZKnlVn5E32+81GIIC0F254dia8kjhl4F2tDDlFfAKHmrsSQ78jA0a
-	0TWFvA1W4/IMewfU=
-Received: from Eltsrv03.Eltan.local (unknown [84.85.114.86])
-	by smtp.kpnmail.nl (Halon) with ESMTPS
-	id dd01405b-7b99-11e9-aeb7-00505699d6e5;
-	Tue, 21 May 2019 09:27:18 +0200 (CEST)
-Received: from Eltsrv03.Eltan.local (192.168.100.3) by Eltsrv03.Eltan.local
-	(192.168.100.3) with Microsoft SMTP Server (TLS) id 15.0.847.32;
-	Tue, 21 May 2019 09:27:11 +0200
-Received: from Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8]) by
-	Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8%12]) with mapi id
-	15.00.0847.040; Tue, 21 May 2019 09:26:54 +0200
-From: Wim Vervoorn <wvervoorn@eltan.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Jason Wang
-	<jasowang@redhat.com>
-Thread-Topic: [PATCH] ftgmac100: do not link to netdev
-Thread-Index: AQHVDzeM3eYrciCzgECTQUdGproJhqZ1Ll9Q
-Date: Tue, 21 May 2019 07:26:53 +0000
-Message-ID: <ce3a871593c44d248a30320febd649fd@Eltsrv03.Eltan.local>
-References: <20190520181111.20407-1-clg@kaod.org>
-In-Reply-To: <20190520181111.20407-1-clg@kaod.org>
-Accept-Language: nl-NL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.100.108]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <lvivier@redhat.com>) id 1hSzI2-0002rO-Gr
+	for qemu-arm@nongnu.org; Tue, 21 May 2019 03:34:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39962)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
+	id 1hSzI2-0002ZJ-BJ; Tue, 21 May 2019 03:34:26 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6844D7FDC9;
+	Tue, 21 May 2019 07:33:55 +0000 (UTC)
+Received: from thinkpad.redhat.com (unknown [10.40.205.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BDD621001E6F;
+	Tue, 21 May 2019 07:33:49 +0000 (UTC)
+From: Laurent Vivier <lvivier@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 21 May 2019 09:33:48 +0200
+Message-Id: <20190521073348.29657-1-lvivier@redhat.com>
 MIME-Version: 1.0
-X-OriginalArrivalTime: 21 May 2019 07:27:18.0226 (UTC)
-	FILETIME=[9EE78B20:01D50FA6]
-X-RcptDomain: nongnu.org
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 213.75.39.4
-Subject: Re: [Qemu-arm] [PATCH] ftgmac100: do not link to netdev
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 21 May 2019 07:34:10 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2] numa: improve cpu hotplug error message with
+ a wrong node-id
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,41 +85,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SysOjBXHSL8P
+X-TUID: g47pXfzfmFTf
 
-SGVsbG8gQ8OpZHJpYywNCg0KVGhhbmtzIGEgbG90IGZvciB5b3VyIGhlbHAuIEl0IGlzIHdvcmtp
-bmcgbm93IQ0KDQpCZXN0IFJlZ2FyZHMsDQpXaW0gVmVydm9vcm4NCg0KDQoNCiJUSElTIE1FU1NB
-R0UgQ09OVEFJTlMgQ09ORklERU5USUFMIElORk9STUFUSU9OLiBVTkxFU1MgWU9VIEFSRSBUSEUg
-SU5URU5ERUQgUkVDSVBJRU5UIE9GIFRISVMgTUVTU0FHRSwgQU5ZIFVTRSBPRiBUSElTIE1FU1NB
-R0UgSVMgU1RSSUNUTFkgUFJPSElCSVRFRC4gSUYgWU9VIEhBVkUgUkVDRUlWRUQgVEhJUyBNRVNT
-QUdFIElOIEVSUk9SLCBQTEVBU0UgSU1NRURJQVRFTFkgTk9USUZZIFRIRSBTRU5ERVIgQlkgVEVM
-RVBIT05FICszMS0oMCk3My01OTQ0NjY0IE9SIFJFUExZIEVNQUlMLCBBTkQgSU1NRURJQVRFTFkg
-REVMRVRFIFRISVMgTUVTU0FHRSBBTkQgQUxMIENPUElFUy4iwqANCg0KLS0tLS1PcmlnaW5hbCBN
-ZXNzYWdlLS0tLS0NCkZyb206IEPDqWRyaWMgTGUgR29hdGVyIFttYWlsdG86Y2xnQGthb2Qub3Jn
-XSANClNlbnQ6IE1vbmRheSwgTWF5IDIwLCAyMDE5IDg6MTEgUE0NClRvOiBKYXNvbiBXYW5nIDxq
-YXNvd2FuZ0ByZWRoYXQuY29tPg0KQ2M6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGlu
-YXJvLm9yZz47IFdpbSBWZXJ2b29ybiA8d3ZlcnZvb3JuQGVsdGFuLmNvbT47IEFuZHJldyBKZWZm
-ZXJ5IDxhbmRyZXdAYWouaWQuYXU+OyBKb2VsIFN0YW5sZXkgPGpvZWxAam1zLmlkLmF1PjsgcWVt
-dS1hcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBDw6lkcmljIExlIEdvYXRl
-ciA8Y2xnQGthb2Qub3JnPg0KU3ViamVjdDogW1BBVENIXSBmdGdtYWMxMDA6IGRvIG5vdCBsaW5r
-IHRvIG5ldGRldg0KDQpxZGV2X3NldF9uaWNfcHJvcGVydGllcygpIGlzIGFscmVhZHkgdXNlZCBp
-biB0aGUgQXNwZWVkIFNvQyBsZXZlbCB0byBiaW5kIHRoZSBmdGdtYWMxMDAgZGV2aWNlIHRvIHRo
-ZSBuZXRkZXYuDQoNClRoaXMgaXMgZml4aW5nIHN1cHBvcnQgZm9yIG11bHRpcGxlIG5ldCBkZXZp
-Y2VzLg0KDQpTaWduZWQtb2ZmLWJ5OiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0K
-LS0tDQogaHcvbmV0L2Z0Z21hYzEwMC5jIHwgMiAtLQ0KIDEgZmlsZSBjaGFuZ2VkLCAyIGRlbGV0
-aW9ucygtKQ0KDQpkaWZmIC0tZ2l0IGEvaHcvbmV0L2Z0Z21hYzEwMC5jIGIvaHcvbmV0L2Z0Z21h
-YzEwMC5jIGluZGV4IDc5MDQzMDM0NmI1MS4uZDk5ODZjNmJhYTkyIDEwMDY0NA0KLS0tIGEvaHcv
-bmV0L2Z0Z21hYzEwMC5jDQorKysgYi9ody9uZXQvZnRnbWFjMTAwLmMNCkBAIC0xMDE2LDggKzEw
-MTYsNiBAQCBzdGF0aWMgdm9pZCBmdGdtYWMxMDBfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBF
-cnJvciAqKmVycnApDQogICAgIHN5c2J1c19pbml0X2lycShzYmQsICZzLT5pcnEpOw0KICAgICBx
-ZW11X21hY2FkZHJfZGVmYXVsdF9pZl91bnNldCgmcy0+Y29uZi5tYWNhZGRyKTsNCiANCi0gICAg
-cy0+Y29uZi5wZWVycy5uY3NbMF0gPSBuZF90YWJsZVswXS5uZXRkZXY7DQotDQogICAgIHMtPm5p
-YyA9IHFlbXVfbmV3X25pYygmbmV0X2Z0Z21hYzEwMF9pbmZvLCAmcy0+Y29uZiwNCiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIG9iamVjdF9nZXRfdHlwZW5hbWUoT0JKRUNUKGRldikpLCBERVZJ
-Q0UoZGV2KS0+aWQsDQogICAgICAgICAgICAgICAgICAgICAgICAgICBzKTsNCi0tDQoyLjIwLjEN
-Cg0KDQoNCg==
+On pseries, core-ids are strongly binded to a node-id by the command
+line option. If an user tries to add a CPU to the wrong node, he has
+an error but it is not really helpful:
+
+  qemu-system-ppc64 ... -smp 1,maxcpus=3D64,cores=3D1,threads=3D1,sockets=
+=3D1 \
+                        -numa node,nodeid=3D0 -numa node,nodeid=3D1 ...
+
+  (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=3D30,node-id=3D1
+  Error: node-id=3D1 must match numa node specified with -numa option
+
+This patch improves this error message by giving to the user the good
+topology information (node-id, socket-id and thread-id if they are
+available) to use with the core-id he's providing:
+
+  Error: core-id 30 can only be plugged into node-id 0
+
+Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+---
+
+Notes:
+    v2: display full topology in the error message
+
+ numa.c | 28 ++++++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/numa.c b/numa.c
+index 3875e1efda3a..7413f821e2bb 100644
+--- a/numa.c
++++ b/numa.c
+@@ -458,6 +458,27 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **err=
+p)
+     set_numa_options(MACHINE(qdev_get_machine()), cmd, errp);
+ }
+=20
++static char *cpu_topology_to_string(const CPUArchId *cpu)
++{
++    GString *s =3D g_string_new(NULL);
++    if (cpu->props.has_socket_id) {
++        g_string_append_printf(s, "socket-id %"PRId64, cpu->props.socket=
+_id);
++    }
++    if (cpu->props.has_node_id) {
++        if (s->len) {
++            g_string_append_printf(s, ", ");
++        }
++        g_string_append_printf(s, "node-id %"PRId64, cpu->props.node_id)=
+;
++    }
++    if (cpu->props.has_thread_id) {
++        if (s->len) {
++            g_string_append_printf(s, ", ");
++        }
++        g_string_append_printf(s, "thread-id %"PRId64, cpu->props.thread=
+_id);
++    }
++    return g_string_free(s, false);
++}
++
+ void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **=
+errp)
+ {
+     int node_id =3D object_property_get_int(OBJECT(dev), "node-id", &err=
+or_abort);
+@@ -470,8 +491,11 @@ void numa_cpu_pre_plug(const CPUArchId *slot, Device=
+State *dev, Error **errp)
+                                     "node-id", errp);
+         }
+     } else if (node_id !=3D slot->props.node_id) {
+-        error_setg(errp, "node-id=3D%d must match numa node specified "
+-                   "with -numa option", node_id);
++        char *topology =3D cpu_topology_to_string(slot);
++        error_setg(errp,
++                   "core-id %"PRId64" can only be plugged into %s",
++                   slot->props.core_id, topology);
++        g_free(topology);
+     }
+ }
+=20
+--=20
+2.20.1
+

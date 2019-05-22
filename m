@@ -1,135 +1,78 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp521857wrg;
-        Wed, 22 May 2019 07:24:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzg4ka1eZ67PqyleiJ3npES8IG3u6ZahfouuOogYDQdbTZ/3jh3ML+KGbbvMEZ4gHbj2Dkd
-X-Received: by 2002:a50:90dd:: with SMTP id d29mr89574049eda.127.1558535073200;
-        Wed, 22 May 2019 07:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558535073; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp653463wrg;
+        Wed, 22 May 2019 09:24:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwgRM96dmZ4mPFOvnATHO8VyQxnOk4IOEF7GCOKK4rZxR33v1mdvnE1SSpbyA/dha4D2aSt
+X-Received: by 2002:a50:9785:: with SMTP id e5mr89963346edb.94.1558542299491;
+        Wed, 22 May 2019 09:24:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558542299; cv=none;
         d=google.com; s=arc-20160816;
-        b=DjPTnIA+jBYVvKcejrbrJV6qgbdr/WHbXtbtbmFdG5pXme6VvgrEJmKxbAJaS29Ma3
-         yNejT6TG6s8W2kJka7i56HIwzGshPeEdZENZ8si0wl73HA3yGCW43GY/uZrFoSZoTudN
-         faNQfwqwFJ1stzQImvTPu0mIDYVoEHMD0cxvZ3ge0bEmRP7S4LB3YD3wSf6W2ZM/22qg
-         V8E0RuIg8G/CY4ADiGFqKBzDTM3CkmhEumVulQY2fTg0bp5uOqUwglnTMXSide4NNzvi
-         t1q0oaL2deUhxWkEArP0bH7XybLDJqffVyHPi0GUkYLM6GnNoNA94TyC3tsV8jGer7iN
-         MTMg==
+        b=yekKfuT27MfPbQGIiy3NN8bHcGZA2b7wkS3X78b31jGnlDIG2Nae3j1oN14ELAOiSw
+         IcHp5E1ajwtRw8jjRGswz+4vHLqYScDALD9Pipe+VGPsCDQXdxnmVqS4Z1IAPJtK6HS1
+         EVhQFNUzEWTMUPpZQF6h8Bi4i7GeCgHAlU2YwFiK1kjROAfFxV4cEHFgRqZFKOiZ8pqB
+         /J6goGXqZuNI6IgILdbZtnAZGhbWxRtCbmZ4CroTeHrQkJtaAZviLhyDD/sTWm81/eaP
+         ljlxYxCTNR6eHk1wRE8aHyT+QdLJMCXHfAtmdXq9ayCTKeWzwSRFHCF+PsAX9R41Ngqm
+         Ew2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp
-         :references:to:from;
-        bh=NhJH8mBQZ0W1J7+qJOv4vGdf0pYD5ffkyWPzt9UdstM=;
-        b=L1bM1y7HkAM+hRmPFab0bh1Ja7zMMCX8sBR22GuWnrnn5w6irC8chkz2zUFJDk1fFH
-         2em/i3FjCn7xQPCOs8yJNKTggnuSHcTL+Rjmz9hnatmtzJ6wDNZi7lFwPxEzUWhpyU8F
-         9Y57NzZJUPSkNHFV0phSoU2wD9MpmzQxHSs/OntlHZVNtWl4EMdl6qaF52IXc+dbw0c0
-         MsUjnDRYTR3zJCMkK512NarLN2pedkPn5OgU1LkrnY2kf5Ik+7gOiAIAQViSM5BhQw9X
-         svxpbCxUB5WNTrKSL21P3LloYLZZoCkiOpepgqdYAR3Yoz6ymveVDZBZgfQdWzcWXotq
-         yC+Q==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from;
+        bh=5OyPRKUvPWlqPts8WPwjgnK5LqQaGszysIk4I/17EWY=;
+        b=1LY3a0hoe/GepgAlSQ/3yFUCkiktDtPQBJwM2+TMI+fVCt/ssBI97dp1mg4td0D4GU
+         Xr7wjGzfhraSW89FFCHVGhvTWnQkPig/4wpz/DL33TAJbnyNDsm6/1xkXVccpn01cfmw
+         vUEyFDnpHY6Y+NS/s6fYe2SZl7/3Fr1Nufms5QjWEOYEKLfjUhZ/9gcTLFw/80flqYNo
+         FkTV2MYBQ9xdKBL/ze80iIFoZ/sa/3vKwuGpvn3l8E2wYDLi7h3qT3ZGu16OJ14YM4f0
+         IjSZl5ROezoDxKUx9IRPd+f4yaS7SrtMzxZcEYlwS5yfE1W9Jexzt+nUn5X5n6Lbu17L
+         MTHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g17si5361074ejd.378.2019.05.22.07.24.32
+        by mx.google.com with ESMTPS id o9si7538041ejx.29.2019.05.22.09.24.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 May 2019 07:24:33 -0700 (PDT)
+        Wed, 22 May 2019 09:24:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:44161 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:47487 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hTSAS-000530-4H
-	for alex.bennee@linaro.org; Wed, 22 May 2019 10:24:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51710)
+	id 1hTU30-0006NR-As
+	for alex.bennee@linaro.org; Wed, 22 May 2019 12:24:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33937)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hTSAC-00052m-0I
-	for qemu-arm@nongnu.org; Wed, 22 May 2019 10:24:17 -0400
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hTU2m-0006MQ-8W
+	for qemu-arm@nongnu.org; Wed, 22 May 2019 12:24:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hTSAA-0006Lj-O9
-	for qemu-arm@nongnu.org; Wed, 22 May 2019 10:24:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36802)
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hTU2l-0001A9-1a
+	for qemu-arm@nongnu.org; Wed, 22 May 2019 12:24:44 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2216 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hTSAA-0006EO-FQ; Wed, 22 May 2019 10:24:14 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BFCC0307D945;
-	Wed, 22 May 2019 14:24:08 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-162.ams2.redhat.com [10.36.116.162])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5B4A55427C;
-	Wed, 22 May 2019 14:24:05 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20190514100019.13263-1-thuth@redhat.com>
-	<20190514100019.13263-2-thuth@redhat.com>
-	<b8cd670b-7a76-6197-1949-3600a8d1dbe0@redhat.com>
-	<1d0b60e6-2d0c-3d91-eaad-ccb076064ac9@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <311455f4-6760-2383-6222-b1341c5d307e@redhat.com>
-Date: Wed, 22 May 2019 16:24:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1hTU2k-00010W-NQ; Wed, 22 May 2019 12:24:42 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 3EEDD931BB072AF82B76;
+	Thu, 23 May 2019 00:24:37 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
+	id 14.3.439.0; Thu, 23 May 2019 00:24:00 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+	<imammedo@redhat.com>
+Date: Wed, 22 May 2019 17:22:45 +0100
+Message-ID: <20190522162252.28568-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20190522162252.28568-1-shameerali.kolothum.thodi@huawei.com>
+References: <20190522162252.28568-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <1d0b60e6-2d0c-3d91-eaad-ccb076064ac9@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Wed, 22 May 2019 14:24:08 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/4] hw/core: Add a config
- switch for the "register" device
+X-Received-From: 45.249.212.190
+Subject: [Qemu-arm] [PATCH v5 1/8] hw/acpi: Make ACPI IO address space
+ configurable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -141,84 +84,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+	linuxarm@huawei.com, xuwei5@hisilicon.com,
+	shannon.zhaosl@gmail.com, sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Ry4L/bwiGKT
+X-TUID: 0vByh5GDTgjq
 
-On 14/05/2019 12.38, Thomas Huth wrote:
-> On 14/05/2019 12.31, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 5/14/19 12:00 PM, Thomas Huth wrote:
->>> The "register" device is only used by certain machines. Let's add
->>> a proper config switch for it so that it only gets compiled when we
->>> really need it.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  hw/core/Kconfig       | 3 +++
->>>  hw/core/Makefile.objs | 2 +-
->>>  hw/dma/Kconfig        | 1 +
->>>  hw/timer/Kconfig      | 1 +
->>>  4 files changed, 6 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/core/Kconfig b/hw/core/Kconfig
->>> index c2a1ae8122..d11920fcb3 100644
->>> --- a/hw/core/Kconfig
->>> +++ b/hw/core/Kconfig
->>> @@ -9,3 +9,6 @@ config FITLOADER
->>> =20
->>>  config PLATFORM_BUS
->>>      bool
->>> +
->>> +config REGISTER
->>> +    bool
->>> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
->>> index a799c83815..d493a051ee 100644
->>> --- a/hw/core/Makefile.objs
->>> +++ b/hw/core/Makefile.objs
->>> @@ -16,7 +16,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D machine.o
->>>  common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
->>>  common-obj-$(CONFIG_FITLOADER) +=3D loader-fit.o
->>>  common-obj-$(CONFIG_SOFTMMU) +=3D qdev-properties-system.o
->>> -common-obj-$(CONFIG_SOFTMMU) +=3D register.o
->>> +common-obj-$(CONFIG_REGISTER) +=3D register.o
->>>  common-obj-$(CONFIG_SOFTMMU) +=3D or-irq.o
->>>  common-obj-$(CONFIG_SOFTMMU) +=3D split-irq.o
->>>  common-obj-$(CONFIG_PLATFORM_BUS) +=3D platform-bus.o
->>> diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
->>> index 751dec5426..5c61b67bc0 100644
->>> --- a/hw/dma/Kconfig
->>> +++ b/hw/dma/Kconfig
->>> @@ -16,6 +16,7 @@ config I8257
->>> =20
->>>  config ZYNQ_DEVCFG
->>>      bool
->>> +    select REGISTER
->>> =20
->>>  config STP2000
->>>      bool
->>> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
->>> index 51921eb63f..f575481210 100644
->>> --- a/hw/timer/Kconfig
->>> +++ b/hw/timer/Kconfig
->>> @@ -36,6 +36,7 @@ config TWL92230
->>> =20
->>>  config XLNX_ZYNQMP
->>>      bool
->>> +    select REGISTER
->>> =20
->>>  config ALTERA_TIMER
->>>      bool
->>>
->>
->> Annoying, this clashes with "hw/microblaze: Kconfig cleanup" which is
->> already queued by Paolo:
->> https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg04669.html
->=20
-> Ok, I'll wait for the merge of Paolo's next PULL request before sending
-> the v2 of my series.
+This is in preparation for adding support for ARM64 platforms
+where it doesn't use port mapped IO for ACPI IO space.
 
-Looks like your patches were not included in Paolo's last PULL request?
-Did the patches fall through the cracks?
+Also move few MEMORY_* definitions to header so that other memory
+hotplug event signalling mechanisms (eg. Generic Event Device on
+HW-reduced acpi platforms) can use the same from their respective
+event handler code.
 
- Thomas
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/acpi/memory_hotplug.c         | 25 ++++++++++++++-----------
+ hw/i386/acpi-build.c             |  3 ++-
+ include/hw/acpi/memory_hotplug.h |  9 +++++++--
+ 3 files changed, 23 insertions(+), 14 deletions(-)
+
+diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+index 297812d5f7..c724f5f1e4 100644
+--- a/hw/acpi/memory_hotplug.c
++++ b/hw/acpi/memory_hotplug.c
+@@ -29,12 +29,9 @@
+ #define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
+ #define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
+ #define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
+-#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+ #define MEMORY_HOTPLUG_DEVICE        "MHPD"
+-#define MEMORY_HOTPLUG_IO_LEN         24
+-#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+ 
+-static uint16_t memhp_io_base;
++static hwaddr memhp_io_base;
+ 
+ static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
+ {
+@@ -209,7 +206,7 @@ static const MemoryRegionOps acpi_memory_hotplug_ops = {
+ };
+ 
+ void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+-                              MemHotplugState *state, uint16_t io_base)
++                              MemHotplugState *state, hwaddr io_base)
+ {
+     MachineState *machine = MACHINE(qdev_get_machine());
+ 
+@@ -342,7 +339,8 @@ const VMStateDescription vmstate_memory_hotplug = {
+ 
+ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+                               const char *res_root,
+-                              const char *event_handler_method)
++                              const char *event_handler_method,
++                              AmlRegionSpace rs)
+ {
+     int i;
+     Aml *ifctx;
+@@ -365,14 +363,19 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+             aml_name_decl("_UID", aml_string("Memory hotplug resources")));
+ 
+         crs = aml_resource_template();
+-        aml_append(crs,
+-            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+-                   MEMORY_HOTPLUG_IO_LEN)
+-        );
++        if (rs == AML_SYSTEM_IO) {
++            aml_append(crs,
++                aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
++                       MEMORY_HOTPLUG_IO_LEN)
++            );
++        } else {
++            aml_append(crs, aml_memory32_fixed(memhp_io_base,
++                            MEMORY_HOTPLUG_IO_LEN, AML_READ_WRITE));
++        }
+         aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
+ 
+         aml_append(mem_ctrl_dev, aml_operation_region(
+-            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
++            MEMORY_HOTPLUG_IO_REGION, rs,
+             aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
+         );
+ 
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index b4ec14e349..fe263fd558 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1864,7 +1864,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+                        "\\_SB.PCI0", "\\_GPE._E02");
+     }
+-    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0", "\\_GPE._E03");
++    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
++                             "\\_GPE._E03", AML_SYSTEM_IO);
+ 
+     scope =  aml_scope("_GPE");
+     {
+diff --git a/include/hw/acpi/memory_hotplug.h b/include/hw/acpi/memory_hotplug.h
+index 77c65765d6..e3a4b89235 100644
+--- a/include/hw/acpi/memory_hotplug.h
++++ b/include/hw/acpi/memory_hotplug.h
+@@ -5,6 +5,10 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ 
++#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
++#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
++#define MEMORY_HOTPLUG_IO_LEN         24
++
+ /**
+  * MemStatus:
+  * @is_removing: the memory device in slot has been requested to be ejected.
+@@ -29,7 +33,7 @@ typedef struct MemHotplugState {
+ } MemHotplugState;
+ 
+ void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+-                              MemHotplugState *state, uint16_t io_base);
++                              MemHotplugState *state, hwaddr io_base);
+ 
+ void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
+                          DeviceState *dev, Error **errp);
+@@ -48,5 +52,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st, ACPIOSTInfoList ***list);
+ 
+ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+                               const char *res_root,
+-                              const char *event_handler_method);
++                              const char *event_handler_method,
++                              AmlRegionSpace rs);
+ #endif
+-- 
+2.17.1
+
+

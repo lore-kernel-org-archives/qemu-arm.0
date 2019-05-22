@@ -1,127 +1,164 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp919250wrg;
-        Wed, 22 May 2019 14:06:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4P9j79yIuppdUBWcmvzWfszBMmdy5XuYJVs+XLWeTVw2jkkRLnRcTwTbCXanX8Hsbry5Y
-X-Received: by 2002:a50:8e1e:: with SMTP id 30mr92648548edw.283.1558559181685;
-        Wed, 22 May 2019 14:06:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558559181; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp920161wrg;
+        Wed, 22 May 2019 14:07:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwkP5kNzG2ELZwvcJIYF/vVYd51g90eNbg+PVVWD6EXCic/4HfaJ/BhRHo9nRqh5MZqaNbi
+X-Received: by 2002:a50:90db:: with SMTP id d27mr91944869eda.50.1558559233654;
+        Wed, 22 May 2019 14:07:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558559233; cv=none;
         d=google.com; s=arc-20160816;
-        b=QpYV0htzW2XEunIWpkgc0EYeAAIWlI0a0p1XYh8zc6moj6kLxLoR+9C1AeYkFKUnvL
-         Te7+tgX3HagkwePg2wfCCZn2ZpVjLMKjaz13s7XJx7Q5CBJoLLLwLy6tBj3VrkVplrRO
-         SnJoNiCtEl/TmPkkPMCxi8AjV3KJlRu43aoXRbr05kiBq3TpgS2o025pPx8101KNYAxU
-         ttlk/KieGO9NLRlAgRgdebQFgNGzncAXY9L3AxJnb30lNtt7w/GW6AFHxxmpWlNTRS0i
-         TH795GpzYZQ6u3WwpT1K1mFmMotCz9UkqDx5isr+kVqWRs7qXfx9lxb98q+Jxgx3ZNq0
-         mTfA==
+        b=EYmTWNRulR4Ngo2Nwhrmay6MVhbXvy8LldyQcC7/fgpr7fx5AVcAzdexViF4BnRAGn
+         qv13XX6QIRS0As43I/UVvKrKr3CzAknuHHsE5+MNKfmLS852rs9XlKLbv87vBBYdrtdX
+         3P8nuc9YUBacBezXczR+YhBay7ooUqOX77H7DILPG6egEbjZh1VI24i6gVGIjQiesRxU
+         RDiOM3gqmI5wgkDuninLDC9e8Wr1EmFB6Oovs3M3GOpABbOASEu2usSR8zy72v6F401/
+         tP8e8+a+4Za/BkAVj18/De7ySerTAotRPiSxAPEX3jlFN5crdE/wN5IeOKEIqBQxScIL
+         NpMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=/e9aUwU6w3oAvUz1gDba3q2vhQlqfj6ocGqHZbM5rDY=;
-        b=yIU4a9t+bySLAV6A8lO+F138E4afBJpA92B4WqxhUjZKIBS1f0WZ67JI907rgksqmm
-         KIaSVFpCgJyiyy+TLdlmeFk3SBN2H4CAJJ2T+OnIeMCjnuIg+V6XsEoxPfHWmXgtfXD6
-         VJkHpXbH+ztFE0BKRKRaWI/l12rPgNzcw5TLSyKSrYVySBHxJikat4tbOGVrqnp4+eTD
-         Yn0IZUXBK0LVeZvwmDbc3Co2w8RkrZv2gAz+dVGGiKeYEIt+ixbZQ6L8ai6GFZh32Q/e
-         UnC6lR66lM4qClQ8QeajcpaNl6ZKCqrTMytrpzUzuwBwrXmmDLtaD+CWqGSCFgRXUiFy
-         in1Q==
+         :list-unsubscribe:list-id:precedence:subject:thread-index
+         :thread-topic:content-transfer-encoding:mime-version:references
+         :in-reply-to:message-id:to:from:date;
+        bh=UziffAN3tpojwqhSs2cx+Or3ZRcRb9ipgwqYHeNKzSo=;
+        b=haD9x/6GY8zaU/4gC9t7B2IIugZd/XO0rgWn//IWdVEqCb8opnA5aqf5kDEJ5mLlUj
+         wDMdU5NCqWB4ZdyL3u5tLFhMtC5oiUJYgXQtD+x5NCtJjc8tDWV9tBFuOekEOHHl2CjK
+         ncydHlHcEjrtZfCyNPnGbiJ9v17OuzJiT3aDWBvvf/lpK/CsjqJIWXniX1mv9jnQ28j9
+         HCcEdhUTCH9JbQrWBvHPpmkMQdn+/F3EJw9RChhppAZUA5pB4t/Fua4gsaxGgENv+ul4
+         2bSMTkh4JAocVjVpIYeYebFDIuxQUtIKzY37XUBgsPtWSxbYZspvlvOYdW5i6hQXsQOZ
+         DFkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l34si6624209edb.201.2019.05.22.14.06.21
+        by mx.google.com with ESMTPS id p38si4404289edc.348.2019.05.22.14.07.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 May 2019 14:06:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 May 2019 14:07:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51386 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:51396 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hTYRI-0004qA-LA
-	for alex.bennee@linaro.org; Wed, 22 May 2019 17:06:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33140)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hTYS8-00051P-Jw
+	for alex.bennee@linaro.org; Wed, 22 May 2019 17:07:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hTYQy-00049u-Hz
-	for qemu-arm@nongnu.org; Wed, 22 May 2019 17:06:02 -0400
+	(envelope-from <crosa@redhat.com>) id 1hTYRA-0004z9-Vt
+	for qemu-devel@nongnu.org; Wed, 22 May 2019 17:06:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hTYEK-0003p4-Qj
-	for qemu-arm@nongnu.org; Wed, 22 May 2019 16:52:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46008)
+	(envelope-from <crosa@redhat.com>) id 1hTYR8-0002NG-U6
+	for qemu-devel@nongnu.org; Wed, 22 May 2019 17:06:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58680)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1hTYEK-0003hk-LU; Wed, 22 May 2019 16:52:56 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <crosa@redhat.com>)
+	id 1hTYQy-0002Ah-HA; Wed, 22 May 2019 17:06:00 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6FA18C05B1CD;
-	Wed, 22 May 2019 20:52:41 +0000 (UTC)
-Received: from localhost (ovpn-116-14.gru2.redhat.com [10.97.116.14])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7A2241001E67;
-	Wed, 22 May 2019 20:52:36 +0000 (UTC)
-Date: Wed, 22 May 2019 17:52:34 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190522205234.GY10764@habkost.net>
+	by mx1.redhat.com (Postfix) with ESMTPS id 9345581F0D;
+	Wed, 22 May 2019 21:05:47 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com
+	(colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 878F454389;
+	Wed, 22 May 2019 21:05:47 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 77E081806B14;
+	Wed, 22 May 2019 21:05:47 +0000 (UTC)
+Date: Wed, 22 May 2019 17:05:44 -0400 (EDT)
+From: Cleber Rosa <crosa@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <1204725743.24201394.1558559144548.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20190522205234.GY10764@habkost.net>
 References: <20190312234541.2887-1-philmd@redhat.com>
 	<20190312234541.2887-3-philmd@redhat.com>
+	<20190522205234.GY10764@habkost.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190312234541.2887-3-philmd@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 22 May 2019 20:52:41 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.36.116.137, 10.4.195.3]
+Thread-Topic: Boot Linux Console Test: add a test for the Raspberry Pi 2
+Thread-Index: 85aLi307SoOiFEeNWcragCqkXg6pqQ==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 22 May 2019 21:05:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test:
- add a test for the Raspberry Pi 2
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add a test
+ for the Raspberry Pi 2
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
 	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, Cleber Rosa <crosa@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D6LzT/RIAFAT
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2yPgyfisKEhn
 
-On Wed, Mar 13, 2019 at 12:45:41AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
->=20
-> Similar to the x86_64/pc test, it boots a Linux kernel on a raspi2
-> board and verify the serial is working.
->=20
-> If ARM is a target being built, "make check-acceptance" will
-> automatically include this test by the use of the "arch:arm" tags.
->=20
-> Alternatively, this test can be run using:
->=20
->     $ avocado run -t arch:arm tests/acceptance
->     $ avocado run -t machine:raspi2 tests/acceptance
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-We're getting timeouts on travis-ci:
-https://travis-ci.org/ehabkost/qemu/jobs/535468057#L3289
 
-I don't know yet if the guest is hanging, or if we just need to
-increase the timeout.  I could reproduce the timeout locally,
-too.
+----- Original Message -----
+> From: "Eduardo Habkost" <ehabkost@redhat.com>
+> To: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
+> Cc: qemu-devel@nongnu.org, "Cleber Rosa" <crosa@redhat.com>, "Peter Mayde=
+ll" <peter.maydell@linaro.org>,
+> qemu-arm@nongnu.org, "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org>, "An=
+drew Baumann" <Andrew.Baumann@microsoft.com>
+> Sent: Wednesday, May 22, 2019 4:52:34 PM
+> Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add a t=
+est for the Raspberry Pi 2
+>=20
+> On Wed, Mar 13, 2019 at 12:45:41AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >=20
+> > Similar to the x86_64/pc test, it boots a Linux kernel on a raspi2
+> > board and verify the serial is working.
+> >=20
+> > If ARM is a target being built, "make check-acceptance" will
+> > automatically include this test by the use of the "arch:arm" tags.
+> >=20
+> > Alternatively, this test can be run using:
+> >=20
+> >     $ avocado run -t arch:arm tests/acceptance
+> >     $ avocado run -t machine:raspi2 tests/acceptance
+> >=20
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>=20
+> We're getting timeouts on travis-ci:
+> https://travis-ci.org/ehabkost/qemu/jobs/535468057#L3289
+>=20
+> I don't know yet if the guest is hanging, or if we just need to
+> increase the timeout.  I could reproduce the timeout locally,
+> too.
+>=20
+> --
+> Eduardo
+>=20
 
---=20
-Eduardo
+It may be related to:
+
+ https://bugs.launchpad.net/qemu/+bug/1829779
+
+And this is a proof that we urgently need to have a better
+way of presenting/storing test artifacts.  The brief output
+is nice when everything goes well, but makes the test results
+close to useless once a failure happens.
+
+Philippe showed us how GitLab allows CI jobs to preserve
+artifacts, so maybe the solution is to move the loads there.
+
+- Cleber.

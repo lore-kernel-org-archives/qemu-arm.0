@@ -1,93 +1,101 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp920161wrg;
-        Wed, 22 May 2019 14:07:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwkP5kNzG2ELZwvcJIYF/vVYd51g90eNbg+PVVWD6EXCic/4HfaJ/BhRHo9nRqh5MZqaNbi
-X-Received: by 2002:a50:90db:: with SMTP id d27mr91944869eda.50.1558559233654;
-        Wed, 22 May 2019 14:07:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558559233; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1002732wrg;
+        Wed, 22 May 2019 15:49:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy4lVChLgXrOauXEqoBQpMeez613whO3/RqF9g520crxthNEH5vJaWm4ibl+W9gA5BqIZVC
+X-Received: by 2002:a17:906:2518:: with SMTP id i24mr61749501ejb.169.1558565391028;
+        Wed, 22 May 2019 15:49:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558565391; cv=none;
         d=google.com; s=arc-20160816;
-        b=EYmTWNRulR4Ngo2Nwhrmay6MVhbXvy8LldyQcC7/fgpr7fx5AVcAzdexViF4BnRAGn
-         qv13XX6QIRS0As43I/UVvKrKr3CzAknuHHsE5+MNKfmLS852rs9XlKLbv87vBBYdrtdX
-         3P8nuc9YUBacBezXczR+YhBay7ooUqOX77H7DILPG6egEbjZh1VI24i6gVGIjQiesRxU
-         RDiOM3gqmI5wgkDuninLDC9e8Wr1EmFB6Oovs3M3GOpABbOASEu2usSR8zy72v6F401/
-         tP8e8+a+4Za/BkAVj18/De7ySerTAotRPiSxAPEX3jlFN5crdE/wN5IeOKEIqBQxScIL
-         NpMQ==
+        b=udVoT2lnE17+BqCYMKrT+TVwdiv3Asi8wGDsYhSTWUA/qN1uf8RgXj+IPJYbhCgVxO
+         46xCYELFYs3hXmgDhev/JlxTlwNOwGUhb1qp1nMGRTYbId5ady+V2yTDhRUIW5nqGElh
+         K2hA2JUnqu4/AeidBlNl9X+II/W67HozLbicKnkPWukoZkxa79U+dgJO/hLd/kGpodOs
+         +zJDUm/yj8HwtTZjgTakbt3DZhN1Xiv1bTL2KXWP3X0C4Aw+uzrPr3xbfBrPv1t7+3TS
+         01bsJkSNKG5mLT2Tw8O45ITmfrTbl5psalp+bfVlEO/7tXdu8XdPB8Ss02z6jj+9lEPR
+         YbMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:thread-index
-         :thread-topic:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:to:from:date;
-        bh=UziffAN3tpojwqhSs2cx+Or3ZRcRb9ipgwqYHeNKzSo=;
-        b=haD9x/6GY8zaU/4gC9t7B2IIugZd/XO0rgWn//IWdVEqCb8opnA5aqf5kDEJ5mLlUj
-         wDMdU5NCqWB4ZdyL3u5tLFhMtC5oiUJYgXQtD+x5NCtJjc8tDWV9tBFuOekEOHHl2CjK
-         ncydHlHcEjrtZfCyNPnGbiJ9v17OuzJiT3aDWBvvf/lpK/CsjqJIWXniX1mv9jnQ28j9
-         HCcEdhUTCH9JbQrWBvHPpmkMQdn+/F3EJw9RChhppAZUA5pB4t/Fua4gsaxGgENv+ul4
-         2bSMTkh4JAocVjVpIYeYebFDIuxQUtIKzY37XUBgsPtWSxbYZspvlvOYdW5i6hQXsQOZ
-         DFkQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=RIMc85N6rhaq18c4x7fNSLfa1/l9Qg722/3bwnkkgDI=;
+        b=Yl11wmtZYpx+F9yELBx+c0wuQfFJCTFnRzm0zvFWS+vnXMF3EHlqBg5cnndDA0tEwz
+         ouTsicE6x9uJMIWGyZLtlokmpnWfHCjVZyIRja1WWXUHoJpAyWI2H5NU7xd3XtqbFbga
+         zYqTFhmzcI9gXVweT2P1ywQ3AryiZ0F7BLOrldW/z3UtWZkkQEunc11ZiCnndeKc3ETV
+         HSvcQz0jEm3REASjVbiGDtkniUa2k9MxaN3G6aDOAWPALOpe0Ta0ijWhhNheu5YTXmhZ
+         zDgx9xv89uCvj74EdMOIc/E80EudnN61BaG4Cl9F1pL46EuzYkGBm5XfX0y1IxxJNIae
+         O/Tg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VHcvMrqd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p38si4404289edc.348.2019.05.22.14.07.13
+        by mx.google.com with ESMTPS id u47si4510428edm.352.2019.05.22.15.49.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 May 2019 14:07:13 -0700 (PDT)
+        Wed, 22 May 2019 15:49:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VHcvMrqd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:51396 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:53038 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hTYS8-00051P-Jw
-	for alex.bennee@linaro.org; Wed, 22 May 2019 17:07:12 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33929)
+	id 1hTa3S-0008L1-24
+	for alex.bennee@linaro.org; Wed, 22 May 2019 18:49:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57480)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hTYRA-0004z9-Vt
-	for qemu-devel@nongnu.org; Wed, 22 May 2019 17:06:14 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hTa2q-0008Ka-3e
+	for qemu-devel@nongnu.org; Wed, 22 May 2019 18:49:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hTYR8-0002NG-U6
-	for qemu-devel@nongnu.org; Wed, 22 May 2019 17:06:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58680)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <crosa@redhat.com>)
-	id 1hTYQy-0002Ah-HA; Wed, 22 May 2019 17:06:00 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9345581F0D;
-	Wed, 22 May 2019 21:05:47 +0000 (UTC)
-Received: from colo-mx.corp.redhat.com
-	(colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 878F454389;
-	Wed, 22 May 2019 21:05:47 +0000 (UTC)
-Received: from zmail17.collab.prod.int.phx2.redhat.com
-	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 77E081806B14;
-	Wed, 22 May 2019 21:05:47 +0000 (UTC)
-Date: Wed, 22 May 2019 17:05:44 -0400 (EDT)
-From: Cleber Rosa <crosa@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <1204725743.24201394.1558559144548.JavaMail.zimbra@redhat.com>
-In-Reply-To: <20190522205234.GY10764@habkost.net>
-References: <20190312234541.2887-1-philmd@redhat.com>
-	<20190312234541.2887-3-philmd@redhat.com>
-	<20190522205234.GY10764@habkost.net>
+	(envelope-from <alistair23@gmail.com>) id 1hTa2n-0003HE-MR
+	for qemu-devel@nongnu.org; Wed, 22 May 2019 18:49:12 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:34402)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1hTa2n-0003FS-9y; Wed, 22 May 2019 18:49:09 -0400
+Received: by mail-lf1-x143.google.com with SMTP id v18so2929146lfi.1;
+	Wed, 22 May 2019 15:49:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=RIMc85N6rhaq18c4x7fNSLfa1/l9Qg722/3bwnkkgDI=;
+	b=VHcvMrqd9SX8GY8FreTQZLK5FgQd5ZeFMJZJ5lDTn4mrruvj2+mKGHGZX3xW39RtHZ
+	5KjTsg7JUa1hJxlqo74JvdcJmkd/67B/wREu96J8V7noRH0M7lgf3rVQGRuz8UihTw35
+	uyi8a2229cylhuj+jvFOERPafgGzDqFpUFyAqbVba1sMPgzUpaDXLqe4FZxph79NUdS+
+	iv3NtRJ9PpdbNcPntGKi92NYBwRtZlY7XrU4VHbAsCj1H7IlIZtj2lt3hPzCExbUVeYf
+	n3vjd5mLZGOaR3I/cv8Ifr//CTMDJzzZIoeNuxCii9SzBhAXPCacxlkCMdFs+QZh40PT
+	PjBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=RIMc85N6rhaq18c4x7fNSLfa1/l9Qg722/3bwnkkgDI=;
+	b=ICJVmH/OFM6NoVtUocwBQ7Gau2SN6IByqLjMcvTag3vahyHTNEPBWaaTggK409CXzF
+	Vewe68MNZ0RBm5MjLLFU2AgBjjWGJy6kw21Acr4FO+GO/tpvMlvzf/G6+91yWuToK1Sv
+	3OdIj+9GXS/BlDoafmitsxcB/A2cgA7hBsqEGaJxxZ/qeF85y5B6XLgsXY7F8qP/w2pN
+	JfKMex+zqYBrHesb24/R7YbLkTWYzpvU4GSo32M60IiGUWSuVuSMnQcqhS3XdMT2z79N
+	X9uar88jYBYCKSw+3LbQkHBLhq3ggMTVs7AKRtqlYxeXbS6T/FxIBFTjMKaNWyqF+LbF
+	4d3w==
+X-Gm-Message-State: APjAAAV9cgHIXuD3yUICks5UvBK1+iy0VMj6g6PpowZMht098hC1AfEj
+	rdZolHhhUpiwG+DZJNTffuY0L559ZzA08ruJcFI=
+X-Received: by 2002:a19:4cd5:: with SMTP id z204mr76150lfa.113.1558565345275; 
+	Wed, 22 May 2019 15:49:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190520214342.13709-1-philmd@redhat.com>
+	<20190520214342.13709-5-philmd@redhat.com>
+In-Reply-To: <20190520214342.13709-5-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 22 May 2019 15:46:47 -0700
+Message-ID: <CAKmqyKPdmwF0+T4t6LyUMgoujoRvrXZFLhxsqwGZdW9vDqWVTA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.36.116.137, 10.4.195.3]
-Thread-Topic: Boot Linux Console Test: add a test for the Raspberry Pi 2
-Thread-Index: 85aLi307SoOiFEeNWcragCqkXg6pqQ==
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 22 May 2019 21:05:47 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add a test
- for the Raspberry Pi 2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::143
+Subject: Re: [Qemu-devel] [PATCH 4/4] hw/arm/exynos4210: QOM'ify the
+ Exynos4210 SoC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,66 +107,146 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2yPgyfisKEhn
+X-TUID: 2DDPtsR3pP+m
 
+On Mon, May 20, 2019 at 2:47 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
------ Original Message -----
-> From: "Eduardo Habkost" <ehabkost@redhat.com>
-> To: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
-> Cc: qemu-devel@nongnu.org, "Cleber Rosa" <crosa@redhat.com>, "Peter Mayde=
-ll" <peter.maydell@linaro.org>,
-> qemu-arm@nongnu.org, "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org>, "An=
-drew Baumann" <Andrew.Baumann@microsoft.com>
-> Sent: Wednesday, May 22, 2019 4:52:34 PM
-> Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add a t=
-est for the Raspberry Pi 2
->=20
-> On Wed, Mar 13, 2019 at 12:45:41AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >=20
-> > Similar to the x86_64/pc test, it boots a Linux kernel on a raspi2
-> > board and verify the serial is working.
-> >=20
-> > If ARM is a target being built, "make check-acceptance" will
-> > automatically include this test by the use of the "arch:arm" tags.
-> >=20
-> > Alternatively, this test can be run using:
-> >=20
-> >     $ avocado run -t arch:arm tests/acceptance
-> >     $ avocado run -t machine:raspi2 tests/acceptance
-> >=20
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->=20
-> We're getting timeouts on travis-ci:
-> https://travis-ci.org/ehabkost/qemu/jobs/535468057#L3289
->=20
-> I don't know yet if the guest is hanging, or if we just need to
-> increase the timeout.  I could reproduce the timeout locally,
-> too.
->=20
+Alistair
+
+> ---
+>  hw/arm/exynos4210.c         | 26 +++++++++++++++++++++++---
+>  hw/arm/exynos4_boards.c     |  9 ++++++---
+>  include/hw/arm/exynos4210.h |  9 +++++++--
+>  3 files changed, 36 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+> index 19009b76e7c..0b09129eff8 100644
+> --- a/hw/arm/exynos4210.c
+> +++ b/hw/arm/exynos4210.c
+> @@ -178,9 +178,10 @@ static void pl330_create(uint32_t base, qemu_irq irq=
+, int nreq)
+>      sysbus_connect_irq(busdev, 0, irq);
+>  }
+>
+> -Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
+> +static void exynos4210_realize(DeviceState *socdev, Error **errp)
+>  {
+> -    Exynos4210State *s =3D g_new0(Exynos4210State, 1);
+> +    Exynos4210State *s =3D EXYNOS4210_SOC(socdev);
+> +    MemoryRegion *system_mem =3D get_system_memory();
+>      qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
+>      SysBusDevice *busdev;
+>      DeviceState *dev;
+> @@ -435,6 +436,25 @@ Exynos4210State *exynos4210_init(MemoryRegion *syste=
+m_mem)
+>                   qemu_irq_invert(s->irq_table[exynos4210_get_irq(36, 1)]=
+), 32);
+>      pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
+>                   qemu_irq_invert(s->irq_table[exynos4210_get_irq(34, 1)]=
+), 1);
+> +}
+> +
+> +static void exynos4210_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    return s;
+> +    dc->realize =3D exynos4210_realize;
+>  }
+> +
+> +static const TypeInfo exynos4210_info =3D {
+> +    .name =3D TYPE_EXYNOS4210_SOC,
+> +    .parent =3D TYPE_SYS_BUS_DEVICE,
+> +    .instance_size =3D sizeof(Exynos4210State),
+> +    .class_init =3D exynos4210_class_init,
+> +};
+> +
+> +static void exynos4210_register_types(void)
+> +{
+> +    type_register_static(&exynos4210_info);
+> +}
+> +
+> +type_init(exynos4210_register_types)
+> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+> index f824eef0d36..700e90d6671 100644
+> --- a/hw/arm/exynos4_boards.c
+> +++ b/hw/arm/exynos4_boards.c
+> @@ -45,7 +45,7 @@ typedef enum Exynos4BoardType {
+>  } Exynos4BoardType;
+>
+>  typedef struct Exynos4BoardState {
+> -    Exynos4210State *soc;
+> +    Exynos4210State soc;
+>      MemoryRegion dram0_mem;
+>      MemoryRegion dram1_mem;
+>  } Exynos4BoardState;
+> @@ -130,7 +130,10 @@ exynos4_boards_init_common(MachineState *machine,
+>      exynos4_boards_init_ram(s, get_system_memory(),
+>                              exynos4_board_ram_size[board_type]);
+>
+> -    s->soc =3D exynos4210_init(get_system_memory());
+> +    object_initialize(&s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
+> +    qdev_set_parent_bus(DEVICE(&s->soc), sysbus_get_default());
+> +    object_property_set_bool(OBJECT(&s->soc), true, "realized",
+> +                             &error_fatal);
+>
+>      return s;
+>  }
+> @@ -148,7 +151,7 @@ static void smdkc210_init(MachineState *machine)
+>                                                        EXYNOS4_BOARD_SMDK=
+C210);
+>
+>      lan9215_init(SMDK_LAN9118_BASE_ADDR,
+> -            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(37, 1)]=
+));
+> +            qemu_irq_invert(s->soc.irq_table[exynos4210_get_irq(37, 1)])=
+);
+>      arm_load_kernel(ARM_CPU(first_cpu), &exynos4_board_binfo);
+>  }
+>
+> diff --git a/include/hw/arm/exynos4210.h b/include/hw/arm/exynos4210.h
+> index 098a69ec73d..27c684e851d 100644
+> --- a/include/hw/arm/exynos4210.h
+> +++ b/include/hw/arm/exynos4210.h
+> @@ -85,6 +85,9 @@ typedef struct Exynos4210Irq {
+>  } Exynos4210Irq;
+>
+>  typedef struct Exynos4210State {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +    /*< public >*/
+>      ARMCPU *cpu[EXYNOS4210_NCPUS];
+>      Exynos4210Irq irqs;
+>      qemu_irq *irq_table;
+> @@ -98,11 +101,13 @@ typedef struct Exynos4210State {
+>      I2CBus *i2c_if[EXYNOS4210_I2C_NUMBER];
+>  } Exynos4210State;
+>
+> +#define TYPE_EXYNOS4210_SOC "exynos4210"
+> +#define EXYNOS4210_SOC(obj) \
+> +    OBJECT_CHECK(Exynos4210State, obj, TYPE_EXYNOS4210_SOC)
+> +
+>  void exynos4210_write_secondary(ARMCPU *cpu,
+>          const struct arm_boot_info *info);
+>
+> -Exynos4210State *exynos4210_init(MemoryRegion *system_mem);
+> -
+>  /* Initialize exynos4210 IRQ subsystem stub */
+>  qemu_irq *exynos4210_init_irq(Exynos4210Irq *env);
+>
 > --
-> Eduardo
->=20
-
-It may be related to:
-
- https://bugs.launchpad.net/qemu/+bug/1829779
-
-And this is a proof that we urgently need to have a better
-way of presenting/storing test artifacts.  The brief output
-is nice when everything goes well, but makes the test results
-close to useless once a failure happens.
-
-Philippe showed us how GitLab allows CI jobs to preserve
-artifacts, so maybe the solution is to move the loads there.
-
-- Cleber.
+> 2.20.1
+>
+>

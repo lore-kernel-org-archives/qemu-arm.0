@@ -1,92 +1,87 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1827701wrg;
-        Tue, 21 May 2019 13:14:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy8vHHMyJn2D6hLkUYHnC1QBh5e8I7XMFKxlJVSYSaWZ/AGWY/L1y3FYAFoo3APlpQ4dYa+
-X-Received: by 2002:a05:6402:54a:: with SMTP id i10mr85833121edx.162.1558469644597;
-        Tue, 21 May 2019 13:14:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558469644; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp188288wrg;
+        Wed, 22 May 2019 01:21:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXpUH0oHeCPU8ZnOkWfFAVrMQqXvV5+OGJ7V0T2HgWBcGlOoC9j9M8v8Y4HA3uZVdoXxwI
+X-Received: by 2002:a17:906:4d4d:: with SMTP id b13mr28511756ejv.109.1558513291295;
+        Wed, 22 May 2019 01:21:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558513291; cv=none;
         d=google.com; s=arc-20160816;
-        b=R742RSczZ6rq8PRxwAI9L++Og6aqcb6OCKnitjlz60fIRnchbq/hvgfeGXrRW+OQxf
-         rTHCRrh9we1mVkeguvR3olIgFM0WfxQkn5fMCtZxfhs+gWBL1u+wje4TChwq+dK26Exp
-         /5J9V+7cxzwDAkrMOh0veJs3IyH1F3EqrA5f/L82XMLsE6pHnMI32bVKvFQhlUDAxAeg
-         /DuPRu4ku4vF2nUk+PIn7MonZdBLZ+hpXL5t+mHaB0A9p8KzqcZWugI3LZPC4TFMRzbP
-         v0M1DYmK9xGlfWan2Q1oAIYT08w1NUQpf77GDj6jSuT4nx0j/yWuCw40ocVFTx5MrdMo
-         taKw==
+        b=b3H81FBvnoY8J3ey2f0UGeM33S7egZKS03XL0b7m7L/18jp11dcMA0dk9osHZp74OG
+         IeGy01VASHOy1srPPfg/1ap1OR9tHDh0Mom4wZsBhP+edwYwdjAB4hhT02DSCGYPFvmd
+         sOJfhECgHASFHggMFG8VY3EiyFpGtl2xBMYqUJo6xaY+WjyJQnu7CKALJM7G2F2wLYBF
+         SQRU7tQ72Wdm0n5DHG6ROLazjUbYUUuE33nZWk3Tklut0gw1+1e7dMR93rQZFsfni2qA
+         n3Y1EhCY93SNFRqcT7rmdmXcFOIC6uv7LbWl3tDv+v9HjY8hiMeF8YiRF6fszFkhbFDB
+         JmAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:thread-index
-         :thread-topic:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:to:from:date;
-        bh=Sj4hE0ZDc5ZuV3iB5U2KDk0ZNJz/7XKL82ShlDK36qA=;
-        b=FeuaO4DndTc2eU51hFI7zkbt5jItPnIMCJc1OjYXd9aK/zI23R03c+7o+PRn1hXXZB
-         wkJn5xTI8vsuPVcZtyts/0WmIkxMAQ0ULF2MImvEjmCJAJe5y0k0DB1UcDL0+f/0JBjC
-         +8xkZ4n3XEFDGMK7pi2WWRbZyrD+dlrr1VgDLUXrX0neqxE+iTr4vIrh2I8i68QrczdG
-         1H+nccBgKUtV712V/b6OsVqLUm8IOVWYLPjkXgJG0zy4UKSoE8iKK6etG2QewDe99UIq
-         91Rv0LYcDa/JX8mEVNOcYQWd0SNY9ycQ1t5ztakEQuVaqoIEk0u2PRZYKd1LJ9B94WnU
-         SS+Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=eU3yjb19bzWPIW55LtxCJKJvOmfG1aEwrhqSx4AvaBU=;
+        b=QKLm1Imn1UDyQCmjVeSivZnguCfJEVNKLaV0ZVvU/fqpfTRW9uLi8t8cWoVgRNQZHc
+         vvWMXZoVilbhyNn6R7geIAsFVyhVxq8QZovG+gnJGekX5vjD1v7oq8TRMeuJ5XDKMpbT
+         uLJIyBVHizoHSJHitQYBTcNzYMKAv6mMC91r8QxuRjoP7xDUVWJ9bPgJkmFAoc3g1nYg
+         2IuPNYmB4GiBKbn5DTidYatAsy65J+xKleZHc8oD6fAxrUB+dZ5dB/a4FeMGViSeCO1e
+         6Zc/3yqchf2FR6bwTFS3tAYLT8NxADjCYbh2IjR2AkdUvdcTOLAQzDwasy5xSsVhu1gv
+         Zc8g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si13288871eje.348.2019.05.21.13.14.04
+        by mx.google.com with ESMTPS id n36si16088153edn.412.2019.05.22.01.21.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 May 2019 13:14:04 -0700 (PDT)
+        Wed, 22 May 2019 01:21:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:58903 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:38290 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hTB99-0000g2-Kb
-	for alex.bennee@linaro.org; Tue, 21 May 2019 16:14:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57976)
+	id 1hTMV8-0006gz-9K
+	for alex.bennee@linaro.org; Wed, 22 May 2019 04:21:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hTB8t-0000eK-Lr
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 16:13:48 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hTMUu-0006ep-81
+	for qemu-arm@nongnu.org; Wed, 22 May 2019 04:21:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hTB8r-0006rg-NB
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 16:13:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56894)
+	(envelope-from <imammedo@redhat.com>) id 1hTMUs-0008AR-6s
+	for qemu-arm@nongnu.org; Wed, 22 May 2019 04:21:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47330)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <crosa@redhat.com>) id 1hTB8q-0006Ax-3E
-	for qemu-arm@nongnu.org; Tue, 21 May 2019 16:13:45 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hTMUq-00087Z-8s; Wed, 22 May 2019 04:21:12 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B5DAB307EA8E;
-	Tue, 21 May 2019 20:13:21 +0000 (UTC)
-Received: from colo-mx.corp.redhat.com
-	(colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AD60760F8D;
-	Tue, 21 May 2019 20:13:21 +0000 (UTC)
-Received: from zmail17.collab.prod.int.phx2.redhat.com
-	(zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by colo-mx.corp.redhat.com (Postfix) with ESMTP id A47141833002;
-	Tue, 21 May 2019 20:13:21 +0000 (UTC)
-Date: Tue, 21 May 2019 16:13:18 -0400 (EDT)
-From: Cleber Rosa <crosa@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <1537277689.23920944.1558469598234.JavaMail.zimbra@redhat.com>
-In-Reply-To: <d22df06d-7fdc-0eca-286a-d411f87c4707@redhat.com>
-References: <20190520174758.GA31098@dhcp-17-231.bos.redhat.com>
-	<d22df06d-7fdc-0eca-286a-d411f87c4707@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 73DA981E0B;
+	Wed, 22 May 2019 08:21:01 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 40B21646DF;
+	Wed, 22 May 2019 08:20:54 +0000 (UTC)
+Date: Wed, 22 May 2019 10:20:50 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20190522102050.66515aa2@redhat.com>
+In-Reply-To: <20190521103215-mutt-send-email-mst@kernel.org>
+References: <20190521033249.1960-1-richardw.yang@linux.intel.com>
+	<20190521033249.1960-3-richardw.yang@linux.intel.com>
+	<20190520233614-mutt-send-email-mst@kernel.org>
+	<20190521162958.4415d4ac@redhat.com>
+	<20190521103215-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.18.17.231, 10.4.195.16]
-Thread-Topic: qemu-system-arm/aarch64 QMP hangs after kernel boots
-Thread-Index: TPm/LnSji4Nvyc0xLpUnnUi8gKbcHA==
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Tue, 21 May 2019 20:13:21 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Wed, 22 May 2019 08:21:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [BUG] qemu-system-arm/aarch64 QMP hangs after kernel
- boots
+Subject: Re: [Qemu-arm] [PATCH v5 2/2] acpi: pci: use build_append_foo() API
+ to construct MCFG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,90 +93,174 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, thuth@redhat.com,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	qemu-arm@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+	marcel.apfelbaum@gmail.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ywvhppZpDoOb
+X-TUID: lI8O693B9hHM
 
+On Tue, 21 May 2019 10:34:03 -0400
+"Michael S. Tsirkin" <mst@redhat.com> wrote:
 
-
------ Original Message -----
-> From: "Auger Eric" <eric.auger@redhat.com>
-> To: "Cleber Rosa" <crosa@redhat.com>
-> Cc: qemu-arm@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>
-> Sent: Monday, May 20, 2019 3:21:18 PM
-> Subject: Re: [BUG] qemu-system-arm/aarch64 QMP hangs after kernel boots
+> On Tue, May 21, 2019 at 04:29:58PM +0200, Igor Mammedov wrote:
+> > On Mon, 20 May 2019 23:37:22 -0400
+> > "Michael S. Tsirkin" <mst@redhat.com> wrote:
+> >   
+> > > On Tue, May 21, 2019 at 11:32:49AM +0800, Wei Yang wrote:  
+> > > > build_append_foo() API doesn't need explicit endianness conversions
+> > > > which eliminates a source of errors and it makes build_mcfg() look like
+> > > > declarative definition of MCFG table in ACPI spec, which makes it easy
+> > > > to review.
+> > > > 
+> > > > Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> > > > Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> > > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> > > > 
+> > > > ---
+> > > > v5:
+> > > >    * miss the reserved[8] of MCFG in last version, add it back
+> > > >    * drop SOBs and make sure bios-tables-test all OK
+> > > > ---    
+> > > 
+> > > 
+> > > Please do not add two --- separators. It breaks git am.  
+> > that worked just fine for the last xx years and still works for me.  
 > 
-> Hi Cleber,
+> Because you don't use git am?
+> It's true I often am forced to edit your patches to apply them.
+> Pls do not do this it makes no sense.
+
+I do not use it as much as you, but I do use git am to test patches from
+list and it works with double separator as expected (the second separator
+is ignored).
+
+> > > One --- should come after the commit log. Anything after that and
+> > > until diff is ignored anyway.  
+> > That's fine if we wish to commit change log into history, but
+> > Typically we don't want change log to be committed (as it's useless from history pov),
+> > hence we put it after separator to get it dropped on applying.  
 > 
-> On 5/20/19 7:47 PM, Cleber Rosa wrote:
-> > Hi,
-> > 
-> > This is just a FIY about the following bug report:
-> > 
-> >  - https://bugs.launchpad.net/qemu/+bug/1829779
-> > 
-> > And add some extra clarifications that I've tested extensively the
-> > behavior of other targets (all that have a similar test under
-> > tests/acceptance/boot_linux_console.py) and none exhibited the same
-> > behavior.
-> > 
-> > Also, because qemu-system-arm and aarch64 sometimes fails on the very
-> > first QMP command, the regular boot test sometimes will hang on a
-> > "quit" command that happens when the test run its "tear down" and
-> > attempts to cleanly shut down the "vm".
-> > 
-> > Let me know if I can be of any further help.
+> Then you should do
+
+the problem is that the second separator is added by git, so one
+would have to edit it out after format-patch (which is error prone in
+case of multi-patch series).
+
+I don't know much about git though, so could you suggest how to handle
+situation to avoid the second --- (i.e. how do you do it)?
+
+PS:
+There is 'git notes' to add/track per patch annotations, but it a bit
+tedious to use notes compared to in-lining change log in commit message.
+
+> build_append_foo() API doesn't need explicit endianness conversions
+> which eliminates a source of errors and it makes build_mcfg() look like
+> declarative definition of MCFG table in ACPI spec, which makes it easy
+> to review.
 > 
-> Thanks for reporting the problem. I hit the problem recently with
-> device_del commands which did not seem to get any response on guest
-> side. On my side, this happened erratically.
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > 
-> I will try to reproduce it again.
+> ---
+> v5:
+>    * miss the reserved[8] of MCFG in last version, add it back
+>    * drop SOBs and make sure bios-tables-test all OK
+
+
+
 > 
-> Thanks
+>  hw/acpi/pci.c               | 35 +++++++++++++++++++++++------------
+>  include/hw/acpi/acpi-defs.h | 18 ------------------
+>  2 files changed, 23 insertions(+), 30 deletions(-)
 > 
-> Eric
+> diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
 > 
+> 
+> Anything between --- and diff is ignored. Second --- is poointless and
+> harmful.
+> 
+> > >   
+> > > >  hw/acpi/pci.c               | 35 +++++++++++++++++++++++------------
+> > > >  include/hw/acpi/acpi-defs.h | 18 ------------------
+> > > >  2 files changed, 23 insertions(+), 30 deletions(-)
+> > > > 
+> > > > diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+> > > > index fa0fa30bb9..49df7b7d54 100644
+> > > > --- a/hw/acpi/pci.c
+> > > > +++ b/hw/acpi/pci.c
+> > > > @@ -30,17 +30,28 @@
+> > > >  
+> > > >  void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+> > > >  {
+> > > > -    AcpiTableMcfg *mcfg;
+> > > > -    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
+> > > > -
+> > > > -    mcfg = acpi_data_push(table_data, len);
+> > > > -    mcfg->allocation[0].address = cpu_to_le64(info->base);
+> > > > -
+> > > > -    /* Only a single allocation so no need to play with segments */
+> > > > -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+> > > > -    mcfg->allocation[0].start_bus_number = 0;
+> > > > -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+> > > > -
+> > > > -    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+> > > > +    int mcfg_start = table_data->len;
+> > > > +
+> > > > +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> > > > +
+> > > > +    /*
+> > > > +     * PCI Firmware Specification, Revision 3.0
+> > > > +     * 4.1.2 MCFG Table Description.
+> > > > +     */
+> > > > +    /* Reserved */
+> > > > +    build_append_int_noprefix(table_data, 0, 8);
+> > > > +    /* Base address, processor-relative */
+> > > > +    build_append_int_noprefix(table_data, info->base, 8);
+> > > > +    /* PCI segment group number */
+> > > > +    build_append_int_noprefix(table_data, 0, 2);
+> > > > +    /* Starting PCI Bus number */
+> > > > +    build_append_int_noprefix(table_data, 0, 1);
+> > > > +    /* Final PCI Bus number */
+> > > > +    build_append_int_noprefix(table_data, PCIE_MMCFG_BUS(info->size - 1), 1);
+> > > > +    /* Reserved */
+> > > > +    build_append_int_noprefix(table_data, 0, 4);
+> > > > +
+> > > > +    build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
+> > > > +                 "MCFG", table_data->len - mcfg_start, 1, NULL, NULL);
+> > > >  }
+> > > >  
+> > > > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > > > index f9aa4bd398..57a3f58b0c 100644
+> > > > --- a/include/hw/acpi/acpi-defs.h
+> > > > +++ b/include/hw/acpi/acpi-defs.h
+> > > > @@ -449,24 +449,6 @@ struct AcpiSratProcessorGiccAffinity {
+> > > >  
+> > > >  typedef struct AcpiSratProcessorGiccAffinity AcpiSratProcessorGiccAffinity;
+> > > >  
+> > > > -/* PCI fw r3.0 MCFG table. */
+> > > > -/* Subtable */
+> > > > -struct AcpiMcfgAllocation {
+> > > > -    uint64_t address;                /* Base address, processor-relative */
+> > > > -    uint16_t pci_segment;            /* PCI segment group number */
+> > > > -    uint8_t start_bus_number;       /* Starting PCI Bus number */
+> > > > -    uint8_t end_bus_number;         /* Final PCI Bus number */
+> > > > -    uint32_t reserved;
+> > > > -} QEMU_PACKED;
+> > > > -typedef struct AcpiMcfgAllocation AcpiMcfgAllocation;
+> > > > -
+> > > > -struct AcpiTableMcfg {
+> > > > -    ACPI_TABLE_HEADER_DEF;
+> > > > -    uint8_t reserved[8];
+> > > > -    AcpiMcfgAllocation allocation[0];
+> > > > -} QEMU_PACKED;
+> > > > -typedef struct AcpiTableMcfg AcpiTableMcfg;
+> > > > -
+> > > >  /*
+> > > >   * TCPA Description Table
+> > > >   *
+> > > > -- 
+> > > > 2.19.1    
 
-I have an update on this.  Eric and myself attempted to zero in the
-exact cause.  A few things we discovered:
-
- 1) It has nothing to do with having a kernel running
- 2) It has to do with having a chardev that is a server socket.  This
-    test produces command line arguments such as:
-
-   -chardev socket,id=console,path=<path>.sock,server,nowait \
-   -serial chardev:console
-
- 3) It doesn't seem to have a connection to the test infrastructure code
-    (python/qemu/qmp/*), as a I made a number of experiments which
-    yielded no differences in behavior.
-
-So, the reproducer given at:
-
- https://github.com/clebergnu/qemu/commit/c778e28c24030c4a36548b714293b319f4bf18df
-
-Continues to be be valid (and continues to be limited to arm and aarch64).
-Now, after a number of experiments, the following was found to be a 100%
-reproducible *workaround*:
-
- https://github.com/clebergnu/qemu/commit/e1713f3b91972ad57c089f276c54db3f3fa63423
-
-That basically shutdowns the *console* socket before proceeding with further QMP
-interaction.  The effectiveness of the workaround can be seen here:
-
- aarch64 command line:
-  - https://travis-ci.org/clebergnu/qemu/jobs/535459499#L3633
- aarch64 QMP interaction:
-  - https://travis-ci.org/clebergnu/qemu/jobs/535459499#L3663
-
- arm command line:
-  - https://travis-ci.org/clebergnu/qemu/jobs/535459499#L3747
- arm QMP interaction:
-  - https://travis-ci.org/clebergnu/qemu/jobs/535459499#L3767
-
-I hope this provides a few more hints into the real issue.
-
-Regards,
-- Cleber.

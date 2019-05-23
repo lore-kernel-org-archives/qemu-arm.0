@@ -1,114 +1,121 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1710366wrg;
-        Thu, 23 May 2019 06:13:57 -0700 (PDT)
-X-Received: by 2002:a9d:6a15:: with SMTP id g21mr25038otn.28.1558617237148;
-        Thu, 23 May 2019 06:13:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558617237; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1850973wrg;
+        Thu, 23 May 2019 08:12:17 -0700 (PDT)
+X-Received: by 2002:a67:f297:: with SMTP id m23mr44220509vsk.109.1558624336948;
+        Thu, 23 May 2019 08:12:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558624336; cv=none;
         d=google.com; s=arc-20160816;
-        b=abEWSoY1OeTP5NU6hk4cFUX8DDE1d5EYV2Lb3i7Q3PHS427ZlEhRVELDizztI0/tLY
-         zQmbXjLLOvZr5NuB6ClpafYBdj75sdGBZKY3tdGY+KCjTpWWPiIL8Q8cLVzEvb8RtRQ7
-         +iSMttjf+hD3vZ/smQssGgtFHn8M1+nQjdmsRPaK8mPQvGM4khizvA4Lrrh+9RR7qmfs
-         U72BXG4aF80ANy1Jr2XgkPhhM5MD5N1pH33CxAf69vGkcLJui7nvcuTonJYvGl1g2NoJ
-         PzIbvvnwrkgmwhOFkPlN4np5+APYQ1TpEszVNQ4TQAkDe61OkVrb+K/gcsuodEwJ6PGb
-         3IpQ==
+        b=0RJaOxCa4IJRhVMsqPHbYGfJ6TT5CD9TZRlsS+rYx4wpzrRVDeY3trE6PEdzdILBHx
+         cav5kuw6RyHOng/SJkyUWg3/U5xj0ZAQyBSmcIh1eobpa7nZVxH339vkqgkJnU1WkevJ
+         wuLHN1WiGnPM3023TKs/U1fgIE7hJHcUame3lQeqsDi23iaoJ2tZ0ONNe2bqK6TMElaR
+         lnAJnVffS31WcTC42V3HBE/hX37D1E0NYwF2GzFRM7zxH/yvmjPR/598nSXvozMX5k0L
+         N7pUbMnIvc/k5t5SolrI2L5NckXzSNwbFFXfrT1BkLYg7MMPDd1dzFtgiCpWRkUQHISb
+         MGAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=U2iVYj/7S3oFIUn2xzRgUZmnOUcEYNllGFKpnulnzYQ=;
-        b=jmV5cZaVslZTOYpUOnp6XJCV2BgP62Y1olOvlMTj845MmRgdcgh317Howz1RBBkCV1
-         r7TvUlkDxa9IGXTQ/LvhfB4pAG5zQcDAaZgYSH23X5J4oZjq2R+of+yNUiRrU4muVh/n
-         dc4UGbAmdnKpdgXof/CxX3GMtQmVxDNqfjF6SapHyoCPTFBwL82MeQhAqbcHGcO6DLsg
-         /yJ4KqtgU1eIqkUVk7Js3ZYM7SF9eyEPNrLhh2KadmTQBkN89H4Gk89QqTOuaHYU145z
-         3ktleb+/Sbc2Pb5I326L5GjdOU1NDPhTodK+bh0IHgY5K4f5LCtyYBfSxJWbVF56RXWK
-         tAXg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=VtX4706PwqW+Myap8+XCUmAg/m3A5RvWOGN+9V+MaPc=;
+        b=GZZpasrzHnKYENxNcPVyovLp8y9eZwZ5e2FEB73NnT+0QEV9c3TgtO2VncSyVWIJPe
+         HuiyAavfW5I5oA6EupISNHc8JyBdj/IsC7YjHSn2B5YmLEcT6JCzSv+Ib0nqyruyRfvf
+         TacXSEKPqUJ0I8FjhRnKWP4uO/vyi1iDdw34iaCFvO6tt+cESVXJqkJNJk8hsIN40smt
+         ObgPNiMSaKmTusdO0i1Bg9oplb8eAWvKPpuhCG3Wqk1AbAwtxrdVL8LWhbkdCxN3ZP92
+         /x91PR5+PbfJSGchfBaeymPTICMESwiRijtSR/KT0anL/ztBvMUQ/oDbbu7MWjV5oTEA
+         HuTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=brJEw8og;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypFqGqnD;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 107sor12780747otj.120.2019.05.23.06.13.56
+        by mx.google.com with SMTPS id h12sor5537648uar.53.2019.05.23.08.12.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 May 2019 06:13:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 23 May 2019 08:12:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=brJEw8og;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypFqGqnD;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=U2iVYj/7S3oFIUn2xzRgUZmnOUcEYNllGFKpnulnzYQ=;
-        b=brJEw8og8gg6wi+hx+2u9R7leL5O3vUYTzHxzilRT5eRGPfAMFRWXi7gToZPfsPHUU
-         UtwDQ/rNUX/u7DGD3sd85lB/W0NKBl0rnHd0iWNr0bpGfp/85So/MmzYycjHrG+orvVu
-         4VS4h5qx0KPq7AVmeq2HFKaEveV1JU0MX0zw5bDdQL2ed3w82fqyTgZH6JTI8oQZ3+5b
-         KqUg/qXih1DLxbDnotkCoFxI0WHt9v1dFga+YZrUABMrOsXBxVRfog5GxupdhyGm0/e5
-         ugtLbwCkDQ9dFV3xYIuMALCwxnPGzxtQwItm6Z1DEkvdy3RttOnPr5AdGZwTBKY45Njz
-         UuZg==
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=VtX4706PwqW+Myap8+XCUmAg/m3A5RvWOGN+9V+MaPc=;
+        b=ypFqGqnDy2VJFE3RjhUVHdp5AEDZQzvID8CAm2X/ews9H9kfm4Ck65QjIoFCOSD7s4
+         vgo8NAaBkpsZhw1ycf1LwJKz3mrxR2+uKcZG0x3jByN99pTzm49K7hZUG0kWN01t8nrj
+         p5pVc9tf1iexOlUukJZCn2vyxCxtfDBlur3udmbG0S5nSQLernDfjw+8YVCKHRPJzTv6
+         f1bzmvzo72lCpdnmcMjeeZTEC5n/agjqXBdFb6aXDR8oJ/MjfIR0X+rti00HyJ6K4UeJ
+         e5uv+8FpvYeLZ1FG7J34yWcVFm3UCm2/NrSJkvoMve+amLzn3vjPaSffVsd/4Ml3g/mn
+         aXAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=U2iVYj/7S3oFIUn2xzRgUZmnOUcEYNllGFKpnulnzYQ=;
-        b=aQBCTHHVa1zVborBEythU+3QuhMpgBUBvUgL9oqkg9W6RDvIdtwZHyBAAH45J5jxDn
-         5BTZjnhXw8pWN8C4lC4XA7SG4cbPoSE961SAqHuaRD2u6DzCDveZOjEwvKoZ6DVFznoQ
-         VkJlW1pmNwJtvbm+hrmcsIBddMkqg2xttSyxOJ0ZU2EMnnesfq8WVq3MfBe3MfGSJ1wm
-         XXN3hRzlvsZHwTSL2IaEDmlAOdfiCSOu2pynCtFNbeVUjJUSpek+ucmZRc2LfR3iG1qj
-         JV8Io/e3fT8i9oiH9nM6zJaNIv65zp08oRvDgjTT/0zsQkzZUgj6uN80koU9HTHVCVOw
-         8DAw==
-X-Gm-Message-State: APjAAAWuusV9QmPXBSDbtl0hngNGU+5MqG0rPKDm7tUOfik+zuHGfsa8
-	KiEzf8kRI1zZh/BkWO6wpZyitInz5PZIrb7Oeq0G/sQOJXlGvQ==
-X-Google-Smtp-Source: APXvYqwNWD8vPnIsDJ5z3VpA4DRRTa057rQHjnPem3IoDj3949SQL7PDIJA+KYIk3S2ZxUAgVwJ/EuwGWXn7eB2RvJA=
-X-Received: by 2002:a05:6830:149a:: with SMTP id s26mr27782769otq.221.1558617236419;
- Thu, 23 May 2019 06:13:56 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=VtX4706PwqW+Myap8+XCUmAg/m3A5RvWOGN+9V+MaPc=;
+        b=QR9dl+GcOjowf7H/lulc6O5SSg25CIMqyBVQr2118xEPCxwT2iUsJq8Xj4kzA6EF2L
+         hvhjXsHN/ts5p7oxBWgo1tSoH+Fiq6rHPkKT5IciIXKXdNRFZ0KwBSv49Wq7F9iXjC3W
+         L13x4CGod7iYIklD/UQnAvDkLbTCaY8MpKIbeq8V5PXFlGHlfJf1FKZ+dMkuu9SmkhiD
+         kTJFy60d3umI+UltS43HV0NjnQig2YMuWgFNEIItoGjXIHx4IobZNjj8aboAK61PjB3Z
+         CzdJRf/YeON68ecqU8lHsy0o3itzYEjVJ/r/HHdmnAgihE3HErVGdmDUsPY72jNYF25c
+         fJSQ==
+X-Gm-Message-State: APjAAAU8g0kYIoamJSPGUsJ++mqjtr01J7NrxluaSF56t1CZ1DPShe/2
+	CQmt44VIu+gs9Kp6JzSZHrNm6PBp
+X-Google-Smtp-Source: APXvYqzT3Kwo2woL6jg4oUyvmyCrNYbrR+4hmpr8v/MUKLqLAig7EoKu4Pj+niVmhPAg5l864B2UYQ==
+X-Received: by 2002:a9f:3dc6:: with SMTP id e6mr45710277uaj.33.1558624336440;
+        Thu, 23 May 2019 08:12:16 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.43.94] (ip-173-130-215-183.orldfl.spcsdns.net. [173.130.215.183])
+        by smtp.gmail.com with ESMTPSA id e76sm18055059vke.54.2019.05.23.08.12.14
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 23 May 2019 08:12:15 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 06/28] target/arm: use the common
+ interface for WRITE0/WRITEC in arm-semi
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Riku Voipio
+ <riku.voipio@iki.fi>, qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+References: <20190523102532.10486-1-alex.bennee@linaro.org>
+ <20190523102532.10486-7-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <ff7b3b75-1e08-cb51-5070-2042b9a329ab@linaro.org>
+Date: Thu, 23 May 2019 11:12:12 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190523102532.10486-1-alex.bennee@linaro.org> <20190523102532.10486-4-alex.bennee@linaro.org>
-In-Reply-To: <20190523102532.10486-4-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 May 2019 14:13:45 +0100
-Message-ID: <CAFEAcA_+=7VfvZRc__q9L3vuHO6YgetrjTPAYJx4eo0mAdcPXg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 03/28] semihosting: implement a
- semihosting console
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: k3AI8kuwtK/D
+In-Reply-To: <20190523102532.10486-7-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 75NZl8WeKWkG
 
-On Thu, 23 May 2019 at 11:39, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> This provides two functions for handling console output that handle
-> the common backend behaviour for semihosting.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+On 5/23/19 6:25 AM, Alex Bennée wrote:
+>      case TARGET_SYS_WRITEC:
+> -        {
+> -          char c;
+> -
+> -          if (get_user_u8(c, args))
+> -              /* FIXME - should this error code be -TARGET_EFAULT ? */
+> -              return (uint32_t)-1;
+> -          /* Write to debug console.  stderr is near enough.  */
+> -          if (use_gdb_syscalls()) {
+> -                return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,1", args);
+> -          } else {
+> -                return write(STDERR_FILENO, &c, 1);
+> -          }
+> -        }
+> +    {
+> +        qemu_semihosting_console_out(env, args, 1);
+> +        return 0xdeadbeef;
+> +    }
+>      case TARGET_SYS_WRITE0:
 
-> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> index 08363969c14..b2963547c48 100644
-> --- a/include/exec/gdbstub.h
-> +++ b/include/exec/gdbstub.h
-> @@ -44,6 +44,17 @@ void gdb_do_syscall(gdb_syscall_complete_cb cb, const =
-char *fmt, ...);
->   * argument list.
->   */
->  void gdb_do_syscallv(gdb_syscall_complete_cb cb, const char *fmt, va_lis=
-t va);
-> +/**
-> + * gdb_do_console_out:
-> + * @gs: guest address of string to send
-> + * @len: length of string
-> + *
-> + * Sends a string to gdb console. Unlike the system call interface
-> + * there is no callback and we assume the system call always
-> + * succeeds.
-> + */
-> +void gdb_do_console_out(target_ulong s, int len);
+You can drop the braces now that "char c" is gone,
+which will then fix the indentation.
 
-I'm not sure about the "no callback" part of this API. The operation
-here is genuinely asynchronous and providing no mechanism for the
-caller to be able to say "ok, now wait til it completes" doesn't
-seem like a good plan.
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+
+r~

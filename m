@@ -1,651 +1,167 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id a22sm7220172wma.41.2019.05.23.03.33.42
+        by smtp.gmail.com with ESMTPSA id c18sm25591581wrm.7.2019.05.23.03.33.43
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 23 May 2019 03:33:44 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 530A51FFA9;
+	by zen.linaroharston (Postfix) with ESMTP id E9B0C1FFB1;
 	Thu, 23 May 2019 11:25:34 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-Subject: [PATCH  v2 21/28] tests/tcg/alpha: add system boot.S
-Date: Thu, 23 May 2019 11:25:25 +0100
-Message-Id: <20190523102532.10486-22-alex.bennee@linaro.org>
+	Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH  v2 28/28] tests: Run the iotests during "make check" again
+Date: Thu, 23 May 2019 11:25:32 +0100
+Message-Id: <20190523102532.10486-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523102532.10486-1-alex.bennee@linaro.org>
 References: <20190523102532.10486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: JxMsjd0Fkmkv
+X-TUID: IvTogsI+YZR6
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-This provides the bootstrap and low level helper functions for an
-alpha kernel.  We use direct access to the DP264 serial port for
-test output, and hard machine halt to exit the emulation.
+People often forget to run the iotests before submitting patches or
+pull requests - this is likely due to the fact that we do not run the
+tests during our mandatory "make check" tests yet. Now that we've got
+a proper "auto" group of iotests that should be fine to run in every
+environment, we can enable the iotests during "make check" again by
+running the "auto" tests by default from the check-block.sh script.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20190501184306.15208-1-richard.henderson@linaro.org>
+Some cases still need to be checked first, though: iotests need bash
+and GNU sed (otherwise they fail), and if gprof is enabled, it spoils
+the output of some test cases causing them to fail. So if we detect
+that one of the required programs is missing or that gprof is enabled,
+we still have to skip the iotests to avoid failures.
+
+And finally, since we are using check-block.sh now again, this patch also
+removes the qemu-iotests-quick.sh script since we do not need that anymore
+(and having two shell wrapper scripts around the block tests seem
+rather confusing than helpful).
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190502084506.8009-8-thuth@redhat.com>
+[AJB: -makecheck to check-block.sh, move check-block to start&gate it]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- MAINTAINERS                             |   1 +
- tests/tcg/alpha/Makefile.softmmu-target |  34 ++
- tests/tcg/alpha/system/boot.S           | 511 ++++++++++++++++++++++++
- tests/tcg/alpha/system/kernel.ld        |  30 ++
- 4 files changed, 576 insertions(+)
- create mode 100644 tests/tcg/alpha/Makefile.softmmu-target
- create mode 100644 tests/tcg/alpha/system/boot.S
- create mode 100644 tests/tcg/alpha/system/kernel.ld
+ tests/Makefile.include      |  8 +++----
+ tests/check-block.sh        | 44 ++++++++++++++++++++++++++++---------
+ tests/qemu-iotests-quick.sh |  8 -------
+ 3 files changed, 38 insertions(+), 22 deletions(-)
+ delete mode 100755 tests/qemu-iotests-quick.sh
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c4f209898a9..546a1431ea3 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -470,6 +470,7 @@ M: Richard Henderson <rth@twiddle.net>
- S: Maintained
- F: hw/alpha/
- F: hw/isa/smc37c669-superio.c
-+F: tests/tcg/alpha/system/
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 1865f6b3222..0c6d8c75941 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -140,7 +140,7 @@ check-unit-y += tests/test-uuid$(EXESUF)
+ check-unit-y += tests/ptimer-test$(EXESUF)
+ check-unit-y += tests/test-qapi-util$(EXESUF)
  
- ARM Machines
- ------------
-diff --git a/tests/tcg/alpha/Makefile.softmmu-target b/tests/tcg/alpha/Makefile.softmmu-target
-new file mode 100644
-index 00000000000..3c0f34cc692
---- /dev/null
-+++ b/tests/tcg/alpha/Makefile.softmmu-target
-@@ -0,0 +1,34 @@
-+#
-+# Alpha system tests
-+#
-+
-+ALPHA_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/alpha/system
-+VPATH+=$(ALPHA_SYSTEM_SRC)
-+
-+# These objects provide the basic boot code and helper functions for all tests
-+CRT_OBJS=boot.o
-+
-+ALPHA_TEST_SRCS=$(wildcard $(ALPHA_SYSTEM_SRC)/*.c)
-+ALPHA_TESTS = $(patsubst $(ALPHA_SYSTEM_SRC)/%.c, %, $(ALPHA_TEST_SRCS))
-+
-+CRT_PATH=$(ALPHA_SYSTEM_SRC)
-+LINK_SCRIPT=$(ALPHA_SYSTEM_SRC)/kernel.ld
-+LDFLAGS=-Wl,-T$(LINK_SCRIPT)
-+TESTS+=$(ALPHA_TESTS) $(MULTIARCH_TESTS)
-+CFLAGS+=-nostdlib -g -O1 -mcpu=ev6 $(MINILIB_INC)
-+LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+
-+# building head blobs
-+.PRECIOUS: $(CRT_OBJS)
-+
-+%.o: $(CRT_PATH)/%.S
-+	$(CC) $(CFLAGS) -x assembler-with-cpp -c $< -o $@
-+
-+# Build and link the tests
-+%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
-+	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
-+
-+memory: CFLAGS+=-DCHECK_UNALIGNED=0
-+
-+# Running
-+QEMU_OPTS+=-serial chardev:output -kernel
-diff --git a/tests/tcg/alpha/system/boot.S b/tests/tcg/alpha/system/boot.S
-new file mode 100644
-index 00000000000..9791b1ef7c8
---- /dev/null
-+++ b/tests/tcg/alpha/system/boot.S
-@@ -0,0 +1,511 @@
-+/*
-+ * Minimal Alpha system boot code.
-+ *
-+ * Copyright Linaro Ltd 2019
-+ */
-+
-+	.set	noat
-+	.set	nomacro
-+	.arch	ev6
-+	.text
-+
-+.macro load_pci_io reg
-+	/* For typhoon, this is
-+	 *   0xfffffc0000000000  -- kseg identity map
-+	 * +      0x10000000000  -- typhoon pio base
-+	 * +        0x1fc000000  -- typhoon pchip0 pci base
-+	 * = 0xfffffd01fc000000
-+	 */
-+	ldah	\reg, -3		/* ff..fd0000 */
-+	lda	\reg, 0x1fc(\reg)	/* ff..fd01fc */
-+	sll	\reg, 24, \reg
-+.endm
-+
-+#define com1Rbr 0x3f8
-+#define com1Thr 0x3f8
-+#define com1Ier 0x3f9
-+#define com1Iir 0x3fa
-+#define com1Lcr 0x3fb
-+#define com1Mcr 0x3fc
-+#define com1Lsr 0x3fd
-+#define com1Msr 0x3fe
-+#define com1Scr 0x3ff
-+#define com1Dll 0x3f8
-+#define com1Dlm 0x3f9
-+
-+#define PAL_halt    0
-+#define PAL_wrent  52
-+#define PAL_wrkgp  55
-+
-+	.text
-+	.p2align 4
-+	.globl	_start
-+	.ent	_start
-+_start:
-+	br	$gp, .+4
-+	ldah	$gp, 0($gp)		!gpdisp!1
-+	lda	$gp, 0($gp)		!gpdisp!1
-+
-+	ldah	$sp, $stack_end($gp)	!gprelhigh
-+	lda	$sp, $stack_end($sp)	!gprellow
-+
-+	/* Install kernel gp for exception handlers.  */
-+	mov	$gp, $16
-+	call_pal PAL_wrkgp
-+
-+	/* Install exception handlers.  */
-+	ldah	$16, entInt($gp)	!gprelhigh
-+	lda	$16, entInt($16)	!gprellow
-+	lda	$17, 0
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entArith($gp)	!gprelhigh
-+	lda	$16, entArith($16)	!gprellow
-+	lda	$17, 1
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entMM($gp)		!gprelhigh
-+	lda	$16, entMM($16)		!gprellow
-+	lda	$17, 2
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entIF($gp)		!gprelhigh
-+	lda	$16, entIF($16)		!gprellow
-+	lda	$17, 3
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entUna($gp)	!gprelhigh
-+	lda	$16, entUna($16)	!gprellow
-+	lda	$17, 4
-+	call_pal PAL_wrent
-+
-+	ldah	$16, entSys($gp)	!gprelhigh
-+	lda	$16, entSys($16)	!gprellow
-+	lda	$17, 5
-+	call_pal PAL_wrent
-+
-+	/*
-+	 * Initialize COM1.
-+	 */
-+	load_pci_io $1
-+	lda	$2, 0x87		/* outb(0x87, com1Lcr); */
-+	stb	$2, com1Lcr($1)
-+	stb	$31, com1Dlm($1)	/* outb(0, com1Dlm); */
-+	lda	$2, 3			/* baudconst 3 => 56000 */
-+	stb	$2, com1Dll($1)		/* outb(baudconst, com1Dll); */
-+	lda	$2, 0x07
-+	stb	$2, com1Lcr($1)		/* outb(0x07, com1Lcr) */
-+	lda	$2, 0x0f
-+	stb	$2, com1Mcr($1)		/* outb(0x0f, com1Mcr) */
-+
-+	bsr	$26, main		!samegp
-+
-+	/* fall through to _exit */
-+	.end	_start
-+
-+	.globl	_exit
-+	.ent	_exit
-+_exit:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	/* We cannot return an error code.  */
-+	call_pal PAL_halt
-+	.end	_exit
-+
-+/*
-+ * We have received an exception that we don't handle.  Log and exit.
-+ */
-+	.ent	log_exit
-+log_exit:
-+entInt:
-+entArith:
-+entMM:
-+entIF:
-+entUna:
-+entSys:
-+	ldah	$16, $errormsg($gp)	!gprelhigh
-+	lda	$16, $errormsg($16)	!gprellow
-+	bsr	$26, __sys_outs		!samegp
-+	bsr	$26, _exit		!samegp
-+	.end	log_exit
-+
-+	.section .rodata
-+$errormsg:
-+	.string "Terminated by exception.\n"
-+	.previous
-+
-+	/*
-+	 * Helper Functions
-+	 */
-+
-+	/* Output a single character to serial port */
-+	.global __sys_outc
-+	.ent	__sys_outc
-+__sys_outc:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	load_pci_io $1
-+
-+	/* 
-+	 * while ((inb(com1Lsr) & 0x20) == 0)
-+	 *       continue;
-+	 */
-+1:	ldbu	$0, com1Lsr($1)
-+	and	$0, 0x20, $0
-+	beq	$0, 1b
-+
-+	/* outb(c, com1Thr); */
-+	stb	$16, com1Thr($1)
-+	ret
-+	.end	__sys_outc
-+
-+	/* Output a nul-terminated string to serial port */
-+	.global	__sys_outs
-+	.ent	__sys_outs
-+__sys_outs:
-+	.frame	$sp, 0, $26, 0
-+	.prologue 0
-+
-+	load_pci_io $1
-+
-+	ldbu	$2, 0($16)
-+	beq	$2, 9f
-+
-+	/* 
-+	 * while ((inb(com1Lsr) & 0x20) == 0)
-+	 *       continue;
-+	 */
-+1:	ldbu	$0, com1Lsr($1)
-+	and	$0, 0x20, $0
-+	beq	$0, 1b
-+
-+	/* outb(c, com1Thr); */
-+	stb	$2, com1Thr($1)
-+
-+	addq	$16, 1, $16
-+	ldbu	$2, 0($16)
-+	bne	$2, 1b
-+
-+9:	ret
-+	.end	__sys_outs
-+
-+/*
-+ * Division routines that are normally in libc.
-+ *
-+ * These do not follow the C calling convention.  Arguments are in $24+$25,
-+ * the result is in $27.  Register $28 may be clobbered; everything else
-+ * must be saved.
-+ *
-+ * We store the remainder in $28, so that we can share code.
-+ *
-+ * We do not signal divide by zero.
-+ */
-+
-+/*
-+ * Unsigned 64-bit division.
-+ */
-+
-+	.globl	__divqu
-+	.ent	__divqu
-+__divqu:
-+	.frame	$sp, 48, $23
-+	subq	$sp, 48, $sp
-+	stq	$0, 0($sp)
-+	stq	$1, 8($sp)
-+	stq	$2, 16($sp)
-+	stq	$3, 24($sp)
-+	stq	$4, 32($sp)
-+	.prologue 0
-+
-+#define mask     $0
-+#define divisor  $1
-+#define compare  $2
-+#define tmp1     $3
-+#define tmp2     $4
-+#define quotient $27
-+#define modulus  $28
-+
-+	mov	$24, modulus
-+	mov	$25, divisor
-+	mov	$31, quotient
-+	mov	1, mask
-+	beq	$25, 9f
-+
-+	/* Shift left until divisor >= modulus.  */
-+1:	cmpult	divisor, modulus, compare
-+	blt	divisor, 2f
-+	addq	divisor, divisor, divisor
-+	addq	mask, mask, mask
-+	bne	compare, 1b
-+
-+2:	addq	quotient, mask, tmp2
-+	srl	mask, 1, mask
-+	cmpule	divisor, modulus, compare
-+	subq	modulus, divisor, tmp1
-+	cmovne	compare, tmp2, quotient
-+	srl	divisor, 1, divisor
-+	cmovne	compare, tmp1, modulus
-+	bne	mask, 2b
-+
-+9:	ldq	$0, 0($sp)
-+	ldq	$1, 8($sp)
-+	ldq	$2, 16($sp)
-+	ldq	$3, 24($sp)
-+	ldq	$4, 32($sp)
-+	addq	$sp, 48, $sp
-+	ret	$31, ($23), 1
-+
-+#undef mask
-+#undef divisor
-+#undef compare
-+#undef tmp1
-+#undef tmp2
-+#undef quotient
-+#undef modulus
-+
-+	.end	__divqu
-+
-+/*
-+ * Unsigned 64-bit remainder.
-+ * Note that __divqu above leaves the result in $28.
-+ */
-+
-+	.globl	__remqu
-+	.ent	__remqu
-+__remqu:
-+	.frame	$sp, 16, $23
-+	subq	$sp, 16, $sp
-+	stq	$23, 0($sp)
-+	.prologue 0
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	mov	$28, $27
-+	addq	$sp, 16, $sp
-+	ret	$31, ($23), 1
-+	.end	__remqu
-+
-+/*
-+ * Signed 64-bit division.
-+ */
-+
-+	.globl	__divqs
-+	.ent	__divqs
-+__divqs:
-+	.prologue 0
-+
-+	/* Common case: both arguments are positive.  */
-+	bis	$24, $25, $28
-+	bge	$28, __divqu
-+
-+	/* At least one argument is negative.  */
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* -a / b = a / -b = -(a / b) */
-+	subq	$31, $27, $23
-+	xor	$24, $25, $28
-+	cmovlt	$28, $23, $27
-+
-+	ldq	$23, 0($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divqs
-+
-+/*
-+ * Signed 64-bit remainder.
-+ */
-+
-+	.globl	__remqs
-+	.ent	__remqs
-+__remqs:
-+	.prologue 0
-+
-+	/* Common case: both arguments are positive.  */
-+	bis	$24, $25, $28
-+	bge	$28, __remqu
-+
-+	/* At least one argument is negative.  */
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* -a % b = -(a % b); a % -b = a % b.  */
-+	subq	$31, $28, $27
-+	cmovge	$24, $28, $27
-+
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remqs
-+
-+/*
-+ * Unsigned 32-bit division.
-+ */
-+
-+	.globl	__divlu
-+	.ent	__divlu
-+__divlu:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Zero extend and use the 64-bit routine.  */
-+	zap	$24, 0xf0, $24
-+	zap	$25, 0xf0, $25
-+	bsr	$23, __divqu
-+
-+	addl	$27, 0, $27
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divlu
-+
-+/*
-+ * Unsigned 32-bit remainder.
-+ */
-+
-+	.globl	__remlu
-+	.ent	__remlu
-+__remlu:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Zero extend and use the 64-bit routine.  */
-+	zap	$24, 0xf0, $24
-+	zap	$25, 0xf0, $25
-+	bsr	$23, __divqu
-+
-+	/* Recall that the remainder is returned in $28.  */
-+	addl	$28, 0, $27
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remlu
-+
-+/*
-+ * Signed 32-bit division.
-+ */
-+
-+	.globl	__divls
-+	.ent	__divls
-+__divls:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Sign extend.  */
-+	addl	$24, 0, $24
-+	addl	$25, 0, $25
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* Negate the unsigned result, if necessary.  */
-+	xor	$24, $25, $28
-+	subl	$31, $27, $23
-+	addl	$27, 0, $27
-+	addl	$28, 0, $28
-+	cmovlt	$28, $23, $27
-+
-+	ldq	$23, 0($sp)
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__divls
-+
-+/*
-+ * Signed 32-bit remainder.
-+ */
-+
-+	.globl	__remls
-+	.ent	__remls
-+__remls:
-+	.frame	$sp, 32, $23
-+	subq	$sp, 32, $sp
-+	stq	$23, 0($sp)
-+	stq	$24, 8($sp)
-+	stq	$25, 16($sp)
-+	.prologue 0
-+
-+	/* Sign extend.  */
-+	addl	$24, 0, $24
-+	addl	$25, 0, $25
-+
-+	/* Compute absolute values.  */
-+	subq	$31, $24, $28
-+	cmovlt	$24, $28, $24
-+	subq	$31, $25, $28
-+	cmovlt	$25, $28, $25
-+
-+	bsr	$23, __divqu
-+
-+	ldq	$23, 0($sp)
-+	ldq	$24, 8($sp)
-+	ldq	$25, 16($sp)
-+
-+	/* Negate the unsigned result, if necessary.  */
-+	subl	$31, $28, $27
-+	addl	$28, 0, $28
-+	cmovge	$24, $28, $27
-+
-+	addq	$sp, 32, $sp
-+	ret	$31, ($23), 1
-+	.end	__remls
-+
-+	.data
-+	.p2align 4
-+stack:
-+	.skip	65536
-+$stack_end:
-+	.type	stack,@object
-+	.size	stack, . - stack
-diff --git a/tests/tcg/alpha/system/kernel.ld b/tests/tcg/alpha/system/kernel.ld
-new file mode 100644
-index 00000000000..d2ac6ecfeb8
---- /dev/null
-+++ b/tests/tcg/alpha/system/kernel.ld
-@@ -0,0 +1,30 @@
-+ENTRY(_start)
-+
-+SECTIONS
-+{
-+    /* Linux kernel legacy start address.  */
-+    . = 0xfffffc0000310000;
-+    _text = .;
-+    .text : {
-+        *(.text)
-+    }
-+    .rodata : {
-+        *(.rodata)
-+    }
-+    _etext = .;
-+
-+    . = ALIGN(8192);
-+    _data = .;
-+    .got : {
-+        *(.got)
-+    }
-+    .data : {
-+	*(.sdata)
-+        *(.data)
-+    }
-+    _edata = .;
-+    .bss : {
-+        *(.bss)
-+    }
-+    _end = .;
-+}
+-check-block-$(CONFIG_POSIX) += tests/qemu-iotests-quick.sh
++check-block-$(call land,$(CONFIG_POSIX),$(CONFIG_SOFTMMU)) += tests/check-block.sh
+ 
+ # All QTests for now are POSIX-only, but the dependencies are
+ # really in libqtest, not in the testcases themselves.
+@@ -1077,8 +1077,8 @@ clean-tcg: $(CLEAN_TCG_TARGET_RULES)
+ 
+ QEMU_IOTESTS_HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) = tests/qemu-iotests/socket_scm_helper$(EXESUF)
+ 
+-.PHONY: check-tests/qemu-iotests-quick.sh
+-check-tests/qemu-iotests-quick.sh: tests/qemu-iotests-quick.sh qemu-img$(EXESUF) qemu-io$(EXESUF) qemu-nbd$(EXESUF) $(QEMU_IOTESTS_HELPERS-y)
++.PHONY: check-tests/check-block.sh
++check-tests/check-block.sh: tests/check-block.sh qemu-img$(EXESUF) qemu-io$(EXESUF) qemu-nbd$(EXESUF) $(QEMU_IOTESTS_HELPERS-y)
+ 	$<
+ 
+ .PHONY: $(patsubst %, check-%, $(check-qapi-schema-y))
+@@ -1152,7 +1152,7 @@ check-acceptance: check-venv $(TESTS_RESULTS_DIR)
+ check-qapi-schema: $(patsubst %,check-%, $(check-qapi-schema-y)) check-tests/qapi-schema/doc-good.texi
+ check-qtest: $(patsubst %,check-qtest-%, $(QTEST_TARGETS))
+ check-block: $(patsubst %,check-%, $(check-block-y))
+-check: check-qapi-schema check-unit check-softfloat check-qtest check-decodetree
++check: check-block check-qapi-schema check-unit check-softfloat check-qtest check-decodetree
+ check-clean:
+ 	rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS_HELPERS-y)
+ 	rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_LIST), $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
+diff --git a/tests/check-block.sh b/tests/check-block.sh
+index f3d12fd602d..c8b6cec3f68 100755
+--- a/tests/check-block.sh
++++ b/tests/check-block.sh
+@@ -1,24 +1,48 @@
+ #!/bin/sh
+ 
+-FORMAT_LIST="raw qcow2 qed vmdk vpc"
++# Honor the SPEED environment variable, just like we do it for the qtests.
++if [ "$SPEED" = "slow" ]; then
++    format_list="raw qcow2"
++    group=
++elif [ "$SPEED" = "thorough" ]; then
++    format_list="raw qcow2 qed vmdk vpc"
++    group=
++else
++    format_list=qcow2
++    group="-g auto"
++fi
++
+ if [ "$#" -ne 0 ]; then
+-    FORMAT_LIST="$@"
++    format_list="$@"
++fi
++
++if grep -q "TARGET_GPROF=y" *-softmmu/config-target.mak 2>/dev/null ; then
++    echo "GPROF is enabled ==> Not running the qemu-iotests."
++    exit 0
+ fi
+ 
+-export QEMU_PROG="$PWD/x86_64-softmmu/qemu-system-x86_64"
+-export QEMU_IMG_PROG="$PWD/qemu-img"
+-export QEMU_IO_PROG="$PWD/qemu-io"
++if [ -z "$(find . -name 'qemu-system-*' -print)" ]; then
++    echo "No qemu-system binary available ==> Not running the qemu-iotests."
++    exit 0
++fi
++
++if ! command -v bash >/dev/null 2>&1 ; then
++    echo "bash not available ==> Not running the qemu-iotests."
++    exit 0
++fi
+ 
+-if [ ! -x $QEMU_PROG ]; then
+-    echo "'make check-block' requires qemu-system-x86_64"
+-    exit 1
++if ! (sed --version | grep 'GNU sed') > /dev/null 2>&1 ; then
++    if ! command -v gsed >/dev/null 2>&1; then
++        echo "GNU sed not available ==> Not running the qemu-iotests."
++        exit 0
++    fi
+ fi
+ 
+ cd tests/qemu-iotests
+ 
+ ret=0
+-for FMT in $FORMAT_LIST ; do
+-    ./check -T -nocache -$FMT || ret=1
++for fmt in $format_list ; do
++    ./check -makecheck -$fmt $group || ret=1
+ done
+ 
+ exit $ret
+diff --git a/tests/qemu-iotests-quick.sh b/tests/qemu-iotests-quick.sh
+deleted file mode 100755
+index 0e554bb9724..00000000000
+--- a/tests/qemu-iotests-quick.sh
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#!/bin/sh
+-
+-cd tests/qemu-iotests
+-
+-ret=0
+-TEST_DIR=${TEST_DIR:-/tmp/qemu-iotests-quick-$$} ./check -T -qcow2 -g quick || ret=1
+-
+-exit $ret
 -- 
 2.20.1

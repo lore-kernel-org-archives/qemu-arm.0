@@ -1,84 +1,87 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6987728wrg;
-        Mon, 27 May 2019 21:48:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzoXpmBBkeBbWPnyPp//zweNPOF89p09L0VHmIsGLl9DzlpLvfILzk9iUr+rac0VkuSPMDh
-X-Received: by 2002:ac8:2ac5:: with SMTP id c5mr89732863qta.332.1559018933052;
-        Mon, 27 May 2019 21:48:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559018933; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1582552wrg;
+        Thu, 23 May 2019 04:14:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwiPLIBGHjvYcoaaE6f+Ork2fKKj3Rl1wOWVnAdr19VJ1B3Q/DxpVylQHsqQ3iKAYOFQgCB
+X-Received: by 2002:a50:a3dc:: with SMTP id t28mr94639245edb.256.1558610070108;
+        Thu, 23 May 2019 04:14:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558610070; cv=none;
         d=google.com; s=arc-20160816;
-        b=uqckbPatRtVWsXvr/jSmu7dy/U/8oug5bwH7uBO+D+3XI6cmSTLWGyjp5x/DVlQTAU
-         lA5X9M/ECsFe0xca/10WHwnjfvQMkLHlfcxwOWLGYjLZa25VCMXLJNAynx7GAX63IdWg
-         58j9peWGEgJLJwlIBEF7P7ODXGK6O+WK7J7+2qL3cambu8Sx5V+A+LOtqJ50VCUSVfDG
-         cUzLPLxuQWq8ArYhwYq4J7AL/rQUySFP/B00IQGypdWewu+EoAgFMSeA/2zZGf13zaDT
-         xEefptwHlHkx2a7iOdbEeCxQfPVHLGEOaA/L7JOGdFV9fDewAA5FDpUeZglGwzS38SIR
-         M8hw==
+        b=oJKRxx8Xs6j31cObkQiQZyITjsxLSbICHvi9IbV22lTabed3NRwvDoKxY0LwuW0eFd
+         YstTKROHYCbqE0O8nLpGj6ec+Frs9PdvxH+0N2ycfdj5NJvrtxRCtcaiXT4akVzZWI9t
+         MuRUNx5SfveQzSwLJ4ThdWQNsh0NJxT53PoemIgP5WbXc5cJaM+YBPv0/aMd0KFprJc6
+         36NB/JduB+45p+uHDShuONdWwFq0BCAbUoov95pDzRD0AW6b/wFe2f9jmBoPb8fClvNy
+         +4kDaGhChPxkywnINs+n3kZIXZrNNKYswfgCoISgWGtUuu5sltF2shizlq9rTGkBdUw8
+         x+cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=zgM5lMo2nCzKq8swiS2rUDQSTxH/fPIvScbyV2rSWw4=;
-        b=s48uvEZyqDUgKzxcHBNVcszyvWPSoxurAdnK0MmJ2EQhjpWzdX+0e1vRsd5o043MIz
-         oOSkfMroo/FAb5CJaCnPC2r1C38QFM/iwIm81SWf6oIkXjyGEjoMlo+Bauwmy9axlx6T
-         mRl6MGPfSLw/EuaMqZQEvyMrUGD0JbM+WwE0liRSNMM/n0aAn8Uhb3ux3cYHMzYszYpe
-         hwB6BT8Zz720oMbVbKRVsSpkrLhJfba3Nj2AjIuICYrC/WlPTo1MwW66tvOInSAgT95h
-         bHEncBjq263Q5xYsmUCb5Fh1s/cVveax440X7fm5EVUVfwrCpzVl60ZmN5SMiynjL7KE
-         r8qQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=Ow6Il5MaDkklMMFc0zjgB0QBfHnShX3GQZbde1iH6bA=;
+        b=0QAv7SGsSNtmqBc/CNBNzrc+0V9KYzmm6M8jNiXGNkbBMwj8NixBvylyyCTVCK37LL
+         0QuFytKYmMa1ks0zY1GjS4W0KI0jLvn+SUtcUOQUc/5i0yA6GkPvV95zUrIF2AWMTHHA
+         LuNzpRQ7yRDaxB8CNkPgjnKSaF6lgMszGVT8NJFgAgtezo4EnrZtHl70j7wBetYFgbi7
+         JTrlpMSiAe1Kh2iIjqA4Wa07zB5WGpZtaeGbtlQEYZ6x8u05pIvHnSF6CrO9XincmAys
+         eDIO2IQunCrGtMwC2dRi6MjzTi9N9j1Ge9bjfRH+YAHVw5dRSmdJKRdsbJAlA/jmWA0t
+         LjrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v30si1249416qtb.153.2019.05.27.21.48.52
+        by mx.google.com with ESMTPS id 22si11104295edu.283.2019.05.23.04.14.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 21:48:53 -0700 (PDT)
+        Thu, 23 May 2019 04:14:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:57117 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:33908 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVU2e-0000ip-JN
-	for alex.bennee@linaro.org; Tue, 28 May 2019 00:48:52 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47127)
+	id 1hTlg5-0008Jo-3h
+	for alex.bennee@linaro.org; Thu, 23 May 2019 07:14:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33299)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1hVU2T-0000ih-J0
-	for qemu-arm@nongnu.org; Tue, 28 May 2019 00:48:43 -0400
+	(envelope-from <clg@kaod.org>) id 1hTlfu-0008JG-3l
+	for qemu-arm@nongnu.org; Thu, 23 May 2019 07:14:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peterx@redhat.com>) id 1hVU2S-0001tg-MB
-	for qemu-arm@nongnu.org; Tue, 28 May 2019 00:48:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60270)
+	(envelope-from <clg@kaod.org>) id 1hTlfs-00085d-08
+	for qemu-arm@nongnu.org; Thu, 23 May 2019 07:14:16 -0400
+Received: from 13.mo1.mail-out.ovh.net ([178.33.253.128]:39703)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peterx@redhat.com>)
-	id 1hVU2S-0001tE-FD; Tue, 28 May 2019 00:48:40 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E0C63082163;
-	Tue, 28 May 2019 04:48:39 +0000 (UTC)
-Received: from xz-x1 (dhcp-15-205.nay.redhat.com [10.66.15.205])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EE9617A4E4;
-	Tue, 28 May 2019 04:48:27 +0000 (UTC)
-Date: Tue, 28 May 2019 12:48:25 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190528044825.GB23180@xz-x1>
-References: <20190527114203.2762-1-eric.auger@redhat.com>
-	<20190527114203.2762-10-eric.auger@redhat.com>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hTlfr-00080l-G3
+	for qemu-arm@nongnu.org; Thu, 23 May 2019 07:14:15 -0400
+Received: from player792.ha.ovh.net (unknown [10.109.160.153])
+	by mo1.mail-out.ovh.net (Postfix) with ESMTP id 7D5D717872D
+	for <qemu-arm@nongnu.org>; Thu, 23 May 2019 13:14:05 +0200 (CEST)
+Received: from kaod.org (deibp9eh1--blueice1n0.emea.ibm.com [195.212.29.162])
+	(Authenticated sender: clg@kaod.org)
+	by player792.ha.ovh.net (Postfix) with ESMTPSA id 61E9762AB623;
+	Thu, 23 May 2019 11:13:57 +0000 (UTC)
+To: Wim Vervoorn <wvervoorn@eltan.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <d0fea426e8b245769f3022dad121c17e@Eltsrv03.Eltan.local>
+	<3ee8eb5a-d38c-9570-3da5-a055e9f147e5@kaod.org>
+	<fed595d26ce54222b42e005566b70308@Eltsrv03.Eltan.local>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9b49eb14-6dc8-29df-c617-8080551b4f6c@kaod.org>
+Date: Thu, 23 May 2019 13:13:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <fed595d26ce54222b42e005566b70308@Eltsrv03.Eltan.local>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20190527114203.2762-10-eric.auger@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Tue, 28 May 2019 04:48:39 +0000 (UTC)
+Content-Language: en-US
+X-Ovh-Tracer-Id: 9258274935155362577
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddugedgfeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v4 09/27] memory: Prepare for different kinds
- of IOMMU MR notifiers
+X-Received-From: 178.33.253.128
+Subject: Re: [Qemu-arm] aspeed qemu question
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,125 +93,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, yi.l.liu@intel.com,
-	mst@redhat.com, jean-philippe.brucker@arm.com,
-	zhangfei.gao@foxmail.com, qemu-devel@nongnu.org,
-	alex.williamson@redhat.com, qemu-arm@nongnu.org,
-	vincent.stehle@arm.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sdl1LbdX2iEu
+X-TUID: ZMLGmN57Arg1
 
-On Mon, May 27, 2019 at 01:41:45PM +0200, Eric Auger wrote:
+On 5/23/19 12:05 PM, Wim Vervoorn wrote:
+> Hello C=C3=A9dric,
+>=20
+> I have another question regarding the ASPEED Qemu support. This is rega=
+rding the SPI support.
+>=20
+> I noticed that in general the fmc_model and the spi_model for the flash=
+ device
+> are different even though there is only one flash device connected.
 
-[...]
+The flash devices are created but not attached to a file backend=20
+unless you define it on the command line with -drive options :
 
-> @@ -3368,8 +3368,9 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
->  {
->      IOMMUTLBEntry entry;
->      hwaddr size;
-> -    hwaddr start = n->start;
-> -    hwaddr end = n->end;
-> +
+	-drive file=3D$flashfile,format=3Draw,if=3Dmtd
 
-(extra new line)
+The first mtd drive corresponds to the flash chip attached to the=20
+FMC controller (BMC Firmware), the second is the flash attached to=20
+the SPI1 controller (Host Firmware)
 
-> +    hwaddr start = n->iotlb_notifier.start;
-> +    hwaddr end = n->iotlb_notifier.end;
->      IntelIOMMUState *s = as->iommu_state;
->      DMAMap map;
+> I would expect that in this case the models used would be identical.
 
-[...]
+The flash device models are defined at the machine level in
+hw/arm/aspeed.c:
 
->  typedef void (*IOMMUNotify)(struct IOMMUNotifier *notifier,
->                              IOMMUTLBEntry *data);
->  
-> -struct IOMMUNotifier {
-> +typedef struct IOMMUIOLTBNotifier {
->      IOMMUNotify notify;
+    }, {
+        .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
+        .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
+        .soc_name  =3D "ast2500-a1",
+        .hw_strap1 =3D WITHERSPOON_BMC_HW_STRAP1,
+        .fmc_model =3D "mx25l25635e",
+        .spi_model =3D "mx66l1g45g",
+        .num_cs    =3D 2,
+        .i2c_init  =3D witherspoon_bmc_i2c_init,
+        .ram       =3D 512 * MiB,
+    },
 
-Hi, Eric,
+> Can you explain how this is works and how I select the correct model
+> for the fmc and for the spi controller.
 
-I wasn't following the thread much before so sorry to ask this if too
-late - have you thought about using the Notifier struct direct?
-Because then it'll (1) allow the user to register with both IOTLB |
-CONFIG flags in the same notifier while currently we'll need to
-register one for each (and this worries me a bit on when we grow the
-types of flags further then one register can have quite a few
-notifiers) (2) the notifier part can be shared by different events.
-Then when notify the (void *) data can be an union:
+You need to define a new machine (board) if you want different flash mode=
+ls.
 
-struct IOMMUEvent {
-  int event; // can be one of the notifier flags
-  union {
-    struct IOTLBEvent {
-      ...
-    };
-    struct PASIDEvent {
-      ...
-    };
-  }
-}
-
-Then the handler hook would be simple too:
-
-handler (data)
-{
-  switch (data.event) {
-    ...
-  }
-}
-
-I would be fine with current patch if this series is close to be
-merged because even if we want that we can do that on top when we
-introduce even more notifiers, but just to ask loud first.
-
-> -    IOMMUNotifierFlag notifier_flags;
->      /* Notify for address space range start <= addr <= end */
->      hwaddr start;
->      hwaddr end;
-> +} IOMMUIOLTBNotifier;
-> +
-> +struct IOMMUNotifier {
-> +    IOMMUNotifierFlag notifier_flags;
-> +    union {
-> +        IOMMUIOLTBNotifier iotlb_notifier;
-> +    };
->      int iommu_idx;
->      QLIST_ENTRY(IOMMUNotifier) node;
->  };
-> @@ -126,15 +132,18 @@ typedef struct IOMMUNotifier IOMMUNotifier;
->  /* RAM is a persistent kind memory */
->  #define RAM_PMEM (1 << 5)
->  
-> -static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
-> -                                       IOMMUNotifierFlag flags,
-> -                                       hwaddr start, hwaddr end,
-> -                                       int iommu_idx)
-> +static inline void iommu_iotlb_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
-> +                                             IOMMUNotifierFlag flags,
-> +                                             hwaddr start, hwaddr end,
-> +                                             int iommu_idx)
->  {
-> -    n->notify = fn;
-> +    assert(flags & IOMMU_NOTIFIER_IOTLB_MAP ||
-> +           flags & IOMMU_NOTIFIER_IOTLB_UNMAP);
-
-Can use IOMMU_NOTIFIER_IOTLB_ALL directly?
-
-> +    assert(start < end);
->      n->notifier_flags = flags;
-> -    n->start = start;
-> -    n->end = end;
-> +    n->iotlb_notifier.notify = fn;
-> +    n->iotlb_notifier.start = start;
-> +    n->iotlb_notifier.end = end;
->      n->iommu_idx = iommu_idx;
->  }
-
-Otherwise the patch looks good to me.
-
-Regards,
-
--- 
-Peter Xu
+C.=20

@@ -1,235 +1,223 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b18sm25054186wrx.75.2019.05.23.03.25.32
+        by smtp.gmail.com with ESMTPSA id i15sm32072270wre.30.2019.05.23.03.25.33
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 23 May 2019 03:25:33 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 96F531FF8F;
+	by zen.linaroharston (Postfix) with ESMTP id D0C241FF91;
 	Thu, 23 May 2019 11:25:32 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH  v2 02/28] semihosting: introduce CONFIG_SEMIHOSTING
-Date: Thu, 23 May 2019 11:25:06 +0100
-Message-Id: <20190523102532.10486-3-alex.bennee@linaro.org>
+Subject: [PATCH  v2 04/28] semihosting: enable chardev backed output for console
+Date: Thu, 23 May 2019 11:25:08 +0100
+Message-Id: <20190523102532.10486-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523102532.10486-1-alex.bennee@linaro.org>
 References: <20190523102532.10486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Ba4X2FD/H6g+
+X-TUID: Nbj+DyBL6mMQ
 
-There isn't much point building semihosting for platforms that don't
-support it. Introduce a new symbol and enable it only for the softmmu
-targets that need it.
+It will be useful for a number of use-cases to be able to re-direct
+output to a file like we do with serial output. This does the wiring
+to allow us to treat then semihosting console like just another
+character output device.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- default-configs/arm-softmmu.mak         |  1 +
- default-configs/lm32-softmmu.mak        |  2 +
- default-configs/m68k-softmmu.mak        |  2 +
- default-configs/mips-softmmu-common.mak |  1 +
- default-configs/nios2-softmmu.mak       |  2 +
- default-configs/xtensa-softmmu.mak      |  2 +
- hw/Kconfig                              |  1 +
- hw/semihosting/Kconfig                  |  3 ++
- hw/semihosting/Makefile.objs            |  2 +-
- stubs/Makefile.objs                     |  1 +
- stubs/semihost.c                        | 66 +++++++++++++++++++++++++
- 11 files changed, 82 insertions(+), 1 deletion(-)
- create mode 100644 hw/semihosting/Kconfig
- create mode 100644 stubs/semihost.c
+ hw/semihosting/config.c           | 26 ++++++++++++++++++++++++++
+ hw/semihosting/console.c          |  9 ++++++++-
+ include/hw/semihosting/semihost.h |  7 +++++++
+ qemu-options.hx                   |  6 ++++--
+ stubs/semihost.c                  |  4 ++++
+ vl.c                              |  2 ++
+ 6 files changed, 51 insertions(+), 3 deletions(-)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index f23ecfd5c58..1f2e0e7fdeb 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -39,3 +39,4 @@ CONFIG_MICROBIT=y
- CONFIG_FSL_IMX25=y
- CONFIG_FSL_IMX7=y
- CONFIG_FSL_IMX6UL=y
-+CONFIG_SEMIHOSTING=y
-diff --git a/default-configs/lm32-softmmu.mak b/default-configs/lm32-softmmu.mak
-index 6d259665d60..115b3e34c98 100644
---- a/default-configs/lm32-softmmu.mak
-+++ b/default-configs/lm32-softmmu.mak
-@@ -4,6 +4,8 @@
- #
- #CONFIG_MILKYMIST_TMU2=n        # disabling it actually causes compile-time failures
+diff --git a/hw/semihosting/config.c b/hw/semihosting/config.c
+index f1d3fe1e4c6..2a8e7e1045a 100644
+--- a/hw/semihosting/config.c
++++ b/hw/semihosting/config.c
+@@ -23,6 +23,7 @@
+ #include "qemu/config-file.h"
+ #include "qemu/error-report.h"
+ #include "hw/semihosting/semihost.h"
++#include "chardev/char.h"
  
-+CONFIG_SEMIHOSTING=y
-+
- # Boards:
- #
- CONFIG_LM32=y
-diff --git a/default-configs/m68k-softmmu.mak b/default-configs/m68k-softmmu.mak
-index e17495e2a0b..4049a8f2ba9 100644
---- a/default-configs/m68k-softmmu.mak
-+++ b/default-configs/m68k-softmmu.mak
-@@ -1,5 +1,7 @@
- # Default configuration for m68k-softmmu
+ QemuOptsList qemu_semihosting_config_opts = {
+     .name = "semihosting-config",
+@@ -35,6 +36,9 @@ QemuOptsList qemu_semihosting_config_opts = {
+         }, {
+             .name = "target",
+             .type = QEMU_OPT_STRING,
++        }, {
++            .name = "chardev",
++            .type = QEMU_OPT_STRING,
+         }, {
+             .name = "arg",
+             .type = QEMU_OPT_STRING,
+@@ -46,12 +50,14 @@ QemuOptsList qemu_semihosting_config_opts = {
+ typedef struct SemihostingConfig {
+     bool enabled;
+     SemihostingTarget target;
++    Chardev *chardev;
+     const char **argv;
+     int argc;
+     const char *cmdline; /* concatenated argv */
+ } SemihostingConfig;
  
-+CONFIG_SEMIHOSTING=y
-+
- # Boards:
- #
- CONFIG_AN5206=y
-diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
-index 8e54a74b7a5..e10ac4b20c0 100644
---- a/default-configs/mips-softmmu-common.mak
-+++ b/default-configs/mips-softmmu-common.mak
-@@ -35,6 +35,7 @@ CONFIG_MIPS_CPS=y
- CONFIG_MIPS_ITU=y
- CONFIG_R4K=y
- CONFIG_MALTA=y
-+CONFIG_SEMIHOSTING=y
- CONFIG_PCNET_PCI=y
- CONFIG_MIPSSIM=y
- CONFIG_ACPI_SMBUS=y
-diff --git a/default-configs/nios2-softmmu.mak b/default-configs/nios2-softmmu.mak
-index e130d024e62..1bc4082ea99 100644
---- a/default-configs/nios2-softmmu.mak
-+++ b/default-configs/nios2-softmmu.mak
-@@ -1,5 +1,7 @@
- # Default configuration for nios2-softmmu
+ static SemihostingConfig semihosting;
++static const char *semihost_chardev;
  
-+CONFIG_SEMIHOSTING=y
-+
- # Boards:
- #
- CONFIG_NIOS2_10M50=y
-diff --git a/default-configs/xtensa-softmmu.mak b/default-configs/xtensa-softmmu.mak
-index 7e4d1cc0979..3aa20a47a7f 100644
---- a/default-configs/xtensa-softmmu.mak
-+++ b/default-configs/xtensa-softmmu.mak
-@@ -1,5 +1,7 @@
- # Default configuration for Xtensa
+ bool semihosting_enabled(void)
+ {
+@@ -115,6 +121,11 @@ void semihosting_arg_fallback(const char *file, const char *cmd)
+     }
+ }
  
-+CONFIG_SEMIHOSTING=y
++Chardev *semihosting_get_chardev(void)
++{
++    return semihosting.chardev;
++}
 +
- # Boards:
- #
- CONFIG_XTENSA_SIM=y
-diff --git a/hw/Kconfig b/hw/Kconfig
-index 88b9f150070..195f541e50c 100644
---- a/hw/Kconfig
-+++ b/hw/Kconfig
-@@ -29,6 +29,7 @@ source pci/Kconfig
- source rdma/Kconfig
- source scsi/Kconfig
- source sd/Kconfig
-+source semihosting/Kconfig
- source smbios/Kconfig
- source ssi/Kconfig
- source timer/Kconfig
-diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
-new file mode 100644
-index 00000000000..efe0a30734c
---- /dev/null
-+++ b/hw/semihosting/Kconfig
-@@ -0,0 +1,3 @@
-+
-+config SEMIHOSTING
-+       bool
-diff --git a/hw/semihosting/Makefile.objs b/hw/semihosting/Makefile.objs
-index 546954f4ff4..09c19bf19ed 100644
---- a/hw/semihosting/Makefile.objs
-+++ b/hw/semihosting/Makefile.objs
-@@ -1 +1 @@
--common-obj-$(CONFIG_SOFTMMU) += config.o
-+obj-$(CONFIG_SEMIHOSTING) += config.o
-diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-index 269dfa58326..e0d4f11b348 100644
---- a/stubs/Makefile.objs
-+++ b/stubs/Makefile.objs
-@@ -39,3 +39,4 @@ stub-obj-y += xen-hvm.o
- stub-obj-y += pci-host-piix.o
- stub-obj-y += ram-block.o
- stub-obj-y += ramfb.o
-+stub-obj-$(CONFIG_SOFTMMU) += semihost.o
-diff --git a/stubs/semihost.c b/stubs/semihost.c
-new file mode 100644
-index 00000000000..1a4e88e5326
---- /dev/null
-+++ b/stubs/semihost.c
-@@ -0,0 +1,66 @@
-+/*
-+ * Semihosting Stubs for SoftMMU
-+ *
-+ * Copyright (c) 2019 Linaro Ltd
-+ *
-+ * Stubs for SoftMMU targets that don't actually do semihosting.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/option.h"
-+#include "qemu/error-report.h"
+ void qemu_semihosting_enable(void)
+ {
+     semihosting.enabled = true;
+@@ -132,6 +143,8 @@ int qemu_semihosting_config_options(const char *optarg)
+         semihosting.enabled = qemu_opt_get_bool(opts, "enable",
+                                                 true);
+         const char *target = qemu_opt_get(opts, "target");
++        /* setup of chardev is deferred until they are initialised */
++        semihost_chardev = qemu_opt_get(opts, "chardev");
+         if (target != NULL) {
+             if (strcmp("native", target) == 0) {
+                 semihosting.target = SEMIHOSTING_TARGET_NATIVE;
+@@ -158,3 +171,16 @@ int qemu_semihosting_config_options(const char *optarg)
+     return 0;
+ }
+ 
++void qemu_semihosting_connect_chardevs(void)
++{
++    /* We had to defer this until chardevs were created */
++    if (semihost_chardev) {
++        Chardev *chr = qemu_chr_find(semihost_chardev);
++        if (chr == NULL) {
++            error_report("semihosting chardev '%s' not found",
++                         semihost_chardev);
++            exit(1);
++        }
++        semihosting.chardev = chr;
++    }
++}
+diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
+index ad6f67ecc71..2fa440eb32a 100644
+--- a/hw/semihosting/console.c
++++ b/hw/semihosting/console.c
+@@ -17,13 +17,20 @@
+ 
+ #include "qemu/osdep.h"
+ #include "cpu.h"
 +#include "hw/semihosting/semihost.h"
+ #include "hw/semihosting/console.h"
+ #include "exec/gdbstub.h"
+ #include "qemu/log.h"
++#include "chardev/char.h"
+ 
+ int qemu_semihosting_log_out(const char *s, int len)
+ {
+-    return write(STDERR_FILENO, s, len);
++    Chardev *chardev = semihosting_get_chardev();
++    if (chardev) {
++        return qemu_chr_write_all(chardev, (uint8_t *) s, len);
++    } else {
++        return write(STDERR_FILENO, s, len);
++    }
+ }
+ 
+ /*
+diff --git a/include/hw/semihosting/semihost.h b/include/hw/semihosting/semihost.h
+index 07ea40a322f..60fc42d851e 100644
+--- a/include/hw/semihosting/semihost.h
++++ b/include/hw/semihosting/semihost.h
+@@ -51,6 +51,11 @@ static inline const char *semihosting_get_cmdline(void)
+ {
+     return NULL;
+ }
 +
-+/* Empty config */
-+QemuOptsList qemu_semihosting_config_opts = {
-+    .name = "",
-+    .head = QTAILQ_HEAD_INITIALIZER(qemu_semihosting_config_opts.head),
-+    .desc = {
-+        { /* end of list */ }
-+    },
-+};
-+
-+/* Queries to config status default to off */
-+bool semihosting_enabled(void)
-+{
-+    return false;
-+}
-+
-+SemihostingTarget semihosting_get_target(void)
-+{
-+    return SEMIHOSTING_TARGET_AUTO;
-+}
-+
-+/*
-+ * All the rest are empty subs. We could g_assert_not_reached() but
-+ * that adds extra weight to the final binary. Waste not want not.
-+ */
-+void qemu_semihosting_enable(void)
-+{
-+}
-+
-+int qemu_semihosting_config_options(const char *optarg)
-+{
-+    return 1;
-+}
-+
-+const char *semihosting_get_arg(int i)
++static inline Chardev *semihosting_get_chardev(void)
 +{
 +    return NULL;
 +}
+ #else /* !CONFIG_USER_ONLY */
+ bool semihosting_enabled(void);
+ SemihostingTarget semihosting_get_target(void);
+@@ -58,9 +63,11 @@ const char *semihosting_get_arg(int i);
+ int semihosting_get_argc(void);
+ const char *semihosting_get_cmdline(void);
+ void semihosting_arg_fallback(const char *file, const char *cmd);
++Chardev *semihosting_get_chardev(void);
+ /* for vl.c hooks */
+ void qemu_semihosting_enable(void);
+ int qemu_semihosting_config_options(const char *opt);
++void qemu_semihosting_connect_chardevs(void);
+ #endif /* CONFIG_USER_ONLY */
+ 
+ #endif /* SEMIHOST_H */
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 5daa5a8fb0a..ce36048ef31 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4015,12 +4015,12 @@ STEXI
+ Enable semihosting mode (ARM, M68K, Xtensa, MIPS, Nios II only).
+ ETEXI
+ DEF("semihosting-config", HAS_ARG, QEMU_OPTION_semihosting_config,
+-    "-semihosting-config [enable=on|off][,target=native|gdb|auto][,arg=str[,...]]\n" \
++    "-semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]\n" \
+     "                semihosting configuration\n",
+ QEMU_ARCH_ARM | QEMU_ARCH_M68K | QEMU_ARCH_XTENSA | QEMU_ARCH_LM32 |
+ QEMU_ARCH_MIPS | QEMU_ARCH_NIOS2)
+ STEXI
+-@item -semihosting-config [enable=on|off][,target=native|gdb|auto][,arg=str[,...]]
++@item -semihosting-config [enable=on|off][,target=native|gdb|auto][,chardev=id][,arg=str[,...]]
+ @findex -semihosting-config
+ Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II only).
+ @table @option
+@@ -4028,6 +4028,8 @@ Enable and configure semihosting (ARM, M68K, Xtensa, MIPS, Nios II only).
+ Defines where the semihosting calls will be addressed, to QEMU (@code{native})
+ or to GDB (@code{gdb}). The default is @code{auto}, which means @code{gdb}
+ during debug sessions and @code{native} otherwise.
++@item chardev=@var{str1}
++Send the output to a chardev backend output for native or auto output when not in gdb
+ @item arg=@var{str1},arg=@var{str2},...
+ Allows the user to pass input arguments, and can be used multiple times to build
+ up a list. The old-style @code{-kernel}/@code{-append} method of passing a
+diff --git a/stubs/semihost.c b/stubs/semihost.c
+index 1a4e88e5326..4d5b3c06530 100644
+--- a/stubs/semihost.c
++++ b/stubs/semihost.c
+@@ -64,3 +64,7 @@ const char *semihosting_get_cmdline(void)
+ void semihosting_arg_fallback(const char *file, const char *cmd)
+ {
+ }
 +
-+int semihosting_get_argc(void)
-+{
-+    return 0;
-+}
-+
-+const char *semihosting_get_cmdline(void)
-+{
-+    return NULL;
-+}
-+
-+void semihosting_arg_fallback(const char *file, const char *cmd)
++void qemu_semihosting_connect_chardevs(void)
 +{
 +}
+diff --git a/vl.c b/vl.c
+index 6b19ea42bfe..17f912166ce 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4166,6 +4166,8 @@ int main(int argc, char **argv, char **envp)
+ 
+     qemu_opts_foreach(qemu_find_opts("chardev"),
+                       chardev_init_func, NULL, &error_fatal);
++    /* now chardevs have been created we may have semihosting to connect */
++    qemu_semihosting_connect_chardevs();
+ 
+ #ifdef CONFIG_VIRTFS
+     qemu_opts_foreach(qemu_find_opts("fsdev"),
 -- 
 2.20.1

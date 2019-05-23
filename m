@@ -1,103 +1,110 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1859798wrg;
-        Thu, 23 May 2019 08:18:52 -0700 (PDT)
-X-Received: by 2002:ab0:2407:: with SMTP id f7mr2528020uan.18.1558624732610;
-        Thu, 23 May 2019 08:18:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558624732; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2151133wrg;
+        Thu, 23 May 2019 12:52:10 -0700 (PDT)
+X-Received: by 2002:a1f:a249:: with SMTP id l70mr2641836vke.58.1558641130422;
+        Thu, 23 May 2019 12:52:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558641130; cv=none;
         d=google.com; s=arc-20160816;
-        b=vGZGTQpGA8z5x+WP7mZu99V/blmlvt38dtf0AC1zDWJBEuD74yzf/vPBizbgybUxUa
-         S/N+4MEi3fIopFqO8CvaTcNAkob6H74qYpuoczPpZekVUWD9q/+mooCCdzgHP78eOPPV
-         S0a0OhLCg5mv08kgxbKDRX6u9zjsU86fK8bI88aPKg295VfGpWH5lpZd7oPT15ib6K+3
-         UAv7OFBQfP8xYG2aydbInVyJBco861gDppFO0AcDIHzzypxIhzm0KoLrz4yeCITzYvxS
-         xp3njRlQz/YRvlJM04qaSgA2a27k2gH0StWuEIVV491GaUq4GouvpA6VrlAWGbFCE0VJ
-         tfyA==
+        b=AR/X/PumVU5pffjxR9dhG7wz3N7pMEW/t8ggN6dO9edZ6ly0zyhgCLQqntXGEkutGs
+         qu5eTvDuwKrIjtov4pkn32HA1DKhAL+Qc9DqCbxwAi9wyrdegYMq6P2+aK03Ys4bbryz
+         iBkHKYwxYQT7oT5RMF0Nu0KogD9RKNin45B1IkfSStxZBaMdAoJr1qpMckLkxPHGmewO
+         3rg87TEvf/iCydwKJLOTwFUrxalkydSOs0TIeJS1p+RLk/ZWJi6r3KYezEwZ3bMPpove
+         XV5lled2Tq3vsJOQ+/3AiWd3odPNOzpF0kHhQqwapMht5nnhgD4zIzX2PmvXoDXhWiLq
+         Sw1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
-        b=Ydagw/HAf1lycBNI7Kqe5Hbwhy5VoymjAyj9uVifqJS746rpzV/sg2uF01GHjYUh8u
-         WRHPiNh2VDQWlfQgowkQL95YZyf7Xj/ntBcYi1311SB93qkmz5SSuH87kle26SwyNEoL
-         S2OiBxCx1slPBcg+m94rSShqy9Yg3E6AgwCrKsQ6IU5OBaNRcISn3YDbD9PpcrptGyZ9
-         /AKG6ffdfxv0veyjUF3eh4bT+zP3r1Gw3krLwcACS+H9sbRLneqfBz0aazpyacpeu9aR
-         E4/uEX0cGiEifkAO9FT81037LqLfufxkMst0pGZkvKjhSVEGOZc1HTSLSkV2D8qo2FYS
-         M2MQ==
+        bh=XQMNwRorjVyKHrLMe0nR5C3o8n+pTdAqdghpcx38hnc=;
+        b=b/oGnBJdUFwSEp/SA9ZDjnDluRPTpRTBC+3RMQYTDybhSuYvUC5dJXe0aUtesBHgi4
+         17nExEBIZ7ezLPQX1n1XVZLz+NBZqw8jjY9aU9ueCZ4ewYtRtP0wBuBOyZvQhDvguusl
+         Ai0Uc5WQ8QCk+crsvp6i31LXPAjkn+YmmZxQ9l43l/StLK+32cKaWL+tgRpZYu2Hvr8F
+         uTwqsXTWdNIr4t83nk5K8AxagD+Ecc2gVQ+qtCbJoGXVD2Q8cVuh/a5worOJI+DSTAYg
+         pR2HmPCg4H8L9XXHOUsJa+p7gTWn4pSbvh5/r202xgajInJVVa5pA641Qf2ijDXPy2A4
+         LjxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j8D98lrr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NDt0rl6U;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b8sor5306339uas.19.2019.05.23.08.18.52
+        by mx.google.com with SMTPS id l6sor127830vsd.66.2019.05.23.12.52.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 May 2019 08:18:52 -0700 (PDT)
+        Thu, 23 May 2019 12:52:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=j8D98lrr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NDt0rl6U;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
-        b=j8D98lrr7plfFBABsOmxS5xX7trs1QqQSdlOqzwWPN9mWm5ghh9m2y6m21F9s7RhoY
-         XIaaFuUN3DY5pZnL3Bm88z82oDXBCEFTquwIWFiRnMmSKGX/8Mp4x8+2ujbqCz4i5Dk3
-         0Vp8vCjT8jx2xNmT42zIxd7Hi0e0zEoyx28FXRm01jxQvu10GdjTz26BvC1M/rG0L73b
-         +yot6Z6DHLnP2lr0XmaOU3tGYznyq7B9vckoK0A5GZ8zB+BmTEYn0I1i47Zicd/ml+bz
-         NJ7+zPgHR77G5RmBlLD9jG6gv+gVBgEdaTaDKOQ8yoUQbDQhtIQRUyGvODuMFjAhEOq8
-         Alnw==
+        bh=XQMNwRorjVyKHrLMe0nR5C3o8n+pTdAqdghpcx38hnc=;
+        b=NDt0rl6UH13pTaoOL52gxiRd6FFe3Ld2pWL2lSnZNStbcQcUgAw5N4coFkwySmqraf
+         29rtFhjmJDah1C0fUugZ9IqwYkqZulb8WrZrVA2yqwQOFK8YBkKha4R2tJryVO7i8o/x
+         14HbnJdosfrqZfBiMUx1zq+hzypjDM6zmy/kLEIAJR+S9IGGFT99oANpZtJmk/OvCfas
+         hXYRIMxh3Swy/mPnYMmoEij/kLw6KneU8J9ci2bIfW9RT7aq6JWOTnCwOeRTiyxh/jl+
+         eTk/2446CI92OtL3290NYZlQx+aa6wuewyCSs81S6Gse4FERywbjfw3x3fumXmCktApa
+         qkBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
-        b=Dkw0stIWIMdezwn5QLiFCfhyKntudPdGrrgiZy2fdNMu1jGpRVC/zsR3uce3eFOrF6
-         lO7rkQe8ROFMQHgZCfUtRMYs4oYQIw1znJJtqs45LlQ77MKbyQ+8dyXYO5QJP15x3lrZ
-         uLvG/YoDca1xM0k/G5dEDj1Hkg4UkGUwPN5W4wODE5CyUfs2lE3TAn0Xnd9eXi4SxyOs
-         Gctsm5VO2NrT5o6XiZYbHuoz0AtwQBcTd3l2/P2JN6VTKYNrEofxY1bkb9JYrWqm7RqI
-         ULmB9QTk3V2R7KYId+/wcvd+DZpcet4KzoP7ptXNbeHPRfR/3Cu5KWmaToIHojAXDejA
-         XDIQ==
-X-Gm-Message-State: APjAAAXN4+rYiT/NNv46qW7WhXQkHMHB0BSprAF3bJzuOMHjHxD5TBm6
-	e0pahhnOxFMMuYChOHAJrhxQjnu4lCkV9w==
-X-Google-Smtp-Source: APXvYqxwhUUD66VWpXBmmCn+G/Vt4f4iVXZb/jSee01l1dm/Ls0BMUf8X7lNSmkMlD7vq+p7Kb23Sw==
-X-Received: by 2002:ab0:3406:: with SMTP id z6mr7825767uap.102.1558624732090;
-        Thu, 23 May 2019 08:18:52 -0700 (PDT)
+        bh=XQMNwRorjVyKHrLMe0nR5C3o8n+pTdAqdghpcx38hnc=;
+        b=nsQGCYcQInhdL+PJWGAvJjDJjxGF2Np20Klo2cnmYD5IgjELqegPt+0gMhO7MltA+T
+         YxCTvg+UQnqXAvNySTeQupLWorx9cxPhnRKlG+TOfBKIK/KlW7Mqe+uVhAJ+q4kT5ang
+         AegSic93+8ctskiqXBmldGBFiPi0sl/Rp8mEO3lDNZZ/j8Glq/yj3ZebeLs0BWNp/Evl
+         xDhO0bFj5l554t6sLW3nBg6b6NRVQiFdARHLJkRKHOn9SV5UqNjK8RSOMzNnwlDjXjhz
+         NPUmxkRNcXVREzLkvoI43eK7zpa006akA1v2doUX+MRHS0XnSKC73aMymppxWzJsFgA4
+         9Yew==
+X-Gm-Message-State: APjAAAWlXTuWZqDRX1lzVkqSICyDiNIBsPdzX8EVb0biZ13pW19cbsjy
+	PyGMZbMyYCWUoCV5saG1ujS1LyR6UwvH7A==
+X-Google-Smtp-Source: APXvYqy3tztU8nAS3nKYQkWSwM9zUxPl6ig0PMQFLEWCxCf4MDWsDcfJvBX+8B/FB0N7DYsI+GkMOA==
+X-Received: by 2002:a05:6102:3d9:: with SMTP id n25mr22069368vsq.181.1558641129975;
+        Thu, 23 May 2019 12:52:09 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.43.94] (ip-173-130-215-183.orldfl.spcsdns.net. [173.130.215.183])
-        by smtp.gmail.com with ESMTPSA id x10sm5989669vke.49.2019.05.23.08.18.50
+Received: from [192.168.43.94] (ip-173-130-172-85.orldfl.spcsdns.net. [173.130.172.85])
+        by smtp.gmail.com with ESMTPSA id z128sm85129vsb.22.2019.05.23.12.52.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 May 2019 08:18:51 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v2 07/28] target/arm: add LOG_UNIMP messages
- to arm-semi
+        Thu, 23 May 2019 12:52:09 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 09/28] target/mips: only build mips-semi
+ for softmmu
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Cc: Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-arm@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 References: <20190523102532.10486-1-alex.bennee@linaro.org>
- <20190523102532.10486-8-alex.bennee@linaro.org>
+ <20190523102532.10486-10-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <ac9074a9-0560-e83a-4118-faaf4a228a04@linaro.org>
-Date: Thu, 23 May 2019 11:18:48 -0400
+Message-ID: <165b1791-93cd-9518-e7d2-24f46bb152ab@linaro.org>
+Date: Thu, 23 May 2019 15:52:05 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190523102532.10486-8-alex.bennee@linaro.org>
+In-Reply-To: <20190523102532.10486-10-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: PEWmH67bByqC
+X-TUID: 4z/e5UTNri7+
 
 On 5/23/19 6:25 AM, Alex Bennée wrote:
-> Clean-up our unimplemented bits with a proper message.
+> The is_uhi gates all semihosting calls and always returns false for
+> CONFIG_USER_ONLY builds. There is no reason to build and link
+> mips-semi for these builds so lets fix that.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
 > ---
->  target/arm/arm-semi.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  target/mips/Makefile.objs | 3 ++-
+>  target/mips/helper.h      | 2 ++
+>  target/mips/translate.c   | 8 ++++++++
+>  3 files changed, 12 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

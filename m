@@ -1,109 +1,105 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1856672wrg;
-        Thu, 23 May 2019 08:16:32 -0700 (PDT)
-X-Received: by 2002:a67:eb82:: with SMTP id e2mr46040679vso.13.1558624592379;
-        Thu, 23 May 2019 08:16:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558624592; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1859798wrg;
+        Thu, 23 May 2019 08:18:52 -0700 (PDT)
+X-Received: by 2002:ab0:2407:: with SMTP id f7mr2528020uan.18.1558624732610;
+        Thu, 23 May 2019 08:18:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558624732; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ksi56TdTen9gm4cFDuk6X3FAxc1iCDioC1U9H39khXkb+R6yDiB26ufxylYwV4k71B
-         mh9TefpJwrFAl6TEymh6y07gIIHfrKaEkcQzhKzv+0LQna+XDzMvQO6WEjk8Za3vdXE5
-         HuwuDFfsPZL2FqW+vVzn5ffr0f6PiiDvM3AfhXmtL+NGWrykzXydhXvZTM+lPdyvGBAD
-         fGtJr7Kdd9eFETDFoQzIJeut546bDPpVfVyG2CQ86VsfO8WMhB2xqeOtfYMBjNn3m7HE
-         0P12fwXi1tJx6jSGjwltMh8ndywMSL5X2ceGekwGeFl7xYDKCvXzLNyCxY9jSClVZX46
-         skwg==
+        b=vGZGTQpGA8z5x+WP7mZu99V/blmlvt38dtf0AC1zDWJBEuD74yzf/vPBizbgybUxUa
+         S/N+4MEi3fIopFqO8CvaTcNAkob6H74qYpuoczPpZekVUWD9q/+mooCCdzgHP78eOPPV
+         S0a0OhLCg5mv08kgxbKDRX6u9zjsU86fK8bI88aPKg295VfGpWH5lpZd7oPT15ib6K+3
+         UAv7OFBQfP8xYG2aydbInVyJBco861gDppFO0AcDIHzzypxIhzm0KoLrz4yeCITzYvxS
+         xp3njRlQz/YRvlJM04qaSgA2a27k2gH0StWuEIVV491GaUq4GouvpA6VrlAWGbFCE0VJ
+         tfyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=q6BkwYnA3LMZb/vPh5D5GjjEYEOUkiYkYmHrGxhJUXA=;
-        b=NyvSNRBYl1XzxbrZiYcWI8bKostT4BWBlFOjD7S20ju+U7cgdA0fax/zgmp+IaEGEE
-         YR31i6mQ46sCkmVDn3DuGKQq+VjKW25gqe0fE1NDMNkw/IfRkx+P0asvN+nmg2A+05rm
-         gEIovHSDJDRRT+UPBm71Pmg9L6mRdFfBtl2eMP3ssZkxn+pdi+fy8PsWYFAMOP/u+Ye4
-         8X+cLKbZT9oKfjoRbqdGBwd9l8f/cE9X2RC/dAOXNZ/d/R2Ur+KQOpvM3hg1PrHwxRuD
-         aA4Y11vKnTIchi3hpDcUxAhP9TPE2DJA1+xEl8m6h4l18sW362gI+aZOX7AblCh+UXNo
-         BItQ==
+        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
+        b=Ydagw/HAf1lycBNI7Kqe5Hbwhy5VoymjAyj9uVifqJS746rpzV/sg2uF01GHjYUh8u
+         WRHPiNh2VDQWlfQgowkQL95YZyf7Xj/ntBcYi1311SB93qkmz5SSuH87kle26SwyNEoL
+         S2OiBxCx1slPBcg+m94rSShqy9Yg3E6AgwCrKsQ6IU5OBaNRcISn3YDbD9PpcrptGyZ9
+         /AKG6ffdfxv0veyjUF3eh4bT+zP3r1Gw3krLwcACS+H9sbRLneqfBz0aazpyacpeu9aR
+         E4/uEX0cGiEifkAO9FT81037LqLfufxkMst0pGZkvKjhSVEGOZc1HTSLSkV2D8qo2FYS
+         M2MQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FhmoTjMD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=j8D98lrr;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c8sor5466864uaf.58.2019.05.23.08.16.32
+        by mx.google.com with SMTPS id b8sor5306339uas.19.2019.05.23.08.18.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 May 2019 08:16:32 -0700 (PDT)
+        Thu, 23 May 2019 08:18:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FhmoTjMD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=j8D98lrr;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=q6BkwYnA3LMZb/vPh5D5GjjEYEOUkiYkYmHrGxhJUXA=;
-        b=FhmoTjMD2CnFaeEx9TKlKnLLavxclyxPPEbvJ+DH3iJrUGTXrQikT3OVBOAVYA/cjH
-         Q6EG3mp7VsbS30IKt8SfhVvuM7FcMkZIpXS8+ngBXPM+RX4fzHHtT4XlrXW5d6gy4hYc
-         Qs9Y1PAL1X8UD21JcTvQHmV9OFai21y+JbXDTJ6qkSEiAhnPTrNb1MtvZZbSaO6ta5Kq
-         akv6Z7Xu2F7ibUVXSy0SCesUYuBHKw0KDtp3CQMkHkC62o4yS+sctARYS/j8XeF6mVIG
-         VlkQW5dEAtgUiAHSKscndI9Qi0w71IOuVobEMO53kHMEE2XjmEnsd/ArrgRvnhx+OVdi
-         Xuzw==
+        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
+        b=j8D98lrr7plfFBABsOmxS5xX7trs1QqQSdlOqzwWPN9mWm5ghh9m2y6m21F9s7RhoY
+         XIaaFuUN3DY5pZnL3Bm88z82oDXBCEFTquwIWFiRnMmSKGX/8Mp4x8+2ujbqCz4i5Dk3
+         0Vp8vCjT8jx2xNmT42zIxd7Hi0e0zEoyx28FXRm01jxQvu10GdjTz26BvC1M/rG0L73b
+         +yot6Z6DHLnP2lr0XmaOU3tGYznyq7B9vckoK0A5GZ8zB+BmTEYn0I1i47Zicd/ml+bz
+         NJ7+zPgHR77G5RmBlLD9jG6gv+gVBgEdaTaDKOQ8yoUQbDQhtIQRUyGvODuMFjAhEOq8
+         Alnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=q6BkwYnA3LMZb/vPh5D5GjjEYEOUkiYkYmHrGxhJUXA=;
-        b=gMZcX1ZgvCu7FUjFcOmTRSJkTbKq+1kBgYxrlUb9ebfqsGnNACy9j1BNu52W2nAZkE
-         48HdLj0Vdzjc8nQg9zGSdCi1gHGLyUDm/zHpFDpyxq3RkM2GNZ24eFzILcuNIisfxxdE
-         oF9FgFyTuLz/nKdIsZX49Etgz3h5v+4b/KD3cJBh61hLR8e528CgqOTDwdXJ8TrauIQ1
-         ongfSnnk6q6rs6pHDeGTLZcIZ8tqsYoX5IhjWERNNivYR1/kcfzvqz8BvbNpvKML1mOR
-         qo2Mvqtg0BIPUOzEFQDv36oyyq8TcNkGBR+FPS08TMzDSKA+dKLMv9EquAYBNtcnmmL6
-         sDpA==
-X-Gm-Message-State: APjAAAXs47B17empwgwcnjH27eLSYBLlhw7c0ETrt1r51BFmdfyo8SnB
-	qPTpVinMttyPXVCSBIJPbjEiSp+N
-X-Google-Smtp-Source: APXvYqzLLSEp8TL4I02ItwwJAllEBsL7Jc3agltwOs5gI4gwyVh3dT6f9lDMxt39FGWPkUKk1V/Jkg==
-X-Received: by 2002:ab0:1849:: with SMTP id j9mr599743uag.75.1558624592004;
-        Thu, 23 May 2019 08:16:32 -0700 (PDT)
+        bh=f5vBD+FZ7NuANb7Oj2G0VgFK4oUSAX1dsfmXQ+9pWww=;
+        b=Dkw0stIWIMdezwn5QLiFCfhyKntudPdGrrgiZy2fdNMu1jGpRVC/zsR3uce3eFOrF6
+         lO7rkQe8ROFMQHgZCfUtRMYs4oYQIw1znJJtqs45LlQ77MKbyQ+8dyXYO5QJP15x3lrZ
+         uLvG/YoDca1xM0k/G5dEDj1Hkg4UkGUwPN5W4wODE5CyUfs2lE3TAn0Xnd9eXi4SxyOs
+         Gctsm5VO2NrT5o6XiZYbHuoz0AtwQBcTd3l2/P2JN6VTKYNrEofxY1bkb9JYrWqm7RqI
+         ULmB9QTk3V2R7KYId+/wcvd+DZpcet4KzoP7ptXNbeHPRfR/3Cu5KWmaToIHojAXDejA
+         XDIQ==
+X-Gm-Message-State: APjAAAXN4+rYiT/NNv46qW7WhXQkHMHB0BSprAF3bJzuOMHjHxD5TBm6
+	e0pahhnOxFMMuYChOHAJrhxQjnu4lCkV9w==
+X-Google-Smtp-Source: APXvYqxwhUUD66VWpXBmmCn+G/Vt4f4iVXZb/jSee01l1dm/Ls0BMUf8X7lNSmkMlD7vq+p7Kb23Sw==
+X-Received: by 2002:ab0:3406:: with SMTP id z6mr7825767uap.102.1558624732090;
+        Thu, 23 May 2019 08:18:52 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.43.94] (ip-173-130-215-183.orldfl.spcsdns.net. [173.130.215.183])
-        by smtp.gmail.com with ESMTPSA id s65sm222053vkd.36.2019.05.23.08.16.30
+        by smtp.gmail.com with ESMTPSA id x10sm5989669vke.49.2019.05.23.08.18.50
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 May 2019 08:16:31 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v2 04/28] semihosting: enable chardev backed
- output for console
+        Thu, 23 May 2019 08:18:51 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 07/28] target/arm: add LOG_UNIMP messages
+ to arm-semi
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20190523102532.10486-1-alex.bennee@linaro.org>
- <20190523102532.10486-5-alex.bennee@linaro.org>
+ <20190523102532.10486-8-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <0426116b-6141-34ef-a6aa-a269c6d624d3@linaro.org>
-Date: Thu, 23 May 2019 11:16:28 -0400
+Message-ID: <ac9074a9-0560-e83a-4118-faaf4a228a04@linaro.org>
+Date: Thu, 23 May 2019 11:18:48 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190523102532.10486-5-alex.bennee@linaro.org>
+In-Reply-To: <20190523102532.10486-8-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: vsOAxy0keR9k
+X-TUID: PEWmH67bByqC
 
 On 5/23/19 6:25 AM, Alex Bennée wrote:
->  int qemu_semihosting_log_out(const char *s, int len)
->  {
-> -    return write(STDERR_FILENO, s, len);
-> +    Chardev *chardev = semihosting_get_chardev();
-> +    if (chardev) {
-> +        return qemu_chr_write_all(chardev, (uint8_t *) s, len);
-> +    } else {
-> +        return write(STDERR_FILENO, s, len);
-> +    }
->  }
+> Clean-up our unimplemented bits with a proper message.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  target/arm/arm-semi.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Can we not create a default chardev that outputs to stderr, so that the
-conditional is not required?  Or does that somehow interfere with how this
-connects up for linux-user/?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

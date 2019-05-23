@@ -1,86 +1,72 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b136sm9875486wmg.1.2019.05.23.03.25.34
+        by smtp.gmail.com with ESMTPSA id a10sm31509345wrm.94.2019.05.23.03.25.35
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2019 03:25:35 -0700 (PDT)
+        Thu, 23 May 2019 03:25:40 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4A35B1FF98;
+	by zen.linaroharston (Postfix) with ESMTP id AFD191FF9D;
 	Thu, 23 May 2019 11:25:33 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH  v2 09/28] target/mips: only build mips-semi for softmmu
-Date: Thu, 23 May 2019 11:25:13 +0100
-Message-Id: <20190523102532.10486-10-alex.bennee@linaro.org>
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH  v2 14/28] tests/tcg/multiarch: add support for multiarch system tests
+Date: Thu, 23 May 2019 11:25:18 +0100
+Message-Id: <20190523102532.10486-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523102532.10486-1-alex.bennee@linaro.org>
 References: <20190523102532.10486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SkVO4L1//dTX
+X-TUID: FZNs/hkuOrPr
 
-The is_uhi gates all semihosting calls and always returns false for
-CONFIG_USER_ONLY builds. There is no reason to build and link
-mips-semi for these builds so lets fix that.
+We can certainly support some common tests for system emulation that
+make use of our minimal defined boot.S support. It will still be up to
+individual architectures to ensure they build so we provide a
+MULTIARCH_TESTS variable that they can tack onto TESTS themselves.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/mips/Makefile.objs | 3 ++-
- target/mips/helper.h      | 2 ++
- target/mips/translate.c   | 8 ++++++++
- 3 files changed, 12 insertions(+), 1 deletion(-)
+ tests/tcg/Makefile                                 |  1 +
+ tests/tcg/multiarch/system/Makefile.softmmu-target | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+)
+ create mode 100644 tests/tcg/multiarch/system/Makefile.softmmu-target
 
-diff --git a/target/mips/Makefile.objs b/target/mips/Makefile.objs
-index 651f36f5176..3448ad5e193 100644
---- a/target/mips/Makefile.objs
-+++ b/target/mips/Makefile.objs
-@@ -1,4 +1,5 @@
- obj-y += translate.o dsp_helper.o op_helper.o lmi_helper.o helper.o cpu.o
--obj-y += gdbstub.o msa_helper.o mips-semi.o
-+obj-y += gdbstub.o msa_helper.o
-+obj-$(CONFIG_SOFTMMU) += mips-semi.o
- obj-$(CONFIG_SOFTMMU) += machine.o cp0_timer.o
- obj-$(CONFIG_KVM) += kvm.o
-diff --git a/target/mips/helper.h b/target/mips/helper.h
-index a6d687e3405..90ab03b76e3 100644
---- a/target/mips/helper.h
-+++ b/target/mips/helper.h
-@@ -2,7 +2,9 @@ DEF_HELPER_3(raise_exception_err, noreturn, env, i32, int)
- DEF_HELPER_2(raise_exception, noreturn, env, i32)
- DEF_HELPER_1(raise_exception_debug, noreturn, env)
- 
-+#ifndef CONFIG_USER_ONLY
- DEF_HELPER_1(do_semihosting, void, env)
-+#endif
- 
- #ifdef TARGET_MIPS64
- DEF_HELPER_4(sdl, void, env, tl, tl, int)
-diff --git a/target/mips/translate.c b/target/mips/translate.c
-index 3cd5b11b16b..fb905c88b57 100644
---- a/target/mips/translate.c
-+++ b/target/mips/translate.c
-@@ -13726,6 +13726,14 @@ static inline bool is_uhi(int sdbbp_code)
- #endif
- }
- 
-+#ifdef CONFIG_USER_ONLY
-+/* The above should dead-code away any calls to this..*/
-+static inline void gen_helper_do_semihosting(void *env)
-+{
-+    g_assert_not_reached();
-+}
-+#endif
+diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile
+index 1cdd628e96f..6fa63cc8d53 100644
+--- a/tests/tcg/Makefile
++++ b/tests/tcg/Makefile
+@@ -96,6 +96,7 @@ else
+ # build options for bare programs are usually pretty different. They
+ # are expected to provide their own build recipes.
+ -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
++-include $(SRC_PATH)/tests/tcg/multiarch/system/Makefile.softmmu-target
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.softmmu-target
+ ifneq ($(TARGET_BASE_ARCH),$(TARGET_NAME))
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
+diff --git a/tests/tcg/multiarch/system/Makefile.softmmu-target b/tests/tcg/multiarch/system/Makefile.softmmu-target
+new file mode 100644
+index 00000000000..db4bbeda44c
+--- /dev/null
++++ b/tests/tcg/multiarch/system/Makefile.softmmu-target
+@@ -0,0 +1,14 @@
++# -*- Mode: makefile -*-
++#
++# Multiarch system tests
++#
++# We just collect the tests together here and rely on the actual guest
++# architecture to add to the test dependancies and deal with the
++# complications of building.
++#
 +
- static int decode_mips16_opc (CPUMIPSState *env, DisasContext *ctx)
- {
-     int rx, ry;
++MULTIARCH_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/multiarch/system
++VPATH+=$(MULTIARCH_SYSTEM_SRC)
++
++MULTIARCH_TEST_SRCS=$(wildcard $(MULTIARCH_SYSTEM_SRC)/*.c)
++MULTIARCH_TESTS = $(patsubst $(MULTIARCH_SYSTEM_SRC)/%.c, %, $(MULTIARCH_TEST_SRCS))
 -- 
 2.20.1

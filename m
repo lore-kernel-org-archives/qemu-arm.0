@@ -1,103 +1,102 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2984082wrg;
-        Fri, 24 May 2019 05:49:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwsvzkepCOrJasiiRAmFpecsADI88TKbaqay3qvlikvHDs4VhI3uj6ay4Q8+0LLE3yUf/GL
-X-Received: by 2002:a67:f34d:: with SMTP id p13mr48344270vsm.95.1558702142966;
-        Fri, 24 May 2019 05:49:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558702142; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3012899wrg;
+        Fri, 24 May 2019 06:13:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz/aq17YbnkNyYamdB3k7SUT8kT2e9aDrt1PczKHwYzdH2cpq60eslQcJEyh/0kH4zAU0Ta
+X-Received: by 2002:ab0:45f1:: with SMTP id u104mr24957028uau.38.1558703638440;
+        Fri, 24 May 2019 06:13:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558703638; cv=none;
         d=google.com; s=arc-20160816;
-        b=jTqLz0VAOlsrdOr9cKQe1aL+78wVZSvILhPe1U4CuwwjxLhgsD7gpobr9kAw4AjxwN
-         3y9c5UDoHKmm6QtO+NsUU3IuLpkbpVy9aQGfDEAPc7RlitF329Ds0YCQ+Nl1TFgdS4aU
-         qtVApmFO0Lr7AVG+SiQuVMGtlJ4jxdv57ILTgoq+/PVJbvSmMF7eeh7v9HgxIuN1ld5c
-         nHSQNwn/VZTZWugCatXnO72FOu6Rx9F6J29RF50mTkoVkeYGd+aeWAUM7um5M2whE+xm
-         EOS+4ivu6/HymRf8Cmiq72ZCDMvsM+nHHByLvmjnW0ltQqSsKarv7rR2TaoPZlRpGTI5
-         TAcA==
+        b=VvBZhtLhJyaz3kcUACADz8hIBnRTCyGONyciJQtFaV6Gnf9EmgzBERkuzPknd5eQyz
+         M5Edg3exXgWafi0wJki+iD8xHLn+yK0MB0DkIb+XQYO4SaBuydeqWYEFoOGuqyAxNYx6
+         2wuEDlKaaQToE1GK9dlF2WHQ0sAj3pBBij2rZFbyUT2PUnMU5JUQeCmotO3UpQYATEsJ
+         ntbJz5V8W4P2Wnws60DDE7wqKRf2qpLIK8TeSNAt98GmRFc2PcRcgdXfJrMMcryvhpZV
+         OtZJ5TH3yMw8vuPBKxEIyxfE6M6KBVCZDpgDVnlMrl/d9/Mwuml663OZPjCdUstRIQ+R
+         XTGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=4bPrPkcdlNMENU+gORaJCbbqtxXSHOYr8ie8Cov/r1c=;
-        b=uJ/DdG9qSPMFZ/tLvR02YuY3cHJIuerRArWQLtVrTAvTJ32KKRjkEd3aTNWn2bjwDE
-         r706GoBofy0EJtV71Q36pvROHsJrX+2DZPQpo21ibxaVpHry4/7IlYENbS9Q3ukgJq7C
-         v6Fw6IxBuoNgSjYQVUwLH5SFli//+DV3I/+R4aigrvsO6EAGKH0rxN870idcdyn9q2G7
-         DaPLu0Lb2PjxxSjxtBYnCbTL5yZjEJDFoYat9l53cModpRdhFyIRI+Fqnw/tkKEdIQrl
-         35mVMLAG2WHMdG9uoOksUmXwW6KVgVCKFdHTh9oZRVwW9Mj1JzZ0SYj8u8YuIJ6NHS9w
-         6VaQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=+b5UOSAlUR+hB3EqivhPNylQiolTiEORqjkuY+QlSLo=;
+        b=XrlA7HvMupJ0Ytjz6Rp4XqW28Gh+tpt6e5ZBvFbvgOxGQrlImtCBzWls/pqPsc9kvG
+         DMKHgn2mIgYAxBPmZKlphexti5rvyyhvWcMMe7qINqaMiIN/4fE1JiFTznUPFmLw3Qv/
+         XyUJSiU2I+3zyFInIvgKQS6JdT9/73B0jdUhKNHp5BNYNWDyqbDECbNhni2bJFjIcqQd
+         0ggdqVGNEyaCcRoLMisSgkJL7YxaTvGH2W3Tx0Ix47sCZDcNT0vrBkZYHXDCy9tpL3WR
+         fWbVM51m2JqnWVMqakhPU5sGKxUhUgFVSVNtqf+lJIyuDO9+UPXBZlVMAc/N19SOzGIh
+         1qsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vuHQMANa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u125si418370vsu.366.2019.05.24.05.49.02
+        by mx.google.com with ESMTPS id w5si905756vsi.135.2019.05.24.06.13.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 May 2019 05:49:02 -0700 (PDT)
+        Fri, 24 May 2019 06:13:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vuHQMANa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:54200 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:54431 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hU9d8-0002WX-8f
-	for alex.bennee@linaro.org; Fri, 24 May 2019 08:49:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54819)
+	id 1hUA1F-0007mG-M3
+	for alex.bennee@linaro.org; Fri, 24 May 2019 09:13:57 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58631)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hU9ci-0002Qu-28
-	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:48:36 -0400
+	(envelope-from <philmd@redhat.com>) id 1hUA0u-0007kR-OH
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 09:13:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hU9cg-0001iD-PX
-	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:48:36 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34979)
+	(envelope-from <philmd@redhat.com>) id 1hUA0s-0003NI-J9
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 09:13:36 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:56236)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hU9cg-0001h6-ER
-	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:48:34 -0400
-Received: by mail-wm1-x342.google.com with SMTP id w9so2990012wmi.0
-	for <qemu-arm@nongnu.org>; Fri, 24 May 2019 05:48:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=4bPrPkcdlNMENU+gORaJCbbqtxXSHOYr8ie8Cov/r1c=;
-	b=vuHQMANadARa4pXL6PgQoXBIIqufxvi2z9M/QVI7mk0C2sz+K/WVAwriaz2P3TTdW+
-	zSCBxKRxtH8GaDV2lUzXZ6FSx3PnzNYFdMfeBOX0W9lQobZlSBTYB0RHtMuhpc9tIuvw
-	YMaTxjaCqaWqvav7UjrpUSrxR8KFqDxCFptIBSNk+EQKL+/KndF5+blnjsGdwPgaehM7
-	w+BYWNAW9eafZv8IRCikS4dqG/A7ur+YmcdfsIlKOpPvWFxr69OS16iP4A6XPpdrah/h
-	W7ylRL12h0Hmu91hvMQIW0mHYe8WX8qvxWJzceIrCax+BWcj0EjVht9JYKimRQNKS21u
-	JMsA==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hUA0r-0003Lk-98
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 09:13:33 -0400
+Received: by mail-wm1-f67.google.com with SMTP id x64so9343076wmb.5
+	for <qemu-arm@nongnu.org>; Fri, 24 May 2019 06:13:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=4bPrPkcdlNMENU+gORaJCbbqtxXSHOYr8ie8Cov/r1c=;
-	b=iZWY0vwlAsX/fRNE+VspJTdsx7V6HFYIdRnBalFftWqKWvMi1yAPbAUmuKSAvhtGje
-	9QVRDztLAuMDQo+6a5zxWzeMZ9w1ajdxCg95qNRla06xCupxlNH9jZREzjSBAJgxGte/
-	MKvzfbIYiRpY8jhH6J9gzSrOFswg1dD2+ZFkUOTpk5/Xf+SngJoTVSIafaCUUuRWik73
-	IXcoCmXB/A0vYb5YEB0BuA02IbCNdY9XNAuT2x+rSy59LWDd0T4ugpmf3AANiij7Yv+z
-	qrRV1+WrYeRFj1ahg0+58uBCE5vPNoiq08M6I0U7RQqAvFv+pcwdXJk/iuRuRreaHqf3
-	RDCg==
-X-Gm-Message-State: APjAAAVnBwhT389CWoCQS788Hy2gSIFynFXkByDg4d3JE1pdJA66eR6U
-	mjlezXEAeARMJmXvE4G/2zIgLBCF3I8Bvg==
-X-Received: by 2002:a1c:d14b:: with SMTP id i72mr16015899wmg.4.1558702111920; 
-	Fri, 24 May 2019 05:48:31 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id o4sm3053445wmo.20.2019.05.24.05.48.30
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 24 May 2019 05:48:31 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	bh=+b5UOSAlUR+hB3EqivhPNylQiolTiEORqjkuY+QlSLo=;
+	b=ppahecVGqp9Jvyq5G6K6cyyzR4ySWziShKsheTNbIliYdKQTrOVTy1O9J32br+2CJw
+	0HKzKbwUokQEqLQE0CZotV5ni7Ex1ANNh9iyvsA+pEFM94CSLdzz4nhoM8cHGoKQo04v
+	foWUNY1wXQC9/DYVgz2swi97PuoCTWXmNv5UKdBbbu8WRmwsoEe2MRPZ9AL/5TDUceHY
+	M3azOUhF/bBjdXh1F/Hhxvm17LGzQtoDrJtSKfdYk8Avm4SWgf2akuxsQ343UKR2nhsg
+	kci70IvxtEDD239pG+r5CCZwN8WJ0lnWpW4MLwckW1cwif3m+ItzQnwuRdsKho2n3d0P
+	tzVg==
+X-Gm-Message-State: APjAAAVq9kWbDopLcKyIzlsEphGRr/Oa6uKYcCwTHX9Q07ofpMhb25YC
+	5yIlpb8mttl0OSoJhBKEgtXBdA==
+X-Received: by 2002:a1c:35c9:: with SMTP id
+	c192mr15305708wma.147.1558703610997; 
+	Fri, 24 May 2019 06:13:30 -0700 (PDT)
+Received: from [192.168.1.38] (228.red-83-52-173.dynamicip.rima-tde.net.
+	[83.52.173.228]) by smtp.gmail.com with ESMTPSA id
+	z74sm14412362wmc.2.2019.05.24.06.13.30
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Fri, 24 May 2019 06:13:30 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 24 May 2019 13:48:29 +0100
-Message-Id: <20190524124829.2589-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+References: <20190524124248.28394-1-peter.maydell@linaro.org>
+	<20190524124248.28394-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <d5c49edf-f864-09ff-be9d-7072cfbb355b@redhat.com>
+Date: Fri, 24 May 2019 15:13:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190524124248.28394-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH] hw/arm/smmuv3: Fix decoding of ID register range
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-arm] [PATCH v2 1/2] hw/intc/arm_gicv3: Fix decoding of ID
+ register range
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,33 +108,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4L6gIxZN76LF
+X-TUID: JAFbmm1k4k6X
 
-The SMMUv3 ID registers cover an area 0x30 bytes in size
-(12 registers, 4 bytes each). We were incorrectly decoding
-only the first 0x20 bytes.
+On 5/24/19 2:42 PM, Peter Maydell wrote:
+> The GIC ID registers cover an area 0x30 bytes in size
+> (12 registers, 4 bytes each). We were incorrectly decoding
+> only the first 0x20 bytes.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_dist.c   | 4 ++--
+>  hw/intc/arm_gicv3_redist.c | 4 ++--
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
+> index 53c55c57291..e6fe4905fd3 100644
+> --- a/hw/intc/arm_gicv3_dist.c
+> +++ b/hw/intc/arm_gicv3_dist.c
+> @@ -533,7 +533,7 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
+>          }
+>          return MEMTX_OK;
+>      }
+> -    case GICD_IDREGS ... GICD_IDREGS + 0x1f:
+> +    case GICD_IDREGS ... GICD_IDREGS + 0x2f:
+>          /* ID registers */
+>          *data = gicv3_idreg(offset - GICD_IDREGS);
+>          return MEMTX_OK;
+> @@ -744,7 +744,7 @@ static MemTxResult gicd_writel(GICv3State *s, hwaddr offset,
+>          gicd_write_irouter(s, attrs, irq, r);
+>          return MEMTX_OK;
+>      }
+> -    case GICD_IDREGS ... GICD_IDREGS + 0x1f:
+> +    case GICD_IDREGS ... GICD_IDREGS + 0x2f:
+>      case GICD_TYPER:
+>      case GICD_IIDR:
+>          /* RO registers, ignore the write */
+> diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+> index 3b0ba6de1ab..8645220d618 100644
+> --- a/hw/intc/arm_gicv3_redist.c
+> +++ b/hw/intc/arm_gicv3_redist.c
+> @@ -233,7 +233,7 @@ static MemTxResult gicr_readl(GICv3CPUState *cs, hwaddr offset,
+>          }
+>          *data = cs->gicr_nsacr;
+>          return MEMTX_OK;
+> -    case GICR_IDREGS ... GICR_IDREGS + 0x1f:
+> +    case GICR_IDREGS ... GICR_IDREGS + 0x2f:
+>          *data = gicv3_idreg(offset - GICR_IDREGS);
+>          return MEMTX_OK;
+>      default:
+> @@ -363,7 +363,7 @@ static MemTxResult gicr_writel(GICv3CPUState *cs, hwaddr offset,
+>          return MEMTX_OK;
+>      case GICR_IIDR:
+>      case GICR_TYPER:
+> -    case GICR_IDREGS ... GICR_IDREGS + 0x1f:
+> +    case GICR_IDREGS ... GICR_IDREGS + 0x2f:
+>          /* RO registers, ignore the write */
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: invalid guest write to RO register at offset "
+> 
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/smmuv3.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index fd8ec7860ee..e96d5beb9a8 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1232,7 +1232,7 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-                               uint64_t *data, MemTxAttrs attrs)
- {
-     switch (offset) {
--    case A_IDREGS ... A_IDREGS + 0x1f:
-+    case A_IDREGS ... A_IDREGS + 0x2f:
-         *data = smmuv3_idreg(offset - A_IDREGS);
-         return MEMTX_OK;
-     case A_IDR0 ... A_IDR5:
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

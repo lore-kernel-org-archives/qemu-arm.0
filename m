@@ -1,127 +1,143 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2867432wrg;
-        Fri, 24 May 2019 03:56:38 -0700 (PDT)
-X-Received: by 2002:a9d:3c2:: with SMTP id f60mr164792otf.74.1558695398784;
-        Fri, 24 May 2019 03:56:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558695398; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2978743wrg;
+        Fri, 24 May 2019 05:43:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwoBzqhmCv/fxfnolqccT7frMryH8CYTMlW5x2SWEDWQwaFbw6GBU7/7hQXzb5kaxZmip7Z
+X-Received: by 2002:a17:907:20ed:: with SMTP id rh13mr63206520ejb.5.1558701786436;
+        Fri, 24 May 2019 05:43:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558701786; cv=none;
         d=google.com; s=arc-20160816;
-        b=gtPCcMUY3sSA6Cakd+Gn2wFa2a62Asoyda4nlI7rYkrmV8HNiQGhN3kLd+6nm/wINa
-         msZ+OEfK0zHWt0cv0jEyI9BsXNzXXdLqcwMkjTaveVuoVk702HZ6gdDAC+6zCqtttbcG
-         HTY3B2mvu6/cJAvOetmYLj2q9N4vTgyhfxQhp591srqlZWJ1QdYZ2g8vh0sAsWBG2oAe
-         RLilZ+Yh485IM0KvW94pypATrazwADj+9/bfQsk/+w3Qv4CeC1JvUuheZlSw2g8cj/pI
-         QSGPTZOnu5y+QuVrTmYBpLUdtk8HcBgNYgx++SPKxPMA+CYi+NyDK/a2Q5/JaJoGBBc/
-         VZrw==
+        b=HibpdnTmTNz7U1pG2p67OO+8LQqlCetgjLLv6Otl47zurMd+LOKUEETY19pQsy+5Mc
+         UsNComYSeZYdpO+JuNlVgtAA4C371MxMMw3rv9dSYXya/CXn8GlEAoSJCUumSZ3D4FrF
+         XJYTg2AEwZUaD+LUUEZ6JJJ9PtTVdbEnP+t0/nEQJIxhVQOQcRkcjxfksJV1Wj0SpVob
+         0P+/Rc46lOF+NYVgBBZjj5+34q4eUlWTLlh9XdphVBpGecszylimojMAcHuLGYaT2QcM
+         nmizOSaHoj5xbqyuxkYsCmg1NJa3oxUu+aZ8Ta8TBLbrh78XEf4YsytsiJL0EpG9YwNk
+         yhYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WJGUWQzCyBfav+i0AdQnhQAz8aaBzTAkRWNXH5JSs7U=;
-        b=0xbK+ueRPUB5iLAuUXvICYZumos6xoQFrKJB1LU1aqGuIeYfTbRriwOoWbbo25V2cJ
-         v7Z6XrIsIka5nZWaEHASpBAEYRmqQSNXhEUPV+i4Hz4GWdjOwglkoeILJ8JWJSf/H118
-         GvDiJZFbF+D9syr2wlNBBqzgKT+8Q0wAby7FHe4vWu4hwrX0cjJ9UYxJzCXRv9vpAPz/
-         gTCx8Xp1Tb+ZGnL5xmuPdW1svZ5Pj5SuWFfGDuj+5lVShGZcv89v+jufnSm/rKDHYBgr
-         AsuoBANXqsEBcGl1qxOkyBxamiN6NcVRRwKfZJuuz+0l/vRAzKI2luNGqxJygbjrKyNm
-         hpNg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=Wpm2sQhYIfIk/OCN8Lhc9DkJO4UyQ5qxNO30ipqpQyo=;
+        b=MqU+kCNbYISzprzvlvgMzWrxujI/UJ29OUjjGVwGUh8JFOZyVylE4sLRqtv0X64oYn
+         4OPDtCM5I+jkkYs+qHAsJwyE+OGmmIZ65jlimXWGbTKfqWDVbHfZDZJvN8JHNQueaWkG
+         EQNuITH+V+scHSaFX0iXNpBWZG1BhQHFOmzjB8UB28PcF09KBjm7VwMnJkOBPtEqJ+2A
+         4g/Ax4u8fi3CO7LXndJcwhxf2ZF6ioF39GYbufJ7Y183mA8IsZ68Fgcf6LfS285bLYbX
+         OdvmQkk2ym8anMbSDotJGnLLOyNovy5TYBdy0ljGkal+FWA09AMx0MypH1k8ZUJrXxp/
+         /G0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B8rH0BRt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g83sor802526oia.42.2019.05.24.03.56.38
+       dkim=fail header.i=@linaro.org header.s=google header.b=Lv+acOeY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y36si1793572edc.165.2019.05.24.05.43.06
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 24 May 2019 03:56:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 24 May 2019 05:43:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B8rH0BRt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=WJGUWQzCyBfav+i0AdQnhQAz8aaBzTAkRWNXH5JSs7U=;
-        b=B8rH0BRtgBuS9PXBjpzIp2B8gZI1ed6cZ0Jb3nk7QsriEb7UyrTh3dPwvhX38JAtai
-         ybnhf1zpjd6rGd6EW4+Z6SG26Bjbj+DxHHvL7RJpzMfPbnkTr3EZTBm07PyFsvZE38Iq
-         aA625CohmYtJHNwizdqVFdq8Y/uf3KhR8ZLQFPXANkuYtesYHh6tG7QOt+Pkz0TV/8GJ
-         Anc+DYGLr4SMWjuhGfoofFQTgQy+SXK/VRafj2QwXjMLdTk+G4Ltx9N117k1RtFRnht4
-         hCEzFuC3eoAa9F8OgS+GF1jUp1J8gfjxznjRX152WpuOiTlne1lG5SArHlBADKNcTeMY
-         QEow==
+       dkim=fail header.i=@linaro.org header.s=google header.b=Lv+acOeY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:54104 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hU9XN-0007IQ-CV
+	for alex.bennee@linaro.org; Fri, 24 May 2019 08:43:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52631)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hU9XB-0007IB-II
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:42:54 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1hU9XA-0006Ks-Lv
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:42:53 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:51612)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hU9XA-0006KI-Eb
+	for qemu-arm@nongnu.org; Fri, 24 May 2019 08:42:52 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id f10so1816619wmb.1
+	for <qemu-arm@nongnu.org>; Fri, 24 May 2019 05:42:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Wpm2sQhYIfIk/OCN8Lhc9DkJO4UyQ5qxNO30ipqpQyo=;
+	b=Lv+acOeYB2G5acMbaEj56suh5rss25PSFHiGKuFycUP4OxIiTUhTj5JJ1vIKO+Uyef
+	wmaQgpNPs41mDcFQKh7Ydblf1lmiYsvcF5oRUFVqKpmM+1iR6O0ZTkH+2biGE8a0K2n+
+	1z2mDn9IF9X77fTPy/kVuPZn+wcKnWeJISDnuDL8WajPgwHPhXuEFDTzD2dnqU+l2hMj
+	Z9uedALieSl9FvZZd9j6LUwXjVsr9lAMu4HxUlsijTn+scWsqIO3VGrIvdloHbmKVw7t
+	CwEOAMMp6fAriWDGbqRJ7NqNBkcfbSdZZvMkZRzbQOcgBm11x6NvIfh1vkX8uayMo3xo
+	XGCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=WJGUWQzCyBfav+i0AdQnhQAz8aaBzTAkRWNXH5JSs7U=;
-        b=nJGk3ExPylNrRf2VkRaBsCbRCPmxbgP53DCSLxrEA14N+U+TJ6WF6SyjvppDU3G0fF
-         NDI2gRT+BT+YQpBA9fdvGQfVaS+N2nBJLCOkqg2GGCJ2RIr8suqwmHKKI/kxl5ejJXUl
-         KuIoVinV4dWbevS+ImkHFk897j36mN/7uDvtUsD98l+6JjZqXFvUbOlBOVf+xOPei5mh
-         mPfxhtBDowSMLC8s/bDJwIEzEz2BdLzLb2/hvGC0nhJNazFGElQRYCoIaEWEF9MmDJE6
-         HtT9UigCN6G8E5xvfQn9rsZ8MY9V7Nf3SKPrK/z2uvtEIBa2fgeE7ig86oKUpahXTGYg
-         lYkA==
-X-Gm-Message-State: APjAAAWeCHwtLR3q/ghiM98edWUrdstaC18u+bXsLqffRIPBYYosLeoT
-	f4Kw448pqGeCSCdqdIxznc4EKpoS3sDxe/ypR97wKwbgSybcgg==
-X-Google-Smtp-Source: APXvYqxVbmHOuT+SWWRgH8UNTYbywGrrZysLm2+EBf7oh9cRtpkun0F9oyS7Z0juIDMZ7B234QkhM0ahdUfN6uL/wLA=
-X-Received: by 2002:aca:b1c1:: with SMTP id a184mr5911488oif.98.1558695398200;
- Fri, 24 May 2019 03:56:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190523102532.10486-1-alex.bennee@linaro.org>
- <20190523102532.10486-4-alex.bennee@linaro.org> <CAFEAcA_+=7VfvZRc__q9L3vuHO6YgetrjTPAYJx4eo0mAdcPXg@mail.gmail.com>
- <877eag165o.fsf@zen.linaroharston>
-In-Reply-To: <877eag165o.fsf@zen.linaroharston>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Wpm2sQhYIfIk/OCN8Lhc9DkJO4UyQ5qxNO30ipqpQyo=;
+	b=lbMj4OBq84tPwH/+8jb8HYi5f0Fx0Rvwx9YBQvpm0eAElCVe34xMgOwC8oIEUfyBKh
+	PekMFOGLVsXn8oMRPqSrb3eChN/Omd1+YsVqLC4ykUgMdV7F/gX29kgSMq79h3pkpeup
+	sX6Vq/1zHaVHAjIrNdrZ3oD65gsq+VssRAV9NGI2teQ3pZ3HWnDVPUftRBUZQJVmXmYX
+	IvJ3nmHAKfF6OloUGn9jcfDHL2vYtngzHMJmAn5DfLjH21JuG8nBCHjofzysOqJYX+Ps
+	aIHZCarhNa6PQbqnE5eeP3EU/rqFrs1pPb6oDWYcyV7kzmsvPBtA/83YtJT4Io4Norao
+	ikXA==
+X-Gm-Message-State: APjAAAUwL9VkpsEM40rVTCWAKO+eCXAjat59j/nrkwO/domTwRzpk9y0
+	yWMqH2BZemRLyjzXOz7/84u76Pt6xrlV9g==
+X-Received: by 2002:a05:600c:21c1:: with SMTP id
+	x1mr16146269wmj.5.1558701771017; 
+	Fri, 24 May 2019 05:42:51 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+	by smtp.gmail.com with ESMTPSA id t12sm2969854wro.2.2019.05.24.05.42.49
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 24 May 2019 05:42:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 24 May 2019 11:56:26 +0100
-Message-ID: <CAFEAcA_Fu3Ep10NooU5-XcAqQVjJQE5o1L2JTdYTatjcOptPUg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 03/28] semihosting: implement a
- semihosting console
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ynGqgEixVst8
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 24 May 2019 13:42:46 +0100
+Message-Id: <20190524124248.28394-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::32a
+Subject: [Qemu-arm] [PATCH v2 0/2] hw/intc/arm_gicv3: Some simple bugfixes
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xQePj7nPbell
 
-On Fri, 24 May 2019 at 11:46, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > On Thu, 23 May 2019 at 11:39, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
-> > I'm not sure about the "no callback" part of this API. The operation
-> > here is genuinely asynchronous and providing no mechanism for the
-> > caller to be able to say "ok, now wait til it completes" doesn't
-> > seem like a good plan.
->
-> Well the caller doesn't really get a choice. At least in system mode
-> gdbstub does a vm_stop(RUN_STATE_DEBUG) and brings everything to a halt
-> anyway. All we've removed is the ability to tack on a callback (which
-> can get run in all sorts of contexts) when we restart.
+This patchset fixes a couple of simple bugs in our GICv3
+implementation.
 
-gdb_do_syscall() is asynchronous -- it arranges for the syscall
-to happen, but makes no guarantee about when it will finish.
-At the moment the gdb_do_syscall() API allows the caller
-to cope with this asynchronousness, because when the callback
-is called the syscall has definitely finished. As it happens
-the callers are buggy in that they don't actually do the
-sync that they need to do, but we could fix that bug (ie post
-a semaphore in the callback function, and wait on it after
-the gdb_do_syscall() call). The API for this new function
-doesn't allow us to do that.
+Changes since v1:
+ * patches 3 and 4 from the old patchset are now in master
+ * patch 1 now covers both the read and write functions
 
-> I could just drop the API here and allow the semihosting API to call
-> gdb_do_syscallv directly?
-
-I think we should either make the implementation of the function
-properly synchronous (ie do the post-semaphore-in-callback,
-wait-on-it-after-gdb_do_syscallv thing in the implementation,
-or have an API that lets callers do it.
-
-Perhaps we should just make gdb_do_syscall really be
-synchronous (ie have it do the semaphore stuff)? We
-only actually use it in semihosting, and I think all
-those cases require that the operation completes before
-we can resume execution of the guest CPU. So doing the
-synchronization in one place in the gdb code would be
-simpler than doing it separately in all the callers...
+I've also just noticed (via grep for IDREGS) that we made
+the same decode mistake in the SMMUv3. I'll send that out
+as a separate patch.
 
 thanks
 -- PMM
+
+
+Peter Maydell (2):
+  hw/intc/arm_gicv3: Fix decoding of ID register range
+  hw/intc/arm_gicv3: GICD_TYPER.SecurityExtn is RAZ if GICD_CTLR.DS == 1
+
+ hw/intc/arm_gicv3_dist.c   | 12 +++++++++---
+ hw/intc/arm_gicv3_redist.c |  4 ++--
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+-- 
+2.20.1
+

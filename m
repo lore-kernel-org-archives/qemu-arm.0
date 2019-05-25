@@ -1,79 +1,80 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4310512wrg;
-        Sat, 25 May 2019 08:14:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3CxT7PMdmB5msttKUhmW/zTg8N03/Cu7mDDBWxnYT4kqfsos1D9aNHOSgt3Jxj4IAhZA2
-X-Received: by 2002:a1f:bf95:: with SMTP id p143mr5869890vkf.88.1558797277194;
-        Sat, 25 May 2019 08:14:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558797277; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4310779wrg;
+        Sat, 25 May 2019 08:14:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwiIEU/igVFrIcAfSgcBcERuNGh+d7/aav43LZwc1/oYJOiQvSdYZbnF3NANjlGRp7vmPGr
+X-Received: by 2002:a67:e905:: with SMTP id c5mr4628375vso.97.1558797294366;
+        Sat, 25 May 2019 08:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558797294; cv=none;
         d=google.com; s=arc-20160816;
-        b=x+Z3BIDDoxPJfMtmKKZ27Y5mMIj2rc8rOebkycPa/01KnRAeaR2qpBsufr3bn8u9pd
-         dhYi/7SXBOahq2BGUi6+UDSGPxV5n/TRdmZG7FlEgRe995bgojYADiLpjdiviiY0I6nl
-         b3klPHvLK9I6Ty0r5emcrj6tLTiTFf1Fftp+IEsHymdUOHNBtP6+/mu8Xl+dQJAqNCPw
-         slpg/GJq9TpDC9b/V1VzF05HJyQGjUc5QnpcnN2ViOLhu7tg6wzkvAEQDwnK46alrbfT
-         4HyUZKYzOTKqgCeD9HTH+LGawfe5lQTMY5q1P8nAREXex5YKVMRUM7R7RWuEa5PxEpkW
-         Q5tA==
+        b=CJpR35Kl2YIznvfatx85JrTsV+IAqqCxBjHQqZ91ttinK6F9Rc2DdahcnWIVcXfRkZ
+         seMbZhEy/Y/hTX1u4WTDVizxTIXHe9odS6Gff/7u3+vpYLRKz6kyjdbo2HomJhhLXKQX
+         7iKWLh6ckMVnz5hEqslO0hQ3ZuWFSS8F+JW/f0JTb/32dCfojJFf/GQE78rKWt4qZ2Zd
+         SoH4PS25CQfrhIu93Fgg9n34DZHqzfldteJhWpFmAbChxFOYR2Cl7LIID6j5McKoYlDG
+         1xxpWy2c7xomSZ53IXxTuGKtnjFNIbgQQdlBd78Mk4REA0e8LSD9tIsYUeKg0hCuNSEu
+         NBjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=d2DEDSt2gQKfZfPcwDqyVM4+9g9V1UIPftEqq/HrRJY=;
-        b=e4lr9e1waIJ2mougXso1vrtS+p9gan1onHCEK9BPZovKwlbfhRulBrxmlySdf/UKkh
-         48PB08hTc+9UukDcIZveBzEfs/kbwjsqXtnlVAkS3PIDq0ELJIFxXn2jMxpo72cgurPO
-         3pZ56xk8MB7HW/Dx5nx5JLJsRvWMefh3+Z5jKQBpjNa7Fd1wPLWnkA2FxbiAZr3mxw0L
-         LuNw9DaCbgOAOjrrtJaeeza/EwgOKOS7iV9SAbnB2F8IDicBakZyzlycEMp6KN6rgotZ
-         badcdHWM6dY8P3bj8OoqdR2HAXyuebKFA69bPj+h88B5qBfjiF+fbXKReTerCLBoUIF8
-         uqEA==
+        bh=4Nxh9kYedINf2n0jMl8Afj+WVxDBEmPbIfP6cLmX8Sg=;
+        b=WlXhfOBbXSM3jvMEcLsKiQjjW5OildiPy1J5UISs0X0q9gi3c68lKiR0ICrjKX1v7+
+         FulyaETlgso6KxzYZRIr+UzfSieudi+XHLhbUUoGdFYpcSluuVTdEx5/YbchUlBN9lm+
+         KhgSEvzmD6wC6SS9e0veE9WtzxD7OR81RGYENoXd3PVABLzBbC9FzE958rEr5DwIi7PQ
+         Mfr1gURz3gJswu82m0XrvpydZ2ARl46GgsZ01dtlxYQGdTYVRyBwil9zNOYh6/zMGdM9
+         dq+miA/5SA7XBnAa3G/uKLH6nN5WMUjHNmyhArBCQwfpvUuo8dkzJpF2OFswnlYl6CCE
+         Xk2w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22si1872220vke.24.2019.05.25.08.14.36
+        by mx.google.com with ESMTPS id j63si2192104uad.233.2019.05.25.08.14.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 May 2019 08:14:37 -0700 (PDT)
+        Sat, 25 May 2019 08:14:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43168 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:43170 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hUYNY-0006M9-F9
-	for alex.bennee@linaro.org; Sat, 25 May 2019 11:14:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33103)
+	id 1hUYNp-0006b5-Nj
+	for alex.bennee@linaro.org; Sat, 25 May 2019 11:14:53 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33147)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYN4-00067V-E2
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:07 -0400
+	(envelope-from <clg@kaod.org>) id 1hUYNA-0006Dj-S1
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYN2-00020L-LX
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:06 -0400
-Received: from 11.mo6.mail-out.ovh.net ([188.165.38.119]:46162)
+	(envelope-from <clg@kaod.org>) id 1hUYN9-00027l-O8
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:12 -0400
+Received: from 15.mo4.mail-out.ovh.net ([91.121.62.11]:55859)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYN2-0001zQ-GK
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:04 -0400
-Received: from player698.ha.ovh.net (unknown [10.109.143.223])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 2E4DB1CC226
-	for <qemu-arm@nongnu.org>; Sat, 25 May 2019 17:14:03 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYN9-00025z-Iy
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:11 -0400
+Received: from player698.ha.ovh.net (unknown [10.108.54.156])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id B3E991F0EA6
+	for <qemu-arm@nongnu.org>; Sat, 25 May 2019 17:14:09 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
 	(Authenticated sender: clg@kaod.org)
-	by player698.ha.ovh.net (Postfix) with ESMTPSA id B45E8625A7DB;
-	Sat, 25 May 2019 15:13:56 +0000 (UTC)
+	by player698.ha.ovh.net (Postfix) with ESMTPSA id 2C724625A813;
+	Sat, 25 May 2019 15:14:03 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 May 2019 17:12:32 +0200
-Message-Id: <20190525151241.5017-11-clg@kaod.org>
+Date: Sat, 25 May 2019 17:12:33 +0200
+Message-Id: <20190525151241.5017-12-clg@kaod.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190525151241.5017-1-clg@kaod.org>
 References: <20190525151241.5017-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 6609876878724664081
+X-Ovh-Tracer-Id: 6611565728465783569
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddukedgkeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.165.38.119
-Subject: [Qemu-arm] [PATCH 10/19] aspeed/timer: Fix match calculations
+X-Received-From: 91.121.62.11
+Subject: [Qemu-arm] [PATCH 11/19] aspeed/timer: Provide back-pressure
+ information for short periods
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,67 +91,106 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fCbPwxM2poKW
+X-TUID: ZLNluFlbth0s
 
 From: Andrew Jeffery <andrew@aj.id.au>
 
-If the match value exceeds reload then we don't want to include it in
-calculations for the next event.
+First up: This is not the way the hardware behaves.
+
+However, it helps resolve real-world problems with short periods being
+used under Linux. Commit 4451d3f59f2a ("clocksource/drivers/fttmr010:
+Fix set_next_event handler") in Linux fixed the timer driver to
+correctly schedule the next event for the Aspeed controller, and in
+combination with 5daa8212c08e ("ARM: dts: aspeed: Describe random number
+device") Linux will now set a timer with a period as low as 1us.
+
+Configuring a qemu timer with such a short period results in spending
+time handling the interrupt in the model rather than executing guest
+code, leading to noticeable "sticky" behaviour in the guest.
+
+The behaviour of Linux is correct with respect to the hardware, so we
+need to improve our handling under emulation. The approach chosen is to
+provide back-pressure information by calculating an acceptable minimum
+number of ticks to be set on the model. Under Linux an additional read
+is added in the timer configuration path to detect back-pressure, which
+will never occur on hardware. However if back-pressure is observed, the
+driver alerts the clock event subsystem, which then performs its own
+next event dilation via a config option - d1748302f70b ("clockevents:
+Make minimum delay adjustments configurable")
+
+A minimum period of 5us was experimentally determined on a Lenovo
+T480s, which I've increased to 20us for "safety".
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/timer/aspeed_timer.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ include/hw/timer/aspeed_timer.h | 1 +
+ hw/misc/aspeed_scu.c            | 6 ++++++
+ hw/timer/aspeed_timer.c         | 6 +++++-
+ 3 files changed, 12 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_ti=
+mer.h
+index 1fb949e16710..10c851ebb6d7 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -41,6 +41,7 @@ typedef struct AspeedTimer {
+      * interrupts, signalling with both the rising and falling edge.
+      */
+     int32_t level;
++    uint32_t min_ticks;
+     uint32_t reload;
+     uint32_t match[2];
+     uint64_t start;
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index ab1e18ed4b0f..a7b37e5ece01 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -422,6 +422,12 @@ static void aspeed_scu_realize(DeviceState *dev, Err=
+or **errp)
+                           TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
+=20
+     sysbus_init_mmio(sbd, &s->iomem);
++
++    /*
++     * Reset on realize to ensure the APB clock value is calculated in t=
+ime for
++     * use by the timer model, which is reset before the SCU.
++     */
++    aspeed_scu_reset(dev);
+ }
+=20
+ static const VMStateDescription vmstate_aspeed_scu =3D {
 diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 2f8522a597d3..6c184572ea04 100644
+index 6c184572ea04..9988b8fbbf17 100644
 --- a/hw/timer/aspeed_timer.c
 +++ b/hw/timer/aspeed_timer.c
-@@ -107,6 +107,11 @@ static inline uint64_t calculate_time(struct AspeedT=
-imer *t, uint32_t ticks)
-     return t->start + delta_ns;
- }
+@@ -259,7 +259,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlSta=
+te *s, int timer, int reg,
+     switch (reg) {
+     case TIMER_REG_RELOAD:
+         old_reload =3D t->reload;
+-        t->reload =3D value;
++        t->reload =3D value < t->min_ticks ? t->min_ticks : value;
 =20
-+static inline uint32_t calculate_match(struct AspeedTimer *t, int i)
-+{
-+    return t->match[i] < t->reload ? t->match[i] : 0;
-+}
-+
- static uint64_t calculate_next(struct AspeedTimer *t)
- {
-     uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-@@ -118,12 +123,12 @@ static uint64_t calculate_next(struct AspeedTimer *=
-t)
-      * the timer counts down to zero.
-      */
+         /* If the reload value was not previously set, or zero, and
+          * the current value is valid, try to start the timer if it is
+@@ -311,7 +311,11 @@ static void aspeed_timer_ctrl_enable(AspeedTimer *t,=
+ bool enable)
 =20
--    next =3D calculate_time(t, MAX(t->match[0], t->match[1]));
-+    next =3D calculate_time(t, MAX(calculate_match(t, 0), calculate_matc=
-h(t, 1)));
-     if (now < next) {
-         return next;
-     }
-=20
--    next =3D calculate_time(t, MIN(t->match[0], t->match[1]));
-+    next =3D calculate_time(t, MIN(calculate_match(t, 0), calculate_matc=
-h(t, 1)));
-     if (now < next) {
-         return next;
-     }
-@@ -141,8 +146,10 @@ static uint64_t calculate_next(struct AspeedTimer *t=
+ static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool enable=
 )
-         qemu_set_irq(t->irq, t->level);
-     }
-=20
-+    next =3D MAX(MAX(calculate_match(t, 0), calculate_match(t, 1)), 0);
-     t->start =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--    return calculate_time(t, MAX(MAX(t->match[0], t->match[1]), 0));
+ {
++    AspeedTimerCtrlState *s =3D timer_to_ctrl(t);
++    uint32_t rate =3D enable ? TIMER_CLOCK_EXT_HZ : s->scu->apb_freq;
 +
-+    return calculate_time(t, next);
+     trace_aspeed_timer_ctrl_external_clock(t->id, enable);
++    t->min_ticks =3D muldiv64(20 * SCALE_US, rate, NANOSECONDS_PER_SECON=
+D);
  }
 =20
- static void aspeed_timer_mod(AspeedTimer *t)
+ static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool en=
+able)
 --=20
 2.20.1
 

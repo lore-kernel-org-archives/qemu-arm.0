@@ -1,208 +1,516 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4329284wrg;
-        Sat, 25 May 2019 08:33:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz3OaNY1DgbdRAsC6qd0KeayffC12YN2SjwNycgqt3fJ2xVXPYpEDTEtq6hylHeJt/FLkPB
-X-Received: by 2002:ae9:ec10:: with SMTP id h16mr46300596qkg.215.1558798427908;
-        Sat, 25 May 2019 08:33:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558798427; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4330001wrg;
+        Sat, 25 May 2019 08:34:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy1eKozmMfizqyAqTLGx7cC6j+Eh6sn4l9//TynofbctKvaHr0NqJrXcfGfylO2ma3iqPR2
+X-Received: by 2002:a37:e40f:: with SMTP id y15mr26737330qkf.111.1558798469575;
+        Sat, 25 May 2019 08:34:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558798469; cv=none;
         d=google.com; s=arc-20160816;
-        b=HtdEfjK76+aLeGCc1qkZvx2qhjzwO6lR25sDBh0QLWsaqH8OOpZY3q1EU5fzeiRyBA
-         vElx4g1jbNAWLSIYCdt4mzBHaA0iqtQw+TwL6wm27RaRupSAwIBvU94CnbsRHsT5ddww
-         AjAZf8yF6bPRP4z1NChkcLPplSXKY52aicTcHIDC84u8oSKbym5GsF28ivuTozM8ZtJE
-         pVmsYziL8iRmz76zki6bMpAaGoBsQaZMD1UJjKxNWrWmls/ae9Ufp3TyC8b20q/vcWZs
-         QCaW8pTH1HezA7yT+7h5lzN0uFa0ca+ihW2WGl9FSUFtUA/xGYGvbmPZGDx8yRqoFLmz
-         a1sQ==
+        b=wmvFE8WeXzYUNnGS5n/L165FFBhUne3ToUyEj3ea6HOtId+Yr+gLpqstfojDXf+K2j
+         hFA7S6I8M+Oji0Nim2sETZxfoJHq+pcEChA5haK/BWnQTdFUUXqKf5NBLVBKvuFitObs
+         OmF1T5fdYqHYzVDMOzGc96aHUpFMh7RR9CTHjPPS2PYpY92YFU+77odWFCePpLMJpSjl
+         vCPyvG15Wf/m1KYi8/br6GoGI2WHZBle0XpIrufqEuVPG9mtTtWmmN7GOjkW5EwqdhQJ
+         qdXulhpgyF23UQQkNPRf0REeeHDsDKcxTYS/P3mcKUSp5u8yq31ye/9l01CpVBmtwSYF
+         FUvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=ZULtlUckg5VdjupyLGYzvK0YW2443OwCY3fUq4ryCmI=;
-        b=hWsxcbROAFxLRSsPyV5sjBFKexci8XROXN7wbfHYUcgl66NNIFQB4oATQR3TG23UL3
-         +HrDt9RbDYwEIL6qv8SQfCQwYjzKFvjJQAH63P5argNBmbrtGr4dfIg2Jxm6ceMzj2jX
-         5N4u0WSTx+QrJqs/YHPcZICM15zm+Db1kEX8EJZ8HsJIAxUFMkUDQAgjyeB+Z+1/z/Bx
-         J3nO6Z8q/kRg0fWV7ZTrwvty/J6NIOb5YskG4JulT3nGqx3ofEemx1oogpksHtO6ZByp
-         0czyIPcVMwyv4ko1O3uvzz1WZkhsyQzHnt52/7DHMamSY1nUjQFbg9Rj5OWrE46t4m7+
-         vTuw==
+        bh=QXmuf7trNEIqxJ18eXi1QE0YRvc/U1yNnuwU7pwMtiI=;
+        b=N5WkMLxr91d69VNYLWEytnjejm08hviQw3TzeS9CXoOQPjVJXMDjK0k7xLiR+Fe9pt
+         uGJsUQYeL8qdgOJDLhpH2t8lj4HMaFmg9N3Kv1QDMWhCuLIcG7hZVaCsqXXsFjl+HR/j
+         NfwjvxmWf3m8qTlMRkvXjeqSN+lSw7LYRMq3mvD716GlXhwDKsyPZoKiqTw7gyQYDswv
+         MR3OrbV8sCOXv8s0JGp3xsLIoeRPSJKd5EQqrBzdqJOI7iUWFqfHXcse//wW5HNEbrP1
+         PbFeiVubaXvCMMVKUJIg/UE7ItkhfjKOzcmwZEkGPR0jENmj4u9ThxFqC6EwUReQK+WN
+         mnZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y1si2197278qty.139.2019.05.25.08.33.47
+        by mx.google.com with ESMTPS id p20si2742774qkk.245.2019.05.25.08.34.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 May 2019 08:33:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 25 May 2019 08:34:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43454 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:43466 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hUYg7-0000fj-Cg
-	for alex.bennee@linaro.org; Sat, 25 May 2019 11:33:47 -0400
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hUYgn-0001dz-2j
+	for alex.bennee@linaro.org; Sat, 25 May 2019 11:34:29 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:35912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYdr-0007i4-Cn
-	for qemu-devel@nongnu.org; Sat, 25 May 2019 11:31:28 -0400
+	(envelope-from <clg@kaod.org>) id 1hUYdw-0007i4-KK
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:31:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYNq-0003AJ-Tb
-	for qemu-devel@nongnu.org; Sat, 25 May 2019 11:14:56 -0400
-Received: from 13.mo7.mail-out.ovh.net ([87.98.150.175]:54279)
+	(envelope-from <clg@kaod.org>) id 1hUYNl-00035I-2V
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:51 -0400
+Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:40756)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYNp-00035e-LP
-	for qemu-devel@nongnu.org; Sat, 25 May 2019 11:14:54 -0400
-Received: from player698.ha.ovh.net (unknown [10.108.57.150])
-	by mo7.mail-out.ovh.net (Postfix) with ESMTP id 1AC5211C41A
-	for <qemu-devel@nongnu.org>; Sat, 25 May 2019 17:14:49 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYNk-00031a-14
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:48 -0400
+Received: from player698.ha.ovh.net (unknown [10.109.159.248])
+	by mo69.mail-out.ovh.net (Postfix) with ESMTP id B78E459A5D
+	for <qemu-arm@nongnu.org>; Sat, 25 May 2019 17:14:42 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
 	(Authenticated sender: clg@kaod.org)
-	by player698.ha.ovh.net (Postfix) with ESMTPSA id BE5CE625A8C2;
-	Sat, 25 May 2019 15:14:42 +0000 (UTC)
+	by player698.ha.ovh.net (Postfix) with ESMTPSA id 392F3625A89B;
+	Sat, 25 May 2019 15:14:36 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 May 2019 17:12:39 +0200
-Message-Id: <20190525151241.5017-18-clg@kaod.org>
+Date: Sat, 25 May 2019 17:12:38 +0200
+Message-Id: <20190525151241.5017-17-clg@kaod.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190525151241.5017-1-clg@kaod.org>
 References: <20190525151241.5017-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 6622824727025912593
+X-Ovh-Tracer-Id: 6620854403963849489
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddukedgkeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.150.175
-Subject: [Qemu-devel] [PATCH 17/19] aspeed/smc: add DMA calibration settings
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 46.105.56.233
+Subject: [Qemu-arm] [PATCH 16/19] aspeed/smc: add support for DMAs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iqpXd9/lT2YD
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lhF20usVn/kf
 
-When doing calibration, the SPI clock rate in the CE0 Control Register
-and the read delay cycles in the Read Timing Compensation Register are
-set using bit[11:4] of the DMA Control Register.
+The FMC controller on the Aspeed SoCs support DMA to access the flash
+modules. It can operate in a normal mode, to copy to or from the flash
+module mapping window, or in a checksum calculation mode, to evaluate
+the best clock settings for reads.
+
+The model introduces two custom address spaces for DMAs: one for the
+AHB window of the FMC flash devices and one for the DRAM. The latter
+is populated using a "dram" link set from the machine with the RAM
+container region.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 64 ++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 63 insertions(+), 1 deletion(-)
+ include/hw/ssi/aspeed_smc.h |   6 +
+ hw/arm/aspeed.c             |   2 +
+ hw/arm/aspeed_soc.c         |   2 +
+ hw/ssi/aspeed_smc.c         | 228 +++++++++++++++++++++++++++++++++++-
+ 4 files changed, 232 insertions(+), 6 deletions(-)
 
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 591279ba1f43..453357cc09bf 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -45,6 +45,8 @@ typedef struct AspeedSMCController {
+     hwaddr flash_window_base;
+     uint32_t flash_window_size;
+     bool has_dma;
++    hwaddr dma_flash_mask;
++    hwaddr dma_dram_mask;
+     uint32_t nregs;
+ } AspeedSMCController;
+=20
+@@ -100,6 +102,10 @@ typedef struct AspeedSMCState {
+     /* for DMA support */
+     uint64_t sdram_base;
+=20
++    AddressSpace flash_as;
++    MemoryRegion *dram_mr;
++    AddressSpace dram_as;
++
+     AspeedSMCFlash *flashes;
+=20
+     uint8_t snoop_index;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ed5c8dd5133a..f1722ee04ac9 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -176,6 +176,8 @@ static void aspeed_board_init(MachineState *machine,
+                             &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
+                             &error_abort);
++    object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_contain=
+er),
++                             "dram", &error_abort);
+     if (machine->kernel_filename) {
+         /*
+          * When booting with a -kernel command line there is no u-boot
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 65fbac896c85..16508f1e1844 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -207,6 +207,8 @@ static void aspeed_soc_init(Object *obj)
+                           sc->info->fmc_typename);
+     object_property_add_alias(obj, "num-cs", OBJECT(&s->fmc), "num-cs",
+                               &error_abort);
++    object_property_add_alias(obj, "dram", OBJECT(&s->fmc), "dram",
++                              &error_abort);
+=20
+     for (i =3D 0; i < sc->info->spis_num; i++) {
+         sysbus_init_child_obj(obj, "spi[*]", OBJECT(&s->spi[i]),
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index b3c8e0a84f8b..406c30c60b3f 100644
+index 4ff12f7b27fc..b3c8e0a84f8b 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -74,6 +74,10 @@
- #define   CTRL_CMD_MASK            0xff
- #define   CTRL_DUMMY_HIGH_SHIFT    14
- #define   CTRL_AST2400_SPI_4BYTE   (1 << 13)
-+#define CE_CTRL_CLOCK_FREQ_SHIFT   8
-+#define CE_CTRL_CLOCK_FREQ_MASK    0xf
-+#define CE_CTRL_CLOCK_FREQ(div)                                         =
-\
-+    (((div) & CE_CTRL_CLOCK_FREQ_MASK) << CE_CTRL_CLOCK_FREQ_SHIFT)
- #define   CTRL_DUMMY_LOW_SHIFT     6 /* 2 bits [7:6] */
- #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
- #define   CTRL_CMD_MODE_MASK       0x3
-@@ -109,7 +113,7 @@
- #define   DMA_CTRL_DELAY_SHIFT  8
- #define   DMA_CTRL_FREQ_MASK    0xf
+@@ -23,10 +23,12 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qapi/error.h"
+ #include "hw/sysbus.h"
+ #include "sysemu/sysemu.h"
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
++#include "exec/address-spaces.h"
+=20
+ #include "hw/ssi/aspeed_smc.h"
+=20
+@@ -109,8 +111,8 @@
  #define   DMA_CTRL_FREQ_SHIFT   4
--#define   DMA_CTRL_MODE         (1 << 3)
-+#define   DMA_CTRL_CALIB        (1 << 3)
+ #define   DMA_CTRL_MODE         (1 << 3)
  #define   DMA_CTRL_CKSUM        (1 << 2)
- #define   DMA_CTRL_WRITE        (1 << 1)
- #define   DMA_CTRL_ENABLE       (1 << 0)
-@@ -808,6 +812,60 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr=
+-#define   DMA_CTRL_DIR          (1 << 1)
+-#define   DMA_CTRL_EN           (1 << 0)
++#define   DMA_CTRL_WRITE        (1 << 1)
++#define   DMA_CTRL_ENABLE       (1 << 0)
+=20
+ /* DMA Flash Side Address */
+ #define R_DMA_FLASH_ADDR  (0x84 / 4)
+@@ -142,6 +144,24 @@
+ #define ASPEED_SOC_SPI_FLASH_BASE   0x30000000
+ #define ASPEED_SOC_SPI2_FLASH_BASE  0x38000000
+=20
++/*
++ * DMA DRAM addresses should be 4 bytes aligned and the valid address
++ * range is 0x40000000 - 0x5FFFFFFF (AST2400)
++ *          0x80000000 - 0xBFFFFFFF (AST2500)
++ *
++ * DMA flash addresses should be 4 bytes aligned and the valid address
++ * range is 0x20000000 - 0x2FFFFFFF.
++ *
++ * DMA length is from 4 bytes to 32MB
++ *   0: 4 bytes
++ *   0x7FFFFF: 32M bytes
++ */
++#define DMA_DRAM_ADDR(s, val)   ((s)->sdram_base | \
++                                 ((val) & (s)->ctrl->dma_dram_mask))
++#define DMA_FLASH_ADDR(s, val)  ((s)->ctrl->flash_window_base | \
++                                ((val) & (s)->ctrl->dma_flash_mask))
++#define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
++
+ /* Flash opcodes. */
+ #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
+=20
+@@ -211,6 +231,8 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+         .has_dma           =3D true,
++        .dma_flash_mask    =3D 0x0FFFFFFC,
++        .dma_dram_mask     =3D 0x1FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+     }, {
+         .name              =3D "aspeed.smc.spi",
+@@ -237,6 +259,8 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_base =3D ASPEED_SOC_FMC_FLASH_BASE,
+         .flash_window_size =3D 0x10000000,
+         .has_dma           =3D true,
++        .dma_flash_mask    =3D 0x0FFFFFFC,
++        .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
+     }, {
+         .name              =3D "aspeed.smc.ast2500-spi1",
+@@ -729,9 +753,6 @@ static void aspeed_smc_reset(DeviceState *d)
+=20
+     memset(s->regs, 0, sizeof s->regs);
+=20
+-    /* Pretend DMA is done (u-boot initialization) */
+-    s->regs[R_INTR_CTRL] =3D INTR_CTRL_DMA_STATUS;
+-
+     /* Unselect all slaves */
+     for (i =3D 0; i < s->num_cs; ++i) {
+         s->regs[s->r_ctrl0 + i] |=3D CTRL_CE_STOP_ACTIVE;
+@@ -772,6 +793,11 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr=
  addr, unsigned int size)
+         addr =3D=3D s->r_ce_ctrl ||
+         addr =3D=3D R_INTR_CTRL ||
+         addr =3D=3D R_DUMMY_DATA ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) ||
++        (s->ctrl->has_dma && addr =3D=3D R_DMA_CHECKSUM) ||
+         (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slav=
+es) ||
+         (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves=
+)) {
+         return s->regs[addr];
+@@ -782,6 +808,155 @@ static uint64_t aspeed_smc_read(void *opaque, hwadd=
+r addr, unsigned int size)
      }
  }
 =20
-+static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
++/*
++ * Accumulate the result of the reads to provide a checksum that will
++ * be used to validate the read timing settings.
++ */
++static void aspeed_smc_dma_checksum(AspeedSMCState *s)
 +{
-+    /* HCLK/1 .. HCLK/16 */
-+    const uint8_t hclk_divisors[] =3D {
-+        15, 7, 14, 6, 13, 5, 12, 4, 11, 3, 10, 2, 9, 1, 8, 0
-+    };
-+    int i;
++    MemTxResult result;
++    uint32_t data;
 +
-+    for (i =3D 0; i < ARRAY_SIZE(hclk_divisors); i++) {
-+        if (hclk_mask =3D=3D hclk_divisors[i]) {
-+            return i + 1;
-+        }
++    if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: invalid direction for DMA checksum\n",  __fun=
+c__);
++        return;
 +    }
 +
-+    qemu_log_mask(LOG_GUEST_ERROR, "invalid HCLK mask %x", hclk_mask);
-+    return 0;
++    while (s->regs[R_DMA_LEN]) {
++        result =3D address_space_read(&s->flash_as, s->regs[R_DMA_FLASH_=
+ADDR],
++                                    MEMTXATTRS_UNSPECIFIED,
++                                    (uint8_t *)&data, 4);
++        if (result !=3D MEMTX_OK) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\=
+n",
++                          __func__, s->regs[R_DMA_FLASH_ADDR]);
++            return;
++        }
++
++        /*
++         * When the DMA is on-going, the DMA registers are updated
++         * with the current working addresses and length.
++         */
++        s->regs[R_DMA_CHECKSUM] +=3D data;
++        s->regs[R_DMA_FLASH_ADDR] +=3D 4;
++        s->regs[R_DMA_LEN] -=3D 4;
++    }
++}
++
++static void aspeed_smc_dma_rw(AspeedSMCState *s)
++{
++    MemTxResult result;
++    uint32_t data;
++
++    while (s->regs[R_DMA_LEN]) {
++        if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
++            result =3D address_space_read(&s->dram_as, s->regs[R_DMA_DRA=
+M_ADDR],
++                                        MEMTXATTRS_UNSPECIFIED,
++                                        (uint8_t *)&data, 4);
++            if (result !=3D MEMTX_OK) {
++                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed @%0=
+8x\n",
++                              __func__, s->regs[R_DMA_DRAM_ADDR]);
++                return;
++            }
++
++            result =3D address_space_write(&s->flash_as,
++                                         s->regs[R_DMA_FLASH_ADDR],
++                                         MEMTXATTRS_UNSPECIFIED,
++                                         (uint8_t *)&data, 4);
++            if (result !=3D MEMTX_OK) {
++                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash write failed @=
+%08x\n",
++                              __func__, s->regs[R_DMA_FLASH_ADDR]);
++                return;
++            }
++        } else {
++            result =3D address_space_read(&s->flash_as, s->regs[R_DMA_FL=
+ASH_ADDR],
++                                        MEMTXATTRS_UNSPECIFIED,
++                                        (uint8_t *)&data, 4);
++            if (result !=3D MEMTX_OK) {
++                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%=
+08x\n",
++                              __func__, s->regs[R_DMA_FLASH_ADDR]);
++                return;
++            }
++
++            result =3D address_space_write(&s->dram_as, s->regs[R_DMA_DR=
+AM_ADDR],
++                                         MEMTXATTRS_UNSPECIFIED,
++                                         (uint8_t *)&data, 4);
++            if (result !=3D MEMTX_OK) {
++                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM write failed @%=
+08x\n",
++                              __func__, s->regs[R_DMA_DRAM_ADDR]);
++                return;
++            }
++        }
++
++        /*
++         * When the DMA is on-going, the DMA registers are updated
++         * with the current working addresses and length.
++         */
++        s->regs[R_DMA_FLASH_ADDR] +=3D 4;
++        s->regs[R_DMA_DRAM_ADDR] +=3D 4;
++        s->regs[R_DMA_LEN] -=3D 4;
++    }
++}
++
++static void aspeed_smc_dma_stop(AspeedSMCState *s)
++{
++    /*
++     * When the DMA is disabled, INTR_CTRL_DMA_STATUS=3D0 means the
++     * engine is idle
++     */
++    s->regs[R_INTR_CTRL] &=3D ~INTR_CTRL_DMA_STATUS;
++    s->regs[R_DMA_CHECKSUM] =3D 0;
++
++    /*
++     * Lower the DMA irq in any case. The IRQ control register could
++     * have been cleared before disabling the DMA.
++     */
++    qemu_irq_lower(s->irq);
 +}
 +
 +/*
-+ * When doing calibration, the SPI clock rate in the CE0 Control
-+ * Register and the read delay cycles in the Read Timing Compensation
-+ * Register are set using bit[11:4] of the DMA Control Register.
++ * When INTR_CTRL_DMA_STATUS=3D1, the DMA has completed and a new DMA
++ * can start even if the result of the previous was not collected.
 + */
-+static void aspeed_smc_dma_calibration(AspeedSMCState *s)
++static bool aspeed_smc_dma_in_progress(AspeedSMCState *s)
 +{
-+    uint8_t delay =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_DELAY_SHIFT) & DMA_CTRL_DELAY_M=
-ASK;
-+    uint8_t hclk_mask =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_FREQ_SHIFT) & DMA_CTRL_FREQ_MAS=
-K;
-+    uint8_t hclk_div =3D aspeed_smc_hclk_divisor(hclk_mask);
-+    uint32_t hclk_shift =3D (hclk_div - 1) << 2;
-+    uint8_t cs;
-+
-+    /*
-+     * The Read Timing Compensation Register values apply to all CS on
-+     * the SPI bus and only HCLK/1 - HCLK/5 can have tunable delays
-+     */
-+    if (hclk_div && hclk_div < 6) {
-+        s->regs[s->r_timings] &=3D ~(0xf << hclk_shift);
-+        s->regs[s->r_timings] |=3D delay << hclk_shift;
-+    }
-+
-+    /*
-+     * TODO: compute the CS from the DMA address and the segment
-+     * registers. This is not really a problem for now because the
-+     * Timing Register values apply to all CS and software uses CS0 to
-+     * do calibration.
-+     */
-+    cs =3D 0;
-+    s->regs[s->r_ctrl0 + cs] &=3D
-+        ~(CE_CTRL_CLOCK_FREQ_MASK << CE_CTRL_CLOCK_FREQ_SHIFT);
-+    s->regs[s->r_ctrl0 + cs] |=3D CE_CTRL_CLOCK_FREQ(hclk_div);
++    return s->regs[R_DMA_CTRL] & DMA_CTRL_ENABLE &&
++        !(s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_STATUS);
 +}
 +
- /*
-  * Accumulate the result of the reads to provide a checksum that will
-  * be used to validate the read timing settings.
-@@ -823,6 +881,10 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *=
-s)
-         return;
-     }
-=20
-+    if (s->regs[R_DMA_CTRL] & DMA_CTRL_CALIB) {
-+        aspeed_smc_dma_calibration(s);
++static void aspeed_smc_dma_done(AspeedSMCState *s)
++{
++    s->regs[R_INTR_CTRL] |=3D INTR_CTRL_DMA_STATUS;
++    if (s->regs[R_INTR_CTRL] & INTR_CTRL_DMA_EN) {
++        qemu_irq_raise(s->irq);
++    }
++}
++
++static void aspeed_smc_dma_ctrl(AspeedSMCState *s, uint64_t dma_ctrl)
++{
++    if (!(dma_ctrl & DMA_CTRL_ENABLE)) {
++        s->regs[R_DMA_CTRL] =3D dma_ctrl;
++
++        aspeed_smc_dma_stop(s);
++        return;
 +    }
 +
-     while (s->regs[R_DMA_LEN]) {
-         result =3D address_space_read(&s->flash_as, s->regs[R_DMA_FLASH_=
-ADDR],
-                                     MEMTXATTRS_UNSPECIFIED,
++    if (aspeed_smc_dma_in_progress(s)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA in progress\n",  __func_=
+_);
++        return;
++    }
++
++    s->regs[R_DMA_CTRL] =3D dma_ctrl;
++
++    if (s->regs[R_DMA_CTRL] & DMA_CTRL_CKSUM) {
++        aspeed_smc_dma_checksum(s);
++    } else {
++        aspeed_smc_dma_rw(s);
++    }
++
++    aspeed_smc_dma_done(s);
++}
++
+ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+                              unsigned int size)
+ {
+@@ -807,6 +982,16 @@ static void aspeed_smc_write(void *opaque, hwaddr ad=
+dr, uint64_t data,
+         }
+     } else if (addr =3D=3D R_DUMMY_DATA) {
+         s->regs[addr] =3D value & 0xff;
++    } else if (addr =3D=3D R_INTR_CTRL) {
++        s->regs[addr] =3D value;
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_CTRL) {
++        aspeed_smc_dma_ctrl(s, value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_DRAM_ADDR) {
++        s->regs[addr] =3D DMA_DRAM_ADDR(s, value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_FLASH_ADDR) {
++        s->regs[addr] =3D DMA_FLASH_ADDR(s, value);
++    } else if (s->ctrl->has_dma && addr =3D=3D R_DMA_LEN) {
++        s->regs[addr] =3D DMA_LENGTH(value);
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx =
+"\n",
+                       __func__, addr);
+@@ -821,6 +1006,28 @@ static const MemoryRegionOps aspeed_smc_ops =3D {
+     .valid.unaligned =3D true,
+ };
+=20
++
++/*
++ * Initialize the custom address spaces for DMAs
++ */
++static void aspeed_smc_dma_setup(AspeedSMCState *s, Error **errp)
++{
++    char *name;
++
++    if (!s->dram_mr) {
++        error_setg(errp, TYPE_ASPEED_SMC ": 'dram' link not set");
++        return;
++    }
++
++    name =3D g_strdup_printf("%s-dma-flash", s->ctrl->name);
++    address_space_init(&s->flash_as, &s->mmio_flash, name);
++    g_free(name);
++
++    name =3D g_strdup_printf("%s-dma-dram", s->ctrl->name);
++    address_space_init(&s->dram_as, s->dram_mr, name);
++    g_free(name);
++}
++
+ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+ {
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+@@ -846,10 +1053,12 @@ static void aspeed_smc_realize(DeviceState *dev, E=
+rror **errp)
+         s->num_cs =3D s->ctrl->max_slaves;
+     }
+=20
++    /* DMA irq. Keep it first for the initialization in the SoC */
++    sysbus_init_irq(sbd, &s->irq);
++
+     s->spi =3D ssi_create_bus(dev, "spi");
+=20
+     /* Setup cs_lines for slaves */
+-    sysbus_init_irq(sbd, &s->irq);
+     s->cs_lines =3D g_new0(qemu_irq, s->num_cs);
+     ssi_auto_connect_slaves(dev, s->cs_lines, s->spi);
+=20
+@@ -896,6 +1105,11 @@ static void aspeed_smc_realize(DeviceState *dev, Er=
+ror **errp)
+         memory_region_add_subregion(&s->mmio_flash, offset, &fl->mmio);
+         offset +=3D fl->size;
+     }
++
++    /* DMA support */
++    if (s->ctrl->has_dma) {
++        aspeed_smc_dma_setup(s, errp);
++    }
+ }
+=20
+ static const VMStateDescription vmstate_aspeed_smc =3D {
+@@ -913,6 +1127,8 @@ static const VMStateDescription vmstate_aspeed_smc =3D=
+ {
+ static Property aspeed_smc_properties[] =3D {
+     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
+     DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
++    DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+=20
 --=20
 2.20.1
 

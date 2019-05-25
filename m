@@ -1,85 +1,76 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3472014wrg;
-        Fri, 24 May 2019 13:30:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1eCfKC0jQIHo86Ls9cenpgrYogtyj6CDbM7IyQ87faY2MdeTeMdxoD68jDELtPQY6JcCS
-X-Received: by 2002:ab0:4e12:: with SMTP id g18mr7899270uah.1.1558729829032;
-        Fri, 24 May 2019 13:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558729829; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4309244wrg;
+        Sat, 25 May 2019 08:13:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyquqXjMHACmKOwF10oFcCTNOeyftfluH02FJrL1EFm+Rc5WZ2uDRr2lhFxtntLyb5mO1tJ
+X-Received: by 2002:ab0:7453:: with SMTP id p19mr9049663uaq.15.1558797197180;
+        Sat, 25 May 2019 08:13:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558797197; cv=none;
         d=google.com; s=arc-20160816;
-        b=KKgGGIHfo3/MsS5y/v+pSMzhNz4RhVh9WwUh73Jj6Fhs0ZlEkLZC9XlZEl4K9dz8Wr
-         z24LwoIOln2zjuTpH53MEtE+WhLu7Ppcl/jAAOjBbF0Yl2LDdh8jLrxuzTMZlPlE5KEA
-         3hO8qLM5v9MF6QikBjTBs69kBSoCqaQT+IeSAUonjiLLtfD/+jwyCovXLjBrOYloC6w5
-         bNO5R7K4o/J/2ZGmZAnTPIO0t7zYYWQWAUQNLDBMnT4G/e40LYxoDxKxUmh8abK6YZa5
-         v0VDffDoEV0J1A6Z5ZvXQ+1/cj2SuSJ49VdDZjGzsiJcGmz1/dObmNu29LKYb7NwjXSN
-         EBCg==
+        b=0n05aUN9WTV1S4a822daNY5pSugZ9PmpyL8EiS1m0wRDdyjlZKfG+IXLh4pzhpyRLL
+         UZO6Ny+vlFYqLGP9giF0wy7h7iRqipFjcF7v9yMtH7LwZTUVqpxHr1QfV6UQ8RSAyjDi
+         ygenCqgzr99gnqGjYFVnR5Kd/tD5PhDxwNDi8ECHprr+zziERyRlWq1gl7iLhtDu8T+w
+         VaJ74iInW4PiyGH8kdHOUx3VnlqGurAgBBZT69q/2QxF+2kXHxHN9Ff+Db1kDYiHD68r
+         aHF3uDuw4UI++OsGjddPoEGI0V20Zr94Cl9so2Gp87/OcYbvQosdL18qxd6TMESNP15+
+         GO/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=qvacdsumjJGCInkt8ejXfFMYnfaWnF8VmM9azejEkbU=;
-        b=gaJN8Ed8Z+zGE9tZpZbddcfS6VfcM1eEyWq6VZsVdJwBhP0NdPja5GqR/cgmiOIV94
-         dqU54lZmvzqUUeVam+YmXsbytvpODfhznXST+5eT2mAUumqoU3Zt7uNkebVFNMjUZfK0
-         z3z3cqrzfsFTAZ/je5Os8kTWJmIlvaHJyFtxFiaSU20P/IbFHnKYdjPM4ODs/l0yRJF4
-         aQ383L7XQPfc7Samg2NclNs5+oimlSwqrpRliF3gKsLEn254oqbGUTsJiTy9yh+h83qh
-         SOAdgvLLZuFQucs8W8jVJ2gO4F5c1gemL9CBYiSrzxW4hiItCkUCCP6+k9PU4imNE/d+
-         ETAQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=HYm6MzxABhkiPeUwsJe0Si6wFntyRKjIZ4nWboA1gSQ=;
+        b=RtGcAcQOb3SUUu3WG/wdM9u62zY23r6Ny84i6N3QNRWkLqfTMwpC173/nSTCd+o2AQ
+         vn4Z8JorGK1BR7C2q56dVLS3FYjh4D5y9EqEedBppoLDaSM3XujWsOxhaE9ZpTBQ2B7z
+         2ZdPLz1TRuSaAGVFAjJ1s7PSmq8nJHxvjnZbGuen1ttD/ToeQS3U3DMHWxW8cNtS8IG8
+         oaK1C2/JLhohJoqoA4r+ise49BK5puNRRUfmmMomgaorn4U6sT7VmffpQhhLQFZJoaTA
+         faSNY6YUX8/p/yeXV6IRsSZP3AXZPD73D3LRX/6vrUGfGCRdcNSyFUYH6HMgTX9zZUNT
+         8uWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j68si1427156vkg.31.2019.05.24.13.30.28
+        by mx.google.com with ESMTPS id x23si2072910vsp.214.2019.05.25.08.13.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 May 2019 13:30:29 -0700 (PDT)
+        Sat, 25 May 2019 08:13:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:59765 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:43138 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hUGpg-00081T-GE
-	for alex.bennee@linaro.org; Fri, 24 May 2019 16:30:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56836)
+	id 1hUYMG-0005Gm-KJ
+	for alex.bennee@linaro.org; Sat, 25 May 2019 11:13:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hUGpL-0007m9-1w
-	for qemu-arm@nongnu.org; Fri, 24 May 2019 16:30:08 -0400
+	(envelope-from <clg@kaod.org>) id 1hUYM4-0005Fr-5u
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:13:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hUGaK-0004AN-TX
-	for qemu-arm@nongnu.org; Fri, 24 May 2019 16:14:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42296)
+	(envelope-from <clg@kaod.org>) id 1hUYM2-00017Z-Vp
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:13:04 -0400
+Received: from 5.mo178.mail-out.ovh.net ([46.105.51.53]:35410)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1hUGaK-00049g-LK; Fri, 24 May 2019 16:14:36 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A2160368E0;
-	Fri, 24 May 2019 20:14:35 +0000 (UTC)
-Received: from localhost (ovpn-116-14.gru2.redhat.com [10.97.116.14])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A0F321001F5D;
-	Fri, 24 May 2019 20:14:34 +0000 (UTC)
-Date: Fri, 24 May 2019 17:14:32 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20190524201432.GP10764@habkost.net>
-References: <20190524103521.13847-1-lvivier@redhat.com>
-	<20190524161045.314fa2de@redhat.com>
-	<c1c017f2-84ed-bddf-abb9-7154d9edb372@redhat.com>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYM2-0000wy-9s
+	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:13:02 -0400
+Received: from player698.ha.ovh.net (unknown [10.109.160.76])
+	by mo178.mail-out.ovh.net (Postfix) with ESMTP id E0886665C0
+	for <qemu-arm@nongnu.org>; Sat, 25 May 2019 17:12:52 +0200 (CEST)
+Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
+	(Authenticated sender: clg@kaod.org)
+	by player698.ha.ovh.net (Postfix) with ESMTPSA id 866E6625A6BA;
+	Sat, 25 May 2019 15:12:46 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 25 May 2019 17:12:22 +0200
+Message-Id: <20190525151241.5017-1-clg@kaod.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c1c017f2-84ed-bddf-abb9-7154d9edb372@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 24 May 2019 20:14:35 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 6589892155795213073
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddukedgkeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] numa: improve cpu hotplug
- error message with a wrong node-id
+X-Received-From: 46.105.51.53
+Subject: [Qemu-arm] [PATCH 00/19] aspeed: machine extensions and fixes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,132 +82,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lZUhhz6JVf6H
+X-TUID: XAmJHpPoJCJR
 
-On Fri, May 24, 2019 at 04:39:12PM +0200, Laurent Vivier wrote:
-> On 24/05/2019 16:10, Igor Mammedov wrote:
-> > On Fri, 24 May 2019 12:35:21 +0200
-> > Laurent Vivier <lvivier@redhat.com> wrote:
-> > 
-> > > On pseries, core-ids are strongly binded to a node-id by the command
-> > > line option. If an user tries to add a CPU to the wrong node, he has
-> > > an error but it is not really helpful:
-> > > 
-> > >    qemu-system-ppc64 ... -smp 1,maxcpus=64,cores=1,threads=1,sockets=1 \
-> > >                          -numa node,nodeid=0 -numa node,nodeid=1 ...
-> > > 
-> > >    (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=30,node-id=1
-> > >    Error: node-id=1 must match numa node specified with -numa option
-> > > 
-> > > This patch improves this error message by giving to the user the good
-> > > topology information (node-id, socket-id and thread-id if they are
-> > > available) to use with the core-id he's providing:
-> > > 
-> > >    Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
-> > > 
-> > > Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-> > > ---
-> > > 
-> > > Notes:
-> > >      v3: only add the topology to the existing message
-> > >          As suggested by Igor replace
-> > >            Error: core-id 30 can only be plugged into node-id 0
-> > >          by
-> > >            Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
-> > >      v2: display full topology in the error message
-> > > > > >   numa.c | 25 ++++++++++++++++++++++++-
-> > >   1 file changed, 24 insertions(+), 1 deletion(-)
-> > > 
-> > > diff --git a/numa.c b/numa.c
-> > > index 3875e1efda3a..7882ec294be4 100644
-> > > --- a/numa.c
-> > > +++ b/numa.c
-> > > @@ -458,6 +458,27 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **errp)
-> > >       set_numa_options(MACHINE(qdev_get_machine()), cmd, errp);
-> > >   }
-> > > +static char *cpu_topology_to_string(const CPUArchId *cpu)
-> > > +{
-> > > +    GString *s = g_string_new(NULL);
-> > > +    if (cpu->props.has_socket_id) {
-> > > +        g_string_append_printf(s, "socket-id %"PRId64, cpu->props.socket_id);
-> > > +    }
-> > > +    if (cpu->props.has_node_id) {
-> > > +        if (s->len) {
-> > > +            g_string_append_printf(s, ", ");
-> > > +        }
-> > > +        g_string_append_printf(s, "node-id %"PRId64, cpu->props.node_id);
-> > > +    }
-> > > +    if (cpu->props.has_thread_id) {
-> > > +        if (s->len) {
-> > > +            g_string_append_printf(s, ", ");
-> > > +        }
-> > > +        g_string_append_printf(s, "thread-id %"PRId64, cpu->props.thread_id);
-> > > +    }
-> > > +    return g_string_free(s, false);
-> > > +}
-> > 
-> > turns out we already have such helper: cpu_slot_to_string()
-> 
-> It doesn't display the node-id but the core-id. And node-id is what we need
-> to know.
+Hello,
 
-I'm confused about what you are trying to do here.
+This series improves the current models of the Aspeed machines in QEMU
+and adds new ones. It also prepares ground for the future Aspeed SoC.
+You will find patches for :
 
-On v1, the message looked like:
-  Error: core-id 30 can only be plugged into node-id 0
+ - per SoC mappings of the memory space and the interrupt number space=20
+ - a RTC model from Joel
+ - support for multiple CPUs and NICs
+ - fixes for the timer model from Joel, Andrew and Christian
+ - DMA support for the SMC controller, which was reworked to use a RAM
+   container region as suggested by Peter in September 2018
 
-which is probably good for spapr.
+It is based on Eduardo's series" Machine Core queue, 2019-05-24"
 
+  http://patchwork.ozlabs.org/patch/1105091/
 
-Then I suggested you added the other cpu->props fields.  e.g. on
-PC the message would look like:
-  Error: socket-id 20, core-id 30, thread-id 40 can only be plugged into node-id 0
+I have included Philippe's patch (comes first) in this patchset for
+reference only.
 
+Thanks,
 
-But you sent a v2 patch that would print this on PC:
-  Error: core-id 30 can only be plugged into socket-id 20, node-id 0, thread-id 40
+C.
 
-which doesn't make sense to me.
+Andrew Jeffery (3):
+  aspeed/timer: Status register contains reload for stopped timer
+  aspeed/timer: Fix match calculations
+  aspeed/timer: Provide back-pressure information for short periods
 
+Christian Svensson (2):
+  aspeed/timer: Ensure positive muldiv delta
+  aspeed/smc: Calculate checksum on normal DMA
 
-Then in a reply to v2, Igor suggested:
+C=C3=A9dric Le Goater (10):
+  aspeed: add a per SoC mapping for the interrupt space
+  aspeed: add a per SoC mapping for the memory space
+  aspeed: introduce a configurable number of CPU per machine
+  aspeed: add support for multiple NICs
+  aspeed/smc: add a 'sdram_base' propertie
+  aspeed: remove the "ram" link
+  aspeed: add a RAM memory region container
+  aspeed/smc: add support for DMAs
+  aspeed/smc: add DMA calibration settings
+  aspeed/smc: inject errors in DMA checksum
 
- error_setg(errp, "node-id=%d must match numa node specified "
-                   "with -numa option '%s'", node_id, topology);
+Joel Stanley (3):
+  hw: timer: Add ASPEED RTC device
+  hw/arm/aspeed: Add RTC to SoC
+  aspeed/timer: Fix behaviour running Linux
 
+Philippe Mathieu-Daud=C3=A9 (1):
+  hw/arm/aspeed: Use object_initialize_child for correct ref. counting
 
-Igor suggest would address the problem above.  I expected it to become:
-  node-id=0 must match numa node specified with -numa option core-id=30
-and on PC:
-  node-id=0 must match numa node specified with -numa option socket-id=20,core-id=30,thread-id=40
+ include/hw/arm/aspeed.h         |   1 +
+ include/hw/arm/aspeed_soc.h     |  48 ++++-
+ include/hw/ssi/aspeed_smc.h     |   9 +
+ include/hw/timer/aspeed_rtc.h   |  31 +++
+ include/hw/timer/aspeed_timer.h |   1 +
+ hw/arm/aspeed.c                 |  35 ++--
+ hw/arm/aspeed_soc.c             | 283 ++++++++++++++++++----------
+ hw/misc/aspeed_scu.c            |   6 +
+ hw/ssi/aspeed_smc.c             | 323 +++++++++++++++++++++++++++++++-
+ hw/timer/aspeed_rtc.c           | 180 ++++++++++++++++++
+ hw/timer/aspeed_timer.c         |  84 ++++++---
+ hw/timer/Makefile.objs          |   2 +-
+ hw/timer/trace-events           |   4 +
+ 13 files changed, 854 insertions(+), 153 deletions(-)
+ create mode 100644 include/hw/timer/aspeed_rtc.h
+ create mode 100644 hw/timer/aspeed_rtc.c
 
-Or maybe it could include the input node-id too:
-  node-id=0 must match numa node specified with -numa option node-id=1,core-id=30
-and on PC:
-  node-id=0 must match numa node specified with -numa option node-id=1,socket-id=20,core-id=30,thread-id=40
+--=20
+2.20.1
 
-Both options would work.
-
-
-But you implemented code that would print:
-  Error: node-id=0 must match numa node specified with -numa option 'node-id 1'
-and on PC it would print:
-  Error: node-id=0 must match numa node specified with -numa option 'socket-id 20 node-id 1 thread-id=40'
-
-which doesn't make sense to me.
-
-
-I was expecting something like:
-  Error: CPU slot core-id=30 is bound to node-id 0, but node-id 1 was specified
-and on PC:
-  Error: CPU slot socket-id=20,core-id=30,thread-id=40 is bound to node-id 0, but node-id 1 was specified
-
-
--- 
-Eduardo

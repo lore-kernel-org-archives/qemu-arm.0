@@ -1,165 +1,240 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4331722wrg;
-        Sat, 25 May 2019 08:36:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2dX87oQhpPNt/1oXTibFJXzS3aAaNWsbKXqZMM43J8z7foEVmSpyVyDHvoRYRuNHTP5d1
-X-Received: by 2002:a1f:3c94:: with SMTP id j142mr8678912vka.2.1558798577207;
-        Sat, 25 May 2019 08:36:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558798577; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4741477wrg;
+        Sat, 25 May 2019 18:02:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzdn1YBsJzl79nM6I5RkB7LXusQo3sCNgQT6PX0811nBWA41YOTp01j9WcLa5MxwJbvONal
+X-Received: by 2002:a37:4f10:: with SMTP id d16mr68891507qkb.71.1558832571391;
+        Sat, 25 May 2019 18:02:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558832571; cv=none;
         d=google.com; s=arc-20160816;
-        b=lEV3oiUnrLXEhm8WK+Saz7aaykxQBLRMrqe/8l962M5bkKpRbrLse3anr2tFS8yxce
-         rJzm7gwI6Vd0Ubg9DzTQuyld6Dhy5V4/rsx2RwC8EgrKioYdG5RWPw71xU0121wvmEAy
-         bz8dc6l7eg+Ya+uuDh7+dEvD7yR5Kn9AIvzBEtxEbGwWChAR4ja3MpcdD2sUHGR0EL/V
-         tyqTaI8V8XB+0dFSY0bJ5AMS/XYAz5Y6pe91vTg8pPGXD7nuQg7VXdRdn7Sy2CBglHJ8
-         hjFR06+deCz3vvJPaHanbzq7puexBT9FVAFhfOUKeGlq/iy/CACDiAmnsfKOGf+tlxYy
-         h8uA==
+        b=Sfhv846gf3Fm6fwMXJ8069Q8ITvRTbNie85uQ5BusnX9WP7Br0oadYIxHOvADGwoKV
+         KDuQgVvJUggVfSJ1Le6E8rKdFoYCLv1CIKhd0PeQJFzxdLuZHaf3xOJBvCQrCsi/HdFl
+         CjptaFqLEfz1d0hy2YH47zDZYOiJkQIfx1C3zaYdh1AcpEttgxZ/LaEUU+I6peZqVOvi
+         O2Dm6MYvaNtUZ+CfWFgFbqx98zueIurRPlklWSZjhyOWOXavExp4eSMsT9sVOEgd21Ih
+         BaB3+ugQwrJAldz6iDldy15wC+Q9jgdulS7vpBlIKadJU2+Vh+lG3kjtzduwsKva2wtr
+         TyrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=nWbQvojPRDHSp+gCRdjtEbOla9dZYfFPUNQ2kEKt6xQ=;
-        b=p0PReXlXAgsNrnav+bZl0JDNi79RWq1zHE8QPnElGW9Gg9WO8YbS4aaUMk6FyP6gzJ
-         w92zi+NNdBuNviJZyd22a/xP0mHImlAltMbrs9Y//XQXgc96ECzMmHAYr/Ti/H8C96JO
-         t9rIKmYQHMvWo5LHhvqym+IXsObMX+LZLeE1G6NfQeYepnf8/mch18/sqd+gY9Md/CbH
-         2EmZLVSZFCIigMsX73APKVR97m9aKe0aGy/dB81/zqcE1wqa+iPw/6FZo+vM9wHa/zz5
-         qr21BzliUXNp8fT4mJcQBopmly2W2gFRvLhnCv528BIrRuUwZH8AqFKOUmuZglFgkU88
-         Te7Q==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=HLxPrkdBevASRvmB+ZsgA2RjERgw/S4LsH4oRQDrCec=;
+        b=BYWNY1L3WZwaISC1Qx4zUROBoLm3tbwSBQhdcEpqSsEn0+g+xwn1NzDFrkLSt0o124
+         UYn4OJsQyK6hhkfLFjf+Wrz+4hE/9beeR/2++3Ri3E7DqLMw3VfLa26cprdDWFDlu9Xo
+         rWO74XprNAU1GASPkBwpVlwl7yS8wtwkM0wJbZeMmuGZBj/Uuw33aOip7l1aNBs3JueR
+         xlyZuBLXv433sSSWlwDIe8bfFUYWNhkpLKcBklWxnHzHZw3FIzP9MWI+F6Nl8KjwnJwH
+         431vDdYHXcAZ95y0kKNyfKcewOHPqo/8/UaG7Ql/WxuShnr4UaLVkeXzrzvczX1SiFwx
+         ON/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@juliacomputing-com.20150623.gappssmtp.com header.s=20150623 header.b=c6afMm7W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j65si2460991uaj.137.2019.05.25.08.36.17
+        by mx.google.com with ESMTPS id y28si1303834qve.195.2019.05.25.18.02.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 May 2019 08:36:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 25 May 2019 18:02:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:43514 helo=lists.gnu.org)
+       dkim=fail header.i=@juliacomputing-com.20150623.gappssmtp.com header.s=20150623 header.b=c6afMm7W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:48850 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hUYiW-0003J0-GT
-	for alex.bennee@linaro.org; Sat, 25 May 2019 11:36:16 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35978)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hUhYp-0008J5-0V
+	for alex.bennee@linaro.org; Sat, 25 May 2019 21:02:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50988)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYdv-0007m2-TO
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:31:33 -0400
+	(envelope-from <keno@juliacomputing.com>) id 1hUhXj-0007v5-3A
+	for qemu-devel@nongnu.org; Sat, 25 May 2019 21:01:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1hUYNn-00037K-QX
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:53 -0400
-Received: from 7.mo69.mail-out.ovh.net ([46.105.50.32]:45198)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1hUYNm-0002x1-3q
-	for qemu-arm@nongnu.org; Sat, 25 May 2019 11:14:50 -0400
-Received: from player698.ha.ovh.net (unknown [10.109.159.224])
-	by mo69.mail-out.ovh.net (Postfix) with ESMTP id 359575A112
-	for <qemu-arm@nongnu.org>; Sat, 25 May 2019 17:14:36 +0200 (CEST)
-Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
-	(Authenticated sender: clg@kaod.org)
-	by player698.ha.ovh.net (Postfix) with ESMTPSA id BCCF2625A885;
-	Sat, 25 May 2019 15:14:29 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 25 May 2019 17:12:37 +0200
-Message-Id: <20190525151241.5017-16-clg@kaod.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190525151241.5017-1-clg@kaod.org>
-References: <20190525151241.5017-1-clg@kaod.org>
+	(envelope-from <keno@juliacomputing.com>) id 1hUhXh-0000Qi-Rg
+	for qemu-devel@nongnu.org; Sat, 25 May 2019 21:01:43 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:35497)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <keno@juliacomputing.com>)
+	id 1hUhXh-0000Q9-Fn
+	for qemu-devel@nongnu.org; Sat, 25 May 2019 21:01:41 -0400
+Received: by mail-io1-xd42.google.com with SMTP id p2so10649257iol.2
+	for <qemu-devel@nongnu.org>; Sat, 25 May 2019 18:01:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=juliacomputing-com.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=HLxPrkdBevASRvmB+ZsgA2RjERgw/S4LsH4oRQDrCec=;
+	b=c6afMm7WiLCz+aJ/9cxjQtlkkLuaRvRiJUvFUDnVAWtdiZjwgJ1eHuF5rNnvwOiDOT
+	mk6YVAM7mEAAmAy48H8pLJG6WtPatoQGNkI3Xz4ujXMiQ87uiOcmdwFIz7H6EIHKJzFO
+	Gj3T48ifd4LM4N1UxPwrRp1C5FE4uNBSIO9AThSZP+yw6FW9zWxdLyuX7XQ1K1I8sdO8
+	NPzKc1qxitDwAT7ZXnu8ZrKIxW/8zd3hgtHDslBBwrCGp3nVSyznrr7S4z8gAHGPnzLk
+	lOObVf3NAU6V+lqW4QbvAtGdgZ3UwVB2YqmNs7F1JhQqzkGpUBzu+DDDMUO1s2yzrzim
+	eEjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=HLxPrkdBevASRvmB+ZsgA2RjERgw/S4LsH4oRQDrCec=;
+	b=Zx4XP8XCkOPrlBRq05urlEdF+z+AU7d99R4HgC7yIIBH3Cve0O/FoSF3bc8qH5Stco
+	76SaYNpXU85i5cBEpEL742q8XOcFDnSSqe2sTdWj2diVnp/ZzcuG1+Q582gxaDIzusti
+	6X8BxO8HCHF0DDHI8weMBvJkd7Uq5rBTIqbB3ErJiRIf4mSiy3fyfFfD2hLrzV4Umw4j
+	zNKGd3uvJ4wt2wN4K/zBB0MQqmLaeBfFW1C+Y6ZpX7HHG0pgg8cN2TLfg9+2FCkSHHL2
+	Mj6UTvPPzG4N0Z833GHPg32eb3f5jfQ3pMCsfyk80aQZDlxG2Z6+nVE0YDLBfqi1SZ5V
+	7xLQ==
+X-Gm-Message-State: APjAAAWtoU4/5CUWDjMpjbljCUOHklRSeXNlHyI9zsWy2X8tT1/O8HKP
+	Uhq7IWL33fOEWFaDdt9vI48ifXxLQ/RFQN39l693Cg==
+X-Received: by 2002:a6b:e703:: with SMTP id b3mr35862874ioh.145.1558832499668; 
+	Sat, 25 May 2019 18:01:39 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 6619165553576872721
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddruddukedgkeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+References: <20190525151241.5017-1-clg@kaod.org>
+	<20190525151241.5017-8-clg@kaod.org>
+In-Reply-To: <20190525151241.5017-8-clg@kaod.org>
+From: Keno Fischer <keno@juliacomputing.com>
+Date: Sat, 25 May 2019 21:01:03 -0400
+Message-ID: <CABV8kRycd41XNP09C9mBvTEEReZzFHC3U8gOq0Krzyj+c4KNgA@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.50.32
-Subject: [Qemu-arm] [PATCH 15/19] aspeed: add a RAM memory region container
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::d42
+Subject: Re: [Qemu-devel] [PATCH 07/19] aspeed: add support for multiple NICs
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IvOFG+6ehrel
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C8+x5y3CVQ6d
 
-The RAM memory region is defined after the SoC is realized when the
-SDMC controller has cheched that the defined RAM size for the machine
-is correct. This is problematic for controller models requiring a link
-on the RAM region, for DMA support in the SMC controller for instance.
+Drive by comment, since I spotted this in my inbox.
+When I tried to make this change (two years ago though),
+I additionally needed the following. Unfortunately, I don't quite remember
+exactly what the issue was, but I think qemu would crash trying to create m=
+ore
+than one nic.
 
-Introduce a container memory region for the RAM that we can link into
-the controllers early, before the SoC is realized. It will be
-populated with the RAM region after the checks have be done.
-
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ hw/net/ftgmac100.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 228fdbcf65e2..ed5c8dd5133a 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -33,6 +33,7 @@ static struct arm_boot_info aspeed_board_binfo =3D {
-=20
- struct AspeedBoardState {
-     AspeedSoCState soc;
-+    MemoryRegion ram_container;
-     MemoryRegion ram;
-     MemoryRegion max_ram;
- };
-@@ -159,6 +160,10 @@ static void aspeed_board_init(MachineState *machine,
-     ram_addr_t max_ram_size;
-=20
-     bmc =3D g_new0(AspeedBoardState, 1);
-+
-+    memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container"=
-,
-+                       UINT32_MAX);
-+
-     object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
-                             (sizeof(bmc->soc)), cfg->soc_name, &error_ab=
-ort,
-                             NULL);
-@@ -191,16 +196,16 @@ static void aspeed_board_init(MachineState *machine=
-,
-                                         &error_abort);
-=20
-     memory_region_allocate_system_memory(&bmc->ram, NULL, "ram", ram_siz=
-e);
-+    memory_region_add_subregion(&bmc->ram_container, 0, &bmc->ram);
-     memory_region_add_subregion(get_system_memory(),
--                                sc->info->memmap[ASPEED_SDRAM], &bmc->ra=
-m);
-+                                sc->info->memmap[ASPEED_SDRAM],
-+                                &bmc->ram_container);
-=20
-     max_ram_size =3D object_property_get_uint(OBJECT(&bmc->soc), "max-ra=
-m-size",
-                                             &error_abort);
-     memory_region_init_io(&bmc->max_ram, NULL, &max_ram_ops, NULL,
-                           "max_ram", max_ram_size  - ram_size);
--    memory_region_add_subregion(get_system_memory(),
--                                sc->info->memmap[ASPEED_SDRAM] + ram_siz=
-e,
--                                &bmc->max_ram);
-+    memory_region_add_subregion(&bmc->ram_container, ram_size, &bmc->max=
-_ram);
-=20
-     aspeed_board_init_flashes(&bmc->soc.fmc, cfg->fmc_model, &error_abor=
-t);
-     aspeed_board_init_flashes(&bmc->soc.spi[0], cfg->spi_model, &error_a=
-bort);
---=20
-2.20.1
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 8127d0532dc..1318de85a4e 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -977,7 +977,8 @@ static void ftgmac100_realize(DeviceState *dev,
+Error **errp)
+     sysbus_init_irq(sbd, &s->irq);
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
 
+-    s->conf.peers.ncs[0] =3D nd_table[0].netdev;
++    char *netdev_id =3D object_property_get_str(OBJECT(dev), "netdev", NUL=
+L);
++    s->conf.peers.ncs[0] =3D qemu_find_netdev(netdev_id);
+
+     s->nic =3D qemu_new_nic(&net_ftgmac100_info, &s->conf,
+                           object_get_typename(OBJECT(dev)), DEVICE(dev)->i=
+d,
+
+
+
+On Sat, May 25, 2019 at 11:22 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote=
+:
+>
+> The Aspeed SoCs have two MACs. Extend the Aspeed model to support a
+> second NIC.
+>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  include/hw/arm/aspeed_soc.h |  3 ++-
+>  hw/arm/aspeed_soc.c         | 33 +++++++++++++++++++--------------
+>  2 files changed, 21 insertions(+), 15 deletions(-)
+>
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 7247f6da2505..e8556abf4737 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -25,6 +25,7 @@
+>  #define ASPEED_SPIS_NUM  2
+>  #define ASPEED_WDTS_NUM  3
+>  #define ASPEED_CPUS_NUM  2
+> +#define ASPEED_MACS_NUM  2
+>
+>  typedef struct AspeedSoCState {
+>      /*< private >*/
+> @@ -42,7 +43,7 @@ typedef struct AspeedSoCState {
+>      AspeedSMCState spi[ASPEED_SPIS_NUM];
+>      AspeedSDMCState sdmc;
+>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
+> -    FTGMAC100State ftgmac100;
+> +    FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
+>  } AspeedSoCState;
+>
+>  #define TYPE_ASPEED_SOC "aspeed-soc"
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index b983d5efc5d1..8cfe9e9515ed 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -229,8 +229,10 @@ static void aspeed_soc_init(Object *obj)
+>                                      sc->info->silicon_rev);
+>      }
+>
+> -    sysbus_init_child_obj(obj, "ftgmac100", OBJECT(&s->ftgmac100),
+> -                          sizeof(s->ftgmac100), TYPE_FTGMAC100);
+> +    for (i =3D 0; i < ASPEED_MACS_NUM; i++) {
+> +        sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac100[=
+i]),
+> +                              sizeof(s->ftgmac100[i]), TYPE_FTGMAC100);
+> +    }
+>  }
+>
+>  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+> @@ -371,19 +373,22 @@ static void aspeed_soc_realize(DeviceState *dev, Er=
+ror **errp)
+>      }
+>
+>      /* Net */
+> -    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
+> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &err=
+);
+> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
+> -                             &local_err);
+> -    error_propagate(&err, local_err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> +    for (i =3D 0; i < nb_nics; i++) {
+> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed=
+",
+> +                                 &err);
+> +        object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realiz=
+ed",
+> +                                 &local_err);
+> +        error_propagate(&err, local_err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +           return;
+> +        }
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
+> +                        sc->info->memmap[ASPEED_ETH1 + i]);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
+> +                           aspeed_soc_get_irq(s, ASPEED_ETH1 + i));
+>      }
+> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0,
+> -                    sc->info->memmap[ASPEED_ETH1]);
+> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
+> -                       aspeed_soc_get_irq(s, ASPEED_ETH1));
+>  }
+>
+>  static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+> --
+> 2.20.1
+>
+>

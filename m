@@ -1,82 +1,87 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6329312wrg;
-        Mon, 27 May 2019 05:07:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqza71SPJnRNmFFw+V/cI3PT0OQTFzATbT/txJVgzCo5ROzXvu+DVggiGhK4xjzw20u7FcDQ
-X-Received: by 2002:ac8:2bb3:: with SMTP id m48mr42473172qtm.218.1558958853274;
-        Mon, 27 May 2019 05:07:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558958853; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6372873wrg;
+        Mon, 27 May 2019 05:51:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzoay6j3zb7SdlnBxp6b9sKhHQgDnz8PP5Ktu8JOInDtsg0pCx/oCFh5EZtBCmq7bEcQyJ9
+X-Received: by 2002:ab0:28f:: with SMTP id 15mr23066835uah.21.1558961478537;
+        Mon, 27 May 2019 05:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558961478; cv=none;
         d=google.com; s=arc-20160816;
-        b=czp/8kgxd/15klEEHkVs2YMx0spUv0a9IS0BBApzJqnlJyPO0oiJi8KQ/yHLM2hIEZ
-         jfCC/Lk/8NgZqEbWX+RaSxX3R7QKrpoSsjoM1dcbBxoaJG7JZaFo+CeXBSk2hJG3V/pZ
-         60Jg+HnvdUBVs3SbM405YDbVzzx+xgbXTbCLOCR9IDDWN1bb0dF5ljXF5R9tl0ekDV/p
-         7i44KhYGpxkSKsRN0Fp8vFReFfIWQAJ9cra7dFPMjig61BwN8oObjrtx7RJHZkNDs9en
-         y/PK3NN49P+yJ9y3f0BPmqnh4r1rwJZgm91BU0vqFzDarQAKjq1+pVZDpZw6yIaxYqg8
-         djcw==
+        b=vYyLhtjvS5qO+qyF7T+UBMnNCUNyIb/ndD1tV/2ey+vuqiXxFXFe2XcwNGyEoAw02v
+         e/dQ2S2Ja9PCFl5BaeEjpOk0eb8bjkasyWowWyXjPqdmwYZGA/WDBUQVj04dner6nCRI
+         xzyUmh/KO37Jw3jK5Kfjd/KroGMPiZbDPBW0YH8Qdi2a7akg3iVrVaoY1alO6V1RMzDy
+         NkekPiACh5PDCj+mK98u3qk9r3wF3dNbxnN4KZz5g6ZmQjHXqTdOgIVrWKN02pn69AKO
+         Rxhb+nyK7a0STmSuz34WbDLNWRXzvcDHpZjszAJtcsaWXvbL6n31A8JLjMGRJmbd/ghq
+         ZWWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=CbESld3zciwhPYkCebvN/CHEJ+xSd0EPHc/WQuktBnk=;
-        b=rtJxRsQYAGsJCiPSh9iOqF6lxrpShqFsw7vaSHBeiwQNNCBjGXX/CZShL+7i1g5S/r
-         dfGS7Bj43ECduMXTK0S6Yt/EGRdf03qNcku9vf1phj31j90ea6tGXmNQElwSF8FI2/jg
-         WdoAQbn9eVsRQfms5DFlrBV3t8VCqs2fgC485IccSDRdrBK7pyEU9oyLzKwNehhzt5aJ
-         VSpNtEkyEUYe+EfMi16fwaLaXbJFyUXBMzYAOqVQUehTxytlhLhRA//iG/JqNdzWAo/j
-         AiIcYRBtu3obR2cFYzwOejmJaY7i1o2B6S2THSje59od2xhyOuLxPDUq6q3hos4sKusp
-         ssaA==
+         :message-id:to:from:date;
+        bh=/+06sC68PNjEKS3ddg9YpzmK49tfHRNQiOpTFurYLzE=;
+        b=h8qFXgmyZ5Q3o6A3gH1/MDaD5uEcasndmpVt4jCIzcBwWZWII2HPxYZ8WhbcaDHEGg
+         IZTbqHTvim340aslW1CtPe/RsPBXc735Whq1K7wBxSCTj/WO4JkiT+DJcGUJGP9Q/ujK
+         2UJqz2EnOuobHpfczA4O4HpGWcm/wLi6KvyGzWtW2nsJkVzS6vSdqKtWQ77kh8OG4xar
+         7P1XYLz1v8ebxWuy7CxXW3yFpUrwZOw1bFxSdKuxrM8E+TOfuJSQxVe+l2QYU6cemWP+
+         OcPN3eSIM/6Ak3an5JmE94DR46kjMwxaaqM/N+a6s6/j5nuexDXbgCtosvp8YrR5Nx2A
+         dHNg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p186si5351882qkd.118.2019.05.27.05.07.33
+        by mx.google.com with ESMTPS id h197si6013751vkh.36.2019.05.27.05.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 05:07:33 -0700 (PDT)
+        Mon, 27 May 2019 05:51:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:44578 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:45477 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVEPc-0005Pg-NN
-	for alex.bennee@linaro.org; Mon, 27 May 2019 08:07:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38745)
+	id 1hVF5x-0002h5-Vy
+	for alex.bennee@linaro.org; Mon, 27 May 2019 08:51:18 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE4U-0005Rq-IR
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:43 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hVF5i-0002gz-Ck
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 08:51:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE4M-0005Re-2u
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43078)
+	(envelope-from <imammedo@redhat.com>) id 1hVF5g-0001zA-IM
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 08:51:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53406)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hVE4F-0005Hr-Pp; Mon, 27 May 2019 07:45:30 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hVF5g-0001yW-Ba; Mon, 27 May 2019 08:51:00 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 08FB8BDD1;
-	Mon, 27 May 2019 11:45:23 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B5E325D962;
-	Mon, 27 May 2019 11:45:13 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Mon, 27 May 2019 13:42:02 +0200
-Message-Id: <20190527114203.2762-27-eric.auger@redhat.com>
-In-Reply-To: <20190527114203.2762-1-eric.auger@redhat.com>
-References: <20190527114203.2762-1-eric.auger@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id DF2137FDFB;
+	Mon, 27 May 2019 12:50:58 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E1C5E10027CA;
+	Mon, 27 May 2019 12:50:56 +0000 (UTC)
+Date: Mon, 27 May 2019 14:50:52 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Laurent Vivier <lvivier@redhat.com>
+Message-ID: <20190527145052.258825fb@redhat.com>
+In-Reply-To: <a3f324cc-8226-57e9-2bf3-347d84cf189a@redhat.com>
+References: <20190524103521.13847-1-lvivier@redhat.com>
+	<20190524161045.314fa2de@redhat.com>
+	<c1c017f2-84ed-bddf-abb9-7154d9edb372@redhat.com>
+	<20190524201432.GP10764@habkost.net>
+	<a3f324cc-8226-57e9-2bf3-347d84cf189a@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Mon, 27 May 2019 11:45:23 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.27]);
+	Mon, 27 May 2019 12:50:59 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 26/27] vfio-pci: Set up fault regions
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] numa: improve cpu hotplug
+ error message with a wrong node-id
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,185 +93,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
-	jean-philippe.brucker@arm.com, zhangfei.gao@foxmail.com,
-	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fP6Q6xvfAhi3
+X-TUID: Ztm5FtHhICSZ
 
-We setup two fault regions: the producer fault is read-only from the
-user space perspective. It is composed of the fault queue (mmappable)
-and a header written by the kernel, located in a separate page.
+On Mon, 27 May 2019 08:55:49 +0200
+Laurent Vivier <lvivier@redhat.com> wrote:
 
-The consumer fault is write-only from the user-space perspective.
+> On 24/05/2019 22:14, Eduardo Habkost wrote:
+> > On Fri, May 24, 2019 at 04:39:12PM +0200, Laurent Vivier wrote:  
+> >> On 24/05/2019 16:10, Igor Mammedov wrote:  
+> >>> On Fri, 24 May 2019 12:35:21 +0200
+> >>> Laurent Vivier <lvivier@redhat.com> wrote:
+> >>>  
+> >>>> On pseries, core-ids are strongly binded to a node-id by the command
+> >>>> line option. If an user tries to add a CPU to the wrong node, he has
+> >>>> an error but it is not really helpful:
+> >>>>
+> >>>>     qemu-system-ppc64 ... -smp 1,maxcpus=64,cores=1,threads=1,sockets=1 \
+> >>>>                           -numa node,nodeid=0 -numa node,nodeid=1 ...
+> >>>>
+> >>>>     (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=30,node-id=1
+> >>>>     Error: node-id=1 must match numa node specified with -numa option
+> >>>>
+> >>>> This patch improves this error message by giving to the user the good
+> >>>> topology information (node-id, socket-id and thread-id if they are
+> >>>> available) to use with the core-id he's providing:
+> >>>>
+> >>>>     Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
+> >>>>
+> >>>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> >>>> ---
+> >>>>
+> >>>> Notes:
+> >>>>       v3: only add the topology to the existing message
+> >>>>           As suggested by Igor replace
+> >>>>             Error: core-id 30 can only be plugged into node-id 0
+> >>>>           by
+> >>>>             Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
+> >>>>       v2: display full topology in the error message  
+> >>>>>>>    numa.c | 25 ++++++++++++++++++++++++-  
+> >>>>    1 file changed, 24 insertions(+), 1 deletion(-)
+> >>>>
+> >>>> diff --git a/numa.c b/numa.c
+> >>>> index 3875e1efda3a..7882ec294be4 100644
+> >>>> --- a/numa.c
+> >>>> +++ b/numa.c
+> >>>> @@ -458,6 +458,27 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **errp)
+> >>>>        set_numa_options(MACHINE(qdev_get_machine()), cmd, errp);
+> >>>>    }
+> >>>> +static char *cpu_topology_to_string(const CPUArchId *cpu)
+> >>>> +{
+> >>>> +    GString *s = g_string_new(NULL);
+> >>>> +    if (cpu->props.has_socket_id) {
+> >>>> +        g_string_append_printf(s, "socket-id %"PRId64, cpu->props.socket_id);
+> >>>> +    }
+> >>>> +    if (cpu->props.has_node_id) {
+> >>>> +        if (s->len) {
+> >>>> +            g_string_append_printf(s, ", ");
+> >>>> +        }
+> >>>> +        g_string_append_printf(s, "node-id %"PRId64, cpu->props.node_id);
+> >>>> +    }
+> >>>> +    if (cpu->props.has_thread_id) {
+> >>>> +        if (s->len) {
+> >>>> +            g_string_append_printf(s, ", ");
+> >>>> +        }
+> >>>> +        g_string_append_printf(s, "thread-id %"PRId64, cpu->props.thread_id);
+> >>>> +    }
+> >>>> +    return g_string_free(s, false);
+> >>>> +}  
+> >>>
+> >>> turns out we already have such helper: cpu_slot_to_string()  
+> >>
+> >> It doesn't display the node-id but the core-id. And node-id is what we need
+> >> to know.  
+> > 
+> > I'm confused about what you are trying to do here.
+> > 
+> > On v1, the message looked like:
+> >    Error: core-id 30 can only be plugged into node-id 0
+> > 
+> > which is probably good for spapr.
+> > 
+> > 
+> > Then I suggested you added the other cpu->props fields.  e.g. on
+> > PC the message would look like:
+> >    Error: socket-id 20, core-id 30, thread-id 40 can only be plugged into node-id 0
+> > 
+> > 
+> > But you sent a v2 patch that would print this on PC:
+> >    Error: core-id 30 can only be plugged into socket-id 20, node-id 0, thread-id 40
+> > 
+> > which doesn't make sense to me.
+> > 
+> > 
+> > Then in a reply to v2, Igor suggested:
+> > 
+> >   error_setg(errp, "node-id=%d must match numa node specified "
+> >                     "with -numa option '%s'", node_id, topology);
+> > 
+> > 
+> > Igor suggest would address the problem above.  I expected it to become:
+> >    node-id=0 must match numa node specified with -numa option core-id=30
+> > and on PC:
+> >    node-id=0 must match numa node specified with -numa option socket-id=20,core-id=30,thread-id=40
+> > 
+> > Or maybe it could include the input node-id too:
+> >    node-id=0 must match numa node specified with -numa option node-id=1,core-id=30
+> > and on PC:
+> >    node-id=0 must match numa node specified with -numa option node-id=1,socket-id=20,core-id=30,thread-id=40
+> > 
+> > Both options would work.
+> > 
+> > 
+> > But you implemented code that would print:
+> >    Error: node-id=0 must match numa node specified with -numa option 'node-id 1'
+> > and on PC it would print:
+> >    Error: node-id=0 must match numa node specified with -numa option 'socket-id 20 node-id 1 thread-id=40'
+> > 
+> > which doesn't make sense to me.
+> > 
+> > 
+> > I was expecting something like:
+> >    Error: CPU slot core-id=30 is bound to node-id 0, but node-id 1 was specified
+> > and on PC:
+> >    Error: CPU slot socket-id=20,core-id=30,thread-id=40 is bound to node-id 0, but node-id 1 was specified
+> > 
+> >   
+> 
+> The idea is to provide the information to the user to help him to know 
+> where the cpu can be plugged when it cannot on the node-id he originally 
+> provided.
+> 
+> So all the solutions you propose sounds good to me.
+> 
+> I only need you and Igor agree on the same one.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+We with Eduardo basically agree on contents/set of properties to print,
+it is only different phrasing (Eduardo's suggestion is better than what we have now).
+But lets get to what problem you are going to fix/improve. SO I've went ahead and tried
+with following CLI:
 
----
----
- hw/vfio/pci.c | 99 +++++++++++++++++++++++++++++++++++++++++++++++++++
- hw/vfio/pci.h |  2 ++
- 2 files changed, 101 insertions(+)
+   qemu-system-x86_64 -smp 1,maxcpus=4 -numa node,cpus=0-1 -numa node,cpus=2-3 -monitor stdio -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 29d4f633b0..8208171f92 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2505,11 +2505,100 @@ int vfio_populate_vga(VFIOPCIDevice *vdev, Error=
- **errp)
-     return 0;
- }
-=20
-+static void vfio_init_fault_regions(VFIOPCIDevice *vdev, Error **errp)
-+{
-+    struct vfio_region_info *fault_region_info =3D NULL;
-+    struct vfio_region_info_cap_fault *cap_fault;
-+    VFIODevice *vbasedev =3D &vdev->vbasedev;
-+    struct vfio_info_cap_header *hdr;
-+    char *fault_region_name =3D NULL;
-+    uint32_t max_version;
-+    ssize_t bytes;
-+    int ret;
-+
-+    /* Producer Fault Region */
-+    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
-+                                   VFIO_REGION_TYPE_NESTED,
-+                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_PROD=
-,
-+                                   &fault_region_info);
-+    if (!ret) {
-+        hdr =3D vfio_get_region_info_cap(fault_region_info,
-+                                       VFIO_REGION_INFO_CAP_PRODUCER_FAU=
-LT);
-+        if (!hdr) {
-+            error_setg(errp, "failed to retrieve fault ABI max version")=
-;
-+            g_free(fault_region_info);
-+            return;
-+        }
-+        cap_fault =3D container_of(hdr, struct vfio_region_info_cap_faul=
-t,
-+                                 header);
-+        max_version =3D cap_fault->version;
-+
-+        fault_region_name =3D g_strdup_printf("%s FAULT PROD %d",
-+                                            vbasedev->name,
-+                                            fault_region_info->index);
-+
-+        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
-+                                &vdev->fault_prod_region,
-+                                fault_region_info->index,
-+                                fault_region_name);
-+        if (ret) {
-+            error_setg_errno(errp, -ret,
-+                             "failed to setup the fault prod region %d",
-+                             fault_region_info->index);
-+            goto out;
-+        }
-+
-+        ret =3D vfio_region_mmap(&vdev->fault_prod_region);
-+        if (ret) {
-+            error_report("Failed to mmap fault queue(%d)", ret);
-+        }
-+
-+        g_free(fault_region_info);
-+        g_free(fault_region_name);
-+    } else {
-+        goto out;
-+    }
-+
-+    /* Consumer Fault Region */
-+    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
-+                                   VFIO_REGION_TYPE_NESTED,
-+                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_CONS=
-,
-+                                   &fault_region_info);
-+    if (!ret) {
-+        fault_region_name =3D g_strdup_printf("%s FAULT CONS %d",
-+                                            vbasedev->name,
-+                                            fault_region_info->index);
-+
-+        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
-+                                &vdev->fault_cons_region,
-+                                fault_region_info->index,
-+                                fault_region_name);
-+        if (ret) {
-+            error_setg_errno(errp, -ret,
-+                             "failed to setup the fault cons region %d",
-+                             fault_region_info->index);
-+        }
-+
-+        /* Set the chosen fault ABI version in the consume header*/
-+        bytes =3D pwrite(vdev->vbasedev.fd, &max_version, 4,
-+                       vdev->fault_cons_region.fd_offset);
-+        if (bytes !=3D 4) {
-+            error_setg(errp,
-+                       "Unable to set the chosen fault ABI version (%d)"=
-,
-+                       max_version);
-+        }
-+    }
-+out:
-+    g_free(fault_region_name);
-+    g_free(fault_region_info);
-+}
-+
- static void vfio_populate_device(VFIOPCIDevice *vdev, Error **errp)
- {
-     VFIODevice *vbasedev =3D &vdev->vbasedev;
-     struct vfio_region_info *reg_info;
-     struct vfio_irq_info irq_info =3D { .argsz =3D sizeof(irq_info) };
-+    Error *err =3D NULL;
-     int i, ret =3D -1;
-=20
-     /* Sanity check device */
-@@ -2573,6 +2662,12 @@ static void vfio_populate_device(VFIOPCIDevice *vd=
-ev, Error **errp)
-         }
-     }
-=20
-+    vfio_init_fault_regions(vdev, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-     irq_info.index =3D VFIO_PCI_ERR_IRQ_INDEX;
-=20
-     ret =3D ioctl(vdev->vbasedev.fd, VFIO_DEVICE_GET_IRQ_INFO, &irq_info=
-);
-@@ -3105,6 +3200,8 @@ static void vfio_instance_finalize(Object *obj)
-=20
-     vfio_display_finalize(vdev);
-     vfio_bars_finalize(vdev);
-+    vfio_region_finalize(&vdev->fault_prod_region);
-+    vfio_region_finalize(&vdev->fault_cons_region);
-     g_free(vdev->emulated_config_bits);
-     g_free(vdev->rom);
-     /*
-@@ -3125,6 +3222,8 @@ static void vfio_exitfn(PCIDevice *pdev)
-     vfio_unregister_req_notifier(vdev);
-     vfio_unregister_err_notifier(vdev);
-     vfio_unregister_dma_fault_notifier(vdev);
-+    vfio_region_exit(&vdev->fault_prod_region);
-+    vfio_region_exit(&vdev->fault_cons_region);
-     pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
-     vfio_disable_interrupts(vdev);
-     if (vdev->intx.mmap_timer) {
-diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-index 96d29d667b..ee64081b47 100644
---- a/hw/vfio/pci.h
-+++ b/hw/vfio/pci.h
-@@ -136,6 +136,8 @@ typedef struct VFIOPCIDevice {
-     EventNotifier err_notifier;
-     EventNotifier req_notifier;
-     EventNotifier dma_fault_notifier;
-+    VFIORegion fault_prod_region;
-+    VFIORegion fault_cons_region;
-     int (*resetfn)(struct VFIOPCIDevice *);
-     uint32_t vendor_id;
-     uint32_t device_id;
---=20
-2.20.1
+end it errored out with:
+
+  qemu-system-x86_64: -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1: node-id=1 must match numa node specified with -numa option
+
+As you see we already have all user provide properties for cpu (including invalid ones) reported,
+what we are missing is suggestion for valid node-id. How about following error message:
+
+qemu-system-x86_64: -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1: invalid node-id, must be 0
+
+> 
+> Thanks,
+> Laurent
 

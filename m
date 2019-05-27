@@ -1,82 +1,82 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6328082wrg;
-        Mon, 27 May 2019 05:06:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz1EdapTGjpmEgXWjbV5doAwMfubTspNZpfFaHYEg10+vYb93ygJH1N7k+3Qy5oFhjcpxuo
-X-Received: by 2002:ac8:2e38:: with SMTP id r53mr96307703qta.192.1558958781998;
-        Mon, 27 May 2019 05:06:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558958781; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6329312wrg;
+        Mon, 27 May 2019 05:07:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqza71SPJnRNmFFw+V/cI3PT0OQTFzATbT/txJVgzCo5ROzXvu+DVggiGhK4xjzw20u7FcDQ
+X-Received: by 2002:ac8:2bb3:: with SMTP id m48mr42473172qtm.218.1558958853274;
+        Mon, 27 May 2019 05:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558958853; cv=none;
         d=google.com; s=arc-20160816;
-        b=W3vZE1m2q4GqWh3kbRV35dFcXDxUAJqTt/G8hYF7nmmS2Wg6nN44zyiRA5rj/QzKRt
-         WFnubJLTs9EAFymuR67xR9CYOYusb8gpmJu1vubtxKw+Ch2c+2OS/CkEgGC1ytnRwk9w
-         a/wTNpSF52xPMlz/GnFEvHBcCj4hEkY5jdWUe1MHeLqFc72OCddAqwi9hkpamnRFdAxu
-         to+fgS3U5oHmc4Xt5C3XPWvNGg5pq5ie/qCOT3qt+0cQpFMhtq3BEd9h2HuG37t2jXop
-         uLevMXtHspItceOvqZHiujy34Mcj+OlJFj/7gPA4LA1U/H9QCeyxWSPLCp3NG8FkeEne
-         VOow==
+        b=czp/8kgxd/15klEEHkVs2YMx0spUv0a9IS0BBApzJqnlJyPO0oiJi8KQ/yHLM2hIEZ
+         jfCC/Lk/8NgZqEbWX+RaSxX3R7QKrpoSsjoM1dcbBxoaJG7JZaFo+CeXBSk2hJG3V/pZ
+         60Jg+HnvdUBVs3SbM405YDbVzzx+xgbXTbCLOCR9IDDWN1bb0dF5ljXF5R9tl0ekDV/p
+         7i44KhYGpxkSKsRN0Fp8vFReFfIWQAJ9cra7dFPMjig61BwN8oObjrtx7RJHZkNDs9en
+         y/PK3NN49P+yJ9y3f0BPmqnh4r1rwJZgm91BU0vqFzDarQAKjq1+pVZDpZw6yIaxYqg8
+         djcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=puHov3hDUWFYhVTwNgGE5uyTn5OQRdLEciS8Hk04wWs=;
-        b=BpFelat19v2SRmiuVycQFPd3mvWucFWmtCsMOOopsEHU3DOuLzBrzXNWIhIcigzbS/
-         53EjI6vvmX1z/3kyEKNzd6O3jwQv3yBIX4WG80zKDqN9KoKosWEVfOTBUv2aWqTHHd2H
-         PzppQxDK1vkHuxauPsh4d+5TnYKizSB3qNx04pxwT3U7P+z7mZKmT7qv30ZF7H7y01EN
-         UplcZ+uDO2i4CuVAIo70dIA8UoJSXwv21B/Rzo8Y1pPKnV6tG4Gf/q+vro0JpV1uGlBc
-         IbHqgmRCDkSQWnSqvK+F9J2CRjSJCr8Y5CDPq0vwFDF0DgZGBpckVqRNAGxT87x083aF
-         +ntQ==
+        bh=CbESld3zciwhPYkCebvN/CHEJ+xSd0EPHc/WQuktBnk=;
+        b=rtJxRsQYAGsJCiPSh9iOqF6lxrpShqFsw7vaSHBeiwQNNCBjGXX/CZShL+7i1g5S/r
+         dfGS7Bj43ECduMXTK0S6Yt/EGRdf03qNcku9vf1phj31j90ea6tGXmNQElwSF8FI2/jg
+         WdoAQbn9eVsRQfms5DFlrBV3t8VCqs2fgC485IccSDRdrBK7pyEU9oyLzKwNehhzt5aJ
+         VSpNtEkyEUYe+EfMi16fwaLaXbJFyUXBMzYAOqVQUehTxytlhLhRA//iG/JqNdzWAo/j
+         AiIcYRBtu3obR2cFYzwOejmJaY7i1o2B6S2THSje59od2xhyOuLxPDUq6q3hos4sKusp
+         ssaA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s188si3841202qkb.41.2019.05.27.05.06.21
+        by mx.google.com with ESMTPS id p186si5351882qkd.118.2019.05.27.05.07.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 05:06:21 -0700 (PDT)
+        Mon, 27 May 2019 05:07:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:44569 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:44578 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVEOT-0004SY-Cl
-	for alex.bennee@linaro.org; Mon, 27 May 2019 08:06:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38791)
+	id 1hVEPc-0005Pg-NN
+	for alex.bennee@linaro.org; Mon, 27 May 2019 08:07:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38745)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE4W-0005T2-FX
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:45 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hVE4U-0005Rq-IR
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE4V-0005Wj-6d
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38712)
+	(envelope-from <eric.auger@redhat.com>) id 1hVE4M-0005Re-2u
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:45:38 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43078)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hVE4U-00057x-N5; Mon, 27 May 2019 07:45:43 -0400
+	id 1hVE4F-0005Hr-Pp; Mon, 27 May 2019 07:45:30 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CB2013092661;
-	Mon, 27 May 2019 11:45:06 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 08FB8BDD1;
+	Mon, 27 May 2019 11:45:23 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CD2A35D962;
-	Mon, 27 May 2019 11:45:01 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B5E325D962;
+	Mon, 27 May 2019 11:45:13 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Mon, 27 May 2019 13:42:00 +0200
-Message-Id: <20190527114203.2762-25-eric.auger@redhat.com>
+Date: Mon, 27 May 2019 13:42:02 +0200
+Message-Id: <20190527114203.2762-27-eric.auger@redhat.com>
 In-Reply-To: <20190527114203.2762-1-eric.auger@redhat.com>
 References: <20190527114203.2762-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Mon, 27 May 2019 11:45:06 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 27 May 2019 11:45:23 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 24/27] hw/arm/smmuv3: Implement fault injection
+Subject: [Qemu-arm] [RFC v4 26/27] vfio-pci: Set up fault regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,116 +93,180 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
 	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Stw6A9GtBr2t
+X-TUID: fP6Q6xvfAhi3
 
-We convert iommu_fault structs received from the kernel
-into the data struct used by the emulation code and record
-the evnts into the virtual event queue.
+We setup two fault regions: the producer fault is read-only from the
+user space perspective. It is composed of the fault queue (mmappable)
+and a header written by the kernel, located in a separate page.
+
+The consumer fault is write-only from the user-space perspective.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
-
-v3 -> v4:
-- fix compil issue on mingw
-
-Exhaustive mapping remains to be done
 ---
- hw/arm/smmuv3.c | 71 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 71 insertions(+)
+ hw/vfio/pci.c | 99 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.h |  2 ++
+ 2 files changed, 101 insertions(+)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index a697968ace..4b6480bec0 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1549,6 +1549,76 @@ smmuv3_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNo=
-tifier *n)
- {
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 29d4f633b0..8208171f92 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2505,11 +2505,100 @@ int vfio_populate_vga(VFIOPCIDevice *vdev, Error=
+ **errp)
+     return 0;
  }
 =20
-+struct iommu_fault;
-+
-+static inline int
-+smmuv3_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
-+                     struct iommu_fault *buf)
++static void vfio_init_fault_regions(VFIOPCIDevice *vdev, Error **errp)
 +{
-+#ifdef __linux__
-+    SMMUDevice *sdev =3D container_of(iommu_mr, SMMUDevice, iommu);
-+    SMMUv3State *s3 =3D sdev->smmu;
-+    uint32_t sid =3D smmu_get_sid(sdev);
-+    int i;
++    struct vfio_region_info *fault_region_info =3D NULL;
++    struct vfio_region_info_cap_fault *cap_fault;
++    VFIODevice *vbasedev =3D &vdev->vbasedev;
++    struct vfio_info_cap_header *hdr;
++    char *fault_region_name =3D NULL;
++    uint32_t max_version;
++    ssize_t bytes;
++    int ret;
 +
-+    for (i =3D 0; i < count; i++) {
-+        SMMUEventInfo info =3D {};
-+        struct iommu_fault_unrecoverable *record;
++    /* Producer Fault Region */
++    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
++                                   VFIO_REGION_TYPE_NESTED,
++                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_PROD=
+,
++                                   &fault_region_info);
++    if (!ret) {
++        hdr =3D vfio_get_region_info_cap(fault_region_info,
++                                       VFIO_REGION_INFO_CAP_PRODUCER_FAU=
+LT);
++        if (!hdr) {
++            error_setg(errp, "failed to retrieve fault ABI max version")=
+;
++            g_free(fault_region_info);
++            return;
++        }
++        cap_fault =3D container_of(hdr, struct vfio_region_info_cap_faul=
+t,
++                                 header);
++        max_version =3D cap_fault->version;
 +
-+        if (buf[i].type !=3D IOMMU_FAULT_DMA_UNRECOV) {
-+            continue;
++        fault_region_name =3D g_strdup_printf("%s FAULT PROD %d",
++                                            vbasedev->name,
++                                            fault_region_info->index);
++
++        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
++                                &vdev->fault_prod_region,
++                                fault_region_info->index,
++                                fault_region_name);
++        if (ret) {
++            error_setg_errno(errp, -ret,
++                             "failed to setup the fault prod region %d",
++                             fault_region_info->index);
++            goto out;
 +        }
 +
-+        info.sid =3D sid;
-+        record =3D &buf[i].event;
-+
-+        switch (record->reason) {
-+        case IOMMU_FAULT_REASON_PASID_INVALID:
-+            info.type =3D SMMU_EVT_C_BAD_SUBSTREAMID;
-+            /* TODO further fill info.u.c_bad_substream */
-+            break;
-+        case IOMMU_FAULT_REASON_PASID_FETCH:
-+            info.type =3D SMMU_EVT_F_CD_FETCH;
-+            break;
-+        case IOMMU_FAULT_REASON_BAD_PASID_ENTRY:
-+            info.type =3D SMMU_EVT_C_BAD_CD;
-+            /* TODO further fill info.u.c_bad_cd */
-+            break;
-+        case IOMMU_FAULT_REASON_WALK_EABT:
-+            info.type =3D SMMU_EVT_F_WALK_EABT;
-+            info.u.f_walk_eabt.addr =3D record->addr;
-+            info.u.f_walk_eabt.addr2 =3D record->fetch_addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PTE_FETCH:
-+            info.type =3D SMMU_EVT_F_TRANSLATION;
-+            info.u.f_translation.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_OOR_ADDRESS:
-+            info.type =3D SMMU_EVT_F_ADDR_SIZE;
-+            info.u.f_addr_size.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_ACCESS:
-+            info.type =3D SMMU_EVT_F_ACCESS;
-+            info.u.f_access.addr =3D record->addr;
-+            break;
-+        case IOMMU_FAULT_REASON_PERMISSION:
-+            info.type =3D SMMU_EVT_F_PERMISSION;
-+            info.u.f_permission.addr =3D record->addr;
-+            break;
-+        default:
-+            warn_report("%s Unexpected fault reason received from host: =
-%d",
-+                        __func__, record->reason);
-+            continue;
++        ret =3D vfio_region_mmap(&vdev->fault_prod_region);
++        if (ret) {
++            error_report("Failed to mmap fault queue(%d)", ret);
 +        }
 +
-+        smmuv3_record_event(s3, &info);
++        g_free(fault_region_info);
++        g_free(fault_region_name);
++    } else {
++        goto out;
 +    }
-+    return 0;
-+#else
-+    return -1;
-+#endif
++
++    /* Consumer Fault Region */
++    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
++                                   VFIO_REGION_TYPE_NESTED,
++                                   VFIO_REGION_SUBTYPE_NESTED_FAULT_CONS=
+,
++                                   &fault_region_info);
++    if (!ret) {
++        fault_region_name =3D g_strdup_printf("%s FAULT CONS %d",
++                                            vbasedev->name,
++                                            fault_region_info->index);
++
++        ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
++                                &vdev->fault_cons_region,
++                                fault_region_info->index,
++                                fault_region_name);
++        if (ret) {
++            error_setg_errno(errp, -ret,
++                             "failed to setup the fault cons region %d",
++                             fault_region_info->index);
++        }
++
++        /* Set the chosen fault ABI version in the consume header*/
++        bytes =3D pwrite(vdev->vbasedev.fd, &max_version, 4,
++                       vdev->fault_cons_region.fd_offset);
++        if (bytes !=3D 4) {
++            error_setg(errp,
++                       "Unable to set the chosen fault ABI version (%d)"=
+,
++                       max_version);
++        }
++    }
++out:
++    g_free(fault_region_name);
++    g_free(fault_region_info);
 +}
 +
- static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-                                                   void *data)
+ static void vfio_populate_device(VFIOPCIDevice *vdev, Error **errp)
  {
-@@ -1558,6 +1628,7 @@ static void smmuv3_iommu_memory_region_class_init(O=
-bjectClass *klass,
-     imrc->notify_flag_changed =3D smmuv3_notify_flag_changed;
-     imrc->get_attr =3D smmuv3_get_attr;
-     imrc->replay =3D smmuv3_replay;
-+    imrc->inject_faults =3D smmuv3_inject_faults;
- }
+     VFIODevice *vbasedev =3D &vdev->vbasedev;
+     struct vfio_region_info *reg_info;
+     struct vfio_irq_info irq_info =3D { .argsz =3D sizeof(irq_info) };
++    Error *err =3D NULL;
+     int i, ret =3D -1;
 =20
- static const TypeInfo smmuv3_type_info =3D {
+     /* Sanity check device */
+@@ -2573,6 +2662,12 @@ static void vfio_populate_device(VFIOPCIDevice *vd=
+ev, Error **errp)
+         }
+     }
+=20
++    vfio_init_fault_regions(vdev, &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
+     irq_info.index =3D VFIO_PCI_ERR_IRQ_INDEX;
+=20
+     ret =3D ioctl(vdev->vbasedev.fd, VFIO_DEVICE_GET_IRQ_INFO, &irq_info=
+);
+@@ -3105,6 +3200,8 @@ static void vfio_instance_finalize(Object *obj)
+=20
+     vfio_display_finalize(vdev);
+     vfio_bars_finalize(vdev);
++    vfio_region_finalize(&vdev->fault_prod_region);
++    vfio_region_finalize(&vdev->fault_cons_region);
+     g_free(vdev->emulated_config_bits);
+     g_free(vdev->rom);
+     /*
+@@ -3125,6 +3222,8 @@ static void vfio_exitfn(PCIDevice *pdev)
+     vfio_unregister_req_notifier(vdev);
+     vfio_unregister_err_notifier(vdev);
+     vfio_unregister_dma_fault_notifier(vdev);
++    vfio_region_exit(&vdev->fault_prod_region);
++    vfio_region_exit(&vdev->fault_cons_region);
+     pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
+     vfio_disable_interrupts(vdev);
+     if (vdev->intx.mmap_timer) {
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 96d29d667b..ee64081b47 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -136,6 +136,8 @@ typedef struct VFIOPCIDevice {
+     EventNotifier err_notifier;
+     EventNotifier req_notifier;
+     EventNotifier dma_fault_notifier;
++    VFIORegion fault_prod_region;
++    VFIORegion fault_cons_region;
+     int (*resetfn)(struct VFIOPCIDevice *);
+     uint32_t vendor_id;
+     uint32_t device_id;
 --=20
 2.20.1
 

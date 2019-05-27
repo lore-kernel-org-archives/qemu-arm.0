@@ -1,83 +1,83 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6319548wrg;
-        Mon, 27 May 2019 04:58:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyC64odaOCwsT5M2+SFoJ9l5LurSz/JvWfqLHeoFgqTnQtkyouc5clPu4lZ3GNXA+waTw1f
-X-Received: by 2002:ac8:7950:: with SMTP id r16mr7905686qtt.163.1558958293440;
-        Mon, 27 May 2019 04:58:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558958293; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6320670wrg;
+        Mon, 27 May 2019 04:59:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy36iLbFDuI6q46HOnQk69JM8iUteEdb6I5KITnGYDwZM36fbHJH5mUm7SSfEB+m5sXySwO
+X-Received: by 2002:a05:620a:131b:: with SMTP id o27mr61638427qkj.115.1558958388269;
+        Mon, 27 May 2019 04:59:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558958388; cv=none;
         d=google.com; s=arc-20160816;
-        b=S9BTngRlmXG38s3cemKn1PzgLgZ046nzTvsmUSAgbKxOCpyKCg5d6TnV0f1E5S2p7o
-         so0q3kcJ3dGEj71F4uOS4B61vTrdRp54Og9tokAcAN8Iv2+IXP6HkYF/CoRZjtt+m16u
-         +U7OjS4Zc4q1mRkbabaawFtdOJaBAQb4dTdhZYwP7umnn3XitKRnCaIPuoDU0RedCRr7
-         VcMT/x6Ud3+2hUxWsyteshT+B852QZ1s6bHdeqZGf3fkIhm79ZIiw+NIhAfZJt1w3Sc8
-         PLaNFeH+BGiyXqo41g6G0hNjkJ4xTfjgkWVN8tWzo8RRXLyQYrPhtDx1ilDIEgLMVsOY
-         mmLg==
+        b=kir1/+4FquBvl7KUeUgESP1bGFVrkHGBmhYVOsRaz9sHqyCyjSNQ33xdMtXpir/dU6
+         CNiyq/TGi6lWCKeK0CixKSYbtsNfPsrffqSQkMzIV/8f3uNrAidPvp1eBx2XGGh9+06c
+         WdEKZSgTWvTaEePC1BUT4Vp0W/zMKhk6O6OW1fvlYm6+zdm6QzI3mjW/8dD1vasmjvOa
+         P29A+NHd0ghms8fZJquOkzue5MmdpnHebDVzaMnWryRsC8SuDdO5WmxKGkH4HOIHj9yF
+         j0XWbeanOemi7P/iLS7M87b9wLtPvTF1LdUsZagEfyyo89/z1cZVWMif0/N/6K9HnLzp
+         oa5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=z2FgmlnBsz3xL6TRzjGa+06YXRl1/5sf8qW3KgKFLNo=;
-        b=XlFT6rKQh2OGE+emfwDG5ATybZw7d2MzZ8KpJb19pXdXdbEjSw3uSueoqAgOqYvpLC
-         v6T2SymrjIFZwKG57KgyvRSrjemSjNi14slsnMO3/0CcnyEUErnwwCfWlTI3ofIfTE+Y
-         O4fV/tKLSqymV6RK6WJ00rnvw4zH0eLIzvSTAKSgQPMksYaRx97X7UTvCrwq72EAAbe1
-         EYxxS/f+gscuP/B1XN6VRlAamaeAni4UJ85Lydz1lB4Kx6SyuuKvaSNMpqBqIWiLqRe/
-         K/dGqig3dceshDY6nih8dMAPfD1gicDa0/hIykZaZQfiZLAVgH7XQDHueYPT9lx1boyB
-         s8jA==
+        bh=H4UaR8YZVldiDQL/OUaV+r4vQrhMiS5/g5ARb90vfkQ=;
+        b=eMCpqhc+fIiLPCDArjgj5ljthyD2gNtKY4gd80z3AH+NCuw3pXP1lvIYDSL9r+JjDi
+         /Szf3FwRF2bem4dmxJe+tCxZQIUl9HpqRqyIM9QpilXepYqUXebd9JEkearUZ7ahxAJA
+         EaP4+oGxvR2HX0CeNgVWOzThfSJo4ZByfm0I3XvkSNAnHbNw9EnzCW+F/hHNOtiK+58q
+         W8xjJui2hIaVZSsadgQRPHW11btXwp1cyXZ++MrQIuUjna59XxLQ9R/ghQ3//fyMy8wC
+         vTaYxDbQRaEziH7AZUM26QPqUFrUIWH4NgTxlQA/uOfvjsqk2XTGXo+Fz4tt+0Sv4lHW
+         vhEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3si3083188qtj.342.2019.05.27.04.58.13
+        by mx.google.com with ESMTPS id r52si5536418qvj.178.2019.05.27.04.59.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 04:58:13 -0700 (PDT)
+        Mon, 27 May 2019 04:59:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:44239 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:44258 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVEGa-0006nX-UI
-	for alex.bennee@linaro.org; Mon, 27 May 2019 07:58:12 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38612)
+	id 1hVEI7-00088t-Lf
+	for alex.bennee@linaro.org; Mon, 27 May 2019 07:59:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38425)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE3i-0004iY-7d
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:44:55 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1hVE3P-0004RB-TI
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:44:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1hVE3g-0004zV-PW
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:44:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49402)
+	(envelope-from <eric.auger@redhat.com>) id 1hVE3O-0004ey-AT
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 07:44:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48350)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1hVE3g-0004yP-Iv; Mon, 27 May 2019 07:44:52 -0400
+	id 1hVE3O-0004eB-41; Mon, 27 May 2019 07:44:34 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CED85821D1;
-	Mon, 27 May 2019 11:44:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5A42087632;
+	Mon, 27 May 2019 11:44:33 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AE79B5D962;
-	Mon, 27 May 2019 11:44:46 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1EB855D97A;
+	Mon, 27 May 2019 11:44:27 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Mon, 27 May 2019 13:41:58 +0200
-Message-Id: <20190527114203.2762-23-eric.auger@redhat.com>
+Date: Mon, 27 May 2019 13:41:55 +0200
+Message-Id: <20190527114203.2762-20-eric.auger@redhat.com>
 In-Reply-To: <20190527114203.2762-1-eric.auger@redhat.com>
 References: <20190527114203.2762-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 27 May 2019 11:44:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 27 May 2019 11:44:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 22/27] vfio-pci: Expose MSI stage 1 bindings to
- the host
+Subject: [Qemu-arm] [RFC v4 19/27] hw/vfio/common: Introduce helpers to DMA
+ map/unmap a RAM section
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,157 +94,279 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
 	peterx@redhat.com, alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gXUcR6+hdYnB
+X-TUID: fYYcbEtVQ4HJ
 
-When the guest is exposed with a virtual IOMMU that translates
-MSIs, the guest allocates an IOVA (gIOVA) that maps the virtual
-doorbell (gDB). In nested mode, when the MSI is setup, we pass
-this stage1 mapping to the host so that it can use this stage1
-binding to create a nested stage translating into the physical
-doorbell. Conversely, when the MSI setup os torn down, we
-unregister this binding.
-
-For registration, We directly use the iommu memory region
-translate() callback since the addr_mask is returned in the
-IOTLB entry. address_space_translate does not return this information.
-
-Now that we use a MAP notifier, let's remove warning against
-the usage of map notifiers (historically used along with Intel's
-caching mode).
+Let's introduce two helpers that allow to DMA map/unmap a RAM
+section. Those helpers will be called for nested stage setup in
+another call site. Also the vfio_listener_region_add/del()
+structure may be clearer.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
-v3 -> v4:
-- move the MSI binding registration in vfio_enable_vectors
-  to address the MSI use case
----
- hw/arm/smmuv3.c      |  8 -------
- hw/vfio/pci.c        | 50 +++++++++++++++++++++++++++++++++++++++++++-
- hw/vfio/trace-events |  2 ++
- 3 files changed, 51 insertions(+), 9 deletions(-)
+ hw/vfio/common.c     | 178 ++++++++++++++++++++++++++-----------------
+ hw/vfio/trace-events |   4 +-
+ 2 files changed, 109 insertions(+), 73 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index db03313672..a697968ace 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1521,14 +1521,6 @@ static void smmuv3_notify_flag_changed(IOMMUMemory=
-Region *iommu,
-     SMMUv3State *s3 =3D sdev->smmu;
-     SMMUState *s =3D &(s3->smmu_state);
-=20
--    if (new & IOMMU_NOTIFIER_IOTLB_MAP) {
--        int bus_num =3D pci_bus_num(sdev->bus);
--        PCIDevice *pcidev =3D pci_find_device(sdev->bus, bus_num, sdev->=
-devfn);
--
--        warn_report("SMMUv3 does not support notification on MAP: "
--                     "device %s will not function properly", pcidev->nam=
-e);
--    }
--
-     if (old =3D=3D IOMMU_NOTIFIER_NONE) {
-         trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
-         QLIST_INSERT_HEAD(&s->devices_with_notifiers, sdev, next);
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 3095379747..b613b20501 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -358,6 +358,48 @@ static void vfio_msi_interrupt(void *opaque)
-     notify(&vdev->pdev, nr);
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 5c4b444f24..26bc2ab19f 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -524,13 +524,116 @@ hostwin_from_range(VFIOContainer *container, hwadd=
+r iova, hwaddr end)
+     return NULL;
  }
 =20
-+static int vfio_register_msi_binding(VFIOPCIDevice *vdev, int vector_n)
++static int vfio_dma_map_ram_section(VFIOContainer *container,
++                                    MemoryRegionSection *section)
 +{
-+    PCIDevice *dev =3D &vdev->pdev;
-+    AddressSpace *as =3D pci_device_iommu_address_space(dev);
-+    MSIMessage msg =3D pci_get_msi_message(dev, vector_n);
-+    IOMMUMemoryRegionClass *imrc;
-+    IOMMUMemoryRegion *iommu_mr;
-+    bool msi_translate =3D false, nested =3D false;;
-+    IOMMUTLBEntry entry;
++    VFIOHostDMAWindow *hostwin;
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    void *vaddr;
++    int ret;
 +
-+    if (as =3D=3D &address_space_memory) {
-+        return 0;
++    assert(memory_region_is_ram(section->mr));
++
++    iova =3D TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend =3D int128_make64(section->offset_within_address_space);
++    llend =3D int128_add(llend, section->size);
++    llend =3D int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++    end =3D int128_get64(int128_sub(llend, int128_one()));
++
++    vaddr =3D memory_region_get_ram_ptr(section->mr) +
++            section->offset_within_region +
++            (iova - section->offset_within_address_space);
++
++    hostwin =3D hostwin_from_range(container, iova, end);
++    if (!hostwin) {
++        error_report("vfio: IOMMU container %p can't map guest IOVA regi=
+on"
++                     " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx,
++                     container, iova, end);
++        return -EFAULT;
 +    }
 +
-+    iommu_mr =3D IOMMU_MEMORY_REGION(as->root);
-+    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_MSI_TRANSLATE,
-+                                 (void *)&msi_translate);
-+    memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
-+                                 (void *)&nested);
-+    imrc =3D memory_region_get_iommu_class_nocheck(iommu_mr);
++    trace_vfio_dma_map_ram(iova, end, vaddr);
 +
-+    if (!nested || !msi_translate) {
-+        return 0;
++    llsize =3D int128_sub(llend, int128_make64(iova));
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++
++        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
++            trace_vfio_listener_region_add_no_dma_map(
++                memory_region_name(section->mr),
++                section->offset_within_address_space,
++                int128_getlo(section->size),
++                pgmask + 1);
++            return 0;
++        }
 +    }
 +
-+    /* MSI doorbell address is translated by an IOMMU */
-+
-+    rcu_read_lock();
-+    entry =3D imrc->translate(iommu_mr, msg.address, IOMMU_WO, 0);
-+    rcu_read_unlock();
-+
-+    if (entry.perm =3D=3D IOMMU_NONE) {
-+        return -ENOENT;
++    ret =3D vfio_dma_map(container, iova, int128_get64(llsize),
++                       vaddr, section->readonly);
++    if (ret) {
++        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                     "0x%"HWADDR_PRIx", %p) =3D %d (%m)",
++                     container, iova, int128_get64(llsize), vaddr, ret);
++        if (memory_region_is_ram_device(section->mr)) {
++            /* Allow unexpected mappings not to be fatal for RAM devices=
+ */
++            return 0;
++        }
++        return ret;
 +    }
-+
-+    trace_vfio_register_msi_binding(vdev->vbasedev.name, vector_n,
-+                                    msg.address, entry.translated_addr);
-+
-+    memory_region_iotlb_notify_iommu(iommu_mr, 0, entry);
 +    return 0;
 +}
 +
- static int vfio_enable_vectors(VFIOPCIDevice *vdev, bool msix)
++static void vfio_dma_unmap_ram_section(VFIOContainer *container,
++                                       MemoryRegionSection *section)
++{
++    Int128 llend, llsize;
++    hwaddr iova, end;
++    bool try_unmap =3D true;
++    int ret;
++
++    iova =3D TARGET_PAGE_ALIGN(section->offset_within_address_space);
++    llend =3D int128_make64(section->offset_within_address_space);
++    llend =3D int128_add(llend, section->size);
++    llend =3D int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
++
++    if (int128_ge(int128_make64(iova), llend)) {
++        return;
++    }
++    end =3D int128_get64(int128_sub(llend, int128_one()));
++
++    llsize =3D int128_sub(llend, int128_make64(iova));
++
++    trace_vfio_dma_unmap_ram(iova, end);
++
++    if (memory_region_is_ram_device(section->mr)) {
++        hwaddr pgmask;
++        VFIOHostDMAWindow *hostwin =3D
++            hostwin_from_range(container, iova, end);
++
++        assert(hostwin); /* or region_add() would have failed */
++
++        pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
++        try_unmap =3D !((iova & pgmask) || (int128_get64(llsize) & pgmas=
+k));
++    }
++
++    if (try_unmap) {
++        ret =3D vfio_dma_unmap(container, iova, int128_get64(llsize));
++        if (ret) {
++            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
++                         "0x%"HWADDR_PRIx") =3D %d (%m)",
++                         container, iova, int128_get64(llsize), ret);
++        }
++    }
++}
++
+ static void vfio_listener_region_add(MemoryListener *listener,
+                                      MemoryRegionSection *section)
  {
-     struct vfio_irq_set *irq_set;
-@@ -375,7 +417,7 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, b=
-ool msix)
-     fds =3D (int32_t *)&irq_set->data;
+     VFIOContainer *container =3D container_of(listener, VFIOContainer, l=
+istener);
+     hwaddr iova, end;
+-    Int128 llend, llsize;
+-    void *vaddr;
++    Int128 llend;
+     int ret;
+     VFIOHostDMAWindow *hostwin;
 =20
-     for (i =3D 0; i < vdev->nr_vectors; i++) {
--        int fd =3D -1;
-+        int ret, fd =3D -1;
+@@ -657,41 +760,10 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+     }
 =20
-         /*
-          * MSI vs MSI-X - The guest has direct access to MSI mask and pe=
-nding
-@@ -390,6 +432,12 @@ static int vfio_enable_vectors(VFIOPCIDevice *vdev, =
-bool msix)
-             } else {
-                 fd =3D event_notifier_get_fd(&vdev->msi_vectors[i].kvm_i=
-nterrupt);
-             }
-+            ret =3D vfio_register_msi_binding(vdev, i);
-+            if (ret) {
-+                error_report("%s failed to register S1 MSI binding "
-+                             "for vector %d(%d)", __func__, i, ret);
-+                return ret;
-+            }
-         }
+     /* Here we assume that memory_region_is_ram(section->mr)=3D=3Dtrue *=
+/
+-
+-    vaddr =3D memory_region_get_ram_ptr(section->mr) +
+-            section->offset_within_region +
+-            (iova - section->offset_within_address_space);
+-
+-    trace_vfio_listener_region_add_ram(iova, end, vaddr);
+-
+-    llsize =3D int128_sub(llend, int128_make64(iova));
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-
+-        if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+-            trace_vfio_listener_region_add_no_dma_map(
+-                memory_region_name(section->mr),
+-                section->offset_within_address_space,
+-                int128_getlo(section->size),
+-                pgmask + 1);
+-            return;
+-        }
+-    }
+-
+-    ret =3D vfio_dma_map(container, iova, int128_get64(llsize),
+-                       vaddr, section->readonly);
++    ret =3D vfio_dma_map_ram_section(container, section);
+     if (ret) {
+-        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                     "0x%"HWADDR_PRIx", %p) =3D %d (%m)",
+-                     container, iova, int128_get64(llsize), vaddr, ret);
+-        if (memory_region_is_ram_device(section->mr)) {
+-            /* Allow unexpected mappings not to be fatal for RAM devices=
+ */
+-            return;
+-        }
+         goto fail;
+     }
+-
+     return;
 =20
-         fds[i] =3D fd;
+ fail:
+@@ -717,10 +789,6 @@ static void vfio_listener_region_del(MemoryListener =
+*listener,
+                                      MemoryRegionSection *section)
+ {
+     VFIOContainer *container =3D container_of(listener, VFIOContainer, l=
+istener);
+-    hwaddr iova, end;
+-    Int128 llend, llsize;
+-    int ret;
+-    bool try_unmap =3D true;
+=20
+     if (vfio_listener_skipped_section(section)) {
+         trace_vfio_listener_region_del_skip(
+@@ -765,39 +833,7 @@ static void vfio_listener_region_del(MemoryListener =
+*listener,
+          */
+     }
+=20
+-    iova =3D TARGET_PAGE_ALIGN(section->offset_within_address_space);
+-    llend =3D int128_make64(section->offset_within_address_space);
+-    llend =3D int128_add(llend, section->size);
+-    llend =3D int128_and(llend, int128_exts64(TARGET_PAGE_MASK));
+-
+-    if (int128_ge(int128_make64(iova), llend)) {
+-        return;
+-    }
+-    end =3D int128_get64(int128_sub(llend, int128_one()));
+-
+-    llsize =3D int128_sub(llend, int128_make64(iova));
+-
+-    trace_vfio_listener_region_del(iova, end);
+-
+-    if (memory_region_is_ram_device(section->mr)) {
+-        hwaddr pgmask;
+-        VFIOHostDMAWindow *hostwin =3D
+-            hostwin_from_range(container, iova, end);
+-
+-        assert(hostwin); /* or region_add() would have failed */
+-
+-        pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+-        try_unmap =3D !((iova & pgmask) || (int128_get64(llsize) & pgmas=
+k));
+-    }
+-
+-    if (try_unmap) {
+-        ret =3D vfio_dma_unmap(container, iova, int128_get64(llsize));
+-        if (ret) {
+-            error_report("vfio_dma_unmap(%p, 0x%"HWADDR_PRIx", "
+-                         "0x%"HWADDR_PRIx") =3D %d (%m)",
+-                         container, iova, int128_get64(llsize), ret);
+-        }
+-    }
++    vfio_dma_unmap_ram_section(container, section);
+=20
+     memory_region_unref(section->mr);
+=20
 diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index 9f1868af2d..5de97a8882 100644
+index b1ef55a33f..410801de6e 100644
 --- a/hw/vfio/trace-events
 +++ b/hw/vfio/trace-events
-@@ -117,6 +117,8 @@ vfio_get_dev_region(const char *name, int index, uint=
-32_t type, uint32_t subtype
- vfio_dma_unmap_overflow_workaround(void) ""
- vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size, uint64=
-_t nb_granules, bool leaf) "nested IOTLB invalidate asid=3D%d, addr=3D0x%=
-"PRIx64" granule_size=3D0x%"PRIx64" nb_granules=3D0x%"PRIx64" leaf=3D%d"
- vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=3D%d"
-+vfio_register_msi_binding(const char *name, int vector, uint64_t giova, =
-uint64_t gdb) "%s: register vector %d gIOVA=3D0x%"PRIx64 "-> gDB=3D0x%"PR=
-Ix64" stage 1 mapping"
-+vfio_unregister_msi_binding(const char *name, int vector, uint64_t giova=
-) "%s: unregister vector %d gIOVA=3D0x%"PRIx64 " stage 1 mapping"
-=20
- # platform.c
- vfio_platform_base_device_init(char *name, int groupid) "%s belongs to g=
-roup #%d"
+@@ -97,10 +97,10 @@ vfio_iommu_map_notify(const char *op, uint64_t iova_s=
+tart, uint64_t iova_end) "i
+ vfio_listener_region_add_skip(uint64_t start, uint64_t end) "SKIPPING re=
+gion_add 0x%"PRIx64" - 0x%"PRIx64
+ vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d t=
+o liobn fd %d"
+ vfio_listener_region_add_iommu(uint64_t start, uint64_t end) "region_add=
+ [iommu] 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, voi=
+d *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
++vfio_dma_map_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "r=
+egion_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
+ vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uin=
+t64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=3D0x%"PRI=
+x64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
+ vfio_listener_region_del_skip(uint64_t start, uint64_t end) "SKIPPING re=
+gion_del 0x%"PRIx64" - 0x%"PRIx64
+-vfio_listener_region_del(uint64_t start, uint64_t end) "region_del 0x%"P=
+RIx64" - 0x%"PRIx64
++vfio_dma_unmap_ram(uint64_t start, uint64_t end) "region_del 0x%"PRIx64"=
+ - 0x%"PRIx64
+ vfio_disconnect_container(int fd) "close container->fd=3D%d"
+ vfio_put_group(int fd) "close group->fd=3D%d"
+ vfio_get_device(const char * name, unsigned int flags, unsigned int num_=
+regions, unsigned int num_irqs) "Device %s flags: %u, regions: %u, irqs: =
+%u"
 --=20
 2.20.1
 

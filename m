@@ -1,91 +1,65 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp6746639pjq;
-        Mon, 27 May 2019 06:53:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxHfYqKj8v4F3a1BJ537GH19j3/c7K0nj/5+5+gi9OGkoSve44n85SkUzt+/Lhf/637Ma52
-X-Received: by 2002:a67:d806:: with SMTP id e6mr49280815vsj.43.1558965194489;
-        Mon, 27 May 2019 06:53:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558965194; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HstTsALKGUkCAHh6o6Ui6hPiOkzBDp/NJ1DkvOF8eL8UCbaIqOqQgQFNwFJyDza13x
-         5LUqpA+niSqPWwTppYGJVTy8/7TqvGY0TOrI6p2iq1GlzEZl67xej9CGLGXEGJ0ZvFZS
-         zWBDbftw2caAjE9nu6t2KESpjjJ9qa27zm4/FnEYMqsE7zMbaTa2izB08naA216d83YU
-         wi80kDrXkARPAC/6RCm07QfqylqkAMSPqj74r0O5N87P8Euw5Q2pO88l2zq95Ug9o+Ce
-         HI4e3r5Yf+oNg04B7E2ejzn6Td8DaQU+CIXYLqljoIx6081eIa9p9UcBI/6IqSK1obYR
-         4rtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=AylwPUHAdGPm4KEcDgjbQxzaJvSasfGrOaPGO+L3Iyg=;
-        b=GPjkOzRjkfpZCt5oMQPg3RibWLSR8aqDmDQ7npUXkJ0VGghil7+4Ucc8b2BFFsHy2b
-         6Ih+tUpoteeE4aDs7VO2Ag0syrKMlwBEvBzHa6p70M2YhJ2fjWWeKGKz6rYh3kli9mVZ
-         a4ohIMyFYm1wbT5DZT/tN5/PooAFZ5WGukf4uX3RNF8+ikY7/tqXcBz/pDx/TGhVXR96
-         xKhDV1aK46FgGkY0FM8u0bqfcgDiGOpxPHfkCvJR9XC1ZPV9d43ZOONvXVYHAKjfpJdS
-         nbJbA7TmMY9v7Gh0ywX9s5DFvmRCXLkk/di7vbehEk9kBJ+K5zRmQaZpDlsIf6F/EzLJ
-         u/yQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp6778734pjq;
+        Mon, 27 May 2019 07:19:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWCothCJc6f8NAGWHumG7eGwGNkqQhiooyghpRso7VVVa8+Mgrf4iiheIIymAR2OZqIE7U
+X-Received: by 2002:a67:f410:: with SMTP id p16mr23978052vsn.108.1558966750152;
+        Mon, 27 May 2019 07:19:10 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i28si4182109uac.28.2019.05.27.06.53.14
+        by mx.google.com with ESMTPS id v11si3803998vsc.34.2019.05.27.07.19.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 06:53:14 -0700 (PDT)
+        Mon, 27 May 2019 07:19:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46282 helo=lists.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:46540 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVG3t-0004w6-Vl
-	for alex.bennee@linaro.org; Mon, 27 May 2019 09:53:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39057)
+	id 1hVGSz-0001eh-Lb
+	for alex.bennee@linaro.org; Mon, 27 May 2019 10:19:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1hVG3I-0004gs-H9
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 09:52:38 -0400
+	(envelope-from <no-reply@patchew.org>) id 1hVGSe-0001cy-AA
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 10:18:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lvivier@redhat.com>) id 1hVG3H-0003OK-3C
-	for qemu-arm@nongnu.org; Mon, 27 May 2019 09:52:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:29242)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lvivier@redhat.com>)
-	id 1hVG3G-0003Mv-Sh; Mon, 27 May 2019 09:52:35 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E7A143087935;
-	Mon, 27 May 2019 13:52:33 +0000 (UTC)
-Received: from [10.40.204.169] (ovpn-204-169.brq.redhat.com [10.40.204.169])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D9DE15D704;
-	Mon, 27 May 2019 13:52:31 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20190524103521.13847-1-lvivier@redhat.com>
-	<20190524161045.314fa2de@redhat.com>
-	<c1c017f2-84ed-bddf-abb9-7154d9edb372@redhat.com>
-	<20190524201432.GP10764@habkost.net>
-	<a3f324cc-8226-57e9-2bf3-347d84cf189a@redhat.com>
-	<20190527145052.258825fb@redhat.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <b3d08eb9-4727-ce2a-bc8e-57b7760b23f4@redhat.com>
-Date: Mon, 27 May 2019 15:52:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <no-reply@patchew.org>) id 1hVGSc-0007Ud-9s
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 10:18:48 -0400
+Resent-Date: Mon, 27 May 2019 10:18:47 -0400
+Resent-Message-Id: <E1hVGSc-0007Ud-9s@eggs.gnu.org>
+Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21902)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1hVGSa-0007T8-Mr
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 10:18:45 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1558960292; cv=none; d=zoho.com; s=zohoarc; 
+	b=Up3mkOkZzo5yLOrPSffioIGDEAwBBGBq1SumubItra6n53rNpFGjrg6fdmdIaheHUAmYPN3peIS1eL9wfYoGcGHHQPEMIF+5L5JpaACU/Ixg99SWrdkRPvvgKh3N1D0w9YMmUyymB6f7oD7fhVkSUanDx1jEpKWzS0ygk2nCqO0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1558960292;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=+vWsj462XklaqwLz+g3S9gUdbsUbVxmkeAhbKqPrkQM=; 
+	b=nmFjI3JjU3OPHrdrH1Gir5FHwFGveoGx90iQ34vcZQEafa1X4GMeRN/c5fPzNdq6P0KpHjpbvwUsT7pLpPgZViNdfAZC/BH89FO6DrMd4msr4vRvQi55m0BkDhgKKxyisDwDfQUR543BY7GeMQ838iCBIZGq/lHQKHJ3aAGP91M=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1558960291339723.0272863463014;
+	Mon, 27 May 2019 05:31:31 -0700 (PDT)
+In-Reply-To: <20190527114203.2762-1-eric.auger@redhat.com>
+Message-ID: <155896028968.24.17330667446250277041@ce79690b2cb9>
 MIME-Version: 1.0
-In-Reply-To: <20190527145052.258825fb@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Mon, 27 May 2019 13:52:34 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: eric.auger@redhat.com
+Date: Mon, 27 May 2019 05:31:31 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] numa: improve cpu hotplug
- error message with a wrong node-id
+X-Received-From: 136.143.188.59
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v4 00/27] vSMMUv3/pSMMUv3 2 stage
+ VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,171 +71,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, yi.l.liu@intel.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com,
+	zhangfei.gao@foxmail.com, qemu-devel@nongnu.org,
+	peterx@redhat.com, eric.auger@redhat.com,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org,
+	vincent.stehle@arm.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t+8UmJ83U/dR
+X-TUID: IUWdNzzGPymq
 
-On 27/05/2019 14:50, Igor Mammedov wrote:
-> On Mon, 27 May 2019 08:55:49 +0200
-> Laurent Vivier <lvivier@redhat.com> wrote:
-> 
->> On 24/05/2019 22:14, Eduardo Habkost wrote:
->>> On Fri, May 24, 2019 at 04:39:12PM +0200, Laurent Vivier wrote:
->>>> On 24/05/2019 16:10, Igor Mammedov wrote:
->>>>> On Fri, 24 May 2019 12:35:21 +0200
->>>>> Laurent Vivier <lvivier@redhat.com> wrote:
->>>>>   
->>>>>> On pseries, core-ids are strongly binded to a node-id by the command
->>>>>> line option. If an user tries to add a CPU to the wrong node, he has
->>>>>> an error but it is not really helpful:
->>>>>>
->>>>>>      qemu-system-ppc64 ... -smp 1,maxcpus=64,cores=1,threads=1,sockets=1 \
->>>>>>                            -numa node,nodeid=0 -numa node,nodeid=1 ...
->>>>>>
->>>>>>      (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=30,node-id=1
->>>>>>      Error: node-id=1 must match numa node specified with -numa option
->>>>>>
->>>>>> This patch improves this error message by giving to the user the good
->>>>>> topology information (node-id, socket-id and thread-id if they are
->>>>>> available) to use with the core-id he's providing:
->>>>>>
->>>>>>      Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
->>>>>>
->>>>>> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
->>>>>> ---
->>>>>>
->>>>>> Notes:
->>>>>>        v3: only add the topology to the existing message
->>>>>>            As suggested by Igor replace
->>>>>>              Error: core-id 30 can only be plugged into node-id 0
->>>>>>            by
->>>>>>              Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
->>>>>>        v2: display full topology in the error message
->>>>>>>>>     numa.c | 25 ++++++++++++++++++++++++-
->>>>>>     1 file changed, 24 insertions(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/numa.c b/numa.c
->>>>>> index 3875e1efda3a..7882ec294be4 100644
->>>>>> --- a/numa.c
->>>>>> +++ b/numa.c
->>>>>> @@ -458,6 +458,27 @@ void qmp_set_numa_node(NumaOptions *cmd, Error **errp)
->>>>>>         set_numa_options(MACHINE(qdev_get_machine()), cmd, errp);
->>>>>>     }
->>>>>> +static char *cpu_topology_to_string(const CPUArchId *cpu)
->>>>>> +{
->>>>>> +    GString *s = g_string_new(NULL);
->>>>>> +    if (cpu->props.has_socket_id) {
->>>>>> +        g_string_append_printf(s, "socket-id %"PRId64, cpu->props.socket_id);
->>>>>> +    }
->>>>>> +    if (cpu->props.has_node_id) {
->>>>>> +        if (s->len) {
->>>>>> +            g_string_append_printf(s, ", ");
->>>>>> +        }
->>>>>> +        g_string_append_printf(s, "node-id %"PRId64, cpu->props.node_id);
->>>>>> +    }
->>>>>> +    if (cpu->props.has_thread_id) {
->>>>>> +        if (s->len) {
->>>>>> +            g_string_append_printf(s, ", ");
->>>>>> +        }
->>>>>> +        g_string_append_printf(s, "thread-id %"PRId64, cpu->props.thread_id);
->>>>>> +    }
->>>>>> +    return g_string_free(s, false);
->>>>>> +}
->>>>>
->>>>> turns out we already have such helper: cpu_slot_to_string()
->>>>
->>>> It doesn't display the node-id but the core-id. And node-id is what we need
->>>> to know.
->>>
->>> I'm confused about what you are trying to do here.
->>>
->>> On v1, the message looked like:
->>>     Error: core-id 30 can only be plugged into node-id 0
->>>
->>> which is probably good for spapr.
->>>
->>>
->>> Then I suggested you added the other cpu->props fields.  e.g. on
->>> PC the message would look like:
->>>     Error: socket-id 20, core-id 30, thread-id 40 can only be plugged into node-id 0
->>>
->>>
->>> But you sent a v2 patch that would print this on PC:
->>>     Error: core-id 30 can only be plugged into socket-id 20, node-id 0, thread-id 40
->>>
->>> which doesn't make sense to me.
->>>
->>>
->>> Then in a reply to v2, Igor suggested:
->>>
->>>    error_setg(errp, "node-id=%d must match numa node specified "
->>>                      "with -numa option '%s'", node_id, topology);
->>>
->>>
->>> Igor suggest would address the problem above.  I expected it to become:
->>>     node-id=0 must match numa node specified with -numa option core-id=30
->>> and on PC:
->>>     node-id=0 must match numa node specified with -numa option socket-id=20,core-id=30,thread-id=40
->>>
->>> Or maybe it could include the input node-id too:
->>>     node-id=0 must match numa node specified with -numa option node-id=1,core-id=30
->>> and on PC:
->>>     node-id=0 must match numa node specified with -numa option node-id=1,socket-id=20,core-id=30,thread-id=40
->>>
->>> Both options would work.
->>>
->>>
->>> But you implemented code that would print:
->>>     Error: node-id=0 must match numa node specified with -numa option 'node-id 1'
->>> and on PC it would print:
->>>     Error: node-id=0 must match numa node specified with -numa option 'socket-id 20 node-id 1 thread-id=40'
->>>
->>> which doesn't make sense to me.
->>>
->>>
->>> I was expecting something like:
->>>     Error: CPU slot core-id=30 is bound to node-id 0, but node-id 1 was specified
->>> and on PC:
->>>     Error: CPU slot socket-id=20,core-id=30,thread-id=40 is bound to node-id 0, but node-id 1 was specified
->>>
->>>    
->>
->> The idea is to provide the information to the user to help him to know
->> where the cpu can be plugged when it cannot on the node-id he originally
->> provided.
->>
->> So all the solutions you propose sounds good to me.
->>
->> I only need you and Igor agree on the same one.
-> 
-> We with Eduardo basically agree on contents/set of properties to print,
-> it is only different phrasing (Eduardo's suggestion is better than what we have now).
-> But lets get to what problem you are going to fix/improve. SO I've went ahead and tried
-> with following CLI:
-> 
->     qemu-system-x86_64 -smp 1,maxcpus=4 -numa node,cpus=0-1 -numa node,cpus=2-3 -monitor stdio -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1
-> 
-> end it errored out with:
-> 
->    qemu-system-x86_64: -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1: node-id=1 must match numa node specified with -numa option
-> 
-> As you see we already have all user provide properties for cpu (including invalid ones) reported,
-> what we are missing is suggestion for valid node-id. How about following error message:
-> 
-> qemu-system-x86_64: -device qemu64-x86_64-cpu,socket-id=1,core-id=0,thread-id=0,node-id=1: invalid node-id, must be 0
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDUyNzExNDIwMy4yNzYy
+LTEtZXJpYy5hdWdlckByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBidWls
+ZCB0ZXN0IG9uIHMzOTB4IGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93LgoKPT09
+IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0IHdpbGwg
+YmUgaW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50aW5nIHRv
+IGEgY29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJiYXNlIgoj
+IGJyYW5jaApzZXQgLWUKQ0M9JEhPTUUvYmluL2NjCklOU1RBTEw9JFBXRC9pbnN0YWxsCkJVSUxE
+PSRQV0QvYnVpbGQKbWtkaXIgLXAgJEJVSUxEICRJTlNUQUxMClNSQz0kUFdECmNkICRCVUlMRAok
+U1JDL2NvbmZpZ3VyZSAtLWNjPSRDQyAtLXByZWZpeD0kSU5TVEFMTAptYWtlIC1qNAojIFhYWDog
+d2UgbmVlZCByZWxpYWJsZSBjbGVhbiB1cAojIG1ha2UgY2hlY2sgLWo0IFY9MQptYWtlIGluc3Rh
+bGwKCmVjaG8KZWNobyAiPT09IEVOViA9PT0iCmVudgoKZWNobwplY2hvICI9PT0gUEFDS0FHRVMg
+PT09IgpycG0gLXFhCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgcHBjLXNvZnRt
+bXUvaHcvZGlzcGxheS92Z2EubwogIENDICAgICAgbWlwcy1zb2Z0bW11L2h3L21pcHMvbWlwc19y
+NGsubwovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtb2FxZm14dTUvc3JjL2h3L3BwYy9zcGFw
+cl9pb21tdS5jOiBJbiBmdW5jdGlvbiDigJhzcGFwcl90Y2VfcmVwbGF54oCZOgovdmFyL3RtcC9w
+YXRjaGV3LXRlc3Rlci10bXAtb2FxZm14dTUvc3JjL2h3L3BwYy9zcGFwcl9pb21tdS5jOjE2MTox
+NDogZXJyb3I6IOKAmElPTU1VTm90aWZpZXLigJkge2FrYSDigJhzdHJ1Y3QgSU9NTVVOb3RpZmll
+cuKAmX0gaGFzIG5vIG1lbWJlciBuYW1lZCDigJhub3RpZnnigJkKICAxNjEgfCAgICAgICAgICAg
+ICBuLT5ub3RpZnkobiwgJmlvdGxiKTsKICAgICAgfCAgICAgICAgICAgICAgXn4KbWFrZVsxXTog
+KioqIFsvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtb2FxZm14dTUvc3JjL3J1bGVzLm1hazo2
+OTogaHcvcHBjL3NwYXByX2lvbW11Lm9dIEVycm9yIDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxh
+YmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwNTI3MTE0MjAzLjI3NjItMS1lcmlj
+LmF1Z2VyQHJlZGhhdC5jb20vdGVzdGluZy5zMzkweC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwg
+Z2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9d
+LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-The case I'm worrying about is when the cpu is hotplugged: we don't have the "-device ..." information.
-
-  $ qemu-system-ppc64 -nodefaults -nographic -monitor stdio -m 1G -smp 1,maxcpus=64,cores=1,threads=1,sockets=1 -numa node,nodeid=0 -numa node,nodeid=1
-  QEMU 3.0.1 monitor - type 'help' for more information
-  (qemu) device_add power8_v2.0-spapr-cpu-core,core-id=30,node-id=1
-  node-id=1 must match numa node specified with -numa option
-
-So you can see the needed information is missing.
-
-Thanks,
-Laurent

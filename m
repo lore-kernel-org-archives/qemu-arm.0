@@ -1,378 +1,227 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6670337wrg;
-        Mon, 27 May 2019 14:15:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz236HdSFrNF4I7UEuHtXlD+iqVmSfdakYBzZLbEvZFKyn3O3i8Ku8iLZuF6ZTCcw1U4CIl
-X-Received: by 2002:a67:f3c5:: with SMTP id j5mr17703126vsn.232.1558991739408;
-        Mon, 27 May 2019 14:15:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558991739; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6904431wrg;
+        Mon, 27 May 2019 19:48:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwer6DYfzeBSJLii1sTCUUsZHN3KoTO7eamcjyk9AmPreh/z+xu+CGtfmxQ/gbV5r3QC65r
+X-Received: by 2002:a67:fd93:: with SMTP id k19mr3489520vsq.45.1559011696526;
+        Mon, 27 May 2019 19:48:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559011696; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tc5CUhGtNlNY6oXQmaisoybFo5XdCs77tjGoJz9TvHJHVmr8uTmtwg/15MgytHWTGw
-         O9hkB7VEqM1aRXKIeAi+kcRDifZJ3W3Wd7RP5+JSpwPqidg5MVlUSYyvFxtZIe62CzVm
-         iRxj3isSI1vlte5svzdD7kkr9GmG6HffOt5+0rOiva0JnuRpCKdCfoYAWyHqPhUmAMY+
-         NRIvFpxc0Z6nsoZzseQsm+1z7rGOLNG2MIRBsYQPvokX7NWtzKpwi6uVf8NDj24y0QYg
-         gIiTqjPSfsIQuUsHxhGWWn2EH8hxf71MSZGF1DvvoNWCO23HRnETLK+2wtJRdalBH1tr
-         8fjA==
+        b=Dgm+RsH+BG9RlHJmYDxnrGW9rnBiTDaDJb67lovRymtprxme/DgQu9FEbhGNNmntM/
+         zmkh2wn8wK4/qPrGpGMslfs8DFug7aywWPKABTOIlI2BtO7w3eBrRrb7qT6bWo47HrZT
+         53vv2OhgaDlNlOGKqZsPaGaNUVseqxGEaSFBG+zUtMVxaIAvLY+37xxa3LE0cTSKTn/E
+         5YCpgLlbdHloAIgX2Nsaxh+atSmkZwNvDZ0v+kFhQzEfOHSjdfUcEsFeLWVklusjVZhA
+         Fp/wiHZiFntHTv1SApsDy51bUdfWhd2eiUQAfVVNSyjfRG0rsPeCBZgRRO6YTgUwPfOY
+         tJIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :to:from:date:dkim-signature;
-        bh=bwGV6tnoMHVfe1SQVuqebZI5VB7zvZxVctLWXAQVKOk=;
-        b=k5HyfqSivHSEK3dIfP0Lz8K0UmULGrJv+Y0oe0hG+7bMpAhvQc1LLmm19Kf88UTegT
-         vciFZJYzOiDdfj8SPg3lbow24tYsTPi1etiWaZQC+nmKKz27PpfvQ396iPDGc9OzOT0v
-         iqsDL7PnyJPsCgcqNQ3qg49fH90FGQktKfwfi+2KvV5IEU6KNYF/5FzOMTP9RnQFcqK2
-         1ygUCPb2HtjsrLezgQEwnyoxPC4kxS223C7NXrzN9oLxnHMXaPrPU2kqyc1YZJmNhnkQ
-         pNDLCXrbV7IadDi5gCxjaM376A9n+VofXZxFpxqcoBfZ8k7fu5cr+N8UizEWlW6YiNX1
-         Iaww==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=sPlLI4qWxNpgLIX8cpV7dkMaKbO+3LkO5hcMkOKCBkg=;
+        b=QqXnkaCiSmfK6xFHRURSld/p3z573//3aQrTH9zqN22BVI2v+IyDCIlxEtIf/T1o2S
+         sICj77riaMSnGM76tD4mpoMVSK9iqXKPB3R9q39m278u0fmvoBY7xWIDwI/h55bYIU0G
+         Cuoe/nhtg4SR3we+aToD3PuoExNa9VGixpvOISA8p6HvOiNTsFndYs4MMu+iMOf9i+Xj
+         DLzLbXFkSRz/cJhXEijlggtWrxX1FZDPQb8fBhiVtv0wuswZ+zbZ7bvgTwU7CagmugDa
+         zXdxp4w4qNcRTVFEVc/IXl2FEpcdUusmB9/yePT8WuO8LyGdZjErzXj2Q6lSAkjNJ7iI
+         ZeFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vfbhaoki;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si610975vso.290.2019.05.27.14.15.39
+        by mx.google.com with ESMTPS id b2si4816075vsr.384.2019.05.27.19.48.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 27 May 2019 14:15:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 May 2019 19:48:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vfbhaoki;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:51058 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:56123 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVMy2-0003TG-SV
-	for alex.bennee@linaro.org; Mon, 27 May 2019 17:15:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37456)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hVS9v-0006YT-PG
+	for alex.bennee@linaro.org; Mon, 27 May 2019 22:48:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60316)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1hVMww-00032B-6P
-	for qemu-devel@nongnu.org; Mon, 27 May 2019 17:14:33 -0400
+	(envelope-from <peterx@redhat.com>) id 1hVS9j-0006XR-Lv
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 22:48:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1hVMwt-0008Mw-5B
-	for qemu-devel@nongnu.org; Mon, 27 May 2019 17:14:30 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:38909)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1hVMws-0008MV-TI; Mon, 27 May 2019 17:14:27 -0400
-Received: by mail-ed1-x541.google.com with SMTP id w11so28447463edl.5;
-	Mon, 27 May 2019 14:14:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=bwGV6tnoMHVfe1SQVuqebZI5VB7zvZxVctLWXAQVKOk=;
-	b=Vfbhaoki3rwWSZ6mNyR4w4CVyuePaw4XBZJkzF9K3J6EbxzjHdMK1kUH4e4AfZz/kE
-	iFU4R+glz7wnxq4y6jHS2Y9GfhzYNpp364Fzsy9LTEeLL4UYlhFoJ4XkxSTVr3a+9ftj
-	57L68v10+nfAwX6gg233L1WX4p3xTLNDyqP4P+IxGREFaCoJO5VJoj0k9Yys4FzdFQxA
-	+Gx5q9XUW/6XYPaEN5gooEceH+M6nDY4iBpbeLmQa80eGJMwmqRU7V/+SA1rJvYcH5Ds
-	CmAkIl2Bqh8R7wcq/ocA5q8wPz6xyNpRI39spec8+EMZiocaq3yv4kSV9t25nFDVk8nE
-	HW6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=bwGV6tnoMHVfe1SQVuqebZI5VB7zvZxVctLWXAQVKOk=;
-	b=DX6BhurPqvXqisDGOQ2ndgoyTQo9rKo0FWZY6iMB7DQnG45SUMidrRZUkFssBM7o3K
-	4urqDmxod5spIn1CDnYWCaRZ0yf7Ozxe2FKxxQGDCmfM4K1mJh/YAhRPrDkc12DEXm67
-	AE5vq6VwcZVhZS89UMY5kELWtlfox24PGSnPrpPWx8RsSU6hCWlZXr5S2TGt97Y4/P92
-	mtdFzUOIhCdqFQOIC7tfjUcmI6+zGXz02rXVkyB34WL3ehgRgX+lrh1lX44pJ6RHIUYn
-	mfyfsTGB2z+w3euRdjAFsle4ilsixnrqkvcYRpq97tLx5PWGw3MISh68yI3pUpYDQYm0
-	uhjg==
-X-Gm-Message-State: APjAAAXthLB2oCvDx++4fqNN5VBeyUDEvwYv6cmcIwiXg5h5+Fv2z6/u
-	qfzDBaUHZx/4uLUqMTFNMas=
-X-Received: by 2002:a17:906:a989:: with SMTP id
-	jr9mr77897634ejb.117.1558991665197; 
-	Mon, 27 May 2019 14:14:25 -0700 (PDT)
-Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
-	dd15sm1911763ejb.74.2019.05.27.14.14.23
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 27 May 2019 14:14:23 -0700 (PDT)
-Date: Mon, 27 May 2019 21:14:23 +0000
-From: Wei Yang <richard.weiyang@gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Message-ID: <20190527211423.bqhqvde7i4qv36cj@master>
-References: <20190326024320.27895-1-richardw.yang@linux.intel.com>
-	<20190527023423.GA9136@richard>
-	<20190527104131-mutt-send-email-mst@kernel.org>
+	(envelope-from <peterx@redhat.com>) id 1hVS9i-00088H-L0
+	for qemu-arm@nongnu.org; Mon, 27 May 2019 22:48:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54558)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peterx@redhat.com>)
+	id 1hVS9i-00087b-EP; Mon, 27 May 2019 22:48:02 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F1B981DF5;
+	Tue, 28 May 2019 02:48:00 +0000 (UTC)
+Received: from xz-x1 (dhcp-15-205.nay.redhat.com [10.66.15.205])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 78AFF60126;
+	Tue, 28 May 2019 02:47:49 +0000 (UTC)
+Date: Tue, 28 May 2019 10:47:47 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20190528024747.GA23180@xz-x1>
+References: <20190527114203.2762-1-eric.auger@redhat.com>
+	<20190527114203.2762-9-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20190527104131-mutt-send-email-mst@kernel.org>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::541
-Subject: Re: [Qemu-devel] [PATCH v6] hw/acpi: extract acpi_add_rom_blob()
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20190527114203.2762-9-eric.auger@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 28 May 2019 02:48:00 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC v4 08/27] hw/vfio/common: Force nested if iommu
+ requires it
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Wei Yang <richard.weiyang@gmail.com>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QEZANh6infk3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, yi.l.liu@intel.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com,
+	zhangfei.gao@foxmail.com, qemu-devel@nongnu.org,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org,
+	vincent.stehle@arm.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gQvwHewAaQqm
 
-On Mon, May 27, 2019 at 10:41:57AM -0400, Michael S. Tsirkin wrote:
->On Mon, May 27, 2019 at 10:34:23AM +0800, Wei Yang wrote:
->> On Tue, Mar 26, 2019 at 10:43:20AM +0800, Wei Yang wrote:
->> >arm and i386 has almost the same function acpi_add_rom_blob(), except
->> >giving different FWCfgCallback function.
->> >
->> >This patch moves acpi_add_rom_blob() to utils.c by passing
->> >FWCfgCallback to it.
->> >
->> >Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> >Reviewed-by: Igor Mammedov <imammedo@redhat.com>
->> >
->> 
->> Hello~ would this one be picked up?
->
->
->Yes in the next pull. It's a holiday here in states -
->hopefully tomorrow.
->
+On Mon, May 27, 2019 at 01:41:44PM +0200, Eric Auger wrote:
+> In case we detect the address space is translated by
+> a virtual IOMMU which requires nested stages, let's set up
+> the container with the VFIO_TYPE1_NESTING_IOMMU iommu_type.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v2 -> v3:
+> - add "nested only is selected if requested by @force_nested"
+>   comment in this patch
+> ---
+>  hw/vfio/common.c | 27 +++++++++++++++++++++++----
+>  1 file changed, 23 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index 1f1deff360..99ade21056 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -1136,14 +1136,19 @@ static void vfio_put_address_space(VFIOAddressSpace *space)
+>   * vfio_get_iommu_type - selects the richest iommu_type (v2 first)
+>   */
+>  static int vfio_get_iommu_type(VFIOContainer *container,
+> +                               bool force_nested,
+>                                 Error **errp)
+>  {
+> -    int iommu_types[] = { VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
+> +    int iommu_types[] = { VFIO_TYPE1_NESTING_IOMMU,
+> +                          VFIO_TYPE1v2_IOMMU, VFIO_TYPE1_IOMMU,
+>                            VFIO_SPAPR_TCE_v2_IOMMU, VFIO_SPAPR_TCE_IOMMU };
+>      int i;
+>  
+>      for (i = 0; i < ARRAY_SIZE(iommu_types); i++) {
+>          if (ioctl(container->fd, VFIO_CHECK_EXTENSION, iommu_types[i])) {
+> +            if (iommu_types[i] == VFIO_TYPE1_NESTING_IOMMU && !force_nested) {
 
-Ah, thanks~ Happy holiday~
+If force_nested==true and if the kernel does not support
+VFIO_TYPE1_NESTING_IOMMU, we will still return other iommu types?
+That seems to not match with what "force" mean here.
 
->> >---
->> >v6:
->> >  * change author from Igor to Michael
->> >v5:
->> >  * remove unnecessary header glib/gprintf.h
->> >  * rearrange include header to make it more suitable
->> >v4:
->> >  * extract -> moves
->> >  * adjust comment in source to make checkpatch happy
->> >v3:
->> >  * put acpi_add_rom_blob() to hw/acpi/utils.c
->> >v2:
->> >  * remove unused header in original source file
->> >
->> >author
->> >---
->> > hw/acpi/Makefile.objs    |  2 +-
->> > hw/acpi/utils.c          | 36 ++++++++++++++++++++++++++++++++++++
->> > hw/arm/virt-acpi-build.c | 26 ++++++++++----------------
->> > hw/i386/acpi-build.c     | 26 ++++++++++----------------
->> > include/hw/acpi/utils.h  |  9 +++++++++
->> > 5 files changed, 66 insertions(+), 33 deletions(-)
->> > create mode 100644 hw/acpi/utils.c
->> > create mode 100644 include/hw/acpi/utils.h
->> >
->> >diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
->> >index 2d46e3789a..ba93c5b64a 100644
->> >--- a/hw/acpi/Makefile.objs
->> >+++ b/hw/acpi/Makefile.objs
->> >@@ -10,7 +10,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
->> > 
->> > common-obj-y += acpi_interface.o
->> > common-obj-y += bios-linker-loader.o
->> >-common-obj-y += aml-build.o
->> >+common-obj-y += aml-build.o utils.o
->> > common-obj-$(CONFIG_TPM) += tpm.o
->> > 
->> > common-obj-$(CONFIG_IPMI) += ipmi.o
->> >diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
->> >new file mode 100644
->> >index 0000000000..77b9e8148f
->> >--- /dev/null
->> >+++ b/hw/acpi/utils.c
->> >@@ -0,0 +1,36 @@
->> >+/*
->> >+ * Utilities for generating ACPI tables and passing them to Guests
->> >+ *
->> >+ * Copyright (C) 2019 Intel Corporation
->> >+ * Copyright (C) 2019 Red Hat Inc
->> >+ *
->> >+ * Author: Wei Yang <richardw.yang@linux.intel.com>
->> >+ * Author: Michael S. Tsirkin <mst@redhat.com>
->> >+ *
->> >+ * This program is free software; you can redistribute it and/or modify
->> >+ * it under the terms of the GNU General Public License as published by
->> >+ * the Free Software Foundation; either version 2 of the License, or
->> >+ * (at your option) any later version.
->> >+
->> >+ * This program is distributed in the hope that it will be useful,
->> >+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> >+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> >+ * GNU General Public License for more details.
->> >+
->> >+ * You should have received a copy of the GNU General Public License along
->> >+ * with this program; if not, see <http://www.gnu.org/licenses/>.
->> >+ */
->> >+
->> >+#include "qemu/osdep.h"
->> >+#include "hw/acpi/aml-build.h"
->> >+#include "hw/acpi/utils.h"
->> >+#include "hw/loader.h"
->> >+
->> >+MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
->> >+                                GArray *blob, const char *name,
->> >+                                uint64_t max_size)
->> >+{
->> >+    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
->> >+                        name, update, opaque, NULL, true);
->> >+}
->> >+
->> >diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> >index 57679a89bf..a846f74a14 100644
->> >--- a/hw/arm/virt-acpi-build.c
->> >+++ b/hw/arm/virt-acpi-build.c
->> >@@ -37,9 +37,9 @@
->> > #include "hw/acpi/acpi.h"
->> > #include "hw/nvram/fw_cfg.h"
->> > #include "hw/acpi/bios-linker-loader.h"
->> >-#include "hw/loader.h"
->> > #include "hw/hw.h"
->> > #include "hw/acpi/aml-build.h"
->> >+#include "hw/acpi/utils.h"
->> > #include "hw/pci/pcie_host.h"
->> > #include "hw/pci/pci.h"
->> > #include "hw/arm/virt.h"
->> >@@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
->> >     build_state->patched = false;
->> > }
->> > 
->> >-static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
->> >-                                       GArray *blob, const char *name,
->> >-                                       uint64_t max_size)
->> >-{
->> >-    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
->> >-                        name, virt_acpi_build_update, build_state, NULL, true);
->> >-}
->> >-
->> > static const VMStateDescription vmstate_virt_acpi_build = {
->> >     .name = "virt_acpi_build",
->> >     .version_id = 1,
->> >@@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
->> >     virt_acpi_build(vms, &tables);
->> > 
->> >     /* Now expose it all to Guest */
->> >-    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
->> >-                                               ACPI_BUILD_TABLE_FILE,
->> >-                                               ACPI_BUILD_TABLE_MAX_SIZE);
->> >+    build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
->> >+                                              build_state, tables.table_data,
->> >+                                              ACPI_BUILD_TABLE_FILE,
->> >+                                              ACPI_BUILD_TABLE_MAX_SIZE);
->> >     assert(build_state->table_mr != NULL);
->> > 
->> >     build_state->linker_mr =
->> >-        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
->> >-                          "etc/table-loader", 0);
->> >+        acpi_add_rom_blob(virt_acpi_build_update, build_state,
->> >+                          tables.linker->cmd_blob, "etc/table-loader", 0);
->> > 
->> >     fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
->> >                     acpi_data_len(tables.tcpalog));
->> > 
->> >-    build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
->> >-                                              ACPI_BUILD_RSDP_FILE, 0);
->> >+    build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
->> >+                                             build_state, tables.rsdp,
->> >+                                             ACPI_BUILD_RSDP_FILE, 0);
->> > 
->> >     qemu_register_reset(virt_acpi_build_reset, build_state);
->> >     virt_acpi_build_reset(build_state);
->> >diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> >index 416da318ae..b17d4a711d 100644
->> >--- a/hw/i386/acpi-build.c
->> >+++ b/hw/i386/acpi-build.c
->> >@@ -37,7 +37,6 @@
->> > #include "hw/acpi/cpu.h"
->> > #include "hw/nvram/fw_cfg.h"
->> > #include "hw/acpi/bios-linker-loader.h"
->> >-#include "hw/loader.h"
->> > #include "hw/isa/isa.h"
->> > #include "hw/block/fdc.h"
->> > #include "hw/acpi/memory_hotplug.h"
->> >@@ -58,6 +57,7 @@
->> > #include "hw/i386/x86-iommu.h"
->> > 
->> > #include "hw/acpi/aml-build.h"
->> >+#include "hw/acpi/utils.h"
->> > 
->> > #include "qom/qom-qobject.h"
->> > #include "hw/i386/amd_iommu.h"
->> >@@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
->> >     build_state->patched = 0;
->> > }
->> > 
->> >-static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
->> >-                                       GArray *blob, const char *name,
->> >-                                       uint64_t max_size)
->> >-{
->> >-    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
->> >-                        name, acpi_build_update, build_state, NULL, true);
->> >-}
->> >-
->> > static const VMStateDescription vmstate_acpi_build = {
->> >     .name = "acpi_build",
->> >     .version_id = 1,
->> >@@ -2891,14 +2883,15 @@ void acpi_setup(void)
->> >     acpi_build(&tables, MACHINE(pcms));
->> > 
->> >     /* Now expose it all to Guest */
->> >-    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
->> >-                                               ACPI_BUILD_TABLE_FILE,
->> >-                                               ACPI_BUILD_TABLE_MAX_SIZE);
->> >+    build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
->> >+                                              build_state, tables.table_data,
->> >+                                              ACPI_BUILD_TABLE_FILE,
->> >+                                              ACPI_BUILD_TABLE_MAX_SIZE);
->> >     assert(build_state->table_mr != NULL);
->> > 
->> >     build_state->linker_mr =
->> >-        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
->> >-                          "etc/table-loader", 0);
->> >+        acpi_add_rom_blob(acpi_build_update, build_state,
->> >+                          tables.linker->cmd_blob, "etc/table-loader", 0);
->> > 
->> >     fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
->> >                     tables.tcpalog->data, acpi_data_len(tables.tcpalog));
->> >@@ -2935,8 +2928,9 @@ void acpi_setup(void)
->> >         build_state->rsdp_mr = NULL;
->> >     } else {
->> >         build_state->rsdp = NULL;
->> >-        build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
->> >-                                                  ACPI_BUILD_RSDP_FILE, 0);
->> >+        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
->> >+                                                 build_state, tables.rsdp,
->> >+                                                 ACPI_BUILD_RSDP_FILE, 0);
->> >     }
->> > 
->> >     qemu_register_reset(acpi_build_reset, build_state);
->> >diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
->> >new file mode 100644
->> >index 0000000000..140b4de603
->> >--- /dev/null
->> >+++ b/include/hw/acpi/utils.h
->> >@@ -0,0 +1,9 @@
->> >+#ifndef HW_ACPI_UTILS_H
->> >+#define HW_ACPI_UTILS_H
->> >+
->> >+#include "hw/nvram/fw_cfg.h"
->> >+
->> >+MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
->> >+                                GArray *blob, const char *name,
->> >+                                uint64_t max_size);
->> >+#endif
->> >-- 
->> >2.19.1
->> 
->> -- 
->> Wei Yang
->> Help you, Help me
+What I feel like is that we want an "iommu_nest_types[]" which only
+contains VFIO_TYPE1_NESTING_IOMMU.  Then:
+
+        if (nested) {
+                target_types = iommu_nest_types;
+        } else {
+                target_types = iommu_types;
+        }
+
+        foreach (target_types)
+                ...
+
+        return -EINVAL;
+
+Might be clearer?  Then we can drop [2] below since we'll fail earlier
+at [1].
+
+> +                continue;
+> +            }
+>              return iommu_types[i];
+>          }
+>      }
+> @@ -1152,11 +1157,11 @@ static int vfio_get_iommu_type(VFIOContainer *container,
+>  }
+>  
+>  static int vfio_init_container(VFIOContainer *container, int group_fd,
+> -                               Error **errp)
+> +                               bool force_nested, Error **errp)
+>  {
+>      int iommu_type, ret;
+>  
+> -    iommu_type = vfio_get_iommu_type(container, errp);
+> +    iommu_type = vfio_get_iommu_type(container, force_nested, errp);
+>      if (iommu_type < 0) {
+>          return iommu_type;
+
+[1]
+
+>      }
+> @@ -1192,6 +1197,14 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>      VFIOContainer *container;
+>      int ret, fd;
+>      VFIOAddressSpace *space;
+> +    IOMMUMemoryRegion *iommu_mr;
+> +    bool force_nested = false;
+> +
+> +    if (as != &address_space_memory && memory_region_is_iommu(as->root)) {
+> +        iommu_mr = IOMMU_MEMORY_REGION(as->root);
+> +        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
+> +                                     (void *)&force_nested);
+> +    }
+>  
+>      space = vfio_get_address_space(as);
+>  
+> @@ -1252,12 +1265,18 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>      QLIST_INIT(&container->giommu_list);
+>      QLIST_INIT(&container->hostwin_list);
+>  
+> -    ret = vfio_init_container(container, group->fd, errp);
+> +    ret = vfio_init_container(container, group->fd, force_nested, errp);
+>      if (ret) {
+>          goto free_container_exit;
+>      }
+>  
+> +    if (force_nested && container->iommu_type != VFIO_TYPE1_NESTING_IOMMU) {
+> +            error_setg(errp, "nested mode requested by the virtual IOMMU "
+> +                       "but not supported by the vfio iommu");
+> +    }
+
+[2]
+
+> +
+>      switch (container->iommu_type) {
+> +    case VFIO_TYPE1_NESTING_IOMMU:
+>      case VFIO_TYPE1v2_IOMMU:
+>      case VFIO_TYPE1_IOMMU:
+>      {
+> -- 
+> 2.20.1
+> 
+
+Regards,
 
 -- 
-Wei Yang
-Help you, Help me
+Peter Xu

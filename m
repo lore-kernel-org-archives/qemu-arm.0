@@ -1,127 +1,64 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id j123sm3589694wmb.32.2019.05.28.02.49.54
+        by smtp.gmail.com with ESMTPSA id w2sm7298995wru.16.2019.05.28.02.49.55
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 28 May 2019 02:49:56 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 029EC1FF93;
+	by zen.linaroharston (Postfix) with ESMTP id 16BC41FF96;
 	Tue, 28 May 2019 10:49:54 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
 	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PULL 06/28] target/arm: use the common interface for WRITE0/WRITEC in arm-semi
-Date: Tue, 28 May 2019 10:49:31 +0100
-Message-Id: <20190528094953.14898-7-alex.bennee@linaro.org>
+Subject: [PULL 07/28] target/arm: add LOG_UNIMP messages to arm-semi
+Date: Tue, 28 May 2019 10:49:32 +0100
+Message-Id: <20190528094953.14898-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190528094953.14898-1-alex.bennee@linaro.org>
 References: <20190528094953.14898-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: OKGvkfobw17E
+X-TUID: Q6L9S1gH/5jR
 
-Now we have a common semihosting console interface use that for our
-string output. However ARM is currently unique in also supporting
-semihosting for linux-user so we need to replicate the API in
-linux-user. If other architectures gain this support we can move the
-file later.
+Clean-up our unimplemented bits with a proper message.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/linux-user/Makefile.objs b/linux-user/Makefile.objs
-index 769b8d83362..285c5dfa17a 100644
---- a/linux-user/Makefile.objs
-+++ b/linux-user/Makefile.objs
-@@ -6,4 +6,6 @@ obj-y = main.o syscall.o strace.o mmap.o signal.o \
- obj-$(TARGET_HAS_BFLT) += flatload.o
- obj-$(TARGET_I386) += vm86.o
- obj-$(TARGET_ARM) += arm/nwfpe/
-+obj-$(TARGET_ARM) += arm/semihost.o
-+obj-$(TARGET_AARCH64) += arm/semihost.o
- obj-$(TARGET_M68K) += m68k-sim.o
-diff --git a/linux-user/arm/semihost.c b/linux-user/arm/semihost.c
-new file mode 100644
-index 00000000000..9554102a855
---- /dev/null
-+++ b/linux-user/arm/semihost.c
-@@ -0,0 +1,24 @@
-+/*
-+ * ARM Semihosting Console Support
-+ *
-+ * Copyright (c) 2019 Linaro Ltd
-+ *
-+ * Currently ARM is unique in having support for semihosting support
-+ * in linux-user. So for now we implement the common console API but
-+ * just for arm linux-user.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+#include "hw/semihosting/console.h"
-+#include "qemu.h"
-+
-+int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
-+{
-+    void *s = lock_user_string(addr);
-+    len = write(STDERR_FILENO, s, len ? len : strlen(s));
-+    unlock_user(s, addr, 0);
-+    return len;
-+}
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index d812eef1519..384b01124e1 100644
+index 384b01124e1..86e6ec48c2f 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -27,6 +27,7 @@
- 
+@@ -28,6 +28,7 @@
  #include "cpu.h"
  #include "hw/semihosting/semihost.h"
-+#include "hw/semihosting/console.h"
+ #include "hw/semihosting/console.h"
++#include "qemu/log.h"
  #ifdef CONFIG_USER_ONLY
  #include "qemu.h"
  
-@@ -313,32 +314,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             return set_swi_errno(ts, close(arg0));
+@@ -363,7 +364,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return len - ret;
          }
-     case TARGET_SYS_WRITEC:
--        {
--          char c;
--
--          if (get_user_u8(c, args))
--              /* FIXME - should this error code be -TARGET_EFAULT ? */
--              return (uint32_t)-1;
--          /* Write to debug console.  stderr is near enough.  */
--          if (use_gdb_syscalls()) {
--                return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,1", args);
--          } else {
--                return write(STDERR_FILENO, &c, 1);
--          }
--        }
-+        qemu_semihosting_console_out(env, args, 1);
-+        return 0xdeadbeef;
-     case TARGET_SYS_WRITE0:
--        if (!(s = lock_user_string(args)))
--            /* FIXME - should this error code be -TARGET_EFAULT ? */
--            return (uint32_t)-1;
--        len = strlen(s);
--        if (use_gdb_syscalls()) {
--            return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,%x",
--                                   args, len);
--        } else {
--            ret = write(STDERR_FILENO, s, len);
--        }
--        unlock_user(s, args, 0);
--        return ret;
-+        return qemu_semihosting_console_out(env, args, 0);
-     case TARGET_SYS_WRITE:
+     case TARGET_SYS_READC:
+-       /* XXX: Read from debug console. Not implemented.  */
++        qemu_log_mask(LOG_UNIMP, "%s: SYS_READC not implemented", __func__);
+         return 0;
+     case TARGET_SYS_ISTTY:
          GET_ARG(0);
-         GET_ARG(1);
+@@ -397,7 +398,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return buf.st_size;
+         }
+     case TARGET_SYS_TMPNAM:
+-        /* XXX: Not implemented.  */
++        qemu_log_mask(LOG_UNIMP, "%s: SYS_TMPNAM not implemented", __func__);
+         return -1;
+     case TARGET_SYS_REMOVE:
+         GET_ARG(0);
 -- 
 2.20.1

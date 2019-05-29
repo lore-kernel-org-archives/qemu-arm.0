@@ -1,549 +1,180 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y18sm11063422wmd.29.2019.05.23.03.25.37
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2019 03:25:44 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 397BD1FFA6;
-	Thu, 23 May 2019 11:25:34 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH  v2 20/28] tests/tcg/multiarch: expand system memory test to cover more
-Date: Thu, 23 May 2019 11:25:24 +0100
-Message-Id: <20190523102532.10486-21-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190523102532.10486-1-alex.bennee@linaro.org>
-References: <20190523102532.10486-1-alex.bennee@linaro.org>
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp8742297pjq;
+        Tue, 28 May 2019 20:40:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFjI3l0FUBH5lWSpqe4gyVindPTYfAe4/v8C8aky/6wE3jmB0+HX2BGaVnTmsxcz7tymd5
+X-Received: by 2002:a05:6a00:c9:: with SMTP id e9mr141595pfj.99.1559101224054;
+        Tue, 28 May 2019 20:40:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559101224; cv=none;
+        d=google.com; s=arc-20160816;
+        b=d234CiffgyLGvQTgCkmJquF3jK1KW4SGk/iOU/FS2BaquS0g3h/d8URM9jj7oJENci
+         4tY2RQ1GzanStj2kA3CEi83a8PWH0LYK2onuqXfxkB/5aR67YN0IJ4cNoEYcxq+BGQB8
+         aHIInun9YARhPZ0sZ/xlvWeYvONEvRPQwF79JFGmTv3ybZTLsLZ47tqNJ36dNRSmDs+D
+         o2CP/XG8pE3dcXGJOIlCXdzEhBeKMvqDwuTMsWSQwM6was4rkN5WuwYrSbS/R97voJBT
+         85bQ7M8mwjjR0N1ASinZBXVDbhL4e/joF6YIwG2fG1yOGznw5L/CZat0QL3NcCfDS4qS
+         GKOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=CA/4dQuaDckNy4AUShkfB3sMJYFzdlrvMh+cMSh6ymk=;
+        b=aNM0fQvSPBR2f8SfucTaB+1tHsK8bTwtge02m/Z+exd3qPqMDS/EWfwA+lQ4lJb7fV
+         v51q8L3Sxjenttby8tkgdh5A0KqFcpSzz3o1C9byo7aA18wNwE+iVkwi0GcySfVeDlbL
+         1E4d+D5tCg/9iGGkrteSkbkdrYe5SamLJf2Ei7DsKK4rR5GMN/VSGLCnvF0nBPhc0HJ8
+         sY3Al+ecmyx66ZejP9PmJCrej3xR9dnyUry2HNoUNnkWubvVbaNwrjdJcpA0TP4yMkdI
+         vGx3js4Wp3/mq6HaSrChwPI/MoSEZJbGufUnvzwNnHe94ndRl6W7vg3xVX0Jq1FPKfzh
+         gLFg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id j3si23927935pgh.445.2019.05.28.20.40.23;
+        Tue, 28 May 2019 20:40:24 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1725936AbfE2DkW (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 28 May 2019 23:40:22 -0400
+Received: from mail-qt1-f196.google.com ([209.85.160.196]:32829 "EHLO
+        mail-qt1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1725828AbfE2DkW (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 28 May 2019 23:40:22 -0400
+Received: by mail-qt1-f196.google.com with SMTP id 14so936750qtf.0
+        for <kvm@vger.kernel.org>; Tue, 28 May 2019 20:40:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=CA/4dQuaDckNy4AUShkfB3sMJYFzdlrvMh+cMSh6ymk=;
+        b=j1Us37almRmLXq9otqDvvBDJ/qDVMFCwJJuo5qUU4MKpYkh0/VKtC2RmyumfumwMjz
+         mMIPBlg3uxBMQvQuld+COWbixQaXUDUQyqsj7l4GtzgEPEII0k+O7Q0vyU60GAtn0QWu
+         +On11VhWzvzBYqtkNL2hcYITTQzk1NhhjPP4871j8TwUr9MbrcWel5nUJO8kYDjoAVrG
+         tOEqdlXkU3r1zsqbFlrVVdmb2mksPh1CR3VR9S5gS60DYAang5ELzrEtbxrSjI6zrE3u
+         vwNc0Xj2kVCvfSw3/6LRT1Gq7lhE96EYzhJ5ToS9+icXJ6PnyslX5tooS16lIv1rUhTi
+         6KzA==
+X-Gm-Message-State: APjAAAWrp2LSsmvfVzSwtDT02dgm4LhcW+0QJVwy5RTnRfLJ5bJMryMD
+        Mf278Jf97a5QMh1mCQAjx/ugdg==
+X-Received: by 2002:ac8:96d:: with SMTP id z42mr90521227qth.24.1559101221644;
+        Tue, 28 May 2019 20:40:21 -0700 (PDT)
+Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net. [100.0.197.103])
+        by smtp.gmail.com with ESMTPSA id w5sm6288911qtc.50.2019.05.28.20.40.20
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Tue, 28 May 2019 20:40:20 -0700 (PDT)
+Date:   Tue, 28 May 2019 23:40:18 -0400
+From:   "Michael S. Tsirkin" <mst@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     pbonzini@redhat.com, imammedo@redhat.com, shannon.zhaosl@gmail.com,
+        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
+        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
+        zhengxiang9@huawei.com, jonathan.cameron@huawei.com,
+        xuwei5@huawei.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, linuxarm@huawei.com
+Subject: Re: [PATCH v17 02/10] ACPI: add some GHES structures and macros
+ definition
+Message-ID: <20190528233859-mutt-send-email-mst@kernel.org>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+ <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: MUrIigOEr63J
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: AtlI84j24mqh
 
-Expand the memory test to cover move of the softmmu code. Specifically
-we:
+On Tue, May 14, 2019 at 04:18:15AM -0700, Dongjiu Geng wrote:
+> Add Generic Error Status Block structures and some macros
+> definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
+> HEST table generation and CPER record will use them.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 
-  - improve commentary
-  - add some helpers (for later BE support)
-  - reduce boiler plate into helpers
-  - add signed reads at various sizes/offsets
-  - required -DCHECK_UNALIGNED
+Are these all still used? I'd rather you moved stuff to
+where it's used.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/aarch64/Makefile.softmmu-target |   2 +
- tests/tcg/i386/Makefile.softmmu-target    |   2 +
- tests/tcg/multiarch/system/memory.c       | 350 +++++++++++++++++-----
- 3 files changed, 282 insertions(+), 72 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index cdb836f7e1e..2e560e4d08e 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -28,5 +28,7 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
- 
-+memory: CFLAGS+=-DCHECK_UNALIGNED=1
-+
- # Running
- QEMU_OPTS+=-M virt -cpu max -display none -semihosting-config enable=on,target=native,chardev=output -kernel
-diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
-index c31bbbf39a7..e1f98177aa5 100644
---- a/tests/tcg/i386/Makefile.softmmu-target
-+++ b/tests/tcg/i386/Makefile.softmmu-target
-@@ -42,5 +42,7 @@ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- %: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
- 
-+memory: CFLAGS+=-DCHECK_UNALIGNED=1
-+
- # Running
- QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
-diff --git a/tests/tcg/multiarch/system/memory.c b/tests/tcg/multiarch/system/memory.c
-index a7a0a8e9784..dc1d8a98ff2 100644
---- a/tests/tcg/multiarch/system/memory.c
-+++ b/tests/tcg/multiarch/system/memory.c
-@@ -5,18 +5,33 @@
-  * behave across normal and unaligned accesses across several pages.
-  * We are not replicating memory tests for stuck bits and other
-  * hardware level failures but looking for issues with different size
-- * accesses when:
--
-+ * accesses when access is:
-  *
-+ *   - unaligned at various sizes (if -DCHECK_UNALIGNED set)
-+ *   - spanning a (softmmu) page
-+ *   - sign extension when loading
-  */
- 
- #include <inttypes.h>
-+#include <stdbool.h>
- #include <minilib.h>
- 
--#define TEST_SIZE (4096 * 4)  /* 4 pages */
-+#ifndef CHECK_UNALIGNED
-+# error "Target does not specify CHECK_UNALIGNED"
-+#endif
-+
-+#define PAGE_SIZE 4096             /* nominal 4k "pages" */
-+#define TEST_SIZE (PAGE_SIZE * 4)  /* 4 pages */
- 
-+#define ARRAY_SIZE(x) ((sizeof(x) / sizeof((x)[0])))
-+
-+__attribute__((aligned(PAGE_SIZE)))
- static uint8_t test_data[TEST_SIZE];
- 
-+typedef void (*init_ufn) (int offset);
-+typedef bool (*read_ufn) (int offset);
-+typedef bool (*read_sfn) (int offset, bool nf);
-+
- static void pdot(int count)
- {
-     if (count % 128 == 0) {
-@@ -24,17 +39,26 @@ static void pdot(int count)
-     }
- }
- 
-+/*
-+ * Helper macros for shift/extract so we can keep our endian handling
-+ * in one place.
-+ */
-+#define BYTE_SHIFT(b, pos) ((uint64_t)b << (pos * 8))
-+#define BYTE_EXTRACT(b, pos) ((b >> (pos * 8)) & 0xff)
- 
- /*
-- * Fill the data with ascending value bytes. As x86 is a LE machine we
-- * write in ascending order and then read and high byte should either
-- * be zero or higher than the lower bytes.
-+ * Fill the data with ascending value bytes.
-+ *
-+ * Currently we only support Little Endian machines so write in
-+ * ascending address order. When we read higher address bytes should
-+ * either be zero or higher than the lower bytes.
-  */
- 
--static void init_test_data_u8(void)
-+static void init_test_data_u8(int unused_offset)
- {
-     uint8_t count = 0, *ptr = &test_data[0];
-     int i;
-+    (void)(unused_offset);
- 
-     ml_printf("Filling test area with u8:");
-     for (i = 0; i < TEST_SIZE; i++) {
-@@ -44,62 +68,112 @@ static void init_test_data_u8(void)
-     ml_printf("done\n");
- }
- 
-+/*
-+ * Full the data with alternating positive and negative bytes. This
-+ * should mean for reads larger than a byte all subsequent reads will
-+ * stay either negative or positive. We never write 0.
-+ */
-+
-+static inline uint8_t get_byte(int index, bool neg)
-+{
-+    return neg ? (0xff << (index % 7)) : (0xff >> ((index % 6) + 1));
-+}
-+
-+static void init_test_data_s8(bool neg_first)
-+{
-+    uint8_t top, bottom, *ptr = &test_data[0];
-+    int i;
-+
-+    ml_printf("Filling test area with s8 pairs (%s):",
-+              neg_first ? "neg first" : "pos first");
-+    for (i = 0; i < TEST_SIZE / 2; i++) {
-+        *ptr++ = get_byte(i, neg_first);
-+        *ptr++ = get_byte(i, !neg_first);
-+        pdot(i);
-+    }
-+    ml_printf("done\n");
-+}
-+
-+/*
-+ * Zero the first few bytes of the test data in preparation for
-+ * new offset values.
-+ */
-+static void reset_start_data(int offset)
-+{
-+    uint32_t *ptr = (uint32_t *) &test_data[0];
-+    int i;
-+    for (i = 0; i < offset; i++) {
-+        *ptr++ = 0;
-+    }
-+}
-+
- static void init_test_data_u16(int offset)
- {
-     uint8_t count = 0;
--    uint16_t word, *ptr = (uint16_t *) &test_data[0];
-+    uint16_t word, *ptr = (uint16_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u16 (offset %d):", offset);
-+    ml_printf("Filling test area with u16 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint16_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t high, low;
--        low = count++;
--        high = count++;
--        word = (high << 8) | low;
-+        uint8_t low = count++, high = count++;
-+        word = BYTE_SHIFT(high, 1) | BYTE_SHIFT(low, 0);
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
- static void init_test_data_u32(int offset)
- {
-     uint8_t count = 0;
--    uint32_t word, *ptr = (uint32_t *) &test_data[0];
-+    uint32_t word, *ptr = (uint32_t *) &test_data[offset];
-     const int max = (TEST_SIZE - offset) / sizeof(word);
-     int i;
- 
--    ml_printf("Filling test area with u32 (offset %d):", offset);
-+    ml_printf("Filling test area with u32 (offset %d, %p):", offset, ptr);
- 
--    /* Leading zeros */
--    for (i = 0; i < offset; i++) {
--        *ptr = 0;
--    }
-+    reset_start_data(offset);
- 
--    ptr = (uint32_t *) &test_data[offset];
-     for (i = 0; i < max; i++) {
--        uint8_t b1, b2, b3, b4;
--        b4 = count++;
--        b3 = count++;
--        b2 = count++;
--        b1 = count++;
--        word = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 3) | BYTE_SHIFT(b2, 2) | BYTE_SHIFT(b3, 1) | b4;
-         *ptr++ = word;
-         pdot(i);
-     }
--    ml_printf("done\n");
-+    ml_printf("done @ %p\n", ptr);
- }
- 
-+static void init_test_data_u64(int offset)
-+{
-+    uint8_t count = 0;
-+    uint64_t word, *ptr = (uint64_t *) &test_data[offset];
-+    const int max = (TEST_SIZE - offset) / sizeof(word);
-+    int i;
-+
-+    ml_printf("Filling test area with u64 (offset %d, %p):", offset, ptr);
- 
--static int read_test_data_u16(int offset)
-+    reset_start_data(offset);
-+
-+    for (i = 0; i < max; i++) {
-+        uint8_t b8 = count++, b7 = count++;
-+        uint8_t b6 = count++, b5 = count++;
-+        uint8_t b4 = count++, b3 = count++;
-+        uint8_t b2 = count++, b1 = count++;
-+        word = BYTE_SHIFT(b1, 7) | BYTE_SHIFT(b2, 6) | BYTE_SHIFT(b3, 5) |
-+               BYTE_SHIFT(b4, 4) | BYTE_SHIFT(b5, 3) | BYTE_SHIFT(b6, 2) |
-+               BYTE_SHIFT(b7, 1) | b8;
-+        *ptr++ = word;
-+        pdot(i);
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+}
-+
-+static bool read_test_data_u16(int offset)
- {
-     uint16_t word, *ptr = (uint16_t *)&test_data[offset];
-     int i;
-@@ -114,17 +188,17 @@ static int read_test_data_u16(int offset)
-         low = word & 0xff;
-         if (high < low && high != 0) {
-             ml_printf("Error %d < %d\n", high, low);
--            return 1;
-+            return false;
-         } else {
-             pdot(i);
-         }
- 
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
--static int read_test_data_u32(int offset)
-+static bool read_test_data_u32(int offset)
- {
-     uint32_t word, *ptr = (uint32_t *)&test_data[offset];
-     int i;
-@@ -145,16 +219,16 @@ static int read_test_data_u32(int offset)
-             (b2 < b3 && b2 != 0) ||
-             (b3 < b4 && b3 != 0)) {
-             ml_printf("Error %d, %d, %d, %d", b1, b2, b3, b4);
--            return 2;
-+            return false;
-         } else {
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
--static int read_test_data_u64(int offset)
-+static bool read_test_data_u64(int offset)
- {
-     uint64_t word, *ptr = (uint64_t *)&test_data[offset];
-     int i;
-@@ -184,60 +258,192 @@ static int read_test_data_u64(int offset)
-             (b7 < b8 && b7 != 0)) {
-             ml_printf("Error %d, %d, %d, %d, %d, %d, %d, %d",
-                       b1, b2, b3, b4, b5, b6, b7, b8);
--            return 2;
-+            return false;
-         } else {
-             pdot(i);
-         }
-     }
--    ml_printf("done\n");
--    return 0;
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
- }
- 
- /* Read the test data and verify at various offsets */
--int do_reads(void)
-+read_ufn read_ufns[] = { read_test_data_u16,
-+                         read_test_data_u32,
-+                         read_test_data_u64 };
-+
-+bool do_unsigned_reads(void)
- {
--    int r = 0;
--    int off = 0;
-+    int i;
-+    bool ok = true;
- 
--    while (r == 0 && off < 8) {
--        r = read_test_data_u16(off);
--        r |= read_test_data_u32(off);
--        r |= read_test_data_u64(off);
--        off++;
-+    for (i = 0; i < ARRAY_SIZE(read_ufns) && ok; i++) {
-+#if CHECK_UNALIGNED
-+        int off;
-+        for (off = 0; off < 8 && ok; off++) {
-+            ok = read_ufns[i](off);
-+        }
-+#else
-+        ok = read_ufns[i](0);
-+#endif
-     }
- 
--    return r;
-+    return ok;
- }
- 
--int main(void)
-+static bool do_unsigned_test(init_ufn fn)
- {
--    int i, r = 0;
-+#if CHECK_UNALIGNED
-+    bool ok = true;
-+    int i;
-+    for (i = 0; i < 8 && ok; i++) {
-+        fn(i);
-+        ok = do_unsigned_reads();
-+    }
-+#else
-+    fn(0);
-+    return do_unsigned_reads();
-+#endif
-+}
-+
-+/*
-+ * We need to ensure signed data is read into a larger data type to
-+ * ensure that sign extension is working properly.
-+ */
-+
-+static bool read_test_data_s8(int offset, bool neg_first)
-+{
-+    int8_t *ptr = (int8_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / 2;
-+
-+    ml_printf("Reading s8 pairs from %#lx (offset %d):", ptr, offset);
-+
-+    for (i = 0; i < max; i++) {
-+        int16_t first, second;
-+        bool ok;
-+        first = *ptr++;
-+        second = *ptr++;
-+
-+        if (neg_first && first < 0 && second > 0) {
-+            pdot(i);
-+        } else if (!neg_first && first > 0 && second < 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c %d\n", first, neg_first ? '<' : '>', second);
-+            return false;
-+        }
-+    }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
-+
-+static bool read_test_data_s16(int offset, bool neg_first)
-+{
-+    int16_t *ptr = (int16_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(*ptr));
-+
-+    ml_printf("Reading s16 from %#lx (offset %d, %s):", ptr,
-+              offset, neg_first ? "neg" : "pos");
- 
-+    for (i = 0; i < max; i++) {
-+        int32_t data = *ptr++;
- 
--    init_test_data_u8();
--    r = do_reads();
--    if (r) {
--        return r;
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return false;
-+        }
-     }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
-+
-+static bool read_test_data_s32(int offset, bool neg_first)
-+{
-+    int32_t *ptr = (int32_t *)&test_data[offset];
-+    int i;
-+    const int max = (TEST_SIZE - offset) / (sizeof(int32_t));
- 
--    for (i = 0; i < 8; i++) {
--        init_test_data_u16(i);
-+    ml_printf("Reading s32 from %#lx (offset %d, %s):",
-+              ptr, offset, neg_first ? "neg" : "pos");
- 
--        r = do_reads();
--        if (r) {
--            return r;
-+    for (i = 0; i < max; i++) {
-+        int64_t data = *ptr++;
-+
-+        if (neg_first && data < 0) {
-+            pdot(i);
-+        } else if (data > 0) {
-+            pdot(i);
-+        } else {
-+            ml_printf("Error %d %c 0\n", data, neg_first ? '<' : '>');
-+            return false;
-         }
-     }
-+    ml_printf("done @ %p\n", ptr);
-+    return true;
-+}
- 
--    for (i = 0; i < 8; i++) {
--        init_test_data_u32(i);
-+/*
-+ * Read the test data and verify at various offsets
-+ *
-+ * For everything except bytes all our reads should be either positive
-+ * or negative depending on what offset we are reading from. Currently
-+ * we only handle LE systems.
-+ */
-+read_sfn read_sfns[] = { read_test_data_s8,
-+                         read_test_data_s16,
-+                         read_test_data_s32 };
- 
--        r = do_reads();
--        if (r) {
--            return r;
-+bool do_signed_reads(bool neg_first)
-+{
-+    int i;
-+    bool ok = true;
-+
-+    for (i = 0; i < ARRAY_SIZE(read_sfns) && ok; i++) {
-+#if CHECK_UNALIGNED
-+        int off;
-+        for (off = 0; off < 8 && ok; off++) {
-+            bool nf = i == 0 ? neg_first ^ (off & 1) : !(neg_first ^ (off & 1));
-+            ok = read_sfns[i](off, nf);
-         }
-+#else
-+        ok = read_sfns[i](0, i == 0 ? neg_first : !neg_first);
-+#endif
-+    }
-+
-+    return ok;
-+}
-+
-+init_ufn init_ufns[] = { init_test_data_u8,
-+                         init_test_data_u16,
-+                         init_test_data_u32,
-+                         init_test_data_u64 };
-+
-+int main(void)
-+{
-+    int i;
-+    bool ok = true;
-+
-+    /* Run through the unsigned tests first */
-+    for (i = 0; i < ARRAY_SIZE(init_ufns) && ok; i++) {
-+        ok = do_unsigned_test(init_ufns[i]);
-+    }
-+
-+    if (ok) {
-+        init_test_data_s8(false);
-+        ok = do_signed_reads(false);
-+    }
-+
-+    if (ok) {
-+        init_test_data_s8(true);
-+        ok = do_signed_reads(true);
-     }
- 
--    ml_printf("Test complete: %s\n", r == 0 ? "PASSED" : "FAILED");
--    return r;
-+    ml_printf("Test complete: %s\n", ok ? "PASSED" : "FAILED");
-+    return ok ? 0 : -1;
- }
--- 
-2.20.1
+
+> ---
+>  include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 52 insertions(+)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index f9aa4bd..d1996fb 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -224,6 +224,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>  
+>  /*
+> + * Values for Hardware Error Notification Type field
+> + */
+> +enum AcpiHestNotifyType {
+> +    ACPI_HEST_NOTIFY_POLLED = 0,
+> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+> +    ACPI_HEST_NOTIFY_SCI = 3,
+> +    ACPI_HEST_NOTIFY_NMI = 4,
+> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
+> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
+> +    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
+> +};
+> +
+
+If there's a single user, the best thing to do
+is just to open-code with a comment that matches
+spec names. It's hard to find stuff like ACPI_HEST_NOTIFY_GSIV
+in a spec.
+
+> +/*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+>   */
+>  #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
+> @@ -400,6 +419,39 @@ struct AcpiSystemResourceAffinityTable {
+>  } QEMU_PACKED;
+>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+>  
+> +/*
+> + * Generic Error Status Block
+> + */
+> +struct AcpiGenericErrorStatus {
+> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
+> +    uint32_t block_status;
+> +    uint32_t raw_data_offset;
+> +    uint32_t raw_data_length;
+> +    uint32_t data_length;
+> +    uint32_t error_severity;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
+> +
+> +/*
+> + * Masks for block_status flags above
+> + */
+> +#define ACPI_GEBS_UNCORRECTABLE         1
+> +
+> +/*
+> + * Values for error_severity field above
+> + */
+> +enum AcpiGenericErrorSeverity {
+> +    ACPI_CPER_SEV_RECOVERABLE,
+> +    ACPI_CPER_SEV_FATAL,
+> +    ACPI_CPER_SEV_CORRECTED,
+> +    ACPI_CPER_SEV_NONE,
+> +};
+> +
+> +/*
+> + * Generic Hardware Error Source version 2
+> + */
+> +#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
+> +
+>  #define ACPI_SRAT_PROCESSOR_APIC     0
+>  #define ACPI_SRAT_MEMORY             1
+>  #define ACPI_SRAT_PROCESSOR_x2APIC   2
+> -- 
+> 1.8.3.1

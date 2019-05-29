@@ -1,172 +1,161 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp8715871pjq;
-        Tue, 28 May 2019 20:01:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyQk+DEckoMHJeLiqcwJ/IlTkK6ggV3jWxYDJo+CpdOpEhHc1DfouXH/U2ZL1CbhkpwZ0Oy
-X-Received: by 2002:a0c:fd48:: with SMTP id j8mr52440707qvs.10.1559098919543;
-        Tue, 28 May 2019 20:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559098919; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp8740560pjq;
+        Tue, 28 May 2019 20:37:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxm3kr3MyeOIcvLg6ANt3w7EH1QaidEcsJysdXGeWj6H/E1BDxqBddTgFBjolqSLr3BQVVV
+X-Received: by 2002:a63:e24c:: with SMTP id y12mr112164599pgj.276.1559101049075;
+        Tue, 28 May 2019 20:37:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559101049; cv=none;
         d=google.com; s=arc-20160816;
-        b=CAOASltrM1vHOd6tXwFZjtemcDYqe715kkHaU2l4N5o45Z3+JVMWWNw2nUvDsRQYrv
-         9Z6qTjsVnflOvxHyo51qzhJ02WImQ4tjq6CJSvEYLaqf5sipRRsGp7xQ+x1CNnxjAsFK
-         AF3kZX/4gEgDWXCNe+XvXu2sIMMK2w0lJ6jKIK8pxEkXusRXup4evQgNYDtOtFRTHQt9
-         R9lAB9JTfLn81t8Y9runP1WdQ6yq+exxeC49Kjc0aE9lYDhq+P5DDcZ7AYvME3pKO8qi
-         YIUC2EchGnPn8NgIafQs1dLL6ubCdhXy8Z8onE6EeVZoLxxFqZmgPy37oG0hktHah5kg
-         9jPQ==
+        b=f40xZ2QNg0IdetRVetvbCHI4F8tsIzQFm2PHozvNRwSZCZJ52Eqy3Y1mzkPORMZteo
+         1UQm3o7l3Y13OVuHNdTrnDiOPWx2f/dNsu+KRFo2jOUaYMPfbuP3kE/xWjxIhXvlHDre
+         UGE17JNVIQyMU4wUC19Y2E2YpuA4FAOYW06r46Z/SjlSYaAn0iXs7ZuyY9LHZi7L0RTX
+         qySZ2oQmWcT12zpdw1hRFio4J4DLdnqbgJoEkt2Q39YJPdmAe9b6fdRzCLDdBmHaXl1/
+         SSQKPXTSOqZoOgxt6yIpBAaQyDcgG6TS//0wfuWboJs2sO1v1QC718KiLjEDjnK43J19
+         5Fww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=rZy9c5E3YHRqXyJGCQb3EJDo/mMMwv33o7p41CKnsJ4=;
-        b=E1sX9q6hu0HNAy2lWjlHKEsDNPNPjvhDKjmzXJI6OgqGp3koIx1abAMRyNRjk7nSF3
-         WfNxm5GrJAC06B/QYSG2ap26bAyJrsbHDEikz9lcTQXZao6lrOND97umpoyrt1R9RK+t
-         vl4YoENTH93UNuNaHM9EUHkCoImL6hakxvdPKJwMzy0tTYIBXL9TApEj1L+5+tImTr9M
-         rhvYbJ8AY121Gr5DcDNiwOyMgwR+W/tO+hFxS+hRhLzlivqppoPblaJckBibe9dJ31bv
-         q09/wJwF7vcYF5oXHVqjDoj2cOoQe15C/XRm/H35C+d1gp+4DpEfugGZWbt89hqJPRaO
-         tC2A==
+        h=list-id:precedence:sender:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date;
+        bh=Frp9O6ViuwEiiHHsCKfDQx9F8k6pchl2la4j/2oanio=;
+        b=skkQZKJ09/aNFbFOaCKH0P6a90GhMvLX0tUYCjH7O/SBhUQrn2qPwj8MN3CuvROErX
+         /PUpLkT/rqyya0D+iYSWy4m3ZZEAKJ1AWBMbHn8HXbTdyvHAYZN/TkfL5iaSZnPrTenc
+         YsJBwDpN4Ya6NgXVkLcA4vUVGF6Eh+CKAuAWJbwSN7NWnXYg4VpCLkCP+nDegCSY97uw
+         35OVroc41Sv5dPk3TEJnO2k4EbB9KKDC8mbO1dc9xrTMbmRY+IetRQ+HQbCuEto0HlZ8
+         rWiR4sUORVB9lFv/MaUfumL+OE8/n2r7jFg90aIVw838JXuk8HuFHYyMfY842NI+6wTR
+         z0tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si651828qvn.61.2019.05.28.20.01.59
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 May 2019 20:01:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id t15si837748pjr.29.2019.05.28.20.37.28;
+        Tue, 28 May 2019 20:37:29 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:46136 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hVoql-0008Iy-2B
-	for alex.bennee@linaro.org; Tue, 28 May 2019 23:01:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60545)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hVoqY-0008Im-Td
-	for qemu-arm@nongnu.org; Tue, 28 May 2019 23:01:48 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hVoqV-0006C8-8h
-	for qemu-arm@nongnu.org; Tue, 28 May 2019 23:01:46 -0400
-Received: from mail-qt1-f194.google.com ([209.85.160.194]:36710)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hVoqU-0005tZ-TM
-	for qemu-arm@nongnu.org; Tue, 28 May 2019 23:01:43 -0400
-Received: by mail-qt1-f194.google.com with SMTP id u12so834096qth.3
-	for <qemu-arm@nongnu.org>; Tue, 28 May 2019 20:01:36 -0700 (PDT)
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726538AbfE2Dh1 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 28 May 2019 23:37:27 -0400
+Received: from mail-qk1-f195.google.com ([209.85.222.195]:38830 "EHLO
+        mail-qk1-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1725828AbfE2Dh0 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 28 May 2019 23:37:26 -0400
+Received: by mail-qk1-f195.google.com with SMTP id a27so552801qkk.5
+        for <kvm@vger.kernel.org>; Tue, 28 May 2019 20:37:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=rZy9c5E3YHRqXyJGCQb3EJDo/mMMwv33o7p41CKnsJ4=;
-	b=WDWZb4GjgfoBnMpS9W9mUsWEFFHYnjGiN6/z1gzQxAOMu0TrXol3patzzCgvV9Pplu
-	DFVhVRZNsmT5oIfntqI8IxG5z0Jdfrf+KGIOwp4mUAb4VFiLzHgR3sN+sVtKCyk/NWna
-	KfuFS0Z2ccndQBTWT8hO2Qr8vmq+u7csOGdkIRLmgFM97LlxjFU6AafN9UtNU4AVdHkL
-	DW0r4zjh9JtD5H1SwdhxXKIOnMKFv/ck1F0tRrEnbJqm+0H52/bOn2hUk60hLAUYx61k
-	ID7dRJULzGpdm7XrdyGikedhuVVsbLGRWCsCfryaqEYRSW+guJ0qZZq54I48/UrC5V6C
-	dp8g==
-X-Gm-Message-State: APjAAAU2c7aaep9TrUwG/Q6pG96rQjafHX/VwXygXwouiBoi4uKXHC9z
-	G0pEMP2gMUKileEdRSo9gHDpqw==
-X-Received: by 2002:ad4:53c2:: with SMTP id k2mr15220988qvv.15.1559098895542; 
-	Tue, 28 May 2019 20:01:35 -0700 (PDT)
-Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net.
-	[100.0.197.103]) by smtp.gmail.com with ESMTPSA id
-	e133sm7176106qkb.76.2019.05.28.20.01.33
-	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-	Tue, 28 May 2019 20:01:34 -0700 (PDT)
-Date: Tue, 28 May 2019 23:01:32 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Wei Yang <richardw.yang@linux.intel.com>
-Message-ID: <20190528230111-mutt-send-email-mst@kernel.org>
-References: <20190326024320.27895-1-richardw.yang@linux.intel.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=Frp9O6ViuwEiiHHsCKfDQx9F8k6pchl2la4j/2oanio=;
+        b=J0hl5uSKzvx+FpfyJVqc6sxACQDreQqXKi6T90BT2NIdSOrJ4MGiCHQK3jGEpR6Tix
+         Pn859TM0o4GxsSk85jumccBY4YMqJ1s1nQNWlWT5Sg2bLopVLd4D9mUleakwgUsfxjJs
+         nSoDaHNjR98LnNcnn//9GuXkRUJw5hRCbxd5hCR9lHm9wrT4aO9PJo9Ceh+OVSLHmKfp
+         k6tiNrM/BtRzJVl4yarnl+WGz7DP6bysbgsUzzipl4Ey4XKicly6UKeBmxUWkspNmeLm
+         3i9jejnFDDaDehsGHwGKgcFXLiO6P1wOXriSgnt0LNctKD9Qb2oWM241OzH0GzfnYBDm
+         liog==
+X-Gm-Message-State: APjAAAXPfCO+BZFY1dFlFGzmuDXdhyB47OvDon/n2aTr5H+xocV738zK
+        6x9wzo2fTb7mLpsKIU+lWRyb0A==
+X-Received: by 2002:a37:8d84:: with SMTP id p126mr54782552qkd.72.1559101045729;
+        Tue, 28 May 2019 20:37:25 -0700 (PDT)
+Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net. [100.0.197.103])
+        by smtp.gmail.com with ESMTPSA id k65sm4862077qkf.46.2019.05.28.20.37.23
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Tue, 28 May 2019 20:37:24 -0700 (PDT)
+Date:   Tue, 28 May 2019 23:37:22 -0400
+From:   "Michael S. Tsirkin" <mst@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     pbonzini@redhat.com, imammedo@redhat.com, shannon.zhaosl@gmail.com,
+        peter.maydell@linaro.org, lersek@redhat.com, james.morse@arm.com,
+        mtosatti@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
+        zhengxiang9@huawei.com, jonathan.cameron@huawei.com,
+        xuwei5@huawei.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org, linuxarm@huawei.com
+Subject: Re: [PATCH v17 07/10] ACPI: Add APEI GHES table generation support
+Message-ID: <20190528233131-mutt-send-email-mst@kernel.org>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+ <1557832703-42620-8-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190326024320.27895-1-richardw.yang@linux.intel.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.194
-Subject: Re: [Qemu-arm] [PATCH v6] hw/acpi: extract acpi_add_rom_blob()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5T8Pu1CxSczt
+In-Reply-To: <1557832703-42620-8-git-send-email-gengdongjiu@huawei.com>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: apGiJx+N+Mjk
 
-On Tue, Mar 26, 2019 at 10:43:20AM +0800, Wei Yang wrote:
-> arm and i386 has almost the same function acpi_add_rom_blob(), except
-> giving different FWCfgCallback function.
+On Tue, May 14, 2019 at 04:18:20AM -0700, Dongjiu Geng wrote:
+> This implements APEI GHES Table generation via fw_cfg blobs.
+> Now it only support GPIO-Signal and ARMv8 SEA two types of GHESv2 error
+> source. Afterwards, we can extend the supported types if needed. For the
+> CPER section type, currently it is memory section because kernel
+> mainly wants userspace to handle the memory errors.
 > 
-> This patch moves acpi_add_rom_blob() to utils.c by passing
-> FWCfgCallback to it.
+> This patch follows the spec ACPI 6.2 to build the Hardware Error Source
+> table, for the detailed information, please refer to document:
+> docs/specs/acpi_hest_ghes.txt
 > 
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-Conflicts with your other patches. Pls rebase on top.
-
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > ---
-> v6:
->   * change author from Igor to Michael
-> v5:
->   * remove unnecessary header glib/gprintf.h
->   * rearrange include header to make it more suitable
-> v4:
->   * extract -> moves
->   * adjust comment in source to make checkpatch happy
-> v3:
->   * put acpi_add_rom_blob() to hw/acpi/utils.c
-> v2:
->   * remove unused header in original source file
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/acpi/Kconfig                 |   4 +
+>  hw/acpi/Makefile.objs           |   1 +
+>  hw/acpi/acpi_ghes.c             | 171 ++++++++++++++++++++++++++++++++++++++++
+>  hw/acpi/aml-build.c             |   2 +
+>  hw/arm/virt-acpi-build.c        |  12 +++
+>  include/hw/acpi/acpi_ghes.h     |  79 +++++++++++++++++++
+>  include/hw/acpi/aml-build.h     |   1 +
+>  8 files changed, 271 insertions(+)
+>  create mode 100644 hw/acpi/acpi_ghes.c
+>  create mode 100644 include/hw/acpi/acpi_ghes.h
 > 
-> author
-> ---
->  hw/acpi/Makefile.objs    |  2 +-
->  hw/acpi/utils.c          | 36 ++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c | 26 ++++++++++----------------
->  hw/i386/acpi-build.c     | 26 ++++++++++----------------
->  include/hw/acpi/utils.h  |  9 +++++++++
->  5 files changed, 66 insertions(+), 33 deletions(-)
->  create mode 100644 hw/acpi/utils.c
->  create mode 100644 include/hw/acpi/utils.h
-> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 613d19a..7b33ae9 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -160,3 +160,4 @@ CONFIG_MUSICPAL=y
+>  
+>  # for realview and versatilepb
+>  CONFIG_LSI_SCSI_PCI=y
+> +CONFIG_ACPI_APEI=y
+> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+> index eca3bee..5228a4b 100644
+> --- a/hw/acpi/Kconfig
+> +++ b/hw/acpi/Kconfig
+> @@ -23,6 +23,10 @@ config ACPI_NVDIMM
+>      bool
+>      depends on ACPI
+>  
+> +config ACPI_APEI
+> +    bool
+> +    depends on ACPI
+> +
+>  config ACPI_VMGENID
+>      bool
+>      default y
 > diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-> index 2d46e3789a..ba93c5b64a 100644
+> index 2d46e37..5099ada 100644
 > --- a/hw/acpi/Makefile.objs
 > +++ b/hw/acpi/Makefile.objs
-> @@ -10,7 +10,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+> @@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
+>  common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
+>  common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+>  common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
+> +common-obj-$(CONFIG_ACPI_APEI) += acpi_ghes.o
+>  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
 >  
 >  common-obj-y += acpi_interface.o
->  common-obj-y += bios-linker-loader.o
-> -common-obj-y += aml-build.o
-> +common-obj-y += aml-build.o utils.o
->  common-obj-$(CONFIG_TPM) += tpm.o
->  
->  common-obj-$(CONFIG_IPMI) += ipmi.o
-> diff --git a/hw/acpi/utils.c b/hw/acpi/utils.c
+> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
 > new file mode 100644
-> index 0000000000..77b9e8148f
+> index 0000000..d03e797
 > --- /dev/null
-> +++ b/hw/acpi/utils.c
-> @@ -0,0 +1,36 @@
-> +/*
-> + * Utilities for generating ACPI tables and passing them to Guests
+> +++ b/hw/acpi/acpi_ghes.c
+> @@ -0,0 +1,171 @@
+> +/* Support for generating APEI tables and record CPER for Guests
 > + *
-> + * Copyright (C) 2019 Intel Corporation
-> + * Copyright (C) 2019 Red Hat Inc
+> + * Copyright (C) 2017 HuaWei Corporation.
 > + *
-> + * Author: Wei Yang <richardw.yang@linux.intel.com>
-> + * Author: Michael S. Tsirkin <mst@redhat.com>
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
 > + *
 > + * This program is free software; you can redistribute it and/or modify
 > + * it under the terms of the GNU General Public License as published by
@@ -183,160 +172,340 @@ Conflicts with your other patches. Pls rebase on top.
 > + */
 > +
 > +#include "qemu/osdep.h"
+> +#include "hw/acpi/acpi.h"
 > +#include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
-> +#include "hw/loader.h"
+> +#include "hw/acpi/acpi_ghes.h"
+> +#include "hw/nvram/fw_cfg.h"
+> +#include "sysemu/sysemu.h"
+> +#include "qemu/error-report.h"
 > +
-> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-> +                                GArray *blob, const char *name,
-> +                                uint64_t max_size)
+> +/* Build table for the hardware error fw_cfg blob */
+> +void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker)
 > +{
-> +    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
-> +                        name, update, opaque, NULL, true);
+> +    int i;
+> +
+> +    /*
+> +     * | +--------------------------+
+> +     * | |    error_block_address   |
+> +     * | |      ..........          |
+> +     * | +--------------------------+
+> +     * | |    read_ack_register     |
+> +     * | |     ...........          |
+> +     * | +--------------------------+
+> +     * | |  Error Status Data Block |
+> +     * | |      ........            |
+> +     * | +--------------------------+
+> +     */
+> +
+> +    /* Build error_block_address */
+> +    build_append_int_noprefix((void *)hardware_errors, 0,
+> +                    GHES_ADDRESS_SIZE * ACPI_HEST_ERROR_SOURCE_COUNT);
+
+Why are you casting everything to void *?
+
+C type safety goes out the window ...
+
+> +
+> +    /* Build read_ack_register */
+> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++)
+> +        /* Initialize the value of read_ack_register to 1, so GHES can be
+> +         * writeable in the first time
+> +         */
+> +        build_append_int_noprefix((void *)hardware_errors, 1, GHES_ADDRESS_SIZE);
+> +
+> +     /* Build Error Status Data Block */
+> +    build_append_int_noprefix((void *)hardware_errors, 0,
+> +                    GHES_MAX_RAW_DATA_LENGTH * ACPI_HEST_ERROR_SOURCE_COUNT);
+> +
+> +    /* Allocate guest memory for the hardware error fw_cfg blob */
+> +    bios_linker_loader_alloc(linker, GHES_ERRORS_FW_CFG_FILE, hardware_errors,
+> +                            1, false);
 > +}
 > +
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 57679a89bf..a846f74a14 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -37,9 +37,9 @@
->  #include "hw/acpi/acpi.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "hw/acpi/bios-linker-loader.h"
-> -#include "hw/loader.h"
->  #include "hw/hw.h"
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
->  #include "hw/pci/pcie_host.h"
->  #include "hw/pci/pci.h"
->  #include "hw/arm/virt.h"
-> @@ -881,14 +881,6 @@ static void virt_acpi_build_reset(void *build_opaque)
->      build_state->patched = false;
+> +/* Build Hardware Error Source Table */
+> +void build_apei_hest(GArray *table_data, GArray *hardware_errors,
+> +                                            BIOSLinker *linker)
+> +{
+> +    uint32_t i, error_status_block_offset, length = table_data->len;
+> +
+> +    /* Reserve Hardware Error Source Table header size */
+> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Set the error source counts */
+> +    build_append_int_noprefix(table_data, ACPI_HEST_ERROR_SOURCE_COUNT, 4);
+> +
+> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++) {
+> +        /* Generic Hardware Error Source version 2(GHESv2 - Type 10)
+> +         */
+> +        build_append_int_noprefix(table_data,
+> +            ACPI_HEST_SOURCE_GENERIC_ERROR_V2, 2); /* type */
+> +        build_append_int_noprefix(table_data, cpu_to_le16(i), 2); /* source id */
+> +        build_append_int_noprefix(table_data, 0xffff, 2); /* related source id */
+> +        build_append_int_noprefix(table_data, 0, 1); /* flags */
+> +
+> +        build_append_int_noprefix(table_data, 1, 1); /* enabled */
+> +
+> +        /* Number of Records To Pre-allocate */
+> +        build_append_int_noprefix(table_data, 1, 4);
+> +        /* Max Sections Per Record */
+> +        build_append_int_noprefix(table_data, 1, 4);
+> +        /* Max Raw Data Length */
+> +        build_append_int_noprefix(table_data, GHES_MAX_RAW_DATA_LENGTH, 4);
+> +
+> +        /* Build error status address*/
+> +        build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */, 0);
+> +        bios_linker_loader_add_pointer(linker,
+> +            ACPI_BUILD_TABLE_FILE, ERROR_STATUS_ADDRESS_OFFSET(length, i),
+> +            GHES_ADDRESS_SIZE, GHES_ERRORS_FW_CFG_FILE, i * GHES_ADDRESS_SIZE);
+> +
+> +        /* Build Hardware Error Notification
+> +         * Now only enable GPIO-Signal and ARMv8 SEA notification types
+> +         */
+> +        if (i == 0) {
+> +            build_append_ghes_notify(table_data, ACPI_HEST_NOTIFY_GPIO, 28,
+> +                                     0, 0, 0, 0, 0, 0, 0);
+> +        } else if (i == 1) {
+> +            build_append_ghes_notify(table_data, ACPI_HEST_NOTIFY_SEA, 28, 0,
+> +                                     0, 0, 0, 0, 0, 0);
+> +        }
+> +
+> +        /* Error Status Block Length */
+> +        build_append_int_noprefix(table_data,
+> +            cpu_to_le32(GHES_MAX_RAW_DATA_LENGTH), 4);
+> +
+> +        /* Build Read ACK register
+> +         * ACPI 6.1/6.2: 18.3.2.8 Generic Hardware Error Source
+> +         * version 2 (GHESv2 - Type 10)
+> +         */
+> +        build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */, 0);
+> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +            READ_ACK_REGISTER_ADDRESS_OFFSET(length, i), GHES_ADDRESS_SIZE,
+> +            GHES_ERRORS_FW_CFG_FILE,
+> +            (ACPI_HEST_ERROR_SOURCE_COUNT + i) * GHES_ADDRESS_SIZE);
+> +
+> +        /* Build Read Ack Preserve and Read Ack Writer */
+> +        build_append_int_noprefix(table_data, cpu_to_le64(ReadAckPreserve), 8);
+> +        build_append_int_noprefix(table_data, cpu_to_le64(ReadAckWrite), 8);
+> +    }
+> +
+> +    /* Generic Error Status Block offset in the hardware error fw_cfg blob */
+> +    error_status_block_offset = GHES_ADDRESS_SIZE * 2 *
+> +                                ACPI_HEST_ERROR_SOURCE_COUNT;
+> +
+> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++)
+> +        /* Patch address of Error Status Data Block into
+> +         * the error_block_address of hardware_errors fw_cfg blob
+> +         */
+> +        bios_linker_loader_add_pointer(linker,
+> +            GHES_ERRORS_FW_CFG_FILE, GHES_ADDRESS_SIZE * i, GHES_ADDRESS_SIZE,
+> +            GHES_ERRORS_FW_CFG_FILE,
+> +            error_status_block_offset + i * GHES_MAX_RAW_DATA_LENGTH);
+> +
+> +    /* write address of hardware_errors fw_cfg blob into the
+> +     * hardware_errors_addr fw_cfg blob.
+> +     */
+> +    bios_linker_loader_write_pointer(linker, GHES_DATA_ADDR_FW_CFG_FILE,
+> +        0, GHES_ADDRESS_SIZE, GHES_ERRORS_FW_CFG_FILE, 0);
+> +
+> +    build_header(linker, table_data,
+> +        (void *)(table_data->data + length), "HEST",
+> +        table_data->len - length, 1, NULL, "GHES");
+> +}
+> +
+> +static GhesState ges;
+> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
+> +{
+> +
+> +    size_t size = 2 * GHES_ADDRESS_SIZE + GHES_MAX_RAW_DATA_LENGTH;
+> +    size_t request_block_size = ACPI_HEST_ERROR_SOURCE_COUNT * size;
+> +
+> +    /* Create a read-only fw_cfg file for GHES */
+> +    fw_cfg_add_file(s, GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
+> +                    request_block_size);
+> +
+> +    /* Create a read-write fw_cfg file for Address */
+> +    fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
+> +        &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
+> +}
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index ce90970..3f2b84f 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1645,6 +1645,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+>      tables->table_data = g_array_new(false, true /* clear */, 1);
+>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
+>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
+> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+>      tables->linker = bios_linker_loader_init();
 >  }
 >  
-> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-> -                                       GArray *blob, const char *name,
-> -                                       uint64_t max_size)
-> -{
-> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
-> -                        name, virt_acpi_build_update, build_state, NULL, true);
-> -}
-> -
->  static const VMStateDescription vmstate_virt_acpi_build = {
->      .name = "virt_acpi_build",
->      .version_id = 1,
-> @@ -920,20 +912,22 @@ void virt_acpi_setup(VirtMachineState *vms)
->      virt_acpi_build(vms, &tables);
+> @@ -1655,6 +1656,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+>      g_array_free(tables->table_data, true);
+>      g_array_free(tables->tcpalog, mfre);
+>      g_array_free(tables->vmgenid, mfre);
+> +    g_array_free(tables->hardware_errors, mfre);
+>  }
 >  
->      /* Now expose it all to Guest */
-> -    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
-> -                                               ACPI_BUILD_TABLE_FILE,
-> -                                               ACPI_BUILD_TABLE_MAX_SIZE);
-> +    build_state->table_mr = acpi_add_rom_blob(virt_acpi_build_update,
-> +                                              build_state, tables.table_data,
-> +                                              ACPI_BUILD_TABLE_FILE,
-> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
->      assert(build_state->table_mr != NULL);
+>  /*
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index bf9c0bc..54f4ba5 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -45,6 +45,7 @@
+>  #include "hw/arm/virt.h"
+>  #include "sysemu/numa.h"
+>  #include "kvm_arm.h"
+> +#include "hw/acpi/acpi_ghes.h"
 >  
->      build_state->linker_mr =
-> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-> -                          "etc/table-loader", 0);
-> +        acpi_add_rom_blob(virt_acpi_build_update, build_state,
-> +                          tables.linker->cmd_blob, "etc/table-loader", 0);
+>  #define ARM_SPI_BASE 32
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -808,6 +809,12 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>      acpi_add_table(table_offsets, tables_blob);
+>      build_spcr(tables_blob, tables->linker, vms);
 >  
+> +    if (!vmc->no_ras) {
+> +        acpi_add_table(table_offsets, tables_blob);
+> +        build_hardware_error_table(tables->hardware_errors, tables->linker);
+> +        build_apei_hest(tables_blob, tables->hardware_errors, tables->linker);
+> +    }
+> +
+>      if (nb_numa_nodes > 0) {
+>          acpi_add_table(table_offsets, tables_blob);
+>          build_srat(tables_blob, tables->linker, vms);
+> @@ -901,6 +908,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
+>  
+>  void virt_acpi_setup(VirtMachineState *vms)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      AcpiBuildTables tables;
+>      AcpiBuildState *build_state;
+>  
+> @@ -932,6 +940,10 @@ void virt_acpi_setup(VirtMachineState *vms)
 >      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
 >                      acpi_data_len(tables.tcpalog));
 >  
-> -    build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
-> -                                              ACPI_BUILD_RSDP_FILE, 0);
-> +    build_state->rsdp_mr = acpi_add_rom_blob(virt_acpi_build_update,
-> +                                             build_state, tables.rsdp,
-> +                                             ACPI_BUILD_RSDP_FILE, 0);
+> +    if (!vmc->no_ras) {
+> +        ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
+> +    }
+> +
+>      build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
+>                                                ACPI_BUILD_RSDP_FILE, 0);
 >  
->      qemu_register_reset(virt_acpi_build_reset, build_state);
->      virt_acpi_build_reset(build_state);
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 416da318ae..b17d4a711d 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -37,7 +37,6 @@
->  #include "hw/acpi/cpu.h"
->  #include "hw/nvram/fw_cfg.h"
->  #include "hw/acpi/bios-linker-loader.h"
-> -#include "hw/loader.h"
->  #include "hw/isa/isa.h"
->  #include "hw/block/fdc.h"
->  #include "hw/acpi/memory_hotplug.h"
-> @@ -58,6 +57,7 @@
->  #include "hw/i386/x86-iommu.h"
->  
->  #include "hw/acpi/aml-build.h"
-> +#include "hw/acpi/utils.h"
->  
->  #include "qom/qom-qobject.h"
->  #include "hw/i386/amd_iommu.h"
-> @@ -2842,14 +2842,6 @@ static void acpi_build_reset(void *build_opaque)
->      build_state->patched = 0;
->  }
->  
-> -static MemoryRegion *acpi_add_rom_blob(AcpiBuildState *build_state,
-> -                                       GArray *blob, const char *name,
-> -                                       uint64_t max_size)
-> -{
-> -    return rom_add_blob(name, blob->data, acpi_data_len(blob), max_size, -1,
-> -                        name, acpi_build_update, build_state, NULL, true);
-> -}
-> -
->  static const VMStateDescription vmstate_acpi_build = {
->      .name = "acpi_build",
->      .version_id = 1,
-> @@ -2891,14 +2883,15 @@ void acpi_setup(void)
->      acpi_build(&tables, MACHINE(pcms));
->  
->      /* Now expose it all to Guest */
-> -    build_state->table_mr = acpi_add_rom_blob(build_state, tables.table_data,
-> -                                               ACPI_BUILD_TABLE_FILE,
-> -                                               ACPI_BUILD_TABLE_MAX_SIZE);
-> +    build_state->table_mr = acpi_add_rom_blob(acpi_build_update,
-> +                                              build_state, tables.table_data,
-> +                                              ACPI_BUILD_TABLE_FILE,
-> +                                              ACPI_BUILD_TABLE_MAX_SIZE);
->      assert(build_state->table_mr != NULL);
->  
->      build_state->linker_mr =
-> -        acpi_add_rom_blob(build_state, tables.linker->cmd_blob,
-> -                          "etc/table-loader", 0);
-> +        acpi_add_rom_blob(acpi_build_update, build_state,
-> +                          tables.linker->cmd_blob, "etc/table-loader", 0);
->  
->      fw_cfg_add_file(pcms->fw_cfg, ACPI_BUILD_TPMLOG_FILE,
->                      tables.tcpalog->data, acpi_data_len(tables.tcpalog));
-> @@ -2935,8 +2928,9 @@ void acpi_setup(void)
->          build_state->rsdp_mr = NULL;
->      } else {
->          build_state->rsdp = NULL;
-> -        build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
-> -                                                  ACPI_BUILD_RSDP_FILE, 0);
-> +        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
-> +                                                 build_state, tables.rsdp,
-> +                                                 ACPI_BUILD_RSDP_FILE, 0);
->      }
->  
->      qemu_register_reset(acpi_build_reset, build_state);
-> diff --git a/include/hw/acpi/utils.h b/include/hw/acpi/utils.h
+> diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
 > new file mode 100644
-> index 0000000000..140b4de603
+> index 0000000..38fd87c
 > --- /dev/null
-> +++ b/include/hw/acpi/utils.h
-> @@ -0,0 +1,9 @@
-> +#ifndef HW_ACPI_UTILS_H
-> +#define HW_ACPI_UTILS_H
+> +++ b/include/hw/acpi/acpi_ghes.h
+> @@ -0,0 +1,79 @@
+> +/* Support for generating APEI tables and record CPER for Guests
+> + *
+> + * Copyright (C) 2017 HuaWei Corporation.
+> + *
+> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
 > +
-> +#include "hw/nvram/fw_cfg.h"
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
 > +
-> +MemoryRegion *acpi_add_rom_blob(FWCfgCallback update, void *opaque,
-> +                                GArray *blob, const char *name,
-> +                                uint64_t max_size);
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#ifndef ACPI_GHES_H
+> +#define ACPI_GHES_H
+> +
+> +#include "hw/acpi/bios-linker-loader.h"
+> +
+> +#define GHES_ERRORS_FW_CFG_FILE         "etc/hardware_errors"
+> +#define GHES_DATA_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
+> +
+> +/* The size of Address field in Generic Address Structure,
+> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure.
+> + */
+> +#define GHES_ADDRESS_SIZE           8
+> +
+> +#define GHES_DATA_LENGTH            72
+> +#define GHES_CPER_LENGTH            80
+
+
+Don't see above two used anywhere in this patch.
+Pls move to patch that uses them.
+
+> +
+> +#define ReadAckPreserve             0xfffffffe
+> +#define ReadAckWrite                0x1
+
+Why are these macros not all upper case?
+I suggest just open-coding at use point
+and adding a comment:
+
+        build_append_int_noprefix(table_data, cpu_to_le64(0xfffffffe), 8); /* ReadAckPreserve */
+        build_append_int_noprefix(table_data, cpu_to_le64(0x1), 8); /* ReadAckWrite */
+
+> +
+> +/* The max size in bytes for one error block */
+> +#define GHES_MAX_RAW_DATA_LENGTH        0x1000
+> +/* Now only have GPIO-Signal and ARMv8 SEA notification types error sources
+> + */
+> +#define ACPI_HEST_ERROR_SOURCE_COUNT    2
+
+
+Please prefix everything with acpi_ghes_
+
+Or move to acpi/ghes.h and then prefix with ghes_ 
+
+> +
+> +/*
+> + * | +--------------------------+ 0
+> + * | |        Header            |
+> + * | +--------------------------+ 40---+-
+> + * | | .................        |      |
+> + * | | error_status_address-----+ 60   |
+> + * | | .................        |      |
+> + * | | read_ack_register--------+ 104  92
+> + * | | read_ack_preserve        |      |
+> + * | | read_ack_write           |      |
+> + * + +--------------------------+ 132--+-
+> + *
+> + * From above GHES definition, the error status address offset is 60;
+> + * the Read ack register offset is 104, the whole size of GHESv2 is 92
+> + */
+> +
+> +/* The error status address offset in GHES */
+> +#define ERROR_STATUS_ADDRESS_OFFSET(start_addr, n)     (start_addr + 60 + \
+> +                    offsetof(struct AcpiGenericAddress, address) + n * 92)
+> +
+> +/* The read Ack register offset in GHES */
+> +#define READ_ACK_REGISTER_ADDRESS_OFFSET(start_addr, n) (start_addr + 104 + \
+> +                    offsetof(struct AcpiGenericAddress, address) + n * 92)
+> +
+> +typedef struct GhesState {
+> +    uint64_t ghes_addr_le;
+> +} GhesState;
+> +
+> +void build_apei_hest(GArray *table_data, GArray *hardware_error,
+> +                     BIOSLinker *linker);
+> +
+> +void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker);
+> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
 > +#endif
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 1ec7e1b..78c0252 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -220,6 +220,7 @@ struct AcpiBuildTables {
+>      GArray *rsdp;
+>      GArray *tcpalog;
+>      GArray *vmgenid;
+> +    GArray *hardware_errors;
+>      BIOSLinker *linker;
+>  } AcpiBuildTables;
+>  
 > -- 
-> 2.19.1
+> 1.8.3.1

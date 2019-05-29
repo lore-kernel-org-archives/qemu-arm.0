@@ -1,196 +1,127 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp69208lfo;
-        Tue, 2 Feb 2021 04:22:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxO0sECrY8N/S2b2HTxWIur5+H8QUBvbXEbTJkCXZo2IGdR9ALb8V8hh/KaDtPBRBBUaqGS
-X-Received: by 2002:a25:718b:: with SMTP id m133mr32650082ybc.412.1612268524212;
-        Tue, 02 Feb 2021 04:22:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612268524; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp9344559pjq;
+        Wed, 29 May 2019 07:03:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyk/mvopB003+LK7QAXtTawf7WbdwiPy6pH0xOEHPaB00g6S326lMvzee9rlt1gzAkfAzTH
+X-Received: by 2002:a0c:ad02:: with SMTP id u2mr63344108qvc.90.1559138586001;
+        Wed, 29 May 2019 07:03:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559138585; cv=none;
         d=google.com; s=arc-20160816;
-        b=iTpnAO44QOQBi3U1Ho/3XG8hqSWRYV7eziQXHAJkzuXra+osnW55aSqzsplLvYVjeR
-         TJmBynhUJtm6FFWifIQmi7xZe+vm/M0m54bPyh25V8TRGrmrU0i6fu3LAgKt1419NWAR
-         Lgy8yuCZUJYAdrODJ1RdbNun8Q6vVnC5GbAvzs6AQH4ll+pyZTDihwLd5zhdTCFEBfSu
-         Ac2JGq3Jp7hIRTC6/srDXac71XMEJXe4ndbskLH+ZG0usacgjTq29j87EFYWbmD7vJuo
-         LYBJP4LFIlEa0PrCM/cZlYQY1Axnnraw6Fvu6PT+SSywVHTebsfpP7EzkFIaLKpIb0mq
-         RkHQ==
+        b=clKAKiqK3uGHpHq34OS3ijfr5pgQ7HPhEbCAz/z7J9+jE58PHukNij4GCd0CLrHuq4
+         yVegxS+7WUh1IUCm8aP7ndHY9jpZrcPo9YHsAls1gg6tApT8ZvmWD9HQoLcIADQ227GF
+         sVmfDGZWAFayeWUyu3agB41n9INS/51vZbfIrRLENkugM2VCr84EXEeecEVMYXBBAFIQ
+         lqxdvHkjj5yHEHY4iH0Ldui+e9Ezd7wlB6Hkd7yN0t+WTwfGIh4JZzPZjbEj3jN/T07P
+         OtIl5OwdvA1WHo41i7g8rjwmuFbIlDcLWrcHYotJqK3xZKqyWCE6/RcY15N8VdK5Qoeb
+         Fw4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
-        b=LPGBSeCrni5buKlHaAMzbsTQnV1jF4U9nE3sDoVGNHIlKPWzls98/k4d39kMWHKe/Z
-         7i6ECXfXyPWshGOrkMrEm7MQLotU8AJaDI3FzyieyFUUAR9VxFFHzNfOT6UmwVyTnWgS
-         Qo8UwzK97XbQbeBKV4GcrUi8J5sGYx/H78drgd9eRH2WPmJ1yXVVDu7EETA+pBAhKDgJ
-         AjCF7nhXga3Ta+EFINAuYoGpfuRxtDlD3GqxLw5ncqQHuWaVtd/Yt0L2BBRpdQvJN4Xk
-         KFJOLI/P4ngJ+0UpfG0cxp+bfxOiS0GbV94gQdJ7EwNZpuRaVGdPojsoEbEAIF09HgG/
-         I0kA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=hNpxpLQm/tgWAYyZuZ+M61bpEgEWvcxEEJq6nRK4tzw=;
+        b=fOc/OK2jAxiLxfdH6eizt+ivbLNZHQ2L2NG+uscXVeXqs3qGsJE1F2oWtMGv6cqHsd
+         Z7KKrhLVvYuR32b1H4poqXCGhczWRV1oOrz1Gv6TvOOdj+06kOu9X1CgMfoswrKtLRbM
+         8XCFQM/UxD3oGytg3GY/bcmZ6lOkaB+G14lEdZkm+iVSJbwQwqJGZzhxGC+ol8O+eAIt
+         zl40oFeU4Wa3eRy1zb+oSbliK5u4A75I/Rib8ZG342FrYqtSxNLJXIL27zrYdURBIFFa
+         74Wg5NZ7vY+YNuYIz4GesV/Nc84HdGIr6FHf0XoVXY8ILOKISt6/d0IbXTdl1ZR90mGP
+         nG1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UlxbO+am;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si22287137ybp.311.2021.02.02.04.22.04
+        by mx.google.com with ESMTPS id 15si2343076qkl.59.2019.05.29.07.03.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Feb 2021 04:22:04 -0800 (PST)
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 29 May 2019 07:03:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UlxbO+am;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49070 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:55000 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6uh1-0005nT-Cu
-	for alex.bennee@linaro.org; Tue, 02 Feb 2021 07:22:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42080)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6ugm-0005kC-8B
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 07:21:48 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:46067)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l6ugi-0005xu-R0
- for qemu-arm@nongnu.org; Tue, 02 Feb 2021 07:21:47 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id t5so1583778eds.12
- for <qemu-arm@nongnu.org>; Tue, 02 Feb 2021 04:21:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
- b=UlxbO+amTvKVNHtmZGHPGxefFQeXcZ89PubzDQQTJ1QP7sM0H6gADz+0mVDwsjOtvk
- pfmTNnNpfRdfw4QIL4TsoXs+awFOf9fe9lDndVTsBU553apPMlGkEoxf+ksrdsMWTVkY
- JY1tchrlF+e+0EKeQjgVDAzdh29ck5f3Z+ZZ7P4n/pWPZy/pfHPhX8APSkbVkND9UP66
- +n8LtLEV3dcI3IWZNB73Hu4C16u6rnjMaZT6nFsNlU+UcAf7dJA93utQKCsxWN8LVSyp
- 5iotuvKJePatRk4G2pXBDyYDw//bYxeTMSSC2ksNz9DLtuV7+/5kEn3A/eltOur4hD39
- VB8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=belE4FoTQ5IDz2AkXxRNs1TgkX/xK+2CldIU2o/On7Y=;
- b=dxtQvppGv7Opqe69pSje7i8R5W3HQuRDgewL4tFB1vgXhH63+VOaA07T99PO21G0qk
- IomlzlXwSYJxnLFD9wwLDuSyhhnGcIkLE/XjOojSdVTtvbD8qDt/6RTGoXI4utBV8ycn
- UnUzLMxqbMyJMWTcQjvujJV6ARxlJxVVPYSRAJXBnxCvkkcQzyDYZqa66SvQWh3wA4hz
- X+/COVyRIturHfOmWXs01nK6mt78sBb17moMzoMDnBIQLQVNQCrgY/hMCKmHCjDc2+V8
- 2WniqQly34s1w4r8lAxLFQnpT47ucQvo9vucBEzy2Uf9W3MtfuB8/yKi4kDKfGYE+nw/
- VMvg==
-X-Gm-Message-State: AOAM532lAuHAjseVKzdXCj867svnwTvL4ys8Jt0/Rj+UF2TfvO5lLrfA
- RVsTS1mQb+MRfqsieNjkbmI0NxhwVYQOCn6jK9F0aQ==
-X-Received: by 2002:a05:6402:3514:: with SMTP id
- b20mr22821315edd.100.1612268502667; 
- Tue, 02 Feb 2021 04:21:42 -0800 (PST)
+	id 1hVzAX-0000Hj-Em
+	for alex.bennee@linaro.org; Wed, 29 May 2019 10:03:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52017)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1hVzA3-000084-AE
+	for qemu-arm@nongnu.org; Wed, 29 May 2019 10:02:40 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1hVzA2-0003BY-8q
+	for qemu-arm@nongnu.org; Wed, 29 May 2019 10:02:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44740)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hVzA2-00030e-3m; Wed, 29 May 2019 10:02:34 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5B9BFB0AA6;
+	Wed, 29 May 2019 14:02:12 +0000 (UTC)
+Received: from x1w.bcn.redhat.com (unknown [10.32.224.40])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2ECA32CFE2;
+	Wed, 29 May 2019 14:02:09 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	Claudio Fontana <claudio.fontana@gmail.com>
+Date: Wed, 29 May 2019 16:02:07 +0200
+Message-Id: <20190529140207.20719-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20210131103401.217160-1-f4bug@amsat.org>
- <3a94e327-0454-bf43-552a-1c84407e1d7d@amsat.org>
- <20p82p5p-ns25-n434-37os-n55013s6313@erqung.pbz>
- <6d29aa57-2e6e-e81d-831f-803d9aae798f@amsat.org>
- <787280826.1146023.1612246917145@mail.yahoo.com>
- <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
-In-Reply-To: <3bd70da2-39ec-6e6b-d46d-6052f1b8f0b0@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Feb 2021 12:21:31 +0000
-Message-ID: <CAFEAcA-Q8swS84GVd20wo4Pp41UUPdDknxbCMn=pchgi96UgRQ@mail.gmail.com>
-Subject: Re: [QEMU-SECURITY] [PATCH] hw/intc/arm_gic: Fix interrupt ID in
- GICD_SGIR register
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 29 May 2019 14:02:12 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] MAINTAINERS: Remove bouncing email in AArch64
+ target
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, Li Qiang <liq3ea@gmail.com>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- QEMU Security <qemu-security@nongnu.org>, P J P <ppandit@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- P J P <pj.pandit@yahoo.co.in>, Luc Michel <luc.michel@greensocs.com>
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xEYPhVU9amUF
+X-TUID: aVos2lNubGXK
 
-On Tue, 2 Feb 2021 at 09:32, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> On 2/2/21 7:21 AM, P J P wrote:
-> > On Sunday, 31 January, 2021, 08:48:26 pm IST, Philippe Mathieu-Daud=C3=
-=A9 <f4bug@amsat.org> wrote:
-> >> Forwarding to qemu-security@ to see if this issue is worth a CVE.
-> >>
-> >> | On 1/31/21 11:34 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913916
-> >> | > Buglink: https://bugs.launchpad.net/qemu/+bug/1913917
-> >
-> > * Does above patch address both these bugs? For BZ#1913917 'irq' is der=
-ived from 'offset' it seems.
-> >
-> >         /* Interrupt Configuration.  */
-> >         irq =3D (offset - 0xc00) * 4;
->
-> I haven't done a thorough analysis, simply tried to fixed this
-> bug ASAP as it is public so many users are exposed.
->
-> I had the impression the first call (writel 0x8000f00 0x5affaf)
-> break the heap, so the memory is inconsistent when the second
-> call (write 0x8000eff 0x1 0x0) is done, but better have developers
-> familiar with GIC and security auditing this again.
+Claudio Fontana's email at Huawei is bouncing: remove it.
 
-Philippe is correct here. In both cases the overrun is on the
-first writel to 0x8000f00, but the fuzzer has for some reason not
-reported that but instead blundered on until it happens to trigger
-some other issue that resulted from the memory corruption it induced
-with the first write.
+    From: Mail Delivery Subsystem <mailer-daemon@googlemail.com>
+    Auto-Submitted: auto-replied
+    Subject: Delivery Status Notification (Failure)
+    X-Failed-Recipients: claudio.fontana@huawei.com
+    ** Address not found **
+    Your message wasn't delivered to claudio.fontana@huawei.com because t=
+he address couldn't be found, or is unable to receive mail.
 
-> >> | > Correct the irq mask to fix an undefined behavior (which eventuall=
-y
-> >> | > lead to a heap-buffer-overflow, see [Buglink]):
-> >> | >
-> >> | >    $ echo 'writel 0x8000f00 0xff4affb0' | qemu-system-aarch64 -M v=
-irt,accel=3Dqtest -qtest stdio
-> >> | >    [I 1612088147.116987] OPENED
-> >> | >  [R +0.278293] writel 0x8000f00 0xff4affb0
-> >> | >  ../hw/intc/arm_gic.c:1498:13: runtime error: index 944 out of bou=
-nds for type 'uint8_t [16][8]'
-> >> | >  SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../hw/int=
-c/arm_gic.c:1498:13
-> >> | >
-> >> | > Cc: qemu-stable@nongnu.org
-> >> | > Fixes: 9ee6e8bb853 ("ARMv7 support.")
-> >> |
-> >> | > ---
-> >> | > Isnt it worth a CVE to help distributions track backports?
-> >> | > ---
-> >
-> > Thank you for reporting this issue. Will process further.
+Note that the section still contains his personal email.
 
-On the CVE:
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 1 -
+ 1 file changed, 1 deletion(-)
 
-Since this can affect systems using KVM, this is a security bug for
-us. However, it only affects an uncommon configuration:
-you are only vulnerable if you are using "kernel-irqchip=3Doff"
-(the default is 'on', and turning it off is an odd thing to do).
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1f5f8b7a2c..5ed917329d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2290,7 +2290,6 @@ S: Maintained
+ F: tcg/
+=20
+ AArch64 target
+-M: Claudio Fontana <claudio.fontana@huawei.com>
+ M: Claudio Fontana <claudio.fontana@gmail.com>
+ S: Maintained
+ L: qemu-arm@nongnu.org
+--=20
+2.20.1
 
-I've applied this patch to target-arm.next.
-
-thanks
--- PMM

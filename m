@@ -1,92 +1,283 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp1025987pjq;
-        Thu, 30 May 2019 09:12:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxyUNtzXmmBG0XxveVNXKS4XCWyYCQdoHi0WwHOidFd54HfNhToBC02lzPbjBNZPIyjfcx
-X-Received: by 2002:a17:906:4752:: with SMTP id j18mr3329443ejs.170.1559232761750;
-        Thu, 30 May 2019 09:12:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1559232761; cv=pass;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp1046238pjq;
+        Thu, 30 May 2019 09:30:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcmLG5DV9ia6JLNlb7NAODXX+tNNawLkXmKJaUOiDD9U3+T8myCUOi9U85xUWVRpX+bevW
+X-Received: by 2002:a5d:488b:: with SMTP id g11mr3266897wrq.72.1559233829702;
+        Thu, 30 May 2019 09:30:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559233829; cv=none;
         d=google.com; s=arc-20160816;
-        b=e/0P0rVF8PeF4XfiQ4hnvDhrOAmcs0yT9nj34ASjRxucK7nJKnUuoVplb4KGBlxgsw
-         LvLyuT6X/sNKKFZBqVfBVpaXH5XhdKGwUTWCOvDBnN2XZhmbAYK9Sx93VPQP+XqFA5NH
-         VrUUWpyftGpBQyMUheK6KVJmw3tOpg9OAaHEUoWSvzxV3cWDVHFjmKeireHUsUWe6dfH
-         2dkv8UHVNK+5oPPAtBVJ0zJ+bPDeJuBZawOo4bwRjCFF2GmgzXOXECnWPfJPaFeokejR
-         qSv3acqerb7gMHS0aXcM+uHFcZgHVHVkRUFOkGha8cgIN/BvFrft/unlfrWFAEHwdrlo
-         4ZJA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :message-id:reply-to:subject:in-reply-to;
-        bh=Is/Pk0UOYSbTZ52qMrZyfTmWrJCiCZntRlIOIMqRi0o=;
-        b=wgj7HWToFVe/UicLF/RiO8zwsSns53FGuFpktiLgksIK7MOVzMPF7i/zFGkAp5SHaI
-         DKqm1PybrfZUqflLYW42/6FkVT0fb60lU+iWh0KSGSdXnIl8zkv986dRQfkscMHdPotd
-         5/frCHx5FgZlDvgYWIvxY6wmC1PLsCxs2nCUQXwEctkWpak49ICr6MIzh4FQeySS7ebv
-         LXkoc2P5sq3PZ7bxkLEbdmNbfgHqrmeNjXFExlDD08p+7DaFgLxZqh8JA6SAFOPXHxjp
-         /BSiioQ715diiaapu6UyAp2qL5oZpEJGEXn7eLRuhHNOsQc1OkFGalZWg/G/UseYRhZK
-         ejqQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o55.zoho.com (sender4-of-o55.zoho.com. [136.143.188.55])
-        by mx.google.com with ESMTPS id y23si1931476eju.228.2019.05.30.09.12.39
+        b=ozoXsp9hbN6OGpOAavEGfsSooFHDa8Gz8JB14KE2glGUAQR38b2p04N9yfYoVIroHg
+         AzYEwJCOSSAYus0xVXSHSQO68o1QozJz0ER2L8MqYuPN6JNxND7eD1uwmVXu/2zgCoEM
+         bTDvZn5ON6uECRVxCzU4oLk4w/jc88bnNjxslKHtlIGPXWq2x0gIFAGB0aFejUT6cnL0
+         aGtcOlrpXDPK8pgOPPJ/gO94Lf5+X6Uh/GJXfoczTXM/PuZm6QPEg4YEXwsTWdtbtNQf
+         b9aqUVUeZ1/QTkgE88DWN0fik9a4blL85yjlBhn4duEBhkii6yXEPe2t3ygKcFIyHeQ+
+         5QBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject;
+        bh=T/bpml3/wIz+ooeSYQTlqoaeK5q8/10VX9ysCT0zTHs=;
+        b=bnx7N5Dj/a39nV5KjXkKh44c5X2UPTVKwmeXVSHtN7vdKC3xPaphfGqbgj8XzjaUC9
+         btqbOKWInDL8pULIBRaQduYdwwqn5E4a9UXpba8ASmq8kqJWmDT0TUUTDJ0/+C1AEZN/
+         bYxt5XZV7cQjWempeSqD5LccO1RmfOa0+qQE+CINV1ptLvjTO7adAqF/UMX5WLRCOaqH
+         aeGhpGT27nJqI6z9CeslwwTlaXYsvEjUxf1MydrrX8z0Fk2r/rGbzp6R1YLoan2jcwz7
+         GOW6iR4fHC99q0yki7yCK9SlBz70IwBBXb3iX/ESqEE6qcBTbhzI8QnOkrhDL8Q7X7/x
+         XOGw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.17.24])
+        by mx.google.com with ESMTPS id z75si2163046wmc.151.2019.05.30.09.30.29
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 May 2019 09:12:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) client-ip=136.143.188.55;
+        Thu, 30 May 2019 09:30:29 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.17.24;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1559232746; cv=none; 
-	d=zoho.com; s=zohoarc; 
-	b=k2z2KPrqmp1Srq50mesPhiTJq4yKfwImeLHWgBDeSV2eneeEWje1DQ5h0NhX+zzrZgbDlcUZw2TO0UXXuCHJ70nulBYIRAt51eowwrenYK/AMl2pHm8TxDgcCW3q2594v9CAUeBS623Z0R7F7JgTG3yXgKqCwmXzlPhbZtpVPjQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
-	t=1559232746; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
-	bh=Is/Pk0UOYSbTZ52qMrZyfTmWrJCiCZntRlIOIMqRi0o=; 
-	b=SBkK6LizNQdOw2HnEZqpfiF1cGKxWPlE4H+1iJphsmfEbiGBNEoemWJdhmPByMwAkhf819wk+LpFQE0GYmFxE0ilG1BTea6idlHWX3Hf+AjtzsKSXInDtjBToLMIb4YadWTMfXoupsce5R0sMCXfh8wAWEwPfql6YHjdojYMOlM=
-ARC-Authentication-Results: i=1; mx.zoho.com;
-	dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 15592327443171022.8248793888841; Thu, 30 May 2019 09:12:24 -0700 (PDT)
-In-Reply-To: <20190530143916.20255-1-alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [RFC PATCH] semihosting: split console_out intro string and char versions
-Reply-To: <qemu-devel@nongnu.org>
-Message-ID: <155923274262.9187.6714348083557874693@ce79690b2cb9>
+       spf=neutral (google.com: 212.227.17.24 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MA88C-1hQNfg1jxq-00BgWD; Thu, 30 May 2019 18:30:22 +0200
+Subject: Re: [RFC PATCH] semihosting: split console_out intro string and char
+ versions
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20190530143916.20255-1-alex.bennee@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <ced800af-8f00-cc27-358d-57cb0e715e45@vivier.eu>
+Date: Thu, 30 May 2019 18:30:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, riku.voipio@iki.fi, qemu-arm@nongnu.org, alex.bennee@linaro.org, laurent@vivier.eu
-Date: Thu, 30 May 2019 09:12:24 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: tfk3bTCYis/r
+In-Reply-To: <20190530143916.20255-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:OXBBRV1jbcaTvxs09wiB5t6LAnDsLlH8toXVQZoCrdkjUnwj1mx
+ YWWwi1H4YcZA7COE8r8fB4AY+RJ8qtGBWcmj4FhJGbizGsZgGTzrJhSDICxXMB2PVLIhIsA
+ P1dmqumSbrnA+ta3IKyVPwn7Z0k6ZlYR7d0dz08k+wW+kG4XkY1feOa9c81RNhbJb6FLvGM
+ pu9D2lbCmXPpI1W2Q2fPQ==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:56/LrKOKgy4=:Ivz+5Func4aFpbRBIOHS7r
+ zSrZYkd5wM1zqdfVBg+76Mqu4DuneGZbDCtG8CbsSMrCAD7Y/jTE7wlE1XueATZE5mPnp0sqO
+ 7QaDXRl9xKNpKQiRr8FLhzyw8eZCtF7XPG7n6NXHiC+IvDCGJb83FiMNMsgkQd6rfSsY5CBkx
+ TM2PiSxsrKggMWHUyMZeqrBvVhNiQQTLUYAk8VHXq9u48uzDJCR8Zr22KapjLJDJBzxpgBE3+
+ kOtmK828rJE5X2sKG1p39d4mXI6dg1HVJyFKhNkt9rCUU7GHSK8VvDwxyL8L5wj6XTneHZucp
+ KBfL/34j/kLEeJseYRoa7PFqcuwTEgq0taONjAhe/3twQYV7eNt4bAGCefWcwRa4jnMVa/AC6
+ 9NtQs9l3If85QwEnM27Il6VCRXmn6gch6fR6+7uLMhHTZXsNgCvXSsG0apukplhl/cUhmX5zN
+ 9A1RA3pwfyHSFuE/birfv9a400qiveNO4bbA9zmXmykZulmL5Qn1qBJq8g+toueAqYM7DgIp1
+ GcNA1utoCnHUMrN7R4ANTTDqz54R5YVCRcEEMO+HwOLmmbxnxMbIebir9TmQli3n6JaEbh3YL
+ zZ5hh6OQKeOnMfBa3SuuBuLnF5+hKqiMBJQg0XNQ/A0eJ2QptXdQUQj2otJepdzN6WcFsEtR3
+ 4prTRVuxZ/JrHL9KxZU16u5i6JMOQWwpTOht4V0nySwZKzdIcwfxZwNoKq93XesY4StBDRrI/
+ W7LIUR4FY97JsKqkbwYO88isUhQJG2tfYzNN2/VA+fT36phWA+z7SEbcLgM=
+X-TUID: 4XXgdmADAlc4
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDUzMDE0MzkxNi4yMDI1
-NS0xLWFsZXguYmVubmVlQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8g
-aGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9y
-ZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUkZDIFBBVENIXSBzZW1paG9z
-dGluZzogc3BsaXQgY29uc29sZV9vdXQgaW50cm8gc3RyaW5nIGFuZCBjaGFyIHZlcnNpb25zClR5
-cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDE5MDUzMDE0MzkxNi4yMDI1NS0xLWFsZXguYmVubmVl
-QGxpbmFyby5vcmcKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJl
-di1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
-Zi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQg
-Y29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3Bh
-dGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0
-dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAg
-ICAgICAgICBwYXRjaGV3LzIwMTkwNTMwMTQzOTE2LjIwMjU1LTEtYWxleC5iZW5uZWVAbGluYXJv
-Lm9yZyAtPiBwYXRjaGV3LzIwMTkwNTMwMTQzOTE2LjIwMjU1LTEtYWxleC5iZW5uZWVAbGluYXJv
-Lm9yZwpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjk4YzU1N2IzNTcgc2VtaWhvc3Rp
-bmc6IHNwbGl0IGNvbnNvbGVfb3V0IGludHJvIHN0cmluZyBhbmQgY2hhciB2ZXJzaW9ucwoKPT09
-IE9VVFBVVCBCRUdJTiA9PT0KRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnIT0n
-IChjdHg6VnhWKQojNDc6IEZJTEU6IGh3L3NlbWlob3N0aW5nL2NvbnNvbGUuYzo1NjoKKyAgICB9
-IHdoaWxlIChjIT0wKTsKICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5p
-bmdzLCAxNDcgbGluZXMgY2hlY2tlZAoKQ29tbWl0IDk4YzU1N2IzNTcwOCAoc2VtaWhvc3Rpbmc6
-IHNwbGl0IGNvbnNvbGVfb3V0IGludHJvIHN0cmluZyBhbmQgY2hhciB2ZXJzaW9ucykgaGFzIHN0
-eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUg
-ZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQ
-QVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhp
-dGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3Bh
-dGNoZXcub3JnL2xvZ3MvMjAxOTA1MzAxNDM5MTYuMjAyNTUtMS1hbGV4LmJlbm5lZUBsaW5hcm8u
-b3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
-IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
-c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+Le 30/05/2019 à 16:39, Alex Bennée a écrit :
+> This is ostensibly to avoid the weirdness of len looking like it might
+> come from a guest and sometimes being used. While we are at it fix up
+> the error checking for the arm-linux-user implementation of the API
+> which got flagged up by Coverity (CID 1401700).
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  hw/semihosting/console.c         | 34 +++++++++++++++++++++++---------
+>  include/hw/semihosting/console.h | 25 +++++++++++++++++------
+>  linux-user/arm/semihost.c        | 28 ++++++++++++++++++++++++--
+>  target/arm/arm-semi.c            |  4 ++--
+>  4 files changed, 72 insertions(+), 19 deletions(-)
+> 
+> diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
+> index 466ea6dade7..4a5758972db 100644
+> --- a/hw/semihosting/console.c
+> +++ b/hw/semihosting/console.c
+> @@ -36,26 +36,24 @@ int qemu_semihosting_log_out(const char *s, int len)
+>  /*
+>   * A re-implementation of lock_user_string that we can use locally
+>   * instead of relying on softmmu-semi. Hopefully we can deprecate that
+> - * in time. We either copy len bytes if specified or until we find a NULL.
+> + * in time. Copy string until we find a 0 or address error.
+>   */
+> -static GString *copy_user_string(CPUArchState *env, target_ulong addr, int len)
+> +static GString *copy_user_string(CPUArchState *env, target_ulong addr)
+>  {
+>      CPUState *cpu = ENV_GET_CPU(env);
+> -    GString *s = g_string_sized_new(len ? len : 128);
+> +    GString *s = g_string_sized_new(128);
+>      uint8_t c;
+> -    bool done;
+>  
+>      do {
+>          if (cpu_memory_rw_debug(cpu, addr++, &c, 1, 0) == 0) {
+>              s = g_string_append_c(s, c);
+> -            done = len ? s->len == len : c == 0;
+>          } else {
+>              qemu_log_mask(LOG_GUEST_ERROR,
+>                            "%s: passed inaccessible address " TARGET_FMT_lx,
+>                            __func__, addr);
+> -            done = true;
+> +            break;
+>          }
+> -    } while (!done);
+> +    } while (c!=0);
+>  
+>      return s;
+>  }
+> @@ -68,9 +66,9 @@ static void semihosting_cb(CPUState *cs, target_ulong ret, target_ulong err)
+>      }
+>  }
+>  
+> -int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
+> +int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
+>  {
+> -    GString *s = copy_user_string(env, addr, len);
+> +    GString *s = copy_user_string(env, addr);
+>      int out = s->len;
+>  
+>      if (use_gdb_syscalls()) {
+> @@ -82,3 +80,21 @@ int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
+>      g_string_free(s, true);
+>      return out;
+>  }
+> +
+> +void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
+> +{
+> +    CPUState *cpu = ENV_GET_CPU(env);
+> +    uint8_t c;
+> +
+> +    if (cpu_memory_rw_debug(cpu, addr, &c, 1, 0) == 0) {
+> +        if (use_gdb_syscalls()) {
+> +            gdb_do_syscall(semihosting_cb, "write,2,%x,%x", addr, 1);
+> +        } else {
+> +            qemu_semihosting_log_out((const char *) &c, 1);
+> +        }
+> +    } else {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: passed inaccessible address " TARGET_FMT_lx,
+> +                      __func__, addr);
+> +    }
+> +}
+> diff --git a/include/hw/semihosting/console.h b/include/hw/semihosting/console.h
+> index 30e66ae20aa..3a4fba75905 100644
+> --- a/include/hw/semihosting/console.h
+> +++ b/include/hw/semihosting/console.h
+> @@ -10,17 +10,30 @@
+>  #define _SEMIHOST_CONSOLE_H_
+>  
+>  /**
+> - * qemu_semihosting_console_out:
+> + * qemu_semihosting_console_outs:
+>   * @env: CPUArchState
+> - * @s: host address of guest string
+> - * @len: length of string or 0 (string is null terminated)
+> + * @s: host address of null terminated guest string
+>   *
+> - * Send a guest string to the debug console. This may be the remote
+> - * gdb session if a softmmu guest is currently being debugged.
+> + * Send a null terminated guest string to the debug console. This may
+> + * be the remote gdb session if a softmmu guest is currently being
+> + * debugged.
+>   *
+>   * Returns: number of bytes written.
+>   */
+> -int qemu_semihosting_console_out(CPUArchState *env, target_ulong s, int len);
+> +int qemu_semihosting_console_outs(CPUArchState *env, target_ulong s);
+> +
+> +/**
+> + * qemu_semihosting_console_outc:
+> + * @env: CPUArchState
+> + * @s: host address of null terminated guest string
+> + *
+> + * Send single character from guest memory to the debug console. This
+> + * may be the remote gdb session if a softmmu guest is currently being
+> + * debugged.
+> + *
+> + * Returns: nothing
+> + */
+> +void qemu_semihosting_console_outc(CPUArchState *env, target_ulong c);
+>  
+>  /**
+>   * qemu_semihosting_log_out:
+> diff --git a/linux-user/arm/semihost.c b/linux-user/arm/semihost.c
+> index 9554102a855..b7cdc21f832 100644
+> --- a/linux-user/arm/semihost.c
+> +++ b/linux-user/arm/semihost.c
+> @@ -15,10 +15,34 @@
+>  #include "hw/semihosting/console.h"
+>  #include "qemu.h"
+>  
+> -int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
+> +int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
+>  {
+> +    int len;
+>      void *s = lock_user_string(addr);
+> -    len = write(STDERR_FILENO, s, len ? len : strlen(s));
+> +    if (!s) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: passed inaccessible address " TARGET_FMT_lx,
+> +                      __func__, addr);
+> +        return 0;
+> +    }
+> +
+> +    len = write(STDERR_FILENO, s, strlen(s));
+
+You could avoid 2 calls to strlen() if you inline directly
+lock_user_string() content:
+
+    len = target_strlen(addr);
+    if (len < 0){
+       qemu_log_mask(LOG_GUEST_ERROR,
+                     "%s: passed inaccessible address " TARGET_FMT_lx,
+                     __func__, addr);
+       return 0;
+    }
+    s = lock_user(VERIFY_READ, addr, (long)(len + 1), 1);
+    len = write(STDERR_FILENO, s, len);
+
+>      unlock_user(s, addr, 0);
+>      return len;
+>  }
+
+Thanks,
+Laurent

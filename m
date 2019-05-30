@@ -1,179 +1,92 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp937548pjq;
-        Thu, 30 May 2019 07:58:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy4cOcWqghJMZnRNYnnhTzRftBs/7gq8Bxi8QlU+V4fPBmkmTpk1f+Lb101rJV1JaLYLqrl
-X-Received: by 2002:a17:90a:b398:: with SMTP id e24mr3735332pjr.83.1559228319357;
-        Thu, 30 May 2019 07:58:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559228319; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp1025987pjq;
+        Thu, 30 May 2019 09:12:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxyUNtzXmmBG0XxveVNXKS4XCWyYCQdoHi0WwHOidFd54HfNhToBC02lzPbjBNZPIyjfcx
+X-Received: by 2002:a17:906:4752:: with SMTP id j18mr3329443ejs.170.1559232761750;
+        Thu, 30 May 2019 09:12:41 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1559232761; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Y8gyZQyF9YIdDoMqCnthoW047dNOijx2qznlApbWKVrm0oYOGzLFv3WXXeQq+s3Cll
-         N7tlTTbTVvXPl506oQO6iWURmo1j+8Y3e+mTzX4Ug2yzQA0qDkI9Y9pd+xexZxz6vlOi
-         /Ny1psLYuwKGlr6TllrpF3DkqmFtplHGXk86ZtsqtzWdV9lkDTric/vI/O9hITQGB+1K
-         8Jy0yF/6SMmsW74WKvFeoT8YrbcDcHd64ks+1iVbqQTGFbgccvgPLq4TRUs2plUydKcJ
-         WW7Hhi5/NyaLN+6uWGWthPQjHwkVJlE765fminqXb1elnsM3ulsjca9tG2jIF1DWN1q0
-         gNGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=nNyZUQIOnYKL/l31diokEdoe6ipCiKL12lOMwqf3Ipw=;
-        b=zvxBLyVkNXEM4zEuX9Oxl1lhEms3+mvrn1xxPvXKs7fzPDg1KL33zgEmPO0Uc6Ty/1
-         bGMnKc8J4dgeCa8qpQD61VUBrf3TTTyCajMJHqeVyxnC4Mg/hdroL5b3QsZNSXV+Mx74
-         Q4QJQT8hznpjzzfQU7FErY5xF9UYP6s2+jp/1QWwvOYRwA0b/VYxKuHcswOv5DE23fUw
-         gpIcTfa8/rtIjcAWlxFlKAXaw1ahmWTHWtrClVAh0YCn1XgydUmIMwU2yfrWMMQU1z2X
-         vacm4YyzDV/vNF+xbYSCyG1Mde8Niv2PvhPretoMuU6DQg9jltCt3FwgbqMQaBihmmB5
-         N8GA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b26si3313855pgl.407.2019.05.30.07.58.39;
-        Thu, 30 May 2019 07:58:39 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+        b=e/0P0rVF8PeF4XfiQ4hnvDhrOAmcs0yT9nj34ASjRxucK7nJKnUuoVplb4KGBlxgsw
+         LvLyuT6X/sNKKFZBqVfBVpaXH5XhdKGwUTWCOvDBnN2XZhmbAYK9Sx93VPQP+XqFA5NH
+         VrUUWpyftGpBQyMUheK6KVJmw3tOpg9OAaHEUoWSvzxV3cWDVHFjmKeireHUsUWe6dfH
+         2dkv8UHVNK+5oPPAtBVJ0zJ+bPDeJuBZawOo4bwRjCFF2GmgzXOXECnWPfJPaFeokejR
+         qSv3acqerb7gMHS0aXcM+uHFcZgHVHVkRUFOkGha8cgIN/BvFrft/unlfrWFAEHwdrlo
+         4ZJA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :message-id:reply-to:subject:in-reply-to;
+        bh=Is/Pk0UOYSbTZ52qMrZyfTmWrJCiCZntRlIOIMqRi0o=;
+        b=wgj7HWToFVe/UicLF/RiO8zwsSns53FGuFpktiLgksIK7MOVzMPF7i/zFGkAp5SHaI
+         DKqm1PybrfZUqflLYW42/6FkVT0fb60lU+iWh0KSGSdXnIl8zkv986dRQfkscMHdPotd
+         5/frCHx5FgZlDvgYWIvxY6wmC1PLsCxs2nCUQXwEctkWpak49ICr6MIzh4FQeySS7ebv
+         LXkoc2P5sq3PZ7bxkLEbdmNbfgHqrmeNjXFExlDD08p+7DaFgLxZqh8JA6SAFOPXHxjp
+         /BSiioQ715diiaapu6UyAp2qL5oZpEJGEXn7eLRuhHNOsQc1OkFGalZWg/G/UseYRhZK
+         ejqQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender4-of-o55.zoho.com (sender4-of-o55.zoho.com. [136.143.188.55])
+        by mx.google.com with ESMTPS id y23si1931476eju.228.2019.05.30.09.12.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 30 May 2019 09:12:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) client-ip=136.143.188.55;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726543AbfE3O6i (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Thu, 30 May 2019 10:58:38 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:35310 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726065AbfE3O6i (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 30 May 2019 10:58:38 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 3418FA158468C0152440;
-        Thu, 30 May 2019 22:58:33 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.439.0; Thu, 30 May 2019
- 22:58:26 +0800
-Subject: Re: [PATCH v17 02/10] ACPI: add some GHES structures and macros
- definition
-To:     "Michael S. Tsirkin" <mst@redhat.com>
-CC:     <pbonzini@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
- <20190528233859-mutt-send-email-mst@kernel.org>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <a0cad169-0dae-8525-f36f-2b88e418791e@huawei.com>
-Date:   Thu, 30 May 2019 22:58:23 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.55 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+ARC-Seal: i=1; a=rsa-sha256; t=1559232746; cv=none; 
+	d=zoho.com; s=zohoarc; 
+	b=k2z2KPrqmp1Srq50mesPhiTJq4yKfwImeLHWgBDeSV2eneeEWje1DQ5h0NhX+zzrZgbDlcUZw2TO0UXXuCHJ70nulBYIRAt51eowwrenYK/AMl2pHm8TxDgcCW3q2594v9CAUeBS623Z0R7F7JgTG3yXgKqCwmXzlPhbZtpVPjQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
+	t=1559232746; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
+	bh=Is/Pk0UOYSbTZ52qMrZyfTmWrJCiCZntRlIOIMqRi0o=; 
+	b=SBkK6LizNQdOw2HnEZqpfiF1cGKxWPlE4H+1iJphsmfEbiGBNEoemWJdhmPByMwAkhf819wk+LpFQE0GYmFxE0ilG1BTea6idlHWX3Hf+AjtzsKSXInDtjBToLMIb4YadWTMfXoupsce5R0sMCXfh8wAWEwPfql6YHjdojYMOlM=
+ARC-Authentication-Results: i=1; mx.zoho.com;
+	dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 15592327443171022.8248793888841; Thu, 30 May 2019 09:12:24 -0700 (PDT)
+In-Reply-To: <20190530143916.20255-1-alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [RFC PATCH] semihosting: split console_out intro string and char versions
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <155923274262.9187.6714348083557874693@ce79690b2cb9>
 MIME-Version: 1.0
-In-Reply-To: <20190528233859-mutt-send-email-mst@kernel.org>
 Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: j1D3k9aPakFN
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: alex.bennee@linaro.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, riku.voipio@iki.fi, qemu-arm@nongnu.org, alex.bennee@linaro.org, laurent@vivier.eu
+Date: Thu, 30 May 2019 09:12:24 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: tfk3bTCYis/r
 
-
-On 2019/5/29 11:40, Michael S. Tsirkin wrote:
-> On Tue, May 14, 2019 at 04:18:15AM -0700, Dongjiu Geng wrote:
->> Add Generic Error Status Block structures and some macros
->> definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
->> HEST table generation and CPER record will use them.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> 
-> Are these all still used? I'd rather you moved stuff to
-> where it's used.
-Ok, I will move them, thanks
-
-> 
-> 
-> 
->> ---
->>  include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 52 insertions(+)
->>
->> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
->> index f9aa4bd..d1996fb 100644
->> --- a/include/hw/acpi/acpi-defs.h
->> +++ b/include/hw/acpi/acpi-defs.h
->> @@ -224,6 +224,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
->>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
->>  
->>  /*
->> + * Values for Hardware Error Notification Type field
->> + */
->> +enum AcpiHestNotifyType {
->> +    ACPI_HEST_NOTIFY_POLLED = 0,
->> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
->> +    ACPI_HEST_NOTIFY_LOCAL = 2,
->> +    ACPI_HEST_NOTIFY_SCI = 3,
->> +    ACPI_HEST_NOTIFY_NMI = 4,
->> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
->> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
->> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
->> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
->> +    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
->> +    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
->> +};
->> +
-> 
-> If there's a single user, the best thing to do
-> is just to open-code with a comment that matches
-> spec names. It's hard to find stuff like ACPI_HEST_NOTIFY_GSIV
-> in a spec.
-ok, I will do it, thanks
-
-> 
->> +/*
->>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
->>   */
->>  #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
->> @@ -400,6 +419,39 @@ struct AcpiSystemResourceAffinityTable {
->>  } QEMU_PACKED;
->>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
->>  
->> +/*
->> + * Generic Error Status Block
->> + */
->> +struct AcpiGenericErrorStatus {
->> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
->> +    uint32_t block_status;
->> +    uint32_t raw_data_offset;
->> +    uint32_t raw_data_length;
->> +    uint32_t data_length;
->> +    uint32_t error_severity;
->> +} QEMU_PACKED;
->> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
->> +
->> +/*
->> + * Masks for block_status flags above
->> + */
->> +#define ACPI_GEBS_UNCORRECTABLE         1
->> +
->> +/*
->> + * Values for error_severity field above
->> + */
->> +enum AcpiGenericErrorSeverity {
->> +    ACPI_CPER_SEV_RECOVERABLE,
->> +    ACPI_CPER_SEV_FATAL,
->> +    ACPI_CPER_SEV_CORRECTED,
->> +    ACPI_CPER_SEV_NONE,
->> +};
->> +
->> +/*
->> + * Generic Hardware Error Source version 2
->> + */
->> +#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
->> +
->>  #define ACPI_SRAT_PROCESSOR_APIC     0
->>  #define ACPI_SRAT_MEMORY             1
->>  #define ACPI_SRAT_PROCESSOR_x2APIC   2
->> -- 
->> 1.8.3.1
-> .
-> 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDUzMDE0MzkxNi4yMDI1
+NS0xLWFsZXguYmVubmVlQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8g
+aGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9y
+ZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUkZDIFBBVENIXSBzZW1paG9z
+dGluZzogc3BsaXQgY29uc29sZV9vdXQgaW50cm8gc3RyaW5nIGFuZCBjaGFyIHZlcnNpb25zClR5
+cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDE5MDUzMDE0MzkxNi4yMDI1NS0xLWFsZXguYmVubmVl
+QGxpbmFyby5vcmcKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJl
+di1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
+Zi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQg
+Y29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3Bh
+dGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0
+dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAg
+ICAgICAgICBwYXRjaGV3LzIwMTkwNTMwMTQzOTE2LjIwMjU1LTEtYWxleC5iZW5uZWVAbGluYXJv
+Lm9yZyAtPiBwYXRjaGV3LzIwMTkwNTMwMTQzOTE2LjIwMjU1LTEtYWxleC5iZW5uZWVAbGluYXJv
+Lm9yZwpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjk4YzU1N2IzNTcgc2VtaWhvc3Rp
+bmc6IHNwbGl0IGNvbnNvbGVfb3V0IGludHJvIHN0cmluZyBhbmQgY2hhciB2ZXJzaW9ucwoKPT09
+IE9VVFBVVCBCRUdJTiA9PT0KRVJST1I6IHNwYWNlcyByZXF1aXJlZCBhcm91bmQgdGhhdCAnIT0n
+IChjdHg6VnhWKQojNDc6IEZJTEU6IGh3L3NlbWlob3N0aW5nL2NvbnNvbGUuYzo1NjoKKyAgICB9
+IHdoaWxlIChjIT0wKTsKICAgICAgICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5p
+bmdzLCAxNDcgbGluZXMgY2hlY2tlZAoKQ29tbWl0IDk4YzU1N2IzNTcwOCAoc2VtaWhvc3Rpbmc6
+IHNwbGl0IGNvbnNvbGVfb3V0IGludHJvIHN0cmluZyBhbmQgY2hhciB2ZXJzaW9ucykgaGFzIHN0
+eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUg
+ZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQ
+QVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhp
+dGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3Bh
+dGNoZXcub3JnL2xvZ3MvMjAxOTA1MzAxNDM5MTYuMjAyNTUtMS1hbGV4LmJlbm5lZUBsaW5hcm8u
+b3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
+IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
+c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

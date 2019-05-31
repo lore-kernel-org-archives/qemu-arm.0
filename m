@@ -1,77 +1,87 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp454386pjq;
-        Fri, 31 May 2019 03:44:35 -0700 (PDT)
-X-Received: by 2002:a67:6f87:: with SMTP id k129mr4869811vsc.225.1559299475775;
-        Fri, 31 May 2019 03:44:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559299475; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp462253pjq;
+        Fri, 31 May 2019 03:53:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwn1A4vgaaYKdhltG4xVp1QpQbyGMAr8QMS+hrQuYw+A/dKghPXU+aMj9NLiwduzlpmhLoD
+X-Received: by 2002:a9d:6499:: with SMTP id g25mr1272988otl.184.1559299988039;
+        Fri, 31 May 2019 03:53:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559299988; cv=none;
         d=google.com; s=arc-20160816;
-        b=HCDLDgzwSOuEJBTaTH6dwKuTmNr8f2O8qw8UwPzmjnY1wQvSy9zR9YohNdAyRQssXi
-         fz2Pc7ePps+RYkUh0txwddn+d2xNW1uMEwDKaaiQIMo8anN4jXbqeCFIf5OVIvlJahz/
-         p89MtnMx1YBnUnaO22jlK3sX6uIVJVj713aA0r+WipGFhb2MmvJiqHyNwxyXYVW+Ix7T
-         HZVXdlW/bu96vvpUARnMoN25a6B/aTDdDY+jFY9iCaCAyAx8QS8wy1yHoMPSDADU1Yyu
-         IkM4ZcQsAwNgkMCaw2py+osRYzncSr1vayqln4oyt666eRfN+941RzowCtF0VaLo1qDF
-         OUTg==
+        b=MLCk7+K/jH1oDyiP8ja1tT+iqJFHQa8h+WF0xvn8REsw9EJYwBjgqUjIn2pezUG8Us
+         b/mQ6SFoMwtlF4oR4K/NWdLPPJfi5JsCP7eqUjB6KLQ4hEer5uSkoDyDg9OVVx07ysoP
+         pEDqATVzIigdJHwQDIjOYTTme+7plYrjI/GRlgzDBbfdb7ZGLhlpmdKbWkT/FdXm3rPa
+         Yly6vMgoISR49VKoh4dU83Q6jI125vVWHWDbnhqidiblVnhPDaj/F92Cc6UEYa4vxLHL
+         e2IteTH+l1qrW3by3R3OwJMW74PMSJlA7sgIOimY/vbqfhmYUAEWK+dRARSkGgWV6Rvq
+         ZBVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=EdhB9JH3Hwhf79ZfXwKSc7iAncNQo6k0AQsUx2P2i0A=;
-        b=r5QgIW3CxYZRi67xFmvtml6E4ag1Ypvx8RvPTQzdKIRdJRIxPKuwfM/wVZBRHpWq5p
-         hnLOruUT/bVYTr3HfEj/ZljBr7vAbJMF//kx1qOl2lloywWpRh0FTTI8PsDEasl+H9Pe
-         cD5jRN4UeyN1uCwabZntaE+c0mnb5vq78IPn7NFvHLcCjIsScAUc+QiGHphP/gTjVbbW
-         hYrpOTrqSbH3gaMfiEyta43C2jyvWSOs02YsCS+QtDV+mnF1MtISRYYvNCO/8HsNcyBR
-         xECqI9L9w89TrKzbcE60MF1Gm0v44s2dllEqWCQacnAY/gu/TvDdQApHmtqwmym2Dc7a
-         DIuw==
+        h=thread-index:thread-topic:content-transfer-encoding:mime-version
+         :subject:references:in-reply-to:message-id:cc:to:from:date;
+        bh=kEOjmzahp2Epeo+ADfrR4MR/mLordC7teYG9IdyRtSE=;
+        b=viEgc9+1ArLi5q37MdbW7pNMYBNMMlEhH1HimXFhBR6hMtpvsERP+UAfpcro9MSkTf
+         OMrCShURrG1mx1ARWXYcl2J19x+JVVNuqVCK91soZm2dGlFV6OU5NADCJnI/Yc7+Wkaz
+         Z2H8k19upCW8PA4NTR4VONGvZE90OhSskhMYR3xrqPW9s3g1HyfI3S03T3vWEd42lZhP
+         AjxK4/YCbvXLIng7YRk1t0+uDywW4Nd2c/T4pJ8AV8UMMOLRhox9x5CatvcaBbbRJzy+
+         DL0/f6UliTYgqTE7aJaQ27FrbGI1g2iKgrhzkDtAkTWGDMZmoawRIXi19wCp/KgAWd4+
+         Jzhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of pmathieu@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pmathieu@redhat.com;
+       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pmathieu@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id o1sor2737171ual.4.2019.05.31.03.44.35
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 31 May 2019 03:44:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pmathieu@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Return-Path: <mrezanin@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id q12si2890193otn.260.2019.05.31.03.53.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 31 May 2019 03:53:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of pmathieu@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pmathieu@redhat.com;
+       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=EdhB9JH3Hwhf79ZfXwKSc7iAncNQo6k0AQsUx2P2i0A=;
-        b=Hip4Eyzg0DgCm425nGQudxY1JUf2HXuPi+ZGJB+g9jRbpoe2ITeFxU9c8B1ekSEEgP
-         DuYZPObGOZZD52mQhIUzIHJyKUnw+XpukkmeF1vRaZWIRrYQVNYf66160Ud11xm0sPT2
-         5rSRQb7jSjr7qaPtyEtqKf2qRRbQVJlPMnywWUXvc/Ma4j7DwfnUn6FFXbDXzSDXj6O1
-         TnWxO1fTvPtxYAEwj9zOeSkdhnPWrIBzjMVESloTShpIhjrc1+Vc9+FXQivuaWVjDs7U
-         9X0rTLUko8Lb5llGemRKByXiedH9lAihhtulyHieg6ufkLDgYKDF3jD5KmAX/dgijFZe
-         UzOQ==
-X-Gm-Message-State: APjAAAWfu5UdleyXdck/GrcnHbPgeQDIjXxss70tAE4F163FhgdJMBq4
-	oiue8tHk0ZxXVi0rvaQQhbNONqT92GiaeNCktglQn2B/5sI=
-X-Google-Smtp-Source: APXvYqzR2Onq3HkFNqNS1n0k3XRe4xn2VvgKtnTXWnExfgb1pn8jFrluOvZyro1zqAdEkRgLFm41NsC2H/f7+IJgigM=
-X-Received: by 2002:ab0:698f:: with SMTP id t15mr4914986uaq.34.1559299475418;
- Fri, 31 May 2019 03:44:35 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190514155301.16123-1-alex.bennee@linaro.org>
- <20190514155301.16123-7-alex.bennee@linaro.org> <20190531091204.tjmq622gw457xbdr@lws.brq.redhat.com>
- <891973f7-2f2b-ad59-70bf-6069382fd977@redhat.com>
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 40A509FFDC;
+	Fri, 31 May 2019 10:53:07 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com (colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3183E5C231;
+	Fri, 31 May 2019 10:53:07 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com (zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id B3BE61833001;
+	Fri, 31 May 2019 10:53:06 +0000 (UTC)
+Date: Fri, 31 May 2019 06:53:06 -0400 (EDT)
+From: Miroslav Rezanina <mrezanin@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, 
+	Riku Voipio <riku.voipio@iki.fi>, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
+	Aleksandar Markovic <amarkovic@wavecomp.com>
+Message-ID: <1114171465.25499225.1559299986641.JavaMail.zimbra@redhat.com>
 In-Reply-To: <891973f7-2f2b-ad59-70bf-6069382fd977@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Fri, 31 May 2019 12:44:24 +0200
-Message-ID: <CAP+75-UfBN0SKrtcDDhp+anbbFz7u0AjmM=7robpeEPQC6fhKw@mail.gmail.com>
+References: <20190514155301.16123-1-alex.bennee@linaro.org> <20190514155301.16123-7-alex.bennee@linaro.org> <20190531091204.tjmq622gw457xbdr@lws.brq.redhat.com> <891973f7-2f2b-ad59-70bf-6069382fd977@redhat.com>
 Subject: Re: [Qemu-devel] [RFC PATCH 06/11] target/arm: use the common
  interface for WRITE0/WRITEC in arm-semi
-To: Miroslav Rezanina <mrezanin@redhat.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Laurent Vivier <laurent@vivier.eu>, Aleksandar Markovic <amarkovic@wavecomp.com>
-Content-Type: text/plain; charset="UTF-8"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: DYTAWWR84GY8
+X-Originating-IP: [10.40.204.19, 10.4.195.20]
+Thread-Topic: target/arm: use the common interface for WRITE0/WRITEC in arm-semi
+Thread-Index: FMkgSbddiIEaW1q7rvUruGFdTIErjw==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Fri, 31 May 2019 10:53:07 +0000 (UTC)
+X-TUID: 9gX9/s8oTe8l
 
-On Fri, May 31, 2019 at 12:42 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
+
+----- Original Message -----
+> From: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
+> To: "Miroslav Rezanina" <mrezanin@redhat.com>, "Alex Benn=C3=A9e" <alex.b=
+ennee@linaro.org>
+> Cc: "Peter Maydell" <peter.maydell@linaro.org>, "Riku Voipio" <riku.voipi=
+o@iki.fi>, qemu-devel@nongnu.org,
+> qemu-arm@nongnu.org, "Laurent Vivier" <laurent@vivier.eu>, "Aleksandar Ma=
+rkovic" <amarkovic@wavecomp.com>
+> Sent: Friday, May 31, 2019 12:42:46 PM
+> Subject: Re: [Qemu-devel] [RFC PATCH 06/11] target/arm: use the common in=
+terface for WRITE0/WRITEC in arm-semi
+>=20
 > Hi Miroslav,
->
+>=20
 > On 5/31/19 11:12 AM, Miroslav Rezanina wrote:
 > > On Tue, May 14, 2019 at 04:52:56PM +0100, Alex Benn=C3=A9e wrote:
 > >> Now we have a common semihosting console interface use that for our
@@ -123,7 +133,8 @@ On Fri, May 31, 2019 at 12:42 PM Philippe Mathieu-Daud=C3=A9
 > >> +#include "qemu.h"
 > >> +
 > >> +int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr=
-, int len)
+,
+> >> int len)
 > >> +{
 > >> +    void *s =3D lock_user_string(addr);
 > >> +    len =3D write(STDERR_FILENO, s, len ? len : strlen(s));
@@ -135,13 +146,13 @@ On Fri, May 31, 2019 at 12:42 PM Philippe Mathieu-Daud=C3=A9
 > >> --- a/target/arm/arm-semi.c
 > >> +++ b/target/arm/arm-semi.c
 > >> @@ -27,6 +27,7 @@
-> >>
+> >> =20
 > >>  #include "cpu.h"
 > >>  #include "hw/semihosting/semihost.h"
 > >> +#include "hw/semihosting/console.h"
 > >>  #ifdef CONFIG_USER_ONLY
 > >>  #include "qemu.h"
-> >>
+> >> =20
 > >> @@ -314,32 +315,12 @@ target_ulong do_arm_semihosting(CPUARMState *env=
 )
 > >>              return set_swi_errno(ts, close(arg0));
@@ -157,7 +168,8 @@ On Fri, May 31, 2019 at 12:42 PM Philippe Mathieu-Daud=C3=A9
 > >> -          /* Write to debug console.  stderr is near enough.  */
 > >> -          if (use_gdb_syscalls()) {
 > >> -                return arm_gdb_syscall(cpu, arm_semi_cb, "write,2,%x,=
-1", args);
+1",
+> >> args);
 > >> -          } else {
 > >> -                return write(STDERR_FILENO, &c, 1);
 > >> -          }
@@ -187,23 +199,38 @@ On Fri, May 31, 2019 at 12:42 PM Philippe Mathieu-Daud=C3=A9
 > >> 2.20.1
 > >>
 > >>
-> >
+> >=20
 > > Hi Alex,
-> >
+> >=20
 > > this patch breaks build for softmmu target when CONFIG_SEMIHOSTING is n=
-ot enabled as qemu_semihosting_console_out
-> > is not defined in such case - neither linux-user/arm/semihost.c nor hw/=
-semihosting/console.c compiled and function
+ot
+> > enabled as qemu_semihosting_console_out
+> > is not defined in such case - neither linux-user/arm/semihost.c nor
+> > hw/semihosting/console.c compiled and function
 > > is not in stubs/semihost.c
-
-linux-user/arm/semihost.c is not built on softmmu-only build.
-
+>=20
 > Kinda funny, I noticed the same issue at the same time, and was chatting
 > with Alex about it.
->
+>=20
 > I prepared a patch expliciting we can not disable CONFIG_SEMIHOSTING on
 > the MIPS arch. Would that work for you?
->
+>=20
 > Regards,
->
+>=20
 > Phil.
+>=20
+
+Hi Phil,
+
+we've got problem with build for AArch64 where SEMIHOSTING cannot be disabl=
+ed too:
+
+target/arm/helper.c use do_arm_semihosting=20
+
+Mirek
+
+
+
+--=20
+Miroslav Rezanina
+Software Engineer - Virtualization Team Maintainer

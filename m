@@ -1,121 +1,99 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp732272pjq;
-        Fri, 31 May 2019 07:38:15 -0700 (PDT)
-X-Received: by 2002:aca:a846:: with SMTP id r67mr106189oie.104.1559313495608;
-        Fri, 31 May 2019 07:38:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559313495; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp818657pjq;
+        Fri, 31 May 2019 08:47:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwGmLa26S5UgyWc4un7n1bS1y6DEhLNVzIaDu4tI3JDkOzojz86mR2Vd6Tm0C1v1O63pQ40
+X-Received: by 2002:aca:3305:: with SMTP id z5mr6439428oiz.141.1559317679186;
+        Fri, 31 May 2019 08:47:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559317679; cv=none;
         d=google.com; s=arc-20160816;
-        b=o64kdQuSxODJC444trnY9coG7aQU3F5oLHC1k6hXj6r9vZIDbn/6HRtWEpUoqsMaq9
-         V7LdLOddohAxcQlWoez/P7I+GfsVlhlRuybRCDsfyTwOan0UGFi8OxM/3RlF6aYhYVQl
-         uPU3NsIWZ4DAUOKrAQKUc2TPM2p3bH5e7VrEKDorsBpSpVj1ws4L3tgJkVmwBeIy58WX
-         IKsfrFt14NIXWYZJ/GVDPPeiy/uLLNFbHmNwi1hwDFqfOXYBJ9o0H/NZdfAXR+7Y76LX
-         Rto/tTAkuignG1R/H9bQ7Ym15C+PeqdavuP42U0pN1s27XMBf9QJNGMIFkU6NhzhYGpK
-         6DyA==
+        b=CeYFswqGsS8OvWuy644xdSDK+GDV7/YjJprL35bUxzbJRtp6na5E/PRHPvGWyqvj7u
+         SXiXANYozGBBay1RuMS3hfRWsGJnabU0mCKCVkL3V0TeURRW0xrLeMQWZipbehRU9NY0
+         PfB0GrZ/SAk04q/0q2iAo+7V7+mxqsVX41q9QQz7SW76GR4ubdFp/Omv1Ji4sVqzmADU
+         cRHbHLHpXxGf2WXURI897rdnIeWGkHJxoO0kmDdRoe+ANkx503JaH0WNVUWHmDF8Pxei
+         5HSxra41qzHRx7Ezg/HxJctkFuS3cb3YiCdcqKVS6zutUE33Walo2ZalLYrzzgbdaQxS
+         K33g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=k9imRTc2KnybCNJm8nEbnNoJcOizofvIciZMP+z2kNg=;
-        b=J1JX+0Bo99W9sG1AuBPY0MBXbWwCkEuN1TMKWQ4ftsG8bsyrg6J/vfmYZ8gHkEnmYc
-         7pWFHbri7CmeeZqz6HvQTSt6IKKJ2z/0jHPwALdb8byffLbqbe2ClDnA6F1VWdWEvqEl
-         gHPXyRyADAPwf/Z7dPImo3urUbGFVhs+5E9Ww5gtsJCCQu1KbX47u0gfzyjmBv24RkSu
-         Q0vNGpU2gnkedusUCQPh9qcnLygW/XIpWinIKfmr40p02ePooQ7sVwLOW7Ah2wShp9Hp
-         VlPoFqy8PhsxOBRRwsV/Akoan66hlpH4KgPyjL5VCLTqqiMDe6HJ/RqvyS8Jt3iv3bIT
-         jx5g==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=d1sbZbQD6q1/oiEkYuLFJATbQtYLDDbBzmcYQH20bTU=;
+        b=UnleZgnX8vWRRE5arLsYcvFEOOTJr6PMXjnzqaQADk+MwaBSB5NsM2SsjBJYqhU9mM
+         LY6YhD/4S2JEStfxHnBoTAIPfLyVXzY1/k7b2MBZzbqj6UWCypLbKjRDYVEGBUgGl9U3
+         ZT4IjIeWWI6j6F25zDYee9y8/h7e8VmFn1vzUvP2mtqwjdXyt0mLMkBTHLZ+tM5TE/bP
+         pxbsiSxodFDY644+NPjZKhTbAX5emwGTdrmWzdUz6JN2J/PoTUfd34f4hfmYPUkpPC0F
+         Sck7NtS6nBqurhtKuzNgG4+e9s1zIyCWoisu5WvdfZmpdUJ8nIe+rTUcWVKcRTsnSPW/
+         yh/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="l5GwML/0";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r21sor3001141otn.151.2019.05.31.07.38.15
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 31 May 2019 07:38:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id c186si3305353oif.170.2019.05.31.08.47.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 31 May 2019 08:47:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="l5GwML/0";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=k9imRTc2KnybCNJm8nEbnNoJcOizofvIciZMP+z2kNg=;
-        b=l5GwML/0Ioc3k7JrOsYxbumFbW0IrpF0yS90LJB04ot0Gzyo6mJbGs/qFJ2w786oez
-         jmP39V80UG3ratuDzfJwkRF1TJeT3VQ8j9BSIjcC58nvjTg0X8VeyasPGdKELawNDIf8
-         fRrhnh7xibhLL9DoefhvJ0EjlpI12/PRKu1hvK6FuJfUQ1HP+8jSh4Wa6EDOax56L50o
-         DBTupM6kgylEORr+0ukqitRRw9bTBqIfOsYAjrJcJO9xrVR8PsHgmFs5LNEkHgz9pIHC
-         imtX7MmeeXxzVUVp9CTpwi8FUkdGAQ8foKU0Czm+lDV9ZBZ81DNborBoP3VkpLscKvl8
-         k+ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=k9imRTc2KnybCNJm8nEbnNoJcOizofvIciZMP+z2kNg=;
-        b=O1QGJ9nJQWrD178eZSonAODUm6B1J+ZC9/oBhGhZK9mfavBA4R8qkp0qjLqWKvGKgs
-         QStkOBingy0SFnm0JwsXpMCZmwP1/PIpei5V8AL1H7kGs4Z0e02aLJQiG9FAP6h83GNt
-         ez3jFTKuFu66HyI0jqmdikK9GtfN01AKn978g8bCzD7q1RJ82WYeQU3vKX8bTQsdQSLb
-         NT29ZMHt9Y63vhMOExo1OTlYPoOg2mPR2FvwZDxZiWxFsi2hbg5UzXUxzjTLZ2UQqMDV
-         lQRludoI4nHELwzClVIL89gMqnnq+aMYDKyJPXZU9bNTCA1KmngTAXPnM2w6As9dEGhK
-         062w==
-X-Gm-Message-State: APjAAAUcuYOPuM0RT491Cv99OwZLY0hckG5Wql/1MDC1HmnohaIw4Pas
-	pheGBFHNcnT1gS0k04Wzv86uhA9ESWmG84Xivkl1RsB1tBeoOg==
-X-Google-Smtp-Source: APXvYqy3g/5VQtwlPGzXkI2xmSGFdP7hk1u+DgG8xuvSvccJTitBX2pUadayHgfTEGkB88j+nDPKKQfbODwYeQDzhRQ=
-X-Received: by 2002:a9d:7245:: with SMTP id a5mr2193778otk.232.1559313495087;
- Fri, 31 May 2019 07:38:15 -0700 (PDT)
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 90E0F30C1FF6;
+	Fri, 31 May 2019 15:47:49 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-73.brq.redhat.com [10.40.204.73])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D77C41001E6F;
+	Fri, 31 May 2019 15:47:38 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Miroslav Rezanina <mrezanin@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
+Date: Fri, 31 May 2019 17:47:33 +0200
+Message-Id: <20190531154735.20809-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190514155301.16123-1-alex.bennee@linaro.org>
- <20190514155301.16123-7-alex.bennee@linaro.org> <20190531091204.tjmq622gw457xbdr@lws.brq.redhat.com>
- <87sgsu51bd.fsf@zen.linaroharston> <833530119.25503992.1559302089822.JavaMail.zimbra@redhat.com>
- <874l5aahmx.fsf@zen.linaroharston> <627031963.25549126.1559311169316.JavaMail.zimbra@redhat.com>
- <87o93i8zrh.fsf@zen.linaroharston>
-In-Reply-To: <87o93i8zrh.fsf@zen.linaroharston>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 May 2019 15:38:04 +0100
-Message-ID: <CAFEAcA9UGSM_eNFErNHtx4vqosgTyPJ85mQ2t=QnnkpnGN7rDg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 06/11] target/arm: use the common
- interface for WRITE0/WRITEC in arm-semi
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Miroslav Rezanina <mrezanin@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>, 
-	Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: h+HMTCj+7K7M
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.43]); Fri, 31 May 2019 15:47:58 +0000 (UTC)
+X-TUID: bEQGFpO65dNz
 
-On Fri, 31 May 2019 at 15:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> Miroslav Rezanina <mrezanin@redhat.com> writes:
-> >From: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
-> >> OK - so from the upstream source tree CONFIG_SEMIHOSTING is still =3Dy
-> >> (but I can see most of them are now =3Dn). Isn't the simplest solution=
- to
-> >> fix-up your version of the default_config file to include SEMIHOSTING?
-> >>
-> >
-> > It's fix but it goes against our policy of handling CONFIG options so w=
-e
-> > would prefer to have this fixed - otherwise there's no meaning in havin=
-g
-> > config option if you can't disable it.
->
-> Is that what it means? For my part it means we don't build in
-> CONFIG_SEMIHOSTING for the arches that don't need it (which we were
-> before). Granted it only really simplified the vl.c parsing and dropped
-> support for semihosting for the linux-user targets (except ARM).
+Amusingly Miroslav and myself hit this issue at the same time.
 
-Yes, that would be my interpretation of it. If we had
-a 'config FOO' stanza for CPUs, then Arm CPUs would
-"select SEMIHOSTING". If RedHat would like it to be possible
-to build Arm CPUs without CONFIG_SEMIHOSTING then they're
-free to submit patches for that, but that's a new feature
-upstream doesn't currently support, not a bug in upstream.
-(Also I'd be a bit dubious because it means that previously working
-guest setups that use semihosting will break.)
+Currently there is no way to pass a CONFIG_X to sources in target/,
+except via a Makefile rule (and filling with stubs).
 
-PS: if we had a 'config FOO' stanza for CPUs that would also
-allow us to say "building Arm CPUs requires the NVIC" and
-similarly for things which in QEMU are devices but which are
-architecturally tightly-coupled non-optional parts of the CPU.
+Paolo says this is on purpose, CONFIG_X selectors are meant for
+devices and we try to avoid having config-devices.mak in
+config-target.h.
 
-thanks
--- PMM
+Some know (arch-specific) limitations are:
+
+- MIPS ITU is accessed by coprocessor instr (ISA feature)
+- MIPS timer is accessed by coprocessor instr (ISA feature)
+- MIPS semihosting (ISA feature?)
+- ARM semihosting (ISA feature?)
+- ARMv7 NVIC (device)
+
+This series attempt to fix this the most trivial way, adding
+stubs for unreachable code.
+
+Philippe Mathieu-Daudé (2):
+  target/arm: Add stubs to build with CONFIG_SEMIHOSTING disabled
+  target/mips: Add stubs to build with CONFIG_SEMIHOSTING disabled
+
+ target/arm/Makefile.objs      |  3 ++-
+ target/arm/arm-semi-stubs.c   | 21 +++++++++++++++++++++
+ target/mips/Makefile.objs     |  3 ++-
+ target/mips/mips-semi-stubs.c | 23 +++++++++++++++++++++++
+ 4 files changed, 48 insertions(+), 2 deletions(-)
+ create mode 100644 target/arm/arm-semi-stubs.c
+ create mode 100644 target/mips/mips-semi-stubs.c
+
+-- 
+2.20.1

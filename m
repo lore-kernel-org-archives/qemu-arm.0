@@ -1,115 +1,138 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp880896pjq;
-        Fri, 31 May 2019 09:40:33 -0700 (PDT)
-X-Received: by 2002:a1c:7711:: with SMTP id t17mr1061937wmi.111.1559320833309;
-        Fri, 31 May 2019 09:40:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559320833; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp888522pjq;
+        Fri, 31 May 2019 09:47:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4GzwI8RZ7m+O9vSz5wuZFaZ9fFEewgb0bEx5RlvjRGxMDB1Oq7pvr0Xc6PcIge/8vYKXW
+X-Received: by 2002:aca:47d5:: with SMTP id u204mr6388876oia.83.1559321249976;
+        Fri, 31 May 2019 09:47:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559321249; cv=none;
         d=google.com; s=arc-20160816;
-        b=z8+h41U0IOsOA9bXnOSp3Qa9EELU/aAewb3G5LsOQGKIPHSkP/hrnhcZvrQSNanxjD
-         IXYhWHH57POxSbAgyPTote37qNc/IkIfj8T1+32Xd60uxIjrS7j/QI4X79V5VjKX5qhF
-         7PrHy63p2xiPuoq0gLqNkiEHrbMJYfF2APbCr7vbkgBsdA84tDJqC0u9afKyJbBnTOdJ
-         qTsN7xRIt8Q2Ov6I4dEW/ADI+A9ZHmDfKmoYgKfoCXk91BYgfvjCOT5T7Xtt35AlJStD
-         bI2CyP0sRgE+xILcUdaQddsUL8Uu9c9j3LefQAUdZjI+v+XMkbPQNYJTZxBXfKXApxyw
-         kLEw==
+        b=clSc3+1+c8YRspl2sPK8cOvZhDyMDDS2qmQ4L7JNuP23a+K40ETV2G6ClpW7WVV34L
+         mKd9YY7ldLtopcfuG7JX9IBat/8i1CiV8iGKUr3PE+pvq+zUjByNDMuxyOHODibbPF7u
+         O1FhhTM8QGQoHjT0x5oH2dElT+WSftTvzlbD0MqnzeOIFvbiEiDFpFSIfXr0IPSEwzQo
+         136HkT7DMKsYsJqNpIvgyrsD/Vt89cztkg7j5k490/0ZvCz+zkdaCF6uYl/kL9dnax8x
+         kuCUB4hWDPNhCtxRm3S4akwwg9HBNi4hTol43J3RZMQ98KiYBAf2A9ufb40B25fzxIpd
+         7ALw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=arjCHb58x12BUOgTbM8YeO65qdXrGPkTtcxs9sdPUP8=;
-        b=WMnM3pdPJ2LQDOxQrZZa+S2l2OzVPHvge+DMC/gMvsDlpJQRiH3mGkOJsyXwKiPL0U
-         IhX7al2W6F2yqtzz76BdK17qlUw2b9nA9Zc0+vzFGzojWjQgxOCk8VthgnknEPSUN4Me
-         I22MZn1WWi6inwTTd1K6SvN+gnp112TdvLUE9FfOG8Iv+OGHU0bIbkw37Enp0/1h8W2Z
-         WW2D9TtbOVDTwDPaFeSMONh4eRGmLfXQpZCyVvWh8qG6sszoKgMXB+ELE4rj4fBIUDXE
-         Lgu0ZrqNClP5Yd1GsBFQjLGWKQfCzgVq0Ej7vXNcj1h3tURJFi2M+2FLDhoVcS4TKAtg
-         2H4Q==
+        h=thread-index:thread-topic:content-transfer-encoding:mime-version
+         :subject:references:in-reply-to:message-id:cc:to:from:date;
+        bh=TjcPmDe3Vb/1PaI2QVSsOWw6zHO6bB9huEHctAr1Dac=;
+        b=SqWtYKF+yxOagvKXkd5KtY2RZjO6hmZUPCCB9+Nfrv3tbxzp1xz3hh/JyB6dgLunbB
+         o6/8BI0ydzZ3vi6EEPfzoBUE/8gnhePWpVvIeOVfqNeUG1qo+7WlBpGma9JCya3g6a84
+         KvGgV+3UH1cpCr87svwITEKH1iiuiBvkbLPvbwYkUscYStY6oY8XFILgz1jI9c1SwqYz
+         XlAroZtDVgNZAFLtLkLeVVZnJ+agdEfHUqLjFUoMDm6FibpjZAxelDdRP51O6VqoaEeI
+         v9OCK3vDeu4D8gk5BMNLP0PSZ/rt5IOwXYkx2FFKIRqOqTZfVzjjmlKai36QqcqG54gG
+         8ThQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v17sor3812324wrn.11.2019.05.31.09.40.33
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 31 May 2019 09:40:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Return-Path: <mrezanin@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id i16si3622973otk.239.2019.05.31.09.47.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 31 May 2019 09:47:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=arjCHb58x12BUOgTbM8YeO65qdXrGPkTtcxs9sdPUP8=;
-        b=JBUGe7b0oGQ/5H3w22KQoWZGK1TWmFaXfiUZu4SYQaJUtllKrJgNP/W7MfNERAmp5Q
-         5LBgRAeif1kQTqGHmmIo2ifNNeS32KoT2RPqMezVAGdN+xzRK790kyuafwank9dl8JWT
-         u4jVAfn9q69mqIRX2zToujDzjOcV+4VzgroJAGkswqQOEkj/+kN29Y5E+uje8Pza5hDj
-         jjY1hN2n8gb4ELuh/t+1zkXFmZlKfrDGkX/5d3yotsLZCUJ08ZjlPZMqq2/KPk40jvb8
-         CZXP/QaZibEy/0qEbswOqMR3jCerEdK1FQ48z/Wcp3P/PPQVYNF4+m3mIbFBdfKE4Da3
-         BDNA==
-X-Gm-Message-State: APjAAAWAhBjDvyRAUYy/CytdJ9HGfo3Mg2kwkds60aRZvb6l6yGFXVRQ
-	HhzQGVTQ+WBK8g0l+ttBybac6g==
-X-Google-Smtp-Source: APXvYqwi1HcbCpieRvy0CirRtDBOMrahE6N+jE6vyLbnWCHdM9n9yBoOSZEoUNXb5Y6Bw+7yl0gIFA==
-X-Received: by 2002:adf:e841:: with SMTP id d1mr7340562wrn.204.1559320832943;
-        Fri, 31 May 2019 09:40:32 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.43] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
-        by smtp.gmail.com with ESMTPSA id u9sm13705282wme.48.2019.05.31.09.40.31
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Fri, 31 May 2019 09:40:32 -0700 (PDT)
-Subject: Re: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9F8E2309C001;
+	Fri, 31 May 2019 16:47:24 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com (colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A5B1D7E905;
+	Fri, 31 May 2019 16:47:23 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com (zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 3A7B518363C0;
+	Fri, 31 May 2019 16:47:22 +0000 (UTC)
+Date: Fri, 31 May 2019 12:47:18 -0400 (EDT)
+From: Miroslav Rezanina <mrezanin@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Miroslav Rezanina
- <mrezanin@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-arm <qemu-arm@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Samuel Ortiz <sameo@linux.intel.com>,
- Rob Bradford <robert.bradford@intel.com>
-References: <20190531154735.20809-1-philmd@redhat.com>
- <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com>
-Date: Fri, 31 May 2019 18:40:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>, 
+	Laurent Vivier <laurent@vivier.eu>
+Message-ID: <1635661039.25604600.1559321238712.JavaMail.zimbra@redhat.com>
+In-Reply-To: <CAFEAcA9UGSM_eNFErNHtx4vqosgTyPJ85mQ2t=QnnkpnGN7rDg@mail.gmail.com>
+References: <20190514155301.16123-1-alex.bennee@linaro.org> <20190531091204.tjmq622gw457xbdr@lws.brq.redhat.com> <87sgsu51bd.fsf@zen.linaroharston> <833530119.25503992.1559302089822.JavaMail.zimbra@redhat.com> <874l5aahmx.fsf@zen.linaroharston> <627031963.25549126.1559311169316.JavaMail.zimbra@redhat.com> <87o93i8zrh.fsf@zen.linaroharston> <CAFEAcA9UGSM_eNFErNHtx4vqosgTyPJ85mQ2t=QnnkpnGN7rDg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [RFC PATCH 06/11] target/arm: use the common
+ interface for WRITE0/WRITEC in arm-semi
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: jY66XuFT2ZI2
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.40.204.19, 10.4.195.14]
+Thread-Topic: target/arm: use the common interface for WRITE0/WRITEC in arm-semi
+Thread-Index: Okq1lp6pyXAlhtQxliyHe5IuBhqJCA==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Fri, 31 May 2019 16:47:24 +0000 (UTC)
+X-TUID: o1SHdBCF5CM/
 
-On 5/31/19 6:21 PM, Peter Maydell wrote:
-> On Fri, 31 May 2019 at 16:47, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Amusingly Miroslav and myself hit this issue at the same time.
->>
->> Currently there is no way to pass a CONFIG_X to sources in target/,
->> except via a Makefile rule (and filling with stubs).
->>
->> Paolo says this is on purpose, CONFIG_X selectors are meant for
->> devices and we try to avoid having config-devices.mak in
->> config-target.h.
-> 
-> ...but some things in target/ are devices (like the Arm CPUs,
-> which inherit from TYPE_DEVICE).
-> 
-> Is there a way we can have a Kconfig fragment that expresses
-> "if you asked for an Arm CPU then this should 'select SEMIHOSTING'" ?
 
-Yes, but inversely, we can also deselect a feature, and all features
-that requires it get deselected. My guess is Miroslav is building a
-KVM-only QEMU, but upstream does not allow to build ARM without TCG.
 
-I'll see what happened to Samuel series "Support disabling TCG on ARM"
-and see if it can be salvaged:
-https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
+----- Original Message -----
+> From: "Peter Maydell" <peter.maydell@linaro.org>
+> To: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
+> Cc: "Miroslav Rezanina" <mrezanin@redhat.com>, "QEMU Developers" <qemu-de=
+vel@nongnu.org>, "Riku Voipio"
+> <riku.voipio@iki.fi>, "qemu-arm" <qemu-arm@nongnu.org>, "Laurent Vivier" =
+<laurent@vivier.eu>
+> Sent: Friday, May 31, 2019 4:38:04 PM
+> Subject: Re: [Qemu-devel] [RFC PATCH 06/11] target/arm: use the common in=
+terface for WRITE0/WRITEC in arm-semi
+>=20
+> On Fri, 31 May 2019 at 15:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
+rote:
+> > Miroslav Rezanina <mrezanin@redhat.com> writes:
+> > >From: "Alex Benn=C3=A9e" <alex.bennee@linaro.org>
+> > >> OK - so from the upstream source tree CONFIG_SEMIHOSTING is still =
+=3Dy
+> > >> (but I can see most of them are now =3Dn). Isn't the simplest soluti=
+on to
+> > >> fix-up your version of the default_config file to include SEMIHOSTIN=
+G?
+> > >>
+> > >
+> > > It's fix but it goes against our policy of handling CONFIG options so=
+ we
+> > > would prefer to have this fixed - otherwise there's no meaning in hav=
+ing
+> > > config option if you can't disable it.
+> >
+> > Is that what it means? For my part it means we don't build in
+> > CONFIG_SEMIHOSTING for the arches that don't need it (which we were
+> > before). Granted it only really simplified the vl.c parsing and dropped
+> > support for semihosting for the linux-user targets (except ARM).
+>=20
+> Yes, that would be my interpretation of it. If we had
+> a 'config FOO' stanza for CPUs, then Arm CPUs would
+> "select SEMIHOSTING". If RedHat would like it to be possible
+> to build Arm CPUs without CONFIG_SEMIHOSTING then they're
+> free to submit patches for that, but that's a new feature
+> upstream doesn't currently support, not a bug in upstream.
+> (Also I'd be a bit dubious because it means that previously working
+> guest setups that use semihosting will break.)
 
-I suppose in this thread:
-https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05641.html
-you refer to this series (not yet merged):
-https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg03137.html
+I partially agree here - I see difference between disabling
+config and omitting it. We are not not disabling CONFIG_SEMIHOSTING,
+we just ignore it. So we got error because it is not properly handled.
+Proper handling should be either auto-include it as dependency or
+successful build with option disabled.
 
-I'll try to figure what "KVM injection of interrupts" is.
+As there's currently no way to auto-include it through dependency,
+it would be good to have comment in default_config file next to it stating
+that it's required option. This will allow us to see it and
+add to our default_config we used instead upstream one.
+
+Mirek
+>=20
+> PS: if we had a 'config FOO' stanza for CPUs that would also
+> allow us to say "building Arm CPUs requires the NVIC" and
+> similarly for things which in QEMU are devices but which are
+> architecturally tightly-coupled non-optional parts of the CPU.
+>=20
+> thanks
+> -- PMM
+>=20
+
+--=20
+Miroslav Rezanina
+Software Engineer - Virtualization Team Maintainer

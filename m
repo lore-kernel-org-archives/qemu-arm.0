@@ -1,137 +1,95 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp895379pjq;
-        Fri, 31 May 2019 09:54:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7Xo5PEaEL6WmvyfFIF5nKsjVf7zW1jyZ2C8OlGz8PIeMs+KFLG/pH1jLwOKolpdj+NMSm
-X-Received: by 2002:aca:bbc3:: with SMTP id l186mr4742791oif.44.1559321652316;
-        Fri, 31 May 2019 09:54:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559321652; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp907496pjq;
+        Fri, 31 May 2019 10:04:42 -0700 (PDT)
+X-Received: by 2002:a9d:6047:: with SMTP id v7mr2489865otj.96.1559322282187;
+        Fri, 31 May 2019 10:04:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559322282; cv=none;
         d=google.com; s=arc-20160816;
-        b=HoajGVC7mAbTDMA1tghgeC8rT2BYHxqrp/1h6rzlVjDVvp/kmpPDktdJi24MHNtg2d
-         n8GbghGxoa1b6OXQFa7UlpHxQwFOpR5S6oryjBXfOMjSFsCZKZqfKl4D1LpEUTzZhVWT
-         3nMtRU8B+awXKn8KA5JhwS9ydcaLcDgvcmK8jLNH6g0wubvufLcY5s56Ax+nlBC8IJPC
-         vXRUaPHq9H/jGPDlDymoMi5NbdYnYWXu4KAw6ihCenbCW+EXpt81WufDiRIYnXJ6YDT9
-         qFH6MwW/hskZlu3jcV/5djYlxgcouB+WKuQZaojleMDQ8rLFzjLlj4al4CwnA4krrEiY
-         bFmA==
+        b=yufhiaaHX4Lbhd0Yo12XpaRgWzc2RMm7IimzE0301/xtujM8YMpvpMqXOCj+5npwWB
+         ACFHO3Fj7uV4tOrDzlLb8QU2WDCK7KxPLRpcTxAzBdDr68Mt3rUZw38pWYmzuNSAPHsn
+         H9CRYbCVmg8j7q2vw4ylEIepfRI7eKI1VO1rMFS7nR7x+5KerseCWAZCN3GAMQB9QYRo
+         OHm6JhadbJpiI8ER0+I5lq7/mIQGNg8JuMi+yt/DIgPChKze594qDNeCoN3SqINGI4i6
+         lAJwpoeWVdcvQXaBoarkgTmxgtKjmxNXnbfEhBRbVvnIaqauwkDWPXswQ0zaMlCDv7TE
+         5/Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=thread-index:thread-topic:content-transfer-encoding:mime-version
-         :subject:references:in-reply-to:message-id:cc:to:from:date;
-        bh=u7yKnJhlF1k39qOqeWCccFhEI5U8c5VFFraQEVNqIqk=;
-        b=wrkwb4jG2eJ/VKPApycbS8ITfmXaAWC7LVXXIjF4anthLyQn3p/uilQSG+zNx53Nid
-         uxIpUmKF2yvBvYiswaO6b0TMl6rYkUXjegLCZSXY4lG6oP2tQ8fNA+2rOkhEizm6N4dk
-         RiTmHb88G5UP9BI43R3XqGpbo8Um25UjDDwbg+Ewr75IG5fUsFG8tsnLhkP7uS09ESSb
-         nZHXkkF02gMEKUYMTZRGeSNcJg5G2vFvuj9mqjE9WDChOMUVGoPLof9PTq2peEGw4Pih
-         hMEALsS0YkjnKZIcVo78ez1xRiIboqK3HHNK8ihX1/gNA7loUjlMNAEBYqCQFvJ/3bZd
-         I1JQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=7fQjKjvMizxEUH+ZmLWmHokn2Oviwij2SRB/vhvQN/s=;
+        b=n3SevZacVOhq+9eOihVR20U/sN7rVcZ4fYyaPCaT0xFqPfmx+eXlAKfMvikQRjttpz
+         BfP/t5mZv0jTuIcvofN7/+7s0h68OutVOq6HYc3fW3cY9zhiLCUeWs9n7us0JP90zoEr
+         LECd9EAJMIlLK1oIeBOSkbNumpU1KZNwnJYFrSvJB/PjaFFussJ6hs6q5sASy4NRfOOP
+         kFQUJqrFNDWYxLhzkhF1QtEN07OfNlR+okcsr8kRExBXSTivTSDdzlCPsUoGKE3G7dA9
+         jKQQ45OiT6xIpdHc7iP620R/awe8JCj7OQ+4/F9E6BoIyU1M0puaqQbwjKPHVQfgCzQK
+         bCAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <mrezanin@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b6si1316981otk.125.2019.05.31.09.54.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 31 May 2019 09:54:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NW3DvrDD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id e14sor3352665oti.87.2019.05.31.10.04.41
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 31 May 2019 10:04:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of mrezanin@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=mrezanin@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D279281F25;
-	Fri, 31 May 2019 16:54:09 +0000 (UTC)
-Received: from colo-mx.corp.redhat.com (colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BD0031001925;
-	Fri, 31 May 2019 16:54:08 +0000 (UTC)
-Received: from zmail17.collab.prod.int.phx2.redhat.com (zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
-	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 72F7F3F6E4;
-	Fri, 31 May 2019 16:54:08 +0000 (UTC)
-Date: Fri, 31 May 2019 12:54:08 -0400 (EDT)
-From: Miroslav Rezanina <mrezanin@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>, 
-	qemu-arm <qemu-arm@nongnu.org>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-	Samuel Ortiz <sameo@linux.intel.com>, 
-	Rob Bradford <robert.bradford@intel.com>
-Message-ID: <431872249.25606899.1559321648368.JavaMail.zimbra@redhat.com>
-In-Reply-To: <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com>
-References: <20190531154735.20809-1-philmd@redhat.com> <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com> <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com>
-Subject: Re: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
+       dkim=pass header.i=@linaro.org header.s=google header.b=NW3DvrDD;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=7fQjKjvMizxEUH+ZmLWmHokn2Oviwij2SRB/vhvQN/s=;
+        b=NW3DvrDD9ptKFwR7osjK1zByZU1LbYTlrcX4ARTtvm/qg9tDXKqGQHLJloFyczyx/+
+         538PPalK2XcoTDx929BA6jJiOHrMT4xWrejpT2VTlmkSJQnX4vXVbcQ6DgixglLRAvDh
+         YF+O3yz6OVUPMgYq5poP33yHeFkeTbFSt6CVNT3rk7dCYRuxwpJjW7Igw9C3yFTivcSL
+         dBWeBjcV4y1nNJPfCFHPUbR/sCmLvtLpPlwwTwmubey0NzfLSUUuGykbPxz9SV/KwyPx
+         AvHjbRx8jUcZKmWisWiU4+IiAsuTN+FDOQgrtNP9DgGulfrsxJgNCju7GnxZJdvH7mNV
+         80uw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=7fQjKjvMizxEUH+ZmLWmHokn2Oviwij2SRB/vhvQN/s=;
+        b=YRg4Gu6Ciuoxm9boD5Y+RZuEHltv6bIXqnFxrDeKSOBg1aq480rtM2lISpXckNutB2
+         2NrC9IfSTjWk2Di+3Jppz/BwekdySPxidQvRe0V+hbzlR7uOvgKhnPU+w1lgf2ZadnfY
+         hpWsNkR4r/Hxe2rkPsgG+UTQSRhjKqh/ymfus2LBVExk2RXa/runmuWi/baXI5+e9NeN
+         AWplGwdzyoHx212aAixH0T2Te7VKX3Qaue3laA3Gwl44a9EetW/abjwt93Nkz5vL3Yrn
+         wKVA0+v+fQmdXwrFdbRof/x1qX3uBlNDl7feaBbYTdDd6xtITwVbRxPT58W0wVAkhfH6
+         kIuA==
+X-Gm-Message-State: APjAAAWkVGD/9msqCCYJN93G7q1cWk0ZDWkTKV2l/CLbGCbEDNBSmbIf
+	/bYySMOnBe7QH97W7/qemp4gtN4m9sZfD991pq0LobGy
+X-Google-Smtp-Source: APXvYqz+eieM/Aiez3X/SAhpyNPCiRqcRRsbo+/FHP9dUHyU2LDOMfQAwx8zaPzm8vlE3qGmka1oDsJIpprBlz3AoJo=
+X-Received: by 2002:a9d:193:: with SMTP id e19mr2663060ote.135.1559322281450;
+ Fri, 31 May 2019 10:04:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.40.204.19, 10.4.195.19]
-Thread-Topic: target: Build with CONFIG_SEMIHOSTING disabled
-Thread-Index: vbSVI98EzWnZENu1t63TP56joihEsg==
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Fri, 31 May 2019 16:54:10 +0000 (UTC)
-X-TUID: ABqLUlbn/fbx
+References: <20190531154735.20809-1-philmd@redhat.com> <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com>
+ <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com> <431872249.25606899.1559321648368.JavaMail.zimbra@redhat.com>
+In-Reply-To: <431872249.25606899.1559321648368.JavaMail.zimbra@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 31 May 2019 18:04:30 +0100
+Message-ID: <CAFEAcA_KKH62rK2pbR8dWXOCJWe1X8wif5whc+y0_e-hTpmoRQ@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
+To: Miroslav Rezanina <mrezanin@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Aleksandar Rikalo <arikalo@wavecomp.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Aleksandar Markovic <amarkovic@wavecomp.com>, 
+	Aurelien Jarno <aurelien@aurel32.net>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Samuel Ortiz <sameo@linux.intel.com>, Rob Bradford <robert.bradford@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 33Na1mDPio0S
 
+On Fri, 31 May 2019 at 17:54, Miroslav Rezanina <mrezanin@redhat.com> wrote:
+> What about CONFIG_ARM_VIRT - can we use it to introduce dependency on
+> CONFIG_SEMIHOSTING or is there valid scenario of qemu build with CONFIG_ARM_VIRT
+> enabled and CONFIG_SEMIHOSTING disabled?
 
+Semihosting is a feature that works on all Arm CPUs
+regardless of which machine model you're using (or whether
+you're using softmmu or linux-user), so I think
+the machine's Kconfig fragment is the wrong place to try
+to pull it in.
 
------ Original Message -----
-> From: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
-> To: "Peter Maydell" <peter.maydell@linaro.org>
-> Cc: "QEMU Developers" <qemu-devel@nongnu.org>, "Paolo Bonzini" <pbonzini@=
-redhat.com>, "Miroslav Rezanina"
-> <mrezanin@redhat.com>, "Richard Henderson" <richard.henderson@linaro.org>=
-, "Aleksandar Rikalo"
-> <arikalo@wavecomp.com>, "qemu-arm" <qemu-arm@nongnu.org>, "Aleksandar Mar=
-kovic" <amarkovic@wavecomp.com>, "Aurelien
-> Jarno" <aurelien@aurel32.net>, "Alex Benn=C3=A9e" <alex.bennee@linaro.org=
->, "Samuel Ortiz" <sameo@linux.intel.com>, "Rob
-> Bradford" <robert.bradford@intel.com>
-> Sent: Friday, May 31, 2019 6:40:30 PM
-> Subject: Re: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabl=
-ed
->=20
-> On 5/31/19 6:21 PM, Peter Maydell wrote:
-> > On Fri, 31 May 2019 at 16:47, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com>
-> > wrote:
-> >>
-> >> Amusingly Miroslav and myself hit this issue at the same time.
-> >>
-> >> Currently there is no way to pass a CONFIG_X to sources in target/,
-> >> except via a Makefile rule (and filling with stubs).
-> >>
-> >> Paolo says this is on purpose, CONFIG_X selectors are meant for
-> >> devices and we try to avoid having config-devices.mak in
-> >> config-target.h.
-> >=20
-> > ...but some things in target/ are devices (like the Arm CPUs,
-> > which inherit from TYPE_DEVICE).
-> >=20
-> > Is there a way we can have a Kconfig fragment that expresses
-> > "if you asked for an Arm CPU then this should 'select SEMIHOSTING'" ?
->=20
-> Yes, but inversely, we can also deselect a feature, and all features
-> that requires it get deselected. My guess is Miroslav is building a
-> KVM-only QEMU, but upstream does not allow to build ARM without TCG.
->=20
-> I'll see what happened to Samuel series "Support disabling TCG on ARM"
-> and see if it can be salvaged:
-> https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
->=20
-> I suppose in this thread:
-> https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05641.html
-> you refer to this series (not yet merged):
-> https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg03137.html
->=20
-> I'll try to figure what "KVM injection of interrupts" is.
->=20
-
-What about CONFIG_ARM_VIRT - can we use it to introduce dependency on
-CONFIG_SEMIHOSTING or is there valid scenario of qemu build with CONFIG_ARM=
-_VIRT
-enabled and CONFIG_SEMIHOSTING disabled?
-
-Mirek
---=20
-Miroslav Rezanina
-Software Engineer - Virtualization Team Maintainer
+thanks
+-- PMM

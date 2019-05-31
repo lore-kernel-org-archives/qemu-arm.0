@@ -1,136 +1,103 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp818837pjq;
-        Fri, 31 May 2019 08:48:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzsMdXPcbpVde1vAGNkstlex4MSTlq1BLRp8amSOvjsx/WiMqV+AMBUBVSf/0/N2F3Uplwz
-X-Received: by 2002:a9d:5781:: with SMTP id q1mr2403898oth.86.1559317687876;
-        Fri, 31 May 2019 08:48:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559317687; cv=none;
+Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp856261pjq;
+        Fri, 31 May 2019 09:19:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzIwhhNhtA6VcMNJeD4wRxnEugm4OgcfGrt2Cs8bO2p507/AqM6qAb/ZrfT8DxC3SDNQgqz
+X-Received: by 2002:a17:906:7541:: with SMTP id a1mr10060122ejn.50.1559319581373;
+        Fri, 31 May 2019 09:19:41 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1559319581; cv=pass;
         d=google.com; s=arc-20160816;
-        b=GQ2ec5HLliNO9vS+M+660Q7jErhD1IyiSWGYyCvvouHyPplHIOAMXh+qpoLcYzZ87J
-         J9R8NaArLxZjgvVNJ0tFNy3ADStt521fVhzN+52C0qxv1E1zbh8zyeEZQgvE2Hi/uuU6
-         qXDoC2LKHOLVOn8DKE01Q0GcNHFo6f16izdp8FnafaHo0J4ReAZhIVrn+5PTEs04Ckz7
-         SRjvMl2wYEgPkaTmWebhCr6pBpPRMTpASB/F5zOI8XdBBoHo7YZjQ0hhwvvdKnRZjBgh
-         QNKHSXSvnGDt0neyCACpeyL2V2qV02k4+z4MQg1wLTDu5LaRFiuA0BnPJ204zxmbEj7w
-         /GWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=PwfAiJLGoD1gubWwUXUC9YayoF9Si3j4268OjDIsg20=;
-        b=ZfEiC0aVWqeCbo+Qv11NXvfVZ5Ak4r3VHVOGNsD+ZH3bXgN9G4c6WNm5AG0KRZ/rdP
-         hFhscKSRrYz5BeqEU5kvHWbI36kdsahaodIE95nbt6hqkvjsy4PN6YnnE/HAXKICTWNc
-         z51iMQDDxc6AN3hVQqbWgH3kgb7/0u9QC9KOn6Ww0URXKTrUIJqhhFdZ617l9CvkD8U9
-         rlQuqKp0/XmgMr4LxBuQFDb21qnLuKGReCW4i8/R3Jvyulf8fewZ5VFnQS2un5owxR7H
-         nafdRbKVymUcslzy8MY8mEia6fobRX379iJk8VjDn9q7SWy4VHw1/ZP/pvS7qxBl//Ra
-         Knbw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id c10si3312003otp.319.2019.05.31.08.48.07
+        b=QbhteP3u5cIzgNNqH4oytCx7g4RR+cBhRloHYXC7yBPo9VbTK4coVW/nQmS19v3F42
+         l7EDuL5NRL4jxsZjTHJ5ueLfCuynQIE8yIHq+YJMmrhoslyzYpwUKS0czPNNasGktDw/
+         eHlEnGctjURzr9uXep/r+TK06uT48TH2cH2kld5Im8+lJQvYWEohIW2yYXM0e91egSFg
+         zipPzylPc53enq51l4hjl+JEmTz7CiDSu4ErJrWnd7OpAQaCg98oJnhn23bS6dD2h/nL
+         jFa+lN4S4fFNs7Kvf6izd0Mcui6/rPZHcok63jGMKbsSIP/UgkcC+Gmq/tRAFR2SVzTQ
+         M6Dw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :message-id:reply-to:subject:in-reply-to;
+        bh=SkWGZBZ9BhVLu8XbGCUPtzKgVXcBVtFAfQFg6VZ+Udw=;
+        b=D//5NUS53BqFgFPTrS0ZGt+liOePX/cZDfpqTV3zppF+DzkGXirunRLEVk3J0/xt6+
+         QkVWd60AhIQZTAXxuZnV9c76HZw09IKUgUJDNdTOKuWYJvn8HnJQE473H8bktfmWsW2c
+         hg1yWojY+/v7LXcx8luAzP1+SnF12SzQX09RZkt3tczzZr47RivlrEynXLV1suE8s9gj
+         9drbHE4gAEHtr/mcz8DrTjPot+Q85zolJASXxpzm0GMVtQIem9eThmJW0Aa5WE2X21hl
+         XNxXSGH65nMnIA5448hrzbfcOkuPXyKOpEuqaU3KBU2RwlYy4UiRLjW4Qb01i9xSQtr6
+         R8Vg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender-of-o52.zoho.com (sender-of-o52.zoho.com. [135.84.80.217])
+        by mx.google.com with ESMTPS id k48si755645eda.20.2019.05.31.09.19.39
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 31 May 2019 08:48:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Fri, 31 May 2019 09:19:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) client-ip=135.84.80.217;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4F5467E43D;
-	Fri, 31 May 2019 15:48:07 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-73.brq.redhat.com [10.40.204.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BDB151001E6F;
-	Fri, 31 May 2019 15:47:58 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Miroslav Rezanina <mrezanin@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [RFC PATCH 2/2] target/mips: Add stubs to build with CONFIG_SEMIHOSTING disabled
-Date: Fri, 31 May 2019 17:47:35 +0200
-Message-Id: <20190531154735.20809-3-philmd@redhat.com>
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+ARC-Seal: i=1; a=rsa-sha256; t=1559319513; cv=none; 
+	d=zoho.com; s=zohoarc; 
+	b=aJyyMOcFE5frvCiTWTIdcWj5jz+fQkE8Z0R77B1hcEaIJg0lrcUCu7aDckxIo1SEQDc7czqqJHDR0d+1UBuTNxBD2iqYlIUO3l3wGfPUsRH3vFhWrb8+povjSwtokVzVRJfIDI4pctqKlyKZ2FmVQuu0TLt8VqIyv1ATe5ECdAo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
+	t=1559319513; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
+	bh=SkWGZBZ9BhVLu8XbGCUPtzKgVXcBVtFAfQFg6VZ+Udw=; 
+	b=fYSzd8m0prcBtgR97bYxOX174UFzFIx1LdslAX8jTJCyGB1fqv8wUvdVnagZwi9QBIw8o8adTH0OLIT3maTGMRHNYYfB4J9GtpPHeCBGk440PX7uGeR7/VNwgaIv5lW+uCmAiQtV/O+kw7rE5Brihp7OCykV/b1Apuym9Di9AP4=
+ARC-Authentication-Results: i=1; mx.zoho.com;
+	dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 155931951101099.43089206900481; Fri, 31 May 2019 09:18:31 -0700 (PDT)
 In-Reply-To: <20190531154735.20809-1-philmd@redhat.com>
-References: <20190531154735.20809-1-philmd@redhat.com>
+Subject: Re: [Qemu-devel] [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <155931950942.4137.194678647486612190@ce79690b2cb9>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Fri, 31 May 2019 15:48:07 +0000 (UTC)
-X-TUID: oNhJY4fi4gYN
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, arikalo@wavecomp.com, philmd@redhat.com, richard.henderson@linaro.org, qemu-arm@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com, mrezanin@redhat.com, alex.bennee@linaro.org, aurelien@aurel32.net
+Date: Fri, 31 May 2019 09:18:31 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: dCiwZuqEg0jG
 
-If a distribution wants to build QEMU without semihosting support,
-it currently gets this build failure:
-
-  $ ./configure --target-list=mips64el-softmmu --without-default-devices
-  $ sed -i s/CONFIG_SEMIHOSTING=y/CONFIG_SEMIHOSTING=n/ default-configs/mips-softmmu-common.mak
-  $ make subdir-mips64el-softmmu
-  [...]
-    LINK    mips64el-softmmu/qemu-system-mips64el
-  /usr/bin/ld: target/mips/mips-semi.o: in function `helper_do_semihosting':
-  ./target/mips/mips-semi.c:335: undefined reference to `qemu_semihosting_log_out'
-  /usr/bin/ld: ./target/mips/mips-semi.c:338: undefined reference to `qemu_semihosting_log_out'
-  collect2: error: ld returned 1 exit status
-  make[1]: *** [Makefile:204: qemu-system-mips64el] Error 1
-  make: *** [Makefile:472: subdir-mips64el-softmmu] Error 2
-
-Fix it by providing a stub when semihosting is disabled.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-checkpatch ERROR: externs should be avoided in .c files
----
- target/mips/Makefile.objs     |  3 ++-
- target/mips/mips-semi-stubs.c | 23 +++++++++++++++++++++++
- 2 files changed, 25 insertions(+), 1 deletion(-)
- create mode 100644 target/mips/mips-semi-stubs.c
-
-diff --git a/target/mips/Makefile.objs b/target/mips/Makefile.objs
-index 3448ad5e19..3f4d566a35 100644
---- a/target/mips/Makefile.objs
-+++ b/target/mips/Makefile.objs
-@@ -1,5 +1,6 @@
- obj-y += translate.o dsp_helper.o op_helper.o lmi_helper.o helper.o cpu.o
- obj-y += gdbstub.o msa_helper.o
--obj-$(CONFIG_SOFTMMU) += mips-semi.o
-+obj-$(CONFIG_SEMIHOSTING) += mips-semi.o
-+obj-$(call lnot,$(CONFIG_SEMIHOSTING)) += mips-semi-stubs.o
- obj-$(CONFIG_SOFTMMU) += machine.o cp0_timer.o
- obj-$(CONFIG_KVM) += kvm.o
-diff --git a/target/mips/mips-semi-stubs.c b/target/mips/mips-semi-stubs.c
-new file mode 100644
-index 0000000000..f5b13b9153
---- /dev/null
-+++ b/target/mips/mips-semi-stubs.c
-@@ -0,0 +1,23 @@
-+/*
-+ * Unified Hosting Interface syscalls stubs
-+ *
-+ * Copyright (c) 2019 Red Hat, Inc.
-+ *
-+ * Author:
-+ *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "cpu.h"
-+
-+extern void helper_do_semihosting(CPUMIPSState *env);
-+
-+void helper_do_semihosting(CPUMIPSState *env)
-+{
-+    g_assert_not_reached();
-+}
--- 
-2.20.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDUzMTE1NDczNS4yMDgw
+OS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1JGQyBQQVRDSCAwLzJdIHRhcmdldDog
+QnVpbGQgd2l0aCBDT05GSUdfU0VNSUhPU1RJTkcgZGlzYWJsZWQKVHlwZTogc2VyaWVzCk1lc3Nh
+Z2UtaWQ6IDIwMTkwNTMxMTU0NzM1LjIwODA5LTEtcGhpbG1kQHJlZGhhdC5jb20KCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9u
+dWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBj
+b25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5h
+bGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFz
+ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRj
+aGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3LzIwMTkw
+NTMxMTU0NzM1LjIwODA5LTEtcGhpbG1kQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE5MDUzMTE1
+NDczNS4yMDgwOS0xLXBoaWxtZEByZWRoYXQuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAn
+dGVzdCcKMzAzZmJjODExZiB0YXJnZXQvbWlwczogQWRkIHN0dWJzIHRvIGJ1aWxkIHdpdGggQ09O
+RklHX1NFTUlIT1NUSU5HIGRpc2FibGVkCmFhZDFiZDg1ZTEgdGFyZ2V0L2FybTogQWRkIHN0dWJz
+IHRvIGJ1aWxkIHdpdGggQ09ORklHX1NFTUlIT1NUSU5HIGRpc2FibGVkCgo9PT0gT1VUUFVUIEJF
+R0lOID09PQoxLzIgQ2hlY2tpbmcgY29tbWl0IGFhZDFiZDg1ZTFlNSAodGFyZ2V0L2FybTogQWRk
+IHN0dWJzIHRvIGJ1aWxkIHdpdGggQ09ORklHX1NFTUlIT1NUSU5HIGRpc2FibGVkKQpXQVJOSU5H
+OiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQg
+dXBkYXRpbmc/CiM0MDogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEg
+d2FybmluZ3MsIDI3IGxpbmVzIGNoZWNrZWQKClBhdGNoIDEvMiBoYXMgc3R5bGUgcHJvYmxlbXMs
+IHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2
+ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5U
+QUlORVJTLgoyLzIgQ2hlY2tpbmcgY29tbWl0IDMwM2ZiYzgxMWYyNCAodGFyZ2V0L21pcHM6IEFk
+ZCBzdHVicyB0byBidWlsZCB3aXRoIENPTkZJR19TRU1JSE9TVElORyBkaXNhYmxlZCkKV0FSTklO
+RzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVk
+IHVwZGF0aW5nPwojNDA6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJST1I6IGV4dGVybnMgc2hv
+dWxkIGJlIGF2b2lkZWQgaW4gLmMgZmlsZXMKIzYyOiBGSUxFOiB0YXJnZXQvbWlwcy9taXBzLXNl
+bWktc3R1YnMuYzoxODoKK2V4dGVybiB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBT
+U3RhdGUgKmVudik7Cgp0b3RhbDogMSBlcnJvcnMsIDEgd2FybmluZ3MsIDMwIGxpbmVzIGNoZWNr
+ZWQKClBhdGNoIDIvMiBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQg
+PT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBh
+dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA1MzExNTQ3MzUuMjA4MDkt
+MS1waGlsbWRAcmVkaGF0LmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0t
+CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
+dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
+dC5jb20=

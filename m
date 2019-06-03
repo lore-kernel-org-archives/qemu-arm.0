@@ -1,129 +1,102 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp814176wrg;
-        Mon, 3 Jun 2019 08:43:15 -0700 (PDT)
-X-Received: by 2002:a2e:2bd7:: with SMTP id r84mr14378716ljr.91.1559576595221;
-        Mon, 03 Jun 2019 08:43:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559576595; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp981777wrg;
+        Mon, 3 Jun 2019 11:29:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxxzK+VyhhPAPgF67ASG/UxrrgA+Un0k0M0g64mYa0yAahH3dvTJL+P7S/6lI6D0Ury5Ax3
+X-Received: by 2002:aca:7549:: with SMTP id q70mr1896225oic.58.1559586570452;
+        Mon, 03 Jun 2019 11:29:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559586570; cv=none;
         d=google.com; s=arc-20160816;
-        b=WqzvuEFdmqiNvoFUjz0c4E2LzbEZz+mAkxlreQYY4Dieu2R6Iwp6yR34MgRG99KWZe
-         5V73Ac/Z2sEZxFYwTiAgWdgeQqhXOXW3xkA2S5YJU95NlUQcTmytfuaotBfxOUFjdT5f
-         +LUN17xWyFmB0SEm9dc5WkNgyexg3R2qs9rcILyyb6gsBJ2FSSr32AtT19K8HeKn7ww5
-         fj3WckuYeDxqrCBszC/KNK32Nfb8nQht6ADRrf74PedkGJJl0qLAtVBFsNOKneVfzNTw
-         s0v9fAkMndSi5oWNHlRcl4zobSTyx9Oj3JmEV2E5eX2J+hUj3fyzDjNM3NRnYxObRxWu
-         oOfw==
+        b=ujZCKVtGzYC9V3jKcRjnx9B4nzg96+mufw45UevBBsmQrVv2UZGUtliSmRa+bXVruD
+         0u98Rv5V9EaV22vviGpcLzMTZ89ky9PRCz5KyJ9y3tqhEuQ+7qyWXRsEsdcTbLHtxSi5
+         Vu0gLrdKRcEGmu4A2DCzUJbAnTDxCl+QXIGT73ZkmjEOKikFMVflJf9jfQm/q//FjjRY
+         Zu8PEZAuj3xU85bGsbIng1oGOajMRKwJsSomB8AyjZv8YwEw8Zua+EIiD9CKh4OgsM9D
+         Yb3d3fsyKzQcaEes7WBU3p1BLlU6O7zI6j20PWLqQptIsYBDf5u09qKjpc8KdDXd3bVD
+         S1hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:content-disposition:content-transfer-encoding
-         :mime-version:in-reply-to:references:cc:user-agent:date:subject:to
-         :from:dkim-signature;
-        bh=oSZhidXep9ZqP/yYb06ujCa4jLpPDdZ3fQEzb4ebxeA=;
-        b=gRhXCp6nAEZhVpzVQEBZgRhWWeBUAHdtXWrjjQGYMoX9MOCF5Pg6Za9DpQ29lMIF5B
-         HpJvzdBxQ1vl/0XuYa78PKmbSxP53li26UvWSUcLCxET5ENYZZ8PZhRh2g0cQaUdhb16
-         u9SMgT/oYjVKfKMRK1gCDSABW9/vvQVmJLHfr5cBD3Jd+XMMnkm4qk8Jyg3+TP/+qHwt
-         0WFeFNB0I+hl58vWKHyIadi83atWeQAUrecDVmY5lLbszeFFQYj3W8r5YdylxzkRTlBJ
-         ZNRPZfpQABFukRv3Pq0AQJKfXFdYE+pH4/HsFkopGkW7FuuLqaJWbRt7gOI8iHvIDbDQ
-         vNKg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=VLmtCbX21yBAyUbC25lb7dKxRnnl0D2+/WSJ7CNaXHs=;
+        b=wwRSqpoxn6PwwWW/zPe2NutJoYo5EwwqOttCbFlXpBbeKUFKhOV2vN2RX5OsWpBezH
+         vANg3EvLJgbIfqRpO2ZGYyfAFNyXXF8FFvKqxV9nFQHQWzMbDOMoPbugybHlX/PO6irf
+         oRaGn3VZ98r/ERxk2DaovA6xNT3sqTsINLtnNFtYwHfA9HcqmUt2Hw31MvNJRQvKD9Cx
+         pX/Zk1J6SLyV7e1Lngrlm4JQEL4HU9EMont0BoxYUm40Qv26LC4Faa27ekvZS5loN6pN
+         TiX+1ZCAUhags+jkqwkrwX7nqMNUj3Xe97HSVLzFbWcqRJ+WUwDhzi1mLPqO9Bc6v8Kl
+         fUNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K3NvzhpR;
-       spf=pass (google.com: domain of randrianasulu@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=randrianasulu@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <randrianasulu@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p25sor706499lfo.24.2019.06.03.08.43.15
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <lersek@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id o127si8009234oif.193.2019.06.03.11.29.30
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 03 Jun 2019 08:43:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of randrianasulu@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=K3NvzhpR;
-       spf=pass (google.com: domain of randrianasulu@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=randrianasulu@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:user-agent:cc:references:in-reply-to
-         :mime-version:content-transfer-encoding:content-disposition
-         :message-id;
-        bh=oSZhidXep9ZqP/yYb06ujCa4jLpPDdZ3fQEzb4ebxeA=;
-        b=K3NvzhpRLI5Em/Y4B58Yi0W2IO+q2FNksM2oj1PQHj8Rsk8h/seJURnt3Rx59Woq2t
-         gF4L+TgVNYfDjHTJtYxVlwGv2HZ12Bs9DFYkt2iPaRnMP6A5K8IsWC5GCU4gvnuYJAg4
-         3SO0gLoYr8ZZcYixBkc1Lk1b7vVG2m+mzGq6v1vS1Y0e8vcgnXE/N+/pUia9qS09/qri
-         VFqeb7Q/QoQAE3l+FvxeXZdND/wqHDQUHtDWyfX7U8SPgj4b4+o8ynhwikri/AwIO6sx
-         TFiGndjoI8fTuoKdHM+H0FiQpshwg+XxXNZSBueOuvY5RHinRJfLkDnHHPY7ilFeX3KM
-         6JsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:user-agent:cc:references
-         :in-reply-to:mime-version:content-transfer-encoding
-         :content-disposition:message-id;
-        bh=oSZhidXep9ZqP/yYb06ujCa4jLpPDdZ3fQEzb4ebxeA=;
-        b=AX9ccLt7VPXYCYLkm7aOthHNs+WWe9Ac2WC2/gvckat3rLYtatxm5gBjwT3C/8iJhS
-         IH4nq7Nvt7bk4kAIgx2gLjpbnXr4RYyXbaGjcc8Qs5R6xeUY5pJpBicDDt2giEMVOcKS
-         1dEXkSrImYEziAQeMpXXYOuhVGCCfeTgSyPSbakTCnKQuSwjmSCT2v/R8EblBcWbIYEF
-         EH3BvkoBGYE7P2w1kAT+AfsvySvKb6r1W5fpClWTNNVRYIjK61XaafppwOxDs6ZGcWj1
-         R4f0Tia9rMPxJ6TOU2xYbcvki9qwfeHp7iJI5chqdhutrUsMFImoq5F2W2dwhum3JDhW
-         NgHg==
-X-Gm-Message-State: APjAAAUl4Oxjo+G/jj3kV77T+q/N8qBBFNLfVyn2mukZDBGHIwQ8G8a5
-	+6Dawe7uuKYfsGE4wADCs83m6Me0UKI=
-X-Google-Smtp-Source: APXvYqxQFRrcZh1MLOpMtz1rPunzFizLDpRKnWN2JRZAcxIb+5NFTUkWljdNJRAjJmOjH/8dulCTDg==
-X-Received: by 2002:ac2:4ac5:: with SMTP id m5mr13592083lfp.95.1559576594831;
-        Mon, 03 Jun 2019 08:43:14 -0700 (PDT)
-Return-Path: <randrianasulu@gmail.com>
-Received: from [192.168.1.121] ([176.116.252.109])
-        by smtp.gmail.com with ESMTPSA id s5sm3202338lfe.43.2019.06.03.08.43.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 03 Jun 2019 08:43:14 -0700 (PDT)
-From: Andrew Randrianasulu <randrianasulu@gmail.com>
-To: Alex =?utf-8?q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [RFC PATCH] cputlb: use uint64_t for interim values for unaligned load
-Date: Mon, 3 Jun 2019 18:35:12 +0300
-User-Agent: KMail/1.9.10
-Cc: qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,
- 1830872@bugs.launchpad.net,
- Richard Henderson <rth@twiddle.net>,
- Paolo Bonzini <pbonzini@redhat.com>
+        Mon, 03 Jun 2019 11:29:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3172C30C0DDB;
+	Mon,  3 Jun 2019 18:29:21 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-13.rdu2.redhat.com [10.10.121.13])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4168D2E16F;
+	Mon,  3 Jun 2019 18:29:17 +0000 (UTC)
+Subject: Re: [Qemu-devel] [RFC PATCH] cputlb: use uint64_t for interim values
+ for unaligned load
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: 1830872@bugs.launchpad.net, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, randrianasulu@gmail.com,
+ Richard Henderson <rth@twiddle.net>, Igor Mammedov <imammedo@redhat.com>
 References: <20190603150120.29255-1-alex.bennee@linaro.org>
-In-Reply-To: <20190603150120.29255-1-alex.bennee@linaro.org>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <5f684c68-d2cd-90f7-3892-1c6245728042@redhat.com>
+Date: Mon, 3 Jun 2019 20:29:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Message-Id: <201906031835.13420.randrianasulu@gmail.com>
-X-TUID: XSNEqH2PRCOD
+In-Reply-To: <20190603150120.29255-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Mon, 03 Jun 2019 18:29:21 +0000 (UTC)
+X-TUID: LledsM50KfP8
 
-=D0=92 =D1=81=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D0=B8 =D0=BE=D1=82 =
-Monday 03 June 2019 18:01:20 Alex Benn=C3=A9e =D0=BD=D0=B0=D0=BF=D0=B8=D1=
-=81=D0=B0=D0=BB(=D0=B0):
+(+Igor)
+
+On 06/03/19 17:01, Alex Bennée wrote:
 > When running on 32 bit TCG backends a wide unaligned load ends up
 > truncating data before returning to the guest. We specifically have
 > the return type as uint64_t to avoid any premature truncation so we
 > should use the same for the interim types.
->=20
+> 
 > Hopefully fixes #1830872
->=20
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
 >  accel/tcg/cputlb.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
+> 
 > diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
 > index cdcc3771020..b796ab1cbea 100644
 > --- a/accel/tcg/cputlb.c
 > +++ b/accel/tcg/cputlb.c
-> @@ -1303,7 +1303,7 @@ load_helper(CPUArchState *env, target_ulong addr, T=
-CGMemOpIdx oi,
+> @@ -1303,7 +1303,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
 >          && unlikely((addr & ~TARGET_PAGE_MASK) + size - 1
->                      >=3D TARGET_PAGE_SIZE)) {
+>                      >= TARGET_PAGE_SIZE)) {
 >          target_ulong addr1, addr2;
 > -        tcg_target_ulong r1, r2;
 > +        uint64_t r1, r2;
 >          unsigned shift;
 >      do_unaligned_access:
->          addr1 =3D addr & ~(size - 1);
+>          addr1 = addr & ~(size - 1);
+> 
 
-Unfortunatly, this doesn't fix 32-bit qemu-system-x86_64 .... so, my bug is=
- separate from #1830872 ?
+Applied on top of commit ad88e4252f09c2956b99c90de39e95bab2e8e7af:
 
-I also was unable to convince qemu to use my kernel-only x86_64 gcc 6.5.0 c=
-ross-compiler ..
-probably x86-64 testing on i686 requires either docker (I don't have this
-) or 'real' cross-compiler (build with glibc support).
+Tested-by: Laszlo Ersek <lersek@redhat.com>
+
+Thanks!
+Laszlo

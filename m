@@ -1,286 +1,303 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2094289wrg;
-        Tue, 4 Jun 2019 09:30:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyrXaNYl2/ON+qBEwJmYmzWgaQX7Lsa9AgzeojsHly2mbPLXJCHP8QMOl8Jqls+I0oipRIm
-X-Received: by 2002:a0c:d7cd:: with SMTP id g13mr20501403qvj.101.1559665843317;
-        Tue, 04 Jun 2019 09:30:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2094645wrg;
+        Tue, 4 Jun 2019 09:31:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlA7RHu0X3RhDgW6ThxwcCYluiWZIj+qbSCrBKYfOEFtN7nrKwV2yA1vPA46CiTZ70eYlf
+X-Received: by 2002:aed:2a06:: with SMTP id c6mr29586187qtd.146.1559665864065;
+        Tue, 04 Jun 2019 09:31:04 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p37si12284132qtp.142.2019.06.04.09.30.43
+        by mx.google.com with ESMTPS id c17si1038568qkc.200.2019.06.04.09.31.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Jun 2019 09:30:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Jun 2019 09:31:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=PT2EjDQG;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=EHffHrqu;
        arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55127 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:55091 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYCKg-0004mN-Ow
-	for alex.bennee@linaro.org; Tue, 04 Jun 2019 12:30:42 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39290)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYCL1-0004TO-Fh
+	for alex.bennee@linaro.org; Tue, 04 Jun 2019 12:31:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCFy-0000aW-5d
-	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:25:51 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1hYCFx-0000Zq-Df
+	for qemu-devel@nongnu.org; Tue, 04 Jun 2019 12:25:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCFw-0003cA-B6
-	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:25:50 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40616)
+	(envelope-from <damien.hedde@greensocs.com>) id 1hYCFv-0003a4-7o
+	for qemu-devel@nongnu.org; Tue, 04 Jun 2019 12:25:49 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40524)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
-	id 1hYCFw-0003aF-0A; Tue, 04 Jun 2019 12:25:48 -0400
+	id 1hYCFr-0003TS-59; Tue, 04 Jun 2019 12:25:43 -0400
 Received: from kouign-amann.bar.greensocs.com (unknown [172.17.10.6])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id 6D65596F66;
-	Tue,  4 Jun 2019 16:25:46 +0000 (UTC)
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 9831296F5B;
+	Tue,  4 Jun 2019 16:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1559665547;
+	s=mail; t=1559665542;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	to:to:cc:cc:mime-version:mime-version:
 	content-transfer-encoding:content-transfer-encoding:
 	in-reply-to:in-reply-to:references:references;
-	bh=RJnlyxIty4fLwwQiMvBz/j1I0JzfWGjMPHXoCBbOxXs=;
-	b=PT2EjDQG9SJEPXNUE6DFCZ7TwXTh4S2WsycqvJATPQeQXxlgLNoUWOaOx6XMZfBuo7RnRq
-	wRc80TYY6eZvDkWFKnsOneHWCiBNJT8SgdAnnJlxa08ihAe5oMNY7CQlSurrInpKTRR/xS
-	SVyLvpwYVjinOCDbQrtUyRifYv18R4M=
+	bh=YYxCAcFY2f8T7dY7vwkEpubeXgbDt8PO/wb4DbcDzk8=;
+	b=EHffHrquEFGV8MLehGdJ56kI3+VIXA79OJVSDruYKa/2PKN+LbOKDqavaWQ5TW44/8EWze
+	TF7C81ZmWXWJuBmX+Q5TQsYH+2K+EJ6T8e+bK/01tHvaLTL0vXeVXKRsyCRhfpljtqjRCy
+	ILKkerL1QqWNIEefJ/hWT3YwlFzwevw=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Jun 2019 18:25:23 +0200
-Message-Id: <20190604162526.10655-10-damien.hedde@greensocs.com>
+Date: Tue,  4 Jun 2019 18:25:17 +0200
+Message-Id: <20190604162526.10655-4-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190604162526.10655-1-damien.hedde@greensocs.com>
 References: <20190604162526.10655-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
-	s=mail; t=1559665547;
+	s=mail; t=1559665542;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	to:to:cc:cc:mime-version:mime-version:
 	content-transfer-encoding:content-transfer-encoding:
 	in-reply-to:in-reply-to:references:references;
-	bh=RJnlyxIty4fLwwQiMvBz/j1I0JzfWGjMPHXoCBbOxXs=;
-	b=5uFxHyoMJ2onrUfU8x44gQER65ssz+/p2HTTsBcFh5gg3GjCcgwrRwg/zEvazjZuQpPg26
-	kkcAITaYgsXXfP1RZdJdjKk9HCBBjKDk+LlGUs26rEUdMxSviIBfhieNvOQDmilDFZr6m4
-	BfDLyQsDGcnHrAZXkq1B6FD1ljZ4PwY=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1559665547; a=rsa-sha256; cv=none;
-	b=FAQQqQEQH7sumjpQLjQjDjevuovkwfVfkjmWRjiJFXUZmp0pb+HxgRimaHhQMfopISsZLQ
-	CbVUMJBF1NW0xPVBOLNAa1vQ8z0TOS+IanVTmJ09DGIrCmz3xjhHpfnzM2Jvtx7gvp+/a3
-	pNLqqqe//UmTp3XqsuPIqkIXvmNgFnE=
+	bh=YYxCAcFY2f8T7dY7vwkEpubeXgbDt8PO/wb4DbcDzk8=;
+	b=o0yfScJQteo+Al3vaVVlZXA0yuwmiRY8t46mdtMzXO1IyVoxVu+niL1v84LgMg8Hzf9ihL
+	UB8luMrQ+Igk4Tz4PaSOX+iD1Ak4rpxCgWwz3cCvVvOjFwYhzLurk8JFWa9xYjY+Tb2BN8
+	cQsFOUYSVH+aB7P+9FPbbEtB97zSaM0=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1559665542; a=rsa-sha256; cv=none;
+	b=iZJaKr1BlrXl88dJRnjqkz2RkJxS+odpVr41md+F5F/gWNyTxUV+uB/9L5tFFAlrqdlHug
+	oGvtYjruhR1gEVTE2ZrjGq9/M2HYq6vze1wQrtAE3cOW/S5gM3vfD26THbvZhTe2qv8MAA
+	oHAy3qzcQfPD1wTjYevFb34G6UZzqpA=
 ARC-Authentication-Results: i=1; ORIGINATING;
 	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] [RFC PATCH v2 09/12] convert cadence_uart to 3-phases
- reset
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC PATCH v2 03/12] replace all occurences of
+ device_reset by device_legacy_reset
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	marc.burton@greensocs.com, alistair@alistair23.me,
 	qemu-arm@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
 	marcandre.lureau@redhat.com, pbonzini@redhat.com,
 	philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LVZnkX7OQ0Il
-
-Split the existing reset procedure into 3 phases.
-Test the resetting flag to discard register accesses
-and character reception.
-Also adds a active high reset io.
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NjZZLvEhmo7c
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/char/cadence_uart.c | 81 +++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 77 insertions(+), 4 deletions(-)
+ hw/audio/intel-hda.c     | 2 +-
+ hw/hyperv/hyperv.c       | 2 +-
+ hw/i386/pc.c             | 2 +-
+ hw/ide/microdrive.c      | 8 ++++----
+ hw/intc/spapr_xive.c     | 2 +-
+ hw/ppc/pnv_psi.c         | 2 +-
+ hw/ppc/spapr_pci.c       | 2 +-
+ hw/ppc/spapr_vio.c       | 2 +-
+ hw/s390x/s390-pci-inst.c | 2 +-
+ hw/scsi/vmw_pvscsi.c     | 2 +-
+ hw/sd/omap_mmc.c         | 2 +-
+ hw/sd/pl181.c            | 2 +-
+ 12 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index fbdbd463bb..27e1c70678 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -38,6 +38,18 @@
-     #define DB_PRINT(...)
- #endif
-=20
-+#define CADENCE_UART_CLASS(class) \
-+    OBJECT_CLASS_CHECK(CadenceUartClass, (class), TYPE_CADENCE_UART)
-+#define CADENCE_UART_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(CadenceUartClass, (obj), TYPE_CADENCE_UART)
-+
-+typedef struct CadenceUartClass {
-+    /*< private >*/
-+    SysBusDeviceClass parent_class;
-+
-+    struct ResettablePhases parent_reset_phases;
-+} CadenceUartClass;
-+
- #define UART_SR_INTR_RTRIG     0x00000001
- #define UART_SR_INTR_REMPTY    0x00000002
- #define UART_SR_INTR_RFUL      0x00000004
-@@ -222,6 +234,10 @@ static int uart_can_receive(void *opaque)
-     int ret =3D MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE=
-);
-     uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
-=20
-+    if (device_is_resetting((DeviceState *) opaque)) {
-+        return 0;
-+    }
-+
-     if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
-         ret =3D MIN(ret, CADENCE_UART_RX_FIFO_SIZE - s->rx_count);
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index 33e333cc26..c674b9c0bb 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -1085,7 +1085,7 @@ static void intel_hda_reset(DeviceState *dev)
+     QTAILQ_FOREACH(kid, &d->codecs.qbus.children, sibling) {
+         DeviceState *qdev =3D kid->child;
+         cdev =3D HDA_CODEC_DEVICE(qdev);
+-        device_reset(DEVICE(cdev));
++        device_legacy_reset(DEVICE(cdev));
+         d->state_sts |=3D (1 << cdev->cad);
      }
-@@ -337,6 +353,10 @@ static void uart_receive(void *opaque, const uint8_t=
- *buf, int size)
-     CadenceUARTState *s =3D opaque;
-     uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
+     intel_hda_update_irq(d);
+diff --git a/hw/hyperv/hyperv.c b/hw/hyperv/hyperv.c
+index 8758635227..ec57417a3d 100644
+--- a/hw/hyperv/hyperv.c
++++ b/hw/hyperv/hyperv.c
+@@ -139,7 +139,7 @@ void hyperv_synic_reset(CPUState *cs)
+     SynICState *synic =3D get_synic(cs);
 =20
-+    if (device_is_resetting((DeviceState *) opaque)) {
-+        return;
-+    }
-+
-     if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
-         uart_write_rx_fifo(opaque, buf, size);
+     if (synic) {
+-        device_reset(DEVICE(synic));
++        device_legacy_reset(DEVICE(synic));
      }
-@@ -350,6 +370,10 @@ static void uart_event(void *opaque, int event)
-     CadenceUARTState *s =3D opaque;
-     uint8_t buf =3D '\0';
-=20
-+    if (device_is_resetting((DeviceState *) opaque)) {
-+        return;
-+    }
-+
-     if (event =3D=3D CHR_EVENT_BREAK) {
-         uart_write_rx_fifo(opaque, &buf, 1);
-     }
-@@ -382,6 +406,10 @@ static void uart_write(void *opaque, hwaddr offset,
- {
-     CadenceUARTState *s =3D opaque;
-=20
-+    if (device_is_resetting((DeviceState *)opaque)) {
-+        return;
-+    }
-+
-     DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value=
-);
-     offset >>=3D 2;
-     if (offset >=3D CADENCE_UART_R_MAX) {
-@@ -440,6 +468,10 @@ static uint64_t uart_read(void *opaque, hwaddr offse=
-t,
-     CadenceUARTState *s =3D opaque;
-     uint32_t c =3D 0;
-=20
-+    if (device_is_resetting((DeviceState *)opaque)) {
-+        return 0;
-+    }
-+
-     offset >>=3D 2;
-     if (offset >=3D CADENCE_UART_R_MAX) {
-         c =3D 0;
-@@ -459,9 +491,14 @@ static const MemoryRegionOps uart_ops =3D {
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
- };
-=20
--static void cadence_uart_reset(DeviceState *dev)
-+static void cadence_uart_reset_init(Object *obj, bool cold)
- {
--    CadenceUARTState *s =3D CADENCE_UART(dev);
-+    CadenceUARTState *s =3D CADENCE_UART(obj);
-+    CadenceUartClass *cc =3D CADENCE_UART_GET_CLASS(obj);
-+
-+    if (cc->parent_reset_phases.init) {
-+        cc->parent_reset_phases.init(obj, cold);
-+    }
-=20
-     s->r[R_CR] =3D 0x00000128;
-     s->r[R_IMR] =3D 0;
-@@ -470,6 +507,28 @@ static void cadence_uart_reset(DeviceState *dev)
-     s->r[R_BRGR] =3D 0x0000028B;
-     s->r[R_BDIV] =3D 0x0000000F;
-     s->r[R_TTRIG] =3D 0x00000020;
-+}
-+
-+static void cadence_uart_reset_hold(Object *obj)
-+{
-+    CadenceUARTState *s =3D CADENCE_UART(obj);
-+    CadenceUartClass *cc =3D CADENCE_UART_GET_CLASS(obj);
-+
-+    if (cc->parent_reset_phases.hold) {
-+        cc->parent_reset_phases.hold(obj);
-+    }
-+
-+    qemu_set_irq(s->irq, 0);
-+}
-+
-+static void cadence_uart_reset_exit(Object *obj)
-+{
-+    CadenceUARTState *s =3D CADENCE_UART(obj);
-+    CadenceUartClass *cc =3D CADENCE_UART_GET_CLASS(obj);
-+
-+    if (cc->parent_reset_phases.exit) {
-+        cc->parent_reset_phases.exit(obj);
-+    }
-=20
-     uart_rx_reset(s);
-     uart_tx_reset(s);
-@@ -498,6 +557,8 @@ static void cadence_uart_init(Object *obj)
-     sysbus_init_irq(sbd, &s->irq);
-=20
-     s->char_tx_time =3D (NANOSECONDS_PER_SECOND / 9600) * 10;
-+
-+    qdev_init_warm_reset_gpio(DEVICE(obj), "rst", DEVICE_ACTIVE_HIGH);
  }
 =20
- static int cadence_uart_post_load(void *opaque, int version_id)
-@@ -532,6 +593,10 @@ static const VMStateDescription vmstate_cadence_uart=
- =3D {
-         VMSTATE_UINT32(rx_wpos, CadenceUARTState),
-         VMSTATE_TIMER_PTR(fifo_trigger_handle, CadenceUARTState),
-         VMSTATE_END_OF_LIST()
-+    },
-+    .subsections =3D (const VMStateDescription * []) {
-+        &device_vmstate_reset,
-+        NULL
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index edc240bcbf..c6d72c9a5d 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -2634,7 +2634,7 @@ static void pc_machine_reset(void)
+         cpu =3D X86_CPU(cs);
+=20
+         if (cpu->apic_state) {
+-            device_reset(cpu->apic_state);
++            device_legacy_reset(cpu->apic_state);
+         }
      }
- };
+ }
+diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+index 34bb98dce8..b1350eb54f 100644
+--- a/hw/ide/microdrive.c
++++ b/hw/ide/microdrive.c
+@@ -171,7 +171,7 @@ static void md_attr_write(PCMCIACardState *card, uint=
+32_t at, uint8_t value)
+     case 0x00:	/* Configuration Option Register */
+         s->opt =3D value & 0xcf;
+         if (value & OPT_SRESET) {
+-            device_reset(DEVICE(s));
++            device_legacy_reset(DEVICE(s));
+         }
+         md_interrupt_update(s);
+         break;
+@@ -314,7 +314,7 @@ static void md_common_write(PCMCIACardState *card, ui=
+nt32_t at, uint16_t value)
+     case 0xe:	/* Device Control */
+         s->ctrl =3D value;
+         if (value & CTRL_SRST) {
+-            device_reset(DEVICE(s));
++            device_legacy_reset(DEVICE(s));
+         }
+         md_interrupt_update(s);
+         break;
+@@ -539,7 +539,7 @@ static int dscm1xxxx_attach(PCMCIACardState *card)
+     md->attr_base =3D pcc->cis[0x74] | (pcc->cis[0x76] << 8);
+     md->io_base =3D 0x0;
 =20
-@@ -543,12 +608,19 @@ static Property cadence_uart_properties[] =3D {
- static void cadence_uart_class_init(ObjectClass *klass, void *data)
+-    device_reset(DEVICE(md));
++    device_legacy_reset(DEVICE(md));
+     md_interrupt_update(md);
+=20
+     return 0;
+@@ -549,7 +549,7 @@ static int dscm1xxxx_detach(PCMCIACardState *card)
  {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-+    CadenceUartClass *cc =3D CADENCE_UART_CLASS(klass);
+     MicroDriveState *md =3D MICRODRIVE(card);
 =20
-     dc->realize =3D cadence_uart_realize;
-     dc->vmsd =3D &vmstate_cadence_uart;
--    dc->reset =3D cadence_uart_reset;
-     dc->props =3D cadence_uart_properties;
--  }
-+
-+    resettable_class_set_parent_reset_phases(rc,
-+                                             cadence_uart_reset_init,
-+                                             cadence_uart_reset_hold,
-+                                             cadence_uart_reset_exit,
-+                                             &cc->parent_reset_phases);
-+}
+-    device_reset(DEVICE(md));
++    device_legacy_reset(DEVICE(md));
+     return 0;
+ }
 =20
- static const TypeInfo cadence_uart_info =3D {
-     .name          =3D TYPE_CADENCE_UART,
-@@ -556,6 +628,7 @@ static const TypeInfo cadence_uart_info =3D {
-     .instance_size =3D sizeof(CadenceUARTState),
-     .instance_init =3D cadence_uart_init,
-     .class_init    =3D cadence_uart_class_init,
-+    .class_size =3D sizeof(CadenceUartClass),
- };
+diff --git a/hw/intc/spapr_xive.c b/hw/intc/spapr_xive.c
+index 62e0ef8fa5..bea4582f33 100644
+--- a/hw/intc/spapr_xive.c
++++ b/hw/intc/spapr_xive.c
+@@ -1528,7 +1528,7 @@ static target_ulong h_int_reset(PowerPCCPU *cpu,
+         return H_PARAMETER;
+     }
 =20
- static void cadence_uart_register_types(void)
+-    device_reset(DEVICE(xive));
++    device_legacy_reset(DEVICE(xive));
+=20
+     if (kvm_irqchip_in_kernel()) {
+         Error *local_err =3D NULL;
+diff --git a/hw/ppc/pnv_psi.c b/hw/ppc/pnv_psi.c
+index 5345c8389e..d79c8c62be 100644
+--- a/hw/ppc/pnv_psi.c
++++ b/hw/ppc/pnv_psi.c
+@@ -702,7 +702,7 @@ static void pnv_psi_p9_mmio_write(void *opaque, hwadd=
+r addr,
+         break;
+     case PSIHB9_INTERRUPT_CONTROL:
+         if (val & PSIHB9_IRQ_RESET) {
+-            device_reset(DEVICE(&psi9->source));
++            device_legacy_reset(DEVICE(&psi9->source));
+         }
+         psi->regs[reg] =3D val;
+         break;
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index 97961b0128..d89290ac28 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -1858,7 +1858,7 @@ static int spapr_phb_children_reset(Object *child, =
+void *opaque)
+     DeviceState *dev =3D (DeviceState *) object_dynamic_cast(child, TYPE=
+_DEVICE);
+=20
+     if (dev) {
+-        device_reset(dev);
++        device_legacy_reset(dev);
+     }
+=20
+     return 0;
+diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
+index 583c13deda..5a0b5cc35c 100644
+--- a/hw/ppc/spapr_vio.c
++++ b/hw/ppc/spapr_vio.c
+@@ -306,7 +306,7 @@ int spapr_vio_send_crq(SpaprVioDevice *dev, uint8_t *=
+crq)
+ static void spapr_vio_quiesce_one(SpaprVioDevice *dev)
+ {
+     if (dev->tcet) {
+-        device_reset(DEVICE(dev->tcet));
++        device_legacy_reset(DEVICE(dev->tcet));
+     }
+     free_crq(dev);
+ }
+diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+index be2896232d..d532597566 100644
+--- a/hw/s390x/s390-pci-inst.c
++++ b/hw/s390x/s390-pci-inst.c
+@@ -243,7 +243,7 @@ int clp_service_call(S390CPU *cpu, uint8_t r2, uintpt=
+r_t ra)
+                 stw_p(&ressetpci->hdr.rsp, CLP_RC_SETPCIFN_FHOP);
+                 goto out;
+             }
+-            device_reset(DEVICE(pbdev));
++            device_legacy_reset(DEVICE(pbdev));
+             pbdev->fh &=3D ~FH_MASK_ENABLE;
+             pbdev->state =3D ZPCI_FS_DISABLED;
+             stl_p(&ressetpci->fh, pbdev->fh);
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index 584b4be07e..7ad3d05b9b 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -834,7 +834,7 @@ pvscsi_on_cmd_reset_device(PVSCSIState *s)
+=20
+     if (sdev !=3D NULL) {
+         s->resetting++;
+-        device_reset(&sdev->qdev);
++        device_legacy_reset(&sdev->qdev);
+         s->resetting--;
+         return PVSCSI_COMMAND_PROCESSING_SUCCEEDED;
+     }
+diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+index d0c98ca021..24a1edc149 100644
+--- a/hw/sd/omap_mmc.c
++++ b/hw/sd/omap_mmc.c
+@@ -317,7 +317,7 @@ void omap_mmc_reset(struct omap_mmc_s *host)
+      * into any bus, and we must reset it manually. When omap_mmc is
+      * QOMified this must move into the QOM reset function.
+      */
+-    device_reset(DEVICE(host->card));
++    device_legacy_reset(DEVICE(host->card));
+ }
+=20
+ static uint64_t omap_mmc_read(void *opaque, hwaddr offset,
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 3ad7e925c5..03f859ec33 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -479,7 +479,7 @@ static void pl181_reset(DeviceState *d)
+     /* Since we're still using the legacy SD API the card is not plugged
+      * into any bus, and we must reset it manually.
+      */
+-    device_reset(DEVICE(s->card));
++    device_legacy_reset(DEVICE(s->card));
+ }
+=20
+ static void pl181_init(Object *obj)
 --=20
 2.21.0
 

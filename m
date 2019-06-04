@@ -1,178 +1,195 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2102860wrg;
-        Tue, 4 Jun 2019 09:38:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqynHfd+uC7e+XaXgkYnOs/oKCPBWfqS7eXsuEiccB9T/7AtsKm7kz75b6nDaOT5nIO6MDYk
-X-Received: by 2002:a37:8847:: with SMTP id k68mr28288832qkd.278.1559666335577;
-        Tue, 04 Jun 2019 09:38:55 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2104539wrg;
+        Tue, 4 Jun 2019 09:40:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwmBy2S+O45Axl14vCV+VWwPsaAfvkTc7SPZCgTSwUFriOamrR9LZ+xuwrF09nIgULOCfdm
+X-Received: by 2002:ac8:22a3:: with SMTP id f32mr10295708qta.152.1559666438960;
+        Tue, 04 Jun 2019 09:40:38 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v23si7064455qto.398.2019.06.04.09.38.55
+        by mx.google.com with ESMTPS id q5si5818287qvf.198.2019.06.04.09.40.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Jun 2019 09:38:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Jun 2019 09:40:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=r3PPACRH;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="MO/dXTmD";
        arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55237 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:55283 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYCSc-0002J7-WF
-	for alex.bennee@linaro.org; Tue, 04 Jun 2019 12:38:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39505)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYCUI-00041N-DI
+	for alex.bennee@linaro.org; Tue, 04 Jun 2019 12:40:38 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39468)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGL-000102-Oj
-	for qemu-devel@nongnu.org; Tue, 04 Jun 2019 12:26:14 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGI-0000x1-Ri
+	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:26:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGK-000422-Mn
-	for qemu-devel@nongnu.org; Tue, 04 Jun 2019 12:26:13 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40668)
+	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGH-0003zw-Pi
+	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:26:10 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40648)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
-	id 1hYCGI-0003ea-8R; Tue, 04 Jun 2019 12:26:10 -0400
+	id 1hYCGH-0003d2-Ho; Tue, 04 Jun 2019 12:26:09 -0400
 Received: from kouign-amann.bar.greensocs.com (unknown [172.17.10.6])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id BE31F96F7B;
-	Tue,  4 Jun 2019 16:25:48 +0000 (UTC)
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 01B3496F6C;
+	Tue,  4 Jun 2019 16:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1559665549;
+	s=mail; t=1559665548;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	to:to:cc:cc:mime-version:mime-version:
 	content-transfer-encoding:content-transfer-encoding:
 	in-reply-to:in-reply-to:references:references;
-	bh=hPGMgixGP9cMjZnkAysbw7ZF4rrVQ1Cey8fOKWl2H6M=;
-	b=r3PPACRHX3mKBa1LqS1d0U/U+GxHe/y+LkRaCi46Y/JlC8fkKqxull3KLYelEKlbukSVCK
-	zx5SCJ6ipiQCoCfIgHUS94DLXt+Ljp6p5fkorPrdDa26YON6/ftZ5Jhc0ylGcmP5Fl69wH
-	6u6wWZA1qYQv6gDQlPR9W33ShpLYb9s=
+	bh=CihRZQunkxTGZ4U7sNwYsib0KibNAR66LPQ5v0zTSC4=;
+	b=MO/dXTmDEHb8C5VJLfz/lbmaj+YnAT52ftDmmz9Uh2aD61bcvm/UqsttXVJ5P/lqqsc3o4
+	Wc/4kbBH+QMUtGq81Zu5ZhlD4IrsZdBtXkRl+NEby7d1czwk3FkJFD/KQaJfpJnZfmV25N
+	uOPn31JkUtjKMGTjMzpgGfSZTCKWZQM=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  4 Jun 2019 18:25:26 +0200
-Message-Id: <20190604162526.10655-13-damien.hedde@greensocs.com>
+Date: Tue,  4 Jun 2019 18:25:25 +0200
+Message-Id: <20190604162526.10655-12-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190604162526.10655-1-damien.hedde@greensocs.com>
 References: <20190604162526.10655-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
-	s=mail; t=1559665549;
+	s=mail; t=1559665548;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	to:to:cc:cc:mime-version:mime-version:
 	content-transfer-encoding:content-transfer-encoding:
 	in-reply-to:in-reply-to:references:references;
-	bh=hPGMgixGP9cMjZnkAysbw7ZF4rrVQ1Cey8fOKWl2H6M=;
-	b=DpRJPl4lrFiokKw3pUe0ZpGcJTDu/yrQdS3A8IHsrOJ/etF6n2MFRAhA3e9ECtwBvvEDM+
-	LqXy9d9X4MTpaon2sZXUzrqw6gI70/BDl+pxyLkQ22X1fZh3vHjwHogZrKnefKQObZAVj5
-	uWg1IV7r0MLf+Moodto9BmdoaJMqyTk=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1559665549; a=rsa-sha256; cv=none;
-	b=Uzbfd/I4A/nNTTls+Hs2QE1gyGisLFFbrQVkDniLxWN5zVq/icGaIJnCOaY85b41OshfXi
-	o9wpt0KIq78uT1/KhEXKi5OblLb4dQTBV1O3x2h1/So8xXYmf+rDAS6Bkb4XVOJ2flaAw1
-	DhYnwPHzD5+QgpP8p83YvrJUfmspq0g=
+	bh=CihRZQunkxTGZ4U7sNwYsib0KibNAR66LPQ5v0zTSC4=;
+	b=Dj16i1Kr8SiQ97HKvf66ZNVNY1Gkfm1d5rbs/5CDCcIlQ5VUClIOeT6OMvgLebVT0INH2l
+	DZMZf2Ie31Ykw22O58NUG1K/8KhYvTk4WcpENlIUyCc+55CEX/n2+TlgZnu9shRqEUp3ww
+	F7twX4NvoEUbElFr4+dnL2Lzzply2Zw=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1559665548; a=rsa-sha256; cv=none;
+	b=ZQqaIiB+16PRLS4keI5kd7wD0qmQsGtSsTtZb3D7hmiRmcn8ywyAK82GjXtmIWvilJfziu
+	8MPHO1IjrlRKD0MJ0tyDr4YUqkTImsZvfAtdvhSZcihyZCHwLA44Ub8OZT4skd0q1no7wM
+	UnhTkLBLyCmnG5F/AEmFmQTeVg32rw4=
 ARC-Authentication-Results: i=1; ORIGINATING;
 	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: [Qemu-devel] [RFC PATCH v2 12/12] Connect the uart reset gpios in
- the zynq platform
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC PATCH v2 11/12] Add uart reset support in zynq_slcr
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
 	marc.burton@greensocs.com, alistair@alistair23.me,
 	qemu-arm@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
 	marcandre.lureau@redhat.com, pbonzini@redhat.com,
 	philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UGQd+u8Xjmqh
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iCpVa+0e18xp
 
-Connect the two uart reset inputs to the slcr corresponding outputs.
+Add two gpio outputs to control the uart resets.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/arm/xilinx_zynq.c           | 14 ++++++++------
- include/hw/char/cadence_uart.h | 10 +++++++++-
- 2 files changed, 17 insertions(+), 7 deletions(-)
+ hw/misc/zynq_slcr.c | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index 198e3f9763..ed7549a6a2 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -166,7 +166,7 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *address_space_mem =3D get_system_memory();
-     MemoryRegion *ext_ram =3D g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram =3D g_new(MemoryRegion, 1);
--    DeviceState *dev;
-+    DeviceState *dev, *slcr;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
-     int n;
-@@ -211,9 +211,9 @@ static void zynq_init(MachineState *machine)
-                           1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2=
-aa,
-                           0);
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+index c6d2bba966..6649c93a90 100644
+--- a/hw/misc/zynq_slcr.c
++++ b/hw/misc/zynq_slcr.c
+@@ -96,6 +96,10 @@ REG32(SPI_RST_CTRL, 0x21c)
+ REG32(CAN_RST_CTRL, 0x220)
+ REG32(I2C_RST_CTRL, 0x224)
+ REG32(UART_RST_CTRL, 0x228)
++    FIELD(UART_RST_CTRL, UART0_CPU1X_RST, 0, 1)
++    FIELD(UART_RST_CTRL, UART1_CPU1X_RST, 1, 1)
++    FIELD(UART_RST_CTRL, UART0_REF_RST, 2, 1)
++    FIELD(UART_RST_CTRL, UART1_REF_RST, 3, 1)
+ REG32(GPIO_RST_CTRL, 0x22c)
+ REG32(LQSPI_RST_CTRL, 0x230)
+ REG32(SMC_RST_CTRL, 0x234)
+@@ -189,8 +193,14 @@ typedef struct ZynqSLCRState {
+     MemoryRegion iomem;
 =20
--    dev =3D qdev_create(NULL, "xilinx,zynq_slcr");
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8000000);
-+    slcr =3D qdev_create(NULL, "xilinx,zynq_slcr");
-+    qdev_init_nofail(slcr);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
-=20
-     dev =3D qdev_create(NULL, TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", 1);
-@@ -234,8 +234,10 @@ static void zynq_init(MachineState *machine)
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFSET])=
-;
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFSET])=
-;
-=20
--    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
--    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-+    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0),
-+                        slcr, "uart0_rst", 0);
-+    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1),
-+                        slcr, "uart1_rst", 0);
-=20
-     sysbus_create_varargs("cadence_ttc", 0xF8001000,
-             pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], =
-NULL);
-diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uar=
-t.h
-index 118e3f10de..b7489a711f 100644
---- a/include/hw/char/cadence_uart.h
-+++ b/include/hw/char/cadence_uart.h
-@@ -51,7 +51,10 @@ typedef struct {
-=20
- static inline DeviceState *cadence_uart_create(hwaddr addr,
-                                         qemu_irq irq,
--                                        Chardev *chr)
-+                                        Chardev *chr,
-+                                        DeviceState *rst_dev,
-+                                        const char *rst_name,
-+                                        int rst_n)
- {
-     DeviceState *dev;
-     SysBusDevice *s;
-@@ -63,6 +66,11 @@ static inline DeviceState *cadence_uart_create(hwaddr =
-addr,
-     sysbus_mmio_map(s, 0, addr);
-     sysbus_connect_irq(s, 0, irq);
-=20
-+    if (rst_dev) {
-+        qdev_connect_gpio_out_named(rst_dev, rst_name, rst_n,
-+                qdev_get_gpio_in_named(dev, "rst", 0));
-+    }
+     uint32_t regs[ZYNQ_SLCR_NUM_REGS];
 +
-     return dev;
++    qemu_irq uart0_rst;
++    qemu_irq uart1_rst;
+ } ZynqSLCRState;
+=20
++#define ZYNQ_SLCR_REGFIELD_TO_OUT(state, irq, reg, field) \
++    qemu_set_irq((state)->irq, ARRAY_FIELD_EX32((state)->regs, reg, fiel=
+d) !=3D 0)
++
+ static void zynq_slcr_reset_init(Object *obj, bool cold)
+ {
+     ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
+@@ -292,6 +302,24 @@ static void zynq_slcr_reset_init(Object *obj, bool c=
+old)
+     s->regs[R_DDRIOB + 12] =3D 0x00000021;
  }
 =20
++static void zynq_slcr_compute_uart_reset(ZynqSLCRState *s)
++{
++    ZYNQ_SLCR_REGFIELD_TO_OUT(s, uart0_rst, UART_RST_CTRL, UART0_REF_RST=
+);
++    ZYNQ_SLCR_REGFIELD_TO_OUT(s, uart1_rst, UART_RST_CTRL, UART1_REF_RST=
+);
++}
++
++static void zynq_slcr_reset_hold(Object *obj)
++{
++    ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
++    ZynqSLCRClass *zc =3D ZYNQ_SLCR_GET_CLASS(obj);
++
++    if (zc->parent_reset_phases.hold) {
++        zc->parent_reset_phases.hold(obj);
++    }
++
++    zynq_slcr_compute_uart_reset(s);
++}
++
+ static bool zynq_slcr_check_offset(hwaddr offset, bool rnw)
+ {
+     switch (offset) {
+@@ -431,6 +459,9 @@ static void zynq_slcr_write(void *opaque, hwaddr offs=
+et,
+             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+         }
+         break;
++    case R_UART_RST_CTRL:
++        zynq_slcr_compute_uart_reset(s);
++        break;
+     }
+ }
+=20
+@@ -447,6 +478,9 @@ static void zynq_slcr_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
+                           ZYNQ_SLCR_MMIO_SIZE);
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++
++    qdev_init_gpio_out_named(DEVICE(obj), &s->uart0_rst, "uart0_rst", 1)=
+;
++    qdev_init_gpio_out_named(DEVICE(obj), &s->uart1_rst, "uart1_rst", 1)=
+;
+ }
+=20
+ static const VMStateDescription vmstate_zynq_slcr =3D {
+@@ -469,7 +503,7 @@ static void zynq_slcr_class_init(ObjectClass *klass, =
+void *data)
+=20
+     resettable_class_set_parent_reset_phases(rc,
+                                              zynq_slcr_reset_init,
+-                                             NULL,
++                                             zynq_slcr_reset_hold,
+                                              NULL,
+                                              &zc->parent_reset_phases);
+ }
 --=20
 2.21.0
 

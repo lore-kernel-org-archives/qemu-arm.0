@@ -1,89 +1,102 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3641678wrg;
-        Wed, 5 Jun 2019 13:34:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwpZnKgPoAGslQXGJjvPoCdPAKRF0NqOEQGc/j+1OwyZQPAltCFV/SlJKPPrN/7NHS2SptR
-X-Received: by 2002:ac8:3918:: with SMTP id s24mr37237081qtb.226.1559766854160;
-        Wed, 05 Jun 2019 13:34:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559766854; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3660943wrg;
+        Wed, 5 Jun 2019 13:58:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySNdcVD7yZs8EuDcK8k57mPcUfbPA762bWFN6WwpvOsfqGGOYDGGj8AwFZfRwnwhmz0KSO
+X-Received: by 2002:a0c:8b49:: with SMTP id d9mr34063250qvc.63.1559768331172;
+        Wed, 05 Jun 2019 13:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559768331; cv=none;
         d=google.com; s=arc-20160816;
-        b=dkfRtL14jjl4k+/WvFsyy8gxSitnFkthNtPJ3XfJj2e71vPfvPVwOUfuqy0il6BsDS
-         NDzxQ/1uke/XRvlbPgFkobxt0JrjZn4RDvn22v8VWtQnaCISPjAuf1MOhX8iTOGFFRxa
-         OD1c2uNTDdbpwcOGnC2jEwJIGaAxdxvQR2OMHT7ameffr8o+EbZntAW+YRKW+NxqfMCq
-         ISzzuAm2XvBufJdU6yv92mv+ECF4UyqemQLZm0MhL4dZFcRoYtJOZdWUtA/3NDYhpf+Q
-         QH7YROTOUjyQbZwWoJL4/gy9tZaO7VGz9edZEYtrYpMAyJCe2LFyqTyWEGXbgXhouuAM
-         +eBA==
+        b=r9J/2sh9+fY5KVOiXi1Pqvpzh8VhaRZ/dsdgbQAOxwWcd7hScNz9txLKz95B7sdr+1
+         n1sitE49kbREQqwNyjxCrpTvycKoVU1S0dHu4oEwjHV4RiqTU7ppSO/RAfQtCXKO1/e4
+         u3mbZxmtBnDPUqYuvoKM3D1RC/+0b3lqST9ZRJZ9YHeqQLPfRqyP/c/TuDml4ppWiMFn
+         zmAVdzuDgLXm1iKDRFNccaZe1xcKFbwAo+R3HEkJ3bv+lMaUCxxM/Pc4qNhI6yT1OF46
+         0Q+blL8PiKh9c9BSpLwky7h91SU1QXQXnchUDXgVoo2Cy1AacLYZKrLynxY1Lu82iNoi
+         GeYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date;
-        bh=I4YjWYdacRhE5/8lBw/PZZ7wXuyuWFyGbHzXDb5ZgEs=;
-        b=Km+XKRr4hlg/+JQpkTh66yHOn64F3GC2BBJXHScnPiETuLGJgCrp2ywtMr+bv/FziE
-         4bFLA+vp+oKm6dlueLrHxkWpdChvatEOSzoEylspppKlbTceG5mPT9Hx9Xa2t2AuzPc8
-         EFI5tSEB//07yEy49OT3O908+4tTxajr4WCOtkZAnyLxKItwoq1CfIpQmoXS2Pe+rzlw
-         8EfSdEbt+AVS+o3HZ4LnDZd8z7r+6IV9S/xNieE3d9VSSS4V6tldHF/cjVpkM7QfDYGe
-         8OHfAqKLss2I+PcpIcdFzq6jQC6VAlAVFpnCkGIpHcPUoFOQ3yzOSJ/23hbtb2hu2+gK
-         BRzQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=yjdMaLJKLWTE+OzLW+tTbL3wKIJtV8g2rfeZlQHS85U=;
+        b=D6sU8zKjLS/gRQprj28kNy239S6pV8fY/po/9/oKyqQVBBSsM9FkP7DjOTYMSJEo9t
+         sx/1huCm8ZhAt5tOrv6sQOciFVb8WkjmIChiYlb7+avNRZx/hLblqoM6t3nR4B+WtVt6
+         3mzhhb4CjVjWcafmLuAhJAQYY5jJDREfcSj9VWjqNsMbFKAZ6LX2bvHJ83Ux4F8jlK6v
+         DcHqLk6iUfQ9dkO+upRvGBdOIWxBaSZbb0gLgLa4eXYGJPA31911hJwoi9oEHfMuHF3s
+         9KqQ5Bc40bcC8fAhUma7eWo6uXcVYZBUJBnd/OF/Nlfo0Da142IudAa2+tAQXqd0Hw57
+         44BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xRhC6ePo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h64si397506qkd.193.2019.06.05.13.34.14
+        by mx.google.com with ESMTPS id n43si3891050qvc.71.2019.06.05.13.58.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 13:34:14 -0700 (PDT)
+        Wed, 05 Jun 2019 13:58:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xRhC6ePo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49450 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([127.0.0.1]:49903 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYcbt-0002R6-Lz
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 16:34:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40827)
+	id 1hYczi-0007SP-IU
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 16:58:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48104)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hYcbl-0002Qo-R1
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:34:07 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1hYcyD-0006Cd-QU
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:57:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hYcbi-00059M-SS
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:34:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40764)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1hYcbg-00051d-7y; Wed, 05 Jun 2019 16:34:01 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5D8377E422;
-	Wed,  5 Jun 2019 20:33:50 +0000 (UTC)
-Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9798D619A9;
-	Wed,  5 Jun 2019 20:33:37 +0000 (UTC)
-Date: Wed, 5 Jun 2019 17:33:35 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Cleber Rosa <crosa@redhat.com>
-Message-ID: <20190605203335.GE22416@habkost.net>
-References: <20190312234541.2887-1-philmd@redhat.com>
-	<20190312234541.2887-3-philmd@redhat.com>
-	<20190522205234.GY10764@habkost.net>
-	<1204725743.24201394.1558559144548.JavaMail.zimbra@redhat.com>
-	<1088d160-20c1-00ed-b494-fede1a3a8410@redhat.com>
-	<1894627419.24355320.1558618806274.JavaMail.zimbra@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <1894627419.24355320.1558618806274.JavaMail.zimbra@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 05 Jun 2019 20:33:58 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test:
- add a test for the Raspberry Pi 2
+	(envelope-from <richard.henderson@linaro.org>) id 1hYcyC-0008E9-63
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:57:17 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:44601)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1hYcyB-0008Av-Ka
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:57:15 -0400
+Received: by mail-oi1-x242.google.com with SMTP id e189so23083oib.11
+	for <qemu-arm@nongnu.org>; Wed, 05 Jun 2019 13:57:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=yjdMaLJKLWTE+OzLW+tTbL3wKIJtV8g2rfeZlQHS85U=;
+	b=xRhC6ePodcuGp4y5m8t0tuRQsw6cKEbUAcgBS1Vg+9SxsGMFJGSVB7dUYGEe5LAMbY
+	GxgstnIjD4Cg7xKHF3xwkg+UtaFg2r9GYAug+7NGkvuUUIkH3S39nscETEtz0OffBhN+
+	I56KGWxA2OYQdFjT5JQ4vb8ze7qym8AqMa/DJYeKtuafMSaVR0abndxzfEI52lcdVB73
+	sAAqwQF3MAoYCtTTakk6nJI0GaZ/3kRlea1MDINwQtetzAhvMQYY1ccgkpu3KrV6fLwl
+	8ca9zQQ3Bl2qTXiwkgo6pKzr8Xp1kh1l/8amg7aO6RB9z/XH7DOvHVXGh4OV7nGGtc1X
+	Mquw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=yjdMaLJKLWTE+OzLW+tTbL3wKIJtV8g2rfeZlQHS85U=;
+	b=oyxRjUMTRxnu6HGOY8xldCDSNSDko7fRlEgU21zSe5GN4n4EIIlCpeUAIPxm/o7p+e
+	IpYx6ZT/7bTKmRbvoMCu36UVF/VJ36a21mpAErT+mp1N+O8HMcQTvS/SzzmDL8gw1LB2
+	s1mjl/Hc/C74EHxuocWgqhddETk6m9Lf3r9UwhGAWYt99az0USYvLKwPrhvmLO8/VIXK
+	kCGiO5zSRhMZ9pkGx4ChPjMFqVXNAyN6fm8MFRehim8nQ1llZRHI0V7XFrJSLqO8+7eN
+	aeSZ/9o1QZRczKaJiktzntlKBAXcQFTsCuNe2bw0Rc+H4sHO1q8u26b+xWk0O4SK872s
+	IIOQ==
+X-Gm-Message-State: APjAAAVeAZ2CRNOWh6gAIJErrcYytfqfcVJw8nl9Gr0Vdwsgzba+yOZG
+	BU++PvcJysrU6ztQJebMCa3wyQ==
+X-Received: by 2002:aca:318c:: with SMTP id x134mr8589922oix.125.1559768234794;
+	Wed, 05 Jun 2019 13:57:14 -0700 (PDT)
+Received: from localhost.localdomain (200-56-192-86-cable.cybercable.net.mx.
+	[200.56.192.86])
+	by smtp.gmail.com with ESMTPSA id f5sm7414155otl.51.2019.06.05.13.57.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 05 Jun 2019 13:57:14 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed,  5 Jun 2019 15:57:02 -0500
+Message-Id: <20190605205706.569-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190605205706.569-1-richard.henderson@linaro.org>
+References: <20190605205706.569-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: [Qemu-arm] [PATCH v6 2/6] linux-user: Validate mmap/mprotect prot
+ value
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,97 +108,262 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, Dave.Martin@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k1wWemfAxr0Y
+X-TUID: Ioc/1xHp9H8D
 
-On Thu, May 23, 2019 at 09:40:06AM -0400, Cleber Rosa wrote:
-> ----- Original Message -----
-> > From: "Philippe Mathieu-Daud=E9" <philmd@redhat.com>
-> > To: "Cleber Rosa" <crosa@redhat.com>, "Eduardo Habkost" <ehabkost@red=
-hat.com>
-> > Cc: qemu-devel@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>=
-, qemu-arm@nongnu.org, "Philippe Mathieu-Daud=E9"
-> > <f4bug@amsat.org>, "Andrew Baumann" <Andrew.Baumann@microsoft.com>, "=
-Gerd Hoffmann" <kraxel@redhat.com>
-> > Sent: Thursday, May 23, 2019 5:29:22 AM
-> > Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add=
- a test for the Raspberry Pi 2
-> >=20
-> > On 5/22/19 11:05 PM, Cleber Rosa wrote:
-> > > ----- Original Message -----
-> > >> From: "Eduardo Habkost" <ehabkost@redhat.com>
-> > >> On Wed, Mar 13, 2019 at 12:45:41AM +0100, Philippe Mathieu-Daud=E9=
- wrote:
-> > >>> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> > >>>
-> > >>> Similar to the x86_64/pc test, it boots a Linux kernel on a raspi=
-2
-> > >>> board and verify the serial is working.
-> > >>>
-> > >>> If ARM is a target being built, "make check-acceptance" will
-> > >>> automatically include this test by the use of the "arch:arm" tags=
-.
-> > >>>
-> > >>> Alternatively, this test can be run using:
-> > >>>
-> > >>>     $ avocado run -t arch:arm tests/acceptance
-> > >>>     $ avocado run -t machine:raspi2 tests/acceptance
-> > >>>
-> > >>> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> > >>
-> > >> We're getting timeouts on travis-ci:
-> > >> https://travis-ci.org/ehabkost/qemu/jobs/535468057#L3289
-> > >>
-> > >> I don't know yet if the guest is hanging, or if we just need to
-> > >> increase the timeout.  I could reproduce the timeout locally,
-> > >> too.
-> >=20
-> > That's odd, I can't reproduce (this test is quicker than the followin=
-g
-> > test_arm_emcraft_sf2 which start u-boot then timeouts and start the k=
-ernel).
-> >=20
-> > My guess is network issues, since this test use a different mirror:
-> > archive.raspberrypi.org
-> >=20
->=20
-> It could be a network issue, it could be something else.  I think the v=
-ery
-> first step, and I'd urge us to get that on master ASAP, is to show the
-> entire logs in CI, I mean:
->=20
-> ---
->=20
-> diff --git a/.travis.yml b/.travis.yml
-> index 6fd89b3d91..fd8f6ca2d2 100644
-> --- a/.travis.yml
-> +++ b/.travis.yml
-> @@ -225,7 +225,7 @@ matrix:
->      # Acceptance (Functional) tests
->      - env:
->          - CONFIG=3D"--python=3D/usr/bin/python3 --target-list=3Dx86_64=
--softmmu,mips-softmmu,mips64el-softmmu,aarch64-softmmu,arm-softmmu,s390x-=
-softmmu,alpha-softmmu"
-> -        - TEST_CMD=3D"make check-acceptance"
-> +        - TEST_CMD=3D"make AVOCADO_SHOW=3Dtest check-acceptance"
->        addons:
->          apt:
->            packages:
+The kernel will return -EINVAL for bits set in the prot argument
+that are unknown or invalid.  Previously we were simply cropping
+out the bits that we care about.
 
-I have applied this change on python-next.  The failure can be
-seen here:
-https://travis-ci.org/ehabkost/qemu/jobs/541758418#L4033
+Introduce validate_prot_to_pageflags to perform this check in a
+single place between the two syscalls.  Differentiate between
+the target and host versions of prot.  Compute the qemu internal
+page_flags value at the same time.
 
-While we don't fix this, I'm removing this test case from the
-queue, so I can send a pull request.  Sorry for taking so long to
-act on this.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/mmap.c | 106 ++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 75 insertions(+), 31 deletions(-)
 
---=20
-Eduardo
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index af41339d57..3117f57fd8 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -61,11 +61,38 @@ void mmap_fork_end(int child)
+         pthread_mutex_unlock(&mmap_mutex);
+ }
+ 
++/*
++ * Validate target prot bitmask.
++ * Return the prot bitmask for the host in *HOST_PROT.
++ * Return 0 if the target prot bitmask is invalid, otherwise
++ * the internal qemu page_flags (which will include PAGE_VALID).
++ */
++static int validate_prot_to_pageflags(int *host_prot, int prot)
++{
++    int valid = PROT_READ | PROT_WRITE | PROT_EXEC | TARGET_PROT_SEM;
++    int page_flags = (prot & PAGE_BITS) | PAGE_VALID;
++
++    /*
++     * For the host, we need not pass anything except read/write/exec.
++     * While PROT_SEM is allowed by all hosts, it is also ignored, so
++     * don't bother transforming guest bit to host bit.  Any other
++     * target-specific prot bits will not be understood by the host
++     * and will need to be encoded into page_flags for qemu emulation.
++     *
++     * TODO: We do not actually have to map guest pages as executable,
++     * since they will not be directly executed by the host.  We only
++     * need to remember exec within page_flags.
++     */
++    *host_prot = prot & (PROT_READ | PROT_WRITE | PROT_EXEC);
++
++    return prot & ~valid ? 0 : page_flags;
++}
++
+ /* NOTE: all the constants are the HOST ones, but addresses are target. */
+-int target_mprotect(abi_ulong start, abi_ulong len, int prot)
++int target_mprotect(abi_ulong start, abi_ulong len, int target_prot)
+ {
+     abi_ulong end, host_start, host_end, addr;
+-    int prot1, ret;
++    int prot1, ret, page_flags, host_prot;
+ 
+ #ifdef DEBUG_MMAP
+     printf("mprotect: start=0x" TARGET_ABI_FMT_lx
+@@ -75,56 +102,65 @@ int target_mprotect(abi_ulong start, abi_ulong len, int prot)
+            prot & PROT_EXEC ? 'x' : '-');
+ #endif
+ 
+-    if ((start & ~TARGET_PAGE_MASK) != 0)
++    if ((start & ~TARGET_PAGE_MASK) != 0) {
+         return -TARGET_EINVAL;
++    }
++    page_flags = validate_prot_to_pageflags(&host_prot, target_prot);
++    if (!page_flags) {
++        return -TARGET_EINVAL;
++    }
+     len = TARGET_PAGE_ALIGN(len);
+     end = start + len;
+     if (!guest_range_valid(start, len)) {
+         return -TARGET_ENOMEM;
+     }
+-    prot &= PROT_READ | PROT_WRITE | PROT_EXEC;
+-    if (len == 0)
++    if (len == 0) {
+         return 0;
++    }
+ 
+     mmap_lock();
+     host_start = start & qemu_host_page_mask;
+     host_end = HOST_PAGE_ALIGN(end);
+     if (start > host_start) {
+         /* handle host page containing start */
+-        prot1 = prot;
+-        for(addr = host_start; addr < start; addr += TARGET_PAGE_SIZE) {
++        prot1 = host_prot;
++        for (addr = host_start; addr < start; addr += TARGET_PAGE_SIZE) {
+             prot1 |= page_get_flags(addr);
+         }
+         if (host_end == host_start + qemu_host_page_size) {
+-            for(addr = end; addr < host_end; addr += TARGET_PAGE_SIZE) {
++            for (addr = end; addr < host_end; addr += TARGET_PAGE_SIZE) {
+                 prot1 |= page_get_flags(addr);
+             }
+             end = host_end;
+         }
+-        ret = mprotect(g2h(host_start), qemu_host_page_size, prot1 & PAGE_BITS);
+-        if (ret != 0)
++        ret = mprotect(g2h(host_start), qemu_host_page_size,
++                       prot1 & PAGE_BITS);
++        if (ret != 0) {
+             goto error;
++        }
+         host_start += qemu_host_page_size;
+     }
+     if (end < host_end) {
+-        prot1 = prot;
+-        for(addr = end; addr < host_end; addr += TARGET_PAGE_SIZE) {
++        prot1 = host_prot;
++        for (addr = end; addr < host_end; addr += TARGET_PAGE_SIZE) {
+             prot1 |= page_get_flags(addr);
+         }
+-        ret = mprotect(g2h(host_end - qemu_host_page_size), qemu_host_page_size,
+-                       prot1 & PAGE_BITS);
+-        if (ret != 0)
++        ret = mprotect(g2h(host_end - qemu_host_page_size),
++                       qemu_host_page_size, prot1 & PAGE_BITS);
++        if (ret != 0) {
+             goto error;
++        }
+         host_end -= qemu_host_page_size;
+     }
+ 
+     /* handle the pages in the middle */
+     if (host_start < host_end) {
+-        ret = mprotect(g2h(host_start), host_end - host_start, prot);
+-        if (ret != 0)
++        ret = mprotect(g2h(host_start), host_end - host_start, host_prot);
++        if (ret != 0) {
+             goto error;
++        }
+     }
+-    page_set_flags(start, start + len, prot | PAGE_VALID);
++    page_set_flags(start, start + len, page_flags);
+     mmap_unlock();
+     return 0;
+ error:
+@@ -364,10 +400,11 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
+ }
+ 
+ /* NOTE: all the constants are the HOST ones */
+-abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
++abi_long target_mmap(abi_ulong start, abi_ulong len, int target_prot,
+                      int flags, int fd, abi_ulong offset)
+ {
+     abi_ulong ret, end, real_start, real_end, retaddr, host_offset, host_len;
++    int page_flags, host_prot;
+ 
+     mmap_lock();
+ #ifdef DEBUG_MMAP
+@@ -402,6 +439,12 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+         goto fail;
+     }
+ 
++    page_flags = validate_prot_to_pageflags(&host_prot, target_prot);
++    if (!page_flags) {
++        errno = EINVAL;
++        goto fail;
++    }
++
+     /* Also check for overflows... */
+     len = TARGET_PAGE_ALIGN(len);
+     if (!len) {
+@@ -467,14 +510,15 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+         /* Note: we prefer to control the mapping address. It is
+            especially important if qemu_host_page_size >
+            qemu_real_host_page_size */
+-        p = mmap(g2h(start), host_len, prot,
++        p = mmap(g2h(start), host_len, host_prot,
+                  flags | MAP_FIXED | MAP_ANONYMOUS, -1, 0);
+-        if (p == MAP_FAILED)
++        if (p == MAP_FAILED) {
+             goto fail;
++        }
+         /* update start so that it points to the file position at 'offset' */
+         host_start = (unsigned long)p;
+         if (!(flags & MAP_ANONYMOUS)) {
+-            p = mmap(g2h(start), len, prot,
++            p = mmap(g2h(start), len, host_prot,
+                      flags | MAP_FIXED, fd, host_offset);
+             if (p == MAP_FAILED) {
+                 munmap(g2h(start), host_len);
+@@ -508,19 +552,19 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+             /* msync() won't work here, so we return an error if write is
+                possible while it is a shared mapping */
+             if ((flags & MAP_TYPE) == MAP_SHARED &&
+-                (prot & PROT_WRITE)) {
++                (host_prot & PROT_WRITE)) {
+                 errno = EINVAL;
+                 goto fail;
+             }
+-            retaddr = target_mmap(start, len, prot | PROT_WRITE,
++            retaddr = target_mmap(start, len, target_prot | PROT_WRITE,
+                                   MAP_FIXED | MAP_PRIVATE | MAP_ANONYMOUS,
+                                   -1, 0);
+             if (retaddr == -1)
+                 goto fail;
+             if (pread(fd, g2h(start), len, offset) == -1)
+                 goto fail;
+-            if (!(prot & PROT_WRITE)) {
+-                ret = target_mprotect(start, len, prot);
++            if (!(host_prot & PROT_WRITE)) {
++                ret = target_mprotect(start, len, target_prot);
+                 assert(ret == 0);
+             }
+             goto the_end;
+@@ -531,13 +575,13 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+             if (real_end == real_start + qemu_host_page_size) {
+                 /* one single host page */
+                 ret = mmap_frag(real_start, start, end,
+-                                prot, flags, fd, offset);
++                                host_prot, flags, fd, offset);
+                 if (ret == -1)
+                     goto fail;
+                 goto the_end1;
+             }
+             ret = mmap_frag(real_start, start, real_start + qemu_host_page_size,
+-                            prot, flags, fd, offset);
++                            host_prot, flags, fd, offset);
+             if (ret == -1)
+                 goto fail;
+             real_start += qemu_host_page_size;
+@@ -546,7 +590,7 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+         if (end < real_end) {
+             ret = mmap_frag(real_end - qemu_host_page_size,
+                             real_end - qemu_host_page_size, end,
+-                            prot, flags, fd,
++                            host_prot, flags, fd,
+                             offset + real_end - qemu_host_page_size - start);
+             if (ret == -1)
+                 goto fail;
+@@ -562,13 +606,13 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
+             else
+                 offset1 = offset + real_start - start;
+             p = mmap(g2h(real_start), real_end - real_start,
+-                     prot, flags, fd, offset1);
++                     host_prot, flags, fd, offset1);
+             if (p == MAP_FAILED)
+                 goto fail;
+         }
+     }
+  the_end1:
+-    page_set_flags(start, start + len, prot | PAGE_VALID);
++    page_set_flags(start, start + len, page_flags);
+  the_end:
+ #ifdef DEBUG_MMAP
+     printf("ret=0x" TARGET_ABI_FMT_lx "\n", start);
+-- 
+2.17.1
+

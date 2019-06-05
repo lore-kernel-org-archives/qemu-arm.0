@@ -1,101 +1,105 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3672523wrg;
-        Wed, 5 Jun 2019 14:10:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzq4/xLYq+RFgfkMzRGqb5wgNEAqL0jLEUCoYYo8TB1KClJ4/ZFvgzkA/XFUnnJHKxWhB8W
-X-Received: by 2002:ac8:2c33:: with SMTP id d48mr37458137qta.40.1559769055038;
-        Wed, 05 Jun 2019 14:10:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559769055; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3673991wrg;
+        Wed, 5 Jun 2019 14:12:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzOu5nzfrFvMWBkHZsUY3LjOOp7RtCH87HUt3t1w+9/ON+j2r6/kNPKLQmwruULK0iuOCqF
+X-Received: by 2002:a05:620a:13bc:: with SMTP id m28mr22030001qki.334.1559769146393;
+        Wed, 05 Jun 2019 14:12:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559769146; cv=none;
         d=google.com; s=arc-20160816;
-        b=GnqOY2ysYB1h8m4+v4rNoO5ykotTi+NjW0r41SJy6rVNCCyWeoG6eyWVV9yM92tApj
-         QFGyaRUOxda1DsVDj1iA9S7OKt/E+qwoAfkqLgd7Pom0AJKqEYJ2lQZK54ywXw40yjjb
-         dp4si4SWSB86EpDzilyCPzEQjafCsGJa5Y6UB8I5dLrAu4daeaAx4o7CPmuuKQ+iGpSI
-         FQH6KIAnQJiQbM+Kns7qHhwzs4gcxOpZIwIDzqm/frIgFUIqG1C973V6E6GmZ3/JEHc6
-         Dvu6k/E4BeUZ/q4vJcfE6spz6kgxYeAWjdagg1nqjhZzJbds3rknZko0IlOMMjIhy3Dd
-         q9yg==
+        b=fADmXejMI4VJpZFtNvki1dLjWxWzPkvQwt9UzmR8vSW3Jdnu6lgL1aoE3eSqHTP3Fg
+         HqW/fFhpR5RGEQteG43tRyNCK3U8anKM2PBmfKsWBXKh04HIBtLCa7S+Ah6wB7R+5YMD
+         O/fbrBndmEqpB6d3aJKP3ms7LrQgZwVOHZtjevznL+ljSrlr82GbTVv5FhmtIndkF1am
+         OJrXh+kpn1jle/YsuIVaTHf8AZLT8aQjwc9ufFjdHgFU7lbhD/tPCXr5FrtqLHw/Nh7W
+         msS178HsKvitTByowWGEqePWbfslmhnrz9NhPWQSNaSTxcy0kJAZAK9iU0O4E9y8EVn3
+         Nlgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=c6s3cz8Azngdshx9nMls9ehZ7rxdcfsNQPzwRD0wABs=;
-        b=uo99PNztMFajAAcKM8AJnLD4EZlIc4k251/SredkZfXF9jINpN6iVqPUMAtVQi00hf
-         uhtBjzQcGmZYctC8UPIBdXnx/PonurLq6IauxRNdand8BMqirfkOoqbRmiSvFZ4D0S/C
-         iJY43mziSoGaWuCrzbn4QF2KFih7geuMeZg22WQWIm0dEaqUj1OqyrBtzC6sxHR96eEg
-         AyCATZvxXXikCEED7RNnwkpxliEmhRlO0uirS0RXhNu+h1ThURMouvdZFaTy9EhCzbDc
-         homDbxUFXHuMlPGrvBdTAwHo/2mOABy0gutdMHXOheYEMfwl0s9lgDjkxFJfUQs+spHz
-         9JLg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=wLEONtugxRmHrUuRajLF1oZtGyxglG4wOKD9fRx93u4=;
+        b=girsf0MP6GCbyZkYS70c4GLjRhUoZUA810wYu95QSiYNMvh10CVS2XKpt/uUe5JeAU
+         KFLCwqjAhfon2ZcfqmHwPVdsoHRXoh3G5ixKzdXzpev2pV1MdMI1UlPI4x0jE4QI8von
+         CDvYwQoQBKu6rmkegBT1V9retZIc6GEerIIveOTD+JJWUz0NsTgS6t5r1wl5QU7eaQjC
+         OwwaCXqtjOZdy7m5usr9K2clip2+mp+ngwxV8AI0B0KpLdcisr2qDMpKDSNogE/GVw5R
+         Gfb3/AJpZJw9rL4Dg8UFyRRWxCT4ehMMh/ctaZhQrNY+NBXgdbdFbDkmX25P4r0gKqCd
+         QiTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pi3aTdqr;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b="rUd6yR/n";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g34si8343017qtb.209.2019.06.05.14.10.54
+        by mx.google.com with ESMTPS id 40si732110qtn.405.2019.06.05.14.12.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 14:10:55 -0700 (PDT)
+        Wed, 05 Jun 2019 14:12:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Pi3aTdqr;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b="rUd6yR/n";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:50111 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:50186 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYdBO-0007rR-GU
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 17:10:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48249)
+	id 1hYdCr-0001Dx-Sw
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 17:12:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46729)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hYcyW-0006Ym-Rx
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 16:57:38 -0400
+	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYcu6-0002QJ-MQ
+	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 16:53:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hYcyT-0000k8-9Z
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 16:57:35 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:36873)
+	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYcu2-0004x8-VQ
+	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 16:53:00 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:33063)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hYcyP-0000CX-6P
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 16:57:31 -0400
-Received: by mail-ot1-x343.google.com with SMTP id r10so2079085otd.4
-	for <qemu-devel@nongnu.org>; Wed, 05 Jun 2019 13:57:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=c6s3cz8Azngdshx9nMls9ehZ7rxdcfsNQPzwRD0wABs=;
-	b=Pi3aTdqrqeBRGYuhTiHfiPC9dJQoKV2XJ37yN/xweKBwjVEvLlHt442LxzAWbr5mDD
-	hHDFdAC+YGK+/sJAOM7ZuQMgz2EyltsxHz2v1//GtT/DI650Hp8gfUKN6NEUHmiGJ8/W
-	W3V7UQRZHps8uhZ/6SrC9f3Hw32ugHwDhAOF/hvEWZMi7oczhrN7tzTCEdLKSKRSPv4t
-	68am+nU/xhCyOKxRvXzRibHYcDbkVM+6A6GJLdRVU4lKt5iKbLP4AwYbs5UAHLQql/ye
-	i2GHYJbqTrzCfK6cT/8Y4Dh/5re747t4ZJP+lspe6bOachDWMFA7Bs2GvyQfGOGF1EOr
-	ak3Q==
+	(Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+	id 1hYcty-0003lR-PR; Wed, 05 Jun 2019 16:52:54 -0400
+Received: by mail-oi1-x242.google.com with SMTP id q186so59831oia.0;
+	Wed, 05 Jun 2019 13:52:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=XfHKPH+7wVpd9sl6nChvtGjSKkYYwanzDLHVofKGQkU=;
+	b=rUd6yR/ngjv0K1A/rVC1N4P8PovK4oVMCgE7bCvJc9QVYSKD7SzCkn9svmeEtldsax
+	YHi8C+ZjPE89pssiW3XDeflKYiXrfI09hmohKDuOd1rX60SMLsx41MWVmhvfqykmudBz
+	kr+rkaB3umQIcZvdQSlLkqOnj4gGloDalkCJvKDP29vZL2K/mEqCMfsZ/YxnHmNt5GSq
+	YBB4Pu/NPLSOt50LVs2ulv+xuAzK3pNTCHcE2/8AlHw1rIMBgjlb4kuO+PBZJ4BKPWbj
+	c2UapgiemEY6ZxDGFJ7+gZY2KSKldknruqXuOKNNZeusMjCUF47au2sVgAqLRhBCry0s
+	EDgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=c6s3cz8Azngdshx9nMls9ehZ7rxdcfsNQPzwRD0wABs=;
-	b=qgr0tgxoJBkztPsjFd70vCT4WYNeFVd0UG2V5cYgQ68HioGCPMpHhFgyI5afbakRXD
-	Jk+QMMgebj2uUxWczdni0xwAF5LuBj83IJA4zurAGiY71N4thw5Ls4fTSAY3aVmkwQgy
-	hZvK64IBoAVzc2qoF4D5u9nqUUimbcf/0T2FAsGZxccyISmFNCeXN1KIUwcu0W5hEg8R
-	voaaGhW22mYMy0KSJGKwd5yTKa80CZNVuF8bS3sFaao4OCCz/k2wx9UgJ3DJliDF3mDc
-	VGj4GHIc85cmsNN1LcGaqT5GQkKGLaABCrp8sXmgMEaNOfCu2VrWqHoWdruKtPpsnOxY
-	R4fw==
-X-Gm-Message-State: APjAAAUn58NsubxSy9N8ssUSOdQRis8SUo2s7WtPq9VwLBtg+eWuE6nM
-	tyoaS4zf6CqPKX+ZivQTfp35G616BmjTSA==
-X-Received: by 2002:a9d:10c:: with SMTP id 12mr11837547otu.123.1559768241530; 
-	Wed, 05 Jun 2019 13:57:21 -0700 (PDT)
-Received: from localhost.localdomain (200-56-192-86-cable.cybercable.net.mx.
-	[200.56.192.86])
-	by smtp.gmail.com with ESMTPSA id f5sm7414155otl.51.2019.06.05.13.57.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 05 Jun 2019 13:57:20 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Wed,  5 Jun 2019 15:57:06 -0500
-Message-Id: <20190605205706.569-7-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190605205706.569-1-richard.henderson@linaro.org>
-References: <20190605205706.569-1-richard.henderson@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=XfHKPH+7wVpd9sl6nChvtGjSKkYYwanzDLHVofKGQkU=;
+	b=d5H9pgbQ1WMzt/1s1ZV0Gkp4LWVCKkq3KaDK4bTpLwUkq9TnbV9qsq+jTGR+azKu3l
+	kZAd7vljyPhe/EEh0s9BXWbr/ngFIhz0SHoK5DG8uOA5W5Yubo8AFKVuqJvqtlmk3ucS
+	3UQ05AKzxHbditXBgtM4zLMedPmqnCXaDydM06d4R7249oozW19mUr2nOdrxEbgL2N8Q
+	fl3F3ee+fLHwkkmsJXqDCtyrgGhgAUBjkignbegDmRjs+iQ+hVvQEoqQ4LohcJtSGz1d
+	mb4vVp45d/eMvJYtpxWsxVJWBAq2aRukKS9xe+fhxGy9q+PVZUbS7TTYEhiDA+5pfD+E
+	Jl4Q==
+X-Gm-Message-State: APjAAAVQCWlbW7ixGrxfBE9Q+9YSpAkvPR2KJUKU7TlArQgfGGF+vEBe
+	snj83iT6cRbzyP4xZmKZRgywRYh/xTyb9ra6Cg4=
+X-Received: by 2002:aca:abd8:: with SMTP id u207mr9017039oie.136.1559767970411;
+	Wed, 05 Jun 2019 13:52:50 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
+	Wed, 5 Jun 2019 13:52:49 -0700 (PDT)
+Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
+	Wed, 5 Jun 2019 13:52:49 -0700 (PDT)
+In-Reply-To: <20190520220635.10961-2-f4bug@amsat.org>
+References: <20190520220635.10961-1-f4bug@amsat.org>
+	<20190520220635.10961-2-f4bug@amsat.org>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 5 Jun 2019 22:52:49 +0200
+Message-ID: <CAL1e-=i81qtN5hVkGF=8iBsF-7v6R_f-FafDghjLjqzfgQLLVA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: [Qemu-devel] [PATCH v6 6/6] tests/tcg/aarch64: Add bti smoke test
+X-Received-From: 2607:f8b0:4864:20::242
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH 1/2] BootLinuxConsoleTest: Do not log empty
+ lines
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,200 +111,48 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, Dave.Martin@arm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Caio Carrara <ccarrara@redhat.com>, qemu-arm@nongnu.org,
+	Cleber Rosa <crosa@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pNDO11ueEgXF
+X-TUID: XNtioGo+0Qf2
 
-This will build with older toolchains, without the upstream support
-for -mbranch-protection.  Such a toolchain will produce a warning
-in such cases,
+On May 21, 2019 12:07 AM, "Philippe Mathieu-Daud=C3=A9" <f4bug@amsat.org> w=
+rote:
+>
+> Avoid to log empty lines in console debug logs.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
 
-ld: warning: /tmp/ccyZt0kq.o: unsupported GNU_PROPERTY_TYPE (5) \
-type: 0xc0000000
+Acked-by: Aleksandar Markovic <amarkovic@wavecomp.com>
 
-but the still places the note at the correct location in the binary
-for processing by the runtime loader.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/aarch64/bti-1.c         | 77 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/bti-crt.inc.c   | 69 +++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  3 ++
- 3 files changed, 149 insertions(+)
- create mode 100644 tests/tcg/aarch64/bti-1.c
- create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
-
-diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
-new file mode 100644
-index 0000000000..2aee57ea7a
---- /dev/null
-+++ b/tests/tcg/aarch64/bti-1.c
-@@ -0,0 +1,77 @@
-+/*
-+ * Branch target identification, basic notskip cases.
-+ */
-+
-+#include "bti-crt.inc.c"
-+
-+/*
-+ * Work around lack of -mbranch-protection=standard in older toolchains.
-+ * The signal handler is invoked by the kernel with PSTATE.BTYPE=2, which
-+ * means that the handler must begin with a marker like BTI_C.
-+ */
-+asm("skip2_sigill1:\n\
-+	hint	#34\n\
-+	b	skip2_sigill2\n\
-+.type skip2_sigill1,%function\n\
-+.size skip2_sigill1,8");
-+
-+extern void skip2_sigill1(int sig, siginfo_t *info, ucontext_t *uc)
-+    __attribute__((visibility("hidden")));
-+
-+static void __attribute__((used))
-+skip2_sigill2(int sig, siginfo_t *info, ucontext_t *uc)
-+{
-+    uc->uc_mcontext.pc += 8;
-+    uc->uc_mcontext.pstate = 1;
-+}
-+
-+#define NOP       "nop"
-+#define BTI_N     "hint #32"
-+#define BTI_C     "hint #34"
-+#define BTI_J     "hint #36"
-+#define BTI_JC    "hint #38"
-+
-+#define BTYPE_1(DEST) \
-+    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x16")
-+
-+#define BTYPE_2(DEST) \
-+    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x16", "x30")
-+
-+#define BTYPE_3(DEST) \
-+    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x15")
-+
-+#define TEST(WHICH, DEST, EXPECT) \
-+    do { WHICH(DEST); fail += skipped ^ EXPECT; } while (0)
-+
-+
-+int main()
-+{
-+    int fail = 0;
-+    int skipped;
-+
-+    /* Signal-like with SA_SIGINFO.  */
-+    signal_info(SIGILL, skip2_sigill1);
-+
-+    TEST(BTYPE_1, NOP, 1);
-+    TEST(BTYPE_1, BTI_N, 1);
-+    TEST(BTYPE_1, BTI_C, 0);
-+    TEST(BTYPE_1, BTI_J, 0);
-+    TEST(BTYPE_1, BTI_JC, 0);
-+
-+    TEST(BTYPE_2, NOP, 1);
-+    TEST(BTYPE_2, BTI_N, 1);
-+    TEST(BTYPE_2, BTI_C, 0);
-+    TEST(BTYPE_2, BTI_J, 1);
-+    TEST(BTYPE_2, BTI_JC, 0);
-+
-+    TEST(BTYPE_3, NOP, 1);
-+    TEST(BTYPE_3, BTI_N, 1);
-+    TEST(BTYPE_3, BTI_C, 1);
-+    TEST(BTYPE_3, BTI_J, 0);
-+    TEST(BTYPE_3, BTI_JC, 0);
-+
-+    return fail;
-+}
-diff --git a/tests/tcg/aarch64/bti-crt.inc.c b/tests/tcg/aarch64/bti-crt.inc.c
-new file mode 100644
-index 0000000000..bb363853de
---- /dev/null
-+++ b/tests/tcg/aarch64/bti-crt.inc.c
-@@ -0,0 +1,69 @@
-+/*
-+ * Minimal user-environment for testing BTI.
-+ *
-+ * Normal libc is not built with BTI support enabled, and so could
-+ * generate a BTI TRAP before ever reaching main.
-+ */
-+
-+#include <stdlib.h>
-+#include <signal.h>
-+#include <ucontext.h>
-+#include <asm/unistd.h>
-+
-+int main(void);
-+
-+void _start(void)
-+{
-+    exit(main());
-+}
-+
-+void exit(int ret)
-+{
-+    register int x0 __asm__("x0") = ret;
-+    register int x8 __asm__("x8") = __NR_exit;
-+
-+    asm volatile("svc #0" : : "r"(x0), "r"(x8));
-+    __builtin_unreachable();
-+}
-+
-+/*
-+ * Irritatingly, the user API struct sigaction does not match the
-+ * kernel API struct sigaction.  So for simplicity, isolate the
-+ * kernel ABI here, and make this act like signal.
-+ */
-+void signal_info(int sig, void (*fn)(int, siginfo_t *, ucontext_t *))
-+{
-+    struct kernel_sigaction {
-+        void (*handler)(int, siginfo_t *, ucontext_t *);
-+        unsigned long flags;
-+        unsigned long restorer;
-+        unsigned long mask;
-+    } sa = { fn, SA_SIGINFO, 0, 0 };
-+
-+    register int x0 __asm__("x0") = sig;
-+    register void *x1 __asm__("x1") = &sa;
-+    register void *x2 __asm__("x2") = 0;
-+    register int x3 __asm__("x3") = sizeof(unsigned long);
-+    register int x8 __asm__("x8") = __NR_rt_sigaction;
-+
-+    asm volatile("svc #0"
-+                 : : "r"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x8) : "memory");
-+}
-+
-+/*
-+ * Create the PT_NOTE that will enable BTI in the page tables.
-+ * This will be created by the compiler with -mbranch-protection=standard,
-+ * but as of 2019-03-29, this is has not been committed to gcc mainline.
-+ * This will probably be in GCC10.
-+ */
-+asm(".section .note.gnu.property,\"a\"\n\
-+	.align	3\n\
-+	.long	4\n\
-+        .long	16\n\
-+        .long	5\n\
-+        .string	\"GNU\"\n\
-+	.long	0xc0000000\n\
-+	.long	4\n\
-+	.long	1\n\
-+        .align  3\n\
-+	.previous");
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 2bb914975b..21da3bc37f 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -18,4 +18,7 @@ run-fcvt: fcvt
- AARCH64_TESTS += pauth-1
- run-pauth-%: QEMU += -cpu max
- 
-+AARCH64_TESTS += bti-1
-+bti-1: LDFLAGS += -nostartfiles -nodefaultlibs -nostdlib
-+
- TESTS:=$(AARCH64_TESTS)
--- 
-2.17.1
-
+>  tests/acceptance/boot_linux_console.py | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/tests/acceptance/boot_linux_console.py
+b/tests/acceptance/boot_linux_console.py
+> index d5c500ea30..f593f3858e 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -37,8 +37,10 @@ class BootLinuxConsole(Test):
+>          console =3D self.vm.console_socket.makefile()
+>          console_logger =3D logging.getLogger('console')
+>          while True:
+> -            msg =3D console.readline()
+> -            console_logger.debug(msg.strip())
+> +            msg =3D console.readline().strip()
+> +            if not msg:
+> +                continue
+> +            console_logger.debug(msg)
+>              if success_message in msg:
+>                  break
+>              if failure_message in msg:
+> --
+> 2.19.1
+>
+>

@@ -1,144 +1,320 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3757403wrg;
-        Wed, 5 Jun 2019 16:01:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyMqOyQDUPU7mg+Vtt5w6rjgcVS0UCaq+CIIs2/FaHdgIIsveK3Rl0QmeZqi6tbrUHN4oRv
-X-Received: by 2002:aed:2961:: with SMTP id s88mr36574617qtd.120.1559775690127;
-        Wed, 05 Jun 2019 16:01:30 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3619170wrg;
+        Wed, 5 Jun 2019 13:08:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw6GDcOh8WS9AtHSlZyZKed+0oyXqDJIpH1lEE9vX/Od4DYfigw+FcxKAiNe3tXKZ2Q7Igx
+X-Received: by 2002:a05:620a:12a2:: with SMTP id x2mr7412150qki.133.1559765302493;
+        Wed, 05 Jun 2019 13:08:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559765302; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Jn9425htxxYcVQkZm3Aa7DwnQb6+W6OAg61LD1nJjOTc1ox5ff8c7vPFk3W1gPxwee
+         IZhxN1meBxv8iEcVmT2NtN+cRtu+jQioIjoKtpsM/WZep01yp+7i9/Ye9OX4DV9AP797
+         x5xMeTW7oOdWvxkpptLB7d7q4V5J7XnzvJMJ24IzjeOR7Ig98dS5F4RLxG+4PEiXBimU
+         auaX9gds4Z+YvqusHMsmBm4FHh2JdUKN9LbW3f1bVVMJrlmP0yc7Dwyw3WtmDzEb0T6k
+         nlKD46MgzmLnddfhIW/FJZWQfDqcY/lx45MC9sCK8kYzR6nvnHXn2bPot+PQJ8B9Qi+g
+         xXOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=CSBnVJWUl++AOk+6oKojcpAmnlxqCg6oScq3C9+WfQI=;
+        b=LqWPuy9UkXM19AcdDrmgI+xuV/v7tNz3er7D2bSNKB6c9h5a1IM/2nvRnxqLGz2Siy
+         ViAcnX3gbpESNB1J1IHsgRBwk/7YxcJSkiKknKMffhUEqkhLUKdAlPcT5/phHCIOS2tk
+         8/QQQd7d+ReczfdguIrksEh4czvdPdXqpUDgeqm2/hsTOiQWikChlrCy0WDsA//QyyC/
+         llcXtLN7B8qn8eX5TeZsrM3C5DIOjomzVtH4+kQ9GkT+xkEyBK8s6DMhqguLAR4+qQpD
+         ODeITDOunYSFxOqMq2+27ssRI7mtnjEU9JnsYZ0O6N9drQStZX7CUmzsqxPbpUk+Xz8R
+         62Eg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si4048764qkd.202.2019.06.05.16.01.29
+        by mx.google.com with ESMTPS id q3si3582032qte.268.2019.06.05.13.08.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 16:01:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Jun 2019 13:08:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:51488 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:49161 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYeuP-00015X-Kc
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 19:01:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45383)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYcCr-0000WR-Tx
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 16:08:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33986)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1hYeu1-00010e-Dt
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:06 -0400
+	(envelope-from <mst@redhat.com>) id 1hYc5K-00031e-AX
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1hYeu0-0001vK-2U
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:05 -0400
-Resent-Date: Wed, 05 Jun 2019 19:01:05 -0400
-Resent-Message-Id: <E1hYeu0-0001vK-2U@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21438)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1hYetz-0001qO-TB
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:04 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1559772927; cv=none; d=zoho.com; s=zohoarc; 
-	b=hd3tZt7rjEWg6mfZyC8pmojUDJ8ef/V97xOUMpyAglSPQxf9rSEi+sXG+d5x616dctliMA44WsWo1UOtNjd1AeHkEJVhbJW1jIZzU+30cv5Q9tc9m3n21sTYQiwQzItEHRWzU9JlUC5s639c8m1hIqqLTouLaDP7Khp3mV+XNXM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1559772927;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=xayUvXyC1aHyi3VkEffCsOnZ+wKqgieqliXPEmXwCt8=; 
-	b=kOUFcooEMxO+697x3AdVyOmddk/av0dwQ+kpt89AMWA8AGmWmeQxehMzMSycoQO8NR78FaP9897EoDg/q/GNBiA7IJbk7bcA1rT+zuaSxDp5/vEatkrg4aLweag7+osKiS2qM8PtnSVzVuur3vLO/8NZFODuy6BG4wLgd68rBNE=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1559772925458563.1398641950854;
-	Wed, 5 Jun 2019 15:15:25 -0700 (PDT)
-In-Reply-To: <20190605205706.569-1-richard.henderson@linaro.org>
-Message-ID: <155977292443.32260.7266600611008191698@ce79690b2cb9>
+	(envelope-from <mst@redhat.com>) id 1hYc5I-0005TO-4U
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:34 -0400
+Received: from mail-qt1-f194.google.com ([209.85.160.194]:40766)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hYc5B-0004k4-KW
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:29 -0400
+Received: by mail-qt1-f194.google.com with SMTP id a15so5011654qtn.7
+	for <qemu-arm@nongnu.org>; Wed, 05 Jun 2019 13:00:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to;
+	bh=CSBnVJWUl++AOk+6oKojcpAmnlxqCg6oScq3C9+WfQI=;
+	b=ZRyG/oHXgjTHf5vsGFC2hr9/5p8nHF1b4dlg4TeEUsmGsl4ndSD/RNg2rv1NX+0nJ+
+	qA8jLxpqqafvp2mgNHnxhNajsj5eC9jNxIZhTL5ZW+fgldIcW+TAJ7o17T0+vHFvBp7W
+	Ik5Cc/9tMgsIW6OJEmGf8oODtiAI7JUL95e+DGcx/fkW4+gwQkji9OZXdrU+hFQia0aJ
+	z1UyUGDgNdnTIG1AhZG9NByNqoD1/y4RoP0pC+I2ZybM27hcZxpmPHhPptCbJRNpZsDE
+	IK8MPowHBPPOeJ+2qSFSWvkKTiceaYxr6BNlOzVQnJz9AFMUDreGr0B6oHcz+0ITa+Ag
+	tpug==
+X-Gm-Message-State: APjAAAVjQ0ve1YA+xoYVDSoVxr0ky6uesQcvvrln1kX1ndGGPjz5niVM
+	rLr1IegKJeoJComzTRlQ6MTD2KS4c5c=
+X-Received: by 2002:a05:6214:1cc:: with SMTP id
+	c12mr21765024qvt.119.1559764809025; 
+	Wed, 05 Jun 2019 13:00:09 -0700 (PDT)
+Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net.
+	[100.0.197.103]) by smtp.gmail.com with ESMTPSA id
+	p37sm13545099qtc.35.2019.06.05.13.00.07
+	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+	Wed, 05 Jun 2019 13:00:08 -0700 (PDT)
+Date: Wed, 5 Jun 2019 16:00:06 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20190521062836.6541-2-richardw.yang@linux.intel.com>
+References: <20190605195913.12243-1-mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Wed, 5 Jun 2019 15:15:25 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190605195913.12243-1-mst@redhat.com>
+X-Mailer: git-send-email 2.17.1.1206.gb667731e2e.dirty
+X-Mutt-Fcc: =sent
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-devel] [PATCH v6 0/6] linux-user/aarch64: Support PROT_BTI
-X-BeenThere: qemu-devel@nongnu.org
+	[fuzzy]
+X-Received-From: 209.85.160.194
+Subject: [Qemu-arm] [PULL v3 01/17] hw/acpi: Consolidate build_mcfg to pci.c
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Dave.Martin@arm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5TASnRvx7nJ9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Wei Yang <richardw.yang@linux.intel.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 43B+uiWujP/c
+Message-ID: <20190605200006.HeLb5Iv_tTfTKmHemuJZ7YrbFpWhJD7Etwy32RaljPc@z>
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDYwNTIwNTcwNi41Njkt
-MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1z
-IHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9y
-Cm1vcmUgaW5mb3JtYXRpb246CgpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHY2IDAvNl0g
-bGludXgtdXNlci9hYXJjaDY0OiBTdXBwb3J0IFBST1RfQlRJClR5cGU6IHNlcmllcwpNZXNzYWdl
-LWlkOiAyMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnCgo9
-PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+
-IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQg
-MApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2Fs
-IGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxi
-YWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5j
-b20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0Y2hl
-dy8yMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnIC0+IHBh
-dGNoZXcvMjAxOTA2MDUyMDU3MDYuNTY5LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpT
-d2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjYwMzhjZTJlMGUgdGVzdHMvdGNnL2FhcmNo
-NjQ6IEFkZCBidGkgc21va2UgdGVzdApiMTZhZDViZDdiIGxpbnV4LXVzZXI6IFBhcnNlIE5UX0dO
-VV9QUk9QRVJUWV9UWVBFXzAgbm90ZXMKNjhmZWZlZjcxNyBpbmNsdWRlL2VsZjogQWRkIGRlZmlu
-ZXMgcmVsYXRlZCB0byBub3RlcyBmb3IgR05VIHN5c3RlbXMKOTUxNjY5ZDUyMyBsaW51eC11c2Vy
-OiBTZXQgUEFHRV9UQVJHRVRfMSBmb3IgVEFSR0VUX1BST1RfQlRJCjZlYzQ0ZWRkYTUgbGludXgt
-dXNlcjogVmFsaWRhdGUgbW1hcC9tcHJvdGVjdCBwcm90IHZhbHVlCjRlYjc3NTU2YWQgbGludXgt
-dXNlci9hYXJjaDY0OiBSZXNldCBidHlwZSBmb3Igc3lzY2FsbHMgYW5kIHNpZ25hbHMKCj09PSBP
-VVRQVVQgQkVHSU4gPT09CjEvNiBDaGVja2luZyBjb21taXQgNGViNzc1NTZhZDFlIChsaW51eC11
-c2VyL2FhcmNoNjQ6IFJlc2V0IGJ0eXBlIGZvciBzeXNjYWxscyBhbmQgc2lnbmFscykKMi82IENo
-ZWNraW5nIGNvbW1pdCA2ZWM0NGVkZGE1YTAgKGxpbnV4LXVzZXI6IFZhbGlkYXRlIG1tYXAvbXBy
-b3RlY3QgcHJvdCB2YWx1ZSkKMy82IENoZWNraW5nIGNvbW1pdCA5NTE2NjlkNTIzMWIgKGxpbnV4
-LXVzZXI6IFNldCBQQUdFX1RBUkdFVF8xIGZvciBUQVJHRVRfUFJPVF9CVEkpCjQvNiBDaGVja2lu
-ZyBjb21taXQgNjhmZWZlZjcxN2JlIChpbmNsdWRlL2VsZjogQWRkIGRlZmluZXMgcmVsYXRlZCB0
-byBub3RlcyBmb3IgR05VIHN5c3RlbXMpCjUvNiBDaGVja2luZyBjb21taXQgYjE2YWQ1YmQ3YjVj
-IChsaW51eC11c2VyOiBQYXJzZSBOVF9HTlVfUFJPUEVSVFlfVFlQRV8wIG5vdGVzKQo2LzYgQ2hl
-Y2tpbmcgY29tbWl0IDYwMzhjZTJlMGU0NCAodGVzdHMvdGNnL2FhcmNoNjQ6IEFkZCBidGkgc21v
-a2UgdGVzdCkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBN
-QUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojMzM6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJS
-T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTA6IEZJTEU6IHRlc3RzL3Rj
-Zy9hYXJjaDY0L2J0aS0xLmM6MTM6CiteSWhpbnReSSMzNFxuXCQKCkVSUk9SOiBjb2RlIGluZGVu
-dCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzUxOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGkt
-MS5jOjE0OgorXkliXklza2lwMl9zaWdpbGwyXG5cJAoKRVJST1I6IGV4dGVybnMgc2hvdWxkIGJl
-IGF2b2lkZWQgaW4gLmMgZmlsZXMKIzEzMzogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvYnRpLWNy
-dC5pbmMuYzoxMzoKK2ludCBtYWluKHZvaWQpOwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBu
-ZXZlciB1c2UgdGFicwojMTgwOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5j
-OjYwOgorXkkuYWxpZ25eSTNcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVz
-ZSB0YWJzCiMxODE6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6NjE6Cite
-SS5sb25nXkk0XG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwoj
-MTgyOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjYyOgorICAgICAgICAu
-bG9uZ15JMTZcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMx
-ODM6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6NjM6CisgICAgICAgIC5s
-b25nXkk1XG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTg0
-OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY0OgorICAgICAgICAuc3Ry
-aW5nXklcIkdOVVwiXG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFi
-cwojMTg1OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY1OgorXkkubG9u
-Z15JMHhjMDAwMDAwMFxuXCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRh
-YnMKIzE4NjogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvYnRpLWNydC5pbmMuYzo2NjoKK15JLmxv
-bmdeSTRcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxODc6
-IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6Njc6CiteSS5sb25nXkkxXG5c
-JAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTg5OiBGSUxFOiB0
-ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY5OgorXkkucHJldmlvdXMiKTskCgp0b3Rh
-bDogMTIgZXJyb3JzLCAxIHdhcm5pbmdzLCAxNTMgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNi82IGhh
-cyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMK
-YXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNI
-RUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFu
-ZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
-Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNv
-bkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwg
-Z2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9d
-LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+From: Wei Yang <richardw.yang@linux.intel.com>
+
+Now we have two identical build_mcfg functions.
+
+Consolidate them in acpi/pci.c.
+
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+
+v4:
+  * ACPI_PCI depends on both ACPI and PCI
+  * rebase on latest master, adjust arm Kconfig
+v3:
+  * adjust changelog based on Igor's suggestion
+Message-Id: <20190521062836.6541-2-richardw.yang@linux.intel.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ default-configs/i386-softmmu.mak |  1 +
+ include/hw/acpi/pci.h            |  1 +
+ hw/acpi/pci.c                    | 46 ++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c         | 17 ------------
+ hw/i386/acpi-build.c             | 18 +------------
+ hw/acpi/Kconfig                  |  4 +++
+ hw/acpi/Makefile.objs            |  1 +
+ hw/arm/Kconfig                   |  1 +
+ 8 files changed, 55 insertions(+), 34 deletions(-)
+ create mode 100644 hw/acpi/pci.c
+
+diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
+index ba3fb3ff50..cd5ea391e8 100644
+--- a/default-configs/i386-softmmu.mak
++++ b/default-configs/i386-softmmu.mak
+@@ -25,3 +25,4 @@
+ CONFIG_ISAPC=y
+ CONFIG_I440FX=y
+ CONFIG_Q35=y
++CONFIG_ACPI_PCI=y
+diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+index 124af7d32a..8bbd32cf45 100644
+--- a/include/hw/acpi/pci.h
++++ b/include/hw/acpi/pci.h
+@@ -30,4 +30,5 @@ typedef struct AcpiMcfgInfo {
+     uint32_t size;
+ } AcpiMcfgInfo;
+ 
++void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
+ #endif
+diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+new file mode 100644
+index 0000000000..fa0fa30bb9
+--- /dev/null
++++ b/hw/acpi/pci.c
+@@ -0,0 +1,46 @@
++/*
++ * Support for generating PCI related ACPI tables and passing them to Guests
++ *
++ * Copyright (C) 2006 Fabrice Bellard
++ * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
++ * Copyright (C) 2013-2019 Red Hat Inc
++ * Copyright (C) 2019 Intel Corporation
++ *
++ * Author: Wei Yang <richardw.yang@linux.intel.com>
++ * Author: Michael S. Tsirkin <mst@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/acpi/aml-build.h"
++#include "hw/acpi/pci.h"
++#include "hw/pci/pcie_host.h"
++
++void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
++{
++    AcpiTableMcfg *mcfg;
++    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
++
++    mcfg = acpi_data_push(table_data, len);
++    mcfg->allocation[0].address = cpu_to_le64(info->base);
++
++    /* Only a single allocation so no need to play with segments */
++    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
++    mcfg->allocation[0].start_bus_number = 0;
++    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
++
++    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
++}
++
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index e7c96d658e..4a64f9985c 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -546,23 +546,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+ }
+ 
+-static void
+-build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+-{
+-    AcpiTableMcfg *mcfg;
+-    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
+-
+-    mcfg = acpi_data_push(table_data, len);
+-    mcfg->allocation[0].address = cpu_to_le64(info->base);
+-
+-    /* Only a single allocation so no need to play with segments */
+-    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+-    mcfg->allocation[0].start_bus_number = 0;
+-    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+-
+-    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+-}
+-
+ /* GTDT */
+ static void
+ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 0d78d73894..85dc1640bc 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2405,22 +2405,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+                  table_data->len - srat_start, 1, NULL, NULL);
+ }
+ 
+-static void
+-build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+-{
+-    AcpiTableMcfg *mcfg;
+-    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
+-
+-    mcfg = acpi_data_push(table_data, len);
+-    mcfg->allocation[0].address = cpu_to_le64(info->base);
+-    /* Only a single allocation so no need to play with segments */
+-    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
+-    mcfg->allocation[0].start_bus_number = 0;
+-    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
+-
+-    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
+-}
+-
+ /*
+  * VT-d spec 8.1 DMA Remapping Reporting Structure
+  * (version Oct. 2014 or later)
+@@ -2690,7 +2674,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+     }
+     if (acpi_get_mcfg(&mcfg)) {
+         acpi_add_table(table_offsets, tables_blob);
+-        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
++        build_mcfg(tables_blob, tables->linker, &mcfg);
+     }
+     if (x86_iommu_get_default()) {
+         IommuType IOMMUType = x86_iommu_get_type();
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index eca3beed75..7c59cf900b 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -23,6 +23,10 @@ config ACPI_NVDIMM
+     bool
+     depends on ACPI
+ 
++config ACPI_PCI
++    bool
++    depends on ACPI && PCI
++
+ config ACPI_VMGENID
+     bool
+     default y
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index 2d46e3789a..661a9b8c2f 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ common-obj-y += acpi_interface.o
+ common-obj-y += bios-linker-loader.o
+ common-obj-y += aml-build.o
++common-obj-$(CONFIG_ACPI_PCI) += pci.o
+ common-obj-$(CONFIG_TPM) += tpm.o
+ 
+ common-obj-$(CONFIG_IPMI) += ipmi.o
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index af8cffde9c..9aced9d54d 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -19,6 +19,7 @@ config ARM_VIRT
+     select PLATFORM_BUS
+     select SMBIOS
+     select VIRTIO_MMIO
++    select ACPI_PCI
+ 
+ config CHEETAH
+     bool
+-- 
+MST
 

@@ -1,94 +1,89 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3619170wrg;
-        Wed, 5 Jun 2019 13:08:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6GDcOh8WS9AtHSlZyZKed+0oyXqDJIpH1lEE9vX/Od4DYfigw+FcxKAiNe3tXKZ2Q7Igx
-X-Received: by 2002:a05:620a:12a2:: with SMTP id x2mr7412150qki.133.1559765302493;
-        Wed, 05 Jun 2019 13:08:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559765302; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3641678wrg;
+        Wed, 5 Jun 2019 13:34:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwpZnKgPoAGslQXGJjvPoCdPAKRF0NqOEQGc/j+1OwyZQPAltCFV/SlJKPPrN/7NHS2SptR
+X-Received: by 2002:ac8:3918:: with SMTP id s24mr37237081qtb.226.1559766854160;
+        Wed, 05 Jun 2019 13:34:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559766854; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jn9425htxxYcVQkZm3Aa7DwnQb6+W6OAg61LD1nJjOTc1ox5ff8c7vPFk3W1gPxwee
-         IZhxN1meBxv8iEcVmT2NtN+cRtu+jQioIjoKtpsM/WZep01yp+7i9/Ye9OX4DV9AP797
-         x5xMeTW7oOdWvxkpptLB7d7q4V5J7XnzvJMJ24IzjeOR7Ig98dS5F4RLxG+4PEiXBimU
-         auaX9gds4Z+YvqusHMsmBm4FHh2JdUKN9LbW3f1bVVMJrlmP0yc7Dwyw3WtmDzEb0T6k
-         nlKD46MgzmLnddfhIW/FJZWQfDqcY/lx45MC9sCK8kYzR6nvnHXn2bPot+PQJ8B9Qi+g
-         xXOQ==
+        b=dkfRtL14jjl4k+/WvFsyy8gxSitnFkthNtPJ3XfJj2e71vPfvPVwOUfuqy0il6BsDS
+         NDzxQ/1uke/XRvlbPgFkobxt0JrjZn4RDvn22v8VWtQnaCISPjAuf1MOhX8iTOGFFRxa
+         OD1c2uNTDdbpwcOGnC2jEwJIGaAxdxvQR2OMHT7ameffr8o+EbZntAW+YRKW+NxqfMCq
+         ISzzuAm2XvBufJdU6yv92mv+ECF4UyqemQLZm0MhL4dZFcRoYtJOZdWUtA/3NDYhpf+Q
+         QH7YROTOUjyQbZwWoJL4/gy9tZaO7VGz9edZEYtrYpMAyJCe2LFyqTyWEGXbgXhouuAM
+         +eBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=CSBnVJWUl++AOk+6oKojcpAmnlxqCg6oScq3C9+WfQI=;
-        b=LqWPuy9UkXM19AcdDrmgI+xuV/v7tNz3er7D2bSNKB6c9h5a1IM/2nvRnxqLGz2Siy
-         ViAcnX3gbpESNB1J1IHsgRBwk/7YxcJSkiKknKMffhUEqkhLUKdAlPcT5/phHCIOS2tk
-         8/QQQd7d+ReczfdguIrksEh4czvdPdXqpUDgeqm2/hsTOiQWikChlrCy0WDsA//QyyC/
-         llcXtLN7B8qn8eX5TeZsrM3C5DIOjomzVtH4+kQ9GkT+xkEyBK8s6DMhqguLAR4+qQpD
-         ODeITDOunYSFxOqMq2+27ssRI7mtnjEU9JnsYZ0O6N9drQStZX7CUmzsqxPbpUk+Xz8R
-         62Eg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date;
+        bh=I4YjWYdacRhE5/8lBw/PZZ7wXuyuWFyGbHzXDb5ZgEs=;
+        b=Km+XKRr4hlg/+JQpkTh66yHOn64F3GC2BBJXHScnPiETuLGJgCrp2ywtMr+bv/FziE
+         4bFLA+vp+oKm6dlueLrHxkWpdChvatEOSzoEylspppKlbTceG5mPT9Hx9Xa2t2AuzPc8
+         EFI5tSEB//07yEy49OT3O908+4tTxajr4WCOtkZAnyLxKItwoq1CfIpQmoXS2Pe+rzlw
+         8EfSdEbt+AVS+o3HZ4LnDZd8z7r+6IV9S/xNieE3d9VSSS4V6tldHF/cjVpkM7QfDYGe
+         8OHfAqKLss2I+PcpIcdFzq6jQC6VAlAVFpnCkGIpHcPUoFOQ3yzOSJ/23hbtb2hu2+gK
+         BRzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3si3582032qte.268.2019.06.05.13.08.22
+        by mx.google.com with ESMTPS id h64si397506qkd.193.2019.06.05.13.34.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 13:08:22 -0700 (PDT)
+        Wed, 05 Jun 2019 13:34:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49161 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:49450 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYcCr-0000WR-Tx
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 16:08:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33986)
+	id 1hYcbt-0002R6-Lz
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 16:34:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40827)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hYc5K-00031e-AX
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:36 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hYcbl-0002Qo-R1
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:34:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1hYc5I-0005TO-4U
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:34 -0400
-Received: from mail-qt1-f194.google.com ([209.85.160.194]:40766)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1hYc5B-0004k4-KW
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:00:29 -0400
-Received: by mail-qt1-f194.google.com with SMTP id a15so5011654qtn.7
-	for <qemu-arm@nongnu.org>; Wed, 05 Jun 2019 13:00:10 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=CSBnVJWUl++AOk+6oKojcpAmnlxqCg6oScq3C9+WfQI=;
-	b=ZRyG/oHXgjTHf5vsGFC2hr9/5p8nHF1b4dlg4TeEUsmGsl4ndSD/RNg2rv1NX+0nJ+
-	qA8jLxpqqafvp2mgNHnxhNajsj5eC9jNxIZhTL5ZW+fgldIcW+TAJ7o17T0+vHFvBp7W
-	Ik5Cc/9tMgsIW6OJEmGf8oODtiAI7JUL95e+DGcx/fkW4+gwQkji9OZXdrU+hFQia0aJ
-	z1UyUGDgNdnTIG1AhZG9NByNqoD1/y4RoP0pC+I2ZybM27hcZxpmPHhPptCbJRNpZsDE
-	IK8MPowHBPPOeJ+2qSFSWvkKTiceaYxr6BNlOzVQnJz9AFMUDreGr0B6oHcz+0ITa+Ag
-	tpug==
-X-Gm-Message-State: APjAAAVjQ0ve1YA+xoYVDSoVxr0ky6uesQcvvrln1kX1ndGGPjz5niVM
-	rLr1IegKJeoJComzTRlQ6MTD2KS4c5c=
-X-Received: by 2002:a05:6214:1cc:: with SMTP id
-	c12mr21765024qvt.119.1559764809025; 
-	Wed, 05 Jun 2019 13:00:09 -0700 (PDT)
-Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net.
-	[100.0.197.103]) by smtp.gmail.com with ESMTPSA id
-	p37sm13545099qtc.35.2019.06.05.13.00.07
-	(version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-	Wed, 05 Jun 2019 13:00:08 -0700 (PDT)
-Date: Wed, 5 Jun 2019 16:00:06 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Message-ID: <20190521062836.6541-2-richardw.yang@linux.intel.com>
-References: <20190605195913.12243-1-mst@redhat.com>
+	(envelope-from <ehabkost@redhat.com>) id 1hYcbi-00059M-SS
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 16:34:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40764)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hYcbg-00051d-7y; Wed, 05 Jun 2019 16:34:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5D8377E422;
+	Wed,  5 Jun 2019 20:33:50 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9798D619A9;
+	Wed,  5 Jun 2019 20:33:37 +0000 (UTC)
+Date: Wed, 5 Jun 2019 17:33:35 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Cleber Rosa <crosa@redhat.com>
+Message-ID: <20190605203335.GE22416@habkost.net>
+References: <20190312234541.2887-1-philmd@redhat.com>
+	<20190312234541.2887-3-philmd@redhat.com>
+	<20190522205234.GY10764@habkost.net>
+	<1204725743.24201394.1558559144548.JavaMail.zimbra@redhat.com>
+	<1088d160-20c1-00ed-b494-fede1a3a8410@redhat.com>
+	<1894627419.24355320.1558618806274.JavaMail.zimbra@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20190605195913.12243-1-mst@redhat.com>
-X-Mailer: git-send-email 2.17.1.1206.gb667731e2e.dirty
-X-Mutt-Fcc: =sent
+In-Reply-To: <1894627419.24355320.1558618806274.JavaMail.zimbra@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 05 Jun 2019 20:33:58 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.194
-Subject: [Qemu-arm] [PULL v3 01/17] hw/acpi: Consolidate build_mcfg to pci.c
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test:
+ add a test for the Raspberry Pi 2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,220 +96,96 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 43B+uiWujP/c
-Message-ID: <20190605200006.HeLb5Iv_tTfTKmHemuJZ7YrbFpWhJD7Etwy32RaljPc@z>
+X-TUID: k1wWemfAxr0Y
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+On Thu, May 23, 2019 at 09:40:06AM -0400, Cleber Rosa wrote:
+> ----- Original Message -----
+> > From: "Philippe Mathieu-Daud=E9" <philmd@redhat.com>
+> > To: "Cleber Rosa" <crosa@redhat.com>, "Eduardo Habkost" <ehabkost@red=
+hat.com>
+> > Cc: qemu-devel@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>=
+, qemu-arm@nongnu.org, "Philippe Mathieu-Daud=E9"
+> > <f4bug@amsat.org>, "Andrew Baumann" <Andrew.Baumann@microsoft.com>, "=
+Gerd Hoffmann" <kraxel@redhat.com>
+> > Sent: Thursday, May 23, 2019 5:29:22 AM
+> > Subject: Re: [Qemu-devel] [PATCH v2 2/2] Boot Linux Console Test: add=
+ a test for the Raspberry Pi 2
+> >=20
+> > On 5/22/19 11:05 PM, Cleber Rosa wrote:
+> > > ----- Original Message -----
+> > >> From: "Eduardo Habkost" <ehabkost@redhat.com>
+> > >> On Wed, Mar 13, 2019 at 12:45:41AM +0100, Philippe Mathieu-Daud=E9=
+ wrote:
+> > >>> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> > >>>
+> > >>> Similar to the x86_64/pc test, it boots a Linux kernel on a raspi=
+2
+> > >>> board and verify the serial is working.
+> > >>>
+> > >>> If ARM is a target being built, "make check-acceptance" will
+> > >>> automatically include this test by the use of the "arch:arm" tags=
+.
+> > >>>
+> > >>> Alternatively, this test can be run using:
+> > >>>
+> > >>>     $ avocado run -t arch:arm tests/acceptance
+> > >>>     $ avocado run -t machine:raspi2 tests/acceptance
+> > >>>
+> > >>> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> > >>
+> > >> We're getting timeouts on travis-ci:
+> > >> https://travis-ci.org/ehabkost/qemu/jobs/535468057#L3289
+> > >>
+> > >> I don't know yet if the guest is hanging, or if we just need to
+> > >> increase the timeout.  I could reproduce the timeout locally,
+> > >> too.
+> >=20
+> > That's odd, I can't reproduce (this test is quicker than the followin=
+g
+> > test_arm_emcraft_sf2 which start u-boot then timeouts and start the k=
+ernel).
+> >=20
+> > My guess is network issues, since this test use a different mirror:
+> > archive.raspberrypi.org
+> >=20
+>=20
+> It could be a network issue, it could be something else.  I think the v=
+ery
+> first step, and I'd urge us to get that on master ASAP, is to show the
+> entire logs in CI, I mean:
+>=20
+> ---
+>=20
+> diff --git a/.travis.yml b/.travis.yml
+> index 6fd89b3d91..fd8f6ca2d2 100644
+> --- a/.travis.yml
+> +++ b/.travis.yml
+> @@ -225,7 +225,7 @@ matrix:
+>      # Acceptance (Functional) tests
+>      - env:
+>          - CONFIG=3D"--python=3D/usr/bin/python3 --target-list=3Dx86_64=
+-softmmu,mips-softmmu,mips64el-softmmu,aarch64-softmmu,arm-softmmu,s390x-=
+softmmu,alpha-softmmu"
+> -        - TEST_CMD=3D"make check-acceptance"
+> +        - TEST_CMD=3D"make AVOCADO_SHOW=3Dtest check-acceptance"
+>        addons:
+>          apt:
+>            packages:
 
-Now we have two identical build_mcfg functions.
+I have applied this change on python-next.  The failure can be
+seen here:
+https://travis-ci.org/ehabkost/qemu/jobs/541758418#L4033
 
-Consolidate them in acpi/pci.c.
+While we don't fix this, I'm removing this test case from the
+queue, so I can send a pull request.  Sorry for taking so long to
+act on this.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-
-v4:
-  * ACPI_PCI depends on both ACPI and PCI
-  * rebase on latest master, adjust arm Kconfig
-v3:
-  * adjust changelog based on Igor's suggestion
-Message-Id: <20190521062836.6541-2-richardw.yang@linux.intel.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- default-configs/i386-softmmu.mak |  1 +
- include/hw/acpi/pci.h            |  1 +
- hw/acpi/pci.c                    | 46 ++++++++++++++++++++++++++++++++
- hw/arm/virt-acpi-build.c         | 17 ------------
- hw/i386/acpi-build.c             | 18 +------------
- hw/acpi/Kconfig                  |  4 +++
- hw/acpi/Makefile.objs            |  1 +
- hw/arm/Kconfig                   |  1 +
- 8 files changed, 55 insertions(+), 34 deletions(-)
- create mode 100644 hw/acpi/pci.c
-
-diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
-index ba3fb3ff50..cd5ea391e8 100644
---- a/default-configs/i386-softmmu.mak
-+++ b/default-configs/i386-softmmu.mak
-@@ -25,3 +25,4 @@
- CONFIG_ISAPC=y
- CONFIG_I440FX=y
- CONFIG_Q35=y
-+CONFIG_ACPI_PCI=y
-diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
-index 124af7d32a..8bbd32cf45 100644
---- a/include/hw/acpi/pci.h
-+++ b/include/hw/acpi/pci.h
-@@ -30,4 +30,5 @@ typedef struct AcpiMcfgInfo {
-     uint32_t size;
- } AcpiMcfgInfo;
- 
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
- #endif
-diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
-new file mode 100644
-index 0000000000..fa0fa30bb9
---- /dev/null
-+++ b/hw/acpi/pci.c
-@@ -0,0 +1,46 @@
-+/*
-+ * Support for generating PCI related ACPI tables and passing them to Guests
-+ *
-+ * Copyright (C) 2006 Fabrice Bellard
-+ * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
-+ * Copyright (C) 2013-2019 Red Hat Inc
-+ * Copyright (C) 2019 Intel Corporation
-+ *
-+ * Author: Wei Yang <richardw.yang@linux.intel.com>
-+ * Author: Michael S. Tsirkin <mst@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/aml-build.h"
-+#include "hw/acpi/pci.h"
-+#include "hw/pci/pcie_host.h"
-+
-+void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-+{
-+    AcpiTableMcfg *mcfg;
-+    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-+
-+    mcfg = acpi_data_push(table_data, len);
-+    mcfg->allocation[0].address = cpu_to_le64(info->base);
-+
-+    /* Only a single allocation so no need to play with segments */
-+    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-+    mcfg->allocation[0].start_bus_number = 0;
-+    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
-+
-+    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
-+}
-+
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index e7c96d658e..4a64f9985c 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -546,23 +546,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
- }
- 
--static void
--build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /* GTDT */
- static void
- build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 0d78d73894..85dc1640bc 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2405,22 +2405,6 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                  table_data->len - srat_start, 1, NULL, NULL);
- }
- 
--static void
--build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
--{
--    AcpiTableMcfg *mcfg;
--    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
--
--    mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(info->base);
--    /* Only a single allocation so no need to play with segments */
--    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
--    mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->size - 1);
--
--    build_header(linker, table_data, (void *)mcfg, "MCFG", len, 1, NULL, NULL);
--}
--
- /*
-  * VT-d spec 8.1 DMA Remapping Reporting Structure
-  * (version Oct. 2014 or later)
-@@ -2690,7 +2674,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-     }
-     if (acpi_get_mcfg(&mcfg)) {
-         acpi_add_table(table_offsets, tables_blob);
--        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
-+        build_mcfg(tables_blob, tables->linker, &mcfg);
-     }
-     if (x86_iommu_get_default()) {
-         IommuType IOMMUType = x86_iommu_get_type();
-diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-index eca3beed75..7c59cf900b 100644
---- a/hw/acpi/Kconfig
-+++ b/hw/acpi/Kconfig
-@@ -23,6 +23,10 @@ config ACPI_NVDIMM
-     bool
-     depends on ACPI
- 
-+config ACPI_PCI
-+    bool
-+    depends on ACPI && PCI
-+
- config ACPI_VMGENID
-     bool
-     default y
-diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-index 2d46e3789a..661a9b8c2f 100644
---- a/hw/acpi/Makefile.objs
-+++ b/hw/acpi/Makefile.objs
-@@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
- common-obj-y += acpi_interface.o
- common-obj-y += bios-linker-loader.o
- common-obj-y += aml-build.o
-+common-obj-$(CONFIG_ACPI_PCI) += pci.o
- common-obj-$(CONFIG_TPM) += tpm.o
- 
- common-obj-$(CONFIG_IPMI) += ipmi.o
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index af8cffde9c..9aced9d54d 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -19,6 +19,7 @@ config ARM_VIRT
-     select PLATFORM_BUS
-     select SMBIOS
-     select VIRTIO_MMIO
-+    select ACPI_PCI
- 
- config CHEETAH
-     bool
--- 
-MST
-
+--=20
+Eduardo

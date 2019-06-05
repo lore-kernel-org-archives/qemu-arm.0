@@ -1,87 +1,64 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3389074wrg;
-        Wed, 5 Jun 2019 09:09:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwpaAeMc16D/bdGORV4hhFepxNE0Ngp26YzIEBJ4wgKpRje8VEgL44CVSQUlcNg5sqly1rC
-X-Received: by 2002:aed:382a:: with SMTP id j39mr34384865qte.94.1559750942011;
-        Wed, 05 Jun 2019 09:09:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559750942; cv=none;
-        d=google.com; s=arc-20160816;
-        b=yNR1I2sSXPgjN3Ax8hlggc8t7ENlpLS2yAfOnjpk5NRYSMtUoADFV6MVaX9MdOXvmw
-         NO58dgj2tkFaL2Yb1sh5Dp9/oMaCN+EICqaUxBT5belm04Mku5Zc2SUAfFUqvuqcq7+I
-         9GWggt5mu1QUl16Jsn/5mYivuHnfL1UtP4cwkiQx2pByMEwoczdKZ7d+ln0Epo4gyYWb
-         GMe/lK0yak9PU7YY3AMtnvJVulb868eDPekKNQSfASh2We9+27YWBQtdS/bOGpFeN54T
-         zt8Fbg3s9sn6GfTU23syhOmUvY7oGokmMIF6XRcJDymshOFRH+evfwpIDW0Od8cLhq/v
-         Pk3g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=c8o0fuPKlnwDXc35TdVqF/w8QctNYgxMCLoG39itXQY=;
-        b=aN67Xxhrn8+OsGOqIW9Yk51AuyU+DEfJIGBWKOsvej4POsJ7gJB0o0camboBkZYdV+
-         8khnxyjV2sHSDWUKJEykBBVloadlSAxIDge1dH9Yx8UdmnvcPwEm7An+hjAb1SFltfXU
-         PnJu5IPKcOidxr0kanSG7iJzU+8tR0kJp8ATba5Pt2IXlgEoHj5JwK6zDiO0W8t7O1fc
-         QxTB+sPH2/TuHcaIKaz+i1EmxESvdh+PseWTKwUCJv3wjBJE8bbhIXaC8GQEmR0Pfs9T
-         WLd6uo5GzaHVXvcjP7apT4dD4p2DM5Rkot3iCn6viFi1uZeT/VN0q9VCNO53NMJ9xyWq
-         68Sw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3757403wrg;
+        Wed, 5 Jun 2019 16:01:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyMqOyQDUPU7mg+Vtt5w6rjgcVS0UCaq+CIIs2/FaHdgIIsveK3Rl0QmeZqi6tbrUHN4oRv
+X-Received: by 2002:aed:2961:: with SMTP id s88mr36574617qtd.120.1559775690127;
+        Wed, 05 Jun 2019 16:01:30 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w43si4858788qta.166.2019.06.05.09.09.01
+        by mx.google.com with ESMTPS id i5si4048764qkd.202.2019.06.05.16.01.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 09:09:01 -0700 (PDT)
+        Wed, 05 Jun 2019 16:01:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:45505 helo=lists.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([127.0.0.1]:51488 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYYTF-00050R-HY
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 12:09:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57225)
+	id 1hYeuP-00015X-Kc
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 19:01:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45383)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hYYRg-0004EC-H7
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 12:07:25 -0400
+	(envelope-from <no-reply@patchew.org>) id 1hYeu1-00010e-Dt
+	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hYYRe-0002YM-Qr
-	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 12:07:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56870)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <crosa@redhat.com>)
-	id 1hYYRZ-0002LI-Lb; Wed, 05 Jun 2019 12:07:17 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9D1B23007408;
-	Wed,  5 Jun 2019 16:07:06 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-121-163.rdu2.redhat.com
-	[10.10.121.163])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E3C860BC3;
-	Wed,  5 Jun 2019 16:07:01 +0000 (UTC)
-Date: Wed, 5 Jun 2019 12:06:59 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20190605160659.GB7080@localhost.localdomain>
-References: <20190520220635.10961-1-f4bug@amsat.org>
-	<20190520220635.10961-3-f4bug@amsat.org>
+	(envelope-from <no-reply@patchew.org>) id 1hYeu0-0001vK-2U
+	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:05 -0400
+Resent-Date: Wed, 05 Jun 2019 19:01:05 -0400
+Resent-Message-Id: <E1hYeu0-0001vK-2U@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21438)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1hYetz-0001qO-TB
+	for qemu-devel@nongnu.org; Wed, 05 Jun 2019 19:01:04 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1559772927; cv=none; d=zoho.com; s=zohoarc; 
+	b=hd3tZt7rjEWg6mfZyC8pmojUDJ8ef/V97xOUMpyAglSPQxf9rSEi+sXG+d5x616dctliMA44WsWo1UOtNjd1AeHkEJVhbJW1jIZzU+30cv5Q9tc9m3n21sTYQiwQzItEHRWzU9JlUC5s639c8m1hIqqLTouLaDP7Khp3mV+XNXM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1559772927;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=xayUvXyC1aHyi3VkEffCsOnZ+wKqgieqliXPEmXwCt8=; 
+	b=kOUFcooEMxO+697x3AdVyOmddk/av0dwQ+kpt89AMWA8AGmWmeQxehMzMSycoQO8NR78FaP9897EoDg/q/GNBiA7IJbk7bcA1rT+zuaSxDp5/vEatkrg4aLweag7+osKiS2qM8PtnSVzVuur3vLO/8NZFODuy6BG4wLgd68rBNE=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1559772925458563.1398641950854;
+	Wed, 5 Jun 2019 15:15:25 -0700 (PDT)
+In-Reply-To: <20190605205706.569-1-richard.henderson@linaro.org>
+Message-ID: <155977292443.32260.7266600611008191698@ce79690b2cb9>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190520220635.10961-3-f4bug@amsat.org>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Wed, 05 Jun 2019 16:07:11 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Wed, 5 Jun 2019 15:15:25 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH 2/2] BootLinuxConsoleTest: Test the
- SmartFusion2 board
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-devel] [PATCH v6 0/6] linux-user/aarch64: Support PROT_BTI
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,101 +70,75 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
-	Caio Carrara <ccarrara@redhat.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Dave.Martin@arm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pH05vzYup8bx
+X-TUID: 5TASnRvx7nJ9
 
-On Tue, May 21, 2019 at 12:06:35AM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Similar to the x86_64/pc test, it boots a Linux kernel on an
-> Emcraft board and verify the serial is working.
->=20
-> If ARM is a target being built, "make check-acceptance" will
-> automatically include this test by the use of the "arch:arm" tags.
->=20
-> Alternatively, this test can be run using:
->=20
->   $ avocado run -t arch:arm tests/acceptance
->   $ avocado run -t machine:emcraft-sf2 tests/acceptance
->
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDYwNTIwNTcwNi41Njkt
+MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1z
+IHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9y
+Cm1vcmUgaW5mb3JtYXRpb246CgpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIHY2IDAvNl0g
+bGludXgtdXNlci9hYXJjaDY0OiBTdXBwb3J0IFBST1RfQlRJClR5cGU6IHNlcmllcwpNZXNzYWdl
+LWlkOiAyMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnCgo9
+PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+
+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQg
+MApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2Fs
+IGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxi
+YWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5j
+b20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0Y2hl
+dy8yMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnIC0+IHBh
+dGNoZXcvMjAxOTA2MDUyMDU3MDYuNTY5LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpT
+d2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjYwMzhjZTJlMGUgdGVzdHMvdGNnL2FhcmNo
+NjQ6IEFkZCBidGkgc21va2UgdGVzdApiMTZhZDViZDdiIGxpbnV4LXVzZXI6IFBhcnNlIE5UX0dO
+VV9QUk9QRVJUWV9UWVBFXzAgbm90ZXMKNjhmZWZlZjcxNyBpbmNsdWRlL2VsZjogQWRkIGRlZmlu
+ZXMgcmVsYXRlZCB0byBub3RlcyBmb3IgR05VIHN5c3RlbXMKOTUxNjY5ZDUyMyBsaW51eC11c2Vy
+OiBTZXQgUEFHRV9UQVJHRVRfMSBmb3IgVEFSR0VUX1BST1RfQlRJCjZlYzQ0ZWRkYTUgbGludXgt
+dXNlcjogVmFsaWRhdGUgbW1hcC9tcHJvdGVjdCBwcm90IHZhbHVlCjRlYjc3NTU2YWQgbGludXgt
+dXNlci9hYXJjaDY0OiBSZXNldCBidHlwZSBmb3Igc3lzY2FsbHMgYW5kIHNpZ25hbHMKCj09PSBP
+VVRQVVQgQkVHSU4gPT09CjEvNiBDaGVja2luZyBjb21taXQgNGViNzc1NTZhZDFlIChsaW51eC11
+c2VyL2FhcmNoNjQ6IFJlc2V0IGJ0eXBlIGZvciBzeXNjYWxscyBhbmQgc2lnbmFscykKMi82IENo
+ZWNraW5nIGNvbW1pdCA2ZWM0NGVkZGE1YTAgKGxpbnV4LXVzZXI6IFZhbGlkYXRlIG1tYXAvbXBy
+b3RlY3QgcHJvdCB2YWx1ZSkKMy82IENoZWNraW5nIGNvbW1pdCA5NTE2NjlkNTIzMWIgKGxpbnV4
+LXVzZXI6IFNldCBQQUdFX1RBUkdFVF8xIGZvciBUQVJHRVRfUFJPVF9CVEkpCjQvNiBDaGVja2lu
+ZyBjb21taXQgNjhmZWZlZjcxN2JlIChpbmNsdWRlL2VsZjogQWRkIGRlZmluZXMgcmVsYXRlZCB0
+byBub3RlcyBmb3IgR05VIHN5c3RlbXMpCjUvNiBDaGVja2luZyBjb21taXQgYjE2YWQ1YmQ3YjVj
+IChsaW51eC11c2VyOiBQYXJzZSBOVF9HTlVfUFJPUEVSVFlfVFlQRV8wIG5vdGVzKQo2LzYgQ2hl
+Y2tpbmcgY29tbWl0IDYwMzhjZTJlMGU0NCAodGVzdHMvdGNnL2FhcmNoNjQ6IEFkZCBidGkgc21v
+a2UgdGVzdCkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBN
+QUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojMzM6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojNTA6IEZJTEU6IHRlc3RzL3Rj
+Zy9hYXJjaDY0L2J0aS0xLmM6MTM6CiteSWhpbnReSSMzNFxuXCQKCkVSUk9SOiBjb2RlIGluZGVu
+dCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzUxOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGkt
+MS5jOjE0OgorXkliXklza2lwMl9zaWdpbGwyXG5cJAoKRVJST1I6IGV4dGVybnMgc2hvdWxkIGJl
+IGF2b2lkZWQgaW4gLmMgZmlsZXMKIzEzMzogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvYnRpLWNy
+dC5pbmMuYzoxMzoKK2ludCBtYWluKHZvaWQpOwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBu
+ZXZlciB1c2UgdGFicwojMTgwOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5j
+OjYwOgorXkkuYWxpZ25eSTNcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVz
+ZSB0YWJzCiMxODE6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6NjE6Cite
+SS5sb25nXkk0XG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwoj
+MTgyOiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjYyOgorICAgICAgICAu
+bG9uZ15JMTZcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMx
+ODM6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6NjM6CisgICAgICAgIC5s
+b25nXkk1XG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTg0
+OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY0OgorICAgICAgICAuc3Ry
+aW5nXklcIkdOVVwiXG5cJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFi
+cwojMTg1OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY1OgorXkkubG9u
+Z15JMHhjMDAwMDAwMFxuXCQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRh
+YnMKIzE4NjogRklMRTogdGVzdHMvdGNnL2FhcmNoNjQvYnRpLWNydC5pbmMuYzo2NjoKK15JLmxv
+bmdeSTRcblwkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxODc6
+IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6Njc6CiteSS5sb25nXkkxXG5c
+JAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTg5OiBGSUxFOiB0
+ZXN0cy90Y2cvYWFyY2g2NC9idGktY3J0LmluYy5jOjY5OgorXkkucHJldmlvdXMiKTskCgp0b3Rh
+bDogMTIgZXJyb3JzLCAxIHdhcm5pbmdzLCAxNTMgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNi82IGhh
+cyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMK
+YXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNI
+RUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFu
+ZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
+Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDYwNTIwNTcwNi41NjktMS1yaWNoYXJkLmhlbmRlcnNv
+bkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwg
+Z2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9d
+LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-The pattern accepted as a tag currently doesn't include a dash, see:
-
-   https://avocado-framework.readthedocs.io/en/68.0/ReferenceGuide.html#d=
-ocstring-directives-rules
-
-My suggestion is to replace the dash for an underline.  This was done
-on the s390 test:
-
-   :avocado: tags=3Dmachine:s390_ccw_virtio
-
-> Based on the recommended test setup from Subbaraya Sundeep:
-> https://lists.gnu.org/archive/html/qemu-devel/2017-05/msg03810.html
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
->  tests/acceptance/boot_linux_console.py | 27 ++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
->=20
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/=
-boot_linux_console.py
-> index f593f3858e..844cb80bb5 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -178,6 +178,33 @@ class BootLinuxConsole(Test):
->          console_pattern =3D 'Kernel command line: %s' % kernel_command=
-_line
->          self.wait_for_console_pattern(console_pattern)
-> =20
-> +    def test_arm_emcraft_sf2(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:emcraft-sf2
-
-As per the previous comment, this would become:
-
-    :avocado: tags=3Dmachine:emcraft_sf2
-
-> +        :avocado: tags=3Dendian:little
-> +        """
-> +        uboot_url =3D ('https://raw.githubusercontent.com/'
-> +                     'Subbaraya-Sundeep/qemu-test-binaries/'
-> +                     'fa030bd77a014a0b8e360d3b7011df89283a2f0b/u-boot'=
-)
-> +        uboot_hash =3D 'abba5d9c24cdd2d49cdc2a8aa92976cf20737eff'
-> +        uboot_path =3D self.fetch_asset(uboot_url, asset_hash=3Duboot_=
-hash)
-> +        spi_url =3D ('https://raw.githubusercontent.com/'
-> +                   'Subbaraya-Sundeep/qemu-test-binaries/'
-> +                   'fa030bd77a014a0b8e360d3b7011df89283a2f0b/spi.bin')
-> +        spi_hash =3D '85f698329d38de63aea6e884a86fbde70890a78a'
-> +        spi_path =3D self.fetch_asset(spi_url, asset_hash=3Dspi_hash)
-> +
-> +        self.vm.set_machine('emcraft-sf2')
-> +        self.vm.set_console()
-> +        kernel_command_line =3D self.KERNEL_COMMON_COMMAND_LINE
-> +        self.vm.add_args('-kernel', uboot_path,
-> +                         '-append', kernel_command_line,
-> +                         '-drive', 'file=3D' + spi_path + ',if=3Dmtd,f=
-ormat=3Draw',
-
-Nitpick:
-
-   '-drive', 'file=3D%s,if=3Dmtd,format=3Draw' % spi_path,
-
-> +                         '-no-reboot')
-> +        self.vm.launch()
-> +        self.wait_for_console_pattern('init started: BusyBox')
-> +
->      def test_s390x_s390_ccw_virtio(self):
->          """
->          :avocado: tags=3Darch:s390x
-> --=20
-> 2.19.1
->=20
-
-Other than that, it looks good to me.

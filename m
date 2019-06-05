@@ -1,135 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2848199wrg;
-        Wed, 5 Jun 2019 00:28:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxc28FPZi6AVqPgLyFVQMZ4i3edZVjMkS8Wg50M+u+0zNyqED/LA9UuNeBYTcXP9waDZkKM
-X-Received: by 2002:a05:620a:1425:: with SMTP id k5mr30892038qkj.146.1559719683104;
-        Wed, 05 Jun 2019 00:28:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559719683; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2850280wrg;
+        Wed, 5 Jun 2019 00:30:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyA4VWsJpiqbJ//ju6ixyl9EIWpk8KVUeN8wgM9WkNgJ7IRfLKmOIytLMPymlqQS5exV42Y
+X-Received: by 2002:a0c:8b6f:: with SMTP id d47mr30805546qvc.32.1559719826649;
+        Wed, 05 Jun 2019 00:30:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559719826; cv=none;
         d=google.com; s=arc-20160816;
-        b=sUWmb2Gud8+thZBlw2a92qqVkvQdVLEUsYgdZsRP7XKQvSyOoIyGEOTySacZjqT+JJ
-         EI7TIpfGxrifIfeQc4tTICqI7zBFr4bjbpZwhX0Klvp14o2IBaUQzM8Ekcmq6thZUajM
-         PrJJe1v6MIiMPNmKsn3oxtUmLRNQd0zicgzJuQIjErpHUHOIjw+jHX9e0JHok425ox4a
-         yJiC2KmDYeVJ2/gZdJklouFcB0X+zzVOa+FZRpWTT0++fMoH3AkbCP13l61UAsb1QWTw
-         QIJWpyhg9zwYpw9agTN3/kInJV7SG0ldNhEZp2+AqjBq534QfxlQfVz8QVoTSnUhmlN5
-         6qDw==
+        b=RDcp5s1I/dQa4Mp4b9aQX3fcQrMBPwQz1PyISTWOYkG9UpI0R+kb0E7dd3IJ4rnqHr
+         W9H0tjNyHxjsyJLkDsl8Dk8ngH5d3Sb/TDKn5VUUVilkH0rB6YTs0CaOzQ/57WXUPZCY
+         qea1jlM220xYnjiWM4OsgZvhEfdBHOdswdg8n0k1pm+BsUv5fqsId1ZHPGWe418cTiUJ
+         tWadnvVr4JqrX51DsazcpC6iVZaWRWcmAGJzoxddx/3nlXccECWewepkzIv3Q/hhaBhD
+         696g2FFj60urn3B+KsNDSSIDoQwqHZOE3HufHyHaT4OkksnDiqcf8OJaqGg/TkAaVuq2
+         5Nyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=NgSpMP8S3JLoAoUebgxikNMwzZ2MRoMXf++Uf2eZO8c=;
-        b=JTDArhdaN7TldizhCco6EGgS8PeT7Jfg371NYKu7nXR6GJvBWhIkHREOCiT/XgVuY3
-         zlL19nfuVDLLV7RoHPXtHy8gSEATBsClmU5qlJrRL1g043jACiDtH/yVUfx2GU++6gve
-         8KuoRsYaUlraEh8aPesvy/94a+z2TAMNLCIq0ai5hFpFB+IamheRQnmnbbUTkBdQJsw7
-         uf5mzHRzpah0J9yDigbJG/YqiwwJW+sN2L2W/MDf7Hk5Fo2PpiCI2OTyDslNGKVxs+ZH
-         RFjLX7d76oEGHENCT7XXkmFAwtVXo29sAscBUG4C5fg67AsucKR+eO0YKIt452Sk/srp
-         Pwhg==
+        bh=uJF8+7pu3WVBS/BevJ2M3QmfVdnpLyeDfjVMbYv/zWA=;
+        b=vh2z8mcoElMPfC06n7ep+HxFbB7wDWh+sdg6IVbFO75+gwZVczGMQIRzU2Z6dTrVdn
+         up7u790/BvRrF/fWgsiOBQfgjtwtiOs6QRPM8juzhiDf93wXMaf6aIldFIlzr0Bb7PLx
+         zCZXpykzyZy4hYPY/xtK1YqiW5r3I3HxapT3JtTwKHuKFGrZj4bJR2q068VbFHfTkIx/
+         fY9UKjsZ8nohmCja+nzjy1Ebty9H3jp0x0KEeYMzu7QCDRlkjlZjFFyPMewxzvZcwTXN
+         KWFwH6ft8v2i3CMIhrZSds0NOUz2j4eUgLxUJarFiiTKNgo3RqV9zrBKuET0lIjbk2eZ
+         muHA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id c30si2496114qtk.109.2019.06.05.00.28.02
+        by mx.google.com with ESMTPS id h185si4979991qkf.0.2019.06.05.00.30.26
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 Jun 2019 00:28:03 -0700 (PDT)
+        Wed, 05 Jun 2019 00:30:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1F6D230C0DDD;
-	Wed,  5 Jun 2019 07:27:46 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B071230860A4;
+	Wed,  5 Jun 2019 07:30:20 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 722B95DF4C;
-	Wed,  5 Jun 2019 07:27:38 +0000 (UTC)
-Date: Wed, 5 Jun 2019 09:27:35 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 41BE460C61;
+	Wed,  5 Jun 2019 07:30:14 +0000 (UTC)
+Date: Wed, 5 Jun 2019 09:30:12 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	richard.henderson@linaro.org, armbru@redhat.com,
 	abologna@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH 04/13] target/arm/kvm: Move the get/put of
- fpsimd registers out
-Message-ID: <20190605072735.tqgiprnilbacjppd@kamzik.brq.redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 02/13] update-linux-headers: Add
+ sve_context.h to asm-arm64
+Message-ID: <20190605073012.nh5wprpjqoi5e4v4@kamzik.brq.redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-5-drjones@redhat.com>
- <7c0c0ef2-6ab4-fdf9-9507-d1f460bfbd51@redhat.com>
+ <20190512083624.8916-3-drjones@redhat.com>
+ <c2756de5-be71-45f8-8ca4-bf9f594d525d@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7c0c0ef2-6ab4-fdf9-9507-d1f460bfbd51@redhat.com>
+In-Reply-To: <c2756de5-be71-45f8-8ca4-bf9f594d525d@redhat.com>
 User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Wed, 05 Jun 2019 07:27:46 +0000 (UTC)
-X-TUID: l0bkEyxYYyvX
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.44]); Wed, 05 Jun 2019 07:30:25 +0000 (UTC)
+X-TUID: aj0TDLwO8Vpk
 
-On Wed, Jun 05, 2019 at 09:15:49AM +0200, Auger Eric wrote:
-> Hi Drew,
+On Wed, Jun 05, 2019 at 09:21:18AM +0200, Auger Eric wrote:
+> Hi,
 > 
 > On 5/12/19 10:36 AM, Andrew Jones wrote:
-> > Move the getting/putting of the fpsimd registers out of
-> > kvm_arch_get/put_registers() into their own helper functions
-> > to prepare for alternatively getting/putting SVE registers.
-> > 
-> > No functional change.
-> > 
 > > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > > ---
-> >  target/arm/kvm64.c | 148 +++++++++++++++++++++++++++------------------
-> >  1 file changed, 88 insertions(+), 60 deletions(-)
+> >  scripts/update-linux-headers.sh | 3 +++
+> >  1 file changed, 3 insertions(+)
 > > 
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index ba232b27a6d3..61947f3716e1 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -706,13 +706,53 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-> >  #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
-> >                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+> > diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
+> > index c3819d2b983d..e1fce54f8aa3 100755
+> > --- a/scripts/update-linux-headers.sh
+> > +++ b/scripts/update-linux-headers.sh
+> > @@ -99,6 +99,9 @@ for arch in $ARCHLIST; do
+> >          cp "$tmpdir/include/asm/$header" "$output/linux-headers/asm-$arch"
+> >      done
 > >  
-> > +static int kvm_arch_put_fpsimd(CPUState *cs)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(cs);
-> > +    CPUARMState *env = &cpu->env;
-> > +    struct kvm_one_reg reg;
-> > +    uint32_t fpr;
-> > +    int i, ret;
-> > +
-> > +    for (i = 0; i < 32; i++) {
-> > +        uint64_t *q = aa64_vfp_qreg(env, i);
-> > +#ifdef HOST_WORDS_BIGENDIAN
-> > +        uint64_t fp_val[2] = { q[1], q[0] };
-> > +        reg.addr = (uintptr_t)fp_val;
-> > +#else
-> > +        reg.addr = (uintptr_t)q;
-> > +#endif
-> > +        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
-> > +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +        if (ret) {
-> > +            return ret;
-> > +        }
-> > +    }
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> > +    fpr = vfp_get_fpsr(env);
-> > +    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-> > +    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> I don't think you need this assignment
-
-You're right, and they weren't in the original code, but I added them
-in order to be sure that the register get/set blocks were complete
-units. It's one thing to factor stuff like that out of a loop, but
-here we had two almost independent blocks so it looked a bit odd.
-
-[...]
-
-> 
-> Besides
+> > +    if [ $arch = arm64 ]; then
+> > +        cp "$tmpdir/include/asm/sve_context.h" "$output/linux-headers/asm-arm64/"
+> > +    fi
+> >      if [ $arch = mips ]; then
+> >          cp "$tmpdir/include/asm/sgidefs.h" "$output/linux-headers/asm-mips/"
+> >          cp "$tmpdir/include/asm/unistd_o32.h" "$output/linux-headers/asm-mips/"
+> > 
 > Reviewed-by: Eric Auger <eric.auger@redhat.com>
 >
 
+Thanks, but I noticed we don't need this anymore. Not since b1b9e0dc78a8e
+applied an identical patch. I've dropped this from the v2 I'm working on
+now.
+
 Thanks,
-drew 
+drew

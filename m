@@ -1,97 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4748225wrg;
-        Thu, 6 Jun 2019 10:47:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzZwQ0CQAKstEx/wDV4uoD9UoXIly2D7URpKMQMvFL47UVgmSKSBt1et3WHI4fs9tdrU+Vb
-X-Received: by 2002:a05:620a:124f:: with SMTP id a15mr40303498qkl.173.1559843229999;
-        Thu, 06 Jun 2019 10:47:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559843229; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4748300wrg;
+        Thu, 6 Jun 2019 10:47:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyFtN5pRWUu5URXvPziWV4E6/jIovEoTSHcLHKxEL5BM/CiP2gdTJlx/uGixmw2DiFvMTte
+X-Received: by 2002:a0c:c94d:: with SMTP id v13mr13743928qvj.211.1559843235773;
+        Thu, 06 Jun 2019 10:47:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559843235; cv=none;
         d=google.com; s=arc-20160816;
-        b=JsnDciM6IP8b0nnQh8V+A0OBhxRp5A7Q7kuMcGnnUTse5lOANKDBk1oAfn5dz53kim
-         zX5Y2RKq6s63IJwoPTZdRJgXOhVeq8ToDv43EwKLIJ6f3lQBwFxEVqseOxtv7lEpoMHI
-         KhKnlwNoWeBSdiZ6/jl/nIAoxEO7Kj6se2IwwrX5HiuQDj2Dsbcai52oz+H0pPCLD5lI
-         2KAnZPkaKt1/cGfm+8cuisigb5MqHxswMVNzb15kooHYR1kztDHjh2bCcqA5C2xC4ZGU
-         HRpEaVP1CBdracjKKm5KdFZzyWJbteNwl2uf7W7cVWU/ak+juo6ww4lpsYndKnrHiYR8
-         r11g==
+        b=uWwNGIea6u3WvNmxabRjd5vlm7/nWv6uLpi4Z1arv/ClI4dNaZVgOq80Y5OWmkt2Ou
+         ZkkIi2w0AZ0HrsEAFmHs+kFiIueHUyrNefZHbeKxJQx5CfDu5pFaztxfxItkLU2Kr+tI
+         Cyf6Ww+5lZTZkIzaD792bKJPNtfWsM/9hYxigeFtpxwgHwiBfnjiSmtBby5eAA/bx6hZ
+         UPRmgP9bd0KN+LbfekC99tmXp/K8NMEAxZ+6vg/uRAOWBKSWYPeNRSdB0mXnC0+Jn08C
+         bfix3d7e6Zj3imJYzlDOa2o+XrKp/Yy1l4HngSLDvHLUGLqbZZhnCF+MWE8aFFodVCWy
+         A6ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=sfcSfieW8Ddeo0hEC2vM6Cq6H+ydZkZrWTeso5fNmQk=;
-        b=AkM35DAoBUA+JOb3+bSq62xbg2hZ6WFgb1WbiUdinAqjIVhxQtrknWzKlD5dgjlZIV
-         oqLn89LaRjYA/BPKlwUlPzTVYYBouu8g//eoiauoEECu4ANlZj/mmfs06XoyJTN4ScRr
-         3NQZ5KqW7thZPCalTNruYEfyrDLNrfcswZ8WaXfUvfCcpn/3rL0j1DLRGheYxzyx8vMw
-         MZYCNW/oT2MNt+BTs4RBhaK9M2dePpWYkLCAN5euyCVAFaV9o69GZoP8xsaq46l10nwy
-         iAgC86kHEGjqQ39Nb9gVCHEs54+kb+nFwcQ0IcS6Njvn9M3+LMNIO2TfW/c7sYVuMCmz
-         bZJg==
+        bh=2hMUMrakSCxqu0+AorNAFQDJwafHWVC502jtmxiJQCQ=;
+        b=m9GsK6rMAxpJw9JlMDwaunmNyG0BA3SadoNmv6/NedrMe3TccyZSmuYm1G5OH0Ndqu
+         VIp02XhDZoYgUFr///h3G2cbb2rrAfP0gcTNcD8trL3xa0wCSFu+iQ2bcWZ9Ifs6xPL8
+         fBXrPCb+DFCM841/ln8j724TkCHSQ+qyhka4iLGRsiSRYIYQvZWq6lwdl6rIG0pGjkax
+         IXdxVZ+9J19E3GmdWgoeOyznaAvsLiKlRNANYXwn457hSWU2k1UUq5Pl6SHYUlPOyHZd
+         FNCUSab2xgGpIf22/gA4+IO6BZOLTPVfBtckI42vAe3/HiSGXMxKmuNBCFP+Eug2QMwK
+         7bZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=omsel48L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=zvvfzaku;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u125si82816qkf.1.2019.06.06.10.47.09
+        by mx.google.com with ESMTPS id c4si2244654qth.269.2019.06.06.10.47.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Jun 2019 10:47:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Jun 2019 10:47:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=omsel48L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=zvvfzaku;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:35859 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:35857 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYwTl-0003qT-BP
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:47:09 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44228)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYwTr-0003ma-6i
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:47:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44209)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwTU-0003o7-I7
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:46:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwTP-0003ka-GT
+	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:46:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwTP-0003GQ-H4
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:46:50 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:55542)
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwTK-0003Bw-5m
+	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:46:45 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43857)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hYwTL-0002qM-Mi
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:46:45 -0400
-Received: by mail-wm1-x341.google.com with SMTP id a15so783157wmj.5
-	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:46:18 -0700 (PDT)
+	id 1hYwTF-00031B-F8
+	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:46:39 -0400
+Received: by mail-wr1-x441.google.com with SMTP id r18so3319027wrm.10
+	for <qemu-devel@nongnu.org>; Thu, 06 Jun 2019 10:46:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=sfcSfieW8Ddeo0hEC2vM6Cq6H+ydZkZrWTeso5fNmQk=;
-	b=omsel48Lb+6uuwQEsB9Gpvke64DQJnGVuVtN5TQUFlXtjNRMSudslszzDfgEQOPjhH
-	PopwCX73f0SDuF3bf+mLhaxzwOurwz0nczl5aI7N4dqBe0wKnqYkLjazpKC8xwH6xIOX
-	sf/umB7VuziIeLbAMstgvaFDUVQsTqOt1OZ8dWXmrISRhnDKF0pdSIEnfv72xv/SklMh
-	ZxEgcAjOY++Q7YZhfcKqkQud5rBQFj/3wF1rirnZ+6Qe2CbY0hV6S283tv62AkuIw1Od
-	mSRwtSAPH0UjJiYUFR3JcXhnIFHDqXdhMf16IW2p8b4vTzCzdbEEhHid5LAdeflf+KCR
-	XqJg==
+	bh=2hMUMrakSCxqu0+AorNAFQDJwafHWVC502jtmxiJQCQ=;
+	b=zvvfzakuj3sdQU3phw60fwS15pSc85DsXI1mKipCMlK/Jt2XI/IdNW/JwzaYepMiIw
+	0/0A7eos3whg2/nY2eKFx2iQhnQbvuBSNlanqxEbL8ro5uRBtpq92GLSj5ZrqyWSZ+gj
+	KqlAKQU9fvwDJ+WAZHlCuryaVYAq03o8daQxEuDP3gGP1i2q4XhmZRryXtGc3LEKJAdm
+	oA+CmxBsxkvn7+6MgpIH+CSSg6U3S7P/1hvJG5lUv6i0H62s9zFWVvGSFQjq4tZ4TFIW
+	LTRMY72tvnjlHkCasopTKqTN9/TV8vhaRIw96h6EMxiYISAdR/wayw3NJHuhajZMKGWf
+	cxcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=sfcSfieW8Ddeo0hEC2vM6Cq6H+ydZkZrWTeso5fNmQk=;
-	b=okObZxlkj2Vls3+qQtPgksDdF+LQq7yjcqA5B2q9CjqmOcH808zQCbQWAEQ23EWe3w
-	TPYru99oWfunl4y31M27kaG3UP+Jpwu6ohj47ADjkNQnrsJF++g9qTAgKScPgwCMiagp
-	dodaYWmLFHtc0Nz0ZxCVxOfOApb67VZpNt9MxR0nBwZsmheVU1HqhtnfpCkjKUkwc1m9
-	8EXFSWmuqnixFouOG8zDJGB9yS9Bs6+33aUCCtQluSONbLBsBl4q6HsF3aPdxwxym97D
-	N4UFk5zFMzzeWNtvnYIMH+CU349uw7L9OMuHrAoWH8lU4T/OaX7SML7WF+tdHfI4whMi
-	Z/6A==
-X-Gm-Message-State: APjAAAWpJuPsbqilWBR7seUB+hEAg6+LMv6FpSnIdTSc6xTheCfNOAQs
-	11wc8oU64/BUC/xjb6AbdbDTmJmuruZhDg==
-X-Received: by 2002:a7b:cc97:: with SMTP id p23mr867964wma.120.1559843177622; 
-	Thu, 06 Jun 2019 10:46:17 -0700 (PDT)
+	bh=2hMUMrakSCxqu0+AorNAFQDJwafHWVC502jtmxiJQCQ=;
+	b=bCSnN4Xu8MV5Im2RrCdmSJZByoNtbXWWFw7oBGVaTDCrZNERYN5oyR4451IqNCle5v
+	/iSymDoEv/F6on1Ddoz+A0q2JqRkmeLaH1GLTe81L8Ruyuh2HkOa4acI933dScA8/nS6
+	MRZrMWNyqoKMZYudsoV/55Q+fUVNTjgKd7ioJh1rUEwHZkOSNiraTYW7FGTqLo58oLhf
+	rNr58zN9kKRHA2c/Bf9axPsC1AOfXfsGdhU+5RaXpPRrx0nVa4x2vRTRc+SltB2B6BYH
+	3cZe8mGuGxy2fc9LZOEgUp+HC1NVVY2amLSVChoY71+NG52IuRbKfhT5B8t/qhYbgIqa
+	1+jw==
+X-Gm-Message-State: APjAAAWx4/N2S2MnbSJT6911T9W1aDE5XluZyyC+xTziVvRmDElg6nKQ
+	KrtUBnJLBweKYSGjl3IZ7n4mxA==
+X-Received: by 2002:adf:b64b:: with SMTP id i11mr30611696wre.205.1559843189443;
+	Thu, 06 Jun 2019 10:46:29 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	z135sm2596784wmc.45.2019.06.06.10.46.16
+	z135sm2596784wmc.45.2019.06.06.10.46.28
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Jun 2019 10:46:17 -0700 (PDT)
+	Thu, 06 Jun 2019 10:46:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu,  6 Jun 2019 18:45:33 +0100
-Message-Id: <20190606174609.20487-7-peter.maydell@linaro.org>
+Date: Thu,  6 Jun 2019 18:45:43 +0100
+Message-Id: <20190606174609.20487-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190606174609.20487-1-peter.maydell@linaro.org>
 References: <20190606174609.20487-1-peter.maydell@linaro.org>
@@ -99,181 +99,358 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: [Qemu-arm] [PATCH 06/42] target/arm: Convert the VSEL instructions
- to decodetree
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::441
+Subject: [Qemu-devel] [PATCH 16/42] target/arm: Convert the VFP load/store
+ multiple insns to decodetree
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: snH3ZcQ9B5tC
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IDx+tqDbC8qv
 
-Convert the VSEL instructions to decodetree.
-We leave trans_VSEL() in translate.c for now as this allows
-the patch to show just the changes from the old handle_vsel().
+Convert the VFP load/store multiple insns to decodetree.
+This includes tightening up the UNDEF checking for pre-VFPv3
+CPUs which only have D0-D15 : they now UNDEF for any access
+to D16-D31, not merely when the smallest register in the
+transfer list is in D16-D31.
 
-In the old code the check for "do D16-D31 exist" was hidden in
-the VFP_DREG macro, and assumed that VFPv3 always implied that
-D16-D31 exist. In the new code we do the correct ID register test.
-This gives identical behaviour for most of our CPUs, and fixes
-previously incorrect handling for  Cortex-R5F, Cortex-M4 and
-Cortex-M33, which all implement VFPv3 or better with only 16
-double-precision registers.
+This conversion does not try to share code between the single
+precision and the double precision versions; this looks a bit
+duplicative of code, but it leaves the door open for a future
+refactoring which gets rid of the use of the "F0" registers
+by inlining the various functions like gen_vfp_ld() and
+gen_mov_F0_reg() which are hiding "if (dp) { ... } else { ... }"
+conditionalisation.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h               |  6 ++++++
- target/arm/translate-vfp.inc.c |  9 +++++++++
- target/arm/translate.c         | 35 ++++++++++++++++++++++++----------
- target/arm/vfp-uncond.decode   | 19 ++++++++++++++++++
- 4 files changed, 59 insertions(+), 10 deletions(-)
+ target/arm/translate-vfp.inc.c | 162 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c         |  97 +-------------------
+ target/arm/vfp.decode          |  18 ++++
+ 3 files changed, 183 insertions(+), 94 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c34207611ba..30fb107c605 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3408,6 +3408,12 @@ static inline bool isar_feature_aa32_fp16_arith(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, FP) == 1;
- }
- 
-+static inline bool isar_feature_aa32_fp_d32(const ARMISARegisters *id)
-+{
-+    /* Return true if D16-D31 are implemented */
-+    return FIELD_EX64(id->mvfr0, MVFR0, SIMDREG) >= 2;
-+}
-+
- /*
-  * We always set the FP and SIMD FP16 fields to indicate identical
-  * levels of support (assuming SIMD is implemented at all), so
 diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index cf3d7febaa7..f7535138d0f 100644
+index 40f2cac3e2e..32a1805e582 100644
 --- a/target/arm/translate-vfp.inc.c
 +++ b/target/arm/translate-vfp.inc.c
-@@ -129,3 +129,12 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
+@@ -926,3 +926,165 @@ static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_sp *a)
  
      return true;
  }
 +
-+/*
-+ * The most usual kind of VFP access check, for everything except
-+ * FMXR/FMRX to the always-available special registers.
-+ */
-+static bool vfp_access_check(DisasContext *s)
++static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
 +{
-+    return full_vfp_access_check(s, false);
-+}
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 6088ffdc6ee..50545062195 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -3076,10 +3076,27 @@ static void gen_neon_dup_high16(TCGv_i32 var)
-     tcg_temp_free_i32(tmp);
- }
- 
--static int handle_vsel(uint32_t insn, uint32_t rd, uint32_t rn, uint32_t rm,
--                       uint32_t dp)
-+static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
- {
--    uint32_t cc = extract32(insn, 20, 2);
-+    uint32_t rd, rn, rm;
-+    bool dp = a->dp;
++    uint32_t offset;
++    TCGv_i32 addr;
++    int i, n;
 +
-+    if (!dc_isar_feature(aa32_vsel, s)) {
++    n = a->imm;
++
++    if (n == 0 || (a->vd + n) > 32) {
++        /*
++         * UNPREDICTABLE cases for bad immediates: we choose to
++         * UNDEF to avoid generating huge numbers of TCG ops
++         */
 +        return false;
 +    }
-+
-+    /* UNDEF accesses to D16-D31 if they don't exist */
-+    if (dp && !dc_isar_feature(aa32_fp_d32, s) &&
-+        ((a->vm | a->vn | a->vd) & 0x10)) {
++    if (a->rn == 15 && a->w) {
++        /* writeback to PC is UNPREDICTABLE, we choose to UNDEF */
 +        return false;
 +    }
-+    rd = a->vd;
-+    rn = a->vn;
-+    rm = a->vm;
 +
 +    if (!vfp_access_check(s)) {
 +        return true;
 +    }
- 
-     if (dp) {
-         TCGv_i64 frn, frm, dest;
-@@ -3101,7 +3118,7 @@ static int handle_vsel(uint32_t insn, uint32_t rd, uint32_t rn, uint32_t rm,
- 
-         tcg_gen_ld_f64(frn, cpu_env, vfp_reg_offset(dp, rn));
-         tcg_gen_ld_f64(frm, cpu_env, vfp_reg_offset(dp, rm));
--        switch (cc) {
-+        switch (a->cc) {
-         case 0: /* eq: Z */
-             tcg_gen_movcond_i64(TCG_COND_EQ, dest, zf, zero,
-                                 frn, frm);
-@@ -3148,7 +3165,7 @@ static int handle_vsel(uint32_t insn, uint32_t rd, uint32_t rn, uint32_t rm,
-         dest = tcg_temp_new_i32();
-         tcg_gen_ld_f32(frn, cpu_env, vfp_reg_offset(dp, rn));
-         tcg_gen_ld_f32(frm, cpu_env, vfp_reg_offset(dp, rm));
--        switch (cc) {
-+        switch (a->cc) {
-         case 0: /* eq: Z */
-             tcg_gen_movcond_i32(TCG_COND_EQ, dest, cpu_ZF, zero,
-                                 frn, frm);
-@@ -3182,7 +3199,7 @@ static int handle_vsel(uint32_t insn, uint32_t rd, uint32_t rn, uint32_t rm,
-         tcg_temp_free_i32(zero);
-     }
- 
--    return 0;
++
++    if (s->thumb && a->rn == 15) {
++        /* This is actually UNPREDICTABLE */
++        addr = tcg_temp_new_i32();
++        tcg_gen_movi_i32(addr, s->pc & ~2);
++    } else {
++        addr = load_reg(s, a->rn);
++    }
++    if (a->p) {
++        /* pre-decrement */
++        tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
++    }
++
++    if (s->v8m_stackcheck && a->rn == 13 && a->w) {
++        /*
++         * Here 'addr' is the lowest address we will store to,
++         * and is either the old SP (if post-increment) or
++         * the new SP (if pre-decrement). For post-increment
++         * where the old value is below the limit and the new
++         * value is above, it is UNKNOWN whether the limit check
++         * triggers; we choose to trigger.
++         */
++        gen_helper_v8m_stackcheck(cpu_env, addr);
++    }
++
++    offset = 4;
++    for (i = 0; i < n; i++) {
++        if (a->l) {
++            /* load */
++            gen_vfp_ld(s, false, addr);
++            gen_mov_vreg_F0(false, a->vd + i);
++        } else {
++            /* store */
++            gen_mov_F0_vreg(false, a->vd + i);
++            gen_vfp_st(s, false, addr);
++        }
++        tcg_gen_addi_i32(addr, addr, offset);
++    }
++    if (a->w) {
++        /* writeback */
++        if (a->p) {
++            offset = -offset * n;
++            tcg_gen_addi_i32(addr, addr, offset);
++        }
++        store_reg(s, a->rn, addr);
++    } else {
++        tcg_temp_free_i32(addr);
++    }
++
 +    return true;
- }
- 
- static int handle_vminmaxnm(uint32_t insn, uint32_t rd, uint32_t rn,
-@@ -3354,10 +3371,8 @@ static int disas_vfp_misc_insn(DisasContext *s, uint32_t insn)
-         rm = VFP_SREG_M(insn);
-     }
- 
--    if ((insn & 0x0f800e50) == 0x0e000a00 && dc_isar_feature(aa32_vsel, s)) {
--        return handle_vsel(insn, rd, rn, rm, dp);
--    } else if ((insn & 0x0fb00e10) == 0x0e800a00 &&
--               dc_isar_feature(aa32_vminmaxnm, s)) {
-+    if ((insn & 0x0fb00e10) == 0x0e800a00 &&
-+        dc_isar_feature(aa32_vminmaxnm, s)) {
-         return handle_vminmaxnm(insn, rd, rn, rm, dp);
-     } else if ((insn & 0x0fbc0ed0) == 0x0eb80a40 &&
-                dc_isar_feature(aa32_vrint, s)) {
-diff --git a/target/arm/vfp-uncond.decode b/target/arm/vfp-uncond.decode
-index b1d9dc507c2..b7f7c27fe86 100644
---- a/target/arm/vfp-uncond.decode
-+++ b/target/arm/vfp-uncond.decode
-@@ -26,3 +26,22 @@
- #  1111 1110 .... .... .... 101. .... ....
- # (but those patterns might also cover some Neon instructions,
- # which do not live in this file.)
++}
 +
-+# VFP registers have an odd encoding with a four-bit field
-+# and a one-bit field which are assembled in different orders
-+# depending on whether the register is double or single precision.
-+# Each individual instruction function must do the checks for
-+# "double register selected but CPU does not have double support"
-+# and "double register number has bit 4 set but CPU does not
-+# support D16-D31" (which should UNDEF).
-+%vm_dp  5:1 0:4
-+%vm_sp  0:4 5:1
-+%vn_dp  7:1 16:4
-+%vn_sp  16:4 7:1
-+%vd_dp  22:1 12:4
-+%vd_sp  12:4 22:1
++static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
++{
++    uint32_t offset;
++    TCGv_i32 addr;
++    int i, n;
 +
-+VSEL        1111 1110 0. cc:2 .... .... 1010 .0.0 .... \
-+            vm=%vm_sp vn=%vn_sp vd=%vd_sp dp=0
-+VSEL        1111 1110 0. cc:2 .... .... 1011 .0.0 .... \
-+            vm=%vm_dp vn=%vn_dp vd=%vd_dp dp=1
++    n = a->imm >> 1;
++
++    if (n == 0 || (a->vd + n) > 32 || n > 16) {
++        /*
++         * UNPREDICTABLE cases for bad immediates: we choose to
++         * UNDEF to avoid generating huge numbers of TCG ops
++         */
++        return false;
++    }
++    if (a->rn == 15 && a->w) {
++        /* writeback to PC is UNPREDICTABLE, we choose to UNDEF */
++        return false;
++    }
++
++    /* UNDEF accesses to D16-D31 if they don't exist */
++    if (!dc_isar_feature(aa32_fp_d32, s) && (a->vd + n) > 16) {
++        return false;
++    }
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    if (s->thumb && a->rn == 15) {
++        /* This is actually UNPREDICTABLE */
++        addr = tcg_temp_new_i32();
++        tcg_gen_movi_i32(addr, s->pc & ~2);
++    } else {
++        addr = load_reg(s, a->rn);
++    }
++    if (a->p) {
++        /* pre-decrement */
++        tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
++    }
++
++    if (s->v8m_stackcheck && a->rn == 13 && a->w) {
++        /*
++         * Here 'addr' is the lowest address we will store to,
++         * and is either the old SP (if post-increment) or
++         * the new SP (if pre-decrement). For post-increment
++         * where the old value is below the limit and the new
++         * value is above, it is UNKNOWN whether the limit check
++         * triggers; we choose to trigger.
++         */
++        gen_helper_v8m_stackcheck(cpu_env, addr);
++    }
++
++    offset = 8;
++    for (i = 0; i < n; i++) {
++        if (a->l) {
++            /* load */
++            gen_vfp_ld(s, true, addr);
++            gen_mov_vreg_F0(true, a->vd + i);
++        } else {
++            /* store */
++            gen_mov_F0_vreg(true, a->vd + i);
++            gen_vfp_st(s, true, addr);
++        }
++        tcg_gen_addi_i32(addr, addr, offset);
++    }
++    if (a->w) {
++        /* writeback */
++        if (a->p) {
++            offset = -offset * n;
++        } else if (a->imm & 1) {
++            offset = 4;
++        } else {
++            offset = 0;
++        }
++
++        if (offset != 0) {
++            tcg_gen_addi_i32(addr, addr, offset);
++        }
++        store_reg(s, a->rn, addr);
++    } else {
++        tcg_temp_free_i32(addr);
++    }
++
++    return true;
++}
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index de3bde4b55f..a109f058795 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -3092,9 +3092,8 @@ static void gen_neon_dup_high16(TCGv_i32 var)
+  */
+ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+ {
+-    uint32_t rd, rn, rm, op, i, n, offset, delta_d, delta_m, bank_mask;
++    uint32_t rd, rn, rm, op, i, n, delta_d, delta_m, bank_mask;
+     int dp, veclen;
+-    TCGv_i32 addr;
+     TCGv_i32 tmp;
+     TCGv_i32 tmp2;
+ 
+@@ -3702,98 +3701,8 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+         break;
+     case 0xc:
+     case 0xd:
+-        if ((insn & 0x03e00000) == 0x00400000) {
+-            /* Already handled by decodetree */
+-            return 1;
+-        } else {
+-            /* Load/store */
+-            rn = (insn >> 16) & 0xf;
+-            if (dp)
+-                VFP_DREG_D(rd, insn);
+-            else
+-                rd = VFP_SREG_D(insn);
+-            if ((insn & 0x01200000) == 0x01000000) {
+-                /* Already handled by decodetree */
+-                return 1;
+-            } else {
+-                /* load/store multiple */
+-                int w = insn & (1 << 21);
+-                if (dp)
+-                    n = (insn >> 1) & 0x7f;
+-                else
+-                    n = insn & 0xff;
+-
+-                if (w && !(((insn >> 23) ^ (insn >> 24)) & 1)) {
+-                    /* P == U , W == 1  => UNDEF */
+-                    return 1;
+-                }
+-                if (n == 0 || (rd + n) > 32 || (dp && n > 16)) {
+-                    /* UNPREDICTABLE cases for bad immediates: we choose to
+-                     * UNDEF to avoid generating huge numbers of TCG ops
+-                     */
+-                    return 1;
+-                }
+-                if (rn == 15 && w) {
+-                    /* writeback to PC is UNPREDICTABLE, we choose to UNDEF */
+-                    return 1;
+-                }
+-
+-                if (s->thumb && rn == 15) {
+-                    /* This is actually UNPREDICTABLE */
+-                    addr = tcg_temp_new_i32();
+-                    tcg_gen_movi_i32(addr, s->pc & ~2);
+-                } else {
+-                    addr = load_reg(s, rn);
+-                }
+-                if (insn & (1 << 24)) /* pre-decrement */
+-                    tcg_gen_addi_i32(addr, addr, -((insn & 0xff) << 2));
+-
+-                if (s->v8m_stackcheck && rn == 13 && w) {
+-                    /*
+-                     * Here 'addr' is the lowest address we will store to,
+-                     * and is either the old SP (if post-increment) or
+-                     * the new SP (if pre-decrement). For post-increment
+-                     * where the old value is below the limit and the new
+-                     * value is above, it is UNKNOWN whether the limit check
+-                     * triggers; we choose to trigger.
+-                     */
+-                    gen_helper_v8m_stackcheck(cpu_env, addr);
+-                }
+-
+-                if (dp)
+-                    offset = 8;
+-                else
+-                    offset = 4;
+-                for (i = 0; i < n; i++) {
+-                    if (insn & ARM_CP_RW_BIT) {
+-                        /* load */
+-                        gen_vfp_ld(s, dp, addr);
+-                        gen_mov_vreg_F0(dp, rd + i);
+-                    } else {
+-                        /* store */
+-                        gen_mov_F0_vreg(dp, rd + i);
+-                        gen_vfp_st(s, dp, addr);
+-                    }
+-                    tcg_gen_addi_i32(addr, addr, offset);
+-                }
+-                if (w) {
+-                    /* writeback */
+-                    if (insn & (1 << 24))
+-                        offset = -offset * n;
+-                    else if (dp && (insn & 1))
+-                        offset = 4;
+-                    else
+-                        offset = 0;
+-
+-                    if (offset != 0)
+-                        tcg_gen_addi_i32(addr, addr, offset);
+-                    store_reg(s, rn, addr);
+-                } else {
+-                    tcg_temp_free_i32(addr);
+-                }
+-            }
+-        }
+-        break;
++        /* Already handled by decodetree */
++        return 1;
+     default:
+         /* Should never happen.  */
+         return 1;
+diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
+index 8fa7fa0bead..68c9ffcfd3c 100644
+--- a/target/arm/vfp.decode
++++ b/target/arm/vfp.decode
+@@ -78,3 +78,21 @@ VLDR_VSTR_sp ---- 1101 u:1 .0 l:1 rn:4 .... 1010 imm:8 \
+              vd=%vd_sp
+ VLDR_VSTR_dp ---- 1101 u:1 .0 l:1 rn:4 .... 1011 imm:8 \
+              vd=%vd_dp
++
++# We split the load/store multiple up into two patterns to avoid
++# overlap with other insns in the "Advanced SIMD load/store and 64-bit move"
++# grouping:
++#   P=0 U=0 W=0 is 64-bit VMOV
++#   P=1 W=0 is VLDR/VSTR
++#   P=U W=1 is UNDEF
++# leaving P=0 U=1 W=x and P=1 U=0 W=1 for load/store multiple.
++# These include FSTM/FLDM.
++VLDM_VSTM_sp ---- 1100 1 . w:1 l:1 rn:4 .... 1010 imm:8 \
++             vd=%vd_sp p=0 u=1
++VLDM_VSTM_dp ---- 1100 1 . w:1 l:1 rn:4 .... 1011 imm:8 \
++             vd=%vd_dp p=0 u=1
++
++VLDM_VSTM_sp ---- 1101 0.1 l:1 rn:4 .... 1010 imm:8 \
++             vd=%vd_sp p=1 u=0 w=1
++VLDM_VSTM_dp ---- 1101 0.1 l:1 rn:4 .... 1011 imm:8 \
++             vd=%vd_dp p=1 u=0 w=1
 -- 
 2.20.1
 

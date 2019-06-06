@@ -1,341 +1,196 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4774445wrg;
-        Thu, 6 Jun 2019 11:13:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3d2xbAWus5nbi4K2YVq06pX36M9LFEuRuVykr/NJcCwMNNdRYdUaIbWoB5fYeaSOPZ5UC
-X-Received: by 2002:aed:220e:: with SMTP id n14mr13809765qtc.388.1559844829058;
-        Thu, 06 Jun 2019 11:13:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559844829; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4789065wrg;
+        Thu, 6 Jun 2019 11:30:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzX/ROYcp17wRNkRg6B+ZYGbCIBX0STyjSoNJCEvT8jpBVKEWxrOXO/iPp4Qqm8S2ojtEwl
+X-Received: by 2002:aed:3ec5:: with SMTP id o5mr15200002qtf.199.1559845823993;
+        Thu, 06 Jun 2019 11:30:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559845823; cv=none;
         d=google.com; s=arc-20160816;
-        b=nSs/HmYTSERNhcFB5xINd9WZ6lydsR7X3RXgDPjTW3VBPYCxMGYIE576jMyINPBfH3
-         bHVTfP9SmX5XC9ITwTCQjT63sUuVeaFxIO+dGFCT5jDy5MbBoCV1UoJR9wiGmcNgHH0y
-         8a97xQcIEmHc0V8NQzFF2qbK70Kx0b67tG8HhvYET8qcq35ZRlphFvu2/1yWnwh+Yo0s
-         lb7ZgPS40qaX2regbm3eCAdfYzw8TM8heXaYwYuU6QJHiNCaVPGVUK/xjBRTnorsQrLL
-         cVUauhRKfNfAgQeKiZJet5K0ptA/GvicwGR3L9oMW35GxXrY0TXqwcdihsiqvnGnD0IE
-         J+Lg==
+        b=am1PZextsqTIS7jBsWEwCfDs608uhIK3R96m5QLLGrNxvpudSEvG6yGhTguZGkN8jL
+         +5tck1fkKd2Yg0T8XtqMOMUtuXGblJaoVrhe2zLCYIzjod83KSTPdNKwn/NQ+ZzcTM41
+         JQtXWyEMaNtE7/78yih89jfXJl7C7tB8ODNtAeFOXZhgJ3ZxW0Vm6iWKQlRz8w/HEdN2
+         +ChzIzIKnE16NT9oIx+AWiYOxNtJgiSwYdpb8EZI2WL5QfWjc/lSakVTR49ep7tTXV5x
+         mF3Zw/jDGsmq+7RppN5fIuBku5YruLUZR42buJAEyEo6ameX4Nacf5525xlkS7xBF2qA
+         BV5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=T8dalXGNHmxlBlWh+OiCcc7lIFztXGrOob93cvWGYJo=;
-        b=uC0oGYmZ3/wsG1nAJzf+YUMjDtxtWhY5pXqveLpVlPocOHFbYAsmQRXKcE2XlKNPFe
-         pRAcu4ERccOeShbjqnh6ReJm1hRcZsM771//NGq+CRlMDurUR7wIdZbUoyybR5vlDJC9
-         InBrhQ6Mrr+xbDoh8/1zKirxZyZ81qDSot9ga+8fFeiQYq1i7vx6kL/J+GJoQdLXtTGV
-         uZ78yMIp/s391Ib5Co8JwWicLLo9ByZu+tMSG7WMTKgSLb7IkP1BoQHtiyOMLr6AdT/m
-         bHIapckrk1unC4E6Q03Nv1ewAzwp+OBDVEVGPxHUUZ816vaJoDSJTwgKEomDlGkucsrV
-         f73Q==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=WQo3rjRU5MP6w0qrhyrGK6SNR8Cp+xAv+0i5Hwxi4pw=;
+        b=R7EziOVdPb5Dg3Hf/35rKiHCzv+1jueF75jyhCZcaWky7goExhhD7hPclyqcI5oHGJ
+         NpO5G/sdIkcnA2nzZLCz1v2U/oDsnj7eo9zQ7dTQmWtnPbTGE03QOeRRgNnu4rHOLrwU
+         H8VVY0SnUUVSjcotlqAcjOHzPqIeq6gd5DDF7TIKcUCmfKXUWWBeFfv4Xhc+PeC1gp86
+         D6t+4AIKyXjaFffc0SAnAVlUFynncxg4cgFrT+ozsJBvmd4srUFI5MPr2vv1Fp46L30O
+         R1WBsEzKi+uHT0iWEwQmGdUFrpoS3rhvGZv49c6vw+aQksAGfAUKPEQCge4AjoJSFhk4
+         67GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rckAy9wu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o185si2279350qkd.256.2019.06.06.11.13.48
+        by mx.google.com with ESMTPS id n19si332509qkg.11.2019.06.06.11.30.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Jun 2019 11:13:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Jun 2019 11:30:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rckAy9wu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:36326 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:36628 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYwtY-0005eZ-DR
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 14:13:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45071)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYx9b-00032B-Im
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 14:30:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwUC-0004bk-BO
-	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:47:43 -0400
+	(envelope-from <crosa@redhat.com>) id 1hYx9T-00031u-7O
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 14:30:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwU8-0004DX-0U
-	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:47:36 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41010)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hYwU7-0003IF-Gv
-	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 13:47:31 -0400
-Received: by mail-wr1-x444.google.com with SMTP id c2so3327256wrm.8
-	for <qemu-devel@nongnu.org>; Thu, 06 Jun 2019 10:46:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=T8dalXGNHmxlBlWh+OiCcc7lIFztXGrOob93cvWGYJo=;
-	b=rckAy9wuRpm9ndEk89Ia4Cat+MDcGXxFHNXHYVpHq8ca2fR7l4CVN4O4nXykW42a99
-	vVqfgJV5P71nxxA6PreoyF3b0CjibKNoFaX4cjF6XKBNUYXzVM54I7tndWmQguXRswZs
-	yT5O3UKqzhMEce2DwBO1Q0M/RRHBq8z85mf5thOwwtzQWODJN4Wxy5BJItXdAuZYya4e
-	HUephacWp549tPSRQrQ7dH3/tIyOQuZ55b4fpgdNcDuvIaa4thl7DJD5iqin1c52sRup
-	VXkN+SCk1iwZ/dkh9cOLo60253iT2uelNEbX+DWRwC0JIi1gEpxvoqgITaZ9S+KV3ExF
-	Zf4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references:mime-version:content-transfer-encoding;
-	bh=T8dalXGNHmxlBlWh+OiCcc7lIFztXGrOob93cvWGYJo=;
-	b=IYgZMjes0Jj85NI3me8ZPxvn0HTWb3mTK0mbg6tzGw5dQHBBZEg3QlgcvN9ytoB/CW
-	myBlZ38LhO9Rs4iVcGkc3za5ChvQDZhppLUjO9ecZ+xcRJloYWBRpQ9EecWbBSOeu6sw
-	KacP9T4rOfHeVJ/yXGWDQ1Dgtz46v3f9lduyr0OymTuW18uK/hkZ2F2+IwEK7obNiE0K
-	VwQGYrToWFgfsWnBvTgyTXlt9ufk8wBjLoUtklGI3+hhblq1zBkJmnnc7s6pzA/dKGZb
-	j8rQ3W3AhCHxY20r3oXLNW8BpqT3RG/1q6aEcqwDUsdB7Disx8PUo0fLRhtjJAwiKSYK
-	yJJQ==
-X-Gm-Message-State: APjAAAVTkv9vPxWo+kCXOkpF7G1EVaCDWzshyn2p9SqzWAYFDyTfyIKw
-	cQMOvLQu0gMFNFohTc8VDU14Qg==
-X-Received: by 2002:a5d:4904:: with SMTP id x4mr3808601wrq.337.1559843210172; 
-	Thu, 06 Jun 2019 10:46:50 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	z135sm2596784wmc.45.2019.06.06.10.46.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Jun 2019 10:46:49 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu,  6 Jun 2019 18:46:02 +0100
-Message-Id: <20190606174609.20487-36-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190606174609.20487-1-peter.maydell@linaro.org>
-References: <20190606174609.20487-1-peter.maydell@linaro.org>
+	(envelope-from <crosa@redhat.com>) id 1hYx9R-000625-A8
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 14:30:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53620)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <crosa@redhat.com>)
+	id 1hYx9P-0005V2-8c; Thu, 06 Jun 2019 14:30:12 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 034AC81DE3;
+	Thu,  6 Jun 2019 18:29:34 +0000 (UTC)
+Received: from dhcp-17-47.bos.redhat.com (dhcp-17-47.bos.redhat.com
+	[10.18.17.47])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C9FEF7DFF6;
+	Thu,  6 Jun 2019 18:29:27 +0000 (UTC)
+Date: Thu, 6 Jun 2019 14:29:26 -0400
+From: Cleber Rosa <crosa@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20190606182926.GA4501@dhcp-17-47.bos.redhat.com>
+References: <20190520220635.10961-1-f4bug@amsat.org>
+	<20190520220635.10961-3-f4bug@amsat.org>
+	<20190605160659.GB7080@localhost.localdomain>
+	<20190605204323.GF22416@habkost.net>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-devel] [PATCH 35/42] target/arm: Convert the VCVT-to-f16
- insns to decodetree
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20190605204323.GF22416@habkost.net>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 06 Jun 2019 18:29:44 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] BootLinuxConsoleTest: Test
+ the SmartFusion2 board
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WTZhj3TGhKAv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair@alistair23.me>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TuL2g9cl0aK+
 
-Convert the VCVTT and VCVTB instructions which convert from
-f32 and f64 to f16 to decodetree.
+On Wed, Jun 05, 2019 at 05:43:23PM -0300, Eduardo Habkost wrote:
+> On Wed, Jun 05, 2019 at 12:06:59PM -0400, Cleber Rosa wrote:
+> > On Tue, May 21, 2019 at 12:06:35AM +0200, Philippe Mathieu-Daud=E9 wr=
+ote:
+> > > Similar to the x86_64/pc test, it boots a Linux kernel on an
+> > > Emcraft board and verify the serial is working.
+> > >=20
+> > > If ARM is a target being built, "make check-acceptance" will
+> > > automatically include this test by the use of the "arch:arm" tags.
+> > >=20
+> > > Alternatively, this test can be run using:
+> > >=20
+> > >   $ avocado run -t arch:arm tests/acceptance
+> > >   $ avocado run -t machine:emcraft-sf2 tests/acceptance
+> > >
+> >=20
+> > The pattern accepted as a tag currently doesn't include a dash, see:
+> >=20
+> >    https://avocado-framework.readthedocs.io/en/68.0/ReferenceGuide.ht=
+ml#docstring-directives-rules
+> >=20
+>=20
+> Why isn't this causing test jobs to fail?
 
-Since we're no longer constrained to the old decoder's style
-using cpu_F0s and cpu_F0d we can perform a direct 16 bit
-store of the right half of the input single-precision register
-rather than doing a load/modify/store sequence on the full
-32 bits.
+Because docstring directives are searched for "gracefully", that is,
+if it doesn't match the pattern, it's not considered a docstring
+directive.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-vfp.inc.c | 62 ++++++++++++++++++++++++++
- target/arm/translate.c         | 79 +---------------------------------
- target/arm/vfp.decode          |  6 +++
- 3 files changed, 69 insertions(+), 78 deletions(-)
+Also, there's nothing in the jobs that require or check for that
+specific machine tag.  The "check-acceptance" rule uses the built
+targets, and adds "arch:<$TARGET>" tags to the command line.
 
-diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index 3ad93cc48f4..d2ae148ca69 100644
---- a/target/arm/translate-vfp.inc.c
-+++ b/target/arm/translate-vfp.inc.c
-@@ -2087,3 +2087,65 @@ static bool trans_VCVT_f64_f16(DisasContext *s, arg_VCVT_f64_f16 *a)
-     tcg_temp_free_i64(vd);
-     return true;
- }
-+
-+static bool trans_VCVT_f16_f32(DisasContext *s, arg_VCVT_f16_f32 *a)
-+{
-+    TCGv_ptr fpst;
-+    TCGv_i32 ahp_mode;
-+    TCGv_i32 tmp;
-+
-+    if (!dc_isar_feature(aa32_fp16_spconv, s)) {
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    fpst = get_fpstatus_ptr(false);
-+    ahp_mode = get_ahp_flag();
-+    tmp = tcg_temp_new_i32();
-+
-+    neon_load_reg32(tmp, a->vm);
-+    gen_helper_vfp_fcvt_f32_to_f16(tmp, tmp, fpst, ahp_mode);
-+    tcg_gen_st16_i32(tmp, cpu_env, vfp_f16_offset(a->vd, a->t));
-+    tcg_temp_free_i32(ahp_mode);
-+    tcg_temp_free_ptr(fpst);
-+    tcg_temp_free_i32(tmp);
-+    return true;
-+}
-+
-+static bool trans_VCVT_f16_f64(DisasContext *s, arg_VCVT_f16_f64 *a)
-+{
-+    TCGv_ptr fpst;
-+    TCGv_i32 ahp_mode;
-+    TCGv_i32 tmp;
-+    TCGv_i64 vm;
-+
-+    if (!dc_isar_feature(aa32_fp16_dpconv, s)) {
-+        return false;
-+    }
-+
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_fp_d32, s) && (a->vm  & 0x10)) {
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    fpst = get_fpstatus_ptr(false);
-+    ahp_mode = get_ahp_flag();
-+    tmp = tcg_temp_new_i32();
-+    vm = tcg_temp_new_i64();
-+
-+    neon_load_reg64(vm, a->vm);
-+    gen_helper_vfp_fcvt_f64_to_f16(tmp, vm, fpst, ahp_mode);
-+    tcg_temp_free_i64(vm);
-+    tcg_gen_st16_i32(tmp, cpu_env, vfp_f16_offset(a->vd, a->t));
-+    tcg_temp_free_i32(ahp_mode);
-+    tcg_temp_free_ptr(fpst);
-+    tcg_temp_free_i32(tmp);
-+    return true;
-+}
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 65e69873654..3edcd7beff3 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -2963,20 +2963,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
- #define VFP_SREG_M(insn) VFP_SREG(insn,  0,  5)
- #define VFP_DREG_M(reg, insn) VFP_DREG(reg, insn,  0,  5)
- 
--/* Move between integer and VFP cores.  */
--static TCGv_i32 gen_vfp_mrs(void)
--{
--    TCGv_i32 tmp = tcg_temp_new_i32();
--    tcg_gen_mov_i32(tmp, cpu_F0s);
--    return tmp;
--}
--
--static void gen_vfp_msr(TCGv_i32 tmp)
--{
--    tcg_gen_mov_i32(cpu_F0s, tmp);
--    tcg_temp_free_i32(tmp);
--}
--
- static void gen_neon_dup_low16(TCGv_i32 var)
- {
-     TCGv_i32 tmp = tcg_temp_new_i32();
-@@ -3003,8 +2989,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
- {
-     uint32_t rd, rn, rm, op, delta_d, delta_m, bank_mask;
-     int dp, veclen;
--    TCGv_i32 tmp;
--    TCGv_i32 tmp2;
- 
-     if (!arm_dc_feature(s, ARM_FEATURE_VFP)) {
-         return 1;
-@@ -3066,8 +3050,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                 return 1;
-             case 15:
-                 switch (rn) {
--                case 0 ... 5:
--                case 8 ... 11:
-+                case 0 ... 11:
-                     /* Already handled by decodetree */
-                     return 1;
-                 default:
-@@ -3080,20 +3063,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-             if (op == 15) {
-                 /* rn is opcode, encoded as per VFP_SREG_N. */
-                 switch (rn) {
--                case 0x06: /* vcvtb.f16.f32, vcvtb.f16.f64 */
--                case 0x07: /* vcvtt.f16.f32, vcvtt.f16.f64 */
--                    if (dp) {
--                        if (!dc_isar_feature(aa32_fp16_dpconv, s)) {
--                            return 1;
--                        }
--                    } else {
--                        if (!dc_isar_feature(aa32_fp16_spconv, s)) {
--                            return 1;
--                        }
--                    }
--                    rd_is_dp = false;
--                    break;
--
-                 case 0x0c: /* vrintr */
-                 case 0x0d: /* vrintz */
-                 case 0x0e: /* vrintx */
-@@ -3221,52 +3190,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                 switch (op) {
-                 case 15: /* extension space */
-                     switch (rn) {
--                    case 6: /* vcvtb.f16.f32, vcvtb.f16.f64 */
--                    {
--                        TCGv_ptr fpst = get_fpstatus_ptr(false);
--                        TCGv_i32 ahp = get_ahp_flag();
--                        tmp = tcg_temp_new_i32();
--
--                        if (dp) {
--                            gen_helper_vfp_fcvt_f64_to_f16(tmp, cpu_F0d,
--                                                           fpst, ahp);
--                        } else {
--                            gen_helper_vfp_fcvt_f32_to_f16(tmp, cpu_F0s,
--                                                           fpst, ahp);
--                        }
--                        tcg_temp_free_i32(ahp);
--                        tcg_temp_free_ptr(fpst);
--                        gen_mov_F0_vreg(0, rd);
--                        tmp2 = gen_vfp_mrs();
--                        tcg_gen_andi_i32(tmp2, tmp2, 0xffff0000);
--                        tcg_gen_or_i32(tmp, tmp, tmp2);
--                        tcg_temp_free_i32(tmp2);
--                        gen_vfp_msr(tmp);
--                        break;
--                    }
--                    case 7: /* vcvtt.f16.f32, vcvtt.f16.f64 */
--                    {
--                        TCGv_ptr fpst = get_fpstatus_ptr(false);
--                        TCGv_i32 ahp = get_ahp_flag();
--                        tmp = tcg_temp_new_i32();
--                        if (dp) {
--                            gen_helper_vfp_fcvt_f64_to_f16(tmp, cpu_F0d,
--                                                           fpst, ahp);
--                        } else {
--                            gen_helper_vfp_fcvt_f32_to_f16(tmp, cpu_F0s,
--                                                           fpst, ahp);
--                        }
--                        tcg_temp_free_i32(ahp);
--                        tcg_temp_free_ptr(fpst);
--                        tcg_gen_shli_i32(tmp, tmp, 16);
--                        gen_mov_F0_vreg(0, rd);
--                        tmp2 = gen_vfp_mrs();
--                        tcg_gen_ext16u_i32(tmp2, tmp2);
--                        tcg_gen_or_i32(tmp, tmp, tmp2);
--                        tcg_temp_free_i32(tmp2);
--                        gen_vfp_msr(tmp);
--                        break;
--                    }
-                     case 12: /* vrintr */
-                     {
-                         TCGv_ptr fpst = get_fpstatus_ptr(0);
-diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-index 53d9544f7cd..b88d1d06f02 100644
---- a/target/arm/vfp.decode
-+++ b/target/arm/vfp.decode
-@@ -187,3 +187,9 @@ VCVT_f32_f16 ---- 1110 1.11 0010 .... 1010 t:1 1.0 .... \
-              vd=%vd_sp vm=%vm_sp
- VCVT_f64_f16 ---- 1110 1.11 0010 .... 1011 t:1 1.0 .... \
-              vd=%vd_dp vm=%vm_sp
-+
-+# VCVTB and VCVTT to f16: Vd format is always vd_sp; Vm format depends on size bit
-+VCVT_f16_f32 ---- 1110 1.11 0011 .... 1010 t:1 1.0 .... \
-+             vd=%vd_sp vm=%vm_sp
-+VCVT_f16_f64 ---- 1110 1.11 0011 .... 1011 t:1 1.0 .... \
-+             vd=%vd_sp vm=%vm_dp
--- 
-2.20.1
+Now, if one run this (as exemplified in the commit message):
 
+  $ avocado run -t machine:emcraft-sf2 tests/acceptance
+
+The *tag* failure/limitation would have been noticed.  BTW, it should
+be easy to expand the docstring directive pattern and fix this
+limitation on newer Avocado versions.
+
+You can also see the parsed key/val tags with:
+
+  $ avocado list -V tests/acceptance
+
+Although only on new Avocado versions (>69.0), you can also see the
+parsed key:val tags.
+
+>=20
+> This patch is already queued on python-next, should I remove it?
+>
+
+Or ammended it?  It's a minor issue IMO (s/-/_/).
+
+>=20
+> > My suggestion is to replace the dash for an underline.  This was done
+> > on the s390 test:
+> >=20
+> >    :avocado: tags=3Dmachine:s390_ccw_virtio
+>=20
+> I would love if we stopped using the docstring to store
+> machine-readable data and used Python class attributes or
+> methods, like most Python APIs do.  e.g.:
+>=20
+>   class MyTest(avocado.Test):
+>       tags =3D {'machine':'s390-ccw-virtio'}
+>=20
+>       def test_my_feature(self):
+>           ...
+>
+>=20
+> I understand the Avocado runner currently tries to not run any
+> test code at the "list" step.  But can we have a mode where it
+> will actually load the Python module and look at the class
+> objects directly, instead of trying to parse the Python code
+> without evaluating it?
+>=20
+> > [...]
+>=20
+> --=20
+> Eduardo
+
+I get your point, and I'd love to have no "no learning wheels" mode
+too.  But given that the "safe loader" was a very basic architecture
+design, and we probably wouldn't be dropping it, this means twice the
+code to maintain.
+
+I'd be interested in collecting more use cases (besides this s/-/_/)
+to better justify such an effort.
+
+Regards,
+- Cleber.

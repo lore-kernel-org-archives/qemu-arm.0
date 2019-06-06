@@ -1,195 +1,171 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2104539wrg;
-        Tue, 4 Jun 2019 09:40:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwmBy2S+O45Axl14vCV+VWwPsaAfvkTc7SPZCgTSwUFriOamrR9LZ+xuwrF09nIgULOCfdm
-X-Received: by 2002:ac8:22a3:: with SMTP id f32mr10295708qta.152.1559666438960;
-        Tue, 04 Jun 2019 09:40:38 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5si5818287qvf.198.2019.06.04.09.40.38
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5014440wrg;
+        Thu, 6 Jun 2019 16:06:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzndrD7qamD5oPW0v0ANrMsIQ0IxjlGHm8H8fTlI/k/9z4PtES1wjryW797V3u5iUQCi+ZN
+X-Received: by 2002:ac8:2ed6:: with SMTP id i22mr40101105qta.321.1559862376368;
+        Thu, 06 Jun 2019 16:06:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559862376; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FUlSL1nCG5XPCz3DD+dBWt2XtsRREGzRHmv6BI0PLc2dpCiNTFW0q7FQaeuKlOIfD/
+         qflS8PofhRm2YBbB2W7dR2w9ZFVjlJNrkpXwc591543O+oQCVddEqfYQgmgr4XDqxwMn
+         rRFq1sbCEdIGgCT5fDGBF0T4J0xEiahSUiwd2OrReQHs+YQwmlehP+OzK5rhCl0clrJ6
+         FVdNdvePblyfOsO/Nw28cWZYKCNOar3GvPvJfrsmrSZdfEi4VOGzUGuc0WVgnlf97nFP
+         zMp1bjgDO+C2HY1aWDlouwLWjgj4PryElnO3rfU7wKP0fS5LpCVuGR0bGVa5E4fhxYYL
+         Jgjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=YHnKdRykSC74qjwMsI6eMtW6x2YMatmGS+FwSh2fURo=;
+        b=RcG/53Jef/scZIUc4bbxgr+DGrfx5x0nWe9NEegKEofr1nhUA8nvXhDkc28gqQI/TP
+         G0dmE7KyCKuOl+XAdKOjiRBiY5j547nAnrD3iwtxGpuFaQ/ylxUOOs4OldTY4OD5GYbJ
+         Y4IdLxX0ulOENU4UkuPAn3kKLjvittR6fklSgIyeTMaL9HARxgQazZX49OfYeXlJI4B4
+         b/80gztyhMuFf6htPtJ7EPSIkt14f29u3cNDpzCs8Q1eHQcTjG34dfTGBREVgeEy/xps
+         9oFe1Qv/QvCTDytS16vbTJrVf4ihLU4X1BVe7oRy6chc6aF1ABBFHxESHNCnaz82s7Ax
+         sMWg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
+        by mx.google.com with ESMTPS id z202si113987qka.166.2019.06.06.16.06.16
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Jun 2019 09:40:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Jun 2019 16:06:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="MO/dXTmD";
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([127.0.0.1]:55283 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYCUI-00041N-DI
-	for alex.bennee@linaro.org; Tue, 04 Jun 2019 12:40:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39468)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGI-0000x1-Ri
-	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:26:11 -0400
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44746 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZ1SZ-0007hv-TI
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 19:06:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40066)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hZ1Ru-0007N1-Rz
+ for qemu-devel@nongnu.org; Thu, 06 Jun 2019 19:05:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1hYCGH-0003zw-Pi
-	for qemu-arm@nongnu.org; Tue, 04 Jun 2019 12:26:10 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40648)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
-	id 1hYCGH-0003d2-Ho; Tue, 04 Jun 2019 12:26:09 -0400
-Received: from kouign-amann.bar.greensocs.com (unknown [172.17.10.6])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id 01B3496F6C;
-	Tue,  4 Jun 2019 16:25:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1559665548;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	to:to:cc:cc:mime-version:mime-version:
-	content-transfer-encoding:content-transfer-encoding:
-	in-reply-to:in-reply-to:references:references;
-	bh=CihRZQunkxTGZ4U7sNwYsib0KibNAR66LPQ5v0zTSC4=;
-	b=MO/dXTmDEHb8C5VJLfz/lbmaj+YnAT52ftDmmz9Uh2aD61bcvm/UqsttXVJ5P/lqqsc3o4
-	Wc/4kbBH+QMUtGq81Zu5ZhlD4IrsZdBtXkRl+NEby7d1czwk3FkJFD/KQaJfpJnZfmV25N
-	uOPn31JkUtjKMGTjMzpgGfSZTCKWZQM=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  4 Jun 2019 18:25:25 +0200
-Message-Id: <20190604162526.10655-12-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190604162526.10655-1-damien.hedde@greensocs.com>
-References: <20190604162526.10655-1-damien.hedde@greensocs.com>
+ (envelope-from <philmd@redhat.com>) id 1hZ1IO-00071g-Cz
+ for qemu-devel@nongnu.org; Thu, 06 Jun 2019 18:55:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:61593)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hZ1IM-0006rf-Qi; Thu, 06 Jun 2019 18:55:43 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 215C7811A9;
+ Thu,  6 Jun 2019 22:55:37 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-32.brq.redhat.com [10.40.204.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CA5C7473C3;
+ Thu,  6 Jun 2019 22:55:33 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>
+Date: Fri,  7 Jun 2019 00:55:21 +0200
+Message-Id: <20190606225521.9187-3-philmd@redhat.com>
+In-Reply-To: <20190606225521.9187-1-philmd@redhat.com>
+References: <20190606225521.9187-1-philmd@redhat.com>
 MIME-Version: 1.0
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
-	s=mail; t=1559665548;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	to:to:cc:cc:mime-version:mime-version:
-	content-transfer-encoding:content-transfer-encoding:
-	in-reply-to:in-reply-to:references:references;
-	bh=CihRZQunkxTGZ4U7sNwYsib0KibNAR66LPQ5v0zTSC4=;
-	b=Dj16i1Kr8SiQ97HKvf66ZNVNY1Gkfm1d5rbs/5CDCcIlQ5VUClIOeT6OMvgLebVT0INH2l
-	DZMZf2Ie31Ykw22O58NUG1K/8KhYvTk4WcpENlIUyCc+55CEX/n2+TlgZnu9shRqEUp3ww
-	F7twX4NvoEUbElFr4+dnL2Lzzply2Zw=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1559665548; a=rsa-sha256; cv=none;
-	b=ZQqaIiB+16PRLS4keI5kd7wD0qmQsGtSsTtZb3D7hmiRmcn8ywyAK82GjXtmIWvilJfziu
-	8MPHO1IjrlRKD0MJ0tyDr4YUqkTImsZvfAtdvhSZcihyZCHwLA44Ub8OZT4skd0q1no7wM
-	UnhTkLBLyCmnG5F/AEmFmQTeVg32rw4=
-ARC-Authentication-Results: i=1; ORIGINATING;
-	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Thu, 06 Jun 2019 22:55:42 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] [RFC PATCH v2 11/12] Add uart reset support in zynq_slcr
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH v2 2/2] BootLinuxConsoleTest: Test the
+ SmartFusion2 board
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
-	marc.burton@greensocs.com, alistair@alistair23.me,
-	qemu-arm@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
-	marcandre.lureau@redhat.com, pbonzini@redhat.com,
-	philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iCpVa+0e18xp
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Cleber Rosa <crosa@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xZRLRm/EcmUF
 
-Add two gpio outputs to control the uart resets.
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+Similar to the x86_64/pc test, it boots a Linux kernel on an
+Emcraft board and verify the serial is working.
+
+If ARM is a target being built, "make check-acceptance" will
+automatically include this test by the use of the "arch:arm" tags.
+
+Alternatively, this test can be run using:
+
+  $ avocado run -t arch:arm tests/acceptance
+  $ avocado run -t machine:emcraft-sf2 tests/acceptance
+
+Based on the recommended test setup from Subbaraya Sundeep:
+https://lists.gnu.org/archive/html/qemu-devel/2017-05/msg03810.html
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
 ---
- hw/misc/zynq_slcr.c | 36 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
+v2: (Cleber)
+- drop 'kernel_command_line'
+- do no concat string, use format
+- replace '-' by '_' in Avocado tags
+---
+ tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-index c6d2bba966..6649c93a90 100644
---- a/hw/misc/zynq_slcr.c
-+++ b/hw/misc/zynq_slcr.c
-@@ -96,6 +96,10 @@ REG32(SPI_RST_CTRL, 0x21c)
- REG32(CAN_RST_CTRL, 0x220)
- REG32(I2C_RST_CTRL, 0x224)
- REG32(UART_RST_CTRL, 0x228)
-+    FIELD(UART_RST_CTRL, UART0_CPU1X_RST, 0, 1)
-+    FIELD(UART_RST_CTRL, UART1_CPU1X_RST, 1, 1)
-+    FIELD(UART_RST_CTRL, UART0_REF_RST, 2, 1)
-+    FIELD(UART_RST_CTRL, UART1_REF_RST, 3, 1)
- REG32(GPIO_RST_CTRL, 0x22c)
- REG32(LQSPI_RST_CTRL, 0x230)
- REG32(SMC_RST_CTRL, 0x234)
-@@ -189,8 +193,14 @@ typedef struct ZynqSLCRState {
-     MemoryRegion iomem;
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+index f593f3858e..34527d4b38 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -178,6 +178,32 @@ class BootLinuxConsole(Test):
+         console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+         self.wait_for_console_pattern(console_pattern)
 =20
-     uint32_t regs[ZYNQ_SLCR_NUM_REGS];
++    def test_arm_emcraft_sf2(self):
++        """
++        :avocado: tags=3Darch:arm
++        :avocado: tags=3Dmachine:emcraft_sf2
++        :avocado: tags=3Dendian:little
++        """
++        uboot_url =3D ('https://raw.githubusercontent.com/'
++                     'Subbaraya-Sundeep/qemu-test-binaries/'
++                     'fa030bd77a014a0b8e360d3b7011df89283a2f0b/u-boot')
++        uboot_hash =3D 'abba5d9c24cdd2d49cdc2a8aa92976cf20737eff'
++        uboot_path =3D self.fetch_asset(uboot_url, asset_hash=3Duboot_ha=
+sh)
++        spi_url =3D ('https://raw.githubusercontent.com/'
++                   'Subbaraya-Sundeep/qemu-test-binaries/'
++                   'fa030bd77a014a0b8e360d3b7011df89283a2f0b/spi.bin')
++        spi_hash =3D '85f698329d38de63aea6e884a86fbde70890a78a'
++        spi_path =3D self.fetch_asset(spi_url, asset_hash=3Dspi_hash)
 +
-+    qemu_irq uart0_rst;
-+    qemu_irq uart1_rst;
- } ZynqSLCRState;
-=20
-+#define ZYNQ_SLCR_REGFIELD_TO_OUT(state, irq, reg, field) \
-+    qemu_set_irq((state)->irq, ARRAY_FIELD_EX32((state)->regs, reg, fiel=
-d) !=3D 0)
++        self.vm.set_machine('emcraft-sf2')
++        self.vm.set_console()
++        self.vm.add_args('-kernel', uboot_path,
++                         '-append', self.KERNEL_COMMON_COMMAND_LINE,
++                         '-drive', 'file=3D%s,if=3Dmtd,format=3Draw' % s=
+pi_path,
++                         '-no-reboot')
++        self.vm.launch()
++        self.wait_for_console_pattern('init started: BusyBox')
 +
- static void zynq_slcr_reset_init(Object *obj, bool cold)
- {
-     ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
-@@ -292,6 +302,24 @@ static void zynq_slcr_reset_init(Object *obj, bool c=
-old)
-     s->regs[R_DDRIOB + 12] =3D 0x00000021;
- }
-=20
-+static void zynq_slcr_compute_uart_reset(ZynqSLCRState *s)
-+{
-+    ZYNQ_SLCR_REGFIELD_TO_OUT(s, uart0_rst, UART_RST_CTRL, UART0_REF_RST=
-);
-+    ZYNQ_SLCR_REGFIELD_TO_OUT(s, uart1_rst, UART_RST_CTRL, UART1_REF_RST=
-);
-+}
-+
-+static void zynq_slcr_reset_hold(Object *obj)
-+{
-+    ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
-+    ZynqSLCRClass *zc =3D ZYNQ_SLCR_GET_CLASS(obj);
-+
-+    if (zc->parent_reset_phases.hold) {
-+        zc->parent_reset_phases.hold(obj);
-+    }
-+
-+    zynq_slcr_compute_uart_reset(s);
-+}
-+
- static bool zynq_slcr_check_offset(hwaddr offset, bool rnw)
- {
-     switch (offset) {
-@@ -431,6 +459,9 @@ static void zynq_slcr_write(void *opaque, hwaddr offs=
-et,
-             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
-         }
-         break;
-+    case R_UART_RST_CTRL:
-+        zynq_slcr_compute_uart_reset(s);
-+        break;
-     }
- }
-=20
-@@ -447,6 +478,9 @@ static void zynq_slcr_init(Object *obj)
-     memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
-                           ZYNQ_SLCR_MMIO_SIZE);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->uart0_rst, "uart0_rst", 1)=
-;
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->uart1_rst, "uart1_rst", 1)=
-;
- }
-=20
- static const VMStateDescription vmstate_zynq_slcr =3D {
-@@ -469,7 +503,7 @@ static void zynq_slcr_class_init(ObjectClass *klass, =
-void *data)
-=20
-     resettable_class_set_parent_reset_phases(rc,
-                                              zynq_slcr_reset_init,
--                                             NULL,
-+                                             zynq_slcr_reset_hold,
-                                              NULL,
-                                              &zc->parent_reset_phases);
- }
+     def test_s390x_s390_ccw_virtio(self):
+         """
+         :avocado: tags=3Darch:s390x
 --=20
-2.21.0
+2.20.1
 

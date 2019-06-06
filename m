@@ -1,171 +1,135 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5014440wrg;
-        Thu, 6 Jun 2019 16:06:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzndrD7qamD5oPW0v0ANrMsIQ0IxjlGHm8H8fTlI/k/9z4PtES1wjryW797V3u5iUQCi+ZN
-X-Received: by 2002:ac8:2ed6:: with SMTP id i22mr40101105qta.321.1559862376368;
-        Thu, 06 Jun 2019 16:06:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559862376; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5016431wrg;
+        Thu, 6 Jun 2019 16:08:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzoLHE3ogHWhzAvyYI1pCr9Pt6dfeCpAD51edOHE3cI6An7wZTSrzpFTeI7/C4aLMeyJ+OJ
+X-Received: by 2002:a0c:afcd:: with SMTP id t13mr41228156qvc.58.1559862526090;
+        Thu, 06 Jun 2019 16:08:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559862526; cv=none;
         d=google.com; s=arc-20160816;
-        b=FUlSL1nCG5XPCz3DD+dBWt2XtsRREGzRHmv6BI0PLc2dpCiNTFW0q7FQaeuKlOIfD/
-         qflS8PofhRm2YBbB2W7dR2w9ZFVjlJNrkpXwc591543O+oQCVddEqfYQgmgr4XDqxwMn
-         rRFq1sbCEdIGgCT5fDGBF0T4J0xEiahSUiwd2OrReQHs+YQwmlehP+OzK5rhCl0clrJ6
-         FVdNdvePblyfOsO/Nw28cWZYKCNOar3GvPvJfrsmrSZdfEi4VOGzUGuc0WVgnlf97nFP
-         zMp1bjgDO+C2HY1aWDlouwLWjgj4PryElnO3rfU7wKP0fS5LpCVuGR0bGVa5E4fhxYYL
-         Jgjg==
+        b=ZGVCbpEHy4RoXX9PDMLv+msHjzjOqwsYyxKg4w4/Lobkxcb7I/8XnnH8V2qn4OmHiR
+         D/ZtQa9RKvyR+7dTQYpRIF3UzkbXdOMjPxdAT7k3/w1PEM4mdxAuYAT8KyKMiPC3wpkr
+         fWS49lR9iZMLNjwnXAB9PIS1T5/J2n3IPQ8rfe5sNKXevJib1V9UyOcLa873rFfz21/k
+         q7P5WGDV5TwUuJSyco2HZbn01OC3XW3AEcXk2LbsmDQd8f0lgExCAcXRHJ1PRfdN1jRI
+         CXYCdZJbHlynP6FeGx3/aIgo/LQEOe7YxQXII0rH6W8XSH31d6RgyAn1gt1BhGrJO6RM
+         aHfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=YHnKdRykSC74qjwMsI6eMtW6x2YMatmGS+FwSh2fURo=;
-        b=RcG/53Jef/scZIUc4bbxgr+DGrfx5x0nWe9NEegKEofr1nhUA8nvXhDkc28gqQI/TP
-         G0dmE7KyCKuOl+XAdKOjiRBiY5j547nAnrD3iwtxGpuFaQ/ylxUOOs4OldTY4OD5GYbJ
-         Y4IdLxX0ulOENU4UkuPAn3kKLjvittR6fklSgIyeTMaL9HARxgQazZX49OfYeXlJI4B4
-         b/80gztyhMuFf6htPtJ7EPSIkt14f29u3cNDpzCs8Q1eHQcTjG34dfTGBREVgeEy/xps
-         9oFe1Qv/QvCTDytS16vbTJrVf4ihLU4X1BVe7oRy6chc6aF1ABBFHxESHNCnaz82s7Ax
-         sMWg==
+        bh=zg7fqS/H6yzy6AKwE1QItjwqgFfAKJMn4TIBcp8Po+Y=;
+        b=CzUbpo98heC1wulrlr9gZn9lvMkAIo0G2iq+O+ZP3JyglD4E48wR72jXjnJtqN86R3
+         dXTgL/iriKD0PFGIbSko7ucdQXyIAMFSXMbFRlveXHu/4sQv25w7MP/XRE6xLCARB2Vr
+         87cAnSM9q+aRE854l2NKPF2o3SCPVDLRESkQeAws5UIyzLEZATpW8WGAjb8Qhgi46vWj
+         v4EfvbIWEzYylvQld5ac2y50x+OO6T4pYb9FlhXiTEJfUpjp4jWj8ZGOICyXd9RdvUxd
+         JsbO5fHlzREnFkMJXmNmavGgQ8JThrpi3Pzmlem4/w/NFzipqtgbmkU7+tSYOvIQse/9
+         8s7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
-        by mx.google.com with ESMTPS id z202si113987qka.166.2019.06.06.16.06.16
+        by mx.google.com with ESMTPS id 43si259913qtr.78.2019.06.06.16.08.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jun 2019 16:06:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
+        Thu, 06 Jun 2019 16:08:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44746 helo=lists.gnu.org)
+Received: from localhost ([::1]:44770 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hZ1SZ-0007hv-TI
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 19:06:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40066)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZ1Uz-0002XP-LF
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 19:08:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40193)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hZ1Ru-0007N1-Rz
- for qemu-devel@nongnu.org; Thu, 06 Jun 2019 19:05:36 -0400
+ (envelope-from <philmd@redhat.com>) id 1hZ1Rw-0007Wl-88
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2019 19:05:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hZ1IO-00071g-Cz
- for qemu-devel@nongnu.org; Thu, 06 Jun 2019 18:55:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:61593)
+ (envelope-from <philmd@redhat.com>) id 1hZ1IL-0006lw-9u
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2019 18:55:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51736)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hZ1IM-0006rf-Qi; Thu, 06 Jun 2019 18:55:43 -0400
+ id 1hZ1IK-0006Xp-HE; Thu, 06 Jun 2019 18:55:41 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 215C7811A9;
- Thu,  6 Jun 2019 22:55:37 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-32.brq.redhat.com [10.40.204.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CA5C7473C3;
+ by mx1.redhat.com (Postfix) with ESMTPS id 5125059469;
  Thu,  6 Jun 2019 22:55:33 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-32.brq.redhat.com [10.40.204.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C2D732E19B;
+ Thu,  6 Jun 2019 22:55:29 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org,
 	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri,  7 Jun 2019 00:55:21 +0200
-Message-Id: <20190606225521.9187-3-philmd@redhat.com>
+Date: Fri,  7 Jun 2019 00:55:20 +0200
+Message-Id: <20190606225521.9187-2-philmd@redhat.com>
 In-Reply-To: <20190606225521.9187-1-philmd@redhat.com>
 References: <20190606225521.9187-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Thu, 06 Jun 2019 22:55:42 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.39]); Thu, 06 Jun 2019 22:55:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v2 2/2] BootLinuxConsoleTest: Test the
- SmartFusion2 board
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v2 1/2] BootLinuxConsoleTest: Do not log empty
+ lines
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Cleber Rosa <crosa@redhat.com>, qemu-arm@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
  Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xZRLRm/EcmUF
+ Aleksandar Markovic <amarkovic@wavecomp.com>, Cleber Rosa <crosa@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vSEWsZLRNg5d
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Similar to the x86_64/pc test, it boots a Linux kernel on an
-Emcraft board and verify the serial is working.
-
-If ARM is a target being built, "make check-acceptance" will
-automatically include this test by the use of the "arch:arm" tags.
-
-Alternatively, this test can be run using:
-
-  $ avocado run -t arch:arm tests/acceptance
-  $ avocado run -t machine:emcraft-sf2 tests/acceptance
-
-Based on the recommended test setup from Subbaraya Sundeep:
-https://lists.gnu.org/archive/html/qemu-devel/2017-05/msg03810.html
+Avoid to log empty lines in console debug logs.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
 Tested-by: Cleber Rosa <crosa@redhat.com>
+Acked-by: Aleksandar Markovic <amarkovic@wavecomp.com>
 ---
-v2: (Cleber)
-- drop 'kernel_command_line'
-- do no concat string, use format
-- replace '-' by '_' in Avocado tags
+v2: no change
 ---
- tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ tests/acceptance/boot_linux_console.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
 ot_linux_console.py
-index f593f3858e..34527d4b38 100644
+index d5c500ea30..f593f3858e 100644
 --- a/tests/acceptance/boot_linux_console.py
 +++ b/tests/acceptance/boot_linux_console.py
-@@ -178,6 +178,32 @@ class BootLinuxConsole(Test):
-         console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
-         self.wait_for_console_pattern(console_pattern)
-=20
-+    def test_arm_emcraft_sf2(self):
-+        """
-+        :avocado: tags=3Darch:arm
-+        :avocado: tags=3Dmachine:emcraft_sf2
-+        :avocado: tags=3Dendian:little
-+        """
-+        uboot_url =3D ('https://raw.githubusercontent.com/'
-+                     'Subbaraya-Sundeep/qemu-test-binaries/'
-+                     'fa030bd77a014a0b8e360d3b7011df89283a2f0b/u-boot')
-+        uboot_hash =3D 'abba5d9c24cdd2d49cdc2a8aa92976cf20737eff'
-+        uboot_path =3D self.fetch_asset(uboot_url, asset_hash=3Duboot_ha=
-sh)
-+        spi_url =3D ('https://raw.githubusercontent.com/'
-+                   'Subbaraya-Sundeep/qemu-test-binaries/'
-+                   'fa030bd77a014a0b8e360d3b7011df89283a2f0b/spi.bin')
-+        spi_hash =3D '85f698329d38de63aea6e884a86fbde70890a78a'
-+        spi_path =3D self.fetch_asset(spi_url, asset_hash=3Dspi_hash)
-+
-+        self.vm.set_machine('emcraft-sf2')
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', uboot_path,
-+                         '-append', self.KERNEL_COMMON_COMMAND_LINE,
-+                         '-drive', 'file=3D%s,if=3Dmtd,format=3Draw' % s=
-pi_path,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        self.wait_for_console_pattern('init started: BusyBox')
-+
-     def test_s390x_s390_ccw_virtio(self):
-         """
-         :avocado: tags=3Darch:s390x
+@@ -37,8 +37,10 @@ class BootLinuxConsole(Test):
+         console =3D self.vm.console_socket.makefile()
+         console_logger =3D logging.getLogger('console')
+         while True:
+-            msg =3D console.readline()
+-            console_logger.debug(msg.strip())
++            msg =3D console.readline().strip()
++            if not msg:
++                continue
++            console_logger.debug(msg)
+             if success_message in msg:
+                 break
+             if failure_message in msg:
 --=20
 2.20.1
 

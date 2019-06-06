@@ -1,243 +1,203 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp7976238pjq;
-        Thu, 6 Jun 2019 01:30:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxc3UBAOW1w84750nQdN0CrmHAWyUNQGBOfFpmzZoAgHvOptK4/pKzXNA2lTn3eiN4GCika
-X-Received: by 2002:a37:9c16:: with SMTP id f22mr37515035qke.261.1559809810878;
-        Thu, 06 Jun 2019 01:30:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559809810; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4074058wrg;
+        Wed, 5 Jun 2019 22:46:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz+Pci4jWWcuYjtZVOGErr4qBgm2afG++ynGYF7h/+5T6pp326gaUJTWKfDCjzCy1GD+V7M
+X-Received: by 2002:aed:2389:: with SMTP id j9mr11934998qtc.244.1559799982180;
+        Wed, 05 Jun 2019 22:46:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559799982; cv=none;
         d=google.com; s=arc-20160816;
-        b=xC9YkZ9OxdMbfJcu1ebDq/1l5304tyOsoozZJ9GVBsXz6aqwzf+I5CnBi2OQqZH3ip
-         a+I4yF4qi4tPB8ybCxpZ0Xp/4VqaIsM650AFUooMtgWR6YWfIDJyjj4Hyv8oQKx4s52a
-         aJForJeO6+ffe9q1sD1DUrqtOYlBMzqaW4w9mFsH4PyC2vmyASg3ZTe9gJVt6oIzdGCY
-         D5KXr+eE/ehTUVqnK8BHQxmV+jK1fHJ8tSdGKKJz+53Qca9uGJwNTRrXN5iwZW4XCmgU
-         bGz/7T3HX6fh/zKnAGqyX2bbkIUrejNlqFERe98+XMcpc4ZbcAOYbkuG2TUyIbnz7Gwg
-         zkaA==
+        b=mkdjxYfORcK5rYVyehvtRT/Ge1aM6vS0PRaM/Nxfp5rwgMHRr6KRYHewl8yzeV+lu+
+         sZ3sQRRWshi/l1NL/BTXVWPSe+igZPanAMU0z9I4KnmLD7xO4tcs0TD6YTGmPVOOzIdt
+         5OipkTcOfHWz/upboNJXzcSGjKhuRRprwCWSCpFLwNABPhVl9WdPfrkcnkeNwwXRXEK0
+         qYzcl1nBCOgS1XhSos5RPHUMBO9qmzyk12xliASf1mEtD3TSgnIsbeCNg0nUUs/SiDUs
+         fAmj+B2437c0EfLW56mV1pa92GYkLFtL3JvAJQJtIQIekdsvuPsw8/TRk8/VX4qFIGLp
+         8C8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=ewa31ADVCK/Mtby4EiVDDZkBAJw1t62myaDGee7Rsdg=;
-        b=KlPg/ZhCfi6A13TWyrarIT9l0K80wqtHALBtgpCN1p0qVIP+zawlu7IpaXd0+fMbvg
-         GFlFkijNdVdROiRjXuR0dCP4FFANzTeUtPkAttcFJPHs9Gdg+lf/1pzzDAeRFdtBjbK/
-         ypPOatv0DznOU3r/7ORhgvLBy+ilqDEEgeFEXUrAcjPH1nba1e5zxXODufCvo4yzbMDa
-         VludTYBjQfi1xekbYoheG07mIti2oYJEH6F9hJoQw4dONrQ5VlmrkjajbiBnK+nQC0f6
-         vw98Z9j8Mv/2JvSk0/wRi18YBc2xHPfXb29aGXweDGKdJuv69ia1vVBCPX3GCAx3erJ4
-         I8hw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=kBSuiabmvHHcHmpGB3ZFui3JvkhQnNt6f5ZxO+ZQl6o=;
+        b=0VT3oUNxEunaDVCpzAjCN2pCJGptQSHZfHQYJi7cigtEVgdLE3zQoTeFhmglCgVa0V
+         ek7c1jtGChtD3h9kv0ubgI2SREqPavU148TCuEtL3DskQU58drvRmpKZxP4BtiHEbMKQ
+         xiQejR194Vkjb3JU8ZLV2EPhY85V49OdGfTt8BecXqdRh1N4/9x2CVdYJe2f9lCwnCLd
+         PLkcbenqb/w8ANTQOeOKKhVtl52XzVTjpABPl7nz3zBTf69skjdZELtHcbcMOH+BDuAY
+         SddyYykWj2cvrkKZ6lxnlWYQzDD61s45mvuZUACn6U/6SL9AhGVPoesjkEg0dOxu09wj
+         tfCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id s49si1303664qth.14.2019.06.06.01.30.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 Jun 2019 01:30:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=dvxOZ0Yw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p26si956107qtc.47.2019.06.05.22.46.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 05 Jun 2019 22:46:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E68A380F81;
-	Thu,  6 Jun 2019 08:30:09 +0000 (UTC)
-Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B587410841F0;
-	Thu,  6 Jun 2019 08:30:01 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH 07/13] target/arm/kvm: max cpu: Allow sve max
- vector length setting
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- armbru@redhat.com, abologna@redhat.com, alex.bennee@linaro.org,
- Dave.Martin@arm.com
-References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-8-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <839be91f-6764-28b1-c0fb-304477bfadf8@redhat.com>
-Date: Thu, 6 Jun 2019 10:30:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=dvxOZ0Yw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([127.0.0.1]:55025 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hYlED-0007xp-Ma
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 01:46:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51397)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYlDt-0007xj-RS
+	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 01:46:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYlDs-0007Vv-Hr
+	for qemu-devel@nongnu.org; Thu, 06 Jun 2019 01:46:01 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:46357)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+	id 1hYlDs-0007VY-Bq; Thu, 06 Jun 2019 01:46:00 -0400
+Received: by mail-oi1-x243.google.com with SMTP id 203so707834oid.13;
+	Wed, 05 Jun 2019 22:46:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=d0c7qkLAXbMXz/RHiRSYXP1wkY5F+It0gp3SsnVS+IE=;
+	b=dvxOZ0Ywb06EWv4bxXNFxJr8aOy1mNU5NnH8nOG2LMB7Ze6us9ajxmwpkx8x29CY4/
+	Y4v+9N7riTInNweqGxWHi4a/0K+LyZqDvExc81/2G92WfujB5JbnZpRo2EkW2ichFtjP
+	KEf3oeNjBMBmABy24bnqrG8OB7ON7cIWZTv0ivjNCOWtO3pMtV0x0fIouBN+Zy5ia6nF
+	pNDHeGvAO79G0DqGVUvOUZOhtd5wRQWOphFGU8kf99YwUqKbX3epJKznWBpKc8ceixxQ
+	Ppz6mZoU0ktj2yVnETRy/KFezZS2fIvMLp4vYB5bfioP1ad1WEx1s2NgQ4PGziQHqQfW
+	SfGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=d0c7qkLAXbMXz/RHiRSYXP1wkY5F+It0gp3SsnVS+IE=;
+	b=Ws7+RXu1TK8f9eOCqglf2Pm37xuoXo1OomjCjB2N4KbEbN/q6z5n8DGEf3/+V3tEuU
+	NGoj80u0pLGPzVwn1Ormm6DT/GX5zABv2NrvH34IJPARopwYmKEwogWxCgQ3uTIcLqzf
+	Khzg5pTVE6VX7xUJMAb2Mm/Kb2/FeKgzEEduwB4SfIm0yo5tVKT/L+cAcxBpxeD1vw/T
+	UKQdrSB+RNpSz+EubzM74iMxTp09HQGnkXJwlcIrotrJbX2C3jzV6XGjwUkdZz8O4Fgh
+	Rgdr0ZRzokqinYTbd/2lpM41GKxMN1q9xPBVa9FeEVzNH6Uj3W8M+o7nQRkGIA1w/4Bl
+	ooGQ==
+X-Gm-Message-State: APjAAAU9c1NmRJQs7otc5JQiNObdp7c9q+Xc5Xq32/hQ4ko3MN9kTPg8
+	VH4gcrBY3TqsVx0GTFvJhMqsT5iZfNu308QnzNc=
+X-Received: by 2002:aca:3906:: with SMTP id g6mr10513108oia.106.1559799959430; 
+	Wed, 05 Jun 2019 22:45:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190512083624.8916-8-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Thu, 06 Jun 2019 08:30:10 +0000 (UTC)
-X-TUID: nmnKmZIPZn6d
+Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
+	Wed, 5 Jun 2019 22:45:58 -0700 (PDT)
+Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
+	Wed, 5 Jun 2019 22:45:58 -0700 (PDT)
+In-Reply-To: <20190605205706.569-5-richard.henderson@linaro.org>
+References: <20190605205706.569-1-richard.henderson@linaro.org>
+	<20190605205706.569-5-richard.henderson@linaro.org>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Thu, 6 Jun 2019 07:45:58 +0200
+Message-ID: <CAL1e-=jYwL9bb_YVp28pf=R4Gb0+1MgxYLsO=2927W=CtUrQ-A@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::243
+Content-Type: text/plain; charset="UTF-8"
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH v6 4/6] include/elf: Add defines related to
+ notes for GNU systems
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Dave.Martin@arm.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ArxwH5iq3Xwd
 
-Hi Drew,
-On 5/12/19 10:36 AM, Andrew Jones wrote:
-> Allow the cpu type 'max' sve-max-vq property to work with kvm
-> too. If the property is not specified then the maximum kvm
-> supports is used. If it is specified we check that kvm supports
-> that exact length or error out if it doesn't.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+On Jun 5, 2019 11:03 PM, "Richard Henderson" <richard.henderson@linaro.org>
+wrote:
+>
+> This is a collection of related
+
+Related to what?
+
+> defines for notes, copied
+> from glibc's <elf.h>.  We're not going to use all of these
+> right away, but it seemed foolish
+
+I don't think this an appropriate word for a commit message.
+
+> to cherry-pick only the
+> ones we need now.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/cpu.h   |  4 +++
->  target/arm/cpu64.c |  7 ++--
->  target/arm/kvm64.c | 80 ++++++++++++++++++++++++++++++++++++++++++++--
->  3 files changed, 86 insertions(+), 5 deletions(-)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 733b840a7127..8292d547e8f9 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3122,6 +3122,10 @@ static inline uint64_t arm_sctlr(CPUARMState *env, int el)
->      }
->  }
->  
-> +static inline int arm_cpu_fls64(uint64_t v)
-> +{
-> +    return !v ? 0 : 64 - clz64(v);
-> +}
->  
->  /* Return true if the processor is in big-endian mode. */
->  static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 6c19ef6837d5..3756e7e2a3e5 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -292,7 +292,7 @@ static void aarch64_max_initfn(Object *obj)
->  
->      if (kvm_enabled()) {
->          kvm_arm_set_cpu_features_from_host(cpu);
-> -        cpu->sve_max_vq = ARM_MAX_VQ;
-> +        cpu->sve_max_vq = -1; /* set in kvm_arch_init_vcpu() */
->      } else {
->          uint64_t t;
->          uint32_t u;
-> @@ -374,9 +374,10 @@ static void aarch64_max_initfn(Object *obj)
->  #endif
->  
->          cpu->sve_max_vq = ARM_MAX_VQ;
-> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-> -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
->      }
+>  include/elf.h | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+>
+> diff --git a/include/elf.h b/include/elf.h
+> index ea7708a4ea..6f3eada36f 100644
+> --- a/include/elf.h
+> +++ b/include/elf.h
+> @@ -1650,6 +1650,54 @@ typedef struct elf64_shdr {
+>  #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint
+registers */
+>  #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
+>
+> +/* Defined note types for GNU systems.  */
 > +
-> +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-> +                        cpu_max_set_sve_vq, NULL, NULL, &error_fatal);>  }
->  
->  struct ARMCPUInfo {
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index c2d92df75353..0c666e405357 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -446,6 +446,59 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
->      }
->  }
->  
-> +static int kvm_arm_get_sve_vls(CPUState *cs, uint64_t sve_vls[])
-> +{
-> +    struct kvm_one_reg reg = {
-> +        .id = KVM_REG_ARM64_SVE_VLS,
-> +        .addr = (uint64_t)&sve_vls[0],
-> +    };
-> +    int i, ret;
+> +#define NT_GNU_ABI_TAG          1       /* ABI information */
+> +#define NT_GNU_HWCAP            2       /* Synthetic hwcap information */
+> +#define NT_GNU_BUILD_ID         3       /* Build ID */
+> +#define NT_GNU_GOLD_VERSION     4       /* Version of ld.gold */
+> +#define NT_GNU_PROPERTY_TYPE_0  5       /* Program property */
 > +
-> +    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> +    if (ret) {
-> +        return ret;
-> +    }
+> +/* Values used in GNU .note.gnu.property notes
+(NT_GNU_PROPERTY_TYPE_0).  */
 > +
-> +    ret = 0;
-is it mandated?
-> +    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
-> +        if (sve_vls[i]) {
-> +            ret = arm_cpu_fls64(sve_vls[i]) + i * 64;
-> +            break;
-> +        }
-> +    }
+> +#define GNU_PROPERTY_STACK_SIZE                 1
+> +#define GNU_PROPERTY_NO_COPY_ON_PROTECTED       2
 > +
-> +    return ret;
-> +}
+> +#define GNU_PROPERTY_LOPROC                     0xc0000000
+> +#define GNU_PROPERTY_HIPROC                     0xdfffffff
+> +#define GNU_PROPERTY_LOUSER                     0xe0000000
+> +#define GNU_PROPERTY_HIUSER                     0xffffffff
 > +
-> +static int kvm_arm_set_sve_vls(CPUState *cs, uint64_t sve_vls[], int max_vq)
-> +{
-> +    struct kvm_one_reg reg = {
-> +        .id = KVM_REG_ARM64_SVE_VLS,
-> +        .addr = (uint64_t)&sve_vls[0],
-> +    };
-> +    int i;
+> +#define GNU_PROPERTY_X86_ISA_1_USED             0xc0000000
+> +#define GNU_PROPERTY_X86_ISA_1_NEEDED           0xc0000001
 > +
-> +    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
-> +        if (sve_vls[i]) {
-> +            int vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
-nit: add a line
-> +            while (vq > max_vq) {
-> +                sve_vls[i] &= ~BIT_MASK(vq - 1);
-Isn't BIT_MASK for 32b. MAKE_64BIT_MASK?
-> +                vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
-> +            }
-> +            if (vq < max_vq) {
-I don't really get this check: having vq less than max_vq does not seems
-weird. Do you absolutely want vq=max_vq?
-> +                error_report("sve-max-vq=%d is not a valid length", max_vq);
-> +                error_printf("next lowest is %d\n", vq);
-why mixing error_report/printf?
-> +                return -EINVAL;
-> +            }
-> +            if (vq == max_vq) {
-> +                break;
-> +            }
-> +        }
-> +    }
+> +#define GNU_PROPERTY_X86_ISA_1_486              (1U << 0)
+> +#define GNU_PROPERTY_X86_ISA_1_586              (1U << 1)
+> +#define GNU_PROPERTY_X86_ISA_1_686              (1U << 2)
+> +#define GNU_PROPERTY_X86_ISA_1_SSE              (1U << 3)
+> +#define GNU_PROPERTY_X86_ISA_1_SSE2             (1U << 4)
+> +#define GNU_PROPERTY_X86_ISA_1_SSE3             (1U << 5)
+> +#define GNU_PROPERTY_X86_ISA_1_SSSE3            (1U << 6)
+> +#define GNU_PROPERTY_X86_ISA_1_SSE4_1           (1U << 7)
+> +#define GNU_PROPERTY_X86_ISA_1_SSE4_2           (1U << 8)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX              (1U << 9)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX2             (1U << 10)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512F          (1U << 11)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512CD         (1U << 12)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512ER         (1U << 13)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512PF         (1U << 14)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512VL         (1U << 15)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512DQ         (1U << 16)
+> +#define GNU_PROPERTY_X86_ISA_1_AVX512BW         (1U << 17)
 > +
-> +    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> +}
+> +#define GNU_PROPERTY_X86_FEATURE_1_AND          0xc0000002
+> +#define GNU_PROPERTY_X86_FEATURE_1_IBT          (1U << 0)
+> +#define GNU_PROPERTY_X86_FEATURE_1_SHSTK        (1U << 1)
 > +
->  static inline void set_feature(uint64_t *features, int feature)
->  {
->      *features |= 1ULL << feature;
-> @@ -605,7 +658,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
->  
->      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
->          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
-> -        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
-> +        error_report("KVM is not supported for this guest CPU type");
->          return -EINVAL;
->      }
->  
-> @@ -631,7 +684,12 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      }
->      if (cpu->sve_max_vq) {
->          if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SVE)) {
-> -            cpu->sve_max_vq = 0;
-> +            if (cpu->sve_max_vq == -1) {> +                cpu->sve_max_vq = 0;
-> +            } else {
-> +                error_report("This KVM host does not support SVE");
-> +                return -EINVAL;
-> +            }
->          } else {
->              cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
->          }
-> @@ -644,6 +702,24 @@ int kvm_arch_init_vcpu(CPUState *cs)
->      }
->  
->      if (cpu->sve_max_vq) {
-> +        uint64_t sve_vls[KVM_ARM64_SVE_VLS_WORDS];
-line
-> +        ret = kvm_arm_get_sve_vls(cs, sve_vls);
-> +        if (ret < 0) {
-> +            return ret;
-> +        }
-> +        if (cpu->sve_max_vq == -1) {> +            cpu->sve_max_vq = ret;
-> +        } else if (cpu->sve_max_vq > ret) {
-> +            error_report("This KVM host does not support SVE vectors "
-I would rephrase the error mesg with something like:
-This KVM host supports SVE vectors of max VQ=%d whereas requested VQ is %d
-> +                         "of length %d quadwords (%d bytes)",
-> +                         cpu->sve_max_vq, cpu->sve_max_vq * 16);
-> +            return -EINVAL;
-> +        } else {
-> +            ret = kvm_arm_set_sve_vls(cs, sve_vls, cpu->sve_max_vq);
-> +            if (ret < 0) {
-> +                return ret;
-> +            }
-> +        }
->          ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
->          if (ret) {
->              return ret;
-> 
-Thanks
-
-Eric
+> +#define GNU_PROPERTY_AARCH64_FEATURE_1_AND      0xc0000000
+> +#define GNU_PROPERTY_AARCH64_FEATURE_1_BTI      (1u << 0)
+> +#define GNU_PROPERTY_AARCH64_FEATURE_1_PAC      (1u << 1)
+> +
+>  /*
+>   * Physical entry point into the kernel.
+>   *
+> --
+> 2.17.1
+>
+>

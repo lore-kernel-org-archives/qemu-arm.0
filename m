@@ -1,34 +1,34 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3051113wrg;
-        Wed, 5 Jun 2019 04:05:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwtQlUZd8fcjAcW8fHwyY7pfLA8fXjkD4Q3c1PeKUxh6Q6ujA+ibMYb7Jj0TptjBfrbSQOG
-X-Received: by 2002:a37:a093:: with SMTP id j141mr13288040qke.244.1559732715238;
-        Wed, 05 Jun 2019 04:05:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559732715; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4222385wrg;
+        Thu, 6 Jun 2019 01:53:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxW+hgekY8XGUAyeccN0LwDLYxqQcSlfKlrhuNYg1fUQ8G9w2RFBRhuRUOuSIFbyxaJ7kbf
+X-Received: by 2002:ac8:373b:: with SMTP id o56mr40629314qtb.133.1559811219001;
+        Thu, 06 Jun 2019 01:53:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559811218; cv=none;
         d=google.com; s=arc-20160816;
-        b=AKKwWAk3KAZEZbPgVF79b5Fv/r27FtqZHmPWfuvfuVOCgOEquw6cTS16nj1lzmDswO
-         d7kjqyFwHwk864a7dqRwp1rmJtC54V5cnWU+GYtfwVa5FUd6FagqwflTp43bGkihDLhJ
-         CzP3ZG7zaT0qKG3drdd9ouGChmQk/fTg+abqrBmJhQtUwSRSx0Ol+z2bC3G8xs1J4+MU
-         1Vazuq9S7/usZID8Xj8yloVAkj/lM8qpsjSJLAwhCPdHQBfR8jwZdVrk/LXlx1PShVzl
-         yh7+fbhkov5xREu+RQXjtNfZ9LoBnrFhNqbyB07A/WB9KaGORPPkfaWWXOSRob+YxN/0
-         CKLw==
+        b=snu/exBsCMzPwBGft/K56ahr+/TBUN71VS26o/h8u/ORAbHuRRoXhMF4KdByLB8Cbp
+         wkr3CqpoJpwn5Tke957cYrq6+2Nbdn5VyVEs7ybQsFNXWf6blbT+6QD6nloBreH73Qwc
+         nYuF1o3iyixsArZZjXpeBKoEKZkkxbTNAqPeR15VCjHKmUjG94pQAgbbgLD9z38cA+EO
+         JstXuI8mGog0La4OePZGeG6d43/CkflCi6tL8sPaQP2rpEZ8hSZKisLChX/z7Mpkpk2E
+         RnSHRW9Je9nva2sfF3F3pdx4vRwyDgnK7J5G3kY6VTPZqa5gO9vRoN7pBnUCYW8F/AAs
+         NTXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=XQDvEJ07vAi9xBWH5e6aj88nNB3/8V6MBr07xDN86X0=;
-        b=w3lzm6p77TldoGKvl+VvGRcvvi/N+UkgGRvpZLrXe3otwMVKaBYOHkRkOag2bFUcbM
-         WLNdd5I23RStC0Hqdres2cig4rcG2YAHXyTCYxwwtlZnoqi/wU9mb0Fylf8ogWX5ylFt
-         IPSC9ZT9Gz9lUXQIExJBB73cJpCoY3zKpM4b0RfDSTZeuOEpqld8o7GZOxQ1X1W4J79g
-         TSecjgeuvRLajfmwlp5uNs22y1Vw9XCN6+FucU++sldd8jEOvAk+XjzA1J7duEU8JE23
-         Cxwisg3D1yP6jNTgDK6OxKsAhC0P3Bo2EeuJ3+WHdNUDXgP+wBFN9+qXq9N7RzQqLIKk
-         4W4g==
+        bh=3WIFR7rBj/vEliiLavL+I3e+T4c1ik9j20bab2w5HK8=;
+        b=hyf9RhNPnkikQSVetENREwr9wgLUJXaTJoPpyzrAN9UDdYOBJMVUsO6Q006ttYPEoB
+         nkn3nV+iVV7dyylD1ksgr9vcSQGi1hBA4kmDe/SEOvDO9+wNUT4VCXXR1PKYazeXSFwl
+         GVMKibvHOm9MOVFiCAFH9nsO/Qy5mYLLyOE8yGIer5fWgEqZG23Y7jv1Y+GBOzA/HirA
+         J/RILRtTLzBWP2d43JzsmDDVKwBveUC3svB+W8gcbh+AfY1phrdS16+nJ74KNQ/pGyMv
+         UQ40vCGpJoyhBFF4e/7grImHlSvXpDsgw/idVwu+6QHFJsTf1pfoBOWJNUGT0VWkMIMU
+         mSaA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id y18si2814045qtn.379.2019.06.05.04.05.14
+        by mx.google.com with ESMTPS id f14si1221784qve.89.2019.06.06.01.53.37
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 Jun 2019 04:05:15 -0700 (PDT)
+        Thu, 06 Jun 2019 01:53:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
@@ -36,159 +36,230 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B098D7EBD3;
-	Wed,  5 Jun 2019 11:04:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9F88B882FD;
+	Thu,  6 Jun 2019 08:53:28 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DBAD75D705;
-	Wed,  5 Jun 2019 11:04:46 +0000 (UTC)
-Date: Wed, 5 Jun 2019 13:04:44 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A9B0954719;
+	Thu,  6 Jun 2019 08:53:24 +0000 (UTC)
+Date: Thu, 6 Jun 2019 10:53:22 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	richard.henderson@linaro.org, armbru@redhat.com,
 	abologna@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH 06/13] target/arm/kvm: max cpu: Enable SVE
- when available
-Message-ID: <20190605110444.234xp4roedpn2i5f@kamzik.brq.redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 07/13] target/arm/kvm: max cpu: Allow sve
+ max vector length setting
+Message-ID: <20190606085322.5253hsh6xjqonunz@kamzik.brq.redhat.com>
 References: <20190512083624.8916-1-drjones@redhat.com>
- <20190512083624.8916-7-drjones@redhat.com>
- <53832876-c973-7176-1c84-897a489f3656@redhat.com>
+ <20190512083624.8916-8-drjones@redhat.com>
+ <839be91f-6764-28b1-c0fb-304477bfadf8@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <53832876-c973-7176-1c84-897a489f3656@redhat.com>
+In-Reply-To: <839be91f-6764-28b1-c0fb-304477bfadf8@redhat.com>
 User-Agent: NeoMutt/20180716
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Wed, 05 Jun 2019 11:05:03 +0000 (UTC)
-X-TUID: 52G3KqD97HWJ
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Thu, 06 Jun 2019 08:53:36 +0000 (UTC)
+X-TUID: hzKWIkLBhBrJ
 
-On Wed, Jun 05, 2019 at 11:09:56AM +0200, Auger Eric wrote:
+On Thu, Jun 06, 2019 at 10:30:00AM +0200, Auger Eric wrote:
 > Hi Drew,
-> 
 > On 5/12/19 10:36 AM, Andrew Jones wrote:
-> > Enable SVE in the KVM guest when the 'max' cpu type is configured
-> > and KVM supports it. KVM SVE requires use of the new finalize
-> > vcpu ioctl, so we add that now too.
+> > Allow the cpu type 'max' sve-max-vq property to work with kvm
+> > too. If the property is not specified then the maximum kvm
+> > supports is used. If it is specified we check that kvm supports
+> > that exact length or error out if it doesn't.
 > > 
 > > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > > ---
-> >  target/arm/cpu64.c   |  1 +
-> >  target/arm/kvm.c     |  5 +++++
-> >  target/arm/kvm64.c   | 16 +++++++++++++++-
-> >  target/arm/kvm_arm.h | 12 ++++++++++++
-> >  4 files changed, 33 insertions(+), 1 deletion(-)
+> >  target/arm/cpu.h   |  4 +++
+> >  target/arm/cpu64.c |  7 ++--
+> >  target/arm/kvm64.c | 80 ++++++++++++++++++++++++++++++++++++++++++++--
+> >  3 files changed, 86 insertions(+), 5 deletions(-)
 > > 
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 733b840a7127..8292d547e8f9 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -3122,6 +3122,10 @@ static inline uint64_t arm_sctlr(CPUARMState *env, int el)
+> >      }
+> >  }
+> >  
+> > +static inline int arm_cpu_fls64(uint64_t v)
+> > +{
+> > +    return !v ? 0 : 64 - clz64(v);
+> > +}
+> >  
+> >  /* Return true if the processor is in big-endian mode. */
+> >  static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
 > > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > index 228906f26786..6c19ef6837d5 100644
+> > index 6c19ef6837d5..3756e7e2a3e5 100644
 > > --- a/target/arm/cpu64.c
 > > +++ b/target/arm/cpu64.c
-> > @@ -292,6 +292,7 @@ static void aarch64_max_initfn(Object *obj)
+> > @@ -292,7 +292,7 @@ static void aarch64_max_initfn(Object *obj)
 > >  
 > >      if (kvm_enabled()) {
 > >          kvm_arm_set_cpu_features_from_host(cpu);
-> > +        cpu->sve_max_vq = ARM_MAX_VQ;
-> same line in the !kvm_enabled path. Maybe you can set the sve_max_vq
-> field in a subsequent patch and just introduce the finalize and
-> capability checking in that patch?
-
-This gets changed in a subsequent patch, so factoring now would
-be wasted code motion. I'm not sure the finalize function is worth
-its own patch, so I'm inclined to leave this as is.
-
+> > -        cpu->sve_max_vq = ARM_MAX_VQ;
+> > +        cpu->sve_max_vq = -1; /* set in kvm_arch_init_vcpu() */
 > >      } else {
 > >          uint64_t t;
 > >          uint32_t u;
-> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > index 599563461264..c51db4229d0f 100644
-> > --- a/target/arm/kvm.c
-> > +++ b/target/arm/kvm.c
-> > @@ -50,6 +50,11 @@ int kvm_arm_vcpu_init(CPUState *cs)
-> >      return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_INIT, &init);
-> >  }
+> > @@ -374,9 +374,10 @@ static void aarch64_max_initfn(Object *obj)
+> >  #endif
 > >  
-> > +int kvm_arm_vcpu_finalize(CPUState *cs, int feature)
-> > +{
-> > +    return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_FINALIZE, &feature);
-> > +}
+> >          cpu->sve_max_vq = ARM_MAX_VQ;
+> > -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
+> > -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
+> >      }
 > > +
-> >  void kvm_arm_init_serror_injection(CPUState *cs)
-> >  {
-> >      cap_has_inject_serror_esr = kvm_check_extension(cs->kvm_state,
+> > +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
+> > +                        cpu_max_set_sve_vq, NULL, NULL, &error_fatal);>  }
+> >  
+> >  struct ARMCPUInfo {
 > > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index 86362f4cd7d0..c2d92df75353 100644
+> > index c2d92df75353..0c666e405357 100644
 > > --- a/target/arm/kvm64.c
 > > +++ b/target/arm/kvm64.c
-> > @@ -622,13 +622,20 @@ int kvm_arch_init_vcpu(CPUState *cs)
-> >          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+> > @@ -446,6 +446,59 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
 > >      }
-> >      if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> > -            cpu->has_pmu = false;
-> > +        cpu->has_pmu = false;
-> nit: maybe document this unrelated indent fix in the commit msg?
+> >  }
+> >  
+> > +static int kvm_arm_get_sve_vls(CPUState *cs, uint64_t sve_vls[])
+> > +{
+> > +    struct kvm_one_reg reg = {
+> > +        .id = KVM_REG_ARM64_SVE_VLS,
+> > +        .addr = (uint64_t)&sve_vls[0],
+> > +    };
+> > +    int i, ret;
+> > +
+> > +    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+> > +    if (ret) {
+> > +        return ret;
+> > +    }
+> > +
+> > +    ret = 0;
+> is it mandated?
 
-It's pretty obvious without extra commentary, IMHO.
+Yes, this can be removed, as we know ret=0 here.
 
-> >      }
-> >      if (cpu->has_pmu) {
-> >          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
-> >      } else {
-> >          unset_feature(&env->features, ARM_FEATURE_PMU);
-> >      }
-> > +    if (cpu->sve_max_vq) {
-> > +        if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SVE)) {
-> > +            cpu->sve_max_vq = 0;
-> > +        } else {
-> > +            cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+> > +    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
+> > +        if (sve_vls[i]) {
+> > +            ret = arm_cpu_fls64(sve_vls[i]) + i * 64;
+> > +            break;
 > > +        }
 > > +    }
+> > +
+> > +    return ret;
+> > +}
+> > +
+> > +static int kvm_arm_set_sve_vls(CPUState *cs, uint64_t sve_vls[], int max_vq)
+> > +{
+> > +    struct kvm_one_reg reg = {
+> > +        .id = KVM_REG_ARM64_SVE_VLS,
+> > +        .addr = (uint64_t)&sve_vls[0],
+> > +    };
+> > +    int i;
+> > +
+> > +    for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
+> > +        if (sve_vls[i]) {
+> > +            int vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
+> nit: add a line
+> > +            while (vq > max_vq) {
+> > +                sve_vls[i] &= ~BIT_MASK(vq - 1);
+> Isn't BIT_MASK for 32b. MAKE_64BIT_MASK?
+
+We should just need a 'UL', not a 'ULL'. I think I'll change all
+my BIT_MASK() usage to just BIT() for v2 though, even though
+there doesn't appear to be a difference for the cases I've used
+it.
+
+> > +                vq = arm_cpu_fls64(sve_vls[i]) + i * 64;
+> > +            }
+> > +            if (vq < max_vq) {
+> I don't really get this check: having vq less than max_vq does not seems
+> weird. Do you absolutely want vq=max_vq?
+
+In this context 'vq' is the max vq KVM supports and max_vq is the maximum
+the user requested. So if the user wants a maximum greater than what is
+possible, then that's an error.
+
+> > +                error_report("sve-max-vq=%d is not a valid length", max_vq);
+> > +                error_printf("next lowest is %d\n", vq);
+> why mixing error_report/printf?
+
+This is how we're supposed to do two line error messages, afaik.
+
+> > +                return -EINVAL;
+> > +            }
+> > +            if (vq == max_vq) {
+> > +                break;
+> > +            }
+> > +        }
+> > +    }
+> > +
+> > +    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> > +}
+> > +
+> >  static inline void set_feature(uint64_t *features, int feature)
+> >  {
+> >      *features |= 1ULL << feature;
+> > @@ -605,7 +658,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
 > >  
-> >      /* Do KVM_ARM_VCPU_INIT ioctl */
-> >      ret = kvm_arm_vcpu_init(cs);
-> > @@ -636,6 +643,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
-> >          return ret;
+> >      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
+> >          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
+> > -        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
+> > +        error_report("KVM is not supported for this guest CPU type");
+> >          return -EINVAL;
 > >      }
 > >  
-> > +    if (cpu->sve_max_vq) {
-> > +        ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
-> > +        if (ret) {
+> > @@ -631,7 +684,12 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> >      }
+> >      if (cpu->sve_max_vq) {
+> >          if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SVE)) {
+> > -            cpu->sve_max_vq = 0;
+> > +            if (cpu->sve_max_vq == -1) {> +                cpu->sve_max_vq = 0;
+> > +            } else {
+> > +                error_report("This KVM host does not support SVE");
+> > +                return -EINVAL;
+> > +            }
+> >          } else {
+> >              cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+> >          }
+> > @@ -644,6 +702,24 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> >      }
+> >  
+> >      if (cpu->sve_max_vq) {
+> > +        uint64_t sve_vls[KVM_ARM64_SVE_VLS_WORDS];
+> line
+> > +        ret = kvm_arm_get_sve_vls(cs, sve_vls);
+> > +        if (ret < 0) {
 > > +            return ret;
 > > +        }
-> > +    }
-> > +
-> >      /*
-> >       * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
-> >       * Currently KVM has its own idea about MPIDR assignment, so we
-> > diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> > index 2a07333c615f..c488ec3ab410 100644
-> > --- a/target/arm/kvm_arm.h
-> > +++ b/target/arm/kvm_arm.h
-> > @@ -27,6 +27,18 @@
-> >   */
-> >  int kvm_arm_vcpu_init(CPUState *cs);
-> >  
-> > +/**
-> > + * kvm_arm_vcpu_finalize
-> > + * @cs: CPUState
-> > + * @feature: int
-> feature bitmap or bit?
+> > +        if (cpu->sve_max_vq == -1) {> +            cpu->sve_max_vq = ret;
+> > +        } else if (cpu->sve_max_vq > ret) {
+> > +            error_report("This KVM host does not support SVE vectors "
+> I would rephrase the error mesg with something like:
+> This KVM host supports SVE vectors of max VQ=%d whereas requested VQ is %d
 
-Neither. I can improve this by stating these integers must be one
-of the set defined in the "KVM_ARM_VCPU_FINALIZE" section of
-kernel doc Documentation/virtual/kvm/api.txt though.
+Yup, giving a better hint as to what the host does support is a good idea.
 
-> > + *
-> > + * Finalizes the configuration of the specified VCPU feature
-> > + * by invoking the KVM_ARM_VCPU_FINALIZE ioctl.
-> > + *
-> > + * Returns: 0 if success else < 0 error code
-> > + */
-> > +int kvm_arm_vcpu_finalize(CPUState *cs, int feature);
-> > +
-> >  /**
-> >   * kvm_arm_register_device:
-> >   * @mr: memory region for this device
+> > +                         "of length %d quadwords (%d bytes)",
+> > +                         cpu->sve_max_vq, cpu->sve_max_vq * 16);
+> > +            return -EINVAL;
+> > +        } else {
+> > +            ret = kvm_arm_set_sve_vls(cs, sve_vls, cpu->sve_max_vq);
+> > +            if (ret < 0) {
+> > +                return ret;
+> > +            }
+> > +        }
+> >          ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
+> >          if (ret) {
+> >              return ret;
 > > 
+> Thanks
 > 
+> Eric
 
 Thanks,
 drew

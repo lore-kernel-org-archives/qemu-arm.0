@@ -1,97 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4756963wrg;
-        Thu, 6 Jun 2019 10:57:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4YuC4/5M6CbHm0DuD3SRTGLCjiPxRYOi/RWRniZ62ejkrFlSMZ7sNa3wBga6ZwETx1o0E
-X-Received: by 2002:a37:634f:: with SMTP id x76mr38953663qkb.205.1559843824625;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4756968wrg;
+        Thu, 6 Jun 2019 10:57:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxivYsCLhmGHwuNSGsOM1IwUyet6R3qSpZn2ZS9SSjFiw4xp3R0ndKHtpfz64A7WUbUR2dT
+X-Received: by 2002:ac8:6898:: with SMTP id m24mr41316644qtq.362.1559843824956;
         Thu, 06 Jun 2019 10:57:04 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1559843824; cv=none;
         d=google.com; s=arc-20160816;
-        b=dNbgpMFmUr0lDuoUQawFPscYuZf1FsgAaK3OOWTjs9rRC6j/iCMJl6tEc9cgcXboZt
-         vkGZfS82TtK0wAdtWV8XLBsTaNjZJPspfXXXlJabPJKqNgO2PpJZXGws3McHTcEhl/Fw
-         NWqKLnPMbQcrvI8VNA0Mr3dT/J7pTp3BvnjspXrc1I0vU/xRiWSOA/geszitRFnwgr7k
-         vfqqF5K12+fDZBV4sLXdZS9CtdAOCGUNYbJdZuCLYbAefqbcf5LRFjjU7lpMPsrJPUIt
-         xV4PUogEYYpU6TTvhq5wKnqS3iiiCxoZRzIuI5U9d4oVK+T9iP7P4ZScNUxLGfPmkkJP
-         ek1g==
+        b=qsw06g57wzzXHxYo50nVZq8HpgPfZDwNGsyZEmZe5vgCjG9qOD0ozvKxZF/7a7Oi1q
+         V9UpCDNiUbPtrb/622wpvcenR+elSfrzIKQtxtzcwNMffjXQP0flNGL24AzhWOP2wFed
+         rqFXwHcGYN85FTWGLInfsuHO3se3oiTpN5VKsjKkCskeUZgdYY9MVifYx8pqhZ7QiEus
+         n2PJufO5WZA00atRrKiDHm2Ywnel2nESPbk+SmWDaUKfW7UVLFY/metTaTXOBlnwdXMy
+         hrVSTVa8Zkx1dx8jPNCp5+LncKJf1ZRJohNLB9Q/mBVQcDwCP6JfaAkpTiUsZHdurQ/p
+         fpJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=c9wOcnXEMnU8Sqyypn+VOjsCvFWMEHtBhszMawwOJzg=;
-        b=GOGHlfPZfTIzGrpkwor2EubTRd/s6AqD9Da+nnsgdLSUjqyppk5QdBPzyO5H9hhJe8
-         7pMfB4r9wzQpwqBorfqBxeEQ5JYUaTRmHiNEY3EwZhaq/Pr44b7jVofKD3tQ5nv/Rpwj
-         H9UOC1S+QotH4LqFbpoWgjleOj/X912JFyfM9lArRmUzGKZJfS09xgfFWR8UU4rsqzjV
-         y4mPCiKdmKXQCQkVbIhgetROAEacI64846voXtS3nU+V0u3fm397ARlfwOluohFW2E8y
-         ynehUegcNvyEv+VP64b9KeUahMuPkKMlYaVwGAJcyfPJGYdKSYqUv2k8Gz82BJ9Aqbyp
-         DMbw==
+        bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
+        b=CnfVFQ5XRu1onRkWsH+N7eh0Kj7R+bGHMzHnP+tUB+nSke1+PXkSE/JE1lLlQZdWBE
+         OTGf1lAy4fRHrFXOrC9rXlxcHHdm1xfqmBDobWWJwoRo/QJNoUFCXfBIt+eIlJf1Wwtq
+         HE591baoWwDAa+BUYwZhlAvvLnZhkQpt2HST2BXA4Z8/MOl7LJB692Oaw+xHE91sgcvw
+         G0iiYMvovPW3WrH9IENAWMrt8rorhh/IhciaOkxWowK3ek+eJXyjIH/vH8+U5EUsxsxb
+         bim6TX3v6Z87uEgZn4Jkljq6r3JBlyKiLqVe0FkRu+Zf/3x5ghBV+fvyM/1tq6qPcfuQ
+         LZDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YIHzwYWl;
+       dkim=fail header.i=@linaro.org header.s=google header.b="bN/xsLRz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si1605544qva.8.2019.06.06.10.57.04
+        by mx.google.com with ESMTPS id y17si2037972qkf.186.2019.06.06.10.57.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Thu, 06 Jun 2019 10:57:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YIHzwYWl;
+       dkim=fail header.i=@linaro.org header.s=google header.b="bN/xsLRz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:36041 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36043 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYwdM-0004o2-4i
+	id 1hYwdM-0004q7-Ct
 	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:57:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44446)
+Received: from eggs.gnu.org ([209.51.188.92]:44798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwTp-00048w-G0
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwU5-0004Qs-6y
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwTm-0003cD-AW
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:12 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33734)
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwU2-00041b-B7
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:27 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38757)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hYwTk-0003N7-Rg
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:09 -0400
-Received: by mail-wr1-x443.google.com with SMTP id n9so3362987wru.0
-	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:46:56 -0700 (PDT)
+	id 1hYwTz-0003GI-R5
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:24 -0400
+Received: by mail-wr1-x442.google.com with SMTP id d18so3338251wrs.5
+	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:46:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=c9wOcnXEMnU8Sqyypn+VOjsCvFWMEHtBhszMawwOJzg=;
-	b=YIHzwYWlPN9XNcQkaGgoiqI/SwuscJLDYpvR0inVQJ3S8ZyaK+6j2PjJBAEV9aSe5j
-	UOAYmZPbSMkTg8gN2Cu26HjhqhspacEIhv3UnQ6ig8OaLZVeZBl50LqmMf8n+Qoifdtv
-	W8FyPAVqieHV/k3wRnLWNWL6f0waGT2k+AGH7rxLxTwoPdTMhjcGHnmylh+KBC+OlImN
-	uFnwvEp+0WLrzr5mWUgsy+aJzOig6t2/KnY0MRT9TGnG054KczFxugLW7Lu8vhxbJK1N
-	6S5OtaxQYs921IX63ssJeOwmTX6etM1XJ3TZfTH20YZdUFTkHA0BDUJ913x1svjALEbz
-	orfw==
+	bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
+	b=bN/xsLRzT8Q84/gf511fQfvi31EeHwKExgk767yOQlU8rI8utj7kWWk8Prx5bBTCFe
+	bqxp8zuGngk5WDInm13pyrOagQT9xOaMapl1GMJSql/AhXgly34CjJNrEb/5oQsPeJgK
+	1OyYle+Ehn4nu+h3Kt+hQWvYe+95rRZ1eSonlrJpvJyE8uS6EmSzRuFOBsM5vBPRrmye
+	nT7RKx/nw6y47GOZFPndFvm0C969LpiMMNyW+DxgOZVmkxwIDCQHLEjHqHsBVQUnCubl
+	gX9Oq2qTQu2TdMp5ULOXsS/LPeMTiLNCKX941Qg05TrY1LlEp20Fx8dfwWb+OVNrOFOe
+	ApTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=c9wOcnXEMnU8Sqyypn+VOjsCvFWMEHtBhszMawwOJzg=;
-	b=SUENDfPqMxo1OaQSrWyPYA7aJipRzruNKjNHtMoHsjDYiqlWChPwlpuakfRG4RaIx9
-	cJyTSujQ1OWsPfsxuKPb+jVhjGFrM1Ys10yrFs3bBkqHIJJ4xy2DqdWFtTIWpY6b/22d
-	PUx5d04qiBFNf6Yxy5E0j/a2kqKjDO+t5MqGwhuzfMYE6XZpFNtjbuTlTuXx1jmpDWJv
-	yKSw1V2od7BcUCVcpPdjDfciVtkr8p5Pji3BbZeGTW6DVJ6mVpyE7KM1ykKdINE6ptqt
-	MLBk8r6XSQf5hw1eh0zA6FM8rGyB8DkDSVleut0JS25HC2VVkrlIREkajoJEKGaspInL
-	ZMdQ==
-X-Gm-Message-State: APjAAAU/74pSChnIEefln6VWQIPB/pjNONze0+T8xEbCCwwES3ZLdYDy
-	U9fdFOEdBblqNrDDPFPo1FXGfqgVAstB4w==
-X-Received: by 2002:adf:e309:: with SMTP id b9mr30659940wrj.135.1559843215650; 
-	Thu, 06 Jun 2019 10:46:55 -0700 (PDT)
+	bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
+	b=DzaYOeqfWZulifGreacO4D/kf6R3E0F7U/gGCpQ4ayBGpC62q8vaZrKxm/nCZSPrUp
+	FkH0gWRQnqq2yvykrETXTTkqDJyDgVrXhEnm+4j+8/Vf3tAjfmTUM4ndN+R0mPLxp48y
+	ZCy5IvE8dsIVGW4ZV0yszeJtcC/+8GJJepp7h0ScxmVIL4nrpXCVhZ/dW06RYXEOoYn6
+	NYJwzYs0Akagz27rqVYiazL8PFyNTakpurIN8dnz0GYIexFuGnqd95uq7TmCE/XHrdhD
+	AOYwANTGAQXRYfnQSQaWS6ldNgKWlwbAWfbI1S8o3a0UtzLY+gGApRQJrvoBK6NsBwGs
+	vRpw==
+X-Gm-Message-State: APjAAAX/hNtGIJWixVhOZKdQQas1K44CBo8pUu4AHkASEa0OM4UgQliB
+	aiR5WBARHSjzzD/CKNwlF43AsokP8xJJQg==
+X-Received: by 2002:a5d:42c5:: with SMTP id t5mr15941360wrr.5.1559843206924;
+	Thu, 06 Jun 2019 10:46:46 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	z135sm2596784wmc.45.2019.06.06.10.46.54
+	z135sm2596784wmc.45.2019.06.06.10.46.45
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Jun 2019 10:46:55 -0700 (PDT)
+	Thu, 06 Jun 2019 10:46:46 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu,  6 Jun 2019 18:46:07 +0100
-Message-Id: <20190606174609.20487-41-peter.maydell@linaro.org>
+Date: Thu,  6 Jun 2019 18:45:59 +0100
+Message-Id: <20190606174609.20487-33-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190606174609.20487-1-peter.maydell@linaro.org>
 References: <20190606174609.20487-1-peter.maydell@linaro.org>
@@ -99,9 +99,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::443
-Subject: [Qemu-arm] [PATCH 40/42] target/arm: Convert VCVT fp/fixed-point
- conversion insns to decodetree
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 32/42] target/arm: Convert VMOV (register) to
+ decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,274 +116,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MVPdGdAKtnzA
-
-Convert the VCVT (between floating-point and fixed-point) instructions
-to decodetree.
+X-TUID: yMhaI/5uxg53
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate-vfp.inc.c | 124 +++++++++++++++++++++++++++++++++
- target/arm/translate.c         |  57 +--------------
- target/arm/vfp.decode          |  10 +++
- 3 files changed, 136 insertions(+), 55 deletions(-)
+ target/arm/translate-vfp.inc.c | 10 ++++++++++
+ target/arm/translate.c         |  8 +-------
+ target/arm/vfp.decode          |  5 +++++
+ 3 files changed, 16 insertions(+), 7 deletions(-)
 
 diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index 9bc852076a0..80804ebff90 100644
+index ae2f77a873b..a7e4ae31985 100644
 --- a/target/arm/translate-vfp.inc.c
 +++ b/target/arm/translate-vfp.inc.c
-@@ -2442,3 +2442,127 @@ static bool trans_VJCVT(DisasContext *s, arg_VJCVT *a)
-     tcg_temp_free_i32(vd);
+@@ -1889,6 +1889,16 @@ static bool trans_VMOV_imm_dp(DisasContext *s, arg_VMOV_imm_dp *a)
      return true;
  }
-+
-+static bool trans_VCVT_fix_sp(DisasContext *s, arg_VCVT_fix_sp *a)
+ 
++static bool trans_VMOV_reg_sp(DisasContext *s, arg_VMOV_reg_sp *a)
 +{
-+    TCGv_i32 vd, shift;
-+    TCGv_ptr fpst;
-+    int frac_bits;
-+
-+    if (!arm_dc_feature(s, ARM_FEATURE_VFP3)) {
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    frac_bits = (a->opc & 1) ? (32 - a->imm) : (16 - a->imm);
-+
-+    vd = tcg_temp_new_i32();
-+    neon_load_reg32(vd, a->vd);
-+
-+    fpst = get_fpstatus_ptr(false);
-+    shift = tcg_const_i32(frac_bits);
-+
-+    /* Switch on op:U:sx bits */
-+    switch (a->opc) {
-+    case 0:
-+        gen_helper_vfp_shtos(vd, vd, shift, fpst);
-+        break;
-+    case 1:
-+        gen_helper_vfp_sltos(vd, vd, shift, fpst);
-+        break;
-+    case 2:
-+        gen_helper_vfp_uhtos(vd, vd, shift, fpst);
-+        break;
-+    case 3:
-+        gen_helper_vfp_ultos(vd, vd, shift, fpst);
-+        break;
-+    case 4:
-+        gen_helper_vfp_toshs_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 5:
-+        gen_helper_vfp_tosls_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 6:
-+        gen_helper_vfp_touhs_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 7:
-+        gen_helper_vfp_touls_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    neon_store_reg32(vd, a->vd);
-+    tcg_temp_free_i32(vd);
-+    tcg_temp_free_i32(shift);
-+    tcg_temp_free_ptr(fpst);
-+    return true;
++    return do_vfp_2op_sp(s, tcg_gen_mov_i32, a->vd, a->vm);
 +}
 +
-+static bool trans_VCVT_fix_dp(DisasContext *s, arg_VCVT_fix_dp *a)
++static bool trans_VMOV_reg_dp(DisasContext *s, arg_VMOV_reg_dp *a)
 +{
-+    TCGv_i64 vd;
-+    TCGv_i32 shift;
-+    TCGv_ptr fpst;
-+    int frac_bits;
-+
-+    if (!arm_dc_feature(s, ARM_FEATURE_VFP3)) {
-+        return false;
-+    }
-+
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_fp_d32, s) && (a->vd & 0x10)) {
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    frac_bits = (a->opc & 1) ? (32 - a->imm) : (16 - a->imm);
-+
-+    vd = tcg_temp_new_i64();
-+    neon_load_reg64(vd, a->vd);
-+
-+    fpst = get_fpstatus_ptr(false);
-+    shift = tcg_const_i32(frac_bits);
-+
-+    /* Switch on op:U:sx bits */
-+    switch (a->opc) {
-+    case 0:
-+        gen_helper_vfp_shtod(vd, vd, shift, fpst);
-+        break;
-+    case 1:
-+        gen_helper_vfp_sltod(vd, vd, shift, fpst);
-+        break;
-+    case 2:
-+        gen_helper_vfp_uhtod(vd, vd, shift, fpst);
-+        break;
-+    case 3:
-+        gen_helper_vfp_ultod(vd, vd, shift, fpst);
-+        break;
-+    case 4:
-+        gen_helper_vfp_toshd_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 5:
-+        gen_helper_vfp_tosld_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 6:
-+        gen_helper_vfp_touhd_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    case 7:
-+        gen_helper_vfp_tould_round_to_zero(vd, vd, shift, fpst);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    neon_store_reg64(vd, a->vd);
-+    tcg_temp_free_i64(vd);
-+    tcg_temp_free_i32(shift);
-+    tcg_temp_free_ptr(fpst);
-+    return true;
++    return do_vfp_2op_dp(s, tcg_gen_mov_i64, a->vd, a->vm);
 +}
++
+ static bool trans_VABS_sp(DisasContext *s, arg_VABS_sp *a)
+ {
+     return do_vfp_2op_sp(s, gen_helper_vfp_abss, a->vd, a->vm);
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 687ef093f97..16c24aafc98 100644
+index fda0962761f..639e0f5f91e 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -1439,13 +1439,9 @@ static inline void gen_vfp_##name(int dp, int shift, int neon) \
-     tcg_temp_free_i32(tmp_shift); \
-     tcg_temp_free_ptr(statusptr); \
- }
--VFP_GEN_FIX(tosh, _round_to_zero)
- VFP_GEN_FIX(tosl, _round_to_zero)
--VFP_GEN_FIX(touh, _round_to_zero)
- VFP_GEN_FIX(toul, _round_to_zero)
--VFP_GEN_FIX(shto, )
- VFP_GEN_FIX(slto, )
--VFP_GEN_FIX(uhto, )
- VFP_GEN_FIX(ulto, )
- #undef VFP_GEN_FIX
- 
-@@ -3050,7 +3046,8 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+@@ -3090,7 +3090,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
                  return 1;
              case 15:
                  switch (rn) {
--                case 0 ... 19:
-+                case 0 ... 23:
-+                case 28 ... 31:
+-                case 1 ... 3:
++                case 0 ... 3:
                      /* Already handled by decodetree */
                      return 1;
                  default:
-@@ -3070,21 +3067,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                     rd_is_dp = false;
-                     break;
- 
--                case 0x14: /* vcvt fp <-> fixed */
--                case 0x15:
--                case 0x16:
--                case 0x17:
--                case 0x1c:
--                case 0x1d:
--                case 0x1e:
--                case 0x1f:
--                    if (!arm_dc_feature(s, ARM_FEATURE_VFP3)) {
--                        return 1;
--                    }
--                    /* Immediate frac_bits has same format as SREG_M.  */
--                    rm_is_dp = false;
+@@ -3103,9 +3103,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+             if (op == 15) {
+                 /* rn is opcode, encoded as per VFP_SREG_N. */
+                 switch (rn) {
+-                case 0x00: /* vmov */
 -                    break;
 -
-                 default:
-                     return 1;
-                 }
-@@ -3143,17 +3125,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-             /* Load the initial operands.  */
-             if (op == 15) {
-                 switch (rn) {
--                case 0x14: /* vcvt fp <-> fixed */
--                case 0x15:
--                case 0x16:
--                case 0x17:
--                case 0x1c:
--                case 0x1d:
--                case 0x1e:
--                case 0x1f:
--                    /* Source and destination the same.  */
--                    gen_mov_F0_vreg(dp, rd);
--                    break;
-                 default:
-                     /* One source operand.  */
-                     gen_mov_F0_vreg(rm_is_dp, rm);
-@@ -3170,18 +3141,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+                 case 0x04: /* vcvtb.f64.f16, vcvtb.f32.f16 */
+                 case 0x05: /* vcvtt.f64.f16, vcvtt.f32.f16 */
+                     /*
+@@ -3278,9 +3275,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
                  switch (op) {
                  case 15: /* extension space */
                      switch (rn) {
--                    case 20: /* fshto */
--                        gen_vfp_shto(dp, 16 - rm, 0);
+-                    case 0: /* cpy */
+-                        /* no-op */
 -                        break;
--                    case 21: /* fslto */
--                        gen_vfp_slto(dp, 32 - rm, 0);
--                        break;
--                    case 22: /* fuhto */
--                        gen_vfp_uhto(dp, 16 - rm, 0);
--                        break;
--                    case 23: /* fulto */
--                        gen_vfp_ulto(dp, 32 - rm, 0);
--                        break;
-                     case 24: /* ftoui */
-                         gen_vfp_toui(dp, 0);
-                         break;
-@@ -3194,18 +3153,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                     case 27: /* ftosiz */
-                         gen_vfp_tosiz(dp, 0);
-                         break;
--                    case 28: /* ftosh */
--                        gen_vfp_tosh(dp, 16 - rm, 0);
--                        break;
--                    case 29: /* ftosl */
--                        gen_vfp_tosl(dp, 32 - rm, 0);
--                        break;
--                    case 30: /* ftouh */
--                        gen_vfp_touh(dp, 16 - rm, 0);
--                        break;
--                    case 31: /* ftoul */
--                        gen_vfp_toul(dp, 32 - rm, 0);
--                        break;
-                     default: /* undefined */
-                         g_assert_not_reached();
-                     }
+                     case 4: /* vcvtb.f32.f16, vcvtb.f64.f16 */
+                     {
+                         TCGv_ptr fpst = get_fpstatus_ptr(false);
 diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-index 1a7c9b533de..c3223a124ac 100644
+index 2780e1ed9ea..b72ab8b8067 100644
 --- a/target/arm/vfp.decode
 +++ b/target/arm/vfp.decode
-@@ -224,3 +224,13 @@ VCVT_int_dp  ---- 1110 1.11 1000 .... 1011 s:1 1.0 .... \
- # VJCVT is always dp to sp
- VJCVT        ---- 1110 1.11 1001 .... 1011 11.0 .... \
-              vd=%vd_sp vm=%vm_dp
+@@ -157,6 +157,11 @@ VMOV_imm_sp  ---- 1110 1.11 imm4h:4 .... 1010 0000 imm4l:4 \
+ VMOV_imm_dp  ---- 1110 1.11 imm4h:4 .... 1011 0000 imm4l:4 \
+              vd=%vd_dp
+ 
++VMOV_reg_sp  ---- 1110 1.11 0000 .... 1010 01.0 .... \
++             vd=%vd_sp vm=%vm_sp
++VMOV_reg_dp  ---- 1110 1.11 0000 .... 1011 01.0 .... \
++             vd=%vd_dp vm=%vm_dp
 +
-+# VCVT between floating-point and fixed-point. The immediate value
-+# is in the same format as a Vm single-precision register number.
-+# We assemble bits 18 (op), 16 (u) and 7 (sx) into a single opc field
-+# for the convenience of the trans_VCVT_fix functions.
-+%vcvt_fix_op 18:1 16:1 7:1
-+VCVT_fix_sp  ---- 1110 1.11 1.1. .... 1010 .1.0 .... \
-+             vd=%vd_sp imm=%vm_sp opc=%vcvt_fix_op
-+VCVT_fix_dp  ---- 1110 1.11 1.1. .... 1011 .1.0 .... \
-+             vd=%vd_dp imm=%vm_sp opc=%vcvt_fix_op
+ VABS_sp      ---- 1110 1.11 0000 .... 1010 11.0 .... \
+              vd=%vd_sp vm=%vm_sp
+ VABS_dp      ---- 1110 1.11 0000 .... 1011 11.0 .... \
 -- 
 2.20.1
 

@@ -1,102 +1,83 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3679772wrg;
-        Wed, 5 Jun 2019 14:18:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxs/9H8g+K6sO68JrAGjvJMTEgqfSMmyuj7u2C9luX8x9q3by/J5EHUmOptrXfWUHiOb+G2
-X-Received: by 2002:a37:9506:: with SMTP id x6mr23306656qkd.107.1559769522090;
-        Wed, 05 Jun 2019 14:18:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559769522; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3942612wrg;
+        Wed, 5 Jun 2019 19:59:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwr33Ebc2sO1DPcBt6G/CAHNsBlM+ntBSE/nm5kdntbW4EfFPkygZQkEsHx/IX2awALcb3Q
+X-Received: by 2002:a0c:bf4f:: with SMTP id b15mr35599363qvj.24.1559789974582;
+        Wed, 05 Jun 2019 19:59:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559789974; cv=none;
         d=google.com; s=arc-20160816;
-        b=VKPL1yTHuGcA0u47fxOyaaqCTYO9XCvcpbAQWyxL66OSgpBR1lTkaTmP66Rq/YAMEm
-         roSETAPoVx81yXL3+cJixifyD+xCaeY0LNyyvb0r+DUg2kPgHX1NfzOETPndiMXXXt7y
-         KftR1m0sc5eGlbFxWB/l0oYcOEOnSJ3RWw+/FWlrsZcm2T5KzOFP2hWL34XeGj4/lC+U
-         KHflFOQnP7IguBg9Su1Lzzvyk5/XB00opRsFDqO+js/er4/K7J4bnWIJQZwJP3tNDigK
-         HtWsl8fD5hE2Rs9GTlDW/kcnCxsXm5TyNtY8vHGa2uAqvJCXghXePOKHAm5cKuOrTmWU
-         gDLw==
+        b=GqIVnKdbxxDNxw9QZM+TZckQGjTNvvJIKnoiGehn3N1ik8JUvP1/VmzFc96DqAyuE4
+         L8atdAgQAihBKoGC7ZJ1gexSn3/SNw/aWwxN3NAUiLMIqkZMfVe4UIuE5RNyBq2HuSYD
+         ls2rVFNxChf4E4lDHJ83Uc9VzuQAbsGz5yrXQjMyouzKUYvjJRFFeryOi8J3Xj94CCbH
+         ci0py6LXQwsENiaa2nR5EYvztYBUDGIYjpOGqMOGcEMBrv21qBUUdYx3VPShWO1h7Qz+
+         kCYmM3T6KWQRRb7iEN7AveWjnaYFUaoXjl0Gw77NAeRczmoQUzT1GK+Yi/5ztZu3Z7HB
+         6qSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=bQVHAIuc8cylmO4EtZU3JgpNo/hW/0t6dfoknwfUJfQ=;
-        b=CdFx7F5e1URy+5YJlislzfx8LupNSrpEd5/pujKojC1U5yu6GVeQ1hsjLlHBayd1Pz
-         SRSqeEIPzSdf07p8WRymkrIlQYYy8Erdv5gHp3Fc89exnr/cQDUB8sr/1GP/IrS/rIyr
-         62P3pdk6z/1XyJlZyy7kU6JMDhrYyoy0hqAQkyQoHGUb5Mlk9sYO8dOuOglgk/e9+V3n
-         5Zp2mJ8eiwo21HuEnCftb+HYF/qRqixzSldKAW/ay7zpdPCVzTOU3vFykM4zj7w8/BAN
-         o/lrnSAWTZqNEfObR3sFPsmMxnnD8YxRweiyZAy7sVBFc43BxH4KlMw3jlppnf83YWAr
-         tP5w==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=pro1LnUbEyntTejBnNmf1omn53R7E536qXdWpLDE8e4=;
+        b=DDNIEf9gUGEsekR5ZHiMOhZs5aX54jiJyxprocRiAMT3rFgA3TahUd2d/zS8sxdxPK
+         k7xMbiGifH0nLDx577dmVYY6S4cK8gbMjBEbuvxmeXUCrZErzS7VFmuapx0dRe37kTL7
+         F558me/T0BGfwqotpmgpRKhNYI4zOBqo2mVjeLYI9DP/XQEHfiAzpugE7rEu1b15gLoM
+         TBKnkH9s8ZyFmyv0DHriKl94gr1WjGimM77Vg948h0ZUuZPTcAKSJfKHJSq3xenI9HNe
+         AHQ1h6ofu8OSqYZR4NdqZt/4fG6owAUzp3QjDV1nZsvAK6LMUMdfFI4zhpsVRPVzgxK7
+         u72w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OHqr7Bd8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si5435582qtj.159.2019.06.05.14.18.41
+        by mx.google.com with ESMTPS id f188si470723qke.127.2019.06.05.19.59.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 05 Jun 2019 14:18:42 -0700 (PDT)
+        Wed, 05 Jun 2019 19:59:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OHqr7Bd8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([127.0.0.1]:50316 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([127.0.0.1]:53381 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYdIv-0004up-FF
-	for alex.bennee@linaro.org; Wed, 05 Jun 2019 17:18:41 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54016)
+	id 1hYico-0005v3-3R
+	for alex.bennee@linaro.org; Wed, 05 Jun 2019 22:59:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54142)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYdI4-0004SM-C7
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 17:17:51 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hYicK-0005g0-2M
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 22:59:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aleksandar.m.mail@gmail.com>) id 1hYdHz-0004NI-HQ
-	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 17:17:47 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:36623)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
-	id 1hYdHj-00046R-Lg; Wed, 05 Jun 2019 17:17:28 -0400
-Received: by mail-ot1-x343.google.com with SMTP id c3so2138971otr.3;
-	Wed, 05 Jun 2019 14:17:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bQVHAIuc8cylmO4EtZU3JgpNo/hW/0t6dfoknwfUJfQ=;
-	b=OHqr7Bd89Ikoj2lm3Ar9o2YyiUZjEV2IOLT7fkMQ6YffGlkA6Jh+EdizoiXLRu+k1y
-	BqhsGDSR9OqkKfVo7iF7qZANkrwfOI+yhIYtNIc2ThDX4gGNZ3+HnjrfGjvFOccn+WFu
-	EXRhdwYsv+69zgSn5TR/oOqFy4uyCo9m/8D9JaFPS+TE3JxgvaSwh3khkaNFzpHA+OcL
-	YIM4QPIVvV/U4BOlqdJbQjj5/V/LNjwbKF1gLativX1qHzbZ+4BEyjAnXDZJx8F6sm67
-	6Dks23+QhV4QIe6VNbcBFLxq/ZV0NtCk1uZpqSps+BSVmu6jzY4O++h3TbQbyKSycjTe
-	q2EQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bQVHAIuc8cylmO4EtZU3JgpNo/hW/0t6dfoknwfUJfQ=;
-	b=hP2jdLhlQGJ8CjIcK1pFsfiJaT3JYnZIKRJs3A0gNq+gKcU8uml13CrVVacqP73YSC
-	DetGQiSbQ+q+7S9BGZtUWIhVZ3aAV798ZBye32k8Z+hVzhXhl+iixdHjy0W0ve6DHFfJ
-	WviTdv0XRqfHqhJxeyiM+XjMmgK1lyXq2BhPQj1GuXWTdHOM4oPcay4QWVWXN6VrVNns
-	Uly+cAbLjhUl3wF6Cwu6b1bKQCJsIUJN47bDec7TvxpUOlAnpjsx7cC5zQqQkygrIxfg
-	oziPxXPCxz4AqkX3wM4rzmNYdAqYEusL9ZIYZniPV7WUaflOU/ffpYw5wWmIFakw0nrv
-	w0QQ==
-X-Gm-Message-State: APjAAAVKJ05z5TMTj3VaNheLpOhqalkGF3VpUWJOkpW7t62rKYfpWzeF
-	AOqQ325p458MvXqwBwwOo5gEaB6fzCe09ODfa8k=
-X-Received: by 2002:a9d:6ad7:: with SMTP id m23mr5634375otq.306.1559769445254; 
-	Wed, 05 Jun 2019 14:17:25 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1hYicG-0007hd-DZ
+	for qemu-arm@nongnu.org; Wed, 05 Jun 2019 22:59:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45024)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hYicF-0007dt-Ri; Wed, 05 Jun 2019 22:59:00 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 67E9E356DB;
+	Thu,  6 Jun 2019 02:58:58 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 595236837F;
+	Thu,  6 Jun 2019 02:58:57 +0000 (UTC)
+Date: Wed, 5 Jun 2019 23:58:55 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Like Xu <like.xu@linux.intel.com>
+Message-ID: <20190606025855.GQ22416@habkost.net>
+References: <20190518205428.90532-1-like.xu@linux.intel.com>
+	<20190518205428.90532-9-like.xu@linux.intel.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
-	Wed, 5 Jun 2019 14:17:24 -0700 (PDT)
-Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP;
-	Wed, 5 Jun 2019 14:17:24 -0700 (PDT)
-In-Reply-To: <20190605205706.569-5-richard.henderson@linaro.org>
-References: <20190605205706.569-1-richard.henderson@linaro.org>
-	<20190605205706.569-5-richard.henderson@linaro.org>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 5 Jun 2019 23:17:24 +0200
-Message-ID: <CAL1e-=i+9K=gJ8Aw2=vwmORx=CpmffvPpP9Sfb_qAxcpwyN9Jg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000b74866058a9a1f81"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 4/6] include/elf: Add defines
- related to notes for GNU systems
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190518205428.90532-9-like.xu@linux.intel.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 06 Jun 2019 02:58:58 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 08/10] hw/arm: Replace global
+ smp variables with machine smp properties
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,234 +89,474 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Dave.Martin@arm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Rob Herring <robh@kernel.org>,
+	qemu-trivial@nongnu.org,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+	Alistair Francis <alistair23@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6OfqgN0tcKhT
+X-TUID: RkvhtzebXI7T
 
---000000000000b74866058a9a1f81
-Content-Type: text/plain; charset="UTF-8"
+On Sun, May 19, 2019 at 04:54:26AM +0800, Like Xu wrote:
+> The global smp variables in arm are replaced with smp machine properties.
+> The init_cpus() and *_create_rpu() are refactored to pass MachineState.
+> 
+> A local variable of the same name would be introduced in the declaration
+> phase if it's used widely in the context OR replace it on the spot if it's
+> only used once. No semantic changes.
+> 
+> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-On Jun 5, 2019 11:03 PM, "Richard Henderson" <richard.henderson@linaro.org>
-wrote:
->
-> This is a collection of related defines for notes, copied
-> from glibc's <elf.h>.  We're not going to use all of these
-> right away, but it seemed foolish to cherry-pick only the
-> ones we need now.
->
+CCing arm maintainers.  Any objection to merging this through the
+Machine Core tree?
 
-But you are doing exactly that: cherry-picking, but this time according to
-some undisclosed criterium. Why don't you state your motivation in the
-commit message in a clear way? Why only these items are chosen? Confusing
-and confused.
-
-Regards,
-Aleksandar
-
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  include/elf.h | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
-> diff --git a/include/elf.h b/include/elf.h
-> index ea7708a4ea..6f3eada36f 100644
-> --- a/include/elf.h
-> +++ b/include/elf.h
-> @@ -1650,6 +1650,54 @@ typedef struct elf64_shdr {
->  #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint
-registers */
->  #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
->
-> +/* Defined note types for GNU systems.  */
+>  hw/arm/fsl-imx6.c      |  6 +++++-
+>  hw/arm/fsl-imx6ul.c    |  6 +++++-
+>  hw/arm/fsl-imx7.c      |  7 +++++--
+>  hw/arm/highbank.c      |  1 +
+>  hw/arm/mcimx6ul-evk.c  |  2 +-
+>  hw/arm/mcimx7d-sabre.c |  2 +-
+>  hw/arm/raspi.c         |  4 ++--
+>  hw/arm/realview.c      |  1 +
+>  hw/arm/sabrelite.c     |  2 +-
+>  hw/arm/vexpress.c      | 16 ++++++++++------
+>  hw/arm/virt.c          |  8 +++++++-
+>  hw/arm/xlnx-zynqmp.c   | 16 ++++++++++------
+>  target/arm/cpu.c       |  8 +++++++-
+>  13 files changed, 56 insertions(+), 23 deletions(-)
+> 
+> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+> index 7b7b97f74c..ed772d5bd9 100644
+> --- a/hw/arm/fsl-imx6.c
+> +++ b/hw/arm/fsl-imx6.c
+> @@ -23,6 +23,7 @@
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "hw/arm/fsl-imx6.h"
+> +#include "hw/boards.h"
+>  #include "sysemu/sysemu.h"
+>  #include "chardev/char.h"
+>  #include "qemu/error-report.h"
+> @@ -33,11 +34,12 @@
+>  
+>  static void fsl_imx6_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX6State *s = FSL_IMX6(obj);
+>      char name[NAME_SIZE];
+>      int i;
+>  
+> -    for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
+> +    for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX6_NUM_CPUS); i++) {
+>          snprintf(name, NAME_SIZE, "cpu%d", i);
+>          object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+>                                  "cortex-a9-" TYPE_ARM_CPU, &error_abort, NULL);
+> @@ -93,9 +95,11 @@ static void fsl_imx6_init(Object *obj)
+>  
+>  static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX6State *s = FSL_IMX6(dev);
+>      uint16_t i;
+>      Error *err = NULL;
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>  
+>      if (smp_cpus > FSL_IMX6_NUM_CPUS) {
+>          error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index 4b56bfa8d1..74b8ecbbb6 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -21,6 +21,7 @@
+>  #include "qemu-common.h"
+>  #include "hw/arm/fsl-imx6ul.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/boards.h"
+>  #include "sysemu/sysemu.h"
+>  #include "qemu/error-report.h"
+>  
+> @@ -28,11 +29,12 @@
+>  
+>  static void fsl_imx6ul_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX6ULState *s = FSL_IMX6UL(obj);
+>      char name[NAME_SIZE];
+>      int i;
+>  
+> -    for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
+> +    for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX6UL_NUM_CPUS); i++) {
+>          snprintf(name, NAME_SIZE, "cpu%d", i);
+>          object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+>                                  "cortex-a7-" TYPE_ARM_CPU, &error_abort, NULL);
+> @@ -156,10 +158,12 @@ static void fsl_imx6ul_init(Object *obj)
+>  
+>  static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX6ULState *s = FSL_IMX6UL(dev);
+>      int i;
+>      qemu_irq irq;
+>      char name[NAME_SIZE];
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>  
+>      if (smp_cpus > FSL_IMX6UL_NUM_CPUS) {
+>          error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
+> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+> index 7663ad6861..71cc414de6 100644
+> --- a/hw/arm/fsl-imx7.c
+> +++ b/hw/arm/fsl-imx7.c
+> @@ -23,6 +23,7 @@
+>  #include "qemu-common.h"
+>  #include "hw/arm/fsl-imx7.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/boards.h"
+>  #include "sysemu/sysemu.h"
+>  #include "qemu/error-report.h"
+>  
+> @@ -30,12 +31,12 @@
+>  
+>  static void fsl_imx7_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX7State *s = FSL_IMX7(obj);
+>      char name[NAME_SIZE];
+>      int i;
+>  
+> -
+> -    for (i = 0; i < MIN(smp_cpus, FSL_IMX7_NUM_CPUS); i++) {
+> +    for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX7_NUM_CPUS); i++) {
+>          snprintf(name, NAME_SIZE, "cpu%d", i);
+>          object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i]),
+>                                  ARM_CPU_TYPE_NAME("cortex-a7"), &error_abort,
+> @@ -155,11 +156,13 @@ static void fsl_imx7_init(Object *obj)
+>  
+>  static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      FslIMX7State *s = FSL_IMX7(dev);
+>      Object *o;
+>      int i;
+>      qemu_irq irq;
+>      char name[NAME_SIZE];
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>  
+>      if (smp_cpus > FSL_IMX7_NUM_CPUS) {
+>          error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
+> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
+> index 96ccf18d86..f3b1712fc9 100644
+> --- a/hw/arm/highbank.c
+> +++ b/hw/arm/highbank.c
+> @@ -240,6 +240,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
+>      SysBusDevice *busdev;
+>      qemu_irq pic[128];
+>      int n;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+>      qemu_irq cpu_irq[4];
+>      qemu_irq cpu_fiq[4];
+>      qemu_irq cpu_virq[4];
+> diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
+> index fb2b015bf6..47c44dd83a 100644
+> --- a/hw/arm/mcimx6ul-evk.c
+> +++ b/hw/arm/mcimx6ul-evk.c
+> @@ -43,7 +43,7 @@ static void mcimx6ul_evk_init(MachineState *machine)
+>          .kernel_filename = machine->kernel_filename,
+>          .kernel_cmdline = machine->kernel_cmdline,
+>          .initrd_filename = machine->initrd_filename,
+> -        .nb_cpus = smp_cpus,
+> +        .nb_cpus = machine->smp.cpus,
+>      };
+>  
+>      object_initialize_child(OBJECT(machine), "soc", &s->soc,  sizeof(s->soc),
+> diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+> index 9c5f0e70c3..a8df0cce6e 100644
+> --- a/hw/arm/mcimx7d-sabre.c
+> +++ b/hw/arm/mcimx7d-sabre.c
+> @@ -46,7 +46,7 @@ static void mcimx7d_sabre_init(MachineState *machine)
+>          .kernel_filename = machine->kernel_filename,
+>          .kernel_cmdline = machine->kernel_cmdline,
+>          .initrd_filename = machine->initrd_filename,
+> -        .nb_cpus = smp_cpus,
+> +        .nb_cpus = machine->smp.cpus,
+>      };
+>  
+>      object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX7);
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index fe2bb511b9..d3e4c201c0 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -117,7 +117,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+>  
+>      binfo.board_id = raspi_boardid[version];
+>      binfo.ram_size = ram_size;
+> -    binfo.nb_cpus = smp_cpus;
+> +    binfo.nb_cpus = machine->smp.cpus;
+>  
+>      if (version <= 2) {
+>          /* The rpi1 and 2 require some custom setup code to run in Secure
+> @@ -196,7 +196,7 @@ static void raspi_init(MachineState *machine, int version)
+>      /* Setup the SOC */
+>      object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
+>                                     &error_abort);
+> -    object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
+> +    object_property_set_int(OBJECT(&s->soc), machine->smp.cpus, "enabled-cpus",
+>                              &error_abort);
+>      int board_rev = version == 3 ? 0xa02082 : 0xa21041;
+>      object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
+> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> index 05a244df25..f470f21b0d 100644
+> --- a/hw/arm/realview.c
+> +++ b/hw/arm/realview.c
+> @@ -70,6 +70,7 @@ static void realview_init(MachineState *machine,
+>      NICInfo *nd;
+>      I2CBus *i2c;
+>      int n;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+>      int done_nic = 0;
+>      qemu_irq cpu_irq[4];
+>      int is_mpcore = 0;
+> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+> index ee140e5d9e..f9e7dc5a00 100644
+> --- a/hw/arm/sabrelite.c
+> +++ b/hw/arm/sabrelite.c
+> @@ -107,7 +107,7 @@ static void sabrelite_init(MachineState *machine)
+>      sabrelite_binfo.kernel_filename = machine->kernel_filename;
+>      sabrelite_binfo.kernel_cmdline = machine->kernel_cmdline;
+>      sabrelite_binfo.initrd_filename = machine->initrd_filename;
+> -    sabrelite_binfo.nb_cpus = smp_cpus;
+> +    sabrelite_binfo.nb_cpus = machine->smp.cpus;
+>      sabrelite_binfo.secure_boot = true;
+>      sabrelite_binfo.write_secondary_boot = sabrelite_write_secondary;
+>      sabrelite_binfo.secondary_cpu_reset_hook = sabrelite_reset_secondary;
+> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+> index d8634f3dd2..6d93d9f0bf 100644
+> --- a/hw/arm/vexpress.c
+> +++ b/hw/arm/vexpress.c
+> @@ -203,12 +203,14 @@ struct VEDBoardInfo {
+>      DBoardInitFn *init;
+>  };
+>  
+> -static void init_cpus(const char *cpu_type, const char *privdev,
+> -                      hwaddr periphbase, qemu_irq *pic, bool secure, bool virt)
+> +static void init_cpus(MachineState *ms, const char *cpu_type,
+> +                      const char *privdev, hwaddr periphbase,
+> +                      qemu_irq *pic, bool secure, bool virt)
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *busdev;
+>      int n;
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>  
+>      /* Create the actual CPUs */
+>      for (n = 0; n < smp_cpus; n++) {
+> @@ -269,6 +271,7 @@ static void a9_daughterboard_init(const VexpressMachineState *vms,
+>                                    const char *cpu_type,
+>                                    qemu_irq *pic)
+>  {
+> +    MachineState *machine = MACHINE(vms);
+>      MemoryRegion *sysmem = get_system_memory();
+>      MemoryRegion *ram = g_new(MemoryRegion, 1);
+>      MemoryRegion *lowram = g_new(MemoryRegion, 1);
+> @@ -295,7 +298,7 @@ static void a9_daughterboard_init(const VexpressMachineState *vms,
+>      memory_region_add_subregion(sysmem, 0x60000000, ram);
+>  
+>      /* 0x1e000000 A9MPCore (SCU) private memory region */
+> -    init_cpus(cpu_type, TYPE_A9MPCORE_PRIV, 0x1e000000, pic,
+> +    init_cpus(machine, cpu_type, TYPE_A9MPCORE_PRIV, 0x1e000000, pic,
+>                vms->secure, vms->virt);
+>  
+>      /* Daughterboard peripherals : 0x10020000 .. 0x20000000 */
+> @@ -355,6 +358,7 @@ static void a15_daughterboard_init(const VexpressMachineState *vms,
+>                                     const char *cpu_type,
+>                                     qemu_irq *pic)
+>  {
+> +    MachineState *machine = MACHINE(vms);
+>      MemoryRegion *sysmem = get_system_memory();
+>      MemoryRegion *ram = g_new(MemoryRegion, 1);
+>      MemoryRegion *sram = g_new(MemoryRegion, 1);
+> @@ -377,8 +381,8 @@ static void a15_daughterboard_init(const VexpressMachineState *vms,
+>      memory_region_add_subregion(sysmem, 0x80000000, ram);
+>  
+>      /* 0x2c000000 A15MPCore private memory region (GIC) */
+> -    init_cpus(cpu_type, TYPE_A15MPCORE_PRIV, 0x2c000000, pic, vms->secure,
+> -              vms->virt);
+> +    init_cpus(machine, cpu_type, TYPE_A15MPCORE_PRIV,
+> +              0x2c000000, pic, vms->secure, vms->virt);
+>  
+>      /* A15 daughterboard peripherals: */
+>  
+> @@ -706,7 +710,7 @@ static void vexpress_common_init(MachineState *machine)
+>      daughterboard->bootinfo.kernel_filename = machine->kernel_filename;
+>      daughterboard->bootinfo.kernel_cmdline = machine->kernel_cmdline;
+>      daughterboard->bootinfo.initrd_filename = machine->initrd_filename;
+> -    daughterboard->bootinfo.nb_cpus = smp_cpus;
+> +    daughterboard->bootinfo.nb_cpus = machine->smp.cpus;
+>      daughterboard->bootinfo.board_id = VEXPRESS_BOARD_ID;
+>      daughterboard->bootinfo.loader_start = daughterboard->loader_start;
+>      daughterboard->bootinfo.smp_loader_start = map[VE_SRAM];
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 6b2f2e96d3..00852dbe81 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -556,11 +556,13 @@ static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
+>  
+>  static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+>  {
+> +    MachineState *ms = MACHINE(vms);
+>      /* We create a standalone GIC */
+>      DeviceState *gicdev;
+>      SysBusDevice *gicbusdev;
+>      const char *gictype;
+>      int type = vms->gic_version, i;
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>      uint32_t nb_redist_regions = 0;
+>  
+>      gictype = (type == 3) ? gicv3_class_name() : gic_class_name();
+> @@ -1036,13 +1038,14 @@ static bool virt_firmware_init(VirtMachineState *vms,
+>  
+>  static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+>  {
+> +    MachineState *ms = MACHINE(vms);
+>      hwaddr base = vms->memmap[VIRT_FW_CFG].base;
+>      hwaddr size = vms->memmap[VIRT_FW_CFG].size;
+>      FWCfgState *fw_cfg;
+>      char *nodename;
+>  
+>      fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
+> -    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)smp_cpus);
+> +    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
+>  
+>      nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
+>      qemu_fdt_add_subnode(vms->fdt, nodename);
+> @@ -1475,6 +1478,8 @@ static void machvirt_init(MachineState *machine)
+>      MemoryRegion *ram = g_new(MemoryRegion, 1);
+>      bool firmware_loaded;
+>      bool aarch64 = true;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+> +    unsigned int max_cpus = machine->smp.max_cpus;
+>  
+>      /*
+>       * In accelerated mode, the memory map is computed earlier in kvm_type()
+> @@ -1842,6 +1847,7 @@ static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
+>  static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>  {
+>      int n;
+> +    unsigned int max_cpus = ms->smp.max_cpus;
+>      VirtMachineState *vms = VIRT_MACHINE(ms);
+>  
+>      if (ms->possible_cpus) {
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index 4f8bc41d9d..fc8e1a9550 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -21,6 +21,7 @@
+>  #include "cpu.h"
+>  #include "hw/arm/xlnx-zynqmp.h"
+>  #include "hw/intc/arm_gic_common.h"
+> +#include "hw/boards.h"
+>  #include "exec/address-spaces.h"
+>  #include "sysemu/kvm.h"
+>  #include "kvm_arm.h"
+> @@ -171,12 +172,13 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+>      return GIC_NUM_SPI_INTR + cpu_nr * GIC_INTERNAL + ppi_index;
+>  }
+>  
+> -static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+> -                                   Error **errp)
+> +static void xlnx_zynqmp_create_rpu(MachineState *ms, XlnxZynqMPState *s,
+> +                                   const char *boot_cpu, Error **errp)
+>  {
+>      Error *err = NULL;
+>      int i;
+> -    int num_rpus = MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYNQMP_NUM_RPU_CPUS);
+> +    int num_rpus = MIN(ms->smp.cpus - XLNX_ZYNQMP_NUM_APU_CPUS,
+> +                       XLNX_ZYNQMP_NUM_RPU_CPUS);
+>  
+>      if (num_rpus <= 0) {
+>          /* Don't create rpu-cluster object if there's nothing to put in it */
+> @@ -221,9 +223,10 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
+>  
+>  static void xlnx_zynqmp_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
+>      int i;
+> -    int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+>  
+>      object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
+>                              sizeof(s->apu_cluster), TYPE_CPU_CLUSTER,
+> @@ -290,11 +293,12 @@ static void xlnx_zynqmp_init(Object *obj)
+>  
+>  static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      XlnxZynqMPState *s = XLNX_ZYNQMP(dev);
+>      MemoryRegion *system_memory = get_system_memory();
+>      uint8_t i;
+>      uint64_t ram_size;
+> -    int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+> +    int num_apus = MIN(ms->smp.cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
+>      const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
+>      ram_addr_t ddr_low_size, ddr_high_size;
+>      qemu_irq gic_spi[GIC_NUM_SPI_INTR];
+> @@ -456,7 +460,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>                      "RPUs just use -smp 6.");
+>      }
+>  
+> -    xlnx_zynqmp_create_rpu(s, boot_cpu, &err);
+> +    xlnx_zynqmp_create_rpu(ms, s, boot_cpu, &err);
+>      if (err) {
+>          error_propagate(errp, err);
+>          return;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 8eee1d8c59..c8cba212e4 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -29,6 +29,7 @@
+>  #include "hw/qdev-properties.h"
+>  #if !defined(CONFIG_USER_ONLY)
+>  #include "hw/loader.h"
+> +#include "hw/boards.h"
+>  #endif
+>  #include "hw/arm/arm.h"
+>  #include "sysemu/sysemu.h"
+> @@ -1194,6 +1195,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      init_cpreg_list(cpu);
+>  
+>  #ifndef CONFIG_USER_ONLY
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    unsigned int smp_cpus = ms->smp.cpus;
 > +
-> +#define NT_GNU_ABI_TAG          1       /* ABI information */
-> +#define NT_GNU_HWCAP            2       /* Synthetic hwcap information */
-> +#define NT_GNU_BUILD_ID         3       /* Build ID */
-> +#define NT_GNU_GOLD_VERSION     4       /* Version of ld.gold */
-> +#define NT_GNU_PROPERTY_TYPE_0  5       /* Program property */
+>      if (cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+>          cs->num_ases = 2;
+>  
+> @@ -1732,10 +1736,12 @@ static void cortex_a9_initfn(Object *obj)
+>  #ifndef CONFIG_USER_ONLY
+>  static uint64_t a15_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
 > +
-> +/* Values used in GNU .note.gnu.property notes
-(NT_GNU_PROPERTY_TYPE_0).  */
-> +
-> +#define GNU_PROPERTY_STACK_SIZE                 1
-> +#define GNU_PROPERTY_NO_COPY_ON_PROTECTED       2
-> +
-> +#define GNU_PROPERTY_LOPROC                     0xc0000000
-> +#define GNU_PROPERTY_HIPROC                     0xdfffffff
-> +#define GNU_PROPERTY_LOUSER                     0xe0000000
-> +#define GNU_PROPERTY_HIUSER                     0xffffffff
-> +
-> +#define GNU_PROPERTY_X86_ISA_1_USED             0xc0000000
-> +#define GNU_PROPERTY_X86_ISA_1_NEEDED           0xc0000001
-> +
-> +#define GNU_PROPERTY_X86_ISA_1_486              (1U << 0)
-> +#define GNU_PROPERTY_X86_ISA_1_586              (1U << 1)
-> +#define GNU_PROPERTY_X86_ISA_1_686              (1U << 2)
-> +#define GNU_PROPERTY_X86_ISA_1_SSE              (1U << 3)
-> +#define GNU_PROPERTY_X86_ISA_1_SSE2             (1U << 4)
-> +#define GNU_PROPERTY_X86_ISA_1_SSE3             (1U << 5)
-> +#define GNU_PROPERTY_X86_ISA_1_SSSE3            (1U << 6)
-> +#define GNU_PROPERTY_X86_ISA_1_SSE4_1           (1U << 7)
-> +#define GNU_PROPERTY_X86_ISA_1_SSE4_2           (1U << 8)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX              (1U << 9)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX2             (1U << 10)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512F          (1U << 11)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512CD         (1U << 12)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512ER         (1U << 13)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512PF         (1U << 14)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512VL         (1U << 15)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512DQ         (1U << 16)
-> +#define GNU_PROPERTY_X86_ISA_1_AVX512BW         (1U << 17)
-> +
-> +#define GNU_PROPERTY_X86_FEATURE_1_AND          0xc0000002
-> +#define GNU_PROPERTY_X86_FEATURE_1_IBT          (1U << 0)
-> +#define GNU_PROPERTY_X86_FEATURE_1_SHSTK        (1U << 1)
-> +
-> +#define GNU_PROPERTY_AARCH64_FEATURE_1_AND      0xc0000000
-> +#define GNU_PROPERTY_AARCH64_FEATURE_1_BTI      (1u << 0)
-> +#define GNU_PROPERTY_AARCH64_FEATURE_1_PAC      (1u << 1)
-> +
->  /*
->   * Physical entry point into the kernel.
->   *
-> --
-> 2.17.1
->
->
+>      /* Linux wants the number of processors from here.
+>       * Might as well set the interrupt-controller bit too.
+>       */
+> -    return ((smp_cpus - 1) << 24) | (1 << 23);
+> +    return ((ms->smp.cpus - 1) << 24) | (1 << 23);
+>  }
+>  #endif
+>  
+> -- 
+> 2.21.0
+> 
+> 
 
---000000000000b74866058a9a1f81
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On Jun 5, 2019 11:03 PM, &quot;Richard Henderson&quot; &lt;<a href=3D"mailt=
-o:richard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt; wrote:=
-<br>
-&gt;<br>
-&gt; This is a collection of related defines for notes, copied<br>
-&gt; from glibc&#39;s &lt;elf.h&gt;.=C2=A0 We&#39;re not going to use all o=
-f these<br>
-&gt; right away, but it seemed foolish to cherry-pick only the<br>
-&gt; ones we need now.<br>
-&gt;</p>
-<p dir=3D"ltr">But you are doing exactly that: cherry-picking, but this tim=
-e according to some undisclosed criterium. Why don&#39;t you state your mot=
-ivation in the commit message in a clear way? Why only these items are chos=
-en? Confusing and confused.</p>
-<p dir=3D"ltr">Regards,<br>
-Aleksandar</p>
-<p dir=3D"ltr">&gt; Signed-off-by: Richard Henderson &lt;<a href=3D"mailto:=
-richard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt;<br>
-&gt; ---<br>
-&gt; =C2=A0include/elf.h | 48 +++++++++++++++++++++++++++++++++++++++++++++=
-+++<br>
-&gt; =C2=A01 file changed, 48 insertions(+)<br>
-&gt;<br>
-&gt; diff --git a/include/elf.h b/include/elf.h<br>
-&gt; index ea7708a4ea..6f3eada36f 100644<br>
-&gt; --- a/include/elf.h<br>
-&gt; +++ b/include/elf.h<br>
-&gt; @@ -1650,6 +1650,54 @@ typedef struct elf64_shdr {<br>
-&gt; =C2=A0#define NT_ARM_HW_WATCH 0x403=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0/* ARM hardware watchpoint registers */<br>
-&gt; =C2=A0#define NT_ARM_SYSTEM_CALL=C2=A0 =C2=A0 =C2=A0 0x404=C2=A0 =C2=
-=A0/* ARM system call number */<br>
-&gt;<br>
-&gt; +/* Defined note types for GNU systems.=C2=A0 */<br>
-&gt; +<br>
-&gt; +#define NT_GNU_ABI_TAG=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0/* ABI information */<br>
-&gt; +#define NT_GNU_HWCAP=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2=C2=A0=
- =C2=A0 =C2=A0 =C2=A0/* Synthetic hwcap information */<br>
-&gt; +#define NT_GNU_BUILD_ID=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A03=C2=A0 =C2=
-=A0 =C2=A0 =C2=A0/* Build ID */<br>
-&gt; +#define NT_GNU_GOLD_VERSION=C2=A0 =C2=A0 =C2=A04=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0/* Version of ld.gold */<br>
-&gt; +#define NT_GNU_PROPERTY_TYPE_0=C2=A0 5=C2=A0 =C2=A0 =C2=A0 =C2=A0/* P=
-rogram property */<br>
-&gt; +<br>
-&gt; +/* Values used in GNU .note.gnu.property notes (NT_GNU_PROPERTY_TYPE_=
-0).=C2=A0 */<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_STACK_SIZE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A01<br>
-&gt; +#define GNU_PROPERTY_NO_COPY_ON_PROTECTED=C2=A0 =C2=A0 =C2=A0 =C2=A02=
-<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_LOPROC=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xc0000000<br>
-&gt; +#define GNU_PROPERTY_HIPROC=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xdfffffff<br>
-&gt; +#define GNU_PROPERTY_LOUSER=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xe0000000<br>
-&gt; +#define GNU_PROPERTY_HIUSER=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00xffffffff<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_USED=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A00xc0000000<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_NEEDED=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A00xc0000001<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_486=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (1U &lt;&lt; 0)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_586=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (1U &lt;&lt; 1)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_686=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (1U &lt;&lt; 2)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSE=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (1U &lt;&lt; 3)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSE2=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0(1U &lt;&lt; 4)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSE3=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0(1U &lt;&lt; 5)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSSE3=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 (1U &lt;&lt; 6)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSE4_1=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0(1U &lt;&lt; 7)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_SSE4_2=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0(1U &lt;&lt; 8)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (1U &lt;&lt; 9)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX2=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0(1U &lt;&lt; 10)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512F=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 (1U &lt;&lt; 11)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512CD=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 12)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512ER=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 13)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512PF=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 14)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512VL=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 15)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512DQ=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 16)<br>
-&gt; +#define GNU_PROPERTY_X86_ISA_1_AVX512BW=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0(1U &lt;&lt; 17)<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_X86_FEATURE_1_AND=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 0xc0000002<br>
-&gt; +#define GNU_PROPERTY_X86_FEATURE_1_IBT=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 (1U &lt;&lt; 0)<br>
-&gt; +#define GNU_PROPERTY_X86_FEATURE_1_SHSTK=C2=A0 =C2=A0 =C2=A0 =C2=A0 (=
-1U &lt;&lt; 1)<br>
-&gt; +<br>
-&gt; +#define GNU_PROPERTY_AARCH64_FEATURE_1_AND=C2=A0 =C2=A0 =C2=A0 0xc000=
-0000<br>
-&gt; +#define GNU_PROPERTY_AARCH64_FEATURE_1_BTI=C2=A0 =C2=A0 =C2=A0 (1u &l=
-t;&lt; 0)<br>
-&gt; +#define GNU_PROPERTY_AARCH64_FEATURE_1_PAC=C2=A0 =C2=A0 =C2=A0 (1u &l=
-t;&lt; 1)<br>
-&gt; +<br>
-&gt; =C2=A0/*<br>
-&gt; =C2=A0 * Physical entry point into the kernel.<br>
-&gt; =C2=A0 *<br>
-&gt; -- <br>
-&gt; 2.17.1<br>
-&gt;<br>
-&gt;<br>
-</p>
-
---000000000000b74866058a9a1f81--
+-- 
+Eduardo

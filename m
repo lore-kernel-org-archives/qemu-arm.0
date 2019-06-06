@@ -1,196 +1,493 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4789065wrg;
-        Thu, 6 Jun 2019 11:30:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzX/ROYcp17wRNkRg6B+ZYGbCIBX0STyjSoNJCEvT8jpBVKEWxrOXO/iPp4Qqm8S2ojtEwl
-X-Received: by 2002:aed:3ec5:: with SMTP id o5mr15200002qtf.199.1559845823993;
-        Thu, 06 Jun 2019 11:30:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559845823; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4954928wrg;
+        Thu, 6 Jun 2019 14:44:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwC3x1NdAjw+srbH6jeo5KnNBl8ZjB2QYftY5/bS8eF9EoT1qqpUbVtXNDhohTu5KeSjBQr
+X-Received: by 2002:aed:23b4:: with SMTP id j49mr18315970qtc.112.1559857452992;
+        Thu, 06 Jun 2019 14:44:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559857452; cv=none;
         d=google.com; s=arc-20160816;
-        b=am1PZextsqTIS7jBsWEwCfDs608uhIK3R96m5QLLGrNxvpudSEvG6yGhTguZGkN8jL
-         +5tck1fkKd2Yg0T8XtqMOMUtuXGblJaoVrhe2zLCYIzjod83KSTPdNKwn/NQ+ZzcTM41
-         JQtXWyEMaNtE7/78yih89jfXJl7C7tB8ODNtAeFOXZhgJ3ZxW0Vm6iWKQlRz8w/HEdN2
-         +ChzIzIKnE16NT9oIx+AWiYOxNtJgiSwYdpb8EZI2WL5QfWjc/lSakVTR49ep7tTXV5x
-         mF3Zw/jDGsmq+7RppN5fIuBku5YruLUZR42buJAEyEo6ameX4Nacf5525xlkS7xBF2qA
-         BV5w==
+        b=rVWfJE/hatiliz5G7O21ihITWMO6Sa6oDuhqnL7v8TOKC3dL0k/iXswg0C9fWuMcx3
+         jV+xm7O8t4OETWnJLGo5XDyPzWWmAI0QM8pRUON8MJ/lpfAZLDqV7KkuHKsjcXQKnk3O
+         3l9uMzGmpgXjjcChF4SAuqcIDFC1zAYRBkr3UTgoac+4jwM9NX/SPfDsuw5Q8Bas8SCo
+         kwm6TRzUEki6iCUtRFKOTDIc3tmC12HWoM/BSyH2NR9q3Eo1S542xtBcaOTuKxFZ1KHo
+         3Hdi5Z06HMVHEHwQsO4X5taUaUR82nSsZQGG20QFzAaCFpWXsymlpjyCi4+iWR38g79K
+         rQpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=WQo3rjRU5MP6w0qrhyrGK6SNR8Cp+xAv+0i5Hwxi4pw=;
-        b=R7EziOVdPb5Dg3Hf/35rKiHCzv+1jueF75jyhCZcaWky7goExhhD7hPclyqcI5oHGJ
-         NpO5G/sdIkcnA2nzZLCz1v2U/oDsnj7eo9zQ7dTQmWtnPbTGE03QOeRRgNnu4rHOLrwU
-         H8VVY0SnUUVSjcotlqAcjOHzPqIeq6gd5DDF7TIKcUCmfKXUWWBeFfv4Xhc+PeC1gp86
-         D6t+4AIKyXjaFffc0SAnAVlUFynncxg4cgFrT+ozsJBvmd4srUFI5MPr2vv1Fp46L30O
-         R1WBsEzKi+uHT0iWEwQmGdUFrpoS3rhvGZv49c6vw+aQksAGfAUKPEQCge4AjoJSFhk4
-         67GQ==
+         :content-transfer-encoding:message-id:content-language:in-reply-to
+         :mime-version:user-agent:date:from:references:to;
+        bh=FTL7BO1ZnLsg62qoRDuGjn259tCiNrX+IIJ7y5io9nI=;
+        b=DlvDwErsF3G8iMnkHWFQbjSN/+42wPYXAyyWzB0UKKm9iXemD9LsNhg5KznAm+KMRv
+         Z+Ho8PjXVgcd7EvMtZExNSQVTB6XvqLDOSfOdWEvQmmMbWZfkiolAxEGVywQVVfq4bwr
+         83FRFfSxa+ujSrlBRPHJx5VivSFgLLHtNx7XS3SPeXxsezyJnW26MGBDJcyJldrstNJ4
+         /cyqtZcW1rLdCifK1Jnmi/Gjry4KXyLgRbssXVuP1oxYe/MSBRJyhh+4C5hnbBy3YW70
+         iWiJBU06ph2uuclmQOaW8gj14G2QVz+5xk131oZlMgXNee8tPRClgeknDvWfhimi+ZuH
+         7d4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si332509qkg.11.2019.06.06.11.30.23
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
+        by mx.google.com with ESMTPS id 20si117100qtu.230.2019.06.06.14.44.12
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Jun 2019 11:30:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Jun 2019 14:44:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:36628 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYx9b-00032B-Im
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 14:30:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57484)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hYx9T-00031u-7O
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 14:30:16 -0400
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:44216 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZ0BA-0006W7-3F
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 17:44:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55348)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <eajames@linux.ibm.com>) id 1hZ09k-0005nT-0N
+ for qemu-devel@nongnu.org; Thu, 06 Jun 2019 17:42:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1hYx9R-000625-A8
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 14:30:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53620)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <crosa@redhat.com>)
-	id 1hYx9P-0005V2-8c; Thu, 06 Jun 2019 14:30:12 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 034AC81DE3;
-	Thu,  6 Jun 2019 18:29:34 +0000 (UTC)
-Received: from dhcp-17-47.bos.redhat.com (dhcp-17-47.bos.redhat.com
-	[10.18.17.47])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C9FEF7DFF6;
-	Thu,  6 Jun 2019 18:29:27 +0000 (UTC)
-Date: Thu, 6 Jun 2019 14:29:26 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20190606182926.GA4501@dhcp-17-47.bos.redhat.com>
-References: <20190520220635.10961-1-f4bug@amsat.org>
-	<20190520220635.10961-3-f4bug@amsat.org>
-	<20190605160659.GB7080@localhost.localdomain>
-	<20190605204323.GF22416@habkost.net>
+ (envelope-from <eajames@linux.ibm.com>) id 1hZ09h-0005mq-PD
+ for qemu-devel@nongnu.org; Thu, 06 Jun 2019 17:42:43 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:42378
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eajames@linux.ibm.com>)
+ id 1hZ09h-0005N0-Jk
+ for qemu-devel@nongnu.org; Thu, 06 Jun 2019 17:42:41 -0400
+Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x56LgKek098540
+ for <qemu-devel@nongnu.org>; Thu, 6 Jun 2019 17:42:33 -0400
+Received: from e14.ny.us.ibm.com (e14.ny.us.ibm.com [129.33.205.204])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2sy9y2am3p-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-devel@nongnu.org>; Thu, 06 Jun 2019 17:42:33 -0400
+Received: from localhost
+ by e14.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <qemu-devel@nongnu.org> from <eajames@linux.ibm.com>;
+ Thu, 6 Jun 2019 22:42:33 +0100
+Received: from b01cxnp22034.gho.pok.ibm.com (9.57.198.24)
+ by e14.ny.us.ibm.com (146.89.104.201) with IBM ESMTP SMTP Gateway: Authorized
+ Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Thu, 6 Jun 2019 22:42:30 +0100
+Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
+ [9.57.199.107])
+ by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x56LgTZR27132168
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 6 Jun 2019 21:42:29 GMT
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E4BF4124055;
+ Thu,  6 Jun 2019 21:42:28 +0000 (GMT)
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 74332124053;
+ Thu,  6 Jun 2019 21:42:28 +0000 (GMT)
+Received: from [9.85.223.174] (unknown [9.85.223.174])
+ by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu,  6 Jun 2019 21:42:28 +0000 (GMT)
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
+References: <1559599768-9176-1-git-send-email-eajames@linux.ibm.com>
+ <8508467b-c7fd-e09b-4323-44631d25ff0e@kaod.org>
+From: Eddie James <eajames@linux.ibm.com>
+Date: Thu, 6 Jun 2019 16:42:28 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190605204323.GF22416@habkost.net>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 06 Jun 2019 18:29:44 +0000 (UTC)
+In-Reply-To: <8508467b-c7fd-e09b-4323-44631d25ff0e@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+x-cbid: 19060621-0052-0000-0000-000003CC69F3
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00011225; HX=3.00000242; KW=3.00000007;
+ PH=3.00000004; SC=3.00000286; SDB=6.01214231; UDB=6.00638253; IPR=6.00995311; 
+ MB=3.00027212; MTD=3.00000008; XFM=3.00000015; UTC=2019-06-06 21:42:31
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19060621-0053-0000-0000-000061369576
+Message-Id: <d1227637-4c40-53de-b106-80725837556b@linux.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-06-06_14:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1906060146
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] BootLinuxConsoleTest: Test
- the SmartFusion2 board
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-MIME-Autoconverted: from 8bit to quoted-printable by
+ mx0b-001b2d01.pphosted.com id x56LgKek098540
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-devel] [PATCH] hw: misc: Add Aspeed XDMA device
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Alistair Francis <alistair@alistair23.me>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TuL2g9cl0aK+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ joel@jms.id.au
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: x/o/o70oswOb
 
-On Wed, Jun 05, 2019 at 05:43:23PM -0300, Eduardo Habkost wrote:
-> On Wed, Jun 05, 2019 at 12:06:59PM -0400, Cleber Rosa wrote:
-> > On Tue, May 21, 2019 at 12:06:35AM +0200, Philippe Mathieu-Daud=E9 wr=
-ote:
-> > > Similar to the x86_64/pc test, it boots a Linux kernel on an
-> > > Emcraft board and verify the serial is working.
-> > >=20
-> > > If ARM is a target being built, "make check-acceptance" will
-> > > automatically include this test by the use of the "arch:arm" tags.
-> > >=20
-> > > Alternatively, this test can be run using:
-> > >=20
-> > >   $ avocado run -t arch:arm tests/acceptance
-> > >   $ avocado run -t machine:emcraft-sf2 tests/acceptance
-> > >
-> >=20
-> > The pattern accepted as a tag currently doesn't include a dash, see:
-> >=20
-> >    https://avocado-framework.readthedocs.io/en/68.0/ReferenceGuide.ht=
-ml#docstring-directives-rules
-> >=20
->=20
-> Why isn't this causing test jobs to fail?
 
-Because docstring directives are searched for "gracefully", that is,
-if it doesn't match the pattern, it's not considered a docstring
-directive.
-
-Also, there's nothing in the jobs that require or check for that
-specific machine tag.  The "check-acceptance" rule uses the built
-targets, and adds "arch:<$TARGET>" tags to the command line.
-
-Now, if one run this (as exemplified in the commit message):
-
-  $ avocado run -t machine:emcraft-sf2 tests/acceptance
-
-The *tag* failure/limitation would have been noticed.  BTW, it should
-be easy to expand the docstring directive pattern and fix this
-limitation on newer Avocado versions.
-
-You can also see the parsed key/val tags with:
-
-  $ avocado list -V tests/acceptance
-
-Although only on new Avocado versions (>69.0), you can also see the
-parsed key:val tags.
-
->=20
-> This patch is already queued on python-next, should I remove it?
+On 6/6/19 1:16 AM, C=C3=A9dric Le Goater wrote:
+> Hello Eddie,
 >
-
-Or ammended it?  It's a minor issue IMO (s/-/_/).
-
->=20
-> > My suggestion is to replace the dash for an underline.  This was done
-> > on the s390 test:
-> >=20
-> >    :avocado: tags=3Dmachine:s390_ccw_virtio
->=20
-> I would love if we stopped using the docstring to store
-> machine-readable data and used Python class attributes or
-> methods, like most Python APIs do.  e.g.:
->=20
->   class MyTest(avocado.Test):
->       tags =3D {'machine':'s390-ccw-virtio'}
->=20
->       def test_my_feature(self):
->           ...
+> On 04/06/2019 00:09, Eddie James wrote:
+>> The XDMA engine embedded in the Aspeed SOCs performs PCI DMA operation=
+s
+>> between the SOC (acting as a BMC) and a host processor in a server.
+>>
+>> The XDMA engine exists on the AST2400, AST2500, and AST2600 SOCs, so
+>> enable it for all of those.
+>>
+>> Signed-off-by: Eddie James <eajames@linux.ibm.com>
+> This looks correct to me. It's sufficient to exercise the BMC driver.
 >
->=20
-> I understand the Avocado runner currently tries to not run any
-> test code at the "list" step.  But can we have a mode where it
-> will actually load the Python module and look at the class
-> objects directly, instead of trying to parse the Python code
-> without evaluating it?
->=20
-> > [...]
->=20
-> --=20
-> Eduardo
+> However, we will need to rebase on an Aspeed patchset I sent earlier :
+>
+>     http://patchwork.ozlabs.org/cover/1105343/
+>
+> I can do that and include the patch in my tree for the moment.
 
-I get your point, and I'd love to have no "no learning wheels" mode
-too.  But given that the "safe loader" was a very basic architecture
-design, and we probably wouldn't be dropping it, this means twice the
-code to maintain.
 
-I'd be interested in collecting more use cases (besides this s/-/_/)
-to better justify such an effort.
+I built and tested the model on your tree, so let me know if you want me=20
+to send that patch instead?
 
-Regards,
-- Cleber.
+
+>
+>
+> For my understanding, how can we interact with the model and pretend
+> there is a host side ?
+
+
+I have an application that can test the driver here:=20
+https://github.com/eddiejames/xdma-test
+
+But as you say there is no host side; the operations don't copy any=20
+memory anywhere. Joel suggested adding some way to copy and check some=20
+dummy memory contents, but I haven't looked into that yet.
+
+
+Thanks,
+
+Eddie
+
+
+>
+> Thanks,
+>
+> C.
+>
+>> ---
+>>   hw/arm/aspeed_soc.c           |  14 ++++
+>>   hw/misc/Makefile.objs         |   2 +-
+>>   hw/misc/aspeed_xdma.c         | 156 ++++++++++++++++++++++++++++++++=
+++++++++++
+>>   include/hw/arm/aspeed_soc.h   |   2 +
+>>   include/hw/misc/aspeed_xdma.h |  31 +++++++++
+>>   5 files changed, 204 insertions(+), 1 deletion(-)
+>>   create mode 100644 hw/misc/aspeed_xdma.c
+>>   create mode 100644 include/hw/misc/aspeed_xdma.h
+>>
+>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>> index faff42b..b25bb18 100644
+>> --- a/hw/arm/aspeed_soc.c
+>> +++ b/hw/arm/aspeed_soc.c
+>> @@ -31,6 +31,7 @@
+>>   #define ASPEED_SOC_VIC_BASE         0x1E6C0000
+>>   #define ASPEED_SOC_SDMC_BASE        0x1E6E0000
+>>   #define ASPEED_SOC_SCU_BASE         0x1E6E2000
+>> +#define ASPEED_SOC_XDMA_BASE        0x1E6E7000
+>>   #define ASPEED_SOC_SRAM_BASE        0x1E720000
+>>   #define ASPEED_SOC_TIMER_BASE       0x1E782000
+>>   #define ASPEED_SOC_WDT_BASE         0x1E785000
+>> @@ -159,6 +160,9 @@ static void aspeed_soc_init(Object *obj)
+>>  =20
+>>       sysbus_init_child_obj(obj, "ftgmac100", OBJECT(&s->ftgmac100),
+>>                             sizeof(s->ftgmac100), TYPE_FTGMAC100);
+>> +
+>> +    sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s->xd=
+ma),
+>> +                          TYPE_ASPEED_XDMA);
+>>   }
+>>  =20
+>>   static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>> @@ -298,6 +302,16 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+>>       sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH=
+1_BASE);
+>>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
+>>                          qdev_get_gpio_in(DEVICE(&s->vic), 2));
+>> +
+>> +    /* XDMA */
+>> +    object_property_set_bool(OBJECT(&s->xdma), true, "realized", &err=
+);
+>> +    if (err) {
+>> +        error_propagate(errp, err);
+>> +        return;
+>> +    }
+>> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->xdma), 0, ASPEED_SOC_XDMA_BASE=
+);
+>> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->xdma), 0,
+>> +                       qdev_get_gpio_in(DEVICE(&s->vic), 6));
+>>   }
+>>  =20
+>>   static void aspeed_soc_class_init(ObjectClass *oc, void *data)
+>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>> index 77b9df9..a4483af 100644
+>> --- a/hw/misc/Makefile.objs
+>> +++ b/hw/misc/Makefile.objs
+>> @@ -74,7 +74,7 @@ obj-$(CONFIG_ARMSSE_MHU) +=3D armsse-mhu.o
+>>  =20
+>>   obj-$(CONFIG_PVPANIC) +=3D pvpanic.o
+>>   obj-$(CONFIG_AUX) +=3D auxbus.o
+>> -obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
+>> +obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o aspeed_xdma.=
+o
+>>   obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o
+>>   obj-$(CONFIG_NRF51_SOC) +=3D nrf51_rng.o
+>>  =20
+>> diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
+>> new file mode 100644
+>> index 0000000..fe3a32e
+>> --- /dev/null
+>> +++ b/hw/misc/aspeed_xdma.c
+>> @@ -0,0 +1,156 @@
+>> +/*
+>> + * ASPEED XDMA Controller
+>> + * Eddie James <eajames@linux.ibm.com>
+>> + *
+>> + * Copyright (C) 2019 IBM Corp
+>> + * SPDX-License-Identifer: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/log.h"
+>> +#include "qemu/error-report.h"
+>> +#include "hw/misc/aspeed_xdma.h"
+>> +#include "qapi/error.h"
+>> +
+>> +#define XDMA_BMC_CMDQ_ADDR         0x10
+>> +#define XDMA_BMC_CMDQ_ENDP         0x14
+>> +#define XDMA_BMC_CMDQ_WRP          0x18
+>> +#define  XDMA_BMC_CMDQ_W_MASK      0x0003FFFF
+>> +#define XDMA_BMC_CMDQ_RDP          0x1C
+>> +#define  XDMA_BMC_CMDQ_RDP_MAGIC   0xEE882266
+>> +#define XDMA_IRQ_ENG_CTRL          0x20
+>> +#define  XDMA_IRQ_ENG_CTRL_US_COMP BIT(4)
+>> +#define  XDMA_IRQ_ENG_CTRL_DS_COMP BIT(5)
+>> +#define  XDMA_IRQ_ENG_CTRL_W_MASK  0xBFEFF07F
+>> +#define XDMA_IRQ_ENG_STAT          0x24
+>> +#define  XDMA_IRQ_ENG_STAT_US_COMP BIT(4)
+>> +#define  XDMA_IRQ_ENG_STAT_DS_COMP BIT(5)
+>> +#define  XDMA_IRQ_ENG_STAT_RESET   0xF8000000
+>> +
+>> +#define TO_REG(addr) ((addr) / sizeof(uint32_t))
+>> +
+>> +static uint64_t aspeed_xdma_read(void *opaque, hwaddr addr, unsigned =
+int size)
+>> +{
+>> +    uint32_t val =3D 0;
+>> +    AspeedXDMAState *xdma =3D opaque;
+>> +
+>> +    if (addr < ASPEED_XDMA_REG_SIZE) {
+>> +        val =3D xdma->regs[TO_REG(addr)];
+>> +    }
+>> +
+>> +    return (uint64_t)val;
+>> +}
+>> +
+>> +static void aspeed_xdma_write(void *opaque, hwaddr addr, uint64_t val=
+,
+>> +                              unsigned int size)
+>> +{
+>> +    unsigned int idx;
+>> +    uint32_t val32 =3D (uint32_t)val;
+>> +    AspeedXDMAState *xdma =3D opaque;
+>> +
+>> +    if (addr >=3D ASPEED_XDMA_REG_SIZE) {
+>> +        return;
+>> +    }
+>> +
+>> +    switch (addr) {
+>> +    case XDMA_BMC_CMDQ_ENDP:
+>> +        xdma->regs[TO_REG(addr)] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
+>> +        break;
+>> +    case XDMA_BMC_CMDQ_WRP:
+>> +        idx =3D TO_REG(addr);
+>> +        xdma->regs[idx] =3D val32 & XDMA_BMC_CMDQ_W_MASK;
+>> +        xdma->regs[TO_REG(XDMA_BMC_CMDQ_RDP)] =3D xdma->regs[idx];
+>> +
+>> +        if (xdma->bmc_cmdq_readp_set) {
+>> +            xdma->bmc_cmdq_readp_set =3D 0;
+>> +        } else {
+>> +            xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] |=3D
+>> +                XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP=
+;
+>> +
+>> +            if (xdma->regs[TO_REG(XDMA_IRQ_ENG_CTRL)] &
+>> +                (XDMA_IRQ_ENG_CTRL_US_COMP | XDMA_IRQ_ENG_CTRL_DS_COM=
+P))
+>> +                qemu_irq_raise(xdma->irq);
+>> +        }
+>> +        break;
+>> +    case XDMA_BMC_CMDQ_RDP:
+>> +        if (val32 =3D=3D XDMA_BMC_CMDQ_RDP_MAGIC) {
+>> +            xdma->bmc_cmdq_readp_set =3D 1;
+>> +        }
+>> +        break;
+>> +    case XDMA_IRQ_ENG_CTRL:
+>> +        xdma->regs[TO_REG(addr)] =3D val32 & XDMA_IRQ_ENG_CTRL_W_MASK=
+;
+>> +        break;
+>> +    case XDMA_IRQ_ENG_STAT:
+>> +        idx =3D TO_REG(addr);
+>> +        if (val32 & (XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS=
+_COMP)) {
+>> +            xdma->regs[TO_REG(addr)] &=3D
+>> +                ~(XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_CO=
+MP);
+>> +            qemu_irq_lower(xdma->irq);
+>> +        }
+>> +        break;
+>> +    default:
+>> +        xdma->regs[TO_REG(addr)] =3D val32;
+>> +        break;
+>> +    }
+>> +}
+>> +
+>> +static const MemoryRegionOps aspeed_xdma_ops =3D {
+>> +    .read =3D aspeed_xdma_read,
+>> +    .write =3D aspeed_xdma_write,
+>> +    .endianness =3D DEVICE_NATIVE_ENDIAN,
+>> +    .valid.min_access_size =3D 4,
+>> +    .valid.max_access_size =3D 4,
+>> +};
+>> +
+>> +static void aspeed_xdma_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>> +    AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
+>> +
+>> +    sysbus_init_irq(sbd, &xdma->irq);
+>> +    memory_region_init_io(&xdma->iomem, OBJECT(xdma), &aspeed_xdma_op=
+s, xdma,
+>> +                          TYPE_ASPEED_XDMA, ASPEED_XDMA_MEM_SIZE);
+>> +    sysbus_init_mmio(sbd, &xdma->iomem);
+>> +}
+>> +
+>> +static void aspeed_xdma_reset(DeviceState *dev)
+>> +{
+>> +    AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
+>> +
+>> +    xdma->bmc_cmdq_readp_set =3D 0;
+>> +    memset(xdma->regs, 0, ASPEED_XDMA_REG_SIZE);
+>> +    xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] =3D XDMA_IRQ_ENG_STAT_RESET=
+;
+>> +
+>> +    qemu_irq_lower(xdma->irq);
+>> +}
+>> +
+>> +static const VMStateDescription aspeed_xdma_vmstate =3D {
+>> +    .name =3D TYPE_ASPEED_XDMA,
+>> +    .version_id =3D 1,
+>> +    .fields =3D (VMStateField[]) {
+>> +        VMSTATE_UINT32_ARRAY(regs, AspeedXDMAState, ASPEED_XDMA_NUM_R=
+EGS),
+>> +        VMSTATE_END_OF_LIST(),
+>> +    },
+>> +};
+>> +
+>> +static void aspeed_xdma_class_init(ObjectClass *classp, void *data)
+>> +{
+>> +    DeviceClass *dc =3D DEVICE_CLASS(classp);
+>> +
+>> +    dc->realize =3D aspeed_xdma_realize;
+>> +    dc->reset =3D aspeed_xdma_reset;
+>> +    dc->vmsd =3D &aspeed_xdma_vmstate;
+>> +}
+>> +
+>> +static const TypeInfo aspeed_xdma_info =3D {
+>> +    .name          =3D TYPE_ASPEED_XDMA,
+>> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+>> +    .instance_size =3D sizeof(AspeedXDMAState),
+>> +    .class_init    =3D aspeed_xdma_class_init,
+>> +};
+>> +
+>> +static void aspeed_xdma_register_type(void)
+>> +{
+>> +    type_register_static(&aspeed_xdma_info);
+>> +}
+>> +type_init(aspeed_xdma_register_type);
+>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+>> index 836b2ba..0329247 100644
+>> --- a/include/hw/arm/aspeed_soc.h
+>> +++ b/include/hw/arm/aspeed_soc.h
+>> @@ -20,6 +20,7 @@
+>>   #include "hw/ssi/aspeed_smc.h"
+>>   #include "hw/watchdog/wdt_aspeed.h"
+>>   #include "hw/net/ftgmac100.h"
+>> +#include "hw/misc/aspeed_xdma.h"
+>>  =20
+>>   #define ASPEED_SPIS_NUM  2
+>>   #define ASPEED_WDTS_NUM  3
+>> @@ -40,6 +41,7 @@ typedef struct AspeedSoCState {
+>>       AspeedSDMCState sdmc;
+>>       AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>>       FTGMAC100State ftgmac100;
+>> +    AspeedXDMAState xdma;
+>>   } AspeedSoCState;
+>>  =20
+>>   #define TYPE_ASPEED_SOC "aspeed-soc"
+>> diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_xd=
+ma.h
+>> new file mode 100644
+>> index 0000000..d19e9a7
+>> --- /dev/null
+>> +++ b/include/hw/misc/aspeed_xdma.h
+>> @@ -0,0 +1,31 @@
+>> +/*
+>> + * ASPEED XDMA Controller
+>> + * Eddie James <eajames@linux.ibm.com>
+>> + *
+>> + * Copyright (C) 2019 IBM Corp.
+>> + * SPDX-License-Identifer: GPL-2.0-or-later
+>> + */
+>> +
+>> +#ifndef ASPEED_XDMA_H
+>> +#define ASPEED_XDMA_H
+>> +
+>> +#include "hw/sysbus.h"
+>> +
+>> +#define TYPE_ASPEED_XDMA "aspeed.xdma"
+>> +#define ASPEED_XDMA(obj) OBJECT_CHECK(AspeedXDMAState, (obj), TYPE_AS=
+PEED_XDMA)
+>> +
+>> +#define ASPEED_XDMA_MEM_SIZE 0x1000
+>> +#define ASPEED_XDMA_NUM_REGS (ASPEED_XDMA_REG_SIZE / sizeof(uint32_t)=
+)
+>> +#define ASPEED_XDMA_REG_SIZE 0x7C
+>> +
+>> +typedef struct AspeedXDMAState {
+>> +    SysBusDevice parent;
+>> +
+>> +    MemoryRegion iomem;
+>> +    qemu_irq irq;
+>> +
+>> +    char bmc_cmdq_readp_set;
+>> +    uint32_t regs[ASPEED_XDMA_NUM_REGS];
+>> +} AspeedXDMAState;
+>> +
+>> +#endif /* ASPEED_XDMA_H */
+>>
+

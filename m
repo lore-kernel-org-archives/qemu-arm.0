@@ -1,97 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4756968wrg;
-        Thu, 6 Jun 2019 10:57:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxivYsCLhmGHwuNSGsOM1IwUyet6R3qSpZn2ZS9SSjFiw4xp3R0ndKHtpfz64A7WUbUR2dT
-X-Received: by 2002:ac8:6898:: with SMTP id m24mr41316644qtq.362.1559843824956;
-        Thu, 06 Jun 2019 10:57:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559843824; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4757236wrg;
+        Thu, 6 Jun 2019 10:57:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwhX0f//KVqs9V+H1S0W9qFCI4vRKOX2XhaC3HENPpW8sUqM7geXF8aYGEvOGPSx4nCqgxy
+X-Received: by 2002:aed:2a43:: with SMTP id k3mr42283811qtf.301.1559843843387;
+        Thu, 06 Jun 2019 10:57:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559843843; cv=none;
         d=google.com; s=arc-20160816;
-        b=qsw06g57wzzXHxYo50nVZq8HpgPfZDwNGsyZEmZe5vgCjG9qOD0ozvKxZF/7a7Oi1q
-         V9UpCDNiUbPtrb/622wpvcenR+elSfrzIKQtxtzcwNMffjXQP0flNGL24AzhWOP2wFed
-         rqFXwHcGYN85FTWGLInfsuHO3se3oiTpN5VKsjKkCskeUZgdYY9MVifYx8pqhZ7QiEus
-         n2PJufO5WZA00atRrKiDHm2Ywnel2nESPbk+SmWDaUKfW7UVLFY/metTaTXOBlnwdXMy
-         hrVSTVa8Zkx1dx8jPNCp5+LncKJf1ZRJohNLB9Q/mBVQcDwCP6JfaAkpTiUsZHdurQ/p
-         fpJQ==
+        b=wXeVCzE9yzaZf8UthL7sLcSrkrQZ9QGMklrgATdKL3OqjXGvnPwtVDjxxbq/Ls5F0j
+         /PSuwdNnbN6MWMXdEjEohNkG/t0POfNzVmj0m+cCdgVQRmBCCr1q11/HLhTTNz2nNYoF
+         IeI/YNEIBjGXM0MaIPNTUCPZxPlMOpYsXNsYkCeRJII4aQcW4vt91ISQKc0IkGpZOCYW
+         uUABO2wcZ+/zcg5tVZYiLCd6LO1n+4Xa/PqQmkvOHDfr+Vh2/2ik/Alnbq14diJqxNYC
+         zZ5DCABGtiPXW1cjmdshdpZN9EO/YVgGESm0+JWariNZgK+Ta6ajhUOiIgRm6kTfNG23
+         j2XQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
-        b=CnfVFQ5XRu1onRkWsH+N7eh0Kj7R+bGHMzHnP+tUB+nSke1+PXkSE/JE1lLlQZdWBE
-         OTGf1lAy4fRHrFXOrC9rXlxcHHdm1xfqmBDobWWJwoRo/QJNoUFCXfBIt+eIlJf1Wwtq
-         HE591baoWwDAa+BUYwZhlAvvLnZhkQpt2HST2BXA4Z8/MOl7LJB692Oaw+xHE91sgcvw
-         G0iiYMvovPW3WrH9IENAWMrt8rorhh/IhciaOkxWowK3ek+eJXyjIH/vH8+U5EUsxsxb
-         bim6TX3v6Z87uEgZn4Jkljq6r3JBlyKiLqVe0FkRu+Zf/3x5ghBV+fvyM/1tq6qPcfuQ
-         LZDA==
+        bh=nNQjd9/+a2DdLghORqFl+Muzj1ZfiiJpWnJhjxjLPOE=;
+        b=qcb3WHdtQC9E7saSuRqb1VtEXAM/B7mUBMzWLKqTgSmmiz4j9LpL9zTAbCC0UbfAOd
+         nn9eCTGLG5CtHshTkkqrsGvrcF/ZXx5uAPGNBDaf6bShnMCfz420e6lJDGqjntLBjjKm
+         JfuRaq1cpjfgsmowmQMRTq9ufnt7aiwA793jvcMnXBuyutz+k9zaSMgEnXGYzY0zsVDr
+         vOPUdhZaCb+hVI7huQDd2sE1aMTw91S7RpJnjSY9YR7YhezR24Dt8M7ImJCj/wEnKjW1
+         hOht9/K1/9YZGmTRGXpWJTGSqNHGl8WE83L5STsw52Hjf2ok11JikypoEwPkFCQoeBN0
+         SRcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="bN/xsLRz";
+       dkim=fail header.i=@linaro.org header.s=google header.b=AeivwsWv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17si2037972qkf.186.2019.06.06.10.57.04
+        by mx.google.com with ESMTPS id q8si2442274qtf.381.2019.06.06.10.57.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Jun 2019 10:57:04 -0700 (PDT)
+        Thu, 06 Jun 2019 10:57:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="bN/xsLRz";
+       dkim=fail header.i=@linaro.org header.s=google header.b=AeivwsWv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:36043 helo=lists.gnu.org)
+Received: from localhost ([127.0.0.1]:36049 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYwdM-0004q7-Ct
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:57:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44798)
+	id 1hYwde-00055T-QD
+	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:57:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44838)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwU5-0004Qs-6y
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:30 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwU7-0004T5-2w
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYwU2-00041b-B7
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:27 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38757)
+	(envelope-from <peter.maydell@linaro.org>) id 1hYwU5-00048g-Sv
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:30 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50484)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hYwTz-0003GI-R5
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:24 -0400
-Received: by mail-wr1-x442.google.com with SMTP id d18so3338251wrs.5
-	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:46:47 -0700 (PDT)
+	id 1hYwU3-00039C-Pp
+	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:47:28 -0400
+Received: by mail-wm1-x342.google.com with SMTP id f204so814394wme.0
+	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:46:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
-	b=bN/xsLRzT8Q84/gf511fQfvi31EeHwKExgk767yOQlU8rI8utj7kWWk8Prx5bBTCFe
-	bqxp8zuGngk5WDInm13pyrOagQT9xOaMapl1GMJSql/AhXgly34CjJNrEb/5oQsPeJgK
-	1OyYle+Ehn4nu+h3Kt+hQWvYe+95rRZ1eSonlrJpvJyE8uS6EmSzRuFOBsM5vBPRrmye
-	nT7RKx/nw6y47GOZFPndFvm0C969LpiMMNyW+DxgOZVmkxwIDCQHLEjHqHsBVQUnCubl
-	gX9Oq2qTQu2TdMp5ULOXsS/LPeMTiLNCKX941Qg05TrY1LlEp20Fx8dfwWb+OVNrOFOe
-	ApTg==
+	bh=nNQjd9/+a2DdLghORqFl+Muzj1ZfiiJpWnJhjxjLPOE=;
+	b=AeivwsWv6H3IMBY0RADPYPO1lUXNcmCV50EZlViQj9rpGM/zN5493L4aRJAyIaNeOQ
+	Yk2k7qHXCL3EBHhm+2MP/CTSx7N04cQHVYJCjw2vdVFdrm0cV8X27GlCoR4O/enGbfW6
+	dceQC6n7721RoOitNI4VdXQsDYDs6kRXhinqLrGbGet3rek38chCJDlvg5GYjX8lUIhy
+	zTRwZdi0U/vFTEdxajMNQ4xN9YfNnEGwTbWt0hJ0sP0cXhfiu4rhlbXam1ZjOW3yjLcB
+	xO9N6UZdylICDPYeRQaUyT8sLJZCIlyF0BmRanSelP3XkXEk/8eI6NyQlxrsSagEdeH/
+	u0UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references:mime-version:content-transfer-encoding;
-	bh=tJUsST+aGlhOT8pqIZXKH+UcDOpMGU+FNgpH8UqWdjI=;
-	b=DzaYOeqfWZulifGreacO4D/kf6R3E0F7U/gGCpQ4ayBGpC62q8vaZrKxm/nCZSPrUp
-	FkH0gWRQnqq2yvykrETXTTkqDJyDgVrXhEnm+4j+8/Vf3tAjfmTUM4ndN+R0mPLxp48y
-	ZCy5IvE8dsIVGW4ZV0yszeJtcC/+8GJJepp7h0ScxmVIL4nrpXCVhZ/dW06RYXEOoYn6
-	NYJwzYs0Akagz27rqVYiazL8PFyNTakpurIN8dnz0GYIexFuGnqd95uq7TmCE/XHrdhD
-	AOYwANTGAQXRYfnQSQaWS6ldNgKWlwbAWfbI1S8o3a0UtzLY+gGApRQJrvoBK6NsBwGs
-	vRpw==
-X-Gm-Message-State: APjAAAX/hNtGIJWixVhOZKdQQas1K44CBo8pUu4AHkASEa0OM4UgQliB
-	aiR5WBARHSjzzD/CKNwlF43AsokP8xJJQg==
-X-Received: by 2002:a5d:42c5:: with SMTP id t5mr15941360wrr.5.1559843206924;
-	Thu, 06 Jun 2019 10:46:46 -0700 (PDT)
+	bh=nNQjd9/+a2DdLghORqFl+Muzj1ZfiiJpWnJhjxjLPOE=;
+	b=X0WRnipxRn2r/VWNvslDgkBxBradon8dQ/taoyxo+0x7mmWGOlA15cf0VzE1sH7tv+
+	PcnHLwTLHgOAq5jl2gnnL1uoOAGwNs9itE+TJBUT6SJhigYTJsJSG1KqYvWcWjtJ9Vwt
+	xKgMBCLYPMdtYaa8UO1wZn6xcZtzBLp+iYvMiIviX0CUJyNoo6BLnwzDG6P5z6dyYdyw
+	LI2/GYsAKK4L+vVNeM6y3b494/qmkogHUXGUfvmt2aivW/t2wtYH2AW61nMnNgnqX5Ne
+	QDMXC7bbqk22iVvj/43hz8tJkMYXdE/yGXHe0fiVY2lr7aBSEhF5RVL0vURHHo1t3/oA
+	SkpQ==
+X-Gm-Message-State: APjAAAW+iY7xvCA11mDH3vLbReBaeeEmw/YGCexlY0VwIq5JTGz9vnE9
+	X15c2rAsa9NZDvbhtB0jii4oWuzupHlr7A==
+X-Received: by 2002:a1c:305:: with SMTP id 5mr824561wmd.101.1559843198881;
+	Thu, 06 Jun 2019 10:46:38 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
 	by smtp.gmail.com with ESMTPSA id
-	z135sm2596784wmc.45.2019.06.06.10.46.45
+	z135sm2596784wmc.45.2019.06.06.10.46.38
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Jun 2019 10:46:46 -0700 (PDT)
+	Thu, 06 Jun 2019 10:46:38 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu,  6 Jun 2019 18:45:59 +0100
-Message-Id: <20190606174609.20487-33-peter.maydell@linaro.org>
+Date: Thu,  6 Jun 2019 18:45:52 +0100
+Message-Id: <20190606174609.20487-26-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190606174609.20487-1-peter.maydell@linaro.org>
 References: <20190606174609.20487-1-peter.maydell@linaro.org>
@@ -99,9 +99,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-arm] [PATCH 32/42] target/arm: Convert VMOV (register) to
- decodetree
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH 25/42] target/arm: Convert VSUB to decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,85 +115,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yMhaI/5uxg53
+X-TUID: jwAsE/IRKUtf
+
+Convert the VSUB instruction to decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
  target/arm/translate-vfp.inc.c | 10 ++++++++++
- target/arm/translate.c         |  8 +-------
+ target/arm/translate.c         |  6 +-----
  target/arm/vfp.decode          |  5 +++++
- 3 files changed, 16 insertions(+), 7 deletions(-)
+ 3 files changed, 16 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index ae2f77a873b..a7e4ae31985 100644
+index 14aeb25f597..12da3b8acb8 100644
 --- a/target/arm/translate-vfp.inc.c
 +++ b/target/arm/translate-vfp.inc.c
-@@ -1889,6 +1889,16 @@ static bool trans_VMOV_imm_dp(DisasContext *s, arg_VMOV_imm_dp *a)
-     return true;
- }
- 
-+static bool trans_VMOV_reg_sp(DisasContext *s, arg_VMOV_reg_sp *a)
-+{
-+    return do_vfp_2op_sp(s, tcg_gen_mov_i32, a->vd, a->vm);
-+}
-+
-+static bool trans_VMOV_reg_dp(DisasContext *s, arg_VMOV_reg_dp *a)
-+{
-+    return do_vfp_2op_dp(s, tcg_gen_mov_i64, a->vd, a->vm);
-+}
-+
- static bool trans_VABS_sp(DisasContext *s, arg_VABS_sp *a)
+@@ -1461,3 +1461,13 @@ static bool trans_VADD_dp(DisasContext *s, arg_VADD_sp *a)
  {
-     return do_vfp_2op_sp(s, gen_helper_vfp_abss, a->vd, a->vm);
+     return do_vfp_3op_dp(s, gen_helper_vfp_addd, a->vd, a->vn, a->vm, false);
+ }
++
++static bool trans_VSUB_sp(DisasContext *s, arg_VSUB_sp *a)
++{
++    return do_vfp_3op_sp(s, gen_helper_vfp_subs, a->vd, a->vn, a->vm, false);
++}
++
++static bool trans_VSUB_dp(DisasContext *s, arg_VSUB_sp *a)
++{
++    return do_vfp_3op_dp(s, gen_helper_vfp_subd, a->vd, a->vn, a->vm, false);
++}
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index fda0962761f..639e0f5f91e 100644
+index 7fa255f6598..433f1cbf2c7 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -3090,7 +3090,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+@@ -1386,7 +1386,6 @@ static inline void gen_vfp_##name(int dp)                             \
+     tcg_temp_free_ptr(fpst);                                          \
+ }
+ 
+-VFP_OP2(sub)
+ VFP_OP2(div)
+ 
+ #undef VFP_OP2
+@@ -3110,7 +3109,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+             rn = VFP_SREG_N(insn);
+ 
+             switch (op) {
+-            case 0 ... 6:
++            case 0 ... 7:
+                 /* Already handled by decodetree */
                  return 1;
-             case 15:
-                 switch (rn) {
--                case 1 ... 3:
-+                case 0 ... 3:
-                     /* Already handled by decodetree */
-                     return 1;
-                 default:
-@@ -3103,9 +3103,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-             if (op == 15) {
-                 /* rn is opcode, encoded as per VFP_SREG_N. */
-                 switch (rn) {
--                case 0x00: /* vmov */
--                    break;
--
-                 case 0x04: /* vcvtb.f64.f16, vcvtb.f32.f16 */
-                 case 0x05: /* vcvtt.f64.f16, vcvtt.f32.f16 */
-                     /*
-@@ -3278,9 +3275,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+             default:
+@@ -3296,9 +3295,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+             for (;;) {
+                 /* Perform the calculation.  */
                  switch (op) {
-                 case 15: /* extension space */
-                     switch (rn) {
--                    case 0: /* cpy */
--                        /* no-op */
--                        break;
-                     case 4: /* vcvtb.f32.f16, vcvtb.f64.f16 */
-                     {
-                         TCGv_ptr fpst = get_fpstatus_ptr(false);
+-                case 7: /* sub: fn - fm */
+-                    gen_vfp_sub(dp);
+-                    break;
+                 case 8: /* div: fn / fm */
+                     gen_vfp_div(dp);
+                     break;
 diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-index 2780e1ed9ea..b72ab8b8067 100644
+index d911f12dfd0..de56f44efc9 100644
 --- a/target/arm/vfp.decode
 +++ b/target/arm/vfp.decode
-@@ -157,6 +157,11 @@ VMOV_imm_sp  ---- 1110 1.11 imm4h:4 .... 1010 0000 imm4l:4 \
- VMOV_imm_dp  ---- 1110 1.11 imm4h:4 .... 1011 0000 imm4l:4 \
-              vd=%vd_dp
- 
-+VMOV_reg_sp  ---- 1110 1.11 0000 .... 1010 01.0 .... \
-+             vd=%vd_sp vm=%vm_sp
-+VMOV_reg_dp  ---- 1110 1.11 0000 .... 1011 01.0 .... \
-+             vd=%vd_dp vm=%vm_dp
+@@ -132,3 +132,8 @@ VADD_sp      ---- 1110 0.11 .... .... 1010 .0.0 .... \
+              vm=%vm_sp vn=%vn_sp vd=%vd_sp
+ VADD_dp      ---- 1110 0.11 .... .... 1011 .0.0 .... \
+              vm=%vm_dp vn=%vn_dp vd=%vd_dp
 +
- VABS_sp      ---- 1110 1.11 0000 .... 1010 11.0 .... \
-              vd=%vd_sp vm=%vm_sp
- VABS_dp      ---- 1110 1.11 0000 .... 1011 11.0 .... \
++VSUB_sp      ---- 1110 0.11 .... .... 1010 .1.0 .... \
++             vm=%vm_sp vn=%vn_sp vd=%vd_sp
++VSUB_dp      ---- 1110 0.11 .... .... 1011 .1.0 .... \
++             vm=%vm_dp vn=%vn_dp vd=%vd_dp
 -- 
 2.20.1
 

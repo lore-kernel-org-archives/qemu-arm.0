@@ -1,143 +1,149 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1641461wrg;
-        Sun, 12 May 2019 01:37:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzXsbyp58dZwyVSz3Zy+/aqXjbe4ziQW/smUNyvckZWdZzYC5AyQDdaQlh20hnNhHF1aKvp
-X-Received: by 2002:ae9:e50f:: with SMTP id w15mr16460716qkf.297.1557650257246;
-        Sun, 12 May 2019 01:37:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650257; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp522033wrg;
+        Fri, 7 Jun 2019 11:54:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwvHHYlthIvXEAVjOrkEfBwJMg+tPfFV7yoYhLcG5Gr0DS4+l30k0ArNcjEfR7tOCSJjzjF
+X-Received: by 2002:ae9:edce:: with SMTP id c197mr43605114qkg.78.1559933662127;
+        Fri, 07 Jun 2019 11:54:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559933662; cv=none;
         d=google.com; s=arc-20160816;
-        b=1JGPyD5/xrc2jPfu/3XloF6moN8yGW4GPtk8fP0l55imv1zfkNT6+mY59FZn93AL6P
-         LV9BIDMLx3PMrG/y/R2Iz3wMGL38hCjqQDOINPuX5ChdOzPJxgnZq9yd+XAcFE+DiaqR
-         Rmn2Bb+DA/CKtJoTla6ePfKO/Cok6zCfLu9EcAu2TSfoOJq6B2ISrYElURPiPu+HLkY0
-         iY7UVDneTs6CfXecScdoQC3F2M1XxQ6t2ED/StSdsYtFFRXDZ5SiC2INZy6NhoIc4cbw
-         EfHL3J2MkzwqQDXv8l6QLZrZ5g4Jea0YJs82YtZfEwARoPRs8FLOKdEB3Nmg1S79Yila
-         mKFQ==
+        b=QnQ01h9zjbG6Zsj98O9IGIbbDmMbMgHY4HqudVADO7uigyKCAriH5mzKbRAQA1rega
+         P0jxeo9zfKf8x3bz2m2uZ6d932pRLVnGBKcQNIaRuGnq+XHrv+BaZuviODyW6FmK6s2J
+         gME5CaXUpHSebmd37EttYAgkh6venwXo6Zv/fyFvAVxAcxsGMR/PDMenZUO3gViZuEhb
+         wlsaQ1nXp6Rl1/T8Cg2kIMqTyUtkbtVnw8Eyiei4bVX3/w6mmXVtLw3Q8x2FA0bwy67E
+         QLyUn0GWSphvbt8r1ZKbJM4QfCT6x0+VNAwmwHJ4rU6p3RAdLaIs5xncNRO2iS9zM63N
+         dbMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=/p/0QiNY4/OqwYmVpGCXKrcwhf1tS+rVRdLmSWUhxuA=;
-        b=Rc0Lir8ZlDFftSxvyGYutk9x8DlG+IW4lqn3TYQysqaZ0z+8I6scmQCalDQmbivoiN
-         83WEd3y5e8CORrJd5MdrFFs6VecukY39lOp4xSGdh7XsbuVLHmN7m7+VYo04FcLvZPnf
-         CWamIXTfIXsCdSGPAeDDw8RYtlsRTZlwbwUUQp3uniE22f5VqMzw8eug1E5Ki1oZr2bE
-         fY05MFBOR8R2c/2AEA15mtabXSqYXShp1p6F2vapXOuwlFgA5Yk5C0iSM8LHDSP4Fmly
-         CUQ9kiY50FMMmZ/hmec5+c8BKwraLLRM6rNTwtV1I0EA0KeTeL+SD8f9wOhWWyF+zcvw
-         hddg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=FcPMB1Arg6zfPt0d37PTD3eMaTlMz5e1OvwO5yTXkwk=;
+        b=gzsnJRYr3W8OgTdTwf8lzjabOYED/OoxwpucCB9+Xx62wMk0YqCe/i6GVcRzkPPf4i
+         boRdjWswZ06YP1NLPPbSGVBd6vAN1+4fAgptgZRuWufo9h1Uw4lmTFaM0KiqYxXEvJH8
+         eKb41TlYgfMGyhzVsxBHD01HCxyRQ3RxtUD93kk2igm4ynfLOy4RI852JjK/E96GoyMy
+         zXP9uw+zd/kWw7KNBnECLYbihnHNTtg0M/PKQPTLm5sh3SNBpgFBe3e1jDxHV3Y/Kptv
+         5QY9D2Hyxex8J9Lvzb8oLcDqjUd/7q/VOyPg5xoZ7H5IC66CACKVbUUTsgRrQnnYaxQ5
+         JjBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id w64si1335403qka.94.2019.05.12.01.37.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:37:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Hec9sf6J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r139si1797877qke.88.2019.06.07.11.54.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Jun 2019 11:54:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3C29781F13;
-	Sun, 12 May 2019 08:37:36 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 571015D706;
-	Sun, 12 May 2019 08:37:30 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	armbru@redhat.com,
-	eblake@redhat.com,
-	Dave.Martin@arm.com,
-	abologna@redhat.com
-Subject: [PATCH 13/13] target/arm/kvm: host cpu: Add support for sve-vls-map
-Date: Sun, 12 May 2019 10:36:24 +0200
-Message-Id: <20190512083624.8916-14-drjones@redhat.com>
-In-Reply-To: <20190512083624.8916-1-drjones@redhat.com>
-References: <20190512083624.8916-1-drjones@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Hec9sf6J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50976 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZK0L-0006Xn-GV
+	for alex.bennee@linaro.org; Fri, 07 Jun 2019 14:54:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33164)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <richard.henderson@linaro.org>) id 1hZIet-0002Ta-CN
+ for qemu-arm@nongnu.org; Fri, 07 Jun 2019 13:28:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1hZIer-0006In-O0
+ for qemu-arm@nongnu.org; Fri, 07 Jun 2019 13:28:07 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44168)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hZIer-00066L-F4
+ for qemu-arm@nongnu.org; Fri, 07 Jun 2019 13:28:05 -0400
+Received: by mail-oi1-x243.google.com with SMTP id e189so1957888oib.11
+ for <qemu-arm@nongnu.org>; Fri, 07 Jun 2019 10:28:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=FcPMB1Arg6zfPt0d37PTD3eMaTlMz5e1OvwO5yTXkwk=;
+ b=Hec9sf6J5rc1X5o1gl8UvVRMb+GBUFRNwPdrOMxzukIUi3KRYwPPHJQp+hqXtsjNV3
+ JUTJgc+jhdqf5104zdbni2HhOJkU63WxcFPSvdCF8mzzE6iTBbZWYtXE0o23+thEM6wj
+ 8v07TEmqBlJ8LQM6cyLRKXrtVlfmJcW2KsXuvTM3jZM9R5SdsecVWHhKebqjMqNjbsXX
+ Uey/PKfmsz7ngNOJLW49VSXPPxsFrF7gsI23MrX+SL5hTXSwD3Nd25RTY56EEctF0eRM
+ naM8+lIB/rm8gCe0VMSAkr5na1IpPt5AaB8vsWUwaoGE1pfb4r8uzBUWOmbdBqtwja4D
+ LWTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=FcPMB1Arg6zfPt0d37PTD3eMaTlMz5e1OvwO5yTXkwk=;
+ b=pkQpDO3mVoakocIVMDXIqlXETK5lWzMALqG3oi2jHau7Dpd96+i5emfdmBfojNSO+A
+ e5g6MNOuUstGTOu0EPQfdaamooFpq/zRhI+o+Tuafd3Rrh5zlLTSuIdpkY47v3Dmc0BS
+ IVMQ7MtGyax0VHfB2j/REzi1NkCUdT6bzrbHYZmWmUhP70O9BHwg5lpgaN72cSyL/WsF
+ E9sdxpu2ydiiMW8zF+39CMpV+Ucpq+3ahgvnkPuZuPgpRXgQLD1XpFaXfXvEIOZxzvaG
+ g8xrhemcT1jW9IMUvt7/JaYMwWHa9KQCxGiUZXPUeo9tvLVfeg/akbDSZt4q9aOI4Q5k
+ CnEg==
+X-Gm-Message-State: APjAAAUYon/orMOW4CN/02XgtOdVkN+FkLfzAQ1ceuRh7G35rIEc712K
+ RB+XTd2jrsmrb79vP0XzEU5tSA==
+X-Received: by 2002:aca:1817:: with SMTP id h23mr4415858oih.84.1559928483887; 
+ Fri, 07 Jun 2019 10:28:03 -0700 (PDT)
+Received: from [192.168.3.43] (200-56-192-86-cable.cybercable.net.mx.
+ [200.56.192.86])
+ by smtp.gmail.com with ESMTPSA id z16sm922000ote.50.2019.06.07.10.28.02
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 07 Jun 2019 10:28:03 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190606174609.20487-1-peter.maydell@linaro.org>
+ <20190606174609.20487-13-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <47d526bc-7b7f-b2ae-2f6f-1e8fdde7e2e7@linaro.org>
+Date: Fri, 7 Jun 2019 12:27:59 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Sun, 12 May 2019 08:37:36 +0000 (UTC)
-X-TUID: tLM5snZbAGwl
+In-Reply-To: <20190606174609.20487-13-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-arm] [PATCH 12/42] target/arm: Convert "double-precision"
+ register moves to decodetree
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BV9EEX2Mib9t
 
-Allow the host cpu type to enable SVE in guests with the sve-vls-map
-cpu property.
+On 6/6/19 12:45 PM, Peter Maydell wrote:
+> Convert the "double-precision" register moves to decodetree:
+> this covers VMOV scalar-to-gpreg, VMOV gpreg-to-scalar and VDUP.
+> 
+> Note that the conversion process has tightened up a few of the
+> UNDEF encoding checks: we now correctly forbid:
+>  * VMOV-to-gpr with U:opc1:opc2 == 10x00 or x0x10
+>  * VMOV-from-gpr with opc1:opc2 == 0x10
+>  * VDUP with B:E == 11
+>  * VDUP with Q == 1 and Vn<0> == 1
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> The accesses of elements < 32 bits could be improved by doing
+> direct ld/st of the right size rather than 32-bit read-and-shift
+> or read-modify-write, but we leave this for later cleanup,
+> since this series is generally trying to stick to fixing
+> the decode.
+> --
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- target/arm/cpu.c   |  1 +
- target/arm/cpu.h   |  2 ++
- target/arm/cpu64.c | 12 +++++++++---
- 3 files changed, 12 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ea0e24bba8b6..a5c01ff42c78 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2222,6 +2222,7 @@ static void arm_host_initfn(Object *obj)
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     kvm_arm_set_cpu_features_from_host(cpu);
-+    aarch64_add_sve_vls_map_property(obj);
-     arm_cpu_post_init(obj);
- }
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index f0d0ce759ba8..13731ccb39f3 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -976,11 +976,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
-+void aarch64_add_sve_vls_map_property(Object *obj);
- #else
- static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
- static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
-+void aarch64_add_sve_vls_map_property(Object *obj) { }
- #endif
- 
- target_ulong do_arm_semihosting(CPUARMState *env);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 94f3dd5b51e5..3b0b900a4d97 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -310,7 +310,8 @@ static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
-             error_setg(&err, "SVE vector length map has unsupported lengths");
-             error_append_hint(&err, "Valid vector lengths in range [1-%d]\n",
-                               ARM_MAX_VQ);
--        } else if (cpu->sve_max_vq != ARM_MAX_VQ && cpu->sve_max_vq != -1 &&
-+        } else if (cpu->sve_max_vq && cpu->sve_max_vq != ARM_MAX_VQ &&
-+                   cpu->sve_max_vq != -1 &&
-                    cpu->sve_max_vq != arm_cpu_fls64(cpu->sve_vls_map)) {
-             /*
-              * If the user provides both sve-max-vq and sve-vls-map, with
-@@ -340,6 +341,12 @@ static void cpu_set_sve_vls_map(Object *obj, Visitor *v, const char *name,
-     error_propagate(errp, err);
- }
- 
-+void aarch64_add_sve_vls_map_property(Object *obj)
-+{
-+    object_property_add(obj, "sve-vls-map", "uint64", cpu_get_sve_vls_map,
-+                        cpu_set_sve_vls_map, NULL, NULL, &error_fatal);
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -437,8 +444,7 @@ static void aarch64_max_initfn(Object *obj)
- 
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-                         cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
--    object_property_add(obj, "sve-vls-map", "uint64", cpu_get_sve_vls_map,
--                        cpu_set_sve_vls_map, NULL, NULL, &error_fatal);
-+    aarch64_add_sve_vls_map_property(obj);
- }
- 
- struct ARMCPUInfo {
--- 
-2.20.1
+r~

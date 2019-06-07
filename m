@@ -1,99 +1,100 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp178083wrg;
-        Fri, 7 Jun 2019 06:11:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzZRslxEFS5l5TJ+hJKzyyRGfjR75pa/83yge/hvGJCmSXENmAA/Dm/VtMHjjVdMF8Ut/QT
-X-Received: by 2002:a0c:b0e4:: with SMTP id p33mr12572314qvc.208.1559913061477;
-        Fri, 07 Jun 2019 06:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559913061; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp200812wrg;
+        Fri, 7 Jun 2019 06:34:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxJC8wkmNE8414B+RoCdErKBoSiI7NpR5Nts+zVaVDA2iMHtEJJkTzUyM3WSSK+e/QmTyHF
+X-Received: by 2002:aed:33e6:: with SMTP id v93mr46564606qtd.157.1559914444258;
+        Fri, 07 Jun 2019 06:34:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559914444; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ymu7y836i7PCgmOCYQwYMltnkfLPiPLFXrxHZxOeY5mBJPYOcY0jDmiB8DyRVZ5Zk+
-         V8FbKSqUgDdcLl1YLrRCxUdJZbvqNXzQuF05ycWj409WHR6Ce137WUpln1wrk1Q1O5qw
-         RlnSORpBW+eNxOLocAMck5LwDy85h+R5aPreITYvBRpVgtoYYSkWPbWwsIKth2bhfBeM
-         WX1ga9zfPdtuJ6BkD71do99MBB2ZObBqQyNwKLxG9M8mhSsIOLb5DoC7Ro1vQLXAc5Cp
-         adnIkpaLb2fK8enJstrngBYHkZzDcfp6auOBtuKlAuQme68fSebgXPRJ32+s9VMaeITy
-         D/Bw==
+        b=QJ9SvPcT+y8owckdEb4idKQKLiWs1GAWgi3OlFMa+9PLj/a5ZqYHL7S6+SzMwO1g65
+         eJPRek8i9jhGWv5rVwyGzJanHLfxJBQM87NtdVJwpcu/AdnKKD80L641Kars+yIxc6qt
+         AV+u5GEcLCeohrGZ24ce/F0Il1UOGPSYcnJW003Mq1P2vZ0Yfi5+yk9BBJ5lJsSZbRYj
+         ZCaehPuozq17gX1IhAjwZAbfF8pi2SIaQzvDsKUdQP6ifiL/OkcJ6SPkgrfg10YsjtwJ
+         eB0bMcwNqY3h5gHfFf1wXEDWlP4wX+N5qqSmanlK1qSYFr+IPI3vuTXnbeesN7RUo7xH
+         pBiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
-        b=dVdDl7/LD3JW6Wx+bBCJRJbl/twYaE+3Lv95V3KiNpI4H6zBVGH4O/5bzywjozMLMb
-         gaFOYM+mNCORNltJseHpSWek9HtyU6Z/f2ga1qvnY43fXY7jOUmf2+m86hKD0bag47pw
-         CvNj2MmprLUWa4xW+aPHQTs6pKU+tVVW7wmaL++Ovy/jtU9Bgb2sxZZ6zl7kIvcm0Nx+
-         bnrZNua72pz4N5tAVXxPzNCr3ALKhrjopIGFs/kd5EJgo98H78qq6wFcuKDbsrwzJe8V
-         TvnxgFcHN4bXQxG/Jeb3qFr5x9TYsLOSEhSW9TMSgkN11DdbxIHfhQDrY7MsqtLMK3UY
-         8SAw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=9vhat97mhXZjQ1mDeHUEXD2+NSwu+voNVkuIU2cENj8=;
+        b=VJyeJHjNZetaJLeerdy5zcsE/RcyqP9Akjb17Eanr0BZaUC3iuSgFzaVfHSogavg8+
+         sdhmxHUlm6KbFoit6SWR7VUj/whTTUZCQl9IMEXxjtD0pBp8UEJslx8GQYGCcSK8s/yX
+         UgABz+/3H0MXvAftta268N1bIlztQOQguzWDWs3eg+etAWX7r2gV+6SInMNQ4utwxbXL
+         rbMJ3twOls5bYYYo3SuLmq9p3KOSInNkcZGlFLA2VtRZqDRc/f35Fi2KVUXcEtDB17qh
+         yD8VB7DMUUAvzp82eNJ2NF4H5vNDDSKa07AEKGI979VLP/SeLdGdHyLtnxQYP3MMnDR9
+         okQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Dna8KVku;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
-        by mx.google.com with ESMTPS id f126si625433qkj.101.2019.06.07.06.11.01
+        by mx.google.com with ESMTPS id e8si1248738qtm.129.2019.06.07.06.34.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jun 2019 06:11:01 -0700 (PDT)
+        Fri, 07 Jun 2019 06:34:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Dna8KVku;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50956 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51170 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hZEe5-0003rq-2K
-	for alex.bennee@linaro.org; Fri, 07 Jun 2019 09:11:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59443)
+	id 1hZF0N-0000UY-QV
+	for alex.bennee@linaro.org; Fri, 07 Jun 2019 09:34:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38181)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hZEax-0000pM-K5
- for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:49 -0400
+ (envelope-from <philmd@redhat.com>) id 1hZEyA-0007q1-5Z
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:31:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hZEav-00048H-NP
- for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:47 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38537)
+ (envelope-from <philmd@redhat.com>) id 1hZEy8-0001mM-Q7
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:31:46 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:50725)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hZEav-00041M-I5
- for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:45 -0400
-Received: by mail-oi1-x244.google.com with SMTP id v186so1373665oie.5
- for <qemu-devel@nongnu.org>; Fri, 07 Jun 2019 06:07:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
- b=Dna8KVku8xmLsApVdhbe+Ub3kTu3xvW6AXgeRay+YowUYX64rsF426DQUsYLSV3keW
- l6qbAINawVG2qEAcClU41+OrV6WwzayQTY8nFlLc4NGhXoenpkGiJib1jgJ3xpd9kLc9
- fZIClwZgVpk8LumdXldrCQz19lPrrRz7Z9qUnhdx1v3uCmEKsoaBJgAk5LlnSrSwgrr3
- ymBLEBH8YHTMii9mpTcRDJty5NXlgXSIBBlLapvHtaPxKxkOALhF4XBO4DBZNZPOf23M
- IQLWfxzD3q15sn1LQ7f8EqmhpBlsRm8jszIRbrdlsJrEsm2DiqS6KNhGE7zHq0931EGc
- 64Gg==
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hZEy8-0001ko-Im
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:31:44 -0400
+Received: by mail-wm1-f66.google.com with SMTP id c66so2115774wmf.0
+ for <qemu-devel@nongnu.org>; Fri, 07 Jun 2019 06:31:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
- b=jBHRCtlrTo6YSyraxZ+z+1sfxI64mZ1uVgU99B85VFsbxGw1/zq0ShOVxkMPqBdOTB
- YFE/4eEWwSHL7SgQTTcw9wGNk+nG81qal5bYU/mvrLS/Q5Yp7PwbmQDRgL1hcDarViDP
- Xg3ZYc8r1to6s8+xUi95IGTiZm3MIZZ2ed5JgX6UDvF4trQZ1gFiGaEqiDa+Bnm8RAjV
- c/RSqFBBBVkTAHdMCcETR5p6qixGNSBaOSUYEG0BG0PQi8VIPtSX2kGemtu8c0bh4u5q
- uWTjGep2LR7qGPZ3DrPNEVjQRRLw+gebROO1m9LPYal1ZnRY9/Hu/NyFKg4oB1Lh5PLD
- 7A2Q==
-X-Gm-Message-State: APjAAAXc/3YmDfcP4CjLQxH1JOyIQw53+sfR8uI/gia9cYJ0VXXro9G3
- RPQFCcbMf3iqMTq2sfrPG69kqN7xXNMsFkAyhCc9ZNHY0RA=
-X-Received: by 2002:a05:6808:8f1:: with SMTP id
- d17mr3674213oic.170.1559912862814; 
- Fri, 07 Jun 2019 06:07:42 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9vhat97mhXZjQ1mDeHUEXD2+NSwu+voNVkuIU2cENj8=;
+ b=WAjJLfFCgAG6GWUxgSu62c8LERh+g3DEYIK1fkWP3/IrOTgU4g50lerXA8Ie/J9S51
+ RSjoY4ixy6q0NcAd6l8LxWqjdeMf5+4QVRWfIXWFK3IAmFEDOR9xgC7WgXREQiGShtdO
+ 3UuK1po6OnK9vCK4SDL4QP3cv9+fsIYPPnmTm0nxGCToJOvv+8ZsPpGkkwfGTPYRXu3k
+ IML12Zwb9Z1322JCOB9JGHI54MX9e7x6MOSZHqacak2Z2NfqDzb1cE8IECpbNg+y1T0s
+ 2KhbUZZYEO4EiWH9iwgrrcAwUVmQXlXEHuXmqYcM/xlQV0vAEK+A6FAMFvtXb4eoaxL+
+ TWVg==
+X-Gm-Message-State: APjAAAU2uGOZPIaF31WK/ZCd8c+3Ft3bkbYy4LgMQh4KTpLka2hGyyKR
+ xNX5xRnkfulnuvAOkIFbTc20hyA3Lmc=
+X-Received: by 2002:a1c:e0c4:: with SMTP id x187mr3529122wmg.177.1559914303358; 
+ Fri, 07 Jun 2019 06:31:43 -0700 (PDT)
+Received: from [192.168.0.156] ([78.192.181.46])
+ by smtp.gmail.com with ESMTPSA id l7sm1672326wmh.20.2019.06.07.06.31.42
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Fri, 07 Jun 2019 06:31:42 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 References: <20190517174046.11146-1-peter.maydell@linaro.org>
-In-Reply-To: <20190517174046.11146-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Jun 2019 14:07:31 +0100
-Message-ID: <CAFEAcA9G7ssOOg5ZtuGebsCh_Qs7dEk6k7RUiLAu9zhoOAvnKQ@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH 0/4] Disable FPU/DSP for CPU0 on musca-a
- and mps2-an521
+ <20190517174046.11146-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <a96d429f-f61e-c550-dc6a-cd08ef4d2d53@redhat.com>
+Date: Fri, 7 Jun 2019 15:31:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190517174046.11146-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-devel] [PATCH 2/4] target/arm: Allow M-profile CPUs to
+ disable the DSP extension via CPU property
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,66 +108,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m3Si4h52smuh
+X-TUID: qJaMW9o2H+Qt
 
-Ping for code review, please?
+On 5/17/19 7:40 PM, Peter Maydell wrote:
+> Allow the DSP extension to be disabled via a CPU property for
+> M-profile CPUs. (A and R-profile CPUs don't have this extension
+> as a defined separate optional architecture extension, so
+> they don't need the property.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/cpu.h |  2 ++
+>  target/arm/cpu.c | 29 +++++++++++++++++++++++++++++
+>  2 files changed, 31 insertions(+)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 778fb293e7c..b1c7ab3ee94 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -801,6 +801,8 @@ struct ARMCPU {
+>      bool has_vfp;
+>      /* CPU has Neon */
+>      bool has_neon;
+> +    /* CPU has M-profile DSP extension */
+> +    bool has_dsp;
+>  
+>      /* CPU has memory protection unit */
+>      bool has_mpu;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 406fd360a2a..c43139ba897 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -769,6 +769,9 @@ static Property arm_cpu_has_vfp_property =
+>  static Property arm_cpu_has_neon_property =
+>              DEFINE_PROP_BOOL("neon", ARMCPU, has_neon, true);
+>  
+> +static Property arm_cpu_has_dsp_property =
+> +            DEFINE_PROP_BOOL("dsp", ARMCPU, has_dsp, true);
+> +
+>  static Property arm_cpu_has_mpu_property =
+>              DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
+>  
+> @@ -881,6 +884,12 @@ void arm_cpu_post_init(Object *obj)
+>          }
+>      }
+>  
+> +    if (arm_feature(&cpu->env, ARM_FEATURE_M) &&
+> +        arm_feature(&cpu->env, ARM_FEATURE_THUMB_DSP)) {
+> +        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_dsp_property,
+> +                                 &error_abort);
 
-thanks
--- PMM
+TIL qdev_property_add_static, clean.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-On Fri, 17 May 2019 at 18:40, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The SSE-200 hardware has configurable integration settings which
-> determine whether its two CPUs have the FPU and DSP:
->  * CPU0_FPU (default 0)
->  * CPU0_DSP (default 0)
->  * CPU1_FPU (default 1)
->  * CPU1_DSP (default 1)
->
-> Similarly, the IoTKit has settings for its single CPU:
->  * CPU0_FPU (default 1)
->  * CPU0_DSP (default 1)
->
-> Of our four boards that use either the IoTKit or the SSE-200:
->  * mps2-an505, mps2-an521 and musca-a use the default settings
->  * musca-b1 enables FPU and DSP on both CPUs
->
-> Currently QEMU models all these boards using CPUs with
-> both FPU and DSP enabled. This means that we are incorrect
-> for mps2-an521 and musca-a, which should not have FPU or DSP
-> on CPU0.
->
-> This patchset fixes this (fairly minor) inaccuracy by
-> implementing properties on the CPU to disable the relevant
-> CPU features and then wiring them up through the armv7m
-> object and the ARMSSE SoC container object, so that our
-> IotKit and SSE200 models behave by default the same way as
-> the hardware default does, and our Musca-B1 board model
-> forces the FPU/DSP to be present on CPU, as the hardware does.
->
-> The 'neon' property is not strictly required for the M-profile
-> issues described above, but I implemented it on the CPU
-> object because disable-neon and disable-vfp interact
-> for A-profile CPUs.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (4):
->   target/arm: Allow VFP and Neon to be disabled via a CPU property
->   target/arm: Allow M-profile CPUs to disable the DSP extension via CPU
->     property
->   hw/arm/armv7m: Forward "vfp" and "dsp" properties to CPU
->   hw/arm: Correctly disable FPU/DSP for some ARMSSE-based boards
->
->  include/hw/arm/armsse.h |   7 ++
->  include/hw/arm/armv7m.h |   4 +
->  target/arm/cpu.h        |   6 ++
->  hw/arm/armsse.c         |  58 ++++++++++---
->  hw/arm/armv7m.c         |  18 ++++
->  hw/arm/musca.c          |   8 ++
->  target/arm/cpu.c        | 179 ++++++++++++++++++++++++++++++++++++++--
->  7 files changed, 262 insertions(+), 18 deletions(-)
->
-> --
-> 2.20.1
+> +    }
+> +
+>      if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
+>          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property,
+>                                   &error_abort);
+> @@ -1100,6 +1109,26 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          cpu->isar.mvfr0 = u;
+>      }
+>  
+> +    if (arm_feature(env, ARM_FEATURE_M) && !cpu->has_dsp) {
+> +        uint32_t u;
+> +
+> +        unset_feature(env, ARM_FEATURE_THUMB_DSP);
+> +
+> +        u = cpu->isar.id_isar1;
+> +        u = FIELD_DP32(u, ID_ISAR1, EXTEND, 1);
+> +        cpu->isar.id_isar1 = u;
+> +
+> +        u = cpu->isar.id_isar2;
+> +        u = FIELD_DP32(u, ID_ISAR2, MULTU, 1);
+> +        u = FIELD_DP32(u, ID_ISAR2, MULTS, 1);
+> +        cpu->isar.id_isar2 = u;
+> +
+> +        u = cpu->isar.id_isar3;
+> +        u = FIELD_DP32(u, ID_ISAR3, SIMD, 1);
+> +        u = FIELD_DP32(u, ID_ISAR3, SATURATE, 0);
+> +        cpu->isar.id_isar3 = u;
+> +    }
+> +
+>      /* Some features automatically imply others: */
+>      if (arm_feature(env, ARM_FEATURE_V8)) {
+>          if (arm_feature(env, ARM_FEATURE_M)) {
+> 

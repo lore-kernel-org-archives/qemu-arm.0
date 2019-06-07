@@ -1,154 +1,172 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp177977wrg;
-        Fri, 7 Jun 2019 06:10:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyRh73wsSbCGkuo2UOYAbtURWLEBZegInQOguAZ9cMQ/6G+vhsIQtSiZ8DsUn+uaf7btgq0
-X-Received: by 2002:a0c:888a:: with SMTP id 10mr19843887qvn.0.1559913056156;
-        Fri, 07 Jun 2019 06:10:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559913056; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp178083wrg;
+        Fri, 7 Jun 2019 06:11:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzZRslxEFS5l5TJ+hJKzyyRGfjR75pa/83yge/hvGJCmSXENmAA/Dm/VtMHjjVdMF8Ut/QT
+X-Received: by 2002:a0c:b0e4:: with SMTP id p33mr12572314qvc.208.1559913061477;
+        Fri, 07 Jun 2019 06:11:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559913061; cv=none;
         d=google.com; s=arc-20160816;
-        b=IhEwMPKPVPkubF/uYMhH5YTJNLm5lQsxJTLt+Uv61pbKIdr2VVFa9onU1IpA1M9CvR
-         B6Vmf0VFr4n27mdLVVr8F+z0sFwgq11qtmUkBw0Y+I+nUt8ZjntHQNUgTzSqv3QlnJHr
-         +eHxoY6bJLMWM0UEVOzdc396RyH1P6afd+nh6mRKrDZgUcdim3SVa487zQ4+BkWg1NDK
-         prh11egFXnyF6PpfxEipT7LD1knQebLm/IuPvTj7HrFy23ayKaHmrCLGteiivwDxi63d
-         k2uFBGOoVGl8peZaJpvUd8FyUGo0X4LDomWXuQd2/qNIX1wsBKbzHZyWLZGPhvpmJZ6+
-         WizQ==
+        b=Ymu7y836i7PCgmOCYQwYMltnkfLPiPLFXrxHZxOeY5mBJPYOcY0jDmiB8DyRVZ5Zk+
+         V8FbKSqUgDdcLl1YLrRCxUdJZbvqNXzQuF05ycWj409WHR6Ce137WUpln1wrk1Q1O5qw
+         RlnSORpBW+eNxOLocAMck5LwDy85h+R5aPreITYvBRpVgtoYYSkWPbWwsIKth2bhfBeM
+         WX1ga9zfPdtuJ6BkD71do99MBB2ZObBqQyNwKLxG9M8mhSsIOLb5DoC7Ro1vQLXAc5Cp
+         adnIkpaLb2fK8enJstrngBYHkZzDcfp6auOBtuKlAuQme68fSebgXPRJ32+s9VMaeITy
+         D/Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=2qhxN0j+xO3lc84ZYBjXCiQz9G1pupLf4Ynwz1mbak4=;
-        b=FHhImrybEdazb5ctfJhbiO7qtn/08MmAO7beEqYvrxnkPtThVBEBDEOm//JGcCGMRs
-         P4lWhhPltyo7BDvMGgWVgLK/Zd5Xzcz//XRsgb4RRRMWiDNWQrxzxiHj7wOAiiODGnq6
-         XscUy8RIoh7uMdfjmziw3bNCxFGfjEt6bfGCHvqDgOCSIdSJVTUQEJgUMRgoFf9O+U4h
-         mZKfp1QYLA/YziAh0UpKSxoAoDfAucMo8SugPQOWZS2YZHwz+4uxOA4fd1uyWxlr9/ta
-         vElBxJGoNf7H/thhMrinSgmRGUT0LXhGFb5b1K6Y9NcfpVgcX1SbH5D2Xi/FosNAcerN
-         vvCA==
+        bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
+        b=dVdDl7/LD3JW6Wx+bBCJRJbl/twYaE+3Lv95V3KiNpI4H6zBVGH4O/5bzywjozMLMb
+         gaFOYM+mNCORNltJseHpSWek9HtyU6Z/f2ga1qvnY43fXY7jOUmf2+m86hKD0bag47pw
+         CvNj2MmprLUWa4xW+aPHQTs6pKU+tVVW7wmaL++Ovy/jtU9Bgb2sxZZ6zl7kIvcm0Nx+
+         bnrZNua72pz4N5tAVXxPzNCr3ALKhrjopIGFs/kd5EJgo98H78qq6wFcuKDbsrwzJe8V
+         TvnxgFcHN4bXQxG/Jeb3qFr5x9TYsLOSEhSW9TMSgkN11DdbxIHfhQDrY7MsqtLMK3UY
+         8SAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="UnJWy/4e";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dna8KVku;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
-        by mx.google.com with ESMTPS id k185si50389qkb.53.2019.06.07.06.10.56
+        by mx.google.com with ESMTPS id f126si625433qkj.101.2019.06.07.06.11.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jun 2019 06:10:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
+        Fri, 07 Jun 2019 06:11:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="UnJWy/4e";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dna8KVku;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50962 helo=lists.gnu.org)
+Received: from localhost ([::1]:50956 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hZEdz-0004BJ-OS
-	for alex.bennee@linaro.org; Fri, 07 Jun 2019 09:10:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59807)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZEe5-0003rq-2K
+	for alex.bennee@linaro.org; Fri, 07 Jun 2019 09:11:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59443)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hZEbl-0001sy-TX
- for qemu-arm@nongnu.org; Fri, 07 Jun 2019 09:08:39 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hZEax-0000pM-K5
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hZEbj-0005rh-VB
- for qemu-arm@nongnu.org; Fri, 07 Jun 2019 09:08:37 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:40935)
+ (envelope-from <peter.maydell@linaro.org>) id 1hZEav-00048H-NP
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:47 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38537)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hZEbj-0005mW-QP
- for qemu-arm@nongnu.org; Fri, 07 Jun 2019 09:08:35 -0400
-Received: by mail-ot1-x342.google.com with SMTP id x24so1758421otp.7
- for <qemu-arm@nongnu.org>; Fri, 07 Jun 2019 06:08:34 -0700 (PDT)
+ id 1hZEav-00041M-I5
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:45 -0400
+Received: by mail-oi1-x244.google.com with SMTP id v186so1373665oie.5
+ for <qemu-devel@nongnu.org>; Fri, 07 Jun 2019 06:07:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2qhxN0j+xO3lc84ZYBjXCiQz9G1pupLf4Ynwz1mbak4=;
- b=UnJWy/4ejfPADeYBhmSV0XpxJNytKBuMhf/gg428v3/wIIq5ge1P3tlJZPue2xy6ky
- 8+Iqp2/gitKB8jAjWTHr9ehU3dMb1xLLdxgYpJlaCIf0KjBvT4D+cYBQzQAJcIenZloj
- 5GVaQUKRBWtF4gkei6haVcZbh+eSn4ztevGBylizfyrfjFlP/xw8xRGbIdHsQzpZj2FU
- y8LbIE0Lisclruvtl3VAjhENwTArKX87eCP3GYzJqP7dhYLmSwTbL432sJL5gkzPpJNd
- OnM2/7/LdaLxA25Fi0zNCDyqvhPnLZchUV0sCt53wCSYCIYm7UqBX3zxseUu/zkecBmI
- eEhQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
+ b=Dna8KVku8xmLsApVdhbe+Ub3kTu3xvW6AXgeRay+YowUYX64rsF426DQUsYLSV3keW
+ l6qbAINawVG2qEAcClU41+OrV6WwzayQTY8nFlLc4NGhXoenpkGiJib1jgJ3xpd9kLc9
+ fZIClwZgVpk8LumdXldrCQz19lPrrRz7Z9qUnhdx1v3uCmEKsoaBJgAk5LlnSrSwgrr3
+ ymBLEBH8YHTMii9mpTcRDJty5NXlgXSIBBlLapvHtaPxKxkOALhF4XBO4DBZNZPOf23M
+ IQLWfxzD3q15sn1LQ7f8EqmhpBlsRm8jszIRbrdlsJrEsm2DiqS6KNhGE7zHq0931EGc
+ 64Gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2qhxN0j+xO3lc84ZYBjXCiQz9G1pupLf4Ynwz1mbak4=;
- b=CYeSzu02ug31V+vWmx6DwW62hAdsl3v0sXlUcB5/IvawBVTyx+CGDHs4FKXn65yfYu
- tPQmuSdU1YDpXmJt/dFMt8m9vM9OzYXbDgL3zcoEiIYaAOE/YaycKhCi4q9o7dBbOOyJ
- e0cWJX7Xl9N9p8k8nT1Zy728tTrAc+Z+PvMSa0R1E3r9CUqTjWrebjCepsQOb89JOkFf
- KQCA+fHWvnvz2M4iIG1puHiO5sdKJYU+DK0FejvcMf+LcV5aauI4DihFcCakGfwBQNgc
- X8TXzu/21e/lP8K3ZacuFkNCOhX/9VvZSIK5y3S9hUmRL+mWutjDxvu/VW9HeAPH/KOx
- aImQ==
-X-Gm-Message-State: APjAAAVbFbvctwH2wXmXi5V6LdzVnVs3LGDYs4zOxf4k21qN9jwPgAUh
- BafnMl3kMB7QVQdY2IquSpVGOHuk8YJfF5C5v1RyHuvnIKw=
-X-Received: by 2002:a9d:7245:: with SMTP id a5mr19619591otk.232.1559912913469; 
- Fri, 07 Jun 2019 06:08:33 -0700 (PDT)
+ :message-id:subject:to;
+ bh=qoKy7Saj12BIUDx2o/P3rez8CKgTVRuN+CfgSrIfYdE=;
+ b=jBHRCtlrTo6YSyraxZ+z+1sfxI64mZ1uVgU99B85VFsbxGw1/zq0ShOVxkMPqBdOTB
+ YFE/4eEWwSHL7SgQTTcw9wGNk+nG81qal5bYU/mvrLS/Q5Yp7PwbmQDRgL1hcDarViDP
+ Xg3ZYc8r1to6s8+xUi95IGTiZm3MIZZ2ed5JgX6UDvF4trQZ1gFiGaEqiDa+Bnm8RAjV
+ c/RSqFBBBVkTAHdMCcETR5p6qixGNSBaOSUYEG0BG0PQi8VIPtSX2kGemtu8c0bh4u5q
+ uWTjGep2LR7qGPZ3DrPNEVjQRRLw+gebROO1m9LPYal1ZnRY9/Hu/NyFKg4oB1Lh5PLD
+ 7A2Q==
+X-Gm-Message-State: APjAAAXc/3YmDfcP4CjLQxH1JOyIQw53+sfR8uI/gia9cYJ0VXXro9G3
+ RPQFCcbMf3iqMTq2sfrPG69kqN7xXNMsFkAyhCc9ZNHY0RA=
+X-Received: by 2002:a05:6808:8f1:: with SMTP id
+ d17mr3674213oic.170.1559912862814; 
+ Fri, 07 Jun 2019 06:07:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190524124248.28394-1-peter.maydell@linaro.org>
- <20190524124248.28394-3-peter.maydell@linaro.org>
-In-Reply-To: <20190524124248.28394-3-peter.maydell@linaro.org>
+References: <20190517174046.11146-1-peter.maydell@linaro.org>
+In-Reply-To: <20190517174046.11146-1-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Jun 2019 14:08:22 +0100
-Message-ID: <CAFEAcA9bBNov=qUEtgkBdhAyj1E=sPALKpJcYyEkSmFO7VgHDg@mail.gmail.com>
+Date: Fri, 7 Jun 2019 14:07:31 +0100
+Message-ID: <CAFEAcA9G7ssOOg5ZtuGebsCh_Qs7dEk6k7RUiLAu9zhoOAvnKQ@mail.gmail.com>
 To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] hw/intc/arm_gicv3:
- GICD_TYPER.SecurityExtn is RAZ if GICD_CTLR.DS == 1
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-devel] [PATCH 0/4] Disable FPU/DSP for CPU0 on musca-a
+ and mps2-an521
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tIPTHG6w6CT1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m3Si4h52smuh
 
 Ping for code review, please?
 
 thanks
 -- PMM
 
-On Fri, 24 May 2019 at 13:42, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, 17 May 2019 at 18:40, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> The GICv3 specification says that the GICD_TYPER.SecurityExtn bit
-> is RAZ if GICD_CTLR.DS is 1. We were incorrectly making it RAZ
-> if the security extension is unsupported. "Security extension
-> unsupported" always implies GICD_CTLR.DS == 1, but the guest can
-> also set DS on a GIC which does support the security extension.
-> Fix the condition to correctly check the GICD_CTLR.DS bit.
+> The SSE-200 hardware has configurable integration settings which
+> determine whether its two CPUs have the FPU and DSP:
+>  * CPU0_FPU (default 0)
+>  * CPU0_DSP (default 0)
+>  * CPU1_FPU (default 1)
+>  * CPU1_DSP (default 1)
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/intc/arm_gicv3_dist.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+> Similarly, the IoTKit has settings for its single CPU:
+>  * CPU0_FPU (default 1)
+>  * CPU0_DSP (default 1)
 >
-> diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-> index e6fe4905fd3..b65f56f9035 100644
-> --- a/hw/intc/arm_gicv3_dist.c
-> +++ b/hw/intc/arm_gicv3_dist.c
-> @@ -378,8 +378,14 @@ static MemTxResult gicd_readl(GICv3State *s, hwaddr offset,
->           * ITLinesNumber == (num external irqs / 32) - 1
->           */
->          int itlinesnumber = ((s->num_irq - GIC_INTERNAL) / 32) - 1;
-> +        /*
-> +         * SecurityExtn must be RAZ if GICD_CTLR.DS == 1, and
-> +         * "security extensions not supported" always implies DS == 1,
-> +         * so we only need to check the DS bit.
-> +         */
-> +        bool sec_extn = !(s->gicd_ctlr & GICD_CTLR_DS);
+> Of our four boards that use either the IoTKit or the SSE-200:
+>  * mps2-an505, mps2-an521 and musca-a use the default settings
+>  * musca-b1 enables FPU and DSP on both CPUs
 >
-> -        *data = (1 << 25) | (1 << 24) | (s->security_extn << 10) |
-> +        *data = (1 << 25) | (1 << 24) | (sec_extn << 10) |
->              (0xf << 19) | itlinesnumber;
->          return MEMTX_OK;
->      }
+> Currently QEMU models all these boards using CPUs with
+> both FPU and DSP enabled. This means that we are incorrect
+> for mps2-an521 and musca-a, which should not have FPU or DSP
+> on CPU0.
+>
+> This patchset fixes this (fairly minor) inaccuracy by
+> implementing properties on the CPU to disable the relevant
+> CPU features and then wiring them up through the armv7m
+> object and the ARMSSE SoC container object, so that our
+> IotKit and SSE200 models behave by default the same way as
+> the hardware default does, and our Musca-B1 board model
+> forces the FPU/DSP to be present on CPU, as the hardware does.
+>
+> The 'neon' property is not strictly required for the M-profile
+> issues described above, but I implemented it on the CPU
+> object because disable-neon and disable-vfp interact
+> for A-profile CPUs.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (4):
+>   target/arm: Allow VFP and Neon to be disabled via a CPU property
+>   target/arm: Allow M-profile CPUs to disable the DSP extension via CPU
+>     property
+>   hw/arm/armv7m: Forward "vfp" and "dsp" properties to CPU
+>   hw/arm: Correctly disable FPU/DSP for some ARMSSE-based boards
+>
+>  include/hw/arm/armsse.h |   7 ++
+>  include/hw/arm/armv7m.h |   4 +
+>  target/arm/cpu.h        |   6 ++
+>  hw/arm/armsse.c         |  58 ++++++++++---
+>  hw/arm/armv7m.c         |  18 ++++
+>  hw/arm/musca.c          |   8 ++
+>  target/arm/cpu.c        | 179 ++++++++++++++++++++++++++++++++++++++--
+>  7 files changed, 262 insertions(+), 18 deletions(-)
+>
 > --
 > 2.20.1
->

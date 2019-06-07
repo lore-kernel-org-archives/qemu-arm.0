@@ -1,206 +1,168 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b2sm1567719wrp.72.2019.06.07.02.12.28
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 07 Jun 2019 02:12:30 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1EC991FFAF;
-	Fri,  7 Jun 2019 10:05:54 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>,
-	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PULL 26/52] semihosting: split console_out into string and char versions
-Date: Fri,  7 Jun 2019 10:05:25 +0100
-Message-Id: <20190607090552.12434-27-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190607090552.12434-1-alex.bennee@linaro.org>
-References: <20190607090552.12434-1-alex.bennee@linaro.org>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp177048wrg;
+        Fri, 7 Jun 2019 06:10:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy+Bsocla3hWZ5Oo4ojPtsQcRDSuOGjQzFOGEiY3nIHZW/6v8jJelJyK8mXDIk4UPEGo6Mh
+X-Received: by 2002:a37:615:: with SMTP id 21mr24475138qkg.64.1559913004673;
+        Fri, 07 Jun 2019 06:10:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559913004; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZeYHaYx9HsIxrxWZFvTDM3yMx+oZ69L94ESr0yOMRXbftauk7z8jpsJctjvsq705X4
+         O0xAtbEjHMxxSFlqUzD0o9fEu3Npe2rSKy6Q461eG45luxDsNF5tJP3Ovx3S1zoDlR0B
+         gDdgeWIUd1BmM7bpE+8eNfhwhfMAEvQP+471FONpVuCzx9DcdR1ladVE7sOrSpe8yjJ8
+         BB0DLhuF8fCOWvh1DOTdaQnWehRlDIZl9rXuXeAyk5gBq1GLz4k8BAPDrdcpfbKGXH0+
+         LePbCnWdYudz425qRCX85Ebd3J27GjFQ8YsQxxm08oyzef4Vh/HXNqq9bLiQF0ZMo4f+
+         6DrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=QLdA2mOirkQQ3DH1Q8+3NAyskJrz8qbP29IgOVwCT4M=;
+        b=eTCz4ogusB8jCj7I2vab+eDlN4ZC0Qg9uLe4Sfr4tY0lBxqTi92SBI2zCwISc7myMQ
+         nCJwdsV7H0rPpzO1mOjyuLxjU43Qt/W7k4fHhevqZWRrJOFcsz9oexf8eEfoUweUXs8Q
+         CEikSMXmMLVgEPCbR7jbU7PRtlvdxgB0hNsiUEfU5c3si//RRcBH3Q3jUmsktgAnJT8+
+         ZV9FT8bPwZ93eYMIpL9jOfani/FkW/nI7lw2rqxKPbBL2EdGTcg9yA99Qu71Z6VTtpDE
+         dHS530f6t4zhakDvnR73oLhKAeEpbJSdCZzPdGflGQT/TC34BzObOqf2YUgXtJ0QSDc0
+         DMGg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nQMzlapA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
+        by mx.google.com with ESMTPS id r54si1266798qtk.10.2019.06.07.06.10.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 07 Jun 2019 06:10:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nQMzlapA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50940 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hZEdA-0002L1-7B
+	for alex.bennee@linaro.org; Fri, 07 Jun 2019 09:10:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59331)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hZEaf-0000ih-BD
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:31 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hZEad-0003dA-EJ
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:29 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43928)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hZEab-0003V4-FG
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2019 09:07:27 -0400
+Received: by mail-ot1-x343.google.com with SMTP id i8so1748472oth.10
+ for <qemu-devel@nongnu.org>; Fri, 07 Jun 2019 06:07:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QLdA2mOirkQQ3DH1Q8+3NAyskJrz8qbP29IgOVwCT4M=;
+ b=nQMzlapABWSy98+gz0VLJxXlapVn1mEGd0VzVmyjLpLVhTnhny1ltP0nYyteT1bzQc
+ 1Hm3pc12m6PHviF3vE8w4xeSG9CH5MkbfVq5XtPU8evbvQ4BaIQ0pbZmc6A6U3NkKXgW
+ J/CJFPQXLnUAE5f9Gn3yV2i7zwUKOB1IamMw93/gPtUCoFphUUnEegT/8ssEs6X4vy4F
+ WMsBXU+a4iSTqMIX1Ryy2mcNtN7rfUEVvsMeKSnb2UqoEXs/A0JKmUNO1+9zoXARYb50
+ 4br3rdy0mfqnxk3YL9+PUhiiUxbl8UxQPKBUdlFTFeXc+Dp1LCbT6+XHbLdii3Q627O1
+ Yylw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QLdA2mOirkQQ3DH1Q8+3NAyskJrz8qbP29IgOVwCT4M=;
+ b=Mq/PGtlFAfUQ2AvBvpxT4/gTD4GPSaRK/CsuoPaXuXnXeuVTu0ISJFCXpiMXhNjIV3
+ aCfCP8flA75le9WDXgCP/0EOg6NsKEqBvZnbxVMDjp63vDksmB/bdpnBQbENBy6ete/c
+ KtNmYIvpY5kkyVYq0ztSCZ4Ym0ijwXaKJa12IuABDJfvf4LiBtTwy1kwc/jFPSP7yoEy
+ um7Lgrec7ykoBKMLd8mg2i3UX9TkO16IYRaIwK0zyhJV1moh9Utt6M8/BGjiFvoyVAR2
+ GOhRb6nagY4nbjWDIS8yYGyDsRiiFLiOXTpH9EXIhFyfURtPqguVFFxTSL8ONkcn2jpN
+ HV9Q==
+X-Gm-Message-State: APjAAAU4v82AAFXPihb5mUjGq4mW4HXMmsnwQVkFYDR5eat6Y02U/nP5
+ dewLrWEvjVRgyPj9LfjkE4pMZ+TuA+1s5lybMqd46ezZcYc=
+X-Received: by 2002:a9d:193:: with SMTP id e19mr18818154ote.135.1559912840709; 
+ Fri, 07 Jun 2019 06:07:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: o+I5bNZaPS9J
+References: <20190516144733.32399-1-peter.maydell@linaro.org>
+In-Reply-To: <20190516144733.32399-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 7 Jun 2019 14:07:09 +0100
+Message-ID: <CAFEAcA-t=9+zuEOf2uoJAMnpnyAJtpCqe2biWzS6a8nZU0uQOA@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-devel] [PATCH v2 0/4] hw/arm/boot: handle large Images
+ more gracefully
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RatIkcxzbUqw
 
-This is ostensibly to avoid the weirdness of len looking like it might
-come from a guest and sometimes being used. While we are at it fix up
-the error checking for the arm-linux-user implementation of the API
-which got flagged up by Coverity (CID 1401700).
+Ping for code review, please?
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+thanks
+-- PMM
 
-diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
-index 466ea6dade..4a5758972d 100644
---- a/hw/semihosting/console.c
-+++ b/hw/semihosting/console.c
-@@ -36,26 +36,24 @@ int qemu_semihosting_log_out(const char *s, int len)
- /*
-  * A re-implementation of lock_user_string that we can use locally
-  * instead of relying on softmmu-semi. Hopefully we can deprecate that
-- * in time. We either copy len bytes if specified or until we find a NULL.
-+ * in time. Copy string until we find a 0 or address error.
-  */
--static GString *copy_user_string(CPUArchState *env, target_ulong addr, int len)
-+static GString *copy_user_string(CPUArchState *env, target_ulong addr)
- {
-     CPUState *cpu = ENV_GET_CPU(env);
--    GString *s = g_string_sized_new(len ? len : 128);
-+    GString *s = g_string_sized_new(128);
-     uint8_t c;
--    bool done;
- 
-     do {
-         if (cpu_memory_rw_debug(cpu, addr++, &c, 1, 0) == 0) {
-             s = g_string_append_c(s, c);
--            done = len ? s->len == len : c == 0;
-         } else {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: passed inaccessible address " TARGET_FMT_lx,
-                           __func__, addr);
--            done = true;
-+            break;
-         }
--    } while (!done);
-+    } while (c!=0);
- 
-     return s;
- }
-@@ -68,9 +66,9 @@ static void semihosting_cb(CPUState *cs, target_ulong ret, target_ulong err)
-     }
- }
- 
--int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
-+int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
- {
--    GString *s = copy_user_string(env, addr, len);
-+    GString *s = copy_user_string(env, addr);
-     int out = s->len;
- 
-     if (use_gdb_syscalls()) {
-@@ -82,3 +80,21 @@ int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
-     g_string_free(s, true);
-     return out;
- }
-+
-+void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
-+{
-+    CPUState *cpu = ENV_GET_CPU(env);
-+    uint8_t c;
-+
-+    if (cpu_memory_rw_debug(cpu, addr, &c, 1, 0) == 0) {
-+        if (use_gdb_syscalls()) {
-+            gdb_do_syscall(semihosting_cb, "write,2,%x,%x", addr, 1);
-+        } else {
-+            qemu_semihosting_log_out((const char *) &c, 1);
-+        }
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: passed inaccessible address " TARGET_FMT_lx,
-+                      __func__, addr);
-+    }
-+}
-diff --git a/include/hw/semihosting/console.h b/include/hw/semihosting/console.h
-index 30e66ae20a..3a4fba7590 100644
---- a/include/hw/semihosting/console.h
-+++ b/include/hw/semihosting/console.h
-@@ -10,17 +10,30 @@
- #define _SEMIHOST_CONSOLE_H_
- 
- /**
-- * qemu_semihosting_console_out:
-+ * qemu_semihosting_console_outs:
-  * @env: CPUArchState
-- * @s: host address of guest string
-- * @len: length of string or 0 (string is null terminated)
-+ * @s: host address of null terminated guest string
-  *
-- * Send a guest string to the debug console. This may be the remote
-- * gdb session if a softmmu guest is currently being debugged.
-+ * Send a null terminated guest string to the debug console. This may
-+ * be the remote gdb session if a softmmu guest is currently being
-+ * debugged.
-  *
-  * Returns: number of bytes written.
-  */
--int qemu_semihosting_console_out(CPUArchState *env, target_ulong s, int len);
-+int qemu_semihosting_console_outs(CPUArchState *env, target_ulong s);
-+
-+/**
-+ * qemu_semihosting_console_outc:
-+ * @env: CPUArchState
-+ * @s: host address of null terminated guest string
-+ *
-+ * Send single character from guest memory to the debug console. This
-+ * may be the remote gdb session if a softmmu guest is currently being
-+ * debugged.
-+ *
-+ * Returns: nothing
-+ */
-+void qemu_semihosting_console_outc(CPUArchState *env, target_ulong c);
- 
- /**
-  * qemu_semihosting_log_out:
-diff --git a/linux-user/arm/semihost.c b/linux-user/arm/semihost.c
-index 9554102a85..a16b525eec 100644
---- a/linux-user/arm/semihost.c
-+++ b/linux-user/arm/semihost.c
-@@ -15,10 +15,35 @@
- #include "hw/semihosting/console.h"
- #include "qemu.h"
- 
--int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
-+int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
- {
--    void *s = lock_user_string(addr);
--    len = write(STDERR_FILENO, s, len ? len : strlen(s));
-+    int len = target_strlen(addr);
-+    void *s;
-+    if (len < 0){
-+       qemu_log_mask(LOG_GUEST_ERROR,
-+                     "%s: passed inaccessible address " TARGET_FMT_lx,
-+                     __func__, addr);
-+       return 0;
-+    }
-+    s = lock_user(VERIFY_READ, addr, (long)(len + 1), 1);
-+    g_assert(s);  /* target_strlen has already verified this will work */
-+    len = write(STDERR_FILENO, s, len);
-     unlock_user(s, addr, 0);
-     return len;
- }
-+
-+void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
-+{
-+    char c;
-+
-+    if (get_user_u8(c, addr)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: passed inaccessible address " TARGET_FMT_lx,
-+                      __func__, addr);
-+    } else {
-+        if (write(STDERR_FILENO, &c, 1) != 1) {
-+            qemu_log_mask(LOG_UNIMP, "%s: unexpected write to stdout failure",
-+                          __func__);
-+        }
-+    }
-+}
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 53e807ab72..8844da8da3 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -315,10 +315,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             return set_swi_errno(ts, close(arg0));
-         }
-     case TARGET_SYS_WRITEC:
--        qemu_semihosting_console_out(env, args, 1);
-+        qemu_semihosting_console_outc(env, args);
-         return 0xdeadbeef;
-     case TARGET_SYS_WRITE0:
--        return qemu_semihosting_console_out(env, args, 0);
-+        return qemu_semihosting_console_outs(env, args);
-     case TARGET_SYS_WRITE:
-         GET_ARG(0);
-         GET_ARG(1);
--- 
-2.20.1
+On Thu, 16 May 2019 at 15:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+>
+> This patchset attempts to fix https://bugs.launchpad.net/qemu/+bug/1823998
+> which reports that we don't handle kernels larger than 128MB
+> correctly, because we allow the initrd to be placed over the
+> tail end of the kernel. AArch64 kernel Image files (since v3.17)
+> report the total size they require (including any BSS area that
+> isn't in the Image itself), so we can use that to be sure we
+> place the initrd sufficiently far into the RAM.
+>
+> Patches 1 and 2 are new since v1; patches 3 and 4 are the old
+> patches 1 and 2 (and are basically unchanged since v1).
+>
+> Patches 1 and 2 in this series are new. Patch 1 fixes bugs
+> in the existing code where we were assuming that we could
+> treat info->ram_size as the address of the end of RAM, which
+> isn't true if the RAM doesn't start at address 0. (This
+> generally went unnoticed thanks to the magic of unsigned integer
+> underflow turning end-start calculations into very large max_size
+> values for load_ramdisk_as() and friends.)
+> Patch 2 adds some explicit checks that we don't try to put things
+> entirely off the end of RAM (which avoids those accidental
+> underflows).
+> Patch 3 in this series adjusts our "where do we put the initrd"
+> heuristic so that it always places it at least after whatever
+> our best guess at the kernel size is. (This might still not
+> be right for images like self-decompressing 32-bit kernels, where
+> there's no way to know how big the kernel will be after
+> decompression.)
+> Patch 4 makes load_aarch64_image() return the
+> kernel size as indicated in the Image file header, so that for
+> the specific case of AArch64 Image files we will definitely not
+> put the initrd on top of them.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (4):
+>   hw/arm/boot: Don't assume RAM starts at address zero
+>   hw/arm/boot: Diagnose layouts that put initrd or DTB off the end of
+>     RAM
+>   hw/arm/boot: Avoid placing the initrd on top of the kernel
+>   hw/arm/boot: Honour image size field in AArch64 Image format kernels
+>
+>  hw/arm/boot.c | 83 ++++++++++++++++++++++++++++++++++++++-------------
+>  1 file changed, 62 insertions(+), 21 deletions(-)
+>
+> --
+> 2.20.1
+>

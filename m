@@ -1,191 +1,206 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4712923wrg;
-        Thu, 6 Jun 2019 10:11:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyIckg3oTohr2BPKIfe07rPrTet1vHWO0oEjouyrKFeaKAzzYN3VtQGEckZE/5O1zrbB+kW
-X-Received: by 2002:a37:ad12:: with SMTP id f18mr39977185qkm.3.1559841064731;
-        Thu, 06 Jun 2019 10:11:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559841064; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tXOZAXEODWOkt4a+M/NyMSm56TwItPkzFGLiPXJE7fbz+Zehb37u1a+2N7RIzBYlwk
-         LexkH/LTBJKoFePy3jH7D4ytwAc1ErKTv9XSG4rI/gTsjXEYU+XiSo2Mai3aEdFSuhPs
-         BUrfA/9DxtiV5O5ZMoq38ILIdxa9vaexWz+9YdDvkECBE2x5kNxZBUuxZCv6HIJ4Iql6
-         22xZyfi/7tTloB/UVV6LQtiTkADcUQ96NGMmwjxCTEz62+R9UJrUx4U30skYP4GokxeG
-         RbVZisNZ7jBQ0GTXzn0RkqreVDWBO8GOuHArFeIc6Fsn9dIW5wIC5YmSD9jUc5I5lTKJ
-         NpEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=+1eWxKuIPwR4Tloaz6TIjljvK8BIfg7auA41U3tlw74=;
-        b=icI9armB+1mNqRwntBWm1Gi2GRY2zLCVbuck9q8c1zB9bEOqaHgS7EIfBq9mHaphX/
-         HJkPGVvi62i4Ikq9OUoZUo0u3UXJhQ9//uh6cIM57KPEl+E8AF//W3ZS/ZgX2T0qJ7iK
-         1ZMmLNlwoeVNN79BOT3VLwNUEH8koXf4ifw59cJmfYuW6gCTvhE7B5yAPKU0G3NLuSbY
-         PnlSIbEqoMrxqcTdWTkKLn99AmdaJ2PWzhrthJeibSocdt6RPtrL4Pz6B7J130DoRhVK
-         KPBIdukOReOeNsciMwT+pzuKUAo6dvcQeb6m81ecDFxvajVfKeO3kkXgNk2OmDi676bD
-         Wm2Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eHm8JCBj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d21si2062705qtj.176.2019.06.06.10.11.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Jun 2019 10:11:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eHm8JCBj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([127.0.0.1]:35478 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hYvuq-0007YN-7M
-	for alex.bennee@linaro.org; Thu, 06 Jun 2019 13:11:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36612)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYvuf-0007YB-Jo
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:10:54 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hYvue-0004g1-Ag
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:10:53 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34671)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hYvue-0004U0-2S
-	for qemu-arm@nongnu.org; Thu, 06 Jun 2019 13:10:52 -0400
-Received: by mail-wr1-x444.google.com with SMTP id e16so3252925wrn.1
-	for <qemu-arm@nongnu.org>; Thu, 06 Jun 2019 10:10:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=+1eWxKuIPwR4Tloaz6TIjljvK8BIfg7auA41U3tlw74=;
-	b=eHm8JCBjM0XyARgnPlT4t6xuzBk107s9RI1XrhIde6WogKebEPjG4gIwnNC6VZsbXZ
-	JUtnKg3etT5CwY3cjzjUJ7asPZC31xuwfk6W4gTSEFO3zPkSvbgCJL2I9w6rVbqLpJGR
-	oIZr4jGcrJZUA1iUCKs7763P7mfAeZEL4HRY57HBJUJuFgwj3GBVoK/lMTgpbqs1BIur
-	JL0+bqXia+i1NzhZn8yuJf0HbDqNIpe7umzDmpvdlrxEVvEQpioZDlDN+9b+eoaO1RU/
-	Kr2RTjgajdcjtJOopl1PHjWyHZYZpDXW+90fSkjJiOR958b48E3bSZkOrsn1lAwgbHeN
-	dHrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=+1eWxKuIPwR4Tloaz6TIjljvK8BIfg7auA41U3tlw74=;
-	b=cybefBAiVW9f19wwO3zApY7/ESKqM/s6k7kYdqzX1ME+vyOuo8Qt1Z8c4cG2IJvyHT
-	BaUvzT+p4WC859k4hYobJI4CKtSD0yJ04BmsJLu3VS9MGnzS41S1m+hbnFqF7CECrR6K
-	SzFdsCqHT/NZuM59X5765LHIa81kPWhXgp3vW7O+KKldc2KDkZ1sk1MeI6+EcHcIFRvl
-	o1DyWvQkYFt82LROvfcprmdfFlJ39UOIAfdTcYYVNCO69f0Fj2PerDm5J0w+GAHM/0XO
-	bl4kJRFcLR71EHuwPk+eok63qcIwk67Lqr65VSQCtQnAZ4zCUESvP8uUbh9fyA2PwfFa
-	ekMw==
-X-Gm-Message-State: APjAAAUY0cX+osO5kVfWR1T6ZwPshKB+abosw7jwSww52KD8/reCRYRl
-	2v91jnphMS7mBwwbZokAu9L1LyE37Q2FSg==
-X-Received: by 2002:a5d:53c7:: with SMTP id a7mr16244855wrw.91.1559841048806; 
-	Thu, 06 Jun 2019 10:10:48 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-	by smtp.gmail.com with ESMTPSA id
-	y184sm3037092wmg.14.2019.06.06.10.10.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 06 Jun 2019 10:10:48 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu,  6 Jun 2019 18:10:46 +0100
-Message-Id: <20190606171046.2732-1-peter.maydell@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b2sm1567719wrp.72.2019.06.07.02.12.28
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Fri, 07 Jun 2019 02:12:30 -0700 (PDT)
+Received: from zen.linaroharston. (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 1EC991FFAF;
+	Fri,  7 Jun 2019 10:05:54 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <laurent@vivier.eu>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PULL 26/52] semihosting: split console_out into string and char versions
+Date: Fri,  7 Jun 2019 10:05:25 +0100
+Message-Id: <20190607090552.12434-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190607090552.12434-1-alex.bennee@linaro.org>
+References: <20190607090552.12434-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH RISU] arm.risu: Add patterns for VFP<->gpreg
- transfers
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1GV1NNtQre85
+X-TUID: o+I5bNZaPS9J
 
-Add instruction patterns to cover the "transfer between
-Arm core and extension register" spaces (A7.8 and A7.9
-in DDI0406C.c). We omit VMSR/VMRS because they might
-have side effects (for stores to special regs) or give
-results dependent on previous execution (for loads).
+This is ostensibly to avoid the weirdness of len looking like it might
+come from a guest and sometimes being used. While we are at it fix up
+the error checking for the arm-linux-user implementation of the API
+which got flagged up by Coverity (CID 1401700).
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I think these are the only VFP insns we were missing.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
- arm.risu | 33 +++++++++++++++++++++++++--------
- 1 file changed, 25 insertions(+), 8 deletions(-)
-
-diff --git a/arm.risu b/arm.risu
-index af73345..9009e6b 100644
---- a/arm.risu
-+++ b/arm.risu
-@@ -111,11 +111,6 @@ SBC_imm A1 cond:4 0010110 s:1 rn:4 rd:4 imm:12
- SBC_reg A1 cond:4 0000110 s:1 rn:4 rd:4 imm:5 type:2 0 rm:4
- SBC_rsr A1 cond:4 0000110 s:1 rn:4 rd:4 rs:4 0 type:2 1 rm:4
+diff --git a/hw/semihosting/console.c b/hw/semihosting/console.c
+index 466ea6dade..4a5758972d 100644
+--- a/hw/semihosting/console.c
++++ b/hw/semihosting/console.c
+@@ -36,26 +36,24 @@ int qemu_semihosting_log_out(const char *s, int len)
+ /*
+  * A re-implementation of lock_user_string that we can use locally
+  * instead of relying on softmmu-semi. Hopefully we can deprecate that
+- * in time. We either copy len bytes if specified or until we find a NULL.
++ * in time. Copy string until we find a 0 or address error.
+  */
+-static GString *copy_user_string(CPUArchState *env, target_ulong addr, int len)
++static GString *copy_user_string(CPUArchState *env, target_ulong addr)
+ {
+     CPUState *cpu = ENV_GET_CPU(env);
+-    GString *s = g_string_sized_new(len ? len : 128);
++    GString *s = g_string_sized_new(128);
+     uint8_t c;
+-    bool done;
  
--# vector duplicate (reg)
--# b:e == 11 UNDEF
--VDUP A1a cond:4 1110 1 b 1 0 vd:3 0 rt:4 1011 d 0 e 1 0000 { ($b == 0) || ($e == 0); }
--VDUP A1b cond:4 1110 1 b 0 0 vd:4 rt:4 1011 d 0 e 1 0000 { ($b == 0) || ($e == 0); }
--
- ########### Neon loads and stores #########################
- # These patterns cover all the Neon element/structure
- # load store insns, ie the whole of the space in section
-@@ -707,9 +702,6 @@ VFNM A1 cond:4 11101 d 01 vn:4 vd:4 101 sz n op m 0 vm:4
- ########### Extension register load/store #################
- # The following sets of patterns cover:
- #  'extension register load/store insns' (A7.6)
--# Still TODO:
--#  '8, 16 and 32 bit transfers' (A7.8)
--#  '64 bit transfers (A7.9)
- # as described in DDI0406B
- ###########################################################
+     do {
+         if (cpu_memory_rw_debug(cpu, addr++, &c, 1, 0) == 0) {
+             s = g_string_append_c(s, c);
+-            done = len ? s->len == len : c == 0;
+         } else {
+             qemu_log_mask(LOG_GUEST_ERROR,
+                           "%s: passed inaccessible address " TARGET_FMT_lx,
+                           __func__, addr);
+-            done = true;
++            break;
+         }
+-    } while (!done);
++    } while (c!=0);
  
-@@ -775,6 +767,31 @@ VLDR A1a cond:4 1101 1 d 01 rn:4 vd:4 101 x imm:8 \
- VLDR A1b cond:4 1101 1 d 01 rn:4 vd:4 101 x imm:8 \
-  !memory { reg_minus_imm($rn, $imm * 4); }
+     return s;
+ }
+@@ -68,9 +66,9 @@ static void semihosting_cb(CPUState *cs, target_ulong ret, target_ulong err)
+     }
+ }
  
-+########### Extension register transfer ###################
-+# The following sets of patterns cover:
-+#  '8, 16 and 32-bit transfer between ARM core and
-+#  extension registers' (A7.8)
-+# as described in DDI0406C
-+# with the exception of VMSR/VMRS.
-+###########################################################
+-int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
++int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
+ {
+-    GString *s = copy_user_string(env, addr, len);
++    GString *s = copy_user_string(env, addr);
+     int out = s->len;
+ 
+     if (use_gdb_syscalls()) {
+@@ -82,3 +80,21 @@ int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
+     g_string_free(s, true);
+     return out;
+ }
 +
-+VMOV_core_single A1 cond:4 1110 000 op:1 vd:4 rt:4 1010 n:1 0010000
-+VMOV_core_scalar A1 cond:4 1110 0 opc:2 0 vd:4 rt:4 1011 d:1 opc2:2 10000
-+VMOV_scalar_core A1 cond:4 1110 u:1 opc:2 1 vn:4 rt:4 1011 n:1 opc2:2 10000
++void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
++{
++    CPUState *cpu = ENV_GET_CPU(env);
++    uint8_t c;
 +
-+# vector duplicate (reg)
-+# b:e == 11 UNDEF
-+VDUP A1a cond:4 1110 1 b 1 0 vd:3 0 rt:4 1011 d 0 e 1 0000 { ($b == 0) || ($e == 0); }
-+VDUP A1b cond:4 1110 1 b 0 0 vd:4 rt:4 1011 d 0 e 1 0000 { ($b == 0) || ($e == 0); }
-+
-+########### Extension register transfer ###################
-+# The following sets of patterns cover:
-+#  '64-bit transfers between ARM core and extension
-+#  registers' (A7.8)
-+# as described in DDI0406C
-+###########################################################
-+VMOV_core_2single A1 cond:4 1100 010 op:1 rt2:4 rt:4 1010 00 m:1 1 vm:4 { ($vm != 0xf || $m != 1) && ($op == 0 || $rt2 != $rt); }
-+VMOV_core_double A1 cond:4 1100 010 op:1 rt2:4 rt:4 1011 00 m:1 1 vm:4 { $op == 0 || $rt2 != $rt; }
++    if (cpu_memory_rw_debug(cpu, addr, &c, 1, 0) == 0) {
++        if (use_gdb_syscalls()) {
++            gdb_do_syscall(semihosting_cb, "write,2,%x,%x", addr, 1);
++        } else {
++            qemu_semihosting_log_out((const char *) &c, 1);
++        }
++    } else {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: passed inaccessible address " TARGET_FMT_lx,
++                      __func__, addr);
++    }
++}
+diff --git a/include/hw/semihosting/console.h b/include/hw/semihosting/console.h
+index 30e66ae20a..3a4fba7590 100644
+--- a/include/hw/semihosting/console.h
++++ b/include/hw/semihosting/console.h
+@@ -10,17 +10,30 @@
+ #define _SEMIHOST_CONSOLE_H_
  
- #####
- # v8 only insns
+ /**
+- * qemu_semihosting_console_out:
++ * qemu_semihosting_console_outs:
+  * @env: CPUArchState
+- * @s: host address of guest string
+- * @len: length of string or 0 (string is null terminated)
++ * @s: host address of null terminated guest string
+  *
+- * Send a guest string to the debug console. This may be the remote
+- * gdb session if a softmmu guest is currently being debugged.
++ * Send a null terminated guest string to the debug console. This may
++ * be the remote gdb session if a softmmu guest is currently being
++ * debugged.
+  *
+  * Returns: number of bytes written.
+  */
+-int qemu_semihosting_console_out(CPUArchState *env, target_ulong s, int len);
++int qemu_semihosting_console_outs(CPUArchState *env, target_ulong s);
++
++/**
++ * qemu_semihosting_console_outc:
++ * @env: CPUArchState
++ * @s: host address of null terminated guest string
++ *
++ * Send single character from guest memory to the debug console. This
++ * may be the remote gdb session if a softmmu guest is currently being
++ * debugged.
++ *
++ * Returns: nothing
++ */
++void qemu_semihosting_console_outc(CPUArchState *env, target_ulong c);
+ 
+ /**
+  * qemu_semihosting_log_out:
+diff --git a/linux-user/arm/semihost.c b/linux-user/arm/semihost.c
+index 9554102a85..a16b525eec 100644
+--- a/linux-user/arm/semihost.c
++++ b/linux-user/arm/semihost.c
+@@ -15,10 +15,35 @@
+ #include "hw/semihosting/console.h"
+ #include "qemu.h"
+ 
+-int qemu_semihosting_console_out(CPUArchState *env, target_ulong addr, int len)
++int qemu_semihosting_console_outs(CPUArchState *env, target_ulong addr)
+ {
+-    void *s = lock_user_string(addr);
+-    len = write(STDERR_FILENO, s, len ? len : strlen(s));
++    int len = target_strlen(addr);
++    void *s;
++    if (len < 0){
++       qemu_log_mask(LOG_GUEST_ERROR,
++                     "%s: passed inaccessible address " TARGET_FMT_lx,
++                     __func__, addr);
++       return 0;
++    }
++    s = lock_user(VERIFY_READ, addr, (long)(len + 1), 1);
++    g_assert(s);  /* target_strlen has already verified this will work */
++    len = write(STDERR_FILENO, s, len);
+     unlock_user(s, addr, 0);
+     return len;
+ }
++
++void qemu_semihosting_console_outc(CPUArchState *env, target_ulong addr)
++{
++    char c;
++
++    if (get_user_u8(c, addr)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: passed inaccessible address " TARGET_FMT_lx,
++                      __func__, addr);
++    } else {
++        if (write(STDERR_FILENO, &c, 1) != 1) {
++            qemu_log_mask(LOG_UNIMP, "%s: unexpected write to stdout failure",
++                          __func__);
++        }
++    }
++}
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 53e807ab72..8844da8da3 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -315,10 +315,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return set_swi_errno(ts, close(arg0));
+         }
+     case TARGET_SYS_WRITEC:
+-        qemu_semihosting_console_out(env, args, 1);
++        qemu_semihosting_console_outc(env, args);
+         return 0xdeadbeef;
+     case TARGET_SYS_WRITE0:
+-        return qemu_semihosting_console_out(env, args, 0);
++        return qemu_semihosting_console_outs(env, args);
+     case TARGET_SYS_WRITE:
+         GET_ARG(0);
+         GET_ARG(1);
 -- 
 2.20.1
-

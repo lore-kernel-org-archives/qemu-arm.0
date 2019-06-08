@@ -1,185 +1,459 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1319264wrg;
-        Sat, 8 Jun 2019 07:16:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzhIOd5T9L5hGQ9e8M+3t4/jS596lZe1q8OftV5j2i++UYFYypx18ZQnlmlrdUsj3CTwUyV
-X-Received: by 2002:a37:6601:: with SMTP id a1mr47715272qkc.282.1560003372425;
-        Sat, 08 Jun 2019 07:16:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560003372; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1520470wrg;
+        Sat, 8 Jun 2019 11:57:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyAdWV5ZD5gc8kvyVtOpKk8/yu0NoKbLBbRvTMJ+Ut9sJNYNptIEbafbbGmpqyMulIURQTF
+X-Received: by 2002:a17:90a:80c4:: with SMTP id k4mr12651339pjw.74.1560020230622;
+        Sat, 08 Jun 2019 11:57:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560020230; cv=none;
         d=google.com; s=arc-20160816;
-        b=OV5UKsklb/Qc2p/bG7Tqnmp1El8ZNB64ezTRpRDbUdbZWCqG5lSSq/lbmQHjPb4rVW
-         JuysuC0W+Q2IjWtuvXCoXOOXANA0le7ZUzj+JPX5l8F2u+dOxQaHfuuIElXSQ0LVx+Zv
-         t7kCo7GALUzU4s5pRsF4etItJl42GXiyCBghVonKO+vVyqiIS5ujJZv6njsvtGpAYgwT
-         ZKX40Rvpp3mwS5w3CJzt7U+H+qyXpAAHtIuOcQfeV4F1KLPi2MhTfWvxoiqLNN+RlUMI
-         o99fMQJE336fta/hhXwd7HyxggCoipVOYe/bsvz1gR27mYL6swzhbNZOXfXK1jbYCrfB
-         y/kw==
+        b=qPebZ+pyX7kpwYBxUnRbByuOm8BrL9BzINDvekX4PXDKrTMFdIdPRq6/1mPqbKiGDc
+         mOi98bE8V2uoDywyutZdFfuvFE7ys8K1Nm7Vlu+rD0Jn7AgCI7029oeENaeiGnexPdOh
+         qBFAi8SMAetcrk04b1t3oNfyerQchA2c9wD+9+fKctvfkty/uO7b9Z6m8fACZG3yX6w3
+         B5MuhV2CqDuLKf6Q8MeJ+EY3aKkKy/XRMXXuF3DWg/eUAMvKI9BGjwaWpjjefuI/il0u
+         puTc9/hR+CCwlj7p5AQEjkKa4lMjsUu/BqkRcdQswc8F14Xftkhfo9zFAbuEz51Qe0SC
+         /IxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=KwnGJ9GqB1RWry5OQZTGJUU9tTViCTx8zwYcMYqxefg=;
-        b=0V9Xl9HPjk9jDwTHvlpQ2xDECT8l+B47AxdNI91+6wEGGg0s8MOzoJrwSoAOPD8Xei
-         9O0/BWbLJ6xVdK7T71fNMFqkjAdYtNLvhqyJMItFQKWVUDFNiNWDCBnexJOYwXmq5yEq
-         hMkwxsZTTu8lDDlJJ/WKQESGhwJ/bZXUR8Mr0XkEd9TjXKQzm0MjHPL1D8xuegOPTD6Q
-         0VHDCK8yzfv3gvocqGTKjMoccYbOMQ14G3E5RnsxY9TOC2aiJg/3EuWr+c6DOZvxyDOY
-         Jxmstw5vp3ZuX5xo/VonV3eqyncvp/Ko0OmBudGLITYpWWXPL3HIiORQdIFjwGWYVNqH
-         KICA==
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=PiPddwyYFVIQ9hoQT84fewvPCxw4vtzNDY8zIezG5IE=;
+        b=iJcoxpMrMKfhKiZjcx0egqQmImQAvw1b8EvSEd3oGCWSN+svQ+f7ZvfoP1iSDXvBPH
+         M+hk/Erok8S+q8qASDzL/YfJPz7OkufbCfj8YXzoTDonccmYBkKsL8O0VOYg3ZrcO4R9
+         BAB4cmNluqX3yRlwJ4/rcIUxdsDutVp6TqRz1S8kJ4vOgIbfHOam5mYiFCgLiY8gXJx+
+         4l6fo/KBiti9SyQVWlqfhGF2L+9UEMRpK+Rr4+OOurQKB4JObK2VIfKp6TRYkGpvlBJb
+         L/rAgCM12IM+bZZARX2ohVoJ07hFDLzgcLh38d353rEsxTV5gVOQwfzqzwRP0g9RbmFS
+         ObOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lM0WzvT9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j67si3183765qtb.114.2019.06.08.07.16.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 08 Jun 2019 07:16:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id i5si5116358pgs.4.2019.06.08.11.57.09;
+        Sat, 08 Jun 2019 11:57:10 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=lM0WzvT9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58690 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hZc8h-0000Kz-Re
-	for alex.bennee@linaro.org; Sat, 08 Jun 2019 10:16:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37620)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hZc7o-00009O-OZ
- for qemu-arm@nongnu.org; Sat, 08 Jun 2019 10:15:17 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hZc7h-0001ly-R3
- for qemu-arm@nongnu.org; Sat, 08 Jun 2019 10:15:12 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38068)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hZc7e-0001hs-5Z
- for qemu-arm@nongnu.org; Sat, 08 Jun 2019 10:15:07 -0400
-Received: by mail-ot1-x343.google.com with SMTP id d17so4493716oth.5
- for <qemu-arm@nongnu.org>; Sat, 08 Jun 2019 07:15:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KwnGJ9GqB1RWry5OQZTGJUU9tTViCTx8zwYcMYqxefg=;
- b=lM0WzvT96nvZmIIkiw0FmRAqCNA8V1XdjUBr40BkmKF/GEEMKTBeQRZbEx9F5bUlP8
- GvId/XVvaKsUGolpAIhkXEvB14XVbYWGEyA3S+9AOxNAgrSYirOrixH1ac1Jaav5Ga6C
- oXJfzL9diWNL0vBKuEfSdbMC2DdvieJCXJezOh/Jk2lTGlS8n+Z94f6YxHRtMWCrlDDQ
- cP6rFtBfVtSPhd6dQK6TEPTIjxB0jVDHNwzD19e2p8xS6vEuoIcWoUQKMqQnmIXW6+g2
- JdU3SBEN9CODxuIdC4uD2YF41dUrJE2GjRRYOGiDLMXbbvHHjN6TdsHrwRq7CQR1eFDL
- gqfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=KwnGJ9GqB1RWry5OQZTGJUU9tTViCTx8zwYcMYqxefg=;
- b=TklUBWweNY72FjE1o0lnn0DzhqGURviJbgH9+fBMuDQgsq88Hj0PueU/h+LMjTg4J0
- zWwaEZyXY3nR+T+2rprS4gR99luhZ1js4xV0tie1xJsp0NFK2+gpkXS94p+kQR3RAXSD
- rsty1CrdJ//RVXRLJbpTdFrjwN0qp1RZX6+GADi4OD9V0HAYin3H7o2dEk7dHKcnotmI
- rLDcz9JHNW3s/mo1EP6kQduEccvZYfka3PIc2KdVNivuxCh+34rE4kGlpjaV6RD6Nneq
- 5qTioB7rJB4QJti4HQmHQ/lg4ak72DiBMvtWCU9mm3l3xmmxYGX5SmYSymt7FrIOB8cs
- 973g==
-X-Gm-Message-State: APjAAAVnhrDWx0f+kUoNareuwXuJbOq0LtVm7U8+tFwiezeFPK99N/qT
- vDBmrtYxcWKRn1c9Nd69wLRCPA==
-X-Received: by 2002:a9d:2c47:: with SMTP id f65mr23890806otb.185.1560003304161; 
- Sat, 08 Jun 2019 07:15:04 -0700 (PDT)
-Received: from [192.168.3.43] (200-56-192-86-cable.cybercable.net.mx.
- [200.56.192.86])
- by smtp.gmail.com with ESMTPSA id u62sm1355285otb.63.2019.06.08.07.15.02
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 08 Jun 2019 07:15:03 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190606174609.20487-1-peter.maydell@linaro.org>
- <20190606174609.20487-19-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <b6cf60b7-55c0-dc9c-1731-3e46dd8824ca@linaro.org>
-Date: Sat, 8 Jun 2019 09:14:59 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727316AbfFHS5J convert rfc822-to-8bit (ORCPT
+        <rfc822;daniel.diaz@linaro.org> + 5 others);
+        Sat, 8 Jun 2019 14:57:09 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:6932 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727250AbfFHS5I (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sat, 8 Jun 2019 14:57:08 -0400
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.53])
+        by Forcepoint Email with ESMTP id BFEE3A12E2772488134D;
+        Sun,  9 Jun 2019 02:57:05 +0800 (CST)
+Received: from dggeme708-chm.china.huawei.com (10.1.199.104) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Sun, 9 Jun 2019 02:57:05 +0800
+Received: from dggeme755-chm.china.huawei.com (10.3.19.101) by
+ dggeme708-chm.china.huawei.com (10.1.199.104) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1591.10; Sun, 9 Jun 2019 02:57:05 +0800
+Received: from dggeme755-chm.china.huawei.com ([10.7.64.71]) by
+ dggeme755-chm.china.huawei.com ([10.7.64.71]) with mapi id 15.01.1591.008;
+ Sun, 9 Jun 2019 02:57:04 +0800
+From:   gengdongjiu <gengdongjiu@huawei.com>
+To:     Jonathan Cameron <jonathan.cameron@huawei.com>
+CC:     "pbonzini@redhat.com" <pbonzini@redhat.com>,
+        "mst@redhat.com" <mst@redhat.com>,
+        "imammedo@redhat.com" <imammedo@redhat.com>,
+        "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+        "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+        "lersek@redhat.com" <lersek@redhat.com>,
+        "james.morse@arm.com" <james.morse@arm.com>,
+        "mtosatti@redhat.com" <mtosatti@redhat.com>,
+        "rth@twiddle.net" <rth@twiddle.net>,
+        "ehabkost@redhat.com" <ehabkost@redhat.com>,
+        "zhengxiang (A)" <zhengxiang9@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>,
+        "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+        "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        Linuxarm <linuxarm@huawei.com>
+Subject: Re: [PATCH v17 10/10] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+Thread-Topic: [PATCH v17 10/10] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+Thread-Index: AdUeKoFKTn95+u3RzUSQCGYUeDxt7Q==
+Date:   Sat, 8 Jun 2019 18:57:04 +0000
+Message-ID: <7168813e1d7a47d6acc6402a4af4fc2d@huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.45.48.6]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 MIME-Version: 1.0
-In-Reply-To: <20190606174609.20487-19-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH 18/42] target/arm: Convert VFP VMLA to
- decodetree
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4xK/M0JUCl/r
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 1M9AEXSE1jiE
 
-On 6/6/19 12:45 PM, Peter Maydell wrote:
-> Convert the VFP VMLA instruction to decodetree.
 > 
-> This is the first of the VFP 3-operand data processing instructions,
-> so we include in this patch the code which loops over the elements
-> for an old-style VFP vector operation. The existing code to do this
-> looping uses the deprecated cpu_F0s/F0d/F1s/F1d TCG globals; since
-> we are going to be converting instructions one at a time anyway
-> we can take the opportunity to make the new loop use TCG temporaries,
-> which means we can do that conversion one operation at a time
-> rather than needing to do it all in one go.
+> On Tue, 14 May 2019 04:18:23 -0700
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 > 
-> We include an UNDEF check which was missing in the old code:
-> short-vector operations (with stride or length non-zero) were
-> deprecated in v7A and must UNDEF in v8A, so if the MVFR0 FPShVec
-> field does not indicate that support for short vectors is present
-> we UNDEF the operations that would use them. (This is a change
-> of behaviour for Cortex-A7, Cortex-A15 and the v8 CPUs, which
-> previously were all incorrectly allowing short-vector operations.)
+> > Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> > translates the host VA delivered by host to guest PA, then fill this
+> > PA to guest APEI GHES memory, then notify guest according to the SIGBUS type.
+> >
+> > If guest accesses the poisoned memory, it generates Synchronous
+> > External Abort(SEA). Then host kernel gets an APEI notification and
+> > call memory_failure() to unmapped the affected page for the guest's
+> > stage 2, finally return to guest.
+> >
+> > Guest continues to access PG_hwpoison page, it will trap to KVM as
+> > stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered
+> > to Qemu, Qemu record this error address into guest APEI GHES memory
+> > and notify guest using Synchronous-External-Abort(SEA).
+> >
+> > Suggested-by: James Morse <james.morse@arm.com>
+> > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Hi Dongjiu,
 > 
-> Note that the conversion fixes a bug in the old code for the
-> case of VFP short-vector "mixed scalar/vector operations". These
-> happen where the destination register is in a vector bank but
-> but the second operand is in a scalar bank. For example
->   vmla.f64 d10, d1, d16   with length 2 stride 2
-> is equivalent to the pair of scalar operations
->   vmla.f64 d10, d1, d16
->   vmla.f64 d8, d3, d16
-> where the destination and first input register cycle through
-> their vector but the second input is scalar (d16). In the
-> old decoder the gen_vfp_F1_mul() operation uses cpu_F1{s,d}
-> as a temporary output for the multiply, which trashes the
-> second input operand. For the fully-scalar case (where we
-> never do a second iteration) and the fully-vector case
-> (where the loop loads the new second input operand) this
-> doesn't matter, but for the mixed scalar/vector case we
-> will end up using the wrong value for later loop iterations.
-> In the new code we use TCG temporaries and so avoid the bug.
-> This bug is present for all the multiply-accumulate insns
-> that operate on short vectors: VMLA, VMLS, VNMLA, VNMLS.
+> Good to see this moving forwards again.
 > 
-> Note 2: the expression used to calculate the next register
-> number in the vector bank is not in fact correct; we leave
-> this behaviour unchanged from the old decoder and will
-> fix this bug later in the series.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu.h               |   5 +
->  target/arm/translate-vfp.inc.c | 205 +++++++++++++++++++++++++++++++++
->  target/arm/translate.c         |  14 ++-
->  target/arm/vfp.decode          |   6 +
->  4 files changed, 224 insertions(+), 6 deletions(-)
+> A few really minor things inline.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Jonathan,
+   It is good to see your comments, thanks for the review.
 
+> 
+> Thanks,
+> 
+> Jonathan
+> 
+> > ---
+> >  hw/acpi/acpi_ghes.c         | 177 ++++++++++++++++++++++++++++++++++++++++++++
+> >  include/hw/acpi/acpi_ghes.h |   6 +-
+> >  include/sysemu/kvm.h        |   2 +-
+> >  target/arm/kvm64.c          |  39 ++++++++++
+> >  4 files changed, 222 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c index
+> > d03e797..06b7374 100644
+> > --- a/hw/acpi/acpi_ghes.c
+> > +++ b/hw/acpi/acpi_ghes.c
+> > @@ -26,6 +26,101 @@
+> >  #include "sysemu/sysemu.h"
+> >  #include "qemu/error-report.h"
+> >
+> > +/* UEFI 2.6: N.2.5 Memory Error Section */ static void
+> > +build_append_mem_cper(GArray *table, uint64_t error_physical_addr) {
+> > +    /*
+> > +     * Memory Error Record
+> > +     */
+> > +    build_append_int_noprefix(table,
+> > +                 (1UL << 14) | /* Type Valid */
+> > +                 (1UL << 1) /* Physical Address Valid */,
+> > +                 8);
+> > +    /* Memory error status information */
+> > +    build_append_int_noprefix(table, 0, 8);
+> > +    /* The physical address at which the memory error occurred */
+> > +    build_append_int_noprefix(table, error_physical_addr, 8);
+> > +    build_append_int_noprefix(table, 0, 48);
+> 
+> This could do with a comment to say we are basically skipping all the detailed information normally found in such a record.
 
-r~
+Ok, it is good to have such a comment, I will add it.
 
+> 
+> 
+> > +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
+> > +    build_append_int_noprefix(table, 0, 7);
+> A similar comment for this last section would probably use useful as well.
+
+Ok
+
+> 
+> > +}
+> > +
+> > +static int ghes_record_mem_error(uint64_t error_block_address,
+> > +                                    uint64_t error_physical_addr) {
+> > +    GArray *block;
+> > +    uint64_t current_block_length;
+> > +    uint32_t data_length;
+> > +    /* Memory section */
+> The variable name is clear I think, so not sure this comment adds any information.
+
+Ok, I will remove this comment since the variable name can tell the meaning.
+
+> 
+> > +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
+> > +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
+> > +                                0x83, 0xB1};
+> > +    uint8_t fru_id[16] = {0};
+> > +    uint8_t fru_text[20] = {0};
+> > +
+> > +    /* Generic Error Status Block
+> > +     * | +---------------------+
+> > +     * | |     block_status    |
+> > +     * | +---------------------+
+> > +     * | |    raw_data_offset  |
+> > +     * | +---------------------+
+> > +     * | |    raw_data_length  |
+> > +     * | +---------------------+
+> > +     * | |     data_length     |
+> > +     * | +---------------------+
+> > +     * | |   error_severity    |
+> > +     * | +---------------------+
+> > +     */
+> > +    block = g_array_new(false, true /* clear */, 1);
+> > +
+> > +    /* Get the length of the Generic Error Data Entries */
+> > +    cpu_physical_memory_read(error_block_address +
+> > +        offsetof(AcpiGenericErrorStatus, data_length), &data_length,
+> > + 4);
+> > +
+> > +    /* The current whole length of the generic error status block */
+> > +    current_block_length = sizeof(AcpiGenericErrorStatus) +
+> > + le32_to_cpu(data_length);
+> > +
+> > +    /* This is the length if adding a new generic error data entry*/
+> > +    data_length += GHES_DATA_LENGTH;
+> > +    data_length += GHES_MEM_CPER_LENGTH;
+> > +
+> > +    /* Check whether it will run out of the preallocated memory if adding a new
+> > +     * generic error data entry
+> > +     */
+> > +    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
+> > +        error_report("Record CPER out of boundary!!!");
+> > +        return GHES_CPER_FAIL;
+> > +    }
+> > +
+> > +    /* Build the new generic error status block header */
+> > +    build_append_ghes_generic_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
+> > +        cpu_to_le32(data_length),
+> > + cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
+> > +
+> > +    /* Write back above generic error status block header to guest memory */
+> > +    cpu_physical_memory_write(error_block_address, block->data,
+> > +                              block->len);
+> > +
+> > +    /* Add a new generic error data entry */
+> > +
+> > +    data_length = block->len;
+> > +    /* Build this new generic error data entry header */
+> > +    build_append_ghes_generic_data(block, mem_section_id_le,
+> > +                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
+> > +                    cpu_to_le32(80)/* the total size of Memory Error
+> > + Record */, fru_id,
+> 
+> Use the define for that 80?
+
+Ok, I will.
+
+> 
+> > +                    fru_text, 0);
+> > +
+> > +    /* Build the memory section CPER for above new generic error data entry */
+> > +    build_append_mem_cper(block, error_physical_addr);
+> > +
+> > +    /* Write back above this new generic error data entry to guest memory */
+> > +    cpu_physical_memory_write(error_block_address + current_block_length,
+> > +                    block->data + data_length, block->len -
+> > + data_length);
+> > +
+> > +    g_array_free(block, true);
+> > +
+> > +    return GHES_CPER_OK;
+> > +}
+> > +
+> >  /* Build table for the hardware error fw_cfg blob */  void
+> > build_hardware_error_table(GArray *hardware_errors, BIOSLinker
+> > *linker)  { @@ -169,3 +264,85 @@ void ghes_add_fw_cfg(FWCfgState *s,
+> > GArray *hardware_error)
+> >      fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
+> >          &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);  }
+> > +
+> > +bool ghes_record_errors(uint32_t notify, uint64_t physical_address) {
+> > +    uint64_t error_block_addr, read_ack_register_addr;
+> > +    int read_ack_register = 0, loop = 0;
+> > +    uint64_t start_addr = le32_to_cpu(ges.ghes_addr_le);
+> > +    bool ret = GHES_CPER_FAIL;
+> > +    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff,
+> > +                                        0xff, 0xff, 0xff, 0, 1};
+> > +
+> > +    /*
+> > +     * | +---------------------+ ges.ghes_addr_le
+> > +     * | |error_block_address0 |
+> > +     * | +---------------------+ --+--
+> > +     * | |    .............    | GHES_ADDRESS_SIZE
+> > +     * | +---------------------+ --+--
+> > +     * | |error_block_addressN |
+> > +     * | +---------------------+
+> > +     * | | read_ack_register0  |
+> > +     * | +---------------------+ --+--
+> > +     * | |   .............     | GHES_ADDRESS_SIZE
+> > +     * | +---------------------+ --+--
+> > +     * | | read_ack_registerN  |
+> > +     * | +---------------------+ --+--
+> > +     * | |      CPER           |   |
+> > +     * | |      ....           | GHES_MAX_RAW_DATA_LENGT
+> > +     * | |      CPER           |   |
+> > +     * | +---------------------+ --+--
+> > +     * | |    ..........       |
+> > +     * | +---------------------+
+> > +     * | |      CPER           |
+> > +     * | |      ....           |
+> > +     * | |      CPER           |
+> > +     * | +---------------------+
+> > +     */
+> > +    if (physical_address && notify < ACPI_HEST_NOTIFY_RESERVED) {
+> > +        /* Find and check the source id for this new CPER */
+> > +        if (error_source_id[notify] != 0xff) {
+> > +            start_addr += error_source_id[notify] * GHES_ADDRESS_SIZE;
+> > +        } else {
+> > +            goto out;
+> > +        }
+> > +
+> > +        cpu_physical_memory_read(start_addr, &error_block_addr,
+> > +                                    GHES_ADDRESS_SIZE);
+> > +
+> > +        read_ack_register_addr = start_addr +
+> > +                        ACPI_HEST_ERROR_SOURCE_COUNT *
+> > +GHES_ADDRESS_SIZE;
+> > +retry:
+> > +        cpu_physical_memory_read(read_ack_register_addr,
+> > +                                 &read_ack_register,
+> > +GHES_ADDRESS_SIZE);
+> > +
+> > +        /* zero means OSPM does not acknowledge the error */
+> > +        if (!read_ack_register) {
+> > +            if (loop < 3) {
+> > +                usleep(100 * 1000);
+> > +                loop++;
+> > +                goto retry;
+> > +            } else {
+> > +                error_report("OSPM does not acknowledge previous error,"
+> > +                    " so can not record CPER for current error, forcibly acknowledge"
+> > +                    " previous error to avoid blocking next time CPER record! Exit");
+> > +                read_ack_register = 1;
+> > +                cpu_physical_memory_write(read_ack_register_addr,
+> > +                    &read_ack_register, GHES_ADDRESS_SIZE);
+> > +            }
+> > +        } else {
+> > +            if (error_block_addr) {
+> > +                read_ack_register = 0;
+> > +                /* Clear the Read Ack Register, OSPM will write it to 1 when
+> > +                 * acknowledge this error.
+> > +                 */
+> > +                cpu_physical_memory_write(read_ack_register_addr,
+> > +                    &read_ack_register, GHES_ADDRESS_SIZE);
+> > +                ret = ghes_record_mem_error(error_block_addr, physical_address);
+> > +            }
+> > +        }
+> > +    }
+> > +
+> > +out:
+> > +    return ret;
+> > +}
+> > diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
+> > index 38fd87c..6b38097 100644
+> > --- a/include/hw/acpi/acpi_ghes.h
+> > +++ b/include/hw/acpi/acpi_ghes.h
+> > @@ -32,11 +32,14 @@
+> >  #define GHES_ADDRESS_SIZE           8
+> >
+> >  #define GHES_DATA_LENGTH            72
+> > -#define GHES_CPER_LENGTH            80
+> > +#define GHES_MEM_CPER_LENGTH        80
+> 
+> This is a good change to make, but please roll it into patch 7 where this was introduced rather than introducing it only to rename later.
+> 
+> Actually it would be even better to just not introduce it in patch 7 and bring it in for the first time in this patch.
+
+Yes, you are right, I will do it. 
+
+> 
+> >
+> >  #define ReadAckPreserve             0xfffffffe
+> >  #define ReadAckWrite                0x1
+> >
+> > +#define GHES_CPER_OK                1
+> > +#define GHES_CPER_FAIL              0
+> > +
+> >  /* The max size in bytes for one error block */
+> >  #define GHES_MAX_RAW_DATA_LENGTH        0x1000
+> >  /* Now only have GPIO-Signal and ARMv8 SEA notification types error
+> > sources @@ -76,4 +79,5 @@ void build_apei_hest(GArray *table_data,
+> > GArray *hardware_error,
+> >
+> >  void build_hardware_error_table(GArray *hardware_errors, BIOSLinker
+> > *linker);  void ghes_add_fw_cfg(FWCfgState *s, GArray
+> > *hardware_errors);
+> > +bool ghes_record_errors(uint32_t notify, uint64_t
+> > +error_physical_addr);
+> >  #endif
+> > diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h index
+> > a6d1cd1..1d1a7a8 100644
+> > --- a/include/sysemu/kvm.h
+> > +++ b/include/sysemu/kvm.h
+> > @@ -377,7 +377,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+> >  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */  unsigned
+> > long kvm_arch_vcpu_id(CPUState *cpu);
+> >
+> > -#ifdef TARGET_I386
+> > +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+> >  #define KVM_HAVE_MCE_INJECTION 1
+> >  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+> > #endif diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c index
+> > c7bdc6a..d2eac28 100644
+> > --- a/target/arm/kvm64.c
+> > +++ b/target/arm/kvm64.c
+> > @@ -27,6 +27,10 @@
+> >  #include "kvm_arm.h"
+> >  #include "internals.h"
+> >  #include "hw/arm/arm.h"
+> > +#include "exec/ram_addr.h"
+> > +#include "hw/acpi/acpi-defs.h"
+> > +#include "hw/acpi/acpi_ghes.h"
+> > +#include "hw/acpi/acpi.h"
+> >
+> >  static bool have_guest_debug;
+> >
+> > @@ -1029,6 +1033,41 @@ int kvm_arch_get_registers(CPUState *cs)
+> >      return ret;
+> >  }
+> >
+> > +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr) {
+> > +    ram_addr_t ram_addr;
+> > +    hwaddr paddr;
+> > +
+> > +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
+> > +
+> > +    if (acpi_enabled && addr) {
+> > +        ram_addr = qemu_ram_addr_from_host(addr);
+> > +        if (ram_addr != RAM_ADDR_INVALID &&
+> > +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> > +            kvm_hwpoison_page_add(ram_addr);
+> > +            /* Asynchronous signal will be masked by main thread, so
+> > +             * only handle synchronous signal.
+> > +             */
+> > +            if (code == BUS_MCEERR_AR) {
+> > +                kvm_cpu_synchronize_state(c);
+> > +                if (GHES_CPER_FAIL != ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
+> > +                    kvm_inject_arm_sea(c);
+> > +                } else {
+> > +                    fprintf(stderr, "failed to record the error\n");
+> > +                }
+> > +            }
+> > +            return;
+> > +        }
+> > +        fprintf(stderr, "Hardware memory error for memory used by "
+> > +                "QEMU itself instead of guest system!\n");
+> > +    }
+> > +
+> > +    if (code == BUS_MCEERR_AR) {
+> > +        fprintf(stderr, "Hardware memory error!\n");
+> > +        exit(1);
+> > +    }
+> > +}
+> > +
+> >  /* C6.6.29 BRK instruction */
+> >  static const uint32_t brk_insn = 0xd4200000;
+> >
+> 

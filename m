@@ -1,124 +1,110 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3588757wrg;
-        Mon, 10 Jun 2019 13:54:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxbgjC6pe3uRhtIC3fK9pptx4VopnH/PnLhJ58xBKRioips7Y/+2lzLfb8cG40kEs6d7Oof
-X-Received: by 2002:a1f:30d4:: with SMTP id w203mr11987214vkw.0.1560200054918;
-        Mon, 10 Jun 2019 13:54:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560200054; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3613129wrg;
+        Mon, 10 Jun 2019 14:22:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzMZgyqUJ+TORNQYwsCNxccX+QVUjb6v3VSThVhUp27msDx4rxX82HfxEqknXxY/i53Fzct
+X-Received: by 2002:ac8:2f90:: with SMTP id l16mr45701600qta.12.1560201740464;
+        Mon, 10 Jun 2019 14:22:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560201740; cv=none;
         d=google.com; s=arc-20160816;
-        b=hEuZGzzqCE1g/Ui3XPWf5lm5/uzKYgpUzdPnf3GEdod3kzD30xzIqQOOKRtYJVPyEv
-         2LOB4J7q4F13g/W0I8HfEPCn52x9i5bzjYtLMnxQnv493qDil/7NDx1NsIGAPvJ2uxcc
-         gALWktF0TGEwlag8phXI/AI2/iwhZE9A6xACwiV9L9KyX7C5+a3O52Lr50Dhgqr1sC0V
-         C7C0nLHMK5OYW/k7PsjxDFTPbgyh/JsdhPagUOtwyLh/oYGX8wkz6FQ5PWfNzwi7FZ82
-         XtESjY1mcWeVcm+qCTZx074CAnFfEelVN27RtYKjjEw92z615KPy2/Y6KqnC/tfmMjst
-         nhxw==
+        b=DxzbeBB+o1VxEG4fTGbLFjYgJGNLdpmwrd+w6VwyMjVQWu/V/7L1krij4QqgF5IS4M
+         cXwJzVK7g7lTn7YXY3S+eGkW6MzBtr/YIPyKmrE7YjE/imYFD91dFWwCVZrih6N7ESqj
+         w1Z2HYGvoWPwGqz5gyXQBvuAZXZ9Qx4qG/UZ8TqIFoObzdMNjzYV+RGPWNdvPgQtAlth
+         n91K3YaWLlz1WjyFIuDsChtv56IvSXh3nX5V18TbO4Q13hF3TkyPfmORwmMLLpkyqPgs
+         1hcFaY6lsX41RNp4pJdfYVmrzJzU7t2Ddhn+xkZKHsPbCqD+9hcRndGYLAV70tgj4uuh
+         Sf6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:message-id:mime-version:references
-         :in-reply-to:date:to:from;
-        bh=iZyBrB2mjl5CDkgESEb+dw8MrHikdBIQun3w0Ru80Pc=;
-        b=I+1tGA4V2G26YyMkoRcO2eJqkDc3OHJHFUnEglhOdBgo8qCjnW4T5k88auqdqvTbz1
-         xen8ON7bFAkpbaL2HaGbEdt44C/QkQrNu9BNJeC4j+OuDjS26wNpdAp+i7vPfAOfbRMr
-         N0ownPJqrgXz8r+wbTEPEq1+08++MuPkSF1E8xWgr3tjGXsw945wrqXIjzT725tHgudr
-         N6gvzy3Ckio727raN/Vp34JWWsUoQtbLEM18FFRsRfGEeKhLO7PD46Wi/k9LuvaexYjF
-         NFDt7TILtMlGuYwFR+A+ABUExD5QZpGtutT+UeIP5GRjJ36lQqCIeM+PuTbRunuVbnkS
-         JBvA==
+         :content-transfer-encoding:mime-version:to:from:references
+         :message-id:date:dkim-signature;
+        bh=OfbsNFVwuZJcrP6HY83smkRTXaZ90KkPSNbUmAkVhYU=;
+        b=KjTMeSZTUhCyAbxWyjir4Ds5Ozzb7OvbFuNsFi/qRZjsqjwCat2yKu82sNWsDzPmpe
+         AZHMfvdH0gOQ5C8U3VIwnaP0nDNut5jcO2dh6HQae+Jd817mjUcSHzRj46MOh86U7f7c
+         icfse5+sX9SWexKtE29wefsxgLyrJcGCqJKGd4p7WowEjeBBlq5Bm9/BpVbVe8kMZnuw
+         M0dCWAMN7zDcfK7g9d1ou37E6g5p7rg1psjclUBA7ifikqo8hmMKAkU3AXr2ngF0OPxV
+         wbpC9ZASSwe3etaNHmajn/ivnyPOuM6xp7X6yy+RKJIc0Z4otkpZ5LNkWS6sJmVJeCPk
+         rkPg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o02vdxRL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o125si1828866vsd.140.2019.06.10.13.54.14
+        by mx.google.com with ESMTPS id r54si1560888qtk.10.2019.06.10.14.22.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jun 2019 13:54:14 -0700 (PDT)
+        Mon, 10 Jun 2019 14:22:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=o02vdxRL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:49646 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49732 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1haRJ0-0001jb-F8
-	for alex.bennee@linaro.org; Mon, 10 Jun 2019 16:54:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51859)
+	id 1haRkB-0000Rj-UZ
+	for alex.bennee@linaro.org; Mon, 10 Jun 2019 17:22:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54884)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <anoo@linux.ibm.com>) id 1haRIV-0001jG-7K
- for qemu-arm@nongnu.org; Mon, 10 Jun 2019 16:53:44 -0400
+ (envelope-from <ali.mezgani@gmail.com>) id 1haPwo-0007xv-EF
+ for qemu-arm@nongnu.org; Mon, 10 Jun 2019 15:27:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <anoo@linux.ibm.com>) id 1haRIT-0004c7-VA
- for qemu-arm@nongnu.org; Mon, 10 Jun 2019 16:53:43 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:55072
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <anoo@linux.ibm.com>) id 1haRIQ-0004VM-TJ
- for qemu-arm@nongnu.org; Mon, 10 Jun 2019 16:53:39 -0400
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x5AKqCVf112544
- for <qemu-arm@nongnu.org>; Mon, 10 Jun 2019 16:53:34 -0400
-Received: from e36.co.us.ibm.com (e36.co.us.ibm.com [32.97.110.154])
- by mx0b-001b2d01.pphosted.com with ESMTP id 2t1xmer193-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 10 Jun 2019 16:53:33 -0400
-Received: from localhost
- by e36.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-arm@nongnu.org> from <anoo@linux.ibm.com>;
- Mon, 10 Jun 2019 21:53:33 +0100
-Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
- by e36.co.us.ibm.com (192.168.1.136) with IBM ESMTP SMTP Gateway: Authorized
- Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Mon, 10 Jun 2019 21:53:29 +0100
-Received: from b03ledav003.gho.boulder.ibm.com
- (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
- by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x5AKrS0324510748
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 10 Jun 2019 20:53:28 GMT
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4648C6A051;
- Mon, 10 Jun 2019 20:53:28 +0000 (GMT)
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C69136A04D;
- Mon, 10 Jun 2019 20:53:27 +0000 (GMT)
-Received: from habcap11p1.aus.stglabs.ibm.com (unknown [9.41.164.53])
- by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
- Mon, 10 Jun 2019 20:53:27 +0000 (GMT)
-From: Adriana Kobylak <anoo@linux.ibm.com>
-To: clg@kaod.org, peter.maydell@linaro.org, andrew@aj.id.au, joel@jms.id.au,
- qemu-arm@nongnu.org
-Date: Mon, 10 Jun 2019 15:53:31 -0500
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <cce364a3-548c-427f-addb-07e38f827e03@www.fastmail.com>
-References: <cce364a3-548c-427f-addb-07e38f827e03@www.fastmail.com>
+ (envelope-from <ali.mezgani@gmail.com>) id 1haPwm-0005FN-Iy
+ for qemu-arm@nongnu.org; Mon, 10 Jun 2019 15:27:14 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37970)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <ali.mezgani@gmail.com>)
+ id 1haPwl-0005Dx-8j; Mon, 10 Jun 2019 15:27:12 -0400
+Received: by mail-wm1-x344.google.com with SMTP id s15so456953wmj.3;
+ Mon, 10 Jun 2019 12:27:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:subject:message-id:references:from:to:cc:mime-version
+ :content-transfer-encoding;
+ bh=OfbsNFVwuZJcrP6HY83smkRTXaZ90KkPSNbUmAkVhYU=;
+ b=o02vdxRLqV0x2TL0X9wjPfitgiU+GqQIAirNhHRAP0CpcCNvL0RpV/7ol1JVYOS+KI
+ 6mKzjSzVgxPDAWuM6OmKfsKCt8/rdt1FaTFZwq7iSfeWkk1riI6wp2/4uoa1XcGqbfPj
+ pBX9A3XH1coDj06At5RTQBqCGS1hoh+JyRzrlsz2SNjE/J75dW2kGtSPJTAoXZGyIkB/
+ F9Z4I7XUWw5Gh8FD0/YB5T2P1I5E4JVWvDTYCoKJoXlCZFvuMOWmFi8DfFuXH+2bpuTt
+ 0r4qZOpja0WXmhIXMrNRXDZ4P3yobvLI5o70y2MNoOS/8rF3UNoluVnN+lU0oslsoKp0
+ sREA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:subject:message-id:references:from:to:cc
+ :mime-version:content-transfer-encoding;
+ bh=OfbsNFVwuZJcrP6HY83smkRTXaZ90KkPSNbUmAkVhYU=;
+ b=VAUB2kUUppwIw4SYlVQDcVxt9UD/WzaTE6F8fLESMDMJ5ZtvbtRc6QEXjhPN579s5Q
+ l96ZdJO95bMZkLMAOGkBq5oM7281Uce2EL3rpIipEbCdFrOwy5IELwbOUI+7y5aLVYVL
+ FqS8LWFoVTVlcwov8cIyMB09VZlE5v9N0Os7KirRUAU6U8z42ChFZOF/6FHTSdF5ZlMz
+ KjETrdTnYT+nb/Yrs/21Ac6KzAyHHOKQjoZa2kHWYkj13FKIrL8Xj4aw/MIyS67pz9iY
+ OUCeLHA7ejVKD2rgeNtZOQp7nKddQiZYGScnj2SuTLDfNhdVhUkJlGfjdkcCOXNcTmfM
+ DW+g==
+X-Gm-Message-State: APjAAAXSmbH6Y7M1FctkqS3lU5IEM681+ANxLJJHvrztkXxHQmTz2oFd
+ 2VF00ntm7QsiorMWXWbQfmU=
+X-Received: by 2002:a1c:c915:: with SMTP id f21mr13625368wmb.123.1560194828485; 
+ Mon, 10 Jun 2019 12:27:08 -0700 (PDT)
+Received: from [192.168.1.220] ([41.250.232.80])
+ by smtp.gmail.com with ESMTPSA id 88sm19573484wrl.68.2019.06.10.12.27.03
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 10 Jun 2019 12:27:07 -0700 (PDT)
+Date: Mon, 10 Jun 2019 20:27:01 +0100
+X-Priority: 3
+Message-ID: <-2xywm9-ifb5yxlyz8y68ukj0nxy24qv-dgwbua-uu49fa-7xmm95-lpocej7h67y1tkkit4-31nus5-2bayju4z2jwk-kie60g-zanq099a87cdol5jfg-f5bb5a-yxekc0-x2g2ruj2xqm3-y3jyo2-un0xhw.1560194821347@email.android.com>
+References: <20190606174609.20487-1-peter.maydell@linaro.org>
+ <20190606174609.20487-29-peter.maydell@linaro.org>
+ <da80c3ea-5a33-e7e0-209e-89a8413c8f06@linaro.org>
+ <CAFEAcA8etr7_rmQsQcUY+cPHZEZna-An+r5TPJtMb4OQO-6Dsg@mail.gmail.com>
+ <b9ac8354-6bb2-0080-f597-706b4b94009d@linaro.org>
+From: Ali Mezgani <ali.mezgani@gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-x-cbid: 19061020-0020-0000-0000-00000EF79DEF
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00011243; HX=3.00000242; KW=3.00000007;
- PH=3.00000004; SC=3.00000286; SDB=6.01216112; UDB=6.00639395; IPR=6.00997212; 
- MB=3.00027255; MTD=3.00000008; XFM=3.00000015; UTC=2019-06-10 20:53:31
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19061020-0021-0000-0000-00006631EEBB
-Message-Id: <1560200011-70806-1-git-send-email-anoo@linux.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-06-10_09:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1810050000 definitions=main-1906100139
-Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by
- mx0b-001b2d01.pphosted.com id x5AKqCVf112544
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-Subject: [Qemu-arm] [PATCH qemu v2] aspeed: Add support for the swift-bmc
- board
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
+X-Mailman-Approved-At: Mon, 10 Jun 2019 17:22:06 -0400
+Subject: Re: [Qemu-arm] [PATCH 28/42] target/arm: Convert VMOV (imm) to
+ decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -130,121 +116,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Adriana Kobylak <anoo@us.ibm.com>, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1TaXfyDgePXx
+X-TUID: ar3S+pPwVyoS
 
-From: Adriana Kobylak <anoo@us.ibm.com>
-
-The Swift board is an OpenPOWER system hosting POWER processors.
-Add support for their BMC including the I2C devices as found on HW.
-
-Signed-off-by: Adriana Kobylak <anoo@us.ibm.com>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 50 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 33070a6..7fd0e0c 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -73,6 +73,17 @@ struct AspeedBoardState {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              =
-\
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
-=20
-+/* Swift hardware value: 0xF11AD206 */
-+#define SWIFT_BMC_HW_STRAP1 (                                           =
-\
-+        AST2500_HW_STRAP1_DEFAULTS |                                    =
-\
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     =
-\
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        =
-\
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               =
-\
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              =
-\
-+        SCU_H_PLL_BYPASS_EN |                                           =
-\
-+        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              =
-\
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
-+
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
-=20
-@@ -287,6 +298,35 @@ static void romulus_bmc_i2c_init(AspeedBoardState *b=
-mc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
-, 0x32);
- }
-=20
-+static void swift_bmc_i2c_init(AspeedBoardState *bmc)
-+{
-+    AspeedSoCState *soc =3D &bmc->soc;
-+
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca9552"=
-, 0x60);
-+
-+    /* The swift board expects a TMP275 but a TMP105 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105",=
- 0x48);
-+    /* The swift board expects a pca9551 but a pca9552 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "pca9552"=
-, 0x60);
-+
-+    /* The swift board expects an Epson RX8900 RTC but a ds1338 is compa=
-tible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "ds1338",=
- 0x32);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552"=
-, 0x60);
-+
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp423",=
- 0x4c);
-+    /* The swift board expects a pca9539 but a pca9552 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "pca9552"=
-, 0x74);
-+
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "tmp423"=
-, 0x4c);
-+    /* The swift board expects a pca9539 but a pca9552 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "pca9552=
-",
-+                     0x74);
-+
-+    /* The swift board expects a TMP275 but a TMP105 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105"=
-, 0x48);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105"=
-, 0x4a);
-+}
-+
- static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
- {
-     AspeedSoCState *soc =3D &bmc->soc;
-@@ -378,6 +418,16 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
-         .i2c_init  =3D romulus_bmc_i2c_init,
-         .ram       =3D 512 * MiB,
-     }, {
-+        .name      =3D MACHINE_TYPE_NAME("swift-bmc"),
-+        .desc      =3D "OpenPOWER Swift BMC (ARM1176)",
-+        .soc_name  =3D "ast2500-a1",
-+        .hw_strap1 =3D SWIFT_BMC_HW_STRAP1,
-+        .fmc_model =3D "mx66l1g45g",
-+        .spi_model =3D "mx66l1g45g",
-+        .num_cs    =3D 2,
-+        .i2c_init  =3D swift_bmc_i2c_init,
-+        .ram       =3D 512 * MiB,
-+    }, {
-         .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
-         .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
-         .soc_name  =3D "ast2500-a1",
---=20
-1.8.3.1
+VGhhbmsgeW91IGJyb3RoZXIgZm9yIHRoaXMgY2h1bmsgb2YgY29kZS4gPGJyPjxicj5SZWdhcmRz
+LCA8YnI+PGJyPlNlbnQgZnJvbSBteSBIdWF3ZWkgTW9iaWxlPGRpdiBjbGFzcz0icXVvdGUiIHN0
+eWxlPSJsaW5lLWhlaWdodDogMS41Ij48YnI+PGJyPi0tLS0tLS0tIE9yaWdpbmFsIE1lc3NhZ2Ug
+LS0tLS0tLS08YnI+U3ViamVjdDogUmU6IFtRZW11LWFybV0gW1BBVENIIDI4LzQyXSB0YXJnZXQv
+YXJtOiBDb252ZXJ0IFZNT1YgKGltbSkgdG8gZGVjb2RldHJlZTxicj5Gcm9tOiBSaWNoYXJkIEhl
+bmRlcnNvbiA8cmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZz48YnI+VG86IFBldGVyIE1heWRl
+bGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz48YnI+Q0M6IHFlbXUtYXJtIDxxZW11LWFybUBu
+b25nbnUub3JnPixRRU1VIERldmVsb3BlcnMgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz48YnI+PGJy
+PjxiciB0eXBlPSJhdHRyaWJ1dGlvbiI+PGJsb2NrcXVvdGUgY2xhc3M9InF1b3RlIiBzdHlsZT0i
+bWFyZ2luOjAgMCAwIC44ZXg7Ym9yZGVyLWxlZnQ6MXB4ICNjY2Mgc29saWQ7cGFkZGluZy1sZWZ0
+OjFleCI+T24gNi8xMC8xOSAxMDoxMiBBTSwgUGV0ZXIgTWF5ZGVsbCB3cm90ZTo8YnI+PiBPbiBT
+YXQsIDggSnVuIDIwMTkgYXQgMjA6MjksIFJpY2hhcmQgSGVuZGVyc29uPGJyPj4gPHJpY2hhcmQu
+aGVuZGVyc29uQGxpbmFyby5vcmc+IHdyb3RlOjxicj4+Pjxicj4+PiBPbiA2LzYvMTkgMTI6NDUg
+UE0sIFBldGVyIE1heWRlbGwgd3JvdGU6PGJyPj4+PiArICAgIG4gPSAoYS0+aW1tNGggPDwgMjgp
+ICYgMHg4MDAwMDAwMDs8YnI+Pj4+ICsgICAgaSA9ICgoYS0+aW1tNGggPDwgNCkgJiAweDcwKSB8
+IGEtPmltbTRsOzxicj4+Pj4gKyAgICBpZiAoaSAmIDB4NDApIHs8YnI+Pj4+ICsgICAgICAgIGkg
+fD0gMHg3ODA7PGJyPj4+PiArICAgIH0gZWxzZSB7PGJyPj4+PiArICAgICAgICBpIHw9IDB4ODAw
+Ozxicj4+Pj4gKyAgICB9PGJyPj4+PiArICAgIG4gfD0gaSA8PCAxOTs8YnI+Pj48YnI+Pj4gQ2Fu
+IHdlIHJldXNlIHZmcF9leHBhbmRfaW1tIGhlcmU/ICBHaXZlbiB0aGF0IHlvdSBkb24ndCBoYXZl
+IHB1cmUgY29kZSBtb3Rpb248YnI+Pj4gZnJvbSB0aGUgb2xkIGNvZGUgKGR1ZSB0byBmaWVsZCBl
+eHRyYWN0aW9uKSBpdCBkb2Vzbid0IGZlZWwgd3JvbmcgdG8gZ28gYWhlYWQ8YnI+Pj4gYW5kIGZp
+eCB0aGlzIHdhcnQgbm93Ljxicj4+IDxicj4+IEkgZHVubm8sIEknZCBraW5kIG9mIHByZWZlciB0
+byBkbyBpdCBsYXRlci4gV2UncmUgYWxyZWFkeTxicj4+IGRyaWZ0aW5nIGF3YXkgZnJvbSB0aGUg
+b2xkIGNvZGUgYXMgeW91IHNheSwgYW5kIGdvaW5nPGJyPj4gc3RyYWlnaHQgdG8gdmZwX2V4cGFu
+ZF9pbW0oKSBtYWtlcyBpdCBldmVuIGxlc3MgY2xlYXIgdGhhdDxicj4+IHdlJ3JlIGRvaW5nIHRo
+ZSBzYW1lIHRoaW5nIHRoZSBvbGQgY29kZSB3YXMuLi48YnI+PGJyPkZhaXIgZW5vdWdoLjxicj5S
+ZXZpZXdlZC1ieTogUmljaGFyZCBIZW5kZXJzb24gPHJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5v
+cmc+PGJyPjxicj48YnI+cn48YnI+PGJyPjwvYmxvY2txdW90ZT48L2Rpdj4=
 

@@ -1,97 +1,96 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4201354wrg;
-        Tue, 11 Jun 2019 03:58:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxbAVRBAFRyid1M+u937g6t9XHH+IOw3GcU54Oxs/pzyrI37td++uHQl0lCYZ3Kny+M8RPs
-X-Received: by 2002:ae9:c106:: with SMTP id z6mr39646708qki.285.1560250699798;
-        Tue, 11 Jun 2019 03:58:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560250699; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4201614wrg;
+        Tue, 11 Jun 2019 03:58:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqypAsdoY6479A5s0EC038w0udTsIQboU/+UhtB1+9NDQqgOXj2fK/1z5pKkbf75QsYnr+Y9
+X-Received: by 2002:ac8:189d:: with SMTP id s29mr35652032qtj.14.1560250722185;
+        Tue, 11 Jun 2019 03:58:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560250722; cv=none;
         d=google.com; s=arc-20160816;
-        b=UAcDel2P0WxGQTjWzlfZOH5lzP4Ry3758lmlNAKn3g/oKdYPrS4zm8TBbfDNwZzog/
-         XHToLPaRRYzKk196vIxxwEBULaIVIz0ybvVUEw5UBGmz+VVXF/eLsFtvnbmsFKPKnXNz
-         tzdYZyEuid7nNUB8tA0aBYsrIMf/Zr3UTidHB8TLCERTJIdQbinq5qSZmSTnW3qtw6Ao
-         6VkxGZJiYNf1GDen0lV6hXbhcb1q59c5Iu/i/lihLW4x+WvVrk8xStYfI0bs0/Ls5f7z
-         GRB3AEyZJBT2fJ1IWdhCEwqBxxr6GPYSyu0lnZhKGbwPUyXBq6yJNOM9skmasIXDM9sJ
-         dMNA==
+        b=tmfwHb0e/UktbqShpU4TAScmQRvulFjnJNAc18ENDfnpDLBdcbPrBbU+JiFIZTWI6N
+         Skd5ZeUTvpyskUykCItA0XsqAom5NkKrG6F2PD9Cher94MGYWuQYOE6S4sUH3pp/Ia8S
+         0oxC+UjMM3yybX9SYErHLTGAOGUdOSoPeWaHD/9q+9bOv9vmebpRhRRGdQIZrQ0O0qik
+         +lRJ7YLrIY8bVSkafEBmlTCAZsCEeiBSYe92ILq3G8HVs/vYDHuSFvqEO/gr7ITr5zsi
+         oqLRCNsjs0bhW9gJOVqXbTq0+oJCkYZm1p1ZWOUAxWuvyyEhZekobe4IODD8RUz+TEu+
+         KHlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=qg/q28/1l7FZ4RskG5OVkaABmpJcNNAgYVp1eUduElc=;
-        b=bv8aTIQ3PZfLefWGEfr0VK3MdtFpqPGW2OFi0d7JmCuENZS0Rr5fH8Qj7MoSgwzqqT
-         4nTiON3ELBb8PnzuadYE7yLh1RldeXbz1vCzPqKauSgtcbe/qF5qYumF42dZ3AvqydHP
-         WXM4aLs7Ar2xS7PJ4FUqbh2el1lwnVFocBY6NpMqjP4AHQS0TzeP/Z2HFePIDIUilyFB
-         nTspxVVbU1nYkA+usGnFESg3iLdTqrPziUBZfvOUray9+xVYLQ3zE8r/nGtOXnge/BRS
-         dCFpEItrSPRgSTzppxxRDqzL45/FwgZyYQwq1FPz6xoMayQuEpW8woZSVG8l7D46sl9J
-         TzQg==
+        bh=Hf8MpfHUo3UF7W88LcdNMkV2Y4vd60PhY1ZXXjpwkAc=;
+        b=UmbVoFBpU9rDCY2qDFhPbE5mKvYWV3/PV0lJG1gXOdIML4uL+piVa7kyPyJeNPfZhq
+         OT7Rh2hjyGsWB1BKgvrGdO1/dS1FaSnTVNTOeIetS4ZfxjBMPQIV+JeO/BTUPhB5b4e4
+         pR7s+vJy+mWXpWsLyAKqRT6R86ZUr4v20kKXQezc0dAWGTp3HxjC6Giui5/4nGUR4HXH
+         Fsniaqaleh5h1zsrLLy8zDwPQamRjOqWhOaQNMroKv14Mj3CXR5RMedVW9KngTAulIlb
+         PjlIl6zR+BVbhy+R4yyWJnO1+zxZQxfsrp3DOewYWV5NG3tuZOt9vhm39RD8DQ7dFLzs
+         m+Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HYf46yLm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fx5hVUm1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8si4608203qtb.258.2019.06.11.03.58.19
+        by mx.google.com with ESMTPS id c68si657076qkb.79.2019.06.11.03.58.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 03:58:19 -0700 (PDT)
+        Tue, 11 Jun 2019 03:58:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HYf46yLm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fx5hVUm1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56192 helo=lists.gnu.org)
+Received: from localhost ([::1]:56204 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1haeTr-0002tw-9y
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 06:58:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38840)
+	id 1haeUD-0003h5-NX
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 06:58:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39000)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1haePf-00072H-SC
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:02 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1haePp-0007AU-I3
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1haePd-0007B0-29
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:53:59 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54208)
+ (envelope-from <peter.maydell@linaro.org>) id 1haePl-0007Ix-8P
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:09 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54212)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1haePc-0007A7-Rj
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:53:56 -0400
-Received: by mail-wm1-x342.google.com with SMTP id x15so2419248wmj.3
- for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 03:53:56 -0700 (PDT)
+ id 1haePj-0007Fx-5F
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:05 -0400
+Received: by mail-wm1-x344.google.com with SMTP id x15so2419589wmj.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 03:54:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qg/q28/1l7FZ4RskG5OVkaABmpJcNNAgYVp1eUduElc=;
- b=HYf46yLmF/0wqPkGW/XTezzAiofwoLDjWODLPoucVetrmg6dRYuDaQsheWjscnwo/z
- HJ9Ic5j41UENofIL9d1iWwMeiCgcAzyFD6Wck1CNt8QMmyYASejvYB2S4UhPKltRCFMb
- LtbJSCWS5Cpt1Q1UgR2523bR6lc+dUIL2WTstF+XsYB1kC7G9EF9YvzjjBlCgqy41dk8
- 9xCQQSmHAzwfEkFMzQjAceFt3FUqkZIfYS05/F7ofN0Eh5Wqy3uxiQnhBMw6XGER0iv9
- l6uP/7frY5sZczRmlh5UcbU3n3PhZnP+nY0eK1AW334yRRIR+4V7FA/zmT0JzkXg2O6P
- v8xA==
+ bh=Hf8MpfHUo3UF7W88LcdNMkV2Y4vd60PhY1ZXXjpwkAc=;
+ b=Fx5hVUm1eRw65ai0VMakp4UYD1xiLn6mW8m0KC3dub5tD75DRNetioFNRSPCAN1LRK
+ eSUtrgWL/hOJhkzmXXQMh2+JHYeLp8oZYWhi1za8aawIC3N+6OQ+ih+1pJxeRH506Lu0
+ 6SLusmNvIfg3jcjnr51PcBocxZlwKlB8TrUxISyo4Q48O1cSLSEcSjR0EOrmv/jl/rS0
+ j6d1g9ISeybLsK2FMkR+AEzqCjEYIvgXKAbtO7cJmXCJ61wAQQ7uZMuroxEWTzWM/VgH
+ KUYLrvTxDNgNBbTNNaIPWc1GDLiy9ISetQqJ2eE+kSf6tkst7DaJitJtBFzKlVPEvK0f
+ lkOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qg/q28/1l7FZ4RskG5OVkaABmpJcNNAgYVp1eUduElc=;
- b=bbPG2JP11vyLpEvbrDk5IE2rdfBLZgYWZNwCHZWzuIFzuUyduH2VZDtdn75vwx+ctQ
- kKlGdnYWoIgnxgHfy+mFX0wat6gsduO71V8dbjcB6vxHSloxtbFkU4TqP7toRY3YnqA9
- juG+61nM3+c9XS2+RdWG7Po+IAZjv1RxEiyTLE6eazNfo+jdKAk/VYOR2CqdbgmHOOlI
- WgP5Ux14wdbxEh3YXjZbeGftqlq90qMTtuOlmyPBNv4bdbzBRJOSdXEmtlkMcB1gx2H6
- k8UE9HjhmCLrTrkqT8/n+8XXJYQUlX7lzBJluG5QZBGkC3O1rX+K0sLr9GaAkjGAzjrI
- O8DQ==
-X-Gm-Message-State: APjAAAVyzjzN+wzGDDU/jYSLRFZ0SzH5W5SzlYRroeAn+Yd8H3AWTecP
- 17Dgh4dcUligDMvt/GwVVaOq09oy4ForBQ==
-X-Received: by 2002:a05:600c:21d4:: with SMTP id
- x20mr10738729wmj.149.1560250435460; 
- Tue, 11 Jun 2019 03:53:55 -0700 (PDT)
+ bh=Hf8MpfHUo3UF7W88LcdNMkV2Y4vd60PhY1ZXXjpwkAc=;
+ b=XkasAHrJHFBA/T57Q2zcUCweBm8lQesaqnjo8W23oroWpjplo1+q9qSCAxwFiVy1xY
+ lIGL1hYCMit/DHXvzTTAEdh7xxC9F6acYwJxnAKehF9WHtdOyuEAamBRhbFCGmJWW4n1
+ YyGxdlP397JHE4YTt7VZ5PBOjMOy5G/GCQMCjB5s4Sa823TCenNL30v6xmOhQn4A2cUr
+ gO/cnKHw8G5qm/c0Cw2+XIcuQxxGRXR9VXKYo9AnuVMac6d3xHHCD4FIh87JXwugiBia
+ AMddk0nZQnDtpBL84LsJuK6Vx3nLBHacU7LXB21tU6ysreo6ELMGa6DkUbJZVPE7rHh9
+ N8LA==
+X-Gm-Message-State: APjAAAU6Hjm6TPZYf809wsmp7UdZhplsopSrWsRqyS3CSi3DP442JlAc
+ kwEa87kihPWGTiaU5jfROTAjE1o/FNk02g==
+X-Received: by 2002:a7b:c018:: with SMTP id c24mr14398730wmb.37.1560250441571; 
+ Tue, 11 Jun 2019 03:54:01 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id e17sm10785945wrt.95.2019.06.11.03.53.54
+ by smtp.gmail.com with ESMTPSA id e17sm10785945wrt.95.2019.06.11.03.54.00
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 11 Jun 2019 03:53:54 -0700 (PDT)
+ Tue, 11 Jun 2019 03:54:01 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 11 Jun 2019 11:53:11 +0100
-Message-Id: <20190611105351.9871-3-peter.maydell@linaro.org>
+Date: Tue, 11 Jun 2019 11:53:17 +0100
+Message-Id: <20190611105351.9871-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190611105351.9871-1-peter.maydell@linaro.org>
 References: <20190611105351.9871-1-peter.maydell@linaro.org>
@@ -99,9 +98,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH v2 02/42] target/arm: Add stubs for AArch32 VFP
- decodetree
+X-Received-From: 2a00:1450:4864:20::344
+Subject: [Qemu-arm] [PATCH v2 08/42] target/arm: Convert
+ VRINTA/VRINTN/VRINTP/VRINTM to decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,202 +115,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cld1M9TmLmn7
+X-TUID: i/pxA0bWU2bR
 
-Add the infrastructure for building and invoking a decodetree decoder
-for the AArch32 VFP encodings.  At the moment the new decoder covers
-nothing, so we always fall back to the existing hand-written decode.
+Convert the VRINTA/VRINTN/VRINTP/VRINTM instructions to decodetree.
+Again, trans_VRINT() is temporarily left in translate.c.
 
-We need to have one decoder for the unconditional insns and one for
-the conditional insns, as otherwise the patterns for conditional
-insns would incorrectly match against the unconditional ones too.
-
-Since translate.c is over 14,000 lines long and we're going to be
-touching pretty much every line of the VFP code as part of the
-decodetree conversion, we create a new translate-vfp.inc.c to hold
-the code which deals with VFP in the new scheme.  It should be
-possible to convert this into a standalone translation unit
-eventually, but the conversion process will be much simpler if we
-simply #include it midway through translate.c to start with.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/Makefile.objs       | 13 +++++++++++++
- target/arm/translate-vfp.inc.c | 31 +++++++++++++++++++++++++++++++
- target/arm/translate.c         | 19 +++++++++++++++++++
- target/arm/vfp-uncond.decode   | 28 ++++++++++++++++++++++++++++
- target/arm/vfp.decode          | 28 ++++++++++++++++++++++++++++
- 5 files changed, 119 insertions(+)
- create mode 100644 target/arm/translate-vfp.inc.c
- create mode 100644 target/arm/vfp-uncond.decode
- create mode 100644 target/arm/vfp.decode
+ target/arm/translate.c       | 60 +++++++++++++++++++++++-------------
+ target/arm/vfp-uncond.decode |  5 +++
+ 2 files changed, 43 insertions(+), 22 deletions(-)
 
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 6bdcc65c2c8..dfa736a3752 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -19,5 +19,18 @@ target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
- 	  $(PYTHON) $(DECODETREE) --decode disas_sve -o $@ $<,\
- 	  "GEN", $(TARGET_DIR)$@)
- 
-+target/arm/decode-vfp.inc.c: $(SRC_PATH)/target/arm/vfp.decode $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) --static-decode disas_vfp -o $@ $<,\
-+	  "GEN", $(TARGET_DIR)$@)
-+
-+target/arm/decode-vfp-uncond.inc.c: $(SRC_PATH)/target/arm/vfp-uncond.decode $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) --static-decode disas_vfp_uncond -o $@ $<,\
-+	  "GEN", $(TARGET_DIR)$@)
-+
- target/arm/translate-sve.o: target/arm/decode-sve.inc.c
-+target/arm/translate.o: target/arm/decode-vfp.inc.c
-+target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
-+
- obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
-diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-new file mode 100644
-index 00000000000..3447b3e6466
---- /dev/null
-+++ b/target/arm/translate-vfp.inc.c
-@@ -0,0 +1,31 @@
-+/*
-+ *  ARM translation: AArch32 VFP instructions
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *  Copyright (c) 2005-2007 CodeSourcery
-+ *  Copyright (c) 2007 OpenedHand, Ltd.
-+ *  Copyright (c) 2019 Linaro, Ltd.
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+/*
-+ * This file is intended to be included from translate.c; it uses
-+ * some macros and definitions provided by that file.
-+ * It might be possible to convert it to a standalone .c file eventually.
-+ */
-+
-+/* Include the generated VFP decoder */
-+#include "decode-vfp.inc.c"
-+#include "decode-vfp-uncond.inc.c"
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index d25e19ef113..c75d94952de 100644
+index 53badde1f52..1f106645bca 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -1727,6 +1727,9 @@ static inline void gen_mov_vreg_F0(int dp, int reg)
+@@ -3270,11 +3270,43 @@ static bool trans_VMINMAXNM(DisasContext *s, arg_VMINMAXNM *a)
+     return true;
+ }
  
- #define ARM_CP_RW_BIT   (1 << 20)
- 
-+/* Include the VFP decoder */
-+#include "translate-vfp.inc.c"
+-static int handle_vrint(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
+-                        int rounding)
++/*
++ * Table for converting the most common AArch32 encoding of
++ * rounding mode to arm_fprounding order (which matches the
++ * common AArch64 order); see ARM ARM pseudocode FPDecodeRM().
++ */
++static const uint8_t fp_decode_rm[] = {
++    FPROUNDING_TIEAWAY,
++    FPROUNDING_TIEEVEN,
++    FPROUNDING_POSINF,
++    FPROUNDING_NEGINF,
++};
 +
- static inline void iwmmxt_load_reg(TCGv_i64 var, int reg)
++static bool trans_VRINT(DisasContext *s, arg_VRINT *a)
  {
-     tcg_gen_ld_i64(var, cpu_env, offsetof(CPUARMState, iwmmxt.regs[reg]));
-@@ -3384,6 +3387,22 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-         return 1;
-     }
- 
-+    /*
-+     * If the decodetree decoder handles this insn it will always
-+     * emit code to either execute the insn or generate an appropriate
-+     * exception; so we don't need to ever return non-zero to tell
-+     * the calling code to emit an UNDEF exception.
-+     */
-+    if (extract32(insn, 28, 4) == 0xf) {
-+        if (disas_vfp_uncond(s, insn)) {
-+            return 0;
-+        }
-+    } else {
-+        if (disas_vfp(s, insn)) {
-+            return 0;
-+        }
+-    TCGv_ptr fpst = get_fpstatus_ptr(0);
++    uint32_t rd, rm;
++    bool dp = a->dp;
++    TCGv_ptr fpst;
+     TCGv_i32 tcg_rmode;
++    int rounding = fp_decode_rm[a->rm];
++
++    if (!dc_isar_feature(aa32_vrint, s)) {
++        return false;
 +    }
 +
-     /* FIXME: this access check should not take precedence over UNDEF
-      * for invalid encodings; we will generate incorrect syndrome information
-      * for attempts to execute invalid vfp/neon encodings with FP disabled.
++    /* UNDEF accesses to D16-D31 if they don't exist */
++    if (dp && !dc_isar_feature(aa32_fp_d32, s) &&
++        ((a->vm | a->vd) & 0x10)) {
++        return false;
++    }
++    rd = a->vd;
++    rm = a->vm;
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    fpst = get_fpstatus_ptr(0);
+ 
+     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rounding));
+     gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+@@ -3305,7 +3337,7 @@ static int handle_vrint(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
+     tcg_temp_free_i32(tcg_rmode);
+ 
+     tcg_temp_free_ptr(fpst);
+-    return 0;
++    return true;
+ }
+ 
+ static int handle_vcvt(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
+@@ -3366,17 +3398,6 @@ static int handle_vcvt(uint32_t insn, uint32_t rd, uint32_t rm, uint32_t dp,
+     return 0;
+ }
+ 
+-/* Table for converting the most common AArch32 encoding of
+- * rounding mode to arm_fprounding order (which matches the
+- * common AArch64 order); see ARM ARM pseudocode FPDecodeRM().
+- */
+-static const uint8_t fp_decode_rm[] = {
+-    FPROUNDING_TIEAWAY,
+-    FPROUNDING_TIEEVEN,
+-    FPROUNDING_POSINF,
+-    FPROUNDING_NEGINF,
+-};
+-
+ static int disas_vfp_misc_insn(DisasContext *s, uint32_t insn)
+ {
+     uint32_t rd, rm, dp = extract32(insn, 8, 1);
+@@ -3389,13 +3410,8 @@ static int disas_vfp_misc_insn(DisasContext *s, uint32_t insn)
+         rm = VFP_SREG_M(insn);
+     }
+ 
+-    if ((insn & 0x0fbc0ed0) == 0x0eb80a40 &&
+-        dc_isar_feature(aa32_vrint, s)) {
+-        /* VRINTA, VRINTN, VRINTP, VRINTM */
+-        int rounding = fp_decode_rm[extract32(insn, 16, 2)];
+-        return handle_vrint(insn, rd, rm, dp, rounding);
+-    } else if ((insn & 0x0fbc0e50) == 0x0ebc0a40 &&
+-               dc_isar_feature(aa32_vcvt_dr, s)) {
++    if ((insn & 0x0fbc0e50) == 0x0ebc0a40 &&
++        dc_isar_feature(aa32_vcvt_dr, s)) {
+         /* VCVTA, VCVTN, VCVTP, VCVTM */
+         int rounding = fp_decode_rm[extract32(insn, 16, 2)];
+         return handle_vcvt(insn, rd, rm, dp, rounding);
 diff --git a/target/arm/vfp-uncond.decode b/target/arm/vfp-uncond.decode
-new file mode 100644
-index 00000000000..b1d9dc507c2
---- /dev/null
+index 8ab201fa058..0aa83285de2 100644
+--- a/target/arm/vfp-uncond.decode
 +++ b/target/arm/vfp-uncond.decode
-@@ -0,0 +1,28 @@
-+# AArch32 VFP instruction descriptions (unconditional insns)
-+#
-+#  Copyright (c) 2019 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
+@@ -50,3 +50,8 @@ VMINMAXNM   1111 1110 1.00 .... .... 1010 . op:1 .0 .... \
+             vm=%vm_sp vn=%vn_sp vd=%vd_sp dp=0
+ VMINMAXNM   1111 1110 1.00 .... .... 1011 . op:1 .0 .... \
+             vm=%vm_dp vn=%vn_dp vd=%vd_dp dp=1
 +
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+# Encodings for the unconditional VFP instructions are here:
-+# generally anything matching A32
-+#  1111 1110 .... .... .... 101. ...0 ....
-+# and T32
-+#  1111 110. .... .... .... 101. .... ....
-+#  1111 1110 .... .... .... 101. .... ....
-+# (but those patterns might also cover some Neon instructions,
-+# which do not live in this file.)
-diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-new file mode 100644
-index 00000000000..28ee664d8c3
---- /dev/null
-+++ b/target/arm/vfp.decode
-@@ -0,0 +1,28 @@
-+# AArch32 VFP instruction descriptions (conditional insns)
-+#
-+#  Copyright (c) 2019 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+# Encodings for the conditional VFP instructions are here:
-+# generally anything matching A32
-+#  cccc 11.. .... .... .... 101. .... ....
-+# and T32
-+#  1110 110. .... .... .... 101. .... ....
-+#  1110 1110 .... .... .... 101. .... ....
-+# (but those patterns might also cover some Neon instructions,
-+# which do not live in this file.)
++VRINT       1111 1110 1.11 10 rm:2 .... 1010 01.0 .... \
++            vm=%vm_sp vd=%vd_sp dp=0
++VRINT       1111 1110 1.11 10 rm:2 .... 1011 01.0 .... \
++            vm=%vm_dp vd=%vd_dp dp=1
 -- 
 2.20.1
 

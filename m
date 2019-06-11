@@ -1,98 +1,81 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4302222wrg;
-        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw8t1j6PpKsAI0+gM+dUvPf7L6v0lwSRDLLdgw/5AL1A/eDW5gLFb4GrhO2fS/CIlqSrcyF
-X-Received: by 2002:a0c:ae31:: with SMTP id y46mr30946767qvc.172.1560256792895;
-        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560256792; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4417330wrg;
+        Tue, 11 Jun 2019 07:29:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxhve5Oc1qTdHsMEh7DXFsbcrUVOVycRD+dmJqmtBOdzURkomdqBo4S5XgaldDVKuDbavPt
+X-Received: by 2002:a05:620a:13d1:: with SMTP id g17mr5712169qkl.121.1560263393996;
+        Tue, 11 Jun 2019 07:29:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560263393; cv=none;
         d=google.com; s=arc-20160816;
-        b=QxNj39ss7bDP/EzCoQ32jR70Va2qUiD9esmBfu/WzP4SlUeWSaway3aMZJFb4vmmrF
-         0Bi9B7vE84ynlaK9EpijRiEYae/wZ+J7BmLHpsqT2ChyX0W0YUMgORqQEy6Rdqd7FUge
-         1oL1vHVjaLDXRQPLB41E8VG02OthihYkCNQSDxrLvkAlkOSHt1JVeou2VKuOP1iW0Z+v
-         gTDa6HaVWcI7k4jNOc2Ym512UXUMQuRqQHZkCTSQsSIQKJS7HvNRSCJeXUrGp6tWlZC/
-         vupPuuzrWcn9knedPl4k0SjSV6ei4emy+bHcf/r39BWwLBzvUuVJnUFDbbQ3uoJSMQlG
-         d0iQ==
+        b=ed/bOTTHeRDR/5AbSW21mgzSTdWBLkgbxc2L9XACHrihO3/hdp55NnxcfksDVPn0tU
+         E9l9gxb38LUXto7Sfoo+Ot9Rd94qPvqUNcBiWFBDF4ZgtILLt2XNb0tYpW2E8trRzfOL
+         gZom+0UCKIFSWovunKNivVlSw9GTj0bpCr67mcWj1D0mFnJtXJ5blIqVFC1W5A1Cu9mU
+         1FL2wYaYBpPKsVQMU8Ny645YhRZtiJnpkUvdWEMWtF0VL4c9kP8tjo+hUtQbno68+Jq1
+         BdlXmdnyYe3I6UyBK0Zz0t1rFK84Ht4dB+P2r4F60rczwD4h8pzkrE92vA7c/T7sd5ja
+         DNIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
-        b=axdFO/Xn6wg72zeCF0NwVJXaP9Rg3vqC1DmCnQuye6/+hwJFhESWZyoUf+vTppMf1c
-         OA9Sx8nhqT8C0nR1J7+D/kAGn3GTpxVTxbrgPdbGI3yoj+xTqYqhDJNeg+S0ea+8sXFZ
-         1HUVaHU4nB3mOtWCo46vHoMzegvDn30UNRt6VdFq6ZrO8GWRKCUeHrp20fkK+vbglkEp
-         8LVQeoSQZbMWn2fuJh0MBdeuEPcnH5ueeSCpYWq4zG8crpz/rzZRwLOVkB5p/7Qm3YB2
-         Rd712VPSomiDEoBE1fwl7N18VtwNzW09v42ykbc045RLcKK9LGuAEJRJrqmcyO5Q2U2W
-         oXIA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=KSiychSW8ppvJSiatVhxU9L3B3nyk0evwAGOfmP5RJo=;
+        b=tubYWyXgjYA1vSQ5UZvmQVmsVdGqPHpfteYnMukBRIGPai6TxNa7WyZc7zk7ih0qUf
+         nCA0O7g3gs4ASvTyqGafROgzC9rM6lOWqGZOg4drmeVYg0TCt72fF7nS3oVVdYFG2Jt6
+         A2WE7wLFOhvWIF4erjB+3Yc9Au8tHXjHcqKqzwxe7hIg5mdvzqI6CdTKkZOKWBhiizpb
+         ly9m7Dc1WdIu4vRckFYNm8SWB1nywIyrxB/SoVfD4J3yLQVSKFFONbza7ai/LLYGhBht
+         6es3LSDQOaOb47yIAkLikiJvKVqkEGYsRdS2UPXZeGv7HPQUK7VNwZ9qBdmzUdfAYAqz
+         2vJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KHzbqU+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 30si1089309qvh.175.2019.06.11.05.39.52
+        by mx.google.com with ESMTPS id n38si3185911qvg.219.2019.06.11.07.29.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
+        Tue, 11 Jun 2019 07:29:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KHzbqU+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57788 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59556 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hag48-0004lV-Er
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 08:39:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53448)
+	id 1hahmb-0001Up-Go
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 10:29:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40503)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hafBr-00081x-RC
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 07:43:53 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hahmA-0001RC-GJ
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:29:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1haewx-000189-Om
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 07:28:25 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54611)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1haewu-00014N-Ds; Tue, 11 Jun 2019 07:28:20 -0400
-Received: by mail-wm1-x344.google.com with SMTP id g135so2531598wme.4;
- Tue, 11 Jun 2019 04:28:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
- b=KHzbqU+RBnzQPi6PE8my31XDM7I8tIJQBemibSIqblOb7XDr+6DOUetrc5L36tbyW6
- 8klmUoylaFObVaPCwsMHtZYXWOxeKXIEsTELmmcBkWbNwdKFM4qpBmQN7wsXU//ByAZE
- UgU9rPk4iiGqn1Yqjlez+wPyx6cGv2nW5Nd3m9P+IGOhLzlx9opkQMP6hiCFNefdXqgs
- mjovm9C17WtRyTTal1zWCH7slDKSjzfQnWAY991q7ndVtSlf00ns+ItzClcQf8H2OVWk
- RSczX1WswMlOvjLDfblSYdB4++fwyWnLNDgmid4ZfjtH/DxKMUVen+PKq6rpNyHdmjKh
- 3wZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
- b=KcWS/Hvj8952bn9V9SJe+bwHsJX9Kr2NziUVTV/ulKoUTE1tYv8UmJ8ika7yLmoSHS
- G2eUjT1SUB7rs4LD5Fpj0xJTGmJ9NfHdIMshV7qJJNekABIjInpO6xTQee7US32WembQ
- PKuFtmZJmjdkFkUCEg1sGr9d+5JoqR1LiAFps8FzpBoi6jZ73U8Komu5wznhqbs+o9ch
- awmnldqctqdsifSAtX4B389EnRnwHTFm+8fBx5nRZW40kUbChdveoIsAXFF9sA9u+4zP
- bIVCYwjLo3qSVgOP2N0gWICqGSxbmMXs+JkXkW/BpEg9QQyNrAyezjoTK7FuES3+wQ3P
- PirA==
-X-Gm-Message-State: APjAAAViWvw2cvnUUwQ/r8aBToNLul3XSIVqsm5a0PHU0JLyNpeHDSs9
- nemjFcin95UCwK6qlOhnieQGm42QGxCHQp8KQxE=
-X-Received: by 2002:a1c:b782:: with SMTP id h124mr17358696wmf.20.1560252498265; 
- Tue, 11 Jun 2019 04:28:18 -0700 (PDT)
+ (envelope-from <eric.auger@redhat.com>) id 1hahm9-0002fU-E2
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:29:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37604)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1hahm9-0002Rq-7f; Tue, 11 Jun 2019 10:29:25 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id A920FC05E76E;
+ Tue, 11 Jun 2019 14:28:50 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B8707608CD;
+ Tue, 11 Jun 2019 14:28:47 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Tue, 11 Jun 2019 16:28:21 +0200
+Message-Id: <20190611142821.3874-3-eric.auger@redhat.com>
+In-Reply-To: <20190611142821.3874-1-eric.auger@redhat.com>
+References: <20190611142821.3874-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20190609100837.17586-1-rfried.dev@gmail.com>
- <04cd3c78-9d8e-8958-1cdf-f65ab7d91dc7@redhat.com>
-In-Reply-To: <04cd3c78-9d8e-8958-1cdf-f65ab7d91dc7@redhat.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Tue, 11 Jun 2019 14:28:07 +0300
-Message-ID: <CAGi-RUJEwpyzFg3qe18CuR+aO1NXX3O8sUBxKyP1ooncFpcOrA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000eb4d98058b0a9736"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] net: cadence_gem: fix
- compilation error when debug is on
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.31]); Tue, 11 Jun 2019 14:28:55 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 2/2] hw/arm/smmuv3: Implement dummy replay
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,251 +87,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Cc: peterx@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bq8isG7XtsQi
+X-TUID: hNIn0y3gR1EF
 
---000000000000eb4d98058b0a9736
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On ARM we currently do not support VFIO-PCI devices protected
+by the IOMMU. Any attempt to run such use case results in this
+kind of warning:
 
-On Tue, Jun 11, 2019 at 11:34 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-.com>
-wrote:
+"-device vfio-pci,host=3D0004:01:00.0,id=3Dhostdev0,bus=3Dpci.1,addr=3D0x=
+0:
+warning: SMMUv3 does not support notification on MAP: device vfio-pci
+will not function properly".
 
-> Hi Ramon,
->
-> On 6/9/19 12:08 PM, Ramon Fried wrote:
-> > defining CADENCE_GEM_ERR_DEBUG causes compilation
-> > errors, fix that.
-> >
-> > Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> > ---
-> >  hw/net/cadence_gem.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > index 7f63411430..5cc5a71524 100644
-> > --- a/hw/net/cadence_gem.c
-> > +++ b/hw/net/cadence_gem.c
-> > @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
-t
-> uint8_t *buf, size_t size)
-> >              return -1;
-> >          }
-> >
-> > -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
-> rxbufsize),
-> > -                rx_desc_get_buffer(s->rx_desc[q]));
-> > +        DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy,
-> rxbufsize),
-> > +                rx_desc_get_buffer(s, s->rx_desc[q]));
->
-> Your patch fails on 32-bit hosts:
->
-> ./hw/net/cadence_gem.c:987:18: error: format '%lx' expects argument of
-> type 'long unsigned int', but argument 4 has type 'uint64_t {aka long
-> long unsigned int}' [-Werror=3Dformat=3D]
->          DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy,
-> rxbufsize),
->                   ^
-> ./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
->      fprintf(stderr, ## __VA_ARGS__); \
->                         ^
-> ./hw/net/cadence_gem.c: In function 'gem_transmit':
-> ./hw/net/cadence_gem.c:1160:26: error: format '%lx' expects argument of
-> type 'long unsigned int', but argument 5 has type 'unsigned int'
-> [-Werror=3Dformat=3D]
->                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
-> space " \
->                           ^
-> ./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
->      fprintf(stderr, ## __VA_ARGS__); \
->                         ^
-> cc1: all warnings being treated as errors
->
-> QEMU provides "HWADDR_PRIx" format for addresses, see for example few
-> lines earlier:
->
->     DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
->
->
-> >
-> >          /* Copy packet data to emulated DMA buffer */
-> >          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
-> s->rx_desc[q]) +
-> > @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
-> >              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-> >                                                 (p - tx_packet)) {
-> >                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
-> space " \
-> > -                         "0x%x\n", (unsigned)packet_desc_addr,
-> > +                         "0x%lx\n", (unsigned)packet_desc_addr,
->
-> Here the correct format seems to be "%zd" (difference of sizeof).
->
-> >                           (unsigned)tx_desc_get_length(desc),
-> >                           sizeof(tx_packet) - (p - tx_packet));
-> >                  break;
-> >
->
-> Nowadays QEMU prefers to move from the old DB_PRINT() macros to the
-> trace events API, see for example this commit:
->
->
-> https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dda1804d17a9ed7f060c=
-072fbc4889db5fbc9c7d2;hp=3Da4f667b6714916683408b983cfe0a615a725775f
->
-> The first line you changed would be replaced by a trace event, while the
-> second could be replaced by a qemu_log_mask() call (it is an error
-> condition).
->
-> Also I suggest to include "QEMU Trivial <qemu-trivial@nongnu.org>" in
-> the list of recipients, so your patch might get reviewed/merged quicker.
->
-> Regards,
->
-> Phil.
->
+However this is just a warning and this should not prevent the
+guest from booting in a reasonable amount of time. This does not
+happen currently.
 
-Hi Phil,
-Thanks for the review, I'll send v2 soon.
+This is due to the fact the VFIO vfio_listener_region_add() calls
+memory_region_iommu_replay(). As the SMMUv3 IOMMUMemoryRegionClass
+currently does not implement the replay() callback, the default
+memory_region_iommu_replay() implementation is used. This latter
+loops on the whole notifier's range (48b address space), translates
+each page and call the notifier on the resulting entry. This totally
+freezes the guest.
 
---000000000000eb4d98058b0a9736
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The Intel IOMMU implements the replay() function which only
+notifies valid page table entries.
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jun 11, 2019 at 11:34 AM Phil=
-ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
-hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">Hi Ramon,<br>
-<br>
-On 6/9/19 12:08 PM, Ramon Fried wrote:<br>
-&gt; defining CADENCE_GEM_ERR_DEBUG causes compilation<br>
-&gt; errors, fix that.<br>
-&gt; <br>
-&gt; Signed-off-by: Ramon Fried &lt;<a href=3D"mailto:rfried.dev@gmail.com"=
- target=3D"_blank">rfried.dev@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/net/cadence_gem.c | 6 +++---<br>
-&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c<br>
-&gt; index 7f63411430..5cc5a71524 100644<br>
-&gt; --- a/hw/net/cadence_gem.c<br>
-&gt; +++ b/hw/net/cadence_gem.c<br>
-&gt; @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, con=
-st uint8_t *buf, size_t size)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return -1;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;copy %d bytes to 0x%x\n&qu=
-ot;, MIN(bytes_to_copy, rxbufsize),<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_desc_get_b=
-uffer(s-&gt;rx_desc[q]));<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;copy %d bytes to 0x%lx\n&q=
-uot;, MIN(bytes_to_copy, rxbufsize),<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_desc_get_b=
-uffer(s, s-&gt;rx_desc[q]));<br>
-<br>
-Your patch fails on 32-bit hosts:<br>
-<br>
-./hw/net/cadence_gem.c:987:18: error: format &#39;%lx&#39; expects argument=
- of<br>
-type &#39;long unsigned int&#39;, but argument 4 has type &#39;uint64_t {ak=
-a long<br>
-long unsigned int}&#39; [-Werror=3Dformat=3D]<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0DB_PRINT(&quot;copy %d bytes to 0x%lx\n&q=
-uot;, MIN(bytes_to_copy, rxbufsize),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^<br>
-./hw/net/cadence_gem.c:39:24: note: in definition of macro &#39;DB_PRINT&#3=
-9;<br>
-=C2=A0 =C2=A0 =C2=A0fprintf(stderr, ## __VA_ARGS__); \<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 ^<br>
-./hw/net/cadence_gem.c: In function &#39;gem_transmit&#39;:<br>
-./hw/net/cadence_gem.c:1160:26: error: format &#39;%lx&#39; expects argumen=
-t of<br>
-type &#39;long unsigned int&#39;, but argument 5 has type &#39;unsigned int=
-&#39;<br>
-[-Werror=3Dformat=3D]<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0DB_PRINT(&quo=
-t;TX descriptor @ 0x%x too large: size 0x%x<br>
-space &quot; \<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 ^<br>
-./hw/net/cadence_gem.c:39:24: note: in definition of macro &#39;DB_PRINT&#3=
-9;<br>
-=C2=A0 =C2=A0 =C2=A0fprintf(stderr, ## __VA_ARGS__); \<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 ^<br>
-cc1: all warnings being treated as errors<br>
-<br>
-QEMU provides &quot;HWADDR_PRIx&quot; format for addresses, see for example=
- few<br>
-lines earlier:<br>
-<br>
-=C2=A0 =C2=A0 DB_PRINT(&quot;read descriptor 0x%&quot; HWADDR_PRIx &quot;\n=
-&quot;, packet_desc_addr);<br>
-<br>
-<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Copy packet data to emulated DMA =
-buffer */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 address_space_write(&amp;s-&gt;dma_a=
-s, rx_desc_get_buffer(s, s-&gt;rx_desc[q]) +<br>
-&gt; @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tx_desc_get_length=
-(desc) &gt; sizeof(tx_packet) -<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(p - tx_packet)) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT=
-(&quot;TX descriptor @ 0x%x too large: size 0x%x space &quot; \<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0&quot;0x%x\n&quot;, (unsigned)packet_desc_addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0&quot;0x%lx\n&quot;, (unsigned)packet_desc_addr,<br>
-<br>
-Here the correct format seems to be &quot;%zd&quot; (difference of sizeof).=
-<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0(unsigned)tx_desc_get_length(desc),<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0sizeof(tx_packet) - (p - tx_packet));<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<b=
-r>
-&gt; <br>
-<br>
-Nowadays QEMU prefers to move from the old DB_PRINT() macros to the<br>
-trace events API, see for example this commit:<br>
-<br>
-<a href=3D"https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dda1804d17a=
-9ed7f060c072fbc4889db5fbc9c7d2;hp=3Da4f667b6714916683408b983cfe0a615a725775=
-f" rel=3D"noreferrer" target=3D"_blank">https://git.qemu.org/?p=3Dqemu.git;=
-a=3Dcommitdiff;h=3Dda1804d17a9ed7f060c072fbc4889db5fbc9c7d2;hp=3Da4f667b671=
-4916683408b983cfe0a615a725775f</a><br>
-<br>
-The first line you changed would be replaced by a trace event, while the<br=
->
-second could be replaced by a qemu_log_mask() call (it is an error<br>
-condition).<br>
-<br>
-Also I suggest to include &quot;QEMU Trivial &lt;<a href=3D"mailto:qemu-tri=
-vial@nongnu.org" target=3D"_blank">qemu-trivial@nongnu.org</a>&gt;&quot; in=
-<br>
-the list of recipients, so your patch might get reviewed/merged quicker.<br=
->
-<br>
-Regards,<br>
-<br>
-Phil.<br></blockquote><div><br></div><div>Hi Phil,</div><div>Thanks for the=
- review, I&#39;ll send v2 soon.</div><div>=C2=A0</div></div></div>
+In the looming SMMUv3 nested stage VFIO integration, there will be
+no need to replay() anything as there will not be any shadow page
+tables: the stage 1 page tables are owned by the guest.
 
---000000000000eb4d98058b0a9736--
+So let's implement a void replay() which satisfies both cases.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/arm/smmuv3.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index e2f07d2864..1f578365ef 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1489,6 +1489,11 @@ static void smmuv3_notify_flag_changed(IOMMUMemory=
+Region *iommu,
+     }
+ }
+=20
++static inline void
++smmuv3_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifier *n)
++{
++}
++
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+                                                   void *data)
+ {
+@@ -1496,6 +1501,7 @@ static void smmuv3_iommu_memory_region_class_init(O=
+bjectClass *klass,
+=20
+     imrc->translate =3D smmuv3_translate;
+     imrc->notify_flag_changed =3D smmuv3_notify_flag_changed;
++    imrc->replay =3D smmuv3_replay;
+ }
+=20
+ static const TypeInfo smmuv3_type_info =3D {
+--=20
+2.20.1
+

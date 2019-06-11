@@ -1,84 +1,83 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3974183wrg;
-        Mon, 10 Jun 2019 23:20:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyO9yUxgW5ebFDFW8wBB4JQL9VZCJJL8nJCKoFjFH4KLOkC6AMWGC2dFi+zV9GnZZM//hAW
-X-Received: by 2002:a37:4e8f:: with SMTP id c137mr22419766qkb.127.1560234047140;
-        Mon, 10 Jun 2019 23:20:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560234047; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3998629wrg;
+        Mon, 10 Jun 2019 23:53:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqymyZ1hbiDk+PuM0t6U1SAS1HnTvkxWKqTUT9HR9R+wJkSbWVUIC1ifzAda8YQFONYa6tZv
+X-Received: by 2002:ae9:e306:: with SMTP id v6mr59002947qkf.145.1560236038975;
+        Mon, 10 Jun 2019 23:53:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560236038; cv=none;
         d=google.com; s=arc-20160816;
-        b=0HoKZ/GenPTA8eqenq7YKJ0znqBCE0iIhFgZMOIXx+wnT6RIq2hMdFHmKui1R+IJH9
-         32J/AjLGDy9CW9oSPPhKlCjQ3M38I/yyj1NaPqN08aSYvOonZdtAQF7ztTjKWO8oHbtz
-         HVhocLho/x3kwTlwgSmDC6igUICDrK2niwKEtRQjoWe1OTy3nUVDpcBroAHAZDafFFw4
-         Htjd0eBPm/na0R8oiCc/P90ITMb1Y3ierZJSlBobhZN4Zxp8r6bZ7n6YxTuddsnBkmn3
-         6+H5dity4X3h14QzE1p+ou6MNh0RBhzoeBjCb/SyiYA9Q0PW5dlgOBxboTq/ar8og9yP
-         /Whg==
+        b=uc+wCMUkdsR0SVUPcffdouINb9ge5zaCCWtAWPllShSxCYYNDuasW5acSmxzlzKSDt
+         JmrAuL+Tyuim/Q7C+UFa3EJv3HDyW7RAqvYiAEXo8mEOmv97dIvKP4wyJ+LqCKcE0P3v
+         ahiTBIExeg/+L1nBp8y5v4MkYGnxjVXA9Dpt793bo71zdl1D6ekiAKMaTvJfmVImpGpR
+         D69UQ8ihrQQAbwFFHfZl2TZPZPblMHG93jmhQ/x8VMRt3Z4blr+wwL9skxznjyHkzzAU
+         nA/B8b0bC8CWou7JTueWW/2J6n2OuopaKgOcCkaHTYp32fpdWVBj5UqdXzBUEgkcwQaH
+         iiAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=1yBa8qwfLvLlHPxVnaOOCTDtrRYhVhRQVSfStF/4Fbg=;
-        b=ShPPi+qX6+nwMoKpg5L0mtkmfQE5+2P6TMdyAFMQSa3YH66NvX9CZUTPRzngaFNlIw
-         3R/uLskySekeu3IhgDs9CAvsbmxhakfXdQKRgLTo6I2oi1/AVaVlAXhkqubVy06eA1LD
-         a5K0/VK58E+8ybBPQPf9103wS25EYXbc+CAP89dAY7GDRnIE67M5h3HM/04lNm/TaOTQ
-         4Ug+2LP+pAVUnePc+LZty6rHFS0fgNYU5o7DSXnUOz9a1UvREqcRfX6OTV6Y6tmfbadj
-         5EhObOboV1e1QMXHlvpl117rPF5vr4P34VKhhKe1FRvVf61oo8i0uL8Mo2OFKWq9LQuF
-         aCnA==
+        bh=WnibekQZRLyy0htwC3HN5+s7t6+fkNQmbxuf36dJBxg=;
+        b=zZWEWT/wg4faN+Rn6XtkaMQkeCeGWpJCwkpKW3EbhgQH2Nwc44HfWXW+U3QepMdZtK
+         9D23CXdiJ7Syjpkh+80RodFuud5t0VyU7bLYpXgFVLwPTVp1lgfe/+m8SYSMFrqEP72r
+         kqn2/JzSkeZqQdgVnC2FQK1fJeBsTfBOvYhBtCit4PliTlLdSnaMwrkWLiZNkF4/YZSK
+         nwNM3AKJdtW7NptOpxCbmIxQ18rLTLp/0bNYyGRwM6aJoBRuHZaW1hyMEUFIfTfTjIGC
+         clOdpNeQAlOO9P2uCw/y/drlLPsxcWmlBsZ4j5BqAtCZf78tFxJORti+ZsJxFNP/URo4
+         iEsA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g206si5425333qkb.58.2019.06.10.23.20.46
+        by mx.google.com with ESMTPS id q11si3565524qtq.83.2019.06.10.23.53.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jun 2019 23:20:47 -0700 (PDT)
+        Mon, 10 Jun 2019 23:53:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52034 helo=lists.gnu.org)
+Received: from localhost ([::1]:52172 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1haa9G-00052U-Md
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 02:20:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50281)
+	id 1haafO-0005fg-GX
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 02:53:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56509)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1haa8o-000501-24
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:20:20 -0400
+ (envelope-from <clg@kaod.org>) id 1haaf8-0005Wy-9J
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:53:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1haa8l-000863-Dq
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:20:17 -0400
-Received: from 2.mo4.mail-out.ovh.net ([46.105.72.36]:55902)
+ (envelope-from <clg@kaod.org>) id 1haaf6-0007Vr-AC
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:53:42 -0400
+Received: from 15.mo4.mail-out.ovh.net ([91.121.62.11]:47564)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1haa8l-00082F-6Z
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:20:15 -0400
-Received: from player774.ha.ovh.net (unknown [10.108.42.142])
- by mo4.mail-out.ovh.net (Postfix) with ESMTP id 629591F6619
- for <qemu-devel@nongnu.org>; Tue, 11 Jun 2019 08:20:12 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1haaf6-0007US-0R
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 02:53:40 -0400
+Received: from player687.ha.ovh.net (unknown [10.108.57.53])
+ by mo4.mail-out.ovh.net (Postfix) with ESMTP id 54A2A1F6651
+ for <qemu-devel@nongnu.org>; Tue, 11 Jun 2019 08:53:37 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
  (Authenticated sender: clg@kaod.org)
- by player774.ha.ovh.net (Postfix) with ESMTPSA id 2D4906AB588B;
- Tue, 11 Jun 2019 06:20:03 +0000 (UTC)
-To: Adriana Kobylak <anoo@linux.ibm.com>, peter.maydell@linaro.org,
- andrew@aj.id.au, joel@jms.id.au, qemu-arm@nongnu.org
-References: <cce364a3-548c-427f-addb-07e38f827e03@www.fastmail.com>
- <1560200011-70806-1-git-send-email-anoo@linux.ibm.com>
+ by player687.ha.ovh.net (Postfix) with ESMTPSA id A8F286A5B66A;
+ Tue, 11 Jun 2019 06:53:29 +0000 (UTC)
+To: Eddie James <eajames@linux.ibm.com>, qemu-arm@nongnu.org
+References: <1559599768-9176-1-git-send-email-eajames@linux.ibm.com>
+ <8508467b-c7fd-e09b-4323-44631d25ff0e@kaod.org>
+ <d1227637-4c40-53de-b106-80725837556b@linux.ibm.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <30891725-75e8-cf1d-43f6-9f6c0c6fd59d@kaod.org>
-Date: Tue, 11 Jun 2019 08:20:02 +0200
+Message-ID: <7243bdb9-e206-1b17-8064-aae89076e3c0@kaod.org>
+Date: Tue, 11 Jun 2019 08:53:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <1560200011-70806-1-git-send-email-anoo@linux.ibm.com>
+In-Reply-To: <d1227637-4c40-53de-b106-80725837556b@linux.ibm.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 5195746597693197192
+X-Ovh-Tracer-Id: 5760103924650576657
 X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrudehfedguddthecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecu
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrudehfedgudduudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.72.36
-Subject: Re: [Qemu-devel] [PATCH qemu v2] aspeed: Add support for the
- swift-bmc board
+X-Received-From: 91.121.62.11
+Subject: Re: [Qemu-devel] [PATCH] hw: misc: Add Aspeed XDMA device
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,141 +89,422 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Adriana Kobylak <anoo@us.ibm.com>, qemu-devel@nongnu.org
+Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ joel@jms.id.au
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u5pTO3OrBJoK
+X-TUID: KngOVPLtxrPi
 
-Hello Adriana,
-
-On 10/06/2019 22:53, Adriana Kobylak wrote:
-> From: Adriana Kobylak <anoo@us.ibm.com>
+On 06/06/2019 23:42, Eddie James wrote:
 >=20
-> The Swift board is an OpenPOWER system hosting POWER processors.
-> Add support for their BMC including the I2C devices as found on HW.
+> On 6/6/19 1:16 AM, C=C3=A9dric Le Goater wrote:
+>> Hello Eddie,
+>>
+>> On 04/06/2019 00:09, Eddie James wrote:
+>>> The XDMA engine embedded in the Aspeed SOCs performs PCI DMA operatio=
+ns
+>>> between the SOC (acting as a BMC) and a host processor in a server.
+>>>
+>>> The XDMA engine exists on the AST2400, AST2500, and AST2600 SOCs, so
+>>> enable it for all of those.
+>>>
+>>> Signed-off-by: Eddie James <eajames@linux.ibm.com>
+>> This looks correct to me. It's sufficient to exercise the BMC driver.
+>>
+>> However, we will need to rebase on an Aspeed patchset I sent earlier :
+>>
+>> =C2=A0=C2=A0=C2=A0 http://patchwork.ozlabs.org/cover/1105343/
+>>
+>> I can do that and include the patch in my tree for the moment.
 >=20
-> Signed-off-by: Adriana Kobylak <anoo@us.ibm.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>=20
+> I built and tested the model on your tree, so let me know if you want m=
+e to send that patch instead?
 
+yes. I will take it into my tree and reshuffle the code if needed.
 
-I pushed this patch in my tree for the moment as the patchset :
-
-  "aspeed: machine extensions and fixes" patchwork.ozlabs.org/cover/11053=
-43/
-
-still needs some more reviews.
+The Aspeed patchset above needs more reviews and it is blocking=20
+other changes.
 
 Thanks,
 
 C.=20
 
-> ---
->  hw/arm/aspeed.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++++=
-+
->  1 file changed, 50 insertions(+)
+=20
 >=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 33070a6..7fd0e0c 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -73,6 +73,17 @@ struct AspeedBoardState {
->          SCU_AST2500_HW_STRAP_ACPI_ENABLE |                            =
-  \
->          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
-> =20
-> +/* Swift hardware value: 0xF11AD206 */
-> +#define SWIFT_BMC_HW_STRAP1 (                                         =
-  \
-> +        AST2500_HW_STRAP1_DEFAULTS |                                  =
-  \
-> +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                   =
-  \
-> +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                      =
-  \
-> +        SCU_AST2500_HW_STRAP_UART_DEBUG |                             =
-  \
-> +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                            =
-  \
-> +        SCU_H_PLL_BYPASS_EN |                                         =
-  \
-> +        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                            =
-  \
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
-> +
->  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition)=
- */
->  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
-> =20
-> @@ -287,6 +298,35 @@ static void romulus_bmc_i2c_init(AspeedBoardState =
-*bmc)
->      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds133=
-8", 0x32);
->  }
-> =20
-> +static void swift_bmc_i2c_init(AspeedBoardState *bmc)
-> +{
-> +    AspeedSoCState *soc =3D &bmc->soc;
-> +
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca955=
-2", 0x60);
-> +
-> +    /* The swift board expects a TMP275 but a TMP105 is compatible */
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105=
-", 0x48);
-> +    /* The swift board expects a pca9551 but a pca9552 is compatible *=
-/
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "pca955=
-2", 0x60);
-> +
-> +    /* The swift board expects an Epson RX8900 RTC but a ds1338 is com=
-patible */
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "ds1338=
-", 0x32);
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca955=
-2", 0x60);
-> +
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp423=
-", 0x4c);
-> +    /* The swift board expects a pca9539 but a pca9552 is compatible *=
-/
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "pca955=
-2", 0x74);
-> +
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "tmp42=
-3", 0x4c);
-> +    /* The swift board expects a pca9539 but a pca9552 is compatible *=
-/
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "pca95=
-52",
-> +                     0x74);
-> +
-> +    /* The swift board expects a TMP275 but a TMP105 is compatible */
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp10=
-5", 0x48);
-> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp10=
-5", 0x4a);
-> +}
-> +
->  static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
->  {
->      AspeedSoCState *soc =3D &bmc->soc;
-> @@ -378,6 +418,16 @@ static const AspeedBoardConfig aspeed_boards[] =3D=
- {
->          .i2c_init  =3D romulus_bmc_i2c_init,
->          .ram       =3D 512 * MiB,
->      }, {
-> +        .name      =3D MACHINE_TYPE_NAME("swift-bmc"),
-> +        .desc      =3D "OpenPOWER Swift BMC (ARM1176)",
-> +        .soc_name  =3D "ast2500-a1",
-> +        .hw_strap1 =3D SWIFT_BMC_HW_STRAP1,
-> +        .fmc_model =3D "mx66l1g45g",
-> +        .spi_model =3D "mx66l1g45g",
-> +        .num_cs    =3D 2,
-> +        .i2c_init  =3D swift_bmc_i2c_init,
-> +        .ram       =3D 512 * MiB,
-> +    }, {
->          .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
->          .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
->          .soc_name  =3D "ast2500-a1",
+>=20
+>>
+>>
+>> For my understanding, how can we interact with the model and pretend
+>> there is a host side ?
+>=20
+>=20
+> I have an application that can test the driver here: https://github.com=
+/eddiejames/xdma-test
+>=20
+> But as you say there is no host side; the operations don't copy any mem=
+ory anywhere. Joel suggested adding some way to copy and check some dummy=
+ memory contents, but I haven't looked into that yet.
+>=20
+>=20
+> Thanks,
+>=20
+> Eddie
+>=20
+>=20
+>>
+>> Thanks,
+>>
+>> C.
+>>
+>>> ---
+>>> =C2=A0 hw/arm/aspeed_soc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 14 ++++
+>>> =C2=A0 hw/misc/Makefile.objs=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 |=C2=A0=C2=A0 2 +-
+>>> =C2=A0 hw/misc/aspeed_xdma.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 156 ++++++++++++++++++++++++++++++++++++++++++
+>>> =C2=A0 include/hw/arm/aspeed_soc.h=C2=A0=C2=A0 |=C2=A0=C2=A0 2 +
+>>> =C2=A0 include/hw/misc/aspeed_xdma.h |=C2=A0 31 +++++++++
+>>> =C2=A0 5 files changed, 204 insertions(+), 1 deletion(-)
+>>> =C2=A0 create mode 100644 hw/misc/aspeed_xdma.c
+>>> =C2=A0 create mode 100644 include/hw/misc/aspeed_xdma.h
+>>>
+>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>>> index faff42b..b25bb18 100644
+>>> --- a/hw/arm/aspeed_soc.c
+>>> +++ b/hw/arm/aspeed_soc.c
+>>> @@ -31,6 +31,7 @@
+>>> =C2=A0 #define ASPEED_SOC_VIC_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 0x1E6C0000
+>>> =C2=A0 #define ASPEED_SOC_SDMC_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 0x1E6E0000
+>>> =C2=A0 #define ASPEED_SOC_SCU_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 0x1E6E2000
+>>> +#define ASPEED_SOC_XDMA_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ 0x1E6E7000
+>>> =C2=A0 #define ASPEED_SOC_SRAM_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 0x1E720000
+>>> =C2=A0 #define ASPEED_SOC_TIMER_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 0x1E782000
+>>> =C2=A0 #define ASPEED_SOC_WDT_BASE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 0x1E785000
+>>> @@ -159,6 +160,9 @@ static void aspeed_soc_init(Object *obj)
+>>> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "ftg=
+mac100", OBJECT(&s->ftgmac100),
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 sizeof(s->ftgmac100), TYPE_FTGMAC100);
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdm=
+a), sizeof(s->xdma),
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 TYPE_ASPEED_XDMA);
+>>> =C2=A0 }
+>>> =C2=A0 =C2=A0 static void aspeed_soc_realize(DeviceState *dev, Error =
+**errp)
+>>> @@ -298,6 +302,16 @@ static void aspeed_soc_realize(DeviceState *dev,=
+ Error **errp)
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftg=
+mac100), 0, ASPEED_SOC_ETH1_BASE);
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&s->=
+ftgmac100), 0,
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ qdev_get_gpio_in(DEVICE(&s->vic), 2));
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 /* XDMA */
+>>> +=C2=A0=C2=A0=C2=A0 object_property_set_bool(OBJECT(&s->xdma), true, =
+"realized", &err);
+>>> +=C2=A0=C2=A0=C2=A0 if (err) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_propagate(errp, err=
+);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&s->xdma), 0, ASPE=
+ED_SOC_XDMA_BASE);
+>>> +=C2=A0=C2=A0=C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&s->xdma), 0,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_get_=
+gpio_in(DEVICE(&s->vic), 6));
+>>> =C2=A0 }
+>>> =C2=A0 =C2=A0 static void aspeed_soc_class_init(ObjectClass *oc, void=
+ *data)
+>>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>>> index 77b9df9..a4483af 100644
+>>> --- a/hw/misc/Makefile.objs
+>>> +++ b/hw/misc/Makefile.objs
+>>> @@ -74,7 +74,7 @@ obj-$(CONFIG_ARMSSE_MHU) +=3D armsse-mhu.o
+>>> =C2=A0 =C2=A0 obj-$(CONFIG_PVPANIC) +=3D pvpanic.o
+>>> =C2=A0 obj-$(CONFIG_AUX) +=3D auxbus.o
+>>> -obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o
+>>> +obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_scu.o aspeed_sdmc.o aspeed_xdma=
+.o
+>>> =C2=A0 obj-$(CONFIG_MSF2) +=3D msf2-sysreg.o
+>>> =C2=A0 obj-$(CONFIG_NRF51_SOC) +=3D nrf51_rng.o
+>>> =C2=A0 diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
+>>> new file mode 100644
+>>> index 0000000..fe3a32e
+>>> --- /dev/null
+>>> +++ b/hw/misc/aspeed_xdma.c
+>>> @@ -0,0 +1,156 @@
+>>> +/*
+>>> + * ASPEED XDMA Controller
+>>> + * Eddie James <eajames@linux.ibm.com>
+>>> + *
+>>> + * Copyright (C) 2019 IBM Corp
+>>> + * SPDX-License-Identifer: GPL-2.0-or-later
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +#include "qemu/log.h"
+>>> +#include "qemu/error-report.h"
+>>> +#include "hw/misc/aspeed_xdma.h"
+>>> +#include "qapi/error.h"
+>>> +
+>>> +#define XDMA_BMC_CMDQ_ADDR=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 0x10
+>>> +#define XDMA_BMC_CMDQ_ENDP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 0x14
+>>> +#define XDMA_BMC_CMDQ_WRP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 0x18
+>>> +#define=C2=A0 XDMA_BMC_CMDQ_W_MASK=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x0=
+003FFFF
+>>> +#define XDMA_BMC_CMDQ_RDP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 0x1C
+>>> +#define=C2=A0 XDMA_BMC_CMDQ_RDP_MAGIC=C2=A0=C2=A0 0xEE882266
+>>> +#define XDMA_IRQ_ENG_CTRL=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 0x20
+>>> +#define=C2=A0 XDMA_IRQ_ENG_CTRL_US_COMP BIT(4)
+>>> +#define=C2=A0 XDMA_IRQ_ENG_CTRL_DS_COMP BIT(5)
+>>> +#define=C2=A0 XDMA_IRQ_ENG_CTRL_W_MASK=C2=A0 0xBFEFF07F
+>>> +#define XDMA_IRQ_ENG_STAT=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 0x24
+>>> +#define=C2=A0 XDMA_IRQ_ENG_STAT_US_COMP BIT(4)
+>>> +#define=C2=A0 XDMA_IRQ_ENG_STAT_DS_COMP BIT(5)
+>>> +#define=C2=A0 XDMA_IRQ_ENG_STAT_RESET=C2=A0=C2=A0 0xF8000000
+>>> +
+>>> +#define TO_REG(addr) ((addr) / sizeof(uint32_t))
+>>> +
+>>> +static uint64_t aspeed_xdma_read(void *opaque, hwaddr addr, unsigned=
+ int size)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 uint32_t val =3D 0;
+>>> +=C2=A0=C2=A0=C2=A0 AspeedXDMAState *xdma =3D opaque;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 if (addr < ASPEED_XDMA_REG_SIZE) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 val =3D xdma->regs[TO_REG=
+(addr)];
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 return (uint64_t)val;
+>>> +}
+>>> +
+>>> +static void aspeed_xdma_write(void *opaque, hwaddr addr, uint64_t va=
+l,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned int size)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 unsigned int idx;
+>>> +=C2=A0=C2=A0=C2=A0 uint32_t val32 =3D (uint32_t)val;
+>>> +=C2=A0=C2=A0=C2=A0 AspeedXDMAState *xdma =3D opaque;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 if (addr >=3D ASPEED_XDMA_REG_SIZE) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 switch (addr) {
+>>> +=C2=A0=C2=A0=C2=A0 case XDMA_BMC_CMDQ_ENDP:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xdma->regs[TO_REG(addr)] =
+=3D val32 & XDMA_BMC_CMDQ_W_MASK;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 case XDMA_BMC_CMDQ_WRP:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 idx =3D TO_REG(addr);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xdma->regs[idx] =3D val32=
+ & XDMA_BMC_CMDQ_W_MASK;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xdma->regs[TO_REG(XDMA_BM=
+C_CMDQ_RDP)] =3D xdma->regs[idx];
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (xdma->bmc_cmdq_readp_=
+set) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x=
+dma->bmc_cmdq_readp_set =3D 0;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x=
+dma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] |=3D
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_CO=
+MP;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 i=
+f (xdma->regs[TO_REG(XDMA_IRQ_ENG_CTRL)] &
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 (XDMA_IRQ_ENG_CTRL_US_COMP | XDMA_IRQ_ENG_CTRL_DS_C=
+OMP))
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 qemu_irq_raise(xdma->irq);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 case XDMA_BMC_CMDQ_RDP:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (val32 =3D=3D XDMA_BMC=
+_CMDQ_RDP_MAGIC) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x=
+dma->bmc_cmdq_readp_set =3D 1;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 case XDMA_IRQ_ENG_CTRL:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xdma->regs[TO_REG(addr)] =
+=3D val32 & XDMA_IRQ_ENG_CTRL_W_MASK;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 case XDMA_IRQ_ENG_STAT:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 idx =3D TO_REG(addr);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (val32 & (XDMA_IRQ_ENG=
+_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_COMP)) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x=
+dma->regs[TO_REG(addr)] &=3D
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 ~(XDMA_IRQ_ENG_STAT_US_COMP | XDMA_IRQ_ENG_STAT_DS_=
+COMP);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 q=
+emu_irq_lower(xdma->irq);
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 default:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 xdma->regs[TO_REG(addr)] =
+=3D val32;
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>> +=C2=A0=C2=A0=C2=A0 }
+>>> +}
+>>> +
+>>> +static const MemoryRegionOps aspeed_xdma_ops =3D {
+>>> +=C2=A0=C2=A0=C2=A0 .read =3D aspeed_xdma_read,
+>>> +=C2=A0=C2=A0=C2=A0 .write =3D aspeed_xdma_write,
+>>> +=C2=A0=C2=A0=C2=A0 .endianness =3D DEVICE_NATIVE_ENDIAN,
+>>> +=C2=A0=C2=A0=C2=A0 .valid.min_access_size =3D 4,
+>>> +=C2=A0=C2=A0=C2=A0 .valid.max_access_size =3D 4,
+>>> +};
+>>> +
+>>> +static void aspeed_xdma_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>>> +=C2=A0=C2=A0=C2=A0 AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 sysbus_init_irq(sbd, &xdma->irq);
+>>> +=C2=A0=C2=A0=C2=A0 memory_region_init_io(&xdma->iomem, OBJECT(xdma),=
+ &aspeed_xdma_ops, xdma,
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 TYPE_ASPEED_XDMA, ASPEED_XDMA_MEM_SIZE);
+>>> +=C2=A0=C2=A0=C2=A0 sysbus_init_mmio(sbd, &xdma->iomem);
+>>> +}
+>>> +
+>>> +static void aspeed_xdma_reset(DeviceState *dev)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 AspeedXDMAState *xdma =3D ASPEED_XDMA(dev);
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 xdma->bmc_cmdq_readp_set =3D 0;
+>>> +=C2=A0=C2=A0=C2=A0 memset(xdma->regs, 0, ASPEED_XDMA_REG_SIZE);
+>>> +=C2=A0=C2=A0=C2=A0 xdma->regs[TO_REG(XDMA_IRQ_ENG_STAT)] =3D XDMA_IR=
+Q_ENG_STAT_RESET;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 qemu_irq_lower(xdma->irq);
+>>> +}
+>>> +
+>>> +static const VMStateDescription aspeed_xdma_vmstate =3D {
+>>> +=C2=A0=C2=A0=C2=A0 .name =3D TYPE_ASPEED_XDMA,
+>>> +=C2=A0=C2=A0=C2=A0 .version_id =3D 1,
+>>> +=C2=A0=C2=A0=C2=A0 .fields =3D (VMStateField[]) {
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_UINT32_ARRAY(regs=
+, AspeedXDMAState, ASPEED_XDMA_NUM_REGS),
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VMSTATE_END_OF_LIST(),
+>>> +=C2=A0=C2=A0=C2=A0 },
+>>> +};
+>>> +
+>>> +static void aspeed_xdma_class_init(ObjectClass *classp, void *data)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 DeviceClass *dc =3D DEVICE_CLASS(classp);
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 dc->realize =3D aspeed_xdma_realize;
+>>> +=C2=A0=C2=A0=C2=A0 dc->reset =3D aspeed_xdma_reset;
+>>> +=C2=A0=C2=A0=C2=A0 dc->vmsd =3D &aspeed_xdma_vmstate;
+>>> +}
+>>> +
+>>> +static const TypeInfo aspeed_xdma_info =3D {
+>>> +=C2=A0=C2=A0=C2=A0 .name=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 =3D TYPE_ASPEED_XDMA,
+>>> +=C2=A0=C2=A0=C2=A0 .parent=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ =3D TYPE_SYS_BUS_DEVICE,
+>>> +=C2=A0=C2=A0=C2=A0 .instance_size =3D sizeof(AspeedXDMAState),
+>>> +=C2=A0=C2=A0=C2=A0 .class_init=C2=A0=C2=A0=C2=A0 =3D aspeed_xdma_cla=
+ss_init,
+>>> +};
+>>> +
+>>> +static void aspeed_xdma_register_type(void)
+>>> +{
+>>> +=C2=A0=C2=A0=C2=A0 type_register_static(&aspeed_xdma_info);
+>>> +}
+>>> +type_init(aspeed_xdma_register_type);
+>>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.=
+h
+>>> index 836b2ba..0329247 100644
+>>> --- a/include/hw/arm/aspeed_soc.h
+>>> +++ b/include/hw/arm/aspeed_soc.h
+>>> @@ -20,6 +20,7 @@
+>>> =C2=A0 #include "hw/ssi/aspeed_smc.h"
+>>> =C2=A0 #include "hw/watchdog/wdt_aspeed.h"
+>>> =C2=A0 #include "hw/net/ftgmac100.h"
+>>> +#include "hw/misc/aspeed_xdma.h"
+>>> =C2=A0 =C2=A0 #define ASPEED_SPIS_NUM=C2=A0 2
+>>> =C2=A0 #define ASPEED_WDTS_NUM=C2=A0 3
+>>> @@ -40,6 +41,7 @@ typedef struct AspeedSoCState {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedSDMCState sdmc;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FTGMAC100State ftgmac100;
+>>> +=C2=A0=C2=A0=C2=A0 AspeedXDMAState xdma;
+>>> =C2=A0 } AspeedSoCState;
+>>> =C2=A0 =C2=A0 #define TYPE_ASPEED_SOC "aspeed-soc"
+>>> diff --git a/include/hw/misc/aspeed_xdma.h b/include/hw/misc/aspeed_x=
+dma.h
+>>> new file mode 100644
+>>> index 0000000..d19e9a7
+>>> --- /dev/null
+>>> +++ b/include/hw/misc/aspeed_xdma.h
+>>> @@ -0,0 +1,31 @@
+>>> +/*
+>>> + * ASPEED XDMA Controller
+>>> + * Eddie James <eajames@linux.ibm.com>
+>>> + *
+>>> + * Copyright (C) 2019 IBM Corp.
+>>> + * SPDX-License-Identifer: GPL-2.0-or-later
+>>> + */
+>>> +
+>>> +#ifndef ASPEED_XDMA_H
+>>> +#define ASPEED_XDMA_H
+>>> +
+>>> +#include "hw/sysbus.h"
+>>> +
+>>> +#define TYPE_ASPEED_XDMA "aspeed.xdma"
+>>> +#define ASPEED_XDMA(obj) OBJECT_CHECK(AspeedXDMAState, (obj), TYPE_A=
+SPEED_XDMA)
+>>> +
+>>> +#define ASPEED_XDMA_MEM_SIZE 0x1000
+>>> +#define ASPEED_XDMA_NUM_REGS (ASPEED_XDMA_REG_SIZE / sizeof(uint32_t=
+))
+>>> +#define ASPEED_XDMA_REG_SIZE 0x7C
+>>> +
+>>> +typedef struct AspeedXDMAState {
+>>> +=C2=A0=C2=A0=C2=A0 SysBusDevice parent;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 MemoryRegion iomem;
+>>> +=C2=A0=C2=A0=C2=A0 qemu_irq irq;
+>>> +
+>>> +=C2=A0=C2=A0=C2=A0 char bmc_cmdq_readp_set;
+>>> +=C2=A0=C2=A0=C2=A0 uint32_t regs[ASPEED_XDMA_NUM_REGS];
+>>> +} AspeedXDMAState;
+>>> +
+>>> +#endif /* ASPEED_XDMA_H */
+>>>
 >=20
 

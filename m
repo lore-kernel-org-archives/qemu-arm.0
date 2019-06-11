@@ -1,75 +1,99 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp252766wrg;
-        Fri, 7 Jun 2019 07:25:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwPI7puVZl1vTGdWMAgWPygsnalEOq30LDzrFsgW5xyQVkpiH773L8EWMsOM+vGHdaLJ/c2
-X-Received: by 2002:a05:620a:1411:: with SMTP id d17mr2379819qkj.137.1559917546920;
-        Fri, 07 Jun 2019 07:25:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559917546; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4089839wrg;
+        Tue, 11 Jun 2019 01:48:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyJeYZolJLb0ufdtmA0ouU1TgwOEK7XGV77Iic/rKTkKMIyAAEAKwqLpEAU0xMdWFOTyTnU
+X-Received: by 2002:a05:620a:12ca:: with SMTP id e10mr4084788qkl.237.1560242891353;
+        Tue, 11 Jun 2019 01:48:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560242891; cv=none;
         d=google.com; s=arc-20160816;
-        b=PkuBji+pBdFViD8mNQKtmZ5/DnsSWCS3yb+0gnrylLFy5l9vsG86Ts65ke9CWLimUk
-         LT9J4F2nVdIakOUb1LOdTwZqkb3porpCRDSme1XH5pa3FsuDtSACv3qIYjnvjtKPU7qq
-         NxBQ0bFrHhSEIoJ/sIgaWvY3b1NaTD6n+gHE0rTGwyJD7J6V0A90izJmo8ld118aG25V
-         k+LiCpBrd+d9rjvsT3f/kpRgDJ741Fxjv6hR3bXoQMwUpAYgNnFVT8ZtQBvJbUk7VMa6
-         IluWeWhKyESG61EpjuIW9bPa65QAT2SDbrcfDZ/00adQ2oRn373MGwz1JU60NZDGfMp8
-         h/9w==
+        b=0CIa5HtcUe6oBwIvODKXDFhF/RLVJBuOy6hMG/uacwH32HXY5k88UK10HuwPnDDBTs
+         ehROOAJPt68c9Cj5sIJBbQBgkIdzBJZqJihSHEpZaRf4mBQujuzy34qaKjh8CgJrQQUW
+         +qc7FpgbLVaNQyKcJZcuoPSNcsXm6R9pC6D708ZMQf3VrxTvvY+QIvuCkdJZPi1ZN+Fg
+         okeVnTZlcAoYyhme+YfniSP+ThcVAFEzQrw0n8EG3aM/2dAafrEBA99rcYbLi74mkNXA
+         /WI7DKEXzDWWsANQYRGbrkaiPZA2De/6YxzD0CsZuIhHiuqhyAWK1Z603Ty8UmvZ98Zx
+         vHTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=SyJYTvWXMRqkTMfag4CgmBuk4s5wGr1C3MhGOBW7v+Q=;
-        b=HBlZJSMf7iscDT6LTkvWYJtinBrawk3RnRUz4ta1dRFjolrSC3593q/2vdRic7QEM4
-         lzDcCa6MLvO7i/hXyNIzU2SD7AKSGUOvxA2ixMN1XXJzkE3TI6TJE/4ffiQStbFWe+d1
-         3nZu3cyC/9VXPqbw71vRRz4XUnk1lL93LMu95T/zSDv6e3MogLDe+TNRkykMqEQqEp1R
-         Nks5HEywZ054WmGH8c9MxQHd2k67k1qycfFR/LULTrBNDIbctUaPQUb4PZb7HhQ2LoRb
-         KtsBRRCEYIQwXd5AIwQVZbznu7zGD0bcMpxmnBTx4FMBiuuxc7mLZcAcmuyfl6mZngRW
-         jPXw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=IbYKK7JIHi3arHPNORfmRc7ZgDoLoIRhbg7TMUX9TXI=;
+        b=cmtNSoCWpjsmS39wqSR06DMPlInIs8ev/oqgW7EkrBVrmcwV2ntMjUaC152l/5Q+4I
+         GHwvvTZcNDkZIomWKM4GES4dgE7ZTmccrrnZ5axnQImB2wsrXZYqD3gxGgjjzCaIaeVI
+         Jwbd7KhRPALpbhEhSBonpiChdhDaZchPW/o997AzY1/FdOZVN7aEM097Xjk8asbslLbF
+         SLdy1cttGQgEnkAJug0AJ/46pTaTfOnEuxFhP03zmVzeGp+JlqvBv9RR92I2wTLpjKAr
+         V73AVa3Wzc090QTvP/O8I57jrvw3K/kIHbYnJWRFMoSBeG5SZkTnQ6CRa0XnQb5hZ2pt
+         h4OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.47])
-        by mx.google.com with ESMTPS id l1si1187887qvn.149.2019.06.07.07.25.46
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x10si421280qth.137.2019.06.11.01.48.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jun 2019 07:25:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) client-ip=209.51.188.47;
+        Tue, 11 Jun 2019 01:48:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.47 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51698 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52892 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hZFoQ-0000Wl-Gd
-	for alex.bennee@linaro.org; Fri, 07 Jun 2019 10:25:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49464)
+	id 1hacRu-00081N-Tr
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 04:48:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54046)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mark.rutland@arm.com>) id 1hZFXF-0004Ea-GU
- for qemu-devel@nongnu.org; Fri, 07 Jun 2019 10:08:04 -0400
+ (envelope-from <philmd@redhat.com>) id 1hacNg-0004II-5F
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 04:43:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>) id 1hZFX9-00067r-8E
- for qemu-devel@nongnu.org; Fri, 07 Jun 2019 10:07:58 -0400
-Received: from foss.arm.com ([217.140.110.172]:39408)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>)
- id 1hZFWm-0005Qp-Km; Fri, 07 Jun 2019 10:07:32 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B0300337;
- Fri,  7 Jun 2019 07:07:28 -0700 (PDT)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0A0583F71A;
- Fri,  7 Jun 2019 07:07:27 -0700 (PDT)
-Date: Fri, 7 Jun 2019 15:07:21 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190607140720.GA18706@lakrids.cambridge.arm.com>
-References: <20190516144733.32399-1-peter.maydell@linaro.org>
+ (envelope-from <philmd@redhat.com>) id 1hacFJ-0004WA-LM
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 04:35:10 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:36246)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hacFJ-0004K5-EP
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 04:35:09 -0400
+Received: by mail-wr1-f68.google.com with SMTP id n4so11998569wrs.3
+ for <qemu-devel@nongnu.org>; Tue, 11 Jun 2019 01:34:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IbYKK7JIHi3arHPNORfmRc7ZgDoLoIRhbg7TMUX9TXI=;
+ b=sM2i5pOigv0UJG4YAcAElbv0pHNk8vmjSGtdrU3o8TH0cj36ykcSpy/jpxiWqR3I++
+ /iTqR47usWtnX7F8Yx32+UuOASjO9DJyIBHs11sa2ITWQ59fn6swY7rwzcqiCLUvGvVq
+ nouI1n0yiMhzg3UGKISf07Wx/SP7rOgNUB+2Ui2jlewxGNCjvAcn0ld5swRFzv/1tPmc
+ kDHFgzMDVwnFGltF1oVQ7sdVcxqCeYTZL8liq4p4JHHJgKKlz4PBoLUIzZsCaZVUqYaR
+ /o9Q7aCYqIoxGcYHsZZO6suFc94MC6rNwuylMDAfujt0ExqQi8iCCfEZtbQaRXkZshA1
+ BD6w==
+X-Gm-Message-State: APjAAAWEQrl3/hIOAKsjle15ZdVW/Nju1GHdWI7KKmQUOUmAkUZOIkv4
+ sheHSfZayhBfUgKKm5z8Z6KyOA==
+X-Received: by 2002:adf:9267:: with SMTP id 94mr26729215wrj.338.1560242096110; 
+ Tue, 11 Jun 2019 01:34:56 -0700 (PDT)
+Received: from ?IPv6:2a01:e35:2eec:b420:d26b:a0d4:f86e:1389?
+ ([2a01:e35:2eec:b420:d26b:a0d4:f86e:1389])
+ by smtp.gmail.com with ESMTPSA id o6sm1901175wmc.15.2019.06.11.01.34.55
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Tue, 11 Jun 2019 01:34:55 -0700 (PDT)
+To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org
+References: <20190609100837.17586-1-rfried.dev@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <04cd3c78-9d8e-8958-1cdf-f65ab7d91dc7@redhat.com>
+Date: Tue, 11 Jun 2019 10:34:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190516144733.32399-1-peter.maydell@linaro.org>
-User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
+In-Reply-To: <20190609100837.17586-1-rfried.dev@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.110.172
-Subject: Re: [Qemu-devel] [PATCH v2 0/4] hw/arm/boot: handle large Images
- more gracefully
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-devel] [PATCH] net: cadence_gem: fix compilation error
+ when debug is on
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,69 +105,95 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3jtRCZClrpsM
+X-TUID: NqSOnoHdsd+h
 
-Hi Peter,
+Hi Ramon,
 
-Sorry for the delay in replying to this...
-
-On Thu, May 16, 2019 at 03:47:29PM +0100, Peter Maydell wrote:
+On 6/9/19 12:08 PM, Ramon Fried wrote:
+> defining CADENCE_GEM_ERR_DEBUG causes compilation
+> errors, fix that.
 > 
-> This patchset attempts to fix https://bugs.launchpad.net/qemu/+bug/1823998
-> which reports that we don't handle kernels larger than 128MB
-> correctly, because we allow the initrd to be placed over the
-> tail end of the kernel. AArch64 kernel Image files (since v3.17)
-> report the total size they require (including any BSS area that
-> isn't in the Image itself), so we can use that to be sure we
-> place the initrd sufficiently far into the RAM.
+> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+> ---
+>  hw/net/cadence_gem.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> Patches 1 and 2 are new since v1; patches 3 and 4 are the old
-> patches 1 and 2 (and are basically unchanged since v1).
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index 7f63411430..5cc5a71524 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>              return -1;
+>          }
+>  
+> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
+> -                rx_desc_get_buffer(s->rx_desc[q]));
+> +        DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy, rxbufsize),
+> +                rx_desc_get_buffer(s, s->rx_desc[q]));
+
+Your patch fails on 32-bit hosts:
+
+./hw/net/cadence_gem.c:987:18: error: format '%lx' expects argument of
+type 'long unsigned int', but argument 4 has type 'uint64_t {aka long
+long unsigned int}' [-Werror=format=]
+         DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy, rxbufsize),
+                  ^
+./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
+     fprintf(stderr, ## __VA_ARGS__); \
+                        ^
+./hw/net/cadence_gem.c: In function 'gem_transmit':
+./hw/net/cadence_gem.c:1160:26: error: format '%lx' expects argument of
+type 'long unsigned int', but argument 5 has type 'unsigned int'
+[-Werror=format=]
+                 DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
+space " \
+                          ^
+./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
+     fprintf(stderr, ## __VA_ARGS__); \
+                        ^
+cc1: all warnings being treated as errors
+
+QEMU provides "HWADDR_PRIx" format for addresses, see for example few
+lines earlier:
+
+    DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
+
+
+>  
+>          /* Copy packet data to emulated DMA buffer */
+>          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
+> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
+>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+>                                                 (p - tx_packet)) {
+>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
+> -                         "0x%x\n", (unsigned)packet_desc_addr,
+> +                         "0x%lx\n", (unsigned)packet_desc_addr,
+
+Here the correct format seems to be "%zd" (difference of sizeof).
+
+>                           (unsigned)tx_desc_get_length(desc),
+>                           sizeof(tx_packet) - (p - tx_packet));
+>                  break;
 > 
-> Patches 1 and 2 in this series are new. Patch 1 fixes bugs
-> in the existing code where we were assuming that we could
-> treat info->ram_size as the address of the end of RAM, which
-> isn't true if the RAM doesn't start at address 0. (This
-> generally went unnoticed thanks to the magic of unsigned integer
-> underflow turning end-start calculations into very large max_size
-> values for load_ramdisk_as() and friends.)
-> Patch 2 adds some explicit checks that we don't try to put things
-> entirely off the end of RAM (which avoids those accidental
-> underflows).
-> Patch 3 in this series adjusts our "where do we put the initrd"
-> heuristic so that it always places it at least after whatever
-> our best guess at the kernel size is. (This might still not
-> be right for images like self-decompressing 32-bit kernels, where
-> there's no way to know how big the kernel will be after
-> decompression.)
-> Patch 4 makes load_aarch64_image() return the
-> kernel size as indicated in the Image file header, so that for
-> the specific case of AArch64 Image files we will definitely not
-> put the initrd on top of them.
 
-With all 4 patches applied, I'm able to boot kernels with large BSS
-segments (~128M, ~512M, and ~1G), and I get sensible warnings when they
-are impossible to boot, e.g.
+Nowadays QEMU prefers to move from the old DB_PRINT() macros to the
+trace events API, see for example this commit:
 
-# 124M of RAM
-[mark@gravadlaks:~/repro]% ./vmboot.sh ~/Image.test-128M
-qemu-system-aarch64: kernel '/home/mark/Image.test-128M' is too large to fit in RAM (kernel size 155500544, RAM size 130023424)
+https://git.qemu.org/?p=qemu.git;a=commitdiff;h=da1804d17a9ed7f060c072fbc4889db5fbc9c7d2;hp=a4f667b6714916683408b983cfe0a615a725775f
 
-# 150M of RAM
-[mark@gravadlaks:~/repro]% ./vmboot.sh ~/Image.test-128M
-qemu-system-aarch64: Not enough space for DTB after kernel/initrd
+The first line you changed would be replaced by a trace event, while the
+second could be replaced by a qemu_log_mask() call (it is an error
+condition).
 
-So feel free to add:
+Also I suggest to include "QEMU Trivial <qemu-trivial@nongnu.org>" in
+the list of recipients, so your patch might get reviewed/merged quicker.
 
-Tested-by: Mark Rutland <mark.rutland@arm.com>
+Regards,
 
-Thanks for putting this together; this is _really_ useful for my testing
-setup, and the warnings above are likely to save people a lot of
-head-scratching in future. It would be great to see this merged. :)
-
-Thanks,
-Mark.
+Phil.

@@ -1,105 +1,98 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4238300wrg;
-        Tue, 11 Jun 2019 04:37:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxkOYr2QaT7eP0x3kDz6nhRGPco4XtA3iTa/iPS+8OMs8XN80b+xgNNI1wwEPW/bfTelhz1
-X-Received: by 2002:a0c:b4ae:: with SMTP id c46mr5328282qve.230.1560253024562;
-        Tue, 11 Jun 2019 04:37:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560253024; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4302222wrg;
+        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw8t1j6PpKsAI0+gM+dUvPf7L6v0lwSRDLLdgw/5AL1A/eDW5gLFb4GrhO2fS/CIlqSrcyF
+X-Received: by 2002:a0c:ae31:: with SMTP id y46mr30946767qvc.172.1560256792895;
+        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560256792; cv=none;
         d=google.com; s=arc-20160816;
-        b=DSxh65BD0eLhQPTVq4FCqiaWgKxSGi3KtUEw75P8SHfEGgNs6OWzeS00GJY9cI2Aql
-         DVoq+KPQe0s5MdCGf4WoQPrymIK69bL6lg8YQ457kHJ7FIKeSHzAgYDXsTlGl5IOkysv
-         dx3zHYBFh4dRdwsY7oHHAt5XCH/eWKZ/Rboo0nXa1dazSmBZn5fuOY9qIJv9VzgYjtRk
-         5jWANcuBdvSuwmzqK9cuMkpKGhGl5A++mu+3VUq2gZUy6AvFktDhi2UJXrwIPGRjZfgp
-         kJO+qlzY1k7UXv7SGH9XcJt9S6jwLwMpOmJKLfzgNqQRVgPGEu9Q4KZ+gRQS05jYX3Uo
-         IOVQ==
+        b=QxNj39ss7bDP/EzCoQ32jR70Va2qUiD9esmBfu/WzP4SlUeWSaway3aMZJFb4vmmrF
+         0Bi9B7vE84ynlaK9EpijRiEYae/wZ+J7BmLHpsqT2ChyX0W0YUMgORqQEy6Rdqd7FUge
+         1oL1vHVjaLDXRQPLB41E8VG02OthihYkCNQSDxrLvkAlkOSHt1JVeou2VKuOP1iW0Z+v
+         gTDa6HaVWcI7k4jNOc2Ym512UXUMQuRqQHZkCTSQsSIQKJS7HvNRSCJeXUrGp6tWlZC/
+         vupPuuzrWcn9knedPl4k0SjSV6ei4emy+bHcf/r39BWwLBzvUuVJnUFDbbQ3uoJSMQlG
+         d0iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=8DDr7wU5Mf7FhJNHoQYd6MgxVhRgKHpZJzl/r4VHltc=;
-        b=NyNXejH72C5+wVepa8HZFqe0Q0Q147NP4SqfJUzJcx9Mzzn7e5SFZE7+1f65VFuypM
-         8eMNBYl2H3L0uCd6PPCs0eGfVbySMWv1xu4QhTC+g4hp+bNwawhW7DrBhp7hIqkX21lY
-         wu9X1KRuAPfysQY+xmWHWnSIFgBPTvrnL05RDkjdLdbtKRsEuT4aVmTf5/d+GqpiP+5W
-         YNhpo8Pvwv8CqgTo3KRo6rLN33M3osUR7lNgCxeoMimXWsb7Tiz4k+kPqOiKAXBTqnN/
-         hU67nJQ5AZHLzBZkAM7g1HypLirUlXm8s7C5LphVyQ1IZuZqpKKbpE+CJw19D0qchLfB
-         M1jA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
+        b=axdFO/Xn6wg72zeCF0NwVJXaP9Rg3vqC1DmCnQuye6/+hwJFhESWZyoUf+vTppMf1c
+         OA9Sx8nhqT8C0nR1J7+D/kAGn3GTpxVTxbrgPdbGI3yoj+xTqYqhDJNeg+S0ea+8sXFZ
+         1HUVaHU4nB3mOtWCo46vHoMzegvDn30UNRt6VdFq6ZrO8GWRKCUeHrp20fkK+vbglkEp
+         8LVQeoSQZbMWn2fuJh0MBdeuEPcnH5ueeSCpYWq4zG8crpz/rzZRwLOVkB5p/7Qm3YB2
+         Rd712VPSomiDEoBE1fwl7N18VtwNzW09v42ykbc045RLcKK9LGuAEJRJrqmcyO5Q2U2W
+         oXIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sWJ2XzSX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KHzbqU+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c25si6517580qte.177.2019.06.11.04.37.04
+        by mx.google.com with ESMTPS id 30si1089309qvh.175.2019.06.11.05.39.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 04:37:04 -0700 (PDT)
+        Tue, 11 Jun 2019 05:39:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sWJ2XzSX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KHzbqU+R;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56526 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57788 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1haf5M-0002mK-4Y
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 07:37:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39752)
+	id 1hag48-0004lV-Er
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 08:39:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53448)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1haeQT-0007kV-VB
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:57 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1hafBr-00081x-RC
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 07:43:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1haeQM-0007u7-6X
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:49 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37460)
+ (envelope-from <rfried.dev@gmail.com>) id 1haewx-000189-Om
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 07:28:25 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54611)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1haeQL-0007mP-QD
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:41 -0400
-Received: by mail-wm1-x343.google.com with SMTP id 22so2395966wmg.2
- for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 03:54:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=8DDr7wU5Mf7FhJNHoQYd6MgxVhRgKHpZJzl/r4VHltc=;
- b=sWJ2XzSXfgOq+HIiZxOjagrZLTKeBuNbzyT1ZEMWS1B3XcZYRuCWS4DG0t/5Rmcmrf
- Hs1rqcUGn7W8KOxqzpaF7WU5nI+pgqY0VP8FVmEwFYIYN2Aq8CPCbinDVjC5s4qoftRS
- Yw5X2JLClSRNtH8JTIbHoqC7+f1hl1gI3ljq1sByRq/wL0kVheS/AExR6iJp2SbgnWTk
- 2MdgGNVqjqDv8sKwNc8TWC7E0ahjclVhDvtdjfaZhQryBDeMpxJWN4i/V8TzrKN9mCrb
- 8kv5GcvvEG0D+CIl+LVT4KbryBrGz4wtDNj00Rk96Ubm3Vf+AHBFIAEu4ztgivxxyZGe
- B05Q==
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1haewu-00014N-Ds; Tue, 11 Jun 2019 07:28:20 -0400
+Received: by mail-wm1-x344.google.com with SMTP id g135so2531598wme.4;
+ Tue, 11 Jun 2019 04:28:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
+ b=KHzbqU+RBnzQPi6PE8my31XDM7I8tIJQBemibSIqblOb7XDr+6DOUetrc5L36tbyW6
+ 8klmUoylaFObVaPCwsMHtZYXWOxeKXIEsTELmmcBkWbNwdKFM4qpBmQN7wsXU//ByAZE
+ UgU9rPk4iiGqn1Yqjlez+wPyx6cGv2nW5Nd3m9P+IGOhLzlx9opkQMP6hiCFNefdXqgs
+ mjovm9C17WtRyTTal1zWCH7slDKSjzfQnWAY991q7ndVtSlf00ns+ItzClcQf8H2OVWk
+ RSczX1WswMlOvjLDfblSYdB4++fwyWnLNDgmid4ZfjtH/DxKMUVen+PKq6rpNyHdmjKh
+ 3wZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=8DDr7wU5Mf7FhJNHoQYd6MgxVhRgKHpZJzl/r4VHltc=;
- b=FRJEiSI3cPm7nn+nFgawekWb6SLXRcSuJY5TaNYhnZ5FB0pvqIZcuLQ7lJ2Ko7dFAO
- DzYUz85kYNsiCNyIrHDJa79tSOOIGZ+vovT7kI5WiiURDLO6ErxkFk3LxwBzqtKkTNmz
- 96+D1JAJOLjto5G5Igzk5RU8hQmV2dudq0Qa0twKxMqf62yagHlidNk1RUbzS92ME5sK
- CnpFOk4ZvH6pPCoYg78xWvNfDG+ZG4duQLLOK6lzAYcAZ0ZRwND2sNnl4srD6eXltolP
- /m5Vykrz+ZqfYo6Aaps1eFuDb7BQ14JKmWnd1BEcdvuCCO8ztlhF+nZte66pGeKVCKDm
- hrSg==
-X-Gm-Message-State: APjAAAVTNC/Hw9GIX8vgR+fi2t7PldVEgHPHaH1oJovQzwtM0oDupBPY
- YiiUqWd6EHI9PQkPNGY7+WzglgSwh4DwEQ==
-X-Received: by 2002:a1c:e009:: with SMTP id x9mr17209422wmg.5.1560250475482;
- Tue, 11 Jun 2019 03:54:35 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id e17sm10785945wrt.95.2019.06.11.03.54.34
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 11 Jun 2019 03:54:35 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 11 Jun 2019 11:53:48 +0100
-Message-Id: <20190611105351.9871-40-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190611105351.9871-1-peter.maydell@linaro.org>
-References: <20190611105351.9871-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hqXHWwI+6YLDY2XPkJyKYaUQ0K7IV5tHdMlx1gZ34CE=;
+ b=KcWS/Hvj8952bn9V9SJe+bwHsJX9Kr2NziUVTV/ulKoUTE1tYv8UmJ8ika7yLmoSHS
+ G2eUjT1SUB7rs4LD5Fpj0xJTGmJ9NfHdIMshV7qJJNekABIjInpO6xTQee7US32WembQ
+ PKuFtmZJmjdkFkUCEg1sGr9d+5JoqR1LiAFps8FzpBoi6jZ73U8Komu5wznhqbs+o9ch
+ awmnldqctqdsifSAtX4B389EnRnwHTFm+8fBx5nRZW40kUbChdveoIsAXFF9sA9u+4zP
+ bIVCYwjLo3qSVgOP2N0gWICqGSxbmMXs+JkXkW/BpEg9QQyNrAyezjoTK7FuES3+wQ3P
+ PirA==
+X-Gm-Message-State: APjAAAViWvw2cvnUUwQ/r8aBToNLul3XSIVqsm5a0PHU0JLyNpeHDSs9
+ nemjFcin95UCwK6qlOhnieQGm42QGxCHQp8KQxE=
+X-Received: by 2002:a1c:b782:: with SMTP id h124mr17358696wmf.20.1560252498265; 
+ Tue, 11 Jun 2019 04:28:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190609100837.17586-1-rfried.dev@gmail.com>
+ <04cd3c78-9d8e-8958-1cdf-f65ab7d91dc7@redhat.com>
+In-Reply-To: <04cd3c78-9d8e-8958-1cdf-f65ab7d91dc7@redhat.com>
+From: Ramon Fried <rfried.dev@gmail.com>
+Date: Tue, 11 Jun 2019 14:28:07 +0300
+Message-ID: <CAGi-RUJEwpyzFg3qe18CuR+aO1NXX3O8sUBxKyP1ooncFpcOrA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000eb4d98058b0a9736"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
-Subject: [Qemu-arm] [PATCH v2 39/42] target/arm: Convert VJCVT to decodetree
+X-Received-From: 2a00:1450:4864:20::344
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] net: cadence_gem: fix
+ compilation error when debug is on
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,105 +104,251 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lEiHWGDUksEg
+X-TUID: bq8isG7XtsQi
 
-Convert the VJCVT instruction to decodetree.
+--000000000000eb4d98058b0a9736
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate-vfp.inc.c | 28 ++++++++++++++++++++++++++++
- target/arm/translate.c         | 12 +-----------
- target/arm/vfp.decode          |  4 ++++
- 3 files changed, 33 insertions(+), 11 deletions(-)
+On Tue, Jun 11, 2019 at 11:34 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
+.com>
+wrote:
 
-diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index cc3f61d9c41..161f0fdd888 100644
---- a/target/arm/translate-vfp.inc.c
-+++ b/target/arm/translate-vfp.inc.c
-@@ -2426,3 +2426,31 @@ static bool trans_VCVT_int_dp(DisasContext *s, arg_VCVT_int_dp *a)
-     tcg_temp_free_ptr(fpst);
-     return true;
- }
-+
-+static bool trans_VJCVT(DisasContext *s, arg_VJCVT *a)
-+{
-+    TCGv_i32 vd;
-+    TCGv_i64 vm;
-+
-+    if (!dc_isar_feature(aa32_jscvt, s)) {
-+        return false;
-+    }
-+
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_fp_d32, s) && (a->vm & 0x10)) {
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    vm = tcg_temp_new_i64();
-+    vd = tcg_temp_new_i32();
-+    neon_load_reg64(vm, a->vm);
-+    gen_helper_vjcvt(vd, vm, cpu_env);
-+    neon_store_reg32(vd, a->vd);
-+    tcg_temp_free_i64(vm);
-+    tcg_temp_free_i32(vd);
-+    return true;
-+}
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 1e28308aa6a..99b436ad6f7 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -3050,7 +3050,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                 return 1;
-             case 15:
-                 switch (rn) {
--                case 0 ... 17:
-+                case 0 ... 19:
-                     /* Already handled by decodetree */
-                     return 1;
-                 default:
-@@ -3085,13 +3085,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                     rm_is_dp = false;
-                     break;
- 
--                case 0x13: /* vjcvt */
--                    if (!dp || !dc_isar_feature(aa32_jscvt, s)) {
--                        return 1;
--                    }
--                    rd_is_dp = false;
--                    break;
--
-                 default:
-                     return 1;
-                 }
-@@ -3177,9 +3170,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
-                 switch (op) {
-                 case 15: /* extension space */
-                     switch (rn) {
--                    case 19: /* vjcvt */
--                        gen_helper_vjcvt(cpu_F0s, cpu_F0d, cpu_env);
--                        break;
-                     case 20: /* fshto */
-                         gen_vfp_shto(dp, 16 - rm, 0);
-                         break;
-diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
-index 6da9a7913da..1a7c9b533de 100644
---- a/target/arm/vfp.decode
-+++ b/target/arm/vfp.decode
-@@ -220,3 +220,7 @@ VCVT_int_sp  ---- 1110 1.11 1000 .... 1010 s:1 1.0 .... \
-              vd=%vd_sp vm=%vm_sp
- VCVT_int_dp  ---- 1110 1.11 1000 .... 1011 s:1 1.0 .... \
-              vd=%vd_dp vm=%vm_sp
-+
-+# VJCVT is always dp to sp
-+VJCVT        ---- 1110 1.11 1001 .... 1011 11.0 .... \
-+             vd=%vd_sp vm=%vm_dp
--- 
-2.20.1
+> Hi Ramon,
+>
+> On 6/9/19 12:08 PM, Ramon Fried wrote:
+> > defining CADENCE_GEM_ERR_DEBUG causes compilation
+> > errors, fix that.
+> >
+> > Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+> > ---
+> >  hw/net/cadence_gem.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> > index 7f63411430..5cc5a71524 100644
+> > --- a/hw/net/cadence_gem.c
+> > +++ b/hw/net/cadence_gem.c
+> > @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
+t
+> uint8_t *buf, size_t size)
+> >              return -1;
+> >          }
+> >
+> > -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
+> rxbufsize),
+> > -                rx_desc_get_buffer(s->rx_desc[q]));
+> > +        DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy,
+> rxbufsize),
+> > +                rx_desc_get_buffer(s, s->rx_desc[q]));
+>
+> Your patch fails on 32-bit hosts:
+>
+> ./hw/net/cadence_gem.c:987:18: error: format '%lx' expects argument of
+> type 'long unsigned int', but argument 4 has type 'uint64_t {aka long
+> long unsigned int}' [-Werror=3Dformat=3D]
+>          DB_PRINT("copy %d bytes to 0x%lx\n", MIN(bytes_to_copy,
+> rxbufsize),
+>                   ^
+> ./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
+>      fprintf(stderr, ## __VA_ARGS__); \
+>                         ^
+> ./hw/net/cadence_gem.c: In function 'gem_transmit':
+> ./hw/net/cadence_gem.c:1160:26: error: format '%lx' expects argument of
+> type 'long unsigned int', but argument 5 has type 'unsigned int'
+> [-Werror=3Dformat=3D]
+>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
+> space " \
+>                           ^
+> ./hw/net/cadence_gem.c:39:24: note: in definition of macro 'DB_PRINT'
+>      fprintf(stderr, ## __VA_ARGS__); \
+>                         ^
+> cc1: all warnings being treated as errors
+>
+> QEMU provides "HWADDR_PRIx" format for addresses, see for example few
+> lines earlier:
+>
+>     DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
+>
+>
+> >
+> >          /* Copy packet data to emulated DMA buffer */
+> >          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
+> s->rx_desc[q]) +
+> > @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
+> >              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+> >                                                 (p - tx_packet)) {
+> >                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
+> space " \
+> > -                         "0x%x\n", (unsigned)packet_desc_addr,
+> > +                         "0x%lx\n", (unsigned)packet_desc_addr,
+>
+> Here the correct format seems to be "%zd" (difference of sizeof).
+>
+> >                           (unsigned)tx_desc_get_length(desc),
+> >                           sizeof(tx_packet) - (p - tx_packet));
+> >                  break;
+> >
+>
+> Nowadays QEMU prefers to move from the old DB_PRINT() macros to the
+> trace events API, see for example this commit:
+>
+>
+> https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dda1804d17a9ed7f060c=
+072fbc4889db5fbc9c7d2;hp=3Da4f667b6714916683408b983cfe0a615a725775f
+>
+> The first line you changed would be replaced by a trace event, while the
+> second could be replaced by a qemu_log_mask() call (it is an error
+> condition).
+>
+> Also I suggest to include "QEMU Trivial <qemu-trivial@nongnu.org>" in
+> the list of recipients, so your patch might get reviewed/merged quicker.
+>
+> Regards,
+>
+> Phil.
+>
 
+Hi Phil,
+Thanks for the review, I'll send v2 soon.
+
+--000000000000eb4d98058b0a9736
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jun 11, 2019 at 11:34 AM Phil=
+ippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">philmd@red=
+hat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">Hi Ramon,<br>
+<br>
+On 6/9/19 12:08 PM, Ramon Fried wrote:<br>
+&gt; defining CADENCE_GEM_ERR_DEBUG causes compilation<br>
+&gt; errors, fix that.<br>
+&gt; <br>
+&gt; Signed-off-by: Ramon Fried &lt;<a href=3D"mailto:rfried.dev@gmail.com"=
+ target=3D"_blank">rfried.dev@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/net/cadence_gem.c | 6 +++---<br>
+&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c<br>
+&gt; index 7f63411430..5cc5a71524 100644<br>
+&gt; --- a/hw/net/cadence_gem.c<br>
+&gt; +++ b/hw/net/cadence_gem.c<br>
+&gt; @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, con=
+st uint8_t *buf, size_t size)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return -1;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;copy %d bytes to 0x%x\n&qu=
+ot;, MIN(bytes_to_copy, rxbufsize),<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_desc_get_b=
+uffer(s-&gt;rx_desc[q]));<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT(&quot;copy %d bytes to 0x%lx\n&q=
+uot;, MIN(bytes_to_copy, rxbufsize),<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_desc_get_b=
+uffer(s, s-&gt;rx_desc[q]));<br>
+<br>
+Your patch fails on 32-bit hosts:<br>
+<br>
+./hw/net/cadence_gem.c:987:18: error: format &#39;%lx&#39; expects argument=
+ of<br>
+type &#39;long unsigned int&#39;, but argument 4 has type &#39;uint64_t {ak=
+a long<br>
+long unsigned int}&#39; [-Werror=3Dformat=3D]<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0DB_PRINT(&quot;copy %d bytes to 0x%lx\n&q=
+uot;, MIN(bytes_to_copy, rxbufsize),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^<br>
+./hw/net/cadence_gem.c:39:24: note: in definition of macro &#39;DB_PRINT&#3=
+9;<br>
+=C2=A0 =C2=A0 =C2=A0fprintf(stderr, ## __VA_ARGS__); \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ^<br>
+./hw/net/cadence_gem.c: In function &#39;gem_transmit&#39;:<br>
+./hw/net/cadence_gem.c:1160:26: error: format &#39;%lx&#39; expects argumen=
+t of<br>
+type &#39;long unsigned int&#39;, but argument 5 has type &#39;unsigned int=
+&#39;<br>
+[-Werror=3Dformat=3D]<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0DB_PRINT(&quo=
+t;TX descriptor @ 0x%x too large: size 0x%x<br>
+space &quot; \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 ^<br>
+./hw/net/cadence_gem.c:39:24: note: in definition of macro &#39;DB_PRINT&#3=
+9;<br>
+=C2=A0 =C2=A0 =C2=A0fprintf(stderr, ## __VA_ARGS__); \<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ^<br>
+cc1: all warnings being treated as errors<br>
+<br>
+QEMU provides &quot;HWADDR_PRIx&quot; format for addresses, see for example=
+ few<br>
+lines earlier:<br>
+<br>
+=C2=A0 =C2=A0 DB_PRINT(&quot;read descriptor 0x%&quot; HWADDR_PRIx &quot;\n=
+&quot;, packet_desc_addr);<br>
+<br>
+<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Copy packet data to emulated DMA =
+buffer */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 address_space_write(&amp;s-&gt;dma_a=
+s, rx_desc_get_buffer(s, s-&gt;rx_desc[q]) +<br>
+&gt; @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (tx_desc_get_length=
+(desc) &gt; sizeof(tx_packet) -<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(p - tx_packet)) {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 DB_PRINT=
+(&quot;TX descriptor @ 0x%x too large: size 0x%x space &quot; \<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0&quot;0x%x\n&quot;, (unsigned)packet_desc_addr,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0&quot;0x%lx\n&quot;, (unsigned)packet_desc_addr,<br>
+<br>
+Here the correct format seems to be &quot;%zd&quot; (difference of sizeof).=
+<br>
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0(unsigned)tx_desc_get_length(desc),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0sizeof(tx_packet) - (p - tx_packet));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<b=
+r>
+&gt; <br>
+<br>
+Nowadays QEMU prefers to move from the old DB_PRINT() macros to the<br>
+trace events API, see for example this commit:<br>
+<br>
+<a href=3D"https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dda1804d17a=
+9ed7f060c072fbc4889db5fbc9c7d2;hp=3Da4f667b6714916683408b983cfe0a615a725775=
+f" rel=3D"noreferrer" target=3D"_blank">https://git.qemu.org/?p=3Dqemu.git;=
+a=3Dcommitdiff;h=3Dda1804d17a9ed7f060c072fbc4889db5fbc9c7d2;hp=3Da4f667b671=
+4916683408b983cfe0a615a725775f</a><br>
+<br>
+The first line you changed would be replaced by a trace event, while the<br=
+>
+second could be replaced by a qemu_log_mask() call (it is an error<br>
+condition).<br>
+<br>
+Also I suggest to include &quot;QEMU Trivial &lt;<a href=3D"mailto:qemu-tri=
+vial@nongnu.org" target=3D"_blank">qemu-trivial@nongnu.org</a>&gt;&quot; in=
+<br>
+the list of recipients, so your patch might get reviewed/merged quicker.<br=
+>
+<br>
+Regards,<br>
+<br>
+Phil.<br></blockquote><div><br></div><div>Hi Phil,</div><div>Thanks for the=
+ review, I&#39;ll send v2 soon.</div><div>=C2=A0</div></div></div>
+
+--000000000000eb4d98058b0a9736--

@@ -1,96 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4202536wrg;
-        Tue, 11 Jun 2019 03:59:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwDVVssAs569ZBtBJXr6IizH1OhfUlcj6jJmUo9+JHI19MMnd+ePsf903c9MFc/pd4NMf0L
-X-Received: by 2002:aed:3e0f:: with SMTP id l15mr65014268qtf.251.1560250797268;
-        Tue, 11 Jun 2019 03:59:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560250797; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4203342wrg;
+        Tue, 11 Jun 2019 04:00:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzy4GLp+Yyp/qDCJP72/SI6jqip5Jfqft8UddjAGCfmH2v5i1UVATNfRuPjMJubUqgum9Gd
+X-Received: by 2002:a0c:b5dd:: with SMTP id o29mr10158584qvf.85.1560250843068;
+        Tue, 11 Jun 2019 04:00:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560250843; cv=none;
         d=google.com; s=arc-20160816;
-        b=m0UjiV2xC/u9yCk0LrLU2MkNN2VSohUdNpVE5WYE2yGu9YwSZDyPjQBRx4kuCPJT37
-         gIfHlFOvqDqBY5pneU96N5M8TmO/Ddqy/13fzMIWGDjZTXpLsLmtNX5HFH1Ypxp7Pmux
-         WkIq6/IfvBsQiZzHl20GvOdNIZSPrze+KnMaI41IpeaMYCTAEy3Nd6lTfOhuIlLxFAp0
-         0TcnjwQrpSVuKKw71Hsm0qzfCZ8cq3aA+T/x1ZaZ1kTxE27stl04UmCEoC3+3XOiqcWm
-         57oNZahIFcx9ICXqt8iuagzlw3hdyIQEO+aoGIN84Q9Yz474GVxrD5OJR/hl9aR/jCIm
-         Z4sw==
+        b=o9dBPiv+UhnNR52wi7W/2kURLKl0iVzIasNGlL0vt2PsnhsCl+gdwRula1uhb4jSfR
+         3aG46hgD8kzjiFqONLEkX1kvWGZb2taW48ISepu7ZTAkOzxYJH2jCxQct2DfTo03+jfl
+         joa2O+MBHramwXa7b73Kspx0aKdiFXU33P53uBFlxFe5DBIRa6AD4cTwZRHLWXHulmy4
+         TMgPOt1xOd4bEdK+gwfpL6TSQ1qcV4NKJuZD4TjoXFLaIWKyNKvhBQSPRPQAkvtI2Tqo
+         +m5WS+arBo6kuIbysBn3jgeMjQp0qGl0ve0AN9k9cXpBRNKwEfQLPmP8Kv9LrmRN+m8s
+         +mvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=eNBmWZIm97TjmvwdrXNoqxnA5CbE2nGaaTGyw39+1hQ=;
-        b=eFQ6D7XzZQsew4uTU1sfem1nhWslTLTrs6NmC8aWeiYAirO5NZtP8jW0Q9WyPA0Os6
-         KPheyWHJPy3tqMZ3ZSwEM9Nrbp+yJsdMqbGkpTmW3lnQjPOXii0dUT8VbuY+uz2mhyK4
-         vC575Y5X05UX8rlDm2A0bbYFS+m7Ks0vSpt3zDGKtl8hxH0QGjVzv3GdWXdoxQ0sYWbF
-         rV8PhB9YkcKakzcjy3Es64Jga8rhNGWLwsQuJ/QLVcV9ZzuxGhO/HBsocIoi9/ONqqiK
-         ZcMKQJCUzpcpEi0EuiiFu8ExByhUE13yqhm3CizM/btopFKMzlIXc+yiV4/nowhEDIZv
-         gaOg==
+        bh=BRekI/r0JrL+EgGXfGboIlXRqShDBnXKTEq1yJIu1yc=;
+        b=QuUnqh1bSAtPhSpD8KhM+ucK9a4kJaYZQL8dm5oStriOJHvjaKSzvxTAMcEEnWv4B5
+         tAfP4Wh736lsKC5Naxts9N7FhCpi5ACO+dDJeib04bgyPohgEiPEWYVI2Y9Qe2xbzWah
+         bhTrWkRyTFSR2VFsno2TfAw5AXBDH27fzT6gpsj1LI+yJiEwgd6groNnDqz8u02MPo72
+         9cWiz3hhV7kQSGbbIxzQuzsbEiZyloM0vIi9Xg9KPp5+dtuRSgWgQkTIyIkmNjuxHC0p
+         YqhS23FI/WBlbHUm5GUfvMAvV5VLuxwJwRCSxbi22reyBFRn5REt86YeuSgWWuhoi+Gn
+         fegw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GeVgCSSr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k30PTnuA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o185si2661318qkd.256.2019.06.11.03.59.57
+        by mx.google.com with ESMTPS id w22si3500150qtw.147.2019.06.11.04.00.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 03:59:57 -0700 (PDT)
+        Tue, 11 Jun 2019 04:00:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GeVgCSSr;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k30PTnuA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56214 helo=lists.gnu.org)
+Received: from localhost ([::1]:56222 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1haeVQ-00051a-Pn
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 06:59:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39115)
+	id 1haeWA-0005OM-Fk
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 07:00:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39140)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1haePu-0007Dl-KJ
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:20 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1haePv-0007F1-K5
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1haePr-0007OR-Ab
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:14 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51679)
+ (envelope-from <peter.maydell@linaro.org>) id 1haePr-0007Ot-MZ
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:15 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34814)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1haePp-0007Jv-92
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:09 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 207so2437744wma.1
- for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 03:54:06 -0700 (PDT)
+ id 1haePr-0007Lg-8L
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 06:54:11 -0400
+Received: by mail-wm1-x341.google.com with SMTP id w9so1653406wmd.1
+ for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 03:54:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eNBmWZIm97TjmvwdrXNoqxnA5CbE2nGaaTGyw39+1hQ=;
- b=GeVgCSSrJwgGKnMbAnoCMdGxfXYsgbTA3poOHyG2jWs+p3uqLi92pWtE61FijJ+wil
- BCmYmDpnjqD+dKytPC5wy7wSUI363stV9Q9BjSf3/zyTe+7b1YaLDSDklZm/arABRWjh
- muUDRP+7d7Uq4q+9byBHFzmP21O9n68N6NDivBe7elrMrY5pHXa9XoTw/2o/Xy33IVTs
- YroBQfdXwfZBidmi7W1aGwdPCrhEE1CrxDVCONcCvYeKXx7XcZzYDZgaREtbDrr42D6f
- M/MRkZZguuJchZ8h7ao65QReIm8hJFirk2ppFIaSjZizFOymO1wYXx7LCbXwZwW9MkqX
- yxdQ==
+ bh=BRekI/r0JrL+EgGXfGboIlXRqShDBnXKTEq1yJIu1yc=;
+ b=k30PTnuAiIUQ0JkmxjG5TbQkaxpy3E8kzzy+2yAOwOeYZjSWjhWYeUitqMfdvBMpP8
+ V94Ast7boK25xf7YUZ0RMgxXA9LT4nMX7EQ8Dqy63974MwpS7rVUOKAu4HlGw+uMo5QZ
+ BS/Mb0UqE2lMdF3GjkRHCplCp9h0eYFXqUoOr2fFz7Y/qhC6PDZJzx/U02E9mO8DCZsf
+ 5YgxU6rKPJuSB7sH3SES0z7rDqiqVc9xQ6/eX+3g70EBnXfeQ89JcaeOFeekkuJIjNL3
+ lNSmpvH+AN37Xsq2jdU/H+2lbVLtvrhXvj6XlhSWi/VF07fPMvK/Hh1FeP73oJ7HzGTP
+ CKog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eNBmWZIm97TjmvwdrXNoqxnA5CbE2nGaaTGyw39+1hQ=;
- b=U5AHisSplySc2BgnA76SfWQmQa6V97jzx/+njcCO437pkqHsh18abomIMR37Cb2YQl
- WFsB/FmreD0gLTXU6BOvjThu0ZEyAMdcg9iRrlmGsZvwBfLdB8CUzeNoDX8Ohc2BZIzj
- 3ahnJcyXE2sOsi2FDASwxX0IxXv1FMA3qve76hXn9CnHUKSFxTj3XvaM/YEzyRldtNeU
- gNdoj1efCH7zHXfATXCkkoo5NaIOfidy6QiEiW5mwVfzdRRRP0XMmnH8iOldrucqfn6M
- m0QSAr9X0iv2SFS5iVpfzfGODg5U/V7BVHptQC2SdNfDn4B6H+hllzEBFroDDHX0qCzo
- Od8w==
-X-Gm-Message-State: APjAAAUa5zs04rWBFafaWVa4XkXj5kT2mF2y/3KR3rPCTepF5EdwGtvb
- 8PEqeABiezLJni6lHhra5mPQFxiOD6kOHA==
-X-Received: by 2002:a1c:ed01:: with SMTP id l1mr17977485wmh.109.1560250445478; 
- Tue, 11 Jun 2019 03:54:05 -0700 (PDT)
+ bh=BRekI/r0JrL+EgGXfGboIlXRqShDBnXKTEq1yJIu1yc=;
+ b=JoMckb7xofqp1ZePbdEyzsWbPj5OunDDCZSgyyikQfO/zSTrTQCyUnFWZL+p9cPGi/
+ Ad/CRrns4Tk45yl4psSXr5hEKx9cNjhlEjJQwmlZQN2FTeUYD2u9AEVXFsQFMJhe4HIt
+ ajU/qD3ypf5P/jLa42P2Hd7Z19EbLmDqZZbPE63yIuqmPUR32ZCYsKL6IjWaCR2pRCDa
+ +aRszrYyRu+iQVLg6OekdKH92XlvZOnslGwaz+oujyYBDcIhieqaNIzGXTjGMQGw0tVy
+ m8O956ilc55wkguhpwjudhGvcqxjIT+8/Q6M9FfM3rVQ7PiVAys5Yo/IbNv4vWLyRe9p
+ mvrg==
+X-Gm-Message-State: APjAAAWH0HBA+q//AOhA9g32ZSTp0WhrKCNu+y/Mbib/AGGQv/gJci71
+ ZuRFk/E95+ZTef1YJCAOUtgwRAVfT21n1Q==
+X-Received: by 2002:a1c:b684:: with SMTP id
+ g126mr17091029wmf.176.1560250447807; 
+ Tue, 11 Jun 2019 03:54:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id e17sm10785945wrt.95.2019.06.11.03.54.04
+ by smtp.gmail.com with ESMTPSA id e17sm10785945wrt.95.2019.06.11.03.54.06
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 11 Jun 2019 03:54:05 -0700 (PDT)
+ Tue, 11 Jun 2019 03:54:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 11 Jun 2019 11:53:20 +0100
-Message-Id: <20190611105351.9871-12-peter.maydell@linaro.org>
+Date: Tue, 11 Jun 2019 11:53:22 +0100
+Message-Id: <20190611105351.9871-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190611105351.9871-1-peter.maydell@linaro.org>
 References: <20190611105351.9871-1-peter.maydell@linaro.org>
@@ -98,9 +99,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH v2 11/42] target/arm: Add helpers for VFP
- register loads and stores
+X-Received-From: 2a00:1450:4864:20::341
+Subject: [Qemu-arm] [PATCH v2 13/42] target/arm: Convert "single-precision"
+ register moves to decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,199 +116,398 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OQQXOPdqF2Ea
+X-TUID: S9QLtpq8kHPb
 
-The current VFP code has two different idioms for
-loading and storing from the VFP register file:
- 1 using the gen_mov_F0_vreg() and similar functions,
-   which load and store to a fixed set of TCG globals
-   cpu_F0s, CPU_F0d, etc
- 2 by direct calls to tcg_gen_ld_f64() and friends
+Convert the "single-precision" register moves to decodetree:
+ * VMSR
+ * VMRS
+ * VMOV between general purpose register and single precision
 
-We want to phase out idiom 1 (because the use of the
-fixed globals is a relic of a much older version of TCG),
-but idiom 2 is quite longwinded:
- tcg_gen_ld_f64(tmp, cpu_env, vfp_reg_offset(true, reg))
-requires us to specify the 64-bitness twice, once in
-the function name and once by passing 'true' to
-vfp_reg_offset(). There's no guard against accidentally
-passing the wrong flag.
+Note that the VMSR/VMRS conversions make our handling of
+the "should this UNDEF?" checks consistent between the two
+instructions:
+ * VMSR to MVFR0, MVFR1, MVFR2 now UNDEF from EL0
+   (previously was a nop)
+ * VMSR to FPSID now UNDEFs from EL0 or if VFPv3 or better
+   (previously was a nop)
+ * VMSR to FPINST and FPINST2 now UNDEF if VFPv3 or better
+   (previously would write to the register, which had no
+   guest-visible effect because we always UNDEF reads)
 
-Instead, let's move to a convention of accessing 64-bit
-registers via the existing neon_load_reg64() and
-neon_store_reg64(), and provide new neon_load_reg32()
-and neon_store_reg32() for the 32-bit equivalents.
+We also tighten up the decode: we were previously underdecoding
+some SBZ or SBO bits.
 
-Implement the new functions and use them in the code in
-translate-vfp.inc.c. We will convert the rest of the VFP
-code as we do the decodetree conversion in subsequent
-commits.
+The conversion of VMOV_single includes the expansion out of the
+gen_mov_F0_vreg()/gen_vfp_mrs() and gen_mov_vreg_F0()/gen_vfp_msr()
+sequences into the simpler direct load/store of the TCG temp via
+neon_{load,store}_reg32(): we know in the new function that we're
+always single-precision, we don't need to use the old-and-deprecated
+cpu_F0* TCG globals, and we don't happen to have the declaration of
+gen_vfp_msr() and gen_vfp_mrs() at the point in the file where the
+new function is.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate-vfp.inc.c | 40 +++++++++++++++++-----------------
- target/arm/translate.c         | 10 +++++++++
- 2 files changed, 30 insertions(+), 20 deletions(-)
+ target/arm/translate-vfp.inc.c | 161 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c         | 148 +-----------------------------
+ target/arm/vfp.decode          |   4 +
+ 3 files changed, 168 insertions(+), 145 deletions(-)
 
 diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index 2f070a6e0d9..24358f3d3eb 100644
+index 8b0899fa05c..74c10f9024b 100644
 --- a/target/arm/translate-vfp.inc.c
 +++ b/target/arm/translate-vfp.inc.c
-@@ -179,8 +179,8 @@ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
-         tcg_gen_ext_i32_i64(nf, cpu_NF);
-         tcg_gen_ext_i32_i64(vf, cpu_VF);
+@@ -622,3 +622,164 @@ static bool trans_VDUP(DisasContext *s, arg_VDUP *a)
  
--        tcg_gen_ld_f64(frn, cpu_env, vfp_reg_offset(dp, rn));
--        tcg_gen_ld_f64(frm, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg64(frn, rn);
-+        neon_load_reg64(frm, rm);
-         switch (a->cc) {
-         case 0: /* eq: Z */
-             tcg_gen_movcond_i64(TCG_COND_EQ, dest, zf, zero,
-@@ -207,7 +207,7 @@ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
-             tcg_temp_free_i64(tmp);
-             break;
-         }
--        tcg_gen_st_f64(dest, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg64(dest, rd);
-         tcg_temp_free_i64(frn);
-         tcg_temp_free_i64(frm);
-         tcg_temp_free_i64(dest);
-@@ -226,8 +226,8 @@ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
-         frn = tcg_temp_new_i32();
-         frm = tcg_temp_new_i32();
-         dest = tcg_temp_new_i32();
--        tcg_gen_ld_f32(frn, cpu_env, vfp_reg_offset(dp, rn));
--        tcg_gen_ld_f32(frm, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg32(frn, rn);
-+        neon_load_reg32(frm, rm);
-         switch (a->cc) {
-         case 0: /* eq: Z */
-             tcg_gen_movcond_i32(TCG_COND_EQ, dest, cpu_ZF, zero,
-@@ -254,7 +254,7 @@ static bool trans_VSEL(DisasContext *s, arg_VSEL *a)
-             tcg_temp_free_i32(tmp);
-             break;
-         }
--        tcg_gen_st_f32(dest, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg32(dest, rd);
-         tcg_temp_free_i32(frn);
-         tcg_temp_free_i32(frm);
-         tcg_temp_free_i32(dest);
-@@ -298,14 +298,14 @@ static bool trans_VMINMAXNM(DisasContext *s, arg_VMINMAXNM *a)
-         frm = tcg_temp_new_i64();
-         dest = tcg_temp_new_i64();
- 
--        tcg_gen_ld_f64(frn, cpu_env, vfp_reg_offset(dp, rn));
--        tcg_gen_ld_f64(frm, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg64(frn, rn);
-+        neon_load_reg64(frm, rm);
-         if (vmin) {
-             gen_helper_vfp_minnumd(dest, frn, frm, fpst);
-         } else {
-             gen_helper_vfp_maxnumd(dest, frn, frm, fpst);
-         }
--        tcg_gen_st_f64(dest, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg64(dest, rd);
-         tcg_temp_free_i64(frn);
-         tcg_temp_free_i64(frm);
-         tcg_temp_free_i64(dest);
-@@ -316,14 +316,14 @@ static bool trans_VMINMAXNM(DisasContext *s, arg_VMINMAXNM *a)
-         frm = tcg_temp_new_i32();
-         dest = tcg_temp_new_i32();
- 
--        tcg_gen_ld_f32(frn, cpu_env, vfp_reg_offset(dp, rn));
--        tcg_gen_ld_f32(frm, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg32(frn, rn);
-+        neon_load_reg32(frm, rm);
-         if (vmin) {
-             gen_helper_vfp_minnums(dest, frn, frm, fpst);
-         } else {
-             gen_helper_vfp_maxnums(dest, frn, frm, fpst);
-         }
--        tcg_gen_st_f32(dest, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg32(dest, rd);
-         tcg_temp_free_i32(frn);
-         tcg_temp_free_i32(frm);
-         tcg_temp_free_i32(dest);
-@@ -379,9 +379,9 @@ static bool trans_VRINT(DisasContext *s, arg_VRINT *a)
-         TCGv_i64 tcg_res;
-         tcg_op = tcg_temp_new_i64();
-         tcg_res = tcg_temp_new_i64();
--        tcg_gen_ld_f64(tcg_op, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg64(tcg_op, rm);
-         gen_helper_rintd(tcg_res, tcg_op, fpst);
--        tcg_gen_st_f64(tcg_res, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg64(tcg_res, rd);
-         tcg_temp_free_i64(tcg_op);
-         tcg_temp_free_i64(tcg_res);
-     } else {
-@@ -389,9 +389,9 @@ static bool trans_VRINT(DisasContext *s, arg_VRINT *a)
-         TCGv_i32 tcg_res;
-         tcg_op = tcg_temp_new_i32();
-         tcg_res = tcg_temp_new_i32();
--        tcg_gen_ld_f32(tcg_op, cpu_env, vfp_reg_offset(dp, rm));
-+        neon_load_reg32(tcg_op, rm);
-         gen_helper_rints(tcg_res, tcg_op, fpst);
--        tcg_gen_st_f32(tcg_res, cpu_env, vfp_reg_offset(dp, rd));
-+        neon_store_reg32(tcg_res, rd);
-         tcg_temp_free_i32(tcg_op);
-         tcg_temp_free_i32(tcg_res);
-     }
-@@ -440,14 +440,14 @@ static bool trans_VCVT(DisasContext *s, arg_VCVT *a)
-         tcg_double = tcg_temp_new_i64();
-         tcg_res = tcg_temp_new_i64();
-         tcg_tmp = tcg_temp_new_i32();
--        tcg_gen_ld_f64(tcg_double, cpu_env, vfp_reg_offset(1, rm));
-+        neon_load_reg64(tcg_double, rm);
-         if (is_signed) {
-             gen_helper_vfp_tosld(tcg_res, tcg_double, tcg_shift, fpst);
-         } else {
-             gen_helper_vfp_tould(tcg_res, tcg_double, tcg_shift, fpst);
-         }
-         tcg_gen_extrl_i64_i32(tcg_tmp, tcg_res);
--        tcg_gen_st_f32(tcg_tmp, cpu_env, vfp_reg_offset(0, rd));
-+        neon_store_reg32(tcg_tmp, rd);
-         tcg_temp_free_i32(tcg_tmp);
-         tcg_temp_free_i64(tcg_res);
-         tcg_temp_free_i64(tcg_double);
-@@ -455,13 +455,13 @@ static bool trans_VCVT(DisasContext *s, arg_VCVT *a)
-         TCGv_i32 tcg_single, tcg_res;
-         tcg_single = tcg_temp_new_i32();
-         tcg_res = tcg_temp_new_i32();
--        tcg_gen_ld_f32(tcg_single, cpu_env, vfp_reg_offset(0, rm));
-+        neon_load_reg32(tcg_single, rm);
-         if (is_signed) {
-             gen_helper_vfp_tosls(tcg_res, tcg_single, tcg_shift, fpst);
-         } else {
-             gen_helper_vfp_touls(tcg_res, tcg_single, tcg_shift, fpst);
-         }
--        tcg_gen_st_f32(tcg_res, cpu_env, vfp_reg_offset(0, rd));
-+        neon_store_reg32(tcg_res, rd);
-         tcg_temp_free_i32(tcg_res);
-         tcg_temp_free_i32(tcg_single);
-     }
+     return true;
+ }
++
++static bool trans_VMSR_VMRS(DisasContext *s, arg_VMSR_VMRS *a)
++{
++    TCGv_i32 tmp;
++    bool ignore_vfp_enabled = false;
++
++    if (arm_dc_feature(s, ARM_FEATURE_M)) {
++        /*
++         * The only M-profile VFP vmrs/vmsr sysreg is FPSCR.
++         * Writes to R15 are UNPREDICTABLE; we choose to undef.
++         */
++        if (a->rt == 15 || a->reg != ARM_VFP_FPSCR) {
++            return false;
++        }
++    }
++
++    switch (a->reg) {
++    case ARM_VFP_FPSID:
++        /*
++         * VFPv2 allows access to FPSID from userspace; VFPv3 restricts
++         * all ID registers to privileged access only.
++         */
++        if (IS_USER(s) && arm_dc_feature(s, ARM_FEATURE_VFP3)) {
++            return false;
++        }
++        ignore_vfp_enabled = true;
++        break;
++    case ARM_VFP_MVFR0:
++    case ARM_VFP_MVFR1:
++        if (IS_USER(s) || !arm_dc_feature(s, ARM_FEATURE_MVFR)) {
++            return false;
++        }
++        ignore_vfp_enabled = true;
++        break;
++    case ARM_VFP_MVFR2:
++        if (IS_USER(s) || !arm_dc_feature(s, ARM_FEATURE_V8)) {
++            return false;
++        }
++        ignore_vfp_enabled = true;
++        break;
++    case ARM_VFP_FPSCR:
++        break;
++    case ARM_VFP_FPEXC:
++        if (IS_USER(s)) {
++            return false;
++        }
++        ignore_vfp_enabled = true;
++        break;
++    case ARM_VFP_FPINST:
++    case ARM_VFP_FPINST2:
++        /* Not present in VFPv3 */
++        if (IS_USER(s) || arm_dc_feature(s, ARM_FEATURE_VFP3)) {
++            return false;
++        }
++        break;
++    default:
++        return false;
++    }
++
++    if (!full_vfp_access_check(s, ignore_vfp_enabled)) {
++        return true;
++    }
++
++    if (a->l) {
++        /* VMRS, move VFP special register to gp register */
++        switch (a->reg) {
++        case ARM_VFP_FPSID:
++        case ARM_VFP_FPEXC:
++        case ARM_VFP_FPINST:
++        case ARM_VFP_FPINST2:
++        case ARM_VFP_MVFR0:
++        case ARM_VFP_MVFR1:
++        case ARM_VFP_MVFR2:
++            tmp = load_cpu_field(vfp.xregs[a->reg]);
++            break;
++        case ARM_VFP_FPSCR:
++            if (a->rt == 15) {
++                tmp = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
++                tcg_gen_andi_i32(tmp, tmp, 0xf0000000);
++            } else {
++                tmp = tcg_temp_new_i32();
++                gen_helper_vfp_get_fpscr(tmp, cpu_env);
++            }
++            break;
++        default:
++            g_assert_not_reached();
++        }
++
++        if (a->rt == 15) {
++            /* Set the 4 flag bits in the CPSR.  */
++            gen_set_nzcv(tmp);
++            tcg_temp_free_i32(tmp);
++        } else {
++            store_reg(s, a->rt, tmp);
++        }
++    } else {
++        /* VMSR, move gp register to VFP special register */
++        switch (a->reg) {
++        case ARM_VFP_FPSID:
++        case ARM_VFP_MVFR0:
++        case ARM_VFP_MVFR1:
++        case ARM_VFP_MVFR2:
++            /* Writes are ignored.  */
++            break;
++        case ARM_VFP_FPSCR:
++            tmp = load_reg(s, a->rt);
++            gen_helper_vfp_set_fpscr(cpu_env, tmp);
++            tcg_temp_free_i32(tmp);
++            gen_lookup_tb(s);
++            break;
++        case ARM_VFP_FPEXC:
++            /*
++             * TODO: VFP subarchitecture support.
++             * For now, keep the EN bit only
++             */
++            tmp = load_reg(s, a->rt);
++            tcg_gen_andi_i32(tmp, tmp, 1 << 30);
++            store_cpu_field(tmp, vfp.xregs[a->reg]);
++            gen_lookup_tb(s);
++            break;
++        case ARM_VFP_FPINST:
++        case ARM_VFP_FPINST2:
++            tmp = load_reg(s, a->rt);
++            store_cpu_field(tmp, vfp.xregs[a->reg]);
++            break;
++        default:
++            g_assert_not_reached();
++        }
++    }
++
++    return true;
++}
++
++static bool trans_VMOV_single(DisasContext *s, arg_VMOV_single *a)
++{
++    TCGv_i32 tmp;
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    if (a->l) {
++        /* VFP to general purpose register */
++        tmp = tcg_temp_new_i32();
++        neon_load_reg32(tmp, a->vn);
++        if (a->rt == 15) {
++            /* Set the 4 flag bits in the CPSR.  */
++            gen_set_nzcv(tmp);
++            tcg_temp_free_i32(tmp);
++        } else {
++            store_reg(s, a->rt, tmp);
++        }
++    } else {
++        /* general purpose register to VFP */
++        tmp = load_reg(s, a->rt);
++        neon_store_reg32(tmp, a->vn);
++        tcg_temp_free_i32(tmp);
++    }
++
++    return true;
++}
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index e42a21d4aa5..3661ed57cd3 100644
+index 08307bb526d..cbb86a49213 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -1689,6 +1689,16 @@ static inline void neon_store_reg64(TCGv_i64 var, int reg)
-     tcg_gen_st_i64(var, cpu_env, vfp_reg_offset(1, reg));
- }
+@@ -3097,7 +3097,6 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+     TCGv_i32 addr;
+     TCGv_i32 tmp;
+     TCGv_i32 tmp2;
+-    bool ignore_vfp_enabled = false;
  
-+static inline void neon_load_reg32(TCGv_i32 var, int reg)
-+{
-+    tcg_gen_ld_i32(var, cpu_env, vfp_reg_offset(false, reg));
-+}
+     if (!arm_dc_feature(s, ARM_FEATURE_VFP)) {
+         return 1;
+@@ -3133,14 +3132,7 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+      * for invalid encodings; we will generate incorrect syndrome information
+      * for attempts to execute invalid vfp/neon encodings with FP disabled.
+      */
+-    if ((insn & 0x0fe00fff) == 0x0ee00a10) {
+-        rn = (insn >> 16) & 0xf;
+-        if (rn == ARM_VFP_FPSID || rn == ARM_VFP_FPEXC || rn == ARM_VFP_MVFR2
+-            || rn == ARM_VFP_MVFR1 || rn == ARM_VFP_MVFR0) {
+-            ignore_vfp_enabled = true;
+-        }
+-    }
+-    if (!full_vfp_access_check(s, ignore_vfp_enabled)) {
++    if (!vfp_access_check(s)) {
+         return 0;
+     }
+ 
+@@ -3148,142 +3140,8 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
+     switch ((insn >> 24) & 0xf) {
+     case 0xe:
+         if (insn & (1 << 4)) {
+-            /* single register transfer */
+-            rd = (insn >> 12) & 0xf;
+-            if (dp) {
+-                /* already handled by decodetree */
+-                return 1;
+-            } else { /* !dp */
+-                bool is_sysreg;
+-
+-                if ((insn & 0x6f) != 0x00)
+-                    return 1;
+-                rn = VFP_SREG_N(insn);
+-
+-                is_sysreg = extract32(insn, 21, 1);
+-
+-                if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-                    /*
+-                     * The only M-profile VFP vmrs/vmsr sysreg is FPSCR.
+-                     * Writes to R15 are UNPREDICTABLE; we choose to undef.
+-                     */
+-                    if (is_sysreg && (rd == 15 || (rn >> 1) != ARM_VFP_FPSCR)) {
+-                        return 1;
+-                    }
+-                }
+-
+-                if (insn & ARM_CP_RW_BIT) {
+-                    /* vfp->arm */
+-                    if (is_sysreg) {
+-                        /* system register */
+-                        rn >>= 1;
+-
+-                        switch (rn) {
+-                        case ARM_VFP_FPSID:
+-                            /* VFP2 allows access to FSID from userspace.
+-                               VFP3 restricts all id registers to privileged
+-                               accesses.  */
+-                            if (IS_USER(s)
+-                                && arm_dc_feature(s, ARM_FEATURE_VFP3)) {
+-                                return 1;
+-                            }
+-                            tmp = load_cpu_field(vfp.xregs[rn]);
+-                            break;
+-                        case ARM_VFP_FPEXC:
+-                            if (IS_USER(s))
+-                                return 1;
+-                            tmp = load_cpu_field(vfp.xregs[rn]);
+-                            break;
+-                        case ARM_VFP_FPINST:
+-                        case ARM_VFP_FPINST2:
+-                            /* Not present in VFP3.  */
+-                            if (IS_USER(s)
+-                                || arm_dc_feature(s, ARM_FEATURE_VFP3)) {
+-                                return 1;
+-                            }
+-                            tmp = load_cpu_field(vfp.xregs[rn]);
+-                            break;
+-                        case ARM_VFP_FPSCR:
+-                            if (rd == 15) {
+-                                tmp = load_cpu_field(vfp.xregs[ARM_VFP_FPSCR]);
+-                                tcg_gen_andi_i32(tmp, tmp, 0xf0000000);
+-                            } else {
+-                                tmp = tcg_temp_new_i32();
+-                                gen_helper_vfp_get_fpscr(tmp, cpu_env);
+-                            }
+-                            break;
+-                        case ARM_VFP_MVFR2:
+-                            if (!arm_dc_feature(s, ARM_FEATURE_V8)) {
+-                                return 1;
+-                            }
+-                            /* fall through */
+-                        case ARM_VFP_MVFR0:
+-                        case ARM_VFP_MVFR1:
+-                            if (IS_USER(s)
+-                                || !arm_dc_feature(s, ARM_FEATURE_MVFR)) {
+-                                return 1;
+-                            }
+-                            tmp = load_cpu_field(vfp.xregs[rn]);
+-                            break;
+-                        default:
+-                            return 1;
+-                        }
+-                    } else {
+-                        gen_mov_F0_vreg(0, rn);
+-                        tmp = gen_vfp_mrs();
+-                    }
+-                    if (rd == 15) {
+-                        /* Set the 4 flag bits in the CPSR.  */
+-                        gen_set_nzcv(tmp);
+-                        tcg_temp_free_i32(tmp);
+-                    } else {
+-                        store_reg(s, rd, tmp);
+-                    }
+-                } else {
+-                    /* arm->vfp */
+-                    if (is_sysreg) {
+-                        rn >>= 1;
+-                        /* system register */
+-                        switch (rn) {
+-                        case ARM_VFP_FPSID:
+-                        case ARM_VFP_MVFR0:
+-                        case ARM_VFP_MVFR1:
+-                            /* Writes are ignored.  */
+-                            break;
+-                        case ARM_VFP_FPSCR:
+-                            tmp = load_reg(s, rd);
+-                            gen_helper_vfp_set_fpscr(cpu_env, tmp);
+-                            tcg_temp_free_i32(tmp);
+-                            gen_lookup_tb(s);
+-                            break;
+-                        case ARM_VFP_FPEXC:
+-                            if (IS_USER(s))
+-                                return 1;
+-                            /* TODO: VFP subarchitecture support.
+-                             * For now, keep the EN bit only */
+-                            tmp = load_reg(s, rd);
+-                            tcg_gen_andi_i32(tmp, tmp, 1 << 30);
+-                            store_cpu_field(tmp, vfp.xregs[rn]);
+-                            gen_lookup_tb(s);
+-                            break;
+-                        case ARM_VFP_FPINST:
+-                        case ARM_VFP_FPINST2:
+-                            if (IS_USER(s)) {
+-                                return 1;
+-                            }
+-                            tmp = load_reg(s, rd);
+-                            store_cpu_field(tmp, vfp.xregs[rn]);
+-                            break;
+-                        default:
+-                            return 1;
+-                        }
+-                    } else {
+-                        tmp = load_reg(s, rd);
+-                        gen_vfp_msr(tmp);
+-                        gen_mov_vreg_F0(0, rn);
+-                    }
+-                }
+-            }
++            /* already handled by decodetree */
++            return 1;
+         } else {
+             /* data processing */
+             bool rd_is_dp = dp;
+diff --git a/target/arm/vfp.decode b/target/arm/vfp.decode
+index 8286bdc0729..bb7de403df3 100644
+--- a/target/arm/vfp.decode
++++ b/target/arm/vfp.decode
+@@ -62,3 +62,7 @@ VMOV_from_gp ---- 1110 0 0 index:1 0 .... rt:4 1011 .00 1 0000 \
+ 
+ VDUP         ---- 1110 1 b:1 q:1 0 .... rt:4 1011 . 0 e:1 1 0000 \
+              vn=%vn_dp
 +
-+static inline void neon_store_reg32(TCGv_i32 var, int reg)
-+{
-+    tcg_gen_st_i32(var, cpu_env, vfp_reg_offset(false, reg));
-+}
-+
- static TCGv_ptr vfp_reg_ptr(bool dp, int reg)
- {
-     TCGv_ptr ret = tcg_temp_new_ptr();
++VMSR_VMRS    ---- 1110 111 l:1 reg:4 rt:4 1010 0001 0000
++VMOV_single  ---- 1110 000 l:1 .... rt:4 1010 . 001 0000 \
++             vn=%vn_sp
 -- 
 2.20.1
 

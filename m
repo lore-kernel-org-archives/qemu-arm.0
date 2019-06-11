@@ -1,115 +1,156 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4420100wrg;
-        Tue, 11 Jun 2019 07:32:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7mntF+KEHTsCrGf5Mok0Z6BAxTHkrUt9Rxkk0KP/Mekls1THE15vR0Q5Ooele+7UXbtoi
-X-Received: by 2002:ac8:1087:: with SMTP id a7mr51024434qtj.141.1560263550691;
-        Tue, 11 Jun 2019 07:32:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560263550; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4448017wrg;
+        Tue, 11 Jun 2019 08:01:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyRpKcP0T6Vebz9OKq+ftcbUzvRHn4O2SvoDpd9MxU24K7yosMW08FAwzWxZTX79zdHQmYK
+X-Received: by 2002:a37:aa0d:: with SMTP id t13mr60193226qke.167.1560265277323;
+        Tue, 11 Jun 2019 08:01:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560265277; cv=none;
         d=google.com; s=arc-20160816;
-        b=ChL4Tvfj+oz5m/wI1xFOjjvKKlgZV3mWTBgw4JyaStflfHmi/lZI7Mwy22A6Ng21Xa
-         lORichERDztLZBOeS1gzK2aVbd7zWe9N0rw46SkAOdMqpFKFgCoDBB8TnOv5EPU2odne
-         dpe/uNZjar6bKSSvA09d7OaGKG+vuG7p74TJqqgbIObuROS/QB8+XfARR6yHtoNVMOSu
-         WB2Mc55nIovYrzNwaK4yUsQUI0uvxru6WOaU/opps3Cuix5giIi+oPdf23PawgqcTmju
-         x6gjyaDfnEpuWhOTm/m5ebXTbxLLb1qcLARMxVCG935GUzPFMZHRtrUk+7Sz1He/B+nb
-         M3ag==
+        b=AO+mGvyhPvMxDDf8LJ++AYLaBHnDOcFAfjcBRKXeh3x0L71H1WKKAPmpslD/hCOxdC
+         9mFllhifAdxxFyWAX5vA7q54yavrWNEv2WSKW1T0ad0DiExZlZZR+1L1dwqiVkagsEZD
+         +tD0J7vUrZlGs/TwM9SMSOGuD9uYJ4hIiW/Ol9GW5IgIp6LzB3Bgu8kj6wcst6imLvS9
+         46wVHj87J5BvA9kqzaHU9mC2f4i/vo8/wkUiKjms8P/qjnNUenW2ToHrk1+j9TUJgzfM
+         6+NAQxHT0lc76I1n8/J+eZkVbiLH0TWEmDtFaVtntswPr1LHtR3E1II02QEycED8rFZt
+         DFiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=3XmNun8DhcsjZ/q9zrP6/fWqaI/fM4lx8d0leHuASVo=;
-        b=f2t3b4VTpTZnnay2FNlkUz8MT2l9zW6iwXIDLqc+z/q1iIE6G27X8cpuOXnx5760+5
-         Q+NEfKChf2s0Zy/Q13jfmHV4hYFRlOtOW/d7xP8KxdkcuETok2X2Fa15sdULdm1v4FwQ
-         o8jV9aK75y+9PpssKR5HYhWozye78CCtBFD6vYIAHjxWN7UG9rSaA9UKKwwrSXGl6d9+
-         uLnaCM/DrPU+0fej2pdFRJq/Nzz+SJ7pO65kr4cUOLZ0KPQ3tmuuPFLudd1tpDvdIJ5b
-         iEUgmV5Gyw5X0ABd97z2M9giqd2dUgmW52WQ1hiih/jFiSCfY1cQ3+viQprov/FLKdQj
-         vSEg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=b8QxGLK6EVt7cbCYgVtj1jSDrG4K14o9KcZtEODesBA=;
+        b=EBbaCQL4/YU0J+FUzXAzyEmMb393+sF59VmqSy/qg/KwtaGyzB4Rwo7jFw9VyTlbWm
+         v5S+Ld5gNwnmudbHTwXJlJKxqreTAjHF4WHNTxKUI2pzbkAW4n8cDnCLjySiSeRurRu0
+         7yZdBNE0HSpyWrGQQDCS+PfjSU9LH7fgIINZR5dEFaa2FtB6StG3/zfpUF8aYm//J0SI
+         aGEOSR+ms+1UEy/I82tJoIvgkf8R4XtRPQ7ENVQMcKh53y6m+tUvBZjPFYr+DL6usTh7
+         l8uRcAU/dct0ZZUvUiNekNcQ7jeOrmSMjULGK7yosluNI1jMcK62OAnKzrrj7YEeb/bx
+         KDUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZYMOEX4z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si4920792qvf.64.2019.06.11.07.32.30
+        by mx.google.com with ESMTPS id f17si5481001qkm.270.2019.06.11.08.01.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 07:32:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Jun 2019 08:01:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59560 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZYMOEX4z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59864 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hahp4-0001ue-5w
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 10:32:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40552)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1haiGw-0007oT-Fr
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 11:01:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48200)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hahmD-0001Ud-5X
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 10:29:31 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1haiFZ-0007fz-K0
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:59:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hahmC-0002hY-5F
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 10:29:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36406)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hahm9-0002Nq-Q0; Tue, 11 Jun 2019 10:29:25 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A904B30C1AF9;
- Tue, 11 Jun 2019 14:28:41 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CCFF760BE1;
- Tue, 11 Jun 2019 14:28:35 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 11 Jun 2019 16:28:19 +0200
-Message-Id: <20190611142821.3874-1-eric.auger@redhat.com>
+ (envelope-from <rfried.dev@gmail.com>) id 1haiCB-00020P-PW
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:56:20 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40779)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1haiC9-0001z7-HA; Tue, 11 Jun 2019 10:56:17 -0400
+Received: by mail-wr1-x444.google.com with SMTP id p11so13401719wre.7;
+ Tue, 11 Jun 2019 07:56:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=b8QxGLK6EVt7cbCYgVtj1jSDrG4K14o9KcZtEODesBA=;
+ b=ZYMOEX4zTFZPD17SXfo4vTcVyh779cTHfYlRemdj9zF0aEhXQrf7s6EmncsEiiY9hI
+ PV7v3hCLwNP0JZnFc8alVDW2Cd/6stlfUVpIdlbMdk1OCyqaMcZDOqpnEunz5JU2FY7l
+ k+rkHMt7MzSI9qan3mIDDLUj6cmu0T8CjtsN84HMTjm9h/iSi8AhAhWEWu7rH/jcaA1e
+ 3FZ0pZ749M4s9BKySPW93ctUbMa9SbBgwF98/p2ZJw9mXkesOzTpxwwX4uhLlVj500ra
+ 6P62p9Xsc5wDL0HeTYclYZCeWVClMYFLyfZwJfCtGNbt54mAo8VLFDTZATm6xN5+eSYC
+ ncsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=b8QxGLK6EVt7cbCYgVtj1jSDrG4K14o9KcZtEODesBA=;
+ b=sEMkUTR8eYp+mnOx96bAeHFPcLaq2Ty+n+YNCKlLufMH4ylxDh5VFF4qpsuZPzHiP3
+ e8eCsDz/u9ecElYL9bV9HPM7cFjAFEefEQ3aKt7Nok3e2Tut7qY+XNOzeursJVnXj15n
+ e8D4hBQ7s+Gp80LywdKN76NKSCe78PQI+5W400UtzCL9yTGz/sqtmF9RddZqlf8ncgYu
+ WJHQfc85gElhQjRNVeKFORzBYU+n542HcO/80lMwssuctoqSucH8m1aZccEeLAq/yexR
+ KwTxNiwJK/rmE74NtWt4cFXVmRukqsPl7F6CHuCyN/6xa7aSmmCsBQuc2kz7eQHOUTph
+ eV5g==
+X-Gm-Message-State: APjAAAXbP/BYCOg5vxRPlDstbytGLR/vsv5U9RM9iOkdG/ojdytSXam3
+ gejxBKG13xEypdTu9k82H7h68N2tzTg=
+X-Received: by 2002:a5d:6190:: with SMTP id j16mr1300461wru.49.1560264976135; 
+ Tue, 11 Jun 2019 07:56:16 -0700 (PDT)
+Received: from localhost.localdomain ([141.226.31.91])
+ by smtp.gmail.com with ESMTPSA id v3sm1806137wmh.31.2019.06.11.07.56.14
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 11 Jun 2019 07:56:15 -0700 (PDT)
+From: Ramon Fried <rfried.dev@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Tue, 11 Jun 2019 17:55:56 +0300
+Message-Id: <20190611145556.12940-1-rfried.dev@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Tue, 11 Jun 2019 14:28:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 0/2] ARM SMMUv3: Fix spurious notification
- errors and stall with vfio-pci
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH v2] net: cadence_gem: fix compilation error when
+ debug is on
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peterx@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: avj4TlzbyG08
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ Ramon Fried <rfried.dev@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eZYj/JSH7KwN
 
-The first patch fixes spurious translation configuration decoding errors
-rarely happening on guest IOVA invalidation notifications.
+defining CADENCE_GEM_ERR_DEBUG causes compilation
+errors, fix that.
 
-The second patch fixes the guest stall observed when attempting to run
-a guest exposed with a SMMUv3 and a VFIO-PCI device. As a reminder
-SMMUv3 is not integrated with VFIO (the device will not work properly)
-but this shouldn't prevent the guest from booting.
+Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+---
+v2: change %lx to HWADDR_PRIx and %lx to %zdx
 
-Best Regards
+ hw/net/cadence_gem.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Eric
-
-Eric Auger (2):
-  hw/arm/smmuv3: Remove spurious error messages on IOVA invalidations
-  hw/arm/smmuv3: Implement dummy replay
-
- hw/arm/smmuv3-internal.h |  1 +
- hw/arm/smmuv3.c          | 17 +++++++++++------
- 2 files changed, 12 insertions(+), 6 deletions(-)
-
---=20
-2.20.1
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 7f63411430..e9b1b1e2eb 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+             return -1;
+         }
+ 
+-        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
+-                rx_desc_get_buffer(s->rx_desc[q]));
++        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n", MIN(bytes_to_copy, rxbufsize),
++                rx_desc_get_buffer(s, s->rx_desc[q]));
+ 
+         /* Copy packet data to emulated DMA buffer */
+         address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
+@@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
+             if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+                                                (p - tx_packet)) {
+                 DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
+-                         "0x%x\n", (unsigned)packet_desc_addr,
++                         "0x%zdx\n", (unsigned)packet_desc_addr,
+                          (unsigned)tx_desc_get_length(desc),
+                          sizeof(tx_packet) - (p - tx_packet));
+                 break;
+-- 
+2.21.0
 

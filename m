@@ -1,82 +1,114 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4425867wrg;
-        Tue, 11 Jun 2019 07:38:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy2w3Oqa/OLzD33evb7tbZ6FwpQLIuUmGHCvaxgrRHvzp1z65GRCmxgFvoQ1CrlrAmNUBfI
-X-Received: by 2002:a05:620a:12db:: with SMTP id e27mr49437577qkl.352.1560263886354;
-        Tue, 11 Jun 2019 07:38:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560263886; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4457656wrg;
+        Tue, 11 Jun 2019 08:09:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQcXcUH/8kFxt7RBjZpiLflyq8FzLk7Pvf8afxid8ceMiTUAh05xUAsbA+/uDTF3BGbTws
+X-Received: by 2002:ac8:2cd1:: with SMTP id 17mr62990864qtx.356.1560265750676;
+        Tue, 11 Jun 2019 08:09:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560265750; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZQOh8tU0HCSq9OH/gWDlvUS0QZsIpFWqlfuAY1gxMdiI1OM1WplCOGaq9j+TWMqfLl
-         EALtnM/0WFfFq8K7gSxA2RD3w/Wxp9kaFXCLclXvx6jex5K3aq455V5Zgq9IODUPd16C
-         FPKNTqW0JVFvy6y2j0vA0jSdTicEP/sObpMVl/K++tbMB0uVJVcA/3Bg+h6BG/WIL8Xl
-         Elcd5oRXPPYzj4cxPldaM/LY5lFrq4GnUWBRMz/XPPbtE5lS9/DHRDWNhQ5rZXkiBc1Z
-         z6RsN0vlDy1C2NcUIQl6+4hTwAm9zNjjlEj/qwvKJ4tLkLsj5A0J7Ex1c848qnnbTisq
-         vdhw==
+        b=fnl78Ro2T1mUH/O58blEiJ8bSwotPkVC4YQm8xjPL62bVN0mfPgRVDqKtGGpgfSI3o
+         VI6J/pAvWx2FhmI8kSV9AFw3V1/zdfpFragTS1bF5nZDDfHx1TyA0s0hS6xuDVMbYEs+
+         VtsS1lmJl9h8LNQhgJQlt73Sf++m1fzsYslv0L5f54JGnNmsujkrs4z0M9AjcmHcSHzt
+         Re/UlizdALQ3OaN+ugV3bBkEprkNuz6CdpWcxBzrj5BNjm5BRuPaJ/To/ycExtaw0sHr
+         CI7+RZnE3A/VlII+UTY4nxfkALkqPHqoEXtAK4mMcPR4LETXb/N/V9Qygzwrg5Zg/9IL
+         FR3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=LVHAOnINpQ+ARgTVVSfoPs7+FJBG+THGsJnpBH/at5o=;
-        b=gTttL0JAPEICiL2ohUM19izVSrkWY5w+7IVALFcTiAMemkRUdoGQQFDb+FNiXGySPP
-         nFFssMNSxdlKaVfoQEfeGHNvON/zCNh05bnJOJw3IsWZZLQHnoDiVcCiFcJkAv9MhmHU
-         MFgObs2xj9BdSXc1H9Mp/EO0GdjiXv8YAXgCVCmZfNbwsywCyqSBx0zIugilwZAXZwvs
-         tqsYfkwPBSgzlkFrH8XPwyEAt7PwMxhbL8NQ6MABIIZIsFC5HIca3SOphsWKxyn/oZD2
-         QPDIYSlYnpIpuPkzzrZuPAmc/+sN+5h3EbNNTjajik9FvKFN8z6fcEUv8suanJ11BMCk
-         7azw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=5hhOTa9j+6PbeJA576fNKK+wBlbYayOk4gc+6fEirqY=;
+        b=pIhQJi/VCf5dz0HJ4VAA6WxU/r8uwtW5+Encm1QcZV87emuSSFlLnVuDlRFoVL2SKl
+         RXViVowDGxED3ze6EVioBAMHpXINaqb6M1kIbIsRl8a+PVw1O8BYlqHWB+YEJ0GrGZog
+         GPqcuBpMGdNgYW2djt6aD8jEJ1j0qozEDN8W7fC4ARBfyOoyrGDpg/nW49n8Kc+9XOy5
+         Qqf3doS0D8S0X+XZbUnWyV0fkU0qW8Vaa2TkSeJ+fPhbhYi5WSWDNnXIuiJkMAaeRiRS
+         sG3gflDK3Ro0J7NJKhd/G/IvFYP2baf2sBdep0wgCNg84Qel3ArvNQ1yDIs38PK+316i
+         sVzA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FRqjsDKn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b24si1322814qta.178.2019.06.11.07.38.06
+        by mx.google.com with ESMTPS id s190si2916090qke.148.2019.06.11.08.09.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 07:38:06 -0700 (PDT)
+        Tue, 11 Jun 2019 08:09:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=FRqjsDKn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59598 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60026 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hahuX-0005dO-Pn
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 10:38:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40547)
+	id 1haiOc-0005I6-48
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 11:09:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51379)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hahmC-0001U9-Nf
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:29:31 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1haiO0-0005FG-IL
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 11:08:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hahmB-0002hC-Gn
- for qemu-arm@nongnu.org; Tue, 11 Jun 2019 10:29:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33204)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hahmB-0002Np-8q; Tue, 11 Jun 2019 10:29:27 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3D6B78553D;
- Tue, 11 Jun 2019 14:28:46 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-67.ams2.redhat.com [10.36.116.67])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 36CCD17F41;
- Tue, 11 Jun 2019 14:28:43 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 11 Jun 2019 16:28:20 +0200
-Message-Id: <20190611142821.3874-2-eric.auger@redhat.com>
-In-Reply-To: <20190611142821.3874-1-eric.auger@redhat.com>
-References: <20190611142821.3874-1-eric.auger@redhat.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1haiNy-00015F-Oi
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 11:08:32 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35298)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1haiNy-00013y-Dh
+ for qemu-arm@nongnu.org; Tue, 11 Jun 2019 11:08:30 -0400
+Received: by mail-pg1-x542.google.com with SMTP id s27so7138715pgl.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Jun 2019 08:08:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5hhOTa9j+6PbeJA576fNKK+wBlbYayOk4gc+6fEirqY=;
+ b=FRqjsDKnDkxVsvLzgJKc0WRHEL3qClm9d/cCyMvRlqtOJz1+aTu5+XUJT0KrRL81FV
+ EEEBeKQ4oiNE4BC2E3JgspIJ7E9P02v6chSYELphpnJvs6kKdKOmIiBU+MxoJ6e3jYCb
+ lCK8nDH+VxyJ063Qh7nii2FFeW1fp3zcefBTkGDpPKE1iF4QmFO6G63PPpXdB+S6Bunf
+ LB0uXTBnR0ZDfHpdNFVJfqfp6b53mYHyWCHgIUgTaH7L1EFwkLa+Kof2jfLrIwMe+Kgk
+ Npl6yRKO3zvVNdRlvmogIENdk7k4FVzUaceYdj1JO2jBLkH7JT/vBr81y5hv6EMVgbv/
+ Tiug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5hhOTa9j+6PbeJA576fNKK+wBlbYayOk4gc+6fEirqY=;
+ b=f8AR4XATErKT0U+VklVbAZM5UQ6QfBZOWF7m+yxV7jHX2TW0YsWqlJJkhX9ucss2Mb
+ 3CVksbMqC9M0eSnr7dTYg9y0297ev8PCEOCUcg+0bxL5T1zEK4CGf40/pEfkKNNKjb27
+ Z+2vY59msKEzG49+0kwQcG8J5CEOsRZ9sthCx4++R90JlR+uOAlueiNUrfp2h45CytTz
+ oRK82/ljhP8Ul5mC5HrKxkHL1LqGpM7FrHXF1A6AODEb8GVIkyRwgYkr4oeHdvkX7HRg
+ 5FXjEV03hAn4ap0BaJkzIr/EoGR0NpxYe2o0v/CwY24d8tGFkOkd76lQF8awgAWmRRF/
+ CIQA==
+X-Gm-Message-State: APjAAAXwooO+V2yY7HzjyS8lwVaxSo0IagBbVivGX0vRO1Kvap2XAbIj
+ WxIielkBJttJXUnc5AgqIp0YmQ==
+X-Received: by 2002:a17:90a:db08:: with SMTP id
+ g8mr26518267pjv.39.1560265708026; 
+ Tue, 11 Jun 2019 08:08:28 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-13-231.tukw.qwest.net. [97.113.13.231])
+ by smtp.gmail.com with ESMTPSA id s7sm29470pgm.8.2019.06.11.08.08.26
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 11 Jun 2019 08:08:27 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190611105351.9871-1-peter.maydell@linaro.org>
+ <20190611105351.9871-40-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <10e56723-82a1-c87e-a84b-37ee4698fb83@linaro.org>
+Date: Tue, 11 Jun 2019 08:08:25 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.28]); Tue, 11 Jun 2019 14:28:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/2] hw/arm/smmuv3: Remove spurious error
- messages on IOVA invalidations
+In-Reply-To: <20190611105351.9871-40-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::542
+Subject: Re: [Qemu-arm] [PATCH v2 39/42] target/arm: Convert VJCVT to
+ decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,103 +120,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peterx@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jpu2Fmbl//p6
+X-TUID: s1a55Ckl5h8/
 
-An IOVA/ASID invalidation is notified to all IOMMU Memory Regions
-through smmuv3_inv_notifiers_iova/smmuv3_notify_iova.
+On 6/11/19 3:53 AM, Peter Maydell wrote:
+> Convert the VJCVT instruction to decodetree.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate-vfp.inc.c | 28 ++++++++++++++++++++++++++++
+>  target/arm/translate.c         | 12 +-----------
+>  target/arm/vfp.decode          |  4 ++++
+>  3 files changed, 33 insertions(+), 11 deletions(-)
 
-When the notification occurs it is possible that some of the
-PCIe devices associated to the notified regions do not have a
-valid stream table entry. In that case we output a LOG_GUEST_ERROR
-message.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-invalid sid=3D<SID> (L1STD span=3D0)
-"smmuv3_notify_iova error decoding the configuration for iommu mr=3D<MR>
 
-This is unfortunate as the user gets the impression that there
-are some translation decoding errors whereas there are not.
-
-This patch adds a new field in SMMUEventInfo that tells whether
-the detction of an invalid STE msut lead to an error report.
-invalid_ste_allowed is set before doing the invalidations and
-kept unset on actual translation.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
----
-
-I also experimented to pass Error handles to all the subfunctions
-and handle the Error at top level but that's intricate to sort
-out the various kinds of errors, whether they need to be logged,
-and if so if they match LOG_GUEST_ERRoR mask or unimplemented
-mask. So I think just passing this boolean has a lesser impact on
-the code base.
----
- hw/arm/smmuv3-internal.h |  1 +
- hw/arm/smmuv3.c          | 11 +++++------
- 2 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index b160289cd1..d190181ef1 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -381,6 +381,7 @@ typedef struct SMMUEventInfo {
-     uint32_t sid;
-     bool recorded;
-     bool record_trans_faults;
-+    bool inval_ste_allowed;
-     union {
-         struct {
-             uint32_t ssid;
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index fd8ec7860e..e2f07d2864 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -404,7 +404,7 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid=
-, STE *ste,
-=20
-         span =3D L1STD_SPAN(&l1std);
-=20
--        if (!span) {
-+        if (!span && !event->inval_ste_allowed) {
-             /* l2ptr is not valid */
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "invalid sid=3D%d (L1STD span=3D0)\n", sid);
-@@ -602,7 +602,9 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegi=
-on *mr, hwaddr addr,
-     SMMUDevice *sdev =3D container_of(mr, SMMUDevice, iommu);
-     SMMUv3State *s =3D sdev->smmu;
-     uint32_t sid =3D smmu_get_sid(sdev);
--    SMMUEventInfo event =3D {.type =3D SMMU_EVT_NONE, .sid =3D sid};
-+    SMMUEventInfo event =3D {.type =3D SMMU_EVT_NONE,
-+                           .sid =3D sid,
-+                           .inval_ste_allowed =3D false};
-     SMMUPTWEventInfo ptw_info =3D {};
-     SMMUTranslationStatus status;
-     SMMUState *bs =3D ARM_SMMU(s);
-@@ -795,16 +797,13 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *m=
-r,
-                                dma_addr_t iova)
- {
-     SMMUDevice *sdev =3D container_of(mr, SMMUDevice, iommu);
--    SMMUEventInfo event =3D {};
-+    SMMUEventInfo event =3D {.inval_ste_allowed =3D true};
-     SMMUTransTableInfo *tt;
-     SMMUTransCfg *cfg;
-     IOMMUTLBEntry entry;
-=20
-     cfg =3D smmuv3_get_config(sdev, &event);
-     if (!cfg) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "%s error decoding the configuration for iommu mr=3D=
-%s\n",
--                      __func__, mr->parent_obj.name);
-         return;
-     }
-=20
---=20
-2.20.1
-
+r~

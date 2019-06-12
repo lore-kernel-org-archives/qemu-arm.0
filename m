@@ -1,269 +1,101 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5013385wrg;
-        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxGkDSympzazVLwBtIWpG2JHnIlKUJ7p41w9dCGDbeXRbnhowY7MrcfJDEx9du3KBihffvD
-X-Received: by 2002:a0c:b084:: with SMTP id o4mr55612qvc.227.1560305038878;
-        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560305038; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5123480wrg;
+        Tue, 11 Jun 2019 21:39:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySmgS4/34T1mG/pI3PUsRaghNtr+P8PjCB1/rSgpmIGxBWQ7yaBTJP5jFwfYMKjw+/2m0J
+X-Received: by 2002:a05:620a:12a2:: with SMTP id x2mr37023570qki.133.1560314349717;
+        Tue, 11 Jun 2019 21:39:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560314349; cv=none;
         d=google.com; s=arc-20160816;
-        b=DqlgPyRjoZZbA9FsfRoFw+AQGPQAyZ8e9t/g1ldSyN1t8Jv+IAPP96l6A9tSsbQkR/
-         jY1gGMEuHiN7ptw/aw0FWb3z4fYQWaGAWyVjAthOhC400bXLtbHIRTeYFIe5YOg5B3N4
-         Uc4M5EIii2mn5yUTF1mgi4s4iz8wMUfrhxaJiZZnwNrpW7ufGD/pSNSxhKyz4APywLgR
-         VuVBgZCMled94KeLhrz6RM/IFJQqHJUHY7SPEuhYYSoo/7XdsPjOxman3WiMHrbgegVB
-         To7NwcWreU6/cAUDeineAY9IGrk4r0MPrzauO1XCJ7wCCdEzcUf9L6NivAgxfmTlW3Uq
-         bgcw==
+        b=O6lhR9zkkZe/cyptUamALI+9BMz2uY/DcWWK6ckrLIlsVgGuethBjiGgrfUtvIdUtZ
+         w1sDa5FaRXjP/Vr9gbTQb0Flvz7sasy8zTXdZiVtgVjWSknO4H8RJZ0xM1ZOPizDAE7Z
+         kPfWau/L6Xu0e7lDCPMQSVpdoVy2iTufTHBUMZNzPOehgt9A1/ytb7h3q5Y+QwKfNJPX
+         g7ClHIPX7wDIrCrkxgKuQvy591cD9JUD62Wx8iBSc23MiVU0C05iIw56vZ6HHUIYFhd4
+         g09MIyUwwo2xR14ng0dujNcrBy7MaUc8qQmEBcFPRXrFbGq+eFls2xUUCSuBOk2sniim
+         mK5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
-        b=rdOLkOyZ01TZVu0dYqNPfoPWQXhpkvTNOv1UPPVIoN94OXgYv7Y0VFR5kdGIGXZCOh
-         FGD2to/n7gc3nasD9yye/ACogyl7nWWbBClNKXuPHH4zKQd6zzQjeofOzxcVVPf6uEAO
-         Jn50LySJypLYZqd/N4uHTdYGzOPtxaVmv07ic3bCTkh0q+CxwPEItfAq2O13JKzrtvVv
-         theiI89xza5CSQAr/aj3qpNnJWpJjGM8GqO1F8S7/FGzLGCNmGIjFYkManuTw75ltd79
-         itTfADE4L0qF0EM3Snj1nDo1AiGwi3FsMdn36QRWRbV4rUE73QGudu3lmAEFEavceZdV
-         D/bA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from;
+        bh=+pPvvUFIDgPSj25DDv4Qsc/Rdxk/V/FgpIaG0BE2ovA=;
+        b=pUao4HI7MRRD6YgrUqjL9isLYE06WgpHMvZ5eJjzdXeRaeCphyo3N2qwZtZSRBVe7q
+         YB0m39kaBb5I5rbvfCj9JtT2eo4McvZGb0Yh7M9fqu6q/pY3AMBXuve5IYoINegUtRdY
+         dMb5KMB0VK3jU6HiDb2T/trtwCHhT7XCsh7imQPU6RMosbF06yn+6xR6uvr+MQkBPdih
+         Vifqryfq6DPxbvKtD1OkK10s/8LwNl7EYYvp4OBcCS5uW5VSBhVQZCvKET4JTTw1q+iJ
+         WOn8sSidxnCJt0w4tRpC/ehbFTWYCRoqctQTzbTznsXr4a57p8tDq1VJXkdhLxXZqH6/
+         a9eA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Kia4tsT7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si4074856qtj.65.2019.06.11.19.03.58
+        by mx.google.com with ESMTPS id y128si9293295qke.91.2019.06.11.21.39.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Jun 2019 21:39:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Kia4tsT7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56260 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56622 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hascI-00080t-Ba
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 22:03:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53985)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hav2T-0003r0-7M
+	for alex.bennee@linaro.org; Wed, 12 Jun 2019 00:39:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49214)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <joel.stan@gmail.com>) id 1hasOT-0004M9-2d
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:49:42 -0400
+ (envelope-from <armbru@redhat.com>) id 1hav29-0003qm-5F
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2019 00:38:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1has9b-0000dl-Mz
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:34:23 -0400
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:39144)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1has9N-0000KY-K0; Tue, 11 Jun 2019 21:34:08 -0400
-Received: by mail-qk1-x744.google.com with SMTP id i125so8972023qkd.6;
- Tue, 11 Jun 2019 18:32:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
- b=Kia4tsT7tSVWJLaqe6Dw8fW7lTg8xYGTvxMvajFvXxKVM6MGPxFSZMSfxwtbVnVzTu
- 6AbiASkNsPlb7PINLJBDpphnnkKDZoIdYwbVKKMEYexkOXQH+WtXKsweWnbmdaAxGVzz
- b4cewO4Wq0Euy8Sr0Kp0kqHhwSQR/SX0pBytc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
- b=groQ44ISmM99cpfQ+5gACVlvnVuzm3bQmnhGLYEVdpMSJk4c/6k5qqBl1PYL/JixZT
- ipYE3zv18BGVyvV0T0QFKP/p2iYSKtJ0iFRB0t1DQsNafyr6chGwROeWZ8jHYh9pnbia
- ztUOu3w37DEXrywTsmlHddMEG6fF3drJ7oOqJJmHftbu7NFZNlqpCTdFDqJdVPONNhgS
- bIdS7ZuXK4xlYlGFtOeX3AfLrm++LZkH+z1RfR/R2lDqlZw+eEk1kFbTmZew135nodhW
- nTdE0EYaVDYuIwdhHEilPKcuq/A0s+88+ATIwAygDBwzca8KlftleVhvJF2BoZKljyzM
- hfFg==
-X-Gm-Message-State: APjAAAW8eB/dLSSSTOn9qpvcccbZpgZfuDn6MKD1zjHC85UsTtgkptGo
- LbQGpggo2jSG0S/DqiLeXEI+l01J1gFcmPXks6Q=
-X-Received: by 2002:a37:de13:: with SMTP id h19mr60964963qkj.59.1560303172167; 
- Tue, 11 Jun 2019 18:32:52 -0700 (PDT)
+ (envelope-from <armbru@redhat.com>) id 1hav28-0005Q9-9y
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2019 00:38:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60776)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1hav28-0005PY-3a; Wed, 12 Jun 2019 00:38:48 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id BFF3D3091740;
+ Wed, 12 Jun 2019 04:38:30 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-148.ams2.redhat.com
+ [10.36.116.148])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 365A060BF1;
+ Wed, 12 Jun 2019 04:38:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B2FCD1138648; Wed, 12 Jun 2019 06:38:25 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eddie James <eajames@linux.ibm.com>
+References: <1560286476-23494-1-git-send-email-eajames@linux.ibm.com>
+Date: Wed, 12 Jun 2019 06:38:25 +0200
+In-Reply-To: <1560286476-23494-1-git-send-email-eajames@linux.ibm.com> (Eddie
+ James's message of "Tue, 11 Jun 2019 15:54:36 -0500")
+Message-ID: <87tvcvv2ny.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-References: <20190525151241.5017-1-clg@kaod.org>
- <20190525151241.5017-7-clg@kaod.org>
-In-Reply-To: <20190525151241.5017-7-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 12 Jun 2019 01:32:40 +0000
-Message-ID: <CACPK8Xet-EQFKbjykuE774pCo4aSNoy=SNpSRW16pJjXW=4J5w@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::744
-Subject: Re: [Qemu-devel] [PATCH 06/19] aspeed: introduce a configurable
- number of CPU per machine
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Wed, 12 Jun 2019 04:38:45 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] hw: misc: Add Aspeed XDMA
+ device
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lcCC7GeQqlp/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, joel@jms.id.au, clg@kaod.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: smq6wUWEAets
 
-On Sat, 25 May 2019 at 15:13, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> The current models of the Aspeed SoCs only have one CPU but future
-> ones will support SMP. Introduce a way to configure the maximum number
-> of CPU per machine. SMP support will be activated when models for such
-> SoCs are implemented.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  include/hw/arm/aspeed.h     |  1 +
->  include/hw/arm/aspeed_soc.h |  3 ++-
->  hw/arm/aspeed.c             |  8 ++++++--
->  hw/arm/aspeed_soc.c         | 17 +++++++++++------
->  4 files changed, 20 insertions(+), 9 deletions(-)
->
-> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-> index 02073a6b4d61..f2f238ea83cc 100644
-> --- a/include/hw/arm/aspeed.h
-> +++ b/include/hw/arm/aspeed.h
-> @@ -23,6 +23,7 @@ typedef struct AspeedBoardConfig {
->      uint32_t num_cs;
->      void (*i2c_init)(AspeedBoardState *bmc);
->      uint32_t ram;
-> +    uint32_t num_cpus;
->  } AspeedBoardConfig;
->
->  #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index fa0ba957a611..7247f6da2505 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -24,13 +24,14 @@
->
->  #define ASPEED_SPIS_NUM  2
->  #define ASPEED_WDTS_NUM  3
-> +#define ASPEED_CPUS_NUM  2
->
->  typedef struct AspeedSoCState {
->      /*< private >*/
->      DeviceState parent;
->
->      /*< public >*/
-> -    ARMCPU cpu;
-> +    ARMCPU cpu[ASPEED_CPUS_NUM];
->      MemoryRegion sram;
->      AspeedVICState vic;
->      AspeedRtcState rtc;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 10ba3f50481a..004b0c318951 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -29,7 +29,6 @@
->
->  static struct arm_boot_info aspeed_board_binfo =3D {
->      .board_id =3D -1, /* device-tree-only board */
-> -    .nb_cpus =3D 1,
->  };
->
->  struct AspeedBoardState {
-> @@ -231,6 +230,7 @@ static void aspeed_board_init(MachineState *machine,
->      aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
->      aspeed_board_binfo.ram_size =3D ram_size;
->      aspeed_board_binfo.loader_start =3D sc->info->memmap[ASPEED_SDRAM];
-> +    aspeed_board_binfo.nb_cpus =3D cfg->num_cpus;
->
->      if (cfg->i2c_init) {
->          cfg->i2c_init(bmc);
-> @@ -327,7 +327,7 @@ static void aspeed_machine_class_init(ObjectClass *oc=
-, void *data)
->
->      mc->desc =3D board->desc;
->      mc->init =3D aspeed_machine_init;
-> -    mc->max_cpus =3D 1;
-> +    mc->max_cpus =3D ASPEED_CPUS_NUM;
->      mc->no_sdcard =3D 1;
->      mc->no_floppy =3D 1;
->      mc->no_cdrom =3D 1;
-> @@ -357,6 +357,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 1,
->          .i2c_init  =3D palmetto_bmc_i2c_init,
->          .ram       =3D 256 * MiB,
-> +        .num_cpus  =3D 1,
->      }, {
->          .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
->          .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
-> @@ -367,6 +368,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 1,
->          .i2c_init  =3D ast2500_evb_i2c_init,
->          .ram       =3D 512 * MiB,
-> +        .num_cpus  =3D 1,
->      }, {
->          .name      =3D MACHINE_TYPE_NAME("romulus-bmc"),
->          .desc      =3D "OpenPOWER Romulus BMC (ARM1176)",
-> @@ -377,6 +379,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 2,
->          .i2c_init  =3D romulus_bmc_i2c_init,
->          .ram       =3D 512 * MiB,
-> +        .num_cpus  =3D 1,
->      }, {
->          .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
->          .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
-> @@ -387,6 +390,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 2,
->          .i2c_init  =3D witherspoon_bmc_i2c_init,
->          .ram       =3D 512 * MiB,
-> +        .num_cpus  =3D 1,
->      },
->  };
->
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index d1dc8f03f35c..b983d5efc5d1 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -172,8 +172,11 @@ static void aspeed_soc_init(Object *obj)
->      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
->      int i;
->
-> -    object_initialize_child(obj, "cpu", OBJECT(&s->cpu), sizeof(s->cpu),
-> -                            sc->info->cpu_type, &error_abort, NULL);
-> +    for (i =3D 0; i < MIN(smp_cpus, ASPEED_CPUS_NUM); i++) {
-
-What's the intent of this test?
-
-If we're checking that the user hasn't requested more CPUs that the
-SoC supports, shoudln't it be testing against ->num_cpus instead of
-ASPEED_CPUS_NUM?
-
-> +        object_initialize_child(obj, "cpu[*]", OBJECT(&s->cpu[i]),
-> +                                sizeof(s->cpu[i]), sc->info->cpu_type,
-> +                                &error_abort, NULL);
-> +    }
->
->      sysbus_init_child_obj(obj, "scu", OBJECT(&s->scu), sizeof(s->scu),
->                            TYPE_ASPEED_SCU);
-> @@ -242,10 +245,12 @@ static void aspeed_soc_realize(DeviceState *dev, Er=
-ror **errp)
->                                  ASPEED_SOC_IOMEM_SIZE);
->
->      /* CPU */
-> -    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    for (i =3D 0; i < smp_cpus; i++) {
-
-Can you explain why we use smp_cpus instead of ->num_cpus?
-
-> +        object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &=
-err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
->      }
->
->      /* SRAM */
-> --
-> 2.20.1
->
+Nitpicking your subject: "hw/misc:" like the directory, please.  You
+could even use the file, like "hw/misc/aspeed_xdma: New device".

@@ -1,96 +1,96 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5004935wrg;
-        Tue, 11 Jun 2019 18:53:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyKHRAuCEv5dYFhKYqWpUIaPUA90TBovNMi30oVlvp9hMoxASH60Py6OIWOYXaxNx7gHtfi
-X-Received: by 2002:ac8:2bdc:: with SMTP id n28mr29291660qtn.197.1560304397023;
-        Tue, 11 Jun 2019 18:53:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560304397; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp5013385wrg;
+        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGkDSympzazVLwBtIWpG2JHnIlKUJ7p41w9dCGDbeXRbnhowY7MrcfJDEx9du3KBihffvD
+X-Received: by 2002:a0c:b084:: with SMTP id o4mr55612qvc.227.1560305038878;
+        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560305038; cv=none;
         d=google.com; s=arc-20160816;
-        b=ju9gmgPAXWlQ8FIvzTtzhkgfdVTsfxV8TQO5w5tkAqJbg4DrrVL0CORJ/UHLlwNvNC
-         E5z2iwdHUdKAEdVbLHplghrGoARO6ffgVU83ml3pkbsCG5y0gwcprIH+I1FKCwMMvrU5
-         gAfXdiVuW7Gy+Y15HLs9kcwnATsUt+hW27bXH4Bmd6+mNzZSGTiJ47liqNqxrFr5p2Gy
-         0FgFLQ8qo7baoNMNqZbRSQl2xeKz5CdiTt9eLYn6A1Dha8jdHm7LSdkFcmEjBnKVsflD
-         xEM/qP3q0Xy/KN6k0r9H/kg2JjMxwGc7J3q3bcsli6ts4TtnhggJ3bLtDWxu5/4NqnpT
-         pXLQ==
+        b=DqlgPyRjoZZbA9FsfRoFw+AQGPQAyZ8e9t/g1ldSyN1t8Jv+IAPP96l6A9tSsbQkR/
+         jY1gGMEuHiN7ptw/aw0FWb3z4fYQWaGAWyVjAthOhC400bXLtbHIRTeYFIe5YOg5B3N4
+         Uc4M5EIii2mn5yUTF1mgi4s4iz8wMUfrhxaJiZZnwNrpW7ufGD/pSNSxhKyz4APywLgR
+         VuVBgZCMled94KeLhrz6RM/IFJQqHJUHY7SPEuhYYSoo/7XdsPjOxman3WiMHrbgegVB
+         To7NwcWreU6/cAUDeineAY9IGrk4r0MPrzauO1XCJ7wCCdEzcUf9L6NivAgxfmTlW3Uq
+         bgcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=eTIfW7HynanhXXC8daMSeYJoRYU/p94Cc8htj9sUXcA=;
-        b=G/wEfxJIavGfSxlfHJlXZQexNDXTAWZNkpIrKriP/Y0Tagjelr3jEOJhT6FQYFrtvb
-         WMYKVcIHRwLhBFzE/fs+2Q2aixAh5UhvrLvL26aQSRjtjiRCKQkyzcyUt+ERaLZxyS67
-         7oadRUVx4wfo9IfYPHdYC8RXO39C+lhn4nJJmlOxs38NBiiEelIhTFgWF6tY7umhq7nS
-         tz9oQjMOu1X5eMfqgo1ltn+z7hFOtwgzdWeY+7Hfg/diOz4+Y5a9a+dslsCyfi0xTbMW
-         fgzWT6Nlhm9WsY0NKsnIC2XT7eiIlI7AREvHJtaqbYCWGa96/u2/tFXcsKF08RyXkA3H
-         pmAQ==
+        bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
+        b=rdOLkOyZ01TZVu0dYqNPfoPWQXhpkvTNOv1UPPVIoN94OXgYv7Y0VFR5kdGIGXZCOh
+         FGD2to/n7gc3nasD9yye/ACogyl7nWWbBClNKXuPHH4zKQd6zzQjeofOzxcVVPf6uEAO
+         Jn50LySJypLYZqd/N4uHTdYGzOPtxaVmv07ic3bCTkh0q+CxwPEItfAq2O13JKzrtvVv
+         theiI89xza5CSQAr/aj3qpNnJWpJjGM8GqO1F8S7/FGzLGCNmGIjFYkManuTw75ltd79
+         itTfADE4L0qF0EM3Snj1nDo1AiGwi3FsMdn36QRWRbV4rUE73QGudu3lmAEFEavceZdV
+         D/bA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=CajKx7Wp;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Kia4tsT7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 13si10016053qtw.280.2019.06.11.18.53.16
+        by mx.google.com with ESMTPS id o11si4074856qtj.65.2019.06.11.19.03.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2019 18:53:17 -0700 (PDT)
+        Tue, 11 Jun 2019 19:03:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=CajKx7Wp;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Kia4tsT7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56188 helo=lists.gnu.org)
+Received: from localhost ([::1]:56260 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hasRw-0008Pj-HY
-	for alex.bennee@linaro.org; Tue, 11 Jun 2019 21:53:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54098)
+	id 1hascI-00080t-Ba
+	for alex.bennee@linaro.org; Tue, 11 Jun 2019 22:03:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53985)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <joel.stan@gmail.com>) id 1hasOM-0004YM-El
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:49:35 -0400
+ (envelope-from <joel.stan@gmail.com>) id 1hasOT-0004M9-2d
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:49:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1hasBx-0001CF-RJ
- for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:36:46 -0400
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:38129)
+ (envelope-from <joel.stan@gmail.com>) id 1has9b-0000dl-Mz
+ for qemu-devel@nongnu.org; Tue, 11 Jun 2019 21:34:23 -0400
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:39144)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1hasBw-0001Bu-EH; Tue, 11 Jun 2019 21:36:44 -0400
-Received: by mail-qt1-x841.google.com with SMTP id n11so14836941qtl.5;
- Tue, 11 Jun 2019 18:36:44 -0700 (PDT)
+ id 1has9N-0000KY-K0; Tue, 11 Jun 2019 21:34:08 -0400
+Received: by mail-qk1-x744.google.com with SMTP id i125so8972023qkd.6;
+ Tue, 11 Jun 2019 18:32:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=eTIfW7HynanhXXC8daMSeYJoRYU/p94Cc8htj9sUXcA=;
- b=CajKx7Wp13Uf0qBRefqjXXXF7SD3N6CcZqyNG57OhGqVopDyyOZWMjX3EjL/pygwwH
- uETkG/us7RDjKNHvyEZB8xGLdP5rSOahpvORugacDJDdRH6YfRqoIiNwitfM1ylBs/cc
- M3vtNGVCGZk+6v1v08/UCz0HLAsSScqu8S95M=
+ bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
+ b=Kia4tsT7tSVWJLaqe6Dw8fW7lTg8xYGTvxMvajFvXxKVM6MGPxFSZMSfxwtbVnVzTu
+ 6AbiASkNsPlb7PINLJBDpphnnkKDZoIdYwbVKKMEYexkOXQH+WtXKsweWnbmdaAxGVzz
+ b4cewO4Wq0Euy8Sr0Kp0kqHhwSQR/SX0pBytc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=eTIfW7HynanhXXC8daMSeYJoRYU/p94Cc8htj9sUXcA=;
- b=GKnOFPmdrkrgedxKj5t9mIQInfj1Kv+qfqzAZ1GGOnMYMi8igYpoPDbLUf5xuwIMZZ
- pUK5rXxVBrBI6GW4F/uz2sB8O9HDw6UqsX9ARe5teFCOtFLYLxI87MHkROBoQU/7saup
- RsNpjYuqZPRCySdDn33E6oc3yc46nww/3OXUkclH/5ZDsyDK2S9s3PVoRBxroJqsXUAP
- 8N+HXUku9DWe6RYteLCupks2qG29QSdiU2Reg9I9FO/VsQe6lp34JIAhRRmd12ocMk3t
- aRROI1kFWQQNiCMdQ5dUVtqyK/uq4dBx11UGyWWj2wMsvybsnAcOhyIk3YxxEu64w8QN
- w2aA==
-X-Gm-Message-State: APjAAAV/AYRIRQIr1beO8HLdGYKczNCYQpCslmEvlCJfi/vRQ0Gya8mT
- swGXAUMRDZd7uxsDtKx6f5LARuyDCEaoFemeh84P5/Pk
-X-Received: by 2002:ac8:264a:: with SMTP id v10mr35694473qtv.255.1560303403519; 
- Tue, 11 Jun 2019 18:36:43 -0700 (PDT)
+ bh=CCdsGXdAc4LVHo6Ua/mKk9JIE+ePyTMU9xQxKZFmY4s=;
+ b=groQ44ISmM99cpfQ+5gACVlvnVuzm3bQmnhGLYEVdpMSJk4c/6k5qqBl1PYL/JixZT
+ ipYE3zv18BGVyvV0T0QFKP/p2iYSKtJ0iFRB0t1DQsNafyr6chGwROeWZ8jHYh9pnbia
+ ztUOu3w37DEXrywTsmlHddMEG6fF3drJ7oOqJJmHftbu7NFZNlqpCTdFDqJdVPONNhgS
+ bIdS7ZuXK4xlYlGFtOeX3AfLrm++LZkH+z1RfR/R2lDqlZw+eEk1kFbTmZew135nodhW
+ nTdE0EYaVDYuIwdhHEilPKcuq/A0s+88+ATIwAygDBwzca8KlftleVhvJF2BoZKljyzM
+ hfFg==
+X-Gm-Message-State: APjAAAW8eB/dLSSSTOn9qpvcccbZpgZfuDn6MKD1zjHC85UsTtgkptGo
+ LbQGpggo2jSG0S/DqiLeXEI+l01J1gFcmPXks6Q=
+X-Received: by 2002:a37:de13:: with SMTP id h19mr60964963qkj.59.1560303172167; 
+ Tue, 11 Jun 2019 18:32:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190525151241.5017-1-clg@kaod.org>
- <20190525151241.5017-16-clg@kaod.org>
-In-Reply-To: <20190525151241.5017-16-clg@kaod.org>
+ <20190525151241.5017-7-clg@kaod.org>
+In-Reply-To: <20190525151241.5017-7-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 12 Jun 2019 01:36:32 +0000
-Message-ID: <CACPK8Xfgk6+3vEy=_81X1GUep_8w-uFyE8AnzdpgUTKNVFyxnw@mail.gmail.com>
+Date: Wed, 12 Jun 2019 01:32:40 +0000
+Message-ID: <CACPK8Xet-EQFKbjykuE774pCo4aSNoy=SNpSRW16pJjXW=4J5w@mail.gmail.com>
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::841
-Subject: Re: [Qemu-devel] [PATCH 15/19] aspeed: add a RAM memory region
- container
+X-Received-From: 2607:f8b0:4864:20::744
+Subject: Re: [Qemu-devel] [PATCH 06/19] aspeed: introduce a configurable
+ number of CPU per machine
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,22 +106,164 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s1k6SxFzAGZO
+X-TUID: lcCC7GeQqlp/
 
-On Sat, 25 May 2019 at 15:14, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Sat, 25 May 2019 at 15:13, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> The RAM memory region is defined after the SoC is realized when the
-> SDMC controller has cheched that the defined RAM size for the machine
-
-checked
-
-> is correct. This is problematic for controller models requiring a link
-> on the RAM region, for DMA support in the SMC controller for instance.
->
-> Introduce a container memory region for the RAM that we can link into
-> the controllers early, before the SoC is realized. It will be
-> populated with the RAM region after the checks have be done.
+> The current models of the Aspeed SoCs only have one CPU but future
+> ones will support SMP. Introduce a way to configure the maximum number
+> of CPU per machine. SMP support will be activated when models for such
+> SoCs are implemented.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  include/hw/arm/aspeed.h     |  1 +
+>  include/hw/arm/aspeed_soc.h |  3 ++-
+>  hw/arm/aspeed.c             |  8 ++++++--
+>  hw/arm/aspeed_soc.c         | 17 +++++++++++------
+>  4 files changed, 20 insertions(+), 9 deletions(-)
+>
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index 02073a6b4d61..f2f238ea83cc 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -23,6 +23,7 @@ typedef struct AspeedBoardConfig {
+>      uint32_t num_cs;
+>      void (*i2c_init)(AspeedBoardState *bmc);
+>      uint32_t ram;
+> +    uint32_t num_cpus;
+>  } AspeedBoardConfig;
+>
+>  #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index fa0ba957a611..7247f6da2505 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -24,13 +24,14 @@
+>
+>  #define ASPEED_SPIS_NUM  2
+>  #define ASPEED_WDTS_NUM  3
+> +#define ASPEED_CPUS_NUM  2
+>
+>  typedef struct AspeedSoCState {
+>      /*< private >*/
+>      DeviceState parent;
+>
+>      /*< public >*/
+> -    ARMCPU cpu;
+> +    ARMCPU cpu[ASPEED_CPUS_NUM];
+>      MemoryRegion sram;
+>      AspeedVICState vic;
+>      AspeedRtcState rtc;
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 10ba3f50481a..004b0c318951 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -29,7 +29,6 @@
+>
+>  static struct arm_boot_info aspeed_board_binfo =3D {
+>      .board_id =3D -1, /* device-tree-only board */
+> -    .nb_cpus =3D 1,
+>  };
+>
+>  struct AspeedBoardState {
+> @@ -231,6 +230,7 @@ static void aspeed_board_init(MachineState *machine,
+>      aspeed_board_binfo.kernel_cmdline =3D machine->kernel_cmdline;
+>      aspeed_board_binfo.ram_size =3D ram_size;
+>      aspeed_board_binfo.loader_start =3D sc->info->memmap[ASPEED_SDRAM];
+> +    aspeed_board_binfo.nb_cpus =3D cfg->num_cpus;
+>
+>      if (cfg->i2c_init) {
+>          cfg->i2c_init(bmc);
+> @@ -327,7 +327,7 @@ static void aspeed_machine_class_init(ObjectClass *oc=
+, void *data)
+>
+>      mc->desc =3D board->desc;
+>      mc->init =3D aspeed_machine_init;
+> -    mc->max_cpus =3D 1;
+> +    mc->max_cpus =3D ASPEED_CPUS_NUM;
+>      mc->no_sdcard =3D 1;
+>      mc->no_floppy =3D 1;
+>      mc->no_cdrom =3D 1;
+> @@ -357,6 +357,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+>          .num_cs    =3D 1,
+>          .i2c_init  =3D palmetto_bmc_i2c_init,
+>          .ram       =3D 256 * MiB,
+> +        .num_cpus  =3D 1,
+>      }, {
+>          .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
+>          .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
+> @@ -367,6 +368,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+>          .num_cs    =3D 1,
+>          .i2c_init  =3D ast2500_evb_i2c_init,
+>          .ram       =3D 512 * MiB,
+> +        .num_cpus  =3D 1,
+>      }, {
+>          .name      =3D MACHINE_TYPE_NAME("romulus-bmc"),
+>          .desc      =3D "OpenPOWER Romulus BMC (ARM1176)",
+> @@ -377,6 +379,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+>          .num_cs    =3D 2,
+>          .i2c_init  =3D romulus_bmc_i2c_init,
+>          .ram       =3D 512 * MiB,
+> +        .num_cpus  =3D 1,
+>      }, {
+>          .name      =3D MACHINE_TYPE_NAME("witherspoon-bmc"),
+>          .desc      =3D "OpenPOWER Witherspoon BMC (ARM1176)",
+> @@ -387,6 +390,7 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
+>          .num_cs    =3D 2,
+>          .i2c_init  =3D witherspoon_bmc_i2c_init,
+>          .ram       =3D 512 * MiB,
+> +        .num_cpus  =3D 1,
+>      },
+>  };
+>
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index d1dc8f03f35c..b983d5efc5d1 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -172,8 +172,11 @@ static void aspeed_soc_init(Object *obj)
+>      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
+>      int i;
+>
+> -    object_initialize_child(obj, "cpu", OBJECT(&s->cpu), sizeof(s->cpu),
+> -                            sc->info->cpu_type, &error_abort, NULL);
+> +    for (i =3D 0; i < MIN(smp_cpus, ASPEED_CPUS_NUM); i++) {
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+What's the intent of this test?
+
+If we're checking that the user hasn't requested more CPUs that the
+SoC supports, shoudln't it be testing against ->num_cpus instead of
+ASPEED_CPUS_NUM?
+
+> +        object_initialize_child(obj, "cpu[*]", OBJECT(&s->cpu[i]),
+> +                                sizeof(s->cpu[i]), sc->info->cpu_type,
+> +                                &error_abort, NULL);
+> +    }
+>
+>      sysbus_init_child_obj(obj, "scu", OBJECT(&s->scu), sizeof(s->scu),
+>                            TYPE_ASPEED_SCU);
+> @@ -242,10 +245,12 @@ static void aspeed_soc_realize(DeviceState *dev, Er=
+ror **errp)
+>                                  ASPEED_SOC_IOMEM_SIZE);
+>
+>      /* CPU */
+> -    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> -        return;
+> +    for (i =3D 0; i < smp_cpus; i++) {
+
+Can you explain why we use smp_cpus instead of ->num_cpus?
+
+> +        object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &=
+err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>      }
+>
+>      /* SRAM */
+> --
+> 2.20.1
+>

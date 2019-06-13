@@ -1,153 +1,185 @@
-Received: by 2002:a17:90a:ad88:0:0:0:0 with SMTP id s8csp559900pjq;
-        Thu, 30 May 2019 02:01:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWaRXU1tFre+DquT18yTin3jAVoYzTDD859LCx21ZY/duHov3WZXS/Su0WU9Fh9UX+4nQe
-X-Received: by 2002:ac8:38d5:: with SMTP id g21mr2322852qtc.52.1559206873658;
-        Thu, 30 May 2019 02:01:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559206873; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6919904wrg;
+        Thu, 13 Jun 2019 08:09:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwgaaNwfUnEgAwoYeYwlW7xC41DoFlyANS8I9/u88/BZiNVsGqD8NgaiLDsI7wWPlcE4oyY
+X-Received: by 2002:a37:783:: with SMTP id 125mr71221109qkh.0.1560438591063;
+        Thu, 13 Jun 2019 08:09:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560438591; cv=none;
         d=google.com; s=arc-20160816;
-        b=F+A8R9ZpVKCzXj5maEHS6/SLTWcvs085m8LXw5YBByBKi7NH1vHfoEJc+jLFJs28VM
-         nCB3TVc5Q8SFkSDB4wY3yhQxDsn3cEqAkAz3Jwjg8tkgwgBpD73FaQwfW33ZyVyVjzIA
-         MZYPkIiKeYeUYSeIREMqtMK/kId6Yn/QCKPkISetRIwaJFbSk3n/GYDr1H4yn/NF873l
-         ewiY1Q50k77VxnvEuSeqY5WeBz8FveZsovm7/K/YxUPlIcWFZsQXFn/vqLwy0cYiB4lp
-         vio9KHx6W9UrH+/voQbRxBbspvNygCoIYeVXRKdE8dgl1J72UAFe+GvEng2bAJEZj5p8
-         XtFQ==
+        b=R0L5yzdjMnz/X+xFZO7pNgq/IGa86/KjkmCt3PKw7qK1XeIvXJIXH8oz3jhM/fethc
+         BxGIr8bA8+Ut8v5RWwvlDftptYEicoDHo6rtPnqnkdcsl627yceSDHNZTIChtZdUhMNy
+         9r0ZA9MVL+lunRG4UnmqSqJqaOo0aME/ou+zUMeC6Fm9GG7uOZm9kxBlS5LfFhl0pSnd
+         VeTeE1n2ooU5kWQUe/TYmIjR7L79qlliBXXIQsfEB07MhyD2j5KvFEye/z/TpmUbKAjb
+         LlNMUvglMTR0lXLOqeC8a3vfj16PCxwomkBo4bd4bWSVE6JYuWMgRsL4NeEsqoycKKNC
+         bxsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=uNU1lgP95SHwtG+LF+SNM88xD+phTff1rqLp9kWL6W0=;
-        b=T1tMCn10VxP6L59/+6qm30arFmHSyVXrMjRPaZ953T3YTtqSFSoRb32eQhuZW9cLDr
-         2FfJ/Anuhr/ZX9Dk05gqSUBhqWErwsabVMYmzYugN19nZtAiwXoCBBEcVOF/aab4d1TS
-         jQJH94EvthHrMoSZBYC23svwb+kmYXUIB+rzNNqYvFxpMlX3svHeitkvsV0FXBRGoKM2
-         iEtNhbm723qlxP3+ru9ppn1yj6OMZvCGki7i3gKgalT9ctCzpgZmWFcmdOdTjCfuPcTh
-         rMbBctqboxPMuPBe0ok8VVIGxTGSbuq/bjxjg4DKeBCnUqvIBm+s+MXoEr4oEq7+iQEu
-         61nw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=uPCG31NtCjQrMhfMzWaej0+MxaSfA9nDhfT/lK6L+dI=;
+        b=UL0LVwio85PBA4G4NhZjTcPaDPXQF4lsUA6snXeo9rdjuJMmC9eCdKPMDewA6jioWQ
+         QFb/1s8NS9Ua1I6keCRP57s7QQJXV7tCAwuI2yaJ8IR/lj17JMj2Dev6N+V1FOLoEFt5
+         vgbdHtZlGVPu8JVsAquNIoSMGOFWSSSvz83bj/3C3sZebnK541deFaKbOK9vrBxDRZXI
+         Bi1mRmszb0TBUCAJkQC639FVVxSm7IPGTiLgdUQosRxEqPR81F4cEq+aU7/pa9yUyfji
+         WxE8QR4Z1JuXhMDf5v7eR8XfCoMfSRYg6bmYE6mcPy0vhmLvtI/PlBcXmWan0hVACu8f
+         5/RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 37si1077691qtu.91.2019.05.30.02.01.13
+        by mx.google.com with ESMTPS id u5si83026qth.400.2019.06.13.08.09.50
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 30 May 2019 02:01:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 13 Jun 2019 08:09:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([127.0.0.1]:49466 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hWGvx-0001nw-AK
-	for alex.bennee@linaro.org; Thu, 30 May 2019 05:01:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38870)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hWGvp-0001ni-CI
-	for qemu-arm@nongnu.org; Thu, 30 May 2019 05:01:06 -0400
+Received: from localhost ([::1]:40740 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hbRMM-0001Rj-Ko
+	for alex.bennee@linaro.org; Thu, 13 Jun 2019 11:09:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40890)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hbQlC-00074X-QE
+ for qemu-devel@nongnu.org; Thu, 13 Jun 2019 10:31:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hWGvn-0004yn-5w
-	for qemu-arm@nongnu.org; Thu, 30 May 2019 05:01:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54384)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1hWGvh-0004uw-Qf; Thu, 30 May 2019 05:00:58 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B3612E95B1;
-	Thu, 30 May 2019 09:00:49 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A809E2B1CA;
-	Thu, 30 May 2019 09:00:44 +0000 (UTC)
-Date: Thu, 30 May 2019 11:00:43 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Laurent Vivier <lvivier@redhat.com>
-Message-ID: <20190530110043.047b2f1f@redhat.com>
-In-Reply-To: <20190529160747.778-1-lvivier@redhat.com>
-References: <20190529160747.778-1-lvivier@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1hbQl9-0006XJ-JE
+ for qemu-devel@nongnu.org; Thu, 13 Jun 2019 10:31:25 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:41300)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hbQl9-0006W9-54
+ for qemu-devel@nongnu.org; Thu, 13 Jun 2019 10:31:23 -0400
+Received: by mail-wr1-f68.google.com with SMTP id c2so21034924wrm.8
+ for <qemu-devel@nongnu.org>; Thu, 13 Jun 2019 07:31:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=uPCG31NtCjQrMhfMzWaej0+MxaSfA9nDhfT/lK6L+dI=;
+ b=Jok8BRqiWv2X4coer/x2uhHDffZzCkeofxOx3rh26G9kwVurCBNdn6Rqpq7FRttkjT
+ rhW4YqBMccB/ryUF3YPLz8mJCcOHc7dEY2ZnbxLxVc83lgI0RHSLQSbfPTu/Nj0j5tFR
+ WBWHOFlSXEbSUGI3LjmB8kBJgsFXM0B1TuwGTRL+OG1E4tRDFFTEFSVXT5jNx4ZPFR3A
+ p/5zxSqw7Z9eB4hTWaIzLYkqBw053cpfTWyA2d8wwD57F5HwivxJMidi9Bh44rddcw3j
+ d4AjLEE63D915eEy792yXCxzLZqK7uBQZ7NdPWEbpZNFDiUePtSs/OLl57bA9TPINR0i
+ EN1A==
+X-Gm-Message-State: APjAAAV2SBqjQLz9FlkTo/DYC5sNEbWEfpt4tWCZfwJylGh0hzciKzXp
+ 7BUQmI7r0HZ2QKJY069igmFYfA==
+X-Received: by 2002:adf:e311:: with SMTP id b17mr60379164wrj.11.1560436281778; 
+ Thu, 13 Jun 2019 07:31:21 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id x16sm61458wmj.4.2019.06.13.07.31.20
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 13 Jun 2019 07:31:20 -0700 (PDT)
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20190525151241.5017-1-clg@kaod.org>
+ <20190525151241.5017-19-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <f3b3948f-8d24-fb8c-0b65-8fe08019a077@redhat.com>
+Date: Thu, 13 Jun 2019 16:31:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 30 May 2019 09:00:54 +0000 (UTC)
+In-Reply-To: <20190525151241.5017-19-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4] numa: improve cpu hotplug
- error message with a wrong node-id
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-devel] [PATCH 18/19] aspeed/smc: inject errors in DMA
+ checksum
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xt4fhGGsCveR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mJocfBd1liXP
 
-On Wed, 29 May 2019 18:07:47 +0200
-Laurent Vivier <lvivier@redhat.com> wrote:
+Hi Cédric,
 
-> On pseries, core-ids are strongly binded to a node-id by the command
-> line option. If an user tries to add a CPU to the wrong node, he has
-> an error but it is not really helpful:
+On 5/25/19 5:12 PM, Cédric Le Goater wrote:
+> Emulate read errors in the DMA Checksum Register for high frequencies
+> and optimistic settings of the Read Timing Compensation Register. This
+> will help in tuning the SPI timing calibration algorithm.
 > 
->   qemu-system-ppc64 ... -smp 1,maxcpus=64,cores=1,threads=1,sockets=1 \
->                         -numa node,nodeid=0 -numa node,nodeid=1 ...
+> The values below are those to expect from the first flash device of
+> the FMC controller of a palmetto-bmc machine.
 > 
->   (qemu) device_add power9_v2.0-spapr-cpu-core,core-id=30,node-id=1
->   Error: node-id=1 must match numa node specified with -numa option
-> 
-> This patch improves this error message by giving to the user the good
-> node-id to use with the core-id he's providing
-> 
->   Error: invalid node-id, must be 0
-> 
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
+>  hw/ssi/aspeed_smc.c | 29 +++++++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
 > 
-> Notes:
->     v4: simplify the message
->     
->     v3: only add the topology to the existing message
->         As suggested by Igor replace
->           Error: core-id 30 can only be plugged into node-id 0
->         by
->           Error: node-id=1 must match numa node specified with -numa option 'node-id 0'
->     
->     v2: display full topology in the error message
-> 
->  numa.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/numa.c b/numa.c
-> index 3875e1efda3a..955ec0c830db 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -470,8 +470,8 @@ void numa_cpu_pre_plug(const CPUArchId *slot, DeviceState *dev, Error **errp)
->                                      "node-id", errp);
->          }
->      } else if (node_id != slot->props.node_id) {
-> -        error_setg(errp, "node-id=%d must match numa node specified "
-> -                   "with -numa option", node_id);
-> +        error_setg(errp, "invalid node-id, must be %"PRId64,
-> +                   slot->props.node_id);
->      }
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 406c30c60b3f..4c162912cf62 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -866,6 +866,30 @@ static void aspeed_smc_dma_calibration(AspeedSMCState *s)
+>      s->regs[s->r_ctrl0 + cs] |= CE_CTRL_CLOCK_FREQ(hclk_div);
 >  }
 >  
 
+Can you add a comment (like the patch description) here?
+
+> +static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+> +{
+> +    uint8_t delay =
+> +        (s->regs[R_DMA_CTRL] >> DMA_CTRL_DELAY_SHIFT) & DMA_CTRL_DELAY_MASK;
+> +    uint8_t hclk_mask =
+> +        (s->regs[R_DMA_CTRL] >> DMA_CTRL_FREQ_SHIFT) & DMA_CTRL_FREQ_MASK;
+> +
+> +    /*
+> +     * Typical values of a palmetto-bmc machine.
+> +     */
+> +    switch (aspeed_smc_hclk_divisor(hclk_mask)) {
+> +    case 4 ... 16:
+> +        return false;
+> +    case 3: /* at least one HCLK cycle delay */
+> +        return (delay & 0x7) < 1;
+> +    case 2: /* at least two HCLK cycle delay */
+> +        return (delay & 0x7) < 2;
+> +    case 1: /* (> 100MHz) is above the max freq of the controller */
+> +        return true;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +}
+> +
+>  /*
+>   * Accumulate the result of the reads to provide a checksum that will
+>   * be used to validate the read timing settings.
+> @@ -903,6 +927,11 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>          s->regs[R_DMA_FLASH_ADDR] += 4;
+>          s->regs[R_DMA_LEN] -= 4;
+>      }
+> +
+> +    if (aspeed_smc_inject_read_failure(s)) {
+
+So this model real world where noise eventually triggers errors. Don't
+we want this to be enable by the user (or a QMP command)?
+
+> +        s->regs[R_DMA_CHECKSUM] = 0xbadc0de;
+> +    }
+> +
+>  }
+>  
+>  static void aspeed_smc_dma_rw(AspeedSMCState *s)
+> 

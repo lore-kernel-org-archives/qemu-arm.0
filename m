@@ -1,96 +1,96 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp74137wrg;
-        Thu, 13 Jun 2019 11:40:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzhyU9QQrY/7GItJVkrAdTOf0RcDf9jP0saimlyrX7TDDOKD3VVUVvebq7GMlKKDo2mGYjS
-X-Received: by 2002:ac8:18d2:: with SMTP id o18mr28116535qtk.243.1560451228643;
-        Thu, 13 Jun 2019 11:40:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560451228; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp84197wrg;
+        Thu, 13 Jun 2019 11:53:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxDHOYgYD6TfjLxVZZyEA/6q7Tl62LtF083QWa1Tl9dBwu0zRJ+q8vghBU9doDm77WYvvyn
+X-Received: by 2002:ac8:1a3c:: with SMTP id v57mr76278889qtj.339.1560451982061;
+        Thu, 13 Jun 2019 11:53:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560451982; cv=none;
         d=google.com; s=arc-20160816;
-        b=tgXV3APozOfxqBE+dbLkovH/K39vD8fzsdTeYqCkY9dmb8YCvfKsLCTSMB16J9Mn54
-         aM4UoXjFc+EQ990tTXauJ8lyMzJN7IKHpVYZ96FWrLmdV5Y3IgAZ2RibbHAmCcf6yx3N
-         JN5VRk/WLLgiQgM+R0opY2c56Wsntv292WeXRGM6cPnoz7poBXoaaqJVSpUo9LIFK+jT
-         yKoW57WvTO4vck3dHOXJ4G4WHJek87fyDgF5slG8MitYDiVOeW7YZH8wB0J0tHGaS3pp
-         YBshb3lHvlLEwyvkkv+P0pdZp51sWY3fDcd2+CDe0/uNT24piYEDUFQED0EVICUfWjnV
-         BPyw==
+        b=qOMgpbKalMOBc3phG6TJyHbWjHGTKpSr/52Q1DluUp27OCKbYx2s2+zuQffaYcH/yg
+         9B0oNaiv4qaDz34EkFFpjfxNZZDDVgSKQtvB8eXl5H3F1NAq1n+sJx2GHyWbAr+W+4Bz
+         3icW7fDKLbyunkw1EzRlKiWVPjzuzsbK0AnZjcqI8UHzcBfwPw0CaCTPfWeTkYgBmIE9
+         893w4Ouy2he04P9WMxfI89BQfGtOgcOUQ5eRuKlMtyArToQyU180HjDE/oHebiaJT+f4
+         jIEhzJpLnbzGn/GRZNQXZYKqKtBeNp34+06fV5k4SXl5lzNNJaESpCT6a5RmxBw2Ur87
+         yamg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=qQmS7fDlwcZP6vIBxbHDINfjc+89reFKqPWwOYK60Kw=;
-        b=vBf50RPKHs2ZN0wKNjTn7MOTYnqP0TqTMBolEkePoMT4TOTgJ6Luqk7jw0SOPDJi3o
-         SUVocQpQs/GHtpuF+JGpEuusNfxVVuY0kjJVsbDD5G5+nThrUzGtz5CRdYzloK59wjVl
-         PqnZUp8j6/TSHtD8ULJ6KLm2tagngO9RivwtLE2f61v0Fa37ylZYfv4u2cIcXdUuiZtI
-         LXb7bTZ1L6sZRZ4DKisvbORcLLLku8QKAAXm1SVSJ07ppz9NxwFkswgdTR/eNDGjddS5
-         hgOAyMqYAtvQm6w5vdYH8NrsgZij0VPGp7I79XVtM4ePBx0gu0ukES1KOIDeVoqZSbVJ
-         66cw==
+        bh=aWvmCLU0tYg1jkOyEItQlK/WmLZzoOV611s9Hk2h2Ds=;
+        b=e8jvTMtvnXn/dmUQjZixgyXtvcsAQlSZ9MGwOMJ9j/fsnVWnf7KHx5QZcSh1QCM01u
+         tz5e/Xz//QbxUkRBnxu3m0B8P3VsKD3631Y0dExfslwiqBVY+Me85bsGFtEf9q8dMN/6
+         nuwmvHAdMah2SPktaupt+gANQpMzjFgQddXRvJUQ2j2SC/rfL21HFpMLrjH5HrH4sEw2
+         GisvXU/fw5wvWeNWqbJL7e/UgKF72YoqVF9wXs/yC0iDrFO0J+krc1MKh12XvLFmmD1m
+         trwWhtBijzFtRrBmF1JLbP6HPO2oF2TnhZqYquyS363ORkmtVHkfjhvzJQv1SUuvFC9L
+         HQ1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QnQyS2gW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ldLozEVS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12si277062qkk.209.2019.06.13.11.40.28
+        by mx.google.com with ESMTPS id i3si309101qte.293.2019.06.13.11.53.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jun 2019 11:40:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Jun 2019 11:53:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QnQyS2gW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ldLozEVS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43554 helo=lists.gnu.org)
+Received: from localhost ([::1]:43862 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hbUeC-0002iB-2L
-	for alex.bennee@linaro.org; Thu, 13 Jun 2019 14:40:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53683)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hbUqL-0006Ah-Jn
+	for alex.bennee@linaro.org; Thu, 13 Jun 2019 14:53:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53828)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hbSlF-0003w4-F5
- for qemu-devel@nongnu.org; Thu, 13 Jun 2019 12:39:39 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hbSlK-00049W-E6
+ for qemu-arm@nongnu.org; Thu, 13 Jun 2019 12:39:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hbSlA-00033x-MP
- for qemu-devel@nongnu.org; Thu, 13 Jun 2019 12:39:35 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38271)
+ (envelope-from <peter.maydell@linaro.org>) id 1hbSlG-0003Mx-C4
+ for qemu-arm@nongnu.org; Thu, 13 Jun 2019 12:39:42 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35444)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hbSl6-0002Af-Ej
- for qemu-devel@nongnu.org; Thu, 13 Jun 2019 12:39:29 -0400
-Received: by mail-wr1-x441.google.com with SMTP id d18so21500527wrs.5
- for <qemu-devel@nongnu.org>; Thu, 13 Jun 2019 09:39:24 -0700 (PDT)
+ id 1hbSlF-00035L-QJ
+ for qemu-arm@nongnu.org; Thu, 13 Jun 2019 12:39:38 -0400
+Received: by mail-wr1-x441.google.com with SMTP id m3so2528081wrv.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Jun 2019 09:39:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qQmS7fDlwcZP6vIBxbHDINfjc+89reFKqPWwOYK60Kw=;
- b=QnQyS2gW36bnd6wnT+pgY0HZvam4SnFDo8x+J+U42SyswUpYxC5kMsF21UMuvCCjj6
- YltiJgyuxWAOEI4oOA35JGtRo2UxTb7XWL3iazQgEpacyGkp1csmzew5cIPTHaQer+Na
- 2r5X40QFKU9XqPu9E0WP5sOHJ4ZCgFgTIUGgsyoKh+emPMB2la2bC9roKu3hDRLOWz42
- CBUa1OE7r0A4jLGXByW5dlxnrm2iiQJ5NfWKgpG3AKVZLXKqjY1vEetKoH4x/wBPFNDd
- 0uKaT4EQSKDCvMaRxsqUgTdwIpHk1osdZKVg5tgZEg5vmi7Nt33wgzmVr4OTG1fzRKPd
- i2FQ==
+ bh=aWvmCLU0tYg1jkOyEItQlK/WmLZzoOV611s9Hk2h2Ds=;
+ b=ldLozEVS5RPki2P5jzmSLxEoh2wYQ/TwkL2qq6FdwlzjiRBBxTRDfR9BnO8nTjD5PW
+ S/5WaRq/Tf+wZfTgf5MWTqyI4Vx8pkXNZdibyZe2PRtXgYJSqp5+ZHilgC3x5RIk7I5d
+ vVzTluaEqnNoS5b2d12rQF0627bcVCbpcBM6u9skzvOAjemRBpLnvyAO02zF7Rv9RsDw
+ WWuD0tvLilz0KgRRN9/gswUaXGbFg96TzUzo9/NXU37WHVV8RDmcqVafOSdhr14SUTY+
+ s4vF2Z08eG0SUmxb71/rc0JZXDtZeFUkr/PAqpKXfJQsMns/oqf44dvvZcFi1NTcyrtC
+ yMyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qQmS7fDlwcZP6vIBxbHDINfjc+89reFKqPWwOYK60Kw=;
- b=Lep0E6vldjO4Wm0c6Cr0L26bVqXV/xl8tPdx6L6C2YO7LhvWFYhMp1GlvSDGOANzYx
- tWrS5ohh/3BCglpMfxhbTcRPubSK5WPA+M1ZxW9P41QMUtfWHfPrwst4TIf/DS1k9ptN
- MuwHUHiHwB4AL0cQhYMJKG1CoCHJE737co+OXu0OHLv4VdiGJWzXdwrp0FBjv1hPg7rR
- XqK9ZABUxDmnnnJaPqe2U8JakaP/kZcK/D0nIEgqW7orUQ+a90jj5nJjxuXLtSVObLZL
- X3YrgHw9w0UBgSVwjw0Z53j1cbkNTqEZ4EsA2jhwWlyME73TzuQ6/TM0MBzAxCxCVXTv
- boNA==
-X-Gm-Message-State: APjAAAWDuLVBbR4JXcUR+0cNbq0xEuH11MYM77K3rYXZsW0AyZ97PeB/
- oTnxtX94n52QulJu6dU5gjW5cg==
-X-Received: by 2002:adf:a509:: with SMTP id i9mr49822524wrb.269.1560443963612; 
- Thu, 13 Jun 2019 09:39:23 -0700 (PDT)
+ bh=aWvmCLU0tYg1jkOyEItQlK/WmLZzoOV611s9Hk2h2Ds=;
+ b=o16CkUtJiboIoubiT8tB77Oe4KNusYni9WJEaJABGB3D46LHXtqcP3Pe6P6Jlwplt/
+ L9b9HKHDoiMVqra5Mz7+fX5OlrYqrkWlbFOUofxWp+hI05SLDl+zB88hU+uPxWsAAXI7
+ gIJWM8MgANaNqZedj8bVFppwhcErezv5IQNO0LmQkEr5EyDQhQim5d0u9pzsVGf3Mf5q
+ pk9RSSDZLyHqmY/oIgQ2BrrHO0nEb/zFn2+esm4rN18TKKx2sulzr/dZ1V4aRNL9+FJ3
+ heMRljbGE20CfFPTQj3R2f+LOu55Xrhlcv5ZoVN8RjjLJJDYEkN3XmpIxemx4NlwkLOf
+ Z0ZQ==
+X-Gm-Message-State: APjAAAXXZNkNSAGhtD/ZPAjMG0YZlJGOleHA3we5RdDR++6Qm/QpVVsf
+ TmqhgFjNiRVfkVMTKoD0ALd+0ROnqjSMMQ==
+X-Received: by 2002:a5d:63c9:: with SMTP id c9mr13593451wrw.81.1560443972149; 
+ Thu, 13 Jun 2019 09:39:32 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id f197sm358747wme.39.2019.06.13.09.39.22
+ by smtp.gmail.com with ESMTPSA id f197sm358747wme.39.2019.06.13.09.39.31
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 13 Jun 2019 09:39:23 -0700 (PDT)
+ Thu, 13 Jun 2019 09:39:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 13 Jun 2019 17:39:09 +0100
-Message-Id: <20190613163917.28589-5-peter.maydell@linaro.org>
+Date: Thu, 13 Jun 2019 17:39:17 +0100
+Message-Id: <20190613163917.28589-13-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190613163917.28589-1-peter.maydell@linaro.org>
 References: <20190613163917.28589-1-peter.maydell@linaro.org>
@@ -99,69 +99,64 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::441
-Subject: [Qemu-devel] [PATCH 04/12] target/arm: Stop using cpu_F0s for
- NEON_2RM_VNEG_F
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH 12/12] target/arm: Remove unused cpu_F0s, cpu_F0d,
+ cpu_F1s, cpu_F1d
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZZCD45ZIcnPx
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gh/OLKDitvwz
 
-Switch NEON_2RM_VABS_F away from using cpu_F0s.
+Remove the now unused TCG globals cpu_F0s, cpu_F0d, cpu_F1s, cpu_F1d.
+
+cpu_M0 is still used by the iwmmxt code, and cpu_V0 and
+cpu_V1 are used by both iwmmxt and Neon.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate.c | 13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
+ target/arm/translate.c | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index a10fded1f39..a006ab498e7 100644
+index 8f124a953b6..4750b9fa1bb 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -1374,14 +1374,6 @@ static TCGv_ptr get_fpstatus_ptr(int neon)
-     return statusptr;
- }
+@@ -67,10 +67,6 @@ TCGv_i32 cpu_CF, cpu_NF, cpu_VF, cpu_ZF;
+ TCGv_i64 cpu_exclusive_addr;
+ TCGv_i64 cpu_exclusive_val;
  
--static inline void gen_vfp_neg(int dp)
--{
--    if (dp)
--        gen_helper_vfp_negd(cpu_F0d, cpu_F0d);
--    else
--        gen_helper_vfp_negs(cpu_F0s, cpu_F0s);
--}
+-/* FIXME:  These should be removed.  */
+-static TCGv_i32 cpu_F0s, cpu_F1s;
+-static TCGv_i64 cpu_F0d, cpu_F1d;
 -
- #define VFP_GEN_ITOF(name) \
- static inline void gen_vfp_##name(int dp, int neon) \
- { \
-@@ -4189,8 +4181,7 @@ static int neon_2rm_is_float_op(int op)
-      * what we are asking here is "does the code for this case in
-      * the Neon for-each-pass loop use cpu_F0s?".
-      */
--    return (op == NEON_2RM_VNEG_F ||
--            (op >= NEON_2RM_VRINTN && op <= NEON_2RM_VRINTZ) ||
-+    return ((op >= NEON_2RM_VRINTN && op <= NEON_2RM_VRINTZ) ||
-             op == NEON_2RM_VRINTM ||
-             (op >= NEON_2RM_VRINTP && op <= NEON_2RM_VCVTMS) ||
-             op >= NEON_2RM_VRECPE_F);
-@@ -6761,7 +6752,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                             gen_helper_vfp_abss(tmp, tmp);
-                             break;
-                         case NEON_2RM_VNEG_F:
--                            gen_vfp_neg(0);
-+                            gen_helper_vfp_negs(tmp, tmp);
-                             break;
-                         case NEON_2RM_VSWP:
-                             tmp2 = neon_load_reg(rd, pass);
+ #include "exec/gen-icount.h"
+ 
+ static const char * const regnames[] =
+@@ -11911,12 +11907,8 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+         dc->base.max_insns = MIN(dc->base.max_insns, bound);
+     }
+ 
+-    cpu_F0s = tcg_temp_new_i32();
+-    cpu_F1s = tcg_temp_new_i32();
+-    cpu_F0d = tcg_temp_new_i64();
+-    cpu_F1d = tcg_temp_new_i64();
+-    cpu_V0 = cpu_F0d;
+-    cpu_V1 = cpu_F1d;
++    cpu_V0 = tcg_temp_new_i64();
++    cpu_V1 = tcg_temp_new_i64();
+     /* FIXME: cpu_M0 can probably be the same as cpu_V0.  */
+     cpu_M0 = tcg_temp_new_i64();
+ }
 -- 
 2.20.1
 

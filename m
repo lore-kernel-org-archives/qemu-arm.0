@@ -1,101 +1,237 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id c65sm4387239wma.44.2019.06.13.06.33.37
+        by smtp.gmail.com with ESMTPSA id w14sm3574435wrt.59.2019.06.13.06.39.02
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Thu, 13 Jun 2019 06:33:37 -0700 (PDT)
+        Thu, 13 Jun 2019 06:39:02 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6299D1FF87;
-	Thu, 13 Jun 2019 14:33:37 +0100 (BST)
-References: <20190517174046.11146-1-peter.maydell@linaro.org> <20190517174046.11146-4-peter.maydell@linaro.org>
+	by zen.linaroharston (Postfix) with ESMTP id 3EBFA1FF87;
+	Thu, 13 Jun 2019 14:39:02 +0100 (BST)
+References: <20190517174046.11146-1-peter.maydell@linaro.org> <20190517174046.11146-5-peter.maydell@linaro.org>
 User-agent: mu4e 1.3.2; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH 3/4] hw/arm/armv7m: Forward "vfp" and "dsp" properties to CPU
-In-reply-to: <20190517174046.11146-4-peter.maydell@linaro.org>
-Date: Thu, 13 Jun 2019 14:33:37 +0100
-Message-ID: <877e9pehji.fsf@zen.linaroharston>
+Subject: Re: [Qemu-arm] [PATCH 4/4] hw/arm: Correctly disable FPU/DSP for some ARMSSE-based boards
+In-reply-to: <20190517174046.11146-5-peter.maydell@linaro.org>
+Date: Thu, 13 Jun 2019 14:39:02 +0100
+Message-ID: <875zp9ehah.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: neSH3wG338tM
+X-TUID: M2yEoixcR6tU
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Create "vfp" and "dsp" properties on the armv7m container object
-> which will be forwarded to its CPU object, so that SoCs can
-> configure whether the CPU has these features.
+> The SSE-200 hardware has configurable integration settings which
+> determine whether its two CPUs have the FPU and DSP:
+>  * CPU0_FPU (default 0)
+>  * CPU0_DSP (default 0)
+>  * CPU1_FPU (default 1)
+>  * CPU1_DSP (default 1)
+>
+> Similarly, the IoTKit has settings for its single CPU:
+>  * CPU0_FPU (default 1)
+>  * CPU0_DSP (default 1)
+>
+> Of our four boards that use either the IoTKit or the SSE-200:
+>  * mps2-an505, mps2-an521 and musca-a use the default settings
+>  * musca-b1 enables FPU and DSP on both CPUs
+>
+> Currently QEMU models all these boards using CPUs with
+> both FPU and DSP enabled. This means that we are incorrect
+> for mps2-an521 and musca-a, which should not have FPU or DSP
+> on CPU0.
+>
+> Create QOM properties on the ARMSSE devices corresponding to the
+> default h/w integration settings, and make the Musca-B1 board
+> enable FPU and DSP on both CPUs. This fixes the mps2-an521
+> and musca-a behaviour, and leaves the musca-b1 and mps2-an505
+> behaviour unchanged.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Given the ever growing configurable nature of the v7m platform what do we do
+to ensure the various combinations are tested on instantiating qemu? Or is
+this a case of relying on the wider community to shout if users actually
+find a combination that breaks? I guess fuzz testing would be a bit of a
+sledgehammer approach.
+
+Anyway:
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  include/hw/arm/armv7m.h |  4 ++++
->  hw/arm/armv7m.c         | 18 ++++++++++++++++++
->  2 files changed, 22 insertions(+)
+>  include/hw/arm/armsse.h |  7 +++++
+>  hw/arm/armsse.c         | 58 ++++++++++++++++++++++++++++++++---------
+>  hw/arm/musca.c          |  8 ++++++
+>  3 files changed, 61 insertions(+), 12 deletions(-)
 >
-> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-> index e96a98f8093..d2c74d3872a 100644
-> --- a/include/hw/arm/armv7m.h
-> +++ b/include/hw/arm/armv7m.h
-> @@ -43,6 +43,8 @@ typedef struct {
->   *   devices will be automatically layered on top of this view.)
->   * + Property "idau": IDAU interface (forwarded to CPU object)
->   * + Property "init-svtor": secure VTOR reset value (forwarded to CPU ob=
-ject)
-> + * + Property "vfp": enable VFP (forwarded to CPU object)
-> + * + Property "dsp": enable DSP (forwarded to CPU object)
->   * + Property "enable-bitband": expose bitbanded IO
->   */
->  typedef struct ARMv7MState {
-> @@ -66,6 +68,8 @@ typedef struct ARMv7MState {
+> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+> index 81e082cccf8..84080c22993 100644
+> --- a/include/hw/arm/armsse.h
+> +++ b/include/hw/arm/armsse.h
+> @@ -50,6 +50,11 @@
+>   *    address of each SRAM bank (and thus the total amount of internal S=
+RAM)
+>   *  + QOM property "init-svtor" sets the initial value of the CPU SVTOR =
+register
+>   *    (where it expects to load the PC and SP from the vector table on r=
+eset)
+> + *  + QOM properties "CPU0_FPU", "CPU0_DSP", "CPU1_FPU" and "CPU1_DSP" w=
+hich
+> + *    set whether the CPUs have the FPU and DSP features present. The de=
+fault
+> + *    (matching the hardware) is that for CPU0 in an IoTKit and CPU1 in =
+an
+> + *    SSE-200 both are present; CPU0 in an SSE-200 has neither.
+> + *    Since the IoTKit has only one CPU, it does not have the CPU1_* pro=
+perties.
+>   *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts for =
+CPU 0,
+>   *    which are wired to its NVIC lines 32 .. n+32
+>   *  + Named GPIO inputs "EXP_CPU1_IRQ" 0..n are the expansion interrupts=
+ for
+> @@ -208,6 +213,8 @@ typedef struct ARMSSE {
+>      uint32_t mainclk_frq;
+>      uint32_t sram_addr_width;
 >      uint32_t init_svtor;
->      bool enable_bitband;
->      bool start_powered_off;
-> +    bool vfp;
-> +    bool dsp;
->  } ARMv7MState;
+> +    bool cpu_fpu[SSE_MAX_CPUS];
+> +    bool cpu_dsp[SSE_MAX_CPUS];
+>  } ARMSSE;
 >
->  #endif
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index c4b2a9a1f5c..7caf9bd3364 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -190,6 +190,22 @@ static void armv7m_realize(DeviceState *dev, Error *=
-*errp)
->              return;
->          }
->      }
-> +    if (object_property_find(OBJECT(s->cpu), "vfp", NULL)) {
-> +        object_property_set_bool(OBJECT(s->cpu), s->vfp,
-> +                                 "vfp", &err);
-> +        if (err !=3D NULL) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +    }
-> +    if (object_property_find(OBJECT(s->cpu), "dsp", NULL)) {
-> +        object_property_set_bool(OBJECT(s->cpu), s->dsp,
-> +                                 "dsp", &err);
-> +        if (err !=3D NULL) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +    }
->
->      /*
->       * Tell the CPU where the NVIC is; it will fail realize if it doesn't
-> @@ -260,6 +276,8 @@ static Property armv7m_properties[] =3D {
->      DEFINE_PROP_BOOL("enable-bitband", ARMv7MState, enable_bitband, fals=
-e),
->      DEFINE_PROP_BOOL("start-powered-off", ARMv7MState, start_powered_off,
->                       false),
-> +    DEFINE_PROP_BOOL("vfp", ARMv7MState, vfp, true),
-> +    DEFINE_PROP_BOOL("dsp", ARMv7MState, dsp, true),
->      DEFINE_PROP_END_OF_LIST(),
+>  typedef struct ARMSSEInfo ARMSSEInfo;
+> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+> index 76cc6905798..e138aee673f 100644
+> --- a/hw/arm/armsse.c
+> +++ b/hw/arm/armsse.c
+> @@ -37,6 +37,33 @@ struct ARMSSEInfo {
+>      bool has_cachectrl;
+>      bool has_cpusecctrl;
+>      bool has_cpuid;
+> +    Property *props;
+> +};
+> +
+> +static Property iotkit_properties[] =3D {
+> +    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+> +    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
+> +    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
+> +    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
+> +    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
+> +    DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
+> +    DEFINE_PROP_BOOL("CPU0_DSP", ARMSSE, cpu_dsp[0], true),
+> +    DEFINE_PROP_END_OF_LIST()
+> +};
+> +
+> +static Property armsse_properties[] =3D {
+> +    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+> +    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
+> +    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
+> +    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
+> +    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
+> +    DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], false),
+> +    DEFINE_PROP_BOOL("CPU0_DSP", ARMSSE, cpu_dsp[0], false),
+> +    DEFINE_PROP_BOOL("CPU1_FPU", ARMSSE, cpu_fpu[1], true),
+> +    DEFINE_PROP_BOOL("CPU1_DSP", ARMSSE, cpu_dsp[1], true),
+> +    DEFINE_PROP_END_OF_LIST()
 >  };
+>
+>  static const ARMSSEInfo armsse_variants[] =3D {
+> @@ -52,6 +79,7 @@ static const ARMSSEInfo armsse_variants[] =3D {
+>          .has_cachectrl =3D false,
+>          .has_cpusecctrl =3D false,
+>          .has_cpuid =3D false,
+> +        .props =3D iotkit_properties,
+>      },
+>      {
+>          .name =3D TYPE_SSE200,
+> @@ -65,6 +93,7 @@ static const ARMSSEInfo armsse_variants[] =3D {
+>          .has_cachectrl =3D true,
+>          .has_cpusecctrl =3D true,
+>          .has_cpuid =3D true,
+> +        .props =3D armsse_properties,
+>      },
+>  };
+>
+> @@ -532,6 +561,20 @@ static void armsse_realize(DeviceState *dev, Error *=
+*errp)
+>                  return;
+>              }
+>          }
+> +        if (!s->cpu_fpu[i]) {
+> +            object_property_set_bool(cpuobj, false, "vfp", &err);
+> +            if (err) {
+> +                error_propagate(errp, err);
+> +                return;
+> +            }
+> +        }
+> +        if (!s->cpu_dsp[i]) {
+> +            object_property_set_bool(cpuobj, false, "dsp", &err);
+> +            if (err) {
+> +                error_propagate(errp, err);
+> +                return;
+> +            }
+> +        }
+>
+>          if (i > 0) {
+>              memory_region_add_subregion_overlap(&s->cpu_container[i], 0,
+> @@ -1221,16 +1264,6 @@ static const VMStateDescription armsse_vmstate =3D=
+ {
+>      }
+>  };
+>
+> -static Property armsse_properties[] =3D {
+> -    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
+> -                     MemoryRegion *),
+> -    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
+> -    DEFINE_PROP_UINT32("MAINCLK", ARMSSE, mainclk_frq, 0),
+> -    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 15),
+> -    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
+> -    DEFINE_PROP_END_OF_LIST()
+> -};
+> -
+>  static void armsse_reset(DeviceState *dev)
+>  {
+>      ARMSSE *s =3D ARMSSE(dev);
+> @@ -1243,13 +1276,14 @@ static void armsse_class_init(ObjectClass *klass,=
+ void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      IDAUInterfaceClass *iic =3D IDAU_INTERFACE_CLASS(klass);
+>      ARMSSEClass *asc =3D ARMSSE_CLASS(klass);
+> +    const ARMSSEInfo *info =3D data;
+>
+>      dc->realize =3D armsse_realize;
+>      dc->vmsd =3D &armsse_vmstate;
+> -    dc->props =3D armsse_properties;
+> +    dc->props =3D info->props;
+>      dc->reset =3D armsse_reset;
+>      iic->check =3D armsse_idau_check;
+> -    asc->info =3D data;
+> +    asc->info =3D info;
+>  }
+>
+>  static const TypeInfo armsse_info =3D {
+> diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+> index 23aff43f4bc..736f37b774c 100644
+> --- a/hw/arm/musca.c
+> +++ b/hw/arm/musca.c
+> @@ -385,6 +385,14 @@ static void musca_init(MachineState *machine)
+>      qdev_prop_set_uint32(ssedev, "init-svtor", mmc->init_svtor);
+>      qdev_prop_set_uint32(ssedev, "SRAM_ADDR_WIDTH", mmc->sram_addr_width=
+);
+>      qdev_prop_set_uint32(ssedev, "MAINCLK", SYSCLK_FRQ);
+> +    /*
+> +     * Musca-A takes the default SSE-200 FPU/DSP settings (ie no for
+> +     * CPU0 and yes for CPU1); Musca-B1 explicitly enables them for CPU0.
+> +     */
+> +    if (mmc->type =3D=3D MUSCA_B1) {
+> +        qdev_prop_set_bit(ssedev, "CPU0_FPU", true);
+> +        qdev_prop_set_bit(ssedev, "CPU0_DSP", true);
+> +    }
+>      object_property_set_bool(OBJECT(&mms->sse), true, "realized",
+>                               &error_fatal);
 
 
 --

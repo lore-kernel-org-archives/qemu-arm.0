@@ -1,111 +1,98 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6886546wrg;
-        Thu, 13 Jun 2019 07:37:44 -0700 (PDT)
-X-Received: by 2002:a5d:53c9:: with SMTP id a9mr5989013wrw.323.1560436664151;
-        Thu, 13 Jun 2019 07:37:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560436664; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp6929262wrg;
+        Thu, 13 Jun 2019 08:18:03 -0700 (PDT)
+X-Received: by 2002:aca:5e57:: with SMTP id s84mr3375621oib.139.1560439083308;
+        Thu, 13 Jun 2019 08:18:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560439083; cv=none;
         d=google.com; s=arc-20160816;
-        b=ktHuZ5wDYYU3HQOlYGPrWsr34mdUc92g9evaTkoMahoyUlfhk/B+HLlcDIEwxHVaNl
-         JYB6RBZar6NeDYY6hPXejYDVV+y9GCW/VgxmMXDsvfGKf70MJk6lMoGq7wDM3GCqhtaF
-         AfPrh0u+MyM3XdIrRd3bpxgrSe3DXQm/qi901wx2w9QfDmsT1pDKiboT6lLaAoufTKD9
-         L/AI7eITYHhjTpZ/w7Jw7cTLMhcKJG4NTWzJyyvbwwgYpYihrjnVI/b8Zarzl7igOtXL
-         3Z6d3RslFyy+6DNGLTqbRDkgIXR3Oh2QNczi2fOcroSqBc3nZS2eup4e9Cr2nex45Mo6
-         eQ/A==
+        b=pwOp+0hhH76TylPJb91LNWYwMNeYuoIZ8hDQl+4I6YOd1CyvVGbbZ1onN/yMf0Cj4c
+         GohtUpddgSFi6uSU8PsxxDzsabeIDkll/Bm9jxB79pPGp2u4jbadoSdpIbjtWrMagfu5
+         vcnNqWsptC4ehkwLIQibbZxpwoSFdcvvE/LDDjwWv6hx1OLGsW8uVZEsbUAh6qRuCAgA
+         71pvs7ykJadF/W1Tv/9r2Hmeb2TC1Nbg8ywmqG/NcLq/NIEh88xEsTzT415g07+arne9
+         /MQPVkwZu5YGpweT7h/pi/tEsfZilACavk8oTWtF6/pz6Ivd8OPyro77fOMvNPtEF2l0
+         COlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=vg7Xo5/UC1VbFfsv57lBg2sMr1tbPeBB7dgbx/Rj6+I=;
-        b=rFm9ZlbSYa2+b2XlndNEnRh3glUU48Xz4VoAUUzPlklAYny2IdVlwDIdtsEogZxEUJ
-         ANa7W0pnJaFJqY7Gi9RWxwaRh1+UyWWPdeSfHBrrYfVTyD6ipr6HDkzwaBCsBl3Qz+LM
-         SOvn0hQj+/mWfSxQwpKuubhaJl6KOQhh7M+x4dtNANyL8OfRw6KpnIIvg2iVsK0bCRhK
-         hFoZwEafY+cjbtIb+u/gtOuo6IK5Be7jgQCa6hlvPwF3IXecA6VMq5XNRmy5MV/KY79/
-         kxkOdWMhpgUMxk7NhCtkq59BybJ8BiT8qN6PgWGTxllYZNqkcyjHC4XIOZVjbGdXzB+e
-         IfiA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=V7w64XM/BEYAFL0wXyQNKxfl3dGfHZAdo/1xVpepP6Q=;
+        b=ra61R082JIyiuQyg+xJeOmufAlav0aMFwc2N3M8uX2ac4ILvC+Qblda9TAjzJyG3rt
+         W7IGT6bayMWJGTdNjM+bDJRCV92CewqPBDZmrQLPTSzywH3UuTHWldszZ29T8OUuaaYK
+         iQpBpcZNXs95wIhER1Y+8GKw5ODG1/kZoyi6yD1wWUloyfqNMHWKH/rJgLn7g/Y/e28B
+         F2HbRGsJVXyCxbrC06ntvkfEPNAZKLcw1nbcUsEKSrgfxZKa0P1jrBLzLu4uVilPUgbG
+         4+PmOJk2LkHSyaCjpyfMgmYSq3UWCFOeI4i9ItbO3pmGxym7iDsZLFky5Ugi/QelNUHr
+         OvZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PpQysJr3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Sffk12yk;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v13sor66030wrs.17.2019.06.13.07.37.44
+        by mx.google.com with SMTPS id j99sor92836otj.124.2019.06.13.08.18.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 13 Jun 2019 07:37:44 -0700 (PDT)
+        Thu, 13 Jun 2019 08:18:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PpQysJr3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Sffk12yk;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=vg7Xo5/UC1VbFfsv57lBg2sMr1tbPeBB7dgbx/Rj6+I=;
-        b=PpQysJr3UfhlfG8/PoFpVoWNqOdZpq+eqslUhspPaWdgr+li5AzXV1FXe1fmmNBgwz
-         AclDX0N/iPz4q0+k+zSQ63PuQIBONq6zSN3qfyHhQncfeYjwEpXRYhAoO+BgHdzT/oI+
-         xk+MB+h3NE+mWSMpkWRsnAjlqEKwhihAnl6PJERaLCNYVbYQfPe/l2auV+VufFNuqHGO
-         FqJCY+RNadEJJU2cilCvG0nTKSCTkBIfmFbVL6plz94u8SZFq+3CsiO5mBwsXyqe4smo
-         Yj3pWoB9ozWNOMnxPeLe0bwVCwPj7drlWEHnpRC6QdkEx2cOrXh4vXSMYXWEBNlUOL44
-         ITlA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=V7w64XM/BEYAFL0wXyQNKxfl3dGfHZAdo/1xVpepP6Q=;
+        b=Sffk12ykJhDp+PRZHpKz9qkSSoAplpn3PrFba0IzN+ayfDEZUJyeOU296iXP/cRi6a
+         5QR2Zj2SJFbyTnsPqRMUO980ciA7UgUOy3KUc72vZ0HQs2Nb7enS8ylisS5vluph+tnx
+         Qr9elVobHEFn1ag8LDOKaRLh0ODa6RLAmuXKu0N9aKrTX6uBpFFrsXsxqOer8lFgBWcs
+         Yc2CoRfhHCh0ePoiZv+q3I7VRp7hf3/ebKU5zlZL/quWlzyt1+4yG6rluWMGrAZ/w1tN
+         YO5yB6xkabo+LmAV1Sr/nGxAmLsVuyPuwR3ZEyfMtOd6KsuXCG1zgEEjnJp8pXFtEkdp
+         izLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=vg7Xo5/UC1VbFfsv57lBg2sMr1tbPeBB7dgbx/Rj6+I=;
-        b=ed3OLix1f5F+tZRGOVlAHP8CV/9wdaHkDyMp7UIljpKmYG453bG1xAqky928mh+H8L
-         At4v9PFQXIwjlTQVdTIX2X1DICRaKSpCM4qmH1MV/1dyHpUOLg8EPPu+dx5d/NSp9eUc
-         4xE1TrVtx4vc5DkUqW1BgYC61HWDDqVvxlx9asTc0/Lo4Bvsp69kw7TCFakAy0QzEbrm
-         9Su4LE1bsif0NyRHmGnqU1474zskfjBnCwslo/1a18ATzscwLZu4l6pl/NWBvsuwY+q0
-         niLAxO2JejvRQLLKvFilLLCnn39etpt9e2Yn3tz1qkcmRQCGyS6CsSQQb5qmiMaeNvj4
-         3Khw==
-X-Gm-Message-State: APjAAAUxdZ7383djDUlB4CI9sCamPT7dxZ8xpr2yMqbyCXB7HY2Kihdh
-	Ty/XY1sCJq0GmPqKzhX5L/3D9nOx
-X-Google-Smtp-Source: APXvYqxZ6otB1rSV1A6SDeJeENHh83bcRYL2/YgH/F9f4fetn0N03a1lJhOlijFuMTq/qmkkslfGMQ==
-X-Received: by 2002:adf:9023:: with SMTP id h32mr60639641wrh.95.1560436663820;
-        Thu, 13 Jun 2019 07:37:43 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id l12sm3080344wrb.81.2019.06.13.07.37.42
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Jun 2019 07:37:43 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [RISU PATCH] arm.risu: Avoid VTRN with Vd == Vm
-Date: Thu, 13 Jun 2019 15:37:41 +0100
-Message-Id: <20190613143741.15128-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=V7w64XM/BEYAFL0wXyQNKxfl3dGfHZAdo/1xVpepP6Q=;
+        b=lilU/V7Tp48f+19yYFrCvMpJ1TCrHDTFupJO1Kmq+WDOlAU6pGmsW0m4fJKAEv/dM/
+         hxjPRQTYg0eNcPLl3OYIpenOtbSd6EotWTefARo0N++Gcro71f1dWzbzhIY1YqW3YaoA
+         3oN+2tLTm/BBIll8o3AXT4tuECPZSvED4DSOqfBruix44HNTvGCEjyx+/D420pdg7ZlN
+         t+EbF9AJtHC1luEJipEx+O1nOsG/rIJNfJ7XyHOR9THQmYEL1yUV+K18oIpPv6EAERoz
+         bgn76de0Y8laNYgvK/IXzQg5xjK6w5d6f753sjT3kJZd0jQAL8DrC+QPKIDK2Jn0tncN
+         K00A==
+X-Gm-Message-State: APjAAAWGmRDXxUx5IOUJTzAqZCXF0yjogBkGLXqSWvRUdtCEAPQRWzoJ
+	EkYX93zr8Flzxoc1X6BDQqMuYuHru2ZReVi5IKztmQZubzrlrw==
+X-Google-Smtp-Source: APXvYqyfMqAl0/ojMkuVCmQQHKYjKRX/z6EI0IPWaO49Dm1RAkJDMXMoUvOlW7p3Gz0/G8BGeVQ4Wvx/JPTCyjmFn94=
+X-Received: by 2002:a9d:630a:: with SMTP id q10mr8757585otk.91.1560439082756;
+ Thu, 13 Jun 2019 08:18:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: 5gqe6QWBsGvn
+References: <20190517174046.11146-1-peter.maydell@linaro.org>
+ <20190517174046.11146-5-peter.maydell@linaro.org> <875zp9ehah.fsf@zen.linaroharston>
+In-Reply-To: <875zp9ehah.fsf@zen.linaroharston>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 13 Jun 2019 16:17:50 +0100
+Message-ID: <CAFEAcA8aWdAyWpaP2RiuBJds45HqWph8Dkn3Q7HPgrpokEtxYw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 4/4] hw/arm: Correctly disable
+ FPU/DSP for some ARMSSE-based boards
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: JgqHY+mlOwg4
 
-The AArch32 VTRN instruction is specified to give an UNKNOWN
-result if Vd and Vm are the same register; avoid generating
-this in risu output, as we already do for VUZP and VZIP.
+On Thu, 13 Jun 2019 at 16:13, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Given the ever growing configurable nature of the v7m platform what do we=
+ do
+> to ensure the various combinations are tested on instantiating qemu? Or i=
+s
+> this a case of relying on the wider community to shout if users actually
+> find a combination that breaks? I guess fuzz testing would be a bit of a
+> sledgehammer approach.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Alex: this pattern error is why we don't pass your
-testcases/aarch32-all/insn_VTRN__INC.risu.bin when compared
-with a real Cortex-A7. You probably want to update that.
+It's not really all that much more configurable than the A-profile
+cores; I've just been a bit more careful to actually make our
+emulation reflect what the hardware actually does... a really
+careful testing of the A profile cores would want to test
+the various different cortex-* CPUs individually to make
+sure they UNDEFfed on the features they didn't have, and so on.
 
- arm.risu | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/arm.risu b/arm.risu
-index 9009e6b..c16d245 100644
---- a/arm.risu
-+++ b/arm.risu
-@@ -613,7 +613,8 @@ VCLT0 A1 1111 0011 1 d 11 sz:2 01 vd:4 0 f 100 q m 0 vm:4
- VABS A1 1111 0011 1 d 11 sz:2 01 vd:4 0 f 110 q m 0 vm:4
- VNEG A1 1111 0011 1 d 11 sz:2 01 vd:4 0 f 111 q m 0 vm:4
- VSWP A1 1111 0011 1 d 11 sz:2 10 vd:4 00000 q m 0 vm:4
--VTRN A1 1111 0011 1 d 11 sz:2 10 vd:4 00001 q m 0 vm:4
-+# d == m gives UNKNOWN results, so avoid it
-+VTRN A1 1111 0011 1 d 11 sz:2 10 vd:4 00001 q m 0 vm:4 { ($d != $m) || ($vd != $vm); }
- # d == m gives UNKNOWN results, so avoid it
- VUZP A1 1111 0011 1 d 11 sz:2 10 vd:4 00010 q m 0 vm:4 { ($d != $m) || ($vd != $vm); }
- VZIP A1 1111 0011 1 d 11 sz:2 10 vd:4 00011 q m 0 vm:4 { ($d != $m) || ($vd != $vm); }
--- 
-2.20.1
+thanks
+-- PMM

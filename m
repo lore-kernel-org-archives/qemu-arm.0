@@ -1,107 +1,104 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t140sm6040929wmt.0.2019.06.13.05.48.00
+        by smtp.gmail.com with ESMTPSA id x11sm3801650wmg.23.2019.06.13.05.53.37
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Thu, 13 Jun 2019 05:48:00 -0700 (PDT)
+        Thu, 13 Jun 2019 05:53:37 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D14631FF87;
-	Thu, 13 Jun 2019 13:47:59 +0100 (BST)
-References: <20190516144733.32399-1-peter.maydell@linaro.org> <20190516144733.32399-3-peter.maydell@linaro.org>
+	by zen.linaroharston (Postfix) with ESMTP id EDEC91FF87;
+	Thu, 13 Jun 2019 13:53:36 +0100 (BST)
+References: <20190516144733.32399-1-peter.maydell@linaro.org> <20190516144733.32399-4-peter.maydell@linaro.org>
 User-agent: mu4e 1.3.2; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Mark Rutland <mark.rutland@arm.com>, Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/4] hw/arm/boot: Diagnose layouts that put initrd or DTB off the end of RAM
-In-reply-to: <20190516144733.32399-3-peter.maydell@linaro.org>
-Date: Thu, 13 Jun 2019 13:47:59 +0100
-Message-ID: <87imt9ejnk.fsf@zen.linaroharston>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, Mark Rutland <mark.rutland@arm.com>, Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v2 3/4] hw/arm/boot: Avoid placing the initrd on top of the kernel
+In-reply-to: <20190516144733.32399-4-peter.maydell@linaro.org>
+Date: Thu, 13 Jun 2019 13:53:36 +0100
+Message-ID: <87h88teje7.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: THNrQtBu2t4T
+X-TUID: ulfUmx6QN3sj
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> We calculate the locations in memory where we want to put the
-> initrd and the DTB based on the size of the kernel, since they
-> come after it. Add some explicit checks that these aren't off the
-> end of RAM entirely.
+> We currently put the initrd at the smaller of:
+>  * 128MB into RAM
+>  * halfway into the RAM
+> (with the dtb following it).
 >
-> (At the moment the way we calculate the initrd_start means that
-> it can't ever be off the end of RAM, but that will change with
-> the next commit.)
+> However for large kernels this might mean that the kernel
+> overlaps the initrd. For some kinds of kernel (self-decompressing
+> 32-bit kernels, and ELF images with a BSS section at the end)
+> we don't know the exact size, but even there we have a
+> minimum size. Put the initrd at least further into RAM than
+> that. For image formats that can give us an exact kernel size, this
+> will mean that we definitely avoid overlaying kernel and initrd.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
+
 > ---
->  hw/arm/boot.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
+>  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
+>  1 file changed, 20 insertions(+), 14 deletions(-)
 >
 > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 0bb9a7d5b5c..935be3b92a5 100644
+> index 935be3b92a5..e441393fdf5 100644
 > --- a/hw/arm/boot.c
 > +++ b/hw/arm/boot.c
-> @@ -1055,11 +1055,25 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->          error_report("could not load kernel '%s'", info->kernel_filename=
-);
->          exit(1);
+> @@ -999,20 +999,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+>      if (info->nb_cpus =3D=3D 0)
+>          info->nb_cpus =3D 1;
+>
+> -    /*
+> -     * We want to put the initrd far enough into RAM that when the
+> -     * kernel is uncompressed it will not clobber the initrd. However
+> -     * on boards without much RAM we must ensure that we still leave
+> -     * enough room for a decent sized initrd, and on boards with large
+> -     * amounts of RAM we must avoid the initrd being so far up in RAM
+> -     * that it is outside lowmem and inaccessible to the kernel.
+> -     * So for boards with less  than 256MB of RAM we put the initrd
+> -     * halfway into RAM, and for boards with 256MB of RAM or more we put
+> -     * the initrd at 128MB.
+> -     */
+> -    info->initrd_start =3D info->loader_start +
+> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
+> -
+>      /* Assume that raw images are linux kernels, and ELF images are not.=
+  */
+>      kernel_size =3D arm_load_elf(info, &elf_entry, &elf_low_addr,
+>                                 &elf_high_addr, elf_machine, as);
+> @@ -1064,6 +1050,26 @@ static void arm_setup_direct_kernel_boot(ARMCPU *c=
+pu,
 >      }
-> +
-> +    if (kernel_size > info->ram_size) {
-> +        error_report("kernel '%s' is too large to fit in RAM "
-> +                     "(kernel size %d, RAM size %" PRId64 ")",
-> +                     info->kernel_filename, kernel_size, info->ram_size);
-> +        exit(1);
-> +    }
-> +
+>
 >      info->entry =3D entry;
+> +
+> +    /*
+> +     * We want to put the initrd far enough into RAM that when the
+> +     * kernel is uncompressed it will not clobber the initrd. However
+> +     * on boards without much RAM we must ensure that we still leave
+> +     * enough room for a decent sized initrd, and on boards with large
+> +     * amounts of RAM we must avoid the initrd being so far up in RAM
+> +     * that it is outside lowmem and inaccessible to the kernel.
+> +     * So for boards with less  than 256MB of RAM we put the initrd
+> +     * halfway into RAM, and for boards with 256MB of RAM or more we put
+> +     * the initrd at 128MB.
+> +     * We also refuse to put the initrd somewhere that will definitely
+> +     * overlay the kernel we just loaded, though for kernel formats which
+> +     * don't tell us their exact size (eg self-decompressing 32-bit kern=
+els)
+> +     * we might still make a bad choice here.
+> +     */
+> +    info->initrd_start =3D info->loader_start +
+> +        MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
+> +    info->initrd_start =3D TARGET_PAGE_ALIGN(info->initrd_start);
+> +
 >      if (is_linux) {
 >          uint32_t fixupcontext[FIXUP_MAX];
->
->          if (info->initrd_filename) {
-> +
-> +            if (info->initrd_start >=3D ram_end) {
-> +                error_report("not enough space after kernel to load init=
-rd");
-> +                exit(1);
-> +            }
-> +
->              initrd_size =3D load_ramdisk_as(info->initrd_filename,
->                                            info->initrd_start,
->                                            ram_end - info->initrd_start, =
-as);
-> @@ -1075,6 +1089,11 @@ static void arm_setup_direct_kernel_boot(ARMCPU *c=
-pu,
->                               info->initrd_filename);
->                  exit(1);
->              }
-> +            if (info->initrd_start + initrd_size > info->ram_size) {
-> +                error_report("could not load initrd '%s': "
-> +                             "too big to fit into RAM after the kernel",
-> +                             info->initrd_filename);
-> +            }
->          } else {
->              initrd_size =3D 0;
->          }
-> @@ -1110,6 +1129,10 @@ static void arm_setup_direct_kernel_boot(ARMCPU *c=
-pu,
->              /* Place the DTB after the initrd in memory with alignment. =
-*/
->              info->dtb_start =3D QEMU_ALIGN_UP(info->initrd_start + initr=
-d_size,
->                                             align);
-> +            if (info->dtb_start >=3D ram_end) {
-> +                error_report("Not enough space for DTB after kernel/init=
-rd");
-> +                exit(1);
-> +            }
->              fixupcontext[FIXUP_ARGPTR_LO] =3D info->dtb_start;
->              fixupcontext[FIXUP_ARGPTR_HI] =3D info->dtb_start >> 32;
->          } else {
 
 
 --

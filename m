@@ -1,101 +1,98 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp914728wrg;
-        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw/oLBzeidw1XIlpP9m4tOanIIR65MOtC2ViZnOVFfkomkiJiDHpabXmjN3QV3dHBQ1g2ac
-X-Received: by 2002:a37:a643:: with SMTP id p64mr56417378qke.36.1560516582475;
-        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560516582; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp965825wrg;
+        Fri, 14 Jun 2019 06:33:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwAbsUEUDugipfJQDhEmjl6QyrWtlLgW5fvceEeeBjdkCNOU3CZgrU03Ghs4DHgZUOK29sV
+X-Received: by 2002:a37:8002:: with SMTP id b2mr77090893qkd.289.1560519234129;
+        Fri, 14 Jun 2019 06:33:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560519234; cv=none;
         d=google.com; s=arc-20160816;
-        b=MxplyvW08V3TiALdsZ791jPQNye7y2V5a/tT1mU4Kujm6jVkuaBLsHnfOe0n5M/b5y
-         BfJxIHVqoLlEQJRCUjnmPyjYIQzpobchME5QBVnq+7ozybtTf6ntts45FxL2hhbcmNpI
-         xMNmRlw7h3uZFP6Ka7UqL42HgmUqTAqyVQ33Q3fwx6pPNG9WL1jhXq2YnlaG6nNlFlqf
-         S2ZvFR92tmR1G8j4kj3i/iay4aATOdZ7Jgr08pDACIZrwAHJlqF+HRBY14RLb7PE2Q7s
-         Z4ejKq4hTuPL33//B6Ovd4vQGE1ioXOKUSw6vFi5yv1VhXHkrFn7L7hjuzfcW/ztY8Wq
-         vJ2A==
+        b=vR0aVZbvmNRJnoGoKGFRjTvsASmCpUgCfEQVXGF7ZG67XHgx5D2vChzTE0t4DEDcAi
+         umL3Bb1st3OxcavShEWFA+cxPKfFPP9VGMmNO5KEIbvM21e60nziasnTGMG70LfRkpR6
+         +OZZQpT9F6M/pFiXqN2QWVfTRCtFx9luH9up4jUQeYb8SZR5HcTkHTLe8bwbQJTC4A53
+         D0y0s7uE2TuRSlhQIN7VzSmFpqnRMt5FxOvtn8ivoRf87lTjBUEBfigAx+ffPGs+2n3u
+         nBvpy+VGOA0XxE+3jtjT/j3GF2egEsOCFqBdJiruS63zWRFF5r/v4IFZfx8Wx8yHesDj
+         BCfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=AVivPINX2Kzu9XL6OoWJrB2b9xTjP4o+TM2G8HvSIs4=;
-        b=ZpzrJNmC5Zyo7lhixYdijmiXO2Ax8oJsbymivuL5c4wAata6mz8/lyJP+R+JGhUs41
-         KQvbOOYB8VA2w9HRg+yBZpCgFcEZJWutvBCslESKVGQO47YRhFHki0pkwCdwrdbRnv2g
-         SFV7bsvh89Quz9ZzzLfejxrwYKqFVqpjh/hxbo8VUt3quO5GhsTPdTMQMzaObL5qX2ZV
-         KOeRONbKfdfiL3FiMPzrmcoILXdsrnphhWrHNzDQSAQ2J/b0731Qf0B4vEm9QB6Vcw4E
-         YU3Of64D4BbgOaQtEnClWahOnwmcBxWQ9iDO/l4nM+L5GkToOEhkPpx+fmVyOhzWgnjd
-         rVVQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=eD4fQOxTidxCf/Trml/aI+W1F9Z/xmN+T13M5Tu+r+Q=;
+        b=Er3FJJ4TVXPIbUQ/0oaGgveLWSlaYZ349VhPQYpTTVRRsXon1Crjs8UfE3FcTtoOm7
+         ApcZuZpTbDyMwjkgKN9VuxgG3RRk+pbDtX6ksLWzB0Zxr2S4k9ug3o8l96sAoiPCl/j6
+         ST/DkFQvLZCs+xOwA7Qw7E7yavp3XqZ2223qsSfdWIs3TKWrpIhpoehIORUo2pJ9Lz6S
+         yzrk3gi0BgRf/x10D4oXdGTQFXH9TEdY7M1+OdbErxUMcGUCpba7HNDFsCrLUZ2cGJeP
+         +XT4BREEJNv3C81pXc7o++n7DMSDbWylLb+Zf4ASLWnn3rvWWoicb4A56MXM/6m88kBx
+         ZFxg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=qof7EXzq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3si1690782qtq.155.2019.06.14.05.49.42
+        by mx.google.com with ESMTPS id x49si1755796qtb.110.2019.06.14.06.33.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
+        Fri, 14 Jun 2019 06:33:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=qof7EXzq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51250 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51548 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hbleI-0005DP-0g
-	for alex.bennee@linaro.org; Fri, 14 Jun 2019 08:49:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59500)
+	id 1hbmL3-0003Yz-Kk
+	for alex.bennee@linaro.org; Fri, 14 Jun 2019 09:33:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42260)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hblWu-0000TR-MX
- for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:06 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hbmEh-0007a7-G3
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 09:27:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hblWr-0000tF-Uy
- for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:04 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:33533)
+ (envelope-from <peter.maydell@linaro.org>) id 1hbmEf-0004fx-J7
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 09:27:19 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36646)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hblWr-0000sf-Mz
- for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:01 -0400
-Received: by mail-wr1-f67.google.com with SMTP id n9so2414104wru.0
- for <qemu-devel@nongnu.org>; Fri, 14 Jun 2019 05:42:01 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hbmEd-0004df-Mc
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 09:27:17 -0400
+Received: by mail-ot1-x341.google.com with SMTP id r6so2627935oti.3
+ for <qemu-devel@nongnu.org>; Fri, 14 Jun 2019 06:27:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eD4fQOxTidxCf/Trml/aI+W1F9Z/xmN+T13M5Tu+r+Q=;
+ b=qof7EXzq8EJoEYPIHfdfG2CkD1rq8Z+bsoFK1tO56okmj7rTT/mGUeRl42N//194WZ
+ i7LCLKvxtDKPxvbN2bf64BIcRdGUbd48QuHNbbKT+jPgOWXq4Q/ES57JbGdiw5gsW+Cm
+ EzTHFpXHr/sZclI2pTlb9i5b2lZKRYsJpvKCraebiBqvnIh+HL9XsQu5VYtSqP2Ppl6v
+ B/ulF4GjrUVmeYQRfbxrfqq6piD4uAyy8JYo113I50hzvJ7BnBSHxVkJVUhhoSAxgZUE
+ qRNfWopQwmIF+odR6dSBY//IfMf1T1GxybyTfK6EzTdizIPJ4eOokhyjDuztRMeZHr+S
+ sOAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=AVivPINX2Kzu9XL6OoWJrB2b9xTjP4o+TM2G8HvSIs4=;
- b=it9M+U/EIuUf8FeKj6MOUr1fdNba1aEqMt8YZUhKf29X83QuG430yNV8pWMvZyi26/
- hsL2Id8sT11/Od84tX+6JQca985BkE61Ry0hCXjmSrFSgnvxKURC3X62xrCTaKcdKqYa
- i0PRYX3xxSdxtPb9Rcf+irA+PKtexw7ccMxH3dx6OpkujqL2yTJVk2huNcNBk1xPL6h9
- NDJ+uTkn2ftlmXfNyFGir1HaGLM766qScMcYC2F+ANdEcuXa0Livf/UcUQ4gCIiD2LGV
- saJBp67Uqp47/BlAMaMS865XRvkhGPoAwuUQaCHif39A/JJcqma/RPgKCnmNquFLCsW2
- lMKA==
-X-Gm-Message-State: APjAAAVGRk9CdKviNslX4ldk8+jydGcvjBsNxx67t+Ex+taUUZjoHCwy
- DtzmT0vTCG6V3rlmgMruzw7fQA==
-X-Received: by 2002:a5d:4bce:: with SMTP id l14mr4919269wrt.79.1560516120751; 
- Fri, 14 Jun 2019 05:42:00 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id a2sm3884548wmj.9.2019.06.14.05.42.00
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Jun 2019 05:42:00 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190614104457.24703-1-peter.maydell@linaro.org>
- <20190614104457.24703-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <943f65bd-ba2d-7172-a19d-f565ce86410e@redhat.com>
-Date: Fri, 14 Jun 2019 14:41:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eD4fQOxTidxCf/Trml/aI+W1F9Z/xmN+T13M5Tu+r+Q=;
+ b=VpZaKXETYajENpkKFzcOl1DiklnoE+zoPLqGWbw9tp9BaOcV8gkbiE+loUqSU1eHIo
+ VArWWUcpapwbSoJQKV8BJGs4l1KLevthoN0nMgeqOvyqUkBv9InTZh9GFnPJ84HCVVhC
+ YStW/imSBaPOO5Ass6eeOIDkzr+AWhHPdzRv0oZ75lLOHTqI8OM8fr+0zni3Xqor2KIS
+ 8W8O2LhjyFCjUvvoBWmlK4EpgEp06RPEaac7ZZ4qJ9Fa2BqlXRCZl0sIaDfpPaId/R26
+ l4LfXKwYP1ExvMRrC46u8z7jSqVBjYIwmSJLqWmQJWlNIa8cJHrU1+8bJIBEWQIhoN+P
+ s5cQ==
+X-Gm-Message-State: APjAAAUok9STQaorVoniOn//0f3EALz8PykhlePALIWebhgqcc9HWPYd
+ nAhL0opKQtcv48zSFDHUOGAD5zzlMlSZRCAwLClkzw==
+X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr6111331otn.135.1560518832803; 
+ Fri, 14 Jun 2019 06:27:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190614104457.24703-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH 1/2] target/arm: Fix typos in trans
- function prototypes
+References: <20190611142821.3874-1-eric.auger@redhat.com>
+ <20190611142821.3874-3-eric.auger@redhat.com>
+In-Reply-To: <20190611142821.3874-3-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 14 Jun 2019 14:26:19 +0100
+Message-ID: <CAFEAcA_OYdL1TPN+OTdkZ0J2fx_4vFiXCs0fUVdGjkkMURCfZA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-devel] [PATCH 2/2] hw/arm/smmuv3: Implement dummy replay
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,155 +104,73 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jsyxJXueh0cu
+X-TUID: VKrQew+u50RD
 
-On 6/14/19 12:44 PM, Peter Maydell wrote:
-> In several places cut and paste errors meant we were using the wrong
-> type for the 'arg' struct in trans_ functions called by the
-> decodetree decoder, because we were using the _sp version of the
-> struct in the _dp function.  These were harmless, because the two
-> structs were identical and so decodetree made them typedefs of the
-> same underlying structure (and we'd have had a compile error if they
-> were not harmless), but we should clean them up anyway.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Tue, 11 Jun 2019 at 15:29, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> On ARM we currently do not support VFIO-PCI devices protected
+> by the IOMMU. Any attempt to run such use case results in this
+> kind of warning:
+>
+> "-device vfio-pci,host=0004:01:00.0,id=hostdev0,bus=pci.1,addr=0x0:
+> warning: SMMUv3 does not support notification on MAP: device vfio-pci
+> will not function properly".
+>
+> However this is just a warning and this should not prevent the
+> guest from booting in a reasonable amount of time. This does not
+> happen currently.
+>
+> This is due to the fact the VFIO vfio_listener_region_add() calls
+> memory_region_iommu_replay(). As the SMMUv3 IOMMUMemoryRegionClass
+> currently does not implement the replay() callback, the default
+> memory_region_iommu_replay() implementation is used. This latter
+> loops on the whole notifier's range (48b address space), translates
+> each page and call the notifier on the resulting entry. This totally
+> freezes the guest.
+>
+> The Intel IOMMU implements the replay() function which only
+> notifies valid page table entries.
+>
+> In the looming SMMUv3 nested stage VFIO integration, there will be
+> no need to replay() anything as there will not be any shadow page
+> tables: the stage 1 page tables are owned by the guest.
+>
+> So let's implement a void replay() which satisfies both cases.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  target/arm/translate-vfp.inc.c | 28 ++++++++++++++--------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
-> 
-> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-> index 709fc65374d..85187bcc9dc 100644
-> --- a/target/arm/translate-vfp.inc.c
-> +++ b/target/arm/translate-vfp.inc.c
-> @@ -835,7 +835,7 @@ static bool trans_VMOV_64_sp(DisasContext *s, arg_VMOV_64_sp *a)
->      return true;
+>  hw/arm/smmuv3.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index e2f07d2864..1f578365ef 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1489,6 +1489,11 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>      }
 >  }
->  
-> -static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_sp *a)
-> +static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_dp *a)
->  {
->      TCGv_i32 tmp;
->  
-> @@ -910,7 +910,7 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
->      return true;
->  }
->  
-> -static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_sp *a)
-> +static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
->  {
->      uint32_t offset;
->      TCGv_i32 addr;
-> @@ -1500,7 +1500,7 @@ static void gen_VMLA_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
->      tcg_temp_free_i64(tmp);
->  }
->  
-> -static bool trans_VMLA_dp(DisasContext *s, arg_VMLA_sp *a)
-> +static bool trans_VMLA_dp(DisasContext *s, arg_VMLA_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_VMLA_dp, a->vd, a->vn, a->vm, true);
->  }
-> @@ -1538,7 +1538,7 @@ static void gen_VMLS_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
->      tcg_temp_free_i64(tmp);
->  }
->  
-> -static bool trans_VMLS_dp(DisasContext *s, arg_VMLS_sp *a)
-> +static bool trans_VMLS_dp(DisasContext *s, arg_VMLS_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_VMLS_dp, a->vd, a->vn, a->vm, true);
->  }
-> @@ -1580,7 +1580,7 @@ static void gen_VNMLS_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
->      tcg_temp_free_i64(tmp);
->  }
->  
-> -static bool trans_VNMLS_dp(DisasContext *s, arg_VNMLS_sp *a)
-> +static bool trans_VNMLS_dp(DisasContext *s, arg_VNMLS_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_VNMLS_dp, a->vd, a->vn, a->vm, true);
->  }
-> @@ -1614,7 +1614,7 @@ static void gen_VNMLA_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
->      tcg_temp_free_i64(tmp);
->  }
->  
-> -static bool trans_VNMLA_dp(DisasContext *s, arg_VNMLA_sp *a)
-> +static bool trans_VNMLA_dp(DisasContext *s, arg_VNMLA_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_VNMLA_dp, a->vd, a->vn, a->vm, true);
->  }
-> @@ -1624,7 +1624,7 @@ static bool trans_VMUL_sp(DisasContext *s, arg_VMUL_sp *a)
->      return do_vfp_3op_sp(s, gen_helper_vfp_muls, a->vd, a->vn, a->vm, false);
->  }
->  
-> -static bool trans_VMUL_dp(DisasContext *s, arg_VMUL_sp *a)
-> +static bool trans_VMUL_dp(DisasContext *s, arg_VMUL_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_helper_vfp_muld, a->vd, a->vn, a->vm, false);
->  }
-> @@ -1648,7 +1648,7 @@ static void gen_VNMUL_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
->      gen_helper_vfp_negd(vd, vd);
->  }
->  
-> -static bool trans_VNMUL_dp(DisasContext *s, arg_VNMUL_sp *a)
-> +static bool trans_VNMUL_dp(DisasContext *s, arg_VNMUL_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_VNMUL_dp, a->vd, a->vn, a->vm, false);
->  }
-> @@ -1658,7 +1658,7 @@ static bool trans_VADD_sp(DisasContext *s, arg_VADD_sp *a)
->      return do_vfp_3op_sp(s, gen_helper_vfp_adds, a->vd, a->vn, a->vm, false);
->  }
->  
-> -static bool trans_VADD_dp(DisasContext *s, arg_VADD_sp *a)
-> +static bool trans_VADD_dp(DisasContext *s, arg_VADD_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_helper_vfp_addd, a->vd, a->vn, a->vm, false);
->  }
-> @@ -1668,7 +1668,7 @@ static bool trans_VSUB_sp(DisasContext *s, arg_VSUB_sp *a)
->      return do_vfp_3op_sp(s, gen_helper_vfp_subs, a->vd, a->vn, a->vm, false);
->  }
->  
-> -static bool trans_VSUB_dp(DisasContext *s, arg_VSUB_sp *a)
-> +static bool trans_VSUB_dp(DisasContext *s, arg_VSUB_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_helper_vfp_subd, a->vd, a->vn, a->vm, false);
->  }
-> @@ -1678,7 +1678,7 @@ static bool trans_VDIV_sp(DisasContext *s, arg_VDIV_sp *a)
->      return do_vfp_3op_sp(s, gen_helper_vfp_divs, a->vd, a->vn, a->vm, false);
->  }
->  
-> -static bool trans_VDIV_dp(DisasContext *s, arg_VDIV_sp *a)
-> +static bool trans_VDIV_dp(DisasContext *s, arg_VDIV_dp *a)
->  {
->      return do_vfp_3op_dp(s, gen_helper_vfp_divd, a->vd, a->vn, a->vm, false);
->  }
-> @@ -1741,7 +1741,7 @@ static bool trans_VFM_sp(DisasContext *s, arg_VFM_sp *a)
->      return true;
->  }
->  
-> -static bool trans_VFM_dp(DisasContext *s, arg_VFM_sp *a)
-> +static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
->  {
->      /*
->       * VFNMA : fd = muladd(-fd,  fn, fm)
-> @@ -2201,7 +2201,7 @@ static bool trans_VRINTR_sp(DisasContext *s, arg_VRINTR_sp *a)
->      return true;
->  }
->  
-> -static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_sp *a)
-> +static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_dp *a)
->  {
->      TCGv_ptr fpst;
->      TCGv_i64 tmp;
-> @@ -2257,7 +2257,7 @@ static bool trans_VRINTZ_sp(DisasContext *s, arg_VRINTZ_sp *a)
->      return true;
->  }
->  
-> -static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_sp *a)
-> +static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_dp *a)
->  {
->      TCGv_ptr fpst;
->      TCGv_i64 tmp;
-> 
+>
+> +static inline void
+> +smmuv3_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifier *n)
+> +{
+> +}
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+This doesn't seem like a valid implementation of the replay
+method to me. The API doc comment says
+     * The default implementation of memory_region_iommu_replay() is to
+     * call the IOMMU translate method for every page in the address space
+     * with flag == IOMMU_NONE and then call the notifier if translate
+     * returns a valid mapping. If this method is implemented then it
+     * overrides the default behaviour, and must provide the full semantics
+     * of memory_region_iommu_replay(), by calling @notifier for every
+     * translation present in the IOMMU.
+
+This empty function is definitely not going to call the notifier
+for every IOMMU translation...
+
+thanks
+-- PMM

@@ -1,175 +1,191 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp861648wrg;
-        Fri, 14 Jun 2019 04:58:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxrDDpFiN3NCBSxzTlYjT3KbBUVZ/AXEpr4IqgR6hlBC6Mx/GarSz8E/4mOciHhAYiqrCYl
-X-Received: by 2002:a37:5f82:: with SMTP id t124mr8550549qkb.180.1560513539230;
-        Fri, 14 Jun 2019 04:58:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560513539; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp875048wrg;
+        Fri, 14 Jun 2019 05:10:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxdWH0MdJScHX5HKv9MA6msp9IbUxFncMCRpbdrCjC8VfdHHxzxZ9bpRa8mUhbPRBJ+iVpt
+X-Received: by 2002:a0c:af36:: with SMTP id i51mr6108696qvc.128.1560514242378;
+        Fri, 14 Jun 2019 05:10:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560514242; cv=none;
         d=google.com; s=arc-20160816;
-        b=yM8lV5a2cy1GIhPGxlpdlXq1Yz2OECmfwWMJWWi+pPsgae/lFLLnPZgmKKJxw1xBHa
-         d/p/PtItw31OEziuuaTBVQdhW/vZ4D4Ni01qTqL4lQcXkt08OU72FChTrS1wDwapjpmS
-         Z1UZBzCTBwGoKbDO5S3+J9UA7c4PUuLh/YNyLSosgHc0djKV4nq9i3CLAc07Ddz19oCm
-         EXS61KeTHcMQ83J6LgAgFQ+ioWB7vXco2zaJyZ9c8v/uj9gbwmNljQmbQf/GyL80jagc
-         J/KucXYM/Bm9n2l6IJoupVBKPdU48PbNbIt2ApNc0BVLz+uuok1mauZ/CEhq4I1A4fcx
-         DXwA==
+        b=Cn+JxttE9pRq/ZA+pHOa3jsg125JCJ5uKTyBpdKCpUnZxBS5UA3EQqdx91PvdjAHCT
+         EKW44cb5w1EFuMDm2Mx6vbbtR6Y3hfDlapQ2zamv50KEBtIqx/JXGlm528chrnXYUsDw
+         2XjykQIEFkvDbmpLfouOYgiCO6skrkRI+TelJbp+l4VgWSYaJMQFCvH+zLOz9E6VYLjy
+         p5UYRz56nbiWrPCAbcLvKthbt/bUeu7OIE3OeoA2HYftNYm2XdKfhV3g2qf6N0FNlpQ7
+         6I07E4+mlMWK0udBPUhxY546TTb8B04+iRM0ZVxgj6Y2VjVwiXk2WYHFLPD8hG/Qv0T2
+         ramQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=cy9EMq50fFArM3s6cAX5FZOSjWShHnmKSaVR94zfg18=;
-        b=nDdvCUqgaX0LJErSrx8A3Mp7ugI3puYEjbeGRIEqEvCa9pjEpLhIWT3jK4+67nufYV
-         HWU9IvTc1demp5WSpRqaYVrFLXJEC87SoafhU+frT2tmBxvJmc/+taIv/CCa58RdtB9U
-         ghgW0vPb5vUqKbUNQBBEXX8BVDEjYoa/JVD2LnKTPl0UrHfVCYGIN53qiDxeexxkNz5D
-         FI9UmB4pWplj5z6GvvxKnUxwUheuznV/0XgZ+HmfzUV5qshg7hoolcX8MesT+v66RymA
-         gvp9W+9qavGBy6IglnANveYoZam9sgD4S5OWZs9SCK1f3RCd51R3efHJ4pQyQGt4SHGN
-         cW5Q==
+        bh=q2LCwW1EAwlmAlxCDEUJLuF6pHvmyd7YWfAzgjyEm5Y=;
+        b=KG8GmDlOxpXD7gOxcfZPEs7sGyxSa0BiDMCYpemG1cJNSpjy7OyF8Nh+S/z2ZrhQ0U
+         qApqGKJIJJF9Jzx4VgLytMLGmYT151o235ia+fryhH38O7/f7qWr5eErp4nCnvT6IpnG
+         v9yg+uP16hJPUeGNm16fWDSG7LTaghi2kf1M8hb/Ge9RAmy8FOpQZPWhx7FS1z3/quPe
+         rd0iG2OArQa17RWNYha+gYF5zm1KE3buTmzl6xixTv6syV4BRetht+eMSAXwzy5ZcXo6
+         j8/af3c8TvcEybBeDujhBeTxi06LC9/DuAfQMzhKx+ZpWc8z2izrVuxVZT/RrZJRzPBd
+         u6dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8si1551050qtm.129.2019.06.14.04.58.59
+        by mx.google.com with ESMTPS id i22si1579024qvh.223.2019.06.14.05.10.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2019 04:58:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jun 2019 05:10:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50480 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50754 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hbkrC-00046g-O2
-	for alex.bennee@linaro.org; Fri, 14 Jun 2019 07:58:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46683)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hbl2X-0001T9-TP
+	for alex.bennee@linaro.org; Fri, 14 Jun 2019 08:10:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49905)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1hbkik-0006Ej-GO
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 07:50:15 -0400
+ (envelope-from <clg@kaod.org>) id 1hbkuP-0007Wf-Tb
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:02:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hbkii-00020U-WD
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 07:50:14 -0400
-Received: from 14.mo5.mail-out.ovh.net ([188.165.51.82]:39590)
+ (envelope-from <clg@kaod.org>) id 1hbkuO-0004XT-Mn
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:02:17 -0400
+Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:55630)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hbkii-0001kE-G8
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 07:50:12 -0400
-Received: from player731.ha.ovh.net (unknown [10.109.143.238])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 17EA123ED28
- for <qemu-arm@nongnu.org>; Fri, 14 Jun 2019 13:49:59 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hbkuM-0004TL-TE
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:02:15 -0400
+Received: from player756.ha.ovh.net (unknown [10.109.146.86])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id 18335136678
+ for <qemu-devel@nongnu.org>; Fri, 14 Jun 2019 14:02:10 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
  (Authenticated sender: clg@kaod.org)
- by player731.ha.ovh.net (Postfix) with ESMTPSA id 405C36BC95FB;
- Fri, 14 Jun 2019 11:49:53 +0000 (UTC)
+ by player756.ha.ovh.net (Postfix) with ESMTPSA id E3CD3606A805;
+ Fri, 14 Jun 2019 12:02:04 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20190525151241.5017-1-clg@kaod.org>
- <20190525151241.5017-14-clg@kaod.org>
- <777b7a86-ce5e-d218-5848-c8f4b37a0bf4@redhat.com>
+ <20190525151241.5017-19-clg@kaod.org>
+ <f3b3948f-8d24-fb8c-0b65-8fe08019a077@redhat.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ce552c20-7dfa-7085-b90d-e3c2d33f5bda@kaod.org>
-Date: Fri, 14 Jun 2019 13:49:53 +0200
+Message-ID: <b4401eaf-9898-8c3e-3beb-f550edb83228@kaod.org>
+Date: Fri, 14 Jun 2019 14:02:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <777b7a86-ce5e-d218-5848-c8f4b37a0bf4@redhat.com>
+In-Reply-To: <f3b3948f-8d24-fb8c-0b65-8fe08019a077@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 9936911105575259091
+X-Ovh-Tracer-Id: 10142669311310400467
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrudeiuddggeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrudeiuddggeeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.165.51.82
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 13/19] aspeed/smc: add a
- 'sdram_base' propertie
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 46.105.76.148
+Subject: Re: [Qemu-devel] [PATCH 18/19] aspeed/smc: inject errors in DMA
+ checksum
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HgacdHUfOeeJ
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WvCuexd44tha
 
-On 13/06/2019 16:32, Philippe Mathieu-Daud=C3=A9 wrote:
+On 13/06/2019 16:31, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi C=C3=A9dric,
+>=20
 > On 5/25/19 5:12 PM, C=C3=A9dric Le Goater wrote:
->> The DRAM address of a DMA transaction depends on the DRAM base address
->> of the SoC. Inform the SMC controller model of this value.
->=20
-> I'd reorder this one previous patch #16 "aspeed/smc: add support for
-> DMAs" where you start to use sdram_base.
->=20
-> Regardless,
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-
-done.
-
-Thanks,
-
-C.=20
-
->=20
+>> Emulate read errors in the DMA Checksum Register for high frequencies
+>> and optimistic settings of the Read Timing Compensation Register. This
+>> will help in tuning the SPI timing calibration algorithm.
+>>
+>> The values below are those to expect from the first flash device of
+>> the FMC controller of a palmetto-bmc machine.
 >>
 >> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 >> ---
->>  include/hw/ssi/aspeed_smc.h | 3 +++
->>  hw/arm/aspeed_soc.c         | 6 ++++++
->>  hw/ssi/aspeed_smc.c         | 1 +
->>  3 files changed, 10 insertions(+)
+>>  hw/ssi/aspeed_smc.c | 29 +++++++++++++++++++++++++++++
+>>  1 file changed, 29 insertions(+)
 >>
->> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
->> index 3b1e7fce6c86..591279ba1f43 100644
->> --- a/include/hw/ssi/aspeed_smc.h
->> +++ b/include/hw/ssi/aspeed_smc.h
->> @@ -97,6 +97,9 @@ typedef struct AspeedSMCState {
->>      uint8_t r_timings;
->>      uint8_t conf_enable_w0;
->> =20
->> +    /* for DMA support */
->> +    uint64_t sdram_base;
->> +
->>      AspeedSMCFlash *flashes;
->> =20
->>      uint8_t snoop_index;
->> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->> index 8cfe9e9515ed..65fbac896c85 100644
->> --- a/hw/arm/aspeed_soc.c
->> +++ b/hw/arm/aspeed_soc.c
->> @@ -326,6 +326,12 @@ static void aspeed_soc_realize(DeviceState *dev, =
-Error **errp)
->>                         aspeed_soc_get_irq(s, ASPEED_I2C));
->> =20
->>      /* FMC, The number of CS is set at the board level */
->> +    object_property_set_int(OBJECT(&s->fmc), sc->info->memmap[ASPEED_=
-SDRAM],
->> +                            "sdram-base", &err);
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->>      object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err)=
-;
->>      if (err) {
->>          error_propagate(errp, err);
 >> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->> index f1e66870d71f..4ff12f7b27fc 100644
+>> index 406c30c60b3f..4c162912cf62 100644
 >> --- a/hw/ssi/aspeed_smc.c
 >> +++ b/hw/ssi/aspeed_smc.c
->> @@ -912,6 +912,7 @@ static const VMStateDescription vmstate_aspeed_smc=
- =3D {
+>> @@ -866,6 +866,30 @@ static void aspeed_smc_dma_calibration(AspeedSMCS=
+tate *s)
+>>      s->regs[s->r_ctrl0 + cs] |=3D CE_CTRL_CLOCK_FREQ(hclk_div);
+>>  }
 >> =20
->>  static Property aspeed_smc_properties[] =3D {
->>      DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
->> +    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
->>      DEFINE_PROP_END_OF_LIST(),
->>  };
+>=20
+> Can you add a comment (like the patch description) here?
+
+yes. done.
+=20
+>> +static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+>> +{
+>> +    uint8_t delay =3D
+>> +        (s->regs[R_DMA_CTRL] >> DMA_CTRL_DELAY_SHIFT) & DMA_CTRL_DELA=
+Y_MASK;
+>> +    uint8_t hclk_mask =3D
+>> +        (s->regs[R_DMA_CTRL] >> DMA_CTRL_FREQ_SHIFT) & DMA_CTRL_FREQ_=
+MASK;
+>> +
+>> +    /*
+>> +     * Typical values of a palmetto-bmc machine.
+>> +     */
+>> +    switch (aspeed_smc_hclk_divisor(hclk_mask)) {
+>> +    case 4 ... 16:
+>> +        return false;
+>> +    case 3: /* at least one HCLK cycle delay */
+>> +        return (delay & 0x7) < 1;
+>> +    case 2: /* at least two HCLK cycle delay */
+>> +        return (delay & 0x7) < 2;
+>> +    case 1: /* (> 100MHz) is above the max freq of the controller */
+>> +        return true;
+>> +    default:
+>> +        g_assert_not_reached();
+>> +    }
+>> +}
+>> +
+>>  /*
+>>   * Accumulate the result of the reads to provide a checksum that will
+>>   * be used to validate the read timing settings.
+>> @@ -903,6 +927,11 @@ static void aspeed_smc_dma_checksum(AspeedSMCStat=
+e *s)
+>>          s->regs[R_DMA_FLASH_ADDR] +=3D 4;
+>>          s->regs[R_DMA_LEN] -=3D 4;
+>>      }
+>> +
+>> +    if (aspeed_smc_inject_read_failure(s)) {
+>=20
+> So this model real world where noise eventually triggers errors. Don't
+> we want this to be enable by the user (or a QMP command)?
+
+I can add a property at the device model level to trigger this behavior.
+Such as :
+
+   -global driver=3Daspeed.smc,property=3Dtiming,value=3Dtrue
+
+timing if defined would provide the maximum clock and delay settings.
+
+Are there any other examples in QEMU ?=20
+
+Thanks,
+
+C.
+
+>=20
+>> +        s->regs[R_DMA_CHECKSUM] =3D 0xbadc0de;
+>> +    }
+>> +
+>>  }
 >> =20
+>>  static void aspeed_smc_dma_rw(AspeedSMCState *s)
 >>
 

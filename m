@@ -1,143 +1,261 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp795509wrg;
-        Fri, 14 Jun 2019 03:46:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw4r0ED+OWyf80RPF7kB3Kh4BnPwiuHf0UHcUxPnPXXkE5Y88oiWSgcvgdRFjHyqVacuLUs
-X-Received: by 2002:ac8:1751:: with SMTP id u17mr66936321qtk.305.1560509210971;
-        Fri, 14 Jun 2019 03:46:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560509210; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp914728wrg;
+        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw/oLBzeidw1XIlpP9m4tOanIIR65MOtC2ViZnOVFfkomkiJiDHpabXmjN3QV3dHBQ1g2ac
+X-Received: by 2002:a37:a643:: with SMTP id p64mr56417378qke.36.1560516582475;
+        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560516582; cv=none;
         d=google.com; s=arc-20160816;
-        b=my5XjOGoFZW2aSD/8hQrlvOQEM+lO5tAy2fJWMniPio9Le1cbnZotLC/bZ/HsnToGm
-         nKdbzvcmzUpxrumrZstXStMs2jlBNwa9scZffocSpuPCbvY+GSaKQ5uPsZkr6pxbb1bW
-         CnDAQq5TJmDYEj6jyQEJQOm3KoTbLLR7QgoF3g287eEgri/J1x8lbx5cXJ+aB/lQ0cif
-         r9MnZ5QFHk7yfNdjGOmVehW+RjvIEUODx6EI745soWcNa0OtBJMm+689f7T08bnM42Jz
-         kvINwYvYHYTaFHwPDjIJWZTZs6Rl+EukylWrZEKa1IWij7exC7B5Dr+URySaE3WMgueo
-         5Ohw==
+        b=MxplyvW08V3TiALdsZ791jPQNye7y2V5a/tT1mU4Kujm6jVkuaBLsHnfOe0n5M/b5y
+         BfJxIHVqoLlEQJRCUjnmPyjYIQzpobchME5QBVnq+7ozybtTf6ntts45FxL2hhbcmNpI
+         xMNmRlw7h3uZFP6Ka7UqL42HgmUqTAqyVQ33Q3fwx6pPNG9WL1jhXq2YnlaG6nNlFlqf
+         S2ZvFR92tmR1G8j4kj3i/iay4aATOdZ7Jgr08pDACIZrwAHJlqF+HRBY14RLb7PE2Q7s
+         Z4ejKq4hTuPL33//B6Ovd4vQGE1ioXOKUSw6vFi5yv1VhXHkrFn7L7hjuzfcW/ztY8Wq
+         vJ2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=G4iI4xbE++btRAKqNuYcXwMPUFwpVIy3rzD2DOH8RuI=;
-        b=ffHCzZV43e96zbP4KrYJMkCVoXKKFZxumdL3YSAkjHAvHzeciORsUs6EYkLx9mWF/G
-         rCiOj2jq1kiN6dRWBChLTuxe62CQBlzxlzP5SYKeKugwg+XUhr9hpsjvpffYdNYjusFa
-         URie9C6yuhcecoYs0+h5gySNv4ynjI0T4TLsJz6sz8oqnhhS/YEWHZGUVBE9FCTXueqm
-         05obe9GSc8oobd4YNU7NRHZ1ODFuPUxohV/N6ZuIxBDtEenFSimaNU8n8Dn8Le4gMZjl
-         5xIj1/mdoTjAbYI4wUkONpDCxUIHlIE8wDi3YoEjRc78R/l8FQygUr++ofwZ41lxvt79
-         nc9A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=AVivPINX2Kzu9XL6OoWJrB2b9xTjP4o+TM2G8HvSIs4=;
+        b=ZpzrJNmC5Zyo7lhixYdijmiXO2Ax8oJsbymivuL5c4wAata6mz8/lyJP+R+JGhUs41
+         KQvbOOYB8VA2w9HRg+yBZpCgFcEZJWutvBCslESKVGQO47YRhFHki0pkwCdwrdbRnv2g
+         SFV7bsvh89Quz9ZzzLfejxrwYKqFVqpjh/hxbo8VUt3quO5GhsTPdTMQMzaObL5qX2ZV
+         KOeRONbKfdfiL3FiMPzrmcoILXdsrnphhWrHNzDQSAQ2J/b0731Qf0B4vEm9QB6Vcw4E
+         YU3Of64D4BbgOaQtEnClWahOnwmcBxWQ9iDO/l4nM+L5GkToOEhkPpx+fmVyOhzWgnjd
+         rVVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ufr3j0Ge;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 28si1539269qtx.181.2019.06.14.03.46.50
+        by mx.google.com with ESMTPS id j3si1690782qtq.155.2019.06.14.05.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2019 03:46:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jun 2019 05:49:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ufr3j0Ge;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50102 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51250 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hbjjO-0007wl-9h
-	for alex.bennee@linaro.org; Fri, 14 Jun 2019 06:46:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57619)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hbleI-0005DP-0g
+	for alex.bennee@linaro.org; Fri, 14 Jun 2019 08:49:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59500)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hbjhe-0007wY-80
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 06:45:03 -0400
+ (envelope-from <philmd@redhat.com>) id 1hblWu-0000TR-MX
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hbjhd-00075W-96
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 06:45:02 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:37964)
+ (envelope-from <philmd@redhat.com>) id 1hblWr-0000tF-Uy
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:04 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:33533)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hbjhc-00074U-R1
- for qemu-arm@nongnu.org; Fri, 14 Jun 2019 06:45:01 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id s15so1822500wmj.3
- for <qemu-arm@nongnu.org>; Fri, 14 Jun 2019 03:45:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=G4iI4xbE++btRAKqNuYcXwMPUFwpVIy3rzD2DOH8RuI=;
- b=ufr3j0GetZWdwGkwSW8r8oA2ZQxw6qaTnohIUoNWl2sVT8tbRL6l3zJ3rOPTDSr1CQ
- JBuz2HvEUj+bmLVVWSxJijMdBxldd629mMY/w+4hLT1c0Bz+7trW9QVShH3CGySf8lZs
- Rfbtem3Jv8n9o9zqWhQMlqO62yj7sQb52qf2PB9p9uVz5zSu3QTn6vaxz5OcZwCSymdJ
- ddgbC9ia6j97+wNGtWtN4yY2jCSkqwqP1QGpMdtPFxkQscnZ8rfFhKsRRzaOYfxanjpg
- UpIaTLesalFbF/vHD2mlQDxy9j6Iab5qQZCtiOnKExSZrspyMrCJOP2wgkIUcgaSJlj+
- Z9eQ==
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hblWr-0000sf-Mz
+ for qemu-devel@nongnu.org; Fri, 14 Jun 2019 08:42:01 -0400
+Received: by mail-wr1-f67.google.com with SMTP id n9so2414104wru.0
+ for <qemu-devel@nongnu.org>; Fri, 14 Jun 2019 05:42:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=G4iI4xbE++btRAKqNuYcXwMPUFwpVIy3rzD2DOH8RuI=;
- b=PDkt7soCel21WDNWGW9sRDtjMqqCFVKeLzuJ6V8iSghxCZJMyGFjkXKeJOGTwckimD
- vGkmUm0MkRLkgAov8jYONtcUgluubVgjE2MKXBbvZZwJmYTPiOiHXdidCcLr9/J7mc90
- pbkFbBoONi0mifAgGgcLJAKdmt49w2y7xHipn0M+xXPp8nSjeb3NrGyybZt1pbcGMpDq
- jwNxkmEwcmdttzKR91Ku4SxS7MH7N19jz84ofKL6hhOI6BECRPi0tI+b3GP3uHUURXcm
- CWVp5ejFQhje/9MGGFmnrMyR4nALjrDzsneORRu+agGnu6uV3jw3OYdFaBBY4ki4ATVH
- /l5Q==
-X-Gm-Message-State: APjAAAUcUCGNuNODSOl2v7sEDJBzuVUlAWfV0koWgPP7c+bCN1eoeWdJ
- 2MWcbOlQDnne06RMyQGQDEDJISm/BwZqnA==
-X-Received: by 2002:a1c:f512:: with SMTP id t18mr7301111wmh.47.1560509099255; 
- Fri, 14 Jun 2019 03:44:59 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y24sm2091238wmi.10.2019.06.14.03.44.58
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Jun 2019 03:44:58 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Fri, 14 Jun 2019 11:44:55 +0100
-Message-Id: <20190614104457.24703-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ bh=AVivPINX2Kzu9XL6OoWJrB2b9xTjP4o+TM2G8HvSIs4=;
+ b=it9M+U/EIuUf8FeKj6MOUr1fdNba1aEqMt8YZUhKf29X83QuG430yNV8pWMvZyi26/
+ hsL2Id8sT11/Od84tX+6JQca985BkE61Ry0hCXjmSrFSgnvxKURC3X62xrCTaKcdKqYa
+ i0PRYX3xxSdxtPb9Rcf+irA+PKtexw7ccMxH3dx6OpkujqL2yTJVk2huNcNBk1xPL6h9
+ NDJ+uTkn2ftlmXfNyFGir1HaGLM766qScMcYC2F+ANdEcuXa0Livf/UcUQ4gCIiD2LGV
+ saJBp67Uqp47/BlAMaMS865XRvkhGPoAwuUQaCHif39A/JJcqma/RPgKCnmNquFLCsW2
+ lMKA==
+X-Gm-Message-State: APjAAAVGRk9CdKviNslX4ldk8+jydGcvjBsNxx67t+Ex+taUUZjoHCwy
+ DtzmT0vTCG6V3rlmgMruzw7fQA==
+X-Received: by 2002:a5d:4bce:: with SMTP id l14mr4919269wrt.79.1560516120751; 
+ Fri, 14 Jun 2019 05:42:00 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id a2sm3884548wmj.9.2019.06.14.05.42.00
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Fri, 14 Jun 2019 05:42:00 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190614104457.24703-1-peter.maydell@linaro.org>
+ <20190614104457.24703-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <943f65bd-ba2d-7172-a19d-f565ce86410e@redhat.com>
+Date: Fri, 14 Jun 2019 14:41:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190614104457.24703-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::32a
-Subject: [Qemu-arm] [PATCH 0/2] target/arm: Support single-precision only
- FPUs
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-devel] [PATCH 1/2] target/arm: Fix typos in trans
+ function prototypes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bVXzvwJPAiH7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jsyxJXueh0cu
 
-The Arm architecture permits FPUs which have only single-precision
-support, not double-precision; Cortex-M4 and Cortex-M33 are
-both like that. Now that we've refactored the VFP code to use
-decodetree it's fairly easy to add the necessary checks on the
-MVFR0 FPDP field so that we UNDEF any double-precision instructions
-on CPUs like this.
+On 6/14/19 12:44 PM, Peter Maydell wrote:
+> In several places cut and paste errors meant we were using the wrong
+> type for the 'arg' struct in trans_ functions called by the
+> decodetree decoder, because we were using the _sp version of the
+> struct in the _dp function.  These were harmless, because the two
+> structs were identical and so decodetree made them typedefs of the
+> same underlying structure (and we'd have had a compile error if they
+> were not harmless), but we should clean them up anyway.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate-vfp.inc.c | 28 ++++++++++++++--------------
+>  1 file changed, 14 insertions(+), 14 deletions(-)
+> 
+> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
+> index 709fc65374d..85187bcc9dc 100644
+> --- a/target/arm/translate-vfp.inc.c
+> +++ b/target/arm/translate-vfp.inc.c
+> @@ -835,7 +835,7 @@ static bool trans_VMOV_64_sp(DisasContext *s, arg_VMOV_64_sp *a)
+>      return true;
+>  }
+>  
+> -static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_sp *a)
+> +static bool trans_VMOV_64_dp(DisasContext *s, arg_VMOV_64_dp *a)
+>  {
+>      TCGv_i32 tmp;
+>  
+> @@ -910,7 +910,7 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
+>      return true;
+>  }
+>  
+> -static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_sp *a)
+> +static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
+>  {
+>      uint32_t offset;
+>      TCGv_i32 addr;
+> @@ -1500,7 +1500,7 @@ static void gen_VMLA_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
+>      tcg_temp_free_i64(tmp);
+>  }
+>  
+> -static bool trans_VMLA_dp(DisasContext *s, arg_VMLA_sp *a)
+> +static bool trans_VMLA_dp(DisasContext *s, arg_VMLA_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_VMLA_dp, a->vd, a->vn, a->vm, true);
+>  }
+> @@ -1538,7 +1538,7 @@ static void gen_VMLS_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
+>      tcg_temp_free_i64(tmp);
+>  }
+>  
+> -static bool trans_VMLS_dp(DisasContext *s, arg_VMLS_sp *a)
+> +static bool trans_VMLS_dp(DisasContext *s, arg_VMLS_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_VMLS_dp, a->vd, a->vn, a->vm, true);
+>  }
+> @@ -1580,7 +1580,7 @@ static void gen_VNMLS_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
+>      tcg_temp_free_i64(tmp);
+>  }
+>  
+> -static bool trans_VNMLS_dp(DisasContext *s, arg_VNMLS_sp *a)
+> +static bool trans_VNMLS_dp(DisasContext *s, arg_VNMLS_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_VNMLS_dp, a->vd, a->vn, a->vm, true);
+>  }
+> @@ -1614,7 +1614,7 @@ static void gen_VNMLA_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
+>      tcg_temp_free_i64(tmp);
+>  }
+>  
+> -static bool trans_VNMLA_dp(DisasContext *s, arg_VNMLA_sp *a)
+> +static bool trans_VNMLA_dp(DisasContext *s, arg_VNMLA_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_VNMLA_dp, a->vd, a->vn, a->vm, true);
+>  }
+> @@ -1624,7 +1624,7 @@ static bool trans_VMUL_sp(DisasContext *s, arg_VMUL_sp *a)
+>      return do_vfp_3op_sp(s, gen_helper_vfp_muls, a->vd, a->vn, a->vm, false);
+>  }
+>  
+> -static bool trans_VMUL_dp(DisasContext *s, arg_VMUL_sp *a)
+> +static bool trans_VMUL_dp(DisasContext *s, arg_VMUL_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_helper_vfp_muld, a->vd, a->vn, a->vm, false);
+>  }
+> @@ -1648,7 +1648,7 @@ static void gen_VNMUL_dp(TCGv_i64 vd, TCGv_i64 vn, TCGv_i64 vm, TCGv_ptr fpst)
+>      gen_helper_vfp_negd(vd, vd);
+>  }
+>  
+> -static bool trans_VNMUL_dp(DisasContext *s, arg_VNMUL_sp *a)
+> +static bool trans_VNMUL_dp(DisasContext *s, arg_VNMUL_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_VNMUL_dp, a->vd, a->vn, a->vm, false);
+>  }
+> @@ -1658,7 +1658,7 @@ static bool trans_VADD_sp(DisasContext *s, arg_VADD_sp *a)
+>      return do_vfp_3op_sp(s, gen_helper_vfp_adds, a->vd, a->vn, a->vm, false);
+>  }
+>  
+> -static bool trans_VADD_dp(DisasContext *s, arg_VADD_sp *a)
+> +static bool trans_VADD_dp(DisasContext *s, arg_VADD_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_helper_vfp_addd, a->vd, a->vn, a->vm, false);
+>  }
+> @@ -1668,7 +1668,7 @@ static bool trans_VSUB_sp(DisasContext *s, arg_VSUB_sp *a)
+>      return do_vfp_3op_sp(s, gen_helper_vfp_subs, a->vd, a->vn, a->vm, false);
+>  }
+>  
+> -static bool trans_VSUB_dp(DisasContext *s, arg_VSUB_sp *a)
+> +static bool trans_VSUB_dp(DisasContext *s, arg_VSUB_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_helper_vfp_subd, a->vd, a->vn, a->vm, false);
+>  }
+> @@ -1678,7 +1678,7 @@ static bool trans_VDIV_sp(DisasContext *s, arg_VDIV_sp *a)
+>      return do_vfp_3op_sp(s, gen_helper_vfp_divs, a->vd, a->vn, a->vm, false);
+>  }
+>  
+> -static bool trans_VDIV_dp(DisasContext *s, arg_VDIV_sp *a)
+> +static bool trans_VDIV_dp(DisasContext *s, arg_VDIV_dp *a)
+>  {
+>      return do_vfp_3op_dp(s, gen_helper_vfp_divd, a->vd, a->vn, a->vm, false);
+>  }
+> @@ -1741,7 +1741,7 @@ static bool trans_VFM_sp(DisasContext *s, arg_VFM_sp *a)
+>      return true;
+>  }
+>  
+> -static bool trans_VFM_dp(DisasContext *s, arg_VFM_sp *a)
+> +static bool trans_VFM_dp(DisasContext *s, arg_VFM_dp *a)
+>  {
+>      /*
+>       * VFNMA : fd = muladd(-fd,  fn, fm)
+> @@ -2201,7 +2201,7 @@ static bool trans_VRINTR_sp(DisasContext *s, arg_VRINTR_sp *a)
+>      return true;
+>  }
+>  
+> -static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_sp *a)
+> +static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_dp *a)
+>  {
+>      TCGv_ptr fpst;
+>      TCGv_i64 tmp;
+> @@ -2257,7 +2257,7 @@ static bool trans_VRINTZ_sp(DisasContext *s, arg_VRINTZ_sp *a)
+>      return true;
+>  }
+>  
+> -static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_sp *a)
+> +static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_dp *a)
+>  {
+>      TCGv_ptr fpst;
+>      TCGv_i64 tmp;
+> 
 
-The first patch fixes some no-visible-effect typos in the
-names of struct arguments to some functions (caused by
-cut-n-paste errors); not really related but I noticed them
-while I was working on this.
-
-thanks
--- PMM
-
-Peter Maydell (2):
-  target/arm: Fix typos in trans function prototypes
-  target/arm: Only implement doubles if the FPU supports them
-
- target/arm/cpu.h               |   6 ++
- target/arm/translate-vfp.inc.c | 112 ++++++++++++++++++++++++++++-----
- 2 files changed, 104 insertions(+), 14 deletions(-)
-
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

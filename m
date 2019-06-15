@@ -1,131 +1,128 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp420029wrg;
-        Sat, 15 Jun 2019 03:26:31 -0700 (PDT)
-X-Received: by 2002:a5d:4a8d:: with SMTP id o13mr33861985wrq.350.1560594391092;
-        Sat, 15 Jun 2019 03:26:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560594391; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp674883wrg;
+        Sat, 15 Jun 2019 08:44:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcdhBkY+DlXvaHCTU3daRdHlw3NcCz7nCf4lJVyd1HYSXWwvFP/z8S+gcFePV5y6WRK9AN
+X-Received: by 2002:aed:39e2:: with SMTP id m89mr12539362qte.349.1560613464294;
+        Sat, 15 Jun 2019 08:44:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560613464; cv=none;
         d=google.com; s=arc-20160816;
-        b=vjLU5V4hU4I0QU+DCU0Cxvnwq6eIrLQNXIKD7SIRYb8tZndqokAibdETZ0hp61MUcL
-         rZzF26AUB5CmAFNezVl9H30cDL7IwXoHEU7k+x1QrvKpA+WC7h2XSvBXP3pFe9/N1jKO
-         wsbAzCJBLLQKKgwDiIR957WxXCxgTnWHoFIkHlKFufS/3k4x3XIUnmAY7dHvoXSW8t/p
-         X5cpMzCuvUtI2gYhVpxepORWKIDnvZnvsb09NhSEGybGc/5LA6e/M4IrvcDm3YCUbXG8
-         4nqnPm6UxJ4LG6cEmSLgymebVM9Z2pQci1JHuxxM3G7zcd8oYwgrah+zcxHzc1HRNW+V
-         Mbbw==
+        b=1IGvEWS0NiIxVX5Bi4oZM7pUpVvcFhhliL0+z0Bl1+t3r891YbX1ObPZNkFtFen90g
+         Zr0ly6xO+zS/p05/6+iNwE09pVV4J4Q0E9jRnqNNsymCrNfUG3KURhAeXmC+TRQc07dT
+         yMgEXyYVyFrQ8fTc1CB5s/Mk0FSBca31mqTIhVZU1lXIMIJdzM9Wvy5fZ7O3JyW/z4rz
+         ZgVDxxUBA4YKyjXNJB3w74lEGDEznVH4TSgrQBKSbbIBebmh4M2pThkwFCVuLhg84taP
+         bOt++D0XtDw27I6ErAKNFxOIFBCAMVVWjs8LENaba6DUMWTHhB+J8hy11xRUwxzW2fDg
+         qGBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=we76Cor5YuNEJsNdw3qAWVmIkcWTsQUYt8rM5dM4Acw=;
-        b=TCSAKqjhFs6+OO2tqqjo8LRTkUjFLv7IEx6X45LSdMgJjbW/DX77j97YPXnoWVWlHF
-         gJPg5fdNJ+codWE5HEJHFNFOZSpKre3T4Mv/qMPXQ3wTF19yizVB56bDl6ImwBs5VmzC
-         nD8LMdBkevY+0yloC99ThJVY4pHtQq8vwg0SFRBudd8l16ts+xldfOCQTKgNw4Jrx+co
-         idzLhfK2qfN7YCqv8dtV6FzTBbQsk6YsvSzVSPCycGpCs8dAXRzxOs5w7tPukBME0gMa
-         LvlEC1lVzX4I8iVLS/usw+iocSGrONaoz1g8TmkJ6HqW1+JDl7+qNeheRe/NZ401TooL
-         kSAw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=lZErC6+hUi0QqOCauo3jRzCSZbMvxRqSjS/rIUv+r5w=;
+        b=OxS/+MJchNiUPFPu5SEof+JVz2xmjL2u1506Gueks+tKk/fU9FNKeKxHvSlljxONy9
+         f3Dl8S+cGWWphO3Jxpll+9FXjkX8kAduetAoU2lCCEh6e9Uqe8mkXmXdDuDgEQyTVvkS
+         0AsCs70Jny7qzl6IUI/dXsDKPpyKfd/ReW5oi7JWcl4ewkoGTtI6fv6ATz9HO1l3s0Yc
+         EhkZor5+ZUn66hYlZ0iyIWNVkQ6w2FskBwkOVTDJQFAZoBLdkH7KlEUgnOah7kmFY+e8
+         dQeR9e3WGex/+ZvJ6MF1Oh7oqIBA/BzxIFjNh1TRcKEa2DuEkT5SEM+IvjSeve7ga+eq
+         +4+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x186sor3164087wmg.25.2019.06.15.03.26.30
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q63si4482280qke.226.2019.06.15.08.44.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 15 Jun 2019 03:26:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 15 Jun 2019 08:44:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=we76Cor5YuNEJsNdw3qAWVmIkcWTsQUYt8rM5dM4Acw=;
-        b=Omv3bhnAJRz0q63GR9hrT203vCQ+OzTcFvfqp+vrlQxuGucmxfJyYr3VlzxiViWNZ5
-         tnGtftXGA1r3GnxIXg8CDaDCqTMbpPoafBCBuWqx2OjuowmaI0EmLZ093FYNiTwuH/eM
-         lsDGJYa1um7RB3HhQ/DUSm8zAVS2UWfVgeCE0S+HHkxjC016zGURnThL2j9fSnqmL/kS
-         bWaij4VPtNP3OEkuPDvMlrwTo4FGw0uT2itwbAjcxKtct4Wq3sP8J+4yzQzwyXgC67X1
-         /NF8tkVK/aROu38UeWSP8IKCTFCoq3nVZLUyUsHCiTXSTwTvDSAA8i4qI4k46swCjykJ
-         xfug==
-X-Gm-Message-State: APjAAAUm29vUZXsD1EdyCLCxccvnF+TBb/bX48w9Iuk5npkOnU1y1gcU
-	U09d5KH/GRfUuRgzBm7FJSQGig==
-X-Google-Smtp-Source: APXvYqwKpZmX8MudhG4BDlV03CX4LTq2IKA84cHfqXUrXyPYqw+RL08yak3gqaCV2zhgQw5mNzZovA==
-X-Received: by 2002:a1c:a7ca:: with SMTP id q193mr12136363wme.150.1560594390840;
-        Sat, 15 Jun 2019 03:26:30 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
-        by smtp.gmail.com with ESMTPSA id z5sm3856110wmf.48.2019.06.15.03.26.29
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Sat, 15 Jun 2019 03:26:29 -0700 (PDT)
-Subject: Re: [RFC PATCH 0/2] target: Build with CONFIG_SEMIHOSTING disabled
-To: Paolo Bonzini <pbonzini@redhat.com>,
- Miroslav Rezanina <mrezanin@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-arm <qemu-arm@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Samuel Ortiz <sameo@linux.intel.com>,
- Rob Bradford <robert.bradford@intel.com>
-References: <20190531154735.20809-1-philmd@redhat.com>
- <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com>
- <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com>
- <431872249.25606899.1559321648368.JavaMail.zimbra@redhat.com>
- <a3cbd83c-a942-25f4-d424-bbbc0013acec@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <c81017d4-0ea0-99f3-854d-6ab4b514a15c@redhat.com>
-Date: Sat, 15 Jun 2019 12:26:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32864 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hcAqt-0003eQ-PY
+	for alex.bennee@linaro.org; Sat, 15 Jun 2019 11:44:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35463)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hcAqZ-0003dv-IA
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:05 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hcAqX-0007kb-QQ
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50302)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hcAqX-0007dw-Kf; Sat, 15 Jun 2019 11:44:01 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id A5D573083391;
+ Sat, 15 Jun 2019 15:43:59 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-41.brq.redhat.com [10.40.204.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 650F81001B05;
+ Sat, 15 Jun 2019 15:43:58 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Sat, 15 Jun 2019 17:43:30 +0200
+Message-Id: <20190615154352.26824-2-philmd@redhat.com>
+In-Reply-To: <20190615154352.26824-1-philmd@redhat.com>
+References: <20190615154352.26824-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <a3cbd83c-a942-25f4-d424-bbbc0013acec@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: WIFr3OA4Z1Jn
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Sat, 15 Jun 2019 15:43:59 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 01/23] target/arm: Makefile cleanup (Aarch64)
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4kuisnXq5WuU
 
-On 6/3/19 10:11 AM, Paolo Bonzini wrote:
-> On 31/05/19 18:54, Miroslav Rezanina wrote:
->> What about CONFIG_ARM_VIRT - can we use it to introduce dependency on
->> CONFIG_SEMIHOSTING or is there valid scenario of qemu build with CONFIG_ARM_VIRT
->> enabled and CONFIG_SEMIHOSTING disabled?
-> 
-> If you are not really going to use TCG, disabling SEMIHOSTING makes sense.
-> 
-> I think Philippe's patch are the right way to do it.
-> 
-> Perhaps CONFIG_SEMIHOSTING should be made "default y" and added as
-> "#CONFIG_SEMIHOSTING=n" to default-configs/, but that's just cosmetic.
+Group Aarch64 objects together, TCG related ones at the bottom.
+This will help when restricting TCG-only objects.
 
-But then it is compiled/linked on target that don't care...
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ target/arm/Makefile.objs | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Oh, but this is also true currently:
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index dfa736a375..7c31fa01c1 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -7,8 +7,7 @@ obj-$(call lnot,$(CONFIG_KVM)) +=3D kvm-stub.o
+ obj-y +=3D translate.o op_helper.o helper.o cpu.o
+ obj-y +=3D neon_helper.o iwmmxt_helper.o vec_helper.o vfp_helper.o
+ obj-y +=3D gdbstub.o
+-obj-$(TARGET_AARCH64) +=3D cpu64.o translate-a64.o helper-a64.o gdbstub6=
+4.o
+-obj-$(TARGET_AARCH64) +=3D pauth_helper.o
++obj-$(TARGET_AARCH64) +=3D cpu64.o gdbstub64.o
+ obj-y +=3D crypto_helper.o
+ obj-$(CONFIG_SOFTMMU) +=3D arm-powerctl.o
+=20
+@@ -33,4 +32,6 @@ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ target/arm/translate.o: target/arm/decode-vfp.inc.c
+ target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
+=20
++obj-$(TARGET_AARCH64) +=3D translate-a64.o helper-a64.o
+ obj-$(TARGET_AARCH64) +=3D translate-sve.o sve_helper.o
++obj-$(TARGET_AARCH64) +=3D pauth_helper.o
+--=20
+2.20.1
 
-$ fgrep -r qemu_semihosting_log_out
-Binary file ppc-softmmu/qemu-system-ppc matches
-...
-
-What about:
-
-  config SEMIHOSTING
-      bool
-      default n
-      depends on !KVM
-
-and keep specific targets using SEMIHOSTING=y
-
-Using "default y" or "default y if !KVM" we have to add SEMIHOSTING=n on
-all targets that don't care, which seems an incorrect use of Kconfig.
-
-Aleksandar: Can we use SEMIHOSTING on KVM MIPS?
-
-For ARM Peter said:
-
-"semihosting hooks either SVC or HLT instructions, and inside
- KVM both of those go to EL1, ie to the guest, and can't be
- trapped to KVM."
-
-Thanks,
-
-Phil.

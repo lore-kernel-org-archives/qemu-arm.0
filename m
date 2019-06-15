@@ -1,81 +1,82 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp675100wrg;
-        Sat, 15 Jun 2019 08:44:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMj5dvlZf+MyAy0VMFTEm4be4yNosuRPUq8g+c/bQ+9Z/25M5RmRsAJ7te2QJfSA5lAoBF
-X-Received: by 2002:ac8:6898:: with SMTP id m24mr85037720qtq.362.1560613478324;
-        Sat, 15 Jun 2019 08:44:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560613478; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp675311wrg;
+        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMftNv694nPcklVz4oPFZJqAhA2MKOJg+HQFEw54h/qrEjq0DarBMyWojXb3kRbJ+JCrH7
+X-Received: by 2002:a0c:bf4a:: with SMTP id b10mr12069285qvj.120.1560613495584;
+        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560613495; cv=none;
         d=google.com; s=arc-20160816;
-        b=KloeeAIaxrwMDFDc+l6SDs+hruvVddeYl5fz8ghKWKQSXBWgoq7LV3otFmQ/AN1YYx
-         8V0jA64SUqcDwWNoRVluKxMqTRXfbzivPoHfoEvA6p6Jq23C4IZYIiaVFQHFMm9pG6rR
-         Xz8fTTe01f6z5HvIcv3vUFaMfsc3Qgq/tYNrBrOegzQd0wd4gHN9zjoh1Yi4iR8RkR/z
-         KkP8QmmMDEMGIif0pWoaCePxElguTz0ucZOEPmQA3wK1gc3pcc3aDCk6wh9c6p1N3bzR
-         lY8Tgae8cOkGNh+9IuHC6GIUyRyZPx11/sxB2nbKip3vizkde6DlFDEZx9+ZLQga7h1b
-         mpKg==
+        b=ydXbwSh+f1JRNO7eo4OlhvnD4uBsmHE16U6zjPYWVGxftDWNdBqbryzO10Vrlq8oBI
+         a1TclO8RU4TL8SbyTuCqiGsY3ael0KO2FcsoZDjCNFr1ByZXo2DiEFeRWveiOnjD4BtE
+         S1vlc1Xf1jw8hQN4KIoJjbLezYCFlID2r0MddqQAceH2P1Ln6SBuqbrPFDAIsIIQj8N3
+         LAhu2mECnbqj0YAfoHRABCMjHP55DJyJ/ieVMxClk7LDIJ5eFMbCHQc+YJzDrdW5PGWV
+         Fica+k9t65aZgXjiFpzDNgQOZl0PGpqD+HUc1q03IamkARRyD1q9EQH3RuFugCK10A4Z
+         ubNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=SxVe8AsyGoz2Xsn4OuILbYJ33ilA8UUn74L/rwQomeo=;
-        b=BhnudWwOQd9RyJixWNQowm+MItiWQ+gMsOz5lwzczwgax6acL3NY+M1U5Cyt0AfYDA
-         L83XWFGSmbXAK789auY4HazRPILVfZePkLEUSAYp6is/cwdAAGIpnl3Xsa+5JH6dyIP5
-         8K9vV6Iufk/+nL94nWiC0dZrO8tI0ZOjiUozUakc6V+ZsuFUEBuaT0qottzWzFVapvX2
-         9r0T0esQd/+VoCmTTcTQYEo9093jo6pr6+V26XbIe+pePPicwRRUFnP+hLRfGZ3pn4Pc
-         Ni7/2CWUH/SaGBQzkkHR24m9UygRFBg5N+zm4rAGsJTDPUj+gmNqPlvTaijxrwVSacdK
-         CrTQ==
+        bh=YmKgfjW28XK9uiTZcyiCGg1a6rU+Pyt+L4kQ6cdv7yM=;
+        b=GsMkKU7TIUnvj7Foyyz6ykAPzpwx4vWF6N5b3/zBd5c9rl1fz9EpsHGY+11en7TI6p
+         WcUcoT86+Y2uzPC67AUPH/Ai8muYQODvryT5CNurbMh0UMbt0py4HZo1U9a4PRFC1Aae
+         Xwy16SwUL+z6oxgDz+AfkBnBs4lbnCsEf0MiYz7bjveSbGjbGfxPcc6gNTtT7SxO448M
+         2meiW+XiXImSuS1MtnBxyF8w6wqgOdDQsioC3J0q24U66nMjNk6Fw9thXmid9M31aJV9
+         r0CcRuuNAtK4m1yiJB3R6jwVd4tDI+5aADMUOjMVVZtzjCrrUl7hc7XhFkrS2/6+L7dy
+         1cww==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r65si3858280qkc.215.2019.06.15.08.44.38
+        by mx.google.com with ESMTPS id w17si4246487qka.183.2019.06.15.08.44.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Jun 2019 08:44:38 -0700 (PDT)
+        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32868 helo=lists.gnu.org)
+Received: from localhost ([::1]:32878 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hcAr6-0003hg-1O
-	for alex.bennee@linaro.org; Sat, 15 Jun 2019 11:44:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35537)
+	id 1hcArP-0004KQ-3i
+	for alex.bennee@linaro.org; Sat, 15 Jun 2019 11:44:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35748)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hcAqh-0003f4-Ax
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:13 -0400
+ (envelope-from <philmd@redhat.com>) id 1hcAqs-0003yI-Uv
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hcAqf-000880-8y
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41812)
+ (envelope-from <philmd@redhat.com>) id 1hcAqr-0000NI-HV
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48338)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hcAqd-0007uH-AO; Sat, 15 Jun 2019 11:44:07 -0400
+ id 1hcAqr-0000KM-8L; Sat, 15 Jun 2019 11:44:21 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C37AE3688B;
- Sat, 15 Jun 2019 15:44:04 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 65DF381129;
+ Sat, 15 Jun 2019 15:44:20 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-41.brq.redhat.com [10.40.204.41])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 856DA10EE6A9;
- Sat, 15 Jun 2019 15:44:03 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 266831001B05;
+ Sat, 15 Jun 2019 15:44:18 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Sat, 15 Jun 2019 17:43:33 +0200
-Message-Id: <20190615154352.26824-5-philmd@redhat.com>
+Date: Sat, 15 Jun 2019 17:43:40 +0200
+Message-Id: <20190615154352.26824-12-philmd@redhat.com>
 In-Reply-To: <20190615154352.26824-1-philmd@redhat.com>
 References: <20190615154352.26824-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Sat, 15 Jun 2019 15:44:04 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.27]); Sat, 15 Jun 2019 15:44:20 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 04/23] target/arm: Makefile cleanup (softmmu)
+Subject: [Qemu-arm] [PATCH v2 11/23] target/arm: Declare v7m_cpacr_pass()
+ publicly
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,35 +92,85 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oqim9cK1L2dk
+X-TUID: rnNj9IUbHfle
 
-Group SOFTMMU objects together.
+In the next commit we will move exception handling routines to
+v7m_helper, so this function will be called from 2 different
+files. Declare it inlined in the "internals.h" header.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/Makefile.objs | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/arm/helper.c    | 19 -------------------
+ target/arm/internals.h | 21 +++++++++++++++++++++
+ 2 files changed, 21 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 626e340f55..72b42f825f 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -1,9 +1,9 @@
- obj-y +=3D arm-semi.o
--obj-$(CONFIG_SOFTMMU) +=3D machine.o psci.o arch_dump.o monitor.o
--obj-y +=3D helper.o cpu.o
--obj-y +=3D gdbstub.o
-+obj-y +=3D cpu.o helper.o gdbstub.o
- obj-$(TARGET_AARCH64) +=3D cpu64.o gdbstub64.o
--obj-$(CONFIG_SOFTMMU) +=3D arm-powerctl.o
-+
-+obj-$(CONFIG_SOFTMMU) +=3D machine.o arch_dump.o monitor.o arm-powerctl.=
-o
-+obj-$(CONFIG_SOFTMMU) +=3D psci.o
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cf76010ea1..5d05db84d3 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7611,25 +7611,6 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uin=
+t32_t excp_idx,
+     return target_el;
+ }
 =20
- obj-$(CONFIG_KVM) +=3D kvm.o
- obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) +=3D kvm32=
-.o
+-/*
+- * Return true if the v7M CPACR permits access to the FPU for the specif=
+ied
+- * security state and privilege level.
+- */
+-static bool v7m_cpacr_pass(CPUARMState *env, bool is_secure, bool is_pri=
+v)
+-{
+-    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
+-    case 0:
+-    case 2: /* UNPREDICTABLE: we treat like 0 */
+-        return false;
+-    case 1:
+-        return is_priv;
+-    case 3:
+-        return true;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ /*
+  * What kind of stack write are we doing? This affects how exceptions
+  * generated during the stacking are treated.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 04711b317a..1d15af3f8b 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -891,6 +891,27 @@ static inline uint32_t v7m_sp_limit(CPUARMState *env=
+)
+     }
+ }
+=20
++/**
++ * v7m_cpacr_pass:
++ * Return true if the v7M CPACR permits access to the FPU for the specif=
+ied
++ * security state and privilege level.
++ */
++static inline bool v7m_cpacr_pass(CPUARMState *env,
++                                  bool is_secure, bool is_priv)
++{
++    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
++    case 0:
++    case 2: /* UNPREDICTABLE: we treat like 0 */
++        return false;
++    case 1:
++        return is_priv;
++    case 3:
++        return true;
++    default:
++        g_assert_not_reached();
++    }
++}
++
+ /**
+  * aarch32_mode_name(): Return name of the AArch32 CPU mode
+  * @psr: Program Status Register indicating CPU mode
 --=20
 2.20.1
 

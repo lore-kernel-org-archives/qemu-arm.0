@@ -1,82 +1,82 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp675311wrg;
-        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMftNv694nPcklVz4oPFZJqAhA2MKOJg+HQFEw54h/qrEjq0DarBMyWojXb3kRbJ+JCrH7
-X-Received: by 2002:a0c:bf4a:: with SMTP id b10mr12069285qvj.120.1560613495584;
-        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560613495; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp675809wrg;
+        Sat, 15 Jun 2019 08:45:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwsU34ulW7X9Z7fX0AQEIx1QeiUf+MEkV1xXU/92sbZY7H0FY4fik+C3gTxzL0B4NblOd16
+X-Received: by 2002:ac8:2425:: with SMTP id c34mr4266473qtc.257.1560613537915;
+        Sat, 15 Jun 2019 08:45:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560613537; cv=none;
         d=google.com; s=arc-20160816;
-        b=ydXbwSh+f1JRNO7eo4OlhvnD4uBsmHE16U6zjPYWVGxftDWNdBqbryzO10Vrlq8oBI
-         a1TclO8RU4TL8SbyTuCqiGsY3ael0KO2FcsoZDjCNFr1ByZXo2DiEFeRWveiOnjD4BtE
-         S1vlc1Xf1jw8hQN4KIoJjbLezYCFlID2r0MddqQAceH2P1Ln6SBuqbrPFDAIsIIQj8N3
-         LAhu2mECnbqj0YAfoHRABCMjHP55DJyJ/ieVMxClk7LDIJ5eFMbCHQc+YJzDrdW5PGWV
-         Fica+k9t65aZgXjiFpzDNgQOZl0PGpqD+HUc1q03IamkARRyD1q9EQH3RuFugCK10A4Z
-         ubNg==
+        b=LqsFGFRjDscndWDB2x6/yD+3Ww2frLz/DIgO6UjKWMHAfPsmhUE9/cvtRwpMg7nCU/
+         Vw6ux+O6n7MRWORq6Ca29W35Ui5L3sbwj2IqxSZ7cR2Z6wGgZSCB+B61UP+cuYoACXB9
+         hvOYhDSHNcsbZc3vFsOUu9rJAzzgmQlh4pzC0z+rFiL7zIBqxtUim/m31zCJcQcMxIFw
+         F7BIbRJBv0+Eutel7aVR7A+HqQCsaeYiURM6sVEeBGnrFGW8K7sCVwxeUZRZt3hIP2BT
+         EWjWgMm7lL+jtlalROm8vZlBrhANwL+aDwkwHyXrYlbBzfQAnrn4OE5B3JnZMgS3k3wz
+         5zTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=YmKgfjW28XK9uiTZcyiCGg1a6rU+Pyt+L4kQ6cdv7yM=;
-        b=GsMkKU7TIUnvj7Foyyz6ykAPzpwx4vWF6N5b3/zBd5c9rl1fz9EpsHGY+11en7TI6p
-         WcUcoT86+Y2uzPC67AUPH/Ai8muYQODvryT5CNurbMh0UMbt0py4HZo1U9a4PRFC1Aae
-         Xwy16SwUL+z6oxgDz+AfkBnBs4lbnCsEf0MiYz7bjveSbGjbGfxPcc6gNTtT7SxO448M
-         2meiW+XiXImSuS1MtnBxyF8w6wqgOdDQsioC3J0q24U66nMjNk6Fw9thXmid9M31aJV9
-         r0CcRuuNAtK4m1yiJB3R6jwVd4tDI+5aADMUOjMVVZtzjCrrUl7hc7XhFkrS2/6+L7dy
-         1cww==
+        bh=yo7jr7EgZmc1Ol1bnBWDRJhyg3WpJxlJ44odK1iIVWg=;
+        b=GdWwwNDrm2grS+Ox0tIq+pq/HIpVJw3322+EEcla2r68BBrjVUPSuN4xkmchT68hxb
+         RdZdH03mDat2BDOEctYIvS3I70jVvPFMXNwHKNcZ49xf3KZeZQAPpJ6tE6n/aLg904Ln
+         dhE0c+BZxCA6CTILMEDiVAegB3XvNzT+9Gbp7upHHqvZ6GB/jAlsAvFZoyNak+A3j70t
+         aOoDWuwRS3uhrx+94/PXo4BZzz761LQykuaqFDcxyQY7CN8DvYVGE+mrayz/RdD0yzDy
+         ON1qpKaOMmzMI8eApPOQ5QAnm3upwdT0eYn6VmjtVWVLWjmT3K6bEd0CdsGn/17uR2Jb
+         tJ2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17si4246487qka.183.2019.06.15.08.44.55
+        by mx.google.com with ESMTPS id o79si4108027qka.13.2019.06.15.08.45.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Jun 2019 08:44:55 -0700 (PDT)
+        Sat, 15 Jun 2019 08:45:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32878 helo=lists.gnu.org)
+Received: from localhost ([::1]:32880 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hcArP-0004KQ-3i
-	for alex.bennee@linaro.org; Sat, 15 Jun 2019 11:44:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35748)
+	id 1hcAs5-0004kl-EK
+	for alex.bennee@linaro.org; Sat, 15 Jun 2019 11:45:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35827)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hcAqs-0003yI-Uv
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:24 -0400
+ (envelope-from <philmd@redhat.com>) id 1hcAqy-00043G-KB
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hcAqr-0000NI-HV
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48338)
+ (envelope-from <philmd@redhat.com>) id 1hcAqw-0000dd-Ve
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 11:44:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41868)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hcAqr-0000KM-8L; Sat, 15 Jun 2019 11:44:21 -0400
+ id 1hcAqw-0000YG-Oc; Sat, 15 Jun 2019 11:44:26 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 65DF381129;
- Sat, 15 Jun 2019 15:44:20 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id ED74A356D2;
+ Sat, 15 Jun 2019 15:44:24 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-41.brq.redhat.com [10.40.204.41])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 266831001B05;
- Sat, 15 Jun 2019 15:44:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ACEF21001B05;
+ Sat, 15 Jun 2019 15:44:23 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Sat, 15 Jun 2019 17:43:40 +0200
-Message-Id: <20190615154352.26824-12-philmd@redhat.com>
+Date: Sat, 15 Jun 2019 17:43:42 +0200
+Message-Id: <20190615154352.26824-14-philmd@redhat.com>
 In-Reply-To: <20190615154352.26824-1-philmd@redhat.com>
 References: <20190615154352.26824-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Sat, 15 Jun 2019 15:44:20 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.30]); Sat, 15 Jun 2019 15:44:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 11/23] target/arm: Declare v7m_cpacr_pass()
- publicly
+Subject: [Qemu-arm] [PATCH v2 13/23] target/arm: Make the v7-M Security
+ State routines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,85 +92,72 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rnNj9IUbHfle
+X-TUID: bAefr2KhURPN
 
-In the next commit we will move exception handling routines to
-v7m_helper, so this function will be called from 2 different
-files. Declare it inlined in the "internals.h" header.
+The Security State helpers are now only called within v7m_helper.c.
+Remove them from "internals.h".
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/helper.c    | 19 -------------------
- target/arm/internals.h | 21 +++++++++++++++++++++
- 2 files changed, 21 insertions(+), 19 deletions(-)
+ target/arm/internals.h  |  8 --------
+ target/arm/v7m_helper.c | 10 +++++-----
+ 2 files changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cf76010ea1..5d05db84d3 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7611,25 +7611,6 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uin=
-t32_t excp_idx,
-     return target_el;
- }
-=20
--/*
-- * Return true if the v7M CPACR permits access to the FPU for the specif=
-ied
-- * security state and privilege level.
-- */
--static bool v7m_cpacr_pass(CPUARMState *env, bool is_secure, bool is_pri=
-v)
--{
--    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
--    case 0:
--    case 2: /* UNPREDICTABLE: we treat like 0 */
--        return false;
--    case 1:
--        return is_priv;
--    case 3:
--        return true;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- /*
-  * What kind of stack write are we doing? This affects how exceptions
-  * generated during the stacking are treated.
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 04711b317a..1d15af3f8b 100644
+index 1d15af3f8b..fe9e4665e2 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -891,6 +891,27 @@ static inline uint32_t v7m_sp_limit(CPUARMState *env=
-)
-     }
+@@ -1043,12 +1043,4 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t =
+address,
+                        int *prot, bool *is_subpage,
+                        ARMMMUFaultInfo *fi, uint32_t *mregion);
+=20
+-void write_v7m_control_spsel_for_secstate(CPUARMState *env,
+-                                          bool new_spsel,
+-                                          bool secstate);
+-
+-void write_v7m_control_spsel(CPUARMState *env, bool new_spsel);
+-
+-void switch_v7m_security_state(CPUARMState *env, bool new_secstate);
+-
+ #endif
+diff --git a/target/arm/v7m_helper.c b/target/arm/v7m_helper.c
+index b50bb98e06..aa6a08e326 100644
+--- a/target/arm/v7m_helper.c
++++ b/target/arm/v7m_helper.c
+@@ -94,9 +94,9 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr=
+, uint32_t op)
+  * stack pointers if it is done for the CONTROL register for the current
+  * security state.
+  */
+-void write_v7m_control_spsel_for_secstate(CPUARMState *env,
+-                                          bool new_spsel,
+-                                          bool secstate)
++static void write_v7m_control_spsel_for_secstate(CPUARMState *env,
++                                                 bool new_spsel,
++                                                 bool secstate)
+ {
+     bool old_is_psp =3D v7m_using_psp(env);
+=20
+@@ -121,13 +121,13 @@ void write_v7m_control_spsel_for_secstate(CPUARMSta=
+te *env,
+  * Write to v7M CONTROL.SPSEL bit. This may change the current
+  * stack pointer between Main and Process stack pointers.
+  */
+-void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
++static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
+ {
+     write_v7m_control_spsel_for_secstate(env, new_spsel, env->v7m.secure=
+);
  }
 =20
-+/**
-+ * v7m_cpacr_pass:
-+ * Return true if the v7M CPACR permits access to the FPU for the specif=
-ied
-+ * security state and privilege level.
-+ */
-+static inline bool v7m_cpacr_pass(CPUARMState *env,
-+                                  bool is_secure, bool is_priv)
-+{
-+    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
-+    case 0:
-+    case 2: /* UNPREDICTABLE: we treat like 0 */
-+        return false;
-+    case 1:
-+        return is_priv;
-+    case 3:
-+        return true;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- /**
-  * aarch32_mode_name(): Return name of the AArch32 CPU mode
-  * @psr: Program Status Register indicating CPU mode
+ /* Switch M profile security state between NS and S */
+-void switch_v7m_security_state(CPUARMState *env, bool new_secstate)
++static void switch_v7m_security_state(CPUARMState *env, bool new_secstat=
+e)
+ {
+     uint32_t new_ss_msp, new_ss_psp;
+=20
 --=20
 2.20.1
 

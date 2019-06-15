@@ -1,103 +1,100 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp206056wrg;
-        Fri, 14 Jun 2019 22:19:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3Bq7eNUbrwJfa1zdj1jYOjYiq5tRsH+Ox3y5TG/R4eJbB4de9c9DhhsiXArdaNHJek3p5
-X-Received: by 2002:aed:21ca:: with SMTP id m10mr77788939qtc.97.1560575986745;
-        Fri, 14 Jun 2019 22:19:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560575986; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp206267wrg;
+        Fri, 14 Jun 2019 22:20:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1vKpXy9A8DIt9OrbpUb8uunz1f4MhAXu/tgTee7SOxHSfd1V7IYkvkJ00SC2FMaDQwNlh
+X-Received: by 2002:ac8:41d1:: with SMTP id o17mr9843133qtm.17.1560576007407;
+        Fri, 14 Jun 2019 22:20:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560576007; cv=none;
         d=google.com; s=arc-20160816;
-        b=Of/ZmoD/kJgh95eca7Yt0TZGrik7mqcRZpdiDfujHAbHKdz0JNV6RvQXdSN8ySkKiv
-         Zp6c1OADdOgoU9J4rzqvHXkdTAvDkbCH2mirArJvoxAB85uvMeRq2hww236yd5wiJa+D
-         WjR63egI8DlCrykWTjtVrp8mY0ziEHLnEGgbd0kSXhgQ8IUYQrg5H2F+YSbBsoixUhK+
-         J2b6Rq7yfhXxJrBp3iZj1GgaNP/4LnILKyZL0ocYIQgrhl6HaSTPjfgtiGhCiDp5M2IK
-         Ftnl212mQrsMZTPEnJ/ytFpzMxe3l/I3CDF/L3YOKuRgST9Tk+BGXPb+IafSqXA4HdfX
-         L8Xg==
+        b=nEb/j5GAyr2xclUxqwwU3tIhqyvEWKTeZv0ATSRFfS+L/jDtkhNW+BrMfuGPeFuUWJ
+         3Mhzv3SUwMTww0yFRZb/9dL+mGsUJKtpcTcgzhYXapZeQ6QFN+S6IULn5JHKDCSgIjZD
+         CJwNQNYUpmLWkRHLjOTps2F7G7LkQvJhonfEIoJfkk1kuyIXv0Rq06QhOuOabonbtznU
+         eb1aYtQI/UhYdCtfVNaB9HLH+ZsThVezPVpohCB4cAta0yp+ctYbnECfAK1GO7F3KuPv
+         Y7EzgqPSW6tdFFQnvWjpRLAipo3ss9U6HABIPHDysNI0IYeFIIvdzn/bz7BspAzj11+h
+         pNSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=0bUB7uKNls6xaJY3zOblGfvogGIyYkXLiWGhdwSVXCg=;
-        b=PBjNFKAK59EckQgWS01fpLwbQHyi/uCLxlKhL+4sDA4LO9yzt8+qp5nahgskp/rLGj
-         kjorIisCzo66J7telhQYUAvhDJPp42yUWT2gE71iZ+iFuu3BrhO1cw+NZ+yqztI2lYCP
-         2hivVaSXAmZ+oejjxQAUk62bAPWOrW6D/YjzrpHwwNpJQYZUS84D8+WwHfhrOLHw1QDc
-         zrnt7aAKy7/nkwawi346qIaM0GQhO7/kCHHqpLSHoAeL7mEMBI4s2fJ/hS/1kperiHFt
-         lsYdU5qacUuENFInah2IL0gBvLHhZoAtHFZ+v0Ti2fCLuhHqA7Ipb6w+8CdZBKuhwVSa
-         UHUw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ahfDBaZpWRRMUSU14banV4tDohtU7GQ0/Bn+quR5tGk=;
+        b=GuToAPWVuWRZUcLYLqlI9Kq+uFokE0nwnHlruQA34fcNLYnb3cdvSg8oVeDpAsaQVV
+         p5UOGkHA9/am4RaGZLKEr1NX+HRNuZPBOvBXdg8pAL+Hy9/R8bd1Xx9tGhaOX2Xyzzf+
+         bik6zEUXoS3MiSw0ljEg3rmhyREaZ4nivvCJUxMWOROliQh9teHdbpfVNPyZjoSOYJxw
+         maFUu/3aHHVEzEYpw4YtaoaW1HtOskD0rxKA0Vyn+677WIbmcxkHjjXZ+1nqNi7b33Dl
+         1o7eDLX0qslP5DU+dMRVmIj9Qm6ZUz1I3nLCY3DdgL1yZAXfjSzZpY8jKXQHFCCRIQiR
+         oKxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sA1A9QAW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H6Pii8mP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si2973779qva.8.2019.06.14.22.19.46
+        by mx.google.com with ESMTPS id x49si3108364qtb.110.2019.06.14.22.20.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2019 22:19:46 -0700 (PDT)
+        Fri, 14 Jun 2019 22:20:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sA1A9QAW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H6Pii8mP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58738 helo=lists.gnu.org)
+Received: from localhost ([::1]:58746 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hc16Q-0006Tt-A0
-	for alex.bennee@linaro.org; Sat, 15 Jun 2019 01:19:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50362)
+	id 1hc16k-0006y7-Vd
+	for alex.bennee@linaro.org; Sat, 15 Jun 2019 01:20:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50526)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hc15y-0006H0-Nz
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 01:19:19 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1hc167-0006Zx-5l
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 01:19:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1hc12v-0004D5-BV
- for qemu-arm@nongnu.org; Sat, 15 Jun 2019 01:16:10 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42605)
+ (envelope-from <rfried.dev@gmail.com>) id 1hc0y8-0007mM-Uv
+ for qemu-arm@nongnu.org; Sat, 15 Jun 2019 01:11:13 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40009)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1hc12t-0004AY-6P; Sat, 15 Jun 2019 01:16:07 -0400
-Received: by mail-wr1-x441.google.com with SMTP id x17so4502503wrl.9;
- Fri, 14 Jun 2019 22:16:07 -0700 (PDT)
+ id 1hc0y6-0007dI-I8; Sat, 15 Jun 2019 01:11:10 -0400
+Received: by mail-wm1-x342.google.com with SMTP id v19so4124305wmj.5;
+ Fri, 14 Jun 2019 22:11:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0bUB7uKNls6xaJY3zOblGfvogGIyYkXLiWGhdwSVXCg=;
- b=sA1A9QAW1AD0lERRtksYeJAEdb3pu8Sgo/6beN6tKJJozlUcmrc5Ku0ahjk1aKs8Yo
- jDOLov12XVIfTyXbeL/hCNctHyNqfYZRivaGYnl/ylNVe8Sq9yYI+NCJ2ESed3LwYDjk
- bO5+ka8gdt+kEiN8ZUhUxkC/sa5J+R0Bbr3OthzuwRbogVfFwAGB6/24jBX27Dd9NzM3
- O093rdDJLvlp4mpYzNo4CDqv9IQtsGwvRhHFs4jScbZiRWUmCiPXHv9Rf+FW1Qw2y3ON
- JMccGU4AhbpRw/farBoy2Ob7y3J25iNJBf3QRxuUU8dDlfsx4Tm8C+syrwJySFWdBrph
- 62kA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ahfDBaZpWRRMUSU14banV4tDohtU7GQ0/Bn+quR5tGk=;
+ b=H6Pii8mP5cGFjrndSVNTbbCrqkCZCpdxTHGt3dfZKexIc6mkQmVjWo0A6jlX4Uh1y6
+ 305+BMsGhuZ39++nsrJuYSqShsPbY1fqxbBS4OV3JTC8RiK4VjqAHqXhd00TsR7P+GZ/
+ OWFlhpt2ntPOPAglUk8+Xt126Dq4GcLOUgnDIneZli64AGXFQzZplzlRwY6LzV5dBpFm
+ WIlMLeC0Z8r/ij9lff5QATCbfa9MTdIfmjIrdScjgE68lB6DPYjBUcUK4EoYJkWSR2BZ
+ MimoVGGgoy7cR/mgo3z6VzBNM7r5daWiX838mTGlprEkWsETfZipJnEdwy4FzU6l8zdd
+ L5Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0bUB7uKNls6xaJY3zOblGfvogGIyYkXLiWGhdwSVXCg=;
- b=MymUix7mR+BngAB+DrhG7nJUbRxteN4xPKThUwjyPWLi4VHQFN3WddFY/1CSbTWvz8
- jJTg7KEsFB7p45VSbpRfdnVk8lAQk+TX6l48ujCgI3zD2PbuJcQO9MeBmI6L9Vr8ewLE
- 0jQaNoDE5RlfRonAuHNreNHkijBvK3CkcWxGfVGT/vAT6WdLbn7aJPDXnwbQxnpZlLKr
- +VW7KHpR22TskTwJma4BxQRvB11EefLnj+0AKE/ZyaQjShMCKzEaeRScd3nusgZafO9r
- E71dfpe4WnLrT3XUWcaf682pB0cS+N8CyzH3C5Sb2qiWzPFvcZhG5LWwW7P5TGG6j/sS
- Rsjw==
-X-Gm-Message-State: APjAAAXTYNpeLBm2+Ad/9dJUHWn0wOuOsa0qwaHp1mWLyOqiy8Ph7ZSJ
- 04YQH3/rBTAYFciMMg2XrlWRKdI9JW4=
-X-Received: by 2002:a5d:63c9:: with SMTP id c9mr20483738wrw.81.1560575765885; 
- Fri, 14 Jun 2019 22:16:05 -0700 (PDT)
-Received: from localhost.localdomain ([141.226.31.91])
- by smtp.gmail.com with ESMTPSA id y16sm3553540wru.28.2019.06.14.22.16.04
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 14 Jun 2019 22:16:05 -0700 (PDT)
-From: Ramon Fried <rfried.dev@gmail.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Date: Sat, 15 Jun 2019 08:15:59 +0300
-Message-Id: <20190615051559.13767-1-rfried.dev@gmail.com>
-X-Mailer: git-send-email 2.21.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ahfDBaZpWRRMUSU14banV4tDohtU7GQ0/Bn+quR5tGk=;
+ b=YMn9uLm0mgVvCMxdMhJDN0/kRDyO2l4jblOP+kz6aiDdRVN/QT1VyL0bnrD54AHviA
+ WIcE1WNEN8ZWnCmefz/TXWEOtTO5i3uHVvPZgM7RvZb/zmXiPyQsnUPsijxrzra1O1OJ
+ 13SY7/+vr4mYwqcOUqK0rbrtCrfE/ldctJ36jJKXjmE2/Z7lbFIQSAmR4nZ1GZF0Gtob
+ yBEp2S4+VicgdgKoblWp29wt7MO38j97dsrQrl9YQJZfNw7xIgNY3fVaZEZVbyntZoS2
+ riWWFCTcIdO/H9q/VsfQn5gx3jG7Z7gRugj2VHS5tsYToIsyv1Kz+zsItiGdxG/1/yKZ
+ tgXw==
+X-Gm-Message-State: APjAAAWQu+eQ5UX/sSqeqKuUdJpKKzqRmBb35OFqvr+pZAxYhVlAudzp
+ XXWyLY7+AjbR7Qd9FuLIREOhPctbzeXdBWKQ5ps=
+X-Received: by 2002:a1c:c255:: with SMTP id s82mr10881568wmf.6.1560575467518; 
+ Fri, 14 Jun 2019 22:11:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190611145556.12940-1-rfried.dev@gmail.com>
+ <f826d073-da60-96f0-9a37-c33761844cc2@vivier.eu>
+ <CAGi-RUL2QThfiYPeZOE6iuryxT7Daj-y-Q=SSgUBRFcDsWP+zw@mail.gmail.com>
+ <200eff56-ffff-904d-eeef-408b52ce2fa5@vivier.eu>
+In-Reply-To: <200eff56-ffff-904d-eeef-408b52ce2fa5@vivier.eu>
+From: Ramon Fried <rfried.dev@gmail.com>
+Date: Sat, 15 Jun 2019 08:10:56 +0300
+Message-ID: <CAGi-RUKY_WPsaL+aYfuZzKLGcPj7=+PCUo94Oxm5-ERCGEgtzQ@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Content-Type: multipart/alternative; boundary="00000000000062ff64058b55cad1"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: [Qemu-arm] [PATCH v3] net: cadence_gem: fix compilation error when
- debug is on
+X-Received-From: 2a00:1450:4864:20::342
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] net: cadence_gem: fix
+ compilation error when debug is on
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,49 +106,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- Ramon Fried <rfried.dev@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-devel@nongnu.org, "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jNPjaA4uGu3w
+X-TUID: n8npoXLKe3oP
 
-defining CADENCE_GEM_ERR_DEBUG causes compilation
-errors, fix that.
+--00000000000062ff64058b55cad1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
----
-v2: change %lx to HWADDR_PRIx and %lx to %zdx
-v3: change %zdx to %zx
+On Wed, Jun 12, 2019 at 10:40 AM Laurent Vivier <laurent@vivier.eu> wrote:
 
- hw/net/cadence_gem.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> Le 12/06/2019 =C3=A0 06:27, Ramon Fried a =C3=A9crit :
+> >
+> >
+> > On Tue, Jun 11, 2019 at 7:21 PM Laurent Vivier <laurent@vivier.eu
+> > <mailto:laurent@vivier.eu>> wrote:
+> >
+> >     Le 11/06/2019 =C3=A0 16:55, Ramon Fried a =C3=A9crit :
+> >     > defining CADENCE_GEM_ERR_DEBUG causes compilation
+> >     > errors, fix that.
+> >     >
+> >     > Signed-off-by: Ramon Fried <rfried.dev@gmail.com
+> >     <mailto:rfried.dev@gmail.com>>
+> >     > ---
+> >     > v2: change %lx to HWADDR_PRIx and %lx to %zdx
+> >
+> >     HWADDR_PRIx is to use with hwaddr type (packet_desc_addr).
+> >     rx_desc_get_buffer() is uint64_t, you must use PRIx64.
+> >     It may be better to remove also the cast to unsigned.
+> >
+> > Other places in the code also use HWADDR_PRIx with  rx_desc_get_buffer(=
+).
+> > Should I change them also ?
+>
+> No, in fact you should change the return type of rx_desc_get_buffer() to
+> hwaddr.
+>
+Make sense.
+I'll do it in a different patch.
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 7f63411430..ecee22525c 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-             return -1;
-         }
- 
--        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
--                rx_desc_get_buffer(s->rx_desc[q]));
-+        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n", MIN(bytes_to_copy, rxbufsize),
-+                rx_desc_get_buffer(s, s->rx_desc[q]));
- 
-         /* Copy packet data to emulated DMA buffer */
-         address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-@@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
-             if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-                                                (p - tx_packet)) {
-                 DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
--                         "0x%x\n", (unsigned)packet_desc_addr,
-+                         "0x%zx\n", (unsigned)packet_desc_addr,
-                          (unsigned)tx_desc_get_length(desc),
-                          sizeof(tx_packet) - (p - tx_packet));
-                 break;
--- 
-2.21.0
+>
+> Thanks,
+> Laurent
+>
 
+--00000000000062ff64058b55cad1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 12, 2019 at 10:40 AM Laurent =
+Vivier &lt;<a href=3D"mailto:laurent@vivier.eu">laurent@vivier.eu</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Le 12/06/2=
+019 =C3=A0 06:27, Ramon Fried a =C3=A9crit=C2=A0:<br>
+&gt; <br>
+&gt; <br>
+&gt; On Tue, Jun 11, 2019 at 7:21 PM Laurent Vivier &lt;<a href=3D"mailto:l=
+aurent@vivier.eu" target=3D"_blank">laurent@vivier.eu</a><br>
+&gt; &lt;mailto:<a href=3D"mailto:laurent@vivier.eu" target=3D"_blank">laur=
+ent@vivier.eu</a>&gt;&gt; wrote:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0Le 11/06/2019 =C3=A0 16:55, Ramon Fried a =C3=A9cri=
+t=C2=A0:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt; defining CADENCE_GEM_ERR_DEBUG causes compilat=
+ion<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt; errors, fix that.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt; Signed-off-by: Ramon Fried &lt;<a href=3D"mail=
+to:rfried.dev@gmail.com" target=3D"_blank">rfried.dev@gmail.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:rfried.dev@gmail.com" =
+target=3D"_blank">rfried.dev@gmail.com</a>&gt;&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt; ---<br>
+&gt;=C2=A0 =C2=A0 =C2=A0&gt; v2: change %lx to HWADDR_PRIx and %lx to %zdx<=
+br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0HWADDR_PRIx is to use with hwaddr type (packet_desc=
+_addr).<br>
+&gt;=C2=A0 =C2=A0 =C2=A0rx_desc_get_buffer() is uint64_t, you must use PRIx=
+64.<br>
+&gt;=C2=A0 =C2=A0 =C2=A0It may be better to remove also the cast to unsigne=
+d.<br>
+&gt; <br>
+&gt; Other places in the code also use HWADDR_PRIx with=C2=A0 rx_desc_get_b=
+uffer().<br>
+&gt; Should I change them also ?<br>
+<br>
+No, in fact you should change the return type of rx_desc_get_buffer() to<br=
+>
+hwaddr.<br></blockquote><div>Make sense.</div><div>I&#39;ll do it in a diff=
+erent patch.</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
+ 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+Thanks,<br>
+Laurent<br>
+</blockquote></div></div>
+
+--00000000000062ff64058b55cad1--

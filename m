@@ -1,1454 +1,220 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id h21sm8658945wmb.47.2019.06.17.04.42.50
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 04:42:50 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 1EEE31FF87;
-	Mon, 17 Jun 2019 12:42:50 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-9-philmd@redhat.com>
-User-agent: mu4e 1.3.2; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Samuel Ortiz
- <sameo@linux.intel.com>
-Subject: Re: [Qemu-devel] [PATCH v2 08/23] target/arm: Move all v7m insn helpers into their own file
-In-reply-to: <20190615154352.26824-9-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 12:42:50 +0100
-Message-ID: <8736k8bfph.fsf@zen.linaroharston>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2496105wrg;
+        Mon, 17 Jun 2019 06:20:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw8uF3X+ADcfnJ5EFYKM/nS2fTYUm8ThU9uVp4KsUUbxKJzAsbnWjkPn9/+J7sTNLBmbW9E
+X-Received: by 2002:a17:906:76c8:: with SMTP id q8mr91766177ejn.229.1560777612344;
+        Mon, 17 Jun 2019 06:20:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560777612; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Um306uSLxa2d9+FQx7+Kq3tI92Txycj37i2QSkZJ6396DheBmDe+QbXGq5XTq/5L5i
+         ygHn542yUcnTjVsrb8G3qBR7FIeZAG+92MHnaZnNKKyX3+/JMrsCTEXW/srTggisJZpH
+         scNXfiiiLYuYfxisgnTiWkI+l70vz0JbUTwNSHpPLZ16bVxttmA+ZCM9N4xBhimeUhuz
+         vQjdSFxflIpRSeuv2Td4x2S54BndOt6uCR5qAIY2XYhQ3bDUKCrcU6xL1b5fqsITnhRn
+         Ubpb0ipAaqR9B1KryyrSn15LyvptDEoFzODR0pFk1zRvKDEaLNE9wTPYuPfo1Pd2SHJB
+         lnLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:msip_labels:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:to:from;
+        bh=cc24OnuQDcXu839mH9neVweEmntNJlRTB68gYawp+R8=;
+        b=CVTVLNixh9J1cVYbkJS+SUk7/IiLuTMnY5nabK3/okF8Hhg1zUiPNQpdE3pNs9q9bx
+         7uEgljxg1OYToYkOQgeWdP4etL2qCKwp/0+C/iEHZqL74j2mL16Cj1lZUlwNFjscYzuq
+         sLXsOuTgQbcIE0a9IUOwWx3m428DU7HJtNN8dMQTttHOe5eHo+OWNhtc4FzLbPdZuZuX
+         psxygBRTgTiOVfOlfNXVbxuW2JtZZXm9RKMBc1Y7FWCOvd9mATg67Qxku1uRX4QpnJOi
+         5xJi+m1H1EEuQR9mUbgkc7/aydVtiIxe1c/MQLiWinsBzURfq59kIfuUfxDMkDNTKUOV
+         rVsQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=parsons.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j42si8499377eda.80.2019.06.17.06.20.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Jun 2019 06:20:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=parsons.com
+Received: from localhost ([::1]:47450 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hcrYQ-0001IS-Rn
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 09:20:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53544)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <prvs=10717ad0aa=alexander.bensch@parsons.com>)
+ id 1hcrUh-0000Pv-HS
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 09:16:23 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <prvs=10717ad0aa=alexander.bensch@parsons.com>)
+ id 1hcrUc-0006HA-HY
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 09:16:16 -0400
+Received: from txdal11mx05.parsons.com ([206.219.199.115]:54378)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71)
+ (envelope-from <prvs=10717ad0aa=alexander.bensch@parsons.com>)
+ id 1hcrUW-00064F-T7
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 09:16:11 -0400
+Received: from pps.filterd (txdal11mx05.parsons.com [127.0.0.1])
+ by txdal11mx05.parsons.com (8.16.0.27/8.16.0.27) with SMTP id x5HDEiOZ008371; 
+ Mon, 17 Jun 2019 08:15:47 -0500
+Received: from txdal11exch02.parsons.com (txdal11exch02.parsons.com
+ [172.21.212.128])
+ by txdal11mx05.parsons.com with ESMTP id 2t5rnr28tq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Mon, 17 Jun 2019 08:15:47 -0500
+Received: from ALHUN12EXCH02.Parsons.com (10.62.8.72) by
+ TXDAL11EXCH02.Parsons.com (172.21.212.128) with Microsoft SMTP Server (TLS)
+ id 15.0.1473.3; Mon, 17 Jun 2019 08:15:46 -0500
+Received: from ALHUN12EXCH02.Parsons.com (10.62.8.72) by
+ ALHUN12EXCH02.Parsons.com (10.62.8.72) with Microsoft SMTP Server (TLS) id
+ 15.0.1473.3; Mon, 17 Jun 2019 08:15:44 -0500
+Received: from ALHUN12EXCH02.Parsons.com ([10.62.8.72]) by
+ ALHUN12EXCH02.Parsons.com ([10.62.8.72]) with mapi id 15.00.1473.003; Mon, 17
+ Jun 2019 08:15:44 -0500
+From: "Bensch, Alexander" <Alexander.Bensch@parsons.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: [EXTERNAL] Re: [Qemu-arm] Custom machine: Forcing initial boot
+ address
+Thread-Index: AdUi4C/IbWVCrokzTPSV7EVz0baf/wCOzMSAAAOpMzA=
+Date: Mon, 17 Jun 2019 13:15:44 +0000
+Message-ID: <4ca9467fcfa649ad8ef1f1f5f1bdf701@ALHUN12EXCH02.Parsons.com>
+References: <7757fcde65574754a8123d473be4b8a2@ALHUN12EXCH02.Parsons.com>
+ <CAFEAcA9KYsqTcXTTkPmL+x97i7v5X9J2gOPNg-P0oFVNoTFzfg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9KYsqTcXTTkPmL+x97i7v5X9J2gOPNg-P0oFVNoTFzfg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_Enabled=True;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_SiteId=8d088ff8-7e52-4d0f-8187-dcd9ca37815a;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_Owner=Alexander.Bensch@parsons.com;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_SetDate=2019-06-17T13:10:38.3589880Z;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_Name=Public;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_Application=Microsoft Azure
+ Information Protection;
+ MSIP_Label_79ae2783-b6e8-45ab-9e71-54c07b2dade0_Extended_MSFT_Method=Manual;
+ Sensitivity=Public
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [172.21.212.10]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: Dy2pFsLrkea0
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-06-17_06:, , signatures=0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 206.219.199.115
+Subject: Re: [Qemu-arm] [EXTERNAL] Re: Custom machine: Forcing initial boot
+ address
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QeM4opVgpVXD
 
-
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
-> From: Samuel Ortiz <sameo@linux.intel.com>
->
-> In preparation for supporting TCG disablement on ARM, we move most
-> of TCG related v7m helpers and APIs into their own file.
->
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> [PMD: Patch rewritten]
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> Is there a way to not use $CONFIG_USER_ONLY?
-
-Is this because the CONFIG_ARM_V7M symbol only appears for softmmu
-targets but we still want vXm -cpu's for user mode?
-
->
->  target/arm/Makefile.objs |   1 +
->  target/arm/helper.c      | 633 -------------------------------------
->  target/arm/v7m_helper.c  | 654 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 655 insertions(+), 633 deletions(-)
->  create mode 100644 target/arm/v7m_helper.c
->
-> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-> index 72b42f825f..5f3f965cc6 100644
-> --- a/target/arm/Makefile.objs
-> +++ b/target/arm/Makefile.objs
-> @@ -35,6 +35,7 @@ obj-y +=3D translate.o op_helper.o
->  obj-y +=3D crypto_helper.o
->  obj-y +=3D iwmmxt_helper.o vec_helper.o
->  obj-y +=3D neon_helper.o vfp_helper.o
-> +obj-$(call lor,$(CONFIG_USER_ONLY),$(CONFIG_ARM_V7M)) +=3D v7m_helper.o
->
->  obj-$(TARGET_AARCH64) +=3D translate-a64.o helper-a64.o
->  obj-$(TARGET_AARCH64) +=3D translate-sve.o sve_helper.o
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a1e74cc471..a829086c6d 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -20,7 +20,6 @@
->  #include "qemu/crc32c.h"
->  #include "qemu/qemu-print.h"
->  #include "exec/exec-all.h"
-> -#include "exec/cpu_ldst.h"
->  #include "arm_ldst.h"
->  #include <zlib.h> /* For crc32 */
->  #include "hw/semihosting/semihost.h"
-> @@ -7456,75 +7455,6 @@ uint32_t HELPER(rbit)(uint32_t x)
->
->  #ifdef CONFIG_USER_ONLY
->
-> -/* These should probably raise undefined insn exceptions.  */
-> -void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
-> -{
-> -    ARMCPU *cpu =3D env_archcpu(env);
-> -
-> -    cpu_abort(CPU(cpu), "v7m_msr %d\n", reg);
-> -}
-> -
-> -uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-> -{
-> -    ARMCPU *cpu =3D env_archcpu(env);
-> -
-> -    cpu_abort(CPU(cpu), "v7m_mrs %d\n", reg);
-> -    return 0;
-> -}
-> -
-> -void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-> -{
-> -    /* translate.c should never generate calls here in user-only mode */
-> -    g_assert_not_reached();
-> -}
-> -
-> -void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-> -{
-> -    /* translate.c should never generate calls here in user-only mode */
-> -    g_assert_not_reached();
-> -}
-> -
-> -void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
-> -{
-> -    /* translate.c should never generate calls here in user-only mode */
-> -    g_assert_not_reached();
-> -}
-> -
-> -void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
-> -{
-> -    /* translate.c should never generate calls here in user-only mode */
-> -    g_assert_not_reached();
-> -}
-> -
-> -void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
-> -{
-> -    /* translate.c should never generate calls here in user-only mode */
-> -    g_assert_not_reached();
-> -}
-> -
-> -uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-> -{
-> -    /*
-> -     * The TT instructions can be used by unprivileged code, but in
-> -     * user-only emulation we don't have the MPU.
-> -     * Luckily since we know we are NonSecure unprivileged (and that in
-> -     * turn means that the A flag wasn't specified), all the bits in the
-> -     * register must be zero:
-> -     *  IREGION: 0 because IRVALID is 0
-> -     *  IRVALID: 0 because NS
-> -     *  S: 0 because NS
-> -     *  NSRW: 0 because NS
-> -     *  NSR: 0 because NS
-> -     *  RW: 0 because unpriv and A flag not set
-> -     *  R: 0 because unpriv and A flag not set
-> -     *  SRVALID: 0 because NS
-> -     *  MRVALID: 0 because unpriv and A flag not set
-> -     *  SREGION: 0 becaus SRVALID is 0
-> -     *  MREGION: 0 because MRVALID is 0
-> -     */
-> -    return 0;
-> -}
-> -
->  void switch_mode(CPUARMState *env, int mode)
->  {
->      ARMCPU *cpu =3D env_archcpu(env);
-> @@ -8048,109 +7978,6 @@ void switch_v7m_security_state(CPUARMState *env, =
-bool new_secstate)
->      }
->  }
->
-> -void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-> -{
-> -    /*
-> -     * Handle v7M BXNS:
-> -     *  - if the return value is a magic value, do exception return (lik=
-e BX)
-> -     *  - otherwise bit 0 of the return value is the target security sta=
-te
-> -     */
-> -    uint32_t min_magic;
-> -
-> -    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> -        /* Covers FNC_RETURN and EXC_RETURN magic */
-> -        min_magic =3D FNC_RETURN_MIN_MAGIC;
-> -    } else {
-> -        /* EXC_RETURN magic only */
-> -        min_magic =3D EXC_RETURN_MIN_MAGIC;
-> -    }
-> -
-> -    if (dest >=3D min_magic) {
-> -        /*
-> -         * This is an exception return magic value; put it where
-> -         * do_v7m_exception_exit() expects and raise EXCEPTION_EXIT.
-> -         * Note that if we ever add gen_ss_advance() singlestep support =
-to
-> -         * M profile this should count as an "instruction execution comp=
-lete"
-> -         * event (compare gen_bx_excret_final_code()).
-> -         */
-> -        env->regs[15] =3D dest & ~1;
-> -        env->thumb =3D dest & 1;
-> -        HELPER(exception_internal)(env, EXCP_EXCEPTION_EXIT);
-> -        /* notreached */
-> -    }
-> -
-> -    /* translate.c should have made BXNS UNDEF unless we're secure */
-> -    assert(env->v7m.secure);
-> -
-> -    if (!(dest & 1)) {
-> -        env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> -    }
-> -    switch_v7m_security_state(env, dest & 1);
-> -    env->thumb =3D 1;
-> -    env->regs[15] =3D dest & ~1;
-> -}
-> -
-> -void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-> -{
-> -    /*
-> -     * Handle v7M BLXNS:
-> -     *  - bit 0 of the destination address is the target security state
-> -     */
-> -
-> -    /* At this point regs[15] is the address just after the BLXNS */
-> -    uint32_t nextinst =3D env->regs[15] | 1;
-> -    uint32_t sp =3D env->regs[13] - 8;
-> -    uint32_t saved_psr;
-> -
-> -    /* translate.c will have made BLXNS UNDEF unless we're secure */
-> -    assert(env->v7m.secure);
-> -
-> -    if (dest & 1) {
-> -        /*
-> -         * Target is Secure, so this is just a normal BLX,
-> -         * except that the low bit doesn't indicate Thumb/not.
-> -         */
-> -        env->regs[14] =3D nextinst;
-> -        env->thumb =3D 1;
-> -        env->regs[15] =3D dest & ~1;
-> -        return;
-> -    }
-> -
-> -    /* Target is non-secure: first push a stack frame */
-> -    if (!QEMU_IS_ALIGNED(sp, 8)) {
-> -        qemu_log_mask(LOG_GUEST_ERROR,
-> -                      "BLXNS with misaligned SP is UNPREDICTABLE\n");
-> -    }
-> -
-> -    if (sp < v7m_sp_limit(env)) {
-> -        raise_exception(env, EXCP_STKOF, 0, 1);
-> -    }
-> -
-> -    saved_psr =3D env->v7m.exception;
-> -    if (env->v7m.control[M_REG_S] & R_V7M_CONTROL_SFPA_MASK) {
-> -        saved_psr |=3D XPSR_SFPA;
-> -    }
-> -
-> -    /* Note that these stores can throw exceptions on MPU faults */
-> -    cpu_stl_data(env, sp, nextinst);
-> -    cpu_stl_data(env, sp + 4, saved_psr);
-> -
-> -    env->regs[13] =3D sp;
-> -    env->regs[14] =3D 0xfeffffff;
-> -    if (arm_v7m_is_handler_mode(env)) {
-> -        /*
-> -         * Write a dummy value to IPSR, to avoid leaking the current sec=
-ure
-> -         * exception number to non-secure code. This is guaranteed not
-> -         * to cause write_v7m_exception() to actually change stacks.
-> -         */
-> -        write_v7m_exception(env, 1);
-> -    }
-> -    env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> -    switch_v7m_security_state(env, 0);
-> -    env->thumb =3D 1;
-> -    env->regs[15] =3D dest;
-> -}
-> -
->  static uint32_t *get_v7m_sp_ptr(CPUARMState *env, bool secure, bool thre=
-admode,
->                                  bool spsel)
->  {
-> @@ -12760,466 +12587,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUSta=
-te *cs, vaddr addr,
->      return phys_addr;
->  }
->
-> -uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-> -{
-> -    uint32_t mask;
-> -    unsigned el =3D arm_current_el(env);
-> -
-> -    /* First handle registers which unprivileged can read */
-> -
-> -    switch (reg) {
-> -    case 0 ... 7: /* xPSR sub-fields */
-> -        mask =3D 0;
-> -        if ((reg & 1) && el) {
-> -            mask |=3D XPSR_EXCP; /* IPSR (unpriv. reads as zero) */
-> -        }
-> -        if (!(reg & 4)) {
-> -            mask |=3D XPSR_NZCV | XPSR_Q; /* APSR */
-> -            if (arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
-> -                mask |=3D XPSR_GE;
-> -            }
-> -        }
-> -        /* EPSR reads as zero */
-> -        return xpsr_read(env) & mask;
-> -        break;
-> -    case 20: /* CONTROL */
-> -    {
-> -        uint32_t value =3D env->v7m.control[env->v7m.secure];
-> -        if (!env->v7m.secure) {
-> -            /* SFPA is RAZ/WI from NS; FPCA is stored in the M_REG_S ban=
-k */
-> -            value |=3D env->v7m.control[M_REG_S] & R_V7M_CONTROL_FPCA_MA=
-SK;
-> -        }
-> -        return value;
-> -    }
-> -    case 0x94: /* CONTROL_NS */
-> -        /*
-> -         * We have to handle this here because unprivileged Secure code
-> -         * can read the NS CONTROL register.
-> -         */
-> -        if (!env->v7m.secure) {
-> -            return 0;
-> -        }
-> -        return env->v7m.control[M_REG_NS] |
-> -            (env->v7m.control[M_REG_S] & R_V7M_CONTROL_FPCA_MASK);
-> -    }
-> -
-> -    if (el =3D=3D 0) {
-> -        return 0; /* unprivileged reads others as zero */
-> -    }
-> -
-> -    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> -        switch (reg) {
-> -        case 0x88: /* MSP_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.other_ss_msp;
-> -        case 0x89: /* PSP_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.other_ss_psp;
-> -        case 0x8a: /* MSPLIM_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.msplim[M_REG_NS];
-> -        case 0x8b: /* PSPLIM_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.psplim[M_REG_NS];
-> -        case 0x90: /* PRIMASK_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.primask[M_REG_NS];
-> -        case 0x91: /* BASEPRI_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.basepri[M_REG_NS];
-> -        case 0x93: /* FAULTMASK_NS */
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            return env->v7m.faultmask[M_REG_NS];
-> -        case 0x98: /* SP_NS */
-> -        {
-> -            /*
-> -             * This gives the non-secure SP selected based on whether we=
-'re
-> -             * currently in handler mode or not, using the NS CONTROL.SP=
-SEL.
-> -             */
-> -            bool spsel =3D env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SP=
-SEL_MASK;
-> -
-> -            if (!env->v7m.secure) {
-> -                return 0;
-> -            }
-> -            if (!arm_v7m_is_handler_mode(env) && spsel) {
-> -                return env->v7m.other_ss_psp;
-> -            } else {
-> -                return env->v7m.other_ss_msp;
-> -            }
-> -        }
-> -        default:
-> -            break;
-> -        }
-> -    }
-> -
-> -    switch (reg) {
-> -    case 8: /* MSP */
-> -        return v7m_using_psp(env) ? env->v7m.other_sp : env->regs[13];
-> -    case 9: /* PSP */
-> -        return v7m_using_psp(env) ? env->regs[13] : env->v7m.other_sp;
-> -    case 10: /* MSPLIM */
-> -        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> -            goto bad_reg;
-> -        }
-> -        return env->v7m.msplim[env->v7m.secure];
-> -    case 11: /* PSPLIM */
-> -        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> -            goto bad_reg;
-> -        }
-> -        return env->v7m.psplim[env->v7m.secure];
-> -    case 16: /* PRIMASK */
-> -        return env->v7m.primask[env->v7m.secure];
-> -    case 17: /* BASEPRI */
-> -    case 18: /* BASEPRI_MAX */
-> -        return env->v7m.basepri[env->v7m.secure];
-> -    case 19: /* FAULTMASK */
-> -        return env->v7m.faultmask[env->v7m.secure];
-> -    default:
-> -    bad_reg:
-> -        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to read unknown special"
-> -                                       " register %d\n", reg);
-> -        return 0;
-> -    }
-> -}
-> -
-> -void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-> -{
-> -    /*
-> -     * We're passed bits [11..0] of the instruction; extract
-> -     * SYSm and the mask bits.
-> -     * Invalid combinations of SYSm and mask are UNPREDICTABLE;
-> -     * we choose to treat them as if the mask bits were valid.
-> -     * NB that the pseudocode 'mask' variable is bits [11..10],
-> -     * whereas ours is [11..8].
-> -     */
-> -    uint32_t mask =3D extract32(maskreg, 8, 4);
-> -    uint32_t reg =3D extract32(maskreg, 0, 8);
-> -    int cur_el =3D arm_current_el(env);
-> -
-> -    if (cur_el =3D=3D 0 && reg > 7 && reg !=3D 20) {
-> -        /*
-> -         * only xPSR sub-fields and CONTROL.SFPA may be written by
-> -         * unprivileged code
-> -         */
-> -        return;
-> -    }
-> -
-> -    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> -        switch (reg) {
-> -        case 0x88: /* MSP_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            env->v7m.other_ss_msp =3D val;
-> -            return;
-> -        case 0x89: /* PSP_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            env->v7m.other_ss_psp =3D val;
-> -            return;
-> -        case 0x8a: /* MSPLIM_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            env->v7m.msplim[M_REG_NS] =3D val & ~7;
-> -            return;
-> -        case 0x8b: /* PSPLIM_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            env->v7m.psplim[M_REG_NS] =3D val & ~7;
-> -            return;
-> -        case 0x90: /* PRIMASK_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            env->v7m.primask[M_REG_NS] =3D val & 1;
-> -            return;
-> -        case 0x91: /* BASEPRI_NS */
-> -            if (!env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_MAIN=
-)) {
-> -                return;
-> -            }
-> -            env->v7m.basepri[M_REG_NS] =3D val & 0xff;
-> -            return;
-> -        case 0x93: /* FAULTMASK_NS */
-> -            if (!env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_MAIN=
-)) {
-> -                return;
-> -            }
-> -            env->v7m.faultmask[M_REG_NS] =3D val & 1;
-> -            return;
-> -        case 0x94: /* CONTROL_NS */
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -            write_v7m_control_spsel_for_secstate(env,
-> -                                                 val & R_V7M_CONTROL_SPS=
-EL_MASK,
-> -                                                 M_REG_NS);
-> -            if (arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> -                env->v7m.control[M_REG_NS] &=3D ~R_V7M_CONTROL_NPRIV_MAS=
-K;
-> -                env->v7m.control[M_REG_NS] |=3D val & R_V7M_CONTROL_NPRI=
-V_MASK;
-> -            }
-> -            /*
-> -             * SFPA is RAZ/WI from NS. FPCA is RO if NSACR.CP10 =3D=3D 0,
-> -             * RES0 if the FPU is not present, and is stored in the S ba=
-nk
-> -             */
-> -            if (arm_feature(env, ARM_FEATURE_VFP) &&
-> -                extract32(env->v7m.nsacr, 10, 1)) {
-> -                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_FPCA_MASK;
-> -                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_FPCA_=
-MASK;
-> -            }
-> -            return;
-> -        case 0x98: /* SP_NS */
-> -        {
-> -            /*
-> -             * This gives the non-secure SP selected based on whether we=
-'re
-> -             * currently in handler mode or not, using the NS CONTROL.SP=
-SEL.
-> -             */
-> -            bool spsel =3D env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SP=
-SEL_MASK;
-> -            bool is_psp =3D !arm_v7m_is_handler_mode(env) && spsel;
-> -            uint32_t limit;
-> -
-> -            if (!env->v7m.secure) {
-> -                return;
-> -            }
-> -
-> -            limit =3D is_psp ? env->v7m.psplim[false] : env->v7m.msplim[=
-false];
-> -
-> -            if (val < limit) {
-> -                CPUState *cs =3D env_cpu(env);
-> -
-> -                cpu_restore_state(cs, GETPC(), true);
-> -                raise_exception(env, EXCP_STKOF, 0, 1);
-> -            }
-> -
-> -            if (is_psp) {
-> -                env->v7m.other_ss_psp =3D val;
-> -            } else {
-> -                env->v7m.other_ss_msp =3D val;
-> -            }
-> -            return;
-> -        }
-> -        default:
-> -            break;
-> -        }
-> -    }
-> -
-> -    switch (reg) {
-> -    case 0 ... 7: /* xPSR sub-fields */
-> -        /* only APSR is actually writable */
-> -        if (!(reg & 4)) {
-> -            uint32_t apsrmask =3D 0;
-> -
-> -            if (mask & 8) {
-> -                apsrmask |=3D XPSR_NZCV | XPSR_Q;
-> -            }
-> -            if ((mask & 4) && arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
-> -                apsrmask |=3D XPSR_GE;
-> -            }
-> -            xpsr_write(env, val, apsrmask);
-> -        }
-> -        break;
-> -    case 8: /* MSP */
-> -        if (v7m_using_psp(env)) {
-> -            env->v7m.other_sp =3D val;
-> -        } else {
-> -            env->regs[13] =3D val;
-> -        }
-> -        break;
-> -    case 9: /* PSP */
-> -        if (v7m_using_psp(env)) {
-> -            env->regs[13] =3D val;
-> -        } else {
-> -            env->v7m.other_sp =3D val;
-> -        }
-> -        break;
-> -    case 10: /* MSPLIM */
-> -        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> -            goto bad_reg;
-> -        }
-> -        env->v7m.msplim[env->v7m.secure] =3D val & ~7;
-> -        break;
-> -    case 11: /* PSPLIM */
-> -        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> -            goto bad_reg;
-> -        }
-> -        env->v7m.psplim[env->v7m.secure] =3D val & ~7;
-> -        break;
-> -    case 16: /* PRIMASK */
-> -        env->v7m.primask[env->v7m.secure] =3D val & 1;
-> -        break;
-> -    case 17: /* BASEPRI */
-> -        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> -            goto bad_reg;
-> -        }
-> -        env->v7m.basepri[env->v7m.secure] =3D val & 0xff;
-> -        break;
-> -    case 18: /* BASEPRI_MAX */
-> -        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> -            goto bad_reg;
-> -        }
-> -        val &=3D 0xff;
-> -        if (val !=3D 0 && (val < env->v7m.basepri[env->v7m.secure]
-> -                         || env->v7m.basepri[env->v7m.secure] =3D=3D 0))=
- {
-> -            env->v7m.basepri[env->v7m.secure] =3D val;
-> -        }
-> -        break;
-> -    case 19: /* FAULTMASK */
-> -        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> -            goto bad_reg;
-> -        }
-> -        env->v7m.faultmask[env->v7m.secure] =3D val & 1;
-> -        break;
-> -    case 20: /* CONTROL */
-> -        /*
-> -         * Writing to the SPSEL bit only has an effect if we are in
-> -         * thread mode; other bits can be updated by any privileged code.
-> -         * write_v7m_control_spsel() deals with updating the SPSEL bit in
-> -         * env->v7m.control, so we only need update the others.
-> -         * For v7M, we must just ignore explicit writes to SPSEL in hand=
-ler
-> -         * mode; for v8M the write is permitted but will have no effect.
-> -         * All these bits are writes-ignored from non-privileged code,
-> -         * except for SFPA.
-> -         */
-> -        if (cur_el > 0 && (arm_feature(env, ARM_FEATURE_V8) ||
-> -                           !arm_v7m_is_handler_mode(env))) {
-> -            write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK=
-) !=3D 0);
-> -        }
-> -        if (cur_el > 0 && arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> -            env->v7m.control[env->v7m.secure] &=3D ~R_V7M_CONTROL_NPRIV_=
-MASK;
-> -            env->v7m.control[env->v7m.secure] |=3D val & R_V7M_CONTROL_N=
-PRIV_MASK;
-> -        }
-> -        if (arm_feature(env, ARM_FEATURE_VFP)) {
-> -            /*
-> -             * SFPA is RAZ/WI from NS or if no FPU.
-> -             * FPCA is RO if NSACR.CP10 =3D=3D 0, RES0 if the FPU is not=
- present.
-> -             * Both are stored in the S bank.
-> -             */
-> -            if (env->v7m.secure) {
-> -                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> -                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_SFPA_=
-MASK;
-> -            }
-> -            if (cur_el > 0 &&
-> -                (env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_SECU=
-RITY) ||
-> -                 extract32(env->v7m.nsacr, 10, 1))) {
-> -                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_FPCA_MASK;
-> -                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_FPCA_=
-MASK;
-> -            }
-> -        }
-> -        break;
-> -    default:
-> -    bad_reg:
-> -        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
-> -                                       " register %d\n", reg);
-> -        return;
-> -    }
-> -}
-> -
-> -uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-> -{
-> -    /* Implement the TT instruction. op is bits [7:6] of the insn. */
-> -    bool forceunpriv =3D op & 1;
-> -    bool alt =3D op & 2;
-> -    V8M_SAttributes sattrs =3D {};
-> -    uint32_t tt_resp;
-> -    bool r, rw, nsr, nsrw, mrvalid;
-> -    int prot;
-> -    ARMMMUFaultInfo fi =3D {};
-> -    MemTxAttrs attrs =3D {};
-> -    hwaddr phys_addr;
-> -    ARMMMUIdx mmu_idx;
-> -    uint32_t mregion;
-> -    bool targetpriv;
-> -    bool targetsec =3D env->v7m.secure;
-> -    bool is_subpage;
-> -
-> -    /*
-> -     * Work out what the security state and privilege level we're
-> -     * interested in is...
-> -     */
-> -    if (alt) {
-> -        targetsec =3D !targetsec;
-> -    }
-> -
-> -    if (forceunpriv) {
-> -        targetpriv =3D false;
-> -    } else {
-> -        targetpriv =3D arm_v7m_is_handler_mode(env) ||
-> -            !(env->v7m.control[targetsec] & R_V7M_CONTROL_NPRIV_MASK);
-> -    }
-> -
-> -    /* ...and then figure out which MMU index this is */
-> -    mmu_idx =3D arm_v7m_mmu_idx_for_secstate_and_priv(env, targetsec, ta=
-rgetpriv);
-> -
-> -    /*
-> -     * We know that the MPU and SAU don't care about the access type
-> -     * for our purposes beyond that we don't want to claim to be
-> -     * an insn fetch, so we arbitrarily call this a read.
-> -     */
-> -
-> -    /*
-> -     * MPU region info only available for privileged or if
-> -     * inspecting the other MPU state.
-> -     */
-> -    if (arm_current_el(env) !=3D 0 || alt) {
-> -        /* We can ignore the return value as prot is always set */
-> -        pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
-> -                          &phys_addr, &attrs, &prot, &is_subpage,
-> -                          &fi, &mregion);
-> -        if (mregion =3D=3D -1) {
-> -            mrvalid =3D false;
-> -            mregion =3D 0;
-> -        } else {
-> -            mrvalid =3D true;
-> -        }
-> -        r =3D prot & PAGE_READ;
-> -        rw =3D prot & PAGE_WRITE;
-> -    } else {
-> -        r =3D false;
-> -        rw =3D false;
-> -        mrvalid =3D false;
-> -        mregion =3D 0;
-> -    }
-> -
-> -    if (env->v7m.secure) {
-> -        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, &sattrs);
-> -        nsr =3D sattrs.ns && r;
-> -        nsrw =3D sattrs.ns && rw;
-> -    } else {
-> -        sattrs.ns =3D true;
-> -        nsr =3D false;
-> -        nsrw =3D false;
-> -    }
-> -
-> -    tt_resp =3D (sattrs.iregion << 24) |
-> -        (sattrs.irvalid << 23) |
-> -        ((!sattrs.ns) << 22) |
-> -        (nsrw << 21) |
-> -        (nsr << 20) |
-> -        (rw << 19) |
-> -        (r << 18) |
-> -        (sattrs.srvalid << 17) |
-> -        (mrvalid << 16) |
-> -        (sattrs.sregion << 8) |
-> -        mregion;
-> -
-> -    return tt_resp;
-> -}
-> -
->  #endif
->
->  bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-> diff --git a/target/arm/v7m_helper.c b/target/arm/v7m_helper.c
-> new file mode 100644
-> index 0000000000..321154966e
-> --- /dev/null
-> +++ b/target/arm/v7m_helper.c
-> @@ -0,0 +1,654 @@
-> +/*
-> + * ARM v7-M helpers.
-> + *
-> + * This code is licensed under the GNU GPL v2 or later.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +#include "qemu/osdep.h"
-> +#include "sysemu/sysemu.h"
-> +#include "cpu.h"
-> +#include "internals.h"
-> +#include "exec/helper-proto.h"
-> +#include "exec/exec-all.h"
-> +#include "arm_ldst.h"
-> +#include "hw/semihosting/semihost.h"
-> +#include "fpu/softfloat.h"
-> +
-> +#if defined(CONFIG_USER_ONLY)
-> +
-> +/* These should probably raise undefined insn exceptions.  */
-> +void HELPER(v7m_msr)(CPUARMState *env, uint32_t reg, uint32_t val)
-> +{
-> +    ARMCPU *cpu =3D env_archcpu(env);
-> +
-> +    cpu_abort(CPU(cpu), "v7m_msr %d\n", reg);
-> +}
-> +
-> +uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-> +{
-> +    ARMCPU *cpu =3D env_archcpu(env);
-> +
-> +    cpu_abort(CPU(cpu), "v7m_mrs %d\n", reg);
-> +    return 0;
-> +}
-> +
-> +void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-> +{
-> +    /* translate.c should never generate calls here in user-only mode */
-> +    g_assert_not_reached();
-> +}
-> +
-> +void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-> +{
-> +    /* translate.c should never generate calls here in user-only mode */
-> +    g_assert_not_reached();
-> +}
-> +
-> +void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
-> +{
-> +    /* translate.c should never generate calls here in user-only mode */
-> +    g_assert_not_reached();
-> +}
-> +
-> +void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
-> +{
-> +    /* translate.c should never generate calls here in user-only mode */
-> +    g_assert_not_reached();
-> +}
-> +
-> +void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
-> +{
-> +    /* translate.c should never generate calls here in user-only mode */
-> +    g_assert_not_reached();
-> +}
-> +
-> +uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-> +{
-> +    /*
-> +     * The TT instructions can be used by unprivileged code, but in
-> +     * user-only emulation we don't have the MPU.
-> +     * Luckily since we know we are NonSecure unprivileged (and that in
-> +     * turn means that the A flag wasn't specified), all the bits in the
-> +     * register must be zero:
-> +     *  IREGION: 0 because IRVALID is 0
-> +     *  IRVALID: 0 because NS
-> +     *  S: 0 because NS
-> +     *  NSRW: 0 because NS
-> +     *  NSR: 0 because NS
-> +     *  RW: 0 because unpriv and A flag not set
-> +     *  R: 0 because unpriv and A flag not set
-> +     *  SRVALID: 0 because NS
-> +     *  MRVALID: 0 because unpriv and A flag not set
-> +     *  SREGION: 0 becaus SRVALID is 0
-> +     *  MREGION: 0 because MRVALID is 0
-> +     */
-> +    return 0;
-> +}
-> +
-> +#else
-> +
-> +void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
-> +{
-> +    /*
-> +     * Handle v7M BXNS:
-> +     *  - if the return value is a magic value, do exception return (lik=
-e BX)
-> +     *  - otherwise bit 0 of the return value is the target security sta=
-te
-> +     */
-> +    uint32_t min_magic;
-> +
-> +    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> +        /* Covers FNC_RETURN and EXC_RETURN magic */
-> +        min_magic =3D FNC_RETURN_MIN_MAGIC;
-> +    } else {
-> +        /* EXC_RETURN magic only */
-> +        min_magic =3D EXC_RETURN_MIN_MAGIC;
-> +    }
-> +
-> +    if (dest >=3D min_magic) {
-> +        /*
-> +         * This is an exception return magic value; put it where
-> +         * do_v7m_exception_exit() expects and raise EXCEPTION_EXIT.
-> +         * Note that if we ever add gen_ss_advance() singlestep support =
-to
-> +         * M profile this should count as an "instruction execution comp=
-lete"
-> +         * event (compare gen_bx_excret_final_code()).
-> +         */
-> +        env->regs[15] =3D dest & ~1;
-> +        env->thumb =3D dest & 1;
-> +        HELPER(exception_internal)(env, EXCP_EXCEPTION_EXIT);
-> +        /* notreached */
-> +    }
-> +
-> +    /* translate.c should have made BXNS UNDEF unless we're secure */
-> +    assert(env->v7m.secure);
-> +
-> +    if (!(dest & 1)) {
-> +        env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> +    }
-> +    switch_v7m_security_state(env, dest & 1);
-> +    env->thumb =3D 1;
-> +    env->regs[15] =3D dest & ~1;
-> +}
-> +
-> +void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-> +{
-> +    /*
-> +     * Handle v7M BLXNS:
-> +     *  - bit 0 of the destination address is the target security state
-> +     */
-> +
-> +    /* At this point regs[15] is the address just after the BLXNS */
-> +    uint32_t nextinst =3D env->regs[15] | 1;
-> +    uint32_t sp =3D env->regs[13] - 8;
-> +    uint32_t saved_psr;
-> +
-> +    /* translate.c will have made BLXNS UNDEF unless we're secure */
-> +    assert(env->v7m.secure);
-> +
-> +    if (dest & 1) {
-> +        /*
-> +         * Target is Secure, so this is just a normal BLX,
-> +         * except that the low bit doesn't indicate Thumb/not.
-> +         */
-> +        env->regs[14] =3D nextinst;
-> +        env->thumb =3D 1;
-> +        env->regs[15] =3D dest & ~1;
-> +        return;
-> +    }
-> +
-> +    /* Target is non-secure: first push a stack frame */
-> +    if (!QEMU_IS_ALIGNED(sp, 8)) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "BLXNS with misaligned SP is UNPREDICTABLE\n");
-> +    }
-> +
-> +    if (sp < v7m_sp_limit(env)) {
-> +        raise_exception(env, EXCP_STKOF, 0, 1);
-> +    }
-> +
-> +    saved_psr =3D env->v7m.exception;
-> +    if (env->v7m.control[M_REG_S] & R_V7M_CONTROL_SFPA_MASK) {
-> +        saved_psr |=3D XPSR_SFPA;
-> +    }
-> +
-> +    /* Note that these stores can throw exceptions on MPU faults */
-> +    cpu_stl_data(env, sp, nextinst);
-> +    cpu_stl_data(env, sp + 4, saved_psr);
-> +
-> +    env->regs[13] =3D sp;
-> +    env->regs[14] =3D 0xfeffffff;
-> +    if (arm_v7m_is_handler_mode(env)) {
-> +        /*
-> +         * Write a dummy value to IPSR, to avoid leaking the current sec=
-ure
-> +         * exception number to non-secure code. This is guaranteed not
-> +         * to cause write_v7m_exception() to actually change stacks.
-> +         */
-> +        write_v7m_exception(env, 1);
-> +    }
-> +    env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> +    switch_v7m_security_state(env, 0);
-> +    env->thumb =3D 1;
-> +    env->regs[15] =3D dest;
-> +}
-> +
-> +uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
-> +{
-> +    uint32_t mask;
-> +    unsigned el =3D arm_current_el(env);
-> +
-> +    /* First handle registers which unprivileged can read */
-> +
-> +    switch (reg) {
-> +    case 0 ... 7: /* xPSR sub-fields */
-> +        mask =3D 0;
-> +        if ((reg & 1) && el) {
-> +            mask |=3D XPSR_EXCP; /* IPSR (unpriv. reads as zero) */
-> +        }
-> +        if (!(reg & 4)) {
-> +            mask |=3D XPSR_NZCV | XPSR_Q; /* APSR */
-> +            if (arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
-> +                mask |=3D XPSR_GE;
-> +            }
-> +        }
-> +        /* EPSR reads as zero */
-> +        return xpsr_read(env) & mask;
-> +        break;
-> +    case 20: /* CONTROL */
-> +    {
-> +        uint32_t value =3D env->v7m.control[env->v7m.secure];
-> +        if (!env->v7m.secure) {
-> +            /* SFPA is RAZ/WI from NS; FPCA is stored in the M_REG_S ban=
-k */
-> +            value |=3D env->v7m.control[M_REG_S] & R_V7M_CONTROL_FPCA_MA=
-SK;
-> +        }
-> +        return value;
-> +    }
-> +    case 0x94: /* CONTROL_NS */
-> +        /*
-> +         * We have to handle this here because unprivileged Secure code
-> +         * can read the NS CONTROL register.
-> +         */
-> +        if (!env->v7m.secure) {
-> +            return 0;
-> +        }
-> +        return env->v7m.control[M_REG_NS] |
-> +            (env->v7m.control[M_REG_S] & R_V7M_CONTROL_FPCA_MASK);
-> +    }
-> +
-> +    if (el =3D=3D 0) {
-> +        return 0; /* unprivileged reads others as zero */
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> +        switch (reg) {
-> +        case 0x88: /* MSP_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.other_ss_msp;
-> +        case 0x89: /* PSP_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.other_ss_psp;
-> +        case 0x8a: /* MSPLIM_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.msplim[M_REG_NS];
-> +        case 0x8b: /* PSPLIM_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.psplim[M_REG_NS];
-> +        case 0x90: /* PRIMASK_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.primask[M_REG_NS];
-> +        case 0x91: /* BASEPRI_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.basepri[M_REG_NS];
-> +        case 0x93: /* FAULTMASK_NS */
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            return env->v7m.faultmask[M_REG_NS];
-> +        case 0x98: /* SP_NS */
-> +        {
-> +            /*
-> +             * This gives the non-secure SP selected based on whether we=
-'re
-> +             * currently in handler mode or not, using the NS CONTROL.SP=
-SEL.
-> +             */
-> +            bool spsel =3D env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SP=
-SEL_MASK;
-> +
-> +            if (!env->v7m.secure) {
-> +                return 0;
-> +            }
-> +            if (!arm_v7m_is_handler_mode(env) && spsel) {
-> +                return env->v7m.other_ss_psp;
-> +            } else {
-> +                return env->v7m.other_ss_msp;
-> +            }
-> +        }
-> +        default:
-> +            break;
-> +        }
-> +    }
-> +
-> +    switch (reg) {
-> +    case 8: /* MSP */
-> +        return v7m_using_psp(env) ? env->v7m.other_sp : env->regs[13];
-> +    case 9: /* PSP */
-> +        return v7m_using_psp(env) ? env->regs[13] : env->v7m.other_sp;
-> +    case 10: /* MSPLIM */
-> +        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> +            goto bad_reg;
-> +        }
-> +        return env->v7m.msplim[env->v7m.secure];
-> +    case 11: /* PSPLIM */
-> +        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> +            goto bad_reg;
-> +        }
-> +        return env->v7m.psplim[env->v7m.secure];
-> +    case 16: /* PRIMASK */
-> +        return env->v7m.primask[env->v7m.secure];
-> +    case 17: /* BASEPRI */
-> +    case 18: /* BASEPRI_MAX */
-> +        return env->v7m.basepri[env->v7m.secure];
-> +    case 19: /* FAULTMASK */
-> +        return env->v7m.faultmask[env->v7m.secure];
-> +    default:
-> +    bad_reg:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to read unknown special"
-> +                                       " register %d\n", reg);
-> +        return 0;
-> +    }
-> +}
-> +
-> +void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-> +{
-> +    /*
-> +     * We're passed bits [11..0] of the instruction; extract
-> +     * SYSm and the mask bits.
-> +     * Invalid combinations of SYSm and mask are UNPREDICTABLE;
-> +     * we choose to treat them as if the mask bits were valid.
-> +     * NB that the pseudocode 'mask' variable is bits [11..10],
-> +     * whereas ours is [11..8].
-> +     */
-> +    uint32_t mask =3D extract32(maskreg, 8, 4);
-> +    uint32_t reg =3D extract32(maskreg, 0, 8);
-> +    int cur_el =3D arm_current_el(env);
-> +
-> +    if (cur_el =3D=3D 0 && reg > 7 && reg !=3D 20) {
-> +        /*
-> +         * only xPSR sub-fields and CONTROL.SFPA may be written by
-> +         * unprivileged code
-> +         */
-> +        return;
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> +        switch (reg) {
-> +        case 0x88: /* MSP_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            env->v7m.other_ss_msp =3D val;
-> +            return;
-> +        case 0x89: /* PSP_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            env->v7m.other_ss_psp =3D val;
-> +            return;
-> +        case 0x8a: /* MSPLIM_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            env->v7m.msplim[M_REG_NS] =3D val & ~7;
-> +            return;
-> +        case 0x8b: /* PSPLIM_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            env->v7m.psplim[M_REG_NS] =3D val & ~7;
-> +            return;
-> +        case 0x90: /* PRIMASK_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            env->v7m.primask[M_REG_NS] =3D val & 1;
-> +            return;
-> +        case 0x91: /* BASEPRI_NS */
-> +            if (!env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_MAIN=
-)) {
-> +                return;
-> +            }
-> +            env->v7m.basepri[M_REG_NS] =3D val & 0xff;
-> +            return;
-> +        case 0x93: /* FAULTMASK_NS */
-> +            if (!env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_MAIN=
-)) {
-> +                return;
-> +            }
-> +            env->v7m.faultmask[M_REG_NS] =3D val & 1;
-> +            return;
-> +        case 0x94: /* CONTROL_NS */
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +            write_v7m_control_spsel_for_secstate(env,
-> +                                                 val & R_V7M_CONTROL_SPS=
-EL_MASK,
-> +                                                 M_REG_NS);
-> +            if (arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +                env->v7m.control[M_REG_NS] &=3D ~R_V7M_CONTROL_NPRIV_MAS=
-K;
-> +                env->v7m.control[M_REG_NS] |=3D val & R_V7M_CONTROL_NPRI=
-V_MASK;
-> +            }
-> +            /*
-> +             * SFPA is RAZ/WI from NS. FPCA is RO if NSACR.CP10 =3D=3D 0,
-> +             * RES0 if the FPU is not present, and is stored in the S ba=
-nk
-> +             */
-> +            if (arm_feature(env, ARM_FEATURE_VFP) &&
-> +                extract32(env->v7m.nsacr, 10, 1)) {
-> +                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_FPCA_MASK;
-> +                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_FPCA_=
-MASK;
-> +            }
-> +            return;
-> +        case 0x98: /* SP_NS */
-> +        {
-> +            /*
-> +             * This gives the non-secure SP selected based on whether we=
-'re
-> +             * currently in handler mode or not, using the NS CONTROL.SP=
-SEL.
-> +             */
-> +            bool spsel =3D env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SP=
-SEL_MASK;
-> +            bool is_psp =3D !arm_v7m_is_handler_mode(env) && spsel;
-> +            uint32_t limit;
-> +
-> +            if (!env->v7m.secure) {
-> +                return;
-> +            }
-> +
-> +            limit =3D is_psp ? env->v7m.psplim[false] : env->v7m.msplim[=
-false];
-> +
-> +            if (val < limit) {
-> +                CPUState *cs =3D env_cpu(env);
-> +
-> +                cpu_restore_state(cs, GETPC(), true);
-> +                raise_exception(env, EXCP_STKOF, 0, 1);
-> +            }
-> +
-> +            if (is_psp) {
-> +                env->v7m.other_ss_psp =3D val;
-> +            } else {
-> +                env->v7m.other_ss_msp =3D val;
-> +            }
-> +            return;
-> +        }
-> +        default:
-> +            break;
-> +        }
-> +    }
-> +
-> +    switch (reg) {
-> +    case 0 ... 7: /* xPSR sub-fields */
-> +        /* only APSR is actually writable */
-> +        if (!(reg & 4)) {
-> +            uint32_t apsrmask =3D 0;
-> +
-> +            if (mask & 8) {
-> +                apsrmask |=3D XPSR_NZCV | XPSR_Q;
-> +            }
-> +            if ((mask & 4) && arm_feature(env, ARM_FEATURE_THUMB_DSP)) {
-> +                apsrmask |=3D XPSR_GE;
-> +            }
-> +            xpsr_write(env, val, apsrmask);
-> +        }
-> +        break;
-> +    case 8: /* MSP */
-> +        if (v7m_using_psp(env)) {
-> +            env->v7m.other_sp =3D val;
-> +        } else {
-> +            env->regs[13] =3D val;
-> +        }
-> +        break;
-> +    case 9: /* PSP */
-> +        if (v7m_using_psp(env)) {
-> +            env->regs[13] =3D val;
-> +        } else {
-> +            env->v7m.other_sp =3D val;
-> +        }
-> +        break;
-> +    case 10: /* MSPLIM */
-> +        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> +            goto bad_reg;
-> +        }
-> +        env->v7m.msplim[env->v7m.secure] =3D val & ~7;
-> +        break;
-> +    case 11: /* PSPLIM */
-> +        if (!arm_feature(env, ARM_FEATURE_V8)) {
-> +            goto bad_reg;
-> +        }
-> +        env->v7m.psplim[env->v7m.secure] =3D val & ~7;
-> +        break;
-> +    case 16: /* PRIMASK */
-> +        env->v7m.primask[env->v7m.secure] =3D val & 1;
-> +        break;
-> +    case 17: /* BASEPRI */
-> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +            goto bad_reg;
-> +        }
-> +        env->v7m.basepri[env->v7m.secure] =3D val & 0xff;
-> +        break;
-> +    case 18: /* BASEPRI_MAX */
-> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +            goto bad_reg;
-> +        }
-> +        val &=3D 0xff;
-> +        if (val !=3D 0 && (val < env->v7m.basepri[env->v7m.secure]
-> +                         || env->v7m.basepri[env->v7m.secure] =3D=3D 0))=
- {
-> +            env->v7m.basepri[env->v7m.secure] =3D val;
-> +        }
-> +        break;
-> +    case 19: /* FAULTMASK */
-> +        if (!arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +            goto bad_reg;
-> +        }
-> +        env->v7m.faultmask[env->v7m.secure] =3D val & 1;
-> +        break;
-> +    case 20: /* CONTROL */
-> +        /*
-> +         * Writing to the SPSEL bit only has an effect if we are in
-> +         * thread mode; other bits can be updated by any privileged code.
-> +         * write_v7m_control_spsel() deals with updating the SPSEL bit in
-> +         * env->v7m.control, so we only need update the others.
-> +         * For v7M, we must just ignore explicit writes to SPSEL in hand=
-ler
-> +         * mode; for v8M the write is permitted but will have no effect.
-> +         * All these bits are writes-ignored from non-privileged code,
-> +         * except for SFPA.
-> +         */
-> +        if (cur_el > 0 && (arm_feature(env, ARM_FEATURE_V8) ||
-> +                           !arm_v7m_is_handler_mode(env))) {
-> +            write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK=
-) !=3D 0);
-> +        }
-> +        if (cur_el > 0 && arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +            env->v7m.control[env->v7m.secure] &=3D ~R_V7M_CONTROL_NPRIV_=
-MASK;
-> +            env->v7m.control[env->v7m.secure] |=3D val & R_V7M_CONTROL_N=
-PRIV_MASK;
-> +        }
-> +        if (arm_feature(env, ARM_FEATURE_VFP)) {
-> +            /*
-> +             * SFPA is RAZ/WI from NS or if no FPU.
-> +             * FPCA is RO if NSACR.CP10 =3D=3D 0, RES0 if the FPU is not=
- present.
-> +             * Both are stored in the S bank.
-> +             */
-> +            if (env->v7m.secure) {
-> +                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_SFPA_MASK;
-> +                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_SFPA_=
-MASK;
-> +            }
-> +            if (cur_el > 0 &&
-> +                (env->v7m.secure || !arm_feature(env, ARM_FEATURE_M_SECU=
-RITY) ||
-> +                 extract32(env->v7m.nsacr, 10, 1))) {
-> +                env->v7m.control[M_REG_S] &=3D ~R_V7M_CONTROL_FPCA_MASK;
-> +                env->v7m.control[M_REG_S] |=3D val & R_V7M_CONTROL_FPCA_=
-MASK;
-> +            }
-> +        }
-> +        break;
-> +    default:
-> +    bad_reg:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempt to write unknown special"
-> +                                       " register %d\n", reg);
-> +        return;
-> +    }
-> +}
-> +
-> +uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
-> +{
-> +    /* Implement the TT instruction. op is bits [7:6] of the insn. */
-> +    bool forceunpriv =3D op & 1;
-> +    bool alt =3D op & 2;
-> +    V8M_SAttributes sattrs =3D {};
-> +    uint32_t tt_resp;
-> +    bool r, rw, nsr, nsrw, mrvalid;
-> +    int prot;
-> +    ARMMMUFaultInfo fi =3D {};
-> +    MemTxAttrs attrs =3D {};
-> +    hwaddr phys_addr;
-> +    ARMMMUIdx mmu_idx;
-> +    uint32_t mregion;
-> +    bool targetpriv;
-> +    bool targetsec =3D env->v7m.secure;
-> +    bool is_subpage;
-> +
-> +    /*
-> +     * Work out what the security state and privilege level we're
-> +     * interested in is...
-> +     */
-> +    if (alt) {
-> +        targetsec =3D !targetsec;
-> +    }
-> +
-> +    if (forceunpriv) {
-> +        targetpriv =3D false;
-> +    } else {
-> +        targetpriv =3D arm_v7m_is_handler_mode(env) ||
-> +            !(env->v7m.control[targetsec] & R_V7M_CONTROL_NPRIV_MASK);
-> +    }
-> +
-> +    /* ...and then figure out which MMU index this is */
-> +    mmu_idx =3D arm_v7m_mmu_idx_for_secstate_and_priv(env, targetsec, ta=
-rgetpriv);
-> +
-> +    /*
-> +     * We know that the MPU and SAU don't care about the access type
-> +     * for our purposes beyond that we don't want to claim to be
-> +     * an insn fetch, so we arbitrarily call this a read.
-> +     */
-> +
-> +    /*
-> +     * MPU region info only available for privileged or if
-> +     * inspecting the other MPU state.
-> +     */
-> +    if (arm_current_el(env) !=3D 0 || alt) {
-> +        /* We can ignore the return value as prot is always set */
-> +        pmsav8_mpu_lookup(env, addr, MMU_DATA_LOAD, mmu_idx,
-> +                          &phys_addr, &attrs, &prot, &is_subpage,
-> +                          &fi, &mregion);
-> +        if (mregion =3D=3D -1) {
-> +            mrvalid =3D false;
-> +            mregion =3D 0;
-> +        } else {
-> +            mrvalid =3D true;
-> +        }
-> +        r =3D prot & PAGE_READ;
-> +        rw =3D prot & PAGE_WRITE;
-> +    } else {
-> +        r =3D false;
-> +        rw =3D false;
-> +        mrvalid =3D false;
-> +        mregion =3D 0;
-> +    }
-> +
-> +    if (env->v7m.secure) {
-> +        v8m_security_lookup(env, addr, MMU_DATA_LOAD, mmu_idx, &sattrs);
-> +        nsr =3D sattrs.ns && r;
-> +        nsrw =3D sattrs.ns && rw;
-> +    } else {
-> +        sattrs.ns =3D true;
-> +        nsr =3D false;
-> +        nsrw =3D false;
-> +    }
-> +
-> +    tt_resp =3D (sattrs.iregion << 24) |
-> +        (sattrs.irvalid << 23) |
-> +        ((!sattrs.ns) << 22) |
-> +        (nsrw << 21) |
-> +        (nsr << 20) |
-> +        (rw << 19) |
-> +        (r << 18) |
-> +        (sattrs.srvalid << 17) |
-> +        (mrvalid << 16) |
-> +        (sattrs.sregion << 8) |
-> +        mregion;
-> +
-> +    return tt_resp;
-> +}
-> +
-> +#endif /* CONFIG_USER_ONLY */
-
-
---
-Alex Benn=C3=A9e
+SXQncyBhbHdheXMgZnVuIHRvIGdldCBpbiBvbiBhIE1vbmRheSBtb3JuaW5nIGFuZCBpbW1lZGlh
+dGVseSByZWFsaXplIEknbSBhbiBpZGlvdCEgRGlzcmVnYXJkIHRoZSAnU2Vuc2l0aXZlIC8gUHJv
+cHJpZXRhcnknOyB0aGF0IHdhcyBqdXN0IGEgY29tcGxldGUgZ29vZiBieSBtZSB3aGVuIHNlbGVj
+dGluZyB0aGUgZW1haWwgc2Vuc2l0aXZpdHkuIEV2ZXJ5dGhpbmcgaW4gbXkgb3JpZ2luYWwgcXVl
+c3Rpb24gaXMgYWxyaWdodCB0byBkaXNjdXNzLg0KDQpTb3JyeSBmb3IgbWlzc2luZyBzb21lIG9m
+IHRoZSBkZXRhaWxzLCBhcyB3ZWxsLiBUaGUgQ1BVIEknbSBjdXJyZW50bHkgdHJ5aW5nIHRvIGJh
+c2UgbXkgZW11bGF0aW9uIG9mZiBvZiB0aGUgQ29ydGV4LU0zLCBhbHRob3VnaCBJJ20gbm90IGFj
+dHVhbGx5IHN1cmUgd2hldGhlciB0aGUgZGV2aWNlIEknbSBhdHRlbXB0aW5nIHRvIGVtdWxhdGUg
+aXMgYW4gTTMgb3IgTTQuIEZyb20gd2hhdCBJJ3ZlIHJlYWQgdGhlIG9ubHkgcmVhbCBkaWZmZXJl
+bmNlIGlzIHNvbWUgVGh1bWIgc3VwcG9ydCBhbmQgYSBEU1AgbW9kdWxlLCBuZWl0aGVyIG9mIHdo
+aWNoIEkgbmVlZCBob3BlZnVsbHkuDQoNClRoZSByZWdpc3RlciB0aGF0IEkgd2FzIHJlZmVycmlu
+ZyB0byB3YXMgY29udHJvbCByZWdpc3RlciAxNSwgd2hpY2ggaW4gdGhlIGRvY3MgSSBoYXZlIGlz
+IHJlZmVycmVkIHRvIHNpbXBseSBhcyAiQ1BVIGNvbnRyb2wgcmVnaXN0ZXIuIiBNeSB2ZXJzaW9u
+IG9mIFFFTVUgKHdoaWNoIEkgd2lsbCB0cnkgdXBkYXRpbmcgYXMgeW91IHN1Z2dlc3RlZCkgcmVm
+ZXJzIHRvICdjcDE1Lm12YmFyJyBhbmQgJ2NwMTUudmJhcicsIHdoaWNoIEkgaGF2ZSBiZWVuIGlu
+dmVzdGlnYXRpbmcgYXMgdGhlIGxpa2VseSBiYXNlIGFkZHJlc3MgZm9yIGV4ZWN1dGlvbi4NCg0K
+WW91IG1lbnRpb24gdjhNLiBJIGhhdmVuJ3QgbG9va2VkIGludG8gdGhhdCB2ZXJzaW9uIG9mIHRo
+ZSBhcmNoLCBidXQgY291bGQgaXQgYmUgcG9zc2libGUgdG8gZXhlY3V0ZSB2N00gaW5zdHJ1Y3Rp
+b25zIG9uIGEgdjhNIENQVT8gSSdkIGxpa2UgdG8gYXZvaWQgbW9kaWZ5aW5nIFFFTVUgYXMgbXVj
+aCBhcyBwb3NzaWJsZSwgc28gaWYgdGhlcmUncyBhbnkgd29ya2Fyb3VuZHMgbGlrZSB0aGF0IEkn
+bSByZWNlcHRpdmUgdG8gdGhlbS4NCg0KVGhhbmsgeW91IHNvIG11Y2ggZm9yIHRoZSBkZXRhaWxl
+ZCByZXNwb25zZSENCg0KLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZyb206IFBldGVyIE1h
+eWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4NClNlbnQ6IE1vbmRheSwgSnVuZSAxNywg
+MjAxOSA1OjQ2IEFNDQpUbzogQmVuc2NoLCBBbGV4YW5kZXIgPEFsZXhhbmRlci5CZW5zY2hAcGFy
+c29ucy5jb20+DQpDYzogcWVtdS1hcm1Abm9uZ251Lm9yZw0KU3ViamVjdDogW0VYVEVSTkFMXSBS
+ZTogW1FlbXUtYXJtXSBDdXN0b20gbWFjaGluZTogRm9yY2luZyBpbml0aWFsIGJvb3QgYWRkcmVz
+cw0KDQpPbiBTYXQsIDE1IEp1biAyMDE5IGF0IDAyOjE3LCBCZW5zY2gsIEFsZXhhbmRlciA8QWxl
+eGFuZGVyLkJlbnNjaEBwYXJzb25zLmNvbT4gd3JvdGU6DQo+DQo+IFNlbnNpdGl2ZSAvIFByb3By
+aWV0YXJ5DQoNCkVyLCB5b3UganVzdCBzZW50IHRoaXMgdG8gYSBwdWJsaWMgbWFpbGluZyBsaXN0
+Li4uDQoNCj4gSSBhbSBjdXJyZW50bHkgdHJ5aW5nIHRvIG1vZGlmeSB0aGUgTVBTMiBib2FyZCB0
+byBlbXVsYXRlIGFuIEFSTXY3bSBkZXZpY2UgSSBhbSB3b3JraW5nIG9uLCBhcyBub25lIG9mIHRo
+ZSBpbmNsdWRlZCBtYWNoaW5lcyBwcm92aWRlIGFuIGVudmlyb25tZW50IGNsb3NlIGVub3VnaCB0
+byB3aGF0IEnigJltIHdvcmtpbmcgb24gdG8gYmUgc3VmZmljaWVudC4gSSBhbSBydW5uaW5nIGlu
+dG8gYW4gaXNzdWUgaW4gd2hpY2ggSSBjYW5ub3QgZ2V0IHRoZSBtYWNoaW5lIHRvIGV4ZWN1dGUg
+dGhlIGJvb3RST00gZnJvbSBhZGRyZXNzIDB4RkZGRjAwMDAuIFRoZSBzcGVjcyBmb3IgdGhlIHNw
+ZWNpZmljIGRldmljZSBJIGhhdmUgKGNhbm5vdCBzaGFyZSB0aGUgZGV2aWNlIG1vZGVsLCB1bmZv
+cnR1bmF0ZWx5KSBzdGF0ZSB0aGF0IHRoZXJlIGlzIGEgY29udHJvbCByZWdpc3RlciB0aGF0IEkg
+YXNzdW1lIGlzIHByZXNlbnQgaW4gYWxsIHY3bSBjaGlwcyB0aGF0IHNlbGVjdHMgd2hldGhlciB0
+byBib290IGF0IDB4MCBvciAweEZGRkYwMDAwLiBJIGNhbiBhbHNvIHNlZSBldmlkZW5jZSBvZiB0
+aGlzIHJlZ2lzdGVyIGJlaW5nIGVtdWxhdGVkIGluIFFFTVUgaW4g4oCYdGFyZ2V0L2FybS9jcHUu
+Y+KAmS4NCg0KSXQgd291bGQgaGVscCBpZiB5b3Ugc2FpZCB3aGF0IHRoZSByZWdpc3RlciBuYW1l
+IHdhcyEgIkFSTXY3TSIgaXMgYW4gYXJjaGl0ZWN0dXJlIGZhbWlseSwgd2hpY2ggY292ZXJzIHNv
+bWUgdGhpbmdzIHdoaWNoIG11c3QgYmUgaW1wbGVtZW50ZWQsIGFuZCBhbGxvd3Mgc29tZSBvdGhl
+ciB0aGluZ3MgdG8gYmUgaW1wbGVtZW50YXRpb24gZGVmaW5lZC4gVGhlcmUgYXJlIHZhcmlvdXMg
+Q1BVcyB0aGF0IGltcGxlbWVudCBBUk12N00sIGxpa2UgdGhlIENvcnRleC1NMy4gVGhlbiB0aGVz
+ZSBDUFVzIGNhbiBiZSBmb3VuZCBpbiBTb0NzIChsaWtlIHRoZSBzdG0zMmYyMDUsIGZvciBleGFt
+cGxlKSwgd2hpY2ggYWRkIGV4dHJhIG1lbW9yeSBtYXBwZWQgZGV2aWNlcyB3aXRoIHRoZWlyIG93
+biByZWdpc3RlcnMuDQoNCj5Ib3dldmVyLCBzaW5jZSB0aGVyZSBpcyBsaXR0bGUgQVBJIGRvY3Vt
+ZW50YXRpb24gSSBoYXZlIGJlZW4gYWJsZSB0byBmaW5kLCBJ4oCZdmUgZWZmZWN0aXZlbHkgYmVl
+biByZXZlcnNlLWVuZ2luZWVyaW5nIFFFTVUgdG8gZmlndXJlIG91dCB3aGF0IG5lZWRzIHRvIGJl
+IHNldC4gU28gZmFyLCBhbGwgb2YgbXkgYXR0ZW1wdHMgdG8gbW9kaWZ5IGNvbnRyb2wgcmVnaXN0
+ZXJzIGFuZCBhZGRyZXNzZXMgZGlyZWN0bHkgaGF2ZSByZXN1bHRlZCBpbiB1bmV4cGVjdGVkIGJl
+aGF2aW9yIGFuZCBwYXJ0aWFsIGltcGxlbWVudGF0aW9uIG9mIG15IGdvYWxzLiBJIGhhdmUgaGFk
+IHN1Y2Nlc3MgaW4gZm9yY2luZyB0aGUgUk9NIHRvIGxvYWQgYXQgdGhlIGRlc2lyZWQgYWRkcmVz
+cywgYW5kIHdpdGggR0RCIEkgY2FuIGZvcmNlIHRoZSBQQyBhbmQgU1AgdG8gd2hlcmUgSSB3YW50
+LCBidXQgdGhlIElWVCBtdXN0IGJlIGF0IDB4MCBieSBkZWZhdWx0LiBJIHdhcyBob3Bpbmcgc29t
+ZW9uZSBrbmV3IGhvdyB0byBlbmFibGUgdGhlIGNvbnRyb2wgcmVnaXN0ZXIgdGhhdCBzZXRzIHRo
+ZSBib290IGFkZHJlc3Mgc28gdGhhdCB0aGUgSVZUIGNhbiBiZSBsb2FkZWQgZnJvbSBhIGRpZmZl
+cmVudCBhZGRyZXNzLg0KDQpBcmNoaXRlY3R1cmFsbHkgdGhlIHZlY3RvciB0YWJsZSBzdGFydHMg
+YXQgdGhlIGFkZHJlc3Mgc3BlY2lmaWVkIGJ5IHRoZSBDUFUncyBWVE9SIHJlZ2lzdGVyICgiVmVj
+dG9yIFRhYmxlIE9mZnNldCBSZWdpc3RlciIpLiBRRU1VIGRvZXMgaW1wbGVtZW50IHRoaXMsIGJ1
+dCB3ZSBkb24ndCBjdXJyZW50bHkgcHJvdmlkZSBhIG1lY2hhbmlzbSBmb3IgYWxsb3dpbmcgYW4g
+U29DIG1vZGVsIG9yIGJvYXJkIG1vZGVsIHRvIHNwZWNpZnkgYSByZXNldCB2YWx1ZSBmb3IgaXQg
+b3RoZXIgdGhhbiB6ZXJvIChiZWNhdXNlIGZvciBhbGwgdGhlIGJvYXJkcyB3ZSBtb2RlbCB0aGV5
+IHVzZSBhIHplcm8gcmVzZXQgdmFsdWUsIHNvIHdlIGRpZG4ndCBuZWVkIGl0KS4NCldlIGRvIHBy
+b3ZpZGUgdGhpcyBtZWNoYW5pc20gZm9yIHRoZSB2OE0gc2VjdXJlLWJhbmtlZCBWVE9SIC0tIHRo
+aXMgaXMgZXhwb3NlZCB0byB0aGUgcmVzdCBvZiBRRU1VIHZpYSB0aGUgImluaXQtc3Z0b3IiIHFk
+ZXYgcHJvcGVydHksIHdoaWNoIHRoZSBib2FyZCBjYW4gdGhlbiBzZXQuIFNvIGZvciBhIHY3TSBD
+UFUgeW91IHdvdWxkIG5lZWQgdG8gYWRkIHNvbWV0aGluZyBzaW1pbGFyIGZvciAiaW5pdC12dG9y
+Ig0KdG8gc2V0IHRoZSBub24tc2VjdXJlIFZUT1IgcmVzZXQgdmFsdWUuIFRoZW4gdGhlIENQVSB3
+b3VsZCBjb21lIG91dCBvZiByZXNldCBieSBsb2FkaW5nIHRoZSBQQyBhbmQgU1AgZnJvbSB0aGUg
+dmVjdG9yIHRhYmxlIGF0IHRoYXQgYWRkcmVzcy4NCg0KPiBJIGFtIHJ1bm5pbmcgUUVNVSB2ZXJz
+aW9uIDIuMTEuDQoNCklmIHlvdSdyZSBtb2RpZnlpbmcgUUVNVSB5b3Ugc2hvdWxkIHN0YXJ0IHdp
+dGggYSBtdWNoIG5ld2VyIHZlcnNpb24gdGhhbiB0aGF0LiBUaGVyZSBoYXZlIGJlZW4gYSBsb3Qg
+b2YgTS1wcm9maWxlIHJlbGF0ZWQgYnVnZml4ZXMgc2luY2UgdGhlbi4gR2VuZXJhbGx5IGZvciBk
+ZXZlbG9wbWVudCBvZiBRRU1VIHdlIHJlY29tbWVuZCB3b3JraW5nIHdpdGggdGhlIGhlYWQgb2Yg
+Z2l0Lg0KDQp0aGFua3MNCi0tIFBNTQ0KDQpOT1RJQ0U6IFRoaXMgZW1haWwgbWVzc2FnZSBhbmQg
+YWxsIGF0dGFjaG1lbnRzIHRyYW5zbWl0dGVkIHdpdGggaXQgbWF5IGNvbnRhaW4gcHJpdmlsZWdl
+ZCBhbmQgY29uZmlkZW50aWFsIGluZm9ybWF0aW9uLCBhbmQgaW5mb3JtYXRpb24gdGhhdCBpcyBw
+cm90ZWN0ZWQgYnksIGFuZCBwcm9wcmlldGFyeSB0bywgUGFyc29ucyBDb3Jwb3JhdGlvbiwgYW5k
+IGlzIGludGVuZGVkIHNvbGVseSBmb3IgdGhlIHVzZSBvZiB0aGUgYWRkcmVzc2VlIGZvciB0aGUg
+c3BlY2lmaWMgcHVycG9zZSBzZXQgZm9ydGggaW4gdGhpcyBjb21tdW5pY2F0aW9uLiBJZiB0aGUg
+cmVhZGVyIG9mIHRoaXMgbWVzc2FnZSBpcyBub3QgdGhlIGludGVuZGVkIHJlY2lwaWVudCwgeW91
+IGFyZSBoZXJlYnkgbm90aWZpZWQgdGhhdCBhbnkgcmVhZGluZywgZGlzc2VtaW5hdGlvbiwgZGlz
+dHJpYnV0aW9uLCBjb3B5aW5nLCBvciBvdGhlciB1c2Ugb2YgdGhpcyBtZXNzYWdlIG9yIGl0cyBh
+dHRhY2htZW50cyBpcyBzdHJpY3RseSBwcm9oaWJpdGVkLCBhbmQgeW91IHNob3VsZCBkZWxldGUg
+dGhpcyBtZXNzYWdlIGFuZCBhbGwgY29waWVzIGFuZCBiYWNrdXBzIHRoZXJlb2YuIFRoZSByZWNp
+cGllbnQgbWF5IG5vdCBmdXJ0aGVyIGRpc3RyaWJ1dGUgb3IgdXNlIGFueSBvZiB0aGUgaW5mb3Jt
+YXRpb24gY29udGFpbmVkIGhlcmVpbiB3aXRob3V0IHRoZSBleHByZXNzIHdyaXR0ZW4gYXV0aG9y
+aXphdGlvbiBvZiB0aGUgc2VuZGVyLiBJZiB5b3UgaGF2ZSByZWNlaXZlZCB0aGlzIG1lc3NhZ2Ug
+aW4gZXJyb3IsIG9yIGlmIHlvdSBoYXZlIGFueSBxdWVzdGlvbnMgcmVnYXJkaW5nIHRoZSB1c2Ug
+b2YgdGhlIHByb3ByaWV0YXJ5IGluZm9ybWF0aW9uIGNvbnRhaW5lZCB0aGVyZWluLCBwbGVhc2Ug
+Y29udGFjdCB0aGUgc2VuZGVyIG9mIHRoaXMgbWVzc2FnZSBpbW1lZGlhdGVseSwgYW5kIHRoZSBz
+ZW5kZXIgd2lsbCBwcm92aWRlIHlvdSB3aXRoIGZ1cnRoZXIgaW5zdHJ1Y3Rpb25zLg0K

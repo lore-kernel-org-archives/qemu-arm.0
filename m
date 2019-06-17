@@ -1,98 +1,155 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id b203sm17210506wmd.41.2019.06.17.07.11.20
+        by smtp.gmail.com with ESMTPSA id t140sm9461121wmt.0.2019.06.17.07.04.46
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 07:11:20 -0700 (PDT)
+        Mon, 17 Jun 2019 07:04:46 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 43FA81FF87;
-	Mon, 17 Jun 2019 15:11:20 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-14-philmd@redhat.com>
+	by zen.linaroharston (Postfix) with ESMTP id E9F3F1FF87;
+	Mon, 17 Jun 2019 15:04:45 +0100 (BST)
+References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-24-philmd@redhat.com>
 User-agent: mu4e 1.3.2; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v2 13/23] target/arm: Make the v7-M Security State routines
-In-reply-to: <20190615154352.26824-14-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 15:11:20 +0100
-Message-ID: <87o92w9u9j.fsf@zen.linaroharston>
+Subject: Re: [Qemu-arm] [NOTFORMERGE PATCH v2 23/23] Missing symbols when building with --disable-tcg
+In-reply-to: <20190615154352.26824-24-philmd@redhat.com>
+Date: Mon, 17 Jun 2019 15:04:45 +0100
+Message-ID: <87y3209uki.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: j8Orp8yauTrH
+X-TUID: MElOUQzFG/Ux
 
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> The Security State helpers are now only called within v7m_helper.c.
-> Remove them from "internals.h".
+> While it might be normal to disable PSCI on KVM, I doubt the
+> VFP helpers are correct ;)
+>
+> Anyway this allow to link the binary and run a KVM guest.
+
+But also:
+
+/home/alex/lsrc/qemu.git/target/arm/helper.c: In function =E2=80=98S1_ptw_t=
+ranslate=E2=80=99:
+/home/alex/lsrc/qemu.git/target/arm/helper.c:8794:15: note: parameter passi=
+ng for argument of type =E2=80=98MemTxAttrs=E2=80=99 {aka =E2=80=98struct M=
+emTxAttrs=E2=80=99} changed in GCC 9.1
+ 8794 | static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+      |               ^~~~~~~~~~~~~~~~
+  LINK    x86_64-linux-user/qemu-x86_64
+  LINK    xtensa-linux-user/qemu-xtensa
+/home/alex/lsrc/qemu.git/target/arm/helper.c: In function =E2=80=98S1_ptw_t=
+ranslate=E2=80=99:
+/home/alex/lsrc/qemu.git/target/arm/helper.c:8794:15: note: parameter passi=
+ng for argument of type =E2=80=98MemTxAttrs=E2=80=99 {aka =E2=80=98struct M=
+emTxAttrs=E2=80=99} changed in GCC 9.1
+ 8794 | static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+      |               ^~~~~~~~~~~~~~~~
+  LINK    xtensaeb-linux-user/qemu-xtensaeb
+  LINK    arm-linux-user/qemu-arm
+  LINK    aarch64-linux-user/qemu-aarch64
+  LINK    armeb-linux-user/qemu-armeb
+  LINK    aarch64_be-linux-user/qemu-aarch64_be
+  LINK    arm-softmmu/qemu-system-arm
+  LINK    aarch64-softmmu/qemu-system-aarch64
+/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
+nux-gnu/bin/ld: target/arm/kvm-missing.o: in function `arm_is_psci_call':
+/home/alex/lsrc/qemu.git/target/arm/kvm-missing.c:17: multiple definition o=
+f `arm_is_psci_call'; target/arm/psci.o:/home/alex/lsrc/qemu.git/target/arm=
+/psci.c:36: first defined here
+/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
+nux-gnu/bin/ld: target/arm/kvm-missing.o: in function `arm_handle_psci_call=
+':
+/home/alex/lsrc/qemu.git/target/arm/kvm-missing.c:20: multiple definition o=
+f `arm_handle_psci_call'; target/arm/psci.o:/home/alex/lsrc/qemu.git/target=
+/arm/psci.c:77: first defined here
+/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
+nux-gnu/bin/ld: target/arm/vfp_helper.o: in function `vfp_get_fpscr':
+/home/alex/lsrc/qemu.git/target/arm/vfp_helper.c:75: multiple definition of=
+ `vfp_get_fpscr'; target/arm/kvm-missing.o:/home/alex/lsrc/qemu.git/target/=
+arm/kvm-missing.c:8: first defined here
+/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
+nux-gnu/bin/ld: target/arm/vfp_helper.o: in function `vfp_set_fpscr':
+/home/alex/lsrc/qemu.git/target/arm/vfp_helper.c:185: multiple definition o=
+f `vfp_set_fpscr'; target/arm/kvm-missing.o:/home/alex/lsrc/qemu.git/target=
+/arm/kvm-missing.c:12:
+first defined here
+collect2: error: ld returned 1 exit status
+make[1]: *** [Makefile:204: qemu-system-aarch64] Error 1
+make: *** [Makefile:472: subdir-aarch64-softmmu] Error 2
+
+On AArch64 host with TCG enabled....
+
+>
+> Tested using:
+>
+>   $ make pc-bios/edk2-aarch64-code.fd
+>   $ dd if=3D/dev/zero of=3Dflash1.img bs=3D1M count=3D64
+>   $ aarch64-softmmu/qemu-system-aarch64 \
+>     -nographic \
+>     -enable-kvm \
+>     -M virt,gic-version=3D3 \
+>     -cpu host \
+>     \
+>     -pflash pc-bios/edk2-aarch64-code.fd \
+>     -pflash flash1.img \
+>     -drive if=3Dnone,file=3Dbionic-server-cloudimg-arm64.img,id=3Dhd0 \
+>     -device virtio-blk-device,drive=3Dhd0 \
+>     \
+>     -netdev type=3Duser,id=3Dnet0 \
+>     -device virtio-net-device,netdev=3Dnet0
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-This does seem a little round the houses, but whatever:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-
 > ---
->  target/arm/internals.h  |  8 --------
->  target/arm/v7m_helper.c | 10 +++++-----
->  2 files changed, 5 insertions(+), 13 deletions(-)
+>  target/arm/Makefile.objs |  1 +
+>  target/arm/kvm-missing.c | 22 ++++++++++++++++++++++
+>  2 files changed, 23 insertions(+)
+>  create mode 100644 target/arm/kvm-missing.c
 >
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 1d15af3f8b..fe9e4665e2 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1043,12 +1043,4 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t =
-address,
->                         int *prot, bool *is_subpage,
->                         ARMMMUFaultInfo *fi, uint32_t *mregion);
+> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+> index b8aa9c032a..bf1cad2909 100644
+> --- a/target/arm/Makefile.objs
+> +++ b/target/arm/Makefile.objs
+> @@ -6,6 +6,7 @@ obj-$(CONFIG_SOFTMMU) +=3D machine.o arch_dump.o monitor.=
+o arm-powerctl.o
+>  obj-$(call land,$(CONFIG_TCG),$(CONFIG_SOFTMMU)) +=3D psci.o
 >
-> -void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> -                                          bool new_spsel,
-> -                                          bool secstate);
-> -
-> -void write_v7m_control_spsel(CPUARMState *env, bool new_spsel);
-> -
-> -void switch_v7m_security_state(CPUARMState *env, bool new_secstate);
-> -
->  #endif
-> diff --git a/target/arm/v7m_helper.c b/target/arm/v7m_helper.c
-> index b50bb98e06..aa6a08e326 100644
-> --- a/target/arm/v7m_helper.c
-> +++ b/target/arm/v7m_helper.c
-> @@ -94,9 +94,9 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr=
-, uint32_t op)
->   * stack pointers if it is done for the CONTROL register for the current
->   * security state.
->   */
-> -void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> -                                          bool new_spsel,
-> -                                          bool secstate)
-> +static void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> +                                                 bool new_spsel,
-> +                                                 bool secstate)
->  {
->      bool old_is_psp =3D v7m_using_psp(env);
->
-> @@ -121,13 +121,13 @@ void write_v7m_control_spsel_for_secstate(CPUARMSta=
-te *env,
->   * Write to v7M CONTROL.SPSEL bit. This may change the current
->   * stack pointer between Main and Process stack pointers.
->   */
-> -void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
-> +static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
->  {
->      write_v7m_control_spsel_for_secstate(env, new_spsel, env->v7m.secure=
-);
->  }
->
->  /* Switch M profile security state between NS and S */
-> -void switch_v7m_security_state(CPUARMState *env, bool new_secstate)
-> +static void switch_v7m_security_state(CPUARMState *env, bool new_secstat=
-e)
->  {
->      uint32_t new_ss_msp, new_ss_psp;
+>  obj-$(CONFIG_KVM) +=3D kvm.o
+> +obj-$(CONFIG_KVM) +=3D kvm-missing.o
+>  obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) +=3D kvm32=
+.o
+>  obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) +=3D kvm64.o
+>  obj-$(call lnot,$(CONFIG_KVM)) +=3D kvm-stub.o
+> diff --git a/target/arm/kvm-missing.c b/target/arm/kvm-missing.c
+> new file mode 100644
+> index 0000000000..0b32cd4e9c
+> --- /dev/null
+> +++ b/target/arm/kvm-missing.c
+> @@ -0,0 +1,22 @@
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "internals.h"
+> +
+> +uint32_t vfp_get_fpscr(CPUARMState *env)
+> +{
+> +    return 0;
+> +}
+> +
+> +void vfp_set_fpscr(CPUARMState *env, uint32_t val)
+> +{
+> +}
+> +
+> +bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+> +{
+> +    return false;
+> +}
+> +
+> +void arm_handle_psci_call(ARMCPU *cpu)
+> +{
+> +    abort();
+> +}
 
 
 --

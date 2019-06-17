@@ -1,575 +1,112 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f197sm16780449wme.39.2019.06.17.07.41.13
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 07:41:13 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 2C83D1FF87;
-	Mon, 17 Jun 2019 15:41:13 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-19-philmd@redhat.com>
-User-agent: mu4e 1.3.2; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2586966wrg;
+        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
+X-Received: by 2002:a1c:6585:: with SMTP id z127mr20801913wmb.25.1560782739060;
+        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560782739; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uKltX+3EeIozfMRHKVcOU3N5nEBmgLxQFL/0mI38PP85/8xoWJxMBtcGVQJGRziRtA
+         XUoVSZvfUYW7AcUSOpcYEef/TYcp/S3XD9/Cfa+0DK4FRCAG45kdT5JwQsmvGTNiDoGP
+         s5fRjDiZ8fmYFO6o09sislngSEj5AaqMZ/Kl8rZW4l9yVXGz/G0pf8FIF9KWapY0AwST
+         aS5n5fWm54mtrSkGkvvBvHFTaWdyXf73IPLBoAwB25O2knRlHKOWtEX2rhD1owc8dCQx
+         KaVuVWJ0oIFLRFRscpz4uAvvm/p5phsMLFZ7AWaovI/uB4oSpoWW5zdijK6tH4WYxE6v
+         SoTQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=h1yf6Vt1CyQuz/mXleAz0fDL+KIk9GhCVzaElcULaF4=;
+        b=tEAY+w9p8iP2xFjyUDmW60Ek8/6F8jyQiqbuNR1+OnVdWt1JwC4RGM+RcJ5IN65M5K
+         5NFEUkbpQNR1slVrsFU+lPrCao2Uv2M8MRiVvNQyuKTW147vTOuJkhBoeg0Rzdw/fcSA
+         LD4ssJUnFrKE0co0hCwFtsR2ZvaqqMBtMJ9RZBqwAb4XaJxHkDms5+8ipwnQPGGdzpj4
+         +dUOkwGHbSmmeQIKfa0r386a5TQKdLOcdRW6djNB8eBM5XipuyRN0JesEsg51a27Mue0
+         0vKeYKHy/fJvH525BkCbfWY+cDPf/Iq6g8v1BXy3OZNbEzQFHG+/wsNg7Q9iI3XzrRP6
+         6BoA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id y9sor8373567wrt.35.2019.06.17.07.45.39
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=h1yf6Vt1CyQuz/mXleAz0fDL+KIk9GhCVzaElcULaF4=;
+        b=lAUvs/O0Y5Y3z4keGTtcltk04qMUTPcal+ssid0isQCKatH/V6nB2v9du4oxTt4pgz
+         eTi/zlEX2aLgtBO6/NofXGBopUXYobFHmMGcu5lgrdpIWG38YruSu6RvB4ZgXrrblL8R
+         PfLG4R08J5isCQoHGLp8uR6gx7uLRE0Hvgp3RmA4Z23EjmQ2Nbt4kINpiTxoiM1OgSKN
+         qnbT50TZN2xZ4UZ8uAOFyRSfoKvR+ld20U6qdxhXjvrBRebDb1WKxJ6kZUj8w1mCxycp
+         97HzR6Eiu/j6o8Y02/m6MNIGdzN1+RFv08oAySv27qa8F4lyDOCMHeH0FTgxoVMzqBF1
+         Md9A==
+X-Gm-Message-State: APjAAAUuRf335TBlfRoU3zp5pXbwNzrPubTOZwNW2Fa3DiE13miLK2EX
+	9GWPgZtS2uy1Dj1DuqcgsLN3RA==
+X-Google-Smtp-Source: APXvYqxSEMbpE5GZa+k4KKbZU0/h2LYrjpSFBQwii3aVZgi9pvlBNOr9Y1axBIdn0ljpMIS0KsalUg==
+X-Received: by 2002:adf:de8b:: with SMTP id w11mr53694424wrl.134.1560782738885;
+        Mon, 17 Jun 2019 07:45:38 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
+        by smtp.gmail.com with ESMTPSA id a7sm10253325wrs.94.2019.06.17.07.45.38
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Jun 2019 07:45:38 -0700 (PDT)
+Subject: Re: [Qemu-arm] [PATCH v2 18/23] target/arm: Move CPU state dumping
+ routines to helper.c
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Samuel Ortiz
- <sameo@linux.intel.com>, Robert Bradford <robert.bradford@intel.com>
-Subject: Re: [Qemu-arm] [PATCH v2 18/23] target/arm: Move CPU state dumping routines to helper.c
-In-reply-to: <20190615154352.26824-19-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 15:41:13 +0100
-Message-ID: <87h88o9svq.fsf@zen.linaroharston>
+ Samuel Ortiz <sameo@linux.intel.com>,
+ Robert Bradford <robert.bradford@intel.com>
+References: <20190615154352.26824-1-philmd@redhat.com>
+ <20190615154352.26824-19-philmd@redhat.com>
+ <87h88o9svq.fsf@zen.linaroharston>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <78478ee8-6707-a94d-5752-bc095378f502@redhat.com>
+Date: Mon, 17 Jun 2019 16:45:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <87h88o9svq.fsf@zen.linaroharston>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8J6ofWF6DbST
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: mtQKveQr6W+Y
 
+On 6/17/19 4:41 PM, Alex Bennée wrote:
+> 
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> From: Samuel Ortiz <sameo@linux.intel.com>
+>>
+>> They're not TCG specific and should be living the generic helper file
+>> instead.
+>>
+>> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+>> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
+>> [PMD: Rebased]
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  target/arm/helper.c        | 214
+>> +++++++++++++++++++++++++++++++++++++
+> 
+> Hmm so helper is a mix of non-TCG and TCG bits whereas helper-a64.c is
+> basically just TCG helpers. It makes me wonder if we are breaking a
+> convention here as helper.c is traditionally only TCG helpers.
+> 
+> It feels like there should be different file that is unambiguously used
+> for both TCG and KVM based workloads where things like the cpu dump code
+> can live.
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+Good idea. What about target/arm/arch_dump.c?
 
-> From: Samuel Ortiz <sameo@linux.intel.com>
->
-> They're not TCG specific and should be living the generic helper file
-> instead.
->
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
-> [PMD: Rebased]
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  target/arm/helper.c        | 214
-> +++++++++++++++++++++++++++++++++++++
-
-Hmm so helper is a mix of non-TCG and TCG bits whereas helper-a64.c is
-basically just TCG helpers. It makes me wonder if we are breaking a
-convention here as helper.c is traditionally only TCG helpers.
-
-It feels like there should be different file that is unambiguously used
-for both TCG and KVM based workloads where things like the cpu dump code
-can live.
-
->  target/arm/internals.h     |   8 ++
->  target/arm/translate-a64.c | 127 ----------------------
->  target/arm/translate.c     |  87 ---------------
->  target/arm/translate.h     |   5 -
->  5 files changed, 222 insertions(+), 219 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a4af02c984..8c32b2bc0d 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -11293,4 +11293,218 @@ void aarch64_sve_change_el(CPUARMState *env, in=
-t old_el,
->          aarch64_sve_narrow_vq(env, new_len + 1);
->      }
->  }
-> +
-> +void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(cs);
-> +    CPUARMState *env =3D &cpu->env;
-> +    uint32_t psr =3D pstate_read(env);
-> +    int i;
-> +    int el =3D arm_current_el(env);
-> +    const char *ns_status;
-> +
-> +    qemu_fprintf(f, " PC=3D%016" PRIx64 " ", env->pc);
-> +    for (i =3D 0; i < 32; i++) {
-> +        if (i =3D=3D 31) {
-> +            qemu_fprintf(f, " SP=3D%016" PRIx64 "\n", env->xregs[i]);
-> +        } else {
-> +            qemu_fprintf(f, "X%02d=3D%016" PRIx64 "%s", i, env->xregs[i],
-> +                         (i + 2) % 3 ? " " : "\n");
-> +        }
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_EL3) && el !=3D 3) {
-> +        ns_status =3D env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-> +    } else {
-> +        ns_status =3D "";
-> +    }
-> +    qemu_fprintf(f, "PSTATE=3D%08x %c%c%c%c %sEL%d%c",
-> +                 psr,
-> +                 psr & PSTATE_N ? 'N' : '-',
-> +                 psr & PSTATE_Z ? 'Z' : '-',
-> +                 psr & PSTATE_C ? 'C' : '-',
-> +                 psr & PSTATE_V ? 'V' : '-',
-> +                 ns_status,
-> +                 el,
-> +                 psr & PSTATE_SP ? 'h' : 't');
-> +
-> +    if (cpu_isar_feature(aa64_bti, cpu)) {
-> +        qemu_fprintf(f, "  BTYPE=3D%d", (psr & PSTATE_BTYPE) >> 10);
-> +    }
-> +    if (!(flags & CPU_DUMP_FPU)) {
-> +        qemu_fprintf(f, "\n");
-> +        return;
-> +    }
-> +    if (fp_exception_el(env, el) !=3D 0) {
-> +        qemu_fprintf(f, "    FPU disabled\n");
-> +        return;
-> +    }
-> +    qemu_fprintf(f, "     FPCR=3D%08x FPSR=3D%08x\n",
-> +                 vfp_get_fpcr(env), vfp_get_fpsr(env));
-> +
-> +    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) =3D=
-=3D 0) {
-> +        int j, zcr_len =3D sve_zcr_len_for_el(env, el);
-> +
-> +        for (i =3D 0; i <=3D FFR_PRED_NUM; i++) {
-> +            bool eol;
-> +            if (i =3D=3D FFR_PRED_NUM) {
-> +                qemu_fprintf(f, "FFR=3D");
-> +                /* It's last, so end the line.  */
-> +                eol =3D true;
-> +            } else {
-> +                qemu_fprintf(f, "P%02d=3D", i);
-> +                switch (zcr_len) {
-> +                case 0:
-> +                    eol =3D i % 8 =3D=3D 7;
-> +                    break;
-> +                case 1:
-> +                    eol =3D i % 6 =3D=3D 5;
-> +                    break;
-> +                case 2:
-> +                case 3:
-> +                    eol =3D i % 3 =3D=3D 2;
-> +                    break;
-> +                default:
-> +                    /* More than one quadword per predicate.  */
-> +                    eol =3D true;
-> +                    break;
-> +                }
-> +            }
-> +            for (j =3D zcr_len / 4; j >=3D 0; j--) {
-> +                int digits;
-> +                if (j * 4 + 4 <=3D zcr_len + 1) {
-> +                    digits =3D 16;
-> +                } else {
-> +                    digits =3D (zcr_len % 4 + 1) * 4;
-> +                }
-> +                qemu_fprintf(f, "%0*" PRIx64 "%s", digits,
-> +                             env->vfp.pregs[i].p[j],
-> +                             j ? ":" : eol ? "\n" : " ");
-> +            }
-> +        }
-> +
-> +        for (i =3D 0; i < 32; i++) {
-> +            if (zcr_len =3D=3D 0) {
-> +                qemu_fprintf(f, "Z%02d=3D%016" PRIx64 ":%016" PRIx64 "%s=
-",
-> +                             i, env->vfp.zregs[i].d[1],
-> +                             env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
-> +            } else if (zcr_len =3D=3D 1) {
-> +                qemu_fprintf(f, "Z%02d=3D%016" PRIx64 ":%016" PRIx64
-> +                             ":%016" PRIx64 ":%016" PRIx64 "\n",
-> +                             i, env->vfp.zregs[i].d[3], env->vfp.zregs[i=
-].d[2],
-> +                             env->vfp.zregs[i].d[1], env->vfp.zregs[i].d=
-[0]);
-> +            } else {
-> +                for (j =3D zcr_len; j >=3D 0; j--) {
-> +                    bool odd =3D (zcr_len - j) % 2 !=3D 0;
-> +                    if (j =3D=3D zcr_len) {
-> +                        qemu_fprintf(f, "Z%02d[%x-%x]=3D", i, j, j - 1);
-> +                    } else if (!odd) {
-> +                        if (j > 0) {
-> +                            qemu_fprintf(f, "   [%x-%x]=3D", j, j - 1);
-> +                        } else {
-> +                            qemu_fprintf(f, "     [%x]=3D", j);
-> +                        }
-> +                    }
-> +                    qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
-> +                                 env->vfp.zregs[i].d[j * 2 + 1],
-> +                                 env->vfp.zregs[i].d[j * 2],
-> +                                 odd || j =3D=3D 0 ? "\n" : ":");
-> +                }
-> +            }
-> +        }
-> +    } else {
-> +        for (i =3D 0; i < 32; i++) {
-> +            uint64_t *q =3D aa64_vfp_qreg(env, i);
-> +            qemu_fprintf(f, "Q%02d=3D%016" PRIx64 ":%016" PRIx64 "%s",
-> +                         i, q[1], q[0], (i & 1 ? "\n" : " "));
-> +        }
-> +    }
-> +}
->  #endif
-> +
-> +void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(cs);
-> +    CPUARMState *env =3D &cpu->env;
-> +    int i;
-> +
-> +    if (is_a64(env)) {
-> +        aarch64_cpu_dump_state(cs, f, flags);
-> +        return;
-> +    }
-> +
-> +    for (i =3D 0; i < 16; i++) {
-> +        qemu_fprintf(f, "R%02d=3D%08x", i, env->regs[i]);
-> +        if ((i % 4) =3D=3D 3) {
-> +            qemu_fprintf(f, "\n");
-> +        } else {
-> +            qemu_fprintf(f, " ");
-> +        }
-> +    }
-> +
-> +    if (arm_feature(env, ARM_FEATURE_M)) {
-> +        uint32_t xpsr =3D xpsr_read(env);
-> +        const char *mode;
-> +        const char *ns_status =3D "";
-> +
-> +        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> +            ns_status =3D env->v7m.secure ? "S " : "NS ";
-> +        }
-> +
-> +        if (xpsr & XPSR_EXCP) {
-> +            mode =3D "handler";
-> +        } else {
-> +            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_=
-MASK) {
-> +                mode =3D "unpriv-thread";
-> +            } else {
-> +                mode =3D "priv-thread";
-> +            }
-> +        }
-> +
-> +        qemu_fprintf(f, "XPSR=3D%08x %c%c%c%c %c %s%s\n",
-> +                     xpsr,
-> +                     xpsr & XPSR_N ? 'N' : '-',
-> +                     xpsr & XPSR_Z ? 'Z' : '-',
-> +                     xpsr & XPSR_C ? 'C' : '-',
-> +                     xpsr & XPSR_V ? 'V' : '-',
-> +                     xpsr & XPSR_T ? 'T' : 'A',
-> +                     ns_status,
-> +                     mode);
-> +    } else {
-> +        uint32_t psr =3D cpsr_read(env);
-> +        const char *ns_status =3D "";
-> +
-> +        if (arm_feature(env, ARM_FEATURE_EL3) &&
-> +            (psr & CPSR_M) !=3D ARM_CPU_MODE_MON) {
-> +            ns_status =3D env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-> +        }
-> +
-> +        qemu_fprintf(f, "PSR=3D%08x %c%c%c%c %c %s%s%d\n",
-> +                     psr,
-> +                     psr & CPSR_N ? 'N' : '-',
-> +                     psr & CPSR_Z ? 'Z' : '-',
-> +                     psr & CPSR_C ? 'C' : '-',
-> +                     psr & CPSR_V ? 'V' : '-',
-> +                     psr & CPSR_T ? 'T' : 'A',
-> +                     ns_status,
-> +                     aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
-> +    }
-> +
-> +    if (flags & CPU_DUMP_FPU) {
-> +        int numvfpregs =3D 0;
-> +        if (arm_feature(env, ARM_FEATURE_VFP)) {
-> +            numvfpregs +=3D 16;
-> +        }
-> +        if (arm_feature(env, ARM_FEATURE_VFP3)) {
-> +            numvfpregs +=3D 16;
-> +        }
-> +        for (i =3D 0; i < numvfpregs; i++) {
-> +            uint64_t v =3D *aa32_vfp_dreg(env, i);
-> +            qemu_fprintf(f, "s%02d=3D%08x s%02d=3D%08x d%02d=3D%016" PRI=
-x64 "\n",
-> +                         i * 2, (uint32_t)v,
-> +                         i * 2 + 1, (uint32_t)(v >> 32),
-> +                         i, v);
-> +        }
-> +        qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
-> +    }
-> +}
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 06e676bf62..56281d8ece 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1042,4 +1042,12 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t =
-address,
->                         int *prot, bool *is_subpage,
->                         ARMMMUFaultInfo *fi, uint32_t *mregion);
->
-> +#ifdef TARGET_AARCH64
-> +void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-> +#else
-> +static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int fla=
-gs)
-> +{
-> +}
-> +#endif
-> +
->  #endif
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index ae739f6575..8abe1f0e4f 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -152,133 +152,6 @@ static void set_btype(DisasContext *s, int val)
->      s->btype =3D -1;
->  }
->
-> -void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> -{
-> -    ARMCPU *cpu =3D ARM_CPU(cs);
-> -    CPUARMState *env =3D &cpu->env;
-> -    uint32_t psr =3D pstate_read(env);
-> -    int i;
-> -    int el =3D arm_current_el(env);
-> -    const char *ns_status;
-> -
-> -    qemu_fprintf(f, " PC=3D%016" PRIx64 " ", env->pc);
-> -    for (i =3D 0; i < 32; i++) {
-> -        if (i =3D=3D 31) {
-> -            qemu_fprintf(f, " SP=3D%016" PRIx64 "\n", env->xregs[i]);
-> -        } else {
-> -            qemu_fprintf(f, "X%02d=3D%016" PRIx64 "%s", i, env->xregs[i],
-> -                         (i + 2) % 3 ? " " : "\n");
-> -        }
-> -    }
-> -
-> -    if (arm_feature(env, ARM_FEATURE_EL3) && el !=3D 3) {
-> -        ns_status =3D env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-> -    } else {
-> -        ns_status =3D "";
-> -    }
-> -    qemu_fprintf(f, "PSTATE=3D%08x %c%c%c%c %sEL%d%c",
-> -                 psr,
-> -                 psr & PSTATE_N ? 'N' : '-',
-> -                 psr & PSTATE_Z ? 'Z' : '-',
-> -                 psr & PSTATE_C ? 'C' : '-',
-> -                 psr & PSTATE_V ? 'V' : '-',
-> -                 ns_status,
-> -                 el,
-> -                 psr & PSTATE_SP ? 'h' : 't');
-> -
-> -    if (cpu_isar_feature(aa64_bti, cpu)) {
-> -        qemu_fprintf(f, "  BTYPE=3D%d", (psr & PSTATE_BTYPE) >> 10);
-> -    }
-> -    if (!(flags & CPU_DUMP_FPU)) {
-> -        qemu_fprintf(f, "\n");
-> -        return;
-> -    }
-> -    if (fp_exception_el(env, el) !=3D 0) {
-> -        qemu_fprintf(f, "    FPU disabled\n");
-> -        return;
-> -    }
-> -    qemu_fprintf(f, "     FPCR=3D%08x FPSR=3D%08x\n",
-> -                 vfp_get_fpcr(env), vfp_get_fpsr(env));
-> -
-> -    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) =3D=
-=3D 0) {
-> -        int j, zcr_len =3D sve_zcr_len_for_el(env, el);
-> -
-> -        for (i =3D 0; i <=3D FFR_PRED_NUM; i++) {
-> -            bool eol;
-> -            if (i =3D=3D FFR_PRED_NUM) {
-> -                qemu_fprintf(f, "FFR=3D");
-> -                /* It's last, so end the line.  */
-> -                eol =3D true;
-> -            } else {
-> -                qemu_fprintf(f, "P%02d=3D", i);
-> -                switch (zcr_len) {
-> -                case 0:
-> -                    eol =3D i % 8 =3D=3D 7;
-> -                    break;
-> -                case 1:
-> -                    eol =3D i % 6 =3D=3D 5;
-> -                    break;
-> -                case 2:
-> -                case 3:
-> -                    eol =3D i % 3 =3D=3D 2;
-> -                    break;
-> -                default:
-> -                    /* More than one quadword per predicate.  */
-> -                    eol =3D true;
-> -                    break;
-> -                }
-> -            }
-> -            for (j =3D zcr_len / 4; j >=3D 0; j--) {
-> -                int digits;
-> -                if (j * 4 + 4 <=3D zcr_len + 1) {
-> -                    digits =3D 16;
-> -                } else {
-> -                    digits =3D (zcr_len % 4 + 1) * 4;
-> -                }
-> -                qemu_fprintf(f, "%0*" PRIx64 "%s", digits,
-> -                             env->vfp.pregs[i].p[j],
-> -                             j ? ":" : eol ? "\n" : " ");
-> -            }
-> -        }
-> -
-> -        for (i =3D 0; i < 32; i++) {
-> -            if (zcr_len =3D=3D 0) {
-> -                qemu_fprintf(f, "Z%02d=3D%016" PRIx64 ":%016" PRIx64 "%s=
-",
-> -                             i, env->vfp.zregs[i].d[1],
-> -                             env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
-> -            } else if (zcr_len =3D=3D 1) {
-> -                qemu_fprintf(f, "Z%02d=3D%016" PRIx64 ":%016" PRIx64
-> -                             ":%016" PRIx64 ":%016" PRIx64 "\n",
-> -                             i, env->vfp.zregs[i].d[3], env->vfp.zregs[i=
-].d[2],
-> -                             env->vfp.zregs[i].d[1], env->vfp.zregs[i].d=
-[0]);
-> -            } else {
-> -                for (j =3D zcr_len; j >=3D 0; j--) {
-> -                    bool odd =3D (zcr_len - j) % 2 !=3D 0;
-> -                    if (j =3D=3D zcr_len) {
-> -                        qemu_fprintf(f, "Z%02d[%x-%x]=3D", i, j, j - 1);
-> -                    } else if (!odd) {
-> -                        if (j > 0) {
-> -                            qemu_fprintf(f, "   [%x-%x]=3D", j, j - 1);
-> -                        } else {
-> -                            qemu_fprintf(f, "     [%x]=3D", j);
-> -                        }
-> -                    }
-> -                    qemu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
-> -                                 env->vfp.zregs[i].d[j * 2 + 1],
-> -                                 env->vfp.zregs[i].d[j * 2],
-> -                                 odd || j =3D=3D 0 ? "\n" : ":");
-> -                }
-> -            }
-> -        }
-> -    } else {
-> -        for (i =3D 0; i < 32; i++) {
-> -            uint64_t *q =3D aa64_vfp_qreg(env, i);
-> -            qemu_fprintf(f, "Q%02d=3D%016" PRIx64 ":%016" PRIx64 "%s",
-> -                         i, q[1], q[0], (i & 1 ? "\n" : " "));
-> -        }
-> -    }
-> -}
-> -
->  void gen_a64_set_pc_im(uint64_t val)
->  {
->      tcg_gen_movi_i64(cpu_pc, val);
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index d0ab3e27e6..1e50627690 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -12416,93 +12416,6 @@ void gen_intermediate_code(CPUState *cpu, Transl=
-ationBlock *tb, int max_insns)
->      translator_loop(ops, &dc.base, cpu, tb, max_insns);
->  }
->
-> -void arm_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-> -{
-> -    ARMCPU *cpu =3D ARM_CPU(cs);
-> -    CPUARMState *env =3D &cpu->env;
-> -    int i;
-> -
-> -    if (is_a64(env)) {
-> -        aarch64_cpu_dump_state(cs, f, flags);
-> -        return;
-> -    }
-> -
-> -    for (i =3D 0; i < 16; i++) {
-> -        qemu_fprintf(f, "R%02d=3D%08x", i, env->regs[i]);
-> -        if ((i % 4) =3D=3D 3) {
-> -            qemu_fprintf(f, "\n");
-> -        } else {
-> -            qemu_fprintf(f, " ");
-> -        }
-> -    }
-> -
-> -    if (arm_feature(env, ARM_FEATURE_M)) {
-> -        uint32_t xpsr =3D xpsr_read(env);
-> -        const char *mode;
-> -        const char *ns_status =3D "";
-> -
-> -        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-> -            ns_status =3D env->v7m.secure ? "S " : "NS ";
-> -        }
-> -
-> -        if (xpsr & XPSR_EXCP) {
-> -            mode =3D "handler";
-> -        } else {
-> -            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_=
-MASK) {
-> -                mode =3D "unpriv-thread";
-> -            } else {
-> -                mode =3D "priv-thread";
-> -            }
-> -        }
-> -
-> -        qemu_fprintf(f, "XPSR=3D%08x %c%c%c%c %c %s%s\n",
-> -                     xpsr,
-> -                     xpsr & XPSR_N ? 'N' : '-',
-> -                     xpsr & XPSR_Z ? 'Z' : '-',
-> -                     xpsr & XPSR_C ? 'C' : '-',
-> -                     xpsr & XPSR_V ? 'V' : '-',
-> -                     xpsr & XPSR_T ? 'T' : 'A',
-> -                     ns_status,
-> -                     mode);
-> -    } else {
-> -        uint32_t psr =3D cpsr_read(env);
-> -        const char *ns_status =3D "";
-> -
-> -        if (arm_feature(env, ARM_FEATURE_EL3) &&
-> -            (psr & CPSR_M) !=3D ARM_CPU_MODE_MON) {
-> -            ns_status =3D env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-> -        }
-> -
-> -        qemu_fprintf(f, "PSR=3D%08x %c%c%c%c %c %s%s%d\n",
-> -                     psr,
-> -                     psr & CPSR_N ? 'N' : '-',
-> -                     psr & CPSR_Z ? 'Z' : '-',
-> -                     psr & CPSR_C ? 'C' : '-',
-> -                     psr & CPSR_V ? 'V' : '-',
-> -                     psr & CPSR_T ? 'T' : 'A',
-> -                     ns_status,
-> -                     aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
-> -    }
-> -
-> -    if (flags & CPU_DUMP_FPU) {
-> -        int numvfpregs =3D 0;
-> -        if (arm_feature(env, ARM_FEATURE_VFP)) {
-> -            numvfpregs +=3D 16;
-> -        }
-> -        if (arm_feature(env, ARM_FEATURE_VFP3)) {
-> -            numvfpregs +=3D 16;
-> -        }
-> -        for (i =3D 0; i < numvfpregs; i++) {
-> -            uint64_t v =3D *aa32_vfp_dreg(env, i);
-> -            qemu_fprintf(f, "s%02d=3D%08x s%02d=3D%08x d%02d=3D%016" PRI=
-x64 "\n",
-> -                         i * 2, (uint32_t)v,
-> -                         i * 2 + 1, (uint32_t)(v >> 32),
-> -                         i, v);
-> -        }
-> -        qemu_fprintf(f, "FPSCR: %08x\n", vfp_get_fpscr(env));
-> -    }
-> -}
-> -
->  void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
->                            target_ulong *data)
->  {
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index dc06dce767..1dd3ac0a41 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -169,7 +169,6 @@ static inline void disas_set_insn_syndrome(DisasConte=
-xt *s, uint32_t syn)
->  #ifdef TARGET_AARCH64
->  void a64_translate_init(void);
->  void gen_a64_set_pc_im(uint64_t val);
-> -void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags);
->  extern const TranslatorOps aarch64_translator_ops;
->  #else
->  static inline void a64_translate_init(void)
-> @@ -179,10 +178,6 @@ static inline void a64_translate_init(void)
->  static inline void gen_a64_set_pc_im(uint64_t val)
->  {
->  }
-> -
-> -static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int fla=
-gs)
-> -{
-> -}
->  #endif
->
->  void arm_test_cc(DisasCompare *cmp, int cc);
-
-
---
-Alex Benn=C3=A9e
+>>  target/arm/internals.h     |   8 ++
+>>  target/arm/translate-a64.c | 127 ----------------------
+>>  target/arm/translate.c     |  87 ---------------
+>>  target/arm/translate.h     |   5 -
+>>  5 files changed, 222 insertions(+), 219 deletions(-)

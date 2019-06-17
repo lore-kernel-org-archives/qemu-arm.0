@@ -1,112 +1,273 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2586966wrg;
-        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
-X-Received: by 2002:a1c:6585:: with SMTP id z127mr20801913wmb.25.1560782739060;
-        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560782739; cv=none;
-        d=google.com; s=arc-20160816;
-        b=uKltX+3EeIozfMRHKVcOU3N5nEBmgLxQFL/0mI38PP85/8xoWJxMBtcGVQJGRziRtA
-         XUoVSZvfUYW7AcUSOpcYEef/TYcp/S3XD9/Cfa+0DK4FRCAG45kdT5JwQsmvGTNiDoGP
-         s5fRjDiZ8fmYFO6o09sislngSEj5AaqMZ/Kl8rZW4l9yVXGz/G0pf8FIF9KWapY0AwST
-         aS5n5fWm54mtrSkGkvvBvHFTaWdyXf73IPLBoAwB25O2knRlHKOWtEX2rhD1owc8dCQx
-         KaVuVWJ0oIFLRFRscpz4uAvvm/p5phsMLFZ7AWaovI/uB4oSpoWW5zdijK6tH4WYxE6v
-         SoTQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=h1yf6Vt1CyQuz/mXleAz0fDL+KIk9GhCVzaElcULaF4=;
-        b=tEAY+w9p8iP2xFjyUDmW60Ek8/6F8jyQiqbuNR1+OnVdWt1JwC4RGM+RcJ5IN65M5K
-         5NFEUkbpQNR1slVrsFU+lPrCao2Uv2M8MRiVvNQyuKTW147vTOuJkhBoeg0Rzdw/fcSA
-         LD4ssJUnFrKE0co0hCwFtsR2ZvaqqMBtMJ9RZBqwAb4XaJxHkDms5+8ipwnQPGGdzpj4
-         +dUOkwGHbSmmeQIKfa0r386a5TQKdLOcdRW6djNB8eBM5XipuyRN0JesEsg51a27Mue0
-         0vKeYKHy/fJvH525BkCbfWY+cDPf/Iq6g8v1BXy3OZNbEzQFHG+/wsNg7Q9iI3XzrRP6
-         6BoA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y9sor8373567wrt.35.2019.06.17.07.45.39
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Jun 2019 07:45:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=h1yf6Vt1CyQuz/mXleAz0fDL+KIk9GhCVzaElcULaF4=;
-        b=lAUvs/O0Y5Y3z4keGTtcltk04qMUTPcal+ssid0isQCKatH/V6nB2v9du4oxTt4pgz
-         eTi/zlEX2aLgtBO6/NofXGBopUXYobFHmMGcu5lgrdpIWG38YruSu6RvB4ZgXrrblL8R
-         PfLG4R08J5isCQoHGLp8uR6gx7uLRE0Hvgp3RmA4Z23EjmQ2Nbt4kINpiTxoiM1OgSKN
-         qnbT50TZN2xZ4UZ8uAOFyRSfoKvR+ld20U6qdxhXjvrBRebDb1WKxJ6kZUj8w1mCxycp
-         97HzR6Eiu/j6o8Y02/m6MNIGdzN1+RFv08oAySv27qa8F4lyDOCMHeH0FTgxoVMzqBF1
-         Md9A==
-X-Gm-Message-State: APjAAAUuRf335TBlfRoU3zp5pXbwNzrPubTOZwNW2Fa3DiE13miLK2EX
-	9GWPgZtS2uy1Dj1DuqcgsLN3RA==
-X-Google-Smtp-Source: APXvYqxSEMbpE5GZa+k4KKbZU0/h2LYrjpSFBQwii3aVZgi9pvlBNOr9Y1axBIdn0ljpMIS0KsalUg==
-X-Received: by 2002:adf:de8b:: with SMTP id w11mr53694424wrl.134.1560782738885;
-        Mon, 17 Jun 2019 07:45:38 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
-        by smtp.gmail.com with ESMTPSA id a7sm10253325wrs.94.2019.06.17.07.45.38
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Jun 2019 07:45:38 -0700 (PDT)
-Subject: Re: [Qemu-arm] [PATCH v2 18/23] target/arm: Move CPU state dumping
- routines to helper.c
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id s12sm10817616wmh.34.2019.06.17.07.07.43
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Mon, 17 Jun 2019 07:07:43 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 02FD11FF87;
+	Mon, 17 Jun 2019 15:07:43 +0100 (BST)
+References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-8-philmd@redhat.com>
+User-agent: mu4e 1.3.2; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Samuel Ortiz <sameo@linux.intel.com>,
- Robert Bradford <robert.bradford@intel.com>
-References: <20190615154352.26824-1-philmd@redhat.com>
- <20190615154352.26824-19-philmd@redhat.com>
- <87h88o9svq.fsf@zen.linaroharston>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <78478ee8-6707-a94d-5752-bc095378f502@redhat.com>
-Date: Mon, 17 Jun 2019 16:45:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [Qemu-arm] [PATCH v2 07/23] target/arm: Declare some function publicly
+In-reply-to: <20190615154352.26824-8-philmd@redhat.com>
+Date: Mon, 17 Jun 2019 15:07:42 +0100
+Message-ID: <87v9x49ufl.fsf@zen.linaroharston>
 MIME-Version: 1.0
-In-Reply-To: <87h88o9svq.fsf@zen.linaroharston>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: mtQKveQr6W+Y
+Content-Transfer-Encoding: quoted-printable
+X-TUID: QvxeyxWFZSg3
 
-On 6/17/19 4:41 PM, Alex Bennée wrote:
-> 
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> From: Samuel Ortiz <sameo@linux.intel.com>
->>
->> They're not TCG specific and should be living the generic helper file
->> instead.
->>
->> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
->> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
->> [PMD: Rebased]
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  target/arm/helper.c        | 214
->> +++++++++++++++++++++++++++++++++++++
-> 
-> Hmm so helper is a mix of non-TCG and TCG bits whereas helper-a64.c is
-> basically just TCG helpers. It makes me wonder if we are breaking a
-> convention here as helper.c is traditionally only TCG helpers.
-> 
-> It feels like there should be different file that is unambiguously used
-> for both TCG and KVM based workloads where things like the cpu dump code
-> can live.
 
-Good idea. What about target/arm/arch_dump.c?
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
->>  target/arm/internals.h     |   8 ++
->>  target/arm/translate-a64.c | 127 ----------------------
->>  target/arm/translate.c     |  87 ---------------
->>  target/arm/translate.h     |   5 -
->>  5 files changed, 222 insertions(+), 219 deletions(-)
+> In few commits we will split the v7-M functions from this file.
+> Some function will be called out of helper.c. Declare them
+> in the "internals.h" header.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  target/arm/helper.c    | 69 +++++++++++++-----------------------------
+>  target/arm/internals.h | 45 +++++++++++++++++++++++++++
+>  2 files changed, 66 insertions(+), 48 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 9a3766b759..a1e74cc471 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -35,17 +35,6 @@
+>  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable =
+*/
+>
+>  #ifndef CONFIG_USER_ONLY
+> -/* Cacheability and shareability attributes for a memory access */
+> -typedef struct ARMCacheAttrs {
+> -    unsigned int attrs:8; /* as in the MAIR register encoding */
+> -    unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 =
+PTEs */
+> -} ARMCacheAttrs;
+> -
+> -static bool get_phys_addr(CPUARMState *env, target_ulong address,
+> -                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> -                          hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> -                          target_ulong *page_size,
+> -                          ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs=
+);
+>
+>  static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+>                                 MMUAccessType access_type, ARMMMUIdx mmu_=
+idx,
+> @@ -53,24 +42,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, targe=
+t_ulong address,
+>                                 target_ulong *page_size_ptr,
+>                                 ARMMMUFaultInfo *fi, ARMCacheAttrs *cache=
+attrs);
+>
+> -/* Security attributes for an address, as returned by v8m_security_looku=
+p. */
+> -typedef struct V8M_SAttributes {
+> -    bool subpage; /* true if these attrs don't cover the whole TARGET_PA=
+GE */
+> -    bool ns;
+> -    bool nsc;
+> -    uint8_t sregion;
+> -    bool srvalid;
+> -    uint8_t iregion;
+> -    bool irvalid;
+> -} V8M_SAttributes;
+> -
+> -static void v8m_security_lookup(CPUARMState *env, uint32_t address,
+> -                                MMUAccessType access_type, ARMMMUIdx mmu=
+_idx,
+> -                                V8M_SAttributes *sattrs);
+>  #endif
+>
+> -static void switch_mode(CPUARMState *env, int mode);
+> -
+>  static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
+>  {
+>      int nregs;
+> @@ -7552,7 +7525,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t =
+addr, uint32_t op)
+>      return 0;
+>  }
+>
+> -static void switch_mode(CPUARMState *env, int mode)
+> +void switch_mode(CPUARMState *env, int mode)
+>  {
+>      ARMCPU *cpu =3D env_archcpu(env);
+>
+> @@ -7574,7 +7547,7 @@ void aarch64_sync_64_to_32(CPUARMState *env)
+>
+>  #else
+>
+> -static void switch_mode(CPUARMState *env, int mode)
+> +void switch_mode(CPUARMState *env, int mode)
+>  {
+>      int old_mode;
+>      int i;
+> @@ -7988,9 +7961,9 @@ void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
+>   * stack pointers if it is done for the CONTROL register for the current
+>   * security state.
+>   */
+> -static void write_v7m_control_spsel_for_secstate(CPUARMState *env,
+> -                                                 bool new_spsel,
+> -                                                 bool secstate)
+> +void write_v7m_control_spsel_for_secstate(CPUARMState *env,
+> +                                          bool new_spsel,
+> +                                          bool secstate)
+>  {
+>      bool old_is_psp =3D v7m_using_psp(env);
+>
+> @@ -8015,7 +7988,7 @@ static void write_v7m_control_spsel_for_secstate(CP=
+UARMState *env,
+>   * Write to v7M CONTROL.SPSEL bit. This may change the current
+>   * stack pointer between Main and Process stack pointers.
+>   */
+> -static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
+> +void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
+>  {
+>      write_v7m_control_spsel_for_secstate(env, new_spsel, env->v7m.secure=
+);
+>  }
+> @@ -8041,7 +8014,7 @@ void write_v7m_exception(CPUARMState *env, uint32_t=
+ new_exc)
+>  }
+>
+>  /* Switch M profile security state between NS and S */
+> -static void switch_v7m_security_state(CPUARMState *env, bool new_secstat=
+e)
+> +void switch_v7m_security_state(CPUARMState *env, bool new_secstate)
+>  {
+>      uint32_t new_ss_msp, new_ss_psp;
+>
+> @@ -9447,7 +9420,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
+>      return true;
+>  }
+>
+> -static void arm_log_exception(int idx)
+> +void arm_log_exception(int idx)
+>  {
+>      if (qemu_loglevel_mask(CPU_LOG_INT)) {
+>          const char *exc =3D NULL;
+> @@ -12122,9 +12095,9 @@ static bool v8m_is_sau_exempt(CPUARMState *env,
+>          (address >=3D 0xe00ff000 && address <=3D 0xe00fffff);
+>  }
+>
+> -static void v8m_security_lookup(CPUARMState *env, uint32_t address,
+> -                                MMUAccessType access_type, ARMMMUIdx mmu=
+_idx,
+> -                                V8M_SAttributes *sattrs)
+> +void v8m_security_lookup(CPUARMState *env, uint32_t address,
+> +                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                         V8M_SAttributes *sattrs)
+>  {
+>      /* Look up the security attributes for this address. Compare the
+>       * pseudocode SecurityCheck() function.
+> @@ -12229,11 +12202,11 @@ static void v8m_security_lookup(CPUARMState *en=
+v, uint32_t address,
+>      }
+>  }
+>
+> -static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+> -                              MMUAccessType access_type, ARMMMUIdx mmu_i=
+dx,
+> -                              hwaddr *phys_ptr, MemTxAttrs *txattrs,
+> -                              int *prot, bool *is_subpage,
+> -                              ARMMMUFaultInfo *fi, uint32_t *mregion)
+> +bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+> +                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
+> +                       int *prot, bool *is_subpage,
+> +                       ARMMMUFaultInfo *fi, uint32_t *mregion)
+>  {
+>      /* Perform a PMSAv8 MPU lookup (without also doing the SAU check
+>       * that a full phys-to-virt translation does).
+> @@ -12633,11 +12606,11 @@ static ARMCacheAttrs combine_cacheattrs(ARMCach=
+eAttrs s1, ARMCacheAttrs s2)
+>   * @fi: set to fault info if the translation fails
+>   * @cacheattrs: (if non-NULL) set to the cacheability/shareability attri=
+butes
+>   */
+> -static bool get_phys_addr(CPUARMState *env, target_ulong address,
+> -                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> -                          hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> -                          target_ulong *page_size,
+> -                          ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+> +bool get_phys_addr(CPUARMState *env, target_ulong address,
+> +                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> +                   target_ulong *page_size,
+> +                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
+>  {
+>      if (mmu_idx =3D=3D ARMMMUIdx_S12NSE0 || mmu_idx =3D=3D ARMMMUIdx_S12=
+NSE1) {
+>          /* Call ourselves recursively to do the stage 1 and then stage 2
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 5a02f458f3..04711b317a 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -985,4 +985,49 @@ static inline int exception_target_el(CPUARMState *e=
+nv)
+>      return target_el;
+>  }
+>
+> +void arm_log_exception(int idx);
+> +
+> +/* Cacheability and shareability attributes for a memory access */
+> +typedef struct ARMCacheAttrs {
+> +    unsigned int attrs:8; /* as in the MAIR register encoding */
+> +    unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 =
+PTEs */
+> +} ARMCacheAttrs;
+> +
+> +bool get_phys_addr(CPUARMState *env, target_ulong address,
+> +                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
+> +                   target_ulong *page_size,
+> +                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
+> +
+> +/* Security attributes for an address, as returned by v8m_security_looku=
+p. */
+> +typedef struct V8M_SAttributes {
+> +    bool subpage; /* true if these attrs don't cover the whole TARGET_PA=
+GE */
+> +    bool ns;
+> +    bool nsc;
+> +    uint8_t sregion;
+> +    bool srvalid;
+> +    uint8_t iregion;
+> +    bool irvalid;
+> +} V8M_SAttributes;
+> +
+> +void v8m_security_lookup(CPUARMState *env, uint32_t address,
+> +                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                         V8M_SAttributes *sattrs);
+> +
+> +void switch_mode(CPUARMState *, int);
+> +
+> +bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+> +                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
+> +                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
+> +                       int *prot, bool *is_subpage,
+> +                       ARMMMUFaultInfo *fi, uint32_t *mregion);
+> +
+> +void write_v7m_control_spsel_for_secstate(CPUARMState *env,
+> +                                          bool new_spsel,
+> +                                          bool secstate);
+> +
+> +void write_v7m_control_spsel(CPUARMState *env, bool new_spsel);
+> +
+> +void switch_v7m_security_state(CPUARMState *env, bool new_secstate);
+> +
+>  #endif
+
+
+--
+Alex Benn=C3=A9e

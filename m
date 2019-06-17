@@ -1,174 +1,168 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2638612wrg;
-        Mon, 17 Jun 2019 08:33:55 -0700 (PDT)
-X-Received: by 2002:a5d:540e:: with SMTP id g14mr1432308wrv.346.1560785635020;
-        Mon, 17 Jun 2019 08:33:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560785635; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2763398wrg;
+        Mon, 17 Jun 2019 10:33:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwfjeDseNXl3Ro5EQ2E2a/GwgwFIP/eX9z9Mx6PxCRmg30euNYDEBMQFcZEqEZM4zMYvYhN
+X-Received: by 2002:a05:6000:c9:: with SMTP id q9mr11927476wrx.208.1560791946932;
+        Mon, 17 Jun 2019 10:19:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560791946; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZ+vr37+adoWhag9QHjhl5ARTauU+RNl6MQs7qrqxT/ZyXCyXat91y4C7Z99N/h3j8
-         91TtlVd/lq6Hxe4DxdDYP/MIA1gLcUzncbJK8WSlsrrI/xvE//xEzSw/pxkig5YXUAbl
-         ZxrahzitwqFYaqtm6K08P9BeclK0nx1+JjAs9kdJIgsH4j0u6HHaRW8zssDwSCZJbHPm
-         c9dBD8dNl859gW5Jjr09B9Mn73OtZdRilqYR2TAKaN6pnO5lxlpi2O3sAINBAptrTigB
-         SP2bFEk6l0zdvjQHpcY57puEXP/JJxoLgFXwDjNdnlcp3+eievptlMmLVj3C8jwzvPbz
-         +lpA==
+        b=EHVYhOISAJE4nLF3CcViav/tHxPvIIdb87cFyYL8lsaVN99dZWj1lMcr8aMkBRNbxV
+         M4jk6HTJHGWTbxnDcSuE8WAlIGOHAzwqv0qlGm1jTKjQED8MWQ2EZFnK0hyrMZ+y8g2C
+         mpr7dTwMtQR9Ur/IVTFNtS48bdSIO3UqoJi4AM0lcnHaJDBKqe2HeU8klk/8ejrEV6k/
+         loEir6BB/q+tTiSKZ/+eKeJM2F8zHjTnQFNtxV3CQ4GvGImYUT9YoMx/+9F4YR9DcIaD
+         KeW5ui7ZeudAJdZYiZYfcWHDFMRJ+xYAxipLPp6dqT8/y2jwMSv62gO1WCaj/6OyFeku
+         YLsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=9lrRlMIMHEQC4vy/D8lyTESWp6sJBMthgCamSxf4p14=;
-        b=De3pQ8hUb9v12+g8/0XCV0VatsA3lRSIurYbhkLiizn3U+T0M1PNLh73+6N0yoYNS0
-         3alHI4j6IqGkMpJyslgIk8djyamiyYihwZSNzfNbcG/IOZS2WH6ru8q6osBkgUvWvi0h
-         whsyosaA6vFFPLHaGMeuTIVBly4lEdLUJI3YAz0ZskpCVCtKk7Nz3A8DWUM1b3QqtZoB
-         22X+1IUVSV7xmg3oBMrr7MEKLQsa8LuBF6Z9QZXC3YrHYMLcuOmRDj38LDOsA6sw+5vp
-         o3v/jr+0Ub3arO20cYmGSCaYGkUD/9CIpEPz3PLUbYSAM+VBqDj2nQSiH/AGgrXINCAy
-         Prxg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=p4qnA9oL0BPxkrOSqqsQYJaOB8IB08w7HDDnpsjfjTA=;
+        b=FBiL1/P+CzEsAPplzm+IRvr2tNCYhdjDET+Qh8zXwqn/26kRlRnskBWCJgMDLKzDgO
+         qJCd7JPuVgQnfduq+v6ky6Prlpvkq5qa3K9TEgMpGSOgSC4/h3Uwqut+7bJXiBnCESrI
+         dkNaf0xzLPVh1ZNrI4oIBDmj9jAqPckIRBigXTOE2G8qMU/OfKdhL76oqQv9Pu+6WNy3
+         7ZMLQpflI0+T5KQB6lHDakLanhDwIWCTchCpAm+6sOLxy6FJCuGFgoHb+/g80b/m79BC
+         JL8mC0YcpKhfjXsQ0dPk40p2bvVjTm9QFlP9fBjNhj/csbOh/5gU0lzeC1cedIK3bCY0
+         oFHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t1sor6264747wmj.22.2019.06.17.08.33.54
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e0VcNqXN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y13si4620127ejm.175.2019.06.17.10.19.06
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 17 Jun 2019 08:33:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Jun 2019 10:19:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e0VcNqXN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50058 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hcvHd-0005nP-RE
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 13:19:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40805)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <alistair23@gmail.com>) id 1hcvGr-0005k0-7s
+ for qemu-devel@nongnu.org; Mon, 17 Jun 2019 13:18:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1hcvGq-0007Od-4v
+ for qemu-devel@nongnu.org; Mon, 17 Jun 2019 13:18:17 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:47073)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1hcvGp-00075I-TC; Mon, 17 Jun 2019 13:18:16 -0400
+Received: by mail-lf1-x144.google.com with SMTP id z15so7057688lfh.13;
+ Mon, 17 Jun 2019 10:18:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=p4qnA9oL0BPxkrOSqqsQYJaOB8IB08w7HDDnpsjfjTA=;
+ b=e0VcNqXN9I3TQJRvm+HJUA6JLogFMS+eeQKnk7uwnmJ2ejpHMBuO7TiZPjc/TZHojF
+ XHpGk1IjZfsFuDYJB/GPMxtpQc0PFgDEGVDNCiHLKWnUDMYUMI4MTiCPr961CWkmu9oz
+ pnYIT2k47WZbs2i1zlFXI9OU2L9LhM4Y7uU2FETV/yYGTLOcCseoW2xoCQ0CRn8AdPkl
+ wJYaSM7/XZ+8N7yVaUb9UauJaDaFWeNVUaFGKCfll75V7WhI1xzHw1YCWUyBU4849idh
+ Myigavlp0KJsZleLm0pbHZs2zbmS22LEWR+GVOm9k4ZvcHkZ2Ez1wbDPrLeJx8f08gHM
+ atyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=9lrRlMIMHEQC4vy/D8lyTESWp6sJBMthgCamSxf4p14=;
-        b=MNgk4lygZBSMxhdTLn2m7NTEAUQvmjGwh860h9Rgq+jPq0oynzaG9v4AoUCEs98kHa
-         987ncr1BQ1nGJzHq7VZqVitgs2VGDWZui+cV2Ys2cWn+JGaieZaXyTvpF111kkF9PRIJ
-         45XsGl+MKFnD67SWdPKGqxV3GTQggqFEqXs+qnLPovnXYEXhyy8PEd7Xt8XQy1zIDNj9
-         jsyVoWTpLSqP3HC1v0VGih4C9nb8k2aJeVoH+FQE7ZaDgmb9Tq7fKfmP1nj7u7T3K98h
-         cGRfPuzSlLE1PDcT2PMduz7ruYafuM6GGy/TXug3g+yM5uWjI19EeUogXE1/rfnD+KPq
-         jWwQ==
-X-Gm-Message-State: APjAAAW0hzuQgGIV4v4JY7xpoPsPMwyl+bVu5cMm+ZRnQUSosW6of6QA
-	vANtsQtKTqemweNwY7QxcHnkmw==
-X-Google-Smtp-Source: APXvYqxVh+LaPVNZqFbh/L5PbBbUp7MBbTXMew0Efhdsub/O2ii/gQ34TzO9KcFCSSknIunqMeucrw==
-X-Received: by 2002:a1c:9d48:: with SMTP id g69mr16489571wme.31.1560785634770;
-        Mon, 17 Jun 2019 08:33:54 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
-        by smtp.gmail.com with ESMTPSA id t198sm18650719wmt.2.2019.06.17.08.33.53
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Jun 2019 08:33:54 -0700 (PDT)
-Subject: Re: [RFC PATCH 1/2] target/arm: Add stubs to build with
- CONFIG_SEMIHOSTING disabled
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Miroslav Rezanina <mrezanin@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-References: <20190531154735.20809-1-philmd@redhat.com>
- <20190531154735.20809-2-philmd@redhat.com> <878su09r38.fsf@zen.linaroharston>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ff40b72b-3dc3-2d34-e5e4-5d110247c620@redhat.com>
-Date: Mon, 17 Jun 2019 17:33:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=p4qnA9oL0BPxkrOSqqsQYJaOB8IB08w7HDDnpsjfjTA=;
+ b=XR9cxfVRSz6XwgmVcKcXJ3xMEHu6xNBNG4gCNAQwRg49Tneqqea+HzCOwv0nOUI4T/
+ B8BvAgCyHChihUeWQJzZ12sFLlPOAsevkB9I3jkdLiHB3Ug852W6rggRBbLoUiMoH5Gx
+ NEW8CKm7L/c6sfobCpE9kDSsBcE8TmdSQpPLn7iWfQcnSRhCJdGgDqdvmqHCq5eJVbC0
+ 1h1TbsPea+WDjVUSYVEi6c43vh7l+1QPAw+/zO+BTt095ebS2or2O85Z+5ZUU0+amxR+
+ q9C9aLjLqp/HSw2Ry3exA3q92eC3se63N+DGDxFwAmB8A0cjvA2WpF81KxgZvRWM0uF0
+ dYhQ==
+X-Gm-Message-State: APjAAAUAmL9On42sVPKtA3mgKCQwbyk2tUASphyXAbGWIb7PKmYxMx2U
+ qMy/YhEBpOnLrank/uA7dpyyX4MYH8qvXV0PDDk=
+X-Received: by 2002:ac2:5324:: with SMTP id f4mr15421710lfh.156.1560791881225; 
+ Mon, 17 Jun 2019 10:18:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <878su09r38.fsf@zen.linaroharston>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: iUb6QYzoh6fL
+References: <20190617160136.29930-1-philmd@redhat.com>
+In-Reply-To: <20190617160136.29930-1-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 17 Jun 2019 10:15:14 -0700
+Message-ID: <CAKmqyKOc-ZnGhUgsBzHx2oGoBCoKStTHVWySUqP5kF88LvuqTQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::144
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/msf2-som: Exit when the cpu is not
+ the expected one
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nmR9XIojV2vv
 
-On 6/17/19 5:19 PM, Alex Bennée wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> If a distribution wants to build QEMU without semihosting support,
->> it currently gets this build failure:
->>
->>   $ ./configure --target-list=aarch64-softmmu --without-default-devices
->>   $ sed -i s/CONFIG_SEMIHOSTING=y/CONFIG_SEMIHOSTING=n/default-configs/arm-softmmu.mak
-> 
-> I'm still not convinced we should be adding support for stuff being done
-> outside the normal build process...
+On Mon, Jun 17, 2019 at 9:19 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> This machine correctly defines its default_cpu_type to cortex-m3
+> and report an error if the user requested another cpu_type,
+> however it does not exit, and this can confuse users trying
+> to use another core:
+>
+>   $ qemu-system-arm -M emcraft-sf2 -cpu cortex-m4 -kernel test-m4.elf
+>   qemu-system-arm: This board can only be used with CPU cortex-m3-arm-cpu
+>   [output related to M3 core ...]
+>
+> The CPU is indeed a M3 core:
+>
+>   (qemu) info qom-tree
+>   /machine (emcraft-sf2-machine)
+>     /unattached (container)
+>       /device[0] (msf2-soc)
+>         /armv7m (armv7m)
+>           /cpu (cortex-m3-arm-cpu)
+>
+> Add the missing exit() call to return to the shell.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-If the "KVM/TCG split" series is accepted, then we can add a
---disable-tcg job in the list of "normal builds" and we don't need this
-particular patch.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> that said...
-> 
->>   $ make subdir-aarch64-softmmu
->>   [...]
->>     LINK    aarch64-softmmu/qemu-system-aarch64
->>   /usr/bin/ld: target/arm/arm-semi.o: in function `do_arm_semihosting':
->>   ./target/arm/arm-semi.c:321: undefined reference to `qemu_semihosting_console_out'
->>   /usr/bin/ld: ./target/arm/arm-semi.c:318: undefined reference to `qemu_semihosting_console_out'
->>   collect2: error: ld returned 1 exit status
->>   make[1]: *** [Makefile:204: qemu-system-aarch64] Error 1
->>   make: *** [Makefile:472: subdir-aarch64-softmmu] Error 2
->>
->> Fix it by providing a stub when semihosting is disabled.
->>
->> Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  target/arm/Makefile.objs    |  3 ++-
->>  target/arm/arm-semi-stubs.c | 21 +++++++++++++++++++++
->>  2 files changed, 23 insertions(+), 1 deletion(-)
->>  create mode 100644 target/arm/arm-semi-stubs.c
->>
->> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
->> index 6bdcc65c2c..39b02b1fa4 100644
->> --- a/target/arm/Makefile.objs
->> +++ b/target/arm/Makefile.objs
->> @@ -1,4 +1,5 @@
->> -obj-y += arm-semi.o
->> +obj-$(CONFIG_SEMIHOSTING) += arm-semi.o
->> +obj-$(call lnot,$(CONFIG_SEMIHOSTING)) += arm-semi-stubs.o
->>  obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o monitor.o
->>  obj-$(CONFIG_KVM) += kvm.o
->>  obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
->> diff --git a/target/arm/arm-semi-stubs.c b/target/arm/arm-semi-stubs.c
->> new file mode 100644
->> index 0000000000..a91ecbd9d5
->> --- /dev/null
->> +++ b/target/arm/arm-semi-stubs.c
->> @@ -0,0 +1,21 @@
->> +/*
->> + *  Arm "Angel" semihosting stubs
->> + *
->> + * Copyright (c) 2019 Red Hat, Inc.
->> + *
->> + * Author:
->> + *   Philippe Mathieu-Daudé <philmd@redhat.com>
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
->> + * See the COPYING file in the top-level directory.
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "cpu.h"
->> +
->> +target_ulong do_arm_semihosting(CPUARMState *env)
->> +{
->> +    g_assert_not_reached();
->> +}
-> 
-> Could this not just be added to arm-semi.c in an
-> 
->   #ifndef CONFIG_SEMIHOSTING
->   target_ulong do_arm_semihosting(CPUARMState *env)
->   {
->       g_assert_not_reached();
->   }
->   #else
->   ... rest of arm-semi.c....
->   #endif
+Alistair
 
-OK, thanks for your reviews!
-
-Phil.
+> ---
+>  hw/arm/msf2-som.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+> index 8c550a8bdd..2c9984bb3b 100644
+> --- a/hw/arm/msf2-som.c
+> +++ b/hw/arm/msf2-som.c
+> @@ -53,6 +53,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machi=
+ne)
+>      if (strcmp(machine->cpu_type, mc->default_cpu_type) !=3D 0) {
+>          error_report("This board can only be used with CPU %s",
+>                       mc->default_cpu_type);
+> +        exit(1);
+>      }
+>
+>      memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
+> --
+> 2.20.1
+>
+>

@@ -1,97 +1,96 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2787175wrg;
-        Mon, 17 Jun 2019 10:56:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwaLcmCs8i0QAefldIm8KxM4guRuWE4CVzXr7Ryk57CXAudC+I+ymRlFMYGhXu0Rfnx26xO
-X-Received: by 2002:a17:906:69c4:: with SMTP id g4mr8952491ejs.9.1560794168134;
-        Mon, 17 Jun 2019 10:56:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560794168; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2791490wrg;
+        Mon, 17 Jun 2019 10:59:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz7MhBGTw/jOfwOAtPFXOp1/+NpadmFd67c/y6GWoMgKrIg9NuOWS/+F/JuYo7dD4CvplPQ
+X-Received: by 2002:a17:906:2a94:: with SMTP id l20mr12278488eje.131.1560794340776;
+        Mon, 17 Jun 2019 10:59:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560794340; cv=none;
         d=google.com; s=arc-20160816;
-        b=aKcM0kquCaTojrrJ0GK6DyIHXcKBesz38zI5er7CyIIt9waxOx+rqFKHr/YNP/WuVt
-         Pxca2fmXCP1ya7UxiliaDSNHaygBCdVhjjX8hQJ+O1D8XB47w1/TwH3h47rjGfxGjjTF
-         tqjQOd4lcAGGzF+fjXqcbe0ymfE49ZA5K6+WmwrK8qU2bDktuZkHlO4N+/asBxYsQFQE
-         1xQhFZx9pu0j2EKAxxIGziaBtlrjTXCyBkPiHmQteKwnjB+OhgSx++riVSWzHoI5jvIi
-         xeks3wZfbOM9AaEvUYJOwZ3LwNe9poTERrci8sFs13WmLO3+Lg9FhaCFcLMcpsmJwqjQ
-         KFAg==
+        b=HqNSs/AtWyT0hhMS+Qb+EcZL79k3eSGDHkPHsEIgreBjQi3EHkp50DiWd99KLe1WbP
+         Xu8KIyO0JTyK1P0SiyHDjzXMRy0hRAeHrqVMTxR4BkdGpk7XV0q231FFzB1xUBRKSN72
+         18/ULRENb+CV3zM5FDLxQ6Q61/2DOdD5sn88HSY612S3GMBOJOYvCOLyDNi88rMni2Kg
+         RTKnSzYm4PRAX1LnuoIN6t/Kn1wrYivLg0W2K5GC1hswG3ECNmJ3yVLwSv8vzyvMFfe5
+         TY8d+LVrfBBX+yhZsJW4d0MhkZLHk6amALyoqb914PD0v9UkMcv+u/+7gwHxLd20eCFz
+         BicA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=LNjb5yrrFswq3SqrrRYoa3Pq5hhZDJpEtuJq5Ac2UUo=;
-        b=whFiPPRpunFAG9+s9xtftOS3SWSlbx7Y69IbMsWxEF6n9FwVDAY+J8jxe+oRQaAGye
-         3t9qBcenNAUT+duuTh7wkYqfk6myX+n3BWiXz5ntKxhpSz2QdpPMX9ktAldjjvXmX+Uc
-         Ct3YCryW9me942O5GkRkrWmxRwuR/JzK/vDVTiM7o7Y/8+wlZn1FzDKE+GiAI6C+z38U
-         mBBV77Lpe7xlBY2iT3lRAAuj9B9fGewXH0jVuOhOoCHkjpCIGxcOm5yZde4lfzKTnHRW
-         S0YvUQyrNeg81bDSv7HFXa6Bj2+H/MRA2KzMEr9cv6qCw1brZH4Wu6/EsZwwzIXPImBS
-         4Gdg==
+        bh=v8vwTZLuhwp+bmBixmmWp52i36uK/epxo9J3L5qAyYw=;
+        b=YM9y/37WhzsPOevQarUN4kXm8eGhOY6INyrYuIn/EPrYIAGAoZfTRxsSUsxT+sN6fM
+         5s3I45Z7MnfXFrdWdQQXIOlVKKqWPLhi413G+9hkbIe2QPIcUSKpDo0lrfcc10z0l97p
+         EJ/a2+W0PqBE0Ly/6FBU50sjFGUC5YDiDuMSzgMgixX4Zbd5JbSnq02Yma840SEmnRsG
+         ZMkOd9h4qhPcRck3LU7SK2Lw8eNY10a7xNbZn+VClLYsuZ9+XNwhOezgGYQZ58OeNQir
+         7tahAgOVTaDtEU9KInSGLlulXbBXy2834P8tdwCGOJXImDRpTu1eS+bC/X9IOXeiHcmo
+         DauA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L0Tta1dd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qQnFthMS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p15si7783939ejr.218.2019.06.17.10.56.07
+        by mx.google.com with ESMTPS id r12si7508112ejj.133.2019.06.17.10.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jun 2019 10:56:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 17 Jun 2019 10:59:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=L0Tta1dd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=qQnFthMS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50666 helo=lists.gnu.org)
+Received: from localhost ([::1]:50680 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hcvrT-0003ND-5F
-	for alex.bennee@linaro.org; Mon, 17 Jun 2019 13:56:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50691)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hcvuF-0006XJ-RY
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 13:58:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50784)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hcvot-0007fL-Sv
- for qemu-devel@nongnu.org; Mon, 17 Jun 2019 13:53:29 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hcvp1-0007iL-Np
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hcvos-0000c6-Ab
- for qemu-devel@nongnu.org; Mon, 17 Jun 2019 13:53:27 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:52596)
+ (envelope-from <peter.maydell@linaro.org>) id 1hcvoz-0000g2-Qo
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:35 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:37705)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hcvos-0000aU-2Q
- for qemu-devel@nongnu.org; Mon, 17 Jun 2019 13:53:26 -0400
-Received: by mail-wm1-x342.google.com with SMTP id s3so334765wms.2
- for <qemu-devel@nongnu.org>; Mon, 17 Jun 2019 10:53:23 -0700 (PDT)
+ id 1hcvox-0000dt-RE
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:32 -0400
+Received: by mail-wr1-x442.google.com with SMTP id v14so10953960wrr.4
+ for <qemu-arm@nongnu.org>; Mon, 17 Jun 2019 10:53:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=LNjb5yrrFswq3SqrrRYoa3Pq5hhZDJpEtuJq5Ac2UUo=;
- b=L0Tta1ddmSY+YQEB2MqxK8JDGmEjkUT+lARjCwnec/e7kSpPb8JhVY9XrFna+9ianz
- 9h5BRAhjTZTp6FJasiQZrZODumkKIAAivhk8JgKzUEU33Pq3SuDjYPj3MpsI70n2RZV7
- tuUr4B5dJ/O2KqvAfWBD2K/P29Mn+mrLXz9sHWQfOzaRPkpVZD1I1miyaWRFaJC3o2Fq
- kebY3F/ZSZ3utPOEKiBMOaJlO4yTNB+Zwbeyd8/AsX3CPAZhqruXnZsY+0Np5Bf9WvlJ
- ABj9524FDxLe1tujOqKKnoBo2vL+GO1lqb03m05FbMTNq42OYyiBAeRzbN9LiDp+okn9
- KfJw==
+ bh=v8vwTZLuhwp+bmBixmmWp52i36uK/epxo9J3L5qAyYw=;
+ b=qQnFthMSJo8bfP4HEGAgZBvsS1BmZaBI2he8FBMFZln/yYefl8iffG5CDe/FQCaaoz
+ /VbmNkeZ7Q5CljJMhl+5A4Wl7KgcnpOPA6fmvxdbbHorj4vdDcrkVlPuQWCOMJfKRfQI
+ 9CJMqwtN9y2sjTAyAf9/GH6LlNfn9pCifvGvQ15JSq2cOJj9ffzsI5T8EDAxvH905JS4
+ tQcsojAIxQqGO+8Elf74KN/udytwcM2zTY+cGuqCH2hg8M3VWQbGL4SRRjYI4dciXZPj
+ wj3NAPb+aQGLs78EdDOgXQw41rS6CAwVXBo1yx1fAnI5Zb+XOeJlXXzeAV081w48sKSC
+ tZAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LNjb5yrrFswq3SqrrRYoa3Pq5hhZDJpEtuJq5Ac2UUo=;
- b=soOyx+JROkiLO6RdXa9D8tSCIuv09EdalesoqQ4huVjDz79NynBtSb1zwiK7C0cI2n
- mC4j7QR/upNdE29/26SDcaptCGxtoD/+pHtb9sn0r1lrKGNIDKt69NKbLnrQ/hT2n+z7
- 1uYJF+cS/BGD/7pfyknseB+kcbKVFEUuGlkTAT6rcq1tIpzfuAZ8a/+M4R0B7f/S6C6J
- ZJl8yeFmt5QarkRoVGZPYK3/cqccTBakl/1ZA3n41WtDj+3fIbhzD00G3KQ2UKheiTTV
- q0he+nraqxZW+tNDCnNV5Oo4faJ7XUIdy5zjmZ3te7b6H70ZP091RrvLMH9BD3a4Cwqx
- xdqg==
-X-Gm-Message-State: APjAAAVfcXSJkp3VE0PDUVek9TqsVlWc1cFvO0e4LbEMZY+DsXj6ZWsD
- Wqyc7PaEtnIDAJ6L68SVcqCgNw==
-X-Received: by 2002:a05:600c:2189:: with SMTP id
- e9mr18733039wme.56.1560794001023; 
- Mon, 17 Jun 2019 10:53:21 -0700 (PDT)
+ bh=v8vwTZLuhwp+bmBixmmWp52i36uK/epxo9J3L5qAyYw=;
+ b=SP5MQEceuEqaX6eo004Q8tZ0Mcv9C2pDvIo5ccxsOB+3+lwSXR8RQWi6yEgr0XnC7K
+ aOLOsaxJ8ZnXTC+z0BdJ6KeDGW5cCHAbix/CwDnH7tGj9MN/GoiVu8kHVo1EvChjX4FP
+ qVF2mEYeK24DRFCmV4dQkAUNm9CkQBLFmxQL/Tu7D+SyNkkmAczpD5nkagGSL5Pt8bao
+ 5evkALeJybHg/Y7QYy0n1cHgwyvnYnMQnmIjYzXEPmb/Ciy95Vc+IWy0UQAUQc3HR9QG
+ XccfyDcHlGfMljNjjsmwFV9YfvwYYDpa4T+xxh/HAOEbcnBaBb5doyyrvUl+N5M7+Zjq
+ Alxg==
+X-Gm-Message-State: APjAAAWbdWmKTaz82BZr9mxLEn+Nf5GQ5gQLR+VIsiO7TjiZM/K7UW22
+ X/RgpMjFt+WubdAYymOH5ck5r1eebdr3jg==
+X-Received: by 2002:a5d:5302:: with SMTP id e2mr62712766wrv.347.1560794008245; 
+ Mon, 17 Jun 2019 10:53:28 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t14sm8713619wrr.33.2019.06.17.10.53.19
+ by smtp.gmail.com with ESMTPSA id t14sm8713619wrr.33.2019.06.17.10.53.27
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 17 Jun 2019 10:53:20 -0700 (PDT)
+ Mon, 17 Jun 2019 10:53:27 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 17 Jun 2019 18:53:12 +0100
-Message-Id: <20190617175317.27557-2-peter.maydell@linaro.org>
+Date: Mon, 17 Jun 2019 18:53:16 +0100
+Message-Id: <20190617175317.27557-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190617175317.27557-1-peter.maydell@linaro.org>
 References: <20190617175317.27557-1-peter.maydell@linaro.org>
@@ -99,111 +98,98 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-devel] [PATCH 1/6] target/arm: NS BusFault on vector table
- fetch escalates to NS HardFault
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 5/6] hw/timer/armv7m_systick: Forbid
+ non-privileged accesses
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PTWQy1/Np8Ur
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d4C6yiawzvcg
 
-In the M-profile architecture, when we do a vector table fetch and it
-fails, we need to report a HardFault.  Whether this is a Secure HF or
-a NonSecure HF depends on several things.  If AIRCR.BFHFNMINS is 0
-then HF is always Secure, because there is no NonSecure HardFault.
-Otherwise, the answer depends on whether the 'underlying exception'
-(MemManage, BusFault, SecureFault) targets Secure or NonSecure.  (In
-the pseudocode, this is handled in the Vector() function: the final
-exc.isSecure is calculated by looking at the exc.isSecure from the
-exception returned from the memory access, not the isSecure input
-argument.)
-
-We weren't doing this correctly, because we were looking at
-the target security domain of the exception we were trying to
-load the vector table entry for. This produces errors of two kinds:
- * a load from the NS vector table which hits the "NS access
-   to S memory" SecureFault should end up as a Secure HardFault,
-   but we were raising an NS HardFault
- * a load from the S vector table which causes a BusFault
-   should raise an NS HardFault if BFHFNMINS == 1 (because
-   in that case all BusFaults are NonSecure), but we were raising
-   a Secure HardFault
-
-Correct the logic.
-
-We also fix a comment error where we claimed that we might
-be escalating MemManage to HardFault, and forgot about SecureFault.
-(Vector loads can never hit MPU access faults, because they're
-always aligned and always use the default address map.)
+Like most of the v7M memory mapped system registers, the systick
+registers are accessible to privileged code only and user accesses
+must generate a BusFault. We implement that for registers in
+the NVIC proper already, but missed it for systick since we
+implement it as a separate device. Correct the omission.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+ hw/timer/armv7m_systick.c | 26 ++++++++++++++++++++------
+ 1 file changed, 20 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index df4276f5f6c..375249d3c72 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8225,7 +8225,11 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
-         if (sattrs.ns) {
-             attrs.secure = false;
-         } else if (!targets_secure) {
--            /* NS access to S memory */
-+            /*
-+             * NS access to S memory: the underlying exception which we escalate
-+             * to HardFault is SecureFault, which always targets Secure.
-+             */
-+            exc_secure = true;
-             goto load_fail;
-         }
+diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+index a17317ce2fe..94640743b5d 100644
+--- a/hw/timer/armv7m_systick.c
++++ b/hw/timer/armv7m_systick.c
+@@ -75,11 +75,17 @@ static void systick_timer_tick(void *opaque)
      }
-@@ -8233,21 +8237,31 @@ static bool arm_v7m_load_vector(ARMCPU *cpu, int exc, bool targets_secure,
-     vector_entry = address_space_ldl(arm_addressspace(cs, attrs), addr,
-                                      attrs, &result);
-     if (result != MEMTX_OK) {
-+        /*
-+         * Underlying exception is BusFault: its target security state
-+         * depends on BFHFNMINS.
-+         */
-+        exc_secure = !(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK);
-         goto load_fail;
-     }
-     *pvec = vector_entry;
-     return true;
+ }
  
- load_fail:
--    /* All vector table fetch fails are reported as HardFault, with
-+    /*
-+     * All vector table fetch fails are reported as HardFault, with
-      * HFSR.VECTTBL and .FORCED set. (FORCED is set because
--     * technically the underlying exception is a MemManage or BusFault
-+     * technically the underlying exception is a SecureFault or BusFault
-      * that is escalated to HardFault.) This is a terminal exception,
-      * so we will either take the HardFault immediately or else enter
-      * lockup (the latter case is handled in armv7m_nvic_set_pending_derived()).
-+     * The HardFault is Secure if BFHFNMINS is 0 (meaning that all HFs are
-+     * secure); otherwise it targets the same security state as the
-+     * underlying exception.
-      */
--    exc_secure = targets_secure ||
--        !(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK);
-+    if (!(cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-+        exc_secure = false;
+-static uint64_t systick_read(void *opaque, hwaddr addr, unsigned size)
++static MemTxResult systick_read(void *opaque, hwaddr addr, uint64_t *data,
++                                unsigned size, MemTxAttrs attrs)
+ {
+     SysTickState *s = opaque;
+     uint32_t val;
+ 
++    if (attrs.user) {
++        /* Generate BusFault for unprivileged accesses */
++        return MEMTX_ERROR;
 +    }
-     env->v7m.hfsr |= R_V7M_HFSR_VECTTBL_MASK | R_V7M_HFSR_FORCED_MASK;
-     armv7m_nvic_set_pending_derived(env->nvic, ARMV7M_EXCP_HARD, exc_secure);
-     return false;
++
+     switch (addr) {
+     case 0x0: /* SysTick Control and Status.  */
+         val = s->control;
+@@ -121,14 +127,21 @@ static uint64_t systick_read(void *opaque, hwaddr addr, unsigned size)
+     }
+ 
+     trace_systick_read(addr, val, size);
+-    return val;
++    *data = val;
++    return MEMTX_OK;
+ }
+ 
+-static void systick_write(void *opaque, hwaddr addr,
+-                          uint64_t value, unsigned size)
++static MemTxResult systick_write(void *opaque, hwaddr addr,
++                                 uint64_t value, unsigned size,
++                                 MemTxAttrs attrs)
+ {
+     SysTickState *s = opaque;
+ 
++    if (attrs.user) {
++        /* Generate BusFault for unprivileged accesses */
++        return MEMTX_ERROR;
++    }
++
+     trace_systick_write(addr, value, size);
+ 
+     switch (addr) {
+@@ -172,11 +185,12 @@ static void systick_write(void *opaque, hwaddr addr,
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "SysTick: Bad write offset 0x%" HWADDR_PRIx "\n", addr);
+     }
++    return MEMTX_OK;
+ }
+ 
+ static const MemoryRegionOps systick_ops = {
+-    .read = systick_read,
+-    .write = systick_write,
++    .read_with_attrs = systick_read,
++    .write_with_attrs = systick_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
+     .valid.min_access_size = 4,
+     .valid.max_access_size = 4,
 -- 
 2.20.1
 

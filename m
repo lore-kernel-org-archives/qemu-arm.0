@@ -1,97 +1,97 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2786442wrg;
-        Mon, 17 Jun 2019 10:55:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzcAmM/j//2Blip7E2Y5/CXozT89Ysh49KqUoPUXatdtMz30J6/7xoNvKFJOlbSu2EBnYG0
-X-Received: by 2002:ac2:5205:: with SMTP id a5mr1691040lfl.143.1560794140201;
-        Mon, 17 Jun 2019 10:55:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560794140; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2787027wrg;
+        Mon, 17 Jun 2019 10:56:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwM5Ps31b805p7wd6LbXB9n6zyrKl/jnFLHj4MAIroHBA5lLqcF2vLAAMx33SxX+fqEPIop
+X-Received: by 2002:ac2:418f:: with SMTP id z15mr26885883lfh.177.1560794162694;
+        Mon, 17 Jun 2019 10:56:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560794162; cv=none;
         d=google.com; s=arc-20160816;
-        b=HX4u3KYcc8jVUj9oiFWpJTI0BgvxEVLoluZR1c1LvdGlpAF5CEm11Av/pWOIlnK6tS
-         XYdB7JGRb79IdiBXouHIv/tBDTwDoE6ag3Nui8nUsu3z74mwoNxB8Ot/wjLArcJeKeyq
-         478Q9HJF06+8e4UgAZReeKfxqMQrOgoOS6hQlR22Q83skxre9VsxLHs5N6qJvMgannlD
-         KHFlT3zqAXJyEB/IeM238yaC1+9gflblARuuW5/nAerbZOmWrB7R6hg+0pisI3xoFO9R
-         tGcc8ou4sMgW0xrtlABxhm2IX+hNOOZVquu92J5xCsej+2v9l24wMQYaq+AexBXh7S46
-         UOHQ==
+        b=ZQrS4pnAtI8pTMx49gD8T/u555ZaU+NGfz5KBthYtTcsbvFU104E6GJGp67AGgB7Us
+         P3a9f9p0w7Dwe6VGQB2hj6e4Ljum3rDg2vy3YnNqRLFxvIDHy1dXO1SolO3w3He7kOgR
+         TWrneIZGabZAMI6ejqX5LxPIpDkkjI/uJp/wUbeIfWV3TYTgP48Pmb+iv7Y647iWATma
+         ub5xgQHAyybd5hfRdLkCVqtrQ2MPkYeo7wgxgyJw3AakcvCgVImB3hoj0XDsOX9ypHeb
+         Lv7pYsLGfQSpmCRW6GyxiC9Sbckz1ZrZkTj/VIIEsBAVaZoT3FHgN5sL/FLBWb1eaeMY
+         k/IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=tkA5eV6B+7bWXMQLTUuNg6Ny6QzZoudF4r4qdXt2dKw=;
-        b=RgCJjRPPzlsdxUSG54x3vVHm6g2foouScGji0XOQ0x0FUOBIkHH5CLL/r6/LF8rUmD
-         APF0eamDXGI54RH0a1wtKYnmk2/6csjWCvCDN7H1U0VChIK5aMn6/wcvFNJGnAWAF6jR
-         dKLAf9onMlNiKLuSyc257BWw4pw2CzXB8Q0U8xY7msy/gm9eiRmahmMCe2J0H8/Df+rz
-         fcFrikFi9yc+3c9xDwCQYQlM1mJpLt/qUjPkAzFg7mVJYLxyUJ1HDk5/7xJKf62DChl5
-         gAAeLkcUXcfMA5FM/5ybC5wa7uIJNLSD7AbxipM9f3Dw+zlKAWAKuvad1Tv/Zo6z8vU1
-         n5BQ==
+        bh=zKgJAfwPo8FOYTHjapPuTGTNS3c99ejdEGatbxYgWDQ=;
+        b=PRbtGZOHKUopdEP7PTezh6r8OZYh0Lbc9KOeUPBZ/SNNrsojsBR+cBSqDNTxnHkI+i
+         XQ2vBiAGfEstPcdwwtlGtkvsgIOjkyLSVDnbLlyXlKIle2KrG4CSnUiue3kPduCIKV4d
+         Omw0292mU96YUrurHCc3zCnfVwA/072gX9We8VeY1kc0sPTmZdyWpvRQ3kyTaniVs3Bs
+         KfTxmGCK4YoaX6AAikby+JmlpI8cev8SOmm1VrfGWy8074nK9wUHJwuA2H+pa6ot0N74
+         U9VOLMUVZfhZzirqpADgvF71j8cMhRO5lSx7IjEt9+Rs8LMT/beFabogUafTUpAHecza
+         1DAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nRp4TDwe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUCOyFhe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22si4377750ejb.205.2019.06.17.10.55.39
+        by mx.google.com with ESMTPS id p9si3113092ejm.224.2019.06.17.10.56.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jun 2019 10:55:40 -0700 (PDT)
+        Mon, 17 Jun 2019 10:56:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nRp4TDwe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xUCOyFhe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50654 helo=lists.gnu.org)
+Received: from localhost ([::1]:50664 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hcvr0-0002ts-Dl
-	for alex.bennee@linaro.org; Mon, 17 Jun 2019 13:55:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50689)
+	id 1hcvrN-0003Kr-ND
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 13:56:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50788)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hcvot-0007fJ-Sq
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:29 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hcvp1-0007iT-Ou
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hcvos-0000cE-D8
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:27 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34350)
+ (envelope-from <peter.maydell@linaro.org>) id 1hcvp0-0000gN-1W
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:35 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39457)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hcvos-0000av-7Q
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:26 -0400
-Received: by mail-wm1-x342.google.com with SMTP id w9so499816wmd.1
- for <qemu-arm@nongnu.org>; Mon, 17 Jun 2019 10:53:24 -0700 (PDT)
+ id 1hcvox-0000eP-SW
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 13:53:33 -0400
+Received: by mail-wm1-x344.google.com with SMTP id z23so305658wma.4
+ for <qemu-arm@nongnu.org>; Mon, 17 Jun 2019 10:53:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=tkA5eV6B+7bWXMQLTUuNg6Ny6QzZoudF4r4qdXt2dKw=;
- b=nRp4TDwedZ2bj3uvzCgOxbHGnnIMrSlYGOSYYiyHPYh1po1TWvybV6Pwlhl7Fq2Vby
- 37y1NjDzBOxUP72RK+H8m6+/ciJ3epPK9nK1chEsySdwlhzBZgO6JqJUqhKSBsdnu90f
- lNXgKc0U/B/pBM8ZBS1VrHhce79nNl92Oi6InE1A9HvZDHhECJMYF9trq6ZPpSUL8Yn5
- KfH0mLxTTPLq22qX2DyQIRaA75ecrOOaKbYcQpfrMcsMBSbP/ReX40n+M0P4YINsNQ3y
- WsVmdC/B/c3RacMMyl+i1hjcES2ifsNFXqa1zjTbt4wG6jKCLO21neU0DvVSAuzO2XHo
- gOgA==
+ bh=zKgJAfwPo8FOYTHjapPuTGTNS3c99ejdEGatbxYgWDQ=;
+ b=xUCOyFhemrpJA+/iI2WRVZ2yl1on1d11KGVAusGcu+jFM1tubF2R0lZnSu9OYt39ML
+ ywYiqPlVQDh5aG6EeZPUVakYpUpsck5ZePwRTDzuG1mHZMTF01owgQ8/OucjwlUOPVWv
+ 4wbddUAlu4RkwoLOuZMjSNAj6NE030fyMgomAT727nXYbdcphl6GLxeh+0vtCDkFRyzG
+ JHJ+qhbdCYVjbISs6diRyfDOWAy1popaLjovZTclhZe8HERkTx757tNdnfrRUA4f3rjs
+ qAO6+ViHOr7An63iXBEFIk/WSIIaR6VTNB22LoV8e741wCIYv/KpMnABVfhGkmgI3pUN
+ saTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tkA5eV6B+7bWXMQLTUuNg6Ny6QzZoudF4r4qdXt2dKw=;
- b=Dql0qGW9k0ChnZL4kwmmjwGwSwq7s3PMzrX/Mx44irpIzCUiCeDJRLZm3my4hqX7Aq
- hWjc3fyfYY9amU6H7IrWMBBCWqYQoEGVJvwad6uC2ZiPIwzlvvR2LhZxQNRdmDRcKC3w
- W4CBqtWcexZIRvFM4JiYQm9RSzrBdOTTBiMQoWos9o5eK6zMS8NjIWSQx4B+h9q7Gsei
- u7caK0NXetL1mBshKvf33neNk9Mo1PkvP1CLNngmCpKh8K3z99cOJXJPrHkQ47cQcJjy
- UwynEhk4rK5TGejOLBkBbSgnHhoDyAl4CsQi3p621UYDPM2kr3hBXgOsEJQpgqITuLQc
- /PNw==
-X-Gm-Message-State: APjAAAWOvb7rQ5bqdjwC7AhR3qP/0qhKElPDkfE3vka13CZF3PF9cVKQ
- 1fwb2YRZWCmeZdJxYBK6jH1Y1IL9uWHlaA==
-X-Received: by 2002:a05:600c:c6:: with SMTP id
- u6mr20220508wmm.153.1560794003623; 
- Mon, 17 Jun 2019 10:53:23 -0700 (PDT)
+ bh=zKgJAfwPo8FOYTHjapPuTGTNS3c99ejdEGatbxYgWDQ=;
+ b=HZ9ncAwdYorXHy5lQZmBcqj9Z8zwh/6t7kpC7xxeOOwBfcM4gEQVrU6Fap9PrrKx2p
+ pirC8GV0dhkio/Blq038TV6NeTeUoynt20Qym3YaNShM2hjyvgJlJTTS2G89JVdMijyD
+ vL/DulHc96n5Atdg8sP+BeAGmJGSRP6lFjfg92fPyNd5vIJ/QrpcNZ7z7TLK0YsMFvAV
+ 30awNQxrWuMMzPoCnR/RnE7y8mKp14XtvFS4YkpHJwE0AtNXhgFSEvOHC7SKmgFvO2fH
+ EjTUsmBGqOhywQZuMSwx9Zo95ybdQSSnyRam+Q617gBokxa81GZtJgVsC3vv3umwq2LF
+ bZng==
+X-Gm-Message-State: APjAAAV4OoxgYmMCCPi/+s9iqgBKVpCunVfx3zYueAoXpHhUwwdqZqwT
+ iRoI87K4VbCtKgUyhCwP+fgdw0lpvuosaQ==
+X-Received: by 2002:a1c:e0c4:: with SMTP id
+ x187mr19004489wmg.177.1560794006206; 
+ Mon, 17 Jun 2019 10:53:26 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t14sm8713619wrr.33.2019.06.17.10.53.22
+ by smtp.gmail.com with ESMTPSA id t14sm8713619wrr.33.2019.06.17.10.53.23
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 17 Jun 2019 10:53:22 -0700 (PDT)
+ Mon, 17 Jun 2019 10:53:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 17 Jun 2019 18:53:14 +0100
-Message-Id: <20190617175317.27557-4-peter.maydell@linaro.org>
+Date: Mon, 17 Jun 2019 18:53:15 +0100
+Message-Id: <20190617175317.27557-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190617175317.27557-1-peter.maydell@linaro.org>
 References: <20190617175317.27557-1-peter.maydell@linaro.org>
@@ -99,9 +99,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH 3/6] target/arm: v8M: Check state of exception
- being returned from
+X-Received-From: 2a00:1450:4864:20::344
+Subject: [Qemu-arm] [PATCH 4/6] target/arm: Use _ra versions of
+ cpu_stl_data() in v7M helpers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,50 +115,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M6XkZrf8a3bS
+X-TUID: 1RfAFLgJuPy3
 
-In v8M, an attempt to return from an exception which is not
-active is an illegal exception return. For this purpose,
-exceptions which can configurably target either Secure or
-NonSecure are not considered to be active if they are
-configured for the opposite security state for the one
-we're trying to return from (eg attempt to return from
-an NS NMI but NMI targets Secure). In the pseudocode this
-is handled by IsActiveForState().
-
-Detect this case rather than counting an active exception
-possibly of the wrong security state as being sufficient.
+In the various helper functions for v7M/v8M instructions, use
+the _ra versions of cpu_stl_data() and friends. Otherwise we
+may get wrong behaviour or an assert() due to not being able
+to locate the TB if there is an exception on the memory access
+or if it performs an IO operation when in icount mode.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/armv7m_nvic.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 330eb728dd5..9f8f0d3ff55 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -860,7 +860,19 @@ int armv7m_nvic_complete_irq(void *opaque, int irq, bool secure)
-         return -1;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 375249d3c72..866fe54780e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8141,8 +8141,8 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
      }
  
--    ret = nvic_rettobase(s);
-+    /*
-+     * If this is a configurable exception and it is currently
-+     * targeting the opposite security state from the one we're trying
-+     * to complete it for, this counts as an illegal exception return.
-+     * We still need to deactivate whatever vector the logic above has
-+     * selected, though, as it might not be the same as the one for the
-+     * requested exception number.
-+     */
-+    if (!exc_is_banked(irq) && exc_targets_secure(s, irq) != secure) {
-+        ret = -1;
-+    } else {
-+        ret = nvic_rettobase(s);
-+    }
+     /* Note that these stores can throw exceptions on MPU faults */
+-    cpu_stl_data(env, sp, nextinst);
+-    cpu_stl_data(env, sp + 4, saved_psr);
++    cpu_stl_data_ra(env, sp, nextinst, GETPC());
++    cpu_stl_data_ra(env, sp + 4, saved_psr, GETPC());
  
-     vec->active = 0;
-     if (vec->level) {
+     env->regs[13] = sp;
+     env->regs[14] = 0xfeffffff;
+@@ -8557,6 +8557,7 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+     /* fptr is the value of Rn, the frame pointer we store the FP regs to */
+     bool s = env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_S_MASK;
+     bool lspact = env->v7m.fpccr[s] & R_V7M_FPCCR_LSPACT_MASK;
++    uintptr_t ra = GETPC();
+ 
+     assert(env->v7m.secure);
+ 
+@@ -8582,7 +8583,7 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+      * Note that we do not use v7m_stack_write() here, because the
+      * accesses should not set the FSR bits for stacking errors if they
+      * fail. (In pseudocode terms, they are AccType_NORMAL, not AccType_STACK
+-     * or AccType_LAZYFP). Faults in cpu_stl_data() will throw exceptions
++     * or AccType_LAZYFP). Faults in cpu_stl_data_ra() will throw exceptions
+      * and longjmp out.
+      */
+     if (!(env->v7m.fpccr[M_REG_S] & R_V7M_FPCCR_LSPEN_MASK)) {
+@@ -8598,10 +8599,10 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+             if (i >= 16) {
+                 faddr += 8; /* skip the slot for the FPSCR */
+             }
+-            cpu_stl_data(env, faddr, slo);
+-            cpu_stl_data(env, faddr + 4, shi);
++            cpu_stl_data_ra(env, faddr, slo, ra);
++            cpu_stl_data_ra(env, faddr + 4, shi, ra);
+         }
+-        cpu_stl_data(env, fptr + 0x40, vfp_get_fpscr(env));
++        cpu_stl_data_ra(env, fptr + 0x40, vfp_get_fpscr(env), ra);
+ 
+         /*
+          * If TS is 0 then s0 to s15 and FPSCR are UNKNOWN; we choose to
+@@ -8622,6 +8623,8 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+ 
+ void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+ {
++    uintptr_t ra = GETPC();
++
+     /* fptr is the value of Rn, the frame pointer we load the FP regs from */
+     assert(env->v7m.secure);
+ 
+@@ -8655,13 +8658,13 @@ void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+                 faddr += 8; /* skip the slot for the FPSCR */
+             }
+ 
+-            slo = cpu_ldl_data(env, faddr);
+-            shi = cpu_ldl_data(env, faddr + 4);
++            slo = cpu_ldl_data_ra(env, faddr, ra);
++            shi = cpu_ldl_data_ra(env, faddr + 4, ra);
+ 
+             dn = (uint64_t) shi << 32 | slo;
+             *aa32_vfp_dreg(env, i / 2) = dn;
+         }
+-        fpscr = cpu_ldl_data(env, fptr + 0x40);
++        fpscr = cpu_ldl_data_ra(env, fptr + 0x40, ra);
+         vfp_set_fpscr(env, fpscr);
+     }
+ 
 -- 
 2.20.1
 

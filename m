@@ -1,155 +1,70 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t140sm9461121wmt.0.2019.06.17.07.04.46
+        by smtp.gmail.com with ESMTPSA id t14sm8322680wrr.33.2019.06.17.04.37.05
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 07:04:46 -0700 (PDT)
+        Mon, 17 Jun 2019 04:37:05 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E9F3F1FF87;
-	Mon, 17 Jun 2019 15:04:45 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-24-philmd@redhat.com>
+	by zen.linaroharston (Postfix) with ESMTP id 34D221FF87;
+	Mon, 17 Jun 2019 12:37:05 +0100 (BST)
+References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-3-philmd@redhat.com>
 User-agent: mu4e 1.3.2; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [Qemu-arm] [NOTFORMERGE PATCH v2 23/23] Missing symbols when building with --disable-tcg
-In-reply-to: <20190615154352.26824-24-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 15:04:45 +0100
-Message-ID: <87y3209uki.fsf@zen.linaroharston>
+Subject: Re: [Qemu-arm] [PATCH v2 02/23] target/arm: Makefile cleanup (ARM)
+In-reply-to: <20190615154352.26824-3-philmd@redhat.com>
+Date: Mon, 17 Jun 2019 12:37:05 +0100
+Message-ID: <87a7egbfz2.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: MElOUQzFG/Ux
+X-TUID: oddCBtRgEnKB
 
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> While it might be normal to disable PSCI on KVM, I doubt the
-> VFP helpers are correct ;)
->
-> Anyway this allow to link the binary and run a KVM guest.
-
-But also:
-
-/home/alex/lsrc/qemu.git/target/arm/helper.c: In function =E2=80=98S1_ptw_t=
-ranslate=E2=80=99:
-/home/alex/lsrc/qemu.git/target/arm/helper.c:8794:15: note: parameter passi=
-ng for argument of type =E2=80=98MemTxAttrs=E2=80=99 {aka =E2=80=98struct M=
-emTxAttrs=E2=80=99} changed in GCC 9.1
- 8794 | static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-      |               ^~~~~~~~~~~~~~~~
-  LINK    x86_64-linux-user/qemu-x86_64
-  LINK    xtensa-linux-user/qemu-xtensa
-/home/alex/lsrc/qemu.git/target/arm/helper.c: In function =E2=80=98S1_ptw_t=
-ranslate=E2=80=99:
-/home/alex/lsrc/qemu.git/target/arm/helper.c:8794:15: note: parameter passi=
-ng for argument of type =E2=80=98MemTxAttrs=E2=80=99 {aka =E2=80=98struct M=
-emTxAttrs=E2=80=99} changed in GCC 9.1
- 8794 | static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-      |               ^~~~~~~~~~~~~~~~
-  LINK    xtensaeb-linux-user/qemu-xtensaeb
-  LINK    arm-linux-user/qemu-arm
-  LINK    aarch64-linux-user/qemu-aarch64
-  LINK    armeb-linux-user/qemu-armeb
-  LINK    aarch64_be-linux-user/qemu-aarch64_be
-  LINK    arm-softmmu/qemu-system-arm
-  LINK    aarch64-softmmu/qemu-system-aarch64
-/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
-nux-gnu/bin/ld: target/arm/kvm-missing.o: in function `arm_is_psci_call':
-/home/alex/lsrc/qemu.git/target/arm/kvm-missing.c:17: multiple definition o=
-f `arm_is_psci_call'; target/arm/psci.o:/home/alex/lsrc/qemu.git/target/arm=
-/psci.c:36: first defined here
-/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
-nux-gnu/bin/ld: target/arm/kvm-missing.o: in function `arm_handle_psci_call=
-':
-/home/alex/lsrc/qemu.git/target/arm/kvm-missing.c:20: multiple definition o=
-f `arm_handle_psci_call'; target/arm/psci.o:/home/alex/lsrc/qemu.git/target=
-/arm/psci.c:77: first defined here
-/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
-nux-gnu/bin/ld: target/arm/vfp_helper.o: in function `vfp_get_fpscr':
-/home/alex/lsrc/qemu.git/target/arm/vfp_helper.c:75: multiple definition of=
- `vfp_get_fpscr'; target/arm/kvm-missing.o:/home/alex/lsrc/qemu.git/target/=
-arm/kvm-missing.c:8: first defined here
-/usr/lib/gcc/aarch64-unknown-linux-gnu/9.1.0/../../../../aarch64-unknown-li=
-nux-gnu/bin/ld: target/arm/vfp_helper.o: in function `vfp_set_fpscr':
-/home/alex/lsrc/qemu.git/target/arm/vfp_helper.c:185: multiple definition o=
-f `vfp_set_fpscr'; target/arm/kvm-missing.o:/home/alex/lsrc/qemu.git/target=
-/arm/kvm-missing.c:12:
-first defined here
-collect2: error: ld returned 1 exit status
-make[1]: *** [Makefile:204: qemu-system-aarch64] Error 1
-make: *** [Makefile:472: subdir-aarch64-softmmu] Error 2
-
-On AArch64 host with TCG enabled....
-
->
-> Tested using:
->
->   $ make pc-bios/edk2-aarch64-code.fd
->   $ dd if=3D/dev/zero of=3Dflash1.img bs=3D1M count=3D64
->   $ aarch64-softmmu/qemu-system-aarch64 \
->     -nographic \
->     -enable-kvm \
->     -M virt,gic-version=3D3 \
->     -cpu host \
->     \
->     -pflash pc-bios/edk2-aarch64-code.fd \
->     -pflash flash1.img \
->     -drive if=3Dnone,file=3Dbionic-server-cloudimg-arm64.img,id=3Dhd0 \
->     -device virtio-blk-device,drive=3Dhd0 \
->     \
->     -netdev type=3Duser,id=3Dnet0 \
->     -device virtio-net-device,netdev=3Dnet0
+> Group ARM objects together, TCG related ones at the bottom.
+> This will help when restricting TCG-only objects.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
->  target/arm/Makefile.objs |  1 +
->  target/arm/kvm-missing.c | 22 ++++++++++++++++++++++
->  2 files changed, 23 insertions(+)
->  create mode 100644 target/arm/kvm-missing.c
+>  target/arm/Makefile.objs | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 >
 > diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-> index b8aa9c032a..bf1cad2909 100644
+> index 7c31fa01c1..3269dda613 100644
 > --- a/target/arm/Makefile.objs
 > +++ b/target/arm/Makefile.objs
-> @@ -6,6 +6,7 @@ obj-$(CONFIG_SOFTMMU) +=3D machine.o arch_dump.o monitor.=
-o arm-powerctl.o
->  obj-$(call land,$(CONFIG_TCG),$(CONFIG_SOFTMMU)) +=3D psci.o
->
->  obj-$(CONFIG_KVM) +=3D kvm.o
-> +obj-$(CONFIG_KVM) +=3D kvm-missing.o
+> @@ -4,11 +4,9 @@ obj-$(CONFIG_KVM) +=3D kvm.o
 >  obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) +=3D kvm32=
 .o
 >  obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) +=3D kvm64.o
 >  obj-$(call lnot,$(CONFIG_KVM)) +=3D kvm-stub.o
-> diff --git a/target/arm/kvm-missing.c b/target/arm/kvm-missing.c
-> new file mode 100644
-> index 0000000000..0b32cd4e9c
-> --- /dev/null
-> +++ b/target/arm/kvm-missing.c
-> @@ -0,0 +1,22 @@
-> +#include "qemu/osdep.h"
-> +#include "cpu.h"
-> +#include "internals.h"
+> -obj-y +=3D translate.o op_helper.o helper.o cpu.o
+> -obj-y +=3D neon_helper.o iwmmxt_helper.o vec_helper.o vfp_helper.o
+> +obj-y +=3D helper.o cpu.o
+>  obj-y +=3D gdbstub.o
+>  obj-$(TARGET_AARCH64) +=3D cpu64.o gdbstub64.o
+> -obj-y +=3D crypto_helper.o
+>  obj-$(CONFIG_SOFTMMU) +=3D arm-powerctl.o
+>
+>  DECODETREE =3D $(SRC_PATH)/scripts/decodetree.py
+> @@ -32,6 +30,11 @@ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+>  target/arm/translate.o: target/arm/decode-vfp.inc.c
+>  target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
+>
+> +obj-y +=3D translate.o op_helper.o
+> +obj-y +=3D crypto_helper.o
+> +obj-y +=3D iwmmxt_helper.o vec_helper.o
+> +obj-y +=3D neon_helper.o vfp_helper.o
 > +
-> +uint32_t vfp_get_fpscr(CPUARMState *env)
-> +{
-> +    return 0;
-> +}
-> +
-> +void vfp_set_fpscr(CPUARMState *env, uint32_t val)
-> +{
-> +}
-> +
-> +bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
-> +{
-> +    return false;
-> +}
-> +
-> +void arm_handle_psci_call(ARMCPU *cpu)
-> +{
-> +    abort();
-> +}
+>  obj-$(TARGET_AARCH64) +=3D translate-a64.o helper-a64.o
+>  obj-$(TARGET_AARCH64) +=3D translate-sve.o sve_helper.o
+>  obj-$(TARGET_AARCH64) +=3D pauth_helper.o
 
 
 --

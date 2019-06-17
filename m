@@ -1,272 +1,102 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id s12sm10817616wmh.34.2019.06.17.07.07.43
+        by smtp.gmail.com with ESMTPSA id o13sm23733433wra.92.2019.06.17.07.07.59
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 07:07:43 -0700 (PDT)
+        Mon, 17 Jun 2019 07:07:59 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 02FD11FF87;
-	Mon, 17 Jun 2019 15:07:43 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-8-philmd@redhat.com>
+	by zen.linaroharston (Postfix) with ESMTP id BCDC51FF87;
+	Mon, 17 Jun 2019 15:07:58 +0100 (BST)
+References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-10-philmd@redhat.com>
 User-agent: mu4e 1.3.2; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v2 07/23] target/arm: Declare some function publicly
-In-reply-to: <20190615154352.26824-8-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 15:07:42 +0100
-Message-ID: <87v9x49ufl.fsf@zen.linaroharston>
+Subject: Re: [Qemu-arm] [PATCH v2 09/23] target/arm: Move code around
+In-reply-to: <20190615154352.26824-10-philmd@redhat.com>
+Date: Mon, 17 Jun 2019 15:07:58 +0100
+Message-ID: <87tvco9uf5.fsf@zen.linaroharston>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: QvxeyxWFZSg3
+X-TUID: ENsoTN05M0DS
 
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> In few commits we will split the v7-M functions from this file.
-> Some function will be called out of helper.c. Declare them
-> in the "internals.h" header.
+> To ease the review of the next commit, move the
+> write_v7m_exception() function around.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  target/arm/helper.c    | 69 +++++++++++++-----------------------------
->  target/arm/internals.h | 45 +++++++++++++++++++++++++++
->  2 files changed, 66 insertions(+), 48 deletions(-)
+>  target/arm/helper.c | 40 ++++++++++++++++++++--------------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)
 >
 > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 9a3766b759..a1e74cc471 100644
+> index a829086c6d..b4fd9b42d7 100644
 > --- a/target/arm/helper.c
 > +++ b/target/arm/helper.c
-> @@ -35,17 +35,6 @@
->  #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable =
-*/
->
->  #ifndef CONFIG_USER_ONLY
-> -/* Cacheability and shareability attributes for a memory access */
-> -typedef struct ARMCacheAttrs {
-> -    unsigned int attrs:8; /* as in the MAIR register encoding */
-> -    unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 =
-PTEs */
-> -} ARMCacheAttrs;
-> -
-> -static bool get_phys_addr(CPUARMState *env, target_ulong address,
-> -                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> -                          hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-> -                          target_ulong *page_size,
-> -                          ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs=
-);
->
->  static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
->                                 MMUAccessType access_type, ARMMMUIdx mmu_=
-idx,
-> @@ -53,24 +42,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, targe=
-t_ulong address,
->                                 target_ulong *page_size_ptr,
->                                 ARMMMUFaultInfo *fi, ARMCacheAttrs *cache=
-attrs);
->
-> -/* Security attributes for an address, as returned by v8m_security_looku=
-p. */
-> -typedef struct V8M_SAttributes {
-> -    bool subpage; /* true if these attrs don't cover the whole TARGET_PA=
-GE */
-> -    bool ns;
-> -    bool nsc;
-> -    uint8_t sregion;
-> -    bool srvalid;
-> -    uint8_t iregion;
-> -    bool irvalid;
-> -} V8M_SAttributes;
-> -
-> -static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-> -                                MMUAccessType access_type, ARMMMUIdx mmu=
-_idx,
-> -                                V8M_SAttributes *sattrs);
->  #endif
->
-> -static void switch_mode(CPUARMState *env, int mode);
-> -
->  static int vfp_gdb_get_reg(CPUARMState *env, uint8_t *buf, int reg)
->  {
->      int nregs;
-> @@ -7552,7 +7525,7 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t =
-addr, uint32_t op)
->      return 0;
->  }
->
-> -static void switch_mode(CPUARMState *env, int mode)
-> +void switch_mode(CPUARMState *env, int mode)
->  {
->      ARMCPU *cpu =3D env_archcpu(env);
->
-> @@ -7574,7 +7547,7 @@ void aarch64_sync_64_to_32(CPUARMState *env)
->
->  #else
->
-> -static void switch_mode(CPUARMState *env, int mode)
-> +void switch_mode(CPUARMState *env, int mode)
->  {
->      int old_mode;
->      int i;
-> @@ -7988,9 +7961,9 @@ void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
->   * stack pointers if it is done for the CONTROL register for the current
->   * security state.
->   */
-> -static void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> -                                                 bool new_spsel,
-> -                                                 bool secstate)
-> +void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> +                                          bool new_spsel,
-> +                                          bool secstate)
->  {
->      bool old_is_psp =3D v7m_using_psp(env);
->
-> @@ -8015,7 +7988,7 @@ static void write_v7m_control_spsel_for_secstate(CP=
-UARMState *env,
->   * Write to v7M CONTROL.SPSEL bit. This may change the current
->   * stack pointer between Main and Process stack pointers.
->   */
-> -static void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
-> +void write_v7m_control_spsel(CPUARMState *env, bool new_spsel)
->  {
+> @@ -7923,26 +7923,6 @@ void write_v7m_control_spsel(CPUARMState *env, boo=
+l new_spsel)
 >      write_v7m_control_spsel_for_secstate(env, new_spsel, env->v7m.secure=
 );
 >  }
-> @@ -8041,7 +8014,7 @@ void write_v7m_exception(CPUARMState *env, uint32_t=
- new_exc)
->  }
 >
+> -void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
+> -{
+> -    /*
+> -     * Write a new value to v7m.exception, thus transitioning into or out
+> -     * of Handler mode; this may result in a change of active stack poin=
+ter.
+> -     */
+> -    bool new_is_psp, old_is_psp =3D v7m_using_psp(env);
+> -    uint32_t tmp;
+> -
+> -    env->v7m.exception =3D new_exc;
+> -
+> -    new_is_psp =3D v7m_using_psp(env);
+> -
+> -    if (old_is_psp !=3D new_is_psp) {
+> -        tmp =3D env->v7m.other_sp;
+> -        env->v7m.other_sp =3D env->regs[13];
+> -        env->regs[13] =3D tmp;
+> -    }
+> -}
+> -
 >  /* Switch M profile security state between NS and S */
-> -static void switch_v7m_security_state(CPUARMState *env, bool new_secstat=
-e)
-> +void switch_v7m_security_state(CPUARMState *env, bool new_secstate)
+>  void switch_v7m_security_state(CPUARMState *env, bool new_secstate)
 >  {
->      uint32_t new_ss_msp, new_ss_psp;
->
-> @@ -9447,7 +9420,7 @@ static bool do_v7m_function_return(ARMCPU *cpu)
+> @@ -9247,6 +9227,26 @@ static bool do_v7m_function_return(ARMCPU *cpu)
 >      return true;
 >  }
 >
-> -static void arm_log_exception(int idx)
-> +void arm_log_exception(int idx)
+> +void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
+> +{
+> +    /*
+> +     * Write a new value to v7m.exception, thus transitioning into or out
+> +     * of Handler mode; this may result in a change of active stack poin=
+ter.
+> +     */
+> +    bool new_is_psp, old_is_psp =3D v7m_using_psp(env);
+> +    uint32_t tmp;
+> +
+> +    env->v7m.exception =3D new_exc;
+> +
+> +    new_is_psp =3D v7m_using_psp(env);
+> +
+> +    if (old_is_psp !=3D new_is_psp) {
+> +        tmp =3D env->v7m.other_sp;
+> +        env->v7m.other_sp =3D env->regs[13];
+> +        env->regs[13] =3D tmp;
+> +    }
+> +}
+> +
+>  void arm_log_exception(int idx)
 >  {
 >      if (qemu_loglevel_mask(CPU_LOG_INT)) {
->          const char *exc =3D NULL;
-> @@ -12122,9 +12095,9 @@ static bool v8m_is_sau_exempt(CPUARMState *env,
->          (address >=3D 0xe00ff000 && address <=3D 0xe00fffff);
->  }
->
-> -static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-> -                                MMUAccessType access_type, ARMMMUIdx mmu=
-_idx,
-> -                                V8M_SAttributes *sattrs)
-> +void v8m_security_lookup(CPUARMState *env, uint32_t address,
-> +                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                         V8M_SAttributes *sattrs)
->  {
->      /* Look up the security attributes for this address. Compare the
->       * pseudocode SecurityCheck() function.
-> @@ -12229,11 +12202,11 @@ static void v8m_security_lookup(CPUARMState *en=
-v, uint32_t address,
->      }
->  }
->
-> -static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-> -                              MMUAccessType access_type, ARMMMUIdx mmu_i=
-dx,
-> -                              hwaddr *phys_ptr, MemTxAttrs *txattrs,
-> -                              int *prot, bool *is_subpage,
-> -                              ARMMMUFaultInfo *fi, uint32_t *mregion)
-> +bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-> +                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
-> +                       int *prot, bool *is_subpage,
-> +                       ARMMMUFaultInfo *fi, uint32_t *mregion)
->  {
->      /* Perform a PMSAv8 MPU lookup (without also doing the SAU check
->       * that a full phys-to-virt translation does).
-> @@ -12633,11 +12606,11 @@ static ARMCacheAttrs combine_cacheattrs(ARMCach=
-eAttrs s1, ARMCacheAttrs s2)
->   * @fi: set to fault info if the translation fails
->   * @cacheattrs: (if non-NULL) set to the cacheability/shareability attri=
-butes
->   */
-> -static bool get_phys_addr(CPUARMState *env, target_ulong address,
-> -                          MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> -                          hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-> -                          target_ulong *page_size,
-> -                          ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
-> +bool get_phys_addr(CPUARMState *env, target_ulong address,
-> +                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-> +                   target_ulong *page_size,
-> +                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
->  {
->      if (mmu_idx =3D=3D ARMMMUIdx_S12NSE0 || mmu_idx =3D=3D ARMMMUIdx_S12=
-NSE1) {
->          /* Call ourselves recursively to do the stage 1 and then stage 2
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 5a02f458f3..04711b317a 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -985,4 +985,49 @@ static inline int exception_target_el(CPUARMState *e=
-nv)
->      return target_el;
->  }
->
-> +void arm_log_exception(int idx);
-> +
-> +/* Cacheability and shareability attributes for a memory access */
-> +typedef struct ARMCacheAttrs {
-> +    unsigned int attrs:8; /* as in the MAIR register encoding */
-> +    unsigned int shareability:2; /* as in the SH field of the VMSAv8-64 =
-PTEs */
-> +} ARMCacheAttrs;
-> +
-> +bool get_phys_addr(CPUARMState *env, target_ulong address,
-> +                   MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                   hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-> +                   target_ulong *page_size,
-> +                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
-> +
-> +/* Security attributes for an address, as returned by v8m_security_looku=
-p. */
-> +typedef struct V8M_SAttributes {
-> +    bool subpage; /* true if these attrs don't cover the whole TARGET_PA=
-GE */
-> +    bool ns;
-> +    bool nsc;
-> +    uint8_t sregion;
-> +    bool srvalid;
-> +    uint8_t iregion;
-> +    bool irvalid;
-> +} V8M_SAttributes;
-> +
-> +void v8m_security_lookup(CPUARMState *env, uint32_t address,
-> +                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                         V8M_SAttributes *sattrs);
-> +
-> +void switch_mode(CPUARMState *, int);
-> +
-> +bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-> +                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
-> +                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
-> +                       int *prot, bool *is_subpage,
-> +                       ARMMMUFaultInfo *fi, uint32_t *mregion);
-> +
-> +void write_v7m_control_spsel_for_secstate(CPUARMState *env,
-> +                                          bool new_spsel,
-> +                                          bool secstate);
-> +
-> +void write_v7m_control_spsel(CPUARMState *env, bool new_spsel);
-> +
-> +void switch_v7m_security_state(CPUARMState *env, bool new_secstate);
-> +
->  #endif
 
 
 --

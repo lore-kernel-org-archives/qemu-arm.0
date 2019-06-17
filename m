@@ -1,91 +1,138 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id s10sm14667254wmf.8.2019.06.17.07.50.14
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 17 Jun 2019 07:50:14 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4903B1FF87;
-	Mon, 17 Jun 2019 15:50:14 +0100 (BST)
-References: <20190615154352.26824-1-philmd@redhat.com> <20190615154352.26824-21-philmd@redhat.com>
-User-agent: mu4e 1.3.2; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2685876wrg;
+        Mon, 17 Jun 2019 09:20:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwVw9bx32n+TPFz5F0O9ER3pOdcDYEgAba9KhLzQcrqjujf2Qq5hearOJCCB87rUeGrO/GI
+X-Received: by 2002:a17:907:20b7:: with SMTP id pw23mr4564481ejb.127.1560788406281;
+        Mon, 17 Jun 2019 09:20:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560788406; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xBAkpcl2EXfIZOJa8XxoYzLAI2NKfWRrlLu/bXjzSBW3CwupMFhAerk9pyXTKv9+yo
+         UaZ1aRJ4bGeCI7LX0A+XQeUxTmlpgXbZoc5LYb2mT/04jZQ6MnXXTeeqbAO9ExbBGURn
+         swWxLjR/nqSiu7w0Tqk9I6SciZiZJONmxZXTGP17GbOUudfaKvHS2m0Y980HQngwdtrJ
+         EaYf0UBNPHLxf/VZPHkUJe2AsqLWkLB+0E4bKfo9iDBkVeO2XckYN/l0UC52fEvvIFwj
+         6921XjzeLivaXRHDT2Uu9vm07ldnJOCasbLBBBDPHRvLpQiGlf5uWQzlnxfzQbIw4cjb
+         XPmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=he1SeEzOStwgaRq81JViivMBwTK9TrYX4K3Q/KZS7+Q=;
+        b=H6o5Opbc8mw9uJaDsxgdhW0Ebzl2302KrfFFgt1HVvfnRlh5KdoWTjO5h7jTil7mFM
+         PaClCdriZTw9rqBLcuG3PDoD6nnwHYiUX1F2rLxAMWvmVYuJ0M9zDa8QCbWA5p07GGvr
+         flfQ2ftGQFMHZyvdeyf07hGMVK9vf7K3NCAw6QW+uHbp3tMOBO7M3k1r7RM1c3OOnZT5
+         cjt5Xgm+2ZHhySFqMAuwwjdf2PUiFSRIFXiam1TjjsWwNXBmIVDMwwQbqAX37JNCBHIO
+         fA56Htp7icl60deuinWZdTDSFf9TQ86oDiwkJ82xAJK/E7HgRROPwAeMEwQdHg8DzB3V
+         tSxQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x41si5783125edb.240.2019.06.17.09.20.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 17 Jun 2019 09:20:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49036 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hcuMX-00032n-AD
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 12:20:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44285)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hcu56-0004Ys-MN
+ for qemu-devel@nongnu.org; Mon, 17 Jun 2019 12:02:06 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hcu54-0006lD-KK
+ for qemu-devel@nongnu.org; Mon, 17 Jun 2019 12:02:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63750)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hcu4x-0006QS-4l; Mon, 17 Jun 2019 12:01:55 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D98AEF9E85;
+ Mon, 17 Jun 2019 16:01:44 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-19.brq.redhat.com [10.40.204.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C03F6A480;
+ Mon, 17 Jun 2019 16:01:38 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Samuel Ortiz
- <sameo@linux.intel.com>, Robert Bradford <robert.bradford@intel.com>
-Subject: Re: [Qemu-devel] [PATCH v2 20/23] target/arm: Define TCG dependent functions when TCG is enabled
-In-reply-to: <20190615154352.26824-21-philmd@redhat.com>
-Date: Mon, 17 Jun 2019 15:50:14 +0100
-Message-ID: <87d0jc9sgp.fsf@zen.linaroharston>
+Date: Mon, 17 Jun 2019 18:01:36 +0200
+Message-Id: <20190617160136.29930-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.38]); Mon, 17 Jun 2019 16:01:48 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-TUID: VjuAY8MwnNbV
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH] hw/arm/msf2-som: Exit when the cpu is not the
+ expected one
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gyfQH3HxZjzR
 
+This machine correctly defines its default_cpu_type to cortex-m3
+and report an error if the user requested another cpu_type,
+however it does not exit, and this can confuse users trying
+to use another core:
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+  $ qemu-system-arm -M emcraft-sf2 -cpu cortex-m4 -kernel test-m4.elf
+  qemu-system-arm: This board can only be used with CPU cortex-m3-arm-cpu
+  [output related to M3 core ...]
 
-> From: Samuel Ortiz <sameo@linux.intel.com>
->
-> do_interrupt, do_unaligned_access, do_transaction_failed and debug_excp
-> are only relevant in the TCG context, so we should not define them
-> when TCG is disabled.
->
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
-> [PMD: Rebased]
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+The CPU is indeed a M3 core:
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+  (qemu) info qom-tree
+  /machine (emcraft-sf2-machine)
+    /unattached (container)
+      /device[0] (msf2-soc)
+        /armv7m (armv7m)
+          /cpu (cortex-m3-arm-cpu)
 
-> ---
->  target/arm/cpu.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 2335659a85..3ffea857c4 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1557,7 +1557,7 @@ static void arm_v7m_class_init(ObjectClass *oc, voi=
-d *data)
->      CPUClass *cc =3D CPU_CLASS(oc);
->
->      acc->info =3D data;
-> -#ifndef CONFIG_USER_ONLY
-> +#if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
->      cc->do_interrupt =3D arm_v7m_cpu_do_interrupt;
->  #endif
->
-> @@ -2172,22 +2172,24 @@ static void arm_cpu_class_init(ObjectClass *oc, v=
-oid *data)
->      cc->gdb_read_register =3D arm_cpu_gdb_read_register;
->      cc->gdb_write_register =3D arm_cpu_gdb_write_register;
->  #ifndef CONFIG_USER_ONLY
-> +#ifdef CONFIG_TCG
->      cc->do_interrupt =3D arm_cpu_do_interrupt;
->      cc->do_unaligned_access =3D arm_cpu_do_unaligned_access;
->      cc->do_transaction_failed =3D arm_cpu_do_transaction_failed;
-> +    cc->debug_excp_handler =3D arm_debug_excp_handler;
-> +#endif /* CONFIG_TCG */
->      cc->get_phys_page_attrs_debug =3D arm_cpu_get_phys_page_attrs_debug;
->      cc->asidx_from_attrs =3D arm_asidx_from_attrs;
->      cc->vmsd =3D &vmstate_arm_cpu;
->      cc->virtio_is_big_endian =3D arm_cpu_virtio_is_big_endian;
->      cc->write_elf64_note =3D arm_cpu_write_elf64_note;
->      cc->write_elf32_note =3D arm_cpu_write_elf32_note;
-> -#endif
-> +#endif /* CONFIG_USER_ONLY */
->      cc->gdb_num_core_regs =3D 26;
->      cc->gdb_core_xml_file =3D "arm-core.xml";
->      cc->gdb_arch_name =3D arm_gdb_arch_name;
->      cc->gdb_get_dynamic_xml =3D arm_gdb_get_dynamic_xml;
->      cc->gdb_stop_before_watchpoint =3D true;
-> -    cc->debug_excp_handler =3D arm_debug_excp_handler;
->      cc->debug_check_watchpoint =3D arm_debug_check_watchpoint;
->  #if !defined(CONFIG_USER_ONLY)
->      cc->adjust_watchpoint_address =3D arm_adjust_watchpoint_address;
+Add the missing exit() call to return to the shell.
 
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/arm/msf2-som.c | 1 +
+ 1 file changed, 1 insertion(+)
 
---
-Alex Benn=C3=A9e
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+index 8c550a8bdd..2c9984bb3b 100644
+--- a/hw/arm/msf2-som.c
++++ b/hw/arm/msf2-som.c
+@@ -53,6 +53,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machi=
+ne)
+     if (strcmp(machine->cpu_type, mc->default_cpu_type) !=3D 0) {
+         error_report("This board can only be used with CPU %s",
+                      mc->default_cpu_type);
++        exit(1);
+     }
+=20
+     memory_region_init_ram(ddr, NULL, "ddr-ram", DDR_SIZE,
+--=20
+2.20.1
+

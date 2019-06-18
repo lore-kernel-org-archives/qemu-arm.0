@@ -1,97 +1,80 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp4192227pjq;
-        Tue, 18 Jun 2019 09:46:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxEjDgJVRk6zwbtPvqpgp58Vt3SFLUEqd1/t8+iH28C+ela4rMQNBx9KSV0x2ZixnSjuonn
-X-Received: by 2002:aed:3804:: with SMTP id j4mr100027972qte.361.1560876419891;
-        Tue, 18 Jun 2019 09:46:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560876419; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3992704wrg;
+        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxVABlU8GyUtmIAZd4IekWvT/KXuI2+ZuN0qNZgvkofoi1aSHGuVBHn8YXYiFMvX+GkOgw6
+X-Received: by 2002:a0c:e6a2:: with SMTP id j2mr27130660qvn.190.1560879809069;
+        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560879809; cv=none;
         d=google.com; s=arc-20160816;
-        b=BrGr/ehR829gbumLKiux8JmZykCBiCvPQgXMZhU5k6ejizM00gKmbvvkBFAcxcQ3mQ
-         1/8mNvvGb3C///HlkgtCRnM7uxaOdvPA4Cjj0tldvL/0UbYe+DtfImIeJ2d6fqPzSDp7
-         cdEf2n7joUKqV97dupIA2h0Cm4tJrNPXcWmsD9c2VQHRGaDci0E842/1zRQFugH5remJ
-         RtP6m2zlyDQDeSWxGYhaAvi8KyGiuorHNtXPK2yjMoexz9Yd5E0xgbHedGJOLwA8PV8Q
-         usp39e0nK95CnFJT+LYy540mf6mCDMMVvynFm8iclqAFziaXeMV4fKvVfkAzdJwZa6hh
-         1XJQ==
+        b=xI7v7SfEGHDzLms2H2bZbvF29/KRGW0DXL1Uj3Hu0DBmE/VLlR4dJB+Pc8zbFy3Ng8
+         oGQggJrgLHUe3bLhHSmxPatvprBX5qnWH6pURkzt14LRwAX0BFCmUVB6RrYKsgGa4+pA
+         141GetoO+Z4M8cbVtW+0QNymh5ztwbGUXrGwRabgK3Q/0z3VE/VXRZ/fde8H14cf8qKg
+         iUDlRu5Jcbv68G3uCBtBlhYZrfN+mINfQZkSgEkmQev8q9AOu7bMAAUCCVjs3yDI93Nj
+         4IEO5Wkhxan06Ep2IvYQUtDgV3cT/248uPJdivNnsaQtCZrfo3VsiAi0TwP7T3H8uuDn
+         wYzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=aWtydLlbh+4SVoON9ri1UIJDkqJw3P7a2zT1eN10LN0=;
-        b=ppfJR0AtWIvRMpVwm9PRVCr3iE17pBtnJHjBraC1jWO5O5XlGVbhiNgzvGCckmVgvW
-         1H2OZ4e6MTYhgqNQ7e6ospuVMEnCj9eHayDa4+DgRfPccNM+SfKqZo+B9lV94ULtmNEV
-         /5oFWYdtMmmgNmYSOfq9TwVmfg80ROAZJ4AwOOL2z3R2+Cjsgutu5HA0ZF11hPgnV8Tp
-         ErR2rsk/kKWk3yMBPzF4Z08To7QG5QoIm1czIesbHr4iKYlJJrnQ+yuTInonuHdRpNtB
-         RhsEfci88nriGjhV1r5JfkxwgKYNSwrVg1eWcuHQqCiW3DmDMUSHuybe/dd9nNo9oFWz
-         Zg2w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=6fuRBjUyVqipbHMrjHDxfA4Y5PWD97pjslX3f3uceFU=;
+        b=rXGuJu9qIAmlItKrSDsmjDM18PxSzdeEYshVzh86zR1jPLgRNzmhWcGWcC1MmZbm3f
+         oxfwe0ppSJ8GsIFZcbJWTyeBIpxXrzftdR/7DnFbh0fOVOi4Gi8svB64cSi1RaFUnaz6
+         HfmnQCLGaP0p1O5CZONOVHlIR2r4gLiz0nNNPU4fuQy604XuwnYtQgwZ6QU0ErhHQTRv
+         IOSbCth5NVrhfkbKIW38LfiaASVkAMDcp425VvPITJoZMbtstlMwm0Q9RfMneQ1RL/tN
+         S2gVK1WKBnzHnm2XJV8O3jdeBWSIpSh3aOM/W90VHaslpR4KnaUG0XFSWXDXoJMFIU5D
+         klbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Z9uVoH/N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w32si606029qtk.215.2019.06.18.09.46.59
+        by mx.google.com with ESMTPS id b26si10389105qvh.211.2019.06.18.10.43.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2019 09:46:59 -0700 (PDT)
+        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Z9uVoH/N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59832 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60628 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdHG7-0008Qq-Ez
-	for alex.bennee@linaro.org; Tue, 18 Jun 2019 12:46:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48714)
+	id 1hdI8m-0005S9-Jd
+	for alex.bennee@linaro.org; Tue, 18 Jun 2019 13:43:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33041)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hdGk2-0002dl-GM
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:13:57 -0400
+ (envelope-from <clg@kaod.org>) id 1hdHP2-0001dc-4T
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hdGjz-0001my-G7
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:13:50 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41129)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hdGjv-0001fc-Ax
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:13:45 -0400
-Received: by mail-ot1-x344.google.com with SMTP id 107so15612569otj.8
- for <qemu-devel@nongnu.org>; Tue, 18 Jun 2019 09:13:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=aWtydLlbh+4SVoON9ri1UIJDkqJw3P7a2zT1eN10LN0=;
- b=Z9uVoH/NxRtDCm4qQOHnT7D+tc8WBknhDWSjXokhT6auK5baIQvJvTISOmy9Kk0yjb
- p6z2NHy/Uc9Vx0huKuvs26/FKQmJlLsLgnbRxrA3ga1bv3BkDZCMnwp+rxELTufFY+cC
- +Thm4Sw9pRg2bwFCwHsX5pF5xEc2GRM09QboRukBhR8TQzTIwNIHr/g9MAcbdbEBnyTX
- mAfzmnR3rTL6P8s3G821Vu4drCiAREQYO0gVBIYaIISD34qdG0ySO0j505o8xiymc90+
- dePnneij+tkbeYpzyKMooHJK/aVX33JBO4x8e6CQfAdlYcSfJHHdptqBwTJu1HXGUIyf
- 13YQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=aWtydLlbh+4SVoON9ri1UIJDkqJw3P7a2zT1eN10LN0=;
- b=eoTtO9/5gS3hWKIZqt3CwGB07gUDPci3Lh6KRdCDVHzz7CdRtGqPpOB/REiSjnbdb7
- XJBJja+7c2HdmMu1oWBYFcPuDgBaYX6IjNOIBaUfMdoiKfGsYz9LCg8a4rOn+Z1kGR/1
- QzKgDjbxtCl5RW6mvTcjtkP0uUqvxEBtLDFgpewEowiMWCcbBwZPaM0dyorPDyD2IqI8
- Ri6uaSg0l/7gIGQCsRwrUcuq4uhrfLeOSAWD5A8YrbzLp0TieRaa9xTVX/BO30JVH2vN
- cLJy2aghRZmvLqWGwpk6h0DC5RPj+/qMJQbBV0F3Zte93MfCEMoGjYg7S8ewt+Trk0bO
- DlQQ==
-X-Gm-Message-State: APjAAAU+jDsHUZcBc6Fp6TBLQQPt61YHcfuJBJN2RZhoA/MO7CUE0mMP
- tUU2yBNLrbacCP1al12nKqA8cCBEGmo9AnFWyesbAg==
-X-Received: by 2002:a9d:d17:: with SMTP id 23mr64154680oti.221.1560874420705; 
- Tue, 18 Jun 2019 09:13:40 -0700 (PDT)
+ (envelope-from <clg@kaod.org>) id 1hdHP0-0006sP-6b
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:12 -0400
+Received: from 6.mo3.mail-out.ovh.net ([188.165.43.173]:35610)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hdHOv-0006Ts-FZ
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:06 -0400
+Received: from player157.ha.ovh.net (unknown [10.109.160.46])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id B6EE121A5F8
+ for <qemu-devel@nongnu.org>; Tue, 18 Jun 2019 18:55:52 +0200 (CEST)
+Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
+ (Authenticated sender: clg@kaod.org)
+ by player157.ha.ovh.net (Postfix) with ESMTPSA id 41C826EB55AD;
+ Tue, 18 Jun 2019 16:55:46 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Jun 2019 18:53:11 +0200
+Message-Id: <20190618165311.27066-22-clg@kaod.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190618165311.27066-1-clg@kaod.org>
+References: <20190618165311.27066-1-clg@kaod.org>
 MIME-Version: 1.0
-References: <20190604162526.10655-1-damien.hedde@greensocs.com>
-In-Reply-To: <20190604162526.10655-1-damien.hedde@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Jun 2019 17:13:29 +0100
-Message-ID: <CAFEAcA-BJehtxkMLkfrmDvMWMY137=L3i_7vGHNS5ozSPNSgGA@mail.gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-devel] [RFC PATCH v2 00/12] Multi-phase reset
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 1700108861473458961
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrtddtgdejkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 188.165.43.173
+Subject: [Qemu-devel] [PATCH v2 21/21] aspeed: vic: Add support for legacy
+ register interface
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,181 +86,242 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, marc.burton@greensocs.com,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5xriPvwumGQ6
+X-TUID: ZrVnDWzoSQgj
 
-On Tue, 4 Jun 2019 at 17:25, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Hi all,
->
-> Here's the second version of the multi-phase reset proposal patches.
+From: Andrew Jeffery <andrew@aj.id.au>
 
-Sorry for leaving this one hanging again. Some initial general
-comments...
+The legacy interface only supported up to 32 IRQs, which became
+restrictive around the AST2400 generation. QEMU support for the SoCs
+started with the AST2400 along with an effort to reimplement and
+upstream drivers for Linux, so up until this point the consumers of the
+QEMU ASPEED support only required the 64 IRQ register interface.
 
-> # DESCRIPTION
->
-> Basically the reset procedure is split in 3 parts:
-> INIT PHASE: Reset the object internal state, put a resetting flag and do the
->     same for the reset subtree. No side effect on other devices to guarantee
->     that, in a reset domain, everything get initialized first. This corresponds
->     mostly to what is currently done in the device/bus reset method.
->
-> HOLD PHASE: This phase allows to control a reset with a IO. When a IO control
->     reset procedure based on the IO level (not edge), we may need to assert
->     the reset, wait some time, and finally de-assert the reset. The consequence
->     is that such a device can stay in a "resetting state" and may need to show
->     this state to other devices through its outputs. For example, a clock
->     controller will typically shutdown its clocks when it is in resetting state.
->
-> EXIT PHASE: This phase sets outputs to state after reset. For a clock controller
->      it starts the clocks. It also clears the "resetting" flag. A device should
->      not react to inputs until this flag has been cleared. During this phase,
->      outputs are propagated.
->
-> The Resettable interface is detailed in the added doc in patch 7.
->
-> # CHANGE SINCE V1
->
-> The series now focus only on the Resettable interface (no more ResetDomain).
-> Proposed changed have been applied:
->  - reset_count getter/modifier methods
->  - a foreach_child method
->
-> This last method allows some flexibility on what is the hierarchy of reset.
-> There is some discussion ongoing about this point. Althought the series does
-> not aim to modify the qdev/qbus-centric reset behavior, it is not fixed. An
-> object specialization can override it.
+In an effort to support older BMC firmware, add support for the 32 IRQ
+interface.
 
-I've looked through the patches, and I think my current concerns
-(stated briefly) are:
- * I don't think we have the "don't call device implementations of
-   reset phase functions multiple times" semantics that I wanted;
-   OTOH I think the logic I suggested for those in comments on the
-   v1 of this series wouldn't work either.
- * handling of "call the parent class's reset" is not very clean
-   (but this is a general QOM design issue)
- * migration (see below)
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+ hw/intc/aspeed_vic.c | 105 ++++++++++++++++++++++++++-----------------
+ 1 file changed, 63 insertions(+), 42 deletions(-)
 
-> # RESET DEPRECATION
->
-> There is 3 changes in the current way of handling reset (for users or
-> developers of Devices)
->
-> 1. qdev/qbus_reset_all
->
-> Theses functions are deprecated by this series and should be replaced by
-> direct call to device_reset or bus_reset. There is only a few existing calls
-> so I can probably replace them all and delete the original functions.
+diff --git a/hw/intc/aspeed_vic.c b/hw/intc/aspeed_vic.c
+index 927638d5322a..266a309f3b47 100644
+--- a/hw/intc/aspeed_vic.c
++++ b/hw/intc/aspeed_vic.c
+@@ -104,54 +104,63 @@ static void aspeed_vic_set_irq(void *opaque, int ir=
+q, int level)
+=20
+ static uint64_t aspeed_vic_read(void *opaque, hwaddr offset, unsigned si=
+ze)
+ {
+-    uint64_t val;
+-    const bool high =3D !!(offset & 0x4);
+-    hwaddr n_offset =3D (offset & ~0x4);
+     AspeedVICState *s =3D (AspeedVICState *)opaque;
++    hwaddr n_offset;
++    uint64_t val;
++    bool high;
+=20
+     if (offset < AVIC_NEW_BASE_OFFSET) {
+-        qemu_log_mask(LOG_UNIMP, "%s: Ignoring read from legacy register=
+s "
+-                      "at 0x%" HWADDR_PRIx "[%u]\n", __func__, offset, s=
+ize);
+-        return 0;
++        high =3D false;
++        n_offset =3D offset;
++    } else {
++        high =3D !!(offset & 0x4);
++        n_offset =3D (offset & ~0x4);
+     }
+=20
+-    n_offset -=3D AVIC_NEW_BASE_OFFSET;
+-
+     switch (n_offset) {
+-    case 0x0: /* IRQ Status */
++    case 0x80: /* IRQ Status */
++    case 0x00:
+         val =3D s->raw & ~s->select & s->enable;
+         break;
+-    case 0x08: /* FIQ Status */
++    case 0x88: /* FIQ Status */
++    case 0x04:
+         val =3D s->raw & s->select & s->enable;
+         break;
+-    case 0x10: /* Raw Interrupt Status */
++    case 0x90: /* Raw Interrupt Status */
++    case 0x08:
+         val =3D s->raw;
+         break;
+-    case 0x18: /* Interrupt Selection */
++    case 0x98: /* Interrupt Selection */
++    case 0x0c:
+         val =3D s->select;
+         break;
+-    case 0x20: /* Interrupt Enable */
++    case 0xa0: /* Interrupt Enable */
++    case 0x10:
+         val =3D s->enable;
+         break;
+-    case 0x30: /* Software Interrupt */
++    case 0xb0: /* Software Interrupt */
++    case 0x18:
+         val =3D s->trigger;
+         break;
+-    case 0x40: /* Interrupt Sensitivity */
++    case 0xc0: /* Interrupt Sensitivity */
++    case 0x24:
+         val =3D s->sense;
+         break;
+-    case 0x48: /* Interrupt Both Edge Trigger Control */
++    case 0xc8: /* Interrupt Both Edge Trigger Control */
++    case 0x28:
+         val =3D s->dual_edge;
+         break;
+-    case 0x50: /* Interrupt Event */
++    case 0xd0: /* Interrupt Event */
++    case 0x2c:
+         val =3D s->event;
+         break;
+-    case 0x60: /* Edge Triggered Interrupt Status */
++    case 0xe0: /* Edge Triggered Interrupt Status */
+         val =3D s->raw & ~s->sense;
+         break;
+         /* Illegal */
+-    case 0x28: /* Interrupt Enable Clear */
+-    case 0x38: /* Software Interrupt Clear */
+-    case 0x58: /* Edge Triggered Interrupt Clear */
++    case 0xa8: /* Interrupt Enable Clear */
++    case 0xb8: /* Software Interrupt Clear */
++    case 0xd8: /* Edge Triggered Interrupt Clear */
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Read of write-only register with offset 0x%"
+                       HWADDR_PRIx "\n", __func__, offset);
+@@ -166,6 +175,8 @@ static uint64_t aspeed_vic_read(void *opaque, hwaddr =
+offset, unsigned size)
+     }
+     if (high) {
+         val =3D extract64(val, 32, 19);
++    } else {
++        val =3D extract64(val, 0, 32);
+     }
+     trace_aspeed_vic_read(offset, size, val);
+     return val;
+@@ -174,19 +185,18 @@ static uint64_t aspeed_vic_read(void *opaque, hwadd=
+r offset, unsigned size)
+ static void aspeed_vic_write(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size)
+ {
+-    const bool high =3D !!(offset & 0x4);
+-    hwaddr n_offset =3D (offset & ~0x4);
+     AspeedVICState *s =3D (AspeedVICState *)opaque;
++    hwaddr n_offset;
++    bool high;
+=20
+     if (offset < AVIC_NEW_BASE_OFFSET) {
+-        qemu_log_mask(LOG_UNIMP,
+-                      "%s: Ignoring write to legacy registers at 0x%"
+-                      HWADDR_PRIx "[%u] <- 0x%" PRIx64 "\n", __func__, o=
+ffset,
+-                      size, data);
+-        return;
++        high =3D false;
++        n_offset =3D offset;
++    } else {
++        high =3D !!(offset & 0x4);
++        n_offset =3D (offset & ~0x4);
+     }
+=20
+-    n_offset -=3D AVIC_NEW_BASE_OFFSET;
+     trace_aspeed_vic_write(offset, size, data);
+=20
+     /* Given we have members using separate enable/clear registers, depo=
+sit64()
+@@ -201,7 +211,8 @@ static void aspeed_vic_write(void *opaque, hwaddr off=
+set, uint64_t data,
+     }
+=20
+     switch (n_offset) {
+-    case 0x18: /* Interrupt Selection */
++    case 0x98: /* Interrupt Selection */
++    case 0x0c:
+         /* Register has deposit64() semantics - overwrite requested 32 b=
+its */
+         if (high) {
+             s->select &=3D AVIC_L_MASK;
+@@ -210,21 +221,25 @@ static void aspeed_vic_write(void *opaque, hwaddr o=
+ffset, uint64_t data,
+         }
+         s->select |=3D data;
+         break;
+-    case 0x20: /* Interrupt Enable */
++    case 0xa0: /* Interrupt Enable */
++    case 0x10:
+         s->enable |=3D data;
+         break;
+-    case 0x28: /* Interrupt Enable Clear */
++    case 0xa8: /* Interrupt Enable Clear */
++    case 0x14:
+         s->enable &=3D ~data;
+         break;
+-    case 0x30: /* Software Interrupt */
++    case 0xb0: /* Software Interrupt */
++    case 0x18:
+         qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
+                       "IRQs requested: 0x%016" PRIx64 "\n", __func__, da=
+ta);
+         break;
+-    case 0x38: /* Software Interrupt Clear */
++    case 0xb8: /* Software Interrupt Clear */
++    case 0x1c:
+         qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
+                       "IRQs to be cleared: 0x%016" PRIx64 "\n", __func__=
+, data);
+         break;
+-    case 0x50: /* Interrupt Event */
++    case 0xd0: /* Interrupt Event */
+         /* Register has deposit64() semantics - overwrite the top four v=
+alid
+          * IRQ bits, as only the top four IRQs (GPIOs) can change their =
+event
+          * type */
+@@ -236,15 +251,21 @@ static void aspeed_vic_write(void *opaque, hwaddr o=
+ffset, uint64_t data,
+                           "Ignoring invalid write to interrupt event reg=
+ister");
+         }
+         break;
+-    case 0x58: /* Edge Triggered Interrupt Clear */
++    case 0xd8: /* Edge Triggered Interrupt Clear */
++    case 0x38:
+         s->raw &=3D ~(data & ~s->sense);
+         break;
+-    case 0x00: /* IRQ Status */
+-    case 0x08: /* FIQ Status */
+-    case 0x10: /* Raw Interrupt Status */
+-    case 0x40: /* Interrupt Sensitivity */
+-    case 0x48: /* Interrupt Both Edge Trigger Control */
+-    case 0x60: /* Edge Triggered Interrupt Status */
++    case 0x80: /* IRQ Status */
++    case 0x00:
++    case 0x88: /* FIQ Status */
++    case 0x04:
++    case 0x90: /* Raw Interrupt Status */
++    case 0x08:
++    case 0xc0: /* Interrupt Sensitivity */
++    case 0x24:
++    case 0xc8: /* Interrupt Both Edge Trigger Control */
++    case 0x28:
++    case 0xe0: /* Edge Triggered Interrupt Status */
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Write of read-only register with offset 0x%"
+                       HWADDR_PRIx "\n", __func__, offset);
+--=20
+2.21.0
 
-Sounds good.
-
-> 2. old's device_reset
->
-> There is a few call to this function, I renamed it *device_legacy_reset* to
-> handle the transition. This function allowed to reset only a given device
-> (and not its eventual qbus subtree). This behavior is not possible with
-> the Resettable interface. At first glance it seemed that it is used only on
-> device having no sub-buses so we could just use the new device_reset.
-> But I need to look at them more closely to be sure. If this behavior is really
-> needed (but why would we not reset children ?), it's possible to do a specific
-> function for Device to to 3-phases reset without the children.
-
-Users of this function:
- hw/audio/intel-hda.c
-  -- used by the HDA device to reset the HDACodecDevice, which has
-     no child buses
- hw/hyperv/hyperv.c
-  -- resets the SynICState, which I think has no child buses
- hw/i386/pc.c
-  -- resets the APIC, which has no child buses. (This reset is only
-     done as a workaround for lack of reset phases: the whole machine
-     is reset and then the APIC is re-reset last to undo any changes
-     that other devices might have made to it. Probably making the APIC
-     support phased reset would allow us to drop this hack.)
- hw/ide/microdrive.c
-  -- called here to reset the MicroDriveState object. This does have
-     a child bus, but md_reset() explicitly calls ide_bus_reset(),
-     so it should be possible to clean this up.
- hw/intc/spapr_xive.c
-  -- resets the SpaprXive device, which I think has no child buses
- hw/ppc/pnv_psi.c
-  -- resets a XiveSource, which I think has no child buses
- hw/ppc/spapr_pci.c
-  -- resets every QOM child of the SpaprPhbState. This one will
-     require closer checking, but my guess is that if there's a child
-     with a child bus then failure to reset the bus would be a bug.
- hw/ppc/spapr_vio.c
-  -- resets an SpaprTceTable. This needs attention from an Spapr
-     expert but is probably ok.
- hw/s390x/s390-pci-inst.c
-  -- resets the S390PCIBusDevice. Needs S390 expertise, but probably
-     either no child buses or failure to reset them is a bug.
- hw/scsi/vmw_pvscsi.c
-  -- resets an individual SCSIDevice. I don't think those have child buses.
- hw/sd/omap_mmc.c
-  -- resetting an SDState, which has no child bus
- hw/sd/pl181.c
-  -- ditto.
-
-So there are one or two not-totally-trivial cases but we should
-be able to deal with these.
-
-> 3. DeviceClass's reset and BusClass's methods
->
-> This is the major change. The method is deprecated because reset methods are
-> now located in the interface class. In the series, I make the init phase
-> redirect to the original reset method of DeviceClass (or BusClass). There a
-> lot of use of the method and transitioning to 3-phases only reset will need
-> some work.
-
-I think it should be possible to do the conversion mechanically
-(eg with coccinelle). We can look at doing that later.
-
-> # MIGRATION
->
-> Bus reset state migration is right now not handled.
->
-> Regarding "migration-during-reset should Just Work, without necessarily
-> needing any specific changes for a device". The included patch define a vmsd
-> subsection which must to be added to every device main vmsd structure for
-> migration-during-reset of theses devices to work. I tried to find a way to
-> avoid that but really don't see how to achieve that.
->
-> So in the current state of this series, migration can only be supported for
-> leaf device (in term of qdev/qbus) where we add the subsection.
->
-> I'm not sure the migration is the problem here. I doubt a device will
-> support staying in reset state (which is a new feature) without manual
-> intervention. So migration of this unsupported state without any specific
-> change may not be a real asset.
-
-The approach I thought would be good turns out not to actually work,
-so I need to think a bit more about this.
-
-I think what I would like to achieve is "default to doing the right
-thing" -- ideally devices that add support for being held in reset
-should not need to manually do something to make the bus/device reset
-state be migrated properly. Otherwise we have an easy mistake to
-make (forgetting to do the necessary handling of migration) when
-adding a new device or making a device support being held in reset.
-
-Regarding "devices not supporting staying in reset state without
-manual intervention" do you mean that they might not correctly
-deal with incoming signals or guest register write attempts
-in the held-in-reset state? That's true, but I don't think it's
-too terrible. (In particular it's a bug that can be fixed without
-breaking migration compatibility; and it seems unlikely that guest
-software would be trying to read or write a device that it's put
-into reset.)
-
-thanks
--- PMM

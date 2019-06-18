@@ -1,98 +1,81 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3603940wrg;
-        Tue, 18 Jun 2019 04:31:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxTyxGOmaG8zhdvTEab1VOx9OzQUwPHzZyA54H6xpeXHR4w+nIYfBGkV/0kA7GYgFgZxkn
-X-Received: by 2002:a17:906:7801:: with SMTP id u1mr60615931ejm.250.1560857502674;
-        Tue, 18 Jun 2019 04:31:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560857502; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3629178wrg;
+        Tue, 18 Jun 2019 04:56:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxdYmrAP44aOBKPhe/jhYisrebiSioZMs9Ew/u/pfV+ECHi1ulU5n/WnmI8c1H3hBGXvZ3w
+X-Received: by 2002:a0c:f9c1:: with SMTP id j1mr26442183qvo.235.1560859003163;
+        Tue, 18 Jun 2019 04:56:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560859003; cv=none;
         d=google.com; s=arc-20160816;
-        b=J2rGDM1EwtjSjskjcpOHFRqlW3/fQ/vBNCodw8FtGNleNnOXrybLUI7/KcWxMuRavY
-         w5OuAyt4sxEhqpCRblRjPnZUEvSLaq75WucuWgTOBXI++2wEBwyczpEA8JwSJbCZCwxZ
-         bL56LAnFqJUVWcJIPwj8mN8/M1K407e9cZH3OiWgK2z4WjQ41TMSO4o4ECjKbhy3f+Lh
-         NbRDHc0l73NXXZgv0PNj0IgtxQd411GASEz8Qz0L+9n7h+rXU3KjhSwGKgK4aGOYEU69
-         EZjM8ERKZr7Mg8Sm0OPQlDrovycOVWFL4ygxAC/3cK9FRm5O0UWuly8eAlZtkS+P3C4W
-         iDAA==
+        b=DdzOT25ttBOOUpMrHqCJGdej9mWUC0qFtKvzf+Uk+K0eYnMb3jkB43dXJKcsYqn7JV
+         4e9BtBkYyELR34oYAaqeWwprQL85EHsjoIdkLs2/Hv6Qyjo4Ta7hDsalbFVTyK11jPn7
+         QLam/qQrN3Ro5XYAxjh5K03CNJjD0KsiOjqWqkov1jscPCjVtyOAo0SI78XfNn/I1nyT
+         KcFQ9MKVI0H891KLsB5zLfJntjiBBDJKwZ9iCe6Xxxz5GN6jvyw/O7yGdoTKJdixW2/k
+         ZbBU8h1LFKiu9QMiRSbiByCSZIJ/dihfO3scP/z1JC/PuVjr/sT4JAjAn74Itjdo94U5
+         u1FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=sWAUzTVZTd1N0vgARBpJ2iBRKFKmWFK8xlcTWblFbF4=;
-        b=YSt5KH1WwajLeBdbUJuAfRPOriGVfdsnQIxv+w4OD2PXmsyWmqrvHLgdnmjJ4jcfxK
-         asiuSA5uDNIwqQGOvbffrxMQ1wghTs+EvuGKmhX3R2K8U5to14K/c0ZLIRBb1lAHGsMY
-         kEOecmISf40bxeCJ9fZND+8xWa9mRK3YrhCgDTfn2P60apt4DeCc8ZhFPPUlMVKkbWnB
-         /F/fZIpAMMXEdraRTgK1OwLV9NQGHjv9Gf3Op47XCnu7JNROX7ipsWO8Qysqfna26Fn1
-         7kR1+M3FDJN9HQcnggHCrDJoZCK0TFK6qt/QptO0iF70B98zphnttQbD0wD2F4NEi9SX
-         KRpw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=wm6u49yhGE1hjkj46WRvOxhazZKjctBTnOz8WU5QAPg=;
+        b=kM/g8fJayvLt7UyFHIihCDGEyRCUA7pdJA5sLe74aA2osLEvjw/epu+DmF0Cvj+M3c
+         6Uk+20z3dwiWY0ILglET5B+ajIR99ULkxIp7xJf3k3WtARWUqp6bmsZSshLPTVx64yLH
+         seMeEjIfeMO+cbSuSABrDCdVKdYqtSO4kPd9XqkGsyUbSFkRzEseL9dCLgLuMCTyKrSy
+         m6EHJ14JPudZxu+52CmQewufVIdfWxhFCwl2R7UlIGBvGBnFa2s978UBGv/sWe/zNN3y
+         Tj0Vc4DNl95Ogi+HpQ4j9ffWuiItVrLlCskD7C5vjTG7G7d00Hl9ZtSe6EUw9rTrzvuA
+         EfSA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si8955364eje.223.2019.06.18.04.31.42
+        by mx.google.com with ESMTPS id c80si10121359qke.221.2019.06.18.04.56.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2019 04:31:42 -0700 (PDT)
+        Tue, 18 Jun 2019 04:56:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55746 helo=lists.gnu.org)
+Received: from localhost ([::1]:55948 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdCKz-0007Sh-Mo
-	for alex.bennee@linaro.org; Tue, 18 Jun 2019 07:31:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45718)
+	id 1hdCjC-00005L-Mj
+	for alex.bennee@linaro.org; Tue, 18 Jun 2019 07:56:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51946)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hdCKq-0007S3-Ow
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 07:31:33 -0400
+ (envelope-from <drjones@redhat.com>) id 1hdCia-0008I0-Ji
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2019 07:56:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hdCKp-0006Nb-IT
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 07:31:32 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:51604)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hdCKp-0006MP-CZ
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 07:31:31 -0400
-Received: by mail-wm1-f67.google.com with SMTP id 207so2850469wma.1
- for <qemu-arm@nongnu.org>; Tue, 18 Jun 2019 04:31:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=sWAUzTVZTd1N0vgARBpJ2iBRKFKmWFK8xlcTWblFbF4=;
- b=o816N0bouvNnbggjsGu19LbsSZT2uDFVBJtwco1am6jG29+dtQzMrlRzSnGAfltB60
- 0ZkMLF1J/HAL7U3fBtdATO5Be09h+fUwD85+5plV60Blp6JgKA0wvqU3f9jkLkRV0G3m
- qA7kpC1ZJz64YH7OLsJHeO/KDiFYQ6ZrL7YG+xXdFIs55ywHpOHqv7IrNoEjS64YFfU+
- MvKOa084MUFatrmOY387oMfVL2vGwT+qJMZT0bwxztHGe7WzvcOgKhN1m94ybnG9b7SM
- +4i7Dtx+lVXAdCGDc5hu84pWxi7zYzDMVIHO1bz215GqyHkoAI8T1nD6lGcAFUz6nCGx
- ko4g==
-X-Gm-Message-State: APjAAAUT9de4SChLMtNJhzeY61jxJbQ4ZHyOyu9JAV25kW3d+fd+FLC+
- 6HkxSN7Kaxw3v38eE4nuRqpQoQ==
-X-Received: by 2002:a1c:ef0c:: with SMTP id n12mr3039033wmh.132.1560857490353; 
- Tue, 18 Jun 2019 04:31:30 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id n3sm9987742wro.59.2019.06.18.04.31.29
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Jun 2019 04:31:29 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
+ (envelope-from <drjones@redhat.com>) id 1hdCiZ-0000Jr-Is
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2019 07:56:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:29387)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1hdCiY-0000FU-TL; Tue, 18 Jun 2019 07:56:03 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5617531628EF;
+ Tue, 18 Jun 2019 11:56:01 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FD3B1001E61;
+ Tue, 18 Jun 2019 11:56:00 +0000 (UTC)
+Date: Tue, 18 Jun 2019 13:55:58 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190618115558.uhygiqryxo4lbb5u@kamzik.brq.redhat.com>
 References: <20190618083442.10407-1-drjones@redhat.com>
  <CAFEAcA9bwbev3efZ=LJPGgObBCbW-WX19fySMusLyMNC5ZExvA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <61cad4d2-61bc-00f1-d86a-d88b9e926ad2@redhat.com>
-Date: Tue, 18 Jun 2019 13:31:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <CAFEAcA9bwbev3efZ=LJPGgObBCbW-WX19fySMusLyMNC5ZExvA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Tue, 18 Jun 2019 11:56:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.67
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/boot: fix direct kernel
  boot setup
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,38 +92,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Dkm4E0H/pUl
+X-TUID: j8kFjfVT5VYu
 
-On 6/18/19 1:02 PM, Peter Maydell wrote:
+On Tue, Jun 18, 2019 at 12:02:37PM +0100, Peter Maydell wrote:
 > On Tue, 18 Jun 2019 at 09:34, Andrew Jones <drjones@redhat.com> wrote:
->>
->> We need to check ram_end, not ram_size.
->>
->> Fixes: 852dc64d665f ("hw/arm/boot: Diagnose layouts that put initrd or
->> DTB off the end of RAM")
->> Signed-off-by: Andrew Jones <drjones@redhat.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
->> ---
->>  hw/arm/boot.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
->> index b2f93f6beff6..8a280ab3ed49 100644
->> --- a/hw/arm/boot.c
->> +++ b/hw/arm/boot.c
->> @@ -1109,7 +1109,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
->>                               info->initrd_filename);
->>                  exit(1);
->>              }
->> -            if (info->initrd_start + initrd_size > info->ram_size) {
->> +            if (info->initrd_start + initrd_size > ram_end) {
->>                  error_report("could not load initrd '%s': "
->>                               "too big to fit into RAM after the kernel",
->>                               info->initrd_filename);
->> --
->> 2.20.1
+> >
+> > We need to check ram_end, not ram_size.
+> >
+> > Fixes: 852dc64d665f ("hw/arm/boot: Diagnose layouts that put initrd or
+> > DTB off the end of RAM")
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  hw/arm/boot.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index b2f93f6beff6..8a280ab3ed49 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -1109,7 +1109,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+> >                               info->initrd_filename);
+> >                  exit(1);
+> >              }
+> > -            if (info->initrd_start + initrd_size > info->ram_size) {
+> > +            if (info->initrd_start + initrd_size > ram_end) {
+> >                  error_report("could not load initrd '%s': "
+> >                               "too big to fit into RAM after the kernel",
+> >                               info->initrd_filename);
+> > --
+> > 2.20.1
 > 
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > 
@@ -148,6 +128,11 @@ Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > initrd -- direct kernel boot works fine if all you're
 > passing to QEMU is the kernel... I think we could clarify
 > the commit message a little:
+
+I found it using kvm-unit-tests which uses a small initrd to
+pass environment variables to the guest. All the tests started
+to report FAIL.
+
 > 
 > hw/arm/boot: fix direct kernel boot with initrd
 > 
@@ -155,10 +140,24 @@ Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > into RAM; this meant we were spuriously refusing to do
 > a direct boot of a kernel in some cases if an initrd
 > was also passed on the command line.
+
+Actually I think we need another fix for this error too. We
+weren't actually refusing do direct boot the kernel, but we
+should have been. We're missing the 'exit(1)' after the error
+message.
+
 > 
 > ?
 > 
 > (if you agree I can just fix up the commit message when I apply it.)
+
+I agree with the improved commit message if we also add the
+'exit(1)', otherwise "refusing to boot" isn't the right thing
+to say.
+
+Thanks,
+drew
+
 > 
 > thanks
 > -- PMM

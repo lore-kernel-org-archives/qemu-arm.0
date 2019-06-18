@@ -1,327 +1,164 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3992704wrg;
-        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVABlU8GyUtmIAZd4IekWvT/KXuI2+ZuN0qNZgvkofoi1aSHGuVBHn8YXYiFMvX+GkOgw6
-X-Received: by 2002:a0c:e6a2:: with SMTP id j2mr27130660qvn.190.1560879809069;
-        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560879809; cv=none;
+Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp4213140pjq;
+        Tue, 18 Jun 2019 10:08:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzi2cICKRX/F7wUn6xqB1gJbT2eaoMng/kPlk144zN28ShCUgGCPmyo2htnJNfs9uvfqXz2
+X-Received: by 2002:a37:8002:: with SMTP id b2mr96835451qkd.289.1560877688081;
+        Tue, 18 Jun 2019 10:08:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560877688; cv=none;
         d=google.com; s=arc-20160816;
-        b=xI7v7SfEGHDzLms2H2bZbvF29/KRGW0DXL1Uj3Hu0DBmE/VLlR4dJB+Pc8zbFy3Ng8
-         oGQggJrgLHUe3bLhHSmxPatvprBX5qnWH6pURkzt14LRwAX0BFCmUVB6RrYKsgGa4+pA
-         141GetoO+Z4M8cbVtW+0QNymh5ztwbGUXrGwRabgK3Q/0z3VE/VXRZ/fde8H14cf8qKg
-         iUDlRu5Jcbv68G3uCBtBlhYZrfN+mINfQZkSgEkmQev8q9AOu7bMAAUCCVjs3yDI93Nj
-         4IEO5Wkhxan06Ep2IvYQUtDgV3cT/248uPJdivNnsaQtCZrfo3VsiAi0TwP7T3H8uuDn
-         wYzg==
+        b=j3lnI6oLAxRdbz5IqL09UxgWi64mrW18l2O+fvvqobmbvzvCOx4JfwJh2erLE95gb8
+         l1QPOviGnQyoLEI9wkIemMPJPNF8nEJMPgmxn3v0BCwvzQ5sW/Bilt18sd9MMOE+Qfll
+         wbaFWYW0xVcH865mukM5khqKGpRc8jNP0wojUK4A2efLJQP9lX8cFAYumdOeYw/9TGuA
+         dk60ZA0gZq5mqbNwS3+sNZ6R0D5Op1YGtXc9X9SNj4CRHcTezkkGt2Kufw3LwDgSFq/E
+         3z5gGQTWTfa9dnFw9nRbcMagY04//bjeq3B45vpFKuTqaXG5ByZYWBpZ7p+lwe3AEKlo
+         ZxBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=6fuRBjUyVqipbHMrjHDxfA4Y5PWD97pjslX3f3uceFU=;
-        b=rXGuJu9qIAmlItKrSDsmjDM18PxSzdeEYshVzh86zR1jPLgRNzmhWcGWcC1MmZbm3f
-         oxfwe0ppSJ8GsIFZcbJWTyeBIpxXrzftdR/7DnFbh0fOVOi4Gi8svB64cSi1RaFUnaz6
-         HfmnQCLGaP0p1O5CZONOVHlIR2r4gLiz0nNNPU4fuQy604XuwnYtQgwZ6QU0ErhHQTRv
-         IOSbCth5NVrhfkbKIW38LfiaASVkAMDcp425VvPITJoZMbtstlMwm0Q9RfMneQ1RL/tN
-         S2gVK1WKBnzHnm2XJV8O3jdeBWSIpSh3aOM/W90VHaslpR4KnaUG0XFSWXDXoJMFIU5D
-         klbA==
+        bh=gX8+7MWV+OYcYOCPeCD6tuOtLzUfQ7At93ryWUJ/rJ0=;
+        b=nxgTSu9gshWATL0MbXrHrTZrLeVA6ohxtHk5Rhl1WP67jyYq+DMMEI8Ct66nl/Pfv4
+         9NDHGcsaoXwwqwNy6xV2yAVtKK3FR50k1O3E6wKmu3hfndaJ4tN2t8k2jJp+Zp9/UCDV
+         K/ohhIRrZiZn4fyFOehzXXSgb41KCpI6rvyQRfs0+kLb8b8TndTOQ0T852RshZrmDwwb
+         VqWGz0mbcNUp4iYab9WYzBNO5CCcTTgpoy7IQFiKTMZPRKZ1HzbyQuYWRfJaC+vk4JvQ
+         YI3fPsKRYN0U/FA/U75HXiC+dkHB6nteZdtk7XbtIxkgVGeqWGMS16SRnfAG3LsQNhT8
+         fFUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b26si10389105qvh.211.2019.06.18.10.43.28
+        by mx.google.com with ESMTPS id q53si10205600qvh.110.2019.06.18.10.08.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2019 10:43:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jun 2019 10:08:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60628 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60240 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdI8m-0005S9-Jd
-	for alex.bennee@linaro.org; Tue, 18 Jun 2019 13:43:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33041)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hdHaZ-0003Rk-LG
+	for alex.bennee@linaro.org; Tue, 18 Jun 2019 13:08:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60311)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1hdHP2-0001dc-4T
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:13 -0400
+ (envelope-from <clg@kaod.org>) id 1hdHMr-0007wr-7r
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:53:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hdHP0-0006sP-6b
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:12 -0400
-Received: from 6.mo3.mail-out.ovh.net ([188.165.43.173]:35610)
+ (envelope-from <clg@kaod.org>) id 1hdHMp-0003rX-Bk
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:53:57 -0400
+Received: from 14.mo4.mail-out.ovh.net ([46.105.40.29]:43672)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hdHOv-0006Ts-FZ
- for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:56:06 -0400
-Received: from player157.ha.ovh.net (unknown [10.109.160.46])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id B6EE121A5F8
- for <qemu-devel@nongnu.org>; Tue, 18 Jun 2019 18:55:52 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hdHMp-0003oK-26
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:53:55 -0400
+Received: from player157.ha.ovh.net (unknown [10.109.159.132])
+ by mo4.mail-out.ovh.net (Postfix) with ESMTP id 6E69D1F809B
+ for <qemu-arm@nongnu.org>; Tue, 18 Jun 2019 18:53:53 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
  (Authenticated sender: clg@kaod.org)
- by player157.ha.ovh.net (Postfix) with ESMTPSA id 41C826EB55AD;
- Tue, 18 Jun 2019 16:55:46 +0000 (UTC)
+ by player157.ha.ovh.net (Postfix) with ESMTPSA id 07F456EB5154;
+ Tue, 18 Jun 2019 16:53:48 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Jun 2019 18:53:11 +0200
-Message-Id: <20190618165311.27066-22-clg@kaod.org>
+Date: Tue, 18 Jun 2019 18:52:54 +0200
+Message-Id: <20190618165311.27066-5-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190618165311.27066-1-clg@kaod.org>
 References: <20190618165311.27066-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1700108861473458961
+X-Ovh-Tracer-Id: 1666613338521832209
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrtddtgdejkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrtddtgdejjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.165.43.173
-Subject: [Qemu-devel] [PATCH v2 21/21] aspeed: vic: Add support for legacy
- register interface
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 46.105.40.29
+Subject: [Qemu-arm] [PATCH v2 04/21] hw/arm/aspeed: Add RTC to SoC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZrVnDWzoSQgj
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qv4iz0HPJsSB
 
-From: Andrew Jeffery <andrew@aj.id.au>
+From: Joel Stanley <joel@jms.id.au>
 
-The legacy interface only supported up to 32 IRQs, which became
-restrictive around the AST2400 generation. QEMU support for the SoCs
-started with the AST2400 along with an effort to reimplement and
-upstream drivers for Linux, so up until this point the consumers of the
-QEMU ASPEED support only required the 64 IRQ register interface.
+All systems have an RTC.
 
-In an effort to support older BMC firmware, add support for the 32 IRQ
-interface.
+The IRQ is hooked up but the model does not use it at this stage. There
+is no guest code that uses it, so this limitation is acceptable.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/aspeed_vic.c | 105 ++++++++++++++++++++++++++-----------------
- 1 file changed, 63 insertions(+), 42 deletions(-)
+ include/hw/arm/aspeed_soc.h |  2 ++
+ hw/arm/aspeed_soc.c         | 13 +++++++++++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/hw/intc/aspeed_vic.c b/hw/intc/aspeed_vic.c
-index 927638d5322a..266a309f3b47 100644
---- a/hw/intc/aspeed_vic.c
-+++ b/hw/intc/aspeed_vic.c
-@@ -104,54 +104,63 @@ static void aspeed_vic_set_irq(void *opaque, int ir=
-q, int level)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 88b901d5dfa9..fa0ba957a611 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -16,6 +16,7 @@
+ #include "hw/misc/aspeed_scu.h"
+ #include "hw/misc/aspeed_sdmc.h"
+ #include "hw/timer/aspeed_timer.h"
++#include "hw/timer/aspeed_rtc.h"
+ #include "hw/i2c/aspeed_i2c.h"
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+@@ -32,6 +33,7 @@ typedef struct AspeedSoCState {
+     ARMCPU cpu;
+     MemoryRegion sram;
+     AspeedVICState vic;
++    AspeedRtcState rtc;
+     AspeedTimerCtrlState timerctrl;
+     AspeedI2CState i2c;
+     AspeedSCUState scu;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 1cc98b9f4045..5faa78d81fd6 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -189,6 +189,9 @@ static void aspeed_soc_init(Object *obj)
+     sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
+                           TYPE_ASPEED_VIC);
 =20
- static uint64_t aspeed_vic_read(void *opaque, hwaddr offset, unsigned si=
-ze)
- {
--    uint64_t val;
--    const bool high =3D !!(offset & 0x4);
--    hwaddr n_offset =3D (offset & ~0x4);
-     AspeedVICState *s =3D (AspeedVICState *)opaque;
-+    hwaddr n_offset;
-+    uint64_t val;
-+    bool high;
++    sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
++                          TYPE_ASPEED_RTC);
++
+     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+                           sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
+     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+@@ -275,6 +278,16 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
+                        qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
 =20
-     if (offset < AVIC_NEW_BASE_OFFSET) {
--        qemu_log_mask(LOG_UNIMP, "%s: Ignoring read from legacy register=
-s "
--                      "at 0x%" HWADDR_PRIx "[%u]\n", __func__, offset, s=
-ize);
--        return 0;
-+        high =3D false;
-+        n_offset =3D offset;
-+    } else {
-+        high =3D !!(offset & 0x4);
-+        n_offset =3D (offset & ~0x4);
-     }
-=20
--    n_offset -=3D AVIC_NEW_BASE_OFFSET;
--
-     switch (n_offset) {
--    case 0x0: /* IRQ Status */
-+    case 0x80: /* IRQ Status */
-+    case 0x00:
-         val =3D s->raw & ~s->select & s->enable;
-         break;
--    case 0x08: /* FIQ Status */
-+    case 0x88: /* FIQ Status */
-+    case 0x04:
-         val =3D s->raw & s->select & s->enable;
-         break;
--    case 0x10: /* Raw Interrupt Status */
-+    case 0x90: /* Raw Interrupt Status */
-+    case 0x08:
-         val =3D s->raw;
-         break;
--    case 0x18: /* Interrupt Selection */
-+    case 0x98: /* Interrupt Selection */
-+    case 0x0c:
-         val =3D s->select;
-         break;
--    case 0x20: /* Interrupt Enable */
-+    case 0xa0: /* Interrupt Enable */
-+    case 0x10:
-         val =3D s->enable;
-         break;
--    case 0x30: /* Software Interrupt */
-+    case 0xb0: /* Software Interrupt */
-+    case 0x18:
-         val =3D s->trigger;
-         break;
--    case 0x40: /* Interrupt Sensitivity */
-+    case 0xc0: /* Interrupt Sensitivity */
-+    case 0x24:
-         val =3D s->sense;
-         break;
--    case 0x48: /* Interrupt Both Edge Trigger Control */
-+    case 0xc8: /* Interrupt Both Edge Trigger Control */
-+    case 0x28:
-         val =3D s->dual_edge;
-         break;
--    case 0x50: /* Interrupt Event */
-+    case 0xd0: /* Interrupt Event */
-+    case 0x2c:
-         val =3D s->event;
-         break;
--    case 0x60: /* Edge Triggered Interrupt Status */
-+    case 0xe0: /* Edge Triggered Interrupt Status */
-         val =3D s->raw & ~s->sense;
-         break;
-         /* Illegal */
--    case 0x28: /* Interrupt Enable Clear */
--    case 0x38: /* Software Interrupt Clear */
--    case 0x58: /* Edge Triggered Interrupt Clear */
-+    case 0xa8: /* Interrupt Enable Clear */
-+    case 0xb8: /* Software Interrupt Clear */
-+    case 0xd8: /* Edge Triggered Interrupt Clear */
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Read of write-only register with offset 0x%"
-                       HWADDR_PRIx "\n", __func__, offset);
-@@ -166,6 +175,8 @@ static uint64_t aspeed_vic_read(void *opaque, hwaddr =
-offset, unsigned size)
-     }
-     if (high) {
-         val =3D extract64(val, 32, 19);
-+    } else {
-+        val =3D extract64(val, 0, 32);
-     }
-     trace_aspeed_vic_read(offset, size, val);
-     return val;
-@@ -174,19 +185,18 @@ static uint64_t aspeed_vic_read(void *opaque, hwadd=
-r offset, unsigned size)
- static void aspeed_vic_write(void *opaque, hwaddr offset, uint64_t data,
-                              unsigned size)
- {
--    const bool high =3D !!(offset & 0x4);
--    hwaddr n_offset =3D (offset & ~0x4);
-     AspeedVICState *s =3D (AspeedVICState *)opaque;
-+    hwaddr n_offset;
-+    bool high;
-=20
-     if (offset < AVIC_NEW_BASE_OFFSET) {
--        qemu_log_mask(LOG_UNIMP,
--                      "%s: Ignoring write to legacy registers at 0x%"
--                      HWADDR_PRIx "[%u] <- 0x%" PRIx64 "\n", __func__, o=
-ffset,
--                      size, data);
--        return;
-+        high =3D false;
-+        n_offset =3D offset;
-+    } else {
-+        high =3D !!(offset & 0x4);
-+        n_offset =3D (offset & ~0x4);
-     }
-=20
--    n_offset -=3D AVIC_NEW_BASE_OFFSET;
-     trace_aspeed_vic_write(offset, size, data);
-=20
-     /* Given we have members using separate enable/clear registers, depo=
-sit64()
-@@ -201,7 +211,8 @@ static void aspeed_vic_write(void *opaque, hwaddr off=
-set, uint64_t data,
-     }
-=20
-     switch (n_offset) {
--    case 0x18: /* Interrupt Selection */
-+    case 0x98: /* Interrupt Selection */
-+    case 0x0c:
-         /* Register has deposit64() semantics - overwrite requested 32 b=
-its */
-         if (high) {
-             s->select &=3D AVIC_L_MASK;
-@@ -210,21 +221,25 @@ static void aspeed_vic_write(void *opaque, hwaddr o=
-ffset, uint64_t data,
-         }
-         s->select |=3D data;
-         break;
--    case 0x20: /* Interrupt Enable */
-+    case 0xa0: /* Interrupt Enable */
-+    case 0x10:
-         s->enable |=3D data;
-         break;
--    case 0x28: /* Interrupt Enable Clear */
-+    case 0xa8: /* Interrupt Enable Clear */
-+    case 0x14:
-         s->enable &=3D ~data;
-         break;
--    case 0x30: /* Software Interrupt */
-+    case 0xb0: /* Software Interrupt */
-+    case 0x18:
-         qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
-                       "IRQs requested: 0x%016" PRIx64 "\n", __func__, da=
-ta);
-         break;
--    case 0x38: /* Software Interrupt Clear */
-+    case 0xb8: /* Software Interrupt Clear */
-+    case 0x1c:
-         qemu_log_mask(LOG_UNIMP, "%s: Software interrupts unavailable. "
-                       "IRQs to be cleared: 0x%016" PRIx64 "\n", __func__=
-, data);
-         break;
--    case 0x50: /* Interrupt Event */
-+    case 0xd0: /* Interrupt Event */
-         /* Register has deposit64() semantics - overwrite the top four v=
-alid
-          * IRQ bits, as only the top four IRQs (GPIOs) can change their =
-event
-          * type */
-@@ -236,15 +251,21 @@ static void aspeed_vic_write(void *opaque, hwaddr o=
-ffset, uint64_t data,
-                           "Ignoring invalid write to interrupt event reg=
-ister");
-         }
-         break;
--    case 0x58: /* Edge Triggered Interrupt Clear */
-+    case 0xd8: /* Edge Triggered Interrupt Clear */
-+    case 0x38:
-         s->raw &=3D ~(data & ~s->sense);
-         break;
--    case 0x00: /* IRQ Status */
--    case 0x08: /* FIQ Status */
--    case 0x10: /* Raw Interrupt Status */
--    case 0x40: /* Interrupt Sensitivity */
--    case 0x48: /* Interrupt Both Edge Trigger Control */
--    case 0x60: /* Edge Triggered Interrupt Status */
-+    case 0x80: /* IRQ Status */
-+    case 0x00:
-+    case 0x88: /* FIQ Status */
-+    case 0x04:
-+    case 0x90: /* Raw Interrupt Status */
-+    case 0x08:
-+    case 0xc0: /* Interrupt Sensitivity */
-+    case 0x24:
-+    case 0xc8: /* Interrupt Both Edge Trigger Control */
-+    case 0x28:
-+    case 0xe0: /* Edge Triggered Interrupt Status */
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Write of read-only register with offset 0x%"
-                       HWADDR_PRIx "\n", __func__, offset);
++    /* RTC */
++    object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, sc->info->memmap[ASPEED_=
+RTC]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_RTC));
++
+     /* Timer */
+     object_property_set_bool(OBJECT(&s->timerctrl), true, "realized", &e=
+rr);
+     if (err) {
 --=20
 2.21.0
 

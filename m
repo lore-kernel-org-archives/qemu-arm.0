@@ -1,97 +1,94 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3101551wrg;
-        Mon, 17 Jun 2019 17:27:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxcIpEPXeEjw3HIX2XI3ebeIt8/z5p5fytriTwaHD1JsBRNSs7i0jVz/gVkefWl1VN7BtW
-X-Received: by 2002:a17:906:892:: with SMTP id n18mr71945939eje.10.1560817676684;
-        Mon, 17 Jun 2019 17:27:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560817676; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3142751wrg;
+        Mon, 17 Jun 2019 18:27:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxwbNFbm1Y/tUNBwW5Mg+uodeg1IX7+urDdN/K979iEPHeXM120ceVn/1vu2RsvKxzySlQn
+X-Received: by 2002:a17:906:3948:: with SMTP id g8mr66658842eje.168.1560821251725;
+        Mon, 17 Jun 2019 18:27:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560821251; cv=none;
         d=google.com; s=arc-20160816;
-        b=fU92UnBH7nh/NQcQVfkSoyQ5nR2g3h5krOhbL1W4OCTRsNnoaJPG7XyM/xcPBiEivR
-         B8U/OJn4df0isAe2sl8EmsFbLJfPTRvGtfBVq/x1UUWsAkw7InKlerpZjLczwZopHgDh
-         E4fjwH1leJ1XSb7Ks4hJ9+MroeWnjY/+KHeZortoFB+flnOmXPwTPmEVAllqSZaAq9Cd
-         7eU7cy3eP500CYVlDu1coMYY4vYeKIloyigMiEAc3s7htC9RKjgm7AoYHpFzDlD4oX2c
-         OKrnADlaxkcrqR/NPsADi1BCEgO+6UGF8MZCtORtHwtiURVPvNSidG8e1BrXXv4mOfi6
-         +iBQ==
+        b=uSLeWtyWE4e3G483bolATVPUNMLJwcIdNAnu8EXdboD7qUU5izBPH0927AYHkvnTZg
+         hSH/r0OE/tkRv7qjYuLpYoZV5j5AoMD8pWtBRk/TRA5+3op0pZPqOMWgYjaw4BJdFIzn
+         Vxq9vLa2Yl3SwDe4bI14PKqmroME05d+pF98sArxqvsEbEhgYe+MpDO6fwLVH2z3hqtt
+         pOrDXXrPInL6hVhgoAuwaR91NmqmiRXZ9l8q7FTLu/oYaz8sASk24uqK98WGFAt1rXeq
+         uNxBsAxl54U/xQY/9RL/1JGtDVLCO74OQaVW8xXSWLx9ooSqawffyBMw2GkYy6Q0zR++
+         QChw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=t9WIkMCJzUsCK/kU6QU/SflM6UsK/eYNYbFEXibPnKg=;
-        b=FwoIWJlk+yYXcBmzatmvgnR4ALi98CZ+6Zp2WUGR+LD7No1KY8ik3ivzSSduizoZh8
-         xK1WgwP/j7TqMJgd3qHp6WvU1OmX8l90pu4nmSfBoAKeo4Ntgj8QpUS5BwPWC2gONqTs
-         Xf5Y7okLApj3ojb9lc49O9ZYMAoaBHsVFyB+kapIGgrsWJqXtcFA51n1PlMdem1H0ZRe
-         4MDMsjEUji+LKa0NgizsH0JbAtH9S6rzOXaat7uGPQKO0ySnMgGEQLlgvXBUuxDQPw73
-         crvZ9BdweS52RFwZYZfDj5CdAK2j03+9BSVRYa4PHA/ZtHdfvXsUwPGBGkycNVVb51EU
-         rE0Q==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=AHXtKDFFOfrWy+/0QdH+yW+H88/c/r0mZVx+SFFI2p0=;
+        b=AnTlRc3tIewdFBihJSHJSg7/fTx05PYNYjzL6fgHgmFXlP1879TO7cqL2U+fNs4r9q
+         uxX9e3v42FZeXR0Qff7nHsywTfrTkRrAHcziRAmp/FbzQLHm95dpR/QKzoRMIAjMWZg0
+         V4KCUpEv6XEB4TXtfBa8DheweQUANKvxazRaC56xL0ll/upfCBCAB6G0fe9UrMb5beoh
+         YulQlajHZUnpV3+0DHDeA/67uKEhG6g8BEHkeoAUiNhznHg2U9ifelnZfrEBnHAjG/zu
+         b8nUweMH7QnHPYKTPIzrLwIh1sXb0SdoaFLadHwlLGblyHk22crRO7tFsqLCrOzkbbew
+         9Gng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nm/46+e+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b33si9904483eda.75.2019.06.17.17.27.56
+        by mx.google.com with ESMTPS id k39si10144783ede.140.2019.06.17.18.27.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jun 2019 17:27:56 -0700 (PDT)
+        Mon, 17 Jun 2019 18:27:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nm/46+e+";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52770 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52882 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hd1yd-0000RU-QW
-	for alex.bennee@linaro.org; Mon, 17 Jun 2019 20:27:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57623)
+	id 1hd2uI-0002pU-Dj
+	for alex.bennee@linaro.org; Mon, 17 Jun 2019 21:27:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39509)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <andrew.smirnov@gmail.com>) id 1hd1yJ-0000Pm-RA
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 20:27:37 -0400
+ (envelope-from <mst@redhat.com>) id 1hd2tf-0002mw-8j
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 21:26:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew.smirnov@gmail.com>) id 1hd1yI-0007EH-1U
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 20:27:35 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:34747)
+ (envelope-from <mst@redhat.com>) id 1hd2ta-0001T2-SZ
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 21:26:48 -0400
+Received: from mail-qk1-f196.google.com ([209.85.222.196]:40181)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
- id 1hd1yE-0007C6-4i; Mon, 17 Jun 2019 20:27:30 -0400
-Received: by mail-io1-xd44.google.com with SMTP id k8so25741485iot.1;
- Mon, 17 Jun 2019 17:27:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=t9WIkMCJzUsCK/kU6QU/SflM6UsK/eYNYbFEXibPnKg=;
- b=nm/46+e+FHzsWTPIIAhMwNsrhLG5uaMDMwhJgyn4AsmvpNYFHi6A4STUSLGJrk1bIO
- 9NwUk2X+xmnUVfkdXhnk3gRX/G64CL6iaZMh4qXWzus1tYctrb5wDDG0GvJGLDi9MPr2
- eGAxxsJZc5XU8w+m23nBC/0LAiuvXL/FRXPu8nfHxT8XaeKWA3OX99RKD9ZPCLdkZZoo
- x5SumdkvOHiAZECqyayoYy5TZHXplRZqHbmCdpyxPbHklHQm7xeZa3lACA5lFLDxeL9j
- +E8WyqAj4IAmCSRIfwd9MnJyS+b6FSY5CxggPBczj2r+ddo3rpzOxpdmN+B3skFYkRFH
- qIlQ==
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1hd2ta-0001Eq-My
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2019 21:26:46 -0400
+Received: by mail-qk1-f196.google.com with SMTP id c70so7501841qkg.7
+ for <qemu-arm@nongnu.org>; Mon, 17 Jun 2019 18:26:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=t9WIkMCJzUsCK/kU6QU/SflM6UsK/eYNYbFEXibPnKg=;
- b=mKpagwIC1r2QhhAULdH7pG/wU1Y6ZFMWSXiUUY32Udq0K6+YUFQjFK1KvIdyeeh5ze
- ZW1TQhdo4MCAXXNQHSCJHoFwlYFdmaqR1t05WIOBPWlidU+JqXivGFPfXnXX8zpgOoMb
- 0Oijr6/Nr0LQRc0Rk7eNIYuI6lNOZFfizGM6+olECs18kpp5aP96nPJGGyEXrvHbK4n5
- kDd0v7Aln46z8GHhRSsymMwkLykikC2dS+vZq/RYUM62fiAS7BWee/eHMqK5f6sdqd+e
- TZ8A8gklu22itfYe95fj/BEnY6XRiNyyw8q9oyqDlWDXxL0+GM6ZjmGIZPHGnhXwXrba
- MN4w==
-X-Gm-Message-State: APjAAAX7nlzlndg+Mz3BDjbFgVuv/VZJA4JsRngGXShUfQc+Kp6OGOm8
- 9Olz65PXQ8QOLGmX6D4ncFFtjt/0rO3+a9xhvhE=
-X-Received: by 2002:a6b:f00c:: with SMTP id w12mr1556777ioc.280.1560817648660; 
- Mon, 17 Jun 2019 17:27:28 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=AHXtKDFFOfrWy+/0QdH+yW+H88/c/r0mZVx+SFFI2p0=;
+ b=HIYf6qVQ0v2WbRbXb32wm7ZNLre2bxAHTaHz/86uWWB4p1CvHf5mcnfJKtFPTwdI1g
+ SHn6HxBnihgfEGSRD6Jhk+/h3P6Gi1MXQx+ZbOrK3Xh9RQ8ttSACB4AXBtFU2OhIhaaS
+ 7nKyOPKG4y7mDJ7wnOTS2I9M1i/ju/aYiWnCnoLvBNPrv3GVvZRxutPmmlFuzsMHj8HL
+ V4rPtwr1DFwow7xSVaOpEBa8sPr5fGcRUxOEe7MgSYHPWOBaIZeQfTso8KdQgEl0uQOE
+ XG/vWgx+poq1E21zqUi349L6lLztMUmo1+wXPRodUz3jWitWSaQTpcLmXirrR/cdy7wT
+ Osnw==
+X-Gm-Message-State: APjAAAVKUMRV/vmALFaufBI2SAsvH3w5NGoNXaIlq8yJH8VzdGXz3yoV
+ W6mhhGAZ0LtOdJwaajzTh0VB5w==
+X-Received: by 2002:a37:be85:: with SMTP id
+ o127mr80947201qkf.194.1560821195013; 
+ Mon, 17 Jun 2019 18:26:35 -0700 (PDT)
+Received: from redhat.com (pool-100-0-197-103.bstnma.fios.verizon.net.
+ [100.0.197.103])
+ by smtp.gmail.com with ESMTPSA id n18sm3316258qtr.28.2019.06.17.18.26.32
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 17 Jun 2019 18:26:33 -0700 (PDT)
+Date: Mon, 17 Jun 2019 21:26:31 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Andrey Smirnov <andrew.smirnov@gmail.com>
+Message-ID: <20190617212626-mutt-send-email-mst@kernel.org>
 References: <20190416013902.4941-1-andrew.smirnov@gmail.com>
-In-Reply-To: <20190416013902.4941-1-andrew.smirnov@gmail.com>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Mon, 17 Jun 2019 17:27:17 -0700
-Message-ID: <CAHQ1cqE5RZVYB1N2+CxGKNDb5NrtBOiQANhruZ6_6EbOThNwiw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
-Subject: Re: [Qemu-arm] [PATCH 0/5] Various i.MX7 fixes
+ <20190416013902.4941-4-andrew.smirnov@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190416013902.4941-4-andrew.smirnov@gmail.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.222.196
+Subject: Re: [Qemu-arm] [PATCH 3/5] pci: designware: Update MSI mapping
+ unconditionally
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,26 +100,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:ARM" <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 94O0VRSnocFu
+X-TUID: 0IcZFgwr8cCI
 
-On Mon, Apr 15, 2019 at 6:39 PM Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->
-> Everyone:
->
-> I recently revisited my i.MX7 work and this series contains all of the
-> fixes I had to make to get it to work with latest (5.1-rc1) Linux
-> kernel again as well as fixes for genuine bugs that I somehow missed
-> during original submission ("pci: designware" patches). Hopefully each
-> patch is self-explanatory.
->
-> Feedback is welcome!
->
+On Mon, Apr 15, 2019 at 06:39:00PM -0700, Andrey Smirnov wrote:
+> Expression to calculate update_msi_mapping in code handling writes to
+> DESIGNWARE_PCIE_MSI_INTR0_ENABLE is missing an ! operator and should
+> be:
+> 
+>     !!root->msi.intr[0].enable ^ !!val;
+> 
+> so that MSI mapping is updated when enabled transitions from either
+> "none" -> "any" or "any" -> "none". Since that register shouldn't be
+> written to very often, change the code to update MSI mapping
+> unconditionally instead of trying to fix the update_msi_mapping logic.
+> 
+> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org
 
-Is there any changes necessary for this to go in?
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-Thanks,
-Andrey Smirnov
+> ---
+>  hw/pci-host/designware.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+> index 29ea313798..6affe823c0 100644
+> --- a/hw/pci-host/designware.c
+> +++ b/hw/pci-host/designware.c
+> @@ -296,16 +296,10 @@ static void designware_pcie_root_config_write(PCIDevice *d, uint32_t address,
+>          root->msi.base |= (uint64_t)val << 32;
+>          break;
+>  
+> -    case DESIGNWARE_PCIE_MSI_INTR0_ENABLE: {
+> -        const bool update_msi_mapping = !root->msi.intr[0].enable ^ !!val;
+> -
+> +    case DESIGNWARE_PCIE_MSI_INTR0_ENABLE:
+>          root->msi.intr[0].enable = val;
+> -
+> -        if (update_msi_mapping) {
+> -            designware_pcie_root_update_msi_mapping(root);
+> -        }
+> +        designware_pcie_root_update_msi_mapping(root);
+>          break;
+> -    }
+>  
+>      case DESIGNWARE_PCIE_MSI_INTR0_MASK:
+>          root->msi.intr[0].mask = val;
+> -- 
+> 2.20.1

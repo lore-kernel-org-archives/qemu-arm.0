@@ -1,196 +1,178 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp4221594pjq;
-        Tue, 18 Jun 2019 10:16:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxy0y8ROfcBvuewQb7SM2f7mkh6JWvXVP4Ir0CjkQlGV/wrZOr6q5zzRTiAcqIUbk9RNW5R
-X-Received: by 2002:ac8:42d4:: with SMTP id g20mr101319673qtm.78.1560878181337;
-        Tue, 18 Jun 2019 10:16:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560878181; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3969542wrg;
+        Tue, 18 Jun 2019 10:18:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUdgM0kNJl34L7ntiUovFyXRz1z4cofARzXjer27qSEceJAfqYje7ZbQEpGHxEZIHPIco6
+X-Received: by 2002:a37:48c7:: with SMTP id v190mr28109839qka.350.1560878306456;
+        Tue, 18 Jun 2019 10:18:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560878306; cv=none;
         d=google.com; s=arc-20160816;
-        b=NEeFbcLo3IVAxNndrI966TWDcXGlxOeHWWQVYhNSMcnugM/f+x0xdwW0gN/j3O4l6T
-         CxBsiJl8vzednSaNMYlx4Cz7qXBC5gNJVc6TSyep8wMXlRC0pLAlSnh+xT+bSf1welti
-         Sw1/YOb1Wz+svsvlNvyL3mqJgVtaI3qnENQK77MIrzqL9o1H1uk0zMbXSoi6gvEWR8ej
-         gWYYLGpTthn1AVg/3jXnvFGErdWfoE95FDQulwcQbskYjL7WjmKR96AP99hJD4PrFDxs
-         dJ/WqpNWm7xIUMA5/gJ09VpWgFekaPx429chqN5nmjGLexW+R1n9D7AP7fwE1bNtcpsk
-         NzZA==
+        b=wz83H2tRun4PdUWNQk07aTwJD2JkEee4MgTaJ7SaYyBPuniCTJoMJuor1dSUb9+VCJ
+         NsAPRB1toD+dA8cN8+kq5BaMh8AQCEPR2NlaCDASqsLBr5u6hovC3oo9zLF+0CKEdsHS
+         pYjxHV7b/6dFwOM6w1PVsyZ/6lhuXNjVP8oEz/OnoyCnn9StLhNBW6Pwv6qXvuyhUsxk
+         4laaMybMwP2JHhne4Wer7Nl9zROjmpNSN03nc94GDUnLLV0Wm1CUXyeI97WEOzTcuaKC
+         dL8Z6xcK1XAYMID5w5JFI+W0jC4kNYZr9Hb8ZXEegrUOP4OI8UyO0LnxZV7NqKLam7EF
+         /y1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=vgbIS2v977wzgXz+VVNJU+NyrbfP53HvJs07m5AwKC0=;
-        b=nx8uGZFZSkyaIByaGq0EGXN1oRzbj3Y3LfClFx8rRA/8OfXpcxOuuQAB/YiBTKJO0d
-         lVvPIUre0AA8r3elnpbnzPqxRByIyI5hAKGeTnF+C+j0cWBWMruIZfrQYjHY55dNL7nr
-         4DMKOIOUbnIRbcyZPMLMSEWLrp5dbWSrcK1Ww3Snpts7aFMwupOLxVZ8+8EMsPvc1pAH
-         DON6ts69/0aDMAL1nt2/BtwT4gUGgjKg2dPi1v4vlYY4T3ER5BBCI6UqYh1nAxN+LqdO
-         YFywf0AhuuYHLqCkK/j9FnLgyTSapnG05DJjLShubYPtes9E0uqsCgDbqB4Y7cvhoBO3
-         Djtg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=ihZ0jJuaKNFutww/3d2vyUvcJalSbtBjuwe+UZ43vqE=;
+        b=yfRtdXJ8xIhWNAUu9PBesNh36vafEVR+/P2bYslb2CzyA3sdHzNrdj6hwMSeKzSuWF
+         qGfUMGtiUaivqpzDz2NhlpqcdccLnYZ7aQAyM8cTJu+QN168lfDkSmFT2OTr2cn6zlT2
+         tljU+0S/zBwSvOAMc1IcmZaqpNMPXX4xgMVqq7MUArUZOo26TsnSYL1041KQLV5G4NGZ
+         ckigjg79ki+uquS24hWo4dWnQlWXE9F7cFyocKAuhcLb+W0vQmHcB/i1lFip0xh6b1rs
+         jusWfoZUqK5CF//Nf7nep3R4Kc0B2TbQeSn/NAF69uCDonnZ6VzPqSM2tsdjIqfOjFOU
+         p+Rg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g34si692113qtb.209.2019.06.18.10.16.21
+        by mx.google.com with ESMTPS id v5si702117qtb.115.2019.06.18.10.18.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2019 10:16:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jun 2019 10:18:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60390 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60418 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdHiW-0007OR-SD
-	for alex.bennee@linaro.org; Tue, 18 Jun 2019 13:16:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60712)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hdHkX-0001HZ-V8
+	for alex.bennee@linaro.org; Tue, 18 Jun 2019 13:18:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60279)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1hdHNU-0000Um-SZ
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:54:38 -0400
+ (envelope-from <clg@kaod.org>) id 1hdHMq-0007uw-3v
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:53:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hdHNT-0004ja-H5
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:54:36 -0400
-Received: from 4.mo68.mail-out.ovh.net ([46.105.59.63]:51614)
+ (envelope-from <clg@kaod.org>) id 1hdHMo-0003pR-Pu
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:53:55 -0400
+Received: from 1.mo177.mail-out.ovh.net ([178.33.107.143]:35817)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hdHNT-0004hO-BH
- for qemu-arm@nongnu.org; Tue, 18 Jun 2019 12:54:35 -0400
-Received: from player157.ha.ovh.net (unknown [10.109.146.53])
- by mo68.mail-out.ovh.net (Postfix) with ESMTP id 4EEBC1326AF
- for <qemu-arm@nongnu.org>; Tue, 18 Jun 2019 18:54:33 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hdHMm-0003M0-Vd
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2019 12:53:53 -0400
+Received: from player157.ha.ovh.net (unknown [10.108.54.52])
+ by mo177.mail-out.ovh.net (Postfix) with ESMTP id 2AFF6FD93B
+ for <qemu-devel@nongnu.org>; Tue, 18 Jun 2019 18:53:26 +0200 (CEST)
 Received: from kaod.org (lfbn-1-10649-41.w90-89.abo.wanadoo.fr [90.89.235.41])
  (Authenticated sender: clg@kaod.org)
- by player157.ha.ovh.net (Postfix) with ESMTPSA id D7D036EB5348;
- Tue, 18 Jun 2019 16:54:26 +0000 (UTC)
+ by player157.ha.ovh.net (Postfix) with ESMTPSA id 3FFDC6EB5068;
+ Tue, 18 Jun 2019 16:53:20 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Jun 2019 18:53:00 +0200
-Message-Id: <20190618165311.27066-11-clg@kaod.org>
+Date: Tue, 18 Jun 2019 18:52:50 +0200
+Message-Id: <20190618165311.27066-1-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190618165311.27066-1-clg@kaod.org>
-References: <20190618165311.27066-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1677872339832113937
+X-Ovh-Tracer-Id: 1659013514218474257
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrtddtgdejjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.59.63
-Subject: [Qemu-arm] [PATCH v2 10/21] aspeed/timer: Provide back-pressure
- information for short periods
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 178.33.107.143
+Subject: [Qemu-devel] [PATCH v2 00/21] aspeed: machine extensions and fixes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vHZ3Xum7XfrK
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Sx7iJ8SAyJZS
 
-From: Andrew Jeffery <andrew@aj.id.au>
+Hello,
 
-First up: This is not the way the hardware behaves.
+This series improves the current models of the Aspeed machines in QEMU
+and adds new ones. It also prepares ground for the future Aspeed SoC.
+You will find patches for :
 
-However, it helps resolve real-world problems with short periods being
-used under Linux. Commit 4451d3f59f2a ("clocksource/drivers/fttmr010:
-Fix set_next_event handler") in Linux fixed the timer driver to
-correctly schedule the next event for the Aspeed controller, and in
-combination with 5daa8212c08e ("ARM: dts: aspeed: Describe random number
-device") Linux will now set a timer with a period as low as 1us.
+ - per SoC mappings of the memory space and the interrupt number space
+ - support for multiple CPUs (improved)
+ - support for multiple NICs
+ - a RTC model from Joel
+ - a basic XDMA model from Eddie
+ - support for multiple CPUs and NICs
+ - fixes for the irq and timer models from Joel, Andrew and Christian
+ - DMA support for the SMC controller, which was reworked to use a RAM
+   container region as suggested by Peter in September 2018
+ - new swift-bmc machine from Adriana (P9' processor)
 
-Configuring a qemu timer with such a short period results in spending
-time handling the interrupt in the model rather than executing guest
-code, leading to noticeable "sticky" behaviour in the guest.
 
-The behaviour of Linux is correct with respect to the hardware, so we
-need to improve our handling under emulation. The approach chosen is to
-provide back-pressure information by calculating an acceptable minimum
-number of ticks to be set on the model. Under Linux an additional read
-is added in the timer configuration path to detect back-pressure, which
-will never occur on hardware. However if back-pressure is observed, the
-driver alerts the clock event subsystem, which then performs its own
-next event dilation via a config option - d1748302f70b ("clockevents:
-Make minimum delay adjustments configurable")
+Thanks,
 
-A minimum period of 5us was experimentally determined on a Lenovo
-T480s, which I've increased to 20us for "safety".
+C.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/timer/aspeed_timer.h | 1 +
- hw/misc/aspeed_scu.c            | 6 ++++++
- hw/timer/aspeed_timer.c         | 6 +++++-
- 3 files changed, 12 insertions(+), 1 deletion(-)
+Changes since v1:
 
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_ti=
-mer.h
-index 1fb949e16710..10c851ebb6d7 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -41,6 +41,7 @@ typedef struct AspeedTimer {
-      * interrupts, signalling with both the rising and falling edge.
-      */
-     int32_t level;
-+    uint32_t min_ticks;
-     uint32_t reload;
-     uint32_t match[2];
-     uint64_t start;
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 71a0d4b7be7a..32e58da90657 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -423,6 +423,12 @@ static void aspeed_scu_realize(DeviceState *dev, Err=
-or **errp)
-                           TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
-=20
-     sysbus_init_mmio(sbd, &s->iomem);
-+
-+    /*
-+     * Reset on realize to ensure the APB clock value is calculated in t=
-ime for
-+     * use by the timer model, which is reset before the SCU.
-+     */
-+    aspeed_scu_reset(dev);
- }
-=20
- static const VMStateDescription vmstate_aspeed_scu =3D {
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 745eb8608b56..6501fa0768e7 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -259,7 +259,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlSta=
-te *s, int timer, int reg,
-     switch (reg) {
-     case TIMER_REG_RELOAD:
-         old_reload =3D t->reload;
--        t->reload =3D value;
-+        t->reload =3D value < t->min_ticks ? t->min_ticks : value;
-=20
-         /* If the reload value was not previously set, or zero, and
-          * the current value is valid, try to start the timer if it is
-@@ -311,7 +311,11 @@ static void aspeed_timer_ctrl_enable(AspeedTimer *t,=
- bool enable)
-=20
- static void aspeed_timer_ctrl_external_clock(AspeedTimer *t, bool enable=
-)
- {
-+    AspeedTimerCtrlState *s =3D timer_to_ctrl(t);
-+    uint32_t rate =3D enable ? TIMER_CLOCK_EXT_HZ : s->scu->apb_freq;
-+
-     trace_aspeed_timer_ctrl_external_clock(t->id, enable);
-+    t->min_ticks =3D muldiv64(20 * SCALE_US, rate, NANOSECONDS_PER_SECON=
-D);
- }
-=20
- static void aspeed_timer_ctrl_overflow_interrupt(AspeedTimer *t, bool en=
-able)
+ - reworked the CPU logic to put the number of CPUs under the SoC
+ - introduced a "inject-failure" property as suggested by Philippe
+
+
+Adriana Kobylak (1):
+  aspeed: Add support for the swift-bmc board
+
+Andrew Jeffery (4):
+  aspeed/timer: Status register contains reload for stopped timer
+  aspeed/timer: Fix match calculations
+  aspeed/timer: Provide back-pressure information for short periods
+  aspeed: vic: Add support for legacy register interface
+
+Christian Svensson (2):
+  aspeed/timer: Ensure positive muldiv delta
+  aspeed/smc: Calculate checksum on normal DMA
+
+C=C3=A9dric Le Goater (10):
+  aspeed: add a per SoC mapping for the interrupt space
+  aspeed: add a per SoC mapping for the memory space
+  aspeed: introduce a configurable number of CPU per machine
+  aspeed: add support for multiple NICs
+  aspeed: remove the "ram" link
+  aspeed: add a RAM memory region container
+  aspeed/smc: add a 'sdram_base' property
+  aspeed/smc: add support for DMAs
+  aspeed/smc: add DMA calibration settings
+  aspeed/smc: inject errors in DMA checksum
+
+Eddie James (1):
+  hw/misc/aspeed_xdma: New device
+
+Joel Stanley (3):
+  hw: timer: Add ASPEED RTC device
+  hw/arm/aspeed: Add RTC to SoC
+  aspeed/timer: Fix behaviour running Linux
+
+ include/hw/arm/aspeed_soc.h     |  53 ++++-
+ include/hw/misc/aspeed_xdma.h   |  30 +++
+ include/hw/ssi/aspeed_smc.h     |  10 +
+ include/hw/timer/aspeed_rtc.h   |  31 +++
+ include/hw/timer/aspeed_timer.h |   1 +
+ hw/arm/aspeed.c                 |  78 +++++++-
+ hw/arm/aspeed_soc.c             | 268 +++++++++++++++++++-------
+ hw/intc/aspeed_vic.c            | 105 ++++++----
+ hw/misc/aspeed_scu.c            |   6 +
+ hw/misc/aspeed_xdma.c           | 165 ++++++++++++++++
+ hw/ssi/aspeed_smc.c             | 330 +++++++++++++++++++++++++++++++-
+ hw/timer/aspeed_rtc.c           | 180 +++++++++++++++++
+ hw/timer/aspeed_timer.c         |  84 +++++---
+ hw/misc/Makefile.objs           |   1 +
+ hw/misc/trace-events            |   3 +
+ hw/timer/Makefile.objs          |   2 +-
+ hw/timer/trace-events           |   4 +
+ 17 files changed, 1188 insertions(+), 163 deletions(-)
+ create mode 100644 include/hw/misc/aspeed_xdma.h
+ create mode 100644 include/hw/timer/aspeed_rtc.h
+ create mode 100644 hw/misc/aspeed_xdma.c
+ create mode 100644 hw/timer/aspeed_rtc.c
+
 --=20
 2.21.0
 

@@ -1,469 +1,141 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1875741wrg;
-        Thu, 20 Jun 2019 05:45:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQltG//BTwWlGr09W+zSmUN53BfQjOPLEuLXEWTiZUfeicSZfRxZ7idazbdIm6fy5YZGHx
-X-Received: by 2002:a05:6402:1507:: with SMTP id f7mr78288116edw.94.1561034751392;
-        Thu, 20 Jun 2019 05:45:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561034751; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1881716wrg;
+        Thu, 20 Jun 2019 05:53:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyq0XPTQQHj9u7F8JAiPMg3YRbTA2oBAPUN8Z4OTfT2aqKzasqkxt2jCdkv0rYxCv33f/9J
+X-Received: by 2002:a05:6402:1557:: with SMTP id p23mr62649496edx.207.1561035189767;
+        Thu, 20 Jun 2019 05:53:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561035189; cv=none;
         d=google.com; s=arc-20160816;
-        b=E2Msxg7fT/38bJ8PjSeYyrShbMg/RDtje7GEU7Wf+qofTICr4HuDHo7Je3XtUYDVYB
-         6aSy/ZZCm+j3ZzMMfXXPqQCZ7iFlLdmTw0xeE8DvdjpEvDs/f7abkk6Zg4jeKD7vgG65
-         YNG/gF8MqXkRLsJ6DJFUE5C1/uwZ520wcrY0SdDCWo58UlFadQg6Ils9mXt213T1v3rB
-         w4OflYO4/ckHbDXPv21ctz7XvKdiK7948LAFbhAyxlpVTD2OeNauzZsnBeU1h8cJNtyR
-         31MVOGwflfCZmG1pCf3ShC3CX2LWmku4NdAaf7LzM3DIrZ3qc+ei4kGdrIdJXe7Sn58/
-         DPtQ==
+        b=MJnOGUNfDxWqdhm4CYAMYdV421eiLXnYckI0y+o8o3WDo05JGdEuAwSAXP4R1gMKwf
+         Ywgnhacv7WDPEYIq4hCz1gmab1kqZS2BEXNA6CoasP/9BcKAPKLQtsS1EQb1kwbMCT9Q
+         IIzID1kk2qlISffhQKz9dvY6x6sTsd/1J2dVw408+11PKui+d2o2iklFR9aepBBfgKqO
+         EZ8bwnhr4zS1dkxn7Q+7/8fa4momKqsopUJk/CBUQbSjL7FoZfXv3ZOq5k5ofE0zTOQZ
+         5z6YkkDOcZlkgkLpiCUjJxuRUsFcIN5xOU10FNqE9MvSiizAsJBEbGCjXJKs31qVZzSs
+         LsKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=ubJguC87XLrPSCiQ+4cHiewEGMQNFhaev4u1Lbp9jQ8=;
-        b=1BOS0zABfBw9rK03rHLqh6C4aiEmQs3VWsypjnQcFjawiE6ZrNUhQZn/r+MZxbgeqg
-         CBme6iZYl3j2DcV1W5lECN1gykiT1fAy/XZAegIoeTmVwM741c7P1F+LchGJRdOjsWre
-         keyDW3cuHwe9Vee57GDc6rJk8EzlnUYMbvtU/brVtd5M8LALfaXuhbSqAlQAK8zf2Elo
-         Az9KP7kvfiXRw2DMmWqMEAue23bDS29GjrXYBOJ5lgC5AUb8TSJeeIWFfFDQGIwa9eJa
-         +xjeU0Qk27/OgATr4OB526/wLoYUR/KurJCTVo3ViTy5EzmQQyrKhpWFmA0Sw2lU0XeR
-         f1ow==
+         :message-id:to:from:date;
+        bh=K4fuRt7CYVuEwZo3KYab6oIA5R9IrOGSup+G14fUTxE=;
+        b=R4+zjw1hm8J4nBAeIFGu6W4Pj9rJFij2wlwDqsHWyGVF1hQ66feNb39rvEx+tu6ejk
+         JmgxIyBHzfMj4UGu1liNe6nrmO1DrBa5BSQhq27qLL0ZTPOUyYv1VB3Thtk3aXarw2Oo
+         xblsLhPK9xmiZT0C2T14zz2Scc1lM18ppOa7lK8RkQyvlQ2TYgzAa9XGjMvOnsUYqjew
+         SR1/puNTEairWn606DdCJA40Ig1nAJlKb/rJx8ctHFA1AlK2GN4csdzdMEXD1vd9Zgae
+         SfV4KjfEgBzQifS5DPIA6amXtwnK4c7QDseB0BD/XmgKfUo1hhhm+8GAlOULKAvoreRm
+         CKSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si12488282ejk.99.2019.06.20.05.45.51
+        by mx.google.com with ESMTPS id w54si16011856edd.427.2019.06.20.05.53.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2019 05:45:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2019 05:53:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47412 helo=lists.gnu.org)
+Received: from localhost ([::1]:47450 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdwRq-00058W-Cl
-	for alex.bennee@linaro.org; Thu, 20 Jun 2019 08:45:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34870)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hdwYs-0000hq-GV
+	for alex.bennee@linaro.org; Thu, 20 Jun 2019 08:53:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40455)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hdw4m-0004Bz-SN
- for qemu-arm@nongnu.org; Thu, 20 Jun 2019 08:22:05 -0400
+ (envelope-from <imammedo@redhat.com>) id 1hdwYM-0000TH-Fl
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2019 08:52:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hdw4f-0007FO-4s
- for qemu-arm@nongnu.org; Thu, 20 Jun 2019 08:21:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45282)
+ (envelope-from <imammedo@redhat.com>) id 1hdwS5-0000iz-E4
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2019 08:46:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45438)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hdw4d-00076e-9U; Thu, 20 Jun 2019 08:21:52 -0400
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1hdwS4-0000hu-4b; Thu, 20 Jun 2019 08:46:04 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E382A44BCD;
- Thu, 20 Jun 2019 12:21:44 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-106.brq.redhat.com [10.40.204.106])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 644FB5D9C6;
- Thu, 20 Jun 2019 12:21:42 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	Laszlo Ersek <lersek@redhat.com>
-Date: Thu, 20 Jun 2019 14:21:30 +0200
-Message-Id: <20190620122132.10075-2-philmd@redhat.com>
-In-Reply-To: <20190620122132.10075-1-philmd@redhat.com>
-References: <20190620122132.10075-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 373463079B8F;
+ Thu, 20 Jun 2019 12:45:58 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8E2F65D9C6;
+ Thu, 20 Jun 2019 12:45:51 +0000 (UTC)
+Date: Thu, 20 Jun 2019 14:45:50 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190620144550.7cbb23ed@redhat.com>
+In-Reply-To: <20190522162252.28568-3-shameerali.kolothum.thodi@huawei.com>
+References: <20190522162252.28568-1-shameerali.kolothum.thodi@huawei.com>
+ <20190522162252.28568-3-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Thu, 20 Jun 2019 12:21:44 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.41]); Thu, 20 Jun 2019 12:45:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 1/3] hw/firmware: Add Edk2Crypto and
- edk2_add_host_crypto_policy()
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v5 2/8] hw/acpi: Do not create memory
+ hotplug method when handler is not defined
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YZtfatG41Udv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
+ linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ sebastien.boeuf@intel.com, lersek@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e+mReLFfjPWK
 
-The Edk2Crypto object is used to hold configuration values specific
-to EDK2.
+On Wed, 22 May 2019 17:22:46 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-The edk2_add_host_crypto_policy() function loads crypto policies
-from the host, and register them as fw_cfg named file items.
-So far only the 'https' policy is supported.
+> From: Samuel Ortiz <sameo@linux.intel.com>
+> 
+> With Hardware-reduced ACPI, the GED device will manage ACPI
+> hotplug entirely. As a consequence, make the memory specific
+> events AML generation optional. The code will only be added
+> when the method name is not NULL.
+> 
+> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-Usage example:
-
-- via the command line:
-
-  $ qemu-system-x86_64 \
-      --object edk2_crypto,id=3Dhttps,\
-              ciphers=3D/etc/crypto-policies/back-ends/openssl.config,\
-              cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
-
-- via QMP:
-
-  {
-    "execute": "object-add",
-    "arguments": {
-      "qom-type": "edk2_crypto",
-      "id": "https",
-      "props": {
-        "ciphers": "/etc/crypto-policies/back-ends/openssl.config",
-        "cacerts": "/etc/pki/ca-trust/extracted/edk2/cacerts.bin"
-      }
-    }
-  }
-
-(On Fedora these files are provided by the ca-certificates and
-crypto-policies packages).
-
-[*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
-
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v3:
-- inverted the if() logic
-- '-object' -> '--object' in commit description (Eric)
-- reworded the 'TODO: g_free' comment
-v4:
-- do not return pointer to alloc'd data (Markus)
-- INTERFACE_CHECK -> OBJECT_CLASS_CHECK (Markus)
-- path -> filename (Laszlo)
-- dropped the 'TODO: g_free' comment (Markus)
-v5:
-- only allow 1 singleton using the UserCreatableClass::complete
-  callback (Markus, Laszlo)
-- object own fw_cfg 'file' content, no need for
-  fw_cfg_add_file_from_host() (Laszlo)
-- g_file_get_contents() called when object is instantiated
-  and report error, the machine 'done' notifier do not have
-  to manage errors (do not fail).
-- add QMP example
--
-- do not add docs/interop/firmware.json to MAINTAINERS
----
- MAINTAINERS                             |   2 +
- hw/Makefile.objs                        |   1 +
- hw/firmware/Makefile.objs               |   1 +
- hw/firmware/uefi_edk2_crypto_policies.c | 209 ++++++++++++++++++++++++
- include/hw/firmware/uefi_edk2.h         |  30 ++++
- 5 files changed, 243 insertions(+)
- create mode 100644 hw/firmware/Makefile.objs
- create mode 100644 hw/firmware/uefi_edk2_crypto_policies.c
- create mode 100644 include/hw/firmware/uefi_edk2.h
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d32c5c2313..28de489134 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2262,6 +2262,8 @@ EDK2 Firmware
- M: Laszlo Ersek <lersek@redhat.com>
- M: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
- S: Supported
-+F: hw/firmware/uefi_edk2_crypto_policies.c
-+F: include/hw/firmware/uefi_edk2.h
- F: pc-bios/descriptors/??-edk2-*.json
- F: pc-bios/edk2-*
- F: roms/Makefile.edk2
-diff --git a/hw/Makefile.objs b/hw/Makefile.objs
-index d770926ba9..c13b6ee0dd 100644
---- a/hw/Makefile.objs
-+++ b/hw/Makefile.objs
-@@ -8,6 +8,7 @@ devices-dirs-$(CONFIG_SOFTMMU) +=3D char/
- devices-dirs-$(CONFIG_SOFTMMU) +=3D cpu/
- devices-dirs-$(CONFIG_SOFTMMU) +=3D display/
- devices-dirs-$(CONFIG_SOFTMMU) +=3D dma/
-+devices-dirs-$(CONFIG_SOFTMMU) +=3D firmware/
- devices-dirs-$(CONFIG_SOFTMMU) +=3D gpio/
- devices-dirs-$(CONFIG_HYPERV) +=3D hyperv/
- devices-dirs-$(CONFIG_I2C) +=3D i2c/
-diff --git a/hw/firmware/Makefile.objs b/hw/firmware/Makefile.objs
-new file mode 100644
-index 0000000000..ea1f6d44df
---- /dev/null
-+++ b/hw/firmware/Makefile.objs
-@@ -0,0 +1 @@
-+common-obj-y +=3D uefi_edk2_crypto_policies.o
-diff --git a/hw/firmware/uefi_edk2_crypto_policies.c b/hw/firmware/uefi_e=
-dk2_crypto_policies.c
-new file mode 100644
-index 0000000000..a0164272ea
---- /dev/null
-+++ b/hw/firmware/uefi_edk2_crypto_policies.c
-@@ -0,0 +1,209 @@
-+/*
-+ * UEFI EDK2 Support
-+ *
-+ * Copyright (c) 2019 Red Hat Inc.
-+ *
-+ * Author:
-+ *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qom/object_interfaces.h"
-+#include "hw/firmware/uefi_edk2.h"
-+
-+
-+#define TYPE_EDK2_CRYPTO "edk2_crypto"
-+
-+#define EDK2_CRYPTO_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(Edk2CryptoClass, (klass), \
-+                        TYPE_EDK2_CRYPTO)
-+#define EDK2_CRYPTO_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(Edk2CryptoClass, (obj), \
-+                      TYPE_EDK2_CRYPTO)
-+#define EDK2_CRYPTO(obj) \
-+     OBJECT_CHECK(Edk2Crypto, (obj), \
-+                  TYPE_EDK2_CRYPTO)
-+
-+typedef struct FWCfgHostContent {
-+    /*
-+     * Path to the acceptable ciphersuites and the preferred order from
-+     * the host-side crypto policy.
-+     */
-+    char *filename;
-+    /*
-+     * Add a new NAMED fw_cfg item as a raw "blob" of the given size. Th=
-e data
-+     * referenced by the starting pointer is only linked, NOT copied, in=
-to the
-+     * data structure of the fw_cfg device.
-+     */
-+    char *contents;
-+
-+    size_t contents_length;
-+} FWCfgHostContent;
-+
-+typedef struct Edk2Crypto {
-+    Object parent_obj;
-+
-+    /*
-+     * Path to the acceptable ciphersuites and the preferred order from
-+     * the host-side crypto policy.
-+     */
-+    FWCfgHostContent ciphers;
-+    /* Path to the trusted CA certificates configured on the host side. =
-*/
-+    FWCfgHostContent cacerts;
-+} Edk2Crypto;
-+
-+typedef struct Edk2CryptoClass {
-+    ObjectClass parent_class;
-+} Edk2CryptoClass;
-+
-+static Edk2Crypto *edk2_crypto_by_policy_id(const char *policy_id, Error=
- **errp)
-+{
-+    Object *obj;
-+
-+    obj =3D object_resolve_path_component(object_get_objects_root(), pol=
-icy_id);
-+    if (!obj) {
-+        error_setg(errp, "Cannot find EDK2 crypto policy ID %s", policy_=
-id);
-+        return NULL;
-+    }
-+
-+    if (!object_dynamic_cast(obj, TYPE_EDK2_CRYPTO)) {
-+        error_setg(errp, "Object '%s' is not a EDK2 crypto subclass",
-+                         policy_id);
-+        return NULL;
-+    }
-+
-+    return EDK2_CRYPTO(obj);
-+}
-+
-+static void edk2_crypto_prop_set_ciphers(Object *obj, const char *value,
-+                                         Error **errp G_GNUC_UNUSED)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-+
-+    g_free(s->ciphers.filename);
-+    s->ciphers.filename =3D g_strdup(value);
-+}
-+
-+static char *edk2_crypto_prop_get_ciphers(Object *obj,
-+                                          Error **errp G_GNUC_UNUSED)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-+
-+    return g_strdup(s->ciphers.filename);
-+}
-+
-+static void edk2_crypto_prop_set_cacerts(Object *obj, const char *value,
-+                                         Error **errp G_GNUC_UNUSED)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-+
-+    g_free(s->cacerts.filename);
-+    s->cacerts.filename =3D g_strdup(value);
-+}
-+
-+static char *edk2_crypto_prop_get_cacerts(Object *obj,
-+                                          Error **errp G_GNUC_UNUSED)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-+
-+    return g_strdup(s->cacerts.filename);
-+}
-+
-+static void edk2_crypto_complete(UserCreatable *uc, Error **errp)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(uc);
-+    Error *local_err =3D NULL;
-+    GError *gerr =3D NULL;
-+
-+    if (s->ciphers.filename) {
-+        if (!g_file_get_contents(s->ciphers.filename, &s->ciphers.conten=
-ts,
-+                                 &s->ciphers.contents_length, &gerr)) {
-+            goto report_error;
-+        }
-+    }
-+    if (s->cacerts.filename) {
-+        if (!g_file_get_contents(s->cacerts.filename, &s->cacerts.conten=
-ts,
-+                                 &s->cacerts.contents_length, &gerr)) {
-+            goto report_error;
-+        }
-+    }
-+    return;
-+
-+ report_error:
-+    error_setg(&local_err, "%s", gerr->message);
-+    g_error_free(gerr);
-+    error_propagate_prepend(errp, local_err, "EDK2 crypto policy: ");
-+}
-+
-+static void edk2_crypto_finalize(Object *obj)
-+{
-+    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-+
-+    g_free(s->ciphers.filename);
-+    g_free(s->ciphers.contents);
-+    g_free(s->cacerts.filename);
-+    g_free(s->cacerts.contents);
-+}
-+
-+static void edk2_crypto_class_init(ObjectClass *oc, void *data)
-+{
-+    UserCreatableClass *ucc =3D USER_CREATABLE_CLASS(oc);
-+
-+    ucc->complete =3D edk2_crypto_complete;
-+
-+    object_class_property_add_str(oc, "ciphers",
-+                                  edk2_crypto_prop_get_ciphers,
-+                                  edk2_crypto_prop_set_ciphers,
-+                                  NULL);
-+    object_class_property_add_str(oc, "cacerts",
-+                                  edk2_crypto_prop_get_cacerts,
-+                                  edk2_crypto_prop_set_cacerts,
-+                                  NULL);
-+}
-+
-+static const TypeInfo edk2_crypto_info =3D {
-+    .parent =3D TYPE_OBJECT,
-+    .name =3D TYPE_EDK2_CRYPTO,
-+    .instance_size =3D sizeof(Edk2Crypto),
-+    .instance_finalize =3D edk2_crypto_finalize,
-+    .class_size =3D sizeof(Edk2CryptoClass),
-+    .class_init =3D edk2_crypto_class_init,
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { TYPE_USER_CREATABLE },
-+        { }
-+    }
-+};
-+
-+static void edk2_crypto_register_types(void)
-+{
-+    type_register_static(&edk2_crypto_info);
-+}
-+
-+type_init(edk2_crypto_register_types);
-+
-+static void edk2_add_host_crypto_policy_https(FWCfgState *fw_cfg)
-+{
-+    Edk2Crypto *s;
-+
-+    s =3D edk2_crypto_by_policy_id("https", NULL);
-+    if (!s) {
-+        return;
-+    }
-+    if (s->ciphers.contents_length) {
-+        fw_cfg_add_file(fw_cfg, "etc/edk2/https/ciphers",
-+                        s->ciphers.contents, s->ciphers.contents_length)=
-;
-+    }
-+    if (s->cacerts.contents_length) {
-+        fw_cfg_add_file(fw_cfg, "etc/edk2/https/cacerts",
-+                        s->cacerts.contents, s->cacerts.contents_length)=
-;
-+    }
-+}
-+
-+void edk2_add_host_crypto_policy(FWCfgState *fw_cfg)
-+{
-+    edk2_add_host_crypto_policy_https(fw_cfg);
-+}
-diff --git a/include/hw/firmware/uefi_edk2.h b/include/hw/firmware/uefi_e=
-dk2.h
-new file mode 100644
-index 0000000000..f8f81c5cb2
---- /dev/null
-+++ b/include/hw/firmware/uefi_edk2.h
-@@ -0,0 +1,30 @@
-+/*
-+ * UEFI EDK2 Support
-+ *
-+ * Copyright (c) 2019 Red Hat Inc.
-+ *
-+ * Author:
-+ *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_FIRMWARE_UEFI_EDK2_H
-+#define HW_FIRMWARE_UEFI_EDK2_H
-+
-+#include "hw/nvram/fw_cfg.h"
-+
-+/**
-+ * edk2_add_host_crypto_policy:
-+ * @fw_cfg: fw_cfg device being modified
-+ *
-+ * Add a new named file containing the host crypto policy.
-+ *
-+ * This method is called by the machine_done() Notifier of
-+ * some implementations of MachineState, currently the X86
-+ * PCMachineState and the ARM VirtMachineState.
-+ */
-+void edk2_add_host_crypto_policy(FWCfgState *fw_cfg);
-+
-+#endif /* HW_FIRMWARE_UEFI_EDK2_H */
---=20
-2.20.1
+> ---
+>  hw/acpi/memory_hotplug.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+> index c724f5f1e4..7e30e6f886 100644
+> --- a/hw/acpi/memory_hotplug.c
+> +++ b/hw/acpi/memory_hotplug.c
+> @@ -719,10 +719,12 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>      }
+>      aml_append(table, dev_container);
+>  
+> -    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
+> -    aml_append(method,
+> -        aml_call0(MEMORY_DEVICES_CONTAINER "." MEMORY_SLOT_SCAN_METHOD));
+> -    aml_append(table, method);
+> +    if (event_handler_method) {
+> +        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
+> +        aml_append(method, aml_call0(MEMORY_DEVICES_CONTAINER "."
+> +                                     MEMORY_SLOT_SCAN_METHOD));
+> +        aml_append(table, method);
+> +    }
+>  
+>      g_free(mhp_res_path);
+>  }
 

@@ -1,147 +1,162 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1859611wrg;
-        Thu, 20 Jun 2019 05:27:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQtTTo7txCnTaEoa+KxoZGghMRKwpyiDDhpB25tYfyIj15BuQXCG0vCetM+BNzY2+yeXss
-X-Received: by 2002:a17:906:76c8:: with SMTP id q8mr106764851ejn.229.1561033656711;
-        Thu, 20 Jun 2019 05:27:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561033656; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1843614wrg;
+        Thu, 20 Jun 2019 05:11:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNyC+ziXNDQ4oAdGEsu9wTzzYaJJjAGjxXMPZIZXkL/+qX/Ot1HMW2+26OwtBE0OCFxmD+
+X-Received: by 2002:a17:902:740b:: with SMTP id g11mr13358508pll.265.1561032663586;
+        Thu, 20 Jun 2019 05:11:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561032663; cv=none;
         d=google.com; s=arc-20160816;
-        b=JdSIYEyBTXHae8nE+BG1kX6IQbEbq3rA9StOlfVNj9O3oyxE5l2DGGWPRuIbzn7mYL
-         tL5sgdXLJJHofQ9PYLM/QGRitAwnL9mdciOrvCL2jp1+8kXN5Y0A/3EebtzB3kJPJkN9
-         CfsMKhEhg4qO2BfmzgE9f6SRNbT3VTKSZ2Ds/u5MEm4yZsdTE5+/Xam6G0408AWV4P3K
-         ttThu8nFBWFWaEHAY+Z4qZGmVP/NlF9NFdd1uqEY6NELETup6uvbqgYLyrD57Efq7NoA
-         vkmeH7H1Aya0y6mS5wUEvHW5M+ynbJAMAwgOAgeGW1O06KtQTPPEI0oZPr0uzCZ98uOO
-         CVSw==
+        b=0wo3Uxwl/ZRzYYCZ3AiLel5eYfMsQPSjHh3IcwjTIhWqgU8NAXfSH3zyIOqJeQwvj2
+         Z5IN3rFA1cXE1iWzIQCtbFpGYFIXnLYLHMbLqk5oFwqCVan7xpRt0pLjjTCCKuA3mZD0
+         rXTU+RLa4pM570VcM91usRRc3WkHE2fmkh3s5sBTBKe7sGP960okiVAmSb507egudVMc
+         KfJxbUX7zTo3nWdYWA7YMej3OPhJJ0oV6/v6yilb1Y5fftJYJEYwoX5QNbXxPgdXQV+H
+         XvIk7FLvh0cb3drCOWdkuJ9wu/HTocV5pUDdtg7pJo1odyEW9+H4T36/zcWjJ9BAhwxO
+         5ICQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=3oWvo8U5nSkeq0s+IzozgSZGfNwkPggvXpCQWRNLepY=;
-        b=Ugua6VMGQSqbJqqFFLL+vfG4WJkls1OPmnzt2+qEa2EB7kcopNjfwqtoCCrT25YaQE
-         U7wea8+y0TGa7yOlTw6dPBUMhYdbBH8ZuKWgmGQn4E1ObEKeqvTLSHaY3bZ1kiajPa0l
-         tGQG4VD6BvBDHFcXRdyFUKBvEc51dr5DqKo01/pER7Y+HTZqxmWHc9bRKG9oI6tCUOP8
-         NjOaCGIq//c+w4FFSUicK67OXHqAGDt6kiJDbOQWbCd0N4fqekSmZX+2t1J58eaqNOz8
-         VywWdVWagDl2ll5CaBYTi0tv12+Wb14eEtcjCtdFvvADG5OTnPAZX4gQ9NDaaCBm/eHU
-         Ryfg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date;
+        bh=4RaXVbBEZDVCFp5v/IIdbrYCBq2HwiZxFX9DHq/qh+0=;
+        b=erAS3avV3K+24SEjoupQp8H8LVhBXY1Qj+9vBOEk/qwAvjNQ0epZJVQ+ZBEe3bPkPN
+         udOQEMLndaYMvDnJow6IXuUq+/A1emswaPCnrKwL4hGl6AC2CNYLnAOndoeRnUiMrnQn
+         hh8JFqKP4kgmefN015tQqfRFyJnEpC+oRWZ0NniccrrIEUcP375uSjW3EEOtur302aOx
+         aK6SAW9R+ktUG9AnBn9eiZ9rUjqcaoNjy8tLbQxJdWfnbGfGOC4435zfO8Fz2DvfCK/e
+         S1AqJV0JnYC9GeRJumizQZKwrtf6NyD26KdCFWCI0fMjfToN/8yIyF2nNHrYWbUx/eal
+         tSYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n29si16024494edd.66.2019.06.20.05.27.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2019 05:27:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d1si5745343pgb.24.2019.06.20.05.11.03;
+        Thu, 20 Jun 2019 05:11:03 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47300 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdwAB-0007xe-P7
-	for alex.bennee@linaro.org; Thu, 20 Jun 2019 08:27:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34906)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hdw4r-0004EM-Ki
- for qemu-arm@nongnu.org; Thu, 20 Jun 2019 08:22:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hdw4o-0007Ol-Px
- for qemu-arm@nongnu.org; Thu, 20 Jun 2019 08:22:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48924)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hdw4i-0007AQ-Nm; Thu, 20 Jun 2019 08:21:58 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 551777FDF4;
- Thu, 20 Jun 2019 12:21:48 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-106.brq.redhat.com [10.40.204.106])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 62FB35D9C6;
- Thu, 20 Jun 2019 12:21:45 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	Laszlo Ersek <lersek@redhat.com>
-Date: Thu, 20 Jun 2019 14:21:31 +0200
-Message-Id: <20190620122132.10075-3-philmd@redhat.com>
-In-Reply-To: <20190620122132.10075-1-philmd@redhat.com>
-References: <20190620122132.10075-1-philmd@redhat.com>
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731838AbfFTMLC (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Thu, 20 Jun 2019 08:11:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36896 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726874AbfFTMLC (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Jun 2019 08:11:02 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id B5DAA307D980;
+        Thu, 20 Jun 2019 12:11:01 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 9657E608D0;
+        Thu, 20 Jun 2019 12:10:56 +0000 (UTC)
+Date:   Thu, 20 Jun 2019 14:10:52 +0200
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+Subject: Re: [Qemu-devel] [PATCH v17 02/10] ACPI: add some GHES structures
+ and macros definition
+Message-ID: <20190620141052.370788fb@redhat.com>
+In-Reply-To: <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+        <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Thu, 20 Jun 2019 12:21:48 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 2/3] hw/i386: Use edk2_add_host_crypto_policy()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ee0dH+JPX7nh
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Thu, 20 Jun 2019 12:11:01 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 6t+upMGqdYcG
 
-Enable the EDK2 Crypto Policy features on the PC machine.
+On Tue, 14 May 2019 04:18:15 -0700
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/i386/pc.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+> Add Generic Error Status Block structures and some macros
+> definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
+> HEST table generation and CPER record will use them.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 52 insertions(+)
+> 
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index f9aa4bd..d1996fb 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -224,6 +224,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
+>  #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
+>  
+>  /*
+> + * Values for Hardware Error Notification Type field
+> + */
+> +enum AcpiHestNotifyType {
+> +    ACPI_HEST_NOTIFY_POLLED = 0,
+> +    ACPI_HEST_NOTIFY_EXTERNAL = 1,
+> +    ACPI_HEST_NOTIFY_LOCAL = 2,
+> +    ACPI_HEST_NOTIFY_SCI = 3,
+> +    ACPI_HEST_NOTIFY_NMI = 4,
+> +    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
+> +    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
+> +    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
+> +    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
+> +    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
+> +};
+> +
+> +/*
+>   * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
+>   */
+>  #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
+> @@ -400,6 +419,39 @@ struct AcpiSystemResourceAffinityTable {
+>  } QEMU_PACKED;
+>  typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
+>  
+> +/*
+> + * Generic Error Status Block
+> + */
+> +struct AcpiGenericErrorStatus {
+> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
+> +    uint32_t block_status;
+> +    uint32_t raw_data_offset;
+> +    uint32_t raw_data_length;
+> +    uint32_t data_length;
+> +    uint32_t error_severity;
+> +} QEMU_PACKED;
+> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 2c5446b095..fe99ebfe3d 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -39,6 +39,7 @@
- #include "hw/nvram/fw_cfg.h"
- #include "hw/timer/hpet.h"
- #include "hw/firmware/smbios.h"
-+#include "hw/firmware/uefi_edk2.h"
- #include "hw/loader.h"
- #include "elf.h"
- #include "multiboot.h"
-@@ -1049,6 +1050,11 @@ static FWCfgState *bochs_bios_init(AddressSpace *a=
-s, PCMachineState *pcms)
-     return fw_cfg;
- }
-=20
-+static void pc_uefi_setup(PCMachineState *pcms)
-+{
-+    edk2_add_host_crypto_policy(pcms->fw_cfg);
-+}
-+
- static long get_file_size(FILE *f)
- {
-     long where, size;
-@@ -1653,6 +1659,7 @@ void pc_machine_done(Notifier *notifier, void *data=
-)
-     if (pcms->fw_cfg) {
-         pc_build_smbios(pcms);
-         pc_build_feature_control_file(pcms);
-+        pc_uefi_setup(pcms);
-         /* update FW_CFG_NB_CPUS to account for -device added CPUs */
-         fw_cfg_modify_i16(pcms->fw_cfg, FW_CFG_NB_CPUS, pcms->boot_cpus)=
-;
-     }
---=20
-2.20.1
+there shouldn't be packed structures,
+is it a leftover from previous version?
 
+> +
+> +/*
+> + * Masks for block_status flags above
+> + */
+> +#define ACPI_GEBS_UNCORRECTABLE         1
+> +
+> +/*
+> + * Values for error_severity field above
+> + */
+> +enum AcpiGenericErrorSeverity {
+> +    ACPI_CPER_SEV_RECOVERABLE,
+> +    ACPI_CPER_SEV_FATAL,
+> +    ACPI_CPER_SEV_CORRECTED,
+> +    ACPI_CPER_SEV_NONE,
+> +};
+> +
+> +/*
+> + * Generic Hardware Error Source version 2
+> + */
+> +#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
+> +
+>  #define ACPI_SRAT_PROCESSOR_APIC     0
+>  #define ACPI_SRAT_MEMORY             1
+>  #define ACPI_SRAT_PROCESSOR_x2APIC   2

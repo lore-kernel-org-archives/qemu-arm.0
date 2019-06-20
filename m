@@ -1,149 +1,149 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1871506wrg;
-        Thu, 20 Jun 2019 05:40:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwlNT3ezT3VB0/0G31NnWc5EqCICUMfP+ZC4R0skemHZKLBIhb1JhdwwkZzILZ1gk+ldquo
-X-Received: by 2002:a50:9871:: with SMTP id h46mr120430042edb.69.1561034455739;
-        Thu, 20 Jun 2019 05:40:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561034455; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1873515wrg;
+        Thu, 20 Jun 2019 05:43:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxaLq5915Vk3G85f8FRcI0AV5xnwCIx1Z7t8Gu77GuCupyF33qt1Z8GYeNFz+uwKzyHDziH
+X-Received: by 2002:a62:5252:: with SMTP id g79mr92604318pfb.18.1561034590387;
+        Thu, 20 Jun 2019 05:43:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561034590; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZE3SZGOH5nhIL6ixBCi0yEQ5i1NYPJaZPb1LvIyXiCeuuS9ZOl3Lu8KwVVaRqQm9H3
-         lTZsSqLh8YxNwjrDlKjfwhFtBT5wLefzMiUrP/JUFLYMHFvNbckK31nLLtZKd4JHbk95
-         T80iC6BUKTZvS71gv/Sjo8qzXWRZ4OLwEoezh0UYNgfvHQZx+t1Pv64mtfzpGOMqbWC/
-         eORCUk8Chtmxb8YnGLs8iuIzskLeZ3hdiNY6h9mFfySj5pEiy9/rT801taoxnYaTmiqf
-         Nco8T51R/mC3weZgiIdqqJ5HuoWHidwduuvlMpl5xAnCasFRa6hcZUDcSLyWuX1Ah51p
-         Trrg==
+        b=V7Mq0wmyoEaEnWxV4uDTivqbPlMNP31kWH9njaDAW8dLlsKRIm1d3b1KJ55bLKw1b7
+         S6wrTD7XdPX32CM+EZ+9gmlKfg+bPnZPqBxVBCJ51vv9+j24gv7daVt+uLyOhnPmxZut
+         U11MnKlXigDkVuV2dOU0mSjmZ/XO4/PhQg+mM2XSGSI5JvZ3H79EG/WuM2q89f14tK34
+         IIvrWFqYleLf8Z0A+ekBYN9k7CGgHu59jNq+Dg/LFZi0dYPazmbdI6/m+XhVlueeHryt
+         HanC0cQw3WHAJqK6BPeIFXYS94n0ZwLC/zfGqLli/4WxNAqD8jgZVO704KgvHnl77iZp
+         Ejyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=mgGsWZ7RpLieNPl1OdcvTd7XUUPmgnrTmm2SW/IfNVU=;
-        b=NbwLo4hQjCGnXwFhxjwrSDFq2Tke/LAr7GVSwm4UHaKgriQD5yrD0MIkQq8cYPgBqj
-         FSG9dkjeQxpRXXR+Eok+CXaMOVEV4aCKm290ttc7Se1ZYqgEKrunvvIBpZ3BCWRYcnNs
-         75Hu+mHkLYnh/5Ho1lwa4ru6D7mxrakiHl7YiBB48Mg0jQ6Kev34i97rz0fu2y3EIdz+
-         smOaPSKe4wOWmtJQSkEmqVb/hI8ib7KBE5v70u1PaPnMzwYiHMq+VIxSHiN9INdpOObl
-         jsxLfX9NEJSkl67BIoYOkLTRlqodqzRUgS2aZWVbaeFjExFQ2MHbFdPZ/aX1qii9zxuZ
-         PXPg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date;
+        bh=Y9H7morZVRT9JYQIfm61beaY7If1iGUcvvpYqya1SLs=;
+        b=tWjTMHB8IePrQAsb5wTsXf8HV3wXlq/3n700UtgnXAbvFtt1xQ16h42etxThYoe8nj
+         tZuass+MUFT7TG9Xg77HmliB54SxF/uca1ggkeGjV2SIW6Wgmu4yrkfr+44bCcyCJeFX
+         ZWmShUoU31571QMQZ6ogOwFdCjNy8q/9mD29lDR4BsQjoVGLgpC35gpTZZGY55zwq5La
+         +LvZxVQDpWjdGG9zkzuRkNB9LI4ihGWDIgKSYeMSxpxddoELimC3s8GxRhTkAtEPdi2V
+         NzX+1sCu9C81xk4Yq0giVrypa+aMosHaYT5PiXPUjWaOiwCRwdm3IuABr0sySbYtLm4f
+         RCug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2si15674064edd.21.2019.06.20.05.40.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2019 05:40:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id j5si4101082pjn.1.2019.06.20.05.43.10;
+        Thu, 20 Jun 2019 05:43:10 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47376 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hdwN4-0000Zv-Ps
-	for alex.bennee@linaro.org; Thu, 20 Jun 2019 08:40:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35542)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hdw70-0006KH-FM
- for qemu-devel@nongnu.org; Thu, 20 Jun 2019 08:24:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hdw6x-0001QE-IS
- for qemu-devel@nongnu.org; Thu, 20 Jun 2019 08:24:17 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:42727)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hdw6x-0001Lg-Aa
- for qemu-devel@nongnu.org; Thu, 20 Jun 2019 08:24:15 -0400
-Received: by mail-wr1-f68.google.com with SMTP id x17so2796213wrl.9
- for <qemu-devel@nongnu.org>; Thu, 20 Jun 2019 05:24:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mgGsWZ7RpLieNPl1OdcvTd7XUUPmgnrTmm2SW/IfNVU=;
- b=hmHyuXFdxAEZl6Pr7ZT00vfm13kvtzcl6YzZzcWbdsaJjA2K2ExC1biGr9TJWEsnBZ
- UrI2HRDJ0CegaLFsiNyE6GoC6sHjM/TLQ/v7FOMMt9Jgd0NxfFu+LAiLZ1vEehH0J5qM
- Qi1f69N9RRt80rGbuFfY+3ysPmgmWJ2ynNihKs5v3PvN97YAdQR6ORGp3YdoYb+2CkGY
- IHdTgB2/qomv5GyaD/L7ghuJhHiNoKyAzEIU/0odarTbSMcK265IsM/NGky/1eGj3RMh
- vsj09BgIlXTbtECqBSKR8o0G6s05VVSDPJ6+iAM0ft1uJNYUZi5GA8Wpmnh2RP9x6gKu
- DVQg==
-X-Gm-Message-State: APjAAAV9wMaGGgi8NcL8yQFQel/MNGNzhSmM2fzFtQi49yD7heKcATjP
- Zw+sASb5alM+kl4A7XrICSDVTQ==
-X-Received: by 2002:a05:6000:112:: with SMTP id
- o18mr4521498wrx.153.1561033450967; 
- Thu, 20 Jun 2019 05:24:10 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id z5sm21126219wrh.16.2019.06.20.05.24.10
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 20 Jun 2019 05:24:10 -0700 (PDT)
-To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
-References: <20190620121930.9729-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <fcffb9f5-3723-2f4f-3898-9f5584d3696a@redhat.com>
-Date: Thu, 20 Jun 2019 14:24:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731831AbfFTMnJ (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Thu, 20 Jun 2019 08:43:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48462 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726874AbfFTMnI (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 20 Jun 2019 08:43:08 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 87215307D866;
+        Thu, 20 Jun 2019 12:43:07 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 470F95C205;
+        Thu, 20 Jun 2019 12:43:02 +0000 (UTC)
+Date:   Thu, 20 Jun 2019 14:42:57 +0200
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+Subject: Re: [PATCH v17 05/10] acpi: add build_append_ghes_generic_status()
+ helper for Generic Error Status Block
+Message-ID: <20190620144257.7400b0a7@redhat.com>
+In-Reply-To: <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+        <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190620121930.9729-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-devel] [PATCH v5 0/3] fw_cfg: Add
- edk2_add_host_crypto_policy()
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0aDKird03Jf8
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Thu, 20 Jun 2019 12:43:07 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: c+AqDUf7Yqjn
 
-On 6/20/19 2:19 PM, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> This series add edk2_add_host_crypto_policy() and the Edk2Crypto object.
-> 
-> The Edk2Crypto object is used to hold configuration values specific
-> to EDK2.
-> 
-> So far only the 'https' policy is supported.
-> 
-> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
-> 
-> Usage example:
-> 
-> $ qemu-system-x86_64 \
->     --object edk2_crypto,id=https,\
->         ciphers=/etc/crypto-policies/back-ends/openssl.config,\
->         cacerts=/etc/pki/ca-trust/extracted/edk2/cacerts.bin
-> 
-> (On Fedora these files are provided by the ca-certificates and
-> crypto-policies packages).
-> 
-> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
-> 
-> Since v4:
-> - Addressed Laszlo comments (see patch#1 description)
-> Since v3:
-> - Addressed Markus' comments (do not care about heap)
-> Since v2:
-> - Split of
-> Since v1:
-> - Addressed Michael and Laszlo comments.
+On Tue, 14 May 2019 04:18:18 -0700
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 
-Please discard this cover, series sent again with patches properly attached.
+> It will help to add Generic Error Status Block to ACPI tables
+> without using packed C structures and avoid endianness
+> issues as API doesn't need explicit conversion.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  hw/acpi/aml-build.c         | 14 ++++++++++++++
+>  include/hw/acpi/aml-build.h |  6 ++++++
+>  2 files changed, 20 insertions(+)
+> 
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 102a288..ce90970 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
+>          build_append_int_noprefix(table, error_threshold_window, 4);
+>  }
+>  
+> +/* Generic Error Status Block
+> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+> + */
+> +void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
+maybe ..._generic_error_status???
+
+> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
+> +                      uint32_t data_length, uint32_t error_severity)
+see CODING_STYLE, 1.1 Multiline Indent
+
+> +{
+when describing filds from spec try to add 'verbatim' copy of the name from spec
+so it would be esy to grep for it. Like:
+       /* Block Status */
+> +    build_append_int_noprefix(table, block_status, 4);
+       /* Raw Data Offset */
+
+note applies all other places where you compose ACPI tables
+
+> +    build_append_int_noprefix(table, raw_data_offset, 4);
+> +    build_append_int_noprefix(table, raw_data_length, 4);
+> +    build_append_int_noprefix(table, data_length, 4);
+> +    build_append_int_noprefix(table, error_severity, 4);
+> +}
+> +
+>  /* Generic Error Data Entry
+>   * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+>   */
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index a71db2f..1ec7e1b 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -425,6 +425,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
+>                                      uint32_t error_data_length, uint8_t *fru_id,
+>                                      uint8_t *fru_text, uint64_t time_stamp);
+>  
+> +void
+> +build_append_ghes_generic_status(GArray *table, uint32_t block_status,
+> +                                 uint32_t raw_data_offset,
+> +                                 uint32_t raw_data_length,
+> +                                 uint32_t data_length, uint32_t error_severity);
+this and previous patch, it might be better to to move declaration
+to its own header, for example to include/hw/acpi/acpi_ghes.h
+that you are adding later in the series.
+And maybe move helpers to hw/acpi/acpi_ghes.c
+They are not really independent ACPI primitives that are shared
+with other tables, aren't they?
+.
+> +
+>  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+>                         uint64_t len, int node, MemoryAffinityFlags flags);
+>  

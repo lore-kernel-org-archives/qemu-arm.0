@@ -1,116 +1,186 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2019811wrg;
-        Thu, 20 Jun 2019 08:09:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVS0nKRzFOT0hh7Jx6x2K2Qx0HF0jQdxY7qmICcT4hD2iA11cQLRPQAUG04g2eZqbfzoRs
-X-Received: by 2002:a17:902:8f89:: with SMTP id z9mr26926142plo.4.1561043386055;
-        Thu, 20 Jun 2019 08:09:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561043386; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1954589wrg;
+        Thu, 20 Jun 2019 07:05:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxy7RzqRKUg9lmQzQodWpGg7CDk6XKr7CiBLIv+C7KIJwMiDBVYxg/BQhlfMrzmRfv2cZ8q
+X-Received: by 2002:a17:906:3948:: with SMTP id g8mr80110881eje.168.1561039539259;
+        Thu, 20 Jun 2019 07:05:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561039539; cv=none;
         d=google.com; s=arc-20160816;
-        b=EObAYsyicoeIoDcNT7DhKqNA00/+4j1VBkxv2CszppKr/lxAjIuHQSLBffiqdqYq2P
-         CsHps39D1TcakfhAOrdTBxg0gK356fLjn+bpITaQ9AGsxHvpTgD0lw+h3IpQp2XrpBnt
-         AmiucJneuENd0VGs6yuMO5gM2iy23GH+MMfbnqGXghSlTiG2Jxq3NudQ76CZq2ToBWwG
-         YcwtBHSegy5TuDEL30ztwZJH3cgg01uBZ6m4+3y0EINjNmqwr27/PP/5JpaT1NuWuN0m
-         87qXVQAsGL3QaVX1GegC9hSf2Q3WQCRSdr+nqQ9h7mgorjDncbRh1Ab5sQ0e8BzUejDA
-         DR3w==
+        b=e2zan+ckKOMnepV0Y/nOfwzisWi3JUbb1GLnbJNXE1RMtiC3RAFtD8dRflHN9rW3DG
+         Evf9TL7HeO/JGE74heVkf6k6wTe98HqwYl5NPl2EyxYBRwjqI0HJRkFwGG3YqbpF2BXB
+         rLG47zMlXlZBVZJc8gpmtfyxiVKlYzha3znEZxjtdB6/0Hm31jiPFgwmJN7RPmIgykjA
+         GiFHSHRtPkgacMGQ0VsWdEXAb6fGxCc9bhPMghJNOiuRBZVYQHvsAKeg9Rebw958SyCh
+         /fkAF41pcnrCbeNuFXN851pKO6pauZ9dYsG1c0X7sdguhFcNtHW6Gy6zGQOkzQ68qQnc
+         crJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date;
-        bh=20dM6NL664u4mfcny1QE0oq8BaNNXcBNDdDRhi70o+E=;
-        b=SlVBgVyhgh9//WypE7Ymkeg7yId/sDJN4Y68FamhwbVyVuazmVlni98zamHlmuLq7Z
-         fqLPZx6061/VIMdLB+TirfKZF/AO/G57GEz/4wtgNv46n4x5RJx8tRAFVkZJ9AA0oAO9
-         Rjhp6B+fxeeeK5Uonh8dUjofn4txxbyfsFD9eFysTh9iAze6PkBeyFHQ1waJ+YQALzQH
-         +Ky5WCUjLaNBmBmea68ZvobS/DuNjp06V1pdhpyxXU7IOGRCnwtswdqtFbmOENTrEqGb
-         6fTMv1zBC3dQq0fVqtrOLA+JOC2FBpFZqnGMr/d2SWQnV0z2icCWF1IbW12Gjkt5jFh9
-         RZkQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=nhVe87aMDdw5myT9bafXi1N4z3PHZ8boKUSs+9mzcLo=;
+        b=BZrJOdit2u4BCsGH+Jo5pGRBunXYx4yUMZvslUzK2QObZRRyzXIEwR0IXp1xBKOJ9J
+         /SgTTNwXB0xEUfhwtVo5g3ecEZ6xkrrTcPv+5y6H7eHdnopNLERv7+dUdje4jpRV+/e0
+         hkOpFhSdqHCvtsg4f5h2RR+oqQHh5HhorP77ihicVXPT8kr7eFplnLzk8DYFCbAwHNlN
+         fBQmRnxBA1kKASOzdKYFaDZ/q4LOlEML+Mu+xLEbM6jqBifKx6tD4JFfi2VXehpmaxA5
+         yePfvHx6t1Eipg8bEz7RC2QcBKs8Q1q9BsvPSzB97HC3gfovVBFLPKs/D3fDlUBAVelG
+         Fn8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 28si5681576pgy.252.2019.06.20.08.09.45;
-        Thu, 20 Jun 2019 08:09:46 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n4si12655624ejr.138.2019.06.20.07.05.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Jun 2019 07:05:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1731940AbfFTPJo (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Thu, 20 Jun 2019 11:09:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51114 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1726675AbfFTPJo (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 20 Jun 2019 11:09:44 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 44F243082140;
-        Thu, 20 Jun 2019 15:09:44 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 3279419C5B;
-        Thu, 20 Jun 2019 15:09:39 +0000 (UTC)
-Date:   Thu, 20 Jun 2019 17:09:34 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: Re: [Qemu-devel] [PATCH v17 02/10] ACPI: add some GHES structures
- and macros definition
-Message-ID: <20190620170934.39eae310@redhat.com>
-In-Reply-To: <f4f94ecb-200c-3e18-1a09-5fb6bc761834@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
-        <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
-        <20190620141052.370788fb@redhat.com>
-        <f4f94ecb-200c-3e18-1a09-5fb6bc761834@huawei.com>
+Received: from localhost ([::1]:47978 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hdxh4-0003su-8W
+	for alex.bennee@linaro.org; Thu, 20 Jun 2019 10:05:38 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60561)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hdxgP-0002Xd-0T
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2019 10:05:15 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hdxXI-0008UB-Qe
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2019 09:57:21 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:38514)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hdxXI-0008Tk-IF
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2019 09:55:32 -0400
+Received: by mail-wm1-f68.google.com with SMTP id s15so3274912wmj.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Jun 2019 06:55:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nhVe87aMDdw5myT9bafXi1N4z3PHZ8boKUSs+9mzcLo=;
+ b=K5S1EmG6D3+QdgBQA0UqXmK/KN3mj452gjLVIxOLxK76yijn6o33cc8QUZQwmSUtnx
+ hQqHBVSYBXB8fB2/0QSoGt2Zn5HIMdxzcmaJDVm6P0qaNgRx7nmHlXMdIoYnOaApvaCD
+ 5HHA5wT4YFjsp1SYV6duxKBuHryUQL9v4ROtnEU7KWzOflk973asdB+5o5mNYhp4pI9G
+ /+fdKRvutyHHuUH95jW/REi9yriCCMOhWOd2XRgUpce67hxERLdqx/WHFHuOIMbQc8M2
+ x8A1ra7ReqOGIkjQL4wULsYxoih95ypJYYztXDuHBORUbDxjQk73YT9hWRUFfAhV9vxW
+ ZUXQ==
+X-Gm-Message-State: APjAAAXWa/4Xt1jK0Ld4dN4i0YdoZVHxfRvD8+OgYtzxMDTZBaofF95u
+ hv3d9QafatKbQAxBNqrLmFxqgQ==
+X-Received: by 2002:a1c:2284:: with SMTP id i126mr2883027wmi.145.1561038931530; 
+ Thu, 20 Jun 2019 06:55:31 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id y6sm5597652wmd.16.2019.06.20.06.55.30
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 20 Jun 2019 06:55:30 -0700 (PDT)
+To: qemu-devel@nongnu.org, Laszlo Ersek <lersek@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <20190620122132.10075-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <af0ee25d-50fb-5985-d0fe-a2b7e9a7d8ba@redhat.com>
+Date: Thu, 20 Jun 2019 15:55:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.42]); Thu, 20 Jun 2019 15:09:44 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: jL51wCbvhG+M
+In-Reply-To: <20190620122132.10075-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-arm] [PATCH RESEND v5 0/3] fw_cfg: Add
+ edk2_add_host_crypto_policy()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fdnJ3GCU9q3k
 
-On Thu, 20 Jun 2019 22:04:01 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+Cc'ing Igor (suggested by Laszlo, for his QOM experience on
+UserCreatableClass).
 
-> Hi Igor,
->    Thanks for your review.
+On 6/20/19 2:21 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> On 2019/6/20 20:10, Igor Mammedov wrote:
-> >> + */
-> >> +struct AcpiGenericErrorStatus {
-> >> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
-> >> +    uint32_t block_status;
-> >> +    uint32_t raw_data_offset;
-> >> +    uint32_t raw_data_length;
-> >> +    uint32_t data_length;
-> >> +    uint32_t error_severity;
-> >> +} QEMU_PACKED;
-> >> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;  
-> > there shouldn't be packed structures,
-> > is it a leftover from previous version?  
+> This series add edk2_add_host_crypto_policy() and the Edk2Crypto object.
 > 
-> I remember some people suggest to add QEMU_PACKED before, anyway I will remove it in my next version patch.
-
-Question is why it's  there and where it is used?
-
-BTW:
-series doesn't apply to master anymore.
-Do you have a repo somewhere available for testing?
-
+> The Edk2Crypto object is used to hold configuration values specific
+> to EDK2.
 > 
-> >   
-> >> +
-> >> +/*
-> >> + * Masks for block_status flags above
-> >> + */
-> >> +#define ACPI_GEBS_UNCORRECTABLE         1
-> >> +
-> >> +/*  
+> So far only the 'https' policy is supported.
+> 
+> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+> 
+> Usage example:
+> 
+> $ qemu-system-x86_64 \
+>     --object edk2_crypto,id=https,\
+>         ciphers=/etc/crypto-policies/back-ends/openssl.config,\
+>         cacerts=/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+> 
+> (On Fedora these files are provided by the ca-certificates and
+> crypto-policies packages).
+> 
+> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+> 
+> Since v4:
+> - Addressed Laszlo comments (see patch#1 description)
+> Since v3:
+> - Addressed Markus' comments (do not care about heap)
+> Since v2:
+> - Split of
+> Since v1:
+> - Addressed Michael and Laszlo comments.
+> 
+> Please review,
+> 
+> Phil.
+> 
+> $ git backport-diff -u fw_cfg_edk2_crypto_policies-v3
+> Key:
+> [####] : number of functional differences between upstream/downstream patch
+> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+> 
+> 001/3:[0164] [FC] 'hw/firmware: Add Edk2Crypto and edk2_add_host_crypto_policy()'
+> 002/3:[----] [--] 'hw/i386: Use edk2_add_host_crypto_policy()'
+> 003/3:[----] [--] 'hw/arm/virt: Use edk2_add_host_crypto_policy()'
+> 
+> v4: https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg04300.html
+> v3: https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg02965.html
+> v2: https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg02522.html
+> v1: https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg01598.html
+> 
+> Philippe Mathieu-Daudé (3):
+>   hw/firmware: Add Edk2Crypto and edk2_add_host_crypto_policy()
+>   hw/i386: Use edk2_add_host_crypto_policy()
+>   hw/arm/virt: Use edk2_add_host_crypto_policy()
+> 
+>  MAINTAINERS                             |   2 +
+>  hw/Makefile.objs                        |   1 +
+>  hw/arm/virt.c                           |   7 +
+>  hw/firmware/Makefile.objs               |   1 +
+>  hw/firmware/uefi_edk2_crypto_policies.c | 209 ++++++++++++++++++++++++
+>  hw/i386/pc.c                            |   7 +
+>  include/hw/firmware/uefi_edk2.h         |  30 ++++
+>  7 files changed, 257 insertions(+)
+>  create mode 100644 hw/firmware/Makefile.objs
+>  create mode 100644 hw/firmware/uefi_edk2_crypto_policies.c
+>  create mode 100644 include/hw/firmware/uefi_edk2.h
 > 

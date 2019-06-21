@@ -1,269 +1,281 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp849650wrg;
-        Fri, 21 Jun 2019 09:35:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJsP6lJp94mZ4Tq6hPQvUcUYZUwbMyoPQq5Qery0r3q0oqUbdx6djzDDn2eunKARLstGSH
-X-Received: by 2002:a37:a095:: with SMTP id j143mr6683385qke.449.1561134935113;
-        Fri, 21 Jun 2019 09:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561134935; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp866331wrg;
+        Fri, 21 Jun 2019 09:55:04 -0700 (PDT)
+X-Received: by 2002:a5d:6742:: with SMTP id l2mr34783981wrw.323.1561136104637;
+        Fri, 21 Jun 2019 09:55:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561136104; cv=none;
         d=google.com; s=arc-20160816;
-        b=sbU8iZYliOY0vd6a87DvrZ9XPpv0OL/O2RPxn9UePvdt2i9S2EpLF+V8/A+07Exk6e
-         /NjprvSHHN//cecxDo0OUfkd/iP7hloDfkLv6cSV+DPOazu9+aSbilDxS1j73Ipue5Or
-         Rp187kHJ3huoB+eW1JnhgHTuAnnkgnxl3p0MQ6fngIRVtKsclgu0UyInW8aTg8yxZ7rY
-         S+Dqvzzglw0cl1Ab0WgHtiI6KOFAfH1vrgd27bG21PODwL3LpzwOVYalYqA/3WyDvLmN
-         /uVE5++wvoNYK4wAiyodUf/u7ZHUGr4qhEbx6GXOxqVGxCVOInMw9UGRBwj51jH+o4vt
-         C+1w==
+        b=xHVua7MRnzDtI/2of1YnfH/zGjrcEkUt2Wqtlig9RR4KTdMlBBqmtkCdqQgLEyFnoh
+         ZDTW1rC5oErJoO/kaxltS0mdo7UdODaecrrL6O/NHs1CEELLLnRL9tbTWIWS0Nq0kW6q
+         LRGMUkKg90JOTfg8WsrBgXBeEfNR7qzqqMbCwMDpx1x9Q1MZsXqrd/5sybNCCx/nA3LP
+         wndgFuoXP2F0Ut+fXE9emrNgKoCUGbI9aYwSxPilUHJZkPXTSVOuQSkCvbB7ucVu0pOo
+         ZqC/RmPSq9Vp+KrItZR0PYOOPemZawsCJdJXP6Hzl1cjfj7EHsQBjY1ZLfW4D7JeVMBz
+         2CLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=PVNumoTb+reb+VBrYjhZ9HsIfU57dbN6YJWp9HvS8uU=;
-        b=IWPjrWtt73bQLFclUdHLhzA1k950N+aiLUIU8Fh1ejLCqksOcpoaYUqC8F+aEG9XiS
-         lXWDNraDsILBNQYfuXJGO6yilzupusNAvPuwILw6nJa68wulKMDqn1LgawnoPn03p7Jd
-         3oOH2apOIWGe6QvK7uB0Dd2LRRS99MOd72LasKIwapu4N4MXN9YYp/pY+HVDnw+U3PC3
-         tmSxWFO6ITAB2xxb0ATMhuIwaHzN7Rl3shYajxxXa9oatwv/o8RjZTJLF3V+SEn6uIe5
-         atl7qXnYvpGvg2mbP2Yl//Jq+PrB19IWL0r5SSo+a4dace5LatOs9wS2sNfuRyY6EYVV
-         vbxw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=B3cXNPMkQ85M24RjOgjVB/8elmr11voPu9Ti1BakA00=;
+        b=F/GgoP7MvfMtSyS4kSS0LD6VTokzb0rBM7FRegFAgdwRS6zKTpJCTBq32fGdlI/ciR
+         Va66jic/6mYULSPhorsdbRjE0rOCMtW+fDass/cek3GdAchUQy+VG8Jr0i75j0aGd6va
+         zwTBMzv+3R291MCR98niZ9+09crTV9dOG+eaGZd7apfEGH6X3ct8YpnkXgFa+fOlrvYE
+         cW5//+iKOYuPkN/OwebJsstjWGUNKNXgdOJaKtEKgNsRxiGhzhNCd5kfDVFQLy+tM8Yb
+         ejvLCHv7j/7IM04BparC3KLZgISLt4/efRensFHK19kuGQjnvazBjco/Ix2rTkV4noKH
+         FDNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id g13si2129484qtc.334.2019.06.21.09.35.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 21 Jun 2019 09:35:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id o62sor1893282wma.17.2019.06.21.09.55.04
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 21 Jun 2019 09:55:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2120FC18B2C4;
-	Fri, 21 Jun 2019 16:35:34 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 979FE1001B1D;
-	Fri, 21 Jun 2019 16:35:28 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	armbru@redhat.com,
-	eblake@redhat.com,
-	Dave.Martin@arm.com,
-	eric.auger@redhat.com,
-	imammedo@redhat.com
-Subject: [PATCH v2 14/14] target/arm/kvm: host cpu: Add support for sve<vl-bits> properties
-Date: Fri, 21 Jun 2019 18:34:22 +0200
-Message-Id: <20190621163422.6127-15-drjones@redhat.com>
-In-Reply-To: <20190621163422.6127-1-drjones@redhat.com>
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=B3cXNPMkQ85M24RjOgjVB/8elmr11voPu9Ti1BakA00=;
+        b=hqkB8x2zHriYo4a+w39RAoW+SO65HeLcO1sGoRsrq/VSccEBiVn5ArfEjOt8qQXJ2v
+         jYSNy+3LCmlvYp/sEOqFQ79YdxVDg2Dgk5utEJ97ENbEcwYZG4EhfOGJ90Pj6N/psahd
+         htHoqpR0gjQLUKX+SiZh7ixmIGxwliCSJVlQXBjtIBt1SnOCQZjpTQLMZCKH53/Pp7dI
+         q/qecZuXpWQqwgdgU/kxJ6PEpUFhElune/RlNjx1skfTWlf19dsVq5DaFGVabdxbcQgj
+         pH0TEHVi7s4uiNfSujFn8QuyO3cdWDzizH0Ov0ub3WEZmxlQ5Qt3s1Gqsca3f8/5WRhp
+         DRZw==
+X-Gm-Message-State: APjAAAWaN/Ql5EGoNMJQ9LaaFnS5neOLEQcCST8Q9Xkz5c724CvkElxm
+	seFQ7r86KJh5DwyxkpfSr0K8wA==
+X-Google-Smtp-Source: APXvYqy0WBPIE/POL0vFh8FdMXRz8d0smOzPUIxHmu+62M08HWx2l1PT7DcPiHa4KamFYPL9SkcMhQ==
+X-Received: by 2002:a1c:1f06:: with SMTP id f6mr4991666wmf.60.1561136104380;
+        Fri, 21 Jun 2019 09:55:04 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net. [88.21.202.183])
+        by smtp.gmail.com with ESMTPSA id s3sm4977789wmh.27.2019.06.21.09.55.03
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Fri, 21 Jun 2019 09:55:03 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 06/14] target/arm: Allow SVE to be
+ disabled via a CPU property
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
+ alex.bennee@linaro.org, Dave.Martin@arm.com
 References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-7-drjones@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <80cf8467-ac4a-062e-2d50-1cefdf18b532@redhat.com>
+Date: Fri, 21 Jun 2019 18:55:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190621163422.6127-7-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Fri, 21 Jun 2019 16:35:34 +0000 (UTC)
-X-TUID: C8tCo68E7NwS
+X-TUID: 2+qiT9iGEhUS
 
-Allow cpu 'host' to enable SVE when it's available, unless the
-user chooses to disable it with the added 'sve=off' cpu property.
-Also give the user the ability to select vector lengths with the
-sve<vl-bits> properties. We don't adopt 'max' cpu's other sve
-property, sve-max-vq, because that property is difficult to
-use with KVM. That property assumes all vector lengths in the
-range from 1 up to and including the specified maximum length are
-supported, but there may be optional lengths not supported by the
-host in that range. With KVM one must be more specific when
-enabling vector lengths.
+Hi Drew,
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- target/arm/cpu.c         |  1 +
- target/arm/cpu.h         |  2 ++
- target/arm/cpu64.c       | 47 ++++++++++++++++++++++++++--------------
- tests/arm-cpu-features.c | 21 +++++++++---------
- 4 files changed, 45 insertions(+), 26 deletions(-)
+On 6/21/19 6:34 PM, Andrew Jones wrote:
+> Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
+> a CPU property") we can disable the 'max' cpu model's VFP and neon
+> features, but there's no way to disable SVE. Add the 'sve=on|off'
+> property to give it that flexibility. We also rename
+> cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
+> to follow the typical *_get/set_<property-name> pattern.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/cpu.c         | 10 +++++-
+>  target/arm/cpu64.c       | 72 ++++++++++++++++++++++++++++++++++------
+>  target/arm/helper.c      |  8 +++--
+>  target/arm/monitor.c     |  2 +-
+>  tests/arm-cpu-features.c |  1 +
+>  5 files changed, 78 insertions(+), 15 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 858f668d226e..f08e178fc84b 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -198,7 +198,7 @@ static void arm_cpu_reset(CPUState *s)
+>          env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
+>          env->cp15.cptr_el[3] |= CPTR_EZ;
+>          /* with maximum vector length */
+> -        env->vfp.zcr_el[1] = cpu->sve_max_vq - 1;
+> +        env->vfp.zcr_el[1] = cpu->sve_max_vq ? cpu->sve_max_vq - 1 : 0;
+>          env->vfp.zcr_el[2] = env->vfp.zcr_el[1];
+>          env->vfp.zcr_el[3] = env->vfp.zcr_el[1];
+>          /*
+> @@ -1129,6 +1129,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          cpu->isar.mvfr0 = u;
+>      }
+>  
+> +    if (!cpu->sve_max_vq) {
+> +        uint64_t t;
+> +
+> +        t = cpu->isar.id_aa64pfr0;
+> +        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 0);
+> +        cpu->isar.id_aa64pfr0 = t;
+> +    }
+> +
+>      if (arm_feature(env, ARM_FEATURE_M) && !cpu->has_dsp) {
+>          uint32_t u;
+>  
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 946994838d8a..02ada65f240c 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -257,27 +257,75 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+>  }
+>  
+> -static void cpu_max_get_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      visit_type_uint32(v, name, &cpu->sve_max_vq, errp);
+>  }
+>  
+> -static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      Error *err = NULL;
+> +    uint32_t value;
+>  
+> -    visit_type_uint32(v, name, &cpu->sve_max_vq, &err);
+> +    visit_type_uint32(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+>  
+> -    if (!err && (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ)) {
+> -        error_setg(&err, "unsupported SVE vector length");
+> -        error_append_hint(&err, "Valid sve-max-vq in range [1-%d]\n",
+> +    if (!cpu->sve_max_vq) {
+> +        error_setg(errp, "cannot set sve-max-vq");
+> +        error_append_hint(errp, "SVE has been disabled with sve=off\n");
+> +        return;
+> +    }
+> +
+> +    cpu->sve_max_vq = value;
+> +
+> +    if (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ) {
+> +        error_setg(errp, "unsupported SVE vector length");
+> +        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
+>                            ARM_MAX_VQ);
+>      }
+> -    error_propagate(errp, err);
+> +}
+> +
+> +static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    bool value = !!cpu->sve_max_vq;
+> +
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    Error *err = NULL;
+> +    bool value;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    if (value) {
+> +        /*
+> +         * We handle the -cpu <cpu>,sve=off,sve=on case by reinitializing,
+> +         * but otherwise we don't do anything as an sve=on could come after
+> +         * a sve-max-vq setting.
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index e060a0d9df0e..9d05291cb5f6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2407,6 +2407,7 @@ static void arm_host_initfn(Object *obj)
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     kvm_arm_set_cpu_features_from_host(cpu);
-+    aarch64_add_sve_properties(obj);
-     arm_cpu_post_init(obj);
- }
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8a1c6c66a462..52a6b219b74a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -974,11 +974,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
- void aarch64_sve_change_el(CPUARMState *env, int old_el,
-                            int new_el, bool el0_a64);
-+void aarch64_add_sve_properties(Object *obj);
- #else
- static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
- static inline void aarch64_sve_change_el(CPUARMState *env, int o,
-                                          int n, bool a)
- { }
-+static inline void aarch64_add_sve_properties(Object *obj) { }
- #endif
- 
- target_ulong do_arm_semihosting(CPUARMState *env);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 6e92aa54b9c8..89396a7729ec 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -753,6 +753,36 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
-     }
- }
- 
-+void aarch64_add_sve_properties(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint32_t vq;
-+
-+    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-+                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-+
-+    /*
-+     * sve_max_vq is initially unspecified, but must be initialized to a
-+     * non-zero value (ARM_SVE_INIT) to indicate that this cpu type has
-+     * SVE. It will be finalized in arm_cpu_realizefn().
-+     */
-+    assert(!cpu->sve_max_vq || cpu->sve_max_vq == ARM_SVE_INIT);
-+    cpu->sve_max_vq = ARM_SVE_INIT;
-+
-+    /*
-+     * sve_vq_map uses a special state while setting properties, so
-+     * we initialize it here with its init function and finalize it
-+     * in arm_cpu_realizefn().
-+     */
-+    arm_cpu_vq_map_init(cpu);
-+    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-+        char name[8];
-+        sprintf(name, "sve%d", vq * 128);
-+        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-+                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
-+    }
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -761,7 +791,6 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
- static void aarch64_max_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
--    uint32_t vq;
- 
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-@@ -847,9 +876,6 @@ static void aarch64_max_initfn(Object *obj)
- #endif
-     }
- 
--    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
--                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
--
-     /*
-      * sve_max_vq is initially unspecified, but must be initialized to a
-      * non-zero value (ARM_SVE_INIT) to indicate that this cpu type has
-@@ -859,18 +885,7 @@ static void aarch64_max_initfn(Object *obj)
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-                         cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
- 
--    /*
--     * sve_vq_map uses a special state while setting properties, so
--     * we initialize it here with its init function and finalize it
--     * in arm_cpu_realizefn().
--     */
--    arm_cpu_vq_map_init(cpu);
--    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
--        char name[8];
--        sprintf(name, "sve%d", vq * 128);
--        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
--                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
--    }
-+    aarch64_add_sve_properties(obj);
- }
- 
- struct ARMCPUInfo {
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 349bd0dca6d1..dfe83f104b27 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -351,8 +351,8 @@ static void sve_tests_sve_off_kvm(const void *data)
- {
-     QTestState *qts;
- 
--    qts = qtest_init(MACHINE "-accel kvm -cpu max,sve=off");
--    sve_tests_off(qts, "max");
-+    qts = qtest_init(MACHINE "-accel kvm -cpu host,sve=off");
-+    sve_tests_off(qts, "host");
-     qtest_quit(qts);
- }
- 
-@@ -417,24 +417,24 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-             "The CPU definition 'cortex-a15' cannot "
-             "be used with KVM on this host", NULL);
- 
--        assert_has_feature(qts, "max", "sve");
--        resp = do_query_no_props(qts, "max");
-+        assert_has_feature(qts, "host", "sve");
-+        resp = do_query_no_props(qts, "host");
-         g_assert(resp);
-         kvm_supports_sve = qdict_get_bool(resp_get_props(resp), "sve");
-         qobject_unref(resp);
- 
-         if (kvm_supports_sve) {
--            resp = do_query_no_props(qts, "max");
-+            resp = do_query_no_props(qts, "host");
-             resp_get_sve_vls(resp, &vls, &max_vq);
-             g_assert(max_vq != 0);
-             qobject_unref(resp);
- 
-             /* Enabling a supported length is of course fine. */
-             sprintf(name, "sve%d", max_vq * 128);
--            assert_sve_vls(qts, "max", vls, "{ %s: true }", name);
-+            assert_sve_vls(qts, "host", vls, "{ %s: true }", name);
- 
-             /* Also disabling the largest lengths is fine. */
--            assert_sve_vls(qts, "max", (vls & ~BIT(max_vq - 1)),
-+            assert_sve_vls(qts, "host", (vls & ~BIT(max_vq - 1)),
-                            "{ %s: false }", name);
- 
-             for (vq = 1; vq <= max_vq; ++vq) {
-@@ -446,7 +446,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-             if (vq <= SVE_MAX_VQ) {
-                 sprintf(name, "sve%d", vq * 128);
-                 error = g_strdup_printf("cannot enable %s", name);
--                assert_error(qts, "max", error, "{ %s: true }", name);
-+                assert_error(qts, "host", error, "{ %s: true }", name);
-                 g_free(error);
-             }
- 
-@@ -455,16 +455,17 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
-                 vq = 64 - __builtin_clzll(vls & ~BIT(max_vq - 1));
-                 sprintf(name, "sve%d", vq * 128);
-                 error = g_strdup_printf("cannot disable %s", name);
--                assert_error(qts, "max", error, "{ %s: false }", name);
-+                assert_error(qts, "host", error, "{ %s: false }", name);
-                 g_free(error);
-             }
-         } else {
--            resp = do_query_no_props(qts, "max");
-+            resp = do_query_no_props(qts, "host");
-             resp_get_sve_vls(resp, &vls, &max_vq);
-             g_assert(max_vq == 0);
-             qobject_unref(resp);
-         }
-     } else {
-+        assert_has_not_feature(qts, "host", "sve");
-         assert_error(qts, "host",
-                      "'pmu' feature not supported by KVM on this host",
-                      "{ 'pmu': true }");
--- 
-2.20.1
+I don't understand why would someone use that...
+
+For the rest:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> +         */
+> +        if (!cpu->sve_max_vq) {
+> +            cpu->sve_max_vq = ARM_MAX_VQ;
+> +        }
+> +    } else {
+> +        cpu->sve_max_vq = 0;
+> +    }
+>  }
+>  
+>  /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+> @@ -373,8 +421,10 @@ static void aarch64_max_initfn(Object *obj)
+>  #endif
+>  
+>          cpu->sve_max_vq = ARM_MAX_VQ;
+> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
+> -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+> +                            cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
+> +                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
+>      }
+>  }
+>  
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index edba94004e0b..f500ccb6d31b 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5314,9 +5314,13 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
+>  static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>                        uint64_t value)
+>  {
+> +    ARMCPU *cpu = env_archcpu(env);
+>      int cur_el = arm_current_el(env);
+> -    int old_len = sve_zcr_len_for_el(env, cur_el);
+> -    int new_len;
+> +    int old_len, new_len;
+> +
+> +    assert(cpu->sve_max_vq);
+> +
+> +    old_len = sve_zcr_len_for_el(env, cur_el);
+>  
+>      /* Bits other than [3:0] are RAZ/WI.  */
+>      QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 19e3120eef95..157c487a1551 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -90,7 +90,7 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>  }
+>  
+>  static const char *cpu_model_advertised_features[] = {
+> -    "aarch64", "pmu",
+> +    "aarch64", "pmu", "sve",
+>      NULL
+>  };
+>  
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> index 31b1c15bb979..509e458e9c2f 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -158,6 +158,7 @@ static void test_query_cpu_model_expansion(const void *data)
+>  
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature(qts, "max", "aarch64");
+> +        assert_has_feature(qts, "max", "sve");
+>          assert_has_feature(qts, "cortex-a57", "pmu");
+>          assert_has_feature(qts, "cortex-a57", "aarch64");
+>  
+> 

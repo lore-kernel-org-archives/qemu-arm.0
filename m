@@ -1,32 +1,32 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp849433wrg;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp849434wrg;
         Fri, 21 Jun 2019 09:35:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyYR3jTWKMYtLLJ0fWp41sQw1b+wdjeFzWPHZj9dYwGilfGHotSiLnn6sCj27ApSgl61PSB
-X-Received: by 2002:a37:b0c6:: with SMTP id z189mr62324924qke.208.1561134920683;
+X-Google-Smtp-Source: APXvYqylFNIm1E0NfYFPMMvLdhaZjB0DKNsU4rT0QnThVoj1u0KJvfnVMc05E2oJF0U/eAH/Dap2
+X-Received: by 2002:ac8:2dcf:: with SMTP id q15mr116985069qta.170.1561134920692;
         Fri, 21 Jun 2019 09:35:20 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1561134920; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejoWvIFV+2FUA8fNLARViFVVUGzoE34FPCnT2qy9QoqbwsMP4DbIbUk5CNdqOERJlE
-         dNuAWIc73NB+fyTq23TqC9CfrrQnwwXbCdgIsLoYJmTmppDriA2Gbb08Sjl+zSCdyRzf
-         gJywIjdFGCbbgVCRGtyD5CjhjrjJ7QqLFz/zC65svWBVKJHtxdHn9vDVqqPQI9JXIFfR
-         zel47Xey+9uWGeXCgtnWI1JXoShVUkmxO3qFkUsnRkqrPFAsF16+DZe3U28xJCN3aiTj
-         WOR4kVVXCw6Gx2ITxN6bruBRzSCKlFFulA2D1d8viHodDZhocUz3k3hvuxFG+FHqMC80
-         LM0Q==
+        b=0aUzkVAuTeEqd3an+BYWl5H2t30wAQ4ivCo5rsVk6IFog/tm5z1k4UjE7ZGLARbxnU
+         TmWY3VWGA00I01JayWBTNAwHoCvzHepEE9dwpQ9ytqUcDN1DfdKM8ISfWTlYm+uvMWF5
+         jsn8WEgq7WkfL8D7Kg50TMpPYoiHyKb7fIUkJAfc2WJOfnQuR4Drx6OLkMUIvrXIv/IQ
+         t1LkJtu/LkWxvpoPYob3oewU8/T227z/adPQzpJx2pQ4atzMgX8RrocKeHBoXucEMXqD
+         6JGhc0ZGrl3FgpdxQRNzvvxd2qI/33Xqyh5GUmGwiGQR4ORANM+hRCyKJeKt/b/43io/
+         vFeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=xDccPhAnTNfKZ/zWCHka/mSUH6qzVn8+RNnZj2Ih9g8=;
-        b=GgMnN9U8ZtTcU5/iZnfi7+oI2gDjU5n6S4wYggWK4kgXBlngQI4zF3Tx/YYMahdDHF
-         HIKra1RGhWMMBmQPKVTXFgtKNlVXYwhbtldFWIxyicff2fsZ51uClVlUsIcrBZirjCu1
-         iVBDIRQP2ZcryunQB0MMfUNbHf6a+WafBVXhpUlVvxiSj3hVfGKJ0pkJYSbUZOoLni0x
-         vdwyzRJiOmFWmNNM/EKHKpD1aX/goDBkX8toeyqmStHYjm5XnAhXG//PqoHfrT+vk9pJ
-         OJG7VYEDSAWyLpaYDXwJ/5toReOwSpeWUUmQ6hD1V8RsZCOG6ysapLB5x0MPKcHzafGG
-         qpbw==
+        bh=cEX0sv4PbQoogp88GFzs42n1IxlZnDjWjetuuTHUHTE=;
+        b=kmTBzovBgrNn1kgHHmjLsZpgyl98vmQHOqtEjeM3NRqDN3bpofTiECPXEahjIcrJ1p
+         5Uqy4DVTAFFTkEi4vwbYLBdj/W5jBsoZLemkFVy0uKYWDn7YKvFaw0+PTub0LZb2benW
+         HolPXgj3qKVzjobxGlrKxP3B7SmX+4MQ1GLWunUuzOZSVjUddKS8pTwyuuaTtpgncHR8
+         prCM4+O5WAzYqIFcsHZeVkSCRtTTuzZ+5LKAe7DLNMDZYObe/E/+3l5y+0XqW3qUjMoW
+         Qf3CGTrA1sarp6sGOz7bgAnQIvvIFi8Tn1UkQF+F+zDAmjBXmM+O5YaBSkGO9jkmDTJh
+         n5HA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id y36si2147246qtk.15.2019.06.21.09.35.20
+        by mx.google.com with ESMTPS id q28si2138020qte.31.2019.06.21.09.35.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 21 Jun 2019 09:35:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D322731628FA;
-	Fri, 21 Jun 2019 16:35:15 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 31B0D301D680;
+	Fri, 21 Jun 2019 16:35:18 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0A9D91001DE0;
-	Fri, 21 Jun 2019 16:35:09 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 207CE1001DC7;
+	Fri, 21 Jun 2019 16:35:15 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
@@ -52,74 +52,108 @@ Cc: peter.maydell@linaro.org,
 	Dave.Martin@arm.com,
 	eric.auger@redhat.com,
 	imammedo@redhat.com
-Subject: [PATCH v2 09/14] target/arm/kvm64: Move the get/put of fpsimd registers out
-Date: Fri, 21 Jun 2019 18:34:17 +0200
-Message-Id: <20190621163422.6127-10-drjones@redhat.com>
+Subject: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
+Date: Fri, 21 Jun 2019 18:34:18 +0200
+Message-Id: <20190621163422.6127-11-drjones@redhat.com>
 In-Reply-To: <20190621163422.6127-1-drjones@redhat.com>
 References: <20190621163422.6127-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Fri, 21 Jun 2019 16:35:15 +0000 (UTC)
-X-TUID: S37pwcAIbIdr
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Fri, 21 Jun 2019 16:35:18 +0000 (UTC)
+X-TUID: BcVns0mrc67F
 
-Move the getting/putting of the fpsimd registers out of
-kvm_arch_get/put_registers() into their own helper functions
-to prepare for alternatively getting/putting SVE registers.
-
-No functional change.
+These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
+swabbing is different than it is for fpsmid because the vector format
+is a little-endian stream of words.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/kvm64.c | 148 +++++++++++++++++++++++++++------------------
- 1 file changed, 88 insertions(+), 60 deletions(-)
+ target/arm/kvm64.c | 135 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 131 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 9ca9a0ce821d..a2485d447e6a 100644
+index a2485d447e6a..706541327491 100644
 --- a/target/arm/kvm64.c
 +++ b/target/arm/kvm64.c
-@@ -721,13 +721,53 @@ int kvm_arm_cpreg_level(uint64_t regidx)
- #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+@@ -673,11 +673,12 @@ int kvm_arch_destroy_vcpu(CPUState *cs)
+ bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
+ {
+     /* Return true if the regidx is a register we should synchronize
+-     * via the cpreg_tuples array (ie is not a core reg we sync by
+-     * hand in kvm_arch_get/put_registers())
++     * via the cpreg_tuples array (ie is not a core or sve reg that
++     * we sync by hand in kvm_arch_get/put_registers())
+      */
+     switch (regidx & KVM_REG_ARM_COPROC_MASK) {
+     case KVM_REG_ARM_CORE:
++    case KVM_REG_ARM64_SVE:
+         return false;
+     default:
+         return true;
+@@ -763,6 +764,70 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
+     return 0;
+ }
  
-+static int kvm_arch_put_fpsimd(CPUState *cs)
++/*
++ * If ARM_MAX_VQ is increased to be greater than 16, then we can no
++ * longer hard code slices to 1 in kvm_arch_put/get_sve().
++ */
++QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
++
++static int kvm_arch_put_sve(CPUState *cs)
 +{
 +    ARMCPU *cpu = ARM_CPU(cs);
 +    CPUARMState *env = &cpu->env;
 +    struct kvm_one_reg reg;
-+    uint32_t fpr;
-+    int i, ret;
++    int slices = 1;
++    int i, n, ret;
 +
-+    for (i = 0; i < 32; i++) {
-+        uint64_t *q = aa64_vfp_qreg(env, i);
++    for (i = 0; i < slices; i++) {
++        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
++            uint64_t *q = aa64_vfp_qreg(env, n);
 +#ifdef HOST_WORDS_BIGENDIAN
-+        uint64_t fp_val[2] = { q[1], q[0] };
-+        reg.addr = (uintptr_t)fp_val;
++            uint64_t d[ARM_MAX_VQ * 2];
++            int j;
++            for (j = 0; j < cpu->sve_max_vq * 2; j++) {
++                d[j] = bswap64(q[j]);
++            }
++            reg.addr = (uintptr_t)d;
 +#else
-+        reg.addr = (uintptr_t)q;
++            reg.addr = (uintptr_t)q;
 +#endif
-+        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
++            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
++            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++            if (ret) {
++                return ret;
++            }
++        }
++
++        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
++            uint64_t *q = &env->vfp.pregs[n].p[0];
++#ifdef HOST_WORDS_BIGENDIAN
++            uint64_t d[ARM_MAX_VQ * 2 / 8];
++            int j;
++            for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
++                d[j] = bswap64(q[j]);
++            }
++            reg.addr = (uintptr_t)d;
++#else
++            reg.addr = (uintptr_t)q;
++#endif
++            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
++            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++            if (ret) {
++                return ret;
++            }
++        }
++
++        reg.addr = (uintptr_t)&env->vfp.pregs[FFR_PRED_NUM].p[0];
++        reg.id = KVM_REG_ARM64_SVE_FFR(i);
 +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
 +        if (ret) {
 +            return ret;
 +        }
-+    }
-+
-+    reg.addr = (uintptr_t)(&fpr);
-+    fpr = vfp_get_fpsr(env);
-+    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-+    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    reg.addr = (uintptr_t)(&fpr);
-+    fpr = vfp_get_fpcr(env);
-+    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-+    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
 +    }
 +
 +    return 0;
@@ -128,91 +162,73 @@ index 9ca9a0ce821d..a2485d447e6a 100644
  int kvm_arch_put_registers(CPUState *cs, int level)
  {
      struct kvm_one_reg reg;
--    uint32_t fpr;
-     uint64_t val;
--    int i;
--    int ret;
-+    int i, ret;
-     unsigned int el;
- 
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -817,33 +857,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+@@ -857,7 +922,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
          }
      }
  
--    /* Advanced SIMD and FP registers. */
--    for (i = 0; i < 32; i++) {
--        uint64_t *q = aa64_vfp_qreg(env, i);
--#ifdef HOST_WORDS_BIGENDIAN
--        uint64_t fp_val[2] = { q[1], q[0] };
--        reg.addr = (uintptr_t)fp_val;
--#else
--        reg.addr = (uintptr_t)q;
--#endif
--        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
--        if (ret) {
--            return ret;
--        }
--    }
--
--    reg.addr = (uintptr_t)(&fpr);
--    fpr = vfp_get_fpsr(env);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
--    if (ret) {
--        return ret;
--    }
--
--    fpr = vfp_get_fpcr(env);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
--    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    ret = kvm_arch_put_fpsimd(cs);
+-    ret = kvm_arch_put_fpsimd(cs);
++    if (!cpu->sve_max_vq) {
++        ret = kvm_arch_put_fpsimd(cs);
++    } else {
++        ret = kvm_arch_put_sve(cs);
++    }
      if (ret) {
          return ret;
      }
-@@ -864,14 +878,54 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-     return ret;
+@@ -920,6 +989,60 @@ static int kvm_arch_get_fpsimd(CPUState *cs)
+     return 0;
  }
  
-+static int kvm_arch_get_fpsimd(CPUState *cs)
++static int kvm_arch_get_sve(CPUState *cs)
 +{
 +    ARMCPU *cpu = ARM_CPU(cs);
 +    CPUARMState *env = &cpu->env;
 +    struct kvm_one_reg reg;
-+    uint32_t fpr;
-+    int i, ret;
++    int slices = 1;
++    int i, n, ret;
 +
-+    for (i = 0; i < 32; i++) {
-+        uint64_t *q = aa64_vfp_qreg(env, i);
-+        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
-+        reg.addr = (uintptr_t)q;
++    for (i = 0; i < slices; i++) {
++        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
++            uint64_t *q = aa64_vfp_qreg(env, n);
++            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
++            reg.addr = (uintptr_t)q;
++            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++            if (ret) {
++                return ret;
++            } else {
++#ifdef HOST_WORDS_BIGENDIAN
++                int j;
++                for (j = 0; j < cpu->sve_max_vq * 2; j++) {
++                    q[j] = bswap64(q[j]);
++                }
++#endif
++            }
++        }
++
++        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
++            uint64_t *q = &env->vfp.pregs[n].p[0];
++            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
++            reg.addr = (uintptr_t)q;
++            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++            if (ret) {
++                return ret;
++            } else {
++#ifdef HOST_WORDS_BIGENDIAN
++                int j;
++                for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
++                    q[j] = bswap64(q[j]);
++                }
++#endif
++            }
++        }
++
++        reg.addr = (uintptr_t)&env->vfp.pregs[FFR_PRED_NUM].p[0];
++        reg.id = KVM_REG_ARM64_SVE_FFR(i);
 +        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
 +        if (ret) {
 +            return ret;
-+        } else {
-+#ifdef HOST_WORDS_BIGENDIAN
-+            uint64_t t;
-+            t = q[0], q[0] = q[1], q[1] = t;
-+#endif
 +        }
 +    }
-+
-+    reg.addr = (uintptr_t)(&fpr);
-+    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-+    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
-+    }
-+    vfp_set_fpsr(env, fpr);
-+
-+    reg.addr = (uintptr_t)(&fpr);
-+    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-+    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
-+    }
-+    vfp_set_fpcr(env, fpr);
 +
 +    return 0;
 +}
@@ -220,52 +236,18 @@ index 9ca9a0ce821d..a2485d447e6a 100644
  int kvm_arch_get_registers(CPUState *cs)
  {
      struct kvm_one_reg reg;
-     uint64_t val;
--    uint32_t fpr;
-     unsigned int el;
--    int i;
--    int ret;
-+    int i, ret;
- 
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -960,36 +1014,10 @@ int kvm_arch_get_registers(CPUState *cs)
+@@ -1014,7 +1137,11 @@ int kvm_arch_get_registers(CPUState *cs)
          env->spsr = env->banked_spsr[i];
      }
  
--    /* Advanced SIMD and FP registers */
--    for (i = 0; i < 32; i++) {
--        uint64_t *q = aa64_vfp_qreg(env, i);
--        reg.id = AARCH64_SIMD_CORE_REG(fp_regs.vregs[i]);
--        reg.addr = (uintptr_t)q;
--        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
--        if (ret) {
--            return ret;
--        } else {
--#ifdef HOST_WORDS_BIGENDIAN
--            uint64_t t;
--            t = q[0], q[0] = q[1], q[1] = t;
--#endif
--        }
--    }
--
--    reg.addr = (uintptr_t)(&fpr);
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
--    if (ret) {
--        return ret;
--    }
--    vfp_set_fpsr(env, fpr);
--
--    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
--    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+    ret = kvm_arch_get_fpsimd(cs);
+-    ret = kvm_arch_get_fpsimd(cs);
++    if (!cpu->sve_max_vq) {
++        ret = kvm_arch_get_fpsimd(cs);
++    } else {
++        ret = kvm_arch_get_sve(cs);
++    }
      if (ret) {
          return ret;
      }
--    vfp_set_fpcr(env, fpr);
- 
-     ret = kvm_get_vcpu_events(cpu);
-     if (ret) {
 -- 
 2.20.1

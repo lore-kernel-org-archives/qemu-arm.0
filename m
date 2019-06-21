@@ -1,200 +1,186 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp381804wrg;
-        Fri, 21 Jun 2019 01:34:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw0vpe8QgiIEFXlKvNAcIkMydb2QhfedD058OBC9CiS36c8QPbbfkDe+vuYOw4N6TV9zqfg
-X-Received: by 2002:aa7:c14f:: with SMTP id r15mr79442821edp.116.1561106081470;
-        Fri, 21 Jun 2019 01:34:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561106081; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp848824wrg;
+        Fri, 21 Jun 2019 09:34:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxkGiUu8BiPVEGzNsgRh6FjGZKSk1kdhDFqL5R4baR1wx4maZhAcZJJCnLTykVaMM6qpNgs
+X-Received: by 2002:a05:620a:16a6:: with SMTP id s6mr4930340qkj.39.1561134880867;
+        Fri, 21 Jun 2019 09:34:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561134880; cv=none;
         d=google.com; s=arc-20160816;
-        b=WKPoID2P1txgpQg+jgdwtpXwgU5ulDLXOnvUtbsxh+q/ArtBqSEzwutjuAGUf1W2/i
-         UiBXw+C7K3UECbhoAmpm99efykr0YPM5j9QLpffx3/YsrOK2V6ronTRrz4TjGVs8sX3u
-         Jb8VD4mzY1NedLbDP7WwNj19BxfNhI7hSD8d+Oz6pDXfvTMisDGqEP7vDT/E0CG8Od8y
-         BD81hKWRKuPPzzakjCTKUSBiqUaSwZPVTPTTl7no3lpS9D3R1vrGf7bPTqdmiwlZXXS4
-         NIoQrWH6vcADm5zQMPDwlQ12RmtnG2gZuPqiaw7V77V4igwZ5QgimY4VKAChCWOPrICf
-         X1yQ==
+        b=pyBwkdK1ktXmmaWb4CYbAzpdLBdrR4gZqk3hrucvbzdu6M9dWxHevYoZGyXYxwlGqF
+         m/ewoZeaFrOw0X3orkHroVypcwqYEBY1glk/w2y+ElwiefGGmpP6HwfEWLWLKA76Ssr3
+         Pw3WjeoORBFv2FdwIKCNBeNZI8+2OLRAJPAE+7FVr1fpj1UsJ+n2Wfyh8S5mJzzy/OrZ
+         UKZFdFXly55YcE8/kW3XoclT1/vxC7cXfYxcYrN2E+m1eO54i64Xjw4AufepSYsm9glI
+         B67Fo7Rh2Sf67mDq15qTtaJxFA+LnoJJc9a0udDzcVjk4E/YXS5nKAgKJQkIEHgPbwOi
+         iWrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=YgqQjX3VvKdAdPWdttvNBy9CSHs15VILuuxCgn0t+VU=;
-        b=HIw+AGoO3DJyJwXDWP6SFk1Kw7fneGaZqsLHy2nNAhrSpxOnUw9B/jl56gbeR3rZMW
-         y4KIKiaQgFr9P4Mt9Ob8T0ySFEFFGUkoN9+qR4MzjasW0+HuKTnma4urXc4MVyUPj9ry
-         LdJ5OAtaM9l8gPepM5KHCzwRbA44rmjIvz3hOO+N3BoGlUWpuMM74ouPjS11Fbk0URLw
-         zFins5o+3UtDJqsE/wjGxMvzd+wYcouPSSOMcDYi+y2SjvebprN6YFRvdpFgmhbZsf39
-         jnnUAfEt3RwH9ylISajNgYwonF+nFgE3yCE316OxIXx6TbY6Z3PXCY9Qk5to1FAHFVz4
-         tuJQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=ahkLZF7/AkhWmKjUzmDEa7g5et4puEsh2iKfVvuB1JY=;
+        b=MhMYvIm2+C6dxlOhACDjgNfgIQcEsm0eJ1Koy3zFWvdSsSUL0Qg9OZ/5wAntKFRhwX
+         hEy+EITFP/ZOZRdLPXfNJKlC2Gke2JSrVvbWhQvsroMJP+DRxAN+kKy54mDaHS1JLYe8
+         YLXgHmalRDWwLC4915zApZcXVuR7P3D0ZeOOLOpjmbLmVWT6B1G3VQyBjteAETZD0l7d
+         +DJ71hKpkuFqsNzVbof3E1BYuSwkyWbNKqCrQKx+fslvHhGnxc53XhlxoD5+KZrAhMud
+         QDHiXkzUUZ4xLKb3+V4ei6udJAQBKJJPrcFskFLzx6TTBQxNmZr3VykZY4wqGXST+lRx
+         vTZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2si1893819edd.21.2019.06.21.01.34.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jun 2019 01:34:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id a7si2347951qva.0.2019.06.21.09.34.40
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 21 Jun 2019 09:34:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55518 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1heF0K-0004NO-D3
-	for alex.bennee@linaro.org; Fri, 21 Jun 2019 04:34:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58236)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1heEzJ-0004B8-CB
- for qemu-arm@nongnu.org; Fri, 21 Jun 2019 04:33:38 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1heErM-0003UM-UV
- for qemu-arm@nongnu.org; Fri, 21 Jun 2019 04:25:26 -0400
-Received: from 6.mo173.mail-out.ovh.net ([46.105.43.93]:57030)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1heErM-0003P4-PM
- for qemu-arm@nongnu.org; Fri, 21 Jun 2019 04:25:24 -0400
-Received: from player750.ha.ovh.net (unknown [10.109.159.7])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id D1A2E10E18B
- for <qemu-arm@nongnu.org>; Fri, 21 Jun 2019 10:25:12 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player750.ha.ovh.net (Postfix) with ESMTPSA id 573FA7309928;
- Fri, 21 Jun 2019 08:25:06 +0000 (UTC)
-To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
-References: <20190621065242.32535-1-joel@jms.id.au>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <6aec047c-81bd-e179-6fad-4bee896ea7a2@kaod.org>
-Date: Fri, 21 Jun 2019 10:25:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3F496C18B2FA;
+	Fri, 21 Jun 2019 16:34:38 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D07041001DF3;
+	Fri, 21 Jun 2019 16:34:34 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	armbru@redhat.com,
+	eblake@redhat.com,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com,
+	imammedo@redhat.com
+Subject: [PATCH v2 02/14] target/arm/cpu: Ensure we can use the pmu with kvm
+Date: Fri, 21 Jun 2019 18:34:10 +0200
+Message-Id: <20190621163422.6127-3-drjones@redhat.com>
+In-Reply-To: <20190621163422.6127-1-drjones@redhat.com>
+References: <20190621163422.6127-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190621065242.32535-1-joel@jms.id.au>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 10693515840636816192
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrtdeigddthecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.43.93
-Subject: Re: [Qemu-arm] [PATCH v2] aspeed: Link SCU to the watchdog
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xWFpoIlPamTC
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Fri, 21 Jun 2019 16:34:38 +0000 (UTC)
+X-TUID: DFEWnnAGZ6kp
 
-On 21/06/2019 08:52, Joel Stanley wrote:
-> The ast2500 uses the watchdog to reset the SDRAM controller. This
-> operation is usually performed by u-boot's memory training procedure,
-> and it is enabled by setting a bit in the SCU and then causing the
-> watchdog to expire. Therefore, we need the watchdog to be able to
-> access the SCU's register space.
->=20
-> This causes the watchdog to not perform a system reset when the bit is
-> set. In the future it could perform a reset of the SDMC model.
->=20
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+We first convert the pmu property from a static property to one with
+its own accessors. Then we use the set accessor to check if the PMU is
+supported when using KVM. Indeed a 32-bit KVM host does not support
+the PMU, so this check will catch an attempt to use it at property-set
+time.
 
-I was keeping this patch in my tree (hence the Sob) hoping that
-someone could find the time to study the reset question. But this=20
-patch is useful as it is and I think we should merge it.
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ target/arm/cpu.c     | 30 +++++++++++++++++++++++++-----
+ target/arm/kvm.c     |  9 +++++++++
+ target/arm/kvm_arm.h | 13 +++++++++++++
+ 3 files changed, 47 insertions(+), 5 deletions(-)
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
-
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
-> v2: rebase on upstream, rework commit message
-> ---
->  hw/arm/aspeed_soc.c              |  2 ++
->  hw/watchdog/wdt_aspeed.c         | 20 ++++++++++++++++++++
->  include/hw/watchdog/wdt_aspeed.h |  1 +
->  3 files changed, 23 insertions(+)
->=20
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index a2ea8c748449..ddd5dfacd7d6 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -155,6 +155,8 @@ static void aspeed_soc_init(Object *obj)
->                                sizeof(s->wdt[i]), TYPE_ASPEED_WDT);
->          qdev_prop_set_uint32(DEVICE(&s->wdt[i]), "silicon-rev",
->                                      sc->info->silicon_rev);
-> +        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
-> +                                       OBJECT(&s->scu), &error_abort);
->      }
-> =20
->      sysbus_init_child_obj(obj, "ftgmac100", OBJECT(&s->ftgmac100),
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 4a8409f0daf5..57fe24ae6b1f 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -44,6 +44,9 @@
-> =20
->  #define WDT_RESTART_MAGIC               0x4755
-> =20
-> +#define SCU_RESET_CONTROL1              (0x04 / 4)
-> +#define    SCU_RESET_SDRAM              BIT(0)
-> +
->  static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
->  {
->      return s->regs[WDT_CTRL] & WDT_CTRL_ENABLE;
-> @@ -222,6 +225,13 @@ static void aspeed_wdt_timer_expired(void *dev)
->  {
->      AspeedWDTState *s =3D ASPEED_WDT(dev);
-> =20
-> +    /* Do not reset on SDRAM controller reset */
-> +    if (s->scu->regs[SCU_RESET_CONTROL1] & SCU_RESET_SDRAM) {
-> +        timer_del(s->timer);
-> +        s->regs[WDT_CTRL] =3D 0;
-> +        return;
-> +    }
-> +
->      qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
->      watchdog_perform_action();
->      timer_del(s->timer);
-> @@ -233,6 +243,16 @@ static void aspeed_wdt_realize(DeviceState *dev, E=
-rror **errp)
->  {
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->      AspeedWDTState *s =3D ASPEED_WDT(dev);
-> +    Error *err =3D NULL;
-> +    Object *obj;
-> +
-> +    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
-> +    if (!obj) {
-> +        error_propagate(errp, err);
-> +        error_prepend(errp, "required link 'scu' not found: ");
-> +        return;
-> +    }
-> +    s->scu =3D ASPEED_SCU(obj);
-> =20
->      if (!is_supported_silicon_rev(s->silicon_rev)) {
->          error_setg(errp, "Unknown silicon revision: 0x%" PRIx32,
-> diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt=
-_aspeed.h
-> index 88d8be4f78d6..daef0c0e230b 100644
-> --- a/include/hw/watchdog/wdt_aspeed.h
-> +++ b/include/hw/watchdog/wdt_aspeed.h
-> @@ -27,6 +27,7 @@ typedef struct AspeedWDTState {
->      MemoryRegion iomem;
->      uint32_t regs[ASPEED_WDT_REGS_MAX];
-> =20
-> +    AspeedSCUState *scu;
->      uint32_t pclk_freq;
->      uint32_t silicon_rev;
->      uint32_t ext_pulse_width_mask;
->=20
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 376db154f008..858f668d226e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -759,10 +759,6 @@ static Property arm_cpu_has_el3_property =
+ static Property arm_cpu_cfgend_property =
+             DEFINE_PROP_BOOL("cfgend", ARMCPU, cfgend, false);
+ 
+-/* use property name "pmu" to match other archs and virt tools */
+-static Property arm_cpu_has_pmu_property =
+-            DEFINE_PROP_BOOL("pmu", ARMCPU, has_pmu, true);
+-
+ static Property arm_cpu_has_vfp_property =
+             DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
+ 
+@@ -785,6 +781,29 @@ static Property arm_cpu_pmsav7_dregion_property =
+                                            pmsav7_dregion,
+                                            qdev_prop_uint32, uint32_t);
+ 
++static bool arm_get_pmu(Object *obj, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    return cpu->has_pmu;
++}
++
++static void arm_set_pmu(Object *obj, bool value, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    if (value) {
++        if (kvm_enabled() && !kvm_arm_pmu_supported(CPU(cpu))) {
++            error_setg(errp, "'pmu' feature not supported by KVM on this host");
++            return;
++        }
++        set_feature(&cpu->env, ARM_FEATURE_PMU);
++    } else {
++        unset_feature(&cpu->env, ARM_FEATURE_PMU);
++    }
++    cpu->has_pmu = value;
++}
++
+ static void arm_get_init_svtor(Object *obj, Visitor *v, const char *name,
+                                void *opaque, Error **errp)
+ {
+@@ -859,7 +878,8 @@ void arm_cpu_post_init(Object *obj)
+     }
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+-        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
++        cpu->has_pmu = true;
++        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu,
+                                  &error_abort);
+     }
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index fe4f461d4ef6..69c961a4c62c 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -162,6 +162,15 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features = arm_host_cpu_features.features;
+ }
+ 
++bool kvm_arm_pmu_supported(CPUState *cpu)
++{
++    KVMState *s = KVM_STATE(current_machine->accelerator);
++    int ret;
++
++    ret = kvm_check_extension(s, KVM_CAP_ARM_PMU_V3);
++    return ret > 0;
++}
++
+ int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+ {
+     KVMState *s = KVM_STATE(ms->accelerator);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 812125f805a1..e0ded3607996 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -216,6 +216,14 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+  */
+ bool kvm_arm_aarch32_supported(CPUState *cs);
+ 
++/**
++ * bool kvm_arm_pmu_supported:
++ * @cs: CPUState
++ *
++ * Returns true if the KVM VCPU can enable its PMU and false otherwise.
++ */
++bool kvm_arm_pmu_supported(CPUState *cs);
++
+ /**
+  * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
+  * IPA address space supported by KVM
+@@ -261,6 +269,11 @@ static inline bool kvm_arm_aarch32_supported(CPUState *cs)
+     return false;
+ }
+ 
++static inline bool kvm_arm_pmu_supported(CPUState *cs)
++{
++    return false;
++}
++
+ static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+ {
+     return -ENOENT;
+-- 
+2.20.1

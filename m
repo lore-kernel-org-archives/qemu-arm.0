@@ -1,171 +1,194 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1867888wrg;
-        Sat, 22 Jun 2019 08:58:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzgXrFPWyAPehp7Q5j247HWeQIyW6mYzjngSXEoEFP7as3xmwNILgOCkog3H3+q5SRJj2Ww
-X-Received: by 2002:a17:906:3756:: with SMTP id e22mr41092802ejc.72.1561219129451;
-        Sat, 22 Jun 2019 08:58:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561219129; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2253020wrg;
+        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzFC3dOTjfcytKA8sif/p1snV7Ka4L8ZR1E88gvJeg0jzCWY1z6K6c9vl+X9kVAma/5SRVz
+X-Received: by 2002:a50:b0e3:: with SMTP id j90mr36772968edd.26.1561257773578;
+        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561257773; cv=none;
         d=google.com; s=arc-20160816;
-        b=aBXHStVl1S8P1QuJuQxaOc54CZOC25wK97smjm0tgyiTOqu8x3A9kM90Huz3QgyCc/
-         DymO8o8SaRJacwTiwl52kRO7pA4rp0vadDxez7OvU2ZelFTmAH9O3SXNiMtNbJYKS0J1
-         M0hfYFzEovHjqEwaSptmt804TVrATiVSnDJAWefcxXOCOyVQDcHl6ECkSJtAjDm2uwKh
-         wRdD/cRURRiVNea4VWuFgTEki4gmuJXzC41KrtaBU9J38BG0xReEDViuF/Z2zHTeKFSm
-         I/s4UpcCToZwV0r5b6Q29HoRlpS8EvLEITg/Yam/UnufTucXLdzoryDvIK5Av4+paRIe
-         HvBw==
+        b=VL6xa1mjgfE53dzvD7UrypXIXE2duYUXOBxc9s3beAxHsEzGjyNJt1uzySkZUdetpP
+         bswXrEtAqmUvdly4yVUHfm30FJMvgouyI7jgXLo2ZRkwQ2yxW736BPt8ifwW4d9m5JuR
+         xGC1NW0AKU2bURRQGtTtts7OFwjMWDH4Uf46/yooyetTQ7AoMf7ACmA8n0yQW9gI1Xqs
+         3f+V1TFxBLsqqf/UKYL4I0RQNbKd7WfmM0tJtakve0F2pcqYeQ9yiytekxk0QoCORspH
+         Od31vYsG9FZ1UvGt33ukcJ32jTW3Maj6nvo6WiUaIvZtjXz++YR+cXxkYmEnzu6H9+A2
+         JueA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=imCTxdPEt5J++AIJaO2+JaMor4MuSWehoKKHw0VfX4A=;
-        b=O3YwhoiSUqmPShy0gVoY0odvCfgC2xxPX5hQx06OzeFRaPkk2LXeDZOB7wJ1SmwiAs
-         kkbUximjATLXEww7DLJMB9i2Lm7GEQi6ffpczZIOmnMsHDfkQNZUgi8AjAbG73olbi3U
-         z/6woJ/gg5y2DLSIkpzf2UfkG2QMORLQMl7+Sye4Vl7JAVmkv7tlzdaVZxCywrnkIyqI
-         Is3C3hmsISGdnNe5zDevSMU+UstMuC3v48i/9QqoECz0Myba+WmSFXJXzzVvy+F3YBba
-         bFzCZDwGHm3cVlWsL9lEs2Qg+LtmYjMVUcn7if/o2xvvOSs3+pCzKY10Voqp+ZNvLxSp
-         uUcg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
+        b=BxQclSxHXWvHmOyngH4Ld3rcYNQIr6BuPiTSUCqTpg6gP6NZZ5WFK2gynBvDwdv2/q
+         cs8jNoYsXdfptcC1rvzPGPw1UDVtBBb2GMV2/UOTWchHYsvycdY69sMxmXjvv25JF/+X
+         kwD/9vLu1ES3D+lNRELHqDi9gCnFxNK7C/g8RHJxCf9zcB25ruWQ2eWVNF+qZROl8nCk
+         ZAmS5kU7EBnZ6VGkd/jDf2+qH+z0IN2jmNibiO0ZVqMdLbDaD/pdBA2mKFPhcwv1toXF
+         FarEkaIkF0ITRTOcBeqC+WmkyFREICXmCJ7IPim8WC6Z50UEs00j1wIakUZktCUMV3RF
+         JhRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ldsJyRj2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tdbHGCRP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w42si5292653eda.142.2019.06.22.08.58.49
+        by mx.google.com with ESMTPS id y10si6180010edc.151.2019.06.22.19.42.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Jun 2019 08:58:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ldsJyRj2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=tdbHGCRP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41432 helo=lists.gnu.org)
+Received: from localhost ([::1]:43034 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1heiPg-0003vj-Am
-	for alex.bennee@linaro.org; Sat, 22 Jun 2019 11:58:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43507)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hesSy-0000Eh-Lf
+	for alex.bennee@linaro.org; Sat, 22 Jun 2019 22:42:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42830)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1heiPW-0003vL-S3
- for qemu-arm@nongnu.org; Sat, 22 Jun 2019 11:58:39 -0400
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hesSo-0000EU-EO
+ for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1heiPV-0003Jf-Ns
- for qemu-arm@nongnu.org; Sat, 22 Jun 2019 11:58:38 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41686)
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hesSn-00032G-CK
+ for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:42 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:46566)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1heiPV-0003Iu-H1
- for qemu-arm@nongnu.org; Sat, 22 Jun 2019 11:58:37 -0400
-Received: by mail-ot1-x342.google.com with SMTP id 43so4502570otf.8
- for <qemu-arm@nongnu.org>; Sat, 22 Jun 2019 08:58:37 -0700 (PDT)
+ (Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
+ id 1hesSn-0002yN-5H
+ for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:41 -0400
+Received: by mail-pg1-x541.google.com with SMTP id v9so5198835pgr.13
+ for <qemu-devel@nongnu.org>; Sat, 22 Jun 2019 19:42:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=imCTxdPEt5J++AIJaO2+JaMor4MuSWehoKKHw0VfX4A=;
- b=ldsJyRj2+fKmIGTN/FepHU07GBewmcV4938R+cDf6IP9HCBBxCWoMjYXbIqn9aR3OO
- VuWPkX3NYZ67BaKdAsut5AQ1odEEfxNk1fFYGa3Dm/tsyBoxCs43+qGoAsism/6mdoJp
- Ulcp1MxrdYRoFej7XJlOoOiNEL9lencHDWvjUtM5YOCzrOEPkvD2cZXMKFD+kR5eFQ1u
- ixk+393vFHiZWAWW17eTbG9S/tKXbT+v6o4TcNLbx5HsBpfuigZeeMCcRGntCGh1xwWs
- QtMbupFv+ocIkyGppjKyKaHDMkhG0L3GkK+GZBDL60GDK/ikuqCEJpI7NB5Ph72M8X7I
- ipKA==
+ h=from:to:cc:subject:date:message-id;
+ bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
+ b=tdbHGCRPIBoslKmdoU01I/Wwo/ZtvJKSsAmKGtNlfSsBWWP3MXqEm3GXA3gGNsGQn/
+ IfhHKTdtcXEGFkOe1qWgJ7OblGbK5oVqz1iLb1cyq5ZBDgJzls7ekQgNNRb2P0dz/Eip
+ G3uV9pvj05ThW2aoINEFrxmCRbjWDt+M1v1k0j4FgYxd6DhK+BKgjeHF3DLU3dmzKWNq
+ Gvd5nj3yLH6m/QC0+gvP1rJnMml4OJdyW6WmbhEvf5FkJ5cezwZuhAk4vbzOTCA4RE1H
+ 1ajmlBabO09CMFgyNsZ+efrxB1EdzxR/NV6Q753c3Zy+fBEYzt3iuVpcXFHgoMTomntJ
+ nR6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=imCTxdPEt5J++AIJaO2+JaMor4MuSWehoKKHw0VfX4A=;
- b=anFhYSHa+fkbuXuXm+0ZOSk1e3UHebnV58fVAxEV3aMw2PxHYLRDZkKbXZrI1bJgKP
- zZ6zcMzz2XIgwwzbP6hJlBeK/7EW+mJaoAHmvNoH778eV9TyXKi+Qjk4JSlA51J8s0Tm
- kDOYadSgz1ijiAKG/SLlcLqdsiGjA3tSbXLsU4Oh0hurwUJ4q9UsOw8o7bPYs0g8pIhV
- vQDMvyVnx/VSEec4CV5eT5mDeIqoAEVmcYp9Vf/Xwz+KsNwRf650I6t8b4k08EGOVXbo
- tieZV21DvMef3N0iqB/H5vqj6yLDsO6HMdCF6E1v6DBbVnu/gb3juDxe5Xe4WEvipUPi
- NzkA==
-X-Gm-Message-State: APjAAAVLHeS2GiJwOz08v/wC7JzEIaV0xBmJ8PNAq2tcR9XfTUL08EU7
- spWr14agmpGVcfmOjddzcisvnPlHD9D7PKQeLeBJxw==
-X-Received: by 2002:a9d:711e:: with SMTP id n30mr22171787otj.97.1561219116481; 
- Sat, 22 Jun 2019 08:58:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190620222314.2670-1-wainersm@redhat.com>
- <CAFEAcA92m9n7FR2a6=ecnr5bn-Sq97LZRxHRuzWO-OcbdgA4fw@mail.gmail.com>
- <20190621190421.GA679@localhost.localdomain>
-In-Reply-To: <20190621190421.GA679@localhost.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 22 Jun 2019 16:58:25 +0100
-Message-ID: <CAFEAcA-x_GSxiULrxvRj7dtCLM-r4YvRpwkVosW+1SutAUJMoA@mail.gmail.com>
-To: Cleber Rosa <crosa@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
+ b=Xg1fVO5/5GEVVMz4pz1XVt0B9hIoFEs1VcTlmUae5I1pVIcnYwOmHojy09jLfd46Bj
+ P1AIfDlLNN0uoXAntbXjM/pcQs8VD5V/5G8gHE2k7d7BVEiiWRdOWmmx0YMmNFb0iVJi
+ UWO7KjHqW7QxdbdOGhPkKa47DxhlO3+y4UXVKvbCCki/beXbKEpjY5xuGlv0iQ+KZyG3
+ JIQQRxx704v2tVx8CFKXEF9GaEAa779ImN96vfmmU2q3ZvoKH4yfONO7OECcWf8Q5uoG
+ 5QsYz6YMyAr1InO85QkRWIsvmvrDb0wtsNcBI53fsZbw8NP7H0asQaskE19OEBBptpwy
+ svSg==
+X-Gm-Message-State: APjAAAU5nisRm6KgGR3F6AUQXhC8aeTu9Ah2qTxZVQcELn6Cc9SlQo9v
+ sjqQmrKV0GExcACm2z+O5myjig==
+X-Received: by 2002:a17:90a:de02:: with SMTP id
+ m2mr16236861pjv.18.1561257758821; 
+ Sat, 22 Jun 2019 19:42:38 -0700 (PDT)
+Received: from localhost.localdomain ([222.131.159.173])
+ by smtp.gmail.com with ESMTPSA id o13sm7007146pje.28.2019.06.22.19.42.36
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sat, 22 Jun 2019 19:42:38 -0700 (PDT)
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+To: peter.maydell@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Sun, 23 Jun 2019 10:40:53 +0800
+Message-Id: <1561257655-25907-1-git-send-email-hongbo.zhang@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-arm] [RFC v2 PATCH] hw/arm/virt: makes virt a default
- machine type
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::541
+Subject: [Qemu-devel] [PATCH v8 0/2] Add Arm SBSA Reference Machine
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ju9mwB6IyIHP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, radoslaw.biernacki@linaro.org,
+ leif.lindholm@linaro.org, ard.biesheuvel@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dsKW+YQ8zcDm
 
-On Fri, 21 Jun 2019 at 20:04, Cleber Rosa <crosa@redhat.com> wrote:
-> The experience acquired here deserves the highest consideration, but I
-> can't help myself to wonder if this isn't one of the (conceptual)
-> reasons for parameters such as '-nodefaults'.  I know QEMU doesn't
-> promise the same behavior across different targets, but that could
-> improve considerably with very cheap actions.
+For the Aarch64, there is one machine 'virt', it is primarily meant to
+run on KVM and execute virtualization workloads, but we need an
+environment as faithful as possible to physical hardware,  to support
+firmware and OS development for pysical Aarch64 machines.
 
-Yeah, there are probably improvements we could make. The
-usual constraints apply:
- * we don't want to break compatibility with existing used
-   command lines in the wild
- * ideally, we should be consistent across target architectures
-   and across machine types about how things work (this is
-   an ideal we obviously don't live up to today in many places)
- * we don't want to back ourselves into awkward corners for
-   the future (the qemu-system-arm default machine type was
-   originally 'integratorcp' which no doubt made sense in 1998
-   or whenever it was, but was nothing but confusing and the
-   wrong choice for 99% of users by a decade or so later.
-   x86 is kind of an outlier for having such longevity of "all
-   hardware looks basically the same".)
+This machine comes with:
+ - Re-designed memory map.
+ - CPU cortex-a57.
+ - EL2 and EL3 enabled.
+ - GIC version 3.
+ - System bus AHCI controller.
+ - System bus XHCI controller.
+ - CDROM and hard disc on AHCI bus.
+ - E1000E ethernet card on PCIE bus.
+ - VGA display adaptor on PCIE bus.
+ - Only minimal device tree nodes.
+And without:
+ - virtio deivces.
+ - fw_cfg device.
+ - ACPI tables.
 
-> You can consider me biased (I do consider myself), but trying to wear
-> the hat of a user first interacting with QEMU, I would expect a (any)
-> reasonably capable environment that can represent the given target.
-> That will probably be a different environment than the one I may need,
-> and I think that's fine.
+Arm Trusted Firmware and UEFI porting to this are done accordingly, and
+it should supply ACPI tables to load OS, the minimal device tree nodes
+supplied from this platform are only to pass the dynamic info reflecting
+command line input to firmware, not for loading OS.
 
-I'm really not sure what you're trying to suggest here; maybe
-you could clarify? If you specify a target (ie a machine type),
-you get that machine type. If you don't specify a target, then
-we can't really guess what you were hoping to run and
-magically pick something that works.
+v8 changes:
+ - rebase to latest QEMU tree
+ - use new way of creating flash as in 'virt' machine
+ - other minor typos and comments update
 
-The main problem here is that users expect "all the world is a PC"
-type behaviour, ie they can just provide qemu-system-arm or
-qemu-system-aarch64 with no command line arguments except
-a guest kernel (which is half the time something they found under
-a rock or extracted from some firmware image) or a guest CDROM
-image and have it boot, because that generally works for x86. It
-doesn't and can't work for Arm, because of the much greater
-diversity of machine types and the way that kernels are often
-only compiled to work on a specific subset of machines.
-Making the user specify a machine type means they do at least
-get prompted that the world is more complicated than they
-think it is and there are decisions that have to be made.
+v7 changes:
+ - edit memory map for PCIE slightly
+ - add another secure UART which can be used for RAS and MM from EL0.
 
-In any case even if we did default to "virt" the user still
-has to specify a CPU type, may well also want to provide
-a GIC version (gicv3 being better than the default v2),
-likely more RAM than the very small default, they need to provide
-all the virtio devices, and so on and so on. So giving
-them one option they no longer need to specify doesn't
-really make it any easier IMHO.
+v6 changes:
+ - rebased to the latest QEMU tree
+ - rechecked all the header files included
+ - added the newly introduced system bus EHCI controller
+ - removed the machine_done callback due to commit 5614ca80
+ - updated block comments styles according to checkpatch.pl
+ - use Kconfig to add new file
+ - use private SBSA* types defination instead of VIRT* in virt.h
+   since nobody else using them so they are in the .c file instead
+   of a new .h file
 
-thanks
--- PMM
+v5 changes:
+ - removed more lines derived from virt.c
+ - designed a new memory map
+ - splitted former one patch into two for easier review
+ - cancled previous EHCI and new HXCI coming later separately
+
+V4 changes:
+ - rebased to v3.0.0
+ - removed timer, uart, rtc, *hci device tree nodes
+   (others were removerd in v3)
+ - other minore codes clean up, mainly unsed header files, comments etc.
+
+V3 changes:
+ - rename the platform 'sbsa-ref'
+ - move all the codes to a separate file sbsa-ref.c
+ - remove paravirtualized fw_cfg device
+ - do not supply ACPI tables, since firmware will do it
+ - supply only necessary DT nodes
+ - and other minor code clean up
+
+Hongbo Zhang (2):
+  hw/arm: Add arm SBSA reference machine, skeleton part
+  hw/arm: Add arm SBSA reference machine, devices part
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Kconfig                  |  14 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/sbsa-ref.c               | 806 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 822 insertions(+)
+ create mode 100644 hw/arm/sbsa-ref.c
+
+-- 
+2.7.4
+

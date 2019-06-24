@@ -1,138 +1,248 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3713638wrg;
-        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyHsc8RjnjuAM0AGWubsYrFiwpzFiDNdOyazKhbHxdEcn+LvIm8EmqMDHli+06yNi1dvv/b
-X-Received: by 2002:a17:90a:ac13:: with SMTP id o19mr24516367pjq.143.1561378774604;
-        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561378774; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3725597wrg;
+        Mon, 24 Jun 2019 05:33:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytk/dVeA/b+e0aatrWnuvEyEXFbG/wAZWgFN4qqU9vTiXqyzFgvwGelzfURhNPNbSqyEAR
+X-Received: by 2002:a63:2310:: with SMTP id j16mr8710136pgj.238.1561379586010;
+        Mon, 24 Jun 2019 05:33:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561379586; cv=none;
         d=google.com; s=arc-20160816;
-        b=YhVbCZ6fF7CRJmYB+dPH8tDZa3YS0cBBX4xPmTxGK61Wc0zQ/3j8bGadq1YcMYDCtq
-         HBydAhNAyj2CZLrs9xZBwwvL30UuxhSBHxnckQHb91eezgNxPCUpVOyk1Zjwo/ZF5yng
-         6Xv1HsuVjGxt4vdO/tNFodrK6Bk2yoDOfIsl5e7h0jez5ce8e9vSZg2Veicplp77pD+e
-         9XQFUKZ8wGFB4sLuerYkwvi2y9gLPQvK/0kjn5U66YIJGVCVTsElNROTx78c5XTiydab
-         ilf1/myqEa29xFavQKMz7JS5Fq3pJuiypONRHPoEgj1wALVvW9h9oOctS7E8TK79SQdf
-         7sUg==
+        b=SzK+39kxMPWi/eu/ToVNyQhf4HdFkFkogvBC2EIgTIXw36QZy0+emYu32NWFaUsybc
+         RjHysAUE4nuJpMxgfscdgpcLmFXU0w0xv7RPYhiYldRElKtfMd9A+fzisSh2kCD4ppd+
+         TQqLpnS6FgW0OvqKXMPRydBrFpWBHkNAgxZCvYzhGOFsyVUf8hNrcYFLC27fgKx0Z4OV
+         7KQ5LTQDXlnfrlnUok1pLcdW9fCawll55Hu3J250hu8LHCbWFcbbvYyZTuzR/thToMhe
+         mYWkVGkP9QmP2tim5vuxVfDuYhLxQsvZ6WWCE3YjPT/f6OFyemMYzyUZcY2XPS5YB+mq
+         fGhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=1yGCeT+OKPV4EJrKL9NleeeG6Pschl5Axv6Q2An23oc=;
-        b=hbTX8BUN/zDnhceqmvhszNYjb9lOIrJ71ZCcrsPokunFea+DbI8R+O47E0Y8RytPv+
-         8f5aqIk/Gl2IZsCA1nSI2ipWnCZRP1l/WmXD/Wm0Z46A/TDAYKX+cnv6XX8vog6lE4JO
-         fe9vp5jJ9Bk0kozQZJmAupCelsM4rG9pF/gvDG5hS+sg/wD9KLNcaAq9kbX1kbKuwp2F
-         qWX3HxSQnzmJpmW6Wed5fAj0uWBP0lO1/kIqL7Rh7t/zXUXokX8pEp6mOk5JRSi7Wj55
-         chzS4BRPepG4lrujT0yy51yXax51n/hoK5tcngqmKFF8JjLpnU87gSDRRz8mjoKHlNgb
-         xVyQ==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:subject:cc:to:from:date;
+        bh=bO6m8nSv0qWltO9le76nk0cUgdpE/tnbNxZqagshDTA=;
+        b=m+6UWV8Q30d7kxC5V7pWYcL7B8Uq8mOITN8r3cSv1HwW2D2tQt0yiXi8Po4mLNHIa+
+         JmqCi1Wkgy0v/K050pMwmUX2F8PAz6inUyrkSkcydgunlwW2GuwaWzk9A2WfHk2zvTUT
+         HzwuGpiZPzjY5lkG8guHbZIyW0g9FnTq5/N+MD759r0fNo5YJesrwRQsm8Pb4lMx1rNu
+         ttvjlzppZ431iiV4potZ2ocCAQpCmz1LezJ3gLmVDoyAtFtjQEVvm5FRKsqC2/2+ZzFd
+         lKT+KoW5kmy1xQB2IH8mDyehqJiuFyFmr3w0ahAwmwTegk8fX3uz9qpC57I55S9+ryCD
+         iZDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id d12si27870pla.121.2019.06.24.05.19.34;
-        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
+        by mx.google.com with ESMTP id e24si9924093pgh.408.2019.06.24.05.33.05;
+        Mon, 24 Jun 2019 05:33:06 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730143AbfFXMTd (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Mon, 24 Jun 2019 08:19:33 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:43308 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726984AbfFXMTd (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 24 Jun 2019 08:19:33 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 2BC7AF8DB1BAB1C616A2;
-        Mon, 24 Jun 2019 20:19:28 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Mon, 24 Jun 2019
- 20:19:21 +0800
-Subject: Re: [PATCH v17 01/10] hw/arm/virt: Add RAS platform version for
- migration
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        id S1730258AbfFXMdE (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Mon, 24 Jun 2019 08:33:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49150 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726453AbfFXMdE (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 24 Jun 2019 08:33:04 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id DD8803087948;
+        Mon, 24 Jun 2019 12:33:03 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id EE248600D1;
+        Mon, 24 Jun 2019 12:32:53 +0000 (UTC)
+Date:   Mon, 24 Jun 2019 14:32:49 +0200
+From:   Igor Mammedov <imammedo@redhat.com>
+To:     Dongjiu Geng <gengdongjiu@huawei.com>, <pbonzini@redhat.com>
+Cc:     <mst@redhat.com>, <shannon.zhaosl@gmail.com>,
+        <peter.maydell@linaro.org>, <lersek@redhat.com>,
+        <james.morse@arm.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
         <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
         <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+Subject: Re: [PATCH v17 08/10] KVM: Move related hwpoison page functions to
+ accel/kvm/ folder
+Message-ID: <20190624143249.37a5e6d5@redhat.com>
+In-Reply-To: <1557832703-42620-9-git-send-email-gengdongjiu@huawei.com>
 References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-2-git-send-email-gengdongjiu@huawei.com>
- <20190620140409.3c713760@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <fbd558d5-03b7-df5c-e781-549261207221@huawei.com>
-Date:   Mon, 24 Jun 2019 20:19:12 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+        <1557832703-42620-9-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190620140409.3c713760@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Mon, 24 Jun 2019 12:33:04 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kJDUK1kR/kyc
+X-TUID: +PS+tMBYHalZ
+
+On Tue, 14 May 2019 04:18:21 -0700
+Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+
+> kvm_hwpoison_page_add() and kvm_unpoison_all() will be used both
+> by X86 and ARM platforms, so move these functions to a common
+> accel/kvm/ folder to avoid duplicate code.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+>  accel/kvm/kvm-all.c     | 33 +++++++++++++++++++++++++++++++++
+>  include/exec/ram_addr.h | 24 ++++++++++++++++++++++++
+>  target/arm/kvm.c        |  3 +++
+>  target/i386/kvm.c       | 34 +---------------------------------
+>  4 files changed, 61 insertions(+), 33 deletions(-)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 524c4dd..b9f9f29 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -625,6 +625,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+>      return ret;
+>  }
+>  
+> +typedef struct HWPoisonPage {
+> +    ram_addr_t ram_addr;
+> +    QLIST_ENTRY(HWPoisonPage) list;
+> +} HWPoisonPage;
+> +
+> +static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+> +    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+> +
+> +void kvm_unpoison_all(void *param)
+> +{
+> +    HWPoisonPage *page, *next_page;
+> +
+> +    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+> +        QLIST_REMOVE(page, list);
+> +        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+> +        g_free(page);
+> +    }
+> +}
+> +
+> +void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+> +{
+> +    HWPoisonPage *page;
+> +
+> +    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+> +        if (page->ram_addr == ram_addr) {
+> +            return;
+> +        }
+> +    }
+> +    page = g_new(HWPoisonPage, 1);
+> +    page->ram_addr = ram_addr;
+> +    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+> +}
+> +
+>  static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
+>  {
+>  #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index 139ad79..193b0a7 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+
+it's not file for KVM specific code,
+maybe Paolo could suggest a bettor place ...
 
 
-
-On 2019/6/20 20:04, Igor Mammedov wrote:
-> On Tue, 14 May 2019 04:18:14 -0700
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> Support this feature since version 4.1, disable it by
->> default in the old version.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->>  hw/arm/virt.c         | 6 ++++++
->>  include/hw/arm/virt.h | 1 +
->>  2 files changed, 7 insertions(+)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 5331ab7..7bdd41b 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2043,8 +2043,14 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
->>  
->>  static void virt_machine_4_0_options(MachineClass *mc)
->>  {
->> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
->> +
->>      virt_machine_4_1_options(mc);
->>      compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
->> +    /* Disable memory recovery feature for 4.0 as RAS support was
->> +     * introduced with 4.1.
->> +     */
->> +    vmc->no_ras = true;
-> 
-> So it would mean that the feature is enabled unconditionally for
-> new machine types and consumes resources whether user needs it or not.
-> 
-> In light of the race for leaner QEMU and faster startup times,
-> it might be better to make RAS optional and make user explicitly
-> enable it using a machine option.
-
-I will add a machine option to make RAS optional, do you think we should enable or disable it by default? I think it is better if we enable it by default.
-
-> 
-> 
->>  }
->>  DEFINE_VIRT_MACHINE(4, 0)
->>  
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index 4240709..7f1a033 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -104,6 +104,7 @@ typedef struct {
->>      bool disallow_affinity_adjustment;
->>      bool no_its;
->>      bool no_pmu;
->> +    bool no_ras;
->>      bool claim_edge_triggered_timers;
->>      bool smbios_old_sys_ver;
->>      bool no_highmem_ecam;
-> 
-> .
-> 
+> @@ -116,6 +116,30 @@ void qemu_ram_free(RAMBlock *block);
+>  
+>  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
+>  
+> +/**
+> + * kvm_hwpoison_page_add:
+> + *
+> + * Parameters:
+> + *  @ram_addr: the address in the RAM for the poisoned page
+> + *
+> + * Add a poisoned page to the list
+> + *
+> + * Return: None.
+> + */
+> +void kvm_hwpoison_page_add(ram_addr_t ram_addr);
+> +
+> +/**
+> + * kvm_unpoison_all:
+> + *
+> + * Parameters:
+> + *  @param: some data may be passed to this function
+> + *
+> + * Free and remove all the poisoned pages in the list
+> + *
+> + * Return: None.
+> + */
+> +void kvm_unpoison_all(void *param);
+> +
+>  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+>  #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
+>  
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 5995634..6d3b25b 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -29,6 +29,7 @@
+>  #include "exec/address-spaces.h"
+>  #include "hw/boards.h"
+>  #include "qemu/log.h"
+> +#include "exec/ram_addr.h"
+>  
+>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>      KVM_CAP_LAST_INFO
+> @@ -187,6 +188,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>  
+>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>  
+> +    qemu_register_reset(kvm_unpoison_all, NULL);
+> +
+>      return 0;
+>  }
+>  
+> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+> index 3b29ce5..9bdb879 100644
+> --- a/target/i386/kvm.c
+> +++ b/target/i386/kvm.c
+> @@ -46,6 +46,7 @@
+>  #include "migration/blocker.h"
+>  #include "exec/memattrs.h"
+>  #include "trace.h"
+> +#include "exec/ram_addr.h"
+>  
+>  //#define DEBUG_KVM
+>  
+> @@ -467,39 +468,6 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+>  }
+>  
+>  
+> -typedef struct HWPoisonPage {
+> -    ram_addr_t ram_addr;
+> -    QLIST_ENTRY(HWPoisonPage) list;
+> -} HWPoisonPage;
+> -
+> -static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+> -    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+> -
+> -static void kvm_unpoison_all(void *param)
+> -{
+> -    HWPoisonPage *page, *next_page;
+> -
+> -    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+> -        QLIST_REMOVE(page, list);
+> -        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+> -        g_free(page);
+> -    }
+> -}
+> -
+> -static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+> -{
+> -    HWPoisonPage *page;
+> -
+> -    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+> -        if (page->ram_addr == ram_addr) {
+> -            return;
+> -        }
+> -    }
+> -    page = g_new(HWPoisonPage, 1);
+> -    page->ram_addr = ram_addr;
+> -    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+> -}
+> -
+>  static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
+>                                       int *max_banks)
+>  {

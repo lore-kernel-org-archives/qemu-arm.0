@@ -1,578 +1,185 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3869486wrg;
-        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzj+oGrcT/f7euWXrJmRf+tFwZY5zRJ4dapz3MmwBema/tbmn1v15c4/5H/zJVRTZQWIodq
-X-Received: by 2002:a50:b1e7:: with SMTP id n36mr116727260edd.227.1561388390391;
-        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561388390; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3894635wrg;
+        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyno1XcF185wQlNMh97v4Tpr4gGInCpkZ9jWHrb6gcpkyhsEuSygtb257GanP5B2KpS1pqK
+X-Received: by 2002:a50:94d9:: with SMTP id t25mr130380346eda.32.1561389821765;
+        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561389821; cv=none;
         d=google.com; s=arc-20160816;
-        b=KEFLqr3PcBm2w8sdQZj9Gb/gv4MAk41gGb7WIYkpw7pjJhIwFAFC6JyjFVaAyUCxXW
-         5G53q1cKyUHWZ1ZuOwIttQErr9zwgZ7ZRw8+mxPTILJ9otmUlIeMkjb4vz/GZv5BSsWm
-         UgTUPmb1UYkwDBEw+sPamPmKsE+AWZ1rOOHKGfZrxKmFCkD/33ZNj5bFW0vuEdmXrX+L
-         cqJMYvdbW/fu7vpm66VeHX2aOKuTrjioqYns0CSlm9lH6kKc5a0hwZpdxqn1obzFCDIx
-         PCAi60ejUceOWKhPV4JX3CdT3KP3xd5RaVNdteFl86REXUrKw2yQ9M7nas7TOMIxpDc9
-         GWkw==
+        b=UiOSaWdcbrkpudXrXuWchur317nQ5UtWO48AHWuAq3oeCHd0UCiZfKy930pnrUAE4H
+         QtjO7l4/XyKAMjnLXKGnoDNA9MuM+RHngx7qt+pCJB4ScxCEvt88NPRpkqIxtUaCOeQs
+         euLfVEpJ7LJCF2lse35JsWSxiAI1Jl355OJjUQLOrC5ccSHwkqsWDCj3w0JxfkfZpo7K
+         2fR9bctYwnUhE7RsSatnvvfNVz2LOOxjasIZwxQCyqOMPxK1PSAJms5DKhGZ2VJ1dQEU
+         QTO5IWT8xGdyxaZM6Zjn2PQIEvavT8YsWK/kj0GMs5jJmbYmirQlwWGy0VhYdugganwX
+         Ri8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=3SxQjk8GmBH9tq0eCLPXXAKYtbWreFe0BAfnsgU1ZGs=;
-        b=dDbjaYXcqNA2+TJ46enb+IQ2K80SWXaV094hdCBrch/JEyk4F+X83xiRh5mEFEQAXv
-         jVlyG7qOOj5J205hFYLxoqW/1L8bBq6ntp/Id3/ONLWxkBq9pNQvZrh2VTROqW8gV0qA
-         uOZfAMGslDGmPzpOh8rXCDvjnBTyQ6lwoXrLDnavjxXiKC2a/ALPHrmkL7pynyING7v4
-         tMjKy1sNc5B6EUwxnZZtwK+l0rjh/nXTnz5m9Pt0agMA3NV+hAngK02V+lUUCHu9NQuU
-         gHGDZa6Fr9i+qzKsXTJUWiWJGFuK1fUcWXQsDr1ACTlxqMHJQb9vwBqextaqrbQVE7JQ
-         FjDA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=HsGCODuj3tFF2PIKrepz+fL0M/+7VFs0G5Oaw07yWHg=;
+        b=HkvXSqaecoGDrW4wScRPyBO9sGh3AajwrdKmMZP0rGk161jcPz9J4RbVkOvnV0idNc
+         Zz4kUtKGiV9kKDCvUfKIqEcaRwIeWtAXvhUMquIIC4malq4I3YwZSDVlUG9yTMuwzA1N
+         66wjcCH9WQoVz0WjnFKneJhJooGNp/C1ODnAUnXVCj7O3rlFnyvPYNN0vamB+jwoGlKy
+         5Z7NpsTf7VlcvC1A0IC+uEeihvbqi5MHTK/clcSTYWpJtRQ889en7QG7QuxDAKVSIpST
+         LPM2Z28fGG2Ct6n8CRaG5d41esmdVmgcuv1/MGM0nBaeqPndW35nrIBgc3ghp38DJ6w4
+         za0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y2si10523694edb.188.2019.06.24.07.59.50
+        by mx.google.com with ESMTPS id o11si4713725ejr.105.2019.06.24.08.23.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52030 helo=lists.gnu.org)
+Received: from localhost ([::1]:52292 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfQRh-0005E6-Dw
-	for alex.bennee@linaro.org; Mon, 24 Jun 2019 10:59:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33908)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfQom-0006vo-Kf
+	for alex.bennee@linaro.org; Mon, 24 Jun 2019 11:23:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42125)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <lersek@redhat.com>) id 1hfQM1-0000R9-Ud
- for qemu-devel@nongnu.org; Mon, 24 Jun 2019 10:54:00 -0400
+ (envelope-from <berrange@redhat.com>) id 1hfQog-0006vi-61
+ for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:23:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lersek@redhat.com>) id 1hfQLz-0007jZ-Lq
- for qemu-devel@nongnu.org; Mon, 24 Jun 2019 10:53:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48016)
+ (envelope-from <berrange@redhat.com>) id 1hfQoe-0000sJ-Oh
+ for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:23:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50352)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lersek@redhat.com>)
- id 1hfQLr-0006we-2w; Mon, 24 Jun 2019 10:53:47 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ (Exim 4.71) (envelope-from <berrange@redhat.com>)
+ id 1hfQoe-0000oR-Ej; Mon, 24 Jun 2019 11:23:32 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 23256309265C;
- Mon, 24 Jun 2019 14:53:19 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-226.ams2.redhat.com
- [10.36.116.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 55BCB600CD;
- Mon, 24 Jun 2019 14:53:12 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id A948FC1EB201;
+ Mon, 24 Jun 2019 15:23:31 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.17.95])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 125B35D9D3;
+ Mon, 24 Jun 2019 15:23:22 +0000 (UTC)
+Date: Mon, 24 Jun 2019 16:23:20 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <20190624152320.GK17698@redhat.com>
 References: <20190620122132.10075-1-philmd@redhat.com>
  <20190620122132.10075-2-philmd@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <6a0086e7-79ea-fc5e-6359-c1d4d256bf6e@redhat.com>
-Date: Mon, 24 Jun 2019 16:53:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ <6a0086e7-79ea-fc5e-6359-c1d4d256bf6e@redhat.com>
+ <ebe04ce2-0e0a-c764-e235-3aabd420439e@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190620122132.10075-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Disposition: inline
+In-Reply-To: <ebe04ce2-0e0a-c764-e235-3aabd420439e@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Mon, 24 Jun 2019 14:53:19 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.32]); Mon, 24 Jun 2019 15:23:31 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v5 1/3] hw/firmware: Add Edk2Crypto and
- edk2_add_host_crypto_policy()
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/3] hw/firmware: Add
+ Edk2Crypto and edk2_add_host_crypto_policy()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N/QD8nY7/AK3
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +0JzRj7R6MtH
 
-(+Daniel)
-
-On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
-> The Edk2Crypto object is used to hold configuration values specific
-> to EDK2.
+On Mon, Jun 24, 2019 at 05:14:23PM +0200, Laszlo Ersek wrote:
+> On 06/24/19 16:53, Laszlo Ersek wrote:
+> > (+Daniel)
+> >=20
+> > On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
 >=20
-> The edk2_add_host_crypto_policy() function loads crypto policies
-> from the host, and register them as fw_cfg named file items.
-> So far only the 'https' policy is supported.
+> >>   $ qemu-system-x86_64 \
+> >>       --object edk2_crypto,id=3Dhttps,\
+> >>               ciphers=3D/etc/crypto-policies/back-ends/openssl.confi=
+g,\
+> >>               cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
 >=20
-> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+> (12) Regarding the command line. It just occurs to me that Daniel
+> suggested [*] that libvirt should not be taught about this feature
+> specifically.
 
-(1) s/usercase/use case/, s/Boof/Boot/
+Oh yes, thank you for reminding me of this point.
 
+Essentially this is the same use case as with the GNUTLS default crypto
+policy in QEMU.
+
+The tls-creds-x409 object type in QEMU has a "priority" property which
+lets you set a GNUTLS priority string eg
+
+    --object tls-creds-x509,id=3Dtls0,priority=3D@SYSTEM
+
+In practice, however, libvirt never uses this because the QEMU configure
+script has a --tls-priority arg and distros will use that arg to set the
+desired priority at build time. eg Fedora/RHEL build QEMU with the
+"--tls-priority=3D@QEMU,SYSTEM" string and libvirt hasn't bothered to
+make use of the 'priority' arg for tls-creds-x509 as a result.
+
+I'd expect similar to be done with EDK2 priority where Fedora/RHEL sets
+a compile time ciphers/cacerts list in RPM build.
+
+Contrary to what we did with GNUTLS though, libvirt might still allow
+this to be overridden at runtime, since the handling of the ciphers
+is not as smart as we get with GNUTLS priority setting.
+
+> Thus, I think we need properties that are "smarter" than plain
+> user-specified strings:
 >=20
-> Usage example:
+> - they should have default values (the ones your example includes above=
+)
 >=20
-> - via the command line:
+> - for each of the properties: if the default pathname fails to identify
+> a file, then treat it as a normal situation (leave the corresponding
+> fields NULL)
 >=20
->   $ qemu-system-x86_64 \
->       --object edk2_crypto,id=3Dhttps,\
->               ciphers=3D/etc/crypto-policies/back-ends/openssl.config,\
->               cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+> - if the user overrides the default, and the pathname resolution fails,
+> then that should generate an error
 >=20
-> - via QMP:
+> - the user should be permitted to override the default such that the
+> corresponding setting is disabled (i.e. no error, but also no loading)
 >=20
->   {
->     "execute": "object-add",
->     "arguments": {
->       "qom-type": "edk2_crypto",
->       "id": "https",
->       "props": {
->         "ciphers": "/etc/crypto-policies/back-ends/openssl.config",
->         "cacerts": "/etc/pki/ca-trust/extracted/edk2/cacerts.bin"
->       }
->     }
->   }
 >=20
-> (On Fedora these files are provided by the ca-certificates and
-> crypto-policies packages).
+> It's too bad that I'm not sure about the right way to implement this. I=
+t
+> reminds me of On/Off/Auto, but only vaguely.
 >=20
-> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+> In fact, if we never want to teach libvirt about this feature, then we
+> essentially expect QEMU to auto-load these files, whenever they exist -=
+-
+> even if the guest ends up booting something other than edk2 firmware!
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v3:
-> - inverted the if() logic
-> - '-object' -> '--object' in commit description (Eric)
-> - reworded the 'TODO: g_free' comment
-> v4:
-> - do not return pointer to alloc'd data (Markus)
-> - INTERFACE_CHECK -> OBJECT_CLASS_CHECK (Markus)
-> - path -> filename (Laszlo)
-> - dropped the 'TODO: g_free' comment (Markus)
-> v5:
-> - only allow 1 singleton using the UserCreatableClass::complete
->   callback (Markus, Laszlo)
-> - object own fw_cfg 'file' content, no need for
->   fw_cfg_add_file_from_host() (Laszlo)
-> - g_file_get_contents() called when object is instantiated
->   and report error, the machine 'done' notifier do not have
->   to manage errors (do not fail).
-> - add QMP example
-> -
-> - do not add docs/interop/firmware.json to MAINTAINERS
-> ---
->  MAINTAINERS                             |   2 +
->  hw/Makefile.objs                        |   1 +
->  hw/firmware/Makefile.objs               |   1 +
->  hw/firmware/uefi_edk2_crypto_policies.c | 209 ++++++++++++++++++++++++
->  include/hw/firmware/uefi_edk2.h         |  30 ++++
->  5 files changed, 243 insertions(+)
->  create mode 100644 hw/firmware/Makefile.objs
->  create mode 100644 hw/firmware/uefi_edk2_crypto_policies.c
->  create mode 100644 include/hw/firmware/uefi_edk2.h
+> [*] https://bugzilla.redhat.com/show_bug.cgi?id=3D1536624#c11 --
+> unfortunately, this is a private RHBZ :(
 >=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d32c5c2313..28de489134 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2262,6 +2262,8 @@ EDK2 Firmware
->  M: Laszlo Ersek <lersek@redhat.com>
->  M: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->  S: Supported
-> +F: hw/firmware/uefi_edk2_crypto_policies.c
-> +F: include/hw/firmware/uefi_edk2.h
->  F: pc-bios/descriptors/??-edk2-*.json
->  F: pc-bios/edk2-*
->  F: roms/Makefile.edk2
-> diff --git a/hw/Makefile.objs b/hw/Makefile.objs
-> index d770926ba9..c13b6ee0dd 100644
-> --- a/hw/Makefile.objs
-> +++ b/hw/Makefile.objs
-> @@ -8,6 +8,7 @@ devices-dirs-$(CONFIG_SOFTMMU) +=3D char/
->  devices-dirs-$(CONFIG_SOFTMMU) +=3D cpu/
->  devices-dirs-$(CONFIG_SOFTMMU) +=3D display/
->  devices-dirs-$(CONFIG_SOFTMMU) +=3D dma/
-> +devices-dirs-$(CONFIG_SOFTMMU) +=3D firmware/
->  devices-dirs-$(CONFIG_SOFTMMU) +=3D gpio/
->  devices-dirs-$(CONFIG_HYPERV) +=3D hyperv/
->  devices-dirs-$(CONFIG_I2C) +=3D i2c/
+> Thanks
+> Laszlo
 
-(1) I wonder if this granularity is the right one. Do we really want to
-link this code into all softmmu targets, even if they (a) don't support
-fw_cfg, (b) and/or have no bindings (per spec) for UEFI?
-
-I can't recommend anything better (i.e. I can't really be "constructive"
-here), but the above seems a bit to broad. In practice anyway, we only
-need this for the i386, x86_64, arm, and aarch64 softmmu targets (for
-now anyway).
-
-FWIW, the vmgenid device, which we tend to use as an example here (for
-some aspects anyway), seems to have its own knob: CONFIG_ACPI_VMGENID.
-
-
-> diff --git a/hw/firmware/Makefile.objs b/hw/firmware/Makefile.objs
-> new file mode 100644
-> index 0000000000..ea1f6d44df
-> --- /dev/null
-> +++ b/hw/firmware/Makefile.objs
-> @@ -0,0 +1 @@
-> +common-obj-y +=3D uefi_edk2_crypto_policies.o
-> diff --git a/hw/firmware/uefi_edk2_crypto_policies.c b/hw/firmware/uefi=
-_edk2_crypto_policies.c
-> new file mode 100644
-> index 0000000000..a0164272ea
-> --- /dev/null
-> +++ b/hw/firmware/uefi_edk2_crypto_policies.c
-> @@ -0,0 +1,209 @@
-> +/*
-> + * UEFI EDK2 Support
-> + *
-> + * Copyright (c) 2019 Red Hat Inc.
-> + *
-> + * Author:
-> + *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "qom/object_interfaces.h"
-> +#include "hw/firmware/uefi_edk2.h"
-> +
-> +
-> +#define TYPE_EDK2_CRYPTO "edk2_crypto"
-> +
-> +#define EDK2_CRYPTO_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(Edk2CryptoClass, (klass), \
-> +                        TYPE_EDK2_CRYPTO)
-> +#define EDK2_CRYPTO_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(Edk2CryptoClass, (obj), \
-> +                      TYPE_EDK2_CRYPTO)
-> +#define EDK2_CRYPTO(obj) \
-> +     OBJECT_CHECK(Edk2Crypto, (obj), \
-> +                  TYPE_EDK2_CRYPTO)
-> +
-> +typedef struct FWCfgHostContent {
-> +    /*
-> +     * Path to the acceptable ciphersuites and the preferred order fro=
-m
-> +     * the host-side crypto policy.
-> +     */
-> +    char *filename;
-
-(2) The leading comment on this member is too specific. It is correct
-for the "Edk2Crypto.ciphers" member (below) only.
-
-How about simply stating: "load @contents from the host-side file
-identified by @filename".
-
-> +    /*
-> +     * Add a new NAMED fw_cfg item as a raw "blob" of the given size. =
-The data
-> +     * referenced by the starting pointer is only linked, NOT copied, =
-into the
-> +     * data structure of the fw_cfg device.
-> +     */
-> +    char *contents;
-> +
-> +    size_t contents_length;
-> +} FWCfgHostContent;
-> +
-> +typedef struct Edk2Crypto {
-> +    Object parent_obj;
-> +
-> +    /*
-> +     * Path to the acceptable ciphersuites and the preferred order fro=
-m
-> +     * the host-side crypto policy.
-> +     */
-> +    FWCfgHostContent ciphers;
-> +    /* Path to the trusted CA certificates configured on the host side=
-. */
-> +    FWCfgHostContent cacerts;
-> +} Edk2Crypto;
-
-(3) This looks good to me, but I'd like to request some more documentatio=
-n.
-
-The commit message already references
-<https://github.com/tianocore/edk2/blob/master/OvmfPkg/README>, and
-that's good. However:
-
-(3a) I'd like to see that OvmfPkg/README reference either moved here, or
-duplicated here (right after "parent_obj")
-
-(3b) just above "ciphers', please reference (in addition to the current
-comment):
-
-  https://gitlab.com/redhat-crypto/fedora-crypto-policies/issues/12
-
-(3c) just above "cacerts", please reference (in addition to the current
-comment):
-
-  p11-kit commit ee27f9153a14 (trust: implement the "edk2-cacerts"
-extractor)
-
-> +
-> +typedef struct Edk2CryptoClass {
-> +    ObjectClass parent_class;
-> +} Edk2CryptoClass;
-> +
-> +static Edk2Crypto *edk2_crypto_by_policy_id(const char *policy_id, Err=
-or **errp)
-> +{
-> +    Object *obj;
-> +
-> +    obj =3D object_resolve_path_component(object_get_objects_root(), p=
-olicy_id);
-> +    if (!obj) {
-> +        error_setg(errp, "Cannot find EDK2 crypto policy ID %s", polic=
-y_id);
-> +        return NULL;
-> +    }
-> +
-> +    if (!object_dynamic_cast(obj, TYPE_EDK2_CRYPTO)) {
-> +        error_setg(errp, "Object '%s' is not a EDK2 crypto subclass",
-> +                         policy_id);
-
-(4) The indentation looks off.
-
-> +        return NULL;
-> +    }
-> +
-> +    return EDK2_CRYPTO(obj);
-> +}
-> +
-> +static void edk2_crypto_prop_set_ciphers(Object *obj, const char *valu=
-e,
-> +                                         Error **errp G_GNUC_UNUSED)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-> +
-> +    g_free(s->ciphers.filename);
-> +    s->ciphers.filename =3D g_strdup(value);
-> +}
-> +
-> +static char *edk2_crypto_prop_get_ciphers(Object *obj,
-> +                                          Error **errp G_GNUC_UNUSED)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-> +
-> +    return g_strdup(s->ciphers.filename);
-> +}
-> +
-> +static void edk2_crypto_prop_set_cacerts(Object *obj, const char *valu=
-e,
-> +                                         Error **errp G_GNUC_UNUSED)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-> +
-> +    g_free(s->cacerts.filename);
-> +    s->cacerts.filename =3D g_strdup(value);
-> +}
-> +
-> +static char *edk2_crypto_prop_get_cacerts(Object *obj,
-> +                                          Error **errp G_GNUC_UNUSED)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-> +
-> +    return g_strdup(s->cacerts.filename);
-> +}
-> +
-> +static void edk2_crypto_complete(UserCreatable *uc, Error **errp)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(uc);
-> +    Error *local_err =3D NULL;
-> +    GError *gerr =3D NULL;
-> +
-> +    if (s->ciphers.filename) {
-> +        if (!g_file_get_contents(s->ciphers.filename, &s->ciphers.cont=
-ents,
-> +                                 &s->ciphers.contents_length, &gerr)) =
-{
-> +            goto report_error;
-> +        }
-> +    }
-> +    if (s->cacerts.filename) {
-> +        if (!g_file_get_contents(s->cacerts.filename, &s->cacerts.cont=
-ents,
-> +                                 &s->cacerts.contents_length, &gerr)) =
-{
-> +            goto report_error;
-> +        }
-> +    }
-> +    return;
-> +
-> + report_error:
-> +    error_setg(&local_err, "%s", gerr->message);
-> +    g_error_free(gerr);
-> +    error_propagate_prepend(errp, local_err, "EDK2 crypto policy: ");
-> +}
-
-(5) Assuming we load the ciphers successfully, but fail to load the
-cacerts, will this not leak the former?
-
-(Well I see that the finalize method releases everything that's not
-NULL, yet it feels strange to leave this function with a
-half-constructed object, where "ciphers.filename" is not in sync with
-"ciphers.contents".)
-
-
-(6) The error_propagate_prepend() function must have been added since I
-last looked :) , and the docs seem clear on it in "include/qapi/error.h".
-
-Given that we construct the QAPI error here in the first place, can we
-simplify the code as follows?
-
-  error_setg(errp, "EDK2 crypto policy: %s", gerr->message);
-  g_error_free(gerr);
-
-
-> +
-> +static void edk2_crypto_finalize(Object *obj)
-> +{
-> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
-> +
-> +    g_free(s->ciphers.filename);
-> +    g_free(s->ciphers.contents);
-> +    g_free(s->cacerts.filename);
-> +    g_free(s->cacerts.contents);
-> +}
-> +
-> +static void edk2_crypto_class_init(ObjectClass *oc, void *data)
-> +{
-> +    UserCreatableClass *ucc =3D USER_CREATABLE_CLASS(oc);
-> +
-> +    ucc->complete =3D edk2_crypto_complete;
-> +
-> +    object_class_property_add_str(oc, "ciphers",
-> +                                  edk2_crypto_prop_get_ciphers,
-> +                                  edk2_crypto_prop_set_ciphers,
-> +                                  NULL);
-> +    object_class_property_add_str(oc, "cacerts",
-> +                                  edk2_crypto_prop_get_cacerts,
-> +                                  edk2_crypto_prop_set_cacerts,
-> +                                  NULL);
-> +}
-> +
-> +static const TypeInfo edk2_crypto_info =3D {
-> +    .parent =3D TYPE_OBJECT,
-> +    .name =3D TYPE_EDK2_CRYPTO,
-> +    .instance_size =3D sizeof(Edk2Crypto),
-> +    .instance_finalize =3D edk2_crypto_finalize,
-> +    .class_size =3D sizeof(Edk2CryptoClass),
-> +    .class_init =3D edk2_crypto_class_init,
-> +    .interfaces =3D (InterfaceInfo[]) {
-> +        { TYPE_USER_CREATABLE },
-> +        { }
-> +    }
-> +};
-> +
-> +static void edk2_crypto_register_types(void)
-> +{
-> +    type_register_static(&edk2_crypto_info);
-> +}
-> +
-> +type_init(edk2_crypto_register_types);
-> +
-> +static void edk2_add_host_crypto_policy_https(FWCfgState *fw_cfg)
-> +{
-> +    Edk2Crypto *s;
-> +
-> +    s =3D edk2_crypto_by_policy_id("https", NULL);
-> +    if (!s) {
-> +        return;
-> +    }
-> +    if (s->ciphers.contents_length) {
-> +        fw_cfg_add_file(fw_cfg, "etc/edk2/https/ciphers",
-> +                        s->ciphers.contents, s->ciphers.contents_lengt=
-h);
-> +    }
-> +    if (s->cacerts.contents_length) {
-> +        fw_cfg_add_file(fw_cfg, "etc/edk2/https/cacerts",
-> +                        s->cacerts.contents, s->cacerts.contents_lengt=
-h);
-> +    }
-> +}
-> +
-> +void edk2_add_host_crypto_policy(FWCfgState *fw_cfg)
-> +{
-> +    edk2_add_host_crypto_policy_https(fw_cfg);
-> +}
-
-(7) How is it ensured by this implementation that "id=3Dhttps" is
-specified at most twice, for this object type?
-
-Is that guaranteed by general infrastructure?
-
-I vaguely recall object_resolve_path_component() or similar failing if
-there isn't exactly one match. But, you mention
-"UserCreatableClass::complete" in the patch notes anyway, so the
-conflict is likely detected even earlier.
-
-
-> diff --git a/include/hw/firmware/uefi_edk2.h b/include/hw/firmware/uefi=
-_edk2.h
-> new file mode 100644
-> index 0000000000..f8f81c5cb2
-> --- /dev/null
-> +++ b/include/hw/firmware/uefi_edk2.h
-> @@ -0,0 +1,30 @@
-> +/*
-> + * UEFI EDK2 Support
-> + *
-> + * Copyright (c) 2019 Red Hat Inc.
-> + *
-> + * Author:
-> + *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef HW_FIRMWARE_UEFI_EDK2_H
-> +#define HW_FIRMWARE_UEFI_EDK2_H
-> +
-> +#include "hw/nvram/fw_cfg.h"
-> +
-> +/**
-> + * edk2_add_host_crypto_policy:
-> + * @fw_cfg: fw_cfg device being modified
-> + *
-> + * Add a new named file containing the host crypto policy.
-
-(8) I'd use plural here ("add named files...")
-
-
-> + *
-> + * This method is called by the machine_done() Notifier of
-> + * some implementations of MachineState, currently the X86
-> + * PCMachineState and the ARM VirtMachineState.
-> + */
-
-(9) I suggest dropping the phrase starting with "currently".
-
-The first half of the sentence is helpful, because it states a goal.
-
-The second half of the sentence is bound to get stale at some point, and
-whoever cares can run "git grep -w edk2_add_host_crypto_policy" at any ti=
-me.
-
-> +void edk2_add_host_crypto_policy(FWCfgState *fw_cfg);
-> +
-> +#endif /* HW_FIRMWARE_UEFI_EDK2_H */
->=20
-
-Thanks!
-Laszlo
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|

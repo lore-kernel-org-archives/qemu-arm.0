@@ -1,276 +1,578 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1526766wru;
-        Thu, 27 Jun 2019 10:15:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMt5q0Rteh8D0pRW8HTHbOcY+B9bZKLAG6UG7EcoGdjnmxiwbop7zaVchP9LUu+u7i8c3Q
-X-Received: by 2002:a37:a397:: with SMTP id m145mr4314620qke.271.1561655720346;
-        Thu, 27 Jun 2019 10:15:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561655720; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3869486wrg;
+        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzj+oGrcT/f7euWXrJmRf+tFwZY5zRJ4dapz3MmwBema/tbmn1v15c4/5H/zJVRTZQWIodq
+X-Received: by 2002:a50:b1e7:: with SMTP id n36mr116727260edd.227.1561388390391;
+        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561388390; cv=none;
         d=google.com; s=arc-20160816;
-        b=DSJ8tL/r6NHHH+n0W1DRZqpBwM3U+rfl0tw8Ry/3jFCYhtHwqVCDMSg7MS/40gHQ3n
-         5qx0252eR/JXkUd6oCOJxARNi5vR089/4ETzd3JirZB9A4I59QDwHkdhcUJUFqxK4WSu
-         fGlUG36pYxQjJeqhlMlbrVRDTlHgAqkM0NBAvqfwB6mdGuXdhN8xB8565RUwYlZhfBHg
-         9uMWBiXrfO1ufivBs8ePTd0Jvxxki8oaAEOSix1NlIKD2XSjYnsDbP4PjGSkFEGd6B/F
-         mDmBE8xC9zNyXD4+koUuhDThW+xS/8HtX4Etjo85HSnlQO0Odml5JZ1EkvjjePs7Nskp
-         IhIQ==
+        b=KEFLqr3PcBm2w8sdQZj9Gb/gv4MAk41gGb7WIYkpw7pjJhIwFAFC6JyjFVaAyUCxXW
+         5G53q1cKyUHWZ1ZuOwIttQErr9zwgZ7ZRw8+mxPTILJ9otmUlIeMkjb4vz/GZv5BSsWm
+         UgTUPmb1UYkwDBEw+sPamPmKsE+AWZ1rOOHKGfZrxKmFCkD/33ZNj5bFW0vuEdmXrX+L
+         cqJMYvdbW/fu7vpm66VeHX2aOKuTrjioqYns0CSlm9lH6kKc5a0hwZpdxqn1obzFCDIx
+         PCAi60ejUceOWKhPV4JX3CdT3KP3xd5RaVNdteFl86REXUrKw2yQ9M7nas7TOMIxpDc9
+         GWkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=BnJ064RNohXABtGCS+qVb1Q1AbD2tzQL1ICkEv6VTwk=;
-        b=dvIFewKSazfqYAwVuM3vZqpGeqAyXey+SA0KQRI+cHzMlSDjyzNKhppJC5hNK+f8ov
-         9XOYnHHFMVb4JElJHosEq0JjeKec3E6fxTyU00tFKiLhBqATpkSQbZI21+LbqR1L5tfA
-         hnXK3f4zDxduEvS+AM+V8Qg4OfNU+uxqxaCawbOXRFCS7gHQs/1VRFiVrFh2cZD6pL4B
-         YUjA6NhKMH+Zxod1w7BsNg8utBoWdvPjQkl1q4t+/CYozhIChbQ3Bb4+HbgnyuGb/8Fo
-         pzLHRd0Ar1D0ZI1UtrfWSjAE8KTf76z2gHLEfS4aTAk1a8xCIGQavFHxsmXldXK5HmkW
-         ZeTQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=3SxQjk8GmBH9tq0eCLPXXAKYtbWreFe0BAfnsgU1ZGs=;
+        b=dDbjaYXcqNA2+TJ46enb+IQ2K80SWXaV094hdCBrch/JEyk4F+X83xiRh5mEFEQAXv
+         jVlyG7qOOj5J205hFYLxoqW/1L8bBq6ntp/Id3/ONLWxkBq9pNQvZrh2VTROqW8gV0qA
+         uOZfAMGslDGmPzpOh8rXCDvjnBTyQ6lwoXrLDnavjxXiKC2a/ALPHrmkL7pynyING7v4
+         tMjKy1sNc5B6EUwxnZZtwK+l0rjh/nXTnz5m9Pt0agMA3NV+hAngK02V+lUUCHu9NQuU
+         gHGDZa6Fr9i+qzKsXTJUWiWJGFuK1fUcWXQsDr1ACTlxqMHJQb9vwBqextaqrbQVE7JQ
+         FjDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id l1si213462qvn.149.2019.06.27.10.15.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2019 10:15:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y2si10523694edb.188.2019.06.24.07.59.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Jun 2019 07:59:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5FEF386674;
-	Thu, 27 Jun 2019 17:15:19 +0000 (UTC)
-Received: from [10.36.116.89] (ovpn-116-89.ams2.redhat.com [10.36.116.89])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DF05E6012D;
-	Thu, 27 Jun 2019 17:15:15 +0000 (UTC)
-Subject: Re: [PATCH v2 14/14] target/arm/kvm: host cpu: Add support for
- sve<vl-bits> properties
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
- Dave.Martin@arm.com, imammedo@redhat.com
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-15-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <3b5fd5ff-2ea3-243a-0472-141a844d5f2b@redhat.com>
-Date: Thu, 27 Jun 2019 19:15:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52030 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfQRh-0005E6-Dw
+	for alex.bennee@linaro.org; Mon, 24 Jun 2019 10:59:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33908)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <lersek@redhat.com>) id 1hfQM1-0000R9-Ud
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2019 10:54:00 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <lersek@redhat.com>) id 1hfQLz-0007jZ-Lq
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2019 10:53:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48016)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1hfQLr-0006we-2w; Mon, 24 Jun 2019 10:53:47 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 23256309265C;
+ Mon, 24 Jun 2019 14:53:19 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-226.ams2.redhat.com
+ [10.36.116.226])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 55BCB600CD;
+ Mon, 24 Jun 2019 14:53:12 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190620122132.10075-1-philmd@redhat.com>
+ <20190620122132.10075-2-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <6a0086e7-79ea-fc5e-6359-c1d4d256bf6e@redhat.com>
+Date: Mon, 24 Jun 2019 16:53:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-15-drjones@redhat.com>
+In-Reply-To: <20190620122132.10075-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Thu, 27 Jun 2019 17:15:19 +0000 (UTC)
-X-TUID: +PSsSTRtJHZY
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.43]); Mon, 24 Jun 2019 14:53:19 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v5 1/3] hw/firmware: Add Edk2Crypto and
+ edk2_add_host_crypto_policy()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: N/QD8nY7/AK3
 
-Hi Drew,
-On 6/21/19 6:34 PM, Andrew Jones wrote:
-> Allow cpu 'host' to enable SVE when it's available, unless the
-> user chooses to disable it with the added 'sve=off' cpu property.
-> Also give the user the ability to select vector lengths with the
-> sve<vl-bits> properties. We don't adopt 'max' cpu's other sve
-> property, sve-max-vq, because that property is difficult to
-> use with KVM. That property assumes all vector lengths in the
-> range from 1 up to and including the specified maximum length are
-> supported, but there may be optional lengths not supported by the
-> host in that range. With KVM one must be more specific when
-> enabling vector lengths.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+(+Daniel)
+
+On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
+> The Edk2Crypto object is used to hold configuration values specific
+> to EDK2.
+>=20
+> The edk2_add_host_crypto_policy() function loads crypto policies
+> from the host, and register them as fw_cfg named file items.
+> So far only the 'https' policy is supported.
+>=20
+> A usercase example is the 'HTTPS Boof' feature of OVMF [*].
+
+(1) s/usercase/use case/, s/Boof/Boot/
+
+>=20
+> Usage example:
+>=20
+> - via the command line:
+>=20
+>   $ qemu-system-x86_64 \
+>       --object edk2_crypto,id=3Dhttps,\
+>               ciphers=3D/etc/crypto-policies/back-ends/openssl.config,\
+>               cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
+>=20
+> - via QMP:
+>=20
+>   {
+>     "execute": "object-add",
+>     "arguments": {
+>       "qom-type": "edk2_crypto",
+>       "id": "https",
+>       "props": {
+>         "ciphers": "/etc/crypto-policies/back-ends/openssl.config",
+>         "cacerts": "/etc/pki/ca-trust/extracted/edk2/cacerts.bin"
+>       }
+>     }
+>   }
+>=20
+> (On Fedora these files are provided by the ca-certificates and
+> crypto-policies packages).
+>=20
+> [*]: https://github.com/tianocore/edk2/blob/master/OvmfPkg/README
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  target/arm/cpu.c         |  1 +
->  target/arm/cpu.h         |  2 ++
->  target/arm/cpu64.c       | 47 ++++++++++++++++++++++++++--------------
->  tests/arm-cpu-features.c | 21 +++++++++---------
->  4 files changed, 45 insertions(+), 26 deletions(-)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index e060a0d9df0e..9d05291cb5f6 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2407,6 +2407,7 @@ static void arm_host_initfn(Object *obj)
->      ARMCPU *cpu = ARM_CPU(obj);
->  
->      kvm_arm_set_cpu_features_from_host(cpu);
-> +    aarch64_add_sve_properties(obj);
->      arm_cpu_post_init(obj);
->  }
->  
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 8a1c6c66a462..52a6b219b74a 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -974,11 +974,13 @@ int aarch64_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
->  void aarch64_sve_change_el(CPUARMState *env, int old_el,
->                             int new_el, bool el0_a64);
-> +void aarch64_add_sve_properties(Object *obj);
->  #else
->  static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
->  static inline void aarch64_sve_change_el(CPUARMState *env, int o,
->                                           int n, bool a)
->  { }
-> +static inline void aarch64_add_sve_properties(Object *obj) { }
->  #endif
->  
->  target_ulong do_arm_semihosting(CPUARMState *env);
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 6e92aa54b9c8..89396a7729ec 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -753,6 +753,36 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
->      }
->  }
->  
-> +void aarch64_add_sve_properties(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    uint32_t vq;
+> v3:
+> - inverted the if() logic
+> - '-object' -> '--object' in commit description (Eric)
+> - reworded the 'TODO: g_free' comment
+> v4:
+> - do not return pointer to alloc'd data (Markus)
+> - INTERFACE_CHECK -> OBJECT_CLASS_CHECK (Markus)
+> - path -> filename (Laszlo)
+> - dropped the 'TODO: g_free' comment (Markus)
+> v5:
+> - only allow 1 singleton using the UserCreatableClass::complete
+>   callback (Markus, Laszlo)
+> - object own fw_cfg 'file' content, no need for
+>   fw_cfg_add_file_from_host() (Laszlo)
+> - g_file_get_contents() called when object is instantiated
+>   and report error, the machine 'done' notifier do not have
+>   to manage errors (do not fail).
+> - add QMP example
+> -
+> - do not add docs/interop/firmware.json to MAINTAINERS
+> ---
+>  MAINTAINERS                             |   2 +
+>  hw/Makefile.objs                        |   1 +
+>  hw/firmware/Makefile.objs               |   1 +
+>  hw/firmware/uefi_edk2_crypto_policies.c | 209 ++++++++++++++++++++++++
+>  include/hw/firmware/uefi_edk2.h         |  30 ++++
+>  5 files changed, 243 insertions(+)
+>  create mode 100644 hw/firmware/Makefile.objs
+>  create mode 100644 hw/firmware/uefi_edk2_crypto_policies.c
+>  create mode 100644 include/hw/firmware/uefi_edk2.h
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d32c5c2313..28de489134 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2262,6 +2262,8 @@ EDK2 Firmware
+>  M: Laszlo Ersek <lersek@redhat.com>
+>  M: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>  S: Supported
+> +F: hw/firmware/uefi_edk2_crypto_policies.c
+> +F: include/hw/firmware/uefi_edk2.h
+>  F: pc-bios/descriptors/??-edk2-*.json
+>  F: pc-bios/edk2-*
+>  F: roms/Makefile.edk2
+> diff --git a/hw/Makefile.objs b/hw/Makefile.objs
+> index d770926ba9..c13b6ee0dd 100644
+> --- a/hw/Makefile.objs
+> +++ b/hw/Makefile.objs
+> @@ -8,6 +8,7 @@ devices-dirs-$(CONFIG_SOFTMMU) +=3D char/
+>  devices-dirs-$(CONFIG_SOFTMMU) +=3D cpu/
+>  devices-dirs-$(CONFIG_SOFTMMU) +=3D display/
+>  devices-dirs-$(CONFIG_SOFTMMU) +=3D dma/
+> +devices-dirs-$(CONFIG_SOFTMMU) +=3D firmware/
+>  devices-dirs-$(CONFIG_SOFTMMU) +=3D gpio/
+>  devices-dirs-$(CONFIG_HYPERV) +=3D hyperv/
+>  devices-dirs-$(CONFIG_I2C) +=3D i2c/
+
+(1) I wonder if this granularity is the right one. Do we really want to
+link this code into all softmmu targets, even if they (a) don't support
+fw_cfg, (b) and/or have no bindings (per spec) for UEFI?
+
+I can't recommend anything better (i.e. I can't really be "constructive"
+here), but the above seems a bit to broad. In practice anyway, we only
+need this for the i386, x86_64, arm, and aarch64 softmmu targets (for
+now anyway).
+
+FWIW, the vmgenid device, which we tend to use as an example here (for
+some aspects anyway), seems to have its own knob: CONFIG_ACPI_VMGENID.
+
+
+> diff --git a/hw/firmware/Makefile.objs b/hw/firmware/Makefile.objs
+> new file mode 100644
+> index 0000000000..ea1f6d44df
+> --- /dev/null
+> +++ b/hw/firmware/Makefile.objs
+> @@ -0,0 +1 @@
+> +common-obj-y +=3D uefi_edk2_crypto_policies.o
+> diff --git a/hw/firmware/uefi_edk2_crypto_policies.c b/hw/firmware/uefi=
+_edk2_crypto_policies.c
+> new file mode 100644
+> index 0000000000..a0164272ea
+> --- /dev/null
+> +++ b/hw/firmware/uefi_edk2_crypto_policies.c
+> @@ -0,0 +1,209 @@
+> +/*
+> + * UEFI EDK2 Support
+> + *
+> + * Copyright (c) 2019 Red Hat Inc.
+> + *
+> + * Author:
+> + *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+> + * See the COPYING file in the top-level directory.
+> + */
 > +
-> +    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> +                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qom/object_interfaces.h"
+> +#include "hw/firmware/uefi_edk2.h"
+> +
+> +
+> +#define TYPE_EDK2_CRYPTO "edk2_crypto"
+> +
+> +#define EDK2_CRYPTO_CLASS(klass) \
+> +     OBJECT_CLASS_CHECK(Edk2CryptoClass, (klass), \
+> +                        TYPE_EDK2_CRYPTO)
+> +#define EDK2_CRYPTO_GET_CLASS(obj) \
+> +     OBJECT_GET_CLASS(Edk2CryptoClass, (obj), \
+> +                      TYPE_EDK2_CRYPTO)
+> +#define EDK2_CRYPTO(obj) \
+> +     OBJECT_CHECK(Edk2Crypto, (obj), \
+> +                  TYPE_EDK2_CRYPTO)
+> +
+> +typedef struct FWCfgHostContent {
+> +    /*
+> +     * Path to the acceptable ciphersuites and the preferred order fro=
+m
+> +     * the host-side crypto policy.
+> +     */
+> +    char *filename;
+
+(2) The leading comment on this member is too specific. It is correct
+for the "Edk2Crypto.ciphers" member (below) only.
+
+How about simply stating: "load @contents from the host-side file
+identified by @filename".
+
+> +    /*
+> +     * Add a new NAMED fw_cfg item as a raw "blob" of the given size. =
+The data
+> +     * referenced by the starting pointer is only linked, NOT copied, =
+into the
+> +     * data structure of the fw_cfg device.
+> +     */
+> +    char *contents;
+> +
+> +    size_t contents_length;
+> +} FWCfgHostContent;
+> +
+> +typedef struct Edk2Crypto {
+> +    Object parent_obj;
 > +
 > +    /*
-> +     * sve_max_vq is initially unspecified, but must be initialized to a
-> +     * non-zero value (ARM_SVE_INIT) to indicate that this cpu type has
-> +     * SVE. It will be finalized in arm_cpu_realizefn().
+> +     * Path to the acceptable ciphersuites and the preferred order fro=
+m
+> +     * the host-side crypto policy.
 > +     */
-this comment is duplicated in aarch64_max_initfn(). Also sve_max_vq may
-be already initialized to SVE_INIT so what do you mean by unspecified?
-> +    assert(!cpu->sve_max_vq || cpu->sve_max_vq == ARM_SVE_INIT);> +    cpu->sve_max_vq = ARM_SVE_INIT;
-maybe you could move this assignment in arm_cpu_vq_map_init().
+> +    FWCfgHostContent ciphers;
+> +    /* Path to the trusted CA certificates configured on the host side=
+. */
+> +    FWCfgHostContent cacerts;
+> +} Edk2Crypto;
+
+(3) This looks good to me, but I'd like to request some more documentatio=
+n.
+
+The commit message already references
+<https://github.com/tianocore/edk2/blob/master/OvmfPkg/README>, and
+that's good. However:
+
+(3a) I'd like to see that OvmfPkg/README reference either moved here, or
+duplicated here (right after "parent_obj")
+
+(3b) just above "ciphers', please reference (in addition to the current
+comment):
+
+  https://gitlab.com/redhat-crypto/fedora-crypto-policies/issues/12
+
+(3c) just above "cacerts", please reference (in addition to the current
+comment):
+
+  p11-kit commit ee27f9153a14 (trust: implement the "edk2-cacerts"
+extractor)
 
 > +
-> +    /*
-> +     * sve_vq_map uses a special state while setting properties, so
-> +     * we initialize it here with its init function and finalize it
-> +     * in arm_cpu_realizefn().
-> +     */
-> +    arm_cpu_vq_map_init(cpu);
-> +    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-> +        char name[8];
-> +        sprintf(name, "sve%d", vq * 128);
-> +        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-> +                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);> +    }
+> +typedef struct Edk2CryptoClass {
+> +    ObjectClass parent_class;
+> +} Edk2CryptoClass;
+> +
+> +static Edk2Crypto *edk2_crypto_by_policy_id(const char *policy_id, Err=
+or **errp)
+> +{
+> +    Object *obj;
+> +
+> +    obj =3D object_resolve_path_component(object_get_objects_root(), p=
+olicy_id);
+> +    if (!obj) {
+> +        error_setg(errp, "Cannot find EDK2 crypto policy ID %s", polic=
+y_id);
+> +        return NULL;
+> +    }
+> +
+> +    if (!object_dynamic_cast(obj, TYPE_EDK2_CRYPTO)) {
+> +        error_setg(errp, "Object '%s' is not a EDK2 crypto subclass",
+> +                         policy_id);
+
+(4) The indentation looks off.
+
+> +        return NULL;
+> +    }
+> +
+> +    return EDK2_CRYPTO(obj);
 > +}
 > +
->  /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
->   * otherwise, a CPU with as many features enabled as our emulation supports.
->   * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-> @@ -761,7 +791,6 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
->  static void aarch64_max_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> -    uint32_t vq;
->  
->      if (kvm_enabled()) {
->          kvm_arm_set_cpu_features_from_host(cpu);
-> @@ -847,9 +876,6 @@ static void aarch64_max_initfn(Object *obj)
->  #endif
->      }
->  
-> -    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> -                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
-> -
->      /*
->       * sve_max_vq is initially unspecified, but must be initialized to a
->       * non-zero value (ARM_SVE_INIT) to indicate that this cpu type has
-> @@ -859,18 +885,7 @@ static void aarch64_max_initfn(Object *obj)
->      object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
->                          cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
->  
-> -    /*
-> -     * sve_vq_map uses a special state while setting properties, so
-> -     * we initialize it here with its init function and finalize it
-> -     * in arm_cpu_realizefn().
-> -     */
-> -    arm_cpu_vq_map_init(cpu);
-> -    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
-> -        char name[8];
-> -        sprintf(name, "sve%d", vq * 128);
-> -        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
-> -                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
-> -    }
-> +    aarch64_add_sve_properties(obj);
->  }
->  
->  struct ARMCPUInfo {
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> index 349bd0dca6d1..dfe83f104b27 100644
-> --- a/tests/arm-cpu-features.c
-> +++ b/tests/arm-cpu-features.c
-> @@ -351,8 +351,8 @@ static void sve_tests_sve_off_kvm(const void *data)
->  {
->      QTestState *qts;
->  
-> -    qts = qtest_init(MACHINE "-accel kvm -cpu max,sve=off");
-> -    sve_tests_off(qts, "max");
-> +    qts = qtest_init(MACHINE "-accel kvm -cpu host,sve=off");
-> +    sve_tests_off(qts, "host");
->      qtest_quit(qts);
->  }
->  
-> @@ -417,24 +417,24 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->              "The CPU definition 'cortex-a15' cannot "
->              "be used with KVM on this host", NULL);
->  
-> -        assert_has_feature(qts, "max", "sve");
-> -        resp = do_query_no_props(qts, "max");
-> +        assert_has_feature(qts, "host", "sve");
-> +        resp = do_query_no_props(qts, "host");
->          g_assert(resp);
->          kvm_supports_sve = qdict_get_bool(resp_get_props(resp), "sve");
->          qobject_unref(resp);
->  
->          if (kvm_supports_sve) {
-> -            resp = do_query_no_props(qts, "max");
-> +            resp = do_query_no_props(qts, "host");
->              resp_get_sve_vls(resp, &vls, &max_vq);
->              g_assert(max_vq != 0);
->              qobject_unref(resp);
->  
->              /* Enabling a supported length is of course fine. */
->              sprintf(name, "sve%d", max_vq * 128);
-> -            assert_sve_vls(qts, "max", vls, "{ %s: true }", name);
-> +            assert_sve_vls(qts, "host", vls, "{ %s: true }", name);
->  
->              /* Also disabling the largest lengths is fine. */
-> -            assert_sve_vls(qts, "max", (vls & ~BIT(max_vq - 1)),
-> +            assert_sve_vls(qts, "host", (vls & ~BIT(max_vq - 1)),
->                             "{ %s: false }", name);
->  
->              for (vq = 1; vq <= max_vq; ++vq) {
-> @@ -446,7 +446,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->              if (vq <= SVE_MAX_VQ) {
->                  sprintf(name, "sve%d", vq * 128);
->                  error = g_strdup_printf("cannot enable %s", name);
-> -                assert_error(qts, "max", error, "{ %s: true }", name);
-> +                assert_error(qts, "host", error, "{ %s: true }", name);
->                  g_free(error);
->              }
->  
-> @@ -455,16 +455,17 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->                  vq = 64 - __builtin_clzll(vls & ~BIT(max_vq - 1));
->                  sprintf(name, "sve%d", vq * 128);
->                  error = g_strdup_printf("cannot disable %s", name);
-> -                assert_error(qts, "max", error, "{ %s: false }", name);
-> +                assert_error(qts, "host", error, "{ %s: false }", name);
->                  g_free(error);
->              }
->          } else {
-> -            resp = do_query_no_props(qts, "max");
-> +            resp = do_query_no_props(qts, "host");
->              resp_get_sve_vls(resp, &vls, &max_vq);
->              g_assert(max_vq == 0);
->              qobject_unref(resp);
->          }
->      } else {
-> +        assert_has_not_feature(qts, "host", "sve");
->          assert_error(qts, "host",
->                       "'pmu' feature not supported by KVM on this host",
->                       "{ 'pmu': true }");
-> 
-Thanks
+> +static void edk2_crypto_prop_set_ciphers(Object *obj, const char *valu=
+e,
+> +                                         Error **errp G_GNUC_UNUSED)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
+> +
+> +    g_free(s->ciphers.filename);
+> +    s->ciphers.filename =3D g_strdup(value);
+> +}
+> +
+> +static char *edk2_crypto_prop_get_ciphers(Object *obj,
+> +                                          Error **errp G_GNUC_UNUSED)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
+> +
+> +    return g_strdup(s->ciphers.filename);
+> +}
+> +
+> +static void edk2_crypto_prop_set_cacerts(Object *obj, const char *valu=
+e,
+> +                                         Error **errp G_GNUC_UNUSED)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
+> +
+> +    g_free(s->cacerts.filename);
+> +    s->cacerts.filename =3D g_strdup(value);
+> +}
+> +
+> +static char *edk2_crypto_prop_get_cacerts(Object *obj,
+> +                                          Error **errp G_GNUC_UNUSED)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
+> +
+> +    return g_strdup(s->cacerts.filename);
+> +}
+> +
+> +static void edk2_crypto_complete(UserCreatable *uc, Error **errp)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(uc);
+> +    Error *local_err =3D NULL;
+> +    GError *gerr =3D NULL;
+> +
+> +    if (s->ciphers.filename) {
+> +        if (!g_file_get_contents(s->ciphers.filename, &s->ciphers.cont=
+ents,
+> +                                 &s->ciphers.contents_length, &gerr)) =
+{
+> +            goto report_error;
+> +        }
+> +    }
+> +    if (s->cacerts.filename) {
+> +        if (!g_file_get_contents(s->cacerts.filename, &s->cacerts.cont=
+ents,
+> +                                 &s->cacerts.contents_length, &gerr)) =
+{
+> +            goto report_error;
+> +        }
+> +    }
+> +    return;
+> +
+> + report_error:
+> +    error_setg(&local_err, "%s", gerr->message);
+> +    g_error_free(gerr);
+> +    error_propagate_prepend(errp, local_err, "EDK2 crypto policy: ");
+> +}
 
-Eric
+(5) Assuming we load the ciphers successfully, but fail to load the
+cacerts, will this not leak the former?
+
+(Well I see that the finalize method releases everything that's not
+NULL, yet it feels strange to leave this function with a
+half-constructed object, where "ciphers.filename" is not in sync with
+"ciphers.contents".)
+
+
+(6) The error_propagate_prepend() function must have been added since I
+last looked :) , and the docs seem clear on it in "include/qapi/error.h".
+
+Given that we construct the QAPI error here in the first place, can we
+simplify the code as follows?
+
+  error_setg(errp, "EDK2 crypto policy: %s", gerr->message);
+  g_error_free(gerr);
+
+
+> +
+> +static void edk2_crypto_finalize(Object *obj)
+> +{
+> +    Edk2Crypto *s =3D EDK2_CRYPTO(obj);
+> +
+> +    g_free(s->ciphers.filename);
+> +    g_free(s->ciphers.contents);
+> +    g_free(s->cacerts.filename);
+> +    g_free(s->cacerts.contents);
+> +}
+> +
+> +static void edk2_crypto_class_init(ObjectClass *oc, void *data)
+> +{
+> +    UserCreatableClass *ucc =3D USER_CREATABLE_CLASS(oc);
+> +
+> +    ucc->complete =3D edk2_crypto_complete;
+> +
+> +    object_class_property_add_str(oc, "ciphers",
+> +                                  edk2_crypto_prop_get_ciphers,
+> +                                  edk2_crypto_prop_set_ciphers,
+> +                                  NULL);
+> +    object_class_property_add_str(oc, "cacerts",
+> +                                  edk2_crypto_prop_get_cacerts,
+> +                                  edk2_crypto_prop_set_cacerts,
+> +                                  NULL);
+> +}
+> +
+> +static const TypeInfo edk2_crypto_info =3D {
+> +    .parent =3D TYPE_OBJECT,
+> +    .name =3D TYPE_EDK2_CRYPTO,
+> +    .instance_size =3D sizeof(Edk2Crypto),
+> +    .instance_finalize =3D edk2_crypto_finalize,
+> +    .class_size =3D sizeof(Edk2CryptoClass),
+> +    .class_init =3D edk2_crypto_class_init,
+> +    .interfaces =3D (InterfaceInfo[]) {
+> +        { TYPE_USER_CREATABLE },
+> +        { }
+> +    }
+> +};
+> +
+> +static void edk2_crypto_register_types(void)
+> +{
+> +    type_register_static(&edk2_crypto_info);
+> +}
+> +
+> +type_init(edk2_crypto_register_types);
+> +
+> +static void edk2_add_host_crypto_policy_https(FWCfgState *fw_cfg)
+> +{
+> +    Edk2Crypto *s;
+> +
+> +    s =3D edk2_crypto_by_policy_id("https", NULL);
+> +    if (!s) {
+> +        return;
+> +    }
+> +    if (s->ciphers.contents_length) {
+> +        fw_cfg_add_file(fw_cfg, "etc/edk2/https/ciphers",
+> +                        s->ciphers.contents, s->ciphers.contents_lengt=
+h);
+> +    }
+> +    if (s->cacerts.contents_length) {
+> +        fw_cfg_add_file(fw_cfg, "etc/edk2/https/cacerts",
+> +                        s->cacerts.contents, s->cacerts.contents_lengt=
+h);
+> +    }
+> +}
+> +
+> +void edk2_add_host_crypto_policy(FWCfgState *fw_cfg)
+> +{
+> +    edk2_add_host_crypto_policy_https(fw_cfg);
+> +}
+
+(7) How is it ensured by this implementation that "id=3Dhttps" is
+specified at most twice, for this object type?
+
+Is that guaranteed by general infrastructure?
+
+I vaguely recall object_resolve_path_component() or similar failing if
+there isn't exactly one match. But, you mention
+"UserCreatableClass::complete" in the patch notes anyway, so the
+conflict is likely detected even earlier.
+
+
+> diff --git a/include/hw/firmware/uefi_edk2.h b/include/hw/firmware/uefi=
+_edk2.h
+> new file mode 100644
+> index 0000000000..f8f81c5cb2
+> --- /dev/null
+> +++ b/include/hw/firmware/uefi_edk2.h
+> @@ -0,0 +1,30 @@
+> +/*
+> + * UEFI EDK2 Support
+> + *
+> + * Copyright (c) 2019 Red Hat Inc.
+> + *
+> + * Author:
+> + *  Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef HW_FIRMWARE_UEFI_EDK2_H
+> +#define HW_FIRMWARE_UEFI_EDK2_H
+> +
+> +#include "hw/nvram/fw_cfg.h"
+> +
+> +/**
+> + * edk2_add_host_crypto_policy:
+> + * @fw_cfg: fw_cfg device being modified
+> + *
+> + * Add a new named file containing the host crypto policy.
+
+(8) I'd use plural here ("add named files...")
+
+
+> + *
+> + * This method is called by the machine_done() Notifier of
+> + * some implementations of MachineState, currently the X86
+> + * PCMachineState and the ARM VirtMachineState.
+> + */
+
+(9) I suggest dropping the phrase starting with "currently".
+
+The first half of the sentence is helpful, because it states a goal.
+
+The second half of the sentence is bound to get stale at some point, and
+whoever cares can run "git grep -w edk2_add_host_crypto_policy" at any ti=
+me.
+
+> +void edk2_add_host_crypto_policy(FWCfgState *fw_cfg);
+> +
+> +#endif /* HW_FIRMWARE_UEFI_EDK2_H */
+>=20
+
+Thanks!
+Laszlo

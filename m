@@ -1,97 +1,151 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3935578wrg;
-        Mon, 24 Jun 2019 09:09:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwtuP/vF4UPSHDZPs6LfGHbfrC4qXmEmLqZ0a0WGDMY23jFG+4ropmpmi8xlwFln0jz8gOZ
-X-Received: by 2002:a50:fa96:: with SMTP id w22mr66987629edr.45.1561392544395;
-        Mon, 24 Jun 2019 09:09:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561392544; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3879731wrg;
+        Mon, 24 Jun 2019 08:08:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyV64T3EnX8olcT3XBvja/c2Zy68V+f73Q1D0udo34Yyup0dccxfmQwYmGPepLRZqmaAKQg
+X-Received: by 2002:a50:d0d6:: with SMTP id g22mr93891313edf.250.1561388926903;
+        Mon, 24 Jun 2019 08:08:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561388926; cv=none;
         d=google.com; s=arc-20160816;
-        b=kMCd1SKIGBJe9pHixmVqQ8ohNnBr+/SN4Qwm3S+yyn2lqqCaFemcbtKq4hRX+gBmqi
-         UW74yZol1cMni/HsX8roj76reuDD5Y2cGz2lSAy++qRsd30FiKY6yjJ5ZWXq7Me7tkAL
-         OKdwftLGAZ/hXBRSCr06yeOABSeGqKSRJaR6bPZNDuI37tiGLUCO4rHg/Q6a6+++3Enw
-         5w+mwcnzl01vyHFoYFSy+Ol6Lnf11Jmc9bMVgxzYodqvrlSFl4NKs4oMMIsHAaBifr0p
-         dBm5uXFuRgJ1GF/tpcE1xtZvz1SRGs0cd86Lbe2MQpiz+c7KeforNfQ2c7LCIPcIhfib
-         I2Mw==
+        b=Uk2y2T8SkkHtqthBDRO5IPVsOZTTi0QVhZ9Onw76vlU+U7YPWymNw18JklDKQBvMHU
+         3JtdwaBogVTIHOCnXY+ZR1Tc4rYT6OMSd7KgT2F2C9PSiXRJEoYTzkl0epzwnFkQjvbG
+         yI/dSii3ggOQZbjr+Xl7ctaoci34VypcWAFnWusdaRWdUYMEiX1XSQcICGgM1qaOF+wr
+         FBU7lC1DrzOwKjPVnQbIW7ORHTpTgRYNl5PvHpvd37L4FuSOuSLjFZblkCXo23rlPNNl
+         g/Mwi8hjML8Bxv+4Dkl7iqkuEDyJ2y/ROYtirhmq1Wx3jq6R91N/l+kaAXHRCC2s3rzm
+         EGmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=1CweOm8XWb6OjXTgvAOXzGatQw+54Pt44noM2jlNM9o=;
-        b=ejZaz9rEVPLYvblHzCocoZ68YVa4pjhGxtWqScizmorLZVDuNdnPxH4M3EvjuTdQ2q
-         5QafTbRMr6lrdVj5dKBc/Bb+T7Lvw4sG7Rue2BKh+wdKbt+yCsy9nBH8/MmAUZEjTc84
-         BFaNG4f59JTtuzP1hWY9Is43mN7Qny6c4wC66L+vU2rGTJTBuvVnmmfLsQFdkWRz5N0n
-         x4Ehxs1mFXsepFHSjCcE9XlperYWIMG4vhGgs3mBMZbtuaIIBoXFKCvO80IqR8YH/Vsi
-         SqSuYgoSA+FOXCaeCCwvBt8AmGLGYo3UKFDB2Dwd7+hpgmiK3/Kzrj/XnvhuzSj2f7QO
-         PGGQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=Uq6fYfK6Axw09wwZ/BI/YaDt20uve51sDShjo2rfs3M=;
+        b=IktCHUX5LyttasSLLgFnsRTGy9BoFM04Kr0BLVZYMYaiTGPrVI+agMECvKynNwO/TO
+         Y95I1gJFBIaac6fZqBekDXvYv02TVUD9iE1T6mP9ViMfbgpvChEQh/JvYBTS3Ua5KqUu
+         ghBTvtYhXNY5LUTVSUUjC1eQRib1Nwk2nI8puHQW7YLRoUHkRK8bC0VHFrlucCn03Wb8
+         jbbW2wF97HT0uqTaC0/i1drLZ/6quCNXt6PBcA6UVKpQWh0FYuAxVf8kd2EzJAgQ0zNg
+         2uDnCiEcwRShABzUBGjQZEPeED7UDfWQJxNMtQ2K5P18TKGF1bsgxzCErbYXqvRexnu+
+         Gexw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
-        by mx.google.com with ESMTP id r42si11594656eda.345.2019.06.24.09.09.04;
-        Mon, 24 Jun 2019 09:09:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i17si7296692ejc.114.2019.06.24.08.08.46
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Jun 2019 08:08:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 723DF2B;
-	Mon, 24 Jun 2019 09:09:03 -0700 (PDT)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 19E0E3F71E;
-	Mon, 24 Jun 2019 09:09:01 -0700 (PDT)
-Date: Mon, 24 Jun 2019 17:09:00 +0100
-From: Dave Martin <Dave.Martin@arm.com>
-To: Andrew Jones <drjones@redhat.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eblake@redhat.com" <eblake@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>
-Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
-Message-ID: <20190624160859.GV2790@e103592.cambridge.arm.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-11-drjones@redhat.com>
- <20190624110535.GI2790@e103592.cambridge.arm.com>
- <20190624115553.ef22fdempvxkzzog@kamzik.brq.redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52142 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfQaM-0003DU-0E
+	for alex.bennee@linaro.org; Mon, 24 Jun 2019 11:08:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36159)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <lersek@redhat.com>) id 1hfQTL-0007Y0-9V
+ for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:01:33 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <lersek@redhat.com>) id 1hfQTJ-0002Yy-VY
+ for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:01:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48228)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1hfQTJ-0002Iu-N8; Mon, 24 Jun 2019 11:01:29 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2A8366E777;
+ Mon, 24 Jun 2019 15:01:18 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-226.ams2.redhat.com
+ [10.36.116.226])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E0DDB60C6C;
+ Mon, 24 Jun 2019 15:00:55 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190620122132.10075-1-philmd@redhat.com>
+ <20190620122132.10075-3-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <afb007ea-ec73-2065-2d57-63ecb3e5c968@redhat.com>
+Date: Mon, 24 Jun 2019 17:00:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190624115553.ef22fdempvxkzzog@kamzik.brq.redhat.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: Ur2mVfgKGXvL
+In-Reply-To: <20190620122132.10075-3-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.25]); Mon, 24 Jun 2019 15:01:18 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/3] hw/i386: Use
+ edk2_add_host_crypto_policy()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eYZBx3Mwd6em
 
-On Mon, Jun 24, 2019 at 12:55:53PM +0100, Andrew Jones wrote:
-> On Mon, Jun 24, 2019 at 12:05:35PM +0100, Dave Martin wrote:
-> > On Fri, Jun 21, 2019 at 05:34:18PM +0100, Andrew Jones wrote:
-> > > These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
-> > > swabbing is different than it is for fpsmid because the vector format
-> > > is a little-endian stream of words.
-> > 
-> > Note, on big-endian hosts the FPSIMD view Vn and the SVE view Zn[127:0]
-> > of the FPSIMD/SVE common register bits has the opposite endianness for
-> > SVE_{GET,SET}_ONE_REG.
-> > 
-> > This only matters if mixing the two views: just from this patch I don't
-> > know whether this is an issue for QEMU or not.
-> 
-> I don't know either. My experience with the emulation side of QEMU is
-> mostly the zcr_write tweak in this series. And, TBH, I didn't put too
-> much thought into the endianness stuff, nor test this series with big
-> endian.
+On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
+> Enable the EDK2 Crypto Policy features on the PC machine.
+>=20
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/i386/pc.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>=20
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 2c5446b095..fe99ebfe3d 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -39,6 +39,7 @@
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/timer/hpet.h"
+>  #include "hw/firmware/smbios.h"
+> +#include "hw/firmware/uefi_edk2.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+>  #include "multiboot.h"
+> @@ -1049,6 +1050,11 @@ static FWCfgState *bochs_bios_init(AddressSpace =
+*as, PCMachineState *pcms)
+>      return fw_cfg;
+>  }
+> =20
+> +static void pc_uefi_setup(PCMachineState *pcms)
+> +{
+> +    edk2_add_host_crypto_policy(pcms->fw_cfg);
+> +}
+> +
+>  static long get_file_size(FILE *f)
+>  {
+>      long where, size;
+> @@ -1653,6 +1659,7 @@ void pc_machine_done(Notifier *notifier, void *da=
+ta)
+>      if (pcms->fw_cfg) {
+>          pc_build_smbios(pcms);
+>          pc_build_feature_control_file(pcms);
+> +        pc_uefi_setup(pcms);
+>          /* update FW_CFG_NB_CPUS to account for -device added CPUs */
+>          fw_cfg_modify_i16(pcms->fw_cfg, FW_CFG_NB_CPUS, pcms->boot_cpu=
+s);
+>      }
+>=20
 
-Neither did I (at least beyond the "does it boot" level) -- hence the
-bug ;)
-
-And of course, few people are using big-endian, so nobody complained.
-
-Just flagging it up so it doesn't get missed!
-
-> Hopefully Richard can chime in on this.
-
-It would be interesting to know whether you do hit this issue
-somewhere, or whether you have a strong view about the clarification to
-the KVM ABI.
-
-Cheers
----Dave
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>

@@ -1,100 +1,138 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3689709wrg;
-        Mon, 24 Jun 2019 04:56:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy42nIOILXIjj8wteMmqAwRTwyNb/DDT6JHP74uQhuWb402euCsYPbT6KTOe/oqfcCto2Aj
-X-Received: by 2002:a05:620a:55c:: with SMTP id o28mr117734305qko.86.1561377371785;
-        Mon, 24 Jun 2019 04:56:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561377371; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3713638wrg;
+        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHsc8RjnjuAM0AGWubsYrFiwpzFiDNdOyazKhbHxdEcn+LvIm8EmqMDHli+06yNi1dvv/b
+X-Received: by 2002:a17:90a:ac13:: with SMTP id o19mr24516367pjq.143.1561378774604;
+        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561378774; cv=none;
         d=google.com; s=arc-20160816;
-        b=nKwJ/iAeeVw6hLvWxXjf+gFV4ksiPihT41AizWsWNxpVgTysw+vl74lenK2Ih0QY3Q
-         hn48rMshm8dOfAacxRG7iPw9AZz7z7A3DXuccohiCIX2xIt5QB7C7CDEHcVoA449gWwV
-         VOm5x+wxN9MzI9Y7z0zjofHW6Vx7pirifrVDgB+tEgNuRt4Dwu9zjhmEdYq+rLIrOa6j
-         MazHiVZqCGPlrrWDHi/BojekC76MTY+3Ov8+xDivUX+5mIzJqggTsbot3oONIMjhLwI3
-         F6Gh6kKsv162FQqbLEUAU7fBQpvIRT0Z2mSFu9dipQaZ/+TkxEPscpnAtQIq9W03eSBm
-         5z9w==
+        b=YhVbCZ6fF7CRJmYB+dPH8tDZa3YS0cBBX4xPmTxGK61Wc0zQ/3j8bGadq1YcMYDCtq
+         HBydAhNAyj2CZLrs9xZBwwvL30UuxhSBHxnckQHb91eezgNxPCUpVOyk1Zjwo/ZF5yng
+         6Xv1HsuVjGxt4vdO/tNFodrK6Bk2yoDOfIsl5e7h0jez5ce8e9vSZg2Veicplp77pD+e
+         9XQFUKZ8wGFB4sLuerYkwvi2y9gLPQvK/0kjn5U66YIJGVCVTsElNROTx78c5XTiydab
+         ilf1/myqEa29xFavQKMz7JS5Fq3pJuiypONRHPoEgj1wALVvW9h9oOctS7E8TK79SQdf
+         7sUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=FcDnN1IK6Nj49wEUQNAms4Imcgur/poIqQ9EgW4/F60=;
-        b=sZmtlmjJvS6iaSY5QMloMbVvNXhm8da8EStK+fA8hyYVZi8tyqdKoV+gyJMcf33xHA
-         cXvhwl9Xzh7+MP5P+Mp5zPIc1JyxF2QZJ5Ol/wArqoqX8qV5ZYG/9/6Fv6PLmTAcASTI
-         bweCwt6daaCfTulg2U+UEo/SMWzQi695bzBLKrh8B570UA9UFVTy3Nm3Hi4BUavUskgI
-         FJUERXkYREDdXsSyIXXvaIdYoJRX8bqR1qJu/E7VpW23WoQIk0PmmA47leqRbJ1rm4a+
-         CAuusLGre/0C6CIJ18Dr6rlX30PVfjs7NZwEVdH7uUCWW80y1Blsy2z4cdcw5M4yPsXo
-         URnw==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=1yGCeT+OKPV4EJrKL9NleeeG6Pschl5Axv6Q2An23oc=;
+        b=hbTX8BUN/zDnhceqmvhszNYjb9lOIrJ71ZCcrsPokunFea+DbI8R+O47E0Y8RytPv+
+         8f5aqIk/Gl2IZsCA1nSI2ipWnCZRP1l/WmXD/Wm0Z46A/TDAYKX+cnv6XX8vog6lE4JO
+         fe9vp5jJ9Bk0kozQZJmAupCelsM4rG9pF/gvDG5hS+sg/wD9KLNcaAq9kbX1kbKuwp2F
+         qWX3HxSQnzmJpmW6Wed5fAj0uWBP0lO1/kIqL7Rh7t/zXUXokX8pEp6mOk5JRSi7Wj55
+         chzS4BRPepG4lrujT0yy51yXax51n/hoK5tcngqmKFF8JjLpnU87gSDRRz8mjoKHlNgb
+         xVyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id y26si6953888qki.39.2019.06.24.04.56.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 24 Jun 2019 04:56:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d12si27870pla.121.2019.06.24.05.19.34;
+        Mon, 24 Jun 2019 05:19:34 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BEB558762F;
-	Mon, 24 Jun 2019 11:56:05 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 135BC1001B02;
-	Mon, 24 Jun 2019 11:55:55 +0000 (UTC)
-Date: Mon, 24 Jun 2019 13:55:53 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eblake@redhat.com" <eblake@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>
-Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
-Message-ID: <20190624115553.ef22fdempvxkzzog@kamzik.brq.redhat.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-11-drjones@redhat.com>
- <20190624110535.GI2790@e103592.cambridge.arm.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1730143AbfFXMTd (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Mon, 24 Jun 2019 08:19:33 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:43308 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726984AbfFXMTd (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 24 Jun 2019 08:19:33 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 2BC7AF8DB1BAB1C616A2;
+        Mon, 24 Jun 2019 20:19:28 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Mon, 24 Jun 2019
+ 20:19:21 +0800
+Subject: Re: [PATCH v17 01/10] hw/arm/virt: Add RAS platform version for
+ migration
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+ <1557832703-42620-2-git-send-email-gengdongjiu@huawei.com>
+ <20190620140409.3c713760@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <fbd558d5-03b7-df5c-e781-549261207221@huawei.com>
+Date:   Mon, 24 Jun 2019 20:19:12 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190624110535.GI2790@e103592.cambridge.arm.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.26]); Mon, 24 Jun 2019 11:56:05 +0000 (UTC)
-X-TUID: 7JD4yg+QY/4V
+In-Reply-To: <20190620140409.3c713760@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: kJDUK1kR/kyc
 
-On Mon, Jun 24, 2019 at 12:05:35PM +0100, Dave Martin wrote:
-> On Fri, Jun 21, 2019 at 05:34:18PM +0100, Andrew Jones wrote:
-> > These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
-> > swabbing is different than it is for fpsmid because the vector format
-> > is a little-endian stream of words.
-> 
-> Note, on big-endian hosts the FPSIMD view Vn and the SVE view Zn[127:0]
-> of the FPSIMD/SVE common register bits has the opposite endianness for
-> SVE_{GET,SET}_ONE_REG.
-> 
-> This only matters if mixing the two views: just from this patch I don't
-> know whether this is an issue for QEMU or not.
 
-I don't know either. My experience with the emulation side of QEMU is
-mostly the zcr_write tweak in this series. And, TBH, I didn't put too
-much thought into the endianness stuff, nor test this series with big
-endian.
 
-Hopefully Richard can chime in on this.
+On 2019/6/20 20:04, Igor Mammedov wrote:
+> On Tue, 14 May 2019 04:18:14 -0700
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> 
+>> Support this feature since version 4.1, disable it by
+>> default in the old version.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>>  hw/arm/virt.c         | 6 ++++++
+>>  include/hw/arm/virt.h | 1 +
+>>  2 files changed, 7 insertions(+)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 5331ab7..7bdd41b 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2043,8 +2043,14 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
+>>  
+>>  static void virt_machine_4_0_options(MachineClass *mc)
+>>  {
+>> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+>> +
+>>      virt_machine_4_1_options(mc);
+>>      compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+>> +    /* Disable memory recovery feature for 4.0 as RAS support was
+>> +     * introduced with 4.1.
+>> +     */
+>> +    vmc->no_ras = true;
+> 
+> So it would mean that the feature is enabled unconditionally for
+> new machine types and consumes resources whether user needs it or not.
+> 
+> In light of the race for leaner QEMU and faster startup times,
+> it might be better to make RAS optional and make user explicitly
+> enable it using a machine option.
 
-Thanks,
-drew
+I will add a machine option to make RAS optional, do you think we should enable or disable it by default? I think it is better if we enable it by default.
 
 > 
-> The kernel and gdb were recently found to be broken in this regard for
-> userspace [1] but the KVM interface should be unaffected.
 > 
-> Cheers
-> ---Dave
+>>  }
+>>  DEFINE_VIRT_MACHINE(4, 0)
+>>  
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index 4240709..7f1a033 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -104,6 +104,7 @@ typedef struct {
+>>      bool disallow_affinity_adjustment;
+>>      bool no_its;
+>>      bool no_pmu;
+>> +    bool no_ras;
+>>      bool claim_edge_triggered_timers;
+>>      bool smbios_old_sys_ver;
+>>      bool no_highmem_ecam;
 > 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/arch/arm64/kernel?id=41040cf7c5f0f26c368bc5d3016fed3a9ca6dba4
+> .
+> 

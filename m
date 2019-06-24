@@ -1,184 +1,150 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3729906wrg;
-        Mon, 24 Jun 2019 05:37:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqytUqYJKiz0z5YiE1EmEcFgFXmUV8hFDN2nXRgRq6R8IdHL2hQZLrHHAPNQZ2+TNbODhHZr
-X-Received: by 2002:a17:902:2ae8:: with SMTP id j95mr104543161plb.276.1561379864349;
-        Mon, 24 Jun 2019 05:37:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561379864; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3882802wrg;
+        Mon, 24 Jun 2019 08:11:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz7IydKMmvqwJ4RilnSfL3iZEer5K1nfyGy9X+sBYEVBOQOw5KnP1d+gGg6rep4pwAZcbtf
+X-Received: by 2002:a17:906:4694:: with SMTP id a20mr117463425ejr.67.1561389096285;
+        Mon, 24 Jun 2019 08:11:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561389096; cv=none;
         d=google.com; s=arc-20160816;
-        b=Laqt655JAx93YINYYwJbJafyX0oWBebv9HsSFY4R5tqwxlm0/Lzo7Tm2kg9BvtK8nH
-         lKr6LSCBA0ItWUjISAvZOBg7ES/U7YA1MOOk7u7+98FBakTaz+jkXLMVMUqW5jzPzMtZ
-         tO8RJ2ZhF+l5+kgvQuYOf3/vtjRYkoGefZuC+RWXt8whwIQTHMnxzX5W3AQwxFdOzDHt
-         lBYgWLip9LEvdEowYeYwydjI8VbjEfAR4puZVHmrRQsWviuoX7EsZh2jVYm/ct2qJaie
-         S4ZGXsBQcn7v/BLd25iZlwlBOJ0eRsvd5oM0w9emyNG67I/3g4g6rTnp/Q+aXbyxiVxR
-         VzZQ==
+        b=AzolOw4rlHLamK+d4B4iqN+tKCrFIW6w2tNL0J9C1fJHymnnH78HZBT4PPlv8NGMIa
+         j78RKMHVI2mCpJKAl7NPBAp+xaZVjFj/DmrYj/ftZZUdL6hDpBY2HYkx1pbdLS55JhQJ
+         bjwQk6nUE3OrtsBEg1iOw+V21JAzlWF6jXQ7HXxTSVj3y/AG5uFsqX7v8K478y7hHlBR
+         OYdnPcTNFVHFTUKlX2F4ETPi3KaXD2H5zSQ71RUGxJM434Vm88PzGHAyPJP4oXUcjpxT
+         WAuT9pgulJxegvJt4BrCNqgXiIOUjArsow5D9Ixmezby16po0uew8xpgWv6YH6iKRdxa
+         6d3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=eWf0DKlpabIJ81fhvXWtjsG6wWchKap9jdPMDIe5XNg=;
-        b=yvEtsmkVG55SmG3C3tprQXMx8BNR/FbiQzfYPNSAw1C19p23yUBMdDNRMskF/QbRZN
-         u63wgqsAifq/xVKTMRdF2kFI/bOmCq+LuGdnnyqZaU9bSZOkED1imqulEs5uXONmrQU5
-         Q1UD3/yAkXg27DVVCA9ZPQsdo0z/e9TEOeRvOu5iz9XwpwlF82WDERsP+7+9Xc5S63Gv
-         ICL8yBmDwMooaPv9VG+uoMjIw1MfB1gHTwSx4rlMPPLb7bWxV0vdk6ojtb+IOR8VLQSr
-         4ezZ4vzOaIojZSw44XruUeA3AzySRbSEJU21ABZkORWs71NBS9RlDlmK8ixa+6VO2UPq
-         AjRg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=CUMJBTuxM7lHaIgVNvYIrObUqCjgENXLFeyJPlp/nYE=;
+        b=ZME82Nwm59jv0JN53FPpCZkxUXBQEUcVRtkY/p0FHGJ29s4f5XwAvd6RkcZjDweasi
+         jxJDXPhnEAlmn5OTLbe6aFBzpqhnGTfBMVRYbXDus0mxoCZVTWaDJGhMRdcjF/mFkjXN
+         vC60xN9yeeh891JLJR7CqlD74pKVfDV0BQvr4nDxK94MfgMWwUdLntGV4gbw8sMIZOCC
+         IdPlMIdOswjMGTb/G2MS/NtvfoziaAikfDltRwXs5SiBKuBGoNC+5Cs5VX4i4dJl73qb
+         a4Jzgb7+ZNoVvC5PY1FWkejiPoYOsJPCEHpLhZoXbj5fo+9wPfvjoMpmsdQI1lCriC4I
+         FZlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b13si10285529plk.313.2019.06.24.05.37.44;
-        Mon, 24 Jun 2019 05:37:44 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f30si9919910edf.183.2019.06.24.08.11.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 24 Jun 2019 08:11:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727463AbfFXMhn (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Mon, 24 Jun 2019 08:37:43 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:19065 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726834AbfFXMhn (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 24 Jun 2019 08:37:43 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 07410A2BE2C0F14BCE0C;
-        Mon, 24 Jun 2019 20:37:40 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Mon, 24 Jun 2019
- 20:37:29 +0800
-Subject: Re: [PATCH v17 04/10] acpi: add build_append_ghes_generic_data()
- helper for Generic Error Data Entry
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-5-git-send-email-gengdongjiu@huawei.com>
- <20190620142814.7caf9c3c@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <b1ef7ea4-acc9-1f97-b320-37f4600cd9f4@huawei.com>
-Date:   Mon, 24 Jun 2019 20:37:26 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52154 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfQd5-0005ZK-AN
+	for alex.bennee@linaro.org; Mon, 24 Jun 2019 11:11:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36253)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <lersek@redhat.com>) id 1hfQTU-0007gc-JK
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2019 11:01:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <lersek@redhat.com>) id 1hfQTS-0002kX-FO
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2019 11:01:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53854)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1hfQTJ-0002LP-PF; Mon, 24 Jun 2019 11:01:29 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E640F30BBE9D;
+ Mon, 24 Jun 2019 15:01:19 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-226.ams2.redhat.com
+ [10.36.116.226])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BDB915D9D5;
+ Mon, 24 Jun 2019 15:01:02 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190620122132.10075-1-philmd@redhat.com>
+ <20190620122132.10075-4-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <0d19df15-040b-b9e4-936c-d14210fe2c87@redhat.com>
+Date: Mon, 24 Jun 2019 17:01:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190620142814.7caf9c3c@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20190620122132.10075-4-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: fzuG19n0hiy5
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Mon, 24 Jun 2019 15:01:20 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [PATCH v5 3/3] hw/arm/virt: Use
+ edk2_add_host_crypto_policy()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a++vzM6bLrGx
 
+On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
+> Enable the EDK2 Crypto Policy features on the Virt machine.
+>=20
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/arm/virt.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 431e2900fd..15727b3d59 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -59,6 +59,7 @@
+>  #include "hw/intc/arm_gicv3_common.h"
+>  #include "kvm_arm.h"
+>  #include "hw/firmware/smbios.h"
+> +#include "hw/firmware/uefi_edk2.h"
+>  #include "qapi/visitor.h"
+>  #include "standard-headers/linux/input.h"
+>  #include "hw/arm/smmuv3.h"
+> @@ -1355,6 +1356,11 @@ static void virt_build_smbios(VirtMachineState *=
+vms)
+>      }
+>  }
+> =20
+> +static void virt_uefi_setup(VirtMachineState *vms)
+> +{
+> +    edk2_add_host_crypto_policy(vms->fw_cfg);
+> +}
+> +
+>  static
+>  void virt_machine_done(Notifier *notifier, void *data)
+>  {
+> @@ -1383,6 +1389,7 @@ void virt_machine_done(Notifier *notifier, void *=
+data)
+> =20
+>      virt_acpi_setup(vms);
+>      virt_build_smbios(vms);
+> +    virt_uefi_setup(vms);
+>  }
+> =20
+>  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>=20
 
-
-On 2019/6/20 20:28, Igor Mammedov wrote:
-> On Tue, 14 May 2019 04:18:17 -0700
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> It will help to add Generic Error Data Entry to ACPI tables
->> without using packed C structures and avoid endianness
->> issues as API doesn't need explicit conversion.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->>  hw/acpi/aml-build.c         | 32 ++++++++++++++++++++++++++++++++
->>  include/hw/acpi/aml-build.h |  6 ++++++
->>  2 files changed, 38 insertions(+)
->>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index fb53f21..102a288 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -296,6 +296,38 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
->>          build_append_int_noprefix(table, error_threshold_window, 4);
->>  }
->>  
->> +/* Generic Error Data Entry
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +void build_append_ghes_generic_data(GArray *table, const char *section_type,
-> s/build_append_ghes_generic_data/build_append_ghes_generic_error_data/
-> 
->> +                                    uint32_t error_severity, uint16_t revision,
->> +                                    uint8_t validation_bits, uint8_t flags,
->> +                                    uint32_t error_data_length, uint8_t *fru_id,
->> +                                    uint8_t *fru_text, uint64_t time_stamp)
-> checkpatch probably will complain due to too long lines
-> you can use:
-> void build_append_ghe...
->          uint32_t error_severity, uint16_t revision,
->          ...
-> 
->> +{
->> +    int i;
->> +
->> +    for (i = 0; i < 16; i++) {
->> +        build_append_int_noprefix(table, section_type[i], 1);
->                                             ^^^
-> use QemuUUID instead, see vmgenid_build_acpi
-ok.
-
-> 
->> +    }
->> +
->> +    build_append_int_noprefix(table, error_severity, 4);
->> +    build_append_int_noprefix(table, revision, 2);
->> +    build_append_int_noprefix(table, validation_bits, 1);
->> +    build_append_int_noprefix(table, flags, 1);
->> +    build_append_int_noprefix(table, error_data_length, 4);
->> +
->> +    for (i = 0; i < 16; i++) {
->> +        build_append_int_noprefix(table, fru_id[i], 1);
-> same as section_type
-ok.
-
-> 
->> +    }
->> +
->> +    for (i = 0; i < 20; i++) {
->> +        build_append_int_noprefix(table, fru_text[i], 1);
->> +    }
-> instead of loop use g_array_insert_vals()
-ok
-
-> 
->> +
->> +    build_append_int_noprefix(table, time_stamp, 8);
-> that's not part of 'Table 17-13'
-> where does it come from?
-
-
-It comes from "ACPI 6.1: Table 18-343 Generic Error Data Entry", I will update the comments, thanks for the pointing out.
-
-> 
->> +}
->> +
->>  /*
->>   * Build NAME(XXXX, 0x00000000) where 0x00000000 is encoded as a dword,
->>   * and return the offset to 0x00000000 for runtime patching.
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index 90c8ef8..a71db2f 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -419,6 +419,12 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
->>                                uint32_t error_threshold_value,
->>                                uint32_t error_threshold_window);
->>  
->> +void build_append_ghes_generic_data(GArray *table, const char *section_type,
->> +                                    uint32_t error_severity, uint16_t revision,
->> +                                    uint8_t validation_bits, uint8_t flags,
->> +                                    uint32_t error_data_length, uint8_t *fru_id,
->> +                                    uint8_t *fru_text, uint64_t time_stamp);
->> +
->>  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
->>                         uint64_t len, int node, MemoryAffinityFlags flags);
->>  
-> 
-> .
-> 
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>

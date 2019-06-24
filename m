@@ -1,115 +1,91 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3667983wrg;
-        Mon, 24 Jun 2019 04:30:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzFIjVUW9x+KB9gKkoQH+li43SNUUBvF1gZCd8lGQ1RkF3W3chxg7ud9atHZx1R+Lb/E4i9
-X-Received: by 2002:a37:7a84:: with SMTP id v126mr16018559qkc.439.1561375858955;
-        Mon, 24 Jun 2019 04:30:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561375858; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3642959wrg;
+        Mon, 24 Jun 2019 04:05:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHHW4SKxkvq/NF2JI9gs/1mSbF6pVRK5Xc/QmDTA0oqpwChR7tnUQ8qMHsuWQ9uOuYfURL
+X-Received: by 2002:a17:906:552:: with SMTP id k18mr41924332eja.117.1561374312216;
+        Mon, 24 Jun 2019 04:05:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561374312; cv=none;
         d=google.com; s=arc-20160816;
-        b=yIybA4ASHUuYjDyWj+xqN95pNvqeXuUF0FnT6w21SmypERIk6Ijn1041oeWAs7Ugp0
-         9vzT5FowWgmfrzmhjSY0o6u1I1/rb/z5PwSJMs5nvAvvSpNVpQca1QWMEoMOgNMvRw1Y
-         QrR3IKRjYM89VLlG+PVEvL43jqfvZr5LclutgEl/PdkchRnqvYXIQWv78B/Z+j9LIDcl
-         ljt7r/aNXHVs3JyFjbpUZFvJPP9Ia694mldbSjjRh+/uUASczaS2iW3lXF2J4XyGHxpJ
-         OM+Bv1jTzXF5UdzaROxrr/KX8/UDLPgT8j3RezLvPv7udTiFV3mf4QWVLe4GtHm1449B
-         PdJA==
+        b=Q+zaKV0QTKCf6axQKDjRCRzsXKCYXzV/zl7ZXkHgJzBX3G7WVrjrnuom/aOxM6yTm/
+         3bf/RGgNZswLjH2kqh9fyMpjped19qFyWH7XvjWT98nZEp55CaSoFhW+PIcpqCe06haL
+         VUHlh37Ow4rCnPF/sjyA94YsT3A3Mxad9tycr7zNcs+NQPeDzH1ItNvuqZA1BSFVZYhN
+         FxtNlNDz36aGfwFiFbBJDcswTb0I/8S2FngjzeayKi6p78qrsS381xBfY+/LXIMHVRYR
+         bTJiWB2q9basVSie7hHb1NisvvFaVrF+X3C/9cgvzhved4KFnCxcPKDN90EaHWrsJ8e/
+         m2hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=ylRTU/1uXgW/3JerEkeXYhCMSDizbewp7SJdM56Et14=;
-        b=DcGXl2y/0SBHeT2kPVcj1KKZU1tsfkb3iSrM7F6Z3ycZ4p+8lxKRZgA+6BgPgZIFwz
-         pe70ynMIVqj5nBQ/tmEALGEqrhUlomKMpMHx8eUhL/BEKJrWD6GT/sRFTkn41Fn34c4p
-         6yVeGpvQVqEKGG3zRO/AdOS9eJV7IK5geDhrB41LMYwLiTmjzF4ysGwNm4ABt7LfUNI+
-         cI+OCtQBi/ZsOqXtSqYm4P1GljizH7kyW9+JNQNg39VTABRrgeQXzkJnq6QrIOc0kYQ9
-         uaeMLkllTUNfVDG4iYulDTAsi7Wizhs1S1KWNhXEtDzIrvS6IET/p5eqIng9oN7kODkr
-         3KXQ==
+        bh=HDUtVK0Yse04Ve+MkDhegg1DgJEBVMvppJUQz0PPPZQ=;
+        b=F08NuarqH3uE9SteYKc/ErS4eOttN6aM9Q/xhy92UGI1K6yMz/WwxrKS0ulF3YsquB
+         e6VUjoPE45WvyLcXk5UfdWxq1nhiIyw1xQeffvUAAmhEABZEu7nutX7R/A47kmS0E2hh
+         p2FCDz4AVdq4UAnMEQgw4RPSTTk8d8Jfl1sAo1Y8FlWZvgDtPvP15d8j88ffHDnV+524
+         z+9zda5gsUzdyJ5oAQgzt3qi5Owh/eErxi7+YZDsMb1e/WGa7AN5BjWrD4s0PX+oxU2r
+         VQpqCf1JwuT267ohbY7ptumx1KNohrZEa46M33LoBcwINBOaOnR4ZqB6QYjQOVjj5GLX
+         r48w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id p48si4071691qtj.235.2019.06.24.04.30.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 24 Jun 2019 04:30:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by mx.google.com with ESMTP id v12si6491051ejh.154.2019.06.24.04.05.11;
+        Mon, 24 Jun 2019 04:05:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1C9B87E437;
-	Mon, 24 Jun 2019 11:30:48 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D874D60BF7;
-	Mon, 24 Jun 2019 11:30:39 +0000 (UTC)
-Date: Mon, 24 Jun 2019 13:30:37 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9563B2B;
+	Mon, 24 Jun 2019 04:05:10 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3E99A3F718;
+	Mon, 24 Jun 2019 04:05:09 -0700 (PDT)
+Date: Mon, 24 Jun 2019 12:05:07 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Andrew Jones <drjones@redhat.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 05/14] target/arm/helper: zcr: Add build
- bug next to value range assumption
-Message-ID: <20190624113037.m5onedluc4x7c5ej@kamzik.brq.redhat.com>
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"imammedo@redhat.com" <imammedo@redhat.com>
+Subject: Re: [PATCH v2 05/14] target/arm/helper: zcr: Add build bug next to
+ value range assumption
+Message-ID: <20190624110507.GG2790@e103592.cambridge.arm.com>
 References: <20190621163422.6127-1-drjones@redhat.com>
  <20190621163422.6127-6-drjones@redhat.com>
- <20190624110507.GG2790@e103592.cambridge.arm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190624110507.GG2790@e103592.cambridge.arm.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Mon, 24 Jun 2019 11:30:48 +0000 (UTC)
-X-TUID: jr+k0aWnh1Wb
+In-Reply-To: <20190621163422.6127-6-drjones@redhat.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: sCaL7ge4n+GX
 
-On Mon, Jun 24, 2019 at 12:05:07PM +0100, Dave Martin wrote:
-> On Fri, Jun 21, 2019 at 05:34:13PM +0100, Andrew Jones wrote:
+On Fri, Jun 21, 2019 at 05:34:13PM +0100, Andrew Jones wrote:
+
+The purpose of this check should probably at least be described in a
+comment -- i.e., what actually depends on this?
+
+Cheers
+---Dave
+
+> Suggested-by: Dave Martin <Dave.Martin@arm.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/helper.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> The purpose of this check should probably at least be described in a
-> comment -- i.e., what actually depends on this?
-
-I was thinking the already present "Bits other than [3:0] are RAZ/WI."
-explained that, but how about this for an improvement?
-
-/*
- * Only the lowest 4 bits of ZCR_ELx may be used to constrain the vector
- * length, the rest of the bits are RAZ/WI. Since the vector length of
- * 128-bits (1 in quadwords) is represented as zero in ZCR_ELx, and all
- * vector lengths are represented as their length in quadwords minus 1,
- * then four bits allow up to quadword 16 to be selected.
- */
-
-Thanks,
-drew
-
-> 
-> Cheers
-> ---Dave
-> 
-> > Suggested-by: Dave Martin <Dave.Martin@arm.com>
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  target/arm/helper.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index df4276f5f6ca..edba94004e0b 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -5319,6 +5319,7 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >      int new_len;
-> >  
-> >      /* Bits other than [3:0] are RAZ/WI.  */
-> > +    QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
-> >      raw_write(env, ri, value & 0xf);
-> >  
-> >      /*
-> > -- 
-> > 2.20.1
-> > 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index df4276f5f6ca..edba94004e0b 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5319,6 +5319,7 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>      int new_len;
+>  
+>      /* Bits other than [3:0] are RAZ/WI.  */
+> +    QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+>      raw_write(env, ri, value & 0xf);
+>  
+>      /*
+> -- 
+> 2.20.1
 > 

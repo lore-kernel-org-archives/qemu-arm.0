@@ -1,397 +1,161 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3758899wrg;
-        Mon, 24 Jun 2019 06:08:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw+KCHiCOwLpAsM/A8Cq6SAB7JULiLGdcgS8o7R4HIU05OrK2jFErnNnwz1zEg3I6yyDsms
-X-Received: by 2002:a17:902:f087:: with SMTP id go7mr121555428plb.330.1561381709280;
-        Mon, 24 Jun 2019 06:08:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561381709; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3684301wrg;
+        Mon, 24 Jun 2019 04:49:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwdax7xsQxJtvaRsKTVaDsyqPuV4TC0dOr3U5CicEvyq9uGHZUZee3Sgh7IIhM7pNFcmeZv
+X-Received: by 2002:ac8:6958:: with SMTP id n24mr24616415qtr.360.1561376970751;
+        Mon, 24 Jun 2019 04:49:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561376970; cv=none;
         d=google.com; s=arc-20160816;
-        b=hyP4m1LgxYBCj7Flw4kXqivcfClVSimC/g7fqYj49eB1z9/ErxhGr3auGByLwrtXNZ
-         1UOEAVH0i50XXN/4I1aTHZ25E9hoTbrO3E8shQGY4Ycm/fSkWxfYddlbQ5vgTSCJdmmM
-         7ltjXhtIAqLK7/65EHMgZXLXVo0V0v8GCQ6F4whNLZk1CVb+dAm6g5PJ9eQ5cdo4k6bG
-         yfQgEzFnB/rkIt/OKPC6/8W3n61PvifRFMZ+2kByjMixZR6uiemaASeW4/eZ3Texmdnb
-         n6NnBIRPbGKk6jXYjNLrlC0Ra8DF2XgLr1mSex0FjsEXNIFvzJSfUOqkncLKQ6It0DRt
-         mNwg==
+        b=PY+YWsQQP6jHmIN7VPPrJHUx9EpG5KbdwNvheVTCjRYQCiDaoevkrouvEA5W9Jz0eO
+         AzArmx3DAp8U8Bk79SyX+wwODaCzhZ3+Ekk0n3dhK/9PRTshQprwxPvjBUzLjV4NZnPa
+         qlej2JAxX6k2VYqcx0UGkh7OUuj2ALaGANJ29VHr7wNYD60WwVG7bbMShhwVZ4JUVHk3
+         XbOwklttdxyUegyqJZVEWSzgXjw3GL+/l4MzQwLntBZjcbnRelAzMiLNE0gwMlircuNm
+         f/IoBra7S7raBX4dV8vLWlkBEIu3JyVV4cjRnswUSuTl7zvPd/n13un2wJ848hrcxqIk
+         6/bA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date;
-        bh=A91yzHeS7VHdHEqaBSgyKUp4kzjm9K9klLRG/WP5OWQ=;
-        b=CEQlzw8H23NASDg0sU5nc9Pes9egTpPLTqDwGGaJrrM3bYNdbNOm+hPvy6KvuPjWGa
-         TkDMWix/ADS+GDzW+z+O/5ciudZeYuumaZHAFApnQ71sBaVgytudgbWiAsjb5f74brci
-         wijAddHtMh9NDRPJulUamjsA80aoZC3Tx+mKe3SmFRcq7CjzfoIyvdIkQaSOyKLvCdVv
-         E7VeVBfuzpjqhnofji/H39w6Uzui3EE52HArwyyxunbAbIC9LqBIj24EVq849TZELMpd
-         d66cnBQTwHeImPSGoIzibh3LC0WhFuihwPulkKxr4dTMPTkFABsBhVOuzsTA5JzDlv6r
-         /vPQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=ejrafpDX7Jd6BGyH+WuFTi1VegB22+5VAPlEQ0ojy2s=;
+        b=d+rcBogXfauZ0i+AGVKQ8zbtQUX3cqu2hPLZm8acW5xOiL/zjQU03qSwfLp/5eO8Xa
+         3bV18nvQXtp5BtkSZizQih13jwWuaJO0Twsq2gj/q7ykcS7r+Ld/0tgxMsE/SjtrThrq
+         wWob1C3JGmJKLmfj1JEusO4S/EHeBItePIN5JVFzHxAWWQwlv3tiA7WECZ3edeXRHYbn
+         uV0+dFQwjQDoUca6hUQw1Xq5ASNqIFDvhYiMRMdCOgxdy2t29LzYVLdB0vqyqkKGUFst
+         6lIo18IDWFK8BM0HbuBxZXuIB/wkY01ouj0uXcJyeleB0MXSuTm7rm6Q2UxD+ym1YHe+
+         ep9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id f4si10553086pjo.97.2019.06.24.06.08.29;
-        Mon, 24 Jun 2019 06:08:29 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id y30si651254qve.109.2019.06.24.04.49.30
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 24 Jun 2019 04:49:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730672AbfFXNI2 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Mon, 24 Jun 2019 09:08:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40006 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1728927AbfFXNI2 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 24 Jun 2019 09:08:28 -0400
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 41B2981DEB;
-        Mon, 24 Jun 2019 13:08:22 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 5E9E019C69;
-        Mon, 24 Jun 2019 13:08:14 +0000 (UTC)
-Date:   Mon, 24 Jun 2019 15:08:10 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: Re: [PATCH v17 10/10] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-Message-ID: <20190624150810.1287160e@redhat.com>
-In-Reply-To: <1557832703-42620-11-git-send-email-gengdongjiu@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
-        <1557832703-42620-11-git-send-email-gengdongjiu@huawei.com>
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B172559473;
+	Mon, 24 Jun 2019 11:49:19 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EAEB919730;
+	Mon, 24 Jun 2019 11:49:13 +0000 (UTC)
+Date: Mon, 24 Jun 2019 13:49:11 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Dave Martin <Dave.Martin@arm.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"imammedo@redhat.com" <imammedo@redhat.com>
+Subject: Re: [PATCH v2 07/14] target/arm/cpu64: max cpu: Introduce
+ sve<vl-bits> properties
+Message-ID: <20190624114911.xb4xdcbv55p2rufv@kamzik.brq.redhat.com>
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-8-drjones@redhat.com>
+ <20190624110526.GH2790@e103592.cambridge.arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190624110526.GH2790@e103592.cambridge.arm.com>
+User-Agent: NeoMutt/20180716
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 24 Jun 2019 13:08:27 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: cmxqSLhYJduf
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Mon, 24 Jun 2019 11:49:19 +0000 (UTC)
+X-TUID: fBQbyHC+kkmy
 
-On Tue, 14 May 2019 04:18:23 -0700
-Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-
-> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA delivered by host to guest PA, then fill this PA
-> to guest APEI GHES memory, then notify guest according to the SIGBUS type.
+On Mon, Jun 24, 2019 at 12:05:26PM +0100, Dave Martin wrote:
+> On Fri, Jun 21, 2019 at 05:34:15PM +0100, Andrew Jones wrote:
+> > Introduce cpu properties to give fine control over SVE vector lengths.
+> > We introduce a property for each valid length up to the current
+> > maximum supported, which is 2048-bits. The properties are named, e.g.
+> > sve128, sve256, sve512, ..., where the number is the number of bits.
+> > 
+> > It's now possible to do something like -cpu max,sve-max-vq=4,sve384=off
+> > to provide a guest vector lengths 128, 256, and 512 bits. The resulting
+> > set must conform to the architectural constraint of having all power-of-2
+> > lengths smaller than the maximum length present. It's also possible to
+> > only provide sve<vl-bits> properties, e.g. -cpu max,sve512=on. That
+> > example provides the machine with 128, 256, and 512 bit vector lengths.
+> > It doesn't hurt to explicitly ask for all expected vector lengths,
+> > which is what, for example, libvirt should do.
+> > 
+> > Note1, it is not possible to use sve<vl-bits> properties before
+> > sve-max-vq, e.g. -cpu max,sve384=off,sve-max-vq=4, as supporting
+> > that overly complicates the user input validation.
+> > 
+> > Note2, while one might expect -cpu max,sve-max-vq=4,sve512=on to be the
+> > same as -cpu max,sve512=on, they are not. The former enables all vector
+> > lengths 512 bits and smaller, while the latter only sets the 512-bit
+> > length and its smaller power-of-2 lengths. It's probably best not to use
+> > sve-max-vq with sve<vl-bits> properties, but it can't be completely
+> > forbidden as we want qmp_query_cpu_model_expansion to work with guests
+> > launched with e.g. -cpu max,sve-max-vq=8 on their command line.
 > 
-> If guest accesses the poisoned memory, it generates Synchronous External
-> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
-> to unmapped the affected page for the guest's stage 2, finally return
-> to guest.
+> Supporting both options together in a non-idempotent way seems to
+> complicate things.
 > 
-> Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
-> then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
-> error address into guest APEI GHES memory and notify guest using
-> Synchronous-External-Abort(SEA).
+> Would it be simpler to allow sve-max-vq only when there are no sve<bits>
+> options?
+
+Not really. Since we can't simply remove sve-max-vq from the 'max' cpu
+type, then we'd still need conditions to check when we can use it. The
+restriction that it has to come first reduces the complexity
+substantially, and I think restricting to not being allowed
+at all, when sve<vl-bits> are used, would only give us a net check
+reduction of one or two.
+
 > 
-> Suggested-by: James Morse <james.morse@arm.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
->  hw/acpi/acpi_ghes.c         | 177 ++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/acpi/acpi_ghes.h |   6 +-
->  include/sysemu/kvm.h        |   2 +-
->  target/arm/kvm64.c          |  39 ++++++++++
->  4 files changed, 222 insertions(+), 2 deletions(-)
+> Alternatively, the two options would be defined so that their meanings
+> are independent of parse order.
 > 
-> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-> index d03e797..06b7374 100644
-> --- a/hw/acpi/acpi_ghes.c
-> +++ b/hw/acpi/acpi_ghes.c
-> @@ -26,6 +26,101 @@
->  #include "sysemu/sysemu.h"
->  #include "qemu/error-report.h"
+> So, way sve-max-vq=<max> means that:
+> 
+>  * all VQs up to max for which there is no corresponding sve<bits>=off,
+>    are enabled; and
+> 
+>  * VQ max is enabled; and
+> 
+>  * all VQs exceeding max are disabled.
+> 
+> While sve<bits>=(on|off) means
+> 
+>  * the VQ coresponding to <bits> is enabled (for on) or disabled (for
+>    off).
 >  
-> +/* UEFI 2.6: N.2.5 Memory Error Section */
-> +static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
-> +{
-> +    /*
-> +     * Memory Error Record
-> +     */
-> +    build_append_int_noprefix(table,
-> +                 (1UL << 14) | /* Type Valid */
-> +                 (1UL << 1) /* Physical Address Valid */,
-> +                 8);
-bad indent
+> After parsing all the options, you check that the sve-max-vq and
+> sve<bits> optinos are consistent.  If you disallow duplicate sve-max-vq
+> or sve<bits> options, then there is no possibility of ambiguity and the
+> order or options doesn't matter.
 
-> +    /* Memory error status information */
-> +    build_append_int_noprefix(table, 0, 8);
-> +    /* The physical address at which the memory error occurred */
-> +    build_append_int_noprefix(table, error_physical_addr, 8);
-> +    build_append_int_noprefix(table, 0, 48);
-> +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
-> +    build_append_int_noprefix(table, 0, 7);
-> +}
-> +
-> +static int ghes_record_mem_error(uint64_t error_block_address,
-> +                                    uint64_t error_physical_addr)
-bad indent
+I don't want to put any final checks at the end of parsing all options,
+because that won't work with the QMP query.
 
+> 
+> (There may be constraints on the way qemu options parsing works that
+> make this hard, though...)
 
-> +{
-> +    GArray *block;
-> +    uint64_t current_block_length;
-> +    uint32_t data_length;
-> +    /* Memory section */
-> +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
-> +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
-> +                                0x83, 0xB1};
-> +    uint8_t fru_id[16] = {0};
-> +    uint8_t fru_text[20] = {0};
-> +
-> +    /* Generic Error Status Block
-> +     * | +---------------------+
-> +     * | |     block_status    |
-> +     * | +---------------------+
-> +     * | |    raw_data_offset  |
-> +     * | +---------------------+
-> +     * | |    raw_data_length  |
-> +     * | +---------------------+
-> +     * | |     data_length     |
-> +     * | +---------------------+
-> +     * | |   error_severity    |
-> +     * | +---------------------+
-> +     */
-> +    block = g_array_new(false, true /* clear */, 1);
-> +
-> +    /* Get the length of the Generic Error Data Entries */
-> +    cpu_physical_memory_read(error_block_address +
-> +        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
-> +    /* The current whole length of the generic error status block */
-> +    current_block_length = sizeof(AcpiGenericErrorStatus) + le32_to_cpu(data_length);
-I might be missing something but why do you read length from guest?
-Isn't it something provided by QEMU/host?
+I can't think of any issue with the parsing, but the QMP query only using
+the property get accessors, without any finalizing, does put constraints
+on what we can do.
 
-> +
-> +    /* This is the length if adding a new generic error data entry*/
-> +    data_length += GHES_DATA_LENGTH;
-> +    data_length += GHES_MEM_CPER_LENGTH;
-> +
-> +    /* Check whether it will run out of the preallocated memory if adding a new
-> +     * generic error data entry
-> +     */
-> +    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
-> +        error_report("Record CPER out of boundary!!!");
-> +        return GHES_CPER_FAIL;
-> +    }
-> +
-> +    /* Build the new generic error status block header */
-> +    build_append_ghes_generic_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
-> +        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
-> +
-> +    /* Write back above generic error status block header to guest memory */
-> +    cpu_physical_memory_write(error_block_address, block->data,
-> +                              block->len);
-> +
-> +    /* Add a new generic error data entry */
-> +
-> +    data_length = block->len;
-> +    /* Build this new generic error data entry header */
-> +    build_append_ghes_generic_data(block, mem_section_id_le,
-> +                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
-> +                    cpu_to_le32(80)/* the total size of Memory Error Record */, fru_id,
-> +                    fru_text, 0);
-> +
-> +    /* Build the memory section CPER for above new generic error data entry */
-> +    build_append_mem_cper(block, error_physical_addr);
-> +
-> +    /* Write back above this new generic error data entry to guest memory */
-> +    cpu_physical_memory_write(error_block_address + current_block_length,
-> +                    block->data + data_length, block->len - data_length);
-> +
-> +    g_array_free(block, true);
-> +
-> +    return GHES_CPER_OK;
-> +}
-> +
->  /* Build table for the hardware error fw_cfg blob */
->  void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker)
->  {
-> @@ -169,3 +264,85 @@ void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
->      fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
->          &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
->  }
-> +
-> +bool ghes_record_errors(uint32_t notify, uint64_t physical_address)
-> +{
-> +    uint64_t error_block_addr, read_ack_register_addr;
-> +    int read_ack_register = 0, loop = 0;
-> +    uint64_t start_addr = le32_to_cpu(ges.ghes_addr_le);
-> +    bool ret = GHES_CPER_FAIL;
-> +    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff,
-> +                                        0xff, 0xff, 0xff, 0, 1};
-> +
-> +    /*
-> +     * | +---------------------+ ges.ghes_addr_le
-> +     * | |error_block_address0 |
-> +     * | +---------------------+ --+--
-> +     * | |    .............    | GHES_ADDRESS_SIZE
-> +     * | +---------------------+ --+--
-> +     * | |error_block_addressN |
-> +     * | +---------------------+
-> +     * | | read_ack_register0  |
-> +     * | +---------------------+ --+--
-> +     * | |   .............     | GHES_ADDRESS_SIZE
-> +     * | +---------------------+ --+--
-> +     * | | read_ack_registerN  |
-> +     * | +---------------------+ --+--
-> +     * | |      CPER           |   |
-> +     * | |      ....           | GHES_MAX_RAW_DATA_LENGT
-> +     * | |      CPER           |   |
-> +     * | +---------------------+ --+--
-> +     * | |    ..........       |
-> +     * | +---------------------+
-> +     * | |      CPER           |
-> +     * | |      ....           |
-> +     * | |      CPER           |
-> +     * | +---------------------+
-> +     */
-> +    if (physical_address && notify < ACPI_HEST_NOTIFY_RESERVED) {
-> +        /* Find and check the source id for this new CPER */
-> +        if (error_source_id[notify] != 0xff) {
-> +            start_addr += error_source_id[notify] * GHES_ADDRESS_SIZE;
-> +        } else {
-> +            goto out;
-> +        }
-> +
-> +        cpu_physical_memory_read(start_addr, &error_block_addr,
-> +                                    GHES_ADDRESS_SIZE);
-> +
-> +        read_ack_register_addr = start_addr +
-> +                        ACPI_HEST_ERROR_SOURCE_COUNT * GHES_ADDRESS_SIZE;
-> +retry:
-> +        cpu_physical_memory_read(read_ack_register_addr,
-> +                                 &read_ack_register, GHES_ADDRESS_SIZE);
-> +
-> +        /* zero means OSPM does not acknowledge the error */
-> +        if (!read_ack_register) {
-> +            if (loop < 3) {
-> +                usleep(100 * 1000);
-> +                loop++;
-> +                goto retry;
-> +            } else {
-> +                error_report("OSPM does not acknowledge previous error,"
-> +                    " so can not record CPER for current error, forcibly acknowledge"
-> +                    " previous error to avoid blocking next time CPER record! Exit");
-> +                read_ack_register = 1;
-> +                cpu_physical_memory_write(read_ack_register_addr,
-> +                    &read_ack_register, GHES_ADDRESS_SIZE);
-> +            }
-> +        } else {
-> +            if (error_block_addr) {
-> +                read_ack_register = 0;
-> +                /* Clear the Read Ack Register, OSPM will write it to 1 when
-> +                 * acknowledge this error.
-> +                 */
-> +                cpu_physical_memory_write(read_ack_register_addr,
-> +                    &read_ack_register, GHES_ADDRESS_SIZE);
-> +                ret = ghes_record_mem_error(error_block_addr, physical_address);
-> +            }
-> +        }
-> +    }
-> +
-> +out:
-> +    return ret;
-> +}
-> diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
-> index 38fd87c..6b38097 100644
-> --- a/include/hw/acpi/acpi_ghes.h
-> +++ b/include/hw/acpi/acpi_ghes.h
-> @@ -32,11 +32,14 @@
->  #define GHES_ADDRESS_SIZE           8
->  
->  #define GHES_DATA_LENGTH            72
-> -#define GHES_CPER_LENGTH            80
-> +#define GHES_MEM_CPER_LENGTH        80
->  
->  #define ReadAckPreserve             0xfffffffe
->  #define ReadAckWrite                0x1
->  
-> +#define GHES_CPER_OK                1
-> +#define GHES_CPER_FAIL              0
-> +
->  /* The max size in bytes for one error block */
->  #define GHES_MAX_RAW_DATA_LENGTH        0x1000
->  /* Now only have GPIO-Signal and ARMv8 SEA notification types error sources
-> @@ -76,4 +79,5 @@ void build_apei_hest(GArray *table_data, GArray *hardware_error,
->  
->  void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker);
->  void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
-> +bool ghes_record_errors(uint32_t notify, uint64_t error_physical_addr);
->  #endif
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index a6d1cd1..1d1a7a8 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -377,7 +377,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
->  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
->  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
->  
-> -#ifdef TARGET_I386
-> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
->  #define KVM_HAVE_MCE_INJECTION 1
->  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
->  #endif
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index c7bdc6a..d2eac28 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -27,6 +27,10 @@
->  #include "kvm_arm.h"
->  #include "internals.h"
->  #include "hw/arm/arm.h"
-> +#include "exec/ram_addr.h"
-> +#include "hw/acpi/acpi-defs.h"
-> +#include "hw/acpi/acpi_ghes.h"
-> +#include "hw/acpi/acpi.h"
->  
->  static bool have_guest_debug;
->  
-> @@ -1029,6 +1033,41 @@ int kvm_arch_get_registers(CPUState *cs)
->      return ret;
->  }
->  
-> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-> +{
-> +    ram_addr_t ram_addr;
-> +    hwaddr paddr;
-> +
-> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-> +
-> +    if (acpi_enabled && addr) {
-> +        ram_addr = qemu_ram_addr_from_host(addr);
-> +        if (ram_addr != RAM_ADDR_INVALID &&
-> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-> +            kvm_hwpoison_page_add(ram_addr);
-> +            /* Asynchronous signal will be masked by main thread, so
-> +             * only handle synchronous signal.
-> +             */
-> +            if (code == BUS_MCEERR_AR) {
-> +                kvm_cpu_synchronize_state(c);
-> +                if (GHES_CPER_FAIL != ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
-> +                    kvm_inject_arm_sea(c);
-> +                } else {
-> +                    fprintf(stderr, "failed to record the error\n");
-> +                }
-> +            }
-> +            return;
-> +        }
-> +        fprintf(stderr, "Hardware memory error for memory used by "
-> +                "QEMU itself instead of guest system!\n");
-> +    }
-> +
-> +    if (code == BUS_MCEERR_AR) {
-> +        fprintf(stderr, "Hardware memory error!\n");
-> +        exit(1);
-> +    }
-> +}
-> +
->  /* C6.6.29 BRK instruction */
->  static const uint32_t brk_insn = 0xd4200000;
->  
+> 
+> Having sve-max-vq in 128-bit units while sve<bits> are named in terms of
+> bit counts also feels a bit odd now.
+
+sve-max-vq already exists, so it'd have to be deprecated if we don't want
+it anymore. And I think sve<vl-bits> is the right naming to go with for
+that. Of course using sve-max-vq is completely optional. If you don't want
+it for backward compatible reasons, or as a shorthand to restrict the
+lengths, then you can just use the sve<vl-bits> properties. Indeed, with
+KVM, if you use the 'host' cpu type (the default for use with KVM), then
+you won't even have the sve-max-vq property. As 'host' never had it, I
+didn't have to keep it, nor adopt it. And of course I didn't want to
+adopt it.
+
+Thanks,
+drew

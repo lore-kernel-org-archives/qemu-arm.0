@@ -1,53 +1,53 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4955507wrg;
-        Tue, 25 Jun 2019 06:16:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/MYdgpNJA6as2lGu4MEvD1EofaJbGITpD6AePxJYgH/MzSPEzaV+InHypL//Ja+r6E6Uu
-X-Received: by 2002:a17:90a:d996:: with SMTP id d22mr14747494pjv.86.1561468589358;
-        Tue, 25 Jun 2019 06:16:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561468589; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4972628wrg;
+        Tue, 25 Jun 2019 06:32:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUV40nBnH9gMfZzoRI70FrwV/GmWl/43GymdtN7lt7zSnx+GI6TcLfLDD25JPr/kDlyD2B
+X-Received: by 2002:a17:902:7d86:: with SMTP id a6mr130409792plm.199.1561469552156;
+        Tue, 25 Jun 2019 06:32:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561469552; cv=none;
         d=google.com; s=arc-20160816;
-        b=wUOJj+RX9M6usgKARNaXjRpAOADma42tWymbZbOcZBf2URLNIMVC+HiTpHaC58bsgY
-         3OfamznYTHiwQkmzjpfVuT4z2yoKxv+1JZsgW4yg9xqTkSj1vQlt787kCl0N53rp2Rfr
-         hra1mfKg6/BX1LILXMdbKpyTA12DNdcvvKqoX1trPlyeYPIjzCcUniDQn7OFlDFe6KoC
-         /w8HoCPWucg+F9S9pspsRGgwacE9qalf159+xUWvxID1JKXgovTM8nzzeanjS8EsC4tz
-         KvudhvbXUVJ6pARI4ERsM1CPq7yVaAEsbQjBA/xerSEAch7M1cFcc/nDWyV7iPPx6BTu
-         5uLg==
+        b=tbrIoI75E2/rf3j7/tb1ENJSuC7NSf/fDulb8pjvFfLRLMiyVXDb9RHqrbGqUt1ps8
+         1USVN9WpCBpUNzdr/nkEn4IAzvLOb50ZUU5pPKP86+Xndtw1OPDojiv3TQVDqca71Jh9
+         CWlQxGPlOG8cxthL/INi+S+VY2mMuFTAoT/06qRv96j89D1gkdWqrl1Z2xWwXgoZQOkB
+         oETM6UzBPiY5ZlB632e9dagxqRYtj4yE+wx4ElPfUOf1vNlzDli3Da0FM/Ex3M4BvKeH
+         SbvHzoyrV0GMcMfVCg04/N050NTLTqyflSJGIYq+Lmfl2IKjSSg6zDWx+/wnTI4H6NV4
+         ZLoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:subject:cc:to:from:date;
-        bh=nZQB+LuW6coAi+4g9PuksxZuW2zv/R9R3HWLug6QJ7M=;
-        b=gi9W6bvufedeHrcnZ2PZTJZJaI87MB9iC8Gw4AIu5QdL59kSBAgBtCiSVnEu/5UOYh
-         XGXr0h6OZ7VMDJLSm1e8xjpAgzFhvIInR9m3XkD+8aVMFLMa8dZ0FVrqO3cj0yOTWGG+
-         rQ86nRX2atQCv6+yzKMjJt+cBGN1lYlNUXg30GslaqSeYAZ6E4utO9JiXDckQjpT2C2H
-         jdVHAQMpepLx3QqfujwM7FlbvfV5uBk6GeEJeW072jk44ufDKQzJN5TnIi3/iPOFgXf0
-         RZdfZRxHSZbHAmKGUP28o8rkc1h1gSJfBh4Vv2IHWeBWVinfx3JDiHQS6cw7nnZIYTfE
-         ibfA==
+        bh=wwg2HU57E+U8Obau3IUMb3ATHZYqMFpL6YhdrnEz7eo=;
+        b=lxL8nxEsW7SBJitYl4LreXsAqnm2py5FjDNfa/lt8WLUZf0L8OBlk3GqefDZOca/Fx
+         Cq55WucLp0/mQ4nw3aSwgTR/WWtCmpupwSYCwoU+pIOhN67PCYJQxW6VO62+IYyVgjxq
+         XSEwrvt+CY7o5sHvllQUQa0FE1GgmPlw4XilRJqjzoKy9H61Ky8SngrlBlH0eLoVlAyJ
+         YtaqoG4Tgg2iRugZPI3yWloCj6c9ivvLJBRzXLqe8b3c/dAbihBwtiSTo1YYZ0ft1YNj
+         h+P/hTcqUjc29I2xUN11MSeM60QiaReGE0ZXomZ0puOZq2l+YpQQmiL8MYiwbXRwgYzp
+         BmhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v197si1936133pgb.29.2019.06.25.06.16.29;
-        Tue, 25 Jun 2019 06:16:29 -0700 (PDT)
+        by mx.google.com with ESMTP id j124si14333769pfb.151.2019.06.25.06.32.31;
+        Tue, 25 Jun 2019 06:32:32 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727457AbfFYNQ2 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 25 Jun 2019 09:16:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56858 "EHLO mx1.redhat.com"
+        id S1729438AbfFYNca (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 25 Jun 2019 09:32:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54556 "EHLO mx1.redhat.com"
         rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1726009AbfFYNQ2 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jun 2019 09:16:28 -0400
+        id S1727223AbfFYNca (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Jun 2019 09:32:30 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id BE3F030F1BDC;
-        Tue, 25 Jun 2019 13:16:27 +0000 (UTC)
+        by mx1.redhat.com (Postfix) with ESMTPS id D821981DF3;
+        Tue, 25 Jun 2019 13:32:22 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 2C4565D9C5;
-        Tue, 25 Jun 2019 13:16:21 +0000 (UTC)
-Date:   Tue, 25 Jun 2019 15:16:16 +0200
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 86D6B5D9C5;
+        Tue, 25 Jun 2019 13:32:16 +0000 (UTC)
+Date:   Tue, 25 Jun 2019 15:32:12 +0200
 From:   Igor Mammedov <imammedo@redhat.com>
 To:     gengdongjiu <gengdongjiu@huawei.com>
 Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
@@ -57,88 +57,131 @@ Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
         <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
         <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
         <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: Re: [PATCH v17 01/10] hw/arm/virt: Add RAS platform version for
- migration
-Message-ID: <20190625151616.12e46566@redhat.com>
-In-Reply-To: <fbd558d5-03b7-df5c-e781-549261207221@huawei.com>
+Subject: Re: [PATCH v17 10/10] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+Message-ID: <20190625153212.1fff6b40@redhat.com>
+In-Reply-To: <3059ee08-c041-2006-36b5-fd0e53c08e79@huawei.com>
 References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
-        <1557832703-42620-2-git-send-email-gengdongjiu@huawei.com>
-        <20190620140409.3c713760@redhat.com>
-        <fbd558d5-03b7-df5c-e781-549261207221@huawei.com>
+        <1557832703-42620-11-git-send-email-gengdongjiu@huawei.com>
+        <20190624150810.1287160e@redhat.com>
+        <3059ee08-c041-2006-36b5-fd0e53c08e79@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.43]); Tue, 25 Jun 2019 13:16:27 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 25 Jun 2019 13:32:30 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: wQiRNlabuAP9
+X-TUID: cXn54XItwEW6
 
-On Mon, 24 Jun 2019 20:19:12 +0800
+On Tue, 25 Jun 2019 20:24:32 +0800
 gengdongjiu <gengdongjiu@huawei.com> wrote:
 
-> On 2019/6/20 20:04, Igor Mammedov wrote:
-> > On Tue, 14 May 2019 04:18:14 -0700
+> On 2019/6/24 21:08, Igor Mammedov wrote:
+> > On Tue, 14 May 2019 04:18:23 -0700
 > > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 > >   
-> >> Support this feature since version 4.1, disable it by
-> >> default in the old version.
+> >> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> >> translates the host VA delivered by host to guest PA, then fill this PA
+> >> to guest APEI GHES memory, then notify guest according to the SIGBUS type.
 > >>
+> >> If guest accesses the poisoned memory, it generates Synchronous External
+> >> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
+> >> to unmapped the affected page for the guest's stage 2, finally return
+> >> to guest.
+> >>
+> >> Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
+> >> then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
+> >> error address into guest APEI GHES memory and notify guest using
+> >> Synchronous-External-Abort(SEA).
+> >>
+> >> Suggested-by: James Morse <james.morse@arm.com>
 > >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > >> ---
-> >>  hw/arm/virt.c         | 6 ++++++
-> >>  include/hw/arm/virt.h | 1 +
-> >>  2 files changed, 7 insertions(+)
+> >>  hw/acpi/acpi_ghes.c         | 177 ++++++++++++++++++++++++++++++++++++++++++++
+> >>  include/hw/acpi/acpi_ghes.h |   6 +-
+> >>  include/sysemu/kvm.h        |   2 +-
+> >>  target/arm/kvm64.c          |  39 ++++++++++
+> >>  4 files changed, 222 insertions(+), 2 deletions(-)
 > >>
-> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> >> index 5331ab7..7bdd41b 100644
-> >> --- a/hw/arm/virt.c
-> >> +++ b/hw/arm/virt.c
-> >> @@ -2043,8 +2043,14 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
+> >> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
+> >> index d03e797..06b7374 100644
+> >> --- a/hw/acpi/acpi_ghes.c
+> >> +++ b/hw/acpi/acpi_ghes.c
+> >> @@ -26,6 +26,101 @@
+> >>  #include "sysemu/sysemu.h"
+> >>  #include "qemu/error-report.h"
 > >>  
-> >>  static void virt_machine_4_0_options(MachineClass *mc)
-> >>  {
-> >> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> >> +
-> >>      virt_machine_4_1_options(mc);
-> >>      compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
-> >> +    /* Disable memory recovery feature for 4.0 as RAS support was
-> >> +     * introduced with 4.1.
+> >> +/* UEFI 2.6: N.2.5 Memory Error Section */
+> >> +static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
+> >> +{
+> >> +    /*
+> >> +     * Memory Error Record
 > >> +     */
-> >> +    vmc->no_ras = true;  
-> > 
-> > So it would mean that the feature is enabled unconditionally for
-> > new machine types and consumes resources whether user needs it or not.
-> > 
-> > In light of the race for leaner QEMU and faster startup times,
-> > it might be better to make RAS optional and make user explicitly
-> > enable it using a machine option.  
+> >> +    build_append_int_noprefix(table,
+> >> +                 (1UL << 14) | /* Type Valid */
+> >> +                 (1UL << 1) /* Physical Address Valid */,
+> >> +                 8);  
+> > bad indent  
+> I will update it
 > 
-> I will add a machine option to make RAS optional, do you think we should enable or disable it by default? I think it is better if we enable it by default.
-I'd start with disabled by default as it's easy to make it
-enabled by default later and we can't do so other way around.
+> >   
+> >> +    /* Memory error status information */
+> >> +    build_append_int_noprefix(table, 0, 8);
+> >> +    /* The physical address at which the memory error occurred */
+> >> +    build_append_int_noprefix(table, error_physical_addr, 8);
+> >> +    build_append_int_noprefix(table, 0, 48);
+> >> +    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
+> >> +    build_append_int_noprefix(table, 0, 7);
+> >> +}
+> >> +
+> >> +static int ghes_record_mem_error(uint64_t error_block_address,
+> >> +                                    uint64_t error_physical_addr)  
+> > bad indent  
+> I will update it
+> 
+> > 
+> >   
+> >> +{
+> >> +    GArray *block;
+> >> +    uint64_t current_block_length;
+> >> +    uint32_t data_length;
+> >> +    /* Memory section */
+> >> +    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
+> >> +                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
+> >> +                                0x83, 0xB1};
+> >> +    uint8_t fru_id[16] = {0};
+> >> +    uint8_t fru_text[20] = {0};
+> >> +
+> >> +    /* Generic Error Status Block
+> >> +     * | +---------------------+
+> >> +     * | |     block_status    |
+> >> +     * | +---------------------+
+> >> +     * | |    raw_data_offset  |
+> >> +     * | +---------------------+
+> >> +     * | |    raw_data_length  |
+> >> +     * | +---------------------+
+> >> +     * | |     data_length     |
+> >> +     * | +---------------------+
+> >> +     * | |   error_severity    |
+> >> +     * | +---------------------+
+> >> +     */
+> >> +    block = g_array_new(false, true /* clear */, 1);
+> >> +
+> >> +    /* Get the length of the Generic Error Data Entries */
+> >> +    cpu_physical_memory_read(error_block_address +
+> >> +        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
+> >> +    /* The current whole length of the generic error status block */
+> >> +    current_block_length = sizeof(AcpiGenericErrorStatus) + le32_to_cpu(data_length);  
+> > I might be missing something but why do you read length from guest?
+> > Isn't it something provided by QEMU/host?  
+> The length of the Generic Error Data Entries is not fixed, as the CPER number increases, the length will increase.
+> there is already a member to record the length for the CPER in the table, this table is in the guest.
+> so it is better directly read the length from the table instead of providing by QEMU/host.
+If not careful using guest provided length for reading/writing buffers in QEMU opens road for exploits.
 
- 
-> > 
-> >   
-> >>  }
-> >>  DEFINE_VIRT_MACHINE(4, 0)
-> >>  
-> >> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> >> index 4240709..7f1a033 100644
-> >> --- a/include/hw/arm/virt.h
-> >> +++ b/include/hw/arm/virt.h
-> >> @@ -104,6 +104,7 @@ typedef struct {
-> >>      bool disallow_affinity_adjustment;
-> >>      bool no_its;
-> >>      bool no_pmu;
-> >> +    bool no_ras;
-> >>      bool claim_edge_triggered_timers;
-> >>      bool smbios_old_sys_ver;
-> >>      bool no_highmem_ecam;  
-> > 
-> > .
-> >   
-> 
+So if CPER is provided and managed by QEMU then it's better to calculate length
+without relying on guest state. Or even rewrite whole status block without trying
+to calculate delta.

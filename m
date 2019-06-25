@@ -1,111 +1,123 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4759372wrg;
-        Tue, 25 Jun 2019 02:56:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzra3ochVrum3Ref7SNc4UHWjvH/i/hPLGKxVhgaBolRppuvuqo/MrKaSfMymIR3OTLtAzA
-X-Received: by 2002:a17:90a:db52:: with SMTP id u18mr31151788pjx.107.1561456578214;
-        Tue, 25 Jun 2019 02:56:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561456578; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4844851wrg;
+        Tue, 25 Jun 2019 04:29:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxDtUfHP21PltjT4ltz2b7sQWXSGEyfZ24cYUWu3pEgzwZqdLP/yHVSvFPkosDwBAu+B31o
+X-Received: by 2002:a17:906:1c94:: with SMTP id g20mr50383890ejh.179.1561462142495;
+        Tue, 25 Jun 2019 04:29:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561462142; cv=none;
         d=google.com; s=arc-20160816;
-        b=IVk/4818AbLu7SbSiXHXgyYh83OI737QWM3vwVqYf317Pe7SRcXR0gFuoM9loNWqwX
-         5TKey3oTHrVu5EFP/JPnJjSfoKQDEka+QLHUXKgNAS6/ecJlDdn9a4K+CTnxD3hg+7IF
-         LG3xwO1mALeOULpIHXJDx7ZdmUcX3X3vnOhCefw6prG5yZc2uioc8Gec2piT7pk0NMA+
-         qOXn9c2DE4IG2ij9Im0c8cVNpFE+U/8w4SCG0cHH/bH7sXY3T9RWj2Vkg/lgT43gJwxx
-         xKAU0mQwhSPN57ncM9wPj/gJv6NXlvkLk3kSKrgaUmg5RWobBBgdS8Htk/HH1cNuz6gA
-         qB7A==
+        b=Cw8yHrq2leZkeRNdHPU56zXeRPPdokszq0fgWVF5JejLxOjrgqw8NAvY/hCScY1TO+
+         TRUJhbiX8IcjiBaC4HQPcr2oCeBA8WN8+WOC5EFyLNndIddr5glLkaFGCwFSSwMxKQ3K
+         EkLlcdmHrpteNNj+x1SDZD6UYr7Bh1RQJoKxitErWVolXLzrNvQ8CFJQQaLZIw7t0z4K
+         VKR6xNRenwowe0/PXuOb95ly3MQ8HbE9i+//a0Q7QDYd2Rb4mFxOZLa+VpYhZR3/eIPJ
+         pskeLc41u0MO56DgE+/xcG8MrXi6heTQukCumvUDA7VjbtGKz/5nHXPG/vLuaKB3bRhA
+         W2lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=auvCEQF3SYOmVAOMfdS5G1ZesLOJrh54pACU/MkQbkQ=;
-        b=BEicap08FsQNbAnG7f2kCnmsSZCWMsu9fvQFrw7I2HUpB1zpu/JLZl0pc2/h35lnwT
-         upqXYmZoAVnmVuV3nIyrv27BTTGFRlQyXANCBAxAC/Z2kOGtLufDzZeG0lZcUU3Ytov7
-         aZbuzkNJLB8gylPyfZ4gBj6zYR5c+H2BrDuTnZJUUd0uLp0ueX32hONpfSvb08hwlrvc
-         cSSWyDGC4k9N97qg2PVHAewoexBSQ6lHibp1FCgpurVm3Pd5JVkSv417W7PK7BhAVAk+
-         LcaYoockypAsMv34u9GEXqK3b1nT69n98j6tHibRCODuvxoKQeVWSNPzgQXdfiPdvAQV
-         7k5w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=qMcxO4raslvVJG6txQX0mMT0wpxkNdyDdLmdGkGclPM=;
+        b=lYUkOcrh7m/Cj5I8WuyZxciwcrfHvPgNhAaDPXhwCeLVjdlC/mOv9JznfjG9wq47xq
+         StfGaccee2K7uHA7UY0LPn2jrcoNDiF4NWcVzFNJ8wYiB9eWkfqXKK6isBH9mZ7dCufB
+         PwXdt9O24HcynCJ3+m6x9C8chIrgGNnP7lsuSXLiUN1XtkpbebIoWIyq0LO8zGqflPA/
+         MGmJEMQrWw/zFeWUR4Cqcd8xexiM1/IXIRjh1L5cYRjbu4i1y9wCV1IJQYo311iq8oij
+         XQxQ0NJ9mMA0gBqSj/54TV5JpKxmN2UnqhkHKSFcJ3KcGQKzoPfSUmwTFDBfVcv74b1q
+         f+PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id e1si14273352pfl.121.2019.06.25.02.56.17;
-        Tue, 25 Jun 2019 02:56:18 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r5si157859edm.368.2019.06.25.04.29.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jun 2019 04:29:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726972AbfFYJ4R (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 25 Jun 2019 05:56:17 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:19073 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726421AbfFYJ4Q (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jun 2019 05:56:16 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id B42DE6DEBFE07697B51F;
-        Tue, 25 Jun 2019 17:56:14 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Jun 2019
- 17:56:04 +0800
-Subject: Re: [Qemu-devel] [PATCH v17 02/10] ACPI: add some GHES structures and
- macros definition
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-3-git-send-email-gengdongjiu@huawei.com>
- <20190620141052.370788fb@redhat.com>
- <f4f94ecb-200c-3e18-1a09-5fb6bc761834@huawei.com>
- <20190620170934.39eae310@redhat.com>
- <ec089c94-589b-782c-1bdc-1b2c74e0ea46@huawei.com>
- <20190624131629.7f586861@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <623d8454-6d9a-43ff-dd34-f5e0d1896f01@huawei.com>
-Date:   Tue, 25 Jun 2019 17:56:00 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58956 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfjdF-0006ql-K8
+	for alex.bennee@linaro.org; Tue, 25 Jun 2019 07:29:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53584)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hfjd6-0006qI-Rm
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:28:53 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hfjd5-00042n-Pr
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:28:52 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2245 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1hfjd5-0003pz-DL; Tue, 25 Jun 2019 07:28:51 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 24C6874FDD6BAC980AD9;
+ Tue, 25 Jun 2019 19:28:43 +0800 (CST)
+Received: from lhrphicprd00229.huawei.com (10.123.41.22) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 25 Jun 2019 19:28:34 +0800
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Date: Tue, 25 Jun 2019 19:27:47 +0800
+Message-ID: <20190625112752.83188-3-Jonathan.Cameron@huawei.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
+References: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190624131629.7f586861@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
+Content-Type: text/plain
+X-Originating-IP: [10.123.41.22]
 X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yxDpOEKQDDof
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [RFC PATCH 2/7] pci: Add Huawei vendor ID and Huawei
+ Emulated CCIX Device IDs.
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, jcm@redhat.com,
+ linuxarm@huawei.com, Auger Eric <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V0IYOf6HHfP4
 
+These device IDs have been allocated for emulated only devices,
+giving us more flexibility than would be possible by emulating
+real devices.
 
+They will be used for the CCIX PCIe configuration space emulation
+modules that follow.
 
-On 2019/6/24 19:16, Igor Mammedov wrote:
->>>> On 2019/6/20 20:10, Igor Mammedov wrote:  
->>>>>> + */
->>>>>> +struct AcpiGenericErrorStatus {
->>>>>> +    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
->>>>>> +    uint32_t block_status;
->>>>>> +    uint32_t raw_data_offset;
->>>>>> +    uint32_t raw_data_length;
->>>>>> +    uint32_t data_length;
->>>>>> +    uint32_t error_severity;
->>>>>> +} QEMU_PACKED;
->>>>>> +typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;    
->>>>> there shouldn't be packed structures,
->>>>> is it a leftover from previous version?    
->>>> I remember some people suggest to add QEMU_PACKED before, anyway I will remove it in my next version patch.  
->>> Question is why it's  there and where it is used?  
->> sorry, it is my carelessness. it should be packed structures.
->>
->> I used this structures to get its actual total size and member offset in [PATCH v17 10/10].
->> If it is not packed structures, the total size and member offset may be not right.
-> I'd suggest to drop these typedefs and use a macro with size for that purpose,
-> Also it might be good to make it local to the file that would use it.
-so you mean we also use macro for the  member offset  in the structures?  such as the offset of data_length,
-may be there is many hardcode.
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ include/hw/pci/pci_ids.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-> 
->>> BTW:
->>> series doesn't apply to master anymore.
+diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
+index 0abe27a53a..f49be07328 100644
+--- a/include/hw/pci/pci_ids.h
++++ b/include/hw/pci/pci_ids.h
+@@ -220,6 +220,11 @@
+ #define PCI_VENDOR_ID_FREESCALE          0x1957
+ #define PCI_DEVICE_ID_MPC8533E           0x0030
+=20
++#define PCI_VENDOR_ID_HUAWEI             0x19E5
++#define PCI_DEVICE_ID_HUAWEI_CCIX_UP     0xA260
++#define PCI_DEVICE_ID_HUAWEI_CCIX_DOWN   0xA261
++#define PCI_DEVICE_ID_HUAWEI_CCIX_EP     0xA262
++
+ #define PCI_VENDOR_ID_INTEL              0x8086
+ #define PCI_DEVICE_ID_INTEL_82378        0x0484
+ #define PCI_DEVICE_ID_INTEL_82441        0x1237
+--=20
+2.20.1
+

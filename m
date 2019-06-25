@@ -1,189 +1,258 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4901033wrg;
-        Tue, 25 Jun 2019 05:25:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjlX/c/oe9N7ut/ngmMxIUe+kosvZRBFr/iuBdDdSretkGj6knCRtFEg4jgPONC7wbf/F2
-X-Received: by 2002:a17:906:d154:: with SMTP id br20mr77803692ejb.76.1561465539480;
-        Tue, 25 Jun 2019 05:25:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561465539; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4903918wrg;
+        Tue, 25 Jun 2019 05:28:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx/9SueEKKvKC9wuWj6tmWhwS71rtSC4dH9xr5ESnjrC1TV/8/lqjIajYHIpW+huhmVdmLT
+X-Received: by 2002:a17:902:bc83:: with SMTP id bb3mr134244569plb.56.1561465729487;
+        Tue, 25 Jun 2019 05:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561465729; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZJa+xBzJOkdA4OSM5nafCoZok9/kOcOCt9bs5ZbAMW2DDdCHOYnIDQkHWeH/+UPeEx
-         S/URq3HuM6qIJfh3AI1hYJsSHjbAFWqwxAgJ6LnwRabmnrsehZst1n1YsLdlLvh+6vVD
-         Q3P2nxEw3YozDtcqUsyLu1gfYNGVGhsxN1OZF1kHxlqmjkOC+lcjtscFctnfqX7zFiue
-         JIItQn5gfXatk1wApHzmaVqRLEsm1MYZuVmSbdhlmP6pRMJuIbAMcw0yYC0Gam+b6ajk
-         zzgwGVuftpOhwjfhyi9e1l+ieh8czf+dYUAbbenmPN0aJE69clWCJ3WvulITuPZyMMAN
-         80pw==
+        b=Yk6lOiC/54B48T4qEZyzkyEyhTk+ldiAcY+OTxdy/2twCH4z2XSH/MAIW5jk754Lsz
+         7FYNASqfJKPweouRRUf5SWctPvlfCDP69A7AtpNdcIsj7Gcb3PUD0jhlA4XEwSDjLRyD
+         AYVGlKWTXKCd8lUPuDs64HX+LW4G5e6BA/8X49+q7K1jakJekdR7soHTyHUY21vwGAjH
+         T5gaSVVaTp7lC3b76jvrkUceAc55dF0d3pf+bNcMyUeYDLtSo+ZKL5eFbR8+iVREE7gC
+         69aN8WUd3blMMycHDy9LTPPOF9Hrz4WvFADn1h9ZtdudRdqI8J/+uv6xGEmvY90goeEU
+         e+Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from;
-        bh=Uxna8vxBlA1ZcXH+Uv/mLVoPQlB8oDyeGHAeo/JcGtM=;
-        b=eB5nfHhjUqNJTd0jIOzCXwshs70EdEOT2mDKY/eUBWw14Vg/4fJJcpc36wan+EuNwY
-         yDMMu9I4O2iDBPz5jQuY+x2IMPvsR9gd68fJmOU8fJkoHUzmAWq64XOZEwz9ILo3PIn+
-         DtCqkl1ruZ637HVO0D27t06PUn1uBZEitdk/Ug30n1mJ7Fn1wqkVEcqRf5olnseVzhAH
-         eFG/CPWnXiTUjdI+FVJgrYIi6VuZE/6J3PX+53aoJui4HqNhbN17+hxj6Uf/zutb9t6h
-         ESYk2oKszSzoFK4gfVdCFrtM5HAqTw9UJmfU2rqH5AMNLMaPvSeZJM6o63pSEcLERwOV
-         Nsqg==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=dIbj1aHbCMxoVpu7r3k9WkHV20gfc1Q2COl2aJsERP8=;
+        b=UGAWz5zwgASsWg1yVyq9HmQtFhnwHH/vMabohYkpUyEz3cHrKs93wF2UXGWcVXTFaI
+         6f9rrH/GC2m+sn2u1CPkcK2ILQuEpO6IPsNJJ+nXsB3htAbfAPI+W/RG8Aabl3xUOWBi
+         bH97Xo3R52sYvwGeWsJWDRRbhdX2AMhZ+fEyHc2VPZ7IU9Zlk/WD60cAYDF9l4P/cNAv
+         l19zwq/2oWLl2ncRC2SEsl8ldtJ2M1q9pxuN9FzcFguDBYXcDA+6H5+U02J6n7l21TJO
+         9UUy87/bBgftbeDq8jsLU6u7mRW1eFPmJkihtR+oGAkAh6LMhdHScVyFVv/Z0mugHmYW
+         XeYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n5si217751eje.231.2019.06.25.05.25.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2019 05:25:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id e12si9652310pgs.34.2019.06.25.05.28.48;
+        Tue, 25 Jun 2019 05:28:49 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59656 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfkW2-0004k0-D7
-	for alex.bennee@linaro.org; Tue, 25 Jun 2019 08:25:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36193)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMU-00074e-I7
- for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:15:47 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMT-00044k-4B
- for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:15:46 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:33532 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMS-0003xO-0W; Tue, 25 Jun 2019 08:15:45 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 7C5BD68F4B86F0A1E654;
- Tue, 25 Jun 2019 20:15:34 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 25 Jun 2019 20:15:25 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <imammedo@redhat.com>
-Date: Tue, 25 Jun 2019 13:14:13 +0100
-Message-ID: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731263AbfFYM2s (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 25 Jun 2019 08:28:48 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:19075 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726653AbfFYM2r (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Jun 2019 08:28:47 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 3820CEB960A9AD7D3429;
+        Tue, 25 Jun 2019 20:28:45 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS408-HUB.china.huawei.com
+ (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Jun 2019
+ 20:28:38 +0800
+Subject: Re: [PATCH v17 08/10] KVM: Move related hwpoison page functions to
+ accel/kvm/ folder
+To:     Igor Mammedov <imammedo@redhat.com>, <pbonzini@redhat.com>
+CC:     <mst@redhat.com>, <shannon.zhaosl@gmail.com>,
+        <peter.maydell@linaro.org>, <lersek@redhat.com>,
+        <james.morse@arm.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+ <1557832703-42620-9-git-send-email-gengdongjiu@huawei.com>
+ <20190624143249.37a5e6d5@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <d7edd19e-340f-98ff-6613-34a5e85c05e2@huawei.com>
+Date:   Tue, 25 Jun 2019 20:28:36 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.202.227.237]
+In-Reply-To: <20190624143249.37a5e6d5@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [PATCH v6 0/8] ARM virt: ACPI memory hotplug support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
- linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
- sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HsK6YoAm7i6i
-
-This series is an attempt to provide device memory hotplug support 
-on ARM virt platform. This is based on Eric's recent works here[1]
-and carries some of the pc-dimm related patches dropped from his
-series.
-
-The kernel support for arm64 memory hot add was added recently by
-Robin and hence the guest kernel should be => 5.0-rc1.
-
-NVDIM support is not included currently as we still have an unresolved
-issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
-can be included, but not done for now, for keeping it simple.
-
-This makes use of GED device to sent hotplug ACPI events to the
-Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
-Sebastien to add the hardware-reduced support to Nemu using GED
-device[3]. (Please shout if I got the author/signed-off wrong for
-those patches or missed any names).
-
-This is sanity tested on a HiSilicon ARM64 platform and appreciate
-any further testing.
-
-Thanks,
-Shameer
-
-[1] https://patchwork.kernel.org/cover/10837565/
-[2] https://patchwork.kernel.org/cover/10783589/
-[3] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
-[4] http://lists.infradead.org/pipermail/linux-arm-kernel/2019-May/651763.html
-
-v5 --> v6
-
--Addressed comments from Eric.
--Added R-by from Eric and Igor.
-
-v4 --> v5
--Removed gsi/ged-irq routing in virt.
--Added Migration support.
--Dropped support for DT coldplug case based on the discussions
- here[4]
--Added system_powerdown support through GED.
-
-v3 --> v4
-Addressed comments from Igor and Eric,
--Renamed "virt-acpi" to "acpi-ged".
--Changed ged device parent to TYPE_DEVICE.
--Introduced DT memory node property "hotpluggable" to resolve device
- memory being treated as early boot memory issue(patch #7).
--Combined patches #3 and #9 from v3 into #3.
-
-v2 --> v3
-
-Addressed comments from Igor and Eric,
--Made virt acpi device platform independent and moved
- to hw/acpi/generic_event_device.c
--Moved ged specific code into hw/acpi/generic_event_device.c
--Introduced an opt-in feature "fdt" to resolve device-memory being
- treated as early boot memory.
--Dropped patch #1 from v2.
-
-RFC --> v2
-
--Use GED device instead of GPIO for ACPI hotplug events.
--Removed NVDIMM support for now.
--Includes dropped patches from Eric's v9 series.
-
-Eric Auger (1):
-  hw/arm/virt: Add memory hotplug framework
-
-Samuel Ortiz (2):
-  hw/acpi: Do not create memory hotplug method when handler is not
-    defined
-  hw/acpi: Add ACPI Generic Event Device Support
-
-Shameer Kolothum (5):
-  hw/acpi: Make ACPI IO address space configurable
-  hw/arm/virt: Enable device memory cold/hot plug with ACPI boot
-  hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
-  hw/acpi: Add system power down support to GED
-  hw/arm: Use GED for system_powerdown event
-
- hw/acpi/Kconfig                        |   4 +
- hw/acpi/Makefile.objs                  |   1 +
- hw/acpi/generic_event_device.c         | 352 +++++++++++++++++++++++++
- hw/acpi/memory_hotplug.c               |  35 +--
- hw/arm/Kconfig                         |   4 +
- hw/arm/virt-acpi-build.c               |  58 ++--
- hw/arm/virt.c                          |  88 ++++++-
- hw/i386/acpi-build.c                   |   3 +-
- include/hw/acpi/generic_event_device.h | 106 ++++++++
- include/hw/acpi/memory_hotplug.h       |   9 +-
- include/hw/arm/virt.h                  |   3 +
- 11 files changed, 607 insertions(+), 56 deletions(-)
- create mode 100644 hw/acpi/generic_event_device.c
- create mode 100644 include/hw/acpi/generic_event_device.h
-
--- 
-2.17.1
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: CcyOSDrSm0Ig
 
 
+
+On 2019/6/24 20:32, Igor Mammedov wrote:
+> On Tue, 14 May 2019 04:18:21 -0700
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> 
+>> kvm_hwpoison_page_add() and kvm_unpoison_all() will be used both
+>> by X86 and ARM platforms, so move these functions to a common
+>> accel/kvm/ folder to avoid duplicate code.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>>  accel/kvm/kvm-all.c     | 33 +++++++++++++++++++++++++++++++++
+>>  include/exec/ram_addr.h | 24 ++++++++++++++++++++++++
+>>  target/arm/kvm.c        |  3 +++
+>>  target/i386/kvm.c       | 34 +---------------------------------
+>>  4 files changed, 61 insertions(+), 33 deletions(-)
+>>
+>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+>> index 524c4dd..b9f9f29 100644
+>> --- a/accel/kvm/kvm-all.c
+>> +++ b/accel/kvm/kvm-all.c
+>> @@ -625,6 +625,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+>>      return ret;
+>>  }
+>>  
+>> +typedef struct HWPoisonPage {
+>> +    ram_addr_t ram_addr;
+>> +    QLIST_ENTRY(HWPoisonPage) list;
+>> +} HWPoisonPage;
+>> +
+>> +static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+>> +    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+>> +
+>> +void kvm_unpoison_all(void *param)
+>> +{
+>> +    HWPoisonPage *page, *next_page;
+>> +
+>> +    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+>> +        QLIST_REMOVE(page, list);
+>> +        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+>> +        g_free(page);
+>> +    }
+>> +}
+>> +
+>> +void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+>> +{
+>> +    HWPoisonPage *page;
+>> +
+>> +    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+>> +        if (page->ram_addr == ram_addr) {
+>> +            return;
+>> +        }
+>> +    }
+>> +    page = g_new(HWPoisonPage, 1);
+>> +    page->ram_addr = ram_addr;
+>> +    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+>> +}
+>> +
+>>  static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
+>>  {
+>>  #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+>> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+>> index 139ad79..193b0a7 100644
+>> --- a/include/exec/ram_addr.h
+>> +++ b/include/exec/ram_addr.h
+> 
+> it's not file for KVM specific code,
+> maybe Paolo could suggest a bettor place ...
+I remember some people suggests me to move the code to KVM before, may be he is Peter.
+Paolo, can you give a better place?
+
+> 
+> 
+>> @@ -116,6 +116,30 @@ void qemu_ram_free(RAMBlock *block);
+>>  
+>>  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
+>>  
+>> +/**
+>> + * kvm_hwpoison_page_add:
+>> + *
+>> + * Parameters:
+>> + *  @ram_addr: the address in the RAM for the poisoned page
+>> + *
+>> + * Add a poisoned page to the list
+>> + *
+>> + * Return: None.
+>> + */
+>> +void kvm_hwpoison_page_add(ram_addr_t ram_addr);
+>> +
+>> +/**
+>> + * kvm_unpoison_all:
+>> + *
+>> + * Parameters:
+>> + *  @param: some data may be passed to this function
+>> + *
+>> + * Free and remove all the poisoned pages in the list
+>> + *
+>> + * Return: None.
+>> + */
+>> +void kvm_unpoison_all(void *param);
+>> +
+>>  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+>>  #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
+>>  
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 5995634..6d3b25b 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -29,6 +29,7 @@
+>>  #include "exec/address-spaces.h"
+>>  #include "hw/boards.h"
+>>  #include "qemu/log.h"
+>> +#include "exec/ram_addr.h"
+>>  
+>>  const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+>>      KVM_CAP_LAST_INFO
+>> @@ -187,6 +188,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>>  
+>>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>>  
+>> +    qemu_register_reset(kvm_unpoison_all, NULL);
+>> +
+>>      return 0;
+>>  }
+>>  
+>> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+>> index 3b29ce5..9bdb879 100644
+>> --- a/target/i386/kvm.c
+>> +++ b/target/i386/kvm.c
+>> @@ -46,6 +46,7 @@
+>>  #include "migration/blocker.h"
+>>  #include "exec/memattrs.h"
+>>  #include "trace.h"
+>> +#include "exec/ram_addr.h"
+>>  
+>>  //#define DEBUG_KVM
+>>  
+>> @@ -467,39 +468,6 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+>>  }
+>>  
+>>  
+>> -typedef struct HWPoisonPage {
+>> -    ram_addr_t ram_addr;
+>> -    QLIST_ENTRY(HWPoisonPage) list;
+>> -} HWPoisonPage;
+>> -
+>> -static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
+>> -    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
+>> -
+>> -static void kvm_unpoison_all(void *param)
+>> -{
+>> -    HWPoisonPage *page, *next_page;
+>> -
+>> -    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
+>> -        QLIST_REMOVE(page, list);
+>> -        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
+>> -        g_free(page);
+>> -    }
+>> -}
+>> -
+>> -static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+>> -{
+>> -    HWPoisonPage *page;
+>> -
+>> -    QLIST_FOREACH(page, &hwpoison_page_list, list) {
+>> -        if (page->ram_addr == ram_addr) {
+>> -            return;
+>> -        }
+>> -    }
+>> -    page = g_new(HWPoisonPage, 1);
+>> -    page->ram_addr = ram_addr;
+>> -    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
+>> -}
+>> -
+>>  static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
+>>                                       int *max_banks)
+>>  {
+> 
+> .
+> 

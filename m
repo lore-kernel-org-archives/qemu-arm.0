@@ -1,255 +1,164 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4852218wrg;
-        Tue, 25 Jun 2019 04:35:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz0q6QEbyA92X9t0UqivpWs9YOONXtbMBg3/DAeZrm3BlPezWY4xRJ/RFOjTPFp97K4ceJE
-X-Received: by 2002:a50:9451:: with SMTP id q17mr107569988eda.119.1561462558573;
-        Tue, 25 Jun 2019 04:35:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561462558; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4886574wrg;
+        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzkWoRzdqWRQCCCXJu9DN7vhncnTBr+BnnI7otFjl3UaTrjpwBn84C/gbWqdYisUgGATXcl
+X-Received: by 2002:a63:1303:: with SMTP id i3mr38633537pgl.202.1561464685579;
+        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561464685; cv=none;
         d=google.com; s=arc-20160816;
-        b=sBRfWhe65tDwjLa611KFZDO7vhL3xsUiGPVvR9U2xzuZaZcrcIIsHskUUuykCaniwN
-         bqZMCc73WXLpYbEwhte4qqcM92ZgH5lPM76yoY+VZ8DzSUalQmfIgYS64MidqUFU33Oz
-         AZ/eYcZm0FrYZYGnftsVBzsQNXn7IsrJUMPbYE0E7XPvSQyXA9c8zkwWqFF4rD1g5onu
-         fISAD8x9gi2Ooc/aJE7gPCcmCLwAFfdcY7dR3Kc8B4BrloHQH3pj7gJN10HbRkgvYXOP
-         5BbC0EePrObThgclKlB6p4S+T0k/NdiU9FJqQyEQLx2SxxG4DYBtPt78pifnvZuVla24
-         M+nQ==
+        b=0hLFlyK8dkxsFaZTGQjU7+BqUIYfKL0ztkvDwnpJDpNwrO72DB7YL1xIVtbDxjqlSY
+         kacwdw8vvJ8eMHWd2y+s5WFD7AuhEHLdyKETBWUhVafWNs9nFDgQjTmlCSGcX7zNPQ5b
+         13fx6qEcAtW9Vza7Kukbh6ii9iovnXHkhkWjQeNENqqy3iq47nstcialhhuQsE6sMQDp
+         3WBjw+E228ZoB9tohJLJNNC1wLHc428aFAWDv6q3ZQWXcFffifitbddNtUYeLav7swH2
+         NzUFCiOVIE3VOASB8EzgbpSDQuDiIIzz0+iR+VE00bZkXKFsyo9FkM5cYWTj17kHScuM
+         prLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=vny0JeLY8068lnZq3ri7O4TG7cP/R0bH/2O5Tk6SOxU=;
-        b=PfbmXaCIiPIQGs21kI8hQoxWQtc4/ry0NNWodfBF9E87N7gHBv0YjgnixQ12rcRSzK
-         djIju/cJOR7fxxXQP5Ja94LTS3TkJP/wbIFysIno0DFUKcKaGEgpE3qw7bzlhN/TtKzE
-         vPLMS9BvR3xORYPnPZ8pwnEDKrwNJ3niMxadcv+gDrvgecKvjHM8/Vl8t8nPTIIOUa5J
-         cwFs2JlDVP/WgG8Kw6ZnPJ/us29AgSgCw2Qe5ceLtk18OVmx+QWzz7p74EiibFKxhyAa
-         Xer+tVeVSsz5MZEAzeSj4SMBfjCKSqM7o5uLbMDx2g07dnvrl3jay5rHkFIF+qQL02fP
-         BeCw==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=EXO0u+zE8e+vMNkJhdT90lXR9F+r150JddM18YgHfrs=;
+        b=X/jMWSsLB3giYYoPAXJLrHqfUhhjgVampwOfJi4Wq/LS6trOkaVX8pgmt58KjI4Bv0
+         DTXeXQavgajY7sz/TWep8HemrwgdhCqzp9ZY9ra8LCdjK6+N+3D4NWGPIoYktbBoSEj9
+         C9tXT6GlS6QeWIGG4ESnx6YB0pM1QeuWZxBR+/XgDOAWYN0Z/eMMQCyOtmQJA43Mr8oD
+         eLkhChEHHaTMfRL7FM0g1iW76cLgukJju0ISmnQg9kFZgixExmvAO7WqyiTT7ndnjKmG
+         pJDOHzMJVDMLvOziytDOH7JmrZ+5uATGXUBU7u9NUEqPr1/iMqkzL8ohQszJrlUG/JgR
+         sFMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si162907eji.22.2019.06.25.04.35.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2019 04:35:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id h125si13994807pfb.176.2019.06.25.05.11.25;
+        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59032 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfjjx-0005al-Lr
-	for alex.bennee@linaro.org; Tue, 25 Jun 2019 07:35:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53697)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdD-0006yn-0Z
- for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:29:00 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdB-0004Az-5s
- for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:28:58 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:43142 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jonathan.cameron@huawei.com>)
- id 1hfjdA-000472-LJ; Tue, 25 Jun 2019 07:28:57 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 46FF97BF38E2C0BCB813;
- Tue, 25 Jun 2019 19:28:53 +0800 (CST)
-Received: from lhrphicprd00229.huawei.com (10.123.41.22) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 25 Jun 2019 19:28:44 +0800
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Tue, 25 Jun 2019 19:27:51 +0800
-Message-ID: <20190625112752.83188-7-Jonathan.Cameron@huawei.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
-References: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726930AbfFYMLY (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 5 others); Tue, 25 Jun 2019 08:11:24 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:19108 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726532AbfFYMLY (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 25 Jun 2019 08:11:24 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id AC84597342FD98737BF6;
+        Tue, 25 Jun 2019 20:11:20 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Jun 2019
+ 20:11:13 +0800
+Subject: Re: [PATCH v17 05/10] acpi: add build_append_ghes_generic_status()
+ helper for Generic Error Status Block
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
+        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
+        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
+        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
+        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
+References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
+ <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
+ <20190620144257.7400b0a7@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <93dcd75e-77e4-8813-beef-7939cdb75413@huawei.com>
+Date:   Tue, 25 Jun 2019 20:11:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.123.41.22]
+In-Reply-To: <20190620144257.7400b0a7@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [RFC PATCH 6/7] misc: CCIX endpoint function
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, jcm@redhat.com,
- linuxarm@huawei.com, Auger Eric <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nxCxkIH0EZKD
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: cms3MTh5QiBO
 
-This handles the case where a given function is not also a
-PCIe topology upstream or downstream port.
 
-This include, non function 0 functions on upstream ports and
-any function on a device without a PCIe switch.  Note that
-this doesn't exclude the possibility of this being the upstream
-port of a CCIX layer switch.
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- hw/misc/Kconfig       |   5 ++
- hw/misc/Makefile.objs |   1 +
- hw/misc/ccix-ep.c     | 112 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 118 insertions(+)
+On 2019/6/20 20:42, Igor Mammedov wrote:
+> On Tue, 14 May 2019 04:18:18 -0700
+> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> 
+>> It will help to add Generic Error Status Block to ACPI tables
+>> without using packed C structures and avoid endianness
+>> issues as API doesn't need explicit conversion.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> ---
+>>  hw/acpi/aml-build.c         | 14 ++++++++++++++
+>>  include/hw/acpi/aml-build.h |  6 ++++++
+>>  2 files changed, 20 insertions(+)
+>>
+>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> index 102a288..ce90970 100644
+>> --- a/hw/acpi/aml-build.c
+>> +++ b/hw/acpi/aml-build.c
+>> @@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
+>>          build_append_int_noprefix(table, error_threshold_window, 4);
+>>  }
+>>  
+>> +/* Generic Error Status Block
+>> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+>> + */
+>> +void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
+> maybe ..._generic_error_status???
+good point, the build_append_ghes_generic_error_status() is better than build_append_ghes_generic_status()
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 385e1b0cec..7aba167999 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -118,3 +118,8 @@ config AUX
-     select I2C
-=20
- source macio/Kconfig
-+
-+config CCIX_EP
-+    bool
-+    select CCIX_LIB
-+   =20
-\ No newline at end of file
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 77b9df9796..56a6cb3591 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -6,6 +6,7 @@ common-obj-$(CONFIG_ISA_DEBUG) +=3D debugexit.o
- common-obj-$(CONFIG_SGA) +=3D sga.o
- common-obj-$(CONFIG_ISA_TESTDEV) +=3D pc-testdev.o
- common-obj-$(CONFIG_PCI_TESTDEV) +=3D pci-testdev.o
-+common-obj-$(CONFIG_CCIX_EP) +=3D ccix-ep.o
- common-obj-$(CONFIG_EDU) +=3D edu.o
- common-obj-$(CONFIG_PCA9552) +=3D pca9552.o
-=20
-diff --git a/hw/misc/ccix-ep.c b/hw/misc/ccix-ep.c
-new file mode 100644
-index 0000000000..40a5b22dd8
---- /dev/null
-+++ b/hw/misc/ccix-ep.c
-@@ -0,0 +1,112 @@
-+/*
-+ * CCIX EP configuration space test device
-+ *
-+ * Copyright (c) 2019 Huawei
-+ * Author: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-+ *
-+ * Portions copied from pci-testdev.c
-+ * Copyright (c) 2012 Red Hat Inc.
-+ * Author: Michael S. Tsirkin <mst@redhat.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License alo=
-ng
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#include "qemu/osdep.h"
-+#include "hw/hw.h"
-+#include "hw/pci/pci.h"
-+#include "qemu/event_notifier.h"
-+#include "sysemu/kvm.h"
-+#include "hw/misc/ccix.h"
-+#include "qemu/module.h"
-+
-+typedef struct CCIXEpState {
-+    PCIDevice parent_obj;
-+    struct CCIXState s;
-+
-+} CCIXEpState;
-+
-+#define TYPE_CCIX_EP "ccix-ep"
-+#define CCIX_EP_DEV(obj) OBJECT_CHECK(CCIXEpState, (obj), TYPE_CCIX_EP)
-+
-+static void ccix_ep_write_config(PCIDevice *pci_dev, uint32_t addr,
-+                                 uint32_t val_in, int l)
-+{
-+    CCIXEpState *s =3D CCIX_EP_DEV(pci_dev);
-+
-+    ccix_write_config(pci_dev, &s->s, addr, val_in, l);=20
-+    pci_default_write_config(pci_dev, addr, val_in, l);
-+}
-+
-+static void ccix_ep_realize(PCIDevice *pci_dev, Error **errp)
-+{
-+    CCIXEpState *s =3D CCIX_EP_DEV(pci_dev);
-+    int offset =3D PCI_CONFIG_SPACE_SIZE;
-+
-+    if (PCI_FUNC(pci_dev->devfn) =3D=3D 0)
-+        ccix_set_port(&s->s);
-+    initialize_ccixstate(&s->s, pci_dev);
-+    pci_dev->config_write =3D ccix_ep_write_config;
-+    pcie_endpoint_cap_init(pci_dev, 0);
-+    offset =3D ccix_add_prldvsec(pci_dev, &s->s, offset);
-+    if (s->s.flags & (1 << CCIX_IS_PORT))
-+        ccix_add_tdldvsec(pci_dev, offset);
-+
-+    pci_dev->config[PCI_INTERRUPT_PIN] =3D 0; /* no interrupt pin */
-+    ccix_register(&s->s);
-+}
-+
-+static Property ccix_props[] =3D {
-+    DEFINE_PROP_STRING("ccix_device", CCIXEpState, s.ccix_dev_name),
-+    DEFINE_PROP_BIT("primaryport", CCIXEpState, s.flags, PRIMARY_PORT_BI=
-T, true),
-+    DEFINE_PROP_UINT8("port_id", CCIXEpState, s.port_id, 0),
-+    DEFINE_PROP_UINT8("num_links", CCIXEpState, s.num_links, 1),
-+    DEFINE_PROP_UINT8("psam_entries", CCIXEpState, s.psam_entries, 0),
-+    DEFINE_PROP_UINT8("request_agents", CCIXEpState, s.num_ras, 0),
-+    DEFINE_PROP_UINT8("home_agents", CCIXEpState, s.num_has, 0),
-+    DEFINE_PROP_UINT8("hsam_entries", CCIXEpState, s.hsam_entries, 0),
-+    DEFINE_PROP_UINT8("rsam_entries", CCIXEpState, s.rsam_entries, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void ccix_ep_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
-+
-+    k->realize =3D ccix_ep_realize;
-+    k->vendor_id =3D PCI_VENDOR_ID_HUAWEI;
-+    k->device_id =3D PCI_DEVICE_ID_HUAWEI_CCIX_EP;
-+    k->revision =3D 0x00;
-+    k->class_id =3D PCI_CLASS_OTHERS;
-+    dc->desc =3D "CCIX EP Test Device";
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->props =3D ccix_props;
-+}
-+
-+static const TypeInfo ccix_ep_info =3D {
-+    .name          =3D TYPE_CCIX_EP,
-+    .parent        =3D TYPE_PCI_DEVICE,
-+    .instance_size =3D sizeof(CCIXEpState),
-+    .class_init    =3D ccix_ep_class_init,
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { INTERFACE_PCIE_DEVICE },
-+        { },
-+    },
-+};
-+
-+static void ccix_register_types(void)
-+{
-+    type_register_static(&ccix_ep_info);
-+}
-+
-+type_init(ccix_register_types)
---=20
-2.20.1
+> 
+>> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
+>> +                      uint32_t data_length, uint32_t error_severity)
+> see CODING_STYLE, 1.1 Multiline Indent
+> 
+>> +{
+> when describing filds from spec try to add 'verbatim' copy of the name from spec
+> so it would be esy to grep for it. Like:
+>        /* Block Status */
+>> +    build_append_int_noprefix(table, block_status, 4);
+>        /* Raw Data Offset */
+> 
+> note applies all other places where you compose ACPI tables
+ok
 
+> 
+>> +    build_append_int_noprefix(table, raw_data_offset, 4);
+>> +    build_append_int_noprefix(table, raw_data_length, 4);
+>> +    build_append_int_noprefix(table, data_length, 4);
+>> +    build_append_int_noprefix(table, error_severity, 4);
+>> +}
+>> +
+>>  /* Generic Error Data Entry
+>>   * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+>>   */
+>> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+>> index a71db2f..1ec7e1b 100644
+>> --- a/include/hw/acpi/aml-build.h
+>> +++ b/include/hw/acpi/aml-build.h
+>> @@ -425,6 +425,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
+>>                                      uint32_t error_data_length, uint8_t *fru_id,
+>>                                      uint8_t *fru_text, uint64_t time_stamp);
+>>  
+>> +void
+>> +build_append_ghes_generic_status(GArray *table, uint32_t block_status,
+>> +                                 uint32_t raw_data_offset,
+>> +                                 uint32_t raw_data_length,
+>> +                                 uint32_t data_length, uint32_t error_severity);
+> this and previous patch, it might be better to to move declaration
+> to its own header, for example to include/hw/acpi/acpi_ghes.h
+> that you are adding later in the series.
+> And maybe move helpers to hw/acpi/acpi_ghes.c
+> They are not really independent ACPI primitives that are shared
+> with other tables, aren't they?
+Some ACPI primitives are shared with other table, such as Notification Structure.
+we have 10 types of error sources, some error source will share the  Notification Structure primitives.
+Now I only implement Generic Hardware Error Source version 2 (GHESv2 - Type 10)
+
+> .
+>> +
+>>  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+>>                         uint64_t len, int node, MemoryAffinityFlags flags);
+>>  
+> 
+> .
+> 

@@ -1,164 +1,222 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4886574wrg;
-        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzkWoRzdqWRQCCCXJu9DN7vhncnTBr+BnnI7otFjl3UaTrjpwBn84C/gbWqdYisUgGATXcl
-X-Received: by 2002:a63:1303:: with SMTP id i3mr38633537pgl.202.1561464685579;
-        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561464685; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4898311wrg;
+        Tue, 25 Jun 2019 05:22:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz74f+L/x72dsP3mameRf0l3WU4+/HrO+UvF+D9SZ35XSpcyGEvGZ2dPKrY+lPcBT+VDhno
+X-Received: by 2002:aa7:c509:: with SMTP id o9mr61122854edq.164.1561465360115;
+        Tue, 25 Jun 2019 05:22:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561465360; cv=none;
         d=google.com; s=arc-20160816;
-        b=0hLFlyK8dkxsFaZTGQjU7+BqUIYfKL0ztkvDwnpJDpNwrO72DB7YL1xIVtbDxjqlSY
-         kacwdw8vvJ8eMHWd2y+s5WFD7AuhEHLdyKETBWUhVafWNs9nFDgQjTmlCSGcX7zNPQ5b
-         13fx6qEcAtW9Vza7Kukbh6ii9iovnXHkhkWjQeNENqqy3iq47nstcialhhuQsE6sMQDp
-         3WBjw+E228ZoB9tohJLJNNC1wLHc428aFAWDv6q3ZQWXcFffifitbddNtUYeLav7swH2
-         NzUFCiOVIE3VOASB8EzgbpSDQuDiIIzz0+iR+VE00bZkXKFsyo9FkM5cYWTj17kHScuM
-         prLQ==
+        b=ZGdhjd6cwamSGWbQ+62/v/3jCLfzZCM6xwF8N/B2qUVb7xsxHYOirr4cnvYYx3vFst
+         OcRVqP4S2wK7V7ETSxzFHzfkk6CY5Po/hbFRP9I+ka12cYIqae80g8NpejBa+piTtZOq
+         Zcm2gjMs00xLnzme+XbdJFSEailINSlLDp6xLV2QZ2qC4+1xE2vO58znuPg/X+UdhxeV
+         CClB97UX3IGGvWT/LrM2NNwrmHfySz94aDllH+ll8MEDdQCTx7B+dOssgGvjBnBfOTk3
+         z9eC+bUTP9JALbTOzwSMT+AWv0JBbZPdj7VpQifZG/hpn8XAPmJS0bcN6h72PdwGSwMs
+         creA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=EXO0u+zE8e+vMNkJhdT90lXR9F+r150JddM18YgHfrs=;
-        b=X/jMWSsLB3giYYoPAXJLrHqfUhhjgVampwOfJi4Wq/LS6trOkaVX8pgmt58KjI4Bv0
-         DTXeXQavgajY7sz/TWep8HemrwgdhCqzp9ZY9ra8LCdjK6+N+3D4NWGPIoYktbBoSEj9
-         C9tXT6GlS6QeWIGG4ESnx6YB0pM1QeuWZxBR+/XgDOAWYN0Z/eMMQCyOtmQJA43Mr8oD
-         eLkhChEHHaTMfRL7FM0g1iW76cLgukJju0ISmnQg9kFZgixExmvAO7WqyiTT7ndnjKmG
-         pJDOHzMJVDMLvOziytDOH7JmrZ+5uATGXUBU7u9NUEqPr1/iMqkzL8ohQszJrlUG/JgR
-         sFMw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from;
+        bh=lu8b1Dn5v10TcN0a/KxSA6wZxrtkp2rhLjWDAlMiKHk=;
+        b=VPWI8NCBu/V6DN97HWlpW6SksAmydpy49bzP5GxwqMOO5HSWndGGIe8fSOuckO29xf
+         f9HRopRAIZRFc/nmnDF2xidsTwK5LPk+5ZpGlyR2Pj7cAP7cYuEczxuE0mDVTs81CkT7
+         9JLuyJCXuM0W0AI+KxSdJFiAP05bI5ekJIXv0XBiwrgDRjx2T+2JuZR38XtYVZ976TtF
+         WI2m6+pa2d2xw3Ur+UVfFZM18h5G48xi9sPu7cgFOnVgQajGtteN0StMd8QOTvkDu5Xz
+         NHnVb7miYJshgoC4lQlZNIOhvjT/OlFPmq3OKS9UpRKwUwyl1MRvch/D/etk/o0O/NU3
+         j/vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h125si13994807pfb.176.2019.06.25.05.11.25;
-        Tue, 25 Jun 2019 05:11:25 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d7si215044ejk.275.2019.06.25.05.22.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jun 2019 05:22:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726930AbfFYMLY (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 25 Jun 2019 08:11:24 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:19108 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726532AbfFYMLY (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jun 2019 08:11:24 -0400
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59646 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfkT9-0003Ao-7g
+	for alex.bennee@linaro.org; Tue, 25 Jun 2019 08:22:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36275)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkMh-0007Bx-C7
+ for qemu-devel@nongnu.org; Tue, 25 Jun 2019 08:16:04 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkMY-00048d-QX
+ for qemu-devel@nongnu.org; Tue, 25 Jun 2019 08:15:54 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2180 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkMS-00041H-JK; Tue, 25 Jun 2019 08:15:46 -0400
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id AC84597342FD98737BF6;
-        Tue, 25 Jun 2019 20:11:20 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Jun 2019
- 20:11:13 +0800
-Subject: Re: [PATCH v17 05/10] acpi: add build_append_ghes_generic_status()
- helper for Generic Error Status Block
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
- <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
- <20190620144257.7400b0a7@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <93dcd75e-77e4-8813-beef-7939cdb75413@huawei.com>
-Date:   Tue, 25 Jun 2019 20:11:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+ by Forcepoint Email with ESMTP id 6AA48C108F77C277EE6C;
+ Tue, 25 Jun 2019 20:15:39 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 25 Jun 2019 20:15:29 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Date: Tue, 25 Jun 2019 13:14:14 +0100
+Message-ID: <20190625121421.22280-2-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190620144257.7400b0a7@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: cms3MTh5QiBO
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.190
+Subject: [Qemu-devel] [PATCH v6 1/8] hw/acpi: Make ACPI IO address space
+ configurable
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ sebastien.boeuf@intel.com, lersek@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d9AwviZuu6K8
+
+This is in preparation for adding support for ARM64 platforms
+where it doesn't use port mapped IO for ACPI IO space.
+
+Also move few MEMORY_* definitions to header so that other memory
+hotplug event signalling mechanisms (eg. Generic Event Device on
+HW-reduced acpi platforms) can use the same from their respective
+event handler code.
+
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/acpi/memory_hotplug.c         | 25 ++++++++++++++-----------
+ hw/i386/acpi-build.c             |  3 ++-
+ include/hw/acpi/memory_hotplug.h |  9 +++++++--
+ 3 files changed, 23 insertions(+), 14 deletions(-)
+
+diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+index 297812d5f7..c724f5f1e4 100644
+--- a/hw/acpi/memory_hotplug.c
++++ b/hw/acpi/memory_hotplug.c
+@@ -29,12 +29,9 @@
+ #define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
+ #define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
+ #define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
+-#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+ #define MEMORY_HOTPLUG_DEVICE        "MHPD"
+-#define MEMORY_HOTPLUG_IO_LEN         24
+-#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+ 
+-static uint16_t memhp_io_base;
++static hwaddr memhp_io_base;
+ 
+ static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
+ {
+@@ -209,7 +206,7 @@ static const MemoryRegionOps acpi_memory_hotplug_ops = {
+ };
+ 
+ void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+-                              MemHotplugState *state, uint16_t io_base)
++                              MemHotplugState *state, hwaddr io_base)
+ {
+     MachineState *machine = MACHINE(qdev_get_machine());
+ 
+@@ -342,7 +339,8 @@ const VMStateDescription vmstate_memory_hotplug = {
+ 
+ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+                               const char *res_root,
+-                              const char *event_handler_method)
++                              const char *event_handler_method,
++                              AmlRegionSpace rs)
+ {
+     int i;
+     Aml *ifctx;
+@@ -365,14 +363,19 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+             aml_name_decl("_UID", aml_string("Memory hotplug resources")));
+ 
+         crs = aml_resource_template();
+-        aml_append(crs,
+-            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+-                   MEMORY_HOTPLUG_IO_LEN)
+-        );
++        if (rs == AML_SYSTEM_IO) {
++            aml_append(crs,
++                aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
++                       MEMORY_HOTPLUG_IO_LEN)
++            );
++        } else {
++            aml_append(crs, aml_memory32_fixed(memhp_io_base,
++                            MEMORY_HOTPLUG_IO_LEN, AML_READ_WRITE));
++        }
+         aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
+ 
+         aml_append(mem_ctrl_dev, aml_operation_region(
+-            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
++            MEMORY_HOTPLUG_IO_REGION, rs,
+             aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
+         );
+ 
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 31a1c1e3ad..6c7c33e47a 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1862,7 +1862,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+                        "\\_SB.PCI0", "\\_GPE._E02");
+     }
+-    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0", "\\_GPE._E03");
++    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
++                             "\\_GPE._E03", AML_SYSTEM_IO);
+ 
+     scope =  aml_scope("_GPE");
+     {
+diff --git a/include/hw/acpi/memory_hotplug.h b/include/hw/acpi/memory_hotplug.h
+index 77c65765d6..e3a4b89235 100644
+--- a/include/hw/acpi/memory_hotplug.h
++++ b/include/hw/acpi/memory_hotplug.h
+@@ -5,6 +5,10 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ 
++#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
++#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
++#define MEMORY_HOTPLUG_IO_LEN         24
++
+ /**
+  * MemStatus:
+  * @is_removing: the memory device in slot has been requested to be ejected.
+@@ -29,7 +33,7 @@ typedef struct MemHotplugState {
+ } MemHotplugState;
+ 
+ void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+-                              MemHotplugState *state, uint16_t io_base);
++                              MemHotplugState *state, hwaddr io_base);
+ 
+ void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState *mem_st,
+                          DeviceState *dev, Error **errp);
+@@ -48,5 +52,6 @@ void acpi_memory_ospm_status(MemHotplugState *mem_st, ACPIOSTInfoList ***list);
+ 
+ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+                               const char *res_root,
+-                              const char *event_handler_method);
++                              const char *event_handler_method,
++                              AmlRegionSpace rs);
+ #endif
+-- 
+2.17.1
 
 
-
-On 2019/6/20 20:42, Igor Mammedov wrote:
-> On Tue, 14 May 2019 04:18:18 -0700
-> Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> 
->> It will help to add Generic Error Status Block to ACPI tables
->> without using packed C structures and avoid endianness
->> issues as API doesn't need explicit conversion.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> ---
->>  hw/acpi/aml-build.c         | 14 ++++++++++++++
->>  include/hw/acpi/aml-build.h |  6 ++++++
->>  2 files changed, 20 insertions(+)
->>
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 102a288..ce90970 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
->>          build_append_int_noprefix(table, error_threshold_window, 4);
->>  }
->>  
->> +/* Generic Error Status Block
->> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->> + */
->> +void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
-> maybe ..._generic_error_status???
-good point, the build_append_ghes_generic_error_status() is better than build_append_ghes_generic_status()
-
-> 
->> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
->> +                      uint32_t data_length, uint32_t error_severity)
-> see CODING_STYLE, 1.1 Multiline Indent
-> 
->> +{
-> when describing filds from spec try to add 'verbatim' copy of the name from spec
-> so it would be esy to grep for it. Like:
->        /* Block Status */
->> +    build_append_int_noprefix(table, block_status, 4);
->        /* Raw Data Offset */
-> 
-> note applies all other places where you compose ACPI tables
-ok
-
-> 
->> +    build_append_int_noprefix(table, raw_data_offset, 4);
->> +    build_append_int_noprefix(table, raw_data_length, 4);
->> +    build_append_int_noprefix(table, data_length, 4);
->> +    build_append_int_noprefix(table, error_severity, 4);
->> +}
->> +
->>  /* Generic Error Data Entry
->>   * ACPI 4.0: 17.3.2.6.1 Generic Error Data
->>   */
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index a71db2f..1ec7e1b 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -425,6 +425,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
->>                                      uint32_t error_data_length, uint8_t *fru_id,
->>                                      uint8_t *fru_text, uint64_t time_stamp);
->>  
->> +void
->> +build_append_ghes_generic_status(GArray *table, uint32_t block_status,
->> +                                 uint32_t raw_data_offset,
->> +                                 uint32_t raw_data_length,
->> +                                 uint32_t data_length, uint32_t error_severity);
-> this and previous patch, it might be better to to move declaration
-> to its own header, for example to include/hw/acpi/acpi_ghes.h
-> that you are adding later in the series.
-> And maybe move helpers to hw/acpi/acpi_ghes.c
-> They are not really independent ACPI primitives that are shared
-> with other tables, aren't they?
-Some ACPI primitives are shared with other table, such as Notification Structure.
-we have 10 types of error sources, some error source will share the  Notification Structure primitives.
-Now I only implement Generic Hardware Error Source version 2 (GHESv2 - Type 10)
-
-> .
->> +
->>  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
->>                         uint64_t len, int node, MemoryAffinityFlags flags);
->>  
-> 
-> .
-> 

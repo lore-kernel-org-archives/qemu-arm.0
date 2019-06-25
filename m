@@ -1,76 +1,73 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4844985wrg;
-        Tue, 25 Jun 2019 04:29:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxuSsR+bTUZ+mXkLi1h4AFRBC8JrRR38yZ0C+TJI10LOf2N5AnN9P+mmGmj13eXec9i4ieM
-X-Received: by 2002:a50:8dc5:: with SMTP id s5mr6891338edh.138.1561462152255;
-        Tue, 25 Jun 2019 04:29:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561462152; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4845172wrg;
+        Tue, 25 Jun 2019 04:29:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzitTamaN0Te3jBrxf/WGOvrylesE9Z6xGRfzsOmbRu92Pu82zSXf1leY0wYkvwokFW2Hsv
+X-Received: by 2002:a17:906:4948:: with SMTP id f8mr88534220ejt.79.1561462162287;
+        Tue, 25 Jun 2019 04:29:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561462162; cv=none;
         d=google.com; s=arc-20160816;
-        b=y56yCYWPkbaNQnHVCfdVFwFdzXw+7Zu7XAuTuoQqN+Z2MD6oMz0dR3ozWjMOwkHejE
-         eIQfKvYRX+pmMg6ajaOwlrvfvf/c8qJiRGVj/THNuITbMwMKt2UWfvEXFQy24Pr+tTNa
-         ZN18Zaw89d+UIUn17sO9LqW+ckZDVsfSLqk51B7bt5mWk5/8v/sQiGK1ZvKoFM7J6flo
-         YBHw9Hn6CGfJoyEPRv8RIdJxBTmldVsMvdlW6JeEF3rdGJOYDHo3ZeigvhVepaSNJcIR
-         ABEz1/mH5nMTfKBE9ABYZw8zLF5BPFdcm+EJiJQ1S/ArcLlGOLUcOsa1jo7BquaTBqcA
-         YmKA==
+        b=Tq7upyFeS/HxA08uVeLYjX0ILV+k8085zus/HLd2Yrpbyf7WNg3UDSo0ptjJkWHTP5
+         nBvdXrxeuGVUId9KsnSH+XZLomWlVH2ML1GxnCGewmffe/09OUpRLgE2VbyDZD1EQSXM
+         X/dp2RAdhfgPYDFdRcY97Appo9vfLm/TzDW4Wjudz6O6nZ9ijJogxm3JIEP3Yot2Rb8y
+         cSWJQ7a9R3PqNaIcvZviYBawrBKtuHtZv1+0QoD0a5qXdftRjlTIfJdCu8q92GiU8tLK
+         Uue1x/nCM4mqMoAobkeJn93hfeim4JDKnMTDLTeQ33UhPjgSJwdKxAQnmtZWdhh9Z9rd
+         9CkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=69jW7mbjQYW9ccov3gXjLPT5UAXOUyBx/gCsq3TvDJE=;
-        b=tRxhs3atRQniHZws4VxpuPOJoa9XvJPWPX9BRdJXNmv3LXK99Ri6sahHTSq+e6Ovi4
-         tlf2NvoUbxidHN54IldLYxnPdquAZRt5k8lIOViBIwSQo+x2WtZqwy2B7+rE8lg2jrNH
-         ECaJEr+5rldLOWCGYRx1kb3g9Ecgy7xCIQFAevPayN2Q2CllVS5t2SV5CCJMKUim6HoB
-         7uItcATdI9TSCgFhHnRekB8s48fHTVXQ3do9dOyONdWGVblod8oeUSsVNH7H83YV0AV5
-         la6RFdx5DD2fCDBdsyH3bCR+QnpPLmnj14bJA++Wyi5ZIwqTljDHbP/DOjtUl0JhN8bc
-         eznQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=KWSzfj7vYwTHNhs0huZ5BvYZ3wvh2npdO0hAYAehI48=;
+        b=oFsfXHq37GeM1q2WN6zGxDdJlqub/xZxZu05rPye/IzBea5Zm1UQ4ddzkPklwQ0+da
+         OpKYWgdNC+GgmDwudesddPLHHM1LPcVJmsLQnHIJhsslrEB1oyVwypX7kIwEydZqBuow
+         U1UMESphu78TeiwIxs/YCsR8O6wkeTApX2NXUbR8zO7so/b41TCVzl8dwqPTVA6NE1aD
+         7vtjA1fLpyKYlM+72fufKlNwlWQoJvc9asRp8EWNH5lrCqgJ4umELBDglpZGSR3+HsJI
+         SqtMIPMnQd4i+r+WxkKJzbvg1wPmSoYtHooGreCA1Aew17jZu3igG8AKSxFQoXAxwU5a
+         i8Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si129131ejy.395.2019.06.25.04.29.12
+        by mx.google.com with ESMTPS id x7si193898edm.177.2019.06.25.04.29.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2019 04:29:12 -0700 (PDT)
+        Tue, 25 Jun 2019 04:29:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58964 helo=lists.gnu.org)
+Received: from localhost ([::1]:58970 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfjdP-00078t-C7
-	for alex.bennee@linaro.org; Tue, 25 Jun 2019 07:29:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53672)
+	id 1hfjdZ-0007Vu-CJ
+	for alex.bennee@linaro.org; Tue, 25 Jun 2019 07:29:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53670)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdC-0006wv-1B
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdC-0006wq-0Z
  for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:28:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdA-0004AK-Pp
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hfjdA-00049H-1P
  for qemu-arm@nongnu.org; Tue, 25 Jun 2019 07:28:57 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:43144 helo=huawei.com)
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2178 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <jonathan.cameron@huawei.com>)
- id 1hfjdA-000473-Eq; Tue, 25 Jun 2019 07:28:56 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4D2265566C1C50019565;
- Tue, 25 Jun 2019 19:28:53 +0800 (CST)
+ id 1hfjd5-0003id-DU; Tue, 25 Jun 2019 07:28:55 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 12F7E70A72843ED135E0;
+ Tue, 25 Jun 2019 19:28:38 +0800 (CST)
 Received: from lhrphicprd00229.huawei.com (10.123.41.22) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 25 Jun 2019 19:28:46 +0800
+ 14.3.439.0; Tue, 25 Jun 2019 19:28:29 +0800
 From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Date: Tue, 25 Jun 2019 19:27:52 +0800
-Message-ID: <20190625112752.83188-8-Jonathan.Cameron@huawei.com>
+Date: Tue, 25 Jun 2019 19:27:45 +0800
+Message-ID: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
-References: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 X-Originating-IP: [10.123.41.22]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [RFC PATCH 7/7] Temp: Add to ARM64 makefiles for testing
+X-Received-From: 45.249.212.190
+Subject: [Qemu-arm] [RFC PATCH 0/7] qemu: CCIX pcie config space emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,26 +84,197 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jcm@redhat.com,
  qemu-arm <qemu-arm@nongnu.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: apk9R0onjgKQ
+X-TUID: /g0IRoUiA5S7
 
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
----
- default-configs/arm-softmmu.mak | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+CCIX topologies are 'layered' on top of PCIe tree topologies.
+This is done primarily by allowing a single CCIX device to appear as
+multiple disjoint nodes in the PCIe tree.
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 3158e1a10a..d5d4c8ecf1 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -41,4 +41,5 @@ CONFIG_FSL_IMX7=3Dy
- CONFIG_FSL_IMX6UL=3Dy
- CONFIG_SEMIHOSTING=3Dy
- CONFIG_ACPI_APEI=3Dy
--
-+CONFIG_CCIX_LIB=3Dy
-+CONFIG_CCIX_EP=3Dy
-\ No newline at end of file
+This layering is described via extensive PCIe DVSEC extended
+capabilities in PCIe config space across all the functions that
+are present in the device (some placement rules apply).
+
+The extremely flexible nature of allowed topologies makes the
+development of generic firmware and OS software difficult if we rely
+on actual hardware setups, due to the large test set that is necessary.
+
+To enable the ongoing work on EDK2 and within the Linux kernel and
+userspace, this series provides the bare bones of what is necessary
+to be able to test 'configuration' of a CCIX topology.  Note
+that no actual CCIX data flow is being emulated within this patchset,
+merely a substantial subset of the interface that allows the topologies
+to be configured.  Testing has to rely on verification based on
+the result rather than true emulation of the coherency protocol.
+(that is a very different form of emulation for which other tools
+are perhaps better suited).
+
+For information on how to do the coherency protocol configuration,
+see the forthcoming CCIX SW guide, in conjunction with the CCIX 1.0
+Base Specification.
+
+An example of a 2x2 mesh with a spur to the host can be run with:
+
+qemu-system-aarch64 -M virt -m 1024 -cpu cortex-a53 \
+...
+ -device ioh3420,id=3Droot_port1 \
+ -device ccix-upstream-port,num_links=3D4,primaryport=3Dtrue,rsam_entries=
+=3D4,ccix_device=3D"ccix_dev1",bus=3Droot_port1,addr=3D0.0,multifunction=3D=
+"on",id=3Dup0,port_id=3D0 \
+ -device ccix-downstream-port,ccix_device=3D"ccix_dev1",bus=3Dup0,slot=3D=
+0,chassis=3D2,id=3Dbus_top,port_id=3D1 \
+ -device ccix-downstream-port,ccix_device=3D"ccix_dev1",bus=3Dup0,slot=3D=
+1,chassis=3D2,id=3Dbus_left,port_id=3D2 \
+ -device ccix-ep,primaryport=3Dfalse,home_agents=3D1,request_agents=3D1,c=
+cix_device=3D"ccix_dev1",bus=3Droot_port1,addr=3D0.1,multifunction=3D"on"=
+ \
+ -device ccix-upstream-port,num_links=3D4,primaryport=3Dtrue,rsam_entries=
+=3D4,ccix_device=3D"ccix_dev2",bus=3Dbus_top,addr=3D0.0,multifunction=3D"=
+on",id=3Dup1,port_id=3D0 \
+ -device ccix-downstream-port,ccix_device=3D"ccix_dev2",bus=3Dup1,slot=3D=
+0,chassis=3D3,id=3Dbus_right,port_id=3D1 \
+ -device ccix-ep,primaryport=3Dfalse,request_agents=3D2,ccix_device=3D"cc=
+ix_dev2",bus=3Dbus_top,addr=3D0.1,multifunction=3D"on" \
+ -device ccix-upstream-port,num_links=3D4,primaryport=3Dtrue,rsam_entries=
+=3D4,ccix_device=3D"ccix_dev3",bus=3Dbus_left,addr=3D0.0,multifunction=3D=
+"on",id=3Dup2,port_id=3D0 \
+ -device ccix-downstream-port,ccix_device=3D"ccix_dev3",bus=3Dup2,slot=3D=
+0,chassis=3D4,id=3Dbus_bottom,port_id=3D1,multifunciton=3D"on" \
+ -device ccix-ep,primaryport=3Dfalse,request_agents=3D2,ccix_device=3D"cc=
+ix_dev3",bus=3Dbus_left,addr=3D0.1,multifunction=3D"on" \
+ -device ccix-ep,primaryport=3Dtrue,request_agents=3D2,ccix_device=3D"cci=
+x_dev4",bus=3Dbus_right,addr=3D0.0,port_id=3D0 \
+ -device ccix-ep,primaryport=3Dtrue,request_agents=3D2,ccix_device=3D"cci=
+x_dev4",bus=3Dbus_bottom,addr=3D0.0,port_id=3D1
+
+
+I'm not going to try drawing all the detail (it's bad enough
+trying to draw these in inkscape, but in a very much simplifed
+fashion, this generates.
+
+-----------------
+|     Host      |
+|               |=20
+--- root_port1--
+        |
+        |
+        v
+-----------------          ---------------
+|  ccix_dev1    | -------> |  ccix_dev2  |
+-----------------          ---------------
+        |                         |
+        V                         V
+-----------------          ---------------
+|  ccix_dev3    | -------> |  ccix_dev4  |
+-----------------          ---------------
+
+$lspci -t
+-[0000:00]-+-00.0
+           +-01.0-[01-08]--+-00.0-[02-08]--+-00.0-[03-05]--+-00.0-[04-05]=
+----00.0-[05]----00.0
+                           |               |               |             =
+  \-00.1
+                           |               |               \-01.0-[06-08]=
+--+-00.0-[07-08]----00.0-[08]----00.0
+                           |               |                             =
+  \-00.1
+                           |               \-00.1
+						      =20
+RFC questions:
+
+1.  The nature of CCIX devices is that we need to extend normal
+    PCI devices, slots, and ports.  I could not find an elegant way of
+    doing this without lots of code replication.  The current solution
+    just exposes some internal functions from xio3130 port implementation=
+s.
+    Is there a better way to do this?
+
+2.  The association of the different PCIDevices to a given CCIX device is
+    currently somewhat of a hack. Can anyone suggest a cleaner solution
+    for this?  I can improved the current implementation, but don't reall=
+y
+    like that we basically search for all the parts whenever a cross
+    device implementation is needed.
+
+3.  Is emulation via a large number of PCIe devices like this a good
+    approach or is there a nicer way to handle it?  Given we need to
+    be able to 'spread' the CCIX device configuration across multiple
+    PCIe functions anyway perhaps this is the most sensible approach.
+
+4.  I've cut and paste a 100+ lines of code from each of the xio3130_*
+    modules as we are also implemening PCIE up and downstream ports
+    and as this is a emulation only device, we might as well use the
+    same register set.  There are various possible ways to avoid this:
+    * Add a library with the shared code in it.
+    * Add an xio3130_upstream.h header and similar to allow the CCIX
+      port modules to call those functions directly.
+    * Don't worry about the replication in the interests of keeping
+      the code structure simple.
+
+5.  I'm not that familiar with qemu 'style' yet, so pointers on structure=
+s
+    to use etc most welcome.
+
+Note that not all elements of CCIX are supported by the current implement=
+ation,
+for example slave agents and error records are missing.  These will follo=
+w
+either in later revisions or as follow patches.  We also have no actual
+accelerator functions in the current design and hence no mapping to RAs.
+
+Only a subset of configuration constraints are currently implemented.
+This will want tightenning up in future.
+
+As we don't have any actual chunks of the spec in here so I haven't
+added the statement from the trademark grant that follows.
+
+Thanks,
+
+Jonathan
+
+This patch is being distributed by the CCIX Consortium, Inc. (CCIX) to
+you and other parties that are paticipating (the "participants") in
+qemu with the understanding that the participants will use CCIX's
+name and trademark only when this patch is used in association with
+qemu.
+
+CCIX is also distributing this patch to these participants with the
+understanding that if any portion of the CCIX specification will be
+used or referenced in qemu, the participants will not modify the cited
+portion of the CCIX specification and will give CCIX propery copyright
+attribution by including the following copyright notice with
+the cited part of the CCIX specification:
+"=C2=A9 2019 CCIX CONSORTIUM, INC. ALL RIGHTS RESERVED."
+
+Jonathan Cameron (7):
+  Temp: Add the PCI_EXT_ID_DVSEC definition to the qemu pci_regs.h copy.
+  pci: Add Huawei vendor ID and Huawei Emulated CCIX Device IDs.
+  pci: CCIX config space emulation library.
+  pci-bridge: CCIX capable PCIE/CCIX switch upstream port.
+  pci-bridge: CCIX capable PCIE/CCIX switch downstream port
+  misc: CCIX endpoint function
+  Temp: Add to ARM64 makefiles for testing
+
+ default-configs/arm-softmmu.mak           |    3 +-
+ hw/misc/Kconfig                           |    5 +
+ hw/misc/Makefile.objs                     |    1 +
+ hw/misc/ccix-ep.c                         |  112 ++
+ hw/pci-bridge/Kconfig                     |    5 +
+ hw/pci-bridge/Makefile.objs               |    1 +
+ hw/pci-bridge/ccix_downstream.c           |  222 ++++
+ hw/pci-bridge/ccix_upstream.c             |  197 ++++
+ hw/pci/Kconfig                            |    3 +
+ hw/pci/Makefile.objs                      |    1 +
+ hw/pci/ccix_lib.c                         | 1299 +++++++++++++++++++++
+ include/hw/misc/ccix.h                    |   28 +
+ include/hw/pci/pci_ids.h                  |    7 +
+ include/standard-headers/linux/pci_regs.h |    3 +-
+ 14 files changed, 1885 insertions(+), 2 deletions(-)
+ create mode 100644 hw/misc/ccix-ep.c
+ create mode 100644 hw/pci-bridge/ccix_downstream.c
+ create mode 100644 hw/pci-bridge/ccix_upstream.c
+ create mode 100644 hw/pci/ccix_lib.c
+ create mode 100644 include/hw/misc/ccix.h
+
 --=20
 2.20.1
 

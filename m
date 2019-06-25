@@ -1,171 +1,183 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4982253wrg;
-        Tue, 25 Jun 2019 06:41:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwynFE8Dfa2qmXuzFawzSew/LGOZUty7vRRylTVAOixHXMzYEey7U24jNwCsqsA9kIz/OkN
-X-Received: by 2002:a17:902:bb85:: with SMTP id m5mr37985267pls.280.1561470084280;
-        Tue, 25 Jun 2019 06:41:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561470084; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4907356wrg;
+        Tue, 25 Jun 2019 05:31:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCVO3/DgQEmQ4nDSV7uLGwv96d98CSGX0DMeMLpe5E87rOJWhG4tH7WgFv+H2+aWF71rGb
+X-Received: by 2002:a50:d791:: with SMTP id w17mr75425962edi.223.1561465918968;
+        Tue, 25 Jun 2019 05:31:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561465918; cv=none;
         d=google.com; s=arc-20160816;
-        b=0OggWkdmEl3HGOY2x1wxAV+niLglNRMTLDcCwxaLI6Pwdp1Gu5pyrCLzZWonbcZwFf
-         5A4gfQpdS0c95evzf6F9Yr9NgtNzwL+qHK20FhUjjOEwVUNcWQw6N3anWVYjzZSZd8uA
-         C8vQdLIiLiBF7UFfr4ib0hL/6gaPlKZfTpWc1ghtFC7h/yBf0oRZavVMDPwyMFO+6U9c
-         ERqsFhND0qPBDdH6295ZoO+MkH/FMg9UOxQwiCPDVeWko69RjF8hXJsPaDb9s3nmSE4G
-         MU1wXaX7/HSc77ltMdzWBJs3trMsWC1OD5+ncBG9ccl3RcVPiKB71pMb+k48w98o/OhR
-         StXQ==
+        b=dMALBOsmotv2k0zaVM3t+vnqQU/XH6ZmtcvOxFmjC+NHlFLj59Mk8OU1FtgFkSsZB3
+         Yx+ddHE1e37K2wK5WQYEnAADgDK77BsYHlHJxrMSUbop7iAXDh9kM01lY4T5qv0Gc2dN
+         hhbga/oXoU7TZ6GvCf/KA3rYuspG9q7U7yavbuzCGRx86U1iKyGKH4OI6YeDxdoPOj4Y
+         Se8Ui6lSHGX4N0kx07HOx6gZrsouJeROngz+8D2R8RgaQhcyqSt4e8ssTLMFpbKZP6Lc
+         YvK3r+bFIuBbn5PlQd0uF9aijrvFvSsG2Lcj19wONc6t4UZV5Gf2eZb3Vx91NpW2xygm
+         4MBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date;
-        bh=Ed/T9wYcorSzi3RRSdJfb17DzBg4u1UOosFJgAjwKi4=;
-        b=CasgKzekc5EpTO6PFMI6/22qMIzed1OdJzdb9nCpsyhuxs8LRyemE3mnMhlKB3QK1Y
-         /gmEMK8l3NSBX9dBAcv91wB4ccdRfeEAKTYUPbv7rI+la4MqyX3Kb6wn4UMXhgAY3XRw
-         cGpjicsWSRnSDq8SHsbQW0w5auIB/AFOgV33KluNmUqFkxHtteiVlR8NZ5uBttZfDG8a
-         zMCo+DdomQJhYhlT15J/O3pW04R1Qg79IohZHVJ3INY17BCq+oTjiR5KnhqgzuQnJat2
-         hXJarfA4Jc6uVASD0HK/Ut0/Oq/odlSd+lM3SG3smR25Vi/cYzoiq2EitRi72zCQmwLU
-         TruQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from;
+        bh=jRLuuv3sLKJ4MMZy9mT+7kth4Pq48ndqHe9l3GxCZLw=;
+        b=zJ7fEhrJxc2h/rLu0dqDMDqLiKtFoIADRFFFxlPXZPwBOJoeQqvqoo36C47Ln74X3+
+         HK0i/P4vHiHP/e4ztZEHDsRLxmn7QFSniCIEUK4+GatUWi4mmXuZpq3CqNpLA/31Q5gg
+         xNivLv8DyNz35Pq+DhSCgH/X32b3iQkFRBmsodanFXyus5iuEFe2NuPcTXBpmAsbhvw1
+         PxMHhv+QDHnu0l1bigerscPWo3U543vdr4Up5NTOieoiJAAA0UgT8cW+Q9PiTREmyAq9
+         cE8yiPhBx8q2sRzjh/9ikd/f43PAWprZ4xAilbcZROBgDwJ1xLKyyPvkBSismbEsoyXE
+         lAqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u67si557149pgu.219.2019.06.25.06.41.24;
-        Tue, 25 Jun 2019 06:41:24 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d13si312239edz.9.2019.06.25.05.31.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jun 2019 05:31:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730296AbfFYNlX (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Tue, 25 Jun 2019 09:41:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36842 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1730837AbfFYNlV (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 25 Jun 2019 09:41:21 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id CA5483001822;
-        Tue, 25 Jun 2019 13:41:16 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 78CCF5C22F;
-        Tue, 25 Jun 2019 13:41:09 +0000 (UTC)
-Date:   Tue, 25 Jun 2019 15:41:05 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     <pbonzini@redhat.com>, <mst@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>, <zhengxiang9@huawei.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-Subject: Re: [PATCH v17 05/10] acpi: add build_append_ghes_generic_status()
- helper for Generic Error Status Block
-Message-ID: <20190625154105.11e5ae8d@redhat.com>
-In-Reply-To: <93dcd75e-77e4-8813-beef-7939cdb75413@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
-        <1557832703-42620-6-git-send-email-gengdongjiu@huawei.com>
-        <20190620144257.7400b0a7@redhat.com>
-        <93dcd75e-77e4-8813-beef-7939cdb75413@huawei.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59702 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfkc9-0000w9-Qh
+	for alex.bennee@linaro.org; Tue, 25 Jun 2019 08:31:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36533)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkN9-0007LI-0K
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:16:29 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkN7-0004XR-EL
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:16:26 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:54734 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hfkN3-0004Ex-J5; Tue, 25 Jun 2019 08:16:23 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 99F7B2D2E6848C930D19;
+ Tue, 25 Jun 2019 20:15:59 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+ DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 25 Jun 2019 20:15:50 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Date: Tue, 25 Jun 2019 13:14:20 +0100
+Message-ID: <20190625121421.22280-8-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
+In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Tue, 25 Jun 2019 13:41:20 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ntTmRZKoyY/R
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-arm] [PATCH v6 7/8] hw/acpi: Add system power down support to
+ GED
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ sebastien.boeuf@intel.com, lersek@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GYoMETgeXkil
 
-On Tue, 25 Jun 2019 20:11:11 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+This adds support to use GED for system power down event.
 
-> On 2019/6/20 20:42, Igor Mammedov wrote:
-> > On Tue, 14 May 2019 04:18:18 -0700
-> > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> >   
-> >> It will help to add Generic Error Status Block to ACPI tables
-> >> without using packed C structures and avoid endianness
-> >> issues as API doesn't need explicit conversion.
-> >>
-> >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> >> ---
-> >>  hw/acpi/aml-build.c         | 14 ++++++++++++++
-> >>  include/hw/acpi/aml-build.h |  6 ++++++
-> >>  2 files changed, 20 insertions(+)
-> >>
-> >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> >> index 102a288..ce90970 100644
-> >> --- a/hw/acpi/aml-build.c
-> >> +++ b/hw/acpi/aml-build.c
-> >> @@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
-> >>          build_append_int_noprefix(table, error_threshold_window, 4);
-> >>  }
-> >>  
-> >> +/* Generic Error Status Block
-> >> + * ACPI 4.0: 17.3.2.6.1 Generic Error Data
-> >> + */
-> >> +void build_append_ghes_generic_status(GArray *table, uint32_t block_status,  
-> > maybe ..._generic_error_status???  
-> good point, the build_append_ghes_generic_error_status() is better than build_append_ghes_generic_status()
-> 
-> >   
-> >> +                      uint32_t raw_data_offset, uint32_t raw_data_length,
-> >> +                      uint32_t data_length, uint32_t error_severity)  
-> > see CODING_STYLE, 1.1 Multiline Indent
-> >   
-> >> +{  
-> > when describing filds from spec try to add 'verbatim' copy of the name from spec
-> > so it would be esy to grep for it. Like:
-> >        /* Block Status */  
-> >> +    build_append_int_noprefix(table, block_status, 4);  
-> >        /* Raw Data Offset */
-> > 
-> > note applies all other places where you compose ACPI tables  
-> ok
-> 
-> >   
-> >> +    build_append_int_noprefix(table, raw_data_offset, 4);
-> >> +    build_append_int_noprefix(table, raw_data_length, 4);
-> >> +    build_append_int_noprefix(table, data_length, 4);
-> >> +    build_append_int_noprefix(table, error_severity, 4);
-> >> +}
-> >> +
-> >>  /* Generic Error Data Entry
-> >>   * ACPI 4.0: 17.3.2.6.1 Generic Error Data
-> >>   */
-> >> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> >> index a71db2f..1ec7e1b 100644
-> >> --- a/include/hw/acpi/aml-build.h
-> >> +++ b/include/hw/acpi/aml-build.h
-> >> @@ -425,6 +425,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
-> >>                                      uint32_t error_data_length, uint8_t *fru_id,
-> >>                                      uint8_t *fru_text, uint64_t time_stamp);
-> >>  
-> >> +void
-> >> +build_append_ghes_generic_status(GArray *table, uint32_t block_status,
-> >> +                                 uint32_t raw_data_offset,
-> >> +                                 uint32_t raw_data_length,
-> >> +                                 uint32_t data_length, uint32_t error_severity);  
-> > this and previous patch, it might be better to to move declaration
-> > to its own header, for example to include/hw/acpi/acpi_ghes.h
-> > that you are adding later in the series.
-> > And maybe move helpers to hw/acpi/acpi_ghes.c
-> > They are not really independent ACPI primitives that are shared
-> > with other tables, aren't they?  
-> Some ACPI primitives are shared with other table, such as Notification Structure.
-> we have 10 types of error sources, some error source will share the  Notification Structure primitives.
-If read spec right, "Notification Structure" is a sub-table of HEST mechanism so it
-should be fine to put all this together in hw/acpi/acpi_ghes.c.
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/acpi/generic_event_device.c         | 16 ++++++++++++++++
+ include/hw/acpi/generic_event_device.h |  4 ++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 2a83d68e82..2bd786b7ab 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -19,6 +19,7 @@
+ 
+ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_MEM_HOTPLUG_EVT,
++    ACPI_GED_PWR_DOWN_EVT,
+ };
+ 
+ /*
+@@ -103,6 +104,11 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+                                              MEMORY_SLOT_SCAN_METHOD));
+                 break;
++            case ACPI_GED_PWR_DOWN_EVT:
++                aml_append(if_ctx,
++                           aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
++                                      aml_int(0x80)));
++                break;
+             default:
+                 /*
+                  * Please make sure all the events in ged_supported_events[]
+@@ -232,6 +238,13 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+     acpi_ged_event(s, sel);
+ }
+ 
++static void acpi_ged_pm_powerdown_req(Notifier *n, void *opaque)
++{
++    AcpiGedState *s = container_of(n, AcpiGedState, powerdown_notifier);
++
++    acpi_ged_event(s, ACPI_GED_PWR_DOWN_EVT);
++}
++
+ static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
+ {
+     AcpiGedState *s = ACPI_GED(dev);
+@@ -243,6 +256,9 @@ static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     acpi_ged_init(get_system_memory(), dev, &s->ged_state);
++
++    s->powerdown_notifier.notify = acpi_ged_pm_powerdown_req;
++    qemu_register_powerdown_notifier(&s->powerdown_notifier);
+ }
+ 
+ static Property acpi_ged_properties[] = {
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index f69d084c89..9e63b72cb9 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -61,6 +61,8 @@
+ 
+ #include "hw/acpi/memory_hotplug.h"
+ 
++#define ACPI_POWER_BUTTON_DEVICE "PWRB"
++
+ #define TYPE_ACPI_GED "acpi-ged"
+ #define ACPI_GED(obj) \
+     OBJECT_CHECK(AcpiGedState, (obj), TYPE_ACPI_GED)
+@@ -79,6 +81,7 @@
+  * through GED.
+  */
+ #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
++#define ACPI_GED_PWR_DOWN_EVT      0x2
+ 
+ typedef struct GEDState {
+     MemoryRegion io;
+@@ -88,6 +91,7 @@ typedef struct GEDState {
+ 
+ typedef struct AcpiGedState {
+     DeviceClass parent_obj;
++    Notifier powerdown_notifier;
+     MemHotplugState memhp_state;
+     hwaddr memhp_base;
+     hwaddr ged_base;
+-- 
+2.17.1
 
 
-> Now I only implement Generic Hardware Error Source version 2 (GHESv2 - Type 10)
-> 
-> > .  
-> >> +
-> >>  void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-> >>                         uint64_t len, int node, MemoryAffinityFlags flags);
-> >>    
-> > 
-> > .
-> >   
-> 

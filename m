@@ -1,67 +1,67 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4912805wrg;
-        Tue, 25 Jun 2019 05:37:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwB4cyAuw14Kh4ul03vdjHQaw8dvNyc6vV5K+gg66g0LZtg8RwyPAmJXp3baye1LV8Dw5If
-X-Received: by 2002:a50:be01:: with SMTP id a1mr54163863edi.287.1561466225137;
-        Tue, 25 Jun 2019 05:37:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561466225; cv=none;
+Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4914939wrg;
+        Tue, 25 Jun 2019 05:39:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwz9vltVUOjIwedH6n9EAChruaspiKg12hsLGr1cSvgSdac1FQbRCVorz7JqhADVDAMyuQ3
+X-Received: by 2002:a50:fd0c:: with SMTP id i12mr82558769eds.55.1561466351919;
+        Tue, 25 Jun 2019 05:39:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561466351; cv=none;
         d=google.com; s=arc-20160816;
-        b=X8tUWPgq7eDTHHTuoodQszxM6bK6dzcDzJeTT4sbl9lHHDkhYlBkZpW0VG4EPKymU4
-         tM9yVjwFC+ZSk8JY/Dxd/d4aH2Ukki9eLFcSxlfkoVVgs+WHTHvjX3edpvZ74RhzYfxC
-         hGv7Ehv1v+FXUF4bT11JmnI3sBa6Y8Z1Vf9o+lUEjiNp420PmTQB7p0mpJm7wo6KB3Iy
-         vTbDIuD6H8+p+FZk2zr+delIxlpw3ubRK0f2WrkCPAgzJ93aTVzCdYZNCQIoRMsTMlcD
-         TxO1NW/SkmLzIIb9eiIXc1JfiYPuWuqwxB1wnEqz/8pFRq22QY5Lyc9do3U9l2Bc+PrA
-         sfVA==
+        b=X3k8JR1UqTgtzWIRV2KJXAezKgZDs7rHiiKv3FYw6k1MbnFNzfnPiwN+1Z11H8JRxi
+         /1hCkS/f2Zu0Tss1rJwJWLIkMFS0mStQhxbv1tSrgaSoPf2dYk5K9LjZeIc6dy+wNz+N
+         MUhQswNbW2gD1FAv1zjTVxoVnqE8xfkFdDVyYZbs6qrNeorGP//3FbnF+4iRvyv4+wqQ
+         /79D9TzBIArtHnXgJiKUdRbL4BlJuarntkv1VWq1sOKASI0fDSLnRY69z15DtGdAu7kI
+         uGn8W65ntr/YFhAT7ISJhCUqyShub8duzWnSJjF2fsEk5VciwDUN4USEaQLLsrzrgGrz
+         9lMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=rCWHrMBZftcnydBxe20riTAsROaY/Psm0j7VxlBy/YM=;
-        b=TmbC8qjWhdpw3R7zoJfUAQf/WPqhVKuSKQrdJ+jA2pl3aS6NaAjspExNPwKwCKns5P
-         vDVyi4kB+A7/EPBhgRSItAzIMdBgQoEAZRwELvQkFi4s13018dtF6irpNIYNn5y2CjZW
-         E722vdg9/N0pVW8PyAzU/+tjVIThXBS6KQj4ZwLxAvuMX8wSOD4Ur9JmKulXHmaI2dG7
-         5ss1bCjnaZgnR4XRN/JgvNUpaUFHMK/QAWzsIIW/se8FZ5lxsBBQxGQXtIfLvI5nTqI2
-         iC8wa1LZl3LEzHVw0E7kbmaNqKzvDnZeA8y7RXdAAC1vdZ1Gir9XCoCdrLp7HAGSfrX/
-         npSw==
+        bh=04hoOnsdKXcUXnLQLgyioSOSVaHVJ9i+uOtXmY1Z81k=;
+        b=r5WIpepSwSUo/99qw2LooyaAY8mKT6t/hMiPGXnxrwFeVKZn0PNPza+Snsz0eYesEd
+         8BGKFQ+gD64lpv4xYsKziDzzJcCcWJ0dmHjX9zh0vC97wYU76Jy2qTU9lz3fLjhn39CG
+         OT11i8lXR5X3E25Z4Kb6BMING5GqQyFvf1I+aLqzG1grENTz8xnAyWKlqmeKwkEc1xFh
+         udJTHvxCVzVh8GwB/tOaX2oZyYbqQFTH3JhImgTuM2chGVN901ULa6CA3izpBaA8hY2G
+         OUIGE1sdaYkV3+NPpNdvsy9oBEy1KUQay7VWxf2cW+SJMfA2pZX44750h+4fY/ujQkuE
+         iEeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p23si255053ejj.55.2019.06.25.05.37.05
+        by mx.google.com with ESMTPS id o11si283744ejr.105.2019.06.25.05.39.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2019 05:37:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Jun 2019 05:39:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59724 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59742 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfkh6-0003WL-5i
-	for alex.bennee@linaro.org; Tue, 25 Jun 2019 08:37:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36274)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hfkj9-0005u3-0j
+	for alex.bennee@linaro.org; Tue, 25 Jun 2019 08:39:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36398)
  by lists.gnu.org with esmtp (Exim 4.86_2)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMh-0007Bw-C7
- for qemu-devel@nongnu.org; Tue, 25 Jun 2019 08:16:03 -0400
+ id 1hfkN2-0007GK-5D
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:16:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMY-00048L-Nr
- for qemu-devel@nongnu.org; Tue, 25 Jun 2019 08:15:54 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2179 helo=huawei.com)
+ id 1hfkMx-0004O8-78
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2019 08:16:19 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2248 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hfkMT-00040C-1W; Tue, 25 Jun 2019 08:15:46 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 64560D0D11A5D8470602;
- Tue, 25 Jun 2019 20:15:39 +0800 (CST)
+ id 1hfkMs-00048v-AO; Tue, 25 Jun 2019 08:16:13 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 813CFE68FF18170E2E9B;
+ Tue, 25 Jun 2019 20:15:49 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 25 Jun 2019 20:15:32 +0800
+ 14.3.439.0; Tue, 25 Jun 2019 20:15:40 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Date: Tue, 25 Jun 2019 13:14:15 +0100
-Message-ID: <20190625121421.22280-3-shameerali.kolothum.thodi@huawei.com>
+Date: Tue, 25 Jun 2019 13:14:17 +0100
+Message-ID: <20190625121421.22280-5-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,63 +70,146 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.190
-Subject: [Qemu-devel] [PATCH v6 2/8] hw/acpi: Do not create memory hotplug
- method when handler is not defined
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [PATCH v6 4/8] hw/arm/virt: Add memory hotplug framework
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
  linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
  sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +bqd3L4W4gwO
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2tEx2gseZgrj
 
-From: Samuel Ortiz <sameo@linux.intel.com>
+From: Eric Auger <eric.auger@redhat.com>
 
-With Hardware-reduced ACPI, the GED device will manage ACPI
-hotplug entirely. As a consequence, make the memory specific
-events AML generation optional. The code will only be added
-when the method name is not NULL.
+This patch adds the memory hot-plug/hot-unplug infrastructure
+in machvirt. The device memory is not yet exposed to the Guest
+either through DT or ACPI and hence both cold/hot plug of memory
+is explicitly disabled for now.
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/memory_hotplug.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+v5-->v6
+ -Resolved a conflict with latest master branch.
+---
+ hw/arm/Kconfig |  2 ++
+ hw/arm/virt.c  | 51 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 52 insertions(+), 1 deletion(-)
 
-diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
-index c724f5f1e4..7e30e6f886 100644
---- a/hw/acpi/memory_hotplug.c
-+++ b/hw/acpi/memory_hotplug.c
-@@ -719,10 +719,12 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
-     }
-     aml_append(table, dev_container);
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 9aced9d54d..05c329f1e9 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -20,6 +20,8 @@ config ARM_VIRT
+     select SMBIOS
+     select VIRTIO_MMIO
+     select ACPI_PCI
++    select MEM_DEVICE
++    select DIMM
  
--    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
--    aml_append(method,
--        aml_call0(MEMORY_DEVICES_CONTAINER "." MEMORY_SLOT_SCAN_METHOD));
--    aml_append(table, method);
-+    if (event_handler_method) {
-+        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
-+        aml_append(method, aml_call0(MEMORY_DEVICES_CONTAINER "."
-+                                     MEMORY_SLOT_SCAN_METHOD));
-+        aml_append(table, method);
-+    }
+ config CHEETAH
+     bool
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 431e2900fd..d216c7f892 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -64,6 +64,8 @@
+ #include "hw/arm/smmuv3.h"
+ #include "hw/acpi/acpi.h"
+ #include "target/arm/internals.h"
++#include "hw/mem/pc-dimm.h"
++#include "hw/mem/nvdimm.h"
  
-     g_free(mhp_res_path);
+ #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+@@ -1864,6 +1866,40 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+     return ms->possible_cpus;
  }
+ 
++static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
++                                 Error **errp)
++{
++
++    /*
++     * The device memory is not yet exposed to the Guest either through
++     * DT or ACPI and hence both cold/hot plug of memory is explicitly
++     * disabled for now.
++     */
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        error_setg(errp, "memory cold/hot plug is not yet supported");
++        return;
++    }
++
++    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
++}
++
++static void virt_memory_plug(HotplugHandler *hotplug_dev,
++                             DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++
++    pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
++
++}
++
++static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
++                                            DeviceState *dev, Error **errp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_memory_pre_plug(hotplug_dev, dev, errp);
++    }
++}
++
+ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+                                         DeviceState *dev, Error **errp)
+ {
+@@ -1875,12 +1911,23 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+                                      SYS_BUS_DEVICE(dev));
+         }
+     }
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_memory_plug(hotplug_dev, dev, errp);
++    }
++}
++
++static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
++                                          DeviceState *dev, Error **errp)
++{
++    error_setg(errp, "device unplug request for unsupported device"
++               " type: %s", object_get_typename(OBJECT(dev)));
+ }
+ 
+ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+                                                         DeviceState *dev)
+ {
+-    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
++    if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
++       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
+         return HOTPLUG_HANDLER(machine);
+     }
+ 
+@@ -1944,7 +1991,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->kvm_type = virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
+     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
++    hc->pre_plug = virt_machine_device_pre_plug_cb;
+     hc->plug = virt_machine_device_plug_cb;
++    hc->unplug_request = virt_machine_device_unplug_request_cb;
+ }
+ 
+ static void virt_instance_init(Object *obj)
 -- 
 2.17.1
 

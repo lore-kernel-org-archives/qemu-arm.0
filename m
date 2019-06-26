@@ -1,188 +1,168 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp6589198pjq;
-        Mon, 8 Jul 2019 08:01:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsbljneD751G8TljSQ1jrXSvAkKcuzVv9+/C2ri8AJo+CHhnR9R9R0QLTC05liGJV1ejWZ
-X-Received: by 2002:a50:b3d0:: with SMTP id t16mr20657934edd.158.1562598106607;
-        Mon, 08 Jul 2019 08:01:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562598106; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp45178wru;
+        Wed, 26 Jun 2019 06:11:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy0COmePgE0du9lYP6ipLEXiyeJF2HIjJUvBCd4b7YpIzFV/hFCNPpNyOPaOxAtQyyKMEyE
+X-Received: by 2002:a05:620a:687:: with SMTP id f7mr3835619qkh.238.1561554697601;
+        Wed, 26 Jun 2019 06:11:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561554697; cv=none;
         d=google.com; s=arc-20160816;
-        b=JdwS8AFjDR2IKqCz6ZY6MNV+ft5HBZrJrZfzM/HyLi0JL5z3Zv/gTBDlFHLOt5FflZ
-         OLcepw6ReANXJb0WQTheQjgocCvsrixjCAwK8wXMjbe813LdEb58KmNplk1oPBNhEhAw
-         8ude69dMbNBtmIef0yYY1Ts1SZpwqKTuFbR17ZVN5wqv+oJiqMXJoqRu38SWtkonILfy
-         RMNdXAuQnOhziLE8w7L9IZ3u8jfIL912XA4KzkbDhthha8d8yyP6dZuOjtkzkSOnueOG
-         UQP4iQ0obVqoaw/j5f/xqTr4OUpJjSaQGKRKCJmpmgHIwrv3owRVH/x1V+mLKUmMsjSG
-         TI6g==
+        b=XTAEmxSsIEZmCZX0x1S8DuQFgNAOAzZ49gCSSeNC5HoP7EVGQpYXQzcXx0PV8RMZTv
+         P3rEL/TMmJCUJy668EAl4SmFu2CeNTO6Jvfcu2jqx8YCOKZAZEeql5hq6hlOFJxuLMDR
+         I3bwn2i0OaDyRX3jRwafpUrQxGOhn48oPsAts+LE1wj8PFYLtKq4HvzlcMQKYvCVxUQg
+         79Ecj56rrURlB3HZWVQfKwaBrTjtD7ecblzGwNxcXPNRI5x1KQkrTiUzejXCVKUJXwKP
+         FShnjNaQPon9r3sacwQJeqqCnHz/S42GsfDEYg3fxzu698k59DT5Fkp/LyTk+wud43L8
+         yvdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=MPOXltMNn0A0LDsHI3omgXItWm/Wma0B48sJlQV4kqQ=;
-        b=nruvwASRTU9DyyZXAKaGbdXlPb5JEh75tC9w9PIzYSkzR20XDYcVzzaAtIzQPyudUD
-         +J9iNyAO+K23AorDlY99qxm9g8B5up+zEYGBYT7aNoe3+bTNwC036qnGF8ZsGdyN+DOh
-         S2rbbJw5NOobKHieVyydzeBnW9+OfxAqewvsEKiYAIG6RHwp7yUw72fRzWZRg3ZDqOpe
-         EulXnIRW5uLF1HqnP/xUSguE4Tken6RRESDCLdn69eXDUJi2sgDzTwZlTDRGbSKp2VE+
-         RREa8eZQx8PMMRDj3L306U/ISItrjnl1Vi8MmEFJ888oT1PpnjFIWlnuSpXjN7DDPNcx
-         M+nw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=Bxqtnl3zqs25e90K76NnP9Lc52qvn0mttIg8CRuZItc=;
+        b=b/N8p0u1l4ONljiLjNS+kn8lYxkcmh3FdvmSPnWZQyGYSa8xMf2TFnIjyrZn4xfM+h
+         Q2ZJi5I2Nb35Ekhzv0jBy5pFWAqvm6Q7ybY34L6F+1y2rZ+fQB2q5qoltrcQnmlT/1N6
+         67/lM6zdbNLXcmWapZRFuKlN2ZWcqgDTZ43tNEMzlchsLkICkTkarHG9B6Zx26l5Y2o0
+         aXHDYwX/9x0I/yekAqpqf8jl2c0xjeosyEPFDdksITLn+OrD3dpuWBLFB19iFD/z9fUW
+         fL85y4JIxjROFqBg4JVJIvO9iy2Rj2UNSeer6ZE+M2GwTNF26/LI9H90isFwXse7PZow
+         bNtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o15si986976ejj.350.2019.07.08.08.01.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jul 2019 08:01:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id n2si11772205qkg.267.2019.06.26.06.11.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Jun 2019 06:11:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42424 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hkV9D-0002gP-Rf
-	for alex.bennee@linaro.org; Mon, 08 Jul 2019 11:01:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49878)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hkV6F-0001DM-IB
- for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hkV6B-00016T-QT
- for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:39 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:37875)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hkV69-0000v1-SO
- for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:34 -0400
-Received: by mail-wm1-f66.google.com with SMTP id f17so16806737wme.2
- for <qemu-devel@nongnu.org>; Mon, 08 Jul 2019 07:58:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MPOXltMNn0A0LDsHI3omgXItWm/Wma0B48sJlQV4kqQ=;
- b=V9u260BpB3SEawI1u+CGydJMNfh4LPWjZ8/6iH25BI1CoUsV75ssR7oyZmx2Nvw4m8
- Oj7purHfZ9keGwHxImU8c60ZAES3SLs5VOWg9MJ6ItEMYL65RtL3VmkzMGBUTZWSMgba
- CZKyR5a3/bxLgjxvMkSJCS1vqIdWJhK1OSIThXirkZ5ex2Vog69avzebQ08y096nLyfK
- P6FXsSqSzXh7fSwyFXypjWXWDuHct+j3iZr1LG/XIKHeTfXph1HJkM3wsOoBofTzEKbg
- ZXXgR+o2cieG2nWKxdOyCHskN8VgJ+O0ogmPwQ9uO2T9wk805k3LnOPQh5m+2DOllDXc
- FKaw==
-X-Gm-Message-State: APjAAAXdhFf+ldEOD0VtKNZBAyCxS1HepV3/NnR3KibSZEQOfV0xSKlf
- do6fwumfpZKZdwFzAySL21oY/g==
-X-Received: by 2002:a1c:6555:: with SMTP id z82mr17735703wmb.129.1562597911299; 
- Mon, 08 Jul 2019 07:58:31 -0700 (PDT)
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.56])
- by smtp.gmail.com with ESMTPSA id s3sm18308839wmh.27.2019.07.08.07.58.30
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 08 Jul 2019 07:58:30 -0700 (PDT)
-To: Francisco Iglesias <frasse.iglesias@gmail.com>
-References: <20190708104750.1071-1-philmd@redhat.com>
- <20190708104750.1071-4-philmd@redhat.com>
- <20190708142622.k4s5oknmzzj4brxd@fralle-msi>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <41f075ef-9b80-cb66-0fb1-d03079cd93a4@redhat.com>
-Date: Mon, 8 Jul 2019 16:58:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E1203C04B2F6;
+	Wed, 26 Jun 2019 13:11:18 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3102C60A97;
+	Wed, 26 Jun 2019 13:11:11 +0000 (UTC)
+Date: Wed, 26 Jun 2019 15:11:08 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH v2 02/14] target/arm/cpu: Ensure we can use
+ the pmu with kvm
+Message-ID: <20190626131108.lyqunrmepqmjlzxw@kamzik.brq.redhat.com>
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-3-drjones@redhat.com>
+ <7ba318d0-1701-39de-acee-d1a51385977d@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20190708142622.k4s5oknmzzj4brxd@fralle-msi>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-devel] [PATCH-for-4.1 v5 3/3] hw/ssi/xilinx_spips: Avoid
- out-of-bound access to lqspi_buf[]
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-stable@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
- qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mtK3Wf8D9tV3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7ba318d0-1701-39de-acee-d1a51385977d@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Wed, 26 Jun 2019 13:11:24 +0000 (UTC)
+X-TUID: rxvpYpk/jnB/
 
-Hi Francisco,
+On Wed, Jun 26, 2019 at 11:49:03AM +0200, Richard Henderson wrote:
+> On 6/21/19 6:34 PM, Andrew Jones wrote:
+> > We first convert the pmu property from a static property to one with
+> > its own accessors. Then we use the set accessor to check if the PMU is
+> > supported when using KVM. Indeed a 32-bit KVM host does not support
+> > the PMU, so this check will catch an attempt to use it at property-set
+> > time.
+> > 
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  target/arm/cpu.c     | 30 +++++++++++++++++++++++++-----
+> >  target/arm/kvm.c     |  9 +++++++++
+> >  target/arm/kvm_arm.h | 13 +++++++++++++
+> >  3 files changed, 47 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 376db154f008..858f668d226e 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -759,10 +759,6 @@ static Property arm_cpu_has_el3_property =
+> >  static Property arm_cpu_cfgend_property =
+> >              DEFINE_PROP_BOOL("cfgend", ARMCPU, cfgend, false);
+> >  
+> > -/* use property name "pmu" to match other archs and virt tools */
+> > -static Property arm_cpu_has_pmu_property =
+> > -            DEFINE_PROP_BOOL("pmu", ARMCPU, has_pmu, true);
+> > -
+> >  static Property arm_cpu_has_vfp_property =
+> >              DEFINE_PROP_BOOL("vfp", ARMCPU, has_vfp, true);
+> >  
+> > @@ -785,6 +781,29 @@ static Property arm_cpu_pmsav7_dregion_property =
+> >                                             pmsav7_dregion,
+> >                                             qdev_prop_uint32, uint32_t);
+> >  
+> > +static bool arm_get_pmu(Object *obj, Error **errp)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(obj);
+> > +
+> > +    return cpu->has_pmu;
+> > +}
+> > +
+> > +static void arm_set_pmu(Object *obj, bool value, Error **errp)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(obj);
+> > +
+> > +    if (value) {
+> > +        if (kvm_enabled() && !kvm_arm_pmu_supported(CPU(cpu))) {
+> > +            error_setg(errp, "'pmu' feature not supported by KVM on this host");
+> > +            return;
+> > +        }
+> > +        set_feature(&cpu->env, ARM_FEATURE_PMU);
+> > +    } else {
+> > +        unset_feature(&cpu->env, ARM_FEATURE_PMU);
+> > +    }
+> > +    cpu->has_pmu = value;
+> > +}
+> > +
+> >  static void arm_get_init_svtor(Object *obj, Visitor *v, const char *name,
+> >                                 void *opaque, Error **errp)
+> >  {
+> > @@ -859,7 +878,8 @@ void arm_cpu_post_init(Object *obj)
+> >      }
+> >  
+> >      if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+> > -        qdev_property_add_static(DEVICE(obj), &arm_cpu_has_pmu_property,
+> > +        cpu->has_pmu = true;
+> > +        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu,
+> >                                   &error_abort);
+> 
+> This doesn't look right.
+> 
+> The static property is only enabled here if the cpu is known to support the
+> PMU, and thus the only useful setting is -cpu foo,pmu=off.  Which means that
+> the extra checking that you do in the dynamic property is unused.
 
-On 7/8/19 4:26 PM, Francisco Iglesias wrote:
-> Hi Philippe,
-> 
-> On [2019 Jul 08] Mon 12:47:50, Philippe Mathieu-Daudé wrote:
->> Both lqspi_read() and lqspi_load_cache() expect a 32-bit
->> aligned address.
->>
->> From UG1085 datasheet [*] Chapter 22: Quad-SPI Controller:
-> 
-> s/22/24/
+It's used when attempting to do '-cpu foo,pmu=on' on a cpu model that
+would support the PMU on TCG, and thus has the property, but won't work
+when KVM is in use. I'll admit I didn't test this, because I don't have
+32-bit KVM hosts available, but I'm pretty sure it should work as
+expected:
 
-I'm confuse, Chapter 24 is "SD/SDIO Controller", so it seems this Xilinx
-datasheet is not stable to refer to. Maybe I should simply use:
+ -accel tcg -cpu foo                <-- on by default
+ -accel tcg -cpu foo,pmu=off        <-- off
+ -accel tcg -cpu foo,pmu=on         <-- nop
 
-  From UG1085 datasheet [*] Chapter on 'Quad-SPI Controller':
+ -accel kvm -cpu foo                <-- on by default if kvm+foo supports
+                                        the pmu, otherwise off
+ -accel kvm -cpu foo,pmu=off        <-- off
+ -accel kvm -cpu foo,pmu=on         <-- nop if kvm+foo supports the pmu,
+                                        otherwise error message
 
-> 
-> After above change:
-> 
-> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com> 
-> Tested-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-> 
-> (I tested all three patches so the Tested-by tag can also be appended on the
-> other two)
-
-Thanks!
+With the error message, which will only occur with 32-bit kvm hosts, since
+64-bit kvm hosts have all supported the pmu for quite some time, being the
+only new thing.
 
 > 
-> Best regards,
-> Francisco Iglesias
-> 
->>
->>   Transfer Size Limitations
->>
->>     Because of the 32-bit wide TX, RX, and generic FIFO, all
->>     APB/AXI transfers must be an integer multiple of 4-bytes.
->>     Shorter transfers are not possible.
->>
->> Set MemoryRegionOps.impl values to force 32-bit accesses,
->> this way we are sure we do not access the lqspi_buf[] array
->> out of bound.
->>
->> [*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> v5: add datasheet reference, drop RFC prefix, fix build (Francisco)
->> ---
->>  hw/ssi/xilinx_spips.c | 4 ++++
->>  1 file changed, 4 insertions(+)
->>
->> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
->> index 3c4e8365ee..b29e0a4a89 100644
->> --- a/hw/ssi/xilinx_spips.c
->> +++ b/hw/ssi/xilinx_spips.c
->> @@ -1239,6 +1239,10 @@ static const MemoryRegionOps lqspi_ops = {
->>      .read_with_attrs = lqspi_read,
->>      .write_with_attrs = lqspi_write,
->>      .endianness = DEVICE_NATIVE_ENDIAN,
->> +    .impl = {
->> +        .min_access_size = 4,
->> +        .max_access_size = 4,
->> +    },
->>      .valid = {
->>          .min_access_size = 1,
->>          .max_access_size = 4
->> -- 
->> 2.20.1
->>
+> It seems like you need to be checking for the PMU earlier, e.g. in
+> kvm_arm_get_host_cpu_features.
+
+We need to push all the checks into property accessors if we want the
+QMP command to work for them.
+
+Thanks,
+drew

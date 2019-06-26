@@ -1,114 +1,105 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp358604wru;
-        Wed, 26 Jun 2019 11:29:09 -0700 (PDT)
-X-Received: by 2002:a5d:4949:: with SMTP id r9mr4535238wrs.289.1561573749644;
-        Wed, 26 Jun 2019 11:29:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561573749; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp358700wru;
+        Wed, 26 Jun 2019 11:29:15 -0700 (PDT)
+X-Received: by 2002:adf:dc45:: with SMTP id m5mr4767905wrj.148.1561573755577;
+        Wed, 26 Jun 2019 11:29:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561573755; cv=none;
         d=google.com; s=arc-20160816;
-        b=eaUu2m4Ci9AhxjzAP6uBKGFMIqoySHsE7av5JYwWBUjlNbIwuVHZU6cM19h4NjEOtF
-         xbZqofD6s8Q/XP7dSbloFWURwCKBoRGFDuVCQvzGHherdv2O50zSI73l6n6L7dWDaguN
-         sbPwSX97GZpgfiRjgZzvXwyMBKJJQW6hEjboWb6HSpo91aYhyVUE/dCMHZ2yVI02zJ6y
-         3GnKfDFiRxTyHQVdaUvPpRKYyWnV+g/VgQsJRpXF8TuO/dAFh4qWk0Y0L47KJ4sTo5BL
-         ucAzWCyfXAcWJR00apNkwd50pIduW4IVNW3NlRQheKmt0b9bfFV//YtHdZHv6K2UYnbE
-         bUVA==
+        b=LbQ5oEqIGUc9iMOAXKHYDDDClBJM172V4CHJ6uqr5OJG5zP5cqBikWgQuTpAC8+sji
+         gfKER+LHJQ8v0JUpBf1Pm23hwyCDSXRarsf8FvbdqBIsc9yqG34yq6qDT9aRluvV1iDW
+         aLxCksefH7hzaY6CRtCyfoXuKOADxZDhvAET5+y6gpFioXf3EvePfM4zhpjhUV+TJVNi
+         nWMYFyK6DNWauNjC9XSXWAnRcViRYdvOtsQsCEDS9VduLCrDUsSgmLABpEtacQiljT+O
+         9vnkNYfzDM0SBXzih4ooYqwxYqBj6dgeSdMn0wRH3+N9ZDAE59D1ShAa3NKIhj+QV9Pz
+         HbWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=rohLCCH3DW1wIMS2KSOyep/+sdviPpS4gXS+9OPP1N8=;
-        b=g4PjDs3nYiqsk3DTjXkPbv6t94n/OdDlwC2LE1BqNfoA51+wuIutTXrse6gB5ILlqt
-         +uQW1NTJD2gcxZ1PMKXazkgQCngZX8liF8u4QvmjGOzuvLlODav9TpjXpkKrY7Lj7hGI
-         F0CsW6riTzjtP/Ov4+AFvQy6j7aaHffDATU+Kc7HJTlmLF0INOclTdSu8LrS+5yqAzkS
-         QoYYx0IU+r3ww3zJUTdkAAMkAJV13qYPG18DIA7fklhBAyECa1jt53JKYrRVYHLCW2zA
-         m8U8+BPLlc0xzSfkX2XPT+U2Z8ruxVjdDQdPoprFvBWYkiF1dXRKEJ7NNZQzZdS5ONVV
-         MeJA==
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=aJp2FYYq47l/ic5bgyV3E4/EKIb0xTos9ePX81rCFCgCx1drNP91MvHbfxO7h/M68S
+         lPJ7NpIyBHw3dil8NIsJTuMyC7dPSRrGM8O+aTEXoqR78UX7pqyeIru4Ftx8tai08apX
+         kJr4+A3f2uUzvZpeP+ep00xS9GQyzzNOybNb+nh4vOsI7J4AcuToy5zwByisC5bqYGxx
+         xh3iJWLICrtjqpyc4TH/qsuVS8DBlCZnif3xT0GDGvEK5XoRHNHa/UZ9ZrVEdKpM9T44
+         IyIkBFfUML9B8Pe06qYilRZlOFhkM/FKyveQceRFMdxvwpMNuDgXmiyOQ4E5lE7HcYAh
+         wTzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ji0IW4Cp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uiQNBUaX;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 75sor13193224wrk.12.2019.06.26.11.29.09
+        by mx.google.com with SMTPS id g29sor9432449wrb.16.2019.06.26.11.29.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 26 Jun 2019 11:29:09 -0700 (PDT)
+        Wed, 26 Jun 2019 11:29:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ji0IW4Cp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uiQNBUaX;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=rohLCCH3DW1wIMS2KSOyep/+sdviPpS4gXS+9OPP1N8=;
-        b=Ji0IW4CpZ7Zq6k1Z3xqZ7x/2mfnDJ6tdBRRwNqjUCouFyfgFcVPc+vd+YGQMEeZh89
-         /aHYTCwco0fE+/KxmX9h11+LsxObtpVprs3vcBzXRkDFHrIlLtshksZBT/HBElHNdmIr
-         VlbdHoSHTIcqVik2MSA+GHhc1jjRC6MKeYVbN9DNhA6L0iuDOOrdW9cETsXGBGJ/Ls5A
-         Q6BjYKok8cdz0WDbfKe+WMkax9rD80JvhTcGSOjuEJIyMH3fmUsrPl0OBw8DrQenV82W
-         AH/6bt1x7OAPuRcROO2KeJ2c9aYAUGoICimk+fY75w5SJm2sxfusoprve6VrIKrqJgDP
-         hvgQ==
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=uiQNBUaXa29Gqmi5QC15DLBZoLVs0XXbFDquCUaCqd/6/tWYWyJfCQ1wiii6GBT1lq
+         L3cUjsT3NBdopSZZDe4/41NvQCcEjVURS3YlJbCCRjffMkYNCB2kSY04OsmdAmlKx86W
+         a7RVem45mdQRJ+xGqert/+rrniVuDU55MVCwUz8JkDREpx9DwWLkV89a+xl+vZWm7kSr
+         g5ziA3mLeBy97Lj46+ow5b9iqMgq+iOb+IhmwRJZ/3IgQsNsXA/uWs+ywji9aLr3IjAZ
+         hww5muX7T2LVNvPzChfMOyes2kSlyBoxTSOWHcAxVdCeCZF6Wh64SX4fbO+gjqiJDwSP
+         4qrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=rohLCCH3DW1wIMS2KSOyep/+sdviPpS4gXS+9OPP1N8=;
-        b=KtlvV+cAxXK1lI5qnvqA2LkOsYuhp8CLMcUzEGm6Bf+4tk5S11zYQVvi8c5HxO3J96
-         OtUYo1wv/gHPg/rykgsKKWzcI8KhKuIEBBS2peRmeYWqnHBcmeLGTdL0Doo+0/hgl8ZA
-         7Z3XJdbYlkHWjqlHjk81yGo+Sd1EagGRfmoeJ+9FrvCyA9g/o/ZMZ0MOaS96LxgfsK1j
-         W0UOqxRnIDau9nlGVCIVYtCPl/9GwTMeY2xI2A3tvmMYYDP+ogUxLf8LT7ZUiS4Mz2Yi
-         vxbFMZrN8MJAjaNW8P6ePS0B0EhyBlwXshK5geCOL/tTgPxeexwmLGbitq/8lDPJ5qJs
-         5Jow==
-X-Gm-Message-State: APjAAAXpnijdOznTe7QLI5GJv9xVZnUskjbur8CH/11n6S6qRndbk7Wb
-	4aQg9gNbGXT3bx6n5vn+kqA0kP1q
-X-Google-Smtp-Source: APXvYqxOuB3Yv1CpY6A/6jbfqjkiLxoPkphA5kSh2Of5jlQ7YmpVVZqLh3zzg4ZvLwoubFbXAR+Ofg==
-X-Received: by 2002:a05:6000:110:: with SMTP id o16mr4454827wrx.200.1561573749365;
-        Wed, 26 Jun 2019 11:29:09 -0700 (PDT)
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=XxtZU9DCjKf7WWtUqJhekp2yiQaZL+e5P09rbV7xXjUIu1POHZAofyYL7aW5kxtNGa
+         kOtjqD4ZotenbSNdkSd/yiWEe+KctM+E3CUzDBSKVrixnS4hH3pBnc3TsaT1E8VGGJbS
+         y+lVQwZSNkS1x/LoJi+AqzPSEL6zWQJh+EiqjTcQxScOc5k1ifmmqv7yg34flYPUnh+z
+         y+z12fvPcaWbxlnbFtm9YIz4I71j7vkXmctiSKxzQrRFFxtw90O3+KSzbhpDGMcCi30A
+         tzlWZmInfAOGDR2YT41gGqLrxDglnGyx+ML4y3AI07YzoiSZ+e7K6XHAoLMbwujKY87l
+         ejfQ==
+X-Gm-Message-State: APjAAAVdaqZNT4/lnrJeLqORh/W+RgFpsS7WIDrPderjkulEfss1l54q
+	lm2d6rcbqpT6GoGBc7oeeeBpYfeT
+X-Google-Smtp-Source: APXvYqxS4k5Ds+/EqCduvsf9WJjkJc3fyPnY9jW2DFjyd+wSoBaHPHJbWa0nAaEacibQVVQdTsgvaw==
+X-Received: by 2002:adf:f649:: with SMTP id x9mr4351295wrp.86.1561573755313;
+        Wed, 26 Jun 2019 11:29:15 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.2.137] (93-34-153-63.ip50.fastwebnet.it. [93.34.153.63])
-        by smtp.gmail.com with ESMTPSA id a84sm4264284wmf.29.2019.06.26.11.29.08
+        by smtp.gmail.com with ESMTPSA id o11sm3350513wmh.37.2019.06.26.11.29.14
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Jun 2019 11:29:08 -0700 (PDT)
-Subject: Re: [PATCH v2 11/14] target/arm/kvm64: max cpu: Enable SVE when
- available
+        Wed, 26 Jun 2019 11:29:14 -0700 (PDT)
+Subject: Re: [PATCH v2 08/14] target/arm/kvm64: Fix error returns
 To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
  eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
  imammedo@redhat.com
 References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-12-drjones@redhat.com>
+ <20190621163422.6127-9-drjones@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <bd43a392-18a5-b04c-9a52-d4113ab1e5be@linaro.org>
-Date: Wed, 26 Jun 2019 13:09:45 +0200
+Message-ID: <90009b4b-0f96-89b2-a401-9d84a8b2526e@linaro.org>
+Date: Wed, 26 Jun 2019 13:50:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-12-drjones@redhat.com>
+In-Reply-To: <20190621163422.6127-9-drjones@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: aBQTFVv43NlV
+X-TUID: gacNVQA01Dxa
 
 On 6/21/19 6:34 PM, Andrew Jones wrote:
-> @@ -675,6 +689,11 @@ static void aarch64_max_initfn(Object *obj)
->  
->      if (kvm_enabled()) {
->          kvm_arm_set_cpu_features_from_host(cpu);
-> +        /*
-> +         * KVM doesn't yet support the sve-max-vq property, but
-> +         * setting cpu->sve_max_vq is also used to turn SVE on.
-> +         */
-> +        cpu->sve_max_vq = ARM_SVE_INIT;
+> A couple return -EINVAL's forgot their '-'s.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  target/arm/kvm64.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Can we support this value with KVM_GET/SET_ONE_REG on ZCR_EL2?  (IIRC KVM
-requires VHE to support SVE, so the host is always EL2 and the guest is always
-EL1.)
-
-Or do we need to probe this via normal userland prctl?
-
-Or am I getting ahead of the patches to follow?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

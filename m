@@ -1,123 +1,105 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp91266wru;
-        Wed, 26 Jun 2019 06:58:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVLF0kOVVD2+COKDsCCkkiqBZ7amQFxdjbaj+JR9u2BZvBcjdN3yODW5XvmTR7twM//sCT
-X-Received: by 2002:ac8:2a69:: with SMTP id l38mr3595192qtl.212.1561557497142;
-        Wed, 26 Jun 2019 06:58:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561557497; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp358571wru;
+        Wed, 26 Jun 2019 11:29:07 -0700 (PDT)
+X-Received: by 2002:a7b:cc04:: with SMTP id f4mr240014wmh.125.1561573747027;
+        Wed, 26 Jun 2019 11:29:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561573747; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jx4c/kR9Po0eGEj0ycjOnD/YRLUol0FZ88CQjaAdorZWdaOPMzyWv0o+Gp8BltxaLv
-         LAoBWkT3zlrvjoRRdOai4wOLraMMBkjQ4Oa5/XfGWtReDPYjMC9YUPXacCVE53RlcaxM
-         EdyY/Lb2qsotkps28lSRsFXNVsULFoIrNzkP6zXfcxVj9hlZlykO39LtzLDBb1j+S+WM
-         6XugmtjUsb1krHKTs7baQ60IeUDRnxrcPaVJS4hpKeR/3ud/V/QLzcB6m9whmIg/kQ6x
-         HQD+lJwTmC9YfnS7Su3eCVGRlXcgX7IOFDjAJ0wPQESrvYGvqDc1wcQMQegZjXtLv0Bz
-         TW8A==
+        b=atToYouBTYkrZOJeabvFwfuGqS41D1WAnSbPwA4Ibpz1tN58eC1NYszcjUmR3nPrt3
+         EfRDaK+dV6VYzTbL/qgM+wbdaRqpJnEwS9beDnR8xCLclNZW9s+g2FqRKgIEvez2d85h
+         Hc54QhULAYUX6IC+TGVdq7sWuRE/O3TqSzgSTN9uYT6LI2Xa5+R9Sl87eiNk2pQDonNx
+         mnCb7siSH3Y1xryJ290PESGEM5n7rd7tn09kCrjVHEgFomoiEGA1RH7WmWAHZpWFfdxU
+         ryKbezxZIGoj6P1ooObIc5dkScaPrnFmFoicQkDXGyzc9LnF9yr/7+VgyEAmOHVh/uyi
+         Y0vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=CuqS+Jb3bfszYWDMeotnYwobPRytnZHZBGOKkQyE0ck=;
-        b=x185CoI8jklFh3TSl3YacrkTgSYxkB7oQfjK4cd1+bwNubUPECYxpl91vipQ3dEPe8
-         eN8d4/sz56QBEfWlGgkYUs9tm/5atGWe5fQm+2J+cJiCaNDAJ1r9lGtv79+Uo+kDk17F
-         8gmsc4VaS0OA/11D4LK0FHEcOKi+I8MZ3ZmyYPwj7tUDf/CjAGYJ+KYTV4D85XG8RGwJ
-         5yM5Uk1FazUgZQpd06UrHiPSYPKQZHgNrz9g+WDT8RyLyQGhbLlK7QW/yXKYyOo9sLTY
-         r43foVzBM9Xd51fqmwU/htI9GG2Ct5K07to73vgSsQwOKccUbJmaXHcheiNSvXgYpLCM
-         BPsw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=Wz5xn02+zAJy4N3j1EgsVXx6wucntxn73EqhMKB79CjSK8Q1eldlE+8QqUqmObiQEl
+         nLY88a0Hap3A3Vf4gUBh34AlUZjWyUqnClTYxr8o7I3dJ24FCUlxcHPX5Z098yY0Wam3
+         H7hT/UIGPvZFaaOQk4rJLR5oSbYMvvEKP+gqJuvXxCDjS0TgcZc+Mgfw/9F6xINRvbWU
+         dDBIVC5uNmgw1apJVgaW45mgaycHP7xhjV/Lq8V+zIxAPQxDb0gq2C2UUwbR6aV+Ov+2
+         H+Oe9rZ/b2s5APZw6Lafqy/sr86ZW0N9aa+rhDnTXgfwxgi4sBdekaIEOzFsR6W1zyNs
+         L40A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id t3si12207683qvt.202.2019.06.26.06.58.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Jun 2019 06:58:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b="nUPUfff/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d6sor12563452wrq.39.2019.06.26.11.29.06
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 26 Jun 2019 11:29:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E34E02F8BF0;
-	Wed, 26 Jun 2019 13:58:10 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 085A51001B04;
-	Wed, 26 Jun 2019 13:58:08 +0000 (UTC)
-Date: Wed, 26 Jun 2019 15:58:06 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, armbru@redhat.com,
-	imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v2 05/14] target/arm/helper: zcr: Add build
- bug next to value range assumption
-Message-ID: <20190626135806.l6mna6swbdncbb2a@kamzik.brq.redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="nUPUfff/";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=nUPUfff/KnbTyMMuxIhQQZv7OGI3M+SeT9dQXn/6E59qCbH5KWRRDfFleZEXeuqtfn
+         go7qU8c2sx+PzsfGPl3MQWA7qfvQbSzVZCW2yTdEBD7tCvBiwhLRWIVnnNwgVGedJNWA
+         3pcedqAYfocS27RInRRAEVI3moAyexRQ1Y8nkgdxBeNfYNQVX8y3rKWwqFN8EgXcv1eb
+         2/2Frav3uj7Rx6tJyVnR6RR1xxOtQm6nARK9R87dYXS7FAxvRnM0+C4g/cyIHqlKvQFl
+         nie/KXCssGCCN6KZIa59dXNiW95g+KpPz3Ijn95r1klLHeI8RZmevvtelZj9r9esdd0a
+         Lc3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=n3YkOEVUPRaKEULHS1Gzl/S5jvMt2zT4d79BA6WQFVk=;
+        b=ZLx58QKVeAHTvSEebPUCP+Ok3shskB9UZBv+jV1kUqngPFwPnA2oiqfasuzpI74AXj
+         DTZPqxFztwOjRGxaIigaPQJWqrIr+7F7fbVolhK6xy245EYesIzxMEfF/ym58FzW5e6H
+         DYNJrN8YrRgFoZnTBHPTKkwt2TE6SB+j+7yY3p9JmffaCHBiU7WfR2m1bdBAkqevm/Qa
+         uujPenSirM5iopuufx4rhpv8ky/YwCeZ+mxzdC5ZGd+QY3FA2NkreB6M+EjXiSqW3lmX
+         MtIV6rSh8jBBApMUngyPcEdrY4BtDurIiV67/qJW9tZNBgTHGmSEIijMSHOssw2rgFIn
+         +a4w==
+X-Gm-Message-State: APjAAAXi4PbcYFmFU8kAAtWe/Sa79u0AnfoHY/x29zQLSbg9wbLVRJ1v
+	8bQTlW91F39LCUYs7jeNplBTFCT6
+X-Google-Smtp-Source: APXvYqxybi8namo91aFfecG4kz0eAl6/gCup4PhnmwiRIaFVK9V/ovRxWhW4fDPaWrjOdQlVXstdsg==
+X-Received: by 2002:adf:e705:: with SMTP id c5mr4864776wrm.270.1561573746682;
+        Wed, 26 Jun 2019 11:29:06 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.2.137] (93-34-153-63.ip50.fastwebnet.it. [93.34.153.63])
+        by smtp.gmail.com with ESMTPSA id v65sm3260625wme.31.2019.06.26.11.29.05
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Jun 2019 11:29:05 -0700 (PDT)
+Subject: Re: [PATCH v2 08/14] target/arm/kvm64: Fix error returns
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
+ eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
+ imammedo@redhat.com
 References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-6-drjones@redhat.com>
- <3c24d706-4ee5-336d-8f74-adae672c450d@redhat.com>
- <20190626132846.lj62nu4orn3nhnug@kamzik.brq.redhat.com>
- <4c96ac11-1195-81d5-79d9-ee3d5e92210e@redhat.com>
+ <20190621163422.6127-9-drjones@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <cb58767c-be9a-b1dc-2969-2a90e3a2f528@linaro.org>
+Date: Wed, 26 Jun 2019 12:53:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4c96ac11-1195-81d5-79d9-ee3d5e92210e@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Wed, 26 Jun 2019 13:58:11 +0000 (UTC)
-X-TUID: 89XTHsBlU6OB
+In-Reply-To: <20190621163422.6127-9-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: R/ImNxAmNVlK
 
-On Wed, Jun 26, 2019 at 03:40:11PM +0200, Auger Eric wrote:
-> Hi,
+On 6/21/19 6:34 PM, Andrew Jones wrote:
+> A couple return -EINVAL's forgot their '-'s.
 > 
-> On 6/26/19 3:28 PM, Andrew Jones wrote:
-> > On Wed, Jun 26, 2019 at 12:01:10PM +0200, Auger Eric wrote:
-> >> Hi Drew,
-> >>
-> >> On 6/21/19 6:34 PM, Andrew Jones wrote:
-> >>> Suggested-by: Dave Martin <Dave.Martin@arm.com>
-> >>> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> >>> ---
-> >>>  target/arm/helper.c | 1 +
-> >>>  1 file changed, 1 insertion(+)
-> >>>
-> >>> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> >>> index df4276f5f6ca..edba94004e0b 100644
-> >>> --- a/target/arm/helper.c
-> >>> +++ b/target/arm/helper.c
-> >>> @@ -5319,6 +5319,7 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >>>      int new_len;
-> >>>  
-> >>>      /* Bits other than [3:0] are RAZ/WI.  */
-> >>> +    QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
-> >> Can you document in the commit message why this check is critical?
-> > 
-> > Sure. I can copy+paste the email subject into the commit message :-)
-> Well that's not what I asked for. Are you enforcing an architectural
-> maximum of 2048 bits or is the limitation due to some data structs in
-> the existing code, ... For a non expert reviewer as I am it is not
-> totally obvious.
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  target/arm/kvm64.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-How's this for the commit message
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-    The current implementation of ZCR_ELx matches the architecture, only
-    implementing the lower four bits, with the rest RAZ/WI. This puts
-    a strict limit on ARM_MAX_VQ of 16. Make sure we don't let ARM_MAX_VQ
-    grow without a corresponding update here.
 
-Thanks,
-drew
-
-> 
-> Thanks
-> 
-> Eric
-> > 
-> > drew
-> > 
-> >>
-> >> Thanks
-> >>
-> >> Eric
-> >>>      raw_write(env, ri, value & 0xf);
-> >>>  
-> >>>      /*
-> >>>
-> >>
+r~

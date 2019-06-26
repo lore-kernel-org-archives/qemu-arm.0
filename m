@@ -1,573 +1,900 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp122304wru;
-        Wed, 26 Jun 2019 07:25:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy9Cihvo+SnwZWUiCB5cKojLVy6PGbaGNNtYr4at2hVfpx3rXlZgMflADV5S3LB37HN4IVP
-X-Received: by 2002:a17:90a:8d0c:: with SMTP id c12mr4930723pjo.140.1561559141369;
-        Wed, 26 Jun 2019 07:25:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561559141; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp155594wru;
+        Wed, 26 Jun 2019 07:58:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyizqtzAvvo83dBA1VoeZpv70ZH60+LF/emuCEi07ShpGn7VuqAHi0XJmsKoZGGxpqbjXRy
+X-Received: by 2002:aed:3b94:: with SMTP id r20mr4046133qte.207.1561561134394;
+        Wed, 26 Jun 2019 07:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561561134; cv=none;
         d=google.com; s=arc-20160816;
-        b=jw117obk0JAar0Z8bYIsjxx3HXqsy+vDR9kV/OGVNQALDqyovPk1mSzuhSek+nGCl9
-         PJpLnmrup1bBPEGwbt3CfdOytaXNo3HCyAIyD6Xd5ZSULxUaLB5CdQj7sDoDWf1NWzSu
-         9sEahaABjL+LuleGIpx6LoHH9RvDes6hzbPwaTR0YJNGRe61T4hHFO11bVeWyac2Crmm
-         WkzO87sHu+7Rw+VQh8xyAkoijsM3w9WX/9gnHpBrfr0fBe8PA3vCMOWMDxjWtTk53b3T
-         ljBKj+FkWP69hNUuioXe6YGIFF+zXMixdzR+qVBFlySvnjyXle5TWSvpwVHqH0uV3gcP
-         +mgQ==
+        b=qNSlmRuZYm2VU8I3ew2FvmUbWtNzlH4Peulo8WExTxh/iz3yM3lCIcT3APv0EO+Ufs
+         8BFrlcs3sDrw/UR/UhlhYTFjehxLXXsuuDb2HyOFnq/ATm6/4PXC6TGIPO4DDLK9I/7l
+         3u+NpFUGII8tJWtFdkS3e1lyXJ1k0MxMv7zcYgDF0zWW0oIppak9m7wr8ioa1qCzeDHc
+         cEK3KVGb37wkhdJkhlOt6AbAF0q9tvm167BTPFqBexTrX9FtOhZt7jCE8oqvltS7x6Do
+         aA+adPciUufn9yFPOzTpwNXren4dQdItuId1+pobNADZdE8wd+Lldcybpg4hLUCHPCsH
+         ao1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date;
-        bh=Lf0EeA9yGGl483DHPMjlTVIRuPBCA2UB1PxsSHJOnCk=;
-        b=NE2USIEmd9HiZYI/MYZwmvYMNVJVPDDXJ9IAKH54B4WpDrSa/8z5Pgbo1mLAoLE/fK
-         nHH2+Ia/I3PjTGRL2p1pid6XrsGRZBhAjwxIfX0xnNHpev1CFIyBMbEEL2rK97/EUULx
-         AqU2Zxee9SKfuJ5WJiYjYQJk8NmzvfVw61rcdhh77oJv7uYxaFIUiSb0go0TS69krAOQ
-         fyCbUKkc4rLQf9zVH3GrAf8jYBfFXuH+7jLjG+8pEVzTGY28vEDPdEdpGsGpTN9l2WFz
-         pAB93c0JuEUb9qgv/LsIfv7ST9PgLl8KGaKCexHabheYTUBzZn9DFgwSOHKTn0tWwq+Y
-         PyMA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=0HZW7u2yAvgL6V0xs+34KDxc2IQsZAe7AoaYCJXk/q4=;
+        b=ohzuIcfWvvfVE3bmeplTGvDnODY9feniEuy0FtTP+3O90Ait8dS1njq1u7g4cOfYy7
+         U9kkMkiwQ9t61lMWKyxuyfH3WjRlpAbvqvQS0qon41Kb5w7lOH6wkL1DdWdWOunQMSdz
+         Yf2eRzFsbYJJTDKmtPvaAsHz4JKjGRsY7VA4Sy8iWkYQ6Hb1KbvXXa7LjlnJILQFu+Ll
+         y6wDa7FzW0YIFG9GDm7/2IV6NK6tpjUy87MWT8minmXs2KGB3/qPCaW8RuTLttmTASZG
+         pg4/gX+lsA1MJ2S4Oi+fw+7/F5T1P7J0jy7iUa8MNAv7h+SyDcpcN1kvW9DcmyiX9nxQ
+         vtkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b12si15489371pgt.548.2019.06.26.07.25.41;
-        Wed, 26 Jun 2019 07:25:41 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id c25si11426577qkm.20.2019.06.26.07.58.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Jun 2019 07:58:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726723AbfFZOZk (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 5 others); Wed, 26 Jun 2019 10:25:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60460 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1726104AbfFZOZk (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 26 Jun 2019 10:25:40 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 39734309265B;
-        Wed, 26 Jun 2019 14:25:39 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 8AE7F5D71C;
-        Wed, 26 Jun 2019 14:25:32 +0000 (UTC)
-Date:   Wed, 26 Jun 2019 16:25:30 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     peter.maydell@linaro.org, ehabkost@redhat.com, kvm@vger.kernel.org,
-        mst@redhat.com, mtosatti@redhat.com, qemu-devel@nongnu.org,
-        linuxarm@huawei.com, shannon.zhaosl@gmail.com,
-        zhengxiang9@huawei.com, qemu-arm@nongnu.org, james.morse@arm.com,
-        xuwei5@huawei.com, jonathan.cameron@huawei.com,
-        pbonzini@redhat.com, lersek@redhat.com, rth@twiddle.net
-Subject: Re: [Qemu-devel] [PATCH v17 07/10] ACPI: Add APEI GHES table
- generation support
-Message-ID: <20190626162530.7bce148e@redhat.com>
-In-Reply-To: <e7a30c5f-deca-2f1a-e8a5-db3ae760f5b1@huawei.com>
-References: <1557832703-42620-1-git-send-email-gengdongjiu@huawei.com>
-        <1557832703-42620-8-git-send-email-gengdongjiu@huawei.com>
-        <20190624142739.7a060ea0@redhat.com>
-        <e7a30c5f-deca-2f1a-e8a5-db3ae760f5b1@huawei.com>
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A3EFCA3EB1;
+	Wed, 26 Jun 2019 14:58:47 +0000 (UTC)
+Received: from [10.36.116.89] (ovpn-116-89.ams2.redhat.com [10.36.116.89])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F06B1608CA;
+	Wed, 26 Jun 2019 14:58:06 +0000 (UTC)
+Subject: Re: [PATCH v2 07/14] target/arm/cpu64: max cpu: Introduce
+ sve<vl-bits> properties
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
+ Dave.Martin@arm.com, imammedo@redhat.com
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-8-drjones@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <96afb9ed-5cbd-ba7c-c6f9-c3191f4209b0@redhat.com>
+Date: Wed, 26 Jun 2019 16:58:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20190621163422.6127-8-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.43]); Wed, 26 Jun 2019 14:25:39 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 3sZ9EsStnCUe
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Wed, 26 Jun 2019 14:58:47 +0000 (UTC)
+X-TUID: vYgc/XJuTbOt
 
-On Tue, 25 Jun 2019 21:48:07 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+Hi Drew,
 
-> On 2019/6/24 20:27, Igor Mammedov wrote:
-> > On Tue, 14 May 2019 04:18:20 -0700
-> > Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> >   
-> >> This implements APEI GHES Table generation via fw_cfg blobs.
-> >> Now it only support GPIO-Signal and ARMv8 SEA two types of GHESv2 error
-> >> source. Afterwards, we can extend the supported types if needed. For the
-> >> CPER section type, currently it is memory section because kernel
-> >> mainly wants userspace to handle the memory errors.
-> >>
-> >> This patch follows the spec ACPI 6.2 to build the Hardware Error Source
-> >> table, for the detailed information, please refer to document:
-> >> docs/specs/acpi_hest_ghes.txt
-> >>
-> >> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> >> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> >> ---
-> >>  default-configs/arm-softmmu.mak |   1 +
-> >>  hw/acpi/Kconfig                 |   4 +
-> >>  hw/acpi/Makefile.objs           |   1 +
-> >>  hw/acpi/acpi_ghes.c             | 171 ++++++++++++++++++++++++++++++++++++++++
-> >>  hw/acpi/aml-build.c             |   2 +
-> >>  hw/arm/virt-acpi-build.c        |  12 +++
-> >>  include/hw/acpi/acpi_ghes.h     |  79 +++++++++++++++++++
-> >>  include/hw/acpi/aml-build.h     |   1 +
-> >>  8 files changed, 271 insertions(+)
-> >>  create mode 100644 hw/acpi/acpi_ghes.c
-> >>  create mode 100644 include/hw/acpi/acpi_ghes.h
-> >>
-> >> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> >> index 613d19a..7b33ae9 100644
-> >> --- a/default-configs/arm-softmmu.mak
-> >> +++ b/default-configs/arm-softmmu.mak
-> >> @@ -160,3 +160,4 @@ CONFIG_MUSICPAL=y
-> >>  
-> >>  # for realview and versatilepb
-> >>  CONFIG_LSI_SCSI_PCI=y
-> >> +CONFIG_ACPI_APEI=y
-> >> diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
-> >> index eca3bee..5228a4b 100644
-> >> --- a/hw/acpi/Kconfig
-> >> +++ b/hw/acpi/Kconfig
-> >> @@ -23,6 +23,10 @@ config ACPI_NVDIMM
-> >>      bool
-> >>      depends on ACPI
-> >>  
-> >> +config ACPI_APEI
-> >> +    bool
-> >> +    depends on ACPI
-> >> +
-> >>  config ACPI_VMGENID
-> >>      bool
-> >>      default y
-> >> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-> >> index 2d46e37..5099ada 100644
-> >> --- a/hw/acpi/Makefile.objs
-> >> +++ b/hw/acpi/Makefile.objs
-> >> @@ -6,6 +6,7 @@ common-obj-$(CONFIG_ACPI_MEMORY_HOTPLUG) += memory_hotplug.o
-> >>  common-obj-$(CONFIG_ACPI_CPU_HOTPLUG) += cpu.o
-> >>  common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
-> >>  common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
-> >> +common-obj-$(CONFIG_ACPI_APEI) += acpi_ghes.o
-> >>  common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
-> >>  
-> >>  common-obj-y += acpi_interface.o
-> >> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-> >> new file mode 100644
-> >> index 0000000..d03e797
-> >> --- /dev/null
-> >> +++ b/hw/acpi/acpi_ghes.c
-> >> @@ -0,0 +1,171 @@
-> >> +/* Support for generating APEI tables and record CPER for Guests
-> >> + *
-> >> + * Copyright (C) 2017 HuaWei Corporation.
-> >> + *
-> >> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
-> >> + *
-> >> + * This program is free software; you can redistribute it and/or modify
-> >> + * it under the terms of the GNU General Public License as published by
-> >> + * the Free Software Foundation; either version 2 of the License, or
-> >> + * (at your option) any later version.
-> >> +
-> >> + * This program is distributed in the hope that it will be useful,
-> >> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >> + * GNU General Public License for more details.
-> >> +
-> >> + * You should have received a copy of the GNU General Public License along
-> >> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> >> + */
-> >> +
-> >> +#include "qemu/osdep.h"
-> >> +#include "hw/acpi/acpi.h"
-> >> +#include "hw/acpi/aml-build.h"
-> >> +#include "hw/acpi/acpi_ghes.h"
-> >> +#include "hw/nvram/fw_cfg.h"
-> >> +#include "sysemu/sysemu.h"
-> >> +#include "qemu/error-report.h"
-> >> +
-> >> +/* Build table for the hardware error fw_cfg blob */
-> >> +void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker)
-> >> +{
-> >> +    int i;
-> >> +
-> >> +    /*
-> >> +     * | +--------------------------+
-> >> +     * | |    error_block_address   |
-> >> +     * | |      ..........          |
-> >> +     * | +--------------------------+
-> >> +     * | |    read_ack_register     |
-> >> +     * | |     ...........          |
-> >> +     * | +--------------------------+
-> >> +     * | |  Error Status Data Block |
-> >> +     * | |      ........            |
-> >> +     * | +--------------------------+
-> >> +     */
-> >> +
-> >> +    /* Build error_block_address */
-> >> +    build_append_int_noprefix((void *)hardware_errors, 0,
-> >> +                    GHES_ADDRESS_SIZE * ACPI_HEST_ERROR_SOURCE_COUNT);  
-> > read CODING_STYLE wrt indentation rules.  
->  thanks for the reminder.
-> 
-> >   
-> >> +
-> >> +    /* Build read_ack_register */
-> >> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++)
-> >> +        /* Initialize the value of read_ack_register to 1, so GHES can be
-> >> +         * writeable in the first time  
-> > where does this come from? a pointer to spec?  
-> 
-> It is come from "ACPI 6.2, Table 18-382 Generic Hardware Error Source version 2 (GHESv2) Structure", I will add a comment.
-> QEMU init the read_ack_register to 1, guest will change it from 1 to 0 after acknowledges the error.
-> 
-> > 
-> >   
-> >> +         */
-> >> +        build_append_int_noprefix((void *)hardware_errors, 1, GHES_ADDRESS_SIZE);
-> >> +
-> >> +     /* Build Error Status Data Block */
-> >> +    build_append_int_noprefix((void *)hardware_errors, 0,
-> >> +                    GHES_MAX_RAW_DATA_LENGTH * ACPI_HEST_ERROR_SOURCE_COUNT);
-> >> +
-> >> +    /* Allocate guest memory for the hardware error fw_cfg blob */
-> >> +    bios_linker_loader_alloc(linker, GHES_ERRORS_FW_CFG_FILE, hardware_errors,
-> >> +                            1, false);
-> >> +}
-> >> +
-> >> +/* Build Hardware Error Source Table */
-> >> +void build_apei_hest(GArray *table_data, GArray *hardware_errors,
-> >> +                                            BIOSLinker *linker)
-> >> +{
-> >> +    uint32_t i, error_status_block_offset, length = table_data->len;  
-> > 
-> > s/length/hest_start/  
-> thanks for the suggestion.
-> 
-> >   
-> >> +
-> >> +    /* Reserve Hardware Error Source Table header size */
-> >> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> >> +
-> >> +    /* Set the error source counts */  
-> > s/.*/Error Source Count/
-> > like it's in spec, the same for other field comments  
-> ok, thanks for the suggestion.
-> 
-> >   
-> >> +    build_append_int_noprefix(table_data, ACPI_HEST_ERROR_SOURCE_COUNT, 4);
-> >> +
-> >> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++) {
-> >> +        /* Generic Hardware Error Source version 2(GHESv2 - Type 10)  
-> >   
-> >> +         */  
-> > shouldn't it be on previous line?  
-> yes, I will change it.
-> 
-> >   
-> >> +        build_append_int_noprefix(table_data,
-> >> +            ACPI_HEST_SOURCE_GENERIC_ERROR_V2, 2); /* type */
-> >> +        build_append_int_noprefix(table_data, cpu_to_le16(i), 2); /* source id */  
-> > you don't need cpu_to_le16(), build_append_int_noprefix() does it for you.  
-> thanks for the reminder.
-> 
-> >   
-> >> +        build_append_int_noprefix(table_data, 0xffff, 2); /* related source id */
-> >> +        build_append_int_noprefix(table_data, 0, 1); /* flags */
-> >> +
-> >> +        build_append_int_noprefix(table_data, 1, 1); /* enabled */
-> >> +
-> >> +        /* Number of Records To Pre-allocate */
-> >> +        build_append_int_noprefix(table_data, 1, 4);
-> >> +        /* Max Sections Per Record */
-> >> +        build_append_int_noprefix(table_data, 1, 4);
-> >> +        /* Max Raw Data Length */
-> >> +        build_append_int_noprefix(table_data, GHES_MAX_RAW_DATA_LENGTH, 4);
-> >> +
-> >> +        /* Build error status address*/
-> >> +        build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */, 0);
-> >> +        bios_linker_loader_add_pointer(linker,
-> >> +            ACPI_BUILD_TABLE_FILE, ERROR_STATUS_ADDRESS_OFFSET(length, i),
-> >> +            GHES_ADDRESS_SIZE, GHES_ERRORS_FW_CFG_FILE, i * GHES_ADDRESS_SIZE);
-> >> +  
-> >   
-> >> +        /* Build Hardware Error Notification
-> >> +         * Now only enable GPIO-Signal and ARMv8 SEA notification types
-> >> +         */
-> >> +        if (i == 0) {
-> >> +            build_append_ghes_notify(table_data, ACPI_HEST_NOTIFY_GPIO, 28,
-> >> +                                     0, 0, 0, 0, 0, 0, 0);
-> >> +        } else if (i == 1) {
-> >> +            build_append_ghes_notify(table_data, ACPI_HEST_NOTIFY_SEA, 28, 0,
-> >> +                                     0, 0, 0, 0, 0, 0);
-> >> +        }  
-> > well, if we increase  ACPI_HEST_ERROR_SOURCE_COUNT,
-> > this will silently break and build invalid tables.
-> > 
-> > suggest to put g_assert_not_reached() here  
-> ok, thanks.
-> 
-> > 
-> >   
-> >> +
-> >> +        /* Error Status Block Length */
-> >> +        build_append_int_noprefix(table_data,
-> >> +            cpu_to_le32(GHES_MAX_RAW_DATA_LENGTH), 4);  
-> > s/cpu_to_le32//  
-> I will remove.
-> 
-> >   
-> >> +
-> >> +        /* Build Read ACK register
-> >> +         * ACPI 6.1/6.2: 18.3.2.8 Generic Hardware Error Source
-> >> +         * version 2 (GHESv2 - Type 10)
-> >> +         */
-> >> +        build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0, 4 /* QWord access */, 0);
-> >> +        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> >> +            READ_ACK_REGISTER_ADDRESS_OFFSET(length, i), GHES_ADDRESS_SIZE,
-> >> +            GHES_ERRORS_FW_CFG_FILE,
-> >> +            (ACPI_HEST_ERROR_SOURCE_COUNT + i) * GHES_ADDRESS_SIZE);
-> >> +
-> >> +        /* Build Read Ack Preserve and Read Ack Writer */  
-> >   
-> >> +        build_append_int_noprefix(table_data, cpu_to_le64(ReadAckPreserve), 8);
-> >> +        build_append_int_noprefix(table_data, cpu_to_le64(ReadAckWrite), 8);  
-> > s/cpu_to_le64/  
-> I will remove.
-> 
-> > 
-> > it's recurring mistake on many patches, pls fix it where it's made. I won't comment on it anymore  
-> got it.
-> 
-> >   
-> >> +    }
-> >> +  
-> > 
-> > it looks like below part belongs to build_hardware_error_table()  
-> 
-> Below part mainly setup "Error Status Address" and "Read Ack Register"in the "ACPI 6.2: Table 18-382 Generic Hardware Error Source version 2 (GHESv2) Structure"
-> Maybe it is better belong to build_apei_hest().
-
-it deals with only GHES_ERRORS_FW_CFG_FILE which is populated in
-build_hardware_error_table(). I don't really see anything there that belongs to
-more generic build_apei_hest(), so it should go to build_hardware_error_table() if possible
+On 6/21/19 6:34 PM, Andrew Jones wrote:
+> Introduce cpu properties to give fine control over SVE vector lengths.
+> We introduce a property for each valid length up to the current
+> maximum supported, which is 2048-bits. The properties are named, e.g.
+> sve128, sve256, sve512, ..., where the number is the number of bits.
+sve384 then in the natural order, otherwise it gives the impression you
+can only specify * 128bit pow of 2 sizes at this stage of the reading.
 
 > 
-> >> +    /* Generic Error Status Block offset in the hardware error fw_cfg blob */
-> >> +    error_status_block_offset = GHES_ADDRESS_SIZE * 2 *
-> >> +                                ACPI_HEST_ERROR_SOURCE_COUNT;
-> >> +
-> >> +    for (i = 0; i < ACPI_HEST_ERROR_SOURCE_COUNT; i++)  
-> > try to check patches with checkpatch before posting
-> > and see CODING_STYLE 4. Block structure  
-> ok, thanks.
+> It's now possible to do something like -cpu max,sve-max-vq=4,sve384=off
+Document the fact sve512 cannot be turned to off, which sounds fully
+sensible (by reading the code). By the way, I think an actual
+documentation should be provided in qemu. Maybe as spec to agree on.
+> to provide a guest vector lengths 128, 256, and 512 bits. The resulting
+> set must conform to the architectural constraint of having all power-of-2
+> lengths smaller than the maximum length present. It's also possible to
+> only provide sve<vl-bits> properties, e.g. -cpu max,sve512=on> That example provides the machine with 128, 256, and 512 bit vector
+lengths.
+> It doesn't hurt to explicitly ask for all expected vector lengths,
+> which is what, for example, libvirt should do.>
+> Note1, it is not possible to use sve<vl-bits> properties before
+> sve-max-vq, e.g. -cpu max,sve384=off,sve-max-vq=4, as supporting
+> that overly complicates the user input validation.
 > 
-> >   
-> >> +        /* Patch address of Error Status Data Block into
-> >> +         * the error_block_address of hardware_errors fw_cfg blob
-> >> +         */
-> >> +        bios_linker_loader_add_pointer(linker,
-> >> +            GHES_ERRORS_FW_CFG_FILE, GHES_ADDRESS_SIZE * i, GHES_ADDRESS_SIZE,
-> >> +            GHES_ERRORS_FW_CFG_FILE,
-> >> +            error_status_block_offset + i * GHES_MAX_RAW_DATA_LENGTH);
-> >> +  
-> > 
-> > 
-> >   
-> >> +    /* write address of hardware_errors fw_cfg blob into the
-> >> +     * hardware_errors_addr fw_cfg blob.
-> >> +     */
-> >> +    bios_linker_loader_write_pointer(linker, GHES_DATA_ADDR_FW_CFG_FILE,
-> >> +        0, GHES_ADDRESS_SIZE, GHES_ERRORS_FW_CFG_FILE, 0);
-> >> +
-> >> +    build_header(linker, table_data,
-> >> +        (void *)(table_data->data + length), "HEST",
-> >> +        table_data->len - length, 1, NULL, "GHES");
-> >> +}
-> >> +
-> >> +static GhesState ges;
-> >> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
-> >> +{
-> >> +
-> >> +    size_t size = 2 * GHES_ADDRESS_SIZE + GHES_MAX_RAW_DATA_LENGTH;
-> >> +    size_t request_block_size = ACPI_HEST_ERROR_SOURCE_COUNT * size;
-> >> +
-> >> +    /* Create a read-only fw_cfg file for GHES */
-> >> +    fw_cfg_add_file(s, GHES_ERRORS_FW_CFG_FILE, hardware_error->data,
-> >> +                    request_block_size);
-> >> +
-> >> +    /* Create a read-write fw_cfg file for Address */
-> >> +    fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
-> >> +        &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
-> >> +}
-> >> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> >> index ce90970..3f2b84f 100644
-> >> --- a/hw/acpi/aml-build.c
-> >> +++ b/hw/acpi/aml-build.c
-> >> @@ -1645,6 +1645,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
-> >>      tables->table_data = g_array_new(false, true /* clear */, 1);
-> >>      tables->tcpalog = g_array_new(false, true /* clear */, 1);
-> >>      tables->vmgenid = g_array_new(false, true /* clear */, 1);
-> >> +    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
-> >>      tables->linker = bios_linker_loader_init();
-> >>  }
-> >>  
-> >> @@ -1655,6 +1656,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
-> >>      g_array_free(tables->table_data, true);
-> >>      g_array_free(tables->tcpalog, mfre);
-> >>      g_array_free(tables->vmgenid, mfre);
-> >> +    g_array_free(tables->hardware_errors, mfre);
-> >>  }
-> >>  
-> >>  /*
-> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> >> index bf9c0bc..54f4ba5 100644
-> >> --- a/hw/arm/virt-acpi-build.c
-> >> +++ b/hw/arm/virt-acpi-build.c
-> >> @@ -45,6 +45,7 @@
-> >>  #include "hw/arm/virt.h"
-> >>  #include "sysemu/numa.h"
-> >>  #include "kvm_arm.h"
-> >> +#include "hw/acpi/acpi_ghes.h"
-> >>  
-> >>  #define ARM_SPI_BASE 32
-> >>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-> >> @@ -808,6 +809,12 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >>      acpi_add_table(table_offsets, tables_blob);
-> >>      build_spcr(tables_blob, tables->linker, vms);
-> >>  
-> >> +    if (!vmc->no_ras) {
-> >> +        acpi_add_table(table_offsets, tables_blob);
-> >> +        build_hardware_error_table(tables->hardware_errors, tables->linker);
-> >> +        build_apei_hest(tables_blob, tables->hardware_errors, tables->linker);
-> >> +    }
-> >> +
-> >>      if (nb_numa_nodes > 0) {
-> >>          acpi_add_table(table_offsets, tables_blob);
-> >>          build_srat(tables_blob, tables->linker, vms);
-> >> @@ -901,6 +908,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
-> >>  
-> >>  void virt_acpi_setup(VirtMachineState *vms)
-> >>  {
-> >> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> >>      AcpiBuildTables tables;
-> >>      AcpiBuildState *build_state;
-> >>  
-> >> @@ -932,6 +940,10 @@ void virt_acpi_setup(VirtMachineState *vms)
-> >>      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
-> >>                      acpi_data_len(tables.tcpalog));
-> >>  
-> >> +    if (!vmc->no_ras) {
-> >> +        ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
-> >> +    }
-> >> +
-> >>      build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
-> >>                                                ACPI_BUILD_RSDP_FILE, 0);
-> >>  
-> >> diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
-> >> new file mode 100644
-> >> index 0000000..38fd87c
-> >> --- /dev/null
-> >> +++ b/include/hw/acpi/acpi_ghes.h
-> >> @@ -0,0 +1,79 @@
-> >> +/* Support for generating APEI tables and record CPER for Guests
-> >> + *
-> >> + * Copyright (C) 2017 HuaWei Corporation.
-> >> + *
-> >> + * Author: Dongjiu Geng <gengdongjiu@huawei.com>
-> >> + *
-> >> + * This program is free software; you can redistribute it and/or modify
-> >> + * it under the terms of the GNU General Public License as published by
-> >> + * the Free Software Foundation; either version 2 of the License, or
-> >> + * (at your option) any later version.
-> >> +
-> >> + * This program is distributed in the hope that it will be useful,
-> >> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >> + * GNU General Public License for more details.
-> >> +
-> >> + * You should have received a copy of the GNU General Public License along
-> >> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> >> + */
-> >> +
-> >> +#ifndef ACPI_GHES_H
-> >> +#define ACPI_GHES_H
-> >> +
-> >> +#include "hw/acpi/bios-linker-loader.h"
-> >> +
-> >> +#define GHES_ERRORS_FW_CFG_FILE         "etc/hardware_errors"
-> >> +#define GHES_DATA_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
-> >> +
-> >> +/* The size of Address field in Generic Address Structure,
-> >> + * ACPI 2.0/3.0: 5.2.3.1 Generic Address Structure.
-> >> + */
-> >> +#define GHES_ADDRESS_SIZE           8
-> >> +  
-> >   
-> >> +#define GHES_DATA_LENGTH            72
-> >> +#define GHES_CPER_LENGTH            80  
-> > add the similar comment as above if values come from spec
-> > or an explanation where values come from  
->   got it.
+> Note2, while one might expect -cpu max,sve-max-vq=4,sve512=on to be the
+> same as -cpu max,sve512=on, they are not.
+yep it is a bit weird
+
+Didn't you consider -cpu max,sve-max-vq=4,req_only=true removing non
+power of 2 values and sve<vl-bits> setting a single VLbit?
+> The former enables all vector lengths 512 bits and smaller
+( required and permitted)
+> while the latter only sets the 512-bit
+> length and its smaller power-of-2 lengths. It's probably best not to use
+> sve-max-vq with sve<vl-bits> properties, but it can't be completely
+> forbidden as we want qmp_query_cpu_model_expansion to work with guests
+> launched with e.g. -cpu max,sve-max-vq=8 on their command line.
+what does happen if you specify -cpu max,sve384=on? (seems to be allowed
+in the code?)
+
 > 
-> >   
-> >> +
-> >> +#define ReadAckPreserve             0xfffffffe
-> >> +#define ReadAckWrite                0x1  
-> > ditto, and macro should be uppercased.  
-> I will move above macros and folow Michael's comments to  just open-coding at use point
-> and adding a comment:
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/cpu.c         |   6 +
+>  target/arm/cpu.h         |  14 ++
+>  target/arm/cpu64.c       | 360 ++++++++++++++++++++++++++++++++++++++-
+>  target/arm/helper.c      |  11 +-
+>  target/arm/monitor.c     |  16 ++
+>  tests/arm-cpu-features.c | 217 +++++++++++++++++++++++
+>  6 files changed, 620 insertions(+), 4 deletions(-)
 > 
->         build_append_int_noprefix(table_data, cpu_to_le64(0xfffffffe), 8); /* ReadAckPreserve */
->         build_append_int_noprefix(table_data, cpu_to_le64(0x1), 8); /* ReadAckWrite */
-> > 
-> >   
-> >> +
-> >> +/* The max size in bytes for one error block */
-> >> +#define GHES_MAX_RAW_DATA_LENGTH        0x1000
-> >> +/* Now only have GPIO-Signal and ARMv8 SEA notification types error sources
-> >> + */
-> >> +#define ACPI_HEST_ERROR_SOURCE_COUNT    2
-> >> +
-> >> +/*
-> >> + * | +--------------------------+ 0
-> >> + * | |        Header            |
-> >> + * | +--------------------------+ 40---+-
-> >> + * | | .................        |      |
-> >> + * | | error_status_address-----+ 60   |
-> >> + * | | .................        |      |
-> >> + * | | read_ack_register--------+ 104  92
-> >> + * | | read_ack_preserve        |      |
-> >> + * | | read_ack_write           |      |
-> >> + * + +--------------------------+ 132--+-
-> >> + *
-> >> + * From above GHES definition, the error status address offset is 60;
-> >> + * the Read ack register offset is 104, the whole size of GHESv2 is 92
-> >> + */
-> >> +
-> >> +/* The error status address offset in GHES */
-> >> +#define ERROR_STATUS_ADDRESS_OFFSET(start_addr, n)     (start_addr + 60 + \
-> >> +                    offsetof(struct AcpiGenericAddress, address) + n * 92)
-> >> +
-> >> +/* The read Ack register offset in GHES */
-> >> +#define READ_ACK_REGISTER_ADDRESS_OFFSET(start_addr, n) (start_addr + 104 + \
-> >> +                    offsetof(struct AcpiGenericAddress, address) + n * 92)
-> >> +
-> >> +typedef struct GhesState {
-> >> +    uint64_t ghes_addr_le;
-> >> +} GhesState;
-> >> +
-> >> +void build_apei_hest(GArray *table_data, GArray *hardware_error,
-> >> +                     BIOSLinker *linker);
-> >> +
-> >> +void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker);
-> >> +void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
-> >> +#endif
-> >> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> >> index 1ec7e1b..78c0252 100644
-> >> --- a/include/hw/acpi/aml-build.h
-> >> +++ b/include/hw/acpi/aml-build.h
-> >> @@ -220,6 +220,7 @@ struct AcpiBuildTables {
-> >>      GArray *rsdp;
-> >>      GArray *tcpalog;
-> >>      GArray *vmgenid;
-> >> +    GArray *hardware_errors;
-> >>      BIOSLinker *linker;
-> >>  } AcpiBuildTables;
-> >>    
-> > 
-> > .
-> >   
-> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index f08e178fc84b..e060a0d9df0e 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1019,6 +1019,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>  
+> +    arm_cpu_sve_finalize(cpu, &local_err);
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +
+>      if (arm_feature(env, ARM_FEATURE_AARCH64) &&
+>          cpu->has_vfp != cpu->has_neon) {
+>          /*
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index f9da672be575..cbb155cf72a5 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -184,8 +184,13 @@ typedef struct {
+>  
+>  #ifdef TARGET_AARCH64
+>  # define ARM_MAX_VQ    16
+> +void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+> +uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq);
+>  #else
+>  # define ARM_MAX_VQ    1
+> +static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
+> +static inline uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq)
+> +{ return 0; }
+>  #endif
+>  
+>  typedef struct ARMVectorReg {
+> @@ -915,6 +920,15 @@ struct ARMCPU {
+>  
+>      /* Used to set the maximum vector length the cpu will support.  */
+>      uint32_t sve_max_vq;
+> +
+> +    /*
+> +     * In sve_vq_map each set bit is a supported vector length of
+> +     * (bit-number + 1) * 16 bytes, i.e. each bit number + 1 is the vector> +     * length in quadwords. We need a map size twice the maximum
+> +     * quadword length though because we use two bits for each vector
+> +     * length in order to track three states: uninitialized, off, and on.
+> +     */
+> +    DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ * 2);
+>  };
+>  
+>  void arm_cpu_post_init(Object *obj);
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 02ada65f240c..5def82111dee 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -257,6 +257,149 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+>  }
+>  
+> +/*
+> + * While we eventually use cpu->sve_vq_map as a typical bitmap, where each vq
+> + * has only two states (off/on), until we've finalized the map at realize time
+> + * we use an extra bit, at the vq - 1 + ARM_MAX_VQ bit number, to also allow
+> + * tracking of the uninitialized state. The arm_vq_state typedef and following
+> + * functions allow us to more easily work with the bitmap. Also, while the map
+> + * is still initializing, sve-max-vq has an additional three states, bringing
+> + * the number of its states to five, which are the following:
+> + *
+> + * sve-max-vq:
+> + *   0:    SVE is disabled. The default value for a vq in the map is 'OFF'.
+> + *  -1:    SVE is enabled, but neither sve-max-vq nor sve<vl-bits> properties
+> + *         have yet been specified by the user. The default value for a vq in
+> + *         the map is 'ON'.
+> + *  -2:    SVE is enabled and one or more sve<vl-bits> properties have been
+> + *         set to 'OFF' by the user, but no sve<vl-bits> properties have yet
+> + *         been set to 'ON'. The user is now blocked from setting sve-max-vq
+> + *         and the default value for a vq in the map is 'ON'.
+> + *  -3:    SVE is enabled and one or more sve<vl-bits> properties have been
+> + *         set to 'ON' by the user. The user is blocked from setting sve-max-vq
+> + *         and the default value for a vq in the map is 'OFF'. sve-max-vq never
+> + *         transitions back to -2, even if later inputs disable the vector
+> + *         lengths that initially transitioned sve-max-vq to this state. This
+> + *         avoids the default values from flip-flopping.
+> + *  [1-ARM_MAX_VQ]: SVE is enabled and the user has specified a valid
+> + *                  sve-max-vq. The sve-max-vq specified vq and all smaller
+> + *                  vq's will be initially enabled. All larger vq's will have
+> + *                  a default of 'OFF'.
+> + */
+> +#define ARM_SVE_INIT          -1
+> +#define ARM_VQ_DEFAULT_ON     -2
+> +#define ARM_VQ_DEFAULT_OFF    -3
+> +
+> +#define arm_sve_have_max_vq(cpu) ((int32_t)(cpu)->sve_max_vq > 0)
+> +
+> +typedef enum arm_vq_state {
+> +    ARM_VQ_OFF,
+> +    ARM_VQ_ON,
+> +    ARM_VQ_UNINITIALIZED,
+> +} arm_vq_state;
+> +
+> +static arm_vq_state arm_cpu_vq_map_get(ARMCPU *cpu, int vq)> +{
+> +    assert(vq <= ARM_MAX_VQ);
+> +
+> +    return test_bit(vq - 1, cpu->sve_vq_map) |
+> +           test_bit(vq - 1 + ARM_MAX_VQ, cpu->sve_vq_map) << 1;
+> +}> +
+> +static void arm_cpu_vq_map_set(ARMCPU *cpu, int vq, arm_vq_state state)
+> +{
+> +    assert(state == ARM_VQ_OFF || state == ARM_VQ_ON);
+> +    assert(vq <= ARM_MAX_VQ);
+> +
+> +    clear_bit(vq - 1 + ARM_MAX_VQ, cpu->sve_vq_map);
+> +
+> +    if (state == ARM_VQ_ON) {
+> +        set_bit(vq - 1, cpu->sve_vq_map);
+> +    } else {
+> +        clear_bit(vq - 1, cpu->sve_vq_map);
+> +    }
+> +}
+> +
+> +static void arm_cpu_vq_map_init(ARMCPU *cpu)
+> +{
+> +    bitmap_zero(cpu->sve_vq_map, ARM_MAX_VQ * 2);
+nit: bitmap_clear(map, 0, ARM_MAX_VQ);
+/* all VLs OFF */
+> +    bitmap_set(cpu->sve_vq_map, ARM_MAX_VQ, ARM_MAX_VQ);
+/* all VLs uninitialized */
+> +}
+> +
+> +static bool arm_cpu_vq_map_is_finalized(ARMCPU *cpu)
+> +{
+> +    DECLARE_BITMAP(map, ARM_MAX_VQ * 2);
+> +
+> +    bitmap_zero(map, ARM_MAX_VQ * 2);
+same
+> +    bitmap_set(map, ARM_MAX_VQ, ARM_MAX_VQ);
+> +    bitmap_and(map, map, cpu->sve_vq_map, ARM_MAX_VQ * 2);
+> +
+> +    return bitmap_empty(map, ARM_MAX_VQ * 2);
+> +}
+> +
+> +static void arm_cpu_vq_map_finalize(ARMCPU *cpu)
+> +{
+> +    Error *err = NULL;
+> +    char name[8];
+> +    uint32_t vq;
+> +    bool value;
+> +
+> +    /*
+> +     * We use the property get accessor because it knows what default
+> +     * values to return for uninitialized vector lengths.
+> +     */
+> +    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
+> +        sprintf(name, "sve%d", vq * 128);
+> +        value = object_property_get_bool(OBJECT(cpu), name, &err);
+> +        assert(!err);
+> +        if (value) {
+> +            arm_cpu_vq_map_set(cpu, vq, ARM_VQ_ON);
+> +        } else {
+> +            arm_cpu_vq_map_set(cpu, vq, ARM_VQ_OFF);
+> +        }
+> +    }
+> +
+> +    assert(arm_cpu_vq_map_is_finalized(cpu));
+this can be removed
+> +}
+> +
+> +void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    Error *err = NULL;
+> +
+> +    if (!cpu->sve_max_vq) {
+> +        bitmap_zero(cpu->sve_vq_map, ARM_MAX_VQ * 2);
+> +        return;
+> +    }
+> +
+> +    if (cpu->sve_max_vq == ARM_SVE_INIT) {
+> +        object_property_set_uint(OBJECT(cpu), ARM_MAX_VQ, "sve-max-vq", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        assert(cpu->sve_max_vq == ARM_MAX_VQ);
+I guess those asserts can be removed now?
+> +        arm_cpu_vq_map_finalize(cpu);
+move the arm_cpu_vq_map_finalize out of the if, at the end.
+> +    } else {
+> +        arm_cpu_vq_map_finalize(cpu);
+> +        if (!arm_sve_have_max_vq(cpu)) {
+> +            cpu->sve_max_vq = arm_cpu_vq_map_next_smaller(cpu, ARM_MAX_VQ + 1);
+> +        }
+> +    }
+> +
+> +    assert(cpu->sve_max_vq == arm_cpu_vq_map_next_smaller(cpu, ARM_MAX_VQ));
+same here
+> +}
+> +
+> +uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq)
+> +{
+> +    uint32_t bitnum;
+> +
+> +    assert(vq <= ARM_MAX_VQ + 1);
+> +    assert(arm_cpu_vq_map_is_finalized(cpu));
+> +
+> +    bitnum = find_last_bit(cpu->sve_vq_map, vq - 1);
+why do you pass ARM_MAX_VQ + 1 and then do vq -1? doesn't
+find_last_bit() take the size which is ARM_MAX_VQ in this case?
+> +    return bitnum == vq - 1 ? 0 : bitnum + 1;
+> +}
+> +
+>  static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+>                                     void *opaque, Error **errp)
+>  {
+> @@ -283,12 +426,203 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>  
+> +    /*
+> +     * It gets complicated trying to support both sve-max-vq and
+> +     * sve<vl-bits> properties together, so we mostly don't. We
+> +     * do allow both if sve-max-vq is specified first and only once
+> +     * though.
+> +     */
+> +    if (cpu->sve_max_vq != ARM_SVE_INIT) {
+> +        error_setg(errp, "sve<vl-bits> in use or sve-max-vq already "
+> +                   "specified");
+> +        error_append_hint(errp, "sve-max-vq must come before all "
+> +                          "sve<vl-bits> properties and it must only "
+> +                          "be specified once.\n");
+> +        return;
+> +    }
+> +
+>      cpu->sve_max_vq = value;
+>  
+>      if (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ) {
+>          error_setg(errp, "unsupported SVE vector length");
+>          error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
+>                            ARM_MAX_VQ);
+> +    } else {
+> +        uint32_t vq;
+> +
+> +        for (vq = 1; vq <= cpu->sve_max_vq; ++vq) {
+> +            char name[8];
+> +            sprintf(name, "sve%d", vq * 128);
+> +            object_property_set_bool(obj, true, name, &err);
+> +            if (err) {
+> +                error_propagate(errp, err);
+> +                return;
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +static void cpu_arm_get_sve_vq(Object *obj, Visitor *v, const char *name,
+> +                               void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    int vq = atoi(&name[3]) / 128;
+> +    arm_vq_state vq_state;
+> +    bool value;
+> +
+> +    vq_state = arm_cpu_vq_map_get(cpu, vq);
+> +
+> +    if (!cpu->sve_max_vq) {
+> +        /* All vector lengths are disabled when SVE is off. */
+> +        value = false;
+> +    } else if (vq_state == ARM_VQ_ON) {
+> +        value = true;
+> +    } else if (vq_state == ARM_VQ_OFF) {
+> +        value = false;
+> +    } else {
+> +        /*
+> +         * vq is uninitialized. We pick a default here based on the
+> +         * the state of sve-max-vq and other sve<vl-bits> properties.
+> +         */
+> +        if (arm_sve_have_max_vq(cpu)) {
+> +            /*
+> +             * If we have sve-max-vq, then all remaining uninitialized
+> +             * vq's are 'OFF'.
+> +             */
+> +            value = false;
+> +        } else {
+> +            switch (cpu->sve_max_vq) {
+> +            case ARM_SVE_INIT:
+> +            case ARM_VQ_DEFAULT_ON:
+> +                value = true;
+> +                break;
+> +            case ARM_VQ_DEFAULT_OFF:
+> +                value = false;
+> +                break;
+> +            }
+> +        }
+> +    }
+> +
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
+> +                               void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    int vq = atoi(&name[3]) / 128;
+> +    arm_vq_state vq_state;
+> +    Error *err = NULL;
+> +    uint32_t max_vq = 0;
+> +    bool value;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    if (value && !cpu->sve_max_vq) {
+> +        error_setg(errp, "cannot enable %s", name);
+> +        error_append_hint(errp, "SVE has been disabled with sve=off\n");
+> +        return;
+> +    } else if (!cpu->sve_max_vq) {
+> +        /*
+> +         * We don't complain about disabling vector lengths when SVE
+> +         * is off, but we don't do anything either.
+> +         */
+> +        return;
+> +    }
+> +
+> +    if (arm_sve_have_max_vq(cpu)) {
+> +        max_vq = cpu->sve_max_vq;
+> +    } else {
+> +        if (value) {
+> +            cpu->sve_max_vq = ARM_VQ_DEFAULT_OFF;
+> +        } else if (cpu->sve_max_vq != ARM_VQ_DEFAULT_OFF) {
+> +            cpu->sve_max_vq = ARM_VQ_DEFAULT_ON;
+> +        }
+> +    }
+> +
+> +    /*
+> +     * We need to know the maximum vector length, which may just currently
+> +     * be the maximum length, in order to validate the enabling/disabling
+> +     * of this vector length. We use the property get accessor in order to
+> +     * get the appropriate default value for any uninitialized lengths.
+> +     */
+> +    if (!max_vq) {
+> +        char tmp[8];
+> +        bool s;
+> +
+> +        for (max_vq = ARM_MAX_VQ; max_vq >= 1; --max_vq) {
+> +            sprintf(tmp, "sve%d", max_vq * 128);
+> +            s = object_property_get_bool(OBJECT(cpu), tmp, &err);
+> +            assert(!err);
+> +            if (s) {
+> +                break;
+> +            }
+> +        }
+> +    }
+> +
+> +    if (arm_sve_have_max_vq(cpu) && value && vq > cpu->sve_max_vq) {
+> +        error_setg(errp, "cannot enable %s", name);
+> +        error_append_hint(errp, "vq=%d (%d bits) is larger than the "
+> +                          "maximum vector length, sve-max-vq=%d "
+> +                          "(%d bits)\n", vq, vq * 128,
+> +                          cpu->sve_max_vq, cpu->sve_max_vq * 128);
+> +    } else if (arm_sve_have_max_vq(cpu) && !value && vq == cpu->sve_max_vq) {
+> +        error_setg(errp, "cannot disable %s", name);
+> +        error_append_hint(errp, "The maximum vector length must be "
+> +                          "enabled, sve-max-vq=%d (%d bits)\n",
+> +                          cpu->sve_max_vq, cpu->sve_max_vq * 128);
+> +    } else if (arm_sve_have_max_vq(cpu) && !value && vq < cpu->sve_max_vq &&
+> +               is_power_of_2(vq)) {
+> +        error_setg(errp, "cannot disable %s", name);
+> +        error_append_hint(errp, "vq=%d (%d bits) is required as it is a "
+> +                          "power-of-2 length smaller than the maximum, "
+> +                          "sve-max-vq=%d (%d bits)\n", vq, vq * 128,
+> +                          cpu->sve_max_vq, cpu->sve_max_vq * 128);
+> +    } else if (!value && vq < max_vq && is_power_of_2(vq)) {
+> +        error_setg(errp, "cannot disable %s", name);
+> +        error_append_hint(errp, "Vector length %d-bits is required as it "
+> +                          "is a power-of-2 length smaller than another "
+> +                          "enabled vector length. Disable all larger vector "
+> +                          "lengths first.\n", vq * 128);
+> +    } else {
+adding return in each if/elsif would allow to avoid this indent.
+> +        if (value) {
+> +            bool fail = false;
+> +            uint32_t s;
+> +
+> +            /*
+> +             * Enabling a vector length automatically enables all
+> +             * uninitialized power-of-2 lengths smaller than it, as
+> +             * per the architecture.
+> +             */
+Test we are not attempting to enable a !is_power_of_2
+> +            for (s = 1; s < vq; ++s) {
+> +                if (is_power_of_2(s)) {
+> +                    vq_state = arm_cpu_vq_map_get(cpu, s);
+> +                    if (vq_state == ARM_VQ_UNINITIALIZED) {
+> +                        arm_cpu_vq_map_set(cpu, s, ARM_VQ_ON);
+> +                    } else if (vq_state == ARM_VQ_OFF) {
+> +                        fail = true;
+> +                        break;
+> +                    }
+> +                }
+> +            }
+> +
+> +            if (fail) {
+> +                error_setg(errp, "cannot enable %s", name);
+> +                error_append_hint(errp, "Vector length %d-bits is disabled "
+> +                                  "and is a power-of-2 length smaller than "
+> +                                  "%s. All power-of-2 vector lengths smaller "
+> +                                  "than the maximum length are required.\n",
+> +                                  s * 128, name);
+> +            } else {
+> +                arm_cpu_vq_map_set(cpu, vq, ARM_VQ_ON);
+> +            }
+> +        } else {
+> +            arm_cpu_vq_map_set(cpu, vq, ARM_VQ_OFF);
+> +        }
+>      }
+>  }
+>  
+> @@ -318,10 +652,11 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+>          /*
+>           * We handle the -cpu <cpu>,sve=off,sve=on case by reinitializing,
+>           * but otherwise we don't do anything as an sve=on could come after
+> -         * a sve-max-vq setting.
+> +         * a sve-max-vq or sve<vl-bits> setting.
+>           */
+>          if (!cpu->sve_max_vq) {
+> -            cpu->sve_max_vq = ARM_MAX_VQ;
+> +            cpu->sve_max_vq = ARM_SVE_INIT;
+> +            arm_cpu_vq_map_init(cpu);
+>          }
+>      } else {
+>          cpu->sve_max_vq = 0;
+> @@ -336,6 +671,7 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+>  static void aarch64_max_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t vq;
+>  
+>      if (kvm_enabled()) {
+>          kvm_arm_set_cpu_features_from_host(cpu);
+> @@ -420,11 +756,29 @@ static void aarch64_max_initfn(Object *obj)
+>          cpu->dcz_blocksize = 7; /*  512 bytes */
+>  #endif
+>  
+> -        cpu->sve_max_vq = ARM_MAX_VQ;
+> +        /*
+> +         * sve_max_vq is initially unspecified, but must be initialized to a
+> +         * non-zero value (ARM_SVE_INIT) to indicate that this cpu type has
+> +         * SVE. It will be finalized in arm_cpu_realizefn().
+> +         */
+> +        cpu->sve_max_vq = ARM_SVE_INIT;
+>          object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+>                              cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+>          object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
+>                              cpu_arm_set_sve, NULL, NULL, &error_fatal);
+> +
+> +        /*
+> +         * sve_vq_map uses a special state while setting properties, so
+> +         * we initialize it here with its init function and finalize it
+> +         * in arm_cpu_realizefn().
+> +         */
+> +        arm_cpu_vq_map_init(cpu);
+> +        for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
+> +            char name[8];
+> +            sprintf(name, "sve%d", vq * 128);
+> +            object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
+> +                                cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
+> +        }
+>      }
+>  }
+>  
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index f500ccb6d31b..b7b719dba57f 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5324,7 +5324,16 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>  
+>      /* Bits other than [3:0] are RAZ/WI.  */
+>      QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+> -    raw_write(env, ri, value & 0xf);
+> +    value &= 0xf;
+> +
+> +    if (value) {> +        /* get next vq that is smaller than or equal to value's vq */
+> +        uint32_t vq = value + 1;
+ditto
+> +        vq = arm_cpu_vq_map_next_smaller(cpu, vq + 1);
+> +        value = vq - 1;
+> +    }
+> +
+> +    raw_write(env, ri, value);
+>  
+>      /*
+>       * Because we arrived here, we know both FP and SVE are enabled;
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 157c487a1551..1e213906fd8f 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -89,8 +89,24 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>      return head;
+>  }
+>  
+> +QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+> +
+> +/*
+> + * These are cpu model features we want to advertise. The order here
+> + * matters as this is the order in which qmp_query_cpu_model_expansion
+> + * will attempt to set them. If there are dependencies between features,
+> + * as there are with the sve<vl-bits> features, then the order that
+> + * considers those dependencies must be used.
+> + *
+> + * The sve<vl-bits> features need to be in reverse order in order to
+> + * enable/disable the largest vector lengths first, ensuring all
+> + * power-of-2 vector lengths smaller can also be enabled/disabled.
+> + */
+>  static const char *cpu_model_advertised_features[] = {
+>      "aarch64", "pmu", "sve",
+> +    "sve2048", "sve1920", "sve1792", "sve1664", "sve1536", "sve1408",
+> +    "sve1280", "sve1152", "sve1024", "sve896", "sve768", "sve640",
+> +    "sve512", "sve384", "sve256", "sve128",
+>      NULL
+>  };
+>  
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+Please move all the tests in a separate patch.
+Each day has enough trouble of its own ;-) sweat...
+
+Thanks
+
+Eric
+> index 509e458e9c2f..a4bf6aec00df 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -13,6 +13,18 @@
+>  #include "qapi/qmp/qdict.h"
+>  #include "qapi/qmp/qjson.h"
+>  
+> +#if __SIZEOF_LONG__ == 8
+> +#define BIT(n) (1UL << (n))
+> +#else
+> +#define BIT(n) (1ULL << (n))
+> +#endif
+> +
+> +/*
+> + * We expect the SVE max-vq to be 16. Also it must be <= 64
+> + * for our test code, otherwise 'vls' can't just be a uint64_t.
+> + */
+> +#define SVE_MAX_VQ 16
+> +
+>  #define MACHINE    "-machine virt,gic-version=max "
+>  #define QUERY_HEAD "{ 'execute': 'query-cpu-model-expansion', " \
+>                       "'arguments': { 'type': 'full', "
+> @@ -137,6 +149,201 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>      qobject_unref(resp);
+>  }
+>  
+> +static void resp_get_sve_vls(QDict *resp, uint64_t *vls, uint32_t *max_vq)
+> +{
+> +    const QDictEntry *e;
+> +    QDict *qdict;
+> +    int n = 0;
+> +
+> +    *vls = 0;
+> +
+> +    qdict = resp_get_props(resp);
+> +
+> +    for (e = qdict_first(qdict); e; e = qdict_next(qdict, e)) {
+> +        if (strlen(e->key) > 3 && !strncmp(e->key, "sve", 3) &&
+> +            g_ascii_isdigit(e->key[3])) {
+> +            char *endptr;
+> +            int bits;
+> +
+> +            bits = g_ascii_strtoll(&e->key[3], &endptr, 10);
+> +            if (!bits || *endptr != '\0') {
+> +                continue;
+> +            }
+> +
+> +            if (qdict_get_bool(qdict, e->key)) {
+> +                *vls |= BIT((bits / 128) - 1);
+> +            }
+> +            ++n;
+> +        }
+> +    }
+> +
+> +    g_assert(n == SVE_MAX_VQ);
+> +
+> +    *max_vq = !*vls ? 0 : 64 - __builtin_clzll(*vls);
+> +}
+> +
+> +static uint64_t sve_get_vls(QTestState *qts, const char *cpu_type,
+> +                            const char *fmt, ...)
+> +{
+> +    QDict *resp;
+> +    uint64_t vls;
+> +    uint32_t max_vq;
+> +
+> +    if (fmt) {
+> +        QDict *args;
+> +        va_list ap;
+> +
+> +        va_start(ap, fmt);
+> +        args = qdict_from_vjsonf_nofail(fmt, ap);
+> +        va_end(ap);
+> +
+> +        resp = qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s, "
+> +                                                    "'props': %p }"
+> +                              QUERY_TAIL, cpu_type, args);
+> +    } else {
+> +        resp = do_query_no_props(qts, cpu_type);
+> +    }
+> +
+> +    g_assert(resp);
+> +    resp_get_sve_vls(resp, &vls, &max_vq);
+> +    qobject_unref(resp);
+> +
+> +    return vls;
+> +}
+> +
+> +#define assert_sve_vls(qts, cpu_type, expected_vls, fmt, ...) \
+> +    g_assert(sve_get_vls(qts, cpu_type, fmt, ##__VA_ARGS__) == expected_vls)
+> +
+> +static void sve_tests_default(QTestState *qts, const char *cpu_type)
+> +{
+> +    /*
+> +     * With no sve-max-vq or sve<vl-bits> properties on the command line
+> +     * the default is to have all vector lengths enabled.
+> +     */
+> +    assert_sve_vls(qts, cpu_type, BIT(SVE_MAX_VQ) - 1, NULL);
+> +
+> +    /*
+> +     * -------------------------------------------------------------------
+> +     *               power-of-2(vq)   all-power-            can      can
+> +     *                                of-2(< vq)          enable   disable
+> +     * -------------------------------------------------------------------
+> +     * vq < max_vq      no            MUST*                yes      yes
+> +     * vq < max_vq      yes           MUST*                yes      no
+> +     * -------------------------------------------------------------------
+> +     * vq == max_vq     n/a           MUST*                yes**    yes**
+> +     * -------------------------------------------------------------------
+> +     * vq > max_vq      n/a           no                   no       yes
+> +     * vq > max_vq      n/a           yes                  yes      yes
+> +     * -------------------------------------------------------------------
+> +     *
+> +     * [*] "MUST" means this requirement must already be satisfied,
+> +     *     otherwise 'max_vq' couldn't itself be enabled.
+> +     *
+> +     * [**] Not testable with the QMP interface, only with the command line.
+> +     */
+> +
+> +    /* max_vq := 8 */
+> +    assert_sve_vls(qts, cpu_type, 0x8b, "{ 'sve1024': true }");
+> +
+> +    /* max_vq := 8, vq < max_vq, !power-of-2(vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x8f,
+> +                   "{ 'sve1024': true, 'sve384': true }");
+> +    assert_sve_vls(qts, cpu_type, 0x8b,
+> +                   "{ 'sve1024': true, 'sve384': false }");
+> +
+> +    /* max_vq := 8, vq < max_vq, power-of-2(vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x8b,
+> +                   "{ 'sve1024': true, 'sve256': true }");
+> +    assert_error(qts, cpu_type, "cannot disable sve256",
+> +                 "{ 'sve1024': true, 'sve256': false }");
+> +
+> +    /*
+> +     * max_vq := 3, vq > max_vq, !all-power-of-2(< vq)
+> +     *
+> +     * If given sve384=on,sve512=off,sve640=on the command line error would be
+> +     * "cannot enable sve640", but QMP visits the vector lengths in reverse
+> +     * order, so we get "cannot disable sve512" instead. The command line would
+> +     * also give that error if given sve384=on,sve640=on,sve512=off, so this is
+> +     * all fine. The important thing is that we get an error.
+> +     */
+> +    assert_error(qts, cpu_type, "cannot disable sve512",
+> +                 "{ 'sve384': true, 'sve512': false, 'sve640': true }");
+> +
+> +    /*
+> +     * We can disable power-of-2 vector lengths when all larger lengths
+> +     * are also disabled. The shorter, sve384=on,sve512=off,sve640=off
+> +     * works on the command line, but QMP doesn't know that all the
+> +     * vector lengths larger than 384-bits will be disabled until it
+> +     * sees the enabling of sve384, which comes near the end since it
+> +     * visits the lengths in reverse order. So we just have to explicitly
+> +     * disable them all.
+> +     */
+> +    assert_sve_vls(qts, cpu_type, 0x7,
+> +                   "{ 'sve384': true, 'sve512': false, 'sve640': false, "
+> +                   "  'sve768': false, 'sve896': false, 'sve1024': false, "
+> +                   "  'sve1152': false, 'sve1280': false, 'sve1408': false, "
+> +                   "  'sve1536': false, 'sve1664': false, 'sve1792': false, "
+> +                   "  'sve1920': false, 'sve2048': false }");
+> +
+> +    /* max_vq := 3, vq > max_vq, all-power-of-2(< vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x1f,
+> +                   "{ 'sve384': true, 'sve512': true, 'sve640': true }");
+> +    assert_sve_vls(qts, cpu_type, 0xf,
+> +                   "{ 'sve384': true, 'sve512': true, 'sve640': false }");
+> +}
+> +
+> +static void sve_tests_sve_max_vq_8(const void *data)
+> +{
+> +    QTestState *qts;
+> +
+> +    qts = qtest_init(MACHINE "-cpu max,sve-max-vq=8");
+> +
+> +    assert_sve_vls(qts, "max", BIT(8) - 1, NULL);
+> +
+> +    /*
+> +     * Disabling the max-vq set by sve-max-vq is not allowed, but
+> +     * of course enabling it is OK.
+> +     */
+> +    assert_error(qts, "max", "cannot disable sve1024", "{ 'sve1024': false }");
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve1024': true }");
+> +
+> +    /*
+> +     * Enabling anything larger than max-vq set by sve-max-vq is not
+> +     * allowed, but of course disabling everything larger is OK.
+> +     */
+> +    assert_error(qts, "max", "cannot enable sve1152", "{ 'sve1152': true }");
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve1152': false }");
+> +
+> +    /*
+> +     * We can disable non power-of-2 lengths smaller than the max-vq
+> +     * set by sve-max-vq, but not power-of-2 lengths.
+> +     */
+> +    assert_sve_vls(qts, "max", 0xfb, "{ 'sve384': false }");
+> +    assert_error(qts, "max", "cannot disable sve256", "{ 'sve256': false }");
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void sve_tests_sve_off(const void *data)
+> +{
+> +    QTestState *qts;
+> +
+> +    qts = qtest_init(MACHINE "-cpu max,sve=off");
+> +
+> +    /*
+> +     * SVE is off, so the map should be empty.
+> +     */
+> +    assert_sve_vls(qts, "max", 0, NULL);
+> +
+> +    /*
+> +     * We can't turn anything on, but off is OK.
+> +     */
+> +    assert_error(qts, "max", "cannot enable sve128", "{ 'sve128': true }");
+> +    assert_sve_vls(qts, "max", 0, "{ 'sve128': false }");
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+>  static void test_query_cpu_model_expansion(const void *data)
+>  {
+>      QTestState *qts;
+> @@ -159,9 +366,12 @@ static void test_query_cpu_model_expansion(const void *data)
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature(qts, "max", "aarch64");
+>          assert_has_feature(qts, "max", "sve");
+> +        assert_has_feature(qts, "max", "sve128");
+>          assert_has_feature(qts, "cortex-a57", "pmu");
+>          assert_has_feature(qts, "cortex-a57", "aarch64");
+>  
+> +        sve_tests_default(qts, "max");
+> +
+>          /* Test that features that depend on KVM generate errors without. */
+>          assert_error(qts, "max",
+>                       "'aarch64' feature cannot be disabled "
+> @@ -213,6 +423,13 @@ int main(int argc, char **argv)
+>      qtest_add_data_func("/arm/query-cpu-model-expansion",
+>                          NULL, test_query_cpu_model_expansion);
+>  
+> +    if (g_str_equal(qtest_get_arch(), "aarch64")) {
+> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-max-vq-8",
+> +                            NULL, sve_tests_sve_max_vq_8);
+> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-off",
+> +                            NULL, sve_tests_sve_off);
+> +    }
+> +
+>      if (kvm_available) {
+>          qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
+>                              NULL, test_query_cpu_model_expansion_kvm);
 > 

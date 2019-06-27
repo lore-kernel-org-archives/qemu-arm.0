@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1694068wru;
-        Thu, 27 Jun 2019 13:28:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyqHx9eP3CogdStZRkwHw7LDr8wQpIjIhOBuNuQExXZ448y+PdceECiNep2oDz4DmQRWRmU
-X-Received: by 2002:a0c:d013:: with SMTP id u19mr4931279qvg.136.1561667300874;
-        Thu, 27 Jun 2019 13:28:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561667300; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1694117wru;
+        Thu, 27 Jun 2019 13:28:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOksfPg6Lb2WIlmSE1ir+dVTcpaGl5AXyovzfwyEUrY0FzEyGvQavFLhcrouNT+1/w24ot
+X-Received: by 2002:a37:a484:: with SMTP id n126mr4923406qke.366.1561667303473;
+        Thu, 27 Jun 2019 13:28:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561667303; cv=none;
         d=google.com; s=arc-20160816;
-        b=Erhq21xeFybRsabissu4h35bu6r/n/LhJdt6h5avDzm+zdP/h9NnsKeljhF+hVdUEl
-         Od4H9nmqTPZKQTgpGjBkKyZfIbMy3wWEoxgMykxDQTQkYTgpcDW4UUc92IToOx8pbbYj
-         NesV9BbvWBw1yn4yVeEXOTe4hOC2k1SpcSuACAVwvegWoB5sM2TJGKIL0FHRc3LFjg7E
-         piZypDOo2G6Z/1C6BhAaMR21idDYUzvAbldl/EAk32KpINyAvy48odmLa/aNAXyooI/9
-         CqzAvEXj2QGmEfHvwyVTZUh22H1Obl/92rU6OnZPcEbgVjTCyeVVR5OHqUVL+nKe3nAm
-         6Kpw==
+        b=RYAp9lrWwl8hAFgaFXQh+9L0DdjtczO/SAguzPqwITulYKEFRVyGuD09qqM10qZ93B
+         K/AaF4ahToCpY0lZdsP9+9hYSWdVr5iwSvTYySqMaOnF03NHsmc31bZiMatVrnljTwcx
+         m65nNNZFbC1+8yJhgWXrR5KsDMkKO3e+/U83kPpGHl/Um7TS75eq6QITrzFrLPNGfH+4
+         F8jFYUwlf59jN7iPoaccraHZI/YjZtZ0LPD1VMWbpzWR8SMjUzN8ATC+SAW++/RUq5K4
+         APE3/y8zMrZ+gV3czzVXnX/z7JpV3UG15aVXOmAJOEpE+ygYEYeOqnosVhJgb5lAbg2a
+         yMxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=9DZp/uBjHYIbBCu4Z9b4qfiIyaGL0mnhNnZozsjj2sg=;
-        b=MYqGBeGNys3LLwi2yu6BRRg+nRYsdxqV5vA9+PkDPVMDHVNo7ZrvlsaX4vx4AUDjuS
-         24wnpRpYlBTlDA4paU3P00Rv+rKSWT1mqaHLpfgRcP//Eo73t0Pb1YPyCn3PerCOpHGM
-         igXD5SU68wcFzi8fH5un4RpQb/3k0O3wPPWV+iJOk2L5aQyQrYN2vvw+toJQJ9zRwBjL
-         fZIjoR45jORQHjpRStHpZ3oExUyeJKx2tE72axcQT596bxVS1iziiE0d3F2qEB/gIvK3
-         BmVBK4gBySDpPQqGTT5qjwCMExIAxW+FPOB44s1JAEvPydmzE7SKKeHiSczrpy0JJohg
-         MLPw==
+        bh=JDmc9JDWp1m+Mm+pYgFQdjh2p8NUu2VYgkrIAG8VhBA=;
+        b=Zo2rDXa+s+f/a5z4jxy40swOYZkjR3VzE++mqVeQgW29tFALv6SInws2xUDSG9IA4b
+         iZt3cO5h7+XUEA0DJaMxag0w8742aoBxZ6DZycG3qOHVDaYbZoPkqb1N1ue0J5YsNle9
+         A8SeyMnVheIgpjfuhor0IKq7+Tk3pAzIlVq8GziGFIZgJbzVZdeFjy+wo211Ve+CJOMt
+         UXjA497+tp2dwDsFZcTshE8r6nbVyB67xq8dRcEQ0LUFwFSU/Fd4s/Bmtt0wu8pisQ8/
+         1dgC92ET8lZzBrU2Id/CRUnqWMFzJDn8Uu4HiwWXycbCsnXqVFZ7tnFo76ciWGsexXAg
+         eBXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id l5si136154qkc.344.2019.06.27.13.28.20
+        by mx.google.com with ESMTPS id v5si119858qtb.115.2019.06.27.13.28.23
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2019 13:28:20 -0700 (PDT)
+        Thu, 27 Jun 2019 13:28:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DC7FF81F0E;
-	Thu, 27 Jun 2019 20:28:14 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 76EEC811A9;
+	Thu, 27 Jun 2019 20:28:20 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-69.brq.redhat.com [10.40.204.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 424E8600CC;
-	Thu, 27 Jun 2019 20:28:04 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E045600CC;
+	Thu, 27 Jun 2019 20:28:15 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
 	qemu-devel@nongnu.org
@@ -65,82 +65,64 @@ Cc: Magnus Damm <magnus.damm@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Alistair Francis <alistair@alistair23.me>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v5 04/28] hw/block/pflash_cfi02: Fix debug format string
-Date: Thu, 27 Jun 2019 22:26:55 +0200
-Message-Id: <20190627202719.17739-5-philmd@redhat.com>
+Subject: [PATCH v5 05/28] hw/block/pflash_cfi02: Add an enum to define the write cycles
+Date: Thu, 27 Jun 2019 22:26:56 +0200
+Message-Id: <20190627202719.17739-6-philmd@redhat.com>
 In-Reply-To: <20190627202719.17739-1-philmd@redhat.com>
 References: <20190627202719.17739-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Thu, 27 Jun 2019 20:28:15 +0000 (UTC)
-X-TUID: fBAlNkHCF8XE
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Thu, 27 Jun 2019 20:28:22 +0000 (UTC)
+X-TUID: SOKzZuCoL1k2
 
-Always compile the debug code to prevent format string to bitrot.
-Delete dead code.
+No change in functionality is intended with this commit.
 
 Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
 Message-Id: <20190426162624.55977-3-stephen.checkoway@oberlin.edu>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-[PMD: Extracted from bigger patch, use PRIx32]
+[PMD: Extracted from bigger patch]
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi02.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ hw/block/pflash_cfi02.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 6cdfc85264..43796e551a 100644
+index 43796e551a..303d225f23 100644
 --- a/hw/block/pflash_cfi02.c
 +++ b/hw/block/pflash_cfi02.c
-@@ -47,15 +47,13 @@
- #include "hw/sysbus.h"
- #include "trace.h"
- 
--//#define PFLASH_DEBUG
--#ifdef PFLASH_DEBUG
-+#define PFLASH_DEBUG false
- #define DPRINTF(fmt, ...)                                  \
- do {                                                       \
--    fprintf(stderr, "PFLASH: " fmt , ## __VA_ARGS__);       \
-+    if (PFLASH_DEBUG) {                                    \
-+        fprintf(stderr, "PFLASH: " fmt, ## __VA_ARGS__);   \
-+    }                                                      \
- } while (0)
--#else
--#define DPRINTF(fmt, ...) do { } while (0)
--#endif
+@@ -57,6 +57,11 @@ do {                                                       \
  
  #define PFLASH_LAZY_ROMD_THRESHOLD 42
  
-@@ -218,14 +216,14 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwaddr offset,
-         default:
-             goto flash_read;
++/* Special write cycles for CFI queries. */
++enum {
++    WCYCLE_CFI              = 7,
++};
++
+ struct PFlashCFI02 {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -286,7 +291,7 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr offset,
+         if (boff == 0x55 && cmd == 0x98) {
+         enter_CFI_mode:
+             /* Enter CFI query mode */
+-            pfl->wcycle = 7;
++            pfl->wcycle = WCYCLE_CFI;
+             pfl->cmd = 0x98;
+             return;
          }
--        DPRINTF("%s: ID " TARGET_FMT_plx " %x\n", __func__, boff, ret);
-+        DPRINTF("%s: ID " TARGET_FMT_plx " %" PRIx32 "\n", __func__, boff, ret);
+@@ -458,7 +463,8 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr offset,
+             goto reset_flash;
+         }
          break;
-     case 0xA0:
-     case 0x10:
-     case 0x30:
-         /* Status register read */
-         ret = pfl->status;
--        DPRINTF("%s: status %x\n", __func__, ret);
-+        DPRINTF("%s: status %" PRIx32 "\n", __func__, ret);
-         /* Toggle bit 6 */
-         pfl->status ^= 0x40;
-         break;
-@@ -268,10 +266,6 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr offset,
-     trace_pflash_io_write(offset, width, width << 1, value, pfl->wcycle);
-     cmd = value;
-     if (pfl->cmd != 0xA0 && cmd == 0xF0) {
--#if 0
--        DPRINTF("%s: flash reset asked (%02x %02x)\n",
--                __func__, pfl->cmd, cmd);
--#endif
+-    case 7: /* Special value for CFI queries */
++    /* Special values for CFI queries */
++    case WCYCLE_CFI:
+         DPRINTF("%s: invalid write in CFI query mode\n", __func__);
          goto reset_flash;
-     }
-     offset &= pfl->chip_len - 1;
+     default:
 -- 
 2.20.1

@@ -1,136 +1,139 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2692164wru;
-        Mon, 1 Jul 2019 07:07:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyb1lMi6NJGGOCxxOEFjOV+EpVOF+S/uNWxcTWATnnER2qaD6kR5/IeAtIayJuavHnVGnHL
-X-Received: by 2002:aa7:d297:: with SMTP id w23mr28871340edq.128.1561990044998;
-        Mon, 01 Jul 2019 07:07:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561990044; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1393090wru;
+        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxKdMf/zmksix1Pw/FtTvsHT2d8hSSscVXyiYIUJ9JqPq6MTG1NWedswR5KgLUP+JYa3wei
+X-Received: by 2002:a50:c9c2:: with SMTP id c2mr4847992edi.183.1561647749314;
+        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561647749; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wb3Q5h5TT1jlx5Orxs55TK2JoH8pyOOo8n6aVrCOpuMedg7IaGeZIEw2P9W3KV4mZh
-         9DHoPpDQeQ02epJbX2re41dKEJP/uMTUwRouQZa4UQNL049RQHzXfMzGJrgwwmcEaGOC
-         OpIYhCTqbCXHXBiKCDDDoOniv3QTXe27JG6w6BkW6kO9U/gz6GCqPwkpYV7CRGvjKV6E
-         X+Ik+Qz5Y/YiCQc7S3+Slxg4KG9KgMDckmjL5Z1PZVNWb8F2IYALTFXKb/h5Gq1ii1K0
-         gWmWdXZumjKl9IKWr9VYRoL5yYj12lOmvpFlbkhcE07fIhEZzxjvsaxPx9CkF/y0tSsn
-         /vAw==
+        b=oQtPu41dAEow+sNPxDN3/Ph/hPc45fVjhKE1VDks1hrmN7qXjuxYR3n8VrXLVHBxIU
+         oDJnIjONjpmme3KwnQNZeDb7gvx2ulJBSwQLfhRHyq6PsPu+fneDNj136w1hAWrsc7xt
+         PyZnjUeQ7opukZwrgn80GSNe9h3cDWnkbp9v4lJ+tvPzp9OMXVcl0XoT1N1VSDAALoMX
+         TdhOKQkidIrNKMz4EbyRHaIX3IpAeyUU7Qr/fmxyhfnVHsiX1c+4YiUNRnyOUtL8x5g2
+         sdOch3fIe3Qlm2Ae2nt9ZxYZ9rIlycuVHqsSaIJBl5suyCvrSM4Ljbz2iVp41fWG9XZM
+         D/qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
-        b=xkoNmAyVRLqGhh1EKVcEIeTAbTpJlSfSrguCaZjLRiKM7VMAYXcK60C2ImfGZq4jCX
-         m3oI5M0m7YWqRQ+0sfIKnBOMcqxauuKs6diUdA57kAt3WEog4IHEJ9BtvgpkUQ+6kJFw
-         WMnYoulhfjZcI64Gh7zR54MCmeCd7togCCOkfSBRM3I6BK02FeBfOIRkSczQg8euEjz1
-         wQn4dGEe6SyjGz9833zzlVBtOGg4HyqpJ5e1FCjhVp/xQ4PB+GRxxMaXwlhslgnFg5M+
-         WYYep/CbOVgyaFec3RzL/8/gTGm+C/ZxqZHKOwYl39Ai9dMp228PVgwOJhhfEctAOa+r
-         ZwuQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=VXGj6045PLBPA7tU0mFoJrekB2NdENo0IaTGmnqmJ7E=;
+        b=G27aw8g7JZbDaW/A/+ZryjH0KTbhE6MtO9atVhFF5PHIQkOPb0HtdIXRMim+P+EAkv
+         VVA/9K87TR/XPxJO0YFtmEEKQOjQG5Bb1vEw1BZlFvxMwZ55ICZPE0UMKuVBbVB5TBm6
+         1TU9O6RZINN8FwCbWwSz4cWYh19DvvpeHeaP0gqP/PI4y7A2XVnetiLOcpsadjaSVMk1
+         WwcUYLrY3SHCCZrhsQ7IUKNtt1Da7dhGG2WUB5XWqcEhLaDQgc4JkPaIHTEMjTg6e8uq
+         039plSVV7LUnBES4BCObUeThUClUSB9wzI8p8dhoxNXxcudLdXRyWpvb/V5ri9MDGvbW
+         MCRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bRiu0vdd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si1575933eje.74.2019.07.01.07.07.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 07:07:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by mx.google.com with ESMTP id um8si1730807ejb.373.2019.06.27.08.02.28;
+        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bRiu0vdd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59134 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhwxo-0003ja-1x
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 10:07:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43466)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hhwTi-0002k7-V6
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:19 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hhwTh-0000FI-UQ
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:18 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38311)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hhwTh-0000Ei-PV
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:17 -0400
-Received: by mail-ot1-x343.google.com with SMTP id d17so13516527oth.5
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 06:36:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
- b=bRiu0vddosM8bldq04r9MnXHYz7aNQFTu7Us063tbrs0G1OoJCFoRJ7UhlZqNiXcPS
- XyBTtv42i/ZYbH8lgbWDRxWUe6jWlvS5j1j6JJHlVNqS9URovAB0axAWqSZRYHkXaNVh
- dtmIC2QM4NA0pzSabKtWrmqZ1P/ZdxrW1HB9+x7EQQSZCyFAMuPpC4KCuZ0af/uZVRhy
- 8LFp0tgnILW/otCwdZrL2kKoC1xFj7crSQUAtuOa8rb2+gwO14Jd39/Hu7seEJOx2Nmp
- sRN6u/pbNJ4VFAAJbM6Pm495WpV72pzDHrm+iY1I4kEdqqA2GfkYZwIqiX7Zn2o/B2PR
- FF9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
- b=AWfMXP2hH+yZA280OTuZWZwU8XNL6gEKo0ZGL13TyEe9t2qtq1efE3hV8uV8SH77k2
- OvzdihVe/OSfIHkkoxIx0sNRSeZCk2fTYfjnA5mA3IST+y0bs7Em5japr9x4STJZO3qv
- QF1F2fb6MpM88URmQc1tkUlPFXWKzDfablMwRBFLrgaD46TbbmEQfGoEBUHZA2jIXNy1
- 77KuxwfPTnDdtDE5n19TMXHcOKY+bUg85+57pd+z8MrOOn9R6Yim8TkkGtTK6Lhs2EOs
- wcOkkfFXU2bpP1zbiLKnW4R9kRtzkm7zfvjcdRM4wC8w8NonSaH8Z2SqMD9jnfpCm6ue
- buPg==
-X-Gm-Message-State: APjAAAX14ap1YG+WaSrISfDTb+DR6a71yr6sv4Pmybp/RO6WKQ0WVCwn
- whcomu+7H8V75A6gwirZZgcww4iEp7J4Io3bxS9GTwynDrY=
-X-Received: by 2002:a9d:7245:: with SMTP id a5mr20589831otk.232.1561988176854; 
- Mon, 01 Jul 2019 06:36:16 -0700 (PDT)
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 510E6360;
+	Thu, 27 Jun 2019 08:02:28 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EEA383F246;
+	Thu, 27 Jun 2019 08:02:26 -0700 (PDT)
+Date: Thu, 27 Jun 2019 16:02:24 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Andrew Jones <drjones@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"imammedo@redhat.com" <imammedo@redhat.com>
+Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
+Message-ID: <20190627150224.GH2790@e103592.cambridge.arm.com>
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-11-drjones@redhat.com>
+ <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
+ <20190627105911.GD2790@e103592.cambridge.arm.com>
+ <3e935f36-1065-b82e-86e0-f3e4cd11f95e@linaro.org>
 MIME-Version: 1.0
-References: <20190621065242.32535-1-joel@jms.id.au>
-In-Reply-To: <20190621065242.32535-1-joel@jms.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 14:36:06 +0100
-Message-ID: <CAFEAcA93PEEsp-6Ko_ELU+0QYPuYQFJLzX1LT+5+LdPjh-jq+A@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-devel] [PATCH v2] aspeed: Link SCU to the watchdog
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wdYQLSSwVIAT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3e935f36-1065-b82e-86e0-f3e4cd11f95e@linaro.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: UXf9sdtdgsSO
 
-On Fri, 21 Jun 2019 at 07:52, Joel Stanley <joel@jms.id.au> wrote:
->
-> The ast2500 uses the watchdog to reset the SDRAM controller. This
-> operation is usually performed by u-boot's memory training procedure,
-> and it is enabled by setting a bit in the SCU and then causing the
-> watchdog to expire. Therefore, we need the watchdog to be able to
-> access the SCU's register space.
->
-> This causes the watchdog to not perform a system reset when the bit is
-> set. In the future it could perform a reset of the SDMC model.
->
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
-> v2: rebase on upstream, rework commit message
+On Thu, Jun 27, 2019 at 12:26:06PM +0100, Richard Henderson wrote:
+> On 6/27/19 12:59 PM, Dave Martin wrote:
+> >> It's a shame that these slices exist at all.  It seems like the kernel could
+> >> use the negotiated max sve size to grab the data all at once.
+> > 
+> > The aim here was to be forwards compatible while fitting within the
+> > existing ABI.
+> > 
+> > The ABI doesn't allow variable-sized registers, and if the vq can
+> > someday grow above 16 then the individual registers could become pretty
+> > big.
+> 
+> The ABI doesn't appear to have fixed sized data blocks.  Since that's
+> the case, it didn't seem to me that variable sized blocks was so
+> different, given that the actual size is constrained by the hardware
+> on which we're running.
 
+I'm not sure what you mean here.
 
+For KVM_GET_ONE_REG, the size is determined by the reg size field in
+the register ID, so size is deemed to be a fixed property of a
+particular register.
 
-Applied to target-arm.next, thanks.
+Having the register IDs vary according to the vector length seemed a
+step too far.
 
--- PMM
+> And if VQ does grow large, then do we really want oodles of syscalls in order
+> to transfer the data for each register?  With the 9 bits reserved for this
+> field, we could require a maximum of 1024 syscalls to transfer the whole
+> register set.
+
+A save/restore requires oodles of syscalls in any case, and for SVE
+there is a rapid dropoff of probabilities: VQ < 16 is much likelier than
+VQ == 32 is likelier than VQ == 64 etc.
+
+The reg access API has some shortcomings, and we might find at some
+point that the whole thing needs redesigning.
+
+I suppose we could have taken the view that the KVM ABI would not even
+try to support VQ > 16 in a forwards compatible way.  In the end we
+decided to at least have things workable.
+
+Either way, it's entirely reasonable for userspace not to try to support
+additional slices for now.  We'll have plenty of time to plan away
+across that bridge when we spot it on the horizon...
+
+> > It's for QEMU to choose, but does it actually matter what byteorder you
+> > store a Z-reg or P-reg in?  Maybe the byteswap isn't really needed.
+> 
+> I think the only sensible order for the kernel is that in which LDR/STR itself
+> saves the data.  Which is a byte stream.
+
+We have a choice of STRs though.  Anyway, yes, it is the way it is, now.
+
+> Within QEMU, it has so far made sense to keep the data in 64-bit hunks in
+> host-endian order.  That's how the AdvSIMD code was written originally, and it
+> turned out to be easy enough to continue that for SVE.
+
+Fair enough.  It's entirely up to QEMU to decide -- I just wanted to
+check that there was no misunderstanding about this issue in the ABI.
+
+> Which does mean that if we want to pass data to the kernel as the
+> aforementioned byte stream that a big-endian host does need to bswap the data
+> in 64-bit hunks.
+> 
+> > I don't know how this works when migrating from a little-endian to a
+> > big-endian host or vice-versa (or if that is even supported...)
+> 
+> The data is stored canonically within the vmsave, so such migrations are
+> supposed to work.
+
+Right, I was wondering about that.  Could be fun to test :)
+
+Cheers
+---Dave

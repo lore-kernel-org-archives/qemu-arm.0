@@ -1,157 +1,150 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1656275wru;
-        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzbG1aYl7xKYCZmTV/Xbwrok/J4XAkZLMwZW8Xx8+c4E3r99Nl9+CzEqMveWyv8rA3UnEqm
-X-Received: by 2002:aa7:dacb:: with SMTP id x11mr6456426eds.299.1561664559451;
-        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561664559; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1693689wru;
+        Thu, 27 Jun 2019 13:27:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy6+OEOQJNIcVKDLb5J9GF2fPiOaocPd8JHHwL4qVmLjoWhK8Bojr+jSQS8Y+mlPVZ5FT7N
+X-Received: by 2002:a0c:b04d:: with SMTP id l13mr5068881qvc.104.1561667267922;
+        Thu, 27 Jun 2019 13:27:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561667267; cv=none;
         d=google.com; s=arc-20160816;
-        b=QAZrIoCOMaYNAA1rdLo7YHXLRb12KAJwYMZdxPTuIZWHOYTRBwie43QOjYaU0bB/2V
-         0Wzg1FY6TjD86nqpuDR08YT95sxuuGpq7cN7UD73a8KCR5hyd5lF1PVf6f5yxj1EkRWS
-         YJwSzHv2DKeP9FfzO7HQY9UcIMkppcZvIwS/31uNpEzbtNVejYH5DNgQGcty5q/a7086
-         EnQ/ftfkhilfr4yJlxXw2xhHiKtSBdAHbVTGWcWNMkAGPCTyqLVlOxrDILFChmnMPaiM
-         G+DuuI/3h94t2N+NHLD9BhUhFz3/ayWO1rgtLkFM8N9q0zKX0aqs5IWNmEVYDAHSFIO3
-         TbJQ==
+        b=GnwK7qUTM8Sdyi/6EeYHRVKxDMtkNexd7ar2u6IJC39sD9/eK5wvOvK5ddEdC7rDpR
+         i6QeJ97GCndU3ualg5Df2BUamtUpeFoDjPkOGzLeyn1YejD9TAZvEda2VpybtSCPvD0p
+         jBCKtwQKIg/qSn5dNWrY3w9UAKdgXTBfLBza3Bm94PXgQu+EH4PL03u0HmiE3BCcyq/2
+         +QCWVv79mpCjS0f0rFVWqljDwFP0+qtBYJBshNfFukVfIIvr1XofuqJYToR83pDOHN6U
+         gRZUEnqVBLD8Y9X0sjfQMAW+UjxVCInQLnofyiZU91ZEdRVTr7v6g9ytN6SRK0OtUF5W
+         S+kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to;
-        bh=FtdAO2NiCb9jo9th4k3k12diIIqT5y0YdPmgtR9hurc=;
-        b=eqgT8c0A1uUcaTau26tN7naIuiLxdTGakv8AgSNNJJqb3r79SbyJT3x/OScglliP6l
-         WTNiPMCgyXgWBRFuh1PJEeBxAeXLeOxmhsXq44prACSNcZ2gThxBOrf4hbkFJUF40W8A
-         +NNMKsaNYPUBAMErrFpWHehtjzYzrJosr6QpqQVBeGYzegh+NtNIznv6AF3YrCAs557m
-         xVRqr8Z3vygTZoWlYy+NtgHupooCypzSBDQawLKgq0Wxr/qfX6qg0CyT03IPDayRtE7k
-         YQB4owjCZ1ORGh/uNs7kKLb2lTL0MzHeLfa1hPncwwTKzBiG5B0SWqvJ6VNURmfvCKCq
-         KtIw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=bhXOABspjKDrvNZWzmLq/KYiGsya2/rvllb1WhqKWwI=;
+        b=UbPGzaWrs+JatZOecAhtTBzL+O6pHfuIdGBLfii0UJ+yOL7J5I4Tlkzt0xCnAPm6WA
+         AQa3u2Sx78k28UF9pURhgRRrohyyxM+i4wKVFmC0osIO6kXzTbPvrPKPBDdEr3/ETqOI
+         gQdyYgS7FOVYM33tVPFm5dI2WrHfsy8DGkNuYY1+WbJvj/B9I6NiMkpQlhcaC0c9z22m
+         uI7ovGbQoqTSnsWSKPXYEIi2u97JoqntXYGQPTXlh6FeWTeLTJn70YBeMGTOxO0BgoI4
+         t8QsdB/9ekY8L7jOpPZh2FuEnHp4vV5pFiZgIMbe+U1q7BaiZb2jZTdX51EwqWOqcXlM
+         4Afw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x43si2529339eda.147.2019.06.27.12.42.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id b7si102183qtg.142.2019.06.27.13.27.47
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jun 2019 13:27:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53940 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hgaI2-0000Ly-JQ
-	for alex.bennee@linaro.org; Thu, 27 Jun 2019 15:42:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35578)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <wainersm@redhat.com>) id 1hgaHU-0000Lq-5v
- for qemu-arm@nongnu.org; Thu, 27 Jun 2019 15:42:05 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <wainersm@redhat.com>) id 1hgaHS-0006v7-3P
- for qemu-arm@nongnu.org; Thu, 27 Jun 2019 15:42:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40158)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <wainersm@redhat.com>)
- id 1hgaHR-0006FS-Od; Thu, 27 Jun 2019 15:42:01 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B13843091782;
- Thu, 27 Jun 2019 19:41:12 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-123-99.rdu2.redhat.com
- [10.10.123.99])
- by smtp.corp.redhat.com (Postfix) with ESMTP id ECC5619C4F;
- Thu, 27 Jun 2019 19:41:07 +0000 (UTC)
-To: Andrea Bolognani <abologna@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>
-References: <20190620222314.2670-1-wainersm@redhat.com>
- <CAFEAcA92m9n7FR2a6=ecnr5bn-Sq97LZRxHRuzWO-OcbdgA4fw@mail.gmail.com>
- <20190621190421.GA679@localhost.localdomain>
- <CAFEAcA-x_GSxiULrxvRj7dtCLM-r4YvRpwkVosW+1SutAUJMoA@mail.gmail.com>
- <7745c47186278c1b7f1781c9173ef0e2e8a55910.camel@redhat.com>
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-ID: <edd405bc-c2cd-da6f-ed8b-5ec7e6873a0e@redhat.com>
-Date: Thu, 27 Jun 2019 16:41:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.5.2
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E1CED3082A9C;
+	Thu, 27 Jun 2019 20:27:35 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-69.brq.redhat.com [10.40.204.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F18C7600CC;
+	Thu, 27 Jun 2019 20:27:21 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	qemu-devel@nongnu.org
+Cc: Magnus Damm <magnus.damm@gmail.com>,
+	qemu-block@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Max Reitz <mreitz@redhat.com>,
+	qemu-ppc@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	qemu-arm@nongnu.org,
+	Laurent Vivier <lvivier@redhat.com>,
+	Jan Kiszka <jan.kiszka@web.de>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Michael Walle <michael@walle.cc>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	John Snow <jsnow@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v5 00/28] block/pflash_cfi02: Implement missing AMD pflash functionality
+Date: Thu, 27 Jun 2019 22:26:51 +0200
+Message-Id: <20190627202719.17739-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <7745c47186278c1b7f1781c9173ef0e2e8a55910.camel@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Thu, 27 Jun 2019 19:41:17 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC v2 PATCH] hw/arm/virt: makes virt a default
- machine type
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ezxbBdxRDL5q
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Thu, 27 Jun 2019 20:27:37 +0000 (UTC)
+X-TUID: gl19r4AZmW9n
 
+Hi,
 
-On 06/24/2019 05:37 AM, Andrea Bolognani wrote:
-> On Sat, 2019-06-22 at 16:58 +0100, Peter Maydell wrote:
->> On Fri, 21 Jun 2019 at 20:04, Cleber Rosa <crosa@redhat.com> wrote:
->>> You can consider me biased (I do consider myself), but trying to wear
->>> the hat of a user first interacting with QEMU, I would expect a (any)
->>> reasonably capable environment that can represent the given target.
->>> That will probably be a different environment than the one I may need,
->>> and I think that's fine.
->> I'm really not sure what you're trying to suggest here; maybe
->> you could clarify? If you specify a target (ie a machine type),
->> you get that machine type. If you don't specify a target, then
->> we can't really guess what you were hoping to run and
->> magically pick something that works.
->>
->> The main problem here is that users expect "all the world is a PC"
->> type behaviour, ie they can just provide qemu-system-arm or
->> qemu-system-aarch64 with no command line arguments except
->> a guest kernel (which is half the time something they found under
->> a rock or extracted from some firmware image) or a guest CDROM
->> image and have it boot, because that generally works for x86. It
->> doesn't and can't work for Arm, because of the much greater
->> diversity of machine types and the way that kernels are often
->> only compiled to work on a specific subset of machines.
->> Making the user specify a machine type means they do at least
->> get prompted that the world is more complicated than they
->> think it is and there are decisions that have to be made.
->>
->> In any case even if we did default to "virt" the user still
->> has to specify a CPU type, may well also want to provide
->> a GIC version (gicv3 being better than the default v2),
->> likely more RAM than the very small default, they need to provide
->> all the virtio devices, and so on and so on. So giving
->> them one option they no longer need to specify doesn't
->> really make it any easier IMHO.
-> Additional note on GIC: most server-grade machines you can buy today
-> do *not* support GICv2, so you will need to opt-in to GICv3 if you
-> want your guest to even start.
->
-> More generally, as someone who has worked on supporting non-x86
-> guests in libvirt for the past few years, I can tell you from
-> experience that you're always going to need some arch-specific logic
-> to deal with the small (and not so small :) differences in behavior
-> between QEMU targets: as Peter correctly says, machine type is just
-> a single example among many.
->
+This series is based on Stephen Checkoway work (v4):
+https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg04595.html
 
-So NACK this patch. I will attempt to address the problem of broken 
-acceptance tests on avocado_qemu side.
+Stephen work is a great improvement of the actual code, however
+while reviewing his patches, I found them quite dense, so I started
+to split each logical change to be able to digest his series.
 
-Thanks Peter, Cleber and Andrea for sharing your opinion.
+Sfephen implemented the 'interleaving' feature in way I am not yet
+confident it is in the project best interest. The relevant thread
+started here:
+https://lists.gnu.org/archive/html/qemu-devel/2019-06/msg05395.html
 
-- Wainer
+However meanwhile we will discuss his interleaving implementation,
+I don't want to block the rest of his work, so I took that patch
+of (and rebased his work).
+
+I'm spamming all the maintainers of the boards using
+pflash_cfi02_register(). This series is not 'block' related, it is
+a classical 'device' model series.
+Help reviewing is appreciated :)
+
+I am still looking for real-world code stressing this flash model.
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (20):
+  hw/block/pflash: Simplify trace_pflash_io_read/write()
+  hw/block/pflash: Simplify trace_pflash_data_read/write()
+  hw/block/pflash_cfi02: Fix debug format string
+  hw/block/pflash_cfi02: Add an enum to define the write cycles
+  hw/block/pflash_cfi02: Add helpers to manipulate the status bits
+  hw/block/pflash_cfi02: Simplify a statement using fall through
+  hw/block/pflash_cfi02: Use the ldst API in pflash_write()
+  hw/block/pflash_cfi02: Use the ldst API in pflash_read()
+  hw/block/pflash_cfi02: Extract the pflash_data_read() function
+  hw/block/pflash_cfi02: Unify the MemoryRegionOps
+  tests/pflash-cfi02: Refactor to support testing multiple
+    configurations
+  hw/block/pflash_cfi02: Remove pointless local variable
+  hw/block/pflash_cfi02: Document the current CFI values
+  hw/block/pflash_cfi02: Hold the PRI table offset in a variable
+  hw/block/pflash_cfi02: Document 'Page Mode' operations are not
+    supported
+  hw/block/pflash_cfi02: Extract pflash_regions_count()
+  hw/block/pflash_cfi02: Split if() condition
+  hw/block/pflash_cfi02: Reduce single byte/word write delay
+  hw/block/pflash_cfi02: Document commands
+  hw/block/pflash_cfi02: Reduce I/O accesses to 16-bit
+
+Stephen Checkoway (8):
+  tests/pflash-cfi02: Add test for supported CFI commands
+  hw/block/pflash_cfi02: Fix command address comparison
+  hw/block/pflash_cfi02: Implement nonuniform sector sizes
+  hw/block/pflash_cfi02: Fix CFI in autoselect mode
+  hw/block/pflash_cfi02: Fix reset command not ignored during erase
+  hw/block/pflash_cfi02: Implement multi-sector erase
+  hw/block/pflash_cfi02: Implement erase suspend/resume
+  hw/block/pflash_cfi02: Use chip erase time specified in the CFI table
+
+ hw/block/pflash_cfi01.c   |  11 +-
+ hw/block/pflash_cfi02.c   | 703 ++++++++++++++++++++++++++------------
+ hw/block/trace-events     |  10 +-
+ tests/Makefile.include    |   2 +
+ tests/pflash-cfi02-test.c | 681 ++++++++++++++++++++++++++++++++++++
+ 5 files changed, 1173 insertions(+), 234 deletions(-)
+ create mode 100644 tests/pflash-cfi02-test.c
+
+-- 
+2.20.1

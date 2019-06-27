@@ -1,105 +1,131 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1145809wru;
-        Thu, 27 Jun 2019 03:59:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzBgGMZWmXAh1fB8NDWuY8NP0q4iVbGVlqR2QBBiV7vWGm8cAh5taywVraOD7t/Fpq3hKEr
-X-Received: by 2002:a50:84e2:: with SMTP id 89mr3323184edq.218.1561633157174;
-        Thu, 27 Jun 2019 03:59:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561633157; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1145997wru;
+        Thu, 27 Jun 2019 03:59:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQ6XCT5VZkuGHgoYKQBP83HkCxjWUCqcfSa9UhzeQofeuKP31bBIlI2WAmXJl3azVMkjk2
+X-Received: by 2002:a37:98c3:: with SMTP id a186mr2738315qke.498.1561633174159;
+        Thu, 27 Jun 2019 03:59:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561633174; cv=none;
         d=google.com; s=arc-20160816;
-        b=YqMKu6UY1ik4kcvXZ84JCoPUhTveAV6jrqv1AJKpjtGTWolYjQwHGvATb9a5s0cYGl
-         vWJSt4VJg2waQt1Q6mf69SWogVhrTNv/v0QH77yICbafhD5zji0pY8SAGuuEeqgM8Msi
-         NZNH4p4wOyGL1zNafh/g7gmGuA6CzUoxVRXjAOMBebgED7gUFyO4f8g4rlnS8Vh376Vp
-         CV6H2DKNLcCjVktJjo4KVvGO423/ESaqfzPzYaEX316FXCs5YYYaGrgDQcjnOF1vLAXY
-         a2apaLDM6TSV0vF/cG+fF+qejQlEClSWOfj3zTRdBg2tj1QKyUuPfolpDqwwZVj0jTSq
-         FooQ==
+        b=BJW7TXfdbzp/Voitt0M0MXap10D7BHBYBE7WCdKJs3L1xU7gHpNrktLLbxCnTovAX5
+         +e429unHAkxXw4ucm5KqwcKSvaIIGQT9Ttji012sHRLgSRMZevv+6poATZxrjkW1fF5x
+         aASsA9pIf4xAoS9saAxZ7SXTJw3Zphzg9jCcMYfJm/9ZK6z7WbKGVTLYF/aeHIaagNv0
+         afVgYqr5kCUC9gXFegNgEhzc6fzNCYfjPQyr/VDolXJZ/OIrBfcASl6c8BGNmhwzJ7dE
+         vibqRBT3oxeaLPwSzrHuVTLS7rGyv7cG5EJvmmRhytd3XU/PX1rSkFPn+W6lZAGQmqv0
+         qv5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=9BaS3Ns84OdQ2IPCKw663QpUXj5yUja/bTsJkma8+co=;
-        b=Mci0KB+iYrbVc6cJF8S9TTpLpWZQVpVH3+dQcu+pIPFA00sbBgFHIafwWtbcApRv4M
-         9kqCDdvUAnlVtsyxF2AcZ3vi9gJYBJYT3BvbNV6Fh6dVzknCpIZSxn+CU32bpF2pBa1N
-         uNLR43WbXsyNinfICsHpKOCnKEvIZg1LoPiGQpB0WgTsBOPxyZzTvnsZr9OypS6fNnp8
-         4iyzqpCh1/nHVVZJ0skAyzRL44GtARZJCq45dtJi3YYkjzx6zM47YMekigJMcTM6KE1R
-         M1E1T2LP4kY/np4rg4zgyf5C1G6IvXlXrQUJ3x52Ok0q5RRp6HVcu0I65iXB2YkYKsK+
-         Sxng==
+        bh=fma4XOMJJTmia1JL/+bPVnoK1/SnmoKmabgi3OdPDjo=;
+        b=PrcVLUGDETvF8ZItfTMbzuw95Rs3IOXy4+65EG+z6kciyqWIAKalUDn709FnKG9Dqb
+         A5/8rM9bbv26CotRQVuD4d5kL/h4bMdYqXSJvfqeLQd54nt3Dwd8+9Qme4wCouEfFgdn
+         nhL248edgTjGZ/GELmoDsM8Xig+BE7C5AhuHHCpf3kXALahIl9qZHW0EU+y8rGlPSKo7
+         Gzk7zgNW/riKZ19WB0AwWG+O5lTFHwTpg03acGgBpgxt3k60bYUAO4gb58SUdv/3bO67
+         HyHDrHtECIK6CGqaBg7MNFADqta4LB1xnTi+CdWxzu9g/mFmuedOa8g9PtCMJLvWZH2b
+         g4Ew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
-        by mx.google.com with ESMTP id i25si1439376edv.222.2019.06.27.03.59.15;
-        Thu, 27 Jun 2019 03:59:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id l63si1384174qkf.346.2019.06.27.03.59.33
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jun 2019 03:59:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2722D2B;
-	Thu, 27 Jun 2019 03:59:15 -0700 (PDT)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C6BF93F718;
-	Thu, 27 Jun 2019 03:59:13 -0700 (PDT)
-Date: Thu, 27 Jun 2019 11:59:11 +0100
-From: Dave Martin <Dave.Martin@arm.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Andrew Jones <drjones@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eblake@redhat.com" <eblake@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>
-Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
-Message-ID: <20190627105911.GD2790@e103592.cambridge.arm.com>
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4985018DF7C;
+	Thu, 27 Jun 2019 10:59:28 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 703585D9E2;
+	Thu, 27 Jun 2019 10:59:21 +0000 (UTC)
+Date: Thu, 27 Jun 2019 12:59:19 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, armbru@redhat.com,
+	imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH v2 10/14] target/arm/kvm64: Add
+ kvm_arch_get/put_sve
+Message-ID: <20190627105919.wop6h6b4cupcnar2@kamzik.brq.redhat.com>
 References: <20190621163422.6127-1-drjones@redhat.com>
  <20190621163422.6127-11-drjones@redhat.com>
- <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
+ <0f1dfdc8-b786-d76e-1e5b-adf39a760ddb@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: uwnfXnLyP9s7
+In-Reply-To: <0f1dfdc8-b786-d76e-1e5b-adf39a760ddb@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Thu, 27 Jun 2019 10:59:33 +0000 (UTC)
+X-TUID: JNjBzT/v0pLq
 
-On Wed, Jun 26, 2019 at 04:22:34PM +0100, Richard Henderson wrote:
+On Thu, Jun 27, 2019 at 08:56:21AM +0200, Auger Eric wrote:
+> Hi,
+> 
 > On 6/21/19 6:34 PM, Andrew Jones wrote:
+> > These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
+> > swabbing is different than it is for fpsmid because the vector format
+> > is a little-endian stream of words.
+> 
+> some cosmetic changes besides Richard's comments
+> > 
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  target/arm/kvm64.c | 135 +++++++++++++++++++++++++++++++++++++++++++--
+> >  1 file changed, 131 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> > index a2485d447e6a..706541327491 100644
+> > --- a/target/arm/kvm64.c
+> > +++ b/target/arm/kvm64.c
+> > @@ -673,11 +673,12 @@ int kvm_arch_destroy_vcpu(CPUState *cs)
+> >  bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
+> >  {
+> >      /* Return true if the regidx is a register we should synchronize
+> > -     * via the cpreg_tuples array (ie is not a core reg we sync by
+> > -     * hand in kvm_arch_get/put_registers())
+> > +     * via the cpreg_tuples array (ie is not a core or sve reg that
+> > +     * we sync by hand in kvm_arch_get/put_registers())
+> >       */
+> >      switch (regidx & KVM_REG_ARM_COPROC_MASK) {
+> >      case KVM_REG_ARM_CORE:
+> > +    case KVM_REG_ARM64_SVE:
+> >          return false;
+> >      default:
+> >          return true;
+> > @@ -763,6 +764,70 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
+> >      return 0;
+> >  }
+> >  
 > > +/*
 > > + * If ARM_MAX_VQ is increased to be greater than 16, then we can no
 > > + * longer hard code slices to 1 in kvm_arch_put/get_sve().
 > > + */
 > > +QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
-> 
-> This seems easy to fix, or simply drop the slices entirely for now, as
-> otherwise they are a teeny bit confusing.
-> 
-> It's a shame that these slices exist at all.  It seems like the kernel could
-> use the negotiated max sve size to grab the data all at once.
+> if the code is ready to support slices, I guess you could have a define
+> and compute the slice number from ARM_MAX_VQ?
 
-The aim here was to be forwards compatible while fitting within the
-existing ABI.
+Yeah, that should be do-able. Thanks for the suggestion.
 
-The ABI doesn't allow variable-sized registers, and if the vq can
-someday grow above 16 then the individual registers could become pretty
-big.
-
-Inside the kernel, we took the view that if that ever happens, it's
-sufficiently far out that we can skip implementing the support today,
-providing that the ABI can accommodate the change.
-
-For qemu, if you don't actually care what's in the regs, you could just
-enumerate then using KVM_GET_REG_LIST instead of manufacturing the IDs
-by hand.  That way, you don't have to care what slices exist.  For
-save/restore/migrate purposes, the regs are just data, so that's
-probably enough.
-
-Debug, and exchanging vector registers between the guest and, say, and
-SMC trapped to userspace, would still need to examine specific regs.
-I don't know what QEMU does in this area though.
-
+> > +
+> > +static int kvm_arch_put_sve(CPUState *cs)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(cs);
+> > +    CPUARMState *env = &cpu->env;
+> > +    struct kvm_one_reg reg;
+> > +    int slices = 1;
+> > +    int i, n, ret;
+> > +
+> > +    for (i = 0; i < slices; i++) {
 > > +        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
 > > +            uint64_t *q = aa64_vfp_qreg(env, n);
 > > +#ifdef HOST_WORDS_BIGENDIAN
 > > +            uint64_t d[ARM_MAX_VQ * 2];
 > > +            int j;
+> line to be added
 > > +            for (j = 0; j < cpu->sve_max_vq * 2; j++) {
 > > +                d[j] = bswap64(q[j]);
 > > +            }
@@ -109,14 +135,17 @@ I don't know what QEMU does in this area though.
 > > +#endif
 > > +            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
 > > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> 
-> It might be worth splitting this...
-> 
+> > +            if (ret) {
+> > +                return ret;
+> > +            }
+> > +        }
+> > +
 > > +        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
 > > +            uint64_t *q = &env->vfp.pregs[n].p[0];
 > > +#ifdef HOST_WORDS_BIGENDIAN
 > > +            uint64_t d[ARM_MAX_VQ * 2 / 8];
 > > +            int j;
+> line
 > > +            for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
 > > +                d[j] = bswap64(q[j]);
 > > +            }
@@ -126,14 +155,120 @@ I don't know what QEMU does in this area though.
 > > +#endif
 > > +            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
 > > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> > +            if (ret) {
+> > +                return ret;
+> > +            }
+> > +        }
+> > +
+> > +        reg.addr = (uintptr_t)&env->vfp.pregs[FFR_PRED_NUM].p[0];
+> > +        reg.id = KVM_REG_ARM64_SVE_FFR(i);
+> > +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> > +        if (ret) {
+> > +            return ret;
+> > +        }
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> >  int kvm_arch_put_registers(CPUState *cs, int level)
+> >  {
+> >      struct kvm_one_reg reg;
+> > @@ -857,7 +922,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+> >          }
+> >      }
+> >  
+> > -    ret = kvm_arch_put_fpsimd(cs);
+> > +    if (!cpu->sve_max_vq) {
+> > +        ret = kvm_arch_put_fpsimd(cs);
+> > +    } else {
+> > +        ret = kvm_arch_put_sve(cs);
+> > +    }
+> >      if (ret) {
+> >          return ret;
+> >      }
+> > @@ -920,6 +989,60 @@ static int kvm_arch_get_fpsimd(CPUState *cs)
+> >      return 0;
+> >  }
+> >  
+> > +static int kvm_arch_get_sve(CPUState *cs)
+> > +{
+> > +    ARMCPU *cpu = ARM_CPU(cs);
+> > +    CPUARMState *env = &cpu->env;
+> > +    struct kvm_one_reg reg;
+> > +    int slices = 1;
+> > +    int i, n, ret;
+> > +
+> > +    for (i = 0; i < slices; i++) {
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
+> > +            uint64_t *q = aa64_vfp_qreg(env, n);
+> extra line needed
+> > +            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
+> > +            reg.addr = (uintptr_t)q;
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+> > +            if (ret) {
+> > +                return ret;
+> > +            } else {> +#ifdef HOST_WORDS_BIGENDIAN
+> > +                int j;
+> line
+> > +                for (j = 0; j < cpu->sve_max_vq * 2; j++) {
+> > +                    q[j] = bswap64(q[j]);
+> > +                }
+> > +#endif
+> > +            }
+> > +        }
+> > +
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
+> > +            uint64_t *q = &env->vfp.pregs[n].p[0];
+> extra line needed
+> > +            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
+> > +            reg.addr = (uintptr_t)q;
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+> > +            if (ret) {
+> > +                return ret;
+> > +            } else {> +#ifdef HOST_WORDS_BIGENDIAN
+> > +                int j;
+> line
+> > +                for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
+> > +                    q[j] = bswap64(q[j]);
+> > +                }
+> > +#endif
+> > +            }
+> > +        }
+> > +
+> > +        reg.addr = (uintptr_t)&env->vfp.pregs[FFR_PRED_NUM].p[0];
+> > +        reg.id = KVM_REG_ARM64_SVE_FFR(i);
+> > +        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+> > +        if (ret) {
+> > +            return ret;
+> > +        }
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> >  int kvm_arch_get_registers(CPUState *cs)
+> >  {
+> >      struct kvm_one_reg reg;
+> > @@ -1014,7 +1137,11 @@ int kvm_arch_get_registers(CPUState *cs)
+> >          env->spsr = env->banked_spsr[i];
+> >      }
+> >  
+> > -    ret = kvm_arch_get_fpsimd(cs);
+> > +    if (!cpu->sve_max_vq) {
+> > +        ret = kvm_arch_get_fpsimd(cs);
+> > +    } else {
+> > +        ret = kvm_arch_get_sve(cs);
+> > +    }
+> >      if (ret) {
+> >          return ret;
+> >      }
+> > 
+> 
+>
 
-It's for QEMU to choose, but does it actually matter what byteorder you
-store a Z-reg or P-reg in?  Maybe the byteswap isn't really needed.
+I'll see if I can clean/improve this patch with yours and Richard's
+suggestions.
 
-I don't know how this works when migrating from a little-endian to a
-big-endian host or vice-versa (or if that is even supported...)
-
-[...]
-
-Cheers
----Dave
+Thanks,
+drew

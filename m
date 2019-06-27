@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1695250wru;
-        Thu, 27 Jun 2019 13:29:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz3V8fjMKXnRzuy3+zSTg2jtM3FpWAh9aGN158xZzVsC43Co1yy8KgUft+O5bmzQgpn3Q+d
-X-Received: by 2002:ae9:e41a:: with SMTP id q26mr5261740qkc.361.1561667395792;
-        Thu, 27 Jun 2019 13:29:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561667395; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1695379wru;
+        Thu, 27 Jun 2019 13:30:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqynkH0YAN0r9G/1vywggQIZBvMhM9UQ3duTyY0DRU0Nrbn3rxdRwPv1fnqkRgdfGNrmequP
+X-Received: by 2002:a37:bf07:: with SMTP id p7mr3442278qkf.315.1561667407180;
+        Thu, 27 Jun 2019 13:30:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561667407; cv=none;
         d=google.com; s=arc-20160816;
-        b=fDweWTDKEkX5ec9nRvbFbNuvLLmvY8bVb8n20K7ZOHfAnCKJM23yK5G6SoXIp2PYl5
-         28YGwIEnctlolQj/vcClRcCEOf2Bhd24DiHFYsHSuZlT2iz4ZPagx7ckSq8viJTBiHq6
-         bQrVT54i5Xx9gp9u6z8kUvOYdNJif0ah6g7Isjfy3i4IJVd4F4xZVHUI5bhiYrDje9Eb
-         Sp9eN/4Pl+DAiyJZTf0llr8eXhno8w0nk3ActEGLLjWd8RIcBB9zTo+G1sVWp6bUeQD7
-         UGoSGyzv3TpBcLzDqeABtzwRBx/b8rzKrYOInQhjJdeHIikNVEhp6ciVREZfD4+J7tsc
-         XCig==
+        b=FDgt1PKBeUGI/hWihPXU4tWpRHmg6ixvvXgTJ0hNFw6ElsoTleB+KPX60UoeuIaqxJ
+         34gGO6pZyxGYZSW/ST8JStEETI1jwsfDpjy9ejTYj22KzyEajCKfsFf5W3Q2Sv37BY4b
+         N+CgooV5VDwQ/FdBzszc+QI3pOO9cEpDxplHpKXreVTuDUyRUq8cxo8OXh9Rex2/zhXK
+         VqUjlnCBGd2+tt0trait0v7OV1CZkXhf6q1lzi4uskPBOg/20tSEWz+aVuROiHSQbhXl
+         g01Dbq/Ldm03UHb5j9cprQn4s3JVTFG7EP/VYUBb/0u2xgwHMF4Uh6mVsP9I0oP/6G3t
+         qLug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=5KyC/GtYf++hYnPE6vwpIvSfqHtrgiuPC+g4zOWmn+w=;
-        b=DQQl95+iY5EldvDIK5XkhLUzFpkH6pRjf1Kp+Z6vmYyu6YlBTZncOoStGp/giNXGhV
-         aGoGSslvS4hbXpt+kYFUOwWUI4aHpPAsZKuU4MtdLnXSoN+KYN7LXqLmMqac1Np9FVfn
-         ZfIP9c8/aFo4Dt1GUzzVBxcuSGPHDkaaZV2imhaaGwFQRSNBwDNtZMeFXleiaQJOiq9W
-         TCV/eNeLt2QPDIKQX0pYKLy3pXxrcY1qfLEFvRhGiEIgWeKAJsWTbOslVW1GWV3oxa34
-         uwB4YKIPE8rLOHAr1dC04AZVjWOHiwKQCbGXq17JNxcxWx4Z0AKdXwp5/dUZjbmhUe80
-         B6YA==
+        bh=zU6ZpG5DxWtAufKsCBc1JzgLfw6xRWx0aDmdeeUNjeE=;
+        b=G8xvIXnxmPD6GuoHFs/vWolBHo1w9W6ZCUSs3lEapc6MI/lx2tKYwoxqNysrAmdu0e
+         QhIuCwAWzE7hucJPuuzSSIu6GBmB894IfATcQep6m1ajZrY7zwbJx6SSyQFO+24bSuHj
+         j9eWEcuBpcNZnGCvM+29NR6AGtNjpVBq8tHCMCLKIlMb69Qn2rL1r8F1EhRdDs+iJe31
+         xQKxM6Nmmru24RwMY7XMlvVSLQJ9bNLPd4X26pHEIzbVT5O7BicvkfMVDWpxVm9og+yP
+         AeOC8eH6IWAAIQNZiyVea4F5rnDa7u3rjjUg/ArMj+yTkzh9PPW3KCl4yvUGOXK4VZ5c
+         pGAA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id f6si163457qkm.111.2019.06.27.13.29.55
+        by mx.google.com with ESMTPS id x9si113712qta.147.2019.06.27.13.30.06
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2019 13:29:55 -0700 (PDT)
+        Thu, 27 Jun 2019 13:30:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D02A2C057F4B;
-	Thu, 27 Jun 2019 20:29:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 000B5882FF;
+	Thu, 27 Jun 2019 20:30:05 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-69.brq.redhat.com [10.40.204.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 75E10600CC;
-	Thu, 27 Jun 2019 20:29:49 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4920B600CC;
+	Thu, 27 Jun 2019 20:29:55 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
 	qemu-devel@nongnu.org
@@ -65,539 +65,52 @@ Cc: Magnus Damm <magnus.damm@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Alistair Francis <alistair@alistair23.me>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v5 18/28] hw/block/pflash_cfi02: Implement nonuniform sector sizes
-Date: Thu, 27 Jun 2019 22:27:09 +0200
-Message-Id: <20190627202719.17739-19-philmd@redhat.com>
+Subject: [PATCH v5 19/28] hw/block/pflash_cfi02: Extract pflash_regions_count()
+Date: Thu, 27 Jun 2019 22:27:10 +0200
+Message-Id: <20190627202719.17739-20-philmd@redhat.com>
 In-Reply-To: <20190627202719.17739-1-philmd@redhat.com>
 References: <20190627202719.17739-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Thu, 27 Jun 2019 20:29:55 +0000 (UTC)
-X-TUID: QA/MTf5LePhS
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Thu, 27 Jun 2019 20:30:06 +0000 (UTC)
+X-TUID: aHAsCAtfhPsM
 
-From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+Extract the pflash_regions_count() function, the code will be
+easier to review.
 
-Some flash chips support sectors of different sizes. For example, the
-AMD AM29LV160DT has 31 64 kB sectors, one 32 kB sector, two 8 kB
-sectors, and a 16 kB sector, in that order. The AM29LV160DB has those in
-the reverse order.
-
-The `num-blocks` and `sector-length` properties work exactly as they did
-before: a flash device with uniform sector lengths. To get non-uniform
-sector lengths for up to four regions, the following properties may be
-set
-- region 0. `num-blocks0` and `sector-length0`;
-- region 1. `num-blocks1` and `sector-length1`;
-- region 2. `num-blocks2` and `sector-length2`; and
-- region 3. `num-blocks3` and `sector-length3`.
-
-If the uniform and nonuniform properties are set, then both must specify
-a flash device with the same total size. It would be better to disallow
-both being set, or make `num-blocks0` and `sector-length0` alias
-`num-blocks` and `sector-length`, but that would make testing currently
-impossible.
-
-Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
-Acked-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190426162624.55977-6-stephen.checkoway@oberlin.edu>
-[PMD: Rebased, add assert() on pri_offset]
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi02.c   | 141 +++++++++++++++++++++++++++-------
- tests/pflash-cfi02-test.c | 155 ++++++++++++++++++++++++++++----------
- 2 files changed, 231 insertions(+), 65 deletions(-)
+ hw/block/pflash_cfi02.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 01d9c5d75a..1f096ec185 100644
+index 1f096ec185..a0d3bd60dc 100644
 --- a/hw/block/pflash_cfi02.c
 +++ b/hw/block/pflash_cfi02.c
-@@ -29,7 +29,6 @@
-  * - CFI queries
-  *
-  * It does not support flash interleaving.
-- * It does not implement boot blocs with reduced size
-  * It does not implement software data protection as found in many real chips
-  * It does not implement erase suspend/resume commands
-  * It does not implement multiple sectors erase
-@@ -57,6 +56,13 @@ do {                                                       \
- 
- #define PFLASH_LAZY_ROMD_THRESHOLD 42
- 
-+/*
-+ * The size of the cfi_table indirectly depends on this and the start of the
-+ * PRI table directly depends on it. 4 is the maximum size (and also what
-+ * seems common) without changing the PRT table address.
-+ */
-+#define PFLASH_MAX_ERASE_REGIONS 4
-+
- /* Special write cycles for CFI queries. */
- enum {
-     WCYCLE_CFI              = 7,
-@@ -68,8 +74,10 @@ struct PFlashCFI02 {
-     /*< public >*/
- 
-     BlockBackend *blk;
--    uint32_t sector_len;
--    uint32_t nb_blocs;
-+    uint32_t uniform_nb_blocs;
-+    uint32_t uniform_sector_len;
-+    uint32_t nb_blocs[PFLASH_MAX_ERASE_REGIONS];
-+    uint32_t sector_len[PFLASH_MAX_ERASE_REGIONS];
-     uint32_t chip_len;
-     uint8_t mappings;
-     uint8_t width;
-@@ -86,7 +94,7 @@ struct PFlashCFI02 {
-     uint16_t ident3;
-     uint16_t unlock_addr0;
-     uint16_t unlock_addr1;
--    uint8_t cfi_table[0x52];
-+    uint8_t cfi_table[0x4d];
-     QEMUTimer timer;
-     /* The device replicates the flash memory across its memory space.  Emulate
-      * that by having a container (.mem) filled with an array of aliases
-@@ -177,6 +185,25 @@ static uint64_t pflash_data_read(PFlashCFI02 *pfl, hwaddr offset,
-     return ret;
+@@ -157,6 +157,11 @@ static void pflash_register_memory(PFlashCFI02 *pfl, int rom_mode)
+     pfl->rom_mode = rom_mode;
  }
  
-+/*
-+ * offset should be a byte offset of the QEMU device and _not_ a device
-+ * offset.
-+ */
-+static uint32_t pflash_sector_len(PFlashCFI02 *pfl, hwaddr offset)
++static size_t pflash_regions_count(PFlashCFI02 *pfl)
 +{
-+    assert(offset < pfl->chip_len);
-+    int nb_regions = pfl->cfi_table[0x2C];
-+    hwaddr addr = 0;
-+    for (int i = 0; i < nb_regions; ++i) {
-+        uint64_t region_size = (uint64_t)pfl->nb_blocs[i] * pfl->sector_len[i];
-+        if (addr <= offset && offset < addr + region_size) {
-+            return pfl->sector_len[i];
-+        }
-+        addr += region_size;
-+    }
-+    abort();
++    return pfl->cfi_table[0x2c];
 +}
 +
- static uint64_t pflash_read(void *opaque, hwaddr offset, unsigned int width)
+ static void pflash_timer (void *opaque)
  {
      PFlashCFI02 *pfl = opaque;
-@@ -191,10 +218,11 @@ static uint64_t pflash_read(void *opaque, hwaddr offset, unsigned int width)
-     }
-     offset &= pfl->chip_len - 1;
-     boff = offset & 0xFF;
--    if (pfl->width == 2)
-+    if (pfl->width == 2) {
-         boff = boff >> 1;
--    else if (pfl->width == 4)
-+    } else if (pfl->width == 4) {
-         boff = boff >> 2;
-+    }
-     switch (pfl->cmd) {
-     default:
-         /* This should never happen : reset state & treat it as a read*/
-@@ -273,6 +301,7 @@ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
-     hwaddr boff;
-     uint8_t *p;
-     uint8_t cmd;
-+    uint32_t sector_len;
- 
-     trace_pflash_io_write(offset, width, width << 1, value, pfl->wcycle);
-     cmd = value;
-@@ -282,10 +311,11 @@ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
-     offset &= pfl->chip_len - 1;
- 
-     boff = offset;
--    if (pfl->width == 2)
-+    if (pfl->width == 2) {
-         boff = boff >> 1;
--    else if (pfl->width == 4)
-+    } else if (pfl->width == 4) {
-         boff = boff >> 2;
-+    }
-     /* Only the least-significant 11 bits are used in most cases. */
-     boff &= 0x7FF;
-     switch (pfl->wcycle) {
-@@ -420,12 +450,14 @@ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
-         case 0x30:
-             /* Sector erase */
-             p = pfl->storage;
--            offset &= ~(pfl->sector_len - 1);
--            DPRINTF("%s: start sector erase at " TARGET_FMT_plx "\n", __func__,
--                    offset);
-+            sector_len = pflash_sector_len(pfl, offset);
-+            offset &= ~(sector_len - 1);
-+            DPRINTF("%s: start sector erase at %0*" PRIx64 "-%0*" PRIx64 "\n",
-+                    __func__, pfl->width * 2, offset,
-+                    pfl->width * 2, offset + sector_len - 1);
-             if (!pfl->ro) {
--                memset(p + offset, 0xFF, pfl->sector_len);
--                pflash_update(pfl, offset, pfl->sector_len);
-+                memset(p + offset, 0xff, sector_len);
-+                pflash_update(pfl, offset, sector_len);
-             }
-             set_dq7(pfl, 0x00);
-             /* Let's wait 1/2 second before sector erase is done */
-@@ -493,11 +525,11 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
-     int ret;
-     Error *local_err = NULL;
- 
--    if (pfl->sector_len == 0) {
-+    if (pfl->uniform_sector_len == 0 && pfl->sector_len[0] == 0) {
-         error_setg(errp, "attribute \"sector-length\" not specified or zero.");
-         return;
-     }
--    if (pfl->nb_blocs == 0) {
-+    if (pfl->uniform_nb_blocs == 0 && pfl->nb_blocs[0] == 0) {
-         error_setg(errp, "attribute \"num-blocks\" not specified or zero.");
-         return;
-     }
-@@ -506,7 +538,51 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    pfl->chip_len = pfl->sector_len * pfl->nb_blocs;
-+    int nb_regions;
-+    pfl->chip_len = 0;
-+    for (nb_regions = 0; nb_regions < PFLASH_MAX_ERASE_REGIONS; ++nb_regions) {
-+        if (pfl->nb_blocs[nb_regions] == 0) {
-+            break;
-+        }
-+        uint64_t sector_len_per_device = pfl->sector_len[nb_regions];
-+
-+        /*
-+         * The size of each flash sector must be a power of 2 and it must be
-+         * aligned at the same power of 2.
-+         */
-+        if (sector_len_per_device & 0xff ||
-+            sector_len_per_device >= (1 << 24) ||
-+            !is_power_of_2(sector_len_per_device))
-+        {
-+            error_setg(errp, "unsupported configuration: "
-+                       "sector length[%d] per device = %" PRIx64 ".",
-+                       nb_regions, sector_len_per_device);
-+            return;
-+        }
-+        if (pfl->chip_len & (sector_len_per_device - 1)) {
-+            error_setg(errp, "unsupported configuration: "
-+                       "flash region %d not correctly aligned.",
-+                       nb_regions);
-+            return;
-+        }
-+
-+        pfl->chip_len += (uint64_t)pfl->sector_len[nb_regions] *
-+                          pfl->nb_blocs[nb_regions];
-+    }
-+
-+    uint64_t uniform_len = (uint64_t)pfl->uniform_nb_blocs *
-+                           pfl->uniform_sector_len;
-+    if (nb_regions == 0) {
-+        nb_regions = 1;
-+        pfl->nb_blocs[0] = pfl->uniform_nb_blocs;
-+        pfl->sector_len[0] = pfl->uniform_sector_len;
-+        pfl->chip_len = uniform_len;
-+    } else if (uniform_len != 0 && uniform_len != pfl->chip_len) {
-+        error_setg(errp, "\"num-blocks\"*\"sector-length\" "
-+                   "different from \"num-blocks0\"*\'sector-length0\" + ... + "
-+                   "\"num-blocks3\"*\"sector-length3\"");
-+        return;
-+    }
- 
-     memory_region_init_rom_device(&pfl->orig_mem, OBJECT(pfl),
-                                   &pflash_cfi02_ops, pfl, pfl->name,
-@@ -552,7 +628,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
-     pfl->status = 0;
- 
-     /* Hardcoded CFI table (mostly from SG29 Spansion flash) */
--    const uint16_t pri_ofs = 0x31;
-+    const uint16_t pri_ofs = 0x40;
-     /* Standard "QRY" string */
-     pfl->cfi_table[0x10] = 'Q';
-     pfl->cfi_table[0x11] = 'R';
-@@ -603,14 +679,17 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
-     //    pfl->cfi_table[0x2A] = 0x05;
-     pfl->cfi_table[0x2A] = 0x00;
-     pfl->cfi_table[0x2B] = 0x00;
--    /* Number of erase block regions (uniform) */
--    pfl->cfi_table[0x2C] = 0x01;
--    /* Erase block region 1 */
--    pfl->cfi_table[0x2D] = pfl->nb_blocs - 1;
--    pfl->cfi_table[0x2E] = (pfl->nb_blocs - 1) >> 8;
--    pfl->cfi_table[0x2F] = pfl->sector_len >> 8;
--    pfl->cfi_table[0x30] = pfl->sector_len >> 16;
--    assert(0x30 < pri_ofs);
-+    /* Number of erase block regions */
-+    pfl->cfi_table[0x2c] = nb_regions;
-+    /* Erase block regions */
-+    for (int i = 0; i < nb_regions; ++i) {
-+        uint32_t sector_len_per_device = pfl->sector_len[i];
-+        pfl->cfi_table[0x2d + 4 * i] = pfl->nb_blocs[i] - 1;
-+        pfl->cfi_table[0x2e + 4 * i] = (pfl->nb_blocs[i] - 1) >> 8;
-+        pfl->cfi_table[0x2f + 4 * i] = sector_len_per_device >> 8;
-+        pfl->cfi_table[0x30 + 4 * i] = sector_len_per_device >> 16;
-+    }
-+    assert(0x2c + 4 * nb_regions < pri_ofs);
- 
-     /* Extended */
-     pfl->cfi_table[0x00 + pri_ofs] = 'P';
-@@ -644,8 +723,16 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
- 
- static Property pflash_cfi02_properties[] = {
-     DEFINE_PROP_DRIVE("drive", PFlashCFI02, blk),
--    DEFINE_PROP_UINT32("num-blocks", PFlashCFI02, nb_blocs, 0),
--    DEFINE_PROP_UINT32("sector-length", PFlashCFI02, sector_len, 0),
-+    DEFINE_PROP_UINT32("num-blocks", PFlashCFI02, uniform_nb_blocs, 0),
-+    DEFINE_PROP_UINT32("sector-length", PFlashCFI02, uniform_sector_len, 0),
-+    DEFINE_PROP_UINT32("num-blocks0", PFlashCFI02, nb_blocs[0], 0),
-+    DEFINE_PROP_UINT32("sector-length0", PFlashCFI02, sector_len[0], 0),
-+    DEFINE_PROP_UINT32("num-blocks1", PFlashCFI02, nb_blocs[1], 0),
-+    DEFINE_PROP_UINT32("sector-length1", PFlashCFI02, sector_len[1], 0),
-+    DEFINE_PROP_UINT32("num-blocks2", PFlashCFI02, nb_blocs[2], 0),
-+    DEFINE_PROP_UINT32("sector-length2", PFlashCFI02, sector_len[2], 0),
-+    DEFINE_PROP_UINT32("num-blocks3", PFlashCFI02, nb_blocs[3], 0),
-+    DEFINE_PROP_UINT32("sector-length3", PFlashCFI02, sector_len[3], 0),
-     DEFINE_PROP_UINT8("width", PFlashCFI02, width, 0),
-     DEFINE_PROP_UINT8("mappings", PFlashCFI02, mappings, 0),
-     DEFINE_PROP_UINT8("big-endian", PFlashCFI02, be, 0),
-diff --git a/tests/pflash-cfi02-test.c b/tests/pflash-cfi02-test.c
-index b00f5ca2e7..1659eaebce 100644
---- a/tests/pflash-cfi02-test.c
-+++ b/tests/pflash-cfi02-test.c
-@@ -17,9 +17,11 @@
-  */
- 
- #define MP_FLASH_SIZE_MAX (32 * 1024 * 1024)
--#define FLASH_SIZE (8 * 1024 * 1024)
- #define BASE_ADDR (0x100000000ULL - MP_FLASH_SIZE_MAX)
- 
-+#define UNIFORM_FLASH_SIZE (8 * 1024 * 1024)
-+#define UNIFORM_FLASH_SECTOR_SIZE (64 * 1024)
-+
- /* Use a newtype to keep flash addresses separate from byte addresses. */
- typedef struct {
-     uint64_t addr;
-@@ -44,6 +46,10 @@ typedef struct {
- typedef struct {
-     int bank_width;
- 
-+    /* Nonuniform block size. */
-+    int nb_blocs[4];
-+    int sector_len[4];
-+
-     QTestState *qtest;
- } FlashConfig;
- 
-@@ -62,6 +68,10 @@ static FlashConfig expand_config_defaults(const FlashConfig *c)
-     if (ret.bank_width == 0) {
-         ret.bank_width = 2;
-     }
-+    if (ret.nb_blocs[0] == 0 && ret.sector_len[0] == 0) {
-+        ret.sector_len[0] = UNIFORM_FLASH_SECTOR_SIZE;
-+        ret.nb_blocs[0] = UNIFORM_FLASH_SIZE / UNIFORM_FLASH_SECTOR_SIZE;
-+    }
- 
-     /* XXX: Limitations of test harness. */
-     assert(ret.bank_width == 2);
-@@ -230,13 +240,41 @@ static void chip_erase(const FlashConfig *c)
-     flash_cmd(c, UNLOCK0_ADDR, CHIP_ERASE_CMD);
- }
- 
--static void test_flash(const void *opaque)
-+/*
-+ * Test flash commands with a variety of device geometry.
-+ */
-+static void test_geometry(const void *opaque)
+@@ -192,9 +197,8 @@ static uint64_t pflash_data_read(PFlashCFI02 *pfl, hwaddr offset,
+ static uint32_t pflash_sector_len(PFlashCFI02 *pfl, hwaddr offset)
  {
-     const FlashConfig *config = opaque;
-     QTestState *qtest;
-     qtest = qtest_initf("-M musicpal,accel=qtest"
--                        " -drive if=pflash,file=%s,format=raw,copy-on-read",
--                        image_path);
-+                        " -drive if=pflash,file=%s,format=raw,copy-on-read"
-+                        /* Device geometry properties. */
-+                        " -global driver=cfi.pflash02,"
-+                        "property=num-blocks0,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=sector-length0,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=num-blocks1,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=sector-length1,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=num-blocks2,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=sector-length2,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=num-blocks3,value=%d"
-+                        " -global driver=cfi.pflash02,"
-+                        "property=sector-length3,value=%d",
-+                        image_path,
-+                        config->nb_blocs[0],
-+                        config->sector_len[0],
-+                        config->nb_blocs[1],
-+                        config->sector_len[1],
-+                        config->nb_blocs[2],
-+                        config->sector_len[2],
-+                        config->nb_blocs[3],
-+                        config->sector_len[3]);
-     FlashConfig explicit_config = expand_config_defaults(config);
-     explicit_config.qtest = qtest;
-     const FlashConfig *c = &explicit_config;
-@@ -264,39 +302,56 @@ static void test_flash(const void *opaque)
-     g_assert_cmphex(flash_query(c, FLASH_ADDR(0x12)), ==, replicate(c, 'Y'));
- 
-     /* Num erase regions. */
--    g_assert_cmphex(flash_query_1(c, FLASH_ADDR(0x2C)), >=, 1);
-+    int nb_erase_regions = flash_query_1(c, FLASH_ADDR(0x2C));
-+    g_assert_cmphex(nb_erase_regions, ==,
-+                    !!c->nb_blocs[0] + !!c->nb_blocs[1] + !!c->nb_blocs[2] +
-+                    !!c->nb_blocs[3]);
-+
-+    /* Check device length. */
-+    uint32_t device_len = 1 << flash_query_1(c, FLASH_ADDR(0x27));
-+    g_assert_cmphex(device_len, ==, UNIFORM_FLASH_SIZE);
- 
--    uint32_t nb_sectors = flash_query_1(c, FLASH_ADDR(0x2D)) +
--                          (flash_query_1(c, FLASH_ADDR(0x2E)) << 8) + 1;
--    uint32_t sector_len = (flash_query_1(c, FLASH_ADDR(0x2F)) << 8) +
--                          (flash_query_1(c, FLASH_ADDR(0x30)) << 16);
-     reset(c);
- 
-     const uint64_t dq7 = replicate(c, 0x80);
-     const uint64_t dq6 = replicate(c, 0x40);
--    /* Erase and program sector. */
--    for (uint32_t i = 0; i < nb_sectors; ++i) {
--        uint64_t byte_addr = i * sector_len;
--        sector_erase(c, byte_addr);
--        /* Read toggle. */
--        uint64_t status0 = flash_read(c, byte_addr);
--        /* DQ7 is 0 during an erase. */
--        g_assert_cmphex(status0 & dq7, ==, 0);
--        uint64_t status1 = flash_read(c, byte_addr);
--        /* DQ6 toggles during an erase. */
--        g_assert_cmphex(status0 & dq6, ==, ~status1 & dq6);
--        /* Wait for erase to complete. */
--        qtest_clock_step_next(c->qtest);
--        /* Ensure DQ6 has stopped toggling. */
--        g_assert_cmphex(flash_read(c, byte_addr), ==, flash_read(c, byte_addr));
--        /* Now the data should be valid. */
--        g_assert_cmphex(flash_read(c, byte_addr), ==, bank_mask(c));
-+    uint64_t byte_addr = 0;
-+    for (int region = 0; region < nb_erase_regions; ++region) {
-+        uint64_t base = 0x2D + 4 * region;
-+        flash_cmd(c, CFI_ADDR, CFI_CMD);
-+        uint32_t nb_sectors = flash_query_1(c, FLASH_ADDR(base + 0)) +
-+                              (flash_query_1(c, FLASH_ADDR(base + 1)) << 8) + 1;
-+        uint32_t sector_len = (flash_query_1(c, FLASH_ADDR(base + 2)) << 8) +
-+                              (flash_query_1(c, FLASH_ADDR(base + 3)) << 16);
-+        g_assert_cmphex(nb_sectors, ==, c->nb_blocs[region]);
-+        g_assert_cmphex(sector_len, ==, c->sector_len[region]);
-+        reset(c);
- 
--        /* Program a bit pattern. */
--        program(c, byte_addr, 0x55);
--        g_assert_cmphex(flash_read(c, byte_addr) & 0xFF, ==, 0x55);
--        program(c, byte_addr, 0xA5);
--        g_assert_cmphex(flash_read(c, byte_addr) & 0xFF, ==, 0x05);
-+        /* Erase and program sector. */
-+        for (uint32_t i = 0; i < nb_sectors; ++i) {
-+            sector_erase(c, byte_addr);
-+            /* Read toggle. */
-+            uint64_t status0 = flash_read(c, byte_addr);
-+            /* DQ7 is 0 during an erase. */
-+            g_assert_cmphex(status0 & dq7, ==, 0);
-+            uint64_t status1 = flash_read(c, byte_addr);
-+            /* DQ6 toggles during an erase. */
-+            g_assert_cmphex(status0 & dq6, ==, ~status1 & dq6);
-+            /* Wait for erase to complete. */
-+            qtest_clock_step_next(c->qtest);
-+            /* Ensure DQ6 has stopped toggling. */
-+            g_assert_cmphex(flash_read(c, byte_addr), ==,
-+                            flash_read(c, byte_addr));
-+            /* Now the data should be valid. */
-+            g_assert_cmphex(flash_read(c, byte_addr), ==, bank_mask(c));
-+
-+            /* Program a bit pattern. */
-+            program(c, byte_addr, 0x55);
-+            g_assert_cmphex(flash_read(c, byte_addr) & 0xFF, ==, 0x55);
-+            program(c, byte_addr, 0xA5);
-+            g_assert_cmphex(flash_read(c, byte_addr) & 0xFF, ==, 0x05);
-+            byte_addr += sector_len;
-+        }
-     }
- 
-     /* Erase the chip. */
-@@ -314,9 +369,11 @@ static void test_flash(const void *opaque)
-     g_assert_cmphex(flash_read(c, 0), ==, flash_read(c, 0));
-     /* Now the data should be valid. */
- 
--    for (uint32_t i = 0; i < nb_sectors; ++i) {
--        uint64_t byte_addr = i * sector_len;
--        g_assert_cmphex(flash_read(c, byte_addr), ==, bank_mask(c));
-+    for (int region = 0; region < nb_erase_regions; ++region) {
-+        for (uint32_t i = 0; i < c->nb_blocs[region]; ++i) {
-+            uint64_t byte_addr = i * c->sector_len[region];
-+            g_assert_cmphex(flash_read(c, byte_addr), ==, bank_mask(c));
-+        }
-     }
- 
-     /* Unlock bypass */
-@@ -364,6 +421,18 @@ static const FlashConfig configuration[] = {
-     {
-         .bank_width = 2,
-     },
-+    /* Nonuniform sectors (top boot). */
-+    {
-+        .bank_width = 2,
-+        .nb_blocs = { 127, 1, 2, 1 },
-+        .sector_len = { 0x10000, 0x08000, 0x02000, 0x04000 },
-+    },
-+    /* Nonuniform sectors (bottom boot). */
-+    {
-+        .bank_width = 2,
-+        .nb_blocs = { 1, 2, 1, 127 },
-+        .sector_len = { 0x04000, 0x02000, 0x08000, 0x10000 },
-+    },
- };
- 
- int main(int argc, char **argv)
-@@ -374,12 +443,12 @@ int main(int argc, char **argv)
-                    strerror(errno));
-         exit(EXIT_FAILURE);
-     }
--    if (ftruncate(fd, FLASH_SIZE) < 0) {
-+    if (ftruncate(fd, UNIFORM_FLASH_SIZE) < 0) {
-         int error_code = errno;
-         close(fd);
-         unlink(image_path);
-         g_printerr("Failed to truncate file %s to %u MB: %s\n", image_path,
--                   FLASH_SIZE, strerror(error_code));
-+                   UNIFORM_FLASH_SIZE, strerror(error_code));
-         exit(EXIT_FAILURE);
-     }
-     close(fd);
-@@ -390,9 +459,19 @@ int main(int argc, char **argv)
-     size_t nb_configurations = sizeof configuration / sizeof configuration[0];
-     for (size_t i = 0; i < nb_configurations; ++i) {
-         const FlashConfig *config = &configuration[i];
--        char *path = g_strdup_printf("pflash-cfi02/%d",
-+        char *path = g_strdup_printf("pflash-cfi02"
-+                                     "/geometry/%dx%x-%dx%x-%dx%x-%dx%x"
-+                                     "/%d",
-+                                     config->nb_blocs[0],
-+                                     config->sector_len[0],
-+                                     config->nb_blocs[1],
-+                                     config->sector_len[1],
-+                                     config->nb_blocs[2],
-+                                     config->sector_len[2],
-+                                     config->nb_blocs[3],
-+                                     config->sector_len[3],
-                                      config->bank_width);
--        qtest_add_data_func(path, config, test_flash);
-+        qtest_add_data_func(path, config, test_geometry);
-         g_free(path);
-     }
-     int result = g_test_run();
+     assert(offset < pfl->chip_len);
+-    int nb_regions = pfl->cfi_table[0x2C];
+     hwaddr addr = 0;
+-    for (int i = 0; i < nb_regions; ++i) {
++    for (int i = 0; i < pflash_regions_count(pfl); ++i) {
+         uint64_t region_size = (uint64_t)pfl->nb_blocs[i] * pfl->sector_len[i];
+         if (addr <= offset && offset < addr + region_size) {
+             return pfl->sector_len[i];
 -- 
 2.20.1

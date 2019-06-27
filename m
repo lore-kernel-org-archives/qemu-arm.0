@@ -1,113 +1,157 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp358651wru;
-        Wed, 26 Jun 2019 11:29:13 -0700 (PDT)
-X-Received: by 2002:a1c:9d48:: with SMTP id g69mr256992wme.31.1561573752954;
-        Wed, 26 Jun 2019 11:29:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561573752; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1656275wru;
+        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbG1aYl7xKYCZmTV/Xbwrok/J4XAkZLMwZW8Xx8+c4E3r99Nl9+CzEqMveWyv8rA3UnEqm
+X-Received: by 2002:aa7:dacb:: with SMTP id x11mr6456426eds.299.1561664559451;
+        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561664559; cv=none;
         d=google.com; s=arc-20160816;
-        b=lifeXy4VgkX4PiMm4RVlZ4u/RSINKWqTIqBDzFYYKuyAaiPqeeMheYW5aZ8488Fzig
-         5m6DJGHRWD7N1zZQP1Niwxxnba37k2x9SX5lbM4PrWzyGCY0jHAJal5V2qk4zOePdM1K
-         flMTTb36ezFTP55yDGwdm9Ig5Wc5tC6tFQojcjWq+nQtnXPIj4ymdG9seIzRXZgfubbG
-         xxeRoFWy0ZV/MGmos4DHedanIVyeNxi8PLLll2J7SyinDcVdActUk5QKFMpV89SefxgH
-         pNx2uOZ2vyYIkq8krCEyiUlBXraW2T3zAPrW+Wu9/DI3SGFmAhhv1+a9fsZMG/NWmX9E
-         AjHw==
+        b=QAZrIoCOMaYNAA1rdLo7YHXLRb12KAJwYMZdxPTuIZWHOYTRBwie43QOjYaU0bB/2V
+         0Wzg1FY6TjD86nqpuDR08YT95sxuuGpq7cN7UD73a8KCR5hyd5lF1PVf6f5yxj1EkRWS
+         YJwSzHv2DKeP9FfzO7HQY9UcIMkppcZvIwS/31uNpEzbtNVejYH5DNgQGcty5q/a7086
+         EnQ/ftfkhilfr4yJlxXw2xhHiKtSBdAHbVTGWcWNMkAGPCTyqLVlOxrDILFChmnMPaiM
+         G+DuuI/3h94t2N+NHLD9BhUhFz3/ayWO1rgtLkFM8N9q0zKX0aqs5IWNmEVYDAHSFIO3
+         TbJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=TlinqMiI0XnNpF5PDe6h/VtVQZwjyIh7N8OSWH29deA=;
-        b=lfPFhW7Xmg2uJSaRV9K6S3dXwTDlaqCXwbKWNQ1kCjxyZQBKRFYIvXLQ+AJverE/Rs
-         B/Oth5o3KstJb+wsf9ozI1l0K28m6kqv8W3tXsevhLPMZn4h78noUsOOwUNahHjwwNuw
-         RT9mlCqS8rh7bGRDiS9AlZ57nMYxF4QF/BRrDmS4RFcecZ2Y4+UrL1TmiX/KMU/f1NFV
-         LH8tF2p6xd1Dd4gHiJt5uv/tSClOTiAV/iCq8EvWoj6ORJg8YccynUrBnINg2QrcDayi
-         s3yP9QpN1gt+HMxtwhEj3dUlGtttJm5ENxG60O/6eP0h61gTAJ/QwZ6+j+ZjOaPkAo7N
-         Ksew==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to;
+        bh=FtdAO2NiCb9jo9th4k3k12diIIqT5y0YdPmgtR9hurc=;
+        b=eqgT8c0A1uUcaTau26tN7naIuiLxdTGakv8AgSNNJJqb3r79SbyJT3x/OScglliP6l
+         WTNiPMCgyXgWBRFuh1PJEeBxAeXLeOxmhsXq44prACSNcZ2gThxBOrf4hbkFJUF40W8A
+         +NNMKsaNYPUBAMErrFpWHehtjzYzrJosr6QpqQVBeGYzegh+NtNIznv6AF3YrCAs557m
+         xVRqr8Z3vygTZoWlYy+NtgHupooCypzSBDQawLKgq0Wxr/qfX6qg0CyT03IPDayRtE7k
+         YQB4owjCZ1ORGh/uNs7kKLb2lTL0MzHeLfa1hPncwwTKzBiG5B0SWqvJ6VNURmfvCKCq
+         KtIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o2LJfQNp;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y132sor1679433wmd.19.2019.06.26.11.29.12
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x43si2529339eda.147.2019.06.27.12.42.39
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 26 Jun 2019 11:29:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Jun 2019 12:42:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=o2LJfQNp;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=TlinqMiI0XnNpF5PDe6h/VtVQZwjyIh7N8OSWH29deA=;
-        b=o2LJfQNp32F+LBPbs5mKuIFvKfPbjGDX2iCoxCi3E3aLoRi31GAgZhJn5AWfpQ7MMM
-         Rwx+nyG23C+NrWJiMTsA7d9rY5rD8E01c8Ht5rS+faHD06V9YR1yCjcUwDC2TOggoqya
-         ku28IAve7BPCqoXs6q43kPuPWeSXcWsHMPdUcVzBf3J3VRpIm8uyA8Xo3xTmGCZW2brB
-         isW74UvNqDzUwQd1BmNXWbjjkWISXx9kg5G1l66yZsmC84YPYZ5P1nHmyxEsQieA/h85
-         kPm9OJSEFXj9hhs8SnA6eZ5o6vJ47CXXOS5zICRF8dfaslBU+crgxZhk6cDTyEy6XoI+
-         wtSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=TlinqMiI0XnNpF5PDe6h/VtVQZwjyIh7N8OSWH29deA=;
-        b=DmQBVShcm3jWREu11O3mAOAVryDFeArjSUCBVQj+gvfrU/A8PrVmSuEMDkmD0gSr9s
-         9atwQYdTUoTzhmwTGJecMZoArwlCpRLo/75HpcDqW73AnyjuaTMDIAiVnqsU0R0LztV3
-         Qs5asFLeFr869VBiepbm72dBnVUAEXftKAUVbd0oRw/c51Q5BGjOgY9MPZbugN0iF63w
-         kDL+KjwRMIzry4c0z1pU5zU6tIyVr4TPZKHnw2pAkUyWkGzKnLf4gxiQld7ZI4r4Pi1L
-         laZWyrXp9OqOG+Kq8J7mbnUxC0MlOsPfcBc39OKT6iLEuy12NBZ0TrCX7lNC1AX+OAnG
-         Zx1w==
-X-Gm-Message-State: APjAAAV4ClFr5Z/8MQ7Ya8/xbciVJwegZvSAN6lEs55IsrL9CyBY6bHZ
-	+9/RipgmqQgmLSgNT/e8A9q85n7U
-X-Google-Smtp-Source: APXvYqz3IgYAemkF6MzC5BiDq72EvLPgrxuftT+0RpZNi6zva8cr6fvkyS+Iw0JTkPOKUxMLoP7mRw==
-X-Received: by 2002:a05:600c:224d:: with SMTP id a13mr254634wmm.62.1561573752606;
-        Wed, 26 Jun 2019 11:29:12 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.2.137] (93-34-153-63.ip50.fastwebnet.it. [93.34.153.63])
-        by smtp.gmail.com with ESMTPSA id o2sm17267186wrq.56.2019.06.26.11.29.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Jun 2019 11:29:11 -0700 (PDT)
-Subject: Re: [PATCH v2 12/14] target/arm/kvm: scratch vcpu: Preserve input
- kvm_vcpu_init features
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
- eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-13-drjones@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <9fa08d2a-eecd-e7ee-9f7c-abc763ab417c@linaro.org>
-Date: Wed, 26 Jun 2019 13:11:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53940 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hgaI2-0000Ly-JQ
+	for alex.bennee@linaro.org; Thu, 27 Jun 2019 15:42:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35578)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <wainersm@redhat.com>) id 1hgaHU-0000Lq-5v
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2019 15:42:05 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <wainersm@redhat.com>) id 1hgaHS-0006v7-3P
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2019 15:42:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40158)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <wainersm@redhat.com>)
+ id 1hgaHR-0006FS-Od; Thu, 27 Jun 2019 15:42:01 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id B13843091782;
+ Thu, 27 Jun 2019 19:41:12 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-123-99.rdu2.redhat.com
+ [10.10.123.99])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id ECC5619C4F;
+ Thu, 27 Jun 2019 19:41:07 +0000 (UTC)
+To: Andrea Bolognani <abologna@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>
+References: <20190620222314.2670-1-wainersm@redhat.com>
+ <CAFEAcA92m9n7FR2a6=ecnr5bn-Sq97LZRxHRuzWO-OcbdgA4fw@mail.gmail.com>
+ <20190621190421.GA679@localhost.localdomain>
+ <CAFEAcA-x_GSxiULrxvRj7dtCLM-r4YvRpwkVosW+1SutAUJMoA@mail.gmail.com>
+ <7745c47186278c1b7f1781c9173ef0e2e8a55910.camel@redhat.com>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+Message-ID: <edd405bc-c2cd-da6f-ed8b-5ec7e6873a0e@redhat.com>
+Date: Thu, 27 Jun 2019 16:41:05 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-13-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <7745c47186278c1b7f1781c9173ef0e2e8a55910.camel@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: lS6itn9Wz5cF
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Thu, 27 Jun 2019 19:41:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC v2 PATCH] hw/arm/virt: makes virt a default
+ machine type
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ezxbBdxRDL5q
 
-On 6/21/19 6:34 PM, Andrew Jones wrote:
-> kvm_arm_create_scratch_host_vcpu() takes a struct kvm_vcpu_init
-> parameter. Rather than just using it as an output parameter to
-> pass back the preferred target, use it also as an input parameter,
-> allowing a caller to pass a selected target if they wish and to
-> also pass cpu features. If the caller doesn't want to select a
-> target they can pass -1 for the target which indicates they want
-> to use the preferred target and have it passed back like before.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  target/arm/kvm.c   | 20 +++++++++++++++-----
->  target/arm/kvm32.c |  6 +++++-
->  target/arm/kvm64.c |  6 +++++-
->  3 files changed, 25 insertions(+), 7 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On 06/24/2019 05:37 AM, Andrea Bolognani wrote:
+> On Sat, 2019-06-22 at 16:58 +0100, Peter Maydell wrote:
+>> On Fri, 21 Jun 2019 at 20:04, Cleber Rosa <crosa@redhat.com> wrote:
+>>> You can consider me biased (I do consider myself), but trying to wear
+>>> the hat of a user first interacting with QEMU, I would expect a (any)
+>>> reasonably capable environment that can represent the given target.
+>>> That will probably be a different environment than the one I may need,
+>>> and I think that's fine.
+>> I'm really not sure what you're trying to suggest here; maybe
+>> you could clarify? If you specify a target (ie a machine type),
+>> you get that machine type. If you don't specify a target, then
+>> we can't really guess what you were hoping to run and
+>> magically pick something that works.
+>>
+>> The main problem here is that users expect "all the world is a PC"
+>> type behaviour, ie they can just provide qemu-system-arm or
+>> qemu-system-aarch64 with no command line arguments except
+>> a guest kernel (which is half the time something they found under
+>> a rock or extracted from some firmware image) or a guest CDROM
+>> image and have it boot, because that generally works for x86. It
+>> doesn't and can't work for Arm, because of the much greater
+>> diversity of machine types and the way that kernels are often
+>> only compiled to work on a specific subset of machines.
+>> Making the user specify a machine type means they do at least
+>> get prompted that the world is more complicated than they
+>> think it is and there are decisions that have to be made.
+>>
+>> In any case even if we did default to "virt" the user still
+>> has to specify a CPU type, may well also want to provide
+>> a GIC version (gicv3 being better than the default v2),
+>> likely more RAM than the very small default, they need to provide
+>> all the virtio devices, and so on and so on. So giving
+>> them one option they no longer need to specify doesn't
+>> really make it any easier IMHO.
+> Additional note on GIC: most server-grade machines you can buy today
+> do *not* support GICv2, so you will need to opt-in to GICv3 if you
+> want your guest to even start.
+>
+> More generally, as someone who has worked on supporting non-x86
+> guests in libvirt for the past few years, I can tell you from
+> experience that you're always going to need some arch-specific logic
+> to deal with the small (and not so small :) differences in behavior
+> between QEMU targets: as Peter correctly says, machine type is just
+> a single example among many.
+>
 
+So NACK this patch. I will attempt to address the problem of broken 
+acceptance tests on avocado_qemu side.
 
-r~
+Thanks Peter, Cleber and Andrea for sharing your opinion.
+
+- Wainer

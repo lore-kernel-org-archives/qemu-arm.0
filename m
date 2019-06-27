@@ -1,194 +1,139 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1141257wru;
-        Thu, 27 Jun 2019 03:53:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwvIUiFVKLh1N3EjRee8/scNfFff5sqzAD9iYaXFF2dE67h3X9mxxiwBp5rHGrbJ/Q1W9Hc
-X-Received: by 2002:ac8:3f81:: with SMTP id d1mr2484931qtk.5.1561632809810;
-        Thu, 27 Jun 2019 03:53:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561632809; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1145809wru;
+        Thu, 27 Jun 2019 03:59:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzBgGMZWmXAh1fB8NDWuY8NP0q4iVbGVlqR2QBBiV7vWGm8cAh5taywVraOD7t/Fpq3hKEr
+X-Received: by 2002:a50:84e2:: with SMTP id 89mr3323184edq.218.1561633157174;
+        Thu, 27 Jun 2019 03:59:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561633157; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHeDwVI84xDvcpaJalj6GHpoJkV0jq9LswuGcbrSXhHFHaa4am2r1qG3xPqPCpWmzs
-         PMI3nnMjEuSNT6um35hrQn4CRYh1FAAnOBzbjCdKn3g+pGqQXX3F6L/h0MREpKQ5xuE1
-         1MpqJ6A346Aw4EEkiRVfTQLY+1dOWp6ade/lW0utNWAZoluYntKUsM/qM5lpNpYpbGXj
-         Hsswx7aicvfLTIb7Xx1B2hRM5km9vLrkYpFloo/5dZg5PAooblDxJQjCuTlg7eNwO1zF
-         4cTazddOgygnfCkdf+8nU5l7HaUBIe4z+jHmB0KxY6ZlQCLHz87HR5I5xR86NlKDIY8W
-         XUXQ==
+        b=YqMKu6UY1ik4kcvXZ84JCoPUhTveAV6jrqv1AJKpjtGTWolYjQwHGvATb9a5s0cYGl
+         vWJSt4VJg2waQt1Q6mf69SWogVhrTNv/v0QH77yICbafhD5zji0pY8SAGuuEeqgM8Msi
+         NZNH4p4wOyGL1zNafh/g7gmGuA6CzUoxVRXjAOMBebgED7gUFyO4f8g4rlnS8Vh376Vp
+         CV6H2DKNLcCjVktJjo4KVvGO423/ESaqfzPzYaEX316FXCs5YYYaGrgDQcjnOF1vLAXY
+         a2apaLDM6TSV0vF/cG+fF+qejQlEClSWOfj3zTRdBg2tj1QKyUuPfolpDqwwZVj0jTSq
+         FooQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=sW+hUnc9XrcuWeoINy5XAW2td/DWiJ0T+ECDVHrY1qo=;
-        b=KWOzce5DN1nxi4wu/KibpGjMyAY2Jys/at05YzZ4cmkkhXt4hdsmkJ1scUmsWUVvRV
-         vaaCVErRhLISWpchkCvmUx8QRah4TBcB8apliM49WKV5cyyJIkAqkPbRfKlGlbCO/GA+
-         0IpDeoMmCs/rdg9AuiIHV7++Xv6oKznBM3RJFnCS1/rOTqSKP6+G6a3xffnJAUE6OWAj
-         7Zha+rc8hsUjR2jFDTT80uV/3IQo39p7LvOxFQdFBm1P2A9iSotdS8a0oaudkxNWsdo1
-         HHDOs5l3OEix/Hza9cxKz56Ya8ZI7uU0lwl12rXGgRn+JKJqDj7TT+udDAe0v5KodCY+
-         NcKQ==
+        bh=9BaS3Ns84OdQ2IPCKw663QpUXj5yUja/bTsJkma8+co=;
+        b=Mci0KB+iYrbVc6cJF8S9TTpLpWZQVpVH3+dQcu+pIPFA00sbBgFHIafwWtbcApRv4M
+         9kqCDdvUAnlVtsyxF2AcZ3vi9gJYBJYT3BvbNV6Fh6dVzknCpIZSxn+CU32bpF2pBa1N
+         uNLR43WbXsyNinfICsHpKOCnKEvIZg1LoPiGQpB0WgTsBOPxyZzTvnsZr9OypS6fNnp8
+         4iyzqpCh1/nHVVZJ0skAyzRL44GtARZJCq45dtJi3YYkjzx6zM47YMekigJMcTM6KE1R
+         M1E1T2LP4kY/np4rg4zgyf5C1G6IvXlXrQUJ3x52Ok0q5RRp6HVcu0I65iXB2YkYKsK+
+         Sxng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id b4si1195810qvv.160.2019.06.27.03.53.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2019 03:53:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Return-Path: <Dave.Martin@arm.com>
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by mx.google.com with ESMTP id i25si1439376edv.222.2019.06.27.03.59.15;
+        Thu, 27 Jun 2019 03:59:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2A30E30BDE4B;
-	Thu, 27 Jun 2019 10:53:22 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 60F195C241;
-	Thu, 27 Jun 2019 10:53:17 +0000 (UTC)
-Date: Thu, 27 Jun 2019 12:53:15 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, armbru@redhat.com,
-	imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v2 12/14] target/arm/kvm: scratch vcpu:
- Preserve input kvm_vcpu_init features
-Message-ID: <20190627105315.j56kc4uqc765lf36@kamzik.brq.redhat.com>
+       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2722D2B;
+	Thu, 27 Jun 2019 03:59:15 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C6BF93F718;
+	Thu, 27 Jun 2019 03:59:13 -0700 (PDT)
+Date: Thu, 27 Jun 2019 11:59:11 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Andrew Jones <drjones@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"armbru@redhat.com" <armbru@redhat.com>,
+	"eblake@redhat.com" <eblake@redhat.com>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
+	"imammedo@redhat.com" <imammedo@redhat.com>
+Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
+Message-ID: <20190627105911.GD2790@e103592.cambridge.arm.com>
 References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-13-drjones@redhat.com>
- <40326319-4f1a-019e-1cb7-840a011ed8b4@redhat.com>
+ <20190621163422.6127-11-drjones@redhat.com>
+ <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <40326319-4f1a-019e-1cb7-840a011ed8b4@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Thu, 27 Jun 2019 10:53:29 +0000 (UTC)
-X-TUID: tdl1S+KGzLI9
+In-Reply-To: <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+X-TUID: uwnfXnLyP9s7
 
-On Thu, Jun 27, 2019 at 09:30:57AM +0200, Auger Eric wrote:
-> Hi Drew,
-> 
+On Wed, Jun 26, 2019 at 04:22:34PM +0100, Richard Henderson wrote:
 > On 6/21/19 6:34 PM, Andrew Jones wrote:
-> > kvm_arm_create_scratch_host_vcpu() takes a struct kvm_vcpu_init
-> > parameter. Rather than just using it as an output parameter to
-> > pass back the preferred target, use it also as an input parameter,
-> > allowing a caller to pass a selected target if they wish and to
-> > also pass cpu features. If the caller doesn't want to select a
-> > target they can pass -1 for the target which indicates they want
-> > to use the preferred target and have it passed back like before.
-> > 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  target/arm/kvm.c   | 20 +++++++++++++++-----
-> >  target/arm/kvm32.c |  6 +++++-
-> >  target/arm/kvm64.c |  6 +++++-
-> >  3 files changed, 25 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > index 60645a196d3d..66c0c198604a 100644
-> > --- a/target/arm/kvm.c
-> > +++ b/target/arm/kvm.c
-> > @@ -64,7 +64,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-> >                                        int *fdarray,
-> >                                        struct kvm_vcpu_init *init)
-> >  {
-> > -    int ret, kvmfd = -1, vmfd = -1, cpufd = -1;
-> > +    int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
-> >  
-> >      kvmfd = qemu_open("/dev/kvm", O_RDWR);
-> >      if (kvmfd < 0) {
-> > @@ -84,7 +84,14 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-> >          goto finish;
-> >      }
-> >  
-> > -    ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, init);
-> > +    if (init->target == -1) {
-> > +        struct kvm_vcpu_init preferred;
-> > +
-> > +        ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
-> > +        if (!ret) {
-> > +            init->target = preferred.target;
-> wouldn't it be safe to copy the whole struct. Kernel code says:
->         /*
->          * For now, we don't return any features.
->          * In future, we might use features to return target
->          * specific features available for the preferred
->          * target type.
->          */
-
-Indeed, we could copy the features into 'preferred', in case KVM starts to
-do something with them. Based on that KVM comment, though, it looks like
-we'd need to make other changes as well to QEMU at that time. Some sort
-of feature matching/filtering code. It probably makes sense to do all that
-at once, when/if that time comes.
-
+> > +/*
+> > + * If ARM_MAX_VQ is increased to be greater than 16, then we can no
+> > + * longer hard code slices to 1 in kvm_arch_put/get_sve().
+> > + */
+> > +QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
 > 
-> > +        }
-> > +    }
-> >      if (ret >= 0) {
-> >          ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
-> >          if (ret < 0) {
-> > @@ -96,10 +103,12 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-> >           * creating one kind of guest CPU which is its preferred
-> >           * CPU type.
-> >           */
-> > +        struct kvm_vcpu_init try;
-> > +
-> >          while (*cpus_to_try != QEMU_KVM_ARM_TARGET_NONE) {
-> > -            init->target = *cpus_to_try++;
-> > -            memset(init->features, 0, sizeof(init->features));
-> > -            ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
-> > +            try.target = *cpus_to_try++;
-> > +            memcpy(try.features, init->features, sizeof(init->features));
-> > +            ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, &try);
-> >              if (ret >= 0) {
-> >                  break;
-> >              }
-> > @@ -107,6 +116,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-> >          if (ret < 0) {
-> >              goto err;
-> >          }
-> > +        init->target = try.target;
-> >      } else {
-> >          /* Treat a NULL cpus_to_try argument the same as an empty
-> >           * list, which means we will fail the call since this must
-> > diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-> > index 51f78f722b18..d007f6bd34d7 100644
-> > --- a/target/arm/kvm32.c
-> > +++ b/target/arm/kvm32.c
-> > @@ -54,7 +54,11 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> >          QEMU_KVM_ARM_TARGET_CORTEX_A15,
-> >          QEMU_KVM_ARM_TARGET_NONE
-> >      };
-> > -    struct kvm_vcpu_init init;
-> > +    /*
-> > +     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
-> > +     * to use the preferred target
-> > +     */
-> > +    struct kvm_vcpu_init init = { .target = -1, };
-> >  
-> >      if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
-> >          return false;
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index 9fc7f078cf68..2821135a4d0e 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -502,7 +502,11 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> >          KVM_ARM_TARGET_CORTEX_A57,
-> >          QEMU_KVM_ARM_TARGET_NONE
-> >      };
-> > -    struct kvm_vcpu_init init;
-> > +    /*
-> > +     * target = -1 informs kvm_arm_create_scratch_host_vcpu()
-> > +     * to use the preferred target
-> > +     */
-> > +    struct kvm_vcpu_init init = { .target = -1, };
-> >  
-> >      if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
-> >          return false;
-> > 
+> This seems easy to fix, or simply drop the slices entirely for now, as
+> otherwise they are a teeny bit confusing.
 > 
-> Besides
-> 
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->
+> It's a shame that these slices exist at all.  It seems like the kernel could
+> use the negotiated max sve size to grab the data all at once.
 
-Thanks,
-drew 
+The aim here was to be forwards compatible while fitting within the
+existing ABI.
+
+The ABI doesn't allow variable-sized registers, and if the vq can
+someday grow above 16 then the individual registers could become pretty
+big.
+
+Inside the kernel, we took the view that if that ever happens, it's
+sufficiently far out that we can skip implementing the support today,
+providing that the ABI can accommodate the change.
+
+For qemu, if you don't actually care what's in the regs, you could just
+enumerate then using KVM_GET_REG_LIST instead of manufacturing the IDs
+by hand.  That way, you don't have to care what slices exist.  For
+save/restore/migrate purposes, the regs are just data, so that's
+probably enough.
+
+Debug, and exchanging vector registers between the guest and, say, and
+SMC trapped to userspace, would still need to examine specific regs.
+I don't know what QEMU does in this area though.
+
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
+> > +            uint64_t *q = aa64_vfp_qreg(env, n);
+> > +#ifdef HOST_WORDS_BIGENDIAN
+> > +            uint64_t d[ARM_MAX_VQ * 2];
+> > +            int j;
+> > +            for (j = 0; j < cpu->sve_max_vq * 2; j++) {
+> > +                d[j] = bswap64(q[j]);
+> > +            }
+> > +            reg.addr = (uintptr_t)d;
+> > +#else
+> > +            reg.addr = (uintptr_t)q;
+> > +#endif
+> > +            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> 
+> It might be worth splitting this...
+> 
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
+> > +            uint64_t *q = &env->vfp.pregs[n].p[0];
+> > +#ifdef HOST_WORDS_BIGENDIAN
+> > +            uint64_t d[ARM_MAX_VQ * 2 / 8];
+> > +            int j;
+> > +            for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
+> > +                d[j] = bswap64(q[j]);
+> > +            }
+> > +            reg.addr = (uintptr_t)d;
+> > +#else
+> > +            reg.addr = (uintptr_t)q;
+> > +#endif
+> > +            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+
+It's for QEMU to choose, but does it actually matter what byteorder you
+store a Z-reg or P-reg in?  Maybe the byteswap isn't really needed.
+
+I don't know how this works when migrating from a little-endian to a
+big-endian host or vice-versa (or if that is even supported...)
+
+[...]
+
+Cheers
+---Dave

@@ -1,375 +1,165 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2365896wrg;
-        Mon, 17 Jun 2019 04:08:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzD/z0IBMBnzcUqruWzMj62fakmlFsivwI74NaPhcUZXUaUjrjTsGm3dZETEudvIUhb7oYB
-X-Received: by 2002:a0c:874b:: with SMTP id 11mr6562937qvi.141.1560769731462;
-        Mon, 17 Jun 2019 04:08:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560769731; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1501393wru;
+        Thu, 27 Jun 2019 09:49:05 -0700 (PDT)
+X-Received: by 2002:a05:6000:106:: with SMTP id o6mr4276768wrx.4.1561654144986;
+        Thu, 27 Jun 2019 09:49:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561654144; cv=none;
         d=google.com; s=arc-20160816;
-        b=T20jfegrdz/v/apB7qyAPo+vYWOicFOxmgH4ygfCVH1j02JKQjsv+zr7qEhRPy3sDp
-         HWeTG5GaZiQaN6GlIkoYbNLqvlMgpr11QZI7zEPdGpbk3p+u3BXmiJWJCqI9xp+RYyUl
-         q7REwuXgR5cB4YAwEEmxB5t9/Eqtz4ZsXBDd5jA3+FukDHzlBNmnl41/7Y7JF8/YnY20
-         za03roHrOSgcD7Lge7qqwUZqMCezQws4iXCl2wBUpXVI4XO4aqMtgtlCMzJ49XuT0iie
-         xhsdsdS9eGx2rfY/Zpof1uKPfB5DgZXY6atLfKFvGOxp+YKh+kkI3xWx/EJlC6CzsqDp
-         dPSQ==
+        b=vudrOgySwJVX4jiPc4W50vriKLiLUgMJS7BliF9XURu1hKIObmqtXLlRk7vNAphYAi
+         AWT6TPYebIAJDhhhz0aARDz9no26BwUx5w/VzwzW3aGtk++S2nxPPfoQqwVZli87LXWy
+         U3a9WA2CRit6voBg9Xi/UsC2Cyx0JTNVt5gYCzzyKimKReMAImRYgFXoXrppqcGVsHUY
+         ipHyJuAFxdRM38fldD69R8ud26Y5SOJAyQcwYwKoFNSpecG3MDzMh0t6o0/EEyjM+u2P
+         nw01sXl9HJHZfCapCvy6evHwyH8wAjLl7Ts4/0/f+mV2TOIOLT2HQYkhl4f/yr3DsqU+
+         /rqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to;
-        bh=8aC46cyhFQ785ox2mpl2YTsyO7Jry51sIGIX6a2zlMQ=;
-        b=j5RTGYsLpiL2AqhLJaZEJp4Gpsoh/SqKPmPat3A3FD2KD95xc0g9RCDM6rENTm+1B7
-         looEFdtVpSIkLCWS49odBQbTje9ya9zchRXvfqNW2ID3AnCeDrM/8Vy/S249Fa2ZVCar
-         6BSTObT4ErxkXCFA67mU4NrZHTZ/Z3VFAJDoqQswJE2A1iX1POOOjqe9iyNhkhN3jekS
-         SbdOjPnRUK7kv2NN9/yhHkaos267POKwRtaThdvoeA0N/DuUDKvYwKKGWwIDbE5ce9qH
-         XMMwhD4JJdPs3uQw93NzRV5vPO79frq3sUbBVVikIe6axxphSb1Zur4E/fqblyZolHPm
-         LjIQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=KxaezKipBS23o61QK8eZk3AlZTmXnPtWw+JObqAW/p4=;
+        b=iX4Mpa2iwu1QJe5UP16IJ1yzs3heWBS6o0JK9yVfklsdQWzwBVtr5ii6fXbvpdpwYW
+         K1yXWbhE4TTPrW/Tp3EBg3lPw8CGV+ev3ZGDvtGU0ICP58HZFM0qk8devbiEhsZmF2EA
+         e2fuTPIVRS40+5AbLQ+92M6iadEiW+3TYg2vBKA08iwpsQyEYBXueoPMoGjS7AK9Pk0F
+         yEdNurMEATLzUTGs0+JSsoC83bG5SRLQZpKhisqj4xt2fGoi9vIKp4r/8grZmZ/R+WBN
+         hJ3cb6m5QTiqE7/X5lm3Db7rrjI4bsUJsAk0D2PK5hcggjR27lmzcrKIJwTmUBEyOkgo
+         zfBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i50si7364639qta.170.2019.06.17.04.08.51
+       dkim=pass header.i=@linaro.org header.s=google header.b=vpRMsVUV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 13sor3515039wmx.5.2019.06.27.09.49.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jun 2019 04:08:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 27 Jun 2019 09:49:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46098 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hcpVL-0006is-09
-	for alex.bennee@linaro.org; Mon, 17 Jun 2019 07:08:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48917)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hcpV9-0006hh-It
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 07:08:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hcpV7-0001Bj-Jz
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 07:08:39 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:39081)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hcpV5-00016F-VI
- for qemu-arm@nongnu.org; Mon, 17 Jun 2019 07:08:37 -0400
-Received: by mail-wr1-f67.google.com with SMTP id x4so9471621wrt.6
- for <qemu-arm@nongnu.org>; Mon, 17 Jun 2019 04:08:34 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vpRMsVUV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=KxaezKipBS23o61QK8eZk3AlZTmXnPtWw+JObqAW/p4=;
+        b=vpRMsVUV/nm5/ml4RovtUjO6KoxNioiuu3WDSg3Zz0mtcjxZozEt+IBRZVmz/tr4De
+         ZzMi1YVoazraEr7yY8VcE3jHaifK3RjFOYsrn4qVQnc5LivN8hxNXjt0MOPaTj9H+bYc
+         lNT+6CN0MtGoMN7p0T1zyiTjoDVHZLAHLACILdP3l856Rkr9TCM9d72kpXcdTf9yAB3a
+         U+7on4Vl6UZPS7TVYCVKqNpRJRcE2oOsfgvCJ6eAs19R2HsEv+/3SFmbOdB19kjL/iuc
+         LtbxzA+EjhtzCvv/ilrFgYRwQSng0SCBbYiHQs4FhqOPufclliwjnBG+V2TpOw11RjHb
+         DItw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to;
- bh=8aC46cyhFQ785ox2mpl2YTsyO7Jry51sIGIX6a2zlMQ=;
- b=YdKm+v8Wl4vkzif3y+tLYsiOvAycdt0B3aPM+jUhUyvlLvfnNrRQSaWh/IL2boAL//
- gkhvWV1t3B8/uAHWokIv3FmNHRp12dJ3CMRG9mO6epSq07YKM8fXAP63Om23KJNt0sP+
- V2bLg8I4ZLfyFYWw2vUV2C+GNToyduTbwOnRjBuBQr9/vr35wK6dnYaoQ78QWtNZh0aL
- 7rVX8tOslteaXlG0ew420Xz+HxwMg+LwCjZekgabxywo6GFtJxkdKixPS+m021N2FRVp
- hAPt2jqrYHXG0LrfmSp8p/g4Tk5t0KH14YU5SaK2RfUbIpoavR/5lnVHrImx0ymJprpe
- UcZw==
-X-Gm-Message-State: APjAAAUPALnV1LRvczDfXxDmJCw6/adljCxDuaLJxuQFCrtv3mTvERv+
- 7zh0sqdFJ45i35o0G/Dbf16luQ==
-X-Received: by 2002:adf:dc4b:: with SMTP id m11mr13901077wrj.51.1560769713401; 
- Mon, 17 Jun 2019 04:08:33 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id l12sm31950320wrb.81.2019.06.17.04.08.32
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 17 Jun 2019 04:08:32 -0700 (PDT)
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-References: <1555560291-3415-1-git-send-email-hongbo.zhang@linaro.org>
- <1555560291-3415-3-git-send-email-hongbo.zhang@linaro.org>
- <ed731639-5ed1-5473-f078-e62f8fa98678@redhat.com>
- <CAHmQWvAuQ9mwXA5uO3ShYyvP5ywOrck5kU4gPD_kGh5S39Va2w@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <cb17ecf4-d321-2f71-7528-2fd5aec2cccd@redhat.com>
-Date: Mon, 17 Jun 2019 13:08:31 +0200
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=KxaezKipBS23o61QK8eZk3AlZTmXnPtWw+JObqAW/p4=;
+        b=H2XSqSK6qVehEd3oFo9K9ge1sNOjupnvZDFlW27Md1r2oFAoIMBiyaGGV3CTRqo/PF
+         6oNBePvkopQRvmjVpMIancmFoLUpk2XvIgDjfgMOxPHLjqqQK09dZEFnAauccgsgS+F3
+         1FaBCvoOXiTy5RsKlfavvvZqH7TMO/rwWmDlhAtcF5p71vfVwFDbqlXWkcM/i3k0M6P9
+         2jMHzoLF7TV0AxGj+yTR6giUI47oEvRxiDRwCFoXnwXyrvMGKKs3YMkh6MLKz03KuHlF
+         u0HAucvVCAGo1P7QgFe2ZmdAknscX4ETguK5dpEiDmKX7ue2NS/72O1i9aaMy+VRCPpN
+         3tBA==
+X-Gm-Message-State: APjAAAW/HFMI7beQHxzi0Ms1HThAQ567/9sQgaRKsXvkb3gyL9A7GDd+
+	UACwYrvUb+ENvG8hhtFmBpJpNC5T
+X-Google-Smtp-Source: APXvYqw0dXcQ6SMbSTw0LaOL66eawMY2BJ3g6gMKi1zpD6dVL7zhuHJY0y3a9H8TpaOjRphG12Mdaw==
+X-Received: by 2002:a1c:c747:: with SMTP id x68mr3923706wmf.138.1561654144652;
+        Thu, 27 Jun 2019 09:49:04 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.2.137] (93-34-153-63.ip50.fastwebnet.it. [93.34.153.63])
+        by smtp.gmail.com with ESMTPSA id h90sm3796163wrh.15.2019.06.27.09.49.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jun 2019 09:49:04 -0700 (PDT)
+Subject: Re: [PATCH v2 07/14] target/arm/cpu64: max cpu: Introduce
+ sve<vl-bits> properties
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
+ eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
+ imammedo@redhat.com
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-8-drjones@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <be805987-250d-93a7-7d11-5204f0e16e7b@linaro.org>
+Date: Thu, 27 Jun 2019 18:49:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAHmQWvAuQ9mwXA5uO3ShYyvP5ywOrck5kU4gPD_kGh5S39Va2w@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="EDq9rOkvOFd8EAoX2g4c2SDBGNXWjgbcG"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 2/2] hw/arm: Add arm SBSA
- reference machine, devices part
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: avJkcbSqAt9w
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---EDq9rOkvOFd8EAoX2g4c2SDBGNXWjgbcG
-Content-Type: multipart/mixed; boundary="YnHE07YsvbE1QDnKfpcfe2ray0FttL2Qv";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, Laszlo Ersek <lersek@redhat.com>
-Message-ID: <cb17ecf4-d321-2f71-7528-2fd5aec2cccd@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v7 2/2] hw/arm: Add arm SBSA reference
- machine, devices part
-References: <1555560291-3415-1-git-send-email-hongbo.zhang@linaro.org>
- <1555560291-3415-3-git-send-email-hongbo.zhang@linaro.org>
- <ed731639-5ed1-5473-f078-e62f8fa98678@redhat.com>
- <CAHmQWvAuQ9mwXA5uO3ShYyvP5ywOrck5kU4gPD_kGh5S39Va2w@mail.gmail.com>
-In-Reply-To: <CAHmQWvAuQ9mwXA5uO3ShYyvP5ywOrck5kU4gPD_kGh5S39Va2w@mail.gmail.com>
-
---YnHE07YsvbE1QDnKfpcfe2ray0FttL2Qv
+In-Reply-To: <20190621163422.6127-8-drjones@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-TUID: J2vPDh2OSkHc
 
-On 6/16/19 1:41 PM, Hongbo Zhang wrote:
-> On Mon, 3 Jun 2019 at 18:54, Philippe Mathieu-Daud=C3=A9 <philmd@redhat=
-=2Ecom> wrote:
->>
->> Hi Hongbo, Ard.
->>
->> On 4/18/19 6:04 AM, Hongbo Zhang wrote:
->>> Following the previous patch, this patch adds peripheral devices to t=
-he
->>> newly introduced SBSA-ref machine.
->>>
->>> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
->>> ---
->>>  hw/arm/sbsa-ref.c | 451 ++++++++++++++++++++++++++++++++++++++++++++=
-++++++++++
->>>  1 file changed, 451 insertions(+)
->>>
->>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-[...]
->>> +static void create_one_flash(const char *name, hwaddr flashbase,
->>> +                             hwaddr flashsize, const char *file,
->>> +                             MemoryRegion *sysmem)
->>> +{
->>> +    /*
->>> +     * Create and map a single flash device. We use the same
->>> +     * parameters as the flash devices on the Versatile Express boar=
-d.
->>> +     */
->>> +    DriveInfo *dinfo =3D drive_get_next(IF_PFLASH);
->>> +    DeviceState *dev =3D qdev_create(NULL, "cfi.pflash01");
->>
->> Please use TYPE_PFLASH_CFI01 instead of "cfi.pflash01".
->>
->> I wanted to ask "does it has to be CFI01?" because this device model i=
-s
->> in bad shape, but I guess I answered myself looking at the EDK2 platfo=
-rm
->> code:
->>
->> - P30_CFI_ADDR_VENDOR_ID is not used
->> - NorFlashDxe::NorFlashReadCfiData() is not implemented
->> - All commands in NorFlashDxe uses:
->>     SEND_NOR_COMMAND(..., P30_CMD_...)
->>   which are specific to the Intel P30 Nor flash family (CFI01).
->>
->>> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->>> +    const uint64_t sectorlength =3D 256 * 1024;
->>> +
->>> +    if (dinfo) {
->>> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo)=
-,
->>> +                            &error_abort);
->>> +    }
->>> +
->>> +    qdev_prop_set_uint32(dev, "num-blocks", flashsize / sectorlength=
-);
->>> +    qdev_prop_set_uint64(dev, "sector-length", sectorlength);
->>> +    qdev_prop_set_uint8(dev, "width", 4);
->>> +    qdev_prop_set_uint8(dev, "device-width", 2);
->>> +    qdev_prop_set_bit(dev, "big-endian", false);
->>> +    qdev_prop_set_uint16(dev, "id0", 0x89);
->>> +    qdev_prop_set_uint16(dev, "id1", 0x18);
->>> +    qdev_prop_set_uint16(dev, "id2", 0x00);
->>> +    qdev_prop_set_uint16(dev, "id3", 0x00);
->>> +    qdev_prop_set_string(dev, "name", name);
->>> +    qdev_init_nofail(dev);
->>> +
->>> +    memory_region_add_subregion(sysmem, flashbase,
->>> +                                sysbus_mmio_get_region(SYS_BUS_DEVIC=
-E(dev), 0));
->>> +
->>> +    if (file) {
->>> +        char *fn;
->>> +        int image_size;
->>> +
->>> +        if (drive_get(IF_PFLASH, 0, 0)) {
->>> +            error_report("The contents of the first flash device may=
- be "
->>> +                         "specified with -bios or with -drive if=3Dp=
-flash... "
->>> +                         "but you cannot use both options at once");=
+On 6/21/19 6:34 PM, Andrew Jones wrote:
+> +    /*
+> +     * In sve_vq_map each set bit is a supported vector length of
+> +     * (bit-number + 1) * 16 bytes, i.e. each bit number + 1 is the vector
+> +     * length in quadwords. We need a map size twice the maximum
+> +     * quadword length though because we use two bits for each vector
+> +     * length in order to track three states: uninitialized, off, and on.
+> +     */
+> +    DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ * 2);
 
->>> +            exit(1);
->>> +        }
->>> +        fn =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, file);
->>> +        if (!fn) {
->>> +            error_report("Could not find ROM image '%s'", file);
->>> +            exit(1);
->>> +        }
->>> +        image_size =3D load_image_mr(fn, sysbus_mmio_get_region(sbd,=
- 0));
->>> +        g_free(fn);
->>> +        if (image_size < 0) {
->>> +            error_report("Could not load ROM image '%s'", file);
->>> +            exit(1);
->>> +        }
->>> +    }
->>> +}
->>> +
->>> +static void create_flash(const SBSAMachineState *vms,
->>> +                         MemoryRegion *sysmem,
->>> +                         MemoryRegion *secure_sysmem)
->>> +{
->>> +    /*
->>> +     * Create one secure and nonsecure flash devices to fill SBSA_FL=
-ASH
->>> +     * space in the memmap, file passed via -bios goes in the first =
-one.
->>> +     */
->>> +    hwaddr flashsize =3D vms->memmap[SBSA_FLASH].size / 2;
->>> +    hwaddr flashbase =3D vms->memmap[SBSA_FLASH].base;
->>> +
->>> +    create_one_flash("sbsa-ref.flash0", flashbase, flashsize,
->>> +                     bios_name, secure_sysmem);
->>> +    create_one_flash("sbsa-ref.flash1", flashbase + flashsize, flash=
-size,
->>> +                     NULL, sysmem);
->>
->> static const MemMapEntry base_memmap[] =3D {
->>     /* Space up to 0x8000000 is reserved for a boot ROM */
->>     [VIRT_FLASH] =3D              {          0, 0x08000000 },
->>
-> Hi Philippe,
-> Thank you for the long comments.
-> Some parts of this machine are based on the 'virt' machine, but I use
-> this flash memory map:
-> [SBSA_FLASH] =3D              {          0, 0x20000000 },
-> that are 256M *2 flashes.
-> Franky I didn't consider the product part number etc, just use the
-> original design in 'virt' and change the size large enough as I think.
+I don't see that having one continuous bitmap is more convenient than two.
+Indeed, there appear to be several places that would be clearer with two.
 
-I guess we are very lucky... The Micron PC28F00BP33EF is a 2Gib
-symmetrical blocks NOR flash, and the only CFI01 one I could find a
-datasheet :)
+> +static arm_vq_state arm_cpu_vq_map_get(ARMCPU *cpu, int vq)
+> +{
+> +    assert(vq <= ARM_MAX_VQ);
+> +
+> +    return test_bit(vq - 1, cpu->sve_vq_map) |
+> +           test_bit(vq - 1 + ARM_MAX_VQ, cpu->sve_vq_map) << 1;
+> +}
 
-"The 2Gb device employs a virtual chip enable feature, which combines
-two 1Gb die with a common chip enable".
+Neither easier nor more complex w/ one or two bitmaps.
 
-> Peter, Ard, do we need more considerations here?
->=20
->> So you are creating 2 identical flashes of 128MiB/2 =3D 64 MiB each wh=
-ich
->> are the biggest flash you can have:
->>
->> "The P30 family provides density upgrades from 64-Mbit through
->> 512-Mbit." On Intel, the 512-Mib case is particular in that it is buil=
-t
->> of 2x 256-Mib on the same die, with a virtual chip enable. It is simpl=
-er
->> to use a Micron or Numonyx model.
->>
->> I plan to use a whitelist of supported (and tested...) models, the one=
+> +static void arm_cpu_vq_map_init(ARMCPU *cpu)
+> +{
+> +    bitmap_zero(cpu->sve_vq_map, ARM_MAX_VQ * 2);
+> +    bitmap_set(cpu->sve_vq_map, ARM_MAX_VQ, ARM_MAX_VQ);
+> +}
 
->> you use seems the Micron JS28F512P30EF ('E' for 'Symetrically Blocked'=
-,
->> since the current model doesn't support bottom/top blocks layout), or =
-in
->> short: 28F512P30E.
->> Ard, is that OK?
->>
->> Checking EDK2 git history, the driver is part of ArmPlatformPkg,
->> imported in commit 1d5d0ae92d9541, based on 'Versatile Express'.
->>
->> On the Versatile Express and the RealView Emulation Baseboard user
->> guides, I only find reference of "64MB of NOR flash" with no specific =
-model.
->>
->> Peter, do you have physical access to tell me what flashes are used on=
+Clearer with two bitmaps.
 
->> real hardware? I googled for Linux console boot log but the kernel
->> doesn't seem to care about detecting/mapping the flash.
->>
->> QEMU added the flash to the Versatile board in commit 964c695a54ceda3a=
-,
->> with the following description:
->>
->>     - add support for the 64MB NOR CFI01 flash available at
->>     0x34000000 on the versatilepb board
->>
->> http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.dui0225d=
-/BBAJIHEC.html
->>
->> However on this link I only see "SSMC Chip Select 1, normally NOR flas=
-h
->> (During boot remapping, this can be NOR flash, Disk-on-Chip, or static=
+	bitmap_zero(cpu->sve_vq_map, ARM_MAX_VQ);
+	bitmap_set(cpu->sve_vq_uninit_map, 0, ARM_MAX_VQ);
 
->> expansion memory)". Again, nothing specific (which makes sense, why
->> restrict the users to a particuliar family, as long as the pinout matc=
-hes).
->>
->> The Manufacturer/Device ID used in QEMU (0x0089, 0x0018) correspond to=
+> +static bool arm_cpu_vq_map_is_finalized(ARMCPU *cpu)
+> +{
+> +    DECLARE_BITMAP(map, ARM_MAX_VQ * 2);
+> +
+> +    bitmap_zero(map, ARM_MAX_VQ * 2);
+> +    bitmap_set(map, ARM_MAX_VQ, ARM_MAX_VQ);
+> +    bitmap_and(map, map, cpu->sve_vq_map, ARM_MAX_VQ * 2);
+> +
+> +    return bitmap_empty(map, ARM_MAX_VQ * 2);
+> +}
 
->> the Micron 28F128J3D (128-Mbit, 128 symmetrical blocks of 128-KiB).
->> Neither the flash size (64 vs 16) nor the block size (256 vs 128) matc=
-h.
->>
->> The safer fix here is to find a CFI01 flash of 256 sectors of 256-KiB
->> and update the Manufacturer/Device IDs in QEMU. Luckily this matches t=
-he
->> 28F512P30E cited previously :)
->>
->> Regards,
->>
->> Phil.
-[...]
+Definitely clearer w/ 2 bitmaps,
+
+	return bitmap_empty(cpu->sve_vq_uninit_map);
 
 
---YnHE07YsvbE1QDnKfpcfe2ray0FttL2Qv--
+As for how sve-max-vq=Y and sveX={on,off} interoperate...  I wonder if we can
+just remove cpu->sve_max_vq.  That might simplify your code a bit.
 
---EDq9rOkvOFd8EAoX2g4c2SDBGNXWjgbcG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+What if sve-max-vq=Y "expands" to
 
------BEGIN PGP SIGNATURE-----
+	for (X = 1; X <= Y; X++) { sve(X*128)=on }
 
-iQIzBAEBCAAdFiEEicHnj2Ae6GyGdJXLoqP9bt6twN4FAl0HdK8ACgkQoqP9bt6t
-wN6pORAAvyFYZ0T9Wa5iR7CJdabdpg3g+TVkRhX2GVnPcdn/jCUmEhK46QDG/dDj
-48OIBGih/VnRtpvpWRg4UN0rsaVB9r9cOz6RacdNIRZCK5Y8I4o8Joh5qsBleAx7
-K8QY+it/VX/bpTERqy9HM5h5jdL2cepxLclDjB1HESBVtm3QjksM8pNgi/1av826
-L/nfBu9AFteZBWDyzqkKnPD7Li7BCjT3ItTzoXbjbfZFONxkA3H4kgl98nGKBkjo
-+HX6ZDytDSG7h2J7CIZBQ91x7jo/pZP8BO3GGRswz12b5Ne91fG4chOPgH96XpjX
-sMvqrZJy63qufT9QcI4dTkuTs6e5v76DkZWcKadbN2eIYyeLrAdzkWTqOIpsYFmR
-vJPi1eMhUs/O6K7MASzbn0ALydXSTfwI4nY2sgMUy96PGZ842cqCaHmhQD1ZBhH/
-Dfs7ojYdMC5DpNqdLJiUfFyImB4vzMjLp3NGBzQss1/I61u7dyNKdClcEbfwXvZT
-ObfYroEV+DT7cpWRUrmE0W+0+sKL5gbRuKaxCZteIxFw8h209cyErYAywhX93AIq
-BHq89NT42KAOkKGsbTnYUX3ggLdIHZeJ1MhCvDwkhD2DVa9rBYS429bxd+c6ocGb
-554fzkzCygJl27qR/Czz/RhTmvC9OJBlLxAAWL+C/58E9Mvqtq8=
-=ULjZ
------END PGP SIGNATURE-----
+Then you've got a reasonable in-order definition of how those two sets of
+switches interoperate.
 
---EDq9rOkvOFd8EAoX2g4c2SDBGNXWjgbcG--
+The uses of cpu->sve_max_vq within cpu.c and cpu64.c are all initialization
+stuff that you're replacing.
+
+The use within sve_zcr_len_for_el can be replaced by AVR_MAX_VQ.  Your "select
+supported vector size not larger than" code goes at the end of that function,
+such that we select a supported maximum no larger than the raw .LEN values.
+
+The use within aarch64_sve_narrow_vq should in fact assert that the given vq is
+set within cpu->sve_vq_map.
+
+
+r~

@@ -1,258 +1,90 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1046841wru;
-        Thu, 27 Jun 2019 02:13:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxdum6bORvX1XlaYG+TTk2zFvyvzzue6mJ9QFacMt1mhbNg7fI9XJSnyfrbvLVKoci2fj8C
-X-Received: by 2002:aa7:c2c8:: with SMTP id m8mr2738148edp.63.1561626836690;
-        Thu, 27 Jun 2019 02:13:56 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y27si1551362edd.235.2019.06.27.02.13.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jun 2019 02:13:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1201264wru;
+        Thu, 27 Jun 2019 04:56:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSFYCeJ3GM3hb7FTCiSvjhMO6XcheTrApvDjXlw6WmWNuVhJtTcsLKfHk8UFbHVjMk/3pi
+X-Received: by 2002:a37:a86:: with SMTP id 128mr2982781qkk.169.1561636578609;
+        Thu, 27 Jun 2019 04:56:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561636578; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PeRgLzKCVgBmGIS2kM0O0R1wkXDHFwDwNY2uEZlFgV9V/tIeBPtAkYSNUw3SWkoIWQ
+         nX9I7SZMIbyyOILqBT7KnCSXyCMpLLSPU0F7Ew424ThFFjVt+HOYv+bbJig3PWheptXl
+         Z0SpXbvHnSlzJ3vQTlzr1aR7YhaNIe96QoZVKLIT9DueqkW2a8V8P5oMYxeQ9douLZm9
+         sP/+dXKH0amS+/dKeF/nWCmBewrH+I/aXWguhfai0m5BUGeYdLj30ADDVyxIcaIxQKQb
+         jduq7fNj0AcgOuaoYeHASCtbJx04LbFHHOkwKO9hF5KmBSnt7Y2YEdVdWGHOM6glALEm
+         ZJhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=JNHyjtKXydQ2yT/xaM2FPPWnUv/XHAmNJDhcvJY8Wos=;
+        b=l3/SntoQyJyR+e28Ki7Cs/XAiK6VIa0lSk5IhG6q19tV41uhkDyZMbiten+xn+8UB+
+         wuYvIVX9Fg9e81b8JsZYoyb99o0pO9W3mvkRKuA9+Zg3faNYlbNT7XRkhuiXWToTLfCL
+         0MJp8Z0YtMdXjm4Rm1JUwlRpd9ZYt+VUZQC632MXx8e1fdLghY3NsbJ7OcDoJKEYE5o5
+         MsTYwUuIp3ybdbOffbeRrNoYkOje3RqAfqjx0olr354DrYWyZg/RgNrhozDlzBz+QSYg
+         sWy1IV4LPivnU7p/YkpIiQ44vbf/STGC21uYT1dHxsJZQkxOeU4rYS4xGEMegFNddLQu
+         gHtQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id 8si1555211qtu.149.2019.06.27.04.56.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jun 2019 04:56:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=6bMTHFN8;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47928 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hgQTb-0007oT-QT
-	for alex.bennee@linaro.org; Thu, 27 Jun 2019 05:13:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33468)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hgQTV-0007jK-1f
- for qemu-arm@nongnu.org; Thu, 27 Jun 2019 05:13:50 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hgQTT-0002S6-E4
- for qemu-arm@nongnu.org; Thu, 27 Jun 2019 05:13:48 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:47538)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hgQTS-0002OK-NG; Thu, 27 Jun 2019 05:13:47 -0400
-Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id C833396F50;
- Thu, 27 Jun 2019 09:13:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1561626821;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=arBfNMPCQv3qkWkmYgiEUs4XBc2W+7xxOBcjc1GEMeE=;
- b=6bMTHFN8i0QJGhuRDTyQeotjuRcdj8g6Y6Xug5LKIgWfr/KRm/GMUhv+QqU/KfcVGjWMnb
- HzCnX7b+x7eetBLTnT19K9Hrbh6M2pqIIXQ8sWsj9nDDJ/e8IFMy3OauZVI6D/W+vyGZeb
- Jvy0vC8x0rWkBp8wz0+YxhEd731+gu0=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190604162526.10655-1-damien.hedde@greensocs.com>
- <CAFEAcA-BJehtxkMLkfrmDvMWMY137=L3i_7vGHNS5ozSPNSgGA@mail.gmail.com>
-Message-ID: <05918526-8112-2489-815b-06dde729a159@greensocs.com>
-Date: Thu, 27 Jun 2019 11:13:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 79C4B3082E63;
+	Thu, 27 Jun 2019 11:56:11 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A4E54614D8;
+	Thu, 27 Jun 2019 11:56:08 +0000 (UTC)
+Date: Thu, 27 Jun 2019 13:56:06 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH v2 11/14] target/arm/kvm64: max cpu: Enable
+ SVE when available
+Message-ID: <20190627115606.c3pd3acjhufntrvr@kamzik.brq.redhat.com>
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-12-drjones@redhat.com>
+ <bd43a392-18a5-b04c-9a52-d4113ab1e5be@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-BJehtxkMLkfrmDvMWMY137=L3i_7vGHNS5ozSPNSgGA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1561626822;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=arBfNMPCQv3qkWkmYgiEUs4XBc2W+7xxOBcjc1GEMeE=;
- b=OEB4MLgCFojbiFSHBZ/5cUS+O5eAwiUKiPDdfo6Ry4jwoPtGJ9pS8bfYgvHzaZoYmzPN2y
- hVMX+EpxDQwva9JB7qHmsBVosgXr+67h0NieSpxpEqBqNgCgF1RbBIrJuNQiJEfMVo7JtT
- a1V4zFU1ZY8Avf5krUY90xSbmft2pRo=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1561626822; a=rsa-sha256; cv=none;
- b=WOZkRz271LYCNn3e+0TJoPoG4SoHDkBwBdsLDtHMMXPAkxBzwjKvz71S5b8ReuBlTObF/W
- PAqjmtbU11uOSpgHXl4DPAoI/FUCQe9tH1lcCDb3j+I7XbGTpACdcMxAc0zBy1Y5Mx6O4P
- MOU8X3DpGTx/DofU/4GcHgp6aS1f5ms=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [RFC PATCH v2 00/12] Multi-phase reset
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
- Alistair Francis <alistair@alistair23.me>, mark.burton@greensocs.com,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WC10gj42Y8cM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <bd43a392-18a5-b04c-9a52-d4113ab1e5be@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.46]); Thu, 27 Jun 2019 11:56:15 +0000 (UTC)
+X-TUID: bWpVFv8WK0Sa
 
-Hi
+On Wed, Jun 26, 2019 at 01:09:45PM +0200, Richard Henderson wrote:
+> On 6/21/19 6:34 PM, Andrew Jones wrote:
+> > @@ -675,6 +689,11 @@ static void aarch64_max_initfn(Object *obj)
+> >  
+> >      if (kvm_enabled()) {
+> >          kvm_arm_set_cpu_features_from_host(cpu);
+> > +        /*
+> > +         * KVM doesn't yet support the sve-max-vq property, but
+> > +         * setting cpu->sve_max_vq is also used to turn SVE on.
+> > +         */
+> > +        cpu->sve_max_vq = ARM_SVE_INIT;
+> 
+> Can we support this value with KVM_GET/SET_ONE_REG on ZCR_EL2?  (IIRC KVM
+> requires VHE to support SVE, so the host is always EL2 and the guest is always
+> EL1.)
+> 
+> Or do we need to probe this via normal userland prctl?
+> 
+> Or am I getting ahead of the patches to follow?
 
-On 6/18/19 6:13 PM, Peter Maydell wrote:
-> On Tue, 4 Jun 2019 at 17:25, Damien Hedde <damien.hedde@greensocs.com> wrote:
->>
->> Hi all,
->>
->> Here's the second version of the multi-phase reset proposal patches.
-> 
-> I've looked through the patches, and I think my current concerns
-> (stated briefly) are:
->  * I don't think we have the "don't call device implementations of
->    reset phase functions multiple times" semantics that I wanted;
->    OTOH I think the logic I suggested for those in comments on the
->    v1 of this series wouldn't work either.
+Hopefully mostly this, because I didn't understand the concern with VHE.
+If it still looks like something is missing after looking at other
+patches, then please come back to this to help me understand.
 
-I see now what you meant. I think it is possible but the cold/warm make
-it more complicated. It will need a "get_reset_kind" method which
-returns whether it's cold or warm.
-
->  * handling of "call the parent class's reset" is not very clean
->    (but this is a general QOM design issue)
-
-Is it the current good way of doing this ? (some kind of
-override_this_parent_method function)
-
->  * migration (see below)
-> 
->> # RESET DEPRECATION
->>
->> There is 3 changes in the current way of handling reset (for users or
->> developers of Devices)
->>
->> 1. qdev/qbus_reset_all
->>
->> Theses functions are deprecated by this series and should be replaced by
->> direct call to device_reset or bus_reset. There is only a few existing calls
->> so I can probably replace them all and delete the original functions.
-> 
-> Sounds good.
-> 
->> 2. old's device_reset
->>
->> There is a few call to this function, I renamed it *device_legacy_reset* to
->> handle the transition. This function allowed to reset only a given device
->> (and not its eventual qbus subtree). This behavior is not possible with
->> the Resettable interface. At first glance it seemed that it is used only on
->> device having no sub-buses so we could just use the new device_reset.
->> But I need to look at them more closely to be sure. If this behavior is really
->> needed (but why would we not reset children ?), it's possible to do a specific
->> function for Device to to 3-phases reset without the children.
-> 
-> Users of this function:
->  hw/audio/intel-hda.c
->   -- used by the HDA device to reset the HDACodecDevice, which has
->      no child buses
->  hw/hyperv/hyperv.c
->   -- resets the SynICState, which I think has no child buses
->  hw/i386/pc.c
->   -- resets the APIC, which has no child buses. (This reset is only
->      done as a workaround for lack of reset phases: the whole machine
->      is reset and then the APIC is re-reset last to undo any changes
->      that other devices might have made to it. Probably making the APIC
->      support phased reset would allow us to drop this hack.)
->  hw/ide/microdrive.c
->   -- called here to reset the MicroDriveState object. This does have
->      a child bus, but md_reset() explicitly calls ide_bus_reset(),
->      so it should be possible to clean this up.
->  hw/intc/spapr_xive.c
->   -- resets the SpaprXive device, which I think has no child buses
->  hw/ppc/pnv_psi.c
->   -- resets a XiveSource, which I think has no child buses
->  hw/ppc/spapr_pci.c
->   -- resets every QOM child of the SpaprPhbState. This one will
->      require closer checking, but my guess is that if there's a child
->      with a child bus then failure to reset the bus would be a bug.
->  hw/ppc/spapr_vio.c
->   -- resets an SpaprTceTable. This needs attention from an Spapr
->      expert but is probably ok.
->  hw/s390x/s390-pci-inst.c
->   -- resets the S390PCIBusDevice. Needs S390 expertise, but probably
->      either no child buses or failure to reset them is a bug.
->  hw/scsi/vmw_pvscsi.c
->   -- resets an individual SCSIDevice. I don't think those have child buses.
->  hw/sd/omap_mmc.c
->   -- resetting an SDState, which has no child bus
->  hw/sd/pl181.c
->   -- ditto.
-> 
-> So there are one or two not-totally-trivial cases but we should
-> be able to deal with these.
-
-Thanks for listing theses. Do you think I should includes all the
-switches in the series or just the trivial ones ?
-
-> 
->> 3. DeviceClass's reset and BusClass's methods
->>
->> This is the major change. The method is deprecated because reset methods are
->> now located in the interface class. In the series, I make the init phase
->> redirect to the original reset method of DeviceClass (or BusClass). There a
->> lot of use of the method and transitioning to 3-phases only reset will need
->> some work.
-> 
-> I think it should be possible to do the conversion mechanically
-> (eg with coccinelle). We can look at doing that later.
-> 
->> # MIGRATION
->>
->> Bus reset state migration is right now not handled.
->>
->> Regarding "migration-during-reset should Just Work, without necessarily
->> needing any specific changes for a device". The included patch define a vmsd
->> subsection which must to be added to every device main vmsd structure for
->> migration-during-reset of theses devices to work. I tried to find a way to
->> avoid that but really don't see how to achieve that.
->>
->> So in the current state of this series, migration can only be supported for
->> leaf device (in term of qdev/qbus) where we add the subsection.
->>
->> I'm not sure the migration is the problem here. I doubt a device will
->> support staying in reset state (which is a new feature) without manual
->> intervention. So migration of this unsupported state without any specific
->> change may not be a real asset.
-> 
-> The approach I thought would be good turns out not to actually work,
-> so I need to think a bit more about this.
-> 
-> I think what I would like to achieve is "default to doing the right
-> thing" -- ideally devices that add support for being held in reset
-> should not need to manually do something to make the bus/device reset
-> state be migrated properly. Otherwise we have an easy mistake to
-> make (forgetting to do the necessary handling of migration) when
-> adding a new device or making a device support being held in reset.
-
-To have a default behavior, we need to somehow handle that in the
-DeviceClass.
-Ideally speaking, this subsection could be handled during the device
-realization, when the vmsd is registered. But since we cannot
-dynamically add a new subsection to the device vmsd structure, we have
-to forge an extended new one (the same with additional subsection). It
-seems technically possible but this feels like a bad hacky idea.
-
-> 
-> Regarding "devices not supporting staying in reset state without
-> manual intervention" do you mean that they might not correctly
-> deal with incoming signals or guest register write attempts
-> in the held-in-reset state? That's true, but I don't think it's
-> too terrible. (In particular it's a bug that can be fixed without
-> breaking migration compatibility; and it seems unlikely that guest
-> software would be trying to read or write a device that it's put
-> into reset.)
-
-Yes it is what I meant.
-
-> 
-> thanks
-> -- PMM
-> 
+Thanks,
+drew

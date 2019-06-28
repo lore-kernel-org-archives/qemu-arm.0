@@ -1,259 +1,137 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2649543wru;
-        Fri, 28 Jun 2019 08:56:32 -0700 (PDT)
-X-Received: by 2002:a19:4b4c:: with SMTP id y73mr5247468lfa.129.1561737392863;
-        Fri, 28 Jun 2019 08:56:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561737392; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2696579wru;
+        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
+X-Received: by 2002:ac2:4243:: with SMTP id m3mr483295lfl.9.1561740385091;
+        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561740385; cv=none;
         d=google.com; s=arc-20160816;
-        b=x4x9pKok+HEVWg1Yr0grxmj3TjwwV/oNadZuHSiYKC/5iZmnSuOunuCktzw7oLb4ML
-         AJ1eI6VGHHXA+8iLFzHvP11t9eoDoTLQnifsmSUxIwSeg9dTplztEiK+pEMeVzsFcc2m
-         ZAVpc9QC7NS+1ROS/czX2oQn3fc/YECsOm74huE5Yw4SBcb1Scnx4EpPVx94qv05YkUy
-         WDWV89vMFP/H9J3UYqTpOKupMxaFyYENJaaHKZs/wUDE7iTOuahf1YQl9gW3cja+7wGV
-         PJunfJeq6hwiHxCodDZkWAMZhl7aegFgXicXxsxcGpL8mOp/fzqLNrnqWDlkawMSVpT4
-         yDZw==
+        b=BxqHQ+R6eII2GTMK2rFz9Baa0Yl5RGb5SM4T60Ia+Hmfzb4E7nLuENBysLNRJ7VXN5
+         qRIM5ZPB+CyByxozmOvA/S6CpttlE6cRPJZOaQVpzrVYdgTfIgMQE7jffX4zCBnyojUH
+         S+WRAt3Zu/nKXWcxlJQxYG1Rh5m18CEYedCR9tMZL5njYmsN9Q8PeRa7i3o9BcpSfn1M
+         CB1Djli5MPlmhwKCEbSipYYL/NBcp8vxJrO2PHpSxSarAiMDW0b+wtKjB8KXDJHLGnof
+         HDO002++kCTlcf59qj5Ur2mbXMfqlP4tBWrk6JZu765zTr4v8WykAlHeSPkDniOpq/Uw
+         jqfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=djfep1qt1pkv+oao2jPAzEOqrTllL9U3SoshfePHyo4=;
-        b=F61EGSqWQQQSKdxJkTpT6tVlOhiXCmp63DeBnyO62GkLiNHwekmfvo78susufyw4zv
-         hPQbGrLu8BiatqOmMEk77G42ajyn25juHx6hxfQmKskErewppKa6D3DR/nZaCDWka2qb
-         vlcGexJPUBJ8ecAPzxhDOLZKrn/03kcuHa67R5jPhRt7bdhMtvAJGSMoz8evcqIFyXjo
-         zUKz3ebawsaqYuHewPDk/KiiG3sxJNtIcHNX+FJ7sx2KgVSMUX/9kwhtIDjolBkcgrlm
-         +9k6N/aCoU3zEL1Y5XDdkZ0JujYRh4ifyKrHjDeiOvzR1oHCKu1Icnr/X3x1HVkEw8wi
-         kwnw==
+        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
+        b=IjWFnyBpiy3tu45O4zY9UiJSx8TpnN4lTXR6jqCoaJ/YxLsPP6RgPYmqHtPUJHAEzz
+         DrPI6387UmiWUlQ5mALi98EI/Kvyk3fdn5yCuKOje+mrhnDrNiFJVwGgI8iyOoe/He28
+         o1vgVGnsCBTTwn0YSKqae/3IZhGHYQfDzMBRPVNB4Tszq2sGp4l+z0b9HixICd8sAUhS
+         B+EJTH+ZnH4bmy49sy2j2+gIk/fste1xxoyCsI2zfy83PozY+KG8TbtHsxOj38fds3To
+         Yy7P2DFpc3bIxFXxyjbxqSOKshCtx5KB0CrpNS8bURXTbJKUUXWQbT5q1zG08FzjPD73
+         WIpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=frjSw4OI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uad2o0cM;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p62sor1798528ljb.39.2019.06.28.08.56.32
+        by mx.google.com with SMTPS id q21sor1891308lji.10.2019.06.28.09.46.24
         (Google Transport Security);
-        Fri, 28 Jun 2019 08:56:32 -0700 (PDT)
+        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=frjSw4OI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uad2o0cM;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=djfep1qt1pkv+oao2jPAzEOqrTllL9U3SoshfePHyo4=;
-        b=frjSw4OI3t4yMsUeUcGiiH09WNqNRmqbnWSYMauqN8x5uwSH6PQpBvwXdQ1wDyMrwM
-         i16r7+hFz15TKRHGXz8xB3zZRH0b/cL/H0PP8nkO/qoDspd5JkqwJvQBfjMa6vX/cizI
-         Jfb2h74wYVkOk08rj896dTqm8aGg4HQhxrWVnfmlK3WtWk3+08YoYbHC4KvmDvyUewD+
-         AAcuNCbgi4dH9bH7yPVPjJGl3H2WLFcWBUT9MBAH79/1TmYbt1quN97sOjcLfpPsYxRU
-         tNlRlYypScA9jwqR1slwj+jK9MxXeA9LuaPX8H1DuQj63kuZvTe0K6Rdf0gCTu6FEvu1
-         aMig==
+        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
+        b=uad2o0cMm/v4uFExCn6GXCZ995RWWyRvMxl6iqxIvTXzKYe/qvhdarBojlmCUum6rW
+         XySlyxCjKrPpetBffWG2f2H6bc94txIqTFgbBkD4d/Zs5oxjB5i+hPlanRRMSx/rTQ8F
+         UImnsTwQZRHF61lu+XXJveu/lF5Zssg2Zl9Aic/LSGwBEDck7O01bcHKZLh4vSX1DdDr
+         3jfQlCrwzxsJcnVNmSgIJDciRg7px29I2yKg9eu1U+wZ8JvYaFnp2BEGVL3bQRmtmcsc
+         MrVJDm3FsV15tg9+lxIzs9x7fuKcY7+1ulikGwZomvNzBKqEWnZlo29h/BJYlOAlkqe2
+         LDng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=djfep1qt1pkv+oao2jPAzEOqrTllL9U3SoshfePHyo4=;
-        b=Vz9BlFoNyvcJIzq0bN3q+DMFasm4Vfxou526GdKO49dnRA8j62RVLPCG5lzNgptU45
-         cDv6Ob8YgIvFONGXWK0lchy1drMwI/dH79HpB2dteFdgawQOW0i8cM3+DqQhXT0FTmqE
-         04nmebrPuWFq6+xAGsmsbFUTviPi7+9gZsD9hz809dEq0/LXwGDxvACzUUSH/L4LIE+B
-         5R/1RBobpzgkRlAlPREtxlr2+J3YKivsYbVas1eHNzCgtXYLsBtsb+hcvgC4hJpFg3s5
-         Dl6zFqHiKxOPuYBESq+RcJWUxp3UG767koj11qHZ7fmAo6Td4k1lFIxJDVbadEmKcaRW
-         UgAA==
-X-Gm-Message-State: APjAAAUiEQSgk13V+P2bcA1tnyoKQD+H3Q+JLwfTNg0f33YAH5ccrYm3
-	Eft03T4dGRlX5N8hf6pVkAjEWUoFd0/JAnH0x8ASd198Yz5ujw==
-X-Google-Smtp-Source: APXvYqy9+fdEhUfvMi7it8dL3t1svIO2yLX/8+k1ADHDmT/tv5i6B7gugQVe+MbHWni5pEJz9jKZb0jpYMrQTLDp1Ek=
-X-Received: by 2002:a2e:5d5a:: with SMTP id r87mr6642435ljb.196.1561737392514;
- Fri, 28 Jun 2019 08:56:32 -0700 (PDT)
+        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
+        b=bi5Ze0Zs/ZYqwjFzpbu8LK97toM6LgxXfGrg0DknGYeSE1H1Cbh4Ez0HDxQiebEWtb
+         IMMRlqj4ArAum15WJaJwR60ZHo71Vd98xPYct2tvawYdY0SiO0wjQk/f/Qpbs+514OEs
+         1ExSywTHI9hOvQ0VbdoPHBBZiA6zajoRS2gSscGCNYPo/bQ7dCqb+KdF2G6JB0D5+zjI
+         0GFAZQbmEDDJkXGUFjhFcwdtb2rD59/3VWtuB67C9l4oZ5HohRnIl/P5LNqz4QDeF5MU
+         aHDk2D/QBPlyUIMFj9DMdSLBv8Q/1Qb4LLl3JqztX8vxGwdymveQkevLZjEBxKNddK5K
+         rgag==
+X-Gm-Message-State: APjAAAVCoFu3uMM2T0BURahIIHcLVCeLMNMDhNCPQa5wdhfHzW95CkNz
+	Yz06nih7N/G7aSB7rS4gPrDTXnsmPesIjNS4TcQ=
+X-Google-Smtp-Source: APXvYqwvWulw5oOGJ5qVLM6Ryye6q7t53F3cIdvQOqjTI3rsaABEBgkw1nQ4gRKKpCX9ZQNzsSDfSJpzspiORL+BVus=
+X-Received: by 2002:a2e:5d5a:: with SMTP id r87mr6777381ljb.196.1561740384800;
+ Fri, 28 Jun 2019 09:46:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-3-philmd@redhat.com>
- <BCB1CC45-F457-4F8B-8F9E-DC70CF9CE35A@oberlin.edu>
-In-Reply-To: <BCB1CC45-F457-4F8B-8F9E-DC70CF9CE35A@oberlin.edu>
+References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-20-philmd@redhat.com>
+In-Reply-To: <20190627202719.17739-20-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 28 Jun 2019 08:53:32 -0700
-Message-ID: <CAKmqyKNQ0pMiHMLHTcj_R9FwaoPSEA8nS9qh_CxviJZfPe9ijA@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v5 02/28] hw/block/pflash: Simplify trace_pflash_io_read/write()
-To: Stephen Checkoway <stephen.checkoway@oberlin.edu>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+Date: Fri, 28 Jun 2019 09:43:20 -0700
+Message-ID: <CAKmqyKPdRe5iXDEo6EXse4s5QZ59_dWCRV07qSCOPh9rVNW2Yg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v5 19/28] hw/block/pflash_cfi02: Extract pflash_regions_count()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
 	Qemu-block <qemu-block@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Alistair Francis <alistair@alistair23.me>, Magnus Damm <magnus.damm@gmail.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>, 
+	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>, 
 	"open list:New World" <qemu-ppc@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>, 
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
-	John Snow <jsnow@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	David Gibson <david@gibson.dropbear.id.au>
+	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: XhVkCuvAGSIE
+X-TUID: xoVakLn1pmd3
 
-On Thu, Jun 27, 2019 at 2:50 PM Stephen Checkoway
-<stephen.checkoway@oberlin.edu> wrote:
+On Thu, Jun 27, 2019 at 1:54 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
 >
-> Hi Phil,
+> Extract the pflash_regions_count() function, the code will be
+> easier to review.
 >
-> Thanks for pushing this forward! I'll try to get to the rest of these ear=
-ly next week.
->
-> > On Jun 27, 2019, at 16:26, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
-> >
-> > Call the read() trace function after the value is set, so we can
-> > log the returned value.
-> > Rename the I/O trace functions with '_io_' in their name.
-> >
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > ---
-> > hw/block/pflash_cfi01.c | 5 +++--
-> > hw/block/pflash_cfi02.c | 6 ++----
-> > hw/block/trace-events   | 4 ++--
-> > 3 files changed, 7 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> > index 35080d915f..74fc1bc2da 100644
-> > --- a/hw/block/pflash_cfi01.c
-> > +++ b/hw/block/pflash_cfi01.c
-> > @@ -288,7 +288,6 @@ static uint32_t pflash_read(PFlashCFI01 *pfl, hwadd=
-r offset,
-> >     uint32_t ret;
-> >
-> >     ret =3D -1;
-> > -    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
-> >     switch (pfl->cmd) {
-> >     default:
-> >         /* This should never happen : reset state & treat it as a read =
-*/
-> > @@ -391,6 +390,8 @@ static uint32_t pflash_read(PFlashCFI01 *pfl, hwadd=
-r offset,
-> >
-> >         break;
-> >     }
-> > +    trace_pflash_io_read(offset, width, width << 1, ret, pfl->cmd, pfl=
-->wcycle);
->
-> width * 2 might make it more clear what is going on.
->
-> > +
-> >     return ret;
-> > }
-> >
-> > @@ -453,7 +454,7 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr o=
-ffset,
-> >
-> >     cmd =3D value;
-> >
-> > -    trace_pflash_write(offset, value, width, pfl->wcycle);
-> > +    trace_pflash_io_write(offset, width, width << 1, value, pfl->wcycl=
-e);
->
-> Same here.
->
-> >     if (!pfl->wcycle) {
-> >         /* Set the device in I/O access mode */
-> >         memory_region_rom_device_set_romd(&pfl->mem, false);
-> > diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> > index eb106f4996..f05cd507b3 100644
-> > --- a/hw/block/pflash_cfi02.c
-> > +++ b/hw/block/pflash_cfi02.c
-> > @@ -145,7 +145,6 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwadd=
-r offset,
-> >     uint8_t *p;
-> >
-> >     ret =3D -1;
-> > -    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
-> >     /* Lazy reset to ROMD mode after a certain amount of read accesses =
-*/
-> >     if (!pfl->rom_mode && pfl->wcycle =3D=3D 0 &&
-> >         ++pfl->read_counter > PFLASH_LAZY_ROMD_THRESHOLD) {
-> > @@ -241,6 +240,7 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwadd=
-r offset,
-> >         }
-> >         break;
-> >     }
-> > +    trace_pflash_io_read(offset, width, width << 1, ret, pfl->cmd, pfl=
-->wcycle);
->
-> And here.
->
-> >
-> >     return ret;
-> > }
-> > @@ -267,6 +267,7 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr o=
-ffset,
-> >     uint8_t *p;
-> >     uint8_t cmd;
-> >
-> > +    trace_pflash_io_write(offset, width, width << 1, value, pfl->wcycl=
-e);
->
-> And here.
->
-> >     cmd =3D value;
-> >     if (pfl->cmd !=3D 0xA0 && cmd =3D=3D 0xF0) {
-> > #if 0
-> > @@ -275,11 +276,8 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr =
-offset,
-> > #endif
-> >         goto reset_flash;
-> >     }
-> > -    trace_pflash_write(offset, value, width, pfl->wcycle);
-> >     offset &=3D pfl->chip_len - 1;
-> >
-> > -    DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d\n", __func__,
-> > -            offset, value, width);
-> >     boff =3D offset & (pfl->sector_len - 1);
-> >     if (pfl->width =3D=3D 2)
-> >         boff =3D boff >> 1;
-> > diff --git a/hw/block/trace-events b/hw/block/trace-events
-> > index 97a17838ed..f637fe918e 100644
-> > --- a/hw/block/trace-events
-> > +++ b/hw/block/trace-events
-> > @@ -7,9 +7,9 @@ fdc_ioport_write(uint8_t reg, uint8_t value) "write reg=
- 0x%02x val 0x%02x"
-> > # pflash_cfi02.c
-> > # pflash_cfi01.c
-> > pflash_reset(void) "reset"
-> > -pflash_read(uint64_t offset, uint8_t cmd, int width, uint8_t wcycle) "=
-offset:0x%04"PRIx64" cmd:0x%02x width:%d wcycle:%u"
-> > -pflash_write(uint64_t offset, uint32_t value, int width, uint8_t wcycl=
-e) "offset:0x%04"PRIx64" value:0x%03x width:%d wcycle:%u"
-> > pflash_timer_expired(uint8_t cmd) "command 0x%02x done"
-> > +pflash_io_read(uint64_t offset, int width, int fmt_width, uint32_t val=
-ue, uint8_t cmd, uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%0*=
-x cmd:0x%02x wcycle:%u"
-> > +pflash_io_write(uint64_t offset, int width, int fmt_width, uint32_t va=
-lue, uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%0*x wcycle:%u"
-> > pflash_data_read8(uint64_t offset, uint32_t value) "data offset:0x%04"P=
-RIx64" value:0x%02x"
-> > pflash_data_read16(uint64_t offset, uint32_t value) "data offset:0x%04"=
-PRIx64" value:0x%04x"
-> > pflash_data_read32(uint64_t offset, uint32_t value) "data offset:0x%04"=
-PRIx64" value:0x%08x"
-> > --
-> > 2.20.1
-> >
->
-> Either way,
->
-> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
->
-> (And please let me know if I'm doing code review incorrectly or if that s=
-hould be Reviewed-by or whatever.)
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-For code review it should be Reviewed-by (or Acked-by if you are less sure)=
-.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
+> ---
+>  hw/block/pflash_cfi02.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 >
-> Cheers,
+> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+> index 1f096ec185..a0d3bd60dc 100644
+> --- a/hw/block/pflash_cfi02.c
+> +++ b/hw/block/pflash_cfi02.c
+> @@ -157,6 +157,11 @@ static void pflash_register_memory(PFlashCFI02 *pfl,=
+ int rom_mode)
+>      pfl->rom_mode =3D rom_mode;
+>  }
 >
-> Steve
->
+> +static size_t pflash_regions_count(PFlashCFI02 *pfl)
+> +{
+> +    return pfl->cfi_table[0x2c];
+> +}
+> +
+>  static void pflash_timer (void *opaque)
+>  {
+>      PFlashCFI02 *pfl =3D opaque;
+> @@ -192,9 +197,8 @@ static uint64_t pflash_data_read(PFlashCFI02 *pfl, hw=
+addr offset,
+>  static uint32_t pflash_sector_len(PFlashCFI02 *pfl, hwaddr offset)
+>  {
+>      assert(offset < pfl->chip_len);
+> -    int nb_regions =3D pfl->cfi_table[0x2C];
+>      hwaddr addr =3D 0;
+> -    for (int i =3D 0; i < nb_regions; ++i) {
+> +    for (int i =3D 0; i < pflash_regions_count(pfl); ++i) {
+>          uint64_t region_size =3D (uint64_t)pfl->nb_blocs[i] * pfl->secto=
+r_len[i];
+>          if (addr <=3D offset && offset < addr + region_size) {
+>              return pfl->sector_len[i];
 > --
-> Stephen Checkoway
->
->
->
->
+> 2.20.1
 >
 >

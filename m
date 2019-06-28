@@ -1,73 +1,74 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp149035wru;
-        Fri, 28 Jun 2019 16:16:28 -0700 (PDT)
-X-Received: by 2002:a2e:9ad1:: with SMTP id p17mr7793194ljj.34.1561763788098;
-        Fri, 28 Jun 2019 16:16:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561763788; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp149401wru;
+        Fri, 28 Jun 2019 16:16:58 -0700 (PDT)
+X-Received: by 2002:a2e:3a13:: with SMTP id h19mr7496372lja.220.1561763818263;
+        Fri, 28 Jun 2019 16:16:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561763818; cv=none;
         d=google.com; s=arc-20160816;
-        b=A2WExOfpbuGNwRmaB1J00ScpOC2EI4bvAdyusJ3n/EjRs4PLKnDB9EX5g9INfdzIOa
-         oCHHSbziIKtB1zs31CbNUAz/nnO6DEyceUZjIZnqa15uhnCvfSSAx1UydWAppuboGOJX
-         dBh8OAQmxA60hDIGlC5OzJVJP4cxwsaYkiGYqVvPkm9O3NKQAUvz4rlemtxQb87MFYDX
-         4VONnBEeGBwKQYyeVIT9igQaY4HcDETT1TmSBfyuFGQGxRytJ9TF5q1iMUxWjM4txid2
-         crq6qNkvyS56enlGZbWQnPalRV2Je87BoJ6mtkV6OB/4a5T1nks8rV45l2cPyvDXfM7o
-         /6Kw==
+        b=SqgyqGiE7CXOD62tKMJl3rTrDMfcJoKe4ALr4bNGf7VGPPO7JwJ9dvz4/qV+In9RvU
+         6Tqp6jYZ1GCPKL4sgKzKmDb4XeRthifWdRrH19K6XvnF/AC96zSHTcUBIeuDammvy8f+
+         QdzcX77IOmln6tvUBZSBXrdhMbYnNap63M+Rw3W7ozjM2XIfWnUyhFhlAa2esSNLmOoR
+         mVr/OVvzyIEJGEmfo3a/PqhkaDy5n4aesM2LJZlf77XdMmiCPinHM+gty7PgcriZHKE6
+         yhG8sfpz91yEXmpAFSYxcurW93KjWpX1qlnG9HFuldoAdmm15WjiL3XsqDi8gpVc26gk
+         E2rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=c2cFcUEayjaeyZAvgWneP1t9vQDYrLkELQ3ZZtuA75o=;
-        b=iIPelumfX7lsQI+E0zLIrKTooMGGMdYFUXqP9jqoIBFAlE+dVQBWFuAYZXm6+gla8D
-         2RAVUlKWdHeJuZXljwQpVhQbjCC3/ZksnOGURmNNb35bbCQGaE/aXaXRJpbPFa3tX44h
-         dx6WyyqTLglu9VKuilAoIRr9z0UkyQOQwNkXE/sFPPDZkxWlGaS0+E94SyhxRe532CPx
-         lHmZTBOFzP7I0LAtTU22/WswTSt/KEwPYbVnkAxOh33O7wnxGq7ctCswPfOYHqv9E2ZM
-         8cAkDYs0rjNtsb+nagsgNw16IB7FoqwWpUGtxt4jx7kF4XX+z/JsxTt8JqXJLnBkMzIW
-         uYDg==
+        bh=JpK8Lwt8b8p9UFL6KUVXrJWkSJM2HNjtFLirM0QdfV4=;
+        b=zCWRmL3Sqwt22Kordf342MmvjUaa3E5KJjvb4gNtKHuIb9WXHVtkldsi8JQ35Meqh9
+         CdNaeOxh0/BizNuHtisUKN3a7TRfIiueaKINGft8XtFJg1QV240n7nn6UtE7Lwm7jls2
+         IZVj+B6AQYbfkRYtlAazr2HogsqWxYBgk1rvjuUijdCLbBJtgE0cCU5gGBLjvxPGk/pb
+         gcA1qXw/NnbzV4l+c/CUK0QrYAFKVLNiadHu0/YCAevUWPrlospVCQfW/txYqrCUc8aS
+         /kuIWD7hPDc/Q99Hwp7LqwBRLDqB0dXz31zLG3QSx+jf01S+ommPxtpv6siWiVCbv15d
+         QHAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=B3idFe96;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IE1R1h4o;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 6sor2348725ljs.44.2019.06.28.16.16.27
+        by mx.google.com with SMTPS id 186sor1001905lfb.10.2019.06.28.16.16.58
         (Google Transport Security);
-        Fri, 28 Jun 2019 16:16:28 -0700 (PDT)
+        Fri, 28 Jun 2019 16:16:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=B3idFe96;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=IE1R1h4o;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=c2cFcUEayjaeyZAvgWneP1t9vQDYrLkELQ3ZZtuA75o=;
-        b=B3idFe96yPaMeYbsHUIunZHTHxWUnv7Y58hqpK71SaQucbEWxZoQpacUlgfPeFhMp8
-         QoTz8sq3HkIzsHisaXVc4KfCLyQBN+eFOBLDhIN9JofQRDeY73hdW8lFC4+2oV+hgErl
-         pywsJqFH2ThY4A+DfOscSGXAYtSqxuI98myKQIUNhn+2+8UhOghpjj3Twqcv2KMLav5r
-         sZ/9WzTzZNkA0aZp7fzp3NOVoMzbH56PAPNUFH0tdiPTxn1YV3dmgTNjl4KdONoRxEVb
-         PcpL1OB5totbmpg6ze+MfmfBExHqKO0fN4izdH0gkxdcfl0OKKGUq3D4ecDABzirTiPX
-         zjFQ==
+        bh=JpK8Lwt8b8p9UFL6KUVXrJWkSJM2HNjtFLirM0QdfV4=;
+        b=IE1R1h4ol6xl3o0MBXm4vhc1RwrqHqQCVpSGM1RiJwDhAkNd5ZrHyA98qkHG3ylo6y
+         3GHF5F+/QBVDOUNFmEdVebZtz+xoTxugo9gsInGuzbRzFplq406AtTuRXzAltE8M4VYu
+         nngVq0AEjUZnFTnn8ZAgbZMfgnwsHFExc57/5oYhhmFf0DtUZUVWZQeOuyu1Mp521gpe
+         8v2l3H8svNJ15yF9LOQ1aszx4CHjeUCzp9EjgDcAuNiZSN54swENoXZ6FhPJRSKj+3TH
+         5DUeghvLYRoTqFNXSmSRaAZoTTBHbiqg/7pfQwHOT/YwSZr8ReZvderK7QOha/TuH+nK
+         4++A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=c2cFcUEayjaeyZAvgWneP1t9vQDYrLkELQ3ZZtuA75o=;
-        b=p19g3PHKe48VyLuiVV4fx+SLHYtsX62LnKJHuL1c/nQvxEzpnSDiPmVa8DhGX0+Ip4
-         2fTWWdnewR40St5UaMjGP0+sALrJcOnqRm0V82i26Eb8QpBaQWOWN2EDjQFXUkYdcA6e
-         3xNkTcOFe8iz1auZdJaaMLGyDh3T5ara6c7OidArknVU1pEEnKRG8JXpXS+D1ulCMmB3
-         RMR6pF3vhNPwBuDRLf1sMv73qmMgYNELCYgFZ789vvlr8iSwMydsBOvD2edaqF7OZkzA
-         fHE5lLY38Gm2cWYX7T+rbHM7OpMADm/OWEW7YOUonX8H5oVdCv3LvHrhoFgsd6XfFO0F
-         xtAw==
-X-Gm-Message-State: APjAAAWuITs0r8wy4tnhb0TcFBQp0zsgJ9qdH2hUmKQzp/Cmfx+A5CHw
-	AeCVERER5C6w15vVs14NgdS3lbPd+ZrRJa+ZkBk=
-X-Google-Smtp-Source: APXvYqwyY2pAKqzC4W2lxDU+l6q/Ho4sYLvSjXnnNIHdW1V21QK2JZegpRv97vLVCJ6+JqrbCjUDri9skTJEFYX8/b4=
-X-Received: by 2002:a2e:86cc:: with SMTP id n12mr7518196ljj.146.1561763787756;
- Fri, 28 Jun 2019 16:16:27 -0700 (PDT)
+        bh=JpK8Lwt8b8p9UFL6KUVXrJWkSJM2HNjtFLirM0QdfV4=;
+        b=YQKsCPmly3zW24Hvdx2d9ZBDDJqWnrZCBhXRRq+hzca1CknWykncZuPOCyw34l3el0
+         uJjzRuJX5nL5eG0jy+OfCHfNFEgbVqWtWnFxvvePhWKUEABCWGLw44yUrzvnqQNJhSGA
+         qUcSu+xM/blMfpe74cZkKy3B98BKp2ITTIm3sL2T4DNr1JxnwRkbJxMWrHw5U5Qtb4a8
+         bZQ3RzxTFWhvR04uHhAPzC/OOR9fdMYBjPsVNp0MkHn8WA+jJHpdrx9KgQ+SmpFQjuji
+         bW11FXqVRpbZcrPeZuucRj22ew9r/AOqfFbytXC8C/SRxDxlHf8HKL+N4LbMTfH9dRTS
+         nHiw==
+X-Gm-Message-State: APjAAAXBFM/EwvnghMS+TXQlSOa3tUS/QVNKlrAXR3Z4iblyW3v1+UiI
+	gtX5p3KN1lCShtqAr9M0wG8XEiSEQ7NEMPYmup4=
+X-Google-Smtp-Source: APXvYqxAhIKzzT8/TuPuBmOTKuIQj93pneUu/kxL6iTqlogSyIH2AY5iITRYzSltnjfz6RaOtj3fnfZt5WujXw8fZys=
+X-Received: by 2002:a19:710b:: with SMTP id m11mr6288717lfc.135.1561763817934;
+ Fri, 28 Jun 2019 16:16:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-28-philmd@redhat.com>
-In-Reply-To: <20190627202719.17739-28-philmd@redhat.com>
+References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-29-philmd@redhat.com>
+In-Reply-To: <20190627202719.17739-29-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 28 Jun 2019 16:13:27 -0700
-Message-ID: <CAKmqyKNK8FUyGwxQPJ47jjeRDETyFZx1t7+YFGc8JvTdzoaa6w@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v5 27/28] hw/block/pflash_cfi02: Document commands
+Date: Fri, 28 Jun 2019 16:13:57 -0700
+Message-ID: <CAKmqyKNTq3Sj_Fr3rvOccU2DeuZryvJL1=HhjmVWJMGWKz7OHg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v5 28/28] hw/block/pflash_cfi02: Reduce I/O
+ accesses to 16-bit
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
@@ -83,10 +84,13 @@ Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
 	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: spKk+N/TKHyc
+X-TUID: to99sVkPtUNs
 
-On Thu, Jun 27, 2019 at 1:58 PM Philippe Mathieu-Daud=C3=A9
+On Thu, Jun 27, 2019 at 1:55 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
+>
+> Parallel NOR flashes are limited to 16-bit bus accesses.
+> Remove the 32-bit dead code.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -95,165 +99,42 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/block/pflash_cfi02.c | 40 +++++++++++++++++++---------------------
->  1 file changed, 19 insertions(+), 21 deletions(-)
+>  hw/block/pflash_cfi02.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 >
 > diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index e9519cbae8..db9dc7d8fb 100644
+> index db9dc7d8fb..d1f28b02b9 100644
 > --- a/hw/block/pflash_cfi02.c
 > +++ b/hw/block/pflash_cfi02.c
-> @@ -327,7 +327,7 @@ static uint64_t pflash_read(void *opaque, hwaddr offs=
+> @@ -317,8 +317,6 @@ static uint64_t pflash_read(void *opaque, hwaddr offs=
 et, unsigned int width)
->          pfl->wcycle =3D 0;
->          pfl->cmd =3D 0;
->          /* fall through to the read code */
-> -    case 0x80:
-> +    case 0x80: /* Erase (unlock) */
->          /* We accept reads during second unlock sequence... */
->      case 0x00:
->          if (pflash_erase_suspend_mode(pfl) &&
-> @@ -342,8 +342,7 @@ static uint64_t pflash_read(void *opaque, hwaddr offs=
-et, unsigned int width)
->          /* Flash area read */
->          ret =3D pflash_data_read(pfl, offset, width);
->          break;
-> -    case 0x90:
-> -        /* flash ID read */
-> +    case 0x90: /* flash ID read */
->          switch (boff) {
->          case 0x00:
->          case 0x01:
-> @@ -364,11 +363,11 @@ static uint64_t pflash_read(void *opaque, hwaddr of=
-fset, unsigned int width)
->          }
->          DPRINTF("%s: ID " TARGET_FMT_plx " %" PRIx64 "\n", __func__, bof=
-f, ret);
->          break;
-> -    case 0x10:
-> -    case 0x30:
-> +    case 0x10: /* Chip Erase */
-> +    case 0x30: /* Sector Erase */
->          /* Toggle bit 2 during erase, but not program. */
->          toggle_dq2(pfl);
-> -    case 0xA0:
-> +    case 0xA0: /* Program */
->          /* Toggle bit 6 */
->          toggle_dq6(pfl);
->          /* Status register read */
-> @@ -470,7 +469,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
+>      boff =3D offset & 0xFF;
+>      if (pfl->width =3D=3D 2) {
+>          boff =3D boff >> 1;
+> -    } else if (pfl->width =3D=3D 4) {
+> -        boff =3D boff >> 2;
+>      }
+>      switch (pfl->cmd) {
+>      default:
+> @@ -449,8 +447,6 @@ static void pflash_write(void *opaque, hwaddr offset,=
  uint64_t value,
->              return;
->          }
->          /* Handle erase resume in erase suspend mode, otherwise reset. *=
-/
-> -        if (cmd =3D=3D 0x30) {
-> +        if (cmd =3D=3D 0x30) { /* Erase Resume */
->              if (pflash_erase_suspend_mode(pfl)) {
->                  /* Resume the erase. */
->                  timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRT=
-UAL) +
-> @@ -485,7 +484,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
+>      boff =3D offset;
+>      if (pfl->width =3D=3D 2) {
+>          boff =3D boff >> 1;
+> -    } else if (pfl->width =3D=3D 4) {
+> -        boff =3D boff >> 2;
+>      }
+>      /* Only the least-significant 11 bits are used in most cases. */
+>      boff &=3D 0x7FF;
+> @@ -710,6 +706,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
  uint64_t value,
->              goto reset_flash;
->          }
->          /* Ignore erase suspend. */
-> -        if (cmd =3D=3D 0xB0) {
-> +        if (cmd =3D=3D 0xB0) { /* Erase Suspend */
->              return;
->          }
->          if (boff !=3D pfl->unlock_addr0 || cmd !=3D 0xAA) {
-> @@ -516,9 +515,9 @@ static void pflash_write(void *opaque, hwaddr offset,=
- uint64_t value,
->          case 0x20:
->              pfl->bypass =3D 1;
->              goto do_bypass;
-> -        case 0x80:
-> -        case 0x90:
-> -        case 0xA0:
-> +        case 0x80: /* Erase */
-> +        case 0x90: /* Autoselect */
-> +        case 0xA0: /* Program */
->              pfl->cmd =3D cmd;
->              DPRINTF("%s: starting command %02x\n", __func__, cmd);
->              break;
-> @@ -529,10 +528,10 @@ static void pflash_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->          break;
->      case 3:
->          switch (pfl->cmd) {
-> -        case 0x80:
-> +        case 0x80: /* Erase */
->              /* We need another unlock sequence */
->              goto check_unlock0;
-> -        case 0xA0:
-> +        case 0xA0: /* Program */
->              if (pflash_erase_suspend_mode(pfl) &&
->                  pflash_sector_is_erasing(pfl, offset)) {
->                  /* Ignore writes to erasing sectors. */
-> @@ -562,7 +561,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
- uint64_t value,
->              if (pfl->bypass)
->                  goto do_bypass;
->              goto reset_flash;
-> -        case 0x90:
-> +        case 0x90: /* Autoselect */
->              if (pfl->bypass && cmd =3D=3D 0x00) {
->                  /* Unlock bypass reset */
->                  goto reset_flash;
-> @@ -585,11 +584,11 @@ static void pflash_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->          }
->      case 4:
->          switch (pfl->cmd) {
-> -        case 0xA0:
-> +        case 0xA0: /* Program */
->              /* Ignore writes while flash data write is occurring */
->              /* As we suppose write is immediate, this should never happe=
-n */
->              return;
-> -        case 0x80:
-> +        case 0x80: /* Erase */
->              goto check_unlock1;
->          default:
->              /* Should never happen */
-> @@ -604,7 +603,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
- uint64_t value,
->              goto reset_flash;
->          }
->          switch (cmd) {
-> -        case 0x10:
-> +        case 0x10: /* Chip Erase */
->              if (boff !=3D pfl->unlock_addr0) {
->                  DPRINTF("%s: chip erase: invalid address " TARGET_FMT_pl=
-x "\n",
->                          __func__, offset);
-> @@ -621,8 +620,7 @@ static void pflash_write(void *opaque, hwaddr offset,=
- uint64_t value,
->              timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)=
- +
->                        (1ULL << pfl->cfi_table[0x22]) * SCALE_MS);
->              break;
-> -        case 0x30:
-> -            /* Sector erase */
-> +        case 0x30: /* Sector erase */
->              pflash_sector_erase(pfl, offset);
->              break;
->          default:
-> @@ -633,10 +631,10 @@ static void pflash_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->          break;
->      case 6:
->          switch (pfl->cmd) {
-> -        case 0x10:
-> +        case 0x10: /* Chip Erase */
->              /* Ignore writes during chip erase */
->              return;
-> -        case 0x30:
-> +        case 0x30: /* Sector erase */
->              if (cmd =3D=3D 0xB0) {
->                  /*
->                   * If erase suspend happens during the erase timeout (so=
- DQ3 is
+>  static const MemoryRegionOps pflash_cfi02_ops =3D {
+>      .read =3D pflash_read,
+>      .write =3D pflash_write,
+> +    .impl.max_access_size =3D 2,
+>      .valid.min_access_size =3D 1,
+>      .valid.max_access_size =3D 4,
+>      .endianness =3D DEVICE_NATIVE_ENDIAN,
 > --
 > 2.20.1
 >

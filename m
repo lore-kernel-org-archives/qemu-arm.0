@@ -1,204 +1,228 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2707660wru;
-        Fri, 28 Jun 2019 10:00:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2uN4nCuBlXC+4jaofJn8ISCW8HXhIDDKCskm18Vvbhyvw7Xt0qPVr8BJiF9IHPgEYV0Vs
-X-Received: by 2002:a50:fb86:: with SMTP id e6mr12702125edq.203.1561741227685;
-        Fri, 28 Jun 2019 10:00:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561741227; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2650581wru;
+        Fri, 28 Jun 2019 08:57:58 -0700 (PDT)
+X-Received: by 2002:a2e:9b81:: with SMTP id z1mr6657313lji.101.1561737478455;
+        Fri, 28 Jun 2019 08:57:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561737478; cv=none;
         d=google.com; s=arc-20160816;
-        b=gJezw86H/RKs+/LPljhM4RcPcZnVp7sKuntkGN/lC3lL5FreB/d2PVEwU4Pb+BzR60
-         SGOXj5KMAoWOcpcsKvtVwEL2603T2W8E2/uFwiiBP4JFP7x++XSnqi43pGdp/kCTCPGH
-         392a2e2RwldMEd2/blsoz4PL9CIQnpicsPl52nGX4wNPVCGNLcUhPDHDafo3YhnjqqRv
-         6NRxxi62t6OXwOKqZzW6H5XR/35X6DU5emCZEA5zhNaVmhBdoZ8xYc/wqDW1QbWcFjzv
-         WLEH0drDQjvZo628fnQ+nssS5+L0ToV5MANLRXCHG3rRY9QdOL3+Fuzzq6MWZE7lF+D7
-         SR3Q==
+        b=gHE5y0YQUZRnkFX2/NOnyhFozU2wFe5XK0WEbcYPLTcTsCbjKf+Kb9WOyNRwzD35PL
+         eDoYySwsGfrJkrlWVKE6o30LdV3q+slPZZ9bBkECTAcGJoT8YlUkGu5UpufQ0IkE256o
+         pPgcm8pH9mYLjXc0IdIAkcRgBAz1/NLPR+2qZ4OGz4+k5ciJT8n4IfM1FoXrO1CfNl9+
+         rbUFTsDuFzqzEo6hXM9AUEA4OS1gOVgSOJ1r97/SMM52Be4C67ADfL6UwWkUQQC2/r2X
+         PyWhR7VfF8nGYBDXoULn5TLvusf0XcGL4d9B+n0ICH41XXfwxht3MTyrfR3pFW0WeO8R
+         kKAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=2QQVLiNMISeDK5ErLNcuViCZa4sSWJxKmw+pUJbxQtk=;
-        b=vtCr+SosAT7MMYIuRQyaFBMekS1/EIRAnUNJdT2LDUaH/LY2txgzEM0WSntSTpnfoH
-         ep0SqbPhjSkEMc+33HKeE8wXh6/ZSha7tNhikqUJon6hAzMY0X3I9eq3Rpl0VGco44t8
-         x/DDUmOZgPFTVWinh9cTrcuRjJjWqZLK6wf02LpSpw0sY8PBfk7BiFvkqCsYwHiDWC20
-         WSm4DxPQ8ERjzly08jLECrT1jJSQcGgjJEOPeM3VqZDC8bvBikWrDHfL11CZ2//lc45z
-         M8Ucrq+1DwVqHADcsRix9VFty9fZXagbwynIsYQPQFr6cTF4oAla0eEGHoLk8i30Blcp
-         gL1w==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6P2AsnQVf0FQrkcwCPwcdNXTqIcjVBDpEya1qSDIhME=;
+        b=RHxa3AlwXUFA14vJPiOc6Y8UYcIv7spn/qI20CpIIllKN4v08TJkQ3PVuHoGqS6Rsz
+         nZbl1I9XkZp7MgS/zqdodzLi/nRXIHajIEKfQlNlcqxjWS+tyupLxkD/aHZVoUz4mnIP
+         PD8AEkey/UxVS1zFJs9PdRFGILh4HB9bm0SmCKkRgM2B7zAbF9wQvg7pCNMZ0KDgdRJA
+         wz/clCmBa//opirpdjmldjuKpIvLr5oG6MN5GWjmfaZpAeYcXz+61nwXpzRT8DqyNVpA
+         D4Yo93k5OiQf63IKFNtvtM+F5COtqMenJkx6nUt0X/OtqQv6rh4iEXehBTTQAPfpp0Pn
+         syHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l58si2709747edb.340.2019.06.28.10.00.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jun 2019 10:00:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hqYK6DSL;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alistair23@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id k19sor1813358ljj.5.2019.06.28.08.57.58
+        (Google Transport Security);
+        Fri, 28 Jun 2019 08:57:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34436 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hguEc-00018X-N6
-	for alex.bennee@linaro.org; Fri, 28 Jun 2019 13:00:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46625)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hguAx-0007ZP-89
- for qemu-arm@nongnu.org; Fri, 28 Jun 2019 12:56:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hguAu-0003c0-F1
- for qemu-arm@nongnu.org; Fri, 28 Jun 2019 12:56:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55372)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hguAu-0003bc-6s; Fri, 28 Jun 2019 12:56:36 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0D6CA30832D3;
- Fri, 28 Jun 2019 16:56:35 +0000 (UTC)
-Received: from [10.36.116.89] (ovpn-116-89.ams2.redhat.com [10.36.116.89])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C7955C888;
- Fri, 28 Jun 2019 16:56:28 +0000 (UTC)
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, imammedo@redhat.com
-References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <86a13b18-f339-0436-6301-72afb000ed45@redhat.com>
-Date: Fri, 28 Jun 2019 18:56:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hqYK6DSL;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=6P2AsnQVf0FQrkcwCPwcdNXTqIcjVBDpEya1qSDIhME=;
+        b=hqYK6DSLbuR64O2JlOY5sCrC29/pficIv92hR/FXfa1OHCwAII5SdgI4U2XEMidVn7
+         cr9VE6Vs7f4tj3jXUKmtEwRNWLHcJhhXGVf+86Y+XsgEYIceOsepKZUz6KtDGKlRWlse
+         X0kwTVTryufGgbpsbtH3sNhrx5fG4+K+cZYI/XgWVUfVzUFu1tf/GzEIgwn+jGatJZkm
+         kFezjEPu4DC+0Ny8gzQRfZS2ZEUbtUpKvHPTdku6K92wPmw/fG9rqbsUBpyxB/z+NhrL
+         le61Yh2zBL2B0JOooETvBQG8yVpydqwZHgfBQxV+Ee5BnQM3ECFIryoUPGkg4T3zNw2j
+         piXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=6P2AsnQVf0FQrkcwCPwcdNXTqIcjVBDpEya1qSDIhME=;
+        b=sC/2ISi8PVZIou7+RB2kEZ64KPcIcfNz27VniFT6iaH027UAW+fPyPMejEgkIDgcAx
+         V53yfYEGKeUAgSSR/37qNy/FCVVO9CV6/GmSUFXxgiHYz8P0jH/PpY+pkzAQ6a1oVRYH
+         RRdw1PYwHrj8Z6a7NyInWitqW8b15nYTuu7xxDNfLEfPAnjj0Lr4/7gFlG9Y0EUBhakK
+         CFL8ZI4jtkH533Ge/6pwLxI9XxM3OMeeHLboNURbPoH1KBinZp+lj/u6CUpzp4UIJ3Ef
+         kM+/3cQw7/D2Xw+E5iDH6C5i6r43B3eYz2YiIsOMZ1NTQK5t4MVqty7bU3IFWMwu4qBd
+         hQHg==
+X-Gm-Message-State: APjAAAVKAKnxhJZfPwgTEJ55ZbxgZLI5yBSlu44wPoVEXL+q28tFsqbb
+	MOMivVsKJHtU26GfvQnNEAjpha3hsmT5F53hQP/MkTyIF00=
+X-Google-Smtp-Source: APXvYqxpNef68QMH7CiWEYfWfTzzEtLyB0MkaOvf56shyakrmsPL7Jd9RxlUGmxnISZjOKT00/jyAndxv5VjSegmWjE=
+X-Received: by 2002:a2e:9188:: with SMTP id f8mr1092767ljg.33.1561737477909;
+ Fri, 28 Jun 2019 08:57:57 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Fri, 28 Jun 2019 16:56:35 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v6 0/8] ARM virt: ACPI memory hotplug support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
- linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
- sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CgVz3Zp51LiF
+References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-4-philmd@redhat.com>
+In-Reply-To: <20190627202719.17739-4-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 28 Jun 2019 08:54:57 -0700
+Message-ID: <CAKmqyKPQEV=p1PDM75S0QOB6z-f-P2jBLv5EzZpj+6S5dyKzEg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v5 03/28] hw/block/pflash: Simplify trace_pflash_data_read/write()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Qemu-block <qemu-block@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Alistair Francis <alistair@alistair23.me>, Magnus Damm <magnus.damm@gmail.com>, 
+	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>, 
+	"open list:New World" <qemu-ppc@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
+	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: ZItEPb0s9wWd
 
-Hi Shameer,
+On Thu, Jun 27, 2019 at 1:30 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> Use a field width format to have a single function to log
+> the different width accesses.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-On 6/25/19 2:14 PM, Shameer Kolothum wrote:
-> This series is an attempt to provide device memory hotplug support 
-> on ARM virt platform. This is based on Eric's recent works here[1]
-> and carries some of the pc-dimm related patches dropped from his
-> series.
-> 
-> The kernel support for arm64 memory hot add was added recently by
-> Robin and hence the guest kernel should be => 5.0-rc1.
-> 
-> NVDIM support is not included currently as we still have an unresolved
-> issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
-> can be included, but not done for now, for keeping it simple.
-> 
-> This makes use of GED device to sent hotplug ACPI events to the
-> Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
-> Sebastien to add the hardware-reduced support to Nemu using GED
-> device[3]. (Please shout if I got the author/signed-off wrong for
-> those patches or missed any names).
-> 
-> This is sanity tested on a HiSilicon ARM64 platform and appreciate
-> any further testing.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Tested-by: Eric Auger <eric.auger@redhat.com>
+Alistair
 
-Thanks
-
-Eric
-> 
-> Thanks,
-> Shameer
-> 
-> [1] https://patchwork.kernel.org/cover/10837565/
-> [2] https://patchwork.kernel.org/cover/10783589/
-> [3] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
-> [4] http://lists.infradead.org/pipermail/linux-arm-kernel/2019-May/651763.html
-> 
-> v5 --> v6
-> 
-> -Addressed comments from Eric.
-> -Added R-by from Eric and Igor.
-> 
-> v4 --> v5
-> -Removed gsi/ged-irq routing in virt.
-> -Added Migration support.
-> -Dropped support for DT coldplug case based on the discussions
->  here[4]
-> -Added system_powerdown support through GED.
-> 
-> v3 --> v4
-> Addressed comments from Igor and Eric,
-> -Renamed "virt-acpi" to "acpi-ged".
-> -Changed ged device parent to TYPE_DEVICE.
-> -Introduced DT memory node property "hotpluggable" to resolve device
->  memory being treated as early boot memory issue(patch #7).
-> -Combined patches #3 and #9 from v3 into #3.
-> 
-> v2 --> v3
-> 
-> Addressed comments from Igor and Eric,
-> -Made virt acpi device platform independent and moved
->  to hw/acpi/generic_event_device.c
-> -Moved ged specific code into hw/acpi/generic_event_device.c
-> -Introduced an opt-in feature "fdt" to resolve device-memory being
->  treated as early boot memory.
-> -Dropped patch #1 from v2.
-> 
-> RFC --> v2
-> 
-> -Use GED device instead of GPIO for ACPI hotplug events.
-> -Removed NVDIMM support for now.
-> -Includes dropped patches from Eric's v9 series.
-> 
-> Eric Auger (1):
->   hw/arm/virt: Add memory hotplug framework
-> 
-> Samuel Ortiz (2):
->   hw/acpi: Do not create memory hotplug method when handler is not
->     defined
->   hw/acpi: Add ACPI Generic Event Device Support
-> 
-> Shameer Kolothum (5):
->   hw/acpi: Make ACPI IO address space configurable
->   hw/arm/virt: Enable device memory cold/hot plug with ACPI boot
->   hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
->   hw/acpi: Add system power down support to GED
->   hw/arm: Use GED for system_powerdown event
-> 
->  hw/acpi/Kconfig                        |   4 +
->  hw/acpi/Makefile.objs                  |   1 +
->  hw/acpi/generic_event_device.c         | 352 +++++++++++++++++++++++++
->  hw/acpi/memory_hotplug.c               |  35 +--
->  hw/arm/Kconfig                         |   4 +
->  hw/arm/virt-acpi-build.c               |  58 ++--
->  hw/arm/virt.c                          |  88 ++++++-
->  hw/i386/acpi-build.c                   |   3 +-
->  include/hw/acpi/generic_event_device.h | 106 ++++++++
->  include/hw/acpi/memory_hotplug.h       |   9 +-
->  include/hw/arm/virt.h                  |   3 +
->  11 files changed, 607 insertions(+), 56 deletions(-)
->  create mode 100644 hw/acpi/generic_event_device.c
->  create mode 100644 include/hw/acpi/generic_event_device.h
-> 
+> ---
+>  hw/block/pflash_cfi01.c | 6 ++----
+>  hw/block/pflash_cfi02.c | 6 ++----
+>  hw/block/trace-events   | 6 ++----
+>  3 files changed, 6 insertions(+), 12 deletions(-)
+>
+> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+> index 74fc1bc2da..db4a246b22 100644
+> --- a/hw/block/pflash_cfi01.c
+> +++ b/hw/block/pflash_cfi01.c
+> @@ -248,7 +248,6 @@ static uint32_t pflash_data_read(PFlashCFI01 *pfl, hw=
+addr offset,
+>      switch (width) {
+>      case 1:
+>          ret =3D p[offset];
+> -        trace_pflash_data_read8(offset, ret);
+>          break;
+>      case 2:
+>          if (be) {
+> @@ -258,7 +257,6 @@ static uint32_t pflash_data_read(PFlashCFI01 *pfl, hw=
+addr offset,
+>              ret =3D p[offset];
+>              ret |=3D p[offset + 1] << 8;
+>          }
+> -        trace_pflash_data_read16(offset, ret);
+>          break;
+>      case 4:
+>          if (be) {
+> @@ -272,12 +270,12 @@ static uint32_t pflash_data_read(PFlashCFI01 *pfl, =
+hwaddr offset,
+>              ret |=3D p[offset + 2] << 16;
+>              ret |=3D p[offset + 3] << 24;
+>          }
+> -        trace_pflash_data_read32(offset, ret);
+>          break;
+>      default:
+>          DPRINTF("BUG in %s\n", __func__);
+>          abort();
+>      }
+> +    trace_pflash_data_read(offset, width << 1, ret);
+>      return ret;
+>  }
+>
+> @@ -415,7 +413,7 @@ static inline void pflash_data_write(PFlashCFI01 *pfl=
+, hwaddr offset,
+>  {
+>      uint8_t *p =3D pfl->storage;
+>
+> -    trace_pflash_data_write(offset, value, width, pfl->counter);
+> +    trace_pflash_data_write(offset, width << 1, value, pfl->counter);
+>      switch (width) {
+>      case 1:
+>          p[offset] =3D value;
+> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+> index f05cd507b3..6cdfc85264 100644
+> --- a/hw/block/pflash_cfi02.c
+> +++ b/hw/block/pflash_cfi02.c
+> @@ -172,7 +172,6 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwaddr =
+offset,
+>          switch (width) {
+>          case 1:
+>              ret =3D p[offset];
+> -            trace_pflash_data_read8(offset, ret);
+>              break;
+>          case 2:
+>              if (be) {
+> @@ -182,7 +181,6 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwaddr =
+offset,
+>                  ret =3D p[offset];
+>                  ret |=3D p[offset + 1] << 8;
+>              }
+> -            trace_pflash_data_read16(offset, ret);
+>              break;
+>          case 4:
+>              if (be) {
+> @@ -196,9 +194,9 @@ static uint32_t pflash_read(PFlashCFI02 *pfl, hwaddr =
+offset,
+>                  ret |=3D p[offset + 2] << 16;
+>                  ret |=3D p[offset + 3] << 24;
+>              }
+> -            trace_pflash_data_read32(offset, ret);
+>              break;
+>          }
+> +        trace_pflash_data_read(offset, width << 1, ret);
+>          break;
+>      case 0x90:
+>          /* flash ID read */
+> @@ -343,7 +341,7 @@ static void pflash_write(PFlashCFI02 *pfl, hwaddr off=
+set,
+>              /* We need another unlock sequence */
+>              goto check_unlock0;
+>          case 0xA0:
+> -            trace_pflash_data_write(offset, value, width, 0);
+> +            trace_pflash_data_write(offset, width << 1, value, 0);
+>              p =3D pfl->storage;
+>              if (!pfl->ro) {
+>                  switch (width) {
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index f637fe918e..13d1b21dd4 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -10,10 +10,8 @@ pflash_reset(void) "reset"
+>  pflash_timer_expired(uint8_t cmd) "command 0x%02x done"
+>  pflash_io_read(uint64_t offset, int width, int fmt_width, uint32_t value=
+, uint8_t cmd, uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%0*x =
+cmd:0x%02x wcycle:%u"
+>  pflash_io_write(uint64_t offset, int width, int fmt_width, uint32_t valu=
+e, uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%0*x wcycle:%u"
+> -pflash_data_read8(uint64_t offset, uint32_t value) "data offset:0x%04"PR=
+Ix64" value:0x%02x"
+> -pflash_data_read16(uint64_t offset, uint32_t value) "data offset:0x%04"P=
+RIx64" value:0x%04x"
+> -pflash_data_read32(uint64_t offset, uint32_t value) "data offset:0x%04"P=
+RIx64" value:0x%08x"
+> -pflash_data_write(uint64_t offset, uint32_t value, int width, uint64_t c=
+ounter) "data offset:0x%04"PRIx64" value:0x%08x width:%d counter:0x%016"PRI=
+x64
+> +pflash_data_read(uint64_t offset, int width, uint32_t value) "data offse=
+t:0x%04"PRIx64" value:0x%0*x"
+> +pflash_data_write(uint64_t offset, int width, uint32_t value, uint64_t c=
+ounter) "data offset:0x%04"PRIx64" value:0x%0*x counter:0x%016"PRIx64
+>  pflash_manufacturer_id(uint16_t id) "Read Manufacturer ID: 0x%04x"
+>  pflash_device_id(uint16_t id) "Read Device ID: 0x%04x"
+>  pflash_device_info(uint64_t offset) "Read Device Information offset:0x%0=
+4"PRIx64
+> --
+> 2.20.1
+>
+>

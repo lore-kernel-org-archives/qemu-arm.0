@@ -1,294 +1,179 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2667787wru;
-        Fri, 28 Jun 2019 09:14:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy7+tqx66vUzm4gzOYn8OWaRAS6qH8UHXL+jHOt1aMAYc/qBJpKTYDChWIxHkM+7IALkDQY
-X-Received: by 2002:a37:c449:: with SMTP id h9mr8990357qkm.187.1561738499230;
-        Fri, 28 Jun 2019 09:14:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561738499; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2683183wru;
+        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
+X-Received: by 2002:a2e:87d0:: with SMTP id v16mr6763618ljj.24.1561739485332;
+        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561739485; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xl2bPHlmqmxZiYeIQhoZQ7RKw2YFHS/IO/jVnGXqsbWv4iQw0fivRBQCe9GneBwjQe
-         rmO5eT5Pq1VkR3RPUEWunxadptK93H+jHt6ivx+T/lZ4XryqJ4iQ92yaSBEb0SEYxxP8
-         BM98cUvKlUN6l0U19csv82WkaGJ6PEm0IokKDc2Wb8ZD1ECA9/kbd8YKAT7qiiOixP6n
-         qOKrt4BueNEF+8adMdR8vJhIgujV9yhfVri6d440RUv2TKfujl2mpaixBjP7ZGB4cvsl
-         FyVS10sI/se0dgtexKGqokHVFsKC/ZhEN+LZzLMKqnJwldE15DdVP5M02PbgC6nhee/0
-         M1HQ==
+        b=Df0ZB9LGlepF2zmip0E0wbwVsm3XRE8WV6rru4vldd5Jbwb2dLrkfEaMXteEMrVT+a
+         t7tuJsiEyVsXVHeX/yrurR6se9dL6KBwLuWIaJQRWVNDkAC8HvXUfz/sbifARxmT3IC4
+         1SEFeyI9t/S+/tHQm+ehvZNKvJDsK5/TFJkjmfNAZz0VbDusBxVrFeq1m248vCmlq60r
+         2Svv1TgDPDDFL6A1/m4apxdMJYHhNGEr9Q3+pvxSbyEtWHxHKQ6vEQtQvKEEeIc5hPFX
+         dv5nzCGj0S7iNsOc5i3tWC+KZqy5GCYCbMPy27m9Y9qTloNQWmghifAQPKQadG58SzDc
+         gBPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=UFm70fB5ZOc0p7H5waViHL0e57xbgqKj3MHYxfxKbxc=;
-        b=n9fQDEm/Q8iY9it5iwSO8LGthqHKI086aVAvBWiFoX+BQLgFgrAy+Lr61kFjMvRvTA
-         Bb7Sw7Af/DQTQT6RM5JzPyoL6YgRfZaj3KjcVQuyZSKCNnWJSBkjtFur8eJ9D2XLM0kR
-         rpnhvnyRqSXCycJsY/rQ1vO4Xl2PaFH5QKuaiMMOZ50ldHINcaSmUhV+9FSFnlTMzu19
-         PvaiB2kCZRgMiyfD2TbneCEyeB7uFAdqbnt+uFQ/Jv7wJl/a5xlC51TtBpTyzcbIlX3H
-         NOfmlJu6ejeLhLIYoEQVmjKAUb+sTjdwqarzoaWoUdBGfsWWIpURVAQKfh6Oa2N3ZIjf
-         nwog==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
+        b=Lt5QvaoKKN/G6wmvH7FXenLn7HxtrOhmQ6GBvEQEEi5EIuaHJQZI5/bEwEvuSCIhmW
+         WDCDL2xlEwh1RT5sYmBe43zajKGJQ5sQL/B4tPAqCfY2LzxNKwJ2WE7Yu8jSROK5xbSU
+         Jxmnc17WesUIfQFxPgIZuQoJyynrPwFHs6xX15Xnw97VOqNVHGKlhiu6HRC3MAIGVulx
+         AVkDGHcEXF2zslwo38eL2LL/+SeX2cSY/Y825mvnhKzrzhvs1t81a4NE05S5d/u9wO6V
+         Uv9QC9i0D7FD6pCq24rTjq9EWbQGgkckQ0ph5qrZu8zd+2qm4yZbylX5hcUOWsKwavbc
+         AG2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z62si970952qkd.121.2019.06.28.09.14.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 28 Jun 2019 09:14:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sz19bV+3;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alistair23@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r66sor1414158ljr.27.2019.06.28.09.31.25
+        (Google Transport Security);
+        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C77FD81F13;
-	Fri, 28 Jun 2019 16:14:51 +0000 (UTC)
-Received: from [10.36.116.89] (ovpn-116-89.ams2.redhat.com [10.36.116.89])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D0A36608CD;
-	Fri, 28 Jun 2019 16:14:41 +0000 (UTC)
-Subject: Re: [PATCH v2 11/14] target/arm/kvm64: max cpu: Enable SVE when
- available
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
- Dave.Martin@arm.com, imammedo@redhat.com
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-12-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <026dd970-f524-ed17-ea25-bcad39ac8b1b@redhat.com>
-Date: Fri, 28 Jun 2019 18:14:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sz19bV+3;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
+        b=sz19bV+3v7ZPT4+0mbRybUbbXes2rEfmD2GfFVSetN8RbwLW8oar3Egy4uAAikLBtw
+         bMLt3wmLP1bs5S1W/+sOpIHsB+MUO4kZAHBkZ8CgoOUSZNAGkBvE6GcAyJ+QzYweZMcf
+         rSW72mDn8rzfb6Ys8U7/f+mFr8CHKsxNtegQcEd76hq7UJ9b9+LY8Pzyh8hjdmM5KUkK
+         wmoT/6xnn0UJrRaHoon8zhUSF3JUrpWdoUD6rib6vPmHbD3QnLkzOAXNkCdwIAq24xnp
+         ACLhjXwMtB+6b0y2M21LczFdEzCGQygOuzzjDeQOD/9Ra7slSgeA7CqcQVe/KeGgEyjc
+         bX/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
+        b=eNoEolw9Z+W22uK41kS43qPSKo98iIfS/4m+0s2r9qJ6tdzbcP0vptg8mpii6qTC+w
+         uRRnvctX36Gz87k9WFNC41TgavSmEOMo5Wb+2RZF+b06YOPR6UisIDSpe2Dm7p8RQo0U
+         0cBelnCEuFBSkt14Et0ketP1PwJqymoR8gDHW0ajOU3YnMwklymrks+/SAt9i9jjTLK/
+         h8WKTOYcQUhnc/gLDjlWTTKnNpTz4ldcRVjI1E9kfpoDXfGhwwA8rN2+zxZN8uQDRAp0
+         oRhbP0/Oa5LGLPN0csJddkJsBIcihRWMQrVylIEK8/2Sac3nBOqG48+Wi2rQ38o2vak6
+         DNgA==
+X-Gm-Message-State: APjAAAVDxNNnFRoK70mccczoA1Pd83OFovJKmR+PV1aKVn8WZXon8jhw
+	TDNQAFoy1DErOVCUIZ1vUPOLbLI02hX3TzKAqvI=
+X-Google-Smtp-Source: APXvYqwxgmOcWKo0EcQhm1m5lXxWlMwqzfHpCI98g2Wjy2Srr1EfwFnV0eUcVg2Ie3jNgDjaCspGp+83xt9liTZZyGE=
+X-Received: by 2002:a2e:9758:: with SMTP id f24mr6785310ljj.58.1561739484954;
+ Fri, 28 Jun 2019 09:31:24 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-12-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Fri, 28 Jun 2019 16:14:57 +0000 (UTC)
-X-TUID: DdiSg7k9zaJo
+References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-13-philmd@redhat.com>
+In-Reply-To: <20190627202719.17739-13-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 28 Jun 2019 09:28:24 -0700
+Message-ID: <CAKmqyKOvSV_MJg1x3EGWVNeMUvvT5gG3mH_LQDVSwVgcWA+YFQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v5 12/28] hw/block/pflash_cfi02: Fix command
+ address comparison
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Qemu-block <qemu-block@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Alistair Francis <alistair@alistair23.me>, Magnus Damm <magnus.damm@gmail.com>, 
+	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>, 
+	"open list:New World" <qemu-ppc@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
+	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: fRW6kyW4pc1O
 
-Hi Drew,
+On Thu, Jun 27, 2019 at 1:42 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+>
+> Most AMD commands only examine 11 bits of the address. This masks the
+> addresses used in the comparison to 11 bits. The exceptions are word or
+> sector addresses which use offset directly rather than the shifted
+> offset, boff.
+>
+> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+> Acked-by: Thomas Huth <thuth@redhat.com>
+> Message-Id: <20190426162624.55977-4-stephen.checkoway@oberlin.edu>
+> [PMD: Prepend 'hw/' in patch subject]
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-On 6/21/19 6:34 PM, Andrew Jones wrote:
-> Enable SVE in the KVM guest when the 'max' cpu type is configured
-> and KVM supports it. KVM SVE requires use of the new finalize
-> vcpu ioctl, so we add that now too. For starters SVE can only be
-> turned on or off, getting all vector lengths the host CPU supports
-> when on. We'll add the other SVE CPU properties in later patches.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  target/arm/cpu64.c       | 24 ++++++++++++++++++++++--
->  target/arm/kvm.c         |  5 +++++
->  target/arm/kvm64.c       | 25 ++++++++++++++++++++++++-
->  target/arm/kvm_arm.h     | 27 +++++++++++++++++++++++++++
->  tests/arm-cpu-features.c |  1 +
->  5 files changed, 79 insertions(+), 3 deletions(-)
-> 
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 5def82111dee..2e595ad53137 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -371,6 +371,11 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->          return;
+>  hw/block/pflash_cfi02.c   |  8 +++++++-
+>  tests/pflash-cfi02-test.c | 12 ++++++++++--
+>  2 files changed, 17 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+> index e64dc69c6c..4be3837be5 100644
+> --- a/hw/block/pflash_cfi02.c
+> +++ b/hw/block/pflash_cfi02.c
+> @@ -281,11 +281,13 @@ static void pflash_write(void *opaque, hwaddr offse=
+t, uint64_t value,
 >      }
->  
-> +    /* sve-max-vq and sve<vl-bits> properties not yet implemented for KVM */
-> +    if (kvm_enabled()) {
-> +        return;
-> +    }
-> +
->      if (cpu->sve_max_vq == ARM_SVE_INIT) {
->          object_property_set_uint(OBJECT(cpu), ARM_MAX_VQ, "sve-max-vq", &err);
->          if (err) {
-> @@ -632,6 +637,10 @@ static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
->      ARMCPU *cpu = ARM_CPU(obj);
->      bool value = !!cpu->sve_max_vq;
->  
-> +    if (kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-> +        value = false;
-> +    }
-> +
->      visit_type_bool(v, name, &value, errp);
->  }
->  
-> @@ -649,6 +658,11 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
->      }
->  
->      if (value) {
-> +        if (kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-> +            error_setg(errp, "'sve' feature not supported by KVM on this host");
-> +            return;
-> +        }
-> +
->          /*
->           * We handle the -cpu <cpu>,sve=off,sve=on case by reinitializing,
->           * but otherwise we don't do anything as an sve=on could come after
-> @@ -675,6 +689,11 @@ static void aarch64_max_initfn(Object *obj)
->  
->      if (kvm_enabled()) {
->          kvm_arm_set_cpu_features_from_host(cpu);
-> +        /*
-> +         * KVM doesn't yet support the sve-max-vq property, but
-> +         * setting cpu->sve_max_vq is also used to turn SVE on.
-> +         */
-> +        cpu->sve_max_vq = ARM_SVE_INIT;
->      } else {
->          uint64_t t;
->          uint32_t u;
-> @@ -764,8 +783,6 @@ static void aarch64_max_initfn(Object *obj)
->          cpu->sve_max_vq = ARM_SVE_INIT;
->          object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
->                              cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
-> -        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> -                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
->  
->          /*
->           * sve_vq_map uses a special state while setting properties, so
-> @@ -780,6 +797,9 @@ static void aarch64_max_initfn(Object *obj)
->                                  cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
+>      offset &=3D pfl->chip_len - 1;
+>
+> -    boff =3D offset & (pfl->sector_len - 1);
+> +    boff =3D offset;
+>      if (pfl->width =3D=3D 2)
+>          boff =3D boff >> 1;
+>      else if (pfl->width =3D=3D 4)
+>          boff =3D boff >> 2;
+> +    /* Only the least-significant 11 bits are used in most cases. */
+> +    boff &=3D 0x7FF;
+>      switch (pfl->wcycle) {
+>      case 0:
+>          /* Set the device in I/O access mode if required */
+> @@ -538,6 +540,10 @@ static void pflash_cfi02_realize(DeviceState *dev, E=
+rror **errp)
 >          }
 >      }
+>
+> +    /* Only 11 bits are used in the comparison. */
+> +    pfl->unlock_addr0 &=3D 0x7FF;
+> +    pfl->unlock_addr1 &=3D 0x7FF;
 > +
-> +    object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> +                        cpu_arm_set_sve, NULL, NULL, &error_fatal);
+>      pflash_setup_mappings(pfl);
+>      pfl->rom_mode =3D 1;
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+> diff --git a/tests/pflash-cfi02-test.c b/tests/pflash-cfi02-test.c
+> index e7e16a8dd8..e090b2e3a0 100644
+> --- a/tests/pflash-cfi02-test.c
+> +++ b/tests/pflash-cfi02-test.c
+> @@ -21,8 +21,8 @@
+>
+>  #define FLASH_WIDTH 2
+>  #define CFI_ADDR (FLASH_WIDTH * 0x55)
+> -#define UNLOCK0_ADDR (FLASH_WIDTH * 0x5555)
+> -#define UNLOCK1_ADDR (FLASH_WIDTH * 0x2AAA)
+> +#define UNLOCK0_ADDR (FLASH_WIDTH * 0x555)
+> +#define UNLOCK1_ADDR (FLASH_WIDTH * 0x2AA)
+>
+>  #define CFI_CMD 0x98
+>  #define UNLOCK0_CMD 0xAA
+> @@ -190,6 +190,14 @@ static void test_flash(void)
+>      g_assert_cmphex(flash_read(6), =3D=3D, 0xCDEF);
+>      g_assert_cmphex(flash_read(8), =3D=3D, 0xFFFF);
+>
+> +    /* Test ignored high order bits of address. */
+> +    flash_write(FLASH_WIDTH * 0x5555, UNLOCK0_CMD);
+> +    flash_write(FLASH_WIDTH * 0x2AAA, UNLOCK1_CMD);
+> +    flash_write(FLASH_WIDTH * 0x5555, AUTOSELECT_CMD);
+> +    g_assert_cmpint(flash_read(FLASH_WIDTH * 0x0000), =3D=3D, 0x00BF);
+> +    g_assert_cmpint(flash_read(FLASH_WIDTH * 0x0001), =3D=3D, 0x236D);
+> +    reset();
+> +
+>      qtest_quit(global_qtest);
 >  }
->  
->  struct ARMCPUInfo {
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 69c961a4c62c..60645a196d3d 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -49,6 +49,11 @@ int kvm_arm_vcpu_init(CPUState *cs)
->      return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_INIT, &init);
->  }
->  
-> +int kvm_arm_vcpu_finalize(CPUState *cs, int feature)
-> +{
-> +    return kvm_vcpu_ioctl(cs, KVM_ARM_VCPU_FINALIZE, &feature);
-> +}
-> +
->  void kvm_arm_init_serror_injection(CPUState *cs)
->  {
->      cap_has_inject_serror_esr = kvm_check_extension(cs->kvm_state,
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 706541327491..9fc7f078cf68 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -604,6 +604,15 @@ bool kvm_arm_aarch32_supported(CPUState *cpu)
->      return ret > 0;
->  }
->  
-> +bool kvm_arm_sve_supported(CPUState *cpu)
-> +{
-> +    KVMState *s = KVM_STATE(current_machine->accelerator);
-> +    int ret;
-> +
-> +    ret = kvm_check_extension(s, KVM_CAP_ARM_SVE);
-> +    return ret > 0;
-return kvm_check_extension()
-
-Eric
-> +}
-> +
->  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
->  
->  int kvm_arch_init_vcpu(CPUState *cs)
-> @@ -632,13 +641,20 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->      }
->      if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
-> -            cpu->has_pmu = false;
-> +        cpu->has_pmu = false;
->      }
->      if (cpu->has_pmu) {
->          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->      } else {
->          unset_feature(&env->features, ARM_FEATURE_PMU);
->      }
-> +    if (cpu->sve_max_vq) {
-> +        if (!kvm_arm_sve_supported(cs)) {
-> +            cpu->sve_max_vq = 0;
-> +        } else {
-> +            cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
-> +        }
-> +    }
->  
->      /* Do KVM_ARM_VCPU_INIT ioctl */
->      ret = kvm_arm_vcpu_init(cs);
-> @@ -646,6 +662,13 @@ int kvm_arch_init_vcpu(CPUState *cs)
->          return ret;
->      }
->  
-> +    if (cpu->sve_max_vq) {
-> +        ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
-> +        if (ret) {
-> +            return ret;
-> +        }
-> +    }
-> +
->      /*
->       * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
->       * Currently KVM has its own idea about MPIDR assignment, so we
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index e0ded3607996..2367f8ab78ed 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -27,6 +27,20 @@
->   */
->  int kvm_arm_vcpu_init(CPUState *cs);
->  
-> +/**
-> + * kvm_arm_vcpu_finalize
-> + * @cs: CPUState
-> + * @feature: int
-> + *
-> + * Finalizes the configuration of the specified VCPU feature by
-> + * invoking the KVM_ARM_VCPU_FINALIZE ioctl. Features requiring
-> + * this are documented in the "KVM_ARM_VCPU_FINALIZE" section of
-> + * KVM's API documentation.
-> + *
-> + * Returns: 0 if success else < 0 error code
-> + */
-> +int kvm_arm_vcpu_finalize(CPUState *cs, int feature);
-> +
->  /**
->   * kvm_arm_register_device:
->   * @mr: memory region for this device
-> @@ -224,6 +238,14 @@ bool kvm_arm_aarch32_supported(CPUState *cs);
->   */
->  bool kvm_arm_pmu_supported(CPUState *cs);
->  
-> +/**
-> + * bool kvm_arm_sve_supported:
-> + * @cs: CPUState
-> + *
-> + * Returns true if the KVM VCPU can enable SVE and false otherwise.
-> + */
-> +bool kvm_arm_sve_supported(CPUState *cs);
-> +
->  /**
->   * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
->   * IPA address space supported by KVM
-> @@ -274,6 +296,11 @@ static inline bool kvm_arm_pmu_supported(CPUState *cs)
->      return false;
->  }
->  
-> +static inline bool kvm_arm_sve_supported(CPUState *cs)
-> +{
-> +    return false;
-> +}
-> +
->  static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
->  {
->      return -ENOENT;
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> index a4bf6aec00df..67ad5f2b78d5 100644
-> --- a/tests/arm-cpu-features.c
-> +++ b/tests/arm-cpu-features.c
-> @@ -393,6 +393,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->  
->      if (g_str_equal(qtest_get_arch(), "aarch64")) {
->          assert_has_feature(qts, "host", "aarch64");
-> +        assert_has_feature(qts, "max", "sve");
->  
->          assert_error(qts, "cortex-a15",
->              "The CPU definition 'cortex-a15' cannot "
-> 
+>
+> --
+> 2.20.1
+>
+>

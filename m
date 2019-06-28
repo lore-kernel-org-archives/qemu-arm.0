@@ -1,74 +1,74 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2683183wru;
-        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
-X-Received: by 2002:a2e:87d0:: with SMTP id v16mr6763618ljj.24.1561739485332;
-        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561739485; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2688676wru;
+        Fri, 28 Jun 2019 09:37:15 -0700 (PDT)
+X-Received: by 2002:a19:bec1:: with SMTP id o184mr5164893lff.86.1561739835291;
+        Fri, 28 Jun 2019 09:37:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561739835; cv=none;
         d=google.com; s=arc-20160816;
-        b=Df0ZB9LGlepF2zmip0E0wbwVsm3XRE8WV6rru4vldd5Jbwb2dLrkfEaMXteEMrVT+a
-         t7tuJsiEyVsXVHeX/yrurR6se9dL6KBwLuWIaJQRWVNDkAC8HvXUfz/sbifARxmT3IC4
-         1SEFeyI9t/S+/tHQm+ehvZNKvJDsK5/TFJkjmfNAZz0VbDusBxVrFeq1m248vCmlq60r
-         2Svv1TgDPDDFL6A1/m4apxdMJYHhNGEr9Q3+pvxSbyEtWHxHKQ6vEQtQvKEEeIc5hPFX
-         dv5nzCGj0S7iNsOc5i3tWC+KZqy5GCYCbMPy27m9Y9qTloNQWmghifAQPKQadG58SzDc
-         gBPg==
+        b=DWavpEeg3BNlwkRvtQXl1lpbr7JoNfusO2K4bUjfkycQLe0BGrbj5osObiOwxP2sbJ
+         vOJSYZpNDcvUYfak3ZjO2qpTYkjPtBxTg7L8uAvMZn2RpB8irWRxCOHgYmdLxb4b+VZ7
+         +nrds0JRXnwIOPxlEO3Fv8yuw/XGTnvE+HOrPMUkFmKwc3vlyetW8rxgir30DX3BIbf+
+         sM52fG+wiPiFbds1hX6AQbYujQPH3FaGOtK/xxmszsIcr16/3FnSCTQY02qTU5Rs6DN6
+         cEacXaUs73k8liEs59z/OkacaTf3un3eHI1O95KzPtF+BMYlSH6Rmi93E8LLvxUIzejO
+         YCEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
-        b=Lt5QvaoKKN/G6wmvH7FXenLn7HxtrOhmQ6GBvEQEEi5EIuaHJQZI5/bEwEvuSCIhmW
-         WDCDL2xlEwh1RT5sYmBe43zajKGJQ5sQL/B4tPAqCfY2LzxNKwJ2WE7Yu8jSROK5xbSU
-         Jxmnc17WesUIfQFxPgIZuQoJyynrPwFHs6xX15Xnw97VOqNVHGKlhiu6HRC3MAIGVulx
-         AVkDGHcEXF2zslwo38eL2LL/+SeX2cSY/Y825mvnhKzrzhvs1t81a4NE05S5d/u9wO6V
-         Uv9QC9i0D7FD6pCq24rTjq9EWbQGgkckQ0ph5qrZu8zd+2qm4yZbylX5hcUOWsKwavbc
-         AG2w==
+        bh=wLiGMD4EvsM7xTV7VFIvRXEr1Z8kXRHm79nNC4ag830=;
+        b=C1Dr7zjXrsoWMmyNGXa7Hg5Opmx3i9vffcGQpIxpXDauGE2gwPp3HRhOwRuXf6Dhud
+         l2bXI02hxYZfA6wl+GR/m1Pv5n8mxCedTTKcNU3iAnYyG7xy7vYt4gZjxcBT9K4KDRgp
+         5RbTjv7mpVE453WEoXeWS/rsKiw7uIx/n81En5DGT+SddK+3tZb/URDdD3JpyqTeysNl
+         YMnnUxehwn6Psd2jjeqLoli+kQpB2dwz5BaWdCfPc3r7+6UqrKo012b9QLvYLHZsZhtO
+         o0eCP70Pi03RaYuUE67ZYdbH+8g+DPHOXnWgMZUCBHz/kRF6sJvZzOlW0D/lTRly0OwT
+         RWcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sz19bV+3;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jiuYmiVq;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r66sor1414158ljr.27.2019.06.28.09.31.25
+        by mx.google.com with SMTPS id x7sor1844256ljj.32.2019.06.28.09.37.15
         (Google Transport Security);
-        Fri, 28 Jun 2019 09:31:25 -0700 (PDT)
+        Fri, 28 Jun 2019 09:37:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sz19bV+3;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jiuYmiVq;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
-        b=sz19bV+3v7ZPT4+0mbRybUbbXes2rEfmD2GfFVSetN8RbwLW8oar3Egy4uAAikLBtw
-         bMLt3wmLP1bs5S1W/+sOpIHsB+MUO4kZAHBkZ8CgoOUSZNAGkBvE6GcAyJ+QzYweZMcf
-         rSW72mDn8rzfb6Ys8U7/f+mFr8CHKsxNtegQcEd76hq7UJ9b9+LY8Pzyh8hjdmM5KUkK
-         wmoT/6xnn0UJrRaHoon8zhUSF3JUrpWdoUD6rib6vPmHbD3QnLkzOAXNkCdwIAq24xnp
-         ACLhjXwMtB+6b0y2M21LczFdEzCGQygOuzzjDeQOD/9Ra7slSgeA7CqcQVe/KeGgEyjc
-         bX/A==
+        bh=wLiGMD4EvsM7xTV7VFIvRXEr1Z8kXRHm79nNC4ag830=;
+        b=jiuYmiVqa1MYe0Ism3xsecn/epcx6eBVWK0/TYKM/A5zhRv2/yG+l8jyb+/2q70oIw
+         26XRw6CYuWCvRqsdQYVXVGKJ6O/7xsPK2tbjyXDH3wPwtVbdX8KVcKu/LRDwape/Y/6i
+         WsFGkPeZqST80AqKKMNYWoa26CmhgtxRZFXh8tzYbyj8CJ42m1KncNtz43QB8GLbWEUa
+         LM0ETtoE+ZGqpkaVKQMwi7tqGrYF1dJoqrrma68imortFetu5qWyObBLFnvIQar2gE7f
+         bp2pSk2X04Npy883BrET2pDh2MgC8cu/X97pAUsmdxqD/7KwJi3nX6yYrQ73Zxeaxan6
+         N9tA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=l5HEV/3S6TEkQbDw4Fi8zP8mYJAb1w7/BkVTDnxKLHE=;
-        b=eNoEolw9Z+W22uK41kS43qPSKo98iIfS/4m+0s2r9qJ6tdzbcP0vptg8mpii6qTC+w
-         uRRnvctX36Gz87k9WFNC41TgavSmEOMo5Wb+2RZF+b06YOPR6UisIDSpe2Dm7p8RQo0U
-         0cBelnCEuFBSkt14Et0ketP1PwJqymoR8gDHW0ajOU3YnMwklymrks+/SAt9i9jjTLK/
-         h8WKTOYcQUhnc/gLDjlWTTKnNpTz4ldcRVjI1E9kfpoDXfGhwwA8rN2+zxZN8uQDRAp0
-         oRhbP0/Oa5LGLPN0csJddkJsBIcihRWMQrVylIEK8/2Sac3nBOqG48+Wi2rQ38o2vak6
-         DNgA==
-X-Gm-Message-State: APjAAAVDxNNnFRoK70mccczoA1Pd83OFovJKmR+PV1aKVn8WZXon8jhw
-	TDNQAFoy1DErOVCUIZ1vUPOLbLI02hX3TzKAqvI=
-X-Google-Smtp-Source: APXvYqwxgmOcWKo0EcQhm1m5lXxWlMwqzfHpCI98g2Wjy2Srr1EfwFnV0eUcVg2Ie3jNgDjaCspGp+83xt9liTZZyGE=
-X-Received: by 2002:a2e:9758:: with SMTP id f24mr6785310ljj.58.1561739484954;
- Fri, 28 Jun 2019 09:31:24 -0700 (PDT)
+        bh=wLiGMD4EvsM7xTV7VFIvRXEr1Z8kXRHm79nNC4ag830=;
+        b=lESHaO+XMzy4ic7xv2SE2gD8Xlx595YSvEjcF7rrf6cAwGVlqeTagk46HI4DbMXDDL
+         bPCYxSA2t7UNCQ4OqJ5pLyngesPeg1Qkqtb0D7ElzUNJsP/j9tY8bR6A6s4rxZK49w+F
+         q4oJp7OOBI6NyLxG+on7DFM6oHzyB9c0/CRRdNwfaZV0xuoCwQLU1AJ2rrJY4EHITLyG
+         O9Az/CB6fzvX8bjlUzBkD/8c2m1eDjNpixdtLAAIqsVj7ZI8D0LN9b9XXaaWxmveKm3V
+         OpOPnPA+HbjzpTJNCAnyneIWbEgMHw5ySLsIXgYQ1uTJhyYhSaXk0RmaEb/DzjFFET3k
+         ViWQ==
+X-Gm-Message-State: APjAAAXGgiqp59YbfK+hRrlK3MA+jzon/ZR702QM+XvF5r7wHa+gpNxx
+	iMq71RMqodwOjZ3MQ3bdix2pT3dMMOjKjxH20JY=
+X-Google-Smtp-Source: APXvYqwq00xKIxLjdwSGTIDwXGOypuBfcO7jBsEdoxWOgnrTLpZ5gvHy27Jah1+cvOihjIQc919k8oN/83NwUq1kOac=
+X-Received: by 2002:a2e:9158:: with SMTP id q24mr6861189ljg.119.1561739834973;
+ Fri, 28 Jun 2019 09:37:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-13-philmd@redhat.com>
-In-Reply-To: <20190627202719.17739-13-philmd@redhat.com>
+References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-17-philmd@redhat.com>
+In-Reply-To: <20190627202719.17739-17-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 28 Jun 2019 09:28:24 -0700
-Message-ID: <CAKmqyKOvSV_MJg1x3EGWVNeMUvvT5gG3mH_LQDVSwVgcWA+YFQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v5 12/28] hw/block/pflash_cfi02: Fix command
- address comparison
+Date: Fri, 28 Jun 2019 09:34:13 -0700
+Message-ID: <CAKmqyKNW5e-X-qj3jKuXBO7Em8NasOwxFgS6vvjNObJLt3jyZw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v5 16/28] hw/block/pflash_cfi02: Hold the PRI
+ table offset in a variable
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
 	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
@@ -84,95 +84,99 @@ Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
 	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: fRW6kyW4pc1O
+X-TUID: il5ZhGCbQn5S
 
-On Thu, Jun 27, 2019 at 1:42 PM Philippe Mathieu-Daud=C3=A9
+On Thu, Jun 27, 2019 at 1:34 PM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+> Manufacturers are allowed to move the PRI table, this is why the
+> offset is queryable via fixed offsets 0x15/0x16.
+> Add a variable to hold the offset, so it will be easier to later
+> move the PRI table.
 >
-> Most AMD commands only examine 11 bits of the address. This masks the
-> addresses used in the comparison to 11 bits. The exceptions are word or
-> sector addresses which use offset directly rather than the shifted
-> offset, boff.
->
-> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> Message-Id: <20190426162624.55977-4-stephen.checkoway@oberlin.edu>
-> [PMD: Prepend 'hw/' in patch subject]
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  hw/block/pflash_cfi02.c   |  8 +++++++-
->  tests/pflash-cfi02-test.c | 12 ++++++++++--
->  2 files changed, 17 insertions(+), 3 deletions(-)
+>  hw/block/pflash_cfi02.c | 31 +++++++++++++++++--------------
+>  1 file changed, 17 insertions(+), 14 deletions(-)
 >
 > diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index e64dc69c6c..4be3837be5 100644
+> index f1bac480f5..23d05a6308 100644
 > --- a/hw/block/pflash_cfi02.c
 > +++ b/hw/block/pflash_cfi02.c
-> @@ -281,11 +281,13 @@ static void pflash_write(void *opaque, hwaddr offse=
-t, uint64_t value,
->      }
->      offset &=3D pfl->chip_len - 1;
+> @@ -552,6 +552,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Er=
+ror **errp)
+>      pfl->status =3D 0;
 >
-> -    boff =3D offset & (pfl->sector_len - 1);
-> +    boff =3D offset;
->      if (pfl->width =3D=3D 2)
->          boff =3D boff >> 1;
->      else if (pfl->width =3D=3D 4)
->          boff =3D boff >> 2;
-> +    /* Only the least-significant 11 bits are used in most cases. */
-> +    boff &=3D 0x7FF;
->      switch (pfl->wcycle) {
->      case 0:
->          /* Set the device in I/O access mode if required */
-> @@ -538,6 +540,10 @@ static void pflash_cfi02_realize(DeviceState *dev, E=
-rror **errp)
->          }
->      }
+>      /* Hardcoded CFI table (mostly from SG29 Spansion flash) */
+> +    const uint16_t pri_ofs =3D 0x31;
+>      /* Standard "QRY" string */
+>      pfl->cfi_table[0x10] =3D 'Q';
+>      pfl->cfi_table[0x11] =3D 'R';
+> @@ -560,8 +561,8 @@ static void pflash_cfi02_realize(DeviceState *dev, Er=
+ror **errp)
+>      pfl->cfi_table[0x13] =3D 0x02;
+>      pfl->cfi_table[0x14] =3D 0x00;
+>      /* Primary extended table address */
+> -    pfl->cfi_table[0x15] =3D 0x31;
+> -    pfl->cfi_table[0x16] =3D 0x00;
+> +    pfl->cfi_table[0x15] =3D pri_ofs;
+> +    pfl->cfi_table[0x16] =3D pri_ofs >> 8;
+>      /* Alternate command set (none) */
+>      pfl->cfi_table[0x17] =3D 0x00;
+>      pfl->cfi_table[0x18] =3D 0x00;
+> @@ -609,32 +610,34 @@ static void pflash_cfi02_realize(DeviceState *dev, =
+Error **errp)
+>      pfl->cfi_table[0x2E] =3D (pfl->nb_blocs - 1) >> 8;
+>      pfl->cfi_table[0x2F] =3D pfl->sector_len >> 8;
+>      pfl->cfi_table[0x30] =3D pfl->sector_len >> 16;
+> +    assert(0x30 < pri_ofs);
 >
-> +    /* Only 11 bits are used in the comparison. */
-> +    pfl->unlock_addr0 &=3D 0x7FF;
-> +    pfl->unlock_addr1 &=3D 0x7FF;
-> +
->      pflash_setup_mappings(pfl);
->      pfl->rom_mode =3D 1;
->      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
-> diff --git a/tests/pflash-cfi02-test.c b/tests/pflash-cfi02-test.c
-> index e7e16a8dd8..e090b2e3a0 100644
-> --- a/tests/pflash-cfi02-test.c
-> +++ b/tests/pflash-cfi02-test.c
-> @@ -21,8 +21,8 @@
+>      /* Extended */
+> -    pfl->cfi_table[0x31] =3D 'P';
+> -    pfl->cfi_table[0x32] =3D 'R';
+> -    pfl->cfi_table[0x33] =3D 'I';
+> +    pfl->cfi_table[0x00 + pri_ofs] =3D 'P';
+> +    pfl->cfi_table[0x01 + pri_ofs] =3D 'R';
+> +    pfl->cfi_table[0x02 + pri_ofs] =3D 'I';
 >
->  #define FLASH_WIDTH 2
->  #define CFI_ADDR (FLASH_WIDTH * 0x55)
-> -#define UNLOCK0_ADDR (FLASH_WIDTH * 0x5555)
-> -#define UNLOCK1_ADDR (FLASH_WIDTH * 0x2AAA)
-> +#define UNLOCK0_ADDR (FLASH_WIDTH * 0x555)
-> +#define UNLOCK1_ADDR (FLASH_WIDTH * 0x2AA)
+>      /* Extended version 1.0 */
+> -    pfl->cfi_table[0x34] =3D '1';
+> -    pfl->cfi_table[0x35] =3D '0';
+> +    pfl->cfi_table[0x03 + pri_ofs] =3D '1';
+> +    pfl->cfi_table[0x04 + pri_ofs] =3D '0';
 >
->  #define CFI_CMD 0x98
->  #define UNLOCK0_CMD 0xAA
-> @@ -190,6 +190,14 @@ static void test_flash(void)
->      g_assert_cmphex(flash_read(6), =3D=3D, 0xCDEF);
->      g_assert_cmphex(flash_read(8), =3D=3D, 0xFFFF);
+>      /* Address sensitive unlock required. */
+> -    pfl->cfi_table[0x36] =3D 0x00;
+> +    pfl->cfi_table[0x05 + pri_ofs] =3D 0x00;
+>      /* Erase suspend not supported. */
+> -    pfl->cfi_table[0x37] =3D 0x00;
+> +    pfl->cfi_table[0x06 + pri_ofs] =3D 0x00;
+>      /* Sector protect not supported. */
+> -    pfl->cfi_table[0x38] =3D 0x00;
+> +    pfl->cfi_table[0x07 + pri_ofs] =3D 0x00;
+>      /* Temporary sector unprotect not supported. */
+> -    pfl->cfi_table[0x39] =3D 0x00;
+> +    pfl->cfi_table[0x08 + pri_ofs] =3D 0x00;
 >
-> +    /* Test ignored high order bits of address. */
-> +    flash_write(FLASH_WIDTH * 0x5555, UNLOCK0_CMD);
-> +    flash_write(FLASH_WIDTH * 0x2AAA, UNLOCK1_CMD);
-> +    flash_write(FLASH_WIDTH * 0x5555, AUTOSELECT_CMD);
-> +    g_assert_cmpint(flash_read(FLASH_WIDTH * 0x0000), =3D=3D, 0x00BF);
-> +    g_assert_cmpint(flash_read(FLASH_WIDTH * 0x0001), =3D=3D, 0x236D);
-> +    reset();
-> +
->      qtest_quit(global_qtest);
+>      /* Sector protect/unprotect scheme. */
+> -    pfl->cfi_table[0x3a] =3D 0x00;
+> +    pfl->cfi_table[0x09 + pri_ofs] =3D 0x00;
+>
+>      /* Simultaneous operation not supported. */
+> -    pfl->cfi_table[0x3b] =3D 0x00;
+> +    pfl->cfi_table[0x0a + pri_ofs] =3D 0x00;
+>      /* Burst mode not supported. */
+> -    pfl->cfi_table[0x3c] =3D 0x00;
+> +    pfl->cfi_table[0x0b + pri_ofs] =3D 0x00;
+> +    assert(0x0b + pri_ofs < ARRAY_SIZE(pfl->cfi_table));
 >  }
 >
+>  static Property pflash_cfi02_properties[] =3D {
 > --
 > 2.20.1
 >

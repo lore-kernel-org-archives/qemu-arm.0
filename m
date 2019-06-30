@@ -1,100 +1,99 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1465339wru;
-        Sun, 30 Jun 2019 02:26:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQZcqGiq+1/21q4AxYe2U0uKy6xz+62xFBiZjmBC4uqy8JTJ3/O9XE7w1LgM0lK6A1apec
-X-Received: by 2002:a17:906:7e58:: with SMTP id z24mr17547259ejr.64.1561886790715;
-        Sun, 30 Jun 2019 02:26:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561886790; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1505174wru;
+        Sun, 30 Jun 2019 03:21:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzRzKatpygngJ9S9fikWAglypDLYAWMmzEexa5U/+W4/oHnuTx44Lve6tRnO0WVxQhyiQnw
+X-Received: by 2002:a17:906:15d0:: with SMTP id l16mr17780150ejd.234.1561890107328;
+        Sun, 30 Jun 2019 03:21:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561890107; cv=none;
         d=google.com; s=arc-20160816;
-        b=zxAEpD28ggkWgZE9a4L8YwoFRvSeOgGg2Bb8FNVofl0IGVv61CT4piZquxH0ltanRf
-         mVBdUkZUEwZJUlVqzd5LCHScD9/xJrvwOq+i81YLEVEtzn0GZ8qHe694BqF9lRCRNy3/
-         +BOb8zWI5tTJFFG2MA3Bq1jTWE+4iMELXtfwDldlAA/gUOgfPUOsy9YEtYhtEJa/kvGX
-         39HRhb2cxEddLWMtrF5gbiiMByyy1adnnavId2yn+oW6wy9fk2Zrai5nIzxHDXsugy0p
-         OwEybJEoip1lnDMIP7ENpHl0ipQNnZaTUUL3zX1qs1+D5cILZcB5ppCw4z6eLh8cMEFn
-         gelw==
+        b=v+znu8uMlfSb83I7gw/NRElYZ/Pdp4X1oa+Mmp47Hb/Mc2RG2Gm1pxmXlFOP9vEQSC
+         GANUSwczbuecC7Qgzw3sllzPopzJ8Ne9Yqfstlk6AT5hFzNj8644qLFlBQjRZWYb9AYY
+         e9MV7TfwvrG/ZWYkuFITAOGg5QRdxubzZl1ZGGXC51TmPS0FOh/QkUTFUth1gdnij1O4
+         igOxqrglbY4N32wTnAfBS6hv3ENRzFy6YJiF5aFIheFoJ2Sd/vjXS/v89U49yBeyeEn2
+         rYIxTYj2Uu3Kq/gtjnSfKetsHC35atiRoiKYDVCVpEVUSgI7oH+hQ2NcsEXG/O6QFY+q
+         M+vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lsGajST4+T4CMV6duYmYlyNdzia/he5gJUUz78aVHn4=;
-        b=ZUjVfdegKB+gfNWm+BqrToqv8vBWtQpak3rtwRL0F6qy0Y6Fuyh6j7HmTyroX1RMS6
-         tcIgYCktDse7+JlPTB3nHgMIHcT7s5Uc5jg0a0VBMdkSiLytOQhx3cIct/hLhHgacHP5
-         cXySlf8GbWmqTiD3eHgjK6+Hc+mQypQxSujLnznPK8yOybiQErCZ8by1mR5ddae2acOe
-         +NFMz3yS1QSTkmCVoYGAWy2E/LjqoMWTf1gcn5c/uDDAUGMWI9dCXt8KZNTReNu9NKg6
-         vpE8HmQ+Fq2fF6nRKS+EZKIorutPeNLAmEU6xCyDGKUuLZkIha2ZI0aKZ3UfrA8/wAZR
-         mjeg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=2UYQ3yYYDlDIP0MsyiA7Zdsuo4ukrQD2ytHAxPp6tug=;
+        b=nNhswqrQkAU/9VzUKnTzqYNWQVuMFDYeRc5gFfa1IiwWbAHnTpel0dom6qh29U9JmT
+         sjTMW415iydvWJ3icF6ErLLiy6ydwqEEdpzIQKnii2p408ZxVjh+Z4xQLpVMgiEMrRLB
+         fnN7dwcQF8vE5mh486dAeNuyJE6K2WKJoHfu1CEUF54Xlv7Xqe4bwWZbK1Gn7u9Wlln6
+         nfjxR0yNmQ4GGpurjwOpBAOb/EgcOqVzmmL1b492FHOBwJkU78e1hSjS+FOvZY6p2obF
+         OSeiqZIa7bgK0t5wbcmBjIjV0U6ga2mSvPs8auX8UoABh9J6mIt8HZOMisG+DeS4vuCK
+         adig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DGG6RmA7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dp7n7Gl1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c50si2596159edc.412.2019.06.30.02.26.30
+        by mx.google.com with ESMTPS id b21si6825868ede.393.2019.06.30.03.21.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Jun 2019 02:26:30 -0700 (PDT)
+        Sun, 30 Jun 2019 03:21:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DGG6RmA7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Dp7n7Gl1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43600 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhW6P-00082a-OL
-	for alex.bennee@linaro.org; Sun, 30 Jun 2019 05:26:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38658)
+	id 1hhWxu-0001St-Eu
+	for alex.bennee@linaro.org; Sun, 30 Jun 2019 06:21:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46972)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hhW6H-00082G-OD
- for qemu-arm@nongnu.org; Sun, 30 Jun 2019 05:26:24 -0400
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hhWxN-0001Sg-2D
+ for qemu-arm@nongnu.org; Sun, 30 Jun 2019 06:21:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hhW6F-0008QP-4o
- for qemu-arm@nongnu.org; Sun, 30 Jun 2019 05:26:21 -0400
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:37865)
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hhWxL-0004CR-F3
+ for qemu-arm@nongnu.org; Sun, 30 Jun 2019 06:21:12 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35779)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
- id 1hhW6E-0008P0-QQ
- for qemu-arm@nongnu.org; Sun, 30 Jun 2019 05:26:19 -0400
-Received: by mail-io1-xd43.google.com with SMTP id e5so21982849iok.4
- for <qemu-arm@nongnu.org>; Sun, 30 Jun 2019 02:26:18 -0700 (PDT)
+ id 1hhWxL-0004Aw-8O
+ for qemu-arm@nongnu.org; Sun, 30 Jun 2019 06:21:11 -0400
+Received: by mail-pg1-x542.google.com with SMTP id s27so4608055pgl.2
+ for <qemu-arm@nongnu.org>; Sun, 30 Jun 2019 03:21:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lsGajST4+T4CMV6duYmYlyNdzia/he5gJUUz78aVHn4=;
- b=DGG6RmA7uY0U7v3E3TuC7rLrINbh7MytHk3iqbc7Pu8V+OcvyMa1oLvq/n+aQWu00+
- 98Ef7JglSo7aEPzFvc2Y6RbqRjihUm/PdtF9r3uAXSzvWjYAvdps/p5JjjF2CorUCZz5
- wNw9EADpd5iAyuwAJ9XKubeMPASar2vk/FipkDV70H48C7fctwoFryOiBE5GNKf9oBbK
- fyGJshKOTcqE+K2WiE9l9nI+6XmUb32zPbEYJMiQJwBV7/oBYTtWFCbmdXrrAtiov3tG
- La5zmVFBzXIW278izh1yL7BFH6LFgqDSlw1C/LxcqnwyMjmGDmFobXHOAfFBU7tEJukw
- DlMQ==
+ h=from:to:cc:subject:date:message-id;
+ bh=2UYQ3yYYDlDIP0MsyiA7Zdsuo4ukrQD2ytHAxPp6tug=;
+ b=Dp7n7Gl1mhsB89QHdQW1gMl+Mgw0Zk+x1v9rjtqU38XFdKVZNxuJpDrEitJOmWbq4M
+ pIYtKAKwy5/NTB2dRxLlrD2rpDyii3sgehaU6ZASBkeKuMPnpeXcxODbxZ9vdvC5FvkX
+ +S0R/8uLWe3hxKPAM/eYC8/c0x/MUUgZCAp4UkBNgUNo+xJd9GPqLZy/u4UqUE3X73YA
+ yWnQ52rUkHF8LLkdhd+Z+lqHsSb8LnPJinVzm4baiEyrXOe48y3qu1CWBQPUhy8Fc9F2
+ d0lIDMvv9avMzUP44jiXKqGlpcxsDT40sGGN5HYCt9+2cYuTCxloXBBRGn2yNkA67mRV
+ +flw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lsGajST4+T4CMV6duYmYlyNdzia/he5gJUUz78aVHn4=;
- b=DaiSklKh2pC1FkLvVoHdHHOlpF71GoUn9rB5o2fRYiCjVnPGQ45nKuFrpUt4U436Pk
- xdFX5TjqFCEqBj2zhEFj50fM3MHGtWSv0KOBjCU0HFGh+UhbF+dcF/xQHJrbJzKK1ZTz
- pQcVNN1tujHR45EmWD0lOBxaIoe2Pb58naIoFBV1u8LeEFMVzW6Q66Bi6X/tONq77jqZ
- QqDj6Q8oMyISR7BscFZmts8iweCpdtgMor+i1oB+DEOurrZsXMk88MuCj//PmVShZ6gi
- r233jy85w7khIMy1EZNNQ4CcFevBAOSZmqgIcLTqCSbfFqbXOKtgWoIBKI2VEuhLef5+
- W7jA==
-X-Gm-Message-State: APjAAAU5tM++qoWyIf1528O5ZLLgIatGLnALTtSg8NujbzpYUB1X9O1o
- omjxReSR5EqIMa0OLmZe448bCZvfqfiRze3esdpdyw==
-X-Received: by 2002:a02:662f:: with SMTP id k47mr21973314jac.4.1561886777467; 
- Sun, 30 Jun 2019 02:26:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <1561257655-25907-1-git-send-email-hongbo.zhang@linaro.org>
- <1561257655-25907-3-git-send-email-hongbo.zhang@linaro.org>
-In-Reply-To: <1561257655-25907-3-git-send-email-hongbo.zhang@linaro.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=2UYQ3yYYDlDIP0MsyiA7Zdsuo4ukrQD2ytHAxPp6tug=;
+ b=TNKs3GhIn8AO8+9ZIjME18uNNVzlvGPW4eDfmpyrauMv2L9djk0eTvOkX/OUi8ltFg
+ /lvtz/4nKzqeV4w5n7gXodF9Xnp4KR6shp/9t29DzgIEn2lB+vFs82vkAuMvoeyu8PBX
+ yn6F/5GHYboiNtrNfMHXykpgLNcb3R0rFtZKvndmYwnEyQ6RtyCn0m6JZpwKXYPMVIhR
+ xyUpr0sKq7ZMaC8jbeSzF8gl3CXEoniFjPo3LES1ESZUAt/LunZ2bxANke/GD2jUWkgu
+ pWiXzRIitA5i59GYai1Jh/2QVYA+qYboaq6FVvUFSw5Nwg+9i/etrcI1yidTpaiy9f0c
+ pYyg==
+X-Gm-Message-State: APjAAAWwyVGWh/Jmxyld0eQ9qtBoqv7mn+aa5kbg1rLR1AF5Pq3meIlG
+ QTGlxeZaJSoJZ4JRvUWCVtAQHg==
+X-Received: by 2002:a65:5a44:: with SMTP id z4mr5183482pgs.41.1561890068923;
+ Sun, 30 Jun 2019 03:21:08 -0700 (PDT)
+Received: from localhost.localdomain ([114.246.94.159])
+ by smtp.gmail.com with ESMTPSA id m100sm8714549pje.12.2019.06.30.03.21.06
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 30 Jun 2019 03:21:08 -0700 (PDT)
 From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Sun, 30 Jun 2019 17:26:08 +0800
-Message-ID: <CAHmQWvAK-jYguTmnh=+L=kLL8hdXsuGGkkQKXa=dNgHyiZ1KVA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+To: peter.maydell@linaro.org,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Date: Sun, 30 Jun 2019 18:20:32 +0800
+Message-Id: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d43
-Subject: Re: [Qemu-arm] [PATCH v8 2/2] hw/arm: Add arm SBSA reference
- machine, devices part
+X-Received-From: 2607:f8b0:4864:20::542
+Subject: [Qemu-arm] [PATCH v9 0/2] Add Arm SBSA Reference Machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,642 +105,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, radoslaw.biernacki@linaro.org,
+ leif.lindholm@linaro.org, ard.biesheuvel@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I1OrgeBEttpu
+X-TUID: RhuAJ5TV5UAD
 
-On Sun, 23 Jun 2019 at 10:42, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->
-> Following the previous patch, this patch adds peripheral devices to the
-> newly introduced SBSA-ref machine.
->
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
->  hw/arm/sbsa-ref.c | 523 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 517 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index e68751e..3b2b9cb 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -18,21 +18,41 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu-common.h"
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
->  #include "qemu/units.h"
-> +#include "sysemu/device_tree.h"
->  #include "sysemu/numa.h"
->  #include "sysemu/sysemu.h"
->  #include "exec/address-spaces.h"
->  #include "exec/hwaddr.h"
->  #include "kvm_arm.h"
->  #include "hw/arm/boot.h"
-> +#include "hw/block/flash.h"
->  #include "hw/boards.h"
-> +#include "hw/ide/internal.h"
-> +#include "hw/ide/ahci_internal.h"
->  #include "hw/intc/arm_gicv3_common.h"
-> +#include "hw/loader.h"
-> +#include "hw/pci-host/gpex.h"
-> +#include "hw/usb.h"
-> +#include "net/net.h"
->
->  #define RAMLIMIT_GB 8192
->  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
->
-> +#define NUM_IRQS        256
-> +#define NUM_SMMU_IRQS   4
-> +#define NUM_SATA_PORTS  6
-> +
-> +#define VIRTUAL_PMU_IRQ        7
-> +#define ARCH_GIC_MAINT_IRQ     9
-> +#define ARCH_TIMER_VIRT_IRQ    11
-> +#define ARCH_TIMER_S_EL1_IRQ   13
-> +#define ARCH_TIMER_NS_EL1_IRQ  14
-> +#define ARCH_TIMER_NS_EL2_IRQ  10
-> +
->  enum {
->      SBSA_FLASH,
->      SBSA_MEM,
-> @@ -67,6 +87,7 @@ typedef struct {
->      void *fdt;
->      int fdt_size;
->      int psci_conduit;
-> +    PFlashCFI01 *flash[2];
->  } SBSAMachineState;
->
->  #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
-> @@ -113,6 +134,455 @@ static const int sbsa_ref_irqmap[] = {
->      [SBSA_EHCI] = 11,
->  };
->
-> +/*
-> + * Firmware on this machine only uses ACPI table to load OS, these limited
-> + * device tree nodes are just to let firmware know the info which varies from
-> + * command line parameters, so it is not necessary to be fully compatible
-> + * with the kernel CPU and NUMA binding rules.
-> + */
-> +static void create_fdt(SBSAMachineState *sms)
-> +{
-> +    void *fdt = create_device_tree(&sms->fdt_size);
-> +    const MachineState *ms = MACHINE(sms);
-> +    int cpu;
-> +
-> +    if (!fdt) {
-> +        error_report("create_device_tree() failed");
-> +        exit(1);
-> +    }
-> +
-> +    sms->fdt = fdt;
-> +
-> +    qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,sbsa-ref");
-> +    qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-> +    qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
-> +
-> +    if (have_numa_distance) {
-> +        int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-> +        uint32_t *matrix = g_malloc0(size);
-> +        int idx, i, j;
-> +
-> +        for (i = 0; i < nb_numa_nodes; i++) {
-> +            for (j = 0; j < nb_numa_nodes; j++) {
-> +                idx = (i * nb_numa_nodes + j) * 3;
-> +                matrix[idx + 0] = cpu_to_be32(i);
-> +                matrix[idx + 1] = cpu_to_be32(j);
-> +                matrix[idx + 2] = cpu_to_be32(numa_info[i].distance[j]);
-> +            }
-> +        }
-> +
-> +        qemu_fdt_add_subnode(fdt, "/distance-map");
-> +        qemu_fdt_setprop(fdt, "/distance-map", "distance-matrix",
-> +                         matrix, size);
-> +        g_free(matrix);
-> +    }
-> +
-> +    qemu_fdt_add_subnode(sms->fdt, "/cpus");
-> +
-> +    for (cpu = sms->smp_cpus - 1; cpu >= 0; cpu--) {
-> +        char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-> +        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-> +        CPUState *cs = CPU(armcpu);
-> +
-> +        qemu_fdt_add_subnode(sms->fdt, nodename);
-> +
-> +        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
-> +            qemu_fdt_setprop_cell(sms->fdt, nodename, "numa-node-id",
-> +                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-> +        }
-> +
-> +        g_free(nodename);
-> +    }
-> +}
-> +
-> +#define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
-> +
-> +static PFlashCFI01 *sbsa_flash_create1(SBSAMachineState *sms,
-> +                                        const char *name,
-> +                                        const char *alias_prop_name)
-> +{
-> +    /*
-> +     * Create a single flash device.  We use the same parameters as
-> +     * the flash devices on the Versatile Express board.
-> +     */
-> +    DeviceState *dev = qdev_create(NULL, TYPE_PFLASH_CFI01);
-> +
-> +    qdev_prop_set_uint64(dev, "sector-length", SBSA_FLASH_SECTOR_SIZE);
-> +    qdev_prop_set_uint8(dev, "width", 4);
-> +    qdev_prop_set_uint8(dev, "device-width", 2);
-> +    qdev_prop_set_bit(dev, "big-endian", false);
-> +    qdev_prop_set_uint16(dev, "id0", 0x89);
-> +    qdev_prop_set_uint16(dev, "id1", 0x18);
-> +    qdev_prop_set_uint16(dev, "id2", 0x00);
-> +    qdev_prop_set_uint16(dev, "id3", 0x00);
-> +    qdev_prop_set_string(dev, "name", name);
-> +    object_property_add_child(OBJECT(sms), name, OBJECT(dev),
-> +                              &error_abort);
-> +    object_property_add_alias(OBJECT(sms), alias_prop_name,
-> +                              OBJECT(dev), "drive", &error_abort);
-> +    return PFLASH_CFI01(dev);
-> +}
-> +
-> +static void sbsa_flash_create(SBSAMachineState *sms)
-> +{
-> +    sms->flash[0] = sbsa_flash_create1(sms, "sbsa.flash0", "pflash0");
-> +    sms->flash[1] = sbsa_flash_create1(sms, "sbsa.flash1", "pflash1");
-> +}
-> +
-> +static void sbsa_flash_map1(PFlashCFI01 *flash,
-> +                            hwaddr base, hwaddr size,
-> +                            MemoryRegion *sysmem)
-> +{
-> +    DeviceState *dev = DEVICE(flash);
-> +
-> +    assert(size % SBSA_FLASH_SECTOR_SIZE == 0);
-> +    assert(size / SBSA_FLASH_SECTOR_SIZE <= UINT32_MAX);
-> +    qdev_prop_set_uint32(dev, "num-blocks", size / SBSA_FLASH_SECTOR_SIZE);
-> +    qdev_init_nofail(dev);
-> +
-> +    memory_region_add_subregion(sysmem, base,
-> +                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev),
-> +                                                       0));
-> +}
-> +
-> +static void sbsa_flash_map(SBSAMachineState *sms,
-> +                           MemoryRegion *sysmem,
-> +                           MemoryRegion *secure_sysmem)
-> +{
-> +    /*
-> +     * Map two flash devices to fill the SBSA_FLASH space in the memmap.
-> +     * sysmem is the system memory space. secure_sysmem is the secure view
-> +     * of the system, and the first flash device should be made visible only
-> +     * there. The second flash device is visible to both secure and nonsecure.
-> +     * If sysmem == secure_sysmem this means there is no separate Secure
-> +     * address space and both flash devices are generally visible.
-> +     */
-> +    hwaddr flashsize = sbsa_ref_memmap[SBSA_FLASH].size / 2;
-> +    hwaddr flashbase = sbsa_ref_memmap[SBSA_FLASH].base;
-> +
-> +    sbsa_flash_map1(sms->flash[0], flashbase, flashsize,
-> +                    secure_sysmem);
-> +    sbsa_flash_map1(sms->flash[1], flashbase + flashsize, flashsize,
-> +                    sysmem);
-> +}
-> +
-> +static bool sbsa_firmware_init(SBSAMachineState *sms,
-> +                               MemoryRegion *sysmem,
-> +                               MemoryRegion *secure_sysmem)
-> +{
-> +    int i;
-> +    BlockBackend *pflash_blk0;
-> +
-> +    /* Map legacy -drive if=pflash to machine properties */
-> +    for (i = 0; i < ARRAY_SIZE(sms->flash); i++) {
-> +        pflash_cfi01_legacy_drive(sms->flash[i],
-> +                                  drive_get(IF_PFLASH, 0, i));
-> +    }
-> +
-> +    sbsa_flash_map(sms, sysmem, secure_sysmem);
-> +
-> +    pflash_blk0 = pflash_cfi01_get_blk(sms->flash[0]);
-> +
-> +    if (bios_name) {
-> +        char *fname;
-> +        MemoryRegion *mr;
-> +        int image_size;
-> +
-> +        if (pflash_blk0) {
-> +            error_report("The contents of the first flash device may be "
-> +                         "specified with -bios or with -drive if=pflash... "
-> +                         "but you cannot use both options at once");
-> +            exit(1);
-> +        }
-> +
-> +        /* Fall back to -bios */
-> +
-> +        fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +        if (!fname) {
-> +            error_report("Could not find ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(sms->flash[0]), 0);
-> +        image_size = load_image_mr(fname, mr);
-> +        g_free(fname);
-> +        if (image_size < 0) {
-> +            error_report("Could not load ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +    }
-> +
-> +    return pflash_blk0 || bios_name;
-> +}
-> +
-> +static void create_secure_ram(SBSAMachineState *sms,
-> +                              MemoryRegion *secure_sysmem)
-> +{
-> +    MemoryRegion *secram = g_new(MemoryRegion, 1);
-> +    hwaddr base = sbsa_ref_memmap[SBSA_SECURE_MEM].base;
-> +    hwaddr size = sbsa_ref_memmap[SBSA_SECURE_MEM].size;
-> +
-> +    memory_region_init_ram(secram, NULL, "sbsa-ref.secure-ram", size,
-> +                           &error_fatal);
-> +    memory_region_add_subregion(secure_sysmem, base, secram);
-> +}
-> +
-> +static void create_gic(SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    DeviceState *gicdev;
-> +    SysBusDevice *gicbusdev;
-> +    const char *gictype;
-> +    uint32_t redist0_capacity, redist0_count;
-> +    int i;
-> +
-> +    gictype = gicv3_class_name();
-> +
-> +    gicdev = qdev_create(NULL, gictype);
-> +    qdev_prop_set_uint32(gicdev, "revision", 3);
-> +    qdev_prop_set_uint32(gicdev, "num-cpu", smp_cpus);
-> +    /*
-> +     * Note that the num-irq property counts both internal and external
-> +     * interrupts; there are always 32 of the former (mandated by GIC spec).
-> +     */
-> +    qdev_prop_set_uint32(gicdev, "num-irq", NUM_IRQS + 32);
-> +    qdev_prop_set_bit(gicdev, "has-security-extensions", true);
-> +
-> +    redist0_capacity =
-> +                sbsa_ref_memmap[SBSA_GIC_REDIST].size / GICV3_REDIST_SIZE;
-> +    redist0_count = MIN(smp_cpus, redist0_capacity);
-> +
-> +    qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
-> +    qdev_prop_set_uint32(gicdev, "redist-region-count[0]", redist0_count);
-> +
-> +    qdev_init_nofail(gicdev);
-> +    gicbusdev = SYS_BUS_DEVICE(gicdev);
-> +    sysbus_mmio_map(gicbusdev, 0, sbsa_ref_memmap[SBSA_GIC_DIST].base);
-> +    sysbus_mmio_map(gicbusdev, 1, sbsa_ref_memmap[SBSA_GIC_REDIST].base);
-> +
-> +    /*
-> +     * Wire the outputs from each CPU's generic timer and the GICv3
-> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-> +     */
-> +    for (i = 0; i < smp_cpus; i++) {
-> +        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-> +        int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
-> +        int irq;
-> +        /*
-> +         * Mapping from the output timer irq lines from the CPU to the
-> +         * GIC PPI inputs used for this board.
-> +         */
-> +        const int timer_irq[] = {
-> +            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-> +            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-> +            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-> +            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
-> +        };
-> +
-> +        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-> +            qdev_connect_gpio_out(cpudev, irq,
-> +                                  qdev_get_gpio_in(gicdev,
-> +                                                   ppibase + timer_irq[irq]));
-> +        }
-> +
-> +        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
-> +                                    qdev_get_gpio_in(gicdev, ppibase
-> +                                                     + ARCH_GIC_MAINT_IRQ));
-> +        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-> +                                    qdev_get_gpio_in(gicdev, ppibase
-> +                                                     + VIRTUAL_PMU_IRQ));
-> +
-> +        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> +        sysbus_connect_irq(gicbusdev, i + smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +    }
-> +
-> +    for (i = 0; i < NUM_IRQS; i++) {
-> +        pic[i] = qdev_get_gpio_in(gicdev, i);
-> +    }
-> +}
-> +
-> +static void create_uart(const SBSAMachineState *sms, qemu_irq *pic, int uart,
-> +                        MemoryRegion *mem, Chardev *chr)
-> +{
-> +    hwaddr base = sbsa_ref_memmap[uart].base;
-> +    int irq = sbsa_ref_irqmap[uart];
-> +    DeviceState *dev = qdev_create(NULL, "pl011");
-> +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-> +
-> +    qdev_prop_set_chr(dev, "chardev", chr);
-> +    qdev_init_nofail(dev);
-> +    memory_region_add_subregion(mem, base,
-> +                                sysbus_mmio_get_region(s, 0));
-> +    sysbus_connect_irq(s, 0, pic[irq]);
-> +}
-> +
-> +static void create_rtc(const SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    hwaddr base = sbsa_ref_memmap[SBSA_RTC].base;
-> +    int irq = sbsa_ref_irqmap[SBSA_RTC];
-> +
-> +    sysbus_create_simple("pl031", base, pic[irq]);
-> +}
-> +
-> +static DeviceState *gpio_key_dev;
-> +static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
-> +{
-> +    /* use gpio Pin 3 for power button event */
-> +    qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
-> +}
-> +
-> +static Notifier sbsa_ref_powerdown_notifier = {
-> +    .notify = sbsa_ref_powerdown_req
-> +};
-> +
-> +static void create_gpio(const SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    DeviceState *pl061_dev;
-> +    hwaddr base = sbsa_ref_memmap[SBSA_GPIO].base;
-> +    int irq = sbsa_ref_irqmap[SBSA_GPIO];
-> +
-> +    pl061_dev = sysbus_create_simple("pl061", base, pic[irq]);
-> +
-> +    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> +                                        qdev_get_gpio_in(pl061_dev, 3));
-> +
-> +    /* connect powerdown request */
-> +    qemu_register_powerdown_notifier(&sbsa_ref_powerdown_notifier);
-> +}
-> +
-> +static void create_ahci(const SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    hwaddr base = sbsa_ref_memmap[SBSA_AHCI].base;
-> +    int irq = sbsa_ref_irqmap[SBSA_AHCI];
-> +    DeviceState *dev;
-> +    DriveInfo *hd[NUM_SATA_PORTS];
-> +    SysbusAHCIState *sysahci;
-> +    AHCIState *ahci;
-> +    int i;
-> +
-> +    dev = qdev_create(NULL, "sysbus-ahci");
-> +    qdev_prop_set_uint32(dev, "num-ports", NUM_SATA_PORTS);
-> +    qdev_init_nofail(dev);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
-> +
-> +    sysahci = SYSBUS_AHCI(dev);
-> +    ahci = &sysahci->ahci;
-> +    ide_drive_get(hd, ARRAY_SIZE(hd));
-> +    for (i = 0; i < ahci->ports; i++) {
-> +        if (hd[i] == NULL) {
-> +            continue;
-> +        }
-> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
-> +    }
-> +}
-> +
-> +static void create_ehci(const SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    hwaddr base = sbsa_ref_memmap[SBSA_EHCI].base;
-> +    int irq = sbsa_ref_irqmap[SBSA_EHCI];
-> +
-> +    sysbus_create_simple("platform-ehci-usb", base, pic[irq]);
-> +}
-> +
-> +static void create_smmu(const SBSAMachineState *sms, qemu_irq *pic,
-> +                        PCIBus *bus)
-> +{
-> +    hwaddr base = sbsa_ref_memmap[SBSA_SMMU].base;
-> +    int irq =  sbsa_ref_irqmap[SBSA_SMMU];
-> +    DeviceState *dev;
-> +    int i;
-> +
-> +    dev = qdev_create(NULL, "arm-smmuv3");
-> +
-> +    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
-> +                             &error_abort);
-> +    qdev_init_nofail(dev);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> +    for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +    }
-> +}
-> +
-> +static void create_pcie(SBSAMachineState *sms, qemu_irq *pic)
-> +{
-> +    hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-> +    hwaddr size_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].size;
-> +    hwaddr base_mmio = sbsa_ref_memmap[SBSA_PCIE_MMIO].base;
-> +    hwaddr size_mmio = sbsa_ref_memmap[SBSA_PCIE_MMIO].size;
-> +    hwaddr base_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base;
-> +    hwaddr size_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size;
-> +    hwaddr base_pio = sbsa_ref_memmap[SBSA_PCIE_PIO].base;
-> +    int irq = sbsa_ref_irqmap[SBSA_PCIE];
-> +    MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
-> +    MemoryRegion *ecam_alias, *ecam_reg;
-> +    DeviceState *dev;
-> +    PCIHostState *pci;
-> +    int i;
-> +
-> +    dev = qdev_create(NULL, TYPE_GPEX_HOST);
-> +    qdev_init_nofail(dev);
-> +
-> +    /* Map ECAM space */
-> +    ecam_alias = g_new0(MemoryRegion, 1);
-> +    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-> +    memory_region_init_alias(ecam_alias, OBJECT(dev), "pcie-ecam",
-> +                             ecam_reg, 0, size_ecam);
-> +    memory_region_add_subregion(get_system_memory(), base_ecam, ecam_alias);
-> +
-> +    /* Map the MMIO space */
-> +    mmio_alias = g_new0(MemoryRegion, 1);
-> +    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-> +    memory_region_init_alias(mmio_alias, OBJECT(dev), "pcie-mmio",
-> +                             mmio_reg, base_mmio, size_mmio);
-> +    memory_region_add_subregion(get_system_memory(), base_mmio, mmio_alias);
-> +
-> +    /* Map the MMIO_HIGH space */
-> +    mmio_alias_high = g_new0(MemoryRegion, 1);
-> +    memory_region_init_alias(mmio_alias_high, OBJECT(dev), "pcie-mmio-high",
-> +                             mmio_reg, base_mmio_high, size_mmio_high);
-> +    memory_region_add_subregion(get_system_memory(), base_mmio_high,
-> +                                mmio_alias_high);
-> +
-> +    /* Map IO port space */
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
-> +
-> +    for (i = 0; i < GPEX_NUM_IRQS; i++) {
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
-> +    }
-> +
-> +    pci = PCI_HOST_BRIDGE(dev);
-> +    if (pci->bus) {
-> +        for (i = 0; i < nb_nics; i++) {
-> +            NICInfo *nd = &nd_table[i];
-> +
-> +            if (!nd->model) {
-> +                nd->model = g_strdup("e1000e");
-> +            }
-> +
-> +            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-> +        }
-> +    }
-> +
-> +    pci_create_simple(pci->bus, -1, "VGA");
-> +
-> +    create_smmu(sms, pic, pci->bus);
-> +}
-> +
-> +static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-> +{
-> +    const SBSAMachineState *board = container_of(binfo, SBSAMachineState,
-> +                                                 bootinfo);
-> +
-> +    *fdt_size = board->fdt_size;
-> +    return board->fdt;
-> +}
-> +
->  static void sbsa_ref_init(MachineState *machine)
->  {
->      SBSAMachineState *sms = SBSA_MACHINE(machine);
-> @@ -120,9 +590,10 @@ static void sbsa_ref_init(MachineState *machine)
->      MemoryRegion *sysmem = get_system_memory();
->      MemoryRegion *secure_sysmem = NULL;
->      MemoryRegion *ram = g_new(MemoryRegion, 1);
-> -    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-> +    bool firmware_loaded;
->      const CPUArchIdList *possible_cpus;
->      int n, sbsa_max_cpus;
-> +    qemu_irq pic[NUM_IRQS];
->
->      if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
->          error_report("sbsa-ref: CPU type other than the built-in "
-> @@ -135,6 +606,20 @@ static void sbsa_ref_init(MachineState *machine)
->          exit(1);
->      }
->
-> +    /*
-> +     * The Secure view of the world is the same as the NonSecure,
-> +     * but with a few extra devices. Create it as a container region
-> +     * containing the system memory at low priority; any secure-only
-> +     * devices go in at higher priority and take precedence.
-> +     */
-> +    secure_sysmem = g_new(MemoryRegion, 1);
-> +    memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-> +                       UINT64_MAX);
-> +    memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> +
-> +    firmware_loaded = sbsa_firmware_init(sms, sysmem,
-> +                                         secure_sysmem ?: sysmem);
-> +
->      if (machine->kernel_filename && firmware_loaded) {
->          error_report("sbsa-ref: No fw_cfg device on this machine, "
->                       "so -kernel option is not supported when firmware loaded, "
-> @@ -164,11 +649,6 @@ static void sbsa_ref_init(MachineState *machine)
->          exit(1);
->      }
->
-> -    secure_sysmem = g_new(MemoryRegion, 1);
-> -    memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-> -                       UINT64_MAX);
-> -    memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> -
-Sorry about the carelessness, these above lines of removing codes
-should not be exist, eg these lines should be not in patch 1.
-(this is caused by I changed to the new flash creating codes and
-didn't check thoughly at last)
-I have to send another iteration to clean this up :(
+For the Aarch64, there is one machine 'virt', it is primarily meant to
+run on KVM and execute virtualization workloads, but we need an
+environment as faithful as possible to physical hardware,  to support
+firmware and OS development for pysical Aarch64 machines.
 
+This machine comes with:
+ - Re-designed memory map.
+ - CPU cortex-a57.
+ - EL2 and EL3 enabled.
+ - GIC version 3.
+ - System bus AHCI controller.
+ - System bus XHCI controller.
+ - CDROM and hard disc on AHCI bus.
+ - E1000E ethernet card on PCIE bus.
+ - VGA display adaptor on PCIE bus.
+ - Only minimal device tree nodes.
+And without:
+ - virtio deivces.
+ - fw_cfg device.
+ - ACPI tables.
 
->      possible_cpus = mc->possible_cpu_arch_ids(machine);
->      for (n = 0; n < possible_cpus->len; n++) {
->          Object *cpuobj;
-> @@ -208,11 +688,33 @@ static void sbsa_ref_init(MachineState *machine)
->                                           machine->ram_size);
->      memory_region_add_subregion(sysmem, sbsa_ref_memmap[SBSA_MEM].base, ram);
->
-> +    create_fdt(sms);
-> +
-> +    create_secure_ram(sms, secure_sysmem);
-> +
-> +    create_gic(sms, pic);
-> +
-> +    create_uart(sms, pic, SBSA_UART, sysmem, serial_hd(0));
-> +    create_uart(sms, pic, SBSA_SECURE_UART, secure_sysmem, serial_hd(1));
-> +    /* Second secure UART for RAS and MM from EL0 */
-> +    create_uart(sms, pic, SBSA_SECURE_UART_MM, secure_sysmem, serial_hd(2));
-> +
-> +    create_rtc(sms, pic);
-> +
-> +    create_gpio(sms, pic);
-> +
-> +    create_ahci(sms, pic);
-> +
-> +    create_ehci(sms, pic);
-> +
-> +    create_pcie(sms, pic);
-> +
->      sms->bootinfo.ram_size = machine->ram_size;
->      sms->bootinfo.kernel_filename = machine->kernel_filename;
->      sms->bootinfo.nb_cpus = smp_cpus;
->      sms->bootinfo.board_id = -1;
->      sms->bootinfo.loader_start = sbsa_ref_memmap[SBSA_MEM].base;
-> +    sms->bootinfo.get_dtb = sbsa_ref_dtb;
->      sms->bootinfo.firmware_loaded = firmware_loaded;
->      arm_load_kernel(ARM_CPU(first_cpu), &sms->bootinfo);
->  }
-> @@ -262,6 +764,13 @@ sbsa_ref_get_default_cpu_node_id(const MachineState *ms, int idx)
->      return idx % nb_numa_nodes;
->  }
->
-> +static void sbsa_ref_instance_init(Object *obj)
-> +{
-> +    SBSAMachineState *sms = SBSA_MACHINE(obj);
-> +
-> +    sbsa_flash_create(sms);
-> +}
-> +
->  static void sbsa_ref_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -284,6 +793,8 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
->  static const TypeInfo sbsa_ref_info = {
->      .name          = TYPE_SBSA_MACHINE,
->      .parent        = TYPE_MACHINE,
-> +    .instance_size = sizeof(SBSAMachineState),
-> +    .instance_init = sbsa_ref_instance_init,
->      .class_init    = sbsa_ref_class_init,
->  };
->
-> --
-> 2.7.4
->
+Arm Trusted Firmware and UEFI porting to this are done accordingly, and
+it should supply ACPI tables to load OS, the minimal device tree nodes
+supplied from this platform are only to pass the dynamic info reflecting
+command line input to firmware, not for loading OS.
+
+v9 changes:
+ - only a few lines update to refine the patch format, while the final
+   sbsa-ref.c is kept same with v8
+
+v8 changes:
+ - rebase to latest QEMU tree
+ - use new way of creating flash as in 'virt' machine
+ - other minor typos and comments update
+
+v7 changes:
+ - edit memory map for PCIE slightly
+ - add another secure UART which can be used for RAS and MM from EL0.
+
+v6 changes:
+ - rebased to the latest QEMU tree
+ - rechecked all the header files included
+ - added the newly introduced system bus EHCI controller
+ - removed the machine_done callback due to commit 5614ca80
+ - updated block comments styles according to checkpatch.pl
+ - use Kconfig to add new file
+ - use private SBSA* types defination instead of VIRT* in virt.h
+   since nobody else using them so they are in the .c file instead
+   of a new .h file
+
+v5 changes:
+ - removed more lines derived from virt.c
+ - designed a new memory map
+ - splitted former one patch into two for easier review
+ - cancled previous EHCI and new HXCI coming later separately
+
+V4 changes:
+ - rebased to v3.0.0
+ - removed timer, uart, rtc, *hci device tree nodes
+   (others were removerd in v3)
+ - other minore codes clean up, mainly unsed header files, comments etc.
+
+V3 changes:
+ - rename the platform 'sbsa-ref'
+ - move all the codes to a separate file sbsa-ref.c
+ - remove paravirtualized fw_cfg device
+ - do not supply ACPI tables, since firmware will do it
+ - supply only necessary DT nodes
+ - and other minor code clean up
+
+Hongbo Zhang (2):
+  hw/arm: Add arm SBSA reference machine, skeleton part
+  hw/arm: Add arm SBSA reference machine, devices part
+
+ default-configs/arm-softmmu.mak |   1 +
+ hw/arm/Kconfig                  |  16 +
+ hw/arm/Makefile.objs            |   1 +
+ hw/arm/sbsa-ref.c               | 806 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 824 insertions(+)
+ create mode 100644 hw/arm/sbsa-ref.c
+
+-- 
+2.7.4
+

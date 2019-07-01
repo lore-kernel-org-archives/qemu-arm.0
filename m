@@ -1,156 +1,254 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3004068wru;
-        Mon, 1 Jul 2019 12:50:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzckL0j6vflYNN3H9VX7a8bRz7dAbP7ur/xldBrlvJYYuI0WCHf/KGKUftaI3hle+OCmojl
-X-Received: by 2002:a37:9506:: with SMTP id x6mr22634846qkd.107.1562010606107;
-        Mon, 01 Jul 2019 12:50:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562010606; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3062082wru;
+        Mon, 1 Jul 2019 14:06:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwK610pRkX8WsmsDb2VlMed0wHSXqo8zfsaX2s9zLa9g1XnZJiRQQ3se6Yo9MpFCsWz+W1W
+X-Received: by 2002:a17:906:838a:: with SMTP id p10mr24345159ejx.237.1562015183686;
+        Mon, 01 Jul 2019 14:06:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562015183; cv=none;
         d=google.com; s=arc-20160816;
-        b=hUcgaw01FBrzV3L/dk62IiH11fI2doxzZ0HJOYJ0Qcv2juEUCcyNRqbchm7CBvqzIo
-         6QRQgPn1nq/kDm0fa/U7Heyou/h4bSZdcapUCK5A3NWEOGFl69bANu7sD5xsfdJCn0xn
-         ktW3U3UST1Y6t0e9PiwtUardBVDVuJY/uOKfWIOzoHiPJaPBsFIUwfM3hfKjyP+zAvAA
-         ul/H7CPcWvW1hHyt5DgGOfojjUZp6qrz1XscfkrSmWGxTLNALMPfB8V8Vuy2ln0PaHLO
-         IlkyDeG+Babwzzaw4NPTXlwW06i1YyZI+fJTSLvA+Q89gaY0biKuiEi5WumV/NmkCCWk
-         IuKA==
+        b=c7Je6fi9DMa6ibXRPkXDKMlsHy58PfJXBBv/OLbdrcPUatpwGUw2sMqxoIP/SSlN5I
+         DyLZp5Zjiw6F9Wy5/1oyOIO05e3E7pXcSjyJTxejcX18IjTRZCu3YNJIprYJWIV378eO
+         mr1A+O7VNJFEmVgEcv6gHshGrvski8weCncpvwuTJ2jfgShzR8uzBR0fZ7r4vYIgrrPc
+         tRVORis/bbSGxx8uSHtZnkxLXJS5ERRveG208o/4lFNN0Xgoqe1rqzUK7nSXqjh7V2/5
+         Lm223Ii7wdMMqCmzGsEhp17H5HL1Jfc59L9KctoRNkq/jnsM5EBRalWbMpM7j42hGOpb
+         2sVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=dJCI6lwSz6oKb1SjeN/yk/jijyYdm0lGIVPzbf1z51Y=;
-        b=FR7HY1VEpsvthjjWr3CyjlV79uW1fl1scoRJFB4rglynxf5x1GoXo+ClpWB8Rmn3jO
-         rmpIOw+tUa7XiFGrxrsvHWXmoHge3hQl235QShMDBL3ZxoYHqq5GttYAw48aSuYwJW/E
-         tKQOimQYeKEtxp3zkB1Gn9cmPCMrTSI9PupaU/o9dEKWbgDlAFjKd0r76ZcV4uhwCkw5
-         Cb03mLn2zRNoUtbdGOwNqVqb/DbMRBh7slqsWyfy6+d7XdlUTqxUdcqV/XVFIHW4kUid
-         P7xcl033pSYAMjMBZ7Jv4wf7fNmwpM2qkU008kLnkg0+lydirkO/iMiYmij4X50PaFEH
-         00oA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=yYrPcmmp1UW8mdrcYTwNmqpepWMqdK+PjTB0qr+FSFs=;
+        b=o5hsbBd6apPcyb1JFZO/Xc1ZMIulx9LJJkBv52deOcZq0+k5q9Z/LlbyxsX0391NEs
+         2Q4z8ekcbATbzkLWYTMTXzUmbCNKvfZuVuoE387pMDyjxFUdy+8HFHqSEcJrejBghpZO
+         pfrndnTvzOBEoYTwrWh6HA3Xtdz06wHs6NiglcEZKF0ZxYfa/7l65hq+YIQ/YplVBIQW
+         QX1YQtWouRnaHArwiS4cVPARigxjiIrEppYWh68Ph4V9wWWZKO8vBvAVT8OHqqD9T5/n
+         WWrIcxss63DNZtCs7qxMdZEvgjkMTPZeN31IWSu3v+tK7LCo+AZjdmze8YiuA6VQXGc7
+         8ZHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id v26si8297568qtj.280.2019.07.01.12.50.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 12:50:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="EaF/EWyT";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g1si7688538ejc.278.2019.07.01.14.06.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 14:06:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E399630C3192;
-	Mon,  1 Jul 2019 19:49:59 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.170])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id F2ABC87A0;
-	Mon,  1 Jul 2019 19:49:55 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Samuel Ortiz <sameo@linux.intel.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Rob Bradford <robert.bradford@intel.com>,
-	qemu-arm@nongnu.org,
-	Andrew Jones <drjones@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Yang Zhong <yang.zhong@intel.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4 2/8] target/arm: Restrict semi-hosting to TCG
-Date: Mon,  1 Jul 2019 21:49:36 +0200
-Message-Id: <20190701194942.10092-3-philmd@redhat.com>
-In-Reply-To: <20190701194942.10092-1-philmd@redhat.com>
-References: <20190701194942.10092-1-philmd@redhat.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="EaF/EWyT";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45540 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hi3VG-0005PC-M6
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 17:06:22 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43181)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <alistair23@gmail.com>) id 1hi3Aq-00089E-7m
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 16:45:20 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1hi3Ak-0008En-3Q
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 16:45:12 -0400
+Received: from mail-lj1-f194.google.com ([209.85.208.194]:40775)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1hi3Ag-00089T-UY; Mon, 01 Jul 2019 16:45:07 -0400
+Received: by mail-lj1-f194.google.com with SMTP id a21so14604560ljh.7;
+ Mon, 01 Jul 2019 13:45:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yYrPcmmp1UW8mdrcYTwNmqpepWMqdK+PjTB0qr+FSFs=;
+ b=EaF/EWyTjnYI6PsrdklxFCOe+RTL/w7W0DTLX9EAKXS6+gtInMO3Y4GrOHWBQB9GbO
+ /wjw0ODq6W7DZJG6WqtPH0fmJvePLeaCBDLPP+YF0QIGDbl24Huk6Xgx/AXfAKWUnaYC
+ FwaneTl9tjH2/2igs4PB/j70GzPBiOxJbV3aKT9tSsl3HmL+JQGMkyXt22/7/ZyuTEcj
+ RojomE+quGb1if7tLRlIa+fftvKAiRb3+DjP4OYZfYT8jV2/ruXtjzrt4c90xAeQs60w
+ Uk3Dn2oiXTU9C8M1L0SeHqUvKd9AsdOCFfH/j8X6s73A8I1bLqNvgGZd9OuSbUOKiGsz
+ Zltw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yYrPcmmp1UW8mdrcYTwNmqpepWMqdK+PjTB0qr+FSFs=;
+ b=YUPhN5Mxki3w+oIzRYb20Na51FoHLtNx+mJLGlkN+W5mIyEO5xWUruS3SmnPpiYt4i
+ 8QHd8oqaUXFJxjNnlW1IONLRkWuwquq22Y3HIQDBfwCstulDAyn2oYNGq0FPFHwoM9Wz
+ XLwMT38D92O591zUwqYadymkp+J0KZSwhn1zoXR6Dp9dynLnBWQEfy1oQV22UteG20C2
+ BgUxOHprW64Pzvour/auotExvh8w0vlzZq5iIGIfAdh5FK3PQhcc+0Og/liDQbtgxvxq
+ 9VASLkE4GqJhsqtBOXqy0wBLWMkIaNgHnRkCdc9a20XTNm2b8BQyCI+AYakLwRFXrqlu
+ ZODg==
+X-Gm-Message-State: APjAAAWjj0zem6/09n0+1sRKENhH2YXl4Enxk1ZOZ66LcZ/cWYQxPe6T
+ 2w1lt02UhQ77Ar8ww6iCFyaXVPv5S/RcGttEGxcqRfML
+X-Received: by 2002:a2e:9158:: with SMTP id q24mr14872226ljg.119.1561999159508; 
+ Mon, 01 Jul 2019 09:39:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Mon, 01 Jul 2019 19:50:00 +0000 (UTC)
-X-TUID: Re/uzOHKv+3d
+References: <20190701123108.12493-1-philmd@redhat.com>
+ <20190701123108.12493-2-philmd@redhat.com>
+In-Reply-To: <20190701123108.12493-2-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 1 Jul 2019 09:36:17 -0700
+Message-ID: <CAKmqyKOscAyPAjgeNNdEwLCwpsKDKo9JJUA-HRZ8Oc-egaamHQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.208.194
+Subject: Re: [Qemu-devel] [PATCH 1/6] hw/arm: Use ARM_CPU_TYPE_NAME() macro
+ when appropriate
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4crkKwrPsI89
 
-Per Peter Maydell:
+On Mon, Jul 1, 2019 at 5:37 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> Commit ba1ba5cca introduce the ARM_CPU_TYPE_NAME() macro.
+> Unify the code base by use it in all places.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-  Semihosting hooks either SVC or HLT instructions, and inside KVM
-  both of those go to EL1, ie to the guest, and can't be trapped to
-  KVM.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Let check_for_semihosting() return False when not running on TCG.
+Alistair
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-v3: inline call to g_assert_not_reached if !TCG
-v4: fixed some ifdef that had moved in the next patch (Peter)
----
- target/arm/Makefile.objs | 2 +-
- target/arm/cpu.h         | 7 +++++++
- target/arm/helper.c      | 8 +++++++-
- 3 files changed, 15 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 294433da88..82bedefc3d 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -1,4 +1,4 @@
--obj-y += arm-semi.o
-+obj-$(CONFIG_TCG) += arm-semi.o
- obj-y += helper.o vfp_helper.o
- obj-y += cpu.o gdbstub.o
- obj-$(TARGET_AARCH64) += cpu64.o gdbstub64.o
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a9be18660f..94c990cddb 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -964,7 +964,14 @@ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
- { }
- #endif
- 
-+#if !defined(CONFIG_TCG)
-+static inline target_ulong do_arm_semihosting(CPUARMState *env)
-+{
-+    g_assert_not_reached();
-+}
-+#else
- target_ulong do_arm_semihosting(CPUARMState *env);
-+#endif
- void aarch64_sync_32_to_64(CPUARMState *env);
- void aarch64_sync_64_to_32(CPUARMState *env);
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 38b73430cb..6d91e0a1f9 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -20,7 +20,6 @@
- #include "qemu/qemu-print.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
--#include "arm_ldst.h"
- #include <zlib.h> /* For crc32 */
- #include "hw/semihosting/semihost.h"
- #include "sysemu/cpus.h"
-@@ -29,6 +28,9 @@
- #include "qapi/qapi-commands-target.h"
- #include "qapi/error.h"
- #include "qemu/guest-random.h"
-+#ifdef CONFIG_TCG
-+#include "arm_ldst.h"
-+#endif
- 
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
- 
-@@ -10399,6 +10401,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
- 
- static inline bool check_for_semihosting(CPUState *cs)
- {
-+#ifdef CONFIG_TCG
-     /* Check whether this exception is a semihosting call; if so
-      * then handle it and return true; otherwise return false.
-      */
-@@ -10474,6 +10477,9 @@ static inline bool check_for_semihosting(CPUState *cs)
-         env->regs[0] = do_arm_semihosting(env);
-         return true;
-     }
-+#else
-+    return false;
-+#endif
- }
- 
- /* Handle a CPU exception for A and R profile CPUs.
--- 
-2.20.1
+> ---
+>  hw/arm/allwinner-a10.c | 3 ++-
+>  hw/arm/cubieboard.c    | 3 ++-
+>  hw/arm/digic.c         | 3 ++-
+>  hw/arm/fsl-imx6.c      | 3 ++-
+>  hw/arm/fsl-imx6ul.c    | 3 ++-
+>  hw/arm/xlnx-zynqmp.c   | 8 ++++----
+>  6 files changed, 14 insertions(+), 9 deletions(-)
+>
+> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> index 35e906ca54..49d4d76686 100644
+> --- a/hw/arm/allwinner-a10.c
+> +++ b/hw/arm/allwinner-a10.c
+> @@ -28,7 +28,8 @@ static void aw_a10_init(Object *obj)
+>      AwA10State *s =3D AW_A10(obj);
+>
+>      object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
+> -                            "cortex-a8-" TYPE_ARM_CPU, &error_abort, NUL=
+L);
+> +                            ARM_CPU_TYPE_NAME("cortex-a8"),
+> +                            &error_abort, NULL);
+>
+>      sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
+>                            TYPE_AW_A10_PIC);
+> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+> index f7c8a5985a..a4d3d7a6a0 100644
+> --- a/hw/arm/cubieboard.c
+> +++ b/hw/arm/cubieboard.c
+> @@ -80,7 +80,8 @@ static void cubieboard_init(MachineState *machine)
+>
+>  static void cubieboard_machine_init(MachineClass *mc)
+>  {
+> -    mc->desc =3D "cubietech cubieboard";
+> +    mc->desc =3D "cubietech cubieboard (Cortex-A9)";
+> +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
+>      mc->init =3D cubieboard_init;
+>      mc->block_default_type =3D IF_IDE;
+>      mc->units_per_default_bus =3D 1;
+> diff --git a/hw/arm/digic.c b/hw/arm/digic.c
+> index 9015b60c23..05db06be5e 100644
+> --- a/hw/arm/digic.c
+> +++ b/hw/arm/digic.c
+> @@ -36,7 +36,8 @@ static void digic_init(Object *obj)
+>      int i;
+>
+>      object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
+> -                            "arm946-" TYPE_ARM_CPU, &error_abort, NULL);
+> +                            ARM_CPU_TYPE_NAME("arm946"),
+> +                            &error_abort, NULL);
+>
+>      for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
+>  #define DIGIC_TIMER_NAME_MLEN    11
+> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+> index 7129517378..9b259c54b3 100644
+> --- a/hw/arm/fsl-imx6.c
+> +++ b/hw/arm/fsl-imx6.c
+> @@ -40,7 +40,8 @@ static void fsl_imx6_init(Object *obj)
+>      for (i =3D 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
+>          snprintf(name, NAME_SIZE, "cpu%d", i);
+>          object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i])=
+,
+> -                                "cortex-a9-" TYPE_ARM_CPU, &error_abort,=
+ NULL);
+> +                                ARM_CPU_TYPE_NAME("cortex-a9"),
+> +                                &error_abort, NULL);
+>      }
+>
+>      sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore, sizeof(s->a9mpc=
+ore),
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index 05505bac56..1cbd8674bf 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -35,7 +35,8 @@ static void fsl_imx6ul_init(Object *obj)
+>      for (i =3D 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
+>          snprintf(name, NAME_SIZE, "cpu%d", i);
+>          object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i])=
+,
+> -                                "cortex-a7-" TYPE_ARM_CPU, &error_abort,=
+ NULL);
+> +                                ARM_CPU_TYPE_NAME("cortex-a7"),
+> +                                &error_abort, NULL);
+>      }
+>
+>      /*
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index a1ca9b5adf..2acd032df6 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -193,8 +193,8 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s=
+, const char *boot_cpu,
+>
+>          object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
+>                                  &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+> -                                "cortex-r5f-" TYPE_ARM_CPU, &error_abort=
+,
+> -                                NULL);
+> +                                ARM_CPU_TYPE_NAME("cortex-r5f"),
+> +                                &error_abort, NULL);
+>
+>          name =3D object_get_canonical_path_component(OBJECT(&s->rpu_cpu[=
+i]));
+>          if (strcmp(name, boot_cpu)) {
+> @@ -233,8 +233,8 @@ static void xlnx_zynqmp_init(Object *obj)
+>      for (i =3D 0; i < num_apus; i++) {
+>          object_initialize_child(OBJECT(&s->apu_cluster), "apu-cpu[*]",
+>                                  &s->apu_cpu[i], sizeof(s->apu_cpu[i]),
+> -                                "cortex-a53-" TYPE_ARM_CPU, &error_abort=
+,
+> -                                NULL);
+> +                                ARM_CPU_TYPE_NAME("cortex-a53"),
+> +                                &error_abort, NULL);
+>      }
+>
+>      sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
+> --
+> 2.20.1
+>
+>

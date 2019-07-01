@@ -1,104 +1,108 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2793855wru;
-        Mon, 1 Jul 2019 08:52:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyhz4o1sEiuAJeS9k8l3ly+ijj7m9UH/29BWC8YJAvTub1E+JHgPxjjubuYyHzq6yDV2RCs
-X-Received: by 2002:a17:902:9a06:: with SMTP id v6mr29132527plp.71.1561996333197;
-        Mon, 01 Jul 2019 08:52:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561996333; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2652880wru;
+        Mon, 1 Jul 2019 06:25:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxVL1Rz5QWUBqqLhQ/CFU6ZWXWFbeWobTpFtvIkSXYSOKB3D+5kabpx6tw80bmAt+7gJc4I
+X-Received: by 2002:ae9:c30e:: with SMTP id n14mr18964293qkg.220.1561987543654;
+        Mon, 01 Jul 2019 06:25:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561987543; cv=none;
         d=google.com; s=arc-20160816;
-        b=T+mEhjsoXROrPXLxhQloZpEGw4CEI9gsT8dc7v3hIJRuUi/59+0Rkcxvtxdx+OdfCF
-         cqmqxxraIHM9yuT1LIK4o/9ZQfVuQ3aWizs9lPm0YmbMGnVCMMXsi3Mnk1EnfUbt7I7I
-         D/ic7BkF1nSFeFnjqZWTDAz7zbeQ4/2fGyhHf98nrXdL/G4JJSSVtQRsavuDvce3aylp
-         tRkYa8Na9Oim7uXbyLOPy8ztlqwvT38FX1rDwngoxoVT4eWS0KLCffFZgrJw9Kc4nqNR
-         z8R3JgfpNRB0nvQ8RKFHgaBGMGobhbN4qIGnK18wCiiwdQb+o5/dAn+JS+Z0Wa+Xj6wR
-         9iJA==
+        b=FGV/xDE4zZV+Q+KgaJvrPIa3D4Fmvionuaxz79tL4Xlid9ytTZ2Hl7ak4uJCUPEPh4
+         U6/LPKPEsVjserz3f8oeQEFvePG5AN66KbRsY2cfcg5xLjR0GorZa0m8TJ3oAQL41zHL
+         1guzzXmiHg1rbBjTgrw5ZV/osHbAPPnfq2TDWRQco4biqqzrFCzdVFlnI7bS1g8yq09o
+         DbUxG5qWPmD3NEIz3reHa4fYZsOwQwInccj1dC070za6nS2fzmZXXYX/m5ixrM3avTF1
+         L2+QcqqL7sNUx0XmdeMT9PQesxBZMuA3OSiSYlPGlcZORoHO6To/HKpSjnIqpgtMRSuj
+         UOgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date;
-        bh=tkyL8sjck3/vvK94ncrGOfxQC3iuiB3ikGBEhhXCA3E=;
-        b=AWvwwHomXcv5EICi+kd1B/4LiExfW9Pnq9Nxfdrl16QdnUsd6nLaSAEneY0/mQy2kF
-         l1j4PIdOal83osFA8JW7vAF9v4rasqYzJr6G2v4YbGZOC2qke78f/+z8G/0tGL5IYwn0
-         lfRGXv0yGvp4p0yVavTFPgnCsAz/fodIf6O4Dg8vk9gZOtHyS9IZK5J4oyr0Jp4kpmlc
-         tS5r810n6IAdOIysTiLbO9sK8l3FMIFnQcFepeuBXE9PuiK6hmaxyJxU1dhsVYC352VN
-         6D1nv0t4gayo/BBeaBfFmzPoPj/5HCRkHnhVHkF5/mc8CTyddrbqYXMzeK18+zO+snHH
-         PX3A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=bkgV+B35PFMDytJWd35KhlcRcpJKYpDa4Tvn3fmXnQs=;
+        b=djy6QFIYCwOisXNvrEI1kfl2EjynNaLcPp5ELuaUmPsLOcYRTqdwnGdzhW1yp66QKf
+         BExr6GvHn6KsMBiWYe5m6za7Rhn7qXDeNJI0PFHurwQOsw9jmERvCBXjGbpcGFWJRdOH
+         9XWlWcOCRwxF4qADAEz0vvWhgS4Sf5nEMLmVgo6qA3vNSspH82SeGG7HdpmQVVEblHQr
+         NaGpEvDIP2QtWhbWefr8pdaU2FjjyjeuP39xqK8gkKyC+KaJip0J/vg+O++BpknxDb1Y
+         Tq+B1TOofTOtTLS6ZFVi2C5g1OLSPaEy6Myu0F1FdgmJ+dLSR/duFMRVo7xgeiHmHPno
+         mebg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of sameo@linux.intel.com designates 192.55.52.120 as permitted sender) smtp.mailfrom=sameo@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <sameo@linux.intel.com>
-Received: from mga04.intel.com (mga04.intel.com. [192.55.52.120])
-        by mx.google.com with ESMTPS id e9si10364594pgc.321.2019.07.01.08.52.12
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id p127si7610501qkb.356.2019.07.01.06.25.43
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 08:52:13 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of sameo@linux.intel.com designates 192.55.52.120 as permitted sender) client-ip=192.55.52.120;
+        Mon, 01 Jul 2019 06:25:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of sameo@linux.intel.com designates 192.55.52.120 as permitted sender) smtp.mailfrom=sameo@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 01 Jul 2019 08:52:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,439,1557212400"; 
-   d="scan'208";a="157332526"
-Received: from tcouniha-mobl.ger.corp.intel.com (HELO caravaggio) ([10.251.80.81])
-  by orsmga008.jf.intel.com with ESMTP; 01 Jul 2019 08:52:08 -0700
-Date: Mon, 1 Jul 2019 17:51:30 +0200
-From: Samuel Ortiz <sameo@linux.intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Yang Zhong <yang.zhong@intel.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D0E283082A27;
+	Mon,  1 Jul 2019 13:25:37 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.170])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2369F17AB6;
+	Mon,  1 Jul 2019 13:25:34 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Yang Zhong <yang.zhong@intel.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Rob Bradford <robert.bradford@intel.com>,
+	Samuel Ortiz <sameo@linux.intel.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH v3 00/27] Support disabling TCG on ARM
-Message-ID: <20190701155130.GA4424@caravaggio>
+	Andrew Jones <drjones@redhat.com>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 02/27] target/arm: Makefile cleanup (ARM)
+Date: Mon,  1 Jul 2019 15:24:51 +0200
+Message-Id: <20190701132516.26392-3-philmd@redhat.com>
+In-Reply-To: <20190701132516.26392-1-philmd@redhat.com>
 References: <20190701132516.26392-1-philmd@redhat.com>
- <CAFEAcA93x6zkbHe1hdg0c8cbo9ErSByP+g6UvwZefxn-6346zg@mail.gmail.com>
- <6222de8e-5b4e-db05-a453-ae4920c2002a@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <6222de8e-5b4e-db05-a453-ae4920c2002a@redhat.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
-X-TUID: k3RGGeDZiRxz
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Mon, 01 Jul 2019 13:25:37 +0000 (UTC)
+X-TUID: VTtCIeo/VOG+
 
-On Mon, Jul 01, 2019 at 05:44:58PM +0200, Philippe Mathieu-DaudÈ wrote:
-> On 7/1/19 5:41 PM, Peter Maydell wrote:
-> > On Mon, 1 Jul 2019 at 14:25, Philippe Mathieu-DaudÈ <philmd@redhat.com> wrote:
-> >>
-> >> Paolo motived me to salvage this (other!) previous series fromi
-> >> Samuel Ortiz (NEMU project).
-> >>
-> >> v1 cover from Samuel [1]:
-> >>
-> >>   This patchset allows for building and running ARM targets with TCG
-> >>   disabled. It splits the target/arm/helper.c file into logical TCG and
-> >>   non TCG dependent files so that one can build and run QEMU binaries with
-> >>   or without TCG enabled.
-> >>
-> >>   The rationale behind this work comes from the NEMU project where we're
-> >>   trying to only support x86 and ARM 64-bit architectures, without
-> >>   including the TCG code base. We can only do so if we can build and run
-> >>   ARM binaries with TCG disabled.
-> > 
-> > I have applied to target-arm.next:
-> >  1-12
-> >  14-17
-> >  19-21
-> > 
-> > I had comments about 13 and 18. 22 has a conflict when I try to apply it:
-> > I think this is just accidental because the functions it's moving are
-> > next to changes in patch 13 so there's a minor textual conflict, so it
-> > would be fine with a fixed-up version of patch 13.
-> > 23-27 are still RFC status so I think best left for the next release.
-> 
-> Thanks a LOT!
-Indeed, thanks a bunch!
+Group ARM objects together, TCG related ones at the bottom.
+This will help when restricting TCG-only objects.
 
-Cheers,
-Samuel.
+Reviewed-by: Alex Benn√©e <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud√© <philmd@redhat.com>
+---
+v3: move vfp_helper.o
+---
+ target/arm/Makefile.objs | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 7c31fa01c1..1cbe7cfdb4 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -4,11 +4,9 @@ obj-$(CONFIG_KVM) += kvm.o
+ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
+ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
+-obj-y += translate.o op_helper.o helper.o cpu.o
+-obj-y += neon_helper.o iwmmxt_helper.o vec_helper.o vfp_helper.o
+-obj-y += gdbstub.o
++obj-y += helper.o vfp_helper.o
++obj-y += cpu.o gdbstub.o
+ obj-$(TARGET_AARCH64) += cpu64.o gdbstub64.o
+-obj-y += crypto_helper.o
+ obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
+ 
+ DECODETREE = $(SRC_PATH)/scripts/decodetree.py
+@@ -32,6 +30,10 @@ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ target/arm/translate.o: target/arm/decode-vfp.inc.c
+ target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
+ 
++obj-y += translate.o op_helper.o
++obj-y += crypto_helper.o
++obj-y += iwmmxt_helper.o vec_helper.o neon_helper.o
++
+ obj-$(TARGET_AARCH64) += translate-a64.o helper-a64.o
+ obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
+ obj-$(TARGET_AARCH64) += pauth_helper.o
+-- 
+2.20.1

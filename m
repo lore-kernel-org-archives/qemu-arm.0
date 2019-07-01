@@ -1,143 +1,225 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2583882wru;
-        Mon, 1 Jul 2019 05:13:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzd41gFNqcg2NXEs0G8GDnWk9E9CjGK1LvrzqxtfvfTdvrn5PD5jryX41Z5mzG0Z8JVKplo
-X-Received: by 2002:a17:906:b216:: with SMTP id p22mr23178618ejz.273.1561983202788;
-        Mon, 01 Jul 2019 05:13:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561983202; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2602394wru;
+        Mon, 1 Jul 2019 05:32:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxgU520ZvgNI8ZmVcAycRQvUxv/iins/Db2+4ZKCGE1nfGj24pPFNVuoQm+M4GULLAmanyU
+X-Received: by 2002:a50:a3ec:: with SMTP id t41mr28750215edb.43.1561984322570;
+        Mon, 01 Jul 2019 05:32:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561984322; cv=none;
         d=google.com; s=arc-20160816;
-        b=l1OHCXbI2Efu7oDOYLxy0aHAvfVEP/fySmQDwA8NVQvJ3RYL8bBo7VY/X95I0sv+km
-         6TI32zyZvkshcQbrc9wb8BoxndVJeFPLtoZx9linpKybFIArUEqbke4GcCoXxo1IT4hF
-         LE1whwhV14oY1NRI3zb3ocRYg9uOQkvK1lz04UkhAIwz1xseM6GXcZ/0eGiVwu8xa/Ho
-         +i/mwqhzZwYTme8+kcxbuPYhGf1U1cCbSV9ZxopQUiKWdKTf0NicZ62dOqPYeuvzWQJY
-         qJPdB1ZWR8N7gRBMjDk0I7q3txvS7W26++L9eFTRxCuw6YNAVKCELk/MzdgNW8a1ACCB
-         SGYA==
+        b=bF1mJ2aSXEFoA2tnBQJgrYzqcQ3MhDr1qX3PB/iWTQEH87cxfivSP9x6Y3zALxgG6u
+         4jiZjjhmUZbEFnL0Gh230tRKI2XW0pXDNCV0g1CxvVwvxW2UpR2jNXHtFa/SYaB2Z4fY
+         GRMa20HAxC0FbQgI5Fal+J9HyClE6eV3wwZiSuUb2uZ/lHgX3+teZAJpGCyHE8oknKPN
+         sgDblg+mjN9wqlDXffmxsMUYNsJnlGNaT8c1fJPlm9N29sJzeFAe23SO0OZFEJkudQhv
+         BgXozuZ01Zm3GnvujcM/CTE26GrlwJJ2C5nRXmEYg2nSrOl2jC7z0J1jhD+k1YsQpBaG
+         soHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ojpK5Vnj35c3sG9gS1mYZguUk7VTk5K4mIty05dreN0=;
-        b=tVoZCr29Hy1tX/FGB/cinz/QzeCCMdG8EQkrEWijI8P7v5PvXX8gbXF1czUAPEZLVB
-         lW7n5mj+bHi38LUhL9Y2sJc4peIq/5zggT1WJg5CKCq+3O0p5v6pWoD7wh8EcKsygqAg
-         EFVTlJV2QmqwMUeVcAA0oa43xknUFdyDbAedfAFxzw/nvB0wEP70ijcx5JqFWAxHN2dD
-         Bl471Ed3kriiIw3HNXk8RyTzy6Hu+uIZ7iusm/DpzBDnRIBpDX0wxunm4CsxJeTLjy2g
-         jzA2SY4eJ7HANn3app/SGRV3ppcS1YPkCiYrgv3F1fHvma0O5Z24chpPRm8TPiSZ5xBl
-         YTig==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=6V13yAbT/9wrvS/64bDVpYzUz3XONF2jfvRYXEJlbCs=;
+        b=X4nVfXMlxo6AtNals9OmiHVefFWNfth8j7eTmFbNNHLMJaGANr0e1jcKw+2oyqZBPn
+         PdAoVYuc04lZ0b4AH46W1EdKlLpkG2tOvCkEWj6wnZCy6dUNpjiP4f29yF/nFsbYPz2H
+         MqinDtP6LhS6/KeXLeNbbZkn8IAAGTUblfsv4IyvMlcIB8zjgHi+MivrtHZMvMKjY8ID
+         RWb4muPJeFjGtATjCrjVKLm+1cmlIyjfMcTku0n2RBMW61/0PPUYQgcbRx7lgzEW/rhn
+         Gp0NDkvzJ+vGa2ES1PTnkgX9jcCbGSUyaU1Uc5ZMEfKaG7ohh5BoynsJRFrNkh6FNPaY
+         EJuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UgZW08Yz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6si2659997eju.13.2019.07.01.05.13.22
+        by mx.google.com with ESMTPS id b13si8646842eda.130.2019.07.01.05.32.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 05:13:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Jul 2019 05:32:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UgZW08Yz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58064 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhvBR-0007rg-TA
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:13:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53742)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhvTV-0005zE-Gl
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:32:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57576)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hhvB2-0007pI-LB
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:12:58 -0400
+ (envelope-from <philmd@redhat.com>) id 1hhvT0-0005xX-O2
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hhvB0-000182-6e
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:12:55 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46134)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hhvB0-00015a-1u
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:12:54 -0400
-Received: by mail-oi1-x242.google.com with SMTP id 65so9721883oid.13
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 05:12:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ojpK5Vnj35c3sG9gS1mYZguUk7VTk5K4mIty05dreN0=;
- b=UgZW08YzIXK3CMkGPV5Og1YG/luvYh9bvQ+TZz5PAuyodIZKnbvevblySyY6XSCrJK
- 3zlp8gtEtv1AaY3T5fLjSuprzl5MUl1tbAjIXRIMKVOjvWWL/Fuey3iZpuMoUvzfx0nM
- QIM+41MLDbxGKAYJYvXhdL1hEYMyDImEWQnT7IuZOTs96gQ5n8B+iTrUCOR1n+864h6w
- aRLQt3loF+unEpQAJOdeB8Wc708OFBH9+N7N4hSCn0jOGaVBsse8YGWtHQ825Tkbot4h
- Y9Iv1RyzFiyIb9W9TlIXnmxKLOqujcnHgOSfzq5BODsgkq/yohgbC+yM4SW/zy1WbyaJ
- lfPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ojpK5Vnj35c3sG9gS1mYZguUk7VTk5K4mIty05dreN0=;
- b=Dn05xM/VPzyhRIO9wsL//qWj2J/0TOa0CgVmRSeQhYIwvMPBUQHQSvYexPc7vmwB9l
- sJpiBc2CPy0vOyqx0alOK2Yf2Ds8LHnrpJ5XZTPjsqXoouVn9qO2optLkJgfXhQ2KPHP
- Nu4w0z2vPoJVf0cOJ0fZP6SksVZUJD6vMM3BuMnUp9NgUuQFaN6NV2/dSi5DnpBSfy0z
- SE1lyjVzrnejpkWAROsKsfsAUkwZnswKNCmEn7AsfYsvNNdkzJ7SIA6xdNEsip63schY
- LSw0hBYGF1pzwIzB3Hq4OuhiUeNI6RRVSsw38K0bSuNcd8H/GPU19ZunKQtxAgcmAPTj
- gNuA==
-X-Gm-Message-State: APjAAAWSV3UI4FcPr+lIn96W5VQVy13dHQY3WNUjXoQNpvw9266aIIEn
- aHnFsyFV4ImrB4uls+HxzTUEWT4yQePWD5IEvSTLaQ==
-X-Received: by 2002:a05:6808:d4:: with SMTP id
- t20mr6713435oic.170.1561983172849; 
- Mon, 01 Jul 2019 05:12:52 -0700 (PDT)
+ (envelope-from <philmd@redhat.com>) id 1hhvSy-0002ZA-49
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47906)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hhvSx-0002YJ-Qq; Mon, 01 Jul 2019 08:31:28 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 065C13162908;
+ Mon,  1 Jul 2019 12:31:27 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8FFBA17CC0;
+ Mon,  1 Jul 2019 12:31:20 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  1 Jul 2019 14:31:03 +0200
+Message-Id: <20190701123108.12493-2-philmd@redhat.com>
+In-Reply-To: <20190701123108.12493-1-philmd@redhat.com>
+References: <20190701123108.12493-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190416013902.4941-1-andrew.smirnov@gmail.com>
- <CAHQ1cqE5RZVYB1N2+CxGKNDb5NrtBOiQANhruZ6_6EbOThNwiw@mail.gmail.com>
-In-Reply-To: <CAHQ1cqE5RZVYB1N2+CxGKNDb5NrtBOiQANhruZ6_6EbOThNwiw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 13:12:42 +0100
-Message-ID: <CAFEAcA9_UV+7p3HSEz8AZ84f7VEC8CTez2D7GSGWxcAbyXZ1=A@mail.gmail.com>
-To: Andrey Smirnov <andrew.smirnov@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-devel] [PATCH 0/5] Various i.MX7 fixes
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Mon, 01 Jul 2019 12:31:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 1/6] hw/arm: Use ARM_CPU_TYPE_NAME() macro when
+ appropriate
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "open list:ARM" <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- "Michael S . Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +2YUMR5R5yQL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z7tys5rFPApD
 
-On Tue, 18 Jun 2019 at 01:27, Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
->
-> On Mon, Apr 15, 2019 at 6:39 PM Andrey Smirnov <andrew.smirnov@gmail.com> wrote:
-> >
-> > Everyone:
-> >
-> > I recently revisited my i.MX7 work and this series contains all of the
-> > fixes I had to make to get it to work with latest (5.1-rc1) Linux
-> > kernel again as well as fixes for genuine bugs that I somehow missed
-> > during original submission ("pci: designware" patches). Hopefully each
-> > patch is self-explanatory.
-> >
-> > Feedback is welcome!
-> >
->
-> Is there any changes necessary for this to go in?
+Commit ba1ba5cca introduce the ARM_CPU_TYPE_NAME() macro.
+Unify the code base by use it in all places.
 
-Oops, sorry we missed this (for future patches you can feel free
-to ping them after a couple of weeks of no response).
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/arm/allwinner-a10.c | 3 ++-
+ hw/arm/cubieboard.c    | 3 ++-
+ hw/arm/digic.c         | 3 ++-
+ hw/arm/fsl-imx6.c      | 3 ++-
+ hw/arm/fsl-imx6ul.c    | 3 ++-
+ hw/arm/xlnx-zynqmp.c   | 8 ++++----
+ 6 files changed, 14 insertions(+), 9 deletions(-)
 
-If you could reply to Philippe's query on patch 1 about the
-correct value for FSL_IMX7_DMA_APBH_SIZE that would be great,
-but since that's a very minor issue and we have softfreeze
-for the next release tomorrow, I'm going to take these patches
-into target-arm.next as they stand. We can fix the size value
-with a followup patch if necessary.
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 35e906ca54..49d4d76686 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -28,7 +28,8 @@ static void aw_a10_init(Object *obj)
+     AwA10State *s =3D AW_A10(obj);
+=20
+     object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
+-                            "cortex-a8-" TYPE_ARM_CPU, &error_abort, NUL=
+L);
++                            ARM_CPU_TYPE_NAME("cortex-a8"),
++                            &error_abort, NULL);
+=20
+     sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
+                           TYPE_AW_A10_PIC);
+diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
+index f7c8a5985a..a4d3d7a6a0 100644
+--- a/hw/arm/cubieboard.c
++++ b/hw/arm/cubieboard.c
+@@ -80,7 +80,8 @@ static void cubieboard_init(MachineState *machine)
+=20
+ static void cubieboard_machine_init(MachineClass *mc)
+ {
+-    mc->desc =3D "cubietech cubieboard";
++    mc->desc =3D "cubietech cubieboard (Cortex-A9)";
++    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
+     mc->init =3D cubieboard_init;
+     mc->block_default_type =3D IF_IDE;
+     mc->units_per_default_bus =3D 1;
+diff --git a/hw/arm/digic.c b/hw/arm/digic.c
+index 9015b60c23..05db06be5e 100644
+--- a/hw/arm/digic.c
++++ b/hw/arm/digic.c
+@@ -36,7 +36,8 @@ static void digic_init(Object *obj)
+     int i;
+=20
+     object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
+-                            "arm946-" TYPE_ARM_CPU, &error_abort, NULL);
++                            ARM_CPU_TYPE_NAME("arm946"),
++                            &error_abort, NULL);
+=20
+     for (i =3D 0; i < DIGIC4_NB_TIMERS; i++) {
+ #define DIGIC_TIMER_NAME_MLEN    11
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 7129517378..9b259c54b3 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -40,7 +40,8 @@ static void fsl_imx6_init(Object *obj)
+     for (i =3D 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
+         snprintf(name, NAME_SIZE, "cpu%d", i);
+         object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i])=
+,
+-                                "cortex-a9-" TYPE_ARM_CPU, &error_abort,=
+ NULL);
++                                ARM_CPU_TYPE_NAME("cortex-a9"),
++                                &error_abort, NULL);
+     }
+=20
+     sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore, sizeof(s->a9mpc=
+ore),
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 05505bac56..1cbd8674bf 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -35,7 +35,8 @@ static void fsl_imx6ul_init(Object *obj)
+     for (i =3D 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
+         snprintf(name, NAME_SIZE, "cpu%d", i);
+         object_initialize_child(obj, name, &s->cpu[i], sizeof(s->cpu[i])=
+,
+-                                "cortex-a7-" TYPE_ARM_CPU, &error_abort,=
+ NULL);
++                                ARM_CPU_TYPE_NAME("cortex-a7"),
++                                &error_abort, NULL);
+     }
+=20
+     /*
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index a1ca9b5adf..2acd032df6 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -193,8 +193,8 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s=
+, const char *boot_cpu,
+=20
+         object_initialize_child(OBJECT(&s->rpu_cluster), "rpu-cpu[*]",
+                                 &s->rpu_cpu[i], sizeof(s->rpu_cpu[i]),
+-                                "cortex-r5f-" TYPE_ARM_CPU, &error_abort=
+,
+-                                NULL);
++                                ARM_CPU_TYPE_NAME("cortex-r5f"),
++                                &error_abort, NULL);
+=20
+         name =3D object_get_canonical_path_component(OBJECT(&s->rpu_cpu[=
+i]));
+         if (strcmp(name, boot_cpu)) {
+@@ -233,8 +233,8 @@ static void xlnx_zynqmp_init(Object *obj)
+     for (i =3D 0; i < num_apus; i++) {
+         object_initialize_child(OBJECT(&s->apu_cluster), "apu-cpu[*]",
+                                 &s->apu_cpu[i], sizeof(s->apu_cpu[i]),
+-                                "cortex-a53-" TYPE_ARM_CPU, &error_abort=
+,
+-                                NULL);
++                                ARM_CPU_TYPE_NAME("cortex-a53"),
++                                &error_abort, NULL);
+     }
+=20
+     sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
+--=20
+2.20.1
 
-thanks
--- PMM

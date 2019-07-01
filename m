@@ -1,99 +1,82 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2610647wru;
-        Mon, 1 Jul 2019 05:41:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqybeu+P2k4LLB21M+MMbSdibwQHHAU6erh0HEnmvjn9yXCdh1jC/GoP7cdiCKU6/0ufzjZO
-X-Received: by 2002:a17:906:b243:: with SMTP id ce3mr22453302ejb.176.1561984872204;
-        Mon, 01 Jul 2019 05:41:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561984872; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2610811wru;
+        Mon, 1 Jul 2019 05:41:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwBby4EBzOSyOYazR2X6J3aO9VpLe9FuS8Gr4ekryDYsabnnFq1RLYQ1c4Zl3y13UQo6tld
+X-Received: by 2002:aa7:d4cf:: with SMTP id t15mr28801486edr.215.1561984882194;
+        Mon, 01 Jul 2019 05:41:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561984882; cv=none;
         d=google.com; s=arc-20160816;
-        b=oY9P9L3k7IPRuuKJJiSpj7YRGSIwf6tos9NidQzoLSPKaCYHMg86hCIGeDELPo9Omc
-         h7c+NEvFYwLO8LqNFhB/jByd7Kz9RcT4Je8jzeCbfIFwb8g8DjR+25i8Ue1JaZDN8C+h
-         yWylZ5Nw+V0SbpKBWmQccRAwZJCTBp/OCmUQQ1IX13Kj2aCjF3gU4SlcC5GgI32Gjuoi
-         fRAEYpagkJl0gKuXu4r0VJ1Myi5MsZADLqbHNWzyRPW4c0891cqtqqOy8+CBVf8v9k/3
-         ejyhptJflZIT9fFeFOD10ExnPXBbnq45lHlFyoDXQySDqBEnUdLMcvKcbWTPzJDbYsG0
-         DBdg==
+        b=gw8ZoFIe1ShOT+6Utg3Es0Tpe9PwPjh19rjpxYQRBmeCQ8oFkTNmSA+slfzOBGD+Cr
+         VcIKz+09YY3i/Q3i0PeBU6vx4iQjUgbMFAwYoDenLY1Z7ID1vYBV+l+WDDmhSHZu65y/
+         FSTDfzLbgT8rIJjB0NE8xMvlzz0blUxCk7JpUD0YXRlOBgp4sU56BaUjUd1dMO9FAlyf
+         aFBJrvagSHtG7v2zQ5J1CwTaR0TOsOAE4TO5c/8MUOBaQV0TR6q1axCtx9TwJJYm88H+
+         Py1CWtqusd+5UvK8TMGr0o3Qtd123U9zFaXYT9UUGL5D4Igz6VgQXY5Y/uBJHRDGENeX
+         /rNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=AZCeRWSMuP4UqySLZZFrYJOMDJVzaBqONi1GOmlAXYg=;
-        b=P1gQqLvduukrsn6IZCTF/RLkq2J2LUIDeq6v3q3GXyxgmOblqzr61yD3B2atf2T9Ef
-         t/ye+z0V1MVnYaGc3Q7TMDpeYkv79wdkcmroUn43mwJgo0OB8t2cHnp1GHnCEfIULWZJ
-         ZhD7YgM3XahWQQxLnaHSJyE6phc+1WZHbWQeAKSQT2879+0eqbO1/oUsLun77/Ph/N2l
-         uhEW4195cXfRlZf0gaLHlIBpui+uHzzOXXRW+w+FAYFqI7ejxpQeMxnRMnTnhwYBz6B2
-         rwe+izgrwLWKgUzK4kyxVsZ9uE87V35//KUw9oXtqjxuVHDATsGC/zMwMyywIMK36ONP
-         UBgw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=wAc1KcwFyzztVsShu4pbtmjbCFnaMe7RvnF/9uyyXZY=;
+        b=u7m19dz58AlpkG901d2XXC0YXT1vAu9DcJ9gHGPZ0DXt2nh4uuxnTOowu0QrURu8e5
+         zM/Uf0bPuLn/5nbRuXwkjIB7h1HB+aw2R52noOx7iMOvZTkd5G645xy5L9HaldD7ILO7
+         bds8sm/bLDLTjYzyQXPl3w71jOkaKKGjHCUth1Ki2h1iWeT1EKM4Vhq6QCx8K0subIwW
+         Ra4k+x779rSRImgrH9JQZoHNhNdCDZW81T9o9EDGSNoa44POs+biz+NkRATauOVjlFSf
+         2EKYB5Js0SsvqWoMIhqQak0qDlSlNb0uYW+WVXfGkluZAC17OQR/boGF08tFpNsd88XT
+         aWsA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si6738700eja.335.2019.07.01.05.41.12
+        by mx.google.com with ESMTPS id b6si8805071edq.358.2019.07.01.05.41.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 05:41:12 -0700 (PDT)
+        Mon, 01 Jul 2019 05:41:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58268 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhvcN-0003YQ-AN
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:41:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58390)
+	id 1hhvcX-0003yc-AF
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:41:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57778)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hhvWw-0000CE-59
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:35 -0400
+ (envelope-from <philmd@redhat.com>) id 1hhvTT-00068s-2M
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:32:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hhvWu-0006En-4a
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:34 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:35341)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hhvWq-000673-93
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:30 -0400
-Received: by mail-wr1-f68.google.com with SMTP id c27so5966370wrb.2
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 05:35:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=AZCeRWSMuP4UqySLZZFrYJOMDJVzaBqONi1GOmlAXYg=;
- b=RHVOsR44DUVO+0Ng+rIkfDHjJA7cOjKrPmNHPGiHphWDxB1ytoUjAzveyBNAlbWVKB
- lj3PIfU3g67D5PKlNKF+5herhyKSLQM2Vsko0Q4qn043RtWeohuJFLpQwNRj9c2meZ9w
- 3ENyLjSEX7dbjfDWVIySrnP7LRnOPH473mWWKNg4nokambzeWnHc/dYDwOpnDGo7ZsKZ
- HV89NBJKmuD74hJEjwPJUA+NCbN8nQl66TQVobxAtMpzQvJ+NYKX3a0bEhJlCGTPbX9+
- lY6uc0zo45yOuRhlH4Jto7USbJPfL+ga0+k0SfpvsOnShJCR/XQbEN0vIzd9wdTeXXrB
- PYfQ==
-X-Gm-Message-State: APjAAAVZsIiUbZdkFi7JEdvS09dSJ0JSnYygRpCqxiODjPOu8kIoQyim
- FKeSqLjlND9BviINVF8Clc4aow==
-X-Received: by 2002:a5d:68c7:: with SMTP id p7mr830627wrw.349.1561984526023;
- Mon, 01 Jul 2019 05:35:26 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id x3sm10524424wrp.78.2019.07.01.05.35.24
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 01 Jul 2019 05:35:25 -0700 (PDT)
-To: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
-References: <20190701123108.12493-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <626f9e20-cff3-757d-1043-04df3c1c2b3c@redhat.com>
-Date: Mon, 1 Jul 2019 14:35:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
+ (envelope-from <philmd@redhat.com>) id 1hhvTQ-00037J-Pf
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:31:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:21219)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hhvTM-0002vp-HA; Mon, 01 Jul 2019 08:31:52 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 78BB458E33;
+ Mon,  1 Jul 2019 12:31:51 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 03F985ED5D;
+ Mon,  1 Jul 2019 12:31:46 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  1 Jul 2019 14:31:08 +0200
+Message-Id: <20190701123108.12493-7-philmd@redhat.com>
 In-Reply-To: <20190701123108.12493-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20190701123108.12493-1-philmd@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.39]); Mon, 01 Jul 2019 12:31:51 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-devel] [PATCH 0/6] hw/arm: Use ARM_CPU_TYPE_NAME() and
- object_initialize_child()
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH 6/6] hw/net/xilinx_axi: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,35 +96,62 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
  Peter Chubb <peter.chubb@nicta.com.au>,
  Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R1ED+joSC0jA
+X-TUID: ZW+HuElrpoqh
 
-Buh I forgot to Cc Eduardo.
+As explained in commit aff39be0ed97:
 
-On 7/1/19 2:31 PM, Philippe Mathieu-Daudé wrote:
-> First we use ARM_CPU_TYPE_NAME() when we should.
-> 
-> Then is follow up of
-> https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg01492.html
-> 
->   This series looks at Eduardo suggestions from [1]
->   and Thomas commit aff39be0ed97 to replace various
->   object_initialize + qdev_set_parent_bus calls by
->   sysbus_init_child_obj().
-> 
-> Finally, some devices are declared orphean while they have a parent,
-> let them be together again.
-> 
-> [1] https://patchwork.ozlabs.org/patch/943333/#1953608
-> 
-> Philippe Mathieu-Daudé (6):
->   hw/arm: Use ARM_CPU_TYPE_NAME() macro when appropriate
->   hw/arm: Use object_initialize_child for correct reference counting
->   hw/arm: Use sysbus_init_child_obj for correct reference counting
->   hw/arm/fsl-imx: Add the cpu as child of the SoC object
->   hw/dma/xilinx_axi: Use object_initialize_child for correct ref.
->     counting
->   hw/net/xilinx_axi: Use object_initialize_child for correct ref.
->     counting
+  Both functions, object_initialize() and object_property_add_child()
+  increase the reference counter of the new object, so one of the
+  references has to be dropped afterwards to get the reference
+  counting right. Otherwise the child object will not be properly
+  cleaned up when the parent gets destroyed.
+  Thus let's use now object_initialize_child() instead to get the
+  reference counting here right.
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/net/xilinx_axienet.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index feeaca680e..aa0ae3c013 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -990,15 +990,14 @@ static void xilinx_enet_init(Object *obj)
+     XilinxAXIEnet *s =3D XILINX_AXI_ENET(obj);
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+=20
+-    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
+-                      TYPE_XILINX_AXI_ENET_DATA_STREAM);
+-    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
+-                      TYPE_XILINX_AXI_ENET_CONTROL_STREAM);
+-    object_property_add_child(OBJECT(s), "axistream-connected-target",
+-                              (Object *)&s->rx_data_dev, &error_abort);
+-    object_property_add_child(OBJECT(s), "axistream-control-connected-ta=
+rget",
+-                              (Object *)&s->rx_control_dev, &error_abort=
+);
+-
++    object_initialize_child(OBJECT(s), "axistream-connected-target",
++                            &s->rx_data_dev, sizeof(s->rx_data_dev),
++                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_abo=
+rt,
++                            NULL);
++    object_initialize_child(OBJECT(s), "axistream-control-connected-targ=
+et",
++                            &s->rx_control_dev, sizeof(s->rx_control_dev=
+),
++                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &error_=
+abort,
++                            NULL);
+     sysbus_init_irq(sbd, &s->irq);
+=20
+     memory_region_init_io(&s->iomem, OBJECT(s), &enet_ops, s, "enet", 0x=
+40000);
+--=20
+2.20.1
+

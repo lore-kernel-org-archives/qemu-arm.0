@@ -1,112 +1,136 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2784777wru;
-        Mon, 1 Jul 2019 08:42:09 -0700 (PDT)
-X-Received: by 2002:aca:c681:: with SMTP id w123mr7350184oif.32.1561995729052;
-        Mon, 01 Jul 2019 08:42:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561995729; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2714033wru;
+        Mon, 1 Jul 2019 07:29:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzGE/NfC8HyRIfwQjgWoeeD26DGAoBrhYKcd5Hd69nquhvbHgj3j7sRo7/1cdxH9uNp92BV
+X-Received: by 2002:a17:906:d6a:: with SMTP id s10mr23055900ejh.180.1561991355629;
+        Mon, 01 Jul 2019 07:29:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561991355; cv=none;
         d=google.com; s=arc-20160816;
-        b=sMKoslNhQJ5Piz6dMlbNkqVJJk9RHbVYoVGf5GCJBp2F4Soj++pin99+8GDsvDSISh
-         1Dgq+OSF5CS1hLtxIoFDo0cdazR7Eh+6X6B2ebxKq6K2bByE3ANBwgeKAIYUq0Z+kehE
-         OejWHPuyOcKtLudX+TGWMB+FvM4MhwiWikNcq/4HxjlvzavYONILc3Rak5aNdiNtZ91a
-         mwuB3s0MFCl7L72IdAyyESSnlPmDpL0H8oLTh8yA4SbchV55l7SMntetN0viK558xWLo
-         D6K1XNzY2njAwnr7dDqY+Yf25l0A6iQVrD1ZmxczNepygjIPGFAIQO64Kgt5x4uSCKKP
-         yRqg==
+        b=FtG+/yLCYa0XblnzhqdH74XKKbD0tt/k4aHtDotvNnWf2ZtEJgRpeBbmbxOZwqgWC5
+         JUur69EvIVx7B+Gx71fzjWgfaKQyhoGldjWgToX4uG6VWyKatqLrqshoODIe/Zzrglik
+         EfLjKqE/kiM1WzFYjedBuH7uU+HzmfhMKtfUoF/UmRJPpmkV900AilZTvyjogJxvRvyu
+         6lLrjXhlzGqd+WApVwfXUbHlv6+Co6HSSHSu4e5d+ehW1bTjl1V7+NgAVgGei3oWdFUO
+         dR1iHNE68+mssIDvqJbRNg5OVIOYk//sSj2+2GlcAxq8RIC9ywTp8b2aV8Xqezwi0TVJ
+         /bRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=NMAqTIq4T69gLVpMEjj3jVOxgFLDjZ/zQ0vNtEgbWVw=;
-        b=j4pI9g6yymEjJ7lOr9oNxPemJ67wKppP+WjJjg95SH3PVCYWOVNOxtolw5QWoAjzwt
-         DPd2m5sbub8Gg0H1MULXK/JWroUhvG/eDgOLW8DiLqgiCozje/iD9Bbii+m3pY5a4U9N
-         Heqg+ttAPFnbK35mdckpbPs0fjA0j0IXlumEjVmS9iO5CHQxbW5QbylsZB2q+85D8MMc
-         +DvtclK/A49Vxs7hp7TNKfl1u7vXlqJ5OY8z8b4CotpwfrCdSauXtV09XA2WlsyXqWHu
-         GbntcBaJdkUWZ4qFtyWgy0FG2WOmuhtb3CHZ98SNZXPMyqdMw1kExv5jbpOIKwvLC23F
-         fJZw==
+        bh=7jKn/glfJZ7+q4vbaBGW+VsR/O9vJnh77TasloERjnU=;
+        b=saHvILeCT13LfWltkrmzB/zmARwxVWlUTN+MaHJu4OdbrKAzYEdItITdfvObfnicBD
+         m1q7GZT2G+lNzheHdU8BhqhxJYYlwEEIgufauYRwPfXTCqCliT4k2eIJm4Lf9wYpEXYT
+         MolemsvRbXf9xREC9Of7pNFPn612y7aWJRuULwImvjDDTU0SMvPT3jtVVHXJ+hHatvks
+         5ML1FpNJS87ftZlR1Xnis7iiRDYJfe9m45KD0drsCqmV+MN0l7Y9lIJuqppW0C/BfQ4s
+         eV/BxKlxE/GawkhnTZwCIwPofhjOBG4sMzB8KAflK9T9+qtcVVLgr6Bku1AIXy4Rfoi7
+         WrBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rS7iR9BX;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c75sor4926870oih.142.2019.07.01.08.42.08
+       dkim=fail header.i=@linaro.org header.s=google header.b=m2TPgg7l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e28si9370088edb.265.2019.07.01.07.29.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 01 Jul 2019 08:42:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 07:29:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rS7iR9BX;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=NMAqTIq4T69gLVpMEjj3jVOxgFLDjZ/zQ0vNtEgbWVw=;
-        b=rS7iR9BX+yBa+Q3mJrdoTNFqM9fnVGwWjzPnHv1IZG5ubepOCsilrL9QlWj1bRZXo/
-         0U/YQfILTMQ5pbLUSJpGvAdRwzhv+KfaQ9aHTJv23tY4c20B1D2n/tCYXttJh7PL9Ul+
-         oRtUHbB4UFMkZv8GpfGCwxD0a2jf1pYkAAIaF+1/Wi5xgMwOOsWROpddywlCf1R2sIBY
-         eg71tADGli0Ri9AtiANf+Y/LDtN3pwaaPW9Y1vfo+ofqIQkRhOe0jYGs1wrdUa/hfs6J
-         JmuFIJYWd6EPMr0zdfBc+lb/qhq+lxe8SenuIghSWBX/EdUF0o87ToeQa13foegjDXcg
-         IxFg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=m2TPgg7l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59340 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhxIw-0007VM-N5
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 10:29:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53201)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhxBf-0006KR-29
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:21:44 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhxBd-0001Xk-LU
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:21:42 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45411)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hhxBb-0001QJ-Fo
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:21:41 -0400
+Received: by mail-ot1-x343.google.com with SMTP id x21so13633213otq.12
+ for <qemu-arm@nongnu.org>; Mon, 01 Jul 2019 07:21:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7jKn/glfJZ7+q4vbaBGW+VsR/O9vJnh77TasloERjnU=;
+ b=m2TPgg7lNbeLvOk7y3CLyI8upmKGyE65o4NU0MvULeyNvp6DgI2CidWXEAut398lU3
+ 0dbdSf1o1PS/RAD0CMsj6E13gD6+q+Rr7/hZj2l6IS96RMTAd4XCvuXjKL14I/QJTF98
+ X0ucOHGDM/zQbXFJYDC/qQLQT/i0rcFVc7yDR8eujmCL9hGvKtm0HoVH1ofCEwPeDNj7
+ Fpp9a20GpqLx7fFeZ4CrdiUfCn/0u/SkQ6qpINv39t1bouA8diM3ToYbdgfRrzJNTbBS
+ QqFkiCbkb1dbATz6JgHBOvAfMSctTL7wNQIRttkr1gNRtKoMziak7A9hriiTdK2bvP2X
+ kieg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=NMAqTIq4T69gLVpMEjj3jVOxgFLDjZ/zQ0vNtEgbWVw=;
-        b=iRPsHAP3HaYVapHpepvZOOVhM+9MzCNJlwLHdOsh8b0Xvgbez+TQ6LcsI4YUitiTiy
-         j7qqlR2Uw3bzYHbjL+xRBPsBkRv4nKCCT7JNmBI9m6Gl6kRs1TaMZGel3mJlMi2gSyz2
-         VisWV3g8kX/f6jYRuxfGWTRy7L8oPlb4ypQdGtuBKMurQo7ZFjtrGagjcEk01816xcXX
-         ymXnD+GqWGeiiJisBar5a4Vlh7PZ7RJZZEpeix+K4NDws3HIT7Ys6UqO818QWFezd47Z
-         YTtm1p43FIEHa1n/Rp8DbltHRTixPun47yuYYVnyAqDD8xj+Z4jMKMCOiytn+Jsukr9E
-         jdWQ==
-X-Gm-Message-State: APjAAAV72NkxxusMN26ItnfVtvjE55A0dyRCDPObBetuwH2/05lAE5l1
-	pj+7OPqMBp73SlNQnPpFjkLBo/wuNJ/X/8AyKXV2Vx4lwRBuGQ==
-X-Google-Smtp-Source: APXvYqwY1tjjpA5v2wLi0JJJ19cIDE24eZAUIJeXVvG9EqgZmXAEZPp2DcfVBM8W8hrdlGFAsUdnh34b0UeOZu27+Q4=
-X-Received: by 2002:a05:6808:d4:: with SMTP id t20mr7354091oic.170.1561995728528;
- Mon, 01 Jul 2019 08:42:08 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7jKn/glfJZ7+q4vbaBGW+VsR/O9vJnh77TasloERjnU=;
+ b=s6iRM5cIJRqTyuea4u6DlLsiL+TlIGRCpAHkdKSsmKJzCHjC8QzUW9F9eVqWj4Dgwa
+ 71GqbTxfuYhzFu2gCSvRabIhD4/tjmo9gtg+nto82CiaNOIAirONf+SAUkecxtx9JC8b
+ h+acblBBtmb+jpL3+9DPRDgzz/QfV7drIW4FlIQgpxknopMljZ4LfwGuErnj3AUUTREq
+ OvDonPF9knQsCLEA6mZ6HXOlZleEHHXQlXxA337fpz2IyCn219UXse821cmGqHndAUFq
+ aCTGQJJg//ZBVB3lVtI7+wzl9t7FV7XP2pFtFAMKIzbnlwTf5B2NmqKdWKG71jd7ad3H
+ 6HTw==
+X-Gm-Message-State: APjAAAUBKqWPZLVL3YLbQz/d9XJVY2oB1N3qioeVV5JsbUuDqF6y640u
+ byRQuxAn0tuhM/B1+y7rPm7cctOyqmfkV2659sCFcw==
+X-Received: by 2002:a9d:4d81:: with SMTP id u1mr8803580otk.221.1561990890402; 
+ Mon, 01 Jul 2019 07:21:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190701132516.26392-1-philmd@redhat.com>
-In-Reply-To: <20190701132516.26392-1-philmd@redhat.com>
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+ <20190625121421.22280-5-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20190625121421.22280-5-shameerali.kolothum.thodi@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 16:41:57 +0100
-Message-ID: <CAFEAcA93x6zkbHe1hdg0c8cbo9ErSByP+g6UvwZefxn-6346zg@mail.gmail.com>
-Subject: Re: [PATCH v3 00/27] Support disabling TCG on ARM
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Yang Zhong <yang.zhong@intel.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Rob Bradford <robert.bradford@intel.com>, Samuel Ortiz <sameo@linux.intel.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Date: Mon, 1 Jul 2019 15:21:19 +0100
+Message-ID: <CAFEAcA8TgTeia99880_CyEircQY_2cAnNQ-TPbaizh32+gqNag@mail.gmail.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: +++xpSqgaHID
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v6 4/8] hw/arm/virt: Add memory hotplug
+ framework
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Samuel Ortiz <sameo@linux.intel.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
+ Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+ sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: niD5CGQv6x1Y
 
-On Mon, 1 Jul 2019 at 14:25, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
-> wrote:
+On Tue, 25 Jun 2019 at 13:15, Shameer Kolothum
+<shameerali.kolothum.thodi@huawei.com> wrote:
 >
-> Paolo motived me to salvage this (other!) previous series fromi
-> Samuel Ortiz (NEMU project).
+> From: Eric Auger <eric.auger@redhat.com>
 >
-> v1 cover from Samuel [1]:
+> This patch adds the memory hot-plug/hot-unplug infrastructure
+> in machvirt. The device memory is not yet exposed to the Guest
+> either through DT or ACPI and hence both cold/hot plug of memory
+> is explicitly disabled for now.
 >
->   This patchset allows for building and running ARM targets with TCG
->   disabled. It splits the target/arm/helper.c file into logical TCG and
->   non TCG dependent files so that one can build and run QEMU binaries wit=
-h
->   or without TCG enabled.
->
->   The rationale behind this work comes from the NEMU project where we're
->   trying to only support x86 and ARM 64-bit architectures, without
->   including the TCG code base. We can only do so if we can build and run
->   ARM binaries with TCG disabled.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-I have applied to target-arm.next:
- 1-12
- 14-17
- 19-21
-
-I had comments about 13 and 18. 22 has a conflict when I try to apply it:
-I think this is just accidental because the functions it's moving are
-next to changes in patch 13 so there's a minor textual conflict, so it
-would be fine with a fixed-up version of patch 13.
-23-27 are still RFC status so I think best left for the next release.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

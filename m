@@ -1,102 +1,101 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2470883wru;
-        Mon, 1 Jul 2019 03:02:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyerq4/GjEM9PyerIKmxp5UYbxpUcq/LWrryzKilr/piQeUbB1l6g2yprX8YSvUrOO2Sq6w
-X-Received: by 2002:a50:91e5:: with SMTP id h34mr27409426eda.72.1561975372968;
-        Mon, 01 Jul 2019 03:02:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561975372; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2532422wru;
+        Mon, 1 Jul 2019 04:14:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyGiGG92TgG+UMeiyLuVLxmYm7PWNx40z77etCXXNJ6aUGDZUbWW7D/6DaczZfjRfgRB+eo
+X-Received: by 2002:a17:906:190e:: with SMTP id a14mr3080283eje.69.1561979657606;
+        Mon, 01 Jul 2019 04:14:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561979657; cv=none;
         d=google.com; s=arc-20160816;
-        b=iqJ5CqcuGOxW/FswjYDtkYcTsSyscI+exOoFsXse5ZDCgy8gJq8fFCYMTkSp7wWUji
-         HxAvlpgRKALsgD9/UFfUxGkXbFHDFlbaHk652X5X2uuIXwznlqi35ynanw6LtYzsK+hs
-         omSXL8gemziRpd5KjKL5GH24CYmupTzXy69juwycygVSFVnor9AuKT27F5SUGoKGxVXm
-         FYh1WDdbDnvFUjJFXVKpBqVVzllDZOiLbbKR19bmUTinSotMMnS3Yl4/P0JgUIgteGQi
-         wRwGveItKt6KfvoLNXe0FnWopSVmWtil5tP8f3UvZccFLjuiUQBzXB+vOVGHVPcFQHwK
-         Bhfg==
+        b=xPy0QuSwTydxr4bkh8B044wKHxoKjdNm2YPX2I1t9Ro8T4d4bYCBIubqcv7nbtMrRW
+         7ZwSf5sfHCCgYwvTCqZdpOATDPATeH2awow3IcN2wVo1vZW+0oY/Czsih0svCbYpJ4Mo
+         ddFE8JSyWKXBf8Lf/P4pOsgxImvvW6lhy/nhpQlQbUsUkVU73HU0ZlkspG598k0c7eY7
+         VZymiNt4L6bSGoZaPhB1BAb4ssCNbk/jnJj6CUiVUmnJGQzB/XKhMtKe0yHVsamrznhT
+         ykbGOKUOg1g6DX3jwwnDArABdjnOFart0omhkvR7uFsTnsMlkOf5vM+WAhLQZT02ZZcO
+         nVgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=YtzbtwJeSmY2r9CQ/aodjkBS7oniY9D5Gqhkb0tm5cE=;
-        b=yAt4cXfSIglj5bLckheHJ8c5xcgu5q/oM4iDML1T88w4BS2kAQxBQ5cQ1nSqilMeV5
-         aYq8ZUGOYPenCYt9slsl470i/0RZb3jUR5iVpDcy7cr3sgodf9UkOo0wnY1eiFKJE+Mj
-         eMBMAL9ELJ6208Bk0V9iiM3JJiLfUdExTjjY24zN+wZCtO9QNXD+lPBp6RJWEzXNpLes
-         VUIHJJhaQrLgOSiplglW+DIcC2LjTKoLQvUkon9sCWT4O5hwm1xn1hOsGesfAmjQN7Pj
-         /OqJ60oLMH4pYhirVeCpiaDzs3BdsL/dY+9s9Hmwrc+lWtilzinEoPJ249ghBEUmZq3B
-         ZAVw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=LPSeQWkfs5J4+0aio5LX6XJr8pFDPxJtfyKxsNBQOXc=;
+        b=uCZY0Dgo4WiogUCsZ+po1RiHmMjlTlVwFqkrhCpJEoOz5Ve7Gm8RartnrOGtEnBxfI
+         6z/NZYrdmhXPBM80G1s9i+zjwMyCNvE+V8/F8BWEJA+L1/PKm/uNtY3wGEbKI/G37s55
+         nThaW0lK/tcD+XTg7XyxujGZEHbgTSliU4opqowPNbiPyXWD3wg6cO77iTXQ0lkIGBGK
+         i/V88v5p6YhmWEb9diXAEFb/hVFZ4sXExpzqnETC+b5KOoegsYcmGAL1NKm00ltIGw8d
+         nVFBI/psbBdF9beLfmIydz7tnxhYVCRpnDcdWPX45G6EnnmgzNXBQoEAodNyBF/jksW9
+         WPZA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ar7wxNAd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gr2si7183414ejb.321.2019.07.01.03.02.52
+        by mx.google.com with ESMTPS id w42si8171602eda.142.2019.07.01.04.14.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 03:02:52 -0700 (PDT)
+        Mon, 01 Jul 2019 04:14:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ar7wxNAd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56674 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57192 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hht9A-0000HO-2y
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 06:02:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55457)
+	id 1hhuGG-00049n-NA
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 07:14:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42494)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hht5A-0006Nf-Ma
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 05:58:47 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hhuEt-0003Gw-Bf
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 07:12:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hht59-0007sb-KH
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 05:58:44 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:40048)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhuEr-0004Vv-FP
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 07:12:50 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38108)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hht59-0007rg-CR
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 05:58:43 -0400
-Received: by mail-wr1-f65.google.com with SMTP id p11so13088484wre.7
- for <qemu-arm@nongnu.org>; Mon, 01 Jul 2019 02:58:43 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hhuEp-0004Rn-9a
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 07:12:49 -0400
+Received: by mail-ot1-x343.google.com with SMTP id d17so13090241oth.5
+ for <qemu-arm@nongnu.org>; Mon, 01 Jul 2019 04:12:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=LPSeQWkfs5J4+0aio5LX6XJr8pFDPxJtfyKxsNBQOXc=;
+ b=ar7wxNAd1hV8I8OWCnekf7cL+dmWJr7iva24/6oUtkVZCXec86qh+pfkQNiHo/eYah
+ 54Ff4IWziohKYeKcE3OBhjaPXC3u1gYYr3Mvq6i3ab/7Ac/MhDuqRXFuzFt8Ab7JGVdF
+ LpRimq2ccUAdB5rE/zICa240Y0PqZ4oRV/Amei86KPQfwbau1hRZZqq7+vVJHAP7+Vci
+ 2FDgj67jU6NY9i2rxFUV1HVeQRBwwa5fjuMbTi/gnLMFOucMCHBFqo5gpucTaJ9LajBx
+ cRXNIBD1uStr6NTfkkSm9m4JjFSBXntrhounCNhAu3aRbSWyChScccICnlKB9JV6/fFQ
+ nQLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YtzbtwJeSmY2r9CQ/aodjkBS7oniY9D5Gqhkb0tm5cE=;
- b=sfxMlpMRGYYlWE9aJSFQomagqMlla68l/VlWzt3MOoIE5JXNnQzwlB0fsgMbd42lIS
- +hVPw6TDo452yhnjw0+oF9ItQeCcy8KFjUTeO6b02mjqe/H+hGSbAeGELCQlBYoOWK9j
- +WAmCjGOMVW5AvAFb9U11TXXvx4uMhPMM44UPJmRcYsLvYGVjb+7nRI/ga2gMlkP0xka
- zOy7cW07lYxKUVMI3KjPJL3RuhCW23RsdV4Pg4DPXdA2DjmaUbxP8e2gAK+C7RMgQ0v9
- 87XF0NOctM/5oAhx0JkSqY2+1yMePnfPfo86TkUfUKzv5SYu62HVPUxz3efEW+8PEDl/
- hP2A==
-X-Gm-Message-State: APjAAAX8jT3BeMWK5p9sZCtslYks16Kr3+Lr/a6tUk6Y2XIM6OjYNDgr
- Ez7wTbXfqLsupEBAW67YEM42eg==
-X-Received: by 2002:adf:82a8:: with SMTP id 37mr8172535wrc.332.1561975122450; 
- Mon, 01 Jul 2019 02:58:42 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id t15sm8826375wrx.84.2019.07.01.02.58.41
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 01 Jul 2019 02:58:41 -0700 (PDT)
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- peterx@redhat.com, pbonzini@redhat.com, alex.williamson@redhat.com
-References: <20190701093034.18873-1-eric.auger@redhat.com>
- <20190701093034.18873-2-eric.auger@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ca989a2a-05db-4222-7068-9d294f0434f7@redhat.com>
-Date: Mon, 1 Jul 2019 11:58:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=LPSeQWkfs5J4+0aio5LX6XJr8pFDPxJtfyKxsNBQOXc=;
+ b=edxkkBpG2vyXXhsPc/ZfjW3Wb3YmKDSYMfJdVM3c0A1pl2qn9ZTFEn3AXxnTFblaOW
+ HaWl26eKtvsmQVMQ+8dvvkWchslN5lhuW/VmldWNhaPyKd/NQP93uV9Xy0vEb5nfLr5y
+ OFmRlQNz1ZBTQEGnx0aEupEWTOAd/xgp/wv5T+lS0ST4coP3t+wSfm2bdCv/1KfgJHPx
+ 7zXsS8S+l2qje8Tzt+y3SjERGg2L4XB4cTzSb2Fx/oazlwhisHKUG+Ka1raj3uyOQTYT
+ HSQubuFjSHP5hT0u16ZmiGyyiDlTkMcLNpGsAC1zm4dINlBEPze+cjyJ+hDXRLOBl9lr
+ 5kAA==
+X-Gm-Message-State: APjAAAVsYLRdSTJrUZ1rGlKtC7zSRG4msRQ8NXnTVn0Z9/IsPYbWNF05
+ KywVl2riqLZ1GhQ9avPoflBB3BXylzIFKCwuxDiehA==
+X-Received: by 2002:a9d:4d81:: with SMTP id u1mr8164673otk.221.1561979565628; 
+ Mon, 01 Jul 2019 04:12:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190701093034.18873-2-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/6] memory: Remove unused
- memory_region_iommu_replay_all()
+References: <20190618125844.4863-1-drjones@redhat.com>
+In-Reply-To: <20190618125844.4863-1-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Jul 2019 12:12:34 +0100
+Message-ID: <CAFEAcA8ujpMTwBackhT5V3hN77e0V=PFO3+0pvXu5mnuNok7zA@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/boot: fix direct kernel boot with
+ initrd
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,61 +107,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vQn/DMjnLonh
+X-TUID: Y3cdNHwzOVTF
 
-On 7/1/19 11:30 AM, Eric Auger wrote:
-> memory_region_iommu_replay_all is not used. Remove it.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+On Tue, 18 Jun 2019 at 13:59, Andrew Jones <drjones@redhat.com> wrote:
+>
+> Fix the condition used to check whether the initrd fits
+> into RAM; in some cases if an initrd was also passed on
+> the command line we would get an error stating that it
+> was too big to fit into RAM after the kernel. Despite the
+> error the loader continued anyway, though, so also add an
+> exit(1) when the initrd is actually too big.
+>
+> Fixes: 852dc64d665f ("hw/arm/boot: Diagnose layouts that put initrd or
+> DTB off the end of RAM")
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/exec/memory.h | 10 ----------
->  memory.c              |  9 ---------
->  2 files changed, 19 deletions(-)
-> 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index e6140e8a04..bdd76653a8 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -1076,16 +1076,6 @@ void memory_region_register_iommu_notifier(MemoryRegion *mr,
->   */
->  void memory_region_iommu_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifier *n);
->  
-> -/**
-> - * memory_region_iommu_replay_all: replay existing IOMMU translations
-> - * to all the notifiers registered.
-> - *
-> - * Note: this is not related to record-and-replay functionality.
-> - *
-> - * @iommu_mr: the memory region to observe
-> - */
-> -void memory_region_iommu_replay_all(IOMMUMemoryRegion *iommu_mr);
-> -
->  /**
->   * memory_region_unregister_iommu_notifier: unregister a notifier for
->   * changes to IOMMU translation entries.
-> diff --git a/memory.c b/memory.c
-> index 0a089a73ae..290a1493ef 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -1910,15 +1910,6 @@ void memory_region_iommu_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifier *n)
->      }
->  }
->  
-> -void memory_region_iommu_replay_all(IOMMUMemoryRegion *iommu_mr)
-> -{
-> -    IOMMUNotifier *notifier;
-> -
-> -    IOMMU_NOTIFIER_FOREACH(notifier, iommu_mr) {
-> -        memory_region_iommu_replay(iommu_mr, notifier);
-> -    }
-> -}
-> -
->  void memory_region_unregister_iommu_notifier(MemoryRegion *mr,
->                                               IOMMUNotifier *n)
->  {
-> 
+>  hw/arm/boot.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+
+Applied to target-arm.next, thanks.
+
+-- PMM

@@ -1,113 +1,136 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1193555wru;
-        Thu, 27 Jun 2019 04:47:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwoQIpo19cl0pi0uwqt2a43FYBeghla+9cpVUWoyzJy/u1b/3AxjTHxLd6fIRTcG27r9PRz
-X-Received: by 2002:a37:dc07:: with SMTP id v7mr2847314qki.260.1561636034553;
-        Thu, 27 Jun 2019 04:47:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561636034; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2692164wru;
+        Mon, 1 Jul 2019 07:07:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyb1lMi6NJGGOCxxOEFjOV+EpVOF+S/uNWxcTWATnnER2qaD6kR5/IeAtIayJuavHnVGnHL
+X-Received: by 2002:aa7:d297:: with SMTP id w23mr28871340edq.128.1561990044998;
+        Mon, 01 Jul 2019 07:07:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561990044; cv=none;
         d=google.com; s=arc-20160816;
-        b=mafM40I61RZeho5avu2pnpNBrboPXuHzS7GtP+F8fz58zJDLyOBo1OGQyaTU7o+T4t
-         G/PKALHZWTThoxBz61P9dxQnZxXij/PiE6e7bEVmJKhTK09n3LZDCl1N79H9OvVU2/2I
-         WuSm5cDHmTw+W/xnupbaJ3dhdHwnwjbRGGJ4HamOhrTtRJLdIWjEayVnfIvhUywuQq7E
-         VS4I6rS0QNXuU4mEOXE/6CKuNxUHIMhCvSvahGPZMNzbgnWBu6kxy1mXlq6gb7iU5Jf9
-         W8HpOwvjc2cvc9iPxAN5YIIN7kXubs9irz3pqXAzKWYFA0u0TbDdawCULm/evic4ZWTS
-         I2VQ==
+        b=Wb3Q5h5TT1jlx5Orxs55TK2JoH8pyOOo8n6aVrCOpuMedg7IaGeZIEw2P9W3KV4mZh
+         9DHoPpDQeQ02epJbX2re41dKEJP/uMTUwRouQZa4UQNL049RQHzXfMzGJrgwwmcEaGOC
+         OpIYhCTqbCXHXBiKCDDDoOniv3QTXe27JG6w6BkW6kO9U/gz6GCqPwkpYV7CRGvjKV6E
+         X+Ik+Qz5Y/YiCQc7S3+Slxg4KG9KgMDckmjL5Z1PZVNWb8F2IYALTFXKb/h5Gq1ii1K0
+         gWmWdXZumjKl9IKWr9VYRoL5yYj12lOmvpFlbkhcE07fIhEZzxjvsaxPx9CkF/y0tSsn
+         /vAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=pL0PIkmAJ+vpO5oBcuWMS2JrOTPLtaHA/nbSWL9pWCE=;
-        b=c/8OKSQSjQg4z2KKhxd6Y5gDdeeBt9lH6vw3KX9014Zkn9oD5AJVcr1EdcVummy0dd
-         1ck4ffeFZm8QPd9n0K9UOszs5pTyPJUFswATYmWnkGD2W4fJ2GHitUUSRLN/Afla/D8V
-         3/AbjKkRVgYorT6EFDt0R2okRlm6civbVSh71quJHi6S393ATXq2Kv6vN4Xp7/jOIp4R
-         Hlx+QG4EnJezKmDqFLAMuMApTrBz7u4UhQAObdr0TWoXLa/+Jze+iOCOPj/GSxt7ZUyh
-         R9WQBK3BfFrEHZXqPkKQleEbuyiKg+OIoXESmB3xQJUsZs6BCiJ79xtQ9q76KGqEYwKM
-         qZ8A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
+        b=xkoNmAyVRLqGhh1EKVcEIeTAbTpJlSfSrguCaZjLRiKM7VMAYXcK60C2ImfGZq4jCX
+         m3oI5M0m7YWqRQ+0sfIKnBOMcqxauuKs6diUdA57kAt3WEog4IHEJ9BtvgpkUQ+6kJFw
+         WMnYoulhfjZcI64Gh7zR54MCmeCd7togCCOkfSBRM3I6BK02FeBfOIRkSczQg8euEjz1
+         wQn4dGEe6SyjGz9833zzlVBtOGg4HyqpJ5e1FCjhVp/xQ4PB+GRxxMaXwlhslgnFg5M+
+         WYYep/CbOVgyaFec3RzL/8/gTGm+C/ZxqZHKOwYl39Ai9dMp228PVgwOJhhfEctAOa+r
+         ZwuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id v27si1535520qtb.140.2019.06.27.04.47.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2019 04:47:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bRiu0vdd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a5si1575933eje.74.2019.07.01.07.07.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 07:07:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ACBB0307D91F;
-	Thu, 27 Jun 2019 11:47:08 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DBE3B5D9C6;
-	Thu, 27 Jun 2019 11:47:04 +0000 (UTC)
-Date: Thu, 27 Jun 2019 13:47:01 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, armbru@redhat.com,
-	imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v2 07/14] target/arm/cpu64: max cpu:
- Introduce sve<vl-bits> properties
-Message-ID: <20190627114701.n7tjgmljeribk7to@kamzik.brq.redhat.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-8-drjones@redhat.com>
- <ee8ce4a6-09fd-47ab-ef7e-a231df1e9c1b@redhat.com>
- <20190627104638.x4gxsmv7vpww3mra@kamzik.brq.redhat.com>
- <ae98bf94-6826-1f2b-2f2e-a11a3f75cb92@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=bRiu0vdd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59134 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhwxo-0003ja-1x
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 10:07:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43466)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhwTi-0002k7-V6
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:19 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhwTh-0000FI-UQ
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:18 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:38311)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hhwTh-0000Ei-PV
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:36:17 -0400
+Received: by mail-ot1-x343.google.com with SMTP id d17so13516527oth.5
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 06:36:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
+ b=bRiu0vddosM8bldq04r9MnXHYz7aNQFTu7Us063tbrs0G1OoJCFoRJ7UhlZqNiXcPS
+ XyBTtv42i/ZYbH8lgbWDRxWUe6jWlvS5j1j6JJHlVNqS9URovAB0axAWqSZRYHkXaNVh
+ dtmIC2QM4NA0pzSabKtWrmqZ1P/ZdxrW1HB9+x7EQQSZCyFAMuPpC4KCuZ0af/uZVRhy
+ 8LFp0tgnILW/otCwdZrL2kKoC1xFj7crSQUAtuOa8rb2+gwO14Jd39/Hu7seEJOx2Nmp
+ sRN6u/pbNJ4VFAAJbM6Pm495WpV72pzDHrm+iY1I4kEdqqA2GfkYZwIqiX7Zn2o/B2PR
+ FF9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=PVjMmpPwdek8frF6rNFPjF6DDS9IuYy6pojPPHcGSgk=;
+ b=AWfMXP2hH+yZA280OTuZWZwU8XNL6gEKo0ZGL13TyEe9t2qtq1efE3hV8uV8SH77k2
+ OvzdihVe/OSfIHkkoxIx0sNRSeZCk2fTYfjnA5mA3IST+y0bs7Em5japr9x4STJZO3qv
+ QF1F2fb6MpM88URmQc1tkUlPFXWKzDfablMwRBFLrgaD46TbbmEQfGoEBUHZA2jIXNy1
+ 77KuxwfPTnDdtDE5n19TMXHcOKY+bUg85+57pd+z8MrOOn9R6Yim8TkkGtTK6Lhs2EOs
+ wcOkkfFXU2bpP1zbiLKnW4R9kRtzkm7zfvjcdRM4wC8w8NonSaH8Z2SqMD9jnfpCm6ue
+ buPg==
+X-Gm-Message-State: APjAAAX14ap1YG+WaSrISfDTb+DR6a71yr6sv4Pmybp/RO6WKQ0WVCwn
+ whcomu+7H8V75A6gwirZZgcww4iEp7J4Io3bxS9GTwynDrY=
+X-Received: by 2002:a9d:7245:: with SMTP id a5mr20589831otk.232.1561988176854; 
+ Mon, 01 Jul 2019 06:36:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ae98bf94-6826-1f2b-2f2e-a11a3f75cb92@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Thu, 27 Jun 2019 11:47:08 +0000 (UTC)
-X-TUID: B9fv1sozDjt/
+References: <20190621065242.32535-1-joel@jms.id.au>
+In-Reply-To: <20190621065242.32535-1-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Jul 2019 14:36:06 +0100
+Message-ID: <CAFEAcA93PEEsp-6Ko_ELU+0QYPuYQFJLzX1LT+5+LdPjh-jq+A@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-devel] [PATCH v2] aspeed: Link SCU to the watchdog
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wdYQLSSwVIAT
 
-On Thu, Jun 27, 2019 at 01:00:27PM +0200, Auger Eric wrote:
-> Hi,
-> 
-> On 6/27/19 12:46 PM, Andrew Jones wrote:
-> > On Wed, Jun 26, 2019 at 06:56:54PM +0200, Auger Eric wrote:
-> >>> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> >>> index f500ccb6d31b..b7b719dba57f 100644
-> >>> --- a/target/arm/helper.c
-> >>> +++ b/target/arm/helper.c
-> >>> @@ -5324,7 +5324,16 @@ static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >>>  
-> >>>      /* Bits other than [3:0] are RAZ/WI.  */
-> >>>      QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
-> >>> -    raw_write(env, ri, value & 0xf);
-> >>> +    value &= 0xf;
-> >>> +
-> >>> +    if (value) {
-> >>> +        /* get next vq that is smaller than or equal to value's vq */
-> >>> +        uint32_t vq = value + 1;
-> >>> +        vq = arm_cpu_vq_map_next_smaller(cpu, vq + 1);
-> >>> +        value = vq - 1;
-> >> spec says:
-> >>
-> >> "if an unsupported vector length is requested in ZCR_ELx, the
-> >> implementation is required to select the largest
-> >> supported vector length that is less than the requested length. This
-> >> does not alter the value of ZCR_ELx.LEN.
-> >> "
-> >>
-> >> So I understand the value written in the reg should not be unmodified.
-> >>
-> > 
-> > Sorry, I can't parse what you're trying to tell me here. Here we have
-> > to write 'value', because that's what the guest is trying to do. As the
-> > spec says in your quote, we have to pick the length the guest wants, or
-> > the next smaller valid one, so that's what the code above does. So are
-> > you just stating that you agree with this hunk of the code?
-> What we are writing into the reg is arm_cpu_vq_map_next_smaller(cpu, vq
-> + 1) -1. Maybe I misunderstand the whole wording but I would have
-> expected the original unmodified value to be written in the reg instead?
+On Fri, 21 Jun 2019 at 07:52, Joel Stanley <joel@jms.id.au> wrote:
+>
+> The ast2500 uses the watchdog to reset the SDRAM controller. This
+> operation is usually performed by u-boot's memory training procedure,
+> and it is enabled by setting a bit in the SCU and then causing the
+> watchdog to expire. Therefore, we need the watchdog to be able to
+> access the SCU's register space.
+>
+> This causes the watchdog to not perform a system reset when the bit is
+> set. In the future it could perform a reset of the SDMC model.
+>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+> v2: rebase on upstream, rework commit message
 
-Hmm... So maybe we need more changes to the emulation in order for it to
-have an acting value and a register value? Maybe Richard knows what we
-should do here.
 
-Thanks,
-drew
+
+Applied to target-arm.next, thanks.
+
+-- PMM

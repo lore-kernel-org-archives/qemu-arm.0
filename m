@@ -1,194 +1,132 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp2253020wrg;
-        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzFC3dOTjfcytKA8sif/p1snV7Ka4L8ZR1E88gvJeg0jzCWY1z6K6c9vl+X9kVAma/5SRVz
-X-Received: by 2002:a50:b0e3:: with SMTP id j90mr36772968edd.26.1561257773578;
-        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561257773; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2445844wru;
+        Mon, 1 Jul 2019 02:31:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzjepyRUviuL0v13m1O+BIR2VT5qoDd4o3nHKnNjVI9rvqmaABLBBOEiuU+qtbpj+pG807x
+X-Received: by 2002:a17:906:27c7:: with SMTP id k7mr22011852ejc.91.1561973500121;
+        Mon, 01 Jul 2019 02:31:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561973500; cv=none;
         d=google.com; s=arc-20160816;
-        b=VL6xa1mjgfE53dzvD7UrypXIXE2duYUXOBxc9s3beAxHsEzGjyNJt1uzySkZUdetpP
-         bswXrEtAqmUvdly4yVUHfm30FJMvgouyI7jgXLo2ZRkwQ2yxW736BPt8ifwW4d9m5JuR
-         xGC1NW0AKU2bURRQGtTtts7OFwjMWDH4Uf46/yooyetTQ7AoMf7ACmA8n0yQW9gI1Xqs
-         3f+V1TFxBLsqqf/UKYL4I0RQNbKd7WfmM0tJtakve0F2pcqYeQ9yiytekxk0QoCORspH
-         Od31vYsG9FZ1UvGt33ukcJ32jTW3Maj6nvo6WiUaIvZtjXz++YR+cXxkYmEnzu6H9+A2
-         JueA==
+        b=mKHl2RyVFcNtJvtbWg00j9h7vNBjthvkOeExzNT1nFewnCSQ1Hv05+tyHfmAU7z+HI
+         WQSgXrftLSePFCQp3Vz+MTXP2vtSZ0Op0iu0ahJBni2BipjCOE4l45Rj0sarEu107K2O
+         3ca1EudaeALmwcf7HRvmC2yKKIKyd4plUJ4akeuQbnu4gP/KdhuRrr1CzPCRwcRYU3xT
+         maux0ZIGpBhzPe5TtcdRBLvGg4Tcz5YoMXn1mLskm/7YE9CTvhoE1vlsXsXUIoojGK2Y
+         ZAj3HvZFInOvwfILsHbtku7Rx0QM5pqDCBMNPnZp+822qtk/i9PqiWy0cf0clwUw6yYA
+         sRjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
-        b=BxQclSxHXWvHmOyngH4Ld3rcYNQIr6BuPiTSUCqTpg6gP6NZZ5WFK2gynBvDwdv2/q
-         cs8jNoYsXdfptcC1rvzPGPw1UDVtBBb2GMV2/UOTWchHYsvycdY69sMxmXjvv25JF/+X
-         kwD/9vLu1ES3D+lNRELHqDi9gCnFxNK7C/g8RHJxCf9zcB25ruWQ2eWVNF+qZROl8nCk
-         ZAmS5kU7EBnZ6VGkd/jDf2+qH+z0IN2jmNibiO0ZVqMdLbDaD/pdBA2mKFPhcwv1toXF
-         FarEkaIkF0ITRTOcBeqC+WmkyFREICXmCJ7IPim8WC6Z50UEs00j1wIakUZktCUMV3RF
-         JhRg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=bmEy38VtCAK5jPRtsmvFMaRktpZiZJoOw7HovHC++Ho=;
+        b=Ldr09GlBvMtkfJW5iRE88NcjiWwq8MByXVk4OI5Pp68ep4WzLMJy9OVVN5lhcUmF/9
+         krY8NGVhjMsvGjHZ4oeU82G+tliJoDvKfjTG4wsYE27s+RyVZ4JmqHx1BK3ytpmX3G69
+         ZuKnA9f6MG9QrCA+tQ9QyAfFdUvOXdWbw78abuO9hC0PteHg9ZTfEH52poofnOYEmwVj
+         A//b6G/RhLBo/iHgOG82Kdeogg7XaW22cfRPUQKhCLrmZMO5en55pPdZl8jUzSZ7IMAL
+         CuhT6SyvZJg7RzJ0NF2FZGAtkNG9+5k5fMM80c1/TcKDODhsXGYCCaKRS+L65wG3qHzp
+         o2cA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tdbHGCRP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10si6180010edc.151.2019.06.22.19.42.53
+        by mx.google.com with ESMTPS id e26si8726700edd.294.2019.07.01.02.31.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Jun 2019 19:42:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Jul 2019 02:31:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tdbHGCRP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43034 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hesSy-0000Eh-Lf
-	for alex.bennee@linaro.org; Sat, 22 Jun 2019 22:42:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhsex-0002KA-1N
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 05:31:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49540)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hesSo-0000EU-EO
- for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:43 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hhsee-0002Ip-9E
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 05:31:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hesSn-00032G-CK
- for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:42 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:46566)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
- id 1hesSn-0002yN-5H
- for qemu-devel@nongnu.org; Sat, 22 Jun 2019 22:42:41 -0400
-Received: by mail-pg1-x541.google.com with SMTP id v9so5198835pgr.13
- for <qemu-devel@nongnu.org>; Sat, 22 Jun 2019 19:42:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id;
- bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
- b=tdbHGCRPIBoslKmdoU01I/Wwo/ZtvJKSsAmKGtNlfSsBWWP3MXqEm3GXA3gGNsGQn/
- IfhHKTdtcXEGFkOe1qWgJ7OblGbK5oVqz1iLb1cyq5ZBDgJzls7ekQgNNRb2P0dz/Eip
- G3uV9pvj05ThW2aoINEFrxmCRbjWDt+M1v1k0j4FgYxd6DhK+BKgjeHF3DLU3dmzKWNq
- Gvd5nj3yLH6m/QC0+gvP1rJnMml4OJdyW6WmbhEvf5FkJ5cezwZuhAk4vbzOTCA4RE1H
- 1ajmlBabO09CMFgyNsZ+efrxB1EdzxR/NV6Q753c3Zy+fBEYzt3iuVpcXFHgoMTomntJ
- nR6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=d/UIhArRzZQ/AiYxCwVh0WjkOQYp1EoyTFMKzL/gCPw=;
- b=Xg1fVO5/5GEVVMz4pz1XVt0B9hIoFEs1VcTlmUae5I1pVIcnYwOmHojy09jLfd46Bj
- P1AIfDlLNN0uoXAntbXjM/pcQs8VD5V/5G8gHE2k7d7BVEiiWRdOWmmx0YMmNFb0iVJi
- UWO7KjHqW7QxdbdOGhPkKa47DxhlO3+y4UXVKvbCCki/beXbKEpjY5xuGlv0iQ+KZyG3
- JIQQRxx704v2tVx8CFKXEF9GaEAa779ImN96vfmmU2q3ZvoKH4yfONO7OECcWf8Q5uoG
- 5QsYz6YMyAr1InO85QkRWIsvmvrDb0wtsNcBI53fsZbw8NP7H0asQaskE19OEBBptpwy
- svSg==
-X-Gm-Message-State: APjAAAU5nisRm6KgGR3F6AUQXhC8aeTu9Ah2qTxZVQcELn6Cc9SlQo9v
- sjqQmrKV0GExcACm2z+O5myjig==
-X-Received: by 2002:a17:90a:de02:: with SMTP id
- m2mr16236861pjv.18.1561257758821; 
- Sat, 22 Jun 2019 19:42:38 -0700 (PDT)
-Received: from localhost.localdomain ([222.131.159.173])
- by smtp.gmail.com with ESMTPSA id o13sm7007146pje.28.2019.06.22.19.42.36
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sat, 22 Jun 2019 19:42:38 -0700 (PDT)
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-To: peter.maydell@linaro.org,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Sun, 23 Jun 2019 10:40:53 +0800
-Message-Id: <1561257655-25907-1-git-send-email-hongbo.zhang@linaro.org>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-Subject: [Qemu-devel] [PATCH v8 0/2] Add Arm SBSA Reference Machine
-X-BeenThere: qemu-devel@nongnu.org
+ (envelope-from <eric.auger@redhat.com>) id 1hhsec-0000Jz-08
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 05:31:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54902)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1hhseY-0008NE-5m; Mon, 01 Jul 2019 05:31:15 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8F2A981F1B;
+ Mon,  1 Jul 2019 09:30:50 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-89.ams2.redhat.com [10.36.116.89])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 30618BA4D;
+ Mon,  1 Jul 2019 09:30:39 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com,
+ pbonzini@redhat.com, alex.williamson@redhat.com
+Date: Mon,  1 Jul 2019 11:30:28 +0200
+Message-Id: <20190701093034.18873-1-eric.auger@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Mon, 01 Jul 2019 09:30:50 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 0/6] ARM SMMUv3: Fix spurious notification
+ errors and stall with vfio-pci
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, radoslaw.biernacki@linaro.org,
- leif.lindholm@linaro.org, ard.biesheuvel@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dsKW+YQ8zcDm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ByZuwN/jymgE
 
-For the Aarch64, there is one machine 'virt', it is primarily meant to
-run on KVM and execute virtualization workloads, but we need an
-environment as faithful as possible to physical hardware,  to support
-firmware and OS development for pysical Aarch64 machines.
+This series fixes the guest stall observed when attempting to run
+a guest exposed with a SMMUv3 and a VFIO-PCI device. As a reminder
+SMMUv3 is not yet integrated with VFIO (the device will not work
+properly) but this shouldn't prevent the guest from booting.
 
-This machine comes with:
- - Re-designed memory map.
- - CPU cortex-a57.
- - EL2 and EL3 enabled.
- - GIC version 3.
- - System bus AHCI controller.
- - System bus XHCI controller.
- - CDROM and hard disc on AHCI bus.
- - E1000E ethernet card on PCIE bus.
- - VGA display adaptor on PCIE bus.
- - Only minimal device tree nodes.
-And without:
- - virtio deivces.
- - fw_cfg device.
- - ACPI tables.
+It also silences some spurious translation configuration decoding
+errors (STE out of span or invalid STE) that may happen on guest IOVA
+invalidation notifications.
 
-Arm Trusted Firmware and UEFI porting to this are done accordingly, and
-it should supply ACPI tables to load OS, the minimal device tree nodes
-supplied from this platform are only to pass the dynamic info reflecting
-command line input to firmware, not for loading OS.
+Best Regards
 
-v8 changes:
- - rebase to latest QEMU tree
- - use new way of creating flash as in 'virt' machine
- - other minor typos and comments update
+Eric
 
-v7 changes:
- - edit memory map for PCIE slightly
- - add another secure UART which can be used for RAS and MM from EL0.
+History:
 
-v6 changes:
- - rebased to the latest QEMU tree
- - rechecked all the header files included
- - added the newly introduced system bus EHCI controller
- - removed the machine_done callback due to commit 5614ca80
- - updated block comments styles according to checkpatch.pl
- - use Kconfig to add new file
- - use private SBSA* types defination instead of VIRT* in virt.h
-   since nobody else using them so they are in the .c file instead
-   of a new .h file
+v1 -> v2:
+- Added "memory: Remove unused memory_region_iommu_replay_all()" &
+  "hw/arm/smmuv3: Log a guest error when decoding an invalid STE"
+- do not attempt to implement replay Cb but rather remove the call
+  in case it is not needed
+- explain why we do not remove other log messages on config decoding
 
-v5 changes:
- - removed more lines derived from virt.c
- - designed a new memory map
- - splitted former one patch into two for easier review
- - cancled previous EHCI and new HXCI coming later separately
+Eric Auger (6):
+  memory: Remove unused memory_region_iommu_replay_all()
+  memory: Add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
+  hw/vfio/common: Do not replay IOMMU mappings in nested case
+  hw/arm/smmuv3: Advertise VFIO_NESTED
+  hw/arm/smmuv3: Log a guest error when decoding an invalid STE
+  hw/arm/smmuv3: Remove spurious error messages on IOVA invalidations
 
-V4 changes:
- - rebased to v3.0.0
- - removed timer, uart, rtc, *hci device tree nodes
-   (others were removerd in v3)
- - other minore codes clean up, mainly unsed header files, comments etc.
+ hw/arm/smmuv3-internal.h |  1 +
+ hw/arm/smmuv3.c          | 26 ++++++++++++++++++++------
+ hw/vfio/common.c         |  7 ++++++-
+ include/exec/memory.h    | 13 ++-----------
+ memory.c                 |  9 ---------
+ 5 files changed, 29 insertions(+), 27 deletions(-)
 
-V3 changes:
- - rename the platform 'sbsa-ref'
- - move all the codes to a separate file sbsa-ref.c
- - remove paravirtualized fw_cfg device
- - do not supply ACPI tables, since firmware will do it
- - supply only necessary DT nodes
- - and other minor code clean up
-
-Hongbo Zhang (2):
-  hw/arm: Add arm SBSA reference machine, skeleton part
-  hw/arm: Add arm SBSA reference machine, devices part
-
- default-configs/arm-softmmu.mak |   1 +
- hw/arm/Kconfig                  |  14 +
- hw/arm/Makefile.objs            |   1 +
- hw/arm/sbsa-ref.c               | 806 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 822 insertions(+)
- create mode 100644 hw/arm/sbsa-ref.c
-
--- 
-2.7.4
+--=20
+2.20.1
 

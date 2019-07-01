@@ -1,183 +1,121 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3195122wru;
-        Mon, 1 Jul 2019 17:16:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqycM9XmWMzZlYOSnmPWi0qbcKbw1GW00vah5AbsRg/B6lf/94S9jGsSfvMhUD3RH2M45ngv
-X-Received: by 2002:ac8:1acf:: with SMTP id h15mr22805175qtk.67.1562026593340;
-        Mon, 01 Jul 2019 17:16:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562026593; cv=none;
-        d=google.com; s=arc-20160816;
-        b=q8Hh/ilJzuxc70w7qI4ItGJA5L6xKYeG2iM998yDXG72kVqSIcktNrY2IyAH1usosd
-         n3f41b2o3+Py+geeRgRNlj8DQLLwSuA68EpKKEsjzErWLqAlXj7zrabPkAQlpOC1F4W4
-         xwBE+xnqrjN8aCnjRSOctTxv7w5dKQXLEr9/NONMuvYzThvV2ZVxOADCWqgdwK9/kUEZ
-         WnoXg5jrpcPacXHGZwCB/QkKssbwOXLViO3epYcSmzFkTLxGdwNNb2TJpKYpJNVYCWzw
-         b6rXALfo63pwLONuAnNVpRnc1ju4ZP4cjaZ3wsuaDfFfHVqHGk5Hsy03w0P2+uifkmdo
-         ETtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=GbeHUC9Fz5aXlSZ+c7JvyNmjJqsPywCwavQXs8TrbS0=;
-        b=ev+l/kg/15gVWnjk+ihYXks/okwpkmGCE1/pDJw5UgIomV/6zCmPzBrTfKoUExX1ri
-         l/W0Vx+koTmYTfqUiAy0OzcBjFV2IjOKT4eR9s57GMM6KxrZuS8ZShbpmuHd0lcyp0YM
-         n8C73Xuotrg4h05udwtcGuVEM/FxmIdUr3UbXVLVMu4RmS/J8zAvhczcnxfFRcxwoYMU
-         2Mi0BAGjU9HV9+ZPaarC4uA0GaOT8fDkHwRLkUYRcP7AVuH1umwcWwNV2fv70vhqtykJ
-         EEWVbFdrXsDJpWcXMn23YXo7bgQZRHa9UeQEKgv7m/LQZ+qWHLzioqV7PFcNQ0iNFQOZ
-         UvJA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x8si8921149qtf.386.2019.07.01.17.16.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 17:16:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3229776wru;
+        Mon, 1 Jul 2019 18:07:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqws2klPmi1UjZWKO8CWlgVddF1HPcwZv4QeYtIQ1bhnWPk7+uwc1jcbvv/Q/1zoT4qrgj1F
+X-Received: by 2002:a50:90c6:: with SMTP id d6mr32650258eda.19.1562029649002;
+        Mon, 01 Jul 2019 18:07:29 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q3si1463380ejt.89.2019.07.01.18.07.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 18:07:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 39F236EB96;
-	Tue,  2 Jul 2019 00:16:32 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC2361001B32;
-	Tue,  2 Jul 2019 00:16:10 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
-	Laszlo Ersek <lersek@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	qemu-ppc@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	John Snow <jsnow@redhat.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	BALATON Zoltan <balaton@eik.bme.hu>,
-	Markus Armbruster <armbru@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Michael Walle <michael@walle.cc>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Max Reitz <mreitz@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-arm@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alistair Francis <alistair23@gmail.com>,
-	qemu-block@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH v2 9/9] hw/block/pflash_cfi01: Hold the PRI table offset in a variable
-Date: Tue,  2 Jul 2019 02:13:01 +0200
-Message-Id: <20190702001301.4768-10-philmd@redhat.com>
-In-Reply-To: <20190702001301.4768-1-philmd@redhat.com>
-References: <20190702001301.4768-1-philmd@redhat.com>
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46752 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hi7Ga-0004dR-3h
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 21:07:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50961)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <no-reply@patchew.org>) id 1hi47h-0003wk-Rv
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 17:46:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <no-reply@patchew.org>) id 1hi47f-0006Yj-OX
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 17:46:05 -0400
+Resent-Date: Mon, 01 Jul 2019 17:46:04 -0400
+Resent-Message-Id: <E1hi47f-0006Yj-OX@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21471)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1hi47f-0006VG-1W
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 17:46:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1562003793; cv=none; d=zoho.com; s=zohoarc; 
+ b=Fi3UPVkzm6nVkqlnhBwMThgDsk1WVy6HSlqRsqXRB4NSmd0Mm26+ufFkK2VchNSRDE+7Ntu186hs0FA8wi/Emtw1cKgV1e5ZN/sM+1sCHb7Umn9UxYpEWPoPZ8H//9MK9VuXTbRW3h1uqbIarqPAgEZJRChCCLuKfI9AefSTjio=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1562003793;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=PRFo8pvFF6HfovX3RooKrIVoLNOEvhKbUyB1xczFlq4=; 
+ b=R84gwx59IyR3owOA35q9StOFX+IgluTdeSyo5rVBRB/S9YRfIFT9F3foL6g58wQgAguacPClXtB+829wlar6hADpEhYHhOMMBXgRABv7npn3xZVTR4IWGvenKNDAivGWzpH5VfqU8pzDMlvi9UAz98bYipUegfii9aNo28ENmgw=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1562003790980951.0250206531146;
+ Mon, 1 Jul 2019 10:56:30 -0700 (PDT)
+Message-ID: <156200378933.9862.9905804796969886990@c4a48874b076>
+In-Reply-To: <20190701123108.12493-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 00:16:32 +0000 (UTC)
-X-TUID: AcGXSNqmVs78
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Date: Mon, 1 Jul 2019 10:56:30 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/6] hw/arm: Use
+ ARM_CPU_TYPE_NAME() and object_initialize_child()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, andrew.smirnov@gmail.com, jasowang@redhat.com,
+ alistair@alistair23.me, qemu-devel@nongnu.org, jcd@tribudubois.net,
+ b.galvani@gmail.com, i.mitsyanko@gmail.com, qemu-arm@nongnu.org,
+ peter.chubb@nicta.com.au, antonynpavlov@gmail.com, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TGpf2qh7nG0P
 
-Manufacturers are allowed to move the PRI table, this is why the
-offset is queryable via fixed offsets 0x15/0x16.
-Add a variable to hold the offset, so it will be easier to later
-move the PRI table.
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcwMTEyMzEwOC4xMjQ5
+My0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBidWlsZCB0
+ZXN0IG9uIHMzOTB4IGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93LgoKPT09IFRF
+U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0IHdpbGwgYmUg
+aW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50aW5nIHRvIGEg
+Y29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJiYXNlIgojIGJy
+YW5jaApzZXQgLWUKCmVjaG8KZWNobyAiPT09IEVOViA9PT0iCmVudgoKZWNobwplY2hvICI9PT0g
+UEFDS0FHRVMgPT09IgpycG0gLXFhCgplY2hvCmVjaG8gIj09PSBVTkFNRSA9PT0iCnVuYW1lIC1h
+CgpDQz0kSE9NRS9iaW4vY2MKSU5TVEFMTD0kUFdEL2luc3RhbGwKQlVJTEQ9JFBXRC9idWlsZApt
+a2RpciAtcCAkQlVJTEQgJElOU1RBTEwKU1JDPSRQV0QKY2QgJEJVSUxECiRTUkMvY29uZmlndXJl
+IC0tY2M9JENDIC0tcHJlZml4PSRJTlNUQUxMCm1ha2UgLWo0CiMgWFhYOiB3ZSBuZWVkIHJlbGlh
+YmxlIGNsZWFuIHVwCiMgbWFrZSBjaGVjayAtajQgVj0xCm1ha2UgaW5zdGFsbAo9PT0gVEVTVCBT
+Q1JJUFQgRU5EID09PQoKICBDQyAgICAgIGh3L2RtYS9pODI1Ny5vCiAgQ0MgICAgICBody9kbWEv
+eGlsaW54X2F4aWRtYS5vCi92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC02dW1jNWVvcC9zcmMv
+aHcvZG1hL3hpbGlueF9heGlkbWEuYzogSW4gZnVuY3Rpb24g4oCYeGlsaW54X2F4aWRtYV9pbml0
+4oCZOgovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtNnVtYzVlb3Avc3JjL2h3L2RtYS94aWxp
+bnhfYXhpZG1hLmM6NTY4OjI5OiBlcnJvcjog4oCYVFlQRV9YSUxJTlhfQVhJX0VORVRfREFUQV9T
+VFJFQU3igJkgdW5kZWNsYXJlZCAoZmlyc3QgdXNlIGluIHRoaXMgZnVuY3Rpb24pOyBkaWQgeW91
+IG1lYW4g4oCYVFlQRV9YSUxJTlhfQVhJX0RNQV9EQVRBX1NUUkVBTeKAmT8KICA1NjggfCAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgVFlQRV9YSUxJTlhfQVhJX0VORVRfREFUQV9TVFJFQU0s
+ICZlcnJvcl9hYm9ydCwKICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4KICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgVFlQRV9YSUxJTlhfQVhJX0RNQV9EQVRBX1NUUkVBTQovdmFyL3RtcC9wYXRjaGV3LXRl
+c3Rlci10bXAtNnVtYzVlb3Avc3JjL2h3L2RtYS94aWxpbnhfYXhpZG1hLmM6NTY4OjI5OiBub3Rl
+OiBlYWNoIHVuZGVjbGFyZWQgaWRlbnRpZmllciBpcyByZXBvcnRlZCBvbmx5IG9uY2UgZm9yIGVh
+Y2ggZnVuY3Rpb24gaXQgYXBwZWFycyBpbgovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtNnVt
+YzVlb3Avc3JjL2h3L2RtYS94aWxpbnhfYXhpZG1hLmM6NTcyOjI5OiBlcnJvcjog4oCYVFlQRV9Y
+SUxJTlhfQVhJX0VORVRfQ09OVFJPTF9TVFJFQU3igJkgdW5kZWNsYXJlZCAoZmlyc3QgdXNlIGlu
+IHRoaXMgZnVuY3Rpb24pOyBkaWQgeW91IG1lYW4g4oCYVFlQRV9YSUxJTlhfQVhJX0RNQV9DT05U
+Uk9MX1NUUkVBTeKAmT8KICA1NzIgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVFlQRV9Y
+SUxJTlhfQVhJX0VORVRfQ09OVFJPTF9TVFJFQU0sICZlcnJvcl9hYm9ydCwKICAgICAgfCAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn4KICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVFlQRV9YSUxJTlhfQVhJX0RN
+QV9DT05UUk9MX1NUUkVBTQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3Bh
+dGNoZXcub3JnL2xvZ3MvMjAxOTA3MDExMjMxMDguMTI0OTMtMS1waGlsbWRAcmVkaGF0LmNvbS90
+ZXN0aW5nLnMzOTB4Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
+ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/block/pflash_cfi01.c | 41 ++++++++++++++++++++++++++---------------
- 1 file changed, 26 insertions(+), 15 deletions(-)
-
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index e891112b67..f65840eb2b 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -762,6 +762,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* Hardcoded CFI table */
-+    const uint16_t pri_ofs = 0x31;
-     /* Standard "QRY" string */
-     pfl->cfi_table[0x10] = 'Q';
-     pfl->cfi_table[0x11] = 'R';
-@@ -770,14 +771,17 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-     pfl->cfi_table[0x13] = 0x01;
-     pfl->cfi_table[0x14] = 0x00;
-     /* Primary extended table address (none) */
--    pfl->cfi_table[0x15] = 0x31;
--    pfl->cfi_table[0x16] = 0x00;
-+    pfl->cfi_table[0x15] = pri_ofs;
-+    pfl->cfi_table[0x16] = pri_ofs >> 8;
-     /* Alternate command set (none) */
-     pfl->cfi_table[0x17] = 0x00;
-     pfl->cfi_table[0x18] = 0x00;
-     /* Alternate extended table (none) */
-     pfl->cfi_table[0x19] = 0x00;
-     pfl->cfi_table[0x1A] = 0x00;
-+
-+    /* CFI: System Interface Information */
-+
-     /* Vcc min */
-     pfl->cfi_table[0x1B] = 0x45;
-     /* Vcc max */
-@@ -802,6 +806,9 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-     pfl->cfi_table[0x25] = 0x04;
-     /* Max timeout for chip erase */
-     pfl->cfi_table[0x26] = 0x00;
-+
-+    /* CFI: Device Geometry Definition */
-+
-     /* Device size */
-     pfl->cfi_table[0x27] = ctz32(device_len); /* + 1; */
-     /* Flash device interface (8 & 16 bits) */
-@@ -826,26 +833,30 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-     pfl->cfi_table[0x2E] = (blocks_per_device - 1) >> 8;
-     pfl->cfi_table[0x2F] = sector_len_per_device >> 8;
-     pfl->cfi_table[0x30] = sector_len_per_device >> 16;
-+    assert(0x30 < pri_ofs);
-+
-+    /* CFI: Primary-Vendor Specific */
- 
-     /* Extended */
--    pfl->cfi_table[0x31] = 'P';
--    pfl->cfi_table[0x32] = 'R';
--    pfl->cfi_table[0x33] = 'I';
-+    pfl->cfi_table[0x00 + pri_ofs] = 'P';
-+    pfl->cfi_table[0x01 + pri_ofs] = 'R';
-+    pfl->cfi_table[0x02 + pri_ofs] = 'I';
- 
--    pfl->cfi_table[0x34] = '1';
--    pfl->cfi_table[0x35] = '0';
-+    pfl->cfi_table[0x03 + pri_ofs] = '1';
-+    pfl->cfi_table[0x04 + pri_ofs] = '0';
- 
--    pfl->cfi_table[0x36] = 0x00;
--    pfl->cfi_table[0x37] = 0x00;
--    pfl->cfi_table[0x38] = 0x00;
--    pfl->cfi_table[0x39] = 0x00;
-+    pfl->cfi_table[0x05 + pri_ofs] = 0x00; /* Optional features */
-+    pfl->cfi_table[0x06 + pri_ofs] = 0x00;
-+    pfl->cfi_table[0x07 + pri_ofs] = 0x00;
-+    pfl->cfi_table[0x08 + pri_ofs] = 0x00;
- 
--    pfl->cfi_table[0x3a] = 0x00;
-+    pfl->cfi_table[0x09 + pri_ofs] = 0x00; /* Func. supported after suspend */
- 
--    pfl->cfi_table[0x3b] = 0x00;
--    pfl->cfi_table[0x3c] = 0x00;
-+    pfl->cfi_table[0x0a + pri_ofs] = 0x00; /* Block status register mask */
-+    pfl->cfi_table[0x0b + pri_ofs] = 0x00;
- 
--    pfl->cfi_table[0x3f] = 0x01; /* Number of protection fields */
-+    pfl->cfi_table[0x0e + pri_ofs] = 0x01; /* Number of protection fields */
-+    assert(0x0e + pri_ofs < ARRAY_SIZE(pfl->cfi_table));
- }
- 
- static void pflash_cfi01_system_reset(DeviceState *dev)
--- 
-2.20.1
